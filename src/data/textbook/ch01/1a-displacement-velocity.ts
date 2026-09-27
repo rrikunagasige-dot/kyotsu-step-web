@@ -154,7 +154,6 @@ const rawTextbookUnits = [
         role: 'concept',
         number: '01',
         title: '知識点チェック',
-        role: 'concept',
         description: '公式だけではなく、「何を表す量か」「向きはどう決まるか」まで、本文を読みながら順番に確認する。',
         figures: [],
         readingFlow: [
@@ -226,7 +225,6 @@ const rawTextbookUnits = [
         role: 'figure-reading',
         number: '02',
         title: '図の読み取り',
-        role: 'figure-reading',
         description: '図も知識の一部。矢印・方向・記号が「何を表すか」を、文章と図を往復しながら確認する。',
         figures: [
           {
@@ -298,7 +296,6 @@ const rawTextbookUnits = [
         role: 'worked-example',
         number: '03',
         title: '例題1｜瞬間速度の向き',
-        role: 'worked-example',
         description: '「なぜそう言えるか」を文章で追いながら、各点の瞬間速度の向きを考える。',
         figures: [
           {
@@ -340,7 +337,6 @@ const rawTextbookUnits = [
         role: 'worked-example',
         number: '04',
         title: '例題2｜変位と平均の速度',
-        role: 'worked-example',
         description: '「何を求めるか」→「式を立てる」→「計算」→「結論」を本文と式の流れに沿って進める。',
         figures: [
           {
@@ -412,7 +408,6 @@ const rawTextbookUnits = [
         role: 'review',
         number: '05',
         title: '最後の知識確認',
-        role: 'review',
         description: '単元の最後に、位置・変位・速度・速さの関係を一つの文章としてもう一度つなげる。',
         figures: [],
         readingFlow: [

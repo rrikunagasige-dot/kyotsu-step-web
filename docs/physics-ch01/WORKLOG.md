@@ -231,3 +231,72 @@ The work was not marked complete when intermediate CI failed.
 `P05 = PASS`  
 `P06 = PASS`  
 Next: `P07 — 1B 速度の合成と分解`.
+
+
+## 2026-09-28 — P07 1B 速度の合成と分解 PASS
+
+### Source audit
+
+Read and cross-checked:
+- original textbook PDF p.14–15
+- supplied unit Word: `第1章_1B_速度の合成と分解.docx`
+- supplied figures 5 and 6
+
+Physics source confirms:
+- ground-observed boat velocity is the vector sum of the water velocity and boat-relative-to-water velocity
+- this operation is velocity composition
+- `v_x = v cos θ`
+- `v_y = v sin θ`
+- `v = sqrt(v_x^2 + v_y^2)`
+- vector subtraction is addition of the opposite vector and leads naturally into 1C relative velocity
+
+### Implementation
+
+Added:
+- `src/data/textbook/ch01/1b-velocity-composition.ts`
+- unitId: `physics-1b-velocity-composition`
+- `schemaVersion: 1.1`
+- revision 1
+- source pages 14–15
+- five semantic sections
+- 18 source-aligned items
+- explicit choices for every published item
+- chapter ordering: 1A → 1B
+
+Real supplied figure assets:
+- `public/assets/physics/textbook/ch01/1b/velocity-composition.webp`
+- `public/assets/physics/textbook/ch01/1b/velocity-components.webp`
+
+Figure V2:
+- `hotspot-d-1` connects the resultant/parallelogram-diagonal region to D-1
+- figure 6 is used inferentially; no label mask is required for D-2
+
+### Gate
+
+Final passing GitHub Actions run: `36336610820`.
+
+PASS:
+- TypeScript
+- ESLint
+- Vitest: 14 files / 38 tests
+- production build
+- Playwright Chromium
+- textbook E2E: 7 tests
+
+The browser gate verifies:
+- 1B appears beside 1A in Chapter 1
+- selecting 1B routes to the correct unit
+- concept section starts at `b-1`
+- figure section remains locked until concept completion
+- seeded completion unlocks the figure section
+- the supplied composition figure loads with nonzero natural width
+- the D-1 Figure V2 hotspot is visible
+
+### Intermediate correction
+
+An intermediate CI run failed because the domain chapter-order test still expected only `['1A']`. This was updated to `['1A','1B']`; P07 was not marked PASS until the final full gate succeeded.
+
+### Status
+
+`P07 = PASS`  
+Next: `P08 — 1C 相対速度`.

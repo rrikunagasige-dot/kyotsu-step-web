@@ -88,4 +88,18 @@ P13 Chapter 1 full gate
 P14 docs/worklog update
 ```
 
-現在はまず P00〜P06 を完成させ、1Aを「母版2.0」にする。
+## 現在の状態
+
+```text
+P00 DONE
+P01 PASS
+P02 PASS
+P03 PASS
+P04 PASS
+P05 NEXT
+P06 WAIT
+```
+
+最新の総合gate: GitHub Actions `36334432650` — typecheck / lint / 37 unit tests / build / textbook E2E 5 tests PASS。
+
+次に行うのは P05。1Aを schemaVersion 1.1 の実データへ移行し、明示的な誤答候補・新しい図1〜4・Figure V2の実overlayを入れる。

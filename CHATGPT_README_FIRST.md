@@ -96,10 +96,15 @@ P01 PASS
 P02 PASS
 P03 PASS
 P04 PASS
-P05 NEXT
-P06 WAIT
+P05 PASS
+P06 PASS
+P07 NEXT
 ```
 
-最新の総合gate: GitHub Actions `36334432650` — typecheck / lint / 37 unit tests / build / textbook E2E 5 tests PASS。
+最新の総合gate: GitHub Actions `36335812301` — typecheck / lint / 37 unit tests / build / textbook E2E 6 tests PASS。
 
-次に行うのは P05。1Aを schemaVersion 1.1 の実データへ移行し、明示的な誤答候補・新しい図1〜4・Figure V2の実overlayを入れる。
+P05で1Aを母版2.0として schemaVersion 1.1 へ移行した。78個のstable item IDを維持し、全itemに明示的な誤答候補を与え、 supplied Chapter-1 figures 1〜4 を app asset 化し、Figure V2 maskを実データへ接続した。
+
+P06では実ブラウザで、chapter/unit navigation、順次unlock、誤答保持＋正解表示、inline choice、実figure読み込み、figure maskからの回答、回答後のmask解除とpersist後の再読み込みを確認した。
+
+次は P07。1B「速度の合成と分解」を同じ導入ルールで作る。

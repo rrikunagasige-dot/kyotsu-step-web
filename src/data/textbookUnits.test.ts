@@ -2,10 +2,12 @@ import { describe, expect, it } from 'vitest'
 import { builtInTextbookUnits } from './textbookUnits'
 
 describe('textbook unit catalog', () => {
-  it('imports A displacement and velocity as one sequential physics unit', () => {
+  it('imports 1A displacement and velocity as the chapter-1 golden unit', () => {
     expect(builtInTextbookUnits).toHaveLength(1)
     const unit = builtInTextbookUnits[0]
     expect(unit.unitId).toBe('physics-a-displacement-velocity')
+    expect(unit.schemaVersion).toBe('1.1')
+    expect(unit.revision).toBe(3)
     expect(unit.subject).toBe('physics')
     expect(unit.chapter).toEqual({
       chapterId: 'physics-ch01-motion',
@@ -15,42 +17,50 @@ describe('textbook unit catalog', () => {
       orderInChapter: 1,
       sourcePages: [12, 13],
     })
-    expect(unit.sections.map((section) => section.id)).toEqual([
-      'knowledge-check',
-      'figure-reading',
-      'example-q1',
-      'example-q2',
-      'final-review',
+    expect(unit.sections.map((section) => [section.id, section.role])).toEqual([
+      ['knowledge-check', 'concept'],
+      ['figure-reading', 'figure-reading'],
+      ['example-q1', 'worked-example'],
+      ['example-q2', 'worked-example'],
+      ['final-review', 'review'],
     ])
   })
 
-  it('contains all 78 source blanks with stable ids', () => {
+  it('keeps all 78 source blanks with stable ids and curated choices', () => {
     const unit = builtInTextbookUnits[0]
     const items = unit.sections.flatMap((section) => section.items)
     expect(items).toHaveLength(78)
     expect(new Set(items.map((item) => item.id)).size).toBe(78)
     expect(items[0].label).toBe('A-1')
     expect(items.at(-1)?.label).toBe('F-8')
+    expect(items.every((item) => item.choices && item.choices.length >= 3)).toBe(true)
+    expect(items.every((item) => item.choices?.includes(item.answer))).toBe(true)
   })
 
-
-
-  it('maps every textbook blank back into a continuous reading flow', () => {
+  it('maps every textbook blank into reading flow or a figure overlay', () => {
     const unit = builtInTextbookUnits[0]
     for (const section of unit.sections) {
       expect(section.readingFlow.length).toBeGreaterThan(0)
-      const referenced = section.readingFlow.flatMap((block) =>
+      const readingReferences = section.readingFlow.flatMap((block) =>
         block.type === 'paragraph' || block.type === 'formula'
           ? block.parts.filter((part) => part.type === 'choice').map((part) => part.itemId)
           : [],
       )
-      expect(new Set(referenced)).toEqual(new Set(section.items.map((item) => item.id)))
+      const overlayReferences = section.figures.flatMap((figure) => figure.overlays.map((overlay) => overlay.itemId))
+      expect(new Set([...readingReferences, ...overlayReferences])).toEqual(new Set(section.items.map((item) => item.id)))
     }
   })
 
-  it('keeps the four source diagrams as independent assets', () => {
+  it('uses all four chapter-1 source figures and masks answer-bearing labels', () => {
     const figures = builtInTextbookUnits[0].sections.flatMap((section) => section.figures)
     expect(figures).toHaveLength(4)
-    expect(figures.every((figure) => figure.src.startsWith('/assets/physics/textbook/a-displacement/'))).toBe(true)
+    expect(figures.every((figure) => figure.src.startsWith('/assets/physics/textbook/ch01/1a/'))).toBe(true)
+
+    const overlays = figures.flatMap((figure) => figure.overlays)
+    expect(overlays.map((overlay) => overlay.itemId)).toEqual(expect.arrayContaining([
+      'd-11', 'd-16', 'd-17', 'd-18', 'd-19', 'q1-4', 'q1-5', 'q1-7',
+    ]))
+    expect(overlays.every((overlay) => overlay.x + overlay.width <= 100)).toBe(true)
+    expect(overlays.every((overlay) => overlay.y + overlay.height <= 100)).toBe(true)
   })
 })

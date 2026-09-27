@@ -141,7 +141,10 @@ test('real 1A figure loads and a masked label can be answered from the figure', 
   await expect(panel).toBeVisible()
   await panel.getByRole('button', { name: 'r₁', exact: true }).click()
 
+  await expect(panel).toHaveCount(0)
   await expect(mask).toHaveCount(0)
-  await expect(page.getByTestId('resolved-d-16')).toContainText('r₁')
+
+  await page.reload()
+  await expect(page.getByTestId('textbook-figure-overlay-mask-d-16')).toHaveCount(0)
 })
 

@@ -160,6 +160,7 @@ function TextbookReadingFlow({ unit, section, progress }: {
             return (
               <button
                 type="button"
+                aria-label={choice}
                 key={choice}
                 data-testid={`textbook-choice-${activeItem.id}-${index}`}
                 className={`reading-choice-option${selectedWrong ? ' reading-choice-option--wrong' : ''}${revealedCorrect ? ' textbook-choice--correct' : ''}`}

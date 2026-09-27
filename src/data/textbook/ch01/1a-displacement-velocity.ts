@@ -471,14 +471,84 @@ const textbookChoices: Record<string, string[]> = {
   ]
 }
 
-const item = (id: string, label: string, prompt: string, answer: string, answerType: 'text' | 'formula' | 'number' = 'text', acceptedAnswers: string[] = [], unit?: string) => ({
+const choiceSetByAnswer: Record<string, string[]> = {
+  '位置ベクトル': ['位置ベクトル', '変位ベクトル', '速度ベクトル', '加速度ベクトル'],
+  '位置': ['位置', '変位', '速度', '加速度'],
+  '変位': ['変位', '移動距離', '位置', '速さ'],
+  'r₂-r₁': ['r₂-r₁', 'r₁-r₂', 'r₁+r₂', 'r₂/r₁'],
+  '終わり': ['終わり', '初め', '中間', '原点'],
+  '初め': ['初め', '終わり', '中間', '原点'],
+  'よらない': ['よらない', '経路の長さによる', '速さによる', '時間による'],
+  '初めの位置': ['初めの位置', '終わりの位置', '経路の長さ', '平均の速さ'],
+  '終わりの位置': ['終わりの位置', '初めの位置', '移動時間', '軌跡の長さ'],
+  'x₂-x₁': ['x₂-x₁', 'x₁-x₂', 'x₁+x₂', 'x₂/x₁'],
+  'y₂-y₁': ['y₂-y₁', 'y₁-y₂', 'y₁+y₂', 'y₂/y₁'],
+  't₂-t₁': ['t₂-t₁', 't₁-t₂', 't₁+t₂', 't₂/t₁'],
+  '平均の速度': ['平均の速度', '平均の速さ', '瞬間の速度', '加速度'],
+  '変位 Δr': ['変位 Δr', '位置 r₁', '位置 r₂', '経路の長さ'],
+  '|Δr|': ['|Δr|', 'Δr', '|r₂|+|r₁|', 'Δt'],
+  '瞬間の速度': ['瞬間の速度', '平均の速度', '瞬間の加速度', '平均の速さ'],
+  '大きさ': ['大きさ', '向き', '位置', '時間'],
+  '向き': ['向き', '大きさ', '時間', '距離'],
+  'ベクトル': ['ベクトル', 'スカラー', '単位', '座標'],
+  '速さ': ['速さ', '変位', '加速度', '位置'],
+  '原点 O': ['原点 O', 'P₁', 'P₂', '軌跡上の中点'],
+  'P₁': ['P₁', 'P₂', 'O', 'Q'],
+  'P₂': ['P₂', 'P₁', 'O', 'Q'],
+  'r₂': ['r₂', 'r₁', 'Δr', 'v'],
+  '接線': ['接線', '法線', '半径', '弦'],
+  '0': ['0', '1', '-1', '∞'],
+  'r₁': ['r₁', 'r₂', 'Δr', 'v'],
+  'Δr': ['Δr', 'r₁', 'r₂', 'v'],
+  'v': ['v', 'v̄', 'a', 'Δr'],
+  '曲線そのもの': ['曲線そのもの', '接線', '法線', '変位ベクトル'],
+  '上': ['上', '下', '水平', '左'],
+  '右上': ['右上', '右下', '左上', '水平右'],
+  '右下': ['右下', '右上', '左下', '水平右'],
+  '経過時間': ['経過時間', '速さ', '軌跡の長さ', '加速度'],
+  'Δt': ['Δt', 'Δr', 't₁+t₂', 'v'],
+  'Δr/Δt': ['Δr/Δt', 'Δt/Δr', 'Δr·Δt', '|Δr|'],
+}
+
+const choiceSetByItemId: Record<string, string[]> = {
+  'q2-3': ['(1.0,2.0)', '(2.0,1.0)', '(7.0,6.0)', '(6.0,4.0)'],
+  'q2-4': ['(7.0,6.0)', '(6.0,7.0)', '(1.0,2.0)', '(6.0,4.0)'],
+  'q2-5': ['(1.0,2.0)', '(2.0,1.0)', '(7.0,6.0)', '(6.0,4.0)'],
+  'q2-6': ['1.0', '2.0', '6.0', '7.0'],
+  'q2-7': ['6.0', '5.0', '4.0', '8.0'],
+  'q2-8': ['2.0', '1.0', '4.0', '6.0'],
+  'q2-9': ['4.0', '3.0', '6.0', '8.0'],
+  'q2-10': ['(6.0,4.0)', '(4.0,6.0)', '(8.0,8.0)', '(7.0,6.0)'],
+  'q2-12': ['2.0', '3.0', '5.0', '7.0'],
+  'q2-13': ['3.0', '2.0', '5.0', '7.0'],
+  'q2-16': ['(2.0,4/3)', '(4/3,2.0)', '(6.0,4.0)', '(2.0,3/4)'],
+  'q2-17': ['2.0', '4/3', '4.0', '6.0'],
+  'q2-18': ['4/3', '3/4', '2', '4'],
+  'q2-19': ['2√13/3', '√13/3', '2√13', '13/3'],
+}
+
+function choicesFor(id: string, answer: string) {
+  const choices = choiceSetByItemId[id] ?? choiceSetByAnswer[answer]
+  if (!choices) throw new Error(`Missing curated textbook choices for ${id}: ${answer}`)
+  return choices
+}
+
+const item = (
+  id: string,
+  label: string,
+  prompt: string,
+  answer: string,
+  answerType: 'text' | 'formula' | 'number' = 'text',
+  acceptedAnswers: string[] = [],
+  unit?: string,
+) => ({
   id,
   label,
   prompt,
   answer,
   acceptedAnswers,
   answerType,
-  choices: textbookChoices[id],
+  choices: choicesFor(id, answer),
   ...(unit ? { unit } : {}),
 })
 
@@ -526,6 +596,7 @@ const rawTextbookUnits = [
         number: '01',
         title: '知識点チェック',
         description: '公式だけではなく、「何を表す量か」「向きはどう決まるか」まで、本文を読みながら順番に確認する。',
+        role: 'concept',
         figures: [],
         readingFlow: [
           heading('kc-h-1', '1-1　位置と位置ベクトル'),
@@ -534,7 +605,7 @@ const rawTextbookUnits = [
           paragraph('kc-p-3', t('したがって、'), m('\\vec r_1'), t(' は時刻 '), m('t_1'), t(' における物体の '), c('a-2'), t(' を表し、'), m('\\vec r_2'), t(' は時刻 '), m('t_2'), t(' における物体の '), c('a-3'), t(' を表している。')),
 
           heading('kc-h-2', '1-2　変位'),
-          paragraph('kc-p-4', t('物体が '), m('P_1'), t(' から '), m('P_2'), t(' まで移動したとき、物体の位置の変化を '), c('a-4'), t(' という。変位はベクトルである。')),
+          paragraph('kc-p-4', t('物体が '), m('A'), t(' から '), m('B'), t(' まで移動したとき、物体の位置の変化を '), c('a-4'), t(' という。変位はベクトルである。')),
           formula('kc-f-1', m('\\Delta \\vec r = '), c('a-5')),
           paragraph('kc-p-5', t('つまり、変位 ＝ '), c('a-6'), t(' の位置 − '), c('a-7'), t(' の位置である。')),
           paragraph('kc-p-6', t('物体がどのような曲線を通って '), m('P_1'), t(' から '), m('P_2'), t(' へ移動したとしても、変位は途中の経路には '), c('a-8'), t('。')),
@@ -597,26 +668,27 @@ const rawTextbookUnits = [
         number: '02',
         title: '図の読み取り',
         description: '図も知識の一部。矢印・方向・記号が「何を表すか」を、文章と図を往復しながら確認する。',
+        role: 'figure-reading',
         figures: [
           {
             id: 'position-vector-figure',
             src: '/assets/physics/textbook/ch01/1a/position-vector-displacement.webp',
-            alt: '原点 O、点 P1、点 P2、位置ベクトル r1 と r2、変位 Δr の関係図',
+            alt: '原点 O、点 P1、点 P2、位置ベクトル r1、r2 と変位 Δr の関係図',
             caption: '図1　位置ベクトルと変位',
             overlays: [
-              { id: 'mask-r1', itemId: 'd-16', mode: 'mask', x: 20.5, y: 59.0, width: 8.5, height: 10.0, reveal: 'after-answer', ariaLabel: '図1の r1 を答える' },
-              { id: 'mask-r2', itemId: 'd-17', mode: 'mask', x: 49.5, y: 53.5, width: 9.0, height: 10.5, reveal: 'after-answer', ariaLabel: '図1の r2 を答える' },
-              { id: 'mask-dr', itemId: 'd-18', mode: 'mask', x: 52.0, y: 25.0, width: 16.0, height: 11.0, reveal: 'after-answer', ariaLabel: '図1の変位ベクトルを答える' },
+              { id: 'mask-d-16', itemId: 'd-16', mode: 'mask', x: 20.44, y: 58.01, width: 9.12, height: 9.94, reveal: 'after-answer', ariaLabel: 'r1 の記号を答える' },
+              { id: 'mask-d-17', itemId: 'd-17', mode: 'mask', x: 50.0, y: 53.59, width: 8.01, height: 8.84, reveal: 'after-answer', ariaLabel: 'r2 の記号を答える' },
+              { id: 'mask-d-18', itemId: 'd-18', mode: 'mask', x: 54.01, y: 27.99, width: 11.05, height: 9.02, reveal: 'after-answer', ariaLabel: '変位ベクトルの記号を答える' },
             ],
           },
           {
             id: 'tangent-velocity-figure',
             src: '/assets/physics/textbook/ch01/1a/average-instantaneous-velocity.webp',
-            alt: '曲線上の A、P、B と、P における瞬間速度、A から B の平均速度の向きを比較する図',
-            caption: '図2　平均速度と瞬間速度の向き',
+            alt: '曲線上の A、P、B と、平均速度および P における瞬間速度の方向を比較する図',
+            caption: '図2　平均の速度から瞬間の速度へ',
             overlays: [
-              { id: 'mask-instant-label', itemId: 'd-11', mode: 'mask', x: 52.0, y: 12.0, width: 22.0, height: 9.0, reveal: 'after-answer', ariaLabel: '点Pの青い矢印が表す量を答える' },
-              { id: 'mask-v-symbol', itemId: 'd-19', mode: 'mask', x: 52.0, y: 23.0, width: 7.0, height: 9.0, reveal: 'after-answer', ariaLabel: '点Pの速度ベクトル記号を答える' },
+              { id: 'mask-d-11', itemId: 'd-11', mode: 'mask', x: 53.04, y: 12.52, width: 22.03, height: 8.47, reveal: 'after-answer', ariaLabel: 'P における矢印が表す量を答える' },
+              { id: 'mask-d-19', itemId: 'd-19', mode: 'mask', x: 54.14, y: 23.02, width: 6.08, height: 7.55, reveal: 'after-answer', ariaLabel: '瞬間速度ベクトルの記号を答える' },
             ],
           },
         ],
@@ -668,14 +740,25 @@ const rawTextbookUnits = [
         number: '03',
         title: '例題1｜瞬間速度の向き',
         description: '「なぜそう言えるか」を文章で追いながら、各点の瞬間速度の向きを考える。',
+        role: 'worked-example',
         figures: [
-          { id: 'curve-abc-figure', src: '/assets/physics/textbook/ch01/1a/tangent-velocities.webp', alt: '曲線軌道上の P、Q、R における接線方向の瞬間速度ベクトル vP、vQ、vR の図', caption: '問1　各点 P・Q・R における瞬間速度の向き' },
+          {
+            id: 'curve-pqr-figure',
+            src: '/assets/physics/textbook/ch01/1a/curve-velocity-directions.webp',
+            alt: '曲線軌道上の P、Q、R と、それぞれの接線方向の瞬間速度ベクトルの図',
+            caption: '問1　曲線上の P・Q・R における瞬間速度',
+            overlays: [
+              { id: 'mask-q1-4', itemId: 'q1-4', mode: 'mask', x: 20, y: 16, width: 18, height: 16, reveal: 'after-answer', ariaLabel: 'P における瞬間速度の向きを答える' },
+              { id: 'mask-q1-5', itemId: 'q1-5', mode: 'mask', x: 40, y: 38, width: 17, height: 22, reveal: 'after-answer', ariaLabel: 'Q における瞬間速度の向きを答える' },
+              { id: 'mask-q1-7', itemId: 'q1-7', mode: 'mask', x: 70, y: 32, width: 17, height: 24, reveal: 'after-answer', ariaLabel: 'R における瞬間速度の向きを答える' },
+            ],
+          },
         ],
         readingFlow: [
           note('q1-note-1', '解法の流れも文章の中で確認する。「なぜ」→「判断」→「結論」の順で進む。'),
           heading('q1-h-1', '問1　瞬間速度の向き'),
           paragraph('q1-p-1', t('物体が次のような曲線上を左から右へ運動している。点 P、Q、R を通過するときの瞬間の速度の向きを考えよう。')),
-          figure('q1-fig-1', 'curve-abc-figure'),
+          figure('q1-fig-1', 'curve-pqr-figure'),
           paragraph('q1-p-2', t('瞬間速度の方向は、物体の '), c('q1-1'), t(' の方向ではなく、その点における軌跡の '), c('q1-2'), t(' 方向である。')),
           paragraph('q1-p-3', t('点 P 付近では、軌跡は右へ進みながら '), c('q1-3'), t(' 方向へ傾いている。したがって、点 P における速度ベクトルは '), c('q1-4'), t(' 方向を向く。')),
           paragraph('q1-p-4', t('点 Q 付近では、軌跡は右へ進みながら下降している。この点に引いた接線は '), c('q1-5'), t(' 方向を向く。')),
@@ -685,7 +768,7 @@ const rawTextbookUnits = [
         items: [
           item('q1-1', 'Q1-1', '瞬間速度の方向は、物体の何の方向そのものではないか。', '曲線そのもの', 'text', ['軌跡そのもの']),
           item('q1-2', 'Q1-2', '瞬間速度の方向は、その点における軌跡の何方向か。', '接線', 'text', ['接線方向']),
-          item('q1-3', 'Q1-3', '点 P 付近では、軌跡は右へ進みながらどちらへ傾いているか。', '上', 'text', ['下向き']),
+          item('q1-3', 'Q1-3', '点 P 付近では、軌跡は右へ進みながらどちらへ傾いているか。', '上', 'text', ['上向き']),
           item('q1-4', 'Q1-4', 'したがって点 P における速度ベクトルはどちら向きか。', '右上'),
           item('q1-5', 'Q1-5', '点 Q に引いた接線はどちら向きか。', '右下'),
           item('q1-6', 'Q1-6', '点 R 付近では、物体は右へ進みながらどちらへ進んでいるか。', '上', 'text', ['上向き']),
@@ -699,13 +782,20 @@ const rawTextbookUnits = [
         number: '04',
         title: '例題2｜変位と平均の速度',
         description: '「何を求めるか」→「式を立てる」→「計算」→「結論」を本文と式の流れに沿って進める。',
+        role: 'worked-example',
         figures: [
-          { id: 'coordinate-figure', src: '/assets/physics/textbook/ch01/1a/displacement-components.webp', alt: '座標平面上の A(x1,y1) から B(x2,y2) への変位 AB と、その x 成分 Δx、y 成分 Δy を示す図', caption: '問2　変位の成分と平均速度' },
+          {
+            id: 'displacement-components-figure',
+            src: '/assets/physics/textbook/ch01/1a/displacement-components.webp',
+            alt: '座標平面上の A(x1,y1) から B(x2,y2) への変位と Δx、Δy の成分を示す図',
+            caption: '問2　変位を x 成分と y 成分に分けて考える',
+            overlays: [],
+          },
         ],
         readingFlow: [
           heading('q2-h-0', '問2　変位と平均の速度'),
           paragraph('q2-p-0', t('平面上を運動する物体が、時刻 '), m('t_1=2.0\\,\\mathrm{s}'), t(' に '), m('A=(1.0,2.0)\\,\\mathrm{m}'), t(' にあり、時刻 '), m('t_2=5.0\\,\\mathrm{s}'), t(' に '), m('B=(7.0,6.0)\\,\\mathrm{m}'), t(' に移動した。このとき、①変位、②平均の速度、③平均の速度の大きさを求める。')),
-          figure('q2-fig-1', 'coordinate-figure'),
+          figure('q2-fig-1', 'displacement-components-figure'),
 
           heading('q2-h-1', 'STEP 1　何を求める問題か'),
           paragraph('q2-p-1', t('点 A から点 B への位置の変化を表すベクトルを '), c('q2-1'), t(' という。公式は')),
@@ -764,6 +854,7 @@ const rawTextbookUnits = [
         number: '05',
         title: '最後の知識確認',
         description: '単元の最後に、位置・変位・速度・速さの関係を一つの文章としてもう一度つなげる。',
+        role: 'review',
         figures: [],
         readingFlow: [
           note('frv-note-1', '最後は前の説明を最小限にして、単元全体のつながりを自分で確認する。'),

@@ -186,7 +186,7 @@ test('real 1A figure loads and a masked label can be answered from the figure', 
 
 
 
-test('1B starts from the composition concept and loads the supplied composition figure', async ({ page }) => {
+test('1B uses the supplied figures and resolves the composition hotspot on mobile', async ({ page }) => {
   await page.goto(appRoute('/learning/setup'))
   await page.getByTestId('textbook-unit-physics-1b-velocity-composition').click()
   await expect(page.getByTestId('textbook-selection-summary')).toContainText('1B')
@@ -205,8 +205,36 @@ test('1B starts from the composition concept and loads the supplied composition 
   await expect(figureSection).toBeEnabled()
   await figureSection.click()
 
-  const figure = page.getByAltText(/川を横切る船について/)
+  const figureCard = page.getByTestId('textbook-figure-velocity-composition-figure')
+  const figure = figureCard.getByAltText(/川を横切る船について/)
   await expect(figure).toBeVisible()
   await expect.poll(async () => figure.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0)
-  await expect(page.getByTestId('textbook-figure-overlay-hotspot-d-1')).toBeVisible()
+
+  const hotspot = page.getByTestId('textbook-figure-overlay-hotspot-d-1')
+  await expect(hotspot).toBeVisible()
+
+  const stageBox = await figureCard.locator('.textbook-figure-stage').boundingBox()
+  const hotspotBox = await hotspot.boundingBox()
+  expect(stageBox).not.toBeNull()
+  expect(hotspotBox).not.toBeNull()
+  expect(hotspotBox!.x).toBeGreaterThanOrEqual(stageBox!.x)
+  expect(hotspotBox!.y).toBeGreaterThanOrEqual(stageBox!.y)
+  expect(hotspotBox!.x + hotspotBox!.width).toBeLessThanOrEqual(stageBox!.x + stageBox!.width + 1)
+  expect(hotspotBox!.y + hotspotBox!.height).toBeLessThanOrEqual(stageBox!.y + stageBox!.height + 1)
+
+  await hotspot.click()
+  const panel = page.getByTestId('inline-choice-panel-d-1')
+  await expect(panel).toBeVisible()
+  await panel.getByRole('button', { name: '平行四辺形の対角線', exact: true }).click()
+
+  await expect(panel).toHaveCount(0)
+  await expect(hotspot).toHaveCount(0)
+
+  const componentsFigure = page.getByAltText(/速度 v を x 成分/)
+  await expect(componentsFigure).toBeVisible()
+  await expect.poll(async () => componentsFigure.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0)
+  await expect(page.getByTestId('textbook-item-d-2')).toBeVisible()
+
+  await page.reload()
+  await expect(page.getByTestId('textbook-figure-overlay-hotspot-d-1')).toHaveCount(0)
 })

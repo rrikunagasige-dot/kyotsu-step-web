@@ -300,3 +300,77 @@ An intermediate CI run failed because the domain chapter-order test still expect
 
 `P07 = PASS`  
 Next: `P08 — 1C 相対速度`.
+
+
+## 2026-09-28 — P07 1B 速度の合成と分解 PASS
+
+### Source normalization
+
+Authority checked before implementation:
+- original textbook p.14–15
+- supplied 1B Word pedagogical reconstruction
+- supplied figure 5 and figure 6
+
+The unit keeps the source's educational roles rather than forcing 1A's exact paragraph count.
+
+### Implemented unit
+
+Added:
+- `src/data/textbook/ch01/1b-velocity-composition.ts`
+- published catalog entry after 1A
+- `schemaVersion: 1.1`
+- `revision: 1`
+- chapter metadata: 1B / order 2 / p.14–15
+- 18 source-aligned items
+- five semantic sections
+- explicit per-item choices
+
+Content:
+- vector addition / velocity composition
+- x/y decomposition
+- `v_x=v cosθ`
+- `v_y=v sinθ`
+- `v=sqrt(v_x^2+v_y^2)`
+- vector sum/difference bridge into 1C
+- river-boat worked example
+- 30 m/s, 30° component worked example
+- final reconnection review
+
+### Figures
+
+Supplied source figures 5–6 are app assets:
+- `public/assets/physics/textbook/ch01/1b/velocity-composition.webp`
+- `public/assets/physics/textbook/ch01/1b/velocity-components.webp`
+
+Figure 5 has a Figure V2 hotspot linked to `d-1`; figure 6 is a normal source figure because its current figure-reading question asks the geometric relation between the two component directions rather than a label already printed as the answer.
+
+### Gate history
+
+The first catalog commit correctly failed old tests that still assumed only one unit:
+- built-in catalog length expected 1 but became 2
+- chapter ordering expected only 1A
+
+Those tests were updated to the intended authoritative state `['1A', '1B']` before PASS.
+
+Intermediate unit/catalog gate `36336593147`: PASS.
+
+Browser smoke gate `36336610820`: PASS.
+
+A stronger mobile figure audit was then added. Final P07 gate:
+`36336731539` — PASS.
+
+Final evidence:
+- TypeScript PASS
+- ESLint PASS
+- Vitest: 14 files / 38 tests PASS
+- production build PASS
+- Playwright Chromium PASS
+- textbook E2E: 7 tests PASS
+
+The final 1B browser test validates the supplied figure load, mobile hotspot bounds, D-1 answer flow, progression to figure 6, and persisted resolved state after reload.
+
+### Status
+
+`P07 = PASS`
+
+Next node: `P08 — 1C 相対速度`.

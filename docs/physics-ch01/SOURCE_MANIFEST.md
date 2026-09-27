@@ -40,3 +40,27 @@
 - chapter figures: supplied figure.zip
 - application state/UI constraints: executable repository
 - no synthetic substitute data when source content is available
+
+
+## 1A app assets
+
+The supplied 1A figures are represented in the app as optimized WebP assets:
+
+| source figure | app asset | use |
+|---|---|---|
+| 1.png | `public/assets/physics/textbook/ch01/1a/position-vector-displacement.webp` | position vectors and displacement |
+| 2 (2).png | `public/assets/physics/textbook/ch01/1a/average-instantaneous-velocity.webp` | average vs instantaneous velocity direction |
+| 3 (2).png | `public/assets/physics/textbook/ch01/1a/curve-velocity-directions.webp` | tangent velocity along a curved path |
+| 4.png | `public/assets/physics/textbook/ch01/1a/displacement-components.webp` | displacement components |
+
+Figure V2 masks are metadata, not separate image copies. Current 1A masks link figure labels to:
+- `d-11`
+- `d-16`
+- `d-17`
+- `d-18`
+- `d-19`
+- `q1-4`
+- `q1-5`
+- `q1-7`
+
+Unreferenced synthetic redraw assets are not kept when the supplied source figure is available.

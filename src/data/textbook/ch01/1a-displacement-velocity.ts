@@ -57,7 +57,7 @@ const choiceSetByItemId: Record<string, string[]> = {
 }
 
 function choicesFor(id: string, answer: string) {
-  const choices = choiceSetByItemId[id] ?? choiceSetByAnswer[answer]
+  const choices = choiceSetByItemId[id] ?? choiceSetByAnswer[answer] ?? textbookChoices[id]
   if (!choices) throw new Error(`Missing curated textbook choices for ${id}: ${answer}`)
   return choices
 }

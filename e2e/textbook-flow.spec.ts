@@ -86,7 +86,7 @@ test('a wrong textbook choice stays red, cannot be retried, and reveals the corr
   const panel = page.getByTestId('inline-choice-panel-a-1')
   await expect(panel).toBeVisible()
 
-  const wrongOption = panel.getByRole('button', { name: '変位', exact: true })
+  const wrongOption = panel.getByRole('button', { name: '変位ベクトル', exact: true })
   await wrongOption.click()
 
   await expect(panel).toBeVisible()
@@ -95,7 +95,7 @@ test('a wrong textbook choice stays red, cannot be retried, and reveals the corr
   await expect(panel.getByRole('button', { name: '位置ベクトル', exact: true })).toHaveClass(/textbook-choice--correct/)
   await expect(panel.getByRole('button', { name: '位置ベクトル', exact: true })).toBeDisabled()
   await expect(page.getByTestId('answer-reveal-a-1')).toContainText('正解は「位置ベクトル」')
-  await expect(page.getByTestId('resolved-a-1')).toContainText('変位')
+  await expect(page.getByTestId('resolved-a-1')).toContainText('変位ベクトル')
   await expect(page.getByTestId('resolved-a-1')).toContainText('位置ベクトル')
   await expect(page.getByTestId('textbook-item-a-1')).toHaveCount(0)
 })

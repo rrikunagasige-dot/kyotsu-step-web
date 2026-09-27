@@ -305,3 +305,57 @@ P07 final gate evidence: GitHub Actions run `36336610820`:
 - textbook E2E: 7 tests PASS
 
 An intermediate catalog test failed only because the domain ordering assertion still expected `['1A']` after 1B was already published. The test was updated to `['1A','1B']` before P07 was marked PASS.
+
+
+## 12. P07 1B 速度の合成と分解
+
+```text
+1B / physics-1b-velocity-composition
+├─ schemaVersion 1.1
+├─ revision 1
+├─ sourcePages 14–15
+├─ 18 source-aligned items
+├─ semantic sections
+│  ├─ concept
+│  ├─ figure-reading
+│  ├─ worked-example: 川を横切る船
+│  ├─ worked-example: 速度の分解
+│  └─ review
+├─ explicit 4-choice distractors
+├─ figure 5 → velocity-composition.webp
+└─ figure 6 → velocity-components.webp
+```
+
+1B connects the textbook relations
+
+```text
+v_B/ground = v_A/ground + v_B/A
+v_x = v cos θ
+v_y = v sin θ
+v = sqrt(v_x^2 + v_y^2)
+```
+
+to the supplied figures and then to two worked examples.
+
+Figure 5 uses a Figure V2 hotspot for `d-1`: the resultant/composition direction is answered from the supplied figure rather than by duplicating a masked image.
+
+Final P07 gate: GitHub Actions run `36336731539`.
+
+PASS:
+- TypeScript typecheck
+- ESLint
+- Vitest: 14 files / 38 tests
+- production build
+- Playwright Chromium
+- textbook E2E: 7 tests
+
+The 1B E2E verifies:
+- 1B appears after 1A in Chapter 1
+- first concept blank is reachable
+- future sections remain locked
+- supplied composition figure loads
+- hotspot stays within the mobile figure bounds
+- the hotspot opens D-1
+- correct answer removes the hotspot
+- figure 6 becomes visible after D-1 resolution
+- resolved hotspot remains removed after reload

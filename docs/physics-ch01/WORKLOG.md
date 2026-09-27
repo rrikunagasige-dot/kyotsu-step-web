@@ -50,3 +50,41 @@
 ### Next
 
 P01 implement Textbook Schema 1.1.
+
+
+## 2026-09-28 — P00/P01 moved to GitHub
+
+### P00
+
+- fork created at `rrikunagasige-dot/kyotsu-step-web`
+- working branch created: `chatgpt/physics-ch01-textbook-v2`
+- `CHATGPT_README_FIRST.md` committed
+- master fire diagram committed
+- source manifest committed
+- this worklog committed
+
+### P01 implementation
+
+Committed:
+- `src/domain/textbookSchema.ts`
+- `src/domain/textbookSchema.test.ts`
+
+Added:
+- schemaVersion `1.1`
+- chapter metadata
+- semantic section roles
+- Figure V2 overlay metadata
+- overlay reference/bounds validation
+- explicit-choice requirement for published V2 items
+- source-page ordering validation
+- V2 schema tests
+
+### Gate status
+
+`P01 = IMPLEMENTED / UNVERIFIED`.
+
+The current sandbox cannot download pnpm dependencies, so no PASS claim is recorded yet. The next validation opportunity must run typecheck/unit tests before P01 is promoted to PASS.
+
+### Next node
+
+P02: chapter/unit metadata and learning setup navigation.

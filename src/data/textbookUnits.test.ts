@@ -3,7 +3,7 @@ import { builtInTextbookUnits } from './textbookUnits'
 
 describe('textbook unit catalog', () => {
   it('imports 1A displacement and velocity as the chapter-1 golden unit', () => {
-    expect(builtInTextbookUnits).toHaveLength(1)
+    expect(builtInTextbookUnits).toHaveLength(2)
     const unit = builtInTextbookUnits[0]
     expect(unit.unitId).toBe('physics-a-displacement-velocity')
     expect(unit.schemaVersion).toBe('1.1')
@@ -63,4 +63,39 @@ describe('textbook unit catalog', () => {
     expect(overlays.every((overlay) => overlay.x + overlay.width <= 100)).toBe(true)
     expect(overlays.every((overlay) => overlay.y + overlay.height <= 100)).toBe(true)
   })
+
+  it('imports 1B velocity composition with curated source figures and choices', () => {
+    const unit = builtInTextbookUnits.find((candidate) => candidate.chapter?.unitCode === '1B')
+    expect(unit).toBeDefined()
+    expect(unit?.unitId).toBe('physics-1b-velocity-composition')
+    expect(unit?.schemaVersion).toBe('1.1')
+    expect(unit?.chapter).toEqual({
+      chapterId: 'physics-ch01-motion',
+      chapterNumber: '1',
+      chapterTitle: '物体の運動',
+      unitCode: '1B',
+      orderInChapter: 2,
+      sourcePages: [14, 15],
+    })
+    expect(unit?.sections.map((section) => [section.id, section.role])).toEqual([
+      ['knowledge-check', 'concept'],
+      ['figure-reading', 'figure-reading'],
+      ['example-q1', 'worked-example'],
+      ['example-q2', 'worked-example'],
+      ['final-review', 'review'],
+    ])
+
+    const items = unit?.sections.flatMap((section) => section.items) ?? []
+    expect(items).toHaveLength(18)
+    expect(items.every((item) => item.choices && item.choices.length >= 4)).toBe(true)
+    expect(items.every((item) => item.choices?.includes(item.answer))).toBe(true)
+
+    const figures = unit?.sections.flatMap((section) => section.figures) ?? []
+    expect(figures.map((figure) => figure.src)).toEqual(expect.arrayContaining([
+      '/assets/physics/textbook/ch01/1b/velocity-composition.webp',
+      '/assets/physics/textbook/ch01/1b/velocity-components.webp',
+    ]))
+    expect(figures.flatMap((figure) => figure.overlays).map((overlay) => overlay.itemId)).toContain('d-1')
+  })
+
 })

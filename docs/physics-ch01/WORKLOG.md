@@ -167,3 +167,67 @@ Two issues were found by the newly enabled E2E gate before final PASS:
 ### Next
 
 P05: migrate real 1A data to schemaVersion 1.1, add explicit pedagogical distractors, replace the old figures with the supplied Chapter 1 figures, and attach real Figure V2 masks.
+
+
+## 2026-09-28 — P05/P06 1A golden unit PASS
+
+### P05 — 1A migration
+
+1A is now the Chapter-1 golden unit / 母版2.0.
+
+Implemented:
+- `schemaVersion: 1.1`
+- revision bumped to 3
+- stable unitId preserved: `physics-a-displacement-velocity`
+- all 78 existing stable item IDs preserved
+- semantic section roles attached
+- explicit pedagogical distractors for every published item
+- supplied Chapter-1 figures 1–4 converted to app WebP assets
+- Figure V2 percentage masks attached to answer-bearing labels
+- example-1 wording aligned to the supplied P/Q/R curve figure
+- source/app asset mapping recorded in `SOURCE_MANIFEST.md`
+- unused synthetic redraw assets removed once the supplied-source assets were available
+
+App assets:
+- `position-vector-displacement.webp`
+- `average-instantaneous-velocity.webp`
+- `curve-velocity-directions.webp`
+- `displacement-components.webp`
+
+### P06 — regression/browser audit
+
+Final passing GitHub Actions run: `36335812301`.
+
+PASS:
+- TypeScript
+- ESLint
+- Vitest: 14 files / 37 tests
+- production build
+- Playwright Chromium
+- textbook E2E: 6 tests
+
+Browser coverage includes:
+- chapter/unit hierarchy
+- sequential subsection unlocking
+- wrong first choice remains visible and correct answer is revealed
+- inline choice panel behavior
+- real 1A figure asset load
+- figure overlay mask opens the linked item
+- correct figure answer removes the mask
+- persisted progress survives reload and keeps the answered mask resolved
+
+### Failures caught before PASS
+
+The work was not marked complete when intermediate CI failed.
+
+1. A superseded choice table remained unused after distractor refactoring.
+2. Concurrent migration edits briefly duplicated `role` keys and production build correctly rejected them.
+3. The old wrong-choice E2E expected a distractor that had changed under the curated-choice design.
+4. Seeding `localStorage` did not update the live Zustand store when navigation changed only the HashRouter fragment; the browser test now reloads once to rehydrate persisted progress.
+5. A figure-overlay-only answer has no inline `resolved-*` element, so the browser test now verifies mask removal and persistence after reload instead.
+
+### Status
+
+`P05 = PASS`  
+`P06 = PASS`  
+Next: `P07 — 1B 速度の合成と分解`.

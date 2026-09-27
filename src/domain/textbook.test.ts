@@ -1,12 +1,23 @@
 import { describe, expect, it } from 'vitest'
 import { builtInTextbookUnits } from '../data/textbookUnits'
-import { answerTextbookItem, getTextbookChoices, isTextbookAnswerCorrect, normalizeTextbookAnswer, textbookUnitProgress } from './textbook'
+import { answerTextbookItem, getTextbookChoices, groupTextbookUnitsByChapter, isTextbookAnswerCorrect, normalizeTextbookAnswer, textbookUnitProgress } from './textbook'
 
 const unit = builtInTextbookUnits[0]
 const firstItem = unit.sections[0].items[0]
 const formulaItem = unit.sections[0].items.find((item) => item.id === 'a-5')!
 
 describe('textbook learning state', () => {
+  it('groups published textbook units into ordered chapters', () => {
+    const chapters = groupTextbookUnitsByChapter(builtInTextbookUnits)
+    expect(chapters).toHaveLength(1)
+    expect(chapters[0]).toMatchObject({
+      chapterId: 'physics-ch01-motion',
+      chapterNumber: '1',
+      chapterTitle: '物体の運動',
+    })
+    expect(chapters[0].units.map((candidate) => candidate.chapter?.unitCode)).toEqual(['1A'])
+  })
+
   it('normalizes spacing, unicode minus and vector marks for formula entry', () => {
     expect(normalizeTextbookAnswer(' r₂ − r₁ ')).toBe(normalizeTextbookAnswer('r2-r1'))
     expect(isTextbookAnswerCorrect(formulaItem, 'r2 - r1')).toBe(true)

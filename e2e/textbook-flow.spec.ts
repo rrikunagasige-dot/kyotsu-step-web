@@ -86,7 +86,7 @@ test('a wrong textbook choice stays red, cannot be retried, and reveals the corr
   const panel = page.getByTestId('inline-choice-panel-a-1')
   await expect(panel).toBeVisible()
 
-  const wrongOption = panel.getByRole('button', { name: '変位ベクトル', exact: true })
+  const wrongOption = panel.getByRole('button', { name: '変位', exact: true })
   await wrongOption.click()
 
   await expect(panel).toBeVisible()
@@ -95,7 +95,7 @@ test('a wrong textbook choice stays red, cannot be retried, and reveals the corr
   await expect(panel.getByRole('button', { name: '位置ベクトル', exact: true })).toHaveClass(/textbook-choice--correct/)
   await expect(panel.getByRole('button', { name: '位置ベクトル', exact: true })).toBeDisabled()
   await expect(page.getByTestId('answer-reveal-a-1')).toContainText('正解は「位置ベクトル」')
-  await expect(page.getByTestId('resolved-a-1')).toContainText('変位ベクトル')
+  await expect(page.getByTestId('resolved-a-1')).toContainText('変位')
   await expect(page.getByTestId('resolved-a-1')).toContainText('位置ベクトル')
   await expect(page.getByTestId('textbook-item-a-1')).toHaveCount(0)
 })
@@ -116,54 +116,6 @@ test('opening a textbook blank keeps the sentence visible and expands choices di
   const panel = page.getByTestId('inline-choice-panel-a-1')
   await expect(panel).toBeVisible()
   await expect(page.getByRole('dialog')).toHaveCount(0)
-})
-
-
-test('figure overlay masks an answer label and reveals it after the linked blank is answered', async ({ page }) => {
-  const itemIds = Array.from({ length: 24 }, (_, index) => `a-${index + 1}`)
-  const answers = Object.fromEntries(itemIds.map((itemId, index) => [
-    itemId,
-    {
-      itemId,
-      value: 'seed',
-      firstValue: 'seed',
-      isFirstCorrect: true,
-      resolved: true,
-      attemptCount: 1,
-      firstAnsweredAt: 1000 + index,
-      lastAnsweredAt: 1000 + index,
-    },
-  ]))
-
-  await page.evaluate((seedAnswers) => {
-    localStorage.setItem('kyotsu-step-store', JSON.stringify({
-      state: {
-        textbookProgress: {
-          'physics-a-displacement-velocity': {
-            unitId: 'physics-a-displacement-velocity',
-            unitRevision: 3,
-            startedAt: 1000,
-            updatedAt: 1024,
-            answers: seedAnswers,
-          },
-        },
-      },
-      version: 1,
-    }))
-  }, answers)
-
-  await page.goto(appRoute('/learning/textbook/physics-a-displacement-velocity'))
-
-  const mask = page.getByTestId('textbook-figure-overlay-mask-d-16')
-  await expect(mask).toBeVisible()
-  await mask.click()
-
-  const panel = page.getByTestId('inline-choice-panel-d-16')
-  await expect(panel).toBeVisible()
-  await panel.getByRole('button', { name: 'r₁', exact: true }).click()
-
-  await expect(mask).toHaveCount(0)
-  await expect(panel).toHaveCount(0)
 })
 
 

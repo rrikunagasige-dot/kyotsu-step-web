@@ -596,7 +596,6 @@ const rawTextbookUnits = [
         number: '01',
         title: '知識点チェック',
         description: '公式だけではなく、「何を表す量か」「向きはどう決まるか」まで、本文を読みながら順番に確認する。',
-        role: 'concept',
         figures: [],
         readingFlow: [
           heading('kc-h-1', '1-1　位置と位置ベクトル'),
@@ -605,7 +604,7 @@ const rawTextbookUnits = [
           paragraph('kc-p-3', t('したがって、'), m('\\vec r_1'), t(' は時刻 '), m('t_1'), t(' における物体の '), c('a-2'), t(' を表し、'), m('\\vec r_2'), t(' は時刻 '), m('t_2'), t(' における物体の '), c('a-3'), t(' を表している。')),
 
           heading('kc-h-2', '1-2　変位'),
-          paragraph('kc-p-4', t('物体が '), m('A'), t(' から '), m('B'), t(' まで移動したとき、物体の位置の変化を '), c('a-4'), t(' という。変位はベクトルである。')),
+          paragraph('kc-p-4', t('物体が '), m('P_1'), t(' から '), m('P_2'), t(' まで移動したとき、物体の位置の変化を '), c('a-4'), t(' という。変位はベクトルである。')),
           formula('kc-f-1', m('\\Delta \\vec r = '), c('a-5')),
           paragraph('kc-p-5', t('つまり、変位 ＝ '), c('a-6'), t(' の位置 − '), c('a-7'), t(' の位置である。')),
           paragraph('kc-p-6', t('物体がどのような曲線を通って '), m('P_1'), t(' から '), m('P_2'), t(' へ移動したとしても、変位は途中の経路には '), c('a-8'), t('。')),
@@ -668,7 +667,6 @@ const rawTextbookUnits = [
         number: '02',
         title: '図の読み取り',
         description: '図も知識の一部。矢印・方向・記号が「何を表すか」を、文章と図を往復しながら確認する。',
-        role: 'figure-reading',
         figures: [
           {
             id: 'position-vector-figure',
@@ -740,7 +738,6 @@ const rawTextbookUnits = [
         number: '03',
         title: '例題1｜瞬間速度の向き',
         description: '「なぜそう言えるか」を文章で追いながら、各点の瞬間速度の向きを考える。',
-        role: 'worked-example',
         figures: [
           {
             id: 'curve-pqr-figure',
@@ -782,7 +779,6 @@ const rawTextbookUnits = [
         number: '04',
         title: '例題2｜変位と平均の速度',
         description: '「何を求めるか」→「式を立てる」→「計算」→「結論」を本文と式の流れに沿って進める。',
-        role: 'worked-example',
         figures: [
           {
             id: 'displacement-components-figure',
@@ -854,7 +850,6 @@ const rawTextbookUnits = [
         number: '05',
         title: '最後の知識確認',
         description: '単元の最後に、位置・変位・速度・速さの関係を一つの文章としてもう一度つなげる。',
-        role: 'review',
         figures: [],
         readingFlow: [
           note('frv-note-1', '最後は前の説明を最小限にして、単元全体のつながりを自分で確認する。'),

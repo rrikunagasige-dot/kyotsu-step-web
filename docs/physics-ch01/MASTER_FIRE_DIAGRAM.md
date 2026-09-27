@@ -236,22 +236,46 @@ P01  PASS — schemaVersion 1.1 + validation tests
 P02  PASS — chapter metadata + chapter/unit navigation + dynamic completion copy
 P03  PASS — Figure V2 renderer + percentage overlay masks + overlay unit tests
 P04  PASS — textbook data split by chapter/unit + compatibility entry point
-P05  NEXT — migrate 1A to schemaVersion 1.1, explicit distractors, new figures/overlays
-P06  WAIT — 1A full regression/browser audit
-P07–P14 WAIT
+P05  PASS — 1A migrated to schemaVersion 1.1 + explicit distractors + supplied figures 1–4 + real overlays
+P06  PASS — 1A regression/browser audit including persisted figure-mask flow
+P07  NEXT — import 1B 速度の合成と分解
+P08–P14 WAIT
 ```
 
-P01 PASS evidence: GitHub Actions run 36333501024 completed successfully with typecheck, lint, unit tests, and production build.
+P01 PASS evidence: GitHub Actions run `36333501024`.
 
-P02–P04 gate evidence: GitHub Actions run 36334432650 completed successfully with:
-- TypeScript typecheck
-- ESLint
-- 37 Vitest tests
-- production build
-- Playwright Chromium install
-- textbook E2E (5 tests)
+P02–P04 PASS evidence: GitHub Actions run `36334432650`.
 
-The first E2E gate exposed two pre-existing harness/accessibility mismatches:
-1. HashRouter routes were tested as path routes instead of /kyotsu-step-web/#/... routes.
-2. choice buttons had accessible names containing their visible numeric index.
-Both were corrected before the gate was marked PASS.
+P05–P06 final gate evidence: GitHub Actions run `36335812301`:
+- TypeScript typecheck PASS
+- ESLint PASS
+- Vitest: 14 files / 37 tests PASS
+- production build PASS
+- Playwright Chromium install PASS
+- textbook E2E: 6 tests PASS
+
+### P05 implementation summary
+
+```text
+1A
+├─ schemaVersion 1.1
+├─ revision 3
+├─ 78 stable item IDs preserved
+├─ semantic roles
+├─ explicit per-item pedagogical distractors
+├─ figure 1 → position-vector-displacement.webp
+├─ figure 2 → average-instantaneous-velocity.webp
+├─ figure 3 → curve-velocity-directions.webp
+└─ figure 4 → displacement-components.webp
+```
+
+Figure-mask links currently verified for `d-11`, `d-16`, `d-17`, `d-18`, `d-19`, `q1-4`, `q1-5`, `q1-7`.
+
+During P05/P06 the gates caught and corrected:
+1. superseded/duplicate choice-table code,
+2. duplicate semantic role fields,
+3. an E2E distractor expectation that no longer matched the curated choices,
+4. Zustand persistence not rehydrating when only the HashRouter fragment changed,
+5. an invalid expectation for a resolved inline element when the answer existed only as a figure overlay.
+
+These were fixed before P05/P06 were marked PASS.

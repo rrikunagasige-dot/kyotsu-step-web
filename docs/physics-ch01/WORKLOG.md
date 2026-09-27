@@ -104,3 +104,66 @@ Passed:
 During the first CI attempt, ESLint exposed a pre-existing irregular full-width-space literal in `src/domain/textbook.ts` and the same pattern in the new schema. Both were normalized to `\u3000`, then CI passed.
 
 P01 status is now `PASS`. Next node: P02.
+
+
+## 2026-09-28 — P02/P03/P04 PASS
+
+### P02 chapter/unit structure
+
+Implemented:
+- chapter metadata on current 1A without changing its stable `unitId`
+- `groupTextbookUnitsByChapter()`
+- chapter → unit card navigation on `LearningSetupPage`
+- unit progress shown per card
+- dynamic textbook page heading
+- removed hard-coded completion text `A 変位と速度 / 78`
+- section navigation wording corrected from "章" to "節"
+
+### P03 Figure V2 renderer
+
+Added:
+- `src/components/textbook/TextbookFigure.tsx`
+- percentage-coordinate overlays
+- `mask` and `hotspot` rendering modes
+- unresolved overlay opens the linked textbook item
+- resolved overlay reveals the source image
+- figure-overlay item IDs participate in subsection progression
+- server-rendered component tests for unresolved/resolved mask state
+
+The renderer is PASS. Actual Chapter 1 figure assets and 1A overlay coordinates are intentionally deferred to P05, where the real unit is migrated to schemaVersion 1.1.
+
+### P04 data split
+
+The old monolithic textbook data file was split into:
+
+```text
+src/data/textbook/
+├─ index.ts
+├─ chapterCatalog.ts
+└─ ch01/
+   └─ 1a-displacement-velocity.ts
+```
+
+`src/data/textbookUnits.ts` remains as a compatibility re-export, so existing repository imports do not break.
+
+### CI / browser gate
+
+Final passing run: `36334432650`.
+
+PASS:
+- dependency install
+- TypeScript
+- ESLint
+- Vitest: 37 tests
+- production build
+- Playwright Chromium
+- textbook E2E: 5 tests
+
+Two issues were found by the newly enabled E2E gate before final PASS:
+
+1. The app uses `HashRouter`, but textbook E2E still navigated to plain path routes. Tests now target `/kyotsu-step-web/#/...`.
+2. Inline answer buttons exposed a combined accessible name containing their numeric index. `aria-label={choice}` now gives the answer choice a clean accessible name and restores exact accessible selection.
+
+### Next
+
+P05: migrate real 1A data to schemaVersion 1.1, add explicit pedagogical distractors, replace the old figures with the supplied Chapter 1 figures, and attach real Figure V2 masks.

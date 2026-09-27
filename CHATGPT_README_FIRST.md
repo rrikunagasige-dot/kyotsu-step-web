@@ -98,13 +98,16 @@ P03 PASS
 P04 PASS
 P05 PASS
 P06 PASS
-P07 NEXT
+P07 PASS
+P08 NEXT
 ```
 
-最新の総合gate: GitHub Actions `36335812301` — typecheck / lint / 37 unit tests / build / textbook E2E 6 tests PASS。
+最新の総合gate: GitHub Actions `36336610820` — typecheck / lint / 38 unit tests / build / textbook E2E 7 tests PASS。
 
 P05で1Aを母版2.0として schemaVersion 1.1 へ移行した。78個のstable item IDを維持し、全itemに明示的な誤答候補を与え、 supplied Chapter-1 figures 1〜4 を app asset 化し、Figure V2 maskを実データへ接続した。
 
 P06では実ブラウザで、chapter/unit navigation、順次unlock、誤答保持＋正解表示、inline choice、実figure読み込み、figure maskからの回答、回答後のmask解除とpersist後の再読み込みを確認した。
 
-次は P07。1B「速度の合成と分解」を同じ導入ルールで作る。
+P07で1B「速度の合成と分解」を追加した。原教科書 p.14–15 と supplied Word を照合し、figure 5–6 を実asset化、18個の確認itemをSchema 1.1へ投入し、chapter内順序を 1A→1B とした。
+
+次は P08。1C「相対速度」を同じ導入ルールで作る。

@@ -76,3 +76,22 @@ Unreferenced synthetic redraw assets are not kept when the supplied source figur
 Figure V2:
 - figure 5 uses `hotspot-d-1` linked to item `d-1` for the resultant / parallelogram diagonal.
 - figure 6 is not masked because its D-2 question asks the inferred relation between the component directions rather than copying a printed label.
+
+
+## 1B app assets
+
+The supplied 1B figures are represented in the app as optimized WebP assets:
+
+| source figure | app asset | use |
+|---|---|---|
+| 5.png | `public/assets/physics/textbook/ch01/1b/velocity-composition.webp` | boat/water/ground velocity composition |
+| 6.png | `public/assets/physics/textbook/ch01/1b/velocity-components.webp` | x/y decomposition of velocity |
+
+Figure 5 uses Figure V2 hotspot metadata linked to `d-1`.
+Figure 6 is displayed without a mask for the current D-2 task because D-2 asks the geometric relation between x and y component directions, so the printed `v_x` / `v_y` labels do not reveal the answer “垂直”.
+
+Unit data:
+- `src/data/textbook/ch01/1b-velocity-composition.ts`
+- `unitId: physics-1b-velocity-composition`
+- `schemaVersion: 1.1`
+- `sourcePages: [14, 15]`

@@ -81,3 +81,51 @@ test('opening a textbook blank keeps the sentence visible and expands choices di
   await expect(panel).toBeVisible()
   await expect(page.getByRole('dialog')).toHaveCount(0)
 })
+
+
+test('figure overlay masks an answer label and reveals it after the linked blank is answered', async ({ page }) => {
+  const itemIds = Array.from({ length: 24 }, (_, index) => `a-${index + 1}`)
+  const answers = Object.fromEntries(itemIds.map((itemId, index) => [
+    itemId,
+    {
+      itemId,
+      value: 'seed',
+      firstValue: 'seed',
+      isFirstCorrect: true,
+      resolved: true,
+      attemptCount: 1,
+      firstAnsweredAt: 1000 + index,
+      lastAnsweredAt: 1000 + index,
+    },
+  ]))
+
+  await page.evaluate((seedAnswers) => {
+    localStorage.setItem('kyotsu-step-store', JSON.stringify({
+      state: {
+        textbookProgress: {
+          'physics-a-displacement-velocity': {
+            unitId: 'physics-a-displacement-velocity',
+            unitRevision: 3,
+            startedAt: 1000,
+            updatedAt: 1024,
+            answers: seedAnswers,
+          },
+        },
+      },
+      version: 1,
+    }))
+  }, answers)
+
+  await page.goto(appRoute('/learning/textbook/physics-a-displacement-velocity'))
+
+  const mask = page.getByTestId('textbook-figure-overlay-mask-d-16')
+  await expect(mask).toBeVisible()
+  await mask.click()
+
+  const panel = page.getByTestId('inline-choice-panel-d-16')
+  await expect(panel).toBeVisible()
+  await panel.getByRole('button', { name: 'r₁', exact: true }).click()
+
+  await expect(mask).toHaveCount(0)
+  await expect(panel).toHaveCount(0)
+})

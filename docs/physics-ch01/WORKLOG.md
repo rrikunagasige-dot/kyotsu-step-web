@@ -88,3 +88,19 @@ The current sandbox cannot download pnpm dependencies, so no PASS claim is recor
 ### Next node
 
 P02: chapter/unit metadata and learning setup navigation.
+
+
+## 2026-09-28 — P01 gate PASS
+
+GitHub Actions run `36333501024` completed with conclusion `success`.
+
+Passed:
+- dependency install
+- TypeScript typecheck
+- ESLint
+- Vitest unit tests
+- production build
+
+During the first CI attempt, ESLint exposed a pre-existing irregular full-width-space literal in `src/domain/textbook.ts` and the same pattern in the new schema. Both were normalized to `\u3000`, then CI passed.
+
+P01 status is now `PASS`. Next node: P02.

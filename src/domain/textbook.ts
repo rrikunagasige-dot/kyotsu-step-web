@@ -11,6 +11,13 @@ export type TextbookAnswerRecord = {
   lastAnsweredAt: number
 }
 
+export type TextbookChapterGroup = {
+  chapterId: string
+  chapterNumber: string
+  chapterTitle: string
+  units: TextbookUnit[]
+}
+
 export type TextbookUnitProgress = {
   unitId: string
   unitRevision: number
@@ -123,4 +130,38 @@ export function textbookUnitProgress(unit: TextbookUnit, progress: TextbookUnitP
   const items = unit.sections.flatMap((section) => section.items)
   const completed = items.filter((item) => progress?.answers[item.id]?.resolved).length
   return { completed, total: items.length, percent: items.length ? Math.round((completed / items.length) * 100) : 0 }
+}
+
+
+export function groupTextbookUnitsByChapter(units: TextbookUnit[]): TextbookChapterGroup[] {
+  const groups = new Map<string, TextbookChapterGroup>()
+
+  units.forEach((unit, index) => {
+    const chapter = unit.chapter
+    const chapterId = chapter?.chapterId ?? `legacy-${unit.subject}`
+    const existing = groups.get(chapterId)
+    const group = existing ?? {
+      chapterId,
+      chapterNumber: chapter?.chapterNumber ?? '',
+      chapterTitle: chapter?.chapterTitle ?? '教科書',
+      units: [],
+    }
+    group.units.push(unit)
+    if (!existing) groups.set(chapterId, group)
+
+    if (!unit.chapter) {
+      group.units.sort((left, right) => units.indexOf(left) - units.indexOf(right))
+      return
+    }
+
+    group.units.sort((left, right) => {
+      const leftOrder = left.chapter?.orderInChapter ?? index + 1
+      const rightOrder = right.chapter?.orderInChapter ?? index + 1
+      return leftOrder - rightOrder
+    })
+  })
+
+  return [...groups.values()].sort((left, right) =>
+    left.chapterNumber.localeCompare(right.chapterNumber, undefined, { numeric: true }),
+  )
 }

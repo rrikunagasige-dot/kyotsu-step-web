@@ -20,6 +20,14 @@ const rawTextbookUnits = [
     revision: 2,
     status: 'published',
     subject: 'physics',
+    chapter: {
+      chapterId: 'physics-ch01-motion',
+      chapterNumber: '1',
+      chapterTitle: '物体の運動',
+      unitCode: '1A',
+      orderInChapter: 1,
+      sourcePages: [12, 13],
+    },
     title: 'A 変位と速度',
     subtitle: '本文・図・式を順番に読む教科書モード',
     source: {

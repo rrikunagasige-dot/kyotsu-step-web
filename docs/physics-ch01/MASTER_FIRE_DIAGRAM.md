@@ -232,7 +232,7 @@ G17 pnpm check:all before merge
 
 ```text
 P00  DONE — control docs + source manifest on GitHub
-P01  IMPLEMENTED / UNVERIFIED — schemaVersion 1.1 + validation tests committed
+P01  PASS — schemaVersion 1.1 + validation tests; GitHub CI typecheck/lint/unit/build all passed
 P02  NEXT — chapter/unit metadata + navigation
 P03  WAIT
 P04  WAIT
@@ -241,4 +241,4 @@ P06  WAIT
 P07–P14 WAIT
 ```
 
-P01 is not PASS yet because the full TypeScript/Vitest gate has not been executed on this branch.
+P01 PASS evidence: GitHub Actions run 36333501024 completed successfully with typecheck, lint, unit tests, and production build.

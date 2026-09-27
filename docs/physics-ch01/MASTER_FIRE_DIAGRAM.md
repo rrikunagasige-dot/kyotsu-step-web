@@ -232,13 +232,26 @@ G17 pnpm check:all before merge
 
 ```text
 P00  DONE — control docs + source manifest on GitHub
-P01  PASS — schemaVersion 1.1 + validation tests; GitHub CI typecheck/lint/unit/build all passed
-P02  NEXT — chapter/unit metadata + navigation
-P03  WAIT
-P04  WAIT
-P05  WAIT
-P06  WAIT
+P01  PASS — schemaVersion 1.1 + validation tests
+P02  PASS — chapter metadata + chapter/unit navigation + dynamic completion copy
+P03  PASS — Figure V2 renderer + percentage overlay masks + overlay unit tests
+P04  PASS — textbook data split by chapter/unit + compatibility entry point
+P05  NEXT — migrate 1A to schemaVersion 1.1, explicit distractors, new figures/overlays
+P06  WAIT — 1A full regression/browser audit
 P07–P14 WAIT
 ```
 
 P01 PASS evidence: GitHub Actions run 36333501024 completed successfully with typecheck, lint, unit tests, and production build.
+
+P02–P04 gate evidence: GitHub Actions run 36334432650 completed successfully with:
+- TypeScript typecheck
+- ESLint
+- 37 Vitest tests
+- production build
+- Playwright Chromium install
+- textbook E2E (5 tests)
+
+The first E2E gate exposed two pre-existing harness/accessibility mismatches:
+1. HashRouter routes were tested as path routes instead of /kyotsu-step-web/#/... routes.
+2. choice buttons had accessible names containing their visible numeric index.
+Both were corrected before the gate was marked PASS.

@@ -42,3 +42,9 @@ jobs:
 
       - name: Production build
         run: pnpm build
+
+      - name: Install Playwright Chromium
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Textbook E2E
+        run: pnpm exec playwright test e2e/textbook-flow.spec.ts

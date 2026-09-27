@@ -238,8 +238,9 @@ P03  PASS — Figure V2 renderer + percentage overlay masks + overlay unit tests
 P04  PASS — textbook data split by chapter/unit + compatibility entry point
 P05  PASS — 1A migrated to schemaVersion 1.1 + explicit distractors + supplied figures 1–4 + real overlays
 P06  PASS — 1A regression/browser audit including persisted figure-mask flow
-P07  NEXT — import 1B 速度の合成と分解
-P08–P14 WAIT
+P07  PASS — 1B 速度の合成と分解 + supplied figures 5–6 + browser smoke
+P08  NEXT — import 1C 相対速度
+P09–P14 WAIT
 ```
 
 P01 PASS evidence: GitHub Actions run `36333501024`.
@@ -279,3 +280,28 @@ During P05/P06 the gates caught and corrected:
 5. an invalid expectation for a resolved inline element when the answer existed only as a figure overlay.
 
 These were fixed before P05/P06 were marked PASS.
+
+
+### P07 implementation summary
+
+```text
+1B 速度の合成と分解
+├─ schemaVersion 1.1
+├─ revision 1
+├─ sourcePages 14–15
+├─ 18 source-aligned items
+├─ explicit choices on every item
+├─ figure 5 → velocity-composition.webp
+├─ figure 6 → velocity-components.webp
+└─ Figure V2 hotspot → D-1 (resultant / parallelogram diagonal)
+```
+
+P07 final gate evidence: GitHub Actions run `36336610820`:
+- TypeScript typecheck PASS
+- ESLint PASS
+- Vitest: 14 files / 38 tests PASS
+- production build PASS
+- Playwright Chromium install PASS
+- textbook E2E: 7 tests PASS
+
+An intermediate catalog test failed only because the domain ordering assertion still expected `['1A']` after 1B was already published. The test was updated to `['1A','1B']` before P07 was marked PASS.

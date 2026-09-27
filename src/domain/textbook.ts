@@ -25,7 +25,7 @@ export function normalizeTextbookAnswer(value: string) {
     .normalize('NFKC')
     .trim()
     .toLowerCase()
-    .replace(/[\s　]/g, '')
+    .replace(/[\s\u3000]/g, '')
     .replace(/[−–—]/g, '-')
     .replace(/×/g, '*')
     .replace(/÷/g, '/')

@@ -7,6 +7,14 @@ describe('textbook unit catalog', () => {
     const unit = builtInTextbookUnits[0]
     expect(unit.unitId).toBe('physics-a-displacement-velocity')
     expect(unit.subject).toBe('physics')
+    expect(unit.chapter).toEqual({
+      chapterId: 'physics-ch01-motion',
+      chapterNumber: '1',
+      chapterTitle: '物体の運動',
+      unitCode: '1A',
+      orderInChapter: 1,
+      sourcePages: [12, 13],
+    })
     expect(unit.sections.map((section) => section.id)).toEqual([
       'knowledge-check',
       'figure-reading',

@@ -2,6 +2,7 @@ import { InlineMath } from 'react-katex'
 import { Check, LockKeyhole, RotateCcw, X } from 'lucide-react'
 import { useEffect, useMemo, useState, type ReactNode } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import { TextbookFigure } from '../components/textbook/TextbookFigure'
 import { ErrorState, ProgressBar, RaisedButton, StatusBadge } from '../components/ui/Primitives'
 import { textbookRepository } from '../repositories/textbookRepository'
 import { getTextbookChoices, isTextbookAnswerCorrect, textbookSectionProgress, textbookUnitProgress, type TextbookAnswerRecord, type TextbookUnitProgress } from '../domain/textbook'
@@ -9,20 +10,18 @@ import type { TextbookItem, TextbookReadingBlock, TextbookReadingPart, TextbookS
 import { useAppStore } from '../stores/useAppStore'
 import { useI18n } from '../i18n/runtime'
 
-function resolveAssetSrc(src: string) {
-  if (/^(?:https?:|data:|blob:)/i.test(src)) return src
-  const viteBase = (import.meta as ImportMeta & { env?: { BASE_URL?: string } }).env?.BASE_URL ?? '/'
-  const base = viteBase.endsWith('/') ? viteBase : `${viteBase}/`
-  if (src.startsWith(base)) return src
-  return `${base}${src.replace(/^\.?\/+/, '')}`
-}
-
-function readingGroupItemIds(blocks: TextbookReadingBlock[]) {
-  return blocks.flatMap((block) =>
-    block.type === 'paragraph' || block.type === 'formula'
-      ? block.parts.filter((part) => part.type === 'choice').map((part) => part.itemId)
-      : [],
-  )
+function readingGroupItemIds(blocks: TextbookReadingBlock[], section: TextbookSection) {
+  return blocks.flatMap((block) => {
+    if (block.type === 'paragraph' || block.type === 'formula') {
+      return block.parts.filter((part) => part.type === 'choice').map((part) => part.itemId)
+    }
+    if (block.type === 'figure') {
+      return section.figures
+        .find((figure) => figure.id === block.figureId)
+        ?.overlays.map((overlay) => overlay.itemId) ?? []
+    }
+    return []
+  })
 }
 
 function groupReadingFlow(blocks: TextbookReadingBlock[]) {
@@ -113,7 +112,7 @@ function TextbookReadingFlow({ unit, section, progress }: {
   const groups = useMemo(() => groupReadingFlow(section.readingFlow), [section.readingFlow])
 
   const firstIncompleteGroup = groups.findIndex((group) => {
-    const itemIds = readingGroupItemIds(group)
+    const itemIds = readingGroupItemIds(group, section)
     return itemIds.length > 0 && itemIds.some((itemId) => !progress?.answers[itemId]?.resolved)
   })
   const visibleGroupCount = firstIncompleteGroup === -1 ? groups.length : firstIncompleteGroup + 1
@@ -131,12 +130,20 @@ function TextbookReadingFlow({ unit, section, progress }: {
     if (correct) setActiveItemId(null)
   }
 
-  const blockContainsActiveItem = (block: TextbookReadingBlock) =>
-    Boolean(
-      activeItemId
-      && (block.type === 'paragraph' || block.type === 'formula')
-      && block.parts.some((part) => part.type === 'choice' && part.itemId === activeItemId),
-    )
+  const blockContainsActiveItem = (block: TextbookReadingBlock) => {
+    if (!activeItemId) return false
+    if (block.type === 'paragraph' || block.type === 'formula') {
+      return block.parts.some((part) => part.type === 'choice' && part.itemId === activeItemId)
+    }
+    if (block.type === 'figure') {
+      return Boolean(
+        section.figures
+          .find((figure) => figure.id === block.figureId)
+          ?.overlays.some((overlay) => overlay.itemId === activeItemId),
+      )
+    }
+    return false
+  }
 
   const renderInlineChoicePanel = (block: TextbookReadingBlock) => {
     if (!activeItem || !blockContainsActiveItem(block)) return null
@@ -183,10 +190,10 @@ function TextbookReadingFlow({ unit, section, progress }: {
       const figure = section.figures.find((candidate) => candidate.id === block.figureId)
       if (!figure) return null
       return (
-        <figure className="reading-figure" key={block.id}>
-          <img src={resolveAssetSrc(figure.src)} alt={figure.alt} />
-          {figure.caption && <figcaption>{figure.caption}</figcaption>}
-        </figure>
+        <div className="reading-block-with-choice" key={block.id}>
+          <TextbookFigure figure={figure} items={section.items} progress={progress} onOpen={setActiveItemId} />
+          {renderInlineChoicePanel(block)}
+        </div>
       )
     }
 
@@ -209,7 +216,7 @@ function TextbookReadingFlow({ unit, section, progress }: {
   return (
     <article className="textbook-reading-flow" data-testid="textbook-reading-flow">
       {visibleGroups.map((group, groupIndex) => {
-        const groupItemIds = readingGroupItemIds(group)
+        const groupItemIds = readingGroupItemIds(group, section)
         const completed = groupItemIds.length > 0 && groupItemIds.every((itemId) => progress?.answers[itemId]?.resolved)
         return (
           <section className="reading-subsection" data-testid={`reading-subsection-${groupIndex}`} key={group[0]?.id ?? groupIndex}>
@@ -257,6 +264,11 @@ export function TextbookUnitPage() {
   if (!unit) return <ErrorState title={text('教材が見つかりません', '找不到教材')} body={text('この教材は削除されたか、まだ公開されていません。', '该教材可能已被删除或尚未发布。')} action={<Link className="raised-link" to="/learning/setup">{text('学習設定へ戻る', '返回学习设置')}</Link>} />
 
   const summary = textbookUnitProgress(unit, progress)
+  const unitCode = unit.chapter?.unitCode
+  const legacyPrefix = unitCode?.slice(-1)
+  const displayTitle = legacyPrefix && unit.title.startsWith(`${legacyPrefix} `)
+    ? unit.title.slice(legacyPrefix.length + 1)
+    : unit.title
   const currentSection = unit.sections[selectedSectionIndex]
   const sectionSummary = textbookSectionProgress(unit, progress, currentSection.id)
   const sectionComplete = sectionSummary.completed === sectionSummary.total
@@ -271,8 +283,12 @@ export function TextbookUnitPage() {
     <div className="page-stack textbook-page">
       <header className="session-header">
         <div>
-          <p className="eyebrow">TEXTBOOK / PHYSICS</p>
-          <h1>{unit.title}</h1>
+          <p className="eyebrow">
+            {unit.chapter
+              ? `TEXTBOOK / PHYSICS / CHAPTER ${unit.chapter.chapterNumber}`
+              : 'TEXTBOOK / PHYSICS'}
+          </p>
+          <h1>{unitCode ? `${unitCode} ${displayTitle}` : displayTitle}</h1>
           {unit.subtitle && <p>{unit.subtitle}</p>}
         </div>
         <StatusBadge>{text(`第 ${unit.revision} 版`, `第 ${unit.revision} 版`)}</StatusBadge>
@@ -285,7 +301,7 @@ export function TextbookUnitPage() {
         <ol>{unit.objectives.map((objective) => <li key={objective}>{objective}</li>)}</ol>
       </section>
 
-      <nav className="textbook-section-nav" aria-label={text('教材の章', '教材章节')}>
+      <nav className="textbook-section-nav" aria-label={text('単元内の節', '单元内章节')}>
         {unit.sections.map((section, index) => {
           const sectionProgress = textbookSectionProgress(unit, progress, section.id)
           const complete = sectionProgress.completed === sectionProgress.total
@@ -319,7 +335,7 @@ export function TextbookUnitPage() {
         {sectionComplete && !unitComplete && selectedSectionIndex < unit.sections.length - 1 && (
           <div className="textbook-next-panel">
             <Check size={22} aria-hidden="true" />
-            <div><strong>{text('この章は完了しました', '本章已完成')}</strong><small>{text('次の章へ進めます。', '可以继续下一章。')}</small></div>
+            <div><strong>{text('この節は完了しました', '本节已完成')}</strong><small>{text('次の節へ進めます。', '可以继续下一节。')}</small></div>
             <RaisedButton data-testid="textbook-next-section" onClick={goNext}>{text('次へ', '下一章')}</RaisedButton>
           </div>
         )}
@@ -327,7 +343,13 @@ export function TextbookUnitPage() {
         {unitComplete && (
           <div className="textbook-complete-panel" data-testid="textbook-unit-complete">
             <Check size={28} aria-hidden="true" />
-            <div><h2>{text('単元完了', '单元完成')}</h2><p>{text('A 変位と速度の 78 個の確認項目をすべて完了しました。', '已完成 A 位移与速度的全部 78 个确认项目。')}</p></div>
+            <div>
+              <h2>{text('単元完了', '单元完成')}</h2>
+              <p>{text(
+                `${unitCode ? `${unitCode} ` : ''}${displayTitle} の ${summary.total} 個の確認項目をすべて完了しました。`,
+                `已完成 ${unitCode ? `${unitCode} ` : ''}${displayTitle} 的全部 ${summary.total} 个确认项目。`,
+              )}</p>
+            </div>
             <Link className="raised-link" to="/learning/setup">{text('問題演習へ進む', '进入做题模式')}</Link>
           </div>
         )}

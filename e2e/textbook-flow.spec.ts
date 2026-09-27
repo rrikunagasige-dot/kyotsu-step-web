@@ -6,6 +6,15 @@ test.beforeEach(async ({ page }) => {
   await page.reload()
 })
 
+test('textbook setup exposes chapter and unit hierarchy before starting', async ({ page }) => {
+  await page.goto('/learning/setup')
+
+  await expect(page.getByText('第1章')).toBeVisible()
+  await expect(page.getByText('物体の運動')).toBeVisible()
+  await expect(page.getByTestId('textbook-unit-physics-a-displacement-velocity')).toBeVisible()
+  await expect(page.getByTestId('textbook-selection-summary')).toContainText('1A')
+})
+
 test('textbook mode shows a full subsection and unlocks the next subsection after each blank is resolved', async ({ page }) => {
   await page.goto('/learning/setup')
   await page.getByTestId('start-learning').click()

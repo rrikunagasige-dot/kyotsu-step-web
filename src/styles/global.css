@@ -259,6 +259,22 @@ a { color: inherit; }
 .setup-progress-note span { font-weight: 700; }
 .setup-progress-note small { color: var(--color-muted); }
 
+.textbook-chapter-list { display: grid; gap: 1rem; }
+.textbook-chapter-card { display: grid; gap: .8rem; padding: .9rem; border: 2px solid var(--color-border); background: var(--color-paper); }
+.textbook-chapter-card > header { display: flex; align-items: center; gap: .75rem; padding-bottom: .65rem; border-bottom: 1px solid var(--color-line); }
+.textbook-chapter-card > header > span { display: grid; min-width: 58px; min-height: 36px; place-items: center; padding: .2rem .45rem; background: var(--color-primary); color: white; font: 700 .72rem/1.2 ui-monospace, monospace; }
+.textbook-chapter-card > header > div { display: grid; gap: .1rem; }
+.textbook-chapter-card > header strong { font-size: 1rem; }
+.textbook-chapter-card > header small { color: var(--color-muted); font-size: .72rem; }
+.textbook-unit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: .6rem; }
+.textbook-unit-grid > button { display: grid; min-width: 0; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: .65rem; min-height: 70px; padding: .65rem .7rem; border: 2px solid var(--color-border); background: white; color: var(--color-text); text-align: left; cursor: pointer; box-shadow: 0 2px 0 var(--color-border); }
+.textbook-unit-grid > button[aria-checked="true"] { border-color: var(--color-primary); background: var(--color-section); box-shadow: 0 2px 0 var(--color-primary); }
+.textbook-unit-grid > button > div { display: grid; min-width: 0; gap: .12rem; }
+.textbook-unit-grid > button strong { overflow-wrap: anywhere; }
+.textbook-unit-grid > button small { color: var(--color-muted); font-size: .7rem; }
+.textbook-unit-code { display: grid; width: 38px; height: 38px; place-items: center; border: 1px solid currentColor; color: var(--color-primary); font: 700 .74rem/1 ui-monospace, monospace; }
+.textbook-unit-percent { color: var(--color-primary); font: 700 .72rem/1 ui-monospace, monospace; }
+
 .textbook-page { padding-bottom: 2rem; }
 .textbook-objectives { display: grid; gap: .6rem; padding: 1rem; border: 2px solid var(--color-border); background: var(--color-paper); }
 .textbook-objectives strong { color: var(--color-primary); }
@@ -336,6 +352,13 @@ a { color: inherit; }
 .reading-figure { display: grid; gap: .5rem; margin: .25rem 0; padding: .75rem; border: 1px solid var(--color-border); background: white; }
 .reading-figure img { display: block; width: 100%; max-height: 420px; object-fit: contain; }
 .reading-figure figcaption { color: var(--color-muted); font-size: .74rem; text-align: center; }
+.textbook-figure-stage { position: relative; width: 100%; }
+.textbook-figure-stage > img { display: block; width: 100%; max-height: 420px; object-fit: contain; }
+.textbook-figure-overlay { position: absolute; display: grid; min-width: 24px; min-height: 24px; place-items: center; padding: 0; border: 2px solid var(--color-primary); color: var(--color-primary); cursor: pointer; }
+.textbook-figure-overlay > span { padding: .1rem .22rem; background: var(--color-paper); font: 700 .62rem/1 ui-monospace, monospace; }
+.textbook-figure-overlay--mask { background: var(--color-paper); box-shadow: 0 0 0 2px rgba(255,255,255,.72); }
+.textbook-figure-overlay--hotspot { background: color-mix(in srgb, var(--color-primary) 12%, transparent); border-style: dashed; }
+.textbook-figure-overlay:hover, .textbook-figure-overlay:focus-visible { background: var(--color-section); }
 
 .reading-inline-blank, .reading-inline-answer { display: inline-flex; min-height: 34px; align-items: center; gap: .3rem; margin: 0 .16rem; padding: .15rem .45rem; vertical-align: baseline; border: 2px solid var(--color-primary); background: white; color: var(--color-primary); line-height: 1.35; }
 button.reading-inline-blank { font: inherit; cursor: pointer; box-shadow: none; }

@@ -2,6 +2,42 @@ import { expect, test } from '@playwright/test'
 
 const appRoute = (path: string) => `/kyotsu-step-web/#${path}`
 
+
+async function seedCompletedConceptSection(page: import('@playwright/test').Page) {
+  const answers = Object.fromEntries(
+    Array.from({ length: 24 }, (_, index) => {
+      const itemId = `a-${index + 1}`
+      return [itemId, {
+        itemId,
+        value: 'seeded',
+        firstValue: 'seeded',
+        isFirstCorrect: true,
+        resolved: true,
+        attemptCount: 1,
+        firstAnsweredAt: 1,
+        lastAnsweredAt: 1,
+      }]
+    }),
+  )
+
+  await page.evaluate((seededAnswers) => {
+    localStorage.setItem('kyotsu-step-store', JSON.stringify({
+      state: {
+        textbookProgress: {
+          'physics-a-displacement-velocity': {
+            unitId: 'physics-a-displacement-velocity',
+            unitRevision: 3,
+            startedAt: 1,
+            updatedAt: 1,
+            answers: seededAnswers,
+          },
+        },
+      },
+      version: 1,
+    }))
+  }, answers)
+}
+
 test.beforeEach(async ({ page }) => {
   await page.goto(appRoute('/problems'))
   await page.evaluate(() => localStorage.clear())
@@ -129,3 +165,30 @@ test('figure overlay masks an answer label and reveals it after the linked blank
   await expect(mask).toHaveCount(0)
   await expect(panel).toHaveCount(0)
 })
+
+
+test('real 1A figure loads and a masked label can be answered from the figure', async ({ page }) => {
+  await page.goto(appRoute('/problems'))
+  await seedCompletedConceptSection(page)
+  await page.goto(appRoute('/learning/textbook/physics-a-displacement-velocity'))
+
+  const figureSection = page.getByRole('button', { name: /図の読み取り/ })
+  await expect(figureSection).toBeEnabled()
+  await figureSection.click()
+
+  const figure = page.getByAltText(/位置ベクトル r1、r2 と変位/)
+  await expect(figure).toBeVisible()
+  await expect.poll(async () => figure.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0)
+
+  const mask = page.getByTestId('textbook-figure-overlay-mask-d-16')
+  await expect(mask).toBeVisible()
+  await mask.click()
+
+  const panel = page.getByTestId('inline-choice-panel-d-16')
+  await expect(panel).toBeVisible()
+  await panel.getByRole('button', { name: 'r₁', exact: true }).click()
+
+  await expect(mask).toHaveCount(0)
+  await expect(page.getByTestId('resolved-d-16')).toContainText('r₁')
+})
+

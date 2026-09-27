@@ -64,3 +64,15 @@ Figure V2 masks are metadata, not separate image copies. Current 1A masks link f
 - `q1-7`
 
 Unreferenced synthetic redraw assets are not kept when the supplied source figure is available.
+
+
+## 1B app assets
+
+| source figure | app asset | use |
+|---|---|---|
+| 5.png | `public/assets/physics/textbook/ch01/1b/velocity-composition.webp` | river/boat velocity composition and resultant |
+| 6.png | `public/assets/physics/textbook/ch01/1b/velocity-components.webp` | x/y decomposition of a velocity vector |
+
+Figure V2:
+- figure 5 uses `hotspot-d-1` linked to item `d-1` for the resultant / parallelogram diagonal.
+- figure 6 is not masked because its D-2 question asks the inferred relation between the component directions rather than copying a printed label.

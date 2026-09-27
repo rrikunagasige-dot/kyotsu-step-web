@@ -231,12 +231,14 @@ G17 pnpm check:all before merge
 ## 10. Current status
 
 ```text
-P00  IN PROGRESS
-P01  NEXT
-P02  WAIT
+P00  DONE — control docs + source manifest on GitHub
+P01  IMPLEMENTED / UNVERIFIED — schemaVersion 1.1 + validation tests committed
+P02  NEXT — chapter/unit metadata + navigation
 P03  WAIT
 P04  WAIT
 P05  WAIT
 P06  WAIT
 P07–P14 WAIT
 ```
+
+P01 is not PASS yet because the full TypeScript/Vitest gate has not been executed on this branch.

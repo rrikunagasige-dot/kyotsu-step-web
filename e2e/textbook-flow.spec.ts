@@ -1,13 +1,15 @@
 import { expect, test } from '@playwright/test'
 
+const appRoute = (path: string) => `/kyotsu-step-web/#${path}`
+
 test.beforeEach(async ({ page }) => {
-  await page.goto('/problems')
+  await page.goto(appRoute('/problems'))
   await page.evaluate(() => localStorage.clear())
   await page.reload()
 })
 
 test('textbook setup exposes chapter and unit hierarchy before starting', async ({ page }) => {
-  await page.goto('/learning/setup')
+  await page.goto(appRoute('/learning/setup'))
 
   await expect(page.getByText('第1章')).toBeVisible()
   await expect(page.getByText('物体の運動')).toBeVisible()
@@ -16,7 +18,7 @@ test('textbook setup exposes chapter and unit hierarchy before starting', async 
 })
 
 test('textbook mode shows a full subsection and unlocks the next subsection after each blank is resolved', async ({ page }) => {
-  await page.goto('/learning/setup')
+  await page.goto(appRoute('/learning/setup'))
   await page.getByTestId('start-learning').click()
 
   await expect(page.getByTestId('textbook-reading-flow')).toContainText('1-1')
@@ -42,7 +44,7 @@ test('textbook mode shows a full subsection and unlocks the next subsection afte
 })
 
 test('a wrong textbook choice stays red, cannot be retried, and reveals the correct answer immediately', async ({ page }) => {
-  await page.goto('/learning/textbook/physics-a-displacement-velocity')
+  await page.goto(appRoute('/learning/textbook/physics-a-displacement-velocity'))
 
   await page.getByTestId('textbook-item-a-1').click()
   const panel = page.getByTestId('inline-choice-panel-a-1')
@@ -63,13 +65,13 @@ test('a wrong textbook choice stays red, cannot be retried, and reveals the corr
 })
 
 test('future textbook sections stay locked until the current section is complete', async ({ page }) => {
-  await page.goto('/learning/textbook/physics-a-displacement-velocity')
+  await page.goto(appRoute('/learning/textbook/physics-a-displacement-velocity'))
   await expect(page.getByRole('button', { name: /図の読み取り/ })).toBeDisabled()
   await expect(page.getByRole('button', { name: /例題1/ })).toBeDisabled()
 })
 
 test('opening a textbook blank keeps the sentence visible and expands choices directly underneath', async ({ page }) => {
-  await page.goto('/learning/textbook/physics-a-displacement-velocity')
+  await page.goto(appRoute('/learning/textbook/physics-a-displacement-velocity'))
 
   const blank = page.getByTestId('textbook-item-a-1')
   await blank.click()

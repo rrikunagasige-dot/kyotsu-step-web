@@ -122,6 +122,7 @@ test('opening a textbook blank keeps the sentence visible and expands choices di
 test('real 1A figure loads and a masked label can be answered from the figure', async ({ page }) => {
   await page.goto(appRoute('/problems'))
   await seedCompletedConceptSection(page)
+  await page.reload()
   await page.goto(appRoute('/learning/textbook/physics-a-displacement-velocity'))
 
   const figureSection = page.getByRole('button', { name: /図の読み取り/ })

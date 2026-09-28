@@ -193,3 +193,17 @@ P19でREADME・火柴図・WORKLOG・taxonomy guide・phase-14 checkpointを更�
 - 第5部 原子・分子の世界: 電子と光 / 原子・原子核・素粒子
 
 P20〜P25は GitHub Actions run `36440820115` で full gate PASS。
+
+
+## P26〜P31 Textbook Reader Repair
+
+Public UI auditで見つかったreader-level不具合を共通修正した。
+
+- P26 PASS — 誤答は未解決のまま。誤答では進捗を増やさず、選択肢panelを閉じて文章中に「もう一度」だけ残す。正答retryで初めてresolve。
+- P27 PASS — 完了済みsectionをunmountしない。次sectionは下へ追加し、前の本文・図を保持。
+- P28 PASS — formula内のholeをLaTeX断片ごとにcompileせず、式全体を1本のKaTeX式としてrender。Chapter 1全formulaを未回答/全回答状態でcompile gate。
+- P29 PASS — learner-facing `A-15`, `A-16`, `D-1` 等のmicro internal labelsを非表示。stable ID自体は保持。
+- P30 PASS — corrupted WebP 7枚（figures 2,3,5,11,12,13,14）をcanonical uploaded PNGから再生成して置換。17枚すべてRIFF declared size = actual bytesをunit gateで監査。
+- P31 PASS — full regression + browser gate。
+
+最終gate: GitHub Actions `36455569868` — TypeScript / ESLint / Vitest 19 files・58 tests / production build / Playwright 46 tests すべて PASS。検証HEAD `a68f03ebf9f076343f9ed4a903c597f182028eb9`。

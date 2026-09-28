@@ -802,3 +802,53 @@ Previous gates could be green while the real page was visibly wrong because:
 4. section tests assumed one-section replacement and therefore did not check reading continuity.
 
 P30 replaces those weak gates instead of merely patching the screenshots.
+
+
+## 18. P32 Persistent Source Archive Index
+
+```text
+user-uploaded canonical ZIPs
+      │
+      ├─ figure.zip
+      │    12,078,342 bytes
+      │    SHA256 b1d55e...01e2
+      │
+      └─ 第1-5章完全版.zip
+           50,419,544 bytes
+           SHA256 df1194...e8eff
+      │
+      ▼
+ZIP integrity verification
+      │
+      ▼
+ChatGPT Library
+/塾/kyotsu-step-web/source_archives
+      │
+      ├─ persistent binary bytes
+      └─ stable library_file_id
+      │
+      ▼
+GitHub source index
+docs/source_archives/README.md
+docs/physics-ch01/SOURCE_MANIFEST.md
+      │
+      ▼
+future-session retrieval gate
+Library search → size/SHA → testzip → use
+      │
+      └─ only if unavailable/invalid → ask user to re-upload
+```
+
+### P32 status
+
+- P32 PASS — both canonical ZIPs persisted in Library and indexed from GitHub.
+- G46 PASS — `figure.zip` contains 17 entries and passes ZIP integrity.
+- G47 PASS — complete source packet contains 72 entries and passes ZIP integrity.
+- G48 PASS — actual byte sizes and SHA256 were recalculated from the uploaded bytes.
+- G49 PASS — previous incorrect draft archive hashes in SOURCE_MANIFEST were superseded.
+- G50 PASS — future-agent rule forbids Desktop-first searching for these archives.
+- G51 PASS — GitHub docs explicitly distinguish GitHub index from Library binary storage; no false claim that ZIP bytes are in the repository.
+
+Canonical Library identities:
+- figure: `libfile_f62fe4c165d481919f798f2394918071`
+- mother/source packet: `libfile_14988b216fa48191beeff635f7c4c1f2`

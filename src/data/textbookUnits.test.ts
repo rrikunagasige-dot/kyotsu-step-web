@@ -269,19 +269,6 @@ describe('textbook unit catalog', () => {
   })
 
 
-  it('closes the chapter-1 aggregate catalog gate for figures and stable item ids', () => {
-    const chapterUnits = builtInTextbookUnits.filter((unit) => unit.chapter?.chapterId === 'physics-ch01-motion')
-    expect(chapterUnits.map((unit) => unit.chapter?.unitCode)).toEqual(['1A', '1B', '1C', '1D', '1E', '1F', '1G'])
-
-    const figures = chapterUnits.flatMap((unit) => unit.sections.flatMap((section) => section.figures))
-    expect(figures).toHaveLength(17)
-
-    for (const unit of chapterUnits) {
-      const itemIds = unit.sections.flatMap((section) => section.items.map((item) => item.id))
-      expect(new Set(itemIds).size).toBe(itemIds.length)
-    }
-  })
-
 
   it('passes the Chapter 1 static gate for order, all 17 figures and stable IDs', () => {
     const chapterUnits = builtInTextbookUnits

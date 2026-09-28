@@ -134,12 +134,11 @@ const rawTextbookUnits = [
         ],
         readingFlow: [
           note('fr-note-1', '空気抵抗は運動と逆向きにはたらく。落下速度が増すほど抵抗が大きくなり、重力との力の差が小さくなる。'),
-          heading('fr-h-1', '図15・16　空気抵抗と力の変化'),
+          heading('fr-h-1', '図15〜17　空気抵抗・力の変化・終端速度'),
           figure('fr-fig-1', 'gravity-air-resistance-figure'),
           figure('fr-fig-2', 'drag-force-stages-figure'),
-          paragraph('fr-p-1', t('図16では落下速度が増すにつれて上向きの空気抵抗が大きくなる。そのため加速度は '), c('d-1'), t('。')),
-          heading('fr-h-2', '図17　終端速度へ近づく速度変化'),
           figure('fr-fig-3', 'terminal-velocity-graph-figure'),
+          paragraph('fr-p-1', t('図16では落下速度が増すにつれて上向きの空気抵抗が大きくなる。そのため加速度は '), c('d-1'), t('。')),
           paragraph('fr-p-2', t('図17では、速度 '), m('v'), t(' は次第に終端速度 '), m('v_t'), t(' に近づき、グラフはやがて '), c('d-2'), t('。')),
         ],
         items: [

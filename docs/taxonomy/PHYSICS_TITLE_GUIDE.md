@@ -105,3 +105,26 @@ Level 3: 斜方投射 / 摩擦 / ドップラー / 直列・並列 ...（内部t
 - 大学入試センター 共通テスト物理の問題・評価資料
 
 年度ごとの出題比率ではなく、高校物理の学習範囲そのものをtaxonomyの基準にする。
+
+
+## Chapter 1 題庫導入後の実装状態
+
+第1章 1A〜1G から、各単元の `worked-example` 2件だけを題庫へ導入した。
+
+- imported: 14 questions
+- existing motion sample: 1 question
+- current motion total: **15 questions**
+- current physics total: **17 questions**
+
+第1章の primary title はすべて **運動** とする。重力、空気抵抗、終端速度、運動方程式などは第1章では secondary knowledge tag として扱い、primary を「力」へ分割しない。
+
+題庫UIの順序は次で固定する。
+
+```text
+学習設定
+→ 問題を解く
+→ 物理
+→ 5領域 / 23カード
+→ 運動
+→ 15問
+```

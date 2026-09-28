@@ -246,6 +246,11 @@ P11  PASS — 1F 斜方投射 + supplied figures 13–14 + browser audit
 P12  PASS — 1G 重力加速度・空気抵抗・終端速度 + supplied figures 15–17 + start→finish browser gate
 P13  PASS — Chapter 1 full gate (G11–G17)
 P14  PASS — README / fire diagram / worklog finalization
+P15  PASS — setup-first navigation: 問題→学習設定→問題を解く→科目→分野→問題
+P16  PASS — worked-example adapter: 1A〜1G × 2 = 14 Question
+P17  PASS — Chapter 1 publish + dedup audit: motion 15 / physics total 17
+P18  PASS — full browser/regression gate
+P19  PASS — README / fire diagram / worklog / checkpoint finalization
 ```
 
 P01 PASS evidence: GitHub Actions run `36333501024`.
@@ -559,3 +564,77 @@ P13 also exposed stale legacy E2E assumptions that pre-dated textbook-mode routi
 These were treated as regression-gate defects, not hidden by weakening the Chapter 1 tests. P13 was marked PASS only after the complete CI and full gate were green.
 
 P14 finalizes the authoritative control documents. No source/schema/state change is made by P14.
+
+
+## 15. P15–P19 Chapter 1 → Question Bank
+
+```text
+TextbookUnit 1A〜1G
+      │
+      ├─ concept
+      ├─ figure-reading
+      ├─ worked-example  ← only this role
+      └─ review
+              │
+              ▼
+P16 textbookPracticeQuestions adapter
+              │
+              ├─ 2 worked examples / unit
+              ├─ stable Question IDs
+              ├─ learning blanks
+              ├─ simulation final choice
+              ├─ source provenance
+              └─ JA/ZH grading parity
+              │
+              ▼
+14 imported Questions
+              │
+              ├─ majorUnit = mechanics
+              └─ minorUnit = motion
+              │
+              ▼
+existing physics-motion-01
+              │  independent v–t graph sample
+              └──────────────┐
+                             ▼
+                    motion = 15 Questions
+                             │
+                             ▼
+P15 LearningSetup hierarchy
+問題 → 学習設定 → 問題を解く → 物理 → 分野 → 問題
+                             │
+                             ▼
+P18 browser/full regression gate
+```
+
+### Import gates
+
+- G18 PASS — exactly 14 worked-example Questions, 2 from each 1A〜1G.
+- G19 PASS — all 14 imported Questions use primary taxonomy `mechanics / motion`.
+- G20 PASS — Japanese/Chinese catalogs preserve identical grading IDs and contain no Japanese-kana fallback in Chinese imports.
+- G21 PASS — existing `physics-motion-01` audited as non-duplicate and retained.
+- G22 PASS — ProblemsPage no longer exposes physics taxonomy before LearningSetup.
+- G23 PASS — LearningSetup practice→physics shows 5 domains / 23 cards; motion count is 15.
+- G24 PASS — browser can select `physics-ch01-1g-example-q1` from motion and start a real learning session.
+- G25 PASS — full `pnpm check:all`: typecheck, lint, Vitest, production build, Playwright.
+
+Verified code HEAD before docs-only P19:
+`e79f636e0ae347d5845916743f60f88dcfc63f6c`
+
+Final gate:
+- GitHub Actions run `36436511183`: SUCCESS
+- TypeScript typecheck PASS
+- ESLint PASS
+- Vitest: 16 files / 50 tests PASS
+- production build PASS
+- Playwright: 44/44 PASS
+
+Gate history caught and fixed:
+1. locale-specific unused imports in JA/ZH catalogs,
+2. one unused adapter variable,
+3. Chinese imported prompt accidentally containing Japanese kana,
+4. legacy fixed catalog-size assertion (5 → 19),
+5. missing `tolerance: 0` required by the simulation type,
+6. legacy physics-learning E2E that skipped the new topic-selection step.
+
+No test was weakened to hide these failures.

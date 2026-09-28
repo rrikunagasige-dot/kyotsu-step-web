@@ -1,5 +1,5 @@
 import { validateQuestionCatalog } from '../domain/questionSchema'
-import { chapter1PracticeQuestions, chapter1PracticeQuestionsZh } from './textbookPracticeQuestions'
+import { chapter1PracticeQuestionsZh } from './textbookPracticeQuestions'
 
 const text = (id: string, value: string) => ({ id, type: 'text' as const, text: value })
 const dialogue = (id: string, speaker: string, value: string) => ({ id, type: 'text' as const, text: value, speaker })

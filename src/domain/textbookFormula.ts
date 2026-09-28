@@ -21,13 +21,13 @@ function choiceLatex(
   formula = false,
 ) {
   if (resolvedValue !== undefined) {
-    return `\\htmlClass{tb-math-answer}{\\boxed{${answerLatex(resolvedValue, formula)}}}`
+    return `\\htmlData{testid=resolved-${itemId}}{\\htmlClass{tb-math-answer}{\\boxed{${answerLatex(resolvedValue, formula)}}}}`
   }
 
   const wrong = Boolean(record)
   const marker = wrong ? '\\times' : '\\phantom{?}'
   const className = wrong ? 'tb-math-choice tb-math-choice-wrong' : 'tb-math-choice'
-  return `\\htmlClass{${className}}{\\href{#tb-choice-${itemId}}{\\boxed{${marker}}}}`
+  return `\\htmlData{testid=textbook-item-${itemId}}{\\htmlClass{${className}}{\\href{#tb-choice-${itemId}}{\\boxed{${marker}}}}}`
 }
 
 export function buildTextbookFormulaLatex(

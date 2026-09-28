@@ -333,25 +333,29 @@ test('textbook mode shows a full subsection and unlocks the next subsection afte
   await expect(page.getByTestId('textbook-item-a-4')).toBeVisible()
 })
 
-test('a wrong textbook choice stays red, cannot be retried, and reveals the correct answer immediately', async ({ page }) => {
+test('a wrong textbook choice closes the choices, keeps progress incomplete, and allows a clean retry', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/physics-a-displacement-velocity'))
 
   await page.getByTestId('textbook-item-a-1').click()
-  const panel = page.getByTestId('inline-choice-panel-a-1')
+  let panel = page.getByTestId('inline-choice-panel-a-1')
   await expect(panel).toBeVisible()
+  await panel.getByRole('button', { name: '変位', exact: true }).click()
 
-  const wrongOption = panel.getByRole('button', { name: '変位', exact: true })
-  await wrongOption.click()
+  await expect(panel).toHaveCount(0)
+  const retry = page.getByTestId('textbook-item-a-1')
+  await expect(retry).toBeVisible()
+  await expect(retry).toContainText('もう一度')
+  await expect(page.getByTestId('resolved-a-1')).toHaveCount(0)
+  await expect(page.getByTestId('textbook-section-concept')).toContainText('0/24')
 
+  await retry.click()
+  panel = page.getByTestId('inline-choice-panel-a-1')
   await expect(panel).toBeVisible()
-  await expect(wrongOption).toHaveClass(/reading-choice-option--wrong/)
-  await expect(wrongOption).toBeDisabled()
-  await expect(panel.getByRole('button', { name: '位置ベクトル', exact: true })).toHaveClass(/textbook-choice--correct/)
-  await expect(panel.getByRole('button', { name: '位置ベクトル', exact: true })).toBeDisabled()
-  await expect(page.getByTestId('answer-reveal-a-1')).toContainText('正解は「位置ベクトル」')
-  await expect(page.getByTestId('resolved-a-1')).toContainText('変位')
+  await panel.getByRole('button', { name: '位置ベクトル', exact: true }).click()
+
+  await expect(panel).toHaveCount(0)
   await expect(page.getByTestId('resolved-a-1')).toContainText('位置ベクトル')
-  await expect(page.getByTestId('textbook-item-a-1')).toHaveCount(0)
+  await expect(page.getByTestId('textbook-section-concept')).toContainText('1/24')
 })
 
 test('future textbook sections stay locked until the current section is complete', async ({ page }) => {
@@ -728,17 +732,25 @@ test('1G completes from the first concept blank to unit completion', async ({ pa
   await answer('g1-6', '0')
   await answer('g1-7', 'mg/k')
 
-  await expect(page.getByRole('button', { name: /図の読み取り/ })).toHaveAttribute('aria-pressed', 'true')
+  const conceptSection = page.getByTestId('textbook-section-concept')
+  await expect(conceptSection).toBeVisible()
+  await expect(page.getByRole('button', { name: /図の読み取り/ })).toBeEnabled()
+  await page.getByTestId('textbook-next-section').click()
+  await expect(conceptSection).toBeVisible()
+  await expect(page.getByTestId('textbook-section-figure-reading')).toBeVisible()
   await answer('d-1', '大きくなる')
   await answer('d-2', '0に近づく')
 
-  await expect(page.getByRole('button', { name: /問1型/ })).toHaveAttribute('aria-pressed', 'true')
+  await page.getByTestId('textbook-next-section').click()
+  await expect(page.getByTestId('textbook-section-example-q1')).toBeVisible()
   await answer('q1-1', '49')
 
-  await expect(page.getByRole('button', { name: /問2型/ })).toHaveAttribute('aria-pressed', 'true')
+  await page.getByTestId('textbook-next-section').click()
+  await expect(page.getByTestId('textbook-section-example-q2')).toBeVisible()
   await answer('q2-1', '空気抵抗')
 
-  await expect(page.getByRole('button', { name: /最後の知識確認/ })).toHaveAttribute('aria-pressed', 'true')
+  await page.getByTestId('textbook-next-section').click()
+  await expect(page.getByTestId('textbook-section-review')).toBeVisible()
   await answer('f-1', 'g')
   await answer('f-2', 'kv')
   await answer('f-3', '0')
@@ -808,4 +820,38 @@ test('chapter setup restores persisted per-unit progress across all seven units'
   await expect(unit1G).toContainText('1/14')
   await expect(unit1G).toContainText('7%')
   await expect(chapterCard).toContainText('7 単元')
+})
+
+
+test('textbook formulas compile without raw TeX leakage or internal item labels', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/physics-a-displacement-velocity'))
+
+  const formulas = page.locator('[data-testid^="textbook-formula-"]')
+  await expect(formulas.first()).toBeVisible()
+  await expect(page.locator('[data-latex-status="error"]')).toHaveCount(0)
+  await expect(page.getByText('A-15', { exact: true })).toHaveCount(0)
+  await expect(page.getByText('A-16', { exact: true })).toHaveCount(0)
+  await expect(page.getByText('\\bar{\\vec v}=\\frac{', { exact: false })).toHaveCount(0)
+})
+
+test('completed reading sections remain visible after the next section opens', async ({ page }) => {
+  await page.goto(appRoute('/problems'))
+  await seedCompletedConceptSection(page)
+  await page.reload()
+  await page.goto(appRoute('/learning/textbook/physics-a-displacement-velocity'))
+
+  const concept = page.getByTestId('textbook-section-concept')
+  await expect(concept).toBeVisible()
+
+  const figureButton = page.getByRole('button', { name: /図の読み取り/ })
+  await expect(figureButton).toBeEnabled()
+  await figureButton.click()
+
+  const figureSection = page.getByTestId('textbook-section-figure-reading')
+  await expect(figureSection).toBeVisible()
+  await expect(concept).toBeVisible()
+
+  const figure = page.getByAltText(/位置ベクトル r1、r2 と変位/)
+  await expect(figure).toBeVisible()
+  await expect(concept).toBeVisible()
 })

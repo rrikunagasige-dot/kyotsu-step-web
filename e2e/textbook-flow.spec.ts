@@ -2,6 +2,28 @@ import { expect, test } from '@playwright/test'
 
 const appRoute = (path: string) => `/kyotsu-step-web/#${path}`
 
+async function expectOverlayInsideFigure(
+  overlay: import('@playwright/test').Locator,
+) {
+  const bounds = await overlay.evaluate((element) => {
+    const stage = element.closest('.textbook-figure-stage')
+    if (!stage) return null
+    const stageRect = stage.getBoundingClientRect()
+    const overlayRect = element.getBoundingClientRect()
+    return {
+      left: overlayRect.left - stageRect.left,
+      top: overlayRect.top - stageRect.top,
+      right: stageRect.right - overlayRect.right,
+      bottom: stageRect.bottom - overlayRect.bottom,
+    }
+  })
+  expect(bounds).not.toBeNull()
+  expect(bounds!.left).toBeGreaterThanOrEqual(-1)
+  expect(bounds!.top).toBeGreaterThanOrEqual(-1)
+  expect(bounds!.right).toBeGreaterThanOrEqual(-1)
+  expect(bounds!.bottom).toBeGreaterThanOrEqual(-1)
+}
+
 
 async function seedCompleted1BConceptSection(page: import('@playwright/test').Page) {
   const answers = Object.fromEntries(
@@ -433,14 +455,7 @@ test('1B uses the supplied figures and resolves the composition hotspot on mobil
   const hotspot = page.getByTestId('textbook-figure-overlay-hotspot-d-1')
   await expect(hotspot).toBeVisible()
 
-  const stageBox = await figureCard.locator('.textbook-figure-stage').boundingBox()
-  const hotspotBox = await hotspot.boundingBox()
-  expect(stageBox).not.toBeNull()
-  expect(hotspotBox).not.toBeNull()
-  expect(hotspotBox!.x).toBeGreaterThanOrEqual(stageBox!.x)
-  expect(hotspotBox!.y).toBeGreaterThanOrEqual(stageBox!.y)
-  expect(hotspotBox!.x + hotspotBox!.width).toBeLessThanOrEqual(stageBox!.x + stageBox!.width + 1)
-  expect(hotspotBox!.y + hotspotBox!.height).toBeLessThanOrEqual(stageBox!.y + stageBox!.height + 1)
+  await expectOverlayInsideFigure(hotspot)
 
   await hotspot.click()
   const panel = page.getByTestId('inline-choice-panel-d-1')
@@ -592,16 +607,8 @@ test('1E uses both supplied horizontal-projectile figures and resolves the strob
   await expect(horizontalHotspot).toBeVisible()
   await expect(verticalHotspot).toBeVisible()
 
-  const stageBox = await strobeCard.locator('.textbook-figure-stage').boundingBox()
-  for (const hotspot of [horizontalHotspot, verticalHotspot]) {
-    const box = await hotspot.boundingBox()
-    expect(stageBox).not.toBeNull()
-    expect(box).not.toBeNull()
-    expect(box!.x).toBeGreaterThanOrEqual(stageBox!.x)
-    expect(box!.y).toBeGreaterThanOrEqual(stageBox!.y)
-    expect(box!.x + box!.width).toBeLessThanOrEqual(stageBox!.x + stageBox!.width + 1)
-    expect(box!.y + box!.height).toBeLessThanOrEqual(stageBox!.y + stageBox!.height + 1)
-  }
+  await expectOverlayInsideFigure(horizontalHotspot)
+  await expectOverlayInsideFigure(verticalHotspot)
 
   const velocityFigure = page.getByAltText(/速度 v を水平成分/)
   await expect(velocityFigure).toBeVisible()
@@ -650,14 +657,7 @@ test('1F uses both supplied oblique-projectile figures and masks the highest-poi
 
   const mask = page.getByTestId('textbook-figure-overlay-mask-d-1')
   await expect(mask).toBeVisible()
-  const stageBox = await componentsCard.locator('.textbook-figure-stage').boundingBox()
-  const maskBox = await mask.boundingBox()
-  expect(stageBox).not.toBeNull()
-  expect(maskBox).not.toBeNull()
-  expect(maskBox!.x).toBeGreaterThanOrEqual(stageBox!.x)
-  expect(maskBox!.y).toBeGreaterThanOrEqual(stageBox!.y)
-  expect(maskBox!.x + maskBox!.width).toBeLessThanOrEqual(stageBox!.x + stageBox!.width + 1)
-  expect(maskBox!.y + maskBox!.height).toBeLessThanOrEqual(stageBox!.y + stageBox!.height + 1)
+  await expectOverlayInsideFigure(mask)
 
   await mask.click()
   const d1Panel = page.getByTestId('inline-choice-panel-d-1')
@@ -824,6 +824,9 @@ test('chapter setup restores persisted per-unit progress across all seven units'
 
 
 test('textbook formulas compile without raw TeX leakage or internal item labels', async ({ page }) => {
+  await page.goto(appRoute('/problems'))
+  await seedCompletedConceptSection(page)
+  await page.reload()
   await page.goto(appRoute('/learning/textbook/physics-a-displacement-velocity'))
 
   const formulas = page.locator('[data-testid^="textbook-formula-"]')

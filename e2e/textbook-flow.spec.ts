@@ -110,40 +110,6 @@ async function seedCompleted1DConceptSection(page: import('@playwright/test').Pa
   }, answers)
 }
 
-
-async function seedCompleted1DConceptSection(page: import('@playwright/test').Page) {
-  const itemIds = Array.from({ length: 8 }, (_, index) => 'd1-' + String(index + 1))
-  const answers = Object.fromEntries(
-    itemIds.map((itemId) => [itemId, {
-      itemId,
-      value: 'seeded',
-      firstValue: 'seeded',
-      isFirstCorrect: true,
-      resolved: true,
-      attemptCount: 1,
-      firstAnsweredAt: 1,
-      lastAnsweredAt: 1,
-    }]),
-  )
-
-  await page.evaluate((seededAnswers) => {
-    localStorage.setItem('kyotsu-step-store', JSON.stringify({
-      state: {
-        textbookProgress: {
-          'physics-1d-acceleration': {
-            unitId: 'physics-1d-acceleration',
-            unitRevision: 1,
-            startedAt: 1,
-            updatedAt: 1,
-            answers: seededAnswers,
-          },
-        },
-      },
-      version: 1,
-    }))
-  }, answers)
-}
-
 async function seedCompletedConceptSection(page: import('@playwright/test').Page) {
   const answers = Object.fromEntries(
     Array.from({ length: 24 }, (_, index) => {
@@ -193,7 +159,6 @@ test('textbook setup exposes chapter and unit hierarchy before starting', async 
   await expect(page.getByTestId('textbook-unit-physics-a-displacement-velocity')).toBeVisible()
   await expect(page.getByTestId('textbook-unit-physics-1b-velocity-composition')).toBeVisible()
   await expect(page.getByTestId('textbook-unit-physics-1c-relative-velocity')).toBeVisible()
-  await expect(page.getByTestId('textbook-unit-physics-1d-acceleration')).toBeVisible()
   await expect(page.getByTestId('textbook-unit-physics-1d-acceleration')).toBeVisible()
   await expect(page.getByTestId('textbook-selection-summary')).toContainText('1A')
 })
@@ -455,61 +420,4 @@ test('1D uses the acceleration source figures and resolves both figure questions
   await page.reload()
   await expect(page.getByTestId('textbook-figure-overlay-hotspot-d-1')).toHaveCount(0)
   await expect(page.getByTestId('textbook-figure-overlay-mask-d-2')).toHaveCount(0)
-})
-
-
-test('1D uses both supplied acceleration figures and resolves the vector-direction hotspot', async ({ page }) => {
-  await page.goto(appRoute('/learning/setup'))
-  await page.getByTestId('textbook-unit-physics-1d-acceleration').click()
-  await expect(page.getByTestId('textbook-selection-summary')).toContainText('1D')
-  await page.getByTestId('start-learning').click()
-
-  await expect(page).toHaveURL(/physics-1d-acceleration/)
-  await expect(page.getByTestId('textbook-item-d1-1')).toBeVisible()
-  await expect(page.getByRole('button', { name: /図の読み取り/ })).toBeDisabled()
-
-  await page.goto(appRoute('/problems'))
-  await seedCompleted1DConceptSection(page)
-  await page.reload()
-  await page.goto(appRoute('/learning/textbook/physics-1d-acceleration'))
-
-  const figureSection = page.getByRole('button', { name: /図の読み取り/ })
-  await expect(figureSection).toBeEnabled()
-  await figureSection.click()
-
-  const curveFigure = page.getByAltText(/曲線上の P1 と P2/)
-  await expect(curveFigure).toBeVisible()
-  await expect.poll(async () => curveFigure.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0)
-
-  await page.getByTestId('textbook-item-d-1').click()
-  const d1Panel = page.getByTestId('inline-choice-panel-d-1')
-  await expect(d1Panel).toBeVisible()
-  await d1Panel.getByRole('button', { name: '速度の変化', exact: true }).click()
-  await expect(d1Panel).toHaveCount(0)
-
-  const vectorFigureCard = page.getByTestId('textbook-figure-acceleration-vector-figure')
-  const vectorFigure = vectorFigureCard.getByAltText(/平均加速度が Δv と同じ向き/)
-  await expect(vectorFigure).toBeVisible()
-  await expect.poll(async () => vectorFigure.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0)
-
-  const hotspot = page.getByTestId('textbook-figure-overlay-hotspot-d-2')
-  await expect(hotspot).toBeVisible()
-  const stageBox = await vectorFigureCard.locator('.textbook-figure-stage').boundingBox()
-  const hotspotBox = await hotspot.boundingBox()
-  expect(stageBox).not.toBeNull()
-  expect(hotspotBox).not.toBeNull()
-  expect(hotspotBox!.x).toBeGreaterThanOrEqual(stageBox!.x)
-  expect(hotspotBox!.y).toBeGreaterThanOrEqual(stageBox!.y)
-  expect(hotspotBox!.x + hotspotBox!.width).toBeLessThanOrEqual(stageBox!.x + stageBox!.width + 1)
-  expect(hotspotBox!.y + hotspotBox!.height).toBeLessThanOrEqual(stageBox!.y + stageBox!.height + 1)
-
-  await hotspot.click()
-  const d2Panel = page.getByTestId('inline-choice-panel-d-2')
-  await expect(d2Panel).toBeVisible()
-  await d2Panel.getByRole('button', { name: '同じ向き', exact: true }).click()
-  await expect(d2Panel).toHaveCount(0)
-  await expect(hotspot).toHaveCount(0)
-
-  await page.reload()
-  await expect(page.getByTestId('textbook-figure-overlay-hotspot-d-2')).toHaveCount(0)
 })

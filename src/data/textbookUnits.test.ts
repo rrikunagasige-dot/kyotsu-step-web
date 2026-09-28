@@ -315,4 +315,34 @@ describe('textbook unit catalog', () => {
     expect(new Set(compositeItemIds).size).toBe(compositeItemIds.length)
   })
 
+
+  it('imports 1G gravity, drag and terminal velocity with all three source figures', () => {
+    const unit = builtInTextbookUnits.find((candidate) => candidate.chapter?.unitCode === '1G')
+    expect(unit).toBeDefined()
+    expect(unit?.unitId).toBe('physics-1g-gravity-drag-terminal-velocity')
+    expect(unit?.schemaVersion).toBe('1.1')
+    expect(unit?.chapter).toEqual({
+      chapterId: 'physics-ch01-motion',
+      chapterNumber: '1',
+      chapterTitle: '物体の運動',
+      unitCode: '1G',
+      orderInChapter: 7,
+      sourcePages: [25, 26, 27],
+    })
+
+    const items = unit?.sections.flatMap((section) => section.items) ?? []
+    expect(items).toHaveLength(14)
+    expect(new Set(items.map((item) => item.id)).size).toBe(14)
+    expect(items.every((item) => item.choices && item.choices.length >= 4)).toBe(true)
+    expect(items.every((item) => item.choices?.includes(item.answer))).toBe(true)
+
+    const figures = unit?.sections.flatMap((section) => section.figures) ?? []
+    expect(figures.map((figure) => figure.src)).toEqual(expect.arrayContaining([
+      '/assets/physics/textbook/ch01/1g/gravity-vs-air-resistance.webp',
+      '/assets/physics/textbook/ch01/1g/drag-force-stages.webp',
+      '/assets/physics/textbook/ch01/1g/terminal-velocity-graph.webp',
+    ]))
+    expect(figures).toHaveLength(3)
+  })
+
 })

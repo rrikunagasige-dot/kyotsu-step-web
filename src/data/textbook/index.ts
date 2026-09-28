@@ -5,6 +5,7 @@ import { textbookUnit1D } from './ch01/1d-acceleration'
 import { textbookUnit1E } from './ch01/1e-horizontal-projectile'
 import { textbookUnit1F } from './ch01/1f-oblique-projectile'
 import { textbookUnit1G } from './ch01/1g-gravity-drag-terminal-velocity'
+import { textbookUnit1G } from './ch01/1g-gravity-drag-terminal-velocity'
 
 export const builtInTextbookUnits = [
   textbookUnit1A,

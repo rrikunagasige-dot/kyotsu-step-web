@@ -32,7 +32,8 @@ export function LearningSetupPage() {
   const startLearning = useAppStore((state) => state.startLearning)
   const { language, text } = useI18n()
   const catalog = useMemo(() => getQuestionCatalog(customQuestions, language), [customQuestions, language])
-  const requestedTopic = isPhysicsTopicId(searchParams.get('topic')) ? searchParams.get('topic') : null
+  const requestedTopicParam = searchParams.get('topic')
+  const requestedTopic = isPhysicsTopicId(requestedTopicParam) ? requestedTopicParam : null
   const requestedMode = searchParams.get('mode')
   const requestedSubject = searchParams.get('subject')
   const [textbookUnits, setTextbookUnits] = useState<TextbookUnit[]>([])

@@ -93,7 +93,7 @@ function createBlank(qid: string, unit: TextbookUnit, item: TextbookItem, itemIn
   return {
     id,
     answerType: 'single-choice',
-    prompt: locale === 'ja' ? item.prompt : `手順${itemIndex + 1}：正しい結果を選びなさい。`,
+    prompt: locale === 'ja' ? item.prompt : `步骤${itemIndex + 1}：请选择正确结果。`,
     options: choices.map((choice, index) => {
       const optionId = `${id}-opt-${index + 1}`
       const label = locale === 'ja' ? choice : chineseChoice(choice, `选项${index + 1}`)

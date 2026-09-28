@@ -2,7 +2,7 @@
 
 対象: `rrikunagasige-dot/kyotsu-step-web`  
 基準 branch: `main`  
-今回の最終検証 branch: `chatgpt/physics-ch01-questionbank-v1`
+今回の最終検証 branch: `chatgpt/textbook-reader-repair-v1`
 
 このファイルは、物理教科書モード第1章を導入する作業の入口。作業前に必ずこのファイルと `docs/physics-ch01/MASTER_FIRE_DIAGRAM.md` を読む。
 
@@ -28,8 +28,8 @@
         ↓ 内容・物理事実
 旧 1A 母版 + 1B〜1G Word
         ↓ 教育的な穴埋め構成
-figure.zip
-        ↓ 第1章の新しい図版
+figure.zip / latest supplied `figure(1).zip`
+        ↓ 第1章のcanonical図版
 現在の GitHub 実装
         ↓ 実行可能な状態機械・UI制約
 ```
@@ -74,6 +74,11 @@ Word は原文そのものではなく学習用再構成案として扱う。段
 10. 第1章の題庫 primary taxonomy は `mechanics / motion`。1Gの重力・空気抵抗は secondary knowledge として扱う。
 11. 題庫importは手書き14問コピーではなく `textbookPracticeQuestions.ts` の adapter を正とする。
 12. PASSは unit / typecheck / lint / build / full Playwright が実際に通った場合だけ記録する。
+13. 誤答は完了扱いにしない。正答した時点で初めて textbook item を resolved とする。
+14. formula hole は LaTeX を断片compileせず、式全体を1本のLaTeXとして構築してからKaTeXへ渡す。
+15. 読解では一度開いた前sectionの本文・図を消さない。次sectionは下へ追加する。
+16. learner-facing UI に `A-15` / `D-1` 等の内部micro labelを出さない。
+17. WebP source asset は RIFF宣言サイズと実バイト長の一致をCIで検証する。
 
 ## 実行順
 
@@ -104,6 +109,12 @@ P22 hide internal unit codes from learner UI
 P23 direct-open textbook unit cards
 P24 1A browser audit after direct navigation
 P25 full catalog/regression gate + docs finalization
+P26 textbook answer-state / progress repair
+P27 complete-formula interactive KaTeX renderer
+P28 continuous reading-section stack
+P29 restore corrupted Chapter-1 figures from canonical PNGs
+P30 reader regression / asset-integrity full gate
+P31 docs / source manifest / checkpoint finalization
 ```
 
 ## 現在の状態
@@ -135,13 +146,19 @@ P22 PASS
 P23 PASS
 P24 PASS
 P25 PASS
+P26 PASS
+P27 PASS
+P28 PASS
+P29 PASS
+P30 PASS
+P31 PASS
 ```
 
-最新の総合gate: GitHub Actions `36440820115` — typecheck / lint / Vitest 17 files・53 tests / production build / Playwright 44 tests すべて PASS。検証対象HEADは `46018ed2d22e46bc8a174a705d7f62ffa6b933c2`。
+最新の総合gate: GitHub Actions `36455569868` — typecheck / lint / Vitest 19 files・58 tests / production build / Playwright 46 tests すべて PASS。検証対象HEADは `a68f03ebf9f076343f9ed4a903c597f182028eb9`。
 
 P05で1Aを母版2.0として schemaVersion 1.1 へ移行した。78個のstable item IDを維持し、全itemに明示的な誤答候補を与え、 supplied Chapter-1 figures 1〜4 を app asset 化し、Figure V2 maskを実データへ接続した。
 
-P06では実ブラウザで、chapter/unit navigation、順次unlock、誤答保持＋正解表示、inline choice、実figure読み込み、figure maskからの回答、回答後のmask解除とpersist後の再読み込みを確認した。
+P06では当時の実ブラウザ仕様を確認したが、当時の「誤答をresolved扱い＋正解即表示」はP26でSUPERSEDED。現在は誤答では進捗せず、簡潔なretry表示のみとする。
 
 P07で1B「速度の合成と分解」を追加した。原教科書 p.14–15 と supplied Word を照合し、figure 5–6 を実asset化、18個の確認itemをSchema 1.1へ投入し、chapter内順序を 1A→1B とした。
 
@@ -193,3 +210,67 @@ P19でREADME・火柴図・WORKLOG・taxonomy guide・phase-14 checkpointを更�
 - 第5部 原子・分子の世界: 電子と光 / 原子・原子核・素粒子
 
 P20〜P25は GitHub Actions run `36440820115` で full gate PASS。
+
+
+## P26〜P31 教科書reader根本修復
+
+公開版の実目視から、CIが見逃していた複数のreader欠陥をまとめて修復した。
+
+### P26 — answer state / progress
+
+旧実装は誤答でも `resolved: true` を保存していたため、誤答が進捗に加算され、再回答もできなかった。
+
+現在:
+- 誤答 → `resolved: false`
+- 誤答後は4択を閉じ、文章中には「もう一度」だけ表示
+- 正解を即revealingしない
+- 正答retry後に初めてresolved
+- legacy progressは、`isFirstCorrect=true` の既存正常recordを保持し、resolved-wrong recordだけ拒否
+
+### P27 — formula renderer
+
+LaTeX断片の途中にchoice holeを挟んで個別compileする方式を廃止した。
+`src/domain/textbookFormula.ts` で式全体を1つのLaTeXへ組み立て、`TextbookFormula.tsx` で一括KaTeX renderする。
+
+これにより `\\frac{...}{...}` / `\\sqrt{...}` をholeが横断しても崩れない。
+第1章の全formulaを未回答状態・全正答状態の両方でcompileするunit gateを追加した。
+
+### P28 — continuous reading
+
+1 sectionだけを差し替える方式を廃止。
+一度開いたsectionはDOM上に残し、次sectionを下へ追加する。
+
+- 前の文章が消えない
+- 前の図が消えない
+- auto-jumpを廃止
+- 「次へ」は明示操作
+- persisted progressから開始時のみ最初の未完了sectionまで開く
+
+### P29 — source figure repair
+
+canonical `figure(1).zip` の正常PNGから、破損していた7 WebPを再生成して置換:
+
+- figure 2 — average-instantaneous-velocity
+- figure 3 — curve-velocity-directions
+- figure 5 — velocity-composition
+- figure 11 — horizontal-projectile-strobe
+- figure 12 — horizontal-projectile-velocity
+- figure 13 — oblique-projectile-trajectory
+- figure 14 — oblique-projectile-components
+
+図2は再生成後に直接目視し、日本語文字・曲線・矢印が正常であることを確認した。
+
+### P30 — regression gates
+
+新規gate:
+- wrong answer does not advance progress
+- correct retry resolves
+- all Chapter-1 formulas compile unresolved/resolved
+- visible raw TeX does not leak
+- internal micro labels do not leak
+- completed prior sections remain visible
+- figure masks reveal only after correct answer
+- all 17 WebPs have complete RIFF payloads
+- overlay-bound tests are scroll-independent
+
+P26〜P30 final gate: GitHub Actions `36455569868` SUCCESS。

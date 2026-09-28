@@ -224,6 +224,8 @@ export function TextbookUnitPage() {
   const { unitId = '' } = useParams()
   const [unit, setUnit] = useState<TextbookUnit | null | undefined>(undefined)
   const [selectedSectionIndex, setSelectedSectionIndex] = useState(0)
+  const [visibleThroughIndex, setVisibleThroughIndex] = useState(0)
+  const initializedUnitRef = useRef<string | null>(null)
   const progress = useAppStore((state) => state.textbookProgress[unitId])
   const resetTextbookUnit = useAppStore((state) => state.resetTextbookUnit)
   const { text } = useI18n()
@@ -243,8 +245,11 @@ export function TextbookUnitPage() {
   }, [progress, unit])
 
   useEffect(() => {
+    if (!unit || initializedUnitRef.current === unitId) return
+    initializedUnitRef.current = unitId
     setSelectedSectionIndex(firstIncompleteIndex)
-  }, [firstIncompleteIndex, unitId])
+    setVisibleThroughIndex(firstIncompleteIndex)
+  }, [firstIncompleteIndex, unit, unitId])
 
   if (unit === undefined) return <div className="state-panel"><span className="state-panel__mark">…</span><h2>{text('教材を読み込んでいます', '正在加载教材')}</h2></div>
   if (!unit) return <ErrorState title={text('教材が見つかりません', '找不到教材')} body={text('この教材は削除されたか、まだ公開されていません。', '该教材可能已被删除或尚未发布。')} action={<Link className="raised-link" to="/learning/setup">{text('学習設定へ戻る', '返回学习设置')}</Link>} />
@@ -255,14 +260,27 @@ export function TextbookUnitPage() {
   const displayTitle = legacyPrefix && unit.title.startsWith(`${legacyPrefix} `)
     ? unit.title.slice(legacyPrefix.length + 1)
     : unit.title
-  const currentSection = unit.sections[selectedSectionIndex]
-  const sectionSummary = textbookSectionProgress(unit, progress, currentSection.id)
-  const sectionComplete = sectionSummary.completed === sectionSummary.total
   const unitComplete = summary.completed === summary.total
   const canOpen = (index: number) => unitComplete || index <= firstIncompleteIndex
-  const goNext = () => {
-    setSelectedSectionIndex((index) => Math.min(unit.sections.length - 1, index + 1))
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+
+  const scrollToSection = (index: number) => {
+    window.setTimeout(() => {
+      document.getElementById(`textbook-section-${index}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }, 0)
+  }
+
+  const openSection = (index: number) => {
+    if (!canOpen(index)) return
+    setSelectedSectionIndex(index)
+    setVisibleThroughIndex((current) => Math.max(current, index))
+    scrollToSection(index)
+  }
+
+  const goNext = (fromIndex: number) => {
+    const nextIndex = Math.min(unit.sections.length - 1, fromIndex + 1)
+    setSelectedSectionIndex(nextIndex)
+    setVisibleThroughIndex((current) => Math.max(current, nextIndex))
+    scrollToSection(nextIndex)
   }
 
   return (
@@ -298,7 +316,7 @@ export function TextbookUnitPage() {
               key={section.id}
               disabled={!allowed}
               aria-pressed={selectedSectionIndex === index}
-              onClick={() => allowed && setSelectedSectionIndex(index)}
+              onClick={() => openSection(index)}
             >
               <span>{complete ? <Check size={16} aria-hidden="true" /> : allowed ? section.number : <LockKeyhole size={15} aria-hidden="true" />}</span>
               <strong>{section.title}</strong>
@@ -308,23 +326,38 @@ export function TextbookUnitPage() {
         })}
       </nav>
 
-      <section className="textbook-section">
-        <header className="textbook-section-heading">
-          <div><span>{currentSection.number}</span><div><h2>{currentSection.title}</h2>{currentSection.description && <p>{currentSection.description}</p>}</div></div>
-          <strong>{sectionSummary.completed}/{sectionSummary.total}</strong>
-        </header>
+      <div className="textbook-section-stack" data-testid="textbook-section-stack">
+        {unit.sections.slice(0, visibleThroughIndex + 1).map((section, index) => {
+          const sectionSummary = textbookSectionProgress(unit, progress, section.id)
+          const sectionComplete = sectionSummary.completed === sectionSummary.total
+          const isLastVisible = index === visibleThroughIndex
 
-        {currentSection.readingFlow.length > 0
-          ? <TextbookReadingFlow unit={unit} section={currentSection} progress={progress} />
-          : null}
+          return (
+            <section
+              className="textbook-section"
+              data-testid={`textbook-section-${section.id}`}
+              id={`textbook-section-${index}`}
+              key={section.id}
+            >
+              <header className="textbook-section-heading">
+                <div><span>{section.number}</span><div><h2>{section.title}</h2>{section.description && <p>{section.description}</p>}</div></div>
+                <strong>{sectionSummary.completed}/{sectionSummary.total}</strong>
+              </header>
 
-        {sectionComplete && !unitComplete && selectedSectionIndex < unit.sections.length - 1 && (
-          <div className="textbook-next-panel">
-            <Check size={22} aria-hidden="true" />
-            <div><strong>{text('この節は完了しました', '本节已完成')}</strong><small>{text('次の節へ進めます。', '可以继续下一节。')}</small></div>
-            <RaisedButton data-testid="textbook-next-section" onClick={goNext}>{text('次へ', '下一章')}</RaisedButton>
-          </div>
-        )}
+              {section.readingFlow.length > 0
+                ? <TextbookReadingFlow unit={unit} section={section} progress={progress} />
+                : null}
+
+              {sectionComplete && !unitComplete && isLastVisible && index < unit.sections.length - 1 && (
+                <div className="textbook-next-panel">
+                  <Check size={22} aria-hidden="true" />
+                  <div><strong>{text('この節は完了しました', '本节已完成')}</strong><small>{text('前の本文と図を残したまま、次の節を下に開きます。', '保留前面的正文和图片，并在下方打开下一节。')}</small></div>
+                  <RaisedButton data-testid="textbook-next-section" onClick={() => goNext(index)}>{text('次へ', '下一节')}</RaisedButton>
+                </div>
+              )}
+            </section>
+          )
+        })}
 
         {unitComplete && (
           <div className="textbook-complete-panel" data-testid="textbook-unit-complete">
@@ -339,12 +372,14 @@ export function TextbookUnitPage() {
             <Link className="raised-link" to="/learning/setup">{text('問題演習へ進む', '进入做题模式')}</Link>
           </div>
         )}
-      </section>
+      </div>
 
       <button type="button" className="text-button textbook-reset" onClick={() => {
         if (window.confirm(text('この単元の進捗を最初からやり直しますか？', '确定要清空本单元进度并重新开始吗？'))) {
           resetTextbookUnit(unit.unitId)
+          initializedUnitRef.current = null
           setSelectedSectionIndex(0)
+          setVisibleThroughIndex(0)
         }
       }}><RotateCcw size={15} aria-hidden="true" /> {text('この単元を最初から', '本单元重新开始')}</button>
     </div>

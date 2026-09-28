@@ -110,6 +110,40 @@ async function seedCompleted1DConceptSection(page: import('@playwright/test').Pa
   }, answers)
 }
 
+
+async function seedCompleted1EConceptSection(page: import('@playwright/test').Page) {
+  const itemIds = Array.from({ length: 8 }, (_, index) => 'e1-' + String(index + 1))
+  const answers = Object.fromEntries(
+    itemIds.map((itemId) => [itemId, {
+      itemId,
+      value: 'seeded',
+      firstValue: 'seeded',
+      isFirstCorrect: true,
+      resolved: true,
+      attemptCount: 1,
+      firstAnsweredAt: 1,
+      lastAnsweredAt: 1,
+    }]),
+  )
+
+  await page.evaluate((seededAnswers) => {
+    localStorage.setItem('kyotsu-step-store', JSON.stringify({
+      state: {
+        textbookProgress: {
+          'physics-1e-horizontal-projectile': {
+            unitId: 'physics-1e-horizontal-projectile',
+            unitRevision: 1,
+            startedAt: 1,
+            updatedAt: 1,
+            answers: seededAnswers,
+          },
+        },
+      },
+      version: 1,
+    }))
+  }, answers)
+}
+
 async function seedCompletedConceptSection(page: import('@playwright/test').Page) {
   const answers = Object.fromEntries(
     Array.from({ length: 24 }, (_, index) => {
@@ -160,6 +194,7 @@ test('textbook setup exposes chapter and unit hierarchy before starting', async 
   await expect(page.getByTestId('textbook-unit-physics-1b-velocity-composition')).toBeVisible()
   await expect(page.getByTestId('textbook-unit-physics-1c-relative-velocity')).toBeVisible()
   await expect(page.getByTestId('textbook-unit-physics-1d-acceleration')).toBeVisible()
+  await expect(page.getByTestId('textbook-unit-physics-1e-horizontal-projectile')).toBeVisible()
   await expect(page.getByTestId('textbook-selection-summary')).toContainText('1A')
 })
 
@@ -420,4 +455,64 @@ test('1D uses the acceleration source figures and resolves both figure questions
   await page.reload()
   await expect(page.getByTestId('textbook-figure-overlay-hotspot-d-1')).toHaveCount(0)
   await expect(page.getByTestId('textbook-figure-overlay-mask-d-2')).toHaveCount(0)
+})
+
+
+test('1E uses both supplied horizontal-projectile figures and resolves the strobe questions', async ({ page }) => {
+  await page.goto(appRoute('/learning/setup'))
+  await page.getByTestId('textbook-unit-physics-1e-horizontal-projectile').click()
+  await expect(page.getByTestId('textbook-selection-summary')).toContainText('1E')
+  await page.getByTestId('start-learning').click()
+
+  await expect(page).toHaveURL(/physics-1e-horizontal-projectile/)
+  await expect(page.getByTestId('textbook-item-e1-1')).toBeVisible()
+  await expect(page.getByRole('button', { name: /図の読み取り/ })).toBeDisabled()
+
+  await page.goto(appRoute('/problems'))
+  await seedCompleted1EConceptSection(page)
+  await page.reload()
+  await page.goto(appRoute('/learning/textbook/physics-1e-horizontal-projectile'))
+
+  const figureSection = page.getByRole('button', { name: /図の読み取り/ })
+  await expect(figureSection).toBeEnabled()
+  await figureSection.click()
+
+  const strobeCard = page.getByTestId('textbook-figure-horizontal-projectile-strobe-figure')
+  const strobe = strobeCard.getByAltText(/等時間間隔の位置/)
+  await expect(strobe).toBeVisible()
+  await expect.poll(async () => strobe.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0)
+
+  const horizontalHotspot = page.getByTestId('textbook-figure-overlay-hotspot-d-1')
+  const verticalHotspot = page.getByTestId('textbook-figure-overlay-hotspot-d-2')
+  await expect(horizontalHotspot).toBeVisible()
+  await expect(verticalHotspot).toBeVisible()
+
+  const stageBox = await strobeCard.locator('.textbook-figure-stage').boundingBox()
+  for (const hotspot of [horizontalHotspot, verticalHotspot]) {
+    const box = await hotspot.boundingBox()
+    expect(stageBox).not.toBeNull()
+    expect(box).not.toBeNull()
+    expect(box!.x).toBeGreaterThanOrEqual(stageBox!.x)
+    expect(box!.y).toBeGreaterThanOrEqual(stageBox!.y)
+    expect(box!.x + box!.width).toBeLessThanOrEqual(stageBox!.x + stageBox!.width + 1)
+    expect(box!.y + box!.height).toBeLessThanOrEqual(stageBox!.y + stageBox!.height + 1)
+  }
+
+  await horizontalHotspot.click()
+  const d1Panel = page.getByTestId('inline-choice-panel-d-1')
+  await d1Panel.getByRole('button', { name: '一定', exact: true }).click()
+  await expect(horizontalHotspot).toHaveCount(0)
+
+  await verticalHotspot.click()
+  const d2Panel = page.getByTestId('inline-choice-panel-d-2')
+  await d2Panel.getByRole('button', { name: '大きくなる', exact: true }).click()
+  await expect(verticalHotspot).toHaveCount(0)
+
+  const velocityFigure = page.getByAltText(/速度 v を水平成分/)
+  await expect(velocityFigure).toBeVisible()
+  await expect.poll(async () => velocityFigure.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0)
+
+  await page.reload()
+  await expect(page.getByTestId('textbook-figure-overlay-hotspot-d-1')).toHaveCount(0)
+  await expect(page.getByTestId('textbook-figure-overlay-hotspot-d-2')).toHaveCount(0)
 })

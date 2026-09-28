@@ -721,43 +721,84 @@ Final gate:
 - Playwright: 44/44 PASS
 
 
-## 17. P26–P31 Textbook Reader Repair
+## 17. P26–P31 Textbook Reader Root Repair
 
 ```text
-wrong choice
+User-visible failures
    │
-   ├─ resolved = false
-   ├─ progress += 0
-   └─ panel closes → 「もう一度」
-                     │
-                     └─ correct retry → resolved
-
-reading sections
-   section 1 ──kept──┐
-   section 2 ──kept──┼─→ continuous reading stack
-   section 3 ──kept──┘
-
-formula(parts + holes)
-   ↓ assemble complete LaTeX first
-KaTeX render once
-   ↓
-interactive hole without raw TeX leakage
-
-canonical uploaded figures
-   ↓ regenerate WebP
-7 corrupted assets replaced
-   ↓
-17/17 RIFF integrity gate
+   ├─ wrong answer → four choices/reveal/progress
+   ├─ split LaTeX → raw TeX / broken formula
+   ├─ section advance → previous content disappears
+   └─ corrupted WebP → broken source figure
+   │
+   ▼
+P26 Answer-state repair
+   │  wrong != resolved
+   │  retry allowed
+   │  progress only after correct
+   │
+   ├───────────────┐
+   ▼               ▼
+P27 Formula        P28 Reading continuity
+complete LaTeX     section stack
+single KaTeX       no auto-unmount
+interactive holes  explicit next
+   │               │
+   └───────┬───────┘
+           ▼
+P29 Canonical figure repair
+figure(1).zip PNG authority
+7 corrupted WebPs regenerated
+           │
+           ▼
+P30 Strong regression gate
+answer + math + continuity + RIFF + browser
+           │
+           ▼
+P31 docs / source manifest / checkpoint
 ```
 
-- G34 PASS — wrong answers do not advance progress.
-- G35 PASS — wrong choice panel closes; retry remains inline; correct retry resolves.
-- G36 PASS — completed sections remain visible when the next section opens.
-- G37 PASS — Chapter 1 formula blocks compile with unresolved and resolved holes.
-- G38 PASS — raw TeX and micro internal labels do not leak to visible learner text.
-- G39 PASS — figure masks remain until the underlying item is correctly resolved.
-- G40 PASS — figures 2/3/5/11/12/13/14 replaced from canonical uploaded figures.
-- G41 PASS — exactly 17 unique figures and every WebP has complete RIFF payload.
-- G42 PASS — full `pnpm check:all`.
+### P26–P31 status
 
-Final gate: `36455569868` SUCCESS — Vitest 19/58, Playwright 46/46, typecheck/lint/build PASS.
+- P26 PASS — wrong answer remains unresolved; correct retry resolves and advances progress.
+- P27 PASS — full-formula KaTeX renderer replaces fragment compilation.
+- P28 PASS — opened sections persist; next section is appended below.
+- P29 PASS — seven corrupted WebPs restored from canonical supplied PNGs.
+- P30 PASS — strengthened unit/browser/asset integrity gates.
+- P31 PASS — README / fire diagram / worklog / source manifest / checkpoint finalized.
+
+### Reader repair gates
+
+- G34 PASS — wrong answer does not increment section/unit completion.
+- G35 PASS — correct retry resolves; legacy first-correct saved progress remains compatible.
+- G36 PASS — every Chapter-1 formula renders without `katex-error` in unresolved state.
+- G37 PASS — every Chapter-1 formula renders without `katex-error` after correct resolution.
+- G38 PASS — learner-visible text does not leak raw split TeX or internal labels such as `A-15`.
+- G39 PASS — completed previous section remains visible after the next section opens.
+- G40 PASS — figure overlay/mask remains until the linked answer is actually correct.
+- G41 PASS — exactly 17 unique Chapter-1 source figures remain referenced.
+- G42 PASS — every referenced WebP has RIFF/WEBP headers and exact declared payload length; truncated files fail CI.
+- G43 PASS — seven previously corrupted source assets replaced from canonical supplied PNGs.
+- G44 PASS — Figure V2 overlay containment check is scroll-independent on the longer continuous page.
+- G45 PASS — full `pnpm check:all`.
+
+Verified repair HEAD before docs-only P31:
+`a68f03ebf9f076343f9ed4a903c597f182028eb9`
+
+Final gate:
+- GitHub Actions run `36455569868`: SUCCESS
+- TypeScript typecheck PASS
+- ESLint PASS
+- Vitest: 19 files / 58 tests PASS
+- production build PASS
+- Playwright: 46/46 PASS
+
+### Root-cause note
+
+Previous gates could be green while the real page was visibly wrong because:
+1. wrong-answer behavior itself had been encoded as the expected E2E behavior,
+2. figure tests checked `naturalWidth > 0`, which can succeed on partially decodable/truncated WebP,
+3. formula tests did not compile every mixed math-choice expression,
+4. section tests assumed one-section replacement and therefore did not check reading continuity.
+
+P30 replaces those weak gates instead of merely patching the screenshots.

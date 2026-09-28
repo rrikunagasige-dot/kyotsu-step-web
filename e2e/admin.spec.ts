@@ -8,6 +8,7 @@ test.beforeEach(async ({ page }) => {
 })
 
 test('valid custom JSON is validated, persisted, previewed, exported, and deleted', async ({ page }) => {
+  await page.getByLabel('プレビューする問題').selectOption('math-quadratic-01')
   await page.getByRole('button', { name: /選択中を編集欄へ/ }).click()
   const source = JSON.parse(await page.getByLabel('JSON 編集欄').inputValue())
   source.questionId = 'custom-quadratic-01'
@@ -33,7 +34,8 @@ test('valid custom JSON is validated, persisted, previewed, exported, and delete
 
   await page.getByRole('button', { name: /この追加問題を削除/ }).click()
   await page.getByRole('button', { name: '追加問題を削除', exact: true }).click()
-  await expect(page.getByLabel('プレビューする問題').locator('option')).toHaveCount(4)
+  await expect(page.getByLabel('プレビューする問題').locator('option[value="custom-quadratic-01"]')).toHaveCount(0)
+  await expect(page.getByLabel('プレビューする問題').locator('option[value="math-quadratic-01"]')).toHaveCount(1)
 })
 
 test('schema errors show a path and never enter the usable catalog', async ({ page }) => {
@@ -44,5 +46,6 @@ test('schema errors show a path and never enter the usable catalog', async ({ pa
   await page.getByLabel('JSON 編集欄').fill(JSON.stringify(source))
   await page.getByTestId('import-json').click()
   await expect(page.getByRole('alert')).toContainText('learning.variants.selfCheck')
-  await expect(page.getByLabel('プレビューする問題').locator('option')).toHaveCount(4)
+  await expect(page.getByLabel('プレビューする問題').locator('option[value="custom-invalid-01"]')).toHaveCount(0)
+  await expect(page.getByLabel('プレビューする問題').locator('option[value="math-quadratic-01"]')).toHaveCount(1)
 })

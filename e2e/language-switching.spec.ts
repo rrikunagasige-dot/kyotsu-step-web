@@ -49,7 +49,7 @@ test('uses Chinese in simulation, analysis, ranking, profile, and persists the p
   await page.getByRole('button', { name: '中文' }).click()
   await page.goto(appRoute('/simulation/setup'))
   await expect(page.getByRole('heading', { name: '模拟测试设置' })).toBeVisible()
-  await expect(page.getByText('二次函数的最大值')).toBeVisible()
+  await expect(page.getByText('通过对话理解二次函数最大值')).toBeVisible()
   await page.getByTestId('start-simulation').click()
   await expect(page.getByRole('heading', { name: '二次函数的最大值' })).toBeVisible()
   await expect(page.getByText('选择函数取得最大值时的 x。')).toBeVisible()

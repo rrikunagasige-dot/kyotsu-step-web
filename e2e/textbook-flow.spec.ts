@@ -346,7 +346,7 @@ test('a wrong textbook choice closes the choices, keeps progress incomplete, and
   await expect(retry).toBeVisible()
   await expect(retry).toContainText('もう一度')
   await expect(page.getByTestId('resolved-a-1')).toHaveCount(0)
-  await expect(page.getByTestId('textbook-section-concept')).toContainText('0/24')
+  await expect(page.getByTestId('textbook-section-knowledge-check')).toContainText('0/24')
 
   await retry.click()
   panel = page.getByTestId('inline-choice-panel-a-1')
@@ -355,7 +355,7 @@ test('a wrong textbook choice closes the choices, keeps progress incomplete, and
 
   await expect(panel).toHaveCount(0)
   await expect(page.getByTestId('resolved-a-1')).toContainText('位置ベクトル')
-  await expect(page.getByTestId('textbook-section-concept')).toContainText('1/24')
+  await expect(page.getByTestId('textbook-section-knowledge-check')).toContainText('1/24')
 })
 
 test('future textbook sections stay locked until the current section is complete', async ({ page }) => {
@@ -732,7 +732,7 @@ test('1G completes from the first concept blank to unit completion', async ({ pa
   await answer('g1-6', '0')
   await answer('g1-7', 'mg/k')
 
-  const conceptSection = page.getByTestId('textbook-section-concept')
+  const conceptSection = page.getByTestId('textbook-section-knowledge-check')
   await expect(conceptSection).toBeVisible()
   await expect(page.getByRole('button', { name: /図の読み取り/ })).toBeEnabled()
   await page.getByTestId('textbook-next-section').click()
@@ -750,7 +750,7 @@ test('1G completes from the first concept blank to unit completion', async ({ pa
   await answer('q2-1', '空気抵抗')
 
   await page.getByTestId('textbook-next-section').click()
-  await expect(page.getByTestId('textbook-section-review')).toBeVisible()
+  await expect(page.getByTestId('textbook-section-final-review')).toBeVisible()
   await answer('f-1', 'g')
   await answer('f-2', 'kv')
   await answer('f-3', '0')
@@ -840,7 +840,7 @@ test('completed reading sections remain visible after the next section opens', a
   await page.reload()
   await page.goto(appRoute('/learning/textbook/physics-a-displacement-velocity'))
 
-  const concept = page.getByTestId('textbook-section-concept')
+  const concept = page.getByTestId('textbook-section-knowledge-check')
   await expect(concept).toBeVisible()
 
   const figureButton = page.getByRole('button', { name: /図の読み取り/ })

@@ -17,7 +17,7 @@ test('valid custom JSON is validated, persisted, previewed, exported, and delete
   await page.getByTestId('import-json').click()
   await expect(page.getByRole('status')).toContainText('1 問')
   await expect(page.getByRole('heading', { name: '追加した二次関数' })).toBeVisible()
-  await expect(page.getByTestId('question-preview')).toContainText('実数 x')
+  await expect(page.getByTestId('question-preview')).toContainText('文化祭の展示で')
 
   await page.reload()
   await page.getByLabel('プレビューする問題').selectOption('custom-quadratic-01')

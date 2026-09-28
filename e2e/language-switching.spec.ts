@@ -23,7 +23,7 @@ test('switches the complete learning flow and preserves progress across language
   await expect(page.getByText('引导强度')).toHaveCount(0)
   await page.getByTestId('start-learning').click()
 
-  await expect(page.getByRole('heading', { name: '二次函数的最大值' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: '通过对话理解二次函数最大值' })).toBeVisible()
   await expect(page.getByText('先对关于 x 的式子进行配方。')).toBeVisible()
   await page.getByTestId('blank-mq-blank-sign').click()
   await page.getByTestId('option-mq-sign-minus').click()
@@ -51,7 +51,7 @@ test('uses Chinese in simulation, analysis, ranking, profile, and persists the p
   await expect(page.getByRole('heading', { name: '模拟测试设置' })).toBeVisible()
   await expect(page.getByText('通过对话理解二次函数最大值')).toBeVisible()
   await page.getByTestId('start-simulation').click()
-  await expect(page.getByRole('heading', { name: '二次函数的最大值' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: '通过对话理解二次函数最大值' })).toBeVisible()
   await expect(page.getByText('选择函数取得最大值时的 x。')).toBeVisible()
   await page.getByTestId('open-submit').click()
   await expect(page.getByRole('alertdialog')).toContainText('还有 2 个小题未作答')

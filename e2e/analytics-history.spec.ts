@@ -9,6 +9,7 @@ test.beforeEach(async ({ page }) => {
 
 test('analysis, mistakes, and history are derived from a real completed attempt', async ({ page }) => {
   await page.goto(appRoute('/learning/setup'))
+  await page.getByRole('radio', { name: /問題を解く/ }).click()
   await page.getByLabel('学習する問題').selectOption('math-quadratic-01')
   await page.getByRole('radio', { name: /自力確認/ }).click()
   await page.getByTestId('start-learning').click()

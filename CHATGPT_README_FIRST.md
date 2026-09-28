@@ -1,7 +1,8 @@
 # CHATGPT README FIRST — 物理教科書モード 第1章
 
 対象: `rrikunagasige-dot/kyotsu-step-web`  
-作業 branch: `chatgpt/physics-ch01-textbook-v2`
+基準 branch: `main`  
+今回の最終検証 branch: `chatgpt/physics-ch01-questionbank-v1`
 
 このファイルは、物理教科書モード第1章を導入する作業の入口。作業前に必ずこのファイルと `docs/physics-ch01/MASTER_FIRE_DIAGRAM.md` を読む。
 
@@ -15,6 +16,8 @@
 4. 自動生成ではなく明示的な選択肢
 5. 1単元1ファイルへのデータ分割
 6. 原教科書・旧母版・新figureの出典追跡
+7. worked-example を題庫 Question へ安全に再利用する共通 adapter
+8. 問題 → 学習設定 → 問題を解く → 科目 → 分野 → 問題 の導線
 
 ## Authority order
 
@@ -66,7 +69,11 @@ Word は原文そのものではなく学習用再構成案として扱う。段
 5. 1AをSchema 1.1へ移行し通しテストした後に1B〜1Gへ広げる。
 6. schema/state/routing/figure rendererを変更したら火柴図も同じ作業で更新する。
 7. PASSは実際にテストした場合だけ記録する。
-8. upstream `paulfields83/kyotsu-step-web` の `main` を勝手に上書きしない。完成作業はこのbranchで行う。
+8. upstream `paulfields83/kyotsu-step-web` の `main` を勝手に上書きしない。
+9. 題庫化は worked-example 単位で行い、教科書の micro blank 数を「問題数」と数えない。
+10. 第1章の題庫 primary taxonomy は `mechanics / motion`。1Gの重力・空気抵抗は secondary knowledge として扱う。
+11. 題庫importは手書き14問コピーではなく `textbookPracticeQuestions.ts` の adapter を正とする。
+12. PASSは unit / typecheck / lint / build / full Playwright が実際に通った場合だけ記録する。
 
 ## 実行順
 
@@ -86,6 +93,11 @@ P11 1F
 P12 1G
 P13 Chapter 1 full gate
 P14 docs/worklog update
+P15 setup-first navigation
+P16 textbook worked-example → Question adapter
+P17 Chapter 1 question-bank publish + dedup audit
+P18 full browser/regression gate
+P19 docs/fire/worklog/checkpoint update
 ```
 
 ## 現在の状態
@@ -106,9 +118,14 @@ P11 PASS
 P12 PASS
 P13 PASS
 P14 PASS
+P15 PASS
+P16 PASS
+P17 PASS
+P18 PASS
+P19 PASS
 ```
 
-最新の総合gate: GitHub Actions Full Gate `36408480283` / CI `36408480384` — typecheck / lint / Vitest 14 files・44 tests / production build / Playwright 42 tests すべて PASS。検証対象HEADは `26e768ae9f314dba17121739179ea0c262c88845`。
+最新の総合gate: GitHub Actions `36436511183` — typecheck / lint / Vitest 16 files・50 tests / production build / Playwright 44 tests すべて PASS。検証対象HEADは `e79f636e0ae347d5845916743f60f88dcfc63f6c`。
 
 P05で1Aを母版2.0として schemaVersion 1.1 へ移行した。78個のstable item IDを維持し、全itemに明示的な誤答候補を与え、 supplied Chapter-1 figures 1〜4 を app asset 化し、Figure V2 maskを実データへ接続した。
 
@@ -130,4 +147,14 @@ P12で1G「重力加速度・空気抵抗・終端速度」を追加した。原
 
 P13ではChapter 1 full gate（G11〜G17）を完走した。1A〜1G順序、chapter progress、17図、stable ID uniqueness、`pnpm check`、Playwright、`pnpm check:all` をすべてPASSした。
 
-P14でREADME・火柴図・WORKLOGを最終更新した。第1章V2の導入作業はこのbranch上で完了。次の作業では、merge/integration方針を決めるか、第2章のsource auditから新しい火柴図を開始する。
+P14で教科書モード第1章V2を閉じた。
+
+P15では導線を「問題 → 学習設定 → 問題を解く → 科目 → 分野 → 問題」に修正し、物理23分類を ProblemsPage から LearningSetupPage の物理practice内へ移した。
+
+P16では 1A〜1G の `role=worked-example` だけを抽出する共通 adapter `src/data/textbookPracticeQuestions.ts` を追加した。2例題×7単元=14問を Question schema 1.0 へ変換し、stable ID・学習blank・simulation採点構造を生成する。日本語版は元readingFlowを活用し、中国語版は同一 grading identity を維持した中国語ガイドを生成する。
+
+P17では既存 `physics-motion-01` を重複ではない独立v–tグラフ問題として保持し、第1章14問を追加した。公開後の物理題庫は17問、うち primary=`motion` は15問、`current` 1問、`magnetic-field` 1問。第1章14問はすべて primary=`mechanics / motion`。
+
+P18では setup-first の実ブラウザ導線、23カード、運動15問、1G import問題の開始までをE2Eで検証し、全回帰gateを通過した。
+
+P19でREADME・火柴図・WORKLOG・taxonomy guide・phase-14 checkpointを更新した。

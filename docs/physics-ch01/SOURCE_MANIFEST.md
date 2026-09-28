@@ -183,14 +183,32 @@ Unit data:
 
 ## 2026-09-29 canonical archive identities
 
-The latest source archives supplied for this repair were hashed before use.
+The source archives were re-verified from the actual uploaded ZIP bytes before P32. The earlier draft hashes were incorrect and are superseded by the values below.
 
-| archive | size | SHA256 | role |
+| canonical archive | size | SHA256 | role |
 |---|---:|---|---|
-| `figure(1).zip` | 11,478,555 bytes | `e938a1be0470a87c429ee766c9f75163e9f0768470bb3e403449760b92622e58` | canonical Chapter-1 figure PNGs |
-| `物理教科書モード_第1-5章_母版準拠_完全版(2).zip` | 48,113,309 bytes | `4b55b4bce84b2330033c2829cd29106cc6448900b189308f4e7f42594624e33e` | mother-template/source packet |
+| `figure.zip` | 12,078,342 bytes | `b1d55eb94c13aa8ec91dbfd794dcbcbcec9c5a67ed8bdd692c397ad78d8b01e2` | canonical Chapter-1 figure PNGs (17 files) |
+| `物理教科書モード_第1-5章_母版準拠_完全版.zip` | 50,419,544 bytes | `df1194b491d362c569018da15bc31e3583926a863af1f74b4842b033240e8eff` | mother-template/source packet (72 ZIP entries) |
 
-These hashes are the identity gate for any future re-upload or archive restoration. Do not silently substitute a similarly named ZIP.
+Both archives passed ZIP integrity checks (`ZipFile.testzip() == None`).
+
+### Persistent source location
+
+The binary archives are persisted in the ChatGPT Library so future project sessions do not need to search Desktop machines or request re-upload first.
+
+| archive | Library path | library_file_id |
+|---|---|---|
+| `figure.zip` | `/塾/kyotsu-step-web/source_archives/figure.zip` | `libfile_f62fe4c165d481919f798f2394918071` |
+| `物理教科書モード_第1-5章_母版準拠_完全版.zip` | `/塾/kyotsu-step-web/source_archives/物理教科書モード_第1-5章_母版準拠_完全版.zip` | `libfile_14988b216fa48191beeff635f7c4c1f2` |
+
+Future-agent rule:
+1. read `CHATGPT_README_FIRST.md`,
+2. read this manifest,
+3. search the Library path above,
+4. verify the exact size + SHA256 before use,
+5. ask the user to upload again only if the persistent copy is genuinely unavailable or fails identity/integrity checks.
+
+Do **not** search Desktop/Mac/Windows for these archives as the first step.
 
 ### Repaired asset provenance
 
@@ -206,8 +224,15 @@ The following app assets were regenerated from the canonical figure archive beca
 | `13.png` | `1f/oblique-projectile-trajectory.webp` |
 | `14.png` | `1f/oblique-projectile-components.webp` |
 
-The canonical PNGs decoded normally. The repaired WebPs were decoded after conversion and then checked in CI for complete RIFF payload length.
+The canonical PNGs decoded normally. The repaired WebPs were decoded after conversion and are checked in CI for RIFF/WEBP header and declared payload-length integrity.
 
-### Archive-storage limitation
+### GitHub binary-storage note
 
-The GitHub connector used in this chat can write repository blobs/files but does not expose GitHub Release asset upload, and the two complete ZIP archives are too large to safely transmit through the text/base64 file-write wrapper in one operation. Therefore the archive **bytes themselves are not claimed as committed to this repository**. Their exact names, sizes and SHA256 identities are recorded here so a future session can verify a supplied copy immediately rather than searching local machines.
+The GitHub connector available in this chat does not expose a local-file / Release-asset binary upload path. It can create Git blobs only when the full file bytes are provided as a text/base64 argument, which is not safe or practical for 12 MB and 50 MB ZIPs.
+
+Therefore:
+- the **app assets and source manifest are in GitHub**,
+- the **canonical ZIP bytes are persisted in ChatGPT Library**,
+- the exact identity bridge is the SHA256/size table above.
+
+This limitation must not be misrepresented as “the ZIP binaries are committed to GitHub”.

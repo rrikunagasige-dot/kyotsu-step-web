@@ -719,3 +719,45 @@ Final gate:
 - Vitest: 17 files / 53 tests PASS
 - production build PASS
 - Playwright: 44/44 PASS
+
+
+## 17. P26–P31 Textbook Reader Repair
+
+```text
+wrong choice
+   │
+   ├─ resolved = false
+   ├─ progress += 0
+   └─ panel closes → 「もう一度」
+                     │
+                     └─ correct retry → resolved
+
+reading sections
+   section 1 ──kept──┐
+   section 2 ──kept──┼─→ continuous reading stack
+   section 3 ──kept──┘
+
+formula(parts + holes)
+   ↓ assemble complete LaTeX first
+KaTeX render once
+   ↓
+interactive hole without raw TeX leakage
+
+canonical uploaded figures
+   ↓ regenerate WebP
+7 corrupted assets replaced
+   ↓
+17/17 RIFF integrity gate
+```
+
+- G34 PASS — wrong answers do not advance progress.
+- G35 PASS — wrong choice panel closes; retry remains inline; correct retry resolves.
+- G36 PASS — completed sections remain visible when the next section opens.
+- G37 PASS — Chapter 1 formula blocks compile with unresolved and resolved holes.
+- G38 PASS — raw TeX and micro internal labels do not leak to visible learner text.
+- G39 PASS — figure masks remain until the underlying item is correctly resolved.
+- G40 PASS — figures 2/3/5/11/12/13/14 replaced from canonical uploaded figures.
+- G41 PASS — exactly 17 unique figures and every WebP has complete RIFF payload.
+- G42 PASS — full `pnpm check:all`.
+
+Final gate: `36455569868` SUCCESS — Vitest 19/58, Playwright 46/46, typecheck/lint/build PASS.

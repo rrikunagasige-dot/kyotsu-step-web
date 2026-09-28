@@ -861,3 +861,84 @@ Updated:
 - `docs/checkpoints/phase-14-review.md`
 
 Status: **PASS**
+
+
+## 2026-09-28 — P20–P25 full textbook catalog repair PASS
+
+### Problem found from public UI review
+
+The Chapter 1 implementation itself was present, but the textbook navigation shell was incomplete:
+
+1. unit cards only changed a selected `unitId`; they did not open the unit,
+2. an additional bottom “教科書モードを始める” button was required,
+3. internal stable codes `1A〜1G` leaked into the learner-facing UI,
+4. the chapter catalog contained only Chapter 1,
+5. LearningSetup generated chapter groups only from published units, so chapters with zero units vanished entirely,
+6. the textbook's five-part structure was absent from the UI.
+
+### P20 — authoritative catalog
+
+Expanded `src/data/textbook/chapterCatalog.ts` to:
+- 5 parts,
+- 15 chapters,
+- unique part/chapter IDs,
+- Chapter 1 retaining the existing 7 unit codes,
+- all later chapters carrying no fabricated unit data.
+
+### P21 — catalog-driven UI
+
+LearningSetup now renders the catalog itself rather than deriving chapters from `published TextbookUnit[]`.
+
+Behavior:
+- implemented chapter: shows current unit links and progress,
+- unimplemented chapter: remains visible with `準備中`.
+
+### P22 — hide internal codes
+
+`1A〜1G` remain internal stable metadata only.
+
+Removed learner-facing code display from:
+- textbook unit cards,
+- textbook page H1,
+- textbook completion copy.
+
+### P23 — direct unit navigation
+
+Unit cards are now links:
+```text
+変位と速度
+  ↓ click
+/learning/textbook/physics-a-displacement-velocity
+```
+
+Textbook mode no longer exposes the extra bottom start button.
+
+### P24 — real browser audit
+
+Playwright now verifies:
+- all five parts are visible,
+- all fifteen chapter titles are visible,
+- Chapter 2 is visible as 準備中,
+- Chapter 1 reports seven units,
+- first unit contains `変位と速度` but not `1A`,
+- clicking the first unit directly opens the textbook page,
+- textbook H1 is `変位と速度`,
+- readingFlow and inline blanks render,
+- the existing 1A figure/mask and persistence regressions remain covered.
+
+### P25 — full gate
+
+Dedicated workflow:
+`.github/workflows/physics-textbook-catalog-ci.yml`
+
+Passing run:
+`36440820115`
+
+Evidence:
+- TypeScript PASS
+- ESLint PASS
+- Vitest: 17 files / 53 tests PASS
+- production build PASS
+- Playwright: 44/44 PASS
+
+Status: **P20–P25 PASS**

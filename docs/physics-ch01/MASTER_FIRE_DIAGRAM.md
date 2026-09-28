@@ -638,3 +638,84 @@ Gate history caught and fixed:
 6. legacy physics-learning E2E that skipped the new topic-selection step.
 
 No test was weakened to hide these failures.
+
+
+## 16. P20–P25 Full Textbook Catalog Repair
+
+```text
+authoritative physics textbook TOC
+        │
+        ├─ Part 1 様々な運動
+        │    ├─ Chapter 1 物体の運動 ← implemented
+        │    ├─ Chapter 2 剛体のつり合い
+        │    ├─ Chapter 3 運動量と力積
+        │    ├─ Chapter 4 円運動と単振動
+        │    └─ Chapter 5 万有引力
+        │
+        ├─ Part 2 熱
+        │    └─ Chapter 1 気体分子の運動
+        │
+        ├─ Part 3 波
+        │    ├─ Chapter 1 波の性質
+        │    ├─ Chapter 2 音
+        │    └─ Chapter 3 光
+        │
+        ├─ Part 4 電気と磁気
+        │    ├─ Chapter 1 電界と電位
+        │    ├─ Chapter 2 電流
+        │    ├─ Chapter 3 電流と磁界
+        │    └─ Chapter 4 電磁誘導と電磁波
+        │
+        └─ Part 5 原子・分子の世界
+             ├─ Chapter 1 電子と光
+             └─ Chapter 2 原子・原子核・素粒子
+
+catalog authority
+      │
+      ▼
+LearningSetup textbook mode
+      │
+      ├─ implemented chapter → unit links
+      └─ unimplemented chapter → 準備中
+                                   │
+                                   ▼
+implemented unit title click
+      │
+      └─ direct route /learning/textbook/:unitId
+                                   │
+                                   ▼
+TextbookUnitPage
+  title without internal 1A〜1G code
+  readingFlow / Figure V2 / blanks / examples / progress
+```
+
+### P20–P25 status
+
+- P20 PASS — full 5-part / 15-chapter catalog established.
+- P21 PASS — LearningSetup uses catalog as authority; 14 unimplemented chapters remain visible as 準備中.
+- P22 PASS — internal unit codes 1A〜1G removed from learner-facing setup and textbook H1/completion copy.
+- P23 PASS — implemented unit cards navigate directly to the textbook unit page; no extra textbook start button.
+- P24 PASS — direct-open 1A browser path renders heading, readingFlow, inline blanks; existing 1A figure/mask/progress regression tests remain green.
+- P25 PASS — full regression gate and control-doc finalization.
+
+### Catalog gates
+
+- G26 PASS — exactly 5 textbook parts.
+- G27 PASS — exactly 15 textbook chapter titles.
+- G28 PASS — Chapter 1 keeps 7 implemented units; remaining 14 chapters have no fabricated unit data.
+- G29 PASS — unimplemented chapters stay visible as 準備中 rather than disappearing.
+- G30 PASS — learner UI does not display `1A` for the first unit.
+- G31 PASS — first-unit card click immediately navigates to `/learning/textbook/physics-a-displacement-velocity`.
+- G32 PASS — direct-open 1A exposes textbook reading content and keeps the existing Figure V2/blank/progress gates.
+- G33 PASS — `pnpm check:all` succeeds.
+
+Verified code HEAD before docs-only finalization:
+`46018ed2d22e46bc8a174a705d7f62ffa6b933c2`
+
+Final gate:
+- GitHub Actions run `36440820115`: SUCCESS
+- TypeScript typecheck PASS
+- ESLint PASS
+- Vitest: 17 files / 53 tests PASS
+- production build PASS
+- Playwright: 44/44 PASS

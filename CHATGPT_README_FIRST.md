@@ -98,6 +98,12 @@ P16 textbook worked-example → Question adapter
 P17 Chapter 1 question-bank publish + dedup audit
 P18 full browser/regression gate
 P19 docs/fire/worklog/checkpoint update
+P20 full textbook catalog (5 parts / 15 chapters)
+P21 catalog-driven textbook setup + pending chapters
+P22 hide internal unit codes from learner UI
+P23 direct-open textbook unit cards
+P24 1A browser audit after direct navigation
+P25 full catalog/regression gate + docs finalization
 ```
 
 ## 現在の状態
@@ -123,9 +129,15 @@ P16 PASS
 P17 PASS
 P18 PASS
 P19 PASS
+P20 PASS
+P21 PASS
+P22 PASS
+P23 PASS
+P24 PASS
+P25 PASS
 ```
 
-最新の総合gate: GitHub Actions `36436511183` — typecheck / lint / Vitest 16 files・50 tests / production build / Playwright 44 tests すべて PASS。検証対象HEADは `e79f636e0ae347d5845916743f60f88dcfc63f6c`。
+最新の総合gate: GitHub Actions `36440820115` — typecheck / lint / Vitest 17 files・53 tests / production build / Playwright 44 tests すべて PASS。検証対象HEADは `46018ed2d22e46bc8a174a705d7f62ffa6b933c2`。
 
 P05で1Aを母版2.0として schemaVersion 1.1 へ移行した。78個のstable item IDを維持し、全itemに明示的な誤答候補を与え、 supplied Chapter-1 figures 1〜4 を app asset 化し、Figure V2 maskを実データへ接続した。
 
@@ -158,3 +170,26 @@ P17では既存 `physics-motion-01` を重複ではない独立v–tグラフ問
 P18では setup-first の実ブラウザ導線、23カード、運動15問、1G import問題の開始までをE2Eで検証し、全回帰gateを通過した。
 
 P19でREADME・火柴図・WORKLOG・taxonomy guide・phase-14 checkpointを更新した。
+
+
+## P20〜P25 教科書全体catalog補修
+
+教科書モード第1章の中身は保持したまま、外側の教科書navigationを補修した。
+
+- 物理教科書の5部・15章を `src/data/textbook/chapterCatalog.ts` のauthorityとして登録。
+- published unitから章を逆算する方式をやめ、catalogをUIの正とする。
+- 未実装章は消さず「準備中」として表示。
+- 第1章のみ現在の7単元を表示。
+- `1A〜1G` はstable metadataとして保持するが、学習者UIには表示しない。
+- 単元カードは選択用radioではなく、教材本文へ直接遷移するlinkとする。
+- textbook modeでは旧「教科書モードを始める」ボタンを廃止。
+- 1A direct-open後の本文、inline blank、図、進捗、既存Figure V2回帰をPlaywrightで確認。
+
+全15章:
+- 第1部 様々な運動: 物体の運動 / 剛体のつり合い / 運動量と力積 / 円運動と単振動 / 万有引力
+- 第2部 熱: 気体分子の運動
+- 第3部 波: 波の性質 / 音 / 光
+- 第4部 電気と磁気: 電界と電位 / 電流 / 電流と磁界 / 電磁誘導と電磁波
+- 第5部 原子・分子の世界: 電子と光 / 原子・原子核・素粒子
+
+P20〜P25は GitHub Actions run `36440820115` で full gate PASS。

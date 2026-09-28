@@ -28,7 +28,7 @@ test('switches the complete learning flow and preserves progress across language
   await expect(page.getByText('要判断最大值，可以先配方，再看抛物线的顶点。')).toBeVisible()
   await page.getByTestId('blank-mq-blank-sign').click()
   await page.getByTestId('option-mq-sign-minus').click()
-  await expect(page.getByTestId('answer-mq-blank-sign')).toContainText('首次正确')
+  await expect(page.getByTestId('answer-mq-blank-sign')).toContainText('首次答对')
 
   const sessionUrl = page.url()
   await page.getByRole('button', { name: '日本語' }).click()

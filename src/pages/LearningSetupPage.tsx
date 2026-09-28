@@ -9,7 +9,14 @@ import { textbookRepository } from '../repositories/textbookRepository'
 import { getQuestionCatalog, useAppStore } from '../stores/useAppStore'
 import { useI18n } from '../i18n/runtime'
 import { subjectLabel } from '../i18n/labels'
-import { isPhysicsTopicId, physicsTopicForQuestion, physicsTopicLabel } from '../data/physicsTaxonomy'
+import {
+  buildPhysicsTopicSummary,
+  isPhysicsTopicId,
+  physicsTaxonomy,
+  physicsTopicForQuestion,
+  physicsTopicLabel,
+  type PhysicsTopicId,
+} from '../data/physicsTaxonomy'
 
 type LearningMode = 'textbook' | 'practice'
 
@@ -32,22 +39,29 @@ export function LearningSetupPage() {
   const startLearning = useAppStore((state) => state.startLearning)
   const { language, text } = useI18n()
   const catalog = useMemo(() => getQuestionCatalog(customQuestions, language), [customQuestions, language])
+  const physicsSummary = useMemo(() => buildPhysicsTopicSummary(catalog), [catalog])
+
   const requestedTopicParam = searchParams.get('topic')
   const requestedTopic = isPhysicsTopicId(requestedTopicParam) ? requestedTopicParam : null
   const requestedMode = searchParams.get('mode')
   const requestedSubject = searchParams.get('subject')
+
   const [textbookUnits, setTextbookUnits] = useState<TextbookUnit[]>([])
   const [mode, setMode] = useState<LearningMode>(requestedMode === 'practice' ? 'practice' : 'textbook')
   const [subject, setSubject] = useState<Question['subject']>(requestedSubject === 'math-1a' ? 'math-1a' : 'physics')
+  const [activeTopic, setActiveTopic] = useState<PhysicsTopicId | null>(requestedTopic)
   const [variant, setVariant] = useState<LearningVariant>('detailed')
   const [unitId, setUnitId] = useState('')
-  const activeTopic = mode === 'practice' && subject === 'physics' ? requestedTopic : null
-  const subjectQuestions = catalog.filter((question) =>
-    question.subject === subject &&
-    question.status === 'published' &&
-    (!activeTopic || physicsTopicForQuestion(question) === activeTopic),
-  )
-  const [questionId, setQuestionId] = useState(subjectQuestions[0]?.questionId ?? '')
+  const [questionId, setQuestionId] = useState('')
+
+  const questionsFor = (nextSubject: Question['subject'], topic: PhysicsTopicId | null = null) =>
+    catalog.filter((question) =>
+      question.subject === nextSubject &&
+      question.status === 'published' &&
+      (nextSubject !== 'physics' || !topic || physicsTopicForQuestion(question) === topic),
+    )
+
+  const subjectQuestions = questionsFor(subject, subject === 'physics' ? activeTopic : null)
 
   useEffect(() => {
     textbookRepository.listPublished().then((units) => {
@@ -55,6 +69,18 @@ export function LearningSetupPage() {
       setUnitId((current) => current || units[0]?.unitId || '')
     })
   }, [])
+
+  useEffect(() => {
+    if (mode !== 'practice') return
+    if (subject === 'physics' && !activeTopic) {
+      if (questionId) setQuestionId('')
+      return
+    }
+    const available = questionsFor(subject, subject === 'physics' ? activeTopic : null)
+    if (!available.some((question) => question.questionId === questionId)) {
+      setQuestionId(available[0]?.questionId ?? '')
+    }
+  }, [activeTopic, catalog, mode, questionId, subject])
 
   const textbookChapters = useMemo(() => groupTextbookUnitsByChapter(textbookUnits), [textbookUnits])
   const selectedUnit = textbookUnits.find((unit) => unit.unitId === unitId)
@@ -67,27 +93,32 @@ export function LearningSetupPage() {
     { value: 'selfCheck', label: text('自力確認', '自主检查'), description: text('最小限の空欄', '仅保留必要填空') },
   ]
 
-  const firstQuestionFor = (nextSubject: Question['subject'], nextMode: LearningMode) =>
-    catalog.find((question) =>
-      question.subject === nextSubject &&
-      question.status === 'published' &&
-      (!(nextMode === 'practice' && nextSubject === 'physics' && requestedTopic) || physicsTopicForQuestion(question) === requestedTopic),
-    )?.questionId ?? ''
-
   const changeSubject = (next: Question['subject']) => {
     setSubject(next)
-    setQuestionId(firstQuestionFor(next, mode))
+    setActiveTopic(null)
+    setQuestionId(next === 'math-1a' ? questionsFor(next)[0]?.questionId ?? '' : '')
   }
 
   const changeMode = (next: LearningMode) => {
     setMode(next)
     if (next === 'textbook') {
       setSubject('physics')
+      setActiveTopic(null)
+      setQuestionId('')
       return
     }
-    const nextSubject = requestedTopic ? 'physics' : defaultSubject
+
+    const nextSubject: Question['subject'] = requestedTopic ? 'physics' : defaultSubject
+    const nextTopic = nextSubject === 'physics' ? requestedTopic : null
     setSubject(nextSubject)
-    setQuestionId(firstQuestionFor(nextSubject, next))
+    setActiveTopic(nextTopic)
+    setQuestionId(nextSubject === 'physics' && !nextTopic ? '' : questionsFor(nextSubject, nextTopic)[0]?.questionId ?? '')
+  }
+
+  const selectPhysicsTopic = (topic: PhysicsTopicId) => {
+    if (physicsSummary.counts[topic] <= 0) return
+    setActiveTopic(topic)
+    setQuestionId(questionsFor('physics', topic)[0]?.questionId ?? '')
   }
 
   const begin = () => {
@@ -103,7 +134,7 @@ export function LearningSetupPage() {
       <header className="page-hero">
         <p className="eyebrow">LEARNING SETUP</p>
         <h1>{text('学習設定', '学习设置')}</h1>
-        <p>{text('基礎知識を順番に学ぶか、問題を解きながら考え方を身につけるかを選びます。', '选择顺序学习知识点，或通过做题掌握解题过程。')}</p>
+        <p>{text('学習方法、科目、分野、問題の順に選びます。', '依次选择学习方式、科目、领域和题目。')}</p>
       </header>
 
       <NumberedSection number="01" title={text('学習方法', '学习方式')}>
@@ -116,7 +147,7 @@ export function LearningSetupPage() {
           <button type="button" role="radio" aria-checked={mode === 'practice'} onClick={() => changeMode('practice')}>
             <ListChecks aria-hidden="true" />
             <strong>{text('問題を解く', '做题')}</strong>
-            <small>{text('現在の共通テスト型学習をそのまま使用', '继续使用现有共通测试式做题模式')}</small>
+            <small>{text('科目と分野を選んで題庫から演習', '选择科目和领域后从题库练习')}</small>
           </button>
         </div>
       </NumberedSection>
@@ -189,37 +220,85 @@ export function LearningSetupPage() {
             </div>
           )}
         </NumberedSection>
-      ) : (
+      ) : subject === 'physics' ? (
         <>
-          <NumberedSection number="03" title={activeTopic ? text('分野・問題', '领域・题目') : text('問題', '题目')}>
-            {activeTopic && (
+          <NumberedSection
+            number="03"
+            title={text('物理の分野', '物理领域')}
+            description={text('まず分野を選び、その後に題庫から問題を選びます。', '先选择领域，再从题库中选择题目。')}
+          >
+            <div className="physics-taxonomy-board" data-testid="physics-taxonomy-board">
+              {physicsTaxonomy.map((domain) => (
+                <section className="physics-domain-group" key={domain.id} data-testid={`physics-domain-${domain.id}`}>
+                  <header className="physics-domain-heading">
+                    <span aria-hidden="true" />
+                    <h3>{domain.label[language]}</h3>
+                    <span aria-hidden="true" />
+                  </header>
+                  <div className="physics-topic-grid">
+                    {domain.topics.map((topic) => {
+                      const count = physicsSummary.counts[topic.id]
+                      const selected = activeTopic === topic.id
+                      return (
+                        <button
+                          type="button"
+                          className={`physics-topic-card${count === 0 ? ' physics-topic-card--empty' : ''}${selected ? ' physics-topic-card--selected' : ''}`}
+                          data-testid={`physics-topic-${topic.id}`}
+                          aria-pressed={selected}
+                          disabled={count === 0}
+                          key={topic.id}
+                          onClick={() => selectPhysicsTopic(topic.id)}
+                        >
+                          <strong>{topic.label[language]}</strong>
+                          <small aria-label={text(`${count}問`, `${count}题`)}>{count}</small>
+                        </button>
+                      )
+                    })}
+                  </div>
+                </section>
+              ))}
+            </div>
+            {physicsSummary.unclassified > 0 && (
+              <p className="field-help" role="status">
+                {text(`未分類の物理問題が ${physicsSummary.unclassified} 問あります。`, `有 ${physicsSummary.unclassified} 道物理题尚未分类。`)}
+              </p>
+            )}
+          </NumberedSection>
+
+          {activeTopic && (
+            <NumberedSection number="04" title={text('問題', '题目')}>
               <div className="topic-filter-note" data-testid="physics-topic-filter">
                 <span>{text('選択中の分野', '当前领域')}</span>
                 <strong>{physicsTopicLabel(activeTopic, language)}</strong>
                 <small>{text(`${subjectQuestions.length} 問`, `${subjectQuestions.length} 题`)}</small>
               </div>
-            )}
-            <label className="field-label" htmlFor="learning-question">{text('学習する問題', '选择学习题目')}</label>
-            <select id="learning-question" className="select-control" value={questionId} onChange={(event) => setQuestionId(event.target.value)}>
-              {subjectQuestions.map((question) => <option key={question.questionId} value={question.questionId}>{question.title}</option>)}
-            </select>
-            {activeTopic && subjectQuestions.length === 0 && (
-              <p className="field-help">{text('この分野の問題はまだありません。', '这个领域目前还没有题目。')}</p>
-            )}
-          </NumberedSection>
-          {SHOW_GUIDANCE_LEVEL && (
-            <NumberedSection number="04" title={text('誘導レベル', '引导强度')}>
-              <div className="choice-grid" role="radiogroup" aria-label={text('誘導レベル', '引导强度')}>
-                {variants.map((item) => (
-                  <button type="button" role="radio" aria-checked={variant === item.value} key={item.value} onClick={() => setVariant(item.value)}>
-                    <strong>{item.label}</strong>
-                    <small>{item.description}</small>
-                  </button>
-                ))}
-              </div>
+              <label className="field-label" htmlFor="learning-question">{text('学習する問題', '选择学习题目')}</label>
+              <select id="learning-question" className="select-control" value={questionId} onChange={(event) => setQuestionId(event.target.value)}>
+                {subjectQuestions.map((question) => <option key={question.questionId} value={question.questionId}>{question.title}</option>)}
+              </select>
             </NumberedSection>
           )}
         </>
+      ) : (
+        <NumberedSection number="03" title={text('問題', '题目')}>
+          <label className="field-label" htmlFor="learning-question">{text('学習する問題', '选择学习题目')}</label>
+          <select id="learning-question" className="select-control" value={questionId} onChange={(event) => setQuestionId(event.target.value)}>
+            {subjectQuestions.map((question) => <option key={question.questionId} value={question.questionId}>{question.title}</option>)}
+          </select>
+        </NumberedSection>
+      )}
+
+      {mode === 'practice' && SHOW_GUIDANCE_LEVEL && (
+        <NumberedSection number={subject === 'physics' ? '05' : '04'} title={text('誘導レベル', '引导强度')}>
+          <div className="choice-grid" role="radiogroup" aria-label={text('誘導レベル', '引导强度')}>
+            {variants.map((item) => (
+              <button type="button" role="radio" aria-checked={variant === item.value} key={item.value} onClick={() => setVariant(item.value)}>
+                <strong>{item.label}</strong>
+                <small>{item.description}</small>
+              </button>
+            ))}
+          </div>
+        </NumberedSection>
       )}
 
       <RaisedButton

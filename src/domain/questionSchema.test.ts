@@ -4,7 +4,7 @@ import { builtInQuestions } from '../data/questions'
 import { formatQuestionIssues, validateQuestionCatalog } from './questionSchema'
 
 describe('question catalog schema', () => {
-  it('accepts the five built-in versioned questions', () => {
+  it('accepts the full built-in versioned question catalog', () => {
     expect(builtInQuestions).toHaveLength(5)
     expect(new Set(builtInQuestions.map((question) => question.questionId)).size).toBe(5)
   })

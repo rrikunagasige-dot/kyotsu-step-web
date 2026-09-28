@@ -662,8 +662,7 @@ test('1G uses the supplied gravity, drag and terminal-velocity figures', async (
 
   const gravityFigure = page.getByAltText(/空気抵抗がない場合とある場合/)
   const stagesFigure = page.getByAltText(/落下初期、途中、終端速度付近/)
-  const graphFigure = page.getByAltText(/速度 v が時間 t とともに増え/)
-  for (const figure of [gravityFigure, stagesFigure, graphFigure]) {
+  for (const figure of [gravityFigure, stagesFigure]) {
     await expect(figure).toBeVisible()
     await expect.poll(async () => figure.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0)
   }
@@ -672,6 +671,10 @@ test('1G uses the supplied gravity, drag and terminal-velocity figures', async (
   const d1Panel = page.getByTestId('inline-choice-panel-d-1')
   await d1Panel.getByRole('button', { name: '小さくなる', exact: true }).click()
   await expect(d1Panel).toHaveCount(0)
+
+  const graphFigure = page.getByAltText(/速度 v が時間 t とともに増え/)
+  await expect(graphFigure).toBeVisible()
+  await expect.poll(async () => graphFigure.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0)
 
   await page.getByTestId('textbook-item-d-2').click()
   const d2Panel = page.getByTestId('inline-choice-panel-d-2')

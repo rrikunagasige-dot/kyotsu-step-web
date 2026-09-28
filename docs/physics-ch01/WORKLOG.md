@@ -374,3 +374,70 @@ The final 1B browser test validates the supplied figure load, mobile hotspot bou
 `P07 = PASS`
 
 Next node: `P08 — 1C 相対速度`.
+
+
+## 2026-09-28 — P08 1C 相対速度 PASS
+
+### Source audit
+
+Checked against:
+- original textbook p.16–17
+- supplied `第1章_1C_相対速度.docx`
+- supplied figures 7 and 8
+
+Source-aligned core:
+- relative velocity depends on the observer
+- `v_{B/A}=v_B-v_A`
+- same velocity / same direction gives relative velocity 0
+- planar relative velocity is a vector difference
+- bicycle/rain example uses `v_{R/C}=v_R-v_C`
+
+### Implementation
+
+Published:
+- `src/data/textbook/ch01/1c-relative-velocity.ts`
+- unitId: `physics-1c-relative-velocity`
+- schemaVersion 1.1
+- revision 1
+- source pages 16–17
+- orderInChapter 3
+- 17 explicit-choice items
+
+Source figures:
+- `public/assets/physics/textbook/ch01/1c/relative-velocity-cars.webp`
+- `public/assets/physics/textbook/ch01/1c/relative-rain-bicycle.webp`
+
+Figure V2:
+- figure 7 hotspot `hotspot-d-2` links the relative-velocity arrow to D-2
+- figure 8 is used directly for the bicycle/rain worked example
+
+### Catalog / navigation
+
+Chapter order is now:
+`1A → 1B → 1C`.
+
+### CI strategy
+
+P08 code, catalog, tests, CI policy, and both binary assets were committed as one checkpoint:
+`d8c83b095de90f4606275c71d083b6a3ab1fee3f`.
+
+The branch CI now ignores:
+- `docs/**`
+- `CHATGPT_README_FIRST.md`
+
+This keeps docs-only bookkeeping from generating unnecessary CI emails.
+
+### Gate
+
+GitHub Actions run `36373169972`: PASS.
+
+- TypeScript PASS
+- ESLint PASS
+- Vitest: 14 files / 39 tests PASS
+- production build PASS
+- textbook E2E: 8 tests PASS
+
+### Status
+
+`P08 = PASS`  
+Next: `P09 — 1D 加速度`.

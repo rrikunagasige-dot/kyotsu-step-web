@@ -68,18 +68,6 @@ Unreferenced synthetic redraw assets are not kept when the supplied source figur
 
 ## 1B app assets
 
-| source figure | app asset | use |
-|---|---|---|
-| 5.png | `public/assets/physics/textbook/ch01/1b/velocity-composition.webp` | river/boat velocity composition and resultant |
-| 6.png | `public/assets/physics/textbook/ch01/1b/velocity-components.webp` | x/y decomposition of a velocity vector |
-
-Figure V2:
-- figure 5 uses `hotspot-d-1` linked to item `d-1` for the resultant / parallelogram diagonal.
-- figure 6 is not masked because its D-2 question asks the inferred relation between the component directions rather than copying a printed label.
-
-
-## 1B app assets
-
 The supplied 1B figures are represented in the app as optimized WebP assets:
 
 | source figure | app asset | use |
@@ -95,3 +83,23 @@ Unit data:
 - `unitId: physics-1b-velocity-composition`
 - `schemaVersion: 1.1`
 - `sourcePages: [14, 15]`
+
+
+## 1C app assets
+
+The supplied 1C figures are represented in the app as optimized WebP assets:
+
+| source figure | app asset | use |
+|---|---|---|
+| 7.png | `public/assets/physics/textbook/ch01/1c/relative-velocity-cars.webp` | same/opposite-direction cars and A-observed relative velocity |
+| 8.png | `public/assets/physics/textbook/ch01/1c/relative-rain-bicycle.webp` | rain minus bicycle velocity construction |
+
+Figure V2:
+- figure 7 uses `hotspot-d-2` linked to item `d-2` for the relative-velocity arrow.
+- figure 8 is displayed without a mask because the worked example asks for vector components, magnitude, and inferred angle rather than copying a printed label.
+
+Unit data:
+- `src/data/textbook/ch01/1c-relative-velocity.ts`
+- `unitId: physics-1c-relative-velocity`
+- `schemaVersion: 1.1`
+- `sourcePages: [16, 17]`

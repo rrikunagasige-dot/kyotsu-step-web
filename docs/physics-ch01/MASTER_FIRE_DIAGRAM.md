@@ -239,8 +239,9 @@ P04  PASS — textbook data split by chapter/unit + compatibility entry point
 P05  PASS — 1A migrated to schemaVersion 1.1 + explicit distractors + supplied figures 1–4 + real overlays
 P06  PASS — 1A regression/browser audit including persisted figure-mask flow
 P07  PASS — 1B 速度の合成と分解 + supplied figures 5–6 + browser smoke
-P08  NEXT — import 1C 相対速度
-P09–P14 WAIT
+P08  PASS — 1C 相対速度 + supplied figures 7–8 + browser audit
+P09  NEXT — import 1D 加速度
+P10–P14 WAIT
 ```
 
 P01 PASS evidence: GitHub Actions run `36333501024`.
@@ -359,3 +360,37 @@ The 1B E2E verifies:
 - correct answer removes the hotspot
 - figure 6 becomes visible after D-1 resolution
 - resolved hotspot remains removed after reload
+
+
+### P08 implementation summary
+
+```text
+1C 相対速度
+├─ schemaVersion 1.1
+├─ revision 1
+├─ sourcePages 16–17
+├─ 17 source-aligned items
+├─ explicit choices on every item
+├─ figure 7 → relative-velocity-cars.webp
+├─ figure 8 → relative-rain-bicycle.webp
+└─ Figure V2 hotspot → D-2 (Aから見たBの相対速度)
+```
+
+P08 final gate evidence: GitHub Actions run `36373169972`:
+- TypeScript typecheck PASS
+- ESLint PASS
+- Vitest: 14 files / 39 tests PASS
+- production build PASS
+- Playwright Chromium install PASS
+- textbook E2E: 8 tests PASS
+
+The browser gate verifies:
+- Chapter 1 lists 1A → 1B → 1C
+- 1C starts with its concept section and keeps later sections locked
+- figure 7 loads from the supplied source asset
+- the D-2 hotspot stays inside the mobile figure bounds
+- the hotspot opens the linked relative-velocity item and disappears after a correct answer
+- progress can be seeded through example 1
+- figure 8 loads in example 2 with nonzero natural width
+
+The P08 checkpoint was batched into one code/assets commit so CI ran once instead of on every micro-change. The workflow now ignores docs-only pushes to reduce notification noise.

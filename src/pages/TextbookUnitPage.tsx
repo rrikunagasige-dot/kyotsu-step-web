@@ -289,7 +289,7 @@ export function TextbookUnitPage() {
               ? `TEXTBOOK / PHYSICS / CHAPTER ${unit.chapter.chapterNumber}`
               : 'TEXTBOOK / PHYSICS'}
           </p>
-          <h1>{unitCode ? `${unitCode} ${displayTitle}` : displayTitle}</h1>
+          <h1>{displayTitle}</h1>
           {unit.subtitle && <p>{unit.subtitle}</p>}
         </div>
         <StatusBadge>{text(`第 ${unit.revision} 版`, `第 ${unit.revision} 版`)}</StatusBadge>
@@ -347,8 +347,8 @@ export function TextbookUnitPage() {
             <div>
               <h2>{text('単元完了', '单元完成')}</h2>
               <p>{text(
-                `${unitCode ? `${unitCode} ` : ''}${displayTitle} の ${summary.total} 個の確認項目をすべて完了しました。`,
-                `已完成 ${unitCode ? `${unitCode} ` : ''}${displayTitle} 的全部 ${summary.total} 个确认项目。`,
+                `${displayTitle} の ${summary.total} 個の確認項目をすべて完了しました。`,
+                `已完成 ${displayTitle} 的全部 ${summary.total} 个确认项目。`,
               )}</p>
             </div>
             <Link className="raised-link" to="/learning/setup">{text('問題演習へ進む', '进入做题模式')}</Link>

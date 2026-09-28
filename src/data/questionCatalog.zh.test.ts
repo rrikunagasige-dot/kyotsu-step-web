@@ -47,7 +47,9 @@ describe('independently authored Chinese question catalog', () => {
   })
 
   it('contains complete Chinese content instead of Japanese text fallbacks', () => {
-    expect(JSON.stringify(builtInQuestionsZh)).not.toMatch(/[ぁ-んァ-ン]/)
+    const serialized = JSON.stringify(builtInQuestionsZh)
+    const kana = [...new Set(serialized.match(/[ぁ-んァ-ン]/g) ?? [])]
+    expect(kana).toEqual([])
     expect(builtInQuestionsZh.map((question) => question.title)).toEqual([
       '通过对话理解二次函数最大值',
       '通过对话读取频数分布表与平均数',

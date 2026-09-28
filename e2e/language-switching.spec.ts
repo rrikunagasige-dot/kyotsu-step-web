@@ -22,6 +22,7 @@ test('switches the complete learning flow and preserves progress across language
   await expect(page.getByLabel('选择学习题目').locator('option:checked')).toHaveText('通过对话理解二次函数最大值')
   await expect(page.getByText('引导强度')).toHaveCount(0)
   await page.getByTestId('start-learning').click()
+  await page.getByTestId('open-guide').click()
 
   await expect(page.getByRole('heading', { name: '通过对话理解二次函数最大值' })).toBeVisible()
   await expect(page.getByText('要判断最大值，可以先配方，再看抛物线的顶点。')).toBeVisible()

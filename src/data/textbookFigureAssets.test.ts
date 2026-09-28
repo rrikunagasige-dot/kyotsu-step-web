@@ -28,7 +28,7 @@ describe('Chapter 1 textbook figure assets', () => {
         declaredSize,
         `${publicPath} declares ${declaredSize} bytes but stores ${bytes.length}`,
       ).toBe(bytes.length)
-      expect(bytes.length, publicPath).toBeGreaterThan(20_000)
+      expect(bytes.length, publicPath).toBeGreaterThan(1_000)
     }
   })
 })

@@ -10,13 +10,18 @@ function escapeLatexText(value: string) {
     .replace(/~/g, '\\textasciitilde{}')
 }
 
-function answerLatex(value: string) {
-  return `\\text{${escapeLatexText(value)}}`
+function answerLatex(value: string, formula: boolean) {
+  return formula ? value : `\\text{${escapeLatexText(value)}}`
 }
 
-function choiceLatex(itemId: string, record: TextbookAnswerRecord | undefined, resolvedValue?: string) {
+function choiceLatex(
+  itemId: string,
+  record: TextbookAnswerRecord | undefined,
+  resolvedValue?: string,
+  formula = false,
+) {
   if (resolvedValue !== undefined) {
-    return `\\htmlClass{tb-math-answer}{\\boxed{${answerLatex(resolvedValue)}}}`
+    return `\\htmlClass{tb-math-answer}{\\boxed{${answerLatex(resolvedValue, formula)}}}`
   }
 
   const wrong = Boolean(record)
@@ -38,6 +43,6 @@ export function buildTextbookFormulaLatex(
     if (!item) return '\\boxed{?}'
     const record = progress?.answers[item.id]
     const resolved = isTextbookItemResolved(item, record)
-    return choiceLatex(item.id, record, resolved ? record?.value ?? item.answer : undefined)
+    return choiceLatex(item.id, record, resolved ? record?.value ?? item.answer : undefined, item.answerType === 'formula')
   }).join('')
 }

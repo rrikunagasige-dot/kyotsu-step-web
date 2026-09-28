@@ -1049,3 +1049,51 @@ Evidence:
 - Playwright: 46/46 PASS
 
 Status: **P26–P31 PASS**
+
+
+## 2026-09-29 — P32 persistent source archive index PASS
+
+### Trigger
+
+Repeated source recovery was wasting time because the canonical ZIPs were being looked for in Desktop/Downloads even after the user had already uploaded them.
+
+### Verified source bytes
+
+`figure(1).zip` and the earlier `figure.zip` were byte-identical. The canonical persisted name is now `figure.zip`.
+
+- bytes: 12,078,342
+- SHA256: `b1d55eb94c13aa8ec91dbfd794dcbcbcec9c5a67ed8bdd692c397ad78d8b01e2`
+- entries: 17
+- ZIP integrity: PASS
+
+`物理教科書モード_第1-5章_母版準拠_完全版(2).zip` and the earlier `(1).zip` were byte-identical. The canonical persisted name drops the duplicate suffix.
+
+- bytes: 50,419,544
+- SHA256: `df1194b491d362c569018da15bc31e3583926a863af1f74b4842b033240e8eff`
+- entries: 72
+- ZIP integrity: PASS
+
+### Persistence
+
+Uploaded to ChatGPT Library:
+- `/塾/kyotsu-step-web/source_archives/figure.zip`
+- `/塾/kyotsu-step-web/source_archives/物理教科書モード_第1-5章_母版準拠_完全版.zip`
+
+Added GitHub index:
+- `docs/source_archives/README.md`
+
+Corrected:
+- `docs/physics-ch01/SOURCE_MANIFEST.md`
+
+### Tooling limitation recorded
+
+The available GitHub connector can create UTF-8 files and Git blobs from supplied text/base64, but it does not accept local file references or expose Release-asset upload. Sending 12 MB / 50 MB ZIP bytes through the text wrapper is not safe or practical.
+
+Therefore the binary archives are persisted in Library, while GitHub stores their canonical identity, retrieval rule, provenance mapping, and Library location. This avoids falsely claiming that the archive bytes are in the Git repository.
+
+### Future rule
+
+Never start by searching Mac/Windows/Desktop for these ZIPs.
+Search the persistent Library path first and verify size/SHA/testzip before use.
+
+Status: **P32 PASS**

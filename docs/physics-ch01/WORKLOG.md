@@ -755,3 +755,109 @@ Chapter 1 V2 implementation is complete on `chatgpt/physics-ch01-textbook-v2`.
 Next decision point:
 - integrate/merge this completed branch according to the repository ownership policy, or
 - start Chapter 2 with a fresh source audit and a new dependency/fire diagram before coding.
+
+
+## 2026-09-28 — P15–P19 Chapter 1 question-bank import PASS
+
+### Pre-work control audit
+
+Before code changes, re-read:
+- `CHATGPT_README_FIRST.md`
+- `WORKFLOW.md`
+- complete `docs/physics-ch01/MASTER_FIRE_DIAGRAM.md`
+- current worklog
+- `docs/taxonomy/PHYSICS_TITLE_GUIDE.md`
+
+The import was added after the already-closed textbook P00–P14 line rather than rewriting those nodes.
+
+### P15 — navigation correction
+
+Previous taxonomy UI appeared directly on `ProblemsPage`, which inverted the intended hierarchy.
+
+Corrected flow:
+
+```text
+問題
+→ 学習設定
+→ 問題を解く
+→ 科目
+→ 物理
+→ 5領域 / 23分野
+→ 問題
+→ 学習開始
+```
+
+The taxonomy board now exists only inside physics practice setup. A physics topic must be selected before the question selector and start button become usable.
+
+### P16 — common textbook → Question adapter
+
+Added:
+- `src/data/textbookPracticeQuestions.ts`
+
+Rule:
+- only `role='worked-example'` sections are imported,
+- concept / figure-reading / review micro-items are not counted as separate question-bank questions,
+- 2 examples per unit × 7 units = 14 questions.
+
+Stable IDs:
+- `physics-ch01-1a-example-q1` … `physics-ch01-1g-example-q2`.
+
+Japanese questions reuse the source readingFlow where possible. Chinese questions keep the same grading identity while using Chinese guide text and translated answer labels. Both catalogs pass the existing bilingual parity gate.
+
+### P17 — classification and dedup audit
+
+All 14 imports:
+- subject = physics
+- majorUnit = mechanics
+- minorUnit = motion
+- status = published
+
+The pre-existing `physics-motion-01` is a distinct v–t graph problem asking acceleration and displacement, so it was not superseded.
+
+Resulting published physics catalog:
+- motion = 15
+- current = 1
+- magnetic-field = 1
+- total physics = 17
+- plus 2 math = 19 built-in questions total.
+
+### P18 — gate history
+
+Dedicated CI workflow:
+`.github/workflows/physics-ch01-questionbank-ci.yml`
+
+Failures caught before PASS:
+1. unused locale import / adapter variable,
+2. Japanese kana accidentally left in a Chinese generic prompt,
+3. old schema test fixed at 5 built-in questions,
+4. missing simulation `tolerance`,
+5. old physics learning E2E that selected a question before selecting the motion topic.
+
+Final passing run:
+`36436511183`
+
+Evidence:
+- TypeScript PASS
+- ESLint PASS
+- Vitest: 16 files / 50 tests PASS
+- production build PASS
+- Playwright: 44/44 PASS
+
+Browser evidence includes:
+- taxonomy absent from ProblemsPage,
+- setup → practice → physics reveals 23 topic cards,
+- motion card displays 15,
+- 15 motion options are present,
+- existing `physics-motion-01` remains first,
+- `physics-ch01-1g-example-q1` can be selected and opened as a real learning session.
+
+### P19 — docs/checkpoint
+
+Updated:
+- `CHATGPT_README_FIRST.md`
+- `docs/physics-ch01/MASTER_FIRE_DIAGRAM.md`
+- `docs/physics-ch01/WORKLOG.md`
+- `docs/taxonomy/PHYSICS_TITLE_GUIDE.md`
+- `docs/checkpoints/phase-14-review.md`
+
+Status: **PASS**

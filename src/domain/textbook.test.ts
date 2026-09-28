@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { builtInTextbookUnits } from '../data/textbookUnits'
-import { answerTextbookItem, getTextbookChoices, groupTextbookUnitsByChapter, isTextbookAnswerCorrect, normalizeTextbookAnswer, textbookUnitProgress } from './textbook'
+import { answerTextbookItem, getTextbookChoices, groupTextbookUnitsByChapter, isTextbookAnswerCorrect, isTextbookItemResolved, normalizeTextbookAnswer, textbookUnitProgress } from './textbook'
 
 const unit = builtInTextbookUnits[0]
 const firstItem = unit.sections[0].items[0]
@@ -30,16 +30,49 @@ describe('textbook learning state', () => {
     expect(getTextbookChoices(unit, firstItem)).toEqual(choices)
   })
 
-  it('preserves the wrong first choice, resolves the blank, and leaves the correct answer available from the item', () => {
-    const progress = answerTextbookItem(undefined, unit, firstItem, '変位', 1000)
-    const record = progress.answers[firstItem.id]
+  it('keeps a wrong choice unresolved and resolves only after a correct retry', () => {
+    const wrongProgress = answerTextbookItem(undefined, unit, firstItem, '変位', 1000)
+    const wrongRecord = wrongProgress.answers[firstItem.id]
 
-    expect(record.isFirstCorrect).toBe(false)
-    expect(record.firstValue).toBe('変位')
-    expect(record.value).toBe('変位')
-    expect(firstItem.answer).toBe('位置ベクトル')
-    expect(record.resolved).toBe(true)
-    expect(record.attemptCount).toBe(1)
-    expect(textbookUnitProgress(unit, progress).completed).toBe(1)
+    expect(wrongRecord.isFirstCorrect).toBe(false)
+    expect(wrongRecord.firstValue).toBe('変位')
+    expect(wrongRecord.value).toBe('変位')
+    expect(wrongRecord.resolved).toBe(false)
+    expect(wrongRecord.attemptCount).toBe(1)
+    expect(isTextbookItemResolved(firstItem, wrongRecord)).toBe(false)
+    expect(textbookUnitProgress(unit, wrongProgress).completed).toBe(0)
+
+    const correctedProgress = answerTextbookItem(wrongProgress, unit, firstItem, '位置ベクトル', 2000)
+    const correctedRecord = correctedProgress.answers[firstItem.id]
+
+    expect(correctedRecord.isFirstCorrect).toBe(false)
+    expect(correctedRecord.firstValue).toBe('変位')
+    expect(correctedRecord.value).toBe('位置ベクトル')
+    expect(correctedRecord.resolved).toBe(true)
+    expect(correctedRecord.attemptCount).toBe(2)
+    expect(isTextbookItemResolved(firstItem, correctedRecord)).toBe(true)
+    expect(textbookUnitProgress(unit, correctedProgress).completed).toBe(1)
+  })
+
+  it('rejects legacy resolved-wrong records while preserving legacy first-correct progress', () => {
+    const legacyWrong = {
+      itemId: firstItem.id,
+      value: '変位',
+      firstValue: '変位',
+      isFirstCorrect: false,
+      resolved: true,
+      attemptCount: 1,
+      firstAnsweredAt: 1,
+      lastAnsweredAt: 1,
+    }
+    const legacyCorrectSeed = {
+      ...legacyWrong,
+      value: 'seeded',
+      firstValue: 'seeded',
+      isFirstCorrect: true,
+    }
+
+    expect(isTextbookItemResolved(firstItem, legacyWrong)).toBe(false)
+    expect(isTextbookItemResolved(firstItem, legacyCorrectSeed)).toBe(true)
   })
 })

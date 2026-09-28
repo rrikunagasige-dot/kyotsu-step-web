@@ -254,25 +254,63 @@ test.beforeEach(async ({ page }) => {
   await page.reload()
 })
 
-test('textbook setup exposes chapter and unit hierarchy before starting', async ({ page }) => {
+test('textbook setup exposes all five parts and fifteen chapter titles', async ({ page }) => {
   await page.goto(appRoute('/learning/setup'))
 
-  await expect(page.getByText('第1章')).toBeVisible()
-  await expect(page.getByText('物体の運動')).toBeVisible()
-  await expect(page.getByTestId('textbook-unit-physics-a-displacement-velocity')).toBeVisible()
-  await expect(page.getByTestId('textbook-unit-physics-1b-velocity-composition')).toBeVisible()
-  await expect(page.getByTestId('textbook-unit-physics-1c-relative-velocity')).toBeVisible()
-  await expect(page.getByTestId('textbook-unit-physics-1d-acceleration')).toBeVisible()
-  await expect(page.getByTestId('textbook-unit-physics-1e-horizontal-projectile')).toBeVisible()
-  await expect(page.getByTestId('textbook-unit-physics-1f-oblique-projectile')).toBeVisible()
-  await expect(page.getByTestId('textbook-unit-physics-1g-gravity-drag-terminal-velocity')).toBeVisible()
-  await expect(page.getByTestId('textbook-selection-summary')).toContainText('1A')
+  for (const [partNumber, title] of [
+    ['1', '様々な運動'],
+    ['2', '熱'],
+    ['3', '波'],
+    ['4', '電気と磁気'],
+    ['5', '原子・分子の世界'],
+  ] as const) {
+    const part = page.getByTestId(`textbook-part-${partNumber}`)
+    await expect(part).toBeVisible()
+    await expect(part).toContainText(title)
+  }
+
+  const chapterExpectations = [
+    ['physics-ch01-motion', '物体の運動'],
+    ['physics-p1-ch02-rigid-body', '剛体のつり合い'],
+    ['physics-p1-ch03-momentum', '運動量と力積'],
+    ['physics-p1-ch04-circular-oscillation', '円運動と単振動'],
+    ['physics-p1-ch05-gravitation', '万有引力'],
+    ['physics-p2-ch01-gas-molecules', '気体分子の運動'],
+    ['physics-p3-ch01-wave-properties', '波の性質'],
+    ['physics-p3-ch02-sound', '音'],
+    ['physics-p3-ch03-light', '光'],
+    ['physics-p4-ch01-electric-field-potential', '電界と電位'],
+    ['physics-p4-ch02-current', '電流'],
+    ['physics-p4-ch03-current-magnetic-field', '電流と磁界'],
+    ['physics-p4-ch04-induction-em-wave', '電磁誘導と電磁波'],
+    ['physics-p5-ch01-electron-light', '電子と光'],
+    ['physics-p5-ch02-atom-nucleus-particle', '原子・原子核・素粒子'],
+  ] as const
+
+  for (const [chapterId, title] of chapterExpectations) {
+    const chapter = page.getByTestId(`textbook-chapter-${chapterId}`)
+    await expect(chapter).toBeVisible()
+    await expect(chapter).toContainText(title)
+  }
+
+  await expect(page.getByTestId('textbook-chapter-physics-ch01-motion')).toContainText('7 単元')
+  await expect(page.getByTestId('textbook-chapter-physics-p1-ch02-rigid-body')).toContainText('準備中')
+
+  const unit1A = page.getByTestId('textbook-unit-physics-a-displacement-velocity')
+  await expect(unit1A).toBeVisible()
+  await expect(unit1A).toContainText('変位と速度')
+  await expect(unit1A).not.toContainText('1A')
+  await expect(page.getByText('1A', { exact: true })).toHaveCount(0)
+  await expect(page.getByTestId('start-learning')).toHaveCount(0)
 })
 
 test('textbook mode shows a full subsection and unlocks the next subsection after each blank is resolved', async ({ page }) => {
   await page.goto(appRoute('/learning/setup'))
-  await page.getByTestId('start-learning').click()
+  await page.getByTestId('textbook-unit-physics-a-displacement-velocity').click()
 
+  await expect(page).toHaveURL(/physics-a-displacement-velocity/)
+  await expect(page.getByRole('heading', { name: '変位と速度', exact: true })).toBeVisible()
+  await expect(page.getByText('1A', { exact: true })).toHaveCount(0)
   await expect(page.getByTestId('textbook-reading-flow')).toContainText('1-1')
   await expect(page.getByTestId('textbook-item-a-1')).toBeVisible()
   await expect(page.getByTestId('textbook-item-a-2')).toBeVisible()
@@ -369,8 +407,6 @@ test('real 1A figure loads and a masked label can be answered from the figure', 
 test('1B uses the supplied figures and resolves the composition hotspot on mobile', async ({ page }) => {
   await page.goto(appRoute('/learning/setup'))
   await page.getByTestId('textbook-unit-physics-1b-velocity-composition').click()
-  await expect(page.getByTestId('textbook-selection-summary')).toContainText('1B')
-  await page.getByTestId('start-learning').click()
 
   await expect(page).toHaveURL(/physics-1b-velocity-composition/)
   await expect(page.getByTestId('textbook-item-b-1')).toBeVisible()
@@ -423,8 +459,6 @@ test('1B uses the supplied figures and resolves the composition hotspot on mobil
 test('1C uses both supplied relative-velocity figures and resolves the figure hotspot', async ({ page }) => {
   await page.goto(appRoute('/learning/setup'))
   await page.getByTestId('textbook-unit-physics-1c-relative-velocity').click()
-  await expect(page.getByTestId('textbook-selection-summary')).toContainText('1C')
-  await page.getByTestId('start-learning').click()
 
   await expect(page).toHaveURL(/physics-1c-relative-velocity/)
   await expect(page.getByTestId('textbook-item-c-1')).toBeVisible()
@@ -484,8 +518,6 @@ test('1C uses both supplied relative-velocity figures and resolves the figure ho
 test('1D uses the acceleration source figures and resolves both figure questions', async ({ page }) => {
   await page.goto(appRoute('/learning/setup'))
   await page.getByTestId('textbook-unit-physics-1d-acceleration').click()
-  await expect(page.getByTestId('textbook-selection-summary')).toContainText('1D')
-  await page.getByTestId('start-learning').click()
 
   await expect(page).toHaveURL(/physics-1d-acceleration/)
   await expect(page.getByTestId('textbook-item-d1-1')).toBeVisible()
@@ -532,8 +564,6 @@ test('1D uses the acceleration source figures and resolves both figure questions
 test('1E uses both supplied horizontal-projectile figures and resolves the strobe questions', async ({ page }) => {
   await page.goto(appRoute('/learning/setup'))
   await page.getByTestId('textbook-unit-physics-1e-horizontal-projectile').click()
-  await expect(page.getByTestId('textbook-selection-summary')).toContainText('1E')
-  await page.getByTestId('start-learning').click()
 
   await expect(page).toHaveURL(/physics-1e-horizontal-projectile/)
   await expect(page.getByTestId('textbook-item-e1-1')).toBeVisible()
@@ -592,8 +622,6 @@ test('1E uses both supplied horizontal-projectile figures and resolves the strob
 test('1F uses both supplied oblique-projectile figures and masks the highest-point vertical velocity', async ({ page }) => {
   await page.goto(appRoute('/learning/setup'))
   await page.getByTestId('textbook-unit-physics-1f-oblique-projectile').click()
-  await expect(page.getByTestId('textbook-selection-summary')).toContainText('1F')
-  await page.getByTestId('start-learning').click()
 
   await expect(page).toHaveURL(/physics-1f-oblique-projectile/)
   await expect(page.getByTestId('textbook-item-f1-1')).toBeVisible()
@@ -645,8 +673,6 @@ test('1F uses both supplied oblique-projectile figures and masks the highest-poi
 test('1G uses the supplied gravity, drag and terminal-velocity figures', async ({ page }) => {
   await page.goto(appRoute('/learning/setup'))
   await page.getByTestId('textbook-unit-physics-1g-gravity-drag-terminal-velocity').click()
-  await expect(page.getByTestId('textbook-selection-summary')).toContainText('1G')
-  await page.getByTestId('start-learning').click()
 
   await expect(page).toHaveURL(/physics-1g-gravity-drag-terminal-velocity/)
   await expect(page.getByTestId('textbook-item-g1-1')).toBeVisible()

@@ -38,6 +38,45 @@ async function seedCompleted1BConceptSection(page: import('@playwright/test').Pa
   }, answers)
 }
 
+async function seed1CProgress(
+  page: import('@playwright/test').Page,
+  itemIds: string[],
+) {
+  const answers = Object.fromEntries(
+    itemIds.map((itemId) => [itemId, {
+      itemId,
+      value: 'seeded',
+      firstValue: 'seeded',
+      isFirstCorrect: true,
+      resolved: true,
+      attemptCount: 1,
+      firstAnsweredAt: 1,
+      lastAnsweredAt: 1,
+    }]),
+  )
+
+  await page.evaluate((seededAnswers) => {
+    localStorage.setItem('kyotsu-step-store', JSON.stringify({
+      state: {
+        textbookProgress: {
+          'physics-1c-relative-velocity': {
+            unitId: 'physics-1c-relative-velocity',
+            unitRevision: 1,
+            startedAt: 1,
+            updatedAt: 1,
+            answers: seededAnswers,
+          },
+        },
+      },
+      version: 1,
+    }))
+  }, answers)
+}
+
+async function seedCompleted1CConceptSection(page: import('@playwright/test').Page) {
+  await seed1CProgress(page, ['c-1', 'c-2', 'c-3', 'c-4', 'c-5', 'c-6'])
+}
+
 async function seedCompletedConceptSection(page: import('@playwright/test').Page) {
   const answers = Object.fromEntries(
     Array.from({ length: 24 }, (_, index) => {
@@ -86,6 +125,7 @@ test('textbook setup exposes chapter and unit hierarchy before starting', async 
   await expect(page.getByText('物体の運動')).toBeVisible()
   await expect(page.getByTestId('textbook-unit-physics-a-displacement-velocity')).toBeVisible()
   await expect(page.getByTestId('textbook-unit-physics-1b-velocity-composition')).toBeVisible()
+  await expect(page.getByTestId('textbook-unit-physics-1c-relative-velocity')).toBeVisible()
   await expect(page.getByTestId('textbook-selection-summary')).toContainText('1A')
 })
 
@@ -237,4 +277,65 @@ test('1B uses the supplied figures and resolves the composition hotspot on mobil
 
   await page.reload()
   await expect(page.getByTestId('textbook-figure-overlay-hotspot-d-1')).toHaveCount(0)
+})
+
+
+test('1C uses both supplied relative-velocity figures and resolves the figure hotspot', async ({ page }) => {
+  await page.goto(appRoute('/learning/setup'))
+  await page.getByTestId('textbook-unit-physics-1c-relative-velocity').click()
+  await expect(page.getByTestId('textbook-selection-summary')).toContainText('1C')
+  await page.getByTestId('start-learning').click()
+
+  await expect(page).toHaveURL(/physics-1c-relative-velocity/)
+  await expect(page.getByTestId('textbook-item-c-1')).toBeVisible()
+  await expect(page.getByRole('button', { name: /図の読み取り/ })).toBeDisabled()
+
+  await page.goto(appRoute('/problems'))
+  await seedCompleted1CConceptSection(page)
+  await page.reload()
+  await page.goto(appRoute('/learning/textbook/physics-1c-relative-velocity'))
+
+  const figureSection = page.getByRole('button', { name: /図の読み取り/ })
+  await expect(figureSection).toBeEnabled()
+  await figureSection.click()
+
+  const carsFigureCard = page.getByTestId('textbook-figure-relative-cars-figure')
+  const carsFigure = carsFigureCard.getByAltText(/自動車 A と B/)
+  await expect(carsFigure).toBeVisible()
+  await expect.poll(async () => carsFigure.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0)
+
+  const hotspot = page.getByTestId('textbook-figure-overlay-hotspot-d-2')
+  await expect(hotspot).toBeVisible()
+  const stageBox = await carsFigureCard.locator('.textbook-figure-stage').boundingBox()
+  const hotspotBox = await hotspot.boundingBox()
+  expect(stageBox).not.toBeNull()
+  expect(hotspotBox).not.toBeNull()
+  expect(hotspotBox!.x).toBeGreaterThanOrEqual(stageBox!.x)
+  expect(hotspotBox!.y).toBeGreaterThanOrEqual(stageBox!.y)
+  expect(hotspotBox!.x + hotspotBox!.width).toBeLessThanOrEqual(stageBox!.x + stageBox!.width + 1)
+  expect(hotspotBox!.y + hotspotBox!.height).toBeLessThanOrEqual(stageBox!.y + stageBox!.height + 1)
+
+  await hotspot.click()
+  const panel = page.getByTestId('inline-choice-panel-d-2')
+  await expect(panel).toBeVisible()
+  await panel.getByRole('button', { name: 'Aから見たBの速度', exact: true }).click()
+  await expect(panel).toHaveCount(0)
+  await expect(hotspot).toHaveCount(0)
+
+  await page.goto(appRoute('/problems'))
+  await seed1CProgress(page, [
+    'c-1', 'c-2', 'c-3', 'c-4', 'c-5', 'c-6',
+    'd-1', 'd-2',
+    'q1-1', 'q1-2',
+  ])
+  await page.reload()
+  await page.goto(appRoute('/learning/textbook/physics-1c-relative-velocity'))
+
+  const example2Section = page.getByRole('button', { name: /例題2/ })
+  await expect(example2Section).toBeEnabled()
+  await example2Section.click()
+
+  const rainFigure = page.getByAltText(/鉛直下向きに降る雨/)
+  await expect(rainFigure).toBeVisible()
+  await expect.poll(async () => rainFigure.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0)
 })

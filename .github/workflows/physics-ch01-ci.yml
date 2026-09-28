@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - chatgpt/physics-ch01-textbook-v2
+    paths-ignore:
+      - 'docs/**'
+      - 'CHATGPT_README_FIRST.md'
   workflow_dispatch:
 
 permissions:

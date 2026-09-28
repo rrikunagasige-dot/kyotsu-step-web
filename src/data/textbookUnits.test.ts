@@ -3,7 +3,7 @@ import { builtInTextbookUnits } from './textbookUnits'
 
 describe('textbook unit catalog', () => {
   it('imports 1A displacement and velocity as the chapter-1 golden unit', () => {
-    expect(builtInTextbookUnits).toHaveLength(2)
+    expect(builtInTextbookUnits).toHaveLength(3)
     const unit = builtInTextbookUnits[0]
     expect(unit.unitId).toBe('physics-a-displacement-velocity')
     expect(unit.schemaVersion).toBe('1.1')
@@ -97,5 +97,41 @@ describe('textbook unit catalog', () => {
     ]))
     expect(figures.flatMap((figure) => figure.overlays).map((overlay) => overlay.itemId)).toContain('d-1')
   })
+
+  it('imports 1C relative velocity with source figures and explicit choices', () => {
+    const unit = builtInTextbookUnits.find((candidate) => candidate.chapter?.unitCode === '1C')
+    expect(unit).toBeDefined()
+    expect(unit?.unitId).toBe('physics-1c-relative-velocity')
+    expect(unit?.schemaVersion).toBe('1.1')
+    expect(unit?.chapter).toEqual({
+      chapterId: 'physics-ch01-motion',
+      chapterNumber: '1',
+      chapterTitle: '物体の運動',
+      unitCode: '1C',
+      orderInChapter: 3,
+      sourcePages: [16, 17],
+    })
+    expect(unit?.sections.map((section) => [section.id, section.role])).toEqual([
+      ['knowledge-check', 'concept'],
+      ['figure-reading', 'figure-reading'],
+      ['example-q1', 'worked-example'],
+      ['example-q2', 'worked-example'],
+      ['final-review', 'review'],
+    ])
+
+    const items = unit?.sections.flatMap((section) => section.items) ?? []
+    expect(items).toHaveLength(17)
+    expect(new Set(items.map((item) => item.id)).size).toBe(17)
+    expect(items.every((item) => item.choices && item.choices.length >= 4)).toBe(true)
+    expect(items.every((item) => item.choices?.includes(item.answer))).toBe(true)
+
+    const figures = unit?.sections.flatMap((section) => section.figures) ?? []
+    expect(figures.map((figure) => figure.src)).toEqual(expect.arrayContaining([
+      '/assets/physics/textbook/ch01/1c/relative-velocity-cars.webp',
+      '/assets/physics/textbook/ch01/1c/relative-rain-bicycle.webp',
+    ]))
+    expect(figures.flatMap((figure) => figure.overlays).map((overlay) => overlay.itemId)).toContain('d-2')
+  })
+
 
 })

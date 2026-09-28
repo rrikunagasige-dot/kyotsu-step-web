@@ -399,3 +399,22 @@ button.reading-inline-blank:hover { background: var(--color-section); }
 .reading-inline-choice-panel__head strong { color: var(--color-primary); font: 700 .72rem/1.35 ui-monospace, monospace; }
 .reading-inline-choice-panel__head span { font-size: .82rem; line-height: 1.55; }
 .reading-inline-choice-error { margin: 0; color: var(--color-error); font-size: .76rem; }
+
+
+/* Physics taxonomy board */
+.physics-taxonomy-board { display: grid; gap: 1.35rem; }
+.physics-domain-group { display: grid; gap: .75rem; }
+.physics-domain-heading { display: grid; grid-template-columns: minmax(24px, 1fr) auto minmax(24px, 1fr); align-items: center; gap: .8rem; }
+.physics-domain-heading > span { height: 2px; background: var(--color-border); }
+.physics-domain-heading h3 { margin: 0; color: var(--color-primary); font-size: 1rem; letter-spacing: .18em; white-space: nowrap; }
+.physics-topic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr)); gap: .7rem; }
+.physics-topic-card { position: relative; display: grid; min-height: 88px; place-items: center; padding: 1rem 1.9rem .85rem .85rem; border: 2px solid var(--color-border); background: var(--color-paper); box-shadow: var(--shadow-key); color: var(--color-text); text-align: center; text-decoration: none; }
+.physics-topic-card strong { font-size: 1.05rem; letter-spacing: .04em; }
+.physics-topic-card small { position: absolute; top: .4rem; right: .5rem; color: var(--color-muted); font: 700 .72rem/1 ui-monospace, monospace; }
+a.physics-topic-card:hover { border-color: var(--color-primary); background: var(--color-section); }
+a.physics-topic-card:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--color-border); }
+.physics-topic-card--empty { opacity: .42; box-shadow: 0 2px 0 var(--color-border); }
+.topic-filter-note { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: .65rem; padding: .65rem .75rem; border: 2px solid var(--color-primary); background: var(--color-section); }
+.topic-filter-note span { color: var(--color-muted); font-size: .72rem; font-weight: 700; }
+.topic-filter-note strong { color: var(--color-primary); }
+.topic-filter-note small { font: 700 .72rem/1 ui-monospace, monospace; color: var(--color-primary); }

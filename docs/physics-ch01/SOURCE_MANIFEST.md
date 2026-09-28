@@ -103,3 +103,23 @@ Unit data:
 - `unitId: physics-1c-relative-velocity`
 - `schemaVersion: 1.1`
 - `sourcePages: [16, 17]`
+
+
+## 1D app assets
+
+The supplied 1D figures are represented in the app as optimized WebP assets:
+
+| source figure | app asset | use |
+|---|---|---|
+| 9.png | `public/assets/physics/textbook/ch01/1d/acceleration-trajectory.webp` | curved trajectory with v1, v2 and Δt |
+| 10.png | `public/assets/physics/textbook/ch01/1d/velocity-change-acceleration.webp` | vector construction Δv=v2−v1 and average acceleration |
+
+Figure V2:
+- figure 10 uses `hotspot-d-1` linked to item `d-1` for the meaning of `Δv`.
+- figure 10 also uses `mask-d-2` linked to item `d-2` for the vector that determines the average-acceleration direction.
+
+Unit data:
+- `src/data/textbook/ch01/1d-acceleration.ts`
+- `unitId: physics-1d-acceleration`
+- `schemaVersion: 1.1`
+- `sourcePages: [18, 19]`

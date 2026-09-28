@@ -441,3 +441,60 @@ GitHub Actions run `36373169972`: PASS.
 
 `P08 = PASS`  
 Next: `P09 — 1D 加速度`.
+
+
+## 2026-09-28 — P09 1D 加速度 PASS
+
+### Source audit
+
+Checked before implementation:
+- original textbook p.18–19
+- supplied `第1章_1D_加速度.docx`
+- supplied figures 9 and 10
+
+Source-aligned core:
+- average acceleration is velocity-vector change per unit time
+- `Δv = v₂−v₁`, `Δt=t₂−t₁`
+- average acceleration points in the same direction as `Δv`
+- instantaneous acceleration is obtained as the time interval tends to zero
+- uniformly accelerated linear motion uses `v=v₀+at`, `x=v₀t+1/2at²`, `v²−v₀²=2ax`
+- the equation of motion connects acceleration to resultant force through `m a⃗ = F⃗`
+
+### Implementation
+
+Published:
+- `src/data/textbook/ch01/1d-acceleration.ts`
+- unitId: `physics-1d-acceleration`
+- schemaVersion 1.1
+- revision 1
+- source pages 18–19
+- orderInChapter 4
+- 17 explicit-choice items
+
+Source figures:
+- `public/assets/physics/textbook/ch01/1d/acceleration-trajectory.webp`
+- `public/assets/physics/textbook/ch01/1d/velocity-change-acceleration.webp`
+
+Figure V2:
+- D-1 hotspot asks what the red `Δv` vector represents
+- D-2 mask asks which vector determines the average-acceleration direction
+
+### Gate and recovery
+
+The already-complete P09 checkpoint `bd844d17775fb8f4dfd643735350c280d7cde4d8` passed GitHub Actions run `36373739501`.
+
+A later redundant checkpoint accidentally changed the 1D asset naming while an older catalog assertion still expected the verified names. Run `36373943888` therefore failed one unit test. No 403 occurred.
+
+The branch was restored with normal forward commit `10b48ecf138aeba7f4d97efea3632513ba324f7c`; no force push/history rewrite was used.
+
+Final recovery gate `36374088777`: PASS.
+- TypeScript PASS
+- ESLint PASS
+- Vitest: 14 files / 40 tests PASS
+- production build PASS
+- textbook E2E: 9 tests PASS
+
+### Status
+
+`P09 = PASS`
+Next: `P10 — 1E 水平投射`.

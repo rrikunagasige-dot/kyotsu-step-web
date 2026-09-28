@@ -100,10 +100,11 @@ P05 PASS
 P06 PASS
 P07 PASS
 P08 PASS
-P09 NEXT
+P09 PASS
+P10 NEXT
 ```
 
-最新の総合gate: GitHub Actions `36373169972` — typecheck / lint / 39 unit tests / build / textbook E2E 8 tests PASS。
+最新の総合gate: GitHub Actions `36374088777` — typecheck / lint / 40 unit tests / build / textbook E2E 9 tests PASS。
 
 P05で1Aを母版2.0として schemaVersion 1.1 へ移行した。78個のstable item IDを維持し、全itemに明示的な誤答候補を与え、 supplied Chapter-1 figures 1〜4 を app asset 化し、Figure V2 maskを実データへ接続した。
 
@@ -115,4 +116,4 @@ P08で1C「相対速度」を追加した。原教科書 p.16–17 と supplied 
 
 figure 7 は A を観測者とする相対速度の hotspot を持ち、figure 8 は自転車から見た雨のベクトル差を実図で確認する。
 
-次は P09。1D「加速度」を同じ導入ルールで作る。
+P09で1D「加速度」を追加した。原教科書 p.18–19 と supplied Word を照合し、figure 9–10 を実asset化、17個の確認itemをSchema 1.1へ投入した。\n\n次は P10。1E「水平投射」を同じ導入ルールで作る。

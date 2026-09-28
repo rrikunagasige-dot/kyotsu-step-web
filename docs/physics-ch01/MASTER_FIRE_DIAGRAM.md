@@ -240,8 +240,9 @@ P05  PASS — 1A migrated to schemaVersion 1.1 + explicit distractors + supplied
 P06  PASS — 1A regression/browser audit including persisted figure-mask flow
 P07  PASS — 1B 速度の合成と分解 + supplied figures 5–6 + browser smoke
 P08  PASS — 1C 相対速度 + supplied figures 7–8 + browser audit
-P09  NEXT — import 1D 加速度
-P10–P14 WAIT
+P09  PASS — 1D 加速度 + supplied figures 9–10 + browser audit
+P10  NEXT — import 1E 水平投射
+P11–P14 WAIT
 ```
 
 P01 PASS evidence: GitHub Actions run `36333501024`.
@@ -394,3 +395,28 @@ The browser gate verifies:
 - figure 8 loads in example 2 with nonzero natural width
 
 The P08 checkpoint was batched into one code/assets commit so CI ran once instead of on every micro-change. The workflow now ignores docs-only pushes to reduce notification noise.
+
+
+### P09 implementation summary
+
+```text
+1D 加速度
+├─ schemaVersion 1.1
+├─ revision 1
+├─ sourcePages 18–19
+├─ 17 source-aligned items
+├─ explicit choices on every item
+├─ figure 9 → acceleration-trajectory.webp
+├─ figure 10 → velocity-change-acceleration.webp
+└─ Figure V2 → D-1 hotspot + D-2 mask
+```
+
+P09 final gate evidence: GitHub Actions run `36374088777`:
+- TypeScript typecheck PASS
+- ESLint PASS
+- Vitest: 14 files / 40 tests PASS
+- production build PASS
+- Playwright Chromium install PASS
+- textbook E2E: 9 tests PASS
+
+A redundant follow-up checkpoint briefly replaced the already-passing 1D asset names and caused one catalog assertion failure. The branch was restored with a normal forward commit (no force push) to the previously verified P09 implementation, then the full gate passed again. P09 was marked PASS only after this recovery run.

@@ -1,6 +1,6 @@
 import { BookOpenCheck, ListChecks } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { NumberedSection, RaisedButton } from '../components/ui/Primitives'
 import type { LearningVariant, Question } from '../domain/questionSchema'
 import { groupTextbookUnitsByChapter, textbookUnitProgress } from '../domain/textbook'
@@ -9,6 +9,7 @@ import { textbookRepository } from '../repositories/textbookRepository'
 import { getQuestionCatalog, useAppStore } from '../stores/useAppStore'
 import { useI18n } from '../i18n/runtime'
 import { subjectLabel } from '../i18n/labels'
+import { isPhysicsTopicId, physicsTopicForQuestion, physicsTopicLabel } from '../data/physicsTaxonomy'
 
 type LearningMode = 'textbook' | 'practice'
 
@@ -24,18 +25,27 @@ function displayTextbookUnitTitle(unit: TextbookUnit) {
 
 export function LearningSetupPage() {
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
   const customQuestions = useAppStore((state) => state.customQuestions)
   const textbookProgress = useAppStore((state) => state.textbookProgress)
   const defaultSubject = useAppStore((state) => state.settings.defaultSubject)
   const startLearning = useAppStore((state) => state.startLearning)
   const { language, text } = useI18n()
   const catalog = useMemo(() => getQuestionCatalog(customQuestions, language), [customQuestions, language])
+  const requestedTopic = isPhysicsTopicId(searchParams.get('topic')) ? searchParams.get('topic') : null
+  const requestedMode = searchParams.get('mode')
+  const requestedSubject = searchParams.get('subject')
   const [textbookUnits, setTextbookUnits] = useState<TextbookUnit[]>([])
-  const [mode, setMode] = useState<LearningMode>('textbook')
-  const [subject, setSubject] = useState<Question['subject']>('physics')
+  const [mode, setMode] = useState<LearningMode>(requestedMode === 'practice' ? 'practice' : 'textbook')
+  const [subject, setSubject] = useState<Question['subject']>(requestedSubject === 'math-1a' ? 'math-1a' : 'physics')
   const [variant, setVariant] = useState<LearningVariant>('detailed')
   const [unitId, setUnitId] = useState('')
-  const subjectQuestions = catalog.filter((question) => question.subject === subject && question.status === 'published')
+  const activeTopic = mode === 'practice' && subject === 'physics' ? requestedTopic : null
+  const subjectQuestions = catalog.filter((question) =>
+    question.subject === subject &&
+    question.status === 'published' &&
+    (!activeTopic || physicsTopicForQuestion(question) === activeTopic),
+  )
   const [questionId, setQuestionId] = useState(subjectQuestions[0]?.questionId ?? catalog[0]?.questionId ?? '')
 
   useEffect(() => {
@@ -56,15 +66,27 @@ export function LearningSetupPage() {
     { value: 'selfCheck', label: text('自力確認', '自主检查'), description: text('最小限の空欄', '仅保留必要填空') },
   ]
 
+  const firstQuestionFor = (nextSubject: Question['subject'], nextMode: LearningMode) =>
+    catalog.find((question) =>
+      question.subject === nextSubject &&
+      question.status === 'published' &&
+      (!(nextMode === 'practice' && nextSubject === 'physics' && requestedTopic) || physicsTopicForQuestion(question) === requestedTopic),
+    )?.questionId ?? ''
+
   const changeSubject = (next: Question['subject']) => {
     setSubject(next)
-    setQuestionId(catalog.find((question) => question.subject === next)?.questionId ?? '')
+    setQuestionId(firstQuestionFor(next, mode))
   }
 
   const changeMode = (next: LearningMode) => {
     setMode(next)
-    if (next === 'textbook') setSubject('physics')
-    else changeSubject(defaultSubject)
+    if (next === 'textbook') {
+      setSubject('physics')
+      return
+    }
+    const nextSubject = requestedTopic ? 'physics' : defaultSubject
+    setSubject(nextSubject)
+    setQuestionId(firstQuestionFor(nextSubject, next))
   }
 
   const begin = () => {
@@ -168,11 +190,21 @@ export function LearningSetupPage() {
         </NumberedSection>
       ) : (
         <>
-          <NumberedSection number="03" title={text('問題', '题目')}>
+          <NumberedSection number="03" title={activeTopic ? text('分野・問題', '领域・题目') : text('問題', '题目')}>
+            {activeTopic && (
+              <div className="topic-filter-note" data-testid="physics-topic-filter">
+                <span>{text('選択中の分野', '当前领域')}</span>
+                <strong>{physicsTopicLabel(activeTopic, language)}</strong>
+                <small>{text(`${subjectQuestions.length} 問`, `${subjectQuestions.length} 题`)}</small>
+              </div>
+            )}
             <label className="field-label" htmlFor="learning-question">{text('学習する問題', '选择学习题目')}</label>
             <select id="learning-question" className="select-control" value={questionId} onChange={(event) => setQuestionId(event.target.value)}>
               {subjectQuestions.map((question) => <option key={question.questionId} value={question.questionId}>{question.title}</option>)}
             </select>
+            {activeTopic && subjectQuestions.length === 0 && (
+              <p className="field-help">{text('この分野の問題はまだありません。', '这个领域目前还没有题目。')}</p>
+            )}
           </NumberedSection>
           {SHOW_GUIDANCE_LEVEL && (
             <NumberedSection number="04" title={text('誘導レベル', '引导强度')}>

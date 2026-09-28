@@ -142,7 +142,6 @@ function createJapaneseFlow(
   assets: Question['assets'],
 ): Question['learning']['solutionFlow'] {
   const figureAsset = new Map(section.figures.map((figure, index) => [figure.id, assets[index]?.id]))
-  const itemIds = new Set(section.items.map((item) => blankId(qid, item)))
   const referenced = new Set<string>()
   const flow: Question['learning']['solutionFlow'] = []
   let flowIndex = 0

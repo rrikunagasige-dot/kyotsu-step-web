@@ -418,3 +418,25 @@ a.physics-topic-card:active { transform: translateY(2px); box-shadow: 0 1px 0 va
 .topic-filter-note span { color: var(--color-muted); font-size: .72rem; font-weight: 700; }
 .topic-filter-note strong { color: var(--color-primary); }
 .topic-filter-note small { font: 700 .72rem/1 ui-monospace, monospace; color: var(--color-primary); }
+
+
+button.physics-topic-card {
+  width: 100%;
+  font: inherit;
+  cursor: pointer;
+}
+
+button.physics-topic-card:disabled {
+  cursor: default;
+}
+
+button.physics-topic-card:not(:disabled):hover {
+  border-color: var(--color-primary);
+  background: var(--color-section);
+}
+
+.physics-topic-card--selected {
+  border-color: var(--color-primary);
+  outline: 2px solid color-mix(in srgb, var(--color-primary) 24%, transparent);
+  background: var(--color-section);
+}

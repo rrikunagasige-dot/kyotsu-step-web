@@ -359,6 +359,7 @@ function createQuestion(unit: TextbookUnit, section: TextbookSection, workedInde
         answerType: 'single-choice',
         options: simulationOptions,
         correctOptionIds: [simulationOptions[correctOptionIndex]?.id],
+        tolerance: 0,
         score: 4,
         estimatedSeconds: 120,
         knowledgeTags: ['motion', unitTag],

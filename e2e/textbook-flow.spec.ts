@@ -737,3 +737,51 @@ test('chapter-1 setup reports saved progress for a unit inside the seven-unit ch
   await expect(unitCard).toContainText('7/14 完了')
   await expect(unitCard).toContainText('50%')
 })
+
+
+test('chapter setup restores persisted per-unit progress across all seven units', async ({ page }) => {
+  await page.goto(appRoute('/problems'))
+  await page.evaluate(() => {
+    localStorage.setItem('kyotsu-step-store', JSON.stringify({
+      state: {
+        textbookProgress: {
+          'physics-1g-gravity-drag-terminal-velocity': {
+            unitId: 'physics-1g-gravity-drag-terminal-velocity',
+            unitRevision: 1,
+            startedAt: 1,
+            updatedAt: 1,
+            answers: {
+              'g1-1': {
+                itemId: 'g1-1',
+                value: 'g⃗',
+                firstValue: 'g⃗',
+                isFirstCorrect: true,
+                resolved: true,
+                attemptCount: 1,
+                firstAnsweredAt: 1,
+                lastAnsweredAt: 1,
+              },
+            },
+          },
+        },
+      },
+      version: 1,
+    }))
+  })
+  await page.reload()
+  await page.goto(appRoute('/learning/setup'))
+
+  const chapterCard = page.getByText('物体の運動').locator('..').locator('..')
+  await expect(page.getByTestId('textbook-unit-physics-a-displacement-velocity')).toBeVisible()
+  await expect(page.getByTestId('textbook-unit-physics-1b-velocity-composition')).toBeVisible()
+  await expect(page.getByTestId('textbook-unit-physics-1c-relative-velocity')).toBeVisible()
+  await expect(page.getByTestId('textbook-unit-physics-1d-acceleration')).toBeVisible()
+  await expect(page.getByTestId('textbook-unit-physics-1e-horizontal-projectile')).toBeVisible()
+  await expect(page.getByTestId('textbook-unit-physics-1f-oblique-projectile')).toBeVisible()
+
+  const unit1G = page.getByTestId('textbook-unit-physics-1g-gravity-drag-terminal-velocity')
+  await expect(unit1G).toBeVisible()
+  await expect(unit1G).toContainText('1/14')
+  await expect(unit1G).toContainText('7%')
+  await expect(chapterCard).toContainText('7 単元')
+})

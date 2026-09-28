@@ -282,4 +282,32 @@ describe('textbook unit catalog', () => {
     }
   })
 
+
+  it('passes the Chapter 1 static gate for order, all 17 figures and stable IDs', () => {
+    const chapterUnits = builtInTextbookUnits
+      .filter((unit) => unit.chapter?.chapterId === 'physics-ch01-motion')
+      .sort((left, right) => (left.chapter?.orderInChapter ?? 0) - (right.chapter?.orderInChapter ?? 0))
+
+    expect(chapterUnits.map((unit) => unit.chapter?.unitCode)).toEqual([
+      '1A', '1B', '1C', '1D', '1E', '1F', '1G',
+    ])
+
+    const unitIds = chapterUnits.map((unit) => unit.unitId)
+    expect(new Set(unitIds).size).toBe(7)
+
+    const figures = chapterUnits.flatMap((unit) =>
+      unit.sections.flatMap((section) => section.figures),
+    )
+    expect(figures).toHaveLength(17)
+    expect(new Set(figures.map((figure) => figure.src)).size).toBe(17)
+
+    const compositeItemIds: string[] = []
+    for (const unit of chapterUnits) {
+      const itemIds = unit.sections.flatMap((section) => section.items.map((item) => item.id))
+      expect(new Set(itemIds).size).toBe(itemIds.length)
+      compositeItemIds.push(...itemIds.map((itemId) => `${unit.unitId}:${itemId}`))
+    }
+    expect(new Set(compositeItemIds).size).toBe(compositeItemIds.length)
+  })
+
 })

@@ -1,13 +1,14 @@
 import { expect, test } from '@playwright/test'
+import { appRoute } from './helpers'
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('/problems')
+  await page.goto(appRoute('/problems'))
   await page.evaluate(() => localStorage.clear())
   await page.reload()
 })
 
 test('common-test learning uses original question, guide, retry, then original choices', async ({ page }) => {
-  await page.goto('/learning/setup')
+  await page.goto(appRoute('/learning/setup'))
   await page.getByRole('radio', { name: /問題を解く/ }).click()
   await page.getByLabel('学習する問題').selectOption('math-quadratic-01')
   await page.getByTestId('start-learning').click()
@@ -41,7 +42,7 @@ test('common-test learning uses original question, guide, retry, then original c
 })
 
 test('practice setup hides guidance level and always starts detailed guidance', async ({ page }) => {
-  await page.goto('/learning/setup')
+  await page.goto(appRoute('/learning/setup'))
   await page.getByRole('radio', { name: /問題を解く/ }).click()
   await page.getByLabel('学習する問題').selectOption('math-quadratic-01')
 
@@ -58,7 +59,7 @@ test('practice setup hides guidance level and always starts detailed guidance', 
 
 
 test('physics guide keeps the original problem image visible while solving', async ({ page }) => {
-  await page.goto('/learning/setup')
+  await page.goto(appRoute('/learning/setup'))
   await page.getByRole('radio', { name: /問題を解く/ }).click()
   await page.getByRole('button', { name: '物理' }).click()
   await page.getByLabel('学習する問題').selectOption('physics-motion-01')

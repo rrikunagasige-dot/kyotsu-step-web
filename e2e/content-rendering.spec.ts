@@ -1,7 +1,8 @@
 import { expect, test } from '@playwright/test'
+import { appRoute } from './helpers'
 
 test('catalog preview renders LaTeX, image and table from question data', async ({ page }) => {
-  await page.goto('/admin')
+  await page.goto(appRoute('/admin'))
   const select = page.getByLabel('プレビューする問題')
   await select.selectOption('physics-motion-01')
   await expect(page.getByTestId('question-preview').locator('img')).toHaveAttribute('alt', /速度–時間グラフ/)

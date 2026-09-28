@@ -1,9 +1,10 @@
 import { expect, test } from '@playwright/test'
+import { appRoute } from './helpers'
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('/problems')
+  await page.goto(appRoute('/problems'))
   await page.evaluate(() => localStorage.clear())
-  await page.goto('/admin')
+  await page.goto(appRoute('/admin'))
 })
 
 test('valid custom JSON is validated, persisted, previewed, exported, and deleted', async ({ page }) => {

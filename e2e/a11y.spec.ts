@@ -1,7 +1,8 @@
 import { expect, test } from '@playwright/test'
+import { appRoute } from './helpers'
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('/problems')
+  await page.goto(appRoute('/problems'))
   await page.evaluate(() => localStorage.clear())
   await page.reload()
 })
@@ -14,7 +15,7 @@ test('skip link and modal keyboard focus work without pointer input', async ({ p
   await page.keyboard.press('Enter')
   await expect(page.locator('main')).toBeFocused()
 
-  await page.goto('/profile')
+  await page.goto(appRoute('/profile'))
   const trigger = page.getByRole('button', { name: /学習記録を消去/ })
   await trigger.click()
   const dialog = page.getByRole('alertdialog')
@@ -28,7 +29,7 @@ test('skip link and modal keyboard focus work without pointer input', async ({ p
 
 test('critical controls meet touch size and rich content stays inside the viewport', async ({ page }) => {
   for (const route of ['/problems', '/profile', '/admin']) {
-    await page.goto(route)
+    await page.goto(appRoute(route))
     const undersized = await page.locator('button, a.nav-item, a.raised-link, input:not([type="checkbox"]), select, textarea').evaluateAll((elements) => elements.filter((element) => {
       const rect = element.getBoundingClientRect()
       const style = getComputedStyle(element)
@@ -38,7 +39,7 @@ test('critical controls meet touch size and rich content stays inside the viewpo
     expect(await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth)).toBe(false)
   }
 
-  await page.goto('/admin')
+  await page.goto(appRoute('/admin'))
   await page.getByLabel('プレビューする問題').selectOption('physics-motion-01')
   await expect(page.getByTestId('question-preview').getByRole('img')).toHaveAttribute('alt', /速度/)
   await page.getByLabel('プレビューする問題').selectOption('math-statistics-01')

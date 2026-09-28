@@ -681,3 +681,44 @@ test('1G uses the supplied gravity, drag and terminal-velocity figures', async (
   await d2Panel.getByRole('button', { name: '水平に近づく', exact: true }).click()
   await expect(d2Panel).toHaveCount(0)
 })
+
+
+test('1G completes from the first concept blank to unit completion', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/physics-1g-gravity-drag-terminal-velocity'))
+
+  const answer = async (itemId: string, value: string) => {
+    const blank = page.getByTestId(`textbook-item-${itemId}`)
+    await expect(blank).toBeVisible()
+    await blank.click()
+    const panel = page.getByTestId(`inline-choice-panel-${itemId}`)
+    await expect(panel).toBeVisible()
+    await panel.getByRole('button', { name: value, exact: true }).click()
+    await expect(panel).toHaveCount(0)
+  }
+
+  await answer('g1-1', 'g⃗')
+  await answer('g1-2', 'kv')
+  await answer('g1-3', 'kv')
+  await answer('g1-4', '0')
+  await answer('g1-5', '大きくなる')
+  await answer('g1-6', '0')
+  await answer('g1-7', 'mg/k')
+
+  await expect(page.getByRole('button', { name: /図の読み取り/ })).toHaveAttribute('aria-pressed', 'true')
+  await answer('d-1', '小さくなる')
+  await answer('d-2', '水平に近づく')
+
+  await expect(page.getByRole('button', { name: /問1型/ })).toHaveAttribute('aria-pressed', 'true')
+  await answer('q1-1', '49')
+
+  await expect(page.getByRole('button', { name: /問2型/ })).toHaveAttribute('aria-pressed', 'true')
+  await answer('q2-1', '空気抵抗')
+
+  await expect(page.getByRole('button', { name: /最後の知識確認/ })).toHaveAttribute('aria-pressed', 'true')
+  await answer('f-1', 'g')
+  await answer('f-2', 'kv')
+  await answer('f-3', '0')
+
+  await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
+  await expect(page.getByTestId('textbook-unit-complete')).toContainText('14 個の確認項目')
+})

@@ -44,6 +44,8 @@ describe('Chapter 1 textbook-to-question-bank adapter', () => {
   })
 
   it('does not leak Japanese kana into the Chinese imported catalog', () => {
-    expect(JSON.stringify(chapter1PracticeQuestionsZh)).not.toMatch(/[ぁ-んァ-ン]/)
+    const serialized = JSON.stringify(chapter1PracticeQuestionsZh)
+    const kana = [...new Set(serialized.match(/[ぁ-んァ-ン]/g) ?? [])]
+    expect(kana).toEqual([])
   })
 })

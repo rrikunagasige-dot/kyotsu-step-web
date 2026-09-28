@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test'
+import { appRoute } from './helpers'
 
 const viewports = [
   { width: 375, height: 812 },
@@ -15,12 +16,12 @@ for (const viewport of viewports) {
     await page.setViewportSize(viewport)
 
     for (const route of responsiveRoutes) {
-      await page.goto(route)
+      await page.goto(appRoute(route))
       const hasOverflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth)
       expect(hasOverflow, `${route} overflowed at ${viewport.width}px`).toBe(false)
     }
 
-    await page.goto('/problems')
+    await page.goto(appRoute('/problems'))
     const nav = page.getByRole('navigation', { name: '主要ナビゲーション' })
     await expect(nav).toBeVisible()
     const navBox = await nav.boundingBox()

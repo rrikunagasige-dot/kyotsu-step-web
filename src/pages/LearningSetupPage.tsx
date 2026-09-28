@@ -47,7 +47,7 @@ export function LearningSetupPage() {
     question.status === 'published' &&
     (!activeTopic || physicsTopicForQuestion(question) === activeTopic),
   )
-  const [questionId, setQuestionId] = useState(subjectQuestions[0]?.questionId ?? catalog[0]?.questionId ?? '')
+  const [questionId, setQuestionId] = useState(subjectQuestions[0]?.questionId ?? '')
 
   useEffect(() => {
     textbookRepository.listPublished().then((units) => {

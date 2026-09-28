@@ -498,3 +498,67 @@ Final recovery gate `36374088777`: PASS.
 
 `P09 = PASS`
 Next: `P10 — 1E 水平投射`.
+
+
+## 2026-09-28 — P10 1E 水平投射 PASS
+
+### Source audit
+
+Checked before implementation:
+- original textbook p.20–21
+- supplied `第1章_1E_水平投射.docx`
+- supplied figures 11 and 12
+
+Source-aligned core:
+- horizontal acceleration is 0
+- `x=v₀t`
+- vertical initial velocity is 0
+- vertical motion is free fall / constant acceleration under g
+- `y=1/2 gt²`
+- `vₓ=v₀`, `vᵧ=gt`
+- eliminating time gives `y=(g/2v₀²)x²`, so the trajectory is a parabola
+- the worked example gives fall time 2.0 s from 19.6 m and horizontal range 29.4 m for 14.7 m/s
+
+### Implementation
+
+Published:
+- `src/data/textbook/ch01/1e-horizontal-projectile.ts`
+- unitId: `physics-1e-horizontal-projectile`
+- schemaVersion 1.1
+- revision 1
+- source pages 20–21
+- orderInChapter 5
+- 16 explicit-choice items
+
+Source figures:
+- `public/assets/physics/textbook/ch01/1e/horizontal-projectile-strobe.webp`
+- `public/assets/physics/textbook/ch01/1e/horizontal-projectile-velocity.webp`
+
+Figure V2:
+- D-1 hotspot reads the constant horizontal spacing
+- D-2 hotspot reads the increasing vertical spacing
+- figure 12 remains visible in the same reading subgroup, connecting the spacing observation to `vₓ=constant` and `vᵧ=gt`
+
+### Gate history
+
+Initial run `36374506994`:
+- typecheck PASS
+- lint PASS
+- 41 unit tests PASS
+- build PASS
+- 9/10 textbook E2E PASS
+- 1E E2E FAIL because figure 12 was structurally hidden by automatic section advancement after D-2 completion
+
+Fix commit `f4adf0e9cde504be365746eee51c1764b4fe26be` kept figure 12 inside the same reading subgroup and audited it before completing D-2.
+
+Final run `36374706122`: PASS.
+- TypeScript PASS
+- ESLint PASS
+- Vitest: 14 files / 41 tests PASS
+- production build PASS
+- textbook E2E: 10 tests PASS
+
+### Status
+
+`P10 = PASS`
+Next: `P11 — 1F 斜方投射`.

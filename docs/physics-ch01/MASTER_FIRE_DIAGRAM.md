@@ -241,8 +241,9 @@ P06  PASS — 1A regression/browser audit including persisted figure-mask flow
 P07  PASS — 1B 速度の合成と分解 + supplied figures 5–6 + browser smoke
 P08  PASS — 1C 相対速度 + supplied figures 7–8 + browser audit
 P09  PASS — 1D 加速度 + supplied figures 9–10 + browser audit
-P10  NEXT — import 1E 水平投射
-P11–P14 WAIT
+P10  PASS — 1E 水平投射 + supplied figures 11–12 + browser audit
+P11  NEXT — import 1F 斜方投射
+P12–P14 WAIT
 ```
 
 P01 PASS evidence: GitHub Actions run `36333501024`.
@@ -420,3 +421,28 @@ P09 final gate evidence: GitHub Actions run `36374088777`:
 - textbook E2E: 9 tests PASS
 
 A redundant follow-up checkpoint briefly replaced the already-passing 1D asset names and caused one catalog assertion failure. The branch was restored with a normal forward commit (no force push) to the previously verified P09 implementation, then the full gate passed again. P09 was marked PASS only after this recovery run.
+
+
+### P10 implementation summary
+
+```text
+1E 水平投射
+├─ schemaVersion 1.1
+├─ revision 1
+├─ sourcePages 20–21
+├─ 16 source-aligned items
+├─ explicit choices on every item
+├─ figure 11 → horizontal-projectile-strobe.webp
+├─ figure 12 → horizontal-projectile-velocity.webp
+└─ Figure V2 hotspots → D-1 / D-2 on the strobe figure
+```
+
+P10 final gate evidence: GitHub Actions run `36374706122`:
+- TypeScript typecheck PASS
+- ESLint PASS
+- Vitest: 14 files / 41 tests PASS
+- production build PASS
+- Playwright Chromium install PASS
+- textbook E2E: 10 tests PASS
+
+The first P10 browser gate (`36374506994`) caught a real presentation-flow problem: figure 12 was placed in a later reading subgroup, but resolving D-2 completed the whole figure-reading section and the page automatically advanced to the worked example before figure 12 could be seen. The data flow was corrected so figures 11 and 12 remain in the same visible reading subgroup while D-1/D-2 are answered. The final gate then passed.

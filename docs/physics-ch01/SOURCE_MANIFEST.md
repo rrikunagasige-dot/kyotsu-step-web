@@ -123,3 +123,22 @@ Unit data:
 - `unitId: physics-1d-acceleration`
 - `schemaVersion: 1.1`
 - `sourcePages: [18, 19]`
+
+
+## 1E app assets
+
+| source figure | app asset | use |
+|---|---|---|
+| 11.png | `public/assets/physics/textbook/ch01/1e/horizontal-projectile-strobe.webp` | equal-time horizontal spacing and increasing vertical drop |
+| 12.png | `public/assets/physics/textbook/ch01/1e/horizontal-projectile-velocity.webp` | velocity decomposition at a point on the projectile path |
+
+Figure V2:
+- figure 11 uses `hotspot-d-1` for horizontal spacing = constant.
+- figure 11 uses `hotspot-d-2` for vertical spacing = increasing.
+- figure 12 is inferential/explanatory and is not masked; it remains visible while the two figure questions are answered.
+
+Unit data:
+- `src/data/textbook/ch01/1e-horizontal-projectile.ts`
+- `unitId: physics-1e-horizontal-projectile`
+- `schemaVersion: 1.1`
+- `sourcePages: [20, 21]`

@@ -12,6 +12,7 @@ test('analysis, mistakes, and history are derived from a real completed attempt'
   await page.getByRole('radio', { name: /問題を解く/ }).click()
   await page.getByLabel('学習する問題').selectOption('math-quadratic-01')
   await page.getByTestId('start-learning').click()
+  await page.getByTestId('open-guide').click()
   await page.getByTestId('blank-mq-blank-sign').click()
   await page.getByTestId('option-mq-sign-minus').click()
   await page.getByTestId('option-mq-vertex-minus-two').click()

@@ -104,10 +104,11 @@ P09 PASS
 P10 PASS
 P11 PASS
 P12 PASS
-P13 NEXT
+P13 PASS
+P14 PASS
 ```
 
-最新の総合gate: GitHub Actions `36388191856` — typecheck / lint / 43 unit tests / build / textbook E2E 13 tests PASS。
+最新の総合gate: GitHub Actions Full Gate `36408480283` / CI `36408480384` — typecheck / lint / Vitest 14 files・44 tests / production build / Playwright 42 tests すべて PASS。検証対象HEADは `26e768ae9f314dba17121739179ea0c262c88845`。
 
 P05で1Aを母版2.0として schemaVersion 1.1 へ移行した。78個のstable item IDを維持し、全itemに明示的な誤答候補を与え、 supplied Chapter-1 figures 1〜4 を app asset 化し、Figure V2 maskを実データへ接続した。
 
@@ -119,4 +120,14 @@ P08で1C「相対速度」を追加した。原教科書 p.16–17 と supplied 
 
 figure 7 は A を観測者とする相対速度の hotspot を持ち、figure 8 は自転車から見た雨のベクトル差を実図で確認する。
 
-P09で1D「加速度」を追加した。原教科書 p.18–19 と supplied Word を照合し、figure 9–10 を実asset化、17個の確認itemをSchema 1.1へ投入した。\n\nP10で1E「水平投射」を追加した。原教科書 p.20–21 と supplied Word を照合し、figure 11–12 を実asset化、16個の確認itemをSchema 1.1へ投入した。\n\nP11で1F「斜方投射」を追加した。原教科書 p.22–24 と supplied Word を照合し、figure 13–14 を実asset化、19個の確認itemをSchema 1.1へ投入した。\n\nP12で1G「重力加速度・空気抵抗・終端速度」を追加した。原教科書 p.25–27、supplied Word、figure 15–17 を照合し、3図を実asset化、14個の確認itemをSchema 1.1へ投入した。図15〜17は同一reading subgroupで保持し、1Gは14項目すべてをUI経由でstart→finish完走するE2EまでPASSした。\n\n次は P13。Chapter 1 full gate（G11〜G17）を実行する。
+P09で1D「加速度」を追加した。原教科書 p.18–19 と supplied Word を照合し、figure 9–10 を実asset化、17個の確認itemをSchema 1.1へ投入した。
+
+P10で1E「水平投射」を追加した。原教科書 p.20–21 と supplied Word を照合し、figure 11–12 を実asset化、16個の確認itemをSchema 1.1へ投入した。
+
+P11で1F「斜方投射」を追加した。原教科書 p.22–24 と supplied Word を照合し、figure 13–14 を実asset化、19個の確認itemをSchema 1.1へ投入した。
+
+P12で1G「重力加速度・空気抵抗・終端速度」を追加した。原教科書 p.25–27、supplied Word、figure 15–17 を照合し、3図を実asset化、14個の確認itemをSchema 1.1へ投入した。図15〜17は同一reading subgroupで保持し、1Gは14項目すべてをUI経由でstart→finish完走するE2EまでPASSした。
+
+P13ではChapter 1 full gate（G11〜G17）を完走した。1A〜1G順序、chapter progress、17図、stable ID uniqueness、`pnpm check`、Playwright、`pnpm check:all` をすべてPASSした。
+
+P14でREADME・火柴図・WORKLOGを最終更新した。第1章V2の導入作業はこのbranch上で完了。次の作業では、merge/integration方針を決めるか、第2章のsource auditから新しい火柴図を開始する。

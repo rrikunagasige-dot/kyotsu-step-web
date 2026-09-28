@@ -693,3 +693,65 @@ Final P12 gate: GitHub Actions run `36388191856` — PASS.
 
 `P12 = PASS`
 Next: `P13 — Chapter 1 full gate (G11–G17)`.
+
+
+## 2026-09-28 — P13 Chapter 1 full gate PASS / P14 finalization
+
+### P13 — Chapter 1 full gate
+
+Starting point:
+- P12 1G was already PASS.
+- Chapter 1 contained all seven units 1A–1G and supplied figures 1–17.
+- P13 required the stronger chapter-wide gates G11–G17, including the repository's complete browser regression suite.
+
+During the gate, several failures were caught rather than ignored:
+
+1. The first 1G publication gate exposed an asset-name mismatch in static expectations.
+2. A later 1G browser audit exposed a figure-visibility sequencing issue; figures 15–17 were kept together in the same reading subgroup.
+3. The new full gate revealed that older E2E specs still navigated direct paths even though the application uses HashRouter with Vite base `/kyotsu-step-web/`.
+4. Legacy learning E2E still assumed the removed guidance-level selector and the old self-check setup behavior.
+5. Old admin and Chinese-locale assertions contained stale catalog counts/text.
+6. The accessibility suite caught 42px mobile language/back controls; mobile controls were restored to the 44px minimum.
+7. The language-switching test needed to close the active BottomSheet before clicking the header language switch.
+
+The corrections were forward commits on `chatgpt/physics-ch01-textbook-v2`; no force-push was used.
+
+Final verified code HEAD before docs-only P14:
+`26e768ae9f314dba17121739179ea0c262c88845`
+
+Final passing evidence:
+- Physics Ch01 Full Gate `36408480283` — SUCCESS
+- Physics Ch01 CI `36408480384` — SUCCESS
+- TypeScript typecheck PASS
+- ESLint PASS
+- Vitest: 14 files / 44 tests PASS
+- production build PASS
+- Playwright: 42/42 tests PASS
+
+Chapter-gate result:
+- G11 PASS — 1A→1G order
+- G12 PASS — chapter progress
+- G13 PASS — all 17 figures
+- G14 PASS — stable ID uniqueness/domain validation
+- G15 PASS — `pnpm check`
+- G16 PASS — complete Playwright suite
+- G17 PASS — `pnpm check:all`
+
+`P13 = PASS`
+
+### P14 — control-document finalization
+
+Updated:
+- `CHATGPT_README_FIRST.md`
+- `docs/physics-ch01/MASTER_FIRE_DIAGRAM.md`
+- `docs/physics-ch01/WORKLOG.md`
+
+No application behavior is changed by this node.
+
+`P14 = PASS`
+
+Chapter 1 V2 implementation is complete on `chatgpt/physics-ch01-textbook-v2`.
+
+Next decision point:
+- integrate/merge this completed branch according to the repository ownership policy, or
+- start Chapter 2 with a fresh source audit and a new dependency/fire diagram before coding.

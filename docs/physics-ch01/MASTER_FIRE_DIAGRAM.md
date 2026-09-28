@@ -219,13 +219,13 @@ G10 regression test PASS
 
 Chapter gate:
 ```text
-G11 1A〜1G order
-G12 chapter progress
-G13 all 17 figures
-G14 stable ID uniqueness
-G15 pnpm check
-G16 relevant Playwright
-G17 pnpm check:all before merge
+G11 PASS — 1A〜1G order
+G12 PASS — chapter progress
+G13 PASS — all 17 figures
+G14 PASS — stable ID uniqueness
+G15 PASS — pnpm check
+G16 PASS — full Playwright suite
+G17 PASS — pnpm check:all before merge
 ```
 
 ## 10. Current status
@@ -244,8 +244,8 @@ P09  PASS — 1D 加速度 + supplied figures 9–10 + browser audit
 P10  PASS — 1E 水平投射 + supplied figures 11–12 + browser audit
 P11  PASS — 1F 斜方投射 + supplied figures 13–14 + browser audit
 P12  PASS — 1G 重力加速度・空気抵抗・終端速度 + supplied figures 15–17 + start→finish browser gate
-P13  NEXT — Chapter 1 full gate (G11–G17)
-P14  WAIT — docs/worklog finalization
+P13  PASS — Chapter 1 full gate (G11–G17)
+P14  PASS — README / fire diagram / worklog finalization
 ```
 
 P01 PASS evidence: GitHub Actions run `36333501024`.
@@ -522,3 +522,40 @@ P12 gate notes:
 - G7–G8: shared textbook wrong-answer and persistence behavior remain covered by browser regression tests.
 - G9: 1G has no answer-bearing overlay; mobile figure rendering is exercised by the mobile textbook suite.
 - G10: final regression run `36388191856` PASS.
+
+
+## 14. P13/P14 Chapter 1 final gate
+
+Verified HEAD before docs-only finalization:
+
+`26e768ae9f314dba17121739179ea0c262c88845`
+
+Passing evidence:
+- Physics Ch01 Full Gate run `36408480283`: SUCCESS
+- Physics Ch01 CI run `36408480384`: SUCCESS
+- TypeScript typecheck PASS
+- ESLint PASS
+- Vitest: 14 files / 44 tests PASS
+- production build PASS
+- Playwright: 42 tests PASS
+
+Chapter gates:
+- G11 PASS: chapter setup exposes and preserves order 1A→1B→1C→1D→1E→1F→1G.
+- G12 PASS: chapter/unit progress and persisted per-unit progress are verified in browser E2E.
+- G13 PASS: figures 1–17 are present in Chapter 1 data/assets; all unit figure browser audits including 1G pass.
+- G14 PASS: stable item/figure IDs and chapter/unit identities satisfy the static/domain validation tests.
+- G15 PASS: `pnpm check` succeeds inside the final full gate.
+- G16 PASS: full Playwright suite, 42/42 tests.
+- G17 PASS: `pnpm check:all` succeeds in run `36408480283`.
+
+P13 also exposed stale legacy E2E assumptions that pre-dated textbook-mode routing:
+- direct path navigation was migrated to the app's HashRouter/base-path form;
+- practice-mode tests were aligned with the current fixed detailed-guidance flow;
+- stale catalog counts/text expectations were removed;
+- mobile header controls were restored to the 44px accessibility gate;
+- Chinese locale assertions were aligned with the authoritative localized catalog;
+- language switching now explicitly closes/reopens the active BottomSheet around header interaction.
+
+These were treated as regression-gate defects, not hidden by weakening the Chapter 1 tests. P13 was marked PASS only after the complete CI and full gate were green.
+
+P14 finalizes the authoritative control documents. No source/schema/state change is made by P14.

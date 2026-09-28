@@ -3,8 +3,12 @@ import { builtInQuestions } from './questions'
 import { buildPhysicsTopicSummary, physicsTaxonomy, physicsTopicForQuestion } from './physicsTaxonomy'
 
 describe('physics taxonomy', () => {
-  it('keeps short, unique, vertically aligned topic labels', () => {
+  it('keeps the approved 5-domain / 23-topic structure short and unique', () => {
+    expect(physicsTaxonomy.map((domain) => domain.id)).toEqual(['mechanics', 'thermal', 'waves', 'electromagnetism', 'atomic'])
+    expect(physicsTaxonomy.map((domain) => domain.topics.length)).toEqual([8, 2, 3, 6, 4])
+
     const topics = physicsTaxonomy.flatMap((domain) => domain.topics)
+    expect(topics).toHaveLength(23)
     expect(new Set(topics.map((topic) => topic.id)).size).toBe(topics.length)
     expect(topics.every((topic) => topic.label.ja.length <= 8)).toBe(true)
 

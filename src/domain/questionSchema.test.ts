@@ -5,8 +5,8 @@ import { formatQuestionIssues, validateQuestionCatalog } from './questionSchema'
 
 describe('question catalog schema', () => {
   it('accepts the full built-in versioned question catalog', () => {
-    expect(builtInQuestions).toHaveLength(5)
-    expect(new Set(builtInQuestions.map((question) => question.questionId)).size).toBe(5)
+    expect(builtInQuestions).toHaveLength(19)
+    expect(new Set(builtInQuestions.map((question) => question.questionId)).size).toBe(19)
   })
 
   it('requires common-test questions to keep the final choice outside the guide flow', () => {

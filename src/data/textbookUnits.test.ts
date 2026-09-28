@@ -298,8 +298,26 @@ describe('textbook unit catalog', () => {
     const figures = chapterUnits.flatMap((unit) =>
       unit.sections.flatMap((section) => section.figures),
     )
-    expect(figures).toHaveLength(17)
-    expect(new Set(figures.map((figure) => figure.src)).size).toBe(17)
+    const sourceFigureAssets = [...new Set(figures.map((figure) => figure.src))].sort()
+    expect(sourceFigureAssets).toEqual([
+      '/assets/physics/textbook/ch01/1a/average-instantaneous-velocity.webp',
+      '/assets/physics/textbook/ch01/1a/curve-velocity-directions.webp',
+      '/assets/physics/textbook/ch01/1a/displacement-components.webp',
+      '/assets/physics/textbook/ch01/1a/position-vector-displacement.webp',
+      '/assets/physics/textbook/ch01/1b/velocity-components.webp',
+      '/assets/physics/textbook/ch01/1b/velocity-composition.webp',
+      '/assets/physics/textbook/ch01/1c/relative-rain-bicycle.webp',
+      '/assets/physics/textbook/ch01/1c/relative-velocity-cars.webp',
+      '/assets/physics/textbook/ch01/1d/acceleration-trajectory.webp',
+      '/assets/physics/textbook/ch01/1d/velocity-change-acceleration.webp',
+      '/assets/physics/textbook/ch01/1e/horizontal-projectile-strobe.webp',
+      '/assets/physics/textbook/ch01/1e/horizontal-projectile-velocity.webp',
+      '/assets/physics/textbook/ch01/1f/oblique-projectile-components.webp',
+      '/assets/physics/textbook/ch01/1f/oblique-projectile-trajectory.webp',
+      '/assets/physics/textbook/ch01/1g/drag-force-stages.webp',
+      '/assets/physics/textbook/ch01/1g/gravity-air-resistance.webp',
+      '/assets/physics/textbook/ch01/1g/terminal-velocity-graph.webp',
+    ])
 
     const compositeItemIds: string[] = []
     for (const unit of chapterUnits) {

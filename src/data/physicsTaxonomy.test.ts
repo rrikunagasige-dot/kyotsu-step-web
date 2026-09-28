@@ -18,10 +18,11 @@ describe('physics taxonomy', () => {
 
   it('classifies the current published physics catalog without leftovers', () => {
     const physics = builtInQuestions.filter((question) => question.subject === 'physics')
-    expect(physics.map((question) => physicsTopicForQuestion(question))).toEqual(['motion', 'current', 'magnetic-field'])
+    expect(physics).toHaveLength(17)
+    expect(physics.filter((question) => physicsTopicForQuestion(question) === 'motion')).toHaveLength(15)
 
     const summary = buildPhysicsTopicSummary(builtInQuestions)
-    expect(summary.counts.motion).toBe(1)
+    expect(summary.counts.motion).toBe(15)
     expect(summary.counts.current).toBe(1)
     expect(summary.counts['magnetic-field']).toBe(1)
     expect(summary.unclassified).toBe(0)

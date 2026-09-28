@@ -942,3 +942,28 @@ Evidence:
 - Playwright: 44/44 PASS
 
 Status: **P20–P25 PASS**
+
+
+## 2026-09-28 — P26–P31 textbook reader repair PASS
+
+Public UI review exposed systemic reader defects rather than isolated 1A issues.
+
+### Fixed
+1. Wrong answers were previously stored as `resolved=true`; now only correct answers resolve and advance progress.
+2. Wrong-answer UI no longer leaves four disabled choices plus a correct-answer reveal in the reading text. It closes and leaves a compact retry control.
+3. Section completion no longer auto-unmounts the previous section. Earlier text/figures stay visible while the next section opens below.
+4. Formula holes now render by assembling one complete LaTeX expression before KaTeX compilation. This fixes broken `\\frac{...}{...}`/similar split expressions.
+5. Micro internal labels such as `A-15` are hidden from learners while stable IDs remain unchanged.
+6. Seven corrupted WebPs were regenerated from the uploaded canonical figure ZIP: figures 2, 3, 5, 11, 12, 13, 14.
+7. Added binary asset integrity gate for all 17 Chapter 1 WebPs.
+8. Reworked scroll-sensitive overlay bounds tests to compare overlay/stage rectangles in one DOM evaluation.
+
+### Validation
+GitHub Actions `36455569868`: SUCCESS
+- TypeScript PASS
+- ESLint PASS
+- Vitest: 19 files / 58 tests PASS
+- production build PASS
+- Playwright: 46/46 PASS
+
+Status: **P26–P31 PASS**

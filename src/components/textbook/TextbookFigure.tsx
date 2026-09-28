@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react'
-import type { TextbookUnitProgress } from '../../domain/textbook'
+import { isTextbookItemResolved, type TextbookUnitProgress } from '../../domain/textbook'
 import type { TextbookFigure as TextbookFigureData, TextbookItem } from '../../domain/textbookSchema'
 
 function resolveAssetSrc(src: string) {
@@ -25,7 +25,7 @@ export function TextbookFigure({ figure, items, progress, onOpen }: TextbookFigu
         {figure.overlays.map((overlay) => {
           const item = items.find((candidate) => candidate.id === overlay.itemId)
           const record = progress?.answers[overlay.itemId]
-          const revealed = overlay.reveal === 'always' || record?.resolved
+          const revealed = overlay.reveal === 'always' || Boolean(item && isTextbookItemResolved(item, record))
           if (revealed) return null
 
           const style = {
@@ -45,7 +45,7 @@ export function TextbookFigure({ figure, items, progress, onOpen }: TextbookFigu
               aria-label={overlay.ariaLabel ?? item?.prompt ?? item?.label ?? overlay.itemId}
               onClick={() => onOpen(overlay.itemId)}
             >
-              <span>{item?.label ?? '?'}</span>
+              <span aria-hidden="true">?</span>
             </button>
           )
         })}

@@ -942,3 +942,110 @@ Evidence:
 - Playwright: 44/44 PASS
 
 Status: **P20–P25 PASS**
+
+
+## 2026-09-29 — P26–P31 textbook reader root repair PASS
+
+### Trigger
+
+Public-page manual review found three independent visible failures:
+- wrong choice expanded/revealed all options and polluted reading flow,
+- formulas containing holes could display raw TeX,
+- previous figure/content disappeared when advancing.
+
+A later screenshot also showed figure 2 visually corrupted.
+
+### Audit findings
+
+The four screenshots exposed six coupled root causes:
+
+1. **answer state defect**  
+   `answerTextbookItem` wrote `resolved: true` even for incorrect values.  
+   Consequences: wrong answers counted as completed, retries were blocked, masks could reveal.
+
+2. **wrong-answer UX defect**  
+   The panel intentionally kept all four choices disabled, highlighted wrong + correct, and printed the correct answer. This was unsuitable for article-style reading.
+
+3. **formula architecture defect**  
+   Mixed formula blocks compiled each math fragment separately. A structure such as
+   `\\frac{` + hole + `}{` + hole + `}`
+   is syntactically invalid when fragments are passed independently to KaTeX.
+
+4. **reading state defect**  
+   Only `currentSection` was rendered. Progress automatically changed `selectedSectionIndex`, so previous text/figures unmounted.
+
+5. **asset defect**  
+   7/17 deployed WebPs were truncated. Canonical PNGs in the supplied figure archive were intact.
+
+6. **test defect**  
+   Existing tests validated the old wrong-answer behavior and only checked that images had a non-zero natural width.
+
+### P26 — state repair
+
+- added `isTextbookItemResolved`,
+- wrong answers remain unresolved,
+- correct retry can resolve,
+- section/unit progress counts only genuinely resolved items,
+- legacy `isFirstCorrect=true` records remain compatible,
+- legacy resolved-wrong records no longer count.
+
+### P27 — math repair
+
+Added:
+- `src/domain/textbookFormula.ts`
+- `src/components/textbook/TextbookFormula.tsx`
+- `src/domain/textbookFormula.test.ts`
+
+All formula parts are combined before rendering. Interactive holes use trusted KaTeX HTML metadata while stable item IDs remain available to tests/accessibility without displaying labels to learners.
+
+### P28 — reading continuity
+
+`TextbookUnitPage` now renders a section stack:
+- once opened, a section remains visible,
+- “次へ” appends the next section below,
+- no progress-driven auto-unmount,
+- persisted progress initializes at the first incomplete section.
+
+### P29 — figure restoration
+
+Canonical archive:
+- supplied file: `figure(1).zip`
+- size: 11,478,555 bytes
+- SHA256: `e938a1be0470a87c429ee766c9f75163e9f0768470bb3e403449760b92622e58`
+
+Restored from source PNG:
+- 2 (2).png
+- 3 (2).png
+- 5.png
+- 11.png
+- 12.png
+- 13.png
+- 14.png
+
+Repaired figure 2 was opened directly after conversion; labels, arrows and curve were visually intact.
+
+### P30 — stronger regression gate
+
+Added:
+- wrong answer → completed count remains unchanged,
+- retry → correct resolves,
+- all Chapter-1 formulas compile both before/after resolution,
+- no visible raw TeX leak,
+- no learner-facing internal micro label,
+- previous reading section remains visible,
+- masks require true resolution,
+- 17 unique figure references,
+- RIFF declared size must equal actual file length,
+- overlay bounds checked in one DOM evaluation to avoid scroll-coordinate races.
+
+Final run:
+`36455569868`
+
+Evidence:
+- TypeScript PASS
+- ESLint PASS
+- Vitest: 19 files / 58 tests PASS
+- production build PASS
+- Playwright: 46/46 PASS
+
+Status: **P26–P31 PASS**

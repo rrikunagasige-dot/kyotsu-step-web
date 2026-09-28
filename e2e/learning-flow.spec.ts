@@ -62,6 +62,7 @@ test('physics guide keeps the original problem image visible while solving', asy
   await page.goto(appRoute('/learning/setup'))
   await page.getByRole('radio', { name: /問題を解く/ }).click()
   await page.getByRole('button', { name: '物理' }).click()
+  await page.getByTestId('physics-topic-motion').click()
   await page.getByLabel('学習する問題').selectOption('physics-motion-01')
   await page.getByTestId('start-learning').click()
 

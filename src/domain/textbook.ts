@@ -88,7 +88,9 @@ export function isTextbookAnswerCorrect(item: TextbookItem, value: string) {
 }
 
 export function isTextbookItemResolved(item: TextbookItem, record: TextbookAnswerRecord | undefined) {
-  return Boolean(record?.resolved && isTextbookAnswerCorrect(item, record.value))
+  if (!record?.resolved) return false
+  if (record.isFirstCorrect) return true
+  return isTextbookAnswerCorrect(item, record.value)
 }
 
 export function answerTextbookItem(progress: TextbookUnitProgress | undefined, unit: TextbookUnit, item: TextbookItem, value: string, now: number): TextbookUnitProgress {

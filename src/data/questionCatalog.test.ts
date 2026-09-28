@@ -2,9 +2,9 @@ import { describe, expect, it } from 'vitest'
 import { builtInQuestions } from './questions'
 
 describe('built-in content coverage', () => {
-  it('contains two math and three physics golden samples', () => {
+  it('contains two math samples plus three original and fourteen Chapter 1 physics questions', () => {
     expect(builtInQuestions.filter((question) => question.subject === 'math-1a')).toHaveLength(2)
-    expect(builtInQuestions.filter((question) => question.subject === 'physics')).toHaveLength(3)
+    expect(builtInQuestions.filter((question) => question.subject === 'physics')).toHaveLength(17)
   })
 
   it('covers common-test narrative, images, tables and all three physics flow types', () => {

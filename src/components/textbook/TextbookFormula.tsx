@@ -24,7 +24,10 @@ export function TextbookFormula({ block, section, progress, onOpen }: Props) {
       displayMode: true,
       throwOnError: false,
       strict: 'warn',
-      trust: (context) => context.command === '\\href' || context.command === '\\htmlClass',
+      trust: (context) =>
+        context.command === '\\href' ||
+        context.command === '\\htmlClass' ||
+        context.command === '\\htmlData',
     }),
     [latex],
   )

@@ -1,13 +1,14 @@
 import { expect, test } from '@playwright/test'
+import { appRoute } from './helpers'
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('/problems')
+  await page.goto(appRoute('/problems'))
   await page.evaluate(() => localStorage.clear())
   await page.reload()
 })
 
 test('simulation hides feedback, restores answers, supports cancel, and scores on submit', async ({ page }) => {
-  await page.goto('/simulation/setup')
+  await page.goto(appRoute('/simulation/setup'))
   await page.getByLabel('問題数').selectOption('1')
   await page.getByTestId('start-simulation').click()
   await expect(page).toHaveURL(/\/simulation\/session\/sim-/)
@@ -36,7 +37,7 @@ test('simulation hides feedback, restores answers, supports cancel, and scores o
 })
 
 test('multi-select uses all-or-nothing scoring and wrong answer creates a real reinforcement', async ({ page }) => {
-  await page.goto('/simulation/setup')
+  await page.goto(appRoute('/simulation/setup'))
   await page.getByLabel('難易度').selectOption('basic')
   await page.getByTestId('start-simulation').click()
   await page.getByTestId('sim-option-ms-sim-opt-a').click()
@@ -49,7 +50,7 @@ test('multi-select uses all-or-nothing scoring and wrong answer creates a real r
 })
 
 test('expired persisted timer auto-submits and records timeout separately', async ({ page }) => {
-  await page.goto('/simulation/setup')
+  await page.goto(appRoute('/simulation/setup'))
   await page.getByRole('radio', { name: '本番時間' }).click()
   await page.getByTestId('start-simulation').click()
   const sessionId = page.url().split('/').at(-1)!

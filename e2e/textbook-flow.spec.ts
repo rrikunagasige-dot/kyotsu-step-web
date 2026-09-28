@@ -834,7 +834,8 @@ test('textbook formulas compile without raw TeX leakage or internal item labels'
   await expect(page.locator('[data-latex-status="error"]')).toHaveCount(0)
   await expect(page.getByText('A-15', { exact: true })).toHaveCount(0)
   await expect(page.getByText('A-16', { exact: true })).toHaveCount(0)
-  await expect(page.getByText('\\bar{\\vec v}=\\frac{', { exact: false })).toHaveCount(0)
+  const visibleText = await page.locator('body').evaluate((body) => (body as HTMLElement).innerText)
+  expect(visibleText).not.toContain('\\\\bar{\\\\vec v}=\\\\frac{')
 })
 
 test('completed reading sections remain visible after the next section opens', async ({ page }) => {

@@ -213,39 +213,6 @@ async function seedCompleted1GConceptSection(page: import('@playwright/test').Pa
 
 
 
-async function seedCompleted1GConceptSection(page: import('@playwright/test').Page) {
-  const itemIds = Array.from({ length: 7 }, (_, index) => 'g1-' + String(index + 1))
-  const answers = Object.fromEntries(
-    itemIds.map((itemId) => [itemId, {
-      itemId,
-      value: 'seeded',
-      firstValue: 'seeded',
-      isFirstCorrect: true,
-      resolved: true,
-      attemptCount: 1,
-      firstAnsweredAt: 1,
-      lastAnsweredAt: 1,
-    }]),
-  )
-
-  await page.evaluate((seededAnswers) => {
-    localStorage.setItem('kyotsu-step-store', JSON.stringify({
-      state: {
-        textbookProgress: {
-          'physics-1g-gravity-drag-terminal-velocity': {
-            unitId: 'physics-1g-gravity-drag-terminal-velocity',
-            unitRevision: 1,
-            startedAt: 1,
-            updatedAt: 1,
-            answers: seededAnswers,
-          },
-        },
-      },
-      version: 1,
-    }))
-  }, answers)
-}
-
 async function seedCompletedConceptSection(page: import('@playwright/test').Page) {
   const answers = Object.fromEntries(
     Array.from({ length: 24 }, (_, index) => {
@@ -298,7 +265,6 @@ test('textbook setup exposes chapter and unit hierarchy before starting', async 
   await expect(page.getByTestId('textbook-unit-physics-1d-acceleration')).toBeVisible()
   await expect(page.getByTestId('textbook-unit-physics-1e-horizontal-projectile')).toBeVisible()
   await expect(page.getByTestId('textbook-unit-physics-1f-oblique-projectile')).toBeVisible()
-  await expect(page.getByTestId('textbook-unit-physics-1g-gravity-drag-terminal-velocity')).toBeVisible()
   await expect(page.getByTestId('textbook-unit-physics-1g-gravity-drag-terminal-velocity')).toBeVisible()
   await expect(page.getByTestId('textbook-selection-summary')).toContainText('1A')
 })
@@ -695,8 +661,8 @@ test('1G uses the supplied gravity, drag and terminal-velocity figures', async (
   await expect(figureSection).toBeEnabled()
   await figureSection.click()
 
-  const gravityFigure = page.getByAltText(/空気抵抗がない場合とある場合/)
-  const stagesFigure = page.getByAltText(/落下初期、途中、終端速度付近/)
+  const gravityFigure = page.getByAltText(/重力だけの場合と空気抵抗/)
+  const stagesFigure = page.getByAltText(/落下中に空気抵抗/)
   for (const figure of [gravityFigure, stagesFigure]) {
     await expect(figure).toBeVisible()
     await expect.poll(async () => figure.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0)
@@ -704,16 +670,16 @@ test('1G uses the supplied gravity, drag and terminal-velocity figures', async (
 
   await page.getByTestId('textbook-item-d-1').click()
   const d1Panel = page.getByTestId('inline-choice-panel-d-1')
-  await d1Panel.getByRole('button', { name: '小さくなる', exact: true }).click()
+  await d1Panel.getByRole('button', { name: '大きくなる', exact: true }).click()
   await expect(d1Panel).toHaveCount(0)
 
-  const graphFigure = page.getByAltText(/速度 v が時間 t とともに増え/)
+  const graphFigure = page.getByAltText(/終端速度 v_t/)
   await expect(graphFigure).toBeVisible()
   await expect.poll(async () => graphFigure.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0)
 
   await page.getByTestId('textbook-item-d-2').click()
   const d2Panel = page.getByTestId('inline-choice-panel-d-2')
-  await d2Panel.getByRole('button', { name: '水平に近づく', exact: true }).click()
+  await d2Panel.getByRole('button', { name: '0に近づく', exact: true }).click()
   await expect(d2Panel).toHaveCount(0)
 })
 
@@ -740,8 +706,8 @@ test('1G completes from the first concept blank to unit completion', async ({ pa
   await answer('g1-7', 'mg/k')
 
   await expect(page.getByRole('button', { name: /図の読み取り/ })).toHaveAttribute('aria-pressed', 'true')
-  await answer('d-1', '小さくなる')
-  await answer('d-2', '水平に近づく')
+  await answer('d-1', '大きくなる')
+  await answer('d-2', '0に近づく')
 
   await expect(page.getByRole('button', { name: /問1型/ })).toHaveAttribute('aria-pressed', 'true')
   await answer('q1-1', '49')
@@ -819,43 +785,4 @@ test('chapter setup restores persisted per-unit progress across all seven units'
   await expect(unit1G).toContainText('1/14')
   await expect(unit1G).toContainText('7%')
   await expect(chapterCard).toContainText('7 単元')
-})
-
-
-test('1G uses all three supplied gravity-drag figures and reaches the figure-reading questions', async ({ page }) => {
-  await page.goto(appRoute('/learning/setup'))
-  await page.getByTestId('textbook-unit-physics-1g-gravity-drag-terminal-velocity').click()
-  await expect(page.getByTestId('textbook-selection-summary')).toContainText('1G')
-  await page.getByTestId('start-learning').click()
-
-  await expect(page).toHaveURL(/physics-1g-gravity-drag-terminal-velocity/)
-  await expect(page.getByTestId('textbook-item-g1-1')).toBeVisible()
-  await expect(page.getByRole('button', { name: /図の読み取り/ })).toBeDisabled()
-
-  await page.goto(appRoute('/problems'))
-  await seedCompleted1GConceptSection(page)
-  await page.reload()
-  await page.goto(appRoute('/learning/textbook/physics-1g-gravity-drag-terminal-velocity'))
-
-  const figureSection = page.getByRole('button', { name: /図の読み取り/ })
-  await expect(figureSection).toBeEnabled()
-  await figureSection.click()
-
-  const gravityFigure = page.getByAltText(/重力だけの場合と空気抵抗/)
-  const stagesFigure = page.getByAltText(/落下中に空気抵抗/)
-  const graphFigure = page.getByAltText(/終端速度 v_t/)
-  for (const image of [gravityFigure, stagesFigure, graphFigure]) {
-    await expect(image).toBeVisible()
-    await expect.poll(async () => image.evaluate((element: HTMLImageElement) => element.naturalWidth)).toBeGreaterThan(0)
-  }
-
-  await page.getByTestId('textbook-item-d-1').click()
-  const d1Panel = page.getByTestId('inline-choice-panel-d-1')
-  await d1Panel.getByRole('button', { name: '大きくなる', exact: true }).click()
-  await expect(d1Panel).toHaveCount(0)
-
-  await page.getByTestId('textbook-item-d-2').click()
-  const d2Panel = page.getByTestId('inline-choice-panel-d-2')
-  await d2Panel.getByRole('button', { name: '0に近づく', exact: true }).click()
-  await expect(d2Panel).toHaveCount(0)
 })

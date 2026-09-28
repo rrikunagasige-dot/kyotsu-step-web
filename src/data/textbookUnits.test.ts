@@ -3,7 +3,7 @@ import { builtInTextbookUnits } from './textbookUnits'
 
 describe('textbook unit catalog', () => {
   it('imports 1A displacement and velocity as the chapter-1 golden unit', () => {
-    expect(builtInTextbookUnits).toHaveLength(5)
+    expect(builtInTextbookUnits).toHaveLength(6)
     const unit = builtInTextbookUnits[0]
     expect(unit.unitId).toBe('physics-a-displacement-velocity')
     expect(unit.schemaVersion).toBe('1.1')
@@ -208,6 +208,35 @@ describe('textbook unit catalog', () => {
     expect(figures.flatMap((figure) => figure.overlays).map((overlay) => overlay.itemId)).toEqual(
       expect.arrayContaining(['d-1', 'd-2']),
     )
+  })
+
+
+  it('imports 1F oblique projectile with source figures and explicit choices', () => {
+    const unit = builtInTextbookUnits.find((candidate) => candidate.chapter?.unitCode === '1F')
+    expect(unit).toBeDefined()
+    expect(unit?.unitId).toBe('physics-1f-oblique-projectile')
+    expect(unit?.schemaVersion).toBe('1.1')
+    expect(unit?.chapter).toEqual({
+      chapterId: 'physics-ch01-motion',
+      chapterNumber: '1',
+      chapterTitle: '物体の運動',
+      unitCode: '1F',
+      orderInChapter: 6,
+      sourcePages: [22, 23, 24],
+    })
+
+    const items = unit?.sections.flatMap((section) => section.items) ?? []
+    expect(items).toHaveLength(19)
+    expect(new Set(items.map((item) => item.id)).size).toBe(19)
+    expect(items.every((item) => item.choices && item.choices.length >= 4)).toBe(true)
+    expect(items.every((item) => item.choices?.includes(item.answer))).toBe(true)
+
+    const figures = unit?.sections.flatMap((section) => section.figures) ?? []
+    expect(figures.map((figure) => figure.src)).toEqual(expect.arrayContaining([
+      '/assets/physics/textbook/ch01/1f/oblique-projectile-trajectory.webp',
+      '/assets/physics/textbook/ch01/1f/oblique-projectile-components.webp',
+    ]))
+    expect(figures.flatMap((figure) => figure.overlays).map((overlay) => overlay.itemId)).toContain('d-1')
   })
 
 })

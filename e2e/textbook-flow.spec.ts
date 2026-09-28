@@ -144,6 +144,40 @@ async function seedCompleted1EConceptSection(page: import('@playwright/test').Pa
   }, answers)
 }
 
+
+async function seedCompleted1FConceptSection(page: import('@playwright/test').Page) {
+  const itemIds = Array.from({ length: 9 }, (_, index) => 'f1-' + String(index + 1))
+  const answers = Object.fromEntries(
+    itemIds.map((itemId) => [itemId, {
+      itemId,
+      value: 'seeded',
+      firstValue: 'seeded',
+      isFirstCorrect: true,
+      resolved: true,
+      attemptCount: 1,
+      firstAnsweredAt: 1,
+      lastAnsweredAt: 1,
+    }]),
+  )
+
+  await page.evaluate((seededAnswers) => {
+    localStorage.setItem('kyotsu-step-store', JSON.stringify({
+      state: {
+        textbookProgress: {
+          'physics-1f-oblique-projectile': {
+            unitId: 'physics-1f-oblique-projectile',
+            unitRevision: 1,
+            startedAt: 1,
+            updatedAt: 1,
+            answers: seededAnswers,
+          },
+        },
+      },
+      version: 1,
+    }))
+  }, answers)
+}
+
 async function seedCompletedConceptSection(page: import('@playwright/test').Page) {
   const answers = Object.fromEntries(
     Array.from({ length: 24 }, (_, index) => {
@@ -195,6 +229,7 @@ test('textbook setup exposes chapter and unit hierarchy before starting', async 
   await expect(page.getByTestId('textbook-unit-physics-1c-relative-velocity')).toBeVisible()
   await expect(page.getByTestId('textbook-unit-physics-1d-acceleration')).toBeVisible()
   await expect(page.getByTestId('textbook-unit-physics-1e-horizontal-projectile')).toBeVisible()
+  await expect(page.getByTestId('textbook-unit-physics-1f-oblique-projectile')).toBeVisible()
   await expect(page.getByTestId('textbook-selection-summary')).toContainText('1A')
 })
 
@@ -515,4 +550,57 @@ test('1E uses both supplied horizontal-projectile figures and resolves the strob
   await page.reload()
   await expect(page.getByTestId('textbook-figure-overlay-hotspot-d-1')).toHaveCount(0)
   await expect(page.getByTestId('textbook-figure-overlay-hotspot-d-2')).toHaveCount(0)
+})
+
+
+test('1F uses both supplied oblique-projectile figures and masks the highest-point vertical velocity', async ({ page }) => {
+  await page.goto(appRoute('/learning/setup'))
+  await page.getByTestId('textbook-unit-physics-1f-oblique-projectile').click()
+  await expect(page.getByTestId('textbook-selection-summary')).toContainText('1F')
+  await page.getByTestId('start-learning').click()
+
+  await expect(page).toHaveURL(/physics-1f-oblique-projectile/)
+  await expect(page.getByTestId('textbook-item-f1-1')).toBeVisible()
+  await expect(page.getByRole('button', { name: /図の読み取り/ })).toBeDisabled()
+
+  await page.goto(appRoute('/problems'))
+  await seedCompleted1FConceptSection(page)
+  await page.reload()
+  await page.goto(appRoute('/learning/textbook/physics-1f-oblique-projectile'))
+
+  const figureSection = page.getByRole('button', { name: /図の読み取り/ })
+  await expect(figureSection).toBeEnabled()
+  await figureSection.click()
+
+  const trajectory = page.getByAltText(/斜方投射の放物線軌道/)
+  const componentsCard = page.getByTestId('textbook-figure-oblique-projectile-components-figure')
+  const components = componentsCard.getByAltText(/最高点で v_y=0/)
+  await expect(trajectory).toBeVisible()
+  await expect(components).toBeVisible()
+  await expect.poll(async () => trajectory.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0)
+  await expect.poll(async () => components.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0)
+
+  const mask = page.getByTestId('textbook-figure-overlay-mask-d-1')
+  await expect(mask).toBeVisible()
+  const stageBox = await componentsCard.locator('.textbook-figure-stage').boundingBox()
+  const maskBox = await mask.boundingBox()
+  expect(stageBox).not.toBeNull()
+  expect(maskBox).not.toBeNull()
+  expect(maskBox!.x).toBeGreaterThanOrEqual(stageBox!.x)
+  expect(maskBox!.y).toBeGreaterThanOrEqual(stageBox!.y)
+  expect(maskBox!.x + maskBox!.width).toBeLessThanOrEqual(stageBox!.x + stageBox!.width + 1)
+  expect(maskBox!.y + maskBox!.height).toBeLessThanOrEqual(stageBox!.y + stageBox!.height + 1)
+
+  await mask.click()
+  const d1Panel = page.getByTestId('inline-choice-panel-d-1')
+  await expect(d1Panel).toBeVisible()
+  await d1Panel.getByRole('button', { name: '0', exact: true }).click()
+  await expect(mask).toHaveCount(0)
+
+  const d2 = page.getByTestId('textbook-item-d-2')
+  await expect(d2).toBeVisible()
+  await d2.click()
+  const d2Panel = page.getByTestId('inline-choice-panel-d-2')
+  await d2Panel.getByRole('button', { name: '一定のまま', exact: true }).click()
+  await expect(d2Panel).toHaveCount(0)
 })

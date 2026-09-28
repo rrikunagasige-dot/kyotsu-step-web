@@ -15,7 +15,7 @@ describe('textbook learning state', () => {
       chapterNumber: '1',
       chapterTitle: '物体の運動',
     })
-    expect(chapters[0].units.map((candidate) => candidate.chapter?.unitCode)).toEqual(['1A', '1B', '1C', '1D', '1E'])
+    expect(chapters[0].units.map((candidate) => candidate.chapter?.unitCode)).toEqual(['1A', '1B', '1C', '1D', '1E', '1F'])
   })
 
   it('normalizes spacing, unicode minus and vector marks for formula entry', () => {

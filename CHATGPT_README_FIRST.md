@@ -152,6 +152,7 @@ P28 PASS
 P29 PASS
 P30 PASS
 P31 PASS
+P32 PASS
 ```
 
 最新の総合gate: GitHub Actions `36455569868` — typecheck / lint / Vitest 19 files・58 tests / production build / Playwright 46 tests すべて PASS。検証対象HEADは `a68f03ebf9f076343f9ed4a903c597f182028eb9`。
@@ -274,3 +275,20 @@ canonical `figure(1).zip` の正常PNGから、破損していた7 WebPを再生
 - overlay-bound tests are scroll-independent
 
 P26〜P30 final gate: GitHub Actions `36455569868` SUCCESS。
+
+
+## P32 source archive persistence
+
+Canonical source ZIPs are now persisted in ChatGPT Library and indexed from GitHub.
+
+Before asking the user to re-upload or searching Desktop:
+1. read `docs/source_archives/README.md`,
+2. read `docs/physics-ch01/SOURCE_MANIFEST.md`,
+3. search Library path `/塾/kyotsu-step-web/source_archives`,
+4. verify exact byte size + SHA256 + ZIP integrity.
+
+Canonical identities:
+- `figure.zip`: 12,078,342 bytes, SHA256 `b1d55eb94c13aa8ec91dbfd794dcbcbcec9c5a67ed8bdd692c397ad78d8b01e2`
+- `物理教科書モード_第1-5章_母版準拠_完全版.zip`: 50,419,544 bytes, SHA256 `df1194b491d362c569018da15bc31e3583926a863af1f74b4842b033240e8eff`
+
+Do not claim these ZIP binaries are committed to GitHub: the current GitHub connector cannot safely upload 12/50 MB local binary archives. GitHub stores the authoritative index and identity bridge; the actual ZIP bytes are persistent in Library.

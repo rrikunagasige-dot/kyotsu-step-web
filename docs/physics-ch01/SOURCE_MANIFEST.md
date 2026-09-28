@@ -166,7 +166,7 @@ Unit data:
 
 | source figure | app asset | use |
 |---|---|---|
-| 15.png | `public/assets/physics/textbook/ch01/1g/gravity-air-resistance.webp` | compare gravity-only fall with fall under upward air resistance |
+| 15.png | `public/assets/physics/textbook/ch01/1g/gravity-vs-air-resistance.webp` | compare gravity-only fall with fall under upward air resistance |
 | 16.png | `public/assets/physics/textbook/ch01/1g/drag-force-stages.webp` | force balance from initial fall through the approach to terminal velocity |
 | 17.png | `public/assets/physics/textbook/ch01/1g/terminal-velocity-graph.webp` | velocity-time curve approaching terminal velocity |
 
@@ -179,3 +179,35 @@ Unit data:
 - `unitId: physics-1g-gravity-drag-terminal-velocity`
 - `schemaVersion: 1.1`
 - `sourcePages: [25, 26, 27]`
+
+
+## 2026-09-29 canonical archive identities
+
+The latest source archives supplied for this repair were hashed before use.
+
+| archive | size | SHA256 | role |
+|---|---:|---|---|
+| `figure(1).zip` | 11,478,555 bytes | `e938a1be0470a87c429ee766c9f75163e9f0768470bb3e403449760b92622e58` | canonical Chapter-1 figure PNGs |
+| `物理教科書モード_第1-5章_母版準拠_完全版(2).zip` | 48,113,309 bytes | `4b55b4bce84b2330033c2829cd29106cc6448900b189308f4e7f42594624e33e` | mother-template/source packet |
+
+These hashes are the identity gate for any future re-upload or archive restoration. Do not silently substitute a similarly named ZIP.
+
+### Repaired asset provenance
+
+The following app assets were regenerated from the canonical figure archive because the deployed WebPs were binary-truncated:
+
+| source PNG | repaired app asset |
+|---|---|
+| `2 (2).png` | `1a/average-instantaneous-velocity.webp` |
+| `3 (2).png` | `1a/curve-velocity-directions.webp` |
+| `5.png` | `1b/velocity-composition.webp` |
+| `11.png` | `1e/horizontal-projectile-strobe.webp` |
+| `12.png` | `1e/horizontal-projectile-velocity.webp` |
+| `13.png` | `1f/oblique-projectile-trajectory.webp` |
+| `14.png` | `1f/oblique-projectile-components.webp` |
+
+The canonical PNGs decoded normally. The repaired WebPs were decoded after conversion and then checked in CI for complete RIFF payload length.
+
+### Archive-storage limitation
+
+The GitHub connector used in this chat can write repository blobs/files but does not expose GitHub Release asset upload, and the two complete ZIP archives are too large to safely transmit through the text/base64 file-write wrapper in one operation. Therefore the archive **bytes themselves are not claimed as committed to this repository**. Their exact names, sizes and SHA256 identities are recorded here so a future session can verify a supplied copy immediately rather than searching local machines.

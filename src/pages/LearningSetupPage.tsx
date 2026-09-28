@@ -61,7 +61,14 @@ export function LearningSetupPage() {
       (nextSubject !== 'physics' || !topic || physicsTopicForQuestion(question) === topic),
     )
 
-  const subjectQuestions = questionsFor(subject, subject === 'physics' ? activeTopic : null)
+  const subjectQuestions = useMemo(
+    () => catalog.filter((question) =>
+      question.subject === subject &&
+      question.status === 'published' &&
+      (subject !== 'physics' || !activeTopic || physicsTopicForQuestion(question) === activeTopic),
+    ),
+    [activeTopic, catalog, subject],
+  )
 
   useEffect(() => {
     textbookRepository.listPublished().then((units) => {
@@ -76,11 +83,10 @@ export function LearningSetupPage() {
       if (questionId) setQuestionId('')
       return
     }
-    const available = questionsFor(subject, subject === 'physics' ? activeTopic : null)
-    if (!available.some((question) => question.questionId === questionId)) {
-      setQuestionId(available[0]?.questionId ?? '')
+    if (!subjectQuestions.some((question) => question.questionId === questionId)) {
+      setQuestionId(subjectQuestions[0]?.questionId ?? '')
     }
-  }, [activeTopic, catalog, mode, questionId, subject])
+  }, [activeTopic, mode, questionId, subject, subjectQuestions])
 
   const textbookChapters = useMemo(() => groupTextbookUnitsByChapter(textbookUnits), [textbookUnits])
   const selectedUnit = textbookUnits.find((unit) => unit.unitId === unitId)

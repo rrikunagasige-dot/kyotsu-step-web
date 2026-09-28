@@ -722,3 +722,18 @@ test('1G completes from the first concept blank to unit completion', async ({ pa
   await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
   await expect(page.getByTestId('textbook-unit-complete')).toContainText('14 個の確認項目')
 })
+
+
+test('chapter-1 setup reports saved progress for a unit inside the seven-unit chapter', async ({ page }) => {
+  await page.goto(appRoute('/problems'))
+  await seedCompleted1GConceptSection(page)
+  await page.reload()
+  await page.goto(appRoute('/learning/setup'))
+
+  await expect(page.getByText('7 単元')).toBeVisible()
+
+  const unitCard = page.getByTestId('textbook-unit-physics-1g-gravity-drag-terminal-velocity')
+  await expect(unitCard).toBeVisible()
+  await expect(unitCard).toContainText('7/14 完了')
+  await expect(unitCard).toContainText('50%')
+})

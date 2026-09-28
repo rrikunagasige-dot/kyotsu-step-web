@@ -1,4 +1,34 @@
 @media (max-width: 560px) {
+  .physics-topic-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .55rem;
+  }
+
+  .physics-topic-card {
+    min-height: 78px;
+    padding: .8rem 1.45rem .7rem .65rem;
+  }
+
+  .physics-topic-card strong {
+    font-size: .92rem;
+  }
+
+  .physics-domain-heading {
+    gap: .55rem;
+  }
+
+  .physics-domain-heading h3 {
+    font-size: .9rem;
+  }
+
+  .topic-filter-note {
+    grid-template-columns: 1fr auto;
+  }
+
+  .topic-filter-note span {
+    grid-column: 1 / -1;
+  }
+
   .top-header {
     gap: .6rem;
     padding: .5rem .7rem;

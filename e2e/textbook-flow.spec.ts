@@ -77,6 +77,39 @@ async function seedCompleted1CConceptSection(page: import('@playwright/test').Pa
   await seed1CProgress(page, ['c-1', 'c-2', 'c-3', 'c-4', 'c-5', 'c-6'])
 }
 
+async function seedCompleted1DConceptSection(page: import('@playwright/test').Page) {
+  const itemIds = Array.from({ length: 8 }, (_, index) => `d1-${index + 1}`)
+  const answers = Object.fromEntries(
+    itemIds.map((itemId) => [itemId, {
+      itemId,
+      value: 'seeded',
+      firstValue: 'seeded',
+      isFirstCorrect: true,
+      resolved: true,
+      attemptCount: 1,
+      firstAnsweredAt: 1,
+      lastAnsweredAt: 1,
+    }]),
+  )
+
+  await page.evaluate((seededAnswers) => {
+    localStorage.setItem('kyotsu-step-store', JSON.stringify({
+      state: {
+        textbookProgress: {
+          'physics-1d-acceleration': {
+            unitId: 'physics-1d-acceleration',
+            unitRevision: 1,
+            startedAt: 1,
+            updatedAt: 1,
+            answers: seededAnswers,
+          },
+        },
+      },
+      version: 1,
+    }))
+  }, answers)
+}
+
 async function seedCompletedConceptSection(page: import('@playwright/test').Page) {
   const answers = Object.fromEntries(
     Array.from({ length: 24 }, (_, index) => {
@@ -126,6 +159,7 @@ test('textbook setup exposes chapter and unit hierarchy before starting', async 
   await expect(page.getByTestId('textbook-unit-physics-a-displacement-velocity')).toBeVisible()
   await expect(page.getByTestId('textbook-unit-physics-1b-velocity-composition')).toBeVisible()
   await expect(page.getByTestId('textbook-unit-physics-1c-relative-velocity')).toBeVisible()
+  await expect(page.getByTestId('textbook-unit-physics-1d-acceleration')).toBeVisible()
   await expect(page.getByTestId('textbook-selection-summary')).toContainText('1A')
 })
 
@@ -338,4 +372,52 @@ test('1C uses both supplied relative-velocity figures and resolves the figure ho
   const rainFigure = page.getByAltText(/鉛直下向きに降る雨/)
   await expect(rainFigure).toBeVisible()
   await expect.poll(async () => rainFigure.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0)
+})
+
+
+test('1D uses the acceleration source figures and resolves both figure questions', async ({ page }) => {
+  await page.goto(appRoute('/learning/setup'))
+  await page.getByTestId('textbook-unit-physics-1d-acceleration').click()
+  await expect(page.getByTestId('textbook-selection-summary')).toContainText('1D')
+  await page.getByTestId('start-learning').click()
+
+  await expect(page).toHaveURL(/physics-1d-acceleration/)
+  await expect(page.getByTestId('textbook-item-d1-1')).toBeVisible()
+  await expect(page.getByRole('button', { name: /図の読み取り/ })).toBeDisabled()
+
+  await page.goto(appRoute('/problems'))
+  await seedCompleted1DConceptSection(page)
+  await page.reload()
+  await page.goto(appRoute('/learning/textbook/physics-1d-acceleration'))
+
+  const figureSection = page.getByRole('button', { name: /図の読み取り/ })
+  await expect(figureSection).toBeEnabled()
+  await figureSection.click()
+
+  const trajectoryFigure = page.getByAltText(/曲線上の P1 と P2/)
+  await expect(trajectoryFigure).toBeVisible()
+  await expect.poll(async () => trajectoryFigure.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0)
+
+  const velocityChangeFigure = page.getByTestId('textbook-figure-velocity-change-figure')
+  const velocityImage = velocityChangeFigure.getByAltText(/v1 と v2 の差として/)
+  await expect(velocityImage).toBeVisible()
+  await expect.poll(async () => velocityImage.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0)
+
+  const hotspot = page.getByTestId('textbook-figure-overlay-hotspot-d-1')
+  await expect(hotspot).toBeVisible()
+  await hotspot.click()
+  const d1Panel = page.getByTestId('inline-choice-panel-d-1')
+  await d1Panel.getByRole('button', { name: '速度の変化', exact: true }).click()
+  await expect(hotspot).toHaveCount(0)
+
+  const mask = page.getByTestId('textbook-figure-overlay-mask-d-2')
+  await expect(mask).toBeVisible()
+  await mask.click()
+  const d2Panel = page.getByTestId('inline-choice-panel-d-2')
+  await d2Panel.getByRole('button', { name: 'Δv', exact: true }).click()
+  await expect(mask).toHaveCount(0)
+
+  await page.reload()
+  await expect(page.getByTestId('textbook-figure-overlay-hotspot-d-1')).toHaveCount(0)
+  await expect(page.getByTestId('textbook-figure-overlay-mask-d-2')).toHaveCount(0)
 })

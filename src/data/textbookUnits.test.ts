@@ -3,7 +3,7 @@ import { builtInTextbookUnits } from './textbookUnits'
 
 describe('textbook unit catalog', () => {
   it('imports 1A displacement and velocity as the chapter-1 golden unit', () => {
-    expect(builtInTextbookUnits).toHaveLength(3)
+    expect(builtInTextbookUnits).toHaveLength(4)
     const unit = builtInTextbookUnits[0]
     expect(unit.unitId).toBe('physics-a-displacement-velocity')
     expect(unit.schemaVersion).toBe('1.1')
@@ -131,6 +131,44 @@ describe('textbook unit catalog', () => {
       '/assets/physics/textbook/ch01/1c/relative-rain-bicycle.webp',
     ]))
     expect(figures.flatMap((figure) => figure.overlays).map((overlay) => overlay.itemId)).toContain('d-2')
+  })
+
+
+  it('imports 1D acceleration with source figures and Figure V2 overlays', () => {
+    const unit = builtInTextbookUnits.find((candidate) => candidate.chapter?.unitCode === '1D')
+    expect(unit).toBeDefined()
+    expect(unit?.unitId).toBe('physics-1d-acceleration')
+    expect(unit?.schemaVersion).toBe('1.1')
+    expect(unit?.chapter).toEqual({
+      chapterId: 'physics-ch01-motion',
+      chapterNumber: '1',
+      chapterTitle: '物体の運動',
+      unitCode: '1D',
+      orderInChapter: 4,
+      sourcePages: [18, 19],
+    })
+    expect(unit?.sections.map((section) => [section.id, section.role])).toEqual([
+      ['knowledge-check', 'concept'],
+      ['figure-reading', 'figure-reading'],
+      ['example-q1', 'worked-example'],
+      ['example-q2', 'worked-example'],
+      ['final-review', 'review'],
+    ])
+
+    const items = unit?.sections.flatMap((section) => section.items) ?? []
+    expect(items).toHaveLength(17)
+    expect(new Set(items.map((item) => item.id)).size).toBe(17)
+    expect(items.every((item) => item.choices && item.choices.length >= 4)).toBe(true)
+    expect(items.every((item) => item.choices?.includes(item.answer))).toBe(true)
+
+    const figures = unit?.sections.flatMap((section) => section.figures) ?? []
+    expect(figures.map((figure) => figure.src)).toEqual(expect.arrayContaining([
+      '/assets/physics/textbook/ch01/1d/acceleration-trajectory.webp',
+      '/assets/physics/textbook/ch01/1d/velocity-change-acceleration.webp',
+    ]))
+    expect(figures.flatMap((figure) => figure.overlays).map((overlay) => overlay.itemId)).toEqual(
+      expect.arrayContaining(['d-1', 'd-2']),
+    )
   })
 
 

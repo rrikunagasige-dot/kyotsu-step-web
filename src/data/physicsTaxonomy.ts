@@ -5,10 +5,12 @@ export type PhysicsDomainId = 'mechanics' | 'thermal' | 'waves' | 'electromagnet
 export type PhysicsTopicId =
   | 'motion'
   | 'force'
+  | 'rigid-body'
   | 'energy'
   | 'momentum'
-  | 'circular-gravity'
-  | 'rigid-body'
+  | 'circular-motion'
+  | 'oscillation'
+  | 'gravitation'
   | 'heat'
   | 'gas'
   | 'wave'
@@ -18,8 +20,12 @@ export type PhysicsTopicId =
   | 'current'
   | 'magnetic-field'
   | 'induction'
-  | 'quantum'
-  | 'nuclear'
+  | 'alternating-current'
+  | 'electromagnetic-wave'
+  | 'electron'
+  | 'photon'
+  | 'atom'
+  | 'nucleus'
 
 export type PhysicsTopic = {
   id: PhysicsTopicId
@@ -40,10 +46,12 @@ export const physicsTaxonomy: PhysicsDomain[] = [
     topics: [
       { id: 'motion', label: { ja: '運動', zh: '运动' }, aliases: ['motion', 'motion-graph', 'kinematics', 'projectile-motion'] },
       { id: 'force', label: { ja: '力', zh: '力' }, aliases: ['force', 'dynamics', 'newton-law', 'friction'] },
+      { id: 'rigid-body', label: { ja: '剛体', zh: '刚体' }, aliases: ['rigid-body', 'torque', 'rigid-equilibrium'] },
       { id: 'energy', label: { ja: 'エネルギー', zh: '能量' }, aliases: ['energy', 'work-energy', 'mechanical-energy'] },
       { id: 'momentum', label: { ja: '運動量', zh: '动量' }, aliases: ['momentum', 'impulse', 'collision'] },
-      { id: 'circular-gravity', label: { ja: '円運動・万有引力', zh: '圆周运动・万有引力' }, aliases: ['circular-gravity', 'circular-motion', 'simple-harmonic-motion', 'gravitation'] },
-      { id: 'rigid-body', label: { ja: '剛体', zh: '刚体' }, aliases: ['rigid-body', 'torque', 'rigid-equilibrium'] },
+      { id: 'circular-motion', label: { ja: '円運動', zh: '圆周运动' }, aliases: ['circular-motion', 'uniform-circular-motion'] },
+      { id: 'oscillation', label: { ja: '振動', zh: '振动' }, aliases: ['oscillation', 'simple-harmonic-motion'] },
+      { id: 'gravitation', label: { ja: '万有引力', zh: '万有引力' }, aliases: ['gravitation', 'universal-gravitation', 'kepler', 'satellite'] },
     ],
   },
   {
@@ -70,15 +78,19 @@ export const physicsTaxonomy: PhysicsDomain[] = [
       { id: 'electric-field', label: { ja: '電場', zh: '电场' }, aliases: ['electric-field', 'electrostatics', 'capacitor'] },
       { id: 'current', label: { ja: '電流', zh: '电流' }, aliases: ['current', 'dc-circuit', 'electric-current', 'circuit'] },
       { id: 'magnetic-field', label: { ja: '磁場', zh: '磁场' }, aliases: ['magnetic-field', 'magnetic-force', 'lorentz-force'] },
-      { id: 'induction', label: { ja: '電磁誘導', zh: '电磁感应' }, aliases: ['induction', 'electromagnetic-induction', 'alternating-current', 'electromagnetic-wave'] },
+      { id: 'induction', label: { ja: '電磁誘導', zh: '电磁感应' }, aliases: ['induction', 'electromagnetic-induction'] },
+      { id: 'alternating-current', label: { ja: '交流', zh: '交流' }, aliases: ['alternating-current', 'ac-circuit', 'transformer'] },
+      { id: 'electromagnetic-wave', label: { ja: '電磁波', zh: '电磁波' }, aliases: ['electromagnetic-wave', 'em-wave'] },
     ],
   },
   {
     id: 'atomic',
     label: { ja: '原子', zh: '原子' },
     topics: [
-      { id: 'quantum', label: { ja: '量子', zh: '量子' }, aliases: ['quantum', 'electron-photon', 'wave-particle-duality', 'photoelectric-effect'] },
-      { id: 'nuclear', label: { ja: '原子核', zh: '原子核' }, aliases: ['nuclear', 'atomic-nucleus', 'radioactivity', 'nuclear-reaction'] },
+      { id: 'electron', label: { ja: '電子', zh: '电子' }, aliases: ['electron', 'electron-beam', 'electron-diffraction', 'matter-wave'] },
+      { id: 'photon', label: { ja: '光量子', zh: '光量子' }, aliases: ['photon', 'photoelectric-effect', 'light-quantum'] },
+      { id: 'atom', label: { ja: '原子', zh: '原子' }, aliases: ['atom', 'atomic-model', 'atomic-spectrum'] },
+      { id: 'nucleus', label: { ja: '原子核', zh: '原子核' }, aliases: ['nucleus', 'atomic-nucleus', 'radioactivity', 'nuclear-reaction', 'binding-energy'] },
     ],
   },
 ]

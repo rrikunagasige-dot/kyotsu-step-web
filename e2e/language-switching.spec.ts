@@ -45,7 +45,7 @@ test('switches the complete learning flow and preserves progress across language
   await page.getByTestId('final-option-mq-final-a').click()
   await expect(page).toHaveURL(/\/learning\/result\/learn-/)
   await expect(page.getByRole('heading', { name: '学习结果' })).toBeVisible()
-  await expect(page.getByText('最大值', { exact: true })).toBeVisible()
+  await expect(page.getByTestId('correct-count')).toContainText('4')
 })
 
 test('uses Chinese in simulation, analysis, ranking, profile, and persists the preference', async ({ page }) => {

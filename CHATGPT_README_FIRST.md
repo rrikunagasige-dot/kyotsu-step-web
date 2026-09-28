@@ -102,10 +102,11 @@ P07 PASS
 P08 PASS
 P09 PASS
 P10 PASS
-P11 NEXT
+P11 PASS
+P12 NEXT
 ```
 
-最新の総合gate: GitHub Actions `36374706122` — typecheck / lint / 41 unit tests / build / textbook E2E 10 tests PASS。
+最新の総合gate: GitHub Actions `36375222401` — typecheck / lint / 42 unit tests / build / textbook E2E 11 tests PASS。
 
 P05で1Aを母版2.0として schemaVersion 1.1 へ移行した。78個のstable item IDを維持し、全itemに明示的な誤答候補を与え、 supplied Chapter-1 figures 1〜4 を app asset 化し、Figure V2 maskを実データへ接続した。
 
@@ -117,4 +118,4 @@ P08で1C「相対速度」を追加した。原教科書 p.16–17 と supplied 
 
 figure 7 は A を観測者とする相対速度の hotspot を持ち、figure 8 は自転車から見た雨のベクトル差を実図で確認する。
 
-P09で1D「加速度」を追加した。原教科書 p.18–19 と supplied Word を照合し、figure 9–10 を実asset化、17個の確認itemをSchema 1.1へ投入した。\n\nP10で1E「水平投射」を追加した。原教科書 p.20–21 と supplied Word を照合し、figure 11–12 を実asset化、16個の確認itemをSchema 1.1へ投入した。\n\n次は P11。1F「斜方投射」を同じ導入ルールで作る。
+P09で1D「加速度」を追加した。原教科書 p.18–19 と supplied Word を照合し、figure 9–10 を実asset化、17個の確認itemをSchema 1.1へ投入した。\n\nP10で1E「水平投射」を追加した。原教科書 p.20–21 と supplied Word を照合し、figure 11–12 を実asset化、16個の確認itemをSchema 1.1へ投入した。\n\nP11で1F「斜方投射」を追加した。原教科書 p.22–24 と supplied Word を照合し、figure 13–14 を実asset化、19個の確認itemをSchema 1.1へ投入した。\n\n次は P12。1G「重力加速度・空気抵抗・終端速度」を同じ導入ルールで作る。

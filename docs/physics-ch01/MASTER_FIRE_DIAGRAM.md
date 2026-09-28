@@ -242,8 +242,9 @@ P07  PASS — 1B 速度の合成と分解 + supplied figures 5–6 + browser smo
 P08  PASS — 1C 相対速度 + supplied figures 7–8 + browser audit
 P09  PASS — 1D 加速度 + supplied figures 9–10 + browser audit
 P10  PASS — 1E 水平投射 + supplied figures 11–12 + browser audit
-P11  NEXT — import 1F 斜方投射
-P12–P14 WAIT
+P11  PASS — 1F 斜方投射 + supplied figures 13–14 + browser audit
+P12  NEXT — import 1G 重力加速度・空気抵抗・終端速度
+P13–P14 WAIT
 ```
 
 P01 PASS evidence: GitHub Actions run `36333501024`.
@@ -446,3 +447,28 @@ P10 final gate evidence: GitHub Actions run `36374706122`:
 - textbook E2E: 10 tests PASS
 
 The first P10 browser gate (`36374506994`) caught a real presentation-flow problem: figure 12 was placed in a later reading subgroup, but resolving D-2 completed the whole figure-reading section and the page automatically advanced to the worked example before figure 12 could be seen. The data flow was corrected so figures 11 and 12 remain in the same visible reading subgroup while D-1/D-2 are answered. The final gate then passed.
+
+
+### P11 implementation summary
+
+```text
+1F 斜方投射
+├─ schemaVersion 1.1
+├─ revision 1
+├─ sourcePages 22–24
+├─ 19 source-aligned items
+├─ explicit choices on every item
+├─ figure 13 → oblique-projectile-trajectory.webp
+├─ figure 14 → oblique-projectile-components.webp
+└─ Figure V2 mask → D-1 (最高点 v_y=0)
+```
+
+P11 final gate evidence: GitHub Actions run `36375222401`:
+- TypeScript typecheck PASS
+- ESLint PASS
+- Vitest: 14 files / 42 tests PASS
+- production build PASS
+- Playwright Chromium install PASS
+- textbook E2E: 11 tests PASS
+
+The figure-reading layout deliberately keeps figures 13 and 14 in the same reading subgroup. Figure 14 prints `v_y=0`, so that answer-bearing label is masked and connected to D-1; D-2 asks inferentially why `v_x` remains constant.

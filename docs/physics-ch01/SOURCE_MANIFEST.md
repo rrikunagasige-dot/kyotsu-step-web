@@ -142,3 +142,21 @@ Unit data:
 - `unitId: physics-1e-horizontal-projectile`
 - `schemaVersion: 1.1`
 - `sourcePages: [20, 21]`
+
+
+## 1F app assets
+
+| source figure | app asset | use |
+|---|---|---|
+| 13.png | `public/assets/physics/textbook/ch01/1f/oblique-projectile-trajectory.webp` | parabolic trajectory and velocity direction along the path |
+| 14.png | `public/assets/physics/textbook/ch01/1f/oblique-projectile-components.webp` | horizontal/vertical velocity components and highest-point condition |
+
+Figure V2:
+- figure 14 uses `mask-d-1` linked to D-1 because the source image explicitly prints `v_y=0`.
+- D-2 is an inline inferential question: horizontal velocity remains `一定のまま`.
+
+Unit data:
+- `src/data/textbook/ch01/1f-oblique-projectile.ts`
+- `unitId: physics-1f-oblique-projectile`
+- `schemaVersion: 1.1`
+- `sourcePages: [22, 23, 24]`

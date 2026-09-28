@@ -562,3 +562,59 @@ Final run `36374706122`: PASS.
 
 `P10 = PASS`
 Next: `P11 — 1F 斜方投射`.
+
+
+## 2026-09-28 — P11 1F 斜方投射 PASS
+
+### Source audit
+
+Checked before implementation:
+- original textbook p.22–24
+- supplied `第1章_1F_斜方投射.docx`
+- supplied figures 13 and 14
+
+Source-aligned core:
+- `v₀x=v₀cosθ`, `v₀y=v₀sinθ`
+- `x=v₀cosθ t`
+- `y=v₀sinθ t−1/2gt²`
+- highest point: `v_y=0`
+- `t_H=v₀sinθ/g`
+- same-height flight time `T=2v₀sinθ/g`
+- range `D=v₀²sin2θ/g`
+- maximum range at `θ=45°`
+
+### Implementation
+
+Published:
+- `src/data/textbook/ch01/1f-oblique-projectile.ts`
+- unitId: `physics-1f-oblique-projectile`
+- schemaVersion 1.1
+- revision 1
+- source pages 22–24
+- orderInChapter 6
+- 19 explicit-choice items
+
+Source figures:
+- `public/assets/physics/textbook/ch01/1f/oblique-projectile-trajectory.webp`
+- `public/assets/physics/textbook/ch01/1f/oblique-projectile-components.webp`
+
+Figure V2:
+- figure 14 prints the answer `v_y=0`, so `mask-d-1` hides it until D-1 is answered
+- D-2 asks the inferred invariant `v_x` = constant rather than copying a printed label
+- both supplied figures remain visible in the same reading subgroup before figure-reading completion
+
+### Gate
+
+Atomic checkpoint commit: `d42264ee3f34d83b782a7d780b4f570a035b0187`.
+
+GitHub Actions run `36375222401`: PASS.
+- TypeScript PASS
+- ESLint PASS
+- Vitest: 14 files / 42 tests PASS
+- production build PASS
+- textbook E2E: 11 tests PASS
+
+### Status
+
+`P11 = PASS`
+Next: `P12 — 1G 重力加速度・空気抵抗・終端速度`.

@@ -64,7 +64,7 @@ export function LearningSetupPage() {
   const changeMode = (next: LearningMode) => {
     setMode(next)
     if (next === 'textbook') setSubject('physics')
-    else if (!subjectQuestions.length) changeSubject(defaultSubject)
+    else changeSubject(defaultSubject)
   }
 
   const begin = () => {

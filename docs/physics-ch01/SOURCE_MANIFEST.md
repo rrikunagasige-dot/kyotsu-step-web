@@ -18,7 +18,7 @@
 | 1D | physics-1d-acceleration | 加速度 | 18–19 | 9–10 |
 | 1E | physics-1e-horizontal-projectile | 水平投射 | 20–21 | 11–12 |
 | 1F | physics-1f-oblique-projectile | 斜方投射 | 22–24 | 13–14 |
-| 1G | physics-1g-terminal-velocity | 重力加速度・空気抵抗・終端速度 | 25–27 | 15–17 |
+| 1G | physics-1g-gravity-drag-terminal-velocity | 重力加速度・空気抵抗・終端速度 | 25–27 | 15–17 |
 
 ## Figure mapping
 
@@ -160,3 +160,22 @@ Unit data:
 - `unitId: physics-1f-oblique-projectile`
 - `schemaVersion: 1.1`
 - `sourcePages: [22, 23, 24]`
+
+
+## 1G app assets
+
+| source figure | app asset | use |
+|---|---|---|
+| 15.png | `public/assets/physics/textbook/ch01/1g/gravity-air-resistance.webp` | compare gravity-only fall with fall under upward air resistance |
+| 16.png | `public/assets/physics/textbook/ch01/1g/drag-force-stages.webp` | force balance from initial fall through the approach to terminal velocity |
+| 17.png | `public/assets/physics/textbook/ch01/1g/terminal-velocity-graph.webp` | velocity-time curve approaching terminal velocity |
+
+Figure policy:
+- no Figure V2 mask is required for the current 1G questions because D-1 and D-2 are inferential questions, not direct transcription of a printed answer label.
+- figures 15–17 are deliberately kept in one reading subgroup so the learner can compare force evolution and the terminal-velocity graph without the UI hiding figure 17 after an intermediate answer.
+
+Unit data:
+- `src/data/textbook/ch01/1g-gravity-drag-terminal-velocity.ts`
+- `unitId: physics-1g-gravity-drag-terminal-velocity`
+- `schemaVersion: 1.1`
+- `sourcePages: [25, 26, 27]`

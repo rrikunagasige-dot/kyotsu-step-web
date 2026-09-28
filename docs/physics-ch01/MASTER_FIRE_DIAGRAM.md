@@ -189,7 +189,7 @@ src/data/textbook/
    ├─ 1d-acceleration.ts
    ├─ 1e-horizontal-projectile.ts
    ├─ 1f-oblique-projectile.ts
-   └─ 1g-terminal-velocity.ts
+   └─ 1g-gravity-drag-terminal-velocity.ts
 
 public/assets/physics/textbook/ch01/
 ├─ 1a/
@@ -243,8 +243,9 @@ P08  PASS — 1C 相対速度 + supplied figures 7–8 + browser audit
 P09  PASS — 1D 加速度 + supplied figures 9–10 + browser audit
 P10  PASS — 1E 水平投射 + supplied figures 11–12 + browser audit
 P11  PASS — 1F 斜方投射 + supplied figures 13–14 + browser audit
-P12  NEXT — import 1G 重力加速度・空気抵抗・終端速度
-P13–P14 WAIT
+P12  PASS — 1G 重力加速度・空気抵抗・終端速度 + supplied figures 15–17 + start→finish browser gate
+P13  NEXT — Chapter 1 full gate (G11–G17)
+P14  WAIT — docs/worklog finalization
 ```
 
 P01 PASS evidence: GitHub Actions run `36333501024`.
@@ -472,3 +473,52 @@ P11 final gate evidence: GitHub Actions run `36375222401`:
 - textbook E2E: 11 tests PASS
 
 The figure-reading layout deliberately keeps figures 13 and 14 in the same reading subgroup. Figure 14 prints `v_y=0`, so that answer-bearing label is masked and connected to D-1; D-2 asks inferentially why `v_x` remains constant.
+
+
+### P12 implementation summary
+
+```text
+1G 重力加速度・空気抵抗・終端速度
+├─ schemaVersion 1.1
+├─ revision 1
+├─ sourcePages 25–27
+├─ 14 source-aligned items
+├─ explicit choices on every item
+├─ figure 15 → gravity-air-resistance.webp
+├─ figure 16 → drag-force-stages.webp
+├─ figure 17 → terminal-velocity-graph.webp
+└─ full UI start→finish completion audit
+```
+
+Source authority checked:
+- original textbook p.25–27
+- supplied `第1章_1G_重力加速度・空気抵抗・終端速度.docx`
+- supplied `figure.zip` figures 15–17
+
+Core physics:
+- `m a⃗ = m g⃗` → `a⃗ = g⃗`
+- `f=kv`
+- `ma=mg-kv`
+- `a=g-(k/m)v`
+- terminal condition `mg=kv_t`
+- `v_t=mg/k`
+
+Gate history:
+- run `36387765258`: typecheck/lint/unit/build PASS, textbook E2E FAIL because figure 17 lived in a later reading subgroup and was not visible during the figure-reading audit.
+- commit `c3d73345b74bd4f54ad80a6fbc97783260b6ef81`: figures 15–17 were kept in the same reading subgroup.
+- run `36388027906`: all current CI gates PASS.
+- commit `5d3d92f03545a3291aab86ce4f45150844202a71`: added a true 1G start→finish browser test over all 14 items.
+- final P12 run `36388191856`: PASS.
+  - TypeScript PASS
+  - ESLint PASS
+  - Vitest: 14 files / 43 tests PASS
+  - production build PASS
+  - Playwright Chromium install PASS
+  - textbook E2E: 13 tests PASS
+
+P12 gate notes:
+- G0–G5: source/physics/item/choice/figure/reference audit complete.
+- G6: 1G start→finish E2E PASS.
+- G7–G8: shared textbook wrong-answer and persistence behavior remain covered by browser regression tests.
+- G9: 1G has no answer-bearing overlay; mobile figure rendering is exercised by the mobile textbook suite.
+- G10: final regression run `36388191856` PASS.

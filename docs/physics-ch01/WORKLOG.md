@@ -618,3 +618,78 @@ GitHub Actions run `36375222401`: PASS.
 
 `P11 = PASS`
 Next: `P12 — 1G 重力加速度・空気抵抗・終端速度`.
+
+
+## 2026-09-28 — P12 1G 重力加速度・空気抵抗・終端速度 PASS
+
+### Source audit
+
+Checked before implementation:
+- original textbook p.25–27
+- supplied `第1章_1G_重力加速度・空気抵抗・終端速度.docx`
+- supplied `figure.zip` figures 15, 16 and 17
+- supplied chapter package README and 1G source crop for cross-checking
+
+Source-aligned core:
+- gravity only: `m a⃗=m g⃗`, hence `a⃗=g⃗`
+- low-speed proportional drag: `f=kv`
+- downward-positive equation: `ma=mg-kv`
+- `a=g-(k/m)v`
+- air resistance grows with falling speed, so acceleration decreases
+- terminal velocity occurs at `a=0`
+- `mg=kv_t`, hence `v_t=mg/k`
+
+### Implementation
+
+Published:
+- `src/data/textbook/ch01/1g-gravity-drag-terminal-velocity.ts`
+- unitId: `physics-1g-gravity-drag-terminal-velocity`
+- schemaVersion 1.1
+- revision 1
+- source pages 25–27
+- orderInChapter 7
+- 14 explicit-choice items
+- five semantic sections matching the chapter's established learning flow
+
+Source figures:
+- `public/assets/physics/textbook/ch01/1g/gravity-air-resistance.webp`
+- `public/assets/physics/textbook/ch01/1g/drag-force-stages.webp`
+- `public/assets/physics/textbook/ch01/1g/terminal-velocity-graph.webp`
+
+The three figures are all real supplied assets, not synthetic substitutes.
+
+### Browser-gate correction
+
+Initial implementation commit:
+`1f633f56b13b9ee62149b9f5be10c17a3fd7e3cd`.
+
+Run `36387765258`:
+- typecheck PASS
+- lint PASS
+- 43 unit tests PASS
+- build PASS
+- 11/12 textbook E2E PASS
+- 1G E2E FAIL
+
+Cause:
+figure 17 had been placed after a second reading heading, so the reading-state machine correctly hid that later subgroup until D-1 was resolved. The E2E exposed that the three comparison figures should stay together pedagogically.
+
+Corrections:
+- `320cd918ba6351b6ebad6992272ba9c33491c36a` adjusted the browser audit to the sequential reading behavior.
+- `c3d73345b74bd4f54ad80a6fbc97783260b6ef81` kept figures 15–17 in one reading subgroup, matching the same presentation lesson learned in P10.
+- run `36388027906` then passed all current gates.
+- `5d3d92f03545a3291aab86ce4f45150844202a71` added a stronger start→finish test that answers all 14 1G items through the UI and verifies the unit-complete panel.
+
+Final P12 gate: GitHub Actions run `36388191856` — PASS.
+- TypeScript PASS
+- ESLint PASS
+- Vitest: 14 files / 43 tests PASS
+- production build PASS
+- Playwright Chromium PASS
+- textbook E2E: 13 tests PASS
+- dedicated 1G start→finish browser test PASS
+
+### Status
+
+`P12 = PASS`
+Next: `P13 — Chapter 1 full gate (G11–G17)`.

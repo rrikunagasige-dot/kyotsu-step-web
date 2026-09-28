@@ -499,14 +499,7 @@ test('1C uses both supplied relative-velocity figures and resolves the figure ho
 
   const hotspot = page.getByTestId('textbook-figure-overlay-hotspot-d-2')
   await expect(hotspot).toBeVisible()
-  const stageBox = await carsFigureCard.locator('.textbook-figure-stage').boundingBox()
-  const hotspotBox = await hotspot.boundingBox()
-  expect(stageBox).not.toBeNull()
-  expect(hotspotBox).not.toBeNull()
-  expect(hotspotBox!.x).toBeGreaterThanOrEqual(stageBox!.x)
-  expect(hotspotBox!.y).toBeGreaterThanOrEqual(stageBox!.y)
-  expect(hotspotBox!.x + hotspotBox!.width).toBeLessThanOrEqual(stageBox!.x + stageBox!.width + 1)
-  expect(hotspotBox!.y + hotspotBox!.height).toBeLessThanOrEqual(stageBox!.y + stageBox!.height + 1)
+  await expectOverlayInsideFigure(hotspot)
 
   await hotspot.click()
   const panel = page.getByTestId('inline-choice-panel-d-2')

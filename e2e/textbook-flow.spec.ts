@@ -498,6 +498,10 @@ test('1E uses both supplied horizontal-projectile figures and resolves the strob
     expect(box!.y + box!.height).toBeLessThanOrEqual(stageBox!.y + stageBox!.height + 1)
   }
 
+  const velocityFigure = page.getByAltText(/速度 v を水平成分/)
+  await expect(velocityFigure).toBeVisible()
+  await expect.poll(async () => velocityFigure.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0)
+
   await horizontalHotspot.click()
   const d1Panel = page.getByTestId('inline-choice-panel-d-1')
   await d1Panel.getByRole('button', { name: '一定', exact: true }).click()
@@ -507,10 +511,6 @@ test('1E uses both supplied horizontal-projectile figures and resolves the strob
   const d2Panel = page.getByTestId('inline-choice-panel-d-2')
   await d2Panel.getByRole('button', { name: '大きくなる', exact: true }).click()
   await expect(verticalHotspot).toHaveCount(0)
-
-  const velocityFigure = page.getByAltText(/速度 v を水平成分/)
-  await expect(velocityFigure).toBeVisible()
-  await expect.poll(async () => velocityFigure.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0)
 
   await page.reload()
   await expect(page.getByTestId('textbook-figure-overlay-hotspot-d-1')).toHaveCount(0)

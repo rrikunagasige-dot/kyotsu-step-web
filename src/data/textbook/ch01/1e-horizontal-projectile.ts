@@ -174,7 +174,7 @@ const rawTextbookUnits = [
           note('fr-note-1', '同じ時間間隔ごとの点の並びを見ると、x 方向と y 方向で運動の種類が違うことが分かる。'),
           heading('fr-h-1', '図11　等時間間隔の位置'),
           figure('fr-fig-1', 'horizontal-projectile-strobe-figure'),
-          heading('fr-h-2', '図12　速度成分'),
+          note('fr-note-2', '図12　速度成分も同じ小節で確認する。'),
           figure('fr-fig-2', 'horizontal-projectile-velocity-figure'),
           paragraph(
             'fr-p-1',

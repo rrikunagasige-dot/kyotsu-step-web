@@ -1,7 +1,8 @@
 import { expect, test } from '@playwright/test'
+import { appRoute } from './helpers'
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('/problems')
+  await page.goto(appRoute('/problems'))
   await page.evaluate(() => localStorage.clear())
   await page.reload()
 })
@@ -14,7 +15,7 @@ test('switches the complete learning flow and preserves progress across language
 
   await page.reload()
   await expect(page.getByRole('button', { name: '中文' })).toHaveAttribute('aria-pressed', 'true')
-  await page.goto('/learning/setup')
+  await page.goto(appRoute('/learning/setup'))
   await expect(page.getByRole('heading', { name: '学习设置' })).toBeVisible()
   await page.getByRole('radio', { name: /做题/ }).click()
   await page.getByLabel('选择学习题目').selectOption('math-quadratic-01')
@@ -46,7 +47,7 @@ test('switches the complete learning flow and preserves progress across language
 
 test('uses Chinese in simulation, analysis, ranking, profile, and persists the preference', async ({ page }) => {
   await page.getByRole('button', { name: '中文' }).click()
-  await page.goto('/simulation/setup')
+  await page.goto(appRoute('/simulation/setup'))
   await expect(page.getByRole('heading', { name: '模拟测试设置' })).toBeVisible()
   await expect(page.getByText('二次函数的最大值')).toBeVisible()
   await page.getByTestId('start-simulation').click()
@@ -58,11 +59,11 @@ test('uses Chinese in simulation, analysis, ranking, profile, and persists the p
   await expect(page.getByRole('heading', { name: '模拟测试结果' })).toBeVisible()
   await expect(page.getByText('未作答', { exact: true }).first()).toBeVisible()
 
-  await page.goto('/analysis')
+  await page.goto(appRoute('/analysis'))
   await expect(page.getByRole('heading', { name: '分析' })).toBeVisible()
-  await page.goto('/ranking')
+  await page.goto(appRoute('/ranking'))
   await expect(page.getByRole('heading', { name: '排行榜' })).toBeVisible()
-  await page.goto('/profile')
+  await page.goto(appRoute('/profile'))
   await expect(page.getByRole('heading', { name: '我的' })).toBeVisible()
   await expect(page.getByLabel('显示名称')).toHaveValue('学习者')
 

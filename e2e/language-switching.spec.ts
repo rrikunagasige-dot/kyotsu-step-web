@@ -29,6 +29,7 @@ test('switches the complete learning flow and preserves progress across language
   await page.getByTestId('blank-mq-blank-sign').click()
   await page.getByTestId('option-mq-sign-minus').click()
   await expect(page.getByTestId('answer-mq-blank-sign')).toContainText('首次答对')
+  await page.getByRole('button', { name: '关闭' }).click()
 
   const sessionUrl = page.url()
   await page.getByRole('button', { name: '日本語' }).click()
@@ -37,6 +38,7 @@ test('switches the complete learning flow and preserves progress across language
   await expect(page).toHaveURL(sessionUrl)
 
   await page.getByRole('button', { name: '中文' }).click()
+  await page.getByTestId('blank-mq-blank-vertex').click()
   await page.getByTestId('option-mq-vertex-two').click()
   await page.getByTestId('option-mq-max-five').click()
   await page.getByTestId('open-final-choice').click()

@@ -1052,7 +1052,7 @@ scripts/physics-textbook/build_ch1_learning_docx.py
 
 **この承認済み文章prototypeを壊して旧section templateへ戻さないこと。**
 
-## 11. CURRENT Chapter-1 checkpoint — formula derivation strengthened v2
+## 11. PREVIOUS Chapter-1 checkpoint — formula derivation strengthened v2
 
 The earlier 53-hole prototype established the natural-prose / moderate-hole-density baseline.
 After mobile-first review, formula derivations were strengthened without reverting to a high-hole-density worksheet.
@@ -1116,4 +1116,38 @@ Therefore P33 prerequisite audit distinguishes:
         → must be taught or inferable in the learning text
 
 External lookup is a convenience, not a substitute for the chapter's own conceptual chain.
+
+## 13. CURRENT Chapter-1 checkpoint — v2.1 / P33 PASS
+
+Current authoritative source:
+`docs/physics-ch01/prototypes/CH1_LEARNING_TEXT_V2_1.md`
+
+Current review artifact:
+- 1A–1G
+- 17 canonical figures
+- 54 justified inline holes
+- 26 rendered pages
+- phone-only / no-paper derivation assumption
+- exact DOCX identity in `docs/physics-ch01/prototypes/README.md`
+
+Why 54 rather than 55:
+the old C1 first-exposure `相対速度` vocabulary hole was pedagogically unjustified, so it was removed and not replaced merely to preserve a count.
+
+P33 source repairs completed:
+1. teach `相対速度` after constructing its meaning,
+2. show `cosθ=vₓ/v`, `sinθ=vᵧ/v` before component-formula holes,
+3. derive `vᵧ²=2gy`,
+4. derive the oblique-projectile time-free vertical relation,
+5. define the linear-drag model and `k>0`.
+
+P33 gate status:
+- G52 PASS
+- G52a PASS
+- G52b PASS
+- G53 PASS
+- G54 PASS
+- G55 PASS
+
+**Next authoritative node: P34 current-app contradiction audit.**
+P34 is analysis first; do not change app code yet.
 

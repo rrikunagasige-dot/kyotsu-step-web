@@ -34,7 +34,9 @@ describe('Chapter 1 textbook v2.2 catalog', () => {
       ]),
     )
     expect(counts).toEqual(expectedCounts)
-    expect(Object.values(counts).reduce((sum, count) => sum + count, 0)).toBe(65)
+    const total = builtInTextbookUnits.reduce((sum, unit) =>
+      sum + unit.sections.flatMap((section) => section.items).length, 0)
+    expect(total).toBe(65)
 
     for (const unit of builtInTextbookUnits) {
       const items = unit.sections.flatMap((section) => section.items)

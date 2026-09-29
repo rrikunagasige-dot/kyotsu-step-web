@@ -1282,3 +1282,30 @@ Result:
 
 No application code changed.
 
+---
+
+## 2026-09-29 — P34 current-app contradiction audit
+
+Compared the P33-passed Chapter-1 v2.1 source against the current 1A–1G app data.
+
+Observed item counts:
+1A 77 / 1B 17 / 1C 16 / 1D 16 / 1E 15 / 1F 18 / 1G 13 = 172 current app items,
+versus 54 justified holes in the continuous v2.1 learning text.
+
+Main contradictions:
+- fixed five-section pedagogy,
+- concept/figure separation,
+- first-exposure terminology questions,
+- title/heading/alt answer leakage,
+- excessive micro-items and duplicate retrieval,
+- missing v-t graph in 1D,
+- missing/incomplete formula derivations in 1B/1D/1E/1F/1G,
+- wrong timing of concept-forming figures.
+
+18 contradiction groups are recorded in:
+`docs/physics-ch01/P34_CURRENT_APP_CONTRADICTION_AUDIT.md`
+
+G56 PASS / P34 PASS = audit completeness only.
+
+No app code changed. P35 is next.
+

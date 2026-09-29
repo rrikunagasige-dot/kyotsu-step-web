@@ -1465,3 +1465,31 @@ Deployment:
 **G61 / P39 remain OPEN.**
 Reason: implementation is now intentionally waiting for real user QA on phone/app. Do not mark PASS from build success alone.
 
+### 19.16 P39 BOOT INCIDENT — RESOLVED
+
+Real-browser blank-page incident reproduced in GitHub Actions Chromium.
+
+Root cause:
+`textbookPracticeQuestions.ts` retained the old assumption that every textbook unit has `worked-example` sections.
+The v2.2 continuous units intentionally have none, so an empty generated practice catalog was passed into a Zod schema requiring at least one question.
+
+Fix:
+- allow zero auto-generated textbook practice questions for continuous units,
+- keep the independent problem bank unchanged,
+- add boot diagnostics,
+- gate Pages deploy with Playwright Chromium.
+
+Validation run 110:
+- data gate PASS,
+- browser smoke PASS,
+- production build PASS,
+- deploy PASS.
+
+Browser smoke specifically verifies:
+`/learning/setup` renders,
+`/learning/textbook/physics-a-displacement-velocity` renders,
+A1 is visible,
+A1 choices open.
+
+**Runtime boot issue RESOLVED. P39 remains OPEN only for user-facing pedagogy/UX QA.**
+

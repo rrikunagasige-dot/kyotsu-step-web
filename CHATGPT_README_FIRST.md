@@ -1052,3 +1052,48 @@ scripts/physics-textbook/build_ch1_learning_docx.py
 
 **この承認済み文章prototypeを壊して旧section templateへ戻さないこと。**
 
+## 11. CURRENT Chapter-1 checkpoint — formula derivation strengthened v2
+
+The earlier 53-hole prototype established the natural-prose / moderate-hole-density baseline.
+After mobile-first review, formula derivations were strengthened without reverting to a high-hole-density worksheet.
+
+**Current content checkpoint:**
+
+- source: `docs/physics-ch01/prototypes/CH1_LEARNING_TEXT_V2.md`
+- detailed formula rule: `docs/physics-ch01/FORMULA_DERIVATION_RULES.md`
+- generator: `scripts/physics-textbook/build_ch1_learning_docx.py`
+- 1A–1G
+- 17 canonical figures
+- 55 unique inline holes
+- user-reviewed Word persisted in Library; exact identity is recorded in `docs/physics-ch01/prototypes/README.md`
+
+New hard rule:
+
+> **The learner may be using only a phone. Do not assume paper, pen, or silent reconstruction of multiple missing derivation steps.**
+
+For a nontrivial formula, normally show:
+
+    physical need
+    → parent equation
+    → physical condition / substitution
+    → substitution
+    → readable intermediate algebra
+    → final formula
+    → physical meaning in prose
+
+The goal is **more visible derivation, not more holes**.
+
+Hole reasons are now explicitly classified:
+
+- H1 meaning judgment
+- H2 relation judgment
+- H3 representation conversion
+- H4 strategy / next-step judgment
+- H5 physical boundary / condition judgment
+- H6 meaningful mathematical operation
+
+If a designer cannot explain why a hole is needed in both educational and calculation terms, remove it.
+
+This v2 checkpoint is now the concrete input for P33.
+P33–P38 remain OPEN; do not change application code yet.
+

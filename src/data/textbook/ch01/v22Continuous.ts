@@ -1,5 +1,6 @@
 import source from '../../../../docs/physics-ch01/prototypes/CH1_LEARNING_TEXT_V2_2_FORMULA_HOLES.md?raw'
-import { validateTextbookUnits, type TextbookFigure, type TextbookItem, type TextbookReadingBlock } from '../../../domain/textbookSchema'
+import { validateTextbookUnits, type TextbookFigure, type TextbookItem, type TextbookReadingBlock, type TextbookReadingPart } from '../../../domain/textbookSchema'
+import { looksLikeTextbookMath, normalizeTextbookMath, splitTextbookInlineMath, stripTextbookMarkdown } from '../../../domain/textbookMath'
 
 type UnitCode = '1A' | '1B' | '1C' | '1D' | '1E' | '1F' | '1G'
 
@@ -23,16 +24,19 @@ const unitMeta: UnitMeta[] = [
 ]
 
 const neutralFigureText: Record<string, string> = {
-  'fig-1': '図1　2つの位置と矢印の関係',
+  'fig-1-guide': '原点と2つの位置を結ぶ矢印',
+  'fig-1': '図1　位置ベクトルと変位の関係',
   'fig-2': '図2　曲線上の2点を結ぶ方向',
   'fig-3': '図3　曲線上の速度の向き',
   'fig-4': '図4　座標成分で見た移動',
   'fig-5': '図5　川を横切る船の運動',
+  'fig-6-guide': '速度ベクトルの水平・鉛直成分',
   'fig-6': '図6　速度ベクトルと座標軸',
   'fig-7': '図7　2台の自動車の運動',
   'fig-8': '図8　雨と自転車の運動',
   'fig-9': '図9　曲線運動と2つの速度',
   'fig-10': '図10　速度ベクトルの変化',
+  'fig-d-vt': '速度と時間の関係を表す v-t グラフ',
   'fig-11': '図11　水平投射の等時間位置',
   'fig-12': '図12　水平投射の速度成分',
   'fig-13': '図13　斜方投射の軌跡',
@@ -80,7 +84,7 @@ function parseChoices(block: string) {
 
 function inferAnswerType(answer: string): 'text' | 'formula' | 'number' {
   if (/^-?\d+(?:\.\d+)?(?:°)?$/.test(answer)) return 'number'
-  if (/[=+\-−×÷/√²³⃗θΔ()]|(?:sin|cos|tan)|[₀₁₂₃₄₅₆₇₈₉ₓᵧₜ]/.test(answer)) return 'formula'
+  if (looksLikeTextbookMath(answer)) return 'formula'
   return 'text'
 }
 
@@ -94,48 +98,6 @@ function acceptedAnswers(answer: string) {
   return [...variants].filter(Boolean)
 }
 
-function stripMarkdown(value: string) {
-  return value
-    .replace(/\*\*([^*]+)\*\*/g, '$1')
-    .replace(/`([^`]+)`/g, '$1')
-    .trim()
-}
-
-function normalizeLatex(value: string) {
-  let next = stripMarkdown(value)
-  next = next
-    .replace(/⃗/g, '\\vec{}')
-    .replace(/Δ/g, '\\Delta ')
-    .replace(/θ/g, '\\theta ')
-    .replace(/→/g, '\\to ')
-    .replace(/−/g, '-')
-    .replace(/×/g, '\\times ')
-    .replace(/·/g, '\\cdot ')
-    .replace(/₀/g, '_0')
-    .replace(/₁/g, '_1')
-    .replace(/₂/g, '_2')
-    .replace(/₃/g, '_3')
-    .replace(/₄/g, '_4')
-    .replace(/₅/g, '_5')
-    .replace(/₆/g, '_6')
-    .replace(/₇/g, '_7')
-    .replace(/₈/g, '_8')
-    .replace(/₉/g, '_9')
-    .replace(/ₓ/g, '_x')
-    .replace(/ᵧ/g, '_y')
-    .replace(/ₜ/g, '_t')
-    .replace(/²/g, '^2')
-    .replace(/³/g, '^3')
-    .replace(/\bcos\b/g, '\\cos')
-    .replace(/\bsin\b/g, '\\sin')
-    .replace(/\btan\b/g, '\\tan')
-    .replace(/√\(([^()]+)\)/g, '\\sqrt{$1}')
-    .replace(/√([A-Za-z0-9]+)/g, '\\sqrt{$1}')
-    .replace(/\blim\(([^)]+)\)/g, '\\lim_{$1}')
-  next = next.replace(/([A-Za-zΔ])\\vec\{\}/g, '\\vec{$1}')
-  return next
-}
-
 function isFormulaLine(line: string) {
   if (!line.includes('=')) return false
   if (/[。！？]/.test(line)) return false
@@ -143,12 +105,12 @@ function isFormulaLine(line: string) {
   return japanese <= 2
 }
 
-function splitWithHoles(value: string, math: boolean) {
-  const parts: Array<
-    { type: 'text'; text: string }
-    | { type: 'math'; latex: string }
-    | { type: 'choice'; itemId: string }
-  > = []
+function appendInlineParts(parts: TextbookReadingPart[], value: string) {
+  for (const part of splitTextbookInlineMath(value)) parts.push(part)
+}
+
+function splitWithHoles(value: string, math: boolean): TextbookReadingPart[] {
+  const parts: TextbookReadingPart[] = []
   const regex = /【([A-G]\d+[a-z]?)[^】]*】/g
   let cursor = 0
   let match: RegExpExecArray | null
@@ -156,8 +118,8 @@ function splitWithHoles(value: string, math: boolean) {
   while ((match = regex.exec(value))) {
     const before = value.slice(cursor, match.index)
     if (before) {
-      if (math) parts.push({ type: 'math', latex: normalizeLatex(before) })
-      else parts.push({ type: 'text', text: stripMarkdown(before) })
+      if (math) parts.push({ type: 'math', latex: normalizeTextbookMath(before) })
+      else appendInlineParts(parts, before)
     }
     parts.push({ type: 'choice', itemId: itemId(match[1]) })
     cursor = match.index + match[0].length
@@ -165,24 +127,28 @@ function splitWithHoles(value: string, math: boolean) {
 
   const after = value.slice(cursor)
   if (after) {
-    if (math) parts.push({ type: 'math', latex: normalizeLatex(after) })
-    else parts.push({ type: 'text', text: stripMarkdown(after) })
+    if (math) parts.push({ type: 'math', latex: normalizeTextbookMath(after) })
+    else appendInlineParts(parts, after)
   }
 
   if (!parts.length) {
-    if (math) parts.push({ type: 'math', latex: normalizeLatex(value) })
-    else parts.push({ type: 'text', text: stripMarkdown(value) })
+    if (math) parts.push({ type: 'math', latex: normalizeTextbookMath(value) })
+    else appendInlineParts(parts, value)
   }
 
-  return parts.filter((part) => part.type === 'choice' || (part.type === 'text' ? part.text.length > 0 : part.latex.length > 0))
+  return parts.filter((part) =>
+    part.type === 'choice' ||
+    part.type === 'math' ||
+    part.text.length > 0
+  )
 }
 
 function sourceSlice(code: UnitCode, next?: UnitCode) {
   const start = source.indexOf(`# ${code}　`)
   const end = next
     ? source.indexOf(`# ${next}　`, start)
-    : source.indexOf('# 第1章全体', start)
-  if (start < 0 || end < 0) throw new Error(`v2.2 source range not found: ${code}`)
+    : source.indexOf('# 解答', start)
+  if (start < 0 || end < 0) throw new Error(`Chapter-1 source range not found: ${code}`)
   return source.slice(start, end)
 }
 
@@ -197,12 +163,13 @@ function parseUnit(meta: UnitMeta, next?: UnitCode) {
   }
 
   const items: TextbookItem[] = [...choicesById.entries()].map(([sourceId, choices]) => {
-    const answer = answers.get(sourceId) ?? choices[0]
+    const answer = answers.get(sourceId)
+    if (!answer) throw new Error(`Missing explicit answer for ${sourceId}`)
     if (!choices.includes(answer)) throw new Error(`Answer is not one of the choices for ${sourceId}: ${answer}`)
     return {
       id: itemId(sourceId),
       label: sourceId,
-      prompt: `空欄 ${sourceId} に入る内容を選んで、本文・式を完成させよう。`,
+      prompt: '空欄に入る内容を選んで、本文や式を完成させよう。',
       answer,
       acceptedAnswers: acceptedAnswers(answer),
       answerType: inferAnswerType(answer),
@@ -269,26 +236,13 @@ function parseUnit(meta: UnitMeta, next?: UnitCode) {
       }
       if (index + 1 < bodyLines.length) index += 1
 
-      const caption = neutralFigureText[figureId] ?? stripMarkdown(captionLines.join(' '))
+      const caption = neutralFigureText[figureId] ?? stripTextbookMarkdown(captionLines.join(' '))
       figures.push({
         id: figureId,
         src: appAsset.replace(/^public/, ''),
         alt: `${caption.replace(/^図\d+\s*/, '')}を示す学習図`,
         caption,
-        overlays: figureId === 'fig-1'
-          ? [{
-              id: 'mask-a3-delta-r',
-              itemId: 'a3',
-              mode: 'mask' as const,
-              x: 54.01,
-              y: 27.99,
-              width: 11.05,
-              height: 9.02,
-              reveal: 'after-answer' as const,
-              ariaLabel: '変位ベクトルの記号を非表示',
-              interactive: false,
-            }]
-          : [],
+        overlays: [],
       })
       figureIndex += 1
       blocks.push({ id: `figure-block-${figureIndex}`, type: 'figure', figureId })
@@ -304,7 +258,7 @@ function parseUnit(meta: UnitMeta, next?: UnitCode) {
       }
       if (index + 1 < bodyLines.length) index += 1
       noteIndex += 1
-      blocks.push({ id: `note-${noteIndex}`, type: 'note', text: stripMarkdown(noteLines.join(' ')) })
+      blocks.push({ id: `note-${noteIndex}`, type: 'note', text: stripTextbookMarkdown(noteLines.join(' ')) })
       continue
     }
 
@@ -322,7 +276,7 @@ function parseUnit(meta: UnitMeta, next?: UnitCode) {
   )
   const missingReferences = items.filter((item) => !referencedItems.has(item.id))
   if (missingReferences.length) {
-    throw new Error(`Unreferenced v2.2 items in ${meta.code}: ${missingReferences.map((item) => item.label).join(', ')}`)
+    throw new Error(`Unreferenced Chapter-1 items in ${meta.code}: ${missingReferences.map((item) => item.label).join(', ')}`)
   }
 
   return {
@@ -340,11 +294,11 @@ function parseUnit(meta: UnitMeta, next?: UnitCode) {
       sourcePages: meta.pages,
     },
     title: meta.title,
-    subtitle: '文章・図・式を一つの流れで学ぶ教科書モード v2.2',
+    subtitle: '文章・図・式をつなげながら、考える途中も自分で完成させる。',
     source: {
       type: 'reference' as const,
-      label: 'Chapter 1 learning text v2.2 formula-hole enhanced',
-      rightsNote: '原教科書・canonical figures・user-reviewed v2.2 learning textをApp用に構造化',
+      label: 'Chapter 1 continuous learning text',
+      rightsNote: '原教科書・canonical figures・user-reviewed continuous learning textをApp用に構造化',
     },
     objectives: knownObjectives[meta.code],
     sections: [{

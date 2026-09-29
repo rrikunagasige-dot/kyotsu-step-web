@@ -60,9 +60,34 @@ test('A1 choice panel uses natural wording and does not expose the internal hole
 
   const panel = page.getByTestId('inline-choice-panel-a1')
   await expect(panel).toBeVisible()
-  await expect(panel).toContainText('空欄に入る内容を選んで')
+  await expect(panel).toContainText('図や本文から意味を考えよう')
   await expect(panel).not.toContainText('A1')
   await expect(panel.getByRole('button', { name: '位置', exact: true })).toBeVisible()
+})
+
+test('A1 shows a staged hint after a wrong attempt without revealing the answer', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/physics-a-displacement-velocity'))
+
+  await page.getByTestId('textbook-item-a1').click()
+  const panel = page.getByTestId('inline-choice-panel-a1')
+  const correct = panel.getByRole('button', { name: '位置', exact: true })
+  const buttons = panel.locator('.reading-choice-option')
+  await expect(buttons).toHaveCount(2)
+
+  for (let index = 0; index < await buttons.count(); index += 1) {
+    const button = buttons.nth(index)
+    if ((await button.getAttribute('aria-label')) !== '位置') {
+      await button.click()
+      break
+    }
+  }
+
+  await page.getByTestId('textbook-item-a1').click()
+  const hint = page.getByTestId('textbook-hint-a1')
+  await expect(hint).toBeVisible()
+  await expect(hint).toContainText('矢印の始点は原点')
+  await expect(hint).not.toContainText('答え')
+  await expect(correct).toHaveCount(0)
 })
 
 test('first concept-forming figure is not upscaled beyond its intrinsic size', async ({ page }) => {

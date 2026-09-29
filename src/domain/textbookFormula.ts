@@ -21,7 +21,7 @@ function choiceLatex(
   formula = false,
 ) {
   if (resolvedValue !== undefined) {
-    return `\\htmlData{testid=resolved-${itemId}}{\\htmlClass{tb-math-answer}{\\boxed{${answerLatex(resolvedValue, formula)}}}}`
+    return `\\htmlData{testid=resolved-${itemId}}{\\htmlClass{tb-math-answer}{${answerLatex(resolvedValue, formula)}}}`
   }
 
   const wrong = Boolean(record)

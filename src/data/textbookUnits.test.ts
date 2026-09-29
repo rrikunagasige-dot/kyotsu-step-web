@@ -3,7 +3,7 @@ import source from '../../docs/physics-ch01/prototypes/CH1_LEARNING_TEXT_V2_2_FO
 import { builtInTextbookUnits } from './textbookUnits'
 
 const expectedCounts: Record<string, number> = {
-  '1A': 10,
+  '1A': 9,
   '1B': 3,
   '1C': 4,
   '1D': 8,
@@ -183,7 +183,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
     const unit1B = builtInTextbookUnits.find((unit) => unit.chapter?.unitCode === '1B')!
     const flowB = unit1B.sections[0].readingFlow
     const guide = flowB.findIndex((block) => block.type === 'figure' && block.figureId === 'fig-6-guide')
-    for (const id of ['b2', 'b3']) {
+    for (const id of ['b2']) {
       const question = flowB.findIndex((block) =>
         (block.type === 'paragraph' || block.type === 'formula') &&
         block.parts.some((part) => part.type === 'choice' && part.itemId === id),

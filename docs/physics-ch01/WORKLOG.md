@@ -1408,3 +1408,31 @@ Source candidate SHA256:
 
 P39 remains blocked pending user review of v2.2.
 
+---
+
+## 2026-09-29 — P39 Chapter-1 v2.2 app preview deployed
+
+User authorized app implementation because paper/Word review could no longer expose the remaining UX/pedagogy problems.
+
+Implemented:
+- direct v2.2 Markdown → app data parser,
+- seven continuous lesson units,
+- 65-hole Chapter-1 content,
+- 17 canonical figures,
+- block-level progressive reveal,
+- legacy section-nav suppression for continuous units,
+- passive figure masks,
+- neutral figure captions/alts,
+- v2.2 static content gate.
+
+Deployment verification:
+- commit `6a8cd2985f6279f96b31debb91a288dac68965c4`
+- Pages workflow run 93
+- typecheck PASS
+- production build PASS
+- deployment PASS
+- public environment: `https://rrikunagasige-dot.github.io/kyotsu-step-web/`
+
+P39 remains OPEN pending user QA in the actual app.
+No claim of pedagogical PASS is made from CI success.
+

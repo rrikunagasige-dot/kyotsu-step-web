@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" role="img" aria-labelledby="title desc">
+<title id="title">速度ベクトルの成分</title>
+<desc id="desc">速度ベクトルvを水平成分vxと鉛直成分vyへ分解した直角三角形。完成公式は表示しない。</desc>
+<defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto"><path d="M0,0 L0,10 L11,5 z" fill="#1f67b1"/></marker></defs>
+<rect width="900" height="540" fill="#fff"/>
+<g stroke="#172737" stroke-width="4" fill="none">
+<line x1="145" y1="440" x2="800" y2="440"/><line x1="145" y1="440" x2="145" y2="70"/>
+</g>
+<g stroke="#1f67b1" stroke-width="8" fill="none" marker-end="url(#arrow)">
+<line x1="150" y1="435" x2="690" y2="435"/>
+<line x1="690" y1="435" x2="690" y2="145"/>
+<line x1="150" y1="435" x2="690" y2="145"/>
+</g>
+<path d="M235 435 A85 85 0 0 0 218 385" fill="none" stroke="#172737" stroke-width="4"/>
+<g fill="#172737" font-family="serif" font-size="46">
+<text x="410" y="410">vₓ</text><text x="712" y="305">vᵧ</text><text x="420" y="250">v</text><text x="220" y="385">θ</text>
+</g>
+<g fill="#172737" font-family="system-ui, sans-serif" font-size="28"><text x="810" y="452">x</text><text x="120" y="62">y</text></g>
+</svg>

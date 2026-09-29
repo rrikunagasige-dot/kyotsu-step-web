@@ -407,7 +407,7 @@ A. Δt/Δv⃗　　B. Δv⃗/Δt　　C. v⃗₁+v⃗₂　　D. Δr⃗/Δt
 
 ## v-tグラフで加速度と変位を見る
 
-:::figure id="fig-d-vt" source="generated-graph" app_asset="public/assets/velocity-graph.svg"
+:::figure id="fig-d-vt" source="generated-graph" app_asset="public/assets/physics/textbook/ch01/guides/vt-derivation-guide.svg"
 図　速度と時間の関係を表す v-t グラフ
 :::
 

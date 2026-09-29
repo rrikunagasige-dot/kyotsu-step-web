@@ -1,6 +1,6 @@
 # P39 Hole Quality Audit — Chapter 1
 
-Status: **AUTHORITATIVE BEFORE CONTENT REWRITE**
+Status: **R4 APPLIED — VALIDATION PENDING**
 
 Date: 2026-09-29
 
@@ -120,3 +120,16 @@ If every REWRITE remains one interaction, the rough count is 45, but the final c
 6. 1G: rewrite G1/G2; remove G3a/G8.
 7. rebalance choices and regenerate explicit answer authority.
 8. only then implement purpose/scaffold metadata.
+
+
+## R4 Applied Result
+
+The audit has now been applied to the Chapter-1 source.
+
+Current source target:
+- 45 interactive reasoning points,
+- 45 explicit answers,
+- per-unit counts: 1A=9 / 1B=3 / 1C=4 / 1D=8 / 1E=6 / 1F=8 / 1G=7,
+- answer-position distribution: A12 / B11 / C11 / D11.
+
+This status does not declare R4 PASS until the full data/math/browser/build/deploy gate succeeds.

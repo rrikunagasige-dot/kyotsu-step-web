@@ -97,19 +97,20 @@ function TextbookReadingFlow({ unit, section, progress }: {
   const answerTextbook = useAppStore((state) => state.answerTextbook)
   const [activeItemId, setActiveItemId] = useState<string | null>(null)
   const groups = useMemo(() => groupReadingFlow(section.readingFlow), [section.readingFlow])
+  const currentProgress = progress?.unitRevision === unit.revision ? progress : undefined
 
   const firstIncompleteGroup = groups.findIndex((group) => {
     const itemIds = readingGroupItemIds(group, section)
     return itemIds.length > 0 && itemIds.some((itemId) => {
       const item = section.items.find((candidate) => candidate.id === itemId)
-      return !item || !isTextbookItemResolved(item, progress?.answers[itemId])
+      return !item || !isTextbookItemResolved(item, currentProgress?.answers[itemId])
     })
   })
   const visibleGroupCount = firstIncompleteGroup === -1 ? groups.length : firstIncompleteGroup + 1
   const visibleGroups = groups.slice(0, visibleGroupCount)
 
   const activeItem = activeItemId ? section.items.find((item) => item.id === activeItemId) : undefined
-  const activeRecord = activeItem ? progress?.answers[activeItem.id] : undefined
+  const activeRecord = activeItem ? currentProgress?.answers[activeItem.id] : undefined
   const activeChoices = activeItem ? getTextbookChoices(unit, activeItem) : []
   const continuousLesson = unit.sections.length === 1 && section.id === 'lesson'
 
@@ -118,7 +119,7 @@ function TextbookReadingFlow({ unit, section, progress }: {
       const itemIds = readingGroupItemIds([block], section)
       return itemIds.some((itemId) => {
         const item = section.items.find((candidate) => candidate.id === itemId)
-        return !item || !isTextbookItemResolved(item, progress?.answers[itemId])
+        return !item || !isTextbookItemResolved(item, currentProgress?.answers[itemId])
       })
     })
     return firstBlockedIndex === -1 ? group : group.slice(0, firstBlockedIndex + 1)
@@ -185,7 +186,7 @@ function TextbookReadingFlow({ unit, section, progress }: {
       if (!figure) return null
       return (
         <div className="reading-block-with-choice" key={block.id}>
-          <TextbookFigure figure={figure} items={section.items} progress={progress} onOpen={setActiveItemId} />
+          <TextbookFigure figure={figure} items={section.items} progress={currentProgress} onOpen={setActiveItemId} />
           {renderInlineChoicePanel(block)}
         </div>
       )
@@ -194,7 +195,7 @@ function TextbookReadingFlow({ unit, section, progress }: {
     if (block.type === 'formula') {
       return (
         <div className="reading-block-with-choice" key={block.id}>
-          <TextbookFormula block={block} section={section} progress={progress} onOpen={setActiveItemId} />
+          <TextbookFormula block={block} section={section} progress={currentProgress} onOpen={setActiveItemId} />
           {renderInlineChoicePanel(block)}
         </div>
       )
@@ -202,7 +203,7 @@ function TextbookReadingFlow({ unit, section, progress }: {
 
     const content = block.parts.map((part, index) => (
       <span key={`${block.id}-part-${index}`}>
-        {renderPart(part, section, progress, setActiveItemId, text)}
+        {renderPart(part, section, currentProgress, setActiveItemId, text)}
       </span>
     ))
 
@@ -220,7 +221,7 @@ function TextbookReadingFlow({ unit, section, progress }: {
         const groupItemIds = readingGroupItemIds(group, section)
         const completed = groupItemIds.length > 0 && groupItemIds.every((itemId) => {
           const item = section.items.find((candidate) => candidate.id === itemId)
-          return Boolean(item && isTextbookItemResolved(item, progress?.answers[itemId]))
+          return Boolean(item && isTextbookItemResolved(item, currentProgress?.answers[itemId]))
         })
         return (
           <section className="reading-subsection" data-testid={`reading-subsection-${groupIndex}`} key={group[0]?.id ?? groupIndex}>

@@ -113,7 +113,7 @@ r⃗₁ + 【A3　　　　　】 = r⃗₂
 A. r⃗₁　　B. r⃗₂　　C. Δr⃗　　D. −r⃗₂
 :::
 
-:::figure id="fig-1" source="1.png" app_asset="public/assets/physics/textbook/ch01/1a/position-vector-displacement.webp"
+:::figure id="fig-1" source="1.png" app_asset="public/assets/physics/textbook/a-displacement/position-vector.svg"
 図1　位置ベクトル r⃗₁, r⃗₂ と変位 Δr⃗
 :::
 
@@ -137,7 +137,7 @@ A. x₁−x₂　　B. x₁+x₂　　C. x₂/x₁　　D. x₂−x₁
 
 Δr⃗ = (x₂−x₁,  y₂−y₁)
 
-:::figure id="fig-4" source="4.png" app_asset="public/assets/physics/textbook/ch01/1a/displacement-components.webp"
+:::figure id="fig-4" source="4.png" app_asset="public/assets/physics/textbook/a-displacement/coordinate.svg"
 図4　座標成分で見た変位
 :::
 
@@ -169,8 +169,9 @@ v̄⃗ = Δr⃗/Δt = (r⃗₂−r⃗₁)/(t₂−t₁)
 
 平均の速度は、ある時間区間全体についての運動を表す。しかし曲線上を動く物体について「ちょうど今この瞬間にどちらへ動いているか」を知りたい場合もある。P₁ と、その少し先の P₂ を考え、P₂ を少しずつ P₁ に近づけていく。
 
-:::figure id="fig-2" source="2 (2).png" app_asset="public/assets/physics/textbook/ch01/1a/average-instantaneous-velocity.webp"
-図2　平均速度の向きから瞬間速度の向きへ
+
+:::figure id="fig-2-guide" source="generated-guide" app_asset="public/assets/physics/textbook/ch01/guides/secant-to-tangent-guide.svg"
+図　曲線上の2点を結ぶ方向
 :::
 
 P₂ を P₁ に近づけるほど、P₁ と P₂ を結ぶ方向は、P₁ における軌跡の 【A7　　　　　】 へ近づく。
@@ -179,13 +180,18 @@ P₂ を P₁ に近づけるほど、P₁ と P₂ を結ぶ方向は、P₁ �
 A. 法線方向　　B. 鉛直方向　　C. 接線方向　　D. 原点方向
 :::
 
+:::figure id="fig-2" source="generated-confirmation" app_asset="public/assets/physics/textbook/a-displacement/tangent-velocity.svg"
+図2　2点を近づけたときの接線方向と瞬間速度
+:::
+
+
 同時に時間間隔 Δt も小さくなる。Δt→0 とした極限で得られる速度を瞬間の速度という。
 
 v⃗ = lim(Δt→0)  Δr⃗/Δt
 
 したがって、曲線運動をしている物体でも、その瞬間の速度の方向は軌跡の接線方向になる。
 
-:::figure id="fig-3" source="3 (2).png" app_asset="public/assets/physics/textbook/ch01/1a/curve-velocity-directions.webp"
+:::figure id="fig-3" source="3 (2).png" app_asset="public/assets/physics/textbook/a-displacement/curve-abc.svg"
 図3　曲線上の各点における瞬間速度
 :::
 

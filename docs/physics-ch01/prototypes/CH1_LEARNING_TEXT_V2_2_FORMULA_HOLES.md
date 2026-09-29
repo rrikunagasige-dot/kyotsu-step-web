@@ -24,7 +24,7 @@ notes:
 
 1A〜1G　文章内穴埋め・図統合・数式導出強化版
 
-App preview v2.2｜数式導出の穴を強化
+連続学習版｜数式導出は「判断」を穴にする
 
 :::callout
 この版の原則　前版の自然な文章・図配置は維持しつつ、数式導出の途中にも「自分で次の式を作る」穴を追加する。スマートフォンだけでも親式→条件→代入→変形→結論を追え、しかも重要な式操作では受け身にならないことを目標にする。単純な四則演算を穴だらけにするのではなく、親式の選択・物理条件の代入・変数消去・意味のある式変形・最終公式への整理を中心に問う。
@@ -50,7 +50,7 @@ H6 重要な数式操作：変数消去、意味のある代入、符号判断�
 
 ## 数式導出に穴を開ける追加ルール
 
-2段以上の非自明な導出では、途中に少なくとも1つは「次の式を自分で作る」穴を置く。特に次の5種類を優先する。
+2段以上の非自明な導出では、途中に「次に何をするか」を考える穴を置く。ただし、最後の移項・単純な割り算・既に見えている式の写し直しは穴にしない。特に次の5種類を優先する。
 
 F1 親式の選択：どの既知の式から始めるか。
 
@@ -450,11 +450,8 @@ A. (v−v₀)t　　B. (1/2)(v−v₀)t　　C. (1/2)at²　　D. vt
 
 ここで、さきほど得た v−v₀=at を代入する。
 
-x = v₀t + (1/2)(【D6　　　　　】)t
+x = v₀t + (1/2)(at)t
 
-:::choices id="D6"
-A. v₀t　　B. a/t　　C. at　　D. v+v₀
-:::
 
 x = v₀t + (1/2)at²
 
@@ -467,7 +464,7 @@ x = [(v₀+v)/2] t
 t = 【D7　　　　　】
 
 :::choices id="D7"
-A. a/(v−v₀)　　B. (v+v₀)/a　　C. v/a　　D. (v−v₀)/a
+A. a/(v−v₀)　　B. (v+v₀)/a　　C. (v−v₀)/a　　D. v/a
 :::
 
 これを x=[(v₀+v)/2]t に代入すると、
@@ -479,17 +476,14 @@ x = [(v₀+v)/2] · [(v−v₀)/a]
 x = 【D7b　　　　　】
 
 :::choices id="D7b"
-A. (v²−v₀²)/(2a)　　B. (v²+v₀²)/(2a)　　C. (v−v₀)/(2a)　　D. (v²−v₀²)/a
+A. (v²+v₀²)/(2a)　　B. (v−v₀)/(2a)　　C. (v²−v₀²)/a　　D. (v²−v₀²)/(2a)
 :::
 
 
 両辺に 2a を掛けて、時間を含まない形にすると、
 
-v² − v₀² = 【D7c　　　　　】
+v² − v₀² = 2ax
 
-:::choices id="D7c"
-A. ax/2　　B. 2ax　　C. 2a/x　　D. 2x/a
-:::
 
 
 ここで使ったのは、新しい公式を暗記する操作ではなく、「平均速度で変位を表し、v−v₀=at から時間を消去する」という流れである。これら3式は、一定加速度で運動する同じ物体を違う条件から見た表現である。
@@ -501,7 +495,7 @@ A. ax/2　　B. 2ax　　C. 2a/x　　D. 2x/a
 したがって、合力が0なら加速度は 【D8　　　　　】 となり、速度は変化しない。
 
 :::choices id="D8"
-A. g　　B. v　　C. 0　　D. 無限大
+A. 0　　B. g　　C. v　　D. 無限大
 :::
 
 ## 例題：等加速度運動
@@ -511,7 +505,7 @@ A. g　　B. v　　C. 0　　D. 無限大
 このとき変位 x は 【D9　　　　　】 m である。
 
 :::choices id="D9"
-A. 6.0　　B. 18　　C. 3.0　　D. 9.0
+A. 6.0　　B. 9.0　　C. 18　　D. 3.0
 :::
 
 # 1E　水平投射
@@ -531,7 +525,7 @@ A. 6.0　　B. 18　　C. 3.0　　D. 9.0
 したがって、水平方向の加速度 aₓ は 【E1　　　　　】 である。
 
 :::choices id="E1"
-A. 0　　B. g　　C. −g　　D. v₀
+A. g　　B. −g　　C. 0　　D. v₀
 :::
 
 水平方向の速度は一定で、水平初速度を v₀ とすれば vₓ=v₀ である。
@@ -539,7 +533,7 @@ A. 0　　B. g　　C. −g　　D. v₀
 したがって水平方向の位置は x = 【E2　　　　　】 となる。
 
 :::choices id="E2"
-A. (1/2)gt²　　B. v₀t　　C. gt　　D. v₀/t
+A. (1/2)gt²　　B. gt　　C. v₀/t　　D. v₀t
 :::
 
 ## 鉛直方向は自由落下
@@ -549,7 +543,7 @@ A. (1/2)gt²　　B. v₀t　　C. gt　　D. v₀/t
 したがって鉛直方向の位置は y = 【E3　　　　　】 となる。
 
 :::choices id="E3"
-A. v₀t　　B. gt　　C. (1/2)gt²　　D. g/t
+A. (1/2)gt²　　B. v₀t　　C. gt　　D. g/t
 :::
 
 同じく鉛直速度は vᵧ=gt である。さらに時間を使わない関係も、前に導いた等加速度運動の式
@@ -561,7 +555,7 @@ v² − v₀² = 2ax
 vᵧ² − 0² = 【E3a　　　　　】
 
 :::choices id="E3a"
-A. −2gy　　B. gt²　　C. 2v₀y　　D. 2gy
+A. −2gy　　B. 2gy　　C. gt²　　D. 2v₀y
 :::
 
 
@@ -584,7 +578,7 @@ v² = v₀² + (gt)²
 したがって速さは v = 【E4　　　　　】 である。
 
 :::choices id="E4"
-A. √(v₀²+g²t²)　　B. v₀+gt　　C. v₀gt　　D. √(v₀²−g²t²)
+A. v₀+gt　　B. v₀gt　　C. √(v₀²+g²t²)　　D. √(v₀²−g²t²)
 :::
 
 ## なぜ軌跡は放物線になるのか
@@ -594,7 +588,7 @@ A. √(v₀²+g²t²)　　B. v₀+gt　　C. v₀gt　　D. √(v₀²−g²t²
 t = 【E5a　　　　　】
 
 :::choices id="E5a"
-A. v₀/x　　B. x/v₀　　C. xv₀　　D. x/g
+A. v₀/x　　B. xv₀　　C. x/g　　D. x/v₀
 :::
 
 これを鉛直方向の式 y=(1/2)gt² に代入する。
@@ -603,18 +597,15 @@ y = (1/2)g(x/v₀)²
 
 平方を分母まで含めて整理すると、
 
-y = 【E5b　　　　　】x²
+y = [g/(2v₀²)]x²
 
-:::choices id="E5b"
-A. g/v₀²　　B. 2g/v₀²　　C. g/(2v₀²)　　D. v₀²/(2g)
-:::
 
 y = [g/(2v₀²)]x²
 
 y が x² に比例するので、水平投射の軌跡は 【E5　　　　　】 になる。
 
 :::choices id="E5"
-A. 円　　B. 直線　　C. 双曲線　　D. 放物線
+A. 放物線　　B. 円　　C. 直線　　D. 双曲線
 :::
 
 ここでは「水平投射だから放物線」と覚えたのではなく、x=v₀t と y=(1/2)gt² から時間 t を消去した結果として、y が x² に比例することを示した。
@@ -626,7 +617,7 @@ A. 円　　B. 直線　　C. 双曲線　　D. 放物線
 落下時間は t = 【E6　　　　　】 s である。
 
 :::choices id="E6"
-A. 2.0　　B. 1.0　　C. 4.0　　D. 9.8
+A. 1.0　　B. 2.0　　C. 4.0　　D. 9.8
 :::
 
 この時間だけ水平方向へ一定速度14.7 m/sで進むので、水平到達距離は14.7×2.0=29.4 mとなる。複雑な曲線運動も、方向ごとに分ければ既知の運動へ戻せる。
@@ -646,13 +637,13 @@ A. 2.0　　B. 1.0　　C. 4.0　　D. 9.8
 水平方向の初速度は v₀ₓ = 【F1　　　　　】 である。
 
 :::choices id="F1"
-A. v₀ sinθ　　B. v₀ cosθ　　C. v₀ tanθ　　D. v₀/ cosθ
+A. v₀ sinθ　　B. v₀ tanθ　　C. v₀ cosθ　　D. v₀/ cosθ
 :::
 
 鉛直方向の初速度は v₀ᵧ = 【F2　　　　　】 である。
 
 :::choices id="F2"
-A. v₀ cosθ　　B. v₀ tanθ　　C. v₀ sinθ　　D. v₀/ sinθ
+A. v₀ cosθ　　B. v₀ tanθ　　C. v₀/ sinθ　　D. v₀ sinθ
 :::
 
 水平方向には力が働かないので aₓ=0、したがって vₓ=v₀cosθ は一定で、x=v₀cosθ·t となる。
@@ -664,7 +655,7 @@ A. v₀ cosθ　　B. v₀ tanθ　　C. v₀ sinθ　　D. v₀/ sinθ
 vᵧ = 【F3　　　　　】
 
 :::choices id="F3"
-A. v₀sinθ+gt　　B. v₀cosθ−gt　　C. gt　　D. v₀sinθ−gt
+A. v₀sinθ−gt　　B. v₀sinθ+gt　　C. v₀cosθ−gt　　D. gt
 :::
 
 y = v₀sinθ·t − (1/2)gt²
@@ -679,11 +670,8 @@ vᵧ² − (v₀sinθ)² = 2(−g)y
 
 右辺の符号まで整理すると、
 
-vᵧ² − (v₀sinθ)² = 【F3a　　　　　】
+vᵧ² − (v₀sinθ)² = −2gy
 
-:::choices id="F3a"
-A. −2gy　　B. 2gy　　C. −gy/2　　D. gt²
-:::
 
 
 となる。ここでも新しい公式を別に覚えたのではなく、前に導いた等加速度運動の式を鉛直方向へ適用しただけである。
@@ -708,25 +696,26 @@ vᵧ=v₀sinθ−gt に、最高点の条件 vᵧ=0 を入れる。
 
 gt_H = v₀sinθ
 
-t_H = 【F5　　　　　】
+t_H = v₀sinθ/g
 
-:::choices id="F5"
-A. v₀cosθ/g　　B. g/(v₀sinθ)　　C. v₀sinθ/g　　D. 2v₀sinθ/g
+
+次に最高点の高さ H を求める。ここで重要なのは、最高点の時刻をどの運動の式へ入れるかである。高さは鉛直方向の位置なので、
+
+H = 【F5a　　　　　】
+
+:::choices id="F5a"
+A. v₀cosθ·t_H　　B. (1/2)gt_H²　　C. v₀sinθ·t_H − (1/2)gt_H²　　D. v₀t_H + (1/2)gt_H²
 :::
 
-次に最高点の高さ H を求める。鉛直位置の式 y=v₀sinθ·t−(1/2)gt² に t=t_H を代入する。
+この鉛直位置の式へ t_H=v₀sinθ/g を代入する。
 
 H = v₀sinθ·(v₀sinθ/g) − (1/2)g(v₀sinθ/g)²
 
 H = v₀²sin²θ/g − v₀²sin²θ/(2g)
 
-共通する v₀²sin²θ/g を整理すれば、最高点の高さは
+したがって、
 
-H = 【F5a　　　　　】
-
-:::choices id="F5a"
-A. v₀²sin²θ/g　　B. v₀sinθ/(2g)　　C. 2v₀²sin²θ/g　　D. v₀²sin²θ/(2g)
-:::
+H = v₀²sin²θ/(2g)
 
 
 最高点で0になるのは鉛直成分だけで、水平方向の速度 v₀cosθ は残っているため、物体そのものが止まるわけではない。
@@ -738,7 +727,7 @@ A. v₀²sin²θ/g　　B. v₀sinθ/(2g)　　C. 2v₀²sin²θ/g　　D. v₀�
 t = 【F6a　　　　　】
 
 :::choices id="F6a"
-A. x/(v₀cosθ)　　B. x/(v₀sinθ)　　C. v₀cosθ/x　　D. x/g
+A. x/(v₀sinθ)　　B. v₀cosθ/x　　C. x/g　　D. x/(v₀cosθ)
 :::
 
 これを y=v₀sinθ·t−(1/2)gt² に代入すると、
@@ -750,7 +739,7 @@ y = v₀sinθ·[x/(v₀cosθ)] − (1/2)g[x/(v₀cosθ)]²
 y = x tanθ − 【F6b　　　　　】x²
 
 :::choices id="F6b"
-A. g/(2v₀²sin²θ)　　B. g/(2v₀²cos²θ)　　C. 2g/(v₀²cos²θ)　　D. v₀²cos²θ/(2g)
+A. g/(2v₀²cos²θ)　　B. g/(2v₀²sin²θ)　　C. 2g/(v₀²cos²θ)　　D. v₀²cos²θ/(2g)
 :::
 
 y = x tanθ − [g/(2v₀²cos²θ)]x²
@@ -758,24 +747,28 @@ y = x tanθ − [g/(2v₀²cos²θ)]x²
 この式は x の2次式なので、斜方投射の軌跡も 【F6　　　　　】 である。
 
 :::choices id="F6"
-A. 直線　　B. 円　　C. 放物線　　D. 楕円
+A. 直線　　B. 放物線　　C. 円　　D. 楕円
 :::
 
 次に、投げ出した位置と同じ高さへ戻るまでの時間 T を求める。このとき y=0 なので、
 
 0 = v₀sinθ·T − (1/2)gT²
 
-0 = T[v₀sinθ − (1/2)gT]
+2つの項に共通する T をくくると、
 
-T=0 は投げた瞬間を表す。戻ってくる時刻では T≠0 なので、かっこの中が0になる。
+0 = T【F7　　　　　】
+
+:::choices id="F7"
+A. [v₀cosθ − (1/2)gT]　　B. [v₀sinθ + (1/2)gT]　　C. [v₀sinθ − (1/2)gT]　　D. [v₀sinθ − g]
+:::
+
+この積が0になるには、T=0 またはかっこの中が0であればよい。T=0 は投げた瞬間なので、戻ってくる時刻では
 
 v₀sinθ − (1/2)gT = 0
 
-したがって飛行時間 T = 【F7　　　　　】
+を選ぶ。したがって、
 
-:::choices id="F7"
-A. v₀sinθ/g　　B. 2v₀cosθ/g　　C. g/(2v₀sinθ)　　D. 2v₀sinθ/g
-:::
+T = 2v₀sinθ/g
 
 ## 水平到達距離
 
@@ -788,7 +781,7 @@ D = v₀cosθ · T
 D = v₀cosθ · 【F8a　　　　　】
 
 :::choices id="F8a"
-A. 2v₀sinθ/g　　B. v₀sinθ/g　　C. 2v₀cosθ/g　　D. g/(2v₀sinθ)
+A. v₀sinθ/g　　B. 2v₀cosθ/g　　C. g/(2v₀sinθ)　　D. 2v₀sinθ/g
 :::
 
 D = v₀cosθ · [2v₀sinθ/g]
@@ -800,7 +793,7 @@ D = [2v₀²sinθ cosθ]/g
 D = 【F8　　　　　】
 
 :::choices id="F8"
-A. (v₀²/g)cos2θ　　B. (v₀²/g)sin2θ　　C. v₀g sinθ　　D. 2v₀/g
+A. (v₀²/g)sin2θ　　B. (v₀²/g)cos2θ　　C. v₀g sinθ　　D. 2v₀/g
 :::
 
 同じ初速度 v₀ なら、D は sin2θ が最大のとき最大になる。sin2θ の最大値は1なので、2θ=90°、したがって、
@@ -808,7 +801,7 @@ A. (v₀²/g)cos2θ　　B. (v₀²/g)sin2θ　　C. v₀g sinθ　　D. 2v₀/g
 最大飛距離を与える角度は θ = 【F9　　　　　】 である。
 
 :::choices id="F9"
-A. 30°　　B. 60°　　C. 45°　　D. 90°
+A. 30°　　B. 45°　　C. 60°　　D. 90°
 :::
 
 45°を単独で暗記するのではなく、水平成分と鉛直成分の両方が飛距離に関わり、その結果として sin2θ が現れることを理解する。
@@ -824,7 +817,7 @@ A. 30°　　B. 60°　　C. 45°　　D. 90°
 したがって、重力だけが働くとき a⃗ = 【G1　　　　　】 である。
 
 :::choices id="G1"
-A. m g⃗　　B. 0　　C. v⃗　　D. g⃗
+A. m g⃗　　B. 0　　C. g⃗　　D. v⃗
 :::
 
 つまり空気抵抗を無視できるなら、物体の質量に関係なく同じ重力加速度で落下する。
@@ -840,7 +833,7 @@ A. m g⃗　　B. 0　　C. v⃗　　D. g⃗
 このとき抵抗力の大きさは f = 【G2　　　　　】 と書ける。
 
 :::choices id="G2"
-A. kv　　B. k/v　　C. mv　　D. mg
+A. k/v　　B. mv　　C. mg　　D. kv
 :::
 
 ## 落下中に加速度が変わる
@@ -850,7 +843,7 @@ A. kv　　B. k/v　　C. mv　　D. mg
 したがって運動方程式は ma = 【G3　　　　　】 となる。
 
 :::choices id="G3"
-A. mg+kv　　B. mg−kv　　C. kv−mg　　D. mg
+A. mg−kv　　B. mg+kv　　C. kv−mg　　D. mg
 :::
 
 両辺を質量 m で割ると、
@@ -862,7 +855,7 @@ a = (mg−kv)/m
 a = g − 【G3a　　　　　】
 
 :::choices id="G3a"
-A. (m/k)v　　B. kv　　C. (k/m)v　　D. k/(mv)
+A. (m/k)v　　B. (k/m)v　　C. kv　　D. k/(mv)
 :::
 
 
@@ -871,7 +864,7 @@ A. (m/k)v　　B. kv　　C. (k/m)v　　D. k/(mv)
 つまり落下中、速さが増えるにつれて加速度は 【G4　　　　　】。
 
 :::choices id="G4"
-A. 大きくなる　　B. 必ず0のまま　　C. 向きだけ反転し続ける　　D. 小さくなる
+A. 大きくなる　　B. 必ず0のまま　　C. 小さくなる　　D. 向きだけ反転し続ける
 :::
 
 :::figure id="fig-16" source="16.png" app_asset="public/assets/physics/textbook/ch01/guides/drag-stages-guide.svg"
@@ -885,7 +878,7 @@ A. 大きくなる　　B. 必ず0のまま　　C. 向きだけ反転し続け�
 v-tグラフの傾きは 【G5　　　　　】 を表しているからである。
 
 :::choices id="G5"
-A. 加速度　　B. 変位　　C. 位置　　D. 質量
+A. 変位　　B. 位置　　C. 質量　　D. 加速度
 :::
 
 :::figure id="fig-17" source="17.png" app_asset="public/assets/physics/textbook/ch01/guides/terminal-velocity-graph-guide.svg"
@@ -897,7 +890,7 @@ A. 加速度　　B. 変位　　C. 位置　　D. 質量
 したがって終端速度に達したとき、加速度 a は 【G6　　　　　】 となる。
 
 :::choices id="G6"
-A. g　　B. 0　　C. −g　　D. v_t
+A. 0　　B. g　　C. −g　　D. v_t
 :::
 
 終端速度を v_t とする。運動方程式 ma=mg−kv に a=0 を入れる。速度も v=v_t と置けば、
@@ -905,17 +898,14 @@ A. g　　B. 0　　C. −g　　D. v_t
 0 = mg − 【G6a　　　　　】
 
 :::choices id="G6a"
-A. mgv_t　　B. k/v_t　　C. kv_t　　D. mv_t
+A. mgv_t　　B. kv_t　　C. k/v_t　　D. mv_t
 :::
 
 
 kv_t = mg
 
-したがって v_t = 【G7　　　　　】
+したがって v_t = mg/k
 
-:::choices id="G7"
-A. k/(mg)　　B. m/(kg)　　C. g/(mk)　　D. mg/k
-:::
 
 ここでも式を暗記したのではなく、「終端速度では加速度が0」という物理条件を運動方程式へ入れて求めている。
 
@@ -926,7 +916,7 @@ m=0.50 kg、k=0.10 kg/s、g=9.8 m/s² とする。終端速度では mg=kv_t な
 v_t = 0.50×9.8/0.10 = 【G8　　　　　】 m/s
 
 :::choices id="G8"
-A. 49　　B. 4.9　　C. 9.8　　D. 0.49
+A. 4.9　　B. 9.8　　C. 49　　D. 0.49
 :::
 
 重要なのは49という数値より、速さが増える → 抵抗が増える → 合力が減る → 加速度が減る → 重力と抵抗がつり合う → 終端速度になる、という因果関係である。
@@ -971,10 +961,8 @@ D3　加速度
 D4　変位
 D5　at
 D4a　(1/2)(v−v₀)t
-D6　at
 D7　(v−v₀)/a
 D7b　(v²−v₀²)/(2a)
-D7c　2ax
 D8　0
 D9　9.0
 E1　0
@@ -983,20 +971,17 @@ E3　(1/2)gt²
 E3a　2gy
 E4　√(v₀²+g²t²)
 E5a　x/v₀
-E5b　g/(2v₀²)
 E5　放物線
 E6　2.0
 F1　v₀ cosθ
 F2　v₀ sinθ
 F3　v₀sinθ−gt
-F3a　−2gy
 F4　0
-F5　v₀sinθ/g
-F5a　v₀²sin²θ/(2g)
+F5a　v₀sinθ·t_H − (1/2)gt_H²
 F6a　x/(v₀cosθ)
 F6b　g/(2v₀²cos²θ)
 F6　放物線
-F7　2v₀sinθ/g
+F7　[v₀sinθ − (1/2)gT]
 F8a　2v₀sinθ/g
 F8　(v₀²/g)sin2θ
 F9　45°
@@ -1008,5 +993,4 @@ G4　小さくなる
 G5　加速度
 G6　0
 G6a　kv_t
-G7　mg/k
 G8　49

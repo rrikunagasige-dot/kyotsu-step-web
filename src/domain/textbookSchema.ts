@@ -5,6 +5,20 @@ const PercentSchema = z.number().min(0).max(100)
 
 export const TextbookAnswerTypeSchema = z.enum(['text', 'formula', 'number'])
 export const TextbookSectionRoleSchema = z.enum(['concept', 'figure-reading', 'worked-example', 'review'])
+export const TextbookQuestionPurposeSchema = z.enum([
+  'concept-formation',
+  'representation-link',
+  'definition',
+  'solution-planning',
+  'transfer',
+  'relation-selection',
+  'physical-condition',
+  'graph-reading',
+  'elimination',
+  'factorization',
+  'causal-reasoning',
+])
+export const TextbookScaffoldLevelSchema = z.enum(['strong', 'medium', 'light'])
 
 export const TextbookItemSchema = z.object({
   id: IdSchema,
@@ -14,6 +28,9 @@ export const TextbookItemSchema = z.object({
   acceptedAnswers: z.array(z.string().min(1)).default([]),
   answerType: TextbookAnswerTypeSchema.default('text'),
   choices: z.array(z.string().min(1)).min(2).optional(),
+  purpose: TextbookQuestionPurposeSchema.optional(),
+  scaffoldLevel: TextbookScaffoldLevelSchema.default('strong'),
+  hints: z.array(z.string().min(1)).max(3).default([]),
   unit: z.string().optional(),
 })
 

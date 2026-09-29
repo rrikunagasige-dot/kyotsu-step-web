@@ -1,6 +1,7 @@
 import type { TextbookAnswerRecord, TextbookUnitProgress } from './textbook'
 import { isTextbookItemResolved } from './textbook'
 import type { TextbookReadingPart, TextbookSection } from './textbookSchema'
+import { normalizeTextbookMath } from './textbookMath'
 
 function escapeLatexText(value: string) {
   return value
@@ -11,7 +12,7 @@ function escapeLatexText(value: string) {
 }
 
 function answerLatex(value: string, formula: boolean) {
-  return formula ? value : `\\text{${escapeLatexText(value)}}`
+  return formula ? normalizeTextbookMath(value) : `\\text{${escapeLatexText(value)}}`
 }
 
 function choiceLatex(

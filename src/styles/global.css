@@ -357,11 +357,11 @@ a { color: inherit; }
 .reading-paragraph .katex { font-size: 1.03em; }
 .reading-formula-line { overflow-x: auto; padding: .7rem .85rem; border: 1px solid var(--color-line); background: #fff; font-size: 1.08rem; line-height: 2; text-align: center; white-space: nowrap; }
 .reading-formula-line > span { display: inline; }
-.reading-figure { display: grid; gap: .5rem; margin: .25rem 0; padding: .75rem; border: 1px solid var(--color-border); background: white; }
-.reading-figure img { display: block; width: 100%; max-height: 420px; object-fit: contain; }
+.reading-figure { display: grid; justify-items: center; gap: .5rem; margin: .4rem 0; padding: .75rem; border: 1px solid var(--color-border); background: white; }
+.reading-figure img { display: block; width: auto; max-width: 100%; height: auto; max-height: 560px; object-fit: contain; image-rendering: auto; }
 .reading-figure figcaption { color: var(--color-muted); font-size: .74rem; text-align: center; }
-.textbook-figure-stage { position: relative; width: 100%; }
-.textbook-figure-stage > img { display: block; width: 100%; max-height: 420px; object-fit: contain; }
+.textbook-figure-stage { position: relative; width: fit-content; max-width: 100%; margin: 0 auto; }
+.textbook-figure-stage > img { display: block; width: auto; max-width: 100%; height: auto; max-height: 560px; object-fit: contain; image-rendering: auto; }
 .textbook-figure-overlay { position: absolute; display: grid; min-width: 24px; min-height: 24px; place-items: center; padding: 0; border: 2px solid var(--color-primary); color: var(--color-primary); cursor: pointer; }
 .textbook-figure-overlay > span { padding: .1rem .22rem; background: var(--color-paper); font: 700 .62rem/1 ui-monospace, monospace; }
 .textbook-figure-overlay--mask { background: var(--color-paper); box-shadow: 0 0 0 2px rgba(255,255,255,.72); }
@@ -373,8 +373,8 @@ button.reading-inline-blank { font: inherit; cursor: pointer; box-shadow: none; 
 button.reading-inline-blank:hover { background: var(--color-section); }
 .reading-inline-blank > strong { font-size: .86rem; }
 .reading-inline-blank--wrong { border-color: var(--color-error); color: var(--color-error); background: #fff8f6; }
-.reading-inline-answer { border-color: var(--color-success); background: #f6fff8; color: var(--color-success); }
-.reading-inline-answer strong { font-size: .9rem; }
+.reading-inline-answer { display: inline; min-height: 0; margin: 0 .08rem; padding: 0; border: 0; background: transparent; color: inherit; line-height: inherit; }
+.reading-inline-answer strong { font-size: inherit; font-weight: inherit; }
 
 .reading-choice-panel { display: grid; gap: .65rem; margin: .1rem 0 .25rem; padding: .8rem; border: 2px solid var(--color-primary); background: var(--color-section); }
 .reading-choice-panel__head { display: flex; align-items: center; gap: .5rem; }
@@ -468,6 +468,7 @@ button.physics-topic-card:not(:disabled):hover {
 }
 .reading-formula-line .tb-math-answer {
   color: inherit;
+  background: transparent;
 }
 .reading-formula-line--error {
   border-color: var(--color-error);

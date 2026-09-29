@@ -10,6 +10,7 @@ import { getTextbookChoices, isTextbookItemResolved, textbookSectionProgress, te
 import type { TextbookItem, TextbookReadingBlock, TextbookReadingPart, TextbookSection, TextbookUnit } from '../domain/textbookSchema'
 import { useAppStore } from '../stores/useAppStore'
 import { useI18n } from '../i18n/runtime'
+import { normalizeTextbookMath } from '../domain/textbookMath'
 
 function readingGroupItemIds(blocks: TextbookReadingBlock[], section: TextbookSection) {
   return blocks.flatMap((block) => {
@@ -43,8 +44,9 @@ function groupReadingFlow(blocks: TextbookReadingBlock[]) {
 function renderResolvedChoice(item: TextbookItem, record: TextbookAnswerRecord) {
   return (
     <span className="reading-inline-answer" data-testid={`resolved-${item.id}`}>
-      <Check size={14} aria-hidden="true" />
-      <strong>{record.value}</strong>
+      {item.answerType === 'formula'
+        ? <InlineMath math={normalizeTextbookMath(record.value)} />
+        : <>{record.value}</>}
     </span>
   )
 }
@@ -161,7 +163,11 @@ function TextbookReadingFlow({ unit, section, progress }: {
               onClick={() => selectChoice(choice)}
             >
               <span>{index + 1}</span>
-              <strong>{choice}</strong>
+              <strong>
+                {activeItem.answerType === 'formula'
+                  ? <InlineMath math={normalizeTextbookMath(choice)} />
+                  : choice}
+              </strong>
               {activeItem.unit && <small>{activeItem.unit}</small>}
             </button>
           ))}
@@ -308,7 +314,7 @@ export function TextbookUnitPage() {
           <h1>{displayTitle}</h1>
           {unit.subtitle && <p>{unit.subtitle}</p>}
         </div>
-        <StatusBadge>{text(`第 ${unit.revision} 版`, `第 ${unit.revision} 版`)}</StatusBadge>
+        {!continuousLesson && <StatusBadge>{text(`第 ${unit.revision} 版`, `第 ${unit.revision} 版`)}</StatusBadge>}
       </header>
 
       <ProgressBar label={text('単元の進み具合', '单元进度')} value={summary.completed} max={summary.total} />

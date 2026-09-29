@@ -1,4 +1,5 @@
 import source from '../../../../docs/physics-ch01/prototypes/CH1_LEARNING_TEXT_V2_2_FORMULA_HOLES.md?raw'
+import interactionMetadataSource from '../../../../docs/physics-ch01/prototypes/CH1_INTERACTION_METADATA.tsv?raw'
 import { validateTextbookUnits, type TextbookFigure, type TextbookItem, type TextbookReadingBlock, type TextbookReadingPart } from '../../../domain/textbookSchema'
 import { looksLikeTextbookMath, normalizeTextbookMath, splitTextbookInlineMath, stripTextbookMarkdown } from '../../../domain/textbookMath'
 
@@ -70,6 +71,54 @@ function answerKey() {
 }
 
 const answers = answerKey()
+
+type InteractionMeta = {
+  purpose: 'concept-formation' | 'representation-link' | 'definition' | 'solution-planning' | 'transfer' | 'relation-selection' | 'physical-condition' | 'graph-reading' | 'elimination' | 'factorization' | 'causal-reasoning'
+  scaffoldLevel: 'strong' | 'medium' | 'light'
+  hints: string[]
+}
+
+function interactionMetadata() {
+  const allowedPurpose = new Set<InteractionMeta['purpose']>([
+    'concept-formation',
+    'representation-link',
+    'definition',
+    'solution-planning',
+    'transfer',
+    'relation-selection',
+    'physical-condition',
+    'graph-reading',
+    'elimination',
+    'factorization',
+    'causal-reasoning',
+  ])
+  const allowedScaffold = new Set<InteractionMeta['scaffoldLevel']>(['strong', 'medium', 'light'])
+  const map = new Map<string, InteractionMeta>()
+
+  for (const rawLine of interactionMetadataSource.split('\n')) {
+    const line = rawLine.trim()
+    if (!line || line.startsWith('#')) continue
+    const [sourceId, purpose, scaffoldLevel, hint1, hint2] = rawLine.split('\t')
+    if (!sourceId || !purpose || !scaffoldLevel || !hint1 || !hint2) {
+      throw new Error(`Malformed Chapter-1 interaction metadata: ${rawLine}`)
+    }
+    if (!allowedPurpose.has(purpose as InteractionMeta['purpose'])) {
+      throw new Error(`Unknown interaction purpose for ${sourceId}: ${purpose}`)
+    }
+    if (!allowedScaffold.has(scaffoldLevel as InteractionMeta['scaffoldLevel'])) {
+      throw new Error(`Unknown scaffold level for ${sourceId}: ${scaffoldLevel}`)
+    }
+    if (map.has(sourceId)) throw new Error(`Duplicate interaction metadata: ${sourceId}`)
+    map.set(sourceId, {
+      purpose: purpose as InteractionMeta['purpose'],
+      scaffoldLevel: scaffoldLevel as InteractionMeta['scaffoldLevel'],
+      hints: [hint1.trim(), hint2.trim()],
+    })
+  }
+  return map
+}
+
+const interactionById = interactionMetadata()
 
 function parseChoices(block: string) {
   const flat = block.replace(/\n/g, ' ').trim()
@@ -166,6 +215,8 @@ function parseUnit(meta: UnitMeta, next?: UnitCode) {
     const answer = answers.get(sourceId)
     if (!answer) throw new Error(`Missing explicit answer for ${sourceId}`)
     if (!choices.includes(answer)) throw new Error(`Answer is not one of the choices for ${sourceId}: ${answer}`)
+    const interaction = interactionById.get(sourceId)
+    if (!interaction) throw new Error(`Missing interaction metadata for ${sourceId}`)
     return {
       id: itemId(sourceId),
       label: sourceId,
@@ -174,6 +225,9 @@ function parseUnit(meta: UnitMeta, next?: UnitCode) {
       acceptedAnswers: acceptedAnswers(answer),
       answerType: inferAnswerType(answer),
       choices,
+      purpose: interaction.purpose,
+      scaffoldLevel: interaction.scaffoldLevel,
+      hints: interaction.hints,
     }
   })
 

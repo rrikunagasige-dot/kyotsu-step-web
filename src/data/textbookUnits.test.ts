@@ -74,6 +74,59 @@ describe('Chapter 1 continuous textbook catalog', () => {
     expect(Math.max(...distribution) - Math.min(...distribution)).toBeLessThanOrEqual(1)
   })
 
+  it('keeps explicit multi-step derivations as one semantic group', () => {
+    const expected = [
+      'd-velocity-update',
+      'd-displacement-area',
+      'd-eliminate-time',
+      'e-vertical-relation',
+      'e-trajectory-elimination',
+      'f-vertical-motion',
+      'f-highest-time',
+      'f-highest-height',
+      'f-trajectory-elimination',
+      'f-flight-time',
+      'f-range',
+      'g-drag-acceleration',
+      'g-terminal',
+    ]
+
+    const groups = new Map<string, Array<{ type: string }>>()
+    for (const unit of builtInTextbookUnits) {
+      for (const block of unit.sections[0].readingFlow) {
+        if (!('derivationId' in block) || !block.derivationId) continue
+        const group = groups.get(block.derivationId) ?? []
+        group.push(block)
+        groups.set(block.derivationId, group)
+      }
+    }
+
+    expect([...groups.keys()].sort()).toEqual([...expected].sort())
+    for (const id of expected) {
+      expect(groups.get(id)?.length, id).toBeGreaterThanOrEqual(2)
+    }
+
+    expect(groups.get('d-eliminate-time')?.some((block) => block.type === 'paragraph')).toBe(true)
+    expect(groups.get('f-flight-time')?.some((block) => block.type === 'paragraph')).toBe(true)
+  })
+
+  it('does not repeat an identical completed formula immediately', () => {
+    for (const unit of builtInTextbookUnits) {
+      const formulas = unit.sections[0].readingFlow
+        .filter((block) => block.type === 'formula')
+        .map((block) => block.type === 'formula'
+          ? block.parts.map((part) =>
+              part.type === 'math' ? part.latex :
+              part.type === 'text' ? part.text :
+              `[${part.itemId}]`
+            ).join('')
+          : '')
+      for (let index = 1; index < formulas.length; index += 1) {
+        expect(formulas[index], `${unit.unitId}: duplicate formula`).not.toBe(formulas[index - 1])
+      }
+    }
+  })
+
   it('references every hole from the continuous reading flow', () => {
     for (const unit of builtInTextbookUnits) {
       const section = unit.sections[0]

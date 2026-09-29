@@ -1024,3 +1024,51 @@ prerequisite
 
 **P39まではapplication codeを変更しない。**
 
+### 19.5 USER-APPROVED Chapter-1 writing prototype — P33 input
+
+On 2026-09-29, a complete Chapter-1 review Word (1A–1G) was produced from the canonical sources and figures and reviewed by the user.
+
+Accepted characteristics:
+
+    natural continuous teaching prose
+    +
+    inline hole = question
+    +
+    correct fill restores the original sentence
+    +
+    meaning before unknown terminology
+    +
+    figures integrated where concepts are formed
+    +
+    moderate hole density
+
+Prototype facts:
+
+- 1A–1G included
+- 17 canonical figures
+- 53 inline holes
+- choices placed after the corresponding prose
+- answer key collected at end
+- 25 rendered pages visually checked
+- user judged the prose quality good
+- user judged the current hole density appropriate
+
+Detailed rule:
+docs/physics-ch01/LEARNING_TEXT_WRITING_RULES.md
+
+Reproducible generator:
+scripts/physics-textbook/build_ch1_learning_docx.py
+
+**Status interpretation:** this does NOT mark P33–P38 PASS.
+It is an approved pedagogical artifact/input.
+
+Recommended next edge:
+
+    USER-APPROVED Chapter-1 text prototype
+            ↓
+    extract explicit representation/dependency map from the accepted text
+            ↓
+    P33 G52/G53/G54 audit
+            ↓
+    only then compare against current app in P34
+

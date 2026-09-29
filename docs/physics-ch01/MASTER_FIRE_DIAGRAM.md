@@ -1326,3 +1326,28 @@ G57 PASS.
 
 No application code changed.
 
+### 19.12 P36 REPRESENTATION INTEGRATION — PASS
+
+Spec:
+`docs/physics-ch01/P36_REPRESENTATION_INTEGRATION_SPEC.md`
+
+Defined:
+- semantic representation groups,
+- primary/supporting roles,
+- co-presence/mobile proximity,
+- concept-specific paths,
+- synchronized reveal/highlight,
+- F-CONCEPT / F-INFERENCE / F-EXPLAIN,
+- mask necessity and completeness gates,
+- title/heading/prose/formula/figure/caption/alt/ARIA leakage audit,
+- accessibility-safe alt text,
+- caption/formula staging,
+- graph integration,
+- mobile split-attention gate,
+- developer representation-audit record.
+
+G58 PASS.
+**P36 PASS. P37 unblocked.**
+
+No application code changed.
+

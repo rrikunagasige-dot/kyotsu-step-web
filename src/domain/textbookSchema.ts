@@ -27,7 +27,7 @@ export const TextbookFigureOverlaySchema = z.object({
   height: z.number().positive().max(100),
   reveal: z.enum(['after-answer', 'always']).default('after-answer'),
   ariaLabel: z.string().min(1).optional(),
-  interactive: z.boolean().default(true),
+  interactive: z.boolean().optional(),
 })
 
 export const TextbookFigureSchema = z.object({

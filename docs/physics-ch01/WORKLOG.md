@@ -1323,3 +1323,18 @@ G57 PASS / P35 PASS.
 
 No application code changed. P36 is next.
 
+---
+
+## 2026-09-29 — P36 representation integration
+
+Created:
+`docs/physics-ch01/P36_REPRESENTATION_INTEGRATION_SPEC.md`
+
+Specified semantic representation groups, co-presence, representation paths, synchronized reveal/highlight, figure roles, mask necessity/completeness, accessibility-safe alt/caption behavior, formula staging, graph integration, and mobile split-attention auditing.
+
+The spec directly prevents the P34 pattern where visually masked answers still leak through alt/caption text.
+
+G58 PASS / P36 PASS.
+
+No application code changed. P37 is next.
+

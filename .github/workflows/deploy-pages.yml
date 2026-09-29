@@ -38,10 +38,10 @@ jobs:
 
       - name: Typecheck
         run: pnpm run typecheck
-      - name: Chapter 1 v2.2 data gate
-        run: pnpm exec vitest run src/data/textbookUnits.test.ts src/domain/textbookSchema.test.ts src/components/textbook/TextbookFigure.test.tsx
+      - name: Chapter 1 audited data and math gate
+        run: pnpm exec vitest run src/data/textbookUnits.test.ts src/domain/textbookSchema.test.ts src/domain/textbookFormula.test.ts src/components/textbook/TextbookFigure.test.tsx
 
-      - name: P39 v2.2 browser smoke
+      - name: P39 audited browser smoke
         run: pnpm exec playwright test e2e/p39-v22-smoke.spec.ts
 
       - name: Build

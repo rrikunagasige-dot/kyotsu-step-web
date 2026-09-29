@@ -31,6 +31,47 @@ describe('textbook formula renderer', () => {
     expect(formulaCount).toBeGreaterThan(70)
   })
 
+  it('does not box resolved formula answers', () => {
+    const unit = builtInTextbookUnits.find((candidate) => candidate.chapter?.unitCode === '1B')
+    const section = unit?.sections[0]
+    const block = section?.readingFlow.find((candidate) =>
+      candidate.type === 'formula' &&
+      candidate.parts.some((part) => part.type === 'choice' && part.itemId === 'b4'),
+    )
+    const item = section?.items.find((candidate) => candidate.id === 'b4')
+    expect(unit).toBeTruthy()
+    expect(section).toBeTruthy()
+    expect(block?.type).toBe('formula')
+    expect(item).toBeTruthy()
+
+    const progress: TextbookUnitProgress = {
+      unitId: unit!.unitId,
+      unitRevision: unit!.revision,
+      startedAt: 1,
+      updatedAt: 1,
+      answers: {
+        b4: {
+          itemId: 'b4',
+          value: item!.answer,
+          firstValue: item!.answer,
+          isFirstCorrect: true,
+          resolved: true,
+          attemptCount: 1,
+          firstAnsweredAt: 1,
+          lastAnsweredAt: 1,
+        },
+      },
+    }
+
+    const latex = buildTextbookFormulaLatex(
+      (block as Extract<typeof block, { type: 'formula' }>).parts,
+      section!,
+      progress,
+    )
+    expect(latex).toContain('tb-math-answer')
+    expect(latex).not.toContain('\\boxed{\\sqrt')
+  })
+
   it('renders every Chapter 1 formula after all referenced holes are correctly resolved', () => {
     let formulaCount = 0
 

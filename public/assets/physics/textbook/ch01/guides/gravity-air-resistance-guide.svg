@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 560" role="img" aria-labelledby="title desc">
+<title id="title">落下物体にはたらく力</title>
+<desc id="desc">左は重力だけ、右は重力と上向きの空気抵抗がはたらく落下物体。</desc>
+<defs><marker id="arrowB" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto"><path d="M0,0 L0,10 L11,5 z" fill="#1f67b1"/></marker></defs>
+<rect width="980" height="560" fill="#fff"/>
+<line x1="490" y1="55" x2="490" y2="510" stroke="#c9c7bf" stroke-width="3"/>
+<g fill="#d8d8d8" stroke="#172737" stroke-width="4"><circle cx="245" cy="185" r="48"/><circle cx="735" cy="185" r="48"/></g>
+<g stroke="#1f67b1" stroke-width="8" marker-end="url(#arrowB)">
+<line x1="245" y1="235" x2="245" y2="365"/><line x1="735" y1="235" x2="735" y2="365"/><line x1="735" y1="135" x2="735" y2="70"/>
+</g>
+<g fill="#172737" font-family="system-ui, sans-serif" font-size="30">
+<text x="175" y="54">重力だけ</text><text x="650" y="54">空気抵抗あり</text>
+<text x="270" y="310">重力 mg</text><text x="760" y="310">重力 mg</text><text x="760" y="105">空気抵抗</text>
+<text x="165" y="430">下向きに加速</text><text x="640" y="430">抵抗は運動と逆向き</text>
+</g></svg>

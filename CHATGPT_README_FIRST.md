@@ -1191,12 +1191,12 @@ Key current files:
 - `docs/physics-ch01/P34_CURRENT_APP_CONTRADICTION_AUDIT.md`
 - `docs/physics-ch01/P35_PEDAGOGY_RULES.md`
 - `docs/physics-ch01/P36_REPRESENTATION_INTEGRATION_SPEC.md`
-- `docs/physics-ch01/P37_1A_REDESIGN_DATA.md`
+- `docs/physics-ch01/P37_1A_REDESIGN.md`
 - `docs/physics-ch01/P38_VIRTUAL_LEARNER_AND_AUDIT_MODE.md`
 
 P37 target for 1A:
-- current app: 77 items
-- redesigned target: 10 meaningful holes across 8 learning events
+- current app: 78 items
+- redesigned target: 10 meaningful holes across 10 representation events
 - figures/formulas integrated where concept formation needs them
 - routine algebra remains visible
 - no label-transcription drill
@@ -1210,3 +1210,10 @@ P38 result:
 
 Do not start coding from this README alone. The user must explicitly approve moving into P39 after reviewing the design.
 
+
+
+### Final pre-review consistency note
+
+Current app recount: 179 Chapter-1 item definitions = 78 + 18 + 17 + 17 + 16 + 19 + 14.
+P37 authoritative file: `docs/physics-ch01/P37_1A_REDESIGN.md`.
+The older `P37_1A_REDESIGN_DATA.md` is compatibility-only and must not be treated as a second authority.

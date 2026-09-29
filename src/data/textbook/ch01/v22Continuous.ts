@@ -275,7 +275,20 @@ function parseUnit(meta: UnitMeta, next?: UnitCode) {
         src: appAsset.replace(/^public/, ''),
         alt: `${caption.replace(/^図\d+\s*/, '')}を示す学習図`,
         caption,
-        overlays: [],
+        overlays: figureId === 'fig-1'
+          ? [{
+              id: 'mask-a3-delta-r',
+              itemId: 'a3',
+              mode: 'mask' as const,
+              x: 54.01,
+              y: 27.99,
+              width: 11.05,
+              height: 9.02,
+              reveal: 'after-answer' as const,
+              ariaLabel: '変位ベクトルの記号を非表示',
+              interactive: false,
+            }]
+          : [],
       })
       figureIndex += 1
       blocks.push({ id: `figure-block-${figureIndex}`, type: 'figure', figureId })

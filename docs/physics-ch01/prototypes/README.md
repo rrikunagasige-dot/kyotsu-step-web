@@ -138,3 +138,21 @@ Change from v2.1:
 - formula-hole rule F1–F5 added,
 - awaiting user review before becoming authoritative.
 
+## v2.2 app-preview status — 2026-09-29
+
+Current app-preview content:
+`CH1_LEARNING_TEXT_V2_2_FORMULA_HOLES.md`
+
+Counts:
+- 65 unique holes
+- 17 canonical figures
+- derivation holes strengthened relative to v2.1
+
+The App imports this Markdown source directly through `src/data/textbook/ch01/v22Continuous.ts`; do not manually maintain a second prose copy in TypeScript.
+
+GitHub Pages preview:
+`https://rrikunagasige-dot.github.io/kyotsu-step-web/`
+
+Status:
+**DEPLOYED FOR USER QA — not final pedagogy approval.**
+

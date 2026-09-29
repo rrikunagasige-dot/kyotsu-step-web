@@ -48,7 +48,9 @@ Word は原文そのものではなく学習用再構成案として扱う。段
 | 1F | 斜方投射 | 22–24 | 13–14 |
 | 1G | 重力加速度・空気抵抗・終端速度 | 25–27 | 15–17 |
 
-## 固定する教育フロー
+## 教育フローに関する現行原則
+
+旧V2では次の流れを事実上の共通templateとして使っていた。
 
 ```text
 概念を読む
@@ -58,7 +60,21 @@ Word は原文そのものではなく学習用再構成案として扱う。段
 → 単元全体を再接続する
 ```
 
-固定しないもの: 知識点数、例題数、図数、段落数、式数、section数。
+**この順序は P33 以降では固定教育フローとして扱わない。SUPERSEDED / LEGACY である。**
+schema上の `concept / figure-reading / worked-example / review` role は既存データ互換のmetadataとして残り得るが、学習順序を決めるtemplateではない。
+
+現行原則:
+
+- 物理概念ごとに最適な representation path を決める。
+- `P/V/Q/R/M/G/T`（Phenomenon / Visual / Quantity / Relation / Math / Graph / Transfer）を必要に応じて往復する。
+- 「文章→図→式」など一つの順番を全概念へ強制しない。
+- 図・文章・式・グラフは、概念形成に必要なら同じlearning step内で統合する。
+- 各questionは one-step learnability を満たし、直前までの知識から根拠を持って答えられるようにする。
+- 公式は「存在する式を穴埋めする」だけでなく、必要な公式が揃っているか、いつ導入すべきかまで監査する。
+- scaffold は後半ほど弱め、最終的に選択肢なしでも意味を再構成できることを目標にする。
+- P33〜P38では教育設計を先に確定し、P39まではコードを変更しない。
+
+固定しないもの: representation順序、知識点数、例題数、図数、段落数、式数、section数。
 
 ## 変更ルール
 
@@ -116,13 +132,13 @@ P29 restore corrupted Chapter-1 figures from canonical PNGs
 P30 reader regression / asset-integrity full gate
 P31 docs / source manifest / checkpoint finalization
 P32 persistent source archive index
-P33 physics-learning representation map / contradiction audit [OPEN]
-P34 pedagogy rules: one-step learnability / representation choice / leakage [OPEN]
-P35 figure-text-question integration redesign [OPEN]
-P36 mask completeness + answer-linked reveal definition [OPEN]
-P37 Chapter 1 learning-text rewrite plan [OPEN]
-P38 beginner simulation audit [OPEN]
-P39 implementation only after P33-P38 approval [OPEN]
+P33 ideal physics-learning representation map + formula coverage [OPEN]
+P34 current-app contradiction audit against P33 map [OPEN]
+P35 pedagogy rules: one-step learnability / question purpose / scaffold fading / retry hints [OPEN]
+P36 representation integration: text↔figure↔formula↔graph + leakage/mask gates [OPEN]
+P37 1A redesign on paper/data only [OPEN]
+P38 virtual beginner simulation + developer audit-mode specification [OPEN]
+P39 implementation only after P33-P38 + USER REVIEW approval [OPEN]
 ```
 
 ## 現在の状態
@@ -770,11 +786,18 @@ concept
 ├─ knowledge gained by that question
 ├─ next question dependency
 ├─ figure needed?
-├─ formula needed?
+├─ required formula set
+│    ├─ formula itself
+│    ├─ role = concept-forming / representation / calculation / verification
+│    ├─ introduction timing
+│    ├─ prerequisite for introducing it
+│    └─ link to figure / text / graph / quantity
 ├─ graph needed?
+├─ representation links that must be explicit
 ├─ mask needed?
 ├─ answer leakage risk
 ├─ scaffold level
+├─ scaffold fading plan
 └─ transfer / review point
 ```
 
@@ -826,34 +849,63 @@ concept
 - 終端速度
 - v-tグラフ
 
-## 7. 次chatでの作業順
+## 7. P33開始点と P33〜P39 の一本化した作業順
+
+P33は **現在のAppを直す作業ではない**。まずAppから独立して「初心者が物理をどう理解するのが自然か」という理想側のrepresentation mapを作る。
+
+P33の最初の正式作業は:
 
 ```text
-P33 representation map
+P33-A1  1A「位置 → 位置ベクトル → 変位」
+        │
+        ├─ 中学知識からのprerequisiteを確定
+        ├─ 最初に見せる現象/図を決める
+        ├─ first learnable questionを作る
+        ├─ 正答で得る新知識を定義
+        ├─ 次questionへのdependencyを定義
+        ├─ 必要な図・式・graphを列挙
+        ├─ Formula Coverageを確定
+        └─ 図↔言葉↔式の明示的対応を設計
+```
+
+P33では「今のAppにその図・式があるか」は判定しない。必要なら `required = YES` と記録するだけで、現在実装との不足比較はP34で行う。
+
+```text
+P33 IDEAL REPRESENTATION MAP
+  1A: 位置→位置ベクトル→変位→平均速度→瞬間速度→接線方向
+  1B〜1G: 同じformatで理想mapを完成
+  + Formula Coverage
   ↓
-P34 contradiction audit
-  current 1A〜1G vs representation map
+P34 CURRENT-APP CONTRADICTION AUDIT
+  ideal map vs current 1A〜1G
+  missing / wrong / wrong timing / split-attention / leakage
   ↓
-P35 rewrite rules
+P35 PEDAGOGY RULES
   one-step learnability
-  leakage
-  figure/text integration
-  formula role
+  knowledge generation
+  question purpose
   scaffold fading
+  wrong-answer hint progression
+  transfer / retrieval
   ↓
-P36 mask definition + visual gates
+P36 REPRESENTATION INTEGRATION
+  text ↔ figure ↔ formula ↔ graph
+  synchronized reveal
+  figure type
+  mask necessity / completeness
+  pre-answer leakage
   ↓
-P37 1A redesign on paper/data first
+P37 1A REDESIGN — PAPER/DATA ONLY
   ↓
-P38 virtual beginner simulation
+P38 VIRTUAL BEGINNER SIMULATION + AUDIT MODE SPEC
   中学知識のみで最初から最後まで辿れるか
   ↓
 USER REVIEW
   ↓
-P39 code implementation
+P39 CODE IMPLEMENTATION
 ```
 
-**P39まではコードを書かない。**
+**P39まではコードを書かない。P33の理想mapを現在のschema/UI制約へ合わせて弱めない。**
 
 まず1Aを完成テンプレートにしてから1B〜1Gへ展開する。
 

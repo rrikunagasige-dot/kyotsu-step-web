@@ -1334,3 +1334,50 @@ Final validation:
 
 P39 remains USER QA OPEN for pedagogy/layout review; boot/runtime availability is now verified.
 
+## 17. P39 AUDIT-DRIVEN REPAIR — DEPLOYED / USER RE-QA
+
+After the first real App review exposed multiple issues, the implementation was frozen, audited end-to-end, and repaired as one batch.
+
+Resolved source/data issues:
+- explicit answer key: 65/65,
+- correct-option distribution: A17 / B16 / C16 / D16,
+- no parser fallback to "choice A" for missing answers,
+- student prose no longer says "1Aでは" / "1Dで..." / "1Dの式",
+- exact post-hole formula duplication removed,
+- chapter summary is retained in the App flow,
+- v-t graph restored for the 1D acceleration derivation.
+
+Resolved representation/UI issues:
+- prose-level symbols such as r-vector, v_x, v_y, Δr are parsed as inline KaTeX,
+- formula choices are rendered as KaTeX,
+- resolved formula holes return to normal completed math rather than boxed fragments,
+- student prompt no longer exposes A1/D7b-style internal IDs,
+- continuous lesson hides developer revision labels,
+- no question-mark masks remain in the audited Chapter-1 lesson,
+- concept-forming non-leaking guides are used before A1, A7, B2/B3,
+- low-resolution 1C/1D/1G WebPs were replaced with vector SVG diagrams,
+- figure width is capped to avoid raster upscaling,
+- stale saved progress is ignored when textbook revision changes.
+
+Live figure set:
+- 17 canonical/semantic textbook figures,
+- 4 additional non-leaking guides/graphs,
+- total 21 figure assets in the live Chapter-1 flow.
+
+Final automated validation:
+- GitHub Pages workflow run 154,
+- head commit `9bca1897d8866533ad5c398ab4ed3f69a4fc7d47`,
+- typecheck PASS,
+- audited data/math/asset/state gate: 32/32 tests PASS,
+- Playwright Chromium:
+  - learning setup PASS,
+  - 1A–1G all boot to first meaningful hole PASS,
+  - no student-facing version/internal hole ID leakage PASS,
+  - A1 choice panel PASS,
+  - concept-guide image sizing check PASS,
+- production build PASS,
+- GitHub Pages deploy PASS.
+
+**P39 remains USER RE-QA OPEN.**
+Automated implementation gates pass, but the user must review the actual learning experience again before P39 is closed.
+

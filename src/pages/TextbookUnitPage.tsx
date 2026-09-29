@@ -220,31 +220,41 @@ function TextbookReadingFlow({ unit, section, progress }: {
     let index = 0
 
     while (index < blocks.length) {
-      if (blocks[index]?.type === 'formula') {
+      const block = blocks[index]
+      const derivationId =
+        block.type === 'paragraph' || block.type === 'formula' || block.type === 'note'
+          ? block.derivationId
+          : undefined
+
+      if (derivationId) {
         const run: TextbookReadingBlock[] = []
-        while (index < blocks.length && blocks[index]?.type === 'formula') {
-          run.push(blocks[index])
+        while (index < blocks.length) {
+          const candidate = blocks[index]
+          const candidateId =
+            candidate.type === 'paragraph' || candidate.type === 'formula' || candidate.type === 'note'
+              ? candidate.derivationId
+              : undefined
+          if (candidateId !== derivationId) break
+          run.push(candidate)
           index += 1
         }
 
-        if (run.length > 1) {
-          rendered.push(
-            <div className="reading-derivation-chain" key={`derivation-${run[0].id}`}>
-              {run.map((block) => (
-                <div className="reading-derivation-step" key={block.id}>
-                  {renderBlock(block)}
-                </div>
-              ))}
-            </div>,
-          )
-          continue
-        }
-
-        rendered.push(renderBlock(run[0]))
+        rendered.push(
+          <div className="reading-derivation-chain" data-derivation-id={derivationId} key={`derivation-${derivationId}`}>
+            {run.map((entry) => (
+              <div
+                className={`reading-derivation-step reading-derivation-step--${entry.type}`}
+                key={entry.id}
+              >
+                {renderBlock(entry)}
+              </div>
+            ))}
+          </div>,
+        )
         continue
       }
 
-      rendered.push(renderBlock(blocks[index]))
+      rendered.push(renderBlock(block))
       index += 1
     }
 

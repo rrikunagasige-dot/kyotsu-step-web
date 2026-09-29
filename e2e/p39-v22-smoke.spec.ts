@@ -67,7 +67,7 @@ test('A1 choice panel uses natural wording and does not expose the internal hole
 
 test('first concept-forming figure is not upscaled beyond its intrinsic size', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/physics-a-displacement-velocity'))
-  const image = page.locator('.reading-figure img').first()
+  const image = page.getByTestId('textbook-figure-fig-1-guide').locator('img')
   await expect(image).toBeVisible()
 
   const dimensions = await image.evaluate((element) => {

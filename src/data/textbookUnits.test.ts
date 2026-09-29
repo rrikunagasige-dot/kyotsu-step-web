@@ -75,15 +75,16 @@ describe('Chapter 1 continuous textbook catalog', () => {
     }
   })
 
-  it('uses 17 canonical figures plus three non-leaking learning guides', () => {
+  it('uses 17 canonical figures plus four non-leaking learning guides/graphs', () => {
     const figures = builtInTextbookUnits.flatMap((unit) =>
       unit.sections.flatMap((section) => section.figures),
     )
-    expect(figures).toHaveLength(20)
+    expect(figures).toHaveLength(21)
     expect(new Set(figures.map((figure) => figure.src)).size).toBe(20)
 
     const ids = new Set(figures.map((figure) => figure.id))
     expect(ids).toContain('fig-1-guide')
+    expect(ids).toContain('fig-2-guide')
     expect(ids).toContain('fig-6-guide')
     expect(ids).toContain('fig-d-vt')
   })

@@ -234,11 +234,14 @@ sinθ = vᵧ / v
 
 水平方向の成分は vₓ = 【B2　　　　　】 である。
 
-鉛直方向の成分は vᵧ = 【B3　　　　　】 である。
-
 :::choices id="B2"
 A. v cosθ　　B. v sinθ　　C. v tanθ　　D. v/ cosθ
-B3  A. v sinθ　　B. v cosθ　　C. v tanθ　　D. v/ sinθ
+:::
+
+鉛直方向の成分は vᵧ = 【B3　　　　　】 である。
+
+:::choices id="B3"
+A. v sinθ　　B. v cosθ　　C. v tanθ　　D. v/ sinθ
 :::
 
 :::figure id="fig-6" source="6.png" app_asset="public/assets/physics/textbook/ch01/1b/velocity-components.webp"
@@ -571,11 +574,14 @@ A. 2.0　　B. 1.0　　C. 4.0　　D. 9.8
 
 水平方向の初速度は v₀ₓ = 【F1　　　　　】 である。
 
-鉛直方向の初速度は v₀ᵧ = 【F2　　　　　】 である。
-
 :::choices id="F1"
 A. v₀ cosθ　　B. v₀ sinθ　　C. v₀ tanθ　　D. v₀/ cosθ
-F2  A. v₀ sinθ　　B. v₀ cosθ　　C. v₀ tanθ　　D. v₀/ sinθ
+:::
+
+鉛直方向の初速度は v₀ᵧ = 【F2　　　　　】 である。
+
+:::choices id="F2"
+A. v₀ sinθ　　B. v₀ cosθ　　C. v₀ tanθ　　D. v₀/ sinθ
 :::
 
 水平方向には力が働かないので aₓ=0、したがって vₓ=v₀cosθ は一定で、x=v₀cosθ·t となる。
@@ -870,7 +876,6 @@ B6　2.5
 
 ## 1C 相対速度
 
-C1　相対速度
 
 C2　v⃗_B − v⃗_A
 

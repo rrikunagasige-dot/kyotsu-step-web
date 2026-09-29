@@ -3,9 +3,9 @@ schema: physics-learning-text-v2
 chapter_id: physics-ch01-motion
 chapter_number: 1
 title: 物体の運動
-status: app-preview-v2.2-formula-hole-enhanced
+status: app-repair-v2.3-source-aligned
 checkpoint_date: 2026-09-29
-prototype: formula-derivation-interactive-v2.2
+prototype: continuous-learning-v2.3-audited
 canonical_figures: 17
 hole_occurrences: 65
 unique_hole_ids: 65
@@ -17,7 +17,7 @@ source_policy:
 notes:
   - This source is authoritative for the current Chapter-1 learning-text checkpoint.
   - The DOCX is a review artifact generated from this source.
-  - P33-P38 design gates are PASS. P39 app preview is deployed; user QA is OPEN.
+  - P39 user QA found source/parser/UI contradictions; v2.3 repairs are being applied from the full audit.
 ---
 
 第1章　物体の運動
@@ -78,6 +78,10 @@ F5 最終公式への再構成：途中式から、後で使う形の公式を�
 
 平面上を運動する物体を考えよう。ある時刻 t₁ に、物体が点 P₁ にいるとする。物体が「どこにいるか」を表すため、基準となる原点 O を決め、O から P₁ へ矢印を引く。
 
+:::figure id="fig-1-guide" source="generated-guide" app_asset="public/assets/physics/textbook/ch01/guides/position-displacement-guide.svg"
+図　原点と2つの位置を結ぶ矢印
+:::
+
 この矢印は、原点から見た物体の 【A1　　　　　】 を表している。
 
 :::choices id="A1"
@@ -86,9 +90,6 @@ A. 位置　　B. 速さ　　C. 経過時間　　D. 力
 
 矢印の始点は基準となる原点 O、終点は物体のいる点 P₁ である。この矢印を見ることで、物体が原点からどちらの方向に、どれくらい離れた場所にいるかを一度に表せる。このように、原点から物体の位置へ向かうベクトルを位置ベクトルという。時刻 t₁ における位置ベクトルを r⃗₁ と書く。
 
-:::figure id="fig-1" source="1.png" app_asset="public/assets/physics/textbook/ch01/1a/position-vector-displacement.webp"
-図1　位置ベクトル r⃗₁, r⃗₂ と変位 Δr⃗
-:::
 
 しばらくして、時刻 t₂ に物体が点 P₂ へ移動したなら、その位置ベクトルを r⃗₂ と書く。r⃗₁ と r⃗₂ は、それぞれの時刻に物体が「どこにいるか」を表しているのであって、まだ「どれだけ動いたか」を表しているわけではない。
 
@@ -109,10 +110,14 @@ A. 位置そのもの　　B. 位置の変化　　C. 経過時間　　D. 速�
 r⃗₁ + 【A3　　　　　】 = r⃗₂
 
 :::choices id="A3"
-A. Δr⃗　　B. r⃗₁　　C. r⃗₂　　D. −r⃗₂
+A. r⃗₁　　B. r⃗₂　　C. Δr⃗　　D. −r⃗₂
 :::
 
-r⃗₁ + Δr⃗ = r⃗₂
+:::figure id="fig-1" source="1.png" app_asset="public/assets/physics/textbook/ch01/1a/position-vector-displacement.webp"
+図1　位置ベクトル r⃗₁, r⃗₂ と変位 Δr⃗
+:::
+
+
 
 となる。これは「最初の位置 + 位置の変化 = 後の位置」という意味である。変位だけを左辺に残せば、
 
@@ -127,7 +132,7 @@ r⃗₁ + Δr⃗ = r⃗₂
 したがって、Δx = 【A4　　　　　】 である。
 
 :::choices id="A4"
-A. x₂−x₁　　B. x₁−x₂　　C. x₁+x₂　　D. x₂/x₁
+A. x₁−x₂　　B. x₁+x₂　　C. x₂/x₁　　D. x₂−x₁
 :::
 
 Δr⃗ = (x₂−x₁,  y₂−y₁)
@@ -153,7 +158,7 @@ A. t₂−t₁　　B. t₁−t₂　　C. t₁+t₂　　D. t₂/t₁
 v̄⃗ = 【A6　　　　　】
 
 :::choices id="A6"
-A. Δr⃗/Δt　　B. Δt/Δr⃗　　C. r⃗₁+r⃗₂　　D. |Δr⃗|
+A. Δt/Δr⃗　　B. Δr⃗/Δt　　C. r⃗₁+r⃗₂　　D. |Δr⃗|
 :::
 
 v̄⃗ = Δr⃗/Δt = (r⃗₂−r⃗₁)/(t₂−t₁)
@@ -171,7 +176,7 @@ v̄⃗ = Δr⃗/Δt = (r⃗₂−r⃗₁)/(t₂−t₁)
 P₂ を P₁ に近づけるほど、P₁ と P₂ を結ぶ方向は、P₁ における軌跡の 【A7　　　　　】 へ近づく。
 
 :::choices id="A7"
-A. 接線方向　　B. 法線方向　　C. 鉛直方向　　D. 原点方向
+A. 法線方向　　B. 鉛直方向　　C. 接線方向　　D. 原点方向
 :::
 
 同時に時間間隔 Δt も小さくなる。Δt→0 とした極限で得られる速度を瞬間の速度という。
@@ -191,7 +196,7 @@ v⃗ = lim(Δt→0)  Δr⃗/Δt
 向きまで含んでいる量は 【A8　　　　　】 である。
 
 :::choices id="A8"
-A. 速度　　B. 速さ　　C. 時間　　D. 道のり
+A. 速さ　　B. 時間　　C. 道のり　　D. 速度
 :::
 
 ## 例題：変位から平均速度へ
@@ -211,34 +216,40 @@ A. 変位　　B. 速さ　　C. 加速度　　D. 力
 したがって、平均速度は v̄⃗ = 【A10　　　　　】 m/s となる。
 
 :::choices id="A10"
-A. (2.0, 4/3)　　B. (6.0,4.0)　　C. (3.0,2.0)　　D. (2.0,1.0)
+A. (6.0,4.0)　　B. (2.0, 4/3)　　C. (3.0,2.0)　　D. (2.0,1.0)
 :::
 
 ここでも、位置 → 変位 → 速度という順序で量がつながっている。次は、速度が複数あるときにどう組み合わせるかを考える。
 
 # 1B　速度の合成と分解
 
-1Aでは、速度が大きさと向きをもつベクトルであることを学んだ。速度がベクトルなら、複数の運動が同時に起こる場合には、それぞれの速度を矢印として組み合わせて考えられる。
+ここまで、速度が大きさと向きをもつベクトルであることを学んだ。速度がベクトルなら、複数の運動が同時に起こる場合には、それぞれの速度を矢印として組み合わせて考えられる。
 
 ## 2つの運動を一つの速度として見る
 
 川を横切る船を考えよう。船は水に対して北向きに進んでいるが、川の水そのものは東向きに流れている。岸から見ると、船は北へ進みながら同時に東へ流される。
 
-:::figure id="fig-5" source="5.png" app_asset="public/assets/physics/textbook/ch01/1b/velocity-composition.webp"
-図5　川を横切る船：水に対する速度・川の流れ・地面に対する速度
-:::
 
 地面に対する船の速度は、2つの速度ベクトルの 【B1　　　　　】 で表される。
 
 :::choices id="B1"
-A. 和　　B. 積　　C. 商　　D. 大きい方だけ
+A. 積　　B. 商　　C. 和　　D. 大きい方だけ
 :::
+
+:::figure id="fig-5" source="5.png" app_asset="public/assets/physics/textbook/ch01/1b/velocity-composition.webp"
+図5　川を横切る船：水に対する速度・川の流れ・地面に対する速度
+:::
+
 
 v⃗ = v⃗₁ + v⃗₂
 
 このように複数の速度をベクトルとして足し合わせ、一つの速度を求めることを速度の合成という。ベクトルの和は、一つ目の矢印の終点に二つ目の矢印の始点を置き、最初の始点から最後の終点までを結べばよい。
 
 ## 一つの速度を二方向に分ける
+
+:::figure id="fig-6-guide" source="generated-guide" app_asset="public/assets/physics/textbook/ch01/guides/velocity-components-guide.svg"
+図　速度ベクトルを水平方向・鉛直方向へ分けて見る
+:::
 
 反対に、一つの速度ベクトルを水平方向と鉛直方向に分けることもできる。速度の大きさを v、x軸となす角を θ とする。図6の直角三角形を見ると、水平方向の成分 vₓ は角 θ の隣辺、鉛直方向の成分 vᵧ は対辺、元の速度 v は斜辺に対応する。したがって、三角比の定義から、
 
@@ -251,7 +262,7 @@ sinθ = vᵧ / v
 水平方向の成分は vₓ = 【B2　　　　　】 である。
 
 :::choices id="B2"
-A. v cosθ　　B. v sinθ　　C. v tanθ　　D. v/ cosθ
+A. v sinθ　　B. v tanθ　　C. v/ cosθ　　D. v cosθ
 :::
 
 鉛直方向の成分は vᵧ = 【B3　　　　　】 である。
@@ -264,12 +275,14 @@ A. v sinθ　　B. v cosθ　　C. v tanθ　　D. v/ sinθ
 図6　速度ベクトルの x・y 成分
 :::
 
+
+
 逆に、成分 vₓ と vᵧ がわかっていれば、元の速度の大きさは三平方の関係から求められる。
 
 v = 【B4　　　　　】
 
 :::choices id="B4"
-A. √(vₓ²+vᵧ²)　　B. vₓ+vᵧ　　C. vₓ−vᵧ　　D. vₓvᵧ
+A. vₓ+vᵧ　　B. √(vₓ²+vᵧ²)　　C. vₓ−vᵧ　　D. vₓvᵧ
 :::
 
 ここで vₓ、vᵧ は単なる大きさではない。右向きを正、左向きを負、上向きを正、下向きを負というように、向きも符号に含めて考える。
@@ -281,7 +294,7 @@ A. √(vₓ²+vᵧ²)　　B. vₓ+vᵧ　　C. vₓ−vᵧ　　D. vₓvᵧ
 したがって、a⃗ − b⃗ = a⃗ + 【B5　　　　　】 と考えられる。
 
 :::choices id="B5"
-A. (−b⃗)　　B. b⃗　　C. (−a⃗)　　D. 0
+A. b⃗　　B. (−a⃗)　　C. (−b⃗)　　D. 0
 :::
 
 ## 例題：川を横切る船
@@ -291,7 +304,7 @@ A. (−b⃗)　　B. b⃗　　C. (−a⃗)　　D. 0
 したがって速さは 【B6　　　　　】 m/s となる。
 
 :::choices id="B6"
-A. 2.5　　B. 3.5　　C. 1.0　　D. 4.0
+A. 3.5　　B. 1.0　　C. 4.0　　D. 2.5
 :::
 
 速度を合成する場合も分解する場合も、重要なのは「どの方向の運動を一緒に見ているのか」を図で確認することである。
@@ -323,7 +336,7 @@ AとBが同じ向きにまったく同じ速度で走っていれば、差は0�
 したがってAから見るとBは 【C3　　　　　】 ように見える。
 
 :::choices id="C3"
-A. 止まっている　　B. 2倍速い　　C. 逆向きに動く　　D. 鉛直に動く
+A. 2倍速い　　B. 止まっている　　C. 逆向きに動く　　D. 鉛直に動く
 :::
 
 ## 平面内でも同じ
@@ -339,7 +352,7 @@ v⃗_{B/A} = (v_Bx−v_Ax,  v_By−v_Ay)
 自転車から見た雨の速度は 【C4　　　　　】 m/s である。
 
 :::choices id="C4"
-A. (−10,−10)　　B. (10,−10)　　C. (−10,10)　　D. (0,−20)
+A. (10,−10)　　B. (−10,10)　　C. (−10,−10)　　D. (0,−20)
 :::
 
 :::figure id="fig-8" source="8.png" app_asset="public/assets/physics/textbook/ch01/1c/relative-rain-bicycle.webp"
@@ -351,7 +364,7 @@ A. (−10,−10)　　B. (10,−10)　　C. (−10,10)　　D. (0,−20)
 相対速度を考えるとき、最初に明確にすべきなのは「誰を 【C5　　　　　】 にして見るか」である。
 
 :::choices id="C5"
-A. 基準　　B. 加速度　　C. 原点の座標だけ　　D. 力
+A. 加速度　　B. 原点の座標だけ　　C. 力　　D. 基準
 :::
 
 # 1D　加速度
@@ -377,7 +390,7 @@ A. v⃗₂−v⃗₁　　B. v⃗₁−v⃗₂　　C. v⃗₁+v⃗₂　　D. |
 平均加速度 ā⃗ = 【D2　　　　　】 である。
 
 :::choices id="D2"
-A. Δv⃗/Δt　　B. Δt/Δv⃗　　C. v⃗₁+v⃗₂　　D. Δr⃗/Δt
+A. Δt/Δv⃗　　B. Δv⃗/Δt　　C. v⃗₁+v⃗₂　　D. Δr⃗/Δt
 :::
 
 加速度の向きは現在の速度の向きではなく、速度が変化した向き、すなわち Δv⃗ の向きである。時間間隔を限りなく小さくすれば、瞬間の加速度 a⃗ を考えられる。
@@ -388,12 +401,16 @@ A. Δv⃗/Δt　　B. Δt/Δv⃗　　C. v⃗₁+v⃗₂　　D. Δr⃗/Δt
 
 ## v-tグラフで加速度と変位を見る
 
+:::figure id="fig-d-vt" source="generated-graph" app_asset="public/assets/velocity-graph.svg"
+図　速度と時間の関係を表す v-t グラフ
+:::
+
 速度 v を縦軸、時刻 t を横軸に取る。ある時間 Δt の間に速度が Δv だけ変化したなら、グラフの傾きは Δv/Δt である。
 
 したがって、v-tグラフの傾きは 【D3　　　　　】 を表す。
 
 :::choices id="D3"
-A. 加速度　　B. 変位　　C. 位置　　D. 力そのもの
+A. 変位　　B. 位置　　C. 加速度　　D. 力そのもの
 :::
 
 また、速度が一定なら時間 Δt の間の変位は vΔt であり、これはv-tグラフでは長方形の面積に対応する。速度が変化する場合も同じ考え方が使える。
@@ -401,7 +418,7 @@ A. 加速度　　B. 変位　　C. 位置　　D. 力そのもの
 したがって、v-tグラフと時間軸で囲まれた面積は 【D4　　　　　】 を表す。
 
 :::choices id="D4"
-A. 変位　　B. 加速度　　C. 力　　D. 質量
+A. 加速度　　B. 力　　C. 質量　　D. 変位
 :::
 
 ## 加速度が一定の運動
@@ -421,17 +438,16 @@ v = v₀ + at
 x = v₀t + 【D4a　　　　　】
 
 :::choices id="D4a"
-A. (1/2)(v−v₀)t　　B. (v−v₀)t　　C. (1/2)at²　　D. vt
+A. (v−v₀)t　　B. (1/2)(v−v₀)t　　C. (1/2)at²　　D. vt
 :::
 
-x = v₀t + (1/2)(v−v₀)t
 
 ここで、さきほど得た v−v₀=at を代入する。
 
 x = v₀t + (1/2)(【D6　　　　　】)t
 
 :::choices id="D6"
-A. at　　B. v₀t　　C. a/t　　D. v+v₀
+A. v₀t　　B. a/t　　C. at　　D. v+v₀
 :::
 
 x = v₀t + (1/2)at²
@@ -445,7 +461,7 @@ x = [(v₀+v)/2] t
 t = 【D7　　　　　】
 
 :::choices id="D7"
-A. (v−v₀)/a　　B. a/(v−v₀)　　C. (v+v₀)/a　　D. v/a
+A. a/(v−v₀)　　B. (v+v₀)/a　　C. v/a　　D. (v−v₀)/a
 :::
 
 これを x=[(v₀+v)/2]t に代入すると、
@@ -460,17 +476,15 @@ x = 【D7b　　　　　】
 A. (v²−v₀²)/(2a)　　B. (v²+v₀²)/(2a)　　C. (v−v₀)/(2a)　　D. (v²−v₀²)/a
 :::
 
-x = (v²−v₀²)/(2a)
 
 両辺に 2a を掛けて、時間を含まない形にすると、
 
 v² − v₀² = 【D7c　　　　　】
 
 :::choices id="D7c"
-A. 2ax　　B. ax/2　　C. 2a/x　　D. 2x/a
+A. ax/2　　B. 2ax　　C. 2a/x　　D. 2x/a
 :::
 
-v² − v₀² = 2ax
 
 ここで使ったのは、新しい公式を暗記する操作ではなく、「平均速度で変位を表し、v−v₀=at から時間を消去する」という流れである。これら3式は、一定加速度で運動する同じ物体を違う条件から見た表現である。
 
@@ -481,7 +495,7 @@ v² − v₀² = 2ax
 したがって、合力が0なら加速度は 【D8　　　　　】 となり、速度は変化しない。
 
 :::choices id="D8"
-A. 0　　B. g　　C. v　　D. 無限大
+A. g　　B. v　　C. 0　　D. 無限大
 :::
 
 ## 例題：等加速度運動
@@ -491,7 +505,7 @@ A. 0　　B. g　　C. v　　D. 無限大
 このとき変位 x は 【D9　　　　　】 m である。
 
 :::choices id="D9"
-A. 9.0　　B. 6.0　　C. 18　　D. 3.0
+A. 6.0　　B. 18　　C. 3.0　　D. 9.0
 :::
 
 # 1E　水平投射
@@ -519,7 +533,7 @@ A. 0　　B. g　　C. −g　　D. v₀
 したがって水平方向の位置は x = 【E2　　　　　】 となる。
 
 :::choices id="E2"
-A. v₀t　　B. (1/2)gt²　　C. gt　　D. v₀/t
+A. (1/2)gt²　　B. v₀t　　C. gt　　D. v₀/t
 :::
 
 ## 鉛直方向は自由落下
@@ -529,10 +543,10 @@ A. v₀t　　B. (1/2)gt²　　C. gt　　D. v₀/t
 したがって鉛直方向の位置は y = 【E3　　　　　】 となる。
 
 :::choices id="E3"
-A. (1/2)gt²　　B. v₀t　　C. gt　　D. g/t
+A. v₀t　　B. gt　　C. (1/2)gt²　　D. g/t
 :::
 
-同じく鉛直速度は vᵧ=gt である。さらに時間を使わない関係も、1Dで導いた
+同じく鉛直速度は vᵧ=gt である。さらに時間を使わない関係も、前に導いた等加速度運動の式
 
 v² − v₀² = 2ax
 
@@ -541,10 +555,9 @@ v² − v₀² = 2ax
 vᵧ² − 0² = 【E3a　　　　　】
 
 :::choices id="E3a"
-A. 2gy　　B. −2gy　　C. gt²　　D. 2v₀y
+A. −2gy　　B. gt²　　C. 2v₀y　　D. 2gy
 :::
 
-vᵧ² − 0² = 2gy
 
 したがって、
 
@@ -575,7 +588,7 @@ A. √(v₀²+g²t²)　　B. v₀+gt　　C. v₀gt　　D. √(v₀²−g²t²
 t = 【E5a　　　　　】
 
 :::choices id="E5a"
-A. x/v₀　　B. v₀/x　　C. xv₀　　D. x/g
+A. v₀/x　　B. x/v₀　　C. xv₀　　D. x/g
 :::
 
 これを鉛直方向の式 y=(1/2)gt² に代入する。
@@ -587,7 +600,7 @@ y = (1/2)g(x/v₀)²
 y = 【E5b　　　　　】x²
 
 :::choices id="E5b"
-A. g/(2v₀²)　　B. g/v₀²　　C. 2g/v₀²　　D. v₀²/(2g)
+A. g/v₀²　　B. 2g/v₀²　　C. g/(2v₀²)　　D. v₀²/(2g)
 :::
 
 y = [g/(2v₀²)]x²
@@ -595,7 +608,7 @@ y = [g/(2v₀²)]x²
 y が x² に比例するので、水平投射の軌跡は 【E5　　　　　】 になる。
 
 :::choices id="E5"
-A. 放物線　　B. 円　　C. 直線　　D. 双曲線
+A. 円　　B. 直線　　C. 双曲線　　D. 放物線
 :::
 
 ここでは「水平投射だから放物線」と覚えたのではなく、x=v₀t と y=(1/2)gt² から時間 t を消去した結果として、y が x² に比例することを示した。
@@ -627,13 +640,13 @@ A. 2.0　　B. 1.0　　C. 4.0　　D. 9.8
 水平方向の初速度は v₀ₓ = 【F1　　　　　】 である。
 
 :::choices id="F1"
-A. v₀ cosθ　　B. v₀ sinθ　　C. v₀ tanθ　　D. v₀/ cosθ
+A. v₀ sinθ　　B. v₀ cosθ　　C. v₀ tanθ　　D. v₀/ cosθ
 :::
 
 鉛直方向の初速度は v₀ᵧ = 【F2　　　　　】 である。
 
 :::choices id="F2"
-A. v₀ sinθ　　B. v₀ cosθ　　C. v₀ tanθ　　D. v₀/ sinθ
+A. v₀ cosθ　　B. v₀ tanθ　　C. v₀ sinθ　　D. v₀/ sinθ
 :::
 
 水平方向には力が働かないので aₓ=0、したがって vₓ=v₀cosθ は一定で、x=v₀cosθ·t となる。
@@ -645,12 +658,12 @@ A. v₀ sinθ　　B. v₀ cosθ　　C. v₀ tanθ　　D. v₀/ sinθ
 vᵧ = 【F3　　　　　】
 
 :::choices id="F3"
-A. v₀sinθ−gt　　B. v₀sinθ+gt　　C. v₀cosθ−gt　　D. gt
+A. v₀sinθ+gt　　B. v₀cosθ−gt　　C. gt　　D. v₀sinθ−gt
 :::
 
 y = v₀sinθ·t − (1/2)gt²
 
-また、時間を使わない形も1Dの
+また、時間を使わない形も、前に導いた等加速度運動の
 
 v² − v₀² = 2ax
 
@@ -666,9 +679,8 @@ vᵧ² − (v₀sinθ)² = 【F3a　　　　　】
 A. −2gy　　B. 2gy　　C. −gy/2　　D. gt²
 :::
 
-vᵧ² − (v₀sinθ)² = −2gy
 
-となる。ここでも新しい公式を別に覚えたのではなく、1Dの等加速度運動の式を鉛直方向へ適用しただけである。
+となる。ここでも新しい公式を別に覚えたのではなく、前に導いた等加速度運動の式を鉛直方向へ適用しただけである。
 
 ## 最高点では何が起こるか
 
@@ -677,7 +689,7 @@ vᵧ² − (v₀sinθ)² = −2gy
 したがって最高点では vᵧ = 【F4　　　　　】 である。
 
 :::choices id="F4"
-A. 0　　B. g　　C. v₀　　D. v₀cosθ
+A. g　　B. 0　　C. v₀　　D. v₀cosθ
 :::
 
 :::figure id="fig-14" source="14.png" app_asset="public/assets/physics/textbook/ch01/1f/oblique-projectile-components.webp"
@@ -693,7 +705,7 @@ gt_H = v₀sinθ
 t_H = 【F5　　　　　】
 
 :::choices id="F5"
-A. v₀sinθ/g　　B. v₀cosθ/g　　C. g/(v₀sinθ)　　D. 2v₀sinθ/g
+A. v₀cosθ/g　　B. g/(v₀sinθ)　　C. v₀sinθ/g　　D. 2v₀sinθ/g
 :::
 
 次に最高点の高さ H を求める。鉛直位置の式 y=v₀sinθ·t−(1/2)gt² に t=t_H を代入する。
@@ -707,10 +719,9 @@ H = v₀²sin²θ/g − v₀²sin²θ/(2g)
 H = 【F5a　　　　　】
 
 :::choices id="F5a"
-A. v₀²sin²θ/(2g)　　B. v₀²sin²θ/g　　C. v₀sinθ/(2g)　　D. 2v₀²sin²θ/g
+A. v₀²sin²θ/g　　B. v₀sinθ/(2g)　　C. 2v₀²sin²θ/g　　D. v₀²sin²θ/(2g)
 :::
 
-H = v₀²sin²θ/(2g)
 
 最高点で0になるのは鉛直成分だけで、水平方向の速度 v₀cosθ は残っているため、物体そのものが止まるわけではない。
 
@@ -733,7 +744,7 @@ y = v₀sinθ·[x/(v₀cosθ)] − (1/2)g[x/(v₀cosθ)]²
 y = x tanθ − 【F6b　　　　　】x²
 
 :::choices id="F6b"
-A. g/(2v₀²cos²θ)　　B. g/(2v₀²sin²θ)　　C. 2g/(v₀²cos²θ)　　D. v₀²cos²θ/(2g)
+A. g/(2v₀²sin²θ)　　B. g/(2v₀²cos²θ)　　C. 2g/(v₀²cos²θ)　　D. v₀²cos²θ/(2g)
 :::
 
 y = x tanθ − [g/(2v₀²cos²θ)]x²
@@ -741,7 +752,7 @@ y = x tanθ − [g/(2v₀²cos²θ)]x²
 この式は x の2次式なので、斜方投射の軌跡も 【F6　　　　　】 である。
 
 :::choices id="F6"
-A. 放物線　　B. 直線　　C. 円　　D. 楕円
+A. 直線　　B. 円　　C. 放物線　　D. 楕円
 :::
 
 次に、投げ出した位置と同じ高さへ戻るまでの時間 T を求める。このとき y=0 なので、
@@ -757,7 +768,7 @@ v₀sinθ − (1/2)gT = 0
 したがって飛行時間 T = 【F7　　　　　】
 
 :::choices id="F7"
-A. 2v₀sinθ/g　　B. v₀sinθ/g　　C. 2v₀cosθ/g　　D. g/(2v₀sinθ)
+A. v₀sinθ/g　　B. 2v₀cosθ/g　　C. g/(2v₀sinθ)　　D. 2v₀sinθ/g
 :::
 
 ## 水平到達距離
@@ -783,7 +794,7 @@ D = [2v₀²sinθ cosθ]/g
 D = 【F8　　　　　】
 
 :::choices id="F8"
-A. (v₀²/g)sin2θ　　B. (v₀²/g)cos2θ　　C. v₀g sinθ　　D. 2v₀/g
+A. (v₀²/g)cos2θ　　B. (v₀²/g)sin2θ　　C. v₀g sinθ　　D. 2v₀/g
 :::
 
 同じ初速度 v₀ なら、D は sin2θ が最大のとき最大になる。sin2θ の最大値は1なので、2θ=90°、したがって、
@@ -791,7 +802,7 @@ A. (v₀²/g)sin2θ　　B. (v₀²/g)cos2θ　　C. v₀g sinθ　　D. 2v₀/g
 最大飛距離を与える角度は θ = 【F9　　　　　】 である。
 
 :::choices id="F9"
-A. 45°　　B. 30°　　C. 60°　　D. 90°
+A. 30°　　B. 60°　　C. 45°　　D. 90°
 :::
 
 45°を単独で暗記するのではなく、水平成分と鉛直成分の両方が飛距離に関わり、その結果として sin2θ が現れることを理解する。
@@ -807,12 +818,12 @@ A. 45°　　B. 30°　　C. 60°　　D. 90°
 したがって、重力だけが働くとき a⃗ = 【G1　　　　　】 である。
 
 :::choices id="G1"
-A. g⃗　　B. m g⃗　　C. 0　　D. v⃗
+A. m g⃗　　B. 0　　C. v⃗　　D. g⃗
 :::
 
 つまり空気抵抗を無視できるなら、物体の質量に関係なく同じ重力加速度で落下する。
 
-:::figure id="fig-15" source="15.png" app_asset="public/assets/physics/textbook/ch01/1g/gravity-vs-air-resistance.webp"
+:::figure id="fig-15" source="generated-guide" app_asset="public/assets/physics/textbook/ch01/guides/gravity-air-resistance-guide.svg"
 図15　重力だけの場合と、空気抵抗を受ける場合の力
 :::
 
@@ -833,7 +844,7 @@ A. kv　　B. k/v　　C. mv　　D. mg
 したがって運動方程式は ma = 【G3　　　　　】 となる。
 
 :::choices id="G3"
-A. mg−kv　　B. mg+kv　　C. kv−mg　　D. mg
+A. mg+kv　　B. mg−kv　　C. kv−mg　　D. mg
 :::
 
 両辺を質量 m で割ると、
@@ -845,17 +856,16 @@ a = (mg−kv)/m
 a = g − 【G3a　　　　　】
 
 :::choices id="G3a"
-A. (k/m)v　　B. (m/k)v　　C. kv　　D. k/(mv)
+A. (m/k)v　　B. kv　　C. (k/m)v　　D. k/(mv)
 :::
 
-a = g − (k/m)v
 
 この式を見ると、速さ v が増えるほど空気抵抗が大きくなり、下向きの合力は小さくなることがわかる。物体はまだ速くなっているが、その「速くなり方」はだんだん弱くなる。
 
 つまり落下中、速さが増えるにつれて加速度は 【G4　　　　　】。
 
 :::choices id="G4"
-A. 小さくなる　　B. 大きくなる　　C. 必ず0のまま　　D. 向きだけ反転し続ける
+A. 大きくなる　　B. 必ず0のまま　　C. 向きだけ反転し続ける　　D. 小さくなる
 :::
 
 :::figure id="fig-16" source="16.png" app_asset="public/assets/physics/textbook/ch01/1g/drag-force-stages.webp"
@@ -881,7 +891,7 @@ A. 加速度　　B. 変位　　C. 位置　　D. 質量
 したがって終端速度に達したとき、加速度 a は 【G6　　　　　】 となる。
 
 :::choices id="G6"
-A. 0　　B. g　　C. −g　　D. v_t
+A. g　　B. 0　　C. −g　　D. v_t
 :::
 
 終端速度を v_t とする。運動方程式 ma=mg−kv に a=0 を入れる。速度も v=v_t と置けば、
@@ -889,17 +899,16 @@ A. 0　　B. g　　C. −g　　D. v_t
 0 = mg − 【G6a　　　　　】
 
 :::choices id="G6a"
-A. kv_t　　B. mgv_t　　C. k/v_t　　D. mv_t
+A. mgv_t　　B. k/v_t　　C. kv_t　　D. mv_t
 :::
 
-0 = mg − kv_t
 
 kv_t = mg
 
 したがって v_t = 【G7　　　　　】
 
 :::choices id="G7"
-A. mg/k　　B. k/(mg)　　C. m/(kg)　　D. g/(mk)
+A. k/(mg)　　B. m/(kg)　　C. g/(mk)　　D. mg/k
 :::
 
 ここでも式を暗記したのではなく、「終端速度では加速度が0」という物理条件を運動方程式へ入れて求めている。
@@ -916,7 +925,7 @@ A. 49　　B. 4.9　　C. 9.8　　D. 0.49
 
 重要なのは49という数値より、速さが増える → 抵抗が増える → 合力が減る → 加速度が減る → 重力と抵抗がつり合う → 終端速度になる、という因果関係である。
 
-# 第1章全体を一つの流れとして見る
+## 第1章全体を一つの流れとして見る
 
 第1章で学んだ内容は別々の公式の集まりではない。まず、物体がどこにいるかを位置ベクトル r⃗ で表す。2つの位置を比べると位置の変化 Δr⃗ が生まれ、その変位を時間で割ると速度 v⃗ が生まれる。さらに速度の変化を時間で割ると加速度 a⃗ が生まれる。
 
@@ -930,71 +939,68 @@ A. 49　　B. 4.9　　C. 9.8　　D. 0.49
 
 # 解答
 
-本文中の穴の正答。学習時には本文から分離して最後に確認する。
-
-## 1A 変位と速度
-
 A1　位置
-
 A2　位置の変化
-
 A3　Δr⃗
-
 A4　x₂−x₁
-
 A5　t₂−t₁
-
 A6　Δr⃗/Δt
-
 A7　接線方向
-
 A8　速度
-
 A9　変位
-
 A10　(2.0, 4/3)
-
-## 1B 速度の合成と分解
-
 B1　和
-
 B2　v cosθ
-
 B3　v sinθ
-
 B4　√(vₓ²+vᵧ²)
-
 B5　(−b⃗)
-
 B6　2.5
-
-## 1C 相対速度
-
-
 C2　v⃗_B − v⃗_A
-
 C3　止まっている
-
 C4　(−10,−10)
-
 C5　基準
-
-## 1D 加速度
-
 D1　v⃗₂−v⃗₁
-
 D2　Δv⃗/Δt
-
 D3　加速度
-
 D4　変位
-
-D4a　(1/2)(v−v₀)t
-
 D5　at
-
+D4a　(1/2)(v−v₀)t
 D6　at
-
 D7　(v−v₀)/a
-
 D7b　(v²−v₀²)/(2a)
+D7c　2ax
+D8　0
+D9　9.0
+E1　0
+E2　v₀t
+E3　(1/2)gt²
+E3a　2gy
+E4　√(v₀²+g²t²)
+E5a　x/v₀
+E5b　g/(2v₀²)
+E5　放物線
+E6　2.0
+F1　v₀ cosθ
+F2　v₀ sinθ
+F3　v₀sinθ−gt
+F3a　−2gy
+F4　0
+F5　v₀sinθ/g
+F5a　v₀²sin²θ/(2g)
+F6a　x/(v₀cosθ)
+F6b　g/(2v₀²cos²θ)
+F6　放物線
+F7　2v₀sinθ/g
+F8a　2v₀sinθ/g
+F8　(v₀²/g)sin2θ
+F9　45°
+G1　g⃗
+G2　kv
+G3　mg−kv
+G3a　(k/m)v
+G4　小さくなる
+G5　加速度
+G6　0
+G6a　kv_t
+G7　mg/k
+G8　49

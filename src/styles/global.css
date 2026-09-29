@@ -581,3 +581,22 @@ button.physics-topic-card:not(:disabled):hover {
   min-width: 1.8rem;
   color: var(--color-error);
 }
+
+.reading-choice-hint {
+  display: grid;
+  gap: .18rem;
+  padding: .55rem .65rem;
+  border-left: 3px solid var(--color-primary);
+  background: #f6f3e9;
+  font-size: .84rem;
+  line-height: 1.55;
+}
+
+.reading-choice-hint strong {
+  font-size: .72rem;
+  letter-spacing: .04em;
+}
+
+.reading-choice-hint span {
+  color: var(--color-text);
+}

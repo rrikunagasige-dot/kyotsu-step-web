@@ -1202,3 +1202,47 @@ C1 terminology-first hole; missing explicit 1B component projection parent relat
 
 No application code changed.
 
+---
+
+## 2026-09-29 — Chapter 1 v2.1 / P33 source-alignment closure
+
+P33 identified five source-level mismatches in the 55-hole v2 checkpoint. v2.1 fixes only those mismatches and preserves the approved prose / figure / interaction style.
+
+Changes:
+1. C1 first-exposure terminology hole removed; `相対速度` is taught in prose.
+2. B2/B3 now show the trigonometric parent ratios before component formulas.
+3. 1E explicitly derives `vᵧ²=2gy` from the 1D parent equation.
+4. 1F explicitly derives the time-free vertical relation from the same parent equation.
+5. 1G defines the linear-drag approximation, `k>0`, and the meaning of k.
+
+No replacement hole was added for C1. Current count: 54 holes.
+
+Layout QA:
+- B2/B3 and F1/F2 choices separated,
+- choice boxes prevented from splitting across pages,
+- hole prompt kept with following choices when possible,
+- Markdown emphasis renders correctly,
+- stale C1 answer removed,
+- 26 pages rendered and inspected,
+- final two micro-edits isolated by image diff and visually rechecked.
+
+Final source:
+`docs/physics-ch01/prototypes/CH1_LEARNING_TEXT_V2_1.md`
+
+Final review Word:
+`/塾/kyotsu-step-web/prototypes/第1章_物体の運動_文章内穴埋め_数式導出強化版_v2.1_20260929.docx`
+Library id: `libfile_646f9a1da760819180156735b3bb3383`
+SHA256: `69d22ab962f5fb25f6af9e78f3fe7ace82381d5c253a9f2812a85846510cf573`
+
+P33 re-audit:
+- G52 PASS
+- G52a PASS
+- G52b PASS
+- G53 PASS
+- G54 PASS
+- G55 PASS
+
+Status: **P33 PASS / P34 NEXT**.
+
+No application code changed.
+

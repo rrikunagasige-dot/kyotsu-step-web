@@ -1426,7 +1426,7 @@ Implemented:
 - v2.2 static content gate.
 
 Deployment verification:
-- commit `6a8cd2985f6279f96b31debb91a288dac68965c4`
+- deployed code includes parser fix `e8b4af262913b082b01a6afe8697b8f75c39f8d5`
 - Pages workflow run 93
 - typecheck PASS
 - production build PASS

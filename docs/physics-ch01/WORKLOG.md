@@ -1097,3 +1097,80 @@ Never start by searching Mac/Windows/Desktop for these ZIPs.
 Search the persistent Library path first and verify size/SHA/testzip before use.
 
 Status: **P32 PASS**
+
+---
+
+## 2026-09-29 — Chapter 1 learning-text v2 checkpoint (formula derivation strengthened)
+
+### Why this checkpoint was needed
+
+The first reconstructed Chapter-1 Word had strong natural prose and acceptable hole density, but later review identified a mobile-learning gap: some formulas, especially in 1D–1G, appeared with too few visible derivation steps.
+
+The target learner may use only a phone and may not have paper or a pen. Therefore the teaching text must carry the derivation itself.
+
+### Rule change
+
+Added a dedicated formula-derivation rule:
+
+`docs/physics-ch01/FORMULA_DERIVATION_RULES.md`
+
+Core invariant:
+
+    nontrivial final formula
+    → parent equation
+    → physical condition / substitution
+    → substitution
+    → visible intermediate steps
+    → final formula
+    → physical interpretation
+
+Hole placement is limited to six justified types:
+H1 meaning, H2 relation, H3 representation conversion, H4 strategy, H5 boundary condition, H6 meaningful mathematical operation.
+
+The objective is more visible derivation without turning every algebra line into a question.
+
+### Current authoritative source
+
+Added:
+
+`docs/physics-ch01/prototypes/CH1_LEARNING_TEXT_V2.md`
+
+Counts:
+- 1A–1G
+- 17 canonical figures
+- 55 unique inline holes
+
+The source was extracted from the reviewed formula-derivation-strengthened Word and records figure/source mapping, choices, answers, and prose.
+
+### Binary review artifact
+
+Persisted in ChatGPT Library:
+
+`/塾/kyotsu-step-web/prototypes/第1章_物体の運動_文章内穴埋め_数式導出強化版_20260929.docx`
+
+Identity:
+- library_file_id: `libfile_4b3267e913d48191a43e666da1a57329`
+- bytes: 12,133,046
+- SHA256: `bfd461cbfbe1710a5bf15f9ecf16572e10824e794157c650b0ebf536f223fbe4`
+- reviewed render: 27 pages
+
+### Generator
+
+Replaced the old hard-coded Chapter-1 generator with a source-driven generator:
+
+`scripts/physics-textbook/build_ch1_learning_docx.py`
+
+Validation before commit:
+- source parser: 55 unique holes
+- figures inserted: 17
+- regenerated DOCX rendered successfully
+- all pages visually reviewed via contact sheet
+
+### Status
+
+This is a **checkpoint / P33 input**, not a P33–P38 PASS.
+No application code was changed.
+
+Next work:
+extract the representation / prerequisite / knowledge / formula dependency map from the current v2 source and run the P33 gates before any P34 app comparison.
+

@@ -1,7 +1,7 @@
-import katex from 'katex'
-import { useMemo, type MouseEvent } from 'react'
+import { InlineMath } from 'react-katex'
 import type { TextbookUnitProgress } from '../../domain/textbook'
-import { buildTextbookFormulaLatex } from '../../domain/textbookFormula'
+import { isTextbookItemResolved } from '../../domain/textbook'
+import { normalizeTextbookMath } from '../../domain/textbookMath'
 import type { TextbookReadingBlock, TextbookSection } from '../../domain/textbookSchema'
 
 type FormulaBlock = Extract<TextbookReadingBlock, { type: 'formula' }>
@@ -14,48 +14,58 @@ type Props = {
 }
 
 export function TextbookFormula({ block, section, progress, onOpen }: Props) {
-  const latex = useMemo(
-    () => buildTextbookFormulaLatex(block.parts, section, progress),
-    [block.parts, progress, section],
-  )
-
-  const html = useMemo(
-    () => katex.renderToString(latex, {
-      displayMode: true,
-      throwOnError: false,
-      strict: 'warn',
-      trust: (context) =>
-        context.command === '\\href' ||
-        context.command === '\\htmlClass' ||
-        context.command === '\\htmlData',
-    }),
-    [latex],
-  )
-
-  const hasRenderError = html.includes('katex-error')
-
-  const handleClick = (event: MouseEvent<HTMLDivElement>) => {
-    const target = event.target as HTMLElement
-    const link = target.closest('a[href^="#tb-choice-"]')
-    if (!link) return
-    event.preventDefault()
-    const href = link.getAttribute('href') ?? ''
-    const itemId = href.replace(/^#tb-choice-/, '')
-    if (itemId) onOpen(itemId)
-  }
-
   return (
     <div
-      className={`reading-formula-line${hasRenderError ? ' reading-formula-line--error' : ''}`}
+      className="reading-formula-line"
       data-testid={`textbook-formula-${block.id}`}
-      data-latex-status={hasRenderError ? 'error' : 'ok'}
-      onClick={handleClick}
+      data-latex-status="ok"
     >
-      {hasRenderError ? (
-        <span className="reading-formula-error">数式を表示できません</span>
-      ) : (
-        <div dangerouslySetInnerHTML={{ __html: html }} />
-      )}
+      <div className="reading-formula-expression">
+        {block.parts.map((part, index) => {
+          const key = `${block.id}-part-${index}`
+
+          if (part.type === 'math') {
+            return <span className="reading-formula-math" key={key}><InlineMath math={part.latex} /></span>
+          }
+
+          if (part.type === 'text') {
+            return <span className="reading-formula-text" key={key}>{part.text}</span>
+          }
+
+          const item = section.items.find((candidate) => candidate.id === part.itemId)
+          if (!item) {
+            return <span className="reading-formula-missing" key={key}>□</span>
+          }
+
+          const record = progress?.answers[item.id]
+          const resolved = isTextbookItemResolved(item, record)
+
+          if (resolved) {
+            const value = record?.value ?? item.answer
+            return (
+              <span className="reading-formula-answer" data-testid={`resolved-${item.id}`} key={key}>
+                {item.answerType === 'formula'
+                  ? <InlineMath math={normalizeTextbookMath(value)} />
+                  : value}
+              </span>
+            )
+          }
+
+          const wrong = Boolean(record)
+          return (
+            <button
+              type="button"
+              className={`reading-formula-choice${wrong ? ' reading-formula-choice--wrong' : ''}`}
+              data-testid={`textbook-item-${item.id}`}
+              aria-label={item.prompt}
+              onClick={() => onOpen(item.id)}
+              key={key}
+            >
+              {wrong ? '×' : '選択'}
+            </button>
+          )
+        })}
+      </div>
     </div>
   )
 }

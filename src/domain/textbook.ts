@@ -94,7 +94,8 @@ export function isTextbookItemResolved(item: TextbookItem, record: TextbookAnswe
 }
 
 export function answerTextbookItem(progress: TextbookUnitProgress | undefined, unit: TextbookUnit, item: TextbookItem, value: string, now: number): TextbookUnitProgress {
-  const previous = progress?.answers[item.id]
+  const currentProgress = progress?.unitRevision === unit.revision ? progress : undefined
+  const previous = currentProgress?.answers[item.id]
   if (isTextbookItemResolved(item, previous)) return progress!
 
   const correct = isTextbookAnswerCorrect(item, value)
@@ -109,7 +110,7 @@ export function answerTextbookItem(progress: TextbookUnitProgress | undefined, u
     lastAnsweredAt: now,
   }
 
-  const answers = { ...(progress?.answers ?? {}), [item.id]: nextRecord }
+  const answers = { ...(currentProgress?.answers ?? {}), [item.id]: nextRecord }
   const allItemIds = unit.sections.flatMap((section) => section.items.map((candidate) => candidate.id))
   const completed = allItemIds.every((id) => {
     const candidate = unit.sections.flatMap((section) => section.items).find((item) => item.id === id)
@@ -119,25 +120,27 @@ export function answerTextbookItem(progress: TextbookUnitProgress | undefined, u
   return {
     unitId: unit.unitId,
     unitRevision: unit.revision,
-    startedAt: progress?.startedAt ?? now,
+    startedAt: currentProgress?.startedAt ?? now,
     updatedAt: now,
     answers,
-    ...(completed ? { completedAt: progress?.completedAt ?? now } : {}),
+    ...(completed ? { completedAt: currentProgress?.completedAt ?? now } : {}),
   }
 }
 
 export function textbookSectionProgress(unit: TextbookUnit, progress: TextbookUnitProgress | undefined, sectionId: string) {
+  const currentProgress = progress?.unitRevision === unit.revision ? progress : undefined
   const section = unit.sections.find((candidate) => candidate.id === sectionId)
   if (!section) return { completed: 0, total: 0 }
   return {
-    completed: section.items.filter((item) => isTextbookItemResolved(item, progress?.answers[item.id])).length,
+    completed: section.items.filter((item) => isTextbookItemResolved(item, currentProgress?.answers[item.id])).length,
     total: section.items.length,
   }
 }
 
 export function textbookUnitProgress(unit: TextbookUnit, progress: TextbookUnitProgress | undefined) {
+  const currentProgress = progress?.unitRevision === unit.revision ? progress : undefined
   const items = unit.sections.flatMap((section) => section.items)
-  const completed = items.filter((item) => isTextbookItemResolved(item, progress?.answers[item.id])).length
+  const completed = items.filter((item) => isTextbookItemResolved(item, currentProgress?.answers[item.id])).length
   return { completed, total: items.length, percent: items.length ? Math.round((completed / items.length) * 100) : 0 }
 }
 

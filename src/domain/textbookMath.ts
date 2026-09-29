@@ -68,7 +68,7 @@ export function splitTextbookInlineMath(value: string): InlineMathPart[] {
   const text = stripTextbookMarkdown(value)
   if (!text) return []
 
-  const tokenPattern = /(?:Δ?[A-Za-z][A-Za-z0-9_{}\/]*[⃗̄]?(?:[₀₁₂₃₄₅₆₇₈₉ₓᵧₜ])?(?:[=+\-−×·/<>|][A-Za-z0-9Δθ_{}⃗̄₀₁₂₃₄₅₆₇₈₉ₓᵧₜ().,+\-−×·/<>|]+)*|Δ[A-Za-z⃗̄₀₁₂₃₄₅₆₇₈₉ₓᵧₜ]+|[POTDH][₀₁₂₃₄₅₆₇₈₉]|[A-Za-z]=[^、。！？\s]+|[A-Za-z][₀₁₂₃₄₅₆₇₈₉ₓᵧₜ]+)/g
+  const tokenPattern = /(?:[A-Za-zΔ][A-Za-z0-9Δθ⃗̄₀₁₂₃₄₅₆₇₈₉ₓᵧₜ_{}\/]*(?:[=+\-−×·/<>|][A-Za-z0-9Δθ⃗̄₀₁₂₃₄₅₆₇₈₉ₓᵧₜ_{}().,+\-−×·/<>|]+)*|[POTDH][₀₁₂₃₄₅₆₇₈₉])/g
 
   const parts: InlineMathPart[] = []
   let cursor = 0

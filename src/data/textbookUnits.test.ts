@@ -142,7 +142,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
 
   it('classifies symbolic monomials as formula answers', () => {
     const byId = Object.fromEntries(allItems().map((item) => [item.id, item]))
-    for (const id of ['d5', 'd6', 'd7c', 'e3a', 'g2', 'g6a']) {
+    for (const id of ['d5', 'e3a', 'f7', 'g2', 'g3a', 'g6a']) {
       expect(byId[id].answerType, id).toBe('formula')
     }
   })

@@ -215,6 +215,42 @@ function TextbookReadingFlow({ unit, section, progress }: {
     )
   }
 
+  const renderVisibleBlocks = (blocks: TextbookReadingBlock[]) => {
+    const rendered: ReactNode[] = []
+    let index = 0
+
+    while (index < blocks.length) {
+      if (blocks[index]?.type === 'formula') {
+        const run: TextbookReadingBlock[] = []
+        while (index < blocks.length && blocks[index]?.type === 'formula') {
+          run.push(blocks[index])
+          index += 1
+        }
+
+        if (run.length > 1) {
+          rendered.push(
+            <div className="reading-derivation-chain" key={`derivation-${run[0].id}`}>
+              {run.map((block) => (
+                <div className="reading-derivation-step" key={block.id}>
+                  {renderBlock(block)}
+                </div>
+              ))}
+            </div>,
+          )
+          continue
+        }
+
+        rendered.push(renderBlock(run[0]))
+        continue
+      }
+
+      rendered.push(renderBlock(blocks[index]))
+      index += 1
+    }
+
+    return rendered
+  }
+
   return (
     <article className="textbook-reading-flow" data-testid="textbook-reading-flow">
       {visibleGroups.map((group, groupIndex) => {
@@ -225,7 +261,7 @@ function TextbookReadingFlow({ unit, section, progress }: {
         })
         return (
           <section className="reading-subsection" data-testid={`reading-subsection-${groupIndex}`} key={group[0]?.id ?? groupIndex}>
-            {visibleBlocksInGroup(group).map(renderBlock)}
+            {renderVisibleBlocks(visibleBlocksInGroup(group))}
             {!continuousLesson && completed && groupIndex < groups.length - 1 && (
               <div className="reading-subsection-complete">
                 <Check size={16} aria-hidden="true" />

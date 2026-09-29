@@ -35,6 +35,20 @@ export function TextbookFigure({ figure, items, progress, onOpen }: TextbookFigu
             height: `${overlay.height}%`,
           } satisfies CSSProperties
 
+          if (!overlay.interactive) {
+            return (
+              <span
+                key={overlay.id}
+                className={`textbook-figure-overlay textbook-figure-overlay--${overlay.mode}`}
+                style={style}
+                data-testid={`textbook-figure-overlay-${overlay.id}`}
+                aria-hidden="true"
+              >
+                <span aria-hidden="true">?</span>
+              </span>
+            )
+          }
+
           return (
             <button
               type="button"

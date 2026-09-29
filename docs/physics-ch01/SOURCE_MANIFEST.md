@@ -36,10 +36,16 @@
 ## Policy
 
 - source physics: textbook PDF is authoritative
-- pedagogical reconstruction: supplied Word files
-- chapter figures: supplied figure.zip
+- historical pedagogical reference: supplied Word files
+- current Chapter-1 reconstructed learning-text authority: `prototypes/CH1_LEARNING_TEXT_V2.md`
+- prose construction rule: `LEARNING_TEXT_WRITING_RULES.md`
+- formula derivation / hole-placement rule: `FORMULA_DERIVATION_RULES.md`
+- chapter figures: supplied `figure.zip`
 - application state/UI constraints: executable repository
+- review DOCX identity: `prototypes/README.md`
 - no synthetic substitute data when source content is available
+
+The supplied Word files are no longer treated as an immutable final pedagogy layout. They remain reconstruction/reference sources. User-reviewed current pedagogy rules and the current prototype source take precedence for learning architecture.
 
 
 ## 1A app assets

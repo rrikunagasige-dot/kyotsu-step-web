@@ -1072,3 +1072,60 @@ Recommended next edge:
             ↓
     only then compare against current app in P34
 
+### 19.6 CURRENT checkpoint — Formula-derivation-strengthened Chapter 1 v2
+
+The 19.5 prototype established prose quality and acceptable interaction density.
+A later mobile-first audit found insufficient visible derivation in parts of 1D–1G.
+
+Current checkpoint repairs that gap:
+
+    natural continuous prose [kept]
+            +
+    canonical figures [kept: 17]
+            +
+    inline-hole question model [kept]
+            +
+    formula parent relation
+            ↓
+    condition / substitution
+            ↓
+    visible intermediate steps
+            ↓
+    final equation
+            ↓
+    physical meaning
+            +
+    H1–H6 justified hole placement
+
+Current source:
+`docs/physics-ch01/prototypes/CH1_LEARNING_TEXT_V2.md`
+
+Current rules:
+- `docs/physics-ch01/LEARNING_TEXT_WRITING_RULES.md`
+- `docs/physics-ch01/FORMULA_DERIVATION_RULES.md`
+
+Current counts:
+- 1A–1G
+- 17 canonical figures
+- 55 unique holes
+
+Binary review artifact identity:
+`docs/physics-ch01/prototypes/README.md`
+
+New pedagogy gate added to P33 input:
+
+- G52a OPEN — every nontrivial Chapter-1 final formula has a visible parent/condition/substitution/intermediate/final/meaning chain appropriate for phone-only learning.
+- G52b OPEN — every hole can be justified as H1–H6; no hole exists only to increase interaction count.
+
+**No P33–P38 status is changed to PASS by this checkpoint.**
+
+Next:
+
+    CH1 v2 checkpoint
+        ↓
+    P33 dependency extraction
+        ↓
+    G52 / G52a / G52b / G53 / G54 audit
+        ↓
+    P34 current app comparison
+

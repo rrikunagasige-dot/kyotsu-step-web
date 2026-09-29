@@ -3,7 +3,7 @@ schema: physics-learning-text-v2
 chapter_id: physics-ch01-motion
 chapter_number: 1
 title: 物体の運動
-status: current-checkpoint-v2.1
+status: current-checkpoint-v2.1-p33-pass
 checkpoint_date: 2026-09-29
 prototype: formula-derivation-strengthened-v2.1
 canonical_figures: 17
@@ -17,7 +17,7 @@ source_policy:
 notes:
   - This source is authoritative for the current Chapter-1 learning-text checkpoint.
   - The DOCX is a review artifact generated from this source.
-  - P33-P38 remain OPEN; this checkpoint is an input, not a gate PASS.
+  - P33 is PASS after the v2.1 source-alignment audit; P34-P38 remain OPEN.
 ---
 
 第1章　物体の運動

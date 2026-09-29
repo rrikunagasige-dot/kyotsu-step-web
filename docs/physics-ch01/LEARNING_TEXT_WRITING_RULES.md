@@ -383,7 +383,7 @@ For every hole ask:
 
 ## 14. Chapter-1 accepted prototype
 
-The 2026-09-29 review version established the current baseline:
+The first 2026-09-29 prose review established the baseline:
 
 - Chapter 1: 1A–1G
 - 17 canonical figures
@@ -445,3 +445,20 @@ Do not confuse “show more intermediate mathematics” with “turn more mathem
 ### v2.1 hole-density note
 
 The old C1 first-exposure terminology hole was removed because the learner was being asked to guess a new physics name rather than construct meaning. No replacement hole was added merely to preserve count. The current 54-hole density remains the accepted baseline: interaction count is subordinate to teaching purpose.
+
+---
+
+## 17. P33-passed Chapter-1 v2.1
+
+Current source:
+`prototypes/CH1_LEARNING_TEXT_V2_1.md`
+
+Current counts:
+- 1A–1G
+- 17 canonical figures
+- 54 justified inline holes
+- 26 rendered pages
+
+The count decreased from 55 because the first-exposure C1 vocabulary lottery was removed rather than replaced artificially.
+
+P33 source-alignment repairs are complete. The natural-prose invariant and moderate interaction-density rule remain unchanged.

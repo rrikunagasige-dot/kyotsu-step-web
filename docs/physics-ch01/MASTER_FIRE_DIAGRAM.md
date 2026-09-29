@@ -1226,3 +1226,38 @@ P34 CURRENT APP CONTRADICTION AUDIT
 
 P34 is audit-only at entry. Application code remains unchanged until the later implementation gate.
 
+### 19.9 P33 CLOSEOUT — PASS
+
+Chapter-1 v2.1 resolved every source-alignment issue found by the P33 map audit.
+
+Current authoritative source:
+`docs/physics-ch01/prototypes/CH1_LEARNING_TEXT_V2_1.md`
+
+Final counts:
+- 1A–1G
+- 17 canonical figures
+- 54 justified inline holes
+- 26 rendered review pages
+
+Resolved:
+- P33-I1 C1 terminology-first hole
+- P33-I2 component-projection parent relation
+- P33-I3 horizontal-projectile time-free vertical derivation
+- P33-I4 oblique-projectile time-free vertical derivation
+- P33-I5 linear-drag model / k definition
+
+Final gates:
+- G52 PASS
+- G52a PASS
+- G52b PASS
+- G53 PASS
+- G54 PASS
+- G55 PASS
+
+**P33 PASS. P34 is now unblocked.**
+
+Next:
+`P34 CURRENT-APP CONTRADICTION AUDIT`
+
+P34 remains analysis-only. Application code changes are still blocked.
+

@@ -414,3 +414,29 @@ Future agents must not silently revert the textbook mode to a universal:
     → review
 
 Those can remain schema labels for compatibility, but the actual learning text must follow conceptual dependency and natural prose.
+
+---
+
+## 16. Current formula-derivation-strengthened checkpoint
+
+The natural-prose rule above remains valid.
+
+A later mobile-first review found that some formulas, especially in 1D–1G, still required too much unshown reconstruction. The current content checkpoint therefore strengthens derivation detail while keeping interaction density approximately stable.
+
+Current checkpoint:
+
+- `prototypes/CH1_LEARNING_TEXT_V2.md`
+- 17 canonical figures
+- 55 unique inline holes
+- formula derivation strengthened mainly in 1D–1G
+
+Read `FORMULA_DERIVATION_RULES.md` for the mandatory mobile/no-paper rule and H1–H6 hole-placement test.
+
+Key distinction:
+
+    derivation detail ↑
+    cognitive jumps ↓
+    hole density ≈ stable
+
+Do not confuse “show more intermediate mathematics” with “turn more mathematics into holes.”
+

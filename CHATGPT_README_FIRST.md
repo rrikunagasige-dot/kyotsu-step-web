@@ -1172,4 +1172,41 @@ This is still paper/data design. No TypeScript has been changed.
 G59 PASS / P37 PASS.
 
 Next: **P38 virtual learner simulation + developer audit-mode specification.**
+## 14. CURRENT WORK LINE — USER REVIEW before P39
+
+Authoritative status after the 2026-09-29 pedagogy reconstruction:
+
+- P33 PASS — ideal representation/dependency map and Formula Coverage
+- P34 PASS — current-app contradiction audit
+- P35 PASS — pedagogy rules
+- P36 PASS — representation / mask / leakage specification
+- P37 PASS — 1A paper/data redesign
+- P38 PASS — virtual learner simulation + developer audit-mode specification
+- **USER REVIEW — CURRENT STOP**
+- P39 application-code implementation — **BLOCKED until explicit user approval**
+
+Key current files:
+- `docs/physics-ch01/prototypes/CH1_LEARNING_TEXT_V2_1.md` — current Chapter-1 learning text
+- `docs/physics-ch01/P33_REPRESENTATION_DEPENDENCY_MAP.md`
+- `docs/physics-ch01/P34_CURRENT_APP_CONTRADICTION_AUDIT.md`
+- `docs/physics-ch01/P35_PEDAGOGY_RULES.md`
+- `docs/physics-ch01/P36_REPRESENTATION_INTEGRATION_SPEC.md`
+- `docs/physics-ch01/P37_1A_REDESIGN_DATA.md`
+- `docs/physics-ch01/P38_VIRTUAL_LEARNER_AND_AUDIT_MODE.md`
+
+P37 target for 1A:
+- current app: 77 items
+- redesigned target: 10 meaningful holes across 8 learning events
+- figures/formulas integrated where concept formation needs them
+- routine algebra remains visible
+- no label-transcription drill
+
+P38 result:
+- A1–A10 virtual learner path: 10/10 PASS
+- hidden physics-dependency audit: PASS
+- wrong-answer support paths: PASS
+- mobile/no-paper reading: PASS
+- developer audit-mode spec: COMPLETE
+
+Do not start coding from this README alone. The user must explicitly approve moving into P39 after reviewing the design.
 

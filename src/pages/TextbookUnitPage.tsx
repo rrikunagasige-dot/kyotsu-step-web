@@ -19,7 +19,7 @@ function readingGroupItemIds(blocks: TextbookReadingBlock[], section: TextbookSe
     if (block.type === 'figure') {
       return section.figures
         .find((figure) => figure.id === block.figureId)
-        ?.overlays.map((overlay) => overlay.itemId) ?? []
+        ?.overlays.filter((overlay) => overlay.interactive).map((overlay) => overlay.itemId) ?? []
     }
     return []
   })
@@ -109,6 +109,18 @@ function TextbookReadingFlow({ unit, section, progress }: {
   const activeItem = activeItemId ? section.items.find((item) => item.id === activeItemId) : undefined
   const activeRecord = activeItem ? progress?.answers[activeItem.id] : undefined
   const activeChoices = activeItem ? getTextbookChoices(unit, activeItem) : []
+  const continuousLesson = unit.sections.length === 1 && section.id === 'lesson'
+
+  const visibleBlocksInGroup = (group: TextbookReadingBlock[]) => {
+    const firstBlockedIndex = group.findIndex((block) => {
+      const itemIds = readingGroupItemIds([block], section)
+      return itemIds.some((itemId) => {
+        const item = section.items.find((candidate) => candidate.id === itemId)
+        return !item || !isTextbookItemResolved(item, progress?.answers[itemId])
+      })
+    })
+    return firstBlockedIndex === -1 ? group : group.slice(0, firstBlockedIndex + 1)
+  }
 
   const selectChoice = (choice: string) => {
     if (!activeItem || isTextbookItemResolved(activeItem, activeRecord)) return
@@ -206,8 +218,8 @@ function TextbookReadingFlow({ unit, section, progress }: {
         })
         return (
           <section className="reading-subsection" data-testid={`reading-subsection-${groupIndex}`} key={group[0]?.id ?? groupIndex}>
-            {group.map(renderBlock)}
-            {completed && groupIndex < groups.length - 1 && (
+            {visibleBlocksInGroup(group).map(renderBlock)}
+            {!continuousLesson && completed && groupIndex < groups.length - 1 && (
               <div className="reading-subsection-complete">
                 <Check size={16} aria-hidden="true" />
                 <span>{text('この小節を完了しました。次の小節へ進めます。', '本小节已完成，可以继续下一小节。')}</span>
@@ -255,6 +267,7 @@ export function TextbookUnitPage() {
   if (!unit) return <ErrorState title={text('教材が見つかりません', '找不到教材')} body={text('この教材は削除されたか、まだ公開されていません。', '该教材可能已被删除或尚未发布。')} action={<Link className="raised-link" to="/learning/setup">{text('学習設定へ戻る', '返回学习设置')}</Link>} />
 
   const summary = textbookUnitProgress(unit, progress)
+  const continuousLesson = unit.sections.length === 1 && unit.sections[0]?.id === 'lesson'
   const unitCode = unit.chapter?.unitCode
   const legacyPrefix = unitCode?.slice(-1)
   const displayTitle = legacyPrefix && unit.title.startsWith(`${legacyPrefix} `)
@@ -305,7 +318,7 @@ export function TextbookUnitPage() {
         <ol>{unit.objectives.map((objective) => <li key={objective}>{objective}</li>)}</ol>
       </section>
 
-      <nav className="textbook-section-nav" aria-label={text('単元内の節', '单元内章节')}>
+      {!continuousLesson && <nav className="textbook-section-nav" aria-label={text('単元内の節', '单元内章节')}>
         {unit.sections.map((section, index) => {
           const sectionProgress = textbookSectionProgress(unit, progress, section.id)
           const complete = sectionProgress.completed === sectionProgress.total
@@ -324,7 +337,7 @@ export function TextbookUnitPage() {
             </button>
           )
         })}
-      </nav>
+      </nav>}
 
       <div className="textbook-section-stack" data-testid="textbook-section-stack">
         {unit.sections.slice(0, visibleThroughIndex + 1).map((section, index) => {
@@ -339,16 +352,18 @@ export function TextbookUnitPage() {
               id={`textbook-section-${index}`}
               key={section.id}
             >
-              <header className="textbook-section-heading">
-                <div><span>{section.number}</span><div><h2>{section.title}</h2>{section.description && <p>{section.description}</p>}</div></div>
-                <strong>{sectionSummary.completed}/{sectionSummary.total}</strong>
-              </header>
+              {!continuousLesson && (
+                <header className="textbook-section-heading">
+                  <div><span>{section.number}</span><div><h2>{section.title}</h2>{section.description && <p>{section.description}</p>}</div></div>
+                  <strong>{sectionSummary.completed}/{sectionSummary.total}</strong>
+                </header>
+              )}
 
               {section.readingFlow.length > 0
                 ? <TextbookReadingFlow unit={unit} section={section} progress={progress} />
                 : null}
 
-              {sectionComplete && !unitComplete && isLastVisible && index < unit.sections.length - 1 && (
+              {!continuousLesson && sectionComplete && !unitComplete && isLastVisible && index < unit.sections.length - 1 && (
                 <div className="textbook-next-panel">
                   <Check size={22} aria-hidden="true" />
                   <div><strong>{text('この節は完了しました', '本节已完成')}</strong><small>{text('前の本文と図を残したまま、次の節を下に開きます。', '保留前面的正文和图片，并在下方打开下一节。')}</small></div>

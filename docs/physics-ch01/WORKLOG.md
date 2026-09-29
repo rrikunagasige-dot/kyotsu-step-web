@@ -1337,4 +1337,18 @@ The spec directly prevents the P34 pattern where visually masked answers still l
 G58 PASS / P36 PASS.
 
 No application code changed. P37 is next.
+---
+
+## 2026-09-29 — P37 1A paper/data redesign
+
+Created:
+`docs/physics-ch01/P37_1A_REDESIGN_DATA.md`
+
+Replaced the conceptual target of the current 77-item 1A with a 10-hole continuous design.
+Defined eight learning events, figure roles/timing, formula timing, S1–S4 scaffold progression, legacy-item disposition, and future data shape.
+
+No current TypeScript/app data was changed.
+
+G59 PASS / P37 PASS.
+P38 is next.
 

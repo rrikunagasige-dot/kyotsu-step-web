@@ -1299,3 +1299,38 @@ Current state is:
 
 Do not optimize the UI from imagination now. Collect problems from actual phone/app use first, then patch them against the v2.2 source and pedagogy rules.
 
+## 16. P39 BOOT FAILURE ROOT CAUSE + FIX — 2026-09-29
+
+Observed real-browser symptom:
+- GitHub Pages loaded HTML/CSS but React content was blank.
+
+Root cause:
+- Chapter 1 v2.2 uses one continuous `lesson` section per unit.
+- legacy `textbookPracticeQuestions.ts` searched only `worked-example` sections.
+- zero worked-example sections produced an empty generated question array.
+- `validateQuestionCatalog([])` failed its min-length Zod gate during module import.
+- the exception occurred before normal React rendering, causing the blank page.
+
+Fix:
+- continuous textbook units are allowed to produce zero auto-generated practice questions.
+- standalone practice question bank remains available.
+- bootstrap now shows visible diagnostics instead of a silent blank screen.
+- Pages deploy gate now includes a real Playwright Chromium smoke test.
+
+Verified browser path:
+- open learning setup,
+- open 1A,
+- render A1 inline hole,
+- open A1 choices,
+- confirm "位置" choice visible.
+
+Final validation:
+- workflow run 110
+- typecheck PASS
+- Chapter-1 v2.2 data gate PASS
+- Playwright browser smoke PASS
+- production build PASS
+- GitHub Pages deploy PASS
+
+P39 remains USER QA OPEN for pedagogy/layout review; boot/runtime availability is now verified.
+

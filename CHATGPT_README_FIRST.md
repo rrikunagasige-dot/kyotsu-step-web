@@ -1245,3 +1245,50 @@ Added derivation holes:
 
 **P39 remains BLOCKED. Do not treat v2.1 USER REVIEW as approval.**
 
+## 15. P39 APP PREVIEW — DEPLOYED / USER QA OPEN
+
+The user explicitly approved moving from paper design into application installation so the learning experience can be judged in the real UI.
+
+Current App content authority:
+`docs/physics-ch01/prototypes/CH1_LEARNING_TEXT_V2_2_FORMULA_HOLES.md`
+
+P39 preview implementation:
+- v2.2 source is imported directly with Vite raw import,
+- source is parsed into seven Chapter-1 textbook units,
+- all 65 reviewed holes are preserved:
+  - 1A 10
+  - 1B 6
+  - 1C 4
+  - 1D 12
+  - 1E 9
+  - 1F 14
+  - 1G 10
+- all 17 canonical figures are preserved,
+- each unit renders as one continuous lesson instead of the legacy five-section pedagogy,
+- unresolved holes block later blocks inside the same subsection so completed formulas do not leak answers,
+- continuous lessons hide legacy section navigation/header,
+- fig-1 Δr label is passively masked until A3 resolves,
+- neutral pre-answer figure captions/alts are generated to reduce leakage.
+
+Implementation files:
+- `src/data/textbook/ch01/v22Continuous.ts`
+- `src/data/textbook/index.ts`
+- `src/pages/TextbookUnitPage.tsx`
+- `src/domain/textbookSchema.ts`
+- `src/components/textbook/TextbookFigure.tsx`
+- `src/data/textbookUnits.test.ts`
+
+Deployment gate:
+- GitHub Pages run 93
+- commit `6a8cd2985f6279f96b31debb91a288dac68965c4`
+- typecheck PASS
+- production build PASS
+- Pages deploy PASS
+- environment URL: `https://rrikunagasige-dot.github.io/kyotsu-step-web/`
+
+**P39 is NOT PASS yet.**
+Current state is:
+`P39 IMPLEMENTATION PREVIEW DEPLOYED → USER APP QA OPEN`.
+
+Do not optimize the UI from imagination now. Collect problems from actual phone/app use first, then patch them against the v2.2 source and pedagogy rules.
+

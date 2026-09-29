@@ -84,16 +84,16 @@ Judgment:
 Current interactions: 59
 
 Judgment totals:
-- KEEP: 35
-- REWRITE: 13
-- REMOVE: 11
+- KEEP: 33
+- REWRITE: 12
+- REMOVE: 14
 
 Important:
 REWRITE does **not** mean “make an easier multiple choice”.
 It means move the question to a more meaningful reasoning point.
 
 Target interaction count after rewrite is not fixed in advance.
-If every REWRITE remains one interaction, the rough count is 48, but the final count may differ.
+If every REWRITE remains one interaction, the rough count is 45, but the final count may differ.
 
 ---
 

@@ -1174,3 +1174,31 @@ No application code was changed.
 Next work:
 extract the representation / prerequisite / knowledge / formula dependency map from the current v2 source and run the P33 gates before any P34 app comparison.
 
+---
+
+## 2026-09-29 — P33 representation/dependency extraction
+
+Created:
+`docs/physics-ch01/P33_REPRESENTATION_DEPENDENCY_MAP.md`
+
+Method:
+- used Chapter-1 v2 source as concrete learning artifact,
+- extracted concept dependencies for 1A–1G,
+- mapped P/V/Q/R/M/G/T representation paths,
+- audited all 55 holes against H1–H6,
+- defined Formula Coverage for all major relations,
+- treated ordinary searchable mathematics as available background rather than a hard middle-school-only gate.
+
+Results:
+- G52 PASS
+- G52a OPEN
+- G52b OPEN
+- G53 PASS
+- G54 PASS
+- G55 PASS
+
+Five source-level issues were found before P34:
+C1 terminology-first hole; missing explicit 1B component projection parent relation; unshown 1E time-free vertical derivation; unshown/unused 1F time-free vertical relation; missing k/model definition for linear drag.
+
+No application code changed.
+

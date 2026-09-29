@@ -740,9 +740,6 @@ y = v₀sinθ·[x/(v₀cosθ)] − (1/2)g[x/(v₀cosθ)]²
 第1項では v₀ が約分され sinθ/cosθ=tanθ になる。第2項では分母が v₀²cos²θ になるので、
 
 y = x tanθ − [g/(2v₀²cos²θ)]x²
-
-
-y = x tanθ − [g/(2v₀²cos²θ)]x²
 :::endderive
 
 この式は x の2次式なので、斜方投射の軌跡も 【F6　　　　　】 である。

@@ -1375,3 +1375,36 @@ P39 remains blocked until explicit approval.
 
 No application code changed.
 
+---
+
+## 2026-09-29 — USER REVIEW correction / v2.2 formula-hole candidate
+
+User rejected the v2.1 interaction density specifically because formula derivations were too passive.
+
+Action:
+- retained natural prose and visible derivations,
+- created an explicit F1–F5 formula-hole rule,
+- added 11 formula holes only at meaningful derivation decisions,
+- moved Chapter 1 from 54 to 65 holes,
+- did not add arbitrary vocabulary/arithmetic holes.
+
+New holes:
+D4a, D7b, D7c, E3a, E5b, F3a, F5a, F6b, F8a, G3a, G6a.
+
+Review artifact:
+- 27 pages,
+- 17 figures,
+- 65 unique holes,
+- all pages rendered and visually inspected.
+
+DOCX Library:
+`/塾/kyotsu-step-web/prototypes/第1章_物体の運動_数式導出穴強化版_v2.2_20260929.docx`
+- library_file_id: `libfile_d30a1b27298081919cfa404dc4df105f`
+- bytes: 12,132,107
+- SHA256: `b005b81013d23b955da433c1c39b8fc3af01be2e13bf94579acece90b8cae8d4`
+
+Source candidate SHA256:
+`d01cdebc96454fa74b7ee17c3aa88ff51e1e26086bac520b03cc4648f1dcabcd`
+
+P39 remains blocked pending user review of v2.2.
+

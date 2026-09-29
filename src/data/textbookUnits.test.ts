@@ -52,6 +52,24 @@ describe('Chapter 1 continuous textbook catalog', () => {
     }
   })
 
+  it('attaches pedagogy metadata to every audited interaction', () => {
+    const scaffoldCounts = { strong: 0, medium: 0, light: 0 }
+
+    for (const item of allItems()) {
+      expect(item.purpose, item.id).toBeTruthy()
+      expect(item.hints, item.id).toHaveLength(2)
+      expect(item.hints.every((hint) => hint.trim().length > 0), item.id).toBe(true)
+      scaffoldCounts[item.scaffoldLevel] += 1
+    }
+
+    expect(scaffoldCounts).toEqual({ strong: 6, medium: 16, light: 23 })
+
+    const lateItems = builtInTextbookUnits
+      .filter((unit) => ['1F', '1G'].includes(unit.chapter?.unitCode ?? ''))
+      .flatMap((unit) => unit.sections[0].items)
+    expect(lateItems.every((item) => item.scaffoldLevel === 'light')).toBe(true)
+  })
+
   it('does not reintroduce mechanical end-step holes', () => {
     const ids = new Set(allItems().map((item) => item.id.toUpperCase()))
     for (const removed of [

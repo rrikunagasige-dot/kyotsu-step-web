@@ -1267,14 +1267,14 @@ Audit:
 `docs/physics-ch01/P34_CURRENT_APP_CONTRADICTION_AUDIT.md`
 
 Current app Chapter-1 item count:
-- 1A 77
-- 1B 17
-- 1C 16
-- 1D 16
-- 1E 15
-- 1F 18
-- 1G 13
-- total 172
+- 1A 78
+- 1B 18
+- 1C 17
+- 1D 17
+- 1E 16
+- 1F 19
+- 1G 14
+- total 179
 
 P33-passed v2.1 has 54 justified inline holes.
 
@@ -1353,10 +1353,10 @@ No application code changed.
 ### 19.13 P37 1A REDESIGN — PASS
 
 Paper/data redesign:
-`docs/physics-ch01/P37_1A_REDESIGN_DATA.md`
+`docs/physics-ch01/P37_1A_REDESIGN.md`
 
 1A target:
-- 10 justified holes instead of 77 current app items,
+- 10 justified holes instead of 78 current app items,
 - one continuous semantic flow,
 - figures integrated at concept need,
 - no label-transcription drill,
@@ -1370,6 +1370,8 @@ G59 PASS.
 **P37 PASS. P38 unblocked.**
 
 No application code changed.
+P37 canonicalization note: `P37_1A_REDESIGN.md` is the authoritative detailed design. The former `P37_1A_REDESIGN_DATA.md` is retained only as a compatibility pointer.
+
 ### 19.14 P38 VIRTUAL LEARNER + AUDIT MODE — PASS
 
 Spec:

@@ -1436,3 +1436,28 @@ Deployment verification:
 P39 remains OPEN pending user QA in the actual app.
 No claim of pedagogical PASS is made from CI success.
 
+---
+
+## 2026-09-29 — P39 blank-page incident resolved
+
+User reported a completely blank GitHub Pages screen.
+
+A real Playwright Chromium smoke gate was added to reproduce the failure without Desktop/remote access.
+
+Diagnosis:
+`buildChapter1PracticeQuestions()` searched only legacy `worked-example` sections. The v2.2 continuous textbook has one `lesson` section, so the generated list was empty and `validateQuestionCatalog([])` threw a Zod min-length error at app bootstrap.
+
+Repair commit:
+`eee3dad50945c36701487bd4206c7caa32e2c402`
+
+Additional resilience:
+- visible HTML bootstrap state,
+- dynamic App import with boot error rendering,
+- pageerror/console/request diagnostics,
+- Playwright Chromium gate on main deploy.
+
+Final workflow run 110:
+typecheck PASS / v2.2 data gate PASS / browser smoke PASS / build PASS / Pages deploy PASS.
+
+No claim that P39 pedagogy is complete; user QA continues in the live app.
+

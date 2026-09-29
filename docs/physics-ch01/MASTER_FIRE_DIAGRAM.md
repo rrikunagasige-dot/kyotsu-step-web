@@ -953,8 +953,8 @@ P36 REPRESENTATION INTEGRATION
    ▼
 P37 1A REDESIGN — PAPER / DATA ONLY
    ▼
-P38 VIRTUAL BEGINNER SIMULATION
-   │  middle-school knowledge baseline
+P38 VIRTUAL LEARNER SIMULATION
+   │  ordinary background knowledge + phone lookup allowed
    │  + developer audit-mode specification
    ▼
 USER REVIEW
@@ -1019,7 +1019,7 @@ prerequisite
 - G57 OPEN — P35のone-step learnability / scaffold fading / retry-hint rulesが確定している。
 - G58 OPEN — P36のrepresentation integration / mask / leakage gatesが確定している。
 - G59 OPEN — P37で1Aのpaper/data redesignが完成している。
-- G60 OPEN — P38で中学知識baselineのvirtual beginner simulationとdeveloper audit-mode仕様が完成している。
+- G60 OPEN — P38でordinary background knowledge + phone lookup allowed のvirtual learner simulationとdeveloper audit-mode仕様が完成している。
 - G61 BLOCKED — USER REVIEW完了後にのみP39を開始できる。
 
 **P39まではapplication codeを変更しない。**
@@ -1128,4 +1128,29 @@ Next:
     G52 / G52a / G52b / G53 / G54 audit
         ↓
     P34 current app comparison
+
+### 19.7 P33 prerequisite baseline clarification
+
+Do not fail a concept merely because a learner may not remember ordinary mathematics.
+
+Allowed baseline:
+- ordinary middle-school knowledge,
+- common mathematical background,
+- quick lookup / AI question on a phone for general-purpose math support.
+
+Not automatically a contradiction:
+- `sin/cos` notation,
+- a limit symbol,
+- common trig identities,
+- other ordinary searchable mathematical background.
+
+Still mandatory inside the teaching chain:
+- new chapter-specific physics concepts,
+- new physics terminology whose meaning has not yet been constructed,
+- physical conditions / modeling assumptions needed for a derivation,
+- dependencies that determine why the next physics step is valid.
+
+The audit question is therefore not “can a learner derive everything from middle-school knowledge alone?” but:
+
+> “Does the chapter itself construct every new physics meaning needed to continue, while ordinary background knowledge may be recalled or looked up?”
 

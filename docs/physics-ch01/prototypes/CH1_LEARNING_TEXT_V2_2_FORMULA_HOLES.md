@@ -431,6 +431,7 @@ A. 加速度　　B. 力　　C. 質量　　D. 変位
 
 加速度 a が一定で、初速度を v₀ とする。加速度は「単位時間あたりの速度変化」なので、時間 t の間の速度変化は Δv=at である。したがって、
 
+:::derive id="d-velocity-update"
 v − v₀ = 【D5　　　　　】
 
 :::choices id="D5"
@@ -438,9 +439,11 @@ A. at　　B. a/t　　C. t/a　　D. a²t
 :::
 
 v = v₀ + at
+:::endderive
 
 次に変位を求める。一定加速度なら v-t グラフは直線なので、グラフの面積を「長方形 + 三角形」に分ければよい。長方形の面積は v₀t、三角形の高さは速度の増加量 v−v₀ である。三角形の面積は「底辺 t × 高さ (v−v₀) × 1/2」なので、
 
+:::derive id="d-displacement-area"
 x = v₀t + 【D4a　　　　　】
 
 :::choices id="D4a"
@@ -454,9 +457,11 @@ x = v₀t + (1/2)(at)t
 
 
 x = v₀t + (1/2)at²
+:::endderive
 
 最後に、時間 t を含まない式も作ってみよう。一定加速度では速度が v₀ から v まで直線的に変化するため、平均速度は (v₀+v)/2 である。したがって変位は、
 
+:::derive id="d-eliminate-time"
 x = [(v₀+v)/2] t
 
 また v−v₀=at から、時間 t は次のように表せる。
@@ -483,6 +488,7 @@ A. (v²+v₀²)/(2a)　　B. (v−v₀)/(2a)　　C. (v²−v₀²)/a　　D. (v
 両辺に 2a を掛けて、時間を含まない形にすると、
 
 v² − v₀² = 2ax
+:::endderive
 
 
 
@@ -548,6 +554,7 @@ A. (1/2)gt²　　B. v₀t　　C. gt　　D. g/t
 
 同じく鉛直速度は vᵧ=gt である。さらに時間を使わない関係も、前に導いた等加速度運動の式
 
+:::derive id="e-vertical-relation"
 v² − v₀² = 2ax
 
 を鉛直方向に使えば得られる。水平投射の鉛直方向では、初速度 v₀ᵧ=0、加速度 aᵧ=g、変位を y とするので、
@@ -562,6 +569,7 @@ A. −2gy　　B. 2gy　　C. gt²　　D. 2v₀y
 したがって、
 
 vᵧ² = 2gy
+:::endderive
 
 となる。つまり鉛直方向だけを見れば、静かに落とした物体と同じ自由落下である。
 
@@ -585,6 +593,7 @@ A. v₀+gt　　B. v₀gt　　C. √(v₀²+g²t²)　　D. √(v₀²−g²t²
 
 軌跡の式を作るには、x と y の式に共通して入っている時間 t を消去すればよい。水平方向の式 x=v₀t から、
 
+:::derive id="e-trajectory-elimination"
 t = 【E5a　　　　　】
 
 :::choices id="E5a"
@@ -598,9 +607,7 @@ y = (1/2)g(x/v₀)²
 平方を分母まで含めて整理すると、
 
 y = [g/(2v₀²)]x²
-
-
-y = [g/(2v₀²)]x²
+:::endderive
 
 y が x² に比例するので、水平投射の軌跡は 【E5　　　　　】 になる。
 
@@ -652,6 +659,7 @@ A. v₀ cosθ　　B. v₀ tanθ　　C. v₀/ sinθ　　D. v₀ sinθ
 
 上向きを正に取ると重力加速度は −g である。初めの鉛直速度は v₀sinθ なので、
 
+:::derive id="f-vertical-motion"
 vᵧ = 【F3　　　　　】
 
 :::choices id="F3"
@@ -671,6 +679,7 @@ vᵧ² − (v₀sinθ)² = 2(−g)y
 右辺の符号まで整理すると、
 
 vᵧ² − (v₀sinθ)² = −2gy
+:::endderive
 
 
 
@@ -692,15 +701,18 @@ A. g　　B. 0　　C. v₀　　D. v₀cosθ
 
 vᵧ=v₀sinθ−gt に、最高点の条件 vᵧ=0 を入れる。
 
+:::derive id="f-highest-time"
 0 = v₀sinθ − gt_H
 
 gt_H = v₀sinθ
 
 t_H = v₀sinθ/g
+:::endderive
 
 
 次に最高点の高さ H を求める。ここで重要なのは、最高点の時刻をどの運動の式へ入れるかである。高さは鉛直方向の位置なので、
 
+:::derive id="f-highest-height"
 H = 【F5a　　　　　】
 
 :::choices id="F5a"
@@ -716,6 +728,7 @@ H = v₀²sin²θ/g − v₀²sin²θ/(2g)
 したがって、
 
 H = v₀²sin²θ/(2g)
+:::endderive
 
 
 最高点で0になるのは鉛直成分だけで、水平方向の速度 v₀cosθ は残っているため、物体そのものが止まるわけではない。
@@ -724,6 +737,7 @@ H = v₀²sin²θ/(2g)
 
 斜方投射でも軌跡の式を作るには時間 t を消去する。水平方向 x=v₀cosθ·t から、
 
+:::derive id="f-trajectory-elimination"
 t = 【F6a　　　　　】
 
 :::choices id="F6a"
@@ -743,6 +757,7 @@ A. g/(2v₀²cos²θ)　　B. g/(2v₀²sin²θ)　　C. 2g/(v₀²cos²θ)　�
 :::
 
 y = x tanθ − [g/(2v₀²cos²θ)]x²
+:::endderive
 
 この式は x の2次式なので、斜方投射の軌跡も 【F6　　　　　】 である。
 
@@ -752,6 +767,7 @@ A. 直線　　B. 放物線　　C. 円　　D. 楕円
 
 次に、投げ出した位置と同じ高さへ戻るまでの時間 T を求める。このとき y=0 なので、
 
+:::derive id="f-flight-time"
 0 = v₀sinθ·T − (1/2)gT²
 
 2つの項に共通する T をくくると、
@@ -769,11 +785,13 @@ v₀sinθ − (1/2)gT = 0
 を選ぶ。したがって、
 
 T = 2v₀sinθ/g
+:::endderive
 
 ## 水平到達距離
 
 水平速度は一定なので、水平到達距離 D は「水平速度 × 飛行時間」で求める。
 
+:::derive id="f-range"
 D = v₀cosθ · T
 
 ここへ、さきほど導いた飛行時間を代入する。
@@ -791,6 +809,7 @@ D = [2v₀²sinθ cosθ]/g
 2sinθcosθ=sin2θ を使えば、
 
 D = 【F8　　　　　】
+:::endderive
 
 :::choices id="F8"
 A. (v₀²/g)sin2θ　　B. (v₀²/g)cos2θ　　C. v₀g sinθ　　D. 2v₀/g
@@ -840,7 +859,8 @@ A. k/v　　B. mv　　C. mg　　D. kv
 
 下向きを正に取る。落下を始めた直後は v=0 なので空気抵抗も0であり、重力だけが働く。しかし速さが増えると空気抵抗 kv も大きくなる。
 
-したがって運動方程式は ma = 【G3　　　　　】 となる。
+したがって運動方程式は :::derive id="g-drag-acceleration"
+ma = 【G3　　　　　】 となる。
 
 :::choices id="G3"
 A. mg−kv　　B. mg+kv　　C. kv−mg　　D. mg
@@ -853,6 +873,7 @@ a = (mg−kv)/m
 各項を m で割ると、
 
 a = g − 【G3a　　　　　】
+:::endderive
 
 :::choices id="G3a"
 A. (m/k)v　　B. (k/m)v　　C. kv　　D. k/(mv)
@@ -895,6 +916,7 @@ A. 0　　B. g　　C. −g　　D. v_t
 
 終端速度を v_t とする。運動方程式 ma=mg−kv に a=0 を入れる。速度も v=v_t と置けば、
 
+:::derive id="g-terminal"
 0 = mg − 【G6a　　　　　】
 
 :::choices id="G6a"
@@ -905,6 +927,7 @@ A. mgv_t　　B. kv_t　　C. k/v_t　　D. mv_t
 kv_t = mg
 
 したがって v_t = mg/k
+:::endderive
 
 
 ここでも式を暗記したのではなく、「終端速度では加速度が0」という物理条件を運動方程式へ入れて求めている。

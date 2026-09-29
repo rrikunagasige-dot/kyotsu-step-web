@@ -299,3 +299,35 @@ For the current checkpoint:
 6. Review artifact: formula-derivation-strengthened DOCX identified in `prototypes/README.md`.
 
 The v2.1 prototype has passed the P33 source-alignment re-audit. P34-P38 remain open; P34 is the next audit.
+
+---
+
+## Formula-hole interaction amendment — 2026-09-29
+
+User review found that visible derivation alone is not sufficient: if the learner only reads every intermediate formula, the derivation can become passive.
+
+New hard rule:
+
+> **For every nontrivial derivation of 2 or more meaningful steps, place at least one interactive formula hole inside the derivation itself.**
+
+Prefer formula holes that ask for one of:
+
+- **F1 Parent relation selection** — which established relation is used next.
+- **F2 Physical-condition substitution** — e.g. `v_y=0`, `a=0`, initial component = 0.
+- **F3 Variable elimination** — e.g. solve `t=x/v_0` so time can be removed.
+- **F4 Meaningful algebraic transformation** — factorization, difference of squares, sign-sensitive simplification, or another step that produces the next physics relation.
+- **F5 Final-form reconstruction** — turn the intermediate result into the reusable canonical formula.
+
+Density guidance:
+- 2–3 meaningful derivation lines: usually at least 1 formula hole.
+- 4+ meaningful derivation lines: usually 1–2 formula holes.
+- Do not hole every arithmetic operation or repeated mechanical manipulation.
+
+This amendment refines the earlier statement “more derivation does not imply more holes”:
+
+> More derivation does not imply holes on **every** line, but a nontrivial derivation should not remain entirely passive.
+
+Current review candidate:
+`prototypes/CH1_LEARNING_TEXT_V2_2_FORMULA_HOLES.md`
+with 65 holes (54 previous justified holes + 11 derivation-formula holes).
+

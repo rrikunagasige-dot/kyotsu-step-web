@@ -1461,3 +1461,47 @@ typecheck PASS / v2.2 data gate PASS / browser smoke PASS / build PASS / Pages d
 
 No claim that P39 pedagogy is complete; user QA continues in the live app.
 
+---
+
+## 2026-09-29 — P39 audit-driven Chapter-1 repair deployed
+
+After user screenshots exposed multiple live-App defects, coding was paused and a full source/parser/UI audit was completed before further fixes.
+
+Major repaired defects:
+- 36 missing explicit answers,
+- 64/65 answer-position bias to A,
+- 1A/1D internal editing codes leaking into student prose,
+- Unicode inline math such as r-vector / v_x / v_y,
+- formula choices displayed as plain text,
+- boxed resolved formula fragments,
+- 12 immediate duplicate completed formulas,
+- A1/A7/B2/B3 figure timing and leakage,
+- missing 1D v-t graph,
+- ultra-compressed 1C/1D/1G figure assets,
+- chapter summary omission,
+- stale saved-progress reuse after content revision,
+- legacy worked-example practice adapter assumptions.
+
+New quality gates now check:
+- 65/65 source answers,
+- balanced correct-option locations,
+- every hole referenced by readingFlow,
+- figure/graph presence and ordering,
+- symbolic monomial formula classification,
+- internal-code leakage,
+- no passive question-mark masks,
+- mixed SVG/WebP asset validity,
+- normalized KaTeX rendering,
+- revision-safe progress,
+- real Chromium boot for every Chapter-1 unit.
+
+Final validation:
+- workflow run 154
+- head `9bca1897d8866533ad5c398ab4ed3f69a4fc7d47`
+- 32/32 audited unit/math/asset/state tests PASS
+- 1A–1G browser smoke PASS
+- production build PASS
+- GitHub Pages deploy PASS
+
+P39 remains open only for user re-QA of the actual learning experience.
+

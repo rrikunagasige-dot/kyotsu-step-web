@@ -2,78 +2,81 @@ import { expect, test, type Page } from '@playwright/test'
 
 const appRoute = (path: string) => `/kyotsu-step-web/#${path}`
 
-async function dumpBootState(page: Page, label: string) {
-  await page.waitForTimeout(1500)
-  const body = await page.locator('body').innerText().catch(() => '<body unavailable>')
-  const root = await page.locator('#root').innerHTML().catch(() => '<root unavailable>')
-  console.log(`[P39-DIAG:${label}] URL=${page.url()}`)
-  console.log(`[P39-DIAG:${label}] BODY=${body.slice(0, 4000)}`)
-  console.log(`[P39-DIAG:${label}] ROOT=${root.slice(0, 6000)}`)
-}
+const units = [
+  { id: 'physics-a-displacement-velocity', title: '変位と速度', firstHole: 'a1' },
+  { id: 'physics-1b-velocity-composition', title: '速度の合成と分解', firstHole: 'b1' },
+  { id: 'physics-1c-relative-velocity', title: '相対速度', firstHole: 'c2' },
+  { id: 'physics-1d-acceleration', title: '加速度', firstHole: 'd1' },
+  { id: 'physics-1e-horizontal-projectile', title: '水平投射', firstHole: 'e1' },
+  { id: 'physics-1f-oblique-projectile', title: '斜方投射', firstHole: 'f1' },
+  { id: 'physics-1g-gravity-drag-terminal-velocity', title: '重力加速度・空気抵抗・終端速度', firstHole: 'g1' },
+] as const
 
-test.beforeEach(async ({ page }) => {
+async function clearState(page: Page) {
   await page.goto(appRoute('/problems'))
   await page.evaluate(() => localStorage.clear())
   await page.reload()
+}
+
+test.beforeEach(async ({ page }) => {
+  await clearState(page)
 })
 
-test('v2.2 app boots and opens the textbook setup', async ({ page }) => {
+test('audited app boots and opens the textbook setup', async ({ page }) => {
   const pageErrors: string[] = []
-  const consoleErrors: string[] = []
-  const failedRequests: string[] = []
-
   page.on('pageerror', (error) => pageErrors.push(error.stack ?? error.message))
-  page.on('console', (message) => {
-    if (message.type() === 'error') consoleErrors.push(message.text())
-  })
-  page.on('requestfailed', (request) => {
-    failedRequests.push(`${request.url()} :: ${request.failure()?.errorText ?? 'unknown'}`)
-  })
 
   await page.goto(appRoute('/learning/setup'))
-  await dumpBootState(page, 'setup')
-  console.log('[P39-DIAG:setup] PAGE_ERRORS=', JSON.stringify(pageErrors))
-  console.log('[P39-DIAG:setup] CONSOLE_ERRORS=', JSON.stringify(consoleErrors))
-  console.log('[P39-DIAG:setup] FAILED_REQUESTS=', JSON.stringify(failedRequests))
 
-  expect(pageErrors).toEqual([])
-  expect(consoleErrors).toEqual([])
-  expect(failedRequests).toEqual([])
-  await expect(page.getByText('App の起動に失敗しました')).toHaveCount(0)
   await expect(page.getByRole('heading', { name: '学習設定' })).toBeVisible()
   await expect(page.getByTestId('textbook-part-list')).toBeVisible()
+  await expect(page.getByText('App の起動に失敗しました')).toHaveCount(0)
+  expect(pageErrors).toEqual([])
 })
 
-test('v2.2 1A renders the first inline hole and choices', async ({ page }) => {
+test('every Chapter 1 unit boots to its first meaningful hole without developer metadata', async ({ page }) => {
   const pageErrors: string[] = []
-  const consoleErrors: string[] = []
-  const failedRequests: string[] = []
-
   page.on('pageerror', (error) => pageErrors.push(error.stack ?? error.message))
-  page.on('console', (message) => {
-    if (message.type() === 'error') consoleErrors.push(message.text())
-  })
-  page.on('requestfailed', (request) => {
-    failedRequests.push(`${request.url()} :: ${request.failure()?.errorText ?? 'unknown'}`)
-  })
 
-  await page.goto(appRoute('/learning/textbook/physics-a-displacement-velocity'))
-  await dumpBootState(page, '1a')
-  console.log('[P39-DIAG:1a] PAGE_ERRORS=', JSON.stringify(pageErrors))
-  console.log('[P39-DIAG:1a] CONSOLE_ERRORS=', JSON.stringify(consoleErrors))
-  console.log('[P39-DIAG:1a] FAILED_REQUESTS=', JSON.stringify(failedRequests))
+  for (const unit of units) {
+    await page.goto(appRoute(`/learning/textbook/${unit.id}`))
+    await expect(page.getByRole('heading', { name: unit.title, exact: true })).toBeVisible()
+    await expect(page.getByTestId(`textbook-item-${unit.firstHole}`)).toBeVisible()
+
+    const body = page.locator('body')
+    await expect(body).not.toContainText(/第\s*\d+\s*版/)
+    await expect(body).not.toContainText(/v2\.\d/i)
+  }
 
   expect(pageErrors).toEqual([])
-  expect(consoleErrors).toEqual([])
-  expect(failedRequests).toEqual([])
-  await expect(page.getByText('App の起動に失敗しました')).toHaveCount(0)
-  await expect(page.getByRole('heading', { name: '変位と速度', exact: true })).toBeVisible()
+})
+
+test('A1 choice panel uses natural wording and does not expose the internal hole id', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/physics-a-displacement-velocity'))
 
   const a1 = page.getByTestId('textbook-item-a1')
   await expect(a1).toBeVisible()
   await a1.click()
 
-  const choices = page.getByTestId('inline-choice-panel-a1')
-  await expect(choices).toBeVisible()
-  await expect(choices.getByRole('button', { name: '位置', exact: true })).toBeVisible()
+  const panel = page.getByTestId('inline-choice-panel-a1')
+  await expect(panel).toBeVisible()
+  await expect(panel).toContainText('空欄に入る内容を選んで')
+  await expect(panel).not.toContainText('A1')
+  await expect(panel.getByRole('button', { name: '位置', exact: true })).toBeVisible()
+})
+
+test('first concept-forming figure is not upscaled beyond its intrinsic size', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/physics-a-displacement-velocity'))
+  const image = page.locator('.reading-figure img').first()
+  await expect(image).toBeVisible()
+
+  const dimensions = await image.evaluate((element) => {
+    const img = element as HTMLImageElement
+    return {
+      rendered: img.getBoundingClientRect().width,
+      natural: img.naturalWidth,
+    }
+  })
+  expect(dimensions.natural).toBeGreaterThan(0)
+  expect(dimensions.rendered).toBeLessThanOrEqual(dimensions.natural + 1)
 })

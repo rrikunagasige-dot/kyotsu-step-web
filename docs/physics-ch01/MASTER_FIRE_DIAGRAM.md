@@ -1180,3 +1180,49 @@ Required source fixes before P34:
 
 **P34 remains blocked until G52a and G52b pass.**
 
+### 19.9 P33 CLOSED — Chapter-1 v2.1 source re-audit
+
+Current authoritative source:
+`docs/physics-ch01/prototypes/CH1_LEARNING_TEXT_V2_1.md`
+
+v2.1 facts:
+- 1A–1G
+- 17 canonical figures
+- 54 justified inline holes
+- 26-page reviewed Word
+- mobile-first derivation chain
+- ordinary mathematical background may be looked up on a phone
+- new physics meanings / models / conditions must still be constructed internally
+
+Resolved:
+- P33-I1: C1 vocabulary lottery removed; `相対速度` is taught in prose.
+- P33-I2: component formulas now show `cosθ=vₓ/v`, `sinθ=vᵧ/v`.
+- P33-I3: `vᵧ²=2gy` now shows its parent substitution.
+- P33-I4: oblique-projectile time-free vertical relation now shows its parent substitution.
+- P33-I5: linear drag now defines `k>0` and the approximation/model scope.
+
+CURRENT GATE STATUS:
+- G52 PASS
+- G52a PASS
+- G52b PASS
+- G53 PASS
+- G54 PASS
+- G55 PASS
+
+**P33 PASS.**
+
+Next authoritative node:
+
+```text
+P33 PASS — ideal Chapter-1 dependency / representation / formula map
+        ↓
+P34 CURRENT APP CONTRADICTION AUDIT
+        ├─ missing
+        ├─ wrong
+        ├─ wrong timing
+        ├─ split attention
+        └─ answer leakage
+```
+
+P34 is audit-only at entry. Application code remains unchanged until the later implementation gate.
+

@@ -1154,3 +1154,29 @@ The audit question is therefore not “can a learner derive everything from midd
 
 > “Does the chapter itself construct every new physics meaning needed to continue, while ordinary background knowledge may be recalled or looked up?”
 
+### 19.8 P33 map audit result — 2026-09-29
+
+Authoritative P33 map:
+`docs/physics-ch01/P33_REPRESENTATION_DEPENDENCY_MAP.md`
+
+Current gate status:
+
+- G52 PASS — 1A position → position vector → displacement dependency map complete.
+- G52a OPEN — four formula/model source-alignment gaps remain (P33-I2/I3/I4/I5).
+- G52b OPEN — C1 is a first-exposure terminology lottery; 54/55 current holes are otherwise H1–H6 justified.
+- G53 PASS — 1A–1G concept prerequisites and P/V/Q/R/M/G/T paths defined.
+- G54 PASS — Formula Coverage defined for all major Chapter-1 relations.
+- G55 PASS — ideal map was not weakened by current app/schema limitations.
+
+P33 prerequisite rule:
+ordinary background mathematics may be recalled or looked up on a phone. This is not a contradiction by itself. The strict gate is for chapter-internal physics meaning, modeling assumptions, and dependency logic.
+
+Required source fixes before P34:
+1. C1: teach the term `relative velocity` instead of guessing it on first exposure.
+2. 1B: show `cosθ=vx/v`, `sinθ=vy/v` before rearranging to component formulas.
+3. 1E: derive `vy²=2gy` from the general constant-acceleration relation.
+4. 1F: derive the time-free vertical relation or remove it if unused.
+5. 1G: define `k>0` and the linear-drag approximation/model scope.
+
+**P34 remains blocked until G52a and G52b pass.**
+

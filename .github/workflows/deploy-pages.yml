@@ -34,6 +34,8 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Typecheck
         run: pnpm run typecheck
+      - name: Chapter 1 v2.2 data gate
+        run: pnpm exec vitest run src/data/textbookUnits.test.ts src/domain/textbookSchema.test.ts src/components/textbook/TextbookFigure.test.tsx
       - name: Build
         run: pnpm run build
       - name: Setup Pages

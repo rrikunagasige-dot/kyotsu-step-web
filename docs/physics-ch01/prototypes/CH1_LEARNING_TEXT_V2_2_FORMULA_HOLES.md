@@ -781,9 +781,6 @@ D = v₀cosθ · T
 
 D = v₀cosθ · [2v₀sinθ/g]
 
-
-D = v₀cosθ · [2v₀sinθ/g]
-
 D = [2v₀²sinθ cosθ]/g
 
 2sinθcosθ=sin2θ を使えば、

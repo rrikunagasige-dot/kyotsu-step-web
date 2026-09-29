@@ -1,6 +1,6 @@
 # P39 Hole Quality Audit — Chapter 1
 
-Status: **R4 APPLIED — VALIDATION PENDING**
+Status: **R4 PASS — 45 REASONING INTERACTIONS DEPLOYED**
 
 Date: 2026-09-29
 
@@ -81,7 +81,7 @@ Judgment:
 
 ## Summary
 
-Current interactions: 59
+Audited pre-rewrite interactions: 59
 
 Judgment totals:
 - KEEP: 33
@@ -133,3 +133,33 @@ Current source target:
 - answer-position distribution: A12 / B11 / C11 / D11.
 
 This status does not declare R4 PASS until the full data/math/browser/build/deploy gate succeeds.
+
+---
+
+## R4 Validation Result
+
+R4 is now fully validated and deployed.
+
+Final interactive count:
+- total 45,
+- 1A=9 / 1B=3 / 1C=4 / 1D=8 / 1E=6 / 1F=8 / 1G=7.
+
+Every surviving interaction now also has external pedagogy metadata in:
+`docs/physics-ch01/prototypes/CH1_INTERACTION_METADATA.tsv`
+
+Runtime pedagogy metadata:
+- purpose,
+- scaffold level,
+- two staged hints.
+
+Scaffold distribution:
+- strong: 6,
+- medium: 16,
+- light: 23.
+
+Final R0–R9 validation:
+workflow run 213 / head `5e852790b563717c5e732d0ccdd8380cbd47ae34` / SUCCESS.
+
+The 45 count is a result of the audit, not a target quota.
+Future edits must continue to justify each interaction by learning purpose rather than restoring density for its own sake.
+

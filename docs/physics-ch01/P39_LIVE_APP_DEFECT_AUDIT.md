@@ -185,3 +185,34 @@ Recommended follow-up:
 - Therefore **do not compare the public App to current main as if they are identical.**
 
 No P39 PASS may be claimed until R0–R9 and user re-QA are complete.
+
+---
+
+## FINAL R0–R9 STATUS — 2026-09-30
+
+This section supersedes the stale "Current Important State" snapshot above.
+
+| Step | Status | Result |
+|---|---|---|
+| R0 | PASS | defect list frozen before repair |
+| R1 | PASS | main restored to green baseline |
+| R2 | PASS | combined-subscript/math rendering unified and regression-tested |
+| R3 | PASS | 13 explicit multi-step derivation groups |
+| R4 | PASS | 59 audited → 45 reasoning interactions |
+| R5 | PASS | purpose metadata + 2/3/4-choice fading + two-stage hints |
+| R6 | PASS | fig-6 SVG replacement; remaining live WebPs >=1000×700; visual raster QA |
+| R7 | PASS by audit decision | strict reveal retained because required context is pre-question and post-question content is often answer-bearing |
+| R8 | PASS | Pixel 7 + desktop Chromium; full 1F derivation QA |
+| R9 | PASS | Pages run 213 deployed successfully |
+
+Current public/main state:
+- tested head: `5e852790b563717c5e732d0ccdd8380cbd47ae34`,
+- workflow run 213: SUCCESS,
+- Pages deployment: SUCCESS,
+- public App and tested main are synchronized at this gate.
+
+Remaining work before P39 closure:
+**USER RE-QA only.**
+
+Deferred cleanup from section C (source/parser/test naming and full developer audit mode) remains important before Chapter-2 batch production, but does not block the present Chapter-1 user review.
+

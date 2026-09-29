@@ -1381,3 +1381,66 @@ Final automated validation:
 **P39 remains USER RE-QA OPEN.**
 Automated implementation gates pass, but the user must review the actual learning experience again before P39 is closed.
 
+## 18. P39 SECOND LIVE-APP AUDIT — R0–R9 COMPLETE / USER RE-QA
+
+This section is the current authoritative P39 status and supersedes earlier numeric/status snapshots above while preserving them as history.
+
+After the second real-App review, the repair sequence was frozen as R0–R9 and completed in order.
+
+R0–R9 result:
+- **R0 audit freeze**: all observed live-App defects were inventoried before further patching.
+- **R1 green baseline**: stale tests were removed and main was restored to a reproducible green state.
+- **R2 math representation**:
+  - combined subscripts such as `v₀ₓ`, `v₀ᵧ`, `r⃗₁` are normalized by one tested math path,
+  - formula holes are rendered as React math/choice parts instead of KaTeX HTML-extension commands,
+  - inline/display/choice/resolved formula rendering is tested for parse safety.
+- **R3 derivation model**:
+  - 13 explicit derivation groups are encoded in source,
+  - prose may sit inside the same derivation group,
+  - multi-line derivations render as one continuous visual chain rather than stacked white formula cards.
+- **R4 hole-quality rewrite**:
+  - 59 audited interactions were classified as KEEP / REWRITE / REMOVE,
+  - current live target is **45 reasoning interactions**,
+  - per-unit counts: **9 / 3 / 4 / 8 / 6 / 8 / 7**,
+  - routine final division, copy-back, trivial arithmetic, and redundant symmetric prompts were removed,
+  - rewritten questions target parent relation, physical condition, elimination, factorization, representation, or causal reasoning.
+- **R5 scaffold fading + hints**:
+  - all 45 items have explicit `purpose`, `scaffoldLevel`, and two staged hints,
+  - scaffold distribution: strong=6 / medium=16 / light=23,
+  - visible choice count fades from 2 → 3 → 4 as support is reduced,
+  - wrong answers remain unresolved and reveal staged hints rather than the correct answer.
+- **R6 figure QA**:
+  - low-resolution fig-6 (620×465) was replaced by a crisp SVG confirmation figure,
+  - every remaining live WebP is gated at >=1000×700,
+  - fig-5 and all live 1E/1F raster figures were manually inspected for readable lines and labels,
+  - raster display remains capped to avoid upscaling.
+- **R7 reveal policy**:
+  - the current strict reveal is intentionally retained for this source because necessary context is placed before each question and post-question content frequently contains the answer,
+  - do not loosen reveal globally unless a concrete item needs hidden explanatory context; leakage prevention remains the higher-priority gate.
+- **R8 real-browser QA**:
+  - Playwright now runs on **Pixel 7 mobile and 1440×1000 desktop Chromium**,
+  - all Chapter-1 units boot to their first meaningful interaction,
+  - 1F is solved through all eight interactions in-browser,
+  - `v_0_x` / `v_0_y` raw-text leakage is forbidden,
+  - `.katex-error` must remain zero,
+  - the highest-point three-line derivation is verified inside one derivation chain with no per-line card border.
+- **R9 Pages deployment**:
+  - final workflow **run 213**,
+  - head **`5e852790b563717c5e732d0ccdd8380cbd47ae34`**,
+  - typecheck PASS,
+  - Chapter-1 data/math/asset/pedagogy gates PASS,
+  - mobile + desktop browser smoke PASS,
+  - production build PASS,
+  - GitHub Pages deploy PASS.
+
+Current public implementation authority remains:
+`docs/physics-ch01/prototypes/CH1_LEARNING_TEXT_V2_2_FORMULA_HOLES.md`
+plus
+`docs/physics-ch01/prototypes/CH1_INTERACTION_METADATA.tsv`.
+
+**P39 / G61 is still not PASS.**
+Current state:
+`R0–R9 AUTOMATED + BROWSER GATES PASS → USER RE-QA OPEN`.
+
+Do not begin Chapter 2 batch production or close P39 until the user has reviewed the deployed Chapter-1 learning experience again.
+

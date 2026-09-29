@@ -1532,3 +1532,73 @@ workflow run 154 / head `9bca1897d8866533ad5c398ab4ed3f69a4fc7d47`
 **G61/P39 is not yet closed.**
 Reason: automated implementation gates pass, but a second human App review is still required.
 
+### 19.18 P39 SECOND LIVE-APP AUDIT — R0–R9 PASS / USER RE-QA
+
+The earlier 65-hole deployment snapshot is historical. The current live Chapter-1 implementation has passed a second audit-driven redesign.
+
+Authoritative repair chain:
+
+```
+R0 defect freeze
+ ↓
+R1 green baseline
+ ↓
+R2 unified math representation
+ ↓
+R3 explicit derivation blocks
+ ↓
+R4 hole-quality rewrite
+ ↓
+R5 scaffold fading + staged hints
+ ↓
+R6 figure pixel/readability audit
+ ↓
+R7 reveal-policy audit
+ ↓
+R8 mobile + desktop browser QA
+ ↓
+R9 Pages deploy
+ ↓
+USER RE-QA
+```
+
+Current live pedagogy/data:
+- 45 interactive reasoning points,
+- counts by internal unit: 9 / 3 / 4 / 8 / 6 / 8 / 7,
+- 33 KEEP decisions, 12 REWRITE decisions, 14 REMOVE decisions from the 59-hole audit,
+- every item carries purpose / scaffold level / two hints,
+- scaffold levels: strong 6 / medium 16 / light 23,
+- visible options fade 2 → 3 → 4,
+- mechanical algebra remains visible rather than becoming an artificial interaction.
+
+Representation:
+- combined-subscript math is regression-tested,
+- no KaTeX HTML-extension hole rendering,
+- 13 explicit derivation groups,
+- continuous derivation card instead of one white card per equation,
+- fig-6 replaced by SVG,
+- all remaining live WebPs gated at >=1000×700 and key raster figures visually inspected.
+
+Reveal decision:
+- current strict progressive reveal is retained intentionally,
+- prerequisite/explanatory context is authored before each interaction,
+- post-interaction content may contain the answer and remains hidden until resolution,
+- no global semantic-reveal relaxation is authorized without a concrete leakage-safe need.
+
+Final validation:
+- workflow run **213**
+- head `5e852790b563717c5e732d0ccdd8380cbd47ae34`
+- typecheck PASS
+- audited data/math/asset/pedagogy gates PASS
+- Pixel 7 mobile browser smoke PASS
+- 1440×1000 desktop Chromium smoke PASS
+- full 1F eight-interaction progression PASS
+- raw `v_0_x` / `v_0_y` leakage absent
+- KaTeX error count = 0
+- highest-point three-line derivation verified as one chain
+- production build PASS
+- Pages deploy PASS
+
+**G61 / P39 remains OPEN only for USER RE-QA.**
+Automated success is not pedagogical approval.
+

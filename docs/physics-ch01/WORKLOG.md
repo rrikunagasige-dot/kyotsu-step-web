@@ -1505,3 +1505,43 @@ Final validation:
 
 P39 remains open only for user re-QA of the actual learning experience.
 
+---
+
+## 2026-09-30 — P39 second live-App audit completed through R9
+
+User screenshots exposed three important remaining classes of defect:
+1. combined-subscript math could still leak as red/raw text,
+2. a multi-line derivation was visually fragmented into separate white cards,
+3. some formula holes were mathematically trivial rather than pedagogically meaningful.
+
+Work was stopped, defects were listed first, and repairs were then applied in the fixed R0–R9 order.
+
+Completed:
+- restored green baseline before new feature work,
+- unified combined-subscript math normalization and added direct regression tests,
+- removed KaTeX HTML-extension interaction rendering,
+- introduced 13 explicit derivation groups,
+- reduced/reworked 59 interactions into 45 reasoning interactions,
+- created `CH1_INTERACTION_METADATA.tsv` with purpose / scaffold / two hints for all 45 items,
+- implemented 2/3/4-choice scaffold fading,
+- implemented staged wrong-answer hints without immediate answer reveal,
+- replaced the low-resolution 620×465 velocity-component figure with SVG,
+- gated all remaining live WebPs at >=1000×700,
+- manually inspected fig-5 plus all live 1E/1F raster figures,
+- retained strict progressive reveal after leakage review,
+- expanded Playwright from mobile-only to mobile + desktop,
+- added full 1F progression QA for math compilation and derivation-chain layout,
+- bumped Chapter-1 revisions so stale progress does not survive the redesign.
+
+Current interaction counts:
+1A=9 / 1B=3 / 1C=4 / 1D=8 / 1E=6 / 1F=8 / 1G=7 = 45.
+
+Final workflow:
+run 213 / head `5e852790b563717c5e732d0ccdd8380cbd47ae34`
+
+Result:
+typecheck PASS / data+math+asset+pedagogy gates PASS / mobile browser PASS / desktop browser PASS / build PASS / deploy PASS.
+
+P39 is **not** closed.
+Next gate is the user's second hands-on review of the deployed App.
+

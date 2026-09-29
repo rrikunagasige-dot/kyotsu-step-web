@@ -41,20 +41,22 @@ P34 uses these contradiction classes:
 
 ## 2. Current item density
 
+> Direct source recount: the current 1A–1G TypeScript files contain 179 item definitions (78+18+17+17+16+19+14). Earlier draft audit counts that were one lower per unit are superseded.
+
 Current app item counts:
 
 | Unit | Current app items | P33-passed v2.1 holes |
 |---|---:|---:|
-| 1A | 77 | 10 |
-| 1B | 17 | 6 |
-| 1C | 16 | 4 |
-| 1D | 16 | 9 |
-| 1E | 15 | 7 |
-| 1F | 18 | 9 |
-| 1G | 13 | 8 |
-| **Total** | **172** | **54** |
+| 1A | 78 | 10 |
+| 1B | 18 | 6 |
+| 1C | 17 | 4 |
+| 1D | 17 | 9 |
+| 1E | 16 | 7 |
+| 1F | 19 | 10 |
+| 1G | 14 | 8 |
+| **Total** | **179** | **54** |
 
-The numbers are not expected to match exactly; some app items may be transfer/review items. However, a 172-item chapter against a complete 54-hole continuous lesson is strong evidence that the current content has over-fragmented knowledge into micro-questions.
+The numbers are not expected to match exactly; some app items may be transfer/review items. However, a 179-item chapter against a complete 54-hole continuous lesson is strong evidence that the current content has over-fragmented knowledge into micro-questions.
 
 **Classification:** FRAGMENTATION / UNNECESSARY / DUPLICATE.
 
@@ -147,7 +149,7 @@ Visual masks do not prevent answer leakage through alt/caption text.
 
 ### 1A — 変位と速度
 
-Current: **77 items** vs ideal: **10 holes**.
+Current: **78 items** vs ideal: **10 holes**.
 
 Findings:
 - first-exposure `位置ベクトル` and `変位` are quizzed rather than meaning-first,
@@ -163,7 +165,7 @@ Findings:
 
 ### 1B — 速度の合成と分解
 
-Current: **17 items** vs ideal: **6 holes**.
+Current: **18 items** vs ideal: **6 holes**.
 
 Findings:
 - formula holes `v_x=v cosθ`, `v_y=v sinθ` are asked before showing the parent trigonometric relations `cosθ=v_x/v`, `sinθ=v_y/v`,
@@ -175,7 +177,7 @@ Findings:
 
 ### 1C — 相対速度
 
-Current: **16 items** vs ideal: **4 holes**.
+Current: **17 items** vs ideal: **4 holes**.
 
 Findings:
 - first-exposure `相対速度` is still a choice item,
@@ -187,7 +189,7 @@ Findings:
 
 ### 1D — 加速度
 
-Current: **16 items** vs ideal: **9 holes**.
+Current: **17 items** vs ideal: **9 holes**.
 
 Major missing representation:
 - no `v-t` graph representation in the current unit,
@@ -214,7 +216,7 @@ The first acceleration term is also a first-exposure terminology question and th
 
 ### 1E — 水平投射
 
-Current: **15 items** vs ideal: **7 holes**.
+Current: **16 items** vs ideal: **7 holes**.
 
 Findings:
 - strobe figure 11 is not used first as the concept-forming evidence; equations are introduced in the concept block before the separate figure-reading block,
@@ -229,7 +231,7 @@ Findings:
 
 ### 1F — 斜方投射
 
-Current: **18 items** vs ideal: **9 holes**.
+Current: **19 items** vs ideal: **10 holes**.
 
 Missing / compressed formula coverage:
 - no explicit `v_y=v0 sinθ-gt` teaching formula in the main concept chain,
@@ -247,7 +249,7 @@ Timing / leakage:
 
 ### 1G — 重力加速度・空気抵抗・終端速度
 
-Current: **13 items** vs ideal: **8 holes**.
+Current: **14 items** vs ideal: **8 holes**.
 
 Current unit is closer to the ideal than 1D–1F, but still has gaps:
 - it says the drag is proportional to speed in a low-speed regime, but does not define `k>0` or explain what k represents at the concept-introduction point,

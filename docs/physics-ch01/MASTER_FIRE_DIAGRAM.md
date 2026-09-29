@@ -1493,3 +1493,42 @@ A1 choices open.
 
 **Runtime boot issue RESOLVED. P39 remains OPEN only for user-facing pedagogy/UX QA.**
 
+### 19.17 P39 AUDIT-DRIVEN REPAIR — AUTOMATED GATES PASS / USER RE-QA
+
+The first live-App review identified source/parser/representation/UI contradictions. These were repaired as one audited batch.
+
+Closed defects include:
+- incomplete answer authority (29/65 → 65/65),
+- answer-position collapse (64/65=A → A17/B16/C16/D16),
+- student-facing internal unit references,
+- prose Unicode-math rendering,
+- formula-choice rendering,
+- boxed resolved formula fragments,
+- duplicate completed formulas,
+- concept-forming figure timing,
+- question-mark mask dependence,
+- missing v-t graph,
+- blurred low-resolution 1C/1D/1G assets,
+- missing chapter summary,
+- stale-progress carryover across revisions,
+- legacy worked-example adapter assumptions.
+
+Current Chapter-1 live representation:
+- 65 interactive holes,
+- 21 figure assets (17 semantic/canonical figures + 4 non-leaking guides/graphs),
+- continuous prose flow,
+- explicit answer authority,
+- revision-safe progress,
+- no legacy five-section requirement.
+
+Validation:
+workflow run 154 / head `9bca1897d8866533ad5c398ab4ed3f69a4fc7d47`
+- typecheck PASS
+- 32/32 audited Vitest checks PASS
+- Playwright Chromium 1A–1G smoke PASS
+- production build PASS
+- Pages deploy PASS
+
+**G61/P39 is not yet closed.**
+Reason: automated implementation gates pass, but a second human App review is still required.
+

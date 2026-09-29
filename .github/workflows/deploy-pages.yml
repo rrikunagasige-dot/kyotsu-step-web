@@ -32,6 +32,10 @@ jobs:
           cache: pnpm
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright Chromium
+        run: pnpm exec playwright install --with-deps chromium
+
       - name: Typecheck
         run: pnpm run typecheck
       - name: Chapter 1 v2.2 data gate

@@ -1295,3 +1295,34 @@ G56 PASS means the audit is complete; it does **not** mean the current app pedag
 
 No application code changed.
 
+### 19.11 P35 PEDAGOGY RULES — PASS
+
+Rules:
+`docs/physics-ch01/P35_PEDAGOGY_RULES.md`
+
+Defined:
+- one-step learnability,
+- H1–H6 question-purpose gate,
+- meaning-before-name,
+- mobile-first derivation,
+- representation timing,
+- interaction-density rule,
+- S0–S5 scaffold levels,
+- scaffold fading,
+- wrong-answer hint progression,
+- anti-brute-force retry,
+- transfer / retrieval,
+- leakage gate,
+- figure role,
+- formula role,
+- worked-example rule,
+- legacy-section non-authority,
+- student vs audit-mode boundary.
+
+The rules explicitly map back to all P34-C01…C18 contradictions.
+
+G57 PASS.
+**P35 PASS. P36 unblocked.**
+
+No application code changed.
+

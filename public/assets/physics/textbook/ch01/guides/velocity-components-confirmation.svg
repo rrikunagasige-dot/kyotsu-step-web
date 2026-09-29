@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560" role="img" aria-labelledby="title desc">
+<title id="title">速度ベクトルの成分</title>
+<desc id="desc">速度ベクトルvを水平方向と鉛直方向へ分解し、vx=v cos theta、vy=v sin thetaの対応を確認する図。</desc>
+<defs>
+  <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto">
+    <path d="M0,0 L0,10 L11,5 z" fill="#1f67b1"/>
+  </marker>
+</defs>
+<rect width="900" height="560" fill="#fff"/>
+<g stroke="#172737" stroke-width="4" fill="none">
+  <line x1="120" y1="420" x2="790" y2="420"/>
+  <line x1="120" y1="420" x2="120" y2="75"/>
+</g>
+<g stroke="#1f67b1" stroke-width="8" fill="none" marker-end="url(#arrow)">
+  <line x1="125" y1="415" x2="665" y2="415"/>
+  <line x1="665" y1="415" x2="665" y2="145"/>
+  <line x1="125" y1="415" x2="665" y2="145"/>
+</g>
+<path d="M215 415 A90 90 0 0 0 198 362" fill="none" stroke="#172737" stroke-width="4"/>
+<g fill="#172737" font-family="serif" font-size="43">
+  <text x="380" y="390">vₓ</text>
+  <text x="692" y="290">vᵧ</text>
+  <text x="405" y="245">v</text>
+  <text x="198" y="360">θ</text>
+</g>
+<g fill="#172737" font-family="system-ui, sans-serif" font-size="26">
+  <text x="800" y="435">x</text>
+  <text x="94" y="65">y</text>
+</g>
+<g fill="#172737" font-family="serif" font-size="34">
+  <text x="180" y="505">vₓ = v cos θ</text>
+  <text x="520" y="505">vᵧ = v sin θ</text>
+</g>
+</svg>

@@ -456,7 +456,7 @@ Do not weaken student pedagogy merely to make developer inspection easier.
 |---|---|
 | C01 fixed section template | §5, §17 |
 | C02 figure separation | §5, §14 |
-| C03 172-item fragmentation | §3, §7 |
+| C03 179-item fragmentation | §3, §7 |
 | C04 first-exposure terminology | §4 |
 | C05 title/heading leakage | §13 |
 | C06 alt/caption leakage | §13, §14 |

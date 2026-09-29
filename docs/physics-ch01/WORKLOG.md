@@ -1248,3 +1248,37 @@ No application code changed.
 
 
 Final v2.1 source SHA256: `f70472859e0ba67f635ddb7e94a74d7d4e4453f999c069ff3fe25c081bbaa40a`
+
+---
+
+## 2026-09-29 — P33 source repair v2.1 / closeout
+
+Applied only the five source-level repairs found by P33:
+1. C1 first-exposure term question removed; `相対速度` is taught in prose.
+2. 1B component formulas now show the trigonometric parent definitions before the holes.
+3. 1E `v_y^2=2gy` is derived from the general constant-acceleration equation.
+4. 1F time-free vertical equation is derived from the same parent relation.
+5. 1G defines the linear drag model, `k>0`, and its scope.
+
+No replacement hole was added for C1.
+
+Final QA:
+- 54 unique holes
+- 54 choice blocks
+- 17 canonical figures
+- 26 pages
+- choice rows non-splitting
+- B2/B3 and F1/F2 separate choice boxes
+- Markdown emphasis rendered correctly
+- final DOCX fully rendered; unchanged pages verified by image identity and changed pages visually rechecked
+
+Final DOCX Library identity:
+- library_file_id: `libfile_646f9a1da760819180156735b3bb3383`
+- bytes: 12,130,767
+- SHA256: `3e6a70d02bdc2a78beceb68df3e8ff72df74b4c39f31dabd28764deb3d388ec7`
+
+Result:
+**P33 PASS. P34 unblocked.**
+
+No application code changed.
+

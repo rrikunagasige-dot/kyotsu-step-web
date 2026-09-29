@@ -12,6 +12,23 @@ import { useAppStore } from '../stores/useAppStore'
 import { useI18n } from '../i18n/runtime'
 import { normalizeTextbookMath } from '../domain/textbookMath'
 
+function interactionPrompt(item: TextbookItem, text: (ja: string, zh: string) => string) {
+  switch (item.purpose) {
+    case 'concept-formation': return text('図や本文から意味を考えよう。', '根据图和正文思考含义。')
+    case 'representation-link': return text('図・言葉・式のつながりを考えよう。', '思考图、文字和公式之间的联系。')
+    case 'definition': return text('意味から関係を作ろう。', '从含义出发建立关系。')
+    case 'solution-planning': return text('次に何を考えるべきか選ぼう。', '选择下一步应该思考什么。')
+    case 'transfer': return text('ここまでの考え方を使ってみよう。', '用前面学过的思路来判断。')
+    case 'relation-selection': return text('ここで使う関係を選ぼう。', '选择这里应该使用的关系。')
+    case 'physical-condition': return text('この場面で成り立つ物理条件を考えよう。', '思考这个情境下成立的物理条件。')
+    case 'graph-reading': return text('グラフが表している物理量を読もう。', '读取图像所表示的物理量。')
+    case 'elimination': return text('どの関係を使って変数を消すか考えよう。', '思考用哪个关系消去变量。')
+    case 'factorization': return text('次の式変形の意味を考えよう。', '思考下一步式变形的意义。')
+    case 'causal-reasoning': return text('変化の因果関係をたどろう。', '沿着变化的因果关系思考。')
+    default: return item.prompt
+  }
+}
+
 function readingGroupItemIds(blocks: TextbookReadingBlock[], section: TextbookSection) {
   return blocks.flatMap((block) => {
     if (block.type === 'paragraph' || block.type === 'formula') {
@@ -112,6 +129,9 @@ function TextbookReadingFlow({ unit, section, progress }: {
   const activeItem = activeItemId ? section.items.find((item) => item.id === activeItemId) : undefined
   const activeRecord = activeItem ? currentProgress?.answers[activeItem.id] : undefined
   const activeChoices = activeItem ? getTextbookChoices(unit, activeItem) : []
+  const activeHint = activeItem && activeRecord && !isTextbookItemResolved(activeItem, activeRecord) && activeRecord.attemptCount > 0 && activeItem.hints.length
+    ? activeItem.hints[Math.min(activeRecord.attemptCount - 1, activeItem.hints.length - 1)]
+    : undefined
   const continuousLesson = unit.sections.length === 1 && section.id === 'lesson'
 
   const visibleBlocksInGroup = (group: TextbookReadingBlock[]) => {
@@ -151,9 +171,15 @@ function TextbookReadingFlow({ unit, section, progress }: {
     return (
       <div className="reading-inline-choice-panel" data-testid={`inline-choice-panel-${activeItem.id}`}>
         <div className="reading-inline-choice-panel__head">
-          <span>{activeItem.prompt}</span>
+          <span>{interactionPrompt(activeItem, text)}</span>
         </div>
-        <div className="reading-choice-options" role="group" aria-label={activeItem.prompt}>
+        {activeHint && (
+          <div className="reading-choice-hint" data-testid={`textbook-hint-${activeItem.id}`}>
+            <strong>{text('ヒント', '提示')}</strong>
+            <span>{activeHint}</span>
+          </div>
+        )}
+        <div className="reading-choice-options" role="group" aria-label={interactionPrompt(activeItem, text)}>
           {activeChoices.map((choice, index) => (
             <button
               type="button"

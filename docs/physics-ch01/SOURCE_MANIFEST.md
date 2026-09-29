@@ -37,7 +37,7 @@
 
 - source physics: textbook PDF is authoritative
 - historical pedagogical reference: supplied Word files
-- current Chapter-1 reconstructed learning-text authority: `prototypes/CH1_LEARNING_TEXT_V2.md`
+- current Chapter-1 reconstructed learning-text authority: `prototypes/CH1_LEARNING_TEXT_V2_1.md`
 - prose construction rule: `LEARNING_TEXT_WRITING_RULES.md`
 - formula derivation / hole-placement rule: `FORMULA_DERIVATION_RULES.md`
 - chapter figures: supplied `figure.zip`

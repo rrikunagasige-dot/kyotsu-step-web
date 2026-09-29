@@ -32,6 +32,8 @@ const items: TextbookItem[] = [
     acceptedAnswers: [],
     answerType: 'formula',
     choices: ['r₁', 'r₂', 'Δr'],
+    scaffoldLevel: 'strong',
+    hints: ['図の始点と終点を見る。', '原点から位置へ向かう矢印を考える。'],
   },
 ]
 

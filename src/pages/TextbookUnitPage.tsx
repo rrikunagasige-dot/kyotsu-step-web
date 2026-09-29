@@ -19,7 +19,7 @@ function readingGroupItemIds(blocks: TextbookReadingBlock[], section: TextbookSe
     if (block.type === 'figure') {
       return section.figures
         .find((figure) => figure.id === block.figureId)
-        ?.overlays.filter((overlay) => overlay.interactive).map((overlay) => overlay.itemId) ?? []
+        ?.overlays.filter((overlay) => overlay.interactive !== false).map((overlay) => overlay.itemId) ?? []
     }
     return []
   })

@@ -1351,4 +1351,27 @@ No current TypeScript/app data was changed.
 
 G59 PASS / P37 PASS.
 P38 is next.
+---
+
+## 2026-09-29 — P38 virtual learner + audit-mode specification
+
+Created:
+`docs/physics-ch01/P38_VIRTUAL_LEARNER_AND_AUDIT_MODE.md`
+
+Virtual 1A simulation traversed A1–A10 using ordinary background knowledge + phone lookup allowed for general mathematics.
+
+Results:
+- happy path 10/10 PASS,
+- no hidden physics dependency,
+- wrong-answer support paths for A3/A7/A9 remain unresolved until learner reasoning succeeds,
+- mobile/no-paper viability PASS.
+
+Specified developer-only audit mode with progress isolation, semantic navigation, forced answer/hint states, mask inspection, leakage panel, representation-only views, and viewport presets.
+
+G60 PASS / P38 PASS.
+
+Current stop is USER REVIEW.
+P39 remains blocked until explicit approval.
+
+No application code changed.
 

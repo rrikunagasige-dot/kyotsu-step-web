@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="480" viewBox="0 0 900 480" role="img" aria-labelledby="title desc">
 <title id="title">曲線上の2点と割線</title>
 <desc id="desc">曲線上のP1と近くのP2を結ぶ直線を示す。接線や瞬間速度の答えは表示しない。</desc>
 <rect width="900" height="480" fill="#fff"/>

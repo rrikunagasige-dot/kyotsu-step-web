@@ -383,7 +383,10 @@ function buildChapter1PracticeQuestions(locale: Locale) {
     const worked = unit.sections.filter((section) => section.role === 'worked-example')
     worked.forEach((section, index) => questions.push(createQuestion(unit, section, index + 1, locale)))
   }
-  return validateQuestionCatalog(questions)
+  // Continuous textbook units intentionally have no worked-example sections.
+  // In that case, do not fail application boot by validating an empty catalog.
+  // Standalone practice questions remain available from the normal question bank.
+  return questions.length ? validateQuestionCatalog(questions) : []
 }
 
 export const chapter1PracticeQuestions = buildChapter1PracticeQuestions('ja')

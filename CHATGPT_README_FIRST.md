@@ -958,3 +958,97 @@ scaffold fading不足
 が主要OPEN課題。
 
 これらを解かずに第2章以降を量産しないこと。
+
+## 10. USER-APPROVED learning-text writing rule — 2026-09-29
+
+Chapter 1 の再構成Wordをユーザー確認し、**文章らしさと現在の穴密度は適切**と評価された。
+今後の物理・教科書モード本文は、詳細版
+docs/physics-ch01/LEARNING_TEXT_WRITING_RULES.md
+を必ず先に読むこと。
+
+最重要ルール:
+
+    まず穴なしでも成立する自然な教材本文を書く
+            ↓
+    現象・図・既知事項から意味を作る
+            ↓
+    本文中の重要な語句・関係・式そのものを穴にする
+            ↓
+    その穴を埋める行為そのものが問いになる
+            ↓
+    正解すると元の自然な文章が完成する
+            ↓
+    完成した文章をそのまま読み続ける
+
+したがって、教材を「説明 → 別枠問題 → 説明 → 別枠問題」の断片へ戻してはいけない。
+
+### accepted hole density
+
+今回のChapter 1 prototypeの穴密度を今後のdefault baselineとする。
+
+穴にしてよい中心対象:
+
+- 図・現象から意味を読む重要判断
+- 物理量どうしの重要関係
+- 図 / 言葉 / 式のrepresentation変換
+- 解法の方針判断
+- 意味のある式構成・式変形
+- 少し後での重要retrieval / transfer
+
+原則として穴にしない:
+
+- 接続詞
+- 既に十分確認した同一知識の機械的反復
+- 単純算術だけの細切れ
+- 未習用語を根拠なく当てる問題
+- 「問題数を増やすため」の穴
+
+### unknown-term rule
+
+    意味を先に作る
+    ↓
+    名称を普通に教える
+    ↓
+    後の文章・式・別状況で名称を再利用させる
+
+未習の専門用語を初出時に4択で当てさせない。
+
+### writing rhythm
+
+教材本文は原則として、
+
+    前に分かったこと
+    ↓
+    まだ分からないこと / 新しい必要性
+    ↓
+    だから今これを考える
+    ↓
+    現象・図を見る
+    ↓
+    意味を読む
+    ↓
+    必要なら名称を与える
+    ↓
+    式で表す
+    ↓
+    式の意味を文章へ戻す
+    ↓
+    少し違う状況で再利用する
+    ↓
+    次の疑問へつなぐ
+
+という人間の授業に近い呼吸で書く。
+
+Chapter 1 review prototype:
+- 1A〜1G
+- 17 canonical figures
+- 53 holes
+- choices are placed after the corresponding prose
+- answer key is collected at the end
+- generated Word was visually rendered and reviewed
+
+Generator source is kept in:
+scripts/physics-textbook/build_ch1_learning_docx.py
+
+**この承認済み文章prototypeを壊して旧section templateへ戻さないこと。**
+

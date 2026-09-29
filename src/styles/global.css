@@ -484,3 +484,41 @@ button.physics-topic-card:not(:disabled):hover {
   text-align: center;
   font-family: inherit;
 }
+
+.reading-derivation-chain {
+  display: grid;
+  gap: 0;
+  margin: .35rem 0;
+  border: 1px solid var(--color-line);
+  background: #fff;
+}
+
+.reading-derivation-step + .reading-derivation-step {
+  border-top: 1px solid var(--color-line);
+}
+
+.reading-derivation-chain .reading-block-with-choice {
+  gap: .35rem;
+}
+
+.reading-derivation-chain .reading-formula-line {
+  margin: 0;
+  padding: .45rem .75rem;
+  border: 0;
+  background: transparent;
+}
+
+.reading-derivation-chain .reading-inline-choice-panel {
+  margin: 0 .75rem .65rem;
+}
+
+@media (max-width: 640px) {
+  .reading-derivation-chain .reading-formula-line {
+    padding: .42rem .45rem;
+    font-size: 1rem;
+  }
+
+  .reading-derivation-chain .reading-inline-choice-panel {
+    margin: 0 .45rem .55rem;
+  }
+}

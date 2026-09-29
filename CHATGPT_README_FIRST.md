@@ -1039,10 +1039,11 @@ docs/physics-ch01/LEARNING_TEXT_WRITING_RULES.md
 
 という人間の授業に近い呼吸で書く。
 
-Chapter 1 review prototype:
+Chapter 1 accepted prose baseline:
 - 1A〜1G
 - 17 canonical figures
-- 53 holes
+- initial approved prose prototype: 53 holes
+- current P33-passed v2.1: 54 justified holes
 - choices are placed after the corresponding prose
 - answer key is collected at the end
 - generated Word was visually rendered and reviewed

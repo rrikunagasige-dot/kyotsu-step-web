@@ -1279,9 +1279,16 @@ Implementation files:
 - `src/data/textbookUnits.test.ts`
 
 Deployment gate:
-- GitHub Pages run 93
-- commit `6a8cd2985f6279f96b31debb91a288dac68965c4`
+- GitHub Pages final validation run 100
+- deployed code includes parser fix `e8b4af262913b082b01a6afe8697b8f75c39f8d5`
 - typecheck PASS
+- Chapter 1 v2.2 runtime data gate PASS
+  - 7 units
+  - 65 holes
+  - 17 figures
+  - explicit-choice / answer consistency
+  - reading-flow reference completeness
+  - passive A3 mask
 - production build PASS
 - Pages deploy PASS
 - environment URL: `https://rrikunagasige-dot.github.io/kyotsu-step-web/`

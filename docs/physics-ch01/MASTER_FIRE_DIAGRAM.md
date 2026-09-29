@@ -84,7 +84,7 @@ CH01 物体の運動
 
 推奨学習順序は 1A→1B→1C→1D→1E→1F→1G。最初のV2ではunit間の完全lockは別ノード扱いとする。
 
-## 3. Section role
+## 3. Section role — LEGACY SCHEMA METADATA, NOT PEDAGOGY ORDER
 
 ```text
 concept
@@ -100,7 +100,17 @@ review
   新規知識なし。単元の依存関係を再接続
 ```
 
-同じroleは複数回存在してよい。表示構造は似ても内容の段落数・式・穴数は固定しない。
+これらは既存Schema 1.1の互換metadataとして残るが、**P33以降の学習順序templateではない**。
+
+禁止する解釈:
+
+```text
+concept → figure-reading → worked-example → review
+```
+
+を全概念に強制すること。
+
+P33以降は概念ごとに `P/V/Q/R/M/G/T` の最適なrepresentation pathを設計する。図がconcept formingなら文章と同時に置いてよい。式がconcept formingなら概念説明の途中に導入してよい。representation type と section type を同一視しない。
 
 ## 4. Figure V2
 
@@ -246,11 +256,32 @@ P11  PASS — 1F 斜方投射 + supplied figures 13–14 + browser audit
 P12  PASS — 1G 重力加速度・空気抵抗・終端速度 + supplied figures 15–17 + start→finish browser gate
 P13  PASS — Chapter 1 full gate (G11–G17)
 P14  PASS — README / fire diagram / worklog finalization
-P15  PASS — setup-first navigation: 問題→学習設定→問題を解く→科目→分野→問題
-P16  PASS — worked-example adapter: 1A〜1G × 2 = 14 Question
-P17  PASS — Chapter 1 publish + dedup audit: motion 15 / physics total 17
+P15  PASS — setup-first navigation
+P16  PASS — worked-example adapter
+P17  PASS — Chapter 1 question-bank publish + dedup audit
 P18  PASS — full browser/regression gate
-P19  PASS — README / fire diagram / worklog / checkpoint finalization
+P19  PASS — docs/checkpoint finalization
+P20  PASS — full textbook catalog (5 parts / 15 chapters)
+P21  PASS — catalog-driven textbook setup + pending chapters
+P22  PASS — internal unit codes hidden from learner UI
+P23  PASS — direct-open textbook unit cards
+P24  PASS — 1A browser audit after direct navigation
+P25  PASS — full catalog/regression gate + docs finalization
+P26  PASS — textbook answer-state / progress repair
+P27  PASS — complete-formula interactive KaTeX renderer
+P28  PASS — continuous reading-section stack
+P29  PASS — corrupted Chapter-1 figures restored from canonical PNGs
+P30  PASS — reader regression / asset-integrity full gate
+P31  PASS — docs / source manifest / checkpoint finalization
+P32  PASS — persistent source archive index
+
+P33  OPEN — ideal physics-learning representation map + Formula Coverage
+P34  OPEN — current-app contradiction audit against P33
+P35  OPEN — pedagogy rules
+P36  OPEN — representation integration + leakage/mask gates
+P37  OPEN — 1A redesign on paper/data only
+P38  OPEN — virtual beginner simulation + developer audit-mode specification
+P39  BLOCKED — code implementation; requires P33–P38 + USER REVIEW
 ```
 
 P01 PASS evidence: GitHub Actions run `36333501024`.
@@ -852,3 +883,144 @@ Library search → size/SHA → testzip → use
 Canonical Library identities:
 - figure: `libfile_f62fe4c165d481919f798f2394918071`
 - mother/source packet: `libfile_14988b216fa48191beeff635f7c4c1f2`
+
+## 19. P33–P39 Pedagogy Reconstruction — AUTHORITATIVE NEXT LINE
+
+P32まででreader infrastructureとsource persistenceは整った。次のボトルネックは教育設計である。
+**この節がP33以降のauthoritative dependency lineであり、旧5-section templateを次工程へ持ち込まない。**
+
+### 19.1 Dependency
+
+```text
+P32 PASS — source / reader foundation
+   │
+   ▼
+P33 IDEAL PHYSICS-LEARNING REPRESENTATION MAP
+   │
+   ├─ current app / schemaから独立して設計
+   ├─ prerequisite knowledge
+   ├─ P/V/Q/R/M/G/T representation path
+   ├─ first learnable question
+   ├─ knowledge gained
+   ├─ next-question dependency
+   ├─ required figure / graph
+   ├─ Formula Coverage
+   │    ├─ required formula set
+   │    ├─ role
+   │    │    concept-forming
+   │    │    representation
+   │    │    calculation
+   │    │    verification
+   │    ├─ introduction timing
+   │    ├─ prerequisite
+   │    └─ figure/text/graph/quantity link
+   ├─ scaffold level + fading
+   └─ transfer / review point
+   │
+   │  P33の最初の正式作業
+   │  1A: 位置 → 位置ベクトル → 変位
+   ▼
+P34 CURRENT-APP CONTRADICTION AUDIT
+   │
+   ├─ missing representation
+   ├─ wrong representation
+   ├─ wrong timing
+   ├─ missing formula
+   ├─ premature formula
+   ├─ split-attention
+   ├─ unnecessary question
+   └─ answer leakage
+   ▼
+P35 PEDAGOGY RULES
+   │
+   ├─ one-step learnability
+   ├─ knowledge-generation purpose
+   ├─ question purpose
+   ├─ scaffold fading
+   ├─ wrong-answer hint progression
+   └─ transfer / retrieval
+   ▼
+P36 REPRESENTATION INTEGRATION
+   │
+   ├─ text ↔ figure
+   ├─ figure ↔ formula
+   ├─ formula ↔ graph
+   ├─ synchronized reveal
+   ├─ concept-forming / inference / explanatory figure
+   ├─ mask necessity
+   ├─ mask completeness
+   └─ pre-answer leakage gate
+   ▼
+P37 1A REDESIGN — PAPER / DATA ONLY
+   ▼
+P38 VIRTUAL BEGINNER SIMULATION
+   │  middle-school knowledge baseline
+   │  + developer audit-mode specification
+   ▼
+USER REVIEW
+   ▼
+P39 CODE IMPLEMENTATION
+```
+
+### 19.2 P33 scope boundary
+
+P33で評価するのは **理想の学習dependency** である。
+
+```text
+Physics itself
++ beginner cognition
++ representation choice
+= ideal learning map
+```
+
+P33では「現在のAppに実装済みか」を理由に理想mapを変更しない。
+必要な図・公式・graphが現在なくても `required = YES` と記録する。
+現在実装との差分・欠落・矛盾を判定するのはP34。
+
+### 19.3 P33 first work item
+
+```text
+P33-A1  1A
+位置
+ ↓
+位置ベクトル
+ ↓
+変位
+```
+
+各conceptについて最低限:
+
+```text
+prerequisite
+→ best primary representation
+→ starting situation
+→ first learnable question
+→ knowledge gained
+→ next dependency
+→ required figure
+→ Formula Coverage
+→ required graph
+→ explicit representation links
+→ scaffold
+→ fading
+→ transfer
+```
+
+1Aでformatを検証した後に、平均速度・瞬間速度・接線方向へ進み、1Aのmapを完成させる。
+そのformatが教育設計として成立することを確認してから1B〜1Gへ展開する。
+
+### 19.4 Pedagogy gates
+
+- G52 OPEN — P33-A1「位置→位置ベクトル→変位」のrepresentation mapが完成している。
+- G53 OPEN — 1A〜1Gの全対象conceptについてprerequisiteとP/V/Q/R/M/G/T pathが定義されている。
+- G54 OPEN — 全conceptでFormula Coverage（必要式・役割・導入時点・前提・表現リンク）が定義されている。
+- G55 OPEN — P33 mapが現行UI/schema都合によって弱められていない。
+- G56 OPEN — P34でcurrent appとの全矛盾がmissing/wrong/timing/leakage等に分類されている。
+- G57 OPEN — P35のone-step learnability / scaffold fading / retry-hint rulesが確定している。
+- G58 OPEN — P36のrepresentation integration / mask / leakage gatesが確定している。
+- G59 OPEN — P37で1Aのpaper/data redesignが完成している。
+- G60 OPEN — P38で中学知識baselineのvirtual beginner simulationとdeveloper audit-mode仕様が完成している。
+- G61 BLOCKED — USER REVIEW完了後にのみP39を開始できる。
+
+**P39まではapplication codeを変更しない。**
+

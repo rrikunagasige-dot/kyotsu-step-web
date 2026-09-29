@@ -67,16 +67,35 @@ test('A1 choice panel uses natural wording and does not expose the internal hole
 
 test('first concept-forming figure is not upscaled beyond its intrinsic size', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/physics-a-displacement-velocity'))
-  const image = page.getByTestId('textbook-figure-fig-1-guide').locator('img')
-  await expect(image).toBeVisible()
+  const figure = page.getByTestId('textbook-figure-fig-1-guide')
+  const image = figure.locator('img')
 
-  const dimensions = await image.evaluate((element) => {
+  await image.waitFor({ state: 'attached' })
+  await page.waitForTimeout(500)
+
+  const diagnostics = await image.evaluate((element) => {
     const img = element as HTMLImageElement
+    const box = img.getBoundingClientRect()
+    const parent = img.parentElement?.getBoundingClientRect()
+    const style = getComputedStyle(img)
     return {
-      rendered: img.getBoundingClientRect().width,
-      natural: img.naturalWidth,
+      src: img.currentSrc || img.src,
+      complete: img.complete,
+      naturalWidth: img.naturalWidth,
+      naturalHeight: img.naturalHeight,
+      renderedWidth: box.width,
+      renderedHeight: box.height,
+      display: style.display,
+      visibility: style.visibility,
+      opacity: style.opacity,
+      parentWidth: parent?.width ?? -1,
+      parentHeight: parent?.height ?? -1,
     }
   })
-  expect(dimensions.natural).toBeGreaterThan(0)
-  expect(dimensions.rendered).toBeLessThanOrEqual(dimensions.natural + 1)
+  console.log('[FIGURE-DIAG]', JSON.stringify(diagnostics))
+
+  expect(diagnostics.complete).toBe(true)
+  expect(diagnostics.naturalWidth).toBeGreaterThan(0)
+  expect(diagnostics.renderedWidth).toBeGreaterThan(0)
+  expect(diagnostics.renderedWidth).toBeLessThanOrEqual(diagnostics.naturalWidth + 1)
 })

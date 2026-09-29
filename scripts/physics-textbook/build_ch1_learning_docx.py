@@ -43,6 +43,14 @@ def set_cell_border(cell, color='D9E2F3', size='8'):
         element.set(qn('w:color'), color)
 
 
+
+
+def prevent_row_split(row):
+    trPr = row._tr.get_or_add_trPr()
+    tag = qn('w:cantSplit')
+    if trPr.find(tag) is None:
+        trPr.append(OxmlElement('w:cantSplit'))
+
 def set_run_font(run, size=10.5, bold=None, color=None):
     run.font.name = 'Aptos'
     run._element.rPr.rFonts.set(qn('w:eastAsia'), 'Yu Gothic')
@@ -54,16 +62,20 @@ def set_run_font(run, size=10.5, bold=None, color=None):
 
 
 def add_text_with_holes(paragraph, text: str):
-    parts = HOLE_RE.split(text)
+    token_re = re.compile(r'(【[A-G]\d+[a-z]?[^】]*】|\*\*[^*]+\*\*)')
+    parts = token_re.split(text)
     for part in parts:
         if not part:
             continue
-        r = paragraph.add_run(part)
         if HOLE_RE.fullmatch(part):
+            r = paragraph.add_run(part)
             set_run_font(r, 10.5, bold=True, color=(31, 78, 121))
+        elif part.startswith('**') and part.endswith('**'):
+            r = paragraph.add_run(part[2:-2])
+            set_run_font(r, 10.5, bold=True)
         else:
+            r = paragraph.add_run(part)
             set_run_font(r, 10.5)
-
 
 def parse_frontmatter(lines):
     if not lines or lines[0].strip() != '---':
@@ -156,7 +168,7 @@ def build(source: Path, figure_dir: Path, output: Path):
     # First h1 gets title treatment if it is the cover chapter title; preserve later h1s.
     h1_count=0
     fig_count=0
-    for block in blocks:
+    for idx, block in enumerate(blocks):
         kind=block[0]
         if kind=='h1':
             h1_count += 1
@@ -174,6 +186,8 @@ def build(source: Path, figure_dir: Path, output: Path):
         elif kind=='p':
             p=doc.add_paragraph()
             add_text_with_holes(p, block[1])
+            if idx + 1 < len(blocks) and blocks[idx+1][0] == 'choices':
+                p.paragraph_format.keep_with_next = True
         elif kind=='callout':
             table=doc.add_table(rows=1, cols=1)
             table.alignment=WD_TABLE_ALIGNMENT.CENTER
@@ -187,6 +201,7 @@ def build(source: Path, figure_dir: Path, output: Path):
             _, qid, content=block
             table=doc.add_table(rows=1, cols=1)
             table.alignment=WD_TABLE_ALIGNMENT.CENTER
+            prevent_row_split(table.rows[0])
             cell=table.cell(0,0)
             set_cell_shading(cell, 'F8FBFF')
             set_cell_border(cell, color='C5D9F1')
@@ -211,7 +226,7 @@ def build(source: Path, figure_dir: Path, output: Path):
     for section in doc.sections:
         p=section.footer.paragraphs[0]
         p.alignment=WD_ALIGN_PARAGRAPH.CENTER
-        r=p.add_run('Chapter 1 learning-text checkpoint v2 — 2026-09-29')
+        r=p.add_run('Chapter 1 learning-text checkpoint — 2026-09-29')
         set_run_font(r,8,color=(100,100,100))
 
     output.parent.mkdir(parents=True, exist_ok=True)

@@ -35,7 +35,7 @@ export function TextbookFigure({ figure, items, progress, onOpen }: TextbookFigu
             height: `${overlay.height}%`,
           } satisfies CSSProperties
 
-          if (!overlay.interactive) {
+          if (overlay.interactive === false) {
             return (
               <span
                 key={overlay.id}

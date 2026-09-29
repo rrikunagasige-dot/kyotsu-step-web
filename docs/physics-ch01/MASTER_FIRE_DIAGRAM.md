@@ -1431,3 +1431,37 @@ Candidate:
 
 Earlier P33–P38 documents remain design history, but no implementation may treat v2.1 as the user-approved final Chapter-1 interaction density.
 
+### 19.15 P39 APP PREVIEW — DEPLOYED / USER QA OPEN
+
+The user explicitly authorized implementation after reviewing v2.2 and stating that remaining problems must be found in the real App.
+
+Current implementation:
+`docs/physics-ch01/prototypes/CH1_LEARNING_TEXT_V2_2_FORMULA_HOLES.md`
+    ↓ raw import / parser
+`src/data/textbook/ch01/v22Continuous.ts`
+    ↓
+seven continuous Chapter-1 units
+    ↓
+existing textbook reader with finer progressive reveal
+
+Preview facts:
+- 65 holes total: 10/6/4/12/9/14/10
+- 17 canonical figures
+- one continuous lesson section per unit
+- legacy five-section student flow removed from current Chapter-1 data
+- block-level progressive reveal prevents later formula/explanation leakage
+- passive mask support added for future answer-bearing figure labels
+- fig-1 Δr masked until A3
+- neutral pre-answer captions/alts
+
+Deployment:
+- commit: `6a8cd2985f6279f96b31debb91a288dac68965c4`
+- GitHub Pages run: 93
+- typecheck PASS
+- build PASS
+- deploy PASS
+- URL: `https://rrikunagasige-dot.github.io/kyotsu-step-web/`
+
+**G61 / P39 remain OPEN.**
+Reason: implementation is now intentionally waiting for real user QA on phone/app. Do not mark PASS from build success alone.
+

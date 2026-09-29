@@ -1,11 +1,11 @@
 # P33 — Chapter 1 Ideal Representation / Dependency Map
 
-Status: **MAP COMPLETE / SOURCE-ALIGNMENT ISSUES OPEN**
+Status: **P33 PASS / READY FOR P34**
 
 Date: 2026-09-29
 
 Authoritative input:
-- `prototypes/CH1_LEARNING_TEXT_V2.md`
+- `prototypes/CH1_LEARNING_TEXT_V2_1.md`
 - `LEARNING_TEXT_WRITING_RULES.md`
 - `FORMULA_DERIVATION_RULES.md`
 - textbook Chapter 1 pages 12–27 as physics authority
@@ -135,12 +135,11 @@ Rule: every hole must be H1–H6 and must have visible or previously established
 |A9|H4|T→strategy|平均速度の数値例|まず変位|A-TR|PASS|
 |A10|H6/T|M→T|ΔrとΔt|平均速度数値|A-TR|PASS|
 |B1|H1/H2|P/V→R|船+川|速度の和|B-SUM|PASS|
-|B2|H3/H6|V→M|x方向への投影|v cosθ|B-PROJ|PATCH DERIVATION: show cosθ=vx/v before hole|
-|B3|H3/H6|V→M|y方向への投影|v sinθ|B-PROJ|PATCH DERIVATION: show sinθ=vy/v before hole|
+|B2|H3/H6|V→M|x方向への投影|v cosθ|B-PROJ|PASS — v2.1 shows cosθ=vₓ/v before the hole|
+|B3|H3/H6|V→M|y方向への投影|v sinθ|B-PROJ|PASS — v2.1 shows sinθ=vᵧ/v before the hole|
 |B4|H3/H6|M→Q|直交成分|√(vx²+vy²)|B-MAG|PASS|
 |B5|H2/H6|R→M|逆向きvector|a+(-b)|B-DIFF|PASS|
 |B6|H6/T|M→T|(2.0,1.5)|2.5|B-TR|PASS|
-|C1|NONE|P→term|意味は作れているが名称未提示|相対速度という名称|C-REL|REMOVE/CONVERT TO READ: first-exposure terminology lottery|
 |C2|H2/H3|R→M|観測者Aを差し引く|vB/A=vB-vA|C-REL|PASS|
 |C3|H1/H2|R→Q|同速度→差0|止まって見える|C-ZERO|PASS|
 |C4|H6/T|M→T|雨と自転車の成分|(-10,-10)|C-TR|PASS|
@@ -161,8 +160,8 @@ Rule: every hole must be H1–H6 and must have visible or previously established
 |E5a|H6|M→M|x=v0t|x/v0|E-TRAJ|PASS|
 |E5|H3|M→shape|y∝x²|放物線|E-TRAJ|PASS|
 |E6|H6/T|M→T|y=1/2gt²|2.0|E-TR|PASS|
-|F1|H3/H6|V→M|B-PROJ再利用|v0cosθ|F-PROJ|PASS after B-PROJ derivation patch|
-|F2|H3/H6|V→M|B-PROJ再利用|v0sinθ|F-PROJ|PASS after B-PROJ derivation patch|
+|F1|H3/H6|V→M|B-PROJ再利用|v0cosθ|F-PROJ|PASS|
+|F2|H3/H6|V→M|B-PROJ再利用|v0sinθ|F-PROJ|PASS|
 |F3|H2/H6|D→M|a=-g|v0sinθ-gt|F-Y|PASS|
 |F4|H5|P/R→M|上昇→下降境界|0|F-TOP|PASS|
 |F5|H6|M→M|vy=0を代入|v0sinθ/g|F-H|PASS|
@@ -172,7 +171,7 @@ Rule: every hole must be H1–H6 and must have visible or previously established
 |F8|H6|M→M|D=vxT; trig identity|(v0²/g)sin2θ|F-RANGE|PASS; ordinary trig support may be looked up|
 |F9|H6/T|M→T|sin2θ max=1|45°|F-RANGE|PASS; ordinary trig support may be looked up|
 |G1|H2/H6|R→M|ma=mg|g|G-GRAV|PASS|
-|G2|H3/model|P/R→M|f∝v model|kv|G-DRAG|PATCH: define k>0 and model/regime adjacent|
+|G2|H3/model|P/R→M|f∝v model|kv|G-DRAG|PASS — v2.1 defines k>0 and the linear-model scope|
 |G3|H2/H6|R→M|down positive, drag opposite|mg-kv|G-DYN|PASS|
 |G4|H1/H2|M→R|a=g-(k/m)v|小さくなる|G-DYN|PASS|
 |G5|H3|G→Q|v-t slope|加速度|G-GRAPH|PASS|
@@ -192,7 +191,7 @@ Formula Coverage is defined independently of current UI. “SOURCE PATCH” mean
 |1A|v=lim(Δt→0)Δr/Δt|concept-forming|average velocity with shrinking interval|after tangent visual|VISIBLE / PASS; limit math may be looked up|
 |1A|v=\|v⃗\||representation|vector magnitude|after velocity|VISIBLE / PASS|
 |1B|v=v1+v2|concept-forming|boat + current vector addition|after phenomenon/fig-5|VISIBLE / PASS|
-|1B|vx=v cosθ; vy=v sinθ|representation|cosθ=vx/v; sinθ=vy/v|after decomposition visual|SOURCE PATCH: definitions/one-line rearrangement should be explicit|
+|1B|vx=v cosθ; vy=v sinθ|representation|cosθ=vx/v; sinθ=vy/v|after decomposition visual|VISIBLE / PASS — parent ratios and rearrangement shown in v2.1|
 |1B|v=√(vx²+vy²)|calculation / representation|Pythagoras|after components|VISIBLE / PASS|
 |1B|a-b=a+(-b)|representation|inverse vector|before relative velocity|VISIBLE / PASS|
 |1C|vB/A=vB-vA|concept-forming|observer subtraction, 15-10 example|after observer phenomenon|VISIBLE / PASS|
@@ -205,30 +204,30 @@ Formula Coverage is defined independently of current UI. “SOURCE PATCH” mean
 |1D|ma=F|concept-forming|Newton second law|after acceleration|VISIBLE / PASS|
 |1E|ax=0; vx=v0; x=v0t|representation / calculation|gravity vertical only|after strobe split|VISIBLE / PASS|
 |1E|vy=gt; y=1/2gt²|calculation|D-KIN with v0y=0, ay=g|vertical free fall|VISIBLE / PASS|
-|1E|vy²=2gy|calculation|D-KIN v²-v0²=2ax with v0y=0, a=g|after vertical equations|SOURCE PATCH: parent substitution is currently asserted, not shown|
+|1E|vy²=2gy|calculation|D-KIN v²-v0²=2ax with v0y=0, a=g|after vertical equations|VISIBLE / PASS — substitution shown in v2.1|
 |1E|v=√(v0²+g²t²)|calculation / representation|Pythagoras on components|after vx,vy|VISIBLE / PASS|
 |1E|y=gx²/(2v0²)|representation / verification|x=v0t→t=x/v0 substituted into y|trajectory|VISIBLE / PASS|
-|1F|v0x=v0cosθ; v0y=v0sinθ|representation|reuse 1B projection definitions|at launch|PASS once 1B projection derivation is explicit|
+|1F|v0x=v0cosθ; v0y=v0sinθ|representation|reuse 1B projection definitions|at launch|VISIBLE / PASS|
 |1F|vy=v0sinθ-gt; y=v0sinθ t-1/2gt²|calculation|D-KIN with a=-g|vertical motion|VISIBLE / PASS|
-|1F|vy²-(v0sinθ)²=-2gy|calculation|D-KIN time-free equation with a=-g|after vertical equations|SOURCE PATCH or REMOVE: currently asserted and unused|
+|1F|vy²-(v0sinθ)²=-2gy|calculation|D-KIN time-free equation with a=-g|after vertical equations|VISIBLE / PASS — parent equation and substitution shown in v2.1|
 |1F|tH=v0sinθ/g; H=v0²sin²θ/(2g)|calculation|vy=0 then substitute tH into y|highest point|VISIBLE / PASS|
 |1F|trajectory y=x tanθ-gx²/(2v0²cos²θ)|representation / verification|eliminate t|trajectory|VISIBLE / PASS|
 |1F|T=2v0sinθ/g|calculation|y=0, discard T=0|flight time|VISIBLE / PASS|
 |1F|D=(v0²/g)sin2θ|calculation / representation|D=vxT; trig identity|range|VISIBLE / PASS; trig may be looked up|
 |1G|a=g from ma=mg|concept-forming|mass cancellation|gravity-only fall|VISIBLE / PASS|
-|1G|f=kv|model|empirical linear-drag approximation|before drag dynamics|SOURCE PATCH: define k>0 and approximation regime|
+|1G|f=kv|model|empirical linear-drag approximation|before drag dynamics|VISIBLE / PASS — k>0 and model scope defined in v2.1|
 |1G|ma=mg-kv → a=g-(k/m)v|concept-forming / calculation|force signs|drag dynamics|VISIBLE / PASS|
 |1G|vt=mg/k|calculation / concept-forming|terminal speed means a=0|terminal state|VISIBLE / PASS|
 
-## 6. Required source-alignment fixes found by P33
+## 6. Source-alignment fixes found by P33 — RESOLVED IN v2.1
 
 |ID|Issue|Why it matters|Required change|Status|
 |---|---|---|---|---|
-|P33-I1|C1 new-term hole|相対速度の意味は状況から作れているが、名称『相対速度』は初出であり選択肢から当てさせている。|C1をREADに変え『このような速度を相対速度という』と教える。必要なら後でretrieval holeを置く。|OPEN|
-|P33-I2|1B projection derivation|vx=v cosθ, vy=v sinθ が『直角三角形の関係から』で止まり、式の親関係が画面内にない。|cosθ=vx/v, sinθ=vy/v → rearrange を1段表示する。一般三角比そのものは外部参照可。|OPEN|
-|P33-I3|1E time-free vertical formula|vy²=2gy が『も成り立つ』だけで、Dの v²-v0²=2ax からの代入が見えない。|v0y=0, a=g, x→y を1行で代入して示す。|OPEN|
-|P33-I4|1F time-free vertical formula|vy²-(v0sinθ)²=-2gy が未導出かつ後続で使われていない。|Dの式から1行導出するか、学習上使わないなら削る。|OPEN|
-|P33-I5|linear-drag constant k|f=kv の比例定数 k の意味・k>0・線形近似の範囲がその場で定義されていない。|『k>0 は物体形状・媒質等で決まる比例定数。ここでは比較的低速での線形抵抗モデル』を隣接表示。|OPEN|
+|P33-I1|C1 new-term hole|相対速度の意味は状況から作れているが、名称『相対速度』は初出であり選択肢から当てさせている。|C1をREADに変え『このような速度を相対速度という』と教える。必要なら後でretrieval holeを置く。|RESOLVED v2.1|
+|P33-I2|1B projection derivation|vx=v cosθ, vy=v sinθ が『直角三角形の関係から』で止まり、式の親関係が画面内にない。|cosθ=vx/v, sinθ=vy/v → rearrange を1段表示する。一般三角比そのものは外部参照可。|RESOLVED v2.1|
+|P33-I3|1E time-free vertical formula|vy²=2gy が『も成り立つ』だけで、Dの v²-v0²=2ax からの代入が見えない。|v0y=0, a=g, x→y を1行で代入して示す。|RESOLVED v2.1|
+|P33-I4|1F time-free vertical formula|vy²-(v0sinθ)²=-2gy が未導出かつ後続で使われていない。|Dの式から1行導出するか、学習上使わないなら削る。|RESOLVED v2.1|
+|P33-I5|linear-drag constant k|f=kv の比例定数 k の意味・k>0・線形近似の範囲がその場で定義されていない。|『k>0 は物体形状・媒質等で決まる比例定数。ここでは比較的低速での線形抵抗モデル』を隣接表示。|RESOLVED v2.1|
 
 ## 7. Gate judgment
 
@@ -238,21 +237,20 @@ Formula Coverage is defined independently of current UI. “SOURCE PATCH” mean
 A-POS → A-DISP is explicitly mapped with prerequisite, representation path, figure, knowledge gained, formula role, and next dependency.
 
 ### G52a — mobile derivation completeness
-**OPEN.**
+**PASS.**
 
-The majority of nontrivial formula chains are now visible, but P33-I2/I3/I4/I5 remain:
-- component projection parent relation,
-- horizontal-projectile time-free vertical equation,
-- oblique-projectile time-free vertical equation,
-- linear-drag constant/model definition.
+The v2.1 source closes all formula/model alignment gaps identified in P33:
+- 1B component formulas show their trigonometric parent ratios before the holes,
+- 1E derives the time-free vertical relation from the 1D parent equation,
+- 1F derives its time-free vertical relation from the same parent equation,
+- 1G defines the linear-drag approximation and `k>0` before using `f=kv`.
 
-This is a source-text issue, not an app-implementation issue.
+The mobile learner can follow every nontrivial Chapter-1 formula chain without silently reconstructing a multi-step physics derivation.
 
 ### G52b — every hole justified by H1–H6
-**OPEN.**
+**PASS.**
 
-54 of 55 holes have a defensible H1–H6 purpose under the current audit.
-C1 violates the “meaning → name → later retrieval” rule because the new term “relative velocity” is first encountered as a choice. It should become normal teaching prose or be moved to a later retrieval point.
+The first-exposure C1 terminology lottery was removed rather than replaced for numerical symmetry. The current source contains 54 holes, and all 54 have a defensible H1–H6 teaching purpose with visible or previously established evidence.
 
 ### G53 — concept prerequisite + P/V/Q/R/M/G/T path defined for 1A–1G
 **PASS.**
@@ -276,18 +274,28 @@ Open source patches are explicitly recorded rather than hidden.
 
 This document did not use current UI/schema limitations to remove required learning relationships.
 
-## 8. Next edge
+## 8. P33 closure / next edge
 
-Do **not** start P34 yet.
+**P33 is PASS for the current Chapter-1 v2.1 source.**
 
-First repair the five source-alignment items P33-I1…I5 in `CH1_LEARNING_TEXT_V2.md`, regenerate the review Word, and re-run G52a/G52b.
+Current gates:
+- G52 PASS
+- G52a PASS
+- G52b PASS
+- G53 PASS
+- G54 PASS
+- G55 PASS
 
-Only after G52a and G52b pass:
+All five P33 source-alignment issues P33-I1…I5 are resolved in v2.1.
+
+Next:
 
 ```text
-P33 source-aligned ideal Chapter 1
+P33 source-aligned ideal Chapter 1 — PASS
         ↓
 P34 CURRENT APP vs IDEAL
         ↓
 missing / wrong / wrong timing / split-attention / leakage
 ```
+
+P34 begins as an audit. Do not modify application code until the later implementation gate.

@@ -299,3 +299,29 @@ missing / wrong / wrong timing / split-attention / leakage
 ```
 
 P34 begins as an audit. Do not modify application code until the later implementation gate.
+
+## 8. P33 closeout / next edge
+
+All five source-alignment findings P33-I1…I5 are resolved in `CH1_LEARNING_TEXT_V2_1.md`.
+
+Final P33 gates:
+- G52 PASS
+- G52a PASS
+- G52b PASS
+- G53 PASS
+- G54 PASS
+- G55 PASS
+
+Therefore **P33 PASS**.
+
+Next authoritative node:
+
+```text
+P33 source-aligned ideal Chapter 1
+        ↓
+P34 CURRENT APP vs IDEAL
+        ↓
+missing / wrong / wrong timing / split-attention / leakage
+```
+
+P34 is an audit. Do not modify application code while performing it.

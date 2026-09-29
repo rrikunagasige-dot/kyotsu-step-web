@@ -5,10 +5,22 @@ export function stripTextbookMarkdown(value: string) {
     .trim()
 }
 
+function normalizeSubscriptSequence(value: string) {
+  const map: Record<string, string> = {
+    '₀':'0','₁':'1','₂':'2','₃':'3','₄':'4','₅':'5','₆':'6','₇':'7','₈':'8','₉':'9',
+    'ₓ':'x','ᵧ':'y','ₜ':'t',
+  }
+  return [...value].map((char) => map[char] ?? char).join('')
+}
+
 export function normalizeTextbookMath(value: string) {
   let next = stripTextbookMarkdown(value)
 
   next = next
+    .replace(/Δ([A-Za-z])⃗([₀₁₂₃₄₅₆₇₈₉ₓᵧₜ]+)/g, (_, base: string, sub: string) => `\\Delta \\vec{${base}}_{${normalizeSubscriptSequence(sub)}}`)
+    .replace(/([A-Za-z])⃗([₀₁₂₃₄₅₆₇₈₉ₓᵧₜ]+)/g, (_, base: string, sub: string) => `\\vec{${base}}_{${normalizeSubscriptSequence(sub)}}`)
+    .replace(/([A-Za-z])([₀₁₂₃₄₅₆₇₈₉ₓᵧₜ]{2,})/g, (_, base: string, sub: string) => `${base}_{${normalizeSubscriptSequence(sub)}}`)
+    .replace(/([A-Za-z])_([0-9]+)_([A-Za-z])/g, '$1_{$2$3}')
     .replace(/v̄⃗/g, '\\bar{\\vec{v}}')
     .replace(/([A-Za-z])̄⃗/g, '\\bar{\\vec{$1}}')
     .replace(/Δ([A-Za-z])⃗/g, '\\Delta \\vec{$1}')
@@ -20,6 +32,7 @@ export function normalizeTextbookMath(value: string) {
     .replace(/−/g, '-')
     .replace(/×/g, '\\times ')
     .replace(/·/g, '\\cdot ')
+    .replace(/}([₀₁₂₃₄₅₆₇₈₉ₓᵧₜ])/g, (_, sub: string) => `}_{${normalizeSubscriptSequence(sub)}}`)
     .replace(/₀/g, '_0')
     .replace(/₁/g, '_1')
     .replace(/₂/g, '_2')

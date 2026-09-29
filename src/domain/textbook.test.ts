@@ -31,11 +31,24 @@ describe('textbook learning state', () => {
     expect(isTextbookAnswerCorrect(formulaItem, formulaItem.answer.replace(/ /g, ''))).toBe(true)
   })
 
-  it('builds stable multiple-choice options while preserving the correct answer', () => {
+  it('builds stable scaffolded options while preserving the correct answer', () => {
     const choices = getTextbookChoices(unit, firstItem)
+    expect(firstItem.scaffoldLevel).toBe('strong')
     expect(choices).toContain(firstItem.answer)
-    expect(choices).toHaveLength(4)
+    expect(choices).toHaveLength(2)
     expect(getTextbookChoices(unit, firstItem)).toEqual(choices)
+
+    const medium = builtInTextbookUnits.flatMap((candidate) => candidate.sections[0].items)
+      .find((item) => item.scaffoldLevel === 'medium')!
+    const light = builtInTextbookUnits.flatMap((candidate) => candidate.sections[0].items)
+      .find((item) => item.scaffoldLevel === 'light')!
+    const mediumUnit = builtInTextbookUnits.find((candidate) => candidate.sections[0].items.some((item) => item.id === medium.id))!
+    const lightUnit = builtInTextbookUnits.find((candidate) => candidate.sections[0].items.some((item) => item.id === light.id))!
+
+    expect(getTextbookChoices(mediumUnit, medium)).toHaveLength(3)
+    expect(getTextbookChoices(lightUnit, light)).toHaveLength(4)
+    expect(getTextbookChoices(mediumUnit, medium)).toContain(medium.answer)
+    expect(getTextbookChoices(lightUnit, light)).toContain(light.answer)
   })
 
   it('keeps a wrong choice unresolved and resolves only after a correct retry', () => {

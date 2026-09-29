@@ -295,7 +295,7 @@ For the current checkpoint:
 2. Canonical figures: `figure.zip` / `SOURCE_MANIFEST.md` mapping.
 3. Natural-prose rules: `LEARNING_TEXT_WRITING_RULES.md`.
 4. Formula derivation + hole rules: this document.
-5. Current Chapter-1 content source: `prototypes/CH1_LEARNING_TEXT_V2.md`.
+5. Current Chapter-1 content source: `prototypes/CH1_LEARNING_TEXT_V2_1.md`.
 6. Review artifact: formula-derivation-strengthened DOCX identified in `prototypes/README.md`.
 
-The current prototype is an input to P33. It does not by itself mark P33-P38 PASS.
+The v2.1 prototype has passed the P33 source-alignment re-audit. P34-P38 remain open; P34 is the next audit.

@@ -522,3 +522,56 @@ button.physics-topic-card:not(:disabled):hover {
     margin: 0 .45rem .55rem;
   }
 }
+
+
+.reading-formula-expression {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: .08em;
+  min-width: max-content;
+}
+
+.reading-formula-math,
+.reading-formula-answer,
+.reading-formula-text {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.reading-formula-choice {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3.15rem;
+  min-height: 2rem;
+  padding: .12rem .48rem;
+  border: 1px solid var(--color-primary);
+  background: #fff;
+  color: var(--color-primary);
+  font: inherit;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.reading-formula-choice:hover,
+.reading-formula-choice:focus-visible {
+  background: #f2f6fa;
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.reading-formula-choice--wrong {
+  border-color: var(--color-error);
+  color: var(--color-error);
+}
+
+.reading-formula-answer {
+  color: inherit;
+}
+
+.reading-formula-missing {
+  display: inline-block;
+  min-width: 1.8rem;
+  color: var(--color-error);
+}

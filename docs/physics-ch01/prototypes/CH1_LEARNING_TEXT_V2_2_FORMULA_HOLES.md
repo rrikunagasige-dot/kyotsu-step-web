@@ -3,7 +3,7 @@ schema: physics-learning-text-v2
 chapter_id: physics-ch01-motion
 chapter_number: 1
 title: 物体の運動
-status: review-draft-v2.2-formula-hole-enhanced
+status: app-preview-v2.2-formula-hole-enhanced
 checkpoint_date: 2026-09-29
 prototype: formula-derivation-interactive-v2.2
 canonical_figures: 17
@@ -17,14 +17,14 @@ source_policy:
 notes:
   - This source is authoritative for the current Chapter-1 learning-text checkpoint.
   - The DOCX is a review artifact generated from this source.
-  - P33 is PASS after the v2.1 source-alignment audit; P34-P38 remain OPEN.
+  - P33-P38 design gates are PASS. P39 app preview is deployed; user QA is OPEN.
 ---
 
 第1章　物体の運動
 
 1A〜1G　文章内穴埋め・図統合・数式導出強化版
 
-確認用ドラフト v2.2｜数式導出の穴を強化
+App preview v2.2｜数式導出の穴を強化
 
 :::callout
 この版の原則　前版の自然な文章・図配置は維持しつつ、数式導出の途中にも「自分で次の式を作る」穴を追加する。スマートフォンだけでも親式→条件→代入→変形→結論を追え、しかも重要な式操作では受け身にならないことを目標にする。単純な四則演算を穴だらけにするのではなく、親式の選択・物理条件の代入・変数消去・意味のある式変形・最終公式への整理を中心に問う。

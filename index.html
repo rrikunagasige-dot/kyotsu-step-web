@@ -6,9 +6,36 @@
     <meta name="theme-color" content="#f8f7f2" />
     <meta name="description" content="共通 STEP 数学・物理刷题 Web App" />
     <title>共通 STEP</title>
+    <script>
+      window.__kyotsuBootError = function (message) {
+        var root = document.getElementById('root')
+        if (!root) return
+        root.innerHTML =
+          '<main style="max-width:760px;margin:64px auto;padding:24px;font-family:system-ui,sans-serif;color:#26251f">' +
+          '<p style="font-size:12px;letter-spacing:.14em">BOOT DIAGNOSTIC</p>' +
+          '<h1 style="font-size:24px;margin:8px 0 16px">App の起動に失敗しました</h1>' +
+          '<pre style="white-space:pre-wrap;overflow-wrap:anywhere;background:#fff;padding:16px;border-radius:12px;border:1px solid #d9d6ca">' +
+          String(message).replace(/[&<>"']/g, function (c) { return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c] }) +
+          '</pre>' +
+          '<p>このエラー文をそのまま送ってください。学習記録を削除する必要はありません。</p>' +
+          '</main>'
+      }
+      window.addEventListener('error', function (event) {
+        window.__kyotsuBootError(event.message || 'Unknown script error')
+      })
+      window.addEventListener('unhandledrejection', function (event) {
+        var reason = event.reason
+        window.__kyotsuBootError(reason && reason.stack ? reason.stack : String(reason))
+      })
+    </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <main style="max-width:760px;margin:64px auto;padding:24px;font-family:system-ui,sans-serif;color:#26251f">
+        <p style="font-size:12px;letter-spacing:.14em">共通 STEP</p>
+        <p>App を読み込んでいます…</p>
+      </main>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

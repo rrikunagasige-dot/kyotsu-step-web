@@ -4,12 +4,12 @@ import { builtInTextbookUnits } from './textbookUnits'
 
 const expectedCounts: Record<string, number> = {
   '1A': 10,
-  '1B': 6,
+  '1B': 3,
   '1C': 4,
-  '1D': 10,
-  '1E': 8,
-  '1F': 12,
-  '1G': 9,
+  '1D': 8,
+  '1E': 6,
+  '1F': 8,
+  '1G': 7,
 }
 
 function allItems() {
@@ -32,7 +32,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
     }
   })
 
-  it('preserves all 59 audited holes with an explicit source answer', () => {
+  it('preserves all 45 audited holes with an explicit source answer', () => {
     const counts = Object.fromEntries(
       builtInTextbookUnits.map((unit) => [
         unit.chapter?.unitCode,
@@ -40,10 +40,10 @@ describe('Chapter 1 continuous textbook catalog', () => {
       ]),
     )
     expect(counts).toEqual(expectedCounts)
-    expect(allItems()).toHaveLength(59)
+    expect(allItems()).toHaveLength(45)
 
     const answerLines = [...source.slice(source.indexOf('# 解答')).matchAll(/^([A-G]\d+[a-z]?)　(.+)$/gm)]
-    expect(answerLines).toHaveLength(59)
+    expect(answerLines).toHaveLength(45)
 
     for (const item of allItems()) {
       expect(item.choices).toHaveLength(4)
@@ -54,13 +54,31 @@ describe('Chapter 1 continuous textbook catalog', () => {
 
   it('does not reintroduce mechanical end-step holes', () => {
     const ids = new Set(allItems().map((item) => item.id.toUpperCase()))
-    for (const removed of ['D6', 'D7C', 'E5B', 'F3A', 'F5', 'G7']) {
+    for (const removed of [
+      'A5', 'B3', 'B4', 'B5',
+      'D5', 'D6', 'D7B', 'D7C',
+      'E2', 'E4', 'E5B',
+      'F2', 'F3A', 'F5', 'F6B', 'F8A', 'F8',
+      'G3A', 'G7', 'G8',
+    ]) {
       expect(ids.has(removed), removed).toBe(false)
     }
 
     const byId = Object.fromEntries(allItems().map((item) => [item.id, item]))
+    expect(byId.a8.answer).toBe('速度')
+    expect(byId.b2.answer).toBe('(v cosθ, v sinθ)')
+    expect(byId.d7.answer).toBe('v−v₀=at')
+    expect(byId.d9.answer).toBe('x=v₀t+(1/2)at²')
+    expect(byId.e3a.answer).toBe('v²−v₀²=2ax')
+    expect(byId.e5a.answer).toBe('x=v₀t')
+    expect(byId.e6.answer).toBe('鉛直方向の運動')
+    expect(byId.f1.answer).toBe('(v₀cosθ, v₀sinθ)')
     expect(byId.f5a.answer).toBe('v₀sinθ·t_H − (1/2)gt_H²')
+    expect(byId.f6a.answer).toBe('x=v₀cosθ·t')
     expect(byId.f7.answer).toBe('[v₀sinθ − (1/2)gT]')
+    expect(byId.f9.answer).toBe('sin2θ=1')
+    expect(byId.g1.answer).toBe('変わらない')
+    expect(byId.g2.answer).toBe('反対')
   })
 
   it('keeps correct option positions balanced instead of teaching "always pick A"', () => {
@@ -70,7 +88,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
       expect(index).toBeGreaterThanOrEqual(0)
       distribution[index] += 1
     }
-    expect(distribution.reduce((sum, count) => sum + count, 0)).toBe(59)
+    expect(distribution.reduce((sum, count) => sum + count, 0)).toBe(45)
     expect(Math.max(...distribution) - Math.min(...distribution)).toBeLessThanOrEqual(1)
   })
 
@@ -195,7 +213,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
 
   it('classifies symbolic monomials as formula answers', () => {
     const byId = Object.fromEntries(allItems().map((item) => [item.id, item]))
-    for (const id of ['d5', 'e3a', 'f7', 'g2', 'g3a', 'g6a']) {
+    for (const id of ['d4a', 'd7', 'd9', 'e3a', 'e5a', 'f1', 'f5a', 'f6a', 'f7', 'g3', 'g6a']) {
       expect(byId[id].answerType, id).toBe('formula')
     }
   })

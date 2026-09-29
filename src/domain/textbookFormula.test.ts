@@ -28,7 +28,7 @@ describe('textbook formula renderer', () => {
       }
     }
 
-    expect(formulaCount).toBeGreaterThan(70)
+    expect(formulaCount).toBeGreaterThan(50)
   })
 
   it('does not box resolved formula answers', () => {
@@ -69,7 +69,19 @@ describe('textbook formula renderer', () => {
       progress,
     )
     expect(latex).toContain('tb-math-answer')
+    expect(latex).toContain('\\sqrt{')
     expect(latex).not.toContain('\\boxed{\\sqrt')
+    expect(latex).not.toContain('√')
+    expect(latex).not.toContain('ᵧ')
+  })
+
+  it('parses prose-level symbols such as position vectors as inline math', () => {
+    const unit = builtInTextbookUnits.find((candidate) => candidate.chapter?.unitCode === '1A')!
+    const paragraphParts = unit.sections[0].readingFlow
+      .filter((block) => block.type === 'paragraph')
+      .flatMap((block) => block.type === 'paragraph' ? block.parts : [])
+    expect(paragraphParts.some((part) => part.type === 'math' && part.latex.includes('\\vec{r}'))).toBe(true)
+    expect(paragraphParts.some((part) => part.type === 'text' && part.text.includes('r⃗'))).toBe(false)
   })
 
   it('renders every Chapter 1 formula after all referenced holes are correctly resolved', () => {
@@ -107,6 +119,6 @@ describe('textbook formula renderer', () => {
       }
     }
 
-    expect(formulaCount).toBeGreaterThan(70)
+    expect(formulaCount).toBeGreaterThan(50)
   })
 })

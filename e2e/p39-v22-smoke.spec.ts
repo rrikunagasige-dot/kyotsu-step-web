@@ -12,6 +12,40 @@ const units = [
   { id: 'physics-1g-gravity-drag-terminal-velocity', title: '重力加速度・空気抵抗・終端速度', firstHole: 'g1' },
 ] as const
 
+async function solveHoleByTryingChoices(page: Page, itemId: string) {
+  const attempted = new Set<string>()
+
+  for (let attempt = 0; attempt < 6; attempt += 1) {
+    if (await page.getByTestId(`resolved-${itemId}`).count()) return
+
+    const trigger = page.getByTestId(`textbook-item-${itemId}`)
+    await expect(trigger).toBeVisible()
+    await trigger.scrollIntoViewIfNeeded()
+    await trigger.click()
+
+    const panel = page.getByTestId(`inline-choice-panel-${itemId}`)
+    await expect(panel).toBeVisible()
+    const options = panel.locator('.reading-choice-option')
+    const count = await options.count()
+
+    let clicked = false
+    for (let index = 0; index < count; index += 1) {
+      const option = options.nth(index)
+      const label = (await option.getAttribute('aria-label')) ?? ''
+      if (attempted.has(label)) continue
+      attempted.add(label)
+      await option.click()
+      clicked = true
+      break
+    }
+
+    if (!clicked) throw new Error(`No untried choice remained for ${itemId}`)
+    await page.waitForTimeout(80)
+  }
+
+  throw new Error(`Could not resolve textbook item ${itemId}`)
+}
+
 async function clearState(page: Page) {
   await page.goto(appRoute('/problems'))
   await page.evaluate(() => localStorage.clear())
@@ -122,4 +156,27 @@ test('first concept-forming figure is not upscaled beyond its intrinsic size', a
   expect(diagnostics.naturalWidth).toBeGreaterThan(0)
   expect(diagnostics.renderedWidth).toBeGreaterThan(0)
   expect(diagnostics.renderedWidth).toBeLessThanOrEqual(diagnostics.naturalWidth + 1)
+})
+
+
+test('oblique projectile derivations render as compiled math in one chain', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/physics-1f-oblique-projectile'))
+
+  for (const id of ['f1', 'f3', 'f4', 'f5a', 'f6a', 'f6', 'f7', 'f9']) {
+    await solveHoleByTryingChoices(page, id)
+  }
+
+  const body = page.locator('body')
+  await expect(body).not.toContainText('v_0_x')
+  await expect(body).not.toContainText('v_0_y')
+  await expect(page.locator('.katex-error')).toHaveCount(0)
+
+  const highestTime = page.locator('[data-derivation-id="f-highest-time"]')
+  await expect(highestTime).toBeVisible()
+  await expect(highestTime.locator('.reading-formula-line')).toHaveCount(3)
+
+  const borderWidths = await highestTime.locator('.reading-formula-line').evaluateAll((elements) =>
+    elements.map((element) => getComputedStyle(element).borderTopWidth),
+  )
+  expect(borderWidths.every((width) => width === '0px')).toBe(true)
 })

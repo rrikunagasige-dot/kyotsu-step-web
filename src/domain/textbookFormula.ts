@@ -16,19 +16,13 @@ function answerLatex(value: string, formula: boolean) {
 }
 
 function choiceLatex(
-  itemId: string,
+  _itemId: string,
   record: TextbookAnswerRecord | undefined,
   resolvedValue?: string,
   formula = false,
 ) {
-  if (resolvedValue !== undefined) {
-    return `\\htmlData{testid=resolved-${itemId}}{\\htmlClass{tb-math-answer}{${answerLatex(resolvedValue, formula)}}}`
-  }
-
-  const wrong = Boolean(record)
-  const marker = wrong ? '\\times' : '\\phantom{?}'
-  const className = wrong ? 'tb-math-choice tb-math-choice-wrong' : 'tb-math-choice'
-  return `\\htmlData{testid=textbook-item-${itemId}}{\\htmlClass{${className}}{\\href{#tb-choice-${itemId}}{\\boxed{${marker}}}}}`
+  if (resolvedValue !== undefined) return answerLatex(resolvedValue, formula)
+  return record ? '\\boxed{\\times}' : '\\boxed{\\phantom{?}}'
 }
 
 export function buildTextbookFormulaLatex(

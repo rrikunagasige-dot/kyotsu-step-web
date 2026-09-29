@@ -1152,3 +1152,24 @@ P33 gate status:
 **Next authoritative node: P34 current-app contradiction audit.**
 P34 is analysis first; do not change app code yet.
 
+## 16. P37 PASS — 1A target paper/data design
+
+Authoritative 1A redesign:
+`docs/physics-ch01/P37_1A_REDESIGN.md`
+
+The target learner path is now concrete:
+- A1–A10 only,
+- fig1 staged during position/displacement learning,
+- fig4 at coordinate components,
+- fig2 before A7 tangent inference,
+- fig3 after A7 as confirmation,
+- ten answer-dependent reveal boundaries,
+- no old label-copy / numerator-denominator / arithmetic micro-item preservation,
+- scaffold fades S1 → S2 → S3 → S4.
+
+This is still paper/data design. No TypeScript has been changed.
+
+G59 PASS / P37 PASS.
+
+Next: **P38 virtual learner simulation + developer audit-mode specification.**
+

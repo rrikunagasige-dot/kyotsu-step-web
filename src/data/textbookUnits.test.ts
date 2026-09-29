@@ -6,10 +6,10 @@ const expectedCounts: Record<string, number> = {
   '1A': 10,
   '1B': 6,
   '1C': 4,
-  '1D': 12,
-  '1E': 9,
-  '1F': 14,
-  '1G': 10,
+  '1D': 10,
+  '1E': 8,
+  '1F': 12,
+  '1G': 9,
 }
 
 function allItems() {
@@ -32,7 +32,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
     }
   })
 
-  it('preserves all 65 audited holes with an explicit source answer', () => {
+  it('preserves all 59 audited holes with an explicit source answer', () => {
     const counts = Object.fromEntries(
       builtInTextbookUnits.map((unit) => [
         unit.chapter?.unitCode,
@@ -40,16 +40,27 @@ describe('Chapter 1 continuous textbook catalog', () => {
       ]),
     )
     expect(counts).toEqual(expectedCounts)
-    expect(allItems()).toHaveLength(65)
+    expect(allItems()).toHaveLength(59)
 
     const answerLines = [...source.slice(source.indexOf('# 解答')).matchAll(/^([A-G]\d+[a-z]?)　(.+)$/gm)]
-    expect(answerLines).toHaveLength(65)
+    expect(answerLines).toHaveLength(59)
 
     for (const item of allItems()) {
       expect(item.choices).toHaveLength(4)
       expect(item.choices).toContain(item.answer)
       expect(item.prompt).not.toMatch(/[A-G]\d/)
     }
+  })
+
+  it('does not reintroduce mechanical end-step holes', () => {
+    const ids = new Set(allItems().map((item) => item.id.toUpperCase()))
+    for (const removed of ['D6', 'D7C', 'E5B', 'F3A', 'F5', 'G7']) {
+      expect(ids.has(removed), removed).toBe(false)
+    }
+
+    const byId = Object.fromEntries(allItems().map((item) => [item.id, item]))
+    expect(byId.f5a.answer).toBe('v₀sinθ·t_H − (1/2)gt_H²')
+    expect(byId.f7.answer).toBe('[v₀sinθ − (1/2)gT]')
   })
 
   it('keeps correct option positions balanced instead of teaching "always pick A"', () => {
@@ -59,7 +70,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
       expect(index).toBeGreaterThanOrEqual(0)
       distribution[index] += 1
     }
-    expect(distribution.reduce((sum, count) => sum + count, 0)).toBe(65)
+    expect(distribution.reduce((sum, count) => sum + count, 0)).toBe(59)
     expect(Math.max(...distribution) - Math.min(...distribution)).toBeLessThanOrEqual(1)
   })
 

@@ -1350,4 +1350,24 @@ G58 PASS.
 **P36 PASS. P37 unblocked.**
 
 No application code changed.
+### 19.13 P37 1A REDESIGN — PASS
+
+Paper/data redesign:
+`docs/physics-ch01/P37_1A_REDESIGN_DATA.md`
+
+1A target:
+- 10 justified holes instead of 77 current app items,
+- one continuous semantic flow,
+- figures integrated at concept need,
+- no label-transcription drill,
+- no numerator/denominator fragmentation,
+- visible routine algebra,
+- A9 strategy + A10 transfer as worked-example core.
+
+Figure/formula timing, leakage behavior, legacy-item disposition, and target data shape are defined.
+
+G59 PASS.
+**P37 PASS. P38 unblocked.**
+
+No application code changed.
 

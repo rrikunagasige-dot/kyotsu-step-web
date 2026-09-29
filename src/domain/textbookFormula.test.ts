@@ -13,7 +13,7 @@ function render(latex: string) {
 }
 
 describe('textbook formula renderer', () => {
-  it('renders every Chapter 1 formula with unresolved holes without KaTeX errors', () => {
+  it('renders every Chapter 1 formula with unresolved holes without KaTeX errors or HTML-extension commands', () => {
     let formulaCount = 0
 
     for (const unit of builtInTextbookUnits) {
@@ -24,6 +24,9 @@ describe('textbook formula renderer', () => {
           const latex = buildTextbookFormulaLatex(block.parts, section, undefined)
           const html = render(latex)
           expect(html, `${unit.unitId}/${section.id}/${block.id}: ${latex}`).not.toContain('katex-error')
+          expect(latex).not.toContain('\\htmlData')
+          expect(latex).not.toContain('\\htmlClass')
+          expect(latex).not.toContain('\\href')
         }
       }
     }
@@ -68,7 +71,6 @@ describe('textbook formula renderer', () => {
       section!,
       progress,
     )
-    expect(latex).toContain('tb-math-answer')
     expect(latex).toContain('\\sqrt{')
     expect(latex).not.toContain('\\boxed{\\sqrt')
     expect(latex).not.toContain('√')

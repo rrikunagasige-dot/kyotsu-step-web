@@ -184,6 +184,7 @@ function parseUnit(meta: UnitMeta, next?: UnitCode) {
   let formulaIndex = 0
   let figureIndex = 0
   let noteIndex = 0
+  let activeDerivationId: string | undefined
 
   const bodyLines = unitSource.split('\n')
   let paragraphLines: string[] = []
@@ -195,10 +196,10 @@ function parseUnit(meta: UnitMeta, next?: UnitCode) {
     const formula = isFormulaLine(text)
     if (formula) {
       formulaIndex += 1
-      blocks.push({ id: `formula-${formulaIndex}`, type: 'formula', parts: splitWithHoles(text, true) })
+      blocks.push({ id: `formula-${formulaIndex}`, type: 'formula', parts: splitWithHoles(text, true), ...(activeDerivationId ? { derivationId: activeDerivationId } : {}) })
     } else {
       paragraphIndex += 1
-      blocks.push({ id: `paragraph-${paragraphIndex}`, type: 'paragraph', parts: splitWithHoles(text, false) })
+      blocks.push({ id: `paragraph-${paragraphIndex}`, type: 'paragraph', parts: splitWithHoles(text, false), ...(activeDerivationId ? { derivationId: activeDerivationId } : {}) })
     }
   }
 
@@ -207,6 +208,20 @@ function parseUnit(meta: UnitMeta, next?: UnitCode) {
 
     if (!line) {
       flushParagraph()
+      continue
+    }
+
+    if (line.startsWith(':::derive ')) {
+      flushParagraph()
+      const match = line.match(/^:::derive id="([^"]+)"$/)
+      if (!match) throw new Error(`Malformed derivation directive in ${meta.code}: ${line}`)
+      activeDerivationId = match[1]
+      continue
+    }
+
+    if (line === ':::endderive') {
+      flushParagraph()
+      activeDerivationId = undefined
       continue
     }
 
@@ -258,7 +273,7 @@ function parseUnit(meta: UnitMeta, next?: UnitCode) {
       }
       if (index + 1 < bodyLines.length) index += 1
       noteIndex += 1
-      blocks.push({ id: `note-${noteIndex}`, type: 'note', text: stripTextbookMarkdown(noteLines.join(' ')) })
+      blocks.push({ id: `note-${noteIndex}`, type: 'note', text: stripTextbookMarkdown(noteLines.join(' ')), ...(activeDerivationId ? { derivationId: activeDerivationId } : {}) })
       continue
     }
 

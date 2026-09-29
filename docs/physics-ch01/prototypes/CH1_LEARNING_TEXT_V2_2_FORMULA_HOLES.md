@@ -274,7 +274,7 @@ A. (v sinθ, v cosθ)　　B. (v tanθ, v/tanθ)　　C. (v cosθ, v sinθ)　�
 
 
 
-:::figure id="fig-6" source="6.png" app_asset="public/assets/physics/textbook/ch01/1b/velocity-components.webp"
+:::figure id="fig-6" source="6.png" app_asset="public/assets/physics/textbook/ch01/guides/velocity-components-confirmation.svg"
 図6　速度ベクトルの x・y 成分
 :::
 

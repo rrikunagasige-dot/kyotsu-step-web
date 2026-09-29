@@ -35,13 +35,13 @@ describe('textbook formula renderer', () => {
   })
 
   it('does not box resolved formula answers', () => {
-    const unit = builtInTextbookUnits.find((candidate) => candidate.chapter?.unitCode === '1B')
+    const unit = builtInTextbookUnits.find((candidate) => candidate.chapter?.unitCode === '1A')
     const section = unit?.sections[0]
     const block = section?.readingFlow.find((candidate) =>
       candidate.type === 'formula' &&
-      candidate.parts.some((part) => part.type === 'choice' && part.itemId === 'b4'),
+      candidate.parts.some((part) => part.type === 'choice' && part.itemId === 'a6'),
     )
-    const item = section?.items.find((candidate) => candidate.id === 'b4')
+    const item = section?.items.find((candidate) => candidate.id === 'a6')
     expect(unit).toBeTruthy()
     expect(section).toBeTruthy()
     expect(block?.type).toBe('formula')
@@ -53,8 +53,8 @@ describe('textbook formula renderer', () => {
       startedAt: 1,
       updatedAt: 1,
       answers: {
-        b4: {
-          itemId: 'b4',
+        a6: {
+          itemId: 'a6',
           value: item!.answer,
           firstValue: item!.answer,
           isFirstCorrect: true,
@@ -71,10 +71,10 @@ describe('textbook formula renderer', () => {
       section!,
       progress,
     )
-    expect(latex).toContain('\\sqrt{')
-    expect(latex).not.toContain('\\boxed{\\sqrt')
-    expect(latex).not.toContain('√')
-    expect(latex).not.toContain('ᵧ')
+    expect(latex).toContain('\\Delta')
+    expect(latex).toContain('\\vec{r}')
+    expect(latex).not.toContain('\\boxed{')
+    expect(latex).not.toContain('⃗')
   })
 
   it('parses prose-level symbols such as position vectors as inline math', () => {

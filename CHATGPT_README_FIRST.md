@@ -1097,3 +1097,23 @@ If a designer cannot explain why a hole is needed in both educational and calcul
 This v2 checkpoint is now the concrete input for P33.
 P33–P38 remain OPEN; do not change application code yet.
 
+## 12. P33 prerequisite baseline clarification — 2026-09-29
+
+P33では **「中学知識だけで完全に自力解決できるか」** を硬いgateにしない。
+
+Learner assumption:
+- 普通の中学レベルの知識は利用可能とみなす。
+- スマートフォンがあり、一般数学用語・既習事項は必要なら検索・AI質問で補える。
+- `sin/cos`、極限記号、基本的な三角恒等式などを「未習かもしれない」という理由だけで教材欠陥にしない。
+- ただし、教材内部で初めて導入する**新しい物理概念・物理用語・重要な推論依存**は、外部検索に丸投げしてはいけない。
+
+Therefore P33 prerequisite audit distinguishes:
+
+    ordinary background / searchable math support
+        → not a hard contradiction
+
+    chapter-internal new physics meaning / dependency
+        → must be taught or inferable in the learning text
+
+External lookup is a convenience, not a substitute for the chapter's own conceptual chain.
+

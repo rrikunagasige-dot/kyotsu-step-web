@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+import source from '../../docs/physics-ch01/prototypes/CH1_LEARNING_TEXT_V2_2_FORMULA_HOLES.md?raw'
 import { builtInTextbookUnits } from './textbookUnits'
 
 const expectedCounts: Record<string, number> = {
@@ -11,7 +12,11 @@ const expectedCounts: Record<string, number> = {
   '1G': 10,
 }
 
-describe('Chapter 1 textbook v2.2 catalog', () => {
+function allItems() {
+  return builtInTextbookUnits.flatMap((unit) => unit.sections.flatMap((section) => section.items))
+}
+
+describe('Chapter 1 continuous textbook catalog', () => {
   it('loads seven continuous units in chapter order', () => {
     expect(builtInTextbookUnits).toHaveLength(7)
     expect(builtInTextbookUnits.map((unit) => unit.chapter?.unitCode)).toEqual([
@@ -23,10 +28,11 @@ describe('Chapter 1 textbook v2.2 catalog', () => {
       expect(unit.sections).toHaveLength(1)
       expect(unit.sections[0].id).toBe('lesson')
       expect(unit.sections[0].readingFlow.length).toBeGreaterThan(0)
+      expect(unit.subtitle).not.toMatch(/v\d/i)
     }
   })
 
-  it('preserves all 65 reviewed v2.2 holes with explicit choices', () => {
+  it('preserves all 65 audited holes with an explicit source answer', () => {
     const counts = Object.fromEntries(
       builtInTextbookUnits.map((unit) => [
         unit.chapter?.unitCode,
@@ -34,16 +40,27 @@ describe('Chapter 1 textbook v2.2 catalog', () => {
       ]),
     )
     expect(counts).toEqual(expectedCounts)
-    const total = builtInTextbookUnits.reduce((sum, unit) =>
-      sum + unit.sections.flatMap((section) => section.items).length, 0)
-    expect(total).toBe(65)
+    expect(allItems()).toHaveLength(65)
 
-    for (const unit of builtInTextbookUnits) {
-      const items = unit.sections.flatMap((section) => section.items)
-      expect(new Set(items.map((item) => item.id)).size).toBe(items.length)
-      expect(items.every((item) => item.choices?.length === 4)).toBe(true)
-      expect(items.every((item) => item.choices?.includes(item.answer))).toBe(true)
+    const answerLines = [...source.slice(source.indexOf('# 解答')).matchAll(/^([A-G]\d+[a-z]?)　(.+)$/gm)]
+    expect(answerLines).toHaveLength(65)
+
+    for (const item of allItems()) {
+      expect(item.choices).toHaveLength(4)
+      expect(item.choices).toContain(item.answer)
+      expect(item.prompt).not.toMatch(/[A-G]\d/)
     }
+  })
+
+  it('keeps correct option positions balanced instead of teaching "always pick A"', () => {
+    const distribution = [0, 0, 0, 0]
+    for (const item of allItems()) {
+      const index = item.choices?.indexOf(item.answer) ?? -1
+      expect(index).toBeGreaterThanOrEqual(0)
+      distribution[index] += 1
+    }
+    expect(distribution.reduce((sum, count) => sum + count, 0)).toBe(65)
+    expect(Math.max(...distribution) - Math.min(...distribution)).toBeLessThanOrEqual(1)
   })
 
   it('references every hole from the continuous reading flow', () => {
@@ -58,20 +75,76 @@ describe('Chapter 1 textbook v2.2 catalog', () => {
     }
   })
 
-  it('keeps all 17 canonical Chapter-1 figure assets', () => {
+  it('uses 17 canonical figures plus three non-leaking learning guides', () => {
     const figures = builtInTextbookUnits.flatMap((unit) =>
       unit.sections.flatMap((section) => section.figures),
     )
-    expect(figures).toHaveLength(17)
-    expect(new Set(figures.map((figure) => figure.src)).size).toBe(17)
-    expect(figures.every((figure) => figure.src.startsWith('/assets/physics/textbook/ch01/'))).toBe(true)
+    expect(figures).toHaveLength(20)
+    expect(new Set(figures.map((figure) => figure.src)).size).toBe(20)
+
+    const ids = new Set(figures.map((figure) => figure.id))
+    expect(ids).toContain('fig-1-guide')
+    expect(ids).toContain('fig-6-guide')
+    expect(ids).toContain('fig-d-vt')
   })
 
-  it('keeps the future Δr label on fig-1 passively masked until A3 is resolved', () => {
-    const unit1A = builtInTextbookUnits.find((unit) => unit.chapter?.unitCode === '1A')
-    const fig1 = unit1A?.sections[0].figures.find((figure) => figure.id === 'fig-1')
-    const mask = fig1?.overlays.find((overlay) => overlay.id === 'mask-a3-delta-r')
-    expect(mask?.itemId).toBe('a3')
-    expect(mask?.interactive).toBe(false)
+  it('shows concept-forming guides before their dependent questions', () => {
+    const unit1A = builtInTextbookUnits.find((unit) => unit.chapter?.unitCode === '1A')!
+    const flowA = unit1A.sections[0].readingFlow
+    expect(flowA.findIndex((block) => block.type === 'figure' && block.figureId === 'fig-1-guide'))
+      .toBeLessThan(flowA.findIndex((block) =>
+        (block.type === 'paragraph' || block.type === 'formula') &&
+        block.parts.some((part) => part.type === 'choice' && part.itemId === 'a1'),
+      ))
+
+    const unit1B = builtInTextbookUnits.find((unit) => unit.chapter?.unitCode === '1B')!
+    const flowB = unit1B.sections[0].readingFlow
+    const guide = flowB.findIndex((block) => block.type === 'figure' && block.figureId === 'fig-6-guide')
+    for (const id of ['b2', 'b3']) {
+      const question = flowB.findIndex((block) =>
+        (block.type === 'paragraph' || block.type === 'formula') &&
+        block.parts.some((part) => part.type === 'choice' && part.itemId === id),
+      )
+      expect(guide).toBeLessThan(question)
+    }
+  })
+
+  it('restores the v-t graph required by the acceleration derivation', () => {
+    const unit1D = builtInTextbookUnits.find((unit) => unit.chapter?.unitCode === '1D')!
+    expect(unit1D.sections[0].figures.some((figure) => figure.id === 'fig-d-vt')).toBe(true)
+  })
+
+  it('includes the chapter-level summary at the end of 1G', () => {
+    const unit1G = builtInTextbookUnits.find((unit) => unit.chapter?.unitCode === '1G')!
+    const prose = unit1G.sections[0].readingFlow.flatMap((block) =>
+      block.type === 'paragraph'
+        ? block.parts.filter((part) => part.type === 'text').map((part) => part.text)
+        : block.type === 'heading'
+          ? [block.text]
+          : [],
+    ).join(' ')
+    expect(prose).toContain('第1章全体を一つの流れとして見る')
+    expect(prose).toContain('位置')
+    expect(prose).toContain('加速度')
+  })
+
+  it('classifies symbolic monomials as formula answers', () => {
+    const byId = Object.fromEntries(allItems().map((item) => [item.id, item]))
+    for (const id of ['d5', 'd6', 'd7c', 'e3a', 'g2', 'g6a']) {
+      expect(byId[id].answerType, id).toBe('formula')
+    }
+  })
+
+  it('does not leak internal unit codes into student prose', () => {
+    const body = source.slice(source.indexOf('# 1A　'), source.indexOf('# 解答'))
+    const studentLines = body.split('\n').filter((line) => !line.startsWith('# 1'))
+    expect(studentLines.join('\n')).not.toMatch(/\b1[A-G](?:では|で|の)/)
+  })
+
+  it('has no passive question-mark masks in the audited continuous lesson', () => {
+    const overlays = builtInTextbookUnits.flatMap((unit) =>
+      unit.sections.flatMap((section) => section.figures.flatMap((figure) => figure.overlays)),
+    )
+    expect(overlays).toHaveLength(0)
   })
 })

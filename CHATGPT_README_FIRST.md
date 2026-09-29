@@ -1217,3 +1217,31 @@ Do not start coding from this README alone. The user must explicitly approve mov
 Current app recount: 179 Chapter-1 item definitions = 78 + 18 + 17 + 17 + 16 + 19 + 14.
 P37 authoritative file: `docs/physics-ch01/P37_1A_REDESIGN.md`.
 The older `P37_1A_REDESIGN_DATA.md` is compatibility-only and must not be treated as a second authority.
+
+## 15. USER REVIEW CORRECTION — formula holes were insufficient
+
+The v2.1 content was **not approved for implementation** at USER REVIEW.
+
+User feedback:
+- prose quality remains acceptable,
+- visible derivation remains necessary,
+- but derivations must also contain interactive formula holes,
+- final-form holes alone are insufficient.
+
+New review candidate:
+`docs/physics-ch01/prototypes/CH1_LEARNING_TEXT_V2_2_FORMULA_HOLES.md`
+
+Candidate facts:
+- 1A–1G
+- 17 canonical figures
+- 65 inline holes
+- +11 new formula-derivation holes relative to v2.1
+- 27 rendered pages
+- formula-hole rule added to `FORMULA_DERIVATION_RULES.md`
+- user review still pending
+
+Added derivation holes:
+`D4a, D7b, D7c, E3a, E5b, F3a, F5a, F6b, F8a, G3a, G6a`.
+
+**P39 remains BLOCKED. Do not treat v2.1 USER REVIEW as approval.**
+

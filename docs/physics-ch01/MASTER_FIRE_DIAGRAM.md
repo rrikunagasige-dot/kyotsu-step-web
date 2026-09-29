@@ -1455,8 +1455,8 @@ Preview facts:
 - neutral pre-answer captions/alts
 
 Deployment:
-- commit: `6a8cd2985f6279f96b31debb91a288dac68965c4`
-- GitHub Pages run: 93
+- deployed code includes parser fix: `e8b4af262913b082b01a6afe8697b8f75c39f8d5`
+- final validation workflow: run 100
 - typecheck PASS
 - build PASS
 - deploy PASS

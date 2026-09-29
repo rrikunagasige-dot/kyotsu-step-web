@@ -467,7 +467,7 @@ button.physics-topic-card:not(:disabled):hover {
   color: var(--color-error);
 }
 .reading-formula-line .tb-math-answer {
-  color: var(--color-success);
+  color: inherit;
 }
 .reading-formula-line--error {
   border-color: var(--color-error);

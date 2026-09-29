@@ -417,7 +417,7 @@ Those can remain schema labels for compatibility, but the actual learning text m
 
 ---
 
-## 16. Current formula-derivation-strengthened checkpoint
+## 16. Current formula-derivation-strengthened checkpoint — v2.1
 
 The natural-prose rule above remains valid.
 
@@ -425,9 +425,9 @@ A later mobile-first review found that some formulas, especially in 1D–1G, sti
 
 Current checkpoint:
 
-- `prototypes/CH1_LEARNING_TEXT_V2.md`
+- `prototypes/CH1_LEARNING_TEXT_V2_1.md`
 - 17 canonical figures
-- 55 unique inline holes
+- 54 unique inline holes
 - formula derivation strengthened mainly in 1D–1G
 
 Read `FORMULA_DERIVATION_RULES.md` for the mandatory mobile/no-paper rule and H1–H6 hole-placement test.
@@ -440,3 +440,8 @@ Key distinction:
 
 Do not confuse “show more intermediate mathematics” with “turn more mathematics into holes.”
 
+
+
+### v2.1 hole-density note
+
+The old C1 first-exposure terminology hole was removed because the learner was being asked to guess a new physics name rather than construct meaning. No replacement hole was added merely to preserve count. The current 54-hole density remains the accepted baseline: interaction count is subordinate to teaching purpose.

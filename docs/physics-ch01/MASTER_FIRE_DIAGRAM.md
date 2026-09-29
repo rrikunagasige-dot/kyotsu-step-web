@@ -1370,4 +1370,34 @@ G59 PASS.
 **P37 PASS. P38 unblocked.**
 
 No application code changed.
+### 19.14 P38 VIRTUAL LEARNER + AUDIT MODE — PASS
+
+Spec:
+`docs/physics-ch01/P38_VIRTUAL_LEARNER_AND_AUDIT_MODE.md`
+
+Virtual 1A simulation:
+- A1–A10 happy path: 10/10 PASS,
+- hidden physics-jump audit: PASS,
+- wrong-answer support simulation: PASS,
+- phone/no-paper reading: PASS.
+
+Developer audit-mode specification includes:
+- progress/analytics isolation,
+- direct semantic-node navigation,
+- unanswered/wrong/resolved state forcing,
+- hint-stage forcing,
+- mask ON/OFF and bounds,
+- alt/caption/ARIA leakage inspection,
+- text/figure/formula/graph-only views,
+- representation-link inspection,
+- phone/tablet/desktop viewports.
+
+G60 PASS.
+**P38 PASS.**
+
+### CURRENT STOP
+
+Next node is **USER REVIEW**.
+
+**G61 remains BLOCKED. P39 application code must not start until explicit user approval.**
 

@@ -859,8 +859,8 @@ A. k/v　　B. mv　　C. mg　　D. kv
 
 下向きを正に取る。落下を始めた直後は v=0 なので空気抵抗も0であり、重力だけが働く。しかし速さが増えると空気抵抗 kv も大きくなる。
 
-したがって運動方程式は :::derive id="g-drag-acceleration"
-ma = 【G3　　　　　】 となる。
+:::derive id="g-drag-acceleration"
+したがって運動方程式は ma = 【G3　　　　　】 となる。
 
 :::choices id="G3"
 A. mg−kv　　B. mg+kv　　C. kv−mg　　D. mg

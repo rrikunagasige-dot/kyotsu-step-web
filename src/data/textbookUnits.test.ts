@@ -80,7 +80,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
       unit.sections.flatMap((section) => section.figures),
     )
     expect(figures).toHaveLength(21)
-    expect(new Set(figures.map((figure) => figure.src)).size).toBe(20)
+    expect(new Set(figures.map((figure) => figure.src)).size).toBe(21)
 
     const ids = new Set(figures.map((figure) => figure.id))
     expect(ids).toContain('fig-1-guide')

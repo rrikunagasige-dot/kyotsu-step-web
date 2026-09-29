@@ -333,7 +333,7 @@ v⃗_{B/A} = 【C2　　　　　】
 A. v⃗_B − v⃗_A　　B. v⃗_A − v⃗_B　　C. v⃗_A + v⃗_B　　D. |v⃗_A|+|v⃗_B|
 :::
 
-:::figure id="fig-7" source="7.png" app_asset="public/assets/physics/textbook/ch01/1c/relative-velocity-cars.webp"
+:::figure id="fig-7" source="7.png" app_asset="public/assets/physics/textbook/ch01/guides/relative-cars-guide.svg"
 図7　同方向・逆方向に動く物体の相対速度
 :::
 
@@ -361,7 +361,7 @@ v⃗_{B/A} = (v_Bx−v_Ax,  v_By−v_Ay)
 A. (10,−10)　　B. (−10,10)　　C. (−10,−10)　　D. (0,−20)
 :::
 
-:::figure id="fig-8" source="8.png" app_asset="public/assets/physics/textbook/ch01/1c/relative-rain-bicycle.webp"
+:::figure id="fig-8" source="8.png" app_asset="public/assets/physics/textbook/ch01/guides/rain-bicycle-guide.svg"
 図8　自転車から見た雨の相対速度
 :::
 
@@ -387,7 +387,7 @@ A. 加速度　　B. 原点の座標だけ　　C. 力　　D. 基準
 A. v⃗₂−v⃗₁　　B. v⃗₁−v⃗₂　　C. v⃗₁+v⃗₂　　D. |v⃗₂|−|v⃗₁|だけ
 :::
 
-:::figure id="fig-9" source="9.png" app_asset="public/assets/physics/textbook/ch01/1d/acceleration-trajectory.webp"
+:::figure id="fig-9" source="9.png" app_asset="public/assets/physics/textbook/ch01/guides/acceleration-trajectory-guide.svg"
 図9　曲線運動での速度の変化
 :::
 
@@ -401,7 +401,7 @@ A. Δt/Δv⃗　　B. Δv⃗/Δt　　C. v⃗₁+v⃗₂　　D. Δr⃗/Δt
 
 加速度の向きは現在の速度の向きではなく、速度が変化した向き、すなわち Δv⃗ の向きである。時間間隔を限りなく小さくすれば、瞬間の加速度 a⃗ を考えられる。
 
-:::figure id="fig-10" source="10.png" app_asset="public/assets/physics/textbook/ch01/1d/velocity-change-acceleration.webp"
+:::figure id="fig-10" source="10.png" app_asset="public/assets/physics/textbook/ch01/guides/velocity-change-guide.svg"
 図10　速度変化 Δv⃗ と平均加速度の向き
 :::
 
@@ -874,7 +874,7 @@ A. (m/k)v　　B. kv　　C. (k/m)v　　D. k/(mv)
 A. 大きくなる　　B. 必ず0のまま　　C. 向きだけ反転し続ける　　D. 小さくなる
 :::
 
-:::figure id="fig-16" source="16.png" app_asset="public/assets/physics/textbook/ch01/1g/drag-force-stages.webp"
+:::figure id="fig-16" source="16.png" app_asset="public/assets/physics/textbook/ch01/guides/drag-stages-guide.svg"
 図16　速度増加に伴う空気抵抗と合力の変化
 :::
 
@@ -888,7 +888,7 @@ v-tグラフの傾きは 【G5　　　　　】 を表しているからであ�
 A. 加速度　　B. 変位　　C. 位置　　D. 質量
 :::
 
-:::figure id="fig-17" source="17.png" app_asset="public/assets/physics/textbook/ch01/1g/terminal-velocity-graph.webp"
+:::figure id="fig-17" source="17.png" app_asset="public/assets/physics/textbook/ch01/guides/terminal-velocity-graph-guide.svg"
 図17　終端速度へ近づく v-t グラフ
 :::
 

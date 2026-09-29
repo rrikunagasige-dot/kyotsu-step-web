@@ -115,6 +115,14 @@ P28 continuous reading-section stack
 P29 restore corrupted Chapter-1 figures from canonical PNGs
 P30 reader regression / asset-integrity full gate
 P31 docs / source manifest / checkpoint finalization
+P32 persistent source archive index
+P33 physics-learning representation map / contradiction audit [OPEN]
+P34 pedagogy rules: one-step learnability / representation choice / leakage [OPEN]
+P35 figure-text-question integration redesign [OPEN]
+P36 mask completeness + answer-linked reveal definition [OPEN]
+P37 Chapter 1 learning-text rewrite plan [OPEN]
+P38 beginner simulation audit [OPEN]
+P39 implementation only after P33-P38 approval [OPEN]
 ```
 
 ## 現在の状態
@@ -292,3 +300,609 @@ Canonical identities:
 - `物理教科書モード_第1-5章_母版準拠_完全版.zip`: 50,419,544 bytes, SHA256 `df1194b491d362c569018da15bc31e3583926a863af1f74b4842b033240e8eff`
 
 Do not claim these ZIP binaries are committed to GitHub: the current GitHub connector cannot safely upload 12/50 MB local binary archives. GitHub stores the authoritative index and identity bridge; the actual ZIP bytes are persistent in Library.
+
+
+# 次chat必読 — 物理学習設計の再構築 handoff（P33以降 OPEN）
+
+この節は **bug修正ではなく、教科書モードの教育設計を再構築するための引き継ぎ** である。
+
+P26〜P32まででreaderの技術的bugは修復したが、現在の第1章には教育設計上の矛盾が残っている。  
+次chatでは **いきなりコードを書かない**。まず P33〜P38 の設計監査を行い、1A〜1G全体の矛盾を洗い出してから実装へ進む。
+
+## 1. 想定する学習者モデル
+
+今後の教科書モードは、次の仮想学習者を基準に設計・監査する。
+
+- 日本の高校生だが、高校物理はまだほぼ知らない。
+- 出発点は中学校理科・中学校数学レベル。
+- 偏差値は高すぎない。初見の専門語・数式を自力で補完できる前提を置かない。
+- ただし「知らないから答えられない」で終わらせない。
+- **選択肢を使いながら、前の一歩で得た知識から次の概念を作っていく**ことを狙う。
+- 穴埋めは確認テストではなく、scaffold / learning step として使う。
+- 最終的には選択肢なしでも概念の意味をある程度再構成できる状態を目標とする。
+
+重要な設計原則:
+
+> 学習者が Q_n を答える時、必要な知識は Q_1〜Q_{n-1} までの学習で既に獲得できていなければならない。
+
+これを仮に **one-step learnability** と呼ぶ。
+
+初見概念を何の足場もなく4択で当てさせるだけならFAIL。  
+前の図・文章・選択結果から合理的に次を選べるならPASS。
+
+## 2. 物理学習を抽象化する表現モデル
+
+物理は「文章→公式→問題」の一方向ではない。  
+概念ごとに、現象・図・物理量・関係・数式・グラフを行き来する。
+
+今後は各概念について次の表現を必要に応じて組み合わせる。
+
+```text
+P = Phenomenon
+    何が起きているか
+
+V = Visual
+    図・写真・軌跡・矢印としてどう見えるか
+
+Q = Quantity
+    何という物理量で表すか
+
+R = Relation
+    物理量同士がどう関係するか
+
+M = Math
+    数式でどう圧縮して表すか
+
+G = Graph
+    時間変化・関数関係をどう読むか
+
+T = Transfer
+    別の状況へ同じ考えを使えるか
+```
+
+全概念を同じ順序に押し込まない。
+
+例:
+
+```text
+位置ベクトル
+P → V → Q → M → T
+
+変位
+V → Q → R → M → T
+
+加速度
+P → Q → G → R → M → T
+
+斜方投射
+P → V → Q → M
+        ↓
+       vx, vy
+        ↓
+        M → T
+
+終端速度
+P → V(force) → R → M → G → T
+```
+
+## 3. 現在のappとの主要矛盾
+
+### contradiction A — 全単元を同じsection templateへ押し込んでいる
+
+現在1A〜1Gはすべて、
+
+```text
+concept
+→ figure-reading
+→ worked-example
+→ worked-example
+→ review
+```
+
+の5section構造。
+
+これは実装・量産には便利だが、物理概念の学び方とは一致しない。
+
+- ベクトルは図と文章を同時に扱う方が自然。
+- 加速度は数値変化・v-tグラフ・式の連携が重要。
+- 投射運動は軌跡図と成分分解を同時に扱う必要がある。
+- 終端速度は力の関係とv-tグラフを往復する必要がある。
+
+**representation type を section type と同一視しないこと。**
+
+### contradiction B — 「知識点チェック」と「図の読み取り」が分離しすぎている
+
+現在は概念を文章で学んだ後、別sectionで図を見る構造が多い。
+
+しかし、位置・ベクトル・変位・速度成分などは、
+
+```text
+文章
+→ 図
+→ 選択
+→ 新しい意味
+→ 式
+→ 再び図
+```
+
+を一続きにした方が自然。
+
+今後は原則として **図を文章の一部として扱う**。
+
+独立した「図の読み取り」sectionを機械的に置かない。
+
+### contradiction C — 図を置くことと、図で学ばせることを混同している
+
+図には最低3種類ある。
+
+1. **concept-forming figure**  
+   図そのものから新概念を作る。  
+   例: 位置ベクトル、変位、速度の合成。
+
+2. **inference figure**  
+   図・グラフを証拠として判断する。  
+   例: v-tグラフから加速度を読む。
+
+3. **explanatory figure**  
+   理解補助として見るだけ。  
+   無理にmaskや問題を付ける必要はない。
+
+「図がある → maskを置く → figure-reading questionを作る」という機械的設計は禁止。
+
+### contradiction D — mask と文章中questionの意味的接続が弱い
+
+現在、maskを置いても「なぜそこを隠したか」が学習者に明確でない箇所がある。
+
+新原則:
+
+> mask は、それと1対1に対応する文章中の判断・選択問題がある場合にだけ使う。
+
+例:
+
+```text
+[図14: v_y = 0 の 0 をmask]
+
+最高点では鉛直速度成分 v_y は【選択】である。
+  0 / v0 sinθ / v0 cosθ / gt
+
+正答
+↓
+文章が完成
+↓
+図のmaskも同時に解除
+```
+
+mask単体で存在させない。
+
+### contradiction E — 「完全に隠す」の定義がまだ曖昧
+
+今後のmask completeness定義:
+
+1. 答えとなる文字・数式・記号を全部覆う。
+2. glyphの一部、添字、符号、矢印先端などを覗かせない。
+3. mask周囲にpaddingを持たせる。
+4. title / heading / note / caption / alt / surrounding prose からも答えを漏らさない。
+5. desktop / mobile 両方でtargetを完全に覆う。
+6. 正答するまで解除しない。
+7. mask対象とquestionを1対1で追跡できる。
+
+### contradiction F — title / heading / note / caption が答えを先に言うことがある
+
+既知の例:
+
+斜方投射で、
+
+```text
+最高点では鉛直成分だけが0になる
+```
+
+と先に書いた後、
+
+```text
+最高点で v_y はいくらか？
+```
+
+と問うような構造はFAIL。
+
+見出しも、
+
+```text
+STEP 1 最高点では v_y = 0
+```
+
+ではなく、
+
+```text
+STEP 1 最高点の条件を考える
+```
+
+にする。
+
+回答前に見える範囲を **pre-answer context** と呼び、以下を全部監査する:
+
+- section title
+- heading
+- description
+- note
+- paragraph
+- formula
+- figure label
+- caption
+- alt text
+- previous answer reveal
+
+pre-answer context 内に正答そのもの・同義表現・一意に正答を確定する強すぎるヒントがあればFAIL。
+
+### contradiction G — 数式の役割を区別していない
+
+第1章にはformula blockが多数あるが、数が多いこと自体が問題ではない。
+
+今後は各式を最低でも次に分類する:
+
+1. concept-forming formula  
+   概念を作るための式。
+
+2. representation formula  
+   既に理解した概念を記号化する式。
+
+3. calculation formula  
+   数値計算のための式。
+
+4. verification formula  
+   結果確認の式。
+
+例:
+
+```text
+r1 + Δr = r2
+```
+
+は単なる計算式ではなく、変位を理解する concept-forming formula として使える。
+
+だから「概念説明が全部終わってから公式を置く」と固定しない。
+
+### contradiction H — 表現間の対応を学習者に任せすぎている
+
+図の `Δr`、文章の「変位」、式の `Δr` を別々に見せるだけでは足りない。
+
+今後は必要に応じて、
+
+```text
+図中の Δr
+   ↕
+文章の「変位」
+   ↕
+式中の Δr
+```
+
+を同時に強調・revealingする。
+
+一つの選択で複数表現がつながるUIを検討する。
+
+### contradiction I — 穴が「知識生成」より「クリック作業」になりうる
+
+現在はmicro itemが多く、穴密度が高い。
+
+穴を増やすこと自体を目的にしない。
+
+各穴は次のどれかに該当する必要がある:
+
+- 新概念を作る重要判断
+- 図から読む重要情報
+- 物理量同士の重要関係
+- 式を構成する重要ステップ
+- 例題の重要な方針判断
+- 少し後で再利用するretrieval
+
+接続詞、明らかな語句、単なる作業確認まで穴にしない。
+
+### contradiction J — scaffolding fading が弱い
+
+同じ概念に対して最後まで同じ強さの4択を出し続けると、選択肢依存になる。
+
+理想:
+
+```text
+初回
+図＋強い4択＋誘導
+↓
+2回目
+弱い4択
+↓
+3回目
+式中の小さな穴
+↓
+例題
+重要判断だけ
+↓
+最後
+最小限の支援 / 自力再構成
+```
+
+「知らない学生が選択しながら学ぶ」思想は維持するが、最後まで同じscaffoldにはしない。
+
+### contradiction K — 誤答retryが単なる総当たりになる可能性
+
+P26で「誤答→正解即表示」は廃止したが、4択を何回も押せば最終的に当たる問題は残る。
+
+将来検討:
+
+```text
+1回目誤答
+→ 正解非表示
+→ 1行ヒント
+
+2回目誤答
+→ より具体的なヒント
+→ 関連図や直前説明を強調
+
+その後
+→ 必要ならscaffoldを追加
+```
+
+正解をすぐ見せるのではなく、次の推論材料を与える。
+
+### contradiction L — 学習者向けmodeと開発監査modeが分離されていない
+
+教材を直すたびに179個のitemを人間が順番に答えて確認するのは非現実的。
+
+P33以降で **audit mode** を設計する。
+
+audit mode候補:
+
+- progressを保存しない
+- 全sectionを最初から展開
+- 任意sectionへ即jump
+- unanswered / wrong / resolved を切替
+- mask ON / OFF
+- all answers reveal
+- figure-only / formula-only inspection
+- mobile / desktop visual audit
+- leakage inspection
+
+これは学生向け機能ではなく教材開発用。
+
+## 4. 重要: 「知らない」ことはFAILではない
+
+次chatで絶対に取り違えないこと。
+
+このappは、
+
+```text
+先に全部説明
+→ 理解確認問題
+```
+
+だけを目指していない。
+
+むしろ、
+
+```text
+知らない
+↓
+図・状況を見る
+↓
+簡単な判断を選ぶ
+↓
+その結果から新しい意味を知る
+↓
+同じ概念をもう一度使う
+↓
+式・グラフへ接続
+↓
+別の状況で再利用
+```
+
+を中心にする。
+
+選択肢は **assessment only** ではなく **instructional scaffold**。
+
+したがって、
+
+> 「中学生にはこの用語を知らないから問題を出せない」
+
+とは判断しない。
+
+正しくは、
+
+> 「知らなくても、直前の情報から意味を構築して選べるか？」
+
+で評価する。
+
+## 5. 1Aの理想例
+
+位置ベクトル・変位では、知識点チェックと図の読み取りを分けない。
+
+例:
+
+```text
+物体が点P1にある。
+
+[図: O→P1 の矢印]
+
+OからP1へ向かうこの矢印は、物体の何を表している？
+【位置 / 速さ / 時間 / 力】
+
+正答
+↓
+「位置」を表す矢印であることを文章化
+↓
+高校物理ではこれを「位置ベクトル」と呼ぶ
+
+[同じ図]
+O→P1 = r1
+O→P2 = r2
+P1→P2 = mask
+
+最初の位置を表すのは【r1 / r2 / Δr / v】
+↓
+後の位置を表すのは【...】
+↓
+P1からP2への変化を表す矢印は【...】
+
+正答
+↓
+これを「変位 Δr」と呼ぶ
+
+さらに図を使って
+
+r1 + 【選択】 = r2
+
+を完成
+
+↓
+
+Δr = r2 - r1
+```
+
+このように **図→選択→名称→式** が一つの概念ストーリーになる。
+
+## 6. 第1章のrepresentation mapを次chatで最初に作る
+
+次chatでまず1A〜1Gについて、各概念を次の形式で全部mappingする。
+
+```text
+concept
+├─ prerequisite knowledge
+├─ best primary representation
+│    phenomenon / visual / quantity / relation / math / graph
+├─ first learnable question
+├─ knowledge gained by that question
+├─ next question dependency
+├─ figure needed?
+├─ formula needed?
+├─ graph needed?
+├─ mask needed?
+├─ answer leakage risk
+├─ scaffold level
+└─ transfer / review point
+```
+
+最低対象:
+
+### 1A
+- 位置
+- 位置ベクトル
+- 変位
+- 平均速度
+- 瞬間速度
+- 速度の向き / 接線
+
+### 1B
+- 速度の合成
+- ベクトル和
+- 速度の分解
+- x/y成分
+
+### 1C
+- 観測者
+- 相対速度
+- ベクトル差
+
+### 1D
+- 速度変化
+- 加速度
+- 符号
+- v-tグラフ
+
+### 1E
+- 水平 / 鉛直の独立性
+- 水平投射
+- 時間
+- 軌跡
+
+### 1F
+- 初速度の分解
+- 最高点
+- 上昇 / 下降
+- 飛行時間
+- 水平到達距離
+
+### 1G
+- 重力加速度
+- 空気抵抗
+- 速度依存
+- 力のつり合い
+- 終端速度
+- v-tグラフ
+
+## 7. 次chatでの作業順
+
+```text
+P33 representation map
+  ↓
+P34 contradiction audit
+  current 1A〜1G vs representation map
+  ↓
+P35 rewrite rules
+  one-step learnability
+  leakage
+  figure/text integration
+  formula role
+  scaffold fading
+  ↓
+P36 mask definition + visual gates
+  ↓
+P37 1A redesign on paper/data first
+  ↓
+P38 virtual beginner simulation
+  中学知識のみで最初から最後まで辿れるか
+  ↓
+USER REVIEW
+  ↓
+P39 code implementation
+```
+
+**P39まではコードを書かない。**
+
+まず1Aを完成テンプレートにしてから1B〜1Gへ展開する。
+
+## 8. 次chatでの最重要質問
+
+次のAIは以下を一問ずつ検証すること。
+
+1. この瞬間の生徒は何を知っている？
+2. この選択肢を選ぶ根拠は既に画面内にある？
+3. 正解すると何という新しい知識を得る？
+4. その新知識は次のquestionで使われる？
+5. 図・文章・式・グラフのどれがこの概念の主役？
+6. 別表現との対応をappが明示している？
+7. title / heading / note / caption / alt が答えを漏らしていない？
+8. maskは本当に必要？
+9. maskは答えを完全に隠している？
+10. 穴を消しても学習ストーリーは自然に読める？
+11. 後半ではscaffoldが減っている？
+12. 最後に学生は選択肢なしでも意味を説明できそう？
+
+## 9. 現時点の結論
+
+現在のappは、
+
+- source material
+- figure assets
+- formula support
+- interactive holes
+- reader infrastructure
+
+はかなり揃っている。
+
+次のボトルネックは **素材量ではなく教育設計**。
+
+特に、
+
+```text
+固定section template
+知識と図の分離
+図とquestionの弱い接続
+answer leakage
+mask定義不足
+formula roleの未分類
+representation間の接続不足
+穴密度
+scaffold fading不足
+開発audit mode不足
+```
+
+が主要OPEN課題。
+
+これらを解かずに第2章以降を量産しないこと。

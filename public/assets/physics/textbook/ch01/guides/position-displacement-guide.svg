@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-labelledby="title desc">
+<title id="title">原点と2つの位置を結ぶ矢印</title>
+<desc id="desc">原点O、位置P1とP2、およびそれらを結ぶ3本の矢印を示す。物理量の記号はまだ表示しない。</desc>
+<defs><marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto"><path d="M0,0 L0,10 L11,5 z" fill="#1e4f80"/></marker></defs>
+<rect width="900" height="520" fill="#fff"/>
+<g stroke="#172737" stroke-width="4" fill="none">
+<line x1="110" y1="430" x2="820" y2="430"/><line x1="110" y1="430" x2="110" y2="55"/>
+</g>
+<g stroke="#1e4f80" stroke-width="7" fill="none" marker-end="url(#arrow)">
+<line x1="112" y1="428" x2="365" y2="300"/>
+<line x1="112" y1="428" x2="700" y2="145"/>
+<line x1="370" y1="296" x2="700" y2="145"/>
+</g>
+<g fill="#172737" font-family="system-ui, sans-serif" font-size="34">
+<circle cx="110" cy="430" r="9"/><circle cx="370" cy="296" r="10"/><circle cx="705" cy="140" r="10"/>
+<text x="72" y="478">O</text><text x="330" y="278">P₁</text><text x="720" y="132">P₂</text>
+<text x="830" y="444">x</text><text x="86" y="48">y</text>
+</g></svg>

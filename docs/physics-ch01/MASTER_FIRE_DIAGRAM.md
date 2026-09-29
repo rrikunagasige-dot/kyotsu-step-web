@@ -1403,3 +1403,31 @@ Next node is **USER REVIEW**.
 
 **G61 remains BLOCKED. P39 application code must not start until explicit user approval.**
 
+### 19.15 USER REVIEW RETURNED — FORMULA-HOLE DENSITY INSUFFICIENT
+
+The previous stop at USER REVIEW did **not** authorize P39.
+
+Review feedback:
+- natural prose: retained,
+- visible mobile derivations: retained,
+- formula interaction: insufficient.
+
+New requirement:
+every nontrivial multi-step derivation must contain at least one meaningful formula hole, using F1–F5:
+parent relation / physical-condition substitution / variable elimination / meaningful transformation / final-form reconstruction.
+
+Review candidate:
+`docs/physics-ch01/prototypes/CH1_LEARNING_TEXT_V2_2_FORMULA_HOLES.md`
+
+Candidate:
+- 65 holes,
+- +11 derivation-formula holes,
+- 17 figures,
+- 27 rendered pages,
+- full render QA completed.
+
+**CURRENT STOP: USER REVIEW of v2.2.**
+**G61 / P39 remains BLOCKED.**
+
+Earlier P33–P38 documents remain design history, but no implementation may treat v2.1 as the user-approved final Chapter-1 interaction density.
+

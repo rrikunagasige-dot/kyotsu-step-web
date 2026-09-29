@@ -62,7 +62,15 @@ function stableShuffle(values: string[], seed: string) {
 }
 
 export function getTextbookChoices(unit: TextbookUnit, item: TextbookItem) {
-  if (item.choices?.length) return stableShuffle(item.choices, item.id)
+  const desiredCount = item.scaffoldLevel === 'strong' ? 2 : item.scaffoldLevel === 'medium' ? 3 : 4
+
+  if (item.choices?.length) {
+    const distractors = item.choices.filter(
+      (choice) => normalizeTextbookAnswer(choice) !== normalizeTextbookAnswer(item.answer),
+    )
+    const selectedDistractors = stableShuffle(distractors, `${item.id}-distractors`).slice(0, Math.max(1, desiredCount - 1))
+    return stableShuffle([item.answer, ...selectedDistractors], `${item.id}-visible`)
+  }
 
   const currentSection = unit.sections.find((section) => section.items.some((candidate) => candidate.id === item.id))
   const sameTypeInSection = currentSection?.items.filter((candidate) => candidate.answerType === item.answerType) ?? []
@@ -79,7 +87,10 @@ export function getTextbookChoices(unit: TextbookUnit, item: TextbookItem) {
     if (distinctDistractors.length === 3) break
   }
 
-  return stableShuffle([item.answer, ...distinctDistractors.slice(0, 3)], item.id)
+  return stableShuffle(
+    [item.answer, ...stableShuffle(distinctDistractors, `${item.id}-fallback-distractors`).slice(0, Math.max(1, desiredCount - 1))],
+    `${item.id}-fallback-visible`,
+  )
 }
 
 export function isTextbookAnswerCorrect(item: TextbookItem, value: string) {

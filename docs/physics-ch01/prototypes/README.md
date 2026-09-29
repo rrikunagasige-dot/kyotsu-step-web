@@ -111,3 +111,30 @@ v2.1 closes the P33 source-alignment issues.
     missing / wrong / wrong timing / split-attention / leakage
 
 Do not alter application code merely because P34 begins. P34 is an audit first.
+
+---
+
+## Review candidate — v2.2 formula-hole enhanced
+
+This candidate is **not yet the current approved checkpoint**.
+
+Source:
+`CH1_LEARNING_TEXT_V2_2_FORMULA_HOLES.md`
+
+- holes: 65
+- figures: 17
+- rendered pages: 27
+- source SHA256: `d01cdebc96454fa74b7ee17c3aa88ff51e1e26086bac520b03cc4648f1dcabcd`
+
+DOCX:
+- Library path: `/塾/kyotsu-step-web/prototypes/第1章_物体の運動_数式導出穴強化版_v2.2_20260929.docx`
+- library_file_id: `libfile_d30a1b27298081919cfa404dc4df105f`
+- bytes: `12,132,107`
+- SHA256: `b005b81013d23b955da433c1c39b8fc3af01be2e13bf94579acece90b8cae8d4`
+
+Change from v2.1:
+- +11 derivation-formula holes,
+- no arbitrary replacement questions,
+- formula-hole rule F1–F5 added,
+- awaiting user review before becoming authoritative.
+

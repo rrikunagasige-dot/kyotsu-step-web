@@ -18,8 +18,8 @@
 
 Final source identity:
 
-- bytes: `38,531`
-- SHA256: `a3a8848257140b53487428a35c8882a7214a2ad5a8c7876a13a55c1916b6f2a3`
+- bytes: `38,479`
+- SHA256: `f70472859e0ba67f635ddb7e94a74d7d4e4453f999c069ff3fe25c081bbaa40a`
 
 The Markdown source records:
 - natural continuous prose,
@@ -86,8 +86,8 @@ The final v2.1 review Word is persisted in ChatGPT Library:
 
 - path: `/塾/kyotsu-step-web/prototypes/第1章_物体の運動_文章内穴埋め_数式導出強化版_v2.1_20260929.docx`
 - library_file_id: `libfile_646f9a1da760819180156735b3bb3383`
-- bytes: `12,130,769`
-- SHA256: `69d22ab962f5fb25f6af9e78f3fe7ace82381d5c253a9f2812a85846510cf573`
+- bytes: `12,130,767`
+- SHA256: `3e6a70d02bdc2a78beceb68df3e8ff72df74b4c39f31dabd28764deb3d388ec7`
 - reviewed render: 26 pages
 - canonical figures: 17
 - holes: 54

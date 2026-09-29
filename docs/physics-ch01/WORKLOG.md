@@ -1309,3 +1309,17 @@ G56 PASS / P34 PASS = audit completeness only.
 
 No app code changed. P35 is next.
 
+---
+
+## 2026-09-29 — P35 pedagogy rules
+
+Created:
+`docs/physics-ch01/P35_PEDAGOGY_RULES.md`
+
+The rules convert the P34 contradiction inventory into anti-regression constraints:
+one-step learnability, H1–H6 purpose, meaning-before-name, representation timing, mobile derivation, density control, S0–S5 fading, retry hints, anti-brute-force behavior, transfer/retrieval, leakage, figure/formula roles, and worked-example continuity.
+
+G57 PASS / P35 PASS.
+
+No application code changed. P36 is next.
+

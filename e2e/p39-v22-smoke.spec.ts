@@ -125,7 +125,7 @@ test('A1 shows a staged hint after a wrong attempt without revealing the answer'
 
 test('first concept-forming figure is not upscaled beyond its intrinsic size', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/physics-a-displacement-velocity'))
-  const figure = page.getByTestId('textbook-figure-fig-1-guide')
+  const figure = page.getByTestId('textbook-figure-fig-1')
   const image = figure.locator('img')
 
   await image.waitFor({ state: 'attached' })

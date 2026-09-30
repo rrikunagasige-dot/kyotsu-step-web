@@ -1720,3 +1720,30 @@ Current post-correction counts:
 The two additional interactions relative to the R4 45-interaction baseline are deliberately confined to this user-approved worked-example chain. Do not infer a general instruction to turn routine arithmetic into holes elsewhere.
 
 **P39/G61 remains USER RE-QA OPEN.**
+
+
+### 19.22 1A RELATION-RECALL HOLES — EXACT USER CORRECTION
+
+```text
+existing one-frame average-velocity derivation
+  │
+  ├─ Δr = [NEW: r2-r1]
+  │      ↓
+  │   substitute coordinates
+  │      ↓
+  │   [KEEP: (6,4)]
+  │
+  ├─ Δt = [NEW: t2-t1]
+  │      ↓
+  │   substitute times
+  │      ↓
+  │   [KEEP: 3]
+  │
+  └─ velocity part unchanged
+         [KEEP: numerator substitution]
+         [KEEP: final result]
+```
+
+Current: 1A=13 / Chapter 1=49 / derivation groups=14 / scaffold strong 6, medium 20, light 23.
+Only the two relation holes were added; no existing hole was removed or repurposed.
+P39/G61 remains USER RE-QA OPEN.

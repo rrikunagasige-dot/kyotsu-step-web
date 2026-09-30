@@ -1509,3 +1509,28 @@ Validation:
 - GitHub Pages deploy PASS.
 
 **P39/G61 remains USER RE-QA OPEN.**
+
+
+## 2026-09-30 USER MICRO-CORRECTION — ADD ONLY TWO RELATION HOLES
+
+This supersedes only the immediately previous statement that the 1A average-velocity chain had four holes.
+
+The user clarified the exact live behavior:
+- keep every existing hole in the worked example unchanged,
+- add one new hole at `Δr = r₂-r₁`,
+- add one new hole at `Δt = t₂-t₁`,
+- preserve the existing holes for `(6.0,4.0)`, `3.0`, velocity-numerator substitution, and the final velocity result,
+- keep the full calculation inside one derivation frame.
+
+Current worked-example order:
+`A9c: Δr relation` → `A9: (6,4)` → `A9d: Δt relation` → `A9a: 3` → `A9b: velocity numerator` → `A10: final velocity`.
+
+Current counts:
+- 1A = 13 interactions,
+- Chapter 1 = 49 interactions,
+- explicit derivation groups remain 14,
+- scaffold distribution = strong 6 / medium 20 / light 23.
+
+This is a local user-approved first-example design decision, not a chapter-wide instruction to add relation-recall holes everywhere.
+
+P39/G61 remains USER RE-QA OPEN.

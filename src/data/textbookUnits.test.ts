@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import source from '../../docs/physics-ch01/prototypes/CH1_LEARNING_TEXT_V2_2_FORMULA_HOLES.md?raw'
 import { builtInTextbookUnits } from './textbookUnits'
+import type { TextbookReadingBlock } from '../domain/textbookSchema'
 
 const expectedCounts: Record<string, number> = {
   '1A': 11,
@@ -128,7 +129,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
       'g-terminal',
     ]
 
-    const groups = new Map<string, Array<{ type: string }>>()
+    const groups = new Map<string, TextbookReadingBlock[]>()
     for (const unit of builtInTextbookUnits) {
       for (const block of unit.sections[0].readingFlow) {
         if (!('derivationId' in block) || !block.derivationId) continue

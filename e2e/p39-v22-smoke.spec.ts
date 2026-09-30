@@ -162,7 +162,7 @@ test('first concept-forming figure is not upscaled beyond its intrinsic size', a
 test('1A average-velocity calculation stays in one derivation frame', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/physics-a-displacement-velocity'))
 
-  for (const id of ['a1', 'a2', 'a3', 'a4', 'a6', 'a7', 'a8', 'a9', 'a9a', 'a9b', 'a10']) {
+  for (const id of ['a1', 'a2', 'a3', 'a4', 'a6', 'a7', 'a8', 'a9c', 'a9', 'a9d', 'a9a', 'a9b', 'a10']) {
     await solveHoleByTryingChoices(page, id)
   }
 

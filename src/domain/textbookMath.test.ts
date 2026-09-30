@@ -12,6 +12,7 @@ describe('textbook math normalization', () => {
     expect(normalizeTextbookMath('r⃗₁')).toBe('\\vec{r}_{1}')
     expect(normalizeTextbookMath('Δr⃗')).toBe('\\Delta \\vec{r}')
     expect(normalizeTextbookMath('v⃗_A')).toBe('\\vec{v}_A')
+    expect(normalizeTextbookMath('v̄⃗')).toBe('\\vec{v}_{\\mathrm{avg}}')
   })
 
   it('keeps ordinary symbolic subscripts valid', () => {

@@ -21,7 +21,7 @@ export function normalizeTextbookMath(value: string) {
     .replace(/([A-Za-z])⃗([₀₁₂₃₄₅₆₇₈₉ₓᵧₜ]+)/g, (_, base: string, sub: string) => `\\vec{${base}}_{${normalizeSubscriptSequence(sub)}}`)
     .replace(/([A-Za-z])([₀₁₂₃₄₅₆₇₈₉ₓᵧₜ]{2,})/g, (_, base: string, sub: string) => `${base}_{${normalizeSubscriptSequence(sub)}}`)
     .replace(/([A-Za-z])_([0-9]+)_([A-Za-z])/g, '$1_{$2$3}')
-    .replace(/v̄⃗/g, '\\bar{\\vec{v}}')
+    .replace(/v̄⃗/g, '\\vec{v}_{\\mathrm{avg}}')
     .replace(/([A-Za-z])̄⃗/g, '\\bar{\\vec{$1}}')
     .replace(/Δ([A-Za-z])⃗/g, '\\Delta \\vec{$1}')
     .replace(/([A-Za-z])⃗/g, '\\vec{$1}')

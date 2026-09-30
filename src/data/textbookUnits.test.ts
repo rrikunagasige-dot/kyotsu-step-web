@@ -3,7 +3,7 @@ import source from '../../docs/physics-ch01/prototypes/CH1_LEARNING_TEXT_V2_2_FO
 import { builtInTextbookUnits } from './textbookUnits'
 
 const expectedCounts: Record<string, number> = {
-  '1A': 9,
+  '1A': 11,
   '1B': 3,
   '1C': 4,
   '1D': 8,
@@ -32,7 +32,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
     }
   })
 
-  it('preserves all 45 audited holes with an explicit source answer', () => {
+  it('preserves all 47 audited holes with an explicit source answer', () => {
     const counts = Object.fromEntries(
       builtInTextbookUnits.map((unit) => [
         unit.chapter?.unitCode,
@@ -40,10 +40,10 @@ describe('Chapter 1 continuous textbook catalog', () => {
       ]),
     )
     expect(counts).toEqual(expectedCounts)
-    expect(allItems()).toHaveLength(45)
+    expect(allItems()).toHaveLength(47)
 
     const answerLines = [...source.slice(source.indexOf('# 解答')).matchAll(/^([A-G]\d+[a-z]?)　(.+)$/gm)]
-    expect(answerLines).toHaveLength(45)
+    expect(answerLines).toHaveLength(47)
 
     for (const item of allItems()) {
       expect(item.choices).toHaveLength(4)
@@ -62,7 +62,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
       scaffoldCounts[item.scaffoldLevel] += 1
     }
 
-    expect(scaffoldCounts).toEqual({ strong: 6, medium: 16, light: 23 })
+    expect(scaffoldCounts).toEqual({ strong: 6, medium: 18, light: 23 })
 
     const lateItems = builtInTextbookUnits
       .filter((unit) => ['1F', '1G'].includes(unit.chapter?.unitCode ?? ''))
@@ -106,12 +106,13 @@ describe('Chapter 1 continuous textbook catalog', () => {
       expect(index).toBeGreaterThanOrEqual(0)
       distribution[index] += 1
     }
-    expect(distribution.reduce((sum, count) => sum + count, 0)).toBe(45)
+    expect(distribution.reduce((sum, count) => sum + count, 0)).toBe(47)
     expect(Math.max(...distribution) - Math.min(...distribution)).toBeLessThanOrEqual(1)
   })
 
   it('keeps explicit multi-step derivations as one semantic group', () => {
     const expected = [
+      'a-average-velocity-example',
       'd-velocity-update',
       'd-displacement-area',
       'd-eliminate-time',
@@ -143,6 +144,14 @@ describe('Chapter 1 continuous textbook catalog', () => {
     }
 
     expect(groups.get('d-eliminate-time')?.some((block) => block.type === 'paragraph')).toBe(true)
+    const averageVelocity = groups.get('a-average-velocity-example') ?? []
+    const averageVelocityHoles = averageVelocity.flatMap((block) =>
+      block.type === 'formula'
+        ? block.parts.filter((part) => part.type === 'choice').map((part) => part.itemId)
+        : [],
+    )
+    expect(averageVelocityHoles).toEqual(['a9', 'a9a', 'a9b', 'a10'])
+
     expect(groups.get('f-flight-time')?.some((block) => block.type === 'paragraph')).toBe(true)
   })
 

@@ -175,44 +175,54 @@ describe('Chapter 1 continuous textbook catalog', () => {
     }
   })
 
-  it('uses 17 canonical figures plus four non-leaking learning guides/graphs', () => {
+  it('uses only the 17 canonical Chapter 1 figures', () => {
     const figures = builtInTextbookUnits.flatMap((unit) =>
       unit.sections.flatMap((section) => section.figures),
     )
-    expect(figures).toHaveLength(21)
-    expect(new Set(figures.map((figure) => figure.src)).size).toBe(21)
+    expect(figures).toHaveLength(17)
+    expect(new Set(figures.map((figure) => figure.src)).size).toBe(17)
 
-    const ids = new Set(figures.map((figure) => figure.id))
-    expect(ids).toContain('fig-1-guide')
-    expect(ids).toContain('fig-2-guide')
-    expect(ids).toContain('fig-6-guide')
-    expect(ids).toContain('fig-d-vt')
+    const ids = figures.map((figure) => figure.id).sort((a, b) => {
+      const left = Number(a.replace('fig-', ''))
+      const right = Number(b.replace('fig-', ''))
+      return left - right
+    })
+    expect(ids).toEqual(Array.from({ length: 17 }, (_, index) => `fig-${index + 1}`))
   })
 
-  it('shows concept-forming guides before their dependent questions', () => {
+  it('shows the canonical figure before prose or questions that explicitly depend on it', () => {
     const unit1A = builtInTextbookUnits.find((unit) => unit.chapter?.unitCode === '1A')!
     const flowA = unit1A.sections[0].readingFlow
-    expect(flowA.findIndex((block) => block.type === 'figure' && block.figureId === 'fig-1-guide'))
-      .toBeLessThan(flowA.findIndex((block) =>
-        (block.type === 'paragraph' || block.type === 'formula') &&
-        block.parts.some((part) => part.type === 'choice' && part.itemId === 'a1'),
-      ))
+    const fig1 = flowA.findIndex((block) => block.type === 'figure' && block.figureId === 'fig-1')
+    const a1 = flowA.findIndex((block) =>
+      (block.type === 'paragraph' || block.type === 'formula') &&
+      block.parts.some((part) => part.type === 'choice' && part.itemId === 'a1'),
+    )
+    expect(fig1).toBeLessThan(a1)
+
+    const fig2 = flowA.findIndex((block) => block.type === 'figure' && block.figureId === 'fig-2')
+    const a7 = flowA.findIndex((block) =>
+      (block.type === 'paragraph' || block.type === 'formula') &&
+      block.parts.some((part) => part.type === 'choice' && part.itemId === 'a7'),
+    )
+    expect(fig2).toBeLessThan(a7)
 
     const unit1B = builtInTextbookUnits.find((unit) => unit.chapter?.unitCode === '1B')!
     const flowB = unit1B.sections[0].readingFlow
-    const guide = flowB.findIndex((block) => block.type === 'figure' && block.figureId === 'fig-6-guide')
-    for (const id of ['b2']) {
-      const question = flowB.findIndex((block) =>
-        (block.type === 'paragraph' || block.type === 'formula') &&
-        block.parts.some((part) => part.type === 'choice' && part.itemId === id),
-      )
-      expect(guide).toBeLessThan(question)
-    }
+    const fig6 = flowB.findIndex((block) => block.type === 'figure' && block.figureId === 'fig-6')
+    const b2 = flowB.findIndex((block) =>
+      (block.type === 'paragraph' || block.type === 'formula') &&
+      block.parts.some((part) => part.type === 'choice' && part.itemId === 'b2'),
+    )
+    expect(fig6).toBeLessThan(b2)
   })
 
-  it('restores the v-t graph required by the acceleration derivation', () => {
+  it('keeps the 1D v-t derivation without inserting a synthetic graph', () => {
     const unit1D = builtInTextbookUnits.find((unit) => unit.chapter?.unitCode === '1D')!
-    expect(unit1D.sections[0].figures.some((figure) => figure.id === 'fig-d-vt')).toBe(true)
+    const section = unit1D.sections[0]
+    expect(section.figures.some((figure) => figure.id === 'fig-d-vt')).toBe(false)
+    expect(section.items.some((item) => item.id === 'd3')).toBe(true)
+    expect(section.items.some((item) => item.id === 'd4')).toBe(true)
   })
 
   it('includes the chapter-level summary at the end of 1G', () => {

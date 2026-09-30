@@ -1602,3 +1602,56 @@ Final validation:
 **G61 / P39 remains OPEN only for USER RE-QA.**
 Automated success is not pedagogical approval.
 
+### 19.19 USER FIGURE CORRECTION — CANONICAL 17 ONLY
+
+This node supersedes the figure-specific decision recorded in the earlier R6 snapshot.
+
+```text
+USER LIVE-APP QA
+  │
+  ├─ reject newly drawn guide / confirmation / generated graph figures
+  │
+  ▼
+F0 canonical archive identity
+  figure.zip
+  SHA256 b1d55e...b01e2
+  │
+  ▼
+F1 restore original 17 source figures
+  1.png ... 17.png
+  no semantic redraw
+  │
+  ▼
+F2 high-resolution app export
+  original content → WebP
+  width >= 1000 / height >= 700
+  │
+  ▼
+F3 live-source restriction
+  exactly fig-1 ... fig-17
+  generated-* figure directives = 0
+  synthetic extra v-t graph = 0
+  │
+  ▼
+F4 figure-order gate
+  first "図N" textual mention must occur only after fig-N exists
+  │
+  ▼
+F5 browser + build + deploy
+  run 222 / head 155a825f6058
+  PASS
+  │
+  ▼
+USER RE-QA
+```
+
+Current figure authority:
+- original Library/source-archive figures only,
+- no newly drawn concept guide merely to satisfy pedagogy,
+- if a canonical figure is pedagogically insufficient, repair the prose/question ordering first; do not silently invent a replacement figure,
+- any future new figure requires an explicit new user decision rather than inheriting the superseded R6 SVG policy.
+
+Run 222 passed typecheck, audited Chapter-1 data/math/figure gates, mobile+desktop Playwright smoke, production build, and Pages deploy.
+
+**P39/G61 remains USER RE-QA OPEN.**
+

@@ -1545,3 +1545,38 @@ typecheck PASS / data+math+asset+pedagogy gates PASS / mobile browser PASS / des
 P39 is **not** closed.
 Next gate is the user's second hands-on review of the deployed App.
 
+---
+
+## 2026-09-30 — User correction: restore canonical Library figures
+
+The user rejected the recently introduced synthetic learning diagrams and also reported prose referring to figures where the expected figure was not actually present.
+
+Audit found that the live continuous source had diverged from its own canonical-17 policy:
+- generated position/displacement guide,
+- generated secant-to-tangent guide,
+- generated velocity-component guide and confirmation,
+- generated v-t graph,
+- generated/redrawn replacements for several canonical figures.
+
+Repair:
+- materialized the persistent Library `figure.zip`,
+- confirmed archive identity SHA256 `b1d55eb94c13aa8ec91dbfd794dcbcbcec9c5a67ed8bdd692c397ad78d8b01e2`,
+- also reconstructed the same verified archive from the persistent `source-archives` branch,
+- re-exported all original 17 PNGs as high-resolution WebPs without semantic redrawing,
+- restored the live prototype to exactly Figure 1–17,
+- removed all generated figure directives and the extra synthetic v-t graph,
+- moved canonical Figures 1, 2 and 6 early enough that dependent prose/questions do not refer to a missing future figure,
+- removed stale tests that treated synthetic guide IDs as required behavior,
+- added permanent gates for exact canonical paths, source-resolution dimensions, zero generated directives, and "図N must not precede fig-N".
+
+Validation:
+- run 222
+- head `155a825f6058f06f42b9097e4e29092dad09818e`
+- typecheck PASS
+- Chapter-1 audited data/math/figure gate PASS
+- mobile + desktop browser smoke PASS
+- build PASS
+- Pages deploy PASS
+
+This is a figure-policy correction only. P39 remains USER RE-QA OPEN.
+

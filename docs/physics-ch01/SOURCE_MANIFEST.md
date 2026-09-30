@@ -242,3 +242,29 @@ Therefore:
 - the exact identity bridge is the SHA256/size table above.
 
 This limitation must not be misrepresented as “the ZIP binaries are committed to GitHub”.
+
+## 2026-09-30 canonical live-figure restoration
+
+The user explicitly required the live App to return to the original Library figures and rejected newly drawn substitute graphs/guides.
+
+Canonical source authority remains:
+- archive: `figure.zip`
+- Library path: `/塾/kyotsu-step-web/source_archives/figure.zip`
+- SHA256: `b1d55eb94c13aa8ec91dbfd794dcbcbcec9c5a67ed8bdd692c397ad78d8b01e2`
+- figure count: 17
+
+For this restoration the same archive was reconstructed from the persistent `source-archives` branch, its SHA256 was verified, and all 17 original PNGs were re-exported to the canonical App WebP paths. This is format conversion only; no diagram content was redrawn.
+
+Source dimensions are preserved from the canonical PNGs (1448×1086 for most figures; Figures 5 and 7 are 1672×941).
+
+Current live policy:
+- exactly Figure 1–17,
+- no additional generated guide/confirmation/graph in Chapter 1,
+- every referenced live WebP must be >=1000×700 and structurally valid,
+- prototype must contain no `source="generated-..."` figure directive,
+- first textual `図N` reference must occur after the corresponding `fig-N` directive.
+
+The one-time restoration workflow was removed after use. Permanent CI tests, not the restoration workflow, enforce the policy.
+
+Validation: GitHub Actions run 222 / tested head `155a825f6058f06f42b9097e4e29092dad09818e` / SUCCESS through Pages deploy.
+

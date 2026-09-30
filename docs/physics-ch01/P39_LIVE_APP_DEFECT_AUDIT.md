@@ -216,3 +216,31 @@ Remaining work before P39 closure:
 
 Deferred cleanup from section C (source/parser/test naming and full developer audit mode) remains important before Chapter-2 batch production, but does not block the present Chapter-1 user review.
 
+---
+
+## USER FIGURE CORRECTION — 2026-09-30
+
+The previous R6 implementation used several generated SVG guides and replaced Figure 6 with a newly drawn SVG. The user explicitly rejected that direction.
+
+This section supersedes the earlier R6 figure decision while retaining it as historical evidence.
+
+### Corrected acceptance rule
+
+1. Live Chapter 1 contains exactly the 17 canonical figures from the verified Library `figure.zip`.
+2. No `generated-guide`, `generated-confirmation`, or `generated-graph` figure is allowed in the live Chapter-1 source.
+3. The original figure contents are preserved; high-resolution WebP export is allowed, semantic redrawing is not.
+4. A textual reference such as `図N` must not precede the actual `fig-N` figure block.
+5. Figure QA checks both asset integrity/resolution and source ordering.
+6. The extra generated v-t graph is removed; the v-t reasoning remains in prose/formulas without pretending that an original canonical graph exists there.
+
+### Result
+
+- 17/17 original figures restored from archive identity SHA256 `b1d55eb94c13aa8ec91dbfd794dcbcbcec9c5a67ed8bdd692c397ad78d8b01e2`.
+- all 17 canonical app assets re-exported from their original PNGs at source resolution,
+- generated live figure directives: 0,
+- canonical figure IDs: exactly `fig-1` ... `fig-17`,
+- first-reference ordering gate: PASS for all 17,
+- GitHub Actions run 222 / head `155a825f6058f06f42b9097e4e29092dad09818e`: typecheck PASS / audited data+math+figure PASS / mobile+desktop browser PASS / build PASS / Pages deploy PASS.
+
+P39 remains open for user re-QA.
+

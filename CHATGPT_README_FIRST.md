@@ -1444,3 +1444,32 @@ Current state:
 
 Do not begin Chapter 2 batch production or close P39 until the user has reviewed the deployed Chapter-1 learning experience again.
 
+## 19. 2026-09-30 USER FIGURE CORRECTION — CURRENT FIGURE AUTHORITY
+
+This section **supersedes the figure-specific parts of the earlier R6 notes**. The earlier record is kept only as history.
+
+The user rejected newly drawn guide/confirmation/graph figures and required the live Chapter-1 lesson to return to the original Library figure set.
+
+Current binding rules:
+- Chapter 1 uses **exactly the 17 canonical figures** from the verified `figure.zip`.
+- Live lesson may not add `generated-guide`, `generated-confirmation`, or `generated-graph` figures.
+- The synthetic position guide, secant/tangent guide, velocity-component guide/confirmation, and extra generated v-t graph were removed from the live source.
+- Figure 1–17 are the original Library/source-archive drawings, re-exported as high-resolution WebP without redrawing their contents.
+- The canonical archive identity is SHA256 `b1d55eb94c13aa8ec91dbfd794dcbcbcec9c5a67ed8bdd692c397ad78d8b01e2`.
+- Every live canonical WebP is gated at width >= 1000 and height >= 700.
+- The source/test gate requires exactly `fig-1` through `fig-17`, forbids generated figure directives, and fails if prose first mentions `図N` before the corresponding figure directive exists.
+- In particular, text such as “図6を見ると” must never appear before Figure 6 has actually been inserted into the reading flow.
+
+Validation authority for this correction:
+- GitHub Actions run **222**
+- tested head `155a825f6058f06f42b9097e4e29092dad09818e`
+- typecheck PASS
+- Chapter-1 audited data/math/figure gate PASS
+- mobile + desktop browser smoke PASS
+- production build PASS
+- GitHub Pages deploy PASS
+
+**Do not restore the superseded synthetic SVG/graph policy in future repairs.**
+
+P39/G61 remains open for user re-QA; this figure repair is not itself permission to close P39.
+

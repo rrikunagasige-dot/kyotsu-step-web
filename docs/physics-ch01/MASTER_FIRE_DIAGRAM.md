@@ -1655,3 +1655,68 @@ Run 222 passed typecheck, audited Chapter-1 data/math/figure gates, mobile+deskt
 
 **P39/G61 remains USER RE-QA OPEN.**
 
+
+
+### 19.20 USER 1A AVERAGE-VELOCITY DERIVATION CORRECTION
+
+This node is a local user-driven refinement after the R0–R9 baseline. It does not authorize a chapter-wide return to mechanical calculation holes.
+
+```text
+USER 1A LIVE QA
+  │
+  ├─ consecutive equations split into separate white cards
+  ├─ worked-example holes did not feel like a coherent learned calculation
+  └─ average-velocity symbol showed stacked bar + vector arrow
+  │
+  ▼
+A0 scope freeze
+  first-section average-velocity worked example only
+  │
+  ▼
+A1 one semantic derivation
+  a-average-velocity-example
+  │
+  ├─ v_avg = Δr / Δt
+  ├─ Δr = r2-r1
+  ├─ numerical displacement → hole
+  ├─ Δt = t2-t1
+  ├─ numerical elapsed time → hole
+  ├─ substitute computed Δr → hole
+  └─ final vector result → hole
+  │
+  ▼
+A2 one visual frame
+  one outer derivation container
+  per-equation borders = 0
+  │
+  ▼
+A3 notation repair
+  stacked bar+arrow → vec(v)_avg
+  │
+  ▼
+A4 regression
+  1A revision 7
+  47 total interactions
+  14 derivation groups
+  mobile + desktop browser gate
+  │
+  ▼
+A5 run 225 / head 62ef643b4f58
+  typecheck PASS
+  data/math PASS
+  browser PASS
+  build PASS
+  Pages deploy PASS
+  │
+  ▼
+USER RE-QA
+```
+
+Current post-correction counts:
+- 1A=11 / 1B=3 / 1C=4 / 1D=8 / 1E=6 / 1F=8 / 1G=7 = **47**,
+- derivation groups = **14**,
+- scaffold = strong 6 / medium 18 / light 23.
+
+The two additional interactions relative to the R4 45-interaction baseline are deliberately confined to this user-approved worked-example chain. Do not infer a general instruction to turn routine arithmetic into holes elsewhere.
+
+**P39/G61 remains USER RE-QA OPEN.**

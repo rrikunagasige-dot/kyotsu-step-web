@@ -1580,3 +1580,53 @@ Validation:
 
 This is a figure-policy correction only. P39 remains USER RE-QA OPEN.
 
+
+
+---
+
+## 2026-09-30 — User QA: 1A average-velocity derivation unified
+
+The user reviewed the deployed first section equation-by-equation and froze a local correction before any wider editing.
+
+Observed:
+- average velocity displayed with a stacked average bar + vector arrow,
+- consecutive equations in the worked example were presented as separate white cards even though they form one calculation,
+- the worked-example interaction did not yet have the desired "apply the relation, calculate, reuse the result" rhythm.
+
+User-approved target:
+- one continuous outer frame for the entire average-velocity calculation,
+- no individual white-card borders between consecutive formula lines,
+- four holes inside the calculation:
+  1. `Δr` numerical result,
+  2. `Δt` numerical result,
+  3. computed `Δr` reused in the numerator,
+  4. final average-velocity vector,
+- no redesign of other Chapter-1 derivations.
+
+Implementation:
+- added `:::derive id="a-average-velocity-example"`,
+- changed 1A from 9 to 11 interactions; Chapter 1 from 45 to 47,
+- added `A9a` and `A9b`, repurposed `A9`,
+- updated interaction metadata and balanced answer positions,
+- bumped 1A revision 6 → 7,
+- rendered average velocity as `\\vec{v}_{\\mathrm{avg}}` instead of stacked bar+arrow,
+- added data/unit regression and a real-browser one-frame test on both mobile and desktop.
+
+First CI run 224:
+- typecheck PASS,
+- data/math PASS,
+- browser smoke PASS including the new 1A one-frame gate,
+- production build failed only because the new test helper used an intentionally too-narrow TypeScript map type.
+
+The test typing was corrected without changing app behavior.
+
+Final validation:
+- run **225**
+- head `62ef643b4f582ed514c483fadc949b257bb2be90`
+- typecheck PASS
+- Chapter-1 audited data/math gate PASS
+- P39 mobile + desktop browser smoke PASS
+- production build PASS
+- Pages deploy PASS.
+
+P39 remains USER RE-QA OPEN.

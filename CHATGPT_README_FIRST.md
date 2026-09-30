@@ -1473,3 +1473,39 @@ Validation authority for this correction:
 
 P39/G61 remains open for user re-QA; this figure repair is not itself permission to close P39.
 
+
+
+## 20. 2026-09-30 USER 1A DERIVATION CORRECTION — CURRENT INTERACTION AUTHORITY
+
+This section supersedes only the current-count / 1A-average-velocity parts of the R3–R5 snapshot above. The original R4 audit remains historical evidence.
+
+User review of the deployed first section established a more precise local rule:
+- the worked-example calculation for average velocity is one continuous derivation and must render inside **one outer frame**,
+- consecutive equations inside that derivation must not each receive a separate white formula-card border,
+- the four calculation holes are intentionally placed at the computed displacement, computed elapsed time, substitution of the computed displacement into the numerator, and final average-velocity vector,
+- these holes are explicit user-approved reinforcement of previously learned relations; they are not a new global policy to add arithmetic holes elsewhere,
+- the stacked average-bar + vector-arrow rendering on velocity is replaced in learner UI by a single vector arrow with an `avg` subscript: `\\vec{v}_{\\mathrm{avg}}`,
+- no other Chapter-1 derivation content was redesigned by this correction.
+
+Current live counts after this local correction:
+- total interactions: **47**,
+- per internal unit: **11 / 3 / 4 / 8 / 6 / 8 / 7**,
+- explicit derivation groups: **14**,
+- scaffold distribution: **strong=6 / medium=18 / light=23**.
+
+Regression authority:
+- derivation id: `a-average-velocity-example`,
+- browser gate asserts exactly one derivation container and zero borders on its individual formula lines,
+- mobile + desktop browser progression through all 1A interactions PASS,
+- average-velocity math normalization has a direct unit test.
+
+Validation:
+- GitHub Actions run **225**
+- tested head `62ef643b4f582ed514c483fadc949b257bb2be90`
+- typecheck PASS
+- Chapter-1 audited data/math gate PASS
+- mobile + desktop P39 browser smoke PASS
+- production build PASS
+- GitHub Pages deploy PASS.
+
+**P39/G61 remains USER RE-QA OPEN.**

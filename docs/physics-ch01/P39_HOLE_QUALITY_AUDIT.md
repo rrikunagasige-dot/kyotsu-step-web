@@ -1,6 +1,6 @@
 # P39 Hole Quality Audit — Chapter 1
 
-Status: **R4 PASS — 45 REASONING INTERACTIONS DEPLOYED**
+Status: **R4 BASELINE PASS — 45; CURRENT LIVE = 47 AFTER USER-APPROVED 1A REFINEMENT**
 
 Date: 2026-09-29
 
@@ -163,3 +163,29 @@ workflow run 213 / head `5e852790b563717c5e732d0ccdd8380cbd47ae34` / SUCCESS.
 The 45 count is a result of the audit, not a target quota.
 Future edits must continue to justify each interaction by learning purpose rather than restoring density for its own sake.
 
+
+
+---
+
+## Post-R4 user-approved local refinement — 2026-09-30
+
+The 45-interaction R4 result above remains the audit baseline, not an immutable quota. During direct review of the deployed 1A worked example, the user explicitly requested a denser calculation checkpoint **only inside the average-velocity derivation**.
+
+Current change:
+- old 1A count: 9,
+- current 1A count: 11,
+- Chapter-1 total: 47,
+- added IDs: `A9a`, `A9b`,
+- `A9` was repurposed from a generic planning prompt to the computed displacement result,
+- `A10` remains the final average-velocity result.
+
+The current four-hole chain checks:
+1. computed `Δr`,
+2. computed `Δt`,
+3. reuse/substitution of the computed `Δr`,
+4. final `v_avg`.
+
+This does **not** reverse the anti-mechanical-hole rule. It records a concrete user judgment that, in this first worked example, applying the previously introduced formulas through the numerical chain is itself the desired learning activity.
+
+Current scaffold distribution: strong 6 / medium 18 / light 23.
+Validation: run 225 / head `62ef643b4f582ed514c483fadc949b257bb2be90` / SUCCESS.

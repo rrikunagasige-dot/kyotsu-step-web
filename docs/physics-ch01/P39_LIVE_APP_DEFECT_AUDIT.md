@@ -244,3 +244,34 @@ This section supersedes the earlier R6 figure decision while retaining it as his
 
 P39 remains open for user re-QA.
 
+
+
+---
+
+## POST-R9 USER CORRECTION — 1A AVERAGE-VELOCITY CHAIN — 2026-09-30
+
+A new hands-on review of the first section found two local defects:
+1. equations belonging to one worked-example calculation were still visually split into separate white formula cards;
+2. the average-velocity notation stacked an average bar and vector arrow, producing an unpleasant double-mark appearance.
+
+The user also specified the exact worked-example interaction style: keep the calculation continuous and place holes inside the chain at meaningful application/calculation checkpoints.
+
+Applied correction:
+- scope restricted to the 1A average-velocity worked example,
+- new explicit derivation group `a-average-velocity-example`,
+- nine displayed formula lines live inside one derivation container,
+- four interactive formula holes: displacement result, elapsed-time result, displacement substitution into the numerator, final average-velocity result,
+- individual formula-line borders inside the chain are forced by the existing derivation UI to 0; only the outer derivation frame remains,
+- `v̄⃗` is normalized for learner rendering as `\\vec{v}_{\\mathrm{avg}}`, eliminating the stacked bar+arrow,
+- 1A revision bumped to 7 to prevent stale answer records from being interpreted under the changed hole meanings.
+
+Current live interaction count is now **47** (11/3/4/8/6/8/7), with **14** explicit derivation groups. This supersedes the numeric current-state snapshot of 45/13 while preserving the R4 audit as history.
+
+Regression:
+- source/data test requires the new four-hole derivation sequence,
+- direct math-normalization test covers the average-velocity symbol,
+- Playwright solves all 1A interactions on mobile and desktop and asserts one outer derivation frame with zero per-formula borders.
+
+Validation: GitHub Actions run **225**, head `62ef643b4f582ed514c483fadc949b257bb2be90` — typecheck / audited data+math / mobile+desktop browser / build / Pages deploy all PASS.
+
+P39 remains open for user re-QA.

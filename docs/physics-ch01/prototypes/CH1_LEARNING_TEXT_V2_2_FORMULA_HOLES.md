@@ -78,8 +78,8 @@ F5 最終公式への再構成：途中式から、後で使う形の公式を�
 
 平面上を運動する物体を考えよう。ある時刻 t₁ に、物体が点 P₁ にいるとする。物体が「どこにいるか」を表すため、基準となる原点 O を決め、O から P₁ へ矢印を引く。
 
-:::figure id="fig-1-guide" source="generated-guide" app_asset="public/assets/physics/textbook/ch01/guides/position-displacement-guide.svg"
-図　原点と2つの位置を結ぶ矢印
+:::figure id="fig-1" source="1.png" app_asset="public/assets/physics/textbook/ch01/1a/position-vector-displacement.webp"
+図1　位置ベクトル r⃗₁, r⃗₂ と変位 Δr⃗
 :::
 
 この矢印は、原点から見た物体の 【A1　　　　　】 を表している。
@@ -113,10 +113,6 @@ r⃗₁ + 【A3　　　　　】 = r⃗₂
 A. r⃗₁　　B. r⃗₂　　C. Δr⃗　　D. −r⃗₂
 :::
 
-:::figure id="fig-1" source="1.png" app_asset="public/assets/physics/textbook/a-displacement/position-vector.svg"
-図1　位置ベクトル r⃗₁, r⃗₂ と変位 Δr⃗
-:::
-
 
 
 となる。これは「最初の位置 + 位置の変化 = 後の位置」という意味である。変位だけを左辺に残せば、
@@ -137,7 +133,7 @@ A. x₁−x₂　　B. x₁+x₂　　C. x₂/x₁　　D. x₂−x₁
 
 Δr⃗ = (x₂−x₁,  y₂−y₁)
 
-:::figure id="fig-4" source="4.png" app_asset="public/assets/physics/textbook/a-displacement/coordinate.svg"
+:::figure id="fig-4" source="4.png" app_asset="public/assets/physics/textbook/ch01/1a/displacement-components.webp"
 図4　座標成分で見た変位
 :::
 
@@ -167,18 +163,14 @@ v̄⃗ = Δr⃗/Δt = (r⃗₂−r⃗₁)/(t₂−t₁)
 平均の速度は、ある時間区間全体についての運動を表す。しかし曲線上を動く物体について「ちょうど今この瞬間にどちらへ動いているか」を知りたい場合もある。P₁ と、その少し先の P₂ を考え、P₂ を少しずつ P₁ に近づけていく。
 
 
-:::figure id="fig-2-guide" source="generated-guide" app_asset="public/assets/physics/textbook/ch01/guides/secant-to-tangent-guide.svg"
-図　曲線上の2点を結ぶ方向
+:::figure id="fig-2" source="2 (2).png" app_asset="public/assets/physics/textbook/ch01/1a/average-instantaneous-velocity.webp"
+図2　2点を近づけたときの接線方向と瞬間速度
 :::
 
 P₂ を P₁ に近づけるほど、P₁ と P₂ を結ぶ方向は、P₁ における軌跡の 【A7　　　　　】 へ近づく。
 
 :::choices id="A7"
 A. 法線方向　　B. 接線方向　　C. 鉛直方向　　D. 原点方向
-:::
-
-:::figure id="fig-2" source="generated-confirmation" app_asset="public/assets/physics/textbook/a-displacement/tangent-velocity.svg"
-図2　2点を近づけたときの接線方向と瞬間速度
 :::
 
 
@@ -188,7 +180,7 @@ v⃗ = lim(Δt→0)  Δr⃗/Δt
 
 したがって、曲線運動をしている物体でも、その瞬間の速度の方向は軌跡の接線方向になる。
 
-:::figure id="fig-3" source="3 (2).png" app_asset="public/assets/physics/textbook/a-displacement/curve-abc.svg"
+:::figure id="fig-3" source="3 (2).png" app_asset="public/assets/physics/textbook/ch01/1a/curve-velocity-directions.webp"
 図3　曲線上の各点における瞬間速度
 :::
 
@@ -252,8 +244,8 @@ v⃗ = v⃗₁ + v⃗₂
 
 ## 一つの速度を二方向に分ける
 
-:::figure id="fig-6-guide" source="generated-guide" app_asset="public/assets/physics/textbook/ch01/guides/velocity-components-guide.svg"
-図　速度ベクトルを水平方向・鉛直方向へ分けて見る
+:::figure id="fig-6" source="6.png" app_asset="public/assets/physics/textbook/ch01/1b/velocity-components.webp"
+図6　速度ベクトルの x・y 成分
 :::
 
 反対に、一つの速度ベクトルを水平方向と鉛直方向に分けることもできる。速度の大きさを v、x軸となす角を θ とする。図6の直角三角形を見ると、水平方向の成分 vₓ は角 θ の隣辺、鉛直方向の成分 vᵧ は対辺、元の速度 v は斜辺に対応する。したがって、三角比の定義から、
@@ -273,10 +265,6 @@ A. (v sinθ, v cosθ)　　B. (v tanθ, v/tanθ)　　C. (v cosθ, v sinθ)　�
 したがって、vₓ=v cosθ、vᵧ=v sinθ である。
 
 
-
-:::figure id="fig-6" source="6.png" app_asset="public/assets/physics/textbook/ch01/guides/velocity-components-confirmation.svg"
-図6　速度ベクトルの x・y 成分
-:::
 
 
 
@@ -324,7 +312,7 @@ v⃗_{B/A} = 【C2　　　　　】
 A. v⃗_B − v⃗_A　　B. v⃗_A − v⃗_B　　C. v⃗_A + v⃗_B　　D. |v⃗_A|+|v⃗_B|
 :::
 
-:::figure id="fig-7" source="7.png" app_asset="public/assets/physics/textbook/ch01/guides/relative-cars-guide.svg"
+:::figure id="fig-7" source="7.png" app_asset="public/assets/physics/textbook/ch01/1c/relative-velocity-cars.webp"
 図7　同方向・逆方向に動く物体の相対速度
 :::
 
@@ -352,7 +340,7 @@ v⃗_{B/A} = (v_Bx−v_Ax,  v_By−v_Ay)
 A. (10,−10)　　B. (−10,10)　　C. (−10,−10)　　D. (0,−20)
 :::
 
-:::figure id="fig-8" source="8.png" app_asset="public/assets/physics/textbook/ch01/guides/rain-bicycle-guide.svg"
+:::figure id="fig-8" source="8.png" app_asset="public/assets/physics/textbook/ch01/1c/relative-rain-bicycle.webp"
 図8　自転車から見た雨の相対速度
 :::
 
@@ -378,7 +366,7 @@ A. 加速度　　B. 原点の座標だけ　　C. 力　　D. 基準
 A. v⃗₂−v⃗₁　　B. v⃗₁−v⃗₂　　C. v⃗₁+v⃗₂　　D. |v⃗₂|−|v⃗₁|だけ
 :::
 
-:::figure id="fig-9" source="9.png" app_asset="public/assets/physics/textbook/ch01/guides/acceleration-trajectory-guide.svg"
+:::figure id="fig-9" source="9.png" app_asset="public/assets/physics/textbook/ch01/1d/acceleration-trajectory.webp"
 図9　曲線運動での速度の変化
 :::
 
@@ -392,15 +380,11 @@ A. Δt/Δv⃗　　B. Δv⃗/Δt　　C. v⃗₁+v⃗₂　　D. Δr⃗/Δt
 
 加速度の向きは現在の速度の向きではなく、速度が変化した向き、すなわち Δv⃗ の向きである。時間間隔を限りなく小さくすれば、瞬間の加速度 a⃗ を考えられる。
 
-:::figure id="fig-10" source="10.png" app_asset="public/assets/physics/textbook/ch01/guides/velocity-change-guide.svg"
+:::figure id="fig-10" source="10.png" app_asset="public/assets/physics/textbook/ch01/1d/velocity-change-acceleration.webp"
 図10　速度変化 Δv⃗ と平均加速度の向き
 :::
 
 ## v-tグラフで加速度と変位を見る
-
-:::figure id="fig-d-vt" source="generated-graph" app_asset="public/assets/physics/textbook/ch01/guides/vt-derivation-guide.svg"
-図　速度と時間の関係を表す v-t グラフ
-:::
 
 速度 v を縦軸、時刻 t を横軸に取る。ある時間 Δt の間に速度が Δv だけ変化したなら、グラフの傾きは Δv/Δt である。
 
@@ -817,7 +801,7 @@ A. 2倍になる　　B. 半分になる　　C. 変わらない　　D. 質量�
 
 つまり空気抵抗を無視できるなら、物体の質量に関係なく同じ重力加速度で落下する。
 
-:::figure id="fig-15" source="generated-guide" app_asset="public/assets/physics/textbook/ch01/guides/gravity-air-resistance-guide.svg"
+:::figure id="fig-15" source="15.png" app_asset="public/assets/physics/textbook/ch01/1g/gravity-vs-air-resistance.webp"
 図15　重力だけの場合と、空気抵抗を受ける場合の力
 :::
 
@@ -863,7 +847,7 @@ a = g − (k/m)v
 A. 大きくなる　　B. 小さくなる　　C. 必ず0のまま　　D. 向きだけ反転し続ける
 :::
 
-:::figure id="fig-16" source="16.png" app_asset="public/assets/physics/textbook/ch01/guides/drag-stages-guide.svg"
+:::figure id="fig-16" source="16.png" app_asset="public/assets/physics/textbook/ch01/1g/drag-force-stages.webp"
 図16　速度増加に伴う空気抵抗と合力の変化
 :::
 
@@ -877,7 +861,7 @@ v-tグラフの傾きは 【G5　　　　　】 を表しているからであ�
 A. 変位　　B. 位置　　C. 加速度　　D. 質量
 :::
 
-:::figure id="fig-17" source="17.png" app_asset="public/assets/physics/textbook/ch01/guides/terminal-velocity-graph-guide.svg"
+:::figure id="fig-17" source="17.png" app_asset="public/assets/physics/textbook/ch01/1g/terminal-velocity-graph.webp"
 図17　終端速度へ近づく v-t グラフ
 :::
 

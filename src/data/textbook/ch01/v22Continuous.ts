@@ -15,7 +15,7 @@ type UnitMeta = {
 }
 
 const unitMeta: UnitMeta[] = [
-  { code: '1A', unitId: 'physics-a-displacement-velocity', title: '変位と速度', order: 1, pages: [12, 13], revision: 7 },
+  { code: '1A', unitId: 'physics-a-displacement-velocity', title: '変位と速度', order: 1, pages: [12, 13], revision: 8 },
   { code: '1B', unitId: 'physics-1b-velocity-composition', title: '速度の合成と分解', order: 2, pages: [14, 15], revision: 4 },
   { code: '1C', unitId: 'physics-1c-relative-velocity', title: '相対速度', order: 3, pages: [16, 17], revision: 4 },
   { code: '1D', unitId: 'physics-1d-acceleration', title: '加速度', order: 4, pages: [18, 19], revision: 4 },

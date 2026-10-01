@@ -70,6 +70,13 @@ docs/             PRD、矩阵、架构、测试、内容、部署和阶段报�
 
 `pnpm build` 生成纯静态 `dist/`。托管平台必须把未知 SPA 路径回退到 `index.html`。生产建议、缓存与 CSP 见 [DEPLOYMENT.md](docs/DEPLOYMENT.md)。
 
-## 参考材料状态
+## 参考材料与当前 authority
 
-新项目与同步参考目录完全分离，没有修改 `sources/`。本任务环境未同步用户提到的 ZIP 与 Word 原件，因此本地审计依据引用对话中已提取的审计和需求证据；该 P2 追溯风险记录在 [source-audit.md](docs/source-audit.md)。若原件后续可用，应补做文件哈希、清单和差异复核，不影响当前工程门禁结果。
+原始参考材料与 live App 继续分离管理。Chapter 1 的 canonical figure/source archive 已完成 identity 记录，当前 provenance 见 [SOURCE_MANIFEST.md](docs/physics-ch01/SOURCE_MANIFEST.md)。
+
+开始大规模修改前先读：
+- [MASTER_APP_LESSONS.md](docs/MASTER_APP_LESSONS.md)
+- [REPO_CLEANUP_POLICY.md](docs/REPO_CLEANUP_POLICY.md)
+- [Documentation Map](docs/README.md)
+
+历史性的早期 source audit 仍保留在 [source-audit.md](docs/source-audit.md)，但不要把其中“原件尚未同步”等旧状态当作当前事实。

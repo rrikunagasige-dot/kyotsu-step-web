@@ -1,10 +1,17 @@
 # CHATGPT README FIRST — 物理教科書モード 第1章
 
 対象: `rrikunagasige-dot/kyotsu-step-web`  
-基準 branch: `main`  
-今回の最終検証 branch: `chatgpt/textbook-reader-repair-v1`
+基準 branch / current implementation authority: `main`
 
-このファイルは、物理教科書モード第1章を導入する作業の入口。作業前に必ずこのファイルと `docs/physics-ch01/MASTER_FIRE_DIAGRAM.md` を読む。
+このファイルは、物理教科書モード第1章の作業入口。
+大きな作業の前に必ず次を読む:
+
+1. `docs/MASTER_APP_LESSONS.md`
+2. `docs/REPO_CLEANUP_POLICY.md`
+3. このファイル
+4. `docs/physics-ch01/MASTER_FIRE_DIAGRAM.md`
+
+古い `chatgpt/*` / `backup/*` branch はcurrent authorityとして使わない。
 
 ## 目的
 

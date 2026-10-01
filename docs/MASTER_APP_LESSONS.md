@@ -901,3 +901,23 @@ State / dependency:
 
 新しい実装がこのmasterと衝突する場合、
 実装を先に進めず、どのルールを変えるのかを明示してから進む。
+
+
+---
+
+## 41. Repository hygiene is part of correctness
+
+Repository clutter can reintroduce old bugs by making stale code/assets/docs look current.
+
+Mandatory companion:
+`REPO_CLEANUP_POLICY.md`
+
+Before major new work, verify:
+- current main authority,
+- no stale workflow is being treated as active,
+- rejected assets are not left in public paths,
+- dead/legacy code is classified,
+- historical docs are not mistaken for current state,
+- temporary artifacts have an exit plan.
+
+Cleanup must be evidence-based: delete only after reference/provenance checks, then run the relevant full gate.

@@ -118,3 +118,12 @@ Before starting any new phase or substantial modification, read:
 `docs/MASTER_APP_LESSONS.md`
 
 The workflow in this file defines execution order; the master lessons file defines the accumulated judgment rules learned from previous failures and user QA. Both are required.
+
+
+## 7. Repository hygiene gate
+
+After a major merge, user-QA redesign, chapter completion, or one-time migration, run a repository hygiene audit using:
+
+`docs/REPO_CLEANUP_POLICY.md`
+
+Do not mix uncertain cleanup with content redesign. Safe cleanup first; ambiguous legacy files become explicit Phase-2 candidates until references are verified.

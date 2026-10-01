@@ -1100,3 +1100,17 @@ A new educational figure must have:
 - no claim of being a textbook-original figure,
 - its own provenance/status,
 - tests/QA for mobile readability.
+
+
+---
+
+## 47. Math rendering has its own technical authority
+
+Pedagogical formula rules and rendering rules are separate concerns.
+
+For tokenizer / Unicode normalization / KaTeX / inline-vs-block consistency / visual-math defects, read:
+
+`docs/MATH_RENDERING_RULES.md`
+
+Hard rule:
+**do not rewrite correct physics content to hide a rendering bug. Fix the math rendering pipeline and add regression coverage.**

@@ -1114,3 +1114,33 @@ For tokenizer / Unicode normalization / KaTeX / inline-vs-block consistency / vi
 
 Hard rule:
 **do not rewrite correct physics content to hide a rendering bug. Fix the math rendering pipeline and add regression coverage.**
+
+
+---
+
+## 48. Repair-scope persistence — a technical detour must not erase the original defect list
+
+1E exposed a workflow failure: the unit had already been audited for multiple pedagogical defects, but after a new radical-rendering defect was discovered, the repair work temporarily narrowed to the technical issue and the original content defects were left open.
+
+Hard rule:
+
+> Once a repair scope has been approved, keep an explicit checklist until every approved item is either fixed, deliberately deferred, or rejected by the user.
+
+Example:
+
+```text
+1E repair scope
+  [technical] inline radical rendering
+  [pedagogy] apply 1D formulas horizontally
+  [pedagogy] apply 1D formulas vertically
+  [content] repair broken E3a relation
+  [retrieval] reuse vector magnitude from 1B
+  [derivation] make t=x/v0 an active elimination step
+  [worked example] vertical time -> horizontal range
+```
+
+Finding a technical bug in the middle does not cancel the pedagogical items.
+
+Completion language is allowed only when the whole active checklist is closed.
+
+For mixed defect classes, fix all user-approved items in the same section before moving to the next section, unless the user explicitly asks for a narrower partial repair.

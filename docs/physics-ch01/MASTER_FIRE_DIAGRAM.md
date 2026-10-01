@@ -1891,3 +1891,50 @@ D9/D9c choose+apply displacement formula
 Policy change:
 17 canonical figures remain mandatory and untouched; one user-approved additive educational graph is allowed for the missing v-t representation.
 Current 1D=19 / Chapter 1=68 / derivation groups=18 / revision=5.
+
+
+### 19.27 USER 1E FULL REPAIR — DO NOT LOSE THE ORIGINAL CHECKLIST
+
+```text
+FIGURE 11
+  ↓
+E1 ax=0
+  ↓
+HORIZONTAL: reuse 1D
+  E1a parent velocity relation
+  E1b vx=v0
+  E1c parent position relation
+  E1d x=v0t
+  ↓
+VERTICAL: reuse 1D
+  E2a parent velocity relation
+  E2b vy=gt
+  E2c parent position relation
+  E3 y=1/2 gt²
+  ↓
+TIME-FREE VERTICAL RELATION
+  E3a choose v²-v0²=2ax
+  E3b vy²=2gy
+  ↓
+FIGURE 12
+  ↓
+CROSS-UNIT RETRIEVAL FROM 1B
+  E4a sqrt(vx²+vy²)
+  E4b sqrt(v0²+g²t²)
+  ↓
+TRAJECTORY ELIMINATION
+  E5a x=v0t
+  E5b t=x/v0
+  E5c y=[g/(2v0²)]x²
+  E5 parabola
+  ↓
+WORKED EXAMPLE
+  E6 choose vertical motion
+  E6a y=1/2 gt²
+  E6b t=2.0 s
+  E6c x=v0t
+  E6d x=29.4 m
+```
+
+MR11 radical rendering is part of the same 1E acceptance scope, not a substitute for these pedagogy/content repairs.
+Current 1E=22 / Chapter 1=84 / derivation groups=22 / revision=5.

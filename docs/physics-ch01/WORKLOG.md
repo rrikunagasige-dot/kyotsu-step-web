@@ -1764,3 +1764,25 @@ Validation:
 - typecheck / audited data+math / browser / build / Pages deploy all PASS.
 
 MR11 is CLOSED.
+
+
+---
+
+## 2026-10-02 — 1E full repair after restoring the original mixed-defect checklist
+
+The user correctly pointed out that the earlier “repair complete” status was premature: the MR11 radical defect had been fixed, but the already-audited nontechnical 1E defects were still open.
+
+Workflow lesson:
+a technical detour must not erase an existing pedagogy/content repair list.
+
+Full 1E repair implemented:
+- horizontal motion now actively applies 1D formulas instead of receiving vx=v0 and x=v0t,
+- vertical motion actively applies the same formulas to obtain vy=gt and y=(1/2)gt²,
+- the malformed old E3a sequence was replaced by a coherent time-free derivation,
+- total speed explicitly retrieves the 1B vector-magnitude relation,
+- trajectory derivation now includes the active elimination step t=x/v0 and the resulting y-x relation,
+- the worked example now requires formula selection, fall-time calculation, reuse of the same time, and horizontal-range calculation,
+- the MR11 inline radical regression remains part of the 1E browser gate.
+
+Counts:
+1E 6→22; Chapter 1 68→84; derivation groups 18→22; revision 4→5.

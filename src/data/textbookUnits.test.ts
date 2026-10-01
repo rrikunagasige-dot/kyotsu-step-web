@@ -8,7 +8,7 @@ const expectedCounts: Record<string, number> = {
   '1B': 8,
   '1C': 7,
   '1D': 19,
-  '1E': 6,
+  '1E': 22,
   '1F': 8,
   '1G': 7,
 }
@@ -33,7 +33,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
     }
   })
 
-  it('preserves all 68 audited holes with an explicit source answer', () => {
+  it('preserves all 84 audited holes with an explicit source answer', () => {
     const counts = Object.fromEntries(
       builtInTextbookUnits.map((unit) => [
         unit.chapter?.unitCode,
@@ -41,10 +41,10 @@ describe('Chapter 1 continuous textbook catalog', () => {
       ]),
     )
     expect(counts).toEqual(expectedCounts)
-    expect(allItems()).toHaveLength(68)
+    expect(allItems()).toHaveLength(84)
 
     const answerLines = [...source.slice(source.indexOf('# 解答')).matchAll(/^([A-G]\d+[a-z]?)　(.+)$/gm)]
-    expect(answerLines).toHaveLength(68)
+    expect(answerLines).toHaveLength(84)
 
     for (const item of allItems()) {
       expect(item.choices).toHaveLength(4)
@@ -63,7 +63,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
       scaffoldCounts[item.scaffoldLevel] += 1
     }
 
-    expect(scaffoldCounts).toEqual({ strong: 6, medium: 27, light: 35 })
+    expect(scaffoldCounts).toEqual({ strong: 6, medium: 34, light: 44 })
 
     const lateItems = builtInTextbookUnits
       .filter((unit) => ['1F', '1G'].includes(unit.chapter?.unitCode ?? ''))
@@ -76,7 +76,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
     for (const removed of [
       'A5',
       'D5', 'D6',
-      'E2', 'E4', 'E5B',
+      'E2', 'E4',
       'F2', 'F3A', 'F5', 'F6B', 'F8A', 'F8',
       'G3A', 'G7', 'G8',
     ]) {
@@ -110,9 +110,26 @@ describe('Chapter 1 continuous textbook catalog', () => {
     expect(byId.d9b.answer).toBe('6.0')
     expect(byId.d9.answer).toBe('v₀t+(1/2)at²')
     expect(byId.d9c.answer).toBe('9.0')
+    expect(byId.e1a.answer).toBe('v₀ₓ+aₓt')
+    expect(byId.e1b.answer).toBe('v₀')
+    expect(byId.e1c.answer).toBe('v₀ₓt+(1/2)aₓt²')
+    expect(byId.e1d.answer).toBe('v₀t')
+    expect(byId.e2a.answer).toBe('v₀ᵧ+aᵧt')
+    expect(byId.e2b.answer).toBe('gt')
+    expect(byId.e2c.answer).toBe('v₀ᵧt+(1/2)aᵧt²')
+    expect(byId.e3.answer).toBe('(1/2)gt²')
     expect(byId.e3a.answer).toBe('v²−v₀²=2ax')
+    expect(byId.e3b.answer).toBe('2gy')
+    expect(byId.e4a.answer).toBe('√(vₓ²+vᵧ²)')
+    expect(byId.e4b.answer).toBe('√(v₀²+g²t²)')
     expect(byId.e5a.answer).toBe('x=v₀t')
+    expect(byId.e5b.answer).toBe('x/v₀')
+    expect(byId.e5c.answer).toBe('[g/(2v₀²)]x²')
     expect(byId.e6.answer).toBe('鉛直方向の運動')
+    expect(byId.e6a.answer).toBe('y=(1/2)gt²')
+    expect(byId.e6b.answer).toBe('2.0')
+    expect(byId.e6c.answer).toBe('x=v₀t')
+    expect(byId.e6d.answer).toBe('29.4')
     expect(byId.f1.answer).toBe('(v₀cosθ, v₀sinθ)')
     expect(byId.f5a.answer).toBe('v₀sinθ·t_H − (1/2)gt_H²')
     expect(byId.f6a.answer).toBe('x=v₀cosθ·t')
@@ -129,7 +146,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
       expect(index).toBeGreaterThanOrEqual(0)
       distribution[index] += 1
     }
-    expect(distribution.reduce((sum, count) => sum + count, 0)).toBe(68)
+    expect(distribution.reduce((sum, count) => sum + count, 0)).toBe(84)
     expect(Math.max(...distribution) - Math.min(...distribution)).toBeLessThanOrEqual(1)
   })
 
@@ -143,8 +160,12 @@ describe('Chapter 1 continuous textbook catalog', () => {
       'd-displacement-area',
       'd-eliminate-time',
       'd-constant-acceleration-example',
+      'e-horizontal-motion',
+      'e-vertical-motion',
       'e-vertical-relation',
+      'e-speed-composition',
       'e-trajectory-elimination',
+      'e-horizontal-projectile-example',
       'f-vertical-motion',
       'f-highest-time',
       'f-highest-height',
@@ -234,6 +255,54 @@ describe('Chapter 1 continuous textbook catalog', () => {
         : [],
     )
     expect(exampleHoles).toEqual(['d9a', 'd9b', 'd9', 'd9c'])
+
+    const horizontalMotion = groups.get('e-horizontal-motion') ?? []
+    const horizontalMotionHoles = horizontalMotion.flatMap((block) =>
+      block.type === 'paragraph' || block.type === 'formula'
+        ? block.parts.filter((part) => part.type === 'choice').map((part) => part.itemId)
+        : [],
+    )
+    expect(horizontalMotionHoles).toEqual(['e1a', 'e1b', 'e1c', 'e1d'])
+
+    const verticalMotion = groups.get('e-vertical-motion') ?? []
+    const verticalMotionHoles = verticalMotion.flatMap((block) =>
+      block.type === 'paragraph' || block.type === 'formula'
+        ? block.parts.filter((part) => part.type === 'choice').map((part) => part.itemId)
+        : [],
+    )
+    expect(verticalMotionHoles).toEqual(['e2a', 'e2b', 'e2c', 'e3'])
+
+    const verticalRelation = groups.get('e-vertical-relation') ?? []
+    const verticalRelationHoles = verticalRelation.flatMap((block) =>
+      block.type === 'paragraph' || block.type === 'formula'
+        ? block.parts.filter((part) => part.type === 'choice').map((part) => part.itemId)
+        : [],
+    )
+    expect(verticalRelationHoles).toEqual(['e3a', 'e3b'])
+
+    const speedComposition = groups.get('e-speed-composition') ?? []
+    const speedCompositionHoles = speedComposition.flatMap((block) =>
+      block.type === 'paragraph' || block.type === 'formula'
+        ? block.parts.filter((part) => part.type === 'choice').map((part) => part.itemId)
+        : [],
+    )
+    expect(speedCompositionHoles).toEqual(['e4a', 'e4b'])
+
+    const trajectory = groups.get('e-trajectory-elimination') ?? []
+    const trajectoryHoles = trajectory.flatMap((block) =>
+      block.type === 'paragraph' || block.type === 'formula'
+        ? block.parts.filter((part) => part.type === 'choice').map((part) => part.itemId)
+        : [],
+    )
+    expect(trajectoryHoles).toEqual(['e5a', 'e5b', 'e5c'])
+
+    const horizontalExample = groups.get('e-horizontal-projectile-example') ?? []
+    const horizontalExampleHoles = horizontalExample.flatMap((block) =>
+      block.type === 'paragraph' || block.type === 'formula'
+        ? block.parts.filter((part) => part.type === 'choice').map((part) => part.itemId)
+        : [],
+    )
+    expect(horizontalExampleHoles).toEqual(['e6', 'e6a', 'e6b', 'e6c', 'e6d'])
 
     expect(groups.get('f-flight-time')?.some((block) => block.type === 'paragraph')).toBe(true)
   })
@@ -338,7 +407,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
 
   it('classifies symbolic monomials as formula answers', () => {
     const byId = Object.fromEntries(allItems().map((item) => [item.id, item]))
-    for (const id of ['d5a', 'd5b', 'd5c', 'd4b', 'd4c', 'd7a', 'd7', 'd7b', 'd7c', 'd7d', 'd9a', 'd9', 'e3a', 'e5a', 'f1', 'f5a', 'f6a', 'f7', 'g3', 'g6a']) {
+    for (const id of ['d5a', 'd5b', 'd5c', 'd4b', 'd4c', 'd7a', 'd7', 'd7b', 'd7c', 'd7d', 'd9a', 'd9', 'e1a', 'e1b', 'e1c', 'e1d', 'e2a', 'e2b', 'e2c', 'e3a', 'e3b', 'e4a', 'e4b', 'e5a', 'e5b', 'e5c', 'e6a', 'e6c', 'f1', 'f5a', 'f6a', 'f7', 'g3', 'g6a']) {
       expect(byId[id].answerType, id).toBe('formula')
     }
   })

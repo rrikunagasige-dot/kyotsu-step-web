@@ -8,8 +8,8 @@ checkpoint_date: 2026-09-29
 prototype: continuous-learning-v2.3-audited
 canonical_figures: 17
 educational_figures: 1
-hole_occurrences: 68
-unique_hole_ids: 68
+hole_occurrences: 84
+unique_hole_ids: 84
 source_policy:
   physics: textbook PDF pages 12-27
   figures: canonical figure.zip
@@ -709,43 +709,101 @@ A. 3.0　　B. 6.0　　C. 18.0　　D. 9.0
 A. 0　　B. g　　C. −g　　D. v₀
 :::
 
-水平方向の速度は一定で、水平初速度を v₀ とすれば vₓ=v₀ である。
+## 水平方向に1Dの式を使う
 
-したがって水平方向の位置は x = v₀t となる。
+水平方向の初速度は v₀ₓ=v₀、加速度は aₓ=0 である。ここで、前の節で導いた等加速度運動の式を水平方向へそのまま適用する。
 
+:::derive id="e-horizontal-motion"
+vₓ = 【E1a　　　　　】
+
+:::choices id="E1a"
+A. v₀ₓ−aₓt　　B. v₀ₓ+aₓt　　C. aₓt　　D. v₀ₓt+(1/2)aₓt²
+:::
+
+= v₀ + 0·t
+
+= 【E1b　　　　　】
+
+:::choices id="E1b"
+A. 0　　B. v₀t　　C. v₀　　D. gt
+:::
+
+位置についても同じく、
+
+x = 【E1c　　　　　】
+
+:::choices id="E1c"
+A. v₀ₓ+aₓt　　B. (1/2)aₓt²　　C. v₀ₓt　　D. v₀ₓt+(1/2)aₓt²
+:::
+
+= v₀t + (1/2)·0·t²
+
+= 【E1d　　　　　】
+
+:::choices id="E1d"
+A. v₀t　　B. v₀+at　　C. (1/2)gt²　　D. gt
+:::
+:::endderive
+
+つまり、水平方向では加速度が0なので、速度は一定であり、位置は時間に比例して増える。
 
 ## 鉛直方向は自由落下
 
-物体は水平方向へ投げたので、投げた瞬間の鉛直速度は0である。下向きを正に取れば、鉛直方向の加速度は g である。
+物体は水平方向へ投げたので、投げた瞬間の鉛直速度は0である。下向きを正に取れば、鉛直方向では v₀ᵧ=0、aᵧ=g となる。ここでも1Dの式を鉛直方向へ適用する。
 
-したがって鉛直方向の位置は y = 【E3　　　　　】 となる。
+:::derive id="e-vertical-motion"
+vᵧ = 【E2a　　　　　】
+
+:::choices id="E2a"
+A. v₀ᵧ−aᵧt　　B. v₀ᵧ+aᵧt　　C. v₀ᵧt+(1/2)aᵧt²　　D. aᵧ/t
+:::
+
+= 0 + gt
+
+= 【E2b　　　　　】
+
+:::choices id="E2b"
+A. 0　　B. (1/2)gt²　　C. g/t　　D. gt
+:::
+
+鉛直方向の位置は、
+
+y = 【E2c　　　　　】
+
+:::choices id="E2c"
+A. v₀ᵧt+(1/2)aᵧt²　　B. v₀ᵧ+aᵧt　　C. aᵧt　　D. v₀ᵧt
+:::
+
+= 0·t + (1/2)gt²
+
+= 【E3　　　　　】
 
 :::choices id="E3"
 A. v₀t　　B. (1/2)gt²　　C. gt　　D. g/t
 :::
+:::endderive
 
-vᵧ² − 0² = 2gy
+したがって、鉛直方向だけを見れば、静かに落とした物体と同じ自由落下である。
+
+さらに、時間 t を使わずに鉛直速度 vᵧ と落下距離 y を直接結ぶ関係も作れる。
+
+:::derive id="e-vertical-relation"
+時間を含まない関係を作るために、1Dで導いた式 【E3a　　　　　】 を使う。
 
 :::choices id="E3a"
 A. v=v₀+at　　B. x=v₀t+(1/2)at²　　C. v²−v₀²=2ax　　D. ma=F
 :::
 
-:::derive id="e-vertical-relation"
-v² − v₀² = 2ax
+この式を鉛直方向へ使うと、v→vᵧ、v₀→0、a→g、x→y なので、
 
-を鉛直方向に使えば得られる。水平投射の鉛直方向では、初速度 v₀ᵧ=0、加速度 aᵧ=g、変位を y とするので、
+vᵧ²−0² = 2gy
 
-vᵧ² − 0² = 【E3a　　　　　】
+vᵧ² = 【E3b　　　　　】
 
-
-
-
-したがって、
-
-vᵧ² = 2gy
+:::choices id="E3b"
+A. gy　　B. g²y²　　C. 2gy　　D. 2gt
+:::
 :::endderive
-
-となる。つまり鉛直方向だけを見れば、静かに落とした物体と同じ自由落下である。
 
 :::figure id="fig-12" source="12.png" app_asset="public/assets/physics/textbook/ch01/1e/horizontal-projectile-velocity.webp"
 図12　水平投射中の速度成分 vₓ, vᵧ と合成速度 v
@@ -753,25 +811,46 @@ vᵧ² = 2gy
 
 ## 一つの速度に戻す
 
-実際の物体は水平方向と鉛直方向を別々に動いているわけではない。速度ベクトルは (vₓ,vᵧ) なので、三平方の関係 v²=vₓ²+vᵧ² を使う。水平投射では vₓ=v₀、vᵧ=gt だから、
+実際の物体の速度は、水平方向と鉛直方向の速度成分を合わせた1本のベクトルである。ここでは1Bで使った「ベクトルの成分から大きさを求める関係」をもう一度使う。
 
-v² = v₀² + (gt)²
+:::derive id="e-speed-composition"
+v = 【E4a　　　　　】
+
+:::choices id="E4a"
+A. √(vₓ²+vᵧ²)　　B. vₓ+vᵧ　　C. |vₓ−vᵧ|　　D. vₓvᵧ
+:::
+
+= √(v₀²+(gt)²)
+
+= 【E4b　　　　　】
+
+:::choices id="E4b"
+A. v₀+gt　　B. √(v₀²+gt)　　C. v₀²+g²t²　　D. √(v₀²+g²t²)
+:::
+:::endderive
 
 したがって速さは v = √(v₀²+g²t²) である。
 
-
 ## なぜ軌跡は放物線になるのか
 
-軌跡の式を作るには、x と y に共通して入っている時間 t を消去する。そのために最初に使う水平方向の式は 【E5a　　　　　】 である。
+軌跡の式を作るには、x と y に共通して入っている時間 t を消去する。どの式から始め、どう t を消すかを自分でつなげる。
+
+:::derive id="e-trajectory-elimination"
+時間 t を最も直接取り出せる水平方向の式は 【E5a　　　　　】 である。
 
 :::choices id="E5a"
 A. y=(1/2)gt²　　B. vᵧ=gt　　C. v²−v₀²=2ax　　D. x=v₀t
 :::
 
-:::derive id="e-trajectory-elimination"
-t = x/v₀
+x = v₀t
 
+したがって、
 
+t = 【E5b　　　　　】
+
+:::choices id="E5b"
+A. v₀/x　　B. x/v₀　　C. xv₀　　D. x+v₀
+:::
 
 これを鉛直方向の式 y=(1/2)gt² に代入する。
 
@@ -779,7 +858,11 @@ y = (1/2)g(x/v₀)²
 
 平方を分母まで含めて整理すると、
 
-y = [g/(2v₀²)]x²
+y = 【E5c　　　　　】
+
+:::choices id="E5c"
+A. (g/2v₀)x　　B. (g/2v₀)x²　　C. [g/(2v₀²)]x²　　D. (2g/v₀²)x²
+:::
 :::endderive
 
 y が x² に比例するので、水平投射の軌跡は 【E5　　　　　】 になる。
@@ -788,21 +871,53 @@ y が x² に比例するので、水平投射の軌跡は 【E5　　　　　�
 A. 放物線　　B. 円　　C. 直線　　D. 双曲線
 :::
 
-ここでは「水平投射だから放物線」と覚えたのではなく、x=v₀t と y=(1/2)gt² から時間 t を消去した結果として、y が x² に比例することを示した。
+ここでは「水平投射だから放物線」と覚えたのではない。水平方向と鉛直方向の式から共通の時間 t を消去した結果として、y が x² に比例することを自分で導いた。
 
 ## 例題：高さ19.6 mから水平投射
 
-高さ19.6 mから水平初速度14.7 m/sで物体を投げる。まず、落下時間を決める運動を選ぶ。
+高さ19.6 mから水平初速度14.7 m/sで物体を投げる。まず、落下時間を決める運動を選び、その時間を水平方向へ持っていく。
 
+:::derive id="e-horizontal-projectile-example"
 落下時間を求めるとき最初に見るべきなのは 【E6　　　　　】 である。
 
 :::choices id="E6"
 A. 水平方向の運動　　B. 鉛直方向の運動　　C. 水平と鉛直の速さの和　　D. 合成速度の大きさ
 :::
 
-鉛直方向では 19.6=(1/2)×9.8×t² だから、t=2.0 s となる。
+鉛直方向で使う位置の式は 【E6a　　　　　】 である。
 
-この時間だけ水平方向へ一定速度14.7 m/sで進むので、水平到達距離は14.7×2.0=29.4 mとなる。複雑な曲線運動も、方向ごとに分ければ既知の運動へ戻せる。
+:::choices id="E6a"
+A. x=v₀t　　B. vᵧ=gt　　C. y=(1/2)gt²　　D. v²=vₓ²+vᵧ²
+:::
+
+19.6 = (1/2)×9.8×t²
+
+t² = 4.0
+
+時間は正なので、
+
+t = 【E6b　　　　　】 s
+
+:::choices id="E6b"
+A. 2.0　　B. 4.0　　C. 9.8　　D. 19.6
+:::
+
+この同じ時間 t=2.0 s を水平方向へ使う。水平到達距離を求める式は 【E6c　　　　　】 である。
+
+:::choices id="E6c"
+A. y=(1/2)gt²　　B. v=v₀+at　　C. v²−v₀²=2ax　　D. x=v₀t
+:::
+
+x = 14.7×2.0
+
+= 【E6d　　　　　】 m
+
+:::choices id="E6d"
+A. 14.7　　B. 29.4　　C. 9.8　　D. 39.2
+:::
+:::endderive
+
+この例題の核心は、鉛直方向で落下時間を決め、その同じ時間を水平方向へ持っていくことである。複雑な曲線運動も、方向ごとに既知の運動へ分ければ解ける。
 
 # 1F　斜方投射
 
@@ -1164,11 +1279,27 @@ D9b　6.0
 D9　v₀t+(1/2)at²
 D9c　9.0
 E1　0
+E1a　v₀ₓ+aₓt
+E1b　v₀
+E1c　v₀ₓt+(1/2)aₓt²
+E1d　v₀t
+E2a　v₀ᵧ+aᵧt
+E2b　gt
+E2c　v₀ᵧt+(1/2)aᵧt²
 E3　(1/2)gt²
 E3a　v²−v₀²=2ax
+E3b　2gy
+E4a　√(vₓ²+vᵧ²)
+E4b　√(v₀²+g²t²)
 E5a　x=v₀t
+E5b　x/v₀
+E5c　[g/(2v₀²)]x²
 E5　放物線
 E6　鉛直方向の運動
+E6a　y=(1/2)gt²
+E6b　2.0
+E6c　x=v₀t
+E6d　29.4
 F1　(v₀cosθ, v₀sinθ)
 F3　v₀sinθ−gt
 F4　0

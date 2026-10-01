@@ -274,11 +274,39 @@ test('1D actively derives constant-acceleration formulas with the approved v-t g
   await expect(page.locator('.katex-error')).toHaveCount(0)
 })
 
-test('1E inline radical renders as one KaTeX expression', async ({ page }) => {
+test('1E applies prior formulas, derives the trajectory, solves the worked example, and keeps the radical stable', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/physics-1e-horizontal-projectile'))
 
-  for (const id of ['e1', 'e3', 'e3a']) {
+  for (const id of [
+    'e1',
+    'e1a', 'e1b', 'e1c', 'e1d',
+    'e2a', 'e2b', 'e2c', 'e3',
+    'e3a', 'e3b',
+    'e4a', 'e4b',
+    'e5a', 'e5b', 'e5c', 'e5',
+    'e6', 'e6a', 'e6b', 'e6c', 'e6d',
+  ]) {
     await solveHoleByTryingChoices(page, id)
+  }
+
+  const groups = [
+    ['e-horizontal-motion', 6],
+    ['e-vertical-motion', 6],
+    ['e-vertical-relation', 3],
+    ['e-speed-composition', 3],
+    ['e-trajectory-elimination', 5],
+    ['e-horizontal-projectile-example', 5],
+  ] as const
+
+  for (const [id, formulaCount] of groups) {
+    const chain = page.locator(`[data-derivation-id="${id}"]`)
+    await expect(chain).toHaveCount(1)
+    await expect(chain).toBeVisible()
+    await expect(chain.locator('.reading-formula-line')).toHaveCount(formulaCount)
+    const borders = await chain.locator('.reading-formula-line').evaluateAll((elements) =>
+      elements.map((element) => getComputedStyle(element).borderTopWidth),
+    )
+    expect(borders.every((width) => width === '0px')).toBe(true)
   }
 
   const paragraph = page.locator('.reading-paragraph').filter({ hasText: 'したがって速さは' })

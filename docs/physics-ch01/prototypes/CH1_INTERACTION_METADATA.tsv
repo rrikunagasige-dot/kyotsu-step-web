@@ -48,11 +48,27 @@ D9b	transfer	light	v=v₀+at に v₀=0、a=2.0、t=3.0 を代入した。	0+2.0
 D9	relation-selection	light	次に求めたいのは変位で、v₀・a・tが与えられている。	時間tを含む変位の式を選ぶ。
 D9c	transfer	light	x=v₀t+(1/2)at² に数値を代入した。	(1/2)×2.0×3.0² を計算する。
 E1	physical-condition	light	空気抵抗を無視すると力は鉛直方向の重力だけ。	水平方向に力がないとき、水平方向の速度がどう変わるか考える。
-E3	relation-selection	medium	鉛直初速度は0で、鉛直加速度はg。	初速度0の等加速度運動の位置式を使う。
+E1a	transfer	medium	1Dで導いた速度式を、水平方向の成分へ置き換えて使う。	v→vₓ、v₀→v₀ₓ、a→aₓ と対応させる。
+E1b	transfer	medium	水平方向ではaₓ=0である。	v₀+0·t を整理すると、速度が時間で変わらないことが分かる。
+E1c	transfer	medium	1Dで導いた位置式を、水平方向へ置き換えて使う。	x方向の初速度と加速度を一般式へ入れる。
+E1d	transfer	medium	aₓ=0なので加速度項は消える。	v₀t+(1/2)·0·t²を整理する。
+E2a	transfer	medium	1Dの速度式を鉛直方向へ置き換える。	v₀ᵧ=0、aᵧ=g を入れる前の親式を思い出す。
+E2b	transfer	medium	鉛直初速度は0、加速度はg。	0+gt を整理する。
+E2c	transfer	medium	1Dの位置式を鉛直方向へ置き換える。	v₀ᵧ=0、aᵧ=g を代入できる形を選ぶ。
+E3	relation-selection	medium	鉛直初速度は0で、鉛直加速度はg。	初速度0の等加速度運動の位置式を整理する。
 E3a	relation-selection	light	今回は時間tを含まないvᵧとyの関係が欲しい。	等加速度運動の3式のうち、時間を含まないものを選ぶ。
+E3b	transfer	light	v²−v₀²=2ax を鉛直方向へ対応させた。	v₀ᵧ=0、aᵧ=g、変位yを入れて残る右辺を見る。
+E4a	transfer	light	1Bで、直交する速度成分からベクトルの大きさを求めた。	vₓとvᵧを直角三角形の2辺として三平方を使う。
+E4b	transfer	light	vₓ=v₀、vᵧ=gt を大きさの式へ代入した。	(gt)²=g²t² と整理して根号全体をまとめる。
 E5a	elimination	light	軌跡では時間tを消してxとyだけを残したい。	tが一次で現れ、すぐtについて解ける水平方向の式を探す。
+E5b	elimination	light	x=v₀t から時間tだけを取り出す。	両辺をv₀で割る。
+E5c	elimination	light	t=x/v₀ を鉛直方向の式へ代入した。	(x/v₀)²=x²/v₀² と整理する。
 E5	representation-link	light	得られた式ではyがxの2乗に比例している。	一次式ではなく、x²を含む曲線の形を考える。
-E6	solution-planning	light	落下時間を直接変える力は重力。	重力が作用する方向の運動だけをまず見る。
+E6	solution-planning	light	落下時間を直接決めるのは重力が働く鉛直運動。	まず鉛直方向だけで地面へ着く時刻を求める。
+E6a	relation-selection	light	鉛直初速度0の落下距離と時間を結びたい。	1Dから使ってきた位置の式を選ぶ。
+E6b	transfer	light	t²=4から時間tを求める。	時間なので正の解を選ぶ。
+E6c	relation-selection	light	鉛直方向で求めた同じ時間を水平方向へ使う。	水平速度一定の位置式を選ぶ。
+E6d	transfer	light	x=14.7×2.0を計算する。	鉛直で求めた時間を水平距離へ使うことを確認する。
 F1	representation-link	light	初速度ベクトルを角θに対する隣辺と対辺へ分ける。	水平成分にはcos、鉛直成分にはsinが対応する。
 F3	relation-selection	light	鉛直方向の初速度は上向き、加速度は下向き−g。	速度は『初速度＋加速度×時間』で変化する。
 F4	physical-condition	light	最高点は上昇から下降へ切り替わる瞬間。	向きが反転する鉛直成分が、その境目でどんな値になるか考える。

@@ -1654,3 +1654,30 @@ Current counts:
 - 1D revision 4 → 5.
 
 P39/G61 remains USER RE-QA OPEN.
+
+
+## 2026-10-02 USER 1E FULL REPAIR — TECHNICAL + PEDAGOGICAL SCOPE
+
+Important workflow correction:
+MR11 radical rendering was only one part of the already-audited 1E repair. The remaining pedagogical items were restored to the active checklist instead of being forgotten.
+
+1E now requires the learner to:
+- apply the 1D velocity/position formulas to the horizontal component,
+- apply the same 1D formulas to the vertical component,
+- correctly derive the time-free vertical relation from v²−v₀²=2ax,
+- retrieve the 1B vector-magnitude relation to reconstruct total speed,
+- solve x=v₀t for t and substitute it into y=(1/2)gt²,
+- derive the parabolic trajectory,
+- solve the worked example by finding time vertically and carrying that same time into the horizontal distance calculation.
+
+MR11 remains protected by the same browser test.
+
+Current counts after the full 1E repair:
+- 1E = 22 interactions,
+- Chapter 1 = 84,
+- derivation groups = 22,
+- scaffold distribution = strong 6 / medium 34 / light 44,
+- correct-option positions = 21 / 21 / 21 / 21,
+- 1E revision 4 → 5.
+
+P39/G61 remains USER RE-QA OPEN.

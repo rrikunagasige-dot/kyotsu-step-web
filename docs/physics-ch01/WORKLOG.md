@@ -1655,3 +1655,31 @@ Current counts:
 This is a local user-approved first-example design decision, not a chapter-wide instruction to add relation-recall holes everywhere.
 
 P39/G61 remains USER RE-QA OPEN.
+
+---
+
+## 2026-10-01 — User QA: 1B worked examples now apply the formulas
+
+Observed:
+- 1B concept explanation for composition/decomposition was acceptable,
+- the river-crossing example directly supplied the combined vector (2.0,1.5),
+- the learner therefore used neither the composition relation nor the component formula and only performed the final magnitude calculation.
+
+User-approved repair:
+- leave the explanatory front half of 1B unchanged,
+- rebuild only the worked-example part,
+- make the learner retrieve/apply the composition formula,
+- calculate the combined velocity,
+- retrieve/apply the magnitude formula,
+- preserve B6 final numerical result,
+- add a short numerical decomposition example so the decomposition formula is also actually used,
+- render each worked calculation as one continuous derivation frame.
+
+New sequence:
+B3 → B4 → B5 → B6 and B7 → B8.
+
+Counts:
+1B 3 → 8; Chapter 1 49 → 54; derivation groups 14 → 16; revision 1B 4 → 5.
+
+Next-unit process is frozen:
+for 1C, read lessons/rules first, inspect the current learning path, produce a correction proposal, wait for user review, and only then modify code/content.

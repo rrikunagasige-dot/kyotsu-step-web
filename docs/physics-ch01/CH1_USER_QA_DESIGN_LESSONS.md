@@ -653,3 +653,52 @@ Use together with:
 - `WORKLOG.md` — chronological implementation record.
 
 If an older historical snapshot conflicts with an explicit later user-QA correction, the later user-QA correction wins.
+
+---
+
+## 22. 1B correction — a formula must be used, not merely displayed
+
+User QA of 1B found that the explanatory half was acceptable, but the worked example skipped the actual application of the formulas.
+
+Before correction the App effectively did:
+
+```text
+teach vector addition
+teach component decomposition
+↓
+worked example directly states (2.0,1.5)
+↓
+learner only computes 2.5
+```
+
+The learner therefore practiced a final Pythagorean calculation but did not practice velocity composition itself.
+
+Corrected learning pattern:
+
+```text
+retrieve composition relation
+↓
+apply it to two concrete velocity vectors
+↓
+obtain the combined vector
+↓
+retrieve magnitude relation
+↓
+compute speed
+
+then
+
+retrieve decomposition relation
+↓
+substitute a concrete magnitude and angle
+↓
+compute x/y components
+```
+
+General lesson:
+**A formula taught in the concept section needs a later learner action that selects/retrieves and applies it.**
+Do not count “the App used the formula on behalf of the learner” as transfer.
+
+The formulas may reappear because the later appearance is retrieval/application rather than passive duplication.
+
+For the next unit, analysis/proposal precedes implementation and requires explicit user review.

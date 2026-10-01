@@ -1563,3 +1563,35 @@ Before any substantial App/content work, read:
 This is the single project-wide consolidation of lessons learned across workflow, pedagogy, figures, formula derivations, holes, UI, mobile behavior, source authority, testing, deployment, and user QA.
 
 Detailed files remain authoritative evidence, but this master is the first decision checklist. If an older document conflicts with a later explicit user-QA correction, the later correction wins.
+
+## 2026-10-01 USER 1B WORKED-EXAMPLE CORRECTION — FORMULA APPLICATION
+
+User QA found that 1B explained velocity composition/decomposition correctly but the worked example skipped the formula application and gave the combined vector directly.
+
+Correction scope:
+- 1B worked examples only,
+- explanatory concept sections remain unchanged,
+- 1A and 1C–1G remain unchanged.
+
+New 1B transfer chain:
+- B3 retrieve composition relation,
+- B4 compute combined velocity vector,
+- B5 retrieve vector-magnitude relation,
+- B6 compute speed (existing hole retained),
+- B7 retrieve decomposition relation in a numerical example,
+- B8 compute the decomposed components.
+
+Both worked examples are explicit derivation groups with one visual frame each.
+
+Current interaction counts after this correction:
+- 1A=13 / 1B=8 / 1C=4 / 1D=8 / 1E=6 / 1F=8 / 1G=7,
+- Chapter 1 total = 54,
+- explicit derivation groups = 16,
+- scaffold distribution = strong 6 / medium 23 / light 25.
+
+1B revision is bumped 4 → 5.
+
+Next review gate:
+**1C must not be edited immediately. First read the project lessons/rules, inspect the current 1C learning path, propose a correction plan, and wait for user approval.**
+
+P39/G61 remains USER RE-QA OPEN.

@@ -921,3 +921,61 @@ Before major new work, verify:
 - temporary artifacts have an exit plan.
 
 Cleanup must be evidence-based: delete only after reference/provenance checks, then run the relevant full gate.
+
+---
+
+## 42. Formula application gate — taught is not the same as learned
+
+Chapter-1 1B user QA exposed a recurring defect: a formula can be explained correctly in the concept section and still never be used by the learner in the worked example.
+
+Hard rule:
+
+> An important formula is not pedagogically complete merely because it appeared in prose. A worked example or transfer event must make the learner retrieve/select the relation and then apply it to concrete quantities.
+
+Preferred chain:
+
+```text
+learn relation
+↓
+worked example asks learner to retrieve/select it
+↓
+substitute concrete vectors/values
+↓
+compute an intermediate result
+↓
+reuse that result / interpret it
+```
+
+For 1B this means:
+- composition: retrieve `v = v1+v2` → add components → recover speed,
+- decomposition: retrieve `(vx,vy)=(v cosθ,v sinθ)` → substitute a concrete angle/value → compute components.
+
+A final numerical question alone does not count as formula application when the App has already supplied the important intermediate vector/relation.
+
+Do not generalize this into “every formula needs many holes.” The gate is about learner action: relation retrieval + actual use.
+
+## 43. Next-unit review protocol
+
+When moving from one user-reviewed unit to the next, do not immediately edit.
+
+Required order:
+
+```text
+read MASTER_APP_LESSONS
+↓
+read relevant pedagogy / formula / user-QA lessons
+↓
+inspect current unit exactly as deployed
+↓
+state what the learner is supposed to learn
+↓
+check whether each important formula is actually used
+↓
+propose a correction plan only
+↓
+USER CHECK
+↓
+implement only after approval
+```
+
+This protocol is explicitly required for the next Chapter-1 unit review after 1B.

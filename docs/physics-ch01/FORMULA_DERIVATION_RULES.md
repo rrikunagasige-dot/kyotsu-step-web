@@ -344,3 +344,26 @@ Chapter-1 live QA refined the abstract F1–F5 rules with two additional require
 2. **application can justify multiple checkpoints** — in a first worked example, recalling a known relation and then computing its numerical result may both be meaningful holes when they train different actions and feed the same chain.
 
 This does not authorize mechanical holes globally. The designer must state what the learner practices at each hole.
+
+---
+
+## 12. Formula application gate — 2026-10-01
+
+A formula passes the derivation gate only if it also has a meaningful later use.
+
+For each important formula ask:
+1. Where is its meaning/parent relation taught?
+2. Where does the learner retrieve or select it later?
+3. Where does the learner actually substitute concrete quantities or conditions?
+4. What result follows from that application?
+5. Is that result reused or interpreted?
+
+A worked example fails this gate if the App precomputes the key formula application and asks only for the final arithmetic.
+
+Example from 1B:
+- insufficient: state combined velocity `(2.0,1.5)` and ask only for speed,
+- acceptable: ask for `v1+v2`, then compute `(2.0,1.5)`, then select the magnitude formula, then compute the speed.
+
+Likewise, a decomposition formula taught earlier should be applied at least once to a concrete `v, θ` pair if decomposition is a stated learning objective.
+
+This is a later-use / transfer requirement, not a global instruction to turn every arithmetic line into a hole.

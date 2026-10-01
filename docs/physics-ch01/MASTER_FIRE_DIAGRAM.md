@@ -1779,3 +1779,48 @@ MANDATORY PRE-CODING GATE FOR FUTURE CHAPTERS
 
 The extracted lesson file is normative guidance, not merely a worklog:
 `docs/physics-ch01/CH1_USER_QA_DESIGN_LESSONS.md`.
+
+### 19.24 USER 1B FORMULA-APPLICATION CORRECTION
+
+```text
+1B concept section
+  ├─ teach velocity composition
+  ├─ teach decomposition
+  └─ teach magnitude from components
+        ↓
+USER QA DEFECT
+  App used formulas on learner's behalf
+  and asked only for final arithmetic
+        ↓
+B-COMP worked example
+  B3 retrieve v1+v2
+   ↓
+  concrete vector substitution
+   ↓
+  B4 combined vector
+   ↓
+  B5 retrieve magnitude formula
+   ↓
+  B6 numerical speed
+        ↓
+B-DECOMP worked example
+  B7 retrieve (v cosθ, v sinθ)
+   ↓
+  substitute v=10, θ=30°
+   ↓
+  B8 numerical components
+        ↓
+ONE FRAME PER REASONING CHAIN
+        ↓
+NEXT = 1C ANALYZE/PROPOSE ONLY
+        ↓
+USER CHECK BEFORE IMPLEMENTATION
+```
+
+Current post-correction:
+- 1B interactions = 8,
+- Chapter 1 total = 54,
+- explicit derivation groups = 16,
+- 1B revision = 5.
+
+This correction establishes the formula-application gate: teaching a formula is not enough; the learner must retrieve/select and use it in a later event.

@@ -1595,3 +1595,31 @@ Next review gate:
 **1C must not be edited immediately. First read the project lessons/rules, inspect the current 1C learning path, propose a correction plan, and wait for user approval.**
 
 P39/G61 remains USER RE-QA OPEN.
+
+## 2026-10-01 USER 1C CORRECTION — RELATIVE-VELOCITY APPLICATION + CROSS-UNIT REVIEW
+
+User approved the 1C proposal after reviewing the accumulated pedagogy/formula lessons first.
+
+Scope:
+- keep the 1C meaning construction, C2 relation, and C3 zero-relative-speed interpretation,
+- rebuild only the rain/bicycle application sequence.
+
+New learner sequence:
+- C5: identify the bicycle as the observer/reference,
+- C4a: retrieve the relative-velocity relation,
+- C4: compute the relative-velocity vector,
+- C4b: retrieve the vector-magnitude relation learned in 1B,
+- C4c: compute the relative speed,
+- then use Figure 8 to confirm direction/meaning.
+
+The rain calculation is one explicit derivation frame.
+
+Current counts:
+- 1A=13 / 1B=8 / 1C=7 / 1D=8 / 1E=6 / 1F=8 / 1G=7,
+- Chapter 1 total = 57,
+- explicit derivation groups = 17,
+- scaffold distribution = strong 6 / medium 23 / light 28.
+
+1C revision: 4 → 5.
+
+P39/G61 remains USER RE-QA OPEN.

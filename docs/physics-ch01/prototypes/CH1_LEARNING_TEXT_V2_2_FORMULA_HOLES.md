@@ -7,8 +7,8 @@ status: app-repair-v2.3-source-aligned
 checkpoint_date: 2026-09-29
 prototype: continuous-learning-v2.3-audited
 canonical_figures: 17
-hole_occurrences: 54
-unique_hole_ids: 54
+hole_occurrences: 57
+unique_hole_ids: 57
 source_policy:
   physics: textbook PDF pages 12-27
   figures: canonical figure.zip
@@ -406,25 +406,53 @@ v⃗_{B/A} = (v_Bx−v_Ax,  v_By−v_Ay)
 
 ## 雨が斜めに見える理由
 
-雨が地面に対して鉛直下向き10 m/sで降り、自転車が右向き10 m/sで走っているとする。右向きをx正、上向きをy正にすると、雨は (0,−10)、自転車は (10,0) と表せる。
+雨が地面に対して鉛直下向き10 m/sで降り、自転車が右向き10 m/sで走っているとする。右向きをx正、上向きをy正にすると、雨の速度を v⃗_{rain}=(0,−10) m/s、自転車の速度を v⃗_{bicycle}=(10,0) m/s と表せる。
 
-自転車から見た雨の速度は 【C4　　　　　】 m/s である。
+「自転車から見た雨」を求めるので、この問題で観測者として基準にするのは 【C5　　　　　】 である。
+
+:::choices id="C5"
+A. 雨　　B. 地面　　C. x軸　　D. 自転車
+:::
+
+基準が決まったら、この節で学んだ相対速度の関係を実際に使う。
+
+:::derive id="c-rain-relative-velocity-example"
+v⃗_{rain/bicycle} = 【C4a　　　　　】
+
+:::choices id="C4a"
+A. v⃗_{rain} − v⃗_{bicycle}　　B. v⃗_{bicycle} − v⃗_{rain}　　C. v⃗_{rain} + v⃗_{bicycle}　　D. |v⃗_{rain}|+|v⃗_{bicycle}|
+:::
+
+= (0,−10) − (10,0)
+
+= 【C4　　　　　】 m/s
 
 :::choices id="C4"
 A. (10,−10)　　B. (−10,10)　　C. (−10,−10)　　D. (0,−20)
 :::
 
+次に、この相対速度ベクトルの大きさを求める。ここでは前の節で使った「ベクトルの成分から大きさを求める関係」をもう一度使う。
+
+|v⃗_{rel}| = 【C4b　　　　　】
+
+:::choices id="C4b"
+A. vₓ+vᵧ　　B. |vₓ−vᵧ|　　C. √(vₓ²+vᵧ²)　　D. vₓvᵧ
+:::
+
+= √((−10)²+(−10)²)
+
+= 【C4c　　　　　】 m/s
+
+:::choices id="C4c"
+A. 20　　B. 10　　C. 5√2　　D. 10√2
+:::
+:::endderive
+
 :::figure id="fig-8" source="8.png" app_asset="public/assets/physics/textbook/ch01/1c/relative-rain-bicycle.webp"
 図8　自転車から見た雨の相対速度
 :::
 
-このベクトルの大きさは 10√2 m/s で、方向は鉛直から後方へ45°傾く。雨そのものの運動が変化したのではなく、観測する側が動いたことで見える速度が変化したのである。
-
-相対速度を考えるとき、最初に明確にすべきなのは「誰を 【C5　　　　　】 にして見るか」である。
-
-:::choices id="C5"
-A. 加速度　　B. 原点の座標だけ　　C. 力　　D. 基準
-:::
+得られた相対速度は x 成分と y 成分の大きさが等しいので、方向は鉛直から後方へ45°傾く。雨そのものの運動が変化したのではなく、観測する側が動いたことで見える速度が変化したのである。
 
 # 1D　加速度
 
@@ -1011,8 +1039,11 @@ B7　(v cosθ, v sinθ)
 B8　(5√3,5)
 C2　v⃗_B − v⃗_A
 C3　止まっている
+C5　自転車
+C4a　v⃗_{rain} − v⃗_{bicycle}
 C4　(−10,−10)
-C5　基準
+C4b　√(vₓ²+vᵧ²)
+C4c　10√2
 D1　v⃗₂−v⃗₁
 D2　Δv⃗/Δt
 D3　加速度

@@ -1824,3 +1824,30 @@ Current post-correction:
 - 1B revision = 5.
 
 This correction establishes the formula-application gate: teaching a formula is not enough; the learner must retrieve/select and use it in a later event.
+
+### 19.25 USER 1C RELATIVE-VELOCITY APPLICATION
+
+```text
+1C meaning + relation
+  C2: v_B/A = v_B - v_A
+  C3: equal velocities -> appears stopped
+        ↓
+RAIN / BICYCLE TRANSFER
+  C5 choose observer = bicycle
+        ↓
+  C4a retrieve v_rain - v_bicycle
+        ↓
+  substitute (0,-10) - (10,0)
+        ↓
+  C4 = (-10,-10)
+        ↓
+CROSS-UNIT RETRIEVAL FROM 1B
+  C4b retrieve sqrt(vx^2+vy^2)
+        ↓
+  C4c = 10sqrt2
+        ↓
+  Figure 8 confirms direction
+```
+
+One derivation frame contains the vector calculation and magnitude review.
+Current: 1C=7 / Chapter 1=57 / derivation groups=17 / revision=5.

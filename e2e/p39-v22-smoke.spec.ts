@@ -211,6 +211,27 @@ test('1B worked examples retrieve and apply formulas in continuous derivation fr
   await expect(page.locator('.katex-error')).toHaveCount(0)
 })
 
+test('1C rain example chooses the observer, applies relative velocity, and retrieves vector magnitude', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/physics-1c-relative-velocity'))
+
+  for (const id of ['c2', 'c3', 'c5', 'c4a', 'c4', 'c4b', 'c4c']) {
+    await solveHoleByTryingChoices(page, id)
+  }
+
+  const chain = page.locator('[data-derivation-id="c-rain-relative-velocity-example"]')
+  await expect(chain).toHaveCount(1)
+  await expect(chain).toBeVisible()
+  await expect(chain.locator('.reading-formula-line')).toHaveCount(6)
+
+  const formulaBorders = await chain.locator('.reading-formula-line').evaluateAll((elements) =>
+    elements.map((element) => getComputedStyle(element).borderTopWidth),
+  )
+  expect(formulaBorders.every((width) => width === '0px')).toBe(true)
+
+  await expect(page.locator('.katex-error')).toHaveCount(0)
+  await expect(page.getByText('図8　自転車から見た雨の相対速度')).toBeVisible()
+})
+
 test('oblique projectile derivations render as compiled math in one chain', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/physics-1f-oblique-projectile'))
 

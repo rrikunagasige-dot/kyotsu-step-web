@@ -1683,3 +1683,25 @@ Counts:
 
 Next-unit process is frozen:
 for 1C, read lessons/rules first, inspect the current learning path, produce a correction proposal, wait for user review, and only then modify code/content.
+
+---
+
+## 2026-10-01 — User QA: 1C rain example converted to actual relative-velocity practice
+
+Pre-implementation protocol was followed:
+1. read master lessons and pedagogy/formula rules,
+2. inspect current 1C,
+3. propose changes without editing,
+4. receive user approval, including explicit approval to make the magnitude step interactive as review.
+
+Repair:
+- C2/C3 and the concept-forming front half remain unchanged,
+- C5 now asks which object is the observer/reference instead of asking for the vocabulary word “基準”,
+- added C4a to retrieve the relative-velocity formula,
+- retained C4 as the computed relative-velocity vector,
+- added C4b to retrieve the vector-magnitude relation from 1B,
+- added C4c to compute 10√2 m/s,
+- grouped the full calculation in one derivation frame,
+- Figure 8 remains confirmation after the calculation.
+
+Counts: 1C 4→7; Chapter 1 54→57; derivation groups 16→17; revision 4→5.

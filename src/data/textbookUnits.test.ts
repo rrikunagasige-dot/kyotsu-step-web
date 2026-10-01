@@ -6,7 +6,7 @@ import type { TextbookReadingBlock } from '../domain/textbookSchema'
 const expectedCounts: Record<string, number> = {
   '1A': 13,
   '1B': 8,
-  '1C': 4,
+  '1C': 7,
   '1D': 8,
   '1E': 6,
   '1F': 8,
@@ -33,7 +33,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
     }
   })
 
-  it('preserves all 54 audited holes with an explicit source answer', () => {
+  it('preserves all 57 audited holes with an explicit source answer', () => {
     const counts = Object.fromEntries(
       builtInTextbookUnits.map((unit) => [
         unit.chapter?.unitCode,
@@ -41,10 +41,10 @@ describe('Chapter 1 continuous textbook catalog', () => {
       ]),
     )
     expect(counts).toEqual(expectedCounts)
-    expect(allItems()).toHaveLength(54)
+    expect(allItems()).toHaveLength(57)
 
     const answerLines = [...source.slice(source.indexOf('# 解答')).matchAll(/^([A-G]\d+[a-z]?)　(.+)$/gm)]
-    expect(answerLines).toHaveLength(54)
+    expect(answerLines).toHaveLength(57)
 
     for (const item of allItems()) {
       expect(item.choices).toHaveLength(4)
@@ -63,7 +63,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
       scaffoldCounts[item.scaffoldLevel] += 1
     }
 
-    expect(scaffoldCounts).toEqual({ strong: 6, medium: 23, light: 25 })
+    expect(scaffoldCounts).toEqual({ strong: 6, medium: 23, light: 28 })
 
     const lateItems = builtInTextbookUnits
       .filter((unit) => ['1F', '1G'].includes(unit.chapter?.unitCode ?? ''))
@@ -91,6 +91,11 @@ describe('Chapter 1 continuous textbook catalog', () => {
     expect(byId.b5.answer).toBe('√(vₓ²+vᵧ²)')
     expect(byId.b7.answer).toBe('(v cosθ, v sinθ)')
     expect(byId.b8.answer).toBe('(5√3,5)')
+    expect(byId.c5.answer).toBe('自転車')
+    expect(byId.c4a.answer).toBe('v⃗_{rain} − v⃗_{bicycle}')
+    expect(byId.c4.answer).toBe('(−10,−10)')
+    expect(byId.c4b.answer).toBe('√(vₓ²+vᵧ²)')
+    expect(byId.c4c.answer).toBe('10√2')
     expect(byId.d7.answer).toBe('v−v₀=at')
     expect(byId.d9.answer).toBe('x=v₀t+(1/2)at²')
     expect(byId.e3a.answer).toBe('v²−v₀²=2ax')
@@ -112,7 +117,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
       expect(index).toBeGreaterThanOrEqual(0)
       distribution[index] += 1
     }
-    expect(distribution.reduce((sum, count) => sum + count, 0)).toBe(54)
+    expect(distribution.reduce((sum, count) => sum + count, 0)).toBe(57)
     expect(Math.max(...distribution) - Math.min(...distribution)).toBeLessThanOrEqual(1)
   })
 
@@ -121,6 +126,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
       'a-average-velocity-example',
       'b-velocity-composition-example',
       'b-velocity-decomposition-example',
+      'c-rain-relative-velocity-example',
       'd-velocity-update',
       'd-displacement-area',
       'd-eliminate-time',
@@ -175,6 +181,14 @@ describe('Chapter 1 continuous textbook catalog', () => {
         : [],
     )
     expect(decompositionHoles).toEqual(['b7', 'b8'])
+
+    const relativeRainExample = groups.get('c-rain-relative-velocity-example') ?? []
+    const relativeRainHoles = relativeRainExample.flatMap((block) =>
+      block.type === 'formula'
+        ? block.parts.filter((part) => part.type === 'choice').map((part) => part.itemId)
+        : [],
+    )
+    expect(relativeRainHoles).toEqual(['c4a', 'c4', 'c4b', 'c4c'])
 
     expect(groups.get('f-flight-time')?.some((block) => block.type === 'paragraph')).toBe(true)
   })

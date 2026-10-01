@@ -733,3 +733,26 @@ This establishes an additional design rule:
 **when a prior-unit formula is naturally required by a new problem, reuse it deliberately as review/transfer rather than automatically displaying the completed formula.**
 
 The support should normally be weaker than at first introduction, because the goal is retrieval rather than concept construction.
+
+---
+
+## 24. 1C implementation — solution order + cross-unit retrieval
+
+The approved 1C change implements two accumulated lessons at once:
+
+1. **solution planning comes before calculation** — “who is the observer?” is decided before subtracting velocities;
+2. **cross-unit retrieval is real review** — after obtaining the relative-velocity vector, the learner retrieves the magnitude relation from 1B instead of being handed 10√2.
+
+The final rain/bicycle reasoning chain is:
+
+```text
+choose observer/reference
+→ retrieve relative-velocity relation
+→ substitute vector components
+→ compute relative-velocity vector
+→ retrieve previous-unit magnitude relation
+→ compute relative speed
+→ interpret direction with canonical Figure 8
+```
+
+This is preferable to asking only for the final vector or displaying the magnitude automatically, because both would let the App perform the central transfer step on the learner’s behalf.

@@ -1747,3 +1747,35 @@ existing one-frame average-velocity derivation
 Current: 1A=13 / Chapter 1=49 / derivation groups=14 / scaffold strong 6, medium 20, light 23.
 Only the two relation holes were added; no existing hole was removed or repurposed.
 P39/G61 remains USER RE-QA OPEN.
+
+
+### 19.23 CHAPTER-1 USER-QA LESSON EXTRACTION — FUTURE APP GATE
+
+```text
+Chapter-1 deployed App
+  ↓
+user visual/pedagogical corrections
+  ↓
+concrete defects
+  ├─ fragmented derivation cards
+  ├─ low-value / missing application holes
+  ├─ unauthorized synthetic figures
+  ├─ figure referenced before visible
+  ├─ blurred figures
+  ├─ visually bad math notation
+  ├─ duplicate/passive formula presentation
+  └─ local-scope corrections accidentally over-generalized
+  ↓
+WHY analysis
+  ↓
+CH1_USER_QA_DESIGN_LESSONS.md
+  ↓
+MANDATORY PRE-CODING GATE FOR FUTURE CHAPTERS
+  ├─ read before pedagogy/UI changes
+  ├─ read before figure generation/replacement
+  ├─ read before formula-hole redesign
+  └─ read before batch production
+```
+
+The extracted lesson file is normative guidance, not merely a worklog:
+`docs/physics-ch01/CH1_USER_QA_DESIGN_LESSONS.md`.

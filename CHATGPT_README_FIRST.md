@@ -1534,3 +1534,14 @@ Current counts:
 This is a local user-approved first-example design decision, not a chapter-wide instruction to add relation-recall holes everywhere.
 
 P39/G61 remains USER RE-QA OPEN.
+
+
+## 21. MANDATORY FUTURE-APP LESSONS FROM CHAPTER 1 USER QA
+
+Before changing textbook-mode pedagogy/UI or batch-producing later chapters, read:
+
+`docs/physics-ch01/CH1_USER_QA_DESIGN_LESSONS.md`
+
+This is not a historical log. It converts Chapter-1 user corrections into reusable App-design rules: one reasoning chain = one visual frame, hole purpose over hole count, canonical-figure authority and timing, visual math QA, mobile-first derivations, strict scope control, and separation of automated PASS from user pedagogical approval.
+
+Where an older snapshot conflicts with a later explicit user-QA rule, the later user-QA rule is authoritative.

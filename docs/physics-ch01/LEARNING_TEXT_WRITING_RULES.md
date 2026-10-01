@@ -462,3 +462,19 @@ Current counts:
 The count decreased from 55 because the first-exposure C1 vocabulary lottery was removed rather than replaced artificially.
 
 P33 source-alignment repairs are complete. The natural-prose invariant and moderate interaction-density rule remain unchanged.
+
+
+---
+
+## 18. Mandatory companion: Chapter-1 user-QA lessons
+
+Before authoring or restructuring a future chapter, also read:
+
+`CH1_USER_QA_DESIGN_LESSONS.md`
+
+Especially binding:
+- visual/figure reasoning may be interleaved with concept formation,
+- one semantic derivation must remain one visual chain,
+- a hole is justified by the learning action, not by a target count,
+- repeated relations are allowed when they serve deliberate transfer/application,
+- local user-approved patterns must not be generalized automatically.

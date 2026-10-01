@@ -331,3 +331,16 @@ Current review candidate:
 `prototypes/CH1_LEARNING_TEXT_V2_2_FORMULA_HOLES.md`
 with 65 holes (54 previous justified holes + 11 derivation-formula holes).
 
+
+
+---
+
+## 11. Mandatory companion: real-App derivation lessons
+
+Read `CH1_USER_QA_DESIGN_LESSONS.md` before changing formula-hole density or derivation UI.
+
+Chapter-1 live QA refined the abstract F1–F5 rules with two additional requirements:
+1. **semantic grouping** — one continuous derivation renders in one outer visual frame, not one card per equation;
+2. **application can justify multiple checkpoints** — in a first worked example, recalling a known relation and then computing its numerical result may both be meaningful holes when they train different actions and feed the same chain.
+
+This does not authorize mechanical holes globally. The designer must state what the learner practices at each hole.

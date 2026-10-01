@@ -1737,3 +1737,30 @@ Asset:
 
 Counts:
 1D 8→19; Chapter 1 57→68; derivation groups 17→18; revision 4→5.
+
+
+---
+
+## 2026-10-02 — MR11 inline radical rendering repaired
+
+User QA found that the 1E inline expression `v = √(v₀²+g²t²)` rendered with an abnormal radical compared with normal KaTeX formulas.
+
+Root cause:
+- `normalizeTextbookMath()` already understood simple Unicode radicals,
+- but `splitTextbookInlineMath()` did not treat `√` as a valid math-token start and did not keep superscripts/radical content together,
+- therefore inline prose could split the expression before normalization.
+
+Repair:
+- added balanced-parentheses Unicode radical normalization,
+- supports nested-parenthesis radicands such as `√((−10)²+(−10)²)`,
+- expanded inline tokenization to include radical starts, Unicode superscripts, and spaced operators,
+- added direct normalization tests,
+- added exact inline-token boundary tests,
+- added 1E Playwright regression asserting one KaTeX expression, one sqrt, no horizontal overflow, and zero KaTeX errors.
+
+Validation:
+- code commit `e54f49a179d8696b03ea74a9afecf8a8654aa1e3`
+- workflow run 249 SUCCESS
+- typecheck / audited data+math / browser / build / Pages deploy all PASS.
+
+MR11 is CLOSED.

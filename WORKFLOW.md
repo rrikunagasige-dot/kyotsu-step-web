@@ -109,3 +109,12 @@ FAIL 必须先修复，不得越过门禁。
 ## 5. 完成定义
 
 项目只有在所有 checkpoint 均 PASS、需求矩阵 P0/P1 全部 Verified、四个样例题通过数据校验、学习与模拟关键流程和刷新恢复通过 E2E、分析/错题/历史确由 Attempt 计算、非法题目导入被拒绝、生产构建成功后才算完成。
+
+
+## 6. Mandatory lesson preflight
+
+Before starting any new phase or substantial modification, read:
+
+`docs/MASTER_APP_LESSONS.md`
+
+The workflow in this file defines execution order; the master lessons file defines the accumulated judgment rules learned from previous failures and user QA. Both are required.

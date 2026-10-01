@@ -1545,3 +1545,14 @@ Before changing textbook-mode pedagogy/UI or batch-producing later chapters, rea
 This is not a historical log. It converts Chapter-1 user corrections into reusable App-design rules: one reasoning chain = one visual frame, hole purpose over hole count, canonical-figure authority and timing, visual math QA, mobile-first derivations, strict scope control, and separation of automated PASS from user pedagogical approval.
 
 Where an older snapshot conflicts with a later explicit user-QA rule, the later user-QA rule is authoritative.
+
+
+## PROJECT-WIDE MASTER LESSONS — MANDATORY FIRST READ
+
+Before any substantial App/content work, read:
+
+`docs/MASTER_APP_LESSONS.md`
+
+This is the single project-wide consolidation of lessons learned across workflow, pedagogy, figures, formula derivations, holes, UI, mobile behavior, source authority, testing, deployment, and user QA.
+
+Detailed files remain authoritative evidence, but this master is the first decision checklist. If an older document conflicts with a later explicit user-QA correction, the later correction wins.

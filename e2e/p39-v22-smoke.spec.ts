@@ -229,7 +229,7 @@ test('1C rain example chooses the observer, applies relative velocity, and retri
   expect(formulaBorders.every((width) => width === '0px')).toBe(true)
 
   await expect(page.locator('.katex-error')).toHaveCount(0)
-  await expect(page.getByText('図8　自転車から見た雨の相対速度')).toBeVisible()
+  await expect(page.locator('img[src*="relative-rain-bicycle.webp"]')).toBeVisible()
 })
 
 test('oblique projectile derivations render as compiled math in one chain', async ({ page }) => {

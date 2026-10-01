@@ -13,8 +13,56 @@ function normalizeSubscriptSequence(value: string) {
   return [...value].map((char) => map[char] ?? char).join('')
 }
 
+function normalizeUnicodeRadicals(value: string) {
+  let result = ''
+  let index = 0
+
+  while (index < value.length) {
+    if (value[index] !== '√') {
+      result += value[index]
+      index += 1
+      continue
+    }
+
+    if (value[index + 1] === '(') {
+      let depth = 0
+      let closingIndex = -1
+
+      for (let cursor = index + 1; cursor < value.length; cursor += 1) {
+        if (value[cursor] === '(') depth += 1
+        if (value[cursor] === ')') {
+          depth -= 1
+          if (depth === 0) {
+            closingIndex = cursor
+            break
+          }
+        }
+      }
+
+      if (closingIndex !== -1) {
+        const radicand = value.slice(index + 2, closingIndex)
+        result += `\\sqrt{${normalizeUnicodeRadicals(radicand)}}`
+        index = closingIndex + 1
+        continue
+      }
+    }
+
+    const unwrapped = value.slice(index + 1).match(/^([A-Za-z0-9Δθ⃗̄₀₁₂₃₄₅₆₇₈₉ₓᵧₜ²³_]+)/)
+    if (unwrapped) {
+      result += `\\sqrt{${unwrapped[1]}}`
+      index += unwrapped[1].length + 1
+      continue
+    }
+
+    result += '√'
+    index += 1
+  }
+
+  return result
+}
+
 export function normalizeTextbookMath(value: string) {
-  let next = stripTextbookMarkdown(value)
+  let next = normalizeUnicodeRadicals(stripTextbookMarkdown(value))
 
   next = next
     .replace(/Δ([A-Za-z])⃗([₀₁₂₃₄₅₆₇₈₉ₓᵧₜ]+)/g, (_, base: string, sub: string) => `\\Delta \\vec{${base}}_{${normalizeSubscriptSequence(sub)}}`)
@@ -51,8 +99,6 @@ export function normalizeTextbookMath(value: string) {
     .replace(/sin/g, '\\sin ')
     .replace(/cos/g, '\\cos ')
     .replace(/tan/g, '\\tan ')
-    .replace(/√\(([^()]*)\)/g, '\\sqrt{$1}')
-    .replace(/√([A-Za-z0-9_]+)/g, '\\sqrt{$1}')
 
   return next.trim()
 }
@@ -81,7 +127,7 @@ export function splitTextbookInlineMath(value: string): InlineMathPart[] {
   const text = stripTextbookMarkdown(value)
   if (!text) return []
 
-  const tokenPattern = /(?:[A-Za-zΔ][A-Za-z0-9Δθ⃗̄₀₁₂₃₄₅₆₇₈₉ₓᵧₜ_{}\/]*(?:[=+\-−×·/<>|][A-Za-z0-9Δθ⃗̄₀₁₂₃₄₅₆₇₈₉ₓᵧₜ_{}().,+\-−×·/<>|]+)*|[POTDH][₀₁₂₃₄₅₆₇₈₉])/g
+  const tokenPattern = /(?:[A-Za-zΔ√][A-Za-z0-9Δθ√⃗̄₀₁₂₃₄₅₆₇₈₉ₓᵧₜ²³_{}().,]*(?:\s*[=+\-−×·/<>|]\s*[A-Za-z0-9Δθ√⃗̄₀₁₂₃₄₅₆₇₈₉ₓᵧₜ²³_{}().,+\-−×·/<>|]+)*|[POTDH][₀₁₂₃₄₅₆₇₈₉])/g
 
   const parts: InlineMathPart[] = []
   let cursor = 0

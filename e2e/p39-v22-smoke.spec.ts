@@ -274,6 +274,29 @@ test('1D actively derives constant-acceleration formulas with the approved v-t g
   await expect(page.locator('.katex-error')).toHaveCount(0)
 })
 
+test('1E inline radical renders as one KaTeX expression', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/physics-1e-horizontal-projectile'))
+
+  for (const id of ['e1', 'e3', 'e3a']) {
+    await solveHoleByTryingChoices(page, id)
+  }
+
+  const paragraph = page.locator('.reading-paragraph').filter({ hasText: 'したがって速さは' })
+  await expect(paragraph).toBeVisible()
+  await expect(paragraph.locator('.katex')).toHaveCount(1)
+  await expect(paragraph.locator('.katex .sqrt')).toHaveCount(1)
+
+  const sourceTex = await paragraph.locator('annotation[encoding="application/x-tex"]').textContent()
+  expect(sourceTex).toContain('\\sqrt{v_0^2+g^2t^2}')
+
+  const layout = await paragraph.evaluate((element) => ({
+    clientWidth: element.clientWidth,
+    scrollWidth: element.scrollWidth,
+  }))
+  expect(layout.scrollWidth).toBeLessThanOrEqual(layout.clientWidth + 1)
+  await expect(page.locator('.katex-error')).toHaveCount(0)
+})
+
 test('oblique projectile derivations render as compiled math in one chain', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/physics-1f-oblique-projectile'))
 

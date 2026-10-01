@@ -78,7 +78,7 @@ Acceptance は6段階:
 | MR08 | prose中の `r⃗`, `vₓ`, `vᵧ`, `Δr` がraw Unicode/textになる | prose tokenizerがmath tokenとして拾わない | inline tokenizerでmath token化してKaTeXへ | FIXED for recorded cases |
 | MR09 | `sin/cos/tan` のspacing/typographyが不統一 | plain lettersとKaTeX operatorsの混在 | `\\sin`, `\\cos`, `\\tan`へnormalize | RULE EXISTS; direct coverageを強化する |
 | MR10 | 平均速度 `v̄⃗` がbar + vector arrowの二重記号に見える | combining marksを字面通り重ねた | learner UIは意味を保ち自然なnotationへ正規化: `\\vec{v}_{\\mathrm{avg}}` | FIXED; direct unit test |
-| MR11 | `√(v₀²+g²t²)` の根号だけ他の式と違って崩れる | inline tokenizerが `√` 始まりの式を一math tokenとして拾えない | radical全体をtokenize → `\\sqrt{...}`へnormalize | **OPEN 2026-10-02** |
+| MR11 | `√(v₀²+g²t²)` の根号だけ他の式と違って崩れる | inline tokenizerが `√` 始まりの式を一math tokenとして拾えない | radical全体をtokenize → `\\sqrt{...}`へnormalize | **FIXED 2026-10-02 / run 249** |
 | MR12 | formula typographyが場所によって textbook-grade でない | multiple rendering surfaces + inconsistent token boundaries | surface matrixで同じ式を比較する | ONGOING visual QA |
 
 Primary historical evidence:
@@ -369,8 +369,8 @@ Existing regression:
 
 ### Coverage gaps identified now
 
-1. radical-starting inline expression — **missing / OPEN**
-2. inline `v=√(...)` as one token — **missing / OPEN**
+1. radical-starting inline expression — **COVERED 2026-10-02**
+2. inline `v=√(...)` as one token — **COVERED 2026-10-02**
 3. trig typography/spacing direct regression — weak
 4. same expression inline vs formula-block comparison — weak
 5. mobile visual radical geometry — no dedicated assertion/screenshot
@@ -478,14 +478,24 @@ This is NOT:
 - derivation pedagogy error
 - formula-content error
 
-Required repair:
-- radical-starting inline expressionを一つのmath tokenとして取得
-- `v=√(...)` のようにoperator途中にradicalが出る式も完全token化
-- normalization regression
-- inline-tokenization regression
-- 1E real-browser mobile visual regression
+Implemented repair:
+- radical-starting inline expressionを一つのmath tokenとして取得,
+- `v=√(...)` のような式を spaces around operators を含めて一つのmath tokenとして取得,
+- balanced-parentheses radical normalizationを追加し、`√((−10)²+(−10)²)` も処理,
+- normalization regression追加,
+- inline-tokenization regression追加,
+- 1E browser regressionで KaTeX expression 1個 / sqrt 1個 / no overflow / no KaTeX error を確認.
 
-Do not rewrite the correct physical formula to avoid the parser defect.
+Validation:
+- commit: `e54f49a179d8696b03ea74a9afecf8a8654aa1e3`
+- GitHub Actions run: **249**
+- typecheck PASS
+- Chapter 1 audited data/math PASS
+- P39 browser smoke PASS
+- build PASS
+- Pages deploy PASS
+
+Do not rewrite the correct physical formula to avoid parser defects.
 
 ---
 

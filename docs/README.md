@@ -9,6 +9,10 @@ Start here for repository/document navigation.
 3. `REPO_CLEANUP_POLICY.md` — repository hygiene rules
 4. `../WORKFLOW.md` — execution workflow
 
+## Math rendering technical QA
+
+- `MATH_RENDERING_RULES.md` — tokenizer / Unicode normalization / KaTeX / inline-vs-block visual consistency
+
 ## Product / engineering
 
 - `PRODUCT_REQUIREMENTS.md`

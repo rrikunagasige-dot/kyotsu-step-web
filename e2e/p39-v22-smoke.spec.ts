@@ -181,6 +181,36 @@ test('1A average-velocity calculation stays in one derivation frame', async ({ p
   await expect(page.locator('.katex-error')).toHaveCount(0)
 })
 
+test('1B worked examples retrieve and apply formulas in continuous derivation frames', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/physics-1b-velocity-composition'))
+
+  for (const id of ['b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'b7', 'b8']) {
+    await solveHoleByTryingChoices(page, id)
+  }
+
+  const composition = page.locator('[data-derivation-id="b-velocity-composition-example"]')
+  await expect(composition).toHaveCount(1)
+  await expect(composition).toBeVisible()
+  await expect(composition.locator('.reading-formula-line')).toHaveCount(6)
+
+  const compositionBorders = await composition.locator('.reading-formula-line').evaluateAll((elements) =>
+    elements.map((element) => getComputedStyle(element).borderTopWidth),
+  )
+  expect(compositionBorders.every((width) => width === '0px')).toBe(true)
+
+  const decomposition = page.locator('[data-derivation-id="b-velocity-decomposition-example"]')
+  await expect(decomposition).toHaveCount(1)
+  await expect(decomposition).toBeVisible()
+  await expect(decomposition.locator('.reading-formula-line')).toHaveCount(3)
+
+  const decompositionBorders = await decomposition.locator('.reading-formula-line').evaluateAll((elements) =>
+    elements.map((element) => getComputedStyle(element).borderTopWidth),
+  )
+  expect(decompositionBorders.every((width) => width === '0px')).toBe(true)
+
+  await expect(page.locator('.katex-error')).toHaveCount(0)
+})
+
 test('oblique projectile derivations render as compiled math in one chain', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/physics-1f-oblique-projectile'))
 

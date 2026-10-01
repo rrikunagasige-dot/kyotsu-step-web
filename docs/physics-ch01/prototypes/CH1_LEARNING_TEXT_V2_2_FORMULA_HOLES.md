@@ -7,8 +7,8 @@ status: app-repair-v2.3-source-aligned
 checkpoint_date: 2026-09-29
 prototype: continuous-learning-v2.3-audited
 canonical_figures: 17
-hole_occurrences: 65
-unique_hole_ids: 65
+hole_occurrences: 54
+unique_hole_ids: 54
 source_policy:
   physics: textbook PDF pages 12-27
   figures: canonical figure.zip
@@ -312,15 +312,61 @@ v = √(vₓ²+vᵧ²)
 
 ## 例題：川を横切る船
 
-川の流れが東向き 2.0 m/s、船が水に対して北向き 1.5 m/s で進むとする。東を x 正、北を y 正とすれば、地面に対する船の速度成分は (2.0,1.5) m/s である。
+川の流れが東向き 2.0 m/s、船が水に対して北向き 1.5 m/s で進むとする。東を x 正、北を y 正とし、川の流れの速度を v⃗₁=(2.0,0) m/s、船の水に対する速度を v⃗₂=(0,1.5) m/s と表す。岸から見た地面に対する船の速度 v⃗ を求めるには、まずこの節で学んだ速度の合成を使う。
 
-したがって速さは 【B6　　　　　】 m/s となる。
+:::derive id="b-velocity-composition-example"
+v⃗ = 【B3　　　　　】
+
+:::choices id="B3"
+A. v⃗₁+v⃗₂　　B. v⃗₁−v⃗₂　　C. v⃗₂−v⃗₁　　D. |v⃗₁|+|v⃗₂|
+:::
+
+= (2.0,0)+(0,1.5)
+
+= 【B4　　　　　】 m/s
+
+:::choices id="B4"
+A. (3.5,0)　　B. (2.0,1.5)　　C. (2.0,−1.5)　　D. (0.5,0)
+:::
+
+速さは、ここで求めた速度ベクトルの大きさである。したがって x 成分と y 成分から三平方の関係を使う。
+
+v = 【B5　　　　　】
+
+:::choices id="B5"
+A. vₓ+vᵧ　　B. √(vₓ²−vᵧ²)　　C. √(vₓ²+vᵧ²)　　D. vₓvᵧ
+:::
+
+= √(2.0²+1.5²)
+
+= 【B6　　　　　】 m/s
 
 :::choices id="B6"
 A. 3.5　　B. 1.0　　C. 4.0　　D. 2.5
 :::
+:::endderive
 
-速度を合成する場合も分解する場合も、重要なのは「どの方向の運動を一緒に見ているのか」を図で確認することである。
+## 例題：速度を成分に分ける
+
+次に、分解の公式も実際に使ってみる。大きさ 10 m/s の速度が x 軸から上向きに 30° 傾いているとする。この速度を x 方向と y 方向の成分に分ける。
+
+:::derive id="b-velocity-decomposition-example"
+(vₓ,vᵧ) = 【B7　　　　　】
+
+:::choices id="B7"
+A. (v sinθ, v cosθ)　　B. (v cosθ, v sinθ)　　C. (v tanθ, v/tanθ)　　D. (v/cosθ, v/sinθ)
+:::
+
+= (10 cos30^{\circ}, 10 sin30^{\circ})
+
+= 【B8　　　　　】 m/s
+
+:::choices id="B8"
+A. (5,5√3)　　B. (10√3,10)　　C. (5√2,5√2)　　D. (5√3,5)
+:::
+:::endderive
+
+速度を合成する場合も分解する場合も、重要なのは、公式を眺めるだけで終わらず「どの速度をどの関係式に入れるのか」を自分で決めて使うことである。
 
 # 1C　相対速度
 
@@ -957,7 +1003,12 @@ A9b　(6.0,4.0)
 A10　(2.0, 4/3)
 B1　和
 B2　(v cosθ, v sinθ)
+B3　v⃗₁+v⃗₂
+B4　(2.0,1.5)
+B5　√(vₓ²+vᵧ²)
 B6　2.5
+B7　(v cosθ, v sinθ)
+B8　(5√3,5)
 C2　v⃗_B − v⃗_A
 C3　止まっている
 C4　(−10,−10)

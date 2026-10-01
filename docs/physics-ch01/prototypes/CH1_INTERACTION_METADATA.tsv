@@ -15,7 +15,12 @@ A9b	transfer	medium	平均速度の分子には、直前に求めた変位をそ
 A10	transfer	medium	すでに変位(6.0,4.0) mと経過時間3.0 sが求まっている。	ベクトルの各成分を同じ経過時間で割る。
 B1	representation-link	medium	岸から見る運動には、船自身の運動と川の流れが同時に入っている。	2本の速度矢印を順につないだ結果のベクトルを考える。
 B2	representation-link	medium	x成分は角θの隣辺、y成分は対辺に対応する。	cosは隣辺/斜辺、sinは対辺/斜辺という対応を使う。
-B6	transfer	medium	東向き成分と北向き成分は直交している。	2.0と1.5を辺にもつ直角三角形の斜辺を考える。
+B3	relation-selection	medium	直前に学んだ速度の合成では、同時に起こる2つの速度をベクトルとして組み合わせた。	岸から見た速度を作るには、川の流れと船の水に対する速度をどう結ぶか思い出す。
+B4	transfer	medium	ベクトルの和は各成分どうしを足して求める。	x成分は2.0+0、y成分は0+1.5として合成する。
+B5	relation-selection	medium	速さは速度ベクトルの大きさである。	x成分とy成分を辺にもつ直角三角形の斜辺を三平方で表す。
+B6	transfer	medium	B5で選んだ大きさの式に、合成して得た2.0と1.5を入れる。	√(2.0²+1.5²)を計算する。
+B7	transfer	light	B2で学んだ速度の分解公式を、今度は数値のある例へそのまま適用する。	x成分はcos、y成分はsinに対応することを思い出す。
+B8	transfer	light	cos30°=√3/2、sin30°=1/2を使う。	10倍するとx成分は5√3、y成分は5になる。
 C2	relation-selection	medium	Aから見た運動では、観測者A自身の運動を取り除く必要がある。	『Bの速度』から『Aの速度』をどう扱えばよいか考える。
 C3	concept-formation	medium	AとBの速度が同じなら相対速度は0になる。	相対速度が0のとき、AとBの間隔がどう見えるか考える。
 C4	transfer	medium	相対速度は雨の速度から観測者である自転車の速度を取り除いて作る。	x成分とy成分を別々に引いてみる。

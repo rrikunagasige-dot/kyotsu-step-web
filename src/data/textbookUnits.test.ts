@@ -5,7 +5,7 @@ import type { TextbookReadingBlock } from '../domain/textbookSchema'
 
 const expectedCounts: Record<string, number> = {
   '1A': 13,
-  '1B': 3,
+  '1B': 8,
   '1C': 4,
   '1D': 8,
   '1E': 6,
@@ -33,7 +33,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
     }
   })
 
-  it('preserves all 49 audited holes with an explicit source answer', () => {
+  it('preserves all 54 audited holes with an explicit source answer', () => {
     const counts = Object.fromEntries(
       builtInTextbookUnits.map((unit) => [
         unit.chapter?.unitCode,
@@ -41,10 +41,10 @@ describe('Chapter 1 continuous textbook catalog', () => {
       ]),
     )
     expect(counts).toEqual(expectedCounts)
-    expect(allItems()).toHaveLength(49)
+    expect(allItems()).toHaveLength(54)
 
     const answerLines = [...source.slice(source.indexOf('# 解答')).matchAll(/^([A-G]\d+[a-z]?)　(.+)$/gm)]
-    expect(answerLines).toHaveLength(49)
+    expect(answerLines).toHaveLength(54)
 
     for (const item of allItems()) {
       expect(item.choices).toHaveLength(4)
@@ -63,7 +63,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
       scaffoldCounts[item.scaffoldLevel] += 1
     }
 
-    expect(scaffoldCounts).toEqual({ strong: 6, medium: 20, light: 23 })
+    expect(scaffoldCounts).toEqual({ strong: 6, medium: 23, light: 25 })
 
     const lateItems = builtInTextbookUnits
       .filter((unit) => ['1F', '1G'].includes(unit.chapter?.unitCode ?? ''))
@@ -74,7 +74,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
   it('does not reintroduce mechanical end-step holes', () => {
     const ids = new Set(allItems().map((item) => item.id.toUpperCase()))
     for (const removed of [
-      'A5', 'B3', 'B4', 'B5',
+      'A5',
       'D5', 'D6', 'D7B', 'D7C',
       'E2', 'E4', 'E5B',
       'F2', 'F3A', 'F5', 'F6B', 'F8A', 'F8',
@@ -86,6 +86,11 @@ describe('Chapter 1 continuous textbook catalog', () => {
     const byId = Object.fromEntries(allItems().map((item) => [item.id, item]))
     expect(byId.a8.answer).toBe('速度')
     expect(byId.b2.answer).toBe('(v cosθ, v sinθ)')
+    expect(byId.b3.answer).toBe('v⃗₁+v⃗₂')
+    expect(byId.b4.answer).toBe('(2.0,1.5)')
+    expect(byId.b5.answer).toBe('√(vₓ²+vᵧ²)')
+    expect(byId.b7.answer).toBe('(v cosθ, v sinθ)')
+    expect(byId.b8.answer).toBe('(5√3,5)')
     expect(byId.d7.answer).toBe('v−v₀=at')
     expect(byId.d9.answer).toBe('x=v₀t+(1/2)at²')
     expect(byId.e3a.answer).toBe('v²−v₀²=2ax')
@@ -107,13 +112,15 @@ describe('Chapter 1 continuous textbook catalog', () => {
       expect(index).toBeGreaterThanOrEqual(0)
       distribution[index] += 1
     }
-    expect(distribution.reduce((sum, count) => sum + count, 0)).toBe(49)
+    expect(distribution.reduce((sum, count) => sum + count, 0)).toBe(54)
     expect(Math.max(...distribution) - Math.min(...distribution)).toBeLessThanOrEqual(1)
   })
 
   it('keeps explicit multi-step derivations as one semantic group', () => {
     const expected = [
       'a-average-velocity-example',
+      'b-velocity-composition-example',
+      'b-velocity-decomposition-example',
       'd-velocity-update',
       'd-displacement-area',
       'd-eliminate-time',
@@ -152,6 +159,22 @@ describe('Chapter 1 continuous textbook catalog', () => {
         : [],
     )
     expect(averageVelocityHoles).toEqual(['a9c', 'a9', 'a9d', 'a9a', 'a9b', 'a10'])
+
+    const compositionExample = groups.get('b-velocity-composition-example') ?? []
+    const compositionHoles = compositionExample.flatMap((block) =>
+      block.type === 'formula'
+        ? block.parts.filter((part) => part.type === 'choice').map((part) => part.itemId)
+        : [],
+    )
+    expect(compositionHoles).toEqual(['b3', 'b4', 'b5', 'b6'])
+
+    const decompositionExample = groups.get('b-velocity-decomposition-example') ?? []
+    const decompositionHoles = decompositionExample.flatMap((block) =>
+      block.type === 'formula'
+        ? block.parts.filter((part) => part.type === 'choice').map((part) => part.itemId)
+        : [],
+    )
+    expect(decompositionHoles).toEqual(['b7', 'b8'])
 
     expect(groups.get('f-flight-time')?.some((block) => block.type === 'paragraph')).toBe(true)
   })

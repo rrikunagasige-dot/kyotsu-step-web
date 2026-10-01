@@ -493,3 +493,24 @@ All are defined above.
 
 Next:
 `P36 REPRESENTATION INTEGRATION / MASK / LEAKAGE SPEC`
+
+
+---
+
+## 21. Cross-unit retrieval / spaced review amendment
+
+The transfer/retrieval rule also applies across neighboring units.
+
+If a relation learned in one unit is genuinely needed in the next unit, it is often better to ask the learner to retrieve and apply it again than to silently provide the completed step.
+
+Example:
+- learn vector magnitude in 1B,
+- retrieve it in 1C after constructing a relative-velocity vector.
+
+This is not duplicate questioning when:
+- the physical context is different,
+- the learner must recognize the old relation is relevant,
+- the support is reduced,
+- the result contributes to the new unit's reasoning chain.
+
+Do not force cross-unit review where the relation is irrelevant; retrieval must arise from the actual dependency structure.

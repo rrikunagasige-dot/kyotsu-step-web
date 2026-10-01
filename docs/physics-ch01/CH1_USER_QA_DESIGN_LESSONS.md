@@ -702,3 +702,34 @@ Do not count “the App used the formula on behalf of the learner” as transfer
 The formulas may reappear because the later appearance is retrieval/application rather than passive duplication.
 
 For the next unit, analysis/proposal precedes implementation and requires explicit user review.
+
+
+---
+
+## 23. 1C planning lesson — reuse 1B magnitude relation as retrieval
+
+During the pre-implementation review of 1C, the user explicitly preferred making the relative-speed magnitude step interactive.
+
+Reason:
+the magnitude relation was already learned in 1B, so using it again in the rain/bicycle example is not redundant duplication. It is spaced retrieval across units.
+
+Preferred 1C chain:
+
+```text
+choose observer/reference
+↓
+retrieve relative-velocity relation
+↓
+compute relative-velocity vector
+↓
+retrieve previous-unit magnitude relation
+↓
+compute |v_rel|
+↓
+interpret direction / physical meaning
+```
+
+This establishes an additional design rule:
+**when a prior-unit formula is naturally required by a new problem, reuse it deliberately as review/transfer rather than automatically displaying the completed formula.**
+
+The support should normally be weaker than at first introduction, because the goal is retrieval rather than concept construction.

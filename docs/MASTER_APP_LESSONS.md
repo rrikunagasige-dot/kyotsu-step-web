@@ -979,3 +979,40 @@ implement only after approval
 ```
 
 This protocol is explicitly required for the next Chapter-1 unit review after 1B.
+
+
+---
+
+## 44. Cross-unit retrieval is valuable review, not redundant repetition
+
+A formula learned in one unit should sometimes be retrieved again in a later unit when the new context genuinely needs it.
+
+Example:
+- 1B teaches the magnitude of a velocity vector,
+- 1C can reuse that relation after constructing a relative-velocity vector.
+
+This is pedagogically valuable because the learner must recognize:
+1. the old relation is still applicable,
+2. the representation is the same even though the physical context changed,
+3. the result of the new calculation has physical meaning in the new unit.
+
+Therefore a repeated formula should not be removed merely because it appeared in the previous unit.
+
+Good cross-unit review:
+```text
+learn relation in unit N
+↓
+new context in unit N+1
+↓
+retrieve the old relation with weaker support
+↓
+apply it to the new result
+↓
+interpret in the new context
+```
+
+Bad repetition is still bad:
+- showing the same completed formula again with no learner action,
+- repeating identical arithmetic only to increase hole count.
+
+The distinction is whether the learner performs retrieval/transfer.

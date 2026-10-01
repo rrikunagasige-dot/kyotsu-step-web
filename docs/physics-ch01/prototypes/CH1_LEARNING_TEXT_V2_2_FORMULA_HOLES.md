@@ -507,7 +507,7 @@ A. 加速度　　B. 力　　C. 質量　　D. 変位
 
 ここから先の一定加速度の導出では、この「傾き」と「面積」を実際に使う。次の補助図は、教科書の図9・図10を置き換えるものではなく、v-t グラフ下の面積を長方形と三角形に分けるための教育用図である。
 
-:::figure id="edu-1d-vt-area" source="educational-user-approved-2026-10-02" app_asset="public/assets/physics/textbook/ch01/1d/vt-area-derivation.webp"
+:::figure id="edu-1d-vt-area" source="educational-user-approved-2026-10-02" app_asset="public/assets/physics/textbook/ch01/1d/vt-area-derivation.svg"
 補助図　一定加速度の v-t グラフと長方形・三角形による面積分解
 :::
 

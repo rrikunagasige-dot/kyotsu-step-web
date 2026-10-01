@@ -1732,8 +1732,8 @@ Implemented:
 - added stable regression gates and 1D revision bump.
 
 Asset:
-`public/assets/physics/textbook/ch01/1d/vt-area-derivation.webp`
-1200×900 / SHA256 `0108daa223700e2a6738250a2ab220fe7a422aa0e25775330da5affb46394562`.
+`public/assets/physics/textbook/ch01/1d/vt-area-derivation.svg`
+1200×900 SVG / user-approved educational support asset.
 
 Counts:
 1D 8→19; Chapter 1 57→68; derivation groups 17→18; revision 4→5.

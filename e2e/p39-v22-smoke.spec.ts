@@ -246,7 +246,7 @@ test('1D actively derives constant-acceleration formulas with the approved v-t g
     await solveHoleByTryingChoices(page, id)
   }
 
-  await expect(page.locator('img[src*="vt-area-derivation.webp"]')).toBeVisible()
+  await expect(page.locator('img[src*="vt-area-derivation.svg"]')).toBeVisible()
 
   const velocity = page.locator('[data-derivation-id="d-velocity-update"]')
   await expect(velocity).toHaveCount(1)

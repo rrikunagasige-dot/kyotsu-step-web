@@ -24,7 +24,7 @@ const canonicalChapter1FigurePaths = [
 ].sort()
 
 const approvedEducationalChapter1FigurePaths = [
-  '/assets/physics/textbook/ch01/1d/vt-area-derivation.webp',
+  '/assets/physics/textbook/ch01/1d/vt-area-derivation.svg',
 ].sort()
 
 function chapter1FigurePaths() {
@@ -84,6 +84,17 @@ describe('Chapter 1 textbook figure assets', () => {
 
       const bytes = readFileSync(path)
       const extension = extname(path).toLowerCase()
+
+      if (extension === '.svg') {
+        const svg = bytes.toString('utf8')
+        expect(svg, publicPath).toContain('<svg')
+        expect(svg, publicPath).toContain('width="1200"')
+        expect(svg, publicPath).toContain('height="900"')
+        expect(svg, publicPath).toContain('viewBox="0 0 1200 900"')
+        expect(bytes.length, publicPath).toBeGreaterThan(1_000)
+        continue
+      }
+
       expect(extension, publicPath).toBe('.webp')
       expect(bytes.subarray(0, 4).toString('ascii'), publicPath).toBe('RIFF')
       expect(bytes.subarray(8, 12).toString('ascii'), publicPath).toBe('WEBP')
@@ -104,7 +115,7 @@ describe('Chapter 1 textbook figure assets', () => {
     const source = readFileSync(sourcePath, 'utf8')
     expect(source).not.toMatch(/source="generated-/)
 
-    const educational = [...source.matchAll(/^:::figure id="edu-1d-vt-area" source="educational-user-approved-2026-10-02" app_asset="public\/assets\/physics\/textbook\/ch01\/1d\/vt-area-derivation\.webp"/gm)]
+    const educational = [...source.matchAll(/^:::figure id="edu-1d-vt-area" source="educational-user-approved-2026-10-02" app_asset="public\/assets\/physics\/textbook\/ch01\/1d\/vt-area-derivation\.svg"/gm)]
     expect(educational).toHaveLength(1)
 
     const lines = source.split('\n')

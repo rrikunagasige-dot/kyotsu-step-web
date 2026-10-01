@@ -119,7 +119,7 @@ The supplied 1D figures are represented in the app as optimized WebP assets:
 |---|---|---|
 | 9.png | `public/assets/physics/textbook/ch01/1d/acceleration-trajectory.webp` | curved trajectory with v1, v2 and Δt |
 | 10.png | `public/assets/physics/textbook/ch01/1d/velocity-change-acceleration.webp` | vector construction Δv=v2−v1 and average acceleration |
-| user-approved educational support figure (2026-10-02) | `public/assets/physics/textbook/ch01/1d/vt-area-derivation.webp` | v-t area decomposition into rectangle + triangle for the constant-acceleration derivation |
+| user-approved educational support figure (2026-10-02) | `public/assets/physics/textbook/ch01/1d/vt-area-derivation.svg` | v-t area decomposition into rectangle + triangle for the constant-acceleration derivation |
 
 Figure V2:
 - figure 10 uses `hotspot-d-1` linked to item `d-1` for the meaning of `Δv`.
@@ -278,10 +278,10 @@ The user explicitly approved adding one new educational representation because t
 This asset is **not** a canonical textbook figure and does not replace Figures 9 or 10.
 
 Identity:
-- app asset: `public/assets/physics/textbook/ch01/1d/vt-area-derivation.webp`
-- dimensions: 1200 × 900
-- bytes: 32,534
-- SHA256: `0108daa223700e2a6738250a2ab220fe7a422aa0e25775330da5affb46394562`
+- app asset: `public/assets/physics/textbook/ch01/1d/vt-area-derivation.svg`
+- canvas: 1200 × 900
+- format: SVG, so lines/text remain crisp on phone screens
+- semantic content: user-approved v-t graph with rectangle + triangle area decomposition
 - role: additive teaching representation for 1D constant-acceleration derivation
 - approval: explicit user approval in live App review, 2026-10-02
 

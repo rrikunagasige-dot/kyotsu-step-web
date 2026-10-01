@@ -275,13 +275,13 @@ describe('Chapter 1 continuous textbook catalog', () => {
     expect(new Set(figures.map((figure) => figure.src)).size).toBe(18)
 
     const canonical = figures
-      .filter((figure) => /^fig-\\d+$/.test(figure.id))
+      .filter((figure) => /^fig-\d+$/.test(figure.id))
       .map((figure) => figure.id)
       .sort((a, b) => Number(a.replace('fig-', '')) - Number(b.replace('fig-', '')))
     expect(canonical).toEqual(Array.from({ length: 17 }, (_, index) => `fig-${index + 1}`))
 
     const educational = figures.find((figure) => figure.id === 'edu-1d-vt-area')
-    expect(educational?.src).toBe('/assets/physics/textbook/ch01/1d/vt-area-derivation.webp')
+    expect(educational?.src).toBe('/assets/physics/textbook/ch01/1d/vt-area-derivation.svg')
   })
 
   it('shows the canonical figure before prose or questions that explicitly depend on it', () => {

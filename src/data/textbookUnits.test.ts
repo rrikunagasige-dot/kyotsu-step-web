@@ -315,7 +315,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
     const unit1D = builtInTextbookUnits.find((unit) => unit.chapter?.unitCode === '1D')!
     const section = unit1D.sections[0]
     const educational = section.figures.find((figure) => figure.id === 'edu-1d-vt-area')
-    expect(educational?.src).toBe('/assets/physics/textbook/ch01/1d/vt-area-derivation.webp')
+    expect(educational?.src).toBe('/assets/physics/textbook/ch01/1d/vt-area-derivation.svg')
     expect(section.figures.some((figure) => figure.id === 'fig-9')).toBe(true)
     expect(section.figures.some((figure) => figure.id === 'fig-10')).toBe(true)
     expect(section.items.some((item) => item.id === 'd3')).toBe(true)

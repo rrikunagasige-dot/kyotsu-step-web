@@ -232,6 +232,48 @@ test('1C rain example chooses the observer, applies relative velocity, and retri
   await expect(page.locator('img[src*="relative-rain-bicycle.webp"]')).toBeVisible()
 })
 
+test('1D actively derives constant-acceleration formulas with the approved v-t graph', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/physics-1d-acceleration'))
+
+  for (const id of [
+    'd1', 'd2', 'd3', 'd4',
+    'd5a', 'd5b', 'd5c',
+    'd4b', 'd4c',
+    'd7a', 'd7', 'd7b', 'd7c', 'd7d',
+    'd8',
+    'd9a', 'd9b', 'd9', 'd9c',
+  ]) {
+    await solveHoleByTryingChoices(page, id)
+  }
+
+  await expect(page.locator('img[src*="vt-area-derivation.webp"]')).toBeVisible()
+
+  const velocity = page.locator('[data-derivation-id="d-velocity-update"]')
+  await expect(velocity).toHaveCount(1)
+  await expect(velocity.locator('.reading-formula-line')).toHaveCount(6)
+
+  const displacement = page.locator('[data-derivation-id="d-displacement-area"]')
+  await expect(displacement).toHaveCount(1)
+  await expect(displacement.locator('.reading-formula-line')).toHaveCount(4)
+
+  const eliminate = page.locator('[data-derivation-id="d-eliminate-time"]')
+  await expect(eliminate).toHaveCount(1)
+  await expect(eliminate.locator('.reading-formula-line')).toHaveCount(7)
+
+  const example = page.locator('[data-derivation-id="d-constant-acceleration-example"]')
+  await expect(example).toHaveCount(1)
+  await expect(example.locator('.reading-formula-line')).toHaveCount(6)
+
+  for (const chain of [velocity, displacement, eliminate, example]) {
+    const borders = await chain.locator('.reading-formula-line').evaluateAll((elements) =>
+      elements.map((element) => getComputedStyle(element).borderTopWidth),
+    )
+    expect(borders.every((width) => width === '0px')).toBe(true)
+  }
+
+  await expect(page.locator('.katex-error')).toHaveCount(0)
+})
+
 test('oblique projectile derivations render as compiled math in one chain', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/physics-1f-oblique-projectile'))
 

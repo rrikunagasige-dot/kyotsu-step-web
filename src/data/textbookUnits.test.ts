@@ -7,7 +7,7 @@ const expectedCounts: Record<string, number> = {
   '1A': 13,
   '1B': 8,
   '1C': 7,
-  '1D': 8,
+  '1D': 19,
   '1E': 6,
   '1F': 8,
   '1G': 7,
@@ -33,7 +33,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
     }
   })
 
-  it('preserves all 57 audited holes with an explicit source answer', () => {
+  it('preserves all 68 audited holes with an explicit source answer', () => {
     const counts = Object.fromEntries(
       builtInTextbookUnits.map((unit) => [
         unit.chapter?.unitCode,
@@ -41,10 +41,10 @@ describe('Chapter 1 continuous textbook catalog', () => {
       ]),
     )
     expect(counts).toEqual(expectedCounts)
-    expect(allItems()).toHaveLength(57)
+    expect(allItems()).toHaveLength(68)
 
     const answerLines = [...source.slice(source.indexOf('# 解答')).matchAll(/^([A-G]\d+[a-z]?)　(.+)$/gm)]
-    expect(answerLines).toHaveLength(57)
+    expect(answerLines).toHaveLength(68)
 
     for (const item of allItems()) {
       expect(item.choices).toHaveLength(4)
@@ -63,7 +63,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
       scaffoldCounts[item.scaffoldLevel] += 1
     }
 
-    expect(scaffoldCounts).toEqual({ strong: 6, medium: 23, light: 28 })
+    expect(scaffoldCounts).toEqual({ strong: 6, medium: 27, light: 35 })
 
     const lateItems = builtInTextbookUnits
       .filter((unit) => ['1F', '1G'].includes(unit.chapter?.unitCode ?? ''))
@@ -75,7 +75,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
     const ids = new Set(allItems().map((item) => item.id.toUpperCase()))
     for (const removed of [
       'A5',
-      'D5', 'D6', 'D7B', 'D7C',
+      'D5', 'D6',
       'E2', 'E4', 'E5B',
       'F2', 'F3A', 'F5', 'F6B', 'F8A', 'F8',
       'G3A', 'G7', 'G8',
@@ -96,8 +96,20 @@ describe('Chapter 1 continuous textbook catalog', () => {
     expect(byId.c4.answer).toBe('(−10,−10)')
     expect(byId.c4b.answer).toBe('√(vₓ²+vᵧ²)')
     expect(byId.c4c.answer).toBe('10√2')
+    expect(byId.d5a.answer).toBe('v−v₀')
+    expect(byId.d5b.answer).toBe('t')
+    expect(byId.d5c.answer).toBe('at')
+    expect(byId.d4b.answer).toBe('at')
+    expect(byId.d4c.answer).toBe('v₀t+(1/2)at²')
+    expect(byId.d7a.answer).toBe('(v₀+v)/2')
     expect(byId.d7.answer).toBe('v−v₀=at')
-    expect(byId.d9.answer).toBe('x=v₀t+(1/2)at²')
+    expect(byId.d7b.answer).toBe('(v−v₀)/a')
+    expect(byId.d7c.answer).toBe('v²−v₀²')
+    expect(byId.d7d.answer).toBe('2ax')
+    expect(byId.d9a.answer).toBe('v₀+at')
+    expect(byId.d9b.answer).toBe('6.0')
+    expect(byId.d9.answer).toBe('v₀t+(1/2)at²')
+    expect(byId.d9c.answer).toBe('9.0')
     expect(byId.e3a.answer).toBe('v²−v₀²=2ax')
     expect(byId.e5a.answer).toBe('x=v₀t')
     expect(byId.e6.answer).toBe('鉛直方向の運動')
@@ -117,7 +129,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
       expect(index).toBeGreaterThanOrEqual(0)
       distribution[index] += 1
     }
-    expect(distribution.reduce((sum, count) => sum + count, 0)).toBe(57)
+    expect(distribution.reduce((sum, count) => sum + count, 0)).toBe(68)
     expect(Math.max(...distribution) - Math.min(...distribution)).toBeLessThanOrEqual(1)
   })
 
@@ -130,6 +142,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
       'd-velocity-update',
       'd-displacement-area',
       'd-eliminate-time',
+      'd-constant-acceleration-example',
       'e-vertical-relation',
       'e-trajectory-elimination',
       'f-vertical-motion',
@@ -190,6 +203,38 @@ describe('Chapter 1 continuous textbook catalog', () => {
     )
     expect(relativeRainHoles).toEqual(['c4a', 'c4', 'c4b', 'c4c'])
 
+    const velocityUpdate = groups.get('d-velocity-update') ?? []
+    const velocityUpdateHoles = velocityUpdate.flatMap((block) =>
+      block.type === 'paragraph' || block.type === 'formula'
+        ? block.parts.filter((part) => part.type === 'choice').map((part) => part.itemId)
+        : [],
+    )
+    expect(velocityUpdateHoles).toEqual(['d5a', 'd5b', 'd5c'])
+
+    const displacementArea = groups.get('d-displacement-area') ?? []
+    const displacementAreaHoles = displacementArea.flatMap((block) =>
+      block.type === 'paragraph' || block.type === 'formula'
+        ? block.parts.filter((part) => part.type === 'choice').map((part) => part.itemId)
+        : [],
+    )
+    expect(displacementAreaHoles).toEqual(['d4b', 'd4c'])
+
+    const eliminateTime = groups.get('d-eliminate-time') ?? []
+    const eliminateTimeHoles = eliminateTime.flatMap((block) =>
+      block.type === 'paragraph' || block.type === 'formula'
+        ? block.parts.filter((part) => part.type === 'choice').map((part) => part.itemId)
+        : [],
+    )
+    expect(eliminateTimeHoles).toEqual(['d7a', 'd7', 'd7b', 'd7c', 'd7d'])
+
+    const constantAccelerationExample = groups.get('d-constant-acceleration-example') ?? []
+    const exampleHoles = constantAccelerationExample.flatMap((block) =>
+      block.type === 'paragraph' || block.type === 'formula'
+        ? block.parts.filter((part) => part.type === 'choice').map((part) => part.itemId)
+        : [],
+    )
+    expect(exampleHoles).toEqual(['d9a', 'd9b', 'd9', 'd9c'])
+
     expect(groups.get('f-flight-time')?.some((block) => block.type === 'paragraph')).toBe(true)
   })
 
@@ -222,19 +267,21 @@ describe('Chapter 1 continuous textbook catalog', () => {
     }
   })
 
-  it('uses only the 17 canonical Chapter 1 figures', () => {
+  it('keeps all 17 canonical Chapter 1 figures plus the one approved 1D educational graph', () => {
     const figures = builtInTextbookUnits.flatMap((unit) =>
       unit.sections.flatMap((section) => section.figures),
     )
-    expect(figures).toHaveLength(17)
-    expect(new Set(figures.map((figure) => figure.src)).size).toBe(17)
+    expect(figures).toHaveLength(18)
+    expect(new Set(figures.map((figure) => figure.src)).size).toBe(18)
 
-    const ids = figures.map((figure) => figure.id).sort((a, b) => {
-      const left = Number(a.replace('fig-', ''))
-      const right = Number(b.replace('fig-', ''))
-      return left - right
-    })
-    expect(ids).toEqual(Array.from({ length: 17 }, (_, index) => `fig-${index + 1}`))
+    const canonical = figures
+      .filter((figure) => /^fig-\\d+$/.test(figure.id))
+      .map((figure) => figure.id)
+      .sort((a, b) => Number(a.replace('fig-', '')) - Number(b.replace('fig-', '')))
+    expect(canonical).toEqual(Array.from({ length: 17 }, (_, index) => `fig-${index + 1}`))
+
+    const educational = figures.find((figure) => figure.id === 'edu-1d-vt-area')
+    expect(educational?.src).toBe('/assets/physics/textbook/ch01/1d/vt-area-derivation.webp')
   })
 
   it('shows the canonical figure before prose or questions that explicitly depend on it', () => {
@@ -264,10 +311,13 @@ describe('Chapter 1 continuous textbook catalog', () => {
     expect(fig6).toBeLessThan(b2)
   })
 
-  it('keeps the 1D v-t derivation without inserting a synthetic graph', () => {
+  it('uses the explicitly approved 1D educational v-t graph without replacing canonical figures', () => {
     const unit1D = builtInTextbookUnits.find((unit) => unit.chapter?.unitCode === '1D')!
     const section = unit1D.sections[0]
-    expect(section.figures.some((figure) => figure.id === 'fig-d-vt')).toBe(false)
+    const educational = section.figures.find((figure) => figure.id === 'edu-1d-vt-area')
+    expect(educational?.src).toBe('/assets/physics/textbook/ch01/1d/vt-area-derivation.webp')
+    expect(section.figures.some((figure) => figure.id === 'fig-9')).toBe(true)
+    expect(section.figures.some((figure) => figure.id === 'fig-10')).toBe(true)
     expect(section.items.some((item) => item.id === 'd3')).toBe(true)
     expect(section.items.some((item) => item.id === 'd4')).toBe(true)
   })
@@ -288,7 +338,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
 
   it('classifies symbolic monomials as formula answers', () => {
     const byId = Object.fromEntries(allItems().map((item) => [item.id, item]))
-    for (const id of ['d4a', 'd7', 'd9', 'e3a', 'e5a', 'f1', 'f5a', 'f6a', 'f7', 'g3', 'g6a']) {
+    for (const id of ['d5a', 'd5b', 'd5c', 'd4b', 'd4c', 'd7a', 'd7', 'd7b', 'd7c', 'd7d', 'd9a', 'd9', 'e3a', 'e5a', 'f1', 'f5a', 'f6a', 'f7', 'g3', 'g6a']) {
       expect(byId[id].answerType, id).toBe('formula')
     }
   })

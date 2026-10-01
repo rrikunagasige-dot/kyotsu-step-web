@@ -23,6 +23,10 @@ const canonicalChapter1FigurePaths = [
   '/assets/physics/textbook/ch01/1g/terminal-velocity-graph.webp',
 ].sort()
 
+const approvedEducationalChapter1FigurePaths = [
+  '/assets/physics/textbook/ch01/1d/vt-area-derivation.webp',
+].sort()
+
 function chapter1FigurePaths() {
   const paths = builtInTextbookUnits.flatMap((unit) =>
     unit.sections.flatMap((section) => section.figures.map((figure) => figure.src)),
@@ -66,11 +70,14 @@ function webpDimensions(bytes: Buffer) {
 }
 
 describe('Chapter 1 textbook figure assets', () => {
-  it('uses exactly the 17 canonical Library-derived figures and no synthetic redraws', () => {
-    expect(chapter1FigurePaths()).toEqual(canonicalChapter1FigurePaths)
+  it('keeps the 17 canonical Library-derived figures and only the explicitly approved educational add-on', () => {
+    const live = chapter1FigurePaths()
+    expect(live.filter((path) => canonicalChapter1FigurePaths.includes(path))).toEqual(canonicalChapter1FigurePaths)
+    expect(live.filter((path) => approvedEducationalChapter1FigurePaths.includes(path))).toEqual(approvedEducationalChapter1FigurePaths)
+    expect(live).toHaveLength(canonicalChapter1FigurePaths.length + approvedEducationalChapter1FigurePaths.length)
   })
 
-  it('keeps every referenced canonical figure asset present and structurally valid', () => {
+  it('keeps every referenced Chapter-1 figure asset present, readable, and structurally valid', () => {
     for (const publicPath of chapter1FigurePaths()) {
       const path = resolve(process.cwd(), 'public', publicPath.replace(/^\//, ''))
       expect(existsSync(path), publicPath).toBe(true)
@@ -89,13 +96,16 @@ describe('Chapter 1 textbook figure assets', () => {
     }
   })
 
-  it('forbids generated figure directives and figure-number references before the figure exists', () => {
+  it('forbids unauthorized figure replacements while allowing the one approved 1D educational directive', () => {
     const sourcePath = resolve(
       process.cwd(),
       'docs/physics-ch01/prototypes/CH1_LEARNING_TEXT_V2_2_FORMULA_HOLES.md',
     )
     const source = readFileSync(sourcePath, 'utf8')
     expect(source).not.toMatch(/source="generated-/)
+
+    const educational = [...source.matchAll(/^:::figure id="edu-1d-vt-area" source="educational-user-approved-2026-10-02" app_asset="public\/assets\/physics\/textbook\/ch01\/1d\/vt-area-derivation\.webp"/gm)]
+    expect(educational).toHaveLength(1)
 
     const lines = source.split('\n')
     const directiveIds = [...source.matchAll(/^:::figure id="fig-(\d+)"/gm)].map(

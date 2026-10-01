@@ -1851,3 +1851,43 @@ CROSS-UNIT RETRIEVAL FROM 1B
 
 One derivation frame contains the vector calculation and magnitude review.
 Current: 1C=7 / Chapter 1=57 / derivation groups=17 / revision=5.
+
+
+### 19.26 USER 1D ACTIVE-DERIVATION REDESIGN
+
+```text
+acceleration definition
+  ↓
+D5a Δv = v-v0
+D5b Δt = t
+  ↓
+D5c v-v0 = at
+  ↓
+v = v0+at
+  ↓
+approved educational v-t graph
+(rectangle + triangle; canonical figs 9/10 remain)
+  ↓
+x = v0 t + 1/2(v-v0)t
+  ↓
+D4b reuse v-v0=at
+  ↓
+D4c x = v0 t + 1/2 a t^2
+  ↓
+goal: eliminate time
+  ↓
+D7a average velocity
+D7 parent relation
+D7b solve for t
+D7c difference of squares
+D7d time-free standard form
+  ↓
+v^2-v0^2=2ax
+  ↓
+D9a/D9b choose+apply velocity formula
+D9/D9c choose+apply displacement formula
+```
+
+Policy change:
+17 canonical figures remain mandatory and untouched; one user-approved additive educational graph is allowed for the missing v-t representation.
+Current 1D=19 / Chapter 1=68 / derivation groups=18 / revision=5.

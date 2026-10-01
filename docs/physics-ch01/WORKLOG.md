@@ -1705,3 +1705,35 @@ Repair:
 - Figure 8 remains confirmation after the calculation.
 
 Counts: 1C 4→7; Chapter 1 54→57; derivation groups 16→17; revision 4→5.
+
+
+---
+
+## 2026-10-02 — User QA: 1D rebuilt as active phone-first physics derivation
+
+User identified that 1D was qualitatively different from 1A–1C: this is the first section where standard physics formulas should be genuinely derived rather than merely introduced/applied.
+
+Before implementation:
+- active-derivation lessons were codified,
+- the missing v-t rectangle/triangle representation was identified,
+- the user explicitly approved a new educational graph,
+- the graph was treated as additive support rather than a replacement for canonical Figures 9/10.
+
+Implemented:
+- acceleration definition → Δv and Δt concretization → velocity formula derivation,
+- v-t graph area representation,
+- rectangle+triangle displacement relation,
+- reuse of the earlier velocity relation to derive x=v0t+(1/2)at^2,
+- explicit goal of eliminating time,
+- average-velocity relation → solve t → difference of squares → time-free relation,
+- one-frame derivation groups throughout,
+- worked example now requires formula selection, substitution, and numerical results,
+- removed old D4a copy-style interaction because the approved graph itself explicitly teaches that area decomposition,
+- added stable regression gates and 1D revision bump.
+
+Asset:
+`public/assets/physics/textbook/ch01/1d/vt-area-derivation.webp`
+1200×900 / SHA256 `0108daa223700e2a6738250a2ab220fe7a422aa0e25775330da5affb46394562`.
+
+Counts:
+1D 8→19; Chapter 1 57→68; derivation groups 17→18; revision 4→5.

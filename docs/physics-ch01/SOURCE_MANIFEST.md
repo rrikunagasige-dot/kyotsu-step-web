@@ -119,6 +119,7 @@ The supplied 1D figures are represented in the app as optimized WebP assets:
 |---|---|---|
 | 9.png | `public/assets/physics/textbook/ch01/1d/acceleration-trajectory.webp` | curved trajectory with v1, v2 and Δt |
 | 10.png | `public/assets/physics/textbook/ch01/1d/velocity-change-acceleration.webp` | vector construction Δv=v2−v1 and average acceleration |
+| user-approved educational support figure (2026-10-02) | `public/assets/physics/textbook/ch01/1d/vt-area-derivation.webp` | v-t area decomposition into rectangle + triangle for the constant-acceleration derivation |
 
 Figure V2:
 - figure 10 uses `hotspot-d-1` linked to item `d-1` for the meaning of `Δv`.
@@ -268,3 +269,27 @@ The one-time restoration workflow was removed after use. Permanent CI tests, not
 
 Validation: GitHub Actions run 222 / tested head `155a825f6058f06f42b9097e4e29092dad09818e` / SUCCESS through Pages deploy.
 
+
+
+## 2026-10-02 approved educational figure exception — 1D v-t area derivation
+
+The user explicitly approved adding one new educational representation because the canonical Chapter-1 archive does not contain the v-t graph required to understand the rectangle + triangle displacement derivation.
+
+This asset is **not** a canonical textbook figure and does not replace Figures 9 or 10.
+
+Identity:
+- app asset: `public/assets/physics/textbook/ch01/1d/vt-area-derivation.webp`
+- dimensions: 1200 × 900
+- bytes: 32,534
+- SHA256: `0108daa223700e2a6738250a2ab220fe7a422aa0e25775330da5affb46394562`
+- role: additive teaching representation for 1D constant-acceleration derivation
+- approval: explicit user approval in live App review, 2026-10-02
+
+Current figure policy is therefore:
+- preserve all 17 canonical Library-derived figures unchanged in meaning,
+- allow this one explicitly approved additive 1D educational graph,
+- never silently replace a canonical source figure with a generated/redrawn image,
+- any future non-canonical educational figure requires its own explicit pedagogical reason + user approval + provenance entry,
+- all live figures remain subject to mobile readability and asset-integrity gates.
+
+This section supersedes the older temporary rule “exactly Figure 1–17 and no additional graph” only with respect to this single approved additive representation.

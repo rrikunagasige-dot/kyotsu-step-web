@@ -1623,3 +1623,34 @@ Current counts:
 1C revision: 4 → 5.
 
 P39/G61 remains USER RE-QA OPEN.
+
+
+## 2026-10-02 USER 1D REDESIGN — ACTIVE PHONE-FIRST DERIVATION
+
+User approved the full 1D redesign after first approving a dedicated v-t rectangle/triangle educational graph.
+
+Scope:
+- 1D only,
+- 1E–1G unchanged,
+- canonical Figures 9 and 10 preserved,
+- one additive educational v-t graph added; it is not a canonical replacement.
+
+New 1D learning architecture:
+- D1/D2: velocity change and acceleration meaning,
+- D3/D4: v-t slope and area,
+- D5a/D5b: concretize Δv=v−v₀ and Δt=t−0=t,
+- D5c: derive v−v₀=at,
+- use the approved v-t graph to understand rectangle + triangle area,
+- D4b/D4c: reuse v−v₀=at and derive x=v₀t+(1/2)at²,
+- D7a/D7/D7b/D7c/D7d: construct average velocity, eliminate t, use difference of squares, and obtain the time-free relation,
+- D8: retain force/acceleration condition,
+- D9a/D9b/D9/D9c: choose and apply the derived formulas in the numerical example.
+
+Current counts:
+- 1D = 19 interactions,
+- Chapter 1 total = 68,
+- derivation groups = 18,
+- scaffold distribution = strong 6 / medium 27 / light 35,
+- 1D revision 4 → 5.
+
+P39/G61 remains USER RE-QA OPEN.

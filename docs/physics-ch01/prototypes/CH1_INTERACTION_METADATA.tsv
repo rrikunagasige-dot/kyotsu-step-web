@@ -32,10 +32,21 @@ D1	representation-link	medium	速度の変化も位置の変化と同じく、�
 D2	definition	medium	加速度は速度がどれだけ変わったかだけでなく、その変化にかかった時間も見る。	速度変化を経過時間で割る形を作る。
 D3	graph-reading	medium	グラフの傾きは縦軸の変化量を横軸の変化量で割ったもの。	v-tグラフなら縦の変化は速度、横の変化は時間。
 D4	graph-reading	medium	一定速度ならv×Δtが変位で、グラフでは長方形の面積になる。	速度が変わっても、グラフ下の面積という見方を保つ。
-D4a	representation-link	medium	直線のv-tグラフ下を長方形と三角形に分ける。	三角形の底辺はt、高さはv−v₀になる。
+D5a	definition	medium	Δvは「後の速度−最初の速度」で具体化する。	時刻0でv₀、時刻tでvなので、その差を作る。
+D5b	physical-condition	medium	この導出は時刻0から時刻tまでを扱っている。	経過時間は「後の時刻−最初の時刻」で考える。
+D5c	relation-selection	medium	a=(v−v₀)/t の両辺にtを掛ける。	速度差と加速度・時間を結ぶ形を作る。
+D4b	transfer	medium	直前に導いた v−v₀=at を、v-tグラフの三角形の高さへ再利用する。	三角形の高さ v−v₀ を a と t で表し直す。
+D4c	transfer	medium	v₀t+(1/2)(at)t の t をまとめる。	(at)t=at² なので、変位の標準形へ整理する。
+D7a	relation-selection	light	一定加速度では速度がv₀からvまで直線的に変化する。	両端の速度の平均を考える。
 D7	relation-selection	light	時間を消すには、tと速度差を直接結ぶ式が必要。	加速度の定義から作った速度更新の式を探す。
+D7b	elimination	light	v−v₀=at をtについて解いて、代入できる形にする。	tだけを一方の辺に残す。
+D7c	factorization	light	(v₀+v)(v−v₀) は和と差の積である。	(a+b)(a−b)=a²−b² の形を使う。
+D7d	transfer	light	x=(v²−v₀²)/(2a) を時間のない標準形へ整理する。	両辺に2aを掛けて右辺を2axにする。
 D8	physical-condition	light	運動方程式では合力と加速度が直接結ばれている。	質量が0でないなら、合力が0のときmaはどうなるか。
-D9	relation-selection	light	求めたいのは速度ではなく変位。	与えられたv₀、a、tから変位を直接出せる式を選ぶ。
+D9a	relation-selection	light	求めたいのはまず速度で、v₀・a・tが与えられている。	3本の一定加速度式のうち速度を直接含む式を選ぶ。
+D9b	transfer	light	v=v₀+at に v₀=0、a=2.0、t=3.0 を代入した。	0+2.0×3.0 を計算する。
+D9	relation-selection	light	次に求めたいのは変位で、v₀・a・tが与えられている。	時間tを含む変位の式を選ぶ。
+D9c	transfer	light	x=v₀t+(1/2)at² に数値を代入した。	(1/2)×2.0×3.0² を計算する。
 E1	physical-condition	light	空気抵抗を無視すると力は鉛直方向の重力だけ。	水平方向に力がないとき、水平方向の速度がどう変わるか考える。
 E3	relation-selection	medium	鉛直初速度は0で、鉛直加速度はg。	初速度0の等加速度運動の位置式を使う。
 E3a	relation-selection	light	今回は時間tを含まないvᵧとyの関係が欲しい。	等加速度運動の3式のうち、時間を含まないものを選ぶ。

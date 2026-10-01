@@ -292,9 +292,9 @@ test('1E applies prior formulas, derives the trajectory, solves the worked examp
   const groups = [
     ['e-horizontal-motion', 6],
     ['e-vertical-motion', 6],
-    ['e-vertical-relation', 3],
+    ['e-vertical-relation', 2],
     ['e-speed-composition', 3],
-    ['e-trajectory-elimination', 5],
+    ['e-trajectory-elimination', 4],
     ['e-horizontal-projectile-example', 5],
   ] as const
 

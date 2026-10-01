@@ -1016,3 +1016,87 @@ Bad repetition is still bad:
 - repeating identical arithmetic only to increase hole count.
 
 The distinction is whether the learner performs retrieval/transfer.
+
+
+---
+
+## 45. Active derivation on phone — the learner should build the formula, not watch it
+
+From the 1D review, a stronger rule is now required for genuine physics derivations.
+
+For a nontrivial derivation, the learner should be able to use only the phone screen and still actively reconstruct the important reasoning steps.
+
+The target experience is not:
+
+```text
+read formula
+↓
+read next formula
+↓
+read final formula
+```
+
+It is:
+
+```text
+see the physical setup
+↓
+make one meaningful inference
+↓
+fill that step
+↓
+see the consequence
+↓
+make the next inference
+↓
+complete the derived formula
+```
+
+This means derivation holes may legitimately appear at intermediate physical-identification steps such as:
+
+- `Δv = v - v0`,
+- `Δt = t - 0 = t`,
+- selecting the relation that eliminates a variable,
+- reusing a formula derived a few lines earlier,
+- identifying a graph area or geometric quantity,
+- reconstructing the final reusable formula.
+
+The aim is not to maximize hole count. The aim is to make the learner perform the meaningful reasoning that would otherwise be silently done by the App.
+
+### Phone-only derivation gate
+
+A derivation should pass the following test:
+
+> If the learner has no paper, no second screen, and no teacher beside them, can they still follow the visible chain and actively supply the important reasoning steps?
+
+If the answer is no, either:
+- an intermediate reasoning step is missing,
+- an interaction is missing,
+- or a required representation/figure is missing.
+
+---
+
+## 46. A required diagram is part of the derivation
+
+If a derivation depends on a geometric/graphical fact, the figure is not decoration; it is part of the proof/derivation.
+
+Example from constant acceleration:
+- displacement from a `v-t` graph requires seeing the graph,
+- “rectangle + triangle” is not an acceptable explanation if no such visual decomposition is shown.
+
+Therefore:
+
+> Do not ask the learner to mentally reconstruct a graph or geometric decomposition that the App could show directly.
+
+This does not weaken the canonical-figure rule.
+
+Distinguish:
+1. **replacement figure** — silently redraws/replaces a canonical source figure → prohibited unless explicitly approved;
+2. **new required educational representation** — no canonical figure exists for a reasoning step, and the missing representation is necessary to understand the derivation → may be added after explicit design approval.
+
+A new educational figure must have:
+- a declared pedagogical purpose,
+- a clear relationship to the derivation,
+- no claim of being a textbook-original figure,
+- its own provenance/status,
+- tests/QA for mobile readability.

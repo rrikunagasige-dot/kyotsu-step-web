@@ -756,3 +756,74 @@ choose observer/reference
 ```
 
 This is preferable to asking only for the final vector or displaying the magnitude automatically, because both would let the App perform the central transfer step on the learner’s behalf.
+
+
+---
+
+## 25. 1D planning lesson — physics derivation must be actively reconstructed
+
+The 1D review exposed a deeper issue than earlier worked-example defects.
+
+From 1D onward, the learner is no longer only applying an already-given formula. They begin deriving standard physics relations from definitions, assumptions, graphs, and previously derived equations.
+
+Therefore the derivation itself becomes learning content.
+
+### Key user requirement
+
+The learner should be able to study on a phone only and still actively think through the derivation by filling the important steps.
+
+For example, from the acceleration definition:
+
+```text
+a = Δv/Δt
+↓
+Δv = [v-v0]
+Δt = [t-0=t]
+↓
+a = (v-v0)/t
+↓
+v-v0 = [at]
+↓
+v = v0+at
+```
+
+The holes are justified because they require the learner to map:
+- initial/final velocity → velocity change,
+- initial/final time → elapsed time,
+- definition → concrete motion.
+
+### Missing-representation lesson
+
+The current displacement derivation refers to a `v-t` graph split into a rectangle and triangle, but no actual graph is shown.
+
+This is not only a visual defect. It makes the reasoning incomplete.
+
+For the future 1D redesign, the intended chain is:
+
+```text
+visible v-t graph
+↓
+identify rectangle area
+↓
+identify triangle area
+↓
+construct displacement expression
+↓
+reuse v-v0=at
+↓
+derive x=v0 t + (1/2) a t^2
+```
+
+A required graph should be treated as part of the derivation itself.
+
+This does not authorize arbitrary generated replacements for textbook figures. If no canonical figure exists for a required reasoning representation, a new educational figure may be added only as an explicitly approved additive teaching asset, clearly distinguished from canonical textbook figures.
+
+### General lesson
+
+A derivation succeeds when the learner can say:
+
+> “I filled the important steps and arrived at the formula myself.”
+
+It fails when the learner can only say:
+
+> “I scrolled through several equations and saw the answer.”

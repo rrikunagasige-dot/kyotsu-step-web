@@ -367,3 +367,94 @@ Example from 1B:
 Likewise, a decomposition formula taught earlier should be applied at least once to a concrete `v, θ` pair if decomposition is a stated learning objective.
 
 This is a later-use / transfer requirement, not a global instruction to turn every arithmetic line into a hole.
+
+
+---
+
+## 13. Active-derivation gate — intermediate physical reasoning can be a hole
+
+The 1D review strengthens the earlier formula-hole rule.
+
+For a genuine physics derivation, it is not enough to show all intermediate equations. If every important step is pre-filled, the learner is only watching the derivation.
+
+A useful derivation hole may target the **physical identification that makes the next equation possible**.
+
+Example for constant acceleration:
+
+```text
+a = Δv/Δt
+
+Δv = [ v - v0 ]
+Δt = [ t - 0 = t ]
+
+a = (v-v0)/t
+
+v-v0 = [ at ]
+
+v = v0 + at
+```
+
+The two holes `Δv=v-v0` and `Δt=t` are not trivial bookkeeping in this context. They connect the abstract definition to the concrete motion being analyzed.
+
+### Preferred hole targets in derivations
+
+Prefer holes at:
+- physical-quantity identification,
+- initial/final-value substitution,
+- condition application,
+- representation conversion,
+- parent-relation selection,
+- reuse of an earlier derived relation,
+- variable-elimination choice,
+- meaningful graph/geometry interpretation,
+- final-form reconstruction.
+
+Usually leave visible:
+- repetitive arithmetic,
+- obvious multiplication/division already implied by the previous line,
+- algebra that adds no new physical or strategic decision.
+
+### Derivation UX rule
+
+A long derivation should feel like:
+
+```text
+visible support
++ learner decisions
++ immediate continuation
+```
+
+not:
+
+```text
+wall of formulas
+```
+
+and not:
+
+```text
+quiz on every algebraic token
+```.
+
+---
+
+## 14. Representation-completeness gate for derivations
+
+Before approving a derivation, ask whether any step relies on an unseen diagram, graph, or geometric decomposition.
+
+If yes, the derivation is incomplete.
+
+For a `v-t`-area derivation, statements such as:
+- “rectangle area”,
+- “triangle height is v-v0”,
+- “the area under the graph is displacement”
+
+must be supported by an actual visible graph/decomposition if the learner is expected to reason from it.
+
+A new derivation-specific educational figure may be designed only when:
+- no canonical source figure already supplies the needed representation,
+- the figure is additive rather than a silent replacement,
+- its pedagogical role is explicit,
+- the user has approved adding the new representation.
+
+This rule preserves source fidelity while allowing genuinely necessary teaching representations.

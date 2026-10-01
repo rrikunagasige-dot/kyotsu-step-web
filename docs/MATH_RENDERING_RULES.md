@@ -1,106 +1,516 @@
-# Math Rendering Rules
+# Math Rendering Rules — 数式レンダリング技術QA
 
-Status: PROJECT-WIDE TECHNICAL AUTHORITY
+Status: **PROJECT-WIDE TECHNICAL AUTHORITY**
 
-Purpose: define technical QA rules for math tokenization, normalization, KaTeX rendering, and mobile visual consistency. This file is about rendering engineering, not pedagogy.
+Purpose:
+このファイルは、教材内容や導出 pedagogy ではなく、数式を App 上で一貫して正しく表示するための技術ルールと既知不具合をまとめる。
 
-## Core invariant
+Chapter 1 の実App QAでは、数式そのものが正しくても tokenizer / normalization / formula assembly / KaTeX / resolved-state UI のどこかが違うだけで、赤raw表示、添字崩れ、二重記号、plain-text選択肢、変な根号などが繰り返し発生した。
 
-The same mathematical expression must render with the same semantics and natural appearance whether it appears in prose, a formula block, a choice, or an answer.
+したがって Math Rendering は独立した quality gate とする。
 
-Acceptance requires:
+---
+
+## 0. Scope — 何がこの文書の管轄か
+
+### この文書の管轄
+
+- inline math tokenization
+- Unicode → LaTeX normalization
+- combined subscript / superscript
+- vector / bar / average notation
+- radical / fraction / bracket
+- trig typography
+- formula-hole assembly
+- choice math rendering
+- resolved-answer rendering
+- KaTeX parse / strict warning
+- inline / block visual consistency
+- mobile math layout
+
+### 別の文書の管轄
+
+次は数式と関係するが、主原因は Math Rendering ではない。
+
+- 一つの導出が複数の白カードに分断される
+  → `FORMULA_DERIVATION_RULES.md` / derivation UI
+- 同じ完成式を無意味に二度出す
+  → pedagogy / content duplication
+- 公式の途中導出が足りない
+  → derivation pedagogy
+- 穴の場所が弱い
+  → hole-quality pedagogy
+
+症状が似ていても root cause を混同しない。
+
+---
+
+## 1. Core invariant
+
+> **同じ数学的表現は、本文inline・formula block・choice・resolved answer のどこに現れても、同じ数学的単位として解釈され、自然なKaTeX表示になる。**
+
+Acceptance は6段階:
+
 1. semantic correctness
 2. tokenization correctness
 3. normalization correctness
-4. KaTeX compile correctness
-5. visual correctness
-6. mobile-width correctness
+4. formula-assembly correctness
+5. KaTeX compile correctness
+6. visual/mobile correctness
 
-## Unicode math must not bypass the renderer
+「読める」「KaTeX errorがない」だけではPASSにしない。
 
-Source text may contain Unicode forms such as √, ², ₀, Δ, θ, ×, or combining vector marks.
+---
 
-These must not remain as plain-text fragments beside KaTeX math.
+## 2. Historical defect catalog — 実際に起きた既知バグ
+
+この表は一般論ではなく、Chapter 1 の実装・user QAで実際に発生したもの。
+
+| ID | 症状 | Root cause | 修正原則 | Status / evidence |
+|---|---|---|---|---|
+| MR01 | 数式穴を含む式が raw TeX / 赤表示になる | `\\frac{` + hole + `}{` + hole + `}` のように、LaTeXを断片ごとにKaTeX compile | **式全体を組み立ててから一度だけcompile** | FIXED in P27; `docs/physics-ch01/WORKLOG.md` |
+| MR02 | `v₀ₓ`, `v₀ᵧ` が `v_0_x` のような不正LaTeXになる | Unicode combined subscript を単純置換し、subscriptを二重生成 | combined subscript sequenceを一つの `_{...}` にまとめる | FIXED; `textbookMath.test.ts` |
+| MR03 | inline と display/formula で同じ式の見た目が違う | 別tokenization/rendering path | normalization semanticsを共有する | PARTIAL; radical issueで再発 |
+| MR04 | source内で Unicode / ASCII風 / TeX風表記が混在 | source authoring形式が統一されていない | source差異はnormalization layerで吸収し、learner UIで統一 | ACTIVE RULE |
+| MR05 | clickable formula-holeで KaTeX strict warning | interactive metadataをKaTeX HTML extensionへ埋め込んだ | interactionはReact側、KaTeXは純粋なmath renderingに限定 | FIXED; P39 R2 |
+| MR06 | formula choiceが plain text のまま表示 | choice pathがmath rendererを通らない | formula answer/choiceは同じnormalization + KaTeX pathへ | FIXED; P39 |
+| MR07 | 正答後も穴だけ箱付きfragmentに見える | unresolved UI表現をresolved後も保持 | resolved stateは普通の完成数式へ戻す | FIXED; `textbookFormula.test.ts` |
+| MR08 | prose中の `r⃗`, `vₓ`, `vᵧ`, `Δr` がraw Unicode/textになる | prose tokenizerがmath tokenとして拾わない | inline tokenizerでmath token化してKaTeXへ | FIXED for recorded cases |
+| MR09 | `sin/cos/tan` のspacing/typographyが不統一 | plain lettersとKaTeX operatorsの混在 | `\\sin`, `\\cos`, `\\tan`へnormalize | RULE EXISTS; direct coverageを強化する |
+| MR10 | 平均速度 `v̄⃗` がbar + vector arrowの二重記号に見える | combining marksを字面通り重ねた | learner UIは意味を保ち自然なnotationへ正規化: `\\vec{v}_{\\mathrm{avg}}` | FIXED; direct unit test |
+| MR11 | `√(v₀²+g²t²)` の根号だけ他の式と違って崩れる | inline tokenizerが `√` 始まりの式を一math tokenとして拾えない | radical全体をtokenize → `\\sqrt{...}`へnormalize | **OPEN 2026-10-02** |
+| MR12 | formula typographyが場所によって textbook-grade でない | multiple rendering surfaces + inconsistent token boundaries | surface matrixで同じ式を比較する | ONGOING visual QA |
+
+Primary historical evidence:
+- `docs/physics-ch01/P39_LIVE_APP_DEFECT_AUDIT.md`
+- `docs/physics-ch01/WORKLOG.md`
+- `CHATGPT_README_FIRST.md`
+- `src/domain/textbookMath.test.ts`
+- `src/domain/textbookFormula.test.ts`
+- `e2e/p39-v22-smoke.spec.ts`
+
+---
+
+## 3. Architecture rule — math pipelineは一方向にする
+
+Preferred pipeline:
+
+```text
+source string
+↓
+identify complete mathematical token / formula
+↓
+normalize Unicode / notation
+↓
+assemble full expression including resolved holes
+↓
+KaTeX render
+↓
+React interaction/UI around the rendered math
+```
+
+禁止:
+
+```text
+LaTeX fragment
+↓
+KaTeX
++
+button
++
+LaTeX fragment
+↓
+KaTeX
+```
+
+特に `\\frac`, `\\sqrt`, `\\left(...\\right)` の内部をUI fragment単位でcompileしてはいけない。
+
+---
+
+## 4. Whole-formula rule
+
+P27で発見されたroot causeを恒久ルール化する。
+
+例えば、
+
+```text
+\\frac{ [hole numerator] }{ [hole denominator] }
+```
+
+を、
+
+```text
+"\\frac{"
+[interactive hole]
+"}{"
+[interactive hole]
+"}"
+```
+
+として各fragmentを別々にKaTeXへ渡すと構文として壊れる。
+
+Hard rule:
+
+> **interactive holeがあっても、数学構文としては一つの完成式を構築してからrenderする。**
+
+interactionのクリック対象・stable item ID・wrong state等はReact layerで管理し、数学構文を壊して埋め込まない。
+
+---
+
+## 5. Unicode normalization rules
+
+Sourceでは以下を許容するが、learner-facingでは一貫したLaTeXへ変換する。
+
+### Combined subscripts
+
+- `v₀ₓ` → `v_{0x}`
+- `v₀ᵧ` → `v_{0y}`
+- `v_0_x` → `v_{0x}`
+
+二重subscriptを生成しない。
+
+### Vectors
+
+- `r⃗₁` → `\\vec{r}_{1}`
+- `Δr⃗` → `\\Delta \\vec{r}`
+- `v⃗_A` → `\\vec{v}_A`
+
+raw combining vector markをUIに残さない。
+
+### Average vector
+
+- source `v̄⃗`
+- learner rendering `\\vec{v}_{\\mathrm{avg}}`
+
+意味を保ちながら視覚的なbar+arrowの重なりを避ける。
+
+### Operators / symbols
+
+- `Δ` → `\\Delta`
+- `θ` → `\\theta`
+- `×` → `\\times`
+- `·` → `\\cdot`
+- `−` → math minus
+- `²`, `³` → superscript
+
+### Trigonometric functions
+
+- `sin` → `\\sin`
+- `cos` → `\\cos`
+- `tan` → `\\tan`
+
+italic variable letters `s i n` のように見せない。
+
+---
+
+## 6. Inline math rule
+
+Inline proseは最も再発しやすい。
+
+理由:
+formula blockは最初から「全部math」だが、proseはtextとmathの境界を tokenizer が判断する必要がある。
+
+Hard rule:
+
+> **normalize関数が正しくても、tokenizerが式を途中で切ったらFAIL。**
+
+必ず両方をテストする。
 
 Example:
-`√(v₀²+g²t²)`
-must be treated as one math expression and normalized to a KaTeX radical over the complete radicand.
 
-## Inline and block math must share the same normalization semantics
+`速さは v=√(v₀²+g²t²) である。`
 
-A mathematically identical expression must not look different merely because one copy is inside prose and another is in a formula block.
+期待token:
 
-If radical length, subscript placement, vector marks, fractions, or bracket sizing differs by rendering path, treat that as a technical defect.
+```text
+text: "速さは "
+math: "v=\\sqrt{v_0^2+g^2t^2}"
+text: " である。"
+```
 
-## Tokenizer tests are mandatory
+`√` や括弧内だけがtext fragmentへ逃げてはいけない。
 
-Testing `normalizeTextbookMath()` alone is insufficient.
+---
 
-The full path must be tested:
+## 7. Radical-specific gate
 
-source prose
-→ inline tokenizer
-→ math token boundary
-→ normalizeTextbookMath
-→ KaTeX render
+今回の1E defectを一般化する。
 
-For every new syntax, add:
-- normalization unit test
-- inline-tokenization unit test
-- browser regression when layout-sensitive
+最低限:
 
-## Radical regression gate
-
-At minimum test:
-- √(a²+b²)
-- √(v₀²+g²t²)
-- √((−10)²+(−10)²)
-- radical inside Japanese prose
-- radical inside a choice
-- radical in a formula block
+- `√(a²+b²)`
+- `√(v₀²+g²t²)`
+- `√((−10)²+(−10)²)`
+- `v=√(v₀²+g²t²)`
+- 日本語文中のradical
+- choice内radical
+- formula block内radical
+- resolved answer内radical
 
 Expected:
-- the complete radical expression is one math unit
-- no raw Unicode radical remains outside KaTeX
-- no KaTeX error
-- the overbar covers the full radicand
-- subscripts and parentheses sit naturally inside the radical
+- complete radicalが一つのmath unit
+- `\\sqrt{...}` へnormalize
+- raw `√` がplain textで残らない
+- radical barがradicand全体を覆う
+- subscript/superscriptがradical内で自然
+- inline baselineが不自然にずれない
+- Pixel-widthでoverflowしない
 
-## Visual consistency is technical correctness
+---
 
-Compile PASS is still FAIL if:
-- the radical bar does not cover the full radicand
-- vector marks stack incorrectly
-- subscripts split
-- root/fraction/bracket heights look malformed
-- inline baseline differs badly from surrounding math
-- mobile width breaks the formula
+## 8. Resolved-hole rule
 
-## Fix the rendering layer before rewriting correct content
+Unresolvedとresolvedは見た目の意味が違う。
 
-When physics/math content is correct but display is wrong:
-1. verify source expression
-2. inspect token boundaries
-3. inspect normalization
-4. inspect renderer
-5. add regression tests
-6. browser visual QA
+### Unresolved
+interactiveであることが分かる必要がある。
 
-Do not rewrite correct educational content merely to hide a rendering bug.
+### Resolved
+完成した教科書数式として読める必要がある。
 
-## 2026-10-02 — 1E inline radical defect
+Hard rule:
 
-Observed in 1E:
+> **正答後は「穴を埋めたUI」ではなく「普通の完成式」に戻る。**
+
+禁止:
+- resolved answerだけ箱が残る
+- answer fragmentだけfont/baselineが違う
+- answer fragmentだけplain text
+- completed formulaが複数rendererの継ぎ接ぎに見える
+
+Existing regression:
+`src/domain/textbookFormula.test.ts` が resolved answerで `\\boxed{}` を禁止している。
+
+---
+
+## 9. Choice rendering rule
+
+Formula choiceも数学である。
+
+例えば:
+- `(v cosθ, v sinθ)`
+- `√(vₓ²+vᵧ²)`
+- `(v−v₀)/a`
+
+をplain textで出さない。
+
+Choice surfaceも:
+- same tokenizer/normalizer
+- same KaTeX typography
+- no raw Unicode leakage
+
+を満たす。
+
+---
+
+## 10. KaTeX warning/error rule
+
+Required:
+- `.katex-error = 0`
+- parse error = 0
+- avoid strict-mode warnings caused by unsupported/HTML-extension hacks
+
+Past lesson:
+interactive metadataをKaTeX commandへ埋め込む方式はやめ、React component側へ分離した。
+
+Do not reintroduce:
+- `\\htmlData`
+- `\\htmlClass`
+- `\\href`
+
+for textbook hole interaction.
+
+Existing regression:
+`src/domain/textbookFormula.test.ts` がこれらを禁止している。
+
+---
+
+## 11. Surface matrix — 同じsyntaxを全表示面で見る
+
+新しい数式syntaxを導入・修正するときは、一箇所だけ見ない。
+
+| Surface | Must test |
+|---|---|
+| formula block | compile + visual |
+| Japanese prose inline | token boundary + visual |
+| choice | normalization + visual |
+| unresolved hole formula | full expression compile |
+| resolved hole formula | natural completed appearance |
+| hint / feedback if math appears | no raw notation |
+| mobile | baseline / wrapping / overflow |
+| desktop | typography consistency |
+
+同じsyntaxが複数surfaceへ出るなら、最低2surface以上のtestを持つ。
+
+---
+
+## 12. Current automated coverage
+
+### Already covered
+
+`src/domain/textbookMath.test.ts`
+- combined Unicode subscripts
+- vectors / vector subscripts
+- average-velocity normalization
+- ordinary symbolic subscripts
+- prose-level combined subscript extraction
+
+`src/domain/textbookFormula.test.ts`
+- all Chapter-1 formula blocks unresolved: no KaTeX error
+- no KaTeX HTML-extension interaction commands
+- resolved holes: no boxed fragment
+- prose-level vector symbols become inline math
+- all Chapter-1 formula blocks resolved: no KaTeX error
+
+`e2e/p39-v22-smoke.spec.ts`
+- raw `v_0_x`, `v_0_y` leakage forbidden in 1F
+- `.katex-error` must remain zero
+- mobile + desktop Chapter-1 progression
+
+### Coverage gaps identified now
+
+1. radical-starting inline expression — **missing / OPEN**
+2. inline `v=√(...)` as one token — **missing / OPEN**
+3. trig typography/spacing direct regression — weak
+4. same expression inline vs formula-block comparison — weak
+5. mobile visual radical geometry — no dedicated assertion/screenshot
+6. long fraction/root overflow near phone width — weak
+
+These gaps are not hidden by the existing “all formula blocks compile” test because the current radical defect is specifically in the **prose inline path**.
+
+---
+
+## 13. Visual QA checklist
+
+Compile PASS後に実ブラウザで見る。
+
+### Radical
+- bar length
+- root height
+- parentheses height
+- nested superscript/subscript
+- baseline
+
+### Subscript / superscript
+- no double subscript
+- no raw Unicode fragment
+- no unexpected line break between base and subscript
+
+### Vector / average notation
+- no stacked double mark
+- arrow length natural
+- subscript aligned
+
+### Trig
+- `sin/cos/tan` upright operator
+- spacing before argument natural
+
+### Fraction
+- numerator/denominator not clipped
+- interactive state does not break brace structure
+
+### Completed formula
+- resolved answer visually merges into surrounding expression
+
+### Mobile
+- no horizontal overflow
+- no clipped radical/fraction
+- choice button can contain formula without shrinking into illegibility
+
+---
+
+## 14. Debug order for future defects
+
+数式がおかしい時、contentを先に書き換えない。
+
+```text
+1. source expression is mathematically correct?
+↓
+2. tokenizer produced the intended complete math token?
+↓
+3. normalizeTextbookMath produced valid LaTeX?
+↓
+4. formula assembler preserved one complete expression?
+↓
+5. KaTeX compiled without error/warning?
+↓
+6. React/CSS altered baseline/box/overflow?
+↓
+7. mobile + desktop visual QA
+```
+
+各層を分けて原因を確定する。
+
+---
+
+## 15. Regression rule after every math-rendering bug
+
+新しいmath-rendering bugを一度見つけたら、修正だけで終わらない。
+
+必ず:
+1. symptomをこのknown-defect catalogへ追加
+2. root causeを記録
+3. smallest unit regressionを追加
+4. surface-specific regressionを追加
+5. mobile browserで確認
+6. 修正後も同じsyntaxを別surfaceでspot-check
+
+「一回直したから覚えている」は禁止。testを executable memory にする。
+
+---
+
+## 16. 2026-10-02 — 1E inline radical defect
+
+Observed:
 `v = √(v₀²+g²t²)`
 
-The inline radical looked different from previously correct radicals.
+Symptom:
+formula blockの自然な根号と違い、本文inlineの根号だけ不自然に見える。
 
 Current technical finding:
-`normalizeTextbookMath()` can normalize `√(...)`, but `splitTextbookInlineMath()` uses a token pattern whose math token starts from letters/Δ rather than from the Unicode radical. Therefore a radical-starting inline expression can be split before normalization.
+`normalizeTextbookMath()` は `√(...)` を処理できるが、`splitTextbookInlineMath()` のtoken patternは math token開始を主に letters / Δ から想定している。そのため Unicode `√` から始まる部分が完全なmath tokenとしてnormalizationへ届かない。
 
-Classification: tokenizer/rendering defect, not pedagogy defect.
+Classification:
+**MR11 / tokenizer + inline-rendering defect**
+
+This is NOT:
+- physics error
+- derivation pedagogy error
+- formula-content error
 
 Required repair:
-- radical-starting inline expressions must tokenize as one math unit
-- add normalization and inline-tokenization regression tests
-- verify the 1E inline formula at mobile width
+- radical-starting inline expressionを一つのmath tokenとして取得
+- `v=√(...)` のようにoperator途中にradicalが出る式も完全token化
+- normalization regression
+- inline-tokenization regression
+- 1E real-browser mobile visual regression
+
+Do not rewrite the correct physical formula to avoid the parser defect.
+
+---
+
+## 17. Historical sources / authority
+
+Known defects were consolidated from:
+
+- `docs/physics-ch01/P39_LIVE_APP_DEFECT_AUDIT.md`
+  - E01 combined subscripts
+  - E02 inline/display path split
+  - E03 mixed source notation
+  - E04 KaTeX strict warnings
+  - E22 typography
+  - E23 trig spacing
+  - E24 resolved formula appearance
+- `docs/physics-ch01/WORKLOG.md`
+  - P27 raw-TeX / fragmented-LaTeX root cause
+  - formula choices as plain text
+  - boxed resolved fragments
+  - Unicode inline math repair
+- `CHATGPT_README_FIRST.md`
+  - whole-formula rendering rule
+- `docs/physics-ch01/P39_LIVE_APP_DEFECT_AUDIT.md` POST-R9
+  - average-velocity stacked bar + vector arrow
+- current user QA
+  - 1E inline radical defect
+
+When older historical notes conflict with later explicit user QA, later user QA wins.

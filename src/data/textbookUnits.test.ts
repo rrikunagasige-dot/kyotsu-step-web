@@ -145,6 +145,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
     expect(byId.f7b.answer).toBe('2v₀sinθ/g')
     expect(byId.f8b.answer).toBe('2v₀sinθ/g')
     expect(byId.f8c.answer).toBe('sin2θ')
+    expect(byId.f8c.choices).toContain('2sin²θ')
     expect(byId.f8d.answer).toBe('(v₀²/g)sin2θ')
     expect(byId.f9.answer).toBe('sin2θ=1')
     expect(byId.g1.answer).toBe('変わらない')

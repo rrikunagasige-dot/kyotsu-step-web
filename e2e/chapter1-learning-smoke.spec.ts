@@ -9,7 +9,7 @@ const units = [
   { id: 'physics-1d-acceleration', title: '加速度', majorTitle: '速度の変化', firstHole: 'd1' },
   { id: 'physics-1e-horizontal-projectile', title: '水平投射', majorTitle: '速度の変化', firstHole: 'e1' },
   { id: 'physics-1f-oblique-projectile', title: '斜方投射', majorTitle: '速度の変化', firstHole: 'f1' },
-  { id: 'physics-1g-gravity-drag-terminal-velocity', title: '重力加速度・空気抵抗・終端速度', majorTitle: '力と運動', firstHole: 'g1a' },
+  { id: 'physics-1g-gravity-drag-terminal-velocity', title: '重力加速度・空気抵抗・終端速度', majorTitle: '力と運動', firstHole: 'g0' },
 ] as const
 
 async function solveHoleByTryingChoices(page: Page, itemId: string) {
@@ -348,27 +348,39 @@ test('1E applies prior formulas, derives the trajectory, solves the worked examp
   await expect(page.locator('.katex-error')).toHaveCount(0)
 })
 
-test('1G uses the canonical force/graph sequence and actively derives terminal velocity', async ({ page }) => {
+test('1G builds force → acceleration → terminal velocity as an active phone-first derivation', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/physics-1g-gravity-drag-terminal-velocity'))
 
-  await solveHoleByTryingChoices(page, 'g1a')
-  await solveHoleByTryingChoices(page, 'g1')
-  await solveHoleByTryingChoices(page, 'g2')
-  await expect(page.locator('img[src*="gravity-vs-air-resistance.webp"]')).toBeVisible()
-
-  await solveHoleByTryingChoices(page, 'g3')
-  await expect(page.locator('img[src*="drag-force-stages.webp"]')).toBeVisible()
-  await expect(page.getByTestId('textbook-item-g4')).toBeVisible()
-
-  await solveHoleByTryingChoices(page, 'g4')
-  await expect(page.locator('img[src*="terminal-velocity-graph.webp"]')).toBeVisible()
-  await expect(page.getByTestId('textbook-item-g5')).toBeVisible()
-
-  for (const id of ['g5', 'g6', 'g6a', 'g6b', 'g7a', 'g7b']) {
+  for (const id of ['g0', 'g0a', 'g1b', 'g1a', 'g1']) {
     await solveHoleByTryingChoices(page, id)
   }
 
-  for (const id of ['g-gravity-only', 'g-drag-acceleration', 'g-terminal', 'g-terminal-example']) {
+  // Figure 15 must be visible before the learner infers drag direction/sign.
+  await expect(page.locator('img[src*="gravity-vs-air-resistance.webp"]')).toBeVisible()
+  await solveHoleByTryingChoices(page, 'g2')
+  await solveHoleByTryingChoices(page, 'g2a')
+  await solveHoleByTryingChoices(page, 'g3')
+  await solveHoleByTryingChoices(page, 'g3b')
+
+  // Figure 16 is evidence for the three-step causal chain.
+  await expect(page.locator('img[src*="drag-force-stages.webp"]')).toBeVisible()
+  for (const id of ['g4a', 'g4b', 'g4']) {
+    await solveHoleByTryingChoices(page, id)
+  }
+
+  // Figure 17 is visible before slope/acceleration and terminal-condition reasoning.
+  await expect(page.locator('img[src*="terminal-velocity-graph.webp"]')).toBeVisible()
+  for (const id of ['g5', 'g6', 'g6c', 'g6a', 'g6b', 'g7a', 'g7b']) {
+    await solveHoleByTryingChoices(page, id)
+  }
+
+  for (const id of [
+    'g-force-acceleration',
+    'g-gravity-only',
+    'g-drag-acceleration',
+    'g-terminal',
+    'g-terminal-example',
+  ]) {
     const chain = page.locator(`[data-derivation-id="${id}"]`)
     await expect(chain).toHaveCount(1)
     await expect(chain).toBeVisible()
@@ -379,10 +391,13 @@ test('1G uses the canonical force/graph sequence and actively derives terminal v
   }
 
   const body = page.locator('body')
+  await expect(body).toContainText('力が加速度を決める')
+  await expect(body).toContainText('力が消えるのではなく')
   await expect(body).toContainText('漸近的に近づく')
   await expect(page.locator('.katex-error')).toHaveCount(0)
 
   const tex = (await page.locator('annotation[encoding="application/x-tex"]').allTextContents()).join('\n')
+  expect(tex).toContain('F')
   expect(tex).toContain('v_t')
   expect(tex).toContain('mg/k')
 

@@ -89,13 +89,21 @@ F8b	transfer	light	今導いた飛行時間を水平距離の式へ再利用す�
 F8c	relation-selection	light	2sinθcosθを1つの三角関数にまとめる。	倍角公式を思い出す。
 F8d	transfer	light	飛行時間の代入と倍角公式をまとめて到達距離の標準形にする。	v₀²/gを共通因子として残す。
 F9	physical-condition	light	Dは正の定数×sin2θの形になっている。	同じ高さ・空気抵抗なしの条件で、角度依存因子を最大にする。
-G1a	causal-reasoning	light	ma⃗=mg⃗では左右に同じ質量mが掛かっている。	m≠0として両辺をmで割り、残る加速度ベクトルを見る。
+G0	relation-selection	light	前に学んだ運動方程式では、質量×加速度が物体にはたらく合力に等しい。	この節全体の親式として m a⃗ の右辺に置く量を思い出す。
+G0a	causal-reasoning	light	m a⃗=F⃗_{net} で合力を0にすると、左辺も0になる。	m≠0なので加速度ベクトルに何が残るか考える。
+G1b	representation-link	light	今は重力だけが働くので、合力はその重力そのものになる。	質量mの物体にはたらく重力 m g⃗ を F⃗_{net} に対応させる。
+G1a	causal-reasoning	light	m a⃗=m g⃗では左右に同じ質量mが掛かっている。	m≠0として両辺をmで割り、残る加速度ベクトルを見る。
 G1	causal-reasoning	light	重力と慣性の両方に同じ質量mが現れる。	約分後のa⃗=g⃗に質量mが残っているかを見る。
 G2	concept-formation	light	空気抵抗は空気に対する相対運動を妨げる力。	落下中の運動方向と抵抗力の向きを比べる。
-G3	physical-condition	light	下向きを正に取ると重力は+mg、抵抗力の大きさkvは上向きなので符号は−になる。	向きの反対な2力を符号付きで合成する。
-G4	causal-reasoning	light	速さが増えるとkvが増え、図16でも合力mg−kvが小さくなる。	合力が小さくなればmaから加速度がどう変わるか考える。
+G2a	physical-condition	light	下向きを正に取っており、抵抗力の大きさはkvだが向きは上向き。	大きさkvへ、正方向と反対であることを表す符号を付ける。
+G3	physical-condition	light	合力は重力+mgと符号付き抵抗力−kvの和で作る。	+mg+(−kv)を一つの式へ整理する。
+G3b	transfer	light	ma=mg−kvをmで割った式から、速度vが加速度へどう入るか見える形にする。	mg/m=g、kv/m=(k/m)v と項ごとに整理して最終形を作る。
+G4a	causal-reasoning	light	線形抵抗モデルでは抵抗の大きさはkvで、k>0は一定。	vが増えたときkvがどう変わるか読む。
+G4b	causal-reasoning	light	F_{net}=mg−kvでmgは一定、直前でkvが増えると分かった。	一定のmgからより大きいkvを引くと合力がどう変わるか考える。
+G4	causal-reasoning	light	速さが増えるとkvが増え、図16でも合力mg−kvが小さくなる。	合力が小さくなればma=F_{net}から加速度がどう変わるか考える。
 G5	graph-reading	light	図17のv-tグラフでは傾きが時間とともに小さくなる。	速度の時間変化率が何という物理量だったか思い出す。
 G6	physical-condition	light	終端速度を定める極限では速度の時間変化率が0になる。	速度が一定となる定常条件で加速度を考える。
+G6c	causal-reasoning	light	運動方程式m a=F_{net}へa=0を戻す。	m≠0なので左辺が0のとき合力F_{net}が何になるか考える。
 G6a	physical-condition	light	a=0、v=v_tをma=mg−kvへ同時に代入する。	抵抗項kvのvをv_tへ置き換える。
 G6b	transfer	light	kv_t=mgを終端速度v_tについて解く。	両辺を正の比例定数kで割る。
 G7a	relation-selection	light	例題では今導いた終端速度の関係を数値へ適用する。	m、g、kからv_tを直接求める式を選ぶ。

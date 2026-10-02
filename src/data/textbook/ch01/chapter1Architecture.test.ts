@@ -37,5 +37,6 @@ describe('Chapter 1 learner-facing information architecture', () => {
       unitId: 'physics-1g-gravity-drag-terminal-velocity',
     })
     expect(chapter1NextUnit('1F')?.bridge.ja).toContain('加速度を生み出す力')
+    expect(chapter1ChunkForUnitCode('1G')?.flow.ja).toContain('力 → 加速度')
   })
 })

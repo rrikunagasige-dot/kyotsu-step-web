@@ -33,8 +33,8 @@ export const chapter1LearningChunks: readonly Chapter1LearningChunk[] = [
     id: 'force-motion',
     title: { ja: '力と運動', zh: '力与运动' },
     flow: {
-      ja: '重力 → 空気抵抗 → 終端速度',
-      zh: '重力 → 空气阻力 → 终端速度',
+      ja: '力 → 加速度 → 重力・空気抵抗 → 終端速度',
+      zh: '力 → 加速度 → 重力与空气阻力 → 终端速度',
     },
     unitCodes: ['1G'],
   },

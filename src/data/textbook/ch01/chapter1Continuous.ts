@@ -21,7 +21,7 @@ const unitMeta: UnitMeta[] = [
   { code: '1D', unitId: 'physics-1d-acceleration', title: '加速度', order: 4, pages: [18, 19], revision: 5 },
   { code: '1E', unitId: 'physics-1e-horizontal-projectile', title: '水平投射', order: 5, pages: [20, 21], revision: 5 },
   { code: '1F', unitId: 'physics-1f-oblique-projectile', title: '斜方投射', order: 6, pages: [22, 23, 24], revision: 5 },
-  { code: '1G', unitId: 'physics-1g-gravity-drag-terminal-velocity', title: '重力加速度・空気抵抗・終端速度', order: 7, pages: [25, 26, 27], revision: 5 },
+  { code: '1G', unitId: 'physics-1g-gravity-drag-terminal-velocity', title: '重力加速度・空気抵抗・終端速度', order: 7, pages: [25, 26, 27], revision: 6 },
 ]
 
 const neutralFigureText: Record<string, string> = {
@@ -52,7 +52,7 @@ const knownObjectives: Record<UnitCode, string[]> = {
   '1D': ['速度の変化から加速度を理解する', 'v-tグラフの傾きと面積を物理量へつなぐ', '等加速度運動の式を途中式から導く'],
   '1E': ['水平投射を水平・鉛直方向へ分けて考える', '自由落下の式を鉛直方向へ適用する', '時間を消去して放物線軌道を導く'],
   '1F': ['斜方投射の初速度を分解する', '最高点・飛行時間・軌道式を条件から導く', '水平到達距離の式を途中式から作る'],
-  '1G': ['重力と空気抵抗の関係を理解する', '速度比例抵抗モデルから加速度変化を読む', '終端速度を物理条件から導く'],
+  '1G': ['合力が加速度を決める関係を運動方程式からつなぐ', '重力と速度比例抵抗から加速度の変化を一段ずつ導く', '終端条件を合力0まで戻して終端速度を導き、数値へ適用する'],
 }
 
 function itemId(sourceId: string) {

@@ -111,7 +111,7 @@ function TextbookReadingFlow({ unit, section, progress }: {
   section: TextbookSection
   progress: TextbookUnitProgress | undefined
 }) {
-  const { language, text } = useI18n()
+  const { text } = useI18n()
   const answerTextbook = useAppStore((state) => state.answerTextbook)
   const [activeItemId, setActiveItemId] = useState<string | null>(null)
   const groups = useMemo(() => groupReadingFlow(section.readingFlow), [section.readingFlow])
@@ -320,7 +320,7 @@ export function TextbookUnitPage() {
   const initializedUnitRef = useRef<string | null>(null)
   const progress = useAppStore((state) => state.textbookProgress[unitId])
   const resetTextbookUnit = useAppStore((state) => state.resetTextbookUnit)
-  const { text } = useI18n()
+  const { language, text } = useI18n()
 
   useEffect(() => {
     let active = true

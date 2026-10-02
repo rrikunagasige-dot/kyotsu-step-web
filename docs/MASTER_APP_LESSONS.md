@@ -1144,3 +1144,33 @@ Finding a technical bug in the middle does not cancel the pedagogical items.
 Completion language is allowed only when the whole active checklist is closed.
 
 For mixed defect classes, fix all user-approved items in the same section before moving to the next section, unless the user explicitly asks for a narrower partial repair.
+
+
+---
+
+## 49. Information architecture is a separate design layer
+
+A recurring UI problem is excessive learner-facing titles.
+
+This is not merely:
+- a writing problem,
+- a CSS problem,
+- a pedagogy problem,
+- or an internal taxonomy problem.
+
+It is an **information-architecture problem**: how many conceptual chunks the learner is asked to hold in mind.
+
+Project-wide authority:
+
+`docs/INFORMATION_ARCHITECTURE_RULES.md`
+
+Chapter 1 design direction:
+- preserve internal 1A〜1G identities,
+- reduce learner-facing major titles to 3 conceptual chunks,
+- repair the lost boundaries with explicit bridge sentences,
+- do not stack 3 new titles on top of the old 7 titles,
+- final displayed wording must receive user QA before implementation is considered complete.
+
+Hard rule:
+
+> **Title reduction is successful only if the conceptual connections become clearer, not merely if fewer headings remain.**

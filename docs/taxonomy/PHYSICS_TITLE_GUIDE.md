@@ -128,3 +128,18 @@ Level 3: 斜方投射 / 摩擦 / ドップラー / 直列・並列 ...（内部t
 → 運動
 → 15問
 ```
+
+
+---
+
+## Learning-flow titles are not this taxonomy
+
+このファイルは**題庫分類**のtitle authorityである。
+
+教材本文の「章内で何個の大見出しを見せるか」「1A〜1Gをどうlearner-facing chunkへ統合するか」は別問題であり、
+
+`docs/INFORMATION_ARCHITECTURE_RULES.md`
+
+を参照する。
+
+Do not reuse question-bank card granularity as the learning-text heading hierarchy.

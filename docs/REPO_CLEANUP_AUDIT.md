@@ -75,3 +75,32 @@ This cleanup must not change:
 
 Required final gate:
 typecheck → data/math tests → Chapter-1 browser smoke → production build → Pages deploy.
+
+
+## Verification
+
+Validated code/content HEAD:
+`3c2af67c667b6b916790f3e9c8f34ecb4702ff36`
+
+GitHub Actions:
+- run 265
+- conclusion: SUCCESS
+
+PASS:
+- Typecheck
+- Chapter 1 audited data and math gate
+- Chapter 1 audited browser smoke
+- Production build
+- GitHub Pages deploy
+
+Repository state after Phase 2:
+- live Chapter-1 parser has a version-neutral name,
+- live Chapter-1 source has a version-neutral name,
+- live Chapter-1 browser test has a version-neutral name,
+- legacy per-unit Chapter-1 implementations are gone,
+- unreferenced legacy assets are gone,
+- historical text checkpoints are isolated under `prototypes/archive/`,
+- current docs point to current authority,
+- learner-visible content and stable unit/progress IDs were not changed.
+
+Branch pruning is intentionally deferred to a separate merge/recovery audit.

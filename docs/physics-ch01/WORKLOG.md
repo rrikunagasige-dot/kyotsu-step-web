@@ -1863,3 +1863,36 @@ Implemented:
 
 Target counts:
 1G 7→11; Chapter 1 96→100; revision 4→5; correct option positions 25/25/25/25.
+
+
+---
+
+## 2026-10-02 — 1G final section VERIFIED
+
+Final exact-code checkpoint:
+`f4652579916417689cbdcd553052df65223e2558`
+
+GitHub Actions run 260, attempt 1: SUCCESS.
+
+Verified:
+- TypeScript
+- 100-hole Chapter-1 data/math gate
+- balanced correct choices 25/25/25/25
+- Figure 15 visible after drag-direction reasoning
+- Figure 16 visible before acceleration-decrease inference
+- Figure 17 visible before slope/acceleration inference
+- gravity-only derivation group
+- drag-acceleration derivation group
+- terminal-speed derivation group
+- terminal-speed numerical example group
+- no KaTeX errors
+- mobile horizontal overflow gate
+- production build
+- Pages deployment
+
+Current state:
+- 1G = 11 interactions
+- Chapter 1 = 100
+- scaffold = strong 6 / medium 34 / light 60
+- 1G revision = 5
+- user re-QA remains OPEN.

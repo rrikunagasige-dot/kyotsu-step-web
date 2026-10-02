@@ -2063,3 +2063,47 @@ Chapter-1 causal summary
 
 Target:
 1G=11 / Chapter 1=100 / revision=5 / choices=25 each.
+
+
+### 19.31 1G FINAL SECTION — CI VERIFIED
+
+```text
+1G revision 5
+  ↓
+11 interactions
+  ↓
+gravity cancellation
+  ↓
+drag direction + Figure 15
+  ↓
+ma=mg-kv
+  ↓
+Figure 16 + acceleration decrease
+  ↓
+Figure 17 + slope=acceleration
+  ↓
+v approaches v_t asymptotically
+  ↓
+a=0
+  ↓
+v_t=mg/k
+  ↓
+numerical application
+  ↓
+100 Chapter-1 interactions
+  ↓
+25 / 25 / 25 / 25 choice balance
+  ↓
+run 260
+  ↓
+TYPECHECK PASS
+DATA/MATH PASS
+BROWSER PASS
+BUILD PASS
+DEPLOY PASS
+```
+
+Exact validated code HEAD:
+`f4652579916417689cbdcd553052df65223e2558`
+
+Automated gate PASS does not replace user pedagogical QA.

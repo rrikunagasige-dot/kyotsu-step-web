@@ -1761,3 +1761,32 @@ Target current state:
 - 1G revision 4 → 5.
 
 P39/G61 user pedagogical re-QA remains OPEN until the user checks the live App.
+
+
+## 2026-10-02 1G FINAL SECTION — VERIFIED
+
+Exact validated code HEAD:
+`f4652579916417689cbdcd553052df65223e2558`
+
+GitHub Actions:
+- run 260
+- attempt 1
+- conclusion SUCCESS
+
+PASS:
+- Typecheck
+- Chapter 1 audited data and math gate
+- P39 audited browser smoke
+- Build
+- Pages deploy
+
+Current Chapter 1:
+- 1G = 11 interactions
+- Chapter 1 = 100 interactions
+- correct option positions = 25 / 25 / 25 / 25
+- scaffold = strong 6 / medium 34 / light 60
+- 1G revision = 5
+
+Figure 15/16/17 now participate in the causal reasoning chain.
+The linear-drag lesson uses asymptotic terminal-speed wording.
+P39/G61 user pedagogical re-QA remains OPEN.

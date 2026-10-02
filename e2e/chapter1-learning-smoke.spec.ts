@@ -94,7 +94,7 @@ test('every Chapter 1 unit boots to its first meaningful hole without developer 
 test('the first major boundary uses a bridge instead of another unit title', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/physics-1c-relative-velocity'))
 
-  for (const id of ['c2', 'c3', 'c4a', 'c4', 'c4b', 'c4c', 'c5']) {
+  for (const id of ['c2', 'c3', 'c5', 'c4a', 'c4', 'c4b', 'c4c']) {
     await solveHoleByTryingChoices(page, id)
   }
 

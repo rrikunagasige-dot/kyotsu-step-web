@@ -2132,3 +2132,79 @@ Learner UI:
 
 Run 269 PASS:
 TYPECHECK / DATA+MATH / BROWSER / BUILD / DEPLOY.
+### 19.33 USER 1G 「力と運動」 — PHONE-FIRST ACTIVE DERIVATION
+
+```text
+1F / using acceleration
+  ↓ bridge
+WHY DOES ACCELERATION EXIST?
+  ↓
+G0 retrieve parent relation
+m a⃗ = F⃗_net
+  ↓
+G0a F⃗_net=0 → a⃗=0
+  ↓
+FORCE → ACCELERATION → VELOCITY CHANGE
+  ↓
+GRAVITY ONLY
+  G1b F⃗_net=m g⃗
+  ↓
+  m a⃗=m g⃗
+  ↓
+  G1a a⃗=g⃗
+  ↓
+  G1 mass independence
+  ↓
+Figure 15
+  ↓
+G2 drag direction
+  ↓
+linear model |F_drag|=kv, k>0
+  ↓
+G2a signed drag = -kv
+  ↓
+G3 F_net=mg-kv
+  ↓
+m a=mg-kv
+  ↓
+G3b a=g-(k/m)v
+  ↓
+Figure 16
+  ↓
+G4a v↑ → kv↑
+  ↓
+G4b F_net↓
+  ↓
+G4 a↓
+  ↓
+Figure 17
+  ↓
+G5 v-t slope = acceleration
+  ↓
+G6 a→0
+  ↓
+G6c F_net→0
+  ↓
+gravity / drag balance
+  ↓
+G6a 0=mg-kv_t
+  ↓
+G6b v_t=mg/k
+  ↓
+G7a/G7b numerical application
+```
+
+Current:
+- 1G revision 6
+- 1G interactions 19
+- Chapter 1 interactions 108
+- answer positions 27 / 27 / 27 / 27
+- scaffold strong 6 / medium 34 / light 68
+
+Validation history:
+- run 273 FAIL at data/figure gate because prose mentioned Figure 15 before its directive; the gate worked as intended.
+- source order corrected for Figures 15–17.
+- code HEAD `c0e943fc4a0be205366e102d77595cef856df9bd`
+- run 274 SUCCESS: TYPECHECK / DATA+MATH / BROWSER / BUILD / DEPLOY.
+
+User hands-on pedagogical re-QA remains OPEN.

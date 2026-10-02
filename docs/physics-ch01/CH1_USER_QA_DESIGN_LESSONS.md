@@ -895,3 +895,49 @@ For a linear drag model, be precise about:
 
 The terminal-speed formula also has to pass the application gate:
 derive `v_t=mg/k`, then require the learner to select and use it in the numerical example.
+---
+
+## 28. 1G lesson — a broader major title requires a broader causal spine
+
+The Chapter-1 title compression changed the learner-facing final chunk from the source-style title「重力加速度・空気抵抗・終端速度」to the conceptual title「力と運動」.
+
+User QA exposed an important information-architecture/pedagogy interaction:
+
+> Renaming the outer title is not enough. If the major title becomes conceptually broader, the lesson body must actually construct that broader concept.
+
+For 「力と運動」 the correct spine is not merely:
+
+```text
+gravity
+→ drag
+→ terminal speed
+```
+
+It must first establish:
+
+```text
+net force
+→ acceleration
+→ velocity change
+```
+
+and then use gravity/drag as the concrete physical case.
+
+The repaired 1G therefore retrieves `ma=F_net`, uses `F_net=0→a=0`, maps gravity to the net force, constructs the signed drag equation, follows `v↑→drag↑→net force↓→a↓`, and returns from the graph-based terminal condition to `F_net=0` before deriving terminal speed.
+
+### Phone-first density lesson
+
+A later unit does not automatically mean “few interactions”.
+
+Scaffold should be lighter, but when a derivation contains several distinct physical decisions, each meaningful decision may remain active:
+- parent relation retrieval,
+- force/sign identification,
+- causal relation,
+- physical boundary condition,
+- final-form reconstruction.
+
+Do not remove these merely to keep a small interaction count. Remove only mechanical algebra or calculator work that carries no new reasoning.
+
+The acceptance question is:
+
+> With only a phone, can the learner say “I built the relation step by step” rather than “I watched the App show the derivation”?

@@ -1813,3 +1813,49 @@ Validated code HEAD:
 `d5ed1f2bb15e14d668533524ae79535e1c9a27c5`
 
 GitHub Actions run 269: SUCCESS.
+## 2026-10-02 1G「力と運動」PHONE-FIRST DERIVATION REPAIR — VERIFIED
+
+User QA after the 3-title information-architecture change found a mismatch: the learner-facing major title had become「力と運動」, but the internal lesson still largely followed the older「重力 → 空気抵抗 → 終端速度」spine.
+
+The approved repair keeps the stable internal 1G route/identity and canonical Figures 15–17, but rebuilds the learning spine as:
+
+```text
+力
+→ 合力
+→ 加速度
+→ 速度の変化
+→ 重力だけ
+→ 重力 + 空気抵抗
+→ 合力減少
+→ 加速度減少
+→ v-t slope
+→ a→0
+→ F_net→0
+→ force balance
+→ terminal velocity
+```
+
+New active phone-first reasoning points:
+- retrieve the parent equation `m a⃗ = F⃗_net`,
+- infer `F⃗_net=0 → a⃗=0`,
+- map gravity-only motion to `F⃗_net=m g⃗`,
+- assign the signed drag force `−kv`,
+- construct `F_net=mg−kv`,
+- reconstruct `a=g−(k/m)v`,
+- actively close the causal chain `v↑ → kv↑ → F_net↓ → a↓`,
+- return from terminal condition `a=0` to `F_net=0` before deriving `v_t=mg/k`.
+
+Current state:
+- 1G = **19 interactions**
+- Chapter 1 = **108 interactions**
+- correct-choice positions = **27 / 27 / 27 / 27**
+- scaffold = **strong 6 / medium 34 / light 68**
+- 1G revision = **6**
+
+CI history:
+- run 273: typecheck PASS, data/math gate caught a real Figure-15 first-mention ordering regression; browser/build/deploy were correctly blocked.
+- the source was repaired so Figures 15–17 appear before their first numbered prose references and before the dependent reasoning.
+- exact validated code HEAD: `c0e943fc4a0be205366e102d77595cef856df9bd`
+- GitHub Actions run **274**: Typecheck / Chapter-1 data+math / browser smoke / build / Pages deploy all **SUCCESS**.
+
+Automated PASS still does not replace user pedagogical QA.

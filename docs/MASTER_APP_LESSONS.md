@@ -1174,3 +1174,40 @@ Chapter 1 design direction:
 Hard rule:
 
 > **Title reduction is successful only if the conceptual connections become clearer, not merely if fewer headings remain.**
+---
+
+## 50. Major-title/body alignment + phone-first derivation density
+
+Information architecture and pedagogy must agree.
+
+If a learner-facing major title is broadened from a source-topic list to a conceptual theme, the body must construct that concept rather than merely keeping the old content under a new heading.
+
+Example from Chapter 1:
+- old source topic: 重力加速度・空気抵抗・終端速度
+- learner-facing theme: 力と運動
+
+The body therefore needs the causal parent spine:
+
+```text
+net force
+→ acceleration
+→ velocity change
+```
+
+before gravity/drag become the concrete application.
+
+A second rule follows from the same user QA:
+
+> “Later unit = lighter scaffold” does not mean “later unit = few interactions”.
+
+Keep support lighter, but preserve active checkpoints when they represent distinct physical reasoning:
+- retrieve the parent law,
+- identify the physical force/condition,
+- choose a sign,
+- close a causal link,
+- apply a boundary condition,
+- reconstruct a reusable final relation.
+
+Mechanical rearrangement and calculator arithmetic can remain visible rather than interactive.
+
+For mobile-only learning, judge derivation density by whether the learner actively builds the chain on the screen, not by a preset hole quota.

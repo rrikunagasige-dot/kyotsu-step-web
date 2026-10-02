@@ -1927,3 +1927,49 @@ Validated code HEAD:
 `d5ed1f2bb15e14d668533524ae79535e1c9a27c5`
 
 GitHub Actions run 269: SUCCESS.
+---
+
+## 2026-10-02 — User QA: 「力と運動」 rebuilt around force → acceleration
+
+After the Chapter-1 information-architecture redesign, the user noticed that the learner-facing title「力と運動」had changed but the lesson body still largely retained the older 1G spine. The user also required a stronger phone-only derivation experience: the learner should feel that they are deriving the relations, not merely reading completed equations.
+
+Approved scope:
+- only 1G / 「力と運動」,
+- preserve stable unit ID/route/progress identity,
+- preserve canonical Figures 15–17,
+- preserve the existing terminal-speed application,
+- increase interactions only at meaningful physical/derivation decisions.
+
+Implemented:
+- new parent-relation retrieval: `m a⃗ = F⃗_net`,
+- active `F_net=0 → a=0` bridge,
+- active gravity-only mapping `F_net=mg`,
+- active signed-drag step `F_drag=-kv`,
+- active construction `F_net=mg-kv`,
+- active final acceleration form `a=g-(k/m)v`,
+- three-step causal inference `v↑ → kv↑ → F_net↓ → a↓`,
+- terminal chain now explicitly returns `a=0 → F_net=0` before force balance and `v_t=mg/k`,
+- major internal headings reduced to「力が加速度を決める / 重力と空気抵抗 / 終端速度」,
+- Chapter summary moved to a lightweight callout,
+- learner-facing chunk flow updated to「力 → 加速度 → 重力・空気抵抗 → 終端速度」.
+
+Counts:
+- 1G 11 → 19,
+- Chapter 1 100 → 108,
+- answer positions remain exactly balanced at 27/27/27/27,
+- scaffold strong 6 / medium 34 / light 68,
+- revision 5 → 6.
+
+Validation history:
+- implementation commit `2c3a51d4bd88874c9757c63179332ad49717bd75`,
+- run 273: typecheck PASS; data/math/figure gate FAIL because the revised prose said「図15」before the Figure-15 directive,
+- this was treated as a real source-order defect, not a test defect,
+- repair commit `c0e943fc4a0be205366e102d77595cef856df9bd`,
+- run 274 SUCCESS:
+  - TypeScript PASS,
+  - Chapter-1 audited data/math gate PASS,
+  - Chapter-1 browser smoke PASS,
+  - production build PASS,
+  - Pages deploy PASS.
+
+User re-QA of the live 「力と運動」 experience remains OPEN.

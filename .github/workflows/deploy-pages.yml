@@ -41,8 +41,8 @@ jobs:
       - name: Chapter 1 audited data and math gate
         run: pnpm exec vitest run src/data/textbookUnits.test.ts src/data/textbookFigureAssets.test.ts src/data/textbookPracticeQuestions.test.ts src/domain/textbook.test.ts src/domain/textbookSchema.test.ts src/domain/textbookMath.test.ts src/domain/textbookFormula.test.ts src/components/textbook/TextbookFigure.test.tsx
 
-      - name: P39 audited browser smoke
-        run: pnpm exec playwright test e2e/p39-v22-smoke.spec.ts
+      - name: Chapter 1 audited browser smoke
+        run: pnpm exec playwright test e2e/chapter1-learning-smoke.spec.ts
 
       - name: Build
         run: pnpm run build

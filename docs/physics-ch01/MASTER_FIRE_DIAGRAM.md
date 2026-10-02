@@ -1417,7 +1417,7 @@ every nontrivial multi-step derivation must contain at least one meaningful form
 parent relation / physical-condition substitution / variable elimination / meaningful transformation / final-form reconstruction.
 
 Review candidate:
-`docs/physics-ch01/prototypes/CH1_LEARNING_TEXT_V2_2_FORMULA_HOLES.md`
+`docs/physics-ch01/prototypes/CH1_LEARNING_TEXT.md`
 
 Candidate:
 - 65 holes,
@@ -1436,9 +1436,9 @@ Earlier P33–P38 documents remain design history, but no implementation may tre
 The user explicitly authorized implementation after reviewing v2.2 and stating that remaining problems must be found in the real App.
 
 Current implementation:
-`docs/physics-ch01/prototypes/CH1_LEARNING_TEXT_V2_2_FORMULA_HOLES.md`
+`docs/physics-ch01/prototypes/CH1_LEARNING_TEXT.md`
     ↓ raw import / parser
-`src/data/textbook/ch01/v22Continuous.ts`
+`src/data/textbook/ch01/chapter1Continuous.ts`
     ↓
 seven continuous Chapter-1 units
     ↓

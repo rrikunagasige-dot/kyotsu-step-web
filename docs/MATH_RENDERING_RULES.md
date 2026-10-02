@@ -88,7 +88,7 @@ Primary historical evidence:
 - `CHATGPT_README_FIRST.md`
 - `src/domain/textbookMath.test.ts`
 - `src/domain/textbookFormula.test.ts`
-- `e2e/p39-v22-smoke.spec.ts`
+- `e2e/chapter1-learning-smoke.spec.ts`
 
 ---
 
@@ -363,7 +363,7 @@ Existing regression:
 - prose-level vector symbols become inline math
 - all Chapter-1 formula blocks resolved: no KaTeX error
 
-`e2e/p39-v22-smoke.spec.ts`
+`e2e/chapter1-learning-smoke.spec.ts`
 - raw `v_0_x`, `v_0_y` leakage forbidden in 1F
 - `.katex-error` must remain zero
 - mobile + desktop Chapter-1 progression

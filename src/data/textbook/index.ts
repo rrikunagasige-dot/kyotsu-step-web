@@ -1,3 +1,3 @@
-import { textbookChapter1V22Units } from './ch01/v22Continuous'
+import { textbookChapter1Units } from './ch01/chapter1Continuous'
 
-export const builtInTextbookUnits = textbookChapter1V22Units
+export const builtInTextbookUnits = textbookChapter1Units

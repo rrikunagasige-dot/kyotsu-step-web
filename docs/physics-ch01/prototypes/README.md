@@ -1,158 +1,49 @@
-# Chapter 1 learning-text prototype checkpoint
+# Chapter 1 learning-text source
 
-## Current checkpoint — v2.1
+Status: **CURRENT LIVE AUTHORITY**
 
-- checkpoint date: `2026-09-29`
-- chapter: `physics-ch01-motion`
-- prototype: **formula-derivation-strengthened v2.1**
-- status: **P33 SOURCE-ALIGNED / READY FOR P34**
-- units: 1A–1G
+Current source:
+`CH1_LEARNING_TEXT.md`
+
+Current app parser:
+`../../../src/data/textbook/ch01/chapter1Continuous.ts`
+
+Current state:
+- units: 1A–1G internally
 - canonical figures: 17
-- inline hole IDs: 54
-- rendered review pages: 26
-- target device assumption: phone-only use must be possible; paper/pen is not assumed
+- interactions: 100
+- correct-choice positions: 25 / 25 / 25 / 25
+- phone-only / no-paper learning path
+- deployed through the main GitHub Pages workflow
 
-## Authoritative text source
-
-`CH1_LEARNING_TEXT_V2_1.md`
-
-Final source identity:
-
-- bytes: `38,479`
-- SHA256: `f70472859e0ba67f635ddb7e94a74d7d4e4453f999c069ff3fe25c081bbaa40a`
-
-The Markdown source records:
-- natural continuous prose,
-- 54 justified inline holes,
-- choices,
-- figure identity and app-asset mapping,
-- complete answer key,
-- mobile-first formula derivations,
-- the five P33 source-alignment repairs.
-
-The source, not the DOCX layout, is the machine-readable content authority for the current checkpoint.
-
-## v2.1 changes from v2
-
-P33 found five source-level issues and v2.1 resolves all five:
-
-1. removed the first-exposure C1 vocabulary lottery; `相対速度` is now taught in prose,
-2. added `cosθ=vₓ/v` and `sinθ=vᵧ/v` before the component-formula holes,
-3. derived `vᵧ²=2gy` from the general constant-acceleration relation,
-4. derived the oblique-projectile time-free vertical relation from the same parent equation,
-5. defined the linear-drag model, `k>0`, and its approximation scope.
-
-No replacement hole was invented for C1. Hole count therefore moves from 55 to 54 by design.
-
-## Rules
-
-Read both before editing the source:
-
+Rules to read before editing:
 1. `../LEARNING_TEXT_WRITING_RULES.md`
 2. `../FORMULA_DERIVATION_RULES.md`
+3. `../../INFORMATION_ARCHITECTURE_RULES.md`
+4. `../../MATH_RENDERING_RULES.md`
 
-Ordinary mathematical background may be recalled through search/AI on a phone. The chapter itself must still construct new physics meanings, modeling assumptions, conditions, and dependency logic.
+The Markdown source is the machine-readable content authority. The App imports it directly; do not maintain a second prose copy in TypeScript.
 
-## Reproducible generator
+## Historical checkpoints
+
+Older pre-live learning-text checkpoints are preserved under:
+
+`archive/`
+
+- `archive/CH1_LEARNING_TEXT_V2.md` — historical 55-hole checkpoint
+- `archive/CH1_LEARNING_TEXT_V2_1.md` — historical 54-hole P33-aligned checkpoint
+
+These are evidence only and are not current authority.
+
+## Review-document generator
 
 `../../../scripts/physics-textbook/build_ch1_learning_docx.py`
 
-Final generator identity:
-
-- bytes: `8,800`
-- SHA256: `0fd914a92bd51f8654bef0a4ba7d9370bc7511ed3228e1acfc1e2c1b51c4420c`
-
-Usage:
+Example:
 
     python scripts/physics-textbook/build_ch1_learning_docx.py \
-      --source docs/physics-ch01/prototypes/CH1_LEARNING_TEXT_V2_1.md \
+      --source docs/physics-ch01/prototypes/CH1_LEARNING_TEXT.md \
       --figure-dir <directory containing canonical 1.png ... 17.png> \
       --output /tmp/ch1-review.docx
 
-Validation:
-- 54/54 unique inline hole IDs parsed,
-- C1 is not a hole,
-- 17/17 canonical figures inserted,
-- choice tables are non-splitting,
-- hole sentence and choice table are kept together when possible,
-- Markdown bold markers render as Word emphasis rather than literal asterisks,
-- generated document rendered to 26 pages,
-- all pages visually inspected,
-- final two micro-edits were isolated by image diff and rechecked.
-
-## Reviewed Word artifact
-
-The final v2.1 review Word is persisted in ChatGPT Library:
-
-- path: `/塾/kyotsu-step-web/prototypes/第1章_物体の運動_文章内穴埋め_数式導出強化版_v2.1_20260929.docx`
-- library_file_id: `libfile_646f9a1da760819180156735b3bb3383`
-- bytes: `12,130,767`
-- SHA256: `3e6a70d02bdc2a78beceb68df3e8ff72df74b4c39f31dabd28764deb3d388ec7`
-- reviewed render: 26 pages
-- canonical figures: 17
-- holes: 54
-
-The GitHub connector does not provide a safe local-file upload path for the 12 MB DOCX. Therefore the exact DOCX bytes live in Library while GitHub stores the authoritative text source, generator, rules, and binary identity.
-
-## Previous checkpoint — v2
-
-`CH1_LEARNING_TEXT_V2.md` remains as historical evidence of the 55-hole pre-P33-repair checkpoint. It is **not current**.
-
-## Relationship to P33 / P34
-
-v2.1 closes the P33 source-alignment issues.
-
-    CURRENT Chapter-1 v2.1
-            ↓
-    P33 re-audit: PASS
-            ↓
-    P34 CURRENT APP vs IDEAL
-            ↓
-    missing / wrong / wrong timing / split-attention / leakage
-
-Do not alter application code merely because P34 begins. P34 is an audit first.
-
----
-
-## Review candidate — v2.2 formula-hole enhanced
-
-This candidate is **not yet the current approved checkpoint**.
-
-Source:
-`CH1_LEARNING_TEXT_V2_2_FORMULA_HOLES.md`
-
-- holes: 65
-- figures: 17
-- rendered pages: 27
-- source SHA256: `d01cdebc96454fa74b7ee17c3aa88ff51e1e26086bac520b03cc4648f1dcabcd`
-
-DOCX:
-- Library path: `/塾/kyotsu-step-web/prototypes/第1章_物体の運動_数式導出穴強化版_v2.2_20260929.docx`
-- library_file_id: `libfile_d30a1b27298081919cfa404dc4df105f`
-- bytes: `12,132,107`
-- SHA256: `b005b81013d23b955da433c1c39b8fc3af01be2e13bf94579acece90b8cae8d4`
-
-Change from v2.1:
-- +11 derivation-formula holes,
-- no arbitrary replacement questions,
-- formula-hole rule F1–F5 added,
-- awaiting user review before becoming authoritative.
-
-## v2.2 app-preview status — 2026-09-29
-
-Current app-preview content:
-`CH1_LEARNING_TEXT_V2_2_FORMULA_HOLES.md`
-
-Counts:
-- 65 unique holes
-- 17 canonical figures
-- derivation holes strengthened relative to v2.1
-
-The App imports this Markdown source directly through `src/data/textbook/ch01/v22Continuous.ts`; do not manually maintain a second prose copy in TypeScript.
-
-GitHub Pages preview:
-`https://rrikunagasige-dot.github.io/kyotsu-step-web/`
-
-Status:
-**DEPLOYED FOR USER QA — not final pedagogy approval.**
-
+Historical reviewed DOCX identities remain in Git history / Library records. Do not use old hole counts as current status.

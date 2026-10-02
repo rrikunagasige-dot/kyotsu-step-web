@@ -1236,7 +1236,7 @@ User feedback:
 - final-form holes alone are insufficient.
 
 New review candidate:
-`docs/physics-ch01/prototypes/CH1_LEARNING_TEXT_V2_2_FORMULA_HOLES.md`
+`docs/physics-ch01/prototypes/CH1_LEARNING_TEXT.md`
 
 Candidate facts:
 - 1A–1G
@@ -1257,7 +1257,7 @@ Added derivation holes:
 The user explicitly approved moving from paper design into application installation so the learning experience can be judged in the real UI.
 
 Current App content authority:
-`docs/physics-ch01/prototypes/CH1_LEARNING_TEXT_V2_2_FORMULA_HOLES.md`
+`docs/physics-ch01/prototypes/CH1_LEARNING_TEXT.md`
 
 P39 preview implementation:
 - v2.2 source is imported directly with Vite raw import,
@@ -1278,7 +1278,7 @@ P39 preview implementation:
 - neutral pre-answer figure captions/alts are generated to reduce leakage.
 
 Implementation files:
-- `src/data/textbook/ch01/v22Continuous.ts`
+- `src/data/textbook/ch01/chapter1Continuous.ts`
 - `src/data/textbook/index.ts`
 - `src/pages/TextbookUnitPage.tsx`
 - `src/domain/textbookSchema.ts`
@@ -1441,7 +1441,7 @@ R0–R9 result:
   - GitHub Pages deploy PASS.
 
 Current public implementation authority remains:
-`docs/physics-ch01/prototypes/CH1_LEARNING_TEXT_V2_2_FORMULA_HOLES.md`
+`docs/physics-ch01/prototypes/CH1_LEARNING_TEXT.md`
 plus
 `docs/physics-ch01/prototypes/CH1_INTERACTION_METADATA.tsv`.
 

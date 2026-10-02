@@ -153,6 +153,29 @@ Bad:
 
 ---
 
+## 6.1 Keep titles as short as possible
+
+Hard rule:
+
+> **タイトルは、意味が壊れない範囲でできるだけ短くする。説明はタイトルではなく本文へ置く。**
+
+タイトルの役割は内容を全部説明することではなく、学習者に「今どのまとまりにいるか」を一瞬で示すこと。
+
+Good:
+- 運動を表す
+- 速度の変化
+- 力と運動
+
+Acceptable when a question form helps:
+- 運動をどう表すか
+- 力が運動をどう変えるか
+
+Avoid:
+- 重力加速度・空気抵抗・終端速度
+- 速度の合成・分解・相対速度について理解する
+
+短くした結果、意味が不足する部分は bridge sentence / first paragraph で補う。
+
 ## 7. Learner-facing titles and internal taxonomy are different systems
 
 Do not confuse:

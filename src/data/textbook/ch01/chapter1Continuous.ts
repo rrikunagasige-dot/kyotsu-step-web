@@ -1,4 +1,4 @@
-import source from '../../../../docs/physics-ch01/prototypes/CH1_LEARNING_TEXT_V2_2_FORMULA_HOLES.md?raw'
+import source from '../../../../docs/physics-ch01/prototypes/CH1_LEARNING_TEXT.md?raw'
 import interactionMetadataSource from '../../../../docs/physics-ch01/prototypes/CH1_INTERACTION_METADATA.tsv?raw'
 import { validateTextbookUnits, type TextbookFigure, type TextbookItem, type TextbookReadingBlock, type TextbookReadingPart } from '../../../domain/textbookSchema'
 import { looksLikeTextbookMath, normalizeTextbookMath, splitTextbookInlineMath, stripTextbookMarkdown } from '../../../domain/textbookMath'
@@ -381,6 +381,6 @@ function parseUnit(meta: UnitMeta, next?: UnitCode) {
   }
 }
 
-const rawChapter1V22Units = unitMeta.map((meta, index) => parseUnit(meta, unitMeta[index + 1]?.code))
+const rawChapter1Units = unitMeta.map((meta, index) => parseUnit(meta, unitMeta[index + 1]?.code))
 
-export const textbookChapter1V22Units = validateTextbookUnits(rawChapter1V22Units)
+export const textbookChapter1Units = validateTextbookUnits(rawChapter1Units)

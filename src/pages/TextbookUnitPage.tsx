@@ -11,6 +11,7 @@ import type { TextbookItem, TextbookReadingBlock, TextbookReadingPart, TextbookS
 import { useAppStore } from '../stores/useAppStore'
 import { useI18n } from '../i18n/runtime'
 import { normalizeTextbookMath } from '../domain/textbookMath'
+import { chapter1ChunkForUnitCode, chapter1Localized, chapter1NextUnit } from '../data/textbook/ch01/chapter1Architecture'
 
 function interactionPrompt(item: TextbookItem, text: (ja: string, zh: string) => string) {
   switch (item.purpose) {
@@ -110,7 +111,7 @@ function TextbookReadingFlow({ unit, section, progress }: {
   section: TextbookSection
   progress: TextbookUnitProgress | undefined
 }) {
-  const { text } = useI18n()
+  const { language, text } = useI18n()
   const answerTextbook = useAppStore((state) => state.answerTextbook)
   const [activeItemId, setActiveItemId] = useState<string | null>(null)
   const groups = useMemo(() => groupReadingFlow(section.readingFlow), [section.readingFlow])
@@ -352,6 +353,9 @@ export function TextbookUnitPage() {
   const displayTitle = legacyPrefix && unit.title.startsWith(`${legacyPrefix} `)
     ? unit.title.slice(legacyPrefix.length + 1)
     : unit.title
+  const chapterChunk = chapter1ChunkForUnitCode(unitCode)
+  const majorTitle = chapterChunk ? chapter1Localized(chapterChunk.title, language) : displayTitle
+  const nextChapter1Unit = chapter1NextUnit(unitCode)
   const unitComplete = summary.completed === summary.total
   const canOpen = (index: number) => unitComplete || index <= firstIncompleteIndex
 
@@ -384,7 +388,13 @@ export function TextbookUnitPage() {
               ? `TEXTBOOK / PHYSICS / CHAPTER ${unit.chapter.chapterNumber}`
               : 'TEXTBOOK / PHYSICS'}
           </p>
-          <h1>{displayTitle}</h1>
+          <h1>{majorTitle}</h1>
+          {chapterChunk && (
+            <p className="textbook-current-topic" data-testid="textbook-current-topic">
+              <span>{text('現在', '当前')}</span>
+              <strong>{displayTitle}</strong>
+            </p>
+          )}
           {unit.subtitle && <p>{unit.subtitle}</p>}
         </div>
         {!continuousLesson && <StatusBadge>{text(`第 ${unit.revision} 版`, `第 ${unit.revision} 版`)}</StatusBadge>}
@@ -457,13 +467,16 @@ export function TextbookUnitPage() {
           <div className="textbook-complete-panel" data-testid="textbook-unit-complete">
             <Check size={28} aria-hidden="true" />
             <div>
-              <h2>{text('単元完了', '单元完成')}</h2>
-              <p>{text(
-                `${displayTitle} の ${summary.total} 個の確認項目をすべて完了しました。`,
-                `已完成 ${displayTitle} 的全部 ${summary.total} 个确认项目。`,
-              )}</p>
+              <strong>{nextChapter1Unit ? text('ここまで完了', '已完成这一部分') : text('第1章完了', '第1章完成')}</strong>
+              <p>
+                {nextChapter1Unit
+                  ? chapter1Localized(nextChapter1Unit.bridge, language)
+                  : text('運動を表し、速度の変化を追い、その原因を力までつなげて考えました。', '已经把运动的表示、速度的变化以及产生变化的力联系起来了。')}
+              </p>
             </div>
-            <Link className="raised-link" to="/learning/setup">{text('問題演習へ進む', '进入做题模式')}</Link>
+            {nextChapter1Unit
+              ? <Link className="raised-link" data-testid="textbook-next-unit" to={`/learning/textbook/${nextChapter1Unit.unitId}`}>{text('次へ', '继续')}</Link>
+              : <Link className="raised-link" to="/learning/setup">{text('学習設定へ戻る', '返回学习设置')}</Link>}
           </div>
         )}
       </div>

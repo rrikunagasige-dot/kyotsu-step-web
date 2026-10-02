@@ -267,3 +267,35 @@ fewer meaningful chunks
 ```
 
 The goal is for the learner to remember the **structure of the physics**, not the number of source files.
+
+
+---
+
+## 12. Chapter 1 implementation rule — 3 major titles, 7 internal routes
+
+Approved implementation:
+
+```text
+learner-facing
+  運動を表す
+    ↓
+  速度の変化
+    ↓
+  力と運動
+
+internal
+  1A → 1B → 1C → 1D → 1E → 1F → 1G
+```
+
+The setup screen exposes only the three conceptual chunks.
+Each internal unit route remains stable for progress, tests, deep links, and provenance.
+
+On an internal unit page:
+- the H1 is the chunk title,
+- the old unit title is a small current-topic label, not another major heading,
+- completion links directly to the next internal unit,
+- a bridge sentence explains why the next idea follows.
+
+The two major conceptual boundaries are:
+- 1C → 1D: representation of velocity → change of velocity,
+- 1F → 1G: using acceleration → asking what force produces it.

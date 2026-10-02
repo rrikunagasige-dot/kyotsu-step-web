@@ -3,13 +3,13 @@ import { expect, test, type Page } from '@playwright/test'
 const appRoute = (path: string) => `/kyotsu-step-web/#${path}`
 
 const units = [
-  { id: 'physics-a-displacement-velocity', title: '変位と速度', firstHole: 'a1' },
-  { id: 'physics-1b-velocity-composition', title: '速度の合成と分解', firstHole: 'b1' },
-  { id: 'physics-1c-relative-velocity', title: '相対速度', firstHole: 'c2' },
-  { id: 'physics-1d-acceleration', title: '加速度', firstHole: 'd1' },
-  { id: 'physics-1e-horizontal-projectile', title: '水平投射', firstHole: 'e1' },
-  { id: 'physics-1f-oblique-projectile', title: '斜方投射', firstHole: 'f1' },
-  { id: 'physics-1g-gravity-drag-terminal-velocity', title: '重力加速度・空気抵抗・終端速度', firstHole: 'g1a' },
+  { id: 'physics-a-displacement-velocity', title: '変位と速度', majorTitle: '運動を表す', firstHole: 'a1' },
+  { id: 'physics-1b-velocity-composition', title: '速度の合成と分解', majorTitle: '運動を表す', firstHole: 'b1' },
+  { id: 'physics-1c-relative-velocity', title: '相対速度', majorTitle: '運動を表す', firstHole: 'c2' },
+  { id: 'physics-1d-acceleration', title: '加速度', majorTitle: '速度の変化', firstHole: 'd1' },
+  { id: 'physics-1e-horizontal-projectile', title: '水平投射', majorTitle: '速度の変化', firstHole: 'e1' },
+  { id: 'physics-1f-oblique-projectile', title: '斜方投射', majorTitle: '速度の変化', firstHole: 'f1' },
+  { id: 'physics-1g-gravity-drag-terminal-velocity', title: '重力加速度・空気抵抗・終端速度', majorTitle: '力と運動', firstHole: 'g1a' },
 ] as const
 
 async function solveHoleByTryingChoices(page: Page, itemId: string) {
@@ -64,6 +64,11 @@ test('audited app boots and opens the textbook setup', async ({ page }) => {
 
   await expect(page.getByRole('heading', { name: '学習設定' })).toBeVisible()
   await expect(page.getByTestId('textbook-part-list')).toBeVisible()
+  const chunks = page.locator('[data-testid^="textbook-chunk-"]')
+  await expect(chunks).toHaveCount(3)
+  await expect(page.getByTestId('textbook-chunk-represent-motion')).toContainText('運動を表す')
+  await expect(page.getByTestId('textbook-chunk-changing-velocity')).toContainText('速度の変化')
+  await expect(page.getByTestId('textbook-chunk-force-motion')).toContainText('力と運動')
   await expect(page.getByText('App の起動に失敗しました')).toHaveCount(0)
   expect(pageErrors).toEqual([])
 })
@@ -74,7 +79,8 @@ test('every Chapter 1 unit boots to its first meaningful hole without developer 
 
   for (const unit of units) {
     await page.goto(appRoute(`/learning/textbook/${unit.id}`))
-    await expect(page.getByRole('heading', { name: unit.title, exact: true })).toBeVisible()
+    await expect(page.getByRole('heading', { name: unit.majorTitle, exact: true })).toBeVisible()
+    await expect(page.getByTestId('textbook-current-topic')).toContainText(unit.title)
     await expect(page.getByTestId(`textbook-item-${unit.firstHole}`)).toBeVisible()
 
     const body = page.locator('body')
@@ -83,6 +89,23 @@ test('every Chapter 1 unit boots to its first meaningful hole without developer 
   }
 
   expect(pageErrors).toEqual([])
+})
+
+test('the first major boundary uses a bridge instead of another unit title', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/physics-1c-relative-velocity'))
+
+  for (const id of ['c2', 'c3', 'c4a', 'c4', 'c4b', 'c4c', 'c5']) {
+    await solveHoleByTryingChoices(page, id)
+  }
+
+  const complete = page.getByTestId('textbook-unit-complete')
+  await expect(complete).toContainText('ここまでは速度をどう表すかを考えた')
+  const next = page.getByTestId('textbook-next-unit')
+  await expect(next).toHaveAttribute('href', /physics-1d-acceleration/)
+  await next.click()
+
+  await expect(page.getByRole('heading', { name: '速度の変化', exact: true })).toBeVisible()
+  await expect(page.getByTestId('textbook-current-topic')).toContainText('加速度')
 })
 
 test('A1 choice panel uses natural wording and does not expose the internal hole id', async ({ page }) => {

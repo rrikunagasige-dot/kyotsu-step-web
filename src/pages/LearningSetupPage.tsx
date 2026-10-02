@@ -7,6 +7,7 @@ import { textbookUnitProgress } from '../domain/textbook'
 import type { TextbookUnit } from '../domain/textbookSchema'
 import { textbookRepository } from '../repositories/textbookRepository'
 import { physicsTextbookParts } from '../data/textbook/chapterCatalog'
+import { chapter1LearningChunks, chapter1Localized } from '../data/textbook/ch01/chapter1Architecture'
 import { getQuestionCatalog, useAppStore } from '../stores/useAppStore'
 import { useI18n } from '../i18n/runtime'
 import { subjectLabel } from '../i18n/labels'
@@ -192,37 +193,77 @@ export function LearningSetupPage() {
                             <strong>{chapter.chapterTitle}</strong>
                             <small>
                               {available
-                                ? text(`${chapterUnits.length} 単元`, `${chapterUnits.length} 个单元`)
+                                ? chapter.chapterId === 'physics-ch01-motion'
+                                  ? text('3 テーマ', '3 个主题')
+                                  : text(`${chapterUnits.length} 単元`, `${chapterUnits.length} 个单元`)
                                 : text('準備中', '准备中')}
                             </small>
                           </div>
                         </header>
 
                         {available ? (
-                          <div className="textbook-unit-grid">
-                            {chapterUnits.map((unit) => {
-                              const unitProgress = textbookProgress[unit.unitId]
-                              const summary = textbookUnitProgress(unit, unitProgress)
-                              return (
-                                <Link
-                                  className="textbook-unit-link"
-                                  data-testid={`textbook-unit-${unit.unitId}`}
-                                  key={unit.unitId}
-                                  to={`/learning/textbook/${unit.unitId}`}
-                                >
-                                  <div>
-                                    <strong>{displayTextbookUnitTitle(unit)}</strong>
-                                    <small>
-                                      {unitProgress
-                                        ? text(`${summary.completed}/${summary.total} 完了`, `已完成 ${summary.completed}/${summary.total}`)
-                                        : text('未開始', '未开始')}
-                                    </small>
-                                  </div>
-                                  <span className="textbook-unit-percent">{summary.percent}%</span>
-                                </Link>
-                              )
-                            })}
-                          </div>
+                          chapter.chapterId === 'physics-ch01-motion' ? (
+                            <div className="textbook-unit-grid textbook-chunk-grid" data-testid="chapter1-chunk-grid">
+                              {chapter1LearningChunks.map((chunk) => {
+                                const chunkUnits = chunk.unitCodes
+                                  .map((code) => chapterUnits.find((unit) => unit.chapter?.unitCode === code))
+                                  .filter((candidate): candidate is TextbookUnit => Boolean(candidate))
+                                if (chunkUnits.length === 0) return null
+
+                                const summaries = chunkUnits.map((unit) =>
+                                  textbookUnitProgress(unit, textbookProgress[unit.unitId]),
+                                )
+                                const completed = summaries.reduce((sum, summary) => sum + summary.completed, 0)
+                                const total = summaries.reduce((sum, summary) => sum + summary.total, 0)
+                                const percent = total > 0 ? Math.round((completed / total) * 100) : 0
+                                const resumeUnit = chunkUnits.find((unit) => {
+                                  const summary = textbookUnitProgress(unit, textbookProgress[unit.unitId])
+                                  return summary.completed < summary.total
+                                }) ?? chunkUnits[0]
+
+                                return (
+                                  <Link
+                                    className="textbook-unit-link textbook-chunk-link"
+                                    data-testid={`textbook-chunk-${chunk.id}`}
+                                    key={chunk.id}
+                                    to={`/learning/textbook/${resumeUnit.unitId}`}
+                                  >
+                                    <div>
+                                      <strong>{chapter1Localized(chunk.title, language)}</strong>
+                                      <small className="textbook-chunk-flow">{chapter1Localized(chunk.flow, language)}</small>
+                                      <small>{text(`${completed}/${total} 完了`, `已完成 ${completed}/${total}`)}</small>
+                                    </div>
+                                    <span className="textbook-unit-percent">{percent}%</span>
+                                  </Link>
+                                )
+                              })}
+                            </div>
+                          ) : (
+                            <div className="textbook-unit-grid">
+                              {chapterUnits.map((unit) => {
+                                const unitProgress = textbookProgress[unit.unitId]
+                                const summary = textbookUnitProgress(unit, unitProgress)
+                                return (
+                                  <Link
+                                    className="textbook-unit-link"
+                                    data-testid={`textbook-unit-${unit.unitId}`}
+                                    key={unit.unitId}
+                                    to={`/learning/textbook/${unit.unitId}`}
+                                  >
+                                    <div>
+                                      <strong>{displayTextbookUnitTitle(unit)}</strong>
+                                      <small>
+                                        {unitProgress
+                                          ? text(`${summary.completed}/${summary.total} 完了`, `已完成 ${summary.completed}/${summary.total}`)
+                                          : text('未開始', '未开始')}
+                                      </small>
+                                    </div>
+                                    <span className="textbook-unit-percent">{summary.percent}%</span>
+                                  </Link>
+                                )
+                              })}
+                            </div>
+                          )
                         ) : (
                           <p className="textbook-chapter-pending">
                             {text('教材データを準備中です。', '教材数据正在准备中。')}

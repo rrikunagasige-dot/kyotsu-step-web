@@ -278,6 +278,11 @@ a { color: inherit; }
 .textbook-unit-link > div { display: grid; min-width: 0; gap: .12rem; }
 .textbook-unit-link strong { overflow-wrap: anywhere; font-size: 1rem; }
 .textbook-unit-link small { color: var(--color-muted); font-size: .7rem; }
+.textbook-chunk-link { min-height: 88px; }
+.textbook-chunk-flow { line-height: 1.5; }
+.textbook-current-topic { display: flex; align-items: center; gap: .45rem; margin: .35rem 0 0; color: var(--color-muted); font-size: .78rem; }
+.textbook-current-topic span { padding: .12rem .35rem; border: 1px solid var(--color-line); background: var(--color-section); font: 700 .65rem/1.2 ui-monospace, monospace; }
+.textbook-current-topic strong { color: var(--color-text); font-size: .84rem; }
 .textbook-unit-percent { color: var(--color-primary); font: 700 .72rem/1 ui-monospace, monospace; }
 .textbook-chapter-pending { margin: 0; color: var(--color-muted); font-size: .78rem; }
 

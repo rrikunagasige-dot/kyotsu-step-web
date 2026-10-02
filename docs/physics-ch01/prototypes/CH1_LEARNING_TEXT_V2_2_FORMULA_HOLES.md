@@ -1131,7 +1131,7 @@ D = [2v₀²sinθ cosθ]/g
 ここで倍角公式 2sinθcosθ = 【F8c　　　　　】 を使う。
 
 :::choices id="F8c"
-A. cos2θ　　B. tan2θ　　C. sin2θ　　D. sin²θ
+A. cos2θ　　B. tan2θ　　C. sin2θ　　D. 2sin²θ
 :::
 
 したがって、

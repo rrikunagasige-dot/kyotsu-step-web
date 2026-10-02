@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import source from '../../docs/physics-ch01/prototypes/CH1_LEARNING_TEXT_V2_2_FORMULA_HOLES.md?raw'
+import source from '../../docs/physics-ch01/prototypes/CH1_LEARNING_TEXT.md?raw'
 import { builtInTextbookUnits } from './textbookUnits'
 import type { TextbookReadingBlock } from '../domain/textbookSchema'
 

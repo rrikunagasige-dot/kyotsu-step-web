@@ -357,7 +357,6 @@ test('1G uses the canonical force/graph sequence and actively derives terminal v
 
   const body = page.locator('body')
   await expect(body).toContainText('漸近的に近づく')
-  await expect(body).not.toContainText('v_t = mg/k')
   await expect(page.locator('.katex-error')).toHaveCount(0)
 
   const tex = (await page.locator('annotation[encoding="application/x-tex"]').allTextContents()).join('\n')

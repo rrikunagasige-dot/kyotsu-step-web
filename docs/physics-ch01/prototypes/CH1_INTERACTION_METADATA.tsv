@@ -97,6 +97,6 @@ G4	causal-reasoning	light	速さが増えるとkvが増え、図16でも合力mg
 G5	graph-reading	light	図17のv-tグラフでは傾きが時間とともに小さくなる。	速度の時間変化率が何という物理量だったか思い出す。
 G6	physical-condition	light	終端速度を定める極限では速度の時間変化率が0になる。	速度が一定となる定常条件で加速度を考える。
 G6a	physical-condition	light	a=0、v=v_tをma=mg−kvへ同時に代入する。	抵抗項kvのvをv_tへ置き換える。
-G6b	final-form	light	kv_t=mgを終端速度v_tについて解く。	両辺を正の比例定数kで割る。
+G6b	transfer	light	kv_t=mgを終端速度v_tについて解く。	両辺を正の比例定数kで割る。
 G7a	relation-selection	light	例題では今導いた終端速度の関係を数値へ適用する。	m、g、kからv_tを直接求める式を選ぶ。
 G7b	transfer	light	v_t=(0.50×9.8)/0.10を計算する。	分子は4.9で、それを0.10で割る。

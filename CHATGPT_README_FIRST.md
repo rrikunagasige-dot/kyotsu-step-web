@@ -1790,3 +1790,26 @@ Current Chapter 1:
 Figure 15/16/17 now participate in the causal reasoning chain.
 The linear-drag lesson uses asymptotic terminal-speed wording.
 P39/G61 user pedagogical re-QA remains OPEN.
+
+
+## 2026-10-02 Chapter 1 information architecture — VERIFIED
+
+Learner-facing Chapter 1 now has exactly three major themes:
+1. 運動を表す — internal 1A–1C
+2. 速度の変化 — internal 1D–1F
+3. 力と運動 — internal 1G
+
+Internal 1A–1G unit IDs, routes, progress keys, revisions, and audit provenance remain unchanged.
+
+UI rules now implemented:
+- setup shows three theme cards, not seven unit-title cards,
+- unit-page H1 is the theme title,
+- old unit title appears only as a small current-topic label,
+- completion moves directly to the next internal unit,
+- bridge prose explains why the next concept follows,
+- major boundaries 1C→1D and 1F→1G are explicit.
+
+Validated code HEAD:
+`d5ed1f2bb15e14d668533524ae79535e1c9a27c5`
+
+GitHub Actions run 269: SUCCESS.

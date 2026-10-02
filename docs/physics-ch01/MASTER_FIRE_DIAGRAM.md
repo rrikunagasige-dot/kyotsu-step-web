@@ -2107,3 +2107,28 @@ Exact validated code HEAD:
 `f4652579916417689cbdcd553052df65223e2558`
 
 Automated gate PASS does not replace user pedagogical QA.
+
+
+### 19.32 Chapter 1 INFORMATION ARCHITECTURE — 3 MAJOR THEMES
+
+```text
+第1章 物体の運動
+  ↓
+運動を表す
+  internal: 1A → 1B → 1C
+  ↓ bridge: velocity representation → velocity change
+速度の変化
+  internal: 1D → 1E → 1F
+  ↓ bridge: using acceleration → force that produces it
+力と運動
+  internal: 1G
+```
+
+Learner UI:
+- 3 major titles only
+- old unit titles demoted to current-topic labels
+- next-unit continuity preserved through bridge sentences
+- internal routes/progress/test identities unchanged
+
+Run 269 PASS:
+TYPECHECK / DATA+MATH / BROWSER / BUILD / DEPLOY.

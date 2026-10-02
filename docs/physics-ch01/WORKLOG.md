@@ -1896,3 +1896,34 @@ Current state:
 - scaffold = strong 6 / medium 34 / light 60
 - 1G revision = 5
 - user re-QA remains OPEN.
+
+
+---
+
+## 2026-10-02 — Chapter 1 title hierarchy and continuity VERIFIED
+
+Implemented the approved information-architecture redesign.
+
+Before:
+- seven learner-facing unit titles (1A–1G granularity).
+
+After:
+- three learner-facing conceptual themes:
+  - 運動を表す
+  - 速度の変化
+  - 力と運動
+
+Implementation:
+- setup screen exposes three theme cards,
+- each theme resumes at its first incomplete internal unit,
+- unit-page H1 uses the theme title,
+- old unit title is a small current-topic label,
+- unit completion links to the next internal unit,
+- bridge sentences preserve conceptual continuity,
+- source bridges strengthened at 1C, 1D, 1E, and 1G boundaries,
+- internal unit IDs/routes/progress remain stable.
+
+Validated code HEAD:
+`d5ed1f2bb15e14d668533524ae79535e1c9a27c5`
+
+GitHub Actions run 269: SUCCESS.

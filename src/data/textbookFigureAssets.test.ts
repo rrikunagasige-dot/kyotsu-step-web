@@ -110,7 +110,7 @@ describe('Chapter 1 textbook figure assets', () => {
   it('forbids unauthorized figure replacements while allowing the one approved 1D educational directive', () => {
     const sourcePath = resolve(
       process.cwd(),
-      'docs/physics-ch01/prototypes/CH1_LEARNING_TEXT_V2_2_FORMULA_HOLES.md',
+      'docs/physics-ch01/prototypes/CH1_LEARNING_TEXT.md',
     )
     const source = readFileSync(sourcePath, 'utf8')
     expect(source).not.toMatch(/source="generated-/)

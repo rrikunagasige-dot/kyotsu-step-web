@@ -1988,3 +1988,33 @@ Technical:
 - direct sin/cos/tan regression,
 - all major 1F derivations checked in browser,
 - page-level mobile horizontal overflow forbidden.
+
+
+### 19.29 1F FULL REPAIR — CI VERIFIED
+
+```text
+1F revision 5
+  ↓
+20 interactions
+  ↓
+vertical / highest-point / trajectory / flight-time / range derivations active
+  ↓
+theta + degree + trig rendering hardened
+  ↓
+96 Chapter-1 interactions
+  ↓
+24 / 24 / 24 / 24 choice balance
+  ↓
+run 256 attempt 2
+  ↓
+TYPECHECK PASS
+DATA/MATH PASS
+BROWSER PASS
+BUILD PASS
+DEPLOY PASS
+```
+
+Exact validated code HEAD:
+`48e9454fb0b4fd95702bfaf7a5a3fdc65e3510ef`
+
+Automated gate PASS does not replace user pedagogical QA.

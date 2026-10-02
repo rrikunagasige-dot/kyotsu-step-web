@@ -80,7 +80,7 @@ Acceptance は6段階:
 | MR10 | 平均速度 `v̄⃗` がbar + vector arrowの二重記号に見える | combining marksを字面通り重ねた | learner UIは意味を保ち自然なnotationへ正規化: `\\vec{v}_{\\mathrm{avg}}` | FIXED; direct unit test |
 | MR11 | `√(v₀²+g²t²)` の根号だけ他の式と違って崩れる | inline tokenizerが `√` 始まりの式を一math tokenとして拾えない | radical全体をtokenize → `\\sqrt{...}`へnormalize | **FIXED 2026-10-02 / run 249** |
 | MR12 | formula typographyが場所によって textbook-grade でない | multiple rendering surfaces + inconsistent token boundaries | surface matrixで同じ式を比較する | ONGOING visual QA |
-| MR13 | `θ=45°`, `2θ=90°` がinline mathとして一体化しない危険 | inline tokenizerがθ始まり・degree sign・数字+θを十分に扱っていない | θ/° tokenization + degree normalization + trig regression | IMPLEMENTED 2026-10-02 / validation pending |
+| MR13 | `θ=45°`, `2θ=90°` がinline mathとして一体化しない危険 | inline tokenizerがθ始まり・degree sign・数字+θを十分に扱っていない | θ/° tokenization + degree normalization + trig regression | **FIXED 2026-10-02 / run 256 attempt 2** |
 
 Primary historical evidence:
 - `docs/physics-ch01/P39_LIVE_APP_DEFECT_AUDIT.md`
@@ -548,4 +548,13 @@ Implemented:
 - direct unit regressions cover theta, degree, sin/cos/tan,
 - 1F browser regression checks KaTeX annotations and page-level mobile overflow.
 
-MR13 must be promoted to FIXED only after the final exact-head CI/browser/deploy gate passes.
+Validation complete:
+- exact code HEAD: `48e9454fb0b4fd95702bfaf7a5a3fdc65e3510ef`
+- GitHub Actions run 256, attempt 2: SUCCESS
+- typecheck PASS
+- Chapter 1 audited data/math PASS
+- P39 browser smoke PASS
+- production build PASS
+- Pages deploy PASS
+
+MR13 is CLOSED.

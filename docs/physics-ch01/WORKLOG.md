@@ -1810,3 +1810,35 @@ Implemented:
 
 Target counts:
 1F 8→20; Chapter 1 84→96; revision 4→5.
+
+
+---
+
+## 2026-10-02 — 1F full repair VERIFIED
+
+Final exact-code checkpoint:
+`48e9454fb0b4fd95702bfaf7a5a3fdc65e3510ef`
+
+GitHub Actions run 256, attempt 2: SUCCESS.
+
+Verified:
+- TypeScript
+- 96-hole Chapter-1 data/math gate
+- direct theta/degree/trig normalization tests
+- complete 1F browser progression
+- all major 1F derivation groups
+- no KaTeX errors
+- no page-level mobile horizontal overflow
+- production build
+- Pages deployment
+
+The first implementation run exposed one good schema failure: F8c had `sin2θ` and `sin²θ` choices that collapse under NFKC choice normalization. The distractor was replaced with `2sin²θ` and a dedicated regression assertion was added.
+
+Current state:
+- 1F = 20 interactions
+- Chapter 1 = 96
+- correct choices = 24 / 24 / 24 / 24
+- scaffold = strong 6 / medium 34 / light 56
+- 1F revision = 5
+- MR13 CLOSED
+- user re-QA still OPEN.

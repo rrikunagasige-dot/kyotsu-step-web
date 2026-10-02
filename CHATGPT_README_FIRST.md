@@ -1708,3 +1708,31 @@ Target counts:
 - 1F revision 4 → 5.
 
 P39/G61 remains USER RE-QA OPEN.
+
+
+## 2026-10-02 1F FULL REPAIR — VERIFIED
+
+Exact validated code HEAD:
+`48e9454fb0b4fd95702bfaf7a5a3fdc65e3510ef`
+
+GitHub Actions:
+- run 256
+- attempt 2
+- conclusion SUCCESS
+
+PASS:
+- Typecheck
+- Chapter 1 audited data and math gate
+- P39 audited browser smoke
+- Build
+- Pages deploy
+
+Current live counts:
+- 1F = 20 interactions
+- Chapter 1 = 96 interactions
+- correct choice positions = 24 / 24 / 24 / 24
+- scaffold = strong 6 / medium 34 / light 56
+- 1F revision = 5
+
+MR13 theta/degree/trig rendering is CLOSED.
+P39/G61 user pedagogical re-QA remains OPEN.

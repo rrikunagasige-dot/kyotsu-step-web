@@ -9,7 +9,7 @@ const expectedCounts: Record<string, number> = {
   '1C': 7,
   '1D': 19,
   '1E': 22,
-  '1F': 8,
+  '1F': 20,
   '1G': 7,
 }
 
@@ -33,7 +33,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
     }
   })
 
-  it('preserves all 84 audited holes with an explicit source answer', () => {
+  it('preserves all 96 audited holes with an explicit source answer', () => {
     const counts = Object.fromEntries(
       builtInTextbookUnits.map((unit) => [
         unit.chapter?.unitCode,
@@ -41,10 +41,10 @@ describe('Chapter 1 continuous textbook catalog', () => {
       ]),
     )
     expect(counts).toEqual(expectedCounts)
-    expect(allItems()).toHaveLength(84)
+    expect(allItems()).toHaveLength(96)
 
     const answerLines = [...source.slice(source.indexOf('# 解答')).matchAll(/^([A-G]\d+[a-z]?)　(.+)$/gm)]
-    expect(answerLines).toHaveLength(84)
+    expect(answerLines).toHaveLength(96)
 
     for (const item of allItems()) {
       expect(item.choices).toHaveLength(4)
@@ -63,7 +63,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
       scaffoldCounts[item.scaffoldLevel] += 1
     }
 
-    expect(scaffoldCounts).toEqual({ strong: 6, medium: 34, light: 44 })
+    expect(scaffoldCounts).toEqual({ strong: 6, medium: 34, light: 56 })
 
     const lateItems = builtInTextbookUnits
       .filter((unit) => ['1F', '1G'].includes(unit.chapter?.unitCode ?? ''))
@@ -131,9 +131,21 @@ describe('Chapter 1 continuous textbook catalog', () => {
     expect(byId.e6c.answer).toBe('x=v₀t')
     expect(byId.e6d.answer).toBe('29.4')
     expect(byId.f1.answer).toBe('(v₀cosθ, v₀sinθ)')
+    expect(byId.f2b.answer).toBe('v₀cosθ·t')
+    expect(byId.f3b.answer).toBe('v₀sinθ·t−(1/2)gt²')
+    expect(byId.f3c.answer).toBe('−2gy')
+    expect(byId.f4a.answer).toBe('v₀sinθ/g')
     expect(byId.f5a.answer).toBe('v₀sinθ·t_H − (1/2)gt_H²')
+    expect(byId.f5b.answer).toBe('v₀²sin²θ/(2g)')
     expect(byId.f6a.answer).toBe('x=v₀cosθ·t')
+    expect(byId.f6c.answer).toBe('x/(v₀cosθ)')
+    expect(byId.f6d.answer).toBe('x tanθ−[g/(2v₀²cos²θ)]x²')
     expect(byId.f7.answer).toBe('[v₀sinθ − (1/2)gT]')
+    expect(byId.f7a.answer).toBe('v₀sinθ−(1/2)gT=0')
+    expect(byId.f7b.answer).toBe('2v₀sinθ/g')
+    expect(byId.f8b.answer).toBe('2v₀sinθ/g')
+    expect(byId.f8c.answer).toBe('sin2θ')
+    expect(byId.f8d.answer).toBe('(v₀²/g)sin2θ')
     expect(byId.f9.answer).toBe('sin2θ=1')
     expect(byId.g1.answer).toBe('変わらない')
     expect(byId.g2.answer).toBe('反対')
@@ -146,7 +158,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
       expect(index).toBeGreaterThanOrEqual(0)
       distribution[index] += 1
     }
-    expect(distribution.reduce((sum, count) => sum + count, 0)).toBe(84)
+    expect(distribution.reduce((sum, count) => sum + count, 0)).toBe(96)
     expect(Math.max(...distribution) - Math.min(...distribution)).toBeLessThanOrEqual(1)
   })
 
@@ -304,6 +316,54 @@ describe('Chapter 1 continuous textbook catalog', () => {
     )
     expect(horizontalExampleHoles).toEqual(['e6', 'e6a', 'e6b', 'e6c', 'e6d'])
 
+    const verticalProjectile = groups.get('f-vertical-motion') ?? []
+    const verticalProjectileHoles = verticalProjectile.flatMap((block) =>
+      block.type === 'paragraph' || block.type === 'formula'
+        ? block.parts.filter((part) => part.type === 'choice').map((part) => part.itemId)
+        : [],
+    )
+    expect(verticalProjectileHoles).toEqual(['f3', 'f3b', 'f3c'])
+
+    const highestTime = groups.get('f-highest-time') ?? []
+    const highestTimeHoles = highestTime.flatMap((block) =>
+      block.type === 'paragraph' || block.type === 'formula'
+        ? block.parts.filter((part) => part.type === 'choice').map((part) => part.itemId)
+        : [],
+    )
+    expect(highestTimeHoles).toEqual(['f4a'])
+
+    const highestHeight = groups.get('f-highest-height') ?? []
+    const highestHeightHoles = highestHeight.flatMap((block) =>
+      block.type === 'paragraph' || block.type === 'formula'
+        ? block.parts.filter((part) => part.type === 'choice').map((part) => part.itemId)
+        : [],
+    )
+    expect(highestHeightHoles).toEqual(['f5a', 'f5b'])
+
+    const obliqueTrajectory = groups.get('f-trajectory-elimination') ?? []
+    const obliqueTrajectoryHoles = obliqueTrajectory.flatMap((block) =>
+      block.type === 'paragraph' || block.type === 'formula'
+        ? block.parts.filter((part) => part.type === 'choice').map((part) => part.itemId)
+        : [],
+    )
+    expect(obliqueTrajectoryHoles).toEqual(['f6a', 'f6c', 'f6d'])
+
+    const flightTime = groups.get('f-flight-time') ?? []
+    const flightTimeHoles = flightTime.flatMap((block) =>
+      block.type === 'paragraph' || block.type === 'formula'
+        ? block.parts.filter((part) => part.type === 'choice').map((part) => part.itemId)
+        : [],
+    )
+    expect(flightTimeHoles).toEqual(['f7', 'f7a', 'f7b'])
+
+    const range = groups.get('f-range') ?? []
+    const rangeHoles = range.flatMap((block) =>
+      block.type === 'paragraph' || block.type === 'formula'
+        ? block.parts.filter((part) => part.type === 'choice').map((part) => part.itemId)
+        : [],
+    )
+    expect(rangeHoles).toEqual(['f8b', 'f8c', 'f8d'])
+
     expect(groups.get('f-flight-time')?.some((block) => block.type === 'paragraph')).toBe(true)
   })
 
@@ -407,7 +467,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
 
   it('classifies symbolic monomials as formula answers', () => {
     const byId = Object.fromEntries(allItems().map((item) => [item.id, item]))
-    for (const id of ['d5a', 'd5b', 'd5c', 'd4b', 'd4c', 'd7a', 'd7', 'd7b', 'd7c', 'd7d', 'd9a', 'd9', 'e1a', 'e1b', 'e1c', 'e1d', 'e2a', 'e2b', 'e2c', 'e3a', 'e3b', 'e4a', 'e4b', 'e5a', 'e5b', 'e5c', 'e6a', 'e6c', 'f1', 'f5a', 'f6a', 'f7', 'g3', 'g6a']) {
+    for (const id of ['d5a', 'd5b', 'd5c', 'd4b', 'd4c', 'd7a', 'd7', 'd7b', 'd7c', 'd7d', 'd9a', 'd9', 'e1a', 'e1b', 'e1c', 'e1d', 'e2a', 'e2b', 'e2c', 'e3a', 'e3b', 'e4a', 'e4b', 'e5a', 'e5b', 'e5c', 'e6a', 'e6c', 'f1', 'f2b', 'f3b', 'f3c', 'f4a', 'f5a', 'f5b', 'f6a', 'f6c', 'f6d', 'f7', 'f7a', 'f7b', 'f8b', 'f8c', 'f8d', 'f9', 'g3', 'g6a']) {
       expect(byId[id].answerType, id).toBe('formula')
     }
   })

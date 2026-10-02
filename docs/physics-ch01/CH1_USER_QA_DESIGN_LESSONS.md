@@ -827,3 +827,41 @@ A derivation succeeds when the learner can say:
 It fails when the learner can only say:
 
 > “I scrolled through several equations and saw the answer.”
+
+
+---
+
+## 26. 1F planning lesson — later transfer should be active but less scaffolded
+
+1F showed an important progression rule after 1D/1E.
+
+The learner has already derived and applied:
+- constant-acceleration relations,
+- horizontal/vertical decomposition,
+- time elimination,
+- projectile trajectory logic.
+
+Therefore 1F should not repeat the full earlier scaffolding. But it also should not let the App silently perform every reused step.
+
+The correct late-unit pattern is:
+
+```text
+prior relation already learned
+↓
+reduced-support retrieval
+↓
+one meaningful substitution / sign / elimination decision by learner
+↓
+visible continuation
+↓
+new result
+```
+
+Examples:
+- retrieve `x=v0 cosθ t` rather than re-deriving horizontal motion from scratch,
+- apply `a_y=-g` to the time-free relation,
+- actively solve `t=x/(v0 cosθ)`,
+- select the physically relevant nonzero flight-time root,
+- reuse the just-derived flight time in the range formula.
+
+This preserves spaced retrieval without making the later unit feel like a duplicate of the previous one.

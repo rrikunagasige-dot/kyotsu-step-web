@@ -1681,3 +1681,30 @@ Current counts after the full 1E repair:
 - 1E revision 4 → 5.
 
 P39/G61 remains USER RE-QA OPEN.
+
+
+## 2026-10-02 USER 1F FULL REPAIR — PEDAGOGY + MATH RENDERING
+
+Active repair scope:
+- fix coordinate/sign convention clarity,
+- replace vague “no horizontal force” wording with zero horizontal force component/resultant,
+- keep F1 decomposition retrieval,
+- actively retrieve horizontal position with reduced support,
+- actively reconstruct vertical position and time-free relation,
+- make highest-point time and height derivations interactive,
+- keep trajectory relation selection inside the same derivation frame and make t elimination active,
+- make the nonzero flight-time root a physical decision,
+- reuse flight time in horizontal range,
+- retrieve the double-angle identity,
+- state the conditions behind the 45-degree maximum-range conclusion,
+- harden theta / degree / trig inline math rendering,
+- expand the 1F browser gate to all major derivations and page-level mobile overflow.
+
+Target counts:
+- 1F = 20 interactions,
+- Chapter 1 = 96,
+- correct choices = 24 / 24 / 24 / 24,
+- scaffold = strong 6 / medium 34 / light 56,
+- 1F revision 4 → 5.
+
+P39/G61 remains USER RE-QA OPEN.

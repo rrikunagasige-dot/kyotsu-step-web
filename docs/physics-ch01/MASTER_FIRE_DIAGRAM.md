@@ -1938,3 +1938,53 @@ WORKED EXAMPLE
 
 MR11 radical rendering is part of the same 1E acceptance scope, not a substitute for these pedagogy/content repairs.
 Current 1E=22 / Chapter 1=84 / derivation groups=22 / revision=5.
+
+
+### 19.28 USER 1F ACTIVE-DERIVATION + TECHNICAL REPAIR
+
+```text
+coordinate/sign convention
+  ↓
+Figure 13
+  ↓
+F1 initial-velocity decomposition
+  ↓
+F2b horizontal-position retrieval
+  ↓
+F3/F3b/F3c vertical relations
+  ↓
+F4 highest-point physical condition
+  ↓
+Figure 14
+  ↓
+F4a highest-point time
+  ↓
+F5a/F5b maximum height
+  ↓
+F6a/F6c/F6d eliminate t and derive trajectory
+  ↓
+F6 parabola
+  ↓
+F7 factorization
+  ↓
+F7a select physical nonzero root
+  ↓
+F7b flight time
+  ↓
+F8b reuse flight time
+  ↓
+F8c double-angle identity
+  ↓
+F8d range relation
+  ↓
+F9 maximum condition
+  ↓
+theta=45 degrees under same-height/no-drag assumptions
+```
+
+Technical:
+- theta may begin inline math,
+- degree signs normalize to LaTeX circle,
+- direct sin/cos/tan regression,
+- all major 1F derivations checked in browser,
+- page-level mobile horizontal overflow forbidden.

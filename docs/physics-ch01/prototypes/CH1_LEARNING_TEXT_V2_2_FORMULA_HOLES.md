@@ -8,8 +8,8 @@ checkpoint_date: 2026-09-29
 prototype: continuous-learning-v2.3-audited
 canonical_figures: 17
 educational_figures: 1
-hole_occurrences: 84
-unique_hole_ids: 84
+hole_occurrences: 96
+unique_hole_ids: 96
 source_policy:
   physics: textbook PDF pages 12-27
   figures: canonical figure.zip
@@ -923,6 +923,8 @@ A. 14.7　　B. 29.4　　C. 9.8　　D. 39.2
 
 水平投射では初速度が水平方向だけを向いていた。今度は物体を斜め上向きに投げる。見た目は複雑になるが、考え方は同じで、初速度を水平方向と鉛直方向へ分ければよい。
 
+ここでは水平方向の右向きを x 軸の正、鉛直上向きを y 軸の正とする。投げた瞬間を t=0、投射点を x=0, y=0 とする。また g>0 は重力加速度の大きさを表すので、鉛直加速度は aᵧ=−g である。
+
 :::figure id="fig-13" source="13.png" app_asset="public/assets/physics/textbook/ch01/1f/oblique-projectile-trajectory.webp"
 図13　斜方投射の軌跡と最高点
 :::
@@ -939,13 +941,19 @@ A. (v₀sinθ, v₀cosθ)　　B. (v₀tanθ, v₀/tanθ)　　C. (v₀cosθ, v�
 
 したがって、v₀ₓ=v₀cosθ、v₀ᵧ=v₀sinθ である。
 
+水平方向では力の成分が0なので aₓ=0 であり、速度 vₓ=v₀cosθ は一定である。前の節で使った水平運動の考え方を弱い支援で思い出すと、位置は
 
+x = 【F2b　　　　　】
 
-水平方向には力が働かないので aₓ=0、したがって vₓ=v₀cosθ は一定で、x=v₀cosθ·t となる。
+:::choices id="F2b"
+A. v₀sinθ·t　　B. v₀cosθ·t　　C. (1/2)gt²　　D. v₀cosθ−gt
+:::
+
+となる。
 
 ## 鉛直方向では重力が速度を変える
 
-上向きを正に取ると重力加速度は −g である。初めの鉛直速度は v₀sinθ なので、
+上向きを正に取っているので aᵧ=−g である。初めの鉛直速度は v₀sinθ だから、前に導いた等加速度運動の式を鉛直方向へ適用する。
 
 :::derive id="f-vertical-motion"
 vᵧ = 【F3　　　　　】
@@ -954,24 +962,28 @@ vᵧ = 【F3　　　　　】
 A. v₀sinθ+gt　　B. v₀cosθ−gt　　C. gt　　D. v₀sinθ−gt
 :::
 
-y = v₀sinθ·t − (1/2)gt²
+鉛直方向の位置は、
 
-また、時間を使わない形も、前に導いた等加速度運動の
+y = 【F3b　　　　　】
 
-v² − v₀² = 2ax
+:::choices id="F3b"
+A. v₀cosθ·t−(1/2)gt²　　B. v₀sinθ·t+(1/2)gt²　　C. (1/2)gt²　　D. v₀sinθ·t−(1/2)gt²
+:::
 
-から同じように作れる。鉛直方向では、初速度が v₀sinθ、加速度が −g、変位が y なので、
+また、時間を使わず vᵧ と y を直接結ぶには、
 
-vᵧ² − (v₀sinθ)² = 2(−g)y
+v²−v₀²=2ax
 
-右辺の符号まで整理すると、
+を鉛直方向へ使う。v→vᵧ、v₀→v₀sinθ、a→−g、x→y と対応させると、
 
-vᵧ² − (v₀sinθ)² = −2gy
+vᵧ²−(v₀sinθ)² = 【F3c　　　　　】
+
+:::choices id="F3c"
+A. −2gy　　B. 2gy　　C. −2gt　　D. 2g²y
+:::
 :::endderive
 
-
-
-となる。ここでも新しい公式を別に覚えたのではなく、前に導いた等加速度運動の式を鉛直方向へ適用しただけである。
+ここでも新しい公式を別に覚えたのではない。同じ等加速度運動の式を、座標軸と符号に合わせて使っている。
 
 ## 最高点では何が起こるか
 
@@ -990,13 +1002,16 @@ A. 0　　B. g　　C. v₀　　D. v₀cosθ
 vᵧ=v₀sinθ−gt に、最高点の条件 vᵧ=0 を入れる。
 
 :::derive id="f-highest-time"
-0 = v₀sinθ − gt_H
+0 = v₀sinθ−gt_H
 
 gt_H = v₀sinθ
 
-t_H = v₀sinθ/g
-:::endderive
+t_H = 【F4a　　　　　】
 
+:::choices id="F4a"
+A. g/(v₀sinθ)　　B. v₀cosθ/g　　C. v₀sinθ/g　　D. 2v₀sinθ/g
+:::
+:::endderive
 
 次に最高点の高さ H を求める。ここで重要なのは、最高点の時刻をどの運動の式へ入れるかである。高さは鉛直方向の位置なので、
 
@@ -1015,32 +1030,47 @@ H = v₀²sin²θ/g − v₀²sin²θ/(2g)
 
 したがって、
 
-H = v₀²sin²θ/(2g)
-:::endderive
+H = 【F5b　　　　　】
 
+:::choices id="F5b"
+A. v₀²sin²θ/g　　B. v₀²sin²θ/(2g)　　C. v₀²cos²θ/(2g)　　D. 2v₀²sin²θ/g
+:::
+:::endderive
 
 最高点で0になるのは鉛直成分だけで、水平方向の速度 v₀cosθ は残っているため、物体そのものが止まるわけではない。
 
-## 軌跡と飛行時間
+## 軌跡を作る
 
-斜方投射でも軌跡の式を作るには時間 t を消去する。そのために最初に使う水平方向の式は 【F6a　　　　　】 である。
+斜方投射でも軌跡の式を作るには、x と y に共通して入る時間 t を消去する。前の節と同じ方針を、今度は v₀cosθ を含む水平方向の式へ使う。
+
+:::derive id="f-trajectory-elimination"
+時間 t を取り出すために最初に使う式は 【F6a　　　　　】 である。
 
 :::choices id="F6a"
 A. y=v₀sinθ·t−(1/2)gt²　　B. vᵧ=v₀sinθ−gt　　C. x=v₀cosθ·t　　D. vᵧ²−(v₀sinθ)²=−2gy
 :::
 
-:::derive id="f-trajectory-elimination"
-t = x/(v₀cosθ)
+x = v₀cosθ·t
 
+したがって、
 
+t = 【F6c　　　　　】
 
-これを y=v₀sinθ·t−(1/2)gt² に代入すると、
+:::choices id="F6c"
+A. x/(v₀cosθ)　　B. v₀cosθ/x　　C. x/(v₀sinθ)　　D. xv₀cosθ
+:::
+
+これを y=v₀sinθ·t−(1/2)gt² に代入する。
 
 y = v₀sinθ·[x/(v₀cosθ)] − (1/2)g[x/(v₀cosθ)]²
 
 第1項では v₀ が約分され sinθ/cosθ=tanθ になる。第2項では分母が v₀²cos²θ になるので、
 
-y = x tanθ − [g/(2v₀²cos²θ)]x²
+y = 【F6d　　　　　】
+
+:::choices id="F6d"
+A. x sinθ−[g/(2v₀²cos²θ)]x²　　B. x tanθ−[g/(2v₀cosθ)]x²　　C. x tanθ+[g/(2v₀²cos²θ)]x²　　D. x tanθ−[g/(2v₀²cos²θ)]x²
+:::
 :::endderive
 
 この式は x の2次式なので、斜方投射の軌跡も 【F6　　　　　】 である。
@@ -1049,7 +1079,9 @@ y = x tanθ − [g/(2v₀²cos²θ)]x²
 A. 直線　　B. 円　　C. 楕円　　D. 放物線
 :::
 
-次に、投げ出した位置と同じ高さへ戻るまでの時間 T を求める。このとき y=0 なので、
+## 同じ高さへ戻るまでの時間
+
+投げ出した位置と同じ高さへ戻るまでの時間 T を求める。このとき y=0 なので、
 
 :::derive id="f-flight-time"
 0 = v₀sinθ·T − (1/2)gT²
@@ -1062,43 +1094,64 @@ A. 直線　　B. 円　　C. 楕円　　D. 放物線
 A. [v₀sinθ − (1/2)gT]　　B. [v₀cosθ − (1/2)gT]　　C. [v₀sinθ + (1/2)gT]　　D. [v₀sinθ − g]
 :::
 
-この積が0になるには、T=0 またはかっこの中が0であればよい。T=0 は投げた瞬間なので、戻ってくる時刻では
+この積が0になるには、T=0 またはかっこの中が0であればよい。T=0 は投げた瞬間を表す。求めたいのは「戻ってくる時刻」なので、採用する関係は 【F7a　　　　　】 である。
 
-v₀sinθ − (1/2)gT = 0
+:::choices id="F7a"
+A. T=0　　B. v₀cosθ−(1/2)gT=0　　C. v₀sinθ−(1/2)gT=0　　D. v₀sinθ−g=0
+:::
 
-を選ぶ。したがって、
+これを T について解くと、
 
-T = 2v₀sinθ/g
+T = 【F7b　　　　　】
+
+:::choices id="F7b"
+A. v₀sinθ/g　　B. 2v₀sinθ/g　　C. 2v₀cosθ/g　　D. g/(2v₀sinθ)
+:::
 :::endderive
+
+数学的に出た2つの解のうち、どちらを使うかは物理的な意味で決めた。
 
 ## 水平到達距離
 
-水平速度は一定なので、水平到達距離 D は「水平速度 × 飛行時間」で求める。
+水平到達距離 D は、一定の水平速度 v₀cosθ に、今導いた飛行時間 T を掛ければよい。
 
 :::derive id="f-range"
 D = v₀cosθ · T
 
-ここへ、さきほど導いた飛行時間を代入する。
+ここへ、さきほど自分で導いた飛行時間を再利用する。
 
-D = v₀cosθ · [2v₀sinθ/g]
+D = v₀cosθ · 【F8b　　　　　】
+
+:::choices id="F8b"
+A. 2v₀sinθ/g　　B. v₀sinθ/g　　C. 2v₀cosθ/g　　D. g/(2v₀sinθ)
+:::
 
 D = [2v₀²sinθ cosθ]/g
 
-2sinθcosθ=sin2θ を使えば、
+ここで倍角公式 2sinθcosθ = 【F8c　　　　　】 を使う。
 
-D = (v₀²/g)sin2θ
+:::choices id="F8c"
+A. cos2θ　　B. tan2θ　　C. sin2θ　　D. sin²θ
+:::
+
+したがって、
+
+D = 【F8d　　　　　】
+
+:::choices id="F8d"
+A. (2v₀²/g)sin2θ　　B. (v₀²/2g)sin2θ　　C. (v₀/g)sin2θ　　D. (v₀²/g)sin2θ
+:::
 :::endderive
 
-
-同じ初速度 v₀ なら、D は sin2θ の値だけで変わる。したがって、飛距離を最大にする条件は 【F9　　　　　】 である。
+空気抵抗を無視し、投射点と着地点が同じ高さで、初速度の大きさ v₀ が同じなら、D は sin2θ の値だけで変わる。したがって、飛距離を最大にする条件は 【F9　　　　　】 である。
 
 :::choices id="F9"
 A. sin2θ=0　　B. sin2θ=1　　C. cos2θ=1　　D. tanθ=1/2
 :::
 
-この条件は 2θ=90° を意味するので、最大飛距離を与える角度は θ=45° である。
+この条件は 2θ=90° を意味するので、この条件のもとで最大飛距離を与える角度は θ=45° である。
 
-45°を単独で暗記するのではなく、水平成分と鉛直成分の両方が飛距離に関わり、その結果として sin2θ が現れることを理解する。
+45°を単独で暗記するのではない。水平方向へ進む成分と滞空時間を生む鉛直成分の両方が飛距離に関わり、その結果として sin2θ が現れることを理解する。
 
 # 1G　重力加速度・空気抵抗・終端速度
 
@@ -1301,12 +1354,24 @@ E6b　2.0
 E6c　x=v₀t
 E6d　29.4
 F1　(v₀cosθ, v₀sinθ)
+F2b　v₀cosθ·t
 F3　v₀sinθ−gt
+F3b　v₀sinθ·t−(1/2)gt²
+F3c　−2gy
 F4　0
+F4a　v₀sinθ/g
 F5a　v₀sinθ·t_H − (1/2)gt_H²
+F5b　v₀²sin²θ/(2g)
 F6a　x=v₀cosθ·t
+F6c　x/(v₀cosθ)
+F6d　x tanθ−[g/(2v₀²cos²θ)]x²
 F6　放物線
 F7　[v₀sinθ − (1/2)gT]
+F7a　v₀sinθ−(1/2)gT=0
+F7b　2v₀sinθ/g
+F8b　2v₀sinθ/g
+F8c　sin2θ
+F8d　(v₀²/g)sin2θ
 F9　sin2θ=1
 G1　変わらない
 G2　反対

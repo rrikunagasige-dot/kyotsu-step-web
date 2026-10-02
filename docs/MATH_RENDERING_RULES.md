@@ -80,6 +80,7 @@ Acceptance は6段階:
 | MR10 | 平均速度 `v̄⃗` がbar + vector arrowの二重記号に見える | combining marksを字面通り重ねた | learner UIは意味を保ち自然なnotationへ正規化: `\\vec{v}_{\\mathrm{avg}}` | FIXED; direct unit test |
 | MR11 | `√(v₀²+g²t²)` の根号だけ他の式と違って崩れる | inline tokenizerが `√` 始まりの式を一math tokenとして拾えない | radical全体をtokenize → `\\sqrt{...}`へnormalize | **FIXED 2026-10-02 / run 249** |
 | MR12 | formula typographyが場所によって textbook-grade でない | multiple rendering surfaces + inconsistent token boundaries | surface matrixで同じ式を比較する | ONGOING visual QA |
+| MR13 | `θ=45°`, `2θ=90°` がinline mathとして一体化しない危険 | inline tokenizerがθ始まり・degree sign・数字+θを十分に扱っていない | θ/° tokenization + degree normalization + trig regression | IMPLEMENTED 2026-10-02 / validation pending |
 
 Primary historical evidence:
 - `docs/physics-ch01/P39_LIVE_APP_DEFECT_AUDIT.md`
@@ -371,7 +372,7 @@ Existing regression:
 
 1. radical-starting inline expression — **COVERED 2026-10-02**
 2. inline `v=√(...)` as one token — **COVERED 2026-10-02**
-3. trig typography/spacing direct regression — weak
+3. trig typography/spacing direct regression — **COVERED for 1F sin/cos/tan 2026-10-02**
 4. same expression inline vs formula-block comparison — weak
 5. mobile visual radical geometry — no dedicated assertion/screenshot
 6. long fraction/root overflow near phone width — weak
@@ -524,3 +525,27 @@ Known defects were consolidated from:
   - 1E inline radical defect
 
 When older historical notes conflict with later explicit user QA, later user QA wins.
+
+
+---
+
+## 18. 2026-10-02 — 1F theta / degree / trig hardening
+
+1F uses angle and trigonometric notation heavily, which exposed a separate risk from MR11 radicals.
+
+Required syntax:
+- `θ=45°`
+- `2θ=90°`
+- `sin²θ`
+- `cos²θ`
+- `sin2θ`
+- trajectory formulas containing `tanθ`
+
+Implemented:
+- `θ` may start an inline math token,
+- `2θ` / degree-bearing expressions are tokenized as math,
+- `°` normalizes to `^{\\circ}`,
+- direct unit regressions cover theta, degree, sin/cos/tan,
+- 1F browser regression checks KaTeX annotations and page-level mobile overflow.
+
+MR13 must be promoted to FIXED only after the final exact-head CI/browser/deploy gate passes.

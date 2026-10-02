@@ -76,6 +76,7 @@ export function normalizeTextbookMath(value: string) {
     .replace(/lim\(Δt→0\)/g, '\\lim_{\\Delta t\\to0}')
     .replace(/Δ/g, '\\Delta ')
     .replace(/θ/g, '\\theta ')
+    .replace(/°/g, '^{\\circ}')
     .replace(/→/g, '\\to ')
     .replace(/−/g, '-')
     .replace(/×/g, '\\times ')
@@ -106,7 +107,7 @@ export function normalizeTextbookMath(value: string) {
 export function looksLikeTextbookMath(value: string) {
   const text = stripTextbookMarkdown(value)
   if (!text || /[ぁ-んァ-ヶ一-龠]/.test(text)) return false
-  if (/[=+\-−×÷/√²³⃗θΔ()₀₁₂₃₄₅₆₇₈₉ₓᵧₜ_]/.test(text)) return true
+  if (/[=+\-−×÷/√²³⃗θΔ°()₀₁₂₃₄₅₆₇₈₉ₓᵧₜ_]/.test(text)) return true
   if (/(?:sin|cos|tan)/.test(text)) return true
   if (/^[0-9]*[A-Za-z]{1,4}$/.test(text)) return true
   return false
@@ -127,7 +128,7 @@ export function splitTextbookInlineMath(value: string): InlineMathPart[] {
   const text = stripTextbookMarkdown(value)
   if (!text) return []
 
-  const tokenPattern = /(?:[A-Za-zΔ√][A-Za-z0-9Δθ√⃗̄₀₁₂₃₄₅₆₇₈₉ₓᵧₜ²³_{}().,]*(?:\s*[=+\-−×·/<>|]\s*[A-Za-z0-9Δθ√⃗̄₀₁₂₃₄₅₆₇₈₉ₓᵧₜ²³_{}().,+\-−×·/<>|]+)*|[POTDH][₀₁₂₃₄₅₆₇₈₉])/g
+  const tokenPattern = /(?:[A-Za-zΔ√θ][A-Za-z0-9Δθ√°⃗̄₀₁₂₃₄₅₆₇₈₉ₓᵧₜ²³_{}().,]*(?:\s*[=+\-−×·/<>|]\s*[A-Za-z0-9Δθ√°⃗̄₀₁₂₃₄₅₆₇₈₉ₓᵧₜ²³_{}().,+\-−×·/<>|]+)*|[0-9]+(?:θ|°)[A-Za-z0-9Δθ√°⃗̄₀₁₂₃₄₅₆₇₈₉ₓᵧₜ²³_{}().,]*(?:\s*[=+\-−×·/<>|]\s*[A-Za-z0-9Δθ√°⃗̄₀₁₂₃₄₅₆₇₈₉ₓᵧₜ²³_{}().,+\-−×·/<>|]+)*|[POTDH][₀₁₂₃₄₅₆₇₈₉])/g
 
   const parts: InlineMathPart[] = []
   let cursor = 0

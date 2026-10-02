@@ -1786,3 +1786,27 @@ Full 1E repair implemented:
 
 Counts:
 1E 6→22; Chapter 1 68→84; derivation groups 18→22; revision 4→5.
+
+
+---
+
+## 2026-10-02 — 1F full repair implementation
+
+The 1F audit found that the source physics chain was mostly correct, but several central derivation steps were still passive. The repair keeps later-unit support lighter than 1D/1E while returning meaningful decisions to the learner.
+
+Implemented:
+- explicit x/y sign convention and g>0 magnitude convention,
+- precise horizontal-force wording,
+- horizontal-position retrieval after F1,
+- active vertical position and time-free relation,
+- active highest-point time and final maximum-height relation,
+- F6a moved into the same trajectory-elimination chain,
+- active t=x/(v0 cosθ) and final y(x) reconstruction,
+- flight-time root selection based on physical meaning,
+- active reuse of flight time for range,
+- active double-angle retrieval and final range relation,
+- explicit no-drag / same-height conditions for the 45-degree result,
+- theta/degree/trig tokenizer-normalizer hardening and regressions.
+
+Target counts:
+1F 8→20; Chapter 1 84→96; revision 4→5.

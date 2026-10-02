@@ -48,4 +48,19 @@ describe('textbook math normalization', () => {
       part.type === 'math' && part.latex === '\\sqrt{(-10)^2+(-10)^2}',
     )).toBe(true)
   })
+
+  it('normalizes theta, degree signs, and trigonometric operators', () => {
+    expect(normalizeTextbookMath('θ=45°')).toBe('\\theta =45^{\\circ}')
+    expect(normalizeTextbookMath('2θ=90°')).toBe('2\\theta =90^{\\circ}')
+    expect(normalizeTextbookMath('sin²θ')).toBe('\\sin ^2\\theta')
+    expect(normalizeTextbookMath('cos²θ')).toBe('\\cos ^2\\theta')
+    expect(normalizeTextbookMath('sin2θ')).toBe('\\sin 2\\theta')
+  })
+
+  it('keeps theta-led and degree-bearing inline expressions inside math tokens', () => {
+    const parts = splitTextbookInlineMath('この条件は 2θ=90° を意味し、θ=45° となる。')
+    expect(parts.some((part) => part.type === 'math' && part.latex === '2\\theta =90^{\\circ}')).toBe(true)
+    expect(parts.some((part) => part.type === 'math' && part.latex === '\\theta =45^{\\circ}')).toBe(true)
+    expect(parts.some((part) => part.type === 'text' && (part.text.includes('θ=') || part.text.includes('90°')))).toBe(false)
+  })
 })

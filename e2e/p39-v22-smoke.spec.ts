@@ -325,10 +325,19 @@ test('1E applies prior formulas, derives the trajectory, solves the worked examp
   await expect(page.locator('.katex-error')).toHaveCount(0)
 })
 
-test('oblique projectile derivations render as compiled math in one chain', async ({ page }) => {
+test('1F actively derives oblique-projectile relations and keeps trig/angle math stable', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/physics-1f-oblique-projectile'))
 
-  for (const id of ['f1', 'f3', 'f4', 'f5a', 'f6a', 'f6', 'f7', 'f9']) {
+  for (const id of [
+    'f1', 'f2b',
+    'f3', 'f3b', 'f3c',
+    'f4', 'f4a',
+    'f5a', 'f5b',
+    'f6a', 'f6c', 'f6d', 'f6',
+    'f7', 'f7a', 'f7b',
+    'f8b', 'f8c', 'f8d',
+    'f9',
+  ]) {
     await solveHoleByTryingChoices(page, id)
   }
 
@@ -337,12 +346,37 @@ test('oblique projectile derivations render as compiled math in one chain', asyn
   await expect(body).not.toContainText('v_0_y')
   await expect(page.locator('.katex-error')).toHaveCount(0)
 
-  const highestTime = page.locator('[data-derivation-id="f-highest-time"]')
-  await expect(highestTime).toBeVisible()
-  await expect(highestTime.locator('.reading-formula-line')).toHaveCount(3)
+  const groups = [
+    ['f-vertical-motion', 4],
+    ['f-highest-time', 3],
+    ['f-highest-height', 4],
+    ['f-trajectory-elimination', 4],
+    ['f-flight-time', 3],
+    ['f-range', 4],
+  ] as const
 
-  const borderWidths = await highestTime.locator('.reading-formula-line').evaluateAll((elements) =>
-    elements.map((element) => getComputedStyle(element).borderTopWidth),
-  )
-  expect(borderWidths.every((width) => width === '0px')).toBe(true)
+  for (const [id, formulaCount] of groups) {
+    const chain = page.locator(`[data-derivation-id="${id}"]`)
+    await expect(chain).toHaveCount(1)
+    await expect(chain).toBeVisible()
+    await expect(chain.locator('.reading-formula-line')).toHaveCount(formulaCount)
+    const borders = await chain.locator('.reading-formula-line').evaluateAll((elements) =>
+      elements.map((element) => getComputedStyle(element).borderTopWidth),
+    )
+    expect(borders.every((width) => width === '0px')).toBe(true)
+  }
+
+  const tex = await page.locator('annotation[encoding="application/x-tex"]').allTextContents()
+  const joined = tex.join('\n')
+  expect(joined).toContain('\\sin')
+  expect(joined).toContain('\\cos')
+  expect(joined).toContain('\\tan')
+  expect(joined).toContain('2\\theta =90^{\\circ}')
+  expect(joined).toContain('\\theta =45^{\\circ}')
+
+  const viewport = await page.evaluate(() => ({
+    clientWidth: document.documentElement.clientWidth,
+    scrollWidth: document.documentElement.scrollWidth,
+  }))
+  expect(viewport.scrollWidth).toBeLessThanOrEqual(viewport.clientWidth + 1)
 })

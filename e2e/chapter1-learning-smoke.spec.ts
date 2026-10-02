@@ -53,9 +53,6 @@ async function clearState(page: Page) {
 }
 
 test.beforeEach(async ({ page }) => {
-  page.on('console', (message) => {
-    if (message.type() === 'error') console.log(`[browser-console:error] ${message.text()}`)
-  })
   await clearState(page)
 })
 

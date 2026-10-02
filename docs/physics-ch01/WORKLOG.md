@@ -1842,3 +1842,24 @@ Current state:
 - 1F revision = 5
 - MR13 CLOSED
 - user re-QA still OPEN.
+
+
+---
+
+## 2026-10-02 — 1G final-section full repair implementation
+
+The final Chapter-1 section was rebuilt to emphasize causal physics rather than a terminal-speed formula appearing as an isolated fact.
+
+Implemented:
+- learner actively cancels mass from the gravity-only equation,
+- k is defined as a positive resistance-strength parameter with SI unit kg/s,
+- drag magnitude kv is distinguished from the signed upward force −kv in the downward-positive convention,
+- canonical Figures 15–17 were reordered into the causal reasoning chain,
+- terminal speed wording was corrected to asymptotic approach under the linear-drag model,
+- learner completes v_t=mg/k,
+- numerical example now requires formula selection and calculation,
+- real-world caveat added that k depends on body and fluid properties,
+- dedicated 1G browser/mobile regression added.
+
+Target counts:
+1G 7→11; Chapter 1 96→100; revision 4→5; correct option positions 25/25/25/25.

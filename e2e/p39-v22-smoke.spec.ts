@@ -9,7 +9,7 @@ const units = [
   { id: 'physics-1d-acceleration', title: '加速度', firstHole: 'd1' },
   { id: 'physics-1e-horizontal-projectile', title: '水平投射', firstHole: 'e1' },
   { id: 'physics-1f-oblique-projectile', title: '斜方投射', firstHole: 'f1' },
-  { id: 'physics-1g-gravity-drag-terminal-velocity', title: '重力加速度・空気抵抗・終端速度', firstHole: 'g1' },
+  { id: 'physics-1g-gravity-drag-terminal-velocity', title: '重力加速度・空気抵抗・終端速度', firstHole: 'g1a' },
 ] as const
 
 async function solveHoleByTryingChoices(page: Page, itemId: string) {
@@ -323,6 +323,52 @@ test('1E applies prior formulas, derives the trajectory, solves the worked examp
   }))
   expect(layout.scrollWidth).toBeLessThanOrEqual(layout.clientWidth + 1)
   await expect(page.locator('.katex-error')).toHaveCount(0)
+})
+
+test('1G uses the canonical force/graph sequence and actively derives terminal velocity', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/physics-1g-gravity-drag-terminal-velocity'))
+
+  await solveHoleByTryingChoices(page, 'g1a')
+  await solveHoleByTryingChoices(page, 'g1')
+  await solveHoleByTryingChoices(page, 'g2')
+  await expect(page.locator('img[src*="gravity-vs-air-resistance.webp"]')).toBeVisible()
+
+  await solveHoleByTryingChoices(page, 'g3')
+  await expect(page.locator('img[src*="drag-force-stages.webp"]')).toBeVisible()
+  await expect(page.getByTestId('textbook-item-g4')).toBeVisible()
+
+  await solveHoleByTryingChoices(page, 'g4')
+  await expect(page.locator('img[src*="terminal-velocity-graph.webp"]')).toBeVisible()
+  await expect(page.getByTestId('textbook-item-g5')).toBeVisible()
+
+  for (const id of ['g5', 'g6', 'g6a', 'g6b', 'g7a', 'g7b']) {
+    await solveHoleByTryingChoices(page, id)
+  }
+
+  for (const id of ['g-gravity-only', 'g-drag-acceleration', 'g-terminal', 'g-terminal-example']) {
+    const chain = page.locator(`[data-derivation-id="${id}"]`)
+    await expect(chain).toHaveCount(1)
+    await expect(chain).toBeVisible()
+    const borders = await chain.locator('.reading-formula-line').evaluateAll((elements) =>
+      elements.map((element) => getComputedStyle(element).borderTopWidth),
+    )
+    expect(borders.every((width) => width === '0px')).toBe(true)
+  }
+
+  const body = page.locator('body')
+  await expect(body).toContainText('漸近的に近づく')
+  await expect(body).not.toContainText('v_t = mg/k')
+  await expect(page.locator('.katex-error')).toHaveCount(0)
+
+  const tex = (await page.locator('annotation[encoding="application/x-tex"]').allTextContents()).join('\n')
+  expect(tex).toContain('v_t')
+  expect(tex).toContain('mg/k')
+
+  const viewport = await page.evaluate(() => ({
+    clientWidth: document.documentElement.clientWidth,
+    scrollWidth: document.documentElement.scrollWidth,
+  }))
+  expect(viewport.scrollWidth).toBeLessThanOrEqual(viewport.clientWidth + 1)
 })
 
 test('1F actively derives oblique-projectile relations and keeps trig/angle math stable', async ({ page }) => {

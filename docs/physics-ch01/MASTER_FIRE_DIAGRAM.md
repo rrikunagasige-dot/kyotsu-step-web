@@ -2018,3 +2018,48 @@ Exact validated code HEAD:
 `48e9454fb0b4fd95702bfaf7a5a3fdc65e3510ef`
 
 Automated gate PASS does not replace user pedagogical QA.
+
+
+### 19.30 USER 1G FINAL-SECTION REPAIR
+
+```text
+gravity only
+  ma⃗ = mg⃗
+  ↓
+  G1a a⃗=g⃗
+  ↓
+  G1 mass independence
+  ↓
+drag direction G2
+  ↓
+Figure 15
+  ↓
+linear drag model f=kv, k>0
+  ↓
+signed force: +mg - kv
+  ↓
+G3 drag equation
+  ↓
+a=g-(k/m)v
+  ↓
+Figure 16
+  ↓
+G4 acceleration decreases
+  ↓
+Figure 17
+  ↓
+G5 slope=acceleration
+  ↓
+a→0, v→v_t asymptotically
+  ↓
+G6 a=0
+  ↓
+G6a/G6b terminal-speed derivation
+  ↓
+G7a/G7b numerical application
+  ↓
+Chapter-1 causal summary
+```
+
+Target:
+1G=11 / Chapter 1=100 / revision=5 / choices=25 each.

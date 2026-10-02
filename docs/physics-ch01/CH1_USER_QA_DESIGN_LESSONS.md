@@ -865,3 +865,33 @@ Examples:
 - reuse the just-derived flight time in the range formula.
 
 This preserves spaced retrieval without making the later unit feel like a duplicate of the previous one.
+
+
+---
+
+## 27. 1G planning lesson — causal physics and asymptotic language
+
+1G closes Chapter 1 by connecting force, acceleration, and the evolution of velocity.
+
+The important teaching chain is:
+
+```text
+speed increases
+→ drag increases
+→ resultant force decreases
+→ acceleration decreases
+→ v-t slope decreases
+→ velocity approaches a limiting value
+```
+
+The canonical force-evolution and v-t figures should participate in that reasoning before the related questions, not appear only after the explanation is complete.
+
+For a linear drag model, be precise about:
+- `f=kv` as the **magnitude** of drag,
+- the signed drag force being opposite the velocity,
+- `k>0` as the resistance-strength parameter,
+- terminal velocity being the limiting/steady value obtained from `a=0`,
+- a falling body approaching the terminal value asymptotically in the model rather than suddenly reaching it at a finite time.
+
+The terminal-speed formula also has to pass the application gate:
+derive `v_t=mg/k`, then require the learner to select and use it in the numerical example.

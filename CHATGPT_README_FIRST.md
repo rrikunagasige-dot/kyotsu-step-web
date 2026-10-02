@@ -1736,3 +1736,28 @@ Current live counts:
 
 MR13 theta/degree/trig rendering is CLOSED.
 P39/G61 user pedagogical re-QA remains OPEN.
+
+
+## 2026-10-02 USER 1G FULL REPAIR — FINAL CHAPTER SECTION
+
+Approved scope implemented:
+- active cancellation from ma⃗=mg⃗ to a⃗=g⃗,
+- precise definition of k and its SI unit,
+- distinction between drag magnitude kv and signed force −kv,
+- Figure 15 after the drag-direction question,
+- Figure 16 before the acceleration-change inference,
+- Figure 17 before the slope/acceleration inference,
+- asymptotically approaching terminal speed rather than finite-time sudden arrival,
+- active final-form reconstruction v_t=mg/k,
+- active worked example formula selection and numerical result,
+- note that real k depends on body/fluid properties,
+- dedicated 1G browser/mobile gate.
+
+Target current state:
+- 1G = 11 interactions,
+- Chapter 1 = 100 interactions,
+- choice positions = 25 / 25 / 25 / 25,
+- scaffold = strong 6 / medium 34 / light 60,
+- 1G revision 4 → 5.
+
+P39/G61 user pedagogical re-QA remains OPEN until the user checks the live App.

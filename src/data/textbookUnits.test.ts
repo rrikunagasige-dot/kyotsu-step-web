@@ -10,7 +10,7 @@ const expectedCounts: Record<string, number> = {
   '1D': 19,
   '1E': 22,
   '1F': 20,
-  '1G': 7,
+  '1G': 11,
 }
 
 function allItems() {
@@ -33,7 +33,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
     }
   })
 
-  it('preserves all 96 audited holes with an explicit source answer', () => {
+  it('preserves all 100 audited holes with an explicit source answer', () => {
     const counts = Object.fromEntries(
       builtInTextbookUnits.map((unit) => [
         unit.chapter?.unitCode,
@@ -41,10 +41,10 @@ describe('Chapter 1 continuous textbook catalog', () => {
       ]),
     )
     expect(counts).toEqual(expectedCounts)
-    expect(allItems()).toHaveLength(96)
+    expect(allItems()).toHaveLength(100)
 
     const answerLines = [...source.slice(source.indexOf('# 解答')).matchAll(/^([A-G]\d+[a-z]?)　(.+)$/gm)]
-    expect(answerLines).toHaveLength(96)
+    expect(answerLines).toHaveLength(100)
 
     for (const item of allItems()) {
       expect(item.choices).toHaveLength(4)
@@ -63,7 +63,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
       scaffoldCounts[item.scaffoldLevel] += 1
     }
 
-    expect(scaffoldCounts).toEqual({ strong: 6, medium: 34, light: 56 })
+    expect(scaffoldCounts).toEqual({ strong: 6, medium: 34, light: 60 })
 
     const lateItems = builtInTextbookUnits
       .filter((unit) => ['1F', '1G'].includes(unit.chapter?.unitCode ?? ''))
@@ -148,8 +148,17 @@ describe('Chapter 1 continuous textbook catalog', () => {
     expect(byId.f8c.choices).toContain('2sin²θ')
     expect(byId.f8d.answer).toBe('(v₀²/g)sin2θ')
     expect(byId.f9.answer).toBe('sin2θ=1')
+    expect(byId.g1a.answer).toBe('g⃗')
     expect(byId.g1.answer).toBe('変わらない')
     expect(byId.g2.answer).toBe('反対')
+    expect(byId.g3.answer).toBe('mg−kv')
+    expect(byId.g4.answer).toBe('小さくなる')
+    expect(byId.g5.answer).toBe('加速度')
+    expect(byId.g6.answer).toBe('0')
+    expect(byId.g6a.answer).toBe('kv_t')
+    expect(byId.g6b.answer).toBe('mg/k')
+    expect(byId.g7a.answer).toBe('mg/k')
+    expect(byId.g7b.answer).toBe('49')
   })
 
   it('keeps correct option positions balanced instead of teaching "always pick A"', () => {
@@ -159,7 +168,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
       expect(index).toBeGreaterThanOrEqual(0)
       distribution[index] += 1
     }
-    expect(distribution.reduce((sum, count) => sum + count, 0)).toBe(96)
+    expect(distribution.reduce((sum, count) => sum + count, 0)).toBe(100)
     expect(Math.max(...distribution) - Math.min(...distribution)).toBeLessThanOrEqual(1)
   })
 
@@ -185,8 +194,10 @@ describe('Chapter 1 continuous textbook catalog', () => {
       'f-trajectory-elimination',
       'f-flight-time',
       'f-range',
+      'g-gravity-only',
       'g-drag-acceleration',
       'g-terminal',
+      'g-terminal-example',
     ]
 
     const groups = new Map<string, TextbookReadingBlock[]>()
@@ -365,6 +376,30 @@ describe('Chapter 1 continuous textbook catalog', () => {
     )
     expect(rangeHoles).toEqual(['f8b', 'f8c', 'f8d'])
 
+    const gravityOnly = groups.get('g-gravity-only') ?? []
+    const gravityOnlyHoles = gravityOnly.flatMap((block) =>
+      block.type === 'paragraph' || block.type === 'formula'
+        ? block.parts.filter((part) => part.type === 'choice').map((part) => part.itemId)
+        : [],
+    )
+    expect(gravityOnlyHoles).toEqual(['g1a'])
+
+    const terminal = groups.get('g-terminal') ?? []
+    const terminalHoles = terminal.flatMap((block) =>
+      block.type === 'paragraph' || block.type === 'formula'
+        ? block.parts.filter((part) => part.type === 'choice').map((part) => part.itemId)
+        : [],
+    )
+    expect(terminalHoles).toEqual(['g6a', 'g6b'])
+
+    const terminalExample = groups.get('g-terminal-example') ?? []
+    const terminalExampleHoles = terminalExample.flatMap((block) =>
+      block.type === 'paragraph' || block.type === 'formula'
+        ? block.parts.filter((part) => part.type === 'choice').map((part) => part.itemId)
+        : [],
+    )
+    expect(terminalExampleHoles).toEqual(['g7a', 'g7b'])
+
     expect(groups.get('f-flight-time')?.some((block) => block.type === 'paragraph')).toBe(true)
   })
 
@@ -468,7 +503,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
 
   it('classifies symbolic monomials as formula answers', () => {
     const byId = Object.fromEntries(allItems().map((item) => [item.id, item]))
-    for (const id of ['d5a', 'd5b', 'd5c', 'd4b', 'd4c', 'd7a', 'd7', 'd7b', 'd7c', 'd7d', 'd9a', 'd9', 'e1a', 'e1b', 'e1c', 'e1d', 'e2a', 'e2b', 'e2c', 'e3a', 'e3b', 'e4a', 'e4b', 'e5a', 'e5b', 'e5c', 'e6a', 'e6c', 'f1', 'f2b', 'f3b', 'f3c', 'f4a', 'f5a', 'f5b', 'f6a', 'f6c', 'f6d', 'f7', 'f7a', 'f7b', 'f8b', 'f8c', 'f8d', 'f9', 'g3', 'g6a']) {
+    for (const id of ['d5a', 'd5b', 'd5c', 'd4b', 'd4c', 'd7a', 'd7', 'd7b', 'd7c', 'd7d', 'd9a', 'd9', 'e1a', 'e1b', 'e1c', 'e1d', 'e2a', 'e2b', 'e2c', 'e3a', 'e3b', 'e4a', 'e4b', 'e5a', 'e5b', 'e5c', 'e6a', 'e6c', 'f1', 'f2b', 'f3b', 'f3c', 'f4a', 'f5a', 'f5b', 'f6a', 'f6c', 'f6d', 'f7', 'f7a', 'f7b', 'f8b', 'f8c', 'f8d', 'f9', 'g1a', 'g3', 'g6a', 'g6b', 'g7a']) {
       expect(byId[id].answerType, id).toBe('formula')
     }
   })

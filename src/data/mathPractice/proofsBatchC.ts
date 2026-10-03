@@ -965,5 +965,116 @@ export const mathPracticeProofsBatchCSource: MathPracticeSourceQuestion[] = [
     ],
     fullExplanation: '√x が有理数だと仮定し、√x=r（r は有理数）とおく。両辺を2乗すると x=r²。有理数の平方は有理数なので x は有理数となるが、問題では x は無理数である。矛盾するため、√x は無理数である。',
   },
+  {
+    problemNo: 113,
+    section: 'proofs',
+    sectionTitle: '命題と証明',
+    title: '平方根と無理数',
+    estimatedSeconds: 300,
+    knowledgeTags: ['irrational-number', 'proof-by-contradiction', 'radical', 'rational-number'],
+    skillTags: ['law-selection', 'equation-building', 'calculation', 'conclusion'],
+    problem: [
+      { type: 'text', text: '実数 x が正の無理数であるとき、√x は無理数であることを証明せよ。' },
+    ],
+    guide: [
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '無理数であることを直接示しにくいので、結論の反対を仮定して矛盾を作る。まず何を仮定すればよいか考える。' }],
+      },
+      { type: 'blank', blankId: 'assumption' },
+      {
+        type: 'content',
+        blocks: [
+          { type: 'text', text: '仮定より、ある有理数 r を使って √x=r と書ける。ここから元の x を取り出す操作を選ぶ。' },
+        ],
+      },
+      { type: 'blank', blankId: 'operation' },
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '選んだ操作を行い、x と有理数 r の関係から x がどの数の集合に入るかを判断する。' }],
+      },
+      { type: 'blank', blankId: 'square-result' },
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '最後に、今得た x の性質を問題の条件「x は無理数」と比べ、背理法を閉じる。' }],
+      },
+      { type: 'blank', blankId: 'contradiction' },
+    ],
+    blanks: [
+      {
+        id: 'assumption',
+        prompt: '背理法の反対仮定として正しいのは',
+        choices: [
+          choice('sqrt-rational', '√x は有理数である。', true),
+          choice('sqrt-irrational', '√x は無理数である。'),
+          choice('x-rational', 'x は有理数である。'),
+        ],
+        skillTag: 'law-selection',
+        knowledgeTags: ['proof-by-contradiction', 'irrational-number'],
+        explanation: '示したい結論「√x は無理数」の反対を仮定するので、「√x は有理数」と仮定します。',
+      },
+      {
+        id: 'operation',
+        prompt: '√x=r から元の x を取り出す操作は',
+        choices: [
+          choice('square', '両辺を2乗する。', true),
+          choice('root-again', '両辺の平方根をさらに取る。'),
+          choice('subtract', '両辺から x を引く。'),
+        ],
+        skillTag: 'law-selection',
+        knowledgeTags: ['radical', 'proof-by-contradiction'],
+        explanation: '√x を外して x に戻すには、等式の両辺を2乗します。',
+      },
+      {
+        id: 'square-result',
+        prompt: '両辺を2乗した結果と、その意味は',
+        choices: [
+          choice('x-rational', 'x=r²。r は有理数なので r² も有理数、したがって x は有理数。', true),
+          choice('x-irrational', 'x=r²。r が有理数でも r² は必ず無理数。'),
+          choice('sqrt-square', '√x=r² となるので x の性質は分からない。'),
+        ],
+        skillTag: 'calculation',
+        knowledgeTags: ['rational-number', 'irrational-number', 'radical'],
+        explanation: '有理数どうしの積は有理数なので、有理数 r の2乗 r² も有理数です。したがって x=r² は有理数です。',
+      },
+      {
+        id: 'contradiction',
+        prompt: '証明を閉じる正しい結論は',
+        choices: [
+          choice('contradiction', 'x が有理数になるのは「x は無理数」という条件と矛盾する。よって反対仮定は誤りで、√x は無理数。', true),
+          choice('no-contradiction', 'x が有理数でも無理数でもよいので矛盾しない。'),
+          choice('x-positive', 'x>0 だけから √x が無理数だと分かる。'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['proof-by-contradiction', 'irrational-number'],
+        explanation: '仮定から x は有理数と出ましたが、問題では x は無理数です。この矛盾により √x が有理数という反対仮定が否定されます。',
+      },
+    ],
+    simulation: [
+      {
+        id: 's1',
+        label: '反対仮定',
+        prompt: '√x が無理数であることを背理法で示すときの仮定を選べ。',
+        answerType: 'single-choice',
+        choices: [choice('correct', '√x は有理数', true), choice('wrong', 'x は有理数')],
+        score: 2,
+        estimatedSeconds: 20,
+        knowledgeTags: ['proof-by-contradiction'],
+        skillTags: ['law-selection'],
+      },
+      {
+        id: 's2',
+        label: '核心',
+        prompt: '√x=r（r は有理数）から得るべき結論を選べ。',
+        answerType: 'single-choice',
+        choices: [choice('correct', 'x=r² は有理数', true), choice('wrong', 'x=r² は無理数')],
+        score: 2,
+        estimatedSeconds: 20,
+        knowledgeTags: ['rational-number', 'radical'],
+        skillTags: ['calculation'],
+      },
+    ],
+    fullExplanation: '√x が有理数だと仮定し、√x=r（r は有理数）とおく。両辺を2乗すると x=r²。有理数の2乗は有理数なので x は有理数となるが、これは「x は無理数」という条件と矛盾する。したがって √x は無理数である。',
+  },
 
 ]

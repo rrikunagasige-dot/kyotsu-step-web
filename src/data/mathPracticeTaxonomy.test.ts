@@ -44,14 +44,14 @@ describe('math practice title architecture', () => {
   it('keeps the reviewed set/proposition batches while completing the proof theme through 117', () => {
     const summary = buildMathPracticeTopicSummary(mathPracticePilotQuestions)
     expect(summary.counts['organize-sets']).toBe(11)
-    expect(summary.counts['read-propositions']).toBe(13)
+    expect(summary.counts['read-propositions']).toBe(14)
     expect(summary.counts['prove-propositions']).toBe(9)
     expect(summary.unclassified).toBe(0)
   })
 
   it('keeps proposition pilots in source order starting from 98', () => {
     const ordered = mathPracticeQuestionsForTopic(mathPracticePilotQuestions, 'read-propositions')
-    expect(ordered.map((question) => mathPracticeProblemNumber(question.questionId))).toEqual([98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 109, 118, 119])
+    expect(ordered.map((question) => mathPracticeProblemNumber(question.questionId))).toEqual([98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 109, 118, 119, 120])
   })
 
   it('opens the proof theme with problem 108 as its first reviewed question', () => {

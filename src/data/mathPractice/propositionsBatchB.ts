@@ -1598,5 +1598,176 @@ export const mathPracticePropositionsBatchBSource: MathPracticeSourceQuestion[] 
     ],
     fullExplanation: 'P は2の倍数、Q は3の倍数の集合。「であり」は共通部分、「でない」は補集合として読む。したがって6の倍数は P∩Q、奇数は P̄、3の倍数で奇数は Q∩P̄、3の倍数でない奇数は Q̄∩P̄ となる。',
   },
+  {
+    problemNo: 107,
+    section: 'propositions',
+    sectionTitle: '命題と条件',
+    title: '必要・十分条件の判定',
+    estimatedSeconds: 540,
+    knowledgeTags: ['necessary-condition', 'sufficient-condition', 'implication', 'geometry'],
+    skillTags: ['condition-reading', 'case-classification', 'conclusion'],
+    problem: [
+      { type: 'text', text: 'x、y、z は実数とする。次の□には、「必要条件であるが十分条件ではない」「十分条件であるが必要条件ではない」「必要十分条件である」「必要条件でも十分条件でもない」のうち、どれが入るか。' },
+      { type: 'latex', latex: '(1)\\;(x-y)(y-z)=0\\;\\text{ は }\\;x=y=z\\;\\text{ であるための□}' },
+      { type: 'latex', latex: '(2)\\;x>0\\;\\text{かつ}\\;y<0\\;\\text{ は }\\;xy<0\\;\\text{ であるための□}' },
+      { type: 'latex', latex: '(3)\\;x=y=0\\;\\text{ は }\\;xy=0\\;\\text{かつ}\\;x+y=0\\;\\text{ であるための□}' },
+      { type: 'text', text: '(4) ∠A<90° は、△ABC が鋭角三角形であるための□。' },
+      { type: 'latex', latex: '(5)\\;(a-b)(a^2+b^2-c^2)=0\\;\\text{ は直角二等辺三角形であるための□}' },
+    ],
+    guide: [
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: 'まず、p が q であるための何条件かは、p⇒q と q⇒p を別々に調べてから分類する。' }],
+      },
+      { type: 'blank', blankId: 'rule' },
+
+      {
+        type: 'content',
+        blocks: [
+          { type: 'text', text: '(1) q:x=y=z なら x-y=0、y-z=0 なので q⇒p は成り立つ。一方、p は2因子の少なくとも一方が0ならよい。例えば x=0,y=0,z=1 では p は成り立つが q は成り立たない。' },
+        ],
+      },
+      { type: 'blank', blankId: 'p1-classification' },
+
+      {
+        type: 'content',
+        blocks: [
+          { type: 'text', text: '(2) 正×負は負なので p⇒q は成り立つ。ただし積が負になる符号は「正×負」だけでなく「負×正」もある。' },
+        ],
+      },
+      { type: 'blank', blankId: 'p2-classification' },
+
+      {
+        type: 'content',
+        blocks: [
+          { type: 'text', text: '(3) x=y=0 を代入すれば右の2条件はともに成り立つ。逆に xy=0 なら少なくとも一方が0であり、さらに x+y=0 も使うともう一方も0になる。' },
+        ],
+      },
+      { type: 'blank', blankId: 'p3-classification' },
+
+      {
+        type: 'content',
+        blocks: [
+          { type: 'text', text: '(4) 鋭角三角形なら ∠A<90° は必ず成り立つ。逆に ∠A<90° だけでは残り2角までは決まらず、例えば A=60°、B=100°、C=20° は鋭角三角形ではない。' },
+        ],
+      },
+      { type: 'blank', blankId: 'p4-classification' },
+
+      {
+        type: 'content',
+        blocks: [
+          { type: 'text', text: '(5) 積が0なので、a=b または a²+b²=c²。前者は A=B の二等辺、後者は ∠C=90° の直角三角形を表す。正三角形 a=b=c は p を満たすが直角ではない。逆に、直角が A にある直角二等辺三角形では b=c、a=√2 b となり、一般にどちらの因子も0にならない。' },
+        ],
+      },
+      { type: 'blank', blankId: 'p5-classification' },
+    ],
+    blanks: [
+      {
+        id: 'rule',
+        prompt: 'p が q のための条件を判定するときの正しい対応は',
+        choices: [
+          choice('direction-map', 'p⇒q が真なら p は十分条件、q⇒p が真なら p は必要条件。', true),
+          choice('reversed-map', 'p⇒q が真なら p は必要条件、q⇒p が真なら p は十分条件。'),
+          choice('both-only', '両方向が真のときだけ必要・十分を判定できる。'),
+        ],
+        skillTag: 'condition-reading',
+        knowledgeTags: ['necessary-condition', 'sufficient-condition', 'implication'],
+        explanation: 'p⇒q が真なら p は q を保証するので十分条件、q⇒p が真なら q のために p が必要です。',
+      },
+      {
+        id: 'p1-classification',
+        prompt: '(1) の2方向から p を分類すると',
+        choices: [
+          choice('necessary-only', 'p⇒q:偽、q⇒p:真 → 必要条件だが十分条件ではない。', true),
+          choice('sufficient-only', 'p⇒q:真、q⇒p:偽 → 十分条件だが必要条件ではない。'),
+          choice('iff', '両方向とも真 → 必要十分条件。'),
+          choice('neither', '両方向とも偽 → 必要条件でも十分条件でもない。'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['necessary-condition', 'sufficient-condition'],
+        explanation: 'x=y=z なら積は0ですが、積が0でも x=y=z とは限りません。',
+      },
+      {
+        id: 'p2-classification',
+        prompt: '(2) の2方向から p を分類すると',
+        choices: [
+          choice('sufficient-only', 'p⇒q:真、q⇒p:偽 → 十分条件だが必要条件ではない。', true),
+          choice('necessary-only', 'p⇒q:偽、q⇒p:真 → 必要条件だが十分条件ではない。'),
+          choice('iff', '両方向とも真 → 必要十分条件。'),
+          choice('neither', '両方向とも偽 → 必要条件でも十分条件でもない。'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['necessary-condition', 'sufficient-condition'],
+        explanation: '正×負なら積は負ですが、積が負なら負×正の可能性もあるため逆向きは成り立ちません。',
+      },
+      {
+        id: 'p3-classification',
+        prompt: '(3) の2方向から p を分類すると',
+        choices: [
+          choice('iff', '両方向とも真 → 必要十分条件。', true),
+          choice('necessary-only', 'p⇒q:偽、q⇒p:真 → 必要条件だが十分条件ではない。'),
+          choice('sufficient-only', 'p⇒q:真、q⇒p:偽 → 十分条件だが必要条件ではない。'),
+          choice('neither', '両方向とも偽 → 必要条件でも十分条件でもない。'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['necessary-condition', 'sufficient-condition', 'equivalence'],
+        explanation: 'x=y=0 なら右の条件を満たし、右の2条件からも x=y=0 が導けるので必要十分です。',
+      },
+      {
+        id: 'p4-classification',
+        prompt: '(4) の2方向から p を分類すると',
+        choices: [
+          choice('necessary-only', 'p⇒q:偽、q⇒p:真 → 必要条件だが十分条件ではない。', true),
+          choice('sufficient-only', 'p⇒q:真、q⇒p:偽 → 十分条件だが必要条件ではない。'),
+          choice('iff', '両方向とも真 → 必要十分条件。'),
+          choice('neither', '両方向とも偽 → 必要条件でも十分条件でもない。'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['necessary-condition', 'sufficient-condition', 'geometry'],
+        explanation: '鋭角三角形なら A は鋭角ですが、A が鋭角だけでは他の角まで鋭角とは限りません。',
+      },
+      {
+        id: 'p5-classification',
+        prompt: '(5) の2方向から p を分類すると',
+        choices: [
+          choice('neither', '両方向とも偽 → 必要条件でも十分条件でもない。', true),
+          choice('necessary-only', 'p⇒q:偽、q⇒p:真 → 必要条件だが十分条件ではない。'),
+          choice('sufficient-only', 'p⇒q:真、q⇒p:偽 → 十分条件だが必要条件ではない。'),
+          choice('iff', '両方向とも真 → 必要十分条件。'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['necessary-condition', 'sufficient-condition', 'geometry'],
+        explanation: 'a=b だけでも p は成立するため十分ではなく、直角位置が A や B の直角二等辺三角形では p が成立しないので必要でもありません。',
+      },
+    ],
+    simulation: [
+      {
+        id: 's1', label: '(1)', prompt: '(x-y)(y-z)=0 は x=y=z であるための何条件か。', answerType: 'single-choice',
+        choices: [choice('necessary-only', '必要条件だが十分条件ではない。', true), choice('sufficient-only', '十分条件だが必要条件ではない。'), choice('iff', '必要十分条件。'), choice('neither', '必要条件でも十分条件でもない。')],
+        score: 2, estimatedSeconds: 30, knowledgeTags: ['necessary-condition', 'sufficient-condition'], skillTags: ['conclusion'],
+      },
+      {
+        id: 's2', label: '(2)', prompt: 'x>0 かつ y<0 は xy<0 であるための何条件か。', answerType: 'single-choice',
+        choices: [choice('sufficient-only', '十分条件だが必要条件ではない。', true), choice('necessary-only', '必要条件だが十分条件ではない。'), choice('iff', '必要十分条件。'), choice('neither', '必要条件でも十分条件でもない。')],
+        score: 2, estimatedSeconds: 30, knowledgeTags: ['necessary-condition', 'sufficient-condition'], skillTags: ['conclusion'],
+      },
+      {
+        id: 's3', label: '(3)', prompt: 'x=y=0 は xy=0 かつ x+y=0 であるための何条件か。', answerType: 'single-choice',
+        choices: [choice('iff', '必要十分条件。', true), choice('necessary-only', '必要条件だが十分条件ではない。'), choice('sufficient-only', '十分条件だが必要条件ではない。'), choice('neither', '必要条件でも十分条件でもない。')],
+        score: 2, estimatedSeconds: 30, knowledgeTags: ['necessary-condition', 'sufficient-condition', 'equivalence'], skillTags: ['conclusion'],
+      },
+      {
+        id: 's4', label: '(4)', prompt: '∠A<90° は △ABC が鋭角三角形であるための何条件か。', answerType: 'single-choice',
+        choices: [choice('necessary-only', '必要条件だが十分条件ではない。', true), choice('sufficient-only', '十分条件だが必要条件ではない。'), choice('iff', '必要十分条件。'), choice('neither', '必要条件でも十分条件でもない。')],
+        score: 2, estimatedSeconds: 30, knowledgeTags: ['necessary-condition', 'sufficient-condition', 'geometry'], skillTags: ['conclusion'],
+      },
+      {
+        id: 's5', label: '(5)', prompt: '(a-b)(a²+b²-c²)=0 は直角二等辺三角形であるための何条件か。', answerType: 'single-choice',
+        choices: [choice('neither', '必要条件でも十分条件でもない。', true), choice('necessary-only', '必要条件だが十分条件ではない。'), choice('sufficient-only', '十分条件だが必要条件ではない。'), choice('iff', '必要十分条件。')],
+        score: 2, estimatedSeconds: 35, knowledgeTags: ['necessary-condition', 'sufficient-condition', 'geometry'], skillTags: ['conclusion'],
+      },
+    ],
+    fullExplanation: '必要・十分条件は必ず p⇒q と q⇒p を別々に調べて決める。(1)必要のみ、(2)十分のみ、(3)必要十分、(4)必要のみ、(5)どちらでもない。特に(5)は直角二等辺三角形の直角位置が固定されていない点が重要である。',
+  },
 
 ]

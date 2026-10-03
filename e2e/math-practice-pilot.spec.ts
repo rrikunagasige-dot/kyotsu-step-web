@@ -38,7 +38,7 @@ test('98 opens the proposition theme directly and separates false propositions f
 
   await expect(page.getByRole('heading', { name: '98｜命題と真偽' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10'])
   await expect(page.getByTestId('math-topic-question-1')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -115,7 +115,7 @@ test('99 judges implication by set inclusion and uses counterexamples only where
 
   await expect(page.getByRole('heading', { name: '99｜含意の真偽' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10'])
   await expect(page.getByTestId('math-topic-question-2')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -191,7 +191,7 @@ test('100 constructs one valid counterexample per false implication without leak
 
   await expect(page.getByRole('heading', { name: '100｜反例' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10'])
   await expect(page.getByTestId('math-topic-question-3')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -256,7 +256,7 @@ test('101 treats negation as the complete complement and keeps each condition in
 
   await expect(page.getByRole('heading', { name: '101｜条件の否定' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10'])
   await expect(page.getByTestId('math-topic-question-4')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -314,7 +314,7 @@ test('102 maps AND/OR to intersection/union and handles open and closed endpoint
 
   await expect(page.getByRole('heading', { name: '102｜「かつ」と「または」' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10'])
   await expect(page.getByTestId('math-topic-question-5')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -380,7 +380,7 @@ test('103 negates compound conditions from their meaning and applies De Morgan w
 
   await expect(page.getByRole('heading', { name: '103｜複合条件の否定' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10'])
   await expect(page.getByTestId('math-topic-question-6')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -452,7 +452,7 @@ test('104 fixes necessary/sufficient direction first, then classifies six indepe
 
   await expect(page.getByRole('heading', { name: '104｜必要条件・十分条件' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10'])
   await expect(page.getByTestId('math-topic-question-7')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -533,7 +533,7 @@ test('105 proves true implications by all cases and false ones by one counterexa
 
   await expect(page.getByRole('heading', { name: '105｜命題の真偽' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10'])
   await expect(page.getByTestId('math-topic-question-8')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -598,7 +598,7 @@ test('106 translates number conditions into intersection and complement without 
 
   await expect(page.getByRole('heading', { name: '106｜集合で条件を表す' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10'])
   await expect(page.getByTestId('math-topic-question-9')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -646,6 +646,63 @@ test('106 translates number conditions into intersection and complement without 
   await expect(readingFlow).not.toContainText('Q̄∩P̄')
   await page.getByTestId('blank-math-practice-106-p4-result').click()
   await page.getByTestId('option-math-practice-106-p4-result-qbar-inter-pbar').click()
+
+  await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
+
+  const dimensions = await page.evaluate(() => ({
+    viewport: window.innerWidth,
+    page: document.documentElement.scrollWidth,
+  }))
+  expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
+})
+
+test('107 applies the necessary/sufficient direction rule to algebra, signs and geometry', async ({ page }) => {
+  await page.getByTestId('math-exercise-basic').click()
+  await page.getByTestId('math-topic-read-propositions').click()
+  await page.getByTestId('math-topic-question-10').click()
+
+  await expect(page.getByRole('heading', { name: '107｜必要・十分条件の判定' })).toBeVisible()
+  const nav = page.getByTestId('math-topic-question-nav')
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10'])
+  await expect(page.getByTestId('math-topic-question-10')).toHaveAttribute('aria-current', 'page')
+
+  const problem = page.getByTestId('standard-problem')
+  const readingFlow = page.getByTestId('math-practice-reading-flow')
+  const currentTarget = page.getByTestId('math-practice-current-target')
+
+  await expect(problem).toContainText('必要条件')
+  await expect(problem).toContainText('十分条件')
+  await expect(problem.locator('.katex-error')).toHaveCount(0)
+
+  await page.getByTestId('blank-math-practice-107-rule').click()
+  await page.getByTestId('option-math-practice-107-rule-direction-map').click()
+
+  await expect(currentTarget).toContainText('今の問い｜(1)')
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('双方向判定表')
+  await page.getByTestId('blank-math-practice-107-p1-classification').click()
+  await page.getByTestId('option-math-practice-107-p1-classification-necessary-only').click()
+
+  await expect(currentTarget).toContainText('今の問い｜(2)')
+  await expect(readingFlow).not.toContainText('x=0,y=0,z=1')
+  await page.getByTestId('blank-math-practice-107-p2-classification').click()
+  await page.getByTestId('option-math-practice-107-p2-classification-sufficient-only').click()
+
+  await expect(currentTarget).toContainText('今の問い｜(3)')
+  await expect(readingFlow).not.toContainText('負×正')
+  await page.getByTestId('blank-math-practice-107-p3-classification').click()
+  await page.getByTestId('option-math-practice-107-p3-classification-iff').click()
+
+  await expect(currentTarget).toContainText('今の問い｜(4)')
+  await expect(readingFlow).toContainText('A=60')
+  await expect(readingFlow).toContainText('B=100')
+  await page.getByTestId('blank-math-practice-107-p4-classification').click()
+  await page.getByTestId('option-math-practice-107-p4-classification-necessary-only').click()
+
+  await expect(currentTarget).toContainText('今の問い｜(5)')
+  await expect(readingFlow).toContainText('正三角形')
+  await expect(readingFlow).toContainText('直角が A')
+  await page.getByTestId('blank-math-practice-107-p5-classification').click()
+  await page.getByTestId('option-math-practice-107-p5-classification-neither').click()
 
   await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
 

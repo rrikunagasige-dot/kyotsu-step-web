@@ -89,6 +89,13 @@ Source:
 
 これらは `status: review` のため `textbookRepository.listPublished()` には出ず、通常setupでは「準備中」を維持する。
 
+## 追加監査メモ
+
+- proposition proof は practice taxonomy と同期し、同値 → 逆・裏・対偶 → 対偶証明 → 矛盾の順へ整理。
+- review unit の subtitle / objectives から、後で学ぶ用語や結論を先に見せる answer leakage を削除。
+- frontmatter leakage test を追加し、本文に入る前に概念名を先取りしないことを自動監査。
+- source → unit → learner flow の対応は `docs/MATH_TEXTBOOK_SOURCE_MAP.md` に分離して記録。
+
 ## CI strategy
 
 Math textbook dedicated CI:

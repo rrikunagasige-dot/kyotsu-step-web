@@ -83,7 +83,7 @@ export const mathPracticePropositionsBatchBSourceZh: MathPracticeSourceQuestion[
       },
       {
         id: 'p1-result',
-        prompt: '因为 23=3×7+2，所以 (1)',
+        prompt: '由这个计算可知，(1)',
         choices: [
           choice('true-proposition', '是命题，并且为真。', true),
           choice('false-proposition', '是命题，但为假。'),

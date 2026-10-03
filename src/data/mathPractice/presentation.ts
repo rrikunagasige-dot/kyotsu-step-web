@@ -466,6 +466,39 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
       dependsOn: ['basis'],
     },
   ],
+  'math-practice-100': [
+    {
+      id: 'basis',
+      kicker: { ja: 'まず確認', zh: '先确认' },
+      label: { ja: '反例が満たす条件を確認する', zh: '确认反例必须满足的条件' },
+      blankIds: ['rule'],
+      result: {
+        blankId: 'rule',
+        label: { ja: '反例の条件', zh: '反例条件' },
+      },
+    },
+    {
+      id: 's1',
+      kicker: { ja: '今の問い｜(1)', zh: '当前问题｜(1)' },
+      label: { ja: '平方で符号が消えることを使う', zh: '利用平方会消去正负号' },
+      blankIds: ['p1-counterexample'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's2',
+      kicker: { ja: '今の問い｜(2)', zh: '当前问题｜(2)' },
+      label: { ja: '絶対値と元の数の大小を分けて考える', zh: '区分绝对值大小与原数大小' },
+      blankIds: ['p2-counterexample'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's3',
+      kicker: { ja: '今の問い｜(3)', zh: '当前问题｜(3)' },
+      label: { ja: '合成数になる奇数を探す', zh: '寻找使结果成为合数的奇数' },
+      blankIds: ['p3-counterexample'],
+      dependsOn: ['basis'],
+    },
+  ],
 }
 
 function localBlankId(questionId: string, fullBlankId: string) {
@@ -516,5 +549,6 @@ export function mathPracticeUsesSubproblemCompression(questionId: string) {
     'math-practice-097',
     'math-practice-098',
     'math-practice-099',
+    'math-practice-100',
   ].includes(questionId)
 }

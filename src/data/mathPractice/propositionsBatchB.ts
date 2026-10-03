@@ -403,4 +403,159 @@ export const mathPracticePropositionsBatchBSource: MathPracticeSourceQuestion[] 
     fullExplanation: '命題 p⇒q の真偽は、前件の条件集合 P が後件の条件集合 Q に含まれるかで判定できる。P⊆Q なら真であり、含まれない場合は P に属して Q に属さない値を1つ示せば反例となる。絶対値を含む条件は区間へ直すと包含関係を確認しやすい。',
   },
 
+  {
+    problemNo: 100,
+    section: 'propositions',
+    sectionTitle: '命題と条件',
+    title: '反例',
+    estimatedSeconds: 360,
+    knowledgeTags: ['counterexample', 'implication', 'absolute-value', 'prime-number'],
+    skillTags: ['condition-reading', 'case-classification', 'conclusion'],
+    problem: [
+      { type: 'text', text: 'x、y は実数、n は自然数とする。次の命題が偽であることを示せ。' },
+      { type: 'latex', latex: '(1)\\;x^2=3\\Rightarrow x=\\sqrt{3}' },
+      { type: 'latex', latex: '(2)\\;|x|>|y|\\Rightarrow x>y' },
+      { type: 'latex', latex: '(3)\\;n\\text{ は奇数}\\Rightarrow 10n+1\\text{ は素数}' },
+    ],
+    guide: [
+      {
+        type: 'content',
+        blocks: [{
+          type: 'text',
+          text: 'まず、命題が偽であることを1つの具体例で示すとき、その例が満たすべき条件を確認する。',
+        }],
+      },
+      { type: 'blank', blankId: 'rule' },
+
+      {
+        type: 'content',
+        blocks: [{
+          type: 'text',
+          text: '(1) は平方すると符号が消えることに注目する。前件を満たしながら、後件に書かれた値とは異なる解を選ぶ。',
+        }],
+      },
+      { type: 'blank', blankId: 'p1-counterexample' },
+
+      {
+        type: 'content',
+        blocks: [{
+          type: 'text',
+          text: '(2) は絶対値の大小と、符号を含む元の数の大小が一致しない例を作る。y=1 と固定して考える。',
+        }],
+      },
+      { type: 'blank', blankId: 'p2-counterexample' },
+
+      {
+        type: 'content',
+        blocks: [{
+          type: 'text',
+          text: '(3) は奇数 n の中から、10n+1 が合成数になるものを探す。',
+        }],
+      },
+      { type: 'blank', blankId: 'p3-counterexample' },
+      {
+        type: 'content',
+        blocks: [{ type: 'latex', latex: '10\\cdot5+1=51=3\\times17' }],
+      },
+    ],
+    blanks: [
+      {
+        id: 'rule',
+        prompt: '偽を示す反例として必要なのは',
+        choices: [
+          choice('antecedent-true-consequent-false', '前件を満たし、後件を満たさない具体例である。', true),
+          choice('both-true', '前件と後件をともに満たす具体例である。'),
+          choice('antecedent-false', '前件を満たさない具体例であれば何でもよい。'),
+        ],
+        skillTag: 'condition-reading',
+        knowledgeTags: ['counterexample', 'implication'],
+        explanation: '含意 p⇒q を偽にするには、p が真なのに q が偽になる具体例が1つあれば十分です。',
+      },
+      {
+        id: 'p1-counterexample',
+        prompt: '(1)の反例として使えるのは',
+        choices: [
+          choice('negative-root', 'x=-√3', true),
+          choice('positive-root', 'x=√3'),
+          choice('zero', 'x=0'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['counterexample', 'implication'],
+        explanation: 'x=-√3 なら x²=3 を満たしますが、x=√3 ではないので後件を満たしません。',
+      },
+      {
+        id: 'p2-counterexample',
+        prompt: 'y=1 としたとき、(2)の反例になる x は',
+        choices: [
+          choice('minus-two', 'x=-2', true),
+          choice('two', 'x=2'),
+          choice('half', 'x=1/2'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['counterexample', 'absolute-value'],
+        explanation: 'x=-2,y=1 なら |x|=2>|y|=1 ですが、-2>1 は成り立ちません。',
+      },
+      {
+        id: 'p3-counterexample',
+        prompt: '奇数 n のうち、(3)の反例になるのは',
+        choices: [
+          choice('five', 'n=5', true),
+          choice('one', 'n=1'),
+          choice('three', 'n=3'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['counterexample', 'prime-number'],
+        explanation: 'n=5 は奇数ですが、10n+1=51=3×17 は合成数なので反例になります。',
+      },
+    ],
+    simulation: [
+      {
+        id: 's1',
+        label: '(1)',
+        prompt: 'x²=3 ⇒ x=√3 を偽と示す反例を選べ。',
+        answerType: 'single-choice',
+        choices: [
+          choice('negative-root', 'x=-√3', true),
+          choice('positive-root', 'x=√3'),
+          choice('zero', 'x=0'),
+        ],
+        score: 2,
+        estimatedSeconds: 30,
+        knowledgeTags: ['counterexample', 'implication'],
+        skillTags: ['case-classification'],
+      },
+      {
+        id: 's2',
+        label: '(2)',
+        prompt: '|x|>|y| ⇒ x>y を偽と示す反例を選べ。',
+        answerType: 'single-choice',
+        choices: [
+          choice('minus-two-one', 'x=-2, y=1', true),
+          choice('two-one', 'x=2, y=1'),
+          choice('half-one', 'x=1/2, y=1'),
+        ],
+        score: 2,
+        estimatedSeconds: 30,
+        knowledgeTags: ['counterexample', 'absolute-value'],
+        skillTags: ['case-classification'],
+      },
+      {
+        id: 's3',
+        label: '(3)',
+        prompt: 'n が奇数 ⇒ 10n+1 は素数 を偽と示す反例を選べ。',
+        answerType: 'single-choice',
+        choices: [
+          choice('five', 'n=5', true),
+          choice('one', 'n=1'),
+          choice('three', 'n=3'),
+        ],
+        score: 2,
+        estimatedSeconds: 30,
+        knowledgeTags: ['counterexample', 'prime-number'],
+        skillTags: ['case-classification'],
+      },
+    ],
+    fullExplanation: '命題 p⇒q が偽であることを示すには、前件 p を満たすのに後件 q を満たさない反例を1つ示せばよい。平方では符号、絶対値では元の数の符号、素数条件では合成数になる具体例に注目すると反例を作りやすい。',
+  },
+
 ]

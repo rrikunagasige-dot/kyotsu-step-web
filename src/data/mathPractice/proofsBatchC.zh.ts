@@ -783,5 +783,104 @@ export const mathPracticeProofsBatchCSourceZh: MathPracticeSourceQuestion[] = [
     ],
     fullExplanation: '利用 √3 的无理性时，反设目标数为有理数，再把 √3 单独表示出来。(1) 由 1+√3=r 得 √3=r-1；(2) 先有理化得到 1/(2+√3)=2-√3，再由 2-√3=r 得 √3=2-r。两种情况下右边都是有理数，从而与 √3 是无理数矛盾，所以原数均为无理数。',
   },
+  {
+    problemNo: 113,
+    section: 'proofs',
+    sectionTitle: '命题与证明',
+    title: '平方根与无理数',
+    estimatedSeconds: 300,
+    knowledgeTags: ['irrational-number', 'proof-by-contradiction', 'radical', 'rational-number'],
+    skillTags: ['law-selection', 'equation-building', 'calculation', 'conclusion'],
+    problem: [
+      { type: 'text', text: '若实数 x 是正的无理数，证明 √x 是无理数。' },
+    ],
+    guide: [
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '用反证法，假设结论“√x 是无理数”的反面。把假设得到的有理数记为 r 并写成等式。' }],
+      },
+      { type: 'blank', blankId: 'assumption' },
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '由 √x=r 恢复原来的 x，需要对等式两边做同一种运算。' }],
+      },
+      { type: 'blank', blankId: 'operation' },
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '利用运算后的等式以及 r 是有理数，判断 x 属于哪类数。' }],
+      },
+      { type: 'blank', blankId: 'square-result' },
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '最后把刚得到的 x 的性质与题设“x 是无理数”比较，完成反证。' }],
+      },
+      { type: 'blank', blankId: 'contradiction' },
+    ],
+    blanks: [
+      {
+        id: 'assumption',
+        prompt: '用有理数 r 写出反证法的反设',
+        choices: [
+          choice('sqrt-rational', '假设 √x 是有理数，并存在有理数 r 使 √x=r。', true),
+          choice('sqrt-irrational', '假设 √x 是无理数，并写成 √x=r。'),
+          choice('x-rational', '假设 x 是有理数，并写成 x=r。'),
+        ],
+        skillTag: 'law-selection',
+        knowledgeTags: ['irrational-number', 'proof-by-contradiction'],
+        explanation: '要证明 √x 是无理数，反设应是 √x 为有理数，再写成 √x=r。',
+      },
+      {
+        id: 'operation',
+        prompt: '由 √x=r 得到 x 应做什么',
+        choices: [
+          choice('square', '等式两边平方。', true),
+          choice('sqrt-again', '等式两边再开平方。'),
+          choice('subtract', '等式两边都减去 x。'),
+        ],
+        skillTag: 'law-selection',
+        knowledgeTags: ['radical', 'proof-by-contradiction'],
+        explanation: '要消去平方根并恢复 x，应对等式两边平方。',
+      },
+      {
+        id: 'square-result',
+        prompt: '两边平方后可以得到',
+        choices: [
+          choice('x-rational', 'x=r²。r 是有理数，所以 r² 也是有理数，因此 x 是有理数。', true),
+          choice('x-r-rational', 'x=r，因此 x 是有理数。'),
+          choice('x-r-squared-irrational', 'x=r²，但有理数的平方一定是无理数。'),
+        ],
+        skillTag: 'calculation',
+        knowledgeTags: ['rational-number', 'radical'],
+        explanation: '平方得到 x=r²；有理数相乘仍是有理数，因此 r² 是有理数。',
+      },
+      {
+        id: 'contradiction',
+        prompt: '正确的最终结论是',
+        choices: [
+          choice('contradiction', '推出 x 是有理数，但题设给出 x 是无理数，产生矛盾。因此 √x 是无理数。', true),
+          choice('no-contradiction', 'x 可以同时是有理数和无理数，因此没有矛盾。'),
+          choice('x-rational-final', '由矛盾可知 x 最终是有理数。'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['irrational-number', 'proof-by-contradiction'],
+        explanation: '反设导致 x 变成有理数，与题设 x 是无理数冲突，因此反设错误。',
+      },
+    ],
+    simulation: [
+      {
+        id: 's1',
+        label: '反证法',
+        prompt: '假设 √x 是有理数 r 后，通向矛盾的式子是',
+        answerType: 'single-choice',
+        choices: [choice('correct', 'x=r²', true), choice('wrong', 'x=r')],
+        score: 2,
+        estimatedSeconds: 25,
+        knowledgeTags: ['proof-by-contradiction', 'radical'],
+        skillTags: ['calculation'],
+      },
+    ],
+    fullExplanation: '反设 √x 是有理数，令 √x=r，其中 r 是有理数。两边平方得 x=r²，而有理数的平方仍是有理数，所以 x 会成为有理数。这与题设 x 是无理数矛盾，因此 √x 是无理数。',
+  },
+
 
 ]

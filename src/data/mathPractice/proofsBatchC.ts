@@ -867,5 +867,104 @@ export const mathPracticeProofsBatchCSource: MathPracticeSourceQuestion[] = [
     ],
     fullExplanation: '√3 の無理性を使うには、対象が有理数だと仮定して √3 を有理数だけから作れる式として取り出す。(1) は 1+√3=r から √3=r-1。(2) はまず 1/(2+√3)=2-√3 と有理化し、2-√3=r から √3=2-r。どちらも右辺が有理数となって √3 の無理性に矛盾するので、元の数は無理数である。',
   },
+  {
+    problemNo: 113,
+    section: 'proofs',
+    sectionTitle: '命題と証明',
+    title: '平方根と無理数',
+    estimatedSeconds: 300,
+    knowledgeTags: ['irrational-number', 'proof-by-contradiction', 'radical', 'rational-number'],
+    skillTags: ['law-selection', 'equation-building', 'calculation', 'conclusion'],
+    problem: [
+      { type: 'text', text: '実数 x が正の無理数であるとき、√x は無理数であることを証明せよ。' },
+    ],
+    guide: [
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '背理法で、結論「√x は無理数」の反対を仮定する。仮定した有理数を r とおいて式にする。' }],
+      },
+      { type: 'blank', blankId: 'assumption' },
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '√x=r から元の x を取り出すには、両辺に同じ操作を行う。' }],
+      },
+      { type: 'blank', blankId: 'operation' },
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '操作後の式と、r が有理数であることを使って x がどの数の集合に入るかを判断する。' }],
+      },
+      { type: 'blank', blankId: 'square-result' },
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '最後に、今得た x の性質を問題の仮定「x は無理数」と比べて背理法を閉じる。' }],
+      },
+      { type: 'blank', blankId: 'contradiction' },
+    ],
+    blanks: [
+      {
+        id: 'assumption',
+        prompt: '背理法の反対仮定を有理数 r を使って書くと',
+        choices: [
+          choice('sqrt-rational', '√x は有理数と仮定し、ある有理数 r により √x=r とおく。', true),
+          choice('sqrt-irrational', '√x は無理数と仮定し、√x=r とおく。'),
+          choice('x-rational', 'x は有理数と仮定し、x=r とおく。'),
+        ],
+        skillTag: 'law-selection',
+        knowledgeTags: ['irrational-number', 'proof-by-contradiction'],
+        explanation: '示したい結論の反対として √x が有理数だと仮定し、有理数 r を使って √x=r と表します。',
+      },
+      {
+        id: 'operation',
+        prompt: '√x=r から x を取り出す操作は',
+        choices: [
+          choice('square', '両辺を2乗する。', true),
+          choice('sqrt-again', '両辺の平方根をさらにとる。'),
+          choice('subtract', '両辺から x を引く。'),
+        ],
+        skillTag: 'law-selection',
+        knowledgeTags: ['radical', 'proof-by-contradiction'],
+        explanation: '平方根を外して元の x に戻すには、等式の両辺を2乗します。',
+      },
+      {
+        id: 'square-result',
+        prompt: '両辺を2乗した後に言えることは',
+        choices: [
+          choice('x-rational', 'x=r²。r は有理数なので r² も有理数、したがって x は有理数。', true),
+          choice('x-r-rational', 'x=r。r が有理数なので x は有理数。'),
+          choice('x-r-squared-irrational', 'x=r² だが、有理数の平方は必ず無理数。'),
+        ],
+        skillTag: 'calculation',
+        knowledgeTags: ['rational-number', 'radical'],
+        explanation: '√x=r を2乗すると x=r²。有理数どうしの積は有理数なので r² も有理数です。',
+      },
+      {
+        id: 'contradiction',
+        prompt: '証明を閉じる正しい結論は',
+        choices: [
+          choice('contradiction', 'x が有理数となるが、問題では x は無理数。矛盾するので、√x は無理数である。', true),
+          choice('no-contradiction', 'x が有理数でも無理数でもよいので矛盾しない。'),
+          choice('x-rational-final', '矛盾から x は有理数であると結論する。'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['irrational-number', 'proof-by-contradiction'],
+        explanation: '背理法の仮定から x が有理数になりましたが、与えられた x は無理数です。この矛盾により反対仮定が否定されます。',
+      },
+    ],
+    simulation: [
+      {
+        id: 's1',
+        label: '背理法',
+        prompt: '√x が有理数 r だと仮定した後、矛盾へつながる式を選べ。',
+        answerType: 'single-choice',
+        choices: [choice('correct', 'x=r²', true), choice('wrong', 'x=r')],
+        score: 2,
+        estimatedSeconds: 25,
+        knowledgeTags: ['proof-by-contradiction', 'radical'],
+        skillTags: ['calculation'],
+      },
+    ],
+    fullExplanation: '√x が有理数だと仮定し、√x=r（r は有理数）とおく。両辺を2乗すると x=r²。有理数の平方は有理数なので x は有理数となるが、問題では x は無理数である。矛盾するため、√x は無理数である。',
+  },
+
 
 ]

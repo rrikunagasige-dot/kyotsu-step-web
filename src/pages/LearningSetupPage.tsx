@@ -8,6 +8,7 @@ import type { TextbookUnit } from '../domain/textbookSchema'
 import { textbookRepository } from '../repositories/textbookRepository'
 import { physicsTextbookParts } from '../data/textbook/chapterCatalog'
 import { chapter1LearningChunks, chapter1Localized } from '../data/textbook/ch01/chapter1Architecture'
+import { mathTextbookTopics } from '../data/textbook/math'
 import { getQuestionCatalog, useAppStore } from '../stores/useAppStore'
 import { useI18n } from '../i18n/runtime'
 import { subjectLabel } from '../i18n/labels'
@@ -134,10 +135,9 @@ export function LearningSetupPage() {
   const changeMode = (next: LearningMode) => {
     setMode(next)
     if (next === 'textbook') {
-      setSubject('physics')
       setActiveTopic(null)
       setMathExerciseType(null)
-        setActiveMathCommonTestArea(null)
+      setActiveMathCommonTestArea(null)
       setQuestionId('')
       return
     }
@@ -211,131 +211,195 @@ export function LearningSetupPage() {
 
       <NumberedSection number="02" title={text('科目', '科目')}>
         <div className="segmented-control" role="group" aria-label={text('科目', '科目')}>
-          {(mode === 'textbook' ? ['physics'] : ['math-1a', 'physics'] as Question['subject'][]).map((value) => (
+          {(['math-1a', 'physics'] as Question['subject'][]).map((value) => (
             <button type="button" key={value} aria-pressed={subject === value} onClick={() => changeSubject(value as Question['subject'])}>
               {subjectLabel(value as Question['subject'], language)}
             </button>
           ))}
         </div>
-        {mode === 'textbook' && <p className="field-help">{text('現在は物理の教科書モードを先行実装しています。', '当前先实现物理教科书模式。')}</p>}
       </NumberedSection>
 
       {mode === 'textbook' ? (
         <NumberedSection
           number="03"
-          title={text('章・単元', '章节・单元')}
-          description={text('単元名を押すと、そのまま教材本文を開きます。', '点击单元名称即可直接打开教材正文。')}
+          title={subject === 'math-1a' ? text('章・テーマ', '章节・主题') : text('章・単元', '章节・单元')}
+          description={text('項目名を押すと、そのまま教材本文を開きます。', '点击项目名称即可直接打开教材正文。')}
         >
-          <div className="textbook-part-list" data-testid="textbook-part-list">
-            {physicsTextbookParts.map((part) => (
-              <section className="textbook-part-group" data-testid={`textbook-part-${part.partNumber}`} key={part.partId}>
+          {subject === 'physics' ? (
+            <div className="textbook-part-list" data-testid="textbook-part-list">
+              {physicsTextbookParts.map((part) => (
+                <section className="textbook-part-group" data-testid={`textbook-part-${part.partNumber}`} key={part.partId}>
+                  <header className="textbook-part-heading">
+                    <span>{text(`第${part.partNumber}部`, `第${part.partNumber}部`)}</span>
+                    <strong>{part.partTitle}</strong>
+                  </header>
+
+                  <div className="textbook-chapter-list">
+                    {part.chapters.map((chapter) => {
+                      const chapterUnits = textbookUnits
+                        .filter((unit) => unit.chapter?.chapterId === chapter.chapterId)
+                        .sort((left, right) => (left.chapter?.orderInChapter ?? 0) - (right.chapter?.orderInChapter ?? 0))
+                      const available = chapterUnits.length > 0
+
+                      return (
+                        <article
+                          className={`textbook-chapter-card${available ? '' : ' textbook-chapter-card--pending'}`}
+                          data-testid={`textbook-chapter-${chapter.chapterId}`}
+                          key={chapter.chapterId}
+                        >
+                          <header>
+                            <span>{text(`第${chapter.chapterNumber}章`, `第${chapter.chapterNumber}章`)}</span>
+                            <div>
+                              <strong>{chapter.chapterTitle}</strong>
+                              <small>
+                                {available
+                                  ? chapter.chapterId === 'physics-ch01-motion'
+                                    ? text('3 テーマ', '3 个主题')
+                                    : text(`${chapterUnits.length} 単元`, `${chapterUnits.length} 个单元`)
+                                  : text('準備中', '准备中')}
+                              </small>
+                            </div>
+                          </header>
+
+                          {available ? (
+                            chapter.chapterId === 'physics-ch01-motion' ? (
+                              <div className="textbook-unit-grid textbook-chunk-grid" data-testid="chapter1-chunk-grid">
+                                {chapter1LearningChunks.map((chunk) => {
+                                  const chunkUnits = chunk.unitCodes
+                                    .map((code) => chapterUnits.find((unit) => unit.chapter?.unitCode === code))
+                                    .filter((candidate): candidate is TextbookUnit => Boolean(candidate))
+                                  if (chunkUnits.length === 0) return null
+
+                                  const summaries = chunkUnits.map((unit) =>
+                                    textbookUnitProgress(unit, textbookProgress[unit.unitId]),
+                                  )
+                                  const completed = summaries.reduce((sum, summary) => sum + summary.completed, 0)
+                                  const total = summaries.reduce((sum, summary) => sum + summary.total, 0)
+                                  const percent = total > 0 ? Math.round((completed / total) * 100) : 0
+                                  const resumeUnit = chunkUnits.find((unit) => {
+                                    const summary = textbookUnitProgress(unit, textbookProgress[unit.unitId])
+                                    return summary.completed < summary.total
+                                  }) ?? chunkUnits[0]
+
+                                  return (
+                                    <Link
+                                      className="textbook-unit-link textbook-chunk-link"
+                                      data-testid={`textbook-chunk-${chunk.id}`}
+                                      key={chunk.id}
+                                      to={`/learning/textbook/${resumeUnit.unitId}`}
+                                    >
+                                      <div>
+                                        <strong>{chapter1Localized(chunk.title, language)}</strong>
+                                        <small className="textbook-chunk-flow">{chapter1Localized(chunk.flow, language)}</small>
+                                        <small>{text(`${completed}/${total} 完了`, `已完成 ${completed}/${total}`)}</small>
+                                      </div>
+                                      <span className="textbook-unit-percent">{percent}%</span>
+                                    </Link>
+                                  )
+                                })}
+                              </div>
+                            ) : (
+                              <div className="textbook-unit-grid">
+                                {chapterUnits.map((unit) => {
+                                  const unitProgress = textbookProgress[unit.unitId]
+                                  const summary = textbookUnitProgress(unit, unitProgress)
+                                  return (
+                                    <Link
+                                      className="textbook-unit-link"
+                                      data-testid={`textbook-unit-${unit.unitId}`}
+                                      key={unit.unitId}
+                                      to={`/learning/textbook/${unit.unitId}`}
+                                    >
+                                      <div>
+                                        <strong>{displayTextbookUnitTitle(unit)}</strong>
+                                        <small>
+                                          {unitProgress
+                                            ? text(`${summary.completed}/${summary.total} 完了`, `已完成 ${summary.completed}/${summary.total}`)
+                                            : text('未開始', '未开始')}
+                                        </small>
+                                      </div>
+                                      <span className="textbook-unit-percent">{summary.percent}%</span>
+                                    </Link>
+                                  )
+                                })}
+                              </div>
+                            )
+                          ) : (
+                            <p className="textbook-chapter-pending">
+                              {text('教材データを準備中です。', '教材数据正在准备中。')}
+                            </p>
+                          )}
+                        </article>
+                      )
+                    })}
+                  </div>
+                </section>
+              ))}
+            </div>
+          ) : (
+            <div className="textbook-part-list" data-testid="math-textbook-topic-list">
+              <section className="textbook-part-group" data-testid="math-textbook-chapter-3">
                 <header className="textbook-part-heading">
-                  <span>{text(`第${part.partNumber}部`, `第${part.partNumber}部`)}</span>
-                  <strong>{part.partTitle}</strong>
+                  <span>{text('第3章', '第3章')}</span>
+                  <strong>{text('集合と命題', '集合与命题')}</strong>
                 </header>
 
-                <div className="textbook-chapter-list">
-                  {part.chapters.map((chapter) => {
-                    const chapterUnits = textbookUnits
-                      .filter((unit) => unit.chapter?.chapterId === chapter.chapterId)
-                      .sort((left, right) => (left.chapter?.orderInChapter ?? 0) - (right.chapter?.orderInChapter ?? 0))
-                    const available = chapterUnits.length > 0
+                <div className="textbook-unit-grid textbook-chunk-grid">
+                  {mathTextbookTopics.map((topic) => {
+                    const topicUnits = textbookUnits.filter((unit) =>
+                      unit.subject === 'math-1a' &&
+                      topic.unitIds.some((unitId) => unitId === unit.unitId),
+                    )
+
+                    if (topicUnits.length === 0) {
+                      return (
+                        <div
+                          className="textbook-unit-link textbook-chunk-link textbook-unit-link--pending"
+                          data-testid={`math-textbook-topic-${topic.id}`}
+                          aria-disabled="true"
+                          key={topic.id}
+                        >
+                          <div>
+                            <strong>{topic.label[language]}</strong>
+                            <small className="textbook-chunk-flow">{topic.flow[language]}</small>
+                            <small>{text('準備中', '准备中')}</small>
+                          </div>
+                          <span className="textbook-unit-percent">—</span>
+                        </div>
+                      )
+                    }
+
+                    const summaries = topicUnits.map((unit) =>
+                      textbookUnitProgress(unit, textbookProgress[unit.unitId]),
+                    )
+                    const completed = summaries.reduce((sum, summary) => sum + summary.completed, 0)
+                    const total = summaries.reduce((sum, summary) => sum + summary.total, 0)
+                    const percent = total > 0 ? Math.round((completed / total) * 100) : 0
+                    const resumeUnit = topicUnits.find((unit) => {
+                      const summary = textbookUnitProgress(unit, textbookProgress[unit.unitId])
+                      return summary.completed < summary.total
+                    }) ?? topicUnits[0]
 
                     return (
-                      <article
-                        className={`textbook-chapter-card${available ? '' : ' textbook-chapter-card--pending'}`}
-                        data-testid={`textbook-chapter-${chapter.chapterId}`}
-                        key={chapter.chapterId}
+                      <Link
+                        className="textbook-unit-link textbook-chunk-link"
+                        data-testid={`math-textbook-topic-${topic.id}`}
+                        key={topic.id}
+                        to={`/learning/textbook/${resumeUnit.unitId}`}
                       >
-                        <header>
-                          <span>{text(`第${chapter.chapterNumber}章`, `第${chapter.chapterNumber}章`)}</span>
-                          <div>
-                            <strong>{chapter.chapterTitle}</strong>
-                            <small>
-                              {available
-                                ? chapter.chapterId === 'physics-ch01-motion'
-                                  ? text('3 テーマ', '3 个主题')
-                                  : text(`${chapterUnits.length} 単元`, `${chapterUnits.length} 个单元`)
-                                : text('準備中', '准备中')}
-                            </small>
-                          </div>
-                        </header>
-
-                        {available ? (
-                          chapter.chapterId === 'physics-ch01-motion' ? (
-                            <div className="textbook-unit-grid textbook-chunk-grid" data-testid="chapter1-chunk-grid">
-                              {chapter1LearningChunks.map((chunk) => {
-                                const chunkUnits = chunk.unitCodes
-                                  .map((code) => chapterUnits.find((unit) => unit.chapter?.unitCode === code))
-                                  .filter((candidate): candidate is TextbookUnit => Boolean(candidate))
-                                if (chunkUnits.length === 0) return null
-
-                                const summaries = chunkUnits.map((unit) =>
-                                  textbookUnitProgress(unit, textbookProgress[unit.unitId]),
-                                )
-                                const completed = summaries.reduce((sum, summary) => sum + summary.completed, 0)
-                                const total = summaries.reduce((sum, summary) => sum + summary.total, 0)
-                                const percent = total > 0 ? Math.round((completed / total) * 100) : 0
-                                const resumeUnit = chunkUnits.find((unit) => {
-                                  const summary = textbookUnitProgress(unit, textbookProgress[unit.unitId])
-                                  return summary.completed < summary.total
-                                }) ?? chunkUnits[0]
-
-                                return (
-                                  <Link
-                                    className="textbook-unit-link textbook-chunk-link"
-                                    data-testid={`textbook-chunk-${chunk.id}`}
-                                    key={chunk.id}
-                                    to={`/learning/textbook/${resumeUnit.unitId}`}
-                                  >
-                                    <div>
-                                      <strong>{chapter1Localized(chunk.title, language)}</strong>
-                                      <small className="textbook-chunk-flow">{chapter1Localized(chunk.flow, language)}</small>
-                                      <small>{text(`${completed}/${total} 完了`, `已完成 ${completed}/${total}`)}</small>
-                                    </div>
-                                    <span className="textbook-unit-percent">{percent}%</span>
-                                  </Link>
-                                )
-                              })}
-                            </div>
-                          ) : (
-                            <div className="textbook-unit-grid">
-                              {chapterUnits.map((unit) => {
-                                const unitProgress = textbookProgress[unit.unitId]
-                                const summary = textbookUnitProgress(unit, unitProgress)
-                                return (
-                                  <Link
-                                    className="textbook-unit-link"
-                                    data-testid={`textbook-unit-${unit.unitId}`}
-                                    key={unit.unitId}
-                                    to={`/learning/textbook/${unit.unitId}`}
-                                  >
-                                    <div>
-                                      <strong>{displayTextbookUnitTitle(unit)}</strong>
-                                      <small>
-                                        {unitProgress
-                                          ? text(`${summary.completed}/${summary.total} 完了`, `已完成 ${summary.completed}/${summary.total}`)
-                                          : text('未開始', '未开始')}
-                                      </small>
-                                    </div>
-                                    <span className="textbook-unit-percent">{summary.percent}%</span>
-                                  </Link>
-                                )
-                              })}
-                            </div>
-                          )
-                        ) : (
-                          <p className="textbook-chapter-pending">
-                            {text('教材データを準備中です。', '教材数据正在准备中。')}
-                          </p>
-                        )}
-                      </article>
+                        <div>
+                          <strong>{topic.label[language]}</strong>
+                          <small className="textbook-chunk-flow">{topic.flow[language]}</small>
+                          <small>{text(`${completed}/${total} 完了`, `已完成 ${completed}/${total}`)}</small>
+                        </div>
+                        <span className="textbook-unit-percent">{percent}%</span>
+                      </Link>
                     )
                   })}
                 </div>
               </section>
-            ))}
-          </div>
+            </div>
+          )}
         </NumberedSection>
       ) : subject === 'physics' ? (
         <>

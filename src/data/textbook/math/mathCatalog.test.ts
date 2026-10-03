@@ -1,0 +1,63 @@
+import { describe, expect, it } from 'vitest'
+import { mathSetUnit } from './set/setLesson'
+import { mathTextbookTopicForUnit, mathTextbookTopics } from './mathCatalog'
+
+describe('math textbook catalog', () => {
+  it('aligns the set lesson with the same practice curriculum topic and range', () => {
+    const topic = mathTextbookTopicForUnit(mathSetUnit.unitId)
+    expect(topic?.id).toBe('organize-sets')
+    expect(topic?.practiceTopicId).toBe('organize-sets')
+    expect(topic?.practiceRange).toEqual([87, 97])
+    expect(topic?.flow.ja).toBe('集合の表し方 → 部分集合 → 共通部分・和集合 → 補集合 → 集合の条件')
+  })
+
+
+  it('mirrors the three practice topics without creating a runtime dependency on practice code', () => {
+    expect(mathTextbookTopics.map((topic) => topic.id)).toEqual([
+      'organize-sets',
+      'read-propositions',
+      'prove-propositions',
+    ])
+    expect(mathTextbookTopics.map((topic) => topic.practiceRange)).toEqual([
+      [87, 97],
+      [98, 120],
+      [108, 117],
+    ])
+    expect(mathTextbookTopics[0].unitIds).toEqual(['math-sets'])
+    expect(mathTextbookTopics[1].unitIds).toEqual(['math-propositions-reading', 'math-quantifiers-all-exists', 'math-functions-conditions'])
+    expect(mathTextbookTopics[2].unitIds).toEqual(['math-propositions-proof'])
+  })
+
+
+  it('locks the exact practice-question membership for the three synchronized topics', () => {
+    expect(mathTextbookTopics[0].practiceQuestionNumbers).toEqual([
+      87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97,
+    ])
+    expect(mathTextbookTopics[1].practiceQuestionNumbers).toEqual([
+      98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 109, 118, 119, 120,
+    ])
+    expect(mathTextbookTopics[2].practiceQuestionNumbers).toEqual([
+      108, 110, 111, 112, 113, 114, 115, 116, 117,
+    ])
+    const all = mathTextbookTopics.flatMap((topic) => topic.practiceQuestionNumbers)
+    expect(new Set(all).size).toBe(all.length)
+    expect([...all].sort((a, b) => a - b)).toEqual(
+      Array.from({ length: 34 }, (_, index) => 87 + index),
+    )
+  })
+
+  it('keeps the approved three learner-facing headings in order', () => {
+    const topic = mathTextbookTopics[0]
+    expect(topic.learnerHeadings).toEqual([
+      '集合を表す',
+      '集合どうしの関係を見る',
+      '集合の外側まで考える',
+    ])
+
+    const headings = mathSetUnit.sections[0].readingFlow
+      .filter((block) => block.type === 'heading')
+      .map((block) => block.text)
+
+    expect(headings).toEqual(topic.learnerHeadings)
+  })
+})

@@ -3,6 +3,7 @@ import { z } from 'zod'
 const IdSchema = z.string().min(2).regex(/^[a-z0-9][a-z0-9-]*$/, 'ID は小文字英数字とハイフンで指定してください')
 const PercentSchema = z.number().min(0).max(100)
 
+export const TextbookSubjectSchema = z.enum(['physics', 'math-1a'])
 export const TextbookAnswerTypeSchema = z.enum(['text', 'formula', 'number'])
 export const TextbookSectionRoleSchema = z.enum(['concept', 'figure-reading', 'worked-example', 'review'])
 export const TextbookQuestionPurposeSchema = z.enum([
@@ -84,7 +85,7 @@ export const TextbookChapterMetaSchema = z.object({
   chapterId: IdSchema,
   chapterNumber: z.string().min(1),
   chapterTitle: z.string().min(1),
-  unitCode: z.string().regex(/^[0-9]+[A-Z]$/, 'unitCode は 1A のように指定してください'),
+  unitCode: z.string().regex(/^[0-9]+[A-Z][A-Z0-9-]*$/, 'unitCode は 1A や 3SET のように指定してください'),
   orderInChapter: z.number().int().positive(),
   sourcePages: z.array(z.number().int().positive()).min(1),
 })
@@ -94,7 +95,7 @@ const TextbookUnitBaseSchema = z.object({
   unitId: IdSchema,
   revision: z.number().int().positive(),
   status: z.enum(['draft', 'review', 'published']),
-  subject: z.literal('physics'),
+  subject: TextbookSubjectSchema,
   chapter: TextbookChapterMetaSchema.optional(),
   title: z.string().min(1),
   subtitle: z.string().optional(),

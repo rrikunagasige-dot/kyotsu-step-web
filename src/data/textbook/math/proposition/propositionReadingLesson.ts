@@ -238,7 +238,7 @@ const rawMathPropositionReadingUnit = {
           id: 'paragraph-p07',
           type: 'paragraph' as const,
           parts: [
-            { type: 'text' as const, text: '問8(4)の「△ABCが二等辺三角形なら、△ABCは正三角形である」は、最初に確認した頂角40°の二等辺三角形がそのまま反例になる。したがってこの命題も偽である。' },
+            { type: 'text' as const, text: '「△ABCが二等辺三角形なら、△ABCは正三角形である」も、最初に確認した頂角40°の二等辺三角形がそのまま反例になる。したがってこの命題も偽である。' },
           ],
         },
 

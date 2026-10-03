@@ -1,12 +1,15 @@
 import type { ContentBlock, LearningBlank, Question } from '../../domain/questionSchema'
 import { validateQuestionCatalog } from '../../domain/questionSchema'
 import { mathPracticePilotSource } from './pilot'
+import { mathPracticePilotSourceZh } from './pilot.zh'
 import type {
   MathPracticeSimulationItem,
   MathPracticeSourceBlock,
   MathPracticeSourceChoice,
   MathPracticeSourceQuestion,
 } from './source'
+
+type Locale = 'ja' | 'zh'
 
 function qid(problemNo: number) {
   return `math-practice-${String(problemNo).padStart(3, '0')}`
@@ -33,7 +36,7 @@ function optionId(questionId: string, blankId: string, choice: MathPracticeSourc
   return `${questionId}-${blankId}-${choice.id}`
 }
 
-function createBlank(questionId: string, blank: MathPracticeSourceQuestion['blanks'][number]): LearningBlank {
+function createBlank(questionId: string, blank: MathPracticeSourceQuestion['blanks'][number], locale: Locale): LearningBlank {
   const correct = blank.choices.filter((choice) => choice.correct)
   if (!correct.length) throw new Error(`Math practice blank has no correct choice: ${questionId}/${blank.id}`)
 
@@ -52,7 +55,7 @@ function createBlank(questionId: string, blank: MathPracticeSourceQuestion['blan
           : [{
               id: `${id}-reason`,
               type: 'text',
-              text: choice.wrongReason ?? '問題の条件と直前の推論をもう一度確認しよう。',
+              text: choice.wrongReason ?? (locale === 'ja' ? '問題の条件と直前の推論をもう一度確認しよう。' : '请重新检查题目条件和刚才的推理。'),
             }],
       }
     }),
@@ -111,7 +114,7 @@ function createSimulationItem(questionId: string, item: MathPracticeSimulationIt
   }
 }
 
-function createQuestion(source: MathPracticeSourceQuestion): Question {
+function createQuestion(source: MathPracticeSourceQuestion, locale: Locale): Question {
   const questionId = qid(source.problemNo)
   const blankMap = new Map(source.blanks.map((blank) => [blank.id, blank]))
 
@@ -144,7 +147,7 @@ function createQuestion(source: MathPracticeSourceQuestion): Question {
 
   const blanks = Object.fromEntries(
     source.blanks.map((blank) => {
-      const adapted = createBlank(questionId, blank)
+      const adapted = createBlank(questionId, blank, locale)
       return [adapted.id, adapted]
     }),
   )
@@ -160,11 +163,13 @@ function createQuestion(source: MathPracticeSourceQuestion): Question {
     title: `${source.problemNo}｜${source.title}`,
     source: {
       type: 'reference',
-      label: `4STEP 問題${source.problemNo}`,
-      rightsNote: '原問題を基に、レビュー済みの「問題／考えながら解く」練習モードへ構造化',
+      label: locale === 'ja' ? `4STEP 問題${source.problemNo}` : `4STEP 题目${source.problemNo}`,
+      rightsNote: locale === 'ja'
+        ? '原問題を基に、レビュー済みの「問題／考えながら解く」練習モードへ構造化'
+        : '基于原题，结构化为已审核的“题目／边思考边解答”练习模式',
     },
     taxonomy: {
-      majorUnit: 'sets-and-propositions',
+      majorUnit: source.section === 'functions' ? 'functions' : 'sets-and-propositions',
       minorUnit: source.section,
       knowledgeTags: source.knowledgeTags,
       skillTags: source.skillTags,
@@ -189,7 +194,7 @@ function createQuestion(source: MathPracticeSourceQuestion): Question {
         {
           id: `${questionId}-sim-material-heading`,
           type: 'text',
-          text: '元の問題に戻って、自力で確認しよう。',
+          text: locale === 'ja' ? '元の問題に戻って、自力で確認しよう。' : '回到原题，独立检查自己的答案。',
         },
         ...source.problem.map((block, index) =>
           toContentBlock(`${questionId}-sim-material-${index + 1}`, block),
@@ -212,6 +217,9 @@ function createQuestion(source: MathPracticeSourceQuestion): Question {
   return question
 }
 
-export const mathPracticePilotQuestions = validateQuestionCatalog(
-  mathPracticePilotSource.map(createQuestion),
-)
+function buildMathPracticeQuestions(source: MathPracticeSourceQuestion[], locale: Locale) {
+  return validateQuestionCatalog(source.map((question) => createQuestion(question, locale)))
+}
+
+export const mathPracticePilotQuestions = buildMathPracticeQuestions(mathPracticePilotSource, 'ja')
+export const mathPracticePilotQuestionsZh = buildMathPracticeQuestions(mathPracticePilotSourceZh, 'zh')

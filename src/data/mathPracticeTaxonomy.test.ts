@@ -41,11 +41,11 @@ describe('math practice title architecture', () => {
     expect(mathPracticeTopicForQuestion(sample(120))).toBe('read-propositions')
   })
 
-  it('keeps the reviewed set/proposition batches while growing the proof theme through 110', () => {
+  it('keeps the reviewed set/proposition batches while growing the proof theme through 111', () => {
     const summary = buildMathPracticeTopicSummary(mathPracticePilotQuestions)
     expect(summary.counts['organize-sets']).toBe(11)
     expect(summary.counts['read-propositions']).toBe(11)
-    expect(summary.counts['prove-propositions']).toBe(2)
+    expect(summary.counts['prove-propositions']).toBe(3)
     expect(summary.unclassified).toBe(0)
   })
 
@@ -56,7 +56,7 @@ describe('math practice title architecture', () => {
 
   it('opens the proof theme with problem 108 as its first reviewed question', () => {
     const ordered = mathPracticeQuestionsForTopic(mathPracticePilotQuestions, 'prove-propositions')
-    expect(ordered.map((question) => mathPracticeProblemNumber(question.questionId))).toEqual([108, 110])
+    expect(ordered.map((question) => mathPracticeProblemNumber(question.questionId))).toEqual([108, 110, 111])
   })
 
   it('separates the old Common-Test math samples from 4STEP practice', () => {

@@ -94,4 +94,11 @@ describe('textbook math normalization', () => {
     )).toBe(true)
     expect(parts.some((part) => part.type === 'text' && part.text.includes('overline'))).toBe(false)
   })
+
+  it('renders the union in the exact 97 problem sentence as inline math', () => {
+    const parts = splitTextbookInlineMath('このとき、定数 a の値と和集合 A∪B を求めよ。')
+    expect(parts.some((part) =>
+      part.type === 'math' && part.latex === 'A \\cup B',
+    )).toBe(true)
+  })
 })

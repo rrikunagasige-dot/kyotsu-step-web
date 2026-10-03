@@ -164,6 +164,23 @@ describe('math proposition-reading textbook unit', () => {
     expect(relationIndex).toBeGreaterThan(negationIndex)
   })
 
+
+  it('matches the source guide examples for truth, negation, and necessary-condition classification', () => {
+    const items = mathPropositionReadingUnit.sections[0].items
+
+    expect(items.find((item) => item.id === 'prop-a07')?.answer)
+      .toBe('頂角40°の二等辺三角形')
+
+    expect(items.find((item) => item.id === 'prop-c02')?.answer)
+      .toBe('2は合成数ではない')
+
+    expect(items.find((item) => item.id === 'prop-c04')?.answer)
+      .toBe('-1<x<3')
+
+    expect(items.find((item) => item.id === 'prop-b03')?.answer)
+      .toBe('必要条件')
+  })
+
   it('uses only three learner-facing headings', () => {
     const headings = mathPropositionReadingUnit.sections[0].readingFlow
       .filter((block) => block.type === 'heading')

@@ -234,8 +234,14 @@ export function LearningSessionPage() {
       ) : (
         <>
           <ProgressBar label={text('空欄の進み具合', '填空进度')} value={completedCount} max={enabledBlankIds.length} />
-          <article className="question-paper"><ContentRenderer blocks={question.stem} assets={question.assets} /></article>
-          <section><h2 className="solution-heading">{text('連続解答', '连续解答')}</h2><LearningFlowRenderer question={question} session={session} onActivate={activate} onExplain={showExplanation} onRevisit={revisitLearning.bind(null, sessionId)} /></section>
+          <section data-testid="standard-problem">
+            <h2 className="solution-heading">{text('問題', '题目')}</h2>
+            <article className="question-paper"><ContentRenderer blocks={question.stem} assets={question.assets} /></article>
+          </section>
+          <section data-testid="standard-guide">
+            <h2 className="solution-heading">{text('考えながら解く', '边思考边解答')}</h2>
+            <LearningFlowRenderer question={question} session={session} onActivate={activate} onExplain={showExplanation} onRevisit={revisitLearning.bind(null, sessionId)} />
+          </section>
         </>
       )}
 

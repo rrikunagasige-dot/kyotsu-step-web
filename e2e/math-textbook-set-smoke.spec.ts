@@ -118,6 +118,38 @@ test.beforeEach(async ({ page }) => {
   await clearState(page)
 })
 
+
+test('learning setup exposes math textbook mode with the same three curriculum topics', async ({ page }) => {
+  await page.goto(appRoute('/learning/setup?subject=math-1a'))
+
+  await expect(page.getByRole('button', { name: /数学/ })).toHaveAttribute('aria-pressed', 'true')
+  await expect(page.getByTestId('math-textbook-chapter-3')).toContainText('集合と命題')
+
+  const setsTopic = page.getByTestId('math-textbook-topic-organize-sets')
+  await expect(setsTopic).toContainText('集合を整理する')
+  await expect(setsTopic).toContainText('集合の表し方 → 部分集合 → 共通部分・和集合 → 補集合 → 集合の条件')
+  await expect(setsTopic).not.toContainText('準備中')
+  await expect(page.getByTestId('textbook-unit-math-sets')).toBeVisible()
+
+  await expect(page.getByTestId('math-textbook-topic-read-propositions')).toContainText('条件から命題を読む')
+  await expect(page.getByTestId('math-textbook-topic-read-propositions')).toContainText('準備中')
+  await expect(page.getByTestId('math-textbook-topic-prove-propositions')).toContainText('命題を証明する')
+  await expect(page.getByTestId('math-textbook-topic-prove-propositions')).toContainText('準備中')
+})
+
+test('math textbook setup enters the set lesson and physics remains available from the same subject selector', async ({ page }) => {
+  await page.goto(appRoute('/learning/setup?subject=math-1a'))
+
+  await page.getByTestId('textbook-unit-math-sets').click()
+  await expect(page).toHaveURL(/\/learning\/textbook\/math-sets$/)
+  await expect(page.getByRole('heading', { name: '集合', exact: true })).toBeVisible()
+
+  await page.goto(appRoute('/learning/setup?subject=math-1a'))
+  await page.getByRole('button', { name: '物理', exact: true }).click()
+  await expect(page.getByTestId('textbook-part-list')).toBeVisible()
+  await expect(page.getByTestId('textbook-part-1')).toContainText('様々な運動')
+})
+
 test('math set lesson boots directly on the shared textbook reader', async ({ page }) => {
   const pageErrors: string[] = []
   page.on('pageerror', (error) => pageErrors.push(error.stack ?? error.message))

@@ -9,33 +9,32 @@ test.beforeEach(async ({ page }) => {
   await page.getByRole('button', { name: '数学 I・A' }).click()
 })
 
-test('Math I・A starts by separating basic practice from Common-Test practice', async ({ page }) => {
+test('Math I・A basic theme opens its first problem directly', async ({ page }) => {
   await expect(page.getByTestId('math-exercise-basic')).toContainText('基礎演習')
   await expect(page.getByTestId('math-exercise-common-test')).toContainText('共通テスト演習')
-  await expect(page.getByTestId('math-domain-sets-and-propositions')).toHaveCount(0)
 
   await page.getByTestId('math-exercise-basic').click()
 
   await expect(page.getByTestId('math-domain-sets-and-propositions')).toContainText('集合と命題')
   await expect(page.getByTestId('math-domain-sets-and-propositions')).toContainText('3 テーマ')
-  await expect(page.getByTestId('math-domain-functions')).toContainText('関数')
-  await expect(page.getByTestId('math-domain-functions')).toContainText('1 テーマ')
-
   await expect(page.getByTestId('math-topic-organize-sets')).toContainText('集合を整理する')
-  await expect(page.getByTestId('math-topic-organize-sets')).toContainText('集合の表し方 → 部分集合')
   await expect(page.getByTestId('math-topic-read-propositions')).toContainText('条件から命題を読む')
   await expect(page.getByTestId('math-topic-prove-propositions')).toContainText('命題を証明する')
-  await expect(page.getByTestId('math-topic-represent-functions')).toContainText('関数を表す')
+
+  await expect(page.getByTestId('start-learning')).toHaveCount(0)
+  await expect(page.getByRole('group', { name: '問題番号' })).toHaveCount(0)
 
   await page.getByTestId('math-topic-organize-sets').click()
-  await expect(page.getByRole('group', { name: '問題番号' }).getByRole('button')).toHaveText(['87', '94', '97'])
+
+  await expect(page.getByRole('heading', { name: '87｜素数と集合' })).toBeVisible()
+  const nav = page.getByTestId('math-topic-question-nav')
+  await expect(nav.getByRole('button')).toHaveText(['1', '2', '3'])
+  await expect(page.getByTestId('math-topic-question-1')).toHaveAttribute('aria-current', 'page')
 })
 
 test('87 keeps 問題 separate from 考えながら解く and supports retry', async ({ page }) => {
   await page.getByTestId('math-exercise-basic').click()
   await page.getByTestId('math-topic-organize-sets').click()
-  await page.getByTestId('math-problem-87').click()
-  await page.getByTestId('start-learning').click()
 
   await expect(page.getByRole('heading', { name: '87｜素数と集合' })).toBeVisible()
   const problem = page.getByTestId('standard-problem')
@@ -54,15 +53,14 @@ test('87 keeps 問題 separate from 考えながら解く and supports retry', a
   await expect(page.getByTestId(`answer-${blankId}`)).toContainText('再回答で正解')
 })
 
-test('94 long multi-part pilot opens on mobile without horizontal page overflow', async ({ page }) => {
+test('problem card 2 switches inside the theme directly to 94', async ({ page }) => {
   await page.getByTestId('math-exercise-basic').click()
   await page.getByTestId('math-topic-organize-sets').click()
-  await page.getByTestId('math-problem-94').click()
-  await page.getByTestId('start-learning').click()
+  await page.getByTestId('math-topic-question-2').click()
 
   await expect(page.getByRole('heading', { name: '94｜補集合' })).toBeVisible()
+  await expect(page.getByTestId('math-topic-question-2')).toHaveAttribute('aria-current', 'page')
   await expect(page.getByTestId('standard-problem')).toContainText('次の集合を求めよ')
-  await expect(page.getByTestId('standard-guide')).toBeVisible()
 
   const dimensions = await page.evaluate(() => ({
     viewport: window.innerWidth,
@@ -71,12 +69,12 @@ test('94 long multi-part pilot opens on mobile without horizontal page overflow'
   expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
 })
 
-test('97 reasoning pilot reaches the equation-building thinking node without leaking it in the problem', async ({ page }) => {
+test('problem card 3 switches inside the theme directly to 97 without leaking the equation', async ({ page }) => {
   await page.getByTestId('math-exercise-basic').click()
   await page.getByTestId('math-topic-organize-sets').click()
-  await page.getByTestId('math-problem-97').click()
-  await page.getByTestId('start-learning').click()
+  await page.getByTestId('math-topic-question-3').click()
 
+  await expect(page.getByRole('heading', { name: '97｜共通部分から定数を決める' })).toBeVisible()
   const problem = page.getByTestId('standard-problem')
   const guide = page.getByTestId('standard-guide')
   await expect(problem).toContainText('定数 a の値と和集合')

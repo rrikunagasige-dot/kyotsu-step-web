@@ -28,7 +28,7 @@ test('Math I・A basic theme opens its first problem directly', async ({ page })
 
   await expect(page.getByRole('heading', { name: '87｜素数と集合' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1', '2', '3'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10','11'])
   await expect(page.getByTestId('math-topic-question-1')).toHaveAttribute('aria-current', 'page')
 })
 
@@ -92,13 +92,13 @@ test('87 uses the Physics-style inline choice flow and reveals one reasoning nod
   await expect(page.getByTestId('math-practice-dependency-links')).toHaveCount(0)
 })
 
-test('problem card 2 opens 94 with the same Physics-style progressive reading flow', async ({ page }) => {
+test('problem card 8 opens 94 with the same Physics-style progressive reading flow', async ({ page }) => {
   await page.getByTestId('math-exercise-basic').click()
   await page.getByTestId('math-topic-organize-sets').click()
-  await page.getByTestId('math-topic-question-2').click()
+  await page.getByTestId('math-topic-question-8').click()
 
   await expect(page.getByRole('heading', { name: '94｜補集合' })).toBeVisible()
-  await expect(page.getByTestId('math-topic-question-2')).toHaveAttribute('aria-current', 'page')
+  await expect(page.getByTestId('math-topic-question-8')).toHaveAttribute('aria-current', 'page')
   await expect(page.getByTestId('standard-problem')).toContainText('次の集合を求めよ')
   await expect(page.getByTestId('math-practice-reading-flow')).toBeVisible()
   await expect(page.getByTestId('math-practice-current-target')).toContainText('補集合を考える基準を確認する')
@@ -157,10 +157,10 @@ test('problem card 2 opens 94 with the same Physics-style progressive reading fl
   expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
 })
 
-test('problem card 3 compresses 97 into a linear result-reuse chain', async ({ page }) => {
+test('problem card 11 compresses 97 into a linear result-reuse chain', async ({ page }) => {
   await page.getByTestId('math-exercise-basic').click()
   await page.getByTestId('math-topic-organize-sets').click()
-  await page.getByTestId('math-topic-question-3').click()
+  await page.getByTestId('math-topic-question-11').click()
 
   await expect(page.getByRole('heading', { name: '97｜共通部分から定数を決める' })).toBeVisible()
   const problem = page.getByTestId('standard-problem')
@@ -238,7 +238,7 @@ test('problem card 3 compresses 97 into a linear result-reuse chain', async ({ p
   expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
 })
 
-test('finishing 87 shows a direct next-problem button and opens 94', async ({ page }) => {
+test('finishing 87 shows a direct next-problem button and opens 88', async ({ page }) => {
   await page.getByTestId('math-exercise-basic').click()
   await page.getByTestId('math-topic-organize-sets').click()
 
@@ -263,10 +263,67 @@ test('finishing 87 shows a direct next-problem button and opens 94', async ({ pa
   await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
   await expect(page.getByTestId('math-practice-next-question')).toContainText('次の問題を解く')
   await page.getByTestId('math-practice-next-question').click()
-  await expect(page.getByRole('heading', { name: '94｜補集合' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: '88｜集合の表し方' })).toBeVisible()
   await expect(page.getByTestId('math-practice-reading-flow')).toBeVisible()
 })
 
+
+test('93 reuses only the prepared A B C result block across its two subproblems', async ({ page }) => {
+  await page.getByTestId('math-exercise-basic').click()
+  await page.getByTestId('math-topic-organize-sets').click()
+  await page.getByTestId('math-topic-question-7').click()
+
+  await expect(page.getByRole('heading', { name: '93｜3つの集合' })).toBeVisible()
+  const prepAnswers = [
+    ['math-practice-093-a-set', 'option-math-practice-093-a-set-correct'],
+    ['math-practice-093-b-set', 'option-math-practice-093-b-set-correct'],
+    ['math-practice-093-c-set', 'option-math-practice-093-c-set-correct'],
+  ] as const
+  for (const [blankId, optionId] of prepAnswers) {
+    await page.getByTestId(`blank-${blankId}`).click()
+    await page.getByTestId(optionId).click()
+  }
+
+  await expect(page.getByTestId('math-practice-current-target')).toContainText('今の問い｜(1)')
+  const deps = page.getByTestId('math-practice-dependency-links')
+  await expect(deps).toContainText('準備した3集合')
+  await expect(deps).toContainText('16')
+  await expect(deps).toContainText('24')
+  await expect(page.getByTestId('math-practice-dependency-detail-basis')).toHaveCount(0)
+})
+
+test('96 imports (1) only when reaching (5), not for unrelated subproblems', async ({ page }) => {
+  await page.getByTestId('math-exercise-basic').click()
+  await page.getByTestId('math-topic-organize-sets').click()
+  await page.getByTestId('math-topic-question-10').click()
+
+  await expect(page.getByRole('heading', { name: '96｜3集合の複合演算' })).toBeVisible()
+
+  await page.getByTestId('blank-math-practice-096-p1-ab').click()
+  await page.getByTestId('option-math-practice-096-p1-ab-correct').click()
+  await page.getByTestId('blank-math-practice-096-p1-result').click()
+  await page.getByTestId('option-math-practice-096-p1-result-correct').click()
+
+  await expect(page.getByTestId('math-practice-current-target')).toContainText('今の問い｜(2)')
+  await expect(page.getByTestId('math-practice-dependency-links')).toHaveCount(0)
+
+  await page.getByTestId('blank-math-practice-096-p2-result').click()
+  await page.getByTestId('option-math-practice-096-p2-result-correct').click()
+  await page.getByTestId('blank-math-practice-096-p3-ab').click()
+  await page.getByTestId('option-math-practice-096-p3-ab-correct').click()
+  await page.getByTestId('blank-math-practice-096-p3-result').click()
+  await page.getByTestId('option-math-practice-096-p3-result-correct').click()
+  await page.getByTestId('blank-math-practice-096-p4-candidates').click()
+  await page.getByTestId('option-math-practice-096-p4-candidates-b').click()
+  await page.getByTestId('blank-math-practice-096-p4-result').click()
+  await page.getByTestId('option-math-practice-096-p4-result-correct').click()
+
+  await expect(page.getByTestId('math-practice-current-target')).toContainText('今の問い｜(5)')
+  const deps = page.getByTestId('math-practice-dependency-links')
+  await expect(deps).toContainText('(1) の結果')
+  await expect(deps).toContainText('3')
+  await expect(page.getByTestId('math-practice-dependency-detail-s1')).toHaveCount(0)
+})
 
 test('old math samples live under Common-Test practice instead of the 4STEP chapter cards', async ({ page }) => {
   await page.getByTestId('math-exercise-common-test').click()

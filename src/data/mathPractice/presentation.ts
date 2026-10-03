@@ -49,6 +49,240 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
       blankIds: ['twentynine-divisor-check', 'twentynine-membership'],
     },
   ],
+  'math-practice-088': [
+    {
+      id: 's1',
+      kicker: { ja: '今の問い｜(1)', zh: '当前问题｜(1)' },
+      label: { ja: '36の正の約数を漏れなく並べる', zh: '完整列出36的正因数' },
+      blankIds: ['p1-strategy', 'p1-stop', 'p1-result'],
+    },
+    {
+      id: 's2',
+      kicker: { ja: '今の問い｜(2)', zh: '当前问题｜(2)' },
+      label: { ja: '100以下の正の奇数を並べる', zh: '列出100以下的正奇数' },
+      blankIds: ['p2-step', 'p2-last', 'p2-result'],
+    },
+    {
+      id: 's3',
+      kicker: { ja: '今の問い｜(3)', zh: '当前问题｜(3)' },
+      latex: '\\{x\\mid -3\\le x<4,\\;x\\in\\mathbb Z\\}',
+      blankIds: ['p3-left', 'p3-right', 'p3-result'],
+    },
+    {
+      id: 's4',
+      kicker: { ja: '今の問い｜(4)', zh: '当前问题｜(4)' },
+      latex: '\\{3n-2\\mid n=1,2,3,\\ldots\\}',
+      blankIds: ['p4-sample', 'p4-pattern', 'p4-result'],
+    },
+  ],
+  'math-practice-089': [
+    {
+      id: 'basis',
+      kicker: { ja: 'まず確認', zh: '先确认' },
+      label: { ja: 'Aと「部分集合」の判定基準を確認する', zh: '确认A与子集判断标准' },
+      blankIds: ['a-set', 'subset-rule'],
+    },
+    {
+      id: 'b',
+      kicker: { ja: '今の問い｜B', zh: '当前问题｜B' },
+      label: { ja: 'BはAの部分集合か', zh: 'B是否为A的子集' },
+      blankIds: ['b-counterexample', 'b-judgment'],
+    },
+    {
+      id: 'c',
+      kicker: { ja: '今の問い｜C', zh: '当前问题｜C' },
+      label: { ja: 'CはAの部分集合か', zh: 'C是否为A的子集' },
+      blankIds: ['c-judgment'],
+    },
+    {
+      id: 'd',
+      kicker: { ja: '今の問い｜D', zh: '当前问题｜D' },
+      label: { ja: 'DはAの部分集合か', zh: 'D是否为A的子集' },
+      blankIds: ['d-counterexample', 'd-judgment'],
+    },
+    {
+      id: 'e',
+      kicker: { ja: '今の問い｜E', zh: '当前问题｜E' },
+      label: { ja: 'EはAの部分集合か', zh: 'E是否为A的子集' },
+      blankIds: ['e-judgment'],
+    },
+    {
+      id: 'final',
+      kicker: { ja: '結論', zh: '结论' },
+      label: { ja: 'Aの部分集合をまとめる', zh: '汇总A的子集' },
+      blankIds: ['final-result'],
+    },
+  ],
+  'math-practice-090': [
+    {
+      id: 's1',
+      kicker: { ja: '今の問い｜(1)', zh: '当前问题｜(1)' },
+      label: { ja: 'AとBの包含関係を決める', zh: '判断A与B的包含关系' },
+      blankIds: ['p1-method', 'p1-a', 'p1-b', 'p1-relation'],
+    },
+    {
+      id: 's2',
+      kicker: { ja: '今の問い｜(2)', zh: '当前问题｜(2)' },
+      label: { ja: 'AとBが同じ集合か確かめる', zh: '确认A与B是否相同' },
+      blankIds: ['p2-a', 'p2-zero-product', 'p2-b', 'p2-relation'],
+    },
+  ],
+  'math-practice-091': [
+    {
+      id: 's1',
+      kicker: { ja: '今の問い｜(1)', zh: '当前问题｜(1)' },
+      label: { ja: '{a,b}の部分集合を漏れなく列挙する', zh: '完整列出{a,b}的子集' },
+      blankIds: ['p1-organize', 'p1-zero', 'p1-one', 'p1-two'],
+    },
+    {
+      id: 's2-plan',
+      kicker: { ja: '今の問い｜(2)', zh: '当前问题｜(2)' },
+      label: { ja: 'まず選ぶ要素数で整理する', zh: '先按所选元素个数整理' },
+      blankIds: ['p2-range'],
+    },
+    {
+      id: 's2-pairs',
+      kicker: { ja: '今の問い｜(2)', zh: '当前问题｜(2)' },
+      label: { ja: '2個選ぶ場合を漏れなく並べる', zh: '完整列出选2个元素的情况' },
+      blankIds: ['p2-pairs'],
+    },
+    {
+      id: 's2-finish',
+      kicker: { ja: '今の問い｜(2)', zh: '当前问题｜(2)' },
+      label: { ja: '3個・4個の場合まで確認する', zh: '继续确认选3个和4个元素的情况' },
+      blankIds: ['p2-triples', 'p2-check'],
+    },
+  ],
+  'math-practice-092': [
+    {
+      id: 'basis',
+      kicker: { ja: 'まず確認', zh: '先确认' },
+      label: { ja: '∩と∪の意味を確認する', zh: '确认∩与∪的含义' },
+      blankIds: ['intersection-meaning', 'union-meaning'],
+    },
+    {
+      id: 's1',
+      kicker: { ja: '今の問い｜(1)', zh: '当前问题｜(1)' },
+      latex: 'A\\cap B,\\quad A\\cup B',
+      blankIds: ['p1-intersection', 'p1-union'],
+    },
+    {
+      id: 's2',
+      kicker: { ja: '今の問い｜(2)', zh: '当前问题｜(2)' },
+      latex: 'A\\cap B,\\quad A\\cup B',
+      blankIds: ['p2-common', 'p2-union'],
+    },
+    {
+      id: 's3',
+      kicker: { ja: '今の問い｜(3)', zh: '当前问题｜(3)' },
+      label: { ja: '2つの実数区間の共通部分と和集合', zh: '求两个实数区间的交集与并集' },
+      blankIds: ['p3-intersection', 'p3-union'],
+    },
+    {
+      id: 's4',
+      kicker: { ja: '今の問い｜(4)', zh: '当前问题｜(4)' },
+      label: { ja: '18と27の約数集合を比べる', zh: '比较18与27的正因数集合' },
+      blankIds: ['p4-a', 'p4-b', 'p4-intersection', 'p4-union'],
+    },
+    {
+      id: 's5',
+      kicker: { ja: '今の問い｜(5)', zh: '当前问题｜(5)' },
+      label: { ja: '式で表された2集合を具体化して比べる', zh: '把两个式子表示的集合具体化后比较' },
+      blankIds: ['p5-a', 'p5-b', 'p5-intersection', 'p5-union'],
+    },
+  ],
+  'math-practice-093': [
+    {
+      id: 'basis',
+      kicker: { ja: 'まず準備', zh: '先准备' },
+      label: { ja: 'A,B,Cを要素で表す', zh: '把A、B、C列成元素形式' },
+      blankIds: ['a-set', 'b-set', 'c-set'],
+      resultLinkLabel: { ja: '準備した3集合', zh: '已求出的三个集合' },
+      results: [
+        { blankId: 'a-set', label: { ja: 'A', zh: 'A' }, latexPrefix: 'A=' },
+        { blankId: 'b-set', label: { ja: 'B', zh: 'B' }, latexPrefix: 'B=' },
+        { blankId: 'c-set', label: { ja: 'C', zh: 'C' }, latexPrefix: 'C=' },
+      ],
+    },
+    {
+      id: 's1',
+      kicker: { ja: '今の問い｜(1)', zh: '当前问题｜(1)' },
+      latex: 'A\\cap B\\cap C',
+      blankIds: ['p1-meaning', 'p1-result'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's2',
+      kicker: { ja: '今の問い｜(2)', zh: '当前问题｜(2)' },
+      latex: 'A\\cup B\\cup C',
+      blankIds: ['p2-meaning', 'p2-result'],
+      dependsOn: ['basis'],
+    },
+  ],
+  'math-practice-095': [
+    {
+      id: 's1',
+      kicker: { ja: '今の問い｜(1)', zh: '当前问题｜(1)' },
+      latex: 'A\\cup B',
+      blankIds: ['p1-outside', 'p1-result'],
+    },
+    {
+      id: 's2',
+      kicker: { ja: '今の問い｜(2)', zh: '当前问题｜(2)' },
+      latex: 'B',
+      blankIds: ['p2-decompose', 'p2-result'],
+    },
+    {
+      id: 's3',
+      kicker: { ja: '今の問い｜(3)', zh: '当前问题｜(3)' },
+      latex: 'A\\cap\\overline B',
+      blankIds: ['p3-regions', 'p3-missing', 'p3-result'],
+    },
+  ],
+  'math-practice-096': [
+    {
+      id: 's1',
+      kicker: { ja: '今の問い｜(1)', zh: '当前问题｜(1)' },
+      latex: 'A\\cap B\\cap C',
+      blankIds: ['p1-ab', 'p1-result'],
+      result: {
+        blankId: 'p1-result',
+        label: { ja: '(1) の結果', zh: '(1) 的结果' },
+        latexPrefix: 'A\\cap B\\cap C=',
+      },
+    },
+    {
+      id: 's2',
+      kicker: { ja: '今の問い｜(2)', zh: '当前问题｜(2)' },
+      latex: 'A\\cup B\\cup C',
+      blankIds: ['p2-result'],
+    },
+    {
+      id: 's3',
+      kicker: { ja: '今の問い｜(3)', zh: '当前问题｜(3)' },
+      latex: 'A\\cap B\\cap\\overline C',
+      blankIds: ['p3-ab', 'p3-result'],
+    },
+    {
+      id: 's4',
+      kicker: { ja: '今の問い｜(4)', zh: '当前问题｜(4)' },
+      latex: '\\overline A\\cap B\\cap\\overline C',
+      blankIds: ['p4-candidates', 'p4-result'],
+    },
+    {
+      id: 's5',
+      kicker: { ja: '今の問い｜(5)', zh: '当前问题｜(5)' },
+      latex: '\\overline{A\\cap B\\cap C}',
+      blankIds: ['p5-result'],
+      dependsOn: ['s1'],
+    },
+    {
+      id: 's6',
+      kicker: { ja: '今の問い｜(6)', zh: '当前问题｜(6)' },
+      latex: '(A\\cup C)\\cap\\overline B',
+      blankIds: ['p6-a-union-c', 'p6-result'],
+    },
+  ],
   'math-practice-094': [
     {
       id: 'basis',
@@ -197,7 +431,15 @@ export function mathPracticeResultItems(target: MathPracticeTarget) {
 export function mathPracticeUsesSubproblemCompression(questionId: string) {
   return [
     'math-practice-087',
+    'math-practice-088',
+    'math-practice-089',
+    'math-practice-090',
+    'math-practice-091',
+    'math-practice-092',
+    'math-practice-093',
     'math-practice-094',
+    'math-practice-095',
+    'math-practice-096',
     'math-practice-097',
   ].includes(questionId)
 }

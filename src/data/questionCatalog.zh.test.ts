@@ -57,10 +57,17 @@ describe('independently authored Chinese question catalog', () => {
       '现象分析型｜串联与并联电路候选比较',
       '关系式分析型｜负电荷与磁场',
       '87｜素数与集合',
+      '88｜集合的表示',
+      '89｜子集',
+      '90｜集合的包含关系',
+      '91｜列出所有子集',
+      '92｜交集与并集',
+      '93｜三个集合',
       '94｜补集',
+      '95｜由区域信息还原集合',
+      '96｜三个集合的复合运算',
       '97｜由交集确定常数',
-    ])
-  })
+    ])  })
 
   it('selects the requested language without changing stable question IDs', () => {
     const japanese = getQuestionCatalog([], 'ja')

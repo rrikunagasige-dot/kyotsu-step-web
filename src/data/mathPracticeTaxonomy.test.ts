@@ -12,16 +12,14 @@ import {
 import { mathPracticePilotQuestions } from './mathPractice/adapter'
 
 describe('math practice title architecture', () => {
-  it('keeps four learner-facing themes across two Math I groups', () => {
+  it('keeps exactly the three approved learner-facing Math practice themes', () => {
     expect(mathPracticeTaxonomy.map((domain) => domain.label.ja)).toEqual([
       '集合と命題',
-      '関数',
     ])
     expect(mathPracticeTaxonomy.flatMap((domain) => domain.topics.map((topic) => topic.label.ja))).toEqual([
       '集合を整理する',
       '条件から命題を読む',
       '命題を証明する',
-      '関数を表す',
     ])
   })
 
@@ -34,19 +32,20 @@ describe('math practice title architecture', () => {
     expect(mathPracticeTopicForQuestion(sample(87))).toBe('organize-sets')
     expect(mathPracticeTopicForQuestion(sample(97))).toBe('organize-sets')
     expect(mathPracticeTopicForQuestion(sample(98))).toBe('read-propositions')
+    expect(mathPracticeTopicForQuestion(sample(107))).toBe('read-propositions')
+    expect(mathPracticeTopicForQuestion(sample(108))).toBe('prove-propositions')
     expect(mathPracticeTopicForQuestion(sample(109))).toBe('read-propositions')
     expect(mathPracticeTopicForQuestion(sample(110))).toBe('prove-propositions')
     expect(mathPracticeTopicForQuestion(sample(117))).toBe('prove-propositions')
-    expect(mathPracticeTopicForQuestion(sample(118))).toBe('represent-functions')
-    expect(mathPracticeTopicForQuestion(sample(120))).toBe('represent-functions')
+    expect(mathPracticeTopicForQuestion(sample(118))).toBe('read-propositions')
+    expect(mathPracticeTopicForQuestion(sample(120))).toBe('read-propositions')
   })
 
   it('keeps current pilots together under 集合を整理する', () => {
     const summary = buildMathPracticeTopicSummary(mathPracticePilotQuestions)
-    expect(summary.counts['organize-sets']).toBe(3)
+    expect(summary.counts['organize-sets']).toBe(11)
     expect(summary.counts['read-propositions']).toBe(0)
     expect(summary.counts['prove-propositions']).toBe(0)
-    expect(summary.counts['represent-functions']).toBe(0)
     expect(summary.unclassified).toBe(0)
   })
 
@@ -74,10 +73,8 @@ describe('math practice title architecture', () => {
 
   it('keeps theme questions in source problem-number order for 1,2,3… navigation', () => {
     const ordered = mathPracticeQuestionsForTopic(mathPracticePilotQuestions, 'organize-sets')
-    expect(ordered.map((question) => mathPracticeProblemNumber(question.questionId))).toEqual([
-      87,
-      94,
-      97,
-    ])
+    expect(ordered.map((question) => mathPracticeProblemNumber(question.questionId))).toEqual(
+      Array.from({ length: 11 }, (_, index) => 87 + index),
+    )
   })
 })

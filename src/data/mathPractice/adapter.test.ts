@@ -8,28 +8,29 @@ describe('math practice 87-120 staged integration', () => {
     expect(mathPractice87To120Catalog).toHaveLength(34)
     expect(mathPractice87To120Catalog[0]?.problemNo).toBe(87)
     expect(mathPractice87To120Catalog.at(-1)?.problemNo).toBe(120)
-    expect(mathPracticePilotCatalog.map((entry) => entry.problemNo)).toEqual([87, 94, 97])
+    expect(mathPracticePilotCatalog.map((entry) => entry.problemNo)).toEqual([87,88,89,90,91,92,93,94,95,96,97])
   })
 
-  it('publishes only the three pilot source questions', () => {
+  it('publishes the reviewed set batch 87-97', () => {
     expect(mathPracticePilotSource.map((question) => question.problemNo)).toEqual([87, 94, 97])
-    expect(mathPracticePilotQuestions.map((question) => question.questionId)).toEqual([
-      'math-practice-087',
-      'math-practice-094',
-      'math-practice-097',
-    ])
+    expect(mathPracticePilotQuestions.map((question) => question.questionId)).toEqual(
+      Array.from({ length: 11 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
+    )
   })
 
-  it('preserves short numbered titles for the current mobile selector', () => {
+  it('preserves short numbered titles in source order', () => {
     expect(mathPracticePilotQuestions.map((question) => question.title)).toEqual([
       '87｜素数と集合',
+      '88｜集合の表し方',
+      '89｜部分集合',
+      '90｜集合の包含関係',
+      '91｜部分集合をすべて求める',
+      '92｜共通部分と和集合',
+      '93｜3つの集合',
       '94｜補集合',
+      '95｜集合を復元する',
+      '96｜3集合の複合演算',
       '97｜共通部分から定数を決める',
-    ])
-    expect(mathPracticePilotQuestionsZh.map((question) => question.title)).toEqual([
-      '87｜素数与集合',
-      '94｜补集',
-      '97｜由交集确定常数',
     ])
   })
 

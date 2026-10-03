@@ -11,6 +11,23 @@ describe('math textbook catalog', () => {
     expect(topic?.flow.ja).toBe('集合の表し方 → 部分集合 → 共通部分・和集合 → 補集合 → 集合の条件')
   })
 
+
+  it('mirrors the three practice topics without creating a runtime dependency on practice code', () => {
+    expect(mathTextbookTopics.map((topic) => topic.id)).toEqual([
+      'organize-sets',
+      'read-propositions',
+      'prove-propositions',
+    ])
+    expect(mathTextbookTopics.map((topic) => topic.practiceRange)).toEqual([
+      [87, 97],
+      [98, 120],
+      [108, 117],
+    ])
+    expect(mathTextbookTopics[0].unitIds).toEqual(['math-sets'])
+    expect(mathTextbookTopics[1].unitIds).toEqual([])
+    expect(mathTextbookTopics[2].unitIds).toEqual([])
+  })
+
   it('keeps the approved three learner-facing headings in order', () => {
     const topic = mathTextbookTopics[0]
     expect(topic.learnerHeadings).toEqual([

@@ -1466,5 +1466,137 @@ export const mathPracticePropositionsBatchBSource: MathPracticeSourceQuestion[] 
     ],
     fullExplanation: '含意が真であることを示すには前件を満たすすべての場合で後件を確認し、偽を示すには前件を満たして後件を破る反例を1つ示す。(2)では ±2 の全ケース確認、(1)(3)(4)では反例が決定的である。',
   },
+  {
+    problemNo: 106,
+    section: 'propositions',
+    sectionTitle: '命題と条件',
+    title: '集合で条件を表す',
+    estimatedSeconds: 360,
+    knowledgeTags: ['set-expression', 'intersection', 'complement', 'divisibility'],
+    skillTags: ['condition-reading', 'case-classification', 'conclusion'],
+    problem: [
+      { type: 'text', text: '自然数全体を全体集合とし、条件 p：2の倍数、q：3の倍数を満たす自然数全体の集合を、それぞれ P、Q とする。次の条件を満たす自然数全体の集合を P、Q を用いて表せ。' },
+      { type: 'text', text: '(1) 6の倍数' },
+      { type: 'text', text: '(2) 奇数' },
+      { type: 'text', text: '(3) 3の倍数で奇数' },
+      { type: 'text', text: '(4) 3の倍数でない奇数' },
+    ],
+    guide: [
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: 'まず、日本語の「であり」と「でない」を集合演算へ直す共通規則を確認する。P は2の倍数、Q は3の倍数の集合である。' }],
+      },
+      { type: 'blank', blankId: 'rule' },
+
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(1) 6の倍数は、2の倍数でもあり3の倍数でもある。したがって P と Q の両方に入る自然数を表せばよい。' }],
+      },
+      { type: 'blank', blankId: 'p1-result' },
+
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(2) 奇数は、自然数の中で2の倍数ではない数である。P の外側を集合として表す。' }],
+      },
+      { type: 'blank', blankId: 'p2-result' },
+
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(3) 「3の倍数」は Q、「奇数」は2の倍数でない数である。この2条件を同時に満たす集合を作る。' }],
+      },
+      { type: 'blank', blankId: 'p3-result' },
+
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(4) 「3の倍数でない」と「奇数」を、それぞれ Q と P のどの部分に当たるか考え、2条件を同時に満たす集合へまとめる。' }],
+      },
+      { type: 'blank', blankId: 'p4-result' },
+    ],
+    blanks: [
+      {
+        id: 'rule',
+        prompt: '日本語条件と集合演算の正しい対応は',
+        choices: [
+          choice('and-complement', '「であり」→共通部分、「でない」→補集合', true),
+          choice('union-complement', '「であり」→和集合、「でない」→補集合'),
+          choice('and-union', '「であり」→共通部分、「でない」→和集合'),
+        ],
+        skillTag: 'condition-reading',
+        knowledgeTags: ['set-expression', 'intersection', 'complement'],
+        explanation: '2条件を同時に満たす「であり」は共通部分、ある集合に入らない「でない」は補集合で表します。',
+      },
+      {
+        id: 'p1-result',
+        prompt: '6の倍数全体を P、Q で表すと',
+        choices: [
+          choice('p-inter-q', 'P∩Q', true),
+          choice('p-union-q', 'P∪Q'),
+          choice('p-complement', 'P̄'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['intersection', 'divisibility'],
+        explanation: '6の倍数は2と3の両方の倍数なので、P と Q の共通部分です。',
+      },
+      {
+        id: 'p2-result',
+        prompt: '奇数全体を P、Q で表すと',
+        choices: [
+          choice('p-complement', 'P̄', true),
+          choice('p', 'P'),
+          choice('q-complement', 'Q̄'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['complement', 'divisibility'],
+        explanation: '自然数の中で奇数は2の倍数ではない数なので、P の補集合です。',
+      },
+      {
+        id: 'p3-result',
+        prompt: '3の倍数で奇数である自然数全体は',
+        choices: [
+          choice('q-inter-pbar', 'Q∩P̄', true),
+          choice('q-union-pbar', 'Q∪P̄'),
+          choice('p-inter-qbar', 'P∩Q̄'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['intersection', 'complement', 'divisibility'],
+        explanation: '3の倍数は Q、奇数は P の補集合で、両方を満たすので Q∩P̄ です。',
+      },
+      {
+        id: 'p4-result',
+        prompt: '3の倍数でない奇数全体は',
+        choices: [
+          choice('qbar-inter-pbar', 'Q̄∩P̄', true),
+          choice('qbar-union-pbar', 'Q̄∪P̄'),
+          choice('q-inter-pbar', 'Q∩P̄'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['intersection', 'complement', 'divisibility'],
+        explanation: '3の倍数でない数は Q̄、奇数は P̄ で、2条件を同時に満たすため Q̄∩P̄ です。',
+      },
+    ],
+    simulation: [
+      {
+        id: 's1', label: '(1)', prompt: '6の倍数全体を P、Q で表せ。', answerType: 'single-choice',
+        choices: [choice('p-inter-q', 'P∩Q', true), choice('p-union-q', 'P∪Q'), choice('p-complement', 'P̄')],
+        score: 2, estimatedSeconds: 25, knowledgeTags: ['intersection', 'divisibility'], skillTags: ['case-classification'],
+      },
+      {
+        id: 's2', label: '(2)', prompt: '奇数全体を P、Q で表せ。', answerType: 'single-choice',
+        choices: [choice('p-complement', 'P̄', true), choice('p', 'P'), choice('q-complement', 'Q̄')],
+        score: 2, estimatedSeconds: 25, knowledgeTags: ['complement', 'divisibility'], skillTags: ['case-classification'],
+      },
+      {
+        id: 's3', label: '(3)', prompt: '3の倍数で奇数である自然数全体を表せ。', answerType: 'single-choice',
+        choices: [choice('q-inter-pbar', 'Q∩P̄', true), choice('q-union-pbar', 'Q∪P̄'), choice('p-inter-qbar', 'P∩Q̄')],
+        score: 2, estimatedSeconds: 25, knowledgeTags: ['intersection', 'complement'], skillTags: ['conclusion'],
+      },
+      {
+        id: 's4', label: '(4)', prompt: '3の倍数でない奇数全体を表せ。', answerType: 'single-choice',
+        choices: [choice('qbar-inter-pbar', 'Q̄∩P̄', true), choice('qbar-union-pbar', 'Q̄∪P̄'), choice('q-inter-pbar', 'Q∩P̄')],
+        score: 2, estimatedSeconds: 25, knowledgeTags: ['intersection', 'complement'], skillTags: ['conclusion'],
+      },
+    ],
+    fullExplanation: 'P は2の倍数、Q は3の倍数の集合。「であり」は共通部分、「でない」は補集合として読む。したがって6の倍数は P∩Q、奇数は P̄、3の倍数で奇数は Q∩P̄、3の倍数でない奇数は Q̄∩P̄ となる。',
+  },
 
 ]

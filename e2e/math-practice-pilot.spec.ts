@@ -93,19 +93,43 @@ test('problem card 2 opens 94 with the same Physics-style progressive reading fl
 
   await page.getByTestId(`blank-${firstBlank}`).click()
   await page.getByTestId('option-math-practice-094-universe-basis-u').click()
-  await expect(page.getByTestId(`answer-${firstBlank}`)).toContainText('全体集合')
+
+  // Once preparation is finished, its long explanation disappears and only (1) is shown.
+  const readingFlow = page.getByTestId('math-practice-reading-flow')
+  await expect(readingFlow).not.toContainText('補集合では、どの範囲を基準に')
   await expect(page.getByTestId(`blank-${secondBlank}`)).toContainText('選択')
   await expect(page.getByTestId('math-practice-current-target')).toContainText('今の問い｜(1)')
   await expect(page.getByTestId('math-practice-current-target').locator('.katex')).toHaveCount(1)
 
   await page.getByTestId(`blank-${secondBlank}`).click()
   await page.getByTestId('option-math-practice-094-a-complement-correct').click()
+
+  // (2) is now the only derivation on screen; (1) has been compressed away.
+  await expect(page.getByTestId('math-practice-current-target')).toContainText('今の問い｜(2)')
+  await expect(readingFlow).not.toContainText('A の補集合はどれか')
+  await expect(page.getByTestId('blank-math-practice-094-b-complement')).toContainText('選択')
   await page.getByTestId('blank-math-practice-094-b-complement').click()
   await page.getByTestId('option-math-practice-094-b-complement-correct').click()
 
+  // (3) reuses only the result of (1), not the full previous derivation.
   const meaningBlank = page.getByTestId('blank-math-practice-094-abar-intersection-b-meaning')
   await expect(meaningBlank).toContainText('選択')
   await expect(page.getByTestId('math-practice-current-target')).toContainText('今の問い｜(3)')
+  await expect(readingFlow).not.toContainText('A の補集合はどれか')
+  await expect(readingFlow).not.toContainText('B の補集合はどれか')
+
+  const dependencies = page.getByTestId('math-practice-dependency-links')
+  await expect(dependencies).toContainText('(1) の結果')
+  await expect(dependencies).not.toContainText('(2) の結果')
+  await expect(dependencies).toContainText('4,6,8,9,10')
+  await expect(page.getByTestId('math-practice-dependency-detail-s1')).toHaveCount(0)
+
+  // The small result link can expand the old derivation only when the learner asks for it.
+  await page.getByTestId('math-practice-dependency-s1').click()
+  await expect(page.getByTestId('math-practice-dependency-detail-s1')).toContainText('A の補集合はどれか')
+  await page.getByTestId('math-practice-dependency-s1').click()
+  await expect(page.getByTestId('math-practice-dependency-detail-s1')).toHaveCount(0)
+
   await expect(meaningBlank.locator('xpath=..').locator('.katex')).toHaveCount(1)
   await expect(page.getByTestId('standard-guide')).not.toContainText('overline(')
 

@@ -123,7 +123,7 @@ test('99 judges implication by set inclusion and uses counterexamples only where
   const currentTarget = page.getByTestId('math-practice-current-target')
 
   await expect(problem).toContainText('集合の包含関係')
-  await expect(problem.locator('.katex')).toHaveCount(4)
+  await expect(problem.locator('.katex-display')).toHaveCount(4)
   await expect(problem).not.toContainText('Rightarrow')
   await expect(currentTarget).toContainText('まず確認')
   await expect(currentTarget).toContainText('包含関係')

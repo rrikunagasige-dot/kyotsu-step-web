@@ -842,6 +842,32 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
       resultLinkLabel: { ja: '示した2方向', zh: '已证明的两个方向' },
     },
   ],
+  'math-practice-109': [
+    {
+      id: 'basis',
+      kicker: { ja: 'まず確認', zh: '先确认' },
+      label: { ja: '「すべて」「ある」を否定する規則を確認する', zh: '确认否定“所有”“存在”的规则' },
+      blankIds: ['rule'],
+      result: {
+        blankId: 'rule',
+        label: { ja: '量化命題の否定規則', zh: '量化命题否定规则' },
+      },
+    },
+    {
+      id: 's1',
+      kicker: { ja: '今の問い｜(1)', zh: '当前问题｜(1)' },
+      label: { ja: '全称命題を否定し、反例で真偽を決める', zh: '否定全称命题并用反例判断真假' },
+      blankIds: ['p1-negation', 'p1-truth'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's2',
+      kicker: { ja: '今の問い｜(2)', zh: '当前问题｜(2)' },
+      label: { ja: '存在命題を否定し、候補を解いて真偽を決める', zh: '否定存在命题并通过求解候选值判断真假' },
+      blankIds: ['p2-negation', 'p2-solve', 'p2-truth'],
+      dependsOn: ['basis'],
+    },
+  ],
 }
 
 function localBlankId(questionId: string, fullBlankId: string) {
@@ -901,5 +927,6 @@ export function mathPracticeUsesSubproblemCompression(questionId: string) {
     'math-practice-106',
     'math-practice-107',
     'math-practice-108',
+    'math-practice-109',
   ].includes(questionId)
 }

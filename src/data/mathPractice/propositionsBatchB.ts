@@ -1769,5 +1769,164 @@ export const mathPracticePropositionsBatchBSource: MathPracticeSourceQuestion[] 
     ],
     fullExplanation: '必要・十分条件は必ず p⇒q と q⇒p を別々に調べて決める。(1)必要のみ、(2)十分のみ、(3)必要十分、(4)必要のみ、(5)どちらでもない。特に(5)は直角二等辺三角形の直角位置が固定されていない点が重要である。',
   },
+  {
+    problemNo: 109,
+    section: 'propositions',
+    sectionTitle: '命題と条件',
+    title: '「すべて」と「ある」の否定',
+    estimatedSeconds: 420,
+    knowledgeTags: ['quantifier', 'negation', 'truth-value', 'counterexample'],
+    skillTags: ['condition-reading', 'case-classification', 'calculation', 'conclusion'],
+    problem: [
+      { type: 'text', text: '次の命題の否定を述べよ。また、もとの命題とその否定の真偽を調べよ。' },
+      { type: 'latex', latex: '(1)\\;\\text{すべての実数 }x\\text{ について }(x-1)^2\\ne0' },
+      { type: 'latex', latex: '(2)\\;\\text{ある自然数 }n\\text{ について }n^2=5n' },
+    ],
+    guide: [
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: 'まず、「すべて」と「ある」を含む命題を否定するとき、量化語と中の条件をどう変えるかを確認する。' }],
+      },
+      { type: 'blank', blankId: 'rule' },
+
+      {
+        type: 'content',
+        blocks: [
+          { type: 'text', text: '(1) は「すべての実数で条件が成り立つ」という命題である。これが成り立たない意味を、量化語と式の両方に反映する。' },
+        ],
+      },
+      { type: 'blank', blankId: 'p1-negation' },
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '次に、今作った否定を実際に満たす実数があるかを調べ、元命題と否定の真偽を同時に決める。' }],
+      },
+      { type: 'blank', blankId: 'p1-truth' },
+
+      {
+        type: 'content',
+        blocks: [
+          { type: 'text', text: '(2) は「条件を満たす自然数が少なくとも1つ存在する」という命題である。存在しない場合を、量化語と式の両方で表す。' },
+        ],
+      },
+      { type: 'blank', blankId: 'p2-negation' },
+      {
+        type: 'content',
+        blocks: [
+          { type: 'text', text: '元の命題が本当に成り立つかを調べるため、方程式を0の形にして因数分解し、候補を求める。' },
+        ],
+      },
+      { type: 'blank', blankId: 'p2-solve' },
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '得られた候補を自然数という定義域と照合し、元命題と否定の真偽を決める。' }],
+      },
+      { type: 'blank', blankId: 'p2-truth' },
+    ],
+    blanks: [
+      {
+        id: 'rule',
+        prompt: '量化命題を否定するときの正しい対応は',
+        choices: [
+          choice('quantifier-negation', '「すべて P」の否定は「あるものが P でない」、「ある P」の否定は「すべて P でない」。', true),
+          choice('quantifier-only', '「すべて」と「ある」だけを入れ替え、中の条件はそのままにする。'),
+          choice('condition-only', '量化語はそのままで、中の条件だけ否定する。'),
+        ],
+        skillTag: 'condition-reading',
+        knowledgeTags: ['quantifier', 'negation'],
+        explanation: '量化語と内部条件をセットで否定します。¬∀ は ∃¬、¬∃ は ∀¬ です。',
+      },
+      {
+        id: 'p1-negation',
+        prompt: '(1) の否定を完成させると',
+        choices: [
+          choice('exists-equals', 'ある実数 x について (x-1)²=0。', true),
+          choice('exists-not-equals', 'ある実数 x について (x-1)²≠0。'),
+          choice('forall-equals', 'すべての実数 x について (x-1)²=0。'),
+        ],
+        skillTag: 'condition-reading',
+        knowledgeTags: ['quantifier', 'negation'],
+        explanation: '「すべて」の否定で「ある」に変わり、内部条件 ≠0 も否定されて =0 になります。',
+      },
+      {
+        id: 'p1-truth',
+        prompt: '(1) の元命題と否定の真偽を調べると',
+        choices: [
+          choice('x-one', 'x=1 なら (x-1)²=0。したがって元命題は偽、否定は真。', true),
+          choice('x-zero', 'x=0 なら (x-1)²≠0 なので、元命題は真、否定は偽。'),
+          choice('both-true', '元命題と否定はどちらも真。'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['truth-value', 'counterexample', 'quantifier'],
+        explanation: 'x=1 が元命題への反例であり、同時に否定命題を満たす具体例です。',
+      },
+      {
+        id: 'p2-negation',
+        prompt: '(2) の否定を完成させると',
+        choices: [
+          choice('forall-not-equals', 'すべての自然数 n について n²≠5n。', true),
+          choice('forall-equals', 'すべての自然数 n について n²=5n。'),
+          choice('exists-not-equals', 'ある自然数 n について n²≠5n。'),
+        ],
+        skillTag: 'condition-reading',
+        knowledgeTags: ['quantifier', 'negation'],
+        explanation: '「ある」の否定は「すべて」に変わり、内部の = も ≠ に否定されます。',
+      },
+      {
+        id: 'p2-solve',
+        prompt: 'n²=5n を解いて候補を出すと',
+        choices: [
+          choice('factor-zero-five', 'n²-5n=n(n-5)=0 だから n=0,5。', true),
+          choice('only-five', 'n²-5n=0 だから n=5 だけ。'),
+          choice('zero-minus-five', 'n(n+5)=0 だから n=0,-5。'),
+        ],
+        skillTag: 'calculation',
+        knowledgeTags: ['truth-value', 'quantifier'],
+        explanation: 'n²=5n を n²-5n=0 として因数分解すると n(n-5)=0 なので、方程式の解は0と5です。',
+      },
+      {
+        id: 'p2-truth',
+        prompt: '候補と自然数の条件を照合すると',
+        choices: [
+          choice('five-exists', 'n=5 は自然数で条件を満たす。したがって元命題は真、否定は偽。', true),
+          choice('zero-only', 'n=0 しか候補がないので、元命題は偽、否定は真。'),
+          choice('both-true', '元命題と否定はどちらも真。'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['truth-value', 'quantifier'],
+        explanation: 'n=5 という自然数が実際に存在して n²=5n を満たすので、存在命題は真、その否定は偽です。',
+      },
+    ],
+    simulation: [
+      {
+        id: 's1',
+        label: '(1)',
+        prompt: '「すべての実数 x について (x-1)²≠0」の否定と真偽の組を選べ。',
+        answerType: 'single-choice',
+        choices: [
+          choice('correct', '否定：ある実数 x について (x-1)²=0。元は偽、否定は真。', true),
+          choice('wrong', '否定：すべての実数 x について (x-1)²=0。元は真、否定は偽。'),
+        ],
+        score: 2,
+        estimatedSeconds: 30,
+        knowledgeTags: ['quantifier', 'negation', 'truth-value'],
+        skillTags: ['conclusion'],
+      },
+      {
+        id: 's2',
+        label: '(2)',
+        prompt: '「ある自然数 n について n²=5n」の否定と真偽の組を選べ。',
+        answerType: 'single-choice',
+        choices: [
+          choice('correct', '否定：すべての自然数 n について n²≠5n。元は真、否定は偽。', true),
+          choice('wrong', '否定：ある自然数 n について n²≠5n。元は偽、否定は真。'),
+        ],
+        score: 2,
+        estimatedSeconds: 30,
+        knowledgeTags: ['quantifier', 'negation', 'truth-value'],
+        skillTags: ['conclusion'],
+      },
+    ],
+    fullExplanation: '量化命題の否定では、量化語と内部条件の両方を反転する。「すべて P」の否定は「あるものが P でない」、「ある P」の否定は「すべて P でない」。(1)は x=1 が反例なので元が偽・否定が真。(2)は n=5 が条件を満たす自然数として存在するので元が真・否定が偽である。',
+  },
 
 ]

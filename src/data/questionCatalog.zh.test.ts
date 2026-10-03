@@ -78,6 +78,7 @@ describe('independently authored Chinese question catalog', () => {
       '106｜用集合表示条件',
       '107｜判断必要与充分条件',
       '108｜证明等价',
+      '109｜“所有”与“存在”的否定',
     ])  })
 
   it('selects the requested language without changing stable question IDs', () => {

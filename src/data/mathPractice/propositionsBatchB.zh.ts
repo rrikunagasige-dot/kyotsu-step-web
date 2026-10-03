@@ -1717,5 +1717,158 @@ export const mathPracticePropositionsBatchBSourceZh: MathPracticeSourceQuestion[
     ],
     fullExplanation: '判断必要与充分条件时必须分别检查 p⇒q 和 q⇒p。(1)仅必要，(2)仅充分，(3)充要，(4)仅必要，(5)两者都不是。尤其(5)中直角等腰三角形的直角位置并不固定。',
   },
+  {
+    problemNo: 109,
+    section: 'propositions',
+    sectionTitle: '命题与条件',
+    title: '“所有”与“存在”的否定',
+    estimatedSeconds: 420,
+    knowledgeTags: ['quantifier', 'negation', 'truth-value', 'counterexample'],
+    skillTags: ['condition-reading', 'case-classification', 'calculation', 'conclusion'],
+    problem: [
+      { type: 'text', text: '写出下列命题的否定，并判断原命题与其否定的真假。' },
+      { type: 'latex', latex: '(1)\\;\\text{对所有实数 }x\\text{，都有 }(x-1)^2\\ne0' },
+      { type: 'latex', latex: '(2)\\;\\text{存在自然数 }n\\text{，使得 }n^2=5n' },
+    ],
+    guide: [
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '先确认：否定含有“所有”或“存在”的命题时，量词和内部条件应如何一起改变。' }],
+      },
+      { type: 'blank', blankId: 'rule' },
+
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(1) 表示“每个实数都满足该条件”。把“不成立”的含义同时反映到量词和式子中。' }],
+      },
+      { type: 'blank', blankId: 'p1-negation' },
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '接着检查是否真的存在满足刚才否定条件的实数，并同时判断原命题与否定的真假。' }],
+      },
+      { type: 'blank', blankId: 'p1-truth' },
+
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(2) 表示“至少存在一个自然数满足条件”。把“一个也不存在”同时写到量词和式子中。' }],
+      },
+      { type: 'blank', blankId: 'p2-negation' },
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '为了判断原命题是否成立，把方程移到0的一边并因式分解，求出候选值。' }],
+      },
+      { type: 'blank', blankId: 'p2-solve' },
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '把得到的候选值与“自然数”这一取值范围对照，再判断原命题与否定的真假。' }],
+      },
+      { type: 'blank', blankId: 'p2-truth' },
+    ],
+    blanks: [
+      {
+        id: 'rule',
+        prompt: '否定量化命题时，正确的对应是',
+        choices: [
+          choice('quantifier-negation', '“所有都满足 P”的否定是“存在一个不满足 P”；“存在一个满足 P”的否定是“所有都不满足 P”。', true),
+          choice('quantifier-only', '只交换“所有”和“存在”，内部条件保持不变。'),
+          choice('condition-only', '量词保持不变，只否定内部条件。'),
+        ],
+        skillTag: 'condition-reading',
+        knowledgeTags: ['quantifier', 'negation'],
+        explanation: '量词和内部条件必须一起否定：¬∀ 对应 ∃¬，¬∃ 对应 ∀¬。',
+      },
+      {
+        id: 'p1-negation',
+        prompt: '(1) 的否定是',
+        choices: [
+          choice('exists-equals', '存在实数 x，使得 (x-1)²=0。', true),
+          choice('exists-not-equals', '存在实数 x，使得 (x-1)²≠0。'),
+          choice('forall-equals', '对所有实数 x，都有 (x-1)²=0。'),
+        ],
+        skillTag: 'condition-reading',
+        knowledgeTags: ['quantifier', 'negation'],
+        explanation: '“所有”的否定变成“存在”，同时 ≠0 的否定是 =0。',
+      },
+      {
+        id: 'p1-truth',
+        prompt: '判断 (1) 的原命题与否定',
+        choices: [
+          choice('x-one', 'x=1 时 (x-1)²=0，因此原命题为假，否定为真。', true),
+          choice('x-zero', 'x=0 时 (x-1)²≠0，因此原命题为真，否定为假。'),
+          choice('both-true', '原命题与否定都为真。'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['truth-value', 'counterexample', 'quantifier'],
+        explanation: 'x=1 是原命题的反例，同时也是满足否定命题的具体值。',
+      },
+      {
+        id: 'p2-negation',
+        prompt: '(2) 的否定是',
+        choices: [
+          choice('forall-not-equals', '对所有自然数 n，都有 n²≠5n。', true),
+          choice('forall-equals', '对所有自然数 n，都有 n²=5n。'),
+          choice('exists-not-equals', '存在自然数 n，使得 n²≠5n。'),
+        ],
+        skillTag: 'condition-reading',
+        knowledgeTags: ['quantifier', 'negation'],
+        explanation: '“存在”的否定变成“所有”，同时 = 的否定是 ≠。',
+      },
+      {
+        id: 'p2-solve',
+        prompt: '解 n²=5n 得到的候选值是',
+        choices: [
+          choice('factor-zero-five', 'n²-5n=n(n-5)=0，所以 n=0,5。', true),
+          choice('only-five', 'n²-5n=0，所以只有 n=5。'),
+          choice('zero-minus-five', 'n(n+5)=0，所以 n=0,-5。'),
+        ],
+        skillTag: 'calculation',
+        knowledgeTags: ['truth-value', 'quantifier'],
+        explanation: '移项并因式分解得到 n(n-5)=0，因此方程的解是0和5。',
+      },
+      {
+        id: 'p2-truth',
+        prompt: '把候选值与自然数范围对照后',
+        choices: [
+          choice('five-exists', 'n=5 是自然数且满足条件，因此原命题为真，否定为假。', true),
+          choice('zero-only', '只有 n=0，所以原命题为假，否定为真。'),
+          choice('both-true', '原命题与否定都为真。'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['truth-value', 'quantifier'],
+        explanation: '自然数 n=5 的确满足 n²=5n，所以存在命题为真，它的否定为假。',
+      },
+    ],
+    simulation: [
+      {
+        id: 's1',
+        label: '(1)',
+        prompt: '选择“对所有实数 x，都有 (x-1)²≠0”的否定及真假组合。',
+        answerType: 'single-choice',
+        choices: [
+          choice('correct', '否定：存在实数 x，使得 (x-1)²=0。原命题假，否定真。', true),
+          choice('wrong', '否定：对所有实数 x，都有 (x-1)²=0。原命题真，否定假。'),
+        ],
+        score: 2,
+        estimatedSeconds: 30,
+        knowledgeTags: ['quantifier', 'negation', 'truth-value'],
+        skillTags: ['conclusion'],
+      },
+      {
+        id: 's2',
+        label: '(2)',
+        prompt: '选择“存在自然数 n，使得 n²=5n”的否定及真假组合。',
+        answerType: 'single-choice',
+        choices: [
+          choice('correct', '否定：对所有自然数 n，都有 n²≠5n。原命题真，否定假。', true),
+          choice('wrong', '否定：存在自然数 n，使得 n²≠5n。原命题假，否定真。'),
+        ],
+        score: 2,
+        estimatedSeconds: 30,
+        knowledgeTags: ['quantifier', 'negation', 'truth-value'],
+        skillTags: ['conclusion'],
+      },
+    ],
+    fullExplanation: '否定量化命题时必须同时改变量词和内部条件。“所有 P”的否定是“存在一个不满足 P”，“存在 P”的否定是“所有都不满足 P”。(1)中 x=1 是反例，因此原命题假、否定真；(2)中 n=5 是满足方程的自然数，因此原命题真、否定假。',
+  },
 
 ]

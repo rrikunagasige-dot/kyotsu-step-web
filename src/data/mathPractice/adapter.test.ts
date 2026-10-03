@@ -12,13 +12,13 @@ describe('math practice 87-120 staged integration', () => {
     expect(mathPractice87To120Catalog).toHaveLength(34)
     expect(mathPractice87To120Catalog[0]?.problemNo).toBe(87)
     expect(mathPractice87To120Catalog.at(-1)?.problemNo).toBe(120)
-    expect(mathPracticePilotCatalog.map((entry) => entry.problemNo)).toEqual([87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108])
+    expect(mathPracticePilotCatalog.map((entry) => entry.problemNo)).toEqual([87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109])
   })
 
   it('publishes the reviewed set, proposition and proof pilots in source order', () => {
     expect(mathPracticePilotSource.map((question) => question.problemNo)).toEqual([87, 94, 97])
     expect(mathPracticePilotQuestions.map((question) => question.questionId)).toEqual(
-      Array.from({ length: 22 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
+      Array.from({ length: 23 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
     )
   })
 
@@ -46,6 +46,7 @@ describe('math practice 87-120 staged integration', () => {
       '106｜集合で条件を表す',
       '107｜必要・十分条件の判定',
       '108｜同値の証明',
+      '109｜「すべて」と「ある」の否定',
     ])
   })
 
@@ -265,6 +266,29 @@ describe('math practice 87-120 staged integration', () => {
       .toBe('positive-remains')
     expect(question?.blanks.find((blank) => blank.id === 'equivalence')?.choices.find((choice) => choice.correct)?.id)
       .toBe('equivalent')
+  })
+
+  it('authors 109 as one quantifier-negation rule plus two independent truth checks', () => {
+    const question = mathPracticePropositionsBatchBSource.find((item) => item.problemNo === 109)
+    expect(question).toBeDefined()
+    expect(question?.blanks.map((blank) => blank.id)).toEqual([
+      'rule',
+      'p1-negation',
+      'p1-truth',
+      'p2-negation',
+      'p2-solve',
+      'p2-truth',
+    ])
+    expect(question?.blanks.find((blank) => blank.id === 'p1-negation')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('exists-equals')
+    expect(question?.blanks.find((blank) => blank.id === 'p1-truth')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('x-one')
+    expect(question?.blanks.find((blank) => blank.id === 'p2-negation')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('forall-not-equals')
+    expect(question?.blanks.find((blank) => blank.id === 'p2-solve')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('factor-zero-five')
+    expect(question?.blanks.find((blank) => blank.id === 'p2-truth')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('five-exists')
   })
 
   it('keeps Japanese and Chinese grading structures aligned', () => {

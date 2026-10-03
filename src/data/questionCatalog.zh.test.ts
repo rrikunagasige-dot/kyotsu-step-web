@@ -85,6 +85,7 @@ describe('independently authored Chinese question catalog', () => {
       '113｜平方根与无理数',
       '114｜倍数命题的证明',
       '115｜反证法',
+      '116｜有理数与无理数',
     ])  })
 
   it('selects the requested language without changing stable question IDs', () => {

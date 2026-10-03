@@ -32,7 +32,7 @@ const rawMathFunctionConditionsUnit = {
       number: '01',
       title: '本文',
       role: 'concept' as const,
-      description: '共通の判定基準を作り、練習モード118と同じ3つの例へ順に使う。',
+      description: '共通の判定基準を作り、3つの具体例へ順に使う。',
       figures: [],
       readingFlow: [
         {

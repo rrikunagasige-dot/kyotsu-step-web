@@ -151,27 +151,33 @@ test('math textbook setup enters the set lesson and physics remains available fr
 })
 
 
-test('proposition-reading review unit starts from a concrete implication before revealing the concept', async ({ page }) => {
+test('proposition-reading review unit builds the proposition criterion before implication', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-propositions-reading'))
 
   await expect(page.getByRole('heading', { name: '条件から命題を読む', exact: true })).toBeVisible()
   await expect(page.getByRole('heading', { name: '命題の真偽を読む', exact: true })).toBeVisible()
+  await expect(page.getByTestId('textbook-item-prop-p00a')).toBeVisible()
+  await expect(page.getByTestId('textbook-item-prop-a01')).toHaveCount(0)
+
+  await answerItem(page, 'prop-p00a', '客観的に決められる')
+  await answerItem(page, 'prop-p00b', '客観的に決められる')
+  await answerItem(page, 'prop-p00c', '一意に決まらない')
+
+  await expect(page.getByText(/文を命題という/)).toBeVisible()
   await expect(page.getByTestId('textbook-item-prop-a01')).toBeVisible()
   await expect(page.getByText(/pならばqである/)).toHaveCount(0)
 
   await answerItem(page, 'prop-a01', '満たす')
-
   await expect(page.getByText(/pならばqである/)).toBeVisible()
   await expect(page.getByTestId('textbook-item-prop-a02')).toBeVisible()
-  await expect(page.getByTestId('textbook-figure-implication-inclusion')).toHaveCount(0)
-
-  await answerItem(page, 'prop-a02', 'すべて入る')
-  await expect(page.getByTestId('textbook-figure-implication-inclusion')).toBeVisible()
 })
 
 test('proposition-reading counterexample is decided before the counterexample concept is named', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-propositions-reading'))
 
+  await answerItem(page, 'prop-p00a', '客観的に決められる')
+  await answerItem(page, 'prop-p00b', '客観的に決められる')
+  await answerItem(page, 'prop-p00c', '一意に決まらない')
   await answerItem(page, 'prop-a01', '満たす')
   await answerItem(page, 'prop-a02', 'すべて入る')
 

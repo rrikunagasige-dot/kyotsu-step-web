@@ -87,6 +87,7 @@ describe('independently authored Chinese question catalog', () => {
       '115｜反证法',
       '116｜有理数与无理数',
       '117｜含无理数的等式',
+      '118｜什么是函数',
     ])  })
 
   it('selects the requested language without changing stable question IDs', () => {

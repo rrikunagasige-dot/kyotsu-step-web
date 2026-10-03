@@ -10,6 +10,7 @@ on:
       - 'chatgpt/math-87-textbook-like-design'
       - 'chatgpt/math-94-97-textbook-flow'
       - 'chatgpt/math-pilot-target-rendering-repair'
+      - 'chatgpt/math-94-subproblem-compression'
   pull_request:
     paths:
       - 'src/data/mathPractice/**'

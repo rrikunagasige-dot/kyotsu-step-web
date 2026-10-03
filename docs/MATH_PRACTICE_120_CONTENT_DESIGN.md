@@ -246,3 +246,49 @@ After 120:
   - mobile layout
   - answer leakage
   - final titles and learner-facing continuity.
+
+
+---
+
+# Implementation-ready thinking nodes
+
+(1):
+- 120-p1-formula
+  - correct: 三角形の面積 \(=\frac12\times\)底辺\(\times\)高さ
+  - purpose: retrieve the geometric relation
+- 120-p1-model
+  - correct: \(y=\frac12\cdot6\cdot x=3x\)
+  - purpose: map prose quantities into the formula
+- 120-p1-domain-meaning
+  - correct: \(x\) is height; negative values impossible; \(x=0\) does not form a triangle with positive area
+  - purpose: interpret the variable before choosing inequalities
+- 120-p1-domain
+  - correct: \(x>0\)
+  - purpose: convert the physical constraint into the mathematical domain
+
+(2):
+- 120-p2-distance-rule
+  - correct: distance = speed × time
+- 120-p2-traveled
+  - correct: \(3x\) km
+- 120-p2-model
+  - correct: \(y=15-3x\)
+  - purpose: recognize “remaining = initial - traveled”
+- 120-p2-start
+  - correct: \(x=0\)
+- 120-p2-end
+  - correct: \(15/3=5\) hours
+- 120-p2-domain
+  - correct: \(0\le x\le5\)
+
+Distractor design:
+- p1 formula: base+height, base×height, \(\frac12\)(base+height)
+- p1 domain: \(x\ge0\), \(x<0\)
+- p2 model: \(15+3x\), \(3x-15\)
+- p2 end: \(15-3=12\), \(15\times3=45\)
+- p2 domain: \(0<x<5\), \(x\ge0\) without upper bound
+
+Leakage checks:
+- do not expose \(x>0\) before the learner interprets height and zero
+- do not expose finish time 5 before the learner forms the speed-time relation
+- do not show final combined answer \(y=15-3x,\ 0\le x\le5\) while the domain stage is unresolved

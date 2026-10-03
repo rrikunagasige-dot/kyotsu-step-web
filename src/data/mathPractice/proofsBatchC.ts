@@ -929,7 +929,7 @@ export const mathPracticeProofsBatchCSource: MathPracticeSourceQuestion[] = [
         id: 'square-result',
         prompt: '両辺を2乗した後に言えることは',
         choices: [
-          choice('x-r-squared-rational', 'x=r²。r は有理数なので r² も有理数、したがって x は有理数。', true),
+          choice('x-rational', 'x=r²。r は有理数なので r² も有理数、したがって x は有理数。', true),
           choice('x-r-rational', 'x=r。r が有理数なので x は有理数。'),
           choice('x-r-squared-irrational', 'x=r² だが、有理数の平方は必ず無理数。'),
         ],

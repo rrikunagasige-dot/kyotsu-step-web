@@ -4,7 +4,7 @@ import { mathSetUnit } from './setLesson'
 describe('math set textbook unit', () => {
   it('keeps the first slice as one continuous math lesson', () => {
     expect(mathSetUnit.subject).toBe('math-1a')
-    expect(mathSetUnit.status).toBe('review')
+    expect(mathSetUnit.status).toBe('published')
     expect(mathSetUnit.chapter?.chapterId).toBe('math-ch03-sets-propositions')
     expect(mathSetUnit.chapter?.unitCode).toBe('3SET')
     expect(mathSetUnit.sections).toHaveLength(1)

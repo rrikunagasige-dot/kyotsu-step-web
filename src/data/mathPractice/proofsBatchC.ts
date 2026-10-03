@@ -481,5 +481,222 @@ export const mathPracticeProofsBatchCSource: MathPracticeSourceQuestion[] = [
     ],
     fullExplanation: '元命題 p⇒q に対し、逆は q⇒p、対偶は ¬q⇒¬p、裏は ¬p⇒¬q。(1) は 真・偽・真・偽、(2) は 偽・真・偽・真、(3) は4つすべて真となる。各真偽は倍数の定義、因数分解、反例、否定の作り方を用いて個別に確認する。',
   },
+  {
+    problemNo: 111,
+    section: 'proofs',
+    sectionTitle: '命題と証明',
+    title: '対偶による証明',
+    estimatedSeconds: 600,
+    knowledgeTags: ['contrapositive', 'negation', 'inequality', 'divisibility', 'parity'],
+    skillTags: ['law-selection', 'condition-reading', 'calculation', 'conclusion'],
+    problem: [
+      { type: 'text', text: 'x、y は実数、n は整数とする。対偶を考えて、次の命題を証明せよ。' },
+      { type: 'latex', latex: '(1)\\;x^3\\ne1\\Rightarrow x\\ne1' },
+      { type: 'latex', latex: '(2)\\;x+y>3\\Rightarrow (x>2\\;\\text{または}\\;y>1)' },
+      { type: 'text', text: '(3) n² が3の倍数でないならば、n は3の倍数でない。' },
+      { type: 'text', text: '(4) n³+1 が奇数ならば、n は偶数である。' },
+    ],
+    guide: [
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '今回は「対偶を考えて」と指定されている。方法を選ぶのではなく、まず p⇒q の対偶を正しく作る形を確認する。' }],
+      },
+      { type: 'blank', blankId: 'rule' },
+
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(1) 後件 x≠1 と前件 x³≠1 をそれぞれ否定し、向きを反転して対偶を作る。' }],
+      },
+      { type: 'blank', blankId: 'p1-contrapositive' },
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(1) 作った対偶の前件を仮定し、右側を直接計算して証明する。' }],
+      },
+      { type: 'blank', blankId: 'p1-proof' },
+
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(2) 後件は「x>2 または y>1」。この「または」全体が成り立たない条件を先に作る。' }],
+      },
+      { type: 'blank', blankId: 'p2-negation' },
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(2) 後件の否定を対偶の前件として、x+y の上限を直接評価する。' }],
+      },
+      { type: 'blank', blankId: 'p2-proof' },
+
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(3) 「n² が3の倍数でない」と「n が3の倍数でない」をそれぞれ否定し、対偶を文章で作る。' }],
+      },
+      { type: 'blank', blankId: 'p3-contrapositive' },
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(3) 対偶の前件「n は3の倍数」を、ある整数 k を使う式に直し、2乗する。' }],
+      },
+      { type: 'blank', blankId: 'p3-proof' },
+
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(4) 「偶数」と「奇数」を正しく否定して、対偶の文章を作る。' }],
+      },
+      { type: 'blank', blankId: 'p4-contrapositive' },
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(4) 対偶の前件 n が奇数であることを、ある整数 k を用いた式へ直す。' }],
+      },
+      { type: 'blank', blankId: 'p4-form' },
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(4) その式を n³+1 へ代入し、全体を 2×整数 の形まで整理する。' }],
+      },
+      { type: 'blank', blankId: 'p4-proof' },
+    ],
+    blanks: [
+      {
+        id: 'rule',
+        prompt: '元の命題 p⇒q の対偶は',
+        choices: [
+          choice('correct', '¬q⇒¬p', true),
+          choice('inverse', '¬p⇒¬q'),
+          choice('converse', 'q⇒p'),
+        ],
+        skillTag: 'law-selection',
+        knowledgeTags: ['contrapositive', 'negation', 'implication'],
+        explanation: '対偶は後件と前件をどちらも否定し、向きを反転した ¬q⇒¬p です。',
+      },
+      {
+        id: 'p1-contrapositive',
+        prompt: '(1) の対偶は',
+        choices: [
+          choice('correct', 'x=1 ⇒ x³=1', true),
+          choice('inverse', 'x³=1 ⇒ x=1'),
+          choice('same', 'x³≠1 ⇒ x≠1'),
+        ],
+        skillTag: 'condition-reading',
+        knowledgeTags: ['contrapositive', 'negation'],
+        explanation: 'x≠1 の否定は x=1、x³≠1 の否定は x³=1 なので、対偶は x=1⇒x³=1 です。',
+      },
+      {
+        id: 'p1-proof',
+        prompt: '(1) の対偶を証明して元命題へ戻すと',
+        choices: [
+          choice('correct', 'x=1 なら x³=1³=1。対偶が真なので元の命題も真。', true),
+          choice('wrong-cube', 'x=1 なら x³=3 なので対偶は偽。'),
+          choice('example-only', 'x=2 では元命題が成り立つので証明完了。'),
+        ],
+        skillTag: 'calculation',
+        knowledgeTags: ['contrapositive', 'conclusion'],
+        explanation: '対偶の前件 x=1 から後件 x³=1 が直接示せるので、対偶、したがって元命題も真です。',
+      },
+      {
+        id: 'p2-negation',
+        prompt: '(2) の後件「x>2 または y>1」の否定は',
+        choices: [
+          choice('and-le', 'x≤2 かつ y≤1', true),
+          choice('or-le', 'x≤2 または y≤1'),
+          choice('and-ge', 'x≥2 かつ y≥1'),
+        ],
+        skillTag: 'condition-reading',
+        knowledgeTags: ['contrapositive', 'negation', 'de-morgan', 'inequality'],
+        explanation: '「A または B」の否定は「Aでない かつ Bでない」。> の否定では境界を含めて ≤ になります。',
+      },
+      {
+        id: 'p2-proof',
+        prompt: '(2) の対偶を完成させて証明すると',
+        choices: [
+          choice('correct', 'x≤2 かつ y≤1 なら x+y≤2+1=3。よって対偶が真で、元命題も真。', true),
+          choice('strict', 'x≤2 かつ y≤1 なら必ず x+y<3。'),
+          choice('wrong-direction', 'x+y≤3 なら必ず x≤2 かつ y≤1。'),
+        ],
+        skillTag: 'calculation',
+        knowledgeTags: ['contrapositive', 'inequality', 'conclusion'],
+        explanation: '対偶は「x≤2 かつ y≤1 ⇒ x+y≤3」で、左辺から和の上限を直接足せます。',
+      },
+      {
+        id: 'p3-contrapositive',
+        prompt: '(3) の対偶は',
+        choices: [
+          choice('correct', 'n が3の倍数ならば、n² は3の倍数である。', true),
+          choice('same', 'n² が3の倍数でないならば、n は3の倍数でない。'),
+          choice('inverse', 'n² が3の倍数ならば、n は3の倍数である。'),
+        ],
+        skillTag: 'condition-reading',
+        knowledgeTags: ['contrapositive', 'negation', 'divisibility'],
+        explanation: '後件「n は3の倍数でない」の否定は「3の倍数」、前件の否定は「n² は3の倍数」です。',
+      },
+      {
+        id: 'p3-proof',
+        prompt: '(3) の対偶を倍数の定義で証明すると',
+        choices: [
+          choice('correct', 'n=3k とおけば n²=9k²=3(3k²)。よって n² は3の倍数で、元命題も真。', true),
+          choice('wrong-factor', 'n=3k なら n²=3k² なので証明できる。'),
+          choice('wrong-form', 'n=3k+1 とおけば n² は3の倍数になる。'),
+        ],
+        skillTag: 'calculation',
+        knowledgeTags: ['contrapositive', 'divisibility', 'conclusion'],
+        explanation: 'n=3k を2乗すると n²=9k²=3(3k²) となり、3×整数の形が得られます。',
+      },
+      {
+        id: 'p4-contrapositive',
+        prompt: '(4) の対偶は',
+        choices: [
+          choice('correct', 'n が奇数ならば、n³+1 は偶数である。', true),
+          choice('inverse', 'n が偶数ならば、n³+1 は奇数である。'),
+          choice('same', 'n³+1 が奇数ならば、n は偶数である。'),
+        ],
+        skillTag: 'condition-reading',
+        knowledgeTags: ['contrapositive', 'negation', 'parity'],
+        explanation: '「n は偶数」の否定は「n は奇数」、「n³+1 は奇数」の否定は「n³+1 は偶数」です。',
+      },
+      {
+        id: 'p4-form',
+        prompt: 'n が奇数であることを整数 k で表すと',
+        choices: [
+          choice('odd-form', 'n=2k+1', true),
+          choice('even-form', 'n=2k'),
+          choice('three-form', 'n=3k+1'),
+        ],
+        skillTag: 'equation-building',
+        knowledgeTags: ['parity', 'contrapositive'],
+        explanation: '奇数は 2×整数+1 の形なので n=2k+1 と表します。',
+      },
+      {
+        id: 'p4-proof',
+        prompt: 'n=2k+1 を使って対偶を証明すると',
+        choices: [
+          choice('correct', 'n³+1=8k³+12k²+6k+2=2(4k³+6k²+3k+1)。よって偶数で、元命題も真。', true),
+          choice('odd-result', 'n³+1=2(4k³+6k²+3k)+1 なので奇数。'),
+          choice('no-factor', '展開できても2×整数の形にはできない。'),
+        ],
+        skillTag: 'calculation',
+        knowledgeTags: ['contrapositive', 'parity', 'conclusion'],
+        explanation: '展開後に2をくくると 2×整数 の形になるため n³+1 は偶数です。よって対偶、元命題ともに真です。',
+      },
+    ],
+    simulation: [
+      {
+        id: 's1', label: '(1)', prompt: '(1) の対偶を選べ。', answerType: 'single-choice',
+        choices: [choice('correct', 'x=1⇒x³=1', true), choice('wrong', 'x³=1⇒x=1')],
+        score: 2, estimatedSeconds: 25, knowledgeTags: ['contrapositive'], skillTags: ['condition-reading'],
+      },
+      {
+        id: 's2', label: '(2)', prompt: '「x>2 または y>1」の否定を選べ。', answerType: 'single-choice',
+        choices: [choice('correct', 'x≤2 かつ y≤1', true), choice('wrong', 'x≤2 または y≤1')],
+        score: 2, estimatedSeconds: 25, knowledgeTags: ['negation', 'de-morgan'], skillTags: ['condition-reading'],
+      },
+      {
+        id: 's3', label: '(3)', prompt: '(3) の対偶の前件 n が3の倍数のとき、証明に使う式を選べ。', answerType: 'single-choice',
+        choices: [choice('correct', 'n=3k', true), choice('wrong', 'n=3k+1')],
+        score: 2, estimatedSeconds: 25, knowledgeTags: ['divisibility'], skillTags: ['calculation'],
+      },
+      {
+        id: 's4', label: '(4)', prompt: '奇数 n の表し方を選べ。', answerType: 'single-choice',
+        choices: [choice('correct', 'n=2k+1', true), choice('wrong', 'n=2k')],
+        score: 2, estimatedSeconds: 25, knowledgeTags: ['parity'], skillTags: ['calculation'],
+      },
+    ],
+    fullExplanation: '対偶による証明では、元命題 p⇒q を ¬q⇒¬p に直してその対偶を直接示す。(1)は x=1 の代入、(2)は OR の否定を AND にして x+y≤3 を示す、(3)は n=3k から n²=3(3k²)、(4)は n=2k+1 を展開して n³+1=2×整数 と示す。各対偶が真なので元命題も真である。',
+  },
 
 ]

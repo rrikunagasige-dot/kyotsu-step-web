@@ -784,7 +784,7 @@ test('108 proves equivalence in two directions and only combines them at the fin
 
   await expect(page.getByRole('heading', { name: '108｜同値の証明' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3'])
   await expect(page.getByTestId('math-topic-question-1')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -853,7 +853,7 @@ test('110 builds converse, contrapositive and inverse separately, then consolida
 
   await expect(page.getByRole('heading', { name: '110｜逆・対偶・裏' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3'])
   await expect(page.getByTestId('math-topic-question-2')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -942,6 +942,84 @@ test('110 builds converse, contrapositive and inverse separately, then consolida
   await expect(currentTarget).toContainText('(3) まとめ')
   await page.getByTestId('blank-math-practice-110-p3-summary').click()
   await page.getByTestId('option-math-practice-110-p3-summary-tttt').click()
+
+  await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
+
+  const dimensions = await page.evaluate(() => ({
+    viewport: window.innerWidth,
+    page: document.documentElement.scrollWidth,
+  }))
+  expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
+})
+
+test('111 uses the source-given contrapositive strategy and proves four cases one stage at a time', async ({ page }) => {
+  await page.getByTestId('math-exercise-basic').click()
+  await page.getByTestId('math-topic-prove-propositions').click()
+  await page.getByTestId('math-topic-question-3').click()
+
+  await expect(page.getByRole('heading', { name: '111｜対偶による証明' })).toBeVisible()
+  const nav = page.getByTestId('math-topic-question-nav')
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3'])
+  await expect(page.getByTestId('math-topic-question-3')).toHaveAttribute('aria-current', 'page')
+
+  const problem = page.getByTestId('standard-problem')
+  const readingFlow = page.getByTestId('math-practice-reading-flow')
+  const currentTarget = page.getByTestId('math-practice-current-target')
+
+  await expect(problem).toContainText('対偶を考えて')
+  await expect(problem.locator('.katex-error')).toHaveCount(0)
+  await expect(currentTarget).toContainText('まず確認')
+  await expect(page.getByTestId('blank-math-practice-111-rule')).toContainText('選択')
+
+  await page.getByTestId('blank-math-practice-111-rule').click()
+  await page.getByTestId('option-math-practice-111-rule-correct').click()
+
+  // (1): form the contrapositive, then prove it directly.
+  await expect(currentTarget).toContainText('(1) 対偶')
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('対偶の形')
+  await page.getByTestId('blank-math-practice-111-p1-contrapositive').click()
+  await page.getByTestId('option-math-practice-111-p1-contrapositive-correct').click()
+
+  await expect(currentTarget).toContainText('(1) 証明')
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('(1) の対偶')
+  await page.getByTestId('blank-math-practice-111-p1-proof').click()
+  await page.getByTestId('option-math-practice-111-p1-proof-correct').click()
+
+  // (2): negate OR semantically before using the inequality.
+  await expect(currentTarget).toContainText('(2) 対偶の前件')
+  await expect(readingFlow).not.toContainText('(1) 後件')
+  await page.getByTestId('blank-math-practice-111-p2-negation').click()
+  await page.getByTestId('option-math-practice-111-p2-negation-and-le').click()
+
+  await expect(currentTarget).toContainText('(2) 証明')
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('後件の否定')
+  await page.getByTestId('blank-math-practice-111-p2-proof').click()
+  await page.getByTestId('option-math-practice-111-p2-proof-correct').click()
+
+  // (3): translate divisibility into n=3k and return to a 3×integer form.
+  await expect(currentTarget).toContainText('(3) 対偶')
+  await expect(readingFlow).not.toContainText('x+y')
+  await page.getByTestId('blank-math-practice-111-p3-contrapositive').click()
+  await page.getByTestId('option-math-practice-111-p3-contrapositive-correct').click()
+
+  await expect(currentTarget).toContainText('(3) 証明')
+  await page.getByTestId('blank-math-practice-111-p3-proof').click()
+  await page.getByTestId('option-math-practice-111-p3-proof-correct').click()
+
+  // (4): the odd-number representation is a separate reasoning node before expansion.
+  await expect(currentTarget).toContainText('(4) 対偶')
+  await page.getByTestId('blank-math-practice-111-p4-contrapositive').click()
+  await page.getByTestId('option-math-practice-111-p4-contrapositive-correct').click()
+
+  await expect(currentTarget).toContainText('(4) 奇数の式')
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('(4) の対偶')
+  await page.getByTestId('blank-math-practice-111-p4-form').click()
+  await page.getByTestId('option-math-practice-111-p4-form-odd-form').click()
+
+  await expect(currentTarget).toContainText('(4) 証明')
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('奇数の表現')
+  await page.getByTestId('blank-math-practice-111-p4-proof').click()
+  await page.getByTestId('option-math-practice-111-p4-proof-correct').click()
 
   await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
 

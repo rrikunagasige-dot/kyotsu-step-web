@@ -1003,6 +1003,86 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
       resultLinkLabel: { ja: '(3)で確認した4命題', zh: '(3) 已确认的四个命题' },
     },
   ],
+  'math-practice-111': [
+    {
+      id: 'basis',
+      kicker: { ja: 'まず確認', zh: '先确认' },
+      label: { ja: '対偶の形を確認する', zh: '确认逆否命题的形式' },
+      blankIds: ['rule'],
+      result: {
+        blankId: 'rule',
+        label: { ja: '対偶の形', zh: '逆否命题的形式' },
+      },
+    },
+    {
+      id: 'p1-contrapositive',
+      kicker: { ja: '今の問い｜(1) 対偶', zh: '当前问题｜(1) 逆否命题' },
+      label: { ja: '2つの条件を否定して対偶を作る', zh: '否定两个条件并写出逆否命题' },
+      blankIds: ['p1-contrapositive'],
+      dependsOn: ['basis'],
+      result: { blankId: 'p1-contrapositive', label: { ja: '(1) の対偶', zh: '(1) 的逆否命题' } },
+    },
+    {
+      id: 'p1-proof',
+      kicker: { ja: '今の問い｜(1) 証明', zh: '当前问题｜(1) 证明' },
+      label: { ja: '対偶を直接計算して示す', zh: '直接计算证明逆否命题' },
+      blankIds: ['p1-proof'],
+      dependsOn: ['p1-contrapositive'],
+    },
+    {
+      id: 'p2-negation',
+      kicker: { ja: '今の問い｜(2) 対偶の前件', zh: '当前问题｜(2) 逆否命题前件' },
+      label: { ja: '「または」全体を否定する', zh: '否定整个“或”条件' },
+      blankIds: ['p2-negation'],
+      dependsOn: ['basis'],
+      result: { blankId: 'p2-negation', label: { ja: '後件の否定', zh: '后件的否定' } },
+    },
+    {
+      id: 'p2-proof',
+      kicker: { ja: '今の問い｜(2) 証明', zh: '当前问题｜(2) 证明' },
+      label: { ja: '2つの上界を足して対偶を示す', zh: '相加两个上界证明逆否命题' },
+      blankIds: ['p2-proof'],
+      dependsOn: ['p2-negation'],
+    },
+    {
+      id: 'p3-contrapositive',
+      kicker: { ja: '今の問い｜(3) 対偶', zh: '当前问题｜(3) 逆否命题' },
+      label: { ja: '倍数条件を否定して対偶を作る', zh: '否定倍数条件并写出逆否命题' },
+      blankIds: ['p3-contrapositive'],
+      dependsOn: ['basis'],
+      result: { blankId: 'p3-contrapositive', label: { ja: '(3) の対偶', zh: '(3) 的逆否命题' } },
+    },
+    {
+      id: 'p3-proof',
+      kicker: { ja: '今の問い｜(3) 証明', zh: '当前问题｜(3) 证明' },
+      label: { ja: 'n=3kから3×整数の形を作る', zh: '由n=3k写成3×整数' },
+      blankIds: ['p3-proof'],
+      dependsOn: ['p3-contrapositive'],
+    },
+    {
+      id: 'p4-contrapositive',
+      kicker: { ja: '今の問い｜(4) 対偶', zh: '当前问题｜(4) 逆否命题' },
+      label: { ja: '奇数・偶数を否定して対偶を作る', zh: '否定奇偶条件并写出逆否命题' },
+      blankIds: ['p4-contrapositive'],
+      dependsOn: ['basis'],
+      result: { blankId: 'p4-contrapositive', label: { ja: '(4) の対偶', zh: '(4) 的逆否命题' } },
+    },
+    {
+      id: 'p4-form',
+      kicker: { ja: '今の問い｜(4) 奇数の式', zh: '当前问题｜(4) 奇数表示' },
+      label: { ja: '奇数を2k+1の形に直す', zh: '把奇数写成2k+1' },
+      blankIds: ['p4-form'],
+      dependsOn: ['p4-contrapositive'],
+      result: { blankId: 'p4-form', label: { ja: '奇数の表現', zh: '奇数的表示式' } },
+    },
+    {
+      id: 'p4-proof',
+      kicker: { ja: '今の問い｜(4) 証明', zh: '当前问题｜(4) 证明' },
+      label: { ja: '展開して2×整数の形を作る', zh: '展开并写成2×整数' },
+      blankIds: ['p4-proof'],
+      dependsOn: ['p4-form'],
+    },
+  ],
 }
 
 function localBlankId(questionId: string, fullBlankId: string) {
@@ -1064,5 +1144,6 @@ export function mathPracticeUsesSubproblemCompression(questionId: string) {
     'math-practice-108',
     'math-practice-109',
     'math-practice-110',
+    'math-practice-111',
   ].includes(questionId)
 }

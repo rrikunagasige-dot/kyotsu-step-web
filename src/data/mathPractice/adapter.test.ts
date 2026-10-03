@@ -12,13 +12,13 @@ describe('math practice 87-120 staged integration', () => {
     expect(mathPractice87To120Catalog).toHaveLength(34)
     expect(mathPractice87To120Catalog[0]?.problemNo).toBe(87)
     expect(mathPractice87To120Catalog.at(-1)?.problemNo).toBe(120)
-    expect(mathPracticePilotCatalog.map((entry) => entry.problemNo)).toEqual([87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110])
+    expect(mathPracticePilotCatalog.map((entry) => entry.problemNo)).toEqual([87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111])
   })
 
   it('publishes the reviewed set, proposition and proof pilots in source order', () => {
     expect(mathPracticePilotSource.map((question) => question.problemNo)).toEqual([87, 94, 97])
     expect(mathPracticePilotQuestions.map((question) => question.questionId)).toEqual(
-      Array.from({ length: 24 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
+      Array.from({ length: 25 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
     )
   })
 
@@ -48,6 +48,7 @@ describe('math practice 87-120 staged integration', () => {
       '108｜同値の証明',
       '109｜「すべて」と「ある」の否定',
       '110｜逆・対偶・裏',
+      '111｜対偶による証明',
     ])
   })
 
@@ -324,6 +325,34 @@ describe('math practice 87-120 staged integration', () => {
       .toBe('true')
     expect(question?.blanks.find((blank) => blank.id === 'p3-summary')?.choices.find((choice) => choice.correct)?.id)
       .toBe('tttt')
+  })
+
+  it('authors 111 as four independent contrapositive proofs without a strategy-choice hole', () => {
+    const question = mathPracticeProofsBatchCSource.find((item) => item.problemNo === 111)
+    expect(question).toBeDefined()
+    expect(question?.section).toBe('proofs')
+    expect(question?.blanks.map((blank) => blank.id)).toEqual([
+      'rule',
+      'p1-contrapositive',
+      'p1-proof',
+      'p2-negation',
+      'p2-proof',
+      'p3-contrapositive',
+      'p3-proof',
+      'p4-contrapositive',
+      'p4-form',
+      'p4-proof',
+    ])
+    expect(question?.blanks.find((blank) => blank.id === 'rule')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('correct')
+    expect(question?.blanks.find((blank) => blank.id === 'p2-negation')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('and-le')
+    expect(question?.blanks.find((blank) => blank.id === 'p3-proof')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('correct')
+    expect(question?.blanks.find((blank) => blank.id === 'p4-form')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('odd-form')
+    expect(question?.blanks.find((blank) => blank.id === 'p4-proof')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('correct')
   })
 
   it('keeps Japanese and Chinese grading structures aligned', () => {

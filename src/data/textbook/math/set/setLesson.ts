@@ -1,4 +1,4 @@
-import { validateTextbookUnits } from '../../../domain/textbookSchema'
+import { validateTextbookUnits } from '../../../../domain/textbookSchema'
 
 const rawMathSetUnit = {
   schemaVersion: '1.1' as const,

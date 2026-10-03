@@ -210,6 +210,34 @@ test('quantifier review unit derives the negation of exists only after an existe
   await expect(page.getByText(/「あるxに対してpである」を否定すると/)).toBeVisible()
 })
 
+
+test('function-conditions review unit forms the function concept before revealing later model work', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/math-functions-conditions'))
+
+  await expect(page.getByRole('heading', { name: '関数の条件を読む', exact: true })).toBeVisible()
+  await expect(page.getByTestId('textbook-item-func-a01')).toBeVisible()
+  await expect(page.getByText(/yはxの関数である/)).toHaveCount(0)
+  await expect(page.getByTestId('textbook-figure-rectangle-perimeter-40')).toHaveCount(0)
+
+  await answerItem(page, 'func-a01', 'ただ1つに決まる')
+
+  await expect(page.getByText(/yはxの関数である/)).toBeVisible()
+  await expect(page.getByTestId('textbook-item-func-a02')).toBeVisible()
+})
+
+test('proposition-proof review unit builds the reverse before naming it', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/math-propositions-proof'))
+
+  await expect(page.getByRole('heading', { name: '命題を証明する', exact: true })).toBeVisible()
+  await expect(page.getByTestId('textbook-item-proof-a01')).toBeVisible()
+  await expect(page.getByText(/を逆という/)).toHaveCount(0)
+
+  await answerItem(page, 'proof-a01', 'q\\Rightarrow p')
+
+  await expect(page.getByText(/を逆という/)).toBeVisible()
+  await expect(page.getByTestId('textbook-item-proof-a02')).toBeVisible()
+})
+
 test('math set lesson boots directly on the shared textbook reader', async ({ page }) => {
   const pageErrors: string[] = []
   page.on('pageerror', (error) => pageErrors.push(error.stack ?? error.message))

@@ -65,15 +65,15 @@ export function normalizeTextbookMath(value: string) {
   let next = stripTextbookMarkdown(value)
 
   // Finite-set braces in prose are literal mathematical braces, not TeX grouping.
-  next = next.replace(/\{([\-0-9A-Za-z,+\s]+)\}/g, '\\\\{$1\\\\}')
+  next = next.replace(/\{([\-0-9A-Za-z,+\s]+)\}/g, '\\{$1\\}')
   next = normalizeUnicodeRadicals(next)
 
   next = next
-    .replace(/overline\(([^()]*)\)/g, '\\\\overline{$1}')
-    .replace(/∩/g, '\\\\cap ')
-    .replace(/∪/g, '\\\\cup ')
-    .replace(/∈/g, '\\\\in ')
-    .replace(/∉/g, '\\\\notin ')
+    .replace(/overline\(([^()]*)\)/g, '\\overline{$1}')
+    .replace(/∩/g, '\\cap ')
+    .replace(/∪/g, '\\cup ')
+    .replace(/∈/g, '\\in ')
+    .replace(/∉/g, '\\notin ')
     .replace(/Δ([A-Za-z])⃗([₀₁₂₃₄₅₆₇₈₉ₓᵧₜ]+)/g, (_, base: string, sub: string) => `\\Delta \\vec{${base}}_{${normalizeSubscriptSequence(sub)}}`)
     .replace(/([A-Za-z])⃗([₀₁₂₃₄₅₆₇₈₉ₓᵧₜ]+)/g, (_, base: string, sub: string) => `\\vec{${base}}_{${normalizeSubscriptSequence(sub)}}`)
     .replace(/([A-Za-z])([₀₁₂₃₄₅₆₇₈₉ₓᵧₜ]{2,})/g, (_, base: string, sub: string) => `${base}_{${normalizeSubscriptSequence(sub)}}`)

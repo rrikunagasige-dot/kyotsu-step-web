@@ -5,7 +5,6 @@ export type MathPracticeTopicId =
   | 'organize-sets'
   | 'read-propositions'
   | 'prove-propositions'
-  | 'represent-functions'
 
 export type MathPracticeTopic = {
   id: MathPracticeTopicId
@@ -15,7 +14,7 @@ export type MathPracticeTopic = {
 }
 
 export type MathPracticeDomain = {
-  id: 'sets-and-propositions' | 'functions'
+  id: 'sets-and-propositions'
   label: { ja: string; zh: string }
   topics: readonly MathPracticeTopic[]
 }
@@ -60,34 +59,19 @@ export const mathPracticeTaxonomy: readonly MathPracticeDomain[] = [
         id: 'read-propositions',
         label: { ja: '条件から命題を読む', zh: '从条件理解命题' },
         flow: {
-          ja: '真偽 → 条件の否定 → 必要条件・十分条件 → 「すべて」と「ある」',
-          zh: '真假 → 条件的否定 → 必要条件・充分条件 → “所有”与“存在”',
+          ja: '真偽 → 条件の否定 → 必要条件・十分条件 → 「すべて」と「ある」 → 関数の条件',
+          zh: '真假 → 条件的否定 → 必要条件・充分条件 → “所有”与“存在” → 函数条件',
         },
-        range: [98, 109],
+        range: [98, 120],
       },
       {
         id: 'prove-propositions',
         label: { ja: '命題を証明する', zh: '证明命题' },
         flow: {
-          ja: '逆・裏・対偶 → 対偶による証明 → 無理数 → 背理法',
-          zh: '逆命题・否命题・逆否命题 → 逆否证明 → 无理数 → 反证法',
+          ja: '同値 → 逆・裏・対偶 → 対偶による証明 → 無理数 → 背理法',
+          zh: '等价 → 逆命题・否命题・逆否命题 → 逆否证明 → 无理数 → 反证法',
         },
-        range: [110, 117],
-      },
-    ],
-  },
-  {
-    id: 'functions',
-    label: { ja: '関数', zh: '函数' },
-    topics: [
-      {
-        id: 'represent-functions',
-        label: { ja: '関数を表す', zh: '表示函数' },
-        flow: {
-          ja: '関数とは何か → 関数の値 → 文章から関数を作る',
-          zh: '什么是函数 → 函数值 → 从文字条件建立函数',
-        },
-        range: [118, 120],
+        range: [108, 117],
       },
     ],
   },
@@ -103,11 +87,13 @@ export function mathPracticeTopicForQuestion(question: Pick<Question, 'subject' 
   const number = problemNumber(question.questionId)
   if (number === null) return null
 
-  for (const domain of mathPracticeTaxonomy) {
-    for (const topic of domain.topics) {
-      if (number >= topic.range[0] && number <= topic.range[1]) return topic.id
-    }
-  }
+  if (number >= 87 && number <= 97) return 'organize-sets'
+  if (
+    (number >= 98 && number <= 107) ||
+    number === 109 ||
+    (number >= 118 && number <= 120)
+  ) return 'read-propositions'
+  if (number === 108 || (number >= 110 && number <= 117)) return 'prove-propositions'
   return null
 }
 

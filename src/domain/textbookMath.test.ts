@@ -86,4 +86,12 @@ describe('textbook math normalization', () => {
       part.type === 'math' && part.latex === 'A \\cap B=\\{1,4\\}',
     )).toBe(true)
   })
+
+  it('keeps a complement of a grouped set expression as one math token', () => {
+    const parts = splitTextbookInlineMath('overline(A ∩ B) はどれか。')
+    expect(parts.some((part) =>
+      part.type === 'math' && part.latex === '\\overline{A \\cap B}',
+    )).toBe(true)
+    expect(parts.some((part) => part.type === 'text' && part.text.includes('overline'))).toBe(false)
+  })
 })

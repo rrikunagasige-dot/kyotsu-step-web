@@ -32,6 +32,79 @@ test('Math I・A basic theme opens its first problem directly', async ({ page })
   await expect(page.getByTestId('math-topic-question-1')).toHaveAttribute('aria-current', 'page')
 })
 
+test('98 opens the proposition theme directly and separates false propositions from non-propositions', async ({ page }) => {
+  await page.getByTestId('math-exercise-basic').click()
+  await page.getByTestId('math-topic-read-propositions').click()
+
+  await expect(page.getByRole('heading', { name: '98｜命題と真偽' })).toBeVisible()
+  const nav = page.getByTestId('math-topic-question-nav')
+  await expect(nav.getByRole('button')).toHaveText(['1'])
+  await expect(page.getByTestId('math-topic-question-1')).toHaveAttribute('aria-current', 'page')
+
+  const problem = page.getByTestId('standard-problem')
+  const readingFlow = page.getByTestId('math-practice-reading-flow')
+  const currentTarget = page.getByTestId('math-practice-current-target')
+
+  await expect(problem).toContainText('次の文は命題か')
+  await expect(problem).toContainText('二等辺三角形は正三角形')
+  await expect(problem).toContainText('よい近似値')
+  await expect(currentTarget).toContainText('まず確認')
+  await expect(currentTarget).toContainText('判定基準')
+  await expect(page.getByTestId('blank-math-practice-098-definition')).toContainText('選択')
+  await expect(page.getByTestId('blank-math-practice-098-p1-result')).toHaveCount(0)
+
+  await page.getByTestId('blank-math-practice-098-definition').click()
+  await page.getByTestId('option-math-practice-098-definition-truth-or-false').click()
+
+  // (1) reuses only the compact proposition criterion; the preparation prose is compressed.
+  await expect(currentTarget).toContainText('今の問い｜(1)')
+  await expect(readingFlow).not.toContainText('まず、文が命題かどうかを分ける共通の基準')
+  const basisDependency = page.getByTestId('math-practice-dependency-links')
+  await expect(basisDependency).toContainText('判定基準')
+  await expect(basisDependency).toContainText('真・偽')
+  await expect(page.getByTestId('blank-math-practice-098-p1-result')).toContainText('選択')
+  await expect(readingFlow.locator('.katex')).toHaveCount(1)
+  await expect(readingFlow).not.toContainText('imes36')
+
+  await page.getByTestId('blank-math-practice-098-p1-result').click()
+  await page.getByTestId('option-math-practice-098-p1-result-true-proposition').click()
+
+  // (2) is independent of (1); only the common criterion survives.
+  await expect(currentTarget).toContainText('今の問い｜(2)')
+  await expect(readingFlow).not.toContainText('(1) は実際に割り算')
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('判定基準')
+  await expect(page.getByTestId('math-practice-dependency-links')).not.toContainText('(1) の結果')
+  await expect(page.getByTestId('blank-math-practice-098-p2-counterexample')).toContainText('選択')
+  await expect(page.getByTestId('blank-math-practice-098-p2-result')).toHaveCount(0)
+  await expect(readingFlow).not.toContainText('頂角40°')
+
+  await page.getByTestId('blank-math-practice-098-p2-counterexample').click()
+  await page.getByTestId('option-math-practice-098-p2-counterexample-forty-degree').click()
+  await expect(page.getByTestId('answer-math-practice-098-p2-counterexample')).toContainText('頂角40°')
+  await expect(page.getByTestId('blank-math-practice-098-p2-result')).toContainText('選択')
+  await page.getByTestId('blank-math-practice-098-p2-result').click()
+  await page.getByTestId('option-math-practice-098-p2-result-false-proposition').click()
+
+  // (3) tests objective decidability rather than treating a vague sentence as merely false.
+  await expect(currentTarget).toContainText('今の問い｜(3)')
+  await expect(readingFlow).not.toContainText('反例が1つ見つかれば')
+  await expect(page.getByTestId('blank-math-practice-098-p3-objectivity')).toContainText('選択')
+  await expect(readingFlow).not.toContainText('定まっていない')
+
+  await page.getByTestId('blank-math-practice-098-p3-objectivity').click()
+  await page.getByTestId('option-math-practice-098-p3-objectivity-not-fixed').click()
+  await page.getByTestId('blank-math-practice-098-p3-result').click()
+  await page.getByTestId('option-math-practice-098-p3-result-not-proposition').click()
+
+  await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
+
+  const dimensions = await page.evaluate(() => ({
+    viewport: window.innerWidth,
+    page: document.documentElement.scrollWidth,
+  }))
+  expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
+})
+
 test('87 uses the Physics-style inline choice flow and reveals one reasoning node at a time', async ({ page }) => {
   await page.getByTestId('math-exercise-basic').click()
   await page.getByTestId('math-topic-organize-sets').click()

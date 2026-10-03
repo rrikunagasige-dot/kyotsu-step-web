@@ -5,6 +5,7 @@ import { mathPracticePilotSource } from './pilot'
 import { mathPracticeSetsBatchASource } from './setsBatchA'
 import { mathPracticePropositionsBatchBSource } from './propositionsBatchB'
 import { mathPracticeProofsBatchCSource } from './proofsBatchC'
+import { mathPracticeFunctionsBatchDSource } from './functionsBatchD'
 import { mathPracticePilotQuestions, mathPracticePilotQuestionsZh } from './adapter'
 
 describe('math practice 87-120 staged integration', () => {
@@ -12,13 +13,13 @@ describe('math practice 87-120 staged integration', () => {
     expect(mathPractice87To120Catalog).toHaveLength(34)
     expect(mathPractice87To120Catalog[0]?.problemNo).toBe(87)
     expect(mathPractice87To120Catalog.at(-1)?.problemNo).toBe(120)
-    expect(mathPracticePilotCatalog.map((entry) => entry.problemNo)).toEqual([87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117])
+    expect(mathPracticePilotCatalog.map((entry) => entry.problemNo)).toEqual([87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118])
   })
 
   it('publishes the reviewed set, proposition and proof pilots in source order', () => {
     expect(mathPracticePilotSource.map((question) => question.problemNo)).toEqual([87, 94, 97])
     expect(mathPracticePilotQuestions.map((question) => question.questionId)).toEqual(
-      Array.from({ length: 31 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
+      Array.from({ length: 32 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
     )
   })
 
@@ -55,6 +56,7 @@ describe('math practice 87-120 staged integration', () => {
       '115｜背理法',
       '116｜有理数と無理数',
       '117｜無理数を含む等式',
+      '118｜関数とは何か',
     ])
   })
 
@@ -503,6 +505,20 @@ describe('math practice 87-120 staged integration', () => {
       .toBe('one-minus-two')
   })
 
+  it('authors 118 around the one-input-one-output function criterion', () => {
+    const question = mathPracticeFunctionsBatchDSource.find((item) => item.problemNo === 118)
+    expect(question).toBeDefined()
+    expect(question?.blanks.map((blank) => blank.id)).toEqual(['rule', 'p1', 'p2', 'p3'])
+    expect(question?.blanks.find((blank) => blank.id === 'rule')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('unique')
+    expect(question?.blanks.find((blank) => blank.id === 'p1')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('function')
+    expect(question?.blanks.find((blank) => blank.id === 'p2')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('counterexample')
+    expect(question?.blanks.find((blank) => blank.id === 'p3')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('function')
+  })
+
   it('keeps Japanese and Chinese grading structures aligned', () => {
     const signature = (question: (typeof mathPracticePilotQuestions)[number]) => ({
       questionId: question.questionId,
@@ -552,6 +568,8 @@ describe('math practice 87-120 staged integration', () => {
       'src/data/mathPractice/propositionsBatchB.zh.ts',
       'src/data/mathPractice/proofsBatchC.ts',
       'src/data/mathPractice/proofsBatchC.zh.ts',
+      'src/data/mathPractice/functionsBatchD.ts',
+      'src/data/mathPractice/functionsBatchD.zh.ts',
     ]) {
       const authored = readFileSync(path, 'utf8')
       expect(authored).not.toMatch(/(?<!\\)\\(?!\\)/)

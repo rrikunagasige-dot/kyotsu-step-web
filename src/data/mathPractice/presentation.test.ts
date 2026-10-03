@@ -143,6 +143,18 @@ describe('math practice current-target presentation', () => {
       .toEqual(['R116-sqrt2'])
   })
 
+  it('models 118 as one shared function criterion with three independent judgments', () => {
+    expect(mathPracticeTargetsForQuestion('math-practice-118').map((target) => target.id))
+      .toEqual(['basis', 'p1', 'p2', 'p3'])
+    expect(mathPracticeDependencyTargets('math-practice-118', 'p1').map((target) => target.id))
+      .toEqual(['basis'])
+    expect(mathPracticeDependencyTargets('math-practice-118', 'p2').map((target) => target.id))
+      .toEqual(['basis'])
+    expect(mathPracticeDependencyTargets('math-practice-118', 'p3').map((target) => target.id))
+      .toEqual(['basis'])
+    expect(mathPracticeUsesSubproblemCompression('math-practice-118')).toBe(true)
+  })
+
   it('enables subproblem compression for the full reviewed set batch 87-97', () => {
     for (let problemNo = 87; problemNo <= 97; problemNo += 1) {
       expect(mathPracticeUsesSubproblemCompression(`math-practice-${String(problemNo).padStart(3, '0')}`)).toBe(true)

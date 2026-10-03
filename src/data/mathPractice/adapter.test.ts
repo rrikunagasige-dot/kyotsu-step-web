@@ -11,13 +11,13 @@ describe('math practice 87-120 staged integration', () => {
     expect(mathPractice87To120Catalog).toHaveLength(34)
     expect(mathPractice87To120Catalog[0]?.problemNo).toBe(87)
     expect(mathPractice87To120Catalog.at(-1)?.problemNo).toBe(120)
-    expect(mathPracticePilotCatalog.map((entry) => entry.problemNo)).toEqual([87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105])
+    expect(mathPracticePilotCatalog.map((entry) => entry.problemNo)).toEqual([87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106])
   })
 
   it('publishes the reviewed set batch plus proposition pilots in source order', () => {
     expect(mathPracticePilotSource.map((question) => question.problemNo)).toEqual([87, 94, 97])
     expect(mathPracticePilotQuestions.map((question) => question.questionId)).toEqual(
-      Array.from({ length: 19 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
+      Array.from({ length: 20 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
     )
   })
 
@@ -42,6 +42,7 @@ describe('math practice 87-120 staged integration', () => {
       '103｜複合条件の否定',
       '104｜必要条件・十分条件',
       '105｜命題の真偽',
+      '106｜集合で条件を表す',
     ])
   })
 
@@ -197,6 +198,26 @@ describe('math practice 87-120 staged integration', () => {
       .toBe('sqrt-two-false')
     expect(question?.blanks.find((blank) => blank.id === 'p4-result')?.choices.find((choice) => choice.correct)?.id)
       .toBe('conjugate-false')
+  })
+
+  it('authors 106 as one set-language rule plus four independent set expressions', () => {
+    const question = mathPracticePropositionsBatchBSource.find((item) => item.problemNo === 106)
+    expect(question).toBeDefined()
+    expect(question?.blanks.map((blank) => blank.id)).toEqual([
+      'rule',
+      'p1-result',
+      'p2-result',
+      'p3-result',
+      'p4-result',
+    ])
+    expect(question?.blanks.find((blank) => blank.id === 'p1-result')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('p-inter-q')
+    expect(question?.blanks.find((blank) => blank.id === 'p2-result')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('p-complement')
+    expect(question?.blanks.find((blank) => blank.id === 'p3-result')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('q-inter-pbar')
+    expect(question?.blanks.find((blank) => blank.id === 'p4-result')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('qbar-inter-pbar')
   })
 
   it('keeps Japanese and Chinese grading structures aligned', () => {

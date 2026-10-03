@@ -713,6 +713,46 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
       dependsOn: ['basis'],
     },
   ],
+  'math-practice-106': [
+    {
+      id: 'basis',
+      kicker: { ja: 'まず確認', zh: '先确认' },
+      label: { ja: '日本語条件を集合演算へ直す', zh: '把语言条件翻译成集合运算' },
+      blankIds: ['rule'],
+      result: {
+        blankId: 'rule',
+        label: { ja: '集合表現の規則', zh: '集合表达规则' },
+      },
+    },
+    {
+      id: 's1',
+      kicker: { ja: '今の問い｜(1)', zh: '当前问题｜(1)' },
+      label: { ja: '6の倍数を2つの倍数条件へ分ける', zh: '把6的倍数拆成两个倍数条件' },
+      blankIds: ['p1-result'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's2',
+      kicker: { ja: '今の問い｜(2)', zh: '当前问题｜(2)' },
+      label: { ja: '奇数を2の倍数の補集合として表す', zh: '把奇数表示为2的倍数的补集' },
+      blankIds: ['p2-result'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's3',
+      kicker: { ja: '今の問い｜(3)', zh: '当前问题｜(3)' },
+      label: { ja: '3の倍数と奇数を同時に満たす', zh: '同时满足3的倍数与奇数' },
+      blankIds: ['p3-result'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's4',
+      kicker: { ja: '今の問い｜(4)', zh: '当前问题｜(4)' },
+      label: { ja: '2つの否定条件を補集合で組み立てる', zh: '用两个补集组合否定条件' },
+      blankIds: ['p4-result'],
+      dependsOn: ['basis'],
+    },
+  ],
 }
 
 function localBlankId(questionId: string, fullBlankId: string) {
@@ -769,5 +809,6 @@ export function mathPracticeUsesSubproblemCompression(questionId: string) {
     'math-practice-103',
     'math-practice-104',
     'math-practice-105',
+    'math-practice-106',
   ].includes(questionId)
 }

@@ -1424,5 +1424,137 @@ export const mathPracticePropositionsBatchBSourceZh: MathPracticeSourceQuestion[
     ],
     fullExplanation: '证明蕴含为真需要覆盖前件成立的全部情况；证明为假只需一个反例。(2) 要完整检查 a=±2；(1)(3)(4) 都可由明确反例判为假。',
   },
+  {
+    problemNo: 106,
+    section: 'propositions',
+    sectionTitle: '命题与条件',
+    title: '用集合表示条件',
+    estimatedSeconds: 360,
+    knowledgeTags: ['set-expression', 'intersection', 'complement', 'divisibility'],
+    skillTags: ['condition-reading', 'case-classification', 'conclusion'],
+    problem: [
+      { type: 'text', text: '以全体自然数为全集。设 P 为2的倍数组成的集合，Q 为3的倍数组成的集合。用 P、Q 表示满足下列条件的自然数集合。' },
+      { type: 'text', text: '(1) 6的倍数' },
+      { type: 'text', text: '(2) 奇数' },
+      { type: 'text', text: '(3) 3的倍数且为奇数' },
+      { type: 'text', text: '(4) 不是3的倍数的奇数' },
+    ],
+    guide: [
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '先确认把“且”和“不是”翻译成集合运算的共同规则。P 表示2的倍数，Q 表示3的倍数。' }],
+      },
+      { type: 'blank', blankId: 'rule' },
+
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(1) 6的倍数既是2的倍数，也是3的倍数，因此要取同时属于 P 和 Q 的自然数。' }],
+      },
+      { type: 'blank', blankId: 'p1-result' },
+
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(2) 奇数就是自然数中不是2的倍数的数，因此要看 P 的外部。' }],
+      },
+      { type: 'blank', blankId: 'p2-result' },
+
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(3) “3的倍数”对应 Q，“奇数”对应不是2的倍数，再把这两个条件同时满足。' }],
+      },
+      { type: 'blank', blankId: 'p3-result' },
+
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(4) 分别把“不是3的倍数”和“奇数”翻译为 Q、P 的相应部分，再取同时满足两者的集合。' }],
+      },
+      { type: 'blank', blankId: 'p4-result' },
+    ],
+    blanks: [
+      {
+        id: 'rule',
+        prompt: '语言条件与集合运算的正确对应是',
+        choices: [
+          choice('and-complement', '“且”→交集，“不是”→补集', true),
+          choice('union-complement', '“且”→并集，“不是”→补集'),
+          choice('and-union', '“且”→交集，“不是”→并集'),
+        ],
+        skillTag: 'condition-reading',
+        knowledgeTags: ['set-expression', 'intersection', 'complement'],
+        explanation: '两个条件同时满足对应交集；不属于某集合对应补集。',
+      },
+      {
+        id: 'p1-result',
+        prompt: '6的倍数全体用 P、Q 表示为',
+        choices: [
+          choice('p-inter-q', 'P∩Q', true),
+          choice('p-union-q', 'P∪Q'),
+          choice('p-complement', 'P̄'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['intersection', 'divisibility'],
+        explanation: '6的倍数同时是2和3的倍数，所以是 P 与 Q 的交集。',
+      },
+      {
+        id: 'p2-result',
+        prompt: '奇数全体用 P、Q 表示为',
+        choices: [
+          choice('p-complement', 'P̄', true),
+          choice('p', 'P'),
+          choice('q-complement', 'Q̄'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['complement', 'divisibility'],
+        explanation: '自然数中的奇数就是不是2的倍数的数，所以是 P 的补集。',
+      },
+      {
+        id: 'p3-result',
+        prompt: '3的倍数且为奇数的自然数全体是',
+        choices: [
+          choice('q-inter-pbar', 'Q∩P̄', true),
+          choice('q-union-pbar', 'Q∪P̄'),
+          choice('p-inter-qbar', 'P∩Q̄'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['intersection', 'complement', 'divisibility'],
+        explanation: '3的倍数属于 Q，奇数属于 P 的补集，同时满足两者得到 Q∩P̄。',
+      },
+      {
+        id: 'p4-result',
+        prompt: '不是3的倍数的奇数全体是',
+        choices: [
+          choice('qbar-inter-pbar', 'Q̄∩P̄', true),
+          choice('qbar-union-pbar', 'Q̄∪P̄'),
+          choice('q-inter-pbar', 'Q∩P̄'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['intersection', 'complement', 'divisibility'],
+        explanation: '不是3的倍数属于 Q̄，奇数属于 P̄，同时满足两者得到 Q̄∩P̄。',
+      },
+    ],
+    simulation: [
+      {
+        id: 's1', label: '(1)', prompt: '用 P、Q 表示6的倍数全体。', answerType: 'single-choice',
+        choices: [choice('p-inter-q', 'P∩Q', true), choice('p-union-q', 'P∪Q'), choice('p-complement', 'P̄')],
+        score: 2, estimatedSeconds: 25, knowledgeTags: ['intersection', 'divisibility'], skillTags: ['case-classification'],
+      },
+      {
+        id: 's2', label: '(2)', prompt: '用 P、Q 表示奇数全体。', answerType: 'single-choice',
+        choices: [choice('p-complement', 'P̄', true), choice('p', 'P'), choice('q-complement', 'Q̄')],
+        score: 2, estimatedSeconds: 25, knowledgeTags: ['complement', 'divisibility'], skillTags: ['case-classification'],
+      },
+      {
+        id: 's3', label: '(3)', prompt: '表示3的倍数且为奇数的自然数全体。', answerType: 'single-choice',
+        choices: [choice('q-inter-pbar', 'Q∩P̄', true), choice('q-union-pbar', 'Q∪P̄'), choice('p-inter-qbar', 'P∩Q̄')],
+        score: 2, estimatedSeconds: 25, knowledgeTags: ['intersection', 'complement'], skillTags: ['conclusion'],
+      },
+      {
+        id: 's4', label: '(4)', prompt: '表示不是3的倍数的奇数全体。', answerType: 'single-choice',
+        choices: [choice('qbar-inter-pbar', 'Q̄∩P̄', true), choice('qbar-union-pbar', 'Q̄∪P̄'), choice('q-inter-pbar', 'Q∩P̄')],
+        score: 2, estimatedSeconds: 25, knowledgeTags: ['intersection', 'complement'], skillTags: ['conclusion'],
+      },
+    ],
+    fullExplanation: 'P 表示2的倍数，Q 表示3的倍数。“且”对应交集，“不是”对应补集。因此6的倍数是 P∩Q，奇数是 P̄，3的倍数且为奇数是 Q∩P̄，不是3的倍数的奇数是 Q̄∩P̄。',
+  },
 
 ]

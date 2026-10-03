@@ -38,7 +38,51 @@ const rawMathPropositionProofUnit = {
         {
           id: 'heading-reverse',
           type: 'heading' as const,
-          text: '逆・裏・対偶を作る',
+          text: '同値と命題の向きを整理する',
+        },
+        {
+          id: 'formula-equivalence-example',
+          type: 'formula' as const,
+          parts: [
+            { type: 'math' as const, latex: 'p:\ x=0,\\qquad q:\ x(x^2+1)=0' },
+          ],
+        },
+        {
+          id: 'paragraph-eq01',
+          type: 'paragraph' as const,
+          parts: [
+            { type: 'text' as const, text: '実数xについて、まず ' },
+            { type: 'math' as const, latex: 'p\\Rightarrow q' },
+            { type: 'text' as const, text: ' を見る。x=0なら積も0になるので、この向きは ' },
+            { type: 'choice' as const, itemId: 'proof-e01' },
+            { type: 'text' as const, text: ' である。' },
+          ],
+        },
+        {
+          id: 'paragraph-eq02',
+          type: 'paragraph' as const,
+          parts: [
+            { type: 'text' as const, text: '逆向き ' },
+            { type: 'math' as const, latex: 'q\\Rightarrow p' },
+            { type: 'text' as const, text: ' では、実数なら ' },
+            { type: 'math' as const, latex: 'x^2+1\\ne0' },
+            { type: 'text' as const, text: ' だから、積が0なら ' },
+            { type: 'choice' as const, itemId: 'proof-e02' },
+            { type: 'text' as const, text: ' でなければならない。' },
+          ],
+        },
+        {
+          id: 'paragraph-equivalence-concept-first',
+          type: 'paragraph' as const,
+          parts: [
+            { type: 'text' as const, text: 'このように ' },
+            { type: 'math' as const, latex: 'p\\Rightarrow q' },
+            { type: 'text' as const, text: ' と ' },
+            { type: 'math' as const, latex: 'q\\Rightarrow p' },
+            { type: 'text' as const, text: ' がどちらも真であるとき、pとqは同値であるといい、' },
+            { type: 'math' as const, latex: 'p\\Longleftrightarrow q' },
+            { type: 'text' as const, text: ' と表す。次に、この2つの条件の向きを入れ替えたり否定したりして、命題どうしの関係を整理する。' },
+          ],
         },
         {
           id: 'formula-base',
@@ -302,6 +346,30 @@ const rawMathPropositionProofUnit = {
         },
       ],
       items: [
+        {
+          id: 'proof-e01',
+          label: 'PROOF-E01',
+          prompt: 'x=0⇒x(x²+1)=0 の真偽を判断しよう。',
+          answer: '真',
+          acceptedAnswers: [],
+          answerType: 'text' as const,
+          choices: ['真', '偽'],
+          purpose: 'transfer' as const,
+          scaffoldLevel: 'strong' as const,
+          hints: ['x=0を右辺へ代入する。', '0×(0²+1)=0になる。'],
+        },
+        {
+          id: 'proof-e02',
+          label: 'PROOF-E02',
+          prompt: 'x(x²+1)=0⇒x=0 で、積が0になる要因を考えよう。',
+          answer: 'x=0',
+          acceptedAnswers: [],
+          answerType: 'formula' as const,
+          choices: ['x=0', 'x^2+1=0', 'どちらでもよい'],
+          purpose: 'causal-reasoning' as const,
+          scaffoldLevel: 'medium' as const,
+          hints: ['実数ではx²+1は正で、0にはならない。', '積が0になるには残る因子xが0である必要がある。'],
+        },
         {
           id: 'proof-a01',
           label: 'PROOF-A01',

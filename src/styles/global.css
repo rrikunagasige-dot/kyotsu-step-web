@@ -627,6 +627,82 @@ button.math-theme-link {
   box-shadow: 0 2px 0 var(--color-primary);
 }
 
+/* Math practice 87 design pilot: reuse the successful Physics textbook reading language. */
+.math-practice-reading-flow {
+  display: grid;
+  gap: .9rem;
+  padding: clamp(.9rem, 2vw, 1.35rem);
+  border: 2px solid var(--color-border);
+  background: var(--color-paper);
+}
+
+.math-practice-reading-content {
+  min-width: 0;
+}
+
+.math-practice-reading-content .content-renderer {
+  display: grid;
+  gap: .45rem;
+}
+
+.math-practice-reading-content .content-renderer > p {
+  margin: 0;
+  line-height: 2.05;
+}
+
+.math-practice-reading-content .formula-scroll {
+  margin: 0;
+}
+
+.math-practice-reading-block {
+  display: grid;
+  gap: .55rem;
+}
+
+.math-practice-reading-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .38rem;
+  min-width: 0;
+  font-size: 1rem;
+  line-height: 2.05;
+}
+
+.math-practice-inline-answer {
+  display: inline-flex;
+  align-items: baseline;
+  margin: 0 .08rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+}
+
+.math-practice-inline-answer .content-renderer,
+.math-practice-inline-answer .content-renderer > p {
+  display: inline;
+  margin: 0;
+}
+
+.math-practice-choice-content {
+  min-width: 0;
+}
+
+.math-practice-choice-content .content-renderer {
+  display: block;
+}
+
+.math-practice-choice-content .content-renderer > p {
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-size: .88rem;
+}
+
+.math-practice-reading-flow .reading-choice-hint .content-renderer > p {
+  margin: 0;
+}
+
 @media (max-width: 640px) {
   .math-problem-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));

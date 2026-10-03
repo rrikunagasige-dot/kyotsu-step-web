@@ -1083,6 +1083,72 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
       dependsOn: ['p4-form'],
     },
   ],
+  'math-practice-112': [
+    {
+      id: 'basis',
+      kicker: { ja: 'まず確認', zh: '先确认' },
+      label: { ja: '背理法で√3の無理性へ矛盾を戻す', zh: '用反证法把矛盾导回√3的无理性' },
+      blankIds: ['rule'],
+      result: {
+        blankId: 'rule',
+        label: { ja: '背理法の方針', zh: '反证法方针' },
+      },
+    },
+    {
+      id: 'p1-assumption',
+      kicker: { ja: '今の問い｜(1) 仮定', zh: '当前问题｜(1) 反设' },
+      label: { ja: '結論の反対を仮定する', zh: '假设结论的反面' },
+      blankIds: ['p1-assumption'],
+      dependsOn: ['basis'],
+      result: { blankId: 'p1-assumption', label: { ja: '(1) の反対仮定', zh: '(1) 的反设' } },
+    },
+    {
+      id: 'p1-isolate',
+      kicker: { ja: '今の問い｜(1) √3を取り出す', zh: '当前问题｜(1) 分离√3' },
+      label: { ja: '1+√3=rから√3を単独にする', zh: '由1+√3=r单独表示√3' },
+      blankIds: ['p1-isolate'],
+      dependsOn: ['p1-assumption'],
+      result: { blankId: 'p1-isolate', label: { ja: '(1) で得た√3の式', zh: '(1) 得到的√3表达式' } },
+    },
+    {
+      id: 'p1-contradiction',
+      kicker: { ja: '今の問い｜(1) 矛盾', zh: '当前问题｜(1) 矛盾' },
+      label: { ja: '有理数の差と既知の無理性を比べる', zh: '比较有理数之差与已知无理性' },
+      blankIds: ['p1-contradiction'],
+      dependsOn: ['p1-isolate'],
+    },
+    {
+      id: 'p2-rationalize',
+      kicker: { ja: '今の問い｜(2) 有理化', zh: '当前问题｜(2) 有理化' },
+      label: { ja: '共役を掛けて分母を消す', zh: '乘共轭式消去根式分母' },
+      blankIds: ['p2-rationalize'],
+      dependsOn: ['basis'],
+      result: { blankId: 'p2-rationalize', label: { ja: '有理化した形', zh: '有理化后的形式' } },
+    },
+    {
+      id: 'p2-assumption',
+      kicker: { ja: '今の問い｜(2) 仮定', zh: '当前问题｜(2) 反设' },
+      label: { ja: '有理化後の値を有理数rとおく', zh: '把有理化后的值设为有理数r' },
+      blankIds: ['p2-assumption'],
+      dependsOn: ['p2-rationalize'],
+      result: { blankId: 'p2-assumption', label: { ja: '(2) の反対仮定', zh: '(2) 的反设' } },
+    },
+    {
+      id: 'p2-isolate',
+      kicker: { ja: '今の問い｜(2) √3を取り出す', zh: '当前问题｜(2) 分离√3' },
+      label: { ja: '2-√3=rから√3を単独にする', zh: '由2-√3=r单独表示√3' },
+      blankIds: ['p2-isolate'],
+      dependsOn: ['p2-assumption'],
+      result: { blankId: 'p2-isolate', label: { ja: '(2) で得た√3の式', zh: '(2) 得到的√3表达式' } },
+    },
+    {
+      id: 'p2-contradiction',
+      kicker: { ja: '今の問い｜(2) 矛盾', zh: '当前问题｜(2) 矛盾' },
+      label: { ja: '有理数の差から矛盾を閉じる', zh: '由有理数之差完成矛盾' },
+      blankIds: ['p2-contradiction'],
+      dependsOn: ['p2-isolate'],
+    },
+  ],
 }
 
 function localBlankId(questionId: string, fullBlankId: string) {
@@ -1145,5 +1211,6 @@ export function mathPracticeUsesSubproblemCompression(questionId: string) {
     'math-practice-109',
     'math-practice-110',
     'math-practice-111',
+    'math-practice-112',
   ].includes(questionId)
 }

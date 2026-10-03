@@ -12,13 +12,13 @@ describe('math practice 87-120 staged integration', () => {
     expect(mathPractice87To120Catalog).toHaveLength(34)
     expect(mathPractice87To120Catalog[0]?.problemNo).toBe(87)
     expect(mathPractice87To120Catalog.at(-1)?.problemNo).toBe(120)
-    expect(mathPracticePilotCatalog.map((entry) => entry.problemNo)).toEqual([87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111])
+    expect(mathPracticePilotCatalog.map((entry) => entry.problemNo)).toEqual([87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112])
   })
 
   it('publishes the reviewed set, proposition and proof pilots in source order', () => {
     expect(mathPracticePilotSource.map((question) => question.problemNo)).toEqual([87, 94, 97])
     expect(mathPracticePilotQuestions.map((question) => question.questionId)).toEqual(
-      Array.from({ length: 25 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
+      Array.from({ length: 26 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
     )
   })
 
@@ -49,6 +49,7 @@ describe('math practice 87-120 staged integration', () => {
       '109｜「すべて」と「ある」の否定',
       '110｜逆・対偶・裏',
       '111｜対偶による証明',
+      '112｜無理数の証明',
     ])
   })
 
@@ -353,6 +354,32 @@ describe('math practice 87-120 staged integration', () => {
       .toBe('odd-form')
     expect(question?.blanks.find((blank) => blank.id === 'p4-proof')?.choices.find((choice) => choice.correct)?.id)
       .toBe('correct')
+  })
+
+  it('authors 112 as two independent contradiction proofs sharing only the irrationality target', () => {
+    const question = mathPracticeProofsBatchCSource.find((item) => item.problemNo === 112)
+    expect(question).toBeDefined()
+    expect(question?.section).toBe('proofs')
+    expect(question?.blanks.map((blank) => blank.id)).toEqual([
+      'rule',
+      'p1-assumption',
+      'p1-isolate',
+      'p1-contradiction',
+      'p2-rationalize',
+      'p2-assumption',
+      'p2-isolate',
+      'p2-contradiction',
+    ])
+    expect(question?.blanks.find((blank) => blank.id === 'rule')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('rational-assume')
+    expect(question?.blanks.find((blank) => blank.id === 'p1-isolate')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('r-minus-one')
+    expect(question?.blanks.find((blank) => blank.id === 'p2-rationalize')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('conjugate')
+    expect(question?.blanks.find((blank) => blank.id === 'p2-isolate')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('two-minus-r')
+    expect(question?.blanks.find((blank) => blank.id === 'p2-contradiction')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('contradiction')
   })
 
   it('keeps Japanese and Chinese grading structures aligned', () => {

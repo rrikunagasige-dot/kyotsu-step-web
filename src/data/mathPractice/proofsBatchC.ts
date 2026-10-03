@@ -698,5 +698,174 @@ export const mathPracticeProofsBatchCSource: MathPracticeSourceQuestion[] = [
     ],
     fullExplanation: '対偶による証明では、元命題 p⇒q を ¬q⇒¬p に直してその対偶を直接示す。(1)は x=1 の代入、(2)は OR の否定を AND にして x+y≤3 を示す、(3)は n=3k から n²=3(3k²)、(4)は n=2k+1 を展開して n³+1=2×整数 と示す。各対偶が真なので元命題も真である。',
   },
+  {
+    problemNo: 112,
+    section: 'proofs',
+    sectionTitle: '命題と証明',
+    title: '無理数の証明',
+    estimatedSeconds: 480,
+    knowledgeTags: ['irrational-number', 'proof-by-contradiction', 'rationalization', 'radical'],
+    skillTags: ['law-selection', 'equation-building', 'calculation', 'conclusion'],
+    problem: [
+      { type: 'text', text: '√3 が無理数であることを用いて、次の数が無理数であることを証明せよ。' },
+      { type: 'latex', latex: '(1)\\;1+\\sqrt{3}' },
+      { type: 'latex', latex: '(2)\\;\\frac{1}{2+\\sqrt{3}}' },
+    ],
+    guide: [
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '今回は √3 が無理数であることが既知。対象が有理数だと仮定し、そこから √3 まで有理数になってしまう矛盾を作る。' }],
+      },
+      { type: 'blank', blankId: 'rule' },
+
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(1) 背理法では、示したい「無理数」の反対を仮定する。' }],
+      },
+      { type: 'blank', blankId: 'p1-assumption' },
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(1) 仮定した有理数を r とおき、1+√3=r から √3 だけを残す。' }],
+      },
+      { type: 'blank', blankId: 'p1-isolate' },
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(1) 得られた式の右辺がどの数の集合に入るかを確認し、既知の事実と比べる。' }],
+      },
+      { type: 'blank', blankId: 'p1-contradiction' },
+
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(2) √3 が分母にあるので、まず共役な式を用いて分母を有理化し、扱いやすい形へ直す。' }],
+      },
+      { type: 'blank', blankId: 'p2-rationalize' },
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(2) 有理化後の値が有理数だと仮定し、その値を r とおく。' }],
+      },
+      { type: 'blank', blankId: 'p2-assumption' },
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(2) 2-√3=r から、既知の無理数 √3 を単独にする。' }],
+      },
+      { type: 'blank', blankId: 'p2-isolate' },
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(2) 最後に右辺の有理性と √3 の既知の無理性を比べ、背理法を閉じる。' }],
+      },
+      { type: 'blank', blankId: 'p2-contradiction' },
+    ],
+    blanks: [
+      {
+        id: 'rule',
+        prompt: '√3 が無理数であることを使う背理法の方針は',
+        choices: [
+          choice('rational-assume', '対象を有理数だと仮定し、√3 が有理数になってしまう矛盾を作る。', true),
+          choice('irrational-assume', '対象を無理数だと仮定し、そのまま結論とする。'),
+          choice('decimal', '小数表示を調べ、循環しないことだけを示す。'),
+        ],
+        skillTag: 'law-selection',
+        knowledgeTags: ['irrational-number', 'proof-by-contradiction'],
+        explanation: '無理数であることの反対として「有理数」と仮定し、既知の無理数 √3 が有理数になってしまう矛盾を導きます。',
+      },
+      {
+        id: 'p1-assumption',
+        prompt: '(1) 背理法の最初の仮定は',
+        choices: [
+          choice('rational', '1+√3 は有理数である。', true),
+          choice('irrational', '1+√3 は無理数である。'),
+          choice('sqrt-rational', '√3 は有理数である。'),
+        ],
+        skillTag: 'law-selection',
+        knowledgeTags: ['proof-by-contradiction', 'irrational-number'],
+        explanation: '示したい結論「1+√3 は無理数」の反対を仮定するので、有理数だと仮定します。',
+      },
+      {
+        id: 'p1-isolate',
+        prompt: '1+√3=r から √3 を単独にすると',
+        choices: [
+          choice('r-minus-one', '√3=r-1', true),
+          choice('one-minus-r', '√3=1-r'),
+          choice('r-plus-one', '√3=r+1'),
+        ],
+        skillTag: 'equation-building',
+        knowledgeTags: ['radical', 'proof-by-contradiction'],
+        explanation: '両辺から1を引けば √3=r-1 です。',
+      },
+      {
+        id: 'p1-contradiction',
+        prompt: '(1) の証明を閉じる正しい結論は',
+        choices: [
+          choice('contradiction', 'r と1は有理数なので r-1 も有理数。すると √3 が有理数となり既知の事実と矛盾する。よって 1+√3 は無理数。', true),
+          choice('no-contradiction', 'r-1 は必ず無理数なので矛盾は起こらない。'),
+          choice('sqrt-rational', '√3 が有理数であると結論して証明を終える。'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['irrational-number', 'proof-by-contradiction'],
+        explanation: '有理数の差は有理数なので √3 が有理数になってしまい、「√3 は無理数」という既知の事実に矛盾します。',
+      },
+      {
+        id: 'p2-rationalize',
+        prompt: '(2) 分母を有理化する正しい変形は',
+        choices: [
+          choice('conjugate', '1/(2+√3) に (2-√3)/(2-√3) を掛けると 2-√3。', true),
+          choice('same-sign', '1/(2+√3) に (2+√3)/(2+√3) を掛けると 2+√3。'),
+          choice('sqrt-only', '√3/√3 を掛けると 2-√3。'),
+        ],
+        skillTag: 'calculation',
+        knowledgeTags: ['rationalization', 'radical'],
+        explanation: '(2+√3)(2-√3)=4-3=1 なので、共役を掛けると 1/(2+√3)=2-√3 となります。',
+      },
+      {
+        id: 'p2-assumption',
+        prompt: '(2) 背理法の仮定を有理化後の式で書くと',
+        choices: [
+          choice('two-minus-root', '値を有理数 r と仮定し、2-√3=r と書く。', true),
+          choice('two-plus-root', '値を有理数 r と仮定し、2+√3=r と書く。'),
+          choice('sqrt-alone', '√3=r と最初から仮定する。'),
+        ],
+        skillTag: 'equation-building',
+        knowledgeTags: ['proof-by-contradiction', 'rationalization'],
+        explanation: '有理化で元の値が 2-√3 と分かったので、その値が有理数 r だと仮定して 2-√3=r と置きます。',
+      },
+      {
+        id: 'p2-isolate',
+        prompt: '2-√3=r から √3 を単独にすると',
+        choices: [
+          choice('two-minus-r', '√3=2-r', true),
+          choice('r-minus-two', '√3=r-2'),
+          choice('two-plus-r', '√3=2+r'),
+        ],
+        skillTag: 'equation-building',
+        knowledgeTags: ['radical', 'proof-by-contradiction'],
+        explanation: '2-√3=r を移項すると √3=2-r です。',
+      },
+      {
+        id: 'p2-contradiction',
+        prompt: '(2) の証明を閉じる正しい結論は',
+        choices: [
+          choice('contradiction', '2 と r は有理数なので 2-r も有理数。すると √3 が有理数となり矛盾する。よって 1/(2+√3) は無理数。', true),
+          choice('no-contradiction', '2-r は必ず無理数なので矛盾しない。'),
+          choice('denominator', '分母が無理数なら分数は必ず無理数なので、それだけで証明できる。'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['irrational-number', 'proof-by-contradiction'],
+        explanation: '有理数の差は有理数なので √3 が有理数になってしまい、既知の無理性と矛盾します。',
+      },
+    ],
+    simulation: [
+      {
+        id: 's1', label: '(1)', prompt: '1+√3 が有理数 r だと仮定したとき、矛盾へつながる式を選べ。', answerType: 'single-choice',
+        choices: [choice('correct', '√3=r-1', true), choice('wrong', '√3=r+1')],
+        score: 2, estimatedSeconds: 25, knowledgeTags: ['proof-by-contradiction', 'radical'], skillTags: ['equation-building'],
+      },
+      {
+        id: 's2', label: '(2)', prompt: '1/(2+√3) を有理化した形を選べ。', answerType: 'single-choice',
+        choices: [choice('correct', '2-√3', true), choice('wrong', '2+√3')],
+        score: 2, estimatedSeconds: 25, knowledgeTags: ['rationalization', 'radical'], skillTags: ['calculation'],
+      },
+    ],
+    fullExplanation: '√3 の無理性を使うには、対象が有理数だと仮定して √3 を有理数だけから作れる式として取り出す。(1) は 1+√3=r から √3=r-1。(2) はまず 1/(2+√3)=2-√3 と有理化し、2-√3=r から √3=2-r。どちらも右辺が有理数となって √3 の無理性に矛盾するので、元の数は無理数である。',
+  },
 
 ]

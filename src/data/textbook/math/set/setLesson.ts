@@ -271,7 +271,7 @@ const rawMathSetUnit = {
           parts: [
             { type: 'text' as const, text: 'ここまでで、一つの集合をどう表し、その中に何が入っているかを見る方法が分かった。次は、二つの集合を並べたときに、どの要素が共通しているか、どこまで合わせるかを考える。' },
           ],
-        },,
+        },
         {
           id: 'heading-relations',
           type: 'heading' as const,
@@ -708,7 +708,7 @@ const rawMathSetUnit = {
           purpose: 'transfer' as const,
           scaffoldLevel: 'medium' as const,
           hints: ['「数え終わる」と「無限に続く」に対応する名称を思い出そう。', '要素が有限個なら有限集合、無限に多ければ無限集合。'],
-        },,
+        },
         {
           id: 'set-b01',
           label: 'SET-B01',

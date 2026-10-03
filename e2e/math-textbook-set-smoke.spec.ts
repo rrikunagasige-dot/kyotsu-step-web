@@ -129,7 +129,7 @@ test('learning setup exposes math textbook mode with the same three curriculum t
   await expect(setsTopic).toContainText('集合を整理する')
   await expect(setsTopic).toContainText('集合の表し方 → 部分集合 → 共通部分・和集合 → 補集合 → 集合の条件')
   await expect(setsTopic).not.toContainText('準備中')
-  await expect(page.getByTestId('textbook-unit-math-sets')).toBeVisible()
+  await expect(setsTopic).toHaveAttribute('href', '#/learning/textbook/math-sets')
 
   await expect(page.getByTestId('math-textbook-topic-read-propositions')).toContainText('条件から命題を読む')
   await expect(page.getByTestId('math-textbook-topic-read-propositions')).toContainText('準備中')
@@ -140,7 +140,7 @@ test('learning setup exposes math textbook mode with the same three curriculum t
 test('math textbook setup enters the set lesson and physics remains available from the same subject selector', async ({ page }) => {
   await page.goto(appRoute('/learning/setup?subject=math-1a'))
 
-  await page.getByTestId('textbook-unit-math-sets').click()
+  await page.getByTestId('math-textbook-topic-organize-sets').click()
   await expect(page).toHaveURL(/\/learning\/textbook\/math-sets$/)
   await expect(page.getByRole('heading', { name: '集合', exact: true })).toBeVisible()
 

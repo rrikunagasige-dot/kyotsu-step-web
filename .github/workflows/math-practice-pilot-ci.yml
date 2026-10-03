@@ -1,6 +1,9 @@
 name: Math practice pilot CI
 
 on:
+  push:
+    branches:
+      - 'chatgpt/math-practice-87-120-integration'
   pull_request:
     paths:
       - 'src/data/mathPractice/**'

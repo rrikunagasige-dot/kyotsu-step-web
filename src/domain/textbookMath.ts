@@ -70,10 +70,10 @@ export function normalizeTextbookMath(value: string) {
 
   next = next
     .replace(/overline\(([^()]*)\)/g, '\\overline{$1}')
-    .replace(/∩/g, '\\cap ')
-    .replace(/∪/g, '\\cup ')
-    .replace(/∈/g, '\\in ')
-    .replace(/∉/g, '\\notin ')
+    .replace(/\s*∩\s*/g, ' \\cap ')
+    .replace(/\s*∪\s*/g, ' \\cup ')
+    .replace(/\s*∈\s*/g, ' \\in ')
+    .replace(/\s*∉\s*/g, ' \\notin ')
     .replace(/Δ([A-Za-z])⃗([₀₁₂₃₄₅₆₇₈₉ₓᵧₜ]+)/g, (_, base: string, sub: string) => `\\Delta \\vec{${base}}_{${normalizeSubscriptSequence(sub)}}`)
     .replace(/([A-Za-z])⃗([₀₁₂₃₄₅₆₇₈₉ₓᵧₜ]+)/g, (_, base: string, sub: string) => `\\vec{${base}}_{${normalizeSubscriptSequence(sub)}}`)
     .replace(/([A-Za-z])([₀₁₂₃₄₅₆₇₈₉ₓᵧₜ]{2,})/g, (_, base: string, sub: string) => `${base}_{${normalizeSubscriptSequence(sub)}}`)

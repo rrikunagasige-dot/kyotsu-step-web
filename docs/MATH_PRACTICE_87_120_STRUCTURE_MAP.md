@@ -352,7 +352,7 @@ Risk:
 ---
 
 ## 96 — 3集合の複合演算
-Type: I
+Type: G
 
 Goal:
 3集合と補集合を含む6種類の集合演算を求める。
@@ -367,15 +367,19 @@ Subproblems:
 - result
 
 depends_on:
-- 小問間なし
+- (5) ← (1)
+  - (5) は \\overline{A\\cap B\\cap C} なので、(1) の result \\(A\\cap B\\cap C=\\{3\\}\\) を直接利用できる
+- その他の小問は原則独立
+- (3) は (1) の final result ではなく中間 \\(A\\cap B\\) が必要なので、convenience linkを作らずその場で求める
 
 result node:
-- なし
+- (1) result: \\(A\\cap B\\cap C=\\{3\\}\\) → (5)へcompact import
 
 Hole focus:
 - 演算の内側から処理
 - 補集合の基準U
 - 複数条件の同時充足
+- required-result reuse と不要なreuseの区別
 
 Risk:
 - 先の小問結果を機械的に再利用しない

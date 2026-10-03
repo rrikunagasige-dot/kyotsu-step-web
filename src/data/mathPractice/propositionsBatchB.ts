@@ -1313,5 +1313,158 @@ export const mathPracticePropositionsBatchBSource: MathPracticeSourceQuestion[] 
     ],
     fullExplanation: 'p が q のための何条件かは、p⇒q と q⇒p を別々に確認してから決める。p⇒q が真なら十分条件、q⇒p が真なら必要条件であり、両方真なら必要十分、両方偽なら必要でも十分でもない。',
   },
+  {
+    problemNo: 105,
+    section: 'propositions',
+    sectionTitle: '命題と条件',
+    title: '命題の真偽',
+    estimatedSeconds: 420,
+    knowledgeTags: ['truth-value', 'implication', 'counterexample', 'rational-number'],
+    skillTags: ['condition-reading', 'case-classification', 'conclusion'],
+    problem: [
+      { type: 'text', text: 'a、b は実数とする。次の命題の真偽を調べよ。' },
+      { type: 'latex', latex: '(1)\\;ab=0\\Rightarrow a^2+b^2=0' },
+      { type: 'latex', latex: '(2)\\;a^2=4\\Rightarrow |a+1|\\ge1' },
+      { type: 'text', text: '(3) ab が有理数ならば、a、b はともに有理数である。' },
+      { type: 'text', text: '(4) a+b、ab がともに有理数ならば、a、b はともに有理数である。' },
+    ],
+    guide: [
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: 'まず、含意が真であることを示す場合と、偽であることを示す場合で、何を確認すればよいかを整理する。' }],
+      },
+      { type: 'blank', blankId: 'rule' },
+
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(1) は ab=0 から「少なくとも一方が0」までは分かる。両方が0でなければ後件は崩れるので、前件を満たす具体例を探す。' }],
+      },
+      { type: 'blank', blankId: 'p1-result' },
+
+      {
+        type: 'content',
+        blocks: [
+          { type: 'text', text: '(2) は前件から a の可能性をすべて出し、各ケースで後件を確認する。' },
+          { type: 'latex', latex: 'a^2=4\\Rightarrow a=2\\;\\text{または}\\;a=-2' },
+          { type: 'latex', latex: 'a=2:\\ |a+1|=3\\ge1' },
+          { type: 'latex', latex: 'a=-2:\\ |a+1|=1\\ge1' },
+        ],
+      },
+      { type: 'blank', blankId: 'p2-result' },
+
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(3) は「積が有理数」でも、各因子まで有理数とは限らないことに注目し、無理数どうしで積だけが有理数になる例を探す。' }],
+      },
+      { type: 'blank', blankId: 'p3-result' },
+
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(4) は和と積の両方を同時に有理数にしながら、a、b 自体は無理数のままになる組を探す。' }],
+      },
+      { type: 'blank', blankId: 'p4-result' },
+    ],
+    blanks: [
+      {
+        id: 'rule',
+        prompt: '命題 p⇒q の真偽を示すときの正しい考え方は',
+        choices: [
+          choice('all-vs-counterexample', '真なら p を満たすすべての場合で q を示し、偽なら p を満たして q を破る反例を1つ示す。', true),
+          choice('one-example-both', '真でも偽でも、具体例を1つ調べれば十分である。'),
+          choice('counterexample-for-true', '真を示すときは反例を1つ探せばよい。'),
+        ],
+        skillTag: 'condition-reading',
+        knowledgeTags: ['truth-value', 'implication', 'counterexample'],
+        explanation: '含意が真であるには前件を満たすすべての場合で後件が必要です。偽は前件が真で後件が偽になる反例1つで示せます。',
+      },
+      {
+        id: 'p1-result',
+        prompt: '(1)を判定する反例と結論は',
+        choices: [
+          choice('counterexample-false', 'a=0,b=1 なら ab=0 だが a²+b²=1≠0。よって偽。', true),
+          choice('zero-zero-true', 'a=0,b=0 で後件も成り立つので真。'),
+          choice('one-one-false', 'a=1,b=1 が反例なので偽。'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['truth-value', 'counterexample'],
+        explanation: 'a=0,b=1 は前件を満たし、後件を満たさないので反例です。',
+      },
+      {
+        id: 'p2-result',
+        prompt: '(2)の全ケース確認から分かるのは',
+        choices: [
+          choice('both-cases-true', 'a=2 と a=-2 の両方で |a+1|≥1 が成り立つので真。', true),
+          choice('positive-only', 'a=2 の場合だけ確認できたので真。'),
+          choice('negative-false', 'a=-2 のとき |a+1|<1 なので偽。'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['truth-value', 'implication'],
+        explanation: 'a²=4 の解は ±2 の2つで、どちらの場合も後件が成り立つため命題は真です。',
+      },
+      {
+        id: 'p3-result',
+        prompt: '(3)を判定する反例と結論は',
+        choices: [
+          choice('sqrt-two-false', 'a=b=√2 なら ab=2 は有理数だが a,b は無理数。よって偽。', true),
+          choice('rational-example-true', 'a=b=1 で前件と後件が成り立つので真。'),
+          choice('mixed-counterexample', 'a=√2,b=1 なら反例になるので偽。'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['truth-value', 'counterexample', 'rational-number'],
+        explanation: '√2×√2=2 は有理数ですが、2つの因子はともに無理数なので反例です。',
+      },
+      {
+        id: 'p4-result',
+        prompt: '(4)を判定する反例と結論は',
+        choices: [
+          choice('conjugate-false', 'a=√2,b=-√2 なら a+b=0, ab=-2 は有理数だが a,b は無理数。よって偽。', true),
+          choice('same-root-false', 'a=b=√2 なら和と積がともに有理数なので偽。'),
+          choice('rational-example-true', 'a=b=1 で和と積が有理数なので真。'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['truth-value', 'counterexample', 'rational-number'],
+        explanation: '√2 と -√2 の和は0、積は-2でどちらも有理数ですが、a,b は無理数なので反例です。',
+      },
+    ],
+    simulation: [
+      {
+        id: 's1',
+        label: '(1)',
+        prompt: 'ab=0 ⇒ a²+b²=0 の真偽を選べ。',
+        answerType: 'single-choice',
+        choices: [choice('false', '偽', true), choice('true', '真')],
+        score: 2, estimatedSeconds: 25,
+        knowledgeTags: ['truth-value', 'counterexample'], skillTags: ['conclusion'],
+      },
+      {
+        id: 's2',
+        label: '(2)',
+        prompt: 'a²=4 ⇒ |a+1|≥1 の真偽を選べ。',
+        answerType: 'single-choice',
+        choices: [choice('true', '真', true), choice('false', '偽')],
+        score: 2, estimatedSeconds: 25,
+        knowledgeTags: ['truth-value', 'implication'], skillTags: ['conclusion'],
+      },
+      {
+        id: 's3',
+        label: '(3)',
+        prompt: 'ab が有理数 ⇒ a,b はともに有理数 の真偽を選べ。',
+        answerType: 'single-choice',
+        choices: [choice('false', '偽', true), choice('true', '真')],
+        score: 2, estimatedSeconds: 25,
+        knowledgeTags: ['truth-value', 'counterexample', 'rational-number'], skillTags: ['conclusion'],
+      },
+      {
+        id: 's4',
+        label: '(4)',
+        prompt: 'a+b,ab がともに有理数 ⇒ a,b はともに有理数 の真偽を選べ。',
+        answerType: 'single-choice',
+        choices: [choice('false', '偽', true), choice('true', '真')],
+        score: 2, estimatedSeconds: 25,
+        knowledgeTags: ['truth-value', 'counterexample', 'rational-number'], skillTags: ['conclusion'],
+      },
+    ],
+    fullExplanation: '含意が真であることを示すには前件を満たすすべての場合で後件を確認し、偽を示すには前件を満たして後件を破る反例を1つ示す。(2)では ±2 の全ケース確認、(1)(3)(4)では反例が決定的である。',
+  },
 
 ]

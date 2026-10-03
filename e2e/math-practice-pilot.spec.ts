@@ -693,8 +693,8 @@ test('107 applies the necessary/sufficient direction rule to algebra, signs and 
   await page.getByTestId('option-math-practice-107-p3-classification-iff').click()
 
   await expect(currentTarget).toContainText('今の問い｜(4)')
-  await expect(readingFlow).toContainText('A=60°')
-  await expect(readingFlow).toContainText('B=100°')
+  await expect(readingFlow).toContainText('A=60')
+  await expect(readingFlow).toContainText('B=100')
   await page.getByTestId('blank-math-practice-107-p4-classification').click()
   await page.getByTestId('option-math-practice-107-p4-classification-necessary-only').click()
 

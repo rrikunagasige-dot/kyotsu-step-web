@@ -1,5 +1,8 @@
 # Math Practice Pilot Findings
 
+> MANDATORY: 数学練習モードの作業前に docs/MATH_PRACTICE_MASTER_LESSONS.md を読むこと。このfileはpilot履歴・証拠であり、再利用可能な最新ルールは専用MASTERを優先する。
+
+
 ## Current status
 
 The first runtime pilot is now active **only on the integration branch**:

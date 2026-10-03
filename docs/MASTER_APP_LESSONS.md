@@ -6,6 +6,15 @@ Purpose:
 このファイルは、これまでの共通STEP開発で得た設計・実装・教材制作・QA上の教訓を一つに集約した master lesson である。
 
 これは単なる履歴ではない。
+
+## Math practice mandatory first-read
+
+Math I・A 基礎演習 / 4STEP 練習モードを変更・追加する場合は、このMASTERに加えて、作業開始前に必ず次を読む:
+
+docs/MATH_PRACTICE_MASTER_LESSONS.md
+
+数学練習モードでは、この専用MASTERが user-approved information architecture、inline穴埋め、current-target、subproblem compression、dependency/result reuse、数式rendering、mobile QA の最新authorityである。
+
 今後、
 - 新しい章を作る、
 - 既存章を直す、

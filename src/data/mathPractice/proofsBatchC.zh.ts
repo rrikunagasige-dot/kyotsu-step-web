@@ -882,5 +882,121 @@ export const mathPracticeProofsBatchCSourceZh: MathPracticeSourceQuestion[] = [
     fullExplanation: '反设 √x 是有理数，令 √x=r，其中 r 是有理数。两边平方得 x=r²，而有理数的平方仍是有理数，所以 x 会成为有理数。这与题设 x 是无理数矛盾，因此 √x 是无理数。',
   },
 
+  {
+    problemNo: 114,
+    section: 'proofs',
+    sectionTitle: '命题与证明',
+    title: '倍数命题的证明',
+    estimatedSeconds: 540,
+    knowledgeTags: ['contrapositive', 'divisibility', 'modular-arithmetic', 'residue-class'],
+    skillTags: ['law-selection', 'case-classification', 'calculation', 'conclusion'],
+    problem: [
+      { type: 'text', text: '设 m、n 为整数。证明下列命题。' },
+      { type: 'text', text: '(1) 若 n² 是5的倍数，则 n 是5的倍数。' },
+      { type: 'text', text: '(2) 若 mn 是3的倍数，则 m、n 中至少有一个是3的倍数。' },
+    ],
+    guide: [
+      { type: 'content', blocks: [{ type: 'text', text: '(1) 不直接从 n² 取回 n，而是把命题改写成可以检查“不是5的倍数”的余数形式。' }] },
+      { type: 'blank', blankId: 'p1-plan' },
+      { type: 'content', blocks: [{ type: 'text', text: '(1) 把“n 不是5的倍数”分成除以5所得余数的有限种情况。' }] },
+      { type: 'blank', blankId: 'p1-residues' },
+      { type: 'content', blocks: [{ type: 'text', text: '(1) 把这些余数全部平方，检查 n² 的余数是否可能为0。' }] },
+      { type: 'blank', blankId: 'p1-squares' },
+
+      { type: 'content', blocks: [{ type: 'text', text: '(2) 正确否定“m、n 中至少一个是3的倍数”，把命题改写为便于检查乘积余数的逆否命题。' }] },
+      { type: 'blank', blankId: 'p2-plan' },
+      { type: 'content', blocks: [{ type: 'text', text: '(2) 当 m、n 都不是3的倍数时，分别分类它们除以3的余数。' }] },
+      { type: 'blank', blankId: 'p2-residues' },
+      { type: 'content', blocks: [{ type: 'text', text: '(2) 把所有余数组合相乘，检查 mn 是否可能成为3的倍数。' }] },
+      { type: 'blank', blankId: 'p2-products' },
+    ],
+    blanks: [
+      {
+        id: 'p1-plan',
+        prompt: '(1) 便于证明的逆否命题是',
+        choices: [
+          choice('contrapositive', '若 n 不是5的倍数，则 n² 不是5的倍数。', true),
+          choice('converse', '若 n 是5的倍数，则 n² 是5的倍数。'),
+          choice('inverse', '若 n² 不是5的倍数，则 n 不是5的倍数。'),
+        ],
+        skillTag: 'law-selection',
+        knowledgeTags: ['contrapositive', 'divisibility'],
+        explanation: '原命题的逆否命题是“n不是5的倍数 ⇒ n²不是5的倍数”。',
+      },
+      {
+        id: 'p1-residues',
+        prompt: '不是5的倍数的整数 n 除以5的余数可能是',
+        choices: [
+          choice('one-two-three-four', '1、2、3、4 中的一个。', true),
+          choice('zero-to-four', '0、1、2、3、4 中的一个。'),
+          choice('one-four-only', '只有1或4。'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['divisibility', 'residue-class'],
+        explanation: '余数0对应5的倍数，因此排除0，只剩1、2、3、4。',
+      },
+      {
+        id: 'p1-squares',
+        prompt: '平方四种余数并完成逆否证明',
+        choices: [
+          choice('none-zero', 'mod 5 下 1²≡1、2²≡4、3²≡4、4²≡1，没有0。因此 n² 不是5的倍数，逆否命题成立，原命题成立。', true),
+          choice('three-zero', '3²≡0 (mod 5)，所以逆否命题不成立。'),
+          choice('all-zero', '1到4的平方都≡0 (mod 5)。'),
+        ],
+        skillTag: 'calculation',
+        knowledgeTags: ['contrapositive', 'modular-arithmetic', 'divisibility'],
+        explanation: '四种非零余数的平方只有1或4，不会出现0，因此逆否命题成立。',
+      },
+      {
+        id: 'p2-plan',
+        prompt: '(2) 的逆否命题是',
+        choices: [
+          choice('both-not', '若 m、n 都不是3的倍数，则 mn 不是3的倍数。', true),
+          choice('at-least-one-not', '若 m、n 至少一个不是3的倍数，则 mn 不是3的倍数。'),
+          choice('converse', '若 m、n 至少一个是3的倍数，则 mn 是3的倍数。'),
+        ],
+        skillTag: 'law-selection',
+        knowledgeTags: ['contrapositive', 'negation', 'divisibility'],
+        explanation: '“至少一个是3的倍数”的否定是“两者都不是3的倍数”。',
+      },
+      {
+        id: 'p2-residues',
+        prompt: '不是3的倍数的 m、n，各自余数可能是',
+        choices: [
+          choice('one-or-two', '1 或2。', true),
+          choice('zero-or-one', '0 或1。'),
+          choice('only-one', '只能是1。'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['divisibility', 'residue-class'],
+        explanation: '除以3的余数为0、1、2；排除倍数情况0后，只剩1或2。',
+      },
+      {
+        id: 'p2-products',
+        prompt: '检查四种余数组合并完成逆否证明',
+        choices: [
+          choice('none-zero', 'mod 3 下 1·1≡1、1·2≡2、2·1≡2、2·2≡1，没有0。因此 mn 不是3的倍数，逆否命题成立，原命题成立。', true),
+          choice('two-two-zero', '2·2≡0 (mod 3)，所以逆否命题不成立。'),
+          choice('one-one-zero', '1·1≡0 (mod 3)，所以逆否命题不成立。'),
+        ],
+        skillTag: 'calculation',
+        knowledgeTags: ['contrapositive', 'modular-arithmetic', 'divisibility'],
+        explanation: '四种乘积的余数都是1或2，不会是0，因此 mn 不是3的倍数。',
+      },
+    ],
+    simulation: [
+      {
+        id: 's1', label: '(1)', prompt: '不是5的倍数的整数平方后，mod 5 可能出现哪些余数？', answerType: 'single-choice',
+        choices: [choice('correct', '1 或4', true), choice('wrong', '0 或1')],
+        score: 2, estimatedSeconds: 25, knowledgeTags: ['modular-arithmetic', 'divisibility'], skillTags: ['case-classification'],
+      },
+      {
+        id: 's2', label: '(2)', prompt: 'm、n 都不是3的倍数时，mn 除以3的余数怎样？', answerType: 'single-choice',
+        choices: [choice('correct', '只能是1或2，不会是0。', true), choice('wrong', '一定是0。')],
+        score: 2, estimatedSeconds: 25, knowledgeTags: ['modular-arithmetic', 'divisibility'], skillTags: ['conclusion'],
+      },
+    ],
+    fullExplanation: '(1) 证明逆否命题：n不是5的倍数时余数为1、2、3、4，平方后 mod5 为1、4、4、1，从不为0。(2) 证明逆否命题：m、n都不是3的倍数时，各自余数为1或2，四种乘积 mod3 为1、2、2、1，从不为0。因此两个原命题都成立。',
+  },
 
 ]

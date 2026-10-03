@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest'
 import {
+  buildMathCommonTestSummary,
   buildMathPracticeTopicSummary,
+  mathCommonTestAreaForQuestion,
   mathPracticeProblemNumber,
   mathPracticeTaxonomy,
   mathPracticeTopicForQuestion,
@@ -10,8 +12,8 @@ import { mathPracticePilotQuestions } from './mathPractice/adapter'
 describe('math practice title architecture', () => {
   it('keeps four learner-facing themes across two Math I groups', () => {
     expect(mathPracticeTaxonomy.map((domain) => domain.label.ja)).toEqual([
-      '数学 I｜集合と命題',
-      '数学 I｜関数',
+      '集合と命題',
+      '関数',
     ])
     expect(mathPracticeTaxonomy.flatMap((domain) => domain.topics.map((topic) => topic.label.ja))).toEqual([
       '集合を整理する',
@@ -44,6 +46,28 @@ describe('math practice title architecture', () => {
     expect(summary.counts['prove-propositions']).toBe(0)
     expect(summary.counts['represent-functions']).toBe(0)
     expect(summary.unclassified).toBe(0)
+  })
+
+  it('separates the old Common-Test math samples from 4STEP practice', () => {
+    const commonTestSamples = [
+      {
+        subject: 'math-1a' as const,
+        questionId: 'math-quadratic-01',
+        status: 'published' as const,
+        taxonomy: { majorUnit: 'functions' },
+      },
+      {
+        subject: 'math-1a' as const,
+        questionId: 'math-statistics-01',
+        status: 'published' as const,
+        taxonomy: { majorUnit: 'data-analysis' },
+      },
+    ]
+
+    expect(mathCommonTestAreaForQuestion(commonTestSamples[0])).toBe('quadratic')
+    expect(mathCommonTestAreaForQuestion(commonTestSamples[1])).toBe('data-analysis')
+    expect(buildMathCommonTestSummary(commonTestSamples as never).quadratic).toBe(1)
+    expect(buildMathCommonTestSummary(commonTestSamples as never)['data-analysis']).toBe(1)
   })
 
   it('uses problem numbers as the compact leaf labels', () => {

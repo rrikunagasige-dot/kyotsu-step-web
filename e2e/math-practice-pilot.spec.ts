@@ -124,7 +124,8 @@ test('99 judges implication by set inclusion and uses counterexamples only where
 
   await expect(problem).toContainText('集合の包含関係')
   await expect(problem.locator('.katex-display')).toHaveCount(4)
-  await expect(problem).not.toContainText('Rightarrow')
+  await expect(problem.locator('.katex-error')).toHaveCount(0)
+  await expect(problem.locator('.katex-display').first().locator('.katex-html')).toContainText('⇒')
   await expect(currentTarget).toContainText('まず確認')
   await expect(currentTarget).toContainText('包含関係')
   await expect(page.getByTestId('blank-math-practice-099-rule')).toContainText('選択')

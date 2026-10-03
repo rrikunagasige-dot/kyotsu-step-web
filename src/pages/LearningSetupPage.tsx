@@ -24,11 +24,8 @@ import {
   buildMathPracticeTopicSummary,
   mathCommonTestAreas,
   mathCommonTestAreaForQuestion,
-  mathPracticeProblemNumber,
+  mathPracticeQuestionsForTopic,
   mathPracticeTaxonomy,
-  mathPracticeTopicFlow,
-  mathPracticeTopicForQuestion,
-  mathPracticeTopicLabel,
   type MathCommonTestAreaId,
   type MathPracticeTopicId,
 } from '../data/mathPracticeTaxonomy'
@@ -69,7 +66,6 @@ export function LearningSetupPage() {
   const [subject, setSubject] = useState<Question['subject']>(requestedSubject === 'math-1a' ? 'math-1a' : 'physics')
   const [activeTopic, setActiveTopic] = useState<PhysicsTopicId | null>(requestedTopic)
   const [mathExerciseType, setMathExerciseType] = useState<MathExerciseType | null>(null)
-  const [activeMathTopic, setActiveMathTopic] = useState<MathPracticeTopicId | null>(null)
   const [activeMathCommonTestArea, setActiveMathCommonTestArea] = useState<MathCommonTestAreaId | null>(null)
   const [variant, setVariant] = useState<LearningVariant>('detailed')
   const [questionId, setQuestionId] = useState('')
@@ -77,13 +73,11 @@ export function LearningSetupPage() {
   const questionsFor = (
     nextSubject: Question['subject'],
     physicsTopic: PhysicsTopicId | null = null,
-    mathTopic: MathPracticeTopicId | null = null,
   ) =>
     catalog.filter((question) =>
       question.subject === nextSubject &&
       question.status === 'published' &&
-      (nextSubject !== 'physics' || !physicsTopic || physicsTopicForQuestion(question) === physicsTopic) &&
-      (nextSubject !== 'math-1a' || !mathTopic || mathPracticeTopicForQuestion(question) === mathTopic),
+      (nextSubject !== 'physics' || !physicsTopic || physicsTopicForQuestion(question) === physicsTopic),
     )
 
   const subjectQuestions = useMemo(
@@ -92,14 +86,12 @@ export function LearningSetupPage() {
       question.status === 'published' &&
       (subject !== 'physics' || (activeTopic !== null && physicsTopicForQuestion(question) === activeTopic)) &&
       (subject !== 'math-1a' || (
-        mathExerciseType === 'basic'
-          ? activeMathTopic !== null && mathPracticeTopicForQuestion(question) === activeMathTopic
-          : mathExerciseType === 'common-test'
-            ? activeMathCommonTestArea !== null && mathCommonTestAreaForQuestion(question) === activeMathCommonTestArea
-            : false
+        mathExerciseType === 'common-test' &&
+        activeMathCommonTestArea !== null &&
+        mathCommonTestAreaForQuestion(question) === activeMathCommonTestArea
       )),
     ),
-    [activeMathCommonTestArea, activeMathTopic, activeTopic, catalog, mathExerciseType, subject],
+    [activeMathCommonTestArea, activeTopic, catalog, mathExerciseType, subject],
   )
 
   useEffect(() => {
@@ -113,9 +105,8 @@ export function LearningSetupPage() {
     if (
       (subject === 'physics' && !activeTopic) ||
       (subject === 'math-1a' && (
-        !mathExerciseType ||
-        (mathExerciseType === 'basic' && !activeMathTopic) ||
-        (mathExerciseType === 'common-test' && !activeMathCommonTestArea)
+        mathExerciseType !== 'common-test' ||
+        !activeMathCommonTestArea
       ))
     ) {
       if (questionId) setQuestionId('')
@@ -124,7 +115,7 @@ export function LearningSetupPage() {
     if (!subjectQuestions.some((question) => question.questionId === questionId)) {
       setQuestionId(subjectQuestions[0]?.questionId ?? '')
     }
-  }, [activeMathCommonTestArea, activeMathTopic, activeTopic, mathExerciseType, mode, questionId, subject, subjectQuestions])
+  }, [activeMathCommonTestArea, activeTopic, mathExerciseType, mode, questionId, subject, subjectQuestions])
 
   const variants: { value: LearningVariant; label: string; description: string }[] = [
     { value: 'detailed', label: text('詳細穴埋め', '详细引导'), description: text('手順を細かく確認', '逐步确认完整过程') },
@@ -136,7 +127,6 @@ export function LearningSetupPage() {
     setSubject(next)
     setActiveTopic(null)
     setMathExerciseType(null)
-    setActiveMathTopic(null)
     setActiveMathCommonTestArea(null)
     setQuestionId('')
   }
@@ -147,8 +137,7 @@ export function LearningSetupPage() {
       setSubject('physics')
       setActiveTopic(null)
       setMathExerciseType(null)
-      setActiveMathTopic(null)
-      setActiveMathCommonTestArea(null)
+        setActiveMathCommonTestArea(null)
       setQuestionId('')
       return
     }
@@ -158,7 +147,6 @@ export function LearningSetupPage() {
     setSubject(nextSubject)
     setActiveTopic(nextTopic)
     setMathExerciseType(null)
-    setActiveMathTopic(null)
     setActiveMathCommonTestArea(null)
     setQuestionId(nextSubject === 'physics' && nextTopic ? questionsFor(nextSubject, nextTopic)[0]?.questionId ?? '' : '')
   }
@@ -171,22 +159,20 @@ export function LearningSetupPage() {
 
   const selectMathExerciseType = (type: MathExerciseType) => {
     setMathExerciseType(type)
-    setActiveMathTopic(null)
     setActiveMathCommonTestArea(null)
     setQuestionId('')
   }
 
   const selectMathTopic = (topic: MathPracticeTopicId) => {
     if (mathSummary.counts[topic] <= 0) return
-    setActiveMathTopic(topic)
-    setActiveMathCommonTestArea(null)
-    setQuestionId(questionsFor('math-1a', null, topic)[0]?.questionId ?? '')
+    const firstQuestion = mathPracticeQuestionsForTopic(catalog, topic)[0]
+    if (!firstQuestion) return
+    navigate(`/learning/session/${startLearning(firstQuestion.questionId, FIXED_PRACTICE_VARIANT)}`)
   }
 
   const selectMathCommonTestArea = (area: MathCommonTestAreaId) => {
     if (mathCommonTestSummary[area] <= 0) return
     setActiveMathCommonTestArea(area)
-    setActiveMathTopic(null)
     setQuestionId(
       catalog.find((question) =>
         question.subject === 'math-1a' &&
@@ -462,13 +448,11 @@ export function LearningSetupPage() {
                     <div className="textbook-unit-grid math-theme-grid">
                       {domain.topics.map((topic) => {
                         const count = mathSummary.counts[topic.id]
-                        const selected = activeMathTopic === topic.id
                         return (
                           <button
                             type="button"
-                            className={`textbook-unit-link textbook-chunk-link math-theme-link${count === 0 ? ' math-theme-link--empty' : ''}${selected ? ' math-theme-link--selected' : ''}`}
+                            className={`textbook-unit-link textbook-chunk-link math-theme-link${count === 0 ? ' math-theme-link--empty' : ''}`}
                             data-testid={`math-topic-${topic.id}`}
-                            aria-pressed={selected}
                             disabled={count === 0}
                             key={topic.id}
                             onClick={() => selectMathTopic(topic.id)}
@@ -520,36 +504,6 @@ export function LearningSetupPage() {
             </NumberedSection>
           )}
 
-          {mathExerciseType === 'basic' && activeMathTopic && (
-            <NumberedSection number="05" title={text('問題', '题目')}>
-              <div className="topic-filter-note" data-testid="math-topic-filter">
-                <span>{text('選択中のテーマ', '当前主题')}</span>
-                <div className="math-topic-filter-copy">
-                  <strong>{mathPracticeTopicLabel(activeMathTopic, language)}</strong>
-                  <small>{mathPracticeTopicFlow(activeMathTopic, language)}</small>
-                </div>
-                <small>{text(`${subjectQuestions.length} 問`, `${subjectQuestions.length} 题`)}</small>
-              </div>
-              <div className="math-problem-grid" role="group" aria-label={text('問題番号', '题号')}>
-                {subjectQuestions.map((question) => {
-                  const number = mathPracticeProblemNumber(question.questionId)
-                  return (
-                    <button
-                      type="button"
-                      className={`math-problem-button${questionId === question.questionId ? ' math-problem-button--selected' : ''}`}
-                      data-testid={`math-problem-${number ?? question.questionId}`}
-                      aria-pressed={questionId === question.questionId}
-                      key={question.questionId}
-                      onClick={() => setQuestionId(question.questionId)}
-                    >
-                      {number ?? question.title}
-                    </button>
-                  )
-                })}
-              </div>
-            </NumberedSection>
-          )}
-
           {mathExerciseType === 'common-test' && activeMathCommonTestArea && (
             <NumberedSection number="05" title={text('問題', '题目')}>
               <div className="math-common-test-question-list" role="group" aria-label={text('学習する問題', '选择学习题目')}>
@@ -583,7 +537,7 @@ export function LearningSetupPage() {
         </NumberedSection>
       )}
 
-      {mode === 'practice' && (
+      {mode === 'practice' && (subject === 'physics' || (subject === 'math-1a' && mathExerciseType === 'common-test')) && (
         <RaisedButton
           type="button"
           className="primary-button"

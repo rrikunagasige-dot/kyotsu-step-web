@@ -179,6 +179,40 @@ const rawMathPropositionProofUnit = {
           ],
         },
         {
+          id: 'formula-example-multiple12',
+          type: 'formula' as const,
+          parts: [
+            { type: 'math' as const, latex: 'n\\text{は12の倍数}\\Rightarrow n\\text{は6の倍数}' },
+          ],
+        },
+        {
+          id: 'paragraph-r06',
+          type: 'paragraph' as const,
+          parts: [
+            { type: 'text' as const, text: '次の例も確かめる。12は6の倍数なので、12の倍数は必ず6の倍数になる。したがって元の命題は ' },
+            { type: 'choice' as const, itemId: 'proof-a06' },
+            { type: 'text' as const, text: ' である。' },
+          ],
+        },
+        {
+          id: 'paragraph-r07',
+          type: 'paragraph' as const,
+          parts: [
+            { type: 'text' as const, text: '逆「nは6の倍数ならnは12の倍数」と、裏「nは12の倍数でないならnは6の倍数でない」には、どちらにも ' },
+            { type: 'choice' as const, itemId: 'proof-a07' },
+            { type: 'text' as const, text: ' が反例になる。したがって逆と裏はともに偽である。' },
+          ],
+        },
+        {
+          id: 'paragraph-r08',
+          type: 'paragraph' as const,
+          parts: [
+            { type: 'text' as const, text: '一方、対偶「nが6の倍数でないならnは12の倍数でない」は ' },
+            { type: 'choice' as const, itemId: 'proof-a08' },
+            { type: 'text' as const, text: ' である。' },
+          ],
+        },
+        {
           id: 'paragraph-equivalence-pair',
           type: 'paragraph' as const,
           parts: [
@@ -429,6 +463,42 @@ const rawMathPropositionProofUnit = {
           purpose: 'causal-reasoning' as const,
           scaffoldLevel: 'medium' as const,
           hints: ['x=0はx≠1を満たす。', 'しかしx²≠xは満たさない。'],
+        },
+        {
+          id: 'proof-a06',
+          label: 'PROOF-A06',
+          prompt: 'nが12の倍数ならnは6の倍数である、という命題の真偽を判断しよう。',
+          answer: '真',
+          acceptedAnswers: [],
+          answerType: 'text' as const,
+          choices: ['真', '偽'],
+          purpose: 'transfer' as const,
+          scaffoldLevel: 'light' as const,
+          hints: ['12=6×2。', '12の倍数は必ず6を因数にもつ。'],
+        },
+        {
+          id: 'proof-a07',
+          label: 'PROOF-A07',
+          prompt: '逆と裏の両方を偽にする反例を選ぼう。',
+          answer: 'n=6',
+          acceptedAnswers: [],
+          answerType: 'formula' as const,
+          choices: ['n=6', 'n=12', 'n=24'],
+          purpose: 'transfer' as const,
+          scaffoldLevel: 'light' as const,
+          hints: ['6は6の倍数だが12の倍数ではない。', '同じn=6で、逆も裏も破れる。'],
+        },
+        {
+          id: 'proof-a08',
+          label: 'PROOF-A08',
+          prompt: '「nが6の倍数でないならnは12の倍数でない」という対偶の真偽を判断しよう。',
+          answer: '真',
+          acceptedAnswers: [],
+          answerType: 'text' as const,
+          choices: ['真', '偽'],
+          purpose: 'causal-reasoning' as const,
+          scaffoldLevel: 'light' as const,
+          hints: ['12の倍数なら必ず6の倍数でもある。', '6の倍数でない数が12の倍数になることはない。'],
         },
         {
           id: 'proof-b01',

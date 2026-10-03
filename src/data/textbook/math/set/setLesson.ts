@@ -1,5 +1,6 @@
 import { validateTextbookUnits } from '../../../../domain/textbookSchema'
 import { setOutsideFigures, setOutsideItems, setOutsideReadingFlow } from './setOutsideSlice'
+import { setRealLineFigures, setRealLineItems, setRealLineReadingFlow } from './setRealLineSlice'
 
 const rawMathSetUnit = {
   schemaVersion: '1.1' as const,
@@ -13,14 +14,14 @@ const rawMathSetUnit = {
     chapterTitle: '集合と命題',
     unitCode: '3SET',
     orderInChapter: 1,
-    sourcePages: [86, 87, 88, 89, 90],
+    sourcePages: [86, 87, 88, 89, 90, 91],
   },
   title: '集合',
   subtitle: '具体的な数から始めて、集合・要素・記号・表し方を一つずつ作る。',
   source: {
     type: 'reference' as const,
     label: '啓林館版 深進数学I 第3章「集合と命題」1 集合',
-    rightsNote: '教科書ガイド p.109〜113 付近（教科書 p.86〜90 相当）と、ユーザー承認済み教科書モード本文をApp用に構造化',
+    rightsNote: '教科書ガイド p.109〜114 付近（教科書 p.86〜91 相当）と、ユーザー承認済み教科書モード本文をApp用に構造化',
   },
   objectives: [
     '条件を満たすものを集合として捉える',
@@ -30,6 +31,7 @@ const rawMathSetUnit = {
     '部分集合・空集合・集合の相等を具体例から理解する',
     '全体集合を決めた上で補集合を意味から求める',
     'ド・モルガンの法則を図と要素の両方から確認する',
+    '実数の集合を数直線で読み、補集合の端点を意味から判断する',
   ],
   sections: [
     {
@@ -68,6 +70,7 @@ const rawMathSetUnit = {
           overlays: [],
         },
         ...setOutsideFigures,
+        ...setRealLineFigures,
       ],
       readingFlow: [
         {
@@ -545,6 +548,7 @@ const rawMathSetUnit = {
           ],
         },
         ...setOutsideReadingFlow,
+        ...setRealLineReadingFlow,
       ],
       items: [
         {

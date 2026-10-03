@@ -753,6 +753,53 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
       dependsOn: ['basis'],
     },
   ],
+  'math-practice-107': [
+    {
+      id: 'basis',
+      kicker: { ja: 'まず確認', zh: '先确认' },
+      label: { ja: '必要・十分を含意の向きで判定する', zh: '用蕴含方向判断必要与充分' },
+      blankIds: ['rule'],
+      result: {
+        blankId: 'rule',
+        label: { ja: '双方向判定の規則', zh: '双向判断规则' },
+      },
+    },
+    {
+      id: 's1',
+      kicker: { ja: '今の問い｜(1)', zh: '当前问题｜(1)' },
+      label: { ja: '積が0になる条件と全相等を比べる', zh: '比较乘积为0与三个量全相等' },
+      blankIds: ['p1-classification'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's2',
+      kicker: { ja: '今の問い｜(2)', zh: '当前问题｜(2)' },
+      label: { ja: '符号条件と積が負の条件を比べる', zh: '比较符号条件与乘积为负' },
+      blankIds: ['p2-classification'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's3',
+      kicker: { ja: '今の問い｜(3)', zh: '当前问题｜(3)' },
+      label: { ja: '連立条件の逆向きを証明する', zh: '证明联立条件的反方向' },
+      blankIds: ['p3-classification'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's4',
+      kicker: { ja: '今の問い｜(4)', zh: '当前问题｜(4)' },
+      label: { ja: '鋭角三角形の角条件を比べる', zh: '比较锐角三角形的角条件' },
+      blankIds: ['p4-classification'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's5',
+      kicker: { ja: '今の問い｜(5)', zh: '当前问题｜(5)' },
+      label: { ja: '図形条件に両方向の反例を作る', zh: '为几何条件构造两个方向的反例' },
+      blankIds: ['p5-classification'],
+      dependsOn: ['basis'],
+    },
+  ],
 }
 
 function localBlankId(questionId: string, fullBlankId: string) {
@@ -810,5 +857,6 @@ export function mathPracticeUsesSubproblemCompression(questionId: string) {
     'math-practice-104',
     'math-practice-105',
     'math-practice-106',
+    'math-practice-107',
   ].includes(questionId)
 }

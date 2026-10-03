@@ -150,6 +150,38 @@ test('math textbook setup enters the set lesson and physics remains available fr
   await expect(page.getByTestId('textbook-part-1')).toContainText('様々な運動')
 })
 
+
+test('proposition-reading review unit starts from a concrete implication before revealing the concept', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/math-propositions-reading'))
+
+  await expect(page.getByRole('heading', { name: '条件から命題を読む', exact: true })).toBeVisible()
+  await expect(page.getByRole('heading', { name: '命題の真偽を読む', exact: true })).toBeVisible()
+  await expect(page.getByTestId('textbook-item-prop-a01')).toBeVisible()
+  await expect(page.getByText(/pならばqである/)).toHaveCount(0)
+
+  await answerItem(page, 'prop-a01', '満たす')
+
+  await expect(page.getByText(/pならばqである/)).toBeVisible()
+  await expect(page.getByTestId('textbook-item-prop-a02')).toBeVisible()
+  await expect(page.getByTestId('textbook-figure-implication-inclusion')).toHaveCount(0)
+
+  await answerItem(page, 'prop-a02', 'すべて入る')
+  await expect(page.getByTestId('textbook-figure-implication-inclusion')).toBeVisible()
+})
+
+test('proposition-reading counterexample is decided before the counterexample concept is named', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/math-propositions-reading'))
+
+  await answerItem(page, 'prop-a01', '満たす')
+  await answerItem(page, 'prop-a02', 'すべて入る')
+
+  await expect(page.getByText(/このような例を反例という/)).toHaveCount(0)
+  await answerItem(page, 'prop-a03', '-1')
+  await answerItem(page, 'prop-a04', '偽')
+  await expect(page.getByText(/このような例を反例という/)).toBeVisible()
+  await expect(page.getByTestId('textbook-figure-implication-counterexample')).toBeVisible()
+})
+
 test('math set lesson boots directly on the shared textbook reader', async ({ page }) => {
   const pageErrors: string[] = []
   page.on('pageerror', (error) => pageErrors.push(error.stack ?? error.message))

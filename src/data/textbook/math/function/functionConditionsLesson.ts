@@ -15,16 +15,16 @@ const rawMathFunctionConditionsUnit = {
     sourcePages: [46, 47],
   },
   title: '関数の条件を読む',
-  subtitle: '入力を1つ決めたとき、出力がいくつ決まるかを具体例から判断する。',
+  subtitle: '入力と出力の対応を、式と具体例から順に調べる。',
   source: {
     type: 'reference' as const,
     label: '啓林館版 深進数学I 第2章 第1節「関数」＋ MATH_PRACTICE_118_CONTENT_DESIGN',
     rightsNote: '教科書ガイド p.53 付近（教科書 p.46〜47 相当）の関数定義を、練習モード118の3例へ接続してApp用に構造化',
   },
   objectives: [
-    '1つの入力xに対して出力yがただ1つ決まるかを確認する',
-    '式や具体例を使って関数かどうかを判断する',
-    '図形の条件からxとyの関係を作って判断する',
+    '入力xと出力yの対応を具体例で調べる',
+    '式や具体例から対応のしかたを比較する',
+    '図形の条件からxとyの関係を作って考える',
   ],
   sections: [
     {

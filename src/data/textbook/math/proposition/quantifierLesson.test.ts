@@ -63,6 +63,13 @@ describe('math quantifier textbook unit', () => {
     expect(ruleIndex).toBeGreaterThan(negationDecisionIndex)
   })
 
+
+  it('matches the source wording for the prime-number negation', () => {
+    const item = mathQuantifierUnit.sections[0].items.find((candidate) => candidate.id === 'quant-c03')
+    expect(item?.answer).toBe('ある素数は偶数である')
+    expect(item?.acceptedAnswers).toContain('ある素数は奇数ではない')
+  })
+
   it('keeps sentence-like quantifier answers in text mode instead of mixed-text KaTeX', () => {
     const item = mathQuantifierUnit.sections[0].items.find((candidate) => candidate.id === 'quant-b02')
     expect(item?.answerType).toBe('text')

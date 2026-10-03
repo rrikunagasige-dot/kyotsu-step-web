@@ -54,7 +54,7 @@ export const mathPracticeSetsBatchASource: MathPracticeSourceQuestion[] = [
           choice('memory', '思いついた約数だけを書き並べる'),
           choice('odd-only', '奇数だけを調べる'),
         ],
-        skillTag: 'strategy-selection',
+        skillTag: 'condition-reading',
         knowledgeTags: ['divisor'],
         explanation: '積が36になる整数の組を系統的に探すと、約数を漏れなく拾えます。',
       },
@@ -86,7 +86,7 @@ export const mathPracticeSetsBatchASource: MathPracticeSourceQuestion[] = [
         id: 'p2-step',
         prompt: '正の奇数は隣り合うたびにいくつ増えるか。',
         choices: [choice('two', '2', true), choice('one', '1'), choice('three', '3')],
-        skillTag: 'pattern-recognition',
+        skillTag: 'calculation',
         knowledgeTags: ['sequence'],
         explanation: '奇数は 1,3,5,7,... と2ずつ増えます。',
       },
@@ -150,7 +150,7 @@ export const mathPracticeSetsBatchASource: MathPracticeSourceQuestion[] = [
         id: 'p4-pattern',
         prompt: '1,4,7,10,... は毎回いくつ増えるか。',
         choices: [choice('three', '3', true), choice('two', '2'), choice('four', '4')],
-        skillTag: 'pattern-recognition',
+        skillTag: 'calculation',
         knowledgeTags: ['sequence'],
         explanation: '隣り合う項の差は3です。',
       },
@@ -215,7 +215,7 @@ export const mathPracticeSetsBatchASource: MathPracticeSourceQuestion[] = [
       {
         id: 'b-counterexample', prompt: 'B={1,2,3} のうち、A に入らない要素として使えるものはどれか。',
         choices: [choice('one', '1', true), choice('two', '2'), choice('four', '4')],
-        skillTag: 'counterexample', knowledgeTags: ['subset'], explanation: '1 は A に入らないので、B は A の部分集合ではありません。',
+        skillTag: 'case-classification', knowledgeTags: ['subset'], explanation: '1 は A に入らないので、B は A の部分集合ではありません。',
       },
       {
         id: 'b-judgment', prompt: 'B と A の関係として正しいものはどれか。',
@@ -230,7 +230,7 @@ export const mathPracticeSetsBatchASource: MathPracticeSourceQuestion[] = [
       {
         id: 'd-counterexample', prompt: 'D={10,12} のうち、A に入らない要素はどれか。',
         choices: [choice('twelve', '12', true), choice('ten', '10'), choice('both', '10 と 12')],
-        skillTag: 'counterexample', knowledgeTags: ['subset'], explanation: '12 は10以下ではないので A に入りません。',
+        skillTag: 'case-classification', knowledgeTags: ['subset'], explanation: '12 は10以下ではないので A に入りません。',
       },
       {
         id: 'd-judgment', prompt: 'D と A の関係として正しいものはどれか。',
@@ -283,7 +283,7 @@ export const mathPracticeSetsBatchASource: MathPracticeSourceQuestion[] = [
       {
         id: 'p1-method', prompt: 'A と B の関係を判断する前に、まず何をするとよいか。',
         choices: [choice('list', 'A と B の要素を書き出す', true), choice('count', '要素数だけ比べる'), choice('guess', '式の見た目だけで決める')],
-        skillTag: 'strategy-selection', knowledgeTags: ['set-representation'], explanation: '具体的な要素に直すと包含関係を直接確認できます。',
+        skillTag: 'condition-reading', knowledgeTags: ['set-representation'], explanation: '具体的な要素に直すと包含関係を直接確認できます。',
       },
       {
         id: 'p1-a', prompt: '(1) の A を要素で表したものはどれか。',
@@ -360,7 +360,7 @@ export const mathPracticeSetsBatchASource: MathPracticeSourceQuestion[] = [
       {
         id: 'p1-organize', prompt: '部分集合を漏れなく調べるための整理方法はどれか。',
         choices: [choice('count', '選ぶ要素の個数で分ける', true), choice('size', '要素の大きさで分ける'), choice('random', '思いついた順に書く')],
-        skillTag: 'strategy-selection', knowledgeTags: ['systematic-enumeration'], explanation: '選ぶ個数で0個,1個,2個と分ければ漏れを防げます。',
+        skillTag: 'condition-reading', knowledgeTags: ['systematic-enumeration'], explanation: '選ぶ個数で0個,1個,2個と分ければ漏れを防げます。',
       },
       {
         id: 'p1-zero', prompt: '0個の要素を選んだ部分集合はどれか。',
@@ -370,7 +370,7 @@ export const mathPracticeSetsBatchASource: MathPracticeSourceQuestion[] = [
       {
         id: 'p1-one', prompt: '1個だけ選ぶ部分集合はどれか。',
         choices: [choice('correct', '{a}, {b}', true), choice('wrong-a', '{a,b}'), choice('wrong-b', '∅, {a,b}')],
-        skillTag: 'organization', knowledgeTags: ['subset'], explanation: 'aだけ、bだけの2通りです。',
+        skillTag: 'case-classification', knowledgeTags: ['subset'], explanation: 'aだけ、bだけの2通りです。',
       },
       {
         id: 'p1-two', prompt: '2個とも選ぶ部分集合はどれか。',
@@ -380,7 +380,7 @@ export const mathPracticeSetsBatchASource: MathPracticeSourceQuestion[] = [
       {
         id: 'p2-range', prompt: '{1,2,3,4} では、選ぶ要素数を何個から何個まで調べるか。',
         choices: [choice('zero-four', '0個から4個まで', true), choice('one-four', '1個から4個まで'), choice('zero-three', '0個から3個まで')],
-        skillTag: 'organization', knowledgeTags: ['systematic-enumeration'], explanation: '空集合も元の集合自身も部分集合なので0個から4個までです。',
+        skillTag: 'case-classification', knowledgeTags: ['systematic-enumeration'], explanation: '空集合も元の集合自身も部分集合なので0個から4個までです。',
       },
       {
         id: 'p2-pairs', prompt: '2個選ぶ部分集合をすべて並べたものはどれか。',
@@ -389,7 +389,7 @@ export const mathPracticeSetsBatchASource: MathPracticeSourceQuestion[] = [
           choice('missing', '{1,2},{1,3},{1,4},{2,3},{3,4}'),
           choice('ordered', '{1,2},{2,1},{1,3},{3,1},{2,3},{3,2}'),
         ],
-        skillTag: 'organization', knowledgeTags: ['subset'], explanation: '順序は区別せず、異なる2要素の組をすべて並べます。',
+        skillTag: 'case-classification', knowledgeTags: ['subset'], explanation: '順序は区別せず、異なる2要素の組をすべて並べます。',
       },
       {
         id: 'p2-triples', prompt: '3個選ぶ部分集合をすべて並べたものはどれか。',
@@ -398,7 +398,7 @@ export const mathPracticeSetsBatchASource: MathPracticeSourceQuestion[] = [
           choice('missing', '{1,2,3},{1,2,4},{1,3,4}'),
           choice('wrong', '{1,2,3},{2,3,4},{1,2,4},{1,2,3,4}'),
         ],
-        skillTag: 'organization', knowledgeTags: ['subset'], explanation: '4個のうち、どの1個を選ばないかで4通りです。',
+        skillTag: 'case-classification', knowledgeTags: ['subset'], explanation: '4個のうち、どの1個を選ばないかで4通りです。',
       },
       {
         id: 'p2-check', prompt: 'これで漏れがないと確認できる理由はどれか。',
@@ -659,7 +659,7 @@ export const mathPracticeSetsBatchASource: MathPracticeSourceQuestion[] = [
       {
         id: 'p2-decompose', prompt: 'B を2つの領域に分けた式はどれか。',
         choices: [choice('correct', '(A∩B)∪(overline(A)∩B)', true), choice('wrong-a', '(A∩B)∪(A∩overline(B))'), choice('wrong-b', '(overline(A)∩B)∪(overline(A)∩overline(B))')],
-        skillTag: 'decomposition', knowledgeTags: ['venn-region'], explanation: 'B の中は「Aにも入る部分」と「Aには入らない部分」に分かれます。',
+        skillTag: 'condition-reading', knowledgeTags: ['venn-region'], explanation: 'B の中は「Aにも入る部分」と「Aには入らない部分」に分かれます。',
       },
       {
         id: 'p2-result', prompt: '(2) B はどれか。',
@@ -674,7 +674,7 @@ export const mathPracticeSetsBatchASource: MathPracticeSourceQuestion[] = [
       {
         id: 'p3-missing', prompt: '問題文でまだ与えられていない領域はどれか。',
         choices: [choice('a-only', 'A∩overline(B)', true), choice('both', 'A∩B'), choice('b-only', 'overline(A)∩B')],
-        skillTag: 'decomposition', knowledgeTags: ['venn-region'], explanation: '他の3領域は問題文で与えられています。',
+        skillTag: 'condition-reading', knowledgeTags: ['venn-region'], explanation: '他の3領域は問題文で与えられています。',
       },
       {
         id: 'p3-result', prompt: '(3) A∩overline(B) はどれか。',
@@ -747,7 +747,7 @@ export const mathPracticeSetsBatchASource: MathPracticeSourceQuestion[] = [
       {
         id: 'p3-ab', prompt: '(3) で最初に確認する A∩B はどれか。',
         choices: [choice('correct', '{3,4}', true), choice('wrong-a', '{3}'), choice('wrong-b', '{2,3,4}')],
-        skillTag: 'strategy-selection', knowledgeTags: ['intersection'], explanation: 'まず A と B の両方に入る候補を絞ります。',
+        skillTag: 'condition-reading', knowledgeTags: ['intersection'], explanation: 'まず A と B の両方に入る候補を絞ります。',
       },
       {
         id: 'p3-result', prompt: '(3) A∩B∩overline(C) はどれか。',
@@ -757,7 +757,7 @@ export const mathPracticeSetsBatchASource: MathPracticeSourceQuestion[] = [
       {
         id: 'p4-candidates', prompt: '(4) を求めるとき、最初に候補を絞る集合として最も適切なのはどれか。',
         choices: [choice('b', 'B', true), choice('u', 'U全体'), choice('a', 'A')],
-        skillTag: 'strategy-selection', knowledgeTags: ['three-sets'], explanation: '式に B が交わりとして含まれるので、B の要素だけを候補にできます。',
+        skillTag: 'condition-reading', knowledgeTags: ['three-sets'], explanation: '式に B が交わりとして含まれるので、B の要素だけを候補にできます。',
       },
       {
         id: 'p4-result', prompt: '(4) overline(A)∩B∩overline(C) はどれか。',

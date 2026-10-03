@@ -707,5 +707,176 @@ export const mathPracticePropositionsBatchBSource: MathPracticeSourceQuestion[] 
     ],
     fullExplanation: '条件の否定は、元の条件が成り立たないすべての場合を表す。不等号では境界を落とさないこと、≠ の否定は = であること、実数全体では有理数の補集合が無理数であることを確認する。',
   },
+  {
+    problemNo: 102,
+    section: 'propositions',
+    sectionTitle: '命題と条件',
+    title: '「かつ」と「または」',
+    estimatedSeconds: 360,
+    knowledgeTags: ['logical-and-or', 'intersection', 'union', 'interval'],
+    skillTags: ['condition-reading', 'case-classification', 'conclusion'],
+    problem: [
+      { type: 'text', text: '次の条件を満たす実数 x 全体の集合を求めよ。' },
+      { type: 'latex', latex: '(1)\\;0<x<3\\;\\text{かつ}\\;-2<x<2' },
+      { type: 'latex', latex: '(2)\\;0<x<3\\;\\text{または}\\;-2<x<2' },
+      { type: 'latex', latex: '(3)\\;-1\\le x<2\\;\\text{かつ}\\;-1<x\\le4' },
+      { type: 'latex', latex: '(4)\\;-1\\le x<2\\;\\text{または}\\;-1<x\\le4' },
+    ],
+    guide: [
+      {
+        type: 'content',
+        blocks: [{
+          type: 'text',
+          text: 'まず、「かつ」「または」を集合演算に直す共通の対応を確認する。',
+        }],
+      },
+      { type: 'blank', blankId: 'rule' },
+
+      {
+        type: 'content',
+        blocks: [
+          { type: 'text', text: '(1) は2つの区間を同時に満たす範囲を残す。' },
+          { type: 'latex', latex: 'A=(0,3),\\qquad B=(-2,2)' },
+        ],
+      },
+      { type: 'blank', blankId: 'p1-result' },
+
+      {
+        type: 'content',
+        blocks: [
+          { type: 'text', text: '(2) は同じ2区間のうち、少なくとも一方に入る範囲を合わせる。' },
+          { type: 'latex', latex: 'A=(0,3),\\qquad B=(-2,2)' },
+        ],
+      },
+      { type: 'blank', blankId: 'p2-result' },
+
+      {
+        type: 'content',
+        blocks: [
+          { type: 'text', text: '(3) は共通部分を取り、左端と右端が両方の条件で許されるかを確認する。' },
+          { type: 'latex', latex: 'A=[-1,2),\\qquad B=(-1,4]' },
+        ],
+      },
+      { type: 'blank', blankId: 'p3-result' },
+
+      {
+        type: 'content',
+        blocks: [
+          { type: 'text', text: '(4) は和集合を取り、どちらか一方が含む端点は残す。' },
+          { type: 'latex', latex: 'A=[-1,2),\\qquad B=(-1,4]' },
+        ],
+      },
+      { type: 'blank', blankId: 'p4-result' },
+    ],
+    blanks: [
+      {
+        id: 'rule',
+        prompt: '「かつ」「または」と集合演算の対応は',
+        choices: [
+          choice('and-intersection-or-union', 'かつ→共通部分、または→和集合', true),
+          choice('and-union-or-intersection', 'かつ→和集合、または→共通部分'),
+          choice('both-intersection', 'どちらも共通部分'),
+        ],
+        skillTag: 'condition-reading',
+        knowledgeTags: ['logical-and-or', 'intersection', 'union'],
+        explanation: '「かつ」は両方を満たす共通部分、「または」は少なくとも一方を満たす和集合です。',
+      },
+      {
+        id: 'p1-result',
+        prompt: '(1) の2区間の共通部分は',
+        choices: [
+          choice('zero-two-open', '0<x<2', true),
+          choice('minus-two-three', '-2<x<3'),
+          choice('zero-two-closed', '0≤x≤2'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['intersection', 'interval'],
+        explanation: '(0,3) と (-2,2) の両方に入るのは 0<x<2 です。',
+      },
+      {
+        id: 'p2-result',
+        prompt: '(2) の2区間の和集合は',
+        choices: [
+          choice('minus-two-three', '-2<x<3', true),
+          choice('zero-two-open', '0<x<2'),
+          choice('minus-two-three-closed', '-2≤x≤3'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['union', 'interval'],
+        explanation: '(0,3) と (-2,2) は重なっているため、合わせると -2<x<3 です。',
+      },
+      {
+        id: 'p3-result',
+        prompt: '(3) の共通部分は',
+        choices: [
+          choice('minus-one-two-open', '-1<x<2', true),
+          choice('left-closed', '-1≤x<2'),
+          choice('both-closed', '-1≤x≤2'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['intersection', 'interval'],
+        explanation: '-1 は B に入らず、2 は A に入らないため、両端とも除いて -1<x<2 です。',
+      },
+      {
+        id: 'p4-result',
+        prompt: '(4) の和集合は',
+        choices: [
+          choice('minus-one-four-closed', '-1≤x≤4', true),
+          choice('minus-one-four-open', '-1<x<4'),
+          choice('minus-one-two-open', '-1<x<2'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['union', 'interval'],
+        explanation: '-1 は A が含み、4 は B が含むので、和集合では両端を残して -1≤x≤4 です。',
+      },
+    ],
+    simulation: [
+      {
+        id: 's1',
+        label: '(1)',
+        prompt: '0<x<3 かつ -2<x<2 を満たす範囲を選べ。',
+        answerType: 'single-choice',
+        choices: [choice('zero-two-open', '0<x<2', true), choice('minus-two-three', '-2<x<3'), choice('zero-two-closed', '0≤x≤2')],
+        score: 2,
+        estimatedSeconds: 25,
+        knowledgeTags: ['intersection', 'interval'],
+        skillTags: ['case-classification'],
+      },
+      {
+        id: 's2',
+        label: '(2)',
+        prompt: '0<x<3 または -2<x<2 を満たす範囲を選べ。',
+        answerType: 'single-choice',
+        choices: [choice('minus-two-three', '-2<x<3', true), choice('zero-two-open', '0<x<2'), choice('minus-two-three-closed', '-2≤x≤3')],
+        score: 2,
+        estimatedSeconds: 25,
+        knowledgeTags: ['union', 'interval'],
+        skillTags: ['case-classification'],
+      },
+      {
+        id: 's3',
+        label: '(3)',
+        prompt: '-1≤x<2 かつ -1<x≤4 を満たす範囲を選べ。',
+        answerType: 'single-choice',
+        choices: [choice('minus-one-two-open', '-1<x<2', true), choice('left-closed', '-1≤x<2'), choice('both-closed', '-1≤x≤2')],
+        score: 2,
+        estimatedSeconds: 25,
+        knowledgeTags: ['intersection', 'interval'],
+        skillTags: ['case-classification'],
+      },
+      {
+        id: 's4',
+        label: '(4)',
+        prompt: '-1≤x<2 または -1<x≤4 を満たす範囲を選べ。',
+        answerType: 'single-choice',
+        choices: [choice('minus-one-four-closed', '-1≤x≤4', true), choice('minus-one-four-open', '-1<x<4'), choice('minus-one-two-open', '-1<x<2')],
+        score: 2,
+        estimatedSeconds: 25,
+        knowledgeTags: ['union', 'interval'],
+        skillTags: ['conclusion'],
+      },
+    ],
+    fullExplanation: '「かつ」は共通部分、「または」は和集合として扱う。端点は、共通部分では両方の条件が含むときだけ残し、和集合ではどちらか一方が含めば残す。',
+  },
 
 ]

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { mathPractice87To120Catalog, mathPracticePilotCatalog } from './catalog'
 import { mathPracticePilotSource } from './pilot'
-import { mathPracticePilotQuestions } from './adapter'
+import { mathPracticePilotQuestions, mathPracticePilotQuestionsZh } from './adapter'
 
 describe('math practice 87-120 staged integration', () => {
   it('keeps the complete 87-120 title catalog without publishing everything at once', () => {
@@ -26,6 +26,44 @@ describe('math practice 87-120 staged integration', () => {
       '94｜補集合',
       '97｜共通部分から定数を決める',
     ])
+    expect(mathPracticePilotQuestionsZh.map((question) => question.title)).toEqual([
+      '87｜素数与集合',
+      '94｜补集',
+      '97｜由交集确定常数',
+    ])
+  })
+
+  it('keeps Japanese and Chinese grading structures aligned', () => {
+    const signature = (question: (typeof mathPracticePilotQuestions)[number]) => ({
+      questionId: question.questionId,
+      taxonomy: question.taxonomy,
+      difficulty: question.difficulty,
+      presentation: question.learning.presentation,
+      variants: question.learning.variants,
+      blanks: Object.values(question.learning.blanks).map((blank) => ({
+        id: blank.id,
+        answerType: blank.answerType,
+        optionIds: blank.options.map((option) => option.id),
+        correctOptionIds: blank.correctOptionIds,
+        knowledgeTags: blank.knowledgeTags,
+        skillTag: blank.skillTag,
+      })),
+      simulation: question.simulation.items.map((item) => ({
+        id: item.id,
+        answerType: item.answerType,
+        optionIds: item.options?.map((option) => option.id),
+        correctOptionIds: item.correctOptionIds,
+        correctValue: item.correctValue,
+        tolerance: item.tolerance,
+        score: item.score,
+      })),
+    })
+
+    expect(mathPracticePilotQuestionsZh.map(signature)).toEqual(mathPracticePilotQuestions.map(signature))
+  })
+
+  it('contains no Japanese kana in the Chinese pilot', () => {
+    expect(JSON.stringify(mathPracticePilotQuestionsZh).match(/[ぁ-んァ-ン]/g)).toBeNull()
   })
 
   it('keeps every authored thinking blank referenced by the learning flow', () => {

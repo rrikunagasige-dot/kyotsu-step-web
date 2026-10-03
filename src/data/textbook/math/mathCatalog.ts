@@ -32,6 +32,30 @@ export const mathTextbookTopics: readonly MathTextbookTopicCatalogEntry[] = [
       '集合の外側まで考える',
     ],
   },
+  {
+    id: 'read-propositions',
+    label: { ja: '条件から命題を読む', zh: '从条件理解命题' },
+    flow: {
+      ja: '真偽 → 条件の否定 → 必要条件・十分条件 → 「すべて」と「ある」 → 関数の条件',
+      zh: '真假 → 条件的否定 → 必要条件・充分条件 → “所有”与“存在” → 函数条件',
+    },
+    practiceTopicId: 'read-propositions',
+    practiceRange: [98, 120],
+    unitIds: [],
+    learnerHeadings: [],
+  },
+  {
+    id: 'prove-propositions',
+    label: { ja: '命題を証明する', zh: '证明命题' },
+    flow: {
+      ja: '同値 → 逆・裏・対偶 → 対偶による証明 → 無理数 → 背理法',
+      zh: '等价 → 逆命题・否命题・逆否命题 → 逆否证明 → 无理数 → 反证法',
+    },
+    practiceTopicId: 'prove-propositions',
+    practiceRange: [108, 117],
+    unitIds: [],
+    learnerHeadings: [],
+  },
 ] as const
 
 export function mathTextbookTopicForUnit(unitId: string) {

@@ -14,7 +14,7 @@ export function MathPracticeInlineText({ value }: { value: string }) {
       {parts.map((part, index) => (
         <Fragment key={`${part.type}-${index}`}>
           {part.type === 'math'
-            ? <span className="math-practice-inline-math"><InlineMath math={part.latex} /></span>
+            ? <span className="math-practice-inline-math" data-testid="math-practice-inline-math"><InlineMath math={part.latex} /></span>
             : part.text}
         </Fragment>
       ))}

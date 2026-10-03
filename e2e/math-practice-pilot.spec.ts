@@ -38,7 +38,7 @@ test('98 opens the proposition theme directly and separates false propositions f
 
   await expect(page.getByRole('heading', { name: '98｜命題と真偽' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10','11','12'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10','11','12','13'])
   await expect(page.getByTestId('math-topic-question-1')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -115,7 +115,7 @@ test('99 judges implication by set inclusion and uses counterexamples only where
 
   await expect(page.getByRole('heading', { name: '99｜含意の真偽' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10','11','12'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10','11','12','13'])
   await expect(page.getByTestId('math-topic-question-2')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -191,7 +191,7 @@ test('100 constructs one valid counterexample per false implication without leak
 
   await expect(page.getByRole('heading', { name: '100｜反例' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10','11','12'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10','11','12','13'])
   await expect(page.getByTestId('math-topic-question-3')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -256,7 +256,7 @@ test('101 treats negation as the complete complement and keeps each condition in
 
   await expect(page.getByRole('heading', { name: '101｜条件の否定' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10','11','12'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10','11','12','13'])
   await expect(page.getByTestId('math-topic-question-4')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -314,7 +314,7 @@ test('102 maps AND/OR to intersection/union and handles open and closed endpoint
 
   await expect(page.getByRole('heading', { name: '102｜「かつ」と「または」' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10','11','12'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10','11','12','13'])
   await expect(page.getByTestId('math-topic-question-5')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -380,7 +380,7 @@ test('103 negates compound conditions from their meaning and applies De Morgan w
 
   await expect(page.getByRole('heading', { name: '103｜複合条件の否定' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10','11','12'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10','11','12','13'])
   await expect(page.getByTestId('math-topic-question-6')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -452,7 +452,7 @@ test('104 fixes necessary/sufficient direction first, then classifies six indepe
 
   await expect(page.getByRole('heading', { name: '104｜必要条件・十分条件' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10','11','12'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10','11','12','13'])
   await expect(page.getByTestId('math-topic-question-7')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -533,7 +533,7 @@ test('105 proves true implications by all cases and false ones by one counterexa
 
   await expect(page.getByRole('heading', { name: '105｜命題の真偽' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10','11','12'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10','11','12','13'])
   await expect(page.getByTestId('math-topic-question-8')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -598,7 +598,7 @@ test('106 translates number conditions into intersection and complement without 
 
   await expect(page.getByRole('heading', { name: '106｜集合で条件を表す' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10','11','12'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10','11','12','13'])
   await expect(page.getByTestId('math-topic-question-9')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -663,7 +663,7 @@ test('107 applies the necessary/sufficient direction rule to algebra, signs and 
 
   await expect(page.getByRole('heading', { name: '107｜必要・十分条件の判定' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10','11','12'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10','11','12','13'])
   await expect(page.getByTestId('math-topic-question-10')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -720,7 +720,7 @@ test('109 negates quantifiers and verifies the truth of each original and negate
 
   await expect(page.getByRole('heading', { name: '109｜「すべて」と「ある」の否定' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10','11','12'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10','11','12','13'])
   await expect(page.getByTestId('math-topic-question-11')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -785,7 +785,7 @@ test('118 judges functionhood by unique output and keeps the three cases indepen
 
   await expect(page.getByRole('heading', { name: '118｜関数とは何か' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10','11','12'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10','11','12','13'])
   await expect(page.getByTestId('math-topic-question-12')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -823,6 +823,101 @@ test('118 judges functionhood by unique output and keeps the three cases indepen
   await expect(flow).not.toContainText('同じ x に異なる2つ')
   await page.getByTestId('blank-math-practice-118-p3').click()
   await page.getByTestId('option-math-practice-118-p3-function').click()
+
+  await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
+
+  const dimensions = await page.evaluate(() => ({
+    viewport: window.innerWidth,
+    page: document.documentElement.scrollWidth,
+  }))
+  expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
+})
+
+test('119 substitutes every x consistently and expands composite inputs only when needed', async ({ page }) => {
+  await page.getByTestId('math-exercise-basic').click()
+  await page.getByTestId('math-topic-read-propositions').click()
+  await page.getByTestId('math-topic-question-13').click()
+
+  await expect(page.getByRole('heading', { name: '119｜関数の値' })).toBeVisible()
+  const nav = page.getByTestId('math-topic-question-nav')
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10','11','12','13'])
+  await expect(page.getByTestId('math-topic-question-13')).toHaveAttribute('aria-current', 'page')
+
+  const problem = page.getByTestId('standard-problem')
+  const currentTarget = page.getByTestId('math-practice-current-target')
+  const flow = page.getByTestId('math-practice-reading-flow')
+
+  await expect(problem).toContainText('次の値を求めよ')
+  await expect(problem.locator('.katex-display')).toHaveCount(2)
+  await expect(problem.locator('.katex-error')).toHaveCount(0)
+
+  // Common substitution rule first.
+  await expect(currentTarget).toContainText('まず確認')
+  await expect(page.getByTestId('blank-math-practice-119-rule')).toContainText('選択')
+  await expect(page.getByTestId('blank-math-practice-119-f0')).toHaveCount(0)
+  await page.getByTestId('blank-math-practice-119-rule').click()
+  await page.getByTestId('option-math-practice-119-rule-all-x').click()
+
+  // Simple numeric and symbolic values stay one coherent stage each.
+  await expect(currentTarget).toContainText('(1) f(0)')
+  await page.getByTestId('blank-math-practice-119-f0').click()
+  await page.getByTestId('option-math-practice-119-f0-correct').click()
+
+  await expect(currentTarget).toContainText('(2) f(2)')
+  await expect(flow).not.toContainText('(1) f(0)。')
+  await page.getByTestId('blank-math-practice-119-f2').click()
+  await page.getByTestId('option-math-practice-119-f2-correct').click()
+
+  await page.getByTestId('blank-math-practice-119-fm1').click()
+  await page.getByTestId('option-math-practice-119-fm1-correct').click()
+  await page.getByTestId('blank-math-practice-119-fa').click()
+  await page.getByTestId('option-math-practice-119-fa-correct').click()
+
+  // Composite input a+1 separates substitution from simplification.
+  await expect(currentTarget).toContainText('(5) 代入')
+  await page.getByTestId('blank-math-practice-119-fa1-substitute').click()
+  await page.getByTestId('option-math-practice-119-fa1-substitute-correct').click()
+
+  await expect(currentTarget).toContainText('(5) 整理')
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('(5) 代入後の式')
+  await page.getByTestId('blank-math-practice-119-fa1-simplify').click()
+  await page.getByTestId('option-math-practice-119-fa1-simplify-correct').click()
+
+  // g(0), g(3), g(-2) each remain a single current item.
+  await page.getByTestId('blank-math-practice-119-g0').click()
+  await page.getByTestId('option-math-practice-119-g0-correct').click()
+  await page.getByTestId('blank-math-practice-119-g3').click()
+  await page.getByTestId('option-math-practice-119-g3-correct').click()
+  await page.getByTestId('blank-math-practice-119-gm2').click()
+  await page.getByTestId('option-math-practice-119-gm2-correct').click()
+
+  // g(-a): substitute both x values, resolve (-a)^2, then simplify.
+  await expect(currentTarget).toContainText('(9) 代入')
+  await page.getByTestId('blank-math-practice-119-gma-substitute').click()
+  await page.getByTestId('option-math-practice-119-gma-substitute-correct').click()
+
+  await expect(currentTarget).toContainText('(9) 2乗')
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('(9) 代入後の式')
+  await page.getByTestId('blank-math-practice-119-gma-square').click()
+  await page.getByTestId('option-math-practice-119-gma-square-positive').click()
+
+  await expect(currentTarget).toContainText('(9) 整理')
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('負号を含む2乗')
+  await page.getByTestId('blank-math-practice-119-gma-simplify').click()
+  await page.getByTestId('option-math-practice-119-gma-simplify-correct').click()
+
+  // g(a-1): substitution, binomial expansion, final collection.
+  await expect(currentTarget).toContainText('(10) 代入')
+  await page.getByTestId('blank-math-practice-119-ga1-substitute').click()
+  await page.getByTestId('option-math-practice-119-ga1-substitute-correct').click()
+
+  await expect(currentTarget).toContainText('(10) 展開')
+  await page.getByTestId('blank-math-practice-119-ga1-expand').click()
+  await page.getByTestId('option-math-practice-119-ga1-expand-correct').click()
+
+  await expect(currentTarget).toContainText('(10) 整理')
+  await page.getByTestId('blank-math-practice-119-ga1-simplify').click()
+  await page.getByTestId('option-math-practice-119-ga1-simplify-correct').click()
 
   await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
 

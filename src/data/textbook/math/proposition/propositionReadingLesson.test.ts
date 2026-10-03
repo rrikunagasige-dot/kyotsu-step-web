@@ -182,8 +182,14 @@ describe('math proposition-reading textbook unit', () => {
   it('matches the source guide examples for truth, negation, and necessary-condition classification', () => {
     const items = mathPropositionReadingUnit.sections[0].items
 
-    expect(items.find((item) => item.id === 'prop-a07')?.answer)
-      .toBe('頂角40°の二等辺三角形')
+    expect(items.find((item) => item.id === 'prop-a07')).toBeUndefined()
+    expect(
+      mathPropositionReadingUnit.sections[0].readingFlow.some(
+        (block) => block.type === 'paragraph' && block.parts.some(
+          (part) => part.type === 'text' && part.text.includes('問8(4)'),
+        ),
+      ),
+    ).toBe(true)
 
     expect(items.find((item) => item.id === 'prop-c02')?.answer)
       .toBe('2は合成数ではない')

@@ -216,12 +216,11 @@ test('function-conditions review unit forms the function concept before revealin
 
   await expect(page.getByRole('heading', { name: '関数の条件を読む', exact: true })).toBeVisible()
   await expect(page.getByTestId('textbook-item-func-a01')).toBeVisible()
-  await expect(page.getByText(/yはxの関数である/)).toHaveCount(0)
+  await expect(page.getByTestId('textbook-item-func-a02')).toHaveCount(0)
   await expect(page.getByTestId('textbook-figure-rectangle-perimeter-40')).toHaveCount(0)
 
   await answerItem(page, 'func-a01', 'ただ1つに決まる')
 
-  await expect(page.getByText(/yはxの関数である/)).toBeVisible()
   await expect(page.getByTestId('textbook-item-func-a02')).toBeVisible()
 })
 

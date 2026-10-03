@@ -1,7 +1,6 @@
 import { useMemo, useState } from 'react'
 import { X } from 'lucide-react'
 import { InlineMath } from 'react-katex'
-import { ContentRenderer } from '../question/ContentRenderer'
 import { MathPracticeContentRenderer, MathPracticeInlineText } from './MathPracticeRichText'
 import type { LearningSession } from '../../domain/attempts'
 import { isLearningAnswerResolved } from '../../domain/learning'

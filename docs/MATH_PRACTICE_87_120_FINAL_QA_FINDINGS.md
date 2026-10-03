@@ -281,3 +281,173 @@ Next:
 - audit 98–109 without fixing the above findings,
 - append findings to this ledger,
 - only after discovery is complete begin repair work.
+
+
+---
+
+## Audit block B — 98–109
+
+### Scope
+
+Problems:
+98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109
+
+Theme placement:
+- 98–107,109: `条件から命題を読む`
+- 108: `命題を証明する`
+
+Reviewed:
+- content-design authority for each problem
+- Japanese source
+- Chinese source strategy / grading parity
+- presentation target and dependency metadata
+- browser regressions
+- math-rendering assertions / page overflow assertions
+
+### Chinese parity
+
+Unlike 88–96, the 98–109 Chinese sources are explicitly authored rather than produced by a generic Japanese-string fallback.
+
+Verified for 98–109:
+- blank / option ID structure matches JA
+- grading parity is covered by `adapter.test.ts`, including correct option IDs
+- Chinese source has no Japanese kana
+- no generic `请选择符合当前条件的正确结论。` / `候选 1`-style fallback mechanism is used for this block
+
+Status:
+PASS for first-pass structural/grading parity.
+Semantic wording remains part of final human-language spot check.
+
+---
+
+## QAF-006 — REVIEW — 104 / 107 are intentionally classification-heavy
+
+Problems:
+- 104 必要条件・十分条件
+- 107 必要・十分条件の判定
+
+Current design:
+- common basis fixes the mapping:
+  - `p⇒q` true → p is sufficient for q
+  - `q⇒p` true → p is necessary for q
+- each subproblem's prose supplies the two-direction mathematical evidence
+- the authored thinking node asks the learner to convert the two truth values into the final necessary/sufficient classification
+
+This matches the dedicated content-design authority and therefore is **not a confirmed defect**.
+
+Reason for manual review:
+The interaction density is lower than in derivation-heavy problems. A learner may feel that most mathematical work has already been read rather than actively reconstructed.
+
+Do not automatically add more holes.
+Final learner-flow QA should ask:
+- does the classification still require an actual direction-mapping decision?
+- or does the prose + option wording make the answer effectively automatic?
+
+Status:
+REVIEW ONLY.
+
+---
+
+## First-pass PASS / no new structural defect found in block B
+
+### 98
+- common proposition criterion is a compact reusable basis
+- (1),(2),(3) are independent after the basis
+- false proposition vs non-proposition is explicitly distinguished
+- counterexample is hidden before its thinking node
+- browser regression checks current-stage compression, leakage, KaTeX, and overflow
+
+### 99
+- implication criterion `P⊆Q` is the reusable basis
+- four subproblems remain independent
+- counterexample appears only where logically needed
+- (4) keeps its internal `Q` conversion before the final truth judgment
+- browser regression checks display math, no KaTeX error, leakage, compression, overflow
+
+### 100
+- counterexample criterion is the only shared basis
+- each false implication is handled independently
+- concrete counterexamples are not leaked before selection
+- browser regression covers all three cases
+
+### 101
+- negation is treated as complete complement, including boundary reversal
+- all three subproblems depend only on the shared negation criterion
+- no previous-answer carryover
+- browser regression checks leakage and overflow
+
+### 102
+- AND/OR → intersection/union basis is reused correctly
+- four subproblems remain independent even when base intervals repeat
+- endpoint open/closed handling is explicitly tested
+- no prior-result dependency is introduced
+
+### 103
+- De Morgan is built from meaning, not only formula naming
+- five subproblems depend only on the common negation rule
+- prior completed derivations are compressed
+- browser regression checks answer leakage and math rendering
+
+### 105
+- true implication vs false implication proof responsibility is a shared basis
+- concrete counterexamples are hidden before learner choice
+- all four subproblems are independent
+- browser regression checks the intended examples and overflow
+
+### 106
+- Japanese condition → intersection/complement mapping is a shared basis
+- four subproblems depend only on that basis
+- no previous answer is imported
+- browser regression checks raw result leakage and compression
+
+### 108
+- proof is split into:
+  - proof plan
+  - `p⇒q`
+  - `q⇒p`
+  - final equivalence
+- forward and reverse proof results are stored separately
+- final stage imports only the two compact direction results
+- full previous derivations are not re-shown
+- browser regression checks the selective dependencies and overflow
+
+### 109
+- quantifier-negation rule is a shared basis
+- each of the two subproblems has internal progressive reveal
+- negation is answered before truth verification
+- equation solving appears only when needed for the existential case
+- no result from (1) is imported into (2)
+- browser regression checks sequential reveal, leakage, compression, and overflow
+
+---
+
+## Block B browser/test coverage note
+
+The Math-practice E2E spec contains dedicated learner-flow tests for every problem 98–109, including:
+- current target
+- hidden future blanks
+- compression of completed stages
+- selected answer-leakage guards
+- KaTeX/no-error checks where math surfaces are relevant
+- page-level horizontal overflow
+
+Playwright configuration runs the suite in both:
+- Pixel 7 mobile Chromium
+- 1440×1000 desktop Chromium
+
+This is strong regression coverage, but final acceptance still requires a fresh post-repair run after all audit findings are fixed.
+
+---
+
+## Block B status
+
+Confirmed new FAIL:
+- none
+
+Review:
+- QAF-006: 104 / 107 interaction density
+
+Next:
+- audit 110–120
+- do not repair QAF-001–004 yet
+- append all remaining findings first

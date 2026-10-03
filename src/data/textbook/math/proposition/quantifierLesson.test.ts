@@ -40,6 +40,12 @@ describe('math quantifier textbook unit', () => {
     expect(ruleIndex).toBeGreaterThan(witnessIndex)
   })
 
+  it('keeps sentence-like quantifier answers in text mode instead of mixed-text KaTeX', () => {
+    const item = mathQuantifierUnit.sections[0].items.find((candidate) => candidate.id === 'quant-c02')
+    expect(item?.answerType).toBe('text')
+    expect(item?.answer).toBe('すべての実数xに対して x²≠-1')
+  })
+
   it('keeps one learner-facing heading for the compact reference topic', () => {
     const headings = mathQuantifierUnit.sections[0].readingFlow
       .filter((block) => block.type === 'heading')

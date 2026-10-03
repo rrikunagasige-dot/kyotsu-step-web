@@ -1083,6 +1083,56 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
       dependsOn: ['p4-form'],
     },
   ],
+  'math-practice-112': [
+    {
+      id: 'basis',
+      kicker: { ja: 'まず確認', zh: '先确认' },
+      label: { ja: '√3の無理性と矛盾させる目標を決める', zh: '确定与√3无理性产生矛盾的目标' },
+      blankIds: ['rule'],
+      result: {
+        blankId: 'rule',
+        label: { ja: '矛盾の目標', zh: '矛盾目标' },
+      },
+    },
+    {
+      id: 'p1-operation',
+      kicker: { ja: '今の問い｜(1) √3を取り出す', zh: '当前问题｜(1) 单独表示√3' },
+      label: { ja: '有理数の差で√3を表す', zh: '用有理数之差表示√3' },
+      blankIds: ['p1-operation'],
+      dependsOn: ['basis'],
+      result: { blankId: 'p1-operation', label: { ja: '(1) で得た√3の式', zh: '(1) 得到的√3表达式' } },
+    },
+    {
+      id: 'p1-conclusion',
+      kicker: { ja: '今の問い｜(1) 結論', zh: '当前问题｜(1) 结论' },
+      label: { ja: '既知の無理性との矛盾から結論する', zh: '由与已知无理性的矛盾得出结论' },
+      blankIds: ['p1-conclusion'],
+      dependsOn: ['p1-operation'],
+    },
+    {
+      id: 'p2-transform',
+      kicker: { ja: '今の問い｜(2) 変形', zh: '当前问题｜(2) 变形' },
+      label: { ja: '共役を使って分母を有理化する', zh: '利用共轭式进行分母有理化' },
+      blankIds: ['p2-transform'],
+      dependsOn: ['basis'],
+      result: { blankId: 'p2-transform', label: { ja: '有理化した形', zh: '有理化后的形式' } },
+    },
+    {
+      id: 'p2-operation',
+      kicker: { ja: '今の問い｜(2) √3を取り出す', zh: '当前问题｜(2) 单独表示√3' },
+      label: { ja: '変形後の数から√3を表す', zh: '由变形后的数表示√3' },
+      blankIds: ['p2-operation'],
+      dependsOn: ['p2-transform'],
+      result: { blankId: 'p2-operation', label: { ja: '(2) で得た√3の式', zh: '(2) 得到的√3表达式' } },
+    },
+    {
+      id: 'p2-conclusion',
+      kicker: { ja: '今の問い｜(2) 結論', zh: '当前问题｜(2) 结论' },
+      label: { ja: '矛盾を元の分数へ戻す', zh: '把矛盾结论返回原分数' },
+      blankIds: ['p2-conclusion'],
+      dependsOn: ['p2-operation'],
+    },
+  ],
 }
 
 function localBlankId(questionId: string, fullBlankId: string) {
@@ -1145,5 +1195,6 @@ export function mathPracticeUsesSubproblemCompression(questionId: string) {
     'math-practice-109',
     'math-practice-110',
     'math-practice-111',
+    'math-practice-112',
   ].includes(questionId)
 }

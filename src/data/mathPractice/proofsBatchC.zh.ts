@@ -845,7 +845,7 @@ export const mathPracticeProofsBatchCSourceZh: MathPracticeSourceQuestion[] = [
         id: 'square-result',
         prompt: '两边平方后可以得到',
         choices: [
-          choice('x-r-squared-rational', 'x=r²。r 是有理数，所以 r² 也是有理数，因此 x 是有理数。', true),
+          choice('x-rational', 'x=r²。r 是有理数，所以 r² 也是有理数，因此 x 是有理数。', true),
           choice('x-r-rational', 'x=r，因此 x 是有理数。'),
           choice('x-r-squared-irrational', 'x=r²，但有理数的平方一定是无理数。'),
         ],

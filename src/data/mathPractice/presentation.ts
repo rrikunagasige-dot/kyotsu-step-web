@@ -465,7 +465,7 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
       blankIds: ['p4-q-set', 'p4-counterexample-result'],
       dependsOn: ['basis'],
     },
-
+  ],
 }
 
 function localBlankId(questionId: string, fullBlankId: string) {

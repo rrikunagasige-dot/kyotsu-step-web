@@ -1082,5 +1082,236 @@ export const mathPracticePropositionsBatchBSource: MathPracticeSourceQuestion[] 
     ],
     fullExplanation: '複合条件の否定は、各原子条件を否定したうえで De Morgan の対応を使う。「かつ」の否定は否定同士を「または」、「または」の否定は否定同士を「かつ」で結ぶ。「少なくとも一方」の否定は「両方とも〜でない」である。',
   },
+  {
+    problemNo: 104,
+    section: 'propositions',
+    sectionTitle: '命題と条件',
+    title: '必要条件・十分条件',
+    estimatedSeconds: 600,
+    knowledgeTags: ['necessary-condition', 'sufficient-condition', 'implication', 'equivalence'],
+    skillTags: ['condition-reading', 'case-classification', 'conclusion'],
+    problem: [
+      { type: 'text', text: 'x、y は実数とする。次の□には、「必要条件であるが十分条件ではない」「十分条件であるが必要条件ではない」「必要十分条件である」「必要条件でも十分条件でもない」のうち、どれが入るか。' },
+      { type: 'latex', latex: '(1)\\;x=2\\;\\text{ は }\\;x^2-5x+6=0\\;\\text{ であるための□}' },
+      { type: 'latex', latex: '(2)\\;x\\ne0\\;\\text{ は }\\;(x-1)(x-2)=0\\;\\text{ であるための□}' },
+      { type: 'latex', latex: '(3)\\;xy=1\\;\\text{ は }\\;x=1\\;\\text{ であるための□}' },
+      { type: 'latex', latex: '(4)\\;|x|=0\\;\\text{ は }\\;x=0\\;\\text{ であるための□}' },
+      { type: 'latex', latex: '(5)\\;x=y=2\\;\\text{ は }\\;2x-y=2y-2=2\\;\\text{ であるための□}' },
+      { type: 'text', text: '(6) 四角形ABCDがひし形であることは、四角形ABCDが正方形であるための□。' },
+    ],
+    guide: [
+      {
+        type: 'content',
+        blocks: [{
+          type: 'text',
+          text: 'まず、p が q のための何条件かを決めるとき、p⇒q と q⇒p がそれぞれ何を意味するかを固定する。',
+        }],
+      },
+      { type: 'blank', blankId: 'rule' },
+
+      {
+        type: 'content',
+        blocks: [
+          { type: 'text', text: '(1) では p:x=2、q:x²-5x+6=0 とする。p から q は代入で確認し、逆向きは方程式の解を全部見る。' },
+          { type: 'latex', latex: '2^2-5\\cdot2+6=0' },
+          { type: 'latex', latex: 'x^2-5x+6=(x-2)(x-3)=0\\Rightarrow x=2,3' },
+          { type: 'text', text: 'したがって p⇒q は真だが、q⇒p は x=3 があるため偽である。' },
+        ],
+      },
+      { type: 'blank', blankId: 'p1-classification' },
+
+      {
+        type: 'content',
+        blocks: [
+          { type: 'text', text: '(2) では p:x≠0、q:(x-1)(x-2)=0 とする。q の解は x=1,2 なので q⇒p は真。一方、x=3 は p を満たすが q を満たさないので p⇒q は偽である。' },
+        ],
+      },
+      { type: 'blank', blankId: 'p2-classification' },
+
+      {
+        type: 'content',
+        blocks: [
+          { type: 'text', text: '(3) では p:xy=1、q:x=1 とする。x=2,y=1/2 は p を満たすが q を満たさない。逆に x=1,y=0 は q を満たすが p を満たさない。' },
+        ],
+      },
+      { type: 'blank', blankId: 'p3-classification' },
+
+      {
+        type: 'content',
+        blocks: [
+          { type: 'text', text: '(4) では p:|x|=0、q:x=0 とする。絶対値が0になるのは x=0 のときだけであり、x=0 なら |x|=0 でもある。' },
+        ],
+      },
+      { type: 'blank', blankId: 'p4-classification' },
+
+      {
+        type: 'content',
+        blocks: [
+          { type: 'text', text: '(5) では p:x=y=2。p を代入すると右の2式を満たす。逆向きは右の条件を実際に解く。' },
+          { type: 'latex', latex: '2y-2=2\\Rightarrow y=2' },
+          { type: 'latex', latex: '2x-y=2,\\;y=2\\Rightarrow x=2' },
+          { type: 'text', text: 'したがって両方向とも成り立つ。' },
+        ],
+      },
+      { type: 'blank', blankId: 'p5-classification' },
+
+      {
+        type: 'content',
+        blocks: [
+          { type: 'text', text: '(6) では p:ひし形、q:正方形。正方形なら4辺が等しいので q⇒p は真。一方、直角でないひし形を取れば p を満たして q を満たさないため p⇒q は偽である。' },
+        ],
+      },
+      { type: 'blank', blankId: 'p6-classification' },
+    ],
+    blanks: [
+      {
+        id: 'rule',
+        prompt: 'p が q のための条件を判定するときの正しい対応は',
+        choices: [
+          choice('direction-map', 'p⇒q が真なら p は十分条件、q⇒p が真なら p は必要条件。', true),
+          choice('reversed-map', 'p⇒q が真なら p は必要条件、q⇒p が真なら p は十分条件。'),
+          choice('both-needed', '両方向とも真でなければ、必要条件とも十分条件とも呼べない。'),
+        ],
+        skillTag: 'condition-reading',
+        knowledgeTags: ['necessary-condition', 'sufficient-condition', 'implication'],
+        explanation: 'p⇒q が真なら p だけで q を保証できるので十分条件、q⇒p が真なら q が成り立つために p が必要なので必要条件です。',
+      },
+      {
+        id: 'p1-classification',
+        prompt: '(1) の2方向の真偽から p を分類すると',
+        choices: [
+          choice('sufficient-only', 'p⇒q:真、q⇒p:偽 → 十分条件だが必要条件ではない。', true),
+          choice('necessary-only', 'p⇒q:偽、q⇒p:真 → 必要条件だが十分条件ではない。'),
+          choice('iff', '両方向とも真 → 必要十分条件。'),
+          choice('neither', '両方向とも偽 → 必要条件でも十分条件でもない。'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['necessary-condition', 'sufficient-condition'],
+        explanation: 'p⇒q だけが真なので、p は十分条件ですが必要条件ではありません。',
+      },
+      {
+        id: 'p2-classification',
+        prompt: '(2) の2方向の真偽から p を分類すると',
+        choices: [
+          choice('necessary-only', 'p⇒q:偽、q⇒p:真 → 必要条件だが十分条件ではない。', true),
+          choice('sufficient-only', 'p⇒q:真、q⇒p:偽 → 十分条件だが必要条件ではない。'),
+          choice('iff', '両方向とも真 → 必要十分条件。'),
+          choice('neither', '両方向とも偽 → 必要条件でも十分条件でもない。'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['necessary-condition', 'sufficient-condition'],
+        explanation: 'q⇒p だけが真なので、p は必要条件ですが十分条件ではありません。',
+      },
+      {
+        id: 'p3-classification',
+        prompt: '(3) の2方向の真偽から p を分類すると',
+        choices: [
+          choice('neither', '両方向とも偽 → 必要条件でも十分条件でもない。', true),
+          choice('sufficient-only', 'p⇒q:真、q⇒p:偽 → 十分条件だが必要条件ではない。'),
+          choice('necessary-only', 'p⇒q:偽、q⇒p:真 → 必要条件だが十分条件ではない。'),
+          choice('iff', '両方向とも真 → 必要十分条件。'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['necessary-condition', 'sufficient-condition', 'counterexample'],
+        explanation: 'p⇒q にも q⇒p にも反例があるため、p は必要条件でも十分条件でもありません。',
+      },
+      {
+        id: 'p4-classification',
+        prompt: '(4) の2方向の真偽から p を分類すると',
+        choices: [
+          choice('iff', '両方向とも真 → 必要十分条件。', true),
+          choice('sufficient-only', 'p⇒q:真、q⇒p:偽 → 十分条件だが必要条件ではない。'),
+          choice('necessary-only', 'p⇒q:偽、q⇒p:真 → 必要条件だが十分条件ではない。'),
+          choice('neither', '両方向とも偽 → 必要条件でも十分条件でもない。'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['necessary-condition', 'sufficient-condition', 'equivalence'],
+        explanation: '|x|=0 と x=0 は互いに導けるため、必要十分条件です。',
+      },
+      {
+        id: 'p5-classification',
+        prompt: '(5) の2方向の真偽から p を分類すると',
+        choices: [
+          choice('iff', '両方向とも真 → 必要十分条件。', true),
+          choice('necessary-only', 'p⇒q:偽、q⇒p:真 → 必要条件だが十分条件ではない。'),
+          choice('sufficient-only', 'p⇒q:真、q⇒p:偽 → 十分条件だが必要条件ではない。'),
+          choice('neither', '両方向とも偽 → 必要条件でも十分条件でもない。'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['necessary-condition', 'sufficient-condition', 'equivalence'],
+        explanation: '代入で p⇒q が成り立ち、右の連立条件から x=y=2 が一意に出るので q⇒p も成り立ちます。',
+      },
+      {
+        id: 'p6-classification',
+        prompt: '(6) の2方向の真偽から p を分類すると',
+        choices: [
+          choice('necessary-only', 'p⇒q:偽、q⇒p:真 → 必要条件だが十分条件ではない。', true),
+          choice('sufficient-only', 'p⇒q:真、q⇒p:偽 → 十分条件だが必要条件ではない。'),
+          choice('iff', '両方向とも真 → 必要十分条件。'),
+          choice('neither', '両方向とも偽 → 必要条件でも十分条件でもない。'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['necessary-condition', 'sufficient-condition'],
+        explanation: '正方形ならひし形ですが、ひし形が必ず正方形とは限らないため、p は必要条件ですが十分条件ではありません。',
+      },
+    ],
+    simulation: [
+      {
+        id: 's1',
+        label: '(1)',
+        prompt: 'x=2 は x²-5x+6=0 であるための何条件か。',
+        answerType: 'single-choice',
+        choices: [choice('sufficient-only', '十分条件だが必要条件ではない。', true), choice('necessary-only', '必要条件だが十分条件ではない。'), choice('iff', '必要十分条件。'), choice('neither', '必要条件でも十分条件でもない。')],
+        score: 2, estimatedSeconds: 30,
+        knowledgeTags: ['necessary-condition', 'sufficient-condition'], skillTags: ['conclusion'],
+      },
+      {
+        id: 's2',
+        label: '(2)',
+        prompt: 'x≠0 は (x-1)(x-2)=0 であるための何条件か。',
+        answerType: 'single-choice',
+        choices: [choice('necessary-only', '必要条件だが十分条件ではない。', true), choice('sufficient-only', '十分条件だが必要条件ではない。'), choice('iff', '必要十分条件。'), choice('neither', '必要条件でも十分条件でもない。')],
+        score: 2, estimatedSeconds: 30,
+        knowledgeTags: ['necessary-condition', 'sufficient-condition'], skillTags: ['conclusion'],
+      },
+      {
+        id: 's3',
+        label: '(3)',
+        prompt: 'xy=1 は x=1 であるための何条件か。',
+        answerType: 'single-choice',
+        choices: [choice('neither', '必要条件でも十分条件でもない。', true), choice('sufficient-only', '十分条件だが必要条件ではない。'), choice('necessary-only', '必要条件だが十分条件ではない。'), choice('iff', '必要十分条件。')],
+        score: 2, estimatedSeconds: 30,
+        knowledgeTags: ['necessary-condition', 'sufficient-condition'], skillTags: ['conclusion'],
+      },
+      {
+        id: 's4',
+        label: '(4)',
+        prompt: '|x|=0 は x=0 であるための何条件か。',
+        answerType: 'single-choice',
+        choices: [choice('iff', '必要十分条件。', true), choice('sufficient-only', '十分条件だが必要条件ではない。'), choice('necessary-only', '必要条件だが十分条件ではない。'), choice('neither', '必要条件でも十分条件でもない。')],
+        score: 2, estimatedSeconds: 30,
+        knowledgeTags: ['necessary-condition', 'sufficient-condition', 'equivalence'], skillTags: ['conclusion'],
+      },
+      {
+        id: 's5',
+        label: '(5)',
+        prompt: 'x=y=2 は 2x-y=2y-2=2 であるための何条件か。',
+        answerType: 'single-choice',
+        choices: [choice('iff', '必要十分条件。', true), choice('necessary-only', '必要条件だが十分条件ではない。'), choice('sufficient-only', '十分条件だが必要条件ではない。'), choice('neither', '必要条件でも十分条件でもない。')],
+        score: 2, estimatedSeconds: 30,
+        knowledgeTags: ['necessary-condition', 'sufficient-condition', 'equivalence'], skillTags: ['conclusion'],
+      },
+      {
+        id: 's6',
+        label: '(6)',
+        prompt: 'ひし形であることは、正方形であるための何条件か。',
+        answerType: 'single-choice',
+        choices: [choice('necessary-only', '必要条件だが十分条件ではない。', true), choice('sufficient-only', '十分条件だが必要条件ではない。'), choice('iff', '必要十分条件。'), choice('neither', '必要条件でも十分条件でもない。')],
+        score: 2, estimatedSeconds: 30,
+        knowledgeTags: ['necessary-condition', 'sufficient-condition'], skillTags: ['conclusion'],
+      },
+    ],
+    fullExplanation: 'p が q のための何条件かは、p⇒q と q⇒p を別々に確認してから決める。p⇒q が真なら十分条件、q⇒p が真なら必要条件であり、両方真なら必要十分、両方偽なら必要でも十分でもない。',
+  },
 
 ]

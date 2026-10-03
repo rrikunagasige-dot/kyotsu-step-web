@@ -48,7 +48,7 @@ jobs:
         run: pnpm run typecheck
 
       - name: Textbook schema and math-unit tests
-        run: pnpm exec vitest run src/domain/textbookSchema.test.ts src/data/textbook/math/set/setLesson.test.ts
+        run: pnpm exec vitest run src/domain/textbookSchema.test.ts src/data/textbook/math/mathCatalog.test.ts src/data/textbook/math/set/setLesson.test.ts
 
       - name: Build
         run: pnpm run build

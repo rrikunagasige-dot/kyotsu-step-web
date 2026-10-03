@@ -74,13 +74,14 @@ UI:
 
 - 98-p1-result
   - visible evidence: (23=3\times7+2)
-  - prompt completion: 「23=3×7+2 なので、(1)は ___」
+  - prompt completion: 「この計算から、(1)は ___」
   - correct: 「命題であり、真である」
   - purpose: 事実確認と命題分類を一つの判断に結びつける
 
 Do not add:
 - 「余りはいくつ？」だけの数字穴
 - 「2」をコピーするだけの穴
+- 表示済みの `23=3×7+2` をblank promptでもう一度重複表示すること
 
 ---
 

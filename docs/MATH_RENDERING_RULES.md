@@ -630,10 +630,11 @@ Hard gate for Math-practice source files:
 3. browser tests must verify learner-visible mathematical output rather than only build success,
 4. when this defect is found in one generated batch, scan the sibling questions from the same authoring path before declaring the batch visually valid.
 
-Initial repair target:
-- problem 88
+Repair scope after the 88 pilot gate passed:
+- problem 88 first, then the same defect class scanned across 89–96
 - PR #16
-- unit regression: `src/data/mathPractice/adapter.test.ts`
-- browser regression: problem-88 leakage/compression test in `e2e/math-practice-pilot.spec.ts`
+- source-file regression forbids isolated single TeX backslashes in `src/data/mathPractice/setsBatchA.ts`
+- runtime regression checks representative `\\text`, `\\times`, `\\ldots` commands
+- browser regression covers problem-88 leakage/compression on mobile and desktop
 
 Do not “fix” this by replacing the mathematics with plain prose. Repair the host-language escaping.

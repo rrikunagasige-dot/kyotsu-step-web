@@ -41,7 +41,7 @@ export const mathTextbookTopics: readonly MathTextbookTopicCatalogEntry[] = [
     },
     practiceTopicId: 'read-propositions',
     practiceRange: [98, 120],
-    unitIds: [],
+    unitIds: ['math-propositions-reading'],
     learnerHeadings: [],
   },
   {

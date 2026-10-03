@@ -74,6 +74,7 @@ describe('independently authored Chinese question catalog', () => {
       '102｜“且”与“或”',
       '103｜复合条件的否定',
       '104｜必要条件与充分条件',
+      '105｜命题的真假',
     ])  })
 
   it('selects the requested language without changing stable question IDs', () => {

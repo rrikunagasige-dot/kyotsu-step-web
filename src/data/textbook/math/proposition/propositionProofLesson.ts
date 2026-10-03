@@ -12,14 +12,14 @@ const rawMathPropositionProofUnit = {
     chapterTitle: '集合と命題',
     unitCode: '3PROOF',
     orderInChapter: 4,
-    sourcePages: [96, 97, 98],
+    sourcePages: [94, 95, 96, 97, 98],
   },
   title: '命題を証明する',
   subtitle: '命題の向きと否定を組み替え、説明しやすい形を選ぶ。',
   source: {
     type: 'reference' as const,
     label: '啓林館版 深進数学I 第3章「集合と命題」逆・裏・対偶／対偶による証明／背理法',
-    rightsNote: '教科書ガイド p.118〜120 付近（教科書 p.95〜98 相当）をApp用の連続教材として構造化',
+    rightsNote: '教科書ガイド p.118〜122 付近（教科書 p.94〜98 相当）から、必要十分・逆/裏/対偶・対偶証明・背理法をpractice taxonomy順に再配置',
   },
   objectives: [
     '命題の向きや否定を組み替えて関係を整理する',

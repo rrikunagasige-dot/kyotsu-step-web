@@ -568,6 +568,8 @@ describe('math practice 87-120 staged integration', () => {
       'src/data/mathPractice/propositionsBatchB.zh.ts',
       'src/data/mathPractice/proofsBatchC.ts',
       'src/data/mathPractice/proofsBatchC.zh.ts',
+      'src/data/mathPractice/functionsBatchD.ts',
+      'src/data/mathPractice/functionsBatchD.zh.ts',
     ]) {
       const authored = readFileSync(path, 'utf8')
       expect(authored).not.toMatch(/(?<!\\)\\(?!\\)/)

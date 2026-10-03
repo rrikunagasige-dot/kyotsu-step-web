@@ -572,6 +572,61 @@ button.math-theme-link {
   background: var(--color-section);
 }
 
+.math-topic-question-nav {
+  display: grid;
+  gap: .55rem;
+  margin: 0 0 1rem;
+  padding: 0 0 .85rem;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.math-topic-question-nav__status {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .75rem;
+  color: var(--color-muted);
+  font-size: .78rem;
+}
+
+.math-topic-question-nav__status strong {
+  color: var(--color-primary);
+  font: 700 .78rem/1 ui-monospace, monospace;
+}
+
+.math-topic-question-nav__cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+}
+
+.math-topic-question-card {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  padding: 0;
+  border: 2px solid var(--color-border);
+  background: var(--color-paper);
+  color: var(--color-text);
+  font: 700 .82rem/1 ui-monospace, monospace;
+  cursor: pointer;
+  box-shadow: 0 2px 0 var(--color-border);
+}
+
+.math-topic-question-card:hover,
+.math-topic-question-card:focus-visible {
+  border-color: var(--color-primary);
+  background: var(--color-section);
+}
+
+.math-topic-question-card--current {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: white;
+  box-shadow: 0 2px 0 var(--color-primary);
+}
+
 @media (max-width: 640px) {
   .math-problem-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -579,6 +634,15 @@ button.math-theme-link {
 
   .math-problem-button {
     min-width: 0;
+  }
+
+  .math-topic-question-nav__cards {
+    gap: .4rem;
+  }
+
+  .math-topic-question-card {
+    width: 40px;
+    height: 40px;
   }
 }
 

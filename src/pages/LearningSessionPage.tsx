@@ -7,6 +7,10 @@ import { activeBlankIds, isLearningAnswerResolved } from '../domain/learning'
 import { getQuestionCatalog, useAppStore } from '../stores/useAppStore'
 import { useI18n } from '../i18n/runtime'
 import { taxonomyLabel } from '../i18n/labels'
+import {
+  mathPracticeQuestionsForTopic,
+  mathPracticeTopicForQuestion,
+} from '../data/mathPracticeTaxonomy'
 
 type CommonTestScreen = 'original' | 'guide' | 'final'
 
@@ -22,13 +26,23 @@ export function LearningSessionPage() {
   const navigate = useNavigate()
   const session = useAppStore((state) => state.learningSessions[sessionId])
   const customQuestions = useAppStore((state) => state.customQuestions)
+  const startLearning = useAppStore((state) => state.startLearning)
   const answerLearning = useAppStore((state) => state.answerLearning)
   const activateLearning = useAppStore((state) => state.activateLearning)
   const openExplanation = useAppStore((state) => state.openLearningExplanation)
   const closeExplanation = useAppStore((state) => state.closeLearningExplanation)
   const revisitLearning = useAppStore((state) => state.revisitLearning)
   const { language, text } = useI18n()
-  const question = useMemo(() => getQuestionCatalog(customQuestions, language).find((item) => item.questionId === session?.questionId), [customQuestions, language, session?.questionId])
+  const catalog = useMemo(() => getQuestionCatalog(customQuestions, language), [customQuestions, language])
+  const question = useMemo(() => catalog.find((item) => item.questionId === session?.questionId), [catalog, session?.questionId])
+  const mathPracticeTopic = question ? mathPracticeTopicForQuestion(question) : null
+  const mathTopicQuestions = useMemo(
+    () => mathPracticeTopic ? mathPracticeQuestionsForTopic(catalog, mathPracticeTopic) : [],
+    [catalog, mathPracticeTopic],
+  )
+  const mathTopicIndex = question
+    ? mathTopicQuestions.findIndex((candidate) => candidate.questionId === question.questionId)
+    : -1
   const [choiceOpen, setChoiceOpen] = useState(false)
   const [explanationBlankId, setExplanationBlankId] = useState<string | null>(null)
   const [explanationStartedAt, setExplanationStartedAt] = useState(0)
@@ -140,6 +154,12 @@ export function LearningSessionPage() {
   const typeLabel = question.learning.flowType ? flowTypeLabel[question.learning.flowType] : undefined
   const persistentVisualBlocks = question.stem.filter((block) => block.type === 'image')
 
+  const openMathTopicQuestion = (questionId: string) => {
+    if (questionId === question.questionId) return
+    const nextSessionId = startLearning(questionId, session.variant)
+    navigate(`/learning/session/${nextSessionId}`)
+  }
+
   return (
     <div className="page-stack learning-page">
       <header className="session-header">
@@ -235,6 +255,31 @@ export function LearningSessionPage() {
         <>
           <ProgressBar label={text('空欄の進み具合', '填空进度')} value={completedCount} max={enabledBlankIds.length} />
           <section data-testid="standard-problem">
+            {mathPracticeTopic && mathTopicQuestions.length > 0 && (
+              <nav className="math-topic-question-nav" aria-label={text('テーマ内の問題', '主题内题目')} data-testid="math-topic-question-nav">
+                <div className="math-topic-question-nav__status">
+                  <span>{text('問題', '题目')}</span>
+                  <strong>{mathTopicIndex + 1} / {mathTopicQuestions.length}</strong>
+                </div>
+                <div className="math-topic-question-nav__cards">
+                  {mathTopicQuestions.map((candidate, index) => {
+                    const current = candidate.questionId === question.questionId
+                    return (
+                      <button
+                        type="button"
+                        key={candidate.questionId}
+                        data-testid={`math-topic-question-${index + 1}`}
+                        aria-current={current ? 'page' : undefined}
+                        className={`math-topic-question-card${current ? ' math-topic-question-card--current' : ''}`}
+                        onClick={() => openMathTopicQuestion(candidate.questionId)}
+                      >
+                        {index + 1}
+                      </button>
+                    )
+                  })}
+                </div>
+              </nav>
+            )}
             <h2 className="solution-heading">{text('問題', '题目')}</h2>
             <article className="question-paper"><ContentRenderer blocks={question.stem} assets={question.assets} /></article>
           </section>

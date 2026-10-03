@@ -146,6 +146,22 @@ export function mathPracticeProblemNumber(questionId: string) {
   return problemNumber(questionId)
 }
 
+export function mathPracticeQuestionsForTopic(
+  questions: Question[],
+  topicId: MathPracticeTopicId,
+) {
+  return questions
+    .filter((question) =>
+      question.subject === 'math-1a' &&
+      question.status === 'published' &&
+      mathPracticeTopicForQuestion(question) === topicId,
+    )
+    .sort((left, right) =>
+      (problemNumber(left.questionId) ?? Number.MAX_SAFE_INTEGER) -
+      (problemNumber(right.questionId) ?? Number.MAX_SAFE_INTEGER),
+    )
+}
+
 
 export function mathCommonTestAreaForQuestion(
   question: Pick<Question, 'subject' | 'questionId' | 'taxonomy'>,

@@ -26,7 +26,7 @@ export const mathPractice87To120Catalog: MathPracticeCatalogEntry[] = [
   { problemNo: 100, section: 'propositions', sectionTitle: '命題と条件', title: '反例', pilot: true },
   { problemNo: 101, section: 'propositions', sectionTitle: '命題と条件', title: '条件の否定', pilot: true },
   { problemNo: 102, section: 'propositions', sectionTitle: '命題と条件', title: '「かつ」と「または」', pilot: true },
-  { problemNo: 103, section: 'propositions', sectionTitle: '命題と条件', title: '複合条件の否定', pilot: false },
+  { problemNo: 103, section: 'propositions', sectionTitle: '命題と条件', title: '複合条件の否定', pilot: true },
   { problemNo: 104, section: 'propositions', sectionTitle: '命題と条件', title: '必要条件・十分条件', pilot: false },
   { problemNo: 105, section: 'propositions', sectionTitle: '命題と条件', title: '命題の真偽', pilot: false },
   { problemNo: 106, section: 'propositions', sectionTitle: '命題と条件', title: '集合で条件を表す', pilot: false },

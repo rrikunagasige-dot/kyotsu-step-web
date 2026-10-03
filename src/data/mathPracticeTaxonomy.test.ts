@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+import type { Question } from '../domain/questionSchema'
 import {
   buildMathCommonTestSummary,
   buildMathPracticeTopicSummary,
@@ -62,12 +63,12 @@ describe('math practice title architecture', () => {
         status: 'published' as const,
         taxonomy: { majorUnit: 'data-analysis' },
       },
-    ]
+    ] as unknown as Question[]
 
     expect(mathCommonTestAreaForQuestion(commonTestSamples[0])).toBe('quadratic')
     expect(mathCommonTestAreaForQuestion(commonTestSamples[1])).toBe('data-analysis')
-    expect(buildMathCommonTestSummary(commonTestSamples as never).quadratic).toBe(1)
-    expect(buildMathCommonTestSummary(commonTestSamples as never)['data-analysis']).toBe(1)
+    expect(buildMathCommonTestSummary(commonTestSamples).quadratic).toBe(1)
+    expect(buildMathCommonTestSummary(commonTestSamples)['data-analysis']).toBe(1)
   })
 
   it('uses problem numbers as the compact leaf labels', () => {

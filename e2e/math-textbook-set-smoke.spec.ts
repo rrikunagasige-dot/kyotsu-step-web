@@ -183,31 +183,35 @@ test('proposition-reading counterexample is decided before the counterexample co
 })
 
 
-test('quantifier review unit derives the negation of all from a concrete counterexample', async ({ page }) => {
+test('quantifier review unit derives the negation of exists only after an existence witness', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-quantifiers-all-exists'))
 
   await expect(page.getByRole('heading', { name: '「すべて」と「ある」', exact: true })).toBeVisible()
   await expect(page.getByTestId('textbook-item-quant-a01')).toBeVisible()
-  await expect(page.getByText(/「すべてのxに対してpである」を否定すると/)).toHaveCount(0)
+  await expect(page.getByText(/「あるxに対してpである」の否定は/)).toHaveCount(0)
 
   await answerItem(page, 'quant-a01', '1つ')
-  await answerItem(page, 'quant-a02', '2')
+  await answerItem(page, 'quant-a02', 'a=2, b=3')
+  await expect(page.getByText(/「あるxに対してpである」の否定は/)).toHaveCount(0)
 
-  await expect(page.getByText(/「すべてのxに対してpである」を否定すると/)).toBeVisible()
-  await expect(page.getByTestId('textbook-item-quant-a03')).toBeVisible()
+  await answerItem(page, 'quant-a03', 'すべての素数の組(a,b)に対してabは奇数である')
+  await expect(page.getByText(/「あるxに対してpである」の否定は/)).toBeVisible()
 })
 
-test('quantifier review unit derives the negation of exists only after an existence witness', async ({ page }) => {
+test('quantifier review unit derives the negation of all only after the source counterexample', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-quantifiers-all-exists'))
 
   await answerItem(page, 'quant-a01', '1つ')
-  await answerItem(page, 'quant-a02', '2')
-  await answerItem(page, 'quant-a03', 'ある素数は奇数ではない')
-  await answerItem(page, 'quant-b01', '条件を満たす例を1つ')
+  await answerItem(page, 'quant-a02', 'a=2, b=3')
+  await answerItem(page, 'quant-a03', 'すべての素数の組(a,b)に対してabは奇数である')
+  await answerItem(page, 'quant-b01', '存在しない')
+  await answerItem(page, 'quant-b02', 'すべての実数xに対して x²≠-1')
+  await answerItem(page, 'quant-c01', '1つ')
 
-  await expect(page.getByText(/「あるxに対してpである」を否定すると/)).toHaveCount(0)
-  await answerItem(page, 'quant-b02', 'a=2, b=3')
-  await expect(page.getByText(/「あるxに対してpである」を否定すると/)).toBeVisible()
+  await expect(page.getByText(/「すべてのxに対してpである」の否定は/)).toHaveCount(0)
+  await answerItem(page, 'quant-c02', '2')
+  await answerItem(page, 'quant-c03', 'ある素数は奇数ではない')
+  await expect(page.getByText(/「すべてのxに対してpである」の否定は/)).toBeVisible()
 })
 
 

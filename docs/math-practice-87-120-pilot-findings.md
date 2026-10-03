@@ -1,97 +1,107 @@
 # Math Practice Pilot Findings
 
-## Why the pilot is staged but not yet exposed in the app
+## Current status
 
-While wiring the first three questions (87, 94, 97) into the current question bank, the existing repository tests exposed two hidden assumptions that would make a direct publish risky.
+The first runtime pilot is now active **only on the integration branch**:
 
-### 1. The current built-in catalog assumes every question is Common-Test presentation
+- 87 — 素数と集合
+- 94 — 補集合
+- 97 — 共通部分から定数を決める
 
-`src/data/questionCatalog.test.ts` currently expects every built-in question to:
+`main` remains unchanged.
 
-- use `learning.presentation === 'common-test'`
-- have a `finalBlankId`
-- keep that final blank outside the guide flow
-- include that final blank in every guidance variant
+The pilot keeps the reviewed practice structure:
 
-The new reviewed practice mode is intentionally different:
+1. **問題** — original problem only
+2. **考えながら解く** — guided reasoning / blanks
 
-- the original **問題** is shown first
-- **考えながら解く** follows as the guide
-- the learner may complete several reasoning blanks
-- there is no requirement that the final answer be represented by one special final-choice blank
+The existing Common-Test flow and physics/textbook content are unchanged.
 
-`QuestionSchema` itself already allows `presentation: 'standard'`, so this is a **catalog-test assumption**, not a schema requirement.
+## Compatibility findings and resolutions
 
-Changing that global assumption must be a deliberate app-level decision, not a side effect of importing 87–120.
+### 1. Common-Test-only invariants were embedded in a catalog test
 
-### 2. Japanese and Chinese built-in catalogs are required to have identical grading structure
+The repository previously tested every built-in question as if it were Common-Test presentation with a `finalBlankId`.
 
-`src/data/questionCatalog.zh.test.ts` requires Japanese and Chinese catalogs to have the same:
+`QuestionSchema` already supports `presentation: 'standard'`, so the global test assumption was narrower than the schema.
 
-- question IDs
-- revision/status
-- taxonomy
-- difficulty
-- learning presentation / flow
-- blank IDs and option IDs
-- correct answers
-- simulation structure
+Resolution:
 
-It also rejects Japanese kana anywhere in the Chinese catalog.
+- keep the existing `finalBlankId` invariants strict for `common-test`
+- test `standard` practice separately
+- standard practice contains every authored reasoning blank directly in the guide flow
+- do not invent a fake final-choice blank
 
-Therefore publishing the three Japanese pilot questions only in `questions.ts` would immediately break catalog parity.
+### 2. Japanese / Chinese catalogs require identical grading structure
 
-## Action taken
+The repository requires both language catalogs to have identical IDs, blanks, correct answers, variants and simulation grading.
 
-The temporary change that appended the pilot questions to `builtInQuestions` was reverted.
+Resolution:
 
-Current branch state:
+- one reviewed Japanese authoring source
+- an explicit Chinese localization layer
+- one shared adapter
+- stable IDs and grading structure in both languages
+- a test rejects Japanese kana in the Chinese pilot
 
-- full 87–120 title catalog: added
-- source-layer types: added
-- reviewed pilot sources for 87, 94, 97: added
-- source → `QuestionSchema` adapter: added
-- adapter unit tests: added
-- existing app question bank: **unchanged**
-- physics / textbook mode: **unchanged**
-- main branch: **unchanged**
+### 3. Old catalog-count expectations were stale
 
-This is intentional. The pilot data is staged and inspectable without changing runtime behavior.
+The current continuous-textbook architecture intentionally produces no legacy Chapter 1 worked-example practice questions.
 
-## Safe next decision
+Therefore the real baseline is currently:
 
-Before the pilot can be opened in the app, choose one explicit compatibility strategy.
+- 2 existing Math I・A questions
+- 3 existing physics practice questions
 
-### Recommended: make practice questions bilingual at the source layer
+The old tests still expected 17 physics questions and 14 legacy textbook worked examples. Those stale expectations were updated to the current repository state rather than recreating removed legacy content.
 
-Add localized text for Japanese and Chinese while preserving one shared grading structure.
+## Runtime/UI findings
 
-Then:
+The standard practice screen now makes the reviewed two-block structure explicit:
 
-1. build `mathPracticePilotQuestions`
-2. build `mathPracticePilotQuestionsZh`
-3. update Japanese and Chinese question banks together
-4. adjust catalog tests so the old “every question is common-test” assertion applies only to common-test questions
-5. keep all existing finalBlank invariants for common-test questions
-6. run the full check gate
+- **問題**
+- **考えながら解く**
 
-This preserves the repository’s current language-parity guarantee and does not weaken existing Common-Test behavior.
+This is a label/structure clarification only; the existing learning-session state machine, retry behavior and progress storage were not redesigned.
 
-### Not recommended
+The mobile sub-question navigator (①②③…) remains on HOLD.
 
-- silently fall back to Japanese in Chinese mode
-- delete the Chinese parity test
-- force the new practice mode into `common-test` only to satisfy an old test
-- invent a fake final-choice blank when the reviewed pedagogy does not need one
+Problem 94 is intentionally the stress case for a long 8-part exercise. The first mobile smoke test confirms that it opens at Pixel 7 width without horizontal page overflow. This does **not** yet prove that the long vertical experience is pedagogically ideal; that decision remains for actual inspection before implementing sub-question navigation.
 
-## Gate before runtime activation
+## Validation result
 
-Do not append the pilot to `builtInQuestions` until all of these are true:
+Latest pilot CI on the integration branch passes:
 
-- Japanese/Chinese grading signatures match
-- standard-presentation questions have explicit test coverage
-- existing common-test finalBlank tests still pass
-- adapter unit tests pass
-- typecheck / lint / build pass
-- then expose 87, 94, 97 only
-- inspect mobile behavior before enabling the remaining 31 questions
+- dependency install
+- TypeScript typecheck
+- targeted math-practice unit tests
+- Japanese/Chinese catalog parity tests
+- production build
+- mobile Playwright pilot smoke
+
+Mobile smoke results: **4 / 4 passed**
+
+1. 87 / 94 / 97 appear in Math I・A practice using short titles
+2. 87 visibly separates **問題** and **考えながら解く**, including wrong → retry → recovered-correct behavior
+3. 94 opens on mobile without horizontal page overflow
+4. 97 reaches the equation-building thinking node while the original problem does not leak `3a-2=4`
+
+## What is still intentionally not done
+
+Do not enable 88–93, 95–96, or 98–120 yet.
+
+Do not implement:
+
+- mobile sub-question tabs/chips
+- a LearningSession state-machine redesign
+- a new simulation curriculum
+- guidance-level redesign
+- analytics
+- changes to physics/textbook content
+
+The next gate is human inspection of the three pilot questions in the real app. After that, either fix issues revealed by the pilot or expand in the planned four batches:
+
+1. 87–97
+2. 98–109
+3. 110–117
+4. 118–120

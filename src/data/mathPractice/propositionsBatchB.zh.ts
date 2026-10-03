@@ -190,8 +190,8 @@ export const mathPracticePropositionsBatchBSourceZh: MathPracticeSourceQuestion[
       },
     ],
     fullExplanation: '判断一个语句是否为命题，要看其内容能否客观地确定为真、假其中之一。一个语句即使为假，只要真假可以客观确定，它仍然是命题；而“良好”这类没有给出客观标准的表述不能唯一确定真假，因此不是命题。',
-  },,
-{
+  },
+  {
     problemNo: 99,
     section: 'propositions',
     sectionTitle: '命题与条件',

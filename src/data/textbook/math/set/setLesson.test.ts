@@ -205,3 +205,14 @@ describe('math set textbook unit', () => {
     expect(rightRouteFigureIndex).toBeGreaterThan(e03Index)
     expect(e04Index).toBeGreaterThan(rightRouteFigureIndex)
   })
+
+
+  it('keeps the source textbook interval notation on the real-line answers', () => {
+    const items = mathSetUnit.sections[0].items
+    expect(items.find((item) => item.id === 'set-f06')?.answer)
+      .toBe('\\{x\\mid x<-1,\\ 5<x\\}')
+    expect(items.find((item) => item.id === 'set-f08')?.answer)
+      .toBe('\\{x\\mid x\\le -2,\\ 2\\le x\\}')
+    expect(items.find((item) => item.id === 'set-f09')?.answer)
+      .toBe('\\{x\\mid x\\le -2,\\ 5<x\\}')
+  })

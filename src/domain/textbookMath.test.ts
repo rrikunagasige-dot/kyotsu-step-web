@@ -83,7 +83,7 @@ describe('textbook math normalization', () => {
   it('renders equations with finite-set literals as one math token', () => {
     const parts = splitTextbookInlineMath('共通部分 A∩B={1,4} を確認する。')
     expect(parts.some((part) =>
-      part.type === 'math' && part.latex === 'A\\cap B=\\{1,4\\}',
+      part.type === 'math' && part.latex === 'A \\cap B=\\{1,4\\}',
     )).toBe(true)
   })
 })

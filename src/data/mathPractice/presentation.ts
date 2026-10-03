@@ -532,6 +532,46 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
       dependsOn: ['basis'],
     },
   ],
+  'math-practice-102': [
+    {
+      id: 'basis',
+      kicker: { ja: 'まず確認', zh: '先确认' },
+      label: { ja: '「かつ」「または」を集合演算へ直す', zh: '把“且”“或”改写为集合运算' },
+      blankIds: ['rule'],
+      result: {
+        blankId: 'rule',
+        label: { ja: '集合演算の対応', zh: '集合运算对应' },
+      },
+    },
+    {
+      id: 's1',
+      kicker: { ja: '今の問い｜(1)', zh: '当前问题｜(1)' },
+      label: { ja: '2区間の共通部分を求める', zh: '求两个区间的交集' },
+      blankIds: ['p1-result'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's2',
+      kicker: { ja: '今の問い｜(2)', zh: '当前问题｜(2)' },
+      label: { ja: '2区間の和集合を求める', zh: '求两个区间的并集' },
+      blankIds: ['p2-result'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's3',
+      kicker: { ja: '今の問い｜(3)', zh: '当前问题｜(3)' },
+      label: { ja: '共通部分の端点を判定する', zh: '判断交集的端点' },
+      blankIds: ['p3-result'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's4',
+      kicker: { ja: '今の問い｜(4)', zh: '当前问题｜(4)' },
+      label: { ja: '和集合の端点を判定する', zh: '判断并集的端点' },
+      blankIds: ['p4-result'],
+      dependsOn: ['basis'],
+    },
+  ],
 }
 
 function localBlankId(questionId: string, fullBlankId: string) {
@@ -584,5 +624,6 @@ export function mathPracticeUsesSubproblemCompression(questionId: string) {
     'math-practice-099',
     'math-practice-100',
     'math-practice-101',
+    'math-practice-102',
   ].includes(questionId)
 }

@@ -50,7 +50,7 @@ export function MathPracticeReadingFlow({ question, session, onSelect }: {
       {currentTarget && (
         <aside className="math-practice-target-anchor" data-testid="math-practice-current-target">
           <span>{currentTarget.kicker[language]}</span>
-          {currentTarget.label && <strong>{currentTarget.label[language]}</strong>}
+          {currentTarget.label && <strong><MathPracticeInlineText value={currentTarget.label[language]} /></strong>}
           {currentTarget.latex && (
             <strong className="math-practice-target-anchor__math">
               <InlineMath math={currentTarget.latex} />

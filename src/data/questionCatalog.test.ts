@@ -2,25 +2,23 @@ import { describe, expect, it } from 'vitest'
 import { builtInQuestions } from './questions'
 
 describe('built-in content coverage', () => {
-  it('contains the existing catalog plus three staged Math 1A practice pilots', () => {
-    expect(builtInQuestions.filter((question) => question.subject === 'math-1a')).toHaveLength(5)
+  it('contains the existing catalog plus the reviewed Math 87-97 practice batch', () => {
+    expect(builtInQuestions.filter((question) => question.subject === 'math-1a')).toHaveLength(13)
     expect(builtInQuestions.filter((question) => question.subject === 'physics')).toHaveLength(3)
     expect(
       builtInQuestions
         .filter((question) => question.questionId.startsWith('math-practice-'))
         .map((question) => question.questionId),
-    ).toEqual(['math-practice-087', 'math-practice-094', 'math-practice-097'])
+    ).toEqual(Array.from({ length: 11 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`))
   })
 
   it('covers common-test narrative, standard practice, images, tables and all three physics flow types', () => {
     const commonTestQuestions = builtInQuestions.filter((question) => question.learning.presentation === 'common-test')
     const standardQuestions = builtInQuestions.filter((question) => question.learning.presentation === 'standard')
     expect(commonTestQuestions.length).toBeGreaterThan(0)
-    expect(standardQuestions.map((question) => question.questionId)).toEqual([
-      'math-practice-087',
-      'math-practice-094',
-      'math-practice-097',
-    ])
+    expect(standardQuestions.map((question) => question.questionId)).toEqual(
+      Array.from({ length: 11 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
+    )
     expect(builtInQuestions.some((question) => question.assets.length > 0)).toBe(true)
     expect(builtInQuestions.some((question) => question.stem.some((block) => block.type === 'table'))).toBe(true)
     expect(builtInQuestions.some((question) => question.learning.solutionFlow.some((block) => block.type === 'content' && block.content.some((content) => content.type === 'text' && Boolean(content.speaker))))).toBe(true)

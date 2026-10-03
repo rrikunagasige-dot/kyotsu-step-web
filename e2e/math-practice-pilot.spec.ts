@@ -792,7 +792,7 @@ test('118 judges functionhood by unique output and keeps the three cases indepen
   const currentTarget = page.getByTestId('math-practice-current-target')
   const flow = page.getByTestId('math-practice-reading-flow')
 
-  await expect(problem).toContainText('y は x の関数である')
+  await expect(problem).toContainText('関数である」といえるもの')
   await expect(problem).toContainText('円周の長さ')
   await expect(problem).toContainText('平方根')
   await expect(problem).toContainText('面積が1')

@@ -18,8 +18,8 @@ const rawMathPropositionReadingUnit = {
   subtitle: '条件を前から後ろへ読み、向きを変えたときや成り立たない場合まで順に考える。',
   source: {
     type: 'reference' as const,
-    label: '啓林館版 深進数学I 第3章「集合と命題」2 命題と集合',
-    rightsNote: '教科書ガイド p.115〜118 付近（教科書 p.92〜95 相当）の内容を使用し、学習順は練習モードの taxonomy（真偽 → 条件の否定 → 必要・十分）へ同期',
+    label: '啓林館版 深進数学I 第3章「集合と命題」2 命題と集合 + MATH_PRACTICE_98_CONTENT_DESIGN',
+    rightsNote: '教科書ガイド p.115〜119 付近（教科書 p.92〜95 相当）を基礎に、命題判定の導入は practice 98 authority を使用。学習順は taxonomy（真偽 → 条件の否定 → 必要・十分）へ同期',
   },
   objectives: [
     '条件から何が必ず言えるかを具体例で判断する',

@@ -557,5 +557,155 @@ export const mathPracticePropositionsBatchBSourceZh: MathPracticeSourceQuestion[
     ],
     fullExplanation: '要说明蕴含命题 p⇒q 为假，只需给出一个满足前件 p 但不满足后件 q 的反例。平方问题注意正负号，绝对值问题注意绝对值大小与原数大小可能不同，素数问题则可寻找使表达式成为合数的具体奇数。',
   },
+  {
+    problemNo: 101,
+    section: 'propositions',
+    sectionTitle: '命题与条件',
+    title: '条件的否定',
+    estimatedSeconds: 300,
+    knowledgeTags: ['negation', 'complement', 'inequality', 'rational-number'],
+    skillTags: ['condition-reading', 'case-classification', 'conclusion'],
+    problem: [
+      { type: 'text', text: '设 x、y 为实数。写出下列条件的否定。' },
+      { type: 'latex', latex: '(1)\\;x>-5' },
+      { type: 'latex', latex: '(2)\\;x+y\\ne0' },
+      { type: 'text', text: '(3) x 是有理数。' },
+    ],
+    guide: [
+      {
+        type: 'content',
+        blocks: [{
+          type: 'text',
+          text: '先确认条件的否定表示什么。不能只机械地更换符号，而要把原条件不成立的所有情况完整表示出来。',
+        }],
+      },
+      { type: 'blank', blankId: 'rule' },
+
+      {
+        type: 'content',
+        blocks: [{
+          type: 'text',
+          text: '(1) 要把边界 -5 本身是否满足原条件也一起考虑。',
+        }],
+      },
+      { type: 'blank', blankId: 'p1-result' },
+
+      {
+        type: 'content',
+        blocks: [{
+          type: 'text',
+          text: '(2) 把“不是0”这一条件不成立的情况直接写成等式。',
+        }],
+      },
+      { type: 'blank', blankId: 'p2-result' },
+
+      {
+        type: 'content',
+        blocks: [{
+          type: 'text',
+          text: '(3) 利用 x 是实数这一前提，思考有理数在实数范围内的补集。',
+        }],
+      },
+      { type: 'blank', blankId: 'p3-result' },
+    ],
+    blanks: [
+      {
+        id: 'rule',
+        prompt: '条件 p 的否定表示',
+        choices: [
+          choice('all-not-p', 'p 不成立的所有情况。', true),
+          choice('opposite-looking', '写一个看起来相反的式子即可。'),
+          choice('some-not-p', '只要举出一个 p 不成立的例子即可。'),
+        ],
+        skillTag: 'condition-reading',
+        knowledgeTags: ['negation', 'complement'],
+        explanation: '条件的否定必须覆盖原条件不成立的所有情况。',
+      },
+      {
+        id: 'p1-result',
+        prompt: 'x>-5 的否定是',
+        choices: [
+          choice('le-minus-five', 'x≤-5', true),
+          choice('lt-minus-five', 'x<-5'),
+          choice('ge-minus-five', 'x≥-5'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['negation', 'inequality', 'complement'],
+        explanation: 'x=-5 不满足 x>-5，因此必须把边界包含进来，得到 x≤-5。',
+      },
+      {
+        id: 'p2-result',
+        prompt: 'x+y≠0 的否定是',
+        choices: [
+          choice('equals-zero', 'x+y=0', true),
+          choice('greater-zero', 'x+y>0'),
+          choice('less-equal-zero', 'x+y≤0'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['negation'],
+        explanation: '“不等于0”不成立，恰好就是“等于0”。',
+      },
+      {
+        id: 'p3-result',
+        prompt: '实数 x 是有理数这一条件的否定是',
+        choices: [
+          choice('irrational', 'x 是无理数。', true),
+          choice('not-integer', 'x 不是整数。'),
+          choice('negative', 'x 是负数。'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['negation', 'rational-number', 'complement'],
+        explanation: '实数分为有理数和无理数，因此不是有理数的实数就是无理数。',
+      },
+    ],
+    simulation: [
+      {
+        id: 's1',
+        label: '(1)',
+        prompt: '选择 x>-5 的否定。',
+        answerType: 'single-choice',
+        choices: [
+          choice('le-minus-five', 'x≤-5', true),
+          choice('lt-minus-five', 'x<-5'),
+          choice('ge-minus-five', 'x≥-5'),
+        ],
+        score: 2,
+        estimatedSeconds: 25,
+        knowledgeTags: ['negation', 'inequality'],
+        skillTags: ['case-classification'],
+      },
+      {
+        id: 's2',
+        label: '(2)',
+        prompt: '选择 x+y≠0 的否定。',
+        answerType: 'single-choice',
+        choices: [
+          choice('equals-zero', 'x+y=0', true),
+          choice('greater-zero', 'x+y>0'),
+          choice('less-equal-zero', 'x+y≤0'),
+        ],
+        score: 2,
+        estimatedSeconds: 25,
+        knowledgeTags: ['negation'],
+        skillTags: ['case-classification'],
+      },
+      {
+        id: 's3',
+        label: '(3)',
+        prompt: '选择“实数 x 是有理数”的否定。',
+        answerType: 'single-choice',
+        choices: [
+          choice('irrational', 'x 是无理数。', true),
+          choice('not-integer', 'x 不是整数。'),
+          choice('negative', 'x 是负数。'),
+        ],
+        score: 2,
+        estimatedSeconds: 25,
+        knowledgeTags: ['negation', 'rational-number'],
+        skillTags: ['conclusion'],
+      },
+    ],
+    fullExplanation: '条件的否定表示原条件不成立的所有情况。不等式否定时要注意边界，≠ 的否定是 =；在实数范围内，有理数的补集是无理数。',
+  },
 
 ]

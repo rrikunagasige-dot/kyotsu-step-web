@@ -62,7 +62,11 @@ Setup:
 ### math-propositions-reading
 Source:
 - p.92〜95 相当
-- 命題の真偽 / 反例 / 必要・十分 / 必要十分 / 条件の否定
+- 命題かどうかの判定 / 命題の真偽 / 反例 / 条件の否定 / 必要・十分 / 必要十分
+Checkpoint:
+- SOURCE AUDIT: PASS（問8の4例、問10、問11、問9の必要条件表現まで反映）
+- UNIT TEST: source例固定test追加済み
+- STATUS: review
 
 ### math-quantifiers-all-exists
 Source:
@@ -72,20 +76,29 @@ Source:
 
 ### math-functions-conditions
 Source:
-- 第2章 p.46〜49 相当
-- 関数の定義
-- f(x)
-- 定義域 / 値域
-- 長方形モデル
-- 定義域から値域を読む
+- 第2章 p.46〜47 相当 + 練習118 content authority
+- 関数の判定基準
+- 円周x → 半径y
+- 正の数x → 平方根y
+- 面積1の長方形で縦x → 横y
+Checkpoint:
+- 118の3例へ同期済み
+- 119/120の内容を先回りして混ぜない
+- STATUS: review
 
 ### math-propositions-proof
 Source:
 - p.96〜98 相当
+- 同値
 - 逆・裏・対偶
-- 元命題と対偶の真偽一致
+- x²=x⇒x=1 と 12の倍数⇒6の倍数 の2例
+- 元命題と対偶、逆と裏の真偽対応
 - 3の倍数の対偶証明
 - √6の無理性を使う背理法
+Checkpoint:
+- SOURCE AUDIT: PASS（問12(1)(2)、問13、問14を反映）
+- UNIT TEST: 12倍数例を固定済み
+- STATUS: review
 
 これらは `status: review` のため `textbookRepository.listPublished()` には出ず、通常setupでは「準備中」を維持する。
 

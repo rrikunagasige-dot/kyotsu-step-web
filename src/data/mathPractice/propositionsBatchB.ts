@@ -190,8 +190,8 @@ export const mathPracticePropositionsBatchBSource: MathPracticeSourceQuestion[] 
       },
     ],
     fullExplanation: '命題かどうかは、内容が客観的に真・偽のどちらか一方へ定まるかで判断する。偽である文も、真偽を客観的に決められるなら命題である。反対に、「よい」のような基準が定まっていない表現では真偽を一意に決められず、命題ではない。',
-  },,
-{
+  },
+  {
     problemNo: 99,
     section: 'propositions',
     sectionTitle: '命題と条件',

@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest'
 import { mathPractice87To120Catalog, mathPracticePilotCatalog } from './catalog'
 import { mathPracticePilotSource } from './pilot'
 import { mathPracticeSetsBatchASource } from './setsBatchA'
+import { mathPracticePropositionsBatchBSource } from './propositionsBatchB'
 import { mathPracticePilotQuestions, mathPracticePilotQuestionsZh } from './adapter'
 
 describe('math practice 87-120 staged integration', () => {
@@ -10,13 +11,13 @@ describe('math practice 87-120 staged integration', () => {
     expect(mathPractice87To120Catalog).toHaveLength(34)
     expect(mathPractice87To120Catalog[0]?.problemNo).toBe(87)
     expect(mathPractice87To120Catalog.at(-1)?.problemNo).toBe(120)
-    expect(mathPracticePilotCatalog.map((entry) => entry.problemNo)).toEqual([87,88,89,90,91,92,93,94,95,96,97])
+    expect(mathPracticePilotCatalog.map((entry) => entry.problemNo)).toEqual([87,88,89,90,91,92,93,94,95,96,97,98])
   })
 
   it('publishes the reviewed set batch 87-97', () => {
     expect(mathPracticePilotSource.map((question) => question.problemNo)).toEqual([87, 94, 97])
     expect(mathPracticePilotQuestions.map((question) => question.questionId)).toEqual(
-      Array.from({ length: 11 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
+      Array.from({ length: 12 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
     )
   })
 
@@ -33,7 +34,25 @@ describe('math practice 87-120 staged integration', () => {
       '95｜集合を復元する',
       '96｜3集合の複合演算',
       '97｜共通部分から定数を決める',
+      '98｜命題と真偽',
     ])
+  })
+
+  it('authors 98 as a common proposition criterion plus three independent subproblems', () => {
+    const question = mathPracticePropositionsBatchBSource.find((item) => item.problemNo === 98)
+    expect(question).toBeDefined()
+    expect(question?.blanks.map((blank) => blank.id)).toEqual([
+      'definition',
+      'p1-result',
+      'p2-counterexample',
+      'p2-result',
+      'p3-objectivity',
+      'p3-result',
+    ])
+    expect(question?.blanks.find((blank) => blank.id === 'p2-counterexample')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('forty-degree')
+    expect(question?.blanks.find((blank) => blank.id === 'p3-result')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('not-proposition')
   })
 
   it('keeps Japanese and Chinese grading structures aligned', () => {
@@ -78,9 +97,15 @@ describe('math practice 87-120 staged integration', () => {
     }
   })
 
-  it('keeps explicit TeX commands escaped in the authored 88-96 source file', () => {
-    const authored = readFileSync('src/data/mathPractice/setsBatchA.ts', 'utf8')
-    expect(authored).not.toMatch(/(?<!\\)\\(?!\\)/)
+  it('keeps explicit TeX commands escaped in authored Math-practice source files', () => {
+    for (const path of [
+      'src/data/mathPractice/setsBatchA.ts',
+      'src/data/mathPractice/propositionsBatchB.ts',
+      'src/data/mathPractice/propositionsBatchB.zh.ts',
+    ]) {
+      const authored = readFileSync(path, 'utf8')
+      expect(authored).not.toMatch(/(?<!\\)\\(?!\\)/)
+    }
   })
 
   it('preserves TeX escapes in Math 88 source strings before adaptation', () => {

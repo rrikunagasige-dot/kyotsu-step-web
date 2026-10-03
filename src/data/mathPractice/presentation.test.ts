@@ -1,5 +1,10 @@
 import { describe, expect, it } from 'vitest'
-import { mathPracticeTargetForBlank, mathPracticeTargetsForQuestion } from './presentation'
+import {
+  mathPracticeDependencyTargets,
+  mathPracticeTargetForBlank,
+  mathPracticeTargetsForQuestion,
+  mathPracticeUsesSubproblemCompression,
+} from './presentation'
 
 describe('math practice current-target presentation', () => {
   it('keeps 87 anchored to the current membership decision', () => {
@@ -18,6 +23,29 @@ describe('math practice current-target presentation', () => {
       .toBe('\\overline{A}\\cap B')
     expect(mathPracticeTargetForBlank('math-practice-094', 'math-practice-094-complement-a-union-b')?.latex)
       .toBe('\\overline{A\\cup B}')
+  })
+
+  it('encodes only the previous results that 94 actually reuses', () => {
+    expect(mathPracticeUsesSubproblemCompression('math-practice-094')).toBe(true)
+    expect(mathPracticeUsesSubproblemCompression('math-practice-087')).toBe(false)
+
+    expect(mathPracticeDependencyTargets('math-practice-094', 's3').map((target) => target.id)).toEqual(['s1'])
+    expect(mathPracticeDependencyTargets('math-practice-094', 's4').map((target) => target.id)).toEqual(['s2'])
+    expect(mathPracticeDependencyTargets('math-practice-094', 's5').map((target) => target.id)).toEqual(['s1', 's2'])
+    expect(mathPracticeDependencyTargets('math-practice-094', 's6').map((target) => target.id)).toEqual(['s1', 's2'])
+    expect(mathPracticeDependencyTargets('math-practice-094', 's7')).toEqual([])
+  })
+
+  it('stores reusable result nodes for 94 without duplicating the derivation', () => {
+    const targets = mathPracticeTargetsForQuestion('math-practice-094')
+    const s1 = targets.find((target) => target.id === 's1')
+    const s2 = targets.find((target) => target.id === 's2')
+    expect(s1?.result).toEqual({
+      blankId: 'a-complement',
+      label: { ja: '(1) の結果', zh: '(1) 的结果' },
+      latexPrefix: '\\overline{A}=',
+    })
+    expect(s2?.result?.blankId).toBe('b-complement')
   })
 
   it('makes the three goals of 97 explicit', () => {

@@ -4,6 +4,12 @@ export type MathPracticeTarget = {
   label?: { ja: string; zh: string }
   latex?: string
   blankIds: readonly string[]
+  dependsOn?: readonly string[]
+  result?: {
+    blankId: string
+    label: { ja: string; zh: string }
+    latexPrefix?: string
+  }
 }
 
 const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
@@ -51,36 +57,50 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
       kicker: { ja: '今の問い｜(1)', zh: '当前问题｜(1)' },
       latex: '\\overline{A}',
       blankIds: ['a-complement'],
+      result: {
+        blankId: 'a-complement',
+        label: { ja: '(1) の結果', zh: '(1) 的结果' },
+        latexPrefix: '\\overline{A}=',
+      },
     },
     {
       id: 's2',
       kicker: { ja: '今の問い｜(2)', zh: '当前问题｜(2)' },
       latex: '\\overline{B}',
       blankIds: ['b-complement'],
+      result: {
+        blankId: 'b-complement',
+        label: { ja: '(2) の結果', zh: '(2) 的结果' },
+        latexPrefix: '\\overline{B}=',
+      },
     },
     {
       id: 's3',
       kicker: { ja: '今の問い｜(3)', zh: '当前问题｜(3)' },
       latex: '\\overline{A}\\cap B',
       blankIds: ['abar-intersection-b-meaning', 'abar-intersection-b'],
+      dependsOn: ['s1'],
     },
     {
       id: 's4',
       kicker: { ja: '今の問い｜(4)', zh: '当前问题｜(4)' },
       latex: 'A\\cup\\overline{B}',
       blankIds: ['a-union-bbar'],
+      dependsOn: ['s2'],
     },
     {
       id: 's5',
       kicker: { ja: '今の問い｜(5)', zh: '当前问题｜(5)' },
       latex: '\\overline{A}\\cap\\overline{B}',
       blankIds: ['abar-intersection-bbar'],
+      dependsOn: ['s1', 's2'],
     },
     {
       id: 's6',
       kicker: { ja: '今の問い｜(6)', zh: '当前问题｜(6)' },
       latex: '\\overline{A}\\cup\\overline{B}',
       blankIds: ['abar-union-bbar'],
+      dependsOn: ['s1', 's2'],
     },
     {
       id: 's7',
@@ -130,4 +150,21 @@ export function mathPracticeTargetForBlank(questionId: string, fullBlankId: stri
 
 export function mathPracticeTargetsForQuestion(questionId: string) {
   return targetsByQuestion[questionId] ?? []
+}
+
+
+export function mathPracticeTargetById(questionId: string, targetId: string) {
+  return targetsByQuestion[questionId]?.find((target) => target.id === targetId) ?? null
+}
+
+export function mathPracticeDependencyTargets(questionId: string, targetId: string) {
+  const target = mathPracticeTargetById(questionId, targetId)
+  if (!target?.dependsOn?.length) return []
+  return target.dependsOn
+    .map((dependencyId) => mathPracticeTargetById(questionId, dependencyId))
+    .filter((dependency): dependency is MathPracticeTarget => Boolean(dependency))
+}
+
+export function mathPracticeUsesSubproblemCompression(questionId: string) {
+  return questionId === 'math-practice-094'
 }

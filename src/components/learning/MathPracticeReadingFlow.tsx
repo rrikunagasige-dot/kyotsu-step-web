@@ -6,7 +6,13 @@ import type { LearningSession } from '../../domain/attempts'
 import { isLearningAnswerResolved } from '../../domain/learning'
 import type { Question } from '../../domain/questionSchema'
 import { useI18n } from '../../i18n/runtime'
-import { mathPracticeTargetForBlank, mathPracticeTargetsForQuestion } from '../../data/mathPractice/presentation'
+import {
+  mathPracticeDependencyTargets,
+  mathPracticeTargetForBlank,
+  mathPracticeTargetsForQuestion,
+  mathPracticeUsesSubproblemCompression,
+  type MathPracticeTarget,
+} from '../../data/mathPractice/presentation'
 
 function optionContent(question: Question, blankId: string, optionIds: string[]) {
   const blank = question.learning.blanks[blankId]
@@ -25,6 +31,7 @@ export function MathPracticeReadingFlow({ question, session, onSelect }: {
 }) {
   const { language, text } = useI18n()
   const [openBlankId, setOpenBlankId] = useState<string | null>(null)
+  const [expandedDependencyId, setExpandedDependencyId] = useState<string | null>(null)
   const interactive = useMemo(() => new Set(question.learning.variants[session.variant]), [question.learning.variants, session.variant])
 
   const firstUnresolvedIndex = question.learning.solutionFlow.findIndex((block) =>
@@ -44,6 +51,70 @@ export function MathPracticeReadingFlow({ question, session, onSelect }: {
     question.questionId,
     unresolvedBlankId ?? targets.at(-1)?.blankIds.at(-1),
   )
+  const usesSubproblemCompression = mathPracticeUsesSubproblemCompression(question.questionId)
+
+  const targetIdForFlowIndex = (index: number) => {
+    const block = question.learning.solutionFlow[index]
+    if (!block) return null
+    if (block.type === 'blank') return mathPracticeTargetForBlank(question.questionId, block.blankId)?.id ?? null
+
+    for (let cursor = index + 1; cursor < question.learning.solutionFlow.length; cursor += 1) {
+      const next = question.learning.solutionFlow[cursor]
+      if (next.type !== 'blank') continue
+      const target = mathPracticeTargetForBlank(question.questionId, next.blankId)
+      if (target) return target.id
+    }
+
+    for (let cursor = index - 1; cursor >= 0; cursor -= 1) {
+      const previous = question.learning.solutionFlow[cursor]
+      if (previous.type !== 'blank') continue
+      const target = mathPracticeTargetForBlank(question.questionId, previous.blankId)
+      if (target) return target.id
+    }
+    return null
+  }
+
+  const flowEntries = question.learning.solutionFlow.map((block, index) => ({ block, index }))
+  const renderedEntries = usesSubproblemCompression && currentTarget
+    ? flowEntries.filter(({ index }) =>
+        targetIdForFlowIndex(index) === currentTarget.id &&
+        (firstUnresolvedIndex === -1 || index <= firstUnresolvedIndex),
+      )
+    : flowEntries.filter(({ index }) => index <= visibleThrough)
+
+  const dependencyTargets = currentTarget
+    ? mathPracticeDependencyTargets(question.questionId, currentTarget.id)
+    : []
+
+  const fullBlankId = (localBlankId: string) => `${question.questionId}-${localBlankId}`
+  const dependencyResultResolved = (target: MathPracticeTarget) =>
+    Boolean(target.result && isLearningAnswerResolved(session.answers[fullBlankId(target.result.blankId)]))
+
+  const entriesForTarget = (target: MathPracticeTarget) =>
+    flowEntries.filter(({ index }) => targetIdForFlowIndex(index) === target.id)
+
+  const renderResolvedTarget = (target: MathPracticeTarget) => (
+    <div className="math-practice-dependency-detail" data-testid={`math-practice-dependency-detail-${target.id}`}>
+      {entriesForTarget(target).map(({ block }) => {
+        if (block.type === 'content') {
+          return (
+            <div className="math-practice-reading-content" key={block.id}>
+              <MathPracticeContentRenderer blocks={block.content} assets={question.assets} />
+            </div>
+          )
+        }
+        const blank = question.learning.blanks[block.blankId]
+        return (
+          <div className="math-practice-reading-line" key={block.id}>
+            <span><MathPracticeInlineText value={blank.prompt} /></span>
+            <div className="reading-inline-answer math-practice-inline-answer">
+              <MathPracticeContentRenderer blocks={correctContent(question, block.blankId)} assets={question.assets} />
+            </div>
+          </div>
+        )
+      })}
+    </div>
+  )
 
   return (
     <>
@@ -58,8 +129,40 @@ export function MathPracticeReadingFlow({ question, session, onSelect }: {
           )}
         </aside>
       )}
+
+      {usesSubproblemCompression && dependencyTargets.some(dependencyResultResolved) && (
+        <div className="math-practice-dependency-links" data-testid="math-practice-dependency-links">
+          <span className="math-practice-dependency-links__label">{text('前の小問から使う結果', '使用前面小题的结果')}</span>
+          {dependencyTargets.filter(dependencyResultResolved).map((dependency) => {
+            const result = dependency.result!
+            const resultBlankId = fullBlankId(result.blankId)
+            const expanded = expandedDependencyId === dependency.id
+            return (
+              <div className="math-practice-dependency-item" key={dependency.id}>
+                <div className="math-practice-dependency-summary">
+                  <button
+                    type="button"
+                    className="math-practice-dependency-link"
+                    data-testid={`math-practice-dependency-${dependency.id}`}
+                    aria-expanded={expanded}
+                    onClick={() => setExpandedDependencyId(expanded ? null : dependency.id)}
+                  >
+                    {result.label[language]}
+                  </button>
+                  <span className="math-practice-dependency-result">
+                    {result.latexPrefix && <InlineMath math={result.latexPrefix} />}
+                    <MathPracticeContentRenderer blocks={correctContent(question, resultBlankId)} assets={question.assets} />
+                  </span>
+                </div>
+                {expanded && renderResolvedTarget(dependency)}
+              </div>
+            )
+          })}
+        </div>
+      )}
+
       <article className="math-practice-reading-flow" data-testid="math-practice-reading-flow">
-      {question.learning.solutionFlow.slice(0, visibleThrough + 1).map((block) => {
+      {renderedEntries.map(({ block }) => {
         if (block.type === 'content') {
           return (
             <div className="math-practice-reading-content" key={block.id}>

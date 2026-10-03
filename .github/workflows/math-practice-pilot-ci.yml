@@ -8,6 +8,7 @@ on:
       - 'chatgpt/math-practice-entry-architecture'
       - 'chatgpt/math-theme-direct-entry'
       - 'chatgpt/math-87-textbook-like-design'
+      - 'chatgpt/math-94-97-textbook-flow'
   pull_request:
     paths:
       - 'src/data/mathPractice/**'

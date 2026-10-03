@@ -44,6 +44,7 @@ export function LearningSessionPage() {
   const mathTopicIndex = question
     ? mathTopicQuestions.findIndex((candidate) => candidate.questionId === question.questionId)
     : -1
+  const nextMathTopicQuestion = mathTopicIndex >= 0 ? mathTopicQuestions[mathTopicIndex + 1] : undefined
   const [choiceOpen, setChoiceOpen] = useState(false)
   const [explanationBlankId, setExplanationBlankId] = useState<string | null>(null)
   const [explanationStartedAt, setExplanationStartedAt] = useState(0)
@@ -51,7 +52,7 @@ export function LearningSessionPage() {
   const [screen, setScreen] = useState<CommonTestScreen>('original')
 
   const isCommonTest = question?.learning.presentation === 'common-test'
-  const usesTextbookLikeMathDesign = question?.questionId === 'math-practice-087'
+  const usesTextbookLikeMathDesign = Boolean(mathPracticeTopic && question?.learning.presentation === 'standard')
   const finalBlankId = question?.learning.finalBlankId
   const enabledBlankIds = question && session ? activeBlankIds(question, session.variant) : []
   const guideBlankIds = finalBlankId ? enabledBlankIds.filter((id) => id !== finalBlankId) : enabledBlankIds
@@ -291,11 +292,43 @@ export function LearningSessionPage() {
             <h2 className="solution-heading">{text('考えながら解く', '边思考边解答')}</h2>
             {usesTextbookLikeMathDesign
               ? (
-                <MathPracticeReadingFlow
-                  question={question}
-                  session={session}
-                  onSelect={(blankId, optionId) => answerLearning(sessionId, blankId, [optionId])}
-                />
+                <>
+                  <MathPracticeReadingFlow
+                    question={question}
+                    session={session}
+                    onSelect={(blankId, optionId) => answerLearning(sessionId, blankId, [optionId])}
+                  />
+                  {session.completedAt && (
+                    <div className="math-practice-complete-panel" data-testid="math-practice-complete">
+                      <div>
+                        <strong>{text('この問題は完了です', '本题已完成')}</strong>
+                        <small>
+                          {nextMathTopicQuestion
+                            ? text('そのまま次の問題へ進めます。', '可以直接进入下一题。')
+                            : text('このテーマの現在の問題はここまでです。', '当前主题的题目已完成。')}
+                        </small>
+                      </div>
+                      {nextMathTopicQuestion
+                        ? (
+                          <RaisedButton
+                            className="primary-button"
+                            data-testid="math-practice-next-question"
+                            onClick={() => openMathTopicQuestion(nextMathTopicQuestion.questionId)}
+                          >
+                            {text('次の問題を解く', '做下一题')}
+                          </RaisedButton>
+                        )
+                        : (
+                          <RaisedButton
+                            data-testid="math-practice-back-to-themes"
+                            onClick={() => navigate('/learning/setup?mode=practice&subject=math-1a')}
+                          >
+                            {text('テーマ選択へ戻る', '返回主题选择')}
+                          </RaisedButton>
+                        )}
+                    </div>
+                  )}
+                </>
               )
               : (
                 <LearningFlowRenderer question={question} session={session} onActivate={activate} onExplain={showExplanation} onRevisit={revisitLearning.bind(null, sessionId)} />

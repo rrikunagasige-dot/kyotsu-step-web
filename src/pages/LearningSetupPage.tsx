@@ -19,6 +19,15 @@ import {
   physicsTopicLabel,
   type PhysicsTopicId,
 } from '../data/physicsTaxonomy'
+import {
+  buildMathPracticeTopicSummary,
+  mathPracticeProblemNumber,
+  mathPracticeTaxonomy,
+  mathPracticeTopicFlow,
+  mathPracticeTopicForQuestion,
+  mathPracticeTopicLabel,
+  type MathPracticeTopicId,
+} from '../data/mathPracticeTaxonomy'
 
 type LearningMode = 'textbook' | 'practice'
 
@@ -42,6 +51,7 @@ export function LearningSetupPage() {
   const { language, text } = useI18n()
   const catalog = useMemo(() => getQuestionCatalog(customQuestions, language), [customQuestions, language])
   const physicsSummary = useMemo(() => buildPhysicsTopicSummary(catalog), [catalog])
+  const mathSummary = useMemo(() => buildMathPracticeTopicSummary(catalog), [catalog])
 
   const requestedTopicParam = searchParams.get('topic')
   const requestedTopic = isPhysicsTopicId(requestedTopicParam) ? requestedTopicParam : null
@@ -52,23 +62,30 @@ export function LearningSetupPage() {
   const [mode, setMode] = useState<LearningMode>(requestedMode === 'practice' ? 'practice' : 'textbook')
   const [subject, setSubject] = useState<Question['subject']>(requestedSubject === 'math-1a' ? 'math-1a' : 'physics')
   const [activeTopic, setActiveTopic] = useState<PhysicsTopicId | null>(requestedTopic)
+  const [activeMathTopic, setActiveMathTopic] = useState<MathPracticeTopicId | null>(null)
   const [variant, setVariant] = useState<LearningVariant>('detailed')
   const [questionId, setQuestionId] = useState('')
 
-  const questionsFor = (nextSubject: Question['subject'], topic: PhysicsTopicId | null = null) =>
+  const questionsFor = (
+    nextSubject: Question['subject'],
+    physicsTopic: PhysicsTopicId | null = null,
+    mathTopic: MathPracticeTopicId | null = null,
+  ) =>
     catalog.filter((question) =>
       question.subject === nextSubject &&
       question.status === 'published' &&
-      (nextSubject !== 'physics' || !topic || physicsTopicForQuestion(question) === topic),
+      (nextSubject !== 'physics' || !physicsTopic || physicsTopicForQuestion(question) === physicsTopic) &&
+      (nextSubject !== 'math-1a' || !mathTopic || mathPracticeTopicForQuestion(question) === mathTopic),
     )
 
   const subjectQuestions = useMemo(
     () => catalog.filter((question) =>
       question.subject === subject &&
       question.status === 'published' &&
-      (subject !== 'physics' || !activeTopic || physicsTopicForQuestion(question) === activeTopic),
+      (subject !== 'physics' || (activeTopic !== null && physicsTopicForQuestion(question) === activeTopic)) &&
+      (subject !== 'math-1a' || (activeMathTopic !== null && mathPracticeTopicForQuestion(question) === activeMathTopic)),
     ),
-    [activeTopic, catalog, subject],
+    [activeMathTopic, activeTopic, catalog, subject],
   )
 
   useEffect(() => {
@@ -79,14 +96,14 @@ export function LearningSetupPage() {
 
   useEffect(() => {
     if (mode !== 'practice') return
-    if (subject === 'physics' && !activeTopic) {
+    if ((subject === 'physics' && !activeTopic) || (subject === 'math-1a' && !activeMathTopic)) {
       if (questionId) setQuestionId('')
       return
     }
     if (!subjectQuestions.some((question) => question.questionId === questionId)) {
       setQuestionId(subjectQuestions[0]?.questionId ?? '')
     }
-  }, [activeTopic, mode, questionId, subject, subjectQuestions])
+  }, [activeMathTopic, activeTopic, mode, questionId, subject, subjectQuestions])
 
   const variants: { value: LearningVariant; label: string; description: string }[] = [
     { value: 'detailed', label: text('詳細穴埋め', '详细引导'), description: text('手順を細かく確認', '逐步确认完整过程') },
@@ -97,7 +114,8 @@ export function LearningSetupPage() {
   const changeSubject = (next: Question['subject']) => {
     setSubject(next)
     setActiveTopic(null)
-    setQuestionId(next === 'math-1a' ? questionsFor(next)[0]?.questionId ?? '' : '')
+    setActiveMathTopic(null)
+    setQuestionId('')
   }
 
   const changeMode = (next: LearningMode) => {
@@ -105,6 +123,7 @@ export function LearningSetupPage() {
     if (next === 'textbook') {
       setSubject('physics')
       setActiveTopic(null)
+      setActiveMathTopic(null)
       setQuestionId('')
       return
     }
@@ -113,13 +132,20 @@ export function LearningSetupPage() {
     const nextTopic = nextSubject === 'physics' ? requestedTopic : null
     setSubject(nextSubject)
     setActiveTopic(nextTopic)
-    setQuestionId(nextSubject === 'physics' && !nextTopic ? '' : questionsFor(nextSubject, nextTopic)[0]?.questionId ?? '')
+    setActiveMathTopic(null)
+    setQuestionId(nextSubject === 'physics' && nextTopic ? questionsFor(nextSubject, nextTopic)[0]?.questionId ?? '' : '')
   }
 
   const selectPhysicsTopic = (topic: PhysicsTopicId) => {
     if (physicsSummary.counts[topic] <= 0) return
     setActiveTopic(topic)
     setQuestionId(questionsFor('physics', topic)[0]?.questionId ?? '')
+  }
+
+  const selectMathTopic = (topic: MathPracticeTopicId) => {
+    if (mathSummary.counts[topic] <= 0) return
+    setActiveMathTopic(topic)
+    setQuestionId(questionsFor('math-1a', null, topic)[0]?.questionId ?? '')
   }
 
   const begin = () => {
@@ -337,16 +363,71 @@ export function LearningSetupPage() {
           )}
         </>
       ) : (
-        <NumberedSection number="03" title={text('問題', '题目')}>
-          <label className="field-label" htmlFor="learning-question">{text('学習する問題', '选择学习题目')}</label>
-          <select id="learning-question" className="select-control" value={questionId} onChange={(event) => setQuestionId(event.target.value)}>
-            {subjectQuestions.map((question) => <option key={question.questionId} value={question.questionId}>{question.title}</option>)}
-          </select>
-        </NumberedSection>
+        <>
+          <NumberedSection
+            number="03"
+            title={text('数学の分野', '数学领域')}
+            description={text('大きな学習テーマを選び、その中から問題番号を選びます。', '先选择学习主题，再从主题中选择题号。')}
+          >
+            <div className="physics-taxonomy-board" data-testid="math-taxonomy-board">
+              {mathPracticeTaxonomy.map((domain) => (
+                <section className="physics-domain-group" key={domain.id} data-testid={`math-domain-${domain.id}`}>
+                  <header className="physics-domain-heading">
+                    <span aria-hidden="true" />
+                    <h3>{domain.label[language]}</h3>
+                    <span aria-hidden="true" />
+                  </header>
+                  <div className="physics-topic-grid">
+                    {domain.topics.map((topic) => {
+                      const count = mathSummary.counts[topic.id]
+                      const selected = activeMathTopic === topic.id
+                      return (
+                        <button
+                          type="button"
+                          className={`physics-topic-card math-topic-card${count === 0 ? ' physics-topic-card--empty' : ''}${selected ? ' physics-topic-card--selected' : ''}`}
+                          data-testid={`math-topic-${topic.id}`}
+                          aria-pressed={selected}
+                          disabled={count === 0}
+                          key={topic.id}
+                          onClick={() => selectMathTopic(topic.id)}
+                        >
+                          <strong>{topic.label[language]}</strong>
+                          <span className="math-topic-flow">{topic.flow[language]}</span>
+                          <small aria-label={text(`${count}問`, `${count}题`)}>{count}</small>
+                        </button>
+                      )
+                    })}
+                  </div>
+                </section>
+              ))}
+            </div>
+          </NumberedSection>
+
+          {activeMathTopic && (
+            <NumberedSection number="04" title={text('問題', '题目')}>
+              <div className="topic-filter-note" data-testid="math-topic-filter">
+                <span>{text('選択中のテーマ', '当前主题')}</span>
+                <div className="math-topic-filter-copy">
+                  <strong>{mathPracticeTopicLabel(activeMathTopic, language)}</strong>
+                  <small>{mathPracticeTopicFlow(activeMathTopic, language)}</small>
+                </div>
+                <small>{text(`${subjectQuestions.length} 問`, `${subjectQuestions.length} 题`)}</small>
+              </div>
+              <label className="field-label" htmlFor="learning-question">{text('問題番号', '题号')}</label>
+              <select id="learning-question" className="select-control" value={questionId} onChange={(event) => setQuestionId(event.target.value)}>
+                {subjectQuestions.map((question) => (
+                  <option key={question.questionId} value={question.questionId}>
+                    {mathPracticeProblemNumber(question.questionId) ?? question.title}
+                  </option>
+                ))}
+              </select>
+            </NumberedSection>
+          )}
+        </>
       )}
 
       {mode === 'practice' && SHOW_GUIDANCE_LEVEL && (
-        <NumberedSection number={subject === 'physics' ? '05' : '04'} title={text('誘導レベル', '引导强度')}>
+        <NumberedSection number="05" title={text('誘導レベル', '引导强度')}>
           <div className="choice-grid" role="radiogroup" aria-label={text('誘導レベル', '引导强度')}>
             {variants.map((item) => (
               <button type="button" role="radio" aria-checked={variant === item.value} key={item.value} onClick={() => setVariant(item.value)}>

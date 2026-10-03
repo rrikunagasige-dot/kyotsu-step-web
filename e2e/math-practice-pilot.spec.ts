@@ -268,6 +268,37 @@ test('finishing 87 shows a direct next-problem button and opens 88', async ({ pa
 })
 
 
+test('88 keeps the stop-point answer hidden until the learner reasons it out, then compresses (1)', async ({ page }) => {
+  await page.getByTestId('math-exercise-basic').click()
+  await page.getByTestId('math-topic-organize-sets').click()
+  await page.getByTestId('math-topic-question-2').click()
+
+  await expect(page.getByRole('heading', { name: '88｜集合の表し方' })).toBeVisible()
+  const currentTarget = page.getByTestId('math-practice-current-target')
+  const readingFlow = page.getByTestId('math-practice-reading-flow')
+
+  await expect(currentTarget).toContainText('今の問い｜(1)')
+  await expect(readingFlow).toContainText('36の正の約数を漏れなく探す')
+  await expect(page.getByTestId('blank-math-practice-088-p1-strategy')).toContainText('選択')
+  await expect(page.getByTestId('blank-math-practice-088-p1-stop')).toHaveCount(0)
+
+  await page.getByTestId('blank-math-practice-088-p1-strategy').click()
+  await page.getByTestId('option-math-practice-088-p1-strategy-factor-pairs').click()
+
+  await expect(page.getByTestId('blank-math-practice-088-p1-stop')).toContainText('選択')
+  await expect(readingFlow).toContainText('4×9')
+  await expect(readingFlow).not.toContainText('6×6')
+
+  await page.getByTestId('blank-math-practice-088-p1-stop').click()
+  await page.getByTestId('option-math-practice-088-p1-stop-six-six').click()
+  await page.getByTestId('blank-math-practice-088-p1-result').click()
+  await page.getByTestId('option-math-practice-088-p1-result-correct').click()
+
+  await expect(currentTarget).toContainText('今の問い｜(2)')
+  await expect(readingFlow).not.toContainText('36の正の約数を漏れなく探す')
+  await expect(page.getByTestId('math-practice-dependency-links')).toHaveCount(0)
+})
+
 test('93 reuses only the prepared A B C result block across its two subproblems', async ({ page }) => {
   await page.getByTestId('math-exercise-basic').click()
   await page.getByTestId('math-topic-organize-sets').click()

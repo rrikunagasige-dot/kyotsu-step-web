@@ -584,3 +584,57 @@ Repair rule:
 - check both mobile and desktop.
 
 This follows the same debugging order as MR11/MR13: source correctness → tokenization → normalization → React surface → browser visual QA.
+
+
+---
+
+## 20. 2026-10-03 — Math practice TypeScript TeX escape loss
+
+Observed while auditing problem 88 before expanding the next batch.
+
+Source strings in `src/data/mathPractice/setsBatchA.ts` had been authored with single backslashes inside ordinary TypeScript string literals, for example:
+
+```ts
+latex: '1\times36,\;2\times18'
+```
+
+In a TypeScript/JavaScript string literal, this is not equivalent to the intended learner-facing TeX source. In particular, `\t` becomes a tab character at runtime, so `\times` degraded into a tab followed by `imes`; other commands such as `\ldots`, `\text`, `\le` and spacing commands could also lose their TeX backslash.
+
+Symptom seen in browser-test text:
+
+```text
+1imes36,;2imes18,...;ldots
+```
+
+Classification:
+**MR15 / authoring-string escape defect**
+
+Root cause:
+- valid LaTeX was conceptually authored,
+- but the host-language string literal was not escaped,
+- therefore the corruption occurred **before** the math renderer/tokenizer.
+
+Repair rule:
+
+```ts
+// Wrong in an ordinary TS string
+latex: '1\times36'
+
+// Correct source spelling
+latex: '1\\times36'
+```
+
+Hard gate for Math-practice source files:
+1. every explicit `type: 'latex'` string must preserve TeX backslashes at runtime,
+2. unit tests must reject tab-character corruption and require representative commands such as `\\text`, `\\times`, `\\ldots`,
+3. browser tests must verify learner-visible mathematical output rather than only build success,
+4. when this defect is found in one generated batch, scan the sibling questions from the same authoring path before declaring the batch visually valid.
+
+Repair scope after the 88 pilot gate passed:
+- problem 88 first, then the same defect class scanned across 89–96
+- PR #16
+- source-file regression forbids isolated single TeX backslashes in `src/data/mathPractice/setsBatchA.ts`
+- runtime regression checks representative `\\text`, `\\times`, `\\ldots` commands
+- browser regression covers problem-88 leakage/compression on mobile and desktop
+
+Do not “fix” this by replacing the mathematics with plain prose. Repair the host-language escaping.

@@ -155,6 +155,41 @@ describe('math practice current-target presentation', () => {
     expect(mathPracticeUsesSubproblemCompression('math-practice-118')).toBe(true)
   })
 
+  it('models 119 as current-item substitution with extra stages only for composite inputs', () => {
+    expect(mathPracticeTargetsForQuestion('math-practice-119').map((target) => target.id)).toEqual([
+      'basis',
+      'f0',
+      'f2',
+      'fm1',
+      'fa',
+      'fa1-substitute',
+      'fa1-simplify',
+      'g0',
+      'g3',
+      'gm2',
+      'gma-substitute',
+      'gma-square',
+      'gma-simplify',
+      'ga1-substitute',
+      'ga1-expand',
+      'ga1-simplify',
+    ])
+
+    expect(mathPracticeDependencyTargets('math-practice-119', 'f0').map((target) => target.id))
+      .toEqual(['basis'])
+    expect(mathPracticeDependencyTargets('math-practice-119', 'fa1-simplify').map((target) => target.id))
+      .toEqual(['fa1-substitute'])
+    expect(mathPracticeDependencyTargets('math-practice-119', 'gma-square').map((target) => target.id))
+      .toEqual(['gma-substitute'])
+    expect(mathPracticeDependencyTargets('math-practice-119', 'gma-simplify').map((target) => target.id))
+      .toEqual(['gma-square'])
+    expect(mathPracticeDependencyTargets('math-practice-119', 'ga1-expand').map((target) => target.id))
+      .toEqual(['ga1-substitute'])
+    expect(mathPracticeDependencyTargets('math-practice-119', 'ga1-simplify').map((target) => target.id))
+      .toEqual(['ga1-expand'])
+    expect(mathPracticeUsesSubproblemCompression('math-practice-119')).toBe(true)
+  })
+
   it('enables subproblem compression for the full reviewed set batch 87-97', () => {
     for (let problemNo = 87; problemNo <= 97; problemNo += 1) {
       expect(mathPracticeUsesSubproblemCompression(`math-practice-${String(problemNo).padStart(3, '0')}`)).toBe(true)

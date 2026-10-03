@@ -13,13 +13,13 @@ describe('math practice 87-120 staged integration', () => {
     expect(mathPractice87To120Catalog).toHaveLength(34)
     expect(mathPractice87To120Catalog[0]?.problemNo).toBe(87)
     expect(mathPractice87To120Catalog.at(-1)?.problemNo).toBe(120)
-    expect(mathPracticePilotCatalog.map((entry) => entry.problemNo)).toEqual([87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118])
+    expect(mathPracticePilotCatalog.map((entry) => entry.problemNo)).toEqual([87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119])
   })
 
   it('publishes the reviewed set, proposition and proof pilots in source order', () => {
     expect(mathPracticePilotSource.map((question) => question.problemNo)).toEqual([87, 94, 97])
     expect(mathPracticePilotQuestions.map((question) => question.questionId)).toEqual(
-      Array.from({ length: 32 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
+      Array.from({ length: 33 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
     )
   })
 
@@ -57,6 +57,7 @@ describe('math practice 87-120 staged integration', () => {
       '116｜有理数と無理数',
       '117｜無理数を含む等式',
       '118｜関数とは何か',
+      '119｜関数の値',
     ])
   })
 
@@ -517,6 +518,37 @@ describe('math practice 87-120 staged integration', () => {
       .toBe('counterexample')
     expect(question?.blanks.find((blank) => blank.id === 'p3')?.choices.find((choice) => choice.correct)?.id)
       .toBe('function')
+  })
+
+  it('authors 119 as current-item substitution with extra stages only for composite inputs', () => {
+    const question = mathPracticeFunctionsBatchDSource.find((item) => item.problemNo === 119)
+    expect(question).toBeDefined()
+    expect(question?.blanks.map((blank) => blank.id)).toEqual([
+      'rule',
+      'f0',
+      'f2',
+      'fm1',
+      'fa',
+      'fa1-substitute',
+      'fa1-simplify',
+      'g0',
+      'g3',
+      'gm2',
+      'gma-substitute',
+      'gma-square',
+      'gma-simplify',
+      'ga1-substitute',
+      'ga1-expand',
+      'ga1-simplify',
+    ])
+    expect(question?.blanks.find((blank) => blank.id === 'rule')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('all-x')
+    expect(question?.blanks.find((blank) => blank.id === 'fa1-substitute')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('correct')
+    expect(question?.blanks.find((blank) => blank.id === 'gma-square')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('positive')
+    expect(question?.blanks.find((blank) => blank.id === 'ga1-simplify')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('correct')
   })
 
   it('keeps Japanese and Chinese grading structures aligned', () => {

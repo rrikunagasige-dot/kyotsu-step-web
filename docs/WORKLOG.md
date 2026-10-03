@@ -14,3 +14,16 @@
 - 最终 `check:all`：18 项单元测试、22 条 Playwright E2E、类型、ESLint 和生产构建全部通过；阶段 0–12 均 PASS。
 - 阶段 13：新增全局日文/中文切换、持久化语言偏好、中文界面与 4 道独立中文题目；保证双题库稳定 ID/判分逻辑一致，答题中切换不重建 session；
 - 阶段 13 首轮回归发现语言按钮触控高度不足和管理页变量重名，修复并补回归；最终 `check:all` 为 21 项单元测试、24 条 Playwright E2E、类型、ESLint、生产构建全部通过。
+
+
+## 2026-10-04 — Math practice 119 checkpoint
+
+- 87–118: main へ統合済み。
+- 119 「関数の値」: 日本語/中国語source、current-item presentation、catalog/taxonomy、unit tests、E2E を実装。
+- 119の設計原則: 単純な数値代入は1段、複合入力 f(a+1), g(-a), g(a-1) のみ「代入→必要な展開/符号処理→整理」に分ける。
+- 10小問は current-item-only 表示。前の小問結果を convenience link として残さない。
+- 問題一覧は mobile overflow を避けるため、同一LaTeX block内で5行×2項に折り返し。
+- source fidelity: 原典 pages 71–73 と照合済み。式・小問順・段階化すべて一致。
+- PR #41。差分は Math 119 関連のみで physics 混入なし。
+- 最新CI: typecheck PASS / focused tests PASS / build PASS / mobile smoke PASS。desktop smoke 実行中。
+- 120: 別prep branchで no-blank solution、thinking nodes、dependency graph、answer leakage、stable blank IDs/choices、最終87–120 QA planまで準備済み。本実装は119 merge後。

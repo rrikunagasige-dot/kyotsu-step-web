@@ -1491,6 +1491,143 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
       dependsOn: ['basis'],
     },
   ],
+  'math-practice-119': [
+    {
+      id: 'basis',
+      kicker: { ja: 'まず確認', zh: '先确认' },
+      label: { ja: 'すべてのxを同じ入力で置き換える', zh: '用同一个输入替换所有x' },
+      blankIds: ['rule'],
+      result: {
+        blankId: 'rule',
+        label: { ja: '代入のルール', zh: '代入规则' },
+      },
+    },
+    {
+      id: 'f0',
+      kicker: { ja: '今の問い｜(1) f(0)', zh: '当前问题｜(1) f(0)' },
+      label: { ja: 'x=0を代入して計算する', zh: '代入x=0并计算' },
+      blankIds: ['f0'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 'f2',
+      kicker: { ja: '今の問い｜(2) f(2)', zh: '当前问题｜(2) f(2)' },
+      label: { ja: 'x=2を代入して計算する', zh: '代入x=2并计算' },
+      blankIds: ['f2'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 'fm1',
+      kicker: { ja: '今の問い｜(3) f(-1)', zh: '当前问题｜(3) f(-1)' },
+      label: { ja: '負数を括弧付きで代入する', zh: '用括号代入负数' },
+      blankIds: ['fm1'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 'fa',
+      kicker: { ja: '今の問い｜(4) f(a)', zh: '当前问题｜(4) f(a)' },
+      label: { ja: 'xをaで置き換える', zh: '用a替换x' },
+      blankIds: ['fa'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 'fa1-substitute',
+      kicker: { ja: '今の問い｜(5) 代入', zh: '当前问题｜(5) 代入' },
+      label: { ja: 'a+1を括弧ごと代入する', zh: '把a+1整体代入' },
+      blankIds: ['fa1-substitute'],
+      dependsOn: ['basis'],
+      result: {
+        blankId: 'fa1-substitute',
+        label: { ja: '(5) 代入後の式', zh: '(5) 代入后的式子' },
+      },
+    },
+    {
+      id: 'fa1-simplify',
+      kicker: { ja: '今の問い｜(5) 整理', zh: '当前问题｜(5) 整理' },
+      label: { ja: '展開してf(a+1)を求める', zh: '展开并求f(a+1)' },
+      blankIds: ['fa1-simplify'],
+      dependsOn: ['fa1-substitute'],
+    },
+    {
+      id: 'g0',
+      kicker: { ja: '今の問い｜(6) g(0)', zh: '当前问题｜(6) g(0)' },
+      label: { ja: '2か所のxを0で置き換える', zh: '把两处x都替换为0' },
+      blankIds: ['g0'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 'g3',
+      kicker: { ja: '今の問い｜(7) g(3)', zh: '当前问题｜(7) g(3)' },
+      label: { ja: '2か所のxを3で置き換える', zh: '把两处x都替换为3' },
+      blankIds: ['g3'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 'gm2',
+      kicker: { ja: '今の問い｜(8) g(-2)', zh: '当前问题｜(8) g(-2)' },
+      label: { ja: '負数-2を2か所とも括弧付きで代入する', zh: '两处都用括号代入-2' },
+      blankIds: ['gm2'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 'gma-substitute',
+      kicker: { ja: '今の問い｜(9) 代入', zh: '当前问题｜(9) 代入' },
+      label: { ja: '-aを2か所とも括弧付きで代入する', zh: '两处都用括号代入-a' },
+      blankIds: ['gma-substitute'],
+      dependsOn: ['basis'],
+      result: {
+        blankId: 'gma-substitute',
+        label: { ja: '(9) 代入後の式', zh: '(9) 代入后的式子' },
+      },
+    },
+    {
+      id: 'gma-square',
+      kicker: { ja: '今の問い｜(9) 2乗', zh: '当前问题｜(9) 平方' },
+      label: { ja: '(-a)²の符号を整理する', zh: '整理(-a)²的符号' },
+      blankIds: ['gma-square'],
+      dependsOn: ['gma-substitute'],
+      result: {
+        blankId: 'gma-square',
+        label: { ja: '負号を含む2乗', zh: '带负号的平方' },
+      },
+    },
+    {
+      id: 'gma-simplify',
+      kicker: { ja: '今の問い｜(9) 整理', zh: '当前问题｜(9) 整理' },
+      label: { ja: '同類項をまとめてg(-a)を求める', zh: '合并同类项求g(-a)' },
+      blankIds: ['gma-simplify'],
+      dependsOn: ['gma-square'],
+    },
+    {
+      id: 'ga1-substitute',
+      kicker: { ja: '今の問い｜(10) 代入', zh: '当前问题｜(10) 代入' },
+      label: { ja: 'a-1を2か所とも括弧付きで代入する', zh: '两处都把a-1整体代入' },
+      blankIds: ['ga1-substitute'],
+      dependsOn: ['basis'],
+      result: {
+        blankId: 'ga1-substitute',
+        label: { ja: '(10) 代入後の式', zh: '(10) 代入后的式子' },
+      },
+    },
+    {
+      id: 'ga1-expand',
+      kicker: { ja: '今の問い｜(10) 展開', zh: '当前问题｜(10) 展开' },
+      label: { ja: '(a-1)²を展開する', zh: '展开(a-1)²' },
+      blankIds: ['ga1-expand'],
+      dependsOn: ['ga1-substitute'],
+      result: {
+        blankId: 'ga1-expand',
+        label: { ja: '(a-1)²の展開', zh: '(a-1)²的展开' },
+      },
+    },
+    {
+      id: 'ga1-simplify',
+      kicker: { ja: '今の問い｜(10) 整理', zh: '当前问题｜(10) 整理' },
+      label: { ja: '全体を整理してg(a-1)を求める', zh: '整理全式求g(a-1)' },
+      blankIds: ['ga1-simplify'],
+      dependsOn: ['ga1-expand'],
+    },
+  ],
 }
 
 function localBlankId(questionId: string, fullBlankId: string) {
@@ -1564,5 +1701,6 @@ export function mathPracticeUsesSubproblemCompression(questionId: string) {
     'math-practice-116',
     'math-practice-117',
     'math-practice-118',
+    'math-practice-119',
   ].includes(questionId)
 }

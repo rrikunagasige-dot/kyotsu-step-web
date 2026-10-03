@@ -1,4 +1,5 @@
 import { validateTextbookUnits } from '../../../../domain/textbookSchema'
+import { setOutsideFigures, setOutsideItems, setOutsideReadingFlow } from './setOutsideSlice'
 
 const rawMathSetUnit = {
   schemaVersion: '1.1' as const,
@@ -12,14 +13,14 @@ const rawMathSetUnit = {
     chapterTitle: '集合と命題',
     unitCode: '3SET',
     orderInChapter: 1,
-    sourcePages: [86, 87, 88],
+    sourcePages: [86, 87, 88, 89, 90],
   },
   title: '集合',
   subtitle: '具体的な数から始めて、集合・要素・記号・表し方を一つずつ作る。',
   source: {
     type: 'reference' as const,
     label: '啓林館版 深進数学I 第3章「集合と命題」1 集合',
-    rightsNote: '教科書ガイド p.109 付近（教科書 p.86〜87 相当）と、ユーザー承認済み教科書モード本文をApp用に構造化',
+    rightsNote: '教科書ガイド p.109〜113 付近（教科書 p.86〜90 相当）と、ユーザー承認済み教科書モード本文をApp用に構造化',
   },
   objectives: [
     '条件を満たすものを集合として捉える',
@@ -27,6 +28,8 @@ const rawMathSetUnit = {
     '集合の2つの表し方と有限・無限の違いを理解する',
     '共通部分・和集合を「両方」「少なくとも一方」の意味から判断する',
     '部分集合・空集合・集合の相等を具体例から理解する',
+    '全体集合を決めた上で補集合を意味から求める',
+    'ド・モルガンの法則を図と要素の両方から確認する',
   ],
   sections: [
     {
@@ -64,6 +67,7 @@ const rawMathSetUnit = {
           caption: '「要素が全部入っているか」が部分集合を判断する基準になる。',
           overlays: [],
         },
+        ...setOutsideFigures,
       ],
       readingFlow: [
         {
@@ -539,7 +543,8 @@ const rawMathSetUnit = {
           parts: [
             { type: 'text' as const, text: 'ここまでで、集合の中に何があるか、集合どうしがどこまで重なり、どこまで含まれるかを見た。次は「集合に入っていないもの」を考える。' },
           ],
-        }
+        },
+        ...setOutsideReadingFlow,
       ],
       items: [
         {

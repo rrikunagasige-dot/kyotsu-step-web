@@ -11,13 +11,13 @@ describe('math practice 87-120 staged integration', () => {
     expect(mathPractice87To120Catalog).toHaveLength(34)
     expect(mathPractice87To120Catalog[0]?.problemNo).toBe(87)
     expect(mathPractice87To120Catalog.at(-1)?.problemNo).toBe(120)
-    expect(mathPracticePilotCatalog.map((entry) => entry.problemNo)).toEqual([87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102])
+    expect(mathPracticePilotCatalog.map((entry) => entry.problemNo)).toEqual([87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103])
   })
 
   it('publishes the reviewed set batch plus proposition pilots in source order', () => {
     expect(mathPracticePilotSource.map((question) => question.problemNo)).toEqual([87, 94, 97])
     expect(mathPracticePilotQuestions.map((question) => question.questionId)).toEqual(
-      Array.from({ length: 16 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
+      Array.from({ length: 17 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
     )
   })
 
@@ -39,6 +39,7 @@ describe('math practice 87-120 staged integration', () => {
       '100｜反例',
       '101｜条件の否定',
       '102｜「かつ」と「または」',
+      '103｜複合条件の否定',
     ])
   })
 
@@ -129,6 +130,25 @@ describe('math practice 87-120 staged integration', () => {
       .toBe('minus-one-two-open')
     expect(question?.blanks.find((blank) => blank.id === 'p4-result')?.choices.find((choice) => choice.correct)?.id)
       .toBe('minus-one-four-closed')
+  })
+
+  it('authors 103 as one semantic De Morgan rule plus five independent negations', () => {
+    const question = mathPracticePropositionsBatchBSource.find((item) => item.problemNo === 103)
+    expect(question).toBeDefined()
+    expect(question?.blanks.map((blank) => blank.id)).toEqual([
+      'rule',
+      'p1-result',
+      'p2-result',
+      'p3-result',
+      'p4-result',
+      'p5-result',
+    ])
+    expect(question?.blanks.find((blank) => blank.id === 'rule')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('de-morgan')
+    expect(question?.blanks.find((blank) => blank.id === 'p3-result')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('correct')
+    expect(question?.blanks.find((blank) => blank.id === 'p5-result')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('both-rational')
   })
 
   it('keeps Japanese and Chinese grading structures aligned', () => {

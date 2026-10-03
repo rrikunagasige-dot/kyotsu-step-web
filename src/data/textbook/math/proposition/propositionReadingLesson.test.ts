@@ -36,6 +36,23 @@ describe('math proposition-reading textbook unit', () => {
     expect(implicationDecision).toBeGreaterThan(indexes[indexes.length - 1])
   })
 
+
+  it('does not reveal the triangle counterexample before the learner chooses it', () => {
+    const flow = mathPropositionReadingUnit.sections[0].readingFlow
+    const choiceIndex = flow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'prop-p00b',
+      ),
+    )
+    const beforeChoice = flow.slice(0, choiceIndex).map((block) => {
+      if (block.type !== 'paragraph' && block.type !== 'formula') return ''
+      return block.parts.map((part) => part.type === 'text' ? part.text : '').join('')
+    }).join('\n')
+
+    expect(choiceIndex).toBeGreaterThanOrEqual(0)
+    expect(beforeChoice).not.toContain('頂角40°')
+  })
+
   it('forms implication meaning from a concrete condition before naming p⇒q', () => {
     const flow = mathPropositionReadingUnit.sections[0].readingFlow
     const decisionIndex = flow.findIndex(

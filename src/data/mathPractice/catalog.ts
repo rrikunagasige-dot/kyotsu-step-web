@@ -41,7 +41,7 @@ export const mathPractice87To120Catalog: MathPracticeCatalogEntry[] = [
   { problemNo: 114, section: 'proofs', sectionTitle: '命題と証明', title: '倍数の証明', pilot: true },
   { problemNo: 115, section: 'proofs', sectionTitle: '命題と証明', title: '背理法', pilot: true },
   { problemNo: 116, section: 'proofs', sectionTitle: '命題と証明', title: '有理数と無理数', pilot: true },
-  { problemNo: 117, section: 'proofs', sectionTitle: '命題と証明', title: '無理数を含む等式', pilot: false },
+  { problemNo: 117, section: 'proofs', sectionTitle: '命題と証明', title: '無理数を含む等式', pilot: true },
 
   { problemNo: 118, section: 'functions', sectionTitle: '関数', title: '関数とは何か', pilot: false },
   { problemNo: 119, section: 'functions', sectionTitle: '関数', title: '関数の値', pilot: false },

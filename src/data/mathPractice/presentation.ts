@@ -4,6 +4,14 @@ export type MathPracticeResult = {
   latexPrefix?: string
 }
 
+export type MathPracticeExternalDependency = {
+  id: string
+  sourceQuestionId: string
+  label: { ja: string; zh: string }
+  resultLatex: string
+  detail: { ja: string; zh: string }
+}
+
 export type MathPracticeTarget = {
   id: string
   kicker: { ja: string; zh: string }
@@ -11,9 +19,21 @@ export type MathPracticeTarget = {
   latex?: string
   blankIds: readonly string[]
   dependsOn?: readonly string[]
+  externalDependencies?: readonly MathPracticeExternalDependency[]
   result?: MathPracticeResult
   results?: readonly MathPracticeResult[]
   resultLinkLabel?: { ja: string; zh: string }
+}
+
+const theorem116ForSqrt2: MathPracticeExternalDependency = {
+  id: 'R116-sqrt2',
+  sourceQuestionId: 'math-practice-116',
+  label: { ja: '116の結果', zh: '116的结论' },
+  resultLatex: 'A+B\\sqrt{2}=0,\\;A,B\\in\\mathbb Q\\;\\Rightarrow\\;A=B=0',
+  detail: {
+    ja: '116では、B≠0 とすると √2=-A/B が有理数になって矛盾するため B=0、そこから A=0 と示した。',
+    zh: '116中，若 B≠0，则 √2=-A/B 会成为有理数而产生矛盾，所以 B=0，进而 A=0。',
+  },
 }
 
 const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
@@ -1344,6 +1364,100 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
       },
     },
   ],
+  'math-practice-117': [
+    {
+      id: 'p1-expand',
+      kicker: { ja: '今の問い｜(1) 展開', zh: '当前问题｜(1) 展开' },
+      label: { ja: '(√2-1)pを展開する', zh: '展开(√2-1)p' },
+      blankIds: ['p1-expand'],
+      result: {
+        blankId: 'p1-expand',
+        label: { ja: '(1) 展開結果', zh: '(1) 展开结果' },
+      },
+    },
+    {
+      id: 'p1-group',
+      kicker: { ja: '今の問い｜(1) 整理', zh: '当前问题｜(1) 整理' },
+      label: { ja: '√2の係数と有理数部分に分ける', zh: '分离√2系数与有理数部分' },
+      blankIds: ['p1-group'],
+      dependsOn: ['p1-expand'],
+      result: {
+        blankId: 'p1-group',
+        label: { ja: '(1) の係数分離形', zh: '(1) 的系数分离式' },
+      },
+    },
+    {
+      id: 'p1-apply',
+      kicker: { ja: '今の問い｜(1) 116を使う', zh: '当前问题｜(1) 使用116' },
+      label: { ja: '2つの有理係数をそれぞれ0とする', zh: '令两个有理系数分别为0' },
+      blankIds: ['p1-apply'],
+      dependsOn: ['p1-group'],
+      externalDependencies: [theorem116ForSqrt2],
+      result: {
+        blankId: 'p1-apply',
+        label: { ja: '(1) の2本の式', zh: '(1) 的两个方程' },
+      },
+    },
+    {
+      id: 'p1-solve',
+      kicker: { ja: '今の問い｜(1) 解く', zh: '当前问题｜(1) 求解' },
+      label: { ja: '2本の一次方程式からp,qを決める', zh: '由两个一次方程求p,q' },
+      blankIds: ['p1-solve'],
+      dependsOn: ['p1-apply'],
+    },
+
+    {
+      id: 'p2-conjugate',
+      kicker: { ja: '今の問い｜(2) 共役', zh: '当前问题｜(2) 共轭' },
+      label: { ja: '√2-1の共役を選ぶ', zh: '选择√2-1的共轭式' },
+      blankIds: ['p2-conjugate'],
+      result: {
+        blankId: 'p2-conjugate',
+        label: { ja: '有理化に使う共役', zh: '有理化所用共轭式' },
+      },
+    },
+    {
+      id: 'p2-rationalize',
+      kicker: { ja: '今の問い｜(2) 有理化', zh: '当前问题｜(2) 有理化' },
+      label: { ja: '2つの分母を有理化する', zh: '分别有理化两个分母' },
+      blankIds: ['p2-rationalize'],
+      dependsOn: ['p2-conjugate'],
+      result: {
+        blankId: 'p2-rationalize',
+        label: { ja: '(2) の有理化結果', zh: '(2) 的有理化结果' },
+      },
+    },
+    {
+      id: 'p2-group',
+      kicker: { ja: '今の問い｜(2) 整理', zh: '当前问题｜(2) 整理' },
+      label: { ja: '全体を2倍して係数分離形を作る', zh: '全式乘2并整理成系数分离式' },
+      blankIds: ['p2-group'],
+      dependsOn: ['p2-rationalize'],
+      result: {
+        blankId: 'p2-group',
+        label: { ja: '(2) の係数分離形', zh: '(2) 的系数分离式' },
+      },
+    },
+    {
+      id: 'p2-apply',
+      kicker: { ja: '今の問い｜(2) 116を使う', zh: '当前问题｜(2) 使用116' },
+      label: { ja: '2つの有理係数をそれぞれ0とする', zh: '令两个有理系数分别为0' },
+      blankIds: ['p2-apply'],
+      dependsOn: ['p2-group'],
+      externalDependencies: [theorem116ForSqrt2],
+      result: {
+        blankId: 'p2-apply',
+        label: { ja: '(2) の2本の式', zh: '(2) 的两个方程' },
+      },
+    },
+    {
+      id: 'p2-solve',
+      kicker: { ja: '今の問い｜(2) 解く', zh: '当前问题｜(2) 求解' },
+      label: { ja: '2本の一次方程式からp,qを決める', zh: '由两个一次方程求p,q' },
+      blankIds: ['p2-solve'],
+      dependsOn: ['p2-apply'],
+    },
+  ],
 }
 
 function localBlankId(questionId: string, fullBlankId: string) {
@@ -1379,6 +1493,10 @@ export function mathPracticeResultItems(target: MathPracticeTarget) {
   return target.result ? [target.result] : []
 }
 
+export function mathPracticeExternalDependencies(questionId: string, targetId: string) {
+  return mathPracticeTargetById(questionId, targetId)?.externalDependencies ?? []
+}
+
 export function mathPracticeUsesSubproblemCompression(questionId: string) {
   return [
     'math-practice-087',
@@ -1411,5 +1529,6 @@ export function mathPracticeUsesSubproblemCompression(questionId: string) {
     'math-practice-114',
     'math-practice-115',
     'math-practice-116',
+    'math-practice-117',
   ].includes(questionId)
 }

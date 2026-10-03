@@ -784,7 +784,7 @@ test('108 proves equivalence in two directions and only combines them at the fin
 
   await expect(page.getByRole('heading', { name: '108｜同値の証明' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9'])
   await expect(page.getByTestId('math-topic-question-1')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -853,7 +853,7 @@ test('110 builds converse, contrapositive and inverse separately, then consolida
 
   await expect(page.getByRole('heading', { name: '110｜逆・対偶・裏' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9'])
   await expect(page.getByTestId('math-topic-question-2')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -959,7 +959,7 @@ test('111 uses the source-given contrapositive strategy and proves four cases on
 
   await expect(page.getByRole('heading', { name: '111｜対偶による証明' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9'])
   await expect(page.getByTestId('math-topic-question-3')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -1037,7 +1037,7 @@ test('112 proves irrationality by contradiction and keeps rationalization as a m
 
   await expect(page.getByRole('heading', { name: '112｜無理数の証明' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9'])
   await expect(page.getByTestId('math-topic-question-4')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -1108,7 +1108,7 @@ test('113 returns from a rational square-root assumption to an irrational-x cont
 
   await expect(page.getByRole('heading', { name: '113｜平方根と無理数' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9'])
   await expect(page.getByTestId('math-topic-question-5')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -1158,7 +1158,7 @@ test('114 proves divisibility claims by exhaustive nonzero residue classes', asy
 
   await expect(page.getByRole('heading', { name: '114｜倍数の証明' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9'])
   await expect(page.getByTestId('math-topic-question-6')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -1217,7 +1217,7 @@ test('115 creates sqrt(6) by squaring, isolates it, and closes the irrationality
 
   await expect(page.getByRole('heading', { name: '115｜背理法' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9'])
   await expect(page.getByTestId('math-topic-question-7')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -1275,7 +1275,7 @@ test('116 proves q=0 by irrationality contradiction, then back-substitutes to ge
 
   await expect(page.getByRole('heading', { name: '116｜有理数と無理数' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9'])
   await expect(page.getByTestId('math-topic-question-8')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -1317,6 +1317,86 @@ test('116 proves q=0 by irrationality contradiction, then back-substitutes to ge
   await expect(page.getByTestId('math-practice-dependency-links')).toContainText('まず得た結論')
   await page.getByTestId('blank-math-practice-116-p-zero').click()
   await page.getByTestId('option-math-practice-116-p-zero-p-zero').click()
+
+  await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
+
+  const dimensions = await page.evaluate(() => ({
+    viewport: window.innerWidth,
+    page: document.documentElement.scrollWidth,
+  }))
+  expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
+})
+
+test('117 reuses theorem 116 through a compact cross-problem result while solving two independent equations', async ({ page }) => {
+  await page.getByTestId('math-exercise-basic').click()
+  await page.getByTestId('math-topic-prove-propositions').click()
+  await page.getByTestId('math-topic-question-9').click()
+
+  await expect(page.getByRole('heading', { name: '117｜無理数を含む等式' })).toBeVisible()
+  const nav = page.getByTestId('math-topic-question-nav')
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9'])
+  await expect(page.getByTestId('math-topic-question-9')).toHaveAttribute('aria-current', 'page')
+
+  const problem = page.getByTestId('standard-problem')
+  const currentTarget = page.getByTestId('math-practice-current-target')
+  const flow = page.getByTestId('math-practice-reading-flow')
+
+  await expect(problem).toContainText('次の等式を満たす有理数')
+  await expect(problem.locator('.katex-display')).toHaveCount(2)
+  await expect(problem.locator('.katex-error')).toHaveCount(0)
+
+  // (1) First expand and group. The theorem is not shown until it is actually needed.
+  await expect(currentTarget).toContainText('(1) 展開')
+  await expect(page.getByTestId('math-practice-external-dependencies')).toHaveCount(0)
+  await page.getByTestId('blank-math-practice-117-p1-expand').click()
+  await page.getByTestId('option-math-practice-117-p1-expand-p-root2-minus-p').click()
+
+  await expect(currentTarget).toContainText('(1) 整理')
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('(1) 展開結果')
+  await page.getByTestId('blank-math-practice-117-p1-group').click()
+  await page.getByTestId('option-math-practice-117-p1-group-grouped').click()
+
+  // The cross-problem theorem appears only at the theorem-application stage.
+  await expect(currentTarget).toContainText('(1) 116を使う')
+  const external = page.getByTestId('math-practice-external-dependencies')
+  await expect(external).toContainText('前に使える結果')
+  const theoremLink = page.getByTestId('math-practice-external-dependency-R116-sqrt2')
+  await expect(theoremLink).toHaveText('116の結果')
+  await expect(theoremLink).toHaveAttribute('aria-expanded', 'false')
+  await theoremLink.click()
+  await expect(page.getByTestId('math-practice-external-dependency-detail-R116-sqrt2')).toContainText('116では')
+  await expect(theoremLink).toHaveAttribute('aria-expanded', 'true')
+
+  await page.getByTestId('blank-math-practice-117-p1-apply').click()
+  await page.getByTestId('option-math-practice-117-p1-apply-coefficients-zero').click()
+
+  await expect(currentTarget).toContainText('(1) 解く')
+  await expect(page.getByTestId('math-practice-external-dependencies')).toHaveCount(0)
+  await page.getByTestId('blank-math-practice-117-p1-solve').click()
+  await page.getByTestId('option-math-practice-117-p1-solve-minus-two-three').click()
+
+  // (2) starts independently; the completed algebra of (1) is no longer the active flow.
+  await expect(currentTarget).toContainText('(2) 共役')
+  await expect(flow).not.toContainText('(1) 得られた2本の一次方程式')
+  await page.getByTestId('blank-math-practice-117-p2-conjugate').click()
+  await page.getByTestId('option-math-practice-117-p2-conjugate-conjugate').click()
+
+  await expect(currentTarget).toContainText('(2) 有理化')
+  await page.getByTestId('blank-math-practice-117-p2-rationalize').click()
+  await page.getByTestId('option-math-practice-117-p2-rationalize-both-correct').click()
+
+  await expect(currentTarget).toContainText('(2) 整理')
+  await page.getByTestId('blank-math-practice-117-p2-group').click()
+  await page.getByTestId('option-math-practice-117-p2-group-grouped').click()
+
+  await expect(currentTarget).toContainText('(2) 116を使う')
+  await expect(page.getByTestId('math-practice-external-dependency-R116-sqrt2')).toHaveText('116の結果')
+  await page.getByTestId('blank-math-practice-117-p2-apply').click()
+  await page.getByTestId('option-math-practice-117-p2-apply-coefficients-zero').click()
+
+  await expect(currentTarget).toContainText('(2) 解く')
+  await page.getByTestId('blank-math-practice-117-p2-solve').click()
+  await page.getByTestId('option-math-practice-117-p2-solve-one-minus-two').click()
 
   await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
 

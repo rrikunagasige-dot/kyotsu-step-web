@@ -12,13 +12,13 @@ describe('math practice 87-120 staged integration', () => {
     expect(mathPractice87To120Catalog).toHaveLength(34)
     expect(mathPractice87To120Catalog[0]?.problemNo).toBe(87)
     expect(mathPractice87To120Catalog.at(-1)?.problemNo).toBe(120)
-    expect(mathPracticePilotCatalog.map((entry) => entry.problemNo)).toEqual([87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109])
+    expect(mathPracticePilotCatalog.map((entry) => entry.problemNo)).toEqual([87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110])
   })
 
   it('publishes the reviewed set, proposition and proof pilots in source order', () => {
     expect(mathPracticePilotSource.map((question) => question.problemNo)).toEqual([87, 94, 97])
     expect(mathPracticePilotQuestions.map((question) => question.questionId)).toEqual(
-      Array.from({ length: 23 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
+      Array.from({ length: 24 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
     )
   })
 
@@ -47,6 +47,7 @@ describe('math practice 87-120 staged integration', () => {
       '107｜必要・十分条件の判定',
       '108｜同値の証明',
       '109｜「すべて」と「ある」の否定',
+      '110｜逆・対偶・裏',
     ])
   })
 
@@ -289,6 +290,40 @@ describe('math practice 87-120 staged integration', () => {
       .toBe('factor-zero-five')
     expect(question?.blanks.find((blank) => blank.id === 'p2-truth')?.choices.find((choice) => choice.correct)?.id)
       .toBe('five-exists')
+  })
+
+  it('authors 110 as one relation-form rule plus three independent original/converse/contrapositive/inverse checks', () => {
+    const question = mathPracticeProofsBatchCSource.find((item) => item.problemNo === 110)
+    expect(question).toBeDefined()
+    expect(question?.section).toBe('proofs')
+    expect(question?.blanks.map((blank) => blank.id)).toEqual([
+      'rule',
+      'p1-original',
+      'p1-converse',
+      'p1-contrapositive',
+      'p1-inverse',
+      'p1-summary',
+      'p2-original',
+      'p2-converse',
+      'p2-contrapositive',
+      'p2-inverse',
+      'p2-summary',
+      'p3-original',
+      'p3-converse',
+      'p3-contrapositive',
+      'p3-inverse',
+      'p3-summary',
+    ])
+    expect(question?.blanks.find((blank) => blank.id === 'rule')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('correct')
+    expect(question?.blanks.find((blank) => blank.id === 'p1-summary')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('tftf')
+    expect(question?.blanks.find((blank) => blank.id === 'p2-summary')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('ftft')
+    expect(question?.blanks.find((blank) => blank.id === 'p3-contrapositive')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('true')
+    expect(question?.blanks.find((blank) => blank.id === 'p3-summary')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('tttt')
   })
 
   it('keeps Japanese and Chinese grading structures aligned', () => {

@@ -34,7 +34,7 @@ export const mathPractice87To120Catalog: MathPracticeCatalogEntry[] = [
   { problemNo: 108, section: 'proofs', sectionTitle: '命題と証明', title: '同値の証明', pilot: true },
   { problemNo: 109, section: 'propositions', sectionTitle: '命題と条件', title: '「すべて」と「ある」の否定', pilot: true },
 
-  { problemNo: 110, section: 'proofs', sectionTitle: '命題と証明', title: '逆・対偶・裏', pilot: false },
+  { problemNo: 110, section: 'proofs', sectionTitle: '命題と証明', title: '逆・対偶・裏', pilot: true },
   { problemNo: 111, section: 'proofs', sectionTitle: '命題と証明', title: '対偶による証明', pilot: false },
   { problemNo: 112, section: 'proofs', sectionTitle: '命題と証明', title: '無理数の証明', pilot: false },
   { problemNo: 113, section: 'proofs', sectionTitle: '命題と証明', title: '平方根と無理数', pilot: false },

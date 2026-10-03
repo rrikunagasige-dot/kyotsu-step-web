@@ -1628,6 +1628,105 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
       dependsOn: ['ga1-expand'],
     },
   ],
+  'math-practice-120': [
+    {
+      id: 'p1-formula',
+      kicker: { ja: '今の問い｜(1) 面積公式', zh: '当前问题｜(1) 面积公式' },
+      label: { ja: '三角形の面積公式を思い出す', zh: '回忆三角形面积公式' },
+      blankIds: ['p1-formula'],
+      result: {
+        blankId: 'p1-formula',
+        label: { ja: '三角形の面積公式', zh: '三角形面积公式' },
+      },
+    },
+    {
+      id: 'p1-model',
+      kicker: { ja: '今の問い｜(1) 式を作る', zh: '当前问题｜(1) 建立式子' },
+      label: { ja: '底辺6、高さxを代入してyを表す', zh: '代入底边6和高x表示y' },
+      blankIds: ['p1-model'],
+      dependsOn: ['p1-formula'],
+      result: {
+        blankId: 'p1-model',
+        label: { ja: '(1) の関数式', zh: '(1) 的函数式' },
+      },
+    },
+    {
+      id: 'p1-domain-meaning',
+      kicker: { ja: '今の問い｜(1) 変域の意味', zh: '当前问题｜(1) 定义域含义' },
+      label: { ja: 'xが高さであることから0・負の値を考える', zh: '由x表示高度判断0和负数' },
+      blankIds: ['p1-domain-meaning'],
+      result: {
+        blankId: 'p1-domain-meaning',
+        label: { ja: 'xの意味と境界', zh: 'x的含义与边界' },
+      },
+    },
+    {
+      id: 'p1-domain',
+      kicker: { ja: '今の問い｜(1) 変域', zh: '当前问题｜(1) 定义域' },
+      label: { ja: '高さの条件を不等式にする', zh: '把高度条件写成不等式' },
+      blankIds: ['p1-domain'],
+      dependsOn: ['p1-domain-meaning'],
+    },
+    {
+      id: 'p2-distance-rule',
+      kicker: { ja: '今の問い｜(2) 距離の関係', zh: '当前问题｜(2) 路程关系' },
+      label: { ja: '距離・速さ・時間の関係を使う', zh: '使用路程速度时间关系' },
+      blankIds: ['p2-distance-rule'],
+      result: {
+        blankId: 'p2-distance-rule',
+        label: { ja: '距離の関係', zh: '路程关系' },
+      },
+    },
+    {
+      id: 'p2-traveled',
+      kicker: { ja: '今の問い｜(2) 進んだ距離', zh: '当前问题｜(2) 已走路程' },
+      label: { ja: 'x時間で進む距離を求める', zh: '求x小时走过的路程' },
+      blankIds: ['p2-traveled'],
+      dependsOn: ['p2-distance-rule'],
+      result: {
+        blankId: 'p2-traveled',
+        label: { ja: 'x時間で進む距離', zh: 'x小时走过的路程' },
+      },
+    },
+    {
+      id: 'p2-model',
+      kicker: { ja: '今の問い｜(2) 残りを式にする', zh: '当前问题｜(2) 表示剩余路程' },
+      label: { ja: '15kmから進んだ距離を引く', zh: '用15km减去已走路程' },
+      blankIds: ['p2-model'],
+      dependsOn: ['p2-traveled'],
+      result: {
+        blankId: 'p2-model',
+        label: { ja: '(2) の関数式', zh: '(2) 的函数式' },
+      },
+    },
+    {
+      id: 'p2-start',
+      kicker: { ja: '今の問い｜(2) 始点', zh: '当前问题｜(2) 起点' },
+      label: { ja: '歩き始めた瞬間のxを決める', zh: '确定刚开始时的x' },
+      blankIds: ['p2-start'],
+      result: {
+        blankId: 'p2-start',
+        label: { ja: '始点', zh: '起点' },
+      },
+    },
+    {
+      id: 'p2-end',
+      kicker: { ja: '今の問い｜(2) 終点', zh: '当前问题｜(2) 终点' },
+      label: { ja: '15kmを歩き終える時刻を求める', zh: '求走完15km的时刻' },
+      blankIds: ['p2-end'],
+      result: {
+        blankId: 'p2-end',
+        label: { ja: '終点', zh: '终点' },
+      },
+    },
+    {
+      id: 'p2-domain',
+      kicker: { ja: '今の問い｜(2) 変域', zh: '当前问题｜(2) 定义域' },
+      label: { ja: '始点と終点からxの変域を決める', zh: '由起点和终点确定x的范围' },
+      blankIds: ['p2-domain'],
+      dependsOn: ['p2-start', 'p2-end'],
+    },
+  ],
 }
 
 function localBlankId(questionId: string, fullBlankId: string) {
@@ -1702,5 +1801,6 @@ export function mathPracticeUsesSubproblemCompression(questionId: string) {
     'math-practice-117',
     'math-practice-118',
     'math-practice-119',
+    'math-practice-120',
   ].includes(questionId)
 }

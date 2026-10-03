@@ -190,5 +190,217 @@ export const mathPracticePropositionsBatchBSourceZh: MathPracticeSourceQuestion[
       },
     ],
     fullExplanation: '判断一个语句是否为命题，要看其内容能否客观地确定为真、假其中之一。一个语句即使为假，只要真假可以客观确定，它仍然是命题；而“良好”这类没有给出客观标准的表述不能唯一确定真假，因此不是命题。',
+  },,
+{
+    problemNo: 99,
+    section: 'propositions',
+    sectionTitle: '命题与条件',
+    title: '蕴含命题的真假',
+    estimatedSeconds: 480,
+    knowledgeTags: ['implication', 'set-inclusion', 'counterexample', 'absolute-value', 'interval'],
+    skillTags: ['condition-reading', 'case-classification', 'conclusion'],
+    problem: [
+      { type: 'text', text: '设 x 为实数。利用满足条件的集合之间的包含关系，判断下列命题的真假。' },
+      { type: 'latex', latex: '(1)\\;1<x<2\\Rightarrow 1<x<3' },
+      { type: 'latex', latex: '(2)\\;x<1\\Rightarrow 0<x<1' },
+      { type: 'latex', latex: '(3)\\;x>3\\Rightarrow |x+1|>2' },
+      { type: 'latex', latex: '(4)\\;|x|\\le 2\\Rightarrow |x-1|<3' },
+    ],
+    guide: [
+      {
+        type: 'content',
+        blocks: [{
+          type: 'text',
+          text: '先建立共同规则：把满足前件的实数集合记为 P，把满足后件的实数集合记为 Q，再用集合包含关系判断蕴含命题。',
+        }],
+      },
+      { type: 'blank', blankId: 'rule' },
+
+      {
+        type: 'content',
+        blocks: [
+          { type: 'text', text: '(1) 把前件和后件分别写成区间并比较。' },
+          { type: 'latex', latex: 'P=(1,2),\\qquad Q=(1,3)' },
+        ],
+      },
+      { type: 'blank', blankId: 'p1-result' },
+
+      {
+        type: 'content',
+        blocks: [
+          { type: 'text', text: '(2) 中，满足前件的集合比满足后件的集合更大。找一个属于 P 但不属于 Q 的值。' },
+          { type: 'latex', latex: 'P=(-\\infty,1),\\qquad Q=(0,1)' },
+        ],
+      },
+      { type: 'blank', blankId: 'p2-counterexample' },
+      {
+        type: 'content',
+        blocks: [{
+          type: 'text',
+          text: '检查所选的值是否满足前件但不满足后件，再据此判断真假。',
+        }],
+      },
+      { type: 'blank', blankId: 'p2-result' },
+
+      {
+        type: 'content',
+        blocks: [{
+          type: 'text',
+          text: '(3) 从 x>3 判断 x+1 的符号与大小，检查绝对值形式的后件是否必然成立。',
+        }],
+      },
+      { type: 'blank', blankId: 'p3-result' },
+
+      {
+        type: 'content',
+        blocks: [
+          { type: 'text', text: '(4) 满足前件的集合如下。把后件也改写成区间再比较。' },
+          { type: 'latex', latex: 'P=[-2,2]' },
+        ],
+      },
+      { type: 'blank', blankId: 'p4-q-set' },
+      {
+        type: 'content',
+        blocks: [{
+          type: 'text',
+          text: '比较 P 和 Q 的端点，检查是否存在只属于 P 的值。',
+        }],
+      },
+      { type: 'blank', blankId: 'p4-counterexample-result' },
+    ],
+    blanks: [
+      {
+        id: 'rule',
+        prompt: '命题 p⇒q 为真时应满足的集合关系是',
+        choices: [
+          choice('p-subset-q', 'P⊆Q。', true),
+          choice('q-subset-p', 'Q⊆P。'),
+          choice('disjoint', 'P∩Q=∅。'),
+        ],
+        skillTag: 'condition-reading',
+        knowledgeTags: ['implication', 'set-inclusion'],
+        explanation: '“满足 p 的所有值也满足 q”用集合关系表示就是 P⊆Q。',
+      },
+      {
+        id: 'p1-result',
+        prompt: '比较 P=(1,2) 与 Q=(1,3)，可知 (1)',
+        choices: [
+          choice('subset-true', '因为 P⊆Q，所以为真。', true),
+          choice('reverse-false', '因为 Q⊆P，所以为假。'),
+          choice('not-comparable', '因为没有包含关系，所以为假。'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['implication', 'set-inclusion', 'interval'],
+        explanation: '(1,2) 中的所有实数都属于 (1,3)，因此 P⊆Q，命题为真。',
+      },
+      {
+        id: 'p2-counterexample',
+        prompt: '可以作为“属于 P 但不属于 Q”的反例的是',
+        choices: [
+          choice('minus-one', 'x=-1', true),
+          choice('half', 'x=1/2'),
+          choice('two', 'x=2'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['counterexample', 'set-inclusion', 'interval'],
+        explanation: 'x=-1 满足 x<1，但不满足 0<x<1。',
+      },
+      {
+        id: 'p2-result',
+        prompt: '由于存在这个反例，所以 (2)',
+        choices: [
+          choice('false', 'P⊆Q 不成立，因此为假。', true),
+          choice('true', 'P⊆Q 成立，因此为真。'),
+          choice('not-proposition', '无法判断真假。'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['implication', 'counterexample'],
+        explanation: '只要存在一个满足前件但不满足后件的值，蕴含命题就是假的。',
+      },
+      {
+        id: 'p3-result',
+        prompt: '由 x>3 推出后件必然成立的正确推理是',
+        choices: [
+          choice('positive-bound', 'x+1>4，所以 |x+1|=x+1>4>2，因此为真。', true),
+          choice('wrong-sign', 'x+1>4，所以 |x+1|<2，因此为假。'),
+          choice('unknown-sign', 'x+1 的正负无法确定，因此无法判断真假。'),
+        ],
+        skillTag: 'condition-reading',
+        knowledgeTags: ['implication', 'absolute-value'],
+        explanation: 'x>3 时 x+1>4>0，因此可以去掉绝对值，并且一定有 |x+1|>2。',
+      },
+      {
+        id: 'p4-q-set',
+        prompt: '把 |x-1|<3 改写成区间条件，得到',
+        choices: [
+          choice('correct', '-2<x<4', true),
+          choice('shift-left', '-4<x<2'),
+          choice('closed', '-2≤x≤4'),
+        ],
+        skillTag: 'calculation',
+        knowledgeTags: ['absolute-value', 'interval'],
+        explanation: '|x-1|<3 等价于 -3<x-1<3，再同时加1得到 -2<x<4。',
+      },
+      {
+        id: 'p4-counterexample-result',
+        prompt: '比较 P=[-2,2] 与 Q=(-2,4)，可知 (4)',
+        choices: [
+          choice('minus-two-false', 'x=-2 属于 P 但不属于 Q，因此为假。', true),
+          choice('two-true', 'x=2 同时属于 P 和 Q，因此为真。'),
+          choice('minus-three-false', 'x=-3 不属于 Q，因此为假。'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['implication', 'counterexample', 'set-inclusion', 'interval'],
+        explanation: 'x=-2 时 |x|=2≤2，但 |x-1|=3，不满足后件的 <3，因此它是反例。',
+      },
+    ],
+    simulation: [
+      {
+        id: 's1',
+        label: '(1)',
+        prompt: '判断 1<x<2 ⇒ 1<x<3 的真假。',
+        answerType: 'single-choice',
+        choices: [choice('true', '真', true), choice('false', '假')],
+        score: 2,
+        estimatedSeconds: 30,
+        knowledgeTags: ['implication', 'set-inclusion'],
+        skillTags: ['conclusion'],
+      },
+      {
+        id: 's2',
+        label: '(2)',
+        prompt: '判断 x<1 ⇒ 0<x<1 的真假。',
+        answerType: 'single-choice',
+        choices: [choice('false', '假', true), choice('true', '真')],
+        score: 2,
+        estimatedSeconds: 30,
+        knowledgeTags: ['implication', 'counterexample'],
+        skillTags: ['conclusion'],
+      },
+      {
+        id: 's3',
+        label: '(3)',
+        prompt: '判断 x>3 ⇒ |x+1|>2 的真假。',
+        answerType: 'single-choice',
+        choices: [choice('true', '真', true), choice('false', '假')],
+        score: 2,
+        estimatedSeconds: 30,
+        knowledgeTags: ['implication', 'absolute-value'],
+        skillTags: ['conclusion'],
+      },
+      {
+        id: 's4',
+        label: '(4)',
+        prompt: '判断 |x|≤2 ⇒ |x-1|<3 的真假。',
+        answerType: 'single-choice',
+        choices: [choice('false', '假', true), choice('true', '真')],
+        score: 2,
+        estimatedSeconds: 30,
+        knowledgeTags: ['implication', 'counterexample', 'absolute-value'],
+        skillTags: ['conclusion'],
+      },
+    ],
+    fullExplanation: '判断 p⇒q 的真假，可以比较前件条件集合 P 和后件条件集合 Q。若 P⊆Q，则命题为真；若不包含，只要找出一个属于 P 但不属于 Q 的值即可作为反例。含绝对值的条件先改写成区间后，更容易比较包含关系。',
   },
+
 ]

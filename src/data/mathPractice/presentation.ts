@@ -426,6 +426,46 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
       dependsOn: ['basis'],
     },
   ],
+  'math-practice-099': [
+    {
+      id: 'basis',
+      kicker: { ja: 'まず確認', zh: '先确认' },
+      label: { ja: '含意を集合の包含関係へ直す', zh: '把蕴含关系改写为集合包含' },
+      blankIds: ['rule'],
+      result: {
+        blankId: 'rule',
+        label: { ja: '判定規則', zh: '判断规则' },
+      },
+    },
+    {
+      id: 's1',
+      kicker: { ja: '今の問い｜(1)', zh: '当前问题｜(1)' },
+      label: { ja: '2つの区間の包含関係を見る', zh: '比较两个区间的包含关系' },
+      blankIds: ['p1-result'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's2',
+      kicker: { ja: '今の問い｜(2)', zh: '当前问题｜(2)' },
+      label: { ja: '反例を1つ作って真偽を決める', zh: '构造一个反例判断真假' },
+      blankIds: ['p2-counterexample', 'p2-result'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's3',
+      kicker: { ja: '今の問い｜(3)', zh: '当前问题｜(3)' },
+      label: { ja: '不等式から後件が必ず成り立つかを見る', zh: '由不等式判断后件是否必然成立' },
+      blankIds: ['p3-result'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's4',
+      kicker: { ja: '今の問い｜(4)', zh: '当前问题｜(4)' },
+      label: { ja: '絶対値を区間へ直し、端点を比べる', zh: '把绝对值改写为区间并比较端点' },
+      blankIds: ['p4-q-set', 'p4-counterexample-result'],
+      dependsOn: ['basis'],
+    },
+  ],
 }
 
 function localBlankId(questionId: string, fullBlankId: string) {
@@ -475,5 +515,6 @@ export function mathPracticeUsesSubproblemCompression(questionId: string) {
     'math-practice-096',
     'math-practice-097',
     'math-practice-098',
+    'math-practice-099',
   ].includes(questionId)
 }

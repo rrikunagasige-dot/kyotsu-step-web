@@ -20,10 +20,32 @@ export type MathPracticeDomain = {
   topics: readonly MathPracticeTopic[]
 }
 
+export type MathCommonTestAreaId = 'quadratic' | 'data-analysis'
+
+export const mathCommonTestAreas = [
+  {
+    id: 'quadratic',
+    label: { ja: '二次関数', zh: '二次函数' },
+    flow: { ja: '式・グラフ → 最大・最小 → 条件を読む', zh: '式与图像 → 最大最小 → 读取条件' },
+    majorUnit: 'functions',
+  },
+  {
+    id: 'data-analysis',
+    label: { ja: 'データの分析', zh: '数据分析' },
+    flow: { ja: '資料を読む → 代表値 → 判断する', zh: '读取资料 → 代表值 → 作出判断' },
+    majorUnit: 'data-analysis',
+  },
+] as const satisfies readonly {
+  id: MathCommonTestAreaId
+  label: { ja: string; zh: string }
+  flow: { ja: string; zh: string }
+  majorUnit: string
+}[]
+
 export const mathPracticeTaxonomy: readonly MathPracticeDomain[] = [
   {
     id: 'sets-and-propositions',
-    label: { ja: '数学 I｜集合と命題', zh: '数学 I｜集合与命题' },
+    label: { ja: '集合と命題', zh: '集合与命题' },
     topics: [
       {
         id: 'organize-sets',
@@ -56,7 +78,7 @@ export const mathPracticeTaxonomy: readonly MathPracticeDomain[] = [
   },
   {
     id: 'functions',
-    label: { ja: '数学 I｜関数', zh: '数学 I｜函数' },
+    label: { ja: '関数', zh: '函数' },
     topics: [
       {
         id: 'represent-functions',
@@ -122,4 +144,21 @@ export function buildMathPracticeTopicSummary(questions: Question[]) {
 
 export function mathPracticeProblemNumber(questionId: string) {
   return problemNumber(questionId)
+}
+
+
+export function mathCommonTestAreaForQuestion(
+  question: Pick<Question, 'subject' | 'questionId' | 'taxonomy'>,
+): MathCommonTestAreaId | null {
+  if (question.subject !== 'math-1a' || question.questionId.startsWith('math-practice-')) return null
+  return mathCommonTestAreas.find((area) => area.majorUnit === question.taxonomy.majorUnit)?.id ?? null
+}
+
+export function buildMathCommonTestSummary(questions: Question[]) {
+  const counts = Object.fromEntries(mathCommonTestAreas.map((area) => [area.id, 0])) as Record<MathCommonTestAreaId, number>
+  for (const question of questions) {
+    const area = mathCommonTestAreaForQuestion(question)
+    if (area && question.status === 'published') counts[area] += 1
+  }
+  return counts
 }

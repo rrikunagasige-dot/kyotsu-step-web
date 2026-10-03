@@ -485,6 +485,103 @@ button.physics-topic-card:not(:disabled):hover {
   line-height: 1.45;
 }
 
+.math-exercise-type-grid button {
+  min-height: 112px;
+}
+
+.math-practice-chapter-list {
+  gap: 1rem;
+}
+
+button.math-theme-link {
+  width: 100%;
+  font: inherit;
+}
+
+.math-theme-link {
+  text-align: left;
+}
+
+.math-theme-link--empty {
+  cursor: default;
+  opacity: .42;
+  box-shadow: 0 2px 0 var(--color-border);
+}
+
+.math-theme-link--selected {
+  border-color: var(--color-primary);
+  outline: 2px solid color-mix(in srgb, var(--color-primary) 24%, transparent);
+  background: var(--color-section);
+}
+
+.math-common-test-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+}
+
+.math-problem-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(74px, 1fr));
+  gap: .65rem;
+}
+
+.math-problem-button {
+  min-height: 58px;
+  padding: .75rem;
+  border: 2px solid var(--color-border);
+  background: var(--color-paper);
+  color: var(--color-text);
+  font: 700 1rem/1 ui-monospace, monospace;
+  cursor: pointer;
+  box-shadow: var(--shadow-key);
+}
+
+.math-problem-button:hover,
+.math-problem-button:focus-visible {
+  border-color: var(--color-primary);
+  background: var(--color-section);
+}
+
+.math-problem-button--selected {
+  border-color: var(--color-primary);
+  outline: 2px solid color-mix(in srgb, var(--color-primary) 24%, transparent);
+  background: var(--color-section);
+  color: var(--color-primary);
+}
+
+.math-common-test-question-list {
+  display: grid;
+  gap: .65rem;
+}
+
+.math-common-test-question {
+  min-height: 64px;
+  padding: .8rem .9rem;
+  border: 2px solid var(--color-border);
+  background: var(--color-paper);
+  color: var(--color-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: var(--shadow-key);
+}
+
+.math-common-test-question:hover,
+.math-common-test-question:focus-visible,
+.math-common-test-question--selected {
+  border-color: var(--color-primary);
+  background: var(--color-section);
+}
+
+@media (max-width: 640px) {
+  .math-problem-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .math-problem-button {
+    min-width: 0;
+  }
+}
+
 
 /* Textbook formula holes are rendered inside one complete KaTeX expression. */
 .reading-formula-line .katex-display { margin: 0; }

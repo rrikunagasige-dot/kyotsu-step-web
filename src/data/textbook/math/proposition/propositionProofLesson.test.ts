@@ -80,6 +80,12 @@ describe('math proposition-proof textbook unit', () => {
     expect(conclusionIndex).toBeGreaterThan(contradictionIndex)
   })
 
+  it('keeps mixed Japanese logical statements in text mode', () => {
+    const items = mathPropositionProofUnit.sections[0].items
+    expect(items.find((item) => item.id === 'proof-e02')?.answerType).toBe('text')
+    expect(items.find((item) => item.id === 'proof-b01')?.answerType).toBe('text')
+  })
+
   it('keeps the proof lesson to three learner-facing headings', () => {
     const headings = mathPropositionProofUnit.sections[0].readingFlow
       .filter((block) => block.type === 'heading')

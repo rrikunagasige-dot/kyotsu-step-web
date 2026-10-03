@@ -184,3 +184,24 @@ describe('math set textbook unit', () => {
     expect(firstNumberLineIndex).toBeGreaterThan(f03Index)
     expect(f06Index).toBeGreaterThan(f05Index)
   })
+
+
+  it('shows both De Morgan construction routes before asking whether the regions match', () => {
+    const section = mathSetUnit.sections[0]
+    const e03Index = section.readingFlow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'set-e03',
+      ),
+    )
+    const rightRouteFigureIndex = section.readingFlow.findIndex(
+      (block) => block.type === 'figure' && block.figureId === 'demorgan-complements-union',
+    )
+    const e04Index = section.readingFlow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'set-e04',
+      ),
+    )
+    expect(e03Index).toBeGreaterThanOrEqual(0)
+    expect(rightRouteFigureIndex).toBeGreaterThan(e03Index)
+    expect(e04Index).toBeGreaterThan(rightRouteFigureIndex)
+  })

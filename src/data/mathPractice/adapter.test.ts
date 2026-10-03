@@ -11,13 +11,13 @@ describe('math practice 87-120 staged integration', () => {
     expect(mathPractice87To120Catalog).toHaveLength(34)
     expect(mathPractice87To120Catalog[0]?.problemNo).toBe(87)
     expect(mathPractice87To120Catalog.at(-1)?.problemNo).toBe(120)
-    expect(mathPracticePilotCatalog.map((entry) => entry.problemNo)).toEqual([87,88,89,90,91,92,93,94,95,96,97,98,99])
+    expect(mathPracticePilotCatalog.map((entry) => entry.problemNo)).toEqual([87,88,89,90,91,92,93,94,95,96,97,98,99,100])
   })
 
   it('publishes the reviewed set batch plus proposition pilots in source order', () => {
     expect(mathPracticePilotSource.map((question) => question.problemNo)).toEqual([87, 94, 97])
     expect(mathPracticePilotQuestions.map((question) => question.questionId)).toEqual(
-      Array.from({ length: 13 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
+      Array.from({ length: 14 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
     )
   })
 
@@ -36,6 +36,7 @@ describe('math practice 87-120 staged integration', () => {
       '97｜共通部分から定数を決める',
       '98｜命題と真偽',
       '99｜含意の真偽',
+      '100｜反例',
     ])
   })
 
@@ -74,6 +75,23 @@ describe('math practice 87-120 staged integration', () => {
       .toBe('correct')
     expect(question?.blanks.find((blank) => blank.id === 'p4-counterexample-result')?.choices.find((choice) => choice.correct)?.id)
       .toBe('minus-two-false')
+  })
+
+  it('authors 100 as one counterexample rule plus three independent constructions', () => {
+    const question = mathPracticePropositionsBatchBSource.find((item) => item.problemNo === 100)
+    expect(question).toBeDefined()
+    expect(question?.blanks.map((blank) => blank.id)).toEqual([
+      'rule',
+      'p1-counterexample',
+      'p2-counterexample',
+      'p3-counterexample',
+    ])
+    expect(question?.blanks.find((blank) => blank.id === 'p1-counterexample')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('negative-root')
+    expect(question?.blanks.find((blank) => blank.id === 'p2-counterexample')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('minus-two')
+    expect(question?.blanks.find((blank) => blank.id === 'p3-counterexample')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('five')
   })
 
   it('keeps Japanese and Chinese grading structures aligned', () => {

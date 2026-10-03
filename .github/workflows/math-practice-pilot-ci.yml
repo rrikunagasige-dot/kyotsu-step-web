@@ -9,6 +9,7 @@ on:
       - 'chatgpt/math-theme-direct-entry'
       - 'chatgpt/math-87-textbook-like-design'
       - 'chatgpt/math-94-97-textbook-flow'
+      - 'chatgpt/math-pilot-target-rendering-repair'
   pull_request:
     paths:
       - 'src/data/mathPractice/**'
@@ -19,10 +20,13 @@ on:
       - 'src/data/questionCatalog.test.ts'
       - 'src/data/questionCatalog.zh.test.ts'
       - 'src/domain/questionSchema.ts'
+      - 'src/domain/textbookMath.ts'
+      - 'src/domain/textbookMath.test.ts'
       - 'src/pages/LearningSessionPage.tsx'
       - 'src/pages/LearningSetupPage.tsx'
       - 'src/components/learning/LearningFlowRenderer.tsx'
       - 'src/components/learning/MathPracticeReadingFlow.tsx'
+      - 'src/components/learning/MathPracticeRichText.tsx'
       - 'src/styles/global.css'
       - 'e2e/math-practice-pilot.spec.ts'
       - '.github/workflows/math-practice-pilot-ci.yml'
@@ -60,10 +64,13 @@ jobs:
         run: pnpm run typecheck
 
       - name: Math practice pilot tests
-        run: pnpm exec vitest run src/data/mathPractice/adapter.test.ts src/data/mathPracticeTaxonomy.test.ts src/data/questionCatalog.test.ts src/data/questionCatalog.zh.test.ts
+        run: pnpm exec vitest run src/data/mathPractice/adapter.test.ts src/data/mathPractice/presentation.test.ts src/data/mathPracticeTaxonomy.test.ts src/domain/textbookMath.test.ts src/data/questionCatalog.test.ts src/data/questionCatalog.zh.test.ts
 
       - name: Build
         run: pnpm run build
 
       - name: Mobile pilot smoke
         run: pnpm exec playwright test e2e/math-practice-pilot.spec.ts --project=mobile-chromium
+
+      - name: Desktop pilot smoke
+        run: pnpm exec playwright test e2e/math-practice-pilot.spec.ts --project=desktop-chromium

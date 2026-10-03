@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { ContentRenderer } from '../components/question/ContentRenderer'
 import { LearningFlowRenderer } from '../components/learning/LearningFlowRenderer'
 import { MathPracticeReadingFlow } from '../components/learning/MathPracticeReadingFlow'
+import { MathPracticeContentRenderer } from '../components/learning/MathPracticeRichText'
 import { BottomSheet, ErrorState, ProgressBar, RaisedButton, StatusBadge } from '../components/ui/Primitives'
 import { activeBlankIds, isLearningAnswerResolved } from '../domain/learning'
 import { getQuestionCatalog, useAppStore } from '../stores/useAppStore'
@@ -195,7 +196,11 @@ export function LearningSessionPage() {
           {screen === 'original' && (
             <section className="common-test-screen" data-testid="common-test-original">
               <div className="screen-kicker">{text('STEP 1｜元の問題', 'STEP 1｜原题')}</div>
-              <article className="question-paper"><ContentRenderer blocks={question.stem} assets={question.assets} /></article>
+              <article className="question-paper">
+              {usesTextbookLikeMathDesign
+                ? <MathPracticeContentRenderer blocks={question.stem} assets={question.assets} />
+                : <ContentRenderer blocks={question.stem} assets={question.assets} />}
+            </article>
               <div className="original-choice-preview">
                 <h2>{finalBlank.prompt}</h2>
                 {finalBlank.options.map((option, index) => (
@@ -286,7 +291,11 @@ export function LearningSessionPage() {
               </nav>
             )}
             <h2 className="solution-heading">{text('問題', '题目')}</h2>
-            <article className="question-paper"><ContentRenderer blocks={question.stem} assets={question.assets} /></article>
+            <article className="question-paper">
+              {usesTextbookLikeMathDesign
+                ? <MathPracticeContentRenderer blocks={question.stem} assets={question.assets} />
+                : <ContentRenderer blocks={question.stem} assets={question.assets} />}
+            </article>
           </section>
           <section data-testid="standard-guide">
             <h2 className="solution-heading">{text('考えながら解く', '边思考边解答')}</h2>

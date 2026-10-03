@@ -43,6 +43,10 @@ test('87 uses the Physics-style inline choice flow and reveals one reasoning nod
   await expect(problem).toContainText('次の□に')
   await expect(guide.getByRole('heading', { name: '考えながら解く' })).toBeVisible()
   await expect(page.getByTestId('math-practice-reading-flow')).toBeVisible()
+  const initialTarget = page.getByTestId('math-practice-current-target')
+  await expect(initialTarget).toContainText('集合')
+  await expect(initialTarget).toContainText('に入る条件を整理する')
+  await expect(initialTarget.locator('.katex')).toHaveCount(1)
 
   const firstBlank = 'math-practice-087-condition-sufficiency'
   const secondBlank = 'math-practice-087-prime-condition'
@@ -62,6 +66,13 @@ test('87 uses the Physics-style inline choice flow and reveals one reasoning nod
 
   await expect(page.getByTestId(`answer-${firstBlank}`)).toContainText('十分ではない')
   await expect(page.getByTestId(`blank-${secondBlank}`)).toContainText('選択')
+
+  await page.getByTestId(`blank-${secondBlank}`).click()
+  await page.getByTestId('option-math-practice-087-prime-condition-prime').click()
+  const target = page.getByTestId('math-practice-current-target')
+  await expect(target).toContainText('今の問い')
+  await expect(target.locator('.katex')).toHaveCount(1)
+  await expect(target.locator('.katex')).toContainText('2')
 })
 
 test('problem card 2 opens 94 with the same Physics-style progressive reading flow', async ({ page }) => {
@@ -73,6 +84,7 @@ test('problem card 2 opens 94 with the same Physics-style progressive reading fl
   await expect(page.getByTestId('math-topic-question-2')).toHaveAttribute('aria-current', 'page')
   await expect(page.getByTestId('standard-problem')).toContainText('次の集合を求めよ')
   await expect(page.getByTestId('math-practice-reading-flow')).toBeVisible()
+  await expect(page.getByTestId('math-practice-current-target')).toContainText('補集合を考える基準を確認する')
 
   const firstBlank = 'math-practice-094-universe-basis'
   const secondBlank = 'math-practice-094-a-complement'
@@ -81,8 +93,21 @@ test('problem card 2 opens 94 with the same Physics-style progressive reading fl
 
   await page.getByTestId(`blank-${firstBlank}`).click()
   await page.getByTestId('option-math-practice-094-universe-basis-u').click()
-  await expect(page.getByTestId(`answer-${firstBlank}`)).toContainText('全体集合 U')
+  await expect(page.getByTestId(`answer-${firstBlank}`)).toContainText('全体集合')
   await expect(page.getByTestId(`blank-${secondBlank}`)).toContainText('選択')
+  await expect(page.getByTestId('math-practice-current-target')).toContainText('今の問い｜(1)')
+  await expect(page.getByTestId('math-practice-current-target').locator('.katex')).toHaveCount(1)
+
+  await page.getByTestId(`blank-${secondBlank}`).click()
+  await page.getByTestId('option-math-practice-094-a-complement-correct').click()
+  await page.getByTestId('blank-math-practice-094-b-complement').click()
+  await page.getByTestId('option-math-practice-094-b-complement-correct').click()
+
+  const meaningBlank = page.getByTestId('blank-math-practice-094-abar-intersection-b-meaning')
+  await expect(meaningBlank).toContainText('選択')
+  await expect(page.getByTestId('math-practice-current-target')).toContainText('今の問い｜(3)')
+  await expect(meaningBlank.locator('xpath=..').locator('.katex')).toHaveCount(1)
+  await expect(page.getByTestId('standard-guide')).not.toContainText('overline(')
 
   const dimensions = await page.evaluate(() => ({
     viewport: window.innerWidth,
@@ -98,9 +123,16 @@ test('problem card 3 opens 97 with the same progressive flow and no equation lea
 
   await expect(page.getByRole('heading', { name: '97｜共通部分から定数を決める' })).toBeVisible()
   const problem = page.getByTestId('standard-problem')
-  await expect(problem).toContainText('定数 a の値と和集合')
+  await expect(problem).toContainText('このとき、定数')
+  await expect(problem).toContainText('の値と和集合')
   await expect(problem).not.toContainText('3a-2=4')
   await expect(page.getByTestId('math-practice-reading-flow')).toBeVisible()
+  const currentTarget = page.getByTestId('math-practice-current-target')
+  await expect(currentTarget).toContainText('共通部分の条件から')
+  await expect(currentTarget).toContainText('を求める')
+  await expect(currentTarget.locator('.katex')).toHaveCount(1)
+  const problemInlineMath = page.getByTestId('standard-problem').getByTestId('math-practice-inline-math')
+  expect(await problemInlineMath.count()).toBeGreaterThan(0)
 
   const firstBlank = 'math-practice-097-four-membership'
   const secondBlank = 'math-practice-097-variable-element'

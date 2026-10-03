@@ -81,6 +81,7 @@ Acceptance は6段階:
 | MR11 | `√(v₀²+g²t²)` の根号だけ他の式と違って崩れる | inline tokenizerが `√` 始まりの式を一math tokenとして拾えない | radical全体をtokenize → `\\sqrt{...}`へnormalize | **FIXED 2026-10-02 / run 249** |
 | MR12 | formula typographyが場所によって textbook-grade でない | multiple rendering surfaces + inconsistent token boundaries | surface matrixで同じ式を比較する | ONGOING visual QA |
 | MR13 | `θ=45°`, `2θ=90°` がinline mathとして一体化しない危険 | inline tokenizerがθ始まり・degree sign・数字+θを十分に扱っていない | θ/° tokenization + degree normalization + trig regression | **FIXED 2026-10-02 / run 256 attempt 2** |
+| MR14 | Math practiceで `overline(A) ∩ B` が raw prose として表示される | prompt / hint / choice の text surface が共通 math tokenizer を通っていなかった。また集合演算記号のnormalize/tokenize coverageがなかった | set notationをshared normalizationへ追加し、Math practiceのproblem/prompt/choice/hint/resolved answerを同じinline-math surfaceへ通す | **REPAIR 2026-10-03 / pilot 87,94,97** |
 
 Primary historical evidence:
 - `docs/physics-ch01/P39_LIVE_APP_DEFECT_AUDIT.md`
@@ -558,3 +559,28 @@ Validation complete:
 - Pages deploy PASS
 
 MR13 is CLOSED.
+
+
+---
+
+## 19. 2026-10-03 — Math practice set-notation surface repair
+
+Observed in the deployed Math practice pilot:
+
+`overline(A) ∩ B`
+
+was shown as authoring text instead of learner-facing mathematical notation.
+
+Root causes:
+- Math practice blank prompts were rendered with plain React text,
+- hint / choice / resolved-answer text used a different surface from formula blocks,
+- the shared tokenizer/normalizer did not yet cover complement/intersection/union/membership notation.
+
+Repair rule:
+- do not rewrite mathematically correct content to avoid renderer defects,
+- normalize `overline(A)`, `∩`, `∪`, `∈`, `∉`, and finite-set literals through the shared math path,
+- use the same inline math renderer for original problem prose, blank prompts, choice content, hints, and resolved answers,
+- require no visible raw `overline(` text in the Math practice browser gate,
+- check both mobile and desktop.
+
+This follows the same debugging order as MR11/MR13: source correctness → tokenization → normalization → React surface → browser visual QA.

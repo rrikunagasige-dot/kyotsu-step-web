@@ -1,10 +1,12 @@
 import { useMemo, useState } from 'react'
 import { X } from 'lucide-react'
-import { ContentRenderer } from '../question/ContentRenderer'
+import { InlineMath } from 'react-katex'
+import { MathPracticeContentRenderer, MathPracticeInlineText } from './MathPracticeRichText'
 import type { LearningSession } from '../../domain/attempts'
 import { isLearningAnswerResolved } from '../../domain/learning'
 import type { Question } from '../../domain/questionSchema'
 import { useI18n } from '../../i18n/runtime'
+import { mathPracticeTargetForBlank, mathPracticeTargetsForQuestion } from '../../data/mathPractice/presentation'
 
 function optionContent(question: Question, blankId: string, optionIds: string[]) {
   const blank = question.learning.blanks[blankId]
@@ -21,7 +23,7 @@ export function MathPracticeReadingFlow({ question, session, onSelect }: {
   session: LearningSession
   onSelect: (blankId: string, optionId: string) => void
 }) {
-  const { text } = useI18n()
+  const { language, text } = useI18n()
   const [openBlankId, setOpenBlankId] = useState<string | null>(null)
   const interactive = useMemo(() => new Set(question.learning.variants[session.variant]), [question.learning.variants, session.variant])
 
@@ -34,13 +36,34 @@ export function MathPracticeReadingFlow({ question, session, onSelect }: {
     ? question.learning.solutionFlow.length - 1
     : firstUnresolvedIndex
 
+  const unresolvedBlankId = firstUnresolvedIndex >= 0 && question.learning.solutionFlow[firstUnresolvedIndex]?.type === 'blank'
+    ? question.learning.solutionFlow[firstUnresolvedIndex].blankId
+    : null
+  const targets = mathPracticeTargetsForQuestion(question.questionId)
+  const currentTarget = mathPracticeTargetForBlank(
+    question.questionId,
+    unresolvedBlankId ?? targets.at(-1)?.blankIds.at(-1),
+  )
+
   return (
-    <article className="math-practice-reading-flow" data-testid="math-practice-reading-flow">
+    <>
+      {currentTarget && (
+        <aside className="math-practice-target-anchor" data-testid="math-practice-current-target">
+          <span>{currentTarget.kicker[language]}</span>
+          {currentTarget.label && <strong><MathPracticeInlineText value={currentTarget.label[language]} /></strong>}
+          {currentTarget.latex && (
+            <strong className="math-practice-target-anchor__math">
+              <InlineMath math={currentTarget.latex} />
+            </strong>
+          )}
+        </aside>
+      )}
+      <article className="math-practice-reading-flow" data-testid="math-practice-reading-flow">
       {question.learning.solutionFlow.slice(0, visibleThrough + 1).map((block) => {
         if (block.type === 'content') {
           return (
             <div className="math-practice-reading-content" key={block.id}>
-              <ContentRenderer blocks={block.content} assets={question.assets} />
+              <MathPracticeContentRenderer blocks={block.content} assets={question.assets} />
             </div>
           )
         }
@@ -52,9 +75,9 @@ export function MathPracticeReadingFlow({ question, session, onSelect }: {
         if (!isInteractive) {
           return (
             <div className="math-practice-reading-line" key={block.id}>
-              <span>{blank.prompt}</span>
+              <span><MathPracticeInlineText value={blank.prompt} /></span>
               <div className="reading-inline-answer math-practice-inline-answer">
-                <ContentRenderer blocks={correctContent(question, block.blankId)} assets={question.assets} />
+                <MathPracticeContentRenderer blocks={correctContent(question, block.blankId)} assets={question.assets} />
               </div>
             </div>
           )
@@ -63,9 +86,9 @@ export function MathPracticeReadingFlow({ question, session, onSelect }: {
         if (isLearningAnswerResolved(answer)) {
           return (
             <div className="math-practice-reading-line" data-testid={`answer-${block.blankId}`} key={block.id}>
-              <span>{blank.prompt}</span>
+              <span><MathPracticeInlineText value={blank.prompt} /></span>
               <div className="reading-inline-answer math-practice-inline-answer">
-                <ContentRenderer blocks={correctContent(question, block.blankId)} assets={question.assets} />
+                <MathPracticeContentRenderer blocks={correctContent(question, block.blankId)} assets={question.assets} />
               </div>
             </div>
           )
@@ -82,7 +105,7 @@ export function MathPracticeReadingFlow({ question, session, onSelect }: {
         return (
           <div className="math-practice-reading-block" key={block.id}>
             <div className="math-practice-reading-line">
-              <span>{blank.prompt}</span>
+              <span><MathPracticeInlineText value={blank.prompt} /></span>
               <button
                 type="button"
                 data-testid={`blank-${block.blankId}`}
@@ -97,13 +120,13 @@ export function MathPracticeReadingFlow({ question, session, onSelect }: {
             {isOpen && (
               <div className="reading-inline-choice-panel" data-testid={`inline-choice-panel-${block.blankId}`}>
                 <div className="reading-inline-choice-panel__head">
-                  <span>{blank.prompt}</span>
+                  <span><MathPracticeInlineText value={blank.prompt} /></span>
                 </div>
 
                 {isWrong && (
                   <div className="reading-choice-hint" data-testid={`math-practice-hint-${block.blankId}`}>
                     <strong>{text('ヒント', '提示')}</strong>
-                    <ContentRenderer blocks={hintBlocks} assets={question.assets} />
+                    <MathPracticeContentRenderer blocks={hintBlocks} assets={question.assets} />
                   </div>
                 )}
 
@@ -120,7 +143,7 @@ export function MathPracticeReadingFlow({ question, session, onSelect }: {
                       }}
                     >
                       <span>{index + 1}</span>
-                      <div className="math-practice-choice-content"><ContentRenderer blocks={option.content} assets={question.assets} /></div>
+                      <div className="math-practice-choice-content"><MathPracticeContentRenderer blocks={option.content} assets={question.assets} /></div>
                     </button>
                   ))}
                 </div>
@@ -129,6 +152,7 @@ export function MathPracticeReadingFlow({ question, session, onSelect }: {
           </div>
         )
       })}
-    </article>
+      </article>
+    </>
   )
 }

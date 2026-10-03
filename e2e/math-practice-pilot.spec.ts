@@ -713,6 +713,74 @@ test('107 applies the necessary/sufficient direction rule to algebra, signs and 
   expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
 })
 
+test('108 proves equivalence in two directions and only combines them at the final stage', async ({ page }) => {
+  await page.getByTestId('math-exercise-basic').click()
+  await page.getByTestId('math-topic-prove-propositions').click()
+
+  await expect(page.getByRole('heading', { name: '108｜同値の証明' })).toBeVisible()
+  const nav = page.getByTestId('math-topic-question-nav')
+  await expect(nav.getByRole('button')).toHaveText(['1'])
+  await expect(page.getByTestId('math-topic-question-1')).toHaveAttribute('aria-current', 'page')
+
+  const problem = page.getByTestId('standard-problem')
+  const readingFlow = page.getByTestId('math-practice-reading-flow')
+  const currentTarget = page.getByTestId('math-practice-current-target')
+
+  await expect(problem).toContainText('同値であることを証明')
+  await expect(problem.locator('.katex-display')).toHaveCount(2)
+  await expect(problem.locator('.katex-error')).toHaveCount(0)
+
+  await expect(currentTarget).toContainText('まず確認')
+  await expect(currentTarget).toContainText('2方向')
+  await expect(page.getByTestId('blank-math-practice-108-rule')).toContainText('選択')
+  await expect(page.getByTestId('blank-math-practice-108-forward')).toHaveCount(0)
+
+  await page.getByTestId('blank-math-practice-108-rule').click()
+  await page.getByTestId('option-math-practice-108-rule-both-directions').click()
+
+  // Forward proof: derive both q conditions from p; reverse work stays hidden.
+  await expect(currentTarget).toContainText('一方向目')
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('同値の証明方針')
+  await expect(readingFlow).not.toContainText('次に逆方向')
+  await expect(page.getByTestId('blank-math-practice-108-forward')).toContainText('選択')
+  await page.getByTestId('blank-math-practice-108-forward').click()
+  await page.getByTestId('option-math-practice-108-forward-sum-and-product').click()
+
+  // Reverse proof is independent from the completed forward derivation.
+  await expect(currentTarget).toContainText('二方向目')
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('同値の証明方針')
+  await expect(page.getByTestId('math-practice-dependency-links')).not.toContainText('一方向目')
+  await expect(readingFlow).not.toContainText('一方向目では p')
+  await expect(page.getByTestId('blank-math-practice-108-reverse-sign')).toContainText('選択')
+  await expect(page.getByTestId('blank-math-practice-108-reverse-eliminate')).toHaveCount(0)
+
+  await page.getByTestId('blank-math-practice-108-reverse-sign').click()
+  await page.getByTestId('option-math-practice-108-reverse-sign-same-sign').click()
+
+  await expect(page.getByTestId('blank-math-practice-108-reverse-eliminate')).toContainText('選択')
+  await page.getByTestId('blank-math-practice-108-reverse-eliminate').click()
+  await page.getByTestId('option-math-practice-108-reverse-eliminate-positive-remains').click()
+
+  // Only at the final stage are the two completed direction results imported together.
+  await expect(currentTarget).toContainText('結論')
+  const deps = page.getByTestId('math-practice-dependency-links')
+  await expect(deps).toContainText('一方向目')
+  await expect(deps).toContainText('二方向目')
+  await expect(readingFlow).not.toContainText('積が正であることだけから')
+  await expect(page.getByTestId('blank-math-practice-108-equivalence')).toContainText('選択')
+
+  await page.getByTestId('blank-math-practice-108-equivalence').click()
+  await page.getByTestId('option-math-practice-108-equivalence-equivalent').click()
+
+  await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
+
+  const dimensions = await page.evaluate(() => ({
+    viewport: window.innerWidth,
+    page: document.documentElement.scrollWidth,
+  }))
+  expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
+})
+
 test('87 uses the Physics-style inline choice flow and reveals one reasoning node at a time', async ({ page }) => {
   await page.getByTestId('math-exercise-basic').click()
   await page.getByTestId('math-topic-organize-sets').click()

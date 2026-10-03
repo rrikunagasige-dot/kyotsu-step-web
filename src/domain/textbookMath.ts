@@ -62,9 +62,18 @@ function normalizeUnicodeRadicals(value: string) {
 }
 
 export function normalizeTextbookMath(value: string) {
-  let next = normalizeUnicodeRadicals(stripTextbookMarkdown(value))
+  let next = stripTextbookMarkdown(value)
+
+  // Finite-set braces in prose are literal mathematical braces, not TeX grouping.
+  next = next.replace(/\{([\-0-9A-Za-z,+\s]+)\}/g, '\\\\{$1\\\\}')
+  next = normalizeUnicodeRadicals(next)
 
   next = next
+    .replace(/overline\(([^()]*)\)/g, '\\\\overline{$1}')
+    .replace(/∩/g, '\\\\cap ')
+    .replace(/∪/g, '\\\\cup ')
+    .replace(/∈/g, '\\\\in ')
+    .replace(/∉/g, '\\\\notin ')
     .replace(/Δ([A-Za-z])⃗([₀₁₂₃₄₅₆₇₈₉ₓᵧₜ]+)/g, (_, base: string, sub: string) => `\\Delta \\vec{${base}}_{${normalizeSubscriptSequence(sub)}}`)
     .replace(/([A-Za-z])⃗([₀₁₂₃₄₅₆₇₈₉ₓᵧₜ]+)/g, (_, base: string, sub: string) => `\\vec{${base}}_{${normalizeSubscriptSequence(sub)}}`)
     .replace(/([A-Za-z])([₀₁₂₃₄₅₆₇₈₉ₓᵧₜ]{2,})/g, (_, base: string, sub: string) => `${base}_{${normalizeSubscriptSequence(sub)}}`)
@@ -107,7 +116,8 @@ export function normalizeTextbookMath(value: string) {
 export function looksLikeTextbookMath(value: string) {
   const text = stripTextbookMarkdown(value)
   if (!text || /[ぁ-んァ-ヶ一-龠]/.test(text)) return false
-  if (/[=+\-−×÷/√²³⃗θΔ°()₀₁₂₃₄₅₆₇₈₉ₓᵧₜ_]/.test(text)) return true
+  if (/[=+\-−×÷/√²³⃗θΔ°()₀₁₂₃₄₅₆₇₈₉ₓᵧₜ_∩∪∈∉]/.test(text)) return true
+  if (/overline\(/.test(text) || /^\{[^{}]+\}$/.test(text)) return true
   if (/(?:sin|cos|tan)/.test(text)) return true
   if (/^[0-9]*[A-Za-z]{1,4}$/.test(text)) return true
   return false
@@ -128,7 +138,7 @@ export function splitTextbookInlineMath(value: string): InlineMathPart[] {
   const text = stripTextbookMarkdown(value)
   if (!text) return []
 
-  const tokenPattern = /(?:[A-Za-zΔ√θ][A-Za-z0-9Δθ√°⃗̄₀₁₂₃₄₅₆₇₈₉ₓᵧₜ²³_{}().,]*(?:\s*[=+\-−×·/<>|]\s*[A-Za-z0-9Δθ√°⃗̄₀₁₂₃₄₅₆₇₈₉ₓᵧₜ²³_{}().,+\-−×·/<>|]+)*|[0-9]+(?:θ|°)[A-Za-z0-9Δθ√°⃗̄₀₁₂₃₄₅₆₇₈₉ₓᵧₜ²³_{}().,]*(?:\s*[=+\-−×·/<>|]\s*[A-Za-z0-9Δθ√°⃗̄₀₁₂₃₄₅₆₇₈₉ₓᵧₜ²³_{}().,+\-−×·/<>|]+)*|[POTDH][₀₁₂₃₄₅₆₇₈₉])/g
+  const tokenPattern = /(?:[A-Za-z0-9Δ√θ{][A-Za-z0-9Δθ√°⃗̄₀₁₂₃₄₅₆₇₈₉ₓᵧₜ²³_{}().,]*(?:\s*[=+\-−×·/<>|∩∪∈∉]\s*[A-Za-z0-9Δθ√°⃗̄₀₁₂₃₄₅₆₇₈₉ₓᵧₜ²³_{}().,+\-−×·/<>|∩∪∈∉]+)*|[POTDH][₀₁₂₃₄₅₆₇₈₉])/g
 
   const parts: InlineMathPart[] = []
   let cursor = 0

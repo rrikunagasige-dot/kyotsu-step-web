@@ -10,6 +10,35 @@ describe('math proposition-reading textbook unit', () => {
     expect(mathPropositionReadingUnit.sections).toHaveLength(1)
   })
 
+
+  it('forms the proposition criterion before introducing implication notation', () => {
+    const flow = mathPropositionReadingUnit.sections[0].readingFlow
+    const firstJudgment = flow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'prop-p00a',
+      ),
+    )
+    const ambiguityJudgment = flow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'prop-p00c',
+      ),
+    )
+    const propositionConcept = flow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'text' && part.text.includes('文を命題という'),
+      ),
+    )
+    const implicationDecision = flow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'prop-a01',
+      ),
+    )
+    expect(firstJudgment).toBeGreaterThanOrEqual(0)
+    expect(ambiguityJudgment).toBeGreaterThan(firstJudgment)
+    expect(propositionConcept).toBeGreaterThan(ambiguityJudgment)
+    expect(implicationDecision).toBeGreaterThan(propositionConcept)
+  })
+
   it('forms implication meaning from a concrete condition before naming p⇒q', () => {
     const flow = mathPropositionReadingUnit.sections[0].readingFlow
     const decisionIndex = flow.findIndex(

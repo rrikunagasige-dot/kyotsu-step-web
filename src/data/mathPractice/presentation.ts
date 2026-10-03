@@ -393,6 +393,39 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
       dependsOn: ['verify-a'],
     },
   ],
+  'math-practice-098': [
+    {
+      id: 'basis',
+      kicker: { ja: 'まず確認', zh: '先确认' },
+      label: { ja: '命題かどうかの判定基準を作る', zh: '建立是否为命题的判断标准' },
+      blankIds: ['definition'],
+      result: {
+        blankId: 'definition',
+        label: { ja: '判定基準', zh: '判断标准' },
+      },
+    },
+    {
+      id: 's1',
+      kicker: { ja: '今の問い｜(1)', zh: '当前问题｜(1)' },
+      label: { ja: '計算して、命題か・真かを判断する', zh: '通过计算判断是否为命题以及真假' },
+      blankIds: ['p1-result'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's2',
+      kicker: { ja: '今の問い｜(2)', zh: '当前问题｜(2)' },
+      label: { ja: '反例を使って真偽を判断する', zh: '用反例判断真假' },
+      blankIds: ['p2-counterexample', 'p2-result'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's3',
+      kicker: { ja: '今の問い｜(3)', zh: '当前问题｜(3)' },
+      label: { ja: '客観的に真偽を決められるか判断する', zh: '判断能否客观地确定真假' },
+      blankIds: ['p3-objectivity', 'p3-result'],
+      dependsOn: ['basis'],
+    },
+  ],
 }
 
 function localBlankId(questionId: string, fullBlankId: string) {
@@ -441,5 +474,6 @@ export function mathPracticeUsesSubproblemCompression(questionId: string) {
     'math-practice-095',
     'math-practice-096',
     'math-practice-097',
+    'math-practice-098',
   ].includes(questionId)
 }

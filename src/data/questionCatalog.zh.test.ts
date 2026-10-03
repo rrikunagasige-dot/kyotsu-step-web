@@ -67,6 +67,7 @@ describe('independently authored Chinese question catalog', () => {
       '95｜由区域信息还原集合',
       '96｜三个集合的复合运算',
       '97｜由交集确定常数',
+      '98｜命题与真假',
     ])  })
 
   it('selects the requested language without changing stable question IDs', () => {

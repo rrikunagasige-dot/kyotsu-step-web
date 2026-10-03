@@ -1282,9 +1282,9 @@ test('116 proves q=0 by irrationality contradiction, then back-substitutes to ge
   const readingFlow = page.getByTestId('math-practice-reading-flow')
   const currentTarget = page.getByTestId('math-practice-current-target')
 
-  await expect(problem).toContainText('p、q が有理数')
-  await expect(problem).toContainText('X が無理数')
-  await expect(problem).toContainText('p=q=0')
+  await expect(problem).toContainText('が有理数、')
+  await expect(problem).toContainText('が無理数で、')
+  await expect(problem).toContainText('であることを証明せよ')
   await expect(problem.locator('.katex-error')).toHaveCount(0)
 
   // Identify q because it is the coefficient attached directly to the irrational number X.

@@ -477,7 +477,7 @@ export function TextbookUnitPage() {
               </strong>
               <p>
                 {unit.subject === 'math-1a'
-                  ? text('集合・要素・所属記号・集合の表し方・有限集合と無限集合まで確認しました。', '已经学习了集合、元素、所属符号、集合的表示方法，以及有限集合与无限集合。')
+                  ? text('集合の表し方から、共通部分・和集合・部分集合・補集合・ド・モルガンの法則・数直線まで確認しました。', '已经学习了集合的表示、交集与并集、子集、补集、德摩根定律，以及数轴上的集合。')
                   : nextChapter1Unit
                     ? chapter1Localized(nextChapter1Unit.bridge, language)
                     : text('運動を表し、速度の変化を追い、その原因を力までつなげて考えました。', '已经把运动的表示、速度的变化以及产生变化的力联系起来了。')}

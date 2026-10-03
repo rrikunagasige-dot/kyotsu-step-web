@@ -20,6 +20,20 @@ export const setOutsideFigures = [
     caption: 'A∪Bの外側に残る領域。',
     overlays: [],
   },
+  {
+    id: 'demorgan-complements-union',
+    src: '/assets/math/textbook/sets/demorgan-intersection-complement.svg',
+    alt: 'Aの外側またはBの外側を合わせた領域',
+    caption: 'Aの外側またはBの外側を合わせても、重なり以外のU全体になる。',
+    overlays: [],
+  },
+  {
+    id: 'demorgan-complements-intersection',
+    src: '/assets/math/textbook/sets/demorgan-union-complement.svg',
+    alt: 'Aの外側かつBの外側が重なる領域',
+    caption: 'Aの外側かつBの外側にあるのは、2つの円の外側。',
+    overlays: [],
+  },
 ] as const
 
 export const setOutsideReadingFlow = [
@@ -244,6 +258,7 @@ export const setOutsideReadingFlow = [
       { type: 'text' as const, text: ' を作る。' },
     ],
   },
+  { id: 'figure-e-right-union', type: 'figure' as const, figureId: 'demorgan-complements-union' },
   {
     id: 'paragraph-e04',
     type: 'paragraph' as const,
@@ -291,6 +306,7 @@ export const setOutsideReadingFlow = [
     ],
   },
   { id: 'figure-e-union-complement', type: 'figure' as const, figureId: 'demorgan-union-complement' },
+  { id: 'figure-e-right-intersection', type: 'figure' as const, figureId: 'demorgan-complements-intersection' },
   {
     id: 'paragraph-e08',
     type: 'paragraph' as const,

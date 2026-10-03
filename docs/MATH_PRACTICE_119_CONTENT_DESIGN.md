@@ -161,3 +161,59 @@ Acceptance gate before 120:
 - build
 - mobile/desktop smoke
 - deploy
+
+
+---
+
+# Implementation-ready thinking nodes
+
+Common basis:
+- 119-rule
+  - correct: 「指定された入力で、式中のすべての x を置き換える。負数や式は括弧を保つ。」
+  - distractors:
+    - 最初の x だけ置き換える
+    - 計算結果だけを暗記する
+
+Numeric items:
+- 119-f0
+  - correct chain: \(3(0)-2=-2\)
+- 119-f2
+  - correct chain: \(3(2)-2=4\)
+- 119-fm1
+  - correct chain: \(3(-1)-2=-5\)
+- 119-g0
+  - correct chain: \(2(0)^2-3(0)+1=1\)
+- 119-g3
+  - correct chain: \(2(3)^2-3(3)+1=10\)
+- 119-gm2
+  - correct chain: \(2(-2)^2-3(-2)+1=15\)
+
+Symbolic items:
+- 119-fa
+  - correct: \(3a-2\)
+- 119-fa1-substitute
+  - correct: \(3(a+1)-2\)
+- 119-fa1-simplify
+  - correct: \(3a+1\)
+- 119-gma-substitute
+  - correct: \(2(-a)^2-3(-a)+1\)
+- 119-gma-square
+  - correct: \((-a)^2=a^2\)
+- 119-gma-simplify
+  - correct: \(2a^2+3a+1\)
+- 119-ga1-substitute
+  - correct: \(2(a-1)^2-3(a-1)+1\)
+- 119-ga1-expand
+  - correct: \((a-1)^2=a^2-2a+1\)
+- 119-ga1-simplify
+  - correct: \(2a^2-7a+6\)
+
+Recommended grouping:
+- numeric function values: one blank each, because substitution and arithmetic are one coherent action
+- symbolic composite inputs: substitution and simplification are separate stages
+- never carry f(0) etc. as dependency results into later items
+
+Leakage checks:
+- do not show simplified \(3a+1\) while asking for substitution \(3(a+1)-2\)
+- do not show \(2a^2+3a+1\) before learner handles \((-a)^2\)
+- do not show expansion \(a^2-2a+1\) before the \(g(a-1)\) substitution stage is resolved

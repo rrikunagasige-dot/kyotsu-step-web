@@ -664,6 +664,81 @@ button.math-theme-link {
   margin: 0;
 }
 
+.math-practice-dependency-links {
+  display: grid;
+  gap: .42rem;
+  margin: 0 0 .7rem;
+}
+
+.math-practice-dependency-links__label {
+  color: var(--color-muted);
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+
+.math-practice-dependency-item {
+  display: grid;
+  gap: .35rem;
+}
+
+.math-practice-dependency-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .35rem .65rem;
+  padding: .45rem .62rem;
+  border: 1px solid var(--color-line);
+  background: #fcfbf7;
+}
+
+.math-practice-dependency-link {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-primary);
+  font: 700 .78rem/1.4 inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.math-practice-dependency-link:hover,
+.math-practice-dependency-link:focus-visible {
+  color: var(--color-text);
+  outline: none;
+}
+
+.math-practice-dependency-result {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .12rem;
+  min-width: 0;
+  font-size: .88rem;
+}
+
+.math-practice-dependency-result .content-renderer,
+.math-practice-dependency-result .content-renderer > p {
+  display: inline;
+  margin: 0;
+}
+
+.math-practice-dependency-detail {
+  display: grid;
+  gap: .45rem;
+  margin-left: .35rem;
+  padding: .55rem .7rem;
+  border-left: 3px solid var(--color-line);
+  background: var(--color-section);
+  font-size: .9rem;
+}
+
+.math-practice-dependency-detail .math-practice-reading-line {
+  font-size: .9rem;
+  line-height: 1.75;
+}
+
 .math-practice-reading-flow {
   display: grid;
   gap: .9rem;

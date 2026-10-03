@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+<title id="title">周の長さが40cmの長方形</title>
+<desc id="desc">縦をxセンチメートル、横をyセンチメートルとした長方形。</desc>
+<rect x="150" y="90" width="340" height="180" fill="#fff" stroke="#111" stroke-width="5"/>
+<text x="315" y="65" text-anchor="middle" font-family="sans-serif" font-size="30" fill="#111">y cm</text>
+<text x="115" y="190" text-anchor="middle" font-family="sans-serif" font-size="30" fill="#111">x cm</text>
+<text x="320" y="330" text-anchor="middle" font-family="sans-serif" font-size="26" fill="#111">周の長さ 40 cm</text>
+</svg>

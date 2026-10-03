@@ -1288,6 +1288,62 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
       dependsOn: ['isolate'],
     },
   ],
+  'math-practice-116': [
+    {
+      id: 'target',
+      kicker: { ja: 'まずの目標', zh: '第一个目标' },
+      label: { ja: '無理数Xに掛かる係数を見つける', zh: '找出乘在无理数X前的系数' },
+      blankIds: ['target'],
+      result: {
+        blankId: 'target',
+        label: { ja: '最初に調べる係数', zh: '首先研究的系数' },
+      },
+    },
+    {
+      id: 'assumption',
+      kicker: { ja: '次の目標', zh: '下一个目标' },
+      label: { ja: 'q≠0と反対仮定する', zh: '反设q≠0' },
+      blankIds: ['assumption'],
+      dependsOn: ['target'],
+      result: {
+        blankId: 'assumption',
+        label: { ja: '反対仮定', zh: '反设' },
+      },
+    },
+    {
+      id: 'isolate',
+      kicker: { ja: '次の目標', zh: '下一个目标' },
+      label: { ja: '元の式からXを単独にする', zh: '由原式单独表示X' },
+      blankIds: ['isolate'],
+      dependsOn: ['assumption'],
+      result: {
+        blankId: 'isolate',
+        label: { ja: 'Xの式', zh: 'X的表达式' },
+      },
+    },
+    {
+      id: 'q-zero',
+      kicker: { ja: '次の目標', zh: '下一个目标' },
+      label: { ja: '有理数の商とXの無理性を矛盾させる', zh: '用有理数之商与X的无理性形成矛盾' },
+      blankIds: ['q-zero'],
+      dependsOn: ['isolate'],
+      result: {
+        blankId: 'q-zero',
+        label: { ja: 'まず得た結論', zh: '首先得到的结论' },
+      },
+    },
+    {
+      id: 'p-zero',
+      kicker: { ja: '最後の目標', zh: '最后目标' },
+      label: { ja: 'q=0を元の式へ戻してpを決める', zh: '把q=0代回原式求p' },
+      blankIds: ['p-zero'],
+      dependsOn: ['q-zero'],
+      result: {
+        blankId: 'p-zero',
+        label: { ja: '116の結果', zh: '116的结论' },
+      },
+    },
+  ],
 }
 
 function localBlankId(questionId: string, fullBlankId: string) {
@@ -1354,5 +1410,6 @@ export function mathPracticeUsesSubproblemCompression(questionId: string) {
     'math-practice-113',
     'math-practice-114',
     'math-practice-115',
+    'math-practice-116',
   ].includes(questionId)
 }

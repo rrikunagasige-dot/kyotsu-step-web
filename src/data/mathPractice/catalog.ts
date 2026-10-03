@@ -37,7 +37,7 @@ export const mathPractice87To120Catalog: MathPracticeCatalogEntry[] = [
   { problemNo: 110, section: 'proofs', sectionTitle: '命題と証明', title: '逆・対偶・裏', pilot: true },
   { problemNo: 111, section: 'proofs', sectionTitle: '命題と証明', title: '対偶による証明', pilot: true },
   { problemNo: 112, section: 'proofs', sectionTitle: '命題と証明', title: '無理数の証明', pilot: true },
-  { problemNo: 113, section: 'proofs', sectionTitle: '命題と証明', title: '平方根と無理数', pilot: false },
+  { problemNo: 113, section: 'proofs', sectionTitle: '命題と証明', title: '平方根と無理数', pilot: true },
   { problemNo: 114, section: 'proofs', sectionTitle: '命題と証明', title: '倍数の証明', pilot: false },
   { problemNo: 115, section: 'proofs', sectionTitle: '命題と証明', title: '背理法', pilot: false },
   { problemNo: 116, section: 'proofs', sectionTitle: '命題と証明', title: '有理数と無理数', pilot: false },

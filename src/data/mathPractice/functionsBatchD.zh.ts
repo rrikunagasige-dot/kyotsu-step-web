@@ -111,7 +111,7 @@ export const mathPracticeFunctionsBatchDSourceZh: MathPracticeSourceQuestion[] =
     problem: [
       { type: 'text', text: '对函数 f、g，求下列各值。' },
       { type: 'latex', latex: 'f(x)=3x-2,\\qquad g(x)=2x^2-3x+1' },
-      { type: 'latex', latex: '\\begin{aligned}(1)&\\ f(0)&(2)&\\ f(2)&(3)&\\ f(-1)&(4)&\\ f(a)&(5)&\\ f(a+1)\\\\(6)&\\ g(0)&(7)&\\ g(3)&(8)&\\ g(-2)&(9)&\\ g(-a)&(10)&\\ g(a-1)\\end{aligned}' },
+      { type: 'latex', latex: '\\begin{aligned}(1)&\\ f(0) && (2)\\ f(2)\\\\(3)&\\ f(-1) && (4)\\ f(a)\\\\(5)&\\ f(a+1) && (6)\\ g(0)\\\\(7)&\\ g(3) && (8)\\ g(-2)\\\\(9)&\\ g(-a) && (10)\\ g(a-1)\\end{aligned}' },
     ],
     guide: [
       { type: 'content', blocks: [{ type: 'text', text: '求函数值时，用指定输入替换式中所有 x。代入负数或式子时先保留括号。' }] },

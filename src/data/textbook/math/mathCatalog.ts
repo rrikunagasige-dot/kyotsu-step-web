@@ -41,7 +41,7 @@ export const mathTextbookTopics: readonly MathTextbookTopicCatalogEntry[] = [
     },
     practiceTopicId: 'read-propositions',
     practiceRange: [98, 120],
-    unitIds: ['math-propositions-reading', 'math-quantifiers-all-exists'],
+    unitIds: ['math-propositions-reading', 'math-quantifiers-all-exists', 'math-functions-conditions'],
     learnerHeadings: [],
   },
   {

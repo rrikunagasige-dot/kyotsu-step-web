@@ -1136,7 +1136,7 @@ test('113 proves sqrt(x) irrational by a linear contradiction chain', async ({ p
   await expect(currentTarget).toContainText('2乗後')
   await expect(page.getByTestId('math-practice-dependency-links')).toContainText('xへ戻る操作')
   await page.getByTestId('blank-math-practice-113-square-result').click()
-  await page.getByTestId('option-math-practice-113-square-result-x-r-squared-rational').click()
+  await page.getByTestId('option-math-practice-113-square-result-x-rational').click()
 
   // Only then close the contradiction with the given irrationality of x.
   await expect(currentTarget).toContainText('最後の目標')

@@ -291,7 +291,11 @@ export function LearningSessionPage() {
               </nav>
             )}
             <h2 className="solution-heading">{text('問題', '题目')}</h2>
-            <article className="question-paper"><ContentRenderer blocks={question.stem} assets={question.assets} /></article>
+            <article className="question-paper">
+              {usesTextbookLikeMathDesign
+                ? <MathPracticeContentRenderer blocks={question.stem} assets={question.assets} />
+                : <ContentRenderer blocks={question.stem} assets={question.assets} />}
+            </article>
           </section>
           <section data-testid="standard-guide">
             <h2 className="solution-heading">{text('考えながら解く', '边思考边解答')}</h2>

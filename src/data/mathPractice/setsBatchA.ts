@@ -181,8 +181,8 @@ export const mathPracticeSetsBatchASource: MathPracticeSourceQuestion[] = [
     knowledgeTags: ['subset', 'set-representation'],
     skillTags: ['condition-reading', 'counterexample', 'conclusion'],
     problem: [
-      { type: 'latex', latex: 'A=\{x\mid1\le x\le10,\;x\text{ は偶数}\}' },
-      { type: 'latex', latex: 'B=\{1,2,3\},\quad C=\{2,4,6\},\quad D=\{10,12\},\quad E=\{8\}' },
+      { type: 'latex', latex: 'A=\\{x\\mid1\\le x\\le10,\\;x\\text{ は偶数}\\}' },
+      { type: 'latex', latex: 'B=\\{1,2,3\\},\\quad C=\\{2,4,6\\},\\quad D=\\{10,12\\},\\quad E=\\{8\\}' },
       { type: 'text', text: 'B,C,D,E のうち、集合 A の部分集合であるものはどれか。' },
     ],
     guide: [
@@ -264,8 +264,8 @@ export const mathPracticeSetsBatchASource: MathPracticeSourceQuestion[] = [
     skillTags: ['condition-reading', 'calculation', 'conclusion'],
     problem: [
       { type: 'text', text: '次の2つの集合 A, B の間に成り立つ関係を、記号 ⊂, = を用いて表せ。' },
-      { type: 'latex', latex: '(1)\;A=\{3n-1\mid1\le n\le5,\;n\text{ は整数}\},\quad B=\{6n+2\mid0\le n\le2,\;n\text{ は整数}\}' },
-      { type: 'latex', latex: '(2)\;A=\{3n-1\mid n=1,2\},\quad B=\{x\mid(x-2)(x-5)=0,\;x\text{ は整数}\}' },
+      { type: 'latex', latex: '(1)\\;A=\\{3n-1\\mid1\\le n\\le5,\\;n\\text{ は整数}\\},\\quad B=\\{6n+2\\mid0\\le n\\le2,\\;n\\text{ は整数}\\}' },
+      { type: 'latex', latex: '(2)\\;A=\\{3n-1\\mid n=1,2\\},\\quad B=\\{x\\mid(x-2)(x-5)=0,\\;x\\text{ は整数}\\}' },
     ],
     guide: [
       { type: 'content', blocks: [{ type: 'text', text: '(1) 式の形のままではなく、まず A と B の要素を書き出して比べる。' }] },
@@ -423,11 +423,11 @@ export const mathPracticeSetsBatchASource: MathPracticeSourceQuestion[] = [
     skillTags: ['condition-reading', 'calculation', 'conclusion'],
     problem: [
       { type: 'text', text: '次の各場合について、A∩B と A∪B を求めよ。' },
-      { type: 'latex', latex: '(1)\;A=\{1,3,5,7\},\quad B=\{0,1,2,3\}' },
-      { type: 'latex', latex: '(2)\;A=\{2,3,5,8\},\quad B=\{1,4,6\}' },
-      { type: 'latex', latex: '(3)\;A=\{x\mid-3\le x\le2,\;x\text{ は実数}\},\quad B=\{x\mid-1<x<4,\;x\text{ は実数}\}' },
-      { type: 'latex', latex: '(4)\;A=\{n\mid n\text{ は18の正の約数}\},\quad B=\{n\mid n\text{ は27の正の約数}\}' },
-      { type: 'latex', latex: '(5)\;A=\{2n+1\mid0\le n\le6,\;n\text{ は整数}\},\quad B=\{3n+1\mid0\le n\le4,\;n\text{ は整数}\}' },
+      { type: 'latex', latex: '(1)\\;A=\\{1,3,5,7\\},\\quad B=\\{0,1,2,3\\}' },
+      { type: 'latex', latex: '(2)\\;A=\\{2,3,5,8\\},\\quad B=\\{1,4,6\\}' },
+      { type: 'latex', latex: '(3)\\;A=\\{x\\mid-3\\le x\\le2,\\;x\\text{ は実数}\\},\\quad B=\\{x\\mid-1<x<4,\\;x\\text{ は実数}\\}' },
+      { type: 'latex', latex: '(4)\\;A=\\{n\\mid n\\text{ は18の正の約数}\\},\\quad B=\\{n\\mid n\\text{ は27の正の約数}\\}' },
+      { type: 'latex', latex: '(5)\\;A=\\{2n+1\\mid0\\le n\\le6,\\;n\\text{ は整数}\\},\\quad B=\\{3n+1\\mid0\\le n\\le4,\\;n\\text{ は整数}\\}' },
     ],
     guide: [
       { type: 'content', blocks: [{ type: 'text', text: 'まず ∩ と ∪ の意味を確認する。' }] },
@@ -559,9 +559,9 @@ export const mathPracticeSetsBatchASource: MathPracticeSourceQuestion[] = [
     knowledgeTags: ['intersection', 'union', 'divisor'],
     skillTags: ['calculation', 'condition-reading', 'conclusion'],
     problem: [
-      { type: 'latex', latex: 'A=\{n\mid n\text{ は16の正の約数}\},\quad B=\{n\mid n\text{ は24の正の約数}\},\quad C=\{n\mid n\text{ は8以下の自然数}\}' },
+      { type: 'latex', latex: 'A=\\{n\\mid n\\text{ は16の正の約数}\\},\\quad B=\\{n\\mid n\\text{ は24の正の約数}\\},\\quad C=\\{n\\mid n\\text{ は8以下の自然数}\\}' },
       { type: 'text', text: '次の集合を求めよ。' },
-      { type: 'latex', latex: '(1)\;A\cap B\cap C\qquad(2)\;A\cup B\cup C' },
+      { type: 'latex', latex: '(1)\\;A\\cap B\\cap C\\qquad(2)\\;A\\cup B\\cup C' },
     ],
     guide: [
       { type: 'content', blocks: [{ type: 'text', text: 'まず A,B,C を要素で表して比較できる形にする。' }] },
@@ -628,10 +628,10 @@ export const mathPracticeSetsBatchASource: MathPracticeSourceQuestion[] = [
     knowledgeTags: ['venn-region', 'complement', 'union', 'intersection'],
     skillTags: ['condition-reading', 'decomposition', 'calculation', 'conclusion'],
     problem: [
-      { type: 'latex', latex: 'U=\{1,2,3,4,5,6,7,8,9\}' },
-      { type: 'latex', latex: 'A\cap B=\{2\},\qquad \overline A\cap B=\{4,6,8\},\qquad \overline A\cap\overline B=\{1,9\}' },
+      { type: 'latex', latex: 'U=\\{1,2,3,4,5,6,7,8,9\\}' },
+      { type: 'latex', latex: 'A\\cap B=\\{2\\},\\qquad \\overline A\\cap B=\\{4,6,8\\},\\qquad \\overline A\\cap\\overline B=\\{1,9\\}' },
       { type: 'text', text: '次の集合を求めよ。' },
-      { type: 'latex', latex: '(1)\;A\cup B\qquad(2)\;B\qquad(3)\;A\cap\overline B' },
+      { type: 'latex', latex: '(1)\\;A\\cup B\\qquad(2)\\;B\\qquad(3)\\;A\\cap\\overline B' },
     ],
     guide: [
       { type: 'content', blocks: [{ type: 'text', text: '(1) A∪B に入らない要素がどの領域にあるか考える。' }] },
@@ -699,11 +699,11 @@ export const mathPracticeSetsBatchASource: MathPracticeSourceQuestion[] = [
     knowledgeTags: ['intersection', 'union', 'complement', 'three-sets'],
     skillTags: ['condition-reading', 'strategy-selection', 'calculation', 'conclusion'],
     problem: [
-      { type: 'latex', latex: 'U=\{x\mid1\le x\le10,\;x\text{ は整数}\}' },
-      { type: 'latex', latex: 'A=\{1,2,3,4,8\},\quad B=\{3,4,5,6\},\quad C=\{2,3,6,7\}' },
+      { type: 'latex', latex: 'U=\\{x\\mid1\\le x\\le10,\\;x\\text{ は整数}\\}' },
+      { type: 'latex', latex: 'A=\\{1,2,3,4,8\\},\\quad B=\\{3,4,5,6\\},\\quad C=\\{2,3,6,7\\}' },
       { type: 'text', text: '次の集合を求めよ。' },
-      { type: 'latex', latex: '(1)\;A\cap B\cap C\qquad(2)\;A\cup B\cup C\qquad(3)\;A\cap B\cap\overline C' },
-      { type: 'latex', latex: '(4)\;\overline A\cap B\cap\overline C\qquad(5)\;\overline{A\cap B\cap C}\qquad(6)\;(A\cup C)\cap\overline B' },
+      { type: 'latex', latex: '(1)\\;A\\cap B\\cap C\\qquad(2)\\;A\\cup B\\cup C\\qquad(3)\\;A\\cap B\\cap\\overline C' },
+      { type: 'latex', latex: '(4)\\;\\overline A\\cap B\\cap\\overline C\\qquad(5)\\;\\overline{A\\cap B\\cap C}\\qquad(6)\\;(A\\cup C)\\cap\\overline B' },
     ],
     guide: [
       { type: 'content', blocks: [{ type: 'text', text: '(1) まず A と B の共通部分を作り、その中から C にも入る要素を残す。' }] },

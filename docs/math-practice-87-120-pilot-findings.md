@@ -105,3 +105,29 @@ The next gate is human inspection of the three pilot questions in the real app. 
 2. 98–109
 3. 110–117
 4. 118–120
+
+
+---
+
+## 2026-10-03 user-QA correction — keep the current question visible
+
+User QA accepted the inline Physics-style interaction itself, but found that 87 and especially 94 could become confusing because the learner no longer knew **which original subproblem was currently being solved**.
+
+This is the same class of issue captured by the Physics rule:
+
+`target → what to find first → why → equation → result → check`
+
+and by the P39 decision:
+
+**semantic reveal, not blanket reveal.**
+
+Pilot repair:
+
+- 87 keeps a compact current-question anchor such as `2 □ A`, `15 □ A`, ...
+- 94 keeps the original subproblem identity visible: (1) through (8), with the actual set expression rendered as math
+- 97 keeps its three large goals visible in sequence: solve `a` → verify the condition → find `A∪B`
+- this anchor is independent of progressive hiding, so context needed to understand the current action is not lost
+- no extra large card or duplicate problem statement is added
+- future expansion should define equivalent semantic targets instead of relying only on a linear list of blanks
+
+The mathematical content and reviewed blank order remain unchanged.

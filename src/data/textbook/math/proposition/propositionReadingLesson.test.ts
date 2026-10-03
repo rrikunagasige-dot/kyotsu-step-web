@@ -11,32 +11,29 @@ describe('math proposition-reading textbook unit', () => {
   })
 
 
-  it('forms the proposition criterion before introducing implication notation', () => {
+  it('defines the proposition criterion first, then completes the three practice-98 examples before implication', () => {
     const flow = mathPropositionReadingUnit.sections[0].readingFlow
-    const firstJudgment = flow.findIndex(
-      (block) => block.type === 'paragraph' && block.parts.some(
-        (part) => part.type === 'choice' && part.itemId === 'prop-p00a',
-      ),
-    )
-    const ambiguityJudgment = flow.findIndex(
-      (block) => block.type === 'paragraph' && block.parts.some(
-        (part) => part.type === 'choice' && part.itemId === 'prop-p00c',
-      ),
-    )
     const propositionConcept = flow.findIndex(
       (block) => block.type === 'paragraph' && block.parts.some(
         (part) => part.type === 'text' && part.text.includes('文を命題という'),
       ),
     )
+    const ids = ['prop-p00a', 'prop-p00b', 'prop-p00c', 'prop-p00d', 'prop-p00e']
+    const indexes = ids.map((itemId) => flow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === itemId,
+      ),
+    ))
     const implicationDecision = flow.findIndex(
       (block) => block.type === 'paragraph' && block.parts.some(
         (part) => part.type === 'choice' && part.itemId === 'prop-a01',
       ),
     )
-    expect(firstJudgment).toBeGreaterThanOrEqual(0)
-    expect(ambiguityJudgment).toBeGreaterThan(firstJudgment)
-    expect(propositionConcept).toBeGreaterThan(ambiguityJudgment)
-    expect(implicationDecision).toBeGreaterThan(propositionConcept)
+
+    expect(propositionConcept).toBeGreaterThanOrEqual(0)
+    expect(indexes.every((index) => index > propositionConcept)).toBe(true)
+    expect(indexes).toEqual([...indexes].sort((a, b) => a - b))
+    expect(implicationDecision).toBeGreaterThan(indexes[indexes.length - 1])
   })
 
   it('forms implication meaning from a concrete condition before naming p⇒q', () => {

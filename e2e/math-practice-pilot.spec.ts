@@ -80,7 +80,10 @@ test('98 opens the proposition theme directly and separates false propositions f
 
   await page.getByTestId('blank-math-practice-098-p2-counterexample').click()
   await page.getByTestId('option-math-practice-098-p2-counterexample-forty-degree').click()
-  await expect(page.getByTestId('answer-math-practice-098-p2-counterexample')).toContainText('頂角40°')
+  const counterexampleAnswer = page.getByTestId('answer-math-practice-098-p2-counterexample')
+  await expect(counterexampleAnswer).toContainText('頂角')
+  await expect(counterexampleAnswer.getByTestId('math-practice-inline-math')).toHaveCount(1)
+  await expect(counterexampleAnswer.getByTestId('math-practice-inline-math')).toContainText('40')
   await expect(page.getByTestId('blank-math-practice-098-p2-result')).toContainText('選択')
   await page.getByTestId('blank-math-practice-098-p2-result').click()
   await page.getByTestId('option-math-practice-098-p2-result-false-proposition').click()

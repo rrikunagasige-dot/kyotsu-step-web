@@ -53,7 +53,7 @@ export function MathPracticeReadingFlow({ question, session, onSelect }: {
           return (
             <div className="math-practice-reading-line" key={block.id}>
               <span>{blank.prompt}</span>
-              <span className="reading-inline-answer">
+              <span className="reading-inline-answer math-practice-inline-answer">
                 <ContentRenderer blocks={correctContent(question, block.blankId)} assets={question.assets} />
               </span>
             </div>
@@ -64,7 +64,7 @@ export function MathPracticeReadingFlow({ question, session, onSelect }: {
           return (
             <div className="math-practice-reading-line" data-testid={`answer-${block.blankId}`} key={block.id}>
               <span>{blank.prompt}</span>
-              <span className="reading-inline-answer">
+              <span className="reading-inline-answer math-practice-inline-answer">
                 <ContentRenderer blocks={correctContent(question, block.blankId)} assets={question.assets} />
               </span>
             </div>
@@ -120,7 +120,7 @@ export function MathPracticeReadingFlow({ question, session, onSelect }: {
                       }}
                     >
                       <span>{index + 1}</span>
-                      <strong><ContentRenderer blocks={option.content} assets={question.assets} /></strong>
+                      <div className="math-practice-choice-content"><ContentRenderer blocks={option.content} assets={question.assets} /></div>
                     </button>
                   ))}
                 </div>

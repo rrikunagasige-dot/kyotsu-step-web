@@ -126,7 +126,7 @@ export const mathPracticeFunctionsBatchDSource: MathPracticeSourceQuestion[] = [
     problem: [
       { type: 'text', text: '関数 f、g について、次の値を求めよ。' },
       { type: 'latex', latex: 'f(x)=3x-2,\\qquad g(x)=2x^2-3x+1' },
-      { type: 'latex', latex: '\\begin{aligned}(1)&\\ f(0)&(2)&\\ f(2)&(3)&\\ f(-1)&(4)&\\ f(a)&(5)&\\ f(a+1)\\\\(6)&\\ g(0)&(7)&\\ g(3)&(8)&\\ g(-2)&(9)&\\ g(-a)&(10)&\\ g(a-1)\\end{aligned}' },
+      { type: 'latex', latex: '\\begin{aligned}(1)&\\ f(0) && (2)\\ f(2)\\\\(3)&\\ f(-1) && (4)\\ f(a)\\\\(5)&\\ f(a+1) && (6)\\ g(0)\\\\(7)&\\ g(3) && (8)\\ g(-2)\\\\(9)&\\ g(-a) && (10)\\ g(a-1)\\end{aligned}' },
     ],
     guide: [
       { type: 'content', blocks: [{ type: 'text', text: '関数値を求めるときは、指定された入力で式中のすべての x を置き換える。負数や式を入れるときは括弧を保つ。' }] },

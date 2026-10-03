@@ -13,7 +13,7 @@ describe('math set textbook unit', () => {
       type: 'heading',
       text: '集合を表す',
     })
-    expect(mathSetUnit.chapter?.sourcePages).toEqual([86, 87, 88])
+    expect(mathSetUnit.chapter?.sourcePages).toEqual([86, 87, 88, 89, 90])
   })
 
   it('starts from a concrete set-building decision before teaching the term', () => {
@@ -93,4 +93,55 @@ describe('math set textbook unit', () => {
     expect(c01Index).toBeGreaterThanOrEqual(0)
     expect(c02Index).toBeGreaterThan(c01Index)
     expect(conceptIndex).toBeGreaterThan(c02Index)
+  })
+
+
+  it('introduces whole-set scope before complement terminology', () => {
+    const section = mathSetUnit.sections[0]
+    const d01Index = section.readingFlow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'set-d01',
+      ),
+    )
+    const universalIndex = section.readingFlow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'text' && part.text.includes('全体集合といい'),
+      ),
+    )
+    const d02Index = section.readingFlow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'set-d02',
+      ),
+    )
+    const complementIndex = section.readingFlow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'text' && part.text.includes('補集合といい'),
+      ),
+    )
+    expect(d01Index).toBeGreaterThanOrEqual(0)
+    expect(universalIndex).toBeGreaterThan(d01Index)
+    expect(d02Index).toBeGreaterThan(universalIndex)
+    expect(complementIndex).toBeGreaterThan(d02Index)
+  })
+
+  it('keeps De Morgan formulas locked behind region comparisons', () => {
+    const section = mathSetUnit.sections[0]
+    const e04Index = section.readingFlow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'set-e04',
+      ),
+    )
+    const firstLawIndex = section.readingFlow.findIndex(
+      (block) => block.type === 'formula' && block.parts.some(
+        (part) => part.type === 'math' && part.latex.includes('overline{A\\cap B}'),
+      ),
+    )
+    const conceptIndex = section.readingFlow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'text' && part.text.includes('ド・モルガンの法則という'),
+      ),
+    )
+    expect(e04Index).toBeGreaterThanOrEqual(0)
+    expect(firstLawIndex).toBeGreaterThan(e04Index)
+    expect(conceptIndex).toBeGreaterThan(firstLawIndex)
   })

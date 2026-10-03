@@ -44,11 +44,13 @@
 - status: review
 - source: 深進数学I p.100〜101 相当
 - practice topic: read-propositions
+- practice question: 109
 - flow:
-  1. 「すべて」の主張を反例で崩す
-  2. 「すべて」の否定
-  3. 「ある」の主張を具体例で成立させる
-  4. 「ある」の否定
+  1. 「ある」の主張を具体例で成立させる
+  2. 「ある」の否定
+  3. 「すべて」の主張を反例で崩す
+  4. 「すべて」の否定
+  5. 無理数・図形の元命題と否定を確認
 - source-backed principle:
   - 量化の規則を先に暗記させず、反例 / witness を先に経験させる。
 
@@ -64,14 +66,16 @@
   4. 面積1の長方形で縦x → 横y
 - note:
   - 118の3例と同じ順・同じ判断基準へ同期。
-  - 119/120のcontent authorityがmainへ入るまでは、先回りして追加しない。
+  - 119/120のcontent authorityはmainへmerge済み。
+  - 119/120は既存unitへ詰め込まず、別review unitとして設計済み。
+  - 実装設計: `docs/MATH_TEXTBOOK_FUNCTION_119_120_DESIGN.md`
   - 教科書上の章位置は source metadata に残す。
 
 ## 3. 命題を証明する
 
 ### math-propositions-proof
 - status: review
-- source: 深進数学I p.96〜98 相当
+- source: 深進数学I p.94〜98 相当
 - practice topic: prove-propositions
 - practice questions: 108, 110〜117
 - flow:

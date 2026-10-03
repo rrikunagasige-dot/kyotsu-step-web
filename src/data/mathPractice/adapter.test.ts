@@ -4,6 +4,7 @@ import { mathPractice87To120Catalog, mathPracticePilotCatalog } from './catalog'
 import { mathPracticePilotSource } from './pilot'
 import { mathPracticeSetsBatchASource } from './setsBatchA'
 import { mathPracticePropositionsBatchBSource } from './propositionsBatchB'
+import { mathPracticeProofsBatchCSource } from './proofsBatchC'
 import { mathPracticePilotQuestions, mathPracticePilotQuestionsZh } from './adapter'
 
 describe('math practice 87-120 staged integration', () => {
@@ -11,13 +12,13 @@ describe('math practice 87-120 staged integration', () => {
     expect(mathPractice87To120Catalog).toHaveLength(34)
     expect(mathPractice87To120Catalog[0]?.problemNo).toBe(87)
     expect(mathPractice87To120Catalog.at(-1)?.problemNo).toBe(120)
-    expect(mathPracticePilotCatalog.map((entry) => entry.problemNo)).toEqual([87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107])
+    expect(mathPracticePilotCatalog.map((entry) => entry.problemNo)).toEqual([87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108])
   })
 
-  it('publishes the reviewed set batch plus proposition pilots in source order', () => {
+  it('publishes the reviewed set, proposition and proof pilots in source order', () => {
     expect(mathPracticePilotSource.map((question) => question.problemNo)).toEqual([87, 94, 97])
     expect(mathPracticePilotQuestions.map((question) => question.questionId)).toEqual(
-      Array.from({ length: 21 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
+      Array.from({ length: 22 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
     )
   })
 
@@ -44,6 +45,7 @@ describe('math practice 87-120 staged integration', () => {
       '105｜命題の真偽',
       '106｜集合で条件を表す',
       '107｜必要・十分条件の判定',
+      '108｜同値の証明',
     ])
   })
 
@@ -244,6 +246,27 @@ describe('math practice 87-120 staged integration', () => {
       .toBe('neither')
   })
 
+  it('authors 108 as a two-direction equivalence proof with an explicit reverse sign split', () => {
+    const question = mathPracticeProofsBatchCSource.find((item) => item.problemNo === 108)
+    expect(question).toBeDefined()
+    expect(question?.section).toBe('proofs')
+    expect(question?.blanks.map((blank) => blank.id)).toEqual([
+      'rule',
+      'forward',
+      'reverse-sign',
+      'reverse-eliminate',
+      'equivalence',
+    ])
+    expect(question?.blanks.find((blank) => blank.id === 'rule')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('both-directions')
+    expect(question?.blanks.find((blank) => blank.id === 'reverse-sign')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('same-sign')
+    expect(question?.blanks.find((blank) => blank.id === 'reverse-eliminate')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('positive-remains')
+    expect(question?.blanks.find((blank) => blank.id === 'equivalence')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('equivalent')
+  })
+
   it('keeps Japanese and Chinese grading structures aligned', () => {
     const signature = (question: (typeof mathPracticePilotQuestions)[number]) => ({
       questionId: question.questionId,
@@ -291,6 +314,8 @@ describe('math practice 87-120 staged integration', () => {
       'src/data/mathPractice/setsBatchA.ts',
       'src/data/mathPractice/propositionsBatchB.ts',
       'src/data/mathPractice/propositionsBatchB.zh.ts',
+      'src/data/mathPractice/proofsBatchC.ts',
+      'src/data/mathPractice/proofsBatchC.zh.ts',
     ]) {
       const authored = readFileSync(path, 'utf8')
       expect(authored).not.toMatch(/(?<!\\)\\(?!\\)/)

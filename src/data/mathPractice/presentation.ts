@@ -800,6 +800,48 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
       dependsOn: ['basis'],
     },
   ],
+  'math-practice-108': [
+    {
+      id: 'basis',
+      kicker: { ja: 'まず確認', zh: '先确认' },
+      label: { ja: '同値の証明を2方向へ分ける', zh: '把等价证明分成两个方向' },
+      blankIds: ['rule'],
+      result: {
+        blankId: 'rule',
+        label: { ja: '同値の証明方針', zh: '等价证明方针' },
+      },
+    },
+    {
+      id: 'forward',
+      kicker: { ja: '一方向目', zh: '第一个方向' },
+      label: { ja: 'p から q の2条件を示す', zh: '由 p 推出 q 的两个条件' },
+      blankIds: ['forward'],
+      dependsOn: ['basis'],
+      result: {
+        blankId: 'forward',
+        label: { ja: '一方向目', zh: '第一个方向' },
+      },
+    },
+    {
+      id: 'reverse',
+      kicker: { ja: '二方向目', zh: '第二个方向' },
+      label: { ja: '積の符号を分け、和条件で片方を除く', zh: '由乘积符号分类，再用和条件排除一支' },
+      blankIds: ['reverse-sign', 'reverse-eliminate'],
+      dependsOn: ['basis'],
+      result: {
+        blankId: 'reverse-eliminate',
+        label: { ja: '二方向目', zh: '第二个方向' },
+      },
+    },
+    {
+      id: 'conclude',
+      kicker: { ja: '結論', zh: '结论' },
+      label: { ja: '2方向を合わせて同値を結論する', zh: '合并两个方向得到等价结论' },
+      blankIds: ['equivalence'],
+      dependsOn: ['forward', 'reverse'],
+      resultLinkLabel: { ja: '示した2方向', zh: '已证明的两个方向' },
+    },
+  ],
 }
 
 function localBlankId(questionId: string, fullBlankId: string) {
@@ -858,5 +900,6 @@ export function mathPracticeUsesSubproblemCompression(questionId: string) {
     'math-practice-105',
     'math-practice-106',
     'math-practice-107',
+    'math-practice-108',
   ].includes(questionId)
 }

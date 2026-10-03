@@ -6,6 +6,8 @@ import { mathPracticeSetsBatchASource } from './setsBatchA'
 import { mathPracticeSetsBatchASourceZh } from './setsBatchA.zh'
 import { mathPracticePropositionsBatchBSource } from './propositionsBatchB'
 import { mathPracticePropositionsBatchBSourceZh } from './propositionsBatchB.zh'
+import { mathPracticeProofsBatchCSource } from './proofsBatchC'
+import { mathPracticeProofsBatchCSourceZh } from './proofsBatchC.zh'
 import type {
   MathPracticeSimulationItem,
   MathPracticeSourceBlock,
@@ -225,10 +227,18 @@ function buildMathPracticeQuestions(source: MathPracticeSourceQuestion[], locale
   return validateQuestionCatalog(source.map((question) => createQuestion(question, locale)))
 }
 
-const mathPracticePublishedSource = [...mathPracticePilotSource, ...mathPracticeSetsBatchASource, ...mathPracticePropositionsBatchBSource]
-  .sort((left, right) => left.problemNo - right.problemNo)
-const mathPracticePublishedSourceZh = [...mathPracticePilotSourceZh, ...mathPracticeSetsBatchASourceZh, ...mathPracticePropositionsBatchBSourceZh]
-  .sort((left, right) => left.problemNo - right.problemNo)
+const mathPracticePublishedSource = [
+  ...mathPracticePilotSource,
+  ...mathPracticeSetsBatchASource,
+  ...mathPracticePropositionsBatchBSource,
+  ...mathPracticeProofsBatchCSource,
+].sort((left, right) => left.problemNo - right.problemNo)
+const mathPracticePublishedSourceZh = [
+  ...mathPracticePilotSourceZh,
+  ...mathPracticeSetsBatchASourceZh,
+  ...mathPracticePropositionsBatchBSourceZh,
+  ...mathPracticeProofsBatchCSourceZh,
+].sort((left, right) => left.problemNo - right.problemNo)
 
 export const mathPracticePilotQuestions = buildMathPracticeQuestions(mathPracticePublishedSource, 'ja')
 export const mathPracticePilotQuestionsZh = buildMathPracticeQuestions(mathPracticePublishedSourceZh, 'zh')

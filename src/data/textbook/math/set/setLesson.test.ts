@@ -216,3 +216,20 @@ describe('math set textbook unit', () => {
     expect(items.find((item) => item.id === 'set-f09')?.answer)
       .toBe('\\{x\\mid x\\le -2,\\ 5<x\\}')
   })
+
+
+  it('keeps the learning sequence synchronized with practice: subset before intersection and union', () => {
+    const flow = mathSetUnit.sections[0].readingFlow
+    const subsetIndex = flow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'set-c01',
+      ),
+    )
+    const intersectionIndex = flow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'set-b01',
+      ),
+    )
+    expect(subsetIndex).toBeGreaterThanOrEqual(0)
+    expect(intersectionIndex).toBeGreaterThan(subsetIndex)
+  })

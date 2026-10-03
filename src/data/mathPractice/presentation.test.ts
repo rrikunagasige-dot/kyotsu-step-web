@@ -75,4 +75,41 @@ describe('math practice current-target presentation', () => {
     expect(mathPracticeResultItems(solveA).map((result) => result.blankId)).toEqual(['solve-a'])
     expect(mathPracticeResultItems(verifyA).map((result) => result.blankId)).toEqual(['a-set', 'b-set'])
   })
+  it('maps 88-96 to compressed current-stage structures', () => {
+    expect(mathPracticeTargetsForQuestion('math-practice-088').map((target) => target.id))
+      .toEqual(['s1', 's2', 's3', 's4'])
+    expect(mathPracticeTargetsForQuestion('math-practice-089').map((target) => target.id))
+      .toEqual(['basis', 'b', 'c', 'd', 'e', 'final'])
+    expect(mathPracticeTargetsForQuestion('math-practice-090').map((target) => target.id))
+      .toEqual(['s1', 's2'])
+    expect(mathPracticeTargetsForQuestion('math-practice-091').map((target) => target.id))
+      .toEqual(['s1', 's2-plan', 's2-pairs', 's2-finish'])
+    expect(mathPracticeTargetsForQuestion('math-practice-092').map((target) => target.id))
+      .toEqual(['basis', 's1', 's2', 's3', 's4', 's5'])
+    expect(mathPracticeTargetsForQuestion('math-practice-095').map((target) => target.id))
+      .toEqual(['s1', 's2', 's3'])
+  })
+
+  it('reuses only the logically required previous results in 93 and 96', () => {
+    expect(mathPracticeDependencyTargets('math-practice-093', 's1').map((target) => target.id))
+      .toEqual(['basis'])
+    expect(mathPracticeDependencyTargets('math-practice-093', 's2').map((target) => target.id))
+      .toEqual(['basis'])
+    const basis = mathPracticeTargetsForQuestion('math-practice-093').find((target) => target.id === 'basis')!
+    expect(mathPracticeResultItems(basis).map((result) => result.blankId))
+      .toEqual(['a-set', 'b-set', 'c-set'])
+
+    expect(mathPracticeDependencyTargets('math-practice-096', 's5').map((target) => target.id))
+      .toEqual(['s1'])
+    expect(mathPracticeDependencyTargets('math-practice-096', 's3')).toEqual([])
+    const p96s1 = mathPracticeTargetsForQuestion('math-practice-096').find((target) => target.id === 's1')!
+    expect(mathPracticeResultItems(p96s1).map((result) => result.blankId)).toEqual(['p1-result'])
+  })
+
+  it('enables subproblem compression for the full reviewed set batch 87-97', () => {
+    for (let problemNo = 87; problemNo <= 97; problemNo += 1) {
+      expect(mathPracticeUsesSubproblemCompression(`math-practice-${String(problemNo).padStart(3, '0')}`)).toBe(true)
+    }
+  })
+
 })

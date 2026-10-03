@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { ContentRenderer } from '../components/question/ContentRenderer'
 import { LearningFlowRenderer } from '../components/learning/LearningFlowRenderer'
+import { MathPracticeReadingFlow } from '../components/learning/MathPracticeReadingFlow'
 import { BottomSheet, ErrorState, ProgressBar, RaisedButton, StatusBadge } from '../components/ui/Primitives'
 import { activeBlankIds, isLearningAnswerResolved } from '../domain/learning'
 import { getQuestionCatalog, useAppStore } from '../stores/useAppStore'
@@ -50,6 +51,7 @@ export function LearningSessionPage() {
   const [screen, setScreen] = useState<CommonTestScreen>('original')
 
   const isCommonTest = question?.learning.presentation === 'common-test'
+  const usesTextbookLikeMathDesign = question?.questionId === 'math-practice-087'
   const finalBlankId = question?.learning.finalBlankId
   const enabledBlankIds = question && session ? activeBlankIds(question, session.variant) : []
   const guideBlankIds = finalBlankId ? enabledBlankIds.filter((id) => id !== finalBlankId) : enabledBlankIds
@@ -57,8 +59,10 @@ export function LearningSessionPage() {
   const guideComplete = guideBlankIds.length > 0 && guideCompletedCount === guideBlankIds.length
 
   useEffect(() => {
-    if (session?.completedAt) navigate(`/learning/result/${sessionId}`, { replace: true })
-  }, [navigate, session?.completedAt, sessionId])
+    if (session?.completedAt && !usesTextbookLikeMathDesign) {
+      navigate(`/learning/result/${sessionId}`, { replace: true })
+    }
+  }, [navigate, session?.completedAt, sessionId, usesTextbookLikeMathDesign])
 
   useEffect(() => {
     if (!isCommonTest || !session) return
@@ -285,12 +289,22 @@ export function LearningSessionPage() {
           </section>
           <section data-testid="standard-guide">
             <h2 className="solution-heading">{text('考えながら解く', '边思考边解答')}</h2>
-            <LearningFlowRenderer question={question} session={session} onActivate={activate} onExplain={showExplanation} onRevisit={revisitLearning.bind(null, sessionId)} />
+            {usesTextbookLikeMathDesign
+              ? (
+                <MathPracticeReadingFlow
+                  question={question}
+                  session={session}
+                  onSelect={(blankId, optionId) => answerLearning(sessionId, blankId, [optionId])}
+                />
+              )
+              : (
+                <LearningFlowRenderer question={question} session={session} onActivate={activate} onExplain={showExplanation} onRevisit={revisitLearning.bind(null, sessionId)} />
+              )}
           </section>
         </>
       )}
 
-      <BottomSheet open={(!isCommonTest || screen === 'guide') && choiceOpen && Boolean(activeBlank)} title={activeBlank?.prompt ?? text('回答を選ぶ', '选择答案')} onClose={() => setChoiceOpen(false)}>
+      <BottomSheet open={!usesTextbookLikeMathDesign && (!isCommonTest || screen === 'guide') && choiceOpen && Boolean(activeBlank)} title={activeBlank?.prompt ?? text('回答を選ぶ', '选择答案')} onClose={() => setChoiceOpen(false)}>
         <div className="option-list">
           {activeBlank?.options.map((option) => <button type="button" key={option.id} data-testid={`option-${option.id}`} aria-pressed={multiSelection.includes(option.id)} className="option-button" onClick={() => submitOption(option.id)}><ContentRenderer blocks={option.content} assets={question.assets} /></button>)}
           {activeBlank?.answerType === 'multi-choice' && <RaisedButton className="primary-button" disabled={!multiSelection.length} onClick={submitMultiple}>{text('選択を確定', '确认选择')}</RaisedButton>}

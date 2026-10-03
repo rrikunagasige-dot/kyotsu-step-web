@@ -81,6 +81,7 @@ describe('independently authored Chinese question catalog', () => {
       '109｜“所有”与“存在”的否定',
       '110｜逆命题、逆否命题与否命题',
       '111｜用逆否命题证明',
+      '112｜无理数的证明',
     ])  })
 
   it('selects the requested language without changing stable question IDs', () => {

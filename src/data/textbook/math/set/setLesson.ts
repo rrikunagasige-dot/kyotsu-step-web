@@ -6,7 +6,7 @@ const rawMathSetUnit = {
   schemaVersion: '1.1' as const,
   unitId: 'math-sets',
   revision: 1,
-  status: 'review' as const,
+  status: 'published' as const,
   subject: 'math-1a' as const,
   chapter: {
     chapterId: 'math-ch03-sets-propositions',

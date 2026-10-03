@@ -784,7 +784,7 @@ test('108 proves equivalence in two directions and only combines them at the fin
 
   await expect(page.getByRole('heading', { name: '108｜同値の証明' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2'])
   await expect(page.getByTestId('math-topic-question-1')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -836,6 +836,112 @@ test('108 proves equivalence in two directions and only combines them at the fin
 
   await page.getByTestId('blank-math-practice-108-equivalence').click()
   await page.getByTestId('option-math-practice-108-equivalence-equivalent').click()
+
+  await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
+
+  const dimensions = await page.evaluate(() => ({
+    viewport: window.innerWidth,
+    page: document.documentElement.scrollWidth,
+  }))
+  expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
+})
+
+test('110 builds converse, contrapositive and inverse separately, then consolidates each truth table', async ({ page }) => {
+  await page.getByTestId('math-exercise-basic').click()
+  await page.getByTestId('math-topic-prove-propositions').click()
+  await page.getByTestId('math-topic-question-2').click()
+
+  await expect(page.getByRole('heading', { name: '110｜逆・対偶・裏' })).toBeVisible()
+  const nav = page.getByTestId('math-topic-question-nav')
+  await expect(nav.getByRole('button')).toHaveText(['1','2'])
+  await expect(page.getByTestId('math-topic-question-2')).toHaveAttribute('aria-current', 'page')
+
+  const problem = page.getByTestId('standard-problem')
+  const readingFlow = page.getByTestId('math-practice-reading-flow')
+  const currentTarget = page.getByTestId('math-practice-current-target')
+
+  await expect(problem).toContainText('逆')
+  await expect(problem).toContainText('対偶')
+  await expect(problem).toContainText('裏')
+  await expect(problem.locator('.katex-error')).toHaveCount(0)
+
+  await expect(currentTarget).toContainText('まず確認')
+  await expect(page.getByTestId('blank-math-practice-110-rule')).toContainText('選択')
+  await page.getByTestId('blank-math-practice-110-rule').click()
+  await page.getByTestId('option-math-practice-110-rule-correct').click()
+
+  // (1) — each related proposition is checked independently.
+  await expect(currentTarget).toContainText('(1) 元命題')
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('逆・対偶・裏の形')
+  await page.getByTestId('blank-math-practice-110-p1-original').click()
+  await page.getByTestId('option-math-practice-110-p1-original-true').click()
+
+  await expect(currentTarget).toContainText('(1) 逆')
+  await expect(readingFlow).not.toContainText('n=9k と書ける')
+  await page.getByTestId('blank-math-practice-110-p1-converse').click()
+  await page.getByTestId('option-math-practice-110-p1-converse-false-three').click()
+
+  await expect(currentTarget).toContainText('(1) 対偶')
+  await page.getByTestId('blank-math-practice-110-p1-contrapositive').click()
+  await page.getByTestId('option-math-practice-110-p1-contrapositive-true').click()
+
+  await expect(currentTarget).toContainText('(1) 裏')
+  await page.getByTestId('blank-math-practice-110-p1-inverse').click()
+  await page.getByTestId('option-math-practice-110-p1-inverse-false-three').click()
+
+  await expect(currentTarget).toContainText('(1) まとめ')
+  const p1Deps = page.getByTestId('math-practice-dependency-links')
+  await expect(p1Deps).toContainText('元命題')
+  await expect(p1Deps).toContainText('逆')
+  await expect(p1Deps).toContainText('対偶')
+  await expect(p1Deps).toContainText('裏')
+  await page.getByTestId('blank-math-practice-110-p1-summary').click()
+  await page.getByTestId('option-math-practice-110-p1-summary-tftf').click()
+
+  // (2) — factorization reveals x=1 as the original/contrapositive counterexample.
+  await expect(currentTarget).toContainText('(2) 元命題')
+  await expect(readingFlow).not.toContainText('n は9の倍数')
+  await expect(readingFlow.locator('.katex-display')).toHaveCount(1)
+  await page.getByTestId('blank-math-practice-110-p2-original').click()
+  await page.getByTestId('option-math-practice-110-p2-original-false-one').click()
+
+  await expect(currentTarget).toContainText('(2) 逆')
+  await page.getByTestId('blank-math-practice-110-p2-converse').click()
+  await page.getByTestId('option-math-practice-110-p2-converse-true').click()
+
+  await expect(currentTarget).toContainText('(2) 対偶')
+  await page.getByTestId('blank-math-practice-110-p2-contrapositive').click()
+  await page.getByTestId('option-math-practice-110-p2-contrapositive-false-one').click()
+
+  await expect(currentTarget).toContainText('(2) 裏')
+  await page.getByTestId('blank-math-practice-110-p2-inverse').click()
+  await page.getByTestId('option-math-practice-110-p2-inverse-true').click()
+
+  await expect(currentTarget).toContainText('(2) まとめ')
+  await page.getByTestId('blank-math-practice-110-p2-summary').click()
+  await page.getByTestId('option-math-practice-110-p2-summary-ftft').click()
+
+  // (3) — the negation of OR must become AND in the contrapositive.
+  await expect(currentTarget).toContainText('(3) 元命題')
+  await expect(readingFlow).not.toContainText('x²-3x+2')
+  await page.getByTestId('blank-math-practice-110-p3-original').click()
+  await page.getByTestId('option-math-practice-110-p3-original-true-zero-product').click()
+
+  await expect(currentTarget).toContainText('(3) 逆')
+  await page.getByTestId('blank-math-practice-110-p3-converse').click()
+  await page.getByTestId('option-math-practice-110-p3-converse-true').click()
+
+  await expect(currentTarget).toContainText('(3) 対偶')
+  await page.getByTestId('blank-math-practice-110-p3-contrapositive').click()
+  await page.getByTestId('option-math-practice-110-p3-contrapositive-true').click()
+
+  await expect(currentTarget).toContainText('(3) 裏')
+  await page.getByTestId('blank-math-practice-110-p3-inverse').click()
+  await page.getByTestId('option-math-practice-110-p3-inverse-true').click()
+
+  await expect(currentTarget).toContainText('(3) まとめ')
+  await page.getByTestId('blank-math-practice-110-p3-summary').click()
+  await page.getByTestId('option-math-practice-110-p3-summary-tttt').click()
 
   await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
 

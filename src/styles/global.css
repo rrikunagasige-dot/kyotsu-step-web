@@ -275,6 +275,8 @@ a { color: inherit; }
 .textbook-unit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: .6rem; }
 .textbook-unit-link { display: grid; min-width: 0; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: .65rem; min-height: 70px; padding: .75rem .8rem; border: 2px solid var(--color-border); background: white; color: var(--color-text); text-align: left; text-decoration: none; cursor: pointer; box-shadow: 0 2px 0 var(--color-border); }
 .textbook-unit-link:hover { border-color: var(--color-primary); background: var(--color-section); box-shadow: 0 2px 0 var(--color-primary); }
+.textbook-unit-link--pending { cursor: default; opacity: .62; background: color-mix(in srgb, white 82%, var(--color-section)); box-shadow: none; }
+.textbook-unit-link--pending:hover { border-color: var(--color-border); background: color-mix(in srgb, white 82%, var(--color-section)); box-shadow: none; }
 .textbook-unit-link > div { display: grid; min-width: 0; gap: .12rem; }
 .textbook-unit-link strong { overflow-wrap: anywhere; font-size: 1rem; }
 .textbook-unit-link small { color: var(--color-muted); font-size: .7rem; }

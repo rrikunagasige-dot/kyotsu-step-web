@@ -8,6 +8,7 @@ import type { Question } from '../../domain/questionSchema'
 import { useI18n } from '../../i18n/runtime'
 import {
   mathPracticeDependencyTargets,
+  mathPracticeExternalDependencies,
   mathPracticeResultItems,
   mathPracticeTargetForBlank,
   mathPracticeTargetsForQuestion,
@@ -85,6 +86,10 @@ export function MathPracticeReadingFlow({ question, session, onSelect }: {
 
   const dependencyTargets = currentTarget
     ? mathPracticeDependencyTargets(question.questionId, currentTarget.id)
+    : []
+
+  const externalDependencies = currentTarget
+    ? mathPracticeExternalDependencies(question.questionId, currentTarget.id)
     : []
 
   const fullBlankId = (localBlankId: string) => `${question.questionId}-${localBlankId}`
@@ -167,6 +172,44 @@ export function MathPracticeReadingFlow({ question, session, onSelect }: {
                   </span>
                 </div>
                 {expanded && renderResolvedTarget(dependency)}
+              </div>
+            )
+          })}
+        </div>
+      )}
+
+      {usesSubproblemCompression && externalDependencies.length > 0 && (
+        <div className="math-practice-dependency-links" data-testid="math-practice-external-dependencies">
+          <span className="math-practice-dependency-links__label">{text('前に使える結果', '前面可用的结果')}</span>
+          {externalDependencies.map((dependency) => {
+            const expansionId = `external:${dependency.id}`
+            const expanded = expandedDependencyId === expansionId
+            return (
+              <div className="math-practice-dependency-item" key={dependency.id}>
+                <div className="math-practice-dependency-summary">
+                  <button
+                    type="button"
+                    className="math-practice-dependency-link"
+                    data-testid={`math-practice-external-dependency-${dependency.id}`}
+                    aria-expanded={expanded}
+                    onClick={() => setExpandedDependencyId(expanded ? null : expansionId)}
+                  >
+                    {dependency.label[language]}
+                  </button>
+                  <span className="math-practice-dependency-result">
+                    <span className="math-practice-dependency-result__item">
+                      <InlineMath math={dependency.resultLatex} />
+                    </span>
+                  </span>
+                </div>
+                {expanded && (
+                  <div
+                    className="math-practice-dependency-detail"
+                    data-testid={`math-practice-external-dependency-detail-${dependency.id}`}
+                  >
+                    <MathPracticeInlineText value={dependency.detail[language]} />
+                  </div>
+                )}
               </div>
             )
           })}

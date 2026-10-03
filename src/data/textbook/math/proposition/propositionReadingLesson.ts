@@ -238,9 +238,7 @@ const rawMathPropositionReadingUnit = {
           id: 'paragraph-p07',
           type: 'paragraph' as const,
           parts: [
-            { type: 'text' as const, text: 'もう1つ、「△ABCが二等辺三角形なら、△ABCは正三角形である」を調べる。反例として使えるのは ' },
-            { type: 'choice' as const, itemId: 'prop-a07' },
-            { type: 'text' as const, text: ' である。したがってこの命題も偽である。' },
+            { type: 'text' as const, text: '問8(4)の「△ABCが二等辺三角形なら、△ABCは正三角形である」は、最初に確認した頂角40°の二等辺三角形がそのまま反例になる。したがってこの命題も偽である。' },
           ],
         },
 
@@ -589,18 +587,6 @@ const rawMathPropositionReadingUnit = {
           purpose: 'transfer' as const,
           scaffoldLevel: 'medium' as const,
           hints: ['−3は前件を満たすがx=3ではない。', '反例が1つあれば偽と判断できる。'],
-        },
-        {
-          id: 'prop-a07',
-          label: 'PROP-A07',
-          prompt: '「二等辺三角形なら正三角形」の反例を選ぼう。',
-          answer: '頂角40°の二等辺三角形',
-          acceptedAnswers: [],
-          answerType: 'text' as const,
-          choices: ['頂角40°の二等辺三角形', '3辺が等しい三角形', '3角が60°の三角形'],
-          purpose: 'transfer' as const,
-          scaffoldLevel: 'light' as const,
-          hints: ['二等辺三角形であることは保つ。', '正三角形ではない二等辺三角形を選ぶ。'],
         },
         {
           id: 'prop-b01',

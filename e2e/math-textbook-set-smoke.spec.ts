@@ -55,6 +55,14 @@ async function completeFirstSetsSlice(page: Page) {
 
 async function completeRelationsAndSubsets(page: Page) {
   const answers: Array<[string, string]> = [
+    ['set-c01', 'すべて入っている'],
+    ['set-c02', '4がAにないので、全部は入っていない'],
+    ['set-c03', '0個'],
+    ['set-c04', '{1}, {2}, {3}'],
+    ['set-c05', '{1,2}, {1,3}, {2,3}'],
+    ['set-c06', 'はい'],
+    ['set-c07', '∅, {1}, {2}, {3}, {1,2}, {1,3}, {2,3}, {1,2,3}'],
+    ['set-c08', '残らない'],
     ['set-b01', '3, 5, 7'],
     ['set-b02', 'AとBの両方に属する要素'],
     ['set-b03', '1, 2, 3, 5, 7, 9'],
@@ -64,14 +72,6 @@ async function completeRelationsAndSubsets(page: Page) {
     ['set-b07', 'AとBの2つの円全体'],
     ['set-b08', '3つすべてに属する要素'],
     ['set-b09', '3つのうち少なくとも1つに属する要素'],
-    ['set-c01', 'すべて入っている'],
-    ['set-c02', '4がAにないので、全部は入っていない'],
-    ['set-c03', '0個'],
-    ['set-c04', '{1}, {2}, {3}'],
-    ['set-c05', '{1,2}, {1,3}, {2,3}'],
-    ['set-c06', 'はい'],
-    ['set-c07', '∅, {1}, {2}, {3}, {1,2}, {1,3}, {2,3}, {1,2,3}'],
-    ['set-c08', '残らない'],
   ]
   for (const [itemId, answer] of answers) await answerItem(page, itemId, answer)
 }
@@ -192,20 +192,32 @@ test('set notation renders without KaTeX errors or horizontal overflow', async (
 })
 
 
-test('the second learning group stays locked until the first group is complete', async ({ page }) => {
+test('the second learning group follows the synchronized subset-first curriculum order', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-sets'))
 
   await expect(page.getByRole('heading', { name: '集合どうしの関係を見る', exact: true })).toHaveCount(0)
   await completeFirstSetsSlice(page)
   await expect(page.getByRole('heading', { name: '集合どうしの関係を見る', exact: true })).toBeVisible()
-  await expect(page.getByTestId('textbook-figure-venn-two-blank')).toBeVisible()
-  await expect(page.getByTestId('textbook-figure-venn-intersection')).toHaveCount(0)
-  await expect(page.getByTestId('textbook-item-set-b01')).toBeVisible()
+  await expect(page.getByTestId('textbook-item-set-c01')).toBeVisible()
+  await expect(page.getByTestId('textbook-item-set-b01')).toHaveCount(0)
+  await expect(page.getByTestId('textbook-figure-venn-two-blank')).toHaveCount(0)
 })
 
-test('the completed intersection figure is revealed only after the intersection decision', async ({ page }) => {
+test('the completed intersection figure is revealed only after subsets and the intersection decision', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-sets'))
   await completeFirstSetsSlice(page)
+
+  const subsetAnswers: Array<[string, string]> = [
+    ['set-c01', 'すべて入っている'],
+    ['set-c02', '4がAにないので、全部は入っていない'],
+    ['set-c03', '0個'],
+    ['set-c04', '{1}, {2}, {3}'],
+    ['set-c05', '{1,2}, {1,3}, {2,3}'],
+    ['set-c06', 'はい'],
+    ['set-c07', '∅, {1}, {2}, {3}, {1,2}, {1,3}, {2,3}, {1,2,3}'],
+    ['set-c08', '残らない'],
+  ]
+  for (const [itemId, answer] of subsetAnswers) await answerItem(page, itemId, answer)
 
   await expect(page.getByTestId('textbook-figure-venn-two-blank')).toBeVisible()
   await expect(page.getByTestId('textbook-figure-venn-intersection')).toHaveCount(0)
@@ -217,29 +229,30 @@ test('the completed intersection figure is revealed only after the intersection 
   await expect(page.getByTestId('textbook-item-set-b02')).toBeVisible()
 })
 
-test('union and subset concepts keep the meaning-first progression', async ({ page }) => {
+test('subset then union concepts keep the synchronized meaning-first progression', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-sets'))
   await completeFirstSetsSlice(page)
-
-  const bAnswers: Array<[string, string]> = [
-    ['set-b01', '3, 5, 7'],
-    ['set-b02', 'AとBの両方に属する要素'],
-    ['set-b03', '1, 2, 3, 5, 7, 9'],
-    ['set-b04', 'ない'],
-    ['set-b05', 'AかBの少なくとも一方に属する要素'],
-    ['set-b06', '2つの円の重なりだけ'],
-    ['set-b07', 'AとBの2つの円全体'],
-    ['set-b08', '3つすべてに属する要素'],
-    ['set-b09', '3つのうち少なくとも1つに属する要素'],
-  ]
-  for (const [itemId, answer] of bAnswers) await answerItem(page, itemId, answer)
 
   await expect(page.getByTestId('textbook-item-set-c01')).toBeVisible()
   await expect(page.getByText(/部分集合という/)).toHaveCount(0)
   await answerItem(page, 'set-c01', 'すべて入っている')
   await answerItem(page, 'set-c02', '4がAにないので、全部は入っていない')
   await expect(page.getByText(/部分集合という/)).toBeVisible()
-  await expect(page.getByTestId('textbook-figure-subset-after')).toBeVisible()
+
+  const restOfSubset: Array<[string, string]> = [
+    ['set-c03', '0個'],
+    ['set-c04', '{1}, {2}, {3}'],
+    ['set-c05', '{1,2}, {1,3}, {2,3}'],
+    ['set-c06', 'はい'],
+    ['set-c07', '∅, {1}, {2}, {3}, {1,2}, {1,3}, {2,3}, {1,2,3}'],
+    ['set-c08', '残らない'],
+  ]
+  for (const [itemId, answer] of restOfSubset) await answerItem(page, itemId, answer)
+
+  await expect(page.getByTestId('textbook-item-set-b01')).toBeVisible()
+  await expect(page.getByText(/共通部分といい/)).toHaveCount(0)
+  await answerItem(page, 'set-b01', '3, 5, 7')
+  await expect(page.getByText(/共通部分といい/)).toBeVisible()
 })
 
 

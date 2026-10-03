@@ -32,7 +32,7 @@ test('Math I・A basic theme opens its first problem directly', async ({ page })
   await expect(page.getByTestId('math-topic-question-1')).toHaveAttribute('aria-current', 'page')
 })
 
-test('87 keeps 問題 separate from 考えながら解く and supports retry', async ({ page }) => {
+test('87 uses the Physics-style inline choice flow and reveals one reasoning node at a time', async ({ page }) => {
   await page.getByTestId('math-exercise-basic').click()
   await page.getByTestId('math-topic-organize-sets').click()
 
@@ -42,15 +42,26 @@ test('87 keeps 問題 separate from 考えながら解く and supports retry', a
   await expect(problem.getByRole('heading', { name: '問題' })).toBeVisible()
   await expect(problem).toContainText('次の□に')
   await expect(guide.getByRole('heading', { name: '考えながら解く' })).toBeVisible()
+  await expect(page.getByTestId('math-practice-reading-flow')).toBeVisible()
 
-  const blankId = 'math-practice-087-condition-sufficiency'
-  await page.getByTestId(`blank-${blankId}`).click()
+  const firstBlank = 'math-practice-087-condition-sufficiency'
+  const secondBlank = 'math-practice-087-prime-condition'
+  await expect(page.getByTestId(`blank-${firstBlank}`)).toContainText('選択')
+  await expect(page.getByTestId(`blank-${secondBlank}`)).toHaveCount(0)
+
+  await page.getByTestId(`blank-${firstBlank}`).click()
+  await expect(page.getByTestId(`inline-choice-panel-${firstBlank}`)).toBeVisible()
   await page.getByTestId('option-math-practice-087-condition-sufficiency-enough').click()
-  await expect(page.getByTestId(`answer-${blankId}`)).toContainText('不正解')
 
-  await page.getByTestId(`retry-${blankId}`).click()
+  await expect(page.getByTestId(`blank-${firstBlank}`)).toContainText('もう一度')
+  await expect(page.getByTestId(`blank-${secondBlank}`)).toHaveCount(0)
+
+  await page.getByTestId(`blank-${firstBlank}`).click()
+  await expect(page.getByTestId(`math-practice-hint-${firstBlank}`)).toContainText('素数')
   await page.getByTestId('option-math-practice-087-condition-sufficiency-not-enough').click()
-  await expect(page.getByTestId(`answer-${blankId}`)).toContainText('再回答で正解')
+
+  await expect(page.getByTestId(`answer-${firstBlank}`)).toContainText('十分ではない')
+  await expect(page.getByTestId(`blank-${secondBlank}`)).toContainText('選択')
 })
 
 test('problem card 2 switches inside the theme directly to 94', async ({ page }) => {

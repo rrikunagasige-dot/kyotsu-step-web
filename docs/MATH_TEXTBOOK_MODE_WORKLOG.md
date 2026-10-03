@@ -112,6 +112,7 @@ Checkpoint:
 - quantifier lesson は教科書 p.100〜101 の問1 (1)〜(5) の順序へ戻し、存在例 → 否定、反例 → 否定の順で概念化。
 - proposition-reading lesson は practice taxonomy に合わせ、真偽 → 条件の否定 → 必要条件・十分条件 の順へ修正。
 - practice 98 の authority に合わせ、命題の判定基準（真偽が客観的に一意に定まるか）を implication より前へ追加し、偽の文と非命題を区別。
+- practice 98 の leakage guard を再監査し、頂角40°の反例を穴より前に表示していた箇所を修正。現在は 判定基準 → (1)分類 → (2)反例選択→分類 → (3)客観性→非命題 の順。
 - function lesson は main の `MATH_PRACTICE_118_CONTENT_DESIGN.md` を authority として、判定基準 → 円周/半径 → 平方根 → 面積1長方形へ同期。119/120 は authority が main に入るまで先回りしない。
 - review integrity test で、choices の実質重複・answer の一意性・inline item の1回使用・support fading を監査。
 - exact practice membership を 87〜120 の各問題番号レベルでcatalogに固定し、3テーマ間の重複/欠落を禁止。

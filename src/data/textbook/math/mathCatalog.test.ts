@@ -24,7 +24,7 @@ describe('math textbook catalog', () => {
       [108, 117],
     ])
     expect(mathTextbookTopics[0].unitIds).toEqual(['math-sets'])
-    expect(mathTextbookTopics[1].unitIds).toEqual([])
+    expect(mathTextbookTopics[1].unitIds).toEqual(['math-propositions-reading'])
     expect(mathTextbookTopics[2].unitIds).toEqual([])
   })
 

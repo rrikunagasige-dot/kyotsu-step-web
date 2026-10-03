@@ -29,7 +29,7 @@ export const mathPractice87To120Catalog: MathPracticeCatalogEntry[] = [
   { problemNo: 103, section: 'propositions', sectionTitle: '命題と条件', title: '複合条件の否定', pilot: true },
   { problemNo: 104, section: 'propositions', sectionTitle: '命題と条件', title: '必要条件・十分条件', pilot: true },
   { problemNo: 105, section: 'propositions', sectionTitle: '命題と条件', title: '命題の真偽', pilot: true },
-  { problemNo: 106, section: 'propositions', sectionTitle: '命題と条件', title: '集合で条件を表す', pilot: false },
+  { problemNo: 106, section: 'propositions', sectionTitle: '命題と条件', title: '集合で条件を表す', pilot: true },
   { problemNo: 107, section: 'propositions', sectionTitle: '命題と条件', title: '必要・十分条件の判定', pilot: false },
   { problemNo: 108, section: 'propositions', sectionTitle: '命題と条件', title: '同値の証明', pilot: false },
   { problemNo: 109, section: 'propositions', sectionTitle: '命題と条件', title: '「すべて」と「ある」の否定', pilot: false },

@@ -344,8 +344,8 @@ export function LearningSetupPage() {
                   <strong>{text('集合と命題', '集合与命题')}</strong>
                 </header>
 
-                <div className="textbook-chapter-list">
-                  {mathTextbookTopics.map((topic, topicIndex) => {
+                <div className="textbook-unit-grid textbook-chunk-grid">
+                  {mathTextbookTopics.map((topic) => {
                     const topicUnits = textbookUnits.filter((unit) =>
                       unit.subject === 'math-1a' &&
                       topic.unitIds.some((unitId) => unitId === unit.unitId),
@@ -353,22 +353,19 @@ export function LearningSetupPage() {
 
                     if (topicUnits.length === 0) {
                       return (
-                        <article
-                          className="textbook-chapter-card textbook-chapter-card--pending"
+                        <div
+                          className="textbook-unit-link textbook-chunk-link textbook-unit-link--pending"
                           data-testid={`math-textbook-topic-${topic.id}`}
+                          aria-disabled="true"
                           key={topic.id}
                         >
-                          <header>
-                            <span>{String(topicIndex + 1).padStart(2, '0')}</span>
-                            <div>
-                              <strong>{topic.label[language]}</strong>
-                              <small>{topic.flow[language]}</small>
-                            </div>
-                          </header>
-                          <p className="textbook-chapter-pending">
-                            {text('教材データを準備中です。', '教材数据正在准备中。')}
-                          </p>
-                        </article>
+                          <div>
+                            <strong>{topic.label[language]}</strong>
+                            <small className="textbook-chunk-flow">{topic.flow[language]}</small>
+                            <small>{text('準備中', '准备中')}</small>
+                          </div>
+                          <span className="textbook-unit-percent">—</span>
+                        </div>
                       )
                     }
 
@@ -384,37 +381,19 @@ export function LearningSetupPage() {
                     }) ?? topicUnits[0]
 
                     return (
-                      <article
-                        className="textbook-chapter-card"
+                      <Link
+                        className="textbook-unit-link textbook-chunk-link"
                         data-testid={`math-textbook-topic-${topic.id}`}
                         key={topic.id}
+                        to={`/learning/textbook/${resumeUnit.unitId}`}
                       >
-                        <header>
-                          <span>{String(topicIndex + 1).padStart(2, '0')}</span>
-                          <div>
-                            <strong>{topic.label[language]}</strong>
-                            <small>{topic.flow[language]}</small>
-                          </div>
-                        </header>
-                        <div className="textbook-unit-grid">
-                          <Link
-                            className="textbook-unit-link textbook-chunk-link"
-                            data-testid={`textbook-unit-${resumeUnit.unitId}`}
-                            to={`/learning/textbook/${resumeUnit.unitId}`}
-                          >
-                            <div>
-                              <strong>{displayTextbookUnitTitle(resumeUnit)}</strong>
-                              <small>
-                                {text(
-                                  `${completed}/${total} 完了`,
-                                  `已完成 ${completed}/${total}`,
-                                )}
-                              </small>
-                            </div>
-                            <span className="textbook-unit-percent">{percent}%</span>
-                          </Link>
+                        <div>
+                          <strong>{topic.label[language]}</strong>
+                          <small className="textbook-chunk-flow">{topic.flow[language]}</small>
+                          <small>{text(`${completed}/${total} 完了`, `已完成 ${completed}/${total}`)}</small>
                         </div>
-                      </article>
+                        <span className="textbook-unit-percent">{percent}%</span>
+                      </Link>
                     )
                   })}
                 </div>

@@ -23,8 +23,8 @@ const rawMathPropositionReadingUnit = {
   },
   objectives: [
     '条件から何が必ず言えるかを具体例で判断する',
-    '一方向と逆方向を分けて、二つの条件の関係を整理する',
     '条件が成り立たない範囲を言葉と式で表す',
+    '一方向と逆方向を分けて、二つの条件の関係を整理する',
   ],
   sections: [
     {
@@ -32,7 +32,7 @@ const rawMathPropositionReadingUnit = {
       number: '01',
       title: '本文',
       role: 'concept' as const,
-      description: '条件を一つずつ読み、真偽・向き・否定の意味を文章の中で完成させる。',
+      description: '条件を一つずつ読み、真偽・否定・向きの意味を文章の中で完成させる。',
       figures: [
         {
           id: 'implication-inclusion',
@@ -182,6 +182,94 @@ const rawMathPropositionReadingUnit = {
         },
 
         {
+          id: 'heading-negation',
+          type: 'heading' as const,
+          text: '条件を否定する',
+        },
+        {
+          id: 'paragraph-c-intro',
+          type: 'paragraph' as const,
+          parts: [
+            { type: 'text' as const, text: '最後に、条件が「成り立たない」とは何を意味するかを、元の条件が表す範囲の外側から考える。' },
+          ],
+        },
+        {
+          id: 'paragraph-c01',
+          type: 'paragraph' as const,
+          parts: [
+            { type: 'text' as const, text: 'nを整数とする。条件 ' },
+            { type: 'math' as const, latex: 'n<2' },
+            { type: 'text' as const, text: ' が成り立たない整数は ' },
+            { type: 'choice' as const, itemId: 'prop-c01' },
+            { type: 'text' as const, text: ' を満たす。' },
+          ],
+        },
+        {
+          id: 'paragraph-negation-concept',
+          type: 'paragraph' as const,
+          parts: [
+            { type: 'text' as const, text: '条件pに対して「pでない」という条件をpの否定という。条件が表す集合で見れば、否定は元の条件の外側、すなわち補集合を取ることに対応する。' },
+          ],
+        },
+        {
+          id: 'paragraph-c02',
+          type: 'paragraph' as const,
+          parts: [
+            { type: 'text' as const, text: '同じくnを整数とする。「nは偶数である」の否定は ' },
+            { type: 'choice' as const, itemId: 'prop-c02' },
+            { type: 'text' as const, text: ' である。' },
+          ],
+        },
+        {
+          id: 'formula-compound-negation',
+          type: 'formula' as const,
+          parts: [
+            { type: 'math' as const, latex: 'a<0\\quad\\text{かつ}\\quad b>0' },
+          ],
+        },
+        {
+          id: 'paragraph-c03',
+          type: 'paragraph' as const,
+          parts: [
+            { type: 'text' as const, text: 'この条件全体が成り立たないのは、「' },
+            { type: 'math' as const, latex: 'a<0' },
+            { type: 'text' as const, text: ' でない」か「' },
+            { type: 'math' as const, latex: 'b>0' },
+            { type: 'text' as const, text: ' でない」の少なくとも一方が成り立つときである。したがって否定は ' },
+            { type: 'choice' as const, itemId: 'prop-c03' },
+            { type: 'text' as const, text: ' となる。' },
+          ],
+        },
+        {
+          id: 'paragraph-condition-demorgan',
+          type: 'paragraph' as const,
+          parts: [
+            { type: 'text' as const, text: '条件についても集合と同じド・モルガンの法則が成り立つ。「pかつq」の否定は「pでない、またはqでない」、「pまたはq」の否定は「pでない、かつqでない」である。' },
+          ],
+        },
+        {
+          id: 'paragraph-c04',
+          type: 'paragraph' as const,
+          parts: [
+            { type: 'text' as const, text: '条件 ' },
+            { type: 'math' as const, latex: '-1<x<3' },
+            { type: 'text' as const, text: ' は「' },
+            { type: 'math' as const, latex: 'x>-1' },
+            { type: 'text' as const, text: ' かつ ' },
+            { type: 'math' as const, latex: 'x<3' },
+            { type: 'text' as const, text: '」と読める。したがって、その否定は ' },
+            { type: 'choice' as const, itemId: 'prop-c04' },
+            { type: 'text' as const, text: ' である。' },
+          ],
+        },
+        {
+          id: 'paragraph-c05',
+          type: 'paragraph' as const,
+          parts: [
+            { type: 'text' as const, text: 'ここまでで、命題の真偽と条件の否定を具体例から読めるようになった。次は、一方向だけでなく逆向きも調べて、二つの条件の関係を整理する。' },
+          ],
+        },
+        {
           id: 'heading-necessary-sufficient',
           type: 'heading' as const,
           text: '必要条件・十分条件を見分ける',
@@ -309,94 +397,6 @@ const rawMathPropositionReadingUnit = {
           ],
         },
 
-        {
-          id: 'heading-negation',
-          type: 'heading' as const,
-          text: '条件を否定する',
-        },
-        {
-          id: 'paragraph-c-intro',
-          type: 'paragraph' as const,
-          parts: [
-            { type: 'text' as const, text: '最後に、条件が「成り立たない」とは何を意味するかを、元の条件が表す範囲の外側から考える。' },
-          ],
-        },
-        {
-          id: 'paragraph-c01',
-          type: 'paragraph' as const,
-          parts: [
-            { type: 'text' as const, text: 'nを整数とする。条件 ' },
-            { type: 'math' as const, latex: 'n<2' },
-            { type: 'text' as const, text: ' が成り立たない整数は ' },
-            { type: 'choice' as const, itemId: 'prop-c01' },
-            { type: 'text' as const, text: ' を満たす。' },
-          ],
-        },
-        {
-          id: 'paragraph-negation-concept',
-          type: 'paragraph' as const,
-          parts: [
-            { type: 'text' as const, text: '条件pに対して「pでない」という条件をpの否定という。条件が表す集合で見れば、否定は元の条件の外側、すなわち補集合を取ることに対応する。' },
-          ],
-        },
-        {
-          id: 'paragraph-c02',
-          type: 'paragraph' as const,
-          parts: [
-            { type: 'text' as const, text: '同じくnを整数とする。「nは偶数である」の否定は ' },
-            { type: 'choice' as const, itemId: 'prop-c02' },
-            { type: 'text' as const, text: ' である。' },
-          ],
-        },
-        {
-          id: 'formula-compound-negation',
-          type: 'formula' as const,
-          parts: [
-            { type: 'math' as const, latex: 'a<0\\quad\\text{かつ}\\quad b>0' },
-          ],
-        },
-        {
-          id: 'paragraph-c03',
-          type: 'paragraph' as const,
-          parts: [
-            { type: 'text' as const, text: 'この条件全体が成り立たないのは、「' },
-            { type: 'math' as const, latex: 'a<0' },
-            { type: 'text' as const, text: ' でない」か「' },
-            { type: 'math' as const, latex: 'b>0' },
-            { type: 'text' as const, text: ' でない」の少なくとも一方が成り立つときである。したがって否定は ' },
-            { type: 'choice' as const, itemId: 'prop-c03' },
-            { type: 'text' as const, text: ' となる。' },
-          ],
-        },
-        {
-          id: 'paragraph-condition-demorgan',
-          type: 'paragraph' as const,
-          parts: [
-            { type: 'text' as const, text: '条件についても集合と同じド・モルガンの法則が成り立つ。「pかつq」の否定は「pでない、またはqでない」、「pまたはq」の否定は「pでない、かつqでない」である。' },
-          ],
-        },
-        {
-          id: 'paragraph-c04',
-          type: 'paragraph' as const,
-          parts: [
-            { type: 'text' as const, text: '条件 ' },
-            { type: 'math' as const, latex: '-1<x<3' },
-            { type: 'text' as const, text: ' は「' },
-            { type: 'math' as const, latex: 'x>-1' },
-            { type: 'text' as const, text: ' かつ ' },
-            { type: 'math' as const, latex: 'x<3' },
-            { type: 'text' as const, text: '」と読める。したがって、その否定は ' },
-            { type: 'choice' as const, itemId: 'prop-c04' },
-            { type: 'text' as const, text: ' である。' },
-          ],
-        },
-        {
-          id: 'paragraph-c05',
-          type: 'paragraph' as const,
-          parts: [
-            { type: 'text' as const, text: 'ここまでの流れを整理する。条件の真偽を見るときは、まず向きを読み、必要なら集合の包含や反例で確かめる。必要・十分は2方向を別々に調べ、否定では元の条件が表す範囲の外側を考える。この見方を次の命題の関係にも使っていく。' },
-          ],
-        },
       ],
       items: [
         {

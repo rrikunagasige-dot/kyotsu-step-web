@@ -1,0 +1,125 @@
+import type { Question } from '../domain/questionSchema'
+import type { AppLanguage } from '../i18n/types'
+
+export type MathPracticeTopicId =
+  | 'organize-sets'
+  | 'read-propositions'
+  | 'prove-propositions'
+  | 'represent-functions'
+
+export type MathPracticeTopic = {
+  id: MathPracticeTopicId
+  label: { ja: string; zh: string }
+  flow: { ja: string; zh: string }
+  range: readonly [number, number]
+}
+
+export type MathPracticeDomain = {
+  id: 'sets-and-propositions' | 'functions'
+  label: { ja: string; zh: string }
+  topics: readonly MathPracticeTopic[]
+}
+
+export const mathPracticeTaxonomy: readonly MathPracticeDomain[] = [
+  {
+    id: 'sets-and-propositions',
+    label: { ja: '数学 I｜集合と命題', zh: '数学 I｜集合与命题' },
+    topics: [
+      {
+        id: 'organize-sets',
+        label: { ja: '集合を整理する', zh: '整理集合' },
+        flow: {
+          ja: '集合の表し方 → 部分集合 → 共通部分・和集合 → 補集合 → 集合の条件',
+          zh: '集合的表示 → 子集 → 交集・并集 → 补集 → 集合条件',
+        },
+        range: [87, 97],
+      },
+      {
+        id: 'read-propositions',
+        label: { ja: '条件から命題を読む', zh: '从条件理解命题' },
+        flow: {
+          ja: '真偽 → 条件の否定 → 必要条件・十分条件 → 「すべて」と「ある」',
+          zh: '真假 → 条件的否定 → 必要条件・充分条件 → “所有”与“存在”',
+        },
+        range: [98, 109],
+      },
+      {
+        id: 'prove-propositions',
+        label: { ja: '命題を証明する', zh: '证明命题' },
+        flow: {
+          ja: '逆・裏・対偶 → 対偶による証明 → 無理数 → 背理法',
+          zh: '逆命题・否命题・逆否命题 → 逆否证明 → 无理数 → 反证法',
+        },
+        range: [110, 117],
+      },
+    ],
+  },
+  {
+    id: 'functions',
+    label: { ja: '数学 I｜関数', zh: '数学 I｜函数' },
+    topics: [
+      {
+        id: 'represent-functions',
+        label: { ja: '関数を表す', zh: '表示函数' },
+        flow: {
+          ja: '関数とは何か → 関数の値 → 文章から関数を作る',
+          zh: '什么是函数 → 函数值 → 从文字条件建立函数',
+        },
+        range: [118, 120],
+      },
+    ],
+  },
+] as const
+
+function problemNumber(questionId: string) {
+  const match = /^math-practice-(\d{3})$/.exec(questionId)
+  return match ? Number(match[1]) : null
+}
+
+export function mathPracticeTopicForQuestion(question: Pick<Question, 'subject' | 'questionId'>): MathPracticeTopicId | null {
+  if (question.subject !== 'math-1a') return null
+  const number = problemNumber(question.questionId)
+  if (number === null) return null
+
+  for (const domain of mathPracticeTaxonomy) {
+    for (const topic of domain.topics) {
+      if (number >= topic.range[0] && number <= topic.range[1]) return topic.id
+    }
+  }
+  return null
+}
+
+export function mathPracticeTopicLabel(topicId: MathPracticeTopicId, language: AppLanguage) {
+  for (const domain of mathPracticeTaxonomy) {
+    const topic = domain.topics.find((candidate) => candidate.id === topicId)
+    if (topic) return topic.label[language]
+  }
+  return topicId
+}
+
+export function mathPracticeTopicFlow(topicId: MathPracticeTopicId, language: AppLanguage) {
+  for (const domain of mathPracticeTaxonomy) {
+    const topic = domain.topics.find((candidate) => candidate.id === topicId)
+    if (topic) return topic.flow[language]
+  }
+  return ''
+}
+
+export function buildMathPracticeTopicSummary(questions: Question[]) {
+  const counts = Object.fromEntries(
+    mathPracticeTaxonomy.flatMap((domain) => domain.topics.map((topic) => [topic.id, 0])),
+  ) as Record<MathPracticeTopicId, number>
+
+  let unclassified = 0
+  for (const question of questions) {
+    if (question.subject !== 'math-1a' || question.status !== 'published') continue
+    const topicId = mathPracticeTopicForQuestion(question)
+    if (topicId) counts[topicId] += 1
+    else unclassified += 1
+  }
+  return { counts, unclassified }
+}
+
+export function mathPracticeProblemNumber(questionId: string) {
+  return problemNumber(questionId)
+}

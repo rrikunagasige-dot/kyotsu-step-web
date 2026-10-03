@@ -9,15 +9,24 @@ test.beforeEach(async ({ page }) => {
   await page.getByRole('button', { name: '数学 I・A' }).click()
 })
 
-test('pilot questions appear in Math I・A practice with short titles', async ({ page }) => {
-  const selector = page.getByLabel('学習する問題')
-  await expect(selector.locator('option', { hasText: '87｜素数と集合' })).toHaveCount(1)
-  await expect(selector.locator('option', { hasText: '94｜補集合' })).toHaveCount(1)
-  await expect(selector.locator('option', { hasText: '97｜共通部分から定数を決める' })).toHaveCount(1)
+test('Math I・A practice starts from a small learning-theme title hierarchy', async ({ page }) => {
+  await expect(page.getByTestId('math-domain-sets-and-propositions')).toContainText('数学 I｜集合と命題')
+  await expect(page.getByTestId('math-domain-functions')).toContainText('数学 I｜関数')
+
+  await expect(page.getByTestId('math-topic-organize-sets')).toContainText('集合を整理する')
+  await expect(page.getByTestId('math-topic-organize-sets')).toContainText('集合の表し方 → 部分集合')
+  await expect(page.getByTestId('math-topic-read-propositions')).toContainText('条件から命題を読む')
+  await expect(page.getByTestId('math-topic-prove-propositions')).toContainText('命題を証明する')
+  await expect(page.getByTestId('math-topic-represent-functions')).toContainText('関数を表す')
+
+  await page.getByTestId('math-topic-organize-sets').click()
+  const selector = page.getByLabel('問題番号')
+  await expect(selector.locator('option')).toHaveText(['87', '94', '97'])
 })
 
 test('87 keeps 問題 separate from 考えながら解く and supports retry', async ({ page }) => {
-  await page.getByLabel('学習する問題').selectOption('math-practice-087')
+  await page.getByTestId('math-topic-organize-sets').click()
+  await page.getByLabel('問題番号').selectOption('math-practice-087')
   await page.getByTestId('start-learning').click()
 
   await expect(page.getByRole('heading', { name: '87｜素数と集合' })).toBeVisible()
@@ -38,7 +47,8 @@ test('87 keeps 問題 separate from 考えながら解く and supports retry', a
 })
 
 test('94 long multi-part pilot opens on mobile without horizontal page overflow', async ({ page }) => {
-  await page.getByLabel('学習する問題').selectOption('math-practice-094')
+  await page.getByTestId('math-topic-organize-sets').click()
+  await page.getByLabel('問題番号').selectOption('math-practice-094')
   await page.getByTestId('start-learning').click()
 
   await expect(page.getByRole('heading', { name: '94｜補集合' })).toBeVisible()
@@ -53,7 +63,8 @@ test('94 long multi-part pilot opens on mobile without horizontal page overflow'
 })
 
 test('97 reasoning pilot reaches the equation-building thinking node without leaking it in the problem', async ({ page }) => {
-  await page.getByLabel('学習する問題').selectOption('math-practice-097')
+  await page.getByTestId('math-topic-organize-sets').click()
+  await page.getByLabel('問題番号').selectOption('math-practice-097')
   await page.getByTestId('start-learning').click()
 
   const problem = page.getByTestId('standard-problem')

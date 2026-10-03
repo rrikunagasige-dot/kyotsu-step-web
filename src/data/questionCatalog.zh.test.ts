@@ -70,6 +70,9 @@ describe('independently authored Chinese question catalog', () => {
       '1F 斜抛运动｜例题2',
       '1G 重力加速度・空气阻力・终端速度｜例题1',
       '1G 重力加速度・空气阻力・终端速度｜例题2',
+      '87｜素数与集合',
+      '94｜补集',
+      '97｜由交集确定常数',
     ])
   })
 

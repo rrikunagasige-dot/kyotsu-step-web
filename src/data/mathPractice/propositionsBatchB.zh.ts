@@ -1287,5 +1287,142 @@ export const mathPracticePropositionsBatchBSourceZh: MathPracticeSourceQuestion[
     ],
     fullExplanation: '判断 p 是 q 的什么条件时，要分别检查 p⇒q 和 q⇒p。p⇒q 为真说明 p 是充分条件；q⇒p 为真说明 p 是必要条件；两个方向都真则为充要条件，两个方向都假则两者都不是。',
   },
+  {
+    problemNo: 105,
+    section: 'propositions',
+    sectionTitle: '命题与条件',
+    title: '命题的真假',
+    estimatedSeconds: 420,
+    knowledgeTags: ['truth-value', 'implication', 'counterexample', 'rational-number'],
+    skillTags: ['condition-reading', 'case-classification', 'conclusion'],
+    problem: [
+      { type: 'text', text: '设 a、b 为实数。判断下列命题的真假。' },
+      { type: 'latex', latex: '(1)\\;ab=0\\Rightarrow a^2+b^2=0' },
+      { type: 'latex', latex: '(2)\\;a^2=4\\Rightarrow |a+1|\\ge1' },
+      { type: 'text', text: '(3) 若 ab 是有理数，则 a、b 都是有理数。' },
+      { type: 'text', text: '(4) 若 a+b 与 ab 都是有理数，则 a、b 都是有理数。' },
+    ],
+    guide: [
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '先区分：证明蕴含命题为真和证明它为假，各自需要检查什么。' }],
+      },
+      { type: 'blank', blankId: 'rule' },
+
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(1) 从 ab=0 只能得到“至少一个为0”，并不能直接得到两个都为0。寻找一个满足前件但破坏后件的具体例子。' }],
+      },
+      { type: 'blank', blankId: 'p1-result' },
+
+      {
+        type: 'content',
+        blocks: [
+          { type: 'text', text: '(2) 先列出前件允许的全部 a，再逐一检查后件。' },
+          { type: 'latex', latex: 'a^2=4\\Rightarrow a=2\\;\\text{或}\\;a=-2' },
+          { type: 'latex', latex: 'a=2:\\ |a+1|=3\\ge1' },
+          { type: 'latex', latex: 'a=-2:\\ |a+1|=1\\ge1' },
+        ],
+      },
+      { type: 'blank', blankId: 'p2-result' },
+
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(3) 注意“乘积是有理数”并不保证每个因子都是有理数。寻找两个无理数相乘得到有理数的例子。' }],
+      },
+      { type: 'blank', blankId: 'p3-result' },
+
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(4) 要同时让和与积都是有理数，同时保持 a、b 本身为无理数。寻找满足这两个要求的一组数。' }],
+      },
+      { type: 'blank', blankId: 'p4-result' },
+    ],
+    blanks: [
+      {
+        id: 'rule',
+        prompt: '判断命题 p⇒q 的真假时，正确的证明要求是',
+        choices: [
+          choice('all-vs-counterexample', '要证明为真，需对所有满足 p 的情况证明 q；要证明为假，只需一个满足 p 但不满足 q 的反例。', true),
+          choice('one-example-both', '无论证明真还是假，只检查一个具体例子即可。'),
+          choice('counterexample-for-true', '证明为真时只需找到一个反例。'),
+        ],
+        skillTag: 'condition-reading',
+        knowledgeTags: ['truth-value', 'implication', 'counterexample'],
+        explanation: '蕴含为真要求所有前件成立的情况都满足后件；蕴含为假只需要一个“前件真、后件假”的反例。',
+      },
+      {
+        id: 'p1-result',
+        prompt: '能够判断 (1) 的反例与结论是',
+        choices: [
+          choice('counterexample-false', 'a=0,b=1 时 ab=0，但 a²+b²=1≠0，所以为假。', true),
+          choice('zero-zero-true', 'a=0,b=0 时后件成立，所以为真。'),
+          choice('one-one-false', 'a=1,b=1 是反例，所以为假。'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['truth-value', 'counterexample'],
+        explanation: 'a=0,b=1 满足前件，却不满足后件，因此是有效反例。',
+      },
+      {
+        id: 'p2-result',
+        prompt: '由 (2) 的全部情况可知',
+        choices: [
+          choice('both-cases-true', 'a=2 与 a=-2 时 |a+1|≥1 都成立，所以为真。', true),
+          choice('positive-only', '只检查 a=2 就可以判定为真。'),
+          choice('negative-false', 'a=-2 时 |a+1|<1，所以为假。'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['truth-value', 'implication'],
+        explanation: 'a²=4 只有 ±2 两种可能，两种都满足后件，因此命题为真。',
+      },
+      {
+        id: 'p3-result',
+        prompt: '能够判断 (3) 的反例与结论是',
+        choices: [
+          choice('sqrt-two-false', 'a=b=√2 时 ab=2 是有理数，但 a,b 都是无理数，所以为假。', true),
+          choice('rational-example-true', 'a=b=1 时前后件都成立，所以为真。'),
+          choice('mixed-counterexample', 'a=√2,b=1 是反例，所以为假。'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['truth-value', 'counterexample', 'rational-number'],
+        explanation: '√2×√2=2 是有理数，而两个因子本身都是无理数。',
+      },
+      {
+        id: 'p4-result',
+        prompt: '能够判断 (4) 的反例与结论是',
+        choices: [
+          choice('conjugate-false', 'a=√2,b=-√2 时 a+b=0、ab=-2 都是有理数，但 a,b 是无理数，所以为假。', true),
+          choice('same-root-false', 'a=b=√2 时和与积都为有理数，所以为假。'),
+          choice('rational-example-true', 'a=b=1 时和与积都是有理数，所以为真。'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['truth-value', 'counterexample', 'rational-number'],
+        explanation: '√2 与 -√2 的和为0、积为-2，前件成立，但两数都不是有理数，因此是反例。',
+      },
+    ],
+    simulation: [
+      {
+        id: 's1', label: '(1)', prompt: '判断 ab=0 ⇒ a²+b²=0 的真假。', answerType: 'single-choice',
+        choices: [choice('false', '假', true), choice('true', '真')],
+        score: 2, estimatedSeconds: 25, knowledgeTags: ['truth-value', 'counterexample'], skillTags: ['conclusion'],
+      },
+      {
+        id: 's2', label: '(2)', prompt: '判断 a²=4 ⇒ |a+1|≥1 的真假。', answerType: 'single-choice',
+        choices: [choice('true', '真', true), choice('false', '假')],
+        score: 2, estimatedSeconds: 25, knowledgeTags: ['truth-value', 'implication'], skillTags: ['conclusion'],
+      },
+      {
+        id: 's3', label: '(3)', prompt: '判断“ab 是有理数 ⇒ a、b 都是有理数”的真假。', answerType: 'single-choice',
+        choices: [choice('false', '假', true), choice('true', '真')],
+        score: 2, estimatedSeconds: 25, knowledgeTags: ['truth-value', 'counterexample', 'rational-number'], skillTags: ['conclusion'],
+      },
+      {
+        id: 's4', label: '(4)', prompt: '判断“a+b、ab 都是有理数 ⇒ a、b 都是有理数”的真假。', answerType: 'single-choice',
+        choices: [choice('false', '假', true), choice('true', '真')],
+        score: 2, estimatedSeconds: 25, knowledgeTags: ['truth-value', 'counterexample', 'rational-number'], skillTags: ['conclusion'],
+      },
+    ],
+    fullExplanation: '证明蕴含为真需要覆盖前件成立的全部情况；证明为假只需一个反例。(2) 要完整检查 a=±2；(1)(3)(4) 都可由明确反例判为假。',
+  },
 
 ]

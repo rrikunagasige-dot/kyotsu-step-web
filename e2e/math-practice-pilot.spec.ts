@@ -1153,6 +1153,56 @@ test('113 proves sqrt(x) irrational by a linear contradiction chain', async ({ p
   expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
 })
 
+test('113 returns from a rational square-root assumption to an irrational-x contradiction', async ({ page }) => {
+  await page.getByTestId('math-exercise-basic').click()
+  await page.getByTestId('math-topic-prove-propositions').click()
+  await page.getByTestId('math-topic-question-5').click()
+
+  await expect(page.getByRole('heading', { name: '113｜平方根と無理数' })).toBeVisible()
+  const nav = page.getByTestId('math-topic-question-nav')
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5'])
+  await expect(page.getByTestId('math-topic-question-5')).toHaveAttribute('aria-current', 'page')
+
+  const problem = page.getByTestId('standard-problem')
+  const readingFlow = page.getByTestId('math-practice-reading-flow')
+  const currentTarget = page.getByTestId('math-practice-current-target')
+
+  await expect(problem).toContainText('正の無理数であるとき')
+  await expect(problem).toContainText('無理数であることを証明せよ')
+  await expect(problem.locator('.katex-error')).toHaveCount(0)
+
+  await expect(currentTarget).toContainText('まずの目標')
+  await expect(page.getByTestId('blank-math-practice-113-assumption')).toContainText('選択')
+  await expect(page.getByTestId('blank-math-practice-113-operation')).toHaveCount(0)
+
+  await page.getByTestId('blank-math-practice-113-assumption').click()
+  await page.getByTestId('option-math-practice-113-assumption-sqrt-rational').click()
+
+  await expect(currentTarget).toContainText('次の目標')
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('反対仮定')
+  await expect(readingFlow).not.toContainText('x=r²')
+  await page.getByTestId('blank-math-practice-113-operation').click()
+  await page.getByTestId('option-math-practice-113-operation-square').click()
+
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('xへ戻る操作')
+  await expect(page.getByTestId('blank-math-practice-113-square-result')).toContainText('選択')
+  await page.getByTestId('blank-math-practice-113-square-result').click()
+  await page.getByTestId('option-math-practice-113-square-result-x-rational').click()
+
+  await expect(currentTarget).toContainText('最後の目標')
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('2乗して得た式')
+  await page.getByTestId('blank-math-practice-113-contradiction').click()
+  await page.getByTestId('option-math-practice-113-contradiction-contradiction').click()
+
+  await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
+
+  const dimensions = await page.evaluate(() => ({
+    viewport: window.innerWidth,
+    page: document.documentElement.scrollWidth,
+  }))
+  expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
+})
+
 test('87 uses the Physics-style inline choice flow and reveals one reasoning node at a time', async ({ page }) => {
   await page.getByTestId('math-exercise-basic').click()
   await page.getByTestId('math-topic-organize-sets').click()

@@ -43,7 +43,7 @@ describe('math practice title architecture', () => {
 
   it('keeps current pilots together under 集合を整理する', () => {
     const summary = buildMathPracticeTopicSummary(mathPracticePilotQuestions)
-    expect(summary.counts['organize-sets']).toBe(3)
+    expect(summary.counts['organize-sets']).toBe(11)
     expect(summary.counts['read-propositions']).toBe(0)
     expect(summary.counts['prove-propositions']).toBe(0)
     expect(summary.unclassified).toBe(0)
@@ -73,10 +73,8 @@ describe('math practice title architecture', () => {
 
   it('keeps theme questions in source problem-number order for 1,2,3… navigation', () => {
     const ordered = mathPracticeQuestionsForTopic(mathPracticePilotQuestions, 'organize-sets')
-    expect(ordered.map((question) => mathPracticeProblemNumber(question.questionId))).toEqual([
-      87,
-      94,
-      97,
-    ])
+    expect(ordered.map((question) => mathPracticeProblemNumber(question.questionId))).toEqual(
+      Array.from({ length: 11 }, (_, index) => 87 + index),
+    )
   })
 })

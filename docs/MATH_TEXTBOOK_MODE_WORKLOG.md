@@ -97,6 +97,7 @@ Source:
 - source → unit → learner flow の対応は `docs/MATH_TEXTBOOK_SOURCE_MAP.md` に分離して記録。
 
 - quantifier lesson は教科書 p.100〜101 の問1 (1)〜(5) の順序へ戻し、存在例 → 否定、反例 → 否定の順で概念化。
+- proposition-reading lesson は practice taxonomy に合わせ、真偽 → 条件の否定 → 必要条件・十分条件 の順へ修正。
 - function lesson は main の `MATH_PRACTICE_118_CONTENT_DESIGN.md` を authority として、判定基準 → 円周/半径 → 平方根 → 面積1長方形へ同期。119/120 は authority が main に入るまで先回りしない。
 - review integrity test で、choices の実質重複・answer の一意性・inline item の1回使用・support fading を監査。
 - exact practice membership を 87〜120 の各問題番号レベルでcatalogに固定し、3テーマ間の重複/欠落を禁止。

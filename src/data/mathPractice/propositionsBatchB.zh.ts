@@ -707,5 +707,173 @@ export const mathPracticePropositionsBatchBSourceZh: MathPracticeSourceQuestion[
     ],
     fullExplanation: '条件的否定表示原条件不成立的所有情况。不等式否定时要注意边界，≠ 的否定是 =；在实数范围内，有理数的补集是无理数。',
   },
+  {
+    problemNo: 102,
+    section: 'propositions',
+    sectionTitle: '命题与条件',
+    title: '“且”与“或”',
+    estimatedSeconds: 360,
+    knowledgeTags: ['logical-and-or', 'intersection', 'union', 'interval'],
+    skillTags: ['condition-reading', 'case-classification', 'conclusion'],
+    problem: [
+      { type: 'text', text: '求满足下列条件的全体实数 x 所组成的集合。' },
+      { type: 'latex', latex: '(1)\\;0<x<3\\;\\text{且}\\;-2<x<2' },
+      { type: 'latex', latex: '(2)\\;0<x<3\\;\\text{或}\\;-2<x<2' },
+      { type: 'latex', latex: '(3)\\;-1\\le x<2\\;\\text{且}\\;-1<x\\le4' },
+      { type: 'latex', latex: '(4)\\;-1\\le x<2\\;\\text{或}\\;-1<x\\le4' },
+    ],
+    guide: [
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '先确认“且”“或”与集合运算之间的共同对应关系。' }],
+      },
+      { type: 'blank', blankId: 'rule' },
+
+      {
+        type: 'content',
+        blocks: [
+          { type: 'text', text: '(1) 保留同时属于两个区间的范围。' },
+          { type: 'latex', latex: 'A=(0,3),\\qquad B=(-2,2)' },
+        ],
+      },
+      { type: 'blank', blankId: 'p1-result' },
+
+      {
+        type: 'content',
+        blocks: [
+          { type: 'text', text: '(2) 对同样的两个区间，合并属于至少一个区间的范围。' },
+          { type: 'latex', latex: 'A=(0,3),\\qquad B=(-2,2)' },
+        ],
+      },
+      { type: 'blank', blankId: 'p2-result' },
+
+      {
+        type: 'content',
+        blocks: [
+          { type: 'text', text: '(3) 取交集，并检查左右端点是否同时被两个条件允许。' },
+          { type: 'latex', latex: 'A=[-1,2),\\qquad B=(-1,4]' },
+        ],
+      },
+      { type: 'blank', blankId: 'p3-result' },
+
+      {
+        type: 'content',
+        blocks: [
+          { type: 'text', text: '(4) 取并集，只要有一个区间包含某个端点，就把该端点保留下来。' },
+          { type: 'latex', latex: 'A=[-1,2),\\qquad B=(-1,4]' },
+        ],
+      },
+      { type: 'blank', blankId: 'p4-result' },
+    ],
+    blanks: [
+      {
+        id: 'rule',
+        prompt: '“且”“或”与集合运算的对应关系是',
+        choices: [
+          choice('and-intersection-or-union', '且→交集，或→并集', true),
+          choice('and-union-or-intersection', '且→并集，或→交集'),
+          choice('both-intersection', '两者都对应交集'),
+        ],
+        skillTag: 'condition-reading',
+        knowledgeTags: ['logical-and-or', 'intersection', 'union'],
+        explanation: '“且”要求两个条件同时成立，对应交集；“或”要求至少一个成立，对应并集。',
+      },
+      {
+        id: 'p1-result',
+        prompt: '(1) 的两个区间的交集是',
+        choices: [
+          choice('zero-two-open', '0<x<2', true),
+          choice('minus-two-three', '-2<x<3'),
+          choice('zero-two-closed', '0≤x≤2'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['intersection', 'interval'],
+        explanation: '(0,3) 与 (-2,2) 同时包含的范围是 0<x<2。',
+      },
+      {
+        id: 'p2-result',
+        prompt: '(2) 的两个区间的并集是',
+        choices: [
+          choice('minus-two-three', '-2<x<3', true),
+          choice('zero-two-open', '0<x<2'),
+          choice('minus-two-three-closed', '-2≤x≤3'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['union', 'interval'],
+        explanation: '两个区间有重叠，合并后得到 -2<x<3。',
+      },
+      {
+        id: 'p3-result',
+        prompt: '(3) 的交集是',
+        choices: [
+          choice('minus-one-two-open', '-1<x<2', true),
+          choice('left-closed', '-1≤x<2'),
+          choice('both-closed', '-1≤x≤2'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['intersection', 'interval'],
+        explanation: '-1 不属于 B，2 不属于 A，所以交集两端都不包含，得到 -1<x<2。',
+      },
+      {
+        id: 'p4-result',
+        prompt: '(4) 的并集是',
+        choices: [
+          choice('minus-one-four-closed', '-1≤x≤4', true),
+          choice('minus-one-four-open', '-1<x<4'),
+          choice('minus-one-two-open', '-1<x<2'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['union', 'interval'],
+        explanation: '-1 被 A 包含，4 被 B 包含，所以并集保留两个端点，得到 -1≤x≤4。',
+      },
+    ],
+    simulation: [
+      {
+        id: 's1',
+        label: '(1)',
+        prompt: '选择满足 0<x<3 且 -2<x<2 的范围。',
+        answerType: 'single-choice',
+        choices: [choice('zero-two-open', '0<x<2', true), choice('minus-two-three', '-2<x<3'), choice('zero-two-closed', '0≤x≤2')],
+        score: 2,
+        estimatedSeconds: 25,
+        knowledgeTags: ['intersection', 'interval'],
+        skillTags: ['case-classification'],
+      },
+      {
+        id: 's2',
+        label: '(2)',
+        prompt: '选择满足 0<x<3 或 -2<x<2 的范围。',
+        answerType: 'single-choice',
+        choices: [choice('minus-two-three', '-2<x<3', true), choice('zero-two-open', '0<x<2'), choice('minus-two-three-closed', '-2≤x≤3')],
+        score: 2,
+        estimatedSeconds: 25,
+        knowledgeTags: ['union', 'interval'],
+        skillTags: ['case-classification'],
+      },
+      {
+        id: 's3',
+        label: '(3)',
+        prompt: '选择满足 -1≤x<2 且 -1<x≤4 的范围。',
+        answerType: 'single-choice',
+        choices: [choice('minus-one-two-open', '-1<x<2', true), choice('left-closed', '-1≤x<2'), choice('both-closed', '-1≤x≤2')],
+        score: 2,
+        estimatedSeconds: 25,
+        knowledgeTags: ['intersection', 'interval'],
+        skillTags: ['case-classification'],
+      },
+      {
+        id: 's4',
+        label: '(4)',
+        prompt: '选择满足 -1≤x<2 或 -1<x≤4 的范围。',
+        answerType: 'single-choice',
+        choices: [choice('minus-one-four-closed', '-1≤x≤4', true), choice('minus-one-four-open', '-1<x<4'), choice('minus-one-two-open', '-1<x<2')],
+        score: 2,
+        estimatedSeconds: 25,
+        knowledgeTags: ['union', 'interval'],
+        skillTags: ['conclusion'],
+      },
+    ],
+    fullExplanation: '“且”对应交集，“或”对应并集。处理端点时，交集只有在两个条件都包含端点时才保留；并集只要其中一个条件包含端点就保留。',
+  },
 
 ]

@@ -25,7 +25,7 @@ describe('math textbook catalog', () => {
     ])
     expect(mathTextbookTopics[0].unitIds).toEqual(['math-sets'])
     expect(mathTextbookTopics[1].unitIds).toEqual(['math-propositions-reading', 'math-quantifiers-all-exists', 'math-functions-conditions'])
-    expect(mathTextbookTopics[2].unitIds).toEqual([])
+    expect(mathTextbookTopics[2].unitIds).toEqual(['math-propositions-proof'])
   })
 
   it('keeps the approved three learner-facing headings in order', () => {

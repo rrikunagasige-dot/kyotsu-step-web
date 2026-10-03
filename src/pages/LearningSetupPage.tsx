@@ -20,16 +20,21 @@ import {
   type PhysicsTopicId,
 } from '../data/physicsTaxonomy'
 import {
+  buildMathCommonTestSummary,
   buildMathPracticeTopicSummary,
+  mathCommonTestAreas,
+  mathCommonTestAreaForQuestion,
   mathPracticeProblemNumber,
   mathPracticeTaxonomy,
   mathPracticeTopicFlow,
   mathPracticeTopicForQuestion,
   mathPracticeTopicLabel,
+  type MathCommonTestAreaId,
   type MathPracticeTopicId,
 } from '../data/mathPracticeTaxonomy'
 
 type LearningMode = 'textbook' | 'practice'
+type MathExerciseType = 'basic' | 'common-test'
 
 const SHOW_GUIDANCE_LEVEL = false
 const FIXED_PRACTICE_VARIANT: LearningVariant = 'detailed'
@@ -52,6 +57,7 @@ export function LearningSetupPage() {
   const catalog = useMemo(() => getQuestionCatalog(customQuestions, language), [customQuestions, language])
   const physicsSummary = useMemo(() => buildPhysicsTopicSummary(catalog), [catalog])
   const mathSummary = useMemo(() => buildMathPracticeTopicSummary(catalog), [catalog])
+  const mathCommonTestSummary = useMemo(() => buildMathCommonTestSummary(catalog), [catalog])
 
   const requestedTopicParam = searchParams.get('topic')
   const requestedTopic = isPhysicsTopicId(requestedTopicParam) ? requestedTopicParam : null
@@ -62,7 +68,9 @@ export function LearningSetupPage() {
   const [mode, setMode] = useState<LearningMode>(requestedMode === 'practice' ? 'practice' : 'textbook')
   const [subject, setSubject] = useState<Question['subject']>(requestedSubject === 'math-1a' ? 'math-1a' : 'physics')
   const [activeTopic, setActiveTopic] = useState<PhysicsTopicId | null>(requestedTopic)
+  const [mathExerciseType, setMathExerciseType] = useState<MathExerciseType | null>(null)
   const [activeMathTopic, setActiveMathTopic] = useState<MathPracticeTopicId | null>(null)
+  const [activeMathCommonTestArea, setActiveMathCommonTestArea] = useState<MathCommonTestAreaId | null>(null)
   const [variant, setVariant] = useState<LearningVariant>('detailed')
   const [questionId, setQuestionId] = useState('')
 
@@ -83,9 +91,15 @@ export function LearningSetupPage() {
       question.subject === subject &&
       question.status === 'published' &&
       (subject !== 'physics' || (activeTopic !== null && physicsTopicForQuestion(question) === activeTopic)) &&
-      (subject !== 'math-1a' || (activeMathTopic !== null && mathPracticeTopicForQuestion(question) === activeMathTopic)),
+      (subject !== 'math-1a' || (
+        mathExerciseType === 'basic'
+          ? activeMathTopic !== null && mathPracticeTopicForQuestion(question) === activeMathTopic
+          : mathExerciseType === 'common-test'
+            ? activeMathCommonTestArea !== null && mathCommonTestAreaForQuestion(question) === activeMathCommonTestArea
+            : false
+      )),
     ),
-    [activeMathTopic, activeTopic, catalog, subject],
+    [activeMathCommonTestArea, activeMathTopic, activeTopic, catalog, mathExerciseType, subject],
   )
 
   useEffect(() => {
@@ -96,14 +110,21 @@ export function LearningSetupPage() {
 
   useEffect(() => {
     if (mode !== 'practice') return
-    if ((subject === 'physics' && !activeTopic) || (subject === 'math-1a' && !activeMathTopic)) {
+    if (
+      (subject === 'physics' && !activeTopic) ||
+      (subject === 'math-1a' && (
+        !mathExerciseType ||
+        (mathExerciseType === 'basic' && !activeMathTopic) ||
+        (mathExerciseType === 'common-test' && !activeMathCommonTestArea)
+      ))
+    ) {
       if (questionId) setQuestionId('')
       return
     }
     if (!subjectQuestions.some((question) => question.questionId === questionId)) {
       setQuestionId(subjectQuestions[0]?.questionId ?? '')
     }
-  }, [activeMathTopic, activeTopic, mode, questionId, subject, subjectQuestions])
+  }, [activeMathCommonTestArea, activeMathTopic, activeTopic, mathExerciseType, mode, questionId, subject, subjectQuestions])
 
   const variants: { value: LearningVariant; label: string; description: string }[] = [
     { value: 'detailed', label: text('詳細穴埋め', '详细引导'), description: text('手順を細かく確認', '逐步确认完整过程') },
@@ -114,7 +135,9 @@ export function LearningSetupPage() {
   const changeSubject = (next: Question['subject']) => {
     setSubject(next)
     setActiveTopic(null)
+    setMathExerciseType(null)
     setActiveMathTopic(null)
+    setActiveMathCommonTestArea(null)
     setQuestionId('')
   }
 
@@ -123,7 +146,9 @@ export function LearningSetupPage() {
     if (next === 'textbook') {
       setSubject('physics')
       setActiveTopic(null)
+      setMathExerciseType(null)
       setActiveMathTopic(null)
+      setActiveMathCommonTestArea(null)
       setQuestionId('')
       return
     }
@@ -132,7 +157,9 @@ export function LearningSetupPage() {
     const nextTopic = nextSubject === 'physics' ? requestedTopic : null
     setSubject(nextSubject)
     setActiveTopic(nextTopic)
+    setMathExerciseType(null)
     setActiveMathTopic(null)
+    setActiveMathCommonTestArea(null)
     setQuestionId(nextSubject === 'physics' && nextTopic ? questionsFor(nextSubject, nextTopic)[0]?.questionId ?? '' : '')
   }
 
@@ -142,10 +169,31 @@ export function LearningSetupPage() {
     setQuestionId(questionsFor('physics', topic)[0]?.questionId ?? '')
   }
 
+  const selectMathExerciseType = (type: MathExerciseType) => {
+    setMathExerciseType(type)
+    setActiveMathTopic(null)
+    setActiveMathCommonTestArea(null)
+    setQuestionId('')
+  }
+
   const selectMathTopic = (topic: MathPracticeTopicId) => {
     if (mathSummary.counts[topic] <= 0) return
     setActiveMathTopic(topic)
+    setActiveMathCommonTestArea(null)
     setQuestionId(questionsFor('math-1a', null, topic)[0]?.questionId ?? '')
+  }
+
+  const selectMathCommonTestArea = (area: MathCommonTestAreaId) => {
+    if (mathCommonTestSummary[area] <= 0) return
+    setActiveMathCommonTestArea(area)
+    setActiveMathTopic(null)
+    setQuestionId(
+      catalog.find((question) =>
+        question.subject === 'math-1a' &&
+        question.status === 'published' &&
+        mathCommonTestAreaForQuestion(question) === area,
+      )?.questionId ?? '',
+    )
   }
 
   const begin = () => {

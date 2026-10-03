@@ -12,6 +12,7 @@ on:
       - 'chatgpt/math-pilot-target-rendering-repair'
       - 'chatgpt/math-94-subproblem-compression'
       - 'chatgpt/math-87-97-subproblem-compression'
+      - 'chatgpt/math-88-96-implementation'
   pull_request:
     paths:
       - 'src/data/mathPractice/**'

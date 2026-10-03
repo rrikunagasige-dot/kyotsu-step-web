@@ -349,3 +349,163 @@ Wrong-answer behavior:
 - wrong choices do not advance
 - hints explain the quantity relation or boundary meaning, not the final answer
 - after correction, the resolved statement reads as natural prose/formula without an extra answer box
+
+
+---
+
+# Stable blank / choice matrix
+
+Use these IDs unchanged in Japanese and Chinese sources.
+
+## (1)
+
+### p1-formula
+Prompt purpose:
+- retrieve triangle area formula
+
+Correct:
+- id: area-formula
+- 三角形の面積 = \(\frac12\times\)底辺\(\times\)高さ
+
+Distractors:
+- id: base-times-height
+- 底辺×高さ
+- id: half-sum
+- \(\frac12(\)底辺+高さ\()\)
+
+### p1-model
+Prompt purpose:
+- substitute base 6 and height x into the formula
+
+Correct:
+- id: three-x
+- \(y=\frac12\cdot6\cdot x=3x\)
+
+Distractors:
+- id: six-x
+- \(y=6x\)
+- id: three-plus-x
+- \(y=3+x\)
+
+### p1-domain-meaning
+Prompt purpose:
+- interpret the physical meaning before writing an inequality
+
+Correct:
+- id: positive-height
+- \(x\) is height; it cannot be negative, and \(x=0\) does not give a nondegenerate triangle
+
+Distractors:
+- id: zero-allowed
+- height may be 0
+- id: negative-allowed
+- height may be negative
+
+### p1-domain
+Correct:
+- id: x-positive
+- \(x>0\)
+
+Distractors:
+- id: x-nonnegative
+- \(x\ge0\)
+- id: x-negative
+- \(x<0\)
+
+## (2)
+
+### p2-distance-rule
+Correct:
+- id: speed-times-time
+- 距離 = 速さ×時間
+
+Distractors:
+- id: speed-plus-time
+- 距離 = 速さ+時間
+- id: time-div-speed
+- 距離 = 時間÷速さ
+
+### p2-traveled
+Correct:
+- id: three-x
+- \(3x\) km
+
+Distractors:
+- id: fifteen-x
+- \(15x\) km
+- id: three-plus-x
+- \(3+x\) km
+
+### p2-model
+Correct:
+- id: fifteen-minus-three-x
+- \(y=15-3x\)
+
+Distractors:
+- id: fifteen-plus-three-x
+- \(y=15+3x\)
+- id: three-x-minus-fifteen
+- \(y=3x-15\)
+
+### p2-start
+Correct:
+- id: zero
+- \(x=0\)
+
+Distractors:
+- id: three
+- \(x=3\)
+- id: fifteen
+- \(x=15\)
+
+### p2-end
+Correct:
+- id: five
+- \(15/3=5\) hours
+
+Distractors:
+- id: twelve
+- \(15-3=12\)
+- id: forty-five
+- \(15\times3=45\)
+
+### p2-domain
+Correct:
+- id: zero-to-five-closed
+- \(0\le x\le5\)
+
+Distractors:
+- id: zero-to-five-open
+- \(0<x<5\)
+- id: nonnegative-only
+- \(x\ge0\)
+
+## Stage/result metadata
+
+- p1-formula
+  - result label: 三角形の面積公式
+- p1-model
+  - dependsOn: p1-formula
+  - result label: (1) の関数式
+- p1-domain-meaning
+  - no dependency on p1-model
+  - result label: x の意味と境界
+- p1-domain
+  - dependsOn: p1-domain-meaning
+
+- p2-distance-rule
+  - result label: 距離の関係
+- p2-traveled
+  - dependsOn: p2-distance-rule
+  - result label: x時間で進む距離
+- p2-model
+  - dependsOn: p2-traveled
+  - result label: (2) の関数式
+- p2-start
+  - result label: 始点
+- p2-end
+  - result label: 終点
+- p2-domain
+  - dependsOn: p2-start, p2-end
+
+Do not invent cross-links between (1) and (2).

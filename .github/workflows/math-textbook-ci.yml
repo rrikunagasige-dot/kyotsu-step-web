@@ -11,6 +11,7 @@ on:
       - 'src/data/textbook/math/**'
       - 'src/data/textbook/index.ts'
       - 'src/pages/TextbookUnitPage.tsx'
+      - 'src/pages/LearningSetupPage.tsx'
       - 'src/components/textbook/**'
       - 'e2e/math-textbook-set-smoke.spec.ts'
       - '.github/workflows/math-textbook-ci.yml'

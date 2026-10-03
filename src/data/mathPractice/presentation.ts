@@ -1458,6 +1458,39 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
       dependsOn: ['p2-apply'],
     },
   ],
+  'math-practice-118': [
+    {
+      id: 'basis',
+      kicker: { ja: 'まず確認', zh: '先确认' },
+      label: { ja: '関数かどうかは「yがただ1つ決まるか」で判定する', zh: '判断函数要看y是否唯一确定' },
+      blankIds: ['rule'],
+      result: {
+        blankId: 'rule',
+        label: { ja: '関数の判定基準', zh: '函数判定标准' },
+      },
+    },
+    {
+      id: 'p1',
+      kicker: { ja: '今の問い｜(1)', zh: '当前问题｜(1)' },
+      label: { ja: '円周から半径が1つに決まるか', zh: '圆周长是否唯一决定半径' },
+      blankIds: ['p1'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 'p2',
+      kicker: { ja: '今の問い｜(2)', zh: '当前问题｜(2)' },
+      label: { ja: '同じxに2つの平方根が対応するか', zh: '同一个x是否对应两个平方根' },
+      blankIds: ['p2'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 'p3',
+      kicker: { ja: '今の問い｜(3)', zh: '当前问题｜(3)' },
+      label: { ja: '面積1の条件から横の長さが1つに決まるか', zh: '由面积为1判断横边是否唯一' },
+      blankIds: ['p3'],
+      dependsOn: ['basis'],
+    },
+  ],
 }
 
 function localBlankId(questionId: string, fullBlankId: string) {
@@ -1530,5 +1563,6 @@ export function mathPracticeUsesSubproblemCompression(questionId: string) {
     'math-practice-115',
     'math-practice-116',
     'math-practice-117',
+    'math-practice-118',
   ].includes(questionId)
 }

@@ -966,5 +966,139 @@ export const mathPracticeProofsBatchCSource: MathPracticeSourceQuestion[] = [
     fullExplanation: '√x が有理数だと仮定し、√x=r（r は有理数）とおく。両辺を2乗すると x=r²。有理数の平方は有理数なので x は有理数となるが、問題では x は無理数である。矛盾するため、√x は無理数である。',
   },
 
+  {
+    problemNo: 114,
+    section: 'proofs',
+    sectionTitle: '命題と証明',
+    title: '倍数の証明',
+    estimatedSeconds: 540,
+    knowledgeTags: ['contrapositive', 'divisibility', 'modular-arithmetic', 'residue-class'],
+    skillTags: ['law-selection', 'case-classification', 'calculation', 'conclusion'],
+    problem: [
+      { type: 'text', text: 'm、n は整数とする。次の命題を証明せよ。' },
+      { type: 'text', text: '(1) n² が5の倍数ならば、n は5の倍数である。' },
+      { type: 'text', text: '(2) mn が3の倍数ならば、m、n の少なくとも一方は3の倍数である。' },
+    ],
+    guide: [
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(1) 直接 n を取り出す代わりに、5の倍数でない整数の余りを調べられる形へ命題を言い換える。' }],
+      },
+      { type: 'blank', blankId: 'p1-plan' },
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(1) 対偶の前件「n は5の倍数でない」を、5で割った余りの有限個のケースに分ける。' }],
+      },
+      { type: 'blank', blankId: 'p1-residues' },
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(1) 今得た余りをすべて2乗し、n² の余りに0が現れるかを確認する。' }],
+      },
+      { type: 'blank', blankId: 'p1-squares' },
+
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(2) 「m、n の少なくとも一方は3の倍数」の否定を正しく作り、積の余りを調べやすい対偶にする。' }],
+      },
+      { type: 'blank', blankId: 'p2-plan' },
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(2) m、n がどちらも3の倍数でないとき、それぞれを3で割った余りを分類する。' }],
+      },
+      { type: 'blank', blankId: 'p2-residues' },
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(2) 余りの組をすべて掛け、積 mn が3の倍数になり得るかを確認する。' }],
+      },
+      { type: 'blank', blankId: 'p2-products' },
+    ],
+    blanks: [
+      {
+        id: 'p1-plan',
+        prompt: '(1) を証明しやすくする対偶は',
+        choices: [
+          choice('contrapositive', 'n が5の倍数でないならば、n² は5の倍数でない。', true),
+          choice('converse', 'n が5の倍数ならば、n² は5の倍数である。'),
+          choice('inverse', 'n² が5の倍数でないならば、n は5の倍数でない。'),
+        ],
+        skillTag: 'law-selection',
+        knowledgeTags: ['contrapositive', 'divisibility'],
+        explanation: '元命題 p⇒q の対偶 ¬q⇒¬p は、「n が5の倍数でない ⇒ n² は5の倍数でない」です。',
+      },
+      {
+        id: 'p1-residues',
+        prompt: '5の倍数でない整数 n を5で割った余りは',
+        choices: [
+          choice('one-two-three-four', '1、2、3、4 のいずれか。', true),
+          choice('zero-to-four', '0、1、2、3、4 のいずれか。'),
+          choice('one-four-only', '1 または4だけ。'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['divisibility', 'residue-class'],
+        explanation: '5で割った余りは0〜4ですが、5の倍数でないので0を除いた1、2、3、4です。',
+      },
+      {
+        id: 'p1-squares',
+        prompt: '4つの余りを2乗して対偶を完成させると',
+        choices: [
+          choice('none-zero', 'mod 5 で 1²≡1、2²≡4、3²≡4、4²≡1。0は現れないので n² は5の倍数でない。対偶が真だから元命題も真。', true),
+          choice('three-zero', '3²≡0 (mod 5) なので対偶は偽。'),
+          choice('all-zero', '1〜4の平方はすべて0 (mod 5) になる。'),
+        ],
+        skillTag: 'calculation',
+        knowledgeTags: ['contrapositive', 'modular-arithmetic', 'divisibility'],
+        explanation: '非0の4余りの平方は1か4にしかならず、余り0になりません。よって対偶が成立します。',
+      },
+      {
+        id: 'p2-plan',
+        prompt: '(2) の対偶は',
+        choices: [
+          choice('both-not', 'm、n がどちらも3の倍数でないならば、mn は3の倍数でない。', true),
+          choice('at-least-one-not', 'm、n の少なくとも一方が3の倍数でないならば、mn は3の倍数でない。'),
+          choice('converse', 'm、n の少なくとも一方が3の倍数ならば、mn は3の倍数である。'),
+        ],
+        skillTag: 'law-selection',
+        knowledgeTags: ['contrapositive', 'negation', 'divisibility'],
+        explanation: '「少なくとも一方が3の倍数」の否定は「どちらも3の倍数でない」です。これが対偶の前件になります。',
+      },
+      {
+        id: 'p2-residues',
+        prompt: '3の倍数でない m、n の余りはそれぞれ',
+        choices: [
+          choice('one-or-two', '1 または2。', true),
+          choice('zero-or-one', '0 または1。'),
+          choice('only-one', '必ず1。'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['divisibility', 'residue-class'],
+        explanation: '3で割った余りは0、1、2ですが、3の倍数でないので各数の余りは1か2です。',
+      },
+      {
+        id: 'p2-products',
+        prompt: '余りの4組をすべて掛けて対偶を完成させると',
+        choices: [
+          choice('none-zero', 'mod 3 で 1·1≡1、1·2≡2、2·1≡2、2·2≡1。0は現れないので mn は3の倍数でない。対偶が真だから元命題も真。', true),
+          choice('two-two-zero', '2·2≡0 (mod 3) になるので対偶は偽。'),
+          choice('one-one-zero', '1·1≡0 (mod 3) になるので対偶は偽。'),
+        ],
+        skillTag: 'calculation',
+        knowledgeTags: ['contrapositive', 'modular-arithmetic', 'divisibility'],
+        explanation: '1と2のどの組合せを掛けても余りは1か2で、0にはなりません。したがって対偶が成立します。',
+      },
+    ],
+    simulation: [
+      {
+        id: 's1', label: '(1)', prompt: '5の倍数でない整数の平方の余りとして現れるものを選べ。', answerType: 'single-choice',
+        choices: [choice('correct', '1 または4', true), choice('wrong', '0 または1')],
+        score: 2, estimatedSeconds: 25, knowledgeTags: ['modular-arithmetic', 'divisibility'], skillTags: ['case-classification'],
+      },
+      {
+        id: 's2', label: '(2)', prompt: 'm,n がともに3の倍数でないとき、mn の3で割った余りについて正しいものを選べ。', answerType: 'single-choice',
+        choices: [choice('correct', '1 または2で、0にはならない。', true), choice('wrong', '必ず0になる。')],
+        score: 2, estimatedSeconds: 25, knowledgeTags: ['modular-arithmetic', 'divisibility'], skillTags: ['conclusion'],
+      },
+    ],
+    fullExplanation: '(1) は対偶「n が5の倍数でない ⇒ n² も5の倍数でない」を示す。余り1,2,3,4の平方は mod5 で1,4,4,1となり0にならない。(2) は対偶「m,n がどちらも3の倍数でない ⇒ mn も3の倍数でない」を示す。各余り1,2の4通りの積は mod3 で1,2,2,1となり0にならない。よって両方の元命題が成り立つ。',
+  },
 
 ]

@@ -1190,6 +1190,52 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
       dependsOn: ['square-result'],
     },
   ],
+  'math-practice-114': [
+    {
+      id: 'p1-plan',
+      kicker: { ja: '今の問い｜(1) 方針', zh: '当前问题｜(1) 方针' },
+      label: { ja: '余りを調べられる対偶へ直す', zh: '改写为可检查余数的逆否命题' },
+      blankIds: ['p1-plan'],
+      result: { blankId: 'p1-plan', label: { ja: '(1) の対偶', zh: '(1) 的逆否命题' } },
+    },
+    {
+      id: 'p1-residues',
+      kicker: { ja: '今の問い｜(1) 余り', zh: '当前问题｜(1) 余数' },
+      label: { ja: '5の倍数でない余りを全部出す', zh: '列出不是5的倍数时的全部余数' },
+      blankIds: ['p1-residues'],
+      dependsOn: ['p1-plan'],
+      result: { blankId: 'p1-residues', label: { ja: 'mod 5 の候補', zh: 'mod 5 的候选余数' } },
+    },
+    {
+      id: 'p1-squares',
+      kicker: { ja: '今の問い｜(1) 全ケース', zh: '当前问题｜(1) 全部情况' },
+      label: { ja: '4つの平方余りに0がないことを示す', zh: '验证四种平方余数都不为0' },
+      blankIds: ['p1-squares'],
+      dependsOn: ['p1-residues'],
+    },
+    {
+      id: 'p2-plan',
+      kicker: { ja: '今の問い｜(2) 方針', zh: '当前问题｜(2) 方针' },
+      label: { ja: '「少なくとも一方」を否定して対偶を作る', zh: '否定“至少一个”并写出逆否命题' },
+      blankIds: ['p2-plan'],
+      result: { blankId: 'p2-plan', label: { ja: '(2) の対偶', zh: '(2) 的逆否命题' } },
+    },
+    {
+      id: 'p2-residues',
+      kicker: { ja: '今の問い｜(2) 余り', zh: '当前问题｜(2) 余数' },
+      label: { ja: '3の倍数でない余りを分類する', zh: '分类不是3的倍数时的余数' },
+      blankIds: ['p2-residues'],
+      dependsOn: ['p2-plan'],
+      result: { blankId: 'p2-residues', label: { ja: 'mod 3 の候補', zh: 'mod 3 的候选余数' } },
+    },
+    {
+      id: 'p2-products',
+      kicker: { ja: '今の問い｜(2) 全ケース', zh: '当前问题｜(2) 全部情况' },
+      label: { ja: '4つの積の余りに0がないことを示す', zh: '验证四种乘积余数都不为0' },
+      blankIds: ['p2-products'],
+      dependsOn: ['p2-residues'],
+    },
+  ],
 }
 
 function localBlankId(questionId: string, fullBlankId: string) {
@@ -1254,5 +1300,6 @@ export function mathPracticeUsesSubproblemCompression(questionId: string) {
     'math-practice-111',
     'math-practice-112',
     'math-practice-113',
+    'math-practice-114',
   ].includes(questionId)
 }

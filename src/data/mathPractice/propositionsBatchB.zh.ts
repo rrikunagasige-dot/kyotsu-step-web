@@ -1556,5 +1556,169 @@ export const mathPracticePropositionsBatchBSourceZh: MathPracticeSourceQuestion[
     ],
     fullExplanation: 'P 表示2的倍数，Q 表示3的倍数。“且”对应交集，“不是”对应补集。因此6的倍数是 P∩Q，奇数是 P̄，3的倍数且为奇数是 Q∩P̄，不是3的倍数的奇数是 Q̄∩P̄。',
   },
+  {
+    problemNo: 107,
+    section: 'propositions',
+    sectionTitle: '命题与条件',
+    title: '必要与充分条件的判断',
+    estimatedSeconds: 600,
+    knowledgeTags: ['necessary-condition', 'sufficient-condition', 'implication', 'counterexample', 'geometry'],
+    skillTags: ['condition-reading', 'case-classification', 'conclusion'],
+    problem: [
+      { type: 'text', text: '设 x、y、z 为实数。判断左侧条件是右侧条件的什么条件。' },
+      { type: 'latex', latex: '(1)\\;(x-y)(y-z)=0\\quad/\\quad x=y=z' },
+      { type: 'latex', latex: '(2)\\;x>0\\;\\text{且}\\;y<0\\quad/\\quad xy<0' },
+      { type: 'latex', latex: '(3)\\;x=y=0\\quad/\\quad xy=0\\;\\text{且}\\;x+y=0' },
+      { type: 'text', text: '(4) ∠A<90° ／ △ABC 为锐角三角形' },
+      { type: 'text', text: '(5) 设 △ABC 的边 BC、CA、AB 长分别为 a、b、c。(a-b)(a²+b²-c²)=0 ／ △ABC 为直角等腰三角形' },
+    ],
+    guide: [
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '沿用104的方法：把左侧记为 p、右侧记为 q，分别判断 p⇒q 和 q⇒p，再分类必要与充分关系。' }],
+      },
+      { type: 'blank', blankId: 'rule' },
+
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(1) 从 p 只能知道 x=y 或 y=z 至少一个成立。取 x=0,y=0,z=1 时 p 成立而 q 不成立；反过来 q 成立时两个因子都为0。' }],
+      },
+      { type: 'blank', blankId: 'p1-classification' },
+
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(2) p 成立时正数乘负数，所以 xy<0；但 xy<0 时也可能出现 x=-1,y=1 这种符号顺序相反的情况。' }],
+      },
+      { type: 'blank', blankId: 'p2-classification' },
+
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(3) x=y=0 时右侧两条件成立。反过来，xy=0 说明至少一个为0，再结合 x+y=0，另一个也必须为0。' }],
+      },
+      { type: 'blank', blankId: 'p3-classification' },
+
+      {
+        type: 'content',
+        blocks: [{ type: 'text', text: '(4) 锐角三角形一定满足 ∠A<90°；但 A=60°,B=100°,C=20° 时 ∠A<90°，却不是锐角三角形。' }],
+      },
+      { type: 'blank', blankId: 'p4-classification' },
+
+      {
+        type: 'content',
+        blocks: [
+          { type: 'text', text: '(5) 左侧只要求 a=b 或 a²+b²=c² 至少一个成立。正三角形 a=b=c=1 满足左侧，却不是直角等腰三角形。' },
+          { type: 'text', text: '反方向取 A 为直角、b=c=1、a=√2 的直角等腰三角形，右侧成立，但左侧两个因子都不为0。' },
+        ],
+      },
+      { type: 'blank', blankId: 'p5-classification' },
+    ],
+    blanks: [
+      {
+        id: 'rule',
+        prompt: '左侧记为 p、右侧记为 q 时，正确的判断规则是',
+        choices: [
+          choice('direction-map', 'p⇒q 为真则 p 是充分条件；q⇒p 为真则 p 是必要条件。', true),
+          choice('reversed-map', 'p⇒q 为真则 p 是必要条件；q⇒p 为真则 p 是充分条件。'),
+          choice('one-direction-enough', '只要一个方向为真，就一定是充要条件。'),
+        ],
+        skillTag: 'condition-reading',
+        knowledgeTags: ['necessary-condition', 'sufficient-condition', 'implication'],
+        explanation: 'p 能保证 q 时是充分条件；q 成立必需 p 时，p 是必要条件。',
+      },
+      {
+        id: 'p1-classification',
+        prompt: '根据 (1) 两个方向的真假分类',
+        choices: [
+          choice('necessary-only', 'p⇒q:假，q⇒p:真 → 必要但不充分。', true),
+          choice('sufficient-only', 'p⇒q:真，q⇒p:假 → 充分但不必要。'),
+          choice('iff', '两个方向都真 → 充要条件。'),
+          choice('neither', '两个方向都假 → 既不必要也不充分。'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['necessary-condition', 'sufficient-condition', 'counterexample'],
+        explanation: 'p 不能推出三个数全相等，但 q 成立时 p 必然成立，因此 p 必要但不充分。',
+      },
+      {
+        id: 'p2-classification',
+        prompt: '根据 (2) 两个方向的真假分类',
+        choices: [
+          choice('sufficient-only', 'p⇒q:真，q⇒p:假 → 充分但不必要。', true),
+          choice('necessary-only', 'p⇒q:假，q⇒p:真 → 必要但不充分。'),
+          choice('iff', '两个方向都真 → 充要条件。'),
+          choice('neither', '两个方向都假 → 既不必要也不充分。'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['necessary-condition', 'sufficient-condition', 'counterexample'],
+        explanation: '正×负必为负，但积为负也可能是负×正，所以 p 充分但不必要。',
+      },
+      {
+        id: 'p3-classification',
+        prompt: '根据 (3) 两个方向的真假分类',
+        choices: [
+          choice('iff', '两个方向都真 → 充要条件。', true),
+          choice('necessary-only', 'p⇒q:假，q⇒p:真 → 必要但不充分。'),
+          choice('sufficient-only', 'p⇒q:真，q⇒p:假 → 充分但不必要。'),
+          choice('neither', '两个方向都假 → 既不必要也不充分。'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['necessary-condition', 'sufficient-condition', 'equivalence'],
+        explanation: '右侧两个条件也能推出 x=y=0，因此两个方向都成立。',
+      },
+      {
+        id: 'p4-classification',
+        prompt: '根据 (4) 两个方向的真假分类',
+        choices: [
+          choice('necessary-only', 'p⇒q:假，q⇒p:真 → 必要但不充分。', true),
+          choice('sufficient-only', 'p⇒q:真，q⇒p:假 → 充分但不必要。'),
+          choice('iff', '两个方向都真 → 充要条件。'),
+          choice('neither', '两个方向都假 → 既不必要也不充分。'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['necessary-condition', 'sufficient-condition', 'geometry'],
+        explanation: '锐角三角形的 A 必为锐角，但只知道 A 为锐角不能保证另外两角也为锐角。',
+      },
+      {
+        id: 'p5-classification',
+        prompt: '根据 (5) 两个方向的真假分类',
+        choices: [
+          choice('neither', '两个方向都假 → 既不必要也不充分。', true),
+          choice('necessary-only', 'p⇒q:假，q⇒p:真 → 必要但不充分。'),
+          choice('sufficient-only', 'p⇒q:真，q⇒p:假 → 充分但不必要。'),
+          choice('iff', '两个方向都真 → 充要条件。'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['necessary-condition', 'sufficient-condition', 'counterexample', 'geometry'],
+        explanation: '正三角形给出 p⇒q 的反例；直角位于 A 的等腰直角三角形给出 q⇒p 的反例，因此两个方向都不成立。',
+      },
+    ],
+    simulation: [
+      {
+        id: 's1', label: '(1)', prompt: '(x-y)(y-z)=0 是 x=y=z 的什么条件？', answerType: 'single-choice',
+        choices: [choice('necessary-only', '必要但不充分。', true), choice('sufficient-only', '充分但不必要。'), choice('iff', '充要条件。'), choice('neither', '既不必要也不充分。')],
+        score: 2, estimatedSeconds: 30, knowledgeTags: ['necessary-condition', 'sufficient-condition'], skillTags: ['conclusion'],
+      },
+      {
+        id: 's2', label: '(2)', prompt: 'x>0 且 y<0 是 xy<0 的什么条件？', answerType: 'single-choice',
+        choices: [choice('sufficient-only', '充分但不必要。', true), choice('necessary-only', '必要但不充分。'), choice('iff', '充要条件。'), choice('neither', '既不必要也不充分。')],
+        score: 2, estimatedSeconds: 30, knowledgeTags: ['necessary-condition', 'sufficient-condition'], skillTags: ['conclusion'],
+      },
+      {
+        id: 's3', label: '(3)', prompt: 'x=y=0 是“xy=0 且 x+y=0”的什么条件？', answerType: 'single-choice',
+        choices: [choice('iff', '充要条件。', true), choice('necessary-only', '必要但不充分。'), choice('sufficient-only', '充分但不必要。'), choice('neither', '既不必要也不充分。')],
+        score: 2, estimatedSeconds: 30, knowledgeTags: ['necessary-condition', 'sufficient-condition', 'equivalence'], skillTags: ['conclusion'],
+      },
+      {
+        id: 's4', label: '(4)', prompt: '∠A<90° 是 △ABC 为锐角三角形的什么条件？', answerType: 'single-choice',
+        choices: [choice('necessary-only', '必要但不充分。', true), choice('sufficient-only', '充分但不必要。'), choice('iff', '充要条件。'), choice('neither', '既不必要也不充分。')],
+        score: 2, estimatedSeconds: 30, knowledgeTags: ['necessary-condition', 'sufficient-condition', 'geometry'], skillTags: ['conclusion'],
+      },
+      {
+        id: 's5', label: '(5)', prompt: '(a-b)(a²+b²-c²)=0 是 △ABC 为直角等腰三角形的什么条件？', answerType: 'single-choice',
+        choices: [choice('neither', '既不必要也不充分。', true), choice('necessary-only', '必要但不充分。'), choice('sufficient-only', '充分但不必要。'), choice('iff', '充要条件。')],
+        score: 2, estimatedSeconds: 30, knowledgeTags: ['necessary-condition', 'sufficient-condition', 'geometry'], skillTags: ['conclusion'],
+      },
+    ],
+    fullExplanation: '复杂条件仍按同一流程：分别判断 p⇒q 和 q⇒p，成立的方向给证明，不成立的方向给反例。(1)(4) 仅必要，(2) 仅充分，(3) 为充要，(5) 两者都不是。',
+  },
 
 ]

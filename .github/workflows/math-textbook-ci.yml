@@ -13,6 +13,7 @@ on:
       - 'src/pages/TextbookUnitPage.tsx'
       - 'src/pages/LearningSetupPage.tsx'
       - 'src/components/textbook/**'
+      - 'src/components/layout/AppShell.tsx'
       - 'e2e/math-textbook-set-smoke.spec.ts'
       - '.github/workflows/math-textbook-ci.yml'
   workflow_dispatch:

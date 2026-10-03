@@ -123,7 +123,8 @@ test('problem card 3 opens 97 with the same progressive flow and no equation lea
 
   await expect(page.getByRole('heading', { name: '97｜共通部分から定数を決める' })).toBeVisible()
   const problem = page.getByTestId('standard-problem')
-  await expect(problem).toContainText('定数 a の値と和集合')
+  await expect(problem).toContainText('このとき、定数')
+  await expect(problem).toContainText('の値と和集合')
   await expect(problem).not.toContainText('3a-2=4')
   await expect(page.getByTestId('math-practice-reading-flow')).toBeVisible()
   const currentTarget = page.getByTestId('math-practice-current-target')

@@ -10,15 +10,15 @@ export type MathPracticeCatalogEntry = {
 
 export const mathPractice87To120Catalog: MathPracticeCatalogEntry[] = [
   { problemNo: 87, section: 'sets', sectionTitle: '集合', title: '素数と集合', pilot: true },
-  { problemNo: 88, section: 'sets', sectionTitle: '集合', title: '集合の表し方', pilot: false },
-  { problemNo: 89, section: 'sets', sectionTitle: '集合', title: '部分集合', pilot: false },
-  { problemNo: 90, section: 'sets', sectionTitle: '集合', title: '集合の包含関係', pilot: false },
-  { problemNo: 91, section: 'sets', sectionTitle: '集合', title: '部分集合をすべて求める', pilot: false },
-  { problemNo: 92, section: 'sets', sectionTitle: '集合', title: '共通部分と和集合', pilot: false },
-  { problemNo: 93, section: 'sets', sectionTitle: '集合', title: '3つの集合', pilot: false },
+  { problemNo: 88, section: 'sets', sectionTitle: '集合', title: '集合の表し方', pilot: true },
+  { problemNo: 89, section: 'sets', sectionTitle: '集合', title: '部分集合', pilot: true },
+  { problemNo: 90, section: 'sets', sectionTitle: '集合', title: '集合の包含関係', pilot: true },
+  { problemNo: 91, section: 'sets', sectionTitle: '集合', title: '部分集合をすべて求める', pilot: true },
+  { problemNo: 92, section: 'sets', sectionTitle: '集合', title: '共通部分と和集合', pilot: true },
+  { problemNo: 93, section: 'sets', sectionTitle: '集合', title: '3つの集合', pilot: true },
   { problemNo: 94, section: 'sets', sectionTitle: '集合', title: '補集合', pilot: true },
-  { problemNo: 95, section: 'sets', sectionTitle: '集合', title: '集合を復元する', pilot: false },
-  { problemNo: 96, section: 'sets', sectionTitle: '集合', title: '3集合の複合演算', pilot: false },
+  { problemNo: 95, section: 'sets', sectionTitle: '集合', title: '集合を復元する', pilot: true },
+  { problemNo: 96, section: 'sets', sectionTitle: '集合', title: '3集合の複合演算', pilot: true },
   { problemNo: 97, section: 'sets', sectionTitle: '集合', title: '共通部分から定数を決める', pilot: true },
 
   { problemNo: 98, section: 'propositions', sectionTitle: '命題と条件', title: '命題と真偽', pilot: false },

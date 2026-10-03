@@ -784,7 +784,7 @@ test('108 proves equivalence in two directions and only combines them at the fin
 
   await expect(page.getByRole('heading', { name: '108｜同値の証明' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6'])
   await expect(page.getByTestId('math-topic-question-1')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -853,7 +853,7 @@ test('110 builds converse, contrapositive and inverse separately, then consolida
 
   await expect(page.getByRole('heading', { name: '110｜逆・対偶・裏' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6'])
   await expect(page.getByTestId('math-topic-question-2')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -959,7 +959,7 @@ test('111 uses the source-given contrapositive strategy and proves four cases on
 
   await expect(page.getByRole('heading', { name: '111｜対偶による証明' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6'])
   await expect(page.getByTestId('math-topic-question-3')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -1037,7 +1037,7 @@ test('112 proves irrationality by contradiction and keeps rationalization as a m
 
   await expect(page.getByRole('heading', { name: '112｜無理数の証明' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6'])
   await expect(page.getByTestId('math-topic-question-4')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -1108,7 +1108,7 @@ test('113 proves sqrt(x) irrational by a linear contradiction chain', async ({ p
 
   await expect(page.getByRole('heading', { name: '113｜平方根と無理数' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6'])
   await expect(page.getByTestId('math-topic-question-5')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -1193,6 +1193,65 @@ test('113 returns from a rational square-root assumption to an irrational-x cont
   await expect(page.getByTestId('math-practice-dependency-links')).toContainText('2乗して得た式')
   await page.getByTestId('blank-math-practice-113-contradiction').click()
   await page.getByTestId('option-math-practice-113-contradiction-contradiction').click()
+
+  await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
+
+  const dimensions = await page.evaluate(() => ({
+    viewport: window.innerWidth,
+    page: document.documentElement.scrollWidth,
+  }))
+  expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
+})
+
+test('114 proves divisibility claims by exhaustive nonzero residue classes', async ({ page }) => {
+  await page.getByTestId('math-exercise-basic').click()
+  await page.getByTestId('math-topic-prove-propositions').click()
+  await page.getByTestId('math-topic-question-6').click()
+
+  await expect(page.getByRole('heading', { name: '114｜倍数の証明' })).toBeVisible()
+  const nav = page.getByTestId('math-topic-question-nav')
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6'])
+  await expect(page.getByTestId('math-topic-question-6')).toHaveAttribute('aria-current', 'page')
+
+  const problem = page.getByTestId('standard-problem')
+  const readingFlow = page.getByTestId('math-practice-reading-flow')
+  const currentTarget = page.getByTestId('math-practice-current-target')
+
+  await expect(problem).toContainText('n² が5の倍数')
+  await expect(problem).toContainText('少なくとも一方')
+  await expect(problem.locator('.katex-error')).toHaveCount(0)
+
+  // (1): choose the contrapositive, enumerate all nonzero residues mod 5, then square all cases.
+  await expect(currentTarget).toContainText('(1) 方針')
+  await page.getByTestId('blank-math-practice-114-p1-plan').click()
+  await page.getByTestId('option-math-practice-114-p1-plan-contrapositive').click()
+
+  await expect(currentTarget).toContainText('(1) 余り')
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('(1) の対偶')
+  await expect(readingFlow).not.toContainText('1、2、3、4 のいずれか')
+  await page.getByTestId('blank-math-practice-114-p1-residues').click()
+  await page.getByTestId('option-math-practice-114-p1-residues-one-two-three-four').click()
+
+  await expect(currentTarget).toContainText('(1) 全ケース')
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('mod 5 の候補')
+  await page.getByTestId('blank-math-practice-114-p1-squares').click()
+  await page.getByTestId('option-math-practice-114-p1-squares-none-zero').click()
+
+  // (2): the first proof collapses; negate "at least one" into "neither", then test all mod-3 products.
+  await expect(currentTarget).toContainText('(2) 方針')
+  await expect(readingFlow).not.toContainText('5の倍数でない')
+  await page.getByTestId('blank-math-practice-114-p2-plan').click()
+  await page.getByTestId('option-math-practice-114-p2-plan-both-not').click()
+
+  await expect(currentTarget).toContainText('(2) 余り')
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('(2) の対偶')
+  await page.getByTestId('blank-math-practice-114-p2-residues').click()
+  await page.getByTestId('option-math-practice-114-p2-residues-one-or-two').click()
+
+  await expect(currentTarget).toContainText('(2) 全ケース')
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('mod 3 の候補')
+  await page.getByTestId('blank-math-practice-114-p2-products').click()
+  await page.getByTestId('option-math-practice-114-p2-products-none-zero').click()
 
   await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
 

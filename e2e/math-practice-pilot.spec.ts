@@ -1044,7 +1044,7 @@ test('112 proves irrationality by contradiction and keeps rationalization as a m
   const readingFlow = page.getByTestId('math-practice-reading-flow')
   const currentTarget = page.getByTestId('math-practice-current-target')
 
-  await expect(problem).toContainText('√3 が無理数')
+  await expect(problem).toContainText('が無理数であることを用いて')
   await expect(problem.locator('.katex-display')).toHaveCount(2)
   await expect(problem.locator('.katex-error')).toHaveCount(0)
 

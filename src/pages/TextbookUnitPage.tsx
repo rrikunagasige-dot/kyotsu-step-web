@@ -353,9 +353,10 @@ export function TextbookUnitPage() {
   const displayTitle = legacyPrefix && unit.title.startsWith(`${legacyPrefix} `)
     ? unit.title.slice(legacyPrefix.length + 1)
     : unit.title
-  const chapterChunk = chapter1ChunkForUnitCode(unitCode)
+  const chapterChunk = unit.subject === 'physics' ? chapter1ChunkForUnitCode(unitCode) : undefined
   const majorTitle = chapterChunk ? chapter1Localized(chapterChunk.title, language) : displayTitle
-  const nextChapter1Unit = chapter1NextUnit(unitCode)
+  const nextChapter1Unit = unit.subject === 'physics' ? chapter1NextUnit(unitCode) : undefined
+  const subjectEyebrow = unit.subject === 'math-1a' ? 'MATH I+A' : 'PHYSICS'
   const unitComplete = summary.completed === summary.total
   const canOpen = (index: number) => unitComplete || index <= firstIncompleteIndex
 
@@ -385,8 +386,8 @@ export function TextbookUnitPage() {
         <div>
           <p className="eyebrow">
             {unit.chapter
-              ? `TEXTBOOK / PHYSICS / CHAPTER ${unit.chapter.chapterNumber}`
-              : 'TEXTBOOK / PHYSICS'}
+              ? `TEXTBOOK / ${subjectEyebrow} / CHAPTER ${unit.chapter.chapterNumber}`
+              : `TEXTBOOK / ${subjectEyebrow}`}
           </p>
           <h1>{majorTitle}</h1>
           {chapterChunk && (
@@ -467,11 +468,19 @@ export function TextbookUnitPage() {
           <div className="textbook-complete-panel" data-testid="textbook-unit-complete">
             <Check size={28} aria-hidden="true" />
             <div>
-              <strong>{nextChapter1Unit ? text('ここまで完了', '已完成这一部分') : text('第1章完了', '第1章完成')}</strong>
+              <strong>
+                {unit.subject === 'math-1a'
+                  ? text('ここまで完了', '已完成这一部分')
+                  : nextChapter1Unit
+                    ? text('ここまで完了', '已完成这一部分')
+                    : text('第1章完了', '第1章完成')}
+              </strong>
               <p>
-                {nextChapter1Unit
-                  ? chapter1Localized(nextChapter1Unit.bridge, language)
-                  : text('運動を表し、速度の変化を追い、その原因を力までつなげて考えました。', '已经把运动的表示、速度的变化以及产生变化的力联系起来了。')}
+                {unit.subject === 'math-1a'
+                  ? text('集合・要素・所属記号・集合の表し方・有限集合と無限集合まで確認しました。', '已经学习了集合、元素、所属符号、集合的表示方法，以及有限集合与无限集合。')
+                  : nextChapter1Unit
+                    ? chapter1Localized(nextChapter1Unit.bridge, language)
+                    : text('運動を表し、速度の変化を追い、その原因を力までつなげて考えました。', '已经把运动的表示、速度的变化以及产生变化的力联系起来了。')}
               </p>
             </div>
             {nextChapter1Unit

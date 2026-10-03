@@ -83,7 +83,7 @@ export const mathPracticePropositionsBatchBSource: MathPracticeSourceQuestion[] 
       },
       {
         id: 'p1-result',
-        prompt: '23=3×7+2 なので、(1)は',
+        prompt: 'この計算から、(1)は',
         choices: [
           choice('true-proposition', '命題であり、真である。', true),
           choice('false-proposition', '命題であり、偽である。'),

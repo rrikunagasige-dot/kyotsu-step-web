@@ -451,6 +451,38 @@ button.physics-topic-card:not(:disabled):hover {
   background: var(--color-section);
 }
 
+/* Math practice reuses the proven physics taxonomy shell, but titles carry a short learning flow. */
+.math-topic-card {
+  align-content: center;
+  justify-items: start;
+  gap: .28rem;
+  min-height: 104px;
+  padding: .9rem 2.2rem .9rem .9rem;
+  text-align: left;
+}
+
+.math-topic-card strong {
+  font-size: 1.02rem;
+}
+
+.math-topic-flow {
+  color: var(--color-muted);
+  font-size: .72rem;
+  line-height: 1.5;
+}
+
+.math-topic-filter-copy {
+  display: grid;
+  min-width: 0;
+  gap: .12rem;
+}
+
+.math-topic-filter-copy > small {
+  position: static;
+  font: 600 .7rem/1.45 inherit;
+  color: var(--color-muted);
+}
+
 
 /* Textbook formula holes are rendered inside one complete KaTeX expression. */
 .reading-formula-line .katex-display { margin: 0; }

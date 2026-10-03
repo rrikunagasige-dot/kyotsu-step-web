@@ -28,6 +28,24 @@ describe('math textbook catalog', () => {
     expect(mathTextbookTopics[2].unitIds).toEqual(['math-propositions-proof'])
   })
 
+
+  it('locks the exact practice-question membership for the three synchronized topics', () => {
+    expect(mathTextbookTopics[0].practiceQuestionNumbers).toEqual([
+      87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97,
+    ])
+    expect(mathTextbookTopics[1].practiceQuestionNumbers).toEqual([
+      98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 109, 118, 119, 120,
+    ])
+    expect(mathTextbookTopics[2].practiceQuestionNumbers).toEqual([
+      108, 110, 111, 112, 113, 114, 115, 116, 117,
+    ])
+    const all = mathTextbookTopics.flatMap((topic) => topic.practiceQuestionNumbers)
+    expect(new Set(all).size).toBe(all.length)
+    expect([...all].sort((a, b) => a - b)).toEqual(
+      Array.from({ length: 34 }, (_, index) => 87 + index),
+    )
+  })
+
   it('keeps the approved three learner-facing headings in order', () => {
     const topic = mathTextbookTopics[0]
     expect(topic.learnerHeadings).toEqual([

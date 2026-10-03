@@ -56,19 +56,16 @@
 
 ### math-functions-conditions
 - status: review
-- source: 深進数学I 第2章 p.46〜47 相当 + MATH_PRACTICE_118_CONTENT_DESIGN
+- source: 深進数学I 第2章 p.46〜47 相当
 - practice topic: read-propositions
-- practice question: 118
 - flow:
   1. 1つのxにyがただ1つ決まる、という判定基準
   2. 円周x → 半径y
   3. 正のx → 平方根y
   4. 面積1の長方形で縦x → 横y
 - note:
-  - 118の3例と同じ順・同じ判断基準へ同期。
-  - 119/120のcontent authorityはmainへmerge済み。
-  - 119/120は既存unitへ詰め込まず、別review unitとして設計済み。
-  - 実装設計: `docs/MATH_TEXTBOOK_FUNCTION_119_120_DESIGN.md`
+  - 学習モードでは練習問題番号を教材単位として使わない。
+  - 練習モードとの同期は内部metadata/testで確認する。
   - 教科書上の章位置は source metadata に残す。
 
 ## 3. 命題を証明する

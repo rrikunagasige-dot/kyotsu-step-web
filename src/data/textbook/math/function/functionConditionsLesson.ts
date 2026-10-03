@@ -18,8 +18,8 @@ const rawMathFunctionConditionsUnit = {
   subtitle: '入力と出力の対応を、式と具体例から順に調べる。',
   source: {
     type: 'reference' as const,
-    label: '啓林館版 深進数学I 第2章 第1節「関数」＋ MATH_PRACTICE_118_CONTENT_DESIGN',
-    rightsNote: '教科書ガイド p.53 付近（教科書 p.46〜47 相当）の関数定義を、練習モード118の3例へ接続してApp用に構造化',
+    label: '啓林館版 深進数学I 第2章 第1節「関数」',
+    rightsNote: '教科書ガイド p.53 付近（教科書 p.46〜47 相当）の関数定義をApp用の連続教材として構造化',
   },
   objectives: [
     '入力xと出力yの対応を具体例で調べる',

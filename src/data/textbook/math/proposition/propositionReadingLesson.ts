@@ -19,7 +19,7 @@ const rawMathPropositionReadingUnit = {
   source: {
     type: 'reference' as const,
     label: '啓林館版 深進数学I 第3章「集合と命題」2 命題と集合',
-    rightsNote: '教科書ガイド p.115〜118 付近（教科書 p.92〜95 相当）をApp用の連続教材として構造化',
+    rightsNote: '教科書ガイド p.115〜118 付近（教科書 p.92〜95 相当）の内容を使用し、学習順は練習モードの taxonomy（真偽 → 条件の否定 → 必要・十分）へ同期',
   },
   objectives: [
     '条件から何が必ず言えるかを具体例で判断する',

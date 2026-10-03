@@ -479,8 +479,10 @@ button.physics-topic-card:not(:disabled):hover {
 
 .math-topic-filter-copy > small {
   position: static;
-  font: 600 .7rem/1.45 inherit;
   color: var(--color-muted);
+  font-size: .7rem;
+  font-weight: 600;
+  line-height: 1.45;
 }
 
 

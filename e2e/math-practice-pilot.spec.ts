@@ -784,7 +784,7 @@ test('108 proves equivalence in two directions and only combines them at the fin
 
   await expect(page.getByRole('heading', { name: '108｜同値の証明' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4'])
   await expect(page.getByTestId('math-topic-question-1')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -853,7 +853,7 @@ test('110 builds converse, contrapositive and inverse separately, then consolida
 
   await expect(page.getByRole('heading', { name: '110｜逆・対偶・裏' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4'])
   await expect(page.getByTestId('math-topic-question-2')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -959,7 +959,7 @@ test('111 uses the source-given contrapositive strategy and proves four cases on
 
   await expect(page.getByRole('heading', { name: '111｜対偶による証明' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4'])
   await expect(page.getByTestId('math-topic-question-3')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -1020,6 +1020,77 @@ test('111 uses the source-given contrapositive strategy and proves four cases on
   await expect(page.getByTestId('math-practice-dependency-links')).toContainText('奇数の表現')
   await page.getByTestId('blank-math-practice-111-p4-proof').click()
   await page.getByTestId('option-math-practice-111-p4-proof-correct').click()
+
+  await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
+
+  const dimensions = await page.evaluate(() => ({
+    viewport: window.innerWidth,
+    page: document.documentElement.scrollWidth,
+  }))
+  expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
+})
+
+test('112 proves irrationality by contradiction and keeps rationalization as a meaningful step', async ({ page }) => {
+  await page.getByTestId('math-exercise-basic').click()
+  await page.getByTestId('math-topic-prove-propositions').click()
+  await page.getByTestId('math-topic-question-4').click()
+
+  await expect(page.getByRole('heading', { name: '112｜無理数の証明' })).toBeVisible()
+  const nav = page.getByTestId('math-topic-question-nav')
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4'])
+  await expect(page.getByTestId('math-topic-question-4')).toHaveAttribute('aria-current', 'page')
+
+  const problem = page.getByTestId('standard-problem')
+  const readingFlow = page.getByTestId('math-practice-reading-flow')
+  const currentTarget = page.getByTestId('math-practice-current-target')
+
+  await expect(problem).toContainText('√3 が無理数')
+  await expect(problem.locator('.katex-display')).toHaveCount(2)
+  await expect(problem.locator('.katex-error')).toHaveCount(0)
+
+  await expect(currentTarget).toContainText('まず確認')
+  await expect(currentTarget).toContainText('背理法')
+  await expect(page.getByTestId('blank-math-practice-112-rule')).toContainText('選択')
+
+  await page.getByTestId('blank-math-practice-112-rule').click()
+  await page.getByTestId('option-math-practice-112-rule-rational-assume').click()
+
+  // (1): assume rational, isolate √3, then close the contradiction.
+  await expect(currentTarget).toContainText('(1) 仮定')
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('背理法の方針')
+  await page.getByTestId('blank-math-practice-112-p1-assumption').click()
+  await page.getByTestId('option-math-practice-112-p1-assumption-rational').click()
+
+  await expect(currentTarget).toContainText('(1) √3を取り出す')
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('(1) の反対仮定')
+  await expect(readingFlow).not.toContainText('r-1')
+  await page.getByTestId('blank-math-practice-112-p1-isolate').click()
+  await page.getByTestId('option-math-practice-112-p1-isolate-r-minus-one').click()
+
+  await expect(currentTarget).toContainText('(1) 矛盾')
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('(1) で得た√3の式')
+  await page.getByTestId('blank-math-practice-112-p1-contradiction').click()
+  await page.getByTestId('option-math-practice-112-p1-contradiction-contradiction').click()
+
+  // (2): (1) disappears; rationalization is the first independent reasoning node.
+  await expect(currentTarget).toContainText('(2) 有理化')
+  await expect(readingFlow).not.toContainText('1+√3=r')
+  await page.getByTestId('blank-math-practice-112-p2-rationalize').click()
+  await page.getByTestId('option-math-practice-112-p2-rationalize-conjugate').click()
+
+  await expect(currentTarget).toContainText('(2) 仮定')
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('有理化した形')
+  await page.getByTestId('blank-math-practice-112-p2-assumption').click()
+  await page.getByTestId('option-math-practice-112-p2-assumption-two-minus-root').click()
+
+  await expect(currentTarget).toContainText('(2) √3を取り出す')
+  await page.getByTestId('blank-math-practice-112-p2-isolate').click()
+  await page.getByTestId('option-math-practice-112-p2-isolate-two-minus-r').click()
+
+  await expect(currentTarget).toContainText('(2) 矛盾')
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('(2) で得た√3の式')
+  await page.getByTestId('blank-math-practice-112-p2-contradiction').click()
+  await page.getByTestId('option-math-practice-112-p2-contradiction-contradiction').click()
 
   await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
 

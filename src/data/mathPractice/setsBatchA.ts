@@ -18,15 +18,15 @@ export const mathPracticeSetsBatchASource: MathPracticeSourceQuestion[] = [
     skillTags: ['condition-reading', 'pattern-recognition', 'calculation', 'conclusion'],
     problem: [
       { type: 'text', text: '次の集合を、要素を書き並べて表せ。' },
-      { type: 'latex', latex: '(1)\;36\text{ の正の約数全体の集合}' },
-      { type: 'latex', latex: '(2)\;100\text{ 以下の正の奇数全体の集合}' },
-      { type: 'latex', latex: '(3)\;\{x\mid -3\le x<4,\;x\text{ は整数}\}' },
-      { type: 'latex', latex: '(4)\;\{3n-2\mid n=1,2,3,\ldots\}' },
+      { type: 'latex', latex: '(1)\\;36\\text{ の正の約数全体の集合}' },
+      { type: 'latex', latex: '(2)\\;100\\text{ 以下の正の奇数全体の集合}' },
+      { type: 'latex', latex: '(3)\\;\\{x\\mid -3\\le x<4,\\;x\\text{ は整数}\\}' },
+      { type: 'latex', latex: '(4)\\;\\{3n-2\\mid n=1,2,3,\\ldots\\}' },
     ],
     guide: [
       { type: 'content', blocks: [{ type: 'text', text: '(1) 36の正の約数を漏れなく探す方法を考える。' }] },
       { type: 'blank', blankId: 'p1-strategy' },
-      { type: 'content', blocks: [{ type: 'latex', latex: '1\times36,\;2\times18,\;3\times12,\;4\times9,\;\ldots' }, { type: 'text', text: '次の組が、左右を入れ替えて同じ組を数え始める境目になる。どこで探索を止めればよいか考える。' }] },
+      { type: 'content', blocks: [{ type: 'latex', latex: '1\\times36,\\;2\\times18,\\;3\\times12,\\;4\\times9,\\;\\ldots' }, { type: 'text', text: '次の組が、左右を入れ替えて同じ組を数え始める境目になる。どこで探索を止めればよいか考える。' }] },
       { type: 'blank', blankId: 'p1-stop' },
       { type: 'blank', blankId: 'p1-result' },
 

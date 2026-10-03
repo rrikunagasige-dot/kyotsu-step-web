@@ -33,7 +33,7 @@ function optionId(questionId: string, blankId: string, choice: MathPracticeSourc
   return `${questionId}-${blankId}-${choice.id}`
 }
 
-function createBlank(questionId: string, source: MathPracticeSourceQuestion, blank: MathPracticeSourceQuestion['blanks'][number]): LearningBlank {
+function createBlank(questionId: string, blank: MathPracticeSourceQuestion['blanks'][number]): LearningBlank {
   const correct = blank.choices.filter((choice) => choice.correct)
   if (!correct.length) throw new Error(`Math practice blank has no correct choice: ${questionId}/${blank.id}`)
 
@@ -144,7 +144,7 @@ function createQuestion(source: MathPracticeSourceQuestion): Question {
 
   const blanks = Object.fromEntries(
     source.blanks.map((blank) => {
-      const adapted = createBlank(questionId, source, blank)
+      const adapted = createBlank(questionId, blank)
       return [adapted.id, adapted]
     }),
   )

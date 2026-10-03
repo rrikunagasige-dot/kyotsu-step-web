@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import {
   mathPracticeDependencyTargets,
+  mathPracticeExternalDependencies,
   mathPracticeResultItems,
   mathPracticeTargetForBlank,
   mathPracticeTargetsForQuestion,
@@ -104,6 +105,42 @@ describe('math practice current-target presentation', () => {
     expect(mathPracticeDependencyTargets('math-practice-096', 's3')).toEqual([])
     const p96s1 = mathPracticeTargetsForQuestion('math-practice-096').find((target) => target.id === 's1')!
     expect(mathPracticeResultItems(p96s1).map((result) => result.blankId)).toEqual(['p1-result'])
+  })
+
+  it('encodes 117 as two independent chains that import theorem 116 only when coefficient separation is applied', () => {
+    expect(mathPracticeTargetsForQuestion('math-practice-117').map((target) => target.id)).toEqual([
+      'p1-expand',
+      'p1-group',
+      'p1-apply',
+      'p1-solve',
+      'p2-conjugate',
+      'p2-rationalize',
+      'p2-group',
+      'p2-apply',
+      'p2-solve',
+    ])
+
+    expect(mathPracticeDependencyTargets('math-practice-117', 'p1-group').map((target) => target.id))
+      .toEqual(['p1-expand'])
+    expect(mathPracticeDependencyTargets('math-practice-117', 'p1-apply').map((target) => target.id))
+      .toEqual(['p1-group'])
+    expect(mathPracticeDependencyTargets('math-practice-117', 'p2-rationalize').map((target) => target.id))
+      .toEqual(['p2-conjugate'])
+    expect(mathPracticeDependencyTargets('math-practice-117', 'p2-apply').map((target) => target.id))
+      .toEqual(['p2-group'])
+
+    const p1External = mathPracticeExternalDependencies('math-practice-117', 'p1-apply')
+    expect(p1External).toHaveLength(1)
+    expect(p1External[0]).toMatchObject({
+      id: 'R116-sqrt2',
+      sourceQuestionId: 'math-practice-116',
+      label: { ja: '116の結果', zh: '116的结论' },
+    })
+    expect(p1External[0]?.resultLatex).toContain('A+B\\sqrt{2}=0')
+
+    expect(mathPracticeExternalDependencies('math-practice-117', 'p1-solve')).toEqual([])
+    expect(mathPracticeExternalDependencies('math-practice-117', 'p2-apply').map((item) => item.id))
+      .toEqual(['R116-sqrt2'])
   })
 
   it('enables subproblem compression for the full reviewed set batch 87-97', () => {

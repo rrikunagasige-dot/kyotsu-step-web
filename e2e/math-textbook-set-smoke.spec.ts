@@ -158,6 +158,7 @@ test('math set lesson boots directly on the shared textbook reader', async ({ pa
 
   await expect(page.getByText('TEXTBOOK / MATH I+A / CHAPTER 3')).toBeVisible()
   await expect(page.getByRole('heading', { name: '集合', exact: true })).toBeVisible()
+  await expect(page.getByTestId('app-back-button')).toHaveAttribute('href', '#/learning/setup?subject=math-1a')
   await expect(page.getByRole('heading', { name: '集合を表す', exact: true })).toBeVisible()
   await expect(page.getByTestId('textbook-item-set-a01')).toBeVisible()
   await expect(page.getByTestId('textbook-item-set-a02')).toHaveCount(0)
@@ -362,6 +363,7 @@ test('real-line endpoint judgments precede complement formulas and the unit can 
   for (const [itemId, answer] of remaining) await answerItem(page, itemId, answer)
 
   await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
+  await expect(page.getByTestId('textbook-return-to-setup')).toHaveAttribute('href', '#/learning/setup?subject=math-1a')
   await expect(page.locator('.katex-error')).toHaveCount(0)
 
   const viewport = await page.evaluate(() => ({

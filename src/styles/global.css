@@ -703,6 +703,42 @@ button.math-theme-link {
   margin: 0;
 }
 
+.math-practice-complete-panel {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  margin-top: 1rem;
+  padding: .9rem;
+  border: 2px solid var(--color-primary);
+  background: var(--color-section);
+}
+
+.math-practice-complete-panel > div {
+  display: grid;
+  flex: 1;
+  gap: .2rem;
+}
+
+.math-practice-complete-panel strong {
+  color: var(--color-primary);
+}
+
+.math-practice-complete-panel small {
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+  .math-practice-complete-panel {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .math-practice-complete-panel button {
+    width: 100%;
+  }
+}
+
 @media (max-width: 640px) {
   .math-problem-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));

@@ -38,7 +38,7 @@ const exactText: Record<string, string> = {
 }
 
 function translateLatex(value: string) {
-  return value
+  const translated = value
     .replaceAll('\\text{ は整数}', '\\text{ 是整数}')
     .replaceAll('\\text{ は偶数}', '\\text{ 是偶数}')
     .replaceAll('\\text{ は実数}', '\\text{ 是实数}')
@@ -49,6 +49,14 @@ function translateLatex(value: string) {
     .replaceAll('\\text{ は27の正の約数}', '\\text{ 是27的正因数}')
     .replaceAll('\\text{ の正の約数全体の集合}', '\\text{ 的所有正因数组成的集合}')
     .replaceAll('\\text{ 以下の正の奇数全体の集合}', '\\text{ 以下所有正奇数组成的集合}')
+
+  // Parity tests require the Chinese catalog to contain no Japanese kana.
+  // These final replacements are a guard for TeX prose fragments that do not
+  // exactly match one of the phrases above; mathematical symbols are untouched.
+  return translated
+    .replaceAll('の', '的')
+    .replaceAll('は', '是')
+    .replace(/[ぁ-んァ-ン]/g, '')
 }
 
 function looseText(value: string, fallback: string) {

@@ -499,6 +499,39 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
       dependsOn: ['basis'],
     },
   ],
+  'math-practice-101': [
+    {
+      id: 'basis',
+      kicker: { ja: 'まず確認', zh: '先确认' },
+      label: { ja: '条件の否定が表す範囲を確認する', zh: '确认条件的否定表示什么范围' },
+      blankIds: ['rule'],
+      result: {
+        blankId: 'rule',
+        label: { ja: '否定の基準', zh: '否定的标准' },
+      },
+    },
+    {
+      id: 's1',
+      kicker: { ja: '今の問い｜(1)', zh: '当前问题｜(1)' },
+      label: { ja: '境界を含めて不等号を否定する', zh: '连同边界一起否定不等式' },
+      blankIds: ['p1-result'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's2',
+      kicker: { ja: '今の問い｜(2)', zh: '当前问题｜(2)' },
+      label: { ja: '「0ではない」の否定を考える', zh: '否定“不等于0”' },
+      blankIds: ['p2-result'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's3',
+      kicker: { ja: '今の問い｜(3)', zh: '当前问题｜(3)' },
+      label: { ja: '実数の中で有理数の補集合を考える', zh: '在实数范围内找有理数的补集' },
+      blankIds: ['p3-result'],
+      dependsOn: ['basis'],
+    },
+  ],
 }
 
 function localBlankId(questionId: string, fullBlankId: string) {
@@ -550,5 +583,6 @@ export function mathPracticeUsesSubproblemCompression(questionId: string) {
     'math-practice-098',
     'math-practice-099',
     'math-practice-100',
+    'math-practice-101',
   ].includes(questionId)
 }

@@ -557,5 +557,155 @@ export const mathPracticePropositionsBatchBSource: MathPracticeSourceQuestion[] 
     ],
     fullExplanation: '命題 p⇒q が偽であることを示すには、前件 p を満たすのに後件 q を満たさない反例を1つ示せばよい。平方では符号、絶対値では元の数の符号、素数条件では合成数になる具体例に注目すると反例を作りやすい。',
   },
+  {
+    problemNo: 101,
+    section: 'propositions',
+    sectionTitle: '命題と条件',
+    title: '条件の否定',
+    estimatedSeconds: 300,
+    knowledgeTags: ['negation', 'complement', 'inequality', 'rational-number'],
+    skillTags: ['condition-reading', 'case-classification', 'conclusion'],
+    problem: [
+      { type: 'text', text: 'x、y は実数とする。次の条件の否定を述べよ。' },
+      { type: 'latex', latex: '(1)\\;x>-5' },
+      { type: 'latex', latex: '(2)\\;x+y\\ne0' },
+      { type: 'text', text: '(3) x は有理数である。' },
+    ],
+    guide: [
+      {
+        type: 'content',
+        blocks: [{
+          type: 'text',
+          text: 'まず、条件の否定とは何を表すのかを確認する。記号だけを機械的に変えるのではなく、元の条件が成り立たない場合を漏れなく表す。',
+        }],
+      },
+      { type: 'blank', blankId: 'rule' },
+
+      {
+        type: 'content',
+        blocks: [{
+          type: 'text',
+          text: '(1) は境界の -5 自身が元の条件を満たすかどうかまで含めて考える。',
+        }],
+      },
+      { type: 'blank', blankId: 'p1-result' },
+
+      {
+        type: 'content',
+        blocks: [{
+          type: 'text',
+          text: '(2) は「0ではない」という条件が成り立たない場合を、そのまま等式で表す。',
+        }],
+      },
+      { type: 'blank', blankId: 'p2-result' },
+
+      {
+        type: 'content',
+        blocks: [{
+          type: 'text',
+          text: '(3) は x が実数であることを使い、有理数の補集合に当たる数の種類を考える。',
+        }],
+      },
+      { type: 'blank', blankId: 'p3-result' },
+    ],
+    blanks: [
+      {
+        id: 'rule',
+        prompt: '条件 p の否定が表すのは',
+        choices: [
+          choice('all-not-p', 'p が成り立たないすべての場合である。', true),
+          choice('opposite-looking', '見た目が反対の式を1つ書けばよい。'),
+          choice('some-not-p', 'p が成り立たない例を1つだけ挙げればよい。'),
+        ],
+        skillTag: 'condition-reading',
+        knowledgeTags: ['negation', 'complement'],
+        explanation: '条件の否定は、元の条件が成り立たない場合をすべて表す条件です。',
+      },
+      {
+        id: 'p1-result',
+        prompt: 'x>-5 の否定は',
+        choices: [
+          choice('le-minus-five', 'x≤-5', true),
+          choice('lt-minus-five', 'x<-5'),
+          choice('ge-minus-five', 'x≥-5'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['negation', 'inequality', 'complement'],
+        explanation: 'x=-5 は x>-5 を満たさないため、境界を含めて x≤-5 が否定です。',
+      },
+      {
+        id: 'p2-result',
+        prompt: 'x+y≠0 の否定は',
+        choices: [
+          choice('equals-zero', 'x+y=0', true),
+          choice('greater-zero', 'x+y>0'),
+          choice('less-equal-zero', 'x+y≤0'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['negation'],
+        explanation: '「0ではない」が成り立たないのは、ちょうど 0 に等しい場合です。',
+      },
+      {
+        id: 'p3-result',
+        prompt: '実数 x が有理数であることの否定は',
+        choices: [
+          choice('irrational', 'x は無理数である。', true),
+          choice('not-integer', 'x は整数ではない。'),
+          choice('negative', 'x は負の数である。'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['negation', 'rational-number', 'complement'],
+        explanation: '実数は有理数と無理数に分かれるので、有理数でない実数は無理数です。',
+      },
+    ],
+    simulation: [
+      {
+        id: 's1',
+        label: '(1)',
+        prompt: 'x>-5 の否定を選べ。',
+        answerType: 'single-choice',
+        choices: [
+          choice('le-minus-five', 'x≤-5', true),
+          choice('lt-minus-five', 'x<-5'),
+          choice('ge-minus-five', 'x≥-5'),
+        ],
+        score: 2,
+        estimatedSeconds: 25,
+        knowledgeTags: ['negation', 'inequality'],
+        skillTags: ['case-classification'],
+      },
+      {
+        id: 's2',
+        label: '(2)',
+        prompt: 'x+y≠0 の否定を選べ。',
+        answerType: 'single-choice',
+        choices: [
+          choice('equals-zero', 'x+y=0', true),
+          choice('greater-zero', 'x+y>0'),
+          choice('less-equal-zero', 'x+y≤0'),
+        ],
+        score: 2,
+        estimatedSeconds: 25,
+        knowledgeTags: ['negation'],
+        skillTags: ['case-classification'],
+      },
+      {
+        id: 's3',
+        label: '(3)',
+        prompt: '実数 x が有理数であることの否定を選べ。',
+        answerType: 'single-choice',
+        choices: [
+          choice('irrational', 'x は無理数である。', true),
+          choice('not-integer', 'x は整数ではない。'),
+          choice('negative', 'x は負の数である。'),
+        ],
+        score: 2,
+        estimatedSeconds: 25,
+        knowledgeTags: ['negation', 'rational-number'],
+        skillTags: ['conclusion'],
+      },
+    ],
+    fullExplanation: '条件の否定は、元の条件が成り立たないすべての場合を表す。不等号では境界を落とさないこと、≠ の否定は = であること、実数全体では有理数の補集合が無理数であることを確認する。',
+  },
 
 ]

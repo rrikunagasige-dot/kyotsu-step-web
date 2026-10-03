@@ -11,13 +11,13 @@ describe('math practice 87-120 staged integration', () => {
     expect(mathPractice87To120Catalog).toHaveLength(34)
     expect(mathPractice87To120Catalog[0]?.problemNo).toBe(87)
     expect(mathPractice87To120Catalog.at(-1)?.problemNo).toBe(120)
-    expect(mathPracticePilotCatalog.map((entry) => entry.problemNo)).toEqual([87,88,89,90,91,92,93,94,95,96,97,98,99,100])
+    expect(mathPracticePilotCatalog.map((entry) => entry.problemNo)).toEqual([87,88,89,90,91,92,93,94,95,96,97,98,99,100,101])
   })
 
   it('publishes the reviewed set batch plus proposition pilots in source order', () => {
     expect(mathPracticePilotSource.map((question) => question.problemNo)).toEqual([87, 94, 97])
     expect(mathPracticePilotQuestions.map((question) => question.questionId)).toEqual(
-      Array.from({ length: 14 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
+      Array.from({ length: 15 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
     )
   })
 
@@ -37,6 +37,7 @@ describe('math practice 87-120 staged integration', () => {
       '98｜命題と真偽',
       '99｜含意の真偽',
       '100｜反例',
+      '101｜条件の否定',
     ])
   })
 
@@ -92,6 +93,23 @@ describe('math practice 87-120 staged integration', () => {
       .toBe('minus-two')
     expect(question?.blanks.find((blank) => blank.id === 'p3-counterexample')?.choices.find((choice) => choice.correct)?.id)
       .toBe('five')
+  })
+
+  it('authors 101 as one negation rule plus three independent complements', () => {
+    const question = mathPracticePropositionsBatchBSource.find((item) => item.problemNo === 101)
+    expect(question).toBeDefined()
+    expect(question?.blanks.map((blank) => blank.id)).toEqual([
+      'rule',
+      'p1-result',
+      'p2-result',
+      'p3-result',
+    ])
+    expect(question?.blanks.find((blank) => blank.id === 'p1-result')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('le-minus-five')
+    expect(question?.blanks.find((blank) => blank.id === 'p2-result')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('equals-zero')
+    expect(question?.blanks.find((blank) => blank.id === 'p3-result')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('irrational')
   })
 
   it('keeps Japanese and Chinese grading structures aligned', () => {

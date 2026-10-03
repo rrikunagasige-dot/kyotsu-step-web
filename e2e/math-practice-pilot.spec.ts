@@ -38,7 +38,7 @@ test('98 opens the proposition theme directly and separates false propositions f
 
   await expect(page.getByRole('heading', { name: '98｜命題と真偽' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4'])
   await expect(page.getByTestId('math-topic-question-1')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -115,7 +115,7 @@ test('99 judges implication by set inclusion and uses counterexamples only where
 
   await expect(page.getByRole('heading', { name: '99｜含意の真偽' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4'])
   await expect(page.getByTestId('math-topic-question-2')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -191,7 +191,7 @@ test('100 constructs one valid counterexample per false implication without leak
 
   await expect(page.getByRole('heading', { name: '100｜反例' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4'])
   await expect(page.getByTestId('math-topic-question-3')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -240,6 +240,64 @@ test('100 constructs one valid counterexample per false implication without leak
 
   await expect(readingFlow.locator('.katex-display')).toHaveCount(1)
   await expect(readingFlow.locator('.katex-display').locator('.katex-html')).toContainText('51')
+  await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
+
+  const dimensions = await page.evaluate(() => ({
+    viewport: window.innerWidth,
+    page: document.documentElement.scrollWidth,
+  }))
+  expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
+})
+
+test('101 treats negation as the complete complement and keeps each condition independent', async ({ page }) => {
+  await page.getByTestId('math-exercise-basic').click()
+  await page.getByTestId('math-topic-read-propositions').click()
+  await page.getByTestId('math-topic-question-4').click()
+
+  await expect(page.getByRole('heading', { name: '101｜条件の否定' })).toBeVisible()
+  const nav = page.getByTestId('math-topic-question-nav')
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4'])
+  await expect(page.getByTestId('math-topic-question-4')).toHaveAttribute('aria-current', 'page')
+
+  const problem = page.getByTestId('standard-problem')
+  const readingFlow = page.getByTestId('math-practice-reading-flow')
+  const currentTarget = page.getByTestId('math-practice-current-target')
+
+  await expect(problem).toContainText('次の条件の否定')
+  await expect(problem.locator('.katex-display')).toHaveCount(2)
+  await expect(problem.locator('.katex-error')).toHaveCount(0)
+
+  await expect(currentTarget).toContainText('まず確認')
+  await expect(currentTarget).toContainText('条件の否定')
+  await expect(page.getByTestId('blank-math-practice-101-rule')).toContainText('選択')
+  await expect(page.getByTestId('blank-math-practice-101-p1-result')).toHaveCount(0)
+
+  await page.getByTestId('blank-math-practice-101-rule').click()
+  await page.getByTestId('option-math-practice-101-rule-all-not-p').click()
+
+  // (1): strict inequality negation must include the boundary; the final result is not leaked early.
+  await expect(currentTarget).toContainText('今の問い｜(1)')
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('否定の基準')
+  await expect(readingFlow).not.toContainText('x≤-5')
+  await expect(page.getByTestId('blank-math-practice-101-p1-result')).toContainText('選択')
+
+  await page.getByTestId('blank-math-practice-101-p1-result').click()
+  await page.getByTestId('option-math-practice-101-p1-result-le-minus-five').click()
+
+  // (2): the previous inequality stage disappears; ≠ is negated by equality.
+  await expect(currentTarget).toContainText('今の問い｜(2)')
+  await expect(readingFlow).not.toContainText('境界の -5')
+  await expect(page.getByTestId('blank-math-practice-101-p2-result')).toContainText('選択')
+  await page.getByTestId('blank-math-practice-101-p2-result').click()
+  await page.getByTestId('option-math-practice-101-p2-result-equals-zero').click()
+
+  // (3): use the real-number universe, not a weaker property such as “not an integer”.
+  await expect(currentTarget).toContainText('今の問い｜(3)')
+  await expect(readingFlow).not.toContainText('0ではない')
+  await expect(page.getByTestId('blank-math-practice-101-p3-result')).toContainText('選択')
+  await page.getByTestId('blank-math-practice-101-p3-result').click()
+  await page.getByTestId('option-math-practice-101-p3-result-irrational').click()
+
   await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
 
   const dimensions = await page.evaluate(() => ({

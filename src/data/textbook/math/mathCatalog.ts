@@ -4,6 +4,7 @@ export type MathTextbookTopicCatalogEntry = {
   flow: { ja: string; zh: string }
   practiceTopicId: string
   practiceRange: readonly [number, number]
+  practiceQuestionNumbers: readonly number[]
   unitIds: readonly string[]
   learnerHeadings: readonly string[]
 }
@@ -25,6 +26,7 @@ export const mathTextbookTopics: readonly MathTextbookTopicCatalogEntry[] = [
     },
     practiceTopicId: 'organize-sets',
     practiceRange: [87, 97],
+    practiceQuestionNumbers: [87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97],
     unitIds: ['math-sets'],
     learnerHeadings: [
       '集合を表す',
@@ -41,6 +43,7 @@ export const mathTextbookTopics: readonly MathTextbookTopicCatalogEntry[] = [
     },
     practiceTopicId: 'read-propositions',
     practiceRange: [98, 120],
+    practiceQuestionNumbers: [98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 109, 118, 119, 120],
     unitIds: ['math-propositions-reading', 'math-quantifiers-all-exists', 'math-functions-conditions'],
     learnerHeadings: [],
   },
@@ -53,6 +56,7 @@ export const mathTextbookTopics: readonly MathTextbookTopicCatalogEntry[] = [
     },
     practiceTopicId: 'prove-propositions',
     practiceRange: [108, 117],
+    practiceQuestionNumbers: [108, 110, 111, 112, 113, 114, 115, 116, 117],
     unitIds: ['math-propositions-proof'],
     learnerHeadings: [],
   },

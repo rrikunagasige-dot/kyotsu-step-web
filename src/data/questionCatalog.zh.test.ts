@@ -72,6 +72,7 @@ describe('independently authored Chinese question catalog', () => {
       '100｜反例',
       '101｜条件的否定',
       '102｜“且”与“或”',
+      '103｜复合条件的否定',
     ])  })
 
   it('selects the requested language without changing stable question IDs', () => {

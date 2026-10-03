@@ -572,6 +572,53 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
       dependsOn: ['basis'],
     },
   ],
+  'math-practice-103': [
+    {
+      id: 'basis',
+      kicker: { ja: 'まず確認', zh: '先确认' },
+      label: { ja: '複合条件が失敗する意味から否定規則を作る', zh: '从复合条件如何失败来建立否定规则' },
+      blankIds: ['rule'],
+      result: {
+        blankId: 'rule',
+        label: { ja: '複合条件の否定', zh: '复合条件的否定' },
+      },
+    },
+    {
+      id: 's1',
+      kicker: { ja: '今の問い｜(1)', zh: '当前问题｜(1)' },
+      label: { ja: '「かつ」の条件を否定する', zh: '否定“且”条件' },
+      blankIds: ['p1-result'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's2',
+      kicker: { ja: '今の問い｜(2)', zh: '当前问题｜(2)' },
+      label: { ja: '「または」の条件を否定する', zh: '否定“或”条件' },
+      blankIds: ['p2-result'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's3',
+      kicker: { ja: '今の問い｜(3)', zh: '当前问题｜(3)' },
+      label: { ja: '連続不等式を分解して否定する', zh: '拆分连续不等式后再否定' },
+      blankIds: ['p3-result'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's4',
+      kicker: { ja: '今の問い｜(4)', zh: '当前问题｜(4)' },
+      label: { ja: '数の性質を2つとも否定する', zh: '同时否定两个数的性质' },
+      blankIds: ['p4-result'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's5',
+      kicker: { ja: '今の問い｜(5)', zh: '当前问题｜(5)' },
+      label: { ja: '「少なくとも一方」の否定を考える', zh: '否定“至少一个”' },
+      blankIds: ['p5-result'],
+      dependsOn: ['basis'],
+    },
+  ],
 }
 
 function localBlankId(questionId: string, fullBlankId: string) {
@@ -625,5 +672,6 @@ export function mathPracticeUsesSubproblemCompression(questionId: string) {
     'math-practice-100',
     'math-practice-101',
     'math-practice-102',
+    'math-practice-103',
   ].includes(questionId)
 }

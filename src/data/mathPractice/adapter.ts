@@ -2,6 +2,8 @@ import type { ContentBlock, LearningBlank, Question } from '../../domain/questio
 import { validateQuestionCatalog } from '../../domain/questionSchema'
 import { mathPracticePilotSource } from './pilot'
 import { mathPracticePilotSourceZh } from './pilot.zh'
+import { mathPracticeSetsBatchASource } from './setsBatchA'
+import { mathPracticeSetsBatchASourceZh } from './setsBatchA.zh'
 import type {
   MathPracticeSimulationItem,
   MathPracticeSourceBlock,
@@ -221,5 +223,10 @@ function buildMathPracticeQuestions(source: MathPracticeSourceQuestion[], locale
   return validateQuestionCatalog(source.map((question) => createQuestion(question, locale)))
 }
 
-export const mathPracticePilotQuestions = buildMathPracticeQuestions(mathPracticePilotSource, 'ja')
-export const mathPracticePilotQuestionsZh = buildMathPracticeQuestions(mathPracticePilotSourceZh, 'zh')
+const mathPracticePublishedSource = [...mathPracticePilotSource, ...mathPracticeSetsBatchASource]
+  .sort((left, right) => left.problemNo - right.problemNo)
+const mathPracticePublishedSourceZh = [...mathPracticePilotSourceZh, ...mathPracticeSetsBatchASourceZh]
+  .sort((left, right) => left.problemNo - right.problemNo)
+
+export const mathPracticePilotQuestions = buildMathPracticeQuestions(mathPracticePublishedSource, 'ja')
+export const mathPracticePilotQuestionsZh = buildMathPracticeQuestions(mathPracticePublishedSourceZh, 'zh')

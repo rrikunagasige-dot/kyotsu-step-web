@@ -8,6 +8,7 @@
 - status: published
 - source: 深進数学I p.86〜91 相当
 - practice topic: organize-sets
+- practice questions: 87〜97
 - flow:
   1. 集合を表す
   2. 部分集合
@@ -26,6 +27,7 @@
 - status: review
 - source: 深進数学I p.92〜95 相当
 - practice topic: read-propositions
+- practice questions: 98〜107, 109, 118〜120
 - flow:
   1. 具体的な条件 p, q の真偽
   2. p⇒q と集合包含
@@ -69,6 +71,7 @@
 - status: review
 - source: 深進数学I p.96〜98 相当
 - practice topic: prove-propositions
+- practice questions: 108, 110〜117
 - flow:
   1. 同値を具体例で確認
   2. 逆・裏・対偶

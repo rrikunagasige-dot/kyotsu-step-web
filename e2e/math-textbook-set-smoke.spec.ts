@@ -51,6 +51,69 @@ async function completeFirstSetsSlice(page: Page) {
   for (const [itemId, answer] of answers) await answerItem(page, itemId, answer)
 }
 
+
+
+async function completeRelationsAndSubsets(page: Page) {
+  const answers: Array<[string, string]> = [
+    ['set-b01', '3, 5, 7'],
+    ['set-b02', 'AとBの両方に属する要素'],
+    ['set-b03', '1, 2, 3, 5, 7, 9'],
+    ['set-b04', 'ない'],
+    ['set-b05', 'AかBの少なくとも一方に属する要素'],
+    ['set-b06', '2つの円の重なりだけ'],
+    ['set-b07', 'AとBの2つの円全体'],
+    ['set-b08', '3つすべてに属する要素'],
+    ['set-b09', '3つのうち少なくとも1つに属する要素'],
+    ['set-c01', 'すべて入っている'],
+    ['set-c02', '4がAにないので、全部は入っていない'],
+    ['set-c03', '0個'],
+    ['set-c04', '{1}, {2}, {3}'],
+    ['set-c05', '{1,2}, {1,3}, {2,3}'],
+    ['set-c06', 'はい'],
+    ['set-c07', '∅, {1}, {2}, {3}, {1,2}, {1,3}, {2,3}, {1,2,3}'],
+    ['set-c08', '残らない'],
+  ]
+  for (const [itemId, answer] of answers) await answerItem(page, itemId, answer)
+}
+
+async function completeComplements(page: Page) {
+  const answers: Array<[string, string]> = [
+    ['set-d01', '入れない'],
+    ['set-d02', '1, 3, 5, 7, 9, 11'],
+    ['set-d03', '1, 2, 4, 5, 7, 8, 10, 11'],
+    ['set-d04', '両方'],
+    ['set-d05', '2, 4, 8, 10'],
+    ['set-d06', '少なくとも一方'],
+    ['set-d07', '1, 3, 5, 6, 7, 9, 11, 12'],
+    ['set-d08', '全部'],
+    ['set-d09', 'ない'],
+    ['set-d10', 'A'],
+    ['set-d11a', '1つもない'],
+    ['set-d11b', 'Uの全部'],
+  ]
+  for (const [itemId, answer] of answers) await answerItem(page, itemId, answer)
+}
+
+async function completeDeMorgan(page: Page) {
+  const answers: Array<[string, string]> = [
+    ['set-e01', '2つの円の重なり'],
+    ['set-e02', '重なり以外のU全体'],
+    ['set-e03', '\\overline{A}\\cup\\overline{B}'],
+    ['set-e04', '同じ'],
+    ['set-e05', '\\overline{A}\\cup\\overline{B}'],
+    ['set-e06', 'AまたはBに入る2つの円全体'],
+    ['set-e07', '\\overline{A}\\cap\\overline{B}'],
+    ['set-e08', '\\overline{A}\\cap\\overline{B}'],
+    ['set-e09', '入れ替わる'],
+    ['set-e10', 'Ā={1,3,5,7,9,11}, B̄={1,2,4,5,7,8,10,11}'],
+    ['set-e11', '1, 5, 7, 11'],
+    ['set-e12', '1, 5, 7, 11'],
+    ['set-e13', '一致する'],
+    ['set-e14', '両方とも{1,2,3,4,5,7,8,9,10,11}'],
+  ]
+  for (const [itemId, answer] of answers) await answerItem(page, itemId, answer)
+}
+
 test.beforeEach(async ({ page }) => {
   await clearState(page)
 })
@@ -177,4 +240,88 @@ test('union and subset concepts keep the meaning-first progression', async ({ pa
   await answerItem(page, 'set-c02', '4がAにないので、全部は入っていない')
   await expect(page.getByText(/部分集合という/)).toBeVisible()
   await expect(page.getByTestId('textbook-figure-subset-after')).toBeVisible()
+})
+
+
+test('complement terminology appears only after the whole-set scope and outside elements are decided', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/math-sets'))
+  await completeFirstSetsSlice(page)
+  await completeRelationsAndSubsets(page)
+
+  await expect(page.getByRole('heading', { name: '集合の外側まで考える', exact: true })).toBeVisible()
+  await expect(page.getByText(/全体集合といい/)).toHaveCount(0)
+
+  await answerItem(page, 'set-d01', '入れない')
+  await expect(page.getByText(/全体集合といい/)).toBeVisible()
+  await expect(page.getByText(/補集合といい/)).toHaveCount(0)
+
+  await answerItem(page, 'set-d02', '1, 3, 5, 7, 9, 11')
+  await expect(page.getByText(/補集合といい/)).toBeVisible()
+  await expect(page.getByTestId('textbook-figure-complement-after')).toBeVisible()
+})
+
+test('De Morgan law is revealed only after the two regions are compared', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/math-sets'))
+  await completeFirstSetsSlice(page)
+  await completeRelationsAndSubsets(page)
+  await completeComplements(page)
+
+  await expect(page.getByText(/ド・モルガンの法則という/)).toHaveCount(0)
+  await expect(page.getByTestId('textbook-item-set-e01')).toBeVisible()
+
+  await answerItem(page, 'set-e01', '2つの円の重なり')
+  await answerItem(page, 'set-e02', '重なり以外のU全体')
+  await expect(page.getByTestId('textbook-figure-demorgan-intersection-complement')).toBeVisible()
+  await answerItem(page, 'set-e03', '\\overline{A}\\cup\\overline{B}')
+  await answerItem(page, 'set-e04', '同じ')
+  await answerItem(page, 'set-e05', '\\overline{A}\\cup\\overline{B}')
+
+  await expect(page.getByText(/ド・モルガンの法則という/)).toHaveCount(0)
+
+  await answerItem(page, 'set-e06', 'AまたはBに入る2つの円全体')
+  await answerItem(page, 'set-e07', '\\overline{A}\\cap\\overline{B}')
+  await answerItem(page, 'set-e08', '\\overline{A}\\cap\\overline{B}')
+
+  await expect(page.getByText(/ド・モルガンの法則という/)).toBeVisible()
+})
+
+test('real-line endpoint judgments precede complement formulas and the unit can reach completion', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/math-sets'))
+  await completeFirstSetsSlice(page)
+  await completeRelationsAndSubsets(page)
+  await completeComplements(page)
+  await completeDeMorgan(page)
+
+  await expect(page.getByTestId('textbook-item-set-f01')).toBeVisible()
+  await expect(page.getByTestId('textbook-figure-number-line-a')).toHaveCount(0)
+
+  await answerItem(page, 'set-f01', '両方入る')
+  await answerItem(page, 'set-f02', '両方入らない')
+  await expect(page.getByTestId('textbook-figure-number-line-a')).toHaveCount(0)
+
+  await answerItem(page, 'set-f03', '数直線')
+  await expect(page.getByTestId('textbook-figure-number-line-a')).toBeVisible()
+
+  const remaining: Array<[string, string]> = [
+    ['set-f04', '−2と2の間で、両端を含まない'],
+    ['set-f05', '含めない'],
+    ['set-f06', '\\{x\\mid x<-1\\ \\text{または}\\ 5<x\\}'],
+    ['set-f07', '含める'],
+    ['set-f08', '\\{x\\mid x\\le -2\\ \\text{または}\\ 2\\le x\\}'],
+    ['set-f09', '\\{x\\mid x\\le -2\\ \\text{または}\\ 5<x\\}'],
+    ['set-f10', '\\{x\\mid -2<x\\le 5\\}'],
+    ['set-f11', 'A\\cap B=\\{x\\mid -1\\le x<2\\},\\quad \\overline{A\\cap B}=\\{x\\mid x<-1\\ \\text{または}\\ 2\\le x\\}'],
+    ['set-f12', '\\overline{A}\\cup\\overline{B}'],
+    ['set-f13', '一致する'],
+  ]
+  for (const [itemId, answer] of remaining) await answerItem(page, itemId, answer)
+
+  await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
+  await expect(page.locator('.katex-error')).toHaveCount(0)
+
+  const viewport = await page.evaluate(() => ({
+    clientWidth: document.documentElement.clientWidth,
+    scrollWidth: document.documentElement.scrollWidth,
+  }))
+  expect(viewport.scrollWidth).toBeLessThanOrEqual(viewport.clientWidth + 1)
 })

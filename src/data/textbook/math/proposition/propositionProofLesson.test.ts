@@ -5,7 +5,7 @@ describe('math proposition-proof textbook unit', () => {
   it('keeps the proof source scope in review during audit', () => {
     expect(mathPropositionProofUnit.status).toBe('review')
     expect(mathPropositionProofUnit.chapter?.chapterId).toBe('math-ch03-sets-propositions')
-    expect(mathPropositionProofUnit.chapter?.sourcePages).toEqual([96, 97, 98])
+    expect(mathPropositionProofUnit.chapter?.sourcePages).toEqual([94, 95, 96, 97, 98])
   })
 
   it('establishes equivalence before building reverse, inverse, and contrapositive', () => {

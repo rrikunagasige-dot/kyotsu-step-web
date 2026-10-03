@@ -2,14 +2,14 @@ import { describe, expect, it } from 'vitest'
 import { builtInQuestions } from './questions'
 
 describe('built-in content coverage', () => {
-  it('contains the existing catalog plus the reviewed Math 87-97 batch and Math 98-103 proposition pilots', () => {
-    expect(builtInQuestions.filter((question) => question.subject === 'math-1a')).toHaveLength(19)
+  it('contains the existing catalog plus the reviewed Math 87-97 batch and Math 98-104 proposition pilots', () => {
+    expect(builtInQuestions.filter((question) => question.subject === 'math-1a')).toHaveLength(20)
     expect(builtInQuestions.filter((question) => question.subject === 'physics')).toHaveLength(3)
     expect(
       builtInQuestions
         .filter((question) => question.questionId.startsWith('math-practice-'))
         .map((question) => question.questionId),
-    ).toEqual(Array.from({ length: 17 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`))
+    ).toEqual(Array.from({ length: 18 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`))
   })
 
   it('covers common-test narrative, standard practice, images, tables and all three physics flow types', () => {
@@ -17,7 +17,7 @@ describe('built-in content coverage', () => {
     const standardQuestions = builtInQuestions.filter((question) => question.learning.presentation === 'standard')
     expect(commonTestQuestions.length).toBeGreaterThan(0)
     expect(standardQuestions.map((question) => question.questionId)).toEqual(
-      Array.from({ length: 17 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
+      Array.from({ length: 18 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
     )
     expect(builtInQuestions.some((question) => question.assets.length > 0)).toBe(true)
     expect(builtInQuestions.some((question) => question.stem.some((block) => block.type === 'table'))).toBe(true)

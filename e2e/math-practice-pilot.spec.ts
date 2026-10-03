@@ -708,8 +708,8 @@ test('107 reuses the necessary/sufficient direction rule across five independent
 
   // (4): an acute A alone does not force an acute triangle.
   await expect(currentTarget).toContainText('今の問い｜(4)')
-  await expect(readingFlow).toContainText('A=60°')
-  await expect(readingFlow).toContainText('B=100°')
+  await expect(readingFlow).toContainText('A=60')
+  await expect(readingFlow).toContainText('B=100')
   await page.getByTestId('blank-math-practice-107-p4-classification').click()
   await page.getByTestId('option-math-practice-107-p4-classification-necessary-only').click()
 

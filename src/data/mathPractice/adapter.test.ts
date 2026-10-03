@@ -11,13 +11,13 @@ describe('math practice 87-120 staged integration', () => {
     expect(mathPractice87To120Catalog).toHaveLength(34)
     expect(mathPractice87To120Catalog[0]?.problemNo).toBe(87)
     expect(mathPractice87To120Catalog.at(-1)?.problemNo).toBe(120)
-    expect(mathPracticePilotCatalog.map((entry) => entry.problemNo)).toEqual([87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103])
+    expect(mathPracticePilotCatalog.map((entry) => entry.problemNo)).toEqual([87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104])
   })
 
   it('publishes the reviewed set batch plus proposition pilots in source order', () => {
     expect(mathPracticePilotSource.map((question) => question.problemNo)).toEqual([87, 94, 97])
     expect(mathPracticePilotQuestions.map((question) => question.questionId)).toEqual(
-      Array.from({ length: 17 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
+      Array.from({ length: 18 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
     )
   })
 
@@ -40,6 +40,7 @@ describe('math practice 87-120 staged integration', () => {
       '101｜条件の否定',
       '102｜「かつ」と「または」',
       '103｜複合条件の否定',
+      '104｜必要条件・十分条件',
     ])
   })
 
@@ -149,6 +150,32 @@ describe('math practice 87-120 staged integration', () => {
       .toBe('correct')
     expect(question?.blanks.find((blank) => blank.id === 'p5-result')?.choices.find((choice) => choice.correct)?.id)
       .toBe('both-rational')
+  })
+
+  it('authors 104 as one direction rule plus six independent necessary/sufficient classifications', () => {
+    const question = mathPracticePropositionsBatchBSource.find((item) => item.problemNo === 104)
+    expect(question).toBeDefined()
+    expect(question?.blanks.map((blank) => blank.id)).toEqual([
+      'rule',
+      'p1-classification',
+      'p2-classification',
+      'p3-classification',
+      'p4-classification',
+      'p5-classification',
+      'p6-classification',
+    ])
+    expect(question?.blanks.find((blank) => blank.id === 'p1-classification')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('sufficient-only')
+    expect(question?.blanks.find((blank) => blank.id === 'p2-classification')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('necessary-only')
+    expect(question?.blanks.find((blank) => blank.id === 'p3-classification')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('neither')
+    expect(question?.blanks.find((blank) => blank.id === 'p4-classification')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('iff')
+    expect(question?.blanks.find((blank) => blank.id === 'p5-classification')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('iff')
+    expect(question?.blanks.find((blank) => blank.id === 'p6-classification')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('necessary-only')
   })
 
   it('keeps Japanese and Chinese grading structures aligned', () => {

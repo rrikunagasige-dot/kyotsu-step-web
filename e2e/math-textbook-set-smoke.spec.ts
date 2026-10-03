@@ -182,6 +182,34 @@ test('proposition-reading counterexample is decided before the counterexample co
   await expect(page.getByTestId('textbook-figure-implication-counterexample')).toBeVisible()
 })
 
+
+test('quantifier review unit derives the negation of all from a concrete counterexample', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/math-quantifiers-all-exists'))
+
+  await expect(page.getByRole('heading', { name: '「すべて」と「ある」', exact: true })).toBeVisible()
+  await expect(page.getByTestId('textbook-item-quant-a01')).toBeVisible()
+  await expect(page.getByText(/「すべてのxに対してpである」を否定すると/)).toHaveCount(0)
+
+  await answerItem(page, 'quant-a01', '1つ')
+  await answerItem(page, 'quant-a02', '2')
+
+  await expect(page.getByText(/「すべてのxに対してpである」を否定すると/)).toBeVisible()
+  await expect(page.getByTestId('textbook-item-quant-a03')).toBeVisible()
+})
+
+test('quantifier review unit derives the negation of exists only after an existence witness', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/math-quantifiers-all-exists'))
+
+  await answerItem(page, 'quant-a01', '1つ')
+  await answerItem(page, 'quant-a02', '2')
+  await answerItem(page, 'quant-a03', 'ある素数は奇数ではない')
+  await answerItem(page, 'quant-b01', '条件を満たす例を1つ')
+
+  await expect(page.getByText(/「あるxに対してpである」を否定すると/)).toHaveCount(0)
+  await answerItem(page, 'quant-b02', 'a=2, b=3')
+  await expect(page.getByText(/「あるxに対してpである」を否定すると/)).toBeVisible()
+})
+
 test('math set lesson boots directly on the shared textbook reader', async ({ page }) => {
   const pageErrors: string[] = []
   page.on('pageerror', (error) => pageErrors.push(error.stack ?? error.message))

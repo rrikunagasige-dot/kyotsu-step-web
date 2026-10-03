@@ -56,6 +56,28 @@ describe('TextbookUnitSchema 1.1', () => {
     expect(TextbookUnitSchema.parse(baseUnit).schemaVersion).toBe('1.1')
   })
 
+
+  it('accepts a math textbook unit with a non-physics unit code', () => {
+    const mathUnit = {
+      ...baseUnit,
+      unitId: 'math-sets-test',
+      subject: 'math-1a' as const,
+      chapter: {
+        chapterId: 'math-ch03-sets-propositions',
+        chapterNumber: '3',
+        chapterTitle: '集合と命題',
+        unitCode: '3SET',
+        orderInChapter: 1,
+        sourcePages: [86, 87],
+      },
+      title: '集合',
+    }
+
+    const parsed = TextbookUnitSchema.parse(mathUnit)
+    expect(parsed.subject).toBe('math-1a')
+    expect(parsed.chapter?.unitCode).toBe('3SET')
+  })
+
   it('allows an item to be referenced only from a figure overlay', () => {
     const unit = structuredClone(baseUnit)
     unit.sections[0].readingFlow = [

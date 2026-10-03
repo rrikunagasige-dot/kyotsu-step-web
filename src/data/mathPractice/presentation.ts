@@ -619,6 +619,60 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
       dependsOn: ['basis'],
     },
   ],
+  'math-practice-104': [
+    {
+      id: 'basis',
+      kicker: { ja: 'まず確認', zh: '先确认' },
+      label: { ja: '必要条件・十分条件を含意の向きへ直す', zh: '把必要条件与充分条件对应到蕴含方向' },
+      blankIds: ['rule'],
+      result: {
+        blankId: 'rule',
+        label: { ja: '双方向判定表', zh: '双向判断表' },
+      },
+    },
+    {
+      id: 's1',
+      kicker: { ja: '今の問い｜(1)', zh: '当前问题｜(1)' },
+      label: { ja: '代入と方程式の全解で2方向を判定する', zh: '用代入和方程全部解判断两个方向' },
+      blankIds: ['p1-classification'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's2',
+      kicker: { ja: '今の問い｜(2)', zh: '当前问题｜(2)' },
+      label: { ja: '逆向きの真と正向きの反例を分ける', zh: '区分反向成立与正向反例' },
+      blankIds: ['p2-classification'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's3',
+      kicker: { ja: '今の問い｜(3)', zh: '当前问题｜(3)' },
+      label: { ja: '両方向に反例があるかを確認する', zh: '检查两个方向是否都有反例' },
+      blankIds: ['p3-classification'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's4',
+      kicker: { ja: '今の問い｜(4)', zh: '当前问题｜(4)' },
+      label: { ja: '互いに導ける条件かを確認する', zh: '检查两个条件能否互相推出' },
+      blankIds: ['p4-classification'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's5',
+      kicker: { ja: '今の問い｜(5)', zh: '当前问题｜(5)' },
+      label: { ja: '連立条件を逆向きに解いて確かめる', zh: '反向解联立条件进行确认' },
+      blankIds: ['p5-classification'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's6',
+      kicker: { ja: '今の問い｜(6)', zh: '当前问题｜(6)' },
+      label: { ja: '図形の包含関係から2方向を判定する', zh: '由图形包含关系判断两个方向' },
+      blankIds: ['p6-classification'],
+      dependsOn: ['basis'],
+    },
+  ],
 }
 
 function localBlankId(questionId: string, fullBlankId: string) {
@@ -673,5 +727,6 @@ export function mathPracticeUsesSubproblemCompression(questionId: string) {
     'math-practice-101',
     'math-practice-102',
     'math-practice-103',
+    'math-practice-104',
   ].includes(questionId)
 }

@@ -190,6 +190,38 @@ describe('math practice current-target presentation', () => {
     expect(mathPracticeUsesSubproblemCompression('math-practice-119')).toBe(true)
   })
 
+  it('models 120 as two independent verbal problems with local formula and domain chains', () => {
+    expect(mathPracticeTargetsForQuestion('math-practice-120').map((target) => target.id)).toEqual([
+      'p1-formula',
+      'p1-model',
+      'p1-domain-meaning',
+      'p1-domain',
+      'p2-distance-rule',
+      'p2-traveled',
+      'p2-model',
+      'p2-start',
+      'p2-end',
+      'p2-domain',
+    ])
+
+    expect(mathPracticeDependencyTargets('math-practice-120', 'p1-model').map((target) => target.id))
+      .toEqual(['p1-formula'])
+    expect(mathPracticeDependencyTargets('math-practice-120', 'p1-domain-meaning')).toEqual([])
+    expect(mathPracticeDependencyTargets('math-practice-120', 'p1-domain').map((target) => target.id))
+      .toEqual(['p1-domain-meaning'])
+
+    expect(mathPracticeDependencyTargets('math-practice-120', 'p2-traveled').map((target) => target.id))
+      .toEqual(['p2-distance-rule'])
+    expect(mathPracticeDependencyTargets('math-practice-120', 'p2-model').map((target) => target.id))
+      .toEqual(['p2-traveled'])
+    expect(mathPracticeDependencyTargets('math-practice-120', 'p2-start')).toEqual([])
+    expect(mathPracticeDependencyTargets('math-practice-120', 'p2-end')).toEqual([])
+    expect(mathPracticeDependencyTargets('math-practice-120', 'p2-domain').map((target) => target.id))
+      .toEqual(['p2-start', 'p2-end'])
+
+    expect(mathPracticeUsesSubproblemCompression('math-practice-120')).toBe(true)
+  })
+
   it('enables subproblem compression for the full reviewed set batch 87-97', () => {
     for (let problemNo = 87; problemNo <= 97; problemNo += 1) {
       expect(mathPracticeUsesSubproblemCompression(`math-practice-${String(problemNo).padStart(3, '0')}`)).toBe(true)

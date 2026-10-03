@@ -451,3 +451,332 @@ Next:
 - audit 110–120
 - do not repair QAF-001–004 yet
 - append all remaining findings first
+
+
+---
+
+## Audit block C — 110–120
+
+### Scope
+
+Problems:
+110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120
+
+Reviewed:
+- proof/function content-design authority
+- Japanese source
+- Chinese source / grading structure
+- current-stage dependency graph
+- cross-problem theorem dependency 116→117
+- browser learner-flow regressions
+- mathematical recomputation of authored correct choices
+- current-target heading leakage
+
+### Mathematical recomputation
+
+No authored correct-answer error was found in this pass.
+
+Checked explicitly:
+- 110: original / converse / contrapositive / inverse truth values
+- 111: four contrapositive proofs
+- 112: rationalization and contradiction through √3
+- 113: rational square-root contradiction
+- 114: residues mod 5 and mod 3
+- 115: `r²=5-2√6`, hence `√6=(5-r²)/2`
+- 116: `q≠0 ⇒ X=-p/q∈Q` contradiction, then `q=0 ⇒ p=0`
+- 117:
+  - (1) `(p+q-1)√2-(p+2)=0` → `p=-2,q=3`
+  - (2) `(2p+q)√2+(2p-2)=0` → `p=1,q=-2`
+- 118: uniqueness criterion for functionhood, including ± square-root ambiguity
+- 119:
+  - `f(a+1)=3a+1`
+  - `g(-a)=2a²+3a+1`
+  - `g(a-1)=2a²-7a+6`
+- 120:
+  - (1) `y=3x, x>0`
+  - (2) `y=15-3x, 0≤x≤5`
+
+---
+
+## QAF-007 — HIGH — current-target headings leak answers
+
+The final QA plan explicitly includes current-target labels in the answer-leakage audit.
+
+A target heading may state the goal or operation, but it must not display the answer that the learner is about to select.
+
+Confirmed examples:
+
+### 106 — s2
+
+Current target:
+- `奇数を2の倍数の補集合として表す`
+
+Current blank:
+- asks how the odd natural numbers are represented using P,Q
+- correct answer: `P̄`
+
+Because P is already defined as the multiples of 2, the heading states the exact set operation before the learner resolves the thinking node.
+
+### 108 — conclude
+
+Current target:
+- `2方向を合わせて同値を結論する`
+
+Current blank:
+- asks what follows after both directions have been proved
+- correct answer: p and q are equivalent
+
+The target label contains the conclusion itself.
+
+### 111 — p4-form
+
+Current target:
+- `奇数を2k+1の形に直す`
+
+Current blank:
+- asks how to write odd n using an integer k
+- correct answer: `n=2k+1`
+
+The target label displays the exact representation being tested.
+
+### 113 — assumption
+
+Current target:
+- `√xが有理数だと反対仮定する`
+
+Current blank:
+- asks for the contradiction assumption
+- correct answer: assume `√x` is rational and write `√x=r`
+
+The key answer is visible before selection.
+
+### 116 — assumption
+
+Current target:
+- `q≠0と反対仮定する`
+
+Current blank:
+- asks for the opposite assumption used to prove `q=0)
+- correct answer: `q≠0`
+
+This is a direct literal answer leak.
+
+### 118 — basis
+
+Current target:
+- `関数かどうかは「yがただ1つ決まるか」で判定する`
+
+Current blank:
+- asks for the function criterion
+- correct answer: for each allowed x, y is uniquely determined
+
+The heading gives the criterion before the learner constructs it.
+
+Repair principle:
+- rename target labels to describe the **task** without giving its resolved content
+- examples:
+  - 111 p4-form → `奇数を整数 k を使って表す`
+  - 113 assumption → `背理法の反対仮定を置く`
+  - 116 assumption → `q=0 を示すための反対仮定を置く`
+  - 118 basis → `関数の判定基準を確認する`
+- do not weaken or remove the actual thinking blank
+- add regression assertions that the target heading does not contain the current answer
+
+---
+
+## QAF-008 — REVIEW — strongly suggestive target labels
+
+These labels do not literally print the full answer, but may over-scaffold it:
+
+- 110 p2-converse: `多項式が0でない条件からx≠2を確かめる`
+- 112 p2-assumption: `有理化後の値を有理数rとおく`
+- 114 p1-squares / p2-products: heading already says the residue list has no 0
+- 115 assumption: `有理数だと反対仮定する`
+- 119 basis: `すべてのxを同じ入力で置き換える`
+- 120 model-stage labels describe the exact operation to perform
+
+These may be legitimate scaffolding because the learner still has a nontrivial transformation to execute.
+
+Status:
+REVIEW ONLY.
+Do not rewrite them mechanically; verify in learner-flow QA after the confirmed leaks are fixed.
+
+---
+
+## First-pass PASS / no additional structural defect found in block C
+
+### 110
+- original / converse / contrapositive / inverse are separate targets
+- each relation uses only the common form basis
+- summary imports exactly the four local results
+- prior subproblem derivation disappears
+
+### 111
+- each proof is internally linear
+- proof stage imports its own contrapositive/negation result
+- no unrelated previous subproblem result
+- strategy is source-given; the app does not add a fake strategy-choice hole
+
+### 112
+- the two irrationality proofs are independent
+- rationalization is one meaningful step rather than several arithmetic-token holes
+- only immediately required results are imported
+
+### 113
+- assumption → operation → squared result → contradiction is linear
+- no future formula is exposed by dependency metadata
+
+### 114
+- two divisibility proofs are independent
+- residue classes are grouped rather than exploded into arithmetic-only holes
+- proof closes through exhaustive residues
+
+### 115
+- contradiction chain is linear
+- `√6` is created, expanded, isolated, then contradicted
+- future expressions are not imported early
+
+### 116
+- target → q≠0 assumption → isolate X → q=0 → p=0
+- theorem result R116 is explicitly preserved for 117
+- dependency graph is linear and minimal
+- separate heading-leak issue recorded as QAF-007
+
+### 117
+- 116 theorem appears only on the coefficient-separation application stages
+- external result is compact and expandable
+- 116 full proof is not forced into the default view
+- (1),(2) remain independent
+- local derivation is linear inside each subproblem
+- authored coefficient equations and final p,q values recompute correctly
+
+### 118
+- three cases share only the unique-output criterion
+- previous case results do not carry over
+- ± square-root ambiguity is mathematically correct
+- separate heading-leak issue recorded as QAF-007
+
+### 119
+- ten requested function values are presented current-item-only
+- simple substitutions stay one stage
+- composite symbolic inputs split substitution / expansion / simplification only where meaningful
+- no prior item result dependencies
+- formulas recompute correctly
+
+### 120
+- formula branch and domain branch are intentionally separate
+- p1 domain depends on variable meaning, not on the function formula merely for convenience
+- p2 model uses distance traveled
+- p2 domain imports only start and end time
+- wrong answer is tested not to advance progress
+- formulas and domains recompute correctly
+
+---
+
+## Chinese parity — block C
+
+110–120 Chinese sources are explicitly authored.
+
+First-pass checks:
+- JA/ZH ID structure matches
+- no Japanese kana in Chinese source
+- grading parity is covered by the shared adapter parity test
+- no 88–96-style generic fallback translation mechanism
+
+Status:
+PASS for structural/grading parity.
+
+---
+
+## Browser coverage — block C
+
+Dedicated E2E learner-flow tests exist for every problem 110–120.
+
+They cover, depending on the problem:
+- current target
+- hidden future blanks
+- current-stage compression
+- local dependency links
+- external theorem link for 117
+- KaTeX error absence
+- answer-leak guards in solution content
+- wrong-answer retry behavior in 120
+- page-level horizontal overflow
+
+Playwright runs the same suite in mobile and desktop projects.
+
+Important:
+Existing E2E does **not** sufficiently catch the QAF-007 target-heading leaks. Add focused assertions after repairing those labels.
+
+---
+
+# Global source-fidelity gate — OPEN
+
+The app structure authority states that 87–120 follows the 4STEP original wording / subproblem order.
+
+A derived Library Word document was found during audit, but its displayed numbering does not align directly with the current app numbering for this range.
+
+Therefore:
+- do not use that derived document alone as proof of raw-source fidelity
+- do not mark the source-fidelity gate PASS yet
+- final acceptance still requires re-check against the actual original source / authoritative scans for:
+  - numbers
+  - signs
+  - inequalities
+  - radicals
+  - subproblem order
+  - domain conditions
+  - wording that changes mathematical meaning
+
+---
+
+# Discovery-pass summary
+
+Confirmed / strong findings:
+
+1. **QAF-001 CRITICAL**
+   - 88–96 Chinese generic fallback destroys learner-facing mathematical meaning.
+
+2. **QAF-002 HIGH**
+   - 89 common prerequisite is not represented as the required reusable dependency.
+
+3. **QAF-003 HIGH**
+   - 96-(4) jumps from candidate set B directly to final {5}, skipping two meaningful filters.
+
+4. **QAF-004 MEDIUM**
+   - 92-(2) never explicitly completes `A∩B=∅` in the guided flow.
+
+5. **QAF-007 HIGH**
+   - current-target headings leak current answers in multiple problems.
+
+Review-only:
+- QAF-005: 88 pattern/step hole strength
+- QAF-006: 104/107 interaction density
+- QAF-008: strongly suggestive but not literal target labels
+
+Open final gate:
+- raw original source fidelity
+
+No repair has been applied yet.
+
+---
+
+# Next execution order
+
+Now that 87–120 discovery is complete:
+
+1. re-check QAF-001–004 and QAF-007 once against the authority docs
+2. freeze the issue list
+3. repair in small independent commits, highest severity first:
+   - Chinese semantic parity 88–96
+   - current-target answer leakage
+   - 89 dependency
+   - 96-(4) missing reasoning stages
+   - 92-(2) explicit intersection conclusion
+4. run focused source / parity / presentation tests
+5. run build
+6. run mobile + desktop E2E
+7. deploy
+8. final learner-flow QA
+9. raw-source fidelity re-check
+10. update authority/worklog and mark 87–120 complete only after every gate passes

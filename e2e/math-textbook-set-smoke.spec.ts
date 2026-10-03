@@ -215,17 +215,18 @@ test('quantifier review unit derives the negation of all only after the source c
 })
 
 
-test('function-conditions review unit forms the function concept before revealing later model work', async ({ page }) => {
+test('function-conditions review unit builds the criterion before the practice-118 examples', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-functions-conditions'))
 
   await expect(page.getByRole('heading', { name: '関数の条件を読む', exact: true })).toBeVisible()
   await expect(page.getByTestId('textbook-item-func-a01')).toBeVisible()
-  await expect(page.getByTestId('textbook-item-func-a02')).toHaveCount(0)
-  await expect(page.getByTestId('textbook-figure-rectangle-perimeter-40')).toHaveCount(0)
+  await expect(page.getByTestId('textbook-item-func-b01')).toHaveCount(0)
 
   await answerItem(page, 'func-a01', 'ただ1つに決まる')
 
-  await expect(page.getByTestId('textbook-item-func-a02')).toBeVisible()
+  await expect(page.getByText(/yはxの関数であるという/)).toBeVisible()
+  await expect(page.getByTestId('textbook-item-func-b01')).toBeVisible()
+  await expect(page.getByTestId('textbook-item-func-c01')).toHaveCount(0)
 })
 
 test('proposition-proof review unit establishes equivalence before reverse and contrapositive work', async ({ page }) => {

@@ -63,4 +63,27 @@ describe('textbook math normalization', () => {
     expect(parts.some((part) => part.type === 'math' && part.latex === '\\theta =45^{\\circ}')).toBe(true)
     expect(parts.some((part) => part.type === 'text' && (part.text.includes('θ=') || part.text.includes('90°')))).toBe(false)
   })
+
+  it('normalizes set complement, intersection, union, and membership notation', () => {
+    expect(normalizeTextbookMath('overline(A) ∩ B')).toBe('\\overline{A} \\cap B')
+    expect(normalizeTextbookMath('A ∪ overline(B)')).toBe('A \\cup \\overline{B}')
+    expect(normalizeTextbookMath('2 ∈ A')).toBe('2 \\in A')
+    expect(normalizeTextbookMath('21 ∉ A')).toBe('21 \\notin A')
+    expect(normalizeTextbookMath('{1,4}')).toBe('\\{1,4\\}')
+  })
+
+  it('keeps prose-level set expressions together as inline math', () => {
+    const parts = splitTextbookInlineMath('overline(A) ∩ B に入る要素の条件はどれか。')
+    expect(parts.some((part) =>
+      part.type === 'math' && part.latex === '\\overline{A} \\cap B',
+    )).toBe(true)
+    expect(parts.some((part) => part.type === 'text' && part.text.includes('overline'))).toBe(false)
+  })
+
+  it('renders equations with finite-set literals as one math token', () => {
+    const parts = splitTextbookInlineMath('共通部分 A∩B={1,4} を確認する。')
+    expect(parts.some((part) =>
+      part.type === 'math' && part.latex === 'A\\cap B=\\{1,4\\}',
+    )).toBe(true)
+  })
 })

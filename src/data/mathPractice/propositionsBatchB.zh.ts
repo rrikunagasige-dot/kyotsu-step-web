@@ -403,4 +403,159 @@ export const mathPracticePropositionsBatchBSourceZh: MathPracticeSourceQuestion[
     fullExplanation: '判断 p⇒q 的真假，可以比较前件条件集合 P 和后件条件集合 Q。若 P⊆Q，则命题为真；若不包含，只要找出一个属于 P 但不属于 Q 的值即可作为反例。含绝对值的条件先改写成区间后，更容易比较包含关系。',
   },
 
+  {
+    problemNo: 100,
+    section: 'propositions',
+    sectionTitle: '命题与条件',
+    title: '反例',
+    estimatedSeconds: 360,
+    knowledgeTags: ['counterexample', 'implication', 'absolute-value', 'prime-number'],
+    skillTags: ['condition-reading', 'case-classification', 'conclusion'],
+    problem: [
+      { type: 'text', text: '设 x、y 为实数，n 为自然数。用反例说明下列命题为假。' },
+      { type: 'latex', latex: '(1)\\;x^2=3\\Rightarrow x=\\sqrt{3}' },
+      { type: 'latex', latex: '(2)\\;|x|>|y|\\Rightarrow x>y' },
+      { type: 'latex', latex: '(3)\\;n\\text{ 为奇数}\\Rightarrow 10n+1\\text{ 为素数}' },
+    ],
+    guide: [
+      {
+        type: 'content',
+        blocks: [{
+          type: 'text',
+          text: '先确认：要用一个具体例子说明蕴含命题为假，这个例子必须满足什么条件。',
+        }],
+      },
+      { type: 'blank', blankId: 'rule' },
+
+      {
+        type: 'content',
+        blocks: [{
+          type: 'text',
+          text: '(1) 注意平方会消去正负号。选择一个满足前件、但与后件给出的值不同的解。',
+        }],
+      },
+      { type: 'blank', blankId: 'p1-counterexample' },
+
+      {
+        type: 'content',
+        blocks: [{
+          type: 'text',
+          text: '(2) 构造一个“绝对值较大，但原数反而较小”的例子。固定 y=1 来思考。',
+        }],
+      },
+      { type: 'blank', blankId: 'p2-counterexample' },
+
+      {
+        type: 'content',
+        blocks: [{
+          type: 'text',
+          text: '(3) 在奇数 n 中寻找一个使 10n+1 成为合数的值。',
+        }],
+      },
+      { type: 'blank', blankId: 'p3-counterexample' },
+      {
+        type: 'content',
+        blocks: [{ type: 'latex', latex: '10\\cdot5+1=51=3\\times17' }],
+      },
+    ],
+    blanks: [
+      {
+        id: 'rule',
+        prompt: '能够说明蕴含命题为假的反例必须',
+        choices: [
+          choice('antecedent-true-consequent-false', '满足前件，但不满足后件。', true),
+          choice('both-true', '同时满足前件和后件。'),
+          choice('antecedent-false', '只要不满足前件即可。'),
+        ],
+        skillTag: 'condition-reading',
+        knowledgeTags: ['counterexample', 'implication'],
+        explanation: '要使 p⇒q 为假，只需要一个 p 为真而 q 为假的具体例子。',
+      },
+      {
+        id: 'p1-counterexample',
+        prompt: '可以作为 (1) 的反例的是',
+        choices: [
+          choice('negative-root', 'x=-√3', true),
+          choice('positive-root', 'x=√3'),
+          choice('zero', 'x=0'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['counterexample', 'implication'],
+        explanation: 'x=-√3 满足 x²=3，但不满足 x=√3，因此是反例。',
+      },
+      {
+        id: 'p2-counterexample',
+        prompt: '令 y=1 时，能够作为 (2) 反例的 x 是',
+        choices: [
+          choice('minus-two', 'x=-2', true),
+          choice('two', 'x=2'),
+          choice('half', 'x=1/2'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['counterexample', 'absolute-value'],
+        explanation: 'x=-2,y=1 时 |x|=2>|y|=1，但 -2>1 不成立。',
+      },
+      {
+        id: 'p3-counterexample',
+        prompt: '在奇数 n 中，能够作为 (3) 反例的是',
+        choices: [
+          choice('five', 'n=5', true),
+          choice('one', 'n=1'),
+          choice('three', 'n=3'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['counterexample', 'prime-number'],
+        explanation: 'n=5 是奇数，但 10n+1=51=3×17 是合数，因此是反例。',
+      },
+    ],
+    simulation: [
+      {
+        id: 's1',
+        label: '(1)',
+        prompt: '选择一个能说明 x²=3 ⇒ x=√3 为假的反例。',
+        answerType: 'single-choice',
+        choices: [
+          choice('negative-root', 'x=-√3', true),
+          choice('positive-root', 'x=√3'),
+          choice('zero', 'x=0'),
+        ],
+        score: 2,
+        estimatedSeconds: 30,
+        knowledgeTags: ['counterexample', 'implication'],
+        skillTags: ['case-classification'],
+      },
+      {
+        id: 's2',
+        label: '(2)',
+        prompt: '选择一个能说明 |x|>|y| ⇒ x>y 为假的反例。',
+        answerType: 'single-choice',
+        choices: [
+          choice('minus-two-one', 'x=-2, y=1', true),
+          choice('two-one', 'x=2, y=1'),
+          choice('half-one', 'x=1/2, y=1'),
+        ],
+        score: 2,
+        estimatedSeconds: 30,
+        knowledgeTags: ['counterexample', 'absolute-value'],
+        skillTags: ['case-classification'],
+      },
+      {
+        id: 's3',
+        label: '(3)',
+        prompt: '选择一个能说明“n 为奇数 ⇒ 10n+1 为素数”为假的反例。',
+        answerType: 'single-choice',
+        choices: [
+          choice('five', 'n=5', true),
+          choice('one', 'n=1'),
+          choice('three', 'n=3'),
+        ],
+        score: 2,
+        estimatedSeconds: 30,
+        knowledgeTags: ['counterexample', 'prime-number'],
+        skillTags: ['case-classification'],
+      },
+    ],
+    fullExplanation: '要说明蕴含命题 p⇒q 为假，只需给出一个满足前件 p 但不满足后件 q 的反例。平方问题注意正负号，绝对值问题注意绝对值大小与原数大小可能不同，素数问题则可寻找使表达式成为合数的具体奇数。',
+  },
+
 ]

@@ -27,7 +27,7 @@ export function LearningFlowRenderer({ question, session, onActivate, onExplain,
   let blankNumber = 0
 
   return (
-    <div className="learning-flow" aria-label={text('連続解答', '连续解答')}>
+    <div className="learning-flow" aria-label={text('考えながら解く', '边思考边解答')}>
       {question.learning.solutionFlow.map((block) => {
         if (block.type === 'content') return <ContentRenderer key={block.id} blocks={block.content} assets={question.assets} />
 

@@ -12,6 +12,9 @@ on:
       - 'src/data/questionCatalog.test.ts'
       - 'src/data/questionCatalog.zh.test.ts'
       - 'src/domain/questionSchema.ts'
+      - 'src/pages/LearningSessionPage.tsx'
+      - 'src/components/learning/LearningFlowRenderer.tsx'
+      - 'e2e/math-practice-pilot.spec.ts'
       - '.github/workflows/math-practice-pilot-ci.yml'
   workflow_dispatch:
 
@@ -40,6 +43,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Install Playwright Chromium
+        run: pnpm exec playwright install --with-deps chromium
+
       - name: Typecheck
         run: pnpm run typecheck
 
@@ -48,3 +54,6 @@ jobs:
 
       - name: Build
         run: pnpm run build
+
+      - name: Mobile pilot smoke
+        run: pnpm exec playwright test e2e/math-practice-pilot.spec.ts --project=mobile-chromium

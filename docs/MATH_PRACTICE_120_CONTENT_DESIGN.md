@@ -292,3 +292,60 @@ Leakage checks:
 - do not expose \(x>0\) before the learner interprets height and zero
 - do not expose finish time 5 before the learner forms the speed-time relation
 - do not show final combined answer \(y=15-3x,\ 0\le x\le5\) while the domain stage is unresolved
+
+
+---
+
+# Pre-implementation dependency / leakage audit
+
+Canonical stage graph:
+
+\[
+\text{p1-formula}\rightarrow\text{p1-model}
+\]
+
+\[
+\text{p1-domain-meaning}\rightarrow\text{p1-domain}
+\]
+
+The formula branch and domain branch both read the source, but neither should expose the other's answer early. At the final domain stage, showing \(y=3x\) is optional rather than logically required, so do not create a convenience dependency solely to keep old work visible.
+
+For (2):
+
+\[
+\text{p2-distance-rule}\rightarrow\text{p2-traveled}\rightarrow\text{p2-model}
+\]
+
+and independently,
+
+\[
+\text{p2-start},\text{p2-end}\rightarrow\text{p2-domain}.
+\]
+
+Important implementation choice:
+- p2-end may use the source numbers 15 and 3 directly; it does not need the solved p2-model result.
+- p2-domain must import only p2-start and p2-end.
+- when p2 starts, all of (1)'s derivation disappears from the default view.
+
+Answer-leakage matrix:
+- p1-formula: must not show \(y=3x\) or \(x>0\)
+- p1-model: may show the area formula result, must not show the domain
+- p1-domain-meaning: must not show \(x>0\) as a finished inequality
+- p1-domain: may show the compact interpretation result, then resolve \(x>0\)
+- p2-distance-rule: must not show \(3x\), \(15-3x\), or 5
+- p2-traveled: may show speed×time, must not show the remaining-distance formula
+- p2-model: may show \(3x\), must not show endpoint 5
+- p2-start: must not show the finish time
+- p2-end: must not show the final interval
+- p2-domain: may show start and end results, then resolve \(0\le x\le5\)
+
+Mobile design:
+- one current stage card
+- at most two compact dependency results at p2-domain
+- units remain prose adjacent to math
+- no stacked three-card derivation for a single arithmetic step
+
+Wrong-answer behavior:
+- wrong choices do not advance
+- hints explain the quantity relation or boundary meaning, not the final answer
+- after correction, the resolved statement reads as natural prose/formula without an extra answer box

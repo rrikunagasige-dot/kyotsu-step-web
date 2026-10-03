@@ -12,13 +12,13 @@ describe('math practice 87-120 staged integration', () => {
     expect(mathPractice87To120Catalog).toHaveLength(34)
     expect(mathPractice87To120Catalog[0]?.problemNo).toBe(87)
     expect(mathPractice87To120Catalog.at(-1)?.problemNo).toBe(120)
-    expect(mathPracticePilotCatalog.map((entry) => entry.problemNo)).toEqual([87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116])
+    expect(mathPracticePilotCatalog.map((entry) => entry.problemNo)).toEqual([87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117])
   })
 
   it('publishes the reviewed set, proposition and proof pilots in source order', () => {
     expect(mathPracticePilotSource.map((question) => question.problemNo)).toEqual([87, 94, 97])
     expect(mathPracticePilotQuestions.map((question) => question.questionId)).toEqual(
-      Array.from({ length: 30 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
+      Array.from({ length: 31 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
     )
   })
 
@@ -54,6 +54,7 @@ describe('math practice 87-120 staged integration', () => {
       '114｜倍数の証明',
       '115｜背理法',
       '116｜有理数と無理数',
+      '117｜無理数を含む等式',
     ])
   })
 
@@ -474,6 +475,32 @@ describe('math practice 87-120 staged integration', () => {
       .toBe('contradiction-q-zero')
     expect(question?.blanks.find((blank) => blank.id === 'p-zero')?.choices.find((choice) => choice.correct)?.id)
       .toBe('p-zero')
+  })
+
+  it('authors 117 as two independent coefficient-separation problems reusing theorem 116', () => {
+    const question = mathPracticeProofsBatchCSource.find((item) => item.problemNo === 117)
+    expect(question).toBeDefined()
+    expect(question?.blanks.map((blank) => blank.id)).toEqual([
+      'p1-expand',
+      'p1-group',
+      'p1-apply',
+      'p1-solve',
+      'p2-conjugate',
+      'p2-rationalize',
+      'p2-group',
+      'p2-apply',
+      'p2-solve',
+    ])
+    expect(question?.blanks.find((blank) => blank.id === 'p1-group')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('grouped')
+    expect(question?.blanks.find((blank) => blank.id === 'p1-solve')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('minus-two-three')
+    expect(question?.blanks.find((blank) => blank.id === 'p2-rationalize')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('both-correct')
+    expect(question?.blanks.find((blank) => blank.id === 'p2-group')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('grouped')
+    expect(question?.blanks.find((blank) => blank.id === 'p2-solve')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('one-minus-two')
   })
 
   it('keeps Japanese and Chinese grading structures aligned', () => {

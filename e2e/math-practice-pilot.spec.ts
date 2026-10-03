@@ -38,7 +38,7 @@ test('98 opens the proposition theme directly and separates false propositions f
 
   await expect(page.getByRole('heading', { name: '98｜命題と真偽' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3'])
   await expect(page.getByTestId('math-topic-question-1')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -115,7 +115,7 @@ test('99 judges implication by set inclusion and uses counterexamples only where
 
   await expect(page.getByRole('heading', { name: '99｜含意の真偽' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3'])
   await expect(page.getByTestId('math-topic-question-2')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -175,6 +175,71 @@ test('99 judges implication by set inclusion and uses counterexamples only where
   await page.getByTestId('blank-math-practice-099-p4-counterexample-result').click()
   await page.getByTestId('option-math-practice-099-p4-counterexample-result-minus-two-false').click()
 
+  await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
+
+  const dimensions = await page.evaluate(() => ({
+    viewport: window.innerWidth,
+    page: document.documentElement.scrollWidth,
+  }))
+  expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
+})
+
+test('100 constructs one valid counterexample per false implication without leaking it early', async ({ page }) => {
+  await page.getByTestId('math-exercise-basic').click()
+  await page.getByTestId('math-topic-read-propositions').click()
+  await page.getByTestId('math-topic-question-3').click()
+
+  await expect(page.getByRole('heading', { name: '100｜反例' })).toBeVisible()
+  const nav = page.getByTestId('math-topic-question-nav')
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3'])
+  await expect(page.getByTestId('math-topic-question-3')).toHaveAttribute('aria-current', 'page')
+
+  const problem = page.getByTestId('standard-problem')
+  const readingFlow = page.getByTestId('math-practice-reading-flow')
+  const currentTarget = page.getByTestId('math-practice-current-target')
+
+  await expect(problem).toContainText('命題が偽であることを示せ')
+  await expect(problem.locator('.katex-display')).toHaveCount(3)
+  await expect(problem.locator('.katex-error')).toHaveCount(0)
+
+  await expect(currentTarget).toContainText('まず確認')
+  await expect(currentTarget).toContainText('反例')
+  await expect(page.getByTestId('blank-math-practice-100-rule')).toContainText('選択')
+  await expect(page.getByTestId('blank-math-practice-100-p1-counterexample')).toHaveCount(0)
+
+  await page.getByTestId('blank-math-practice-100-rule').click()
+  await page.getByTestId('option-math-practice-100-rule-antecedent-true-consequent-false').click()
+
+  // (1): the common counterexample criterion stays compact, while the actual answer remains hidden.
+  await expect(currentTarget).toContainText('今の問い｜(1)')
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('反例の条件')
+  await expect(readingFlow).not.toContainText('x=-√3')
+  await expect(page.getByTestId('blank-math-practice-100-p1-counterexample')).toContainText('選択')
+
+  await page.getByTestId('blank-math-practice-100-p1-counterexample').click()
+  await page.getByTestId('option-math-practice-100-p1-counterexample-negative-root').click()
+
+  // (2): (1) disappears; y=1 remains as the given construction scaffold, but x=-2 is not leaked.
+  await expect(currentTarget).toContainText('今の問い｜(2)')
+  await expect(readingFlow).not.toContainText('平方すると符号')
+  await expect(readingFlow).toContainText('y=1')
+  await expect(readingFlow).not.toContainText('x=-2')
+  await expect(page.getByTestId('blank-math-practice-100-p2-counterexample')).toContainText('選択')
+
+  await page.getByTestId('blank-math-practice-100-p2-counterexample').click()
+  await page.getByTestId('option-math-practice-100-p2-counterexample-minus-two').click()
+
+  // (3): choose the odd n first; the factorization check is revealed only after the answer.
+  await expect(currentTarget).toContainText('今の問い｜(3)')
+  await expect(readingFlow).not.toContainText('n=5')
+  await expect(readingFlow).not.toContainText('51')
+  await expect(page.getByTestId('blank-math-practice-100-p3-counterexample')).toContainText('選択')
+
+  await page.getByTestId('blank-math-practice-100-p3-counterexample').click()
+  await page.getByTestId('option-math-practice-100-p3-counterexample-five').click()
+
+  await expect(readingFlow.locator('.katex-display')).toHaveCount(1)
+  await expect(readingFlow.locator('.katex-display').locator('.katex-html')).toContainText('51')
   await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
 
   const dimensions = await page.evaluate(() => ({

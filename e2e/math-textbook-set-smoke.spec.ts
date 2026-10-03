@@ -238,6 +238,27 @@ test('proposition-proof review unit establishes equivalence before reverse and c
   await expect(page.getByTestId('textbook-item-proof-a01')).toBeVisible()
 })
 
+
+test('all review math units enter without KaTeX errors or horizontal overflow', async ({ page }) => {
+  const routes = [
+    '/learning/textbook/math-propositions-reading',
+    '/learning/textbook/math-quantifiers-all-exists',
+    '/learning/textbook/math-functions-conditions',
+    '/learning/textbook/math-propositions-proof',
+  ]
+
+  for (const route of routes) {
+    await page.goto(appRoute(route))
+    await expect(page.locator('.katex-error')).toHaveCount(0)
+
+    const viewport = await page.evaluate(() => ({
+      clientWidth: document.documentElement.clientWidth,
+      scrollWidth: document.documentElement.scrollWidth,
+    }))
+    expect(viewport.scrollWidth, route).toBeLessThanOrEqual(viewport.clientWidth + 1)
+  }
+})
+
 test('math set lesson boots directly on the shared textbook reader', async ({ page }) => {
   const pageErrors: string[] = []
   page.on('pageerror', (error) => pageErrors.push(error.stack ?? error.message))

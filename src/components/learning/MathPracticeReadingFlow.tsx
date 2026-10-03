@@ -8,6 +8,7 @@ import type { Question } from '../../domain/questionSchema'
 import { useI18n } from '../../i18n/runtime'
 import {
   mathPracticeDependencyTargets,
+  mathPracticeResultItems,
   mathPracticeTargetForBlank,
   mathPracticeTargetsForQuestion,
   mathPracticeUsesSubproblemCompression,
@@ -87,8 +88,12 @@ export function MathPracticeReadingFlow({ question, session, onSelect }: {
     : []
 
   const fullBlankId = (localBlankId: string) => `${question.questionId}-${localBlankId}`
-  const dependencyResultResolved = (target: MathPracticeTarget) =>
-    Boolean(target.result && isLearningAnswerResolved(session.answers[fullBlankId(target.result.blankId)]))
+  const dependencyResultResolved = (target: MathPracticeTarget) => {
+    const results = mathPracticeResultItems(target)
+    return results.length > 0 && results.every((result) =>
+      isLearningAnswerResolved(session.answers[fullBlankId(result.blankId)]),
+    )
+  }
 
   const entriesForTarget = (target: MathPracticeTarget) =>
     flowEntries.filter(({ index }) => targetIdForFlowIndex(index) === target.id)
@@ -134,9 +139,9 @@ export function MathPracticeReadingFlow({ question, session, onSelect }: {
         <div className="math-practice-dependency-links" data-testid="math-practice-dependency-links">
           <span className="math-practice-dependency-links__label">{text('前の小問から使う結果', '使用前面小题的结果')}</span>
           {dependencyTargets.filter(dependencyResultResolved).map((dependency) => {
-            const result = dependency.result!
-            const resultBlankId = fullBlankId(result.blankId)
+            const results = mathPracticeResultItems(dependency)
             const expanded = expandedDependencyId === dependency.id
+            const linkLabel = dependency.resultLinkLabel?.[language] ?? results[0]?.label[language]
             return (
               <div className="math-practice-dependency-item" key={dependency.id}>
                 <div className="math-practice-dependency-summary">
@@ -147,11 +152,18 @@ export function MathPracticeReadingFlow({ question, session, onSelect }: {
                     aria-expanded={expanded}
                     onClick={() => setExpandedDependencyId(expanded ? null : dependency.id)}
                   >
-                    {result.label[language]}
+                    {linkLabel}
                   </button>
                   <span className="math-practice-dependency-result">
-                    {result.latexPrefix && <InlineMath math={result.latexPrefix} />}
-                    <MathPracticeContentRenderer blocks={correctContent(question, resultBlankId)} assets={question.assets} />
+                    {results.map((result) => {
+                      const resultBlankId = fullBlankId(result.blankId)
+                      return (
+                        <span className="math-practice-dependency-result__item" key={result.blankId}>
+                          {result.latexPrefix && <InlineMath math={result.latexPrefix} />}
+                          <MathPracticeContentRenderer blocks={correctContent(question, resultBlankId)} assets={question.assets} />
+                        </span>
+                      )
+                    })}
                   </span>
                 </div>
                 {expanded && renderResolvedTarget(dependency)}

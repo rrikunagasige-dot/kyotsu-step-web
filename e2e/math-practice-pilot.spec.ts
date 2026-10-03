@@ -70,9 +70,26 @@ test('87 uses the Physics-style inline choice flow and reveals one reasoning nod
   await page.getByTestId(`blank-${secondBlank}`).click()
   await page.getByTestId('option-math-practice-087-prime-condition-prime').click()
   const target = page.getByTestId('math-practice-current-target')
+  const readingFlow = page.getByTestId('math-practice-reading-flow')
   await expect(target).toContainText('今の問い')
   await expect(target.locator('.katex')).toHaveCount(1)
   await expect(target.locator('.katex')).toContainText('2')
+
+  // The completed common-rule explanation is compressed away once the first membership decision starts.
+  await expect(readingFlow).not.toContainText('「30以下」だけで十分か')
+  await expect(readingFlow).toContainText('まず 2 を調べる')
+  await expect(page.getByTestId('math-practice-dependency-links')).toHaveCount(0)
+
+  await page.getByTestId('blank-math-practice-087-two-divisors').click()
+  await page.getByTestId('option-math-practice-087-two-divisors-one-two').click()
+  await page.getByTestId('blank-math-practice-087-two-membership').click()
+  await page.getByTestId('option-math-practice-087-two-membership-in').click()
+
+  // 2 is finished; only the 15-stage derivation remains. No false dependency link is created.
+  await expect(target.locator('.katex')).toContainText('15')
+  await expect(readingFlow).not.toContainText('まず 2 を調べる')
+  await expect(readingFlow).toContainText('次に 15')
+  await expect(page.getByTestId('math-practice-dependency-links')).toHaveCount(0)
 })
 
 test('problem card 2 opens 94 with the same Physics-style progressive reading flow', async ({ page }) => {
@@ -140,37 +157,86 @@ test('problem card 2 opens 94 with the same Physics-style progressive reading fl
   expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
 })
 
-test('problem card 3 opens 97 with the same progressive flow and no equation leak', async ({ page }) => {
+test('problem card 3 compresses 97 into a linear result-reuse chain', async ({ page }) => {
   await page.getByTestId('math-exercise-basic').click()
   await page.getByTestId('math-topic-organize-sets').click()
   await page.getByTestId('math-topic-question-3').click()
 
   await expect(page.getByRole('heading', { name: '97｜共通部分から定数を決める' })).toBeVisible()
   const problem = page.getByTestId('standard-problem')
+  const readingFlow = page.getByTestId('math-practice-reading-flow')
+  const currentTarget = page.getByTestId('math-practice-current-target')
   await expect(problem).toContainText('このとき、定数')
   await expect(problem).toContainText('の値と和集合')
   await expect(problem).not.toContainText('3a-2=4')
   await expect(page.getByTestId('math-practice-reading-flow')).toBeVisible()
-  const currentTarget = page.getByTestId('math-practice-current-target')
   await expect(currentTarget).toContainText('共通部分の条件から')
   await expect(currentTarget).toContainText('を求める')
   await expect(currentTarget.locator('.katex')).toHaveCount(1)
   const problemInlineMath = page.getByTestId('standard-problem').getByTestId('math-practice-inline-math')
   expect(await problemInlineMath.count()).toBeGreaterThan(0)
 
-  const firstBlank = 'math-practice-097-four-membership'
-  const secondBlank = 'math-practice-097-variable-element'
-  const equationBlank = 'math-practice-097-equation-for-four'
-  await expect(page.getByTestId(`blank-${firstBlank}`)).toContainText('選択')
-  await expect(page.getByTestId(`blank-${secondBlank}`)).toHaveCount(0)
-  await expect(page.getByTestId(`blank-${equationBlank}`)).toHaveCount(0)
+  // Stage 1: solve a. Future stages stay hidden.
+  await expect(page.getByTestId('blank-math-practice-097-four-membership')).toContainText('選択')
+  await expect(page.getByTestId('blank-math-practice-097-a-set')).toHaveCount(0)
+  await expect(page.getByTestId('blank-math-practice-097-union-result')).toHaveCount(0)
 
-  await page.getByTestId(`blank-${firstBlank}`).click()
-  await page.getByTestId('option-math-practice-097-four-membership-both').click()
-  await expect(page.getByTestId(`blank-${secondBlank}`)).toContainText('選択')
-  await expect(page.getByTestId(`blank-${equationBlank}`)).toHaveCount(0)
+  const solveStage = [
+    ['math-practice-097-four-membership', 'option-math-practice-097-four-membership-both'],
+    ['math-practice-097-variable-element', 'option-math-practice-097-variable-element-expr'],
+    ['math-practice-097-equation-for-four', 'option-math-practice-097-equation-for-four-correct'],
+    ['math-practice-097-solve-a', 'option-math-practice-097-solve-a-two'],
+  ] as const
+  for (const [blankId, optionId] of solveStage) {
+    await page.getByTestId(`blank-${blankId}`).click()
+    await page.getByTestId(optionId).click()
+  }
+
+  // Stage 2 imports only a=2; the long stage-1 derivation is gone.
+  await expect(currentTarget).toContainText('求めた')
+  await expect(currentTarget).toContainText('条件を本当に満たすか')
+  await expect(readingFlow).not.toContainText('4 がどこに入らなければ')
+  const solveDependency = page.getByTestId('math-practice-dependency-links')
+  await expect(solveDependency).toContainText('前の結果')
+  await expect(solveDependency).toContainText('2')
+  await expect(page.getByTestId('math-practice-dependency-detail-solve-a')).toHaveCount(0)
+
+  await page.getByTestId('math-practice-dependency-solve-a').click()
+  await expect(page.getByTestId('math-practice-dependency-detail-solve-a')).toContainText('3a-2=4')
+  await page.getByTestId('math-practice-dependency-solve-a').click()
+  await expect(page.getByTestId('math-practice-dependency-detail-solve-a')).toHaveCount(0)
+
+  const verifyStage = [
+    ['math-practice-097-a-set', 'option-math-practice-097-a-set-correct'],
+    ['math-practice-097-b-set', 'option-math-practice-097-b-set-correct'],
+    ['math-practice-097-intersection-check', 'option-math-practice-097-intersection-check-correct'],
+  ] as const
+  for (const [blankId, optionId] of verifyStage) {
+    await page.getByTestId(`blank-${blankId}`).click()
+    await page.getByTestId(optionId).click()
+  }
+
+  // Final stage imports the verified A and B results, not the old solve-a derivation.
+  await expect(currentTarget).toContainText('最後の目標')
+  await expect(readingFlow).not.toContainText('得た値を A と B の両方へ戻し')
+  const unionDependencies = page.getByTestId('math-practice-dependency-links')
+  await expect(unionDependencies).toContainText('前の確認結果')
+  await expect(unionDependencies).toContainText('1,3,4')
+  await expect(unionDependencies).toContainText('-5,4,1')
+  await expect(unionDependencies).not.toContainText('前の結果')
+  await expect(page.getByTestId('blank-math-practice-097-union-result')).toContainText('選択')
+
+  await page.getByTestId('math-practice-dependency-verify-a').click()
+  await expect(page.getByTestId('math-practice-dependency-detail-verify-a')).toContainText('A∩B')
+  await page.getByTestId('math-practice-dependency-verify-a').click()
+  await expect(page.getByTestId('math-practice-dependency-detail-verify-a')).toHaveCount(0)
+
+  const dimensions = await page.evaluate(() => ({
+    viewport: window.innerWidth,
+    page: document.documentElement.scrollWidth,
+  }))
+  expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
 })
-
 
 test('finishing 87 shows a direct next-problem button and opens 94', async ({ page }) => {
   await page.getByTestId('math-exercise-basic').click()

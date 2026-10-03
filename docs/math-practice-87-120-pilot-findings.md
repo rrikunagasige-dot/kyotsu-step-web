@@ -134,3 +134,50 @@ Pilot repair:
 - future expansion should define equivalent semantic targets instead of relying only on a linear list of blanks
 
 The mathematical content and reviewed blank order remain unchanged.
+
+
+---
+
+## 2026-10-03 — 94 subproblem-compression pattern generalized to 87 and 97
+
+After user approval of the 94 experience, the same **principle** was generalized to the other two reviewed pilot questions without forcing the same dependency graph onto them.
+
+### 87
+
+Structure:
+- common membership rule
+- 2
+- 15
+- 21
+- 29
+
+Behavior:
+- only the active stage is shown,
+- completed earlier derivations disappear,
+- no previous-number result links are shown because the decisions are logically independent once the set definition is visible,
+- moving from 2 to 15 therefore removes the 2-derivation instead of accumulating it.
+
+### 97
+
+Structure:
+- solve `a`
+- substitute and verify `A`, `B`, and `A∩B`
+- find `A∪B`
+
+Dependency graph:
+- verify stage imports only the result `a=2`,
+- union stage imports only the verified `A` and `B` results,
+- the earlier long derivations stay collapsed unless the learner opens the compact dependency link.
+
+This confirms the MASTER rule:
+
+**reuse the logical design, not the visual template.**
+
+87 / 94 / 97 now all use subproblem/stage compression, but each question keeps its own dependency structure.
+
+Validation on the implementation branch:
+- TypeScript PASS
+- targeted Math practice tests PASS
+- production build PASS
+- mobile Playwright PASS
+- desktop Playwright PASS

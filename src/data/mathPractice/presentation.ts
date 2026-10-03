@@ -1,3 +1,9 @@
+export type MathPracticeResult = {
+  blankId: string
+  label: { ja: string; zh: string }
+  latexPrefix?: string
+}
+
 export type MathPracticeTarget = {
   id: string
   kicker: { ja: string; zh: string }
@@ -5,11 +11,9 @@ export type MathPracticeTarget = {
   latex?: string
   blankIds: readonly string[]
   dependsOn?: readonly string[]
-  result?: {
-    blankId: string
-    label: { ja: string; zh: string }
-    latexPrefix?: string
-  }
+  result?: MathPracticeResult
+  results?: readonly MathPracticeResult[]
+  resultLinkLabel?: { ja: string; zh: string }
 }
 
 const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
@@ -121,18 +125,38 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
       kicker: { ja: 'まずの目標', zh: '第一目标' },
       label: { ja: '共通部分の条件から a を求める', zh: '由交集条件求 a' },
       blankIds: ['four-membership', 'variable-element', 'equation-for-four', 'solve-a'],
+      result: {
+        blankId: 'solve-a',
+        label: { ja: '前の結果', zh: '前一步结果' },
+        latexPrefix: 'a=',
+      },
     },
     {
       id: 'verify-a',
       kicker: { ja: '次の目標', zh: '下一目标' },
       label: { ja: '求めた a が条件を本当に満たすか確かめる', zh: '确认求得的 a 是否真的满足条件' },
       blankIds: ['a-set', 'b-set', 'intersection-check'],
+      dependsOn: ['solve-a'],
+      resultLinkLabel: { ja: '前の確認結果', zh: '前一步确认结果' },
+      results: [
+        {
+          blankId: 'a-set',
+          label: { ja: 'A', zh: 'A' },
+          latexPrefix: 'A=',
+        },
+        {
+          blankId: 'b-set',
+          label: { ja: 'B', zh: 'B' },
+          latexPrefix: 'B=',
+        },
+      ],
     },
     {
       id: 'union',
       kicker: { ja: '最後の目標', zh: '最后目标' },
       latex: 'A\\cup B',
       blankIds: ['union-result'],
+      dependsOn: ['verify-a'],
     },
   ],
 }
@@ -165,6 +189,15 @@ export function mathPracticeDependencyTargets(questionId: string, targetId: stri
     .filter((dependency): dependency is MathPracticeTarget => Boolean(dependency))
 }
 
+export function mathPracticeResultItems(target: MathPracticeTarget) {
+  if (target.results?.length) return target.results
+  return target.result ? [target.result] : []
+}
+
 export function mathPracticeUsesSubproblemCompression(questionId: string) {
-  return questionId === 'math-practice-094'
+  return [
+    'math-practice-087',
+    'math-practice-094',
+    'math-practice-097',
+  ].includes(questionId)
 }

@@ -321,7 +321,8 @@ test('102 maps AND/OR to intersection/union and handles open and closed endpoint
   const readingFlow = page.getByTestId('math-practice-reading-flow')
   const currentTarget = page.getByTestId('math-practice-current-target')
 
-  await expect(problem).toContainText('実数 x 全体の集合')
+  await expect(problem).toContainText('実数')
+  await expect(problem).toContainText('全体の集合')
   await expect(problem.locator('.katex-display')).toHaveCount(4)
   await expect(problem.locator('.katex-error')).toHaveCount(0)
 

@@ -53,16 +53,17 @@
 
 ### math-functions-conditions
 - status: review
-- source: 深進数学I 第2章 p.46〜49 相当
+- source: 深進数学I 第2章 p.46〜47 相当 + MATH_PRACTICE_118_CONTENT_DESIGN
 - practice topic: read-propositions
+- practice question: 118
 - flow:
-  1. xを決めるとyがどう決まるか
-  2. f(x)
-  3. 長方形条件から y=20-x
-  4. 実際の長さ条件から入力範囲を決める
-  5. 対応する出力範囲を読む
+  1. 1つのxにyがただ1つ決まる、という判定基準
+  2. 円周x → 半径y
+  3. 正のx → 平方根y
+  4. 面積1の長方形で縦x → 横y
 - note:
-  - 練習モードの「関数の条件」と同期するため、章番号ではなく curriculum topic で束ねる。
+  - 118の3例と同じ順・同じ判断基準へ同期。
+  - 119/120のcontent authorityがmainへ入るまでは、先回りして追加しない。
   - 教科書上の章位置は source metadata に残す。
 
 ## 3. 命題を証明する

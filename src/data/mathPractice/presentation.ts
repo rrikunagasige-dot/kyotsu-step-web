@@ -1149,6 +1149,47 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
       dependsOn: ['p2-isolate'],
     },
   ],
+  'math-practice-113': [
+    {
+      id: 'assumption',
+      kicker: { ja: 'まずの目標', zh: '第一个目标' },
+      label: { ja: '√xが有理数だと反対仮定する', zh: '反设√x为有理数' },
+      blankIds: ['assumption'],
+      result: {
+        blankId: 'assumption',
+        label: { ja: '反対仮定', zh: '反设' },
+      },
+    },
+    {
+      id: 'operation',
+      kicker: { ja: '次の目標', zh: '下一个目标' },
+      label: { ja: '√x=rから元のxへ戻る操作を選ぶ', zh: '选择由√x=r恢复x的运算' },
+      blankIds: ['operation'],
+      dependsOn: ['assumption'],
+      result: {
+        blankId: 'operation',
+        label: { ja: 'xへ戻る操作', zh: '恢复x的运算' },
+      },
+    },
+    {
+      id: 'square-result',
+      kicker: { ja: '次の目標', zh: '下一个目标' },
+      label: { ja: '2乗後にxの有理性を判断する', zh: '平方后判断x的有理性' },
+      blankIds: ['square-result'],
+      dependsOn: ['operation'],
+      result: {
+        blankId: 'square-result',
+        label: { ja: '2乗して得た式', zh: '平方得到的式子' },
+      },
+    },
+    {
+      id: 'contradiction',
+      kicker: { ja: '最後の目標', zh: '最后目标' },
+      label: { ja: 'xが無理数という仮定と矛盾させる', zh: '与x是无理数的题设形成矛盾' },
+      blankIds: ['contradiction'],
+      dependsOn: ['square-result'],
+    },
+  ],
 }
 
 function localBlankId(questionId: string, fullBlankId: string) {
@@ -1212,5 +1253,6 @@ export function mathPracticeUsesSubproblemCompression(questionId: string) {
     'math-practice-110',
     'math-practice-111',
     'math-practice-112',
+    'math-practice-113',
   ].includes(questionId)
 }

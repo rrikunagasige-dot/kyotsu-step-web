@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 import { mathPractice87To120Catalog, mathPracticePilotCatalog } from './catalog'
 import { mathPracticePilotSource } from './pilot'
@@ -75,6 +76,11 @@ describe('math practice 87-120 staged integration', () => {
         .map((node) => node.blankId)
       expect(new Set(flowIds)).toEqual(new Set(Object.keys(question.learning.blanks)))
     }
+  })
+
+  it('keeps explicit TeX commands escaped in the authored 88-96 source file', () => {
+    const authored = readFileSync('src/data/mathPractice/setsBatchA.ts', 'utf8')
+    expect(authored).not.toMatch(/(?<!\\)\\(?!\\)/)
   })
 
   it('preserves TeX escapes in Math 88 source strings before adaptation', () => {

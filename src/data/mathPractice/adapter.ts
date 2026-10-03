@@ -8,6 +8,8 @@ import { mathPracticePropositionsBatchBSource } from './propositionsBatchB'
 import { mathPracticePropositionsBatchBSourceZh } from './propositionsBatchB.zh'
 import { mathPracticeProofsBatchCSource } from './proofsBatchC'
 import { mathPracticeProofsBatchCSourceZh } from './proofsBatchC.zh'
+import { mathPracticeFunctionsBatchDSource } from './functionsBatchD'
+import { mathPracticeFunctionsBatchDSourceZh } from './functionsBatchD.zh'
 import type {
   MathPracticeSimulationItem,
   MathPracticeSourceBlock,
@@ -232,12 +234,14 @@ const mathPracticePublishedSource = [
   ...mathPracticeSetsBatchASource,
   ...mathPracticePropositionsBatchBSource,
   ...mathPracticeProofsBatchCSource,
+  ...mathPracticeFunctionsBatchDSource,
 ].sort((left, right) => left.problemNo - right.problemNo)
 const mathPracticePublishedSourceZh = [
   ...mathPracticePilotSourceZh,
   ...mathPracticeSetsBatchASourceZh,
   ...mathPracticePropositionsBatchBSourceZh,
   ...mathPracticeProofsBatchCSourceZh,
+  ...mathPracticeFunctionsBatchDSourceZh,
 ].sort((left, right) => left.problemNo - right.problemNo)
 
 export const mathPracticePilotQuestions = buildMathPracticeQuestions(mathPracticePublishedSource, 'ja')

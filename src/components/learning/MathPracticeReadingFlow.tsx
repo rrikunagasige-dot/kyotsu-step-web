@@ -53,9 +53,9 @@ export function MathPracticeReadingFlow({ question, session, onSelect }: {
           return (
             <div className="math-practice-reading-line" key={block.id}>
               <span>{blank.prompt}</span>
-              <span className="reading-inline-answer math-practice-inline-answer">
+              <div className="reading-inline-answer math-practice-inline-answer">
                 <ContentRenderer blocks={correctContent(question, block.blankId)} assets={question.assets} />
-              </span>
+              </div>
             </div>
           )
         }
@@ -64,9 +64,9 @@ export function MathPracticeReadingFlow({ question, session, onSelect }: {
           return (
             <div className="math-practice-reading-line" data-testid={`answer-${block.blankId}`} key={block.id}>
               <span>{blank.prompt}</span>
-              <span className="reading-inline-answer math-practice-inline-answer">
+              <div className="reading-inline-answer math-practice-inline-answer">
                 <ContentRenderer blocks={correctContent(question, block.blankId)} assets={question.assets} />
-              </span>
+              </div>
             </div>
           )
         }

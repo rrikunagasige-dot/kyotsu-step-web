@@ -13,13 +13,13 @@ describe('math practice 87-120 staged integration', () => {
     expect(mathPractice87To120Catalog).toHaveLength(34)
     expect(mathPractice87To120Catalog[0]?.problemNo).toBe(87)
     expect(mathPractice87To120Catalog.at(-1)?.problemNo).toBe(120)
-    expect(mathPracticePilotCatalog.map((entry) => entry.problemNo)).toEqual([87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119])
+    expect(mathPracticePilotCatalog.map((entry) => entry.problemNo)).toEqual([87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120])
   })
 
   it('publishes the reviewed set, proposition and proof pilots in source order', () => {
     expect(mathPracticePilotSource.map((question) => question.problemNo)).toEqual([87, 94, 97])
     expect(mathPracticePilotQuestions.map((question) => question.questionId)).toEqual(
-      Array.from({ length: 33 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
+      Array.from({ length: 34 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
     )
   })
 
@@ -58,6 +58,7 @@ describe('math practice 87-120 staged integration', () => {
       '117｜無理数を含む等式',
       '118｜関数とは何か',
       '119｜関数の値',
+      '120｜文章から関数を作る',
     ])
   })
 
@@ -549,6 +550,35 @@ describe('math practice 87-120 staged integration', () => {
       .toBe('positive')
     expect(question?.blanks.find((blank) => blank.id === 'ga1-simplify')?.choices.find((choice) => choice.correct)?.id)
       .toBe('correct')
+  })
+
+  it('authors 120 as two independent verbal models with local domain reasoning', () => {
+    const question = mathPracticeFunctionsBatchDSource.find((item) => item.problemNo === 120)
+    expect(question).toBeDefined()
+    expect(question?.blanks.map((blank) => blank.id)).toEqual([
+      'p1-formula',
+      'p1-model',
+      'p1-domain-meaning',
+      'p1-domain',
+      'p2-distance-rule',
+      'p2-traveled',
+      'p2-model',
+      'p2-start',
+      'p2-end',
+      'p2-domain',
+    ])
+    expect(question?.blanks.find((blank) => blank.id === 'p1-formula')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('area-formula')
+    expect(question?.blanks.find((blank) => blank.id === 'p1-model')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('three-x')
+    expect(question?.blanks.find((blank) => blank.id === 'p1-domain')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('x-positive')
+    expect(question?.blanks.find((blank) => blank.id === 'p2-model')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('fifteen-minus-three-x')
+    expect(question?.blanks.find((blank) => blank.id === 'p2-end')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('five')
+    expect(question?.blanks.find((blank) => blank.id === 'p2-domain')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('zero-to-five-closed')
   })
 
   it('keeps Japanese and Chinese grading structures aligned', () => {

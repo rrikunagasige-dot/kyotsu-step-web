@@ -4,6 +4,14 @@ export type MathPracticeResult = {
   latexPrefix?: string
 }
 
+export type MathPracticeExternalDependency = {
+  id: string
+  sourceQuestionId: string
+  label: { ja: string; zh: string }
+  resultLatex: string
+  detail: { ja: string; zh: string }
+}
+
 export type MathPracticeTarget = {
   id: string
   kicker: { ja: string; zh: string }
@@ -11,6 +19,7 @@ export type MathPracticeTarget = {
   latex?: string
   blankIds: readonly string[]
   dependsOn?: readonly string[]
+  externalDependencies?: readonly MathPracticeExternalDependency[]
   result?: MathPracticeResult
   results?: readonly MathPracticeResult[]
   resultLinkLabel?: { ja: string; zh: string }
@@ -1377,6 +1386,10 @@ export function mathPracticeDependencyTargets(questionId: string, targetId: stri
 export function mathPracticeResultItems(target: MathPracticeTarget) {
   if (target.results?.length) return target.results
   return target.result ? [target.result] : []
+}
+
+export function mathPracticeExternalDependencies(questionId: string, targetId: string) {
+  return mathPracticeTargetById(questionId, targetId)?.externalDependencies ?? []
 }
 
 export function mathPracticeUsesSubproblemCompression(questionId: string) {

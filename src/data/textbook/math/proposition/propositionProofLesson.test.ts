@@ -48,6 +48,14 @@ describe('math proposition-proof textbook unit', () => {
     expect(contrapositiveIndex).toBeGreaterThan(inverseIndex)
   })
 
+
+  it('keeps the second source example: 12-multiple implication with reverse/inverse counterexample', () => {
+    const items = mathPropositionProofUnit.sections[0].items
+    expect(items.find((item) => item.id === 'proof-a06')?.answer).toBe('真')
+    expect(items.find((item) => item.id === 'proof-a07')?.answer).toBe('n=6')
+    expect(items.find((item) => item.id === 'proof-a08')?.answer).toBe('真')
+  })
+
   it('chooses the contrapositive before starting the divisibility proof', () => {
     const flow = mathPropositionProofUnit.sections[0].readingFlow
     const contrapositiveDecision = flow.findIndex(

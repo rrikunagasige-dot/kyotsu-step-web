@@ -56,6 +56,49 @@ const rawMathPropositionReadingUnit = {
           text: '命題の真偽を読む',
         },
         {
+          id: 'paragraph-proposition-intro',
+          type: 'paragraph' as const,
+          parts: [
+            { type: 'text' as const, text: 'まず、文の内容を真か偽か客観的に決められるかを比べる。' },
+          ],
+        },
+        {
+          id: 'paragraph-proposition-1',
+          type: 'paragraph' as const,
+          parts: [
+            { type: 'text' as const, text: '①「23を3で割ると余りは2である」。' },
+            { type: 'math' as const, latex: '23=3\\times7+2' },
+            { type: 'text' as const, text: ' と確かめられるので、この文の真偽は ' },
+            { type: 'choice' as const, itemId: 'prop-p00a' },
+            { type: 'text' as const, text: '。' },
+          ],
+        },
+        {
+          id: 'paragraph-proposition-2',
+          type: 'paragraph' as const,
+          parts: [
+            { type: 'text' as const, text: '②「二等辺三角形は正三角形である」。例えば頂角40°の二等辺三角形なら他の2角は70°ずつで、正三角形ではない。この文の内容は偽だが、真偽そのものは ' },
+            { type: 'choice' as const, itemId: 'prop-p00b' },
+            { type: 'text' as const, text: '。' },
+          ],
+        },
+        {
+          id: 'paragraph-proposition-3',
+          type: 'paragraph' as const,
+          parts: [
+            { type: 'text' as const, text: '③「3.14は円周率πのよい近似値である」では、「どの程度近ければよいか」という客観的な基準が決められていない。そのため真偽は ' },
+            { type: 'choice' as const, itemId: 'prop-p00c' },
+            { type: 'text' as const, text: '。' },
+          ],
+        },
+        {
+          id: 'paragraph-proposition-concept',
+          type: 'paragraph' as const,
+          parts: [
+            { type: 'text' as const, text: '内容が客観的に真・偽のどちらか一方に定まる文を命題という。したがって①と②は命題であり、③は命題ではない。偽であることと、命題でないことは別である。' },
+          ],
+        },
+        {
           id: 'formula-pq-1',
           type: 'formula' as const,
           parts: [
@@ -399,6 +442,42 @@ const rawMathPropositionReadingUnit = {
 
       ],
       items: [
+        {
+          id: 'prop-p00a',
+          label: 'PROP-P00A',
+          prompt: '23=3×7+2と確かめられる文の真偽は、客観的に決められるか。',
+          answer: '客観的に決められる',
+          acceptedAnswers: [],
+          answerType: 'text' as const,
+          choices: ['客観的に決められる', '客観的には決められない'],
+          purpose: 'concept-formation' as const,
+          scaffoldLevel: 'strong' as const,
+          hints: ['割り算を実際に計算して確かめられる。', '正しいか誤りかを人の好みとは無関係に判定できる。'],
+        },
+        {
+          id: 'prop-p00b',
+          label: 'PROP-P00B',
+          prompt: '反例で偽だと確かめられる文の真偽は、客観的に決められるか。',
+          answer: '客観的に決められる',
+          acceptedAnswers: [],
+          answerType: 'text' as const,
+          choices: ['客観的に決められる', '偽なので決められない'],
+          purpose: 'concept-formation' as const,
+          scaffoldLevel: 'strong' as const,
+          hints: ['「偽」と「真偽を決められない」は別。', '反例があれば、内容が偽だと客観的に確定できる。'],
+        },
+        {
+          id: 'prop-p00c',
+          label: 'PROP-P00C',
+          prompt: '「よい近似値」の基準が決まっていない文の真偽はどうなるか。',
+          answer: '一意に決まらない',
+          acceptedAnswers: [],
+          answerType: 'text' as const,
+          choices: ['一意に決まらない', '必ず真になる', '必ず偽になる'],
+          purpose: 'concept-formation' as const,
+          scaffoldLevel: 'strong' as const,
+          hints: ['「よい」の基準が人によって変わり得る。', '客観的な境界がないので、真・偽のどちらか一方に固定できない。'],
+        },
         {
           id: 'prop-a01',
           label: 'PROP-A01',

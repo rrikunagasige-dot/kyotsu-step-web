@@ -129,7 +129,10 @@ const fixedTranslations: Record<string, string> = {
 }
 
 function translate(value: string) {
-  const translated = translations[value] ?? fixedTranslations[value] ?? value
+  const exact = translations[value] ?? fixedTranslations[value] ?? value
+  const translated = exact
+    .replaceAll('は30以下の素数', '是30以下的素数')
+    .replaceAll('は整数', '是整数')
   if (/[ぁ-んァ-ン]/.test(translated)) {
     throw new Error(`Missing Chinese translation for math practice pilot text: ${value}`)
   }

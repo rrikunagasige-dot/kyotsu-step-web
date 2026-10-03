@@ -13,7 +13,7 @@ describe('math set textbook unit', () => {
       type: 'heading',
       text: '集合を表す',
     })
-    expect(mathSetUnit.chapter?.sourcePages).toEqual([86, 87, 88, 89, 90])
+    expect(mathSetUnit.chapter?.sourcePages).toEqual([86, 87, 88, 89, 90, 91])
   })
 
   it('starts from a concrete set-building decision before teaching the term', () => {
@@ -144,4 +144,43 @@ describe('math set textbook unit', () => {
     expect(e04Index).toBeGreaterThanOrEqual(0)
     expect(firstLawIndex).toBeGreaterThan(e04Index)
     expect(conceptIndex).toBeGreaterThan(firstLawIndex)
+  })
+
+
+  it('reads real-set endpoints before revealing number-line figures and complement formulas', () => {
+    const section = mathSetUnit.sections[0]
+    const f01Index = section.readingFlow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'set-f01',
+      ),
+    )
+    const f02Index = section.readingFlow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'set-f02',
+      ),
+    )
+    const f03Index = section.readingFlow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'set-f03',
+      ),
+    )
+    const firstNumberLineIndex = section.readingFlow.findIndex(
+      (block) => block.type === 'figure' && block.figureId === 'number-line-a',
+    )
+    const f05Index = section.readingFlow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'set-f05',
+      ),
+    )
+    const f06Index = section.readingFlow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'set-f06',
+      ),
+    )
+
+    expect(f01Index).toBeGreaterThanOrEqual(0)
+    expect(f02Index).toBeGreaterThan(f01Index)
+    expect(f03Index).toBeGreaterThan(f02Index)
+    expect(firstNumberLineIndex).toBeGreaterThan(f03Index)
+    expect(f06Index).toBeGreaterThan(f05Index)
   })

@@ -8,6 +8,7 @@ describe('math textbook catalog', () => {
     expect(topic?.id).toBe('organize-sets')
     expect(topic?.practiceTopicId).toBe('organize-sets')
     expect(topic?.practiceRange).toEqual([87, 97])
+    expect(topic?.flow.ja).toBe('集合の表し方 → 部分集合 → 共通部分・和集合 → 補集合 → 集合の条件')
   })
 
   it('keeps the approved three learner-facing headings in order', () => {

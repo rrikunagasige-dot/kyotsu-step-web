@@ -753,6 +753,53 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
       dependsOn: ['basis'],
     },
   ],
+  'math-practice-107': [
+    {
+      id: 'basis',
+      kicker: { ja: 'まず確認', zh: '先确认' },
+      label: { ja: '必要・十分を双方向含意で判定する', zh: '用双向蕴含判断必要与充分' },
+      blankIds: ['rule'],
+      result: {
+        blankId: 'rule',
+        label: { ja: '双方向判定表', zh: '双向判断表' },
+      },
+    },
+    {
+      id: 's1',
+      kicker: { ja: '今の問い｜(1)', zh: '当前问题｜(1)' },
+      label: { ja: '積が0の条件を一方向ずつ調べる', zh: '逐方向判断乘积为0的条件' },
+      blankIds: ['p1-classification'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's2',
+      kicker: { ja: '今の問い｜(2)', zh: '当前问题｜(2)' },
+      label: { ja: '積が負になる符号パターンを全部見る', zh: '列出乘积为负的全部符号情况' },
+      blankIds: ['p2-classification'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's3',
+      kicker: { ja: '今の問い｜(3)', zh: '当前问题｜(3)' },
+      label: { ja: '2条件を同時に使って逆向きを示す', zh: '同时使用两个条件证明反向' },
+      blankIds: ['p3-classification'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's4',
+      kicker: { ja: '今の問い｜(4)', zh: '当前问题｜(4)' },
+      label: { ja: '1つの角と三角形全体を区別する', zh: '区分一个角与整个三角形' },
+      blankIds: ['p4-classification'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's5',
+      kicker: { ja: '今の問い｜(5)', zh: '当前问题｜(5)' },
+      label: { ja: '積の2枝と直角位置を分けて調べる', zh: '区分乘积两支与直角位置' },
+      blankIds: ['p5-classification'],
+      dependsOn: ['basis'],
+    },
+  ],
 }
 
 function localBlankId(questionId: string, fullBlankId: string) {
@@ -810,5 +857,6 @@ export function mathPracticeUsesSubproblemCompression(questionId: string) {
     'math-practice-104',
     'math-practice-105',
     'math-practice-106',
+    'math-practice-107',
   ].includes(questionId)
 }

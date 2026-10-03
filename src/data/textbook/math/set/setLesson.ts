@@ -920,7 +920,9 @@ const rawMathSetUnit = {
           purpose: 'causal-reasoning' as const,
           scaffoldLevel: 'light' as const,
           hints: ['Xの全要素がYに入り、Yの全要素もXに入る。', '一方にしかない要素があると、どちらかの部分集合条件が破れる。'],
-        }
+        },
+        ...setOutsideItems,
+        ...setRealLineItems,
       ],
     },
   ],

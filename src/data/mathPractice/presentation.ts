@@ -673,6 +673,46 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
       dependsOn: ['basis'],
     },
   ],
+  'math-practice-105': [
+    {
+      id: 'basis',
+      kicker: { ja: 'まず確認', zh: '先确认' },
+      label: { ja: '真と偽で必要な証明の違いを確認する', zh: '区分证明真与证明假分别需要什么' },
+      blankIds: ['rule'],
+      result: {
+        blankId: 'rule',
+        label: { ja: '真偽判定の基準', zh: '真假判断标准' },
+      },
+    },
+    {
+      id: 's1',
+      kicker: { ja: '今の問い｜(1)', zh: '当前问题｜(1)' },
+      label: { ja: '「少なくとも一方が0」の反例を作る', zh: '由“至少一个为0”构造反例' },
+      blankIds: ['p1-result'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's2',
+      kicker: { ja: '今の問い｜(2)', zh: '当前问题｜(2)' },
+      label: { ja: '±2 の全ケースを確認する', zh: '检查 ±2 的全部情况' },
+      blankIds: ['p2-result'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's3',
+      kicker: { ja: '今の問い｜(3)', zh: '当前问题｜(3)' },
+      label: { ja: '無理数どうしの積で反例を探す', zh: '用两个无理数的乘积寻找反例' },
+      blankIds: ['p3-result'],
+      dependsOn: ['basis'],
+    },
+    {
+      id: 's4',
+      kicker: { ja: '今の問い｜(4)', zh: '当前问题｜(4)' },
+      label: { ja: '和と積を同時に満たす反例を作る', zh: '构造和与积同时满足条件的反例' },
+      blankIds: ['p4-result'],
+      dependsOn: ['basis'],
+    },
+  ],
 }
 
 function localBlankId(questionId: string, fullBlankId: string) {
@@ -728,5 +768,6 @@ export function mathPracticeUsesSubproblemCompression(questionId: string) {
     'math-practice-102',
     'math-practice-103',
     'math-practice-104',
+    'math-practice-105',
   ].includes(questionId)
 }

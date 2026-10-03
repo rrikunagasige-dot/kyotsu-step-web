@@ -8,8 +8,23 @@ describe('math proposition-proof textbook unit', () => {
     expect(mathPropositionProofUnit.chapter?.sourcePages).toEqual([96, 97, 98])
   })
 
-  it('builds reverse, inverse, and contrapositive before using truth-pair equivalence', () => {
+  it('establishes equivalence before building reverse, inverse, and contrapositive', () => {
     const flow = mathPropositionProofUnit.sections[0].readingFlow
+    const eqForwardIndex = flow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'proof-e01',
+      ),
+    )
+    const eqReverseIndex = flow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'proof-e02',
+      ),
+    )
+    const equivalenceConceptIndex = flow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'text' && part.text.includes('pとqは同値である'),
+      ),
+    )
     const reverseIndex = flow.findIndex(
       (block) => block.type === 'paragraph' && block.parts.some(
         (part) => part.type === 'choice' && part.itemId === 'proof-a01',
@@ -25,15 +40,12 @@ describe('math proposition-proof textbook unit', () => {
         (part) => part.type === 'choice' && part.itemId === 'proof-a03',
       ),
     )
-    const equivalenceIndex = flow.findIndex(
-      (block) => block.type === 'paragraph' && block.parts.some(
-        (part) => part.type === 'text' && part.text.includes('元の命題とその対偶の真偽は一致する'),
-      ),
-    )
-    expect(reverseIndex).toBeGreaterThanOrEqual(0)
+    expect(eqForwardIndex).toBeGreaterThanOrEqual(0)
+    expect(eqReverseIndex).toBeGreaterThan(eqForwardIndex)
+    expect(equivalenceConceptIndex).toBeGreaterThan(eqReverseIndex)
+    expect(reverseIndex).toBeGreaterThan(equivalenceConceptIndex)
     expect(inverseIndex).toBeGreaterThan(reverseIndex)
     expect(contrapositiveIndex).toBeGreaterThan(inverseIndex)
-    expect(equivalenceIndex).toBeGreaterThan(contrapositiveIndex)
   })
 
   it('chooses the contrapositive before starting the divisibility proof', () => {
@@ -73,7 +85,7 @@ describe('math proposition-proof textbook unit', () => {
       .filter((block) => block.type === 'heading')
       .map((block) => block.text)
     expect(headings).toEqual([
-      '逆・裏・対偶を作る',
+      '同値と命題の向きを整理する',
       '対偶を使って証明する',
       '矛盾を作って証明する',
     ])

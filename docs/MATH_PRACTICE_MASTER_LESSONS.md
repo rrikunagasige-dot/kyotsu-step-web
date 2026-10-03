@@ -14,6 +14,12 @@ Purpose:
 
 このファイルを読まずに、問題追加、穴変更、UI変更、章/テーマ構造変更、renderer変更、batch import、87/94/97の一般化、88–120展開を始めない。
 
+87〜120を扱う場合は、このMASTERを読んだ直後に必ず次も読む:
+
+- docs/MATH_PRACTICE_87_120_STRUCTURE_MAP.md
+
+このSTRUCTURE MAPは、4STEP原本87〜120を読み直して固定したテーマ分類、stage、depends_on、result node、feeds、cross-problem dependencyの実装前設計図である。本文・穴・UIを先に作らない。
+
 ---
 
 # 0. Authority / precedence

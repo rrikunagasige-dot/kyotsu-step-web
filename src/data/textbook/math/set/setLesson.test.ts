@@ -13,6 +13,7 @@ describe('math set textbook unit', () => {
       type: 'heading',
       text: '集合を表す',
     })
+    expect(mathSetUnit.chapter?.sourcePages).toEqual([86, 87, 88])
   })
 
   it('starts from a concrete set-building decision before teaching the term', () => {
@@ -47,3 +48,49 @@ describe('math set textbook unit', () => {
     expect(blocks.filter((block) => block.type === 'note')).toHaveLength(0)
   })
 })
+
+
+  it('reveals set relations through a second heading and keeps answer-bearing figures after the decisions', () => {
+    const section = mathSetUnit.sections[0]
+    const relationHeadingIndex = section.readingFlow.findIndex(
+      (block) => block.type === 'heading' && block.text === '集合どうしの関係を見る',
+    )
+    const blankFigureIndex = section.readingFlow.findIndex(
+      (block) => block.type === 'figure' && block.figureId === 'venn-two-blank',
+    )
+    const b01Index = section.readingFlow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'set-b01',
+      ),
+    )
+    const intersectionFigureIndex = section.readingFlow.findIndex(
+      (block) => block.type === 'figure' && block.figureId === 'venn-intersection',
+    )
+
+    expect(relationHeadingIndex).toBeGreaterThanOrEqual(0)
+    expect(blankFigureIndex).toBeGreaterThan(relationHeadingIndex)
+    expect(b01Index).toBeGreaterThan(blankFigureIndex)
+    expect(intersectionFigureIndex).toBeGreaterThan(b01Index)
+  })
+
+  it('introduces subset terminology only after comparing B and C against A', () => {
+    const section = mathSetUnit.sections[0]
+    const c01Index = section.readingFlow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'set-c01',
+      ),
+    )
+    const c02Index = section.readingFlow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'set-c02',
+      ),
+    )
+    const conceptIndex = section.readingFlow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'text' && part.text.includes('部分集合という'),
+      ),
+    )
+    expect(c01Index).toBeGreaterThanOrEqual(0)
+    expect(c02Index).toBeGreaterThan(c01Index)
+    expect(conceptIndex).toBeGreaterThan(c02Index)
+  })

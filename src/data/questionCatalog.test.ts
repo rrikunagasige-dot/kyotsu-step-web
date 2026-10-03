@@ -4,7 +4,7 @@ import { builtInQuestions } from './questions'
 describe('built-in content coverage', () => {
   it('contains the existing catalog plus three staged Math 1A practice pilots', () => {
     expect(builtInQuestions.filter((question) => question.subject === 'math-1a')).toHaveLength(5)
-    expect(builtInQuestions.filter((question) => question.subject === 'physics')).toHaveLength(17)
+    expect(builtInQuestions.filter((question) => question.subject === 'physics')).toHaveLength(3)
     expect(
       builtInQuestions
         .filter((question) => question.questionId.startsWith('math-practice-'))

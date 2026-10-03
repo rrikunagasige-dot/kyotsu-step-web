@@ -1236,6 +1236,58 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
       dependsOn: ['p2-residues'],
     },
   ],
+  'math-practice-115': [
+    {
+      id: 'assumption',
+      kicker: { ja: 'まずの目標', zh: '第一个目标' },
+      label: { ja: '有理数だと反対仮定する', zh: '反设为有理数' },
+      blankIds: ['assumption'],
+      result: {
+        blankId: 'assumption',
+        label: { ja: '反対仮定', zh: '反设' },
+      },
+    },
+    {
+      id: 'operation',
+      kicker: { ja: '次の目標', zh: '下一个目标' },
+      label: { ja: '√6を式に出す操作を選ぶ', zh: '选择让√6出现在式中的运算' },
+      blankIds: ['operation'],
+      dependsOn: ['assumption'],
+      result: {
+        blankId: 'operation',
+        label: { ja: '√6を作る操作', zh: '产生√6的运算' },
+      },
+    },
+    {
+      id: 'expand',
+      kicker: { ja: '次の目標', zh: '下一个目标' },
+      label: { ja: '2乗して√6を含む式まで整理する', zh: '平方并整理到含√6的式子' },
+      blankIds: ['expand'],
+      dependsOn: ['operation'],
+      result: {
+        blankId: 'expand',
+        label: { ja: '2乗後の式', zh: '平方后的式子' },
+      },
+    },
+    {
+      id: 'isolate',
+      kicker: { ja: '次の目標', zh: '下一个目标' },
+      label: { ja: '√6を単独にする', zh: '单独表示√6' },
+      blankIds: ['isolate'],
+      dependsOn: ['expand'],
+      result: {
+        blankId: 'isolate',
+        label: { ja: '√6の式', zh: '√6的表达式' },
+      },
+    },
+    {
+      id: 'contradiction',
+      kicker: { ja: '最後の目標', zh: '最后目标' },
+      label: { ja: '右辺の有理性から矛盾を閉じる', zh: '由右边的有理性完成矛盾' },
+      blankIds: ['contradiction'],
+      dependsOn: ['isolate'],
+    },
+  ],
 }
 
 function localBlankId(questionId: string, fullBlankId: string) {
@@ -1301,5 +1353,6 @@ export function mathPracticeUsesSubproblemCompression(questionId: string) {
     'math-practice-112',
     'math-practice-113',
     'math-practice-114',
+    'math-practice-115',
   ].includes(questionId)
 }

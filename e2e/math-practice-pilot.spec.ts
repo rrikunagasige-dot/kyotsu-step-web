@@ -784,7 +784,7 @@ test('108 proves equivalence in two directions and only combines them at the fin
 
   await expect(page.getByRole('heading', { name: '108｜同値の証明' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7'])
   await expect(page.getByTestId('math-topic-question-1')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -853,7 +853,7 @@ test('110 builds converse, contrapositive and inverse separately, then consolida
 
   await expect(page.getByRole('heading', { name: '110｜逆・対偶・裏' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7'])
   await expect(page.getByTestId('math-topic-question-2')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -959,7 +959,7 @@ test('111 uses the source-given contrapositive strategy and proves four cases on
 
   await expect(page.getByRole('heading', { name: '111｜対偶による証明' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7'])
   await expect(page.getByTestId('math-topic-question-3')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -1037,7 +1037,7 @@ test('112 proves irrationality by contradiction and keeps rationalization as a m
 
   await expect(page.getByRole('heading', { name: '112｜無理数の証明' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7'])
   await expect(page.getByTestId('math-topic-question-4')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -1108,7 +1108,7 @@ test('113 returns from a rational square-root assumption to an irrational-x cont
 
   await expect(page.getByRole('heading', { name: '113｜平方根と無理数' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7'])
   await expect(page.getByTestId('math-topic-question-5')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -1158,7 +1158,7 @@ test('114 proves divisibility claims by exhaustive nonzero residue classes', asy
 
   await expect(page.getByRole('heading', { name: '114｜倍数の証明' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7'])
   await expect(page.getByTestId('math-topic-question-6')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -1200,6 +1200,64 @@ test('114 proves divisibility claims by exhaustive nonzero residue classes', asy
   await expect(page.getByTestId('math-practice-dependency-links')).toContainText('mod 3 の候補')
   await page.getByTestId('blank-math-practice-114-p2-products').click()
   await page.getByTestId('option-math-practice-114-p2-products-none-zero').click()
+
+  await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
+
+  const dimensions = await page.evaluate(() => ({
+    viewport: window.innerWidth,
+    page: document.documentElement.scrollWidth,
+  }))
+  expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
+})
+
+test('115 creates sqrt(6) by squaring, isolates it, and closes the irrationality contradiction', async ({ page }) => {
+  await page.getByTestId('math-exercise-basic').click()
+  await page.getByTestId('math-topic-prove-propositions').click()
+  await page.getByTestId('math-topic-question-7').click()
+
+  await expect(page.getByRole('heading', { name: '115｜背理法' })).toBeVisible()
+  const nav = page.getByTestId('math-topic-question-nav')
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7'])
+  await expect(page.getByTestId('math-topic-question-7')).toHaveAttribute('aria-current', 'page')
+
+  const problem = page.getByTestId('standard-problem')
+  const readingFlow = page.getByTestId('math-practice-reading-flow')
+  const currentTarget = page.getByTestId('math-practice-current-target')
+
+  await expect(problem).toContainText('が無理数であることを用いて')
+  await expect(problem).toContainText('は無理数であることを証明せよ')
+  await expect(problem.locator('.katex-error')).toHaveCount(0)
+
+  // First set the contradiction assumption. Future algebra stays hidden.
+  await expect(currentTarget).toContainText('まずの目標')
+  await expect(page.getByTestId('blank-math-practice-115-assumption')).toContainText('選択')
+  await expect(page.getByTestId('blank-math-practice-115-operation')).toHaveCount(0)
+
+  await page.getByTestId('blank-math-practice-115-assumption').click()
+  await page.getByTestId('option-math-practice-115-assumption-rational-r').click()
+
+  // Squaring is selected because it creates the product sqrt(3)sqrt(2)=sqrt(6).
+  await expect(currentTarget).toContainText('次の目標')
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('反対仮定')
+  await expect(readingFlow).not.toContainText('5-2√6')
+  await page.getByTestId('blank-math-practice-115-operation').click()
+  await page.getByTestId('option-math-practice-115-operation-square').click()
+
+  // Expand before isolating sqrt(6).
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('√6を作る操作')
+  await page.getByTestId('blank-math-practice-115-expand').click()
+  await page.getByTestId('option-math-practice-115-expand-five-minus-two-root6').click()
+
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('2乗後の式')
+  await expect(readingFlow).not.toContainText('(5-r²)/2')
+  await page.getByTestId('blank-math-practice-115-isolate').click()
+  await page.getByTestId('option-math-practice-115-isolate-five-minus-r2-over-two').click()
+
+  // Only now use rational-number closure to contradict the known irrationality of sqrt(6).
+  await expect(currentTarget).toContainText('最後の目標')
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('√6の式')
+  await page.getByTestId('blank-math-practice-115-contradiction').click()
+  await page.getByTestId('option-math-practice-115-contradiction-contradiction').click()
 
   await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
 

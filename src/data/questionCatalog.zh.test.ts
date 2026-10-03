@@ -77,6 +77,7 @@ describe('independently authored Chinese question catalog', () => {
       '105｜命题的真假',
       '106｜用集合表示条件',
       '107｜判断必要与充分条件',
+      '108｜证明等价',
     ])  })
 
   it('selects the requested language without changing stable question IDs', () => {

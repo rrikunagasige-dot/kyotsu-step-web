@@ -305,12 +305,12 @@ test('real-line endpoint judgments precede complement formulas and the unit can 
   const remaining: Array<[string, string]> = [
     ['set-f04', '−2と2の間で、両端を含まない'],
     ['set-f05', '含めない'],
-    ['set-f06', '\\{x\\mid x<-1\\ \\text{または}\\ 5<x\\}'],
+    ['set-f06', '\\{x\\mid x<-1,\\ 5<x\\}'],
     ['set-f07', '含める'],
-    ['set-f08', '\\{x\\mid x\\le -2\\ \\text{または}\\ 2\\le x\\}'],
-    ['set-f09', '\\{x\\mid x\\le -2\\ \\text{または}\\ 5<x\\}'],
+    ['set-f08', '\\{x\\mid x\\le -2,\\ 2\\le x\\}'],
+    ['set-f09', '\\{x\\mid x\\le -2,\\ 5<x\\}'],
     ['set-f10', '\\{x\\mid -2<x\\le 5\\}'],
-    ['set-f11', 'A\\cap B=\\{x\\mid -1\\le x<2\\},\\quad \\overline{A\\cap B}=\\{x\\mid x<-1\\ \\text{または}\\ 2\\le x\\}'],
+    ['set-f11', 'A\\cap B=\\{x\\mid -1\\le x<2\\},\\quad \\overline{A\\cap B}=\\{x\\mid x<-1,\\ 2\\le x\\}'],
     ['set-f12', '\\overline{A}\\cup\\overline{B}'],
     ['set-f13', '一致する'],
   ]

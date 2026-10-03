@@ -38,7 +38,7 @@ test('98 opens the proposition theme directly and separates false propositions f
 
   await expect(page.getByRole('heading', { name: '98｜命題と真偽' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8'])
   await expect(page.getByTestId('math-topic-question-1')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -115,7 +115,7 @@ test('99 judges implication by set inclusion and uses counterexamples only where
 
   await expect(page.getByRole('heading', { name: '99｜含意の真偽' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8'])
   await expect(page.getByTestId('math-topic-question-2')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -191,7 +191,7 @@ test('100 constructs one valid counterexample per false implication without leak
 
   await expect(page.getByRole('heading', { name: '100｜反例' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8'])
   await expect(page.getByTestId('math-topic-question-3')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -256,7 +256,7 @@ test('101 treats negation as the complete complement and keeps each condition in
 
   await expect(page.getByRole('heading', { name: '101｜条件の否定' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8'])
   await expect(page.getByTestId('math-topic-question-4')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -314,7 +314,7 @@ test('102 maps AND/OR to intersection/union and handles open and closed endpoint
 
   await expect(page.getByRole('heading', { name: '102｜「かつ」と「または」' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8'])
   await expect(page.getByTestId('math-topic-question-5')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -380,7 +380,7 @@ test('103 negates compound conditions from their meaning and applies De Morgan w
 
   await expect(page.getByRole('heading', { name: '103｜複合条件の否定' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8'])
   await expect(page.getByTestId('math-topic-question-6')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -452,7 +452,7 @@ test('104 fixes necessary/sufficient direction first, then classifies six indepe
 
   await expect(page.getByRole('heading', { name: '104｜必要条件・十分条件' })).toBeVisible()
   const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7'])
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8'])
   await expect(page.getByTestId('math-topic-question-7')).toHaveAttribute('aria-current', 'page')
 
   const problem = page.getByTestId('standard-problem')
@@ -516,6 +516,71 @@ test('104 fixes necessary/sufficient direction first, then classifies six indepe
   await expect(readingFlow).toContainText('正方形なら4辺が等しい')
   await page.getByTestId('blank-math-practice-104-p6-classification').click()
   await page.getByTestId('option-math-practice-104-p6-classification-necessary-only').click()
+
+  await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
+
+  const dimensions = await page.evaluate(() => ({
+    viewport: window.innerWidth,
+    page: document.documentElement.scrollWidth,
+  }))
+  expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
+})
+
+test('105 proves true implications by all cases and false ones by one counterexample', async ({ page }) => {
+  await page.getByTestId('math-exercise-basic').click()
+  await page.getByTestId('math-topic-read-propositions').click()
+  await page.getByTestId('math-topic-question-8').click()
+
+  await expect(page.getByRole('heading', { name: '105｜命題の真偽' })).toBeVisible()
+  const nav = page.getByTestId('math-topic-question-nav')
+  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8'])
+  await expect(page.getByTestId('math-topic-question-8')).toHaveAttribute('aria-current', 'page')
+
+  const problem = page.getByTestId('standard-problem')
+  const readingFlow = page.getByTestId('math-practice-reading-flow')
+  const currentTarget = page.getByTestId('math-practice-current-target')
+
+  await expect(problem).toContainText('次の命題の真偽')
+  await expect(problem.locator('.katex-display')).toHaveCount(2)
+  await expect(problem.locator('.katex-error')).toHaveCount(0)
+
+  await expect(currentTarget).toContainText('まず確認')
+  await expect(currentTarget).toContainText('真と偽')
+  await expect(page.getByTestId('blank-math-practice-105-rule')).toContainText('選択')
+  await expect(page.getByTestId('blank-math-practice-105-p1-result')).toHaveCount(0)
+
+  await page.getByTestId('blank-math-practice-105-rule').click()
+  await page.getByTestId('option-math-practice-105-rule-all-vs-counterexample').click()
+
+  // (1): do not leak the counterexample before the learner selects it.
+  await expect(currentTarget).toContainText('今の問い｜(1)')
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('真偽判定の基準')
+  await expect(readingFlow).not.toContainText('a=0,b=1')
+  await expect(page.getByTestId('blank-math-practice-105-p1-result')).toContainText('選択')
+  await page.getByTestId('blank-math-practice-105-p1-result').click()
+  await page.getByTestId('option-math-practice-105-p1-result-counterexample-false').click()
+
+  // (2): true requires checking both roots of a^2=4.
+  await expect(currentTarget).toContainText('今の問い｜(2)')
+  await expect(readingFlow).not.toContainText('少なくとも一方が0')
+  await expect(readingFlow.locator('.katex-display')).toHaveCount(3)
+  await expect(readingFlow.locator('.katex-display').first().locator('.katex-html')).toContainText('a=2')
+  await expect(readingFlow.locator('.katex-display').first().locator('.katex-html')).toContainText('a=−2')
+  await page.getByTestId('blank-math-practice-105-p2-result').click()
+  await page.getByTestId('option-math-practice-105-p2-result-both-cases-true').click()
+
+  // (3): product rational does not force each factor rational.
+  await expect(currentTarget).toContainText('今の問い｜(3)')
+  await expect(readingFlow).not.toContainText('√2')
+  await page.getByTestId('blank-math-practice-105-p3-result').click()
+  await page.getByTestId('option-math-practice-105-p3-result-sqrt-two-false').click()
+
+  // (4): the counterexample must make both sum and product rational simultaneously.
+  await expect(currentTarget).toContainText('今の問い｜(4)')
+  await expect(readingFlow).not.toContainText('a=√2')
+  await expect(readingFlow).not.toContainText('b=-√2')
+  await page.getByTestId('blank-math-practice-105-p4-result').click()
+  await page.getByTestId('option-math-practice-105-p4-result-conjugate-false').click()
 
   await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
 

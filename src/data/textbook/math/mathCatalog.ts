@@ -20,8 +20,8 @@ export const mathTextbookTopics: readonly MathTextbookTopicCatalogEntry[] = [
     id: 'organize-sets',
     label: { ja: '集合を整理する', zh: '整理集合' },
     flow: {
-      ja: '集合の表し方 → 集合どうしの関係 → 補集合 → 集合の条件',
-      zh: '集合的表示 → 集合之间的关系 → 补集 → 集合条件',
+      ja: '集合の表し方 → 部分集合 → 共通部分・和集合 → 補集合 → 集合の条件',
+      zh: '集合的表示 → 子集 → 交集・并集 → 补集 → 集合条件',
     },
     practiceTopicId: 'organize-sets',
     practiceRange: [87, 97],

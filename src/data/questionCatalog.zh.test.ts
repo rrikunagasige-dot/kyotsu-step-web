@@ -69,6 +69,7 @@ describe('independently authored Chinese question catalog', () => {
       '97｜由交集确定常数',
       '98｜命题与真假',
       '99｜蕴含命题的真假',
+      '100｜反例',
     ])  })
 
   it('selects the requested language without changing stable question IDs', () => {

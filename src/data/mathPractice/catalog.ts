@@ -44,7 +44,7 @@ export const mathPractice87To120Catalog: MathPracticeCatalogEntry[] = [
   { problemNo: 117, section: 'proofs', sectionTitle: '命題と証明', title: '無理数を含む等式', pilot: true },
 
   { problemNo: 118, section: 'functions', sectionTitle: '関数', title: '関数とは何か', pilot: true },
-  { problemNo: 119, section: 'functions', sectionTitle: '関数', title: '関数の値', pilot: false },
+  { problemNo: 119, section: 'functions', sectionTitle: '関数', title: '関数の値', pilot: true },
   { problemNo: 120, section: 'functions', sectionTitle: '関数', title: '文章から関数を作る', pilot: false },
 ]
 

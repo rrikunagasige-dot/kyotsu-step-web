@@ -398,7 +398,7 @@ describe('math practice 87-120 staged integration', () => {
     expect(question?.blanks.find((blank) => blank.id === 'operation')?.choices.find((choice) => choice.correct)?.id)
       .toBe('square')
     expect(question?.blanks.find((blank) => blank.id === 'square-result')?.choices.find((choice) => choice.correct)?.id)
-      .toBe('x-rational')
+      .toBe('x-r-squared-rational')
     expect(question?.blanks.find((blank) => blank.id === 'contradiction')?.choices.find((choice) => choice.correct)?.id)
       .toBe('contradiction')
   })

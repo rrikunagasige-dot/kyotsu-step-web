@@ -17,7 +17,7 @@ describe('built-in content coverage', () => {
     const standardQuestions = builtInQuestions.filter((question) => question.learning.presentation === 'standard')
     expect(commonTestQuestions.length).toBeGreaterThan(0)
     expect(standardQuestions.map((question) => question.questionId)).toEqual(
-      Array.from({ length: 32 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
+      Array.from({ length: 33 }, (_, index) => `math-practice-${String(87 + index).padStart(3, '0')}`),
     )
     expect(builtInQuestions.some((question) => question.assets.length > 0)).toBe(true)
     expect(builtInQuestions.some((question) => question.stem.some((block) => block.type === 'table'))).toBe(true)

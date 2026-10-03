@@ -7,6 +7,7 @@ on:
       - 'chatgpt/math-practice-title-architecture'
       - 'chatgpt/math-practice-entry-architecture'
       - 'chatgpt/math-theme-direct-entry'
+      - 'chatgpt/math-87-textbook-like-design'
   pull_request:
     paths:
       - 'src/data/mathPractice/**'
@@ -20,6 +21,7 @@ on:
       - 'src/pages/LearningSessionPage.tsx'
       - 'src/pages/LearningSetupPage.tsx'
       - 'src/components/learning/LearningFlowRenderer.tsx'
+      - 'src/components/learning/MathPracticeReadingFlow.tsx'
       - 'src/styles/global.css'
       - 'e2e/math-practice-pilot.spec.ts'
       - '.github/workflows/math-practice-pilot-ci.yml'

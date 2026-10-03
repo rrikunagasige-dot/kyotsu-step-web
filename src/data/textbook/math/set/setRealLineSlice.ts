@@ -226,11 +226,11 @@ export const setRealLineItems = [
   {
     id: 'set-f06', label: 'SET-F06',
     prompt: 'Aの補集合を不等式で表そう。',
-    answer: '\\{x\\mid x<-1\\ \\text{または}\\ 5<x\\}',
+    answer: '\\{x\\mid x<-1,\\ 5<x\\}',
     acceptedAnswers: [], answerType: 'formula' as const,
     choices: [
-      '\\{x\\mid x<-1\\ \\text{または}\\ 5<x\\}',
-      '\\{x\\mid x\\le -1\\ \\text{または}\\ 5\\le x\\}',
+      '\\{x\\mid x<-1,\\ 5<x\\}',
+      '\\{x\\mid x\\le -1,\\ 5\\le x\\}',
       '\\{x\\mid -1<x<5\\}',
     ],
     purpose: 'representation-link' as const, scaffoldLevel: 'medium' as const,
@@ -247,11 +247,11 @@ export const setRealLineItems = [
   {
     id: 'set-f08', label: 'SET-F08',
     prompt: 'Bの補集合を不等式で表そう。',
-    answer: '\\{x\\mid x\\le -2\\ \\text{または}\\ 2\\le x\\}',
+    answer: '\\{x\\mid x\\le -2,\\ 2\\le x\\}',
     acceptedAnswers: [], answerType: 'formula' as const,
     choices: [
-      '\\{x\\mid x\\le -2\\ \\text{または}\\ 2\\le x\\}',
-      '\\{x\\mid x<-2\\ \\text{または}\\ 2<x\\}',
+      '\\{x\\mid x\\le -2,\\ 2\\le x\\}',
+      '\\{x\\mid x<-2,\\ 2<x\\}',
       '\\{x\\mid -2\\le x\\le 2\\}',
     ],
     purpose: 'representation-link' as const, scaffoldLevel: 'medium' as const,
@@ -260,11 +260,11 @@ export const setRealLineItems = [
   {
     id: 'set-f09', label: 'SET-F09',
     prompt: 'Ā∩B̄を数直線の重なりから求めよう。',
-    answer: '\\{x\\mid x\\le -2\\ \\text{または}\\ 5<x\\}',
+    answer: '\\{x\\mid x\\le -2,\\ 5<x\\}',
     acceptedAnswers: [], answerType: 'formula' as const,
     choices: [
-      '\\{x\\mid x\\le -2\\ \\text{または}\\ 5<x\\}',
-      '\\{x\\mid x<-1\\ \\text{または}\\ 2\\le x\\}',
+      '\\{x\\mid x\\le -2,\\ 5<x\\}',
+      '\\{x\\mid x<-1,\\ 2\\le x\\}',
       '\\{x\\mid -2<x\\le5\\}',
     ],
     purpose: 'transfer' as const, scaffoldLevel: 'light' as const,
@@ -278,7 +278,7 @@ export const setRealLineItems = [
     choices: [
       '\\{x\\mid -2<x\\le 5\\}',
       '\\{x\\mid -1\\le x<2\\}',
-      '\\{x\\mid x\\le -2\\ \\text{または}\\ 5<x\\}',
+      '\\{x\\mid x\\le -2,\\ 5<x\\}',
     ],
     purpose: 'transfer' as const, scaffoldLevel: 'light' as const,
     hints: ['∪なのでAかBの少なくとも一方に入る範囲。', '左はBが−2直後まで広げ、右はAが5まで含む。'],
@@ -286,12 +286,12 @@ export const setRealLineItems = [
   {
     id: 'set-f11', label: 'SET-F11',
     prompt: 'A∩Bを先に求め、その補集合まで直接求めよう。',
-    answer: 'A\\cap B=\\{x\\mid -1\\le x<2\\},\\quad \\overline{A\\cap B}=\\{x\\mid x<-1\\ \\text{または}\\ 2\\le x\\}',
+    answer: 'A\\cap B=\\{x\\mid -1\\le x<2\\},\\quad \\overline{A\\cap B}=\\{x\\mid x<-1,\\ 2\\le x\\}',
     acceptedAnswers: [], answerType: 'formula' as const,
     choices: [
-      'A\\cap B=\\{x\\mid -1\\le x<2\\},\\quad \\overline{A\\cap B}=\\{x\\mid x<-1\\ \\text{または}\\ 2\\le x\\}',
-      'A\\cap B=\\{x\\mid -2<x\\le5\\},\\quad \\overline{A\\cap B}=\\{x\\mid x\\le-2\\ \\text{または}\\ 5<x\\}',
-      'A\\cap B=\\{x\\mid -1<x<2\\},\\quad \\overline{A\\cap B}=\\{x\\mid x\\le-1\\ \\text{または}\\ 2\\le x\\}',
+      'A\\cap B=\\{x\\mid -1\\le x<2\\},\\quad \\overline{A\\cap B}=\\{x\\mid x<-1,\\ 2\\le x\\}',
+      'A\\cap B=\\{x\\mid -2<x\\le5\\},\\quad \\overline{A\\cap B}=\\{x\\mid x\\le-2,\\ 5<x\\}',
+      'A\\cap B=\\{x\\mid -1<x<2\\},\\quad \\overline{A\\cap B}=\\{x\\mid x\\le-1,\\ 2\\le x\\}',
     ],
     purpose: 'transfer' as const, scaffoldLevel: 'light' as const,
     hints: ['まずAとBの両方に入る範囲を取る。', 'A∩Bは−1から2直前。−1は入るが2は入らないので、その外側の端点状態も反転する。'],

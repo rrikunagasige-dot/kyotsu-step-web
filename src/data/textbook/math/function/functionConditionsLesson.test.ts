@@ -2,52 +2,51 @@ import { describe, expect, it } from 'vitest'
 import { mathFunctionConditionsUnit } from './functionConditionsLesson'
 
 describe('math function-conditions textbook unit', () => {
-  it('stays in review while preserving source scope', () => {
+  it('stays in review and uses the textbook definition as the source bridge', () => {
     expect(mathFunctionConditionsUnit.status).toBe('review')
     expect(mathFunctionConditionsUnit.chapter?.chapterId).toBe('math-ch02-functions')
-    expect(mathFunctionConditionsUnit.chapter?.sourcePages).toEqual([46, 47, 48, 49])
+    expect(mathFunctionConditionsUnit.chapter?.sourcePages).toEqual([46, 47])
   })
 
-  it('forms the function concept after the uniqueness decision', () => {
+  it('forms the function criterion before entering the three practice-118 examples', () => {
     const flow = mathFunctionConditionsUnit.sections[0].readingFlow
-    const decision = flow.findIndex(
+    const criterionDecision = flow.findIndex(
       (block) => block.type === 'paragraph' && block.parts.some(
         (part) => part.type === 'choice' && part.itemId === 'func-a01',
       ),
     )
     const concept = flow.findIndex(
       (block) => block.type === 'paragraph' && block.parts.some(
-        (part) => part.type === 'text' && part.text.includes('yはxの関数である'),
+        (part) => part.type === 'text' && part.text.includes('yはxの関数であるという'),
       ),
     )
-    expect(decision).toBeGreaterThanOrEqual(0)
-    expect(concept).toBeGreaterThan(decision)
+    const firstPracticeExample = flow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'func-b01',
+      ),
+    )
+    expect(criterionDecision).toBeGreaterThanOrEqual(0)
+    expect(concept).toBeGreaterThan(criterionDecision)
+    expect(firstPracticeExample).toBeGreaterThan(concept)
   })
 
-  it('derives the domain before naming it', () => {
+  it('keeps the practice-118 examples in circle, square-root, rectangle order', () => {
     const flow = mathFunctionConditionsUnit.sections[0].readingFlow
-    const decision = flow.findIndex(
-      (block) => block.type === 'paragraph' && block.parts.some(
-        (part) => part.type === 'choice' && part.itemId === 'func-b02',
+    const indexes = ['func-b01', 'func-c01', 'func-d01'].map(
+      (itemId) => flow.findIndex(
+        (block) => block.type === 'paragraph' && block.parts.some(
+          (part) => part.type === 'choice' && part.itemId === itemId,
+        ),
       ),
     )
-    const concept = flow.findIndex(
-      (block) => block.type === 'paragraph' && block.parts.some(
-        (part) => part.type === 'text' && part.text.includes('定義域という'),
-      ),
-    )
-    expect(decision).toBeGreaterThanOrEqual(0)
-    expect(concept).toBeGreaterThan(decision)
+    expect(indexes.every((index) => index >= 0)).toBe(true)
+    expect(indexes).toEqual([...indexes].sort((a, b) => a - b))
   })
 
-  it('keeps the lesson to three learner-facing headings', () => {
+  it('uses one learner-facing heading instead of splitting the three parallel examples', () => {
     const headings = mathFunctionConditionsUnit.sections[0].readingFlow
       .filter((block) => block.type === 'heading')
       .map((block) => block.text)
-    expect(headings).toEqual([
-      'xを決めるとyはどうなるか',
-      '式だけでなく、使えるxの範囲も読む',
-      '定義域から値域を読む',
-    ])
+    expect(headings).toEqual(['関数かどうかを判断する'])
   })
 })

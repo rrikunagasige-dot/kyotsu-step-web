@@ -1187,7 +1187,7 @@ test('113 returns from a rational square-root assumption to an irrational-x cont
   await expect(page.getByTestId('math-practice-dependency-links')).toContainText('xへ戻る操作')
   await expect(page.getByTestId('blank-math-practice-113-square-result')).toContainText('選択')
   await page.getByTestId('blank-math-practice-113-square-result').click()
-  await page.getByTestId('option-math-practice-113-square-result-x-rational').click()
+  await page.getByTestId('option-math-practice-113-square-result-x-r-squared-rational').click()
 
   await expect(currentTarget).toContainText('最後の目標')
   await expect(page.getByTestId('math-practice-dependency-links')).toContainText('2乗して得た式')

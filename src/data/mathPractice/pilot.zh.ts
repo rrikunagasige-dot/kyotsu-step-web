@@ -1,5 +1,5 @@
 import { mathPracticePilotSource } from './pilot'
-import type { MathPracticeSourceQuestion } from './source'
+import type { MathPracticeSourceBlock, MathPracticeSourceQuestion } from './source'
 
 const translations: Record<string, string> = {
   '素数と集合': '素数与集合',
@@ -139,10 +139,9 @@ function translate(value: string) {
   return translated
 }
 
-function translateBlock<T extends { type: string }>(block: T): T {
-  if (block.type === 'text') return { ...block, text: translate((block as { text: string }).text) }
-  if (block.type === 'latex') return { ...block, latex: translate((block as { latex: string }).latex) }
-  return block
+function translateBlock(block: MathPracticeSourceBlock): MathPracticeSourceBlock {
+  if (block.type === 'text') return { ...block, text: translate(block.text) }
+  return { ...block, latex: translate(block.latex) }
 }
 
 function translateQuestion(source: MathPracticeSourceQuestion): MathPracticeSourceQuestion {

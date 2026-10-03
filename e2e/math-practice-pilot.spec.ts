@@ -64,7 +64,7 @@ test('87 uses the Physics-style inline choice flow and reveals one reasoning nod
   await expect(page.getByTestId(`blank-${secondBlank}`)).toContainText('選択')
 })
 
-test('problem card 2 switches inside the theme directly to 94', async ({ page }) => {
+test('problem card 2 opens 94 with the same Physics-style progressive reading flow', async ({ page }) => {
   await page.getByTestId('math-exercise-basic').click()
   await page.getByTestId('math-topic-organize-sets').click()
   await page.getByTestId('math-topic-question-2').click()
@@ -72,6 +72,17 @@ test('problem card 2 switches inside the theme directly to 94', async ({ page })
   await expect(page.getByRole('heading', { name: '94｜補集合' })).toBeVisible()
   await expect(page.getByTestId('math-topic-question-2')).toHaveAttribute('aria-current', 'page')
   await expect(page.getByTestId('standard-problem')).toContainText('次の集合を求めよ')
+  await expect(page.getByTestId('math-practice-reading-flow')).toBeVisible()
+
+  const firstBlank = 'math-practice-094-universe-basis'
+  const secondBlank = 'math-practice-094-a-complement'
+  await expect(page.getByTestId(`blank-${firstBlank}`)).toContainText('選択')
+  await expect(page.getByTestId(`blank-${secondBlank}`)).toHaveCount(0)
+
+  await page.getByTestId(`blank-${firstBlank}`).click()
+  await page.getByTestId('option-math-practice-094-universe-basis-u').click()
+  await expect(page.getByTestId(`answer-${firstBlank}`)).toContainText('全体集合 U')
+  await expect(page.getByTestId(`blank-${secondBlank}`)).toContainText('選択')
 
   const dimensions = await page.evaluate(() => ({
     viewport: window.innerWidth,
@@ -80,17 +91,58 @@ test('problem card 2 switches inside the theme directly to 94', async ({ page })
   expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
 })
 
-test('problem card 3 switches inside the theme directly to 97 without leaking the equation', async ({ page }) => {
+test('problem card 3 opens 97 with the same progressive flow and no equation leak', async ({ page }) => {
   await page.getByTestId('math-exercise-basic').click()
   await page.getByTestId('math-topic-organize-sets').click()
   await page.getByTestId('math-topic-question-3').click()
 
   await expect(page.getByRole('heading', { name: '97｜共通部分から定数を決める' })).toBeVisible()
   const problem = page.getByTestId('standard-problem')
-  const guide = page.getByTestId('standard-guide')
   await expect(problem).toContainText('定数 a の値と和集合')
   await expect(problem).not.toContainText('3a-2=4')
-  await expect(guide.getByTestId('blank-math-practice-097-equation-for-four')).toBeVisible()
+  await expect(page.getByTestId('math-practice-reading-flow')).toBeVisible()
+
+  const firstBlank = 'math-practice-097-four-membership'
+  const secondBlank = 'math-practice-097-variable-element'
+  const equationBlank = 'math-practice-097-equation-for-four'
+  await expect(page.getByTestId(`blank-${firstBlank}`)).toContainText('選択')
+  await expect(page.getByTestId(`blank-${secondBlank}`)).toHaveCount(0)
+  await expect(page.getByTestId(`blank-${equationBlank}`)).toHaveCount(0)
+
+  await page.getByTestId(`blank-${firstBlank}`).click()
+  await page.getByTestId('option-math-practice-097-four-membership-both').click()
+  await expect(page.getByTestId(`blank-${secondBlank}`)).toContainText('選択')
+  await expect(page.getByTestId(`blank-${equationBlank}`)).toHaveCount(0)
+})
+
+
+test('finishing 87 shows a direct next-problem button and opens 94', async ({ page }) => {
+  await page.getByTestId('math-exercise-basic').click()
+  await page.getByTestId('math-topic-organize-sets').click()
+
+  const answers = [
+    ['math-practice-087-condition-sufficiency', 'option-math-practice-087-condition-sufficiency-not-enough'],
+    ['math-practice-087-prime-condition', 'option-math-practice-087-prime-condition-prime'],
+    ['math-practice-087-two-divisors', 'option-math-practice-087-two-divisors-one-two'],
+    ['math-practice-087-two-membership', 'option-math-practice-087-two-membership-in'],
+    ['math-practice-087-fifteen-factor', 'option-math-practice-087-fifteen-factor-three-five'],
+    ['math-practice-087-fifteen-membership', 'option-math-practice-087-fifteen-membership-not-in'],
+    ['math-practice-087-twentyone-factor', 'option-math-practice-087-twentyone-factor-three-seven'],
+    ['math-practice-087-twentyone-membership', 'option-math-practice-087-twentyone-membership-not-in'],
+    ['math-practice-087-twentynine-divisor-check', 'option-math-practice-087-twentynine-divisor-check-none'],
+    ['math-practice-087-twentynine-membership', 'option-math-practice-087-twentynine-membership-in'],
+  ] as const
+
+  for (const [blankId, optionId] of answers) {
+    await page.getByTestId(`blank-${blankId}`).click()
+    await page.getByTestId(optionId).click()
+  }
+
+  await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
+  await expect(page.getByTestId('math-practice-next-question')).toContainText('次の問題を解く')
+  await page.getByTestId('math-practice-next-question').click()
+  await expect(page.getByRole('heading', { name: '94｜補集合' })).toBeVisible()
+  await expect(page.getByTestId('math-practice-reading-flow')).toBeVisible()
 })
 
 

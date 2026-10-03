@@ -713,9 +713,16 @@ button.math-theme-link {
   display: inline-flex;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: .12rem;
+  gap: .3rem .55rem;
   min-width: 0;
   font-size: .88rem;
+}
+
+.math-practice-dependency-result__item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: .12rem;
+  min-width: 0;
 }
 
 .math-practice-dependency-result .content-renderer,

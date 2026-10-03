@@ -5,6 +5,7 @@ import {
   buildMathPracticeTopicSummary,
   mathCommonTestAreaForQuestion,
   mathPracticeProblemNumber,
+  mathPracticeQuestionsForTopic,
   mathPracticeTaxonomy,
   mathPracticeTopicForQuestion,
 } from './mathPracticeTaxonomy'
@@ -71,8 +72,9 @@ describe('math practice title architecture', () => {
     expect(buildMathCommonTestSummary(commonTestSamples)['data-analysis']).toBe(1)
   })
 
-  it('uses problem numbers as the compact leaf labels', () => {
-    expect(mathPracticePilotQuestions.map((question) => mathPracticeProblemNumber(question.questionId))).toEqual([
+  it('keeps theme questions in source problem-number order for 1,2,3… navigation', () => {
+    const ordered = mathPracticeQuestionsForTopic(mathPracticePilotQuestions, 'organize-sets')
+    expect(ordered.map((question) => mathPracticeProblemNumber(question.questionId))).toEqual([
       87,
       94,
       97,

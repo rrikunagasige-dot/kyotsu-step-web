@@ -74,6 +74,7 @@ Structure: Independent subproblems
 Hole policy:
 - 2×18, 3×12の数字穴を細かく大量に作らない
 - 「系統的に漏れなく探す」が主要thinking node
+- **answer-leakage guard:** `p1-stop` を出す前は `6×6` を本文に表示しない。`1×36,2×18,3×12,4×9,\ldots` までを見せ、学習者自身に折り返し点 `6×6` を選ばせる。正答後に初めて `6×6` が完成結果として現れる。
 
 ---
 

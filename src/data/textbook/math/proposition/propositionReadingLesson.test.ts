@@ -112,14 +112,37 @@ describe('math proposition-reading textbook unit', () => {
     expect(deMorganIndex).toBeGreaterThan(compoundDecisionIndex)
   })
 
+
+  it('keeps the synchronized practice order: truth, negation, then necessary/sufficient', () => {
+    const flow = mathPropositionReadingUnit.sections[0].readingFlow
+    const truthIndex = flow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'prop-a01',
+      ),
+    )
+    const negationIndex = flow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'prop-c01',
+      ),
+    )
+    const relationIndex = flow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'prop-b01',
+      ),
+    )
+    expect(truthIndex).toBeGreaterThanOrEqual(0)
+    expect(negationIndex).toBeGreaterThan(truthIndex)
+    expect(relationIndex).toBeGreaterThan(negationIndex)
+  })
+
   it('uses only three learner-facing headings', () => {
     const headings = mathPropositionReadingUnit.sections[0].readingFlow
       .filter((block) => block.type === 'heading')
       .map((block) => block.text)
     expect(headings).toEqual([
       '命題の真偽を読む',
-      '必要条件・十分条件を見分ける',
       '条件を否定する',
+      '必要条件・十分条件を見分ける',
     ])
   })
 })

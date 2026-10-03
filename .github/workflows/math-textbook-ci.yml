@@ -62,3 +62,6 @@ jobs:
 
       - name: Physics textbook regression
         run: pnpm exec playwright test e2e/chapter1-learning-smoke.spec.ts --project=desktop-chromium
+
+      - name: Math practice setup regression
+        run: pnpm exec playwright test e2e/math-practice-pilot.spec.ts --project=desktop-chromium

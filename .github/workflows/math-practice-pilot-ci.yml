@@ -1,0 +1,47 @@
+name: Math practice pilot CI
+
+on:
+  pull_request:
+    paths:
+      - 'src/data/mathPractice/**'
+      - 'src/data/questions.ts'
+      - 'src/data/questions.zh.ts'
+      - 'src/data/questionCatalog.test.ts'
+      - 'src/data/questionCatalog.zh.test.ts'
+      - 'src/domain/questionSchema.ts'
+      - '.github/workflows/math-practice-pilot-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        run: pnpm run typecheck
+
+      - name: Math practice pilot tests
+        run: pnpm exec vitest run src/data/mathPractice/adapter.test.ts src/data/questionCatalog.test.ts src/data/questionCatalog.zh.test.ts
+
+      - name: Build
+        run: pnpm run build

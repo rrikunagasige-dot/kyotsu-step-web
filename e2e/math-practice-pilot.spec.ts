@@ -43,7 +43,10 @@ test('87 uses the Physics-style inline choice flow and reveals one reasoning nod
   await expect(problem).toContainText('次の□に')
   await expect(guide.getByRole('heading', { name: '考えながら解く' })).toBeVisible()
   await expect(page.getByTestId('math-practice-reading-flow')).toBeVisible()
-  await expect(page.getByTestId('math-practice-current-target')).toContainText('集合 A に入る条件を整理する')
+  const initialTarget = page.getByTestId('math-practice-current-target')
+  await expect(initialTarget).toContainText('集合')
+  await expect(initialTarget).toContainText('に入る条件を整理する')
+  await expect(initialTarget.locator('.katex')).toHaveCount(1)
 
   const firstBlank = 'math-practice-087-condition-sufficiency'
   const secondBlank = 'math-practice-087-prime-condition'
@@ -103,7 +106,7 @@ test('problem card 2 opens 94 with the same Physics-style progressive reading fl
   const meaningBlank = page.getByTestId('blank-math-practice-094-abar-intersection-b-meaning')
   await expect(meaningBlank).toContainText('選択')
   await expect(page.getByTestId('math-practice-current-target')).toContainText('今の問い｜(3)')
-  await expect(meaningBlank.locator('.katex')).toHaveCount(1)
+  await expect(meaningBlank.locator('xpath=..').locator('.katex')).toHaveCount(1)
   await expect(page.getByTestId('standard-guide')).not.toContainText('overline(')
 
   const dimensions = await page.evaluate(() => ({
@@ -123,7 +126,10 @@ test('problem card 3 opens 97 with the same progressive flow and no equation lea
   await expect(problem).toContainText('定数 a の値と和集合')
   await expect(problem).not.toContainText('3a-2=4')
   await expect(page.getByTestId('math-practice-reading-flow')).toBeVisible()
-  await expect(page.getByTestId('math-practice-current-target')).toContainText('共通部分の条件から a を求める')
+  const currentTarget = page.getByTestId('math-practice-current-target')
+  await expect(currentTarget).toContainText('共通部分の条件から')
+  await expect(currentTarget).toContainText('を求める')
+  await expect(currentTarget.locator('.katex')).toHaveCount(1)
   await expect(page.getByTestId('standard-problem').locator('.katex')).toHaveCount(3)
 
   const firstBlank = 'math-practice-097-four-membership'

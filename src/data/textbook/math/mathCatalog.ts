@@ -53,7 +53,7 @@ export const mathTextbookTopics: readonly MathTextbookTopicCatalogEntry[] = [
     },
     practiceTopicId: 'prove-propositions',
     practiceRange: [108, 117],
-    unitIds: [],
+    unitIds: ['math-propositions-proof'],
     learnerHeadings: [],
   },
 ] as const

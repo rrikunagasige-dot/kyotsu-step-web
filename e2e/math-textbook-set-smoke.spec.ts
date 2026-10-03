@@ -224,17 +224,18 @@ test('function-conditions review unit forms the function concept before revealin
   await expect(page.getByTestId('textbook-item-func-a02')).toBeVisible()
 })
 
-test('proposition-proof review unit builds the reverse before naming it', async ({ page }) => {
+test('proposition-proof review unit establishes equivalence before reverse and contrapositive work', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-propositions-proof'))
 
   await expect(page.getByRole('heading', { name: '命題を証明する', exact: true })).toBeVisible()
+  await expect(page.getByTestId('textbook-item-proof-e01')).toBeVisible()
+  await expect(page.getByTestId('textbook-item-proof-a01')).toHaveCount(0)
+
+  await answerItem(page, 'proof-e01', '真')
+  await answerItem(page, 'proof-e02', 'x=0')
+
+  await expect(page.getByText(/pとqは同値である/)).toBeVisible()
   await expect(page.getByTestId('textbook-item-proof-a01')).toBeVisible()
-  await expect(page.getByText(/を逆という/)).toHaveCount(0)
-
-  await answerItem(page, 'proof-a01', 'q\\Rightarrow p')
-
-  await expect(page.getByText(/を逆という/)).toBeVisible()
-  await expect(page.getByTestId('textbook-item-proof-a02')).toBeVisible()
 })
 
 test('math set lesson boots directly on the shared textbook reader', async ({ page }) => {

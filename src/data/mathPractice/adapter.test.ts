@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { mathPractice87To120Catalog, mathPracticePilotCatalog } from './catalog'
 import { mathPracticePilotSource } from './pilot'
+import { mathPracticeSetsBatchASource } from './setsBatchA'
 import { mathPracticePilotQuestions, mathPracticePilotQuestionsZh } from './adapter'
 
 describe('math practice 87-120 staged integration', () => {
@@ -74,6 +75,26 @@ describe('math practice 87-120 staged integration', () => {
         .map((node) => node.blankId)
       expect(new Set(flowIds)).toEqual(new Set(Object.keys(question.learning.blanks)))
     }
+  })
+
+  it('preserves TeX escapes in Math 88 source strings before adaptation', () => {
+    const question = mathPracticeSetsBatchASource.find((item) => item.problemNo === 88)
+    expect(question).toBeDefined()
+
+    const latex = [
+      ...(question?.problem.filter((block) => block.type === 'latex').map((block) => block.latex) ?? []),
+      ...(question?.guide.flatMap((node) =>
+        node.type === 'content'
+          ? node.blocks.filter((block) => block.type === 'latex').map((block) => block.latex)
+          : [],
+      ) ?? []),
+    ]
+
+    const joined = latex.join('\n')
+    expect(joined).toContain('\\text')
+    expect(joined).toContain('\\times')
+    expect(joined).toContain('\\ldots')
+    expect(joined).not.toContain('\t')
   })
 
   it('uses the original problem again for simulation instead of inventing a second exercise', () => {

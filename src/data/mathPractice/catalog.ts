@@ -22,7 +22,7 @@ export const mathPractice87To120Catalog: MathPracticeCatalogEntry[] = [
   { problemNo: 97, section: 'sets', sectionTitle: '集合', title: '共通部分から定数を決める', pilot: true },
 
   { problemNo: 98, section: 'propositions', sectionTitle: '命題と条件', title: '命題と真偽', pilot: true },
-  { problemNo: 99, section: 'propositions', sectionTitle: '命題と条件', title: '含意の真偽', pilot: false },
+  { problemNo: 99, section: 'propositions', sectionTitle: '命題と条件', title: '含意の真偽', pilot: true },
   { problemNo: 100, section: 'propositions', sectionTitle: '命題と条件', title: '反例', pilot: false },
   { problemNo: 101, section: 'propositions', sectionTitle: '命題と条件', title: '条件の否定', pilot: false },
   { problemNo: 102, section: 'propositions', sectionTitle: '命題と条件', title: '「かつ」と「または」', pilot: false },

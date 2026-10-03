@@ -878,5 +878,209 @@ export const mathPracticePropositionsBatchBSource: MathPracticeSourceQuestion[] 
     ],
     fullExplanation: '「かつ」は共通部分、「または」は和集合として扱う。端点は、共通部分では両方の条件が含むときだけ残し、和集合ではどちらか一方が含めば残す。',
   },
+  {
+    problemNo: 103,
+    section: 'propositions',
+    sectionTitle: '命題と条件',
+    title: '複合条件の否定',
+    estimatedSeconds: 420,
+    knowledgeTags: ['negation', 'de-morgan', 'logical-and-or', 'inequality', 'rational-number'],
+    skillTags: ['condition-reading', 'case-classification', 'conclusion'],
+    problem: [
+      { type: 'text', text: 'x、y は実数、n は自然数とする。次の条件の否定を述べよ。' },
+      { type: 'latex', latex: '(1)\\;x=2\\;\\text{かつ}\\;y\\ne-1' },
+      { type: 'latex', latex: '(2)\\;x>8\\;\\text{または}\\;x=3' },
+      { type: 'latex', latex: '(3)\\;5<x\\le10' },
+      { type: 'text', text: '(4) n は偶数または 5 の倍数である。' },
+      { type: 'text', text: '(5) x、y の少なくとも一方は無理数である。' },
+    ],
+    guide: [
+      {
+        type: 'content',
+        blocks: [{
+          type: 'text',
+          text: '「かつ」全体を成り立たなくするには少なくとも一方を失敗させる。「または」全体を成り立たなくするには両方を失敗させる。この意味から複合条件の否定規則を作る。',
+        }],
+      },
+      { type: 'blank', blankId: 'rule' },
+
+      {
+        type: 'content',
+        blocks: [{
+          type: 'text',
+          text: '(1) は「かつ」の条件なので、2つの原子条件をそれぞれ否定し、全体が失敗する形に結び直す。',
+        }],
+      },
+      { type: 'blank', blankId: 'p1-result' },
+
+      {
+        type: 'content',
+        blocks: [{
+          type: 'text',
+          text: '(2) は「または」の条件なので、元の2条件がどちらも成り立たない場合を表す。',
+        }],
+      },
+      { type: 'blank', blankId: 'p2-result' },
+
+      {
+        type: 'content',
+        blocks: [
+          { type: 'text', text: '(3) の連続不等式を、まず2つの条件の「かつ」として読む。' },
+          { type: 'latex', latex: 'x>5\\;\\text{かつ}\\;x\\le10' },
+        ],
+      },
+      { type: 'blank', blankId: 'p3-result' },
+
+      {
+        type: 'content',
+        blocks: [{
+          type: 'text',
+          text: '(4) は「偶数」と「5の倍数」の少なくとも一方を満たす条件である。全体を否定するには両方の性質を否定する。',
+        }],
+      },
+      { type: 'blank', blankId: 'p4-result' },
+
+      {
+        type: 'content',
+        blocks: [{
+          type: 'text',
+          text: '(5) の「少なくとも一方が無理数」は「xが無理数 または yが無理数」と読む。これが成り立たない状態を考える。',
+        }],
+      },
+      { type: 'blank', blankId: 'p5-result' },
+    ],
+    blanks: [
+      {
+        id: 'rule',
+        prompt: '複合条件全体を否定するときの正しい対応は',
+        choices: [
+          choice('de-morgan', 'かつ→否定同士を「または」、または→否定同士を「かつ」', true),
+          choice('keep-connective', 'かつ→否定同士を「かつ」、または→否定同士を「または」'),
+          choice('swap-only', '接続語だけを入れ替え、各条件はそのままにする'),
+        ],
+        skillTag: 'condition-reading',
+        knowledgeTags: ['negation', 'de-morgan', 'logical-and-or'],
+        explanation: '「かつ」を壊すには少なくとも一方が失敗し、「または」を壊すには両方が失敗するため、各条件を否定したうえで接続語が入れ替わります。',
+      },
+      {
+        id: 'p1-result',
+        prompt: '(1) の否定は',
+        choices: [
+          choice('correct', 'x≠2 または y=-1', true),
+          choice('and', 'x≠2 かつ y=-1'),
+          choice('wrong-y', 'x≠2 または y≠-1'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['negation', 'de-morgan'],
+        explanation: 'x=2 の否定は x≠2、y≠-1 の否定は y=-1。「かつ」の否定なので「または」で結びます。',
+      },
+      {
+        id: 'p2-result',
+        prompt: '(2) の否定は',
+        choices: [
+          choice('correct', 'x≤8 かつ x≠3', true),
+          choice('or', 'x≤8 または x≠3'),
+          choice('boundary-loss', 'x<8 かつ x≠3'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['negation', 'de-morgan', 'inequality'],
+        explanation: 'x>8 の否定は境界を含む x≤8、x=3 の否定は x≠3。「または」の否定なので「かつ」で結びます。',
+      },
+      {
+        id: 'p3-result',
+        prompt: '(3) の否定は',
+        choices: [
+          choice('correct', 'x≤5 または x>10', true),
+          choice('boundary-wrong', 'x<5 または x≥10'),
+          choice('inside', '5≤x<10'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['negation', 'de-morgan', 'inequality'],
+        explanation: '5<x≤10 は x>5 かつ x≤10。各条件を否定すると x≤5 と x>10 になり、「または」で結びます。',
+      },
+      {
+        id: 'p4-result',
+        prompt: '(4) の否定は',
+        choices: [
+          choice('correct', 'n は奇数かつ 5 の倍数でない。', true),
+          choice('or', 'n は奇数または 5 の倍数でない。'),
+          choice('even-not-five', 'n は偶数かつ 5 の倍数でない。'),
+        ],
+        skillTag: 'case-classification',
+        knowledgeTags: ['negation', 'de-morgan'],
+        explanation: '偶数の否定は奇数、5の倍数の否定は5の倍数でないこと。「または」の否定なので両方を「かつ」で満たします。',
+      },
+      {
+        id: 'p5-result',
+        prompt: '(5) の否定は',
+        choices: [
+          choice('both-rational', 'x、y はともに有理数である。', true),
+          choice('both-irrational', 'x、y はともに無理数である。'),
+          choice('at-least-rational', 'x、y の少なくとも一方は有理数である。'),
+        ],
+        skillTag: 'conclusion',
+        knowledgeTags: ['negation', 'de-morgan', 'rational-number'],
+        explanation: '「少なくとも一方が無理数」の否定は「どちらも無理数ではない」。x,y は実数なので、両方とも有理数です。',
+      },
+    ],
+    simulation: [
+      {
+        id: 's1',
+        label: '(1)',
+        prompt: 'x=2 かつ y≠-1 の否定を選べ。',
+        answerType: 'single-choice',
+        choices: [choice('correct', 'x≠2 または y=-1', true), choice('and', 'x≠2 かつ y=-1'), choice('wrong-y', 'x≠2 または y≠-1')],
+        score: 2,
+        estimatedSeconds: 25,
+        knowledgeTags: ['negation', 'de-morgan'],
+        skillTags: ['case-classification'],
+      },
+      {
+        id: 's2',
+        label: '(2)',
+        prompt: 'x>8 または x=3 の否定を選べ。',
+        answerType: 'single-choice',
+        choices: [choice('correct', 'x≤8 かつ x≠3', true), choice('or', 'x≤8 または x≠3'), choice('boundary-loss', 'x<8 かつ x≠3')],
+        score: 2,
+        estimatedSeconds: 25,
+        knowledgeTags: ['negation', 'de-morgan', 'inequality'],
+        skillTags: ['case-classification'],
+      },
+      {
+        id: 's3',
+        label: '(3)',
+        prompt: '5<x≤10 の否定を選べ。',
+        answerType: 'single-choice',
+        choices: [choice('correct', 'x≤5 または x>10', true), choice('boundary-wrong', 'x<5 または x≥10'), choice('inside', '5≤x<10')],
+        score: 2,
+        estimatedSeconds: 25,
+        knowledgeTags: ['negation', 'de-morgan', 'inequality'],
+        skillTags: ['case-classification'],
+      },
+      {
+        id: 's4',
+        label: '(4)',
+        prompt: '「n は偶数または5の倍数」の否定を選べ。',
+        answerType: 'single-choice',
+        choices: [choice('correct', 'n は奇数かつ 5 の倍数でない。', true), choice('or', 'n は奇数または 5 の倍数でない。'), choice('even-not-five', 'n は偶数かつ 5 の倍数でない。')],
+        score: 2,
+        estimatedSeconds: 25,
+        knowledgeTags: ['negation', 'de-morgan'],
+        skillTags: ['case-classification'],
+      },
+      {
+        id: 's5',
+        label: '(5)',
+        prompt: '「x,y の少なくとも一方は無理数」の否定を選べ。',
+        answerType: 'single-choice',
+        choices: [choice('both-rational', 'x、y はともに有理数である。', true), choice('both-irrational', 'x、y はともに無理数である。'), choice('at-least-rational', 'x、y の少なくとも一方は有理数である。')],
+        score: 2,
+        estimatedSeconds: 25,
+        knowledgeTags: ['negation', 'de-morgan', 'rational-number'],
+        skillTags: ['conclusion'],
+      },
+    ],
+    fullExplanation: '複合条件の否定は、各原子条件を否定したうえで De Morgan の対応を使う。「かつ」の否定は否定同士を「または」、「または」の否定は否定同士を「かつ」で結ぶ。「少なくとも一方」の否定は「両方とも〜でない」である。',
+  },
 
 ]

@@ -242,7 +242,6 @@ test('proposition-reading follows the textbook order from truth to necessary/suf
   ]
   for (const [itemId, answer] of negationAnswers) await answerItem(page, itemId, answer)
 
-  await expect(page.getByTestId('reading-role-summary-marker-summary-sets')).toBeVisible()
   await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
   await expect(page.getByTestId('textbook-next-unit')).toHaveAttribute(
     'href',
@@ -753,6 +752,7 @@ test('real-line endpoint judgments precede complement formulas and the unit can 
   ]
   for (const [itemId, answer] of remaining) await answerItem(page, itemId, answer)
 
+  await expect(page.getByTestId('reading-role-summary-marker-summary-sets')).toBeVisible()
   await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
   await expect(page.getByTestId('textbook-return-to-setup')).toHaveAttribute('href', '#/learning/setup?subject=math-1a')
   await expect(page.locator('.katex-error')).toHaveCount(0)

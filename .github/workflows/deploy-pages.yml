@@ -20,6 +20,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: 2127c3d4d35793546228ac2fe2a9d38e8a9f97be
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:

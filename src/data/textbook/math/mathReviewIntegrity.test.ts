@@ -92,10 +92,10 @@ describe('math textbook review integrity', () => {
           section.description ?? '',
           ...section.figures.flatMap((figure) => [figure.alt, figure.caption ?? '']),
           ...section.readingFlow.flatMap((block) => {
-            if (block.type === 'heading') return [block.text]
+            if (block.type === 'heading' || block.type === 'marker' || block.type === 'dialogue') return [block.text]
             if (block.type === 'paragraph' || block.type === 'formula') {
               return block.parts
-                .filter((part) => part.type === 'text')
+                .filter((part) => part.type === 'text' || part.type === 'term')
                 .map((part) => part.text)
             }
             return []

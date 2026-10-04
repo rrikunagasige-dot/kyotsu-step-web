@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest'
 import { mathPractice87To120Catalog, mathPracticePilotCatalog } from './catalog'
 import { mathPracticePilotSource } from './pilot'
 import { mathPracticeSetsBatchASource } from './setsBatchA'
+import { mathPracticeSetsBatchASourceZh } from './setsBatchA.zh'
 import { mathPracticePropositionsBatchBSource } from './propositionsBatchB'
 import { mathPracticeProofsBatchCSource } from './proofsBatchC'
 import { mathPracticeFunctionsBatchDSource } from './functionsBatchD'
@@ -624,18 +625,20 @@ describe('math practice 87-120 staged integration', () => {
   })
 
   it('keeps formerly-fallback Chinese prompts semantically specific in 88-96', () => {
-    const byId = Object.fromEntries(mathPracticePilotQuestionsZh.map((question) => [question.questionId, question]))
-    const prompt = (questionId: string, blankId: string) =>
-      byId[questionId]?.learning.blanks[blankId]?.prompt
+    const sourceByNo = Object.fromEntries(
+      mathPracticeSetsBatchASourceZh.map((question) => [question.problemNo, question]),
+    )
+    const prompt = (problemNo: number, blankId: string) =>
+      sourceByNo[problemNo]?.blanks.find((blank) => blank.id === blankId)?.prompt
 
-    expect(prompt('math-practice-088', 'p2-step')).toContain('正奇数')
-    expect(prompt('math-practice-089', 'subset-rule')).toContain('子集')
-    expect(prompt('math-practice-090', 'p2-zero-product')).toContain('乘积')
-    expect(prompt('math-practice-091', 'p2-range')).toContain('元素')
-    expect(prompt('math-practice-092', 'p2-common')).toContain('公共元素')
-    expect(prompt('math-practice-093', 'p1-meaning')).toContain('A∩B∩C')
-    expect(prompt('math-practice-095', 'p3-regions')).toContain('区域')
-    expect(prompt('math-practice-096', 'p4-candidates')).toContain('候选范围')
+    expect(prompt(88, 'p2-step')).toContain('正奇数')
+    expect(prompt(89, 'subset-rule')).toContain('子集')
+    expect(prompt(90, 'p2-zero-product')).toContain('乘积')
+    expect(prompt(91, 'p2-range')).toContain('元素')
+    expect(prompt(92, 'p2-common')).toContain('公共元素')
+    expect(prompt(93, 'p1-meaning')).toContain('A∩B∩C')
+    expect(prompt(95, 'p3-regions')).toContain('区域')
+    expect(prompt(96, 'p4-candidates')).toContain('候选范围')
   })
 
   it('keeps every authored thinking blank referenced by the learning flow', () => {

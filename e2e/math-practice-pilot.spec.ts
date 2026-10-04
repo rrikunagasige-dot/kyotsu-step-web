@@ -1928,6 +1928,71 @@ test('88 keeps the stop-point answer hidden until the learner reasons it out, th
   await expect(page.getByTestId('math-practice-dependency-links')).toHaveCount(0)
 })
 
+test('89 reuses only the common subset basis, then summarizes the four candidate judgments', async ({ page }) => {
+  await page.getByTestId('math-exercise-basic').click()
+  await page.getByTestId('math-topic-organize-sets').click()
+  await page.getByTestId('math-topic-question-3').click()
+
+  await expect(page.getByRole('heading', { name: '89｜部分集合' })).toBeVisible()
+  const currentTarget = page.getByTestId('math-practice-current-target')
+  const readingFlow = page.getByTestId('math-practice-reading-flow')
+
+  await expect(currentTarget).toContainText('まず確認')
+  await page.getByTestId('blank-math-practice-089-a-set').click()
+  await page.getByTestId('option-math-practice-089-a-set-correct').click()
+  await page.getByTestId('blank-math-practice-089-subset-rule').click()
+  await page.getByTestId('option-math-practice-089-subset-rule-all').click()
+
+  await expect(currentTarget).toContainText('今の問い｜B')
+  let deps = page.getByTestId('math-practice-dependency-links')
+  await expect(deps).toContainText('判定に使う共通準備')
+  await expect(deps).toContainText('部分集合の基準')
+  await expect(deps).toContainText('2,4,6,8,10')
+
+  await page.getByTestId('blank-math-practice-089-b-counterexample').click()
+  await page.getByTestId('option-math-practice-089-b-counterexample-one').click()
+  await page.getByTestId('blank-math-practice-089-b-judgment').click()
+  await page.getByTestId('option-math-practice-089-b-judgment-not-subset').click()
+
+  await expect(currentTarget).toContainText('今の問い｜C')
+  deps = page.getByTestId('math-practice-dependency-links')
+  await expect(deps).toContainText('判定に使う共通準備')
+  await expect(deps).not.toContainText('B の判定')
+  await page.getByTestId('blank-math-practice-089-c-judgment').click()
+  await page.getByTestId('option-math-practice-089-c-judgment-subset').click()
+
+  await expect(currentTarget).toContainText('今の問い｜D')
+  await page.getByTestId('blank-math-practice-089-d-counterexample').click()
+  await page.getByTestId('option-math-practice-089-d-counterexample-twelve').click()
+  await page.getByTestId('blank-math-practice-089-d-judgment').click()
+  await page.getByTestId('option-math-practice-089-d-judgment-not-subset').click()
+
+  await expect(currentTarget).toContainText('今の問い｜E')
+  await page.getByTestId('blank-math-practice-089-e-judgment').click()
+  await page.getByTestId('option-math-practice-089-e-judgment-subset').click()
+
+  await expect(currentTarget).toContainText('結論')
+  deps = page.getByTestId('math-practice-dependency-links')
+  await expect(deps).toContainText('候補ごとの判定')
+  await expect(deps).toContainText('B の判定')
+  await expect(deps).toContainText('C の判定')
+  await expect(deps).toContainText('D の判定')
+  await expect(deps).toContainText('E の判定')
+  await expect(deps).not.toContainText('判定に使う共通準備')
+  await expect(readingFlow).not.toContainText('B について、A に入らない要素があるかを探す')
+  await expect(page.getByTestId('blank-math-practice-089-final-result')).toContainText('選択')
+
+  await page.getByTestId('blank-math-practice-089-final-result').click()
+  await page.getByTestId('option-math-practice-089-final-result-ce').click()
+  await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
+
+  const dimensions = await page.evaluate(() => ({
+    viewport: window.innerWidth,
+    page: document.documentElement.scrollWidth,
+  }))
+  expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
+})
+
 test('93 reuses only the prepared A B C result block across its two subproblems', async ({ page }) => {
   await page.getByTestId('math-exercise-basic').click()
   await page.getByTestId('math-topic-organize-sets').click()

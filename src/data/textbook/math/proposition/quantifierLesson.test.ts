@@ -64,6 +64,29 @@ describe('math quantifier textbook unit', () => {
   })
 
 
+
+  it('preserves the five source examples and their truth/negation conclusions', () => {
+    const items = mathQuantifierUnit.sections[0].items
+
+    expect(items.find((item) => item.id === 'quant-a02')?.answer).toBe('a=2, b=3')
+    expect(items.find((item) => item.id === 'quant-a03')?.answer)
+      .toBe('すべての素数の組(a,b)に対してabは奇数である')
+
+    expect(items.find((item) => item.id === 'quant-b01')?.answer).toBe('存在しない')
+    expect(items.find((item) => item.id === 'quant-b02')?.answer)
+      .toBe('すべての実数xに対して x²≠-1')
+
+    expect(items.find((item) => item.id === 'quant-c02')?.answer).toBe('2')
+    expect(items.find((item) => item.id === 'quant-c03')?.answer).toBe('ある素数は偶数である')
+
+    expect(items.find((item) => item.id === 'quant-d02')?.answer).toBe('4')
+    expect(items.find((item) => item.id === 'quant-d03')?.answer)
+      .toBe('ある2つの無理数の積は有理数である')
+
+    expect(items.find((item) => item.id === 'quant-e01')?.answer).toBe('真')
+    expect(items.find((item) => item.id === 'quant-e02')?.answer).toBe('偽')
+  })
+
   it('matches the source wording for the prime-number negation', () => {
     const item = mathQuantifierUnit.sections[0].items.find((candidate) => candidate.id === 'quant-c03')
     expect(item?.answer).toBe('ある素数は偶数である')

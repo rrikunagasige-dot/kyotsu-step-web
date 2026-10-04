@@ -24,8 +24,8 @@
 ## 2. 条件から命題を読む
 
 ### math-propositions-reading
-- revision: 1
-- status: review（assistant deep static QA PASS。quantifier unitと同じread-propositions topicとして、user hands-on QA後にpromotion）
+- revision: 2
+- status: review（MASTER復元実装済み / automated CI PASS。quantifier unitと同じread-propositions topicとしてuser hands-on QA待ち）
 - source: 深進数学I p.92〜95 相当
 - practice topic: read-propositions
 - practice questions: 98〜107
@@ -49,8 +49,8 @@
 ## 3. 命題を証明する
 
 ### math-propositions-proof
-- revision: 2
-- status: review（assistant deep static QA PASS。user hands-on QA待ち）
+- revision: 3
+- status: review（MASTER復元実装済み / automated CI PASS。user hands-on QA待ち）
 - source: 深進数学I p.96〜98 相当
 - practice topic: prove-propositions
 - practice questions: 108, 110〜117
@@ -70,8 +70,8 @@
 ## 3A. 参考「すべて」と「ある」
 
 ### math-quantifiers-all-exists
-- revision: 3
-- status: review（assistant deep static QA PASS。math-propositions-readingと同じread-propositions topicとしてuser hands-on QA待ち）
+- revision: 4
+- status: review（MASTER復元実装済み / automated CI PASS。math-propositions-readingと同じread-propositions topicとしてuser hands-on QA待ち）
 - source: 深進数学I p.100〜101 相当
 - learner topic: read-propositions
 - practice overlap: read-propositions / 109
@@ -116,3 +116,14 @@ review unit は以下が揃うまで published にしない:
 - math practice regression
 - setup curriculum order
 - user hands-on QA
+
+
+## 2026-10-04 MASTER restoration note
+
+The review units were restored from the frozen mathematics textbook-mode MASTER after hands-on inspection showed excessive mini-question rhythm.
+
+- proposition-reading: 18 → 14 interactions; redundant conclusion/name-recall panels merged into prose
+- quantifier: 13 → 11 interactions; concrete witness/counterexample moved before abstract rule
+- proof: 23 interactions retained; concrete source proposition now precedes reverse/inverse/contrapositive naming; contradiction method name remains after the worked proof
+- current revisions: reading 2 / quantifier 4 / proof 3
+- all remain review pending user hands-on QA

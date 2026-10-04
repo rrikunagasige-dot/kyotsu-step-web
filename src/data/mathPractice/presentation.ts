@@ -754,7 +754,7 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
     {
       id: 's2',
       kicker: { ja: '今の問い｜(2)', zh: '当前问题｜(2)' },
-      label: { ja: '奇数を2の倍数の補集合として表す', zh: '把奇数表示为2的倍数的补集' },
+      label: { ja: '奇数の条件を集合 P で表す', zh: '用集合 P 表示奇数条件' },
       blankIds: ['p2-result'],
       dependsOn: ['basis'],
     },
@@ -824,7 +824,7 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
     {
       id: 'basis',
       kicker: { ja: 'まず確認', zh: '先确认' },
-      label: { ja: '同値の証明を2方向へ分ける', zh: '把等价证明分成两个方向' },
+      label: { ja: '同値を示すための証明方針を考える', zh: '思考证明等价所需的方针' },
       blankIds: ['rule'],
       result: {
         blankId: 'rule',
@@ -856,7 +856,7 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
     {
       id: 'conclude',
       kicker: { ja: '結論', zh: '结论' },
-      label: { ja: '2方向を合わせて同値を結論する', zh: '合并两个方向得到等价结论' },
+      label: { ja: '2方向の結果から最終関係を判断する', zh: '根据两个方向的结果判断最终关系' },
       blankIds: ['equivalence'],
       dependsOn: ['forward', 'reverse'],
       resultLinkLabel: { ja: '示した2方向', zh: '已证明的两个方向' },
@@ -1090,7 +1090,7 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
     {
       id: 'p4-form',
       kicker: { ja: '今の問い｜(4) 奇数の式', zh: '当前问题｜(4) 奇数表示' },
-      label: { ja: '奇数を2k+1の形に直す', zh: '把奇数写成2k+1' },
+      label: { ja: '奇数を整数 k を使って表す', zh: '用整数 k 表示奇数' },
       blankIds: ['p4-form'],
       dependsOn: ['p4-contrapositive'],
       result: { blankId: 'p4-form', label: { ja: '奇数の表現', zh: '奇数的表示式' } },
@@ -1173,7 +1173,7 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
     {
       id: 'assumption',
       kicker: { ja: 'まずの目標', zh: '第一个目标' },
-      label: { ja: '√xが有理数だと反対仮定する', zh: '反设√x为有理数' },
+      label: { ja: '背理法の反対仮定を置く', zh: '写出反证法所需的反设' },
       blankIds: ['assumption'],
       result: {
         blankId: 'assumption',
@@ -1322,7 +1322,7 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
     {
       id: 'assumption',
       kicker: { ja: '次の目標', zh: '下一个目标' },
-      label: { ja: 'q≠0と反対仮定する', zh: '反设q≠0' },
+      label: { ja: 'q=0を示すための反対仮定を置く', zh: '为证明q=0写出反设' },
       blankIds: ['assumption'],
       dependsOn: ['target'],
       result: {
@@ -1462,7 +1462,7 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
     {
       id: 'basis',
       kicker: { ja: 'まず確認', zh: '先确认' },
-      label: { ja: '関数かどうかは「yがただ1つ決まるか」で判定する', zh: '判断函数要看y是否唯一确定' },
+      label: { ja: '関数の判定基準を確認する', zh: '确认函数的判定标准' },
       blankIds: ['rule'],
       result: {
         blankId: 'rule',

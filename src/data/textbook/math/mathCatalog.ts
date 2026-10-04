@@ -44,36 +44,32 @@ export const mathTextbookTopics: readonly MathTextbookTopicCatalogEntry[] = [
     id: 'read-propositions',
     label: { ja: '条件から命題を読む', zh: '从条件理解命题' },
     flow: {
-      ja: '真偽 → 必要条件・十分条件 → 条件の否定',
-      zh: '真假 → 必要条件・充分条件 → 条件的否定',
+      ja: '真偽 → 必要条件・十分条件 → 条件の否定 → 「すべて」と「ある」',
+      zh: '真假 → 必要条件・充分条件 → 条件的否定 → “所有”与“存在”',
     },
     practiceLinks: [
       {
         topicId: 'read-propositions',
-        questionNumbers: [98, 99, 100, 101, 102, 103, 104, 105, 106, 107],
+        questionNumbers: [98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 109],
       },
     ],
-    unitIds: ['math-propositions-reading'],
+    unitIds: ['math-propositions-reading', 'math-quantifiers-all-exists'],
     learnerHeadings: [],
   },
   {
     id: 'prove-propositions',
     label: { ja: '命題を証明する', zh: '证明命题' },
     flow: {
-      ja: '逆・裏・対偶 → 証明しやすい向き → 対偶による証明 → 矛盾を使う証明 → 「すべて」と「ある」',
-      zh: '逆命题・否命题・逆否命题 → 选择易证明的方向 → 逆否证明 → 用矛盾证明 → “所有”与“存在”',
+      ja: '逆・裏・対偶 → 証明しやすい向き → 対偶による証明 → 矛盾を使う証明',
+      zh: '逆命题・否命题・逆否命题 → 选择易证明的方向 → 逆否证明 → 用矛盾证明',
     },
     practiceLinks: [
       {
         topicId: 'prove-propositions',
         questionNumbers: [108, 110, 111, 112, 113, 114, 115, 116, 117],
       },
-      {
-        topicId: 'read-propositions',
-        questionNumbers: [109],
-      },
     ],
-    unitIds: ['math-propositions-proof', 'math-quantifiers-all-exists'],
+    unitIds: ['math-propositions-proof'],
     learnerHeadings: [],
   },
 ] as const

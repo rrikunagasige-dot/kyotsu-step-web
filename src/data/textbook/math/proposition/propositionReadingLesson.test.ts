@@ -263,6 +263,12 @@ describe('math proposition-reading textbook unit', () => {
     ])
   })
 
+  it('keeps relation hints staged from broad direction to concrete evidence', () => {
+    const item = mathPropositionReadingUnit.sections[0].items.find((candidate) => candidate.id === 'prop-b05')
+    expect(item?.hints[0]).toContain('別々に')
+    expect(item?.hints[1]).toContain('x=0')
+  })
+
   it('does not put the exact answer into the first staged hint', () => {
     const items = mathPropositionReadingUnit.sections[0].items
     for (const item of items) {

@@ -76,7 +76,7 @@ const rawMathQuantifierUnit = {
           parts: [
             { type: 'text' as const, text: 'では、この命題が成り立たないと言うには、「条件を満たす組が1つもない」と言えばよい。つまり否定は ' },
             { type: 'choice' as const, itemId: 'quant-a03' },
-            { type: 'text' as const, text: ' である。' },
+            { type: 'text' as const, text: '。' },
           ],
         },
         {
@@ -134,7 +134,7 @@ const rawMathQuantifierUnit = {
           parts: [
             { type: 'text' as const, text: 'この命題の否定は ' },
             { type: 'choice' as const, itemId: 'quant-c03' },
-            { type: 'text' as const, text: ' である。' },
+            { type: 'text' as const, text: '。' },
           ],
         },
         {
@@ -173,7 +173,7 @@ const rawMathQuantifierUnit = {
           parts: [
             { type: 'text' as const, text: 'したがって、その否定は ' },
             { type: 'choice' as const, itemId: 'quant-d03' },
-            { type: 'text' as const, text: ' である。' },
+            { type: 'text' as const, text: '。' },
           ],
         },
 

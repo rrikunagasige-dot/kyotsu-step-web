@@ -108,6 +108,12 @@ User hands-on 前の assistant-side deep audit を、3 review unit 全54穴に�
    - `mathFigureAssets.test.ts` checks SVG presence/structure, counterexample-point geometry, and equal diagonals.
    - Existing stale grouping test was corrected to group only `status: published` units.
 
+## Temporary QA deployment
+
+- review branch `chatgpt/math-textbook-sets-v1` is temporarily allowed to deploy to GitHub Pages for user hands-on QA.
+- review units remain `status: review` and stay hidden from the normal setup.
+- remove the temporary Pages branch trigger before merge.
+
 ## Manual hands-on gate
 
 Direct routes（HashRouter）:

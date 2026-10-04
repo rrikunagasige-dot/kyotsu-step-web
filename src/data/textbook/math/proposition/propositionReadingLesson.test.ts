@@ -204,6 +204,31 @@ describe('math proposition-reading textbook unit', () => {
       .toBe('必要条件')
   })
 
+
+  it('shows the equal-diagonals evidence figure before the reverse-direction judgment', () => {
+    const section = mathPropositionReadingUnit.sections[0]
+    const flow = section.readingFlow
+    const firstDirectionIndex = flow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'prop-b01',
+      ),
+    )
+    const figureIndex = flow.findIndex(
+      (block) => block.type === 'figure' && block.figureId === 'equal-diagonals-quadrilateral',
+    )
+    const reverseDirectionIndex = flow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'prop-b02',
+      ),
+    )
+    const figure = section.figures.find((candidate) => candidate.id === 'equal-diagonals-quadrilateral')
+
+    expect(firstDirectionIndex).toBeGreaterThanOrEqual(0)
+    expect(figureIndex).toBeGreaterThan(firstDirectionIndex)
+    expect(reverseDirectionIndex).toBeGreaterThan(figureIndex)
+    expect(figure?.caption).not.toMatch(/必要条件|十分条件/)
+  })
+
   it('uses only three learner-facing headings', () => {
     const headings = mathPropositionReadingUnit.sections[0].readingFlow
       .filter((block) => block.type === 'heading')

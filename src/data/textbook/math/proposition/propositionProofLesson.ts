@@ -3,7 +3,7 @@ import { validateTextbookUnits } from '../../../../domain/textbookSchema'
 const rawMathPropositionProofUnit = {
   schemaVersion: '1.1' as const,
   unitId: 'math-propositions-proof',
-  revision: 3,
+  revision: 4,
   status: 'review' as const,
   subject: 'math-1a' as const,
   chapter: {
@@ -39,6 +39,12 @@ const rawMathPropositionProofUnit = {
           id: 'heading-reverse',
           type: 'heading' as const,
           text: '命題の向きを変える',
+        },
+        {
+          id: 'marker-example-transformations',
+          type: 'marker' as const,
+          kind: 'example' as const,
+          text: '例題',
         },
         {
           id: 'formula-example-x',
@@ -82,11 +88,17 @@ const rawMathPropositionProofUnit = {
             { type: 'math' as const, latex: 'p\\Rightarrow q' },
             { type: 'text' as const, text: ' に対して、' },
             { type: 'math' as const, latex: 'q\\Rightarrow p' },
-            { type: 'text' as const, text: ' を逆、' },
+            { type: 'text' as const, text: ' を' },
+            { type: 'term' as const, text: '逆' },
+            { type: 'text' as const, text: '、' },
             { type: 'math' as const, latex: '\\bar p\\Rightarrow\\bar q' },
-            { type: 'text' as const, text: ' を裏、' },
+            { type: 'text' as const, text: ' を' },
+            { type: 'term' as const, text: '裏' },
+            { type: 'text' as const, text: '、' },
             { type: 'math' as const, latex: '\\bar q\\Rightarrow\\bar p' },
-            { type: 'text' as const, text: ' を対偶という。今作った3つの式は、この一般形を具体的な命題に当てはめたものである。' },
+            { type: 'text' as const, text: ' を' },
+            { type: 'term' as const, text: '対偶' },
+            { type: 'text' as const, text: 'という。今作った3つの式は、この一般形を具体的な命題に当てはめたものである。' },
           ],
         },
         {
@@ -138,6 +150,18 @@ const rawMathPropositionProofUnit = {
           ],
         },
         {
+          id: 'dialogue-taro-transformations',
+          type: 'dialogue' as const,
+          speaker: 'taro' as const,
+          text: '前件と後件を入れ替えるか、否定するか、その両方をするかで3つの形に分かれるんですね。',
+        },
+        {
+          id: 'marker-check-truth-pairs',
+          type: 'marker' as const,
+          kind: 'check' as const,
+          text: '確認',
+        },
+        {
           id: 'formula-example-multiple12',
           type: 'formula' as const,
           parts: [
@@ -175,7 +199,13 @@ const rawMathPropositionProofUnit = {
           id: 'paragraph-equivalence-pair',
           type: 'paragraph' as const,
           parts: [
-            { type: 'text' as const, text: 'このように、元の命題とその対偶の真偽は一致する。また、逆と裏の真偽も一致する。したがって証明では、元の命題より対偶の方が扱いやすければ対偶を証明してよい。' },
+            { type: 'text' as const, text: 'このように、元の命題とその' },
+            { type: 'term' as const, text: '対偶' },
+            { type: 'text' as const, text: 'の真偽は一致する。また、' },
+            { type: 'term' as const, text: '逆' },
+            { type: 'text' as const, text: 'と' },
+            { type: 'term' as const, text: '裏' },
+            { type: 'text' as const, text: 'の真偽も一致する。したがって証明では、元の命題より対偶の方が扱いやすければ対偶を証明してよい。' },
           ],
         },
 
@@ -183,6 +213,18 @@ const rawMathPropositionProofUnit = {
           id: 'heading-contrapositive-proof',
           type: 'heading' as const,
           text: '証明しやすい向きを選ぶ',
+        },
+        {
+          id: 'marker-proof-contrapositive',
+          type: 'marker' as const,
+          kind: 'proof' as const,
+          text: '証明',
+        },
+        {
+          id: 'dialogue-teacher-proof-direction',
+          type: 'dialogue' as const,
+          speaker: 'teacher' as const,
+          text: '式変形を始める前に、元の命題と対偶のどちらが場合分けしやすいかを見よう。',
         },
         {
           id: 'paragraph-cp-intro',
@@ -263,6 +305,12 @@ const rawMathPropositionProofUnit = {
           text: '矛盾を作って証明する',
         },
         {
+          id: 'marker-proof-contradiction',
+          type: 'marker' as const,
+          kind: 'proof' as const,
+          text: '証明',
+        },
+        {
           id: 'paragraph-bc-intro',
           type: 'paragraph' as const,
           parts: [
@@ -334,6 +382,12 @@ const rawMathPropositionProofUnit = {
           ],
         },
         {
+          id: 'dialogue-hanako-contradiction',
+          type: 'dialogue' as const,
+          speaker: 'hanako' as const,
+          text: '無理数のはずの√6が有理数になるなら、その仮定は同時には成り立てないね。',
+        },
+        {
           id: 'paragraph-bc04',
           type: 'paragraph' as const,
           parts: [
@@ -357,14 +411,26 @@ const rawMathPropositionProofUnit = {
           id: 'paragraph-contradiction-concept',
           type: 'paragraph' as const,
           parts: [
-            { type: 'text' as const, text: '今のように、結論を否定して仮定し、そこから矛盾を導いてその仮定を退ける証明方法を背理法という。' },
+            { type: 'text' as const, text: '今のように、結論を否定して仮定し、そこから矛盾を導いてその仮定を退ける証明方法を' },
+            { type: 'term' as const, text: '背理法' },
+            { type: 'text' as const, text: 'という。' },
           ],
+        },
+        {
+          id: 'marker-summary-proof',
+          type: 'marker' as const,
+          kind: 'summary' as const,
+          text: 'まとめ',
         },
         {
           id: 'paragraph-proof-summary',
           type: 'paragraph' as const,
           parts: [
-            { type: 'text' as const, text: '証明で大切なのは、難しい式変形を先に始めることではない。元の命題の向きを見て、対偶の方が扱いやすいか、結論を否定して矛盾を作る方が自然かを先に判断することである。' },
+            { type: 'text' as const, text: '証明では、難しい式変形を先に始めるのではなく、まず命題の向きを見る。元の命題より' },
+            { type: 'term' as const, text: '対偶' },
+            { type: 'text' as const, text: 'の方が扱いやすければ対偶を証明できる。また、結論を否定した仮定から矛盾を導いてその仮定を退ける方法が' },
+            { type: 'term' as const, text: '背理法' },
+            { type: 'text' as const, text: 'である。証明方法の名前より先に、どの向き・どの仮定なら筋道を作りやすいかを判断する。' },
           ],
         },
       ],

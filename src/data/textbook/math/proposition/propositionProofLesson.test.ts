@@ -5,9 +5,27 @@ import { mathPropositionProofUnit } from './propositionProofLesson'
 describe('math proposition-proof textbook unit', () => {
   it('keeps the proof source scope in review during audit', () => {
     expect(mathPropositionProofUnit.status).toBe('review')
-    expect(mathPropositionProofUnit.revision).toBe(3)
+    expect(mathPropositionProofUnit.revision).toBe(4)
     expect(mathPropositionProofUnit.chapter?.chapterId).toBe('math-ch03-sets-propositions')
     expect(mathPropositionProofUnit.chapter?.sourcePages).toEqual([96, 97, 98])
+  })
+
+  it('visually separates example, proof, check, and summary roles while bolding formal terms', () => {
+    const flow = mathPropositionProofUnit.sections[0].readingFlow
+    const markers = flow.filter((block) => block.type === 'marker')
+    const dialogues = flow.filter((block) => block.type === 'dialogue')
+    const terms = flow.flatMap((block) =>
+      block.type === 'paragraph' || block.type === 'formula'
+        ? block.parts.filter((part) => part.type === 'term').map((part) => part.text)
+        : [],
+    )
+
+    expect(markers.filter((block) => block.type === 'marker' && block.kind === 'example')).toHaveLength(1)
+    expect(markers.filter((block) => block.type === 'marker' && block.kind === 'check')).toHaveLength(1)
+    expect(markers.filter((block) => block.type === 'marker' && block.kind === 'proof')).toHaveLength(2)
+    expect(markers.filter((block) => block.type === 'marker' && block.kind === 'summary')).toHaveLength(1)
+    expect(dialogues).toHaveLength(3)
+    expect(terms).toEqual(expect.arrayContaining(['逆', '裏', '対偶', '背理法']))
   })
 
   it('starts from reverse, inverse, and contrapositive without reteaching equivalence', () => {
@@ -202,7 +220,7 @@ describe('math proposition-proof textbook unit', () => {
     )
     const nameIndex = flow.findIndex(
       (block) => block.type === 'paragraph' && block.parts.some(
-        (part) => part.type === 'text' && part.text.includes('背理法という'),
+        (part) => part.type === 'term' && part.text === '背理法',
       ),
     )
     expect(finalDecisionIndex).toBeGreaterThanOrEqual(0)

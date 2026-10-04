@@ -452,6 +452,7 @@ test('proposition-proof review unit starts from changing the direction of a prop
 
   await expect(page.getByRole('heading', { name: '命題を証明する', exact: true })).toBeVisible()
   await expect(page.getByRole('heading', { name: '命題の向きを変える', exact: true })).toBeVisible()
+  await expect(page.getByTestId('reading-role-example-marker-example-transformations')).toBeVisible()
   await expect(page.getByTestId('textbook-item-proof-a01')).toBeVisible()
   await expect(page.getByTestId('textbook-item-proof-a01')).toHaveAttribute(
     'aria-label',
@@ -471,6 +472,9 @@ test('proposition-proof review unit starts from changing the direction of a prop
   await answerItem(page, 'proof-a02', 'x^2\\ne x\\Rightarrow x\\ne1')
   await answerItem(page, 'proof-a03', 'x\\ne1\\Rightarrow x^2\\ne x')
   await expect(page.getByText(/ここまで作った3つの命題に名前をつける/)).toBeVisible()
+  await expect(page.locator('.reading-term').filter({ hasText: /^逆$/ })).toBeVisible()
+  await expect(page.locator('.reading-term').filter({ hasText: /^裏$/ })).toBeVisible()
+  await expect(page.locator('.reading-term').filter({ hasText: /^対偶$/ })).toBeVisible()
 })
 
 
@@ -519,7 +523,13 @@ test('proof review reaches contrapositive and contradiction conclusions without 
   ]
   for (const [itemId, answer] of answers) await answerItem(page, itemId, answer)
 
-  await expect(page.getByText(/証明方法を背理法という/)).toBeVisible()
+  await expect(page.getByTestId('reading-role-proof-marker-proof-contrapositive')).toBeVisible()
+  await expect(page.getByTestId('reading-role-proof-marker-proof-contradiction')).toBeVisible()
+  const contradictionTerm = page.locator('.reading-term').filter({ hasText: /^背理法$/ }).first()
+  await expect(contradictionTerm).toBeVisible()
+  const contradictionWeight = await contradictionTerm.evaluate((element) => Number.parseInt(getComputedStyle(element).fontWeight, 10))
+  expect(contradictionWeight).toBeGreaterThanOrEqual(700)
+  await expect(page.getByTestId('reading-role-summary-marker-summary-proof')).toBeVisible()
   await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
   await expect(page.locator('.katex-error')).toHaveCount(0)
 

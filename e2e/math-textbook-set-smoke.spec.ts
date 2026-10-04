@@ -209,10 +209,14 @@ test('proposition-reading follows the textbook order from truth to necessary/suf
 
   await expect(page.getByRole('heading', { name: '必要条件・十分条件を見分ける', exact: true })).toBeVisible()
   await expect(page.getByTestId('textbook-item-prop-b01')).toBeVisible()
+  await expect(page.getByTestId('textbook-figure-equal-diagonals-quadrilateral')).toHaveCount(0)
   await expect(page.getByTestId('textbook-item-prop-c01')).toHaveCount(0)
 
+  await answerItem(page, 'prop-b01', '等しい')
+  await expect(page.getByTestId('textbook-figure-equal-diagonals-quadrilateral')).toBeVisible()
+  await expect(page.getByTestId('textbook-item-prop-b02')).toBeVisible()
+
   const relationAnswers: Array<[string, string]> = [
-    ['prop-b01', '等しい'],
     ['prop-b02', '限らない'],
     ['prop-b03', '必要条件'],
     ['prop-b04', '必要条件'],

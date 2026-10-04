@@ -13,7 +13,7 @@ describe('math textbook catalog', () => {
         questionNumbers: [87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97],
       },
     ])
-    expect(topic?.flow.ja).toBe('集合の表し方 → 部分集合 → 共通部分・和集合 → 補集合 → 集合の条件')
+    expect(topic?.flow.ja).toBe('集合の表し方 → 共通部分・和集合 → 部分集合 → 補集合 → 集合の条件')
   })
 
 
@@ -131,9 +131,9 @@ describe('math textbook catalog', () => {
   it('keeps the approved three learner-facing headings in order', () => {
     const topic = mathTextbookTopics[0]
     expect(topic.learnerHeadings).toEqual([
-      '集合を表す',
-      '集合どうしの関係を見る',
-      '集合の外側まで考える',
+      '第1部　集合を表す',
+      '第2部　集合どうしの関係を見る',
+      '第3部　集合の外側まで考える',
     ])
 
     const headings = mathSetUnit.sections[0].readingFlow

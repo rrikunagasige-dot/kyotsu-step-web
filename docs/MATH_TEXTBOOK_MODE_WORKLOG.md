@@ -18,19 +18,23 @@
 
 ## Curriculum contract
 
-練習モードと同じ3テーマを独立catalogで固定:
+learner-facing の章構造は教科書をauthorityにする。練習モードとの対応は、内容が実際に重なる範囲だけを内部metadataで持つ。
 
 1. `organize-sets`
-   - 練習 87〜97
+   - source: 第3章 p.86〜91
+   - practice overlap: 87〜97
    - 集合の表し方 → 部分集合 → 共通部分・和集合 → 補集合 → 集合の条件
 2. `read-propositions`
-   - 練習 98〜120
-   - 真偽 → 条件の否定 → 必要条件・十分条件 → 「すべて」と「ある」 → 関数の条件
+   - source: 第3章 p.92〜95, p.100〜101
+   - practice overlap: 98〜107, 109
+   - 真偽 → 必要条件・十分条件 → 条件の否定 → 「すべて」と「ある」
 3. `prove-propositions`
-   - 練習 108〜117
-   - 同値 → 逆・裏・対偶 → 対偶による証明 → 無理数 → 背理法
+   - source: 第3章 p.96〜98
+   - practice overlap: 108, 110〜117
+   - 逆・裏・対偶 → 証明しやすい向き → 対偶による証明 → 矛盾を使う証明
 
-runtimeでは練習モードをimportしない。同期はmetadataとtestで固定する。
+第2章 p.46〜47 の `math-functions-conditions` はこの3テーマへ入れない。
+runtimeでは練習モードをimportせず、同期はmetadataとtestだけで確認する。
 
 ## Published
 
@@ -77,13 +81,13 @@ Source:
 ### math-functions-conditions
 Source:
 - 第2章 p.46〜47 相当
-- 関数の判定基準
-- 円周x → 半径y
-- 正の数x → 平方根y
-- 面積1の長方形で縦x → 横y
+- y=4x−6 から関数の意味を作る
+- f(−1), f(2), f(a−1)
+- f(x)=x²−1 の代入
+- 周40 cmの長方形 → y=20−x → 定義域・値域
 Checkpoint:
-- 学習モードとして教科書ベースで監査
-- 練習問題番号は learner-facing 構造に使わない
+- 第3章 learner topic から分離
+- 第2章を実装するときに接続する将来unit
 - STATUS: review
 
 ### math-propositions-proof
@@ -105,7 +109,7 @@ Checkpoint:
 
 ## 追加監査メモ
 
-- proposition proof は practice taxonomy と同期し、同値 → 逆・裏・対偶 → 対偶証明 → 矛盾の順へ整理。
+- proposition proof は教科書 p.96〜98 の順に合わせ、逆・裏・対偶 → 対偶証明 → 矛盾の順へ整理。
 - review unit の subtitle / objectives から、後で学ぶ用語や結論を先に見せる answer leakage を削除。
 - frontmatter leakage test を追加し、本文に入る前に概念名を先取りしないことを自動監査。
 - source → unit → learner flow の対応は `docs/MATH_TEXTBOOK_SOURCE_MAP.md` に分離して記録。
@@ -167,7 +171,7 @@ FAIL時:
 - `math-functions-conditions` のsourceは第2章 p.46〜47。
 - 現在の数学textbook setupは第3章「集合と命題」を固定表示しているため、このunitをそのままpublishedにすると章表示が不正になる。
 - 内容監査は続けるが、数学setupをchapter-awareにするまでは `math-functions-conditions` をpublishedへ上げない。
-- 練習モード側のtopic同期は内部metadataとして保持し、章表示の根拠にはしない。
+- このunitは第3章topicへ接続せず、第2章を実装するときまで review のまま保持する。
 
 ## Promotion gate for review units
 
@@ -178,7 +182,7 @@ review → published に上げる条件:
 4. mobile / desktop visual QA PASS
 5. Math practice regression PASS
 6. Physics textbook regression PASS
-7. setup topic flowが練習モード順と一致
+7. setup topic flowが教科書順と一致し、practice overlap metadataと矛盾しない
 8. user hands-on QA で本文・穴・図・黒字概念の感触を確認
 
 自動PASSだけで published にしない。

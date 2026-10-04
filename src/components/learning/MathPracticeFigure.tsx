@@ -137,7 +137,6 @@ function NumberLineFigure({ id, text }: { id: MathPracticeFigureId; text: Locali
         { from: -2, to: 1, y: 72, label: 'P' },
         { from: 0, to: 1, y: 133, label: 'Q' },
       ],
-      marker: { value: 0, label: 'x=0' },
     },
     'F99-4': {
       title: ['端点 -2 に注目する', '关注端点 -2'],

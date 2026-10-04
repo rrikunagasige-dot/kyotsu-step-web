@@ -1071,3 +1071,109 @@ Remaining release actions require an explicit decision:
 2. merge to `main` only after explicit approval
 3. deploy only after explicit approval
 4. after deployment, run a short production smoke check before marking the release complete
+
+
+---
+
+# Post-merge release QA addendum — 2026-10-04
+
+The earlier sections above are historical snapshots from the pre-merge QA phase. Release actions have now been completed.
+
+## Release state
+
+Merged / released:
+- PR #44: 98–120 reasoning-flow + progressive-figure implementation
+- PR #45: release QA fixes for figure semantics / leakage
+- PR #47: additional 99-(4) endpoint-figure timing fix
+
+Production main after PR #47:
+- merge commit: `bba63fdcd77c67f6a71f6ca9b1160d19e1e7d42e`
+- Pages workflow: `37182944455`
+- build: PASS
+- audited browser smoke: PASS
+- Pages deploy: PASS
+- deployed Pages build version: `bba63fdcd77c67f6a71f6ca9b1160d19e1e7d42e`
+
+## Release-QA defects found after the original final-QA ledger closed
+
+### RQAF-001 — 99-(2) unbounded interval rendering
+
+Finding:
+- `P=(-∞,1)` was visually drawn like a finite interval.
+
+Repair:
+- render the left side as an unbounded ray with a left arrow,
+- regression-test the figure semantics.
+
+Status: RESOLVED in PR #45.
+
+### RQAF-002 — 101 real-number axis semantics
+
+Finding:
+- the real-number line showed only the rightward continuation arrow.
+
+Repair:
+- render continuation in both directions.
+
+Status: RESOLVED in PR #45.
+
+### RQAF-003 — 110 transformation-form answer leakage
+
+Finding:
+- the in-progress figure displayed completed forms such as `q⇒p`, `¬q⇒¬p`, `¬p⇒¬q` before the learner constructed those forms.
+
+Repair:
+- in-progress figure shows only structural labels `元 / 逆 / 対偶 / 裏`,
+- completed implication forms appear only in the summary state,
+- mobile/desktop regression tests lock the behavior.
+
+Status: RESOLVED in PR #45.
+
+### RQAF-004 — 99-(4) endpoint-membership visual leakage
+
+Finding:
+- after deriving `P=[-2,2]` and `Q=(-2,4)`, figure F99-4 appeared before the learner-owned `p4-left-endpoint` node,
+- the closed/open endpoint dots therefore visually answered the next question: `-2∈P` and `-2∉Q`.
+
+Repair:
+- keep F99-4 hidden through `p4-p-set` and `p4-q-set`,
+- reveal it only after `p4-left-endpoint` is resolved,
+- add a focused timing regression.
+
+PR:
+- #47
+
+CI:
+- Math practice pilot CI run `37182773854`
+- typecheck: PASS
+- focused/unit tests: PASS
+- build: PASS
+- Pixel 7 mobile smoke: PASS
+- desktop smoke: PASS
+
+Status: RESOLVED and deployed.
+
+## Re-audit after release fixes
+
+Rechecked:
+- 111–117 current-target labels, dependency surfaces, proof staging, and 114 figures,
+- 118–120 current-target labels, progressive figures, 118 two-output reveal, 120 route/domain reveal,
+- figure timing against learner-owned thinking nodes rather than only against target IDs.
+
+Result:
+- no additional confirmed answer-leakage defect found in 111–120,
+- 114 figures remain answer-neutral: they show the cases to inspect, not the residue results,
+- 118 two-output diagram still appears only after the learner counts the two outputs,
+- 120 route states remain staged: `3x` after traveled-distance reasoning, endpoint values hidden as `x=?`, final `0,5` only after both endpoints are solved.
+
+## Current release conclusion
+
+Code / automated QA / deployment:
+**PASS**
+
+Still required before calling the learner experience fully finished:
+- user hands-on QA on the production app,
+- only concrete defects found there should reopen 87–120.
+
+Do not restart redesign from scratch.
+Do not touch 87–97 without a newly observed defect.

@@ -27,3 +27,36 @@
 - PR #41。差分は Math 119 関連のみで physics 混入なし。
 - 最新CI: typecheck PASS / focused tests PASS / build PASS / mobile smoke PASS。desktop smoke 実行中。
 - 120: 別prep branchで no-blank solution、thinking nodes、dependency graph、answer leakage、stable blank IDs/choices、最終87–120 QA planまで準備済み。本実装は119 merge後。
+
+
+## 2026-10-04 — Math practice 87–120 release QA / production release
+
+- PR #44 の98–120 reasoning-flow / progressive figuresをmainへ統合し、Pages公開を実施。
+- feature branchのPages QAがproduction Pagesと同じdeployment targetを使い、`concurrency: pages` でmain deployをcancelし得る問題を確認。production deployをmainで再実行し成功。
+- release QAで図のsemantic / answer-leakageを再監査。
+- PR #45で修正:
+  - 99-(2) `(-∞,1)` を左無限rayとして描画
+  - 101の実数数直線を左右両方向arrowへ修正
+  - 110の途中図から完成済み implication forms を除去し、summaryでのみ表示
+- 追加監査で99-(4)のendpoint leakageを発見:
+  - `P=[-2,2]`, `Q=(-2,4)` の○/●が `p4-left-endpoint` の答えを先に表示
+  - PR #47でF99-4をendpoint判断後まで遅延
+  - focused timing regression追加
+- PR #47 CI run `37182773854`:
+  - typecheck PASS
+  - unit/focused tests PASS
+  - build PASS
+  - Pixel 7 mobile smoke PASS
+  - desktop smoke PASS
+- main merge commit: `bba63fdcd77c67f6a71f6ca9b1160d19e1e7d42e`
+- production Pages run `37182944455`: build PASS / browser smoke PASS / deploy PASS
+- deployed Pages build version: `bba63fdcd77c67f6a71f6ca9b1160d19e1e7d42e`
+- 111–120を追加静的監査:
+  - target label / dependency / guide leakage: 新規confirmed defectなし
+  - 114 figures: resultを先出しせずcase-onlyでPASS
+  - 118 two-output reveal: count判断後のみ2-output figureでPASS
+  - 120 route/domain figures: endpoint未解決時は`x=?`、両endpoint解決後のみ0/5表示でPASS
+- workflow lesson:
+  - CI / Pages待ち中は次の独立監査を進める
+  - mainが並行chatで進んだら再baseし、重複変更を捨ててPRを最小化する
+- 現在の残作業: production appでのuser hands-on QA。具体的不具合が出た箇所だけ再openする。

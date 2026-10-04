@@ -13,6 +13,20 @@
 
 古い `chatgpt/*` / `backup/*` branch はcurrent authorityとして使わない。
 
+
+## 数学・練習モードの作業入口
+
+このroot READMEの本文は主に**物理教科書モード**のauthorityである。
+
+数学 I・A の**練習モード**（4STEP / 87–120）を扱う場合は、物理のP00〜P39をそのまま適用せず、最初に次を読む:
+
+1. `docs/MATH_PRACTICE_MASTER_LESSONS.md`
+2. `docs/MATH_PRACTICE_87_120_STRUCTURE_MAP.md`
+3. `docs/MATH_PRACTICE_87_120_FINAL_QA_FINDINGS.md`
+
+数学練習モードのcurrent reusable rules、thinking node、dependency、figure leakage、mobile QA、release QAは上記3ファイルをauthorityとする。
+
+
 ## 目的
 
 第1章「物体の運動」を 1A〜1G の7単元として安全に導入する。既存の教科書モードの状態機械は維持し、次だけを一般化する。

@@ -8,6 +8,7 @@ on:
       - 'src/domain/textbookSchema.ts'
       - 'src/domain/textbookSchema.test.ts'
       - 'src/data/textbook/math/**'
+      - 'public/assets/math/textbook/**'
       - 'src/data/textbook/index.ts'
       - 'src/pages/TextbookUnitPage.tsx'
       - 'src/pages/LearningSetupPage.tsx'
@@ -54,7 +55,7 @@ jobs:
         run: pnpm run typecheck
 
       - name: Textbook schema and math-unit tests
-        run: pnpm exec vitest run src/domain/textbook.test.ts src/domain/textbookSchema.test.ts src/data/textbook/math/mathCatalog.test.ts src/data/textbook/math/mathFrontmatterLeak.test.ts src/data/textbook/math/mathReviewIntegrity.test.ts src/data/textbook/math/set/setLesson.test.ts src/data/textbook/math/proposition/propositionReadingLesson.test.ts src/data/textbook/math/proposition/quantifierLesson.test.ts src/data/textbook/math/function/functionConditionsLesson.test.ts src/data/textbook/math/proposition/propositionProofLesson.test.ts
+        run: pnpm exec vitest run src/domain/textbook.test.ts src/domain/textbookSchema.test.ts src/data/textbook/math/mathCatalog.test.ts src/data/textbook/math/mathFrontmatterLeak.test.ts src/data/textbook/math/mathReviewIntegrity.test.ts src/data/textbook/math/mathFigureAssets.test.ts src/data/textbook/math/set/setLesson.test.ts src/data/textbook/math/proposition/propositionReadingLesson.test.ts src/data/textbook/math/proposition/quantifierLesson.test.ts src/data/textbook/math/function/functionConditionsLesson.test.ts src/data/textbook/math/proposition/propositionProofLesson.test.ts
 
       - name: Build
         run: pnpm run build

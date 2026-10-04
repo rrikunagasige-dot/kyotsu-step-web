@@ -50,7 +50,7 @@ const rawMathPropositionReadingUnit = {
         },
         {
           id: 'equal-diagonals-quadrilateral',
-          src: '/assets/math/textbook/proposition/equal-diagonals-quadrilateral.svg',
+          src: '/assets/math/textbook/propositions/equal-diagonals-quadrilateral.svg',
           alt: '対角線ACとBDの長さが等しいが、長方形ではない四角形ABCD',
           caption: 'ACとBDの長さが等しい四角形の一例。',
           overlays: [],

@@ -12,6 +12,7 @@ import { useAppStore } from '../stores/useAppStore'
 import { useI18n } from '../i18n/runtime'
 import { normalizeTextbookMath } from '../domain/textbookMath'
 import { chapter1ChunkForUnitCode, chapter1Localized, chapter1NextUnit } from '../data/textbook/ch01/chapter1Architecture'
+import { mathTextbookNextUnitId } from '../data/textbook/math'
 
 function interactionPrompt(item: TextbookItem, text: (ja: string, zh: string) => string, subject: TextbookUnit['subject']) {
   switch (item.purpose) {
@@ -358,6 +359,7 @@ export function TextbookUnitPage() {
   const chapterChunk = unit.subject === 'physics' ? chapter1ChunkForUnitCode(unitCode) : undefined
   const majorTitle = chapterChunk ? chapter1Localized(chapterChunk.title, language) : displayTitle
   const nextChapter1Unit = unit.subject === 'physics' ? chapter1NextUnit(unitCode) : undefined
+  const nextMathUnitId = unit.subject === 'math-1a' ? mathTextbookNextUnitId(unit.unitId) : undefined
   const setupReturnPath = unit.subject === 'math-1a' ? '/learning/setup?subject=math-1a' : '/learning/setup'
   const subjectEyebrow = unit.subject === 'math-1a' ? 'MATH I+A' : 'PHYSICS'
   const unitComplete = summary.completed === summary.total
@@ -490,7 +492,9 @@ export function TextbookUnitPage() {
             </div>
             {nextChapter1Unit
               ? <Link className="raised-link" data-testid="textbook-next-unit" to={`/learning/textbook/${nextChapter1Unit.unitId}`}>{text('次へ', '继续')}</Link>
-              : <Link className="raised-link" data-testid="textbook-return-to-setup" to={setupReturnPath}>{text('学習設定へ戻る', '返回学习设置')}</Link>}
+              : nextMathUnitId
+                ? <Link className="raised-link" data-testid="textbook-next-unit" to={`/learning/textbook/${nextMathUnitId}`}>{text('次へ', '继续')}</Link>
+                : <Link className="raised-link" data-testid="textbook-return-to-setup" to={setupReturnPath}>{text('学習設定へ戻る', '返回学习设置')}</Link>}
           </div>
         )}
       </div>

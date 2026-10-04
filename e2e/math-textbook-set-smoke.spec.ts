@@ -207,7 +207,7 @@ test('proposition-reading follows the textbook order from truth to necessary/suf
   ]
   for (const [itemId, answer] of truthAnswers) await answerItem(page, itemId, answer)
 
-  await expect(page.getByRole('heading', { name: '必要条件・十分条件を見分ける', exact: true })).toBeVisible()
+  await expect(page.getByRole('heading', { name: '2つの条件の関係を見る', exact: true })).toBeVisible()
   await expect(page.getByTestId('textbook-item-prop-b01')).toBeVisible()
   await expect(page.getByTestId('textbook-figure-equal-diagonals-quadrilateral')).toHaveCount(0)
   await expect(page.getByTestId('textbook-item-prop-c01')).toHaveCount(0)
@@ -225,7 +225,7 @@ test('proposition-reading follows the textbook order from truth to necessary/suf
   ]
   for (const [itemId, answer] of relationAnswers) await answerItem(page, itemId, answer)
 
-  await expect(page.getByRole('heading', { name: '条件を否定する', exact: true })).toBeVisible()
+  await expect(page.getByRole('heading', { name: '成り立たない条件を考える', exact: true })).toBeVisible()
   await expect(page.getByTestId('textbook-item-prop-c01')).toBeVisible()
 })
 

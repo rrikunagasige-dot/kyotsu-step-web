@@ -324,6 +324,21 @@ describe('math practice 87-120 staged integration', () => {
       .toBe('necessary-only')
     expect(question?.blanks.find((blank) => blank.id === 'p5-classification')?.choices.find((choice) => choice.correct)?.id)
       .toBe('neither')
+
+    expect(question?.problem).toContainEqual({
+      type: 'text',
+      text: '(5) △ABC の3辺 BC, CA, AB の長さをそれぞれ a, b, c とする。',
+    })
+    expect(question?.problem).toContainEqual({
+      type: 'latex',
+      latex: '(a-b)(a^2+b^2-c^2)=0\\;\\text{ は△ABCが直角二等辺三角形であるための□}',
+    })
+
+    const chinese = mathPracticePropositionsBatchBSourceZh.find((item) => item.problemNo === 107)
+    expect(chinese?.problem).toContainEqual({
+      type: 'text',
+      text: '(5) 设 △ABC 的3边 BC、CA、AB 的长度分别为 a、b、c。',
+    })
   })
 
   it('authors 108 as a two-direction equivalence proof with an explicit reverse sign split', () => {

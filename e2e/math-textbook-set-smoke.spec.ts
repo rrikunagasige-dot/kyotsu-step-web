@@ -223,6 +223,21 @@ test('quantifier review unit derives the negation of exists only after an existe
   await expect(page.getByText(/「あるxに対してpである」の否定は/)).toBeVisible()
 })
 
+test('quantifier review wrong answer stays unresolved and keeps the witness step locked', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/math-quantifiers-all-exists'))
+
+  await chooseWrongOption(page, 'quant-a01', '1つ')
+
+  await expect(page.getByTestId('resolved-quant-a01')).toHaveCount(0)
+  await expect(page.getByTestId('textbook-item-quant-a02')).toHaveCount(0)
+  await expect(page.getByText(/「あるxに対してpである」の否定は/)).toHaveCount(0)
+
+  await page.getByTestId('textbook-item-quant-a01').click()
+  const hint = page.getByTestId('textbook-hint-quant-a01')
+  await expect(hint).toBeVisible()
+  await expect(hint).not.toContainText('1つ')
+})
+
 test('quantifier review unit derives the negation of all only after the source counterexample', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-quantifiers-all-exists'))
 
@@ -283,6 +298,21 @@ test('proposition-proof review unit establishes equivalence before reverse and c
   await expect(page.getByTestId('textbook-item-proof-a01')).toBeVisible()
 })
 
+
+test('proof review wrong answer stays unresolved and keeps equivalence prose locked', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/math-propositions-proof'))
+
+  await chooseWrongOption(page, 'proof-e01', '真')
+
+  await expect(page.getByTestId('resolved-proof-e01')).toHaveCount(0)
+  await expect(page.getByTestId('textbook-item-proof-e02')).toHaveCount(0)
+  await expect(page.getByText(/pとqは同値である/)).toHaveCount(0)
+
+  await page.getByTestId('textbook-item-proof-e01').click()
+  const hint = page.getByTestId('textbook-hint-proof-e01')
+  await expect(hint).toBeVisible()
+  await expect(hint).not.toContainText('真')
+})
 
 test('all review math units enter without KaTeX errors or horizontal overflow', async ({ page }) => {
   const routes = [

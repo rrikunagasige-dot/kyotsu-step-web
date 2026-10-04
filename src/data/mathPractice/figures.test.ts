@@ -37,10 +37,11 @@ describe('math practice figure timing', () => {
     expect(mathPracticeFigureState('math-practice-107', 's5', r('p5-reverse-lengths'))).toBe('F107-5E')
   })
 
-  it('does not show the non-unique 118 mapping until both square roots are found', () => {
+  it('does not show the two-output 118 mapping until the learner counts the outputs', () => {
     expect(mathPracticeFigureState('math-practice-118', 's2', r())).toBeNull()
     expect(mathPracticeFigureState('math-practice-118', 's2', r('p2-sample'))).toBe('F118-2A')
-    expect(mathPracticeFigureState('math-practice-118', 's2', r('p2-sample', 'p2-roots'))).toBe('F118-2B')
+    expect(mathPracticeFigureState('math-practice-118', 's2', r('p2-sample', 'p2-roots'))).toBe('F118-2A')
+    expect(mathPracticeFigureState('math-practice-118', 's2', r('p2-sample', 'p2-roots', 'p2-count'))).toBe('F118-2B')
   })
 
   it('progresses the 120 route without implying an interior current position initially', () => {

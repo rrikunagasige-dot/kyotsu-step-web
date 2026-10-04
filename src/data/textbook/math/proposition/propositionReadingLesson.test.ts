@@ -227,6 +227,7 @@ describe('math proposition-reading textbook unit', () => {
     expect(figureIndex).toBeGreaterThan(firstDirectionIndex)
     expect(reverseDirectionIndex).toBeGreaterThan(figureIndex)
     expect(figure?.caption).not.toMatch(/必要条件|十分条件/)
+    expect(figure?.alt).not.toContain('長方形ではない')
   })
 
   it('uses only three learner-facing headings', () => {

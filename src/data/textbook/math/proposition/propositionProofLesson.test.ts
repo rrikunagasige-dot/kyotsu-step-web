@@ -166,6 +166,22 @@ describe('math proposition-proof textbook unit', () => {
     expect(nameIndex).toBeGreaterThan(finalDecisionIndex)
   })
 
+  it('does not put the exact answer into the first staged hint', () => {
+    const items = mathPropositionProofUnit.sections[0].items
+    const normalize = (value: string) => value
+      .normalize('NFKC')
+      .replace(/[\\s\\u3000]/g, '')
+      .replace(/[−–—]/g, '-')
+      .replace(/\\\\/g, '')
+      .replace(/[{}]/g, '')
+
+    for (const item of items) {
+      const answer = normalize(item.answer)
+      const firstHint = normalize(item.hints[0] ?? '')
+      expect(firstHint, item.id).not.toContain(answer)
+    }
+  })
+
   it('keeps mixed Japanese logical statements in text mode', () => {
     const items = mathPropositionProofUnit.sections[0].items
     expect(items.find((item) => item.id === 'proof-b01')?.answerType).toBe('text')

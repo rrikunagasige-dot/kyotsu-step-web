@@ -633,7 +633,7 @@ const rawMathPropositionProofUnit = {
           choices: ['有理数', '無理数'],
           purpose: 'causal-reasoning' as const,
           scaffoldLevel: 'medium' as const,
-          hints: ['有理数どうしの積・商を考える。', '分母xは0ではない。'],
+          hints: ['xとyが属する数の集合は、積や0でない数による商でどう保たれるか思い出す。', '分母xは0ではない。'],
         },
         {
           id: 'proof-c03',

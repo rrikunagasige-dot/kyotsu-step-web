@@ -614,6 +614,30 @@ describe('math practice 87-120 staged integration', () => {
     expect(JSON.stringify(mathPracticePilotQuestionsZh).match(/[ぁ-んァ-ン]/g)).toBeNull()
   })
 
+  it('contains no generic Chinese fallback placeholders in published Math practice', () => {
+    const serialized = JSON.stringify(mathPracticePilotQuestionsZh)
+
+    expect(serialized).not.toContain('请选择符合当前条件的正确结论。')
+    expect(serialized).not.toContain('根据题目条件与当前推理可得到这一结论。')
+    expect(serialized).not.toContain('继续根据当前条件推理。')
+    expect(serialized).not.toMatch(/候选\s+[1-9]/)
+  })
+
+  it('keeps formerly-fallback Chinese prompts semantically specific in 88-96', () => {
+    const byId = Object.fromEntries(mathPracticePilotQuestionsZh.map((question) => [question.questionId, question]))
+    const prompt = (questionId: string, blankId: string) =>
+      byId[questionId]?.learning.blanks[blankId]?.prompt
+
+    expect(prompt('math-practice-088', 'p2-step')).toContain('正奇数')
+    expect(prompt('math-practice-089', 'subset-rule')).toContain('子集')
+    expect(prompt('math-practice-090', 'p2-zero-product')).toContain('乘积')
+    expect(prompt('math-practice-091', 'p2-range')).toContain('元素')
+    expect(prompt('math-practice-092', 'p2-common')).toContain('公共元素')
+    expect(prompt('math-practice-093', 'p1-meaning')).toContain('A∩B∩C')
+    expect(prompt('math-practice-095', 'p3-regions')).toContain('区域')
+    expect(prompt('math-practice-096', 'p4-candidates')).toContain('候选范围')
+  })
+
   it('keeps every authored thinking blank referenced by the learning flow', () => {
     for (const question of mathPracticePilotQuestions) {
       const flowIds = question.learning.solutionFlow

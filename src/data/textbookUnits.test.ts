@@ -439,7 +439,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
         .map((block) => block.type === 'formula'
           ? block.parts.map((part) =>
               part.type === 'math' ? part.latex :
-              part.type === 'text' ? part.text :
+              part.type === 'text' || part.type === 'term' ? part.text :
               `[${part.itemId}]`
             ).join('')
           : '')

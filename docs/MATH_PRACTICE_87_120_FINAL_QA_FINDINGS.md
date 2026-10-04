@@ -940,44 +940,80 @@ Answer-leak regression was strengthened during repair:
 
 ---
 
-## Source fidelity re-check note — revised 4STEP original still required
+## QAF-009 RESOLUTION — RESOLVED
 
-A second Project/Library search was performed after the QA repairs.
+Status: **RESOLVED**
 
-Found:
-- `数学I_普通練習_集合と命題_4STEP全問_引導版.docx`
+Finding:
+Direct comparison against the revised 4STEP original found one learner-facing source-fidelity defect in the App:
 
-This file is a **derived guided edition**, not the raw source. Its early numbering appears offset from the current App (for example its 問90 corresponds in content to current App 87), and it also contains at least one material wording/content difference: its corresponding “要素の列挙” item uses “100以下の正の偶数”, while the authoritative current structure map for revised 4STEP 88 explicitly records “100以下の正の奇数”.
+- Problem 107-(5) omitted the original definition
+  `△ABC の3辺 BC, CA, AB の長さをそれぞれ a, b, c とする。`
 
-Authority check:
-- `MATH_PRACTICE_87_120_STRUCTURE_MAP.md` identifies its source as `『改訂版 教科書傍用 4STEP数学 1+A』`,
-- it states that original problem wording / subproblem composition / order were re-read and fixed before implementation,
-- its 88 section explicitly records “100以下の正の奇数”.
+Without this line, `a,b,c` appeared without definition before
+`(a-b)(a²+b²-c²)=0`.
 
-Conclusion:
-- do **not** overwrite current App content from the derived guided Word file,
-- do **not** mark raw-source fidelity PASS from that file,
-- the final fidelity gate still requires the actual revised 4STEP original pages/scans for direct comparison.
+Repair:
+- restored the original side-definition sentence in the Japanese problem stem,
+- added the corresponding Chinese sentence,
+- kept the original side order exactly as `BC, CA, AB -> a, b, c`,
+- preserved the mathematical expression and classification answer,
+- added source-level and browser regressions that require the definition to remain visible.
+
+Repair commits:
+- `4a89e01165f7e23c8064e261af9a4db4d925942f`
+- `3d47f07991b678b895f71a57313a5ca68ec3de30`
+- `4631679b64491732f4c16d92a7c64293a40af828`
+- `e7e47125abadd34a23629ba96874d1c817a92585`
+
+Final CI for these commits is still required before merge.
 
 ---
 
-# Global source-fidelity gate — OPEN
+## Source fidelity re-check — PASS
 
-The app structure authority states that 87–120 follows the 4STEP original wording / subproblem order.
+Direct source used:
+- `改訂版 教科書傍用 4STEP数学 1+A (...).pdf`
+- original PDF pages 9–13 contain problems 87–120,
+- `4STEP_問題87-120_全抽出.docx` was used only as a search/index aid and was checked against the original PDF pages,
+- `練習モード_87-120_最終版(1).docx` was used as a secondary text aid, not as the primary authority.
 
-A derived Library Word document was found during audit, but its displayed numbering does not align directly with the current app numbering for this range.
+Checked across 87–120:
+- problem order,
+- subproblem order,
+- numerical constants,
+- inequalities and endpoint signs,
+- radicals and fractions,
+- set expressions and complements,
+- variable/domain declarations,
+- function definitions,
+- physical-domain wording in 120,
+- wording whose omission would change mathematical meaning.
 
-Therefore:
-- do not use that derived document alone as proof of raw-source fidelity
-- do not mark the source-fidelity gate PASS yet
-- final acceptance still requires re-check against the actual original source / authoritative scans for:
-  - numbers
-  - signs
-  - inequalities
-  - radicals
-  - subproblem order
-  - domain conditions
-  - wording that changes mathematical meaning
+Result:
+- problems 87–120 match the revised 4STEP original after the 107-(5) repair,
+- the earlier derived guided Word file that said “100以下の正の偶数” for the item corresponding to current 88 was not authoritative; the original source and the dedicated 87–120 extraction both confirm **“100以下の正の奇数”**,
+- no other source-fidelity defect was confirmed in the 87–120 sweep.
+
+Status:
+**PASS at the content/source level.**
+
+---
+
+# Global source-fidelity gate — PASS
+
+The actual revised 4STEP source was directly re-checked for the 87–120 range.
+
+Acceptance:
+- numbers: PASS
+- signs / inequalities: PASS
+- radicals / fractions: PASS
+- subproblem order: PASS
+- domain conditions: PASS
+- variable definitions: PASS after 107-(5) repair
+- wording that changes mathematical meaning: PASS after 107-(5) repair
+
+This gate does not replace the final repository CI / deploy gate.
 
 ---
 

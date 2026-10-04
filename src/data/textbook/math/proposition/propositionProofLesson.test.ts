@@ -5,26 +5,12 @@ describe('math proposition-proof textbook unit', () => {
   it('keeps the proof source scope in review during audit', () => {
     expect(mathPropositionProofUnit.status).toBe('review')
     expect(mathPropositionProofUnit.chapter?.chapterId).toBe('math-ch03-sets-propositions')
-    expect(mathPropositionProofUnit.chapter?.sourcePages).toEqual([94, 95, 96, 97, 98])
+    expect(mathPropositionProofUnit.chapter?.sourcePages).toEqual([96, 97, 98])
   })
 
-  it('establishes equivalence before building reverse, inverse, and contrapositive', () => {
+  it('starts from reverse, inverse, and contrapositive without reteaching equivalence', () => {
     const flow = mathPropositionProofUnit.sections[0].readingFlow
-    const eqForwardIndex = flow.findIndex(
-      (block) => block.type === 'paragraph' && block.parts.some(
-        (part) => part.type === 'choice' && part.itemId === 'proof-e01',
-      ),
-    )
-    const eqReverseIndex = flow.findIndex(
-      (block) => block.type === 'paragraph' && block.parts.some(
-        (part) => part.type === 'choice' && part.itemId === 'proof-e02',
-      ),
-    )
-    const equivalenceConceptIndex = flow.findIndex(
-      (block) => block.type === 'paragraph' && block.parts.some(
-        (part) => part.type === 'text' && part.text.includes('pとqは同値である'),
-      ),
-    )
+    const items = mathPropositionProofUnit.sections[0].items
     const reverseIndex = flow.findIndex(
       (block) => block.type === 'paragraph' && block.parts.some(
         (part) => part.type === 'choice' && part.itemId === 'proof-a01',
@@ -40,10 +26,9 @@ describe('math proposition-proof textbook unit', () => {
         (part) => part.type === 'choice' && part.itemId === 'proof-a03',
       ),
     )
-    expect(eqForwardIndex).toBeGreaterThanOrEqual(0)
-    expect(eqReverseIndex).toBeGreaterThan(eqForwardIndex)
-    expect(equivalenceConceptIndex).toBeGreaterThan(eqReverseIndex)
-    expect(reverseIndex).toBeGreaterThan(equivalenceConceptIndex)
+
+    expect(items.some((item) => item.id.startsWith('proof-e'))).toBe(false)
+    expect(reverseIndex).toBeGreaterThanOrEqual(0)
     expect(inverseIndex).toBeGreaterThan(reverseIndex)
     expect(contrapositiveIndex).toBeGreaterThan(inverseIndex)
   })
@@ -139,7 +124,6 @@ describe('math proposition-proof textbook unit', () => {
 
   it('keeps mixed Japanese logical statements in text mode', () => {
     const items = mathPropositionProofUnit.sections[0].items
-    expect(items.find((item) => item.id === 'proof-e02')?.answerType).toBe('text')
     expect(items.find((item) => item.id === 'proof-b01')?.answerType).toBe('text')
   })
 
@@ -148,7 +132,7 @@ describe('math proposition-proof textbook unit', () => {
       .filter((block) => block.type === 'heading')
       .map((block) => block.text)
     expect(headings).toEqual([
-      '2つの向きを比べる',
+      '命題の向きを変える',
       '証明しやすい向きを選ぶ',
       '矛盾を作って証明する',
     ])

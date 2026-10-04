@@ -176,6 +176,12 @@ describe('math quantifier textbook unit', () => {
     }
   })
 
+  it('keeps universal-negation hints staged from idea to concrete sentence shape', () => {
+    const item = mathQuantifierUnit.sections[0].items.find((candidate) => candidate.id === 'quant-c03')
+    expect(item?.hints[0]).toContain('否定の文')
+    expect(item?.hints[1]).toContain('ある素数は')
+  })
+
   it('does not put the exact answer into the first staged hint', () => {
     const items = mathQuantifierUnit.sections[0].items
     for (const item of items) {

@@ -314,34 +314,35 @@ test('function review remains readable through the rectangle domain/range conclu
   expect(viewport.scrollWidth).toBeLessThanOrEqual(viewport.clientWidth + 1)
 })
 
-test('proposition-proof review unit establishes equivalence before reverse and contrapositive work', async ({ page }) => {
+test('proposition-proof review unit starts from changing the direction of a proposition', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-propositions-proof'))
 
   await expect(page.getByRole('heading', { name: '命題を証明する', exact: true })).toBeVisible()
-  await expect(page.getByTestId('textbook-item-proof-e01')).toBeVisible()
-  await expect(page.getByTestId('textbook-item-proof-a01')).toHaveCount(0)
-
-  await answerItem(page, 'proof-e01', '真')
-  await answerItem(page, 'proof-e02', 'x=0')
-
-  await expect(page.getByText(/pとqは同値である/)).toBeVisible()
+  await expect(page.getByRole('heading', { name: '命題の向きを変える', exact: true })).toBeVisible()
   await expect(page.getByTestId('textbook-item-proof-a01')).toBeVisible()
+  await expect(page.getByTestId('textbook-item-proof-a02')).toHaveCount(0)
+  await expect(page.getByText(/を逆という/)).toHaveCount(0)
+
+  await answerItem(page, 'proof-a01', 'q\\Rightarrow p')
+
+  await expect(page.getByText(/を逆という/)).toBeVisible()
+  await expect(page.getByTestId('textbook-item-proof-a02')).toBeVisible()
 })
 
 
-test('proof review wrong answer stays unresolved and keeps equivalence prose locked', async ({ page }) => {
+test('proof review wrong answer stays unresolved and keeps the reverse concept locked', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-propositions-proof'))
 
-  await chooseWrongOption(page, 'proof-e01', '真')
+  await chooseWrongOption(page, 'proof-a01', 'q\\Rightarrow p')
 
-  await expect(page.getByTestId('resolved-proof-e01')).toHaveCount(0)
-  await expect(page.getByTestId('textbook-item-proof-e02')).toHaveCount(0)
-  await expect(page.getByText(/pとqは同値である/)).toHaveCount(0)
+  await expect(page.getByTestId('resolved-proof-a01')).toHaveCount(0)
+  await expect(page.getByTestId('textbook-item-proof-a02')).toHaveCount(0)
+  await expect(page.getByText(/を逆という/)).toHaveCount(0)
 
-  await page.getByTestId('textbook-item-proof-e01').click()
-  const hint = page.getByTestId('textbook-hint-proof-e01')
+  await page.getByTestId('textbook-item-proof-a01').click()
+  const hint = page.getByTestId('textbook-hint-proof-a01')
   await expect(hint).toBeVisible()
-  await expect(hint).not.toContainText('真')
+  await expect(hint).not.toContainText('q\\Rightarrow p')
 })
 
 test('all review math units enter without KaTeX errors or horizontal overflow', async ({ page }) => {

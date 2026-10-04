@@ -77,3 +77,19 @@ export const mathTextbookTopics: readonly MathTextbookTopicCatalogEntry[] = [
 export function mathTextbookTopicForUnit(unitId: string) {
   return mathTextbookTopics.find((topic) => topic.unitIds.includes(unitId))
 }
+
+
+export function mathTextbookTopicHasAllUnits(topicId: string, availableUnitIds: readonly string[]) {
+  const topic = mathTextbookTopics.find((candidate) => candidate.id === topicId)
+  if (!topic) return false
+  const available = new Set(availableUnitIds)
+  return topic.unitIds.every((unitId) => available.has(unitId))
+}
+
+export function mathTextbookNextUnitId(unitId: string) {
+  const topic = mathTextbookTopicForUnit(unitId)
+  if (!topic) return undefined
+  const index = topic.unitIds.indexOf(unitId)
+  if (index < 0 || index >= topic.unitIds.length - 1) return undefined
+  return topic.unitIds[index + 1]
+}

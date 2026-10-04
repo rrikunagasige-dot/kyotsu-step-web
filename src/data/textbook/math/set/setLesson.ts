@@ -5,7 +5,7 @@ import { setRealLineFigures, setRealLineItems, setRealLineReadingFlow } from './
 const rawMathSetUnit = {
   schemaVersion: '1.1' as const,
   unitId: 'math-sets',
-  revision: 1,
+  revision: 2,
   status: 'published' as const,
   subject: 'math-1a' as const,
   chapter: {
@@ -74,6 +74,12 @@ const rawMathSetUnit = {
           text: '集合を表す',
         },
         {
+          id: 'marker-example-divisors',
+          type: 'marker' as const,
+          kind: 'example' as const,
+          text: '例題',
+        },
+        {
           id: 'paragraph-a01',
           type: 'paragraph' as const,
           parts: [
@@ -83,10 +89,20 @@ const rawMathSetUnit = {
           ],
         },
         {
+          id: 'dialogue-hanako-divisors',
+          type: 'dialogue' as const,
+          speaker: 'hanako' as const,
+          text: '全部ばらばらの数だけど、「24の正の約数」という同じ条件で集まっているんだね。',
+        },
+        {
           id: 'paragraph-set-concept',
           type: 'paragraph' as const,
           parts: [
-            { type: 'text' as const, text: '今並べた数は、どれも「24の正の約数である」という同じ条件を満たしている。このように、ある条件を満たすものをひとまとまりとして考えたものを集合という。また、集合をつくっている一つ一つのものを、その集合の要素という。' },
+            { type: 'text' as const, text: '今並べた数は、どれも「24の正の約数である」という同じ条件を満たしている。このように、ある条件を満たすものをひとまとまりとして考えたものを' },
+            { type: 'term' as const, text: '集合' },
+            { type: 'text' as const, text: 'という。また、集合をつくっている一つ一つのものを、その集合の' },
+            { type: 'term' as const, text: '要素' },
+            { type: 'text' as const, text: 'という。' },
           ],
         },
         {
@@ -95,6 +111,12 @@ const rawMathSetUnit = {
           parts: [
             { type: 'math' as const, latex: 'A=\\{1,2,3,4,6,8,12,24\\}' },
           ],
+        },
+        {
+          id: 'dialogue-teacher-membership',
+          type: 'dialogue' as const,
+          speaker: 'teacher' as const,
+          text: '今は記号を覚えなくていいよ。まず、その数がこのまとまりの中にあるかだけを見よう。',
         },
         {
           id: 'paragraph-a02',
@@ -158,6 +180,12 @@ const rawMathSetUnit = {
           ],
         },
         {
+          id: 'marker-example-builder',
+          type: 'marker' as const,
+          kind: 'example' as const,
+          text: '例題',
+        },
+        {
           id: 'formula-set-b-rule',
           type: 'formula' as const,
           parts: [
@@ -203,6 +231,12 @@ const rawMathSetUnit = {
             { type: 'choice' as const, itemId: 'set-a08' },
             { type: 'text' as const, text: ' を表している。' },
           ],
+        },
+        {
+          id: 'dialogue-taro-representation',
+          type: 'dialogue' as const,
+          speaker: 'taro' as const,
+          text: '同じ集合でも、要素を並べることもできるし、「どんな条件のものか」で表すこともできるんですね。',
         },
         {
           id: 'paragraph-representation-concept',
@@ -251,7 +285,11 @@ const rawMathSetUnit = {
           id: 'paragraph-finite-concept',
           type: 'paragraph' as const,
           parts: [
-            { type: 'text' as const, text: 'Aのように有限個の要素からなる集合を有限集合という。Bのように無限に多くの要素からなる集合を無限集合という。' },
+            { type: 'text' as const, text: 'Aのように有限個の要素からなる集合を' },
+            { type: 'term' as const, text: '有限集合' },
+            { type: 'text' as const, text: 'という。Bのように無限に多くの要素からなる集合を' },
+            { type: 'term' as const, text: '無限集合' },
+            { type: 'text' as const, text: 'という。' },
           ],
         },
         {

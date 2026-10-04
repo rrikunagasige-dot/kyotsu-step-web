@@ -49,6 +49,15 @@ describe('math proposition-proof textbook unit', () => {
   })
 
 
+
+  it('checks all four truth values for the first reverse-inverse-contrapositive source example', () => {
+    const items = mathPropositionProofUnit.sections[0].items
+    expect(items.find((item) => item.id === 'proof-a04')?.answer).toBe('偽')
+    expect(items.find((item) => item.id === 'proof-a04r')?.answer).toBe('真')
+    expect(items.find((item) => item.id === 'proof-a04i')?.answer).toBe('真')
+    expect(items.find((item) => item.id === 'proof-a05')?.answer).toBe('偽')
+  })
+
   it('keeps the second source example: 12-multiple implication with reverse/inverse counterexample', () => {
     const items = mathPropositionProofUnit.sections[0].items
     expect(items.find((item) => item.id === 'proof-a06')?.answer).toBe('真')

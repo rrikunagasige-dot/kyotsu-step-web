@@ -217,6 +217,14 @@ test('proposition-reading follows the textbook order from truth to necessary/suf
 
   await expect(page.getByRole('heading', { name: '成り立たない条件を考える', exact: true })).toBeVisible()
   await expect(page.getByTestId('textbook-item-prop-c01')).toBeVisible()
+  await expect(page.getByTestId('textbook-item-prop-c01')).toHaveAttribute(
+    'aria-label',
+    /成り立たない条件/,
+  )
+  await expect(page.getByTestId('textbook-item-prop-c01')).not.toHaveAttribute(
+    'aria-label',
+    /否定/,
+  )
 })
 
 test('proposition-reading counterexample is decided before the counterexample concept is named', async ({ page }) => {
@@ -227,6 +235,14 @@ test('proposition-reading counterexample is decided before the counterexample co
 
   await expect(page.getByText(/このような例を反例という/)).toHaveCount(0)
   await answerItem(page, 'prop-a03', '-1')
+  await expect(page.getByTestId('textbook-item-prop-a04')).toHaveAttribute(
+    'aria-label',
+    /pを満たすのにqを満たさない例/,
+  )
+  await expect(page.getByTestId('textbook-item-prop-a04')).not.toHaveAttribute(
+    'aria-label',
+    /反例/,
+  )
   await answerItem(page, 'prop-a04', '偽')
   await expect(page.getByText(/このような例を反例という/)).toBeVisible()
   await expect(page.getByTestId('textbook-figure-implication-counterexample')).toBeVisible()

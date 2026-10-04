@@ -39,7 +39,36 @@ Browser visual QA and direct original-book recheck remain separate later gates.
 
 ---
 
-## QAF-001 — CRITICAL — Chinese semantic parity is broken for 88–96
+## QAF-001 RESOLUTION — RESOLVED
+
+Status: **RESOLVED**
+
+Repair:
+- removed generic learner-facing fallback prompts / explanations / choices for 88–96,
+- added explicit Chinese translations for the formerly-fallback learning text,
+- changed text translation to fail closed when a Japanese-kana string lacks an explicit Chinese translation,
+- changed LaTeX prose translation to fail closed instead of deleting Japanese kana,
+- normalized remaining Japanese-only CJK labels that the no-kana test could not detect,
+- added regression tests rejecting generic fallback placeholders and spot-checking mathematical meaning.
+
+Validated on commit:
+- `76010c0272db60db956efdf04272e505967783f0`
+
+CI run:
+- `37166618339`
+
+PASS:
+- typecheck
+- Math practice unit / parity tests
+- build
+- mobile Chromium smoke
+- desktop Chromium smoke
+
+No merge to main yet.
+
+---
+
+## QAF-001 — RESOLVED (was CRITICAL) — Chinese semantic parity is broken for 88–96
 
 Files:
 - `src/data/mathPractice/setsBatchA.zh.ts`

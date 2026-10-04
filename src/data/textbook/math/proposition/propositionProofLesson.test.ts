@@ -80,13 +80,28 @@ describe('math proposition-proof textbook unit', () => {
         (part) => part.type === 'choice' && part.itemId === 'proof-c00',
       ),
     )
-    const algebraIndex = flow.findIndex(
+    const divideIndex = flow.findIndex(
       (block) => block.type === 'paragraph' && block.parts.some(
         (part) => part.type === 'choice' && part.itemId === 'proof-c01',
       ),
     )
+    const multiplyIndex = flow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'proof-c01b',
+      ),
+    )
     expect(assumptionIndex).toBeGreaterThanOrEqual(0)
-    expect(algebraIndex).toBeGreaterThan(assumptionIndex)
+    expect(divideIndex).toBeGreaterThan(assumptionIndex)
+    expect(multiplyIndex).toBeGreaterThan(divideIndex)
+  })
+
+
+  it('keeps the source algebra chain for the contradiction proof', () => {
+    const items = mathPropositionProofUnit.sections[0].items
+    expect(items.find((item) => item.id === 'proof-c01')?.answer)
+      .toBe('\\sqrt2=-\\frac{\\sqrt3y}{x}')
+    expect(items.find((item) => item.id === 'proof-c01b')?.answer)
+      .toBe('\\sqrt6=-\\frac{3y}{x}')
   })
 
   it('uses a contradiction before rejecting the nonzero assumption', () => {

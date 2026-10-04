@@ -1,6 +1,6 @@
 # MATH LEARNING MODE — MASTER DIFF AUDIT 2026-10-04
 
-Status: **AUDIT ONLY / NO CONTENT REPAIR YET**
+Status: **RESTORATION IMPLEMENTED / AUTOMATED VALIDATION PASS / USER HANDS-ON PENDING**
 
 Scope:
 - 数学・学習モードのみ
@@ -361,3 +361,42 @@ answer leakage、progressive reveal、wrong-answer、mobile、CIなどの
 
 次の修正は「新しく設計する」のではなく、
 **既存MASTERへの復元**として行う。
+
+
+---
+
+## 12. Restoration implementation result
+
+The audit above records the pre-restoration mismatch. The restoration has now been implemented against the frozen mathematics learning-mode MASTER.
+
+Validated code head: `9ef3111792d5660931b4b2b35ffb89281a92c7ad`
+
+Current review units:
+- `math-propositions-reading`: revision 2 / 14 interactions
+- `math-quantifiers-all-exists`: revision 4 / 11 interactions
+- `math-propositions-proof`: revision 3 / 23 interactions
+- total: **48 interactions**
+
+Merged from standalone choice panels back into textbook prose:
+- `prop-a06`
+- `prop-a08`
+- `prop-b03`
+- `prop-b06`
+- `quant-a01`
+- `quant-c01`
+
+Restored macro-order checks:
+- proposition reading: concrete judgment → concept name → generalization → immediate use
+- quantifier: witness/counterexample first → rule second
+- proof: concrete proposition → transformations → reverse/inverse/contrapositive names
+- contradiction proof: worked proof first → name 背理法 after completion
+
+Automated validation:
+- Math textbook mode CI: PASS
+- Math practice pilot CI: PASS
+- Typecheck / unit tests / build / mobile / desktop / Physics regression / Math practice setup regression: PASS
+
+Remaining gate:
+- user hands-on QA of the restored learner rhythm
+- all 3 units remain `status: review`
+- do not merge PR #31 before user confirmation

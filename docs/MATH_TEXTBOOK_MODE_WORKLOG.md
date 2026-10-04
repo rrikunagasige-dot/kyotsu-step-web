@@ -66,10 +66,15 @@ Setup:
 ### math-propositions-reading
 Source:
 - p.92〜95 相当
-- 命題かどうかの判定 / 命題の真偽 / 反例 / 条件の否定 / 必要・十分 / 必要十分
+- 問8の4命題、p⇒q と集合包含、反例
+- 必要条件・十分条件・必要十分条件
+- 条件の否定
 Checkpoint:
-- SOURCE AUDIT: PASS（問8の4例、問10、問11、問9の必要条件表現まで反映）
-- UNIT TEST: source例固定test追加済み
+- SOURCE AUDIT: PASS（問8〜問11の教科書例へ限定）
+- 練習モード由来だった「23÷3」「頂角40°」「3.14とπ」の導入例は削除
+- 問8(4)の反例はsource通り「直角二等辺三角形」
+- 最初のsource判断後に「命題」と p⇒q を概念化
+- UNIT TEST / E2E: source例とprogressive revealを固定済み
 - STATUS: review
 
 ### math-quantifiers-all-exists
@@ -115,8 +120,7 @@ Checkpoint:
 - source → unit → learner flow の対応は `docs/MATH_TEXTBOOK_SOURCE_MAP.md` に分離して記録。
 
 - quantifier lesson は教科書 p.100〜101 の問1 (1)〜(5) の順序へ戻し、存在例 → 否定、反例 → 否定の順で概念化。
-- 命題の判定基準（真偽が客観的に一意に定まるか）を具体例から作り、偽の文と非命題を区別。
-- 命題導入の leakage guard を再監査し、頂角40°の反例を穴より前に表示しない形へ修正。
+- proposition-reading は教科書問8のsource例だけで導入し、practice由来の別例を混ぜない。
 - function lesson は教科書 p.46〜47 の本文・問1・問2へ戻し、関数の定義 → f(a) → 2つの関数の代入 → 長方形から定義域・値域、の順に再構成。
 - review integrity test で、choices の実質重複・answer の一意性・inline item の1回使用・support fading を監査。
 - 練習モードとの同期は内部 catalog/test に限定し、learner-facing 本文では問題番号を使わない。
@@ -128,7 +132,7 @@ Checkpoint:
 - `math-propositions-proof`: 対偶を使うか・矛盾の仮定をどう置くかを thinking node 化。見出しから戦略の答えが漏れないよう修正。
 
 - 作業対象は数学・学習モードのみ。
-- `math-propositions-reading`: 具体例 → 判断 → 「命題」概念化へ修正。必要・十分の穴も答えを先に言わない形へ修正。
+- `math-propositions-reading`: 問8の具体例 → 判断 → 「命題」概念化。必要・十分も両方向を判断してから名称を導入。
 - `math-propositions-proof`: 背理法という名称は実例を完了した後に提示するよう修正。
 - 練習モード本体・Desktop / Remote Desktop は触らない。
 

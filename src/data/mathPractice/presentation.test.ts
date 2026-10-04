@@ -91,6 +91,14 @@ describe('math practice current-target presentation', () => {
       .toEqual(['s1', 's2', 's3'])
   })
 
+  it('keeps 88 p2 as a real pattern decision but removes the duplicate p4 pattern target blank', () => {
+    const targets = mathPracticeTargetsForQuestion('math-practice-088')
+    expect(targets.find((target) => target.id === 's2')?.blankIds)
+      .toEqual(['p2-step', 'p2-last', 'p2-result'])
+    expect(targets.find((target) => target.id === 's4')?.blankIds)
+      .toEqual(['p4-sample', 'p4-result'])
+  })
+
   it('reuses the common subset basis in 89 and imports only candidate judgments for the final summary', () => {
     const basis = mathPracticeTargetsForQuestion('math-practice-089').find((target) => target.id === 'basis')!
     expect(mathPracticeResultItems(basis).map((result) => result.blankId))

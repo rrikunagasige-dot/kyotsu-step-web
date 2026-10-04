@@ -25,13 +25,13 @@ learner-facing の章構造は教科書をauthorityにする。練習モード�
    - practice overlap: 87〜97
    - 集合の表し方 → 部分集合 → 共通部分・和集合 → 補集合 → 集合の条件
 2. `read-propositions`
-   - source: 第3章 p.92〜95, p.100〜101
-   - practice overlap: 98〜107, 109
-   - 真偽 → 必要条件・十分条件 → 条件の否定 → 「すべて」と「ある」
+   - source: 第3章 p.92〜95
+   - practice overlap: 98〜107
+   - 真偽 → 必要条件・十分条件 → 条件の否定
 3. `prove-propositions`
-   - source: 第3章 p.96〜98
-   - practice overlap: 108, 110〜117
-   - 逆・裏・対偶 → 証明しやすい向き → 対偶による証明 → 矛盾を使う証明
+   - source: 第3章 p.96〜98 + 参考 p.100〜101
+   - practice overlap: 108〜117（109は参考「すべて」と「ある」に対応）
+   - 逆・裏・対偶 → 証明しやすい向き → 対偶による証明 → 矛盾を使う証明 → 「すべて」と「ある」
 
 第2章 p.46〜47 の `math-functions-conditions` はこの3テーマへ入れない。
 runtimeでは練習モードをimportせず、同期はmetadataとtestだけで確認する。

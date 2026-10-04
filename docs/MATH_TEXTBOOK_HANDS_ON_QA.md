@@ -43,6 +43,33 @@
 - figure alt / caption order
 - mobile / desktop horizontal overflow
 
+### 2026-10-04 deep static audit
+
+User hands-on 前の assistant-side deep audit を、3 review unit 全54穴に対して実施。
+
+- `math-propositions-reading`: revision 1 / 18穴
+  - 学習目標を本文順（真偽 → 条件関係 → 否定）へ整列
+  - A3 を「唯一の反例」に読めないよう「一例」と明示
+  - A8 / B6 を light へ落とし、小節末で自力 transfer にする
+  - B6 を definition ではなく transfer として扱う
+- `math-quantifiers-all-exists`: revision 3 / 13穴
+  - 「すべての2つの無理数」を、完成本文として自然な「どの2つの無理数を選んでも」へ修正
+  - full-sentence answer 後の二重「である」を除去
+  - `√2×√8=4` の完成本文を「4となり、有理数になる」へ修正
+  - answer変更に伴い revision 2 → 3
+- `math-propositions-proof`: revision 2 / 23穴
+  - 逆・裏・対偶の名称を、定義前の item prompt / aria-label から除去
+  - modulo-3 の B3 を「見えている余り1を選ぶ穴」から、`9k²+6k+1 → 3(3k²+2k)+1` の式変形 thinking node へ変更
+  - 最終 `y=0` の first hint が答えを押し出さないよう修正
+  - answer変更に伴い revision 1 → 2
+- cross-unit:
+  - first staged hint exact-answer leakage: 54穴中 0
+  - completed-prose double「である」/二重句点: 0
+  - concept prose / resolved answer は通常本文色を継承
+  - no-touch zone（math practice本体 / function lesson / physics lesson・assets）への差分なし
+
+この deep audit は **user hands-on QA の代替ではない**。3 unit は引き続き `status: review`。
+
 ### Shared-UI findings fixed during hands-on preparation
 1. Math `causal-reasoning` prompt
    - Before: 「変化の因果関係をたどろう。」
@@ -62,6 +89,11 @@
    - At <=640 px, choice cards stack into one column.
    - Long quantifier/proof choices no longer share a narrow two-column row.
    - Mobile regression assertion added.
+
+5. Wrong-answer visibility
+   - Math textbook keeps the last wrong choice visibly marked when the learner reopens the unresolved hole.
+   - Correct answer is not revealed.
+   - Choice order remains stable across retries.
 
 ## Manual hands-on gate
 

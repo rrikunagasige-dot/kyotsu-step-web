@@ -50,6 +50,21 @@ describe('math textbook catalog', () => {
 
 
 
+
+  it('keeps current learner topics inside chapter 3 and leaves the function review in chapter 2', () => {
+    const chapter3UnitIds = mathTextbookTopics.flatMap((topic) => topic.unitIds)
+    for (const unitId of chapter3UnitIds) {
+      expect(
+        mathTextbookUnits.find((unit) => unit.unitId === unitId)?.chapter?.chapterNumber,
+        unitId,
+      ).toBe('3')
+    }
+
+    const functionUnit = mathTextbookUnits.find((unit) => unit.unitId === 'math-functions-conditions')
+    expect(functionUnit?.chapter?.chapterNumber).toBe('2')
+    expect(mathTextbookTopicForUnit('math-functions-conditions')).toBeUndefined()
+  })
+
   it('keeps learner-facing topic flows aligned with the textbook lesson order', () => {
     expect(mathTextbookTopics[1].flow.ja).toBe(
       '真偽 → 必要条件・十分条件 → 条件の否定 → 「すべて」と「ある」',

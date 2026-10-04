@@ -654,6 +654,7 @@ describe('math practice 87-120 staged integration', () => {
     expect(prompt(93, 'p1-meaning')).toContain('A∩B∩C')
     expect(prompt(95, 'p3-regions')).toContain('区域')
     expect(prompt(96, 'p4-candidates')).toContain('候选范围')
+    expect(prompt(96, 'p4-after-a')).toContain('去掉属于 A 的元素')
   })
 
   it('keeps every authored thinking blank referenced by the learning flow', () => {

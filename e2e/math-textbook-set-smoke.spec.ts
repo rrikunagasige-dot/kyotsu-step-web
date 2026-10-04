@@ -344,7 +344,7 @@ test('quantifier review reaches all five source statements without layout regres
     ['quant-c01', '1つ'],
     ['quant-c02', '2'],
     ['quant-c03', 'ある素数は偶数である'],
-    ['quant-d01', 'すべての2つの無理数'],
+    ['quant-d01', 'どの2つの無理数を選んでも'],
     ['quant-d02', '4'],
     ['quant-d03', 'ある2つの無理数の積は有理数である'],
     ['quant-e01', '真'],

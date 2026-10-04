@@ -6,6 +6,7 @@ describe('math proposition-reading textbook unit', () => {
   it('keeps the source scope and starts in review while the new unit is audited', () => {
     expect(mathPropositionReadingUnit.subject).toBe('math-1a')
     expect(mathPropositionReadingUnit.status).toBe('review')
+    expect(mathPropositionReadingUnit.revision).toBe(2)
     expect(mathPropositionReadingUnit.chapter?.chapterId).toBe('math-ch03-sets-propositions')
     expect(mathPropositionReadingUnit.chapter?.sourcePages).toEqual([92, 93, 94, 95])
     expect(mathPropositionReadingUnit.sections).toHaveLength(1)
@@ -21,12 +22,21 @@ describe('math proposition-reading textbook unit', () => {
     ])
   })
 
-  it('fades support to light at the end of each learned idea', () => {
-    const items = mathPropositionReadingUnit.sections[0].items
-    expect(items.find((item) => item.id === 'prop-a08')?.scaffoldLevel).toBe('light')
-    expect(items.find((item) => item.id === 'prop-b06')?.scaffoldLevel).toBe('light')
-    expect(items.find((item) => item.id === 'prop-b06')?.purpose).toBe('transfer')
+  it('removes redundant conclusion panels and keeps the remaining transfer fading', () => {
+    const section = mathPropositionReadingUnit.sections[0]
+    const items = section.items
+    expect(items).toHaveLength(14)
+    expect(items.find((item) => item.id === 'prop-a07')?.scaffoldLevel).toBe('light')
     expect(items.find((item) => item.id === 'prop-c04')?.scaffoldLevel).toBe('light')
+
+    for (const removedId of ['prop-a06', 'prop-a08', 'prop-b03', 'prop-b06']) {
+      expect(items.some((item) => item.id === removedId), removedId).toBe(false)
+      const referenced = section.readingFlow.some((block) =>
+        (block.type === 'paragraph' || block.type === 'formula')
+        && block.parts.some((part) => part.type === 'choice' && part.itemId === removedId),
+      )
+      expect(referenced, removedId).toBe(false)
+    }
   })
 
   it('forms the proposition concept after the first source implication judgment', () => {
@@ -203,7 +213,7 @@ describe('math proposition-reading textbook unit', () => {
     const items = mathPropositionReadingUnit.sections[0].items
 
     expect(items.find((item) => item.id === 'prop-a07')?.answer).toBe('直角二等辺三角形')
-    expect(items.find((item) => item.id === 'prop-a08')?.answer).toBe('偽')
+    expect(items.find((item) => item.id === 'prop-a08')).toBeUndefined()
     const learnerText = mathPropositionReadingUnit.sections[0].readingFlow
       .filter((block) => block.type === 'paragraph')
       .flatMap((block) => block.parts)
@@ -223,8 +233,10 @@ describe('math proposition-reading textbook unit', () => {
     expect(items.find((item) => item.id === 'prop-c04')?.answer)
       .toBe('-1<x<3')
 
-    expect(items.find((item) => item.id === 'prop-b03')?.answer)
-      .toBe('必要条件')
+    expect(items.find((item) => item.id === 'prop-b03')).toBeUndefined()
+    expect(learnerText).toContain('長方形であること」のための必要条件である')
+    expect(learnerText).toContain('この命題は偽である')
+    expect(learnerText).toContain('必要十分条件であり、2つの条件は同値である')
   })
 
 
@@ -287,6 +299,19 @@ describe('math proposition-reading textbook unit', () => {
     expect(truthDecision?.prompt).toContain('pを満たすのにqを満たさない例')
     expect(negationDecision?.prompt).not.toContain('否定')
     expect(negationDecision?.prompt).toContain('成り立たない条件')
+  })
+
+  it('keeps worked-example transitions visible without turning them into extra headings', () => {
+    const learnerText = mathPropositionReadingUnit.sections[0].readingFlow
+      .filter((block) => block.type === 'paragraph')
+      .flatMap((block) => block.parts)
+      .filter((part) => part.type === 'text')
+      .map((part) => part.text)
+      .join('\n')
+
+    expect(learnerText).toContain('別の式ですぐ使ってみる')
+    expect(learnerText).toContain('別の条件ですぐ使ってみる')
+    expect(learnerText).toContain('別の文ですぐ使ってみる')
   })
 
   it('uses only three learner-facing headings', () => {

@@ -1,14 +1,16 @@
 # MATH PRACTICE 87–120 FINAL QA FINDINGS
 
-Status: AUDIT IN PROGRESS  
+Status: **CODE / UI QA COMPLETE — RAW SOURCE FIDELITY OPEN**  
 Branch: `chatgpt/math-87-120-final-qa-audit`  
-Baseline main: `1b9d86d1a9f37bb66b5279a1d68dac4f2dcaac6e`
+Baseline main: `1b9d86d1a9f37bb66b5279a1d68dac4f2dcaac6e`  
+Validated code head: `3a65bc2a61793acf332ec930f55aee7a1eab885b`  
+Final full CI: `37168651729`
 
 Purpose:
 - 87–120 を教材全体として最終監査する。
-- 発見中は修正しない。
-- 先に issue ledger を完成させ、その後まとめて修正する。
-- CI / build / deploy success だけで教材品質を PASS にしない。
+- discovery → issue ledger → small independent repair → focused regression → full browser verification の順で進める。
+- CI / build success だけで教材品質を PASS にせず、learner-flow / dependency / answer leakage / Chinese parity / rendering を個別に確認する。
+- raw original source fidelity は code/UI QA と分離し、原本が無い状態では PASS にしない。
 
 Authority:
 - `docs/MATH_PRACTICE_MASTER_LESSONS.md`
@@ -932,8 +934,9 @@ They cover, depending on the problem:
 
 Playwright runs the same suite in mobile and desktop projects.
 
-Important:
-Existing E2E does **not** sufficiently catch the QAF-007 target-heading leaks. Add focused assertions after repairing those labels.
+Answer-leak regression was strengthened during repair:
+- QAF-007 and QAF-008 now have focused browser assertions that reject the reviewed answer-bearing target phrases before the current blank is solved.
+- 87–97 also has a complete lightweight visual sweep on both mobile and desktop: every question must open with the correct heading, visible problem/reading flow, no KaTeX error, and no page-level horizontal overflow.
 
 ---
 
@@ -978,53 +981,52 @@ Therefore:
 
 ---
 
-# Discovery-pass summary
+# Final code / UI QA summary
 
-Confirmed / strong findings:
+Resolved:
+- QAF-001 — Chinese semantic parity 88–96
+- QAF-002 — Problem 89 common prerequisite and final-summary dependency graph
+- QAF-003 — Problem 96-(4) missing intermediate filtering
+- QAF-004 — Problem 92-(2) explicit `A∩B=∅` completion
+- QAF-005 — Problem 88 interaction-density review; keep meaningful p2 pattern step, remove duplicate p4 pattern hole
+- QAF-007 — confirmed current-target answer leakage
+- QAF-008 — additional over-suggestive target labels
 
-1. **QAF-001 CRITICAL**
-   - 88–96 Chinese generic fallback destroys learner-facing mathematical meaning.
+Review closed without code change:
+- QAF-006 — 104 / 107 classification blanks are meaningful conceptual decisions and remain as designed
 
-2. **QAF-002 HIGH**
-   - 89 common prerequisite is not represented as the required reusable dependency.
+Final validated code head:
+- `3a65bc2a61793acf332ec930f55aee7a1eab885b`
 
-3. **QAF-003 HIGH**
-   - 96-(4) jumps from candidate set B directly to final {5}, skipping two meaningful filters.
+Final CI:
+- run `37168651729`
+- typecheck: PASS
+- Math practice unit / parity / presentation tests: PASS
+- build: PASS
+- Pixel 7 mobile Chromium smoke: PASS
+- desktop Chromium smoke: PASS
+- 87–97 full visual sweep: PASS on both mobile and desktop
 
-4. **QAF-004 MEDIUM**
-   - 92-(2) never explicitly completes `A∩B=∅` in the guided flow.
-
-5. **QAF-007 HIGH**
-   - current-target headings leak current answers in multiple problems.
-
-Review-only:
-- QAF-005: 88 pattern/step hole strength
-- QAF-006: 104/107 interaction density
-- QAF-008: strongly suggestive but not literal target labels
-
-Open final gate:
-- raw original source fidelity
-
-No repair has been applied yet.
+Not done:
+- no merge to `main`
+- no deployment
+- raw revised-4STEP source fidelity is still OPEN
 
 ---
 
 # Next execution order
 
-Now that 87–120 discovery is complete:
+Only the source-fidelity gate remains before calling 87–120 fully complete:
 
-1. re-check QAF-001–004 and QAF-007 once against the authority docs
-2. freeze the issue list
-3. repair in small independent commits, highest severity first:
-   - Chinese semantic parity 88–96
-   - current-target answer leakage
-   - 89 dependency
-   - 96-(4) missing reasoning stages
-   - 92-(2) explicit intersection conclusion
-4. run focused source / parity / presentation tests
-5. run build
-6. run mobile + desktop E2E
-7. deploy
-8. final learner-flow QA
-9. raw-source fidelity re-check
-10. update authority/worklog and mark 87–120 complete only after every gate passes
+1. obtain the actual pages/scans from `『改訂版 教科書傍用 4STEP数学 1+A』` covering original 87–120
+2. compare every problem directly against the raw source for:
+   - problem numbers / mapping
+   - numerical values
+   - signs and inequalities
+   - radicals and exponents
+   - subproblem order
+   - domains / assumptions
+   - wording that changes mathematical meaning
+3. resolve any raw-source discrepancies with small isolated commits
+4. rerun focused tests and full mobile + desktop CI if source content changes
+5. only after the source-fidelity gate passes, decide whether to merge / deploy / mark 87–120 complete

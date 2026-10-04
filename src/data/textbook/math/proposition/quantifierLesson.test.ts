@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+import { normalizeTextbookAnswer } from '../../../../domain/textbook'
 import { mathQuantifierUnit } from './quantifierLesson'
 
 describe('math quantifier textbook unit', () => {
@@ -172,6 +173,15 @@ describe('math quantifier textbook unit', () => {
         .map((part) => part.text)
         .join('')
       expect(textBefore).not.toContain('どの2つの無理数を選んでも')
+    }
+  })
+
+  it('does not put the exact answer into the first staged hint', () => {
+    const items = mathQuantifierUnit.sections[0].items
+    for (const item of items) {
+      const firstHint = normalizeTextbookAnswer(item.hints[0] ?? '')
+      const answer = normalizeTextbookAnswer(item.answer)
+      expect(firstHint, item.id).not.toContain(answer)
     }
   })
 

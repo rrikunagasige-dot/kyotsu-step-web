@@ -627,6 +627,8 @@ test('106 translates number conditions into intersection and complement without 
 
   // (2): previous result disappears; odd numbers are the complement of P.
   await expect(currentTarget).toContainText('今の問い｜(2)')
+  await expect(currentTarget).toContainText('集合 P')
+  await expect(currentTarget).not.toContainText('補集合')
   await expect(readingFlow).not.toContainText('6の倍数')
   await expect(readingFlow).not.toContainText('P̄')
   await page.getByTestId('blank-math-practice-106-p2-result').click()
@@ -800,7 +802,8 @@ test('118 judges functionhood by unique output and keeps the three cases indepen
 
   // Shared criterion first.
   await expect(currentTarget).toContainText('まず確認')
-  await expect(currentTarget).toContainText('ただ1つ')
+  await expect(currentTarget).toContainText('関数の判定基準')
+  await expect(currentTarget).not.toContainText('ただ1つ')
   await expect(page.getByTestId('blank-math-practice-118-rule')).toContainText('選択')
   await expect(page.getByTestId('blank-math-practice-118-p1')).toHaveCount(0)
   await page.getByTestId('blank-math-practice-118-rule').click()
@@ -1038,7 +1041,8 @@ test('108 proves equivalence in two directions and only combines them at the fin
   await expect(problem.locator('.katex-error')).toHaveCount(0)
 
   await expect(currentTarget).toContainText('まず確認')
-  await expect(currentTarget).toContainText('2方向')
+  await expect(currentTarget).toContainText('証明方針')
+  await expect(currentTarget).not.toContainText('2方向')
   await expect(page.getByTestId('blank-math-practice-108-rule')).toContainText('選択')
   await expect(page.getByTestId('blank-math-practice-108-forward')).toHaveCount(0)
 
@@ -1070,6 +1074,8 @@ test('108 proves equivalence in two directions and only combines them at the fin
 
   // Only at the final stage are the two completed direction results imported together.
   await expect(currentTarget).toContainText('結論')
+  await expect(currentTarget).toContainText('最終関係')
+  await expect(currentTarget).not.toContainText('同値')
   const deps = page.getByTestId('math-practice-dependency-links')
   await expect(deps).toContainText('一方向目')
   await expect(deps).toContainText('二方向目')
@@ -1254,6 +1260,8 @@ test('111 uses the source-given contrapositive strategy and proves four cases on
   await page.getByTestId('option-math-practice-111-p4-contrapositive-correct').click()
 
   await expect(currentTarget).toContainText('(4) 奇数の式')
+  await expect(currentTarget).toContainText('整数 k')
+  await expect(currentTarget).not.toContainText('2k+1')
   await expect(page.getByTestId('math-practice-dependency-links')).toContainText('(4) の対偶')
   await page.getByTestId('blank-math-practice-111-p4-form').click()
   await page.getByTestId('option-math-practice-111-p4-form-odd-form').click()
@@ -1362,6 +1370,8 @@ test('113 returns from a rational square-root assumption to an irrational-x cont
   await expect(problem.locator('.katex-error')).toHaveCount(0)
 
   await expect(currentTarget).toContainText('まずの目標')
+  await expect(currentTarget).toContainText('背理法の反対仮定')
+  await expect(currentTarget).not.toContainText('√xが有理数')
   await expect(page.getByTestId('blank-math-practice-113-assumption')).toContainText('選択')
   await expect(page.getByTestId('blank-math-practice-113-operation')).toHaveCount(0)
 
@@ -1539,6 +1549,8 @@ test('116 proves q=0 by irrationality contradiction, then back-substitutes to ge
 
   // The nonzero assumption is what makes division by q legal.
   await expect(currentTarget).toContainText('次の目標')
+  await expect(currentTarget).toContainText('反対仮定')
+  await expect(currentTarget).not.toContainText('q≠0')
   await expect(page.getByTestId('math-practice-dependency-links')).toContainText('最初に調べる係数')
   await expect(readingFlow).not.toContainText('X=-p/q')
   await page.getByTestId('blank-math-practice-116-assumption').click()

@@ -65,6 +65,23 @@ describe('math function-conditions textbook unit', () => {
   })
 
 
+
+  it('preserves the textbook function values and rectangle domain/range conclusions', () => {
+    const items = mathFunctionConditionsUnit.sections[0].items
+
+    expect(items.find((item) => item.id === 'func-a02')?.answer).toBe('-10')
+    expect(items.find((item) => item.id === 'func-a03')?.answer).toBe('2')
+    expect(items.find((item) => item.id === 'func-a05')?.answer).toBe('4a-10')
+
+    expect(items.find((item) => item.id === 'func-b01')?.answer).toBe('0')
+    expect(items.find((item) => item.id === 'func-b02')?.answer).toBe('3')
+    expect(items.find((item) => item.id === 'func-b03')?.answer).toBe('a^2-2a')
+
+    expect(items.find((item) => item.id === 'func-c01')?.answer).toBe('y=20-x')
+    expect(items.find((item) => item.id === 'func-c02')?.answer).toBe('0<x<20')
+    expect(items.find((item) => item.id === 'func-c03')?.answer).toBe('0<y<20')
+  })
+
   it('shows the source rectangle before equation/domain decisions without answer-bearing overlays', () => {
     const section = mathFunctionConditionsUnit.sections[0]
     const flow = section.readingFlow

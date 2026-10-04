@@ -2,10 +2,12 @@ import { useMemo, useState } from 'react'
 import { X } from 'lucide-react'
 import { InlineMath } from 'react-katex'
 import { MathPracticeContentRenderer, MathPracticeInlineText } from './MathPracticeRichText'
+import { MathPracticeFigure } from './MathPracticeFigure'
 import type { LearningSession } from '../../domain/attempts'
 import { isLearningAnswerResolved } from '../../domain/learning'
 import type { Question } from '../../domain/questionSchema'
 import { useI18n } from '../../i18n/runtime'
+import { mathPracticeFigureState } from '../../data/mathPractice/figures'
 import {
   mathPracticeDependencyTargets,
   mathPracticeExternalDependencies,
@@ -54,6 +56,19 @@ export function MathPracticeReadingFlow({ question, session, onSelect }: {
     unresolvedBlankId ?? targets.at(-1)?.blankIds.at(-1),
   )
   const usesSubproblemCompression = mathPracticeUsesSubproblemCompression(question.questionId)
+
+  const resolvedLocalBlankIds = useMemo(() => {
+    const prefix = `${question.questionId}-`
+    return new Set(
+      Object.entries(session.answers)
+        .filter(([, answer]) => isLearningAnswerResolved(answer))
+        .map(([blankId]) => blankId.startsWith(prefix) ? blankId.slice(prefix.length) : blankId),
+    )
+  }, [question.questionId, session.answers])
+
+  const figureId = currentTarget
+    ? mathPracticeFigureState(question.questionId, currentTarget.id, resolvedLocalBlankIds)
+    : null
 
   const targetIdForFlowIndex = (index: number) => {
     const block = question.learning.solutionFlow[index]
@@ -215,6 +230,8 @@ export function MathPracticeReadingFlow({ question, session, onSelect }: {
           })}
         </div>
       )}
+
+      {figureId && <MathPracticeFigure figureId={figureId} />}
 
       <article className="math-practice-reading-flow" data-testid="math-practice-reading-flow">
       {renderedEntries.map(({ block }) => {

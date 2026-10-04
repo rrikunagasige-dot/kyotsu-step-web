@@ -1883,6 +1883,44 @@ test('problem card 11 compresses 97 into a linear result-reuse chain', async ({ 
   expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
 })
 
+test('87-97 all open cleanly without math-render or horizontal-overflow regressions', async ({ page }) => {
+  await page.getByTestId('math-exercise-basic').click()
+  await page.getByTestId('math-topic-organize-sets').click()
+
+  const titles = [
+    '87｜素数と集合',
+    '88｜集合の表し方',
+    '89｜部分集合',
+    '90｜集合の包含関係',
+    '91｜部分集合をすべて求める',
+    '92｜共通部分と和集合',
+    '93｜3つの集合',
+    '94｜補集合',
+    '95｜集合を復元する',
+    '96｜3集合の複合演算',
+    '97｜共通部分から定数を決める',
+  ] as const
+
+  const nav = page.getByTestId('math-topic-question-nav')
+  await expect(nav.getByRole('button')).toHaveCount(titles.length)
+
+  for (let index = 0; index < titles.length; index += 1) {
+    await page.getByTestId(`math-topic-question-${index + 1}`).click()
+    await expect(page.getByRole('heading', { name: titles[index] })).toBeVisible()
+
+    const problem = page.getByTestId('standard-problem')
+    await expect(problem).toBeVisible()
+    await expect(problem.locator('.katex-error')).toHaveCount(0)
+    await expect(page.getByTestId('math-practice-reading-flow')).toBeVisible()
+
+    const dimensions = await page.evaluate(() => ({
+      viewport: window.innerWidth,
+      page: document.documentElement.scrollWidth,
+    }))
+    expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
+  }
+})
+
 test('finishing 87 shows a direct next-problem button and opens 88', async ({ page }) => {
   await page.getByTestId('math-exercise-basic').click()
   await page.getByTestId('math-topic-organize-sets').click()

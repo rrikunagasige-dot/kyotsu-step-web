@@ -27,7 +27,7 @@
 - status: review
 - source: 深進数学I p.92〜95 相当
 - practice topic: read-propositions
-- practice questions: 98〜107, 109, 118〜120
+- practice questions: 98〜107
 - flow:
   1. 命題かどうかを「真偽が客観的に定まるか」から判断
   2. 具体的な条件 p, q の真偽
@@ -54,37 +54,40 @@
 - source-backed principle:
   - 量化の規則を先に暗記させず、反例 / witness を先に経験させる。
 
-### math-functions-conditions
-- status: review
-- source: 深進数学I 第2章 p.46〜47 相当
-- practice topic: read-propositions
-- flow:
-  1. 1つのxにyがただ1つ決まる、という判定基準
-  2. 円周x → 半径y
-  3. 正のx → 平方根y
-  4. 面積1の長方形で縦x → 横y
-- note:
-  - 学習モードでは練習問題番号を教材単位として使わない。
-  - 練習モードとの同期は内部metadata/testで確認する。
-  - 教科書上の章位置は source metadata に残す。
-
 ## 3. 命題を証明する
 
 ### math-propositions-proof
 - status: review
-- source: 深進数学I p.94〜98 相当
+- source: 深進数学I p.96〜98 相当
 - practice topic: prove-propositions
 - practice questions: 108, 110〜117
 - flow:
-  1. 同値を具体例で確認
-  2. 逆・裏・対偶
-  3. 元命題と対偶の真偽関係
+  1. 逆・裏・対偶
+  2. 元命題と対偶、逆と裏の真偽関係
+  3. 証明しやすい向きを選ぶ
   4. 対偶による3の倍数の証明
   5. 矛盾を使う証明
 - source-backed principle:
-  - practice taxonomy に合わせて「同値」を先に置く。
+  - 前unitで扱った同値を重複して教え直さない。
   - 対偶は名前を知るだけで終わらず、実際に証明の入口として選ばせる。
   - 背理法は「否定を仮定 → 矛盾 → 仮定を退ける」の因果順を崩さない。
+
+## 4. 第2章・関数（将来の章として review）
+
+### math-functions-conditions
+- status: review
+- source: 深進数学I 第2章 p.46〜47 相当
+- current learner topic: 未接続
+- flow:
+  1. y=4x−6 の具体例から「xを決めるとyがただ1つ決まる」を確認
+  2. f(−1), f(2), f(a−1)
+  3. f(x)=x²−1 でも同じ読み方を使う
+  4. 周40 cmの長方形から y=20−x
+  5. 定義域・値域
+- note:
+  - 第3章「条件から命題を読む」には含めない。
+  - 練習モードとの同期は内部metadata/testだけで扱う。
+  - 第2章を学習モードへ実装するときに chapter-aware setup へ接続する。
 
 ## Promotion
 

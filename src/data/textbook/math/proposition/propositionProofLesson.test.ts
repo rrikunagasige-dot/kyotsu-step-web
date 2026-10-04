@@ -4,6 +4,7 @@ import { mathPropositionProofUnit } from './propositionProofLesson'
 describe('math proposition-proof textbook unit', () => {
   it('keeps the proof source scope in review during audit', () => {
     expect(mathPropositionProofUnit.status).toBe('review')
+    expect(mathPropositionProofUnit.revision).toBe(2)
     expect(mathPropositionProofUnit.chapter?.chapterId).toBe('math-ch03-sets-propositions')
     expect(mathPropositionProofUnit.chapter?.sourcePages).toEqual([96, 97, 98])
   })
@@ -34,6 +35,13 @@ describe('math proposition-proof textbook unit', () => {
   })
 
 
+
+  it('builds reverse, inverse, and contrapositive operations before naming them in accessibility prompts', () => {
+    const items = mathPropositionProofUnit.sections[0].items
+    expect(items.find((item) => item.id === 'proof-a01')?.prompt).not.toContain('逆')
+    expect(items.find((item) => item.id === 'proof-a02')?.prompt).not.toContain('裏')
+    expect(items.find((item) => item.id === 'proof-a03')?.prompt).not.toContain('対偶')
+  })
 
   it('checks all four truth values for the first reverse-inverse-contrapositive source example', () => {
     const items = mathPropositionProofUnit.sections[0].items
@@ -72,6 +80,27 @@ describe('math proposition-proof textbook unit', () => {
     expect(caseSplitDecision).toBeGreaterThan(contrapositiveDecision)
   })
 
+
+  it('makes the first modulo-3 case an algebra step instead of copying a visible remainder', () => {
+    const section = mathPropositionProofUnit.sections[0]
+    const item = section.items.find((candidate) => candidate.id === 'proof-b03')
+    expect(item?.answer).toBe('3(3k^2+2k)+1')
+    expect(item?.answerType).toBe('formula')
+
+    const block = section.readingFlow.find(
+      (candidate) => candidate.type === 'paragraph' && candidate.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'proof-b03',
+      ),
+    )
+    expect(block?.type).toBe('paragraph')
+    if (block?.type === 'paragraph') {
+      const beforeChoice = block.parts
+        .slice(0, block.parts.findIndex((part) => part.type === 'choice'))
+        .map((part) => part.type === 'math' ? part.latex : part.type === 'text' ? part.text : '')
+        .join('')
+      expect(beforeChoice).not.toContain('3(3k^2+2k)+1')
+    }
+  })
 
   it('chooses the contradiction assumption before algebraic manipulation', () => {
     const flow = mathPropositionProofUnit.sections[0].readingFlow

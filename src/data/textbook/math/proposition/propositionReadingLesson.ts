@@ -598,7 +598,7 @@ const rawMathPropositionReadingUnit = {
           acceptedAnswers: [],
           answerType: 'text' as const,
           choices: ['必要十分条件', '必要条件だが十分でない', '十分条件だが必要でない'],
-          purpose: 'definition' as const,
+          purpose: 'transfer' as const,
           scaffoldLevel: 'light' as const,
           hints: ['p⇒qもq⇒pも真。', '必要でも十分でもあるときの名称を使う。'],
         },

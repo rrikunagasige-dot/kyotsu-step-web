@@ -296,6 +296,37 @@ test('quantifier review unit derives the negation of all only after the source c
 })
 
 
+test('quantifier review reaches all five source statements without layout regressions', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/math-quantifiers-all-exists'))
+
+  const answers: Array<[string, string]> = [
+    ['quant-a01', '1つ'],
+    ['quant-a02', 'a=2, b=3'],
+    ['quant-a03', 'すべての素数の組(a,b)に対してabは奇数である'],
+    ['quant-b01', '存在しない'],
+    ['quant-b02', 'すべての実数xに対して x²≠-1'],
+    ['quant-c01', '1つ'],
+    ['quant-c02', '2'],
+    ['quant-c03', 'ある素数は偶数である'],
+    ['quant-d01', 'すべての2つの無理数'],
+    ['quant-d02', '4'],
+    ['quant-d03', 'ある2つの無理数の積は有理数である'],
+    ['quant-e01', '真'],
+    ['quant-e02', '偽'],
+  ]
+  for (const [itemId, answer] of answers) await answerItem(page, itemId, answer)
+
+  await expect(page.getByText(/元の命題とその否定は、真偽が反対になる/)).toBeVisible()
+  await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
+  await expect(page.locator('.katex-error')).toHaveCount(0)
+
+  const viewport = await page.evaluate(() => ({
+    clientWidth: document.documentElement.clientWidth,
+    scrollWidth: document.documentElement.scrollWidth,
+  }))
+  expect(viewport.scrollWidth).toBeLessThanOrEqual(viewport.clientWidth + 1)
+})
+
 test('function-conditions review unit builds the function concept before substitution work', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-functions-conditions'))
 

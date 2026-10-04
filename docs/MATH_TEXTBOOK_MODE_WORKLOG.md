@@ -214,10 +214,20 @@ review → published に上げる条件:
 
 ## 2026-10-04 final review-unit QA
 
-- `math-propositions-reading`: PASS
-- `math-propositions-proof`: PASS
-- `math-quantifiers-all-exists`: PASS
-- code validation baseline: commit `50ac391698ac2c5b6c49bf1ac3c18bf8ebd5aca3` で Math textbook mode CI / Math practice pilot CI ともに success
-- 以後のcommitはdocs整合性更新のみ。教材コードは変更していない。
-- remaining blocker: **user hands-on QA**
+- `math-propositions-reading`: assistant deep static QA PASS / revision 1 / 18穴
+- `math-quantifiers-all-exists`: assistant deep static QA PASS / revision 3 / 13穴
+- `math-propositions-proof`: assistant deep static QA PASS / revision 2 / 23穴
+- deep-audit code checkpoint: `be072bbe42d4d1f9d389354d974050107e818883`
+- deep audit で教材コードも更新したため、旧記述「50ac以後はdocsのみ」は撤回。
+- 主な修正:
+  - reading: objective順、support fading、A3の非一意例表現、B6 transfer化
+  - quantifier: implicit universal の自然な日本語、完成文の二重語尾除去、D2本文、revision bump
+  - proof: 定義前aria promptの用語漏れ除去、B3を式変形thinking node化、C5 hint、revision bump
+  - shared UI: math側のlast wrong choiceをretry時に可視化
+- cross-unit audit:
+  - 54穴の first staged hint exact-answer leakage = 0
+  - completed-prose double「である」/二重句点 = 0
+  - no-touch zoneへの教材差分なし
+- CI status: **deep-audit code checkpoint の最新validation待ち**。自動PASSを確認するまでpublish gateは開けない。
+- remaining blocker after automated validation: **user hands-on QA**
 - user確認前は3 unitとも `status: review` を維持し、PR #31をmergeしない。

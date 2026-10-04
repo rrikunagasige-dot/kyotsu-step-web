@@ -301,7 +301,7 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
       id: 's4',
       kicker: { ja: '今の問い｜(4)', zh: '当前问题｜(4)' },
       latex: '\\overline A\\cap B\\cap\\overline C',
-      blankIds: ['p4-candidates', 'p4-result'],
+      blankIds: ['p4-candidates', 'p4-after-a', 'p4-result'],
     },
     {
       id: 's5',

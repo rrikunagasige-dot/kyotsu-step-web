@@ -67,6 +67,11 @@ describe('math proposition-proof textbook unit', () => {
 
   it('chooses the contrapositive before starting the divisibility proof', () => {
     const flow = mathPropositionProofUnit.sections[0].readingFlow
+    const strategyDecision = flow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'proof-b00',
+      ),
+    )
     const contrapositiveDecision = flow.findIndex(
       (block) => block.type === 'paragraph' && block.parts.some(
         (part) => part.type === 'choice' && part.itemId === 'proof-b01',
@@ -77,8 +82,26 @@ describe('math proposition-proof textbook unit', () => {
         (part) => part.type === 'choice' && part.itemId === 'proof-b02',
       ),
     )
-    expect(contrapositiveDecision).toBeGreaterThanOrEqual(0)
+    expect(strategyDecision).toBeGreaterThanOrEqual(0)
+    expect(contrapositiveDecision).toBeGreaterThan(strategyDecision)
     expect(caseSplitDecision).toBeGreaterThan(contrapositiveDecision)
+  })
+
+
+  it('chooses the contradiction assumption before algebraic manipulation', () => {
+    const flow = mathPropositionProofUnit.sections[0].readingFlow
+    const assumptionIndex = flow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'proof-c00',
+      ),
+    )
+    const algebraIndex = flow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'proof-c01',
+      ),
+    )
+    expect(assumptionIndex).toBeGreaterThanOrEqual(0)
+    expect(algebraIndex).toBeGreaterThan(assumptionIndex)
   })
 
   it('uses a contradiction before rejecting the nonzero assumption', () => {

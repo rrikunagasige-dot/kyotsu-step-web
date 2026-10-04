@@ -588,7 +588,7 @@ const rawMathPropositionReadingUnit = {
           choices: ['どちらも真', 'p⇒qだけ真', 'q⇒pだけ真'],
           purpose: 'concept-formation' as const,
           scaffoldLevel: 'medium' as const,
-          hints: ['x=0なら積は0になる。逆に積が0ならx²+1は0になれない。', '両方向を別々に確認する。'],
+          hints: ['p⇒qとq⇒pを別々に確かめよう。', 'x=0なら積は0になる。逆に、積が0ならx²+1は0になれないのでx=0である。'],
         },
         {
           id: 'prop-b06',

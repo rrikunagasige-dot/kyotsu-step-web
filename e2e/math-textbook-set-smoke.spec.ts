@@ -180,6 +180,10 @@ test('proposition-reading wrong answer stays unresolved and does not reveal the 
   const hint = page.getByTestId('textbook-hint-prop-a01')
   await expect(hint).toBeVisible()
   await expect(hint).not.toContainText('満たす')
+
+  const lastWrong = page.locator('[data-testid^="textbook-choice-prop-a01-"][aria-invalid="true"]')
+  await expect(lastWrong).toHaveCount(1)
+  await expect(lastWrong).toContainText('満たさない場合がある')
 })
 
 test('proposition-reading follows the textbook order from truth to necessary/sufficient to negation', async ({ page }) => {

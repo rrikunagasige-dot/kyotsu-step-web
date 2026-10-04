@@ -1,10 +1,10 @@
 # MATH PRACTICE 87–120 FINAL QA FINDINGS
 
-Status: **CODE / UI QA COMPLETE — RAW SOURCE FIDELITY OPEN**  
+Status: **FINAL QA COMPLETE — SOURCE FIDELITY / CODE / UI ALL PASS**  
 Branch: `chatgpt/math-87-120-final-qa-audit`  
 Baseline main: `1b9d86d1a9f37bb66b5279a1d68dac4f2dcaac6e`  
-Validated code head: `3a65bc2a61793acf332ec930f55aee7a1eab885b`  
-Final full CI: `37168651729`
+Validated code head: `db10ae97603041046bdb220f8ed9bb4282d0a2ff`  
+Final full CI: `37169242430`
 
 Purpose:
 - 87–120 を教材全体として最終監査する。
@@ -966,7 +966,14 @@ Repair commits:
 - `4631679b64491732f4c16d92a7c64293a40af828`
 - `e7e47125abadd34a23629ba96874d1c817a92585`
 
-Final CI for these commits is still required before merge.
+Final validation:
+- code head: `db10ae97603041046bdb220f8ed9bb4282d0a2ff`
+- CI run: `37169242430`
+- typecheck: PASS
+- Math practice unit / parity / presentation tests: PASS
+- build: PASS
+- Pixel 7 mobile Chromium smoke: PASS
+- desktop Chromium smoke: PASS
 
 ---
 
@@ -1032,37 +1039,35 @@ Review closed without code change:
 - QAF-006 — 104 / 107 classification blanks are meaningful conceptual decisions and remain as designed
 
 Final validated code head:
-- `3a65bc2a61793acf332ec930f55aee7a1eab885b`
+- `db10ae97603041046bdb220f8ed9bb4282d0a2ff`
 
 Final CI:
-- run `37168651729`
+- run `37169242430`
 - typecheck: PASS
 - Math practice unit / parity / presentation tests: PASS
 - build: PASS
 - Pixel 7 mobile Chromium smoke: PASS
 - desktop Chromium smoke: PASS
 - 87–97 full visual sweep: PASS on both mobile and desktop
+- QAF-009 source-fidelity browser regressions: PASS
 
-Not done:
+Source fidelity:
+- revised 4STEP original PDF pages covering 87–120 directly rechecked: PASS
+- problem order / values / signs / inequalities / radicals / fractions / domains / variable definitions / meaning-changing wording: PASS
+- 107-(5) missing side-definition defect restored and regression-tested
+
+Not done by design:
 - no merge to `main`
 - no deployment
-- raw revised-4STEP source fidelity is still OPEN
 
 ---
 
 # Next execution order
 
-Only the source-fidelity gate remains before calling 87–120 fully complete:
+87–120 final QA is complete. No further content repair is currently open.
 
-1. obtain the actual pages/scans from `『改訂版 教科書傍用 4STEP数学 1+A』` covering original 87–120
-2. compare every problem directly against the raw source for:
-   - problem numbers / mapping
-   - numerical values
-   - signs and inequalities
-   - radicals and exponents
-   - subproblem order
-   - domains / assumptions
-   - wording that changes mathematical meaning
-3. resolve any raw-source discrepancies with small isolated commits
-4. rerun focused tests and full mobile + desktop CI if source content changes
-5. only after the source-fidelity gate passes, decide whether to merge / deploy / mark 87–120 complete
+Remaining release actions require an explicit decision:
+1. review the draft PR #43 summary/diff if desired
+2. merge to `main` only after explicit approval
+3. deploy only after explicit approval
+4. after deployment, run a short production smoke check before marking the release complete

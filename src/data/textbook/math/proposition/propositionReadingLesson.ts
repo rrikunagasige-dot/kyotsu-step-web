@@ -259,7 +259,7 @@ const rawMathPropositionReadingUnit = {
         {
           id: 'heading-necessary-sufficient',
           type: 'heading' as const,
-          text: '必要条件・十分条件を見分ける',
+          text: '2つの条件の関係を見る',
         },
         {
           id: 'paragraph-b-intro',
@@ -394,7 +394,7 @@ const rawMathPropositionReadingUnit = {
         {
           id: 'heading-negation',
           type: 'heading' as const,
-          text: '条件を否定する',
+          text: '成り立たない条件を考える',
         },
         {
           id: 'paragraph-c-intro',

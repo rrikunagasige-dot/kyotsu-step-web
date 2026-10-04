@@ -159,12 +159,13 @@ test('proposition-reading review unit builds the proposition criterion before im
   await expect(page.getByTestId('textbook-item-prop-p00a')).toBeVisible()
   await expect(page.getByTestId('textbook-item-prop-a01')).toHaveCount(0)
 
-  await answerItem(page, 'prop-p00a', '命題であり、真である')
+  await answerItem(page, 'prop-p00a', '真である')
   await answerItem(page, 'prop-p00b', '頂角40°の二等辺三角形')
-  await answerItem(page, 'prop-p00c', '命題であり、偽である')
+  await answerItem(page, 'prop-p00c', '偽である')
   await answerItem(page, 'prop-p00d', '定まっていない')
-  await answerItem(page, 'prop-p00e', '命題ではない')
+  await answerItem(page, 'prop-p00e', '一意に決められない')
 
+  await expect(page.getByText(/文を命題という/)).toBeVisible()
   await expect(page.getByTestId('textbook-item-prop-a01')).toBeVisible()
   await expect(page.getByText(/pならばqである/)).toHaveCount(0)
 
@@ -176,11 +177,11 @@ test('proposition-reading review unit builds the proposition criterion before im
 test('proposition-reading counterexample is decided before the counterexample concept is named', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-propositions-reading'))
 
-  await answerItem(page, 'prop-p00a', '命題であり、真である')
+  await answerItem(page, 'prop-p00a', '真である')
   await answerItem(page, 'prop-p00b', '頂角40°の二等辺三角形')
-  await answerItem(page, 'prop-p00c', '命題であり、偽である')
+  await answerItem(page, 'prop-p00c', '偽である')
   await answerItem(page, 'prop-p00d', '定まっていない')
-  await answerItem(page, 'prop-p00e', '命題ではない')
+  await answerItem(page, 'prop-p00e', '一意に決められない')
   await answerItem(page, 'prop-a01', '満たす')
   await answerItem(page, 'prop-a02', 'すべて入る')
 

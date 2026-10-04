@@ -247,7 +247,7 @@ const rawMathPropositionProofUnit = {
         {
           id: 'heading-contrapositive-proof',
           type: 'heading' as const,
-          text: '対偶を使って証明する',
+          text: '証明しやすい向きを選ぶ',
         },
         {
           id: 'paragraph-cp-intro',

@@ -6,4 +6,4 @@ import { mathPropositionProofUnit } from './proposition/propositionProofLesson'
 
 export const mathTextbookUnits = [mathSetUnit, mathPropositionReadingUnit, mathPropositionProofUnit, mathQuantifierUnit, mathFunctionConditionsUnit]
 
-export { mathTextbookTopics, mathTextbookTopicForUnit } from './mathCatalog'
+export { mathTextbookTopics, mathTextbookTopicForUnit, mathTextbookTopicHasAllUnits, mathTextbookNextUnitId } from './mathCatalog'

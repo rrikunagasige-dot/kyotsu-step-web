@@ -1612,7 +1612,8 @@ export const mathPracticePropositionsBatchBSource: MathPracticeSourceQuestion[] 
       { type: 'latex', latex: '(2)\\;x>0\\;\\text{かつ}\\;y<0\\;\\text{ は }\\;xy<0\\;\\text{ であるための□}' },
       { type: 'latex', latex: '(3)\\;x=y=0\\;\\text{ は }\\;xy=0\\;\\text{かつ}\\;x+y=0\\;\\text{ であるための□}' },
       { type: 'text', text: '(4) ∠A<90° は、△ABC が鋭角三角形であるための□。' },
-      { type: 'latex', latex: '(5)\\;(a-b)(a^2+b^2-c^2)=0\\;\\text{ は直角二等辺三角形であるための□}' },
+      { type: 'text', text: '(5) △ABC の3辺 BC, CA, AB の長さをそれぞれ a, b, c とする。' },
+      { type: 'latex', latex: '(a-b)(a^2+b^2-c^2)=0\\;\\text{ は△ABCが直角二等辺三角形であるための□}' },
     ],
     guide: [
       {

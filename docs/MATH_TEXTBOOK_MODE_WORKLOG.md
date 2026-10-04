@@ -76,14 +76,14 @@ Source:
 
 ### math-functions-conditions
 Source:
-- 第2章 p.46〜47 相当 + 練習118 content authority
+- 第2章 p.46〜47 相当
 - 関数の判定基準
 - 円周x → 半径y
 - 正の数x → 平方根y
 - 面積1の長方形で縦x → 横y
 Checkpoint:
-- 118の3例へ同期済み
-- 119/120の内容を先回りして混ぜない
+- 学習モードとして教科書ベースで監査
+- 練習問題番号は learner-facing 構造に使わない
 - STATUS: review
 
 ### math-propositions-proof
@@ -116,6 +116,13 @@ Checkpoint:
 - function lesson は main の `MATH_PRACTICE_118_CONTENT_DESIGN.md` を authority として、判定基準 → 円周/半径 → 平方根 → 面積1長方形へ同期。119/120 は authority が main に入るまで先回りしない。
 - review integrity test で、choices の実質重複・answer の一意性・inline item の1回使用・support fading を監査。
 - exact practice membership を 87〜120 の各問題番号レベルでcatalogに固定し、3テーマ間の重複/欠落を禁止。
+
+## 2026-10-04 checkpoint
+
+- 作業対象は数学・学習モードのみ。
+- `math-propositions-reading`: 具体例 → 判断 → 「命題」概念化へ修正。必要・十分の穴も答えを先に言わない形へ修正。
+- `math-propositions-proof`: 背理法という名称は実例を完了した後に提示するよう修正。
+- 練習モード本体・Desktop / Remote Desktop は触らない。
 
 ## CI strategy
 

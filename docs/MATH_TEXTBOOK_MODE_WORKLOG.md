@@ -89,15 +89,16 @@ Checkpoint:
 ### math-propositions-proof
 Source:
 - p.96〜98 相当
-- 同値
 - 逆・裏・対偶
 - x²=x⇒x=1 と 12の倍数⇒6の倍数 の2例
 - 元命題と対偶、逆と裏の真偽対応
+- 証明しやすい向きの選択
 - 3の倍数の対偶証明
 - √6の無理性を使う背理法
 Checkpoint:
-- SOURCE AUDIT: PASS（問12(1)(2)、問13、問14を反映）
-- UNIT TEST: 12倍数例を固定済み
+- SOURCE AUDIT: PASS（p.96〜98 の順へ整理）
+- 前unitで扱った同値の重複再学習を削除
+- UNIT TEST: 2つのsource例とstrategy nodeを固定済み
 - STATUS: review
 
 これらは `status: review` のため `textbookRepository.listPublished()` には出ず、通常setupでは「準備中」を維持する。

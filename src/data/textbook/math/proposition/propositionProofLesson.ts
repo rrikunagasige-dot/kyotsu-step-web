@@ -497,7 +497,7 @@ const rawMathPropositionProofUnit = {
           choices: ['n=6', 'n=12', 'n=24'],
           purpose: 'transfer' as const,
           scaffoldLevel: 'light' as const,
-          hints: ['6は6の倍数だが12の倍数ではない。', '同じn=6で、逆も裏も破れる。'],
+          hints: ['6の倍数だが12の倍数ではない整数を探す。', '逆と裏の前件をそれぞれ満たし、後件を破る同じ整数がないか試す。'],
         },
         {
           id: 'proof-a08',
@@ -657,7 +657,7 @@ const rawMathPropositionProofUnit = {
           choices: ['x=0', 'x=1', 'x=-1'],
           purpose: 'causal-reasoning' as const,
           scaffoldLevel: 'light' as const,
-          hints: ['仮定x≠0が成立できなかった。', '残る結論はx=0。'],
+          hints: ['仮定x≠0が成立できなかった。', '最初に否定した結論へ戻り、その否定が成立できないとき何が残るか考える。'],
         },
         {
           id: 'proof-c05',

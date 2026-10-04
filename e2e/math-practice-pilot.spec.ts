@@ -153,7 +153,7 @@ test('101 treats negation as the complete complement and keeps each condition in
   await expect(page.getByTestId('blank-math-practice-101-p1-result')).toHaveCount(0)
 
   await page.getByTestId('blank-math-practice-101-rule').click()
-  await page.getByTestId('option-math-practice-101-rule-all-not-p').click()
+  await page.getByTestId('option-math-practice-101-rule-complement').click()
 
   // (1): strict inequality negation must include the boundary; the final result is not leaked early.
   await expect(currentTarget).toContainText('今の問い｜(1)')
@@ -162,14 +162,14 @@ test('101 treats negation as the complete complement and keeps each condition in
   await expect(page.getByTestId('blank-math-practice-101-p1-result')).toContainText('選択')
 
   await page.getByTestId('blank-math-practice-101-p1-result').click()
-  await page.getByTestId('option-math-practice-101-p1-result-le-minus-five').click()
+  await page.getByTestId('option-math-practice-101-p1-result-le').click()
 
   // (2): the previous inequality stage disappears; ≠ is negated by equality.
   await expect(currentTarget).toContainText('今の問い｜(2)')
   await expect(readingFlow).not.toContainText('境界の -5')
   await expect(page.getByTestId('blank-math-practice-101-p2-result')).toContainText('選択')
   await page.getByTestId('blank-math-practice-101-p2-result').click()
-  await page.getByTestId('option-math-practice-101-p2-result-equals-zero').click()
+  await page.getByTestId('option-math-practice-101-p2-result-equals').click()
 
   // (3): use the real-number universe, not a weaker property such as “not an integer”.
   await expect(currentTarget).toContainText('今の問い｜(3)')
@@ -212,7 +212,7 @@ test('102 maps AND/OR to intersection/union and handles open and closed endpoint
   await expect(page.getByTestId('blank-math-practice-102-p1-result')).toHaveCount(0)
 
   await page.getByTestId('blank-math-practice-102-rule').click()
-  await page.getByTestId('option-math-practice-102-rule-and-intersection-or-union').click()
+  await page.getByTestId('option-math-practice-102-rule-correct').click()
 
   // (1): intersection only; the final interval is not leaked before the choice.
   await expect(currentTarget).toContainText('今の問い｜(1)')
@@ -220,7 +220,7 @@ test('102 maps AND/OR to intersection/union and handles open and closed endpoint
   await expect(readingFlow).not.toContainText('0<x<2')
   await expect(page.getByTestId('blank-math-practice-102-p1-result')).toContainText('選択')
   await page.getByTestId('blank-math-practice-102-p1-result').click()
-  await page.getByTestId('option-math-practice-102-p1-result-zero-two-open').click()
+  await page.getByTestId('option-math-practice-102-p1-result-correct').click()
 
   // (2): same base intervals but no result dependency on (1).
   await expect(currentTarget).toContainText('今の問い｜(2)')
@@ -228,21 +228,21 @@ test('102 maps AND/OR to intersection/union and handles open and closed endpoint
   await expect(page.getByTestId('math-practice-dependency-links')).toContainText('集合演算の対応')
   await expect(page.getByTestId('blank-math-practice-102-p2-result')).toContainText('選択')
   await page.getByTestId('blank-math-practice-102-p2-result').click()
-  await page.getByTestId('option-math-practice-102-p2-result-minus-two-three').click()
+  await page.getByTestId('option-math-practice-102-p2-result-correct').click()
 
   // (3): intersection chooses the stricter endpoint conditions.
   await expect(currentTarget).toContainText('今の問い｜(3)')
   await expect(readingFlow).not.toContainText('少なくとも一方に入る範囲')
   await expect(page.getByTestId('blank-math-practice-102-p3-result')).toContainText('選択')
   await page.getByTestId('blank-math-practice-102-p3-result').click()
-  await page.getByTestId('option-math-practice-102-p3-result-minus-one-two-open').click()
+  await page.getByTestId('option-math-practice-102-p3-result-correct').click()
 
   // (4): union keeps an endpoint if either interval contains it.
   await expect(currentTarget).toContainText('今の問い｜(4)')
   await expect(readingFlow).not.toContainText('共通部分を取り')
   await expect(page.getByTestId('blank-math-practice-102-p4-result')).toContainText('選択')
   await page.getByTestId('blank-math-practice-102-p4-result').click()
-  await page.getByTestId('option-math-practice-102-p4-result-minus-one-four-closed').click()
+  await page.getByTestId('option-math-practice-102-p4-result-correct').click()
 
   await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
 
@@ -461,7 +461,7 @@ test('106 translates number conditions into intersection and complement without 
   await expect(page.getByTestId('math-practice-dependency-links')).toContainText('集合表現の規則')
   await expect(readingFlow).not.toContainText('P∩Q')
   await page.getByTestId('blank-math-practice-106-p1-result').click()
-  await page.getByTestId('option-math-practice-106-p1-result-p-inter-q').click()
+  await page.getByTestId('option-math-practice-106-p1-result-intersection').click()
 
   // (2): previous result disappears; odd numbers are the complement of P.
   await expect(currentTarget).toContainText('今の問い｜(2)')
@@ -470,7 +470,7 @@ test('106 translates number conditions into intersection and complement without 
   await expect(readingFlow).not.toContainText('6の倍数')
   await expect(readingFlow).not.toContainText('P̄')
   await page.getByTestId('blank-math-practice-106-p2-result').click()
-  await page.getByTestId('option-math-practice-106-p2-result-p-complement').click()
+  await page.getByTestId('option-math-practice-106-p2-result-pbar').click()
 
   // (3): combine Q with the complement of P, without reusing (2) as a visible result link.
   await expect(currentTarget).toContainText('今の問い｜(3)')
@@ -596,7 +596,7 @@ test('109 negates quantifiers and verifies the truth of each original and negate
   await page.getByTestId('option-math-practice-109-p1-negation-exists-equals').click()
   await expect(page.getByTestId('blank-math-practice-109-p1-truth')).toContainText('選択')
   await page.getByTestId('blank-math-practice-109-p1-truth').click()
-  await page.getByTestId('option-math-practice-109-p1-truth-x-one').click()
+  await page.getByTestId('option-math-practice-109-p1-truth-original-false').click()
 
   // (2): (1) disappears; first negate the existential, then solve before deciding truth.
   await expect(currentTarget).toContainText('今の問い｜(2)')
@@ -610,10 +610,10 @@ test('109 negates quantifiers and verifies the truth of each original and negate
   await expect(page.getByTestId('blank-math-practice-109-p2-truth')).toHaveCount(0)
 
   await page.getByTestId('blank-math-practice-109-p2-solve').click()
-  await page.getByTestId('option-math-practice-109-p2-solve-factor-zero-five').click()
+  await page.getByTestId('option-math-practice-109-p2-solve-zero-five').click()
   await expect(page.getByTestId('blank-math-practice-109-p2-truth')).toContainText('選択')
   await page.getByTestId('blank-math-practice-109-p2-truth').click()
-  await page.getByTestId('option-math-practice-109-p2-truth-five-exists').click()
+  await page.getByTestId('option-math-practice-109-p2-truth-original-true').click()
 
   await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
 

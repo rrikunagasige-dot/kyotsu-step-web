@@ -29,6 +29,7 @@ on:
       - 'src/pages/LearningSetupPage.tsx'
       - 'src/components/learning/LearningFlowRenderer.tsx'
       - 'src/components/learning/MathPracticeReadingFlow.tsx'
+      - 'src/components/learning/MathPracticeFigure.tsx'
       - 'src/components/learning/MathPracticeRichText.tsx'
       - 'src/styles/global.css'
       - 'e2e/math-practice-pilot.spec.ts'
@@ -67,7 +68,7 @@ jobs:
         run: pnpm run typecheck
 
       - name: Math practice pilot tests
-        run: pnpm exec vitest run src/data/mathPractice/adapter.test.ts src/data/mathPractice/presentation.test.ts src/data/mathPracticeTaxonomy.test.ts src/domain/textbookMath.test.ts src/data/questionCatalog.test.ts src/data/questionCatalog.zh.test.ts
+        run: pnpm exec vitest run src/data/mathPractice/adapter.test.ts src/data/mathPractice/presentation.test.ts src/data/mathPractice/figures.test.ts src/data/mathPracticeTaxonomy.test.ts src/domain/textbookMath.test.ts src/data/questionCatalog.test.ts src/data/questionCatalog.zh.test.ts
 
       - name: Build
         run: pnpm run build

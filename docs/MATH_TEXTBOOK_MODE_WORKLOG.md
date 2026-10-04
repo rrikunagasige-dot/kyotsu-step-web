@@ -241,3 +241,46 @@ review → published に上げる条件:
   - Math textbook CI内部: Typecheck / 100 Vitest / Build / mobile / desktop / Physics regression / Math practice setup regression すべてsuccess
 - remaining blocker: **user hands-on QA**
 - user確認前は3 unitとも `status: review` を維持し、PR #31をDraftのまま維持し、mergeしない。
+
+
+## 2026-10-04 mathematics MASTER restoration
+
+Trigger:
+- user hands-on inspection identified a macro-level mismatch: the review units felt like consecutive short questions rather than the previously frozen mathematics learning-mode flow.
+- recovered authority: `MATHEMATICS_TEXTBOOK_MODE_MASTER_SKILL_v1`, 2026-10-03 Recovery/Freeze contract, and the reviewed mathematics mother example `場合の数と確率_教科書モード_厳密再作成版`.
+
+Restoration design:
+- `docs/MATH_LEARNING_MODE_MASTER_DIFF_AUDIT_2026-10-04.md`
+- `docs/MATH_LEARNING_PROPOSITION_READING_RESTORATION_DESIGN_2026-10-04.md`
+- `docs/MATH_LEARNING_QUANTIFIER_RESTORATION_DESIGN_2026-10-04.md`
+- `docs/MATH_LEARNING_PROPOSITION_PROOF_RESTORATION_DESIGN_2026-10-04.md`
+- `docs/MATH_LEARNING_MODE_RESTORATION_IMPLEMENTATION_PLAN_2026-10-04.md`
+
+Implemented:
+- proposition-reading: revision 1 → 2, 18 → 14 interactions
+  - a06/a08/b03/b06 merged into prose
+- quantifier: revision 3 → 4, 13 → 11 interactions
+  - concrete witness/counterexample moved before abstract rule; a01/c01 merged into prose
+- proposition-proof: revision 2 → 3, 23 interactions retained
+  - concrete proposition before reverse/inverse/contrapositive naming
+  - contradiction method not pre-explained before c00
+- total: 54 → 48 interactions
+
+Validated code head:
+- `9ef3111792d5660931b4b2b35ffb89281a92c7ad`
+
+Automated validation:
+- Math textbook mode CI: success
+- Math practice pilot CI: success
+- Typecheck / unit tests / build / mobile / desktop / Physics textbook regression / Math practice setup regression: all success
+
+Isolation:
+- restoration implementation changed only the 3 math learning lesson files, their unit tests, and math textbook E2E
+- no math practice implementation change
+- no physics lesson/content change
+- no function lesson change
+
+Current gate:
+- 3 units remain `status: review`
+- next: QA Pages deployment of the restored branch, then user hands-on QA
+- do not promote or merge before user confirmation

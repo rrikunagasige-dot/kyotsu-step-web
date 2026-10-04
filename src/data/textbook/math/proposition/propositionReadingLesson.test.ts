@@ -252,6 +252,16 @@ describe('math proposition-reading textbook unit', () => {
     ])
   })
 
+  it('does not put the exact answer into the first staged hint', () => {
+    const items = mathPropositionReadingUnit.sections[0].items
+    for (const item of items) {
+      const firstHint = item.hints[0] ?? ''
+      const normalizedHint = firstHint.replace(/\\s/g, '').replace(/−/g, '-')
+      const normalizedAnswer = item.answer.replace(/\\s/g, '').replace(/−/g, '-')
+      expect(normalizedHint, item.id).not.toContain(normalizedAnswer)
+    }
+  })
+
   it('does not leak new concept names through the inline-choice accessibility prompt', () => {
     const items = mathPropositionReadingUnit.sections[0].items
     const truthDecision = items.find((item) => item.id === 'prop-a04')

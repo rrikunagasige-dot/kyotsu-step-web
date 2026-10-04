@@ -32,6 +32,11 @@
 - `math-quantifiers-all-exists`: FINAL UNIT QA PASS
 - `math-propositions-proof`: FINAL UNIT QA PASS
 
+validated code head:
+- `34fab79dc7125e836d927df56e63197e1a99f100`
+- Math textbook mode CI: success
+- Math practice pilot CI: success
+
 監査済み:
 - source fidelity
 - concrete judgment → concept naming
@@ -63,9 +68,11 @@ User hands-on 前の assistant-side deep audit を、3 review unit 全54穴に�
   - 最終 `y=0` の first hint が答えを押し出さないよう修正
   - answer変更に伴い revision 1 → 2
 - cross-unit:
-  - first staged hint exact-answer leakage: 54穴中 0
+  - primary/accepted answer と staged hint の完全一致漏れ: first 63候補中 0 / second 63候補中 0
   - completed-prose double「である」/二重句点: 0
+  - staged hint は「1回目=方針 → 2回目=具体化」に統一（prop-b05 / quant-c03 / proof-a07 / proof-b00 を修正）
   - concept prose / resolved answer は通常本文色を継承
+  - equal-diagonals figure は座標上でも AC=BD を完全一致させ、math figure asset test で固定
   - no-touch zone（math practice本体 / function lesson / physics lesson・assets）への差分なし
 
 この deep audit は **user hands-on QA の代替ではない**。3 unit は引き続き `status: review`。
@@ -95,7 +102,18 @@ User hands-on 前の assistant-side deep audit を、3 review unit 全54穴に�
    - Correct answer is not revealed.
    - Choice order remains stable across retries.
 
+6. CI contract hardening
+   - PR-side Math textbook CI now runs `src/domain/textbook.test.ts`, so revision changes must invalidate stale progress before merge.
+   - `public/assets/math/textbook/**` now triggers Math textbook CI.
+   - `mathFigureAssets.test.ts` checks SVG presence/structure, counterexample-point geometry, and equal diagonals.
+   - Existing stale grouping test was corrected to group only `status: published` units.
+
 ## Manual hands-on gate
+
+Direct routes（HashRouter）:
+- `#/learning/textbook/math-propositions-reading`
+- `#/learning/textbook/math-quantifiers-all-exists`
+- `#/learning/textbook/math-propositions-proof`
 
 Automated PASS does not promote a unit. User checks the following in the real app.
 

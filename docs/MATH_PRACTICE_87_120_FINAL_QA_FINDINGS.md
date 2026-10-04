@@ -231,7 +231,35 @@ Acceptance for repair:
 
 ---
 
-## QAF-004 — MEDIUM — Problem 92-(2) does not explicitly complete A∩B
+## QAF-004 RESOLUTION — RESOLVED
+
+Status: **RESOLVED**
+
+Repair:
+- after the learner establishes that A and B have no common element in 92-(2), the guided flow now explicitly closes the requested intersection as `A∩B=∅`,
+- the conclusion is rendered as resolved content rather than a duplicate answer blank,
+- strict Chinese source includes the equivalent empty-set conclusion,
+- source regression verifies no artificial `p2-intersection` blank was introduced,
+- browser regression verifies the empty-set conclusion appears only after `p2-common` is resolved and before the union blank.
+
+Validated on commit:
+- `1d938dd5946d5cbb392c6ea1186e6b1e3c3f861e`
+
+CI run:
+- `37167880734`
+
+PASS:
+- typecheck
+- Math practice unit / parity tests
+- build
+- mobile Chromium smoke
+- desktop Chromium smoke
+
+No merge to main yet.
+
+---
+
+## QAF-004 — RESOLVED (was MEDIUM) — Problem 92-(2) does not explicitly complete A∩B
 
 Original task asks for both:
 - `A∩B`

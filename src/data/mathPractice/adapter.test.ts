@@ -63,6 +63,21 @@ describe('math practice 87-120 staged integration', () => {
     ])
   })
 
+  it('authors 96-(4) as candidate selection followed by two explicit complement filters', () => {
+    const question = mathPracticeSetsBatchASource.find((item) => item.problemNo === 96)
+    expect(question).toBeDefined()
+
+    const ids = question?.blanks.map((blank) => blank.id) ?? []
+    expect(ids.slice(ids.indexOf('p4-candidates'), ids.indexOf('p5-result')))
+      .toEqual(['p4-candidates', 'p4-after-a', 'p4-result'])
+
+    const afterA = question?.blanks.find((blank) => blank.id === 'p4-after-a')
+    expect(afterA?.choices.find((choice) => choice.correct)?.label).toBe('{5,6}')
+
+    const final = question?.blanks.find((blank) => blank.id === 'p4-result')
+    expect(final?.choices.find((choice) => choice.correct)?.label).toBe('{5}')
+  })
+
   it('authors 98 as a common proposition criterion plus three independent subproblems', () => {
     const question = mathPracticePropositionsBatchBSource.find((item) => item.problemNo === 98)
     expect(question).toBeDefined()

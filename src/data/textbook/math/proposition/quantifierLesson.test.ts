@@ -110,6 +110,25 @@ describe('math quantifier textbook unit', () => {
     expect(item?.acceptedAnswers).toContain('ある素数は奇数ではない')
   })
 
+  it('keeps the irrational-product calculation natural when inserted into prose', () => {
+    const flow = mathQuantifierUnit.sections[0].readingFlow
+    const block = flow.find(
+      (candidate) => candidate.type === 'paragraph' && candidate.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'quant-d02',
+      ),
+    )
+    expect(block?.type).toBe('paragraph')
+    if (block?.type === 'paragraph') {
+      const choiceIndex = block.parts.findIndex((part) => part.type === 'choice' && part.itemId === 'quant-d02')
+      const suffix = block.parts.slice(choiceIndex + 1)
+        .filter((part) => part.type === 'text')
+        .map((part) => part.text)
+        .join('')
+      expect(suffix).toContain('となり、有理数になる')
+      expect(suffix).not.toContain('で有理数になる')
+    }
+  })
+
   it('keeps full-sentence negation answers from producing duplicated sentence endings', () => {
     const flow = mathQuantifierUnit.sections[0].readingFlow
     for (const itemId of ['quant-a03', 'quant-c03', 'quant-d03']) {
@@ -136,6 +155,7 @@ describe('math quantifier textbook unit', () => {
       'どの2つの無理数を選んでも',
       'ある2つの無理数を選べば',
     ])
+    expect(item?.acceptedAnswers).toContain('任意の2つの無理数について')
 
     const flow = mathQuantifierUnit.sections[0].readingFlow
     const block = flow.find(

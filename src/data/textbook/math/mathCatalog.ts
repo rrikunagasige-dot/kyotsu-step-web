@@ -42,7 +42,7 @@ export const mathTextbookTopics: readonly MathTextbookTopicCatalogEntry[] = [
       zh: '真假 → 必要条件・充分条件 → 条件的否定',
     },
     practiceTopicId: 'read-propositions',
-    practiceRange: [98, 109],
+    practiceRange: [98, 107],
     practiceQuestionNumbers: [98, 99, 100, 101, 102, 103, 104, 105, 106, 107],
     unitIds: ['math-propositions-reading'],
     learnerHeadings: [],

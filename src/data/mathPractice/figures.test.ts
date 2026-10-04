@@ -17,6 +17,12 @@ describe('math practice figure timing', () => {
     expect(mathPracticeFigureState('math-practice-099', 's3', r('p3-p-set', 'p3-q-set'))).toBe('F99-3')
   })
 
+  it('keeps 99(4) endpoint evidence behind the learner endpoint judgment', () => {
+    expect(mathPracticeFigureState('math-practice-099', 's4', r())).toBeNull()
+    expect(mathPracticeFigureState('math-practice-099', 's4', r('p4-p-set', 'p4-q-set'))).toBeNull()
+    expect(mathPracticeFigureState('math-practice-099', 's4', r('p4-p-set', 'p4-q-set', 'p4-left-endpoint'))).toBe('F99-4')
+  })
+
   it('keeps 104 rhombus evidence behind the forward reasoning node', () => {
     expect(mathPracticeFigureState('math-practice-104', 's6', r())).toBeNull()
     expect(mathPracticeFigureState('math-practice-104', 's6', r('p6-forward-property'))).toBe('F104-6A')

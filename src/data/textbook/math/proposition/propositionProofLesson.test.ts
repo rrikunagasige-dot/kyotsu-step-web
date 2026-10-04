@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+import { normalizeTextbookAnswer } from '../../../../domain/textbook'
 import { mathPropositionProofUnit } from './propositionProofLesson'
 
 describe('math proposition-proof textbook unit', () => {
@@ -168,16 +169,9 @@ describe('math proposition-proof textbook unit', () => {
 
   it('does not put the exact answer into the first staged hint', () => {
     const items = mathPropositionProofUnit.sections[0].items
-    const normalize = (value: string) => value
-      .normalize('NFKC')
-      .replace(/[\\s\\u3000]/g, '')
-      .replace(/[−–—]/g, '-')
-      .replace(/\\\\/g, '')
-      .replace(/[{}]/g, '')
-
     for (const item of items) {
-      const answer = normalize(item.answer)
-      const firstHint = normalize(item.hints[0] ?? '')
+      const answer = normalizeTextbookAnswer(item.answer)
+      const firstHint = normalizeTextbookAnswer(item.hints[0] ?? '')
       expect(firstHint, item.id).not.toContain(answer)
     }
   })

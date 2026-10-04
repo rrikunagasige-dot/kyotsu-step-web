@@ -51,6 +51,20 @@ describe('math textbook catalog', () => {
 
 
 
+
+  it('keeps chapter 3 units in textbook page order', () => {
+    const chapter3 = mathTextbookUnits
+      .filter((unit) => unit.chapter?.chapterNumber === '3')
+      .map((unit) => [unit.unitId, unit.chapter?.orderInChapter])
+
+    expect(chapter3).toEqual([
+      ['math-sets', 1],
+      ['math-propositions-reading', 2],
+      ['math-propositions-proof', 3],
+      ['math-quantifiers-all-exists', 4],
+    ])
+  })
+
   it('keeps current learner topics inside chapter 3 and leaves the function review in chapter 2', () => {
     const chapter3UnitIds = mathTextbookTopics.flatMap((topic) => topic.unitIds)
     for (const unitId of chapter3UnitIds) {

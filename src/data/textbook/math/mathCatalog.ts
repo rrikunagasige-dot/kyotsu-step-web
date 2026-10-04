@@ -1,10 +1,13 @@
+export type MathTextbookPracticeLink = {
+  topicId: string
+  questionNumbers: readonly number[]
+}
+
 export type MathTextbookTopicCatalogEntry = {
   id: string
   label: { ja: string; zh: string }
   flow: { ja: string; zh: string }
-  practiceTopicId: string
-  practiceRange: readonly [number, number]
-  practiceQuestionNumbers: readonly number[]
+  practiceLinks: readonly MathTextbookPracticeLink[]
   unitIds: readonly string[]
   learnerHeadings: readonly string[]
 }
@@ -24,9 +27,12 @@ export const mathTextbookTopics: readonly MathTextbookTopicCatalogEntry[] = [
       ja: '集合の表し方 → 部分集合 → 共通部分・和集合 → 補集合 → 集合の条件',
       zh: '集合的表示 → 子集 → 交集・并集 → 补集 → 集合条件',
     },
-    practiceTopicId: 'organize-sets',
-    practiceRange: [87, 97],
-    practiceQuestionNumbers: [87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97],
+    practiceLinks: [
+      {
+        topicId: 'organize-sets',
+        questionNumbers: [87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97],
+      },
+    ],
     unitIds: ['math-sets'],
     learnerHeadings: [
       '集合を表す',
@@ -41,9 +47,12 @@ export const mathTextbookTopics: readonly MathTextbookTopicCatalogEntry[] = [
       ja: '真偽 → 必要条件・十分条件 → 条件の否定',
       zh: '真假 → 必要条件・充分条件 → 条件的否定',
     },
-    practiceTopicId: 'read-propositions',
-    practiceRange: [98, 107],
-    practiceQuestionNumbers: [98, 99, 100, 101, 102, 103, 104, 105, 106, 107],
+    practiceLinks: [
+      {
+        topicId: 'read-propositions',
+        questionNumbers: [98, 99, 100, 101, 102, 103, 104, 105, 106, 107],
+      },
+    ],
     unitIds: ['math-propositions-reading'],
     learnerHeadings: [],
   },
@@ -54,9 +63,16 @@ export const mathTextbookTopics: readonly MathTextbookTopicCatalogEntry[] = [
       ja: '逆・裏・対偶 → 証明しやすい向き → 対偶による証明 → 矛盾を使う証明 → 「すべて」と「ある」',
       zh: '逆命题・否命题・逆否命题 → 选择易证明的方向 → 逆否证明 → 用矛盾证明 → “所有”与“存在”',
     },
-    practiceTopicId: 'prove-propositions',
-    practiceRange: [108, 117],
-    practiceQuestionNumbers: [108, 109, 110, 111, 112, 113, 114, 115, 116, 117],
+    practiceLinks: [
+      {
+        topicId: 'prove-propositions',
+        questionNumbers: [108, 110, 111, 112, 113, 114, 115, 116, 117],
+      },
+      {
+        topicId: 'read-propositions',
+        questionNumbers: [109],
+      },
+    ],
     unitIds: ['math-propositions-proof', 'math-quantifiers-all-exists'],
     learnerHeadings: [],
   },

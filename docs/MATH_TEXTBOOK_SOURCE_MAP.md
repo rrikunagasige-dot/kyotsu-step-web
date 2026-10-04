@@ -24,7 +24,7 @@
 ## 2. 条件から命題を読む
 
 ### math-propositions-reading
-- status: review
+- status: review（unit QA PASS / publish-ready。read-propositions topic は quantifier unit のQA完了後にまとめて公開）
 - source: 深進数学I p.92〜95 相当
 - practice topic: read-propositions
 - practice questions: 98〜107
@@ -40,6 +40,8 @@
   - 問8のsource例から始め、practice由来の別導入例を混ぜない。
   - 最初の具体的判断の後に「命題」と p⇒q を導入する。
   - 偽は反例を先に見つけ、その後で「反例」という言葉を出す。
+  - item prompt / aria-label も概念導入順を守り、「反例」「否定」を概念化より前に出さない。
+  - 反例選択肢は「前件○・後件× / 前件○・後件○ / 前件×」を区別できるよう、意味重複を置かない。
 
 ## 3. 命題を証明する
 

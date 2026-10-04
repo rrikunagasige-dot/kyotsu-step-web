@@ -1928,6 +1928,57 @@ test('88 keeps the stop-point answer hidden until the learner reasons it out, th
   await expect(page.getByTestId('math-practice-dependency-links')).toHaveCount(0)
 })
 
+test('88 keeps the useful odd-number pattern decision but does not ask the p4 increment twice', async ({ page }) => {
+  await page.getByTestId('math-exercise-basic').click()
+  await page.getByTestId('math-topic-organize-sets').click()
+  await page.getByTestId('math-topic-question-2').click()
+
+  const currentTarget = page.getByTestId('math-practice-current-target')
+  const readingFlow = page.getByTestId('math-practice-reading-flow')
+
+  const answers = [
+    ['math-practice-088-p1-strategy', 'option-math-practice-088-p1-strategy-factor-pairs'],
+    ['math-practice-088-p1-stop', 'option-math-practice-088-p1-stop-six-six'],
+    ['math-practice-088-p1-result', 'option-math-practice-088-p1-result-correct'],
+  ] as const
+  for (const [blankId, optionId] of answers) {
+    await page.getByTestId(`blank-${blankId}`).click()
+    await page.getByTestId(optionId).click()
+  }
+
+  await expect(currentTarget).toContainText('今の問い｜(2)')
+  await expect(page.getByTestId('blank-math-practice-088-p2-step')).toContainText('選択')
+  await page.getByTestId('blank-math-practice-088-p2-step').click()
+  await page.getByTestId('option-math-practice-088-p2-step-two').click()
+  await page.getByTestId('blank-math-practice-088-p2-last').click()
+  await page.getByTestId('option-math-practice-088-p2-last-ninety-nine').click()
+  await page.getByTestId('blank-math-practice-088-p2-result').click()
+  await page.getByTestId('option-math-practice-088-p2-result-correct').click()
+
+  await page.getByTestId('blank-math-practice-088-p3-left').click()
+  await page.getByTestId('option-math-practice-088-p3-left-in').click()
+  await page.getByTestId('blank-math-practice-088-p3-right').click()
+  await page.getByTestId('option-math-practice-088-p3-right-out').click()
+  await page.getByTestId('blank-math-practice-088-p3-result').click()
+  await page.getByTestId('option-math-practice-088-p3-result-correct').click()
+
+  await expect(currentTarget).toContainText('今の問い｜(4)')
+  await expect(page.getByTestId('blank-math-practice-088-p4-pattern')).toHaveCount(0)
+  await expect(page.getByTestId('blank-math-practice-088-p4-result')).toHaveCount(0)
+  await expect(readingFlow).not.toContainText('3ずつ増える')
+
+  await page.getByTestId('blank-math-practice-088-p4-sample').click()
+  await page.getByTestId('option-math-practice-088-p4-sample-correct').click()
+
+  await expect(readingFlow).toContainText('3ずつ増える')
+  await expect(page.getByTestId('blank-math-practice-088-p4-pattern')).toHaveCount(0)
+  await expect(page.getByTestId('blank-math-practice-088-p4-result')).toContainText('選択')
+
+  await page.getByTestId('blank-math-practice-088-p4-result').click()
+  await page.getByTestId('option-math-practice-088-p4-result-correct').click()
+  await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
+})
+
 test('92 explicitly resolves the empty intersection before asking for the union', async ({ page }) => {
   await page.getByTestId('math-exercise-basic').click()
   await page.getByTestId('math-topic-organize-sets').click()

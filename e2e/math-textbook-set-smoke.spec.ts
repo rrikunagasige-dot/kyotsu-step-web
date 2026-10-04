@@ -299,11 +299,16 @@ test('quantifier review unit derives the negation of exists only after an existe
   await page.goto(appRoute('/learning/textbook/math-quantifiers-all-exists'))
 
   await expect(page.getByRole('heading', { name: '「すべて」と「ある」', exact: true })).toBeVisible()
+  await expect(page.getByTestId('reading-role-example-marker-example-exists')).toBeVisible()
   await expect(page.getByTestId('textbook-item-quant-a01')).toHaveCount(0)
   await expect(page.getByTestId('textbook-item-quant-a02')).toBeVisible()
   await expect(page.getByText(/「あるxに対してpである」の否定は/)).toHaveCount(0)
 
   await answerItem(page, 'quant-a02', 'a=2, b=3')
+  const existsTerm = page.locator('.reading-term').filter({ hasText: /^ある$/ }).first()
+  await expect(existsTerm).toBeVisible()
+  const existsWeight = await existsTerm.evaluate((element) => Number.parseInt(getComputedStyle(element).fontWeight, 10))
+  expect(existsWeight).toBeGreaterThanOrEqual(700)
   await expect(page.getByText(/「あるxに対してpである」の否定は/)).toHaveCount(0)
 
   await answerItem(page, 'quant-a03', 'すべての素数の組(a,b)に対してabは奇数である')
@@ -341,6 +346,7 @@ test('quantifier review unit derives the negation of all only after the source c
   await answerItem(page, 'quant-b01', '存在しない')
   await answerItem(page, 'quant-b02', 'すべての実数xに対して x²≠-1')
 
+  await expect(page.getByTestId('reading-role-example-marker-example-all')).toBeVisible()
   await expect(page.getByText(/「すべてのxに対してpである」の否定は/)).toHaveCount(0)
   await answerItem(page, 'quant-c02', '2')
   await answerItem(page, 'quant-c03', 'ある素数は偶数である')
@@ -367,6 +373,7 @@ test('quantifier review reaches all five source statements without layout regres
   for (const [itemId, answer] of answers) await answerItem(page, itemId, answer)
 
   await expect(page.getByText(/元の命題とその否定は、真偽が反対になる/)).toBeVisible()
+  await expect(page.getByTestId('reading-role-summary-marker-summary-quantifiers')).toBeVisible()
   await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
   await expect(page.locator('.katex-error')).toHaveCount(0)
 

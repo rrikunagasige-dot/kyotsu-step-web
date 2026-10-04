@@ -5,7 +5,7 @@ import { mathQuantifierUnit } from './quantifierLesson'
 describe('math quantifier textbook unit', () => {
   it('keeps the source reference scope and original five-example order in review', () => {
     expect(mathQuantifierUnit.status).toBe('review')
-    expect(mathQuantifierUnit.revision).toBe(4)
+    expect(mathQuantifierUnit.revision).toBe(5)
     expect(mathQuantifierUnit.chapter?.sourcePages).toEqual([100, 101])
     expect(mathQuantifierUnit.chapter?.chapterId).toBe('math-ch03-sets-propositions')
 
@@ -42,6 +42,23 @@ describe('math quantifier textbook unit', () => {
     expect(learnerText).toContain('ひし形は平行四辺形である')
   })
 
+  it('uses textbook role markers, selective dialogue, and black-bold quantifier terms', () => {
+    const flow = mathQuantifierUnit.sections[0].readingFlow
+    const markers = flow.filter((block) => block.type === 'marker')
+    const dialogues = flow.filter((block) => block.type === 'dialogue')
+    const terms = flow.flatMap((block) =>
+      block.type === 'paragraph' || block.type === 'formula'
+        ? block.parts.filter((part) => part.type === 'term').map((part) => part.text)
+        : [],
+    )
+
+    expect(markers.filter((block) => block.type === 'marker' && block.kind === 'example')).toHaveLength(2)
+    expect(markers.filter((block) => block.type === 'marker' && block.kind === 'check')).toHaveLength(2)
+    expect(markers.filter((block) => block.type === 'marker' && block.kind === 'summary')).toHaveLength(1)
+    expect(dialogues).toHaveLength(3)
+    expect(terms).toEqual(expect.arrayContaining(['ある', 'すべて', '否定', '反例']))
+  })
+
   it('uses an existence witness before stating the negation rule for exists', () => {
     const flow = mathQuantifierUnit.sections[0].readingFlow
     const witnessIndex = flow.findIndex(
@@ -54,11 +71,7 @@ describe('math quantifier textbook unit', () => {
         (part) => part.type === 'choice' && part.itemId === 'quant-a03',
       ),
     )
-    const ruleIndex = flow.findIndex(
-      (block) => block.type === 'paragraph' && block.parts.some(
-        (part) => part.type === 'text' && part.text.includes('「あるxに対してpである」の否定は'),
-      ),
-    )
+    const ruleIndex = flow.findIndex((block) => block.id === 'paragraph-exists-rule')
     const witnessMeaningIndex = flow.findIndex(
       (block) => block.type === 'paragraph' && block.parts.some(
         (part) => part.type === 'text' && part.text.includes('条件を満たす例を1つ見つければ真だと示せる'),
@@ -82,11 +95,7 @@ describe('math quantifier textbook unit', () => {
         (part) => part.type === 'choice' && part.itemId === 'quant-c03',
       ),
     )
-    const ruleIndex = flow.findIndex(
-      (block) => block.type === 'paragraph' && block.parts.some(
-        (part) => part.type === 'text' && part.text.includes('「すべてのxに対してpである」の否定は'),
-      ),
-    )
+    const ruleIndex = flow.findIndex((block) => block.id === 'paragraph-all-rule')
     const oneCounterexampleMeaningIndex = flow.findIndex(
       (block) => block.type === 'paragraph' && block.parts.some(
         (part) => part.type === 'text' && part.text.includes('例外を1つ許しただけで崩れる'),

@@ -3,7 +3,7 @@ import { validateTextbookUnits } from '../../../../domain/textbookSchema'
 const rawMathQuantifierUnit = {
   schemaVersion: '1.1' as const,
   unitId: 'math-quantifiers-all-exists',
-  revision: 4,
+  revision: 5,
   status: 'review' as const,
   subject: 'math-1a' as const,
   chapter: {
@@ -49,6 +49,18 @@ const rawMathQuantifierUnit = {
         },
 
         {
+          id: 'marker-example-exists',
+          type: 'marker' as const,
+          kind: 'example' as const,
+          text: '例題',
+        },
+        {
+          id: 'dialogue-teacher-exists',
+          type: 'dialogue' as const,
+          speaker: 'teacher' as const,
+          text: '「ある」と書いてある文では、まず条件を満たす具体例を実際に探してみよう。',
+        },
+        {
           id: 'paragraph-q01',
           type: 'paragraph' as const,
           parts: [
@@ -65,7 +77,9 @@ const rawMathQuantifierUnit = {
           id: 'paragraph-q02',
           type: 'paragraph' as const,
           parts: [
-            { type: 'text' as const, text: 'この1組だけで、どちらも素数で積が偶数になる例が実際に存在すると分かった。したがって「ある〜」という主張は、条件を満たす例を1つ見つければ真だと示せる。' },
+            { type: 'text' as const, text: 'この1組だけで、どちらも素数で積が偶数になる例が実際に存在すると分かった。したがって「' },
+            { type: 'term' as const, text: 'ある' },
+            { type: 'text' as const, text: '〜」という主張は、条件を満たす例を1つ見つければ真だと示せる。' },
           ],
         },
         {
@@ -81,10 +95,22 @@ const rawMathQuantifierUnit = {
           id: 'paragraph-exists-rule',
           type: 'paragraph' as const,
           parts: [
-            { type: 'text' as const, text: 'ここから、「あるxに対してpである」の否定は「すべてのxに対してpでない」と読める。1つでもpを満たす例があれば元の命題は真になるので、その否定では例外なくpを満たさないことが必要になる。' },
+            { type: 'text' as const, text: 'ここから、「' },
+            { type: 'term' as const, text: 'ある' },
+            { type: 'text' as const, text: 'xに対してpである」の' },
+            { type: 'term' as const, text: '否定' },
+            { type: 'text' as const, text: 'は「' },
+            { type: 'term' as const, text: 'すべて' },
+            { type: 'text' as const, text: 'のxに対してpでない」と読める。1つでもpを満たす例があれば元の命題は真になるので、その否定では例外なくpを満たさないことが必要になる。' },
           ],
         },
 
+        {
+          id: 'marker-check-exists',
+          type: 'marker' as const,
+          kind: 'check' as const,
+          text: '確認',
+        },
         {
           id: 'paragraph-q04',
           type: 'paragraph' as const,
@@ -109,6 +135,12 @@ const rawMathQuantifierUnit = {
         },
 
         {
+          id: 'marker-example-all',
+          type: 'marker' as const,
+          kind: 'example' as const,
+          text: '例題',
+        },
+        {
           id: 'paragraph-q06',
           type: 'paragraph' as const,
           parts: [
@@ -125,6 +157,12 @@ const rawMathQuantifierUnit = {
           ],
         },
         {
+          id: 'dialogue-hanako-all',
+          type: 'dialogue' as const,
+          speaker: 'hanako' as const,
+          text: '「すべて」と言うなら、1つでも例外が見つかったら崩れるんだね。',
+        },
+        {
           id: 'paragraph-q08',
           type: 'paragraph' as const,
           parts: [
@@ -137,10 +175,28 @@ const rawMathQuantifierUnit = {
           id: 'paragraph-all-rule',
           type: 'paragraph' as const,
           parts: [
-            { type: 'text' as const, text: 'ここから、「すべてのxに対してpである」の否定は「あるxに対してpでない」と読める。全部について成り立つ主張は、成り立たない例が1つあれば崩れるからである。' },
+            { type: 'text' as const, text: 'ここから、「' },
+            { type: 'term' as const, text: 'すべて' },
+            { type: 'text' as const, text: 'のxに対してpである」の' },
+            { type: 'term' as const, text: '否定' },
+            { type: 'text' as const, text: 'は「' },
+            { type: 'term' as const, text: 'ある' },
+            { type: 'text' as const, text: 'xに対してpでない」と読める。全部について成り立つ主張は、成り立たない例が1つあれば崩れるからである。' },
           ],
         },
 
+        {
+          id: 'dialogue-taro-quantifier-negation',
+          type: 'dialogue' as const,
+          speaker: 'taro' as const,
+          text: '「ある」と「すべて」は、否定すると入れ替わる形になるんですね。',
+        },
+        {
+          id: 'marker-check-all',
+          type: 'marker' as const,
+          kind: 'check' as const,
+          text: '確認',
+        },
         {
           id: 'paragraph-q09',
           type: 'paragraph' as const,
@@ -192,10 +248,23 @@ const rawMathQuantifierUnit = {
           ],
         },
         {
+          id: 'marker-summary-quantifiers',
+          type: 'marker' as const,
+          kind: 'summary' as const,
+          text: 'まとめ',
+        },
+        {
           id: 'paragraph-summary',
           type: 'paragraph' as const,
           parts: [
-            { type: 'text' as const, text: '「ある」は条件を満たす例が1つあれば成立し、「すべて」は反例が1つあれば崩れる。否定するときは、「ある」と「すべて」が入れ替わり、中の条件も否定される。' },
+            { type: 'term' as const, text: 'ある' },
+            { type: 'text' as const, text: 'という主張は、条件を満たす例が1つあれば真になる。' },
+            { type: 'term' as const, text: 'すべて' },
+            { type: 'text' as const, text: 'という主張は、' },
+            { type: 'term' as const, text: '反例' },
+            { type: 'text' as const, text: 'が1つあれば偽になる。文を' },
+            { type: 'term' as const, text: '否定' },
+            { type: 'text' as const, text: 'するときは、「ある」と「すべて」が入れ替わり、中の条件も否定される。普通の文でも、「どの〜でも」という意味なら「すべて」の主張として読む。' },
           ],
         },
       ],

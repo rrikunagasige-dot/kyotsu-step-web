@@ -473,7 +473,7 @@ const rawMathPropositionReadingUnit = {
         {
           id: 'prop-a04',
           label: 'PROP-A04',
-          prompt: '反例が1つ見つかった命題の真偽を判断しよう。',
+          prompt: 'pを満たすのにqを満たさない例が1つ見つかった。命題の真偽を判断しよう。',
           answer: '偽',
           acceptedAnswers: [],
           answerType: 'text' as const,
@@ -513,7 +513,7 @@ const rawMathPropositionReadingUnit = {
           answer: '直角二等辺三角形',
           acceptedAnswers: [],
           answerType: 'text' as const,
-          choices: ['直角二等辺三角形', '正三角形', '3辺が等しい三角形'],
+          choices: ['直角二等辺三角形', '正三角形', '不等辺三角形'],
           purpose: 'transfer' as const,
           scaffoldLevel: 'medium' as const,
           hints: ['前件の「二等辺三角形」は満たす必要がある。', '2辺は等しいが、3辺すべてが等しくない三角形を探す。'],
@@ -605,7 +605,7 @@ const rawMathPropositionReadingUnit = {
         {
           id: 'prop-c01',
           label: 'PROP-C01',
-          prompt: '整数nについて、n<2の否定を選ぼう。',
+          prompt: '整数nについて、n<2が成り立たない条件を選ぼう。',
           answer: 'n\\ge2',
           acceptedAnswers: ['n≥2'],
           answerType: 'formula' as const,

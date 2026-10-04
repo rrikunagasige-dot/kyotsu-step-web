@@ -162,6 +162,13 @@ FAIL時:
 
 共有画面 `LearningSetupPage.tsx` は数学 textbook entry の最小差分だけを入れ、practice regressionで守る。
 
+## Promotion blocker: 関数unitの章配置
+
+- `math-functions-conditions` のsourceは第2章 p.46〜47。
+- 現在の数学textbook setupは第3章「集合と命題」を固定表示しているため、このunitをそのままpublishedにすると章表示が不正になる。
+- 内容監査は続けるが、数学setupをchapter-awareにするまでは `math-functions-conditions` をpublishedへ上げない。
+- 練習モード側のtopic同期は内部metadataとして保持し、章表示の根拠にはしない。
+
 ## Promotion gate for review units
 
 review → published に上げる条件:

@@ -11,7 +11,7 @@ const rawMathPropositionProofUnit = {
     chapterNumber: '3',
     chapterTitle: '集合と命題',
     unitCode: '3PROOF',
-    orderInChapter: 4,
+    orderInChapter: 3,
     sourcePages: [96, 97, 98],
   },
   title: '命題を証明する',

@@ -284,6 +284,36 @@ test('function review wrong answer stays unresolved and keeps the function conce
   await expect(hint).not.toContainText('ただ1つに決まる')
 })
 
+test('function review remains readable through the rectangle domain/range conclusion', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/math-functions-conditions'))
+
+  const answers: Array<[string, string]> = [
+    ['func-a01', 'ただ1つに決まる'],
+    ['func-a02', '-10'],
+    ['func-a03', '2'],
+    ['func-a04', 'a-1'],
+    ['func-a05', '4a-10'],
+    ['func-b01', '0'],
+    ['func-b02', '3'],
+    ['func-b03', 'a^2-2a'],
+    ['func-c01', 'y=20-x'],
+    ['func-c02', '0<x<20'],
+    ['func-c03', '0<y<20'],
+  ]
+  for (const [itemId, answer] of answers) await answerItem(page, itemId, answer)
+
+  await expect(page.getByTestId('textbook-figure-rectangle-perimeter-40')).toBeVisible()
+  await expect(page.getByText(/定義域という/)).toBeVisible()
+  await expect(page.getByText(/値域という/)).toBeVisible()
+  await expect(page.locator('.katex-error')).toHaveCount(0)
+
+  const viewport = await page.evaluate(() => ({
+    clientWidth: document.documentElement.clientWidth,
+    scrollWidth: document.documentElement.scrollWidth,
+  }))
+  expect(viewport.scrollWidth).toBeLessThanOrEqual(viewport.clientWidth + 1)
+})
+
 test('proposition-proof review unit establishes equivalence before reverse and contrapositive work', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-propositions-proof'))
 

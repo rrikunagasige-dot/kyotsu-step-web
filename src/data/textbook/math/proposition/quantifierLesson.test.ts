@@ -110,6 +110,31 @@ describe('math quantifier textbook unit', () => {
     expect(item?.acceptedAnswers).toContain('ある素数は奇数ではない')
   })
 
+  it('keeps the implicit universal statement natural when completed as prose', () => {
+    const item = mathQuantifierUnit.sections[0].items.find((candidate) => candidate.id === 'quant-d01')
+    expect(item?.answer).toBe('どの2つの無理数を選んでも')
+    expect(item?.choices).toEqual([
+      'どの2つの無理数を選んでも',
+      'ある2つの無理数を選べば',
+    ])
+
+    const flow = mathQuantifierUnit.sections[0].readingFlow
+    const block = flow.find(
+      (candidate) => candidate.type === 'paragraph' && candidate.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'quant-d01',
+      ),
+    )
+    expect(block?.type).toBe('paragraph')
+    if (block?.type === 'paragraph') {
+      const textBefore = block.parts
+        .slice(0, block.parts.findIndex((part) => part.type === 'choice'))
+        .filter((part) => part.type === 'text')
+        .map((part) => part.text)
+        .join('')
+      expect(textBefore).not.toContain('どの2つの無理数を選んでも')
+    }
+  })
+
   it('keeps sentence-like quantifier answers in text mode instead of mixed-text KaTeX', () => {
     const item = mathQuantifierUnit.sections[0].items.find((candidate) => candidate.id === 'quant-b02')
     expect(item?.answerType).toBe('text')

@@ -3,6 +3,8 @@ name: Math textbook mode CI
 on:
   pull_request:
     paths:
+      - 'src/domain/textbook.ts'
+      - 'src/domain/textbook.test.ts'
       - 'src/domain/textbookSchema.ts'
       - 'src/domain/textbookSchema.test.ts'
       - 'src/data/textbook/math/**'
@@ -52,7 +54,7 @@ jobs:
         run: pnpm run typecheck
 
       - name: Textbook schema and math-unit tests
-        run: pnpm exec vitest run src/domain/textbookSchema.test.ts src/data/textbook/math/mathCatalog.test.ts src/data/textbook/math/mathFrontmatterLeak.test.ts src/data/textbook/math/mathReviewIntegrity.test.ts src/data/textbook/math/set/setLesson.test.ts src/data/textbook/math/proposition/propositionReadingLesson.test.ts src/data/textbook/math/proposition/quantifierLesson.test.ts src/data/textbook/math/function/functionConditionsLesson.test.ts src/data/textbook/math/proposition/propositionProofLesson.test.ts
+        run: pnpm exec vitest run src/domain/textbook.test.ts src/domain/textbookSchema.test.ts src/data/textbook/math/mathCatalog.test.ts src/data/textbook/math/mathFrontmatterLeak.test.ts src/data/textbook/math/mathReviewIntegrity.test.ts src/data/textbook/math/set/setLesson.test.ts src/data/textbook/math/proposition/propositionReadingLesson.test.ts src/data/textbook/math/proposition/quantifierLesson.test.ts src/data/textbook/math/function/functionConditionsLesson.test.ts src/data/textbook/math/proposition/propositionProofLesson.test.ts
 
       - name: Build
         run: pnpm run build

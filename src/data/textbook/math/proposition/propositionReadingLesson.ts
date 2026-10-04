@@ -142,9 +142,9 @@ const rawMathPropositionReadingUnit = {
             { type: 'math' as const, latex: 'x<2' },
             { type: 'text' as const, text: ' を満たしながら ' },
             { type: 'math' as const, latex: 'x>0' },
-            { type: 'text' as const, text: ' を満たさない実数は ' },
+            { type: 'text' as const, text: ' を満たさない実数の一例は ' },
             { type: 'choice' as const, itemId: 'prop-a03' },
-            { type: 'text' as const, text: '。' },
+            { type: 'text' as const, text: ' である。' },
           ],
         },
         {

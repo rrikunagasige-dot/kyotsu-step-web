@@ -61,6 +61,26 @@ describe('math textbook review integrity', () => {
   })
 
 
+
+  it('does not print a text answer verbatim inside staged hints', () => {
+    for (const unit of mathTextbookUnits.filter((candidate) => candidate.status === 'review')) {
+      for (const section of unit.sections) {
+        for (const item of section.items) {
+          if (item.answerType !== 'text') continue
+          const answer = normalize(item.answer)
+          if (answer.length < 2) continue
+
+          for (const hint of item.hints) {
+            expect(
+              normalize(hint).includes(answer),
+              `${unit.unitId}/${item.id}: hint contains the answer verbatim`,
+            ).toBe(false)
+          }
+        }
+      }
+    }
+  })
+
   it('keeps learner-facing review copy free of practice-mode and source-problem numbering', () => {
     for (const unit of mathTextbookUnits.filter((candidate) => candidate.status === 'review')) {
       const learnerCopy = [

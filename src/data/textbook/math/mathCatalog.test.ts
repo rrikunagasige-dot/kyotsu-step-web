@@ -42,6 +42,9 @@ describe('math textbook catalog', () => {
     ])
     const all = mathTextbookTopics.flatMap((topic) => topic.practiceQuestionNumbers)
     expect(new Set(all).size).toBe(all.length)
+    expect([...all].sort((a, b) => a - b)).toEqual(
+      Array.from({ length: 31 }, (_, index) => 87 + index),
+    )
     expect(all).not.toContain(118)
     expect(all).not.toContain(119)
     expect(all).not.toContain(120)

@@ -33,7 +33,15 @@ const rawMathFunctionConditionsUnit = {
       title: '本文',
       role: 'concept' as const,
       description: '具体的な対応から関数の意味を作り、関数の値と定義域・値域へ進む。',
-      figures: [],
+      figures: [
+        {
+          id: 'rectangle-perimeter-40',
+          src: '/assets/math/textbook/functions/rectangle-perimeter-40.svg',
+          alt: '周の長さが40cmで、縦をx cm、横をy cmとした長方形',
+          caption: '縦x cm、横y cm、周の長さ40 cm。',
+          overlays: [],
+        },
+      ],
       readingFlow: [
         {
           id: 'heading-function',
@@ -167,6 +175,11 @@ const rawMathFunctionConditionsUnit = {
           id: 'heading-domain-range',
           type: 'heading' as const,
           text: '使えるxとyの範囲を読む',
+        },
+        {
+          id: 'figure-rectangle',
+          type: 'figure' as const,
+          figureId: 'rectangle-perimeter-40',
         },
         {
           id: 'paragraph-rectangle-intro',

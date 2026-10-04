@@ -145,7 +145,6 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
       label: { ja: 'Aの部分集合をまとめる', zh: '汇总A的子集' },
       blankIds: ['final-result'],
       dependsOn: ['b', 'c', 'd', 'e'],
-      resultLinkLabel: { ja: '候補ごとの判定', zh: '各候选集合的判断' },
     },
   ],
   'math-practice-090': [

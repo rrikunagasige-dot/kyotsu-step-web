@@ -214,7 +214,7 @@ const rawMathQuantifierUnit = {
           choices: ['1つ', 'すべての例'],
           purpose: 'concept-formation' as const,
           scaffoldLevel: 'strong' as const,
-          hints: ['「ある」は少なくとも1つ存在するという意味。', '1つ見つかれば存在したことになる。'],
+          hints: ['「ある」は、対象すべてについて成り立つことを求める言葉ではない。', '条件を満たす具体例を見つければ、存在することを示せる。'],
         },
         {
           id: 'quant-a02',

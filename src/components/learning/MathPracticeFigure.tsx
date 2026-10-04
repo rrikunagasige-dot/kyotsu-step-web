@@ -29,6 +29,7 @@ function Axis({ ticks, labels = ticks.map(String) }: { ticks: number[]; labels?:
   return (
     <>
       <line x1={left} y1={y} x2={right} y2={y} className="mpf-line" />
+      <path d={`M ${left} ${y} l 9 -5 v 10 z`} className="mpf-arrow" />
       <path d={`M ${right} ${y} l -9 -5 v 10 z`} className="mpf-arrow" />
       {ticks.map((tick, index) => (
         <g key={tick}>
@@ -48,6 +49,8 @@ function Interval({
   y,
   leftOpen = true,
   rightOpen = true,
+  leftUnbounded = false,
+  rightUnbounded = false,
   label,
 }: {
   from: number
@@ -57,6 +60,8 @@ function Interval({
   y: number
   leftOpen?: boolean
   rightOpen?: boolean
+  leftUnbounded?: boolean
+  rightUnbounded?: boolean
   label: string
 }) {
   const left = 34
@@ -66,8 +71,16 @@ function Interval({
     <g>
       <text x="18" y={y + 4} textAnchor="middle" className="mpf-label mpf-label--strong">{label}</text>
       <line x1={scale(from)} y1={y} x2={scale(to)} y2={y} className="mpf-emphasis-line" />
-      <Dot x={scale(from)} y={y} open={leftOpen} />
-      <Dot x={scale(to)} y={y} open={rightOpen} />
+      {leftUnbounded ? (
+        <path d={`M ${scale(from)} ${y} l 9 -5 v 10 z`} className="mpf-arrow" />
+      ) : (
+        <Dot x={scale(from)} y={y} open={leftOpen} />
+      )}
+      {rightUnbounded ? (
+        <path d={`M ${scale(to)} ${y} l -9 -5 v 10 z`} className="mpf-arrow" />
+      ) : (
+        <Dot x={scale(to)} y={y} open={rightOpen} />
+      )}
     </g>
   )
 }
@@ -119,7 +132,16 @@ function NumberLineFigure({ id, text }: { id: MathPracticeFigureId; text: Locali
     min: number
     max: number
     ticks: number[]
-    intervals: Array<{ from: number; to: number; y: number; leftOpen?: boolean; rightOpen?: boolean; label: string }>
+    intervals: Array<{
+      from: number
+      to: number
+      y: number
+      leftOpen?: boolean
+      rightOpen?: boolean
+      leftUnbounded?: boolean
+      rightUnbounded?: boolean
+      label: string
+    }>
     marker?: { value: number; label: string }
   }>> = {
     'F99-1': {
@@ -134,7 +156,7 @@ function NumberLineFigure({ id, text }: { id: MathPracticeFigureId; text: Locali
       title: ['P と Q のずれを見る', '观察 P 与 Q 的差异'],
       min: -2, max: 2, ticks: [-2, 0, 1, 2],
       intervals: [
-        { from: -2, to: 1, y: 72, label: 'P' },
+        { from: -2, to: 1, y: 72, label: 'P', leftUnbounded: true },
         { from: 0, to: 1, y: 133, label: 'Q' },
       ],
     },
@@ -415,14 +437,22 @@ function BranchFigure({ id, text }: { id: MathPracticeFigureId; text: Localize }
 
   if (id === 'F110-A' || id === 'F110-B') {
     const summary = id === 'F110-B'
-    return (
-      <FigureFrame id={id} title={text(summary ? '4つの命題を整理する' : '元・逆・対偶・裏の位置関係', summary ? '整理四个命题' : '原、逆、逆否、否命题的关系')}>
-        {[
+    const cards = summary
+      ? [
           ['p⇒q', 95, 58],
           ['q⇒p', 265, 58],
           ['¬q⇒¬p', 95, 132],
           ['¬p⇒¬q', 265, 132],
-        ].map(([label, x, y]) => (
+        ]
+      : [
+          [text('元', '原'), 95, 58],
+          [text('逆', '逆'), 265, 58],
+          [text('対偶', '逆否'), 95, 132],
+          [text('裏', '否'), 265, 132],
+        ]
+    return (
+      <FigureFrame id={id} title={text(summary ? '4つの命題を整理する' : '4つの命題の位置だけを整理する', summary ? '整理四个命题' : '只整理四个命题的位置')}>
+        {cards.map(([label, x, y]) => (
           <g key={String(label)}>
             <rect x={Number(x)-58} y={Number(y)-23} width="116" height="46" rx="8" className="mpf-card" />
             <text x={Number(x)} y={Number(y)+5} textAnchor="middle" className="mpf-label mpf-label--strong">{label}</text>

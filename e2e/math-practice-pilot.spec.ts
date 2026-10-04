@@ -90,6 +90,8 @@ test('99 draws set ranges only after the learner derives the compared sets', asy
   const f99p2 = page.getByTestId('math-practice-figure-F99-2')
   await expect(f99p2).toBeVisible()
   await expect(f99p2).not.toContainText('x=0')
+  await expect(f99p2.locator('.mpf-arrow')).toHaveCount(1)
+  await expect(f99p2.locator('.mpf-open-dot')).toHaveCount(3)
 
   const dimensions = await page.evaluate(() => ({ viewport: window.innerWidth, page: document.documentElement.scrollWidth }))
   expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
@@ -145,7 +147,9 @@ test('101 treats negation as the complete complement and keeps each condition in
   await page.getByTestId('option-math-practice-101-rule-complement').click()
 
   await expect(currentTarget).toContainText('今の問い｜(1)')
-  await expect(page.getByTestId('math-practice-figure-F101-1A')).toBeVisible()
+  const f101 = page.getByTestId('math-practice-figure-F101-1A')
+  await expect(f101).toBeVisible()
+  await expect(f101.locator('.mpf-arrow')).toHaveCount(2)
   for (const [blank, option] of [
     ['p1-boundary','does-not'],
     ['p1-side','left-with-boundary'],
@@ -756,7 +760,15 @@ test('110 separates proposition form, evidence, judgment, and summary', async ({
   await expect(page.getByRole('heading', { name: '110｜逆・対偶・裏' })).toBeVisible()
   await page.getByTestId('blank-math-practice-110-rule').click()
   await page.getByTestId('option-math-practice-110-rule-correct').click()
-  await expect(page.getByTestId('math-practice-figure-F110-A')).toBeVisible()
+  const f110Map = page.getByTestId('math-practice-figure-F110-A')
+  await expect(f110Map).toBeVisible()
+  await expect(f110Map).toContainText('元')
+  await expect(f110Map).toContainText('逆')
+  await expect(f110Map).toContainText('対偶')
+  await expect(f110Map).toContainText('裏')
+  await expect(f110Map).not.toContainText('q⇒p')
+  await expect(f110Map).not.toContainText('¬q⇒¬p')
+  await expect(f110Map).not.toContainText('¬p⇒¬q')
 
   for (const [blank, option] of [
     ['p1-original-proof','three-form'], ['p1-original-judgment','true'],
@@ -768,7 +780,12 @@ test('110 separates proposition form, evidence, judgment, and summary', async ({
     await page.getByTestId(`option-math-practice-110-${blank}-${option}`).click()
   }
 
-  await expect(page.getByTestId('math-practice-figure-F110-B')).toBeVisible()
+  const f110Summary = page.getByTestId('math-practice-figure-F110-B')
+  await expect(f110Summary).toBeVisible()
+  await expect(f110Summary).toContainText('p⇒q')
+  await expect(f110Summary).toContainText('q⇒p')
+  await expect(f110Summary).toContainText('¬q⇒¬p')
+  await expect(f110Summary).toContainText('¬p⇒¬q')
   await page.getByTestId('blank-math-practice-110-p1-summary').click()
   await page.getByTestId('option-math-practice-110-p1-summary-tftf').click()
 

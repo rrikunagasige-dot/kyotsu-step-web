@@ -306,7 +306,7 @@ const rawMathQuantifierUnit = {
           choices: ['ある素数は偶数である', 'すべての素数は偶数である'],
           purpose: 'representation-link' as const,
           scaffoldLevel: 'medium' as const,
-          hints: ['元の主張を崩した反例2を、そのまま否定の文へ使う。', '「全部が奇数」ではない状況を、存在する素数について表す。'],
+          hints: ['反例が示したことを、否定の文へ言い換えよう。', '反例2を使い、「ある素数は〜」の形で表そう。'],
         },
         {
           id: 'quant-d01',

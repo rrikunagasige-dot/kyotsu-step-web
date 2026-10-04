@@ -48,6 +48,16 @@ describe('math textbook catalog', () => {
   })
 
 
+
+  it('keeps learner-facing topic flows aligned with the textbook lesson order', () => {
+    expect(mathTextbookTopics[1].flow.ja).toBe(
+      '真偽 → 必要条件・十分条件 → 条件の否定 → 「すべて」と「ある」',
+    )
+    expect(mathTextbookTopics[2].flow.ja).toBe(
+      '逆・裏・対偶 → 証明しやすい向き → 対偶による証明 → 矛盾を使う証明',
+    )
+  })
+
   it('keeps only the approved set lesson published while the later lessons remain review-only', () => {
     expect(
       mathTextbookUnits.filter((unit) => unit.status === 'published').map((unit) => unit.unitId),

@@ -24,7 +24,8 @@
 ## 2. 条件から命題を読む
 
 ### math-propositions-reading
-- status: review（FINAL UNIT QA PASS。quantifier unitと同じread-propositions topicとして、user hands-on QA後にpromotion）
+- revision: 1
+- status: review（assistant deep static QA PASS。quantifier unitと同じread-propositions topicとして、user hands-on QA後にpromotion）
 - source: 深進数学I p.92〜95 相当
 - practice topic: read-propositions
 - practice questions: 98〜107
@@ -42,11 +43,14 @@
   - 偽は反例を先に見つけ、その後で「反例」という言葉を出す。
   - item prompt / aria-label も概念導入順を守り、「反例」「否定」を概念化より前に出さない。
   - 反例選択肢は「前件○・後件× / 前件○・後件○ / 前件×」を区別できるよう、意味重複を置かない。
+  - 反例の具体値は唯一解のように読ませず、「一例」として書く。
+  - 各小節末は strong → medium → light へ支援を落とし、最後は transfer として閉じる。
 
 ## 3. 命題を証明する
 
 ### math-propositions-proof
-- status: review（FINAL UNIT QA PASS。user hands-on QA待ち）
+- revision: 2
+- status: review（assistant deep static QA PASS。user hands-on QA待ち）
 - source: 深進数学I p.96〜98 相当
 - practice topic: prove-propositions
 - practice questions: 108, 110〜117
@@ -60,11 +64,14 @@
   - 前unitで扱った同値を重複して教え直さない。
   - 対偶は名前を知るだけで終わらず、実際に証明の入口として選ばせる。
   - 背理法は「否定を仮定 → 矛盾 → 仮定を退ける」の因果順を崩さない。
+  - 逆・裏・対偶の名称は操作を経験した後に出し、item prompt / aria-label でも先出ししない。
+  - 対偶証明の式変形は、見えている余りを選ぶ穴ではなく、3の倍数+1の形を自分で作る thinking node にする。
 
 ## 3A. 参考「すべて」と「ある」
 
 ### math-quantifiers-all-exists
-- status: review（FINAL UNIT QA PASS。math-propositions-readingと同じread-propositions topicとしてuser hands-on QA待ち）
+- revision: 3
+- status: review（assistant deep static QA PASS。math-propositions-readingと同じread-propositions topicとしてuser hands-on QA待ち）
 - source: 深進数学I p.100〜101 相当
 - learner topic: read-propositions
 - practice overlap: read-propositions / 109
@@ -78,6 +85,8 @@
   - learner-facing topicは練習モードの「条件から命題を読む」と対応させる。
   - source page orderは chapter metadata（orderInChapter=4）で保持する。
   - 量化の規則を先に暗記させず、反例 / witness を先に経験させる。
+  - 暗黙の「すべて」は完成本文として自然な日本語（「どの2つの無理数を選んでも」）で読ませる。
+  - sentence-like answer を本文へ埋め込んだとき、二重「である」などの接続事故を残さない。
 
 ## 4. 第2章・関数（将来の章として review）
 

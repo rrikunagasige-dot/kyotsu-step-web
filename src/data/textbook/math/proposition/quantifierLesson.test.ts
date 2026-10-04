@@ -19,6 +19,23 @@ describe('math quantifier textbook unit', () => {
     expect(firstIndexes).toEqual([...firstIndexes].sort((a, b) => a - b))
   })
 
+
+  it('uses the five textbook p.100-101 statements rather than substituted practice examples', () => {
+    const flow = mathQuantifierUnit.sections[0].readingFlow
+    const learnerText = flow
+      .filter((block) => block.type === 'paragraph' || block.type === 'formula')
+      .flatMap((block) => block.parts)
+      .map((part) => part.type === 'text' ? part.text : part.type === 'math' ? part.latex : '')
+      .join('\n')
+
+    expect(learnerText).toContain('ある素数の組')
+    expect(learnerText).toContain('ab')
+    expect(learnerText).toContain('x^2=-1')
+    expect(learnerText).toContain('すべての素数は奇数である')
+    expect(learnerText).toContain('2つの無理数の積は無理数である')
+    expect(learnerText).toContain('ひし形は平行四辺形である')
+  })
+
   it('uses an existence witness before stating the negation rule for exists', () => {
     const flow = mathQuantifierUnit.sections[0].readingFlow
     const witnessIndex = flow.findIndex(

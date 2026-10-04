@@ -25,13 +25,13 @@ learner-facing の章構造は教科書をauthorityにする。練習モード�
    - practice overlap: 87〜97
    - 集合の表し方 → 部分集合 → 共通部分・和集合 → 補集合 → 集合の条件
 2. `read-propositions`
-   - source: 第3章 p.92〜95
-   - practice overlap: 98〜107
-   - 真偽 → 必要条件・十分条件 → 条件の否定
+   - source: 第3章 p.92〜95 + 参考 p.100〜101
+   - practice overlap: 98〜107, 109
+   - 真偽 → 必要条件・十分条件 → 条件の否定 → 「すべて」と「ある」
 3. `prove-propositions`
-   - source: 第3章 p.96〜98 + 参考 p.100〜101
-   - practice overlap: 108〜117（109は参考「すべて」と「ある」に対応）
-   - 逆・裏・対偶 → 証明しやすい向き → 対偶による証明 → 矛盾を使う証明 → 「すべて」と「ある」
+   - source: 第3章 p.96〜98
+   - practice overlap: 108, 110〜117
+   - 逆・裏・対偶 → 証明しやすい向き → 対偶による証明 → 矛盾を使う証明
 
 第2章 p.46〜47 の `math-functions-conditions` はこの3テーマへ入れない。
 runtimeでは練習モードをimportせず、同期はmetadataとtestだけで確認する。
@@ -80,8 +80,8 @@ Checkpoint:
   - prop-a07 の意味重複 distractor を解消
   - prop-a04 / prop-c01 の aria-label から概念名の先出しを除去
   - wrong answer unresolved / staged hint / KaTeX / mobile・desktop overflow gate を確認
-- STATUS: review / publish-ready
-- PUBLISH GATE: user hands-on QA 後に単独で published 可
+- STATUS: review / unit QA PASS
+- PUBLISH GATE: `read-propositions` topic は `math-quantifiers-all-exists` の final QA と user hands-on QA が揃ってからまとめて published へ上げる
 
 ### math-quantifiers-all-exists
 Source:
@@ -132,7 +132,7 @@ Checkpoint:
 - 練習モードとの同期は内部 catalog/test に限定し、learner-facing 本文では問題番号を使わない。
 
 ## 2026-10-04 checkpoint
-- `math-quantifiers-all-exists`: source順はchapter metadataでp.100〜101として保持し、chapter 3 の末尾 reference として `prove-propositions` topic の後半へ接続。
+- `math-quantifiers-all-exists`: source順はchapter metadataでp.100〜101として保持し、learner-facing では `read-propositions` topic の後半へ接続。
 - `math-propositions-reading`: source p.92〜95 を再監査し、真偽 → 必要条件・十分条件 → 条件の否定 の教科書順へ戻した。
 - `math-quantifiers-all-exists`: 教科書 p.100〜101 の5例と否定を固定testで監査済み。
 - `math-functions-conditions`: 教科書 p.46〜47 から再構築。長方形図を追加し、図には定義域・値域の答えを載せない。

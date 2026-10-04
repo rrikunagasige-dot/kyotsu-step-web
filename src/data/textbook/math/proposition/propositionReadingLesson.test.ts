@@ -236,8 +236,8 @@ describe('math proposition-reading textbook unit', () => {
       .map((block) => block.text)
     expect(headings).toEqual([
       '命題の真偽を読む',
-      '必要条件・十分条件を見分ける',
-      '条件を否定する',
+      '2つの条件の関係を見る',
+      '成り立たない条件を考える',
     ])
   })
 })

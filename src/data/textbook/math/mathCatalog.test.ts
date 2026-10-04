@@ -13,7 +13,7 @@ describe('math textbook catalog', () => {
   })
 
 
-  it('mirrors the three practice topics without creating a runtime dependency on practice code', () => {
+  it('keeps the three learning topics synchronized only where textbook content overlaps practice', () => {
     expect(mathTextbookTopics.map((topic) => topic.id)).toEqual([
       'organize-sets',
       'read-propositions',
@@ -21,30 +21,31 @@ describe('math textbook catalog', () => {
     ])
     expect(mathTextbookTopics.map((topic) => topic.practiceRange)).toEqual([
       [87, 97],
-      [98, 120],
+      [98, 109],
       [108, 117],
     ])
     expect(mathTextbookTopics[0].unitIds).toEqual(['math-sets'])
-    expect(mathTextbookTopics[1].unitIds).toEqual(['math-propositions-reading', 'math-quantifiers-all-exists', 'math-functions-conditions'])
+    expect(mathTextbookTopics[1].unitIds).toEqual(['math-propositions-reading', 'math-quantifiers-all-exists'])
     expect(mathTextbookTopics[2].unitIds).toEqual(['math-propositions-proof'])
   })
 
 
-  it('locks the exact practice-question membership for the three synchronized topics', () => {
+  it('keeps practice synchronization metadata internal without forcing unrelated later questions into learning mode', () => {
     expect(mathTextbookTopics[0].practiceQuestionNumbers).toEqual([
       87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97,
     ])
     expect(mathTextbookTopics[1].practiceQuestionNumbers).toEqual([
-      98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 109, 118, 119, 120,
+      98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 109,
     ])
     expect(mathTextbookTopics[2].practiceQuestionNumbers).toEqual([
       108, 110, 111, 112, 113, 114, 115, 116, 117,
     ])
     const all = mathTextbookTopics.flatMap((topic) => topic.practiceQuestionNumbers)
     expect(new Set(all).size).toBe(all.length)
-    expect([...all].sort((a, b) => a - b)).toEqual(
-      Array.from({ length: 34 }, (_, index) => 87 + index),
-    )
+    expect(all).not.toContain(118)
+    expect(all).not.toContain(119)
+    expect(all).not.toContain(120)
+    expect(mathTextbookTopicForUnit('math-functions-conditions')).toBeUndefined()
   })
 
 

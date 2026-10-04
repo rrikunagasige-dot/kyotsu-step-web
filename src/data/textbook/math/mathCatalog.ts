@@ -42,9 +42,9 @@ export const mathTextbookTopics: readonly MathTextbookTopicCatalogEntry[] = [
       zh: '真假 → 必要条件・充分条件 → 条件的否定 → “所有”与“存在”',
     },
     practiceTopicId: 'read-propositions',
-    practiceRange: [98, 120],
-    practiceQuestionNumbers: [98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 109, 118, 119, 120],
-    unitIds: ['math-propositions-reading', 'math-quantifiers-all-exists', 'math-functions-conditions'],
+    practiceRange: [98, 109],
+    practiceQuestionNumbers: [98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 109],
+    unitIds: ['math-propositions-reading', 'math-quantifiers-all-exists'],
     learnerHeadings: [],
   },
   {

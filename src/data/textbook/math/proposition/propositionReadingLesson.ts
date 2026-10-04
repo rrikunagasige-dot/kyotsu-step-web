@@ -48,6 +48,13 @@ const rawMathPropositionReadingUnit = {
           caption: 'Pの要素が1つでもQの外へ出れば、p⇒qは成り立たない。',
           overlays: [],
         },
+        {
+          id: 'equal-diagonals-quadrilateral',
+          src: '/assets/math/textbook/proposition/equal-diagonals-quadrilateral.svg',
+          alt: '対角線ACとBDの長さが等しいが、長方形ではない四角形ABCD',
+          caption: 'ACとBDの長さが等しい四角形の一例。',
+          overlays: [],
+        },
       ],
       readingFlow: [
         {
@@ -278,6 +285,11 @@ const rawMathPropositionReadingUnit = {
             { type: 'math' as const, latex: 'p\\Rightarrow q' },
             { type: 'text' as const, text: ' は真である。' },
           ],
+        },
+        {
+          id: 'figure-equal-diagonals',
+          type: 'figure' as const,
+          figureId: 'equal-diagonals-quadrilateral',
         },
         {
           id: 'paragraph-b02',

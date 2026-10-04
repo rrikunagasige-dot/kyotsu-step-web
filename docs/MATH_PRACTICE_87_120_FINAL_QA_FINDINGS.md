@@ -120,7 +120,35 @@ Acceptance for repair:
 
 ---
 
-## QAF-002 — HIGH — Problem 89 common prerequisite is not imported into candidate stages
+## QAF-002 RESOLUTION — RESOLVED
+
+Status: **RESOLVED**
+
+Repair:
+- Problem 89 basis now exposes compact reusable results for A and the subset criterion,
+- B/C/D/E each depend only on that common basis,
+- each candidate stage exposes only its final judgment as a reusable result,
+- the final summary depends only on B/C/D/E judgments, not on their full derivations,
+- added unit dependency-graph coverage and a dedicated mobile/desktop learner-flow E2E.
+
+Validated on commit:
+- `9ed6aa6eec5f6eac0da55346252d1ce9e11eaefd`
+
+CI run:
+- `37167327359`
+
+PASS:
+- typecheck
+- Math practice unit / presentation tests
+- build
+- mobile Chromium smoke
+- desktop Chromium smoke
+
+No merge to main yet.
+
+---
+
+## QAF-002 — RESOLVED (was HIGH) — Problem 89 common prerequisite is not imported into candidate stages
 
 Authority:
 `MATH_PRACTICE_87_120_STRUCTURE_MAP.md` defines 89 as Type `C + I`.

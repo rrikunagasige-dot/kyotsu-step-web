@@ -249,7 +249,7 @@ const rawMathFunctionConditionsUnit = {
           choices: ['ただ1つに決まる', '2つに決まる'],
           purpose: 'concept-formation' as const,
           scaffoldLevel: 'strong' as const,
-          hints: ['式4x−6へx=1を入れる。', '計算結果は−2の1つだけ。'],
+          hints: ['式4x−6へx=1を入れる。', '同じx=1を式に入れたとき、別のyも出てくるかを確かめる。'],
         },
         {
           id: 'func-a02',
@@ -285,7 +285,7 @@ const rawMathFunctionConditionsUnit = {
           choices: ['a-1', 'a', '-1'],
           purpose: 'representation-link' as const,
           scaffoldLevel: 'medium' as const,
-          hints: ['f( )の括弧の中全体が入力になる。', '入力はa−1。'],
+          hints: ['f( )の括弧の中全体が入力になる。', 'xの場所へ、括弧の中をひとかたまりとして入れる。'],
         },
         {
           id: 'func-a05',

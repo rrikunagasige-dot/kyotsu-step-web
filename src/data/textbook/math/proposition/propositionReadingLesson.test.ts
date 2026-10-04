@@ -11,30 +11,21 @@ describe('math proposition-reading textbook unit', () => {
   })
 
 
-  it('forms the proposition concept only after the three concrete judgments', () => {
+  it('forms the proposition concept after the first source implication judgment', () => {
     const flow = mathPropositionReadingUnit.sections[0].readingFlow
-    const propositionConcept = flow.findIndex(
-      (block) => block.type === 'paragraph' && block.parts.some(
-        (part) => part.type === 'text' && part.text.includes('文を命題という'),
-      ),
-    )
-    const ids = ['prop-p00a', 'prop-p00b', 'prop-p00c', 'prop-p00d', 'prop-p00e']
-    const indexes = ids.map((itemId) => flow.findIndex(
-      (block) => block.type === 'paragraph' && block.parts.some(
-        (part) => part.type === 'choice' && part.itemId === itemId,
-      ),
-    ))
     const implicationDecision = flow.findIndex(
       (block) => block.type === 'paragraph' && block.parts.some(
         (part) => part.type === 'choice' && part.itemId === 'prop-a01',
       ),
     )
+    const propositionConcept = flow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'text' && part.text.includes('文を命題という'),
+      ),
+    )
 
-    expect(propositionConcept).toBeGreaterThanOrEqual(0)
-    expect(indexes.every((index) => index >= 0 && index < propositionConcept)).toBe(true)
-    expect(indexes).toEqual([...indexes].sort((a, b) => a - b))
-    expect(propositionConcept).toBeGreaterThan(indexes[indexes.length - 1])
-    expect(implicationDecision).toBeGreaterThan(propositionConcept)
+    expect(implicationDecision).toBeGreaterThanOrEqual(0)
+    expect(propositionConcept).toBeGreaterThan(implicationDecision)
   })
 
 
@@ -42,7 +33,7 @@ describe('math proposition-reading textbook unit', () => {
     const flow = mathPropositionReadingUnit.sections[0].readingFlow
     const choiceIndex = flow.findIndex(
       (block) => block.type === 'paragraph' && block.parts.some(
-        (part) => part.type === 'choice' && part.itemId === 'prop-p00b',
+        (part) => part.type === 'choice' && part.itemId === 'prop-a07',
       ),
     )
     const beforeChoice = flow.slice(0, choiceIndex).map((block) => {
@@ -51,7 +42,7 @@ describe('math proposition-reading textbook unit', () => {
     }).join('\n')
 
     expect(choiceIndex).toBeGreaterThanOrEqual(0)
-    expect(beforeChoice).not.toContain('頂角40°')
+    expect(beforeChoice).not.toContain('直角二等辺三角形')
   })
 
   it('forms implication meaning from a concrete condition before naming p⇒q', () => {
@@ -183,7 +174,8 @@ describe('math proposition-reading textbook unit', () => {
   it('matches the source guide examples for truth, negation, and necessary-condition classification', () => {
     const items = mathPropositionReadingUnit.sections[0].items
 
-    expect(items.find((item) => item.id === 'prop-a07')).toBeUndefined()
+    expect(items.find((item) => item.id === 'prop-a07')?.answer).toBe('直角二等辺三角形')
+    expect(items.find((item) => item.id === 'prop-a08')?.answer).toBe('偽')
     const learnerText = mathPropositionReadingUnit.sections[0].readingFlow
       .filter((block) => block.type === 'paragraph')
       .flatMap((block) => block.parts)
@@ -193,6 +185,8 @@ describe('math proposition-reading textbook unit', () => {
 
     expect(learnerText).toContain('△ABCが二等辺三角形なら、△ABCは正三角形である')
     expect(learnerText).not.toContain('問8(4)')
+    expect(learnerText).not.toContain('頂角40°')
+    expect(learnerText).not.toContain('3.14は円周率')
 
     expect(items.find((item) => item.id === 'prop-c02')?.answer)
       .toBe('2は合成数ではない')
@@ -235,7 +229,7 @@ describe('math proposition-reading textbook unit', () => {
       .filter((block) => block.type === 'heading')
       .map((block) => block.text)
     expect(headings).toEqual([
-      '命題の真偽を読む',
+      '条件から真偽を判断する',
       '2つの条件の関係を見る',
       '成り立たない条件を考える',
     ])

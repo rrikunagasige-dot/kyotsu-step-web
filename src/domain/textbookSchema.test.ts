@@ -78,6 +78,35 @@ describe('TextbookUnitSchema 1.1', () => {
     expect(parsed.chapter?.unitCode).toBe('3SET')
   })
 
+  it('accepts black-bold terms, role markers, and dialogue blocks for the math mother layout', () => {
+    const unit = structuredClone(baseUnit)
+    unit.sections[0].readingFlow = [
+      { id: 'example-1', type: 'marker', kind: 'example', text: '例題' },
+      {
+        id: 'p-1',
+        type: 'paragraph',
+        parts: [
+          { type: 'text', text: 'この考え方を ' },
+          { type: 'term', text: '集合' },
+          { type: 'text', text: ' という。' },
+          { type: 'choice', itemId: 'a-1' },
+        ],
+      },
+      { id: 'dialogue-1', type: 'dialogue', speaker: 'teacher', text: 'まず意味を見よう。' },
+      { id: 'check-1', type: 'marker', kind: 'check', text: '確認' },
+      { id: 'summary-1', type: 'marker', kind: 'summary', text: 'まとめ' },
+    ] as never
+
+    const parsed = TextbookUnitSchema.parse(unit)
+    expect(parsed.sections[0].readingFlow.map((block) => block.type)).toEqual([
+      'marker',
+      'paragraph',
+      'dialogue',
+      'marker',
+      'marker',
+    ])
+  })
+
   it('allows an item to be referenced only from a figure overlay', () => {
     const unit = structuredClone(baseUnit)
     unit.sections[0].readingFlow = [

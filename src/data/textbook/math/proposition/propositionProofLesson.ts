@@ -3,7 +3,7 @@ import { validateTextbookUnits } from '../../../../domain/textbookSchema'
 const rawMathPropositionProofUnit = {
   schemaVersion: '1.1' as const,
   unitId: 'math-propositions-proof',
-  revision: 1,
+  revision: 2,
   status: 'review' as const,
   subject: 'math-1a' as const,
   chapter: {
@@ -248,10 +248,9 @@ const rawMathPropositionProofUnit = {
             { type: 'text' as const, text: 'まず ' },
             { type: 'math' as const, latex: 'n=3k+1' },
             { type: 'text' as const, text: ' なら ' },
-            { type: 'math' as const, latex: 'n^2=9k^2+6k+1=3(3k^2+2k)+1' },
-            { type: 'text' as const, text: ' だから、3で割った余りは ' },
+            { type: 'math' as const, latex: 'n^2=9k^2+6k+1=' },
             { type: 'choice' as const, itemId: 'proof-b03' },
-            { type: 'text' as const, text: ' になる。' },
+            { type: 'text' as const, text: ' と整理できる。したがって3で割った余りは1になる。' },
           ],
         },
         {
@@ -394,7 +393,7 @@ const rawMathPropositionProofUnit = {
         {
           id: 'proof-a01',
           label: 'PROOF-A01',
-          prompt: 'p⇒qの逆を作ろう。',
+          prompt: '前件と後件を入れ替えた命題を作ろう。',
           answer: 'q\\Rightarrow p',
           acceptedAnswers: [],
           answerType: 'formula' as const,
@@ -406,7 +405,7 @@ const rawMathPropositionProofUnit = {
         {
           id: 'proof-a02',
           label: 'PROOF-A02',
-          prompt: 'p⇒qの裏を作ろう。',
+          prompt: 'pとqをそれぞれ否定し、向きをそのままにした命題を作ろう。',
           answer: '\\bar p\\Rightarrow\\bar q',
           acceptedAnswers: [],
           answerType: 'formula' as const,
@@ -418,7 +417,7 @@ const rawMathPropositionProofUnit = {
         {
           id: 'proof-a03',
           label: 'PROOF-A03',
-          prompt: 'p⇒qの対偶を作ろう。',
+          prompt: '前件と後件を入れ替え、さらに両方を否定した命題を作ろう。',
           answer: '\\bar q\\Rightarrow\\bar p',
           acceptedAnswers: [],
           answerType: 'formula' as const,
@@ -554,14 +553,14 @@ const rawMathPropositionProofUnit = {
         {
           id: 'proof-b03',
           label: 'PROOF-B03',
-          prompt: 'n=3k+1のとき、n²を3で割った余りを求めよう。',
-          answer: '1',
-          acceptedAnswers: [],
+          prompt: 'n²=9k²+6k+1を、3の倍数に1を足した形へ整理しよう。',
+          answer: '3(3k^2+2k)+1',
+          acceptedAnswers: ['3(3k²+2k)+1'],
           answerType: 'formula' as const,
-          choices: ['1', '0', '2'],
+          choices: ['3(3k^2+2k)+1', '3(3k^2+2k)', '3(3k^2+2k)+2'],
           purpose: 'transfer' as const,
           scaffoldLevel: 'medium' as const,
-          hints: ['式は3(整数)+1の形まで整理されている。', '3の倍数に1を足した形。'],
+          hints: ['9k²+6kは3をくくって表せる。', '定数項の1はそのまま残る。'],
         },
         {
           id: 'proof-b04',

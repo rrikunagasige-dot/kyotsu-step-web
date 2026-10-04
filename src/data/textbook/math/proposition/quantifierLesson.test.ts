@@ -110,6 +110,25 @@ describe('math quantifier textbook unit', () => {
     expect(item?.acceptedAnswers).toContain('ある素数は奇数ではない')
   })
 
+  it('keeps full-sentence negation answers from producing duplicated sentence endings', () => {
+    const flow = mathQuantifierUnit.sections[0].readingFlow
+    for (const itemId of ['quant-a03', 'quant-c03', 'quant-d03']) {
+      const block = flow.find(
+        (candidate) => candidate.type === 'paragraph' && candidate.parts.some(
+          (part) => part.type === 'choice' && part.itemId === itemId,
+        ),
+      )
+      expect(block?.type, itemId).toBe('paragraph')
+      if (block?.type !== 'paragraph') continue
+      const choiceIndex = block.parts.findIndex((part) => part.type === 'choice' && part.itemId === itemId)
+      const suffix = block.parts.slice(choiceIndex + 1)
+        .filter((part) => part.type === 'text')
+        .map((part) => part.text)
+        .join('')
+      expect(suffix.trim(), itemId).toBe('。')
+    }
+  })
+
   it('keeps the implicit universal statement natural when completed as prose', () => {
     const item = mathQuantifierUnit.sections[0].items.find((candidate) => candidate.id === 'quant-d01')
     expect(item?.answer).toBe('どの2つの無理数を選んでも')

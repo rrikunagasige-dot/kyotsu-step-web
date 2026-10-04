@@ -149,9 +149,9 @@ const rawMathQuantifierUnit = {
           id: 'paragraph-q09',
           type: 'paragraph' as const,
           parts: [
-            { type: 'text' as const, text: '④「2つの無理数の積は無理数である」。ここでは「どの2つの無理数を選んでも」と主張しているので、「' },
+            { type: 'text' as const, text: '④「2つの無理数の積は無理数である」。この文は特定の2数だけの主張ではなく、' },
             { type: 'choice' as const, itemId: 'quant-d01' },
-            { type: 'text' as const, text: '」という意味で読む。' },
+            { type: 'text' as const, text: '、積は無理数になるという意味で読む。' },
           ],
         },
         {
@@ -311,11 +311,11 @@ const rawMathQuantifierUnit = {
         {
           id: 'quant-d01',
           label: 'QUANT-D01',
-          prompt: '「2つの無理数の積は無理数である」に隠れている量の言葉を選ぼう。',
-          answer: 'すべての2つの無理数',
-          acceptedAnswers: [],
+          prompt: '「2つの無理数の積は無理数である」が、どの範囲の2数について述べているか。',
+          answer: 'どの2つの無理数を選んでも',
+          acceptedAnswers: ['すべての2つの無理数について'],
           answerType: 'text' as const,
-          choices: ['すべての2つの無理数', 'ある2つの無理数'],
+          choices: ['どの2つの無理数を選んでも', 'ある2つの無理数を選べば'],
           purpose: 'representation-link' as const,
           scaffoldLevel: 'light' as const,
           hints: ['特定の2つだけではなく、一般に成り立つ性質として述べている。', '例外なく成り立つという読み方。'],

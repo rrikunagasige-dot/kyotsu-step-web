@@ -126,14 +126,14 @@ const rawMathFunctionConditionsUnit = {
         {
           id: 'formula-g',
           type: 'formula' as const,
-          parts: [{ type: 'math' as const, latex: 'g(x)=x^2-1' }],
+          parts: [{ type: 'math' as const, latex: 'f(x)=x^2-1' }],
         },
         {
           id: 'paragraph-g01',
           type: 'paragraph' as const,
           parts: [
             { type: 'text' as const, text: 'この関数では ' },
-            { type: 'math' as const, latex: 'g(-1)=(-1)^2-1' },
+            { type: 'math' as const, latex: 'f(-1)=(-1)^2-1' },
             { type: 'text' as const, text: ' だから ' },
             { type: 'choice' as const, itemId: 'func-b01' },
             { type: 'text' as const, text: ' である。' },
@@ -143,7 +143,7 @@ const rawMathFunctionConditionsUnit = {
           id: 'paragraph-g02',
           type: 'paragraph' as const,
           parts: [
-            { type: 'math' as const, latex: 'g(2)=2^2-1' },
+            { type: 'math' as const, latex: 'f(2)=2^2-1' },
             { type: 'text' as const, text: ' は ' },
             { type: 'choice' as const, itemId: 'func-b02' },
             { type: 'text' as const, text: ' となる。' },
@@ -153,7 +153,7 @@ const rawMathFunctionConditionsUnit = {
           id: 'paragraph-g03',
           type: 'paragraph' as const,
           parts: [
-            { type: 'math' as const, latex: 'g(a-1)=(a-1)^2-1' },
+            { type: 'math' as const, latex: 'f(a-1)=(a-1)^2-1' },
             { type: 'text' as const, text: ' を展開して整理すると ' },
             { type: 'choice' as const, itemId: 'func-b03' },
             { type: 'text' as const, text: ' である。' },
@@ -302,7 +302,7 @@ const rawMathFunctionConditionsUnit = {
         {
           id: 'func-b01',
           label: 'FUNC-B01',
-          prompt: 'g(−1)を求めよう。',
+          prompt: '別の関数 f(x)=x²−1 について、f(−1)を求めよう。',
           answer: '0',
           acceptedAnswers: [],
           answerType: 'formula' as const,
@@ -314,7 +314,7 @@ const rawMathFunctionConditionsUnit = {
         {
           id: 'func-b02',
           label: 'FUNC-B02',
-          prompt: 'g(2)を求めよう。',
+          prompt: 'f(2)を求めよう。',
           answer: '3',
           acceptedAnswers: [],
           answerType: 'formula' as const,

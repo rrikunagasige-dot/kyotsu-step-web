@@ -63,6 +63,30 @@ describe('math practice 87-120 staged integration', () => {
     ])
   })
 
+  it('keeps the meaningful odd-number step in 88 but removes the redundant p4 pattern hole', () => {
+    const question = mathPracticeSetsBatchASource.find((item) => item.problemNo === 88)
+    expect(question).toBeDefined()
+
+    expect(question?.blanks.some((blank) => blank.id === 'p2-step')).toBe(true)
+    expect(question?.blanks.some((blank) => blank.id === 'p4-pattern')).toBe(false)
+
+    const sampleIndex = question?.guide.findIndex(
+      (node) => node.type === 'blank' && node.blankId === 'p4-sample',
+    ) ?? -1
+    expect(sampleIndex).toBeGreaterThan(-1)
+    expect(question?.guide[sampleIndex + 1]).toEqual({
+      type: 'content',
+      blocks: [{ type: 'text', text: '1,4,7,10,... は3ずつ増える。' }],
+    })
+    expect(question?.guide[sampleIndex + 2]).toEqual({
+      type: 'blank',
+      blankId: 'p4-result',
+    })
+
+    const chinese = mathPracticeSetsBatchASourceZh.find((item) => item.problemNo === 88)
+    expect(JSON.stringify(chinese)).toContain('1,4,7,10,... 每次增加3。')
+  })
+
   it('explicitly closes 92-(2) as an empty intersection without adding a duplicate answer blank', () => {
     const question = mathPracticeSetsBatchASource.find((item) => item.problemNo === 92)
     expect(question).toBeDefined()

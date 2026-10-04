@@ -421,6 +421,47 @@ test('proof review wrong answer stays unresolved and keeps the reverse concept l
   await expect(hint).not.toContainText('q\\Rightarrow p')
 })
 
+test('proof review reaches contrapositive and contradiction conclusions without layout regressions', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/math-propositions-proof'))
+
+  const answers: Array<[string, string]> = [
+    ['proof-a01', 'q\\Rightarrow p'],
+    ['proof-a02', '\\bar p\\Rightarrow\\bar q'],
+    ['proof-a03', '\\bar q\\Rightarrow\\bar p'],
+    ['proof-a04', '偽'],
+    ['proof-a04r', '真'],
+    ['proof-a04i', '真'],
+    ['proof-a05', '偽'],
+    ['proof-a06', '真'],
+    ['proof-a07', 'n=6'],
+    ['proof-a08', '真'],
+    ['proof-b00', '対偶'],
+    ['proof-b01', 'nが3の倍数でない ⇒ n²が3の倍数でない'],
+    ['proof-b02', '1または2'],
+    ['proof-b03', '1'],
+    ['proof-b04', '3の倍数にならない'],
+    ['proof-b05', '真である'],
+    ['proof-c00', 'x\\ne0'],
+    ['proof-c01', '\\sqrt2=-\\frac{\\sqrt3y}{x}'],
+    ['proof-c01b', '\\sqrt6=-\\frac{3y}{x}'],
+    ['proof-c02', '有理数'],
+    ['proof-c03', '矛盾する'],
+    ['proof-c04', 'x=0'],
+    ['proof-c05', 'y=0'],
+  ]
+  for (const [itemId, answer] of answers) await answerItem(page, itemId, answer)
+
+  await expect(page.getByText(/証明方法を背理法という/)).toBeVisible()
+  await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
+  await expect(page.locator('.katex-error')).toHaveCount(0)
+
+  const viewport = await page.evaluate(() => ({
+    clientWidth: document.documentElement.clientWidth,
+    scrollWidth: document.documentElement.scrollWidth,
+  }))
+  expect(viewport.scrollWidth).toBeLessThanOrEqual(viewport.clientWidth + 1)
+})
+
 test('all review math units enter without KaTeX errors or horizontal overflow', async ({ page }) => {
   const routes = [
     '/learning/textbook/math-propositions-reading',

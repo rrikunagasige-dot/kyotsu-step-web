@@ -23,8 +23,8 @@ const rawMathPropositionReadingUnit = {
   },
   objectives: [
     '条件から何が必ず言えるかを具体例で判断する',
-    '条件が成り立たない範囲を言葉と式で表す',
     '一方向と逆方向を分けて、二つの条件の関係を整理する',
+    '条件が成り立たない範囲を言葉と式で表す',
   ],
   sections: [
     {
@@ -527,7 +527,7 @@ const rawMathPropositionReadingUnit = {
           answerType: 'text' as const,
           choices: ['偽', '真'],
           purpose: 'transfer' as const,
-          scaffoldLevel: 'medium' as const,
+          scaffoldLevel: 'light' as const,
           hints: ['反例は前件を満たしながら後件を破る。', '「すべて成り立つ」という主張を、その具体例と照らして考える。'],
         },
         {
@@ -599,7 +599,7 @@ const rawMathPropositionReadingUnit = {
           answerType: 'text' as const,
           choices: ['必要十分条件', '必要条件だが十分でない', '十分条件だが必要でない'],
           purpose: 'definition' as const,
-          scaffoldLevel: 'medium' as const,
+          scaffoldLevel: 'light' as const,
           hints: ['p⇒qもq⇒pも真。', '必要でも十分でもあるときの名称を使う。'],
         },
         {

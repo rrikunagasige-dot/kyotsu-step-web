@@ -91,6 +91,33 @@ describe('math practice current-target presentation', () => {
       .toEqual(['s1', 's2', 's3'])
   })
 
+  it('reuses the common subset basis in 89 and imports only candidate judgments for the final summary', () => {
+    const basis = mathPracticeTargetsForQuestion('math-practice-089').find((target) => target.id === 'basis')!
+    expect(mathPracticeResultItems(basis).map((result) => result.blankId))
+      .toEqual(['a-set', 'subset-rule'])
+
+    for (const targetId of ['b', 'c', 'd', 'e'] as const) {
+      expect(mathPracticeDependencyTargets('math-practice-089', targetId).map((target) => target.id))
+        .toEqual(['basis'])
+    }
+
+    expect(mathPracticeResultItems(
+      mathPracticeTargetsForQuestion('math-practice-089').find((target) => target.id === 'b')!,
+    ).map((result) => result.blankId)).toEqual(['b-judgment'])
+    expect(mathPracticeResultItems(
+      mathPracticeTargetsForQuestion('math-practice-089').find((target) => target.id === 'c')!,
+    ).map((result) => result.blankId)).toEqual(['c-judgment'])
+    expect(mathPracticeResultItems(
+      mathPracticeTargetsForQuestion('math-practice-089').find((target) => target.id === 'd')!,
+    ).map((result) => result.blankId)).toEqual(['d-judgment'])
+    expect(mathPracticeResultItems(
+      mathPracticeTargetsForQuestion('math-practice-089').find((target) => target.id === 'e')!,
+    ).map((result) => result.blankId)).toEqual(['e-judgment'])
+
+    expect(mathPracticeDependencyTargets('math-practice-089', 'final').map((target) => target.id))
+      .toEqual(['b', 'c', 'd', 'e'])
+  })
+
   it('reuses only the logically required previous results in 93 and 96', () => {
     expect(mathPracticeDependencyTargets('math-practice-093', 's1').map((target) => target.id))
       .toEqual(['basis'])

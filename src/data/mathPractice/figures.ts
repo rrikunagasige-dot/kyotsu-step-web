@@ -69,7 +69,7 @@ export function mathPracticeFigureState(
       if (targetId === 's1' && has(resolved, 'p1-sets')) return 'F99-1'
       if (targetId === 's2' && has(resolved, 'p2-sets')) return 'F99-2'
       if (targetId === 's3' && has(resolved, 'p3-q-set')) return 'F99-3'
-      if (targetId === 's4' && has(resolved, 'p4-q-set')) return 'F99-4'
+      if (targetId === 's4' && has(resolved, 'p4-left-endpoint')) return 'F99-4'
       return null
 
     case 'math-practice-101':

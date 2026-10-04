@@ -64,6 +64,27 @@ describe('math function-conditions textbook unit', () => {
     expect(rangeConcept).toBeGreaterThan(rangeDecision)
   })
 
+
+  it('shows the source rectangle before equation/domain decisions without answer-bearing overlays', () => {
+    const section = mathFunctionConditionsUnit.sections[0]
+    const flow = section.readingFlow
+    const figureIndex = flow.findIndex(
+      (block) => block.type === 'figure' && block.figureId === 'rectangle-perimeter-40',
+    )
+    const equationIndex = flow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'func-c01',
+      ),
+    )
+    const figure = section.figures.find((candidate) => candidate.id === 'rectangle-perimeter-40')
+
+    expect(figureIndex).toBeGreaterThanOrEqual(0)
+    expect(equationIndex).toBeGreaterThan(figureIndex)
+    expect(figure?.overlays).toEqual([])
+    expect(figure?.caption).not.toContain('0<x<20')
+    expect(figure?.caption).not.toContain('0<y<20')
+  })
+
   it('uses three learner-facing headings for the three textbook moves', () => {
     const headings = mathFunctionConditionsUnit.sections[0].readingFlow
       .filter((block) => block.type === 'heading')

@@ -830,44 +830,33 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
     {
       id: 'basis',
       kicker: { ja: 'まず確認', zh: '先确认' },
-      label: { ja: '同値を示すための証明方針を考える', zh: '思考证明等价所需的方针' },
+      label: { ja: '同値は2方向を別々に証明する', zh: '分别证明等价的两个方向' },
       blankIds: ['rule'],
-      result: {
-        blankId: 'rule',
-        label: { ja: '同値の証明方針', zh: '等价证明方针' },
-      },
+      result: { blankId: 'rule', label: { ja: '同値の証明方針', zh: '等价证明方针' } },
     },
     {
       id: 'forward',
       kicker: { ja: '一方向目', zh: '第一个方向' },
-      label: { ja: 'p から q の2条件を示す', zh: '由 p 推出 q 的两个条件' },
-      blankIds: ['forward'],
+      label: { ja: 'pからqの2条件を1つずつ作る', zh: '由p逐个得到q的两个条件' },
+      blankIds: ['forward-sum', 'forward-product', 'forward-judgment'],
       dependsOn: ['basis'],
-      result: {
-        blankId: 'forward',
-        label: { ja: '一方向目', zh: '第一个方向' },
-      },
     },
     {
       id: 'reverse',
-      kicker: { ja: '二方向目', zh: '第二个方向' },
-      label: { ja: '積の符号を分け、和条件で片方を除く', zh: '由乘积符号分类，再用和条件排除一支' },
-      blankIds: ['reverse-sign', 'reverse-eliminate'],
+      kicker: { ja: '逆方向', zh: '反方向' },
+      label: { ja: '符号分岐を和条件で絞る', zh: '用和条件筛选符号分支' },
+      blankIds: ['reverse-sign', 'reverse-eliminate', 'reverse-judgment'],
       dependsOn: ['basis'],
-      result: {
-        blankId: 'reverse-eliminate',
-        label: { ja: '二方向目', zh: '第二个方向' },
-      },
     },
     {
-      id: 'conclude',
+      id: 'final',
       kicker: { ja: '結論', zh: '结论' },
-      label: { ja: '2方向の結果から最終関係を判断する', zh: '根据两个方向的结果判断最终关系' },
+      label: { ja: '2方向から同値を結論する', zh: '由两个方向得出等价' },
       blankIds: ['equivalence'],
       dependsOn: ['forward', 'reverse'],
-      resultLinkLabel: { ja: '示した2方向', zh: '已证明的两个方向' },
     },
   ],
+
   'math-practice-109': [
     {
       id: 'basis',

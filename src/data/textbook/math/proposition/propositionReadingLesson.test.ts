@@ -24,6 +24,7 @@ describe('math proposition-reading textbook unit', () => {
     const items = mathPropositionReadingUnit.sections[0].items
     expect(items.find((item) => item.id === 'prop-a08')?.scaffoldLevel).toBe('light')
     expect(items.find((item) => item.id === 'prop-b06')?.scaffoldLevel).toBe('light')
+    expect(items.find((item) => item.id === 'prop-b06')?.purpose).toBe('transfer')
     expect(items.find((item) => item.id === 'prop-c04')?.scaffoldLevel).toBe('light')
   })
 

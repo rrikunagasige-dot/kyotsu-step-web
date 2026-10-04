@@ -717,8 +717,11 @@ export const mathPracticeSetsBatchASource: MathPracticeSourceQuestion[] = [
       { type: 'blank', blankId: 'p3-ab' },
       { type: 'blank', blankId: 'p3-result' },
 
-      { type: 'content', blocks: [{ type: 'text', text: '(4) B に入ることは必須なので、候補を B の中に絞ってから A と C の条件を確認する。' }] },
+      { type: 'content', blocks: [{ type: 'text', text: '(4) B に入ることは必須なので、まず候補を B の中に絞る。' }] },
       { type: 'blank', blankId: 'p4-candidates' },
+      { type: 'content', blocks: [{ type: 'text', text: '次に、B の候補から A に入る要素を除き、「A に入らない」という条件まで反映する。' }] },
+      { type: 'blank', blankId: 'p4-after-a' },
+      { type: 'content', blocks: [{ type: 'text', text: '最後に、残った候補から C に入る要素を除き、「C に入らない」という条件も反映する。' }] },
       { type: 'blank', blankId: 'p4-result' },
 
       { type: 'content', blocks: [{ type: 'text', text: '(5) 括弧内は (1) で求めた結果を使える。全体集合 U からその要素を除く。' }] },
@@ -760,9 +763,14 @@ export const mathPracticeSetsBatchASource: MathPracticeSourceQuestion[] = [
         skillTag: 'condition-reading', knowledgeTags: ['three-sets'], explanation: '式に B が交わりとして含まれるので、B の要素だけを候補にできます。',
       },
       {
-        id: 'p4-result', prompt: '(4) overline(A)∩B∩overline(C) はどれか。',
+        id: 'p4-after-a', prompt: 'B={3,4,5,6} から A に入る要素を除くと、残る候補はどれか。',
+        choices: [choice('correct', '{5,6}', true), choice('removed-side', '{3,4}'), choice('left-four', '{4,5,6}')],
+        skillTag: 'calculation', knowledgeTags: ['intersection','complement'], explanation: '3と4は A に入るので除き、5,6 が残ります。',
+      },
+      {
+        id: 'p4-result', prompt: '(4) さらに C に入る要素を除くと、最終的に残る集合はどれか。',
         choices: [choice('correct', '{5}', true), choice('wrong-a', '{5,6}'), choice('wrong-b', '{4,5}')],
-        skillTag: 'conclusion', knowledgeTags: ['intersection','complement'], explanation: 'Bの要素のうち、AにもCにも入らないのは5だけです。',
+        skillTag: 'conclusion', knowledgeTags: ['intersection','complement'], explanation: '5,6 のうち6は C に入り、5は C に入らないので5だけ残ります。',
       },
       {
         id: 'p5-result', prompt: '(5) overline(A∩B∩C) はどれか。',

@@ -62,7 +62,7 @@
 ### math-quantifiers-all-exists
 - status: review
 - source: 深進数学I p.100〜101 相当
-- learner topic: prove-propositions の末尾（固定3タイトルを保ちつつsource順を優先）
+- learner topic: read-propositions
 - practice overlap: read-propositions / 109
 - flow:
   1. 「ある」の主張を具体例で成立させる
@@ -71,7 +71,8 @@
   4. 「すべて」の否定
   5. 無理数・図形の元命題と否定を確認
 - source-backed principle:
-  - p.96〜98 の証明unitを終えた後、p.100〜101 の参考として扱う。
+  - learner-facing topicは練習モードの「条件から命題を読む」と対応させる。
+  - source page orderは chapter metadata（orderInChapter=4）で保持する。
   - 量化の規則を先に暗記させず、反例 / witness を先に経験させる。
 
 ## 4. 第2章・関数（将来の章として review）

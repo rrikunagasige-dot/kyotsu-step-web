@@ -3,7 +3,7 @@ import { validateTextbookUnits } from '../../../../domain/textbookSchema'
 const rawMathQuantifierUnit = {
   schemaVersion: '1.1' as const,
   unitId: 'math-quantifiers-all-exists',
-  revision: 2,
+  revision: 3,
   status: 'review' as const,
   subject: 'math-1a' as const,
   chapter: {

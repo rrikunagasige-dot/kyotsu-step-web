@@ -189,6 +189,42 @@ test('proposition-reading wrong answer stays unresolved and does not reveal the 
   await expect(hint).not.toContainText('真である')
 })
 
+test('proposition-reading follows the textbook order from truth to necessary/sufficient to negation', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/math-propositions-reading'))
+
+  const truthAnswers: Array<[string, string]> = [
+    ['prop-p00a', '真である'],
+    ['prop-p00b', '頂角40°の二等辺三角形'],
+    ['prop-p00c', '偽である'],
+    ['prop-p00d', '定まっていない'],
+    ['prop-p00e', '一意に決められない'],
+    ['prop-a01', '満たす'],
+    ['prop-a02', 'すべて入る'],
+    ['prop-a03', '-1'],
+    ['prop-a04', '偽'],
+    ['prop-a05', '-3'],
+    ['prop-a06', '偽'],
+  ]
+  for (const [itemId, answer] of truthAnswers) await answerItem(page, itemId, answer)
+
+  await expect(page.getByRole('heading', { name: '必要条件・十分条件を見分ける', exact: true })).toBeVisible()
+  await expect(page.getByTestId('textbook-item-prop-b01')).toBeVisible()
+  await expect(page.getByTestId('textbook-item-prop-c01')).toHaveCount(0)
+
+  const relationAnswers: Array<[string, string]> = [
+    ['prop-b01', '等しい'],
+    ['prop-b02', '限らない'],
+    ['prop-b03', '必要条件'],
+    ['prop-b04', '必要条件'],
+    ['prop-b05', 'どちらも真'],
+    ['prop-b06', '必要十分条件'],
+  ]
+  for (const [itemId, answer] of relationAnswers) await answerItem(page, itemId, answer)
+
+  await expect(page.getByRole('heading', { name: '条件を否定する', exact: true })).toBeVisible()
+  await expect(page.getByTestId('textbook-item-prop-c01')).toBeVisible()
+})
+
 test('proposition-reading counterexample is decided before the counterexample concept is named', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-propositions-reading'))
 

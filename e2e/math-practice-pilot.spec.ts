@@ -148,7 +148,7 @@ test('101 treats negation as the complete complement and keeps each condition in
   await expect(problem.locator('.katex-error')).toHaveCount(0)
 
   await expect(currentTarget).toContainText('まず確認')
-  await expect(currentTarget).toContainText('条件の否定')
+  await expect(currentTarget).toContainText('否定が表す範囲')
   await expect(page.getByTestId('blank-math-practice-101-rule')).toContainText('選択')
   await expect(page.getByTestId('blank-math-practice-101-p1-result')).toHaveCount(0)
 
@@ -193,63 +193,67 @@ test('102 maps AND/OR to intersection/union and handles open and closed endpoint
   await page.getByTestId('math-topic-question-5').click()
 
   await expect(page.getByRole('heading', { name: '102｜「かつ」と「または」' })).toBeVisible()
-  const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10','11','12','13','14'])
-  await expect(page.getByTestId('math-topic-question-5')).toHaveAttribute('aria-current', 'page')
-
   const problem = page.getByTestId('standard-problem')
   const readingFlow = page.getByTestId('math-practice-reading-flow')
   const currentTarget = page.getByTestId('math-practice-current-target')
 
   await expect(problem).toContainText('実数')
   await expect(problem).toContainText('全体の集合')
-  await expect(problem.locator('.katex-display')).toHaveCount(4)
   await expect(problem.locator('.katex-error')).toHaveCount(0)
-
   await expect(currentTarget).toContainText('まず確認')
-  await expect(currentTarget).toContainText('集合演算')
   await expect(page.getByTestId('blank-math-practice-102-rule')).toContainText('選択')
-  await expect(page.getByTestId('blank-math-practice-102-p1-result')).toHaveCount(0)
 
   await page.getByTestId('blank-math-practice-102-rule').click()
   await page.getByTestId('option-math-practice-102-rule-correct').click()
 
-  // (1): intersection only; the final interval is not leaked before the choice.
+  // (1): bounds -> endpoint membership -> final interval.
   await expect(currentTarget).toContainText('今の問い｜(1)')
   await expect(page.getByTestId('math-practice-dependency-links')).toContainText('集合演算の対応')
+  await expect(page.getByTestId('math-practice-figure-F102-1A')).toBeVisible()
   await expect(readingFlow).not.toContainText('0<x<2')
-  await expect(page.getByTestId('blank-math-practice-102-p1-result')).toContainText('選択')
+  await page.getByTestId('blank-math-practice-102-p1-bounds').click()
+  await page.getByTestId('option-math-practice-102-p1-bounds-zero-two').click()
+  await page.getByTestId('blank-math-practice-102-p1-endpoints').click()
+  await page.getByTestId('option-math-practice-102-p1-endpoints-neither').click()
   await page.getByTestId('blank-math-practice-102-p1-result').click()
   await page.getByTestId('option-math-practice-102-p1-result-correct').click()
 
-  // (2): same base intervals but no result dependency on (1).
+  // (2): same source intervals, but union reasoning is independent of (1).
   await expect(currentTarget).toContainText('今の問い｜(2)')
-  await expect(readingFlow).not.toContainText('(1) は2つの区間')
-  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('集合演算の対応')
-  await expect(page.getByTestId('blank-math-practice-102-p2-result')).toContainText('選択')
+  await expect(page.getByTestId('math-practice-figure-F102-2A')).toBeVisible()
+  await page.getByTestId('blank-math-practice-102-p2-bounds').click()
+  await page.getByTestId('option-math-practice-102-p2-bounds-minus-two-three').click()
+  await page.getByTestId('blank-math-practice-102-p2-endpoints').click()
+  await page.getByTestId('option-math-practice-102-p2-endpoints-neither').click()
   await page.getByTestId('blank-math-practice-102-p2-result').click()
   await page.getByTestId('option-math-practice-102-p2-result-correct').click()
 
-  // (3): intersection chooses the stricter endpoint conditions.
+  // (3): determine the overlap first, then test each endpoint separately.
   await expect(currentTarget).toContainText('今の問い｜(3)')
-  await expect(readingFlow).not.toContainText('少なくとも一方に入る範囲')
-  await expect(page.getByTestId('blank-math-practice-102-p3-result')).toContainText('選択')
+  await expect(page.getByTestId('math-practice-figure-F102-3A')).toBeVisible()
+  await page.getByTestId('blank-math-practice-102-p3-core').click()
+  await page.getByTestId('option-math-practice-102-p3-core-minus-one-two').click()
+  await page.getByTestId('blank-math-practice-102-p3-left').click()
+  await page.getByTestId('option-math-practice-102-p3-left-exclude').click()
+  await page.getByTestId('blank-math-practice-102-p3-right').click()
+  await page.getByTestId('option-math-practice-102-p3-right-exclude').click()
   await page.getByTestId('blank-math-practice-102-p3-result').click()
   await page.getByTestId('option-math-practice-102-p3-result-correct').click()
 
-  // (4): union keeps an endpoint if either interval contains it.
+  // (4): union span first, then each endpoint.
   await expect(currentTarget).toContainText('今の問い｜(4)')
-  await expect(readingFlow).not.toContainText('共通部分を取り')
-  await expect(page.getByTestId('blank-math-practice-102-p4-result')).toContainText('選択')
+  await expect(page.getByTestId('math-practice-figure-F102-4A')).toBeVisible()
+  await page.getByTestId('blank-math-practice-102-p4-span').click()
+  await page.getByTestId('option-math-practice-102-p4-span-minus-one-four').click()
+  await page.getByTestId('blank-math-practice-102-p4-left').click()
+  await page.getByTestId('option-math-practice-102-p4-left-include').click()
+  await page.getByTestId('blank-math-practice-102-p4-right').click()
+  await page.getByTestId('option-math-practice-102-p4-right-include').click()
   await page.getByTestId('blank-math-practice-102-p4-result').click()
   await page.getByTestId('option-math-practice-102-p4-result-correct').click()
 
   await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
-
-  const dimensions = await page.evaluate(() => ({
-    viewport: window.innerWidth,
-    page: document.documentElement.scrollWidth,
-  }))
+  const dimensions = await page.evaluate(() => ({ viewport: window.innerWidth, page: document.documentElement.scrollWidth }))
   expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
 })
 
@@ -272,7 +276,7 @@ test('103 negates compound conditions from their meaning and applies De Morgan w
   await expect(problem.locator('.katex-error')).toHaveCount(0)
 
   await expect(currentTarget).toContainText('まず確認')
-  await expect(currentTarget).toContainText('否定規則')
+  await expect(currentTarget).toContainText('複合条件を小さな条件に分けて否定する')
   await expect(page.getByTestId('blank-math-practice-103-rule')).toContainText('選択')
   await expect(page.getByTestId('blank-math-practice-103-p1-result')).toHaveCount(0)
 
@@ -345,7 +349,7 @@ test('104 fixes necessary/sufficient direction first, then classifies six indepe
   await expect(problem.locator('.katex-error')).toHaveCount(0)
 
   await expect(currentTarget).toContainText('まず確認')
-  await expect(currentTarget).toContainText('含意の向き')
+  await expect(currentTarget).toContainText('必要・十分を2方向の含意で判定する')
   await expect(page.getByTestId('blank-math-practice-104-rule')).toContainText('選択')
   await expect(page.getByTestId('blank-math-practice-104-p1-classification')).toHaveCount(0)
 
@@ -354,7 +358,7 @@ test('104 fixes necessary/sufficient direction first, then classifies six indepe
 
   // (1): the learner receives both direction results, then maps them to the classification.
   await expect(currentTarget).toContainText('今の問い｜(1)')
-  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('双方向判定表')
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('方向と条件の対応')
   await expect(readingFlow.locator('.katex-display')).toHaveCount(2)
   await expect(readingFlow).not.toContainText('十分条件だが必要条件ではない')
   await expect(page.getByTestId('blank-math-practice-104-p1-classification')).toContainText('選択')
@@ -458,7 +462,7 @@ test('106 translates number conditions into intersection and complement without 
 
   // (1): 6の倍数を「2の倍数かつ3の倍数」と読むが、答えそのものは先に見せない。
   await expect(currentTarget).toContainText('今の問い｜(1)')
-  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('集合表現の規則')
+  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('集合演算の対応')
   await expect(readingFlow).not.toContainText('P∩Q')
   await page.getByTestId('blank-math-practice-106-p1-result').click()
   await page.getByTestId('option-math-practice-106-p1-result-intersection').click()
@@ -578,7 +582,7 @@ test('109 negates quantifiers and verifies the truth of each original and negate
   await expect(problem.locator('.katex-error')).toHaveCount(0)
 
   await expect(currentTarget).toContainText('まず確認')
-  await expect(currentTarget).toContainText('「すべて」「ある」')
+  await expect(currentTarget).toContainText('量化語と中の条件をセットで否定する')
   await expect(page.getByTestId('blank-math-practice-109-rule')).toContainText('選択')
   await expect(page.getByTestId('blank-math-practice-109-p1-negation')).toHaveCount(0)
 

@@ -1570,7 +1570,8 @@ export const mathPracticePropositionsBatchBSourceZh: MathPracticeSourceQuestion[
       { type: 'latex', latex: '(2)\\;x>0\\;\\text{且}\\;y<0\\;\\text{ 是 }\\;xy<0\\;\\text{ 的□}' },
       { type: 'latex', latex: '(3)\\;x=y=0\\;\\text{ 是 }\\;xy=0\\;\\text{且}\\;x+y=0\\;\\text{ 的□}' },
       { type: 'text', text: '(4) ∠A<90° 是 △ABC 为锐角三角形的□。' },
-      { type: 'latex', latex: '(5)\\;(a-b)(a^2+b^2-c^2)=0\\;\\text{ 是直角等腰三角形的□}' },
+      { type: 'text', text: '(5) 设 △ABC 的3边 BC、CA、AB 的长度分别为 a、b、c。' },
+      { type: 'latex', latex: '(a-b)(a^2+b^2-c^2)=0\\;\\text{ 是△ABC为直角等腰三角形的□}' },
     ],
     guide: [
       {

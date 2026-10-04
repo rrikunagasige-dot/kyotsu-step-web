@@ -3,7 +3,9 @@ import { describe, expect, it } from 'vitest'
 import { mathPractice87To120Catalog, mathPracticePilotCatalog } from './catalog'
 import { mathPracticePilotSource } from './pilot'
 import { mathPracticeSetsBatchASource } from './setsBatchA'
+import { mathPracticeSetsBatchASourceZh } from './setsBatchA.zh'
 import { mathPracticePropositionsBatchBSource } from './propositionsBatchB'
+import { mathPracticePropositionsBatchBSourceZh } from './propositionsBatchB.zh'
 import { mathPracticeProofsBatchCSource } from './proofsBatchC'
 import { mathPracticeFunctionsBatchDSource } from './functionsBatchD'
 import { mathPracticePilotQuestions, mathPracticePilotQuestionsZh } from './adapter'
@@ -60,6 +62,72 @@ describe('math practice 87-120 staged integration', () => {
       '119｜関数の値',
       '120｜文章から関数を作る',
     ])
+  })
+
+  it('keeps the meaningful odd-number step in 88 but removes the redundant p4 pattern hole', () => {
+    const question = mathPracticeSetsBatchASource.find((item) => item.problemNo === 88)
+    expect(question).toBeDefined()
+
+    expect(question?.blanks.some((blank) => blank.id === 'p2-step')).toBe(true)
+    expect(question?.blanks.some((blank) => blank.id === 'p4-pattern')).toBe(false)
+
+    const sampleIndex = question?.guide.findIndex(
+      (node) => node.type === 'blank' && node.blankId === 'p4-sample',
+    ) ?? -1
+    expect(sampleIndex).toBeGreaterThan(-1)
+    expect(question?.guide[sampleIndex + 1]).toEqual({
+      type: 'content',
+      blocks: [{ type: 'text', text: '1,4,7,10,... は3ずつ増える。' }],
+    })
+    expect(question?.guide[sampleIndex + 2]).toEqual({
+      type: 'blank',
+      blankId: 'p4-result',
+    })
+
+    const chinese = mathPracticeSetsBatchASourceZh.find((item) => item.problemNo === 88)
+    expect(JSON.stringify(chinese)).toContain('1,4,7,10,... 每次增加3。')
+  })
+
+  it('explicitly closes 92-(2) as an empty intersection without adding a duplicate answer blank', () => {
+    const question = mathPracticeSetsBatchASource.find((item) => item.problemNo === 92)
+    expect(question).toBeDefined()
+
+    const commonIndex = question?.guide.findIndex(
+      (node) => node.type === 'blank' && node.blankId === 'p2-common',
+    ) ?? -1
+    expect(commonIndex).toBeGreaterThan(-1)
+
+    expect(question?.guide[commonIndex + 1]).toEqual({
+      type: 'content',
+      blocks: [
+        { type: 'text', text: '共通要素がないので、(2) の共通部分は空集合である。' },
+        { type: 'latex', latex: 'A\\cap B=\\varnothing' },
+      ],
+    })
+    expect(question?.guide[commonIndex + 2]).toEqual({
+      type: 'blank',
+      blankId: 'p2-union',
+    })
+
+    expect(question?.blanks.some((blank) => blank.id === 'p2-intersection')).toBe(false)
+
+    const chinese = mathPracticeSetsBatchASourceZh.find((item) => item.problemNo === 92)
+    expect(JSON.stringify(chinese)).toContain('没有公共元素，因此 (2) 的交集是空集。')
+  })
+
+  it('authors 96-(4) as candidate selection followed by two explicit complement filters', () => {
+    const question = mathPracticeSetsBatchASource.find((item) => item.problemNo === 96)
+    expect(question).toBeDefined()
+
+    const ids = question?.blanks.map((blank) => blank.id) ?? []
+    expect(ids.slice(ids.indexOf('p4-candidates'), ids.indexOf('p5-result')))
+      .toEqual(['p4-candidates', 'p4-after-a', 'p4-result'])
+
+    const afterA = question?.blanks.find((blank) => blank.id === 'p4-after-a')
+    expect(afterA?.choices.find((choice) => choice.correct)?.label).toBe('{5,6}')
+
+    const final = question?.blanks.find((blank) => blank.id === 'p4-result')
+    expect(final?.choices.find((choice) => choice.correct)?.label).toBe('{5}')
   })
 
   it('authors 98 as a common proposition criterion plus three independent subproblems', () => {
@@ -257,6 +325,21 @@ describe('math practice 87-120 staged integration', () => {
       .toBe('necessary-only')
     expect(question?.blanks.find((blank) => blank.id === 'p5-classification')?.choices.find((choice) => choice.correct)?.id)
       .toBe('neither')
+
+    expect(question?.problem).toContainEqual({
+      type: 'text',
+      text: '(5) △ABC の3辺 BC, CA, AB の長さをそれぞれ a, b, c とする。',
+    })
+    expect(question?.problem).toContainEqual({
+      type: 'latex',
+      latex: '(a-b)(a^2+b^2-c^2)=0\\;\\text{ は△ABCが直角二等辺三角形であるための□}',
+    })
+
+    const chinese = mathPracticePropositionsBatchBSourceZh.find((item) => item.problemNo === 107)
+    expect(chinese?.problem).toContainEqual({
+      type: 'text',
+      text: '(5) 设 △ABC 的3边 BC、CA、AB 的长度分别为 a、b、c。',
+    })
   })
 
   it('authors 108 as a two-direction equivalence proof with an explicit reverse sign split', () => {
@@ -612,6 +695,33 @@ describe('math practice 87-120 staged integration', () => {
 
   it('contains no Japanese kana in the Chinese pilot', () => {
     expect(JSON.stringify(mathPracticePilotQuestionsZh).match(/[ぁ-んァ-ン]/g)).toBeNull()
+  })
+
+  it('contains no generic Chinese fallback placeholders in published Math practice', () => {
+    const serialized = JSON.stringify(mathPracticePilotQuestionsZh)
+
+    expect(serialized).not.toContain('请选择符合当前条件的正确结论。')
+    expect(serialized).not.toContain('根据题目条件与当前推理可得到这一结论。')
+    expect(serialized).not.toContain('继续根据当前条件推理。')
+    expect(serialized).not.toMatch(/候选\s+[1-9]/)
+  })
+
+  it('keeps formerly-fallback Chinese prompts semantically specific in 88-96', () => {
+    const sourceByNo = Object.fromEntries(
+      mathPracticeSetsBatchASourceZh.map((question) => [question.problemNo, question]),
+    )
+    const prompt = (problemNo: number, blankId: string) =>
+      sourceByNo[problemNo]?.blanks.find((blank) => blank.id === blankId)?.prompt
+
+    expect(prompt(88, 'p2-step')).toContain('正奇数')
+    expect(prompt(89, 'subset-rule')).toContain('子集')
+    expect(prompt(90, 'p2-zero-product')).toContain('(x-2)(x-5)=0')
+    expect(prompt(91, 'p2-range')).toContain('元素')
+    expect(prompt(92, 'p2-common')).toContain('公共元素')
+    expect(prompt(93, 'p1-meaning')).toContain('A∩B∩C')
+    expect(prompt(95, 'p3-regions')).toContain('区域')
+    expect(prompt(96, 'p4-candidates')).toContain('候选范围')
+    expect(prompt(96, 'p4-after-a')).toContain('去掉属于 A 的元素')
   })
 
   it('keeps every authored thinking blank referenced by the learning flow', () => {

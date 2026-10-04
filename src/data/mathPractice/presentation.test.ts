@@ -91,6 +91,41 @@ describe('math practice current-target presentation', () => {
       .toEqual(['s1', 's2', 's3'])
   })
 
+  it('keeps 88 p2 as a real pattern decision but removes the duplicate p4 pattern target blank', () => {
+    const targets = mathPracticeTargetsForQuestion('math-practice-088')
+    expect(targets.find((target) => target.id === 's2')?.blankIds)
+      .toEqual(['p2-step', 'p2-last', 'p2-result'])
+    expect(targets.find((target) => target.id === 's4')?.blankIds)
+      .toEqual(['p4-sample', 'p4-result'])
+  })
+
+  it('reuses the common subset basis in 89 and imports only candidate judgments for the final summary', () => {
+    const basis = mathPracticeTargetsForQuestion('math-practice-089').find((target) => target.id === 'basis')!
+    expect(mathPracticeResultItems(basis).map((result) => result.blankId))
+      .toEqual(['a-set', 'subset-rule'])
+
+    for (const targetId of ['b', 'c', 'd', 'e'] as const) {
+      expect(mathPracticeDependencyTargets('math-practice-089', targetId).map((target) => target.id))
+        .toEqual(['basis'])
+    }
+
+    expect(mathPracticeResultItems(
+      mathPracticeTargetsForQuestion('math-practice-089').find((target) => target.id === 'b')!,
+    ).map((result) => result.blankId)).toEqual(['b-judgment'])
+    expect(mathPracticeResultItems(
+      mathPracticeTargetsForQuestion('math-practice-089').find((target) => target.id === 'c')!,
+    ).map((result) => result.blankId)).toEqual(['c-judgment'])
+    expect(mathPracticeResultItems(
+      mathPracticeTargetsForQuestion('math-practice-089').find((target) => target.id === 'd')!,
+    ).map((result) => result.blankId)).toEqual(['d-judgment'])
+    expect(mathPracticeResultItems(
+      mathPracticeTargetsForQuestion('math-practice-089').find((target) => target.id === 'e')!,
+    ).map((result) => result.blankId)).toEqual(['e-judgment'])
+
+    expect(mathPracticeDependencyTargets('math-practice-089', 'final').map((target) => target.id))
+      .toEqual(['b', 'c', 'd', 'e'])
+  })
+
   it('reuses only the logically required previous results in 93 and 96', () => {
     expect(mathPracticeDependencyTargets('math-practice-093', 's1').map((target) => target.id))
       .toEqual(['basis'])
@@ -105,6 +140,9 @@ describe('math practice current-target presentation', () => {
     expect(mathPracticeDependencyTargets('math-practice-096', 's3')).toEqual([])
     const p96s1 = mathPracticeTargetsForQuestion('math-practice-096').find((target) => target.id === 's1')!
     expect(mathPracticeResultItems(p96s1).map((result) => result.blankId)).toEqual(['p1-result'])
+
+    const p96s4 = mathPracticeTargetsForQuestion('math-practice-096').find((target) => target.id === 's4')!
+    expect(p96s4.blankIds).toEqual(['p4-candidates', 'p4-after-a', 'p4-result'])
   })
 
   it('encodes 117 as two independent chains that import theorem 116 only when coefficient separation is applied', () => {
@@ -153,6 +191,44 @@ describe('math practice current-target presentation', () => {
     expect(mathPracticeDependencyTargets('math-practice-118', 'p3').map((target) => target.id))
       .toEqual(['basis'])
     expect(mathPracticeUsesSubproblemCompression('math-practice-118')).toBe(true)
+  })
+
+  it('keeps reviewed target headings task-oriented without pre-solving the current blank', () => {
+    const label = (questionId: string, targetId: string) =>
+      mathPracticeTargetsForQuestion(questionId).find((target) => target.id === targetId)?.label
+
+    expect(label('math-practice-110', 'p2-converse')).toEqual({
+      ja: '逆命題を作り、真偽を確かめる',
+      zh: '写出逆命题并判断真假',
+    })
+    expect(label('math-practice-112', 'p2-assumption')).toEqual({
+      ja: '有理化後の式で背理法の反対仮定を置く',
+      zh: '用有理化后的式子写出反设',
+    })
+    expect(label('math-practice-114', 'p1-squares')).toEqual({
+      ja: '4つの平方余りをすべて調べる',
+      zh: '检查四种平方余数',
+    })
+    expect(label('math-practice-114', 'p2-products')).toEqual({
+      ja: '4つの積の余りをすべて調べる',
+      zh: '检查四种乘积余数',
+    })
+    expect(label('math-practice-115', 'assumption')).toEqual({
+      ja: '背理法の反対仮定を置く',
+      zh: '写出反证法的反设',
+    })
+    expect(label('math-practice-119', 'basis')).toEqual({
+      ja: '関数値の代入ルールを確認する',
+      zh: '确认求函数值时的代入规则',
+    })
+    expect(label('math-practice-120', 'p1-model')).toEqual({
+      ja: '三角形の条件から関数式を作る',
+      zh: '根据三角形条件建立函数式',
+    })
+    expect(label('math-practice-120', 'p2-model')).toEqual({
+      ja: '残りの道のりを関数式にする',
+      zh: '把剩余路程写成函数式',
+    })
   })
 
   it('models 119 as current-item substitution with extra stages only for composite inputs', () => {
@@ -220,6 +296,41 @@ describe('math practice current-target presentation', () => {
       .toEqual(['p2-start', 'p2-end'])
 
     expect(mathPracticeUsesSubproblemCompression('math-practice-120')).toBe(true)
+  })
+
+
+  it('keeps current-target headings task-oriented instead of revealing current answers', () => {
+    const label = (questionId: string, targetId: string) =>
+      mathPracticeTargetsForQuestion(questionId).find((target) => target.id === targetId)?.label
+
+    expect(label('math-practice-106', 's2')).toEqual({
+      ja: '奇数の条件を集合 P で表す',
+      zh: '用集合 P 表示奇数条件',
+    })
+    expect(label('math-practice-108', 'basis')).toEqual({
+      ja: '同値を示すための証明方針を考える',
+      zh: '思考证明等价所需的方针',
+    })
+    expect(label('math-practice-108', 'conclude')).toEqual({
+      ja: '2方向の結果から最終関係を判断する',
+      zh: '根据两个方向的结果判断最终关系',
+    })
+    expect(label('math-practice-111', 'p4-form')).toEqual({
+      ja: '奇数を整数 k を使って表す',
+      zh: '用整数 k 表示奇数',
+    })
+    expect(label('math-practice-113', 'assumption')).toEqual({
+      ja: '背理法の反対仮定を置く',
+      zh: '写出反证法所需的反设',
+    })
+    expect(label('math-practice-116', 'assumption')).toEqual({
+      ja: 'q=0を示すための反対仮定を置く',
+      zh: '为证明q=0写出反设',
+    })
+    expect(label('math-practice-118', 'basis')).toEqual({
+      ja: '関数の判定基準を確認する',
+      zh: '确认函数的判定标准',
+    })
   })
 
   it('enables subproblem compression for the full reviewed set batch 87-97', () => {

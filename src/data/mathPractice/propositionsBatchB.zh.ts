@@ -234,20 +234,20 @@ export const mathPracticePropositionsBatchBSourceZh: MathPracticeSourceQuestion[
       { type: 'content', blocks: [{ type: 'text', text: '把命题p⇒q转化为：前件成立的集合P与后件成立的集合Q之间的包含关系。' }] },
       { type: 'blank', blankId: 'rule' },
 
-      { type: 'content', blocks: [{ type: 'text', text: '(1) 前件と后件分别改写为区间P、Q。' }] },
+      { type: 'content', blocks: [{ type: 'text', text: '(1) 分别把前件和后件改写为区间 P、Q。' }] },
       { type: 'blank', blankId: 'p1-sets' },
       { type: 'blank', blankId: 'p1-inclusion' },
       { type: 'blank', blankId: 'p1-result' },
 
-      { type: 'content', blocks: [{ type: 'text', text: '(2) も、まず前件と后件を区間へ直してから P と Q を比べる。' }] },
+      { type: 'content', blocks: [{ type: 'text', text: '(2) 也先把前件和后件改写为区间，再比较 P 与 Q。' }] },
       { type: 'blank', blankId: 'p2-sets' },
       { type: 'blank', blankId: 'p2-inclusion' },
-      { type: 'content', blocks: [{ type: 'text', text: 'P に入り Q に入らない値を1つ選び、本当に前件○・后件×になるか確かめる。' }] },
+      { type: 'content', blocks: [{ type: 'text', text: '选择一个属于 P 但不属于 Q 的值，确认它确实满足前件而不满足后件。' }] },
       { type: 'blank', blankId: 'p2-counterexample' },
       { type: 'blank', blankId: 'p2-verify' },
       { type: 'blank', blankId: 'p2-result' },
 
-      { type: 'content', blocks: [{ type: 'text', text: '(3) も集合包含で見る。前件の集合と、絶対値不等式で表された后件の集合を順に作る。' }] },
+      { type: 'content', blocks: [{ type: 'text', text: '(3) 也用集合包含来判断。依次求出前件集合与绝对值不等式表示的后件集合。' }] },
       { type: 'blank', blankId: 'p3-p-set' },
       { type: 'blank', blankId: 'p3-q-set' },
       { type: 'blank', blankId: 'p3-inclusion' },
@@ -263,11 +263,11 @@ export const mathPracticePropositionsBatchBSourceZh: MathPracticeSourceQuestion[
     blanks: [
       {
         id: 'rule',
-        prompt: 'p⇒q が真になる集合关系は',
+        prompt: '使 p⇒q 为真的集合关系是',
         choices: [
           choice('subset', 'P⊆Q', true),
           choice('reverse', 'Q⊆P', false, '满足p的每个元素都必须同时满足q。'),
-          choice('disjoint', 'P∩Q=∅', false, '含意では「前件を満たすものが后件にも入るか」を見る。'),
+          choice('disjoint', 'P∩Q=∅', false, '判断蕴含时，要看满足前件的元素是否也都属于后件集合。'),
         ],
         skillTag: 'condition-reading',
         knowledgeTags: ['implication', 'set-inclusion'],
@@ -275,7 +275,7 @@ export const mathPracticePropositionsBatchBSourceZh: MathPracticeSourceQuestion[
       },
       {
         id: 'p1-sets',
-        prompt: '(1) の前件集合 P と后件集合 Q は',
+        prompt: '(1) 的前件集合 P 与后件集合 Q 是',
         choices: [
           choice('correct', 'P=(1,2), Q=(1,3)', true),
           choice('reversed', 'P=(1,3), Q=(1,2)', false, 'P对应箭头左侧，Q对应箭头右侧。'),
@@ -283,7 +283,7 @@ export const mathPracticePropositionsBatchBSourceZh: MathPracticeSourceQuestion[
         ],
         skillTag: 'condition-reading',
         knowledgeTags: ['inequality', 'set-inclusion'],
-        explanation: '前件1<x<2は(1,2)、后件1<x<3は(1,3)です。',
+        explanation: '前件 1<x<2 对应 (1,2)，后件 1<x<3 对应 (1,3)。',
       },
       {
         id: 'p1-inclusion',
@@ -291,7 +291,7 @@ export const mathPracticePropositionsBatchBSourceZh: MathPracticeSourceQuestion[
         choices: [
           choice('p-sub-q', 'P⊆Q', true),
           choice('q-sub-p', 'Q⊆P', false, '例如思考2.5分别属于哪个区间。'),
-          choice('neither', 'どちらも他方に含まれない。', false, '检查P中的任意值是否都属于Q。'),
+          choice('neither', '两者都不包含于对方。', false, '检查P中的任意值是否都属于Q。'),
         ],
         skillTag: 'case-classification',
         knowledgeTags: ['set-inclusion'],
@@ -313,8 +313,8 @@ export const mathPracticePropositionsBatchBSourceZh: MathPracticeSourceQuestion[
         prompt: '(2) 的P、Q是',
         choices: [
           choice('correct', 'P=(-∞,1), Q=(0,1)', true),
-          choice('reverse', 'P=(0,1), Q=(-∞,1)', false, '前件はx<1、后件は0<x<1だ。'),
-          choice('closed-zero', 'P=(-∞,1), Q=[0,1)', false, '后件は0<xなので0を含まない。'),
+          choice('reverse', 'P=(0,1), Q=(-∞,1)', false, '前件是 x<1，后件是 0<x<1。'),
+          choice('closed-zero', 'P=(-∞,1), Q=[0,1)', false, '后件是 0<x，因此不包含 0。'),
         ],
         skillTag: 'condition-reading',
         knowledgeTags: ['inequality', 'set-inclusion'],
@@ -345,22 +345,22 @@ export const mathPracticePropositionsBatchBSourceZh: MathPracticeSourceQuestion[
       },
       {
         id: 'p2-verify',
-        prompt: 'x=0 を前件・后件へ入れると',
+        prompt: '把 x=0 代入前件和后件',
         choices: [
           choice('p-yes-q-no', '前件○、后件×', true),
-          choice('both-yes', '前件○、后件○', false, '后件0<x<1の左側の不等号を確認しよう。'),
+          choice('both-yes', '前件○、后件○', false, '确认后件 0<x<1 左侧的不等号。'),
           choice('p-no', '前件×、后件×', false, '因为0<1，所以前件x<1成立。'),
         ],
         skillTag: 'case-classification',
         knowledgeTags: ['counterexample', 'truth-value'],
-        explanation: 'x=0は前件を満たし、后件を満たさない反例です。',
+        explanation: 'x=0 满足前件，但不满足后件，因此是反例。',
       },
       {
         id: 'p2-result',
         prompt: '因此(2)的命题为',
         choices: [
           choice('false', '假', true),
-          choice('true', '真', false, '前件○・后件×の例が1つあると含意は成り立たない。'),
+          choice('true', '真', false, '只要存在一个前件○、后件×的例子，蕴含就不成立。'),
         ],
         skillTag: 'conclusion',
         knowledgeTags: ['truth-value', 'implication'],
@@ -392,7 +392,7 @@ export const mathPracticePropositionsBatchBSourceZh: MathPracticeSourceQuestion[
       },
       {
         id: 'p3-inclusion',
-        prompt: 'P=(3,∞) と Q=(-∞,-3)∪(1,∞) 比较可知',
+        prompt: '比较 P=(3,∞) 与 Q=(-∞,-3)∪(1,∞) 可知',
         choices: [
           choice('subset', 'P⊆Q', true),
           choice('not-subset', 'P⊆Q不成立。', false, '若x>3，则必然也属于Q右侧的区间(1,∞)。'),
@@ -567,9 +567,9 @@ export const mathPracticePropositionsBatchBSourceZh: MathPracticeSourceQuestion[
         id: 'p1-roots',
         prompt: '满足x²=3的实数是',
         choices: [
-          choice('plus-minus', 'x=√3 または x=-√3', true),
-          choice('plus-only', 'x=√3 だけ', false, '回想平方会消去正负号。'),
-          choice('minus-only', 'x=-√3 だけ', false, '正的√3平方后也等于3。'),
+          choice('plus-minus', 'x=√3 或 x=-√3', true),
+          choice('plus-only', '只有 x=√3', false, '回想平方会消去正负号。'),
+          choice('minus-only', '只有 x=-√3', false, '正的√3平方后也等于3。'),
         ],
         skillTag: 'calculation',
         knowledgeTags: ['counterexample'],
@@ -651,9 +651,9 @@ export const mathPracticePropositionsBatchBSourceZh: MathPracticeSourceQuestion[
         id: 'p3-candidate',
         prompt: '尝试较小奇数n=1,3,5时，最值得继续检查是否为合数的是',
         choices: [
-          choice('five', 'n=5 で 10n+1=51', true),
-          choice('one', 'n=1 で 10n+1=11', false, '检查11是否能被较小素数整除。'),
-          choice('three', 'n=3 で 10n+1=31', false, '检查31是否能被较小素数整除。'),
+          choice('five', 'n=5 时 10n+1=51', true),
+          choice('one', 'n=1 时 10n+1=11', false, '检查11是否能被较小素数整除。'),
+          choice('three', 'n=3 时 10n+1=31', false, '检查31是否能被较小素数整除。'),
         ],
         skillTag: 'case-classification',
         knowledgeTags: ['counterexample', 'prime-number'],
@@ -793,7 +793,7 @@ export const mathPracticePropositionsBatchBSourceZh: MathPracticeSourceQuestion[
         choices: [
           choice('left-with-boundary', '-5及其左侧。', true),
           choice('left-open', '只有小于-5的一侧。', false, '刚确认过的x=-5本身也应属于否定侧。'),
-          choice('right', '-5及其右侧。', false, 'x=0などは元の条件x>-5を满足。'),
+          choice('right', '-5及其右侧。', false, '例如 x=0 满足原条件 x>-5。'),
         ],
         skillTag: 'case-classification',
         knowledgeTags: ['negation', 'inequality'],
@@ -804,7 +804,7 @@ export const mathPracticePropositionsBatchBSourceZh: MathPracticeSourceQuestion[
         prompt: '因此x>-5的否定是',
         choices: [
           choice('le', 'x≤-5', true),
-          choice('lt', 'x<-5', false, '境界x=-5も元の条件を不满足。'),
+          choice('lt', 'x<-5', false, '边界 x=-5 也不满足原条件。'),
           choice('ge', 'x≥-5', false, 'x=0满足原条件，因此不属于否定侧。'),
         ],
         skillTag: 'conclusion',
@@ -909,7 +909,7 @@ export const mathPracticePropositionsBatchBSourceZh: MathPracticeSourceQuestion[
       { type: 'blank', blankId: 'p1-endpoints' },
       { type: 'blank', blankId: 'p1-result' },
 
-      { type: 'content', blocks: [{ type: 'text', text: '(2) は同じ A=(0,3), B=(-2,2) ，这次把至少属于其中一个区间的范围合并起来。' }] },
+      { type: 'content', blocks: [{ type: 'text', text: '(2) 使用相同的 A=(0,3), B=(-2,2)，这次合并至少属于其中一个区间的范围。' }] },
       { type: 'blank', blankId: 'p2-bounds' },
       { type: 'blank', blankId: 'p2-endpoints' },
       { type: 'blank', blankId: 'p2-result' },
@@ -920,7 +920,7 @@ export const mathPracticePropositionsBatchBSourceZh: MathPracticeSourceQuestion[
       { type: 'blank', blankId: 'p3-right' },
       { type: 'blank', blankId: 'p3-result' },
 
-      { type: 'content', blocks: [{ type: 'text', text: '(4) 同じ A=[-1,2), B=(-1,4] 合并为并集。' }] },
+      { type: 'content', blocks: [{ type: 'text', text: '(4) 使用相同的 A=[-1,2), B=(-1,4]，求它们的并集。' }] },
       { type: 'blank', blankId: 'p4-span' },
       { type: 'blank', blankId: 'p4-left' },
       { type: 'blank', blankId: 'p4-right' },
@@ -981,7 +981,7 @@ export const mathPracticePropositionsBatchBSourceZh: MathPracticeSourceQuestion[
         choices: [
           choice('minus-two-three', '从-2到3。', true),
           choice('zero-two', '从0到2。', false, '那是同时属于两个区间的范围。'),
-          choice('minus-two-two', '-2 から 2 まで。', false, '大于2且小于3的值属于A。'),
+          choice('minus-two-two', '从 -2 到 2。', false, '大于2且小于3的值属于A。'),
         ],
         skillTag: 'case-classification',
         knowledgeTags: ['union', 'inequality'],
@@ -1097,7 +1097,7 @@ export const mathPracticePropositionsBatchBSourceZh: MathPracticeSourceQuestion[
         choices: [
           choice('correct', '-1≤x≤4', true),
           choice('open', '-1<x<4', false, '使用左右端点的判断。'),
-          choice('right-open', '-1≤x<4', false, 'x=4はBに包含。'),
+          choice('right-open', '-1≤x<4', false, 'x=4 属于 B。'),
         ],
         skillTag: 'conclusion',
         knowledgeTags: ['union'],
@@ -1218,7 +1218,7 @@ export const mathPracticePropositionsBatchBSourceZh: MathPracticeSourceQuestion[
         ],
         skillTag: 'condition-reading',
         knowledgeTags: ['negation'],
-        explanation: 'x=2の否定はx≠2，y≠-1の否定はy=-1です。',
+        explanation: 'x=2 的否定是 x≠2，y≠-1 的否定是 y=-1。',
       },
       {
         id: 'p1-result',
@@ -1242,7 +1242,7 @@ export const mathPracticePropositionsBatchBSourceZh: MathPracticeSourceQuestion[
         ],
         skillTag: 'condition-reading',
         knowledgeTags: ['negation', 'inequality'],
-        explanation: 'x>8の否定はx≤8，x=3の否定はx≠3です。',
+        explanation: 'x>8 的否定是 x≤8，x=3 的否定是 x≠3。',
       },
       {
         id: 'p2-result',
@@ -1346,7 +1346,7 @@ export const mathPracticePropositionsBatchBSourceZh: MathPracticeSourceQuestion[
         choices: [
           choice('both-rational', 'x、y都是有理数。', true),
           choice('one-rational', 'x、y至少一个是有理数。', false, '若一个是有理数另一个是无理数，原条件仍成立。'),
-          choice('both-irrational', 'x、y はともに無理数である。', false, '这属于满足原条件的一侧。'),
+          choice('both-irrational', 'x、y 都是无理数。', false, '这属于满足原条件的一侧。'),
         ],
         skillTag: 'conclusion',
         knowledgeTags: ['negation', 'rational-number'],

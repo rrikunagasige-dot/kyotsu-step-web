@@ -63,6 +63,33 @@ describe('math practice 87-120 staged integration', () => {
     ])
   })
 
+  it('explicitly closes 92-(2) as an empty intersection without adding a duplicate answer blank', () => {
+    const question = mathPracticeSetsBatchASource.find((item) => item.problemNo === 92)
+    expect(question).toBeDefined()
+
+    const commonIndex = question?.guide.findIndex(
+      (node) => node.type === 'blank' && node.blankId === 'p2-common',
+    ) ?? -1
+    expect(commonIndex).toBeGreaterThan(-1)
+
+    expect(question?.guide[commonIndex + 1]).toEqual({
+      type: 'content',
+      blocks: [
+        { type: 'text', text: '共通要素がないので、(2) の共通部分は空集合である。' },
+        { type: 'latex', latex: 'A\\cap B=\\varnothing' },
+      ],
+    })
+    expect(question?.guide[commonIndex + 2]).toEqual({
+      type: 'blank',
+      blankId: 'p2-union',
+    })
+
+    expect(question?.blanks.some((blank) => blank.id === 'p2-intersection')).toBe(false)
+
+    const chinese = mathPracticeSetsBatchASourceZh.find((item) => item.problemNo === 92)
+    expect(JSON.stringify(chinese)).toContain('没有公共元素，因此 (2) 的交集是空集。')
+  })
+
   it('authors 96-(4) as candidate selection followed by two explicit complement filters', () => {
     const question = mathPracticeSetsBatchASource.find((item) => item.problemNo === 96)
     expect(question).toBeDefined()

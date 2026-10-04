@@ -256,6 +256,27 @@ function TriangleFigure({ id, text }: { id: MathPracticeFigureId; text: Localize
     )
   }
 
+  if (id === 'F107-5C') {
+    return (
+      <FigureFrame id={id} title={text('2つの枝は「または」で分けて読む', '把两个分支按“或”分开理解')}>
+        <rect x="28" y="36" width="132" height="122" rx="10" className="mpf-card" />
+        <rect x="200" y="36" width="132" height="122" rx="10" className="mpf-card" />
+        <text x="94" y="56" textAnchor="middle" className="mpf-label mpf-label--strong">a=b</text>
+        <path d="M 50 136 L 94 78 L 138 136 Z" className="mpf-shape" />
+        <line x1="67" y1="112" x2="75" y2="119" className="mpf-tick" />
+        <line x1="113" y1="119" x2="121" y2="112" className="mpf-tick" />
+        <text x="94" y="151" textAnchor="middle" className="mpf-muted">{text('二等辺', '等腰')}</text>
+
+        <text x="180" y="101" textAnchor="middle" className="mpf-label mpf-label--strong">{text('または', '或')}</text>
+
+        <text x="266" y="56" textAnchor="middle" className="mpf-label mpf-label--strong">a²+b²=c²</text>
+        <path d="M 222 136 L 222 78 L 310 136 Z" className="mpf-shape" />
+        <path d="M 222 120 L 238 120 L 238 136" className="mpf-angle" />
+        <text x="266" y="151" textAnchor="middle" className="mpf-muted">{text('C が直角', 'C 为直角')}</text>
+      </FigureFrame>
+    )
+  }
+
   if (id.startsWith('F107-5')) {
     const state = id.slice(-1)
     const equilateral = state === 'D'

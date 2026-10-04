@@ -18,7 +18,7 @@ describe('math function-conditions textbook unit', () => {
       .join('\n')
 
     expect(learnerText).toContain('y=4x-6')
-    expect(learnerText).toContain('f(x)=4x-6')
+    expect(learnerText).toContain('y=f(x)')
     expect(learnerText).toContain('f(x)=x^2-1')
     expect(learnerText).toContain('2(x+y)=40')
     expect(learnerText).toContain('y=20-x')

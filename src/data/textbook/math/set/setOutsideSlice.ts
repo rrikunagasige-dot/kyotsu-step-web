@@ -40,7 +40,13 @@ export const setOutsideReadingFlow = [
   {
     id: 'heading-outside',
     type: 'heading' as const,
-    text: '集合の外側まで考える',
+    text: '第3部　集合の外側まで考える',
+  },
+  {
+    id: 'marker-example-complement',
+    type: 'marker' as const,
+    kind: 'example' as const,
+    text: '例題',
   },
   {
     id: 'paragraph-d01',
@@ -52,10 +58,18 @@ export const setOutsideReadingFlow = [
     ],
   },
   {
+    id: 'dialogue-teacher-universe',
+    type: 'dialogue' as const,
+    speaker: 'teacher' as const,
+    text: '「入っていないもの全部」と言う前に、どこまでを考えるのか決めないといけないね。',
+  },
+  {
     id: 'paragraph-universal-concept',
     type: 'paragraph' as const,
     parts: [
-      { type: 'text' as const, text: 'このように、考える対象全体を一つの集合として決める。その集合を全体集合といい、ここでは ' },
+      { type: 'text' as const, text: 'このように、考える対象全体を一つの集合として決める。その集合を' },
+      { type: 'term' as const, text: '全体集合' },
+      { type: 'text' as const, text: 'といい、ここでは ' },
       { type: 'math' as const, latex: 'U=\\{1,2,3,\\ldots,12\\}' },
       { type: 'text' as const, text: ' とする。' },
     ],
@@ -78,7 +92,9 @@ export const setOutsideReadingFlow = [
     id: 'paragraph-complement-concept',
     type: 'paragraph' as const,
     parts: [
-      { type: 'text' as const, text: '全体集合Uの中でAに属さない要素全体の集合をAの補集合といい、' },
+      { type: 'text' as const, text: '全体集合Uの中でAに属さない要素全体の集合をAの' },
+      { type: 'term' as const, text: '補集合' },
+      { type: 'text' as const, text: 'といい、' },
       { type: 'math' as const, latex: '\\overline{A}' },
       { type: 'text' as const, text: ' と表す。' },
     ],
@@ -216,6 +232,12 @@ export const setOutsideReadingFlow = [
     ],
   },
   {
+    id: 'marker-example-demorgan',
+    type: 'marker' as const,
+    kind: 'example' as const,
+    text: '例題',
+  },
+  {
     id: 'paragraph-demorgan-intro',
     type: 'paragraph' as const,
     parts: [{ type: 'text' as const, text: '補集合の意味が分かったので、今度は補集合と共通部分・和集合を組み合わせる。完成した公式を先に覚えるのではなく、図で同じ領域になることを確かめる。' }],
@@ -269,6 +291,12 @@ export const setOutsideReadingFlow = [
     ],
   },
   {
+    id: 'dialogue-taro-demorgan',
+    type: 'dialogue' as const,
+    speaker: 'taro' as const,
+    text: '作り方は違うのに、最後に残った場所は同じになっています。',
+  },
+  {
     id: 'paragraph-e05',
     type: 'paragraph' as const,
     parts: [
@@ -318,7 +346,11 @@ export const setOutsideReadingFlow = [
   {
     id: 'paragraph-demorgan-concept',
     type: 'paragraph' as const,
-    parts: [{ type: 'text' as const, text: '以上の2つの関係をド・モルガンの法則という。大切なのは記号の形だけではなく、2通りに作った領域が同じになることである。' }],
+    parts: [
+      { type: 'text' as const, text: '以上の2つの関係を' },
+      { type: 'term' as const, text: 'ド・モルガンの法則' },
+      { type: 'text' as const, text: 'という。大切なのは記号の形だけではなく、2通りに作った領域が同じになることである。' },
+    ],
   },
   {
     id: 'formula-e-laws',
@@ -337,6 +369,12 @@ export const setOutsideReadingFlow = [
       { type: 'choice' as const, itemId: 'set-e09' },
       { type: 'text' as const, text: '。これは法則を覚える助けにはなるが、図で確かめた意味が本体である。' },
     ],
+  },
+  {
+    id: 'marker-check-demorgan',
+    type: 'marker' as const,
+    kind: 'check' as const,
+    text: '確認',
   },
   {
     id: 'paragraph-e-verify-intro',

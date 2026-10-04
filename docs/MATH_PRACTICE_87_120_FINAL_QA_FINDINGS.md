@@ -771,7 +771,47 @@ Repair principle:
 
 ---
 
-## QAF-008 — REVIEW — strongly suggestive target labels
+## QAF-008 REVIEW RESOLUTION — RESOLVED
+
+Status: **RESOLVED**
+
+Decision:
+The review found that several labels were not merely helpful scaffolding: they pre-committed the learner to the current blank's conclusion or key operation. Those labels were rewritten as task-only targets while preserving the actual mathematical guidance inside the learning flow.
+
+Repaired targets:
+- 110 p2-converse: ask the learner to construct and judge the converse, without printing `x≠2`,
+- 112 p2-assumption: ask for the contradiction assumption after rationalization, without giving `有理数 r`,
+- 114 p1-squares / p2-products: ask to check all residue cases, without announcing in advance that zero never appears,
+- 115 assumption: ask for the contradiction assumption, without stating the rational conclusion being selected,
+- 119 basis: ask to confirm the substitution rule, without stating “replace every x” before the rule blank,
+- 120 p1-model / p2-model: ask the learner to construct the function formula, without spelling out the decisive substitution/subtraction operation in the target heading.
+
+Kept as-is:
+- labels that only describe the local task and do not determine the current answer,
+- mathematical scaffolding inside the actual guided content.
+
+Regression:
+- exact target-label tests in `presentation.test.ts`,
+- focused browser assertions that the removed answer-bearing phrases are absent before the relevant blank is resolved.
+
+Validated on commit:
+- `4bb6bbd99b96e905a40315173972f83856ea6027`
+
+CI run:
+- `37168391006`
+
+PASS:
+- typecheck
+- Math practice unit / presentation tests
+- build
+- mobile Chromium smoke
+- desktop Chromium smoke
+
+No merge to main yet.
+
+---
+
+## QAF-008 — RESOLVED (was REVIEW) — strongly suggestive target labels
 
 These labels do not literally print the full answer, but may over-scaffold it:
 
@@ -894,6 +934,27 @@ Playwright runs the same suite in mobile and desktop projects.
 
 Important:
 Existing E2E does **not** sufficiently catch the QAF-007 target-heading leaks. Add focused assertions after repairing those labels.
+
+---
+
+## Source fidelity re-check note — revised 4STEP original still required
+
+A second Project/Library search was performed after the QA repairs.
+
+Found:
+- `数学I_普通練習_集合と命題_4STEP全問_引導版.docx`
+
+This file is a **derived guided edition**, not the raw source. Its early numbering appears offset from the current App (for example its 問90 corresponds in content to current App 87), and it also contains at least one material wording/content difference: its corresponding “要素の列挙” item uses “100以下の正の偶数”, while the authoritative current structure map for revised 4STEP 88 explicitly records “100以下の正の奇数”.
+
+Authority check:
+- `MATH_PRACTICE_87_120_STRUCTURE_MAP.md` identifies its source as `『改訂版 教科書傍用 4STEP数学 1+A』`,
+- it states that original problem wording / subproblem composition / order were re-read and fixed before implementation,
+- its 88 section explicitly records “100以下の正の奇数”.
+
+Conclusion:
+- do **not** overwrite current App content from the derived guided Word file,
+- do **not** mark raw-source fidelity PASS from that file,
+- the final fidelity gate still requires the actual revised 4STEP original pages/scans for direct comparison.
 
 ---
 

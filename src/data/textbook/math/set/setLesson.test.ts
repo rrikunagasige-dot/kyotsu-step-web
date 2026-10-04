@@ -5,15 +5,36 @@ describe('math set textbook unit', () => {
   it('keeps the first slice as one continuous math lesson', () => {
     expect(mathSetUnit.subject).toBe('math-1a')
     expect(mathSetUnit.status).toBe('published')
+    expect(mathSetUnit.revision).toBe(2)
     expect(mathSetUnit.chapter?.chapterId).toBe('math-ch03-sets-propositions')
     expect(mathSetUnit.chapter?.unitCode).toBe('3SET')
     expect(mathSetUnit.sections).toHaveLength(1)
     expect(mathSetUnit.sections[0].id).toBe('lesson')
     expect(mathSetUnit.sections[0].readingFlow[0]).toMatchObject({
       type: 'heading',
-      text: '集合を表す',
+      text: '第1部　集合を表す',
     })
     expect(mathSetUnit.chapter?.sourcePages).toEqual([86, 87, 88, 89, 90, 91])
+  })
+
+  it('preserves the golden Word role hierarchy and selective dialogue', () => {
+    const flow = mathSetUnit.sections[0].readingFlow
+    const markers = flow.filter((block) => block.type === 'marker')
+    const dialogues = flow.filter((block) => block.type === 'dialogue')
+
+    expect(markers.filter((block) => block.type === 'marker' && block.kind === 'example')).toHaveLength(7)
+    expect(markers.filter((block) => block.type === 'marker' && block.kind === 'check')).toHaveLength(1)
+    expect(markers.filter((block) => block.type === 'marker' && block.kind === 'summary')).toHaveLength(1)
+    expect(dialogues).toHaveLength(8)
+    expect(dialogues.filter((block) => block.type === 'dialogue' && block.speaker === 'hanako')).toHaveLength(3)
+    expect(dialogues.filter((block) => block.type === 'dialogue' && block.speaker === 'taro')).toHaveLength(3)
+    expect(dialogues.filter((block) => block.type === 'dialogue' && block.speaker === 'teacher')).toHaveLength(2)
+
+    expect(flow.filter((block) => block.type === 'heading').map((block) => block.type === 'heading' ? block.text : '')).toEqual([
+      '第1部　集合を表す',
+      '第2部　集合どうしの関係を見る',
+      '第3部　集合の外側まで考える',
+    ])
   })
 
   it('starts from a concrete set-building decision before teaching the term', () => {
@@ -29,7 +50,7 @@ describe('math set textbook unit', () => {
     )
     const conceptIndex = section.readingFlow.findIndex(
       (block) => block.type === 'paragraph' && block.parts.some(
-        (part) => part.type === 'text' && part.text.includes('ひとまとまりとして考えたものを集合という'),
+        (part) => part.type === 'term' && part.text === '集合',
       ),
     )
 
@@ -37,14 +58,27 @@ describe('math set textbook unit', () => {
     expect(conceptIndex).toBeGreaterThan(firstQuestionIndex)
   })
 
-  it('keeps concept prose as ordinary reading blocks instead of note callouts', () => {
+  it('uses black-bold semantic terms while keeping concept prose in the reading line', () => {
     const blocks = mathSetUnit.sections[0].readingFlow
-    const conceptBlocks = blocks.filter(
-      (block) => block.type === 'paragraph' && block.parts.some(
-        (part) => part.type === 'text' && /(集合という|要素という|有限集合|無限集合)/.test(part.text),
-      ),
+    const terms = blocks.flatMap((block) =>
+      block.type === 'paragraph' || block.type === 'formula'
+        ? block.parts.filter((part) => part.type === 'term').map((part) => part.text)
+        : [],
     )
-    expect(conceptBlocks.length).toBeGreaterThan(0)
+
+    expect(terms).toEqual(expect.arrayContaining([
+      '集合',
+      '要素',
+      '有限集合',
+      '無限集合',
+      '共通部分',
+      '和集合',
+      '部分集合',
+      '空集合',
+      '全体集合',
+      '補集合',
+      'ド・モルガンの法則',
+    ]))
     expect(blocks.filter((block) => block.type === 'note')).toHaveLength(0)
   })
 })
@@ -53,7 +87,7 @@ describe('math set textbook unit', () => {
   it('reveals set relations through a second heading and keeps answer-bearing figures after the decisions', () => {
     const section = mathSetUnit.sections[0]
     const relationHeadingIndex = section.readingFlow.findIndex(
-      (block) => block.type === 'heading' && block.text === '集合どうしの関係を見る',
+      (block) => block.type === 'heading' && block.text === '第2部　集合どうしの関係を見る',
     )
     const blankFigureIndex = section.readingFlow.findIndex(
       (block) => block.type === 'figure' && block.figureId === 'venn-two-blank',
@@ -87,7 +121,7 @@ describe('math set textbook unit', () => {
     )
     const conceptIndex = section.readingFlow.findIndex(
       (block) => block.type === 'paragraph' && block.parts.some(
-        (part) => part.type === 'text' && part.text.includes('部分集合という'),
+        (part) => part.type === 'term' && part.text === '部分集合',
       ),
     )
     expect(c01Index).toBeGreaterThanOrEqual(0)
@@ -105,7 +139,7 @@ describe('math set textbook unit', () => {
     )
     const universalIndex = section.readingFlow.findIndex(
       (block) => block.type === 'paragraph' && block.parts.some(
-        (part) => part.type === 'text' && part.text.includes('全体集合といい'),
+        (part) => part.type === 'term' && part.text === '全体集合',
       ),
     )
     const d02Index = section.readingFlow.findIndex(
@@ -115,7 +149,7 @@ describe('math set textbook unit', () => {
     )
     const complementIndex = section.readingFlow.findIndex(
       (block) => block.type === 'paragraph' && block.parts.some(
-        (part) => part.type === 'text' && part.text.includes('補集合といい'),
+        (part) => part.type === 'term' && part.text === '補集合',
       ),
     )
     expect(d01Index).toBeGreaterThanOrEqual(0)
@@ -138,7 +172,7 @@ describe('math set textbook unit', () => {
     )
     const conceptIndex = section.readingFlow.findIndex(
       (block) => block.type === 'paragraph' && block.parts.some(
-        (part) => part.type === 'text' && part.text.includes('ド・モルガンの法則という'),
+        (part) => part.type === 'term' && part.text === 'ド・モルガンの法則',
       ),
     )
     expect(e04Index).toBeGreaterThanOrEqual(0)
@@ -218,18 +252,18 @@ describe('math set textbook unit', () => {
   })
 
 
-  it('keeps the learning sequence synchronized with practice: subset before intersection and union', () => {
+  it('keeps the approved Word order: intersection and union before subset', () => {
     const flow = mathSetUnit.sections[0].readingFlow
-    const subsetIndex = flow.findIndex(
-      (block) => block.type === 'paragraph' && block.parts.some(
-        (part) => part.type === 'choice' && part.itemId === 'set-c01',
-      ),
-    )
     const intersectionIndex = flow.findIndex(
       (block) => block.type === 'paragraph' && block.parts.some(
         (part) => part.type === 'choice' && part.itemId === 'set-b01',
       ),
     )
-    expect(subsetIndex).toBeGreaterThanOrEqual(0)
-    expect(intersectionIndex).toBeGreaterThan(subsetIndex)
+    const subsetIndex = flow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'set-c01',
+      ),
+    )
+    expect(intersectionIndex).toBeGreaterThanOrEqual(0)
+    expect(subsetIndex).toBeGreaterThan(intersectionIndex)
   })

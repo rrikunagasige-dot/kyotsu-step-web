@@ -6,7 +6,7 @@ import { TextbookFigure } from '../components/textbook/TextbookFigure'
 import { TextbookFormula } from '../components/textbook/TextbookFormula'
 import { ErrorState, ProgressBar, RaisedButton, StatusBadge } from '../components/ui/Primitives'
 import { textbookRepository } from '../repositories/textbookRepository'
-import { getTextbookChoices, isTextbookItemResolved, textbookSectionProgress, textbookUnitProgress, type TextbookAnswerRecord, type TextbookUnitProgress } from '../domain/textbook'
+import { getTextbookChoices, isTextbookItemResolved, normalizeTextbookAnswer, textbookSectionProgress, textbookUnitProgress, type TextbookAnswerRecord, type TextbookUnitProgress } from '../domain/textbook'
 import type { TextbookItem, TextbookReadingBlock, TextbookReadingPart, TextbookSection, TextbookUnit } from '../domain/textbookSchema'
 import { useAppStore } from '../stores/useAppStore'
 import { useI18n } from '../i18n/runtime'
@@ -184,13 +184,19 @@ function TextbookReadingFlow({ unit, section, progress }: {
           </div>
         )}
         <div className="reading-choice-options" role="group" aria-label={interactionPrompt(activeItem, text, unit.subject)}>
-          {activeChoices.map((choice, index) => (
+          {activeChoices.map((choice, index) => {
+            const isLastWrongChoice = unit.subject === 'math-1a'
+              && Boolean(activeRecord)
+              && !isTextbookItemResolved(activeItem, activeRecord)
+              && normalizeTextbookAnswer(choice) === normalizeTextbookAnswer(activeRecord?.value ?? '')
+            return (
             <button
               type="button"
               aria-label={choice}
+              aria-invalid={isLastWrongChoice || undefined}
               key={choice}
               data-testid={`textbook-choice-${activeItem.id}-${index}`}
-              className="reading-choice-option"
+              className={`reading-choice-option${isLastWrongChoice ? ' reading-choice-option--wrong' : ''}`}
               onClick={() => selectChoice(choice)}
             >
               <span>{index + 1}</span>
@@ -201,7 +207,8 @@ function TextbookReadingFlow({ unit, section, progress }: {
               </strong>
               {activeItem.unit && <small>{activeItem.unit}</small>}
             </button>
-          ))}
+            )
+          })}
         </div>
       </div>
     )

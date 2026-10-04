@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { mathSetUnit } from './set/setLesson'
-import { mathTextbookTopicForUnit, mathTextbookTopics } from './mathCatalog'
+import { mathTextbookNextUnitId, mathTextbookTopicForUnit, mathTextbookTopicHasAllUnits, mathTextbookTopics } from './mathCatalog'
 import { mathTextbookUnits } from './index'
 
 describe('math textbook catalog', () => {
@@ -28,6 +28,23 @@ describe('math textbook catalog', () => {
     expect(mathTextbookTopics[2].unitIds).toEqual(['math-propositions-proof'])
   })
 
+
+  it('requires every configured unit before a multi-unit learner topic can open', () => {
+    expect(mathTextbookTopicHasAllUnits('organize-sets', ['math-sets'])).toBe(true)
+    expect(mathTextbookTopicHasAllUnits('read-propositions', ['math-propositions-reading'])).toBe(false)
+    expect(
+      mathTextbookTopicHasAllUnits('read-propositions', [
+        'math-propositions-reading',
+        'math-quantifiers-all-exists',
+      ]),
+    ).toBe(true)
+  })
+
+  it('keeps continuation inside a multi-unit learner topic', () => {
+    expect(mathTextbookNextUnitId('math-propositions-reading')).toBe('math-quantifiers-all-exists')
+    expect(mathTextbookNextUnitId('math-quantifiers-all-exists')).toBeUndefined()
+    expect(mathTextbookNextUnitId('math-propositions-proof')).toBeUndefined()
+  })
 
   it('keeps practice synchronization metadata internal without forcing practice taxonomy onto learner topics', () => {
     expect(mathTextbookTopics[1].practiceLinks).toEqual([

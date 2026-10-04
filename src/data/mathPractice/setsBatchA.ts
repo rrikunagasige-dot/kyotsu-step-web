@@ -440,6 +440,10 @@ export const mathPracticeSetsBatchASource: MathPracticeSourceQuestion[] = [
 
       { type: 'content', blocks: [{ type: 'text', text: '(2) まず共通要素があるかを確認する。' }] },
       { type: 'blank', blankId: 'p2-common' },
+      { type: 'content', blocks: [
+        { type: 'text', text: '共通要素がないので、(2) の共通部分は空集合である。' },
+        { type: 'latex', latex: 'A\\cap B=\\varnothing' },
+      ] },
       { type: 'blank', blankId: 'p2-union' },
 
       { type: 'content', blocks: [{ type: 'text', text: '(3) 要素を列挙できないので、不等式の範囲そのものを比べる。' }] },

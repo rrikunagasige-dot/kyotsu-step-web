@@ -13,7 +13,7 @@ import { useI18n } from '../i18n/runtime'
 import { normalizeTextbookMath } from '../domain/textbookMath'
 import { chapter1ChunkForUnitCode, chapter1Localized, chapter1NextUnit } from '../data/textbook/ch01/chapter1Architecture'
 
-function interactionPrompt(item: TextbookItem, text: (ja: string, zh: string) => string) {
+function interactionPrompt(item: TextbookItem, text: (ja: string, zh: string) => string, subject: TextbookUnit['subject']) {
   switch (item.purpose) {
     case 'concept-formation': return text('図や本文から意味を考えよう。', '根据图和正文思考含义。')
     case 'representation-link': return text('図・言葉・式のつながりを考えよう。', '思考图、文字和公式之间的联系。')
@@ -25,7 +25,9 @@ function interactionPrompt(item: TextbookItem, text: (ja: string, zh: string) =>
     case 'graph-reading': return text('グラフが表している物理量を読もう。', '读取图像所表示的物理量。')
     case 'elimination': return text('どの関係を使って変数を消すか考えよう。', '思考用哪个关系消去变量。')
     case 'factorization': return text('次の式変形の意味を考えよう。', '思考下一步式变形的意义。')
-    case 'causal-reasoning': return text('変化の因果関係をたどろう。', '沿着变化的因果关系思考。')
+    case 'causal-reasoning': return subject === 'math-1a'
+      ? text('条件や理由のつながりをたどろう。', '沿着条件与理由的联系思考。')
+      : text('変化の因果関係をたどろう。', '沿着变化的因果关系思考。')
     default: return item.prompt
   }
 }
@@ -172,7 +174,7 @@ function TextbookReadingFlow({ unit, section, progress }: {
     return (
       <div className="reading-inline-choice-panel" data-testid={`inline-choice-panel-${activeItem.id}`}>
         <div className="reading-inline-choice-panel__head">
-          <span>{interactionPrompt(activeItem, text)}</span>
+          <span>{interactionPrompt(activeItem, text, unit.subject)}</span>
         </div>
         {activeHint && (
           <div className="reading-choice-hint" data-testid={`textbook-hint-${activeItem.id}`}>
@@ -180,7 +182,7 @@ function TextbookReadingFlow({ unit, section, progress }: {
             <span>{activeHint}</span>
           </div>
         )}
-        <div className="reading-choice-options" role="group" aria-label={interactionPrompt(activeItem, text)}>
+        <div className="reading-choice-options" role="group" aria-label={interactionPrompt(activeItem, text, unit.subject)}>
           {activeChoices.map((choice, index) => (
             <button
               type="button"

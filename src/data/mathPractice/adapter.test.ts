@@ -633,7 +633,7 @@ describe('math practice 87-120 staged integration', () => {
 
     expect(prompt(88, 'p2-step')).toContain('正奇数')
     expect(prompt(89, 'subset-rule')).toContain('子集')
-    expect(prompt(90, 'p2-zero-product')).toContain('乘积')
+    expect(prompt(90, 'p2-zero-product')).toContain('(x-2)(x-5)=0')
     expect(prompt(91, 'p2-range')).toContain('元素')
     expect(prompt(92, 'p2-common')).toContain('公共元素')
     expect(prompt(93, 'p1-meaning')).toContain('A∩B∩C')

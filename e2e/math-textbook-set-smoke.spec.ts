@@ -225,6 +225,23 @@ test('proposition-reading follows the textbook order from truth to necessary/suf
     'aria-label',
     /否定/,
   )
+
+  const negationAnswers: Array<[string, string]> = [
+    ['prop-c01', 'n\\ge2'],
+    ['prop-c02', '2は合成数ではない'],
+    ['prop-c03', 'a\\ge0\\text{ または }b\\le0'],
+    ['prop-c04', '-1<x<3'],
+  ]
+  for (const [itemId, answer] of negationAnswers) await answerItem(page, itemId, answer)
+
+  await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
+  await expect(page.locator('.katex-error')).toHaveCount(0)
+
+  const viewport = await page.evaluate(() => ({
+    clientWidth: document.documentElement.clientWidth,
+    scrollWidth: document.documentElement.scrollWidth,
+  }))
+  expect(viewport.scrollWidth).toBeLessThanOrEqual(viewport.clientWidth + 1)
 })
 
 test('proposition-reading counterexample is decided before the counterexample concept is named', async ({ page }) => {

@@ -1,6 +1,6 @@
 # MATH LEARNING MODE — RESTORATION IMPLEMENTATION PLAN 2026-10-04
 
-Status: **READY TO IMPLEMENT**
+Status: **IMPLEMENTED / AUTOMATED VALIDATION PASS / USER HANDS-ON PENDING**
 
 Scope:
 - math learning mode only
@@ -295,3 +295,28 @@ Only after user hands-on approval:
 - remove temporary QA deploy branch trigger
 - update PR
 - merge only if explicitly requested
+
+
+---
+
+# 9. Implementation result
+
+Validated code head: `9ef3111792d5660931b4b2b35ffb89281a92c7ad`
+
+Implemented exactly from the frozen restoration design:
+- proposition-reading: 18 → 14 interactions, revision 1 → 2
+- quantifier: 13 → 11 interactions, revision 3 → 4
+- proof: 23 interactions retained, revision 2 → 3
+- total: 54 → 48 interactions
+
+Source examples were retained. The restoration changed role/order/topology, not the textbook source scope.
+
+Validation result:
+- Math textbook mode CI: PASS
+- Math practice pilot CI: PASS
+- review status preserved for all 3 units
+
+Next step:
+- deploy the validated review branch to QA Pages
+- user hands-on QA
+- only then consider review → published

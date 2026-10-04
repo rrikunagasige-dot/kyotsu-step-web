@@ -87,7 +87,9 @@ test('99 draws set ranges only after the learner derives the compared sets', asy
   await expect(page.locator('[data-testid^="math-practice-figure-F99"]')).toHaveCount(0)
   await page.getByTestId('blank-math-practice-099-p2-sets').click()
   await page.getByTestId('option-math-practice-099-p2-sets-correct').click()
-  await expect(page.getByTestId('math-practice-figure-F99-2')).toBeVisible()
+  const f99p2 = page.getByTestId('math-practice-figure-F99-2')
+  await expect(f99p2).toBeVisible()
+  await expect(f99p2).not.toContainText('x=0')
 
   const dimensions = await page.evaluate(() => ({ viewport: window.innerWidth, page: document.documentElement.scrollWidth }))
   expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
@@ -497,10 +499,12 @@ test('118 updates the function correspondence figure without leaking non-uniquen
 
   await page.getByTestId('blank-math-practice-118-p2-roots').click()
   await page.getByTestId('option-math-practice-118-p2-roots-plus-minus').click()
-  await expect(page.getByTestId('math-practice-figure-F118-2B')).toBeVisible()
+  await expect(page.getByTestId('math-practice-figure-F118-2A')).toBeVisible()
+  await expect(page.getByTestId('math-practice-figure-F118-2B')).toHaveCount(0)
 
   await page.getByTestId('blank-math-practice-118-p2-count').click()
   await page.getByTestId('option-math-practice-118-p2-count-two').click()
+  await expect(page.getByTestId('math-practice-figure-F118-2B')).toBeVisible()
   await page.getByTestId('blank-math-practice-118-p2-judgment').click()
   await page.getByTestId('option-math-practice-118-p2-judgment-not-function').click()
 

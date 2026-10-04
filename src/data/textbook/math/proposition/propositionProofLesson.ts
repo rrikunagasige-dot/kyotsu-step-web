@@ -496,7 +496,7 @@ const rawMathPropositionProofUnit = {
           choices: ['n=6', 'n=12', 'n=24'],
           purpose: 'transfer' as const,
           scaffoldLevel: 'light' as const,
-          hints: ['6の倍数だが12の倍数ではない整数を探す。', '逆と裏の前件をそれぞれ満たし、後件を破る同じ整数がないか試す。'],
+          hints: ['逆と裏で、前件を満たしながら後件を破る同じ整数を探そう。', '6の倍数だが12の倍数ではない整数を選べばよい。'],
         },
         {
           id: 'proof-a08',
@@ -520,7 +520,7 @@ const rawMathPropositionProofUnit = {
           choices: ['対偶', '元の命題'],
           purpose: 'solution-planning' as const,
           scaffoldLevel: 'strong' as const,
-          hints: ['「3の倍数でない整数」は余り1または2と書きやすい。', '証明しやすい向きを選ぶ。'],
+          hints: ['元の命題と向きを変えた命題のうち、余りによる場合分けを直接使いやすい方を考える。', '「3の倍数でない整数」なら、余りを1または2の2場合に分けられる。'],
         },
         {
           id: 'proof-b01',

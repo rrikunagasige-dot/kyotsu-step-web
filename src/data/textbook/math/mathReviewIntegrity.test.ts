@@ -60,6 +60,37 @@ describe('math textbook review integrity', () => {
     }
   })
 
+
+  it('keeps learner-facing review copy free of practice-mode and source-problem numbering', () => {
+    for (const unit of mathTextbookUnits.filter((candidate) => candidate.status === 'review')) {
+      const learnerCopy = [
+        unit.title,
+        unit.subtitle ?? '',
+        ...unit.objectives,
+        ...unit.sections.flatMap((section) => [
+          section.title,
+          section.description ?? '',
+          ...section.figures.flatMap((figure) => [figure.alt, figure.caption ?? '']),
+          ...section.readingFlow.flatMap((block) => {
+            if (block.type === 'heading') return [block.text]
+            if (block.type === 'paragraph' || block.type === 'formula') {
+              return block.parts
+                .filter((part) => part.type === 'text')
+                .map((part) => part.text)
+            }
+            return []
+          }),
+          ...section.items.flatMap((item) => [item.prompt, ...item.hints]),
+        ]),
+      ].join('\n')
+
+      expect(
+        learnerCopy,
+        `${unit.unitId}: learner copy leaked practice/source numbering`,
+      ).not.toMatch(/練習モード|MATH_PRACTICE|practice\s*\d|問\d/iu)
+    }
+  })
+
   it('keeps support fading from strong toward medium/light in every review unit', () => {
     for (const unit of mathTextbookUnits.filter((candidate) => candidate.status === 'review')) {
       const items = unit.sections.flatMap((section) => section.items)

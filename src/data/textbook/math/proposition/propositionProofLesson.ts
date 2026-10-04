@@ -668,7 +668,7 @@ const rawMathPropositionProofUnit = {
           choices: ['y=0', 'y=1', 'y=-1'],
           purpose: 'transfer' as const,
           scaffoldLevel: 'light' as const,
-          hints: ['√3y=0になる。', '√3は0ではない。'],
+          hints: ['左辺は0でない定数√3とyの積になっている。', '√3は0ではないので、積が0になるにはyがどうなるか考える。'],
         },
       ],
     },

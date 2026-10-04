@@ -42,7 +42,7 @@ export const mathPracticeSetsBatchASource: MathPracticeSourceQuestion[] = [
 
       { type: 'content', blocks: [{ type: 'text', text: '(4) n に 1,2,3,4 を代入して、最初の要素と並び方を読む。' }] },
       { type: 'blank', blankId: 'p4-sample' },
-      { type: 'blank', blankId: 'p4-pattern' },
+      { type: 'content', blocks: [{ type: 'text', text: '1,4,7,10,... は3ずつ増える。' }] },
       { type: 'blank', blankId: 'p4-result' },
     ],
     blanks: [
@@ -145,14 +145,6 @@ export const mathPracticeSetsBatchASource: MathPracticeSourceQuestion[] = [
         skillTag: 'calculation',
         knowledgeTags: ['sequence'],
         explanation: '3n-2 に n=1,2,3,4 を順に入れると 1,4,7,10 です。',
-      },
-      {
-        id: 'p4-pattern',
-        prompt: '1,4,7,10,... は毎回いくつ増えるか。',
-        choices: [choice('three', '3', true), choice('two', '2'), choice('four', '4')],
-        skillTag: 'calculation',
-        knowledgeTags: ['sequence'],
-        explanation: '隣り合う項の差は3です。',
       },
       {
         id: 'p4-result',

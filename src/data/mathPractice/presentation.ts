@@ -1450,7 +1450,7 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
     {
       id: 'basis',
       kicker: { ja: 'まず確認', zh: '先确认' },
-      label: { ja: '1つの入力に出力が何個かを見る', zh: '检查一个输入对应几个输出' },
+      label: { ja: '関数の判定基準を確認する', zh: '确认函数的判定标准' },
       blankIds: ['rule'],
       result: { blankId: 'rule', label: { ja: '関数の判定基準', zh: '函数判断标准' } },
     },

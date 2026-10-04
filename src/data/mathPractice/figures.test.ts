@@ -23,6 +23,12 @@ describe('math practice figure timing', () => {
     expect(mathPracticeFigureState('math-practice-104', 's6', r('p6-forward-property', 'p6-forward-judgment', 'p6-reverse-property'))).toBe('F104-6B')
   })
 
+  it('does not reveal both negative-product sign branches before 107 reverse-sign reasoning', () => {
+    expect(mathPracticeFigureState('math-practice-107', 's2', r())).toBeNull()
+    expect(mathPracticeFigureState('math-practice-107', 's2', r('p2-forward-sign', 'p2-forward-judgment'))).toBeNull()
+    expect(mathPracticeFigureState('math-practice-107', 's2', r('p2-forward-sign', 'p2-forward-judgment', 'p2-reverse-signs'))).toBe('F107-2A')
+  })
+
   it('progresses 107(5) through notation, branch evidence, and counterexamples', () => {
     expect(mathPracticeFigureState('math-practice-107', 's5', r())).toBe('F107-5A')
     expect(mathPracticeFigureState('math-practice-107', 's5', r('p5-branch-isosceles'))).toBe('F107-5B')

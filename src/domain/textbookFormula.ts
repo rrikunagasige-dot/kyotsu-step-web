@@ -32,7 +32,7 @@ export function buildTextbookFormulaLatex(
 ) {
   return parts.map((part) => {
     if (part.type === 'math') return part.latex
-    if (part.type === 'text') return `\\text{${escapeLatexText(part.text)}}`
+    if (part.type === 'text' || part.type === 'term') return `\\text{${escapeLatexText(part.text)}}`
 
     const item = section.items.find((candidate) => candidate.id === part.itemId)
     if (!item) return '\\boxed{?}'

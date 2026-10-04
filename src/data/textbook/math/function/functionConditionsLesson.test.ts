@@ -8,6 +8,22 @@ describe('math function-conditions textbook unit', () => {
     expect(mathFunctionConditionsUnit.chapter?.sourcePages).toEqual([46, 47])
   })
 
+
+  it('uses the textbook p.46-47 function formulas and rectangle condition', () => {
+    const flow = mathFunctionConditionsUnit.sections[0].readingFlow
+    const learnerText = flow
+      .filter((block) => block.type === 'paragraph' || block.type === 'formula')
+      .flatMap((block) => block.parts)
+      .map((part) => part.type === 'text' ? part.text : part.type === 'math' ? part.latex : '')
+      .join('\n')
+
+    expect(learnerText).toContain('y=4x-6')
+    expect(learnerText).toContain('f(x)=4x-6')
+    expect(learnerText).toContain('f(x)=x^2-1')
+    expect(learnerText).toContain('2(x+y)=40')
+    expect(learnerText).toContain('y=20-x')
+  })
+
   it('forms the function concept from one-input/one-output before naming it', () => {
     const flow = mathFunctionConditionsUnit.sections[0].readingFlow
     const decision = flow.findIndex(

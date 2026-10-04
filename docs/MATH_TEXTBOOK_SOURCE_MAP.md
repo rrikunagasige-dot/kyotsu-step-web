@@ -40,20 +40,6 @@
   - 先に「必ず成り立つか」を判断し、その後で p⇒q を命名する。
   - 偽は反例を先に見つけ、その後で「反例」という言葉を出す。
 
-### math-quantifiers-all-exists
-- status: review
-- source: 深進数学I p.100〜101 相当
-- practice topic: read-propositions
-- practice question: 109
-- flow:
-  1. 「ある」の主張を具体例で成立させる
-  2. 「ある」の否定
-  3. 「すべて」の主張を反例で崩す
-  4. 「すべて」の否定
-  5. 無理数・図形の元命題と否定を確認
-- source-backed principle:
-  - 量化の規則を先に暗記させず、反例 / witness を先に経験させる。
-
 ## 3. 命題を証明する
 
 ### math-propositions-proof
@@ -71,6 +57,21 @@
   - 前unitで扱った同値を重複して教え直さない。
   - 対偶は名前を知るだけで終わらず、実際に証明の入口として選ばせる。
   - 背理法は「否定を仮定 → 矛盾 → 仮定を退ける」の因果順を崩さない。
+
+### math-quantifiers-all-exists
+- status: review
+- source: 深進数学I p.100〜101 相当
+- learner topic: prove-propositions の末尾（固定3タイトルを保ちつつsource順を優先）
+- practice overlap: read-propositions / 109
+- flow:
+  1. 「ある」の主張を具体例で成立させる
+  2. 「ある」の否定
+  3. 「すべて」の主張を反例で崩す
+  4. 「すべて」の否定
+  5. 無理数・図形の元命題と否定を確認
+- source-backed principle:
+  - p.96〜98 の証明unitを終えた後、p.100〜101 の参考として扱う。
+  - 量化の規則を先に暗記させず、反例 / witness を先に経験させる。
 
 ## 4. 第2章・関数（将来の章として review）
 

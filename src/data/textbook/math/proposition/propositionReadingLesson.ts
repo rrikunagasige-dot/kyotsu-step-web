@@ -258,7 +258,7 @@ const rawMathPropositionReadingUnit = {
           id: 'paragraph-c-intro',
           type: 'paragraph' as const,
           parts: [
-            { type: 'text' as const, text: '最後に、条件が「成り立たない」とは何を意味するかを、元の条件が表す範囲の外側から考える。' },
+            { type: 'text' as const, text: '次に、条件が「成り立たない」とは何を意味するかを、元の条件が表す範囲の外側から考える。' },
           ],
         },
         {

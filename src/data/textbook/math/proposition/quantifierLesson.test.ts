@@ -4,6 +4,7 @@ import { mathQuantifierUnit } from './quantifierLesson'
 describe('math quantifier textbook unit', () => {
   it('keeps the source reference scope and original five-example order in review', () => {
     expect(mathQuantifierUnit.status).toBe('review')
+    expect(mathQuantifierUnit.revision).toBe(3)
     expect(mathQuantifierUnit.chapter?.sourcePages).toEqual([100, 101])
     expect(mathQuantifierUnit.chapter?.chapterId).toBe('math-ch03-sets-propositions')
 

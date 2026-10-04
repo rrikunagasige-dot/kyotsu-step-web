@@ -260,6 +260,9 @@ test('proposition-reading counterexample is decided before the counterexample co
     'aria-label',
     /反例/,
   )
+  await page.getByTestId('textbook-item-prop-a04').click()
+  await expect(page.getByTestId('inline-choice-panel-prop-a04')).toContainText('条件や理由のつながりをたどろう。')
+  await expect(page.getByTestId('inline-choice-panel-prop-a04')).not.toContainText('変化の因果関係をたどろう。')
   await answerItem(page, 'prop-a04', '偽')
   await expect(page.getByText(/このような例を反例という/)).toBeVisible()
   await expect(page.getByTestId('textbook-figure-implication-counterexample')).toBeVisible()

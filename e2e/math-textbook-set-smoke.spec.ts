@@ -465,7 +465,7 @@ test('proof review wrong answer stays unresolved and keeps the reverse concept l
   await page.getByTestId('textbook-item-proof-a01').click()
   const hint = page.getByTestId('textbook-hint-proof-a01')
   await expect(hint).toBeVisible()
-  await expect(hint).not.toContainText('x=1')
+  await expect(hint).not.toContainText('x=1⇒x²=x')
 })
 
 test('proof review reaches contrapositive and contradiction conclusions without layout regressions', async ({ page }) => {

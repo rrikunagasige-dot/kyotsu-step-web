@@ -282,7 +282,7 @@ const rawMathQuantifierUnit = {
           choices: ['1つ', 'すべての例'],
           purpose: 'concept-formation' as const,
           scaffoldLevel: 'medium' as const,
-          hints: ['「すべて成り立つ」という主張を崩したい。', '1つでも成り立たない例があれば「すべて」ではなくなる。'],
+          hints: ['「すべて成り立つ」という主張を崩したい。', '主張に当てはまらない具体例が見つかったとき、「すべて」と言い続けられるか考える。'],
         },
         {
           id: 'quant-c02',

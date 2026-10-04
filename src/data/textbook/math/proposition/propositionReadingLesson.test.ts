@@ -92,6 +92,16 @@ describe('math proposition-reading textbook unit', () => {
     expect(figureIndex).toBeGreaterThan(setDecisionIndex)
   })
 
+  it('does not present the chosen counterexample as the only possible real number', () => {
+    const learnerText = mathPropositionReadingUnit.sections[0].readingFlow
+      .filter((block) => block.type === 'paragraph')
+      .flatMap((block) => block.parts)
+      .filter((part) => part.type === 'text')
+      .map((part) => part.text)
+      .join('\n')
+    expect(learnerText).toContain('満たさない実数の一例は')
+  })
+
   it('lets a counterexample break the implication before teaching the term', () => {
     const flow = mathPropositionReadingUnit.sections[0].readingFlow
     const counterexampleDecisionIndex = flow.findIndex(

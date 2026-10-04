@@ -1450,35 +1450,33 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
     {
       id: 'basis',
       kicker: { ja: 'まず確認', zh: '先确认' },
-      label: { ja: '関数の判定基準を確認する', zh: '确认函数的判定标准' },
+      label: { ja: '1つの入力に出力が何個かを見る', zh: '检查一个输入对应几个输出' },
       blankIds: ['rule'],
-      result: {
-        blankId: 'rule',
-        label: { ja: '関数の判定基準', zh: '函数判定标准' },
-      },
+      result: { blankId: 'rule', label: { ja: '関数の判定基準', zh: '函数判断标准' } },
     },
     {
-      id: 'p1',
+      id: 's1',
       kicker: { ja: '今の問い｜(1)', zh: '当前问题｜(1)' },
-      label: { ja: '円周から半径が1つに決まるか', zh: '圆周长是否唯一决定半径' },
-      blankIds: ['p1'],
+      label: { ja: '円周と半径の対応を式から読む', zh: '由公式读取圆周与半径的对应' },
+      blankIds: ['p1-relation', 'p1-solve', 'p1-unique', 'p1-judgment'],
       dependsOn: ['basis'],
     },
     {
-      id: 'p2',
+      id: 's2',
       kicker: { ja: '今の問い｜(2)', zh: '当前问题｜(2)' },
-      label: { ja: '同じxに2つの平方根が対応するか', zh: '同一个x是否对应两个平方根' },
-      blankIds: ['p2'],
+      label: { ja: '具体的な入力で平方根を全部出す', zh: '用具体输入列出全部平方根' },
+      blankIds: ['p2-sample', 'p2-roots', 'p2-count', 'p2-judgment'],
       dependsOn: ['basis'],
     },
     {
-      id: 'p3',
+      id: 's3',
       kicker: { ja: '今の問い｜(3)', zh: '当前问题｜(3)' },
-      label: { ja: '面積1の条件から横の長さが1つに決まるか', zh: '由面积为1判断横边是否唯一' },
-      blankIds: ['p3'],
+      label: { ja: '面積条件からxとyの対応を読む', zh: '由面积条件读取x与y的对应' },
+      blankIds: ['p3-area', 'p3-solve', 'p3-domain', 'p3-unique', 'p3-judgment'],
       dependsOn: ['basis'],
     },
   ],
+
   'math-practice-119': [
     {
       id: 'basis',

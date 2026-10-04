@@ -5,12 +5,13 @@ import { mathQuantifierUnit } from './quantifierLesson'
 describe('math quantifier textbook unit', () => {
   it('keeps the source reference scope and original five-example order in review', () => {
     expect(mathQuantifierUnit.status).toBe('review')
-    expect(mathQuantifierUnit.revision).toBe(3)
+    expect(mathQuantifierUnit.revision).toBe(4)
     expect(mathQuantifierUnit.chapter?.sourcePages).toEqual([100, 101])
     expect(mathQuantifierUnit.chapter?.chapterId).toBe('math-ch03-sets-propositions')
 
-    const flow = mathQuantifierUnit.sections[0].readingFlow
-    const firstIndexes = ['quant-a01', 'quant-b01', 'quant-c01', 'quant-d01', 'quant-e01'].map(
+    const section = mathQuantifierUnit.sections[0]
+    const flow = section.readingFlow
+    const firstIndexes = ['quant-a02', 'quant-b01', 'quant-c02', 'quant-d01', 'quant-e01'].map(
       (itemId) => flow.findIndex(
         (block) => block.type === 'paragraph' && block.parts.some(
           (part) => part.type === 'choice' && part.itemId === itemId,
@@ -19,6 +20,9 @@ describe('math quantifier textbook unit', () => {
     )
     expect(firstIndexes.every((index) => index >= 0)).toBe(true)
     expect(firstIndexes).toEqual([...firstIndexes].sort((a, b) => a - b))
+    expect(section.items).toHaveLength(11)
+    expect(section.items.some((item) => item.id === 'quant-a01')).toBe(false)
+    expect(section.items.some((item) => item.id === 'quant-c01')).toBe(false)
   })
 
 
@@ -55,8 +59,14 @@ describe('math quantifier textbook unit', () => {
         (part) => part.type === 'text' && part.text.includes('「あるxに対してpである」の否定は'),
       ),
     )
+    const witnessMeaningIndex = flow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'text' && part.text.includes('条件を満たす例を1つ見つければ真だと示せる'),
+      ),
+    )
     expect(witnessIndex).toBeGreaterThanOrEqual(0)
-    expect(negationDecisionIndex).toBeGreaterThan(witnessIndex)
+    expect(witnessMeaningIndex).toBeGreaterThan(witnessIndex)
+    expect(negationDecisionIndex).toBeGreaterThan(witnessMeaningIndex)
     expect(ruleIndex).toBeGreaterThan(negationDecisionIndex)
   })
 
@@ -77,8 +87,14 @@ describe('math quantifier textbook unit', () => {
         (part) => part.type === 'text' && part.text.includes('「すべてのxに対してpである」の否定は'),
       ),
     )
+    const oneCounterexampleMeaningIndex = flow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'text' && part.text.includes('例外を1つ許しただけで崩れる'),
+      ),
+    )
     expect(counterexampleIndex).toBeGreaterThanOrEqual(0)
-    expect(negationDecisionIndex).toBeGreaterThan(counterexampleIndex)
+    expect(oneCounterexampleMeaningIndex).toBeGreaterThan(counterexampleIndex)
+    expect(negationDecisionIndex).toBeGreaterThan(oneCounterexampleMeaningIndex)
     expect(ruleIndex).toBeGreaterThan(negationDecisionIndex)
   })
 
@@ -174,6 +190,21 @@ describe('math quantifier textbook unit', () => {
         .join('')
       expect(textBefore).not.toContain('どの2つの無理数を選んでも')
     }
+  })
+
+  it('does not ask the existential/universal rule before the concrete experience', () => {
+    const section = mathQuantifierUnit.sections[0]
+    const flowText = section.readingFlow
+      .filter((block) => block.type === 'paragraph')
+      .flatMap((block) => block.parts)
+      .filter((part) => part.type === 'text')
+      .map((part) => part.text)
+      .join('\n')
+
+    expect(section.items.some((item) => item.id === 'quant-a01')).toBe(false)
+    expect(section.items.some((item) => item.id === 'quant-c01')).toBe(false)
+    expect(flowText).toContain('この1組だけで')
+    expect(flowText).toContain('反例が1つ見つかったので')
   })
 
   it('keeps universal-negation hints staged from idea to concrete sentence shape', () => {

@@ -313,6 +313,8 @@ Validated code head:
 - all textbook internal gates success
 
 Current action:
-- temporarily deploy this QA branch to GitHub Pages
+- GitHub Pages build/upload succeeded but branch deploy was blocked by the repository Pages environment before runner allocation
+- reverted the temporary branch Pages trigger
+- use the successful build artifact as a local QA package
 - user hands-on QA next
 - PR #31 remains Draft / unmerged

@@ -108,11 +108,13 @@ User hands-on 前の assistant-side deep audit を、3 review unit 全54穴に�
    - `mathFigureAssets.test.ts` checks SVG presence/structure, counterexample-point geometry, and equal diagonals.
    - Existing stale grouping test was corrected to group only `status: published` units.
 
-## Temporary QA deployment
+## QA delivery
 
-- review branch `chatgpt/math-textbook-sets-v1` is temporarily allowed to deploy to GitHub Pages for user hands-on QA.
+- GitHub Pages branch deployment was attempted from `chatgpt/math-textbook-sets-v1`.
+- Pages build / browser smoke / artifact upload succeeded, but the deploy job was rejected before runner allocation by the repository's `github-pages` environment policy.
+- the temporary branch trigger was removed immediately; main-only Pages deployment remains intact.
+- the successful Pages build artifact is used instead as a local QA package.
 - review units remain `status: review` and stay hidden from the normal setup.
-- remove the temporary Pages branch trigger before merge.
 
 ## 2026-10-04 MASTER restoration checkpoint
 
@@ -260,6 +262,6 @@ Validated code head before QA-deployment-only commit:
 - Textbook CI internal gates: Typecheck / unit tests / Build / mobile / desktop / Physics regression / Math practice setup regression = **all success**
 
 Next gate:
-- temporary GitHub Pages deployment from `chatgpt/math-textbook-sets-v1`
+- local QA package from the successful GitHub Actions build artifact
 - user hands-on comparison against the golden Word mother
 - do not merge PR #31 or promote review units before user confirmation

@@ -96,7 +96,7 @@ export function mathPracticeFigureState(
 
     case 'math-practice-107':
       if (targetId === 's2') {
-        return has(resolved, 'p2-forward-judgment') ? 'F107-2A' : null
+        return has(resolved, 'p2-reverse-signs') ? 'F107-2A' : null
       }
       if (targetId === 's4') {
         return has(resolved, 'p4-counterexample-angles') ? 'F107-4B' : 'F107-4A'

@@ -21,7 +21,7 @@ describe('math textbook catalog', () => {
     ])
     expect(mathTextbookTopics.map((topic) => topic.practiceRange)).toEqual([
       [87, 97],
-      [98, 109],
+      [98, 107],
       [108, 117],
     ])
     expect(mathTextbookTopics[0].unitIds).toEqual(['math-sets'])

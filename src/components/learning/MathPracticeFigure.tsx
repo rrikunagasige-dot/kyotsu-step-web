@@ -223,7 +223,7 @@ function TriangleFigure({ id, text }: { id: MathPracticeFigureId; text: Localize
   if (id === 'F98-2A' || id === 'F98-2B') {
     const example = id === 'F98-2B'
     return (
-      <FigureFrame id={id} title={text(example ? '二等辺だが3辺は同じとは限らない' : '二等辺三角形の条件を図で確認', example ? '等腰但三边不一定相等' : '用图确认等腰三角形条件')}>
+      <FigureFrame id={id} title={text(example ? '辺長 5, 5, 6 の三角形を確認する' : '二等辺三角形の条件を図で確認', example ? '确认边长为 5、5、6 的三角形' : '用图确认等腰三角形条件')}>
         <path d="M 75 150 L 180 35 L 285 150 Z" className="mpf-shape" />
         <line x1="122" y1="91" x2="133" y2="101" className="mpf-tick" />
         <line x1="227" y1="101" x2="238" y2="91" className="mpf-tick" />
@@ -237,7 +237,7 @@ function TriangleFigure({ id, text }: { id: MathPracticeFigureId; text: Localize
   if (id === 'F107-4A' || id === 'F107-4B') {
     const counter = id === 'F107-4B'
     return (
-      <FigureFrame id={id} title={text(counter ? '1つの角が鋭角でも全体は決まらない' : '∠A と三角形全体を分けて見る', counter ? '一个角为锐角也不能决定整体' : '区分∠A与整个三角形')}>
+      <FigureFrame id={id} title={text(counter ? '選んだ3つの角を図で確認する' : '∠A と三角形全体を分けて見る', counter ? '用图确认选出的三个角' : '区分∠A与整个三角形')}>
         <path d="M 58 148 L 260 148 L 180 42 Z" className="mpf-shape" />
         <text x="44" y="157" className="mpf-label mpf-label--strong">A</text>
         <text x="270" y="157" className="mpf-label mpf-label--strong">B</text>
@@ -282,8 +282,8 @@ function TriangleFigure({ id, text }: { id: MathPracticeFigureId; text: Localize
     const reverse = state === 'E'
     return (
       <FigureFrame id={id} title={text(
-        reverse ? '直角の位置を変えた具体例' : equilateral ? 'a=b だけを満たす具体例' : '辺 a,b,c と2つの枝を図で読む',
-        reverse ? '改变直角位置的具体例' : equilateral ? '只满足 a=b 的具体例' : '用图读取边 a,b,c 与两个分支',
+        reverse ? '直角の位置を変えた具体例' : equilateral ? '選んだ正三角形の辺を確認する' : '辺 a,b,c と2つの枝を図で読む',
+        reverse ? '改变直角位置的具体例' : equilateral ? '确认所选正三角形的边' : '用图读取边 a,b,c 与两个分支',
       )}>
         <path d={reverse ? 'M 78 150 L 78 55 L 250 150 Z' : 'M 72 150 L 180 42 L 288 150 Z'} className="mpf-shape" />
         {reverse ? (
@@ -355,7 +355,7 @@ function RhombusFigure({ id, text }: { id: MathPracticeFigureId; text: Localize 
   if (id !== 'F104-6A' && id !== 'F104-6B') return null
   const square = id === 'F104-6B'
   return (
-    <FigureFrame id={id} title={text(square ? '正方形なら4辺はすべて等しい' : 'ひし形でも直角とは限らない', square ? '正方形四边都相等' : '菱形也不一定有直角')}>
+    <FigureFrame id={id} title={text(square ? '正方形の辺と角を図で確認する' : 'ひし形の辺と角を図で確認する', square ? '用图确认正方形的边与角' : '用图确认菱形的边与角')}>
       {square ? (
         <>
           <rect x="105" y="42" width="150" height="110" className="mpf-shape" />
@@ -484,18 +484,29 @@ function FunctionFigure({ id, text }: { id: MathPracticeFigureId; text: Localize
       </FigureFrame>
     )
   }
-  if (id === 'F118-2A' || id === 'F118-2B') {
-    const solved = id === 'F118-2B'
+  if (id === 'F118-2A') {
     return (
-      <FigureFrame id={id} title={text(solved ? '同じ x=4 に2つの出力' : 'x=4 の出力を探す', solved ? '同一个 x=4 对应两个输出' : '寻找 x=4 的输出')}>
+      <FigureFrame id={id} title={text('x=4 で平方根の条件を確認する', '在 x=4 时确认平方根条件')}>
+        <rect x="55" y="68" width="86" height="56" rx="10" className="mpf-card" />
+        <text x="98" y="102" textAnchor="middle" className="mpf-label mpf-label--strong">x=4</text>
+        <line x1="141" y1="96" x2="218" y2="96" className="mpf-line" />
+        <path d="M 218 96 l -9 -5 v 10 z" className="mpf-arrow" />
+        <rect x="220" y="68" width="90" height="56" rx="10" className="mpf-card" />
+        <text x="265" y="102" textAnchor="middle" className="mpf-label mpf-label--strong">y²=4</text>
+      </FigureFrame>
+    )
+  }
+  if (id === 'F118-2B') {
+    return (
+      <FigureFrame id={id} title={text('x=4 に対応する値を並べる', '排列与 x=4 对应的值')}>
         <rect x="48" y="70" width="82" height="54" rx="10" className="mpf-card" />
         <text x="89" y="103" textAnchor="middle" className="mpf-label mpf-label--strong">x=4</text>
         <line x1="130" y1="87" x2="228" y2="60" className="mpf-line" />
         <line x1="130" y1="107" x2="228" y2="134" className="mpf-line" />
         <rect x="230" y="37" width="78" height="46" rx="8" className="mpf-card" />
         <rect x="230" y="111" width="78" height="46" rx="8" className="mpf-card" />
-        <text x="269" y="66" textAnchor="middle" className="mpf-label mpf-label--strong">{solved ? 'y=2' : 'y=?'}</text>
-        <text x="269" y="140" textAnchor="middle" className="mpf-label mpf-label--strong">{solved ? 'y=-2' : 'y=?'}</text>
+        <text x="269" y="66" textAnchor="middle" className="mpf-label mpf-label--strong">y=2</text>
+        <text x="269" y="140" textAnchor="middle" className="mpf-label mpf-label--strong">y=-2</text>
       </FigureFrame>
     )
   }
@@ -544,9 +555,7 @@ function RouteFigure({ id, text }: { id: MathPracticeFigureId; text: Localize })
         <>
           <text x="54" y="62" textAnchor="middle" className="mpf-label mpf-label--strong">x=0</text>
           <text x="306" y="62" textAnchor="middle" className="mpf-label mpf-label--strong">x=5</text>
-          <line x1="54" y1="160" x2="306" y2="160" className="mpf-line" />
-          <Dot x={54} y={160} />
-          <Dot x={306} y={160} />
+          <text x="180" y="158" textAnchor="middle" className="mpf-muted">{text('2つの端点から範囲を考える', '由两个端点思考范围')}</text>
         </>
       )}
     </FigureFrame>

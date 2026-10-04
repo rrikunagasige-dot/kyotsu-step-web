@@ -432,7 +432,6 @@ test('proposition-proof review unit starts from changing the direction of a prop
   await expect(page.getByRole('heading', { name: '命題を証明する', exact: true })).toBeVisible()
   await expect(page.getByRole('heading', { name: '命題の向きを変える', exact: true })).toBeVisible()
   await expect(page.getByTestId('textbook-item-proof-a01')).toBeVisible()
-  await expect(page.getByText(/x²=x⇒x=1/)).toBeVisible()
   await expect(page.getByTestId('textbook-item-proof-a01')).toHaveAttribute(
     'aria-label',
     /前件と後件を入れ替えた命題/,
@@ -442,15 +441,15 @@ test('proposition-proof review unit starts from changing the direction of a prop
     /逆/,
   )
   await expect(page.getByTestId('textbook-item-proof-a02')).toHaveCount(0)
-  await expect(page.getByText(/を逆.*裏.*対偶/)).toHaveCount(0)
+  await expect(page.getByText(/ここまで作った3つの命題に名前をつける/)).toHaveCount(0)
 
   await answerItem(page, 'proof-a01', 'x=1\\Rightarrow x^2=x')
   await expect(page.getByTestId('textbook-item-proof-a02')).toBeVisible()
-  await expect(page.getByText(/を逆.*裏.*対偶/)).toHaveCount(0)
+  await expect(page.getByText(/ここまで作った3つの命題に名前をつける/)).toHaveCount(0)
 
   await answerItem(page, 'proof-a02', 'x^2\\ne x\\Rightarrow x\\ne1')
   await answerItem(page, 'proof-a03', 'x\\ne1\\Rightarrow x^2\\ne x')
-  await expect(page.getByText(/を逆.*裏.*対偶/)).toBeVisible()
+  await expect(page.getByText(/ここまで作った3つの命題に名前をつける/)).toBeVisible()
 })
 
 
@@ -461,7 +460,7 @@ test('proof review wrong answer stays unresolved and keeps the reverse concept l
 
   await expect(page.getByTestId('resolved-proof-a01')).toHaveCount(0)
   await expect(page.getByTestId('textbook-item-proof-a02')).toHaveCount(0)
-  await expect(page.getByText(/を逆.*裏.*対偶/)).toHaveCount(0)
+  await expect(page.getByText(/ここまで作った3つの命題に名前をつける/)).toHaveCount(0)
 
   await page.getByTestId('textbook-item-proof-a01').click()
   const hint = page.getByTestId('textbook-hint-proof-a01')

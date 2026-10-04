@@ -2,7 +2,9 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: ['main']
+    branches:
+      - 'main'
+      - 'chatgpt/math-textbook-sets-v1'
   workflow_dispatch:
 
 permissions:

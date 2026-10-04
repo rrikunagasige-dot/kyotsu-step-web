@@ -226,7 +226,7 @@ const rawMathQuantifierUnit = {
           choices: ['a=2, b=3', 'a=3, b=5', 'a=5, b=7'],
           purpose: 'transfer' as const,
           scaffoldLevel: 'strong' as const,
-          hints: ['積を偶数にするには少なくとも一方が偶数ならよい。', '偶数の素数を使う。'],
+          hints: ['積を偶数にするには少なくとも一方が偶数ならよい。', '素数の中に偶数があるかを思い出し、その数を組に入れる。'],
         },
         {
           id: 'quant-a03',
@@ -270,7 +270,7 @@ const rawMathQuantifierUnit = {
           ],
           purpose: 'transfer' as const,
           scaffoldLevel: 'medium' as const,
-          hints: ['「ある」を「すべて」に変える。', '等式x²=-1も否定する。'],
+          hints: ['そのような実数が1つも存在しない、という内容を文にする。', '任意の実数を選んだとき、元の等式が成り立たない言い方を考える。'],
         },
         {
           id: 'quant-c01',
@@ -306,7 +306,7 @@ const rawMathQuantifierUnit = {
           choices: ['ある素数は偶数である', 'すべての素数は偶数である'],
           purpose: 'representation-link' as const,
           scaffoldLevel: 'medium' as const,
-          hints: ['「すべて」の否定では「ある」に変わる。', '素数について「奇数ではない」は「偶数である」と言い換えられる。'],
+          hints: ['元の主張を崩した反例2を、そのまま否定の文へ使う。', '「全部が奇数」ではない状況を、存在する素数について表す。'],
         },
         {
           id: 'quant-d01',
@@ -330,7 +330,7 @@ const rawMathQuantifierUnit = {
           choices: ['4', '2', '\\sqrt{10}'],
           purpose: 'transfer' as const,
           scaffoldLevel: 'light' as const,
-          hints: ['根号の積をまとめる。', '√2×√8=√16。'],
+          hints: ['根号の積をまとめる。', '根号の中で2×8を計算してから、平方根を求める。'],
         },
         {
           id: 'quant-d03',
@@ -346,7 +346,7 @@ const rawMathQuantifierUnit = {
           ],
           purpose: 'transfer' as const,
           scaffoldLevel: 'light' as const,
-          hints: ['「すべて」の否定は「ある」。', '「無理数である」の否定は、この場面では「有理数である」。'],
+          hints: ['反例として選んだ2つの無理数が、元の主張をどう破ったかを見る。', '元の主張と反対になる積の性質を、存在する2数について述べる。'],
         },
         {
           id: 'quant-e01',

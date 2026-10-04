@@ -195,11 +195,13 @@ test('proposition-reading follows the textbook order from truth to necessary/suf
     ['prop-a03', '-1'],
     ['prop-a04', '偽'],
     ['prop-a05', '-3'],
-    ['prop-a06', '偽'],
     ['prop-a07', '直角二等辺三角形'],
-    ['prop-a08', '偽'],
   ]
   for (const [itemId, answer] of truthAnswers) await answerItem(page, itemId, answer)
+
+  await expect(page.getByTestId('textbook-item-prop-a06')).toHaveCount(0)
+  await expect(page.getByTestId('textbook-item-prop-a08')).toHaveCount(0)
+  await expect(page.getByText(/この命題は偽である/)).toBeVisible()
 
   await expect(page.getByRole('heading', { name: '2つの条件の関係を見る', exact: true })).toBeVisible()
   await expect(page.getByTestId('textbook-item-prop-b01')).toBeVisible()
@@ -212,12 +214,14 @@ test('proposition-reading follows the textbook order from truth to necessary/suf
 
   const relationAnswers: Array<[string, string]> = [
     ['prop-b02', '限らない'],
-    ['prop-b03', '必要条件'],
     ['prop-b04', '必要条件'],
     ['prop-b05', 'どちらも真'],
-    ['prop-b06', '必要十分条件'],
   ]
   for (const [itemId, answer] of relationAnswers) await answerItem(page, itemId, answer)
+
+  await expect(page.getByTestId('textbook-item-prop-b03')).toHaveCount(0)
+  await expect(page.getByTestId('textbook-item-prop-b06')).toHaveCount(0)
+  await expect(page.getByText(/必要十分条件であり、2つの条件は同値である/)).toBeVisible()
 
   await expect(page.getByRole('heading', { name: '成り立たない条件を考える', exact: true })).toBeVisible()
   await expect(page.getByTestId('textbook-item-prop-c01')).toBeVisible()

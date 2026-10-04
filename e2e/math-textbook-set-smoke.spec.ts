@@ -285,10 +285,10 @@ test('quantifier review unit derives the negation of exists only after an existe
   await page.goto(appRoute('/learning/textbook/math-quantifiers-all-exists'))
 
   await expect(page.getByRole('heading', { name: '「すべて」と「ある」', exact: true })).toBeVisible()
-  await expect(page.getByTestId('textbook-item-quant-a01')).toBeVisible()
+  await expect(page.getByTestId('textbook-item-quant-a01')).toHaveCount(0)
+  await expect(page.getByTestId('textbook-item-quant-a02')).toBeVisible()
   await expect(page.getByText(/「あるxに対してpである」の否定は/)).toHaveCount(0)
 
-  await answerItem(page, 'quant-a01', '1つ')
   await answerItem(page, 'quant-a02', 'a=2, b=3')
   await expect(page.getByText(/「あるxに対してpである」の否定は/)).toHaveCount(0)
 
@@ -299,16 +299,16 @@ test('quantifier review unit derives the negation of exists only after an existe
 test('quantifier review wrong answer stays unresolved and keeps the witness step locked', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-quantifiers-all-exists'))
 
-  await chooseWrongOption(page, 'quant-a01', '1つ')
+  await chooseWrongOption(page, 'quant-a02', 'a=2, b=3')
 
-  await expect(page.getByTestId('resolved-quant-a01')).toHaveCount(0)
-  await expect(page.getByTestId('textbook-item-quant-a02')).toHaveCount(0)
+  await expect(page.getByTestId('resolved-quant-a02')).toHaveCount(0)
+  await expect(page.getByTestId('textbook-item-quant-a03')).toHaveCount(0)
   await expect(page.getByText(/「あるxに対してpである」の否定は/)).toHaveCount(0)
 
-  await page.getByTestId('textbook-item-quant-a01').click()
-  const hint = page.getByTestId('textbook-hint-quant-a01')
+  await page.getByTestId('textbook-item-quant-a02').click()
+  const hint = page.getByTestId('textbook-hint-quant-a02')
   await expect(hint).toBeVisible()
-  await expect(hint).not.toContainText('1つ')
+  await expect(hint).not.toContainText('a=2, b=3')
 
   const viewport = page.viewportSize()
   if (viewport && viewport.width <= 640) {
@@ -322,12 +322,10 @@ test('quantifier review wrong answer stays unresolved and keeps the witness step
 test('quantifier review unit derives the negation of all only after the source counterexample', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-quantifiers-all-exists'))
 
-  await answerItem(page, 'quant-a01', '1つ')
   await answerItem(page, 'quant-a02', 'a=2, b=3')
   await answerItem(page, 'quant-a03', 'すべての素数の組(a,b)に対してabは奇数である')
   await answerItem(page, 'quant-b01', '存在しない')
   await answerItem(page, 'quant-b02', 'すべての実数xに対して x²≠-1')
-  await answerItem(page, 'quant-c01', '1つ')
 
   await expect(page.getByText(/「すべてのxに対してpである」の否定は/)).toHaveCount(0)
   await answerItem(page, 'quant-c02', '2')
@@ -340,12 +338,10 @@ test('quantifier review reaches all five source statements without layout regres
   await page.goto(appRoute('/learning/textbook/math-quantifiers-all-exists'))
 
   const answers: Array<[string, string]> = [
-    ['quant-a01', '1つ'],
     ['quant-a02', 'a=2, b=3'],
     ['quant-a03', 'すべての素数の組(a,b)に対してabは奇数である'],
     ['quant-b01', '存在しない'],
     ['quant-b02', 'すべての実数xに対して x²≠-1'],
-    ['quant-c01', '1つ'],
     ['quant-c02', '2'],
     ['quant-c03', 'ある素数は偶数である'],
     ['quant-d01', 'どの2つの無理数を選んでも'],

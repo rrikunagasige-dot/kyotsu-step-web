@@ -110,7 +110,6 @@ Checkpoint:
 - source → unit → learner flow の対応は `docs/MATH_TEXTBOOK_SOURCE_MAP.md` に分離して記録。
 
 - quantifier lesson は教科書 p.100〜101 の問1 (1)〜(5) の順序へ戻し、存在例 → 否定、反例 → 否定の順で概念化。
-- proposition-reading lesson は practice taxonomy に合わせ、真偽 → 条件の否定 → 必要条件・十分条件 の順へ修正。
 - 命題の判定基準（真偽が客観的に一意に定まるか）を具体例から作り、偽の文と非命題を区別。
 - 命題導入の leakage guard を再監査し、頂角40°の反例を穴より前に表示しない形へ修正。
 - function lesson は教科書 p.46〜47 の本文・問1・問2へ戻し、関数の定義 → f(a) → 2つの関数の代入 → 長方形から定義域・値域、の順に再構成。
@@ -118,6 +117,7 @@ Checkpoint:
 - 練習モードとの同期は内部 catalog/test に限定し、learner-facing 本文では問題番号を使わない。
 
 ## 2026-10-04 checkpoint
+- `math-propositions-reading`: source p.92〜95 を再監査し、真偽 → 必要条件・十分条件 → 条件の否定 の教科書順へ戻した。
 - `math-quantifiers-all-exists`: 教科書 p.100〜101 の5例と否定を固定testで監査済み。
 - `math-functions-conditions`: 教科書 p.46〜47 から再構築。長方形図を追加し、図には定義域・値域の答えを載せない。
 - `math-propositions-proof`: 対偶を使うか・矛盾の仮定をどう置くかを thinking node 化。見出しから戦略の答えが漏れないよう修正。

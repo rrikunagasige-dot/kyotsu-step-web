@@ -11,7 +11,7 @@ describe('math proposition-reading textbook unit', () => {
   })
 
 
-  it('defines the proposition criterion first, then completes the three practice-98 examples before implication', () => {
+  it('forms the proposition concept only after the three concrete judgments', () => {
     const flow = mathPropositionReadingUnit.sections[0].readingFlow
     const propositionConcept = flow.findIndex(
       (block) => block.type === 'paragraph' && block.parts.some(
@@ -31,9 +31,10 @@ describe('math proposition-reading textbook unit', () => {
     )
 
     expect(propositionConcept).toBeGreaterThanOrEqual(0)
-    expect(indexes.every((index) => index > propositionConcept)).toBe(true)
+    expect(indexes.every((index) => index >= 0 && index < propositionConcept)).toBe(true)
     expect(indexes).toEqual([...indexes].sort((a, b) => a - b))
-    expect(implicationDecision).toBeGreaterThan(indexes[indexes.length - 1])
+    expect(propositionConcept).toBeGreaterThan(indexes[indexes.length - 1])
+    expect(implicationDecision).toBeGreaterThan(propositionConcept)
   })
 
 

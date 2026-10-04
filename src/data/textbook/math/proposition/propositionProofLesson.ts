@@ -38,7 +38,7 @@ const rawMathPropositionProofUnit = {
         {
           id: 'heading-reverse',
           type: 'heading' as const,
-          text: '同値と命題の向きを整理する',
+          text: '2つの向きを比べる',
         },
         {
           id: 'formula-equivalence-example',

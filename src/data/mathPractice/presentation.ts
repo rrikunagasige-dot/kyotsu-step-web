@@ -749,7 +749,7 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
     {
       id: 's2',
       kicker: { ja: '今の問い｜(2)', zh: '当前问题｜(2)' },
-      label: { ja: '奇数をPの内外で読む', zh: '用P的内外表示奇数' },
+      label: { ja: '奇数の条件を集合 P で表す', zh: '用集合 P 表示奇数条件' },
       blankIds: ['p2-result'],
       dependsOn: ['basis'],
     },
@@ -941,7 +941,7 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
     {
       id: 'p2-converse',
       kicker: { ja: '今の問い｜(2) 逆', zh: '当前问题｜(2) 逆' },
-      label: { ja: '逆を作り、x=2で確かめる', zh: '写出逆命题并用x=2检查' },
+      label: { ja: '逆命題を作り、真偽を確かめる', zh: '写出逆命题并判断真假' },
       blankIds: ['p2-converse-form', 'p2-converse-evidence', 'p2-converse-judgment'],
       dependsOn: ['basis'],
       result: { blankId: 'p2-converse-judgment', label: { ja: '逆', zh: '逆命题' } },

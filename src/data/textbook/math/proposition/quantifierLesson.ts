@@ -3,7 +3,7 @@ import { validateTextbookUnits } from '../../../../domain/textbookSchema'
 const rawMathQuantifierUnit = {
   schemaVersion: '1.1' as const,
   unitId: 'math-quantifiers-all-exists',
-  revision: 3,
+  revision: 4,
   status: 'review' as const,
   subject: 'math-1a' as const,
   chapter: {
@@ -56,18 +56,16 @@ const rawMathQuantifierUnit = {
             { type: 'math' as const, latex: '(a,b)' },
             { type: 'text' as const, text: ' に対して、積 ' },
             { type: 'math' as const, latex: 'ab' },
-            { type: 'text' as const, text: ' は偶数である」。この命題を真にするには、条件を満たす素数の組を ' },
-            { type: 'choice' as const, itemId: 'quant-a01' },
-            { type: 'text' as const, text: ' 見つければよい。' },
+            { type: 'text' as const, text: ' は偶数である」。まず、この条件を実際に満たす素数の組を探す。使える例は ' },
+            { type: 'choice' as const, itemId: 'quant-a02' },
+            { type: 'text' as const, text: ' である。' },
           ],
         },
         {
           id: 'paragraph-q02',
           type: 'paragraph' as const,
           parts: [
-            { type: 'text' as const, text: '例えば ' },
-            { type: 'choice' as const, itemId: 'quant-a02' },
-            { type: 'text' as const, text: ' とすれば、どちらも素数で積は偶数になる。したがって元の命題は真である。' },
+            { type: 'text' as const, text: 'この1組だけで、どちらも素数で積が偶数になる例が実際に存在すると分かった。したがって「ある〜」という主張は、条件を満たす例を1つ見つければ真だと示せる。' },
           ],
         },
         {
@@ -114,18 +112,16 @@ const rawMathQuantifierUnit = {
           id: 'paragraph-q06',
           type: 'paragraph' as const,
           parts: [
-            { type: 'text' as const, text: '③「すべての素数は奇数である」。この命題を偽にするには、素数なのに奇数ではないものを ' },
-            { type: 'choice' as const, itemId: 'quant-c01' },
-            { type: 'text' as const, text: ' 見つければよい。' },
+            { type: 'text' as const, text: '③「すべての素数は奇数である」。前に学んだ反例の考え方を使い、素数なのに奇数ではないものを探す。その反例は ' },
+            { type: 'choice' as const, itemId: 'quant-c02' },
+            { type: 'text' as const, text: ' である。' },
           ],
         },
         {
           id: 'paragraph-q07',
           type: 'paragraph' as const,
           parts: [
-            { type: 'text' as const, text: 'その反例は ' },
-            { type: 'choice' as const, itemId: 'quant-c02' },
-            { type: 'text' as const, text: ' である。よって元の命題は偽である。' },
+            { type: 'text' as const, text: '反例が1つ見つかったので、「すべての素数は奇数である」という命題は偽である。「すべて」という主張は、例外を1つ許しただけで崩れる。' },
           ],
         },
         {
@@ -205,18 +201,6 @@ const rawMathQuantifierUnit = {
       ],
       items: [
         {
-          id: 'quant-a01',
-          label: 'QUANT-A01',
-          prompt: '「ある〜」という命題を真にするには、条件を満たす例を何個見つければよいか。',
-          answer: '1つ',
-          acceptedAnswers: ['1'],
-          answerType: 'text' as const,
-          choices: ['1つ', 'すべての例'],
-          purpose: 'concept-formation' as const,
-          scaffoldLevel: 'strong' as const,
-          hints: ['「ある」は、対象すべてについて成り立つことを求める言葉ではない。', '条件を満たす具体例を見つければ、存在することを示せる。'],
-        },
-        {
           id: 'quant-a02',
           label: 'QUANT-A02',
           prompt: '素数a,bで積abが偶数になる例を選ぼう。',
@@ -271,18 +255,6 @@ const rawMathQuantifierUnit = {
           purpose: 'transfer' as const,
           scaffoldLevel: 'medium' as const,
           hints: ['そのような実数が1つも存在しない、という内容を文にする。', '任意の実数を選んだとき、元の等式が成り立たない言い方を考える。'],
-        },
-        {
-          id: 'quant-c01',
-          label: 'QUANT-C01',
-          prompt: '「すべて」の命題を偽にするには何個の反例が必要か。',
-          answer: '1つ',
-          acceptedAnswers: ['1'],
-          answerType: 'text' as const,
-          choices: ['1つ', 'すべての例'],
-          purpose: 'concept-formation' as const,
-          scaffoldLevel: 'medium' as const,
-          hints: ['「すべて成り立つ」という主張を崩したい。', '主張に当てはまらない具体例が見つかったとき、「すべて」と言い続けられるか考える。'],
         },
         {
           id: 'quant-c02',

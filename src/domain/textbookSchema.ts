@@ -58,12 +58,25 @@ export const TextbookFigureSchema = z.object({
 
 export const TextbookReadingPartSchema = z.discriminatedUnion('type', [
   z.object({ type: z.literal('text'), text: z.string().min(1) }),
+  z.object({ type: z.literal('term'), text: z.string().min(1) }),
   z.object({ type: z.literal('math'), latex: z.string().min(1) }),
   z.object({ type: z.literal('choice'), itemId: IdSchema }),
 ])
 
 export const TextbookReadingBlockSchema = z.discriminatedUnion('type', [
   z.object({ id: IdSchema, type: z.literal('heading'), text: z.string().min(1) }),
+  z.object({
+    id: IdSchema,
+    type: z.literal('marker'),
+    kind: z.enum(['example', 'proof', 'check', 'summary']),
+    text: z.string().min(1),
+  }),
+  z.object({
+    id: IdSchema,
+    type: z.literal('dialogue'),
+    speaker: z.enum(['hanako', 'taro', 'teacher']),
+    text: z.string().min(1),
+  }),
   z.object({ id: IdSchema, type: z.literal('paragraph'), parts: z.array(TextbookReadingPartSchema).min(1), derivationId: IdSchema.optional() }),
   z.object({ id: IdSchema, type: z.literal('formula'), parts: z.array(TextbookReadingPartSchema).min(1), derivationId: IdSchema.optional() }),
   z.object({ id: IdSchema, type: z.literal('figure'), figureId: IdSchema }),

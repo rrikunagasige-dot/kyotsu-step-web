@@ -217,17 +217,27 @@ review → published に上げる条件:
 - `math-propositions-reading`: assistant deep static QA PASS / revision 1 / 18穴
 - `math-quantifiers-all-exists`: assistant deep static QA PASS / revision 3 / 13穴
 - `math-propositions-proof`: assistant deep static QA PASS / revision 2 / 23穴
-- deep-audit code checkpoint: `be072bbe42d4d1f9d389354d974050107e818883`
+- final validated code head: `34fab79dc7125e836d927df56e63197e1a99f100`
 - deep audit で教材コードも更新したため、旧記述「50ac以後はdocsのみ」は撤回。
 - 主な修正:
-  - reading: objective順、support fading、A3の非一意例表現、B6 transfer化
-  - quantifier: implicit universal の自然な日本語、完成文の二重語尾除去、D2本文、revision bump
-  - proof: 定義前aria promptの用語漏れ除去、B3を式変形thinking node化、C5 hint、revision bump
+  - reading: objective順、support fading、A3の非一意例表現、B6 transfer化、prop-b05 hintを方針→具体化へ整理
+  - quantifier: implicit universal の自然な日本語、完成文の二重語尾除去、D2本文、revision bump、quant-c03 hint段階化
+  - proof: 定義前aria promptの用語漏れ除去、B3を式変形thinking node化、C5 hint、revision bump、proof-a07 / proof-b00 hint段階化
   - shared UI: math側のlast wrong choiceをretry時に可視化
+  - figure: equal-diagonals SVGを座標上でも AC=BD に修正
 - cross-unit audit:
-  - 54穴の first staged hint exact-answer leakage = 0
+  - primary/accepted answer × first hint: 63候補中 leakage 0
+  - primary/accepted answer × second hint: 63候補中 leakage 0
   - completed-prose double「である」/二重句点 = 0
   - no-touch zoneへの教材差分なし
-- CI status: **deep-audit code checkpoint の最新validation待ち**。自動PASSを確認するまでpublish gateは開けない。
-- remaining blocker after automated validation: **user hands-on QA**
-- user確認前は3 unitとも `status: review` を維持し、PR #31をmergeしない。
+- CI hardening:
+  - PR-side Math textbook CI に `src/domain/textbook.test.ts` を追加し、revision mismatchで旧progressを無効化する契約をmerge前に検証
+  - `public/assets/math/textbook/**` をCI triggerへ追加
+  - `mathFigureAssets.test.ts` でSVG構造・counterexample点・equal diagonals geometryを自動監査
+  - staleだった「published chapterは1つだけ」というdomain testを、published unitだけをgroupする正しい契約へ修正
+- final automated validation:
+  - Math textbook mode CI: **success**
+  - Math practice pilot CI: **success**
+  - Math textbook CI内部: Typecheck / 100 Vitest / Build / mobile / desktop / Physics regression / Math practice setup regression すべてsuccess
+- remaining blocker: **user hands-on QA**
+- user確認前は3 unitとも `status: review` を維持し、PR #31をDraftのまま維持し、mergeしない。

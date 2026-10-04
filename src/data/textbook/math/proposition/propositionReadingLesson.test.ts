@@ -225,6 +225,27 @@ describe('math proposition-reading textbook unit', () => {
     expect(figure?.alt).not.toContain('長方形ではない')
   })
 
+  it('keeps the triangle counterexample distractors conceptually distinct', () => {
+    const item = mathPropositionReadingUnit.sections[0].items.find((candidate) => candidate.id === 'prop-a07')
+    expect(item?.answer).toBe('直角二等辺三角形')
+    expect(item?.choices).toEqual([
+      '直角二等辺三角形',
+      '正三角形',
+      '不等辺三角形',
+    ])
+  })
+
+  it('does not leak new concept names through the inline-choice accessibility prompt', () => {
+    const items = mathPropositionReadingUnit.sections[0].items
+    const truthDecision = items.find((item) => item.id === 'prop-a04')
+    const negationDecision = items.find((item) => item.id === 'prop-c01')
+
+    expect(truthDecision?.prompt).not.toContain('反例')
+    expect(truthDecision?.prompt).toContain('pを満たすのにqを満たさない例')
+    expect(negationDecision?.prompt).not.toContain('否定')
+    expect(negationDecision?.prompt).toContain('成り立たない条件')
+  })
+
   it('uses only three learner-facing headings', () => {
     const headings = mathPropositionReadingUnit.sections[0].readingFlow
       .filter((block) => block.type === 'heading')

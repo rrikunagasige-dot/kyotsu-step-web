@@ -527,7 +527,34 @@ Checked explicitly:
 
 ---
 
-## QAF-007 — HIGH — current-target headings leak answers
+## QAF-007 RESOLUTION — RESOLVED
+
+Status: **RESOLVED**
+
+Repair:
+- rewrote confirmed leaking current-target labels as task-oriented prompts,
+- covered 106 s2, 108 basis/conclusion, 111 p4-form, 113 assumption, 116 assumption, and 118 basis,
+- added presentation-level exact-label regression tests,
+- added browser assertions that answer-bearing terms are absent before the current blank is resolved.
+
+Validated on commit:
+- `cab680b3c28e9c921b5f6d9bf576ed5621c633f3`
+
+CI run:
+- `37166879828`
+
+PASS:
+- typecheck
+- Math practice unit / presentation tests
+- build
+- mobile Chromium smoke
+- desktop Chromium smoke
+
+No merge to main yet.
+
+---
+
+## QAF-007 — RESOLVED (was HIGH) — current-target headings leak answers
 
 The final QA plan explicitly includes current-target labels in the answer-leakage audit.
 

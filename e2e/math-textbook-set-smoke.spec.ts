@@ -405,6 +405,20 @@ test('all review math units enter without KaTeX errors or horizontal overflow', 
   }
 })
 
+test('math textbook setup exposes only the published set topic and keeps later topics pending', async ({ page }) => {
+  await page.goto(appRoute('/learning/setup?subject=math-1a'))
+
+  const sets = page.getByTestId('math-textbook-topic-organize-sets')
+  await expect(sets).toHaveAttribute('href', /math-sets/)
+
+  for (const topicId of ['read-propositions', 'prove-propositions']) {
+    const topic = page.getByTestId(`math-textbook-topic-${topicId}`)
+    await expect(topic).toHaveAttribute('aria-disabled', 'true')
+    await expect(topic).toContainText('準備中')
+    await expect(topic).not.toHaveAttribute('href', /.+/)
+  }
+})
+
 test('math set lesson boots directly on the shared textbook reader', async ({ page }) => {
   const pageErrors: string[] = []
   page.on('pageerror', (error) => pageErrors.push(error.stack ?? error.message))

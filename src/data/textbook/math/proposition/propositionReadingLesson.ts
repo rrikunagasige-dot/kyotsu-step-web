@@ -59,7 +59,7 @@ const rawMathPropositionReadingUnit = {
           id: 'paragraph-proposition-intro',
           type: 'paragraph' as const,
           parts: [
-            { type: 'text' as const, text: '文が命題かどうかを判断するときは、その内容が客観的に真・偽のどちらか一方に定まるかを見る。このような文を命題という。' },
+            { type: 'text' as const, text: 'まず、いくつかの文を比べる。大事なのは、その内容が真か偽かを客観的に決められるかどうかである。' },
           ],
         },
         {
@@ -68,7 +68,7 @@ const rawMathPropositionReadingUnit = {
           parts: [
             { type: 'text' as const, text: '①「23を3で割ると余りは2である」。' },
             { type: 'math' as const, latex: '23=3\\times7+2' },
-            { type: 'text' as const, text: ' と確かめられる。したがって、この文は ' },
+            { type: 'text' as const, text: ' と確かめられる。したがって、この文の内容は ' },
             { type: 'choice' as const, itemId: 'prop-p00a' },
             { type: 'text' as const, text: '。' },
           ],
@@ -86,7 +86,7 @@ const rawMathPropositionReadingUnit = {
           id: 'paragraph-proposition-2b',
           type: 'paragraph' as const,
           parts: [
-            { type: 'text' as const, text: 'この三角形では残りの2角は70°ずつで、3角がすべて60°ではない。真偽は客観的に決められ、反例もあるので、この文は ' },
+            { type: 'text' as const, text: 'この三角形では残りの2角は70°ずつで、3角がすべて60°ではない。したがって、この文の内容は ' },
             { type: 'choice' as const, itemId: 'prop-p00c' },
             { type: 'text' as const, text: '。' },
           ],
@@ -104,9 +104,16 @@ const rawMathPropositionReadingUnit = {
           id: 'paragraph-proposition-3b',
           type: 'paragraph' as const,
           parts: [
-            { type: 'text' as const, text: 'そのため真偽を一意に決められない。したがって③は ' },
+            { type: 'text' as const, text: 'そのため、この文の真偽は ' },
             { type: 'choice' as const, itemId: 'prop-p00e' },
-            { type: 'text' as const, text: '。偽である文と、命題ではない文は同じではない。' },
+            { type: 'text' as const, text: '。' },
+          ],
+        },
+        {
+          id: 'paragraph-proposition-concept',
+          type: 'paragraph' as const,
+          parts: [
+            { type: 'text' as const, text: 'ここで、内容が客観的に真・偽のどちらか一方に定まる文を命題という。①は真の命題、②は偽の命題である。③は真偽を一意に決められないので命題ではない。偽である文と、命題ではない文は別である。' },
           ],
         },
         {
@@ -459,11 +466,11 @@ const rawMathPropositionReadingUnit = {
         {
           id: 'prop-p00a',
           label: 'PROP-P00A',
-          prompt: '23=3×7+2から、この文を分類しよう。',
-          answer: '命題であり、真である',
+          prompt: '23=3×7+2から、この文の内容を判断しよう。',
+          answer: '真である',
           acceptedAnswers: [],
           answerType: 'text' as const,
-          choices: ['命題であり、真である', '命題であり、偽である', '命題ではない'],
+          choices: ['真である', '偽である'],
           purpose: 'concept-formation' as const,
           scaffoldLevel: 'strong' as const,
           hints: ['余りが本当に2かは計算で客観的に確かめられる。', 'しかも23=3×7+2なので内容は正しい。'],
@@ -483,11 +490,11 @@ const rawMathPropositionReadingUnit = {
         {
           id: 'prop-p00c',
           label: 'PROP-P00C',
-          prompt: '反例があることから、②を分類しよう。',
-          answer: '命題であり、偽である',
+          prompt: '反例があることから、②の内容を判断しよう。',
+          answer: '偽である',
           acceptedAnswers: [],
           answerType: 'text' as const,
-          choices: ['命題であり、偽である', '命題ではない', '命題であり、真である'],
+          choices: ['偽である', '真である'],
           purpose: 'causal-reasoning' as const,
           scaffoldLevel: 'strong' as const,
           hints: ['反例があるので内容は偽。', 'ただし、偽だと客観的に決められるので命題ではある。'],
@@ -507,14 +514,14 @@ const rawMathPropositionReadingUnit = {
         {
           id: 'prop-p00e',
           label: 'PROP-P00E',
-          prompt: '真偽を一意に決められない③を分類しよう。',
-          answer: '命題ではない',
+          prompt: '「よい」の基準が定まっていない③の真偽はどうか。',
+          answer: '一意に決められない',
           acceptedAnswers: [],
           answerType: 'text' as const,
-          choices: ['命題ではない', '命題であり、偽である', '命題であり、真である'],
+          choices: ['一意に決められない', '真である', '偽である'],
           purpose: 'causal-reasoning' as const,
           scaffoldLevel: 'medium' as const,
-          hints: ['命題は真・偽のどちらか一方に客観的に定まる文。', '③ではその基準がない。'],
+          hints: ['「よい」と言える境界が問題文にない。', '真か偽かを1つに決める客観的な基準がない。'],
         },
         {
           id: 'prop-a01',

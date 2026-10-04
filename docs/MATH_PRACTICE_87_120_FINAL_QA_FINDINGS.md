@@ -283,7 +283,37 @@ Acceptance for repair:
 
 ---
 
-## QAF-005 — REVIEW — Problem 88 hole strength
+## QAF-005 RESOLUTION — RESOLVED
+
+Status: **RESOLVED**
+
+Decision:
+- KEEP `p2-step`: recognizing that positive odd numbers progress by 2 is a genuine pattern decision needed to construct the set through 99.
+- REMOVE `p4-pattern`: after the learner has already generated `1,4,7,10`, asking separately for the increment 3 and then immediately asking for `{1,4,7,10,...}` duplicates the same information.
+
+Repair:
+- replaced `p4-pattern` with resolved transition content: `1,4,7,10,... は3ずつ増える。`,
+- synchronized strict Chinese text and presentation metadata,
+- added source/presentation regression and a full browser learner-flow test verifying that `p2-step` remains interactive while `p4-pattern` no longer exists.
+
+Validated on commit:
+- `756337c276eb3a4fb11313598aedd050c097e1dd`
+
+CI run:
+- `37168124534`
+
+PASS:
+- typecheck
+- Math practice unit / presentation tests
+- build
+- mobile Chromium smoke
+- desktop Chromium smoke
+
+No merge to main yet.
+
+---
+
+## QAF-005 — RESOLVED (was REVIEW) — Problem 88 hole strength
 
 Potentially weak holes:
 - `p2-step`: odd numbers increase by `2`
@@ -433,7 +463,24 @@ Semantic wording remains part of final human-language spot check.
 
 ---
 
-## QAF-006 — REVIEW — 104 / 107 are intentionally classification-heavy
+## QAF-006 REVIEW RESOLUTION — KEEP AS DESIGNED
+
+Status: **REVIEW CLOSED — NO CODE CHANGE**
+
+Decision:
+- keep the current interaction density in 104 / 107,
+- do not add artificial derivation holes.
+
+Reason:
+- the prose establishes the two implication truth values,
+- the learner-facing blank still performs the central conceptual operation of the exercise: mapping `p⇒q` / `q⇒p` truth values to sufficient / necessary / equivalent / neither,
+- the shared basis explicitly teaches that mapping, and the per-item classification therefore remains a real condition-reading decision rather than isolated numeric guessing.
+
+Existing dedicated browser coverage already checks staged reveal, shared-basis reuse, compression, and overflow.
+
+---
+
+## QAF-006 — REVIEW CLOSED — 104 / 107 are intentionally classification-heavy
 
 Problems:
 - 104 必要条件・十分条件

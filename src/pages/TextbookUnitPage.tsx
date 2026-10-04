@@ -100,6 +100,7 @@ function renderPart(
   text: (ja: string, zh: string) => string,
 ): ReactNode {
   if (part.type === 'text') return part.text
+  if (part.type === 'term') return <strong className="reading-term">{part.text}</strong>
   if (part.type === 'math') return <InlineMath math={part.latex} />
 
   const item = section.items.find((candidate) => candidate.id === part.itemId)
@@ -216,6 +217,30 @@ function TextbookReadingFlow({ unit, section, progress }: {
 
   const renderBlock = (block: TextbookReadingBlock) => {
     if (block.type === 'heading') return <h3 className="reading-subheading" key={block.id}>{block.text}</h3>
+    if (block.type === 'marker') {
+      return (
+        <div
+          className={`reading-role-marker reading-role-marker--${block.kind}`}
+          data-testid={`reading-role-${block.kind}-${block.id}`}
+          key={block.id}
+        >
+          {block.text}
+        </div>
+      )
+    }
+    if (block.type === 'dialogue') {
+      const speaker = block.speaker === 'hanako'
+        ? text('花子', '花子')
+        : block.speaker === 'taro'
+          ? text('太郎', '太郎')
+          : text('先生', '老师')
+      return (
+        <aside className="reading-dialogue" data-speaker={block.speaker} key={block.id}>
+          <strong>{speaker}：</strong>
+          <span>「{block.text}」</span>
+        </aside>
+      )
+    }
     if (block.type === 'note') return <aside className="reading-note" key={block.id}>{block.text}</aside>
 
     if (block.type === 'figure') {

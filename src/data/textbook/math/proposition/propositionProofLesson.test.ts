@@ -167,6 +167,17 @@ describe('math proposition-proof textbook unit', () => {
     expect(nameIndex).toBeGreaterThan(finalDecisionIndex)
   })
 
+  it('keeps proof hints staged from strategy to concrete evidence', () => {
+    const items = mathPropositionProofUnit.sections[0].items
+    const counterexample = items.find((candidate) => candidate.id === 'proof-a07')
+    const strategy = items.find((candidate) => candidate.id === 'proof-b00')
+
+    expect(counterexample?.hints[0]).toContain('前件を満たしながら後件を破る')
+    expect(counterexample?.hints[1]).toContain('6の倍数だが12の倍数ではない')
+    expect(strategy?.hints[0]).toContain('余りによる場合分け')
+    expect(strategy?.hints[1]).toContain('1または2')
+  })
+
   it('does not put the exact answer into the first staged hint', () => {
     const items = mathPropositionProofUnit.sections[0].items
     for (const item of items) {

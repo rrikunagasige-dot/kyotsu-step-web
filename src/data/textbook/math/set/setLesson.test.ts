@@ -206,9 +206,9 @@ describe('math set textbook unit', () => {
         .filter((part) => part.type === 'math')
         .map((part) => part.latex)
         .join('')
-      expect(latex).toContain('U=\\\\{1,2,\\\\ldots,12\\\\}')
-      expect(latex).toContain('A=\\\\{2,4,6,8,10,12\\\\}')
-      expect(latex).toContain('B=\\\\{3,6,9,12\\\\}')
+      expect(latex).toContain('U=\\{1,2,\\ldots,12\\}')
+      expect(latex).toContain('A=\\{2,4,6,8,10,12\\}')
+      expect(latex).toContain('B=\\{3,6,9,12\\}')
     }
   })
 

@@ -305,7 +305,7 @@ const rawMathSetUnit = {
           id: 'paragraph-next',
           type: 'paragraph' as const,
           parts: [
-            { type: 'text' as const, text: 'ここまでで、一つの集合をどう表し、その中に何が入っているかを見る方法が分かった。次は、一つの集合が別の集合の中に丸ごと含まれるとき、その関係をどう表すか考える。' },
+            { type: 'text' as const, text: 'ここまでで、一つの集合をどのように表し、その中に何が入っているかを見る方法が分かった。次は、二つの集合を並べたときに、どの要素が共通しているか、どこまで合わせるかを考える。' },
           ],
         },
         {
@@ -314,117 +314,10 @@ const rawMathSetUnit = {
           text: '集合どうしの関係を見る',
         },
         {
-          id: 'formula-c-sets',
-          type: 'formula' as const,
-          parts: [
-            { type: 'math' as const, latex: 'A=\\{1,2,3\\},\\qquad B=\\{1,3\\},\\qquad C=\\{1,4\\}' },
-          ],
-        },
-        {
-          id: 'paragraph-c01',
-          type: 'paragraph' as const,
-          parts: [
-            { type: 'text' as const, text: 'まずBを見る。Bの要素1と3は、どちらもAに入っている。つまりBの要素はAに ' },
-            { type: 'choice' as const, itemId: 'set-c01' },
-            { type: 'text' as const, text: '。' },
-          ],
-        },
-        {
-          id: 'paragraph-c02',
-          type: 'paragraph' as const,
-          parts: [
-            { type: 'text' as const, text: 'ではCはどうだろう。Cの要素を全部Aと比べると ' },
-            { type: 'choice' as const, itemId: 'set-c02' },
-            { type: 'text' as const, text: '。' },
-          ],
-        },
-        {
-          id: 'paragraph-subset-concept',
-          type: 'paragraph' as const,
-          parts: [
-            { type: 'text' as const, text: 'ある集合のどの要素も別の集合の要素であるとき、前の集合を後ろの集合の部分集合という。今の例ではBのすべての要素がAに含まれているので ' },
-            { type: 'math' as const, latex: 'B\\subset A' },
-            { type: 'text' as const, text: ' と表せる。逆向きには ' },
-            { type: 'math' as const, latex: 'A\\supset B' },
-            { type: 'text' as const, text: ' である。' },
-          ],
-        },
-        {
-          id: 'figure-c-subset',
-          type: 'figure' as const,
-          figureId: 'subset-after',
-        },
-        {
-          id: 'paragraph-c03',
-          type: 'paragraph' as const,
-          parts: [
-            { type: 'text' as const, text: 'ではA={1,2,3}の部分集合を全部作る。まずAの要素を1個も選ばない場合、できる集合の要素数は ' },
-            { type: 'choice' as const, itemId: 'set-c03' },
-            { type: 'text' as const, text: ' である。' },
-          ],
-        },
-        {
-          id: 'paragraph-empty-concept',
-          type: 'paragraph' as const,
-          parts: [
-            { type: 'text' as const, text: '要素を1つももたない集合も一つの集合として考える。この集合を空集合といい、' },
-            { type: 'math' as const, latex: '\\varnothing' },
-            { type: 'text' as const, text: ' で表す。空集合はどの集合に対しても部分集合である。' },
-          ],
-        },
-        {
-          id: 'paragraph-c04',
-          type: 'paragraph' as const,
-          parts: [
-            { type: 'text' as const, text: 'Aから要素を1個だけ選ぶ部分集合を全部書くと ' },
-            { type: 'choice' as const, itemId: 'set-c04' },
-            { type: 'text' as const, text: ' となる。' },
-          ],
-        },
-        {
-          id: 'paragraph-c05',
-          type: 'paragraph' as const,
-          parts: [
-            { type: 'text' as const, text: '要素を2個選ぶ部分集合を全部書くと ' },
-            { type: 'choice' as const, itemId: 'set-c05' },
-            { type: 'text' as const, text: ' となる。' },
-          ],
-        },
-        {
-          id: 'paragraph-c06',
-          type: 'paragraph' as const,
-          parts: [
-            { type: 'text' as const, text: '3個すべてを選んだ集合A自身も、Aの部分集合だろうか。' },
-            { type: 'choice' as const, itemId: 'set-c06' },
-            { type: 'text' as const, text: '。' },
-          ],
-        },
-        {
-          id: 'paragraph-c07',
-          type: 'paragraph' as const,
-          parts: [
-            { type: 'text' as const, text: '以上を合わせると、Aの部分集合を漏れなく並べたものは ' },
-            { type: 'choice' as const, itemId: 'set-c07' },
-            { type: 'text' as const, text: ' である。' },
-          ],
-        },
-        {
-          id: 'paragraph-c08',
-          type: 'paragraph' as const,
-          parts: [
-            { type: 'text' as const, text: '最後に、もしXがYの部分集合で、同時にYもXの部分集合なら、2つの集合の要素に違いは ' },
-            { type: 'choice' as const, itemId: 'set-c08' },
-            { type: 'text' as const, text: '。このとき ' },
-            { type: 'math' as const, latex: 'X=Y' },
-            { type: 'text' as const, text: ' と表す。' },
-          ],
-        },
-        {
-          id: 'paragraph-subset-transition',
-          type: 'paragraph' as const,
-          parts: [
-            { type: 'text' as const, text: '部分集合では、一つの集合が別の集合に丸ごと含まれるかを見た。次は、二つの集合を並べて、両方に入る要素と少なくとも一方に入る要素を考える。' },
-          ],
+          id: 'marker-example-intersection-union',
+          type: 'marker' as const,
+          kind: 'example' as const,
+          text: '例題',
         },
         {
           id: 'formula-b-sets',
@@ -458,7 +351,9 @@ const rawMathSetUnit = {
           id: 'paragraph-intersection-concept',
           type: 'paragraph' as const,
           parts: [
-            { type: 'text' as const, text: '今集めたのは、AとBの両方に属する要素である。このような要素全体の集合をAとBの共通部分といい、' },
+            { type: 'text' as const, text: '今集めたのは、AとBの両方に属する要素である。このような要素全体の集合をAとBの' },
+            { type: 'term' as const, text: '共通部分' },
+            { type: 'text' as const, text: 'といい、' },
             { type: 'math' as const, latex: 'A\\cap B' },
             { type: 'text' as const, text: ' と表す。' },
           ],
@@ -508,7 +403,9 @@ const rawMathSetUnit = {
           id: 'paragraph-union-concept',
           type: 'paragraph' as const,
           parts: [
-            { type: 'text' as const, text: 'AとBの少なくとも一方に属する要素全体の集合をAとBの和集合といい、' },
+            { type: 'text' as const, text: 'AとBの少なくとも一方に属する要素全体の集合をAとBの' },
+            { type: 'term' as const, text: '和集合' },
+            { type: 'text' as const, text: 'といい、' },
             { type: 'math' as const, latex: 'A\\cup B' },
             { type: 'text' as const, text: ' と表す。' },
           ],
@@ -519,6 +416,12 @@ const rawMathSetUnit = {
           parts: [
             { type: 'math' as const, latex: 'A\\cup B=\\{1,2,3,5,7,9\\}' },
           ],
+        },
+        {
+          id: 'dialogue-taro-union',
+          type: 'dialogue' as const,
+          speaker: 'taro' as const,
+          text: '同じ2つの集合でも、「両方」を見るのか「少なくとも一方」を見るのかで、集める範囲が変わるんですね。',
         },
         {
           id: 'figure-b-union',
@@ -571,6 +474,135 @@ const rawMathSetUnit = {
             { type: 'text' as const, text: ' は ' },
             { type: 'choice' as const, itemId: 'set-b09' },
             { type: 'text' as const, text: ' を表す。' },
+          ],
+        },
+        {
+          id: 'paragraph-relations-to-subset',
+          type: 'paragraph' as const,
+          parts: [
+            { type: 'text' as const, text: '共通部分と和集合では、複数の集合のどこを合わせるかを見た。次は、一つの集合が別の集合の中に丸ごと入っているとき、その関係をどう表すかを考える。' },
+          ],
+        },
+        {
+          id: 'marker-example-subset',
+          type: 'marker' as const,
+          kind: 'example' as const,
+          text: '例題',
+        },
+        {
+          id: 'formula-c-sets',
+          type: 'formula' as const,
+          parts: [
+            { type: 'math' as const, latex: 'A=\\{1,2,3\\},\\qquad B=\\{1,3\\},\\qquad C=\\{1,4\\}' },
+          ],
+        },
+        {
+          id: 'paragraph-c01',
+          type: 'paragraph' as const,
+          parts: [
+            { type: 'text' as const, text: 'まずBを見る。Bの要素1と3は、どちらもAに入っている。つまりBの要素はAに ' },
+            { type: 'choice' as const, itemId: 'set-c01' },
+            { type: 'text' as const, text: '。' },
+          ],
+        },
+        {
+          id: 'paragraph-c02',
+          type: 'paragraph' as const,
+          parts: [
+            { type: 'text' as const, text: 'ではCはどうだろう。Cの要素を全部Aと比べると ' },
+            { type: 'choice' as const, itemId: 'set-c02' },
+            { type: 'text' as const, text: '。' },
+          ],
+        },
+        {
+          id: 'dialogue-hanako-subset',
+          type: 'dialogue' as const,
+          speaker: 'hanako' as const,
+          text: 'Bは全部Aの中にあるけれど、Cは1つだけ外に出ているね。',
+        },
+        {
+          id: 'paragraph-subset-concept',
+          type: 'paragraph' as const,
+          parts: [
+            { type: 'text' as const, text: 'ある集合のどの要素も別の集合の要素であるとき、前の集合を後ろの集合の' },
+            { type: 'term' as const, text: '部分集合' },
+            { type: 'text' as const, text: 'という。今の例ではBのすべての要素がAに含まれているので ' },
+            { type: 'math' as const, latex: 'B\\subset A' },
+            { type: 'text' as const, text: ' と表せる。逆向きには ' },
+            { type: 'math' as const, latex: 'A\\supset B' },
+            { type: 'text' as const, text: ' である。' },
+          ],
+        },
+        {
+          id: 'figure-c-subset',
+          type: 'figure' as const,
+          figureId: 'subset-after',
+        },
+        {
+          id: 'paragraph-c03',
+          type: 'paragraph' as const,
+          parts: [
+            { type: 'text' as const, text: 'ではA={1,2,3}の部分集合を全部作る。まずAの要素を1個も選ばない場合、できる集合の要素数は ' },
+            { type: 'choice' as const, itemId: 'set-c03' },
+            { type: 'text' as const, text: ' である。' },
+          ],
+        },
+        {
+          id: 'paragraph-empty-concept',
+          type: 'paragraph' as const,
+          parts: [
+            { type: 'text' as const, text: '要素を1つももたない集合も一つの集合として考える。この集合を' },
+            { type: 'term' as const, text: '空集合' },
+            { type: 'text' as const, text: 'といい、' },
+            { type: 'math' as const, latex: '\\varnothing' },
+            { type: 'text' as const, text: ' で表す。空集合はどの集合に対しても部分集合である。' },
+          ],
+        },
+        {
+          id: 'paragraph-c04',
+          type: 'paragraph' as const,
+          parts: [
+            { type: 'text' as const, text: 'Aから要素を1個だけ選ぶ部分集合を全部書くと ' },
+            { type: 'choice' as const, itemId: 'set-c04' },
+            { type: 'text' as const, text: ' となる。' },
+          ],
+        },
+        {
+          id: 'paragraph-c05',
+          type: 'paragraph' as const,
+          parts: [
+            { type: 'text' as const, text: '要素を2個選ぶ部分集合を全部書くと ' },
+            { type: 'choice' as const, itemId: 'set-c05' },
+            { type: 'text' as const, text: ' となる。' },
+          ],
+        },
+        {
+          id: 'paragraph-c06',
+          type: 'paragraph' as const,
+          parts: [
+            { type: 'text' as const, text: '3個すべてを選んだ集合A自身も、Aの部分集合だろうか。' },
+            { type: 'choice' as const, itemId: 'set-c06' },
+            { type: 'text' as const, text: '。' },
+          ],
+        },
+        {
+          id: 'paragraph-c07',
+          type: 'paragraph' as const,
+          parts: [
+            { type: 'text' as const, text: '以上を合わせると、Aの部分集合を漏れなく並べたものは ' },
+            { type: 'choice' as const, itemId: 'set-c07' },
+            { type: 'text' as const, text: ' である。' },
+          ],
+        },
+        {
+          id: 'paragraph-c08',
+          type: 'paragraph' as const,
+          parts: [
+            { type: 'text' as const, text: '最後に、もしXがYの部分集合で、同時にYもXの部分集合なら、2つの集合の要素に違いは ' },
+            { type: 'choice' as const, itemId: 'set-c08' },
+            { type: 'text' as const, text: '。このとき ' },
+            { type: 'math' as const, latex: 'X=Y' },
+            { type: 'text' as const, text: ' と表す。' },
           ],
         },
         {

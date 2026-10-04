@@ -82,6 +82,7 @@ describe('TextbookUnitSchema 1.1', () => {
     const unit = structuredClone(baseUnit)
     unit.sections[0].readingFlow = [
       { id: 'example-1', type: 'marker', kind: 'example', text: '例題' },
+      { id: 'proof-1', type: 'marker', kind: 'proof', text: '証明' },
       {
         id: 'p-1',
         type: 'paragraph',
@@ -99,6 +100,7 @@ describe('TextbookUnitSchema 1.1', () => {
 
     const parsed = TextbookUnitSchema.parse(unit)
     expect(parsed.sections[0].readingFlow.map((block) => block.type)).toEqual([
+      'marker',
       'marker',
       'paragraph',
       'dialogue',

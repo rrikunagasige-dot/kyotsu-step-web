@@ -5,7 +5,7 @@ import { mathPropositionProofUnit } from './propositionProofLesson'
 describe('math proposition-proof textbook unit', () => {
   it('keeps the proof source scope in review during audit', () => {
     expect(mathPropositionProofUnit.status).toBe('review')
-    expect(mathPropositionProofUnit.revision).toBe(2)
+    expect(mathPropositionProofUnit.revision).toBe(3)
     expect(mathPropositionProofUnit.chapter?.chapterId).toBe('math-ch03-sets-propositions')
     expect(mathPropositionProofUnit.chapter?.sourcePages).toEqual([96, 97, 98])
   })
@@ -29,10 +29,23 @@ describe('math proposition-proof textbook unit', () => {
       ),
     )
 
+    const concreteExampleIndex = flow.findIndex(
+      (block) => block.type === 'formula' && block.parts.some(
+        (part) => part.type === 'math' && part.latex.includes('x^2=x\\Rightarrow x=1'),
+      ),
+    )
+    const namingIndex = flow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'text' && part.text.includes('ここまで作った3つの命題に名前をつける'),
+      ),
+    )
+
     expect(items.some((item) => item.id.startsWith('proof-e'))).toBe(false)
-    expect(reverseIndex).toBeGreaterThanOrEqual(0)
+    expect(concreteExampleIndex).toBeGreaterThanOrEqual(0)
+    expect(reverseIndex).toBeGreaterThan(concreteExampleIndex)
     expect(inverseIndex).toBeGreaterThan(reverseIndex)
     expect(contrapositiveIndex).toBeGreaterThan(inverseIndex)
+    expect(namingIndex).toBeGreaterThan(contrapositiveIndex)
   })
 
 
@@ -42,6 +55,16 @@ describe('math proposition-proof textbook unit', () => {
     expect(items.find((item) => item.id === 'proof-a01')?.prompt).not.toContain('逆')
     expect(items.find((item) => item.id === 'proof-a02')?.prompt).not.toContain('裏')
     expect(items.find((item) => item.id === 'proof-a03')?.prompt).not.toContain('対偶')
+  })
+
+  it('builds the three transformed statements from the concrete source proposition', () => {
+    const items = mathPropositionProofUnit.sections[0].items
+    expect(items.find((item) => item.id === 'proof-a01')?.answer)
+      .toBe('x=1\\Rightarrow x^2=x')
+    expect(items.find((item) => item.id === 'proof-a02')?.answer)
+      .toBe('x^2\\ne x\\Rightarrow x\\ne1')
+    expect(items.find((item) => item.id === 'proof-a03')?.answer)
+      .toBe('x\\ne1\\Rightarrow x^2\\ne x')
   })
 
   it('checks all four truth values for the first reverse-inverse-contrapositive source example', () => {
@@ -101,6 +124,25 @@ describe('math proposition-proof textbook unit', () => {
         .join('')
       expect(beforeChoice).not.toContain('3(3k^2+2k)+1')
     }
+  })
+
+  it('does not explain the contradiction method before the learner chooses the working assumption', () => {
+    const flow = mathPropositionProofUnit.sections[0].readingFlow
+    const assumptionIndex = flow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'proof-c00',
+      ),
+    )
+    const proseBeforeAssumption = flow.slice(0, assumptionIndex)
+      .filter((block) => block.type === 'paragraph')
+      .flatMap((block) => block.parts)
+      .filter((part) => part.type === 'text')
+      .map((part) => part.text)
+      .join('\n')
+
+    expect(assumptionIndex).toBeGreaterThanOrEqual(0)
+    expect(proseBeforeAssumption).not.toContain('結論を否定したと仮定')
+    expect(proseBeforeAssumption).not.toContain('背理法')
   })
 
   it('chooses the contradiction assumption before algebraic manipulation', () => {

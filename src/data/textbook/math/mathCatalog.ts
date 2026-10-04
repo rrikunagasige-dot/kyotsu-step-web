@@ -24,8 +24,8 @@ export const mathTextbookTopics: readonly MathTextbookTopicCatalogEntry[] = [
     id: 'organize-sets',
     label: { ja: '集合を整理する', zh: '整理集合' },
     flow: {
-      ja: '集合の表し方 → 部分集合 → 共通部分・和集合 → 補集合 → 集合の条件',
-      zh: '集合的表示 → 子集 → 交集・并集 → 补集 → 集合条件',
+      ja: '集合の表し方 → 共通部分・和集合 → 部分集合 → 補集合 → 集合の条件',
+      zh: '集合的表示 → 交集・并集 → 子集 → 补集 → 集合条件',
     },
     practiceLinks: [
       {
@@ -35,9 +35,9 @@ export const mathTextbookTopics: readonly MathTextbookTopicCatalogEntry[] = [
     ],
     unitIds: ['math-sets'],
     learnerHeadings: [
-      '集合を表す',
-      '集合どうしの関係を見る',
-      '集合の外側まで考える',
+      '第1部　集合を表す',
+      '第2部　集合どうしの関係を見る',
+      '第3部　集合の外側まで考える',
     ],
   },
   {

@@ -674,6 +674,8 @@ test('107 applies the necessary/sufficient direction rule to algebra, signs and 
 
   await expect(problem).toContainText('必要条件')
   await expect(problem).toContainText('十分条件')
+  await expect(problem).toContainText('3辺 BC, CA, AB の長さをそれぞれ a, b, c')
+  await expect(problem).toContainText('直角二等辺三角形')
   await expect(problem.locator('.katex-error')).toHaveCount(0)
 
   await page.getByTestId('blank-math-practice-107-rule').click()

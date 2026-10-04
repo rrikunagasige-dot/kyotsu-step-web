@@ -343,14 +343,21 @@ const rawMathPropositionProofUnit = {
           ],
         },
         {
-          id: 'paragraph-bc01',
+          id: 'paragraph-bc00',
           type: 'paragraph' as const,
           parts: [
             { type: 'text' as const, text: '有理数x,yがこの式を満たすならx=y=0であることを、' },
             { type: 'math' as const, latex: '\\sqrt6' },
             { type: 'text' as const, text: ' が無理数であることを使って示す。まずx=0を示したいので、その否定として ' },
             { type: 'choice' as const, itemId: 'proof-c00' },
-            { type: 'text' as const, text: ' と仮定する。式を変形すると ' },
+            { type: 'text' as const, text: ' と仮定する。' },
+          ],
+        },
+        {
+          id: 'paragraph-bc01',
+          type: 'paragraph' as const,
+          parts: [
+            { type: 'text' as const, text: 'その仮定のもとで元の式を変形すると ' },
             { type: 'choice' as const, itemId: 'proof-c01' },
             { type: 'text' as const, text: ' となる。' },
           ],

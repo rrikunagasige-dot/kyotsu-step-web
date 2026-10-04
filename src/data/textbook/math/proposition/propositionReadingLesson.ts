@@ -511,7 +511,7 @@ const rawMathPropositionReadingUnit = {
           choices: ['偽である', '真である'],
           purpose: 'causal-reasoning' as const,
           scaffoldLevel: 'strong' as const,
-          hints: ['反例があるので内容は偽。', 'ただし、偽だと客観的に決められるので命題ではある。'],
+          hints: ['反例は、元の主張に当てはまらない具体例である。', '1つでも主張に反する例があれば、その主張がすべての場合に成り立つかを見直す。'],
         },
         {
           id: 'prop-p00d',
@@ -523,7 +523,7 @@ const rawMathPropositionReadingUnit = {
           choices: ['定まっていない', '3.14と決まっている', 'πと完全一致すると決まっている'],
           purpose: 'concept-formation' as const,
           scaffoldLevel: 'medium' as const,
-          hints: ['「どの程度近ければよいか」という境界が書かれているかを見る。', '評価基準そのものが指定されていない。'],
+          hints: ['「どの程度近ければよいか」という境界が書かれているかを見る。', '3.14とπの近さだけでなく、「よい」と判定する基準が文章中にあるか探す。'],
         },
         {
           id: 'prop-p00e',
@@ -535,7 +535,7 @@ const rawMathPropositionReadingUnit = {
           choices: ['一意に決められない', '真である', '偽である'],
           purpose: 'causal-reasoning' as const,
           scaffoldLevel: 'medium' as const,
-          hints: ['「よい」と言える境界が問題文にない。', '真か偽かを1つに決める客観的な基準がない。'],
+          hints: ['「よい」と言える境界が問題文にあるか確認する。', '人によって「よい」の判断が変わる可能性があるとき、真偽をどう扱えるか考える。'],
         },
         {
           id: 'prop-a01',
@@ -547,7 +547,7 @@ const rawMathPropositionReadingUnit = {
           choices: ['満たす', '満たさない場合がある'],
           purpose: 'concept-formation' as const,
           scaffoldLevel: 'strong' as const,
-          hints: ['pで許されるxの最大は1。qの境界3と比べよう。', '−2から1までの数はすべて3より小さい。'],
+          hints: ['pで許されるxの最大は1。qの境界3と比べよう。', '数直線上で、pの範囲がqの境界3を越えるかどうかを見る。'],
         },
         {
           id: 'prop-a02',
@@ -607,7 +607,7 @@ const rawMathPropositionReadingUnit = {
           choices: ['偽', '真', '判断できない'],
           purpose: 'transfer' as const,
           scaffoldLevel: 'medium' as const,
-          hints: ['−3は前件を満たすがx=3ではない。', '反例が1つあれば偽と判断できる。'],
+          hints: ['−3は前件を満たすがx=3ではない。', '元の命題は、前件を満たすすべての場合に後件も成り立つ必要がある。'],
         },
         {
           id: 'prop-b01',
@@ -643,7 +643,7 @@ const rawMathPropositionReadingUnit = {
           choices: ['必要条件', '十分条件', '必要十分条件'],
           purpose: 'definition' as const,
           scaffoldLevel: 'strong' as const,
-          hints: ['長方形なら必ずAC=BDになる。', '長方形であるためにはAC=BDが必要だが、AC=BDだけでは長方形とは限らない。'],
+          hints: ['長方形なら必ずAC=BDになる。', 'p⇒qは真、q⇒pは偽だった。qがpに対してどんな役割をもつか、定義に戻って考える。'],
         },
         {
           id: 'prop-b04',
@@ -655,7 +655,7 @@ const rawMathPropositionReadingUnit = {
           choices: ['必要条件', '十分条件', '必要十分条件'],
           purpose: 'transfer' as const,
           scaffoldLevel: 'medium' as const,
-          hints: ['q⇒pが真なら、qが成り立つにはpが必要。', 'p⇒qは−1が反例なので、pだけではqを保証できない。'],
+          hints: ['q⇒pが真ということは、qが成り立つときpも必ず成り立つという意味。', '一方、p⇒qは反例があるので、pだけからqは保証できない。'],
         },
         {
           id: 'prop-b05',
@@ -703,7 +703,7 @@ const rawMathPropositionReadingUnit = {
           choices: ['2は合成数ではない', '2は合成数である', '2は奇数である'],
           purpose: 'transfer' as const,
           scaffoldLevel: 'strong' as const,
-          hints: ['否定では、元の文が成り立たないことをそのまま言う。', '「合成数である」の否定は「合成数ではない」。'],
+          hints: ['否定では、元の文が成り立たないことをそのまま言う。', '別の性質へ言い換えず、「合成数である」という部分だけを打ち消す。'],
         },
         {
           id: 'prop-c03',

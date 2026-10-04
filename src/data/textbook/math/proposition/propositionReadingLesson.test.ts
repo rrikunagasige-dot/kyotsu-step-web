@@ -184,13 +184,15 @@ describe('math proposition-reading textbook unit', () => {
     const items = mathPropositionReadingUnit.sections[0].items
 
     expect(items.find((item) => item.id === 'prop-a07')).toBeUndefined()
-    expect(
-      mathPropositionReadingUnit.sections[0].readingFlow.some(
-        (block) => block.type === 'paragraph' && block.parts.some(
-          (part) => part.type === 'text' && part.text.includes('問8(4)'),
-        ),
-      ),
-    ).toBe(true)
+    const learnerText = mathPropositionReadingUnit.sections[0].readingFlow
+      .filter((block) => block.type === 'paragraph')
+      .flatMap((block) => block.parts)
+      .filter((part) => part.type === 'text')
+      .map((part) => part.text)
+      .join('\n')
+
+    expect(learnerText).toContain('△ABCが二等辺三角形なら、△ABCは正三角形である')
+    expect(learnerText).not.toContain('問8(4)')
 
     expect(items.find((item) => item.id === 'prop-c02')?.answer)
       .toBe('2は合成数ではない')

@@ -114,6 +114,43 @@ User hands-on 前の assistant-side deep audit を、3 review unit 全54穴に�
 - review units remain `status: review` and stay hidden from the normal setup.
 - remove the temporary Pages branch trigger before merge.
 
+## 2026-10-04 MASTER restoration checkpoint
+
+Validated code head:
+- `9ef3111792d5660931b4b2b35ffb89281a92c7ad`
+
+Why restoration was needed:
+- direct hands-on inspection showed that the review units were technically correct but felt too much like consecutive short questions
+- the existing 2026-10-03 mathematics MASTER already specified a different macro rhythm: concrete example → thinking → concept naming → generalization → immediate use
+- therefore this was a restoration to the existing MASTER, not a new pedagogy
+
+Implemented state:
+- `math-propositions-reading`: revision 2 / 14 interactions
+  - `prop-a06`, `prop-a08`, `prop-b03`, `prop-b06` merged back into textbook prose
+  - source examples retained
+  - counterexample / necessary-sufficient / negation cycles now expose concept boundaries more clearly
+- `math-quantifiers-all-exists`: revision 4 / 11 interactions
+  - `quant-a01`, `quant-c01` merged into prose
+  - witness/counterexample now comes before the abstract “1 example is enough” rule
+- `math-propositions-proof`: revision 3 / 23 interactions
+  - concrete source proposition `x²=x⇒x=1` comes before reverse/inverse/contrapositive naming
+  - worked contrapositive proof remains intact
+  - contradiction method name `背理法` appears only after the worked proof
+
+Cross-unit static audit after restoration:
+- total interactions: 48
+- primary/accepted answer × first hint leakage: 0
+- primary/accepted answer × second hint leakage: 0
+- merged-prose double「である」/double punctuation: 0
+- restoration implementation diff touched only the 3 math learning units, their unit tests, and math textbook E2E
+
+Automated validation at the validated code head:
+- Math textbook mode CI: PASS
+- Math practice pilot CI: PASS
+- Typecheck / unit tests / build / mobile / desktop / Physics regression / Math practice setup regression: PASS
+
+The remaining gate is user hands-on QA of the restored macro rhythm.
+
 ## Manual hands-on gate
 
 Direct routes（HashRouter）:
@@ -154,16 +191,17 @@ Automated PASS does not promote a unit. User checks the following in the real ap
 #### math-propositions-reading
 - 反例を見つける → 偽と判断する流れが自然か。
 - 必要条件 / 十分条件を両方向確認してから名称化できているか。
-- `prop-a06` / `prop-a08` の反復が「transfer」として有効か、冗長に感じるか。
+- 反例の導入例 → 「反例」の概念化 → a05/a07の即時使用が、一つの学習線として自然に感じるか。
+- a05/a07の後に「もう一度真偽を選ばされる」感じが消えているか。
 - 条件の否定 → 条件版ド・モルガンが飛躍しないか。
 
 #### math-quantifiers-all-exists
-- 「ある」は witness 1つ、「すべて」は counterexample 1つ、という感覚が先にできるか。
+- a02/c02 の具体例を先に経験してから、「1例で成立 / 1反例で崩れる」という規則が出る順序を自然に感じるか。
 - 否定の規則を暗記させる前に具体例から納得できるか。
 - 長い文章選択肢がスマホで読みやすいか。
 
 #### math-propositions-proof
-- 逆・裏・対偶を名称当てではなく操作として理解できるか。
+- 具体命題 x²=x⇒x=1 を組み替えた後で逆・裏・対偶という名称が付くため、名称当てではなく操作として理解できるか。
 - 対偶を使う strategy を learner が自分で選んだ感覚があるか。
 - 3の倍数の証明の式変形が細かすぎず粗すぎないか。
 - 矛盾証明で `x≠0` を置く理由が自然か。

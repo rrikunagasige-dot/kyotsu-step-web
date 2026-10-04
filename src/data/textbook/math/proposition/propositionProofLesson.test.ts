@@ -149,7 +149,7 @@ describe('math proposition-proof textbook unit', () => {
       .map((block) => block.text)
     expect(headings).toEqual([
       '同値と命題の向きを整理する',
-      '対偶を使って証明する',
+      '証明しやすい向きを選ぶ',
       '矛盾を作って証明する',
     ])
   })

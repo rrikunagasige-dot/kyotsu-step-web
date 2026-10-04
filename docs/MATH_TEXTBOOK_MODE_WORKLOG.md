@@ -88,6 +88,14 @@ Source:
 - p.100〜101 相当
 - 「すべて」と「ある」の真偽・否定
 - 反例と存在例
+Checkpoint:
+- SOURCE AUDIT: PASS（教科書5例の順序を保持）
+- existence witness → 否定、counterexample → 否定の順を確認
+- strong → medium → light のsupport fadingを確認
+- hintの答え漏れ / mixed-text KaTeX / progressive reveal / overflowを確認
+- FINAL UNIT QA: PASS
+- STATUS: review / unit QA PASS
+- PUBLISH GATE: `read-propositions` topicとして user hands-on QA 後に promotion
 
 ### math-functions-conditions
 Source:
@@ -114,7 +122,13 @@ Checkpoint:
 - SOURCE AUDIT: PASS（p.96〜98 の順へ整理）
 - 前unitで扱った同値の重複再学習を削除
 - UNIT TEST: 2つのsource例とstrategy nodeを固定済み
-- STATUS: review
+- learnerが対偶を使うかを選ぶ strategy node を確認
+- 背理法の名称は worked example 完了後にのみ導入
+- √6の矛盾証明を小さい式変形stepで確認
+- hint / progressive reveal / mixed-text KaTeX / overflowを確認
+- FINAL UNIT QA: PASS
+- STATUS: review / unit QA PASS
+- PUBLISH GATE: user hands-on QA 後に promotion
 
 これらは `status: review` のため `textbookRepository.listPublished()` には出ず、通常setupでは「準備中」を維持する。
 
@@ -197,3 +211,13 @@ review → published に上げる条件:
 8. user hands-on QA で本文・穴・図・黒字概念の感触を確認
 
 自動PASSだけで published にしない。
+
+## 2026-10-04 final review-unit QA
+
+- `math-propositions-reading`: PASS
+- `math-propositions-proof`: PASS
+- `math-quantifiers-all-exists`: PASS
+- code validation baseline: commit `50ac391698ac2c5b6c49bf1ac3c18bf8ebd5aca3` で Math textbook mode CI / Math practice pilot CI ともに success
+- 以後のcommitはdocs整合性更新のみ。教材コードは変更していない。
+- remaining blocker: **user hands-on QA**
+- user確認前は3 unitとも `status: review` を維持し、PR #31をmergeしない。

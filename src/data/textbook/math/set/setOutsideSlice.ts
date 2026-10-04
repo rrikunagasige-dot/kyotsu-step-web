@@ -379,7 +379,15 @@ export const setOutsideReadingFlow = [
   {
     id: 'paragraph-e-verify-intro',
     type: 'paragraph' as const,
-    parts: [{ type: 'text' as const, text: '最後に、図で見た法則を実際の要素でも確かめる。' }],
+    parts: [{ type: 'text' as const, text: 'ド・モルガンの法則を、要素を書き並べて確かめる。' }],
+  },
+  {
+    id: 'formula-e-verify-sets',
+    type: 'formula' as const,
+    parts: [{
+      type: 'math' as const,
+      latex: 'U=\\{1,2,\\ldots,12\\},\\qquad A=\\{2,4,6,8,10,12\\},\\qquad B=\\{3,6,9,12\\}',
+    }],
   },
   {
     id: 'paragraph-e10',

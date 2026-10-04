@@ -151,59 +151,49 @@ test('math textbook setup enters the set lesson and physics remains available fr
 })
 
 
-test('proposition-reading review unit builds the proposition criterion before implication', async ({ page }) => {
+test('proposition-reading builds the proposition concept from the first textbook condition', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-propositions-reading'))
 
   await expect(page.getByRole('heading', { name: '条件から命題を読む', exact: true })).toBeVisible()
-  await expect(page.getByRole('heading', { name: '命題の真偽を読む', exact: true })).toBeVisible()
-  await expect(page.getByTestId('textbook-item-prop-p00a')).toBeVisible()
-  await expect(page.getByTestId('textbook-item-prop-a01')).toHaveCount(0)
-
-  await answerItem(page, 'prop-p00a', '真である')
-  await answerItem(page, 'prop-p00b', '頂角40°の二等辺三角形')
-  await answerItem(page, 'prop-p00c', '偽である')
-  await answerItem(page, 'prop-p00d', '定まっていない')
-  await answerItem(page, 'prop-p00e', '一意に決められない')
-
-  await expect(page.getByText(/文を命題という/)).toBeVisible()
+  await expect(page.getByRole('heading', { name: '条件から真偽を判断する', exact: true })).toBeVisible()
   await expect(page.getByTestId('textbook-item-prop-a01')).toBeVisible()
-  await expect(page.getByText(/pならばqである/)).toHaveCount(0)
+  await expect(page.getByTestId('textbook-item-prop-a02')).toHaveCount(0)
+  await expect(page.getByText(/文を命題という/)).toHaveCount(0)
 
   await answerItem(page, 'prop-a01', '満たす')
+
+  await expect(page.getByText(/文を命題という/)).toBeVisible()
   await expect(page.getByText(/pならばqである/)).toBeVisible()
   await expect(page.getByTestId('textbook-item-prop-a02')).toBeVisible()
 })
 
-test('proposition-reading wrong answer stays unresolved and does not reveal the next judgment', async ({ page }) => {
+test('proposition-reading wrong answer stays unresolved and does not reveal the proposition concept', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-propositions-reading'))
 
-  await chooseWrongOption(page, 'prop-p00a', '真である')
+  await chooseWrongOption(page, 'prop-a01', '満たす')
 
-  await expect(page.getByTestId('resolved-prop-p00a')).toHaveCount(0)
-  await expect(page.getByTestId('textbook-item-prop-p00b')).toHaveCount(0)
+  await expect(page.getByTestId('resolved-prop-a01')).toHaveCount(0)
+  await expect(page.getByTestId('textbook-item-prop-a02')).toHaveCount(0)
   await expect(page.getByText(/文を命題という/)).toHaveCount(0)
 
-  await page.getByTestId('textbook-item-prop-p00a').click()
-  const hint = page.getByTestId('textbook-hint-prop-p00a')
+  await page.getByTestId('textbook-item-prop-a01').click()
+  const hint = page.getByTestId('textbook-hint-prop-a01')
   await expect(hint).toBeVisible()
-  await expect(hint).not.toContainText('真である')
+  await expect(hint).not.toContainText('満たす')
 })
 
 test('proposition-reading follows the textbook order from truth to necessary/sufficient to negation', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-propositions-reading'))
 
   const truthAnswers: Array<[string, string]> = [
-    ['prop-p00a', '真である'],
-    ['prop-p00b', '頂角40°の二等辺三角形'],
-    ['prop-p00c', '偽である'],
-    ['prop-p00d', '定まっていない'],
-    ['prop-p00e', '一意に決められない'],
     ['prop-a01', '満たす'],
     ['prop-a02', 'すべて入る'],
     ['prop-a03', '-1'],
     ['prop-a04', '偽'],
     ['prop-a05', '-3'],
     ['prop-a06', '偽'],
+    ['prop-a07', '直角二等辺三角形'],
+    ['prop-a08', '偽'],
   ]
   for (const [itemId, answer] of truthAnswers) await answerItem(page, itemId, answer)
 
@@ -232,11 +222,6 @@ test('proposition-reading follows the textbook order from truth to necessary/suf
 test('proposition-reading counterexample is decided before the counterexample concept is named', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-propositions-reading'))
 
-  await answerItem(page, 'prop-p00a', '真である')
-  await answerItem(page, 'prop-p00b', '頂角40°の二等辺三角形')
-  await answerItem(page, 'prop-p00c', '偽である')
-  await answerItem(page, 'prop-p00d', '定まっていない')
-  await answerItem(page, 'prop-p00e', '一意に決められない')
   await answerItem(page, 'prop-a01', '満たす')
   await answerItem(page, 'prop-a02', 'すべて入る')
 

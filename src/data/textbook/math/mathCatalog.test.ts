@@ -4,11 +4,15 @@ import { mathTextbookTopicForUnit, mathTextbookTopics } from './mathCatalog'
 import { mathTextbookUnits } from './index'
 
 describe('math textbook catalog', () => {
-  it('aligns the set lesson with the same practice curriculum topic and range', () => {
+  it('aligns the set lesson with the overlapping practice curriculum without driving learner structure', () => {
     const topic = mathTextbookTopicForUnit(mathSetUnit.unitId)
     expect(topic?.id).toBe('organize-sets')
-    expect(topic?.practiceTopicId).toBe('organize-sets')
-    expect(topic?.practiceRange).toEqual([87, 97])
+    expect(topic?.practiceLinks).toEqual([
+      {
+        topicId: 'organize-sets',
+        questionNumbers: [87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97],
+      },
+    ])
     expect(topic?.flow.ja).toBe('集合の表し方 → 部分集合 → 共通部分・和集合 → 補集合 → 集合の条件')
   })
 
@@ -19,28 +23,33 @@ describe('math textbook catalog', () => {
       'read-propositions',
       'prove-propositions',
     ])
-    expect(mathTextbookTopics.map((topic) => topic.practiceRange)).toEqual([
-      [87, 97],
-      [98, 107],
-      [108, 117],
-    ])
     expect(mathTextbookTopics[0].unitIds).toEqual(['math-sets'])
     expect(mathTextbookTopics[1].unitIds).toEqual(['math-propositions-reading'])
     expect(mathTextbookTopics[2].unitIds).toEqual(['math-propositions-proof', 'math-quantifiers-all-exists'])
   })
 
 
-  it('keeps practice synchronization metadata internal without forcing unrelated later questions into learning mode', () => {
-    expect(mathTextbookTopics[0].practiceQuestionNumbers).toEqual([
-      87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97,
+  it('keeps practice synchronization metadata internal without forcing practice taxonomy onto learner topics', () => {
+    expect(mathTextbookTopics[1].practiceLinks).toEqual([
+      {
+        topicId: 'read-propositions',
+        questionNumbers: [98, 99, 100, 101, 102, 103, 104, 105, 106, 107],
+      },
     ])
-    expect(mathTextbookTopics[1].practiceQuestionNumbers).toEqual([
-      98, 99, 100, 101, 102, 103, 104, 105, 106, 107,
+    expect(mathTextbookTopics[2].practiceLinks).toEqual([
+      {
+        topicId: 'prove-propositions',
+        questionNumbers: [108, 110, 111, 112, 113, 114, 115, 116, 117],
+      },
+      {
+        topicId: 'read-propositions',
+        questionNumbers: [109],
+      },
     ])
-    expect(mathTextbookTopics[2].practiceQuestionNumbers).toEqual([
-      108, 109, 110, 111, 112, 113, 114, 115, 116, 117,
-    ])
-    const all = mathTextbookTopics.flatMap((topic) => topic.practiceQuestionNumbers)
+
+    const all = mathTextbookTopics.flatMap((topic) =>
+      topic.practiceLinks.flatMap((link) => link.questionNumbers),
+    )
     expect(new Set(all).size).toBe(all.length)
     expect([...all].sort((a, b) => a - b)).toEqual(
       Array.from({ length: 31 }, (_, index) => 87 + index),

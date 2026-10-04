@@ -386,7 +386,7 @@ export function TextbookUnitPage() {
   }
 
   return (
-    <div className="page-stack textbook-page">
+    <div className="page-stack textbook-page" data-textbook-subject={unit.subject}>
       <header className="session-header">
         <div>
           <p className="eyebrow">

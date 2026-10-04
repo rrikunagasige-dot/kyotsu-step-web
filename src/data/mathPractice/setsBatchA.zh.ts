@@ -38,6 +38,11 @@ const exactText: Record<string, string> = {
 }
 
 const explicitText: Record<string, string> = {
+  "確認": "确认",
+  "4個": "4个",
+  "2個": "2个",
+  "3個": "3个",
+  "U全体": "整个 U",
   "6×6 まで": "到 6×6 为止",
   "4×9 まで": "到 4×9 为止",
   "18×2 まで": "到 18×2 为止",

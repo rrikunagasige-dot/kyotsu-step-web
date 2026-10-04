@@ -23,7 +23,7 @@ const rawMathFunctionConditionsUnit = {
   },
   objectives: [
     'xを決めたときにyがどのように対応するかを具体例から判断する',
-    'f(x)という表記を、入力xに対応する値として読む',
+    '関数の表記を、入力に対応する値として読む',
     '文章条件から式を作り、xとyが取り得る範囲を考える',
   ],
   sections: [

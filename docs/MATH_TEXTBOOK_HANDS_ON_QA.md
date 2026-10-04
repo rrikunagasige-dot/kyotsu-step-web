@@ -220,3 +220,46 @@ User confirmation前:
 - statusをreviewのまま維持
 - PR #31をDraftのまま維持
 - mainへmergeしない
+
+
+## 2026-10-04 golden Word restoration — math-sets
+
+Authority:
+- user-approved `集合_教科書モード_完成版_v1`
+- mathematics textbook-mode implementation must follow this mother document rather than inventing a new app-specific structure
+
+Restored learner structure:
+- 第1部　集合を表す
+- 第2部　集合どうしの関係を見る
+- 第3部　集合の外側まで考える
+- Part 2 order restored to `共通部分・和集合 → 部分集合`
+- 例題: 7
+- 確認: 1
+- まとめ: 1
+- selective dialogue: 8（花子3 / 太郎3 / 先生2）
+- formal concept terms render as black bold text
+- De Morgan confirmation repeats `U, A, B` before element-wise verification
+
+Shared UI support added only to represent the existing mother:
+- `term`: black-bold formal term
+- `marker`: compact 例題 / 証明 / 確認 / まとめ label
+- `dialogue`: 花子 / 太郎 / 先生
+- no semantic concept coloring
+- no new learning examples or concepts were invented
+
+Isolation:
+- existing holes / figures / progressive reveal retained
+- math practice lesson data not modified
+- physics lesson data/assets not modified
+- review proposition units remain `status: review`
+
+Validated code head before QA-deployment-only commit:
+- `442d532bd1ec4eee268be242a7342198f225a721`
+- Math textbook mode CI: **success**
+- Math practice pilot CI: **success**
+- Textbook CI internal gates: Typecheck / unit tests / Build / mobile / desktop / Physics regression / Math practice setup regression = **all success**
+
+Next gate:
+- temporary GitHub Pages deployment from `chatgpt/math-textbook-sets-v1`
+- user hands-on comparison against the golden Word mother
+- do not merge PR #31 or promote review units before user confirmation

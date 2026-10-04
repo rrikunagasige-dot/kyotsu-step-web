@@ -23,7 +23,7 @@ learner-facing の章構造は教科書をauthorityにする。練習モード�
 1. `organize-sets`
    - source: 第3章 p.86〜91
    - practice overlap: 87〜97
-   - 集合の表し方 → 部分集合 → 共通部分・和集合 → 補集合 → 集合の条件
+   - 集合の表し方 → 共通部分・和集合 → 部分集合 → 補集合 → 集合の条件
 2. `read-propositions`
    - source: 第3章 p.92〜95 + 参考 p.100〜101
    - practice overlap: 98〜107, 109
@@ -48,8 +48,8 @@ Source:
 - ∈ / ∉
 - 2つの表し方
 - 有限 / 無限
-- 部分集合 / 空集合 / 相等
 - 共通部分 / 和集合
+- 部分集合 / 空集合 / 相等
 - 全体集合 / 補集合
 - ド・モルガン
 - 実数集合 / 数直線 / 端点
@@ -284,3 +284,35 @@ Current gate:
 - 3 units remain `status: review`
 - next: QA Pages deployment of the restored branch, then user hands-on QA
 - do not promote or merge before user confirmation
+
+
+## 2026-10-04 math-sets golden Word restoration
+
+Mother:
+- user-approved `集合_教科書モード_完成版_v1`
+- this Word is the golden implementation reference for mathematics textbook mode
+
+Restoration:
+- Part headings restored: 第1部 / 第2部 / 第3部
+- Part 2 restored to `共通部分・和集合 → 部分集合`
+- 7 example markers, 1 confirmation marker, 1 summary marker
+- 8 selective dialogues restored
+- formal concept terms render as black bold text
+- De Morgan confirmation explicitly repeats `U, A, B`
+- existing good holes / figures / progressive reveal preserved
+
+Shared representation:
+- schema/UI minimally extended with `term`, `marker`, `dialogue`
+- Physics behavior unchanged unless these new math-specific structures are used
+- practice data remains no-touch
+
+Validated code head:
+- `442d532bd1ec4eee268be242a7342198f225a721`
+- Math textbook mode CI: success
+- Math practice pilot CI: success
+- all textbook internal gates success
+
+Current action:
+- temporarily deploy this QA branch to GitHub Pages
+- user hands-on QA next
+- PR #31 remains Draft / unmerged

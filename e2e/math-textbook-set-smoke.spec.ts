@@ -301,6 +301,14 @@ test('quantifier review wrong answer stays unresolved and keeps the witness step
   const hint = page.getByTestId('textbook-hint-quant-a01')
   await expect(hint).toBeVisible()
   await expect(hint).not.toContainText('1つ')
+
+  const viewport = page.viewportSize()
+  if (viewport && viewport.width <= 640) {
+    const columns = await page.locator('.reading-choice-options').first().evaluate(
+      (element) => window.getComputedStyle(element).gridTemplateColumns,
+    )
+    expect(columns.trim().split(/\\s+/)).toHaveLength(1)
+  }
 })
 
 test('quantifier review unit derives the negation of all only after the source counterexample', async ({ page }) => {

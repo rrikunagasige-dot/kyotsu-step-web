@@ -2022,6 +2022,7 @@ test('96 imports (1) only when reaching (5), not for unrelated subproblems', asy
   await page.getByTestId('math-topic-question-10').click()
 
   await expect(page.getByRole('heading', { name: '96｜3集合の複合演算' })).toBeVisible()
+  const readingFlow = page.getByTestId('math-practice-reading-flow')
 
   await page.getByTestId('blank-math-practice-096-p1-ab').click()
   await page.getByTestId('option-math-practice-096-p1-ab-correct').click()
@@ -2039,6 +2040,15 @@ test('96 imports (1) only when reaching (5), not for unrelated subproblems', asy
   await page.getByTestId('option-math-practice-096-p3-result-correct').click()
   await page.getByTestId('blank-math-practice-096-p4-candidates').click()
   await page.getByTestId('option-math-practice-096-p4-candidates-b').click()
+
+  // (4): first enforce not-A, then enforce not-C. Do not jump from B directly to {5}.
+  await expect(page.getByTestId('blank-math-practice-096-p4-after-a')).toContainText('選択')
+  await expect(page.getByTestId('blank-math-practice-096-p4-result')).toHaveCount(0)
+  await expect(readingFlow).not.toContainText('{5,6}')
+  await page.getByTestId('blank-math-practice-096-p4-after-a').click()
+  await page.getByTestId('option-math-practice-096-p4-after-a-correct').click()
+
+  await expect(page.getByTestId('blank-math-practice-096-p4-result')).toContainText('選択')
   await page.getByTestId('blank-math-practice-096-p4-result').click()
   await page.getByTestId('option-math-practice-096-p4-result-correct').click()
 

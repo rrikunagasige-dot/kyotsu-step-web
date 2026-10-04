@@ -8,7 +8,7 @@ import type { TextbookUnit } from '../domain/textbookSchema'
 import { textbookRepository } from '../repositories/textbookRepository'
 import { physicsTextbookParts } from '../data/textbook/chapterCatalog'
 import { chapter1LearningChunks, chapter1Localized } from '../data/textbook/ch01/chapter1Architecture'
-import { mathTextbookTopics } from '../data/textbook/math'
+import { mathTextbookTopicHasAllUnits, mathTextbookTopics } from '../data/textbook/math'
 import { getQuestionCatalog, useAppStore } from '../stores/useAppStore'
 import { useI18n } from '../i18n/runtime'
 import { subjectLabel } from '../i18n/labels'
@@ -351,7 +351,12 @@ export function LearningSetupPage() {
                       topic.unitIds.some((unitId) => unitId === unit.unitId),
                     )
 
-                    if (topicUnits.length === 0) {
+                    const topicReady = mathTextbookTopicHasAllUnits(
+                      topic.id,
+                      topicUnits.map((unit) => unit.unitId),
+                    )
+
+                    if (!topicReady) {
                       return (
                         <div
                           className="textbook-unit-link textbook-chunk-link textbook-unit-link--pending"

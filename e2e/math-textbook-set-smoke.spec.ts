@@ -55,14 +55,6 @@ async function completeFirstSetsSlice(page: Page) {
 
 async function completeRelationsAndSubsets(page: Page) {
   const answers: Array<[string, string]> = [
-    ['set-c01', 'すべて入っている'],
-    ['set-c02', '4がAにないので、全部は入っていない'],
-    ['set-c03', '0個'],
-    ['set-c04', '{1}, {2}, {3}'],
-    ['set-c05', '{1,2}, {1,3}, {2,3}'],
-    ['set-c06', 'はい'],
-    ['set-c07', '∅, {1}, {2}, {3}, {1,2}, {1,3}, {2,3}, {1,2,3}'],
-    ['set-c08', '残らない'],
     ['set-b01', '3, 5, 7'],
     ['set-b02', 'AとBの両方に属する要素'],
     ['set-b03', '1, 2, 3, 5, 7, 9'],
@@ -72,6 +64,14 @@ async function completeRelationsAndSubsets(page: Page) {
     ['set-b07', 'AとBの2つの円全体'],
     ['set-b08', '3つすべてに属する要素'],
     ['set-b09', '3つのうち少なくとも1つに属する要素'],
+    ['set-c01', 'すべて入っている'],
+    ['set-c02', '4がAにないので、全部は入っていない'],
+    ['set-c03', '0個'],
+    ['set-c04', '{1}, {2}, {3}'],
+    ['set-c05', '{1,2}, {1,3}, {2,3}'],
+    ['set-c06', 'はい'],
+    ['set-c07', '∅, {1}, {2}, {3}, {1,2}, {1,3}, {2,3}, {1,2,3}'],
+    ['set-c08', '残らない'],
   ]
   for (const [itemId, answer] of answers) await answerItem(page, itemId, answer)
 }
@@ -127,7 +127,7 @@ test('learning setup exposes math textbook mode with the same three curriculum t
 
   const setsTopic = page.getByTestId('math-textbook-topic-organize-sets')
   await expect(setsTopic).toContainText('集合を整理する')
-  await expect(setsTopic).toContainText('集合の表し方 → 部分集合 → 共通部分・和集合 → 補集合 → 集合の条件')
+  await expect(setsTopic).toContainText('集合の表し方 → 共通部分・和集合 → 部分集合 → 補集合 → 集合の条件')
   await expect(setsTopic).not.toContainText('準備中')
   await expect(setsTopic).toHaveAttribute('href', '#/learning/textbook/math-sets')
 
@@ -242,6 +242,7 @@ test('proposition-reading follows the textbook order from truth to necessary/suf
   ]
   for (const [itemId, answer] of negationAnswers) await answerItem(page, itemId, answer)
 
+  await expect(page.getByTestId('reading-role-summary-marker-summary-sets')).toBeVisible()
   await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
   await expect(page.getByTestId('textbook-next-unit')).toHaveAttribute(
     'href',
@@ -552,7 +553,8 @@ test('math set lesson boots directly on the shared textbook reader', async ({ pa
   await expect(page.getByText('TEXTBOOK / MATH I+A / CHAPTER 3')).toBeVisible()
   await expect(page.getByRole('heading', { name: '集合', exact: true })).toBeVisible()
   await expect(page.getByTestId('app-back-button')).toHaveAttribute('href', '#/learning/setup?subject=math-1a')
-  await expect(page.getByRole('heading', { name: '集合を表す', exact: true })).toBeVisible()
+  await expect(page.getByRole('heading', { name: '第1部　集合を表す', exact: true })).toBeVisible()
+  await expect(page.getByTestId('reading-role-example-marker-example-divisors')).toBeVisible()
   await expect(page.getByTestId('textbook-item-set-a01')).toBeVisible()
   await expect(page.getByTestId('textbook-item-set-a02')).toHaveCount(0)
   await expect(page.getByText('TEXTBOOK / PHYSICS')).toHaveCount(0)
@@ -565,7 +567,7 @@ test('wrong answer stays unresolved, shows a staged hint, and does not unlock co
   await chooseWrongOption(page, 'set-a01', '1, 2, 3, 4, 6, 8, 12, 24')
 
   await expect(page.getByTestId('resolved-set-a01')).toHaveCount(0)
-  await expect(page.getByText(/ひとまとまりとして考えたものを集合という/)).toHaveCount(0)
+  await expect(page.locator('.reading-term').filter({ hasText: /^集合$/ })).toHaveCount(0)
   await expect(page.getByTestId('textbook-item-set-a02')).toHaveCount(0)
 
   await page.getByTestId('textbook-item-set-a01').click()
@@ -583,7 +585,10 @@ test('correct answer fills the sentence and unlocks the next learning step', asy
   await panel.getByRole('button', { name: '1, 2, 3, 4, 6, 8, 12, 24', exact: true }).click()
 
   await expect(page.getByTestId('resolved-set-a01')).toContainText('1, 2, 3, 4, 6, 8, 12, 24')
-  await expect(page.getByText(/ひとまとまりとして考えたものを集合という/)).toBeVisible()
+  const setTerm = page.locator('.reading-term').filter({ hasText: /^集合$/ }).first()
+  await expect(setTerm).toBeVisible()
+  const termWeight = await setTerm.evaluate((element) => Number.parseInt(getComputedStyle(element).fontWeight, 10))
+  expect(termWeight).toBeGreaterThanOrEqual(700)
   await expect(page.getByTestId('textbook-item-set-a02')).toBeVisible()
 })
 
@@ -618,67 +623,59 @@ test('set notation renders without KaTeX errors or horizontal overflow', async (
 })
 
 
-test('the second learning group follows the synchronized subset-first curriculum order', async ({ page }) => {
+test('the second learning group follows the golden intersection-and-union-first order', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-sets'))
 
-  await expect(page.getByRole('heading', { name: '集合どうしの関係を見る', exact: true })).toHaveCount(0)
+  await expect(page.getByRole('heading', { name: '第2部　集合どうしの関係を見る', exact: true })).toHaveCount(0)
   await completeFirstSetsSlice(page)
-  await expect(page.getByRole('heading', { name: '集合どうしの関係を見る', exact: true })).toBeVisible()
-  await expect(page.getByTestId('textbook-item-set-c01')).toBeVisible()
-  await expect(page.getByTestId('textbook-item-set-b01')).toHaveCount(0)
-  await expect(page.getByTestId('textbook-figure-venn-two-blank')).toHaveCount(0)
+  await expect(page.getByRole('heading', { name: '第2部　集合どうしの関係を見る', exact: true })).toBeVisible()
+  await expect(page.getByTestId('reading-role-example-marker-example-intersection-union')).toBeVisible()
+  await expect(page.getByTestId('textbook-item-set-b01')).toBeVisible()
+  await expect(page.getByTestId('textbook-item-set-c01')).toHaveCount(0)
+  await expect(page.getByTestId('textbook-figure-venn-two-blank')).toBeVisible()
 })
 
-test('the completed intersection figure is revealed only after subsets and the intersection decision', async ({ page }) => {
+test('the completed intersection figure is revealed only after the intersection decision', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-sets'))
   await completeFirstSetsSlice(page)
-
-  const subsetAnswers: Array<[string, string]> = [
-    ['set-c01', 'すべて入っている'],
-    ['set-c02', '4がAにないので、全部は入っていない'],
-    ['set-c03', '0個'],
-    ['set-c04', '{1}, {2}, {3}'],
-    ['set-c05', '{1,2}, {1,3}, {2,3}'],
-    ['set-c06', 'はい'],
-    ['set-c07', '∅, {1}, {2}, {3}, {1,2}, {1,3}, {2,3}, {1,2,3}'],
-    ['set-c08', '残らない'],
-  ]
-  for (const [itemId, answer] of subsetAnswers) await answerItem(page, itemId, answer)
 
   await expect(page.getByTestId('textbook-figure-venn-two-blank')).toBeVisible()
   await expect(page.getByTestId('textbook-figure-venn-intersection')).toHaveCount(0)
 
   await answerItem(page, 'set-b01', '3, 5, 7')
 
-  await expect(page.getByText(/共通部分といい/)).toBeVisible()
+  await expect(page.locator('.reading-term').filter({ hasText: /^共通部分$/ })).toBeVisible()
   await expect(page.getByTestId('textbook-figure-venn-intersection')).toBeVisible()
   await expect(page.getByTestId('textbook-item-set-b02')).toBeVisible()
 })
 
-test('subset then union concepts keep the synchronized meaning-first progression', async ({ page }) => {
+test('intersection and union lead into subset with the golden meaning-first progression', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-sets'))
   await completeFirstSetsSlice(page)
 
+  await expect(page.getByTestId('textbook-item-set-b01')).toBeVisible()
+  await expect(page.locator('.reading-term').filter({ hasText: /^共通部分$/ })).toHaveCount(0)
+  await answerItem(page, 'set-b01', '3, 5, 7')
+  await expect(page.locator('.reading-term').filter({ hasText: /^共通部分$/ })).toBeVisible()
+
+  const restOfRelations: Array<[string, string]> = [
+    ['set-b02', 'AとBの両方に属する要素'],
+    ['set-b03', '1, 2, 3, 5, 7, 9'],
+    ['set-b04', 'ない'],
+    ['set-b05', 'AかBの少なくとも一方に属する要素'],
+    ['set-b06', '2つの円の重なりだけ'],
+    ['set-b07', 'AとBの2つの円全体'],
+    ['set-b08', '3つすべてに属する要素'],
+    ['set-b09', '3つのうち少なくとも1つに属する要素'],
+  ]
+  for (const [itemId, answer] of restOfRelations) await answerItem(page, itemId, answer)
+
+  await expect(page.getByTestId('reading-role-example-marker-example-subset')).toBeVisible()
   await expect(page.getByTestId('textbook-item-set-c01')).toBeVisible()
-  await expect(page.getByText(/部分集合という/)).toHaveCount(0)
+  await expect(page.locator('.reading-term').filter({ hasText: /^部分集合$/ })).toHaveCount(0)
   await answerItem(page, 'set-c01', 'すべて入っている')
   await answerItem(page, 'set-c02', '4がAにないので、全部は入っていない')
-  await expect(page.getByText(/部分集合という/)).toBeVisible()
-
-  const restOfSubset: Array<[string, string]> = [
-    ['set-c03', '0個'],
-    ['set-c04', '{1}, {2}, {3}'],
-    ['set-c05', '{1,2}, {1,3}, {2,3}'],
-    ['set-c06', 'はい'],
-    ['set-c07', '∅, {1}, {2}, {3}, {1,2}, {1,3}, {2,3}, {1,2,3}'],
-    ['set-c08', '残らない'],
-  ]
-  for (const [itemId, answer] of restOfSubset) await answerItem(page, itemId, answer)
-
-  await expect(page.getByTestId('textbook-item-set-b01')).toBeVisible()
-  await expect(page.getByText(/共通部分といい/)).toHaveCount(0)
-  await answerItem(page, 'set-b01', '3, 5, 7')
-  await expect(page.getByText(/共通部分といい/)).toBeVisible()
+  await expect(page.locator('.reading-term').filter({ hasText: /^部分集合$/ })).toBeVisible()
 })
 
 
@@ -687,15 +684,16 @@ test('complement terminology appears only after the whole-set scope and outside 
   await completeFirstSetsSlice(page)
   await completeRelationsAndSubsets(page)
 
-  await expect(page.getByRole('heading', { name: '集合の外側まで考える', exact: true })).toBeVisible()
-  await expect(page.getByText(/全体集合といい/)).toHaveCount(0)
+  await expect(page.getByRole('heading', { name: '第3部　集合の外側まで考える', exact: true })).toBeVisible()
+  await expect(page.getByTestId('reading-role-example-marker-example-complement')).toBeVisible()
+  await expect(page.locator('.reading-term').filter({ hasText: /^全体集合$/ })).toHaveCount(0)
 
   await answerItem(page, 'set-d01', '入れない')
-  await expect(page.getByText(/全体集合といい/)).toBeVisible()
-  await expect(page.getByText(/補集合といい/)).toHaveCount(0)
+  await expect(page.locator('.reading-term').filter({ hasText: /^全体集合$/ })).toBeVisible()
+  await expect(page.locator('.reading-term').filter({ hasText: /^補集合$/ })).toHaveCount(0)
 
   await answerItem(page, 'set-d02', '1, 3, 5, 7, 9, 11')
-  await expect(page.getByText(/補集合といい/)).toBeVisible()
+  await expect(page.locator('.reading-term').filter({ hasText: /^補集合$/ })).toBeVisible()
   await expect(page.getByTestId('textbook-figure-complement-after')).toBeVisible()
 })
 
@@ -705,7 +703,7 @@ test('De Morgan law is revealed only after the two regions are compared', async 
   await completeRelationsAndSubsets(page)
   await completeComplements(page)
 
-  await expect(page.getByText(/ド・モルガンの法則という/)).toHaveCount(0)
+  await expect(page.locator('.reading-term').filter({ hasText: /^ド・モルガンの法則$/ })).toHaveCount(0)
   await expect(page.getByTestId('textbook-item-set-e01')).toBeVisible()
 
   await answerItem(page, 'set-e01', '2つの円の重なり')
@@ -715,13 +713,13 @@ test('De Morgan law is revealed only after the two regions are compared', async 
   await answerItem(page, 'set-e04', '同じ')
   await answerItem(page, 'set-e05', '\\overline{A}\\cup\\overline{B}')
 
-  await expect(page.getByText(/ド・モルガンの法則という/)).toHaveCount(0)
+  await expect(page.locator('.reading-term').filter({ hasText: /^ド・モルガンの法則$/ })).toHaveCount(0)
 
   await answerItem(page, 'set-e06', 'AまたはBに入る2つの円全体')
   await answerItem(page, 'set-e07', '\\overline{A}\\cap\\overline{B}')
   await answerItem(page, 'set-e08', '\\overline{A}\\cap\\overline{B}')
 
-  await expect(page.getByText(/ド・モルガンの法則という/)).toBeVisible()
+  await expect(page.locator('.reading-term').filter({ hasText: /^ド・モルガンの法則$/ })).toBeVisible()
 })
 
 test('real-line endpoint judgments precede complement formulas and the unit can reach completion', async ({ page }) => {

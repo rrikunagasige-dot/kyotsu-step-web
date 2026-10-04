@@ -75,7 +75,13 @@ Checkpoint:
 - 問8(4)の反例はsource通り「直角二等辺三角形」
 - 最初のsource判断後に「命題」と p⇒q を概念化
 - UNIT TEST / E2E: source例とprogressive revealを固定済み
-- STATUS: review
+- FINAL UNIT QA: PASS
+  - 問8〜問11を原典 p.92〜95 と再照合
+  - prop-a07 の意味重複 distractor を解消
+  - prop-a04 / prop-c01 の aria-label から概念名の先出しを除去
+  - wrong answer unresolved / staged hint / KaTeX / mobile・desktop overflow gate を確認
+- STATUS: review / publish-ready
+- PUBLISH GATE: read-propositions topic は `math-quantifiers-all-exists` も含むため、quantifier unit の最終QA完了後にまとめて published へ上げる
 
 ### math-quantifiers-all-exists
 Source:

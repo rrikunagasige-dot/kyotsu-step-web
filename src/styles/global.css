@@ -358,6 +358,11 @@ a { color: inherit; }
 .textbook-reading-flow { display: grid; gap: 1rem; padding: clamp(.9rem, 2vw, 1.35rem); border: 2px solid var(--color-border); background: var(--color-paper); }
 .reading-subheading { margin: 1rem 0 .1rem; padding: .55rem .7rem; border-left: 5px solid var(--color-primary); background: var(--color-section); font-size: 1.05rem; }
 .reading-subheading:first-child { margin-top: 0; }
+.reading-role-marker { width: fit-content; margin: .85rem 0 -.25rem; color: var(--color-text); font-size: .95rem; font-weight: 800; line-height: 1.4; }
+.reading-role-marker--summary { margin-top: 1.2rem; font-size: 1.22rem; }
+.reading-dialogue { display: flex; flex-wrap: wrap; gap: .25rem; margin: .2rem 0; padding: .55rem .7rem; background: #f3f3f3; color: var(--color-text); font-size: .9rem; line-height: 1.7; }
+.reading-dialogue strong { color: var(--color-text); }
+.reading-term { color: var(--color-text); font-weight: 800; }
 .reading-note { padding: .7rem .8rem; border: 1px solid var(--color-primary); background: var(--color-section); color: var(--color-muted); font-size: .82rem; line-height: 1.65; }
 .reading-paragraph { margin: 0; font-size: 1rem; line-height: 2.05; }
 .reading-paragraph > span { display: inline; }

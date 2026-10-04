@@ -11,6 +11,22 @@ describe('math proposition-reading textbook unit', () => {
   })
 
 
+
+  it('keeps the frontmatter goals in the same order as the learner flow', () => {
+    expect(mathPropositionReadingUnit.objectives).toEqual([
+      '条件から何が必ず言えるかを具体例で判断する',
+      '一方向と逆方向を分けて、二つの条件の関係を整理する',
+      '条件が成り立たない範囲を言葉と式で表す',
+    ])
+  })
+
+  it('fades support to light at the end of each learned idea', () => {
+    const items = mathPropositionReadingUnit.sections[0].items
+    expect(items.find((item) => item.id === 'prop-a08')?.scaffoldLevel).toBe('light')
+    expect(items.find((item) => item.id === 'prop-b06')?.scaffoldLevel).toBe('light')
+    expect(items.find((item) => item.id === 'prop-c04')?.scaffoldLevel).toBe('light')
+  })
+
   it('forms the proposition concept after the first source implication judgment', () => {
     const flow = mathPropositionReadingUnit.sections[0].readingFlow
     const implicationDecision = flow.findIndex(

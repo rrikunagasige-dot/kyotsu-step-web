@@ -2,9 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches:
-      - 'main'
-      - 'chatgpt/math-textbook-sets-v1'
+    branches: ['main']
   workflow_dispatch:
 
 permissions:
@@ -59,7 +57,7 @@ jobs:
 
   deploy:
     environment:
-      name: github-pages-qa
+      name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build

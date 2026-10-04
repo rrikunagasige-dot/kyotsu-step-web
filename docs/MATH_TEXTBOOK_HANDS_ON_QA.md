@@ -265,3 +265,42 @@ Next gate:
 - local QA package from the successful GitHub Actions build artifact
 - user hands-on comparison against the golden Word mother
 - do not merge PR #31 or promote review units before user confirmation
+
+
+
+## 2026-10-04 golden textbook role checkpoint
+
+Validated code head:
+- `2127c3d4d35793546228ac2fe2a9d38e8a9f97be`
+
+The published `math-sets` golden Word mother was used as the learner-facing display contract for the 3 review units.
+
+Current units:
+- `math-propositions-reading`: revision 3 / 14 interactions / review
+  - example markers: 6
+  - check markers: 4
+  - summary markers: 1
+  - selective dialogue: 4
+  - black-bold terms: 命題 / 反例 / 十分条件 / 必要条件 / 必要十分条件 / 同値 / 否定 / ド・モルガンの法則
+- `math-quantifiers-all-exists`: revision 5 / 11 interactions / review
+  - example markers: 2
+  - check markers: 2
+  - summary markers: 1
+  - selective dialogue: 3
+  - black-bold terms: ある / すべて / 否定 / 反例
+- `math-propositions-proof`: revision 4 / 23 interactions / review
+  - example markers: 1
+  - check markers: 1
+  - proof markers: 2
+  - summary markers: 1
+  - selective dialogue: 3
+  - black-bold terms: 逆 / 裏 / 対偶 / 背理法
+
+The review units preserve their source examples and interaction topology from the MASTER restoration. This pass did not invent new mathematics; it restored the golden textbook presentation hierarchy around the existing source-backed content.
+
+Automated validation:
+- Math textbook mode CI: PASS
+- Math practice pilot CI: PASS
+- Typecheck / math unit tests / Build / mobile / desktop / Physics regression / Math practice setup regression: all PASS
+
+Promotion remains blocked on user hands-on QA.

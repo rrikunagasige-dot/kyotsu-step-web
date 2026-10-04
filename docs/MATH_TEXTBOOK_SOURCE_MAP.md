@@ -5,27 +5,28 @@
 ## 1. 集合を整理する
 
 ### math-sets
+- revision: 2
 - status: published
 - source: 深進数学I p.86〜91 相当
 - practice topic: organize-sets
 - practice questions: 87〜97
 - flow:
   1. 集合を表す
-  2. 部分集合
-  3. 共通部分・和集合
+  2. 共通部分・和集合
+  3. 部分集合
   4. 全体集合・補集合
   5. ド・モルガン
   6. 実数集合・数直線
 - note:
-  - 練習モード順に合わせ、部分集合を共通部分・和集合より先に置く。
+  - user-approved `集合_教科書モード_完成版_v1` を母版とし、Part 2 は「共通部分・和集合 → 部分集合」の順を守る。
   - 概念名は具体的判断の後に出す。
   - 補集合・ド・モルガンでは answer-bearing figure を判断後に表示する。
 
 ## 2. 条件から命題を読む
 
 ### math-propositions-reading
-- revision: 2
-- status: review（MASTER復元実装済み / automated CI PASS。quantifier unitと同じread-propositions topicとしてuser hands-on QA待ち）
+- revision: 3
+- status: review（MASTER復元＋golden textbook role反映済み / automated CI PASS。quantifier unitと同じread-propositions topicとしてuser hands-on QA待ち）
 - source: 深進数学I p.92〜95 相当
 - practice topic: read-propositions
 - practice questions: 98〜107
@@ -49,8 +50,8 @@
 ## 3. 命題を証明する
 
 ### math-propositions-proof
-- revision: 3
-- status: review（MASTER復元実装済み / automated CI PASS。user hands-on QA待ち）
+- revision: 4
+- status: review（MASTER復元＋例題/証明/確認/まとめのrole反映済み / automated CI PASS。user hands-on QA待ち）
 - source: 深進数学I p.96〜98 相当
 - practice topic: prove-propositions
 - practice questions: 108, 110〜117
@@ -70,8 +71,8 @@
 ## 3A. 参考「すべて」と「ある」
 
 ### math-quantifiers-all-exists
-- revision: 4
-- status: review（MASTER復元実装済み / automated CI PASS。math-propositions-readingと同じread-propositions topicとしてuser hands-on QA待ち）
+- revision: 5
+- status: review（MASTER復元＋golden textbook role反映済み / automated CI PASS。math-propositions-readingと同じread-propositions topicとしてuser hands-on QA待ち）
 - source: 深進数学I p.100〜101 相当
 - learner topic: read-propositions
 - practice overlap: read-propositions / 109
@@ -125,5 +126,5 @@ The review units were restored from the frozen mathematics textbook-mode MASTER 
 - proposition-reading: 18 → 14 interactions; redundant conclusion/name-recall panels merged into prose
 - quantifier: 13 → 11 interactions; concrete witness/counterexample moved before abstract rule
 - proof: 23 interactions retained; concrete source proposition now precedes reverse/inverse/contrapositive naming; contradiction method name remains after the worked proof
-- current revisions: reading 2 / quantifier 4 / proof 3
+- current revisions: reading 3 / quantifier 5 / proof 4
 - all remain review pending user hands-on QA

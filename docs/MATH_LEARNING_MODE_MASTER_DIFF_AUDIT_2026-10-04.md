@@ -400,3 +400,26 @@ Remaining gate:
 - user hands-on QA of the restored learner rhythm
 - all 3 units remain `status: review`
 - do not merge PR #31 before user confirmation
+
+
+---
+
+## 13. Golden textbook presentation result
+
+After the first MASTER restoration, the user identified a second mismatch: the app still flattened textbook roles that were explicit in the approved `集合_教科書モード_完成版_v1`.
+
+The shared representation was minimally extended with:
+- `term`: formal concept term rendered black + bold
+- `marker`: 例題 / 証明 / 確認 / まとめ
+- `dialogue`: selective 花子 / 太郎 / 先生
+
+These roles were then applied to the 3 review units without changing source examples or interaction count.
+
+Current validated state:
+- reading revision 3 / 14 interactions
+- quantifier revision 5 / 11 interactions
+- proof revision 4 / 23 interactions
+- validated head `2127c3d4d35793546228ac2fe2a9d38e8a9f97be`
+- Math textbook CI PASS
+- Math practice pilot CI PASS
+- all 3 units remain review pending user hands-on QA

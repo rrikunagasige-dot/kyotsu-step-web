@@ -318,3 +318,29 @@ Current action:
 - use the successful build artifact as a local QA package
 - user hands-on QA next
 - PR #31 remains Draft / unmerged
+
+
+## 2026-10-04 proposition units — golden textbook role pass
+
+Authority:
+- `集合_教科書モード_完成版_v1` is the learner-facing mathematics textbook-mode mother
+- existing proposition source examples / MASTER restoration remain the mathematical authority; no new off-source examples were invented
+
+Implemented:
+- reading revision 3: 例題6 / 確認4 / まとめ1 / dialogue4 / black-bold formal terms
+- quantifier revision 5: 例題2 / 確認2 / まとめ1 / dialogue3 / black-bold ある・すべて・否定・反例
+- proof revision 4: 例題1 / 確認1 / 証明2 / まとめ1 / dialogue3 / black-bold 逆・裏・対偶・背理法
+- proof unit now visibly separates worked proof regions from ordinary examples/checks
+- all existing 48 interactions retained from the MASTER restoration topology
+
+Validated code head:
+- `2127c3d4d35793546228ac2fe2a9d38e8a9f97be`
+- Math textbook mode CI: success
+- Math practice pilot CI: success
+- Typecheck / unit tests / Build / mobile / desktop / Physics regression / Math practice setup regression: all success
+
+Restart point:
+- branch: `chatgpt/math-textbook-sets-v1`
+- code head: `2127c3d4d35793546228ac2fe2a9d38e8a9f97be`
+- next: produce updated local QA package for math-sets + reading + quantifier + proof, then user hands-on QA
+- no publish / no merge before user confirmation

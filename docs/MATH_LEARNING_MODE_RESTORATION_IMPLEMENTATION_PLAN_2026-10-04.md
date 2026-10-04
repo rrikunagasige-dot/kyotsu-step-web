@@ -320,3 +320,32 @@ Next step:
 - deploy the validated review branch to QA Pages
 - user hands-on QA
 - only then consider review → published
+
+
+---
+
+# 10. Golden textbook role pass
+
+A second presentation pass was applied after the user confirmed that the approved `集合_教科書モード_完成版_v1` is the visual/structural mother for mathematics textbook mode.
+
+This does not change the first restoration's interaction topology:
+- reading: 14 interactions
+- quantifier: 11 interactions
+- proof: 23 interactions
+- total: 48 interactions
+
+It adds the mother-derived learner-facing hierarchy:
+- black-bold formal terms via `term`
+- compact `例題 / 証明 / 確認 / まとめ` markers
+- selective 花子 / 太郎 / 先生 dialogue
+- proof regions are explicitly distinguished from examples/checks
+
+Current revisions:
+- reading 3
+- quantifier 5
+- proof 4
+
+Validated head:
+- `2127c3d4d35793546228ac2fe2a9d38e8a9f97be`
+
+All automated gates PASS. Remaining gate: user hands-on QA.

@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { mathSetUnit } from './set/setLesson'
 import { mathTextbookTopicForUnit, mathTextbookTopics } from './mathCatalog'
+import { mathTextbookUnits } from './index'
 
 describe('math textbook catalog', () => {
   it('aligns the set lesson with the same practice curriculum topic and range', () => {
@@ -44,6 +45,22 @@ describe('math textbook catalog', () => {
     expect([...all].sort((a, b) => a - b)).toEqual(
       Array.from({ length: 34 }, (_, index) => 87 + index),
     )
+  })
+
+
+  it('keeps only the approved set lesson published while the later lessons remain review-only', () => {
+    expect(
+      mathTextbookUnits.filter((unit) => unit.status === 'published').map((unit) => unit.unitId),
+    ).toEqual(['math-sets'])
+
+    expect(
+      mathTextbookUnits.filter((unit) => unit.status === 'review').map((unit) => unit.unitId),
+    ).toEqual([
+      'math-propositions-reading',
+      'math-quantifiers-all-exists',
+      'math-functions-conditions',
+      'math-propositions-proof',
+    ])
   })
 
   it('keeps the approved three learner-facing headings in order', () => {

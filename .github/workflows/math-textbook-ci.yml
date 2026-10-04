@@ -1,9 +1,6 @@
 name: Math textbook mode CI
 
 on:
-  push:
-    branches:
-      - 'chatgpt/math-textbook-sets-v1'
   pull_request:
     paths:
       - 'src/domain/textbookSchema.ts'

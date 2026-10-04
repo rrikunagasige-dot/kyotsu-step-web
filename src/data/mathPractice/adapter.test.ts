@@ -145,8 +145,8 @@ describe('math practice 87-120 staged integration', () => {
       'p3-objectivity',
       'p3-result',
     ])
-    expect(question?.blanks.find((blank) => blank.id === 'p2-counterexample')?.choices.find((choice) => choice.correct)?.id)
-      .toBe('forty-degree')
+    expect(question?.blanks.find((blank) => blank.id === 'p2-example')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('five-five-six')
     expect(question?.blanks.find((blank) => blank.id === 'p3-result')?.choices.find((choice) => choice.correct)?.id)
       .toBe('not-proposition')
   })
@@ -175,11 +175,11 @@ describe('math practice 87-120 staged integration', () => {
       'p4-result',
     ])
     expect(question?.blanks.find((blank) => blank.id === 'p2-counterexample')?.choices.find((choice) => choice.correct)?.id)
-      .toBe('minus-one')
+      .toBe('zero')
     expect(question?.blanks.find((blank) => blank.id === 'p4-q-set')?.choices.find((choice) => choice.correct)?.id)
       .toBe('correct')
-    expect(question?.blanks.find((blank) => blank.id === 'p4-counterexample-result')?.choices.find((choice) => choice.correct)?.id)
-      .toBe('minus-two-false')
+    expect(question?.blanks.find((blank) => blank.id === 'p4-left-endpoint')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('p-only')
   })
 
   it('authors 100 as one counterexample rule plus three independent constructions', () => {
@@ -199,10 +199,10 @@ describe('math practice 87-120 staged integration', () => {
       'p3-verify',
     ])
     expect(question?.blanks.find((blank) => blank.id === 'p1-counterexample')?.choices.find((choice) => choice.correct)?.id)
-      .toBe('negative-root')
-    expect(question?.blanks.find((blank) => blank.id === 'p2-counterexample')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('minus-root')
+    expect(question?.blanks.find((blank) => blank.id === 'p2-x')?.choices.find((choice) => choice.correct)?.id)
       .toBe('minus-two')
-    expect(question?.blanks.find((blank) => blank.id === 'p3-counterexample')?.choices.find((choice) => choice.correct)?.id)
+    expect(question?.blanks.find((blank) => blank.id === 'p3-candidate')?.choices.find((choice) => choice.correct)?.id)
       .toBe('five')
   })
 
@@ -218,9 +218,9 @@ describe('math practice 87-120 staged integration', () => {
       'p3-result',
     ])
     expect(question?.blanks.find((blank) => blank.id === 'p1-result')?.choices.find((choice) => choice.correct)?.id)
-      .toBe('le-minus-five')
+      .toBe('le')
     expect(question?.blanks.find((blank) => blank.id === 'p2-result')?.choices.find((choice) => choice.correct)?.id)
-      .toBe('equals-zero')
+      .toBe('equals')
     expect(question?.blanks.find((blank) => blank.id === 'p3-result')?.choices.find((choice) => choice.correct)?.id)
       .toBe('irrational')
   })
@@ -246,11 +246,11 @@ describe('math practice 87-120 staged integration', () => {
       'p4-result',
     ])
     expect(question?.blanks.find((blank) => blank.id === 'rule')?.choices.find((choice) => choice.correct)?.id)
-      .toBe('and-intersection-or-union')
+      .toBe('correct')
     expect(question?.blanks.find((blank) => blank.id === 'p3-result')?.choices.find((choice) => choice.correct)?.id)
-      .toBe('minus-one-two-open')
+      .toBe('correct')
     expect(question?.blanks.find((blank) => blank.id === 'p4-result')?.choices.find((choice) => choice.correct)?.id)
-      .toBe('minus-one-four-closed')
+      .toBe('correct')
   })
 
   it('authors 103 as one semantic De Morgan rule plus five independent negations', () => {
@@ -349,14 +349,14 @@ describe('math practice 87-120 staged integration', () => {
       'p4-factors',
       'p4-judgment',
     ])
-    expect(question?.blanks.find((blank) => blank.id === 'p1-result')?.choices.find((choice) => choice.correct)?.id)
-      .toBe('counterexample-false')
-    expect(question?.blanks.find((blank) => blank.id === 'p2-result')?.choices.find((choice) => choice.correct)?.id)
-      .toBe('both-cases-true')
-    expect(question?.blanks.find((blank) => blank.id === 'p3-result')?.choices.find((choice) => choice.correct)?.id)
-      .toBe('sqrt-two-false')
-    expect(question?.blanks.find((blank) => blank.id === 'p4-result')?.choices.find((choice) => choice.correct)?.id)
-      .toBe('conjugate-false')
+    expect(question?.blanks.find((blank) => blank.id === 'p1-judgment')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('false')
+    expect(question?.blanks.find((blank) => blank.id === 'p2-judgment')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('true')
+    expect(question?.blanks.find((blank) => blank.id === 'p3-judgment')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('false')
+    expect(question?.blanks.find((blank) => blank.id === 'p4-judgment')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('false')
   })
 
   it('authors 106 as one set-language rule plus four independent set expressions', () => {
@@ -373,9 +373,9 @@ describe('math practice 87-120 staged integration', () => {
       'p4-result',
     ])
     expect(question?.blanks.find((blank) => blank.id === 'p1-result')?.choices.find((choice) => choice.correct)?.id)
-      .toBe('p-inter-q')
+      .toBe('intersection')
     expect(question?.blanks.find((blank) => blank.id === 'p2-result')?.choices.find((choice) => choice.correct)?.id)
-      .toBe('p-complement')
+      .toBe('pbar')
     expect(question?.blanks.find((blank) => blank.id === 'p3-result')?.choices.find((choice) => choice.correct)?.id)
       .toBe('q-inter-pbar')
     expect(question?.blanks.find((blank) => blank.id === 'p4-result')?.choices.find((choice) => choice.correct)?.id)
@@ -469,7 +469,7 @@ describe('math practice 87-120 staged integration', () => {
     expect(question?.blanks.find((blank) => blank.id === 'reverse-sign')?.choices.find((choice) => choice.correct)?.id)
       .toBe('same-sign')
     expect(question?.blanks.find((blank) => blank.id === 'reverse-eliminate')?.choices.find((choice) => choice.correct)?.id)
-      .toBe('positive-remains')
+      .toBe('negative-eliminated')
     expect(question?.blanks.find((blank) => blank.id === 'equivalence')?.choices.find((choice) => choice.correct)?.id)
       .toBe('equivalent')
   })
@@ -490,13 +490,13 @@ describe('math practice 87-120 staged integration', () => {
     expect(question?.blanks.find((blank) => blank.id === 'p1-negation')?.choices.find((choice) => choice.correct)?.id)
       .toBe('exists-equals')
     expect(question?.blanks.find((blank) => blank.id === 'p1-truth')?.choices.find((choice) => choice.correct)?.id)
-      .toBe('x-one')
+      .toBe('original-false')
     expect(question?.blanks.find((blank) => blank.id === 'p2-negation')?.choices.find((choice) => choice.correct)?.id)
       .toBe('forall-not-equals')
     expect(question?.blanks.find((blank) => blank.id === 'p2-solve')?.choices.find((choice) => choice.correct)?.id)
-      .toBe('factor-zero-five')
+      .toBe('zero-five')
     expect(question?.blanks.find((blank) => blank.id === 'p2-truth')?.choices.find((choice) => choice.correct)?.id)
-      .toBe('five-exists')
+      .toBe('original-true')
   })
 
   it('authors 110 as one relation-form rule plus three independent original/converse/contrapositive/inverse checks', () => {
@@ -549,7 +549,7 @@ describe('math practice 87-120 staged integration', () => {
       .toBe('tftf')
     expect(question?.blanks.find((blank) => blank.id === 'p2-summary')?.choices.find((choice) => choice.correct)?.id)
       .toBe('ftft')
-    expect(question?.blanks.find((blank) => blank.id === 'p3-contrapositive')?.choices.find((choice) => choice.correct)?.id)
+    expect(question?.blanks.find((blank) => blank.id === 'p3-contrapositive-judgment')?.choices.find((choice) => choice.correct)?.id)
       .toBe('true')
     expect(question?.blanks.find((blank) => blank.id === 'p3-summary')?.choices.find((choice) => choice.correct)?.id)
       .toBe('tttt')
@@ -746,11 +746,11 @@ describe('math practice 87-120 staged integration', () => {
     ])
     expect(question?.blanks.find((blank) => blank.id === 'rule')?.choices.find((choice) => choice.correct)?.id)
       .toBe('unique')
-    expect(question?.blanks.find((blank) => blank.id === 'p1')?.choices.find((choice) => choice.correct)?.id)
+    expect(question?.blanks.find((blank) => blank.id === 'p1-judgment')?.choices.find((choice) => choice.correct)?.id)
       .toBe('function')
-    expect(question?.blanks.find((blank) => blank.id === 'p2')?.choices.find((choice) => choice.correct)?.id)
-      .toBe('counterexample')
-    expect(question?.blanks.find((blank) => blank.id === 'p3')?.choices.find((choice) => choice.correct)?.id)
+    expect(question?.blanks.find((blank) => blank.id === 'p2-judgment')?.choices.find((choice) => choice.correct)?.id)
+      .toBe('not-function')
+    expect(question?.blanks.find((blank) => blank.id === 'p3-judgment')?.choices.find((choice) => choice.correct)?.id)
       .toBe('function')
   })
 

@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react'
 import { useI18n } from '../../i18n/runtime'
+
+type Localize = (ja: string, zh: string) => string
 import type { MathPracticeFigureId } from '../../data/mathPractice/figures'
 
 function FigureFrame({ id, title, children }: { id: MathPracticeFigureId; title: string; children: ReactNode }) {
@@ -70,8 +72,35 @@ function Interval({
   )
 }
 
-function NumberLineFigure({ id }: { id: MathPracticeFigureId }) {
-  const { text } = useI18n()
+function NumberLineFigure({ id, text }: { id: MathPracticeFigureId; text: Localize }) {
+
+  if (id === 'F99-3') {
+    return (
+      <FigureFrame id={id} title={text('絶対値条件を2つの枝で見る', '把绝对值条件看成两个分支')}>
+        <line x1="34" y1="160" x2="326" y2="160" className="mpf-line" />
+        {[-3, 1, 3].map((tick) => {
+          const x = tick === -3 ? 82 : tick === 1 ? 190 : 244
+          return (
+            <g key={tick}>
+              <line x1={x} y1="155" x2={x} y2="165" className="mpf-line" />
+              <text x={x} y="183" textAnchor="middle" className="mpf-label">{tick}</text>
+            </g>
+          )
+        })}
+        <text x="18" y="76" textAnchor="middle" className="mpf-label mpf-label--strong">P</text>
+        <line x1="244" y1="72" x2="326" y2="72" className="mpf-emphasis-line" />
+        <Dot x={244} y={72} open />
+        <path d="M 326 72 l -9 -5 v 10 z" className="mpf-arrow" />
+        <text x="18" y="132" textAnchor="middle" className="mpf-label mpf-label--strong">Q</text>
+        <line x1="34" y1="128" x2="82" y2="128" className="mpf-emphasis-line" />
+        <Dot x={82} y={128} open />
+        <path d="M 34 128 l 9 -5 v 10 z" className="mpf-arrow" />
+        <line x1="190" y1="128" x2="326" y2="128" className="mpf-emphasis-line" />
+        <Dot x={190} y={128} open />
+        <path d="M 326 128 l -9 -5 v 10 z" className="mpf-arrow" />
+      </FigureFrame>
+    )
+  }
 
   if (id === 'F101-1A') {
     return (
@@ -109,14 +138,6 @@ function NumberLineFigure({ id }: { id: MathPracticeFigureId }) {
         { from: 0, to: 1, y: 133, label: 'Q' },
       ],
       marker: { value: 0, label: 'x=0' },
-    },
-    'F99-3': {
-      title: ['絶対値条件を範囲で比べる', '用范围比较绝对值条件'],
-      min: -4, max: 5, ticks: [-3, 1, 3, 5],
-      intervals: [
-        { from: 3, to: 5, y: 72, label: 'P' },
-        { from: 1, to: 5, y: 133, label: 'Q' },
-      ],
     },
     'F99-4': {
       title: ['端点 -2 に注目する', '关注端点 -2'],
@@ -198,8 +219,7 @@ function NumberLineFigure({ id }: { id: MathPracticeFigureId }) {
   )
 }
 
-function TriangleFigure({ id }: { id: MathPracticeFigureId }) {
-  const { text } = useI18n()
+function TriangleFigure({ id, text }: { id: MathPracticeFigureId; text: Localize }) {
 
   if (id === 'F98-2A' || id === 'F98-2B') {
     const example = id === 'F98-2B'
@@ -297,8 +317,7 @@ function TriangleFigure({ id }: { id: MathPracticeFigureId }) {
   return null
 }
 
-function SetFigure({ id }: { id: MathPracticeFigureId }) {
-  const { text } = useI18n()
+function SetFigure({ id, text }: { id: MathPracticeFigureId; text: Localize }) {
   if (id !== 'F106-A') return null
   return (
     <FigureFrame id={id} title={text('P と Q を全体集合の中で見る', '在全集中观察 P 与 Q')}>
@@ -308,13 +327,11 @@ function SetFigure({ id }: { id: MathPracticeFigureId }) {
       <text x="64" y="51" className="mpf-label mpf-label--strong">U</text>
       <text x="112" y="95" className="mpf-label mpf-label--strong">P</text>
       <text x="246" y="95" className="mpf-label mpf-label--strong">Q</text>
-      <text x="180" y="98" textAnchor="middle" className="mpf-muted">P∩Q</text>
     </FigureFrame>
   )
 }
 
-function RhombusFigure({ id }: { id: MathPracticeFigureId }) {
-  const { text } = useI18n()
+function RhombusFigure({ id, text }: { id: MathPracticeFigureId; text: Localize }) {
   if (id !== 'F104-6A' && id !== 'F104-6B') return null
   const square = id === 'F104-6B'
   return (
@@ -332,8 +349,7 @@ function RhombusFigure({ id }: { id: MathPracticeFigureId }) {
   )
 }
 
-function SignFigure({ id }: { id: MathPracticeFigureId }) {
-  const { text } = useI18n()
+function SignFigure({ id, text }: { id: MathPracticeFigureId; text: Localize }) {
   if (id !== 'F107-2A') return null
   return (
     <FigureFrame id={id} title={text('積が負になる符号の組', '乘积为负时的符号组合')}>
@@ -351,8 +367,7 @@ function SignFigure({ id }: { id: MathPracticeFigureId }) {
   )
 }
 
-function BranchFigure({ id }: { id: MathPracticeFigureId }) {
-  const { text } = useI18n()
+function BranchFigure({ id, text }: { id: MathPracticeFigureId; text: Localize }) {
 
   if (id === 'F108-A' || id === 'F108-B') {
     const eliminated = id === 'F108-B'
@@ -405,8 +420,7 @@ function BranchFigure({ id }: { id: MathPracticeFigureId }) {
   return null
 }
 
-function ResidueFigure({ id }: { id: MathPracticeFigureId }) {
-  const { text } = useI18n()
+function ResidueFigure({ id, text }: { id: MathPracticeFigureId; text: Localize }) {
   if (id === 'F114-1A') {
     return (
       <FigureFrame id={id} title={text('4つの余りを2乗して調べる', '平方检查四种余数')}>
@@ -438,8 +452,7 @@ function ResidueFigure({ id }: { id: MathPracticeFigureId }) {
   return null
 }
 
-function FunctionFigure({ id }: { id: MathPracticeFigureId }) {
-  const { text } = useI18n()
+function FunctionFigure({ id, text }: { id: MathPracticeFigureId; text: Localize }) {
   if (id === 'F118-1') {
     return (
       <FigureFrame id={id} title={text('円周 x と半径 y の対応', '圆周 x 与半径 y 的对应')}>
@@ -479,8 +492,7 @@ function FunctionFigure({ id }: { id: MathPracticeFigureId }) {
   return null
 }
 
-function RouteFigure({ id }: { id: MathPracticeFigureId }) {
-  const { text } = useI18n()
+function RouteFigure({ id, text }: { id: MathPracticeFigureId; text: Localize }) {
   if (!id.startsWith('F120-2')) return null
   const model = id === 'F120-2B'
   const endpoints = id === 'F120-2C'
@@ -522,15 +534,16 @@ function RouteFigure({ id }: { id: MathPracticeFigureId }) {
 }
 
 export function MathPracticeFigure({ figureId }: { figureId: MathPracticeFigureId }) {
+  const { text } = useI18n()
   return (
-    NumberLineFigure({ id: figureId })
-    ?? TriangleFigure({ id: figureId })
-    ?? SetFigure({ id: figureId })
-    ?? RhombusFigure({ id: figureId })
-    ?? SignFigure({ id: figureId })
-    ?? BranchFigure({ id: figureId })
-    ?? ResidueFigure({ id: figureId })
-    ?? FunctionFigure({ id: figureId })
-    ?? RouteFigure({ id: figureId })
+    NumberLineFigure({ id: figureId, text })
+    ?? TriangleFigure({ id: figureId, text })
+    ?? SetFigure({ id: figureId, text })
+    ?? RhombusFigure({ id: figureId, text })
+    ?? SignFigure({ id: figureId, text })
+    ?? BranchFigure({ id: figureId, text })
+    ?? ResidueFigure({ id: figureId, text })
+    ?? FunctionFigure({ id: figureId, text })
+    ?? RouteFigure({ id: figureId, text })
   )
 }

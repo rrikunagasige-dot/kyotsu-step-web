@@ -88,6 +88,23 @@ describe('math proposition-proof textbook unit', () => {
     expect(conclusionIndex).toBeGreaterThan(contradictionIndex)
   })
 
+
+  it('names the contradiction method only after the worked example reaches x=y=0', () => {
+    const flow = mathPropositionProofUnit.sections[0].readingFlow
+    const finalDecisionIndex = flow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'proof-c05',
+      ),
+    )
+    const nameIndex = flow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'text' && part.text.includes('背理法という'),
+      ),
+    )
+    expect(finalDecisionIndex).toBeGreaterThanOrEqual(0)
+    expect(nameIndex).toBeGreaterThan(finalDecisionIndex)
+  })
+
   it('keeps mixed Japanese logical statements in text mode', () => {
     const items = mathPropositionProofUnit.sections[0].items
     expect(items.find((item) => item.id === 'proof-e02')?.answerType).toBe('text')

@@ -187,6 +187,7 @@ describe('math proposition-reading textbook unit', () => {
     expect(learnerText).not.toContain('問8(4)')
     expect(learnerText).not.toContain('頂角40°')
     expect(learnerText).not.toContain('3.14は円周率')
+    expect(learnerText).not.toContain('23を3で割る')
 
     expect(items.find((item) => item.id === 'prop-c02')?.answer)
       .toBe('2は合成数ではない')

@@ -71,7 +71,7 @@ const rawMathSetUnit = {
         {
           id: 'heading-represent',
           type: 'heading' as const,
-          text: '集合を表す',
+          text: '第1部　集合を表す',
         },
         {
           id: 'marker-example-divisors',
@@ -311,7 +311,7 @@ const rawMathSetUnit = {
         {
           id: 'heading-relations',
           type: 'heading' as const,
-          text: '集合どうしの関係を見る',
+          text: '第2部　集合どうしの関係を見る',
         },
         {
           id: 'marker-example-intersection-union',

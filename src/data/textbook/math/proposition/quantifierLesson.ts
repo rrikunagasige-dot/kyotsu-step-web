@@ -11,7 +11,7 @@ const rawMathQuantifierUnit = {
     chapterNumber: '3',
     chapterTitle: '集合と命題',
     unitCode: '3QUANT',
-    orderInChapter: 3,
+    orderInChapter: 4,
     sourcePages: [100, 101],
   },
   title: '「すべて」と「ある」を読む',

@@ -178,7 +178,35 @@ Acceptance for repair:
 
 ---
 
-## QAF-003 — HIGH — Problem 96-(4) skips two meaningful reasoning steps
+## QAF-003 RESOLUTION — RESOLVED
+
+Status: **RESOLVED**
+
+Repair:
+- Problem 96-(4) now exposes the sequence `B -> {5,6} -> {5}`,
+- added one meaningful intermediate state after applying the not-A condition,
+- final node applies the not-C condition,
+- synchronized Japanese source, strict Chinese source, presentation metadata, unit tests, and browser flow,
+- preserved current-stage compression and avoided arithmetic-token hole inflation.
+
+Validated on commit:
+- `5e5ef1fc435d4562875f49830fe94fd8adc1e7a3`
+
+CI run:
+- `37167631962`
+
+PASS:
+- typecheck
+- Math practice unit / presentation tests
+- build
+- mobile Chromium smoke
+- desktop Chromium smoke
+
+No merge to main yet.
+
+---
+
+## QAF-003 — RESOLVED (was HIGH) — Problem 96-(4) skips two meaningful reasoning steps
 
 Authority design for 96-(4):
 1. candidate pool → B

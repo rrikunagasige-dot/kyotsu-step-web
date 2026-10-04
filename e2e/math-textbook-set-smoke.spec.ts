@@ -235,6 +235,10 @@ test('proposition-reading follows the textbook order from truth to necessary/suf
   for (const [itemId, answer] of negationAnswers) await answerItem(page, itemId, answer)
 
   await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
+  await expect(page.getByTestId('textbook-next-unit')).toHaveAttribute(
+    'href',
+    /\/learning\/textbook\/math-quantifiers-all-exists$/,
+  )
   await expect(page.locator('.katex-error')).toHaveCount(0)
 
   const viewport = await page.evaluate(() => ({

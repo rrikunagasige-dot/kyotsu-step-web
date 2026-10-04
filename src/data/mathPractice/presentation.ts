@@ -849,7 +849,7 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
       dependsOn: ['basis'],
     },
     {
-      id: 'final',
+      id: 'conclude',
       kicker: { ja: '結論', zh: '结论' },
       label: { ja: '2方向から同値を結論する', zh: '由两个方向得出等价' },
       blankIds: ['equivalence'],

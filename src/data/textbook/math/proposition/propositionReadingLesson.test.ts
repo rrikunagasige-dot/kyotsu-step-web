@@ -157,16 +157,11 @@ describe('math proposition-reading textbook unit', () => {
   })
 
 
-  it('keeps the synchronized practice order: truth, negation, then necessary/sufficient', () => {
+  it('keeps the textbook order: truth, necessary/sufficient, then negation', () => {
     const flow = mathPropositionReadingUnit.sections[0].readingFlow
     const truthIndex = flow.findIndex(
       (block) => block.type === 'paragraph' && block.parts.some(
         (part) => part.type === 'choice' && part.itemId === 'prop-a01',
-      ),
-    )
-    const negationIndex = flow.findIndex(
-      (block) => block.type === 'paragraph' && block.parts.some(
-        (part) => part.type === 'choice' && part.itemId === 'prop-c01',
       ),
     )
     const relationIndex = flow.findIndex(
@@ -174,9 +169,14 @@ describe('math proposition-reading textbook unit', () => {
         (part) => part.type === 'choice' && part.itemId === 'prop-b01',
       ),
     )
+    const negationIndex = flow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'prop-c01',
+      ),
+    )
     expect(truthIndex).toBeGreaterThanOrEqual(0)
-    expect(negationIndex).toBeGreaterThan(truthIndex)
-    expect(relationIndex).toBeGreaterThan(negationIndex)
+    expect(relationIndex).toBeGreaterThan(truthIndex)
+    expect(negationIndex).toBeGreaterThan(relationIndex)
   })
 
 
@@ -210,8 +210,8 @@ describe('math proposition-reading textbook unit', () => {
       .map((block) => block.text)
     expect(headings).toEqual([
       '命題の真偽を読む',
-      '条件を否定する',
       '必要条件・十分条件を見分ける',
+      '条件を否定する',
     ])
   })
 })

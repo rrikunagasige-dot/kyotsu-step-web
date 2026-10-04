@@ -432,6 +432,14 @@ test('proposition-proof review unit starts from changing the direction of a prop
   await expect(page.getByRole('heading', { name: '命題を証明する', exact: true })).toBeVisible()
   await expect(page.getByRole('heading', { name: '命題の向きを変える', exact: true })).toBeVisible()
   await expect(page.getByTestId('textbook-item-proof-a01')).toBeVisible()
+  await expect(page.getByTestId('textbook-item-proof-a01')).toHaveAttribute(
+    'aria-label',
+    /前件と後件を入れ替えた命題/,
+  )
+  await expect(page.getByTestId('textbook-item-proof-a01')).not.toHaveAttribute(
+    'aria-label',
+    /逆/,
+  )
   await expect(page.getByTestId('textbook-item-proof-a02')).toHaveCount(0)
   await expect(page.getByText(/を逆という/)).toHaveCount(0)
 
@@ -474,7 +482,7 @@ test('proof review reaches contrapositive and contradiction conclusions without 
     ['proof-b00', '対偶'],
     ['proof-b01', 'nが3の倍数でない ⇒ n²が3の倍数でない'],
     ['proof-b02', '1または2'],
-    ['proof-b03', '1'],
+    ['proof-b03', '3(3k^2+2k)+1'],
     ['proof-b04', '3の倍数にならない'],
     ['proof-b05', '真である'],
     ['proof-c00', 'x\\ne0'],

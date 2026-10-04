@@ -174,6 +174,21 @@ test('proposition-reading review unit builds the proposition criterion before im
   await expect(page.getByTestId('textbook-item-prop-a02')).toBeVisible()
 })
 
+test('proposition-reading wrong answer stays unresolved and does not reveal the next judgment', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/math-propositions-reading'))
+
+  await chooseWrongOption(page, 'prop-p00a', '真である')
+
+  await expect(page.getByTestId('resolved-prop-p00a')).toHaveCount(0)
+  await expect(page.getByTestId('textbook-item-prop-p00b')).toHaveCount(0)
+  await expect(page.getByText(/文を命題という/)).toHaveCount(0)
+
+  await page.getByTestId('textbook-item-prop-p00a').click()
+  const hint = page.getByTestId('textbook-hint-prop-p00a')
+  await expect(hint).toBeVisible()
+  await expect(hint).not.toContainText('真である')
+})
+
 test('proposition-reading counterexample is decided before the counterexample concept is named', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-propositions-reading'))
 
@@ -237,6 +252,21 @@ test('function-conditions review unit builds the function concept before substit
   await expect(page.getByText(/yはxの関数であるという/)).toBeVisible()
   await expect(page.getByTestId('textbook-item-func-a02')).toBeVisible()
   await expect(page.getByTestId('textbook-item-func-b01')).toHaveCount(0)
+})
+
+test('function review wrong answer stays unresolved and keeps the function concept locked', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/math-functions-conditions'))
+
+  await chooseWrongOption(page, 'func-a01', 'ただ1つに決まる')
+
+  await expect(page.getByTestId('resolved-func-a01')).toHaveCount(0)
+  await expect(page.getByText(/yはxの関数であるという/)).toHaveCount(0)
+  await expect(page.getByTestId('textbook-item-func-a02')).toHaveCount(0)
+
+  await page.getByTestId('textbook-item-func-a01').click()
+  const hint = page.getByTestId('textbook-hint-func-a01')
+  await expect(hint).toBeVisible()
+  await expect(hint).not.toContainText('ただ1つに決まる')
 })
 
 test('proposition-proof review unit establishes equivalence before reverse and contrapositive work', async ({ page }) => {

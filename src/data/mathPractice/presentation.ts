@@ -851,7 +851,7 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
     {
       id: 'conclude',
       kicker: { ja: '結論', zh: '结论' },
-      label: { ja: '2方向から同値を結論する', zh: '由两个方向得出等价' },
+      label: { ja: '2方向の結果から最終関係を判断する', zh: '根据两个方向的结果判断最终关系' },
       blankIds: ['equivalence'],
       dependsOn: ['forward', 'reverse'],
     },

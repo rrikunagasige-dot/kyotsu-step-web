@@ -345,6 +345,10 @@ test('function review remains readable through the rectangle domain/range conclu
   await expect(page.getByTestId('textbook-figure-rectangle-perimeter-40')).toBeVisible()
   await expect(page.getByText(/定義域という/)).toBeVisible()
   await expect(page.getByText(/値域という/)).toBeVisible()
+  const completePanel = page.getByTestId('textbook-unit-complete')
+  await expect(completePanel).toBeVisible()
+  await expect(completePanel).toContainText('この教材の内容を最後まで確認しました')
+  await expect(completePanel).not.toContainText('集合の表し方')
   await expect(page.locator('.katex-error')).toHaveCount(0)
 
   const viewport = await page.evaluate(() => ({

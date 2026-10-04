@@ -966,7 +966,7 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
     {
       id: 'p2-converse',
       kicker: { ja: '今の問い｜(2) 逆', zh: '当前问题｜(2) 逆命题' },
-      label: { ja: '多項式が0でない条件からx≠2を確かめる', zh: '由多项式不为0判断x≠2' },
+      label: { ja: '逆命題を作り、真偽を確かめる', zh: '写出逆命题并判断真假' },
       blankIds: ['p2-converse'],
       dependsOn: ['basis'],
       result: { blankId: 'p2-converse', label: { ja: '逆', zh: '逆命题' } },
@@ -1162,7 +1162,7 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
     {
       id: 'p2-assumption',
       kicker: { ja: '今の問い｜(2) 仮定', zh: '当前问题｜(2) 反设' },
-      label: { ja: '有理化後の値を有理数rとおく', zh: '把有理化后的值设为有理数r' },
+      label: { ja: '有理化後の式で背理法の反対仮定を置く', zh: '用有理化后的式子写出反设' },
       blankIds: ['p2-assumption'],
       dependsOn: ['p2-rationalize'],
       result: { blankId: 'p2-assumption', label: { ja: '(2) の反対仮定', zh: '(2) 的反设' } },
@@ -1243,7 +1243,7 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
     {
       id: 'p1-squares',
       kicker: { ja: '今の問い｜(1) 全ケース', zh: '当前问题｜(1) 全部情况' },
-      label: { ja: '4つの平方余りに0がないことを示す', zh: '验证四种平方余数都不为0' },
+      label: { ja: '4つの平方余りをすべて調べる', zh: '检查四种平方余数' },
       blankIds: ['p1-squares'],
       dependsOn: ['p1-residues'],
     },
@@ -1265,7 +1265,7 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
     {
       id: 'p2-products',
       kicker: { ja: '今の問い｜(2) 全ケース', zh: '当前问题｜(2) 全部情况' },
-      label: { ja: '4つの積の余りに0がないことを示す', zh: '验证四种乘积余数都不为0' },
+      label: { ja: '4つの積の余りをすべて調べる', zh: '检查四种乘积余数' },
       blankIds: ['p2-products'],
       dependsOn: ['p2-residues'],
     },
@@ -1274,7 +1274,7 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
     {
       id: 'assumption',
       kicker: { ja: 'まずの目標', zh: '第一个目标' },
-      label: { ja: '有理数だと反対仮定する', zh: '反设为有理数' },
+      label: { ja: '背理法の反対仮定を置く', zh: '写出反证法的反设' },
       blankIds: ['assumption'],
       result: {
         blankId: 'assumption',
@@ -1509,7 +1509,7 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
     {
       id: 'basis',
       kicker: { ja: 'まず確認', zh: '先确认' },
-      label: { ja: 'すべてのxを同じ入力で置き換える', zh: '用同一个输入替换所有x' },
+      label: { ja: '関数値の代入ルールを確認する', zh: '确认求函数值时的代入规则' },
       blankIds: ['rule'],
       result: {
         blankId: 'rule',
@@ -1656,7 +1656,7 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
     {
       id: 'p1-model',
       kicker: { ja: '今の問い｜(1) 式を作る', zh: '当前问题｜(1) 建立式子' },
-      label: { ja: '底辺6、高さxを代入してyを表す', zh: '代入底边6和高x表示y' },
+      label: { ja: '三角形の条件から関数式を作る', zh: '根据三角形条件建立函数式' },
       blankIds: ['p1-model'],
       dependsOn: ['p1-formula'],
       result: {
@@ -1705,7 +1705,7 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
     {
       id: 'p2-model',
       kicker: { ja: '今の問い｜(2) 残りを式にする', zh: '当前问题｜(2) 表示剩余路程' },
-      label: { ja: '15kmから進んだ距離を引く', zh: '用15km减去已走路程' },
+      label: { ja: '残りの道のりを関数式にする', zh: '把剩余路程写成函数式' },
       blankIds: ['p2-model'],
       dependsOn: ['p2-traveled'],
       result: {

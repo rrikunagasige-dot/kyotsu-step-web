@@ -412,6 +412,12 @@ button.reading-inline-blank:hover { background: var(--color-section); }
 .reading-inline-choice-panel__head { display: grid; gap: .2rem; }
 .reading-inline-choice-panel__head span { font-size: .82rem; line-height: 1.55; }
 
+@media (max-width: 640px) {
+  .reading-choice-options {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 /* Physics taxonomy board */
 .physics-taxonomy-board { display: grid; gap: 1.35rem; }

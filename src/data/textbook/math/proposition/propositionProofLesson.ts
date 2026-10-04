@@ -306,7 +306,7 @@ const rawMathPropositionProofUnit = {
           id: 'paragraph-bc-intro',
           type: 'paragraph' as const,
           parts: [
-            { type: 'text' as const, text: '次は、結論を否定したと仮定し、その仮定から矛盾が生じることを示す。矛盾が起きれば、最初の否定の仮定が誤りだったと分かる。この方法を背理法という。' },
+            { type: 'text' as const, text: '次は、結論を否定したと仮定し、その仮定から矛盾が生じるかを確かめる。矛盾が起きれば、最初の否定の仮定が誤りだったと分かる。' },
           ],
         },
         {
@@ -369,6 +369,13 @@ const rawMathPropositionProofUnit = {
             { type: 'text' as const, text: ' だから、' },
             { type: 'choice' as const, itemId: 'proof-c05' },
             { type: 'text' as const, text: ' も分かる。したがってx=y=0である。' },
+          ],
+        },
+        {
+          id: 'paragraph-contradiction-concept',
+          type: 'paragraph' as const,
+          parts: [
+            { type: 'text' as const, text: '今のように、結論を否定して仮定し、そこから矛盾を導いてその仮定を退ける証明方法を背理法という。' },
           ],
         },
         {

@@ -856,6 +856,8 @@ test('119 substitutes every x consistently and expands composite inputs only whe
 
   // Common substitution rule first.
   await expect(currentTarget).toContainText('まず確認')
+  await expect(currentTarget).toContainText('代入ルール')
+  await expect(currentTarget).not.toContainText('すべてのx')
   await expect(page.getByTestId('blank-math-practice-119-rule')).toContainText('選択')
   await expect(page.getByTestId('blank-math-practice-119-f0')).toHaveCount(0)
   await page.getByTestId('blank-math-practice-119-rule').click()
@@ -958,6 +960,8 @@ test('120 builds two verbal function models and derives each domain from physica
   await page.getByTestId('option-math-practice-120-p1-formula-area-formula').click()
 
   await expect(currentTarget).toContainText('(1) 式を作る')
+  await expect(currentTarget).toContainText('関数式を作る')
+  await expect(currentTarget).not.toContainText('底辺6、高さxを代入')
   await expect(page.getByTestId('math-practice-dependency-links')).toContainText('三角形の面積公式')
   await expect(flow).not.toContainText('x>0')
   await page.getByTestId('blank-math-practice-120-p1-model').click()
@@ -987,6 +991,8 @@ test('120 builds two verbal function models and derives each domain from physica
 
   // Wrong answer must not advance the model stage.
   await expect(currentTarget).toContainText('(2) 残りを式にする')
+  await expect(currentTarget).toContainText('関数式')
+  await expect(currentTarget).not.toContainText('15kmから進んだ距離を引く')
   await page.getByTestId('blank-math-practice-120-p2-model').click()
   await page.getByTestId('option-math-practice-120-p2-model-fifteen-plus-three-x').click()
   await expect(page.getByTestId('blank-math-practice-120-p2-model')).toContainText('もう一度')
@@ -1154,6 +1160,8 @@ test('110 builds converse, contrapositive and inverse separately, then consolida
   await page.getByTestId('option-math-practice-110-p2-original-false-one').click()
 
   await expect(currentTarget).toContainText('(2) 逆')
+  await expect(currentTarget).toContainText('逆命題を作り')
+  await expect(currentTarget).not.toContainText('x≠2')
   await page.getByTestId('blank-math-practice-110-p2-converse').click()
   await page.getByTestId('option-math-practice-110-p2-converse-true').click()
 
@@ -1329,6 +1337,8 @@ test('112 proves irrationality by contradiction and keeps rationalization as a m
   await page.getByTestId('option-math-practice-112-p2-rationalize-conjugate').click()
 
   await expect(currentTarget).toContainText('(2) 仮定')
+  await expect(currentTarget).toContainText('反対仮定')
+  await expect(currentTarget).not.toContainText('有理数r')
   await expect(page.getByTestId('math-practice-dependency-links')).toContainText('有理化した形')
   await page.getByTestId('blank-math-practice-112-p2-assumption').click()
   await page.getByTestId('option-math-practice-112-p2-assumption-two-minus-root').click()
@@ -1433,6 +1443,8 @@ test('114 proves divisibility claims by exhaustive nonzero residue classes', asy
   await page.getByTestId('option-math-practice-114-p1-residues-one-two-three-four').click()
 
   await expect(currentTarget).toContainText('(1) 全ケース')
+  await expect(currentTarget).toContainText('平方余りをすべて調べる')
+  await expect(currentTarget).not.toContainText('0がない')
   await expect(page.getByTestId('math-practice-dependency-links')).toContainText('mod 5 の候補')
   await page.getByTestId('blank-math-practice-114-p1-squares').click()
   await page.getByTestId('option-math-practice-114-p1-squares-none-zero').click()
@@ -1449,6 +1461,8 @@ test('114 proves divisibility claims by exhaustive nonzero residue classes', asy
   await page.getByTestId('option-math-practice-114-p2-residues-one-or-two').click()
 
   await expect(currentTarget).toContainText('(2) 全ケース')
+  await expect(currentTarget).toContainText('積の余りをすべて調べる')
+  await expect(currentTarget).not.toContainText('0がない')
   await expect(page.getByTestId('math-practice-dependency-links')).toContainText('mod 3 の候補')
   await page.getByTestId('blank-math-practice-114-p2-products').click()
   await page.getByTestId('option-math-practice-114-p2-products-none-zero').click()
@@ -1482,6 +1496,8 @@ test('115 creates sqrt(6) by squaring, isolates it, and closes the irrationality
 
   // First set the contradiction assumption. Future algebra stays hidden.
   await expect(currentTarget).toContainText('まずの目標')
+  await expect(currentTarget).toContainText('背理法の反対仮定')
+  await expect(currentTarget).not.toContainText('有理数だと')
   await expect(page.getByTestId('blank-math-practice-115-assumption')).toContainText('選択')
   await expect(page.getByTestId('blank-math-practice-115-operation')).toHaveCount(0)
 

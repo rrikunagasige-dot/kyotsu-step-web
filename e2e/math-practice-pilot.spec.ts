@@ -1928,6 +1928,48 @@ test('88 keeps the stop-point answer hidden until the learner reasons it out, th
   await expect(page.getByTestId('math-practice-dependency-links')).toHaveCount(0)
 })
 
+test('92 explicitly resolves the empty intersection before asking for the union', async ({ page }) => {
+  await page.getByTestId('math-exercise-basic').click()
+  await page.getByTestId('math-topic-organize-sets').click()
+  await page.getByTestId('math-topic-question-6').click()
+
+  await expect(page.getByRole('heading', { name: '92｜共通部分と和集合' })).toBeVisible()
+  const currentTarget = page.getByTestId('math-practice-current-target')
+  const readingFlow = page.getByTestId('math-practice-reading-flow')
+
+  await page.getByTestId('blank-math-practice-092-intersection-meaning').click()
+  await page.getByTestId('option-math-practice-092-intersection-meaning-both').click()
+  await page.getByTestId('blank-math-practice-092-union-meaning').click()
+  await page.getByTestId('option-math-practice-092-union-meaning-either').click()
+
+  await page.getByTestId('blank-math-practice-092-p1-intersection').click()
+  await page.getByTestId('option-math-practice-092-p1-intersection-correct').click()
+  await page.getByTestId('blank-math-practice-092-p1-union').click()
+  await page.getByTestId('option-math-practice-092-p1-union-correct').click()
+
+  await expect(currentTarget).toContainText('今の問い｜(2)')
+  await expect(page.getByTestId('blank-math-practice-092-p2-common')).toContainText('選択')
+  await expect(page.getByTestId('blank-math-practice-092-p2-union')).toHaveCount(0)
+  await expect(readingFlow).not.toContainText('共通部分は空集合である')
+
+  await page.getByTestId('blank-math-practice-092-p2-common').click()
+  await page.getByTestId('option-math-practice-092-p2-common-none').click()
+
+  await expect(readingFlow).toContainText('共通部分は空集合である')
+  await expect(readingFlow.locator('.katex-error')).toHaveCount(0)
+  await expect(page.getByTestId('blank-math-practice-092-p2-union')).toContainText('選択')
+
+  await page.getByTestId('blank-math-practice-092-p2-union').click()
+  await page.getByTestId('option-math-practice-092-p2-union-correct').click()
+  await expect(currentTarget).toContainText('今の問い｜(3)')
+
+  const dimensions = await page.evaluate(() => ({
+    viewport: window.innerWidth,
+    page: document.documentElement.scrollWidth,
+  }))
+  expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
+})
+
 test('89 reuses only the common subset basis, then summarizes the four candidate judgments', async ({ page }) => {
   await page.getByTestId('math-exercise-basic').click()
   await page.getByTestId('math-topic-organize-sets').click()

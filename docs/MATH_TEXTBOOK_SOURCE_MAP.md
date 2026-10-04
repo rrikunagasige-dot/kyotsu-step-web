@@ -24,7 +24,7 @@
 ## 2. 条件から命題を読む
 
 ### math-propositions-reading
-- status: review（unit QA PASS / publish-ready。read-propositions topic は quantifier unit のQA完了後にまとめて公開）
+- status: review（FINAL UNIT QA PASS。quantifier unitと同じread-propositions topicとして、user hands-on QA後にpromotion）
 - source: 深進数学I p.92〜95 相当
 - practice topic: read-propositions
 - practice questions: 98〜107
@@ -46,7 +46,7 @@
 ## 3. 命題を証明する
 
 ### math-propositions-proof
-- status: review
+- status: review（FINAL UNIT QA PASS。user hands-on QA待ち）
 - source: 深進数学I p.96〜98 相当
 - practice topic: prove-propositions
 - practice questions: 108, 110〜117
@@ -64,7 +64,7 @@
 ## 3A. 参考「すべて」と「ある」
 
 ### math-quantifiers-all-exists
-- status: review
+- status: review（FINAL UNIT QA PASS。math-propositions-readingと同じread-propositions topicとしてuser hands-on QA待ち）
 - source: 深進数学I p.100〜101 相当
 - learner topic: read-propositions
 - practice overlap: read-propositions / 109

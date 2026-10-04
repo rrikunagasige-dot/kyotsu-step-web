@@ -181,6 +181,37 @@ describe('math set textbook unit', () => {
   })
 
 
+  it('repeats U, A, and B at the explicit De Morgan confirmation before element verification', () => {
+    const flow = mathSetUnit.sections[0].readingFlow
+    const checkIndex = flow.findIndex(
+      (block) => block.type === 'marker' && block.kind === 'check' && block.text === '確認',
+    )
+    const dataIndex = flow.findIndex(
+      (block) => block.type === 'formula' && block.id === 'formula-e-verify-sets',
+    )
+    const firstVerificationHole = flow.findIndex(
+      (block) => block.type === 'paragraph' && block.parts.some(
+        (part) => part.type === 'choice' && part.itemId === 'set-e10',
+      ),
+    )
+
+    expect(checkIndex).toBeGreaterThanOrEqual(0)
+    expect(dataIndex).toBeGreaterThan(checkIndex)
+    expect(firstVerificationHole).toBeGreaterThan(dataIndex)
+
+    const dataBlock = flow[dataIndex]
+    expect(dataBlock?.type).toBe('formula')
+    if (dataBlock?.type === 'formula') {
+      const latex = dataBlock.parts
+        .filter((part) => part.type === 'math')
+        .map((part) => part.latex)
+        .join('')
+      expect(latex).toContain('U=\\\\{1,2,\\\\ldots,12\\\\}')
+      expect(latex).toContain('A=\\\\{2,4,6,8,10,12\\\\}')
+      expect(latex).toContain('B=\\\\{3,6,9,12\\\\}')
+    }
+  })
+
   it('reads real-set endpoints before revealing number-line figures and complement formulas', () => {
     const section = mathSetUnit.sections[0]
     const f01Index = section.readingFlow.findIndex(

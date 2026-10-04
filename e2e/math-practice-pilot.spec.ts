@@ -674,7 +674,11 @@ test('107 applies the necessary/sufficient direction rule to algebra, signs and 
 
   await expect(problem).toContainText('必要条件')
   await expect(problem).toContainText('十分条件')
-  await expect(problem).toContainText('3辺 BC, CA, AB の長さをそれぞれ a, b, c')
+  // Inline math rendering duplicates variable glyphs in the accessibility text,
+  // so the exact source sentence is locked at the source/unit layer above.
+  // Browser QA only verifies that the side-definition prose is visibly present.
+  await expect(problem).toContainText('3辺 BC, CA')
+  await expect(problem).toContainText('の長さをそれぞれ')
   await expect(problem).toContainText('直角二等辺三角形')
   await expect(problem.locator('.katex-error')).toHaveCount(0)
 

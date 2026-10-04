@@ -4,6 +4,6 @@ import { mathQuantifierUnit } from './proposition/quantifierLesson'
 import { mathFunctionConditionsUnit } from './function/functionConditionsLesson'
 import { mathPropositionProofUnit } from './proposition/propositionProofLesson'
 
-export const mathTextbookUnits = [mathSetUnit, mathPropositionReadingUnit, mathQuantifierUnit, mathFunctionConditionsUnit, mathPropositionProofUnit]
+export const mathTextbookUnits = [mathSetUnit, mathPropositionReadingUnit, mathPropositionProofUnit, mathQuantifierUnit, mathFunctionConditionsUnit]
 
 export { mathTextbookTopics, mathTextbookTopicForUnit } from './mathCatalog'

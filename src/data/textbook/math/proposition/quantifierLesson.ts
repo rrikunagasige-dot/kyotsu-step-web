@@ -242,7 +242,7 @@ const rawMathQuantifierUnit = {
           ],
           purpose: 'representation-link' as const,
           scaffoldLevel: 'strong' as const,
-          hints: ['「ある」の否定では「すべて」に変わる。', '「偶数である」の否定は整数では「奇数である」。'],
+          hints: ['元の文が成り立たないとは、「条件を満たす組が存在しない」ということ。', 'どの素数の組を選んでも、元の性質が起こらない言い方に直す。'],
         },
         {
           id: 'quant-b01',

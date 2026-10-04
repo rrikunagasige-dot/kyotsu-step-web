@@ -193,6 +193,44 @@ describe('math practice current-target presentation', () => {
     expect(mathPracticeUsesSubproblemCompression('math-practice-118')).toBe(true)
   })
 
+  it('keeps reviewed target headings task-oriented without pre-solving the current blank', () => {
+    const label = (questionId: string, targetId: string) =>
+      mathPracticeTargetsForQuestion(questionId).find((target) => target.id === targetId)?.label
+
+    expect(label('math-practice-110', 'p2-converse')).toEqual({
+      ja: '逆命題を作り、真偽を確かめる',
+      zh: '写出逆命题并判断真假',
+    })
+    expect(label('math-practice-112', 'p2-assumption')).toEqual({
+      ja: '有理化後の式で背理法の反対仮定を置く',
+      zh: '用有理化后的式子写出反设',
+    })
+    expect(label('math-practice-114', 'p1-squares')).toEqual({
+      ja: '4つの平方余りをすべて調べる',
+      zh: '检查四种平方余数',
+    })
+    expect(label('math-practice-114', 'p2-products')).toEqual({
+      ja: '4つの積の余りをすべて調べる',
+      zh: '检查四种乘积余数',
+    })
+    expect(label('math-practice-115', 'assumption')).toEqual({
+      ja: '背理法の反対仮定を置く',
+      zh: '写出反证法的反设',
+    })
+    expect(label('math-practice-119', 'basis')).toEqual({
+      ja: '関数値の代入ルールを確認する',
+      zh: '确认求函数值时的代入规则',
+    })
+    expect(label('math-practice-120', 'p1-model')).toEqual({
+      ja: '三角形の条件から関数式を作る',
+      zh: '根据三角形条件建立函数式',
+    })
+    expect(label('math-practice-120', 'p2-model')).toEqual({
+      ja: '残りの道のりを関数式にする',
+      zh: '把剩余路程写成函数式',
+    })
+  })
+
   it('models 119 as current-item substitution with extra stages only for composite inputs', () => {
     expect(mathPracticeTargetsForQuestion('math-practice-119').map((target) => target.id)).toEqual([
       'basis',

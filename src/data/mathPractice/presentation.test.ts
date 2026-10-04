@@ -132,6 +132,9 @@ describe('math practice current-target presentation', () => {
     expect(mathPracticeDependencyTargets('math-practice-096', 's3')).toEqual([])
     const p96s1 = mathPracticeTargetsForQuestion('math-practice-096').find((target) => target.id === 's1')!
     expect(mathPracticeResultItems(p96s1).map((result) => result.blankId)).toEqual(['p1-result'])
+
+    const p96s4 = mathPracticeTargetsForQuestion('math-practice-096').find((target) => target.id === 's4')!
+    expect(p96s4.blankIds).toEqual(['p4-candidates', 'p4-after-a', 'p4-result'])
   })
 
   it('encodes 117 as two independent chains that import theorem 116 only when coefficient separation is applied', () => {

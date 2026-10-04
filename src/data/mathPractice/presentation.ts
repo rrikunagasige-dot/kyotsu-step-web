@@ -830,7 +830,7 @@ const targetsByQuestion: Record<string, readonly MathPracticeTarget[]> = {
     {
       id: 'basis',
       kicker: { ja: 'まず確認', zh: '先确认' },
-      label: { ja: '同値は2方向を別々に証明する', zh: '分别证明等价的两个方向' },
+      label: { ja: '同値を示すための証明方針を考える', zh: '思考证明等价所需的方针' },
       blankIds: ['rule'],
       result: { blankId: 'rule', label: { ja: '同値の証明方針', zh: '等价证明方针' } },
     },

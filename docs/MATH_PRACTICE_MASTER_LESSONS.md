@@ -689,3 +689,92 @@ UIを先に作るのではなく、問題の論理関係を先に作る。
 最後に:
 
 user-approved behaviorをdocumentとtestの両方へ残し、次のAIが毎回最初から同じ失敗をしないようにする。
+
+
+---
+
+# 33. 図も answer leakage になる
+
+2026-10-04 release QA で追加された重要ルール。
+
+答え漏れは文章だけではない。
+
+図の次の要素も、learner-owned thinking node の答えを先に示し得る:
+- ○ / ● の端点
+- 矢印の向き
+- 区間の塗り
+- 完成済みの式
+- branch の完成形
+- 数値ラベル
+- right-angle / equal-side marks
+- summary 状態
+
+実例:
+- 99-(4): `P=[-2,2]`, `Q=(-2,4)` の○/●が、次の「-2はどちらに入るか」を先に答えた。
+- 110: `q⇒p`, `¬q⇒¬p`, `¬p⇒¬q` を途中図へ出すと、form blank を解く前に答えが見える。
+
+原則:
+
+```
+figure state
+→ 今のthinking nodeに必要な情報だけ
+→ learnerが判断
+→ その結果を使う次のfigure state
+```
+
+図を置く前に必ず聞く:
+1. この図は問題文の情報だけを可視化しているか
+2. それとも次のblankの答えを視覚的に確定していないか
+3. ○/●、角印、辺印、矢印、数値まで含めて確認したか
+
+「文字で答えを書いていないから安全」は禁止。
+
+---
+
+# 34. 数学図は semantic correctness まで監査する
+
+図は decorative illustration ではない。
+
+必須確認:
+- 有界 / 無界
+- 開区間 / 閉区間
+- 数直線がどちらへ続くか
+- 辺・角・頂点の対応
+- 変数が何を表すか
+- 現在の推論段階で見せてよい情報か
+
+実例:
+- `(-∞,1)` を有限線分のように描かない。
+- 実数全体の数直線を片側矢印だけにしない。
+
+semantic bug は見た目の微調整ではなく、教材内容のbugとして扱う。
+
+---
+
+# 35. CI待ち時間を空費しない
+
+user-approved workflow rule:
+
+長いCI / Pages / browser smoke の待ち時間は、ただstatusをpollし続けない。
+
+独立して進められる作業を並行する:
+- 次の問題群の静的監査
+- answer leakage review
+- figure timing review
+- presentation label review
+- E2E coverage gap review
+- docs / worklog 更新
+- source / implementation diff確認
+
+ただし:
+- 同じfile / 同じbranchを複数chatで同時編集しない
+- mainが別chatで進んだら、merge前に必ずHEADを再確認する
+- 重複修正を見つけたら既存mainを優先し、自分のPRを最小差分へ縮める
+
+今回の実例:
+- PR #45 が同系統の99/101/110修正を先にmainへ入れたため、
+- 後続PRは重複を捨て、
+- 99-(4) timing だけの2-file minimal PR #47へ縮小した。
+
+高効率とは「同時にたくさん触る」ことではない。
+**待ち時間に独立作業を進め、merge時は差分を最小化すること。**

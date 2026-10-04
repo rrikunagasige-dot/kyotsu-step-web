@@ -1030,3 +1030,111 @@ button.math-theme-link {
 .reading-choice-hint span {
   color: var(--color-text);
 }
+
+
+/* Math practice progressive reasoning figures */
+.math-practice-figure {
+  width: 100%;
+  margin: .7rem 0 .95rem;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  background: var(--color-paper);
+}
+.math-practice-figure__title {
+  padding: .42rem .62rem;
+  border-bottom: 1px solid var(--color-line);
+  color: var(--color-muted);
+  font-size: .72rem;
+  font-weight: 700;
+}
+.math-practice-figure__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 240px;
+  color: var(--color-text);
+}
+.math-practice-figure .mpf-line,
+.math-practice-figure .mpf-shape,
+.math-practice-figure .mpf-card,
+.math-practice-figure .mpf-guide-line,
+.math-practice-figure .mpf-emphasis-line,
+.math-practice-figure .mpf-angle,
+.math-practice-figure .mpf-tick,
+.math-practice-figure .mpf-cross {
+  vector-effect: non-scaling-stroke;
+}
+.math-practice-figure .mpf-line {
+  fill: none;
+  stroke: var(--color-text);
+  stroke-width: 1.5;
+}
+.math-practice-figure .mpf-guide-line {
+  fill: none;
+  stroke: var(--color-muted);
+  stroke-width: 1.25;
+  stroke-dasharray: 4 4;
+}
+.math-practice-figure .mpf-emphasis-line {
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+.math-practice-figure .mpf-shape {
+  fill: var(--color-bg);
+  stroke: var(--color-text);
+  stroke-width: 2;
+}
+.math-practice-figure .mpf-card {
+  fill: var(--color-bg);
+  stroke: var(--color-border);
+  stroke-width: 1.5;
+}
+.math-practice-figure .mpf-angle,
+.math-practice-figure .mpf-tick {
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 2;
+}
+.math-practice-figure .mpf-cross {
+  fill: none;
+  stroke: var(--color-error);
+  stroke-width: 2.25;
+}
+.math-practice-figure .mpf-open-dot {
+  fill: var(--color-paper);
+  stroke: var(--color-primary);
+  stroke-width: 2;
+}
+.math-practice-figure .mpf-closed-dot,
+.math-practice-figure .mpf-arrow {
+  fill: var(--color-primary);
+  stroke: var(--color-primary);
+  stroke-width: 1;
+}
+.math-practice-figure .mpf-label {
+  fill: var(--color-text);
+  font-size: 12px;
+}
+.math-practice-figure .mpf-label--strong {
+  font-weight: 700;
+}
+.math-practice-figure .mpf-muted {
+  fill: var(--color-muted);
+  font-size: 11px;
+}
+@media (max-width: 420px) {
+  .math-practice-figure {
+    margin-inline: 0;
+  }
+  .math-practice-figure__title {
+    font-size: .68rem;
+  }
+  .math-practice-figure .mpf-label {
+    font-size: 11px;
+  }
+  .math-practice-figure .mpf-muted {
+    font-size: 10px;
+  }
+}

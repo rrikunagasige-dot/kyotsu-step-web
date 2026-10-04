@@ -183,12 +183,12 @@ describe('math practice current-target presentation', () => {
 
   it('models 118 as one shared function criterion with three independent judgments', () => {
     expect(mathPracticeTargetsForQuestion('math-practice-118').map((target) => target.id))
-      .toEqual(['basis', 'p1', 'p2', 'p3'])
-    expect(mathPracticeDependencyTargets('math-practice-118', 'p1').map((target) => target.id))
+      .toEqual(['basis', 's1', 's2', 's3'])
+    expect(mathPracticeDependencyTargets('math-practice-118', 's1').map((target) => target.id))
       .toEqual(['basis'])
-    expect(mathPracticeDependencyTargets('math-practice-118', 'p2').map((target) => target.id))
+    expect(mathPracticeDependencyTargets('math-practice-118', 's2').map((target) => target.id))
       .toEqual(['basis'])
-    expect(mathPracticeDependencyTargets('math-practice-118', 'p3').map((target) => target.id))
+    expect(mathPracticeDependencyTargets('math-practice-118', 's3').map((target) => target.id))
       .toEqual(['basis'])
     expect(mathPracticeUsesSubproblemCompression('math-practice-118')).toBe(true)
   })

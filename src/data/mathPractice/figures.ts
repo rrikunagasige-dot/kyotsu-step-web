@@ -129,7 +129,7 @@ export function mathPracticeFigureState(
     case 'math-practice-118':
       if (targetId === 's1') return 'F118-1'
       if (targetId === 's2') {
-        if (has(resolved, 'p2-roots')) return 'F118-2B'
+        if (has(resolved, 'p2-count')) return 'F118-2B'
         if (has(resolved, 'p2-sample')) return 'F118-2A'
         return null
       }

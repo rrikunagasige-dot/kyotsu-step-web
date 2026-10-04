@@ -164,7 +164,7 @@ const rawMathQuantifierUnit = {
             { type: 'math' as const, latex: '\\sqrt8' },
             { type: 'text' as const, text: ' を取ると、積は ' },
             { type: 'choice' as const, itemId: 'quant-d02' },
-            { type: 'text' as const, text: ' で有理数になる。したがって元の命題は偽である。' },
+            { type: 'text' as const, text: ' となり、有理数になる。したがって元の命題は偽である。' },
           ],
         },
         {
@@ -313,7 +313,7 @@ const rawMathQuantifierUnit = {
           label: 'QUANT-D01',
           prompt: '「2つの無理数の積は無理数である」が、どの範囲の2数について述べているか。',
           answer: 'どの2つの無理数を選んでも',
-          acceptedAnswers: ['すべての2つの無理数について'],
+          acceptedAnswers: ['任意の2つの無理数について'],
           answerType: 'text' as const,
           choices: ['どの2つの無理数を選んでも', 'ある2つの無理数を選べば'],
           purpose: 'representation-link' as const,

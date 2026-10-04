@@ -24,7 +24,7 @@ describe('math function-conditions textbook unit', () => {
     expect(concept).toBeGreaterThan(decision)
   })
 
-  it('keeps the source substitution order for f and g before domain/range work', () => {
+  it('keeps the source substitution order for the two f(x) examples before domain/range work', () => {
     const flow = mathFunctionConditionsUnit.sections[0].readingFlow
     const ids = ['func-a02', 'func-a03', 'func-a04', 'func-a05', 'func-b01', 'func-b02', 'func-b03', 'func-c01']
     const indexes = ids.map((itemId) => flow.findIndex(

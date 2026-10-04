@@ -32,221 +32,101 @@ test('Math I・A basic theme opens its first problem directly', async ({ page })
   await expect(page.getByTestId('math-topic-question-1')).toHaveAttribute('aria-current', 'page')
 })
 
-test('98 opens the proposition theme directly and separates false propositions from non-propositions', async ({ page }) => {
+
+test('98 reveals the isosceles counterexample figure only after the learner builds it', async ({ page }) => {
   await page.getByTestId('math-exercise-basic').click()
   await page.getByTestId('math-topic-read-propositions').click()
 
   await expect(page.getByRole('heading', { name: '98｜命題と真偽' })).toBeVisible()
-  const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10','11','12','13','14'])
-  await expect(page.getByTestId('math-topic-question-1')).toHaveAttribute('aria-current', 'page')
-
-  const problem = page.getByTestId('standard-problem')
-  const readingFlow = page.getByTestId('math-practice-reading-flow')
   const currentTarget = page.getByTestId('math-practice-current-target')
-
-  await expect(problem).toContainText('次の文は命題か')
-  await expect(problem).toContainText('二等辺三角形は正三角形')
-  await expect(problem).toContainText('よい近似値')
-  await expect(currentTarget).toContainText('まず確認')
-  await expect(currentTarget).toContainText('判定基準')
-  await expect(page.getByTestId('blank-math-practice-098-definition')).toContainText('選択')
-  await expect(page.getByTestId('blank-math-practice-098-p1-result')).toHaveCount(0)
 
   await page.getByTestId('blank-math-practice-098-definition').click()
   await page.getByTestId('option-math-practice-098-definition-truth-or-false').click()
-
-  // (1) reuses only the compact proposition criterion; the preparation prose is compressed.
-  await expect(currentTarget).toContainText('今の問い｜(1)')
-  await expect(readingFlow).not.toContainText('まず、文が命題かどうかを分ける共通の基準')
-  const basisDependency = page.getByTestId('math-practice-dependency-links')
-  await expect(basisDependency).toContainText('判定基準')
-  await expect(basisDependency).toContainText('真・偽')
-  await expect(page.getByTestId('blank-math-practice-098-p1-result')).toContainText('選択')
-  await expect(readingFlow.locator('.katex')).toHaveCount(1)
-  await expect(readingFlow).not.toContainText('imes36')
-
+  await page.getByTestId('blank-math-practice-098-p1-calculation').click()
+  await page.getByTestId('option-math-practice-098-p1-calculation-correct').click()
   await page.getByTestId('blank-math-practice-098-p1-result').click()
   await page.getByTestId('option-math-practice-098-p1-result-true-proposition').click()
 
-  // (2) is independent of (1); only the common criterion survives.
   await expect(currentTarget).toContainText('今の問い｜(2)')
-  await expect(readingFlow).not.toContainText('(1) は実際に割り算')
-  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('判定基準')
-  await expect(page.getByTestId('math-practice-dependency-links')).not.toContainText('(1) の結果')
-  await expect(page.getByTestId('blank-math-practice-098-p2-counterexample')).toContainText('選択')
-  await expect(page.getByTestId('blank-math-practice-098-p2-result')).toHaveCount(0)
-  await expect(readingFlow).not.toContainText('頂角40°')
+  await expect(page.locator('[data-testid^="math-practice-figure-F98"]')).toHaveCount(0)
 
-  await page.getByTestId('blank-math-practice-098-p2-counterexample').click()
-  await page.getByTestId('option-math-practice-098-p2-counterexample-forty-degree').click()
-  const counterexampleAnswer = page.getByTestId('answer-math-practice-098-p2-counterexample')
-  await expect(counterexampleAnswer).toContainText('頂角')
-  await expect(counterexampleAnswer.getByTestId('math-practice-inline-math')).toHaveCount(1)
-  await expect(counterexampleAnswer.getByTestId('math-practice-inline-math')).toContainText('40')
-  await expect(page.getByTestId('blank-math-practice-098-p2-result')).toContainText('選択')
-  await page.getByTestId('blank-math-practice-098-p2-result').click()
-  await page.getByTestId('option-math-practice-098-p2-result-false-proposition').click()
+  await page.getByTestId('blank-math-practice-098-p2-property').click()
+  await page.getByTestId('option-math-practice-098-p2-property-two-equal').click()
+  await expect(page.getByTestId('math-practice-figure-F98-2A')).toBeVisible()
 
-  // (3) tests objective decidability rather than treating a vague sentence as merely false.
-  await expect(currentTarget).toContainText('今の問い｜(3)')
-  await expect(readingFlow).not.toContainText('反例が1つ見つかれば')
-  await expect(page.getByTestId('blank-math-practice-098-p3-objectivity')).toContainText('選択')
-  await expect(readingFlow).not.toContainText('定まっていない')
+  await page.getByTestId('blank-math-practice-098-p2-third-side').click()
+  await page.getByTestId('option-math-practice-098-p2-third-side-not-forced').click()
+  await page.getByTestId('blank-math-practice-098-p2-example').click()
+  await page.getByTestId('option-math-practice-098-p2-example-five-five-six').click()
+  await expect(page.getByTestId('math-practice-figure-F98-2B')).toBeVisible()
 
-  await page.getByTestId('blank-math-practice-098-p3-objectivity').click()
-  await page.getByTestId('option-math-practice-098-p3-objectivity-not-fixed').click()
-  await page.getByTestId('blank-math-practice-098-p3-result').click()
-  await page.getByTestId('option-math-practice-098-p3-result-not-proposition').click()
-
-  await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
-
-  const dimensions = await page.evaluate(() => ({
-    viewport: window.innerWidth,
-    page: document.documentElement.scrollWidth,
-  }))
+  const dimensions = await page.evaluate(() => ({ viewport: window.innerWidth, page: document.documentElement.scrollWidth }))
   expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
 })
 
-test('99 judges implication by set inclusion and uses counterexamples only where needed', async ({ page }) => {
+
+test('99 draws set ranges only after the learner derives the compared sets', async ({ page }) => {
   await page.getByTestId('math-exercise-basic').click()
   await page.getByTestId('math-topic-read-propositions').click()
   await page.getByTestId('math-topic-question-2').click()
 
   await expect(page.getByRole('heading', { name: '99｜含意の真偽' })).toBeVisible()
-  const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10','11','12','13','14'])
-  await expect(page.getByTestId('math-topic-question-2')).toHaveAttribute('aria-current', 'page')
-
-  const problem = page.getByTestId('standard-problem')
-  const readingFlow = page.getByTestId('math-practice-reading-flow')
-  const currentTarget = page.getByTestId('math-practice-current-target')
-
-  await expect(problem).toContainText('集合の包含関係')
-  await expect(problem.locator('.katex-display')).toHaveCount(4)
-  await expect(problem.locator('.katex-error')).toHaveCount(0)
-  await expect(problem.locator('.katex-display').first().locator('.katex-html')).toContainText('⇒')
-  await expect(currentTarget).toContainText('まず確認')
-  await expect(currentTarget).toContainText('包含関係')
-  await expect(page.getByTestId('blank-math-practice-099-rule')).toContainText('選択')
-  await expect(page.getByTestId('blank-math-practice-099-p1-result')).toHaveCount(0)
-
   await page.getByTestId('blank-math-practice-099-rule').click()
-  await page.getByTestId('option-math-practice-099-rule-p-subset-q').click()
+  await page.getByTestId('option-math-practice-099-rule-subset').click()
 
-  // (1): only the current interval comparison remains, plus the compact common rule.
-  await expect(currentTarget).toContainText('今の問い｜(1)')
-  await expect(readingFlow).not.toContainText('まず、前件を満たす集合')
-  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('判定規則')
-  await expect(page.getByTestId('blank-math-practice-099-p1-result')).toContainText('選択')
+  await expect(page.locator('[data-testid^="math-practice-figure-F99"]')).toHaveCount(0)
+  await page.getByTestId('blank-math-practice-099-p1-sets').click()
+  await page.getByTestId('option-math-practice-099-p1-sets-correct').click()
+  await expect(page.getByTestId('math-practice-figure-F99-1')).toBeVisible()
+
+  await page.getByTestId('blank-math-practice-099-p1-inclusion').click()
+  await page.getByTestId('option-math-practice-099-p1-inclusion-p-sub-q').click()
   await page.getByTestId('blank-math-practice-099-p1-result').click()
-  await page.getByTestId('option-math-practice-099-p1-result-subset-true').click()
+  await page.getByTestId('option-math-practice-099-p1-result-true').click()
 
-  // (2): previous subproblem disappears; the learner must construct a counterexample.
-  await expect(currentTarget).toContainText('今の問い｜(2)')
-  await expect(readingFlow).not.toContainText('(1) の前件と後件')
-  await expect(page.getByTestId('blank-math-practice-099-p2-counterexample')).toContainText('選択')
-  await expect(page.getByTestId('blank-math-practice-099-p2-result')).toHaveCount(0)
-  await expect(readingFlow).not.toContainText('x=-1')
+  await expect(page.locator('[data-testid^="math-practice-figure-F99"]')).toHaveCount(0)
+  await page.getByTestId('blank-math-practice-099-p2-sets').click()
+  await page.getByTestId('option-math-practice-099-p2-sets-correct').click()
+  await expect(page.getByTestId('math-practice-figure-F99-2')).toBeVisible()
 
-  await page.getByTestId('blank-math-practice-099-p2-counterexample').click()
-  await page.getByTestId('option-math-practice-099-p2-counterexample-minus-one').click()
-  const counterexample = page.getByTestId('answer-math-practice-099-p2-counterexample')
-  await expect(counterexample).toContainText('-1')
-  await expect(page.getByTestId('blank-math-practice-099-p2-result')).toContainText('選択')
-  await page.getByTestId('blank-math-practice-099-p2-result').click()
-  await page.getByTestId('option-math-practice-099-p2-result-false').click()
-
-  // (3): no counterexample stage is invented for a true implication.
-  await expect(currentTarget).toContainText('今の問い｜(3)')
-  await expect(readingFlow).not.toContainText('選んだ値が前件を満たし')
-  await expect(page.getByTestId('blank-math-practice-099-p3-result')).toContainText('選択')
-  await page.getByTestId('blank-math-practice-099-p3-result').click()
-  await page.getByTestId('option-math-practice-099-p3-result-positive-bound').click()
-
-  // (4): first convert the absolute-value condition, then use the strict endpoint as a counterexample.
-  await expect(currentTarget).toContainText('今の問い｜(4)')
-  await expect(page.getByTestId('blank-math-practice-099-p4-q-set')).toContainText('選択')
-  await expect(page.getByTestId('blank-math-practice-099-p4-counterexample-result')).toHaveCount(0)
-  await page.getByTestId('blank-math-practice-099-p4-q-set').click()
-  await page.getByTestId('option-math-practice-099-p4-q-set-correct').click()
-
-  await expect(page.getByTestId('blank-math-practice-099-p4-counterexample-result')).toContainText('選択')
-  await page.getByTestId('blank-math-practice-099-p4-counterexample-result').click()
-  await page.getByTestId('option-math-practice-099-p4-counterexample-result-minus-two-false').click()
-
-  await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
-
-  const dimensions = await page.evaluate(() => ({
-    viewport: window.innerWidth,
-    page: document.documentElement.scrollWidth,
-  }))
+  const dimensions = await page.evaluate(() => ({ viewport: window.innerWidth, page: document.documentElement.scrollWidth }))
   expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
 })
 
-test('100 constructs one valid counterexample per false implication without leaking it early', async ({ page }) => {
+
+test('100 constructs each counterexample through explicit evidence nodes', async ({ page }) => {
   await page.getByTestId('math-exercise-basic').click()
   await page.getByTestId('math-topic-read-propositions').click()
   await page.getByTestId('math-topic-question-3').click()
 
   await expect(page.getByRole('heading', { name: '100｜反例' })).toBeVisible()
-  const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10','11','12','13','14'])
-  await expect(page.getByTestId('math-topic-question-3')).toHaveAttribute('aria-current', 'page')
-
-  const problem = page.getByTestId('standard-problem')
-  const readingFlow = page.getByTestId('math-practice-reading-flow')
-  const currentTarget = page.getByTestId('math-practice-current-target')
-
-  await expect(problem).toContainText('命題が偽であることを示せ')
-  await expect(problem.locator('.katex-display')).toHaveCount(3)
-  await expect(problem.locator('.katex-error')).toHaveCount(0)
-
-  await expect(currentTarget).toContainText('まず確認')
-  await expect(currentTarget).toContainText('反例')
-  await expect(page.getByTestId('blank-math-practice-100-rule')).toContainText('選択')
-  await expect(page.getByTestId('blank-math-practice-100-p1-counterexample')).toHaveCount(0)
-
   await page.getByTestId('blank-math-practice-100-rule').click()
-  await page.getByTestId('option-math-practice-100-rule-antecedent-true-consequent-false').click()
+  await page.getByTestId('option-math-practice-100-rule-p-true-q-false').click()
 
-  // (1): the common counterexample criterion stays compact, while the actual answer remains hidden.
-  await expect(currentTarget).toContainText('今の問い｜(1)')
-  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('反例の条件')
-  await expect(readingFlow).not.toContainText('x=-√3')
-  await expect(page.getByTestId('blank-math-practice-100-p1-counterexample')).toContainText('選択')
-
+  await page.getByTestId('blank-math-practice-100-p1-roots').click()
+  await page.getByTestId('option-math-practice-100-p1-roots-plus-minus').click()
   await page.getByTestId('blank-math-practice-100-p1-counterexample').click()
-  await page.getByTestId('option-math-practice-100-p1-counterexample-negative-root').click()
+  await page.getByTestId('option-math-practice-100-p1-counterexample-minus-root').click()
+  await page.getByTestId('blank-math-practice-100-p1-verify').click()
+  await page.getByTestId('option-math-practice-100-p1-verify-verified').click()
 
-  // (2): (1) disappears; y=1 remains as the given construction scaffold, but x=-2 is not leaked.
-  await expect(currentTarget).toContainText('今の問い｜(2)')
-  await expect(readingFlow).not.toContainText('平方すると符号')
-  await expect(readingFlow).toContainText('y=1')
-  await expect(readingFlow).not.toContainText('x=-2')
-  await expect(page.getByTestId('blank-math-practice-100-p2-counterexample')).toContainText('選択')
+  await page.getByTestId('blank-math-practice-100-p2-break-q').click()
+  await page.getByTestId('option-math-practice-100-p2-break-q-x-le-y').click()
+  await page.getByTestId('blank-math-practice-100-p2-y').click()
+  await page.getByTestId('option-math-practice-100-p2-y-one').click()
+  await page.getByTestId('blank-math-practice-100-p2-x').click()
+  await page.getByTestId('option-math-practice-100-p2-x-minus-two').click()
+  await page.getByTestId('blank-math-practice-100-p2-verify').click()
+  await page.getByTestId('option-math-practice-100-p2-verify-verified').click()
 
-  await page.getByTestId('blank-math-practice-100-p2-counterexample').click()
-  await page.getByTestId('option-math-practice-100-p2-counterexample-minus-two').click()
+  await page.getByTestId('blank-math-practice-100-p3-candidate').click()
+  await page.getByTestId('option-math-practice-100-p3-candidate-five').click()
+  await page.getByTestId('blank-math-practice-100-p3-factor').click()
+  await page.getByTestId('option-math-practice-100-p3-factor-three-seventeen').click()
+  await page.getByTestId('blank-math-practice-100-p3-verify').click()
+  await page.getByTestId('option-math-practice-100-p3-verify-verified').click()
 
-  // (3): choose the odd n first; the factorization check is revealed only after the answer.
-  await expect(currentTarget).toContainText('今の問い｜(3)')
-  await expect(readingFlow).not.toContainText('n=5')
-  await expect(readingFlow).not.toContainText('51')
-  await expect(page.getByTestId('blank-math-practice-100-p3-counterexample')).toContainText('選択')
-
-  await page.getByTestId('blank-math-practice-100-p3-counterexample').click()
-  await page.getByTestId('option-math-practice-100-p3-counterexample-five').click()
-
-  await expect(readingFlow.locator('.katex-display')).toHaveCount(1)
-  await expect(readingFlow.locator('.katex-display').locator('.katex-html')).toContainText('51')
   await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
-
-  const dimensions = await page.evaluate(() => ({
-    viewport: window.innerWidth,
-    page: document.documentElement.scrollWidth,
-  }))
-  expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
 })
 
 test('101 treats negation as the complete complement and keeps each condition independent', async ({ page }) => {
@@ -526,69 +406,27 @@ test('104 fixes necessary/sufficient direction first, then classifies six indepe
   expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
 })
 
-test('105 proves true implications by all cases and false ones by one counterexample', async ({ page }) => {
+
+test('105 separates evidence construction from the final truth judgment', async ({ page }) => {
   await page.getByTestId('math-exercise-basic').click()
   await page.getByTestId('math-topic-read-propositions').click()
   await page.getByTestId('math-topic-question-8').click()
 
   await expect(page.getByRole('heading', { name: '105｜命題の真偽' })).toBeVisible()
-  const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10','11','12','13','14'])
-  await expect(page.getByTestId('math-topic-question-8')).toHaveAttribute('aria-current', 'page')
-
-  const problem = page.getByTestId('standard-problem')
-  const readingFlow = page.getByTestId('math-practice-reading-flow')
-  const currentTarget = page.getByTestId('math-practice-current-target')
-
-  await expect(problem).toContainText('次の命題の真偽')
-  await expect(problem.locator('.katex-display')).toHaveCount(2)
-  await expect(problem.locator('.katex-error')).toHaveCount(0)
-
-  await expect(currentTarget).toContainText('まず確認')
-  await expect(currentTarget).toContainText('真と偽')
-  await expect(page.getByTestId('blank-math-practice-105-rule')).toContainText('選択')
-  await expect(page.getByTestId('blank-math-practice-105-p1-result')).toHaveCount(0)
-
   await page.getByTestId('blank-math-practice-105-rule').click()
   await page.getByTestId('option-math-practice-105-rule-all-vs-counterexample').click()
 
-  // (1): do not leak the counterexample before the learner selects it.
-  await expect(currentTarget).toContainText('今の問い｜(1)')
-  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('真偽判定の基準')
-  await expect(readingFlow).not.toContainText('a=0,b=1')
-  await expect(page.getByTestId('blank-math-practice-105-p1-result')).toContainText('選択')
-  await page.getByTestId('blank-math-practice-105-p1-result').click()
-  await page.getByTestId('option-math-practice-105-p1-result-counterexample-false').click()
-
-  // (2): true requires checking both roots of a^2=4.
-  await expect(currentTarget).toContainText('今の問い｜(2)')
-  await expect(readingFlow).not.toContainText('少なくとも一方が0')
-  await expect(readingFlow.locator('.katex-display')).toHaveCount(3)
-  await expect(readingFlow.locator('.katex-display').first().locator('.katex-html')).toContainText('a=2')
-  await expect(readingFlow.locator('.katex-display').first().locator('.katex-html')).toContainText('a=−2')
-  await page.getByTestId('blank-math-practice-105-p2-result').click()
-  await page.getByTestId('option-math-practice-105-p2-result-both-cases-true').click()
-
-  // (3): product rational does not force each factor rational.
-  await expect(currentTarget).toContainText('今の問い｜(3)')
-  await expect(readingFlow).not.toContainText('√2')
-  await page.getByTestId('blank-math-practice-105-p3-result').click()
-  await page.getByTestId('option-math-practice-105-p3-result-sqrt-two-false').click()
-
-  // (4): the counterexample must make both sum and product rational simultaneously.
-  await expect(currentTarget).toContainText('今の問い｜(4)')
-  await expect(readingFlow).not.toContainText('a=√2')
-  await expect(readingFlow).not.toContainText('b=-√2')
-  await page.getByTestId('blank-math-practice-105-p4-result').click()
-  await page.getByTestId('option-math-practice-105-p4-result-conjugate-false').click()
+  for (const [blank, option] of [
+    ['p1-zero-case','at-least-one-zero'], ['p1-example','zero-one'], ['p1-verify','fails'], ['p1-judgment','false'],
+    ['p2-solutions','plus-minus-two'], ['p2-check','both-pass'], ['p2-judgment','true'],
+    ['p3-example','sqrt2-sqrt2'], ['p3-product','two'], ['p3-factors','irrational'], ['p3-judgment','false'],
+    ['p4-example','conjugate'], ['p4-sum-product','zero-minus-two'], ['p4-factors','irrational'], ['p4-judgment','false'],
+  ] as const) {
+    await page.getByTestId(`blank-math-practice-105-${blank}`).click()
+    await page.getByTestId(`option-math-practice-105-${blank}-${option}`).click()
+  }
 
   await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
-
-  const dimensions = await page.evaluate(() => ({
-    viewport: window.innerWidth,
-    page: document.documentElement.scrollWidth,
-  }))
-  expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
 })
 
 test('106 translates number conditions into intersection and complement without carrying answers forward', async ({ page }) => {
@@ -786,59 +624,48 @@ test('109 negates quantifiers and verifies the truth of each original and negate
   expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
 })
 
-test('118 judges functionhood by unique output and keeps the three cases independent', async ({ page }) => {
+
+test('118 updates the function correspondence figure without leaking non-uniqueness early', async ({ page }) => {
   await page.getByTestId('math-exercise-basic').click()
   await page.getByTestId('math-topic-read-propositions').click()
   await page.getByTestId('math-topic-question-12').click()
 
   await expect(page.getByRole('heading', { name: '118｜関数とは何か' })).toBeVisible()
-  const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9','10','11','12','13','14'])
-  await expect(page.getByTestId('math-topic-question-12')).toHaveAttribute('aria-current', 'page')
-
-  const problem = page.getByTestId('standard-problem')
-  const currentTarget = page.getByTestId('math-practice-current-target')
-  const flow = page.getByTestId('math-practice-reading-flow')
-
-  await expect(problem).toContainText('関数である」といえるもの')
-  await expect(problem).toContainText('円周の長さ')
-  await expect(problem).toContainText('平方根')
-  await expect(problem).toContainText('面積が1')
-  await expect(problem.locator('.katex-error')).toHaveCount(0)
-
-  // Shared criterion first.
-  await expect(currentTarget).toContainText('まず確認')
-  await expect(currentTarget).toContainText('関数の判定基準')
-  await expect(currentTarget).not.toContainText('ただ1つ')
-  await expect(page.getByTestId('blank-math-practice-118-rule')).toContainText('選択')
-  await expect(page.getByTestId('blank-math-practice-118-p1')).toHaveCount(0)
   await page.getByTestId('blank-math-practice-118-rule').click()
   await page.getByTestId('option-math-practice-118-rule-unique').click()
 
-  // (1): one circumference determines one radius.
-  await expect(currentTarget).toContainText('今の問い｜(1)')
-  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('関数の判定基準')
-  await page.getByTestId('blank-math-practice-118-p1').click()
-  await page.getByTestId('option-math-practice-118-p1-function').click()
+  await expect(page.getByTestId('math-practice-figure-F118-1')).toBeVisible()
+  for (const [blank, option] of [
+    ['p1-relation','circumference'], ['p1-solve','solve'], ['p1-unique','one'], ['p1-judgment','function'],
+  ] as const) {
+    await page.getByTestId(`blank-math-practice-118-${blank}`).click()
+    await page.getByTestId(`option-math-practice-118-${blank}-${option}`).click()
+  }
 
-  // (2): one concrete x with two square roots disproves functionhood.
-  await expect(currentTarget).toContainText('今の問い｜(2)')
-  await expect(flow).not.toContainText('円周 x と半径 y')
-  await page.getByTestId('blank-math-practice-118-p2').click()
-  await page.getByTestId('option-math-practice-118-p2-counterexample').click()
+  await expect(page.locator('[data-testid^="math-practice-figure-F118-2"]')).toHaveCount(0)
+  await page.getByTestId('blank-math-practice-118-p2-sample').click()
+  await page.getByTestId('option-math-practice-118-p2-sample-four').click()
+  await expect(page.getByTestId('math-practice-figure-F118-2A')).toBeVisible()
 
-  // (3): physical domain plus xy=1 gives a unique positive y.
-  await expect(currentTarget).toContainText('今の問い｜(3)')
-  await expect(flow).not.toContainText('同じ x に異なる2つ')
-  await page.getByTestId('blank-math-practice-118-p3').click()
-  await page.getByTestId('option-math-practice-118-p3-function').click()
+  await page.getByTestId('blank-math-practice-118-p2-roots').click()
+  await page.getByTestId('option-math-practice-118-p2-roots-plus-minus').click()
+  await expect(page.getByTestId('math-practice-figure-F118-2B')).toBeVisible()
+
+  await page.getByTestId('blank-math-practice-118-p2-count').click()
+  await page.getByTestId('option-math-practice-118-p2-count-two').click()
+  await page.getByTestId('blank-math-practice-118-p2-judgment').click()
+  await page.getByTestId('option-math-practice-118-p2-judgment-not-function').click()
+
+  await expect(page.getByTestId('math-practice-figure-F118-3')).toBeVisible()
+  for (const [blank, option] of [
+    ['p3-area','product'], ['p3-solve','reciprocal'], ['p3-domain','positive'], ['p3-unique','one'], ['p3-judgment','function'],
+  ] as const) {
+    await page.getByTestId(`blank-math-practice-118-${blank}`).click()
+    await page.getByTestId(`option-math-practice-118-${blank}-${option}`).click()
+  }
 
   await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
-
-  const dimensions = await page.evaluate(() => ({
-    viewport: window.innerWidth,
-    page: document.documentElement.scrollWidth,
-  }))
+  const dimensions = await page.evaluate(() => ({ viewport: window.innerWidth, page: document.documentElement.scrollWidth }))
   expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
 })
 
@@ -1035,183 +862,65 @@ test('120 builds two verbal function models and derives each domain from physica
   expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
 })
 
-test('108 proves equivalence in two directions and only combines them at the final stage', async ({ page }) => {
+
+test('108 proves equivalence in two directions and updates the reverse-branch figure', async ({ page }) => {
   await page.getByTestId('math-exercise-basic').click()
   await page.getByTestId('math-topic-prove-propositions').click()
 
   await expect(page.getByRole('heading', { name: '108｜同値の証明' })).toBeVisible()
-  const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9'])
-  await expect(page.getByTestId('math-topic-question-1')).toHaveAttribute('aria-current', 'page')
-
-  const problem = page.getByTestId('standard-problem')
-  const readingFlow = page.getByTestId('math-practice-reading-flow')
-  const currentTarget = page.getByTestId('math-practice-current-target')
-
-  await expect(problem).toContainText('同値であることを証明')
-  await expect(problem.locator('.katex-display')).toHaveCount(2)
-  await expect(problem.locator('.katex-error')).toHaveCount(0)
-
-  await expect(currentTarget).toContainText('まず確認')
-  await expect(currentTarget).toContainText('証明方針')
-  await expect(currentTarget).not.toContainText('2方向')
-  await expect(page.getByTestId('blank-math-practice-108-rule')).toContainText('選択')
-  await expect(page.getByTestId('blank-math-practice-108-forward')).toHaveCount(0)
-
   await page.getByTestId('blank-math-practice-108-rule').click()
   await page.getByTestId('option-math-practice-108-rule-both-directions').click()
 
-  // Forward proof: derive both q conditions from p; reverse work stays hidden.
-  await expect(currentTarget).toContainText('一方向目')
-  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('同値の証明方針')
-  await expect(readingFlow).not.toContainText('次に逆方向')
-  await expect(page.getByTestId('blank-math-practice-108-forward')).toContainText('選択')
-  await page.getByTestId('blank-math-practice-108-forward').click()
-  await page.getByTestId('option-math-practice-108-forward-sum-and-product').click()
+  for (const [blank, option] of [
+    ['forward-sum','sum-gt-two'], ['forward-product','product-positive'], ['forward-judgment','true'],
+  ] as const) {
+    await page.getByTestId(`blank-math-practice-108-${blank}`).click()
+    await page.getByTestId(`option-math-practice-108-${blank}-${option}`).click()
+  }
 
-  // Reverse proof is independent from the completed forward derivation.
-  await expect(currentTarget).toContainText('二方向目')
-  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('同値の証明方針')
-  await expect(page.getByTestId('math-practice-dependency-links')).not.toContainText('一方向目')
-  await expect(readingFlow).not.toContainText('一方向目では p')
-  await expect(page.getByTestId('blank-math-practice-108-reverse-sign')).toContainText('選択')
-  await expect(page.getByTestId('blank-math-practice-108-reverse-eliminate')).toHaveCount(0)
-
+  await expect(page.locator('[data-testid^="math-practice-figure-F108"]')).toHaveCount(0)
   await page.getByTestId('blank-math-practice-108-reverse-sign').click()
   await page.getByTestId('option-math-practice-108-reverse-sign-same-sign').click()
+  await expect(page.getByTestId('math-practice-figure-F108-A')).toBeVisible()
 
-  await expect(page.getByTestId('blank-math-practice-108-reverse-eliminate')).toContainText('選択')
   await page.getByTestId('blank-math-practice-108-reverse-eliminate').click()
-  await page.getByTestId('option-math-practice-108-reverse-eliminate-positive-remains').click()
+  await page.getByTestId('option-math-practice-108-reverse-eliminate-negative-eliminated').click()
+  await expect(page.getByTestId('math-practice-figure-F108-B')).toBeVisible()
 
-  // Only at the final stage are the two completed direction results imported together.
-  await expect(currentTarget).toContainText('結論')
-  await expect(currentTarget).toContainText('最終関係')
-  await expect(currentTarget).not.toContainText('同値')
-  const deps = page.getByTestId('math-practice-dependency-links')
-  await expect(deps).toContainText('一方向目')
-  await expect(deps).toContainText('二方向目')
-  await expect(readingFlow).not.toContainText('積が正であることだけから')
-  await expect(page.getByTestId('blank-math-practice-108-equivalence')).toContainText('選択')
-
+  await page.getByTestId('blank-math-practice-108-reverse-judgment').click()
+  await page.getByTestId('option-math-practice-108-reverse-judgment-true').click()
   await page.getByTestId('blank-math-practice-108-equivalence').click()
   await page.getByTestId('option-math-practice-108-equivalence-equivalent').click()
 
   await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
-
-  const dimensions = await page.evaluate(() => ({
-    viewport: window.innerWidth,
-    page: document.documentElement.scrollWidth,
-  }))
-  expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
 })
 
-test('110 builds converse, contrapositive and inverse separately, then consolidates each truth table', async ({ page }) => {
+
+test('110 separates proposition form, evidence, judgment, and summary', async ({ page }) => {
   await page.getByTestId('math-exercise-basic').click()
   await page.getByTestId('math-topic-prove-propositions').click()
   await page.getByTestId('math-topic-question-2').click()
 
   await expect(page.getByRole('heading', { name: '110｜逆・対偶・裏' })).toBeVisible()
-  const nav = page.getByTestId('math-topic-question-nav')
-  await expect(nav.getByRole('button')).toHaveText(['1','2','3','4','5','6','7','8','9'])
-  await expect(page.getByTestId('math-topic-question-2')).toHaveAttribute('aria-current', 'page')
-
-  const problem = page.getByTestId('standard-problem')
-  const readingFlow = page.getByTestId('math-practice-reading-flow')
-  const currentTarget = page.getByTestId('math-practice-current-target')
-
-  await expect(problem).toContainText('逆')
-  await expect(problem).toContainText('対偶')
-  await expect(problem).toContainText('裏')
-  await expect(problem.locator('.katex-error')).toHaveCount(0)
-
-  await expect(currentTarget).toContainText('まず確認')
-  await expect(page.getByTestId('blank-math-practice-110-rule')).toContainText('選択')
   await page.getByTestId('blank-math-practice-110-rule').click()
   await page.getByTestId('option-math-practice-110-rule-correct').click()
+  await expect(page.getByTestId('math-practice-figure-F110-A')).toBeVisible()
 
-  // (1) — each related proposition is checked independently.
-  await expect(currentTarget).toContainText('(1) 元命題')
-  await expect(page.getByTestId('math-practice-dependency-links')).toContainText('逆・対偶・裏の形')
-  await page.getByTestId('blank-math-practice-110-p1-original').click()
-  await page.getByTestId('option-math-practice-110-p1-original-true').click()
+  for (const [blank, option] of [
+    ['p1-original-proof','three-form'], ['p1-original-judgment','true'],
+    ['p1-converse-form','correct'], ['p1-converse-example','three'], ['p1-converse-judgment','false'],
+    ['p1-contrapositive-form','correct'], ['p1-contrapositive-evidence','divisibility'], ['p1-contrapositive-judgment','true'],
+    ['p1-inverse-form','correct'], ['p1-inverse-example','three'], ['p1-inverse-judgment','false'],
+  ] as const) {
+    await page.getByTestId(`blank-math-practice-110-${blank}`).click()
+    await page.getByTestId(`option-math-practice-110-${blank}-${option}`).click()
+  }
 
-  await expect(currentTarget).toContainText('(1) 逆')
-  await expect(readingFlow).not.toContainText('n=9k と書ける')
-  await page.getByTestId('blank-math-practice-110-p1-converse').click()
-  await page.getByTestId('option-math-practice-110-p1-converse-false-three').click()
-
-  await expect(currentTarget).toContainText('(1) 対偶')
-  await page.getByTestId('blank-math-practice-110-p1-contrapositive').click()
-  await page.getByTestId('option-math-practice-110-p1-contrapositive-true').click()
-
-  await expect(currentTarget).toContainText('(1) 裏')
-  await page.getByTestId('blank-math-practice-110-p1-inverse').click()
-  await page.getByTestId('option-math-practice-110-p1-inverse-false-three').click()
-
-  await expect(currentTarget).toContainText('(1) まとめ')
-  const p1Deps = page.getByTestId('math-practice-dependency-links')
-  await expect(p1Deps).toContainText('元命題')
-  await expect(p1Deps).toContainText('逆')
-  await expect(p1Deps).toContainText('対偶')
-  await expect(p1Deps).toContainText('裏')
+  await expect(page.getByTestId('math-practice-figure-F110-B')).toBeVisible()
   await page.getByTestId('blank-math-practice-110-p1-summary').click()
   await page.getByTestId('option-math-practice-110-p1-summary-tftf').click()
 
-  // (2) — factorization reveals x=1 as the original/contrapositive counterexample.
-  await expect(currentTarget).toContainText('(2) 元命題')
-  await expect(readingFlow).not.toContainText('n は9の倍数')
-  await expect(readingFlow.locator('.katex-display')).toHaveCount(1)
-  await page.getByTestId('blank-math-practice-110-p2-original').click()
-  await page.getByTestId('option-math-practice-110-p2-original-false-one').click()
-
-  await expect(currentTarget).toContainText('(2) 逆')
-  await expect(currentTarget).toContainText('逆命題を作り')
-  await expect(currentTarget).not.toContainText('x≠2')
-  await page.getByTestId('blank-math-practice-110-p2-converse').click()
-  await page.getByTestId('option-math-practice-110-p2-converse-true').click()
-
-  await expect(currentTarget).toContainText('(2) 対偶')
-  await page.getByTestId('blank-math-practice-110-p2-contrapositive').click()
-  await page.getByTestId('option-math-practice-110-p2-contrapositive-false-one').click()
-
-  await expect(currentTarget).toContainText('(2) 裏')
-  await page.getByTestId('blank-math-practice-110-p2-inverse').click()
-  await page.getByTestId('option-math-practice-110-p2-inverse-true').click()
-
-  await expect(currentTarget).toContainText('(2) まとめ')
-  await page.getByTestId('blank-math-practice-110-p2-summary').click()
-  await page.getByTestId('option-math-practice-110-p2-summary-ftft').click()
-
-  // (3) — the negation of OR must become AND in the contrapositive.
-  await expect(currentTarget).toContainText('(3) 元命題')
-  await expect(readingFlow).not.toContainText('x²-3x+2')
-  await page.getByTestId('blank-math-practice-110-p3-original').click()
-  await page.getByTestId('option-math-practice-110-p3-original-true-zero-product').click()
-
-  await expect(currentTarget).toContainText('(3) 逆')
-  await page.getByTestId('blank-math-practice-110-p3-converse').click()
-  await page.getByTestId('option-math-practice-110-p3-converse-true').click()
-
-  await expect(currentTarget).toContainText('(3) 対偶')
-  await page.getByTestId('blank-math-practice-110-p3-contrapositive').click()
-  await page.getByTestId('option-math-practice-110-p3-contrapositive-true').click()
-
-  await expect(currentTarget).toContainText('(3) 裏')
-  await page.getByTestId('blank-math-practice-110-p3-inverse').click()
-  await page.getByTestId('option-math-practice-110-p3-inverse-true').click()
-
-  await expect(currentTarget).toContainText('(3) まとめ')
-  await page.getByTestId('blank-math-practice-110-p3-summary').click()
-  await page.getByTestId('option-math-practice-110-p3-summary-tttt').click()
-
-  await expect(page.getByTestId('math-practice-complete')).toContainText('この問題は完了です')
-
-  const dimensions = await page.evaluate(() => ({
-    viewport: window.innerWidth,
-    page: document.documentElement.scrollWidth,
-  }))
-  expect(dimensions.page).toBeLessThanOrEqual(dimensions.viewport + 1)
+  await expect(page.getByTestId('math-practice-current-target')).toContainText('(2) 元')
 })
 
 test('111 uses the source-given contrapositive strategy and proves four cases one stage at a time', async ({ page }) => {

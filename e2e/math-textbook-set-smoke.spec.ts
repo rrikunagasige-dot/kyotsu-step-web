@@ -189,6 +189,8 @@ test('proposition-reading wrong answer stays unresolved and does not reveal the 
 test('proposition-reading follows the textbook order from truth to necessary/sufficient to negation', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-propositions-reading'))
 
+  await expect(page.getByTestId('reading-role-example-marker-example-implication')).toBeVisible()
+
   const truthAnswers: Array<[string, string]> = [
     ['prop-a01', '満たす'],
     ['prop-a02', 'すべて入る'],
@@ -202,8 +204,11 @@ test('proposition-reading follows the textbook order from truth to necessary/suf
   await expect(page.getByTestId('textbook-item-prop-a06')).toHaveCount(0)
   await expect(page.getByTestId('textbook-item-prop-a08')).toHaveCount(0)
   await expect(page.getByText(/この命題は偽である/)).toBeVisible()
+  await expect(page.getByTestId('reading-role-check-marker-check-counterexample')).toBeVisible()
+  await expect(page.locator('.reading-term').filter({ hasText: /^反例$/ })).toBeVisible()
 
   await expect(page.getByRole('heading', { name: '2つの条件の関係を見る', exact: true })).toBeVisible()
+  await expect(page.getByTestId('reading-role-example-marker-example-necessary-sufficient')).toBeVisible()
   await expect(page.getByTestId('textbook-item-prop-b01')).toBeVisible()
   await expect(page.getByTestId('textbook-figure-equal-diagonals-quadrilateral')).toHaveCount(0)
   await expect(page.getByTestId('textbook-item-prop-c01')).toHaveCount(0)
@@ -222,8 +227,13 @@ test('proposition-reading follows the textbook order from truth to necessary/suf
   await expect(page.getByTestId('textbook-item-prop-b03')).toHaveCount(0)
   await expect(page.getByTestId('textbook-item-prop-b06')).toHaveCount(0)
   await expect(page.getByText(/必要十分条件であり、2つの条件は同値である/)).toBeVisible()
+  await expect(page.locator('.reading-term').filter({ hasText: /^十分条件$/ })).toBeVisible()
+  await expect(page.locator('.reading-term').filter({ hasText: /^必要条件$/ })).toBeVisible()
+  await expect(page.locator('.reading-term').filter({ hasText: /^必要十分条件$/ })).toBeVisible()
+  await expect(page.locator('.reading-term').filter({ hasText: /^同値$/ })).toBeVisible()
 
   await expect(page.getByRole('heading', { name: '成り立たない条件を考える', exact: true })).toBeVisible()
+  await expect(page.getByTestId('reading-role-example-marker-example-negation')).toBeVisible()
   await expect(page.getByTestId('textbook-item-prop-c01')).toBeVisible()
   await expect(page.getByTestId('textbook-item-prop-c01')).toHaveAttribute(
     'aria-label',
@@ -242,6 +252,7 @@ test('proposition-reading follows the textbook order from truth to necessary/suf
   ]
   for (const [itemId, answer] of negationAnswers) await answerItem(page, itemId, answer)
 
+  await expect(page.getByTestId('reading-role-summary-marker-summary-proposition-reading')).toBeVisible()
   await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
   await expect(page.getByTestId('textbook-next-unit')).toHaveAttribute(
     'href',
@@ -262,7 +273,7 @@ test('proposition-reading counterexample is decided before the counterexample co
   await answerItem(page, 'prop-a01', '満たす')
   await answerItem(page, 'prop-a02', 'すべて入る')
 
-  await expect(page.getByText(/このような例を反例という/)).toHaveCount(0)
+  await expect(page.locator('.reading-term').filter({ hasText: /^反例$/ })).toHaveCount(0)
   await answerItem(page, 'prop-a03', '-1')
   await expect(page.getByTestId('textbook-item-prop-a04')).toHaveAttribute(
     'aria-label',
@@ -276,7 +287,10 @@ test('proposition-reading counterexample is decided before the counterexample co
   await expect(page.getByTestId('inline-choice-panel-prop-a04')).toContainText('条件や理由のつながりをたどろう。')
   await expect(page.getByTestId('inline-choice-panel-prop-a04')).not.toContainText('変化の因果関係をたどろう。')
   await answerItem(page, 'prop-a04', '偽')
-  await expect(page.getByText(/このような例を反例という/)).toBeVisible()
+  const counterexampleTerm = page.locator('.reading-term').filter({ hasText: /^反例$/ }).first()
+  await expect(counterexampleTerm).toBeVisible()
+  const counterexampleWeight = await counterexampleTerm.evaluate((element) => Number.parseInt(getComputedStyle(element).fontWeight, 10))
+  expect(counterexampleWeight).toBeGreaterThanOrEqual(700)
   await expect(page.getByTestId('textbook-figure-implication-counterexample')).toBeVisible()
 })
 

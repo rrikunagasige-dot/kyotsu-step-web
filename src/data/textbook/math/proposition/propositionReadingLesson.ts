@@ -3,7 +3,7 @@ import { validateTextbookUnits } from '../../../../domain/textbookSchema'
 const rawMathPropositionReadingUnit = {
   schemaVersion: '1.1' as const,
   unitId: 'math-propositions-reading',
-  revision: 2,
+  revision: 3,
   status: 'review' as const,
   subject: 'math-1a' as const,
   chapter: {
@@ -63,6 +63,12 @@ const rawMathPropositionReadingUnit = {
           text: '条件から真偽を判断する',
         },
         {
+          id: 'marker-example-implication',
+          type: 'marker' as const,
+          kind: 'example' as const,
+          text: '例題',
+        },
+        {
           id: 'paragraph-proposition-intro',
           type: 'paragraph' as const,
           parts: [
@@ -75,6 +81,12 @@ const rawMathPropositionReadingUnit = {
           parts: [
             { type: 'math' as const, latex: 'p:\ -2\\le x\\le 1,\\qquad q:\ x<3' },
           ],
+        },
+        {
+          id: 'dialogue-teacher-implication',
+          type: 'dialogue' as const,
+          speaker: 'teacher' as const,
+          text: 'まず、pを満たす値がqの範囲にも全部入るかだけを見よう。',
         },
         {
           id: 'paragraph-p01',
@@ -93,7 +105,9 @@ const rawMathPropositionReadingUnit = {
           id: 'paragraph-implication-concept',
           type: 'paragraph' as const,
           parts: [
-            { type: 'text' as const, text: '真か偽かを判断できる文を命題という。今のように、条件pを満たすとき必ず条件qも満たすなら、「pならばqである」という命題は真であり、' },
+            { type: 'text' as const, text: '真か偽かを判断できる文を' },
+            { type: 'term' as const, text: '命題' },
+            { type: 'text' as const, text: 'という。今のように、条件pを満たすとき必ず条件qも満たすなら、「pならばqである」という命題は真であり、' },
             { type: 'math' as const, latex: 'p\\Rightarrow q' },
             { type: 'text' as const, text: ' と表す。' },
           ],
@@ -126,6 +140,18 @@ const rawMathPropositionReadingUnit = {
           id: 'figure-inclusion',
           type: 'figure' as const,
           figureId: 'implication-inclusion',
+        },
+        {
+          id: 'dialogue-taro-inclusion',
+          type: 'dialogue' as const,
+          speaker: 'taro' as const,
+          text: '命題が真であることを、集合Pが集合Qの中に全部入ることとして見られるんですね。',
+        },
+        {
+          id: 'marker-example-counterexample',
+          type: 'marker' as const,
+          kind: 'example' as const,
+          text: '例題',
         },
         {
           id: 'formula-pq-2',
@@ -161,16 +187,30 @@ const rawMathPropositionReadingUnit = {
           ],
         },
         {
+          id: 'dialogue-hanako-counterexample',
+          type: 'dialogue' as const,
+          speaker: 'hanako' as const,
+          text: '「全部で成り立つ」と言うなら、1つでも外れる値が見つかったらだめなんだね。',
+        },
+        {
           id: 'paragraph-counterexample-concept',
           type: 'paragraph' as const,
           parts: [
-            { type: 'text' as const, text: '命題「pならばqである」が偽であることを示すには、pを満たすのにqを満たさない例を1つ見つければ十分である。このような例を反例という。' },
+            { type: 'text' as const, text: '命題「pならばqである」が偽であることを示すには、pを満たすのにqを満たさない例を1つ見つければ十分である。このような例を' },
+            { type: 'term' as const, text: '反例' },
+            { type: 'text' as const, text: 'という。' },
           ],
         },
         {
           id: 'figure-counterexample',
           type: 'figure' as const,
           figureId: 'implication-counterexample',
+        },
+        {
+          id: 'marker-check-counterexample',
+          type: 'marker' as const,
+          kind: 'check' as const,
+          text: '確認',
         },
         {
           id: 'paragraph-p05',
@@ -217,6 +257,12 @@ const rawMathPropositionReadingUnit = {
           text: '2つの条件の関係を見る',
         },
         {
+          id: 'marker-example-necessary-sufficient',
+          type: 'marker' as const,
+          kind: 'example' as const,
+          text: '例題',
+        },
+        {
           id: 'paragraph-b-intro',
           type: 'paragraph' as const,
           parts: [
@@ -260,12 +306,22 @@ const rawMathPropositionReadingUnit = {
           ],
         },
         {
+          id: 'dialogue-taro-directions',
+          type: 'dialogue' as const,
+          speaker: 'taro' as const,
+          text: '同じ2つの条件でも、向きを変えると真偽が変わることがあるんですね。',
+        },
+        {
           id: 'paragraph-sufficient-concept',
           type: 'paragraph' as const,
           parts: [
             { type: 'text' as const, text: '命題 ' },
             { type: 'math' as const, latex: 'p\\Rightarrow q' },
-            { type: 'text' as const, text: ' が真であるとき、pはqであるための十分条件、qはpであるための必要条件という。' },
+            { type: 'text' as const, text: ' が真であるとき、pはqであるための' },
+            { type: 'term' as const, text: '十分条件' },
+            { type: 'text' as const, text: '、qはpであるための' },
+            { type: 'term' as const, text: '必要条件' },
+            { type: 'text' as const, text: 'という。' },
           ],
         },
         {
@@ -276,6 +332,12 @@ const rawMathPropositionReadingUnit = {
             { type: 'math' as const, latex: 'AC=BD' },
             { type: 'text' as const, text: ' であること」は「ABCDが長方形であること」のための必要条件である。ここまでで、向きを別々に調べることが必要条件・十分条件を見分ける基準になると分かる。' },
           ],
+        },
+        {
+          id: 'marker-check-necessary-sufficient',
+          type: 'marker' as const,
+          kind: 'check' as const,
+          text: '確認',
         },
         {
           id: 'formula-square-positive',
@@ -298,6 +360,12 @@ const rawMathPropositionReadingUnit = {
             { type: 'choice' as const, itemId: 'prop-b04' },
             { type: 'text' as const, text: ' である。' },
           ],
+        },
+        {
+          id: 'marker-example-equivalence',
+          type: 'marker' as const,
+          kind: 'example' as const,
+          text: '例題',
         },
         {
           id: 'formula-zero-equivalence',
@@ -325,7 +393,11 @@ const rawMathPropositionReadingUnit = {
           id: 'paragraph-equivalence-concept',
           type: 'paragraph' as const,
           parts: [
-            { type: 'text' as const, text: 'pがqの十分条件でもあり必要条件でもあるとき、pはqであるための必要十分条件という。また、pとqが同値であるともいい、' },
+            { type: 'text' as const, text: 'pがqの十分条件でもあり必要条件でもあるとき、pはqであるための' },
+            { type: 'term' as const, text: '必要十分条件' },
+            { type: 'text' as const, text: 'という。また、pとqが' },
+            { type: 'term' as const, text: '同値' },
+            { type: 'text' as const, text: 'であるともいい、' },
             { type: 'math' as const, latex: 'p\\Longleftrightarrow q' },
             { type: 'text' as const, text: ' と表す。' },
           ],
@@ -346,6 +418,12 @@ const rawMathPropositionReadingUnit = {
           id: 'heading-negation',
           type: 'heading' as const,
           text: '成り立たない条件を考える',
+        },
+        {
+          id: 'marker-example-negation',
+          type: 'marker' as const,
+          kind: 'example' as const,
+          text: '例題',
         },
         {
           id: 'paragraph-c-intro',
@@ -369,8 +447,18 @@ const rawMathPropositionReadingUnit = {
           id: 'paragraph-negation-concept',
           type: 'paragraph' as const,
           parts: [
-            { type: 'text' as const, text: '条件pに対して「pでない」という条件をpの否定という。条件が表す集合で見れば、否定は元の条件の外側、すなわち補集合を取ることに対応する。' },
+            { type: 'text' as const, text: '条件pに対して「pでない」という条件をpの' },
+            { type: 'term' as const, text: '否定' },
+            { type: 'text' as const, text: 'という。条件が表す集合で見れば、否定は元の条件の外側、すなわち' },
+            { type: 'term' as const, text: '補集合' },
+            { type: 'text' as const, text: 'を取ることに対応する。' },
           ],
+        },
+        {
+          id: 'marker-check-negation',
+          type: 'marker' as const,
+          kind: 'check' as const,
+          text: '確認',
         },
         {
           id: 'paragraph-c02',
@@ -380,6 +468,12 @@ const rawMathPropositionReadingUnit = {
             { type: 'choice' as const, itemId: 'prop-c02' },
             { type: 'text' as const, text: ' である。' },
           ],
+        },
+        {
+          id: 'marker-example-compound-negation',
+          type: 'marker' as const,
+          kind: 'example' as const,
+          text: '例題',
         },
         {
           id: 'formula-compound-negation',
@@ -405,8 +499,16 @@ const rawMathPropositionReadingUnit = {
           id: 'paragraph-condition-demorgan',
           type: 'paragraph' as const,
           parts: [
-            { type: 'text' as const, text: '条件についても集合と同じド・モルガンの法則が成り立つ。「pかつq」の否定は「pでない、またはqでない」、「pまたはq」の否定は「pでない、かつqでない」である。' },
+            { type: 'text' as const, text: '条件についても集合と同じ' },
+            { type: 'term' as const, text: 'ド・モルガンの法則' },
+            { type: 'text' as const, text: 'が成り立つ。「pかつq」の否定は「pでない、またはqでない」、「pまたはq」の否定は「pでない、かつqでない」である。' },
           ],
+        },
+        {
+          id: 'marker-check-demorgan-condition',
+          type: 'marker' as const,
+          kind: 'check' as const,
+          text: '確認',
         },
         {
           id: 'paragraph-c04',
@@ -420,10 +522,35 @@ const rawMathPropositionReadingUnit = {
           ],
         },
         {
+          id: 'marker-summary-proposition-reading',
+          type: 'marker' as const,
+          kind: 'summary' as const,
+          text: 'まとめ',
+        },
+        {
           id: 'paragraph-c05',
           type: 'paragraph' as const,
           parts: [
-            { type: 'text' as const, text: 'ここまでで、命題の真偽、二つの条件の関係、条件の否定を具体例から読めるようになった。' },
+            { type: 'term' as const, text: '命題' },
+            { type: 'text' as const, text: ' ' },
+            { type: 'math' as const, latex: 'p\\Rightarrow q' },
+            { type: 'text' as const, text: ' が真であることは、pを満たす集合Pがqを満たす集合Qに含まれることと同じである。命題が偽であることは' },
+            { type: 'term' as const, text: '反例' },
+            { type: 'text' as const, text: 'を1つ見つければ示せる。' },
+            { type: 'math' as const, latex: 'p\\Rightarrow q' },
+            { type: 'text' as const, text: ' が真ならpはqの' },
+            { type: 'term' as const, text: '十分条件' },
+            { type: 'text' as const, text: '、qはpの' },
+            { type: 'term' as const, text: '必要条件' },
+            { type: 'text' as const, text: 'であり、両方向が真なら' },
+            { type: 'term' as const, text: '必要十分条件' },
+            { type: 'text' as const, text: '、すなわち' },
+            { type: 'term' as const, text: '同値' },
+            { type: 'text' as const, text: 'である。条件の' },
+            { type: 'term' as const, text: '否定' },
+            { type: 'text' as const, text: 'は集合では補集合に対応し、「かつ」「または」の否定には' },
+            { type: 'term' as const, text: 'ド・モルガンの法則' },
+            { type: 'text' as const, text: 'が使える。' },
           ],
         },
       ],

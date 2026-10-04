@@ -6,7 +6,7 @@ describe('math proposition-reading textbook unit', () => {
   it('keeps the source scope and starts in review while the new unit is audited', () => {
     expect(mathPropositionReadingUnit.subject).toBe('math-1a')
     expect(mathPropositionReadingUnit.status).toBe('review')
-    expect(mathPropositionReadingUnit.revision).toBe(2)
+    expect(mathPropositionReadingUnit.revision).toBe(3)
     expect(mathPropositionReadingUnit.chapter?.chapterId).toBe('math-ch03-sets-propositions')
     expect(mathPropositionReadingUnit.chapter?.sourcePages).toEqual([92, 93, 94, 95])
     expect(mathPropositionReadingUnit.sections).toHaveLength(1)
@@ -39,6 +39,32 @@ describe('math proposition-reading textbook unit', () => {
     }
   })
 
+  it('uses the golden textbook role hierarchy and black-bold concept terms', () => {
+    const flow = mathPropositionReadingUnit.sections[0].readingFlow
+    const markers = flow.filter((block) => block.type === 'marker')
+    const dialogues = flow.filter((block) => block.type === 'dialogue')
+    const terms = flow.flatMap((block) =>
+      block.type === 'paragraph' || block.type === 'formula'
+        ? block.parts.filter((part) => part.type === 'term').map((part) => part.text)
+        : [],
+    )
+
+    expect(markers.filter((block) => block.type === 'marker' && block.kind === 'example')).toHaveLength(6)
+    expect(markers.filter((block) => block.type === 'marker' && block.kind === 'check')).toHaveLength(4)
+    expect(markers.filter((block) => block.type === 'marker' && block.kind === 'summary')).toHaveLength(1)
+    expect(dialogues).toHaveLength(4)
+    expect(terms).toEqual(expect.arrayContaining([
+      '命題',
+      '反例',
+      '十分条件',
+      '必要条件',
+      '必要十分条件',
+      '同値',
+      '否定',
+      'ド・モルガンの法則',
+    ]))
+  })
+
   it('forms the proposition concept after the first source implication judgment', () => {
     const flow = mathPropositionReadingUnit.sections[0].readingFlow
     const implicationDecision = flow.findIndex(
@@ -48,7 +74,7 @@ describe('math proposition-reading textbook unit', () => {
     )
     const propositionConcept = flow.findIndex(
       (block) => block.type === 'paragraph' && block.parts.some(
-        (part) => part.type === 'text' && part.text.includes('文を命題という'),
+        (part) => part.type === 'term' && part.text === '命題',
       ),
     )
 
@@ -127,7 +153,7 @@ describe('math proposition-reading textbook unit', () => {
     )
     const conceptIndex = flow.findIndex(
       (block) => block.type === 'paragraph' && block.parts.some(
-        (part) => part.type === 'text' && part.text.includes('このような例を反例という'),
+        (part) => part.type === 'term' && part.text === '反例',
       ),
     )
     expect(counterexampleDecisionIndex).toBeGreaterThanOrEqual(0)
@@ -149,7 +175,7 @@ describe('math proposition-reading textbook unit', () => {
     )
     const definitionIndex = flow.findIndex(
       (block) => block.type === 'paragraph' && block.parts.some(
-        (part) => part.type === 'text' && part.text.includes('十分条件'),
+        (part) => part.type === 'term' && part.text === '十分条件',
       ),
     )
     expect(forwardIndex).toBeGreaterThanOrEqual(0)
@@ -166,7 +192,7 @@ describe('math proposition-reading textbook unit', () => {
     )
     const negationConceptIndex = flow.findIndex(
       (block) => block.type === 'paragraph' && block.parts.some(
-        (part) => part.type === 'text' && part.text.includes('pの否定という'),
+        (part) => part.type === 'term' && part.text === '否定',
       ),
     )
     const compoundDecisionIndex = flow.findIndex(
@@ -176,7 +202,7 @@ describe('math proposition-reading textbook unit', () => {
     )
     const deMorganIndex = flow.findIndex(
       (block) => block.type === 'paragraph' && block.parts.some(
-        (part) => part.type === 'text' && part.text.includes('ド・モルガンの法則'),
+        (part) => part.type === 'term' && part.text === 'ド・モルガンの法則',
       ),
     )
     expect(simpleNegationIndex).toBeGreaterThanOrEqual(0)

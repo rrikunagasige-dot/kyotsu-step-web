@@ -222,6 +222,41 @@ describe('math practice current-target presentation', () => {
     expect(mathPracticeUsesSubproblemCompression('math-practice-120')).toBe(true)
   })
 
+
+  it('keeps current-target headings task-oriented instead of revealing current answers', () => {
+    const label = (questionId: string, targetId: string) =>
+      mathPracticeTargetsForQuestion(questionId).find((target) => target.id === targetId)?.label
+
+    expect(label('math-practice-106', 's2')).toEqual({
+      ja: '奇数の条件を集合 P で表す',
+      zh: '用集合 P 表示奇数条件',
+    })
+    expect(label('math-practice-108', 'basis')).toEqual({
+      ja: '同値を示すための証明方針を考える',
+      zh: '思考证明等价所需的方针',
+    })
+    expect(label('math-practice-108', 'conclude')).toEqual({
+      ja: '2方向の結果から最終関係を判断する',
+      zh: '根据两个方向的结果判断最终关系',
+    })
+    expect(label('math-practice-111', 'p4-form')).toEqual({
+      ja: '奇数を整数 k を使って表す',
+      zh: '用整数 k 表示奇数',
+    })
+    expect(label('math-practice-113', 'assumption')).toEqual({
+      ja: '背理法の反対仮定を置く',
+      zh: '写出反证法所需的反设',
+    })
+    expect(label('math-practice-116', 'assumption')).toEqual({
+      ja: 'q=0を示すための反対仮定を置く',
+      zh: '为证明q=0写出反设',
+    })
+    expect(label('math-practice-118', 'basis')).toEqual({
+      ja: '関数の判定基準を確認する',
+      zh: '确认函数的判定标准',
+    })
+  })
+
   it('enables subproblem compression for the full reviewed set batch 87-97', () => {
     for (let problemNo = 87; problemNo <= 97; problemNo += 1) {
       expect(mathPracticeUsesSubproblemCompression(`math-practice-${String(problemNo).padStart(3, '0')}`)).toBe(true)

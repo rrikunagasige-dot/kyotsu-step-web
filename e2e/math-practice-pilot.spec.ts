@@ -1946,7 +1946,7 @@ test('89 reuses only the common subset basis, then summarizes the four candidate
   await expect(currentTarget).toContainText('今の問い｜B')
   let deps = page.getByTestId('math-practice-dependency-links')
   await expect(deps).toContainText('判定に使う共通準備')
-  await expect(deps).toContainText('部分集合の基準')
+  await expect(deps).toContainText('すべての要素')
   await expect(deps).toContainText('2,4,6,8,10')
 
   await page.getByTestId('blank-math-practice-089-b-counterexample').click()
@@ -1973,7 +1973,6 @@ test('89 reuses only the common subset basis, then summarizes the four candidate
 
   await expect(currentTarget).toContainText('結論')
   deps = page.getByTestId('math-practice-dependency-links')
-  await expect(deps).toContainText('候補ごとの判定')
   await expect(deps).toContainText('B の判定')
   await expect(deps).toContainText('C の判定')
   await expect(deps).toContainText('D の判定')

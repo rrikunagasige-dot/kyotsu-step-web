@@ -23,7 +23,7 @@ G3: remove contradictory stale PR #49 task from current position without changin
 G4: compare exact SHA of all protected blobs, run workflow CI, and inspect actual results.
 
 ## Current Step
-VERIFYING. Full regression and PR review/merge gates are distinct; no DONE before them.
+VERIFYING — approved P-002 G0–G4 implemented and narrow, source-preserving checks passed at [run 38064137763](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38064137763), 16/16 safety, 395/395 source SHA, 202/202 target units, 14/14 representative browser tests. Full historical suite failures are separately recorded: lint24, outdated count tests2, obsolete UI E2E4. Product and constitution unchanged.
 
 ## Next Step
-Wait for observed independent pilot CI, inspect PR diff and workflow tests, report all failures/limits and give PR review link. **STOP before merge.**
+Present [PR #53](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/53) and verification to user, STOP before merge. Merge of that PR is a separate exact approval gate (G5). GitHub Settings (G6) also require a separate user decision. Do not claim Work DONE while either remains unresolved.

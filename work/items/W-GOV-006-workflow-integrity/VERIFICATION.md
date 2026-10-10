@@ -57,3 +57,16 @@ Original `PROPOSAL.md` (P-001) remains byte-identical; P-002 is a separate revis
 
 ## G4 bounded replay — newly configured, NOT yet verified
 Long-running comprehensive browser replay 38063508314 was still `in_progress` on 2026-10-11; no final PASS may be inferred. PR-scope SHA and governance tests already PASS. A bounded 25-min product regression now requires representative math practice, published math textbook, physics textbook (desktop/mobile), and the separate Physics Practice guided-image test. Existing obsolete test failures remain a visible diagnostic; their failures are NOT hidden as PASS. This gate stays PENDING until completed GitHub Actions evidence.
+
+
+## G4 confirmed SUCCESS — 2026-10-11 (latest code checkpoint)
+[Workflow run 38064137763](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38064137763), PR head `76145a2fe32230a7de6cab4f625689fedf0272d5`: **3 jobs completed SUCCESS**.
+- Original Repository Governance Check: 0 errors, PASS.
+- Workflow-safety pilot: **16/16 Node tests PASS**, PR diff scope PASS, approved P-002 & unapproved historical P-001 exact Git SHA anchors PASS, protected-file manifest **395/395 SHA identical** with no additions/deletions.
+- Original app typecheck: PASS; 18 targeted unit test files / **202 tests PASS**; original production build PASS.
+- Published Math Practice / Math Textbook / Physics Textbook representative browser smoke: **12/12 PASS** across mobile and desktop.
+- Physics Practice guided-image browser test: **2/2 PASS** across mobile and desktop.
+- **Known legacy failures remain explicitly failing (diagnostic steps use continue-on-error):** lint 24 errors, full Vitest **249/251 PASS and 2 FAIL**, obsolete `learning-flow.spec.ts` **0/4 PASS, 4 FAIL**. Their `src/`/`e2e/` inputs are protected/unmodified; these are not considered fixed and the historical full-suite status is NOT PASS.
+- [Older broader E2E 38063317476](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38063317476): **156 PASS / 4 obsolete setup FAIL** (source still unmodified).
+- `G0–G4` implementation/checkpoint has positive evidence while full legacy suite failures remain open as separate follow-up scope.
+- **Work remains VERIFYING / not DONE:** specific PR main merge (G5) and owner GitHub Settings (G6) have NOT been approved. Branch protection is still disabled. Do not merge automatically.

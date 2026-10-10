@@ -27,3 +27,11 @@ Four imported subject/mode SPECs remain candidate summaries, pending separate co
 - G0 original app/docs/history/Constitution manifest: 395 Git blobs recorded.
 - G1/G2 independent validation pilot and G3 stale navigation correction: IMPLEMENTED ON FEATURE BRANCH; CI and full product regression still pending.
 - G5 PR merge and G6 GitHub Settings: NOT APPROVED; no merge/Settings modification performed.
+
+
+## W-GOV-006 G4 verification checkpoint — 2026-10-11 (FEATURE BRANCH ONLY)
+- [PR #53](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/53) remains **DRAFT / unmerged**. [GitHub Actions run 38064137763](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38064137763) finished SUCCESS for Work-specific gates.
+- Proven result: original governance 0 errors; workflow pilot 16/16 PASS; no out-of-scope diffs; protected Git blobs **395/395 unchanged**, no new/deleted protected files.
+- App typecheck PASS, 202 targeted published-mode units PASS, production build PASS, 12 representative math/physics mobile+desktop E2E PASS, 2 Physics Practice guide E2E PASS.
+- Existing historical diagnostics still FAIL: 24 lint, 2 old all-suite unit count expectations (249/251 passing), and 4 obsolete UI E2E cases. No curriculum/application or old tests were changed to silence them.
+- G5 exact PR merge approval NOT GRANTED; G6 main branch protection/Rulesets NOT GRANTED. W-GOV-006 not DONE, `main` remains unmodified.

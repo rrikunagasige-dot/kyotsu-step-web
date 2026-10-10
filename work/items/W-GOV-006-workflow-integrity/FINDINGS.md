@@ -45,3 +45,6 @@ Run 38062639771 full new regression Playwright: **156 passed, 4 failed** in 9.6 
 
 ## F-016 — RISK: old GitHub E2E run remains in-progress
 2026-10-11 recheck: run 38063508314 (SHA 6997a979) remained `in_progress` at `Released mathematics and physics textbook regression on mobile and desktop`, with no conclusive final browser result available from that run. Old complete run 38063317476 does provide 156 PASS and 4 known obsolete setup-case FAIL. Added an explicit 25-minute job bound and short meaningful four-mode mobile/desktop smoke to this Work's CI only; prior comprehensive evidence is retained as historical partial PASS, not fabricated as full PASS. New run result must be observed.
+
+## F-017 — CONFIRMED G0–G4 narrow acceptance; full historical regression not green
+CI `38064137763` finished SUCCESS because all required new Work checks passed. However, old historical lint/unit/E2E diagnostics still fail (24 lint, 2/251 unit, 4 old UI Playwright); report these individually and never infer global repository quality or user acceptance. Exactly 395 original protected Git blobs stayed unchanged, with no addition/deletion to protected namespaces. PR merge and branch protection remain unapproved.

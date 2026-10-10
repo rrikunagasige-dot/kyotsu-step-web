@@ -29,7 +29,7 @@ Imported four-mode `subjects/**/SPEC.md` are CANONICAL-CANDIDATE summaries, subo
 - Product release user hands-on QA and future pedagogy remain separate Works.
 
 ## Next Executable Work
-1. W-GOV-006: independently test the approved G0–G4 non-destructive governance adjustments in a feature PR. PR merge and GitHub Settings require separate user approval.
+1. W-GOV-006: non-destructive G0–G4 checks PASS on Draft PR #53 (run 38064137763, 395/395 protected SHA, safety 16/16, released-mode representative E2E PASS); historical lint/unit/E2E failures remain separately documented. Do NOT merge PR #53 or modify GitHub Settings without new specific user approval.
 2. Use the adopted Constitution and Work OS for each new task; recover exact approved Work before editing.
 3. Future distinct Work may compare each imported mode candidate spec with accepted target source.
 4. No automatic content/UI changes or destructive cleanup without explicit approval.

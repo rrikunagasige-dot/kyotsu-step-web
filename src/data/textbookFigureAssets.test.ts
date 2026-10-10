@@ -28,9 +28,11 @@ const approvedEducationalChapter1FigurePaths = [
 ].sort()
 
 function chapter1FigurePaths() {
-  const paths = builtInTextbookUnits.flatMap((unit) =>
-    unit.sections.flatMap((section) => section.figures.map((figure) => figure.src)),
-  )
+  const paths = builtInTextbookUnits
+    .filter((unit) => unit.subject === 'physics' && unit.chapter?.chapterId === 'physics-ch01-motion')
+    .flatMap((unit) =>
+      unit.sections.flatMap((section) => section.figures.map((figure) => figure.src)),
+    )
   return [...new Set(paths)].sort()
 }
 

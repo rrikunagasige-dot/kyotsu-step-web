@@ -3,6 +3,10 @@ import source from '../../docs/physics-ch01/prototypes/CH1_LEARNING_TEXT.md?raw'
 import { builtInTextbookUnits } from './textbookUnits'
 import type { TextbookReadingBlock } from '../domain/textbookSchema'
 
+const chapter1Units = builtInTextbookUnits.filter(
+  (unit) => unit.subject === 'physics' && unit.chapter?.chapterId === 'physics-ch01-motion',
+)
+
 const expectedCounts: Record<string, number> = {
   '1A': 13,
   '1B': 8,
@@ -14,16 +18,16 @@ const expectedCounts: Record<string, number> = {
 }
 
 function allItems() {
-  return builtInTextbookUnits.flatMap((unit) => unit.sections.flatMap((section) => section.items))
+  return chapter1Units.flatMap((unit) => unit.sections.flatMap((section) => section.items))
 }
 
 describe('Chapter 1 continuous textbook catalog', () => {
   it('loads seven continuous units in chapter order', () => {
-    expect(builtInTextbookUnits).toHaveLength(7)
-    expect(builtInTextbookUnits.map((unit) => unit.chapter?.unitCode)).toEqual([
+    expect(chapter1Units).toHaveLength(7)
+    expect(chapter1Units.map((unit) => unit.chapter?.unitCode)).toEqual([
       '1A', '1B', '1C', '1D', '1E', '1F', '1G',
     ])
-    for (const unit of builtInTextbookUnits) {
+    for (const unit of chapter1Units) {
       expect(unit.schemaVersion).toBe('1.1')
       expect(unit.status).toBe('published')
       expect(unit.sections).toHaveLength(1)
@@ -35,7 +39,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
 
   it('preserves all 108 audited holes with an explicit source answer', () => {
     const counts = Object.fromEntries(
-      builtInTextbookUnits.map((unit) => [
+      chapter1Units.map((unit) => [
         unit.chapter?.unitCode,
         unit.sections.flatMap((section) => section.items).length,
       ]),
@@ -65,7 +69,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
 
     expect(scaffoldCounts).toEqual({ strong: 6, medium: 34, light: 68 })
 
-    const lateItems = builtInTextbookUnits
+    const lateItems = chapter1Units
       .filter((unit) => ['1F', '1G'].includes(unit.chapter?.unitCode ?? ''))
       .flatMap((unit) => unit.sections[0].items)
     expect(lateItems.every((item) => item.scaffoldLevel === 'light')).toBe(true)
@@ -210,7 +214,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
     ]
 
     const groups = new Map<string, TextbookReadingBlock[]>()
-    for (const unit of builtInTextbookUnits) {
+    for (const unit of chapter1Units) {
       for (const block of unit.sections[0].readingFlow) {
         if (!('derivationId' in block) || !block.derivationId) continue
         const group = groups.get(block.derivationId) ?? []
@@ -429,13 +433,13 @@ describe('Chapter 1 continuous textbook catalog', () => {
   })
 
   it('does not repeat an identical completed formula immediately', () => {
-    for (const unit of builtInTextbookUnits) {
+    for (const unit of chapter1Units) {
       const formulas = unit.sections[0].readingFlow
         .filter((block) => block.type === 'formula')
         .map((block) => block.type === 'formula'
           ? block.parts.map((part) =>
               part.type === 'math' ? part.latex :
-              part.type === 'text' ? part.text :
+              part.type === 'text' || part.type === 'term' ? part.text :
               `[${part.itemId}]`
             ).join('')
           : '')
@@ -446,7 +450,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
   })
 
   it('references every hole from the continuous reading flow', () => {
-    for (const unit of builtInTextbookUnits) {
+    for (const unit of chapter1Units) {
       const section = unit.sections[0]
       const references = section.readingFlow.flatMap((block) =>
         block.type === 'paragraph' || block.type === 'formula'
@@ -458,7 +462,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
   })
 
   it('keeps all 17 canonical Chapter 1 figures plus the one approved 1D educational graph', () => {
-    const figures = builtInTextbookUnits.flatMap((unit) =>
+    const figures = chapter1Units.flatMap((unit) =>
       unit.sections.flatMap((section) => section.figures),
     )
     expect(figures).toHaveLength(18)
@@ -475,7 +479,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
   })
 
   it('shows the canonical figure before prose or questions that explicitly depend on it', () => {
-    const unit1A = builtInTextbookUnits.find((unit) => unit.chapter?.unitCode === '1A')!
+    const unit1A = chapter1Units.find((unit) => unit.chapter?.unitCode === '1A')!
     const flowA = unit1A.sections[0].readingFlow
     const fig1 = flowA.findIndex((block) => block.type === 'figure' && block.figureId === 'fig-1')
     const a1 = flowA.findIndex((block) =>
@@ -491,7 +495,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
     )
     expect(fig2).toBeLessThan(a7)
 
-    const unit1B = builtInTextbookUnits.find((unit) => unit.chapter?.unitCode === '1B')!
+    const unit1B = chapter1Units.find((unit) => unit.chapter?.unitCode === '1B')!
     const flowB = unit1B.sections[0].readingFlow
     const fig6 = flowB.findIndex((block) => block.type === 'figure' && block.figureId === 'fig-6')
     const b2 = flowB.findIndex((block) =>
@@ -502,7 +506,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
   })
 
   it('uses the explicitly approved 1D educational v-t graph without replacing canonical figures', () => {
-    const unit1D = builtInTextbookUnits.find((unit) => unit.chapter?.unitCode === '1D')!
+    const unit1D = chapter1Units.find((unit) => unit.chapter?.unitCode === '1D')!
     const section = unit1D.sections[0]
     const educational = section.figures.find((figure) => figure.id === 'edu-1d-vt-area')
     expect(educational?.src).toBe('/assets/physics/textbook/ch01/1d/vt-area-derivation.svg')
@@ -513,7 +517,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
   })
 
   it('includes the chapter-level summary at the end of 1G', () => {
-    const unit1G = builtInTextbookUnits.find((unit) => unit.chapter?.unitCode === '1G')!
+    const unit1G = chapter1Units.find((unit) => unit.chapter?.unitCode === '1G')!
     const prose = unit1G.sections[0].readingFlow.flatMap((block) =>
       block.type === 'paragraph'
         ? block.parts.filter((part) => part.type === 'text').map((part) => part.text)
@@ -542,7 +546,7 @@ describe('Chapter 1 continuous textbook catalog', () => {
   })
 
   it('has no passive question-mark masks in the audited continuous lesson', () => {
-    const overlays = builtInTextbookUnits.flatMap((unit) =>
+    const overlays = chapter1Units.flatMap((unit) =>
       unit.sections.flatMap((section) => section.figures.flatMap((figure) => figure.overlays)),
     )
     expect(overlays).toHaveLength(0)

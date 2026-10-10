@@ -18,6 +18,7 @@ function getBackTarget(pathname: string): BackTarget | null {
   if (pathname === '/learning/setup') return { to: '/problems', jaLabel: '問題へ戻る', zhLabel: '返回题目' }
   if (/^\/learning\/session\//.test(pathname)) return { to: '/learning/setup', jaLabel: '学習設定へ戻る', zhLabel: '返回学习设置' }
   if (/^\/learning\/result\//.test(pathname)) return { to: '/learning/setup', jaLabel: '学習設定へ戻る', zhLabel: '返回学习设置' }
+  if (/^\/learning\/textbook\/math-/.test(pathname)) return { to: '/learning/setup?subject=math-1a', jaLabel: '学習設定へ戻る', zhLabel: '返回学习设置' }
   if (/^\/learning\/textbook\//.test(pathname)) return { to: '/learning/setup', jaLabel: '学習設定へ戻る', zhLabel: '返回学习设置' }
 
   if (pathname === '/simulation/setup') return { to: '/problems', jaLabel: '問題へ戻る', zhLabel: '返回题目' }

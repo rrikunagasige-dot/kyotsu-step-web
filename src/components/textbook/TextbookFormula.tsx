@@ -32,6 +32,10 @@ export function TextbookFormula({ block, section, progress, onOpen }: Props) {
             return <span className="reading-formula-text" key={key}>{part.text}</span>
           }
 
+          if (part.type === 'term') {
+            return <strong className="reading-term reading-formula-term" key={key}>{part.text}</strong>
+          }
+
           const item = section.items.find((candidate) => candidate.id === part.itemId)
           if (!item) {
             return <span className="reading-formula-missing" key={key}>□</span>

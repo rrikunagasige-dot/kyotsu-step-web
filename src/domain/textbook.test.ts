@@ -16,14 +16,21 @@ const formulaItem = unit.sections[0].items.find((item) => item.id === 'a6')!
 
 describe('textbook learning state', () => {
   it('groups published textbook units into ordered chapters', () => {
-    const chapters = groupTextbookUnitsByChapter(builtInTextbookUnits)
-    expect(chapters).toHaveLength(1)
+    const publishedUnits = builtInTextbookUnits.filter((candidate) => candidate.status === 'published')
+    const chapters = groupTextbookUnitsByChapter(publishedUnits)
+    expect(chapters).toHaveLength(2)
     expect(chapters[0]).toMatchObject({
       chapterId: 'physics-ch01-motion',
       chapterNumber: '1',
       chapterTitle: '物体の運動',
     })
     expect(chapters[0].units.map((candidate) => candidate.chapter?.unitCode)).toEqual(['1A', '1B', '1C', '1D', '1E', '1F', '1G'])
+    expect(chapters[1]).toMatchObject({
+      chapterId: 'math-ch03-sets-propositions',
+      chapterNumber: '3',
+      chapterTitle: '集合と命題',
+    })
+    expect(chapters[1].units.map((candidate) => candidate.unitId)).toEqual(['math-sets'])
   })
 
   it('normalizes spacing, unicode minus and vector marks for formula entry', () => {

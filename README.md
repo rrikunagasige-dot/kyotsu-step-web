@@ -1,3 +1,5 @@
+> **Repository OS入口 (2026-10-10):** [AGENTS.md](AGENTS.md) → [憲法](governance/CONSTITUTION.md) → [現在地](navigation/CURRENT_POSITION.md)。作業開始は「憲法から」。既存教材・UI・題庫の正本は [CHATGPT_README_FIRST.md](CHATGPT_README_FIRST.md) と従来の `docs/` を保持。移管レビュー中はこのREADMEの既存案内も有効です。
+
 # 共通 STEP 数学・物理刷题 Web App
 
 面向日本大学入学共通测试的手机优先 Web App。产品把逐空学习、无即时反馈模拟测试、真实 Attempt 分析、错题复习和本地题库管理连成一个闭环。

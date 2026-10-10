@@ -21,3 +21,8 @@ The upstream PR #14 Section2/3 task numbering maps to different content; neither
 PR #50 merged main `6e398f9`, Pages run 38055876654 SUCCESS. Published `math-sets` is now on main, superseding stale branch-only claim; 4 mode coverage is not equally complete.
 ## F-009 — ERROR-PROCESS
 Do not idle-poll CI; complete independent audits during long runs. After network interruption resume from last verified commit. Durable lesson at `memory/LESSONS/CI_WAIT_AND_RECONNECT.md`.
+
+## F-010 — CONFIRMED (governance main adoption)
+Correct target Constitution / Work Operating System is now on real main at `41a9ce05ed10ffc0ddcdc46a5de84086198ac4cf`; post-merge governance CI succeeded. Protected 174 existing product files are unchanged. The prior confusion between `paulfields83` and owner `rrikunagasige-dot` is now structurally guarded against by repository identity check.
+## F-011 — OPEN-QUESTION / separate future Work
+Imported mode SPECs are still CANONICAL-CANDIDATE pending reconciliation with full accepted maternal source docs. User-approved learning-mode pedagogy must never be overwritten by these candidate summaries without a new specific proposal. Do not infer that all 4 curricula are fully completed from the presence of each source module.

@@ -14,3 +14,10 @@ Target: `src/data/mathPractice/setsBatchA.ts`, `propositionsBatchB.ts`, `present
 Main `6e398f923c45fe895e53bc1f0f055f038acc41b6`; [Pages successful](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38055876654). Math CI + Practice CI succeeded via PR #50.
 ## A-007 — Governance port rebased non-destructively onto current app main
 Target PR #49 governance branch receives a two-parent forward merge commit preserving all latest main app contents; updates current position, mode authority, lesson and verification state. Original 113 upstream blobs immutable.
+
+## A-008 — Target governance PR merged
+[PR #49](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/49) merged as `41a9ce05ed10ffc0ddcdc46a5de84086198ac4cf`. Post-merge `main` workflow run 38057462564 SUCCESS.
+## A-009 — Post-merge protected scope audit
+Compared original app release main 6e398f9 against governance merge 41a9ce0. All 174 protected app/code/data/asset/deploy files have identical Git blobs; added/removed protected files = 0.
+## A-010 — Memory close
+Branch `governance/close-repository-os-port-20261010` records final verification, DONE state and next independent Work boundary in navigation, active context, progress, changelog, and audit. Handoff [PR #51](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/51).

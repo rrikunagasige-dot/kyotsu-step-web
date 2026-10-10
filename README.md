@@ -1,4 +1,4 @@
-> **Repository OS入口 (2026-10-10):** [AGENTS.md](AGENTS.md) → [憲法](governance/CONSTITUTION.md) → [現在地](navigation/CURRENT_POSITION.md)。作業開始は「憲法から」。既存教材・UI・題庫の正本は [CHATGPT_README_FIRST.md](CHATGPT_README_FIRST.md) と従来の `docs/` を保持。移管レビュー中はこのREADMEの既存案内も有効です。
+> **Repository OS入口 (2026-10-10):** [AGENTS.md](AGENTS.md) → [憲法](governance/CONSTITUTION.md) → [現在地](navigation/CURRENT_POSITION.md)。作業開始は「憲法から」。既存教材・UI・題庫の正本は [CHATGPT_README_FIRST.md](CHATGPT_README_FIRST.md) と従来の `docs/` を保持。旧READMEの数値や機能範囲は履歴的記述。現行4モードの正本・公開状態は [MODE_STATE](navigation/MODE_STATE_2026-10-10.md) と live main で確認する。
 
 # 共通 STEP 数学・物理刷题 Web App
 

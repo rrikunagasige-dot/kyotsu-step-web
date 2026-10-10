@@ -6,14 +6,15 @@ import { TextbookFigure } from '../components/textbook/TextbookFigure'
 import { TextbookFormula } from '../components/textbook/TextbookFormula'
 import { ErrorState, ProgressBar, RaisedButton, StatusBadge } from '../components/ui/Primitives'
 import { textbookRepository } from '../repositories/textbookRepository'
-import { getTextbookChoices, isTextbookItemResolved, textbookSectionProgress, textbookUnitProgress, type TextbookAnswerRecord, type TextbookUnitProgress } from '../domain/textbook'
+import { getTextbookChoices, isTextbookItemResolved, normalizeTextbookAnswer, textbookSectionProgress, textbookUnitProgress, type TextbookAnswerRecord, type TextbookUnitProgress } from '../domain/textbook'
 import type { TextbookItem, TextbookReadingBlock, TextbookReadingPart, TextbookSection, TextbookUnit } from '../domain/textbookSchema'
 import { useAppStore } from '../stores/useAppStore'
 import { useI18n } from '../i18n/runtime'
 import { normalizeTextbookMath } from '../domain/textbookMath'
 import { chapter1ChunkForUnitCode, chapter1Localized, chapter1NextUnit } from '../data/textbook/ch01/chapter1Architecture'
+import { mathTextbookNextUnitId } from '../data/textbook/math'
 
-function interactionPrompt(item: TextbookItem, text: (ja: string, zh: string) => string) {
+function interactionPrompt(item: TextbookItem, text: (ja: string, zh: string) => string, subject: TextbookUnit['subject']) {
   switch (item.purpose) {
     case 'concept-formation': return text('図や本文から意味を考えよう。', '根据图和正文思考含义。')
     case 'representation-link': return text('図・言葉・式のつながりを考えよう。', '思考图、文字和公式之间的联系。')
@@ -25,7 +26,9 @@ function interactionPrompt(item: TextbookItem, text: (ja: string, zh: string) =>
     case 'graph-reading': return text('グラフが表している物理量を読もう。', '读取图像所表示的物理量。')
     case 'elimination': return text('どの関係を使って変数を消すか考えよう。', '思考用哪个关系消去变量。')
     case 'factorization': return text('次の式変形の意味を考えよう。', '思考下一步式变形的意义。')
-    case 'causal-reasoning': return text('変化の因果関係をたどろう。', '沿着变化的因果关系思考。')
+    case 'causal-reasoning': return subject === 'math-1a'
+      ? text('条件や理由のつながりをたどろう。', '沿着条件与理由的联系思考。')
+      : text('変化の因果関係をたどろう。', '沿着变化的因果关系思考。')
     default: return item.prompt
   }
 }
@@ -97,6 +100,7 @@ function renderPart(
   text: (ja: string, zh: string) => string,
 ): ReactNode {
   if (part.type === 'text') return part.text
+  if (part.type === 'term') return <strong className="reading-term">{part.text}</strong>
   if (part.type === 'math') return <InlineMath math={part.latex} />
 
   const item = section.items.find((candidate) => candidate.id === part.itemId)
@@ -172,7 +176,7 @@ function TextbookReadingFlow({ unit, section, progress }: {
     return (
       <div className="reading-inline-choice-panel" data-testid={`inline-choice-panel-${activeItem.id}`}>
         <div className="reading-inline-choice-panel__head">
-          <span>{interactionPrompt(activeItem, text)}</span>
+          <span>{interactionPrompt(activeItem, text, unit.subject)}</span>
         </div>
         {activeHint && (
           <div className="reading-choice-hint" data-testid={`textbook-hint-${activeItem.id}`}>
@@ -180,14 +184,20 @@ function TextbookReadingFlow({ unit, section, progress }: {
             <span>{activeHint}</span>
           </div>
         )}
-        <div className="reading-choice-options" role="group" aria-label={interactionPrompt(activeItem, text)}>
-          {activeChoices.map((choice, index) => (
+        <div className="reading-choice-options" role="group" aria-label={interactionPrompt(activeItem, text, unit.subject)}>
+          {activeChoices.map((choice, index) => {
+            const isLastWrongChoice = unit.subject === 'math-1a'
+              && Boolean(activeRecord)
+              && !isTextbookItemResolved(activeItem, activeRecord)
+              && normalizeTextbookAnswer(choice) === normalizeTextbookAnswer(activeRecord?.value ?? '')
+            return (
             <button
               type="button"
               aria-label={choice}
+              aria-invalid={isLastWrongChoice || undefined}
               key={choice}
               data-testid={`textbook-choice-${activeItem.id}-${index}`}
-              className="reading-choice-option"
+              className={`reading-choice-option${isLastWrongChoice ? ' reading-choice-option--wrong' : ''}`}
               onClick={() => selectChoice(choice)}
             >
               <span>{index + 1}</span>
@@ -198,7 +208,8 @@ function TextbookReadingFlow({ unit, section, progress }: {
               </strong>
               {activeItem.unit && <small>{activeItem.unit}</small>}
             </button>
-          ))}
+            )
+          })}
         </div>
       </div>
     )
@@ -206,6 +217,30 @@ function TextbookReadingFlow({ unit, section, progress }: {
 
   const renderBlock = (block: TextbookReadingBlock) => {
     if (block.type === 'heading') return <h3 className="reading-subheading" key={block.id}>{block.text}</h3>
+    if (block.type === 'marker') {
+      return (
+        <div
+          className={`reading-role-marker reading-role-marker--${block.kind}`}
+          data-testid={`reading-role-${block.kind}-${block.id}`}
+          key={block.id}
+        >
+          {block.text}
+        </div>
+      )
+    }
+    if (block.type === 'dialogue') {
+      const speaker = block.speaker === 'hanako'
+        ? text('花子', '花子')
+        : block.speaker === 'taro'
+          ? text('太郎', '太郎')
+          : text('先生', '老师')
+      return (
+        <aside className="reading-dialogue" data-speaker={block.speaker} key={block.id}>
+          <strong>{speaker}：</strong>
+          <span>「{block.text}」</span>
+        </aside>
+      )
+    }
     if (block.type === 'note') return <aside className="reading-note" key={block.id}>{block.text}</aside>
 
     if (block.type === 'figure') {
@@ -353,9 +388,12 @@ export function TextbookUnitPage() {
   const displayTitle = legacyPrefix && unit.title.startsWith(`${legacyPrefix} `)
     ? unit.title.slice(legacyPrefix.length + 1)
     : unit.title
-  const chapterChunk = chapter1ChunkForUnitCode(unitCode)
+  const chapterChunk = unit.subject === 'physics' ? chapter1ChunkForUnitCode(unitCode) : undefined
   const majorTitle = chapterChunk ? chapter1Localized(chapterChunk.title, language) : displayTitle
-  const nextChapter1Unit = chapter1NextUnit(unitCode)
+  const nextChapter1Unit = unit.subject === 'physics' ? chapter1NextUnit(unitCode) : undefined
+  const nextMathUnitId = unit.subject === 'math-1a' ? mathTextbookNextUnitId(unit.unitId) : undefined
+  const setupReturnPath = unit.subject === 'math-1a' ? '/learning/setup?subject=math-1a' : '/learning/setup'
+  const subjectEyebrow = unit.subject === 'math-1a' ? 'MATH I+A' : 'PHYSICS'
   const unitComplete = summary.completed === summary.total
   const canOpen = (index: number) => unitComplete || index <= firstIncompleteIndex
 
@@ -380,13 +418,13 @@ export function TextbookUnitPage() {
   }
 
   return (
-    <div className="page-stack textbook-page">
+    <div className="page-stack textbook-page" data-textbook-subject={unit.subject}>
       <header className="session-header">
         <div>
           <p className="eyebrow">
             {unit.chapter
-              ? `TEXTBOOK / PHYSICS / CHAPTER ${unit.chapter.chapterNumber}`
-              : 'TEXTBOOK / PHYSICS'}
+              ? `TEXTBOOK / ${subjectEyebrow} / CHAPTER ${unit.chapter.chapterNumber}`
+              : `TEXTBOOK / ${subjectEyebrow}`}
           </p>
           <h1>{majorTitle}</h1>
           {chapterChunk && (
@@ -467,16 +505,28 @@ export function TextbookUnitPage() {
           <div className="textbook-complete-panel" data-testid="textbook-unit-complete">
             <Check size={28} aria-hidden="true" />
             <div>
-              <strong>{nextChapter1Unit ? text('ここまで完了', '已完成这一部分') : text('第1章完了', '第1章完成')}</strong>
+              <strong>
+                {unit.subject === 'math-1a'
+                  ? text('ここまで完了', '已完成这一部分')
+                  : nextChapter1Unit
+                    ? text('ここまで完了', '已完成这一部分')
+                    : text('第1章完了', '第1章完成')}
+              </strong>
               <p>
-                {nextChapter1Unit
-                  ? chapter1Localized(nextChapter1Unit.bridge, language)
-                  : text('運動を表し、速度の変化を追い、その原因を力までつなげて考えました。', '已经把运动的表示、速度的变化以及产生变化的力联系起来了。')}
+                {unit.subject === 'math-1a'
+                  ? unit.unitId === 'math-sets'
+                    ? text('集合の表し方から、共通部分・和集合・部分集合・補集合・ド・モルガンの法則・数直線まで確認しました。', '已经学习了集合的表示、交集与并集、子集、补集、德摩根定律，以及数轴上的集合。')
+                    : text('この教材の内容を最後まで確認しました。学習設定へ戻ると、次に学ぶ内容を選べます。', '已经完成本教材。返回学习设置后可以选择下一项学习内容。')
+                  : nextChapter1Unit
+                    ? chapter1Localized(nextChapter1Unit.bridge, language)
+                    : text('運動を表し、速度の変化を追い、その原因を力までつなげて考えました。', '已经把运动的表示、速度的变化以及产生变化的力联系起来了。')}
               </p>
             </div>
             {nextChapter1Unit
               ? <Link className="raised-link" data-testid="textbook-next-unit" to={`/learning/textbook/${nextChapter1Unit.unitId}`}>{text('次へ', '继续')}</Link>
-              : <Link className="raised-link" to="/learning/setup">{text('学習設定へ戻る', '返回学习设置')}</Link>}
+              : nextMathUnitId
+                ? <Link className="raised-link" data-testid="textbook-next-unit" to={`/learning/textbook/${nextMathUnitId}`}>{text('次へ', '继续')}</Link>
+                : <Link className="raised-link" data-testid="textbook-return-to-setup" to={setupReturnPath}>{text('学習設定へ戻る', '返回学习设置')}</Link>}
           </div>
         )}
       </div>

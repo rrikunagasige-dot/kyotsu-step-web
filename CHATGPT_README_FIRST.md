@@ -17,6 +17,8 @@ For Math Practice always read `docs/MATH_PRACTICE_MASTER_LESSONS.md`,
 `docs/MATH_PRACTICE_87_120_STRUCTURE_MAP.md`, and
 `docs/MATH_PRACTICE_87_120_FINAL_QA_FINDINGS.md` before using ported mode specs.
 For Physics textbook follow `docs/physics-ch01/` and this file's existing rules.
+For Math Textbook: `math-sets` is now published on main after PR #50; review units are NOT published. Consult `navigation/MODE_STATE_2026-10-10.md` and `src/data/textbook/math/`.
+For Physics Practice: source is `src/data/questions.ts` and `src/data/textbookPracticeQuestions.ts`; do not overstate completeness.
 Upstream W-MATH approval records and numbering refer to a DIFFERENT question bank;
 they confer no permission to alter the target's existing app.
 

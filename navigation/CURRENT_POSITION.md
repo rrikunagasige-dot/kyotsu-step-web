@@ -1,35 +1,35 @@
-# CURRENT POSITION — rriku target
+# CURRENT POSITION — 塾 / rriku target
+Status: ACTIVE
 Updated: 2026-10-10
-Repository: `rrikunagasige-dot/kyotsu-step-web`
-Main HEAD verified: `73b1d5762dd3fed0e0b3f414bb4a3ec1bf518824`
-Import branch: `governance/port-repository-os-20261010`
-Upstream `paulfields83/kyotsu-step-web` is a separate repository, not the active target.
+Repository: `rrikunagasige-dot/kyotsu-step-web` (ID `1391122224`)
+Verified main at checkpoint: `6e398f923c45fe895e53bc1f0f055f038acc41b6` — app release PR #50, [Pages SUCCESS](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38055876654).
+NOTE: This HEAD is a dated checkpoint, not a substitute for reading live main on every new task.
 
 ## Current Node
-T-GOV-PORT — Port upstream Repository OS to the OWNED rriku project safely.
-Status: VERIFYING / REVIEW REQUIRED. The port does not become main authority until its PR merges.
+T-GOV-PORT / W-GOV-005 — adopt Constitution, instruction dictionary, Work OS, four-mode routes, QA and historical records from the separate upstream `paulfields83/kyotsu-step-web`.
+Status: VERIFYING; [PR #49](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/49). No DONE or main adoption claim until merged and verified.
 
-## Completed (existing target main)
-- Math Practice 87–120 with full guided `src/data/mathPractice/` source, review fixes, prior-result handling and browser QA; latest target main merged related PR #48 on 2026-10-04.
-- Physics textbook Chapter 1 with its own README/FIRE_DIAGRAM/learning chapters.
-- Math textbook learning mode in draft PR #31; published vs review units must remain distinct.
-- Existing `CHATGPT_README_FIRST.md`, `docs/MASTER_APP_LESSONS.md`, `docs/MATH_PRACTICE_MASTER_LESSONS.md` authoritative and preserved.
+## Completed
+- **Mathematics Practice** Q87–120 (34) with guided thinking nodes, prior-result compaction, complete QA ledger, on main.
+- **Mathematics Textbook** published `math-sets` on main via [PR #50](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/50). Proposition reading/quantifiers/proof and function conditions remain `review` candidates; original source PR #31 is still an unmerged draft.
+- **Physics Textbook** Chapter 1 seven stable units 1A–1G, three learner-facing chunks, on main.
+- **Physics Practice** three authored guided representative questions and Chapter 1 adapter on main. Not a full published large Physics problem bank.
+- Combined current GitHub Pages build+deploy succeeded on `6e398f923c45fe895e53bc1f0f055f038acc41b6`. Modes and paths: `navigation/MODE_STATE_2026-10-10.md`.
 
 ## Current Rule
-Verify actual target owner/repo ID/main/HEAD first. Read `AGENTS.md` and governance before selecting a task. Read established target lesson/mode sources before relying on imported specs. No upstream approval transfers automatically.
+Before action verify GitHub owner, ID, branch and **live** HEAD. Then read AGENTS → Constitution → this current position → master graph → memory → target mode's accepted original documents → Work approval. `paulfields83` is history/source, NEVER writable target.
+Distinguish SOURCE SAVED / MAIN MERGED / PAGES DEPLOYED / USER HANDS-ON APPROVED.
 
 ## Protected Scope
-- NO replace/merge of app runtime, Math 87–120 data, Physics chapter assets, source Word, stable IDs or Pages deployment.
-- NO upstream Q95/Q98 content transfer: those numeric IDs refer to different problems in the two repositories.
-- NO deletion or wholesale branch merge; original target main untouched.
-- Upstream original 113 files archived under `history/imports/paulfields83-20261010/`.
+No governance changes to `src/`, `public/`, `e2e/`, package/lockfile or Pages workflow. Do not copy upstream question IDs Q95/Q98 into local numbering, promote review units, delete branches, overwrite user Word mother, or demote approved pedagogy.
+Imported four-mode `subjects/**/SPEC.md` are CANONICAL-CANDIDATE summaries, subordinate to target-approved lesson documents.
 
 ## Open issues
-- Import approval/verification/memory close specific to target repo.
-- Original upstream PR #11 / #14 material may inform future decisions but is NOT an approved target app change.
-- Do not assert the new system is target-main canonical until after PR review/merge.
+- Adopt/review PR #49 and record its verified main merge/memory close; no false DONE.
+- Separately reconcile each imported mode spec with established target sources before declaring it canonical.
+- Product release user hands-on QA and future pedagogy remain separate Works.
 
 ## Next Executable Work
-1. Validate Repository OS port (file/link/command identity + target-specific gate).
-2. Open draft PR, review governance changes and code/content isolation, then decide target-main merge.
-3. Separately review Math Practice Section 2/3 using existing target guide; use actual problem contents rather than inherited problem numbers.
+1. Validate governance port against live released main; review the 113 original source SHAs and 11 draft Work records.
+2. Merge safe PR #49 after all requested gates pass.
+3. Record real merge SHA in Work/memory and continue only approved future tasks.

@@ -1,20 +1,18 @@
-# PROGRESS — rriku target (2026-10-10)
+# PROGRESS — rriku 2026-10-10
 
-## Governance port
-- Target owner/main/HEAD identity: VERIFIED.
-- Exact-source snapshot: 113 files, archived on branch — DONE.
-- Ported live governance/document entry/mode-candidate files — COMMITTED.
-- Adapted target current position, match graph, active context, Work records — COMMITTED on migration branch.
-- Target-main merge: NOT DONE / REQUIRES REVIEW.
-- QA and checks: see `work/items/W-GOV-005-repository-os-port/VERIFICATION.md`.
+## Completed app release (separate PR #50)
+- Main `6e398f923c45fe895e53bc1f0f055f038acc41b6`, Math Practice Q87–120, Math Textbook `math-sets` published, Physics textbook Ch1, Physics guided representative examples combined.
+- [Math Practice CI](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38055477424) SUCCESS; [Math Textbook CI](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38055477427) SUCCESS; [Pages deployment](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38055876654) SUCCESS.
+- Other Math textbook units remain review, not published or user hands-on accepted.
 
-## Existing product
-- Mathematics Practice 87–120 original rriku implementation: PRESERVED.
-- Target prior-result/figure QA from Oct 4: documented completed; not rerun by migration.
-- Math textbook PR #31: OPEN/DRAFT as of target latest inspected.
-- Physics Chapter 1 live implementation: PRESERVED.
-- Existing deployment workflow: PRESERVED.
+## W-GOV-005 — repository OS transfer
+- Verified owner `rrikunagasige-dot/kyotsu-step-web`, repo ID 1391122224, public main release baseline.
+- SHA-preserved upstream historical archive 113 files and draft Work evidence 11 records.
+- Adapted root instruction router, Constitution, Work OS, 4 mode candidate specs and target QA staged in [PR #49](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/49).
+- Current position/graph/state synced with PR #50. Current Work VERIFYING; governance check on newest port to be observed.
+- No app/data/Pages code changed by governance port. Target-main merge and memory close still require verification.
 
-## Important risk
-Wrong-repo provenance error and numeric Q95/Q98 collision across repositories.
-No upstream app changes are imported into target.
+## Durable errors
+- ERROR-PROVENANCE: upstream `paulfields83` was mistaken for target.
+- ERROR-PROCESS: avoid repeated idle CI polling; do independent work while CI runs. After disconnect resume from latest proven checkpoint.
+- Each handoff must provide genuine review link, not prose only.

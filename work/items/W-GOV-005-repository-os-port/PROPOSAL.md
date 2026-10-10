@@ -16,3 +16,6 @@ Upstream application backend and question IDs are different; prior approvals do 
 Target repo identity, no target runtime changes, all first-read/Work files present, governance validator, PR checks, Section 2/3 code evidence and review link.
 ## Review History
 User initiated migration directly. Material extension to app code will require new proposal.
+
+## 2026-10-10 continuation / same approved scope
+User requested continuation of this existing Work after PR #50 app release. Refreshing current-state memory and validating against the new main is mechanical work inside the previously approved governance-only P-001 scope. No app changes or upstream content merge authorized.

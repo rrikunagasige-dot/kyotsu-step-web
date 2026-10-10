@@ -31,8 +31,8 @@ No whole-repo automatic merge, cleanup, removal, or rewriting of working app dat
   `docs/physics-ch01/MASTER_FIRE_DIAGRAM.md`,
   `docs/physics-ch01/CH1_USER_QA_DESIGN_LESSONS.md`,
   and present `src/data/textbook/`.
-- Math Textbook: existing Word mother, draft PR #31, actual source; no unreviewed promotion.
-- Other modes: source-first checks and current code.
+- Math Textbook: published `math-sets` in target main via PR #50; review-only other candidate units remain in original draft PR #31. Read `src/data/textbook/math/`, original mother Word and `navigation/MODE_STATE_2026-10-10.md`; do not promote review units without explicit user hands-on approval.
+- Physics Practice: representative guided questions + Ch1 adapter, not a complete bank. See `navigation/MODE_STATE_2026-10-10.md` for all four modes and current authoritative source paths.
 - Ported `subjects/**/SPEC.md` are **candidate integration summaries**, not a license to
   replace detailed approved target-mode rules.
 

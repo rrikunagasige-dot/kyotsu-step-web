@@ -1,0 +1,73 @@
+name: Math textbook mode CI
+
+on:
+  pull_request:
+    paths:
+      - 'src/domain/textbook.ts'
+      - 'src/domain/textbook.test.ts'
+      - 'src/domain/textbookSchema.ts'
+      - 'src/domain/textbookSchema.test.ts'
+      - 'src/data/textbook/math/**'
+      - 'public/assets/math/textbook/**'
+      - 'src/data/textbook/index.ts'
+      - 'src/pages/TextbookUnitPage.tsx'
+      - 'src/pages/LearningSetupPage.tsx'
+      - 'src/components/textbook/**'
+      - 'src/components/layout/AppShell.tsx'
+      - 'src/styles/global.css'
+      - 'e2e/math-textbook-set-smoke.spec.ts'
+      - '.github/workflows/math-textbook-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: math-textbook-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright Chromium
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Typecheck
+        run: pnpm run typecheck
+
+      - name: Textbook schema and math-unit tests
+        run: pnpm exec vitest run src/domain/textbook.test.ts src/domain/textbookSchema.test.ts src/data/textbook/math/mathCatalog.test.ts src/data/textbook/math/mathFrontmatterLeak.test.ts src/data/textbook/math/mathReviewIntegrity.test.ts src/data/textbook/math/mathFigureAssets.test.ts src/data/textbook/math/set/setLesson.test.ts src/data/textbook/math/proposition/propositionReadingLesson.test.ts src/data/textbook/math/proposition/quantifierLesson.test.ts src/data/textbook/math/function/functionConditionsLesson.test.ts src/data/textbook/math/proposition/propositionProofLesson.test.ts
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Math textbook mobile smoke
+        run: pnpm exec playwright test e2e/math-textbook-set-smoke.spec.ts --project=mobile-chromium
+
+      - name: Math textbook desktop smoke
+        run: pnpm exec playwright test e2e/math-textbook-set-smoke.spec.ts --project=desktop-chromium
+
+      - name: Physics textbook regression
+        run: pnpm exec playwright test e2e/chapter1-learning-smoke.spec.ts --project=desktop-chromium
+
+      - name: Math practice setup regression
+        run: pnpm exec playwright test e2e/math-practice-pilot.spec.ts --project=desktop-chromium

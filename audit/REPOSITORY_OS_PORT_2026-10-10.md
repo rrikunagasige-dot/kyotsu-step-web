@@ -42,3 +42,6 @@ No target app code changed.
 - Source-guided coverage: rriku Q92 16 blanks, Q93 7, Q94 12, Q95 7, Q96 11, Q97 8, Q98 staged. Prior-result dependency presentation includes Q93/94/96/97.
 - These match major *reasoning patterns* of upstream Section2/3 but are NOT automatically identical questions or exactly equivalent pedagogy. Upstream A-8 has no established exact target counterpart.
 - User review/merge and any visual QA are still open.
+
+## Resumed against latest published main
+After PR #50 merged, current target main is `6e398f923c45fe895e53bc1f0f055f038acc41b6` and Pages run 38055876654 was SUCCESS. Release changes belong to PR #50, NOT governance import. Math Textbook `math-sets` now exists on main, unlike older audit checkpoint; unmerged Math Textbook review units remain review. See `navigation/MODE_STATE_2026-10-10.md`. Governance PR #49 still has no app source changes.

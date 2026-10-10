@@ -20,8 +20,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: 2127c3d4d35793546228ac2fe2a9d38e8a9f97be
+        # Checkout the exact triggering main commit, never an outdated pinned lesson
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
@@ -46,6 +45,10 @@ jobs:
       - name: Chapter 1 audited browser smoke
         run: pnpm exec playwright test e2e/chapter1-learning-smoke.spec.ts
 
+      - name: Math textbook and practice regression
+        run: pnpm exec vitest run src/data/textbook/math src/data/mathPractice src/domain/textbook.test.ts src/domain/textbookSchema.test.ts
+      - name: Math textbook + math practice smoke
+        run: pnpm exec playwright test e2e/math-textbook-set-smoke.spec.ts e2e/math-practice-pilot.spec.ts --project=desktop-chromium
       - name: Build
         run: pnpm run build
       - name: Setup Pages

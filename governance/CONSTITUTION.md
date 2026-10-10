@@ -1,6 +1,6 @@
 # 塾 Repository Constitution
 
-> **Port status (2026-10-10):** Proposed adoption in `rrikunagasige-dot/kyotsu-step-web` through a separate review PR. The historical 2026-10-05 ratification belongs to `paulfields83`, not this repository. No target-main adoption is claimed before target PR merge. Existing target mode-specific approved rules remain binding; reconcile any conflict explicitly.
+> **2026-10-10 identity/adoption:** Target is `rrikunagasige-dot/kyotsu-step-web`, ported through PR #49; adoption to target main is evidenced by the actual merge, not the draft PR or upstream archive. Previous 2026-10-05 ratification belongs to `paulfields83` only. Previously approved Math/Physics pedagogy takes priority over imported mode summaries.
 
 
 Version: 1.0.0  

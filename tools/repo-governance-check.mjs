@@ -230,3 +230,17 @@ for (const path of ['CHATGPT_README_FIRST.md', 'docs/MASTER_APP_LESSONS.md', 'do
 }
 if (!read('AGENTS.md').includes('rrikunagasige-dot/kyotsu-step-web')) { console.error('ERROR: incorrect target repo identity'); process.exitCode=1 }
 if (!read('governance/INSTRUCTION_DICTIONARY.md').includes('rrikunagasige-dot/kyotsu-step-web')) { console.error('ERROR: incorrect root command repo identity'); process.exitCode=1 }
+
+
+// 2026-10-10 target release-state assertions. This file runs only on the target app.
+const expectedRepo = 'rrikunagasige-dot/kyotsu-step-web'
+if (process.env.GITHUB_REPOSITORY && process.env.GITHUB_REPOSITORY !== expectedRepo) { console.error('ERROR-PROVENANCE: unexpected workflow repo '+process.env.GITHUB_REPOSITORY); process.exitCode=1 }
+for (const path of ['navigation/MODE_STATE_2026-10-10.md','src/data/mathPractice/presentation.ts','src/data/textbook/math/set/setLesson.ts','src/data/textbook/ch01/chapter1Continuous.ts','src/data/textbookPracticeQuestions.ts']) {
+  if (!existsSync(full(path))) { console.error('ERROR: missing correct target mode source: '+path); process.exitCode=1 }
+}
+if (!read('src/data/textbook/index.ts').includes('mathTextbookUnits')) { console.error('ERROR: published math textbook not registered'); process.exitCode=1 }
+if (!/status:\s*'published'/.test(read('src/data/textbook/math/set/setLesson.ts'))) { console.error('ERROR: math-sets not published'); process.exitCode=1 }
+for (const path of ['src/data/textbook/math/proposition/propositionReadingLesson.ts','src/data/textbook/math/proposition/quantifierLesson.ts','src/data/textbook/math/proposition/propositionProofLesson.ts','src/data/textbook/math/function/functionConditionsLesson.ts']) {
+  if (!/status:\s*'review'/.test(read(path))) { console.error('ERROR: review-only math unit changed status: '+path); process.exitCode=1 }
+}
+if (read('.github/workflows/deploy-pages.yml').includes('ref: 2127c3d4d35793546228ac2fe2a9d38e8a9f97be')) { console.error('ERROR: Pages still pinned to obsolete lesson version'); process.exitCode=1 }

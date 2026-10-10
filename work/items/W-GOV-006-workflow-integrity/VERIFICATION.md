@@ -48,3 +48,9 @@ Original `PROPOSAL.md` (P-001) remains byte-identical; P-002 is a separate revis
 - Original `pnpm run lint` still has 24 legacy errors in protected, untouched source, recorded as diagnostic, NOT PASS.
 - Original `pnpm run test` has **249/251 PASS**, with 2 historical test-count assertion failures (old expectations 17 vs 3, 19 vs 39). This Work cannot change those protected test files; record FAIL honestly.
 - Targeted released Math/Physics tests, build and browser regression are now tracked as independent required steps; their current results pending.
+
+## G4 browser regression legacy baseline (FAIL retained)
+- [Run 38062639771](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38062639771) : 156/160 Playwright PASS; 4 historical `learning-flow.spec.ts` test failures on an old removed question-selection menu; 2 failing test titles × mobile+desktop. These test and app files are unchanged and protected, so not caused by W-GOV-006. **The full E2E suite is NOT PASS**.
+- Current app's released Math Practice/Math Textbook/Physics Ch1 E2E: passed in that run, now separately kept as required CI step; surviving representative Physics Practice guide separately required.
+- Historical broken browser tests remain visible independent diagnostics in new workflow; they are not silently marked PASS and have not been modified.
+- Next CI must independently confirm targeted released-mode E2E and preserve protected 395/395 SHA; otherwise Work still VERIFYING/BLOCKED. No PR merge.

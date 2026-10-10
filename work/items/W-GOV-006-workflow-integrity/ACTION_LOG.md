@@ -34,3 +34,6 @@ Retrieved second workflow run 38062455599 job logs. Governance and 15 workflow s
 
 ## A-011 — Stop silent Proposal rewrite through actual file-hash check
 Compared the reviewed P-002 Git blob (ef1e94c8ed01d59a354fb5cfa69b9a5053b019cc) and original P-001 (a65d95730981c451a28005259d5ca916452668b4) to recorded approved source; added actual hash check and a tamper-detection test. This corrects earlier `proposalChanged:false` vulnerability in the new pilot and does not modify either proposal document or the app.
+
+## A-012 — Interpret browser regression and isolate current/obsolete tests
+Previous run 38062639771 completed with 156 Playwright PASS, 4 FAIL. All four FAIL came from protected untouched `e2e/learning-flow.spec.ts` expecting an obsolete `学習する問題` select menu, on mobile and desktop (two tests × two projects), across all 3 retries. Current published Math Practice / Math Textbook / Physics Chapter 1 tests passed. Changed ONLY the additional pilot workflow so current released routes and surviving Physics Practice representative guide are required steps, while the two pre-existing obsolete UI tests remain executed and visibly recorded as independent diagnostics. No app, e2e source or saved-question content was changed.

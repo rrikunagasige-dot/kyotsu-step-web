@@ -28,3 +28,6 @@ Existing governance checker selects the explicitly approved P-002 for this Work 
 
 ## A-009 — Diagnose first validation failures without app changes
 Fetched both GitHub job logs from run 38062252648. New diff pilot used an imprecise unanchored approval substring check; fixed in new auditor only. The newly added full-app check also uncovered 24 lint problems in SHA-identical protected existing TypeScript files; app is not edited. Preserved original lint check in repository and run it as a visible diagnostic while continuing actual typecheck/unit/build/Playwright checks. Record and report all failures.
+
+## A-010 — Classify historical full-suite test-count failures
+Retrieved second workflow run 38062455599 job logs. Governance and 15 workflow safety tests now PASS, PR scope/395 SHA PASS. Two existing unit assertions failed due to changed published catalog counts, without any Work change to protected test or dataset files. Preserve failures; run the exact original PR #50 released-mode targeted test suites, app build and browser regressions in separate required CI steps, keep full suite as diagnostic.

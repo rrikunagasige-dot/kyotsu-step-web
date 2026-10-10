@@ -41,3 +41,10 @@ Original `PROPOSAL.md` (P-001) remains byte-identical; P-002 is a separate revis
 - Pilot PR-scope job FAIL because of false-positive P-001 textual check (an implementation error, not an approval violation). Corrected with anchored status-line check; rerun required.
 - Product `pnpm check` job FAIL at lint: **24 pre-existing lint errors in protected unchanged source files**. This Work cannot touch these files. Splitting the new *pilot-only* product job into typecheck, visible legacy lint diagnostic, unit test, build, and Playwright allows actual independent regression evidence without altering the old lint rule or the original app. Do NOT report `pnpm check` full PASS.
 - Required post-correction tests and product verification: PENDING.
+
+
+## G4 second CI evidence (scope pilot PASSED, legacy full suite FAIL)
+- [Run 38062455599](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38062455599): Governance PASS; independent workflow-safety pilot PASS (15/15 + full 395 protected Git SHA + allowed PR diff).
+- Original `pnpm run lint` still has 24 legacy errors in protected, untouched source, recorded as diagnostic, NOT PASS.
+- Original `pnpm run test` has **249/251 PASS**, with 2 historical test-count assertion failures (old expectations 17 vs 3, 19 vs 39). This Work cannot change those protected test files; record FAIL honestly.
+- Targeted released Math/Physics tests, build and browser regression are now tracked as independent required steps; their current results pending.

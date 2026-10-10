@@ -54,3 +54,6 @@ Original `PROPOSAL.md` (P-001) remains byte-identical; P-002 is a separate revis
 - Current app's released Math Practice/Math Textbook/Physics Ch1 E2E: passed in that run, now separately kept as required CI step; surviving representative Physics Practice guide separately required.
 - Historical broken browser tests remain visible independent diagnostics in new workflow; they are not silently marked PASS and have not been modified.
 - Next CI must independently confirm targeted released-mode E2E and preserve protected 395/395 SHA; otherwise Work still VERIFYING/BLOCKED. No PR merge.
+
+## G4 bounded replay — newly configured, NOT yet verified
+Long-running comprehensive browser replay 38063508314 was still `in_progress` on 2026-10-11; no final PASS may be inferred. PR-scope SHA and governance tests already PASS. A bounded 25-min product regression now requires representative math practice, published math textbook, physics textbook (desktop/mobile), and the separate Physics Practice guided-image test. Existing obsolete test failures remain a visible diagnostic; their failures are NOT hidden as PASS. This gate stays PENDING until completed GitHub Actions evidence.

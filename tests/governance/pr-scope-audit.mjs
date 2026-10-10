@@ -1,7 +1,7 @@
 // Non-destructive independent pilot. GitHub approval cannot be inferred from a status label.
 import { readFileSync } from 'node:fs'
 import { execFileSync } from 'node:child_process'
-import { auditWork, parseProtectedManifest, compareProtectedTrees, EXPECTED_REPO } from './workflow-policy.mjs'
+import { auditWork, parseProtectedManifest, compareProtectedTrees, compareApprovalAnchors, EXPECTED_REPO } from './workflow-policy.mjs'
 
 const read = path => readFileSync(path, 'utf8')
 const folder = 'work/items/W-GOV-006-workflow-integrity/'
@@ -40,11 +40,15 @@ const nav = read('navigation/CURRENT_POSITION.md')
 const graph = read('navigation/MASTER_MATCH_GRAPH.md')
 const progress = read('memory/PROGRESS.md')
 
+const proposalSha = git('hash-object', folder+'PROPOSAL_P-002.md').trim()
+const historicalSha = git('hash-object', folder+'PROPOSAL.md').trim()
+const approvalAnchorErrors = compareApprovalAnchors(approval, proposalSha, historicalSha)
+errors.push(...approvalAnchorErrors)
 const result = auditWork({
  repository:repo,paths,work:approvedWork,proposal:approvedProposal,approval,
  current:nav,graph,progress,
  proposalOnly:false,
- proposalChanged: false
+ proposalChanged: approvalAnchorErrors.some(x => x.includes('approved proposal blob changed'))
 })
 errors.push(...result.errors)
 console.log('W-GOV-006 independent safety pilot:',paths.length,'changed paths, protected baseline',baseline.size)

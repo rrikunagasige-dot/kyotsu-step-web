@@ -78,3 +78,15 @@ export function compareProtectedTrees(baseline, current) {
   for (const [p] of current) if (isProtected(p) && !baseline.has(p)) errors.push('new protected file: ' + p)
   return errors
 }
+
+
+// Git blob hashes establish file identity, NOT authenticated human consent.
+export function compareApprovalAnchors(approval, proposalSha, historicalSha) {
+  const issues = []
+  const p = approval.match(/^Approval anchor \(Git blob SHA of approved P-002\): `([a-f0-9]{40})`\.$/m)?.[1]
+  const old = approval.match(/^Original unapproved P-001 anchor \(Git blob SHA\): `([a-f0-9]{40})`\.$/m)?.[1]
+  if (!p || !old) issues.push('approval anchors missing; cannot verify immutable proposal revision')
+  if (p && proposalSha !== p) issues.push('approved proposal blob changed: needs P-003 and new approval')
+  if (old && historicalSha !== old) issues.push('historical unapproved P-001 was rewritten')
+  return issues
+}

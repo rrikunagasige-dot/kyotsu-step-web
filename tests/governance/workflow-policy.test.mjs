@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { auditWork, checkNavigation, compareProtectedTrees, parseProtectedManifest, isProtected } from './workflow-policy.mjs'
+import { auditWork, checkNavigation, compareProtectedTrees, parseProtectedManifest, isProtected, compareApprovalAnchors } from './workflow-policy.mjs'
 
 const repo = 'rrikunagasige-dot/kyotsu-step-web'
 const base = {
@@ -73,4 +73,13 @@ test('original protected and authorized paths remain disjoint', () => {
 })
 test('negative: historical completion is not the same as missing progress', () => {
   assert.match(checkNavigation({current:base.current,graph:base.graph,progress:'not updated'}).join('\n'),/PROGRESS/)
+})
+
+test('approved P-002 blob SHA anchoring detects an altered proposal', () => {
+  const x = 'a'.repeat(40), y = 'b'.repeat(40)
+  const approval = 'Approval anchor (Git blob SHA of approved P-002): `' + x + '`.\nOriginal unapproved P-001 anchor (Git blob SHA): `' + y + '`.\n'
+  assert.deepEqual(compareApprovalAnchors(approval, x, y), [])
+  assert.match(compareApprovalAnchors(approval, y, y).join('\n'), /needs P-003/)
+  assert.match(compareApprovalAnchors(approval, x, x).join('\n'), /P-001 was rewritten/)
+  assert.match(compareApprovalAnchors('Status: APPROVED', x, y).join('\n'), /anchors missing/)
 })

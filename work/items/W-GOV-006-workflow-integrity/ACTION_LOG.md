@@ -31,3 +31,6 @@ Fetched both GitHub job logs from run 38062252648. New diff pilot used an imprec
 
 ## A-010 — Classify historical full-suite test-count failures
 Retrieved second workflow run 38062455599 job logs. Governance and 15 workflow safety tests now PASS, PR scope/395 SHA PASS. Two existing unit assertions failed due to changed published catalog counts, without any Work change to protected test or dataset files. Preserve failures; run the exact original PR #50 released-mode targeted test suites, app build and browser regressions in separate required CI steps, keep full suite as diagnostic.
+
+## A-011 — Stop silent Proposal rewrite through actual file-hash check
+Compared the reviewed P-002 Git blob (ef1e94c8ed01d59a354fb5cfa69b9a5053b019cc) and original P-001 (a65d95730981c451a28005259d5ca916452668b4) to recorded approved source; added actual hash check and a tamper-detection test. This corrects earlier `proposalChanged:false` vulnerability in the new pilot and does not modify either proposal document or the app.

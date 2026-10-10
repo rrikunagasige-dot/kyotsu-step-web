@@ -36,3 +36,6 @@ Initial `pnpm run check` ran typecheck then lint and stopped at 24 errors in ori
 
 ## F-013 — PREEXISTING UNIT TEST EXPECTATION DEBT
 Workflow 38062455599 ran all 251 Vitest tests: 249 PASS, 2 FAIL in protected unchanged `src/data/physicsTaxonomy.test.ts` and `src/domain/questionSchema.test.ts`. Tests expect old fixed question counts 17 and 19, while actual values are 3 and 39. This Work changed **no** protected file, including either test and their dependencies, so these count assertions are incompatible with already-shipped main state, not new regressions caused by G0–G4. Do NOT edit these source/test files in this Work. Keep failure evidence, run released-mode targeted suites and independent real browser QA.
+
+## F-014 — ERROR-QA / amended-proposal detection was incorrectly fixed to FALSE
+Independent code review after PR #53 G0–G4 pilot revealed that `pr-scope-audit.mjs` always passed `proposalChanged: false` even though the helper had negative tests. This would not detect a real rewritten approved P-002. Fixed with Git blob SHA anchors of both P-002 (ef1e94c8ed01d59a354fb5cfa69b9a5053b019cc) and unchanged unapproved P-001 (a65d95730981c451a28005259d5ca916452668b4), compared to working-tree Git hashes at PR review. These anchors are not a substitute for independent human approval verification.

@@ -13,3 +13,6 @@ Target implementation authority:
 - `docs/REQUIREMENTS_MATRIX.md`
 - `WORKFLOW.md`
 - `src/data/mathPractice/` and `src/data/textbook/` actual data.
+
+## Paul版との一致と意図的な差分
+旧Paul版の6つの `technical/` 文書は `history/imports/paulfields83-20261010/technical/` に保存済み。人間・AIが以前の設計思想を追跡するには参照してよいが、backend込みの構造をこのtargetにそのまま移植してはならない。原資料・現在のアプリ正本は上記 `docs/` と `src/` を優先する。差分は `work/items/W-GOV-007-repository-os-parity/PARITY_AUDIT.md` を参照。

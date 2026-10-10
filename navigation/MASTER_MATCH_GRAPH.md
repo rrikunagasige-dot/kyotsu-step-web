@@ -49,3 +49,8 @@ Always separate Math/Physics, Textbook/Practice, upstream/target. Never infer pu
 
 ## Main adoption evidence (2026-10-10)
 PR #49 merged to `41a9ce05ed10ffc0ddcdc46a5de84086198ac4cf`. Governance workflows on branch 38057390142 and main 38057462564 both SUCCESS. No product source differences in 174 protected app/deploy files. Mode-specific candidate specs remain proposals, not accepted curriculum changes.
+
+
+## W-GOV-007 — Old OS parity, implementation branch only (2026-10-11)
+`[Paul旧版の辞典/憲法/Work/火柴図] → [Target README + AGENTS入口] → [targetの四モード正本/承認Work] → [一般PRのadvisory scope audit] → [fresh recovery drill] → [PR REVIEW / 別のmain統合承認]`。
+Proposal-only draft PR #54 preserves the as-proposed record; separate implementation PR (review required) contains the approved R0–R5 changes. PR #53 remains an independent, unmerged preservation pilot. GitHub Rulesets and branch protection are NOT APPROVED.

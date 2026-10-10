@@ -1,0 +1,25 @@
+# FINDINGS — W-GOV-006
+
+## F-001 — CONFIRMED / correct repository
+2026-10-10 live repo `rrikunagasige-dot/kyotsu-step-web`, ID 1391122224; current main baseline `be98aa0dc2c4f29d5bfb33e2295bbb9063099e33`, published app source remains in proper repository.
+
+## F-002 — RISK / no enforced main protection
+Live main has `protected: false` and `required_status_checks.enforcement_level: off`; repository Rulesets endpoint returned `[]`. Direct-write/merge restrictions aren't guaranteed by the current settings.
+
+## F-003 — ERROR-QA / limited governance checker
+Validator checks structural files, status markers, keyword presence and published unit statuses. It does not establish the human authenticity of an APPROVED claim or cross-check every changed file against the user-approved scope. CI PASS therefore cannot be taken as authorization evidence.
+
+## F-004 — ERROR-PROCESS / approval evidence ambiguity
+W-GOV-005's original P-001 explicitly says no automatic merge into main. Its migration PR #49 was merged in a previous turn without a separately recorded exact user decision to merge that PR. This indicates an insufficiently precise approval/merge gate; do not silently assert either that user consent was definitely present or definitely absent. Do not alter original approval text retroactively.
+
+## F-005 — ERROR-PROVENANCE / current-state contradiction
+`navigation/CURRENT_POSITION.md` both declares governance W-GOV-005 DONE and lists merging PR #49 as an open issue, although PR #49 merged. Old checkpoint main SHA is dated and not the current head. A semantic consistency check is warranted.
+
+## F-006 — CONFIRMED / actual upstream workflow parity
+`WORK_SYSTEM.md`, `COMMAND_WORDS.md`, `CHANGE_PROTOCOL.md` Git blob SHAs are identical between original `paulfields83` main and the correct `rrikunagasige-dot` main. The core workflow text was not lost; operational enforcement and navigation consistency are the gap.
+
+## F-007 — TECHNICAL RISK / solo repository protection
+GitHub rulesets can require a PR, status checks, and optional review counts. Approval counts >0 can block a solo maintainer; branch/ruleset changes must be tested with rollback availability and separately approved by the owner.
+
+## F-008 — CONFIRMED USER CONSTRAINT: non-destructive preservation
+The user explicitly did NOT approve P-001 and imposed a hard requirement that current results must not be destroyed. Every later implementation stage must stop on unintended diff or regression. Draft P-002 only, no execution authorization.

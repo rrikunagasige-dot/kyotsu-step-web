@@ -33,3 +33,11 @@ Original `PROPOSAL.md` (P-001) remains byte-identical; P-002 is a separate revis
 - **G3**: stale PR #49 pending-merge issue removed from live Current Position, while historical W-GOV-005 record remains.
 - **G4**: compare manifest to PR head Git blobs; full product regression CI and browser gate must be observed before merge. This Work remains VERIFYING.
 - **Human review and main merge**: PENDING separate explicit user instruction. No GitHub branch protection or Rulesets modified.
+
+
+## G4 initial workflow evidence (FAILED checks retained)
+- [Workflow run 38062252648](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38062252648): existing governance job PASS.
+- Independent policy negative/positive tests PASS **15/15**.
+- Pilot PR-scope job FAIL because of false-positive P-001 textual check (an implementation error, not an approval violation). Corrected with anchored status-line check; rerun required.
+- Product `pnpm check` job FAIL at lint: **24 pre-existing lint errors in protected unchanged source files**. This Work cannot touch these files. Splitting the new *pilot-only* product job into typecheck, visible legacy lint diagnostic, unit test, build, and Playwright allows actual independent regression evidence without altering the old lint rule or the original app. Do NOT report `pnpm check` full PASS.
+- Required post-correction tests and product verification: PENDING.

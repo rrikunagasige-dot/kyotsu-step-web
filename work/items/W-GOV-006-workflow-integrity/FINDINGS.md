@@ -28,3 +28,8 @@ The user explicitly did NOT approve P-001 and imposed a hard requirement that cu
 P-002 was explicitly accepted for implementation by user after full display. This is **not** approval to merge the future implementation PR or change GitHub Settings. P-001 original remains unapproved. Authenticated human approval cannot be established from Markdown alone.
 ## F-010 — CONFIRMED (preservation)
 A baseline tree checkpoint explicitly protects 395 paths across application, docs, original Work System, history and Pages. A new PR must pass byte-level Git SHA comparison and existing product regressions before user merge review.
+
+## F-011 — ERROR-QA corrected: historical label false-positive
+Initial new PR-scope pilot run 38062252648 produced ERROR "P-001 unexpectedly promoted to approved" despite P-001 being PROPOSED. Cause: unanchored `includes('Status: APPROVED')` also matches quoted text within the unapproved proposal. Correction: check the exact first-column status line with anchored RegExp, preserving the original P-001 blob untouched. Initial pilot test suite still had 15/15 PASS; preserve this failed check and follow-up.
+## F-012 — PREEXISTING BASELINE DEBT, NOT A PRODUCT REGRESSION
+Initial `pnpm run check` ran typecheck then lint and stopped at 24 errors in original `src/` TypeScript files (unmodified by W-GOV-006). Error types include irregular whitespace, unnecessary regex escapes and unused variables. All 395 protected Git blobs, including implicated source files, match the released main SHA; current Work must not modify source to silence errors. Keep lint visible as diagnostic while executing unaffected unit/build/browser checks separately. A distinct later Work would be needed to repair legacy lint issues.

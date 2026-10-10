@@ -50,6 +50,6 @@ errors.push(...result.errors)
 console.log('W-GOV-006 independent safety pilot:',paths.length,'changed paths, protected baseline',baseline.size)
 console.log('Machine-readable approval evidence:',approval.includes('FOR IMPLEMENTATION ONLY') ? 'present (not externally authenticated)' : 'missing')
 console.log('Human review still required:',result.needsHumanReview)
-if (approvedP001.includes('Status: APPROVED')) errors.push('P-001 unexpectedly promoted to approved')
+if (/^Status:\s*APPROVED\s*$/m.test(approvedP001)) errors.push('P-001 unexpectedly promoted to approved')
 if (errors.length) {for (const e of errors) console.error('ERROR:',e);process.exitCode=1}
 else console.log('PASS: scope and protected SHA verified; NOT human merge approval')

@@ -25,3 +25,6 @@ Direct user instruction 「よし今は大丈夫じゃ修正よろしく。」 r
 Added positive/negative Node tests and a PR-level Git tree/diff safety auditor under `tests/governance/`; no learner code changed.
 ## A-008 — G2/G3 minimum governance changes
 Existing governance checker selects the explicitly approved P-002 for this Work while preserving unapproved P-001. Added consistency checks, independent PR-scope pilot and removed stale open PR #49 entry from live current position. CI observation pending.
+
+## A-009 — Diagnose first validation failures without app changes
+Fetched both GitHub job logs from run 38062252648. New diff pilot used an imprecise unanchored approval substring check; fixed in new auditor only. The newly added full-app check also uncovered 24 lint problems in SHA-identical protected existing TypeScript files; app is not edited. Preserved original lint check in repository and run it as a visible diagnostic while continuing actual typecheck/unit/build/Playwright checks. Record and report all failures.

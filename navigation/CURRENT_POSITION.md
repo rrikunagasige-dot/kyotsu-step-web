@@ -25,7 +25,6 @@ No governance changes to `src/`, `public/`, `e2e/`, package/lockfile or Pages wo
 Imported four-mode `subjects/**/SPEC.md` are CANONICAL-CANDIDATE summaries, subordinate to target-approved lesson documents.
 
 ## Open issues
-- PR #49 already merged and W-GOV-005 DONE; no new merge action remains for that PR.
 - Separately reconcile each imported mode spec with established target sources before declaring it canonical.
 - Product release user hands-on QA and future pedagogy remain separate Works.
 

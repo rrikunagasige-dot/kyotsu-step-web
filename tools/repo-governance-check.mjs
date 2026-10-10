@@ -251,7 +251,7 @@ if (read('.github/workflows/deploy-pages.yml').includes('ref: 2127c3d4d357935462
 
 // Semantic safety check for W-GOV-006: do not confuse old accepted provenance with unfinished actions.
 const activeCurrent = read('navigation/CURRENT_POSITION.md')
-const openCurrent = activeCurrent.split(/^## Open issues\\s*$/m)[1]?.split(/^## /m)[0] || ''
+const openCurrent = activeCurrent.split(/^## Open issues\s*$/m)[1]?.split(/^## /m)[0] || ''
 if (/PR #49/.test(openCurrent) && /merge|adopt|統合|未統合/i.test(openCurrent)) {
   console.error('ERROR: already-merged PR #49 is still listed as a pending merger in CURRENT_POSITION'); process.exitCode=1
 }

@@ -18,6 +18,7 @@ jobs:
 
 # Additive, non-required G0–G4 review pilot; pre-existing governance job above unchanged.
   workflow-safety-pilot:
+    if: github.event_name == 'pull_request' && github.head_ref == 'work/W-GOV-006-preservation-implementation-20261010'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -36,3 +37,24 @@ jobs:
         run: |
           git fetch --no-tags origin "$PR_BASE_SHA" "$PR_HEAD_SHA"
           node tests/governance/pr-scope-audit.mjs
+
+# Full app verification on this one preservation-only Work PR; no app source edits.
+  preservation-product-regression:
+    if: github.event_name == 'pull_request' && github.head_ref == 'work/W-GOV-006-preservation-implementation-20261010'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      - name: Original complete checks, typecheck/lint/unit/build
+        run: pnpm run check
+      - name: All four representative modes on mobile and desktop
+        run: pnpm exec playwright test e2e/math-practice-pilot.spec.ts e2e/math-textbook-set-smoke.spec.ts e2e/chapter1-learning-smoke.spec.ts --project=mobile-chromium --project=desktop-chromium

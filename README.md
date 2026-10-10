@@ -1,15 +1,15 @@
 # 塾 / Kyotsu Step — GitHubの入口
 
-高校数学・物理の教材制作と学習アプリを、以前のPaul版Repository OSの手順に従って管理するプロジェクト。**このREADMEは人間・新しいAIの共通入口であり、詳細仕様書ではない。** 旧版の管理構造を継承しつつ、正しい書込み先は必ず \`rrikunagasige-dot/kyotsu-step-web\`（Repository ID \`1391122224\`）とする。旧 \`paulfields83/kyotsu-step-web\` は参照専用。
+高校数学・物理の教材制作と学習アプリを、以前のPaul版Repository OSの手順に従って管理するプロジェクト。**このREADMEは人間・新しいAIの共通入口であり、詳細仕様書ではない。** 旧版の管理構造を継承しつつ、正しい書込み先は必ず `rrikunagasige-dot/kyotsu-step-web`（Repository ID `1391122224`）とする。旧 `paulfields83/kyotsu-step-web` は参照専用。
 
 ## 最初に行うこと — 「憲法から」
 
-1. **GitHub実体確認:** owner / repository ID / branch / live \`main\` のHEADを確認。誤接続ならSTOP。
-2. **命令を照合:** [指示辞典](governance/INSTRUCTION_DICTIONARY.md) の \`CMD-ROOT-001\` と \`EXACT / SIMILAR / UNKNOWN\` に従う。類似指示は確認なしに実行しない。
+1. **GitHub実体確認:** owner / repository ID / branch / live `main` のHEADを確認。誤接続ならSTOP。
+2. **命令を照合:** [指示辞典](governance/INSTRUCTION_DICTIONARY.md) の `CMD-ROOT-001` と `EXACT / SIMILAR / UNKNOWN` に従う。類似指示は確認なしに実行しない。
 3. **上位規則を読む:** [AGENTS（AI入口）](AGENTS.md) → [憲法](governance/CONSTITUTION.md) → [命令語](governance/COMMAND_WORDS.md) → [変更手順](governance/CHANGE_PROTOCOL.md) → [正本の権限](governance/DOCUMENT_AUTHORITY.md)。
 4. **現在地を復元:** [CURRENT_POSITION](navigation/CURRENT_POSITION.md) → [MASTER_MATCH_GRAPH（火柴図）](navigation/MASTER_MATCH_GRAPH.md) → [ACTIVE_CONTEXT](memory/ACTIVE_CONTEXT.md) + [PROGRESS](memory/PROGRESS.md)。
 5. **対象モードのみ読む:** 下記の教材の正本、承認済み [Work System](governance/WORK_SYSTEM.md)、対応する [Work記録](work/README.md) と必要な [教訓](memory/LESSONS/)・[決定](memory/DECISIONS/)。
-6. **承認ゲート:** 未承認なら \`ASSESS → PROPOSE → USER APPROVAL\` でSTOP。承認済みならそのexact scopeでだけ作業し、検証結果とレビュー可能なPR/アプリURLを記録。
+6. **承認ゲート:** 未承認なら `ASSESS → PROPOSE → USER APPROVAL` でSTOP。承認済みならそのexact scopeでだけ作業し、検証結果とレビュー可能なPR/アプリURLを記録。
 7. **分離する:** 提案承認 ≠ 実装完了 ≠ PRマージ承認 ≠ GitHub Settingsの変更承認 ≠ 公開教材のユーザー実地評価。
 
 ## 数学・物理の4モード
@@ -18,20 +18,20 @@
 
 | 対象 | 作業の入口 | 現在の実体・正本 |
 | --- | --- | --- |
-| 数学 学習・教科書 | [Math Textbook候補SPEC](subjects/mathematics/textbook/SPEC.md) | [数学校正済みデータ](src/data/textbook/math/)：集合 \`math-sets\` 公開。残りの該当単元はreviewで、未公開を自動昇格しない |
+| 数学 学習・教科書 | [Math Textbook候補SPEC](subjects/mathematics/textbook/SPEC.md) | [数学校正済みデータ](src/data/textbook/math/)：集合 `math-sets` 公開。残りの該当単元はreviewで、未公開を自動昇格しない |
 | 数学 練習 | [Math Practice候補SPEC](subjects/mathematics/practice/SPEC.md) | [既存の教訓](docs/MATH_PRACTICE_MASTER_LESSONS.md)、[87–120構造](docs/MATH_PRACTICE_87_120_STRUCTURE_MAP.md) |
 | 物理 学習・教科書 | [Physics Textbook候補SPEC](subjects/physics/textbook/SPEC.md) | [README FIRST](CHATGPT_README_FIRST.md)、[第1章火柴図](docs/physics-ch01/MASTER_FIRE_DIAGRAM.md)：1A–1Gの内部単位は保持し、学習者向け3見出し |
 | 物理 練習 | [Physics Practice候補SPEC](subjects/physics/practice/SPEC.md) | [現行代表問題](src/data/textbookPracticeQuestions.ts)：3問と第1章adapter。大規模問題バンクの完成とは異なる |
 
-\`subjects/**/SPEC.md\` は現在の教材の上に立つ新正本ではない。承認済み原資料と齟齬があれば、編集せずFindingとして記録する。
+`subjects/**/SPEC.md` は現在の教材の上に立つ新正本ではない。承認済み原資料と齟齬があれば、編集せずFindingとして記録する。
 
 ## Work（作業ごとの正式な証拠）
 
-[Work System](governance/WORK_SYSTEM.md)に従い、\`work/items/<WORK-ID>-<short-name>/\` に以下を残す。
+[Work System](governance/WORK_SYSTEM.md)に従い、`work/items/<WORK-ID>-<short-name>/` に以下を残す。
 
-\`WORK.md\`（現在の状態） / \`PROPOSAL.md\`（修正案・承認） / \`ACTION_LOG.md\`（実作業） / \`FINDINGS.md\`（問題・教訓） / \`VERIFICATION.md\`（観測した結果）。
+`WORK.md`（現在の状態） / `PROPOSAL.md`（修正案・承認） / `ACTION_LOG.md`（実作業） / `FINDINGS.md`（問題・教訓） / `VERIFICATION.md`（観測した結果）。
 
-[作業テンプレート](work/templates/)、[品質確認](quality/QUALITY_GATES.md)、[現在の技術仕様](technical/README.md)を利用する。批准・変更範囲のCIは検査の一部であり、**あなたの本当の承認の代わりにはならない**。未解決なら \`PENDING\` / \`NEEDS-HUMAN-REVIEW\` と報告。
+[作業テンプレート](work/templates/)、[品質確認](quality/QUALITY_GATES.md)、[現在の技術仕様](technical/README.md)を利用する。批准・変更範囲のCIは検査の一部であり、**あなたの本当の承認の代わりにはならない**。未解決なら `PENDING` / `NEEDS-HUMAN-REVIEW` と報告。
 
 ## 旧Paul版との関係
 

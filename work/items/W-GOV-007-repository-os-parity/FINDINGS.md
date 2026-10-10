@@ -49,3 +49,11 @@ Date: 2026-10-11
 Type: CONFIRMED
 Statement: New generic Work integrity pilot is read-only for the target repository and implements file-scoped verdicts PROPOSAL_ONLY / SCOPE_PASS_HUMAN_REVIEW_REQUIRED / REVIEW_REQUIRED / FAIL. It never grants actual merge authority.
 Impact: Preserve human review for consent. A Git object and even the recorded approval quote can be tampered with together; SHA anchoring only detects unexpected inconsistency, not who approved.
+
+
+## F-008
+Date: 2026-10-11
+Type: ERROR-IMPLEMENTATION
+Statement: First independent policy test run failed 15 fixture checks due to a single ReferenceError (`changes is not defined`), not due to intended scope policy. README added code ticks were escaped.
+Evidence: GitHub Actions 38072923508; corrected new tests/README in A-005.
+Impact: Must rerun; never report first run as PASS.

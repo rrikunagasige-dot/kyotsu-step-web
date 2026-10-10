@@ -8,7 +8,7 @@ const work='Status: VERIFYING\nApproved Proposal: P-001\n'
 const proposal='Status: APPROVED\n'
 const approval=['Status: APPROVED FOR IMPLEMENTATION ONLY','Work-ID: W-GOV-007','Proposal-ID: P-001','Proposal-SHA: '+psha,'Scope-SHA: '+ssha,'User-Statement: 我觉得可以继续','Main-Merge: NOT AUTHORIZED','GitHub-Settings: NOT AUTHORIZED'].join('\n')
 const changed=[{status:'M',path:'README.md'},{status:'A',path:dir+'APPROVAL_P-001.md'}]
-const go=o=>audit({changes,workDir:dir,work,proposal,proposalSha:psha,scope,scopeSha:ssha,approval,...o})
+const go=o=>audit({changes:changed,workDir:dir,work,proposal,proposalSha:psha,scope,scopeSha:ssha,approval,...o})
 test('implementation changes with exact declared scope can pass STATIC gate; never human consent',()=>{
  const x=go({});assert.equal(x.state,STATES.READY);assert.equal(x.humanApprovalVerified,false)
 })

@@ -32,3 +32,11 @@ Related proposal: P-001 (approved implementation scope)
 Action: Added old-OS-style human entry/navigation above the preserved former README, narrowly enhanced AGENTS / technical/work router, corrected stale main-current PR #49 issue and recorded independent W-GOV-007 status. Introduced general PR Work-scope policy, negative/positive Node tests, and a non-required advisory job for all future pull requests.
 Target / location: Only paths declared in P-001 and pinned `SCOPE.json`.
 Result: Implementation staged; PR diff protection, fresh-agent drill and GitHub CI need observed verification.
+
+
+## A-005 — Fix independent test harness before trusting CI
+Date: 2026-10-11
+Related proposal: approved P-001
+Action: GitHub run 38072923508: original governance PASS; new independent policy test runner FAIL because test fixture `go()` accidentally referred to undefined `changes` rather than `changed`. Additionally removed literal backslash escapes from new README code spans; all legacy README original lines remain intact.
+Result: First run honestly FAILED; corrected and new run required. No curriculum or original governance changes.
+Evidence: https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38072923508

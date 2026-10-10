@@ -1,5 +1,5 @@
 # AUDIT — Upstream Repository OS port into rriku
-Status: STAGED / REVIEW REQUIRED
+Status: ADOPTED / VERIFIED (scope: governance/Work OS)
 Date: 2026-10-10
 
 ## Origin / target
@@ -45,3 +45,6 @@ No target app code changed.
 
 ## Resumed against latest published main
 After PR #50 merged, current target main is `6e398f923c45fe895e53bc1f0f055f038acc41b6` and Pages run 38055876654 was SUCCESS. Release changes belong to PR #50, NOT governance import. Math Textbook `math-sets` now exists on main, unlike older audit checkpoint; unmerged Math Textbook review units remain review. See `navigation/MODE_STATE_2026-10-10.md`. Governance PR #49 still has no app source changes.
+
+## Final target adoption
+2026-10-10: PR #49 merged to correct repository main `41a9ce05ed10ffc0ddcdc46a5de84086198ac4cf`, both pre-merge governance run 38057390142 and main run 38057462564 SUCCESS. Compared released app commit 6e398f9 with governance main commit; 174 protected app and deploy files were Git-blob identical. W-GOV-005 closure PR #51 records DONE/PASS. The 113 original source blobs and original rejected/unfinished draft Work records remain intact. This is not approval or publication of review-only Maths/Pysics pedagogy.

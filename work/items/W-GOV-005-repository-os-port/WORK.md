@@ -1,18 +1,24 @@
-# W-GOV-005 — transfer Constitution/Work OS into correct repo
-Status: VERIFYING
+# W-GOV-005 — Constitution / Repository OS migration
+Status: DONE
 Updated: 2026-10-10
 
-## Objective
-Port complete user-designed governance/workflow/history from `paulfields83` into canonical `rrikunagasige-dot/kyotsu-step-web` while protecting Math/Physics × Textbook/Practice.
-## Authority
-Approved P-001, explicit user migration instruction 2026-10-10, and latest user continuation of this same Work after successful app release.
-## Branch
-`governance/port-repository-os-20261010`; [PR #49](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/49)
-## Scope
-113 original blob archive, 11 upstream unmerged Work records archival, target-adapted Constitution/Work OS/commands, four-mode candidate specs, target navigation/state, CI governance gate.
-## Do Not Touch
-Actual app `src/`/`public/`/`e2e/`, package/lockfile, Pages deploy, approved pedagogical source data/Word, physics/math stable IDs, upstream repo and backups.
-## Current Step
-VERIFY target main baseline `6e398f923c45fe895e53bc1f0f055f038acc41b6`; check 0 app diffs / archive SHA / governance CI / four-mode source state.
+## Objective and approval
+Carry the user's designed Constitution / Work Operating System into the correct repository `rrikunagasige-dot/kyotsu-step-web`, with preserved provenance and zero modification of the four educational modes.
+Approved proposal: P-001, recorded in `PROPOSAL.md`; user directly requested continuation after the successful app release.
+
+## Implementation
+- Source repository: `paulfields83/kyotsu-step-web`, preserved as archive only.
+- Target repository: `rrikunagasige-dot/kyotsu-step-web`, ID `1391122224`.
+- Work branch: `governance/port-repository-os-20261010`.
+- Target merged PR: [#49](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/49), commit `41a9ce05ed10ffc0ddcdc46a5de84086198ac4cf`.
+- Published baseline app before governance merge: [PR #50](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/50) at `6e398f923c45fe895e53bc1f0f055f038acc41b6`.
+- Original upstream 113 Git blobs, 11 draft Work records, adapted `AGENTS.md`, Constitution, instruction dictionary, Work approval system, target-mode routers and governance validator.
+
+## Verification
+See `VERIFICATION.md` — Status PASS. Governance CI both on PR branch and post-merge main succeeded, and the protected 174 app/data/assets/deploy files were SHA-identical to pre-governance release.
+
+## Scope limit
+Imported mode specifications remain **CANONICAL-CANDIDATE**, not automatically promoted over accepted target-specific docs. The unmerged upstream lesson variants and Math textbook review units were not published by this Work. No app/UI/courseware change was made.
+
 ## Next Step
-Review/merge PR #49, record actual merge SHA and Work memory close. No claim of DONE before both.
+Work closed. A future new Work, with its own explicit proposal, may compare each imported candidate subject spec against the approved original materials and deal with uncovered Physics Practice / math-review lessons. Do not treat this Work's completion as approval for those changes.

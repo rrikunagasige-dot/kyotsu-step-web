@@ -1,3 +1,5 @@
 # CHANGELOG — rriku target
 - 2026-10-10: App release [PR #50](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/50) merged to main `6e398f923c45fe895e53bc1f0f055f038acc41b6`; Math practice 87–120 and published Math textbook sets aligned with Physics content. [GitHub Pages SUCCESS](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38055876654).
 - 2026-10-10: Governance migration [PR #49](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/49) staged: 113 original upstream Git blobs (SHA identical), 11 draft Work records, target-owned Constitution/Work OS/instruction dictionary, four-mode candidate specs, QA and memory/navigation. Updated state for current app main; no app runtime/data touched by governance import. Original upstream chronology is archived separately.
+
+- 2026-10-10: Adopted governance port [PR #49](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/49) as `41a9ce05ed10ffc0ddcdc46a5de84086198ac4cf`; after merge the target workflow run 38057462564 succeeded. Source/asset/deploy unchanged 174/174 against release baseline; Work W-GOV-005 memory closed by PR #51.

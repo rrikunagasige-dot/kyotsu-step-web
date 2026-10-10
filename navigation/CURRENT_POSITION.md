@@ -6,8 +6,8 @@ Verified main at checkpoint: `6e398f923c45fe895e53bc1f0f055f038acc41b6` — app 
 NOTE: This HEAD is a dated checkpoint, not a substitute for reading live main on every new task.
 
 ## Current Node
-T-GOV-PORT / W-GOV-005 — adopt Constitution, instruction dictionary, Work OS, four-mode routes, QA and historical records from the separate upstream `paulfields83/kyotsu-step-web`.
-Status: VERIFYING; [PR #49](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/49). No DONE or main adoption claim until merged and verified.
+T-GOV-PORT / W-GOV-005 — completed adoption of Constitution, instruction dictionary, Work OS, four-mode routes, QA and historical records from the separate upstream `paulfields83/kyotsu-step-web`.
+Status: DONE — [PR #49](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/49) merged into correct main at `41a9ce05ed10ffc0ddcdc46a5de84086198ac4cf`, [post-merge governance CI](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38057462564) SUCCESS. Closure W-GOV-005 recorded in PR #51.
 
 ## Completed
 - **Mathematics Practice** Q87–120 (34) with guided thinking nodes, prior-result compaction, complete QA ledger, on main.
@@ -30,6 +30,6 @@ Imported four-mode `subjects/**/SPEC.md` are CANONICAL-CANDIDATE summaries, subo
 - Product release user hands-on QA and future pedagogy remain separate Works.
 
 ## Next Executable Work
-1. Validate governance port against live released main; review the 113 original source SHAs and 11 draft Work records.
-2. Merge safe PR #49 after all requested gates pass.
-3. Record real merge SHA in Work/memory and continue only approved future tasks.
+1. Use the adopted Constitution and Work OS for each new task; recover exact approved Work before editing.
+2. Scope a separate proposal to compare each imported mode candidate spec with the accepted target mode/source.
+3. No automatic content/UI changes or destructive cleanup without explicit approval.

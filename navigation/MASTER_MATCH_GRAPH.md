@@ -1,5 +1,5 @@
 # MASTER MATCH GRAPH — target rriku
-Status: ACTIVE
+Status: ACTIVE — governance transfer nodes T00–T06 verified and complete
 Updated: 2026-10-10
 
 ## Upstream R00–R08 (HISTORICAL; not completed target nodes)
@@ -18,13 +18,13 @@ These source milestones describe `paulfields83`, not this repository, and grant 
                                  [T03 four-mode source authority]
                                           │
                                           ▼
-                                 [T04 QA + PR #49 review]
+                                 [T04 QA + PR #49 SUCCESS]
                                           │
                                           ▼
-                                 [T05 target main adoption]
+                                 [T05 main 41a9ce0 ADOPTED]
                                           │
                                           ▼
-                                 [T06 Work verification/memory close]
+                                 [T06 W-GOV-005 DONE]
 
 [release PR #50, main 6e398f9, Pages SUCCESS]
                    │
@@ -45,3 +45,7 @@ Physics Textbook: `CHATGPT_README_FIRST.md`, `docs/physics-ch01/MASTER_FIRE_DIAG
 Physics Practice: `src/data/questions.ts`, `src/data/textbookPracticeQuestions.ts`.
 
 Always separate Math/Physics, Textbook/Practice, upstream/target. Never infer publication or user approval from folder existence or old statuses.
+
+
+## Main adoption evidence (2026-10-10)
+PR #49 merged to `41a9ce05ed10ffc0ddcdc46a5de84086198ac4cf`. Governance workflows on branch 38057390142 and main 38057462564 both SUCCESS. No product source differences in 174 protected app/deploy files. Mode-specific candidate specs remain proposals, not accepted curriculum changes.

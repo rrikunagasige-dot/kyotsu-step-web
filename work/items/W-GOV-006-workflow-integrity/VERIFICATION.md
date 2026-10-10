@@ -1,14 +1,14 @@
 # VERIFICATION — W-GOV-006
 
 Status: PENDING
-Phase: PROPOSED (proposal-only verification, NOT a completed repair)
+Phase: REVISE-PROPOSAL (P-001 declined, P-002 under review; NOT implemented)
 Baseline main: `be98aa0dc2c4f29d5bfb33e2295bbb9063099e33`
 
 ## Proposal-stage checks
 - Target repo name/ID and live main verified.
 - Owner `main` has no branch protection and repository rulesets count=0 (confirmed at assessment).
 - Core Constitution / Work OS / command dictionary and current governance CI inspected.
-- This proposed PR must change ONLY five files under `work/items/W-GOV-006-workflow-integrity/`.
+- This proposal-only PR must change only six Work record files (five originals + P-002) under `work/items/W-GOV-006-workflow-integrity/`.
 - All application, courseware, production workflow, existing governance code and main branch: UNMODIFIED by this proposal.
 
 ## Implementation acceptance (NOT YET RUN)
@@ -19,4 +19,8 @@ Baseline main: `be98aa0dc2c4f29d5bfb33e2295bbb9063099e33`
 - Approval evidence for actual implementation: PENDING.
 - Post-merge verification and memory close: PENDING.
 
-This Work must NOT be declared PASS/DONE at proposal stage. User approval of P-001 is required before execution.
+This Work must NOT be declared PASS/DONE at proposal stage. P-001 was not approved. P-002 has no approval; no implementation, merge or Settings change is authorized.
+
+
+## P-002 preparation verification
+Original `PROPOSAL.md` (P-001) remains byte-identical; P-002 is a separate revision file. Protection-first requirements are documented but have NOT been executed. Tests and rollback are FUTURE gates, not passed checks.

@@ -13,3 +13,6 @@ Outcome: recorded evidence for Findings F-001–F-005. Historical files are pres
 
 ## NEXT ACTION — Approval gate
 Present P-001 to user. No implementation before explicit approval of its exact revision.
+
+## A-004 — User rejection of P-001 / P-002 revision
+2026-10-10 | PROPOSAL STAGE ONLY. User declined P-001 and explicitly required preserving all existing achievements. Kept P-001 unchanged; prepared independent P-002 with SHA-preservation stop gate, phased regression tests and separate merge/settings approval. No code/CI/settings/main changes.

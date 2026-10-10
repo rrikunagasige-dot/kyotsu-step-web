@@ -20,3 +20,6 @@ W-GOV-005's original P-001 explicitly says no automatic merge into main. Its mig
 
 ## F-007 — TECHNICAL RISK / solo repository protection
 GitHub rulesets can require a PR, status checks, and optional review counts. Approval counts >0 can block a solo maintainer; branch/ruleset changes must be tested with rollback availability and separately approved by the owner.
+
+## F-008 — CONFIRMED USER CONSTRAINT: non-destructive preservation
+The user explicitly did NOT approve P-001 and imposed a hard requirement that current results must not be destroyed. Every later implementation stage must stop on unintended diff or regression. Draft P-002 only, no execution authorization.

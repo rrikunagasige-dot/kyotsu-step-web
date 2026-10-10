@@ -15,3 +15,93 @@ jobs:
         with:
           node-version: 22
       - run: node tools/repo-governance-check.mjs
+
+# Additive, non-required G0–G4 review pilot; pre-existing governance job above unchanged.
+  workflow-safety-pilot:
+    if: github.event_name == 'pull_request' && github.head_ref == 'work/W-GOV-006-preservation-implementation-20261010'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Independent workflow safety negative/positive tests
+        run: node --test tests/governance/workflow-policy.test.mjs
+      - name: Verify protected baseline and approved work scope (PR only)
+        if: github.event_name == 'pull_request'
+        env:
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          git fetch --no-tags origin "$PR_BASE_SHA" "$PR_HEAD_SHA"
+          node tests/governance/pr-scope-audit.mjs
+
+# Full app verification on this one preservation-only Work PR; no app source edits.
+  preservation-product-regression:
+    if: github.event_name == 'pull_request' && github.head_ref == 'work/W-GOV-006-preservation-implementation-20261010'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      - name: Original app typecheck
+        run: pnpm run typecheck
+      # Known 24 lint errors belong to SHA-identical, protected pre-existing source.
+      # This NEW pilot records lint diagnostic failure without weakening original CI gates.
+      - name: Legacy lint diagnostics (existing errors retained)
+        continue-on-error: true
+        run: pnpm run lint
+      # These two full-suite failures predate this Work: fixed historical question counts.
+      # Preserve diagnostics instead of modifying the protected source/tests to make it green.
+      - name: Full legacy unit suite diagnostics (2 known baseline failures)
+        continue-on-error: true
+        run: pnpm run test
+      - name: Released Math practice and Math textbook targeted regressions
+        run: |
+          pnpm exec vitest run \
+            src/data/mathPractice/adapter.test.ts \
+            src/data/mathPractice/presentation.test.ts \
+            src/data/mathPractice/figures.test.ts \
+            src/data/mathPracticeTaxonomy.test.ts \
+            src/domain/textbookMath.test.ts \
+            src/data/questionCatalog.test.ts \
+            src/data/questionCatalog.zh.test.ts \
+            src/domain/textbook.test.ts \
+            src/domain/textbookSchema.test.ts \
+            src/data/textbook/math/mathCatalog.test.ts \
+            src/data/textbook/math/mathFrontmatterLeak.test.ts \
+            src/data/textbook/math/mathReviewIntegrity.test.ts \
+            src/data/textbook/math/mathFigureAssets.test.ts \
+            src/data/textbook/math/set/setLesson.test.ts \
+            src/data/textbook/math/proposition/propositionReadingLesson.test.ts \
+            src/data/textbook/math/proposition/quantifierLesson.test.ts \
+            src/data/textbook/math/function/functionConditionsLesson.test.ts \
+            src/data/textbook/math/proposition/propositionProofLesson.test.ts
+      - name: Original app production build
+        run: pnpm run build
+      # Representative mobile/desktop smoke is a bounded, reproducible FINAL check.
+      # Earlier comprehensive protected-source run (38063317476) passed 156/160 browser cases,
+      # and the four known failures are obsolete existing learning-flow setup tests.
+      - name: Released four-mode representative browser smoke on mobile and desktop
+        run: |
+          pnpm exec playwright test e2e/math-practice-pilot.spec.ts e2e/math-textbook-set-smoke.spec.ts e2e/chapter1-learning-smoke.spec.ts \
+            --grep "Math I・A basic theme opens its first problem directly|98 reveals the isosceles counterexample figure|math textbook setup enters the set lesson|set notation renders without KaTeX errors|audited app boots and opens the textbook setup|every Chapter 1 unit boots" \
+            --project=mobile-chromium --project=desktop-chromium --workers=2
+      - name: Physics practice representative guide on mobile and desktop
+        run: pnpm exec playwright test e2e/learning-flow.spec.ts --grep "physics guide keeps the original problem image visible while solving" --project=mobile-chromium --project=desktop-chromium --workers=2
+      # Existing tests for an obsolete learning-setup dropdown fail on the UNCHANGED current app.
+      # Never call them PASS or mutate protected E2E/source to hide the old failure.
+      - name: Legacy learning-flow setup diagnostics (known pre-existing failures)
+        continue-on-error: true
+        run: pnpm exec playwright test e2e/learning-flow.spec.ts --grep "common-test learning uses original question|practice setup hides guidance level" --retries=0 --project=mobile-chromium --project=desktop-chromium --workers=2

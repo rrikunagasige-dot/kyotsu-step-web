@@ -1,6 +1,6 @@
 # W-GOV-007 — P-001: 旧GitHubのRepository OSを現在のGitHubで実際に守れるようにする
 
-Status: PROPOSED
+Status: APPROVED
 Created: 2026-10-11
 Target repo: `rrikunagasige-dot/kyotsu-step-web` (ID 1391122224)
 Target baseline main: `be98aa0dc2c4f29d5bfb33e2295bbb9063099e33`
@@ -74,18 +74,18 @@ E. 既知失敗の扱いに変更なし。実測しなかったテストはPENDI
 F. `main`とPagesには承認前の変更なし。実装後も別のPR merge承認とbranch settings承認を待つ。
 
 ## 7. 承認段階
-- **P-001: PROPOSED / IMPLEMENTATION NOT APPROVED.**
+- **P-001: APPROVED FOR R0–R5 IMPLEMENTATION ONLY; merge and settings NOT APPROVED.**
 - ユーザーの「これでいいと思う。じゃよろしく。」は、旧GitHubとの比較と具体的な新しい提案の整理を依頼したものとして記録。詳細R0–R5・変更範囲は今ここで初提示するため、実装の明示承認として先取りしない。
 - P-001へのユーザーフィードバックで範囲が変わる場合はP-002を別に作り、旧案を消さずに再審査。
 
 ### Approval
-Status: WAITING
-Approved by user: NO
-Approval date: 
-Approval evidence: 
+Status: APPROVED FOR IMPLEMENTATION ONLY
+Approved by user: YES (in this conversation)
+Approval date: 2026-10-11
+Approval evidence: 「我觉得可以继续」 (direct response to the explicit P-001 implementation question; no main merge or Settings consent)
 
 ### Review History
-- Review status: PRESENTED-FOR-REVIEW (pending GitHub PR + user check)
+- Review status: P-001 EXPLICIT IMPLEMENTATION APPROVAL (user replied 「我觉得可以继续」 to the exact request); separate PR merge approval missing
 - User feedback: goal is ONLY faithful old Paul-side OS parity and reliable enforcement on current repo; preserve existing target achievements.
 - Supersedes: none (new Work; W-GOV-006 stays separate)
 - Superseded by: none

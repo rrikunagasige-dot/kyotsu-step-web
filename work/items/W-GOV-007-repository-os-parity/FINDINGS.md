@@ -42,3 +42,10 @@ Type: RISK
 Statement: “GitHub rules strictly execute” has separate meanings: agents following docs; CI detecting many violations; GitHub actually blocking merges. Only the second is partially implemented; human consent and actual agent reading cannot be proven from a Git text marker.
 Evidence: `governance/WORK_SYSTEM.md`, W-GOV-006 test results, main settings.
 Impact: Report separate verification and authorization states; never advertise 100% guarantee.
+
+
+## F-007
+Date: 2026-10-11
+Type: CONFIRMED
+Statement: New generic Work integrity pilot is read-only for the target repository and implements file-scoped verdicts PROPOSAL_ONLY / SCOPE_PASS_HUMAN_REVIEW_REQUIRED / REVIEW_REQUIRED / FAIL. It never grants actual merge authority.
+Impact: Preserve human review for consent. A Git object and even the recorded approval quote can be tampered with together; SHA anchoring only detects unexpected inconsistency, not who approved.

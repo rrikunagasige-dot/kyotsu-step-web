@@ -1,0 +1,32 @@
+{
+  "workId": "W-GOV-007",
+  "proposalId": "P-001",
+  "allowedPaths": [
+    "README.md",
+    "AGENTS.md",
+    "technical/README.md",
+    "work/README.md",
+    "navigation/CURRENT_POSITION.md",
+    "navigation/MASTER_MATCH_GRAPH.md",
+    "memory/ACTIVE_CONTEXT.md",
+    "memory/PROGRESS.md",
+    "tools/repo-governance-check.mjs",
+    ".github/workflows/repository-governance.yml",
+    "tests/governance/**",
+    "work/items/W-GOV-007-repository-os-parity/**"
+  ],
+  "forbiddenPaths": [
+    "src/**",
+    "public/**",
+    "e2e/**",
+    "docs/**",
+    "history/**",
+    "subjects/**",
+    "governance/**",
+    "CHATGPT_README_FIRST.md",
+    "WORKFLOW.md",
+    "package.json",
+    "pnpm-lock.yaml",
+    ".github/workflows/deploy-pages.yml"
+  ]
+}

@@ -19,3 +19,9 @@
 
 ## Next stage
 Four imported subject/mode SPECs remain candidate summaries, pending separate comparison with accepted lesson source and user permission. No universal claim of “all four finished”.
+
+
+## W-GOV-007: Paul版Repository OSとtargetの整合
+- Comparative proposal-only [PR #54](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/54), P-001 documented without changing the original app.
+- 2026-10-11: user explicitly answered 「我觉得可以继续」 to P-001 R0–R5 implementation gate. A separate feature branch records this limited authorization and adds README, agent routing and an advisory cross-Work CI pilot.
+- Neither PR #54 nor PR #53 is approved for merge. Target main, original approved curriculum / Constitution / old archives and GitHub Settings must remain unchanged. No DONE status before verified CI and review.

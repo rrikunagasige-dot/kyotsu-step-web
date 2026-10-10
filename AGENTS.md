@@ -47,3 +47,9 @@ REVIEW-FEEDBACK is NOT approval; new scope needs new exact proposal approval.
 Record errors and success, run relevant QA and attach a real review link at handoff.
 Preserve `main`, source archives, old PRs/branches, stable IDs, previous user-approved pedagogy.
 Do not confuse upstream Q95/Q98 with target Q95/Q98.
+
+## 5. Paul版Repository OS parity / live work
+
+Use [README.md](README.md) for the human-facing directory, but `AGENTS.md` and the canonical dictionary/Constitution retain normative authority. For instructions, apply `EXACT` / `SIMILAR` / `UNKNOWN` **before** editing; only a clearly approved existing Work allows implementation, not merely a similar natural-language request. After user feedback changes a proposal, present its next revision before editing. Never infer consent from `Status: APPROVED` in a file or a green GitHub Action.
+
+The cross-Work PR-scope pilot (when deployed) is a *non-required advisory*, not authorization to merge or to change repository Settings. When it reports `NEEDS-HUMAN-REVIEW`, present exact proposed changes and approval evidence to the human. Old Paul ADR/backend docs remain archived under `history/imports/paulfields83-20261010/`, not the target's runtime authority.

@@ -31,3 +31,11 @@ Target: main merge, GitHub branch protection/rulesets.
 Check: No action without separate exact user approvals.
 Expected: Not touched.
 Result: PENDING final PR/branch state confirmation.
+
+
+## V-005 — Implementation preliminary checkpoint
+Date: 2026-10-11
+Target: Approved P-001 implementation feature branch.
+Check: Existing root/subject app unchanged; approved proposal and scope blob identity preserved; independent new positive/negative tests pass; new PR advisory executes.
+Expected: 0 out-of-scope changed files, original 455 tracked blobs preserved outside allowed list, no Constitution or curriculum changes.
+Result: PENDING GitHub compare and CI.

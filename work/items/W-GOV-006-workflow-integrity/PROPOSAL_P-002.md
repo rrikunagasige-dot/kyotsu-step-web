@@ -1,5 +1,5 @@
 # W-GOV-006 / P-002 — 成果保全を絶対条件とする工作流システム修正案
-Status: PROPOSED / NOT APPROVED
+Status: APPROVED
 Date: 2026-10-10
 Target: `rrikunagasige-dot/kyotsu-step-web` (Repository ID 1391122224)
 Main checkpoint: `be98aa0dc2c4f29d5bfb33e2295bbb9063099e33`
@@ -59,5 +59,5 @@ G. P-002を仮に実装承認しても、PRの統合とSettingsの変更には�
 
 ## VII. Review state
 **P-001: NOT APPROVED; superseded, original document kept intact.**
-**P-002: PROPOSED / NOT APPROVED.**
-このP-002はユーザーの「今の成果をつぶさない」を反映した再提案であり、作成自体は実装許可を意味しない。フィードバックがあればP-003へ改訂して再提示し、必ずSTOPする。
+**P-002: APPROVED FOR G0–G4 IMPLEMENTATION ONLY.**
+ユーザーはP-002提示後に「よし今は大丈夫じゃ修正よろしく。」と指示し、G0–G4の保全監査・テスト・管理実装を承認した。別記録 `APPROVAL_P-002.md` に範囲を固定する。**特定PRのmain統合とGitHub Settings変更は未承認であり、実行しない。**

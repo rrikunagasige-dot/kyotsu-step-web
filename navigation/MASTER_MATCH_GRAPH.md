@@ -49,3 +49,8 @@ Always separate Math/Physics, Textbook/Practice, upstream/target. Never infer pu
 
 ## Main adoption evidence (2026-10-10)
 PR #49 merged to `41a9ce05ed10ffc0ddcdc46a5de84086198ac4cf`. Governance workflows on branch 38057390142 and main 38057462564 both SUCCESS. No product source differences in 174 protected app/deploy files. Mode-specific candidate specs remain proposals, not accepted curriculum changes.
+
+
+## New active Work (no past-history rewrites)
+`[W-GOV-005 DONE / historical governance port] → [W-GOV-006 VERIFYING / G0–G4 preservation pilot] → [USER PR REVIEW / explicit separate merge gate]`
+GitHub Rulesets/branch protection settings remain **NOT AUTHORIZED** and unchanged; production subject-mode source untouched.

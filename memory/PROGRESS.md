@@ -19,3 +19,11 @@
 
 ## Next stage
 Four imported subject/mode SPECs remain candidate summaries, pending separate comparison with accepted lesson source and user permission. No universal claim of “all four finished”.
+
+
+## W-GOV-006 — preservation-first OS enforcement
+- P-001: NOT APPROVED, retained.
+- P-002: APPROVED for implementation G0–G4 only, with strict protected-source STOP condition.
+- G0 original app/docs/history/Constitution manifest: 395 Git blobs recorded.
+- G1/G2 independent validation pilot and G3 stale navigation correction: IMPLEMENTED ON FEATURE BRANCH; CI and full product regression still pending.
+- G5 PR merge and G6 GitHub Settings: NOT APPROVED; no merge/Settings modification performed.

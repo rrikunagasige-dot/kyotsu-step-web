@@ -15,3 +15,24 @@ jobs:
         with:
           node-version: 22
       - run: node tools/repo-governance-check.mjs
+
+# Additive, non-required G0–G4 review pilot; pre-existing governance job above unchanged.
+  workflow-safety-pilot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Independent workflow safety negative/positive tests
+        run: node --test tests/governance/workflow-policy.test.mjs
+      - name: Verify protected baseline and approved work scope (PR only)
+        if: github.event_name == 'pull_request'
+        env:
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          git fetch --no-tags origin "$PR_BASE_SHA" "$PR_HEAD_SHA"
+          node tests/governance/pr-scope-audit.mjs

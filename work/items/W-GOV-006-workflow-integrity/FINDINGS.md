@@ -23,3 +23,8 @@ GitHub rulesets can require a PR, status checks, and optional review counts. App
 
 ## F-008 — CONFIRMED USER CONSTRAINT: non-destructive preservation
 The user explicitly did NOT approve P-001 and imposed a hard requirement that current results must not be destroyed. Every later implementation stage must stop on unintended diff or regression. Draft P-002 only, no execution authorization.
+
+## F-009 — CONFIRMED (scope and approval)
+P-002 was explicitly accepted for implementation by user after full display. This is **not** approval to merge the future implementation PR or change GitHub Settings. P-001 original remains unapproved. Authenticated human approval cannot be established from Markdown alone.
+## F-010 — CONFIRMED (preservation)
+A baseline tree checkpoint explicitly protects 395 paths across application, docs, original Work System, history and Pages. A new PR must pass byte-level Git SHA comparison and existing product regressions before user merge review.

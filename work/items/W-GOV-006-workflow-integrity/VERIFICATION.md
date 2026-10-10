@@ -1,7 +1,7 @@
 # VERIFICATION — W-GOV-006
 
 Status: PENDING
-Phase: REVISE-PROPOSAL (P-001 declined, P-002 under review; NOT implemented)
+Phase: VERIFYING G0–G4 (P-002 approved for implementation only; PR merge/settings NOT approved)
 Baseline main: `be98aa0dc2c4f29d5bfb33e2295bbb9063099e33`
 
 ## Proposal-stage checks
@@ -19,8 +19,17 @@ Baseline main: `be98aa0dc2c4f29d5bfb33e2295bbb9063099e33`
 - Approval evidence for actual implementation: PENDING.
 - Post-merge verification and memory close: PENDING.
 
-This Work must NOT be declared PASS/DONE at proposal stage. P-001 was not approved. P-002 has no approval; no implementation, merge or Settings change is authorized.
+This Work must NOT be declared PASS/DONE at proposal stage. P-001 was not approved; P-002 G0–G4 implementation was approved by user on 2026-10-10. PR merge and Settings remain NOT AUTHORIZED.
 
 
 ## P-002 preparation verification
 Original `PROPOSAL.md` (P-001) remains byte-identical; P-002 is a separate revision file. Protection-first requirements are documented but have NOT been executed. Tests and rollback are FUTURE gates, not passed checks.
+
+
+## G0–G4 implementation evidence (CI PENDING)
+- **G0**: 395 protected original Git blob SHA entries recorded, no automated mutations to existing content.
+- **G1**: isolated Node tests include positive and negative cases; CI run result not yet observed.
+- **G2**: preserve existing governance check; independent PR scope-pilot job is not a required branch protection gate.
+- **G3**: stale PR #49 pending-merge issue removed from live Current Position, while historical W-GOV-005 record remains.
+- **G4**: compare manifest to PR head Git blobs; full product regression CI and browser gate must be observed before merge. This Work remains VERIFYING.
+- **Human review and main merge**: PENDING separate explicit user instruction. No GitHub branch protection or Rulesets modified.

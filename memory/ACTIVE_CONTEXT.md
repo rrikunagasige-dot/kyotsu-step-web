@@ -17,3 +17,6 @@ Safe adoption of upstream governance/Workflow/Constitution into **this repositor
 
 ## Working rule
 Repository identity check comes first. Separate target vs upstream source. Approval evidence from upstream does not authorize editing target runtime. Keep UI/courseware intact.
+
+## Latest port QA (2026-10-10)
+The owned target review PR is [#49](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/49). Source snapshot 113/113 SHA PASS, scope isolation 0 code/data changes, structural assertions 11/11 PASS, GitHub governance Action run 38053990070 SUCCESS on the prior commit. Main remains unchanged; await user review/merge before claiming adopted constitution.

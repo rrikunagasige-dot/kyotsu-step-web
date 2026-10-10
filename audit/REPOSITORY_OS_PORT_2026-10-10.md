@@ -32,3 +32,13 @@ No target app code changed.
 - The earlier wrong-repository answer is an ERROR-PROVENANCE.
 - A live owner/repo/HEAD gate has been added to the new entrypoint/dictionary/validator.
 - No source binary, runtime, backend or existing unit IDs were copied/removed.
+
+## QA results / comparison refinement
+- Target PR [#49](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/49) staged with 176 changed files.
+- 0 changed existing `src/`, `public/`, `e2e/`, `package.json`, lockfile or Pages-deploy workflow.
+- Full upstream 113 SHA equality PASS.
+- Structural validity assertions 11/11 PASS.
+- Target governance workflow run `38053990070` SUCCESS on commit `88250c8`.
+- Source-guided coverage: rriku Q92 16 blanks, Q93 7, Q94 12, Q95 7, Q96 11, Q97 8, Q98 staged. Prior-result dependency presentation includes Q93/94/96/97.
+- These match major *reasoning patterns* of upstream Section2/3 but are NOT automatically identical questions or exactly equivalent pedagogy. Upstream A-8 has no established exact target counterpart.
+- User review/merge and any visual QA are still open.

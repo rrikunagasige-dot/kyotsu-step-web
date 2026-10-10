@@ -6,7 +6,7 @@
 Version: 1.0.0  
 Upstream ratification: 2026-10-05 (paulfields83 only)  
 Drafted: 2026-10-05  
-Upstream ratification record: `audit/REPOSITORY_OS_RATIFICATION_2026-10-05.md`
+Upstream ratification record (historical only): `history/imports/paulfields83-20261010/audit/REPOSITORY_OS_RATIFICATION_2026-10-05.md`
 
 この文書は塾プロジェクト全体の最上位運用原則を定める。通常の教材制作、UI修正、コード実装の都合で暗黙に変更してはならない。
 

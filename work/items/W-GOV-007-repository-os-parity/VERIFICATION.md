@@ -1,6 +1,6 @@
 # Verification — W-GOV-007
 
-Status: NOT-RUN
+Status: PARTIAL-PASS — LIVE-INDEPENDENT-AGENT PENDING
 
 ## V-001 — Proposal-only scope
 Date: 2026-10-11
@@ -78,3 +78,10 @@ Date: 2026-10-11
 Target: main `be98aa0dc2c4f29d5bfb33e2295bbb9063099e33`, implementation feature branch PR #55.
 Result: No protected content changes; 406/406 original protected Git blobs exact. P-001 and SCOPE blob hashes match approval record. Existing repo main unchanged. Proposal Draft PR #54 and prior Draft PR #53 both preserved. No merges, branch Settings changes, force pushes, or old app modifications.
 Remains PENDING: an **independent context-free AI session** exercising full 「憲法から」 path; not provable by the included five static recovery-route tests. General all-PR pilot is advisory, not GitHub-enforced merge protection.
+
+## V-012 — Independent Agent availability and falsifiable test packet
+Date: 2026-10-11
+Target: R4 — genuinely independent context-free AI for 「憲法から」.
+Result: **PENDING / NOT EXECUTED.** A separately hosted AI session was not available through the current tool permissions. Wrote `FRESH_AGENT_TEST_PACKET.md` with exact one-phrase first input, a later read-only PR #55 review step, file-link/SHA evidence requirements, six explicit grading cases, and a no-write protocol. None of those grading cases has been observed in an external agent yet.
+Observed separately: on PR #55 current head before this documentation update, original governance + 21/21 policy tests + 202/202 targeted units + 14/14 representative mobile/desktop cases PASS (Actions 38073411563). These CI results do NOT substitute for the agent test.
+Safety: `main` unmodified, PRs #53/#54/#55 remain Draft. Separate merge/Settings approvals still absent.

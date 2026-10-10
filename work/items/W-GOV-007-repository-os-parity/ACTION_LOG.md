@@ -64,3 +64,9 @@ Related proposal: P-001 approved implementation
 Action: Run 38073231132 completed all jobs SUCCESS; original governance 0 errors; new cross-Work tests 21/21 PASS; actual PR scope audit no violations and explicit humanReview flag; typecheck PASS, target Vitest 202/202 PASS, build PASS, mobile+desktop Playwright 12/12 plus Physics Practice 2/2 PASS. Compared tree after the regression/checkpoint: all 455 original files retained, exactly 9 approved original README/router/memory/workflow files changed, 406/406 protected original blobs identical.
 Result: G0–G3/R0–R3/R5 static/targeted gates pass. R4 structural simulation PASS; truly unrelated fresh AI remains pending. No merge/Settings authority.
 Evidence: https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38073231132
+
+## A-009 — Prepare independent fresh-agent protocol; no false PASS
+Date: 2026-10-11
+Related proposal: Approved P-001, R4
+Action: Searched available independent session capability. The connected hosted-agent facility rejected session discovery with an additional workspace entitlement requirement, so no second AI was started and no answer observed. Prepared `FRESH_AGENT_TEST_PACKET.md` to make the single-command cold start, second-stage read-only review, evidence collection and PASS/FAIL/PENDING grading reproducible.
+Result: **External agent PENDING.** No writes to main, old Paul, user lessons or GitHub settings. New content stays inside this approved Work documentation folder.

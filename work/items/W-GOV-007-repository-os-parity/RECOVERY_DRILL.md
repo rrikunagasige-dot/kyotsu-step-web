@@ -25,3 +25,6 @@ CI: `node --test tests/governance/recovery-route.test.mjs` (5/5 checks PASS with
 - The CI can prove required files/phrases exist, file diffs and scope pins are consistent, and simulated cases are rejected or admitted.
 - CI **cannot** prove the model actually obeyed an instruction, nor can it authenticate the user's chat identity or bind future PRs until branch protection is separately approved.
 - An unrelated fresh AI session has not been started with recorded I/O. This gate is **PENDING**, not PASS; do not close Work as globally complete on the basis of this simulation.
+
+## Independent live-agent evaluation packet
+See [FRESH_AGENT_TEST_PACKET.md](FRESH_AGENT_TEST_PACKET.md). The test has an initial one-phrase-only stage and a separate review of PR #55. Do not send the grading rubric to the fresh agent before its first response.

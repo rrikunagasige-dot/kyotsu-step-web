@@ -48,3 +48,11 @@ Related proposal: P-001 implementation
 Action: Run 38073007608 passed 20/21 tests; positive static case unexpectedly FAIL because the test fixture used `dir+'/**'` (double slash) instead of `dir+'**'`. Corrected only the fixture and retained old failure log.
 Result: Rerun required; no change to Work-scoping implementation logic or the old curricula.
 Evidence: https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38073007608
+
+
+## A-007 — Confirm all-PR pilot and original code preservation
+Date: 2026-10-11
+Related proposal: approved P-001
+Action: GitHub Actions 38073085840 completed success (existing governance and universal advisory). 21/21 Node tests PASS; the real PR #55 audit returned SCOPE_PASS_HUMAN_REVIEW_REQUIRED with zero errors and humanApprovalVerified=false. Compared recursive Git trees against original target main: 455 original files; 446 identical; 9 approved OS-router/README/CI/memory files modified; **406/406 protected original blobs identical**, zero unexpected additions, deletions, or changed files.
+Result: Scope and static invariants PASS, human consent/merge not machine certified. Started independent published-mode targeted regression job and read-first recovery trace (fresh unrelated AI not yet executed).
+Evidence: https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38073085840

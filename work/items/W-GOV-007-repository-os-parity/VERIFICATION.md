@@ -39,3 +39,27 @@ Target: Approved P-001 implementation feature branch.
 Check: Existing root/subject app unchanged; approved proposal and scope blob identity preserved; independent new positive/negative tests pass; new PR advisory executes.
 Expected: 0 out-of-scope changed files, original 455 tracked blobs preserved outside allowed list, no Constitution or curriculum changes.
 Result: PENDING GitHub compare and CI.
+
+
+## V-006 — First successful generic Work pilot
+Date: 2026-10-11
+Target: PR #55 head b144129394ff18e04bdc07dd0749b92436719eac, main be98aa0dc2c4f29d5bfb33e2295bbb9063099e33.
+Check: Existing governance plus scope/approval tests and actual PR cross-Work audit.
+Expected: No policy test failures, humanApprovalVerified=false, approved scope only.
+Result: PASS for static PR checks. 21/21 tests PASS; real Work decision SCOPE_PASS_HUMAN_REVIEW_REQUIRED with zero errors.
+Evidence: https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38073085840
+
+## V-007 — Protected original Git blob comparison
+Date: 2026-10-11
+Target: original target main 455 blobs compared to PR #55 b144129394ff18e04bdc07dd0749b92436719eac.
+Check: Zero unapproved deletions, no unexpected file edits/additions, 4 mode source unchanged.
+Result: PASS. 455 originals all still present; 446 SHA-identical including all protected 406/406; only 9 OS routers/README/workflow/memory changes within approved P-001. New docs/tests are new approved paths.
+Evidence: GitHub recursive tree comparison; compare API PR #55. Main remains original.
+
+## V-008 — Fresh-agent drill limitations
+Date: 2026-10-11
+Result: Static recovery-route Node checks PASS 5/5; independent, context-free second AI has NOT been invoked. Do not claim a true live fresh-Agent read trace is proven. See `RECOVERY_DRILL.md`.
+
+## V-009 — Product verification on exact feature head
+Date: 2026-10-11
+Result: PENDING new GitHub Actions full released-mode regression (target typecheck, targeted tests, build, representative mobile+desktop E2E). Original source unchanged; previous Work PR #53 does not alone substitute for PR #55 observed CI.

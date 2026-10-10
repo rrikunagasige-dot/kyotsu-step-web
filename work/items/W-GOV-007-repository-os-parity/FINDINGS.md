@@ -64,3 +64,11 @@ Date: 2026-10-11
 Type: ERROR-QA
 Statement: First corrected test set reached 20 PASS / 1 FAIL; the one FAIL was a malformed double-slash allowedPaths fixture for the valid positive case. Fixed as A-006.
 Impact: New green run must be observed; no false full PASS claims.
+
+
+## F-010
+Date: 2026-10-11
+Type: CONFIRMED
+Statement: PR #55 cross-Work policy passes 21 positive/negative plus recovery-route tests, audits the true PR changed paths, and reports humanApprovalVerified:false. No migration of user-approved Math/Physics materials occurred (406/406 protected blobs untouched). Need separate product regression and an actually isolated Agent test to validate beyond static routing.
+Evidence: GitHub Actions 38073085840 and Git tree scope audit.
+Impact: Keep Work VERIFYING. No claim of complete autonomous obedience or permission to merge.

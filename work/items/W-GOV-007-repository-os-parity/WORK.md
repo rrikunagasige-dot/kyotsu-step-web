@@ -1,6 +1,6 @@
 # W-GOV-007 — 旧Repository OSとの構造一致と実効運用
 
-Status: IMPLEMENTING
+Status: VERIFYING
 Approved Proposal: P-001
 Updated: 2026-10-11
 Repository: `rrikunagasige-dot/kyotsu-step-web` (ID 1391122224)
@@ -16,7 +16,7 @@ Direct user request (2026-10-11): 旧GitHubにできるだけ似せ、辞典・�
 `governance/WORK_SYSTEM.md` の承認ゲートに従う。具体的な実装箇所・検査の詳細が新たに確定したP-001は2026-10-11に「我觉得可以继续」でR0–R5実装のみ承認された。
 
 ## Current Step
-IMPLEMENTING. 旧新版のGit差分照合を完了し、README入口と全PR advisory pilotを追加。GitHub Actionsの実測と復元テストは未確定。
+VERIFYING. New cross-Work advisory run 38073085840 passed its 21/21 tests and actual PR #55 scope verdict SCOPE_PASS_HUMAN_REVIEW_REQUIRED. Protected main Git blobs 406/406 unchanged; all 455 original paths preserved except 9 approved OS-router/workflow edits. Published-mode regression job and true independent fresh-agent drill remain to be observed.
 
 ## Approved Proposal
 P-001 `PROPOSAL.md` APPROVED for R0–R5 implementation ONLY. `APPROVAL_P-001.md` anchors proposal and `SCOPE.json` Git blobs. Main merge/Settings NOT AUTHORIZED.

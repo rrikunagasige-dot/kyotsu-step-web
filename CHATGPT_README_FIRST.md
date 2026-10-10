@@ -1,3 +1,28 @@
+# Repository OS FIRST — target repository authority (2026-10-10)
+
+**Working repository for this Juku app:** `rrikunagasige-dot/kyotsu-step-web` on live `main`.
+Verify owner, repository ID 1391122224, branch, live main HEAD, and required files
+BEFORE accepting any instructions from another repository.
+`paulfields83/kyotsu-step-web` is an upstream **source/archive**, not the target.
+A mismatch is a STOP / ERROR-PROVENANCE; do not silently switch repositories.
+
+**Start:** `AGENTS.md` → `governance/INSTRUCTION_DICTIONARY.md` (CMD-ROOT-001)
+→ `governance/CONSTITUTION.md` → `navigation/CURRENT_POSITION.md`
+→ `navigation/MASTER_MATCH_GRAPH.md` → `memory/ACTIVE_CONTEXT.md` and
+`memory/PROGRESS.md` → this file / relevant mode first-read / existing work
+→ explicit approval check. `憲法から` never automatically approves implementation.
+
+**Preserve existing application, problem IDs, math/physics data, Word source, assets and existing history.**
+For Math Practice always read `docs/MATH_PRACTICE_MASTER_LESSONS.md`,
+`docs/MATH_PRACTICE_87_120_STRUCTURE_MAP.md`, and
+`docs/MATH_PRACTICE_87_120_FINAL_QA_FINDINGS.md` before using ported mode specs.
+For Physics textbook follow `docs/physics-ch01/` and this file's existing rules.
+For Math Textbook: `math-sets` is now published on main after PR #50; review units are NOT published. Consult `navigation/MODE_STATE_2026-10-10.md` and `src/data/textbook/math/`.
+For Physics Practice: source is `src/data/questions.ts` and `src/data/textbookPracticeQuestions.ts`; do not overstate completeness.
+Upstream W-MATH approval records and numbering refer to a DIFFERENT question bank;
+they confer no permission to alter the target's existing app.
+
+---
 # CHATGPT README FIRST — 物理教科書モード 第1章
 
 対象: `rrikunagasige-dot/kyotsu-step-web`  

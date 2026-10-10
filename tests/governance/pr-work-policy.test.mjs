@@ -3,7 +3,7 @@ import assert from 'node:assert/strict'
 import {audit,STATES,field,validPathPattern,matches} from './pr-work-policy.mjs'
 const psha='a'.repeat(40),ssha='b'.repeat(40)
 const dir='work/items/W-GOV-007-repository-os-parity/'
-const scope={workId:'W-GOV-007',proposalId:'P-001',allowedPaths:[dir+'/**','README.md','tests/governance/**'],forbiddenPaths:['src/**','docs/**','history/**']}
+const scope={workId:'W-GOV-007',proposalId:'P-001',allowedPaths:[dir+'**','README.md','tests/governance/**'],forbiddenPaths:['src/**','docs/**','history/**']}
 const work='Status: VERIFYING\nApproved Proposal: P-001\n'
 const proposal='Status: APPROVED\n'
 const approval=['Status: APPROVED FOR IMPLEMENTATION ONLY','Work-ID: W-GOV-007','Proposal-ID: P-001','Proposal-SHA: '+psha,'Scope-SHA: '+ssha,'User-Statement: 我觉得可以继续','Main-Merge: NOT AUTHORIZED','GitHub-Settings: NOT AUTHORIZED'].join('\n')

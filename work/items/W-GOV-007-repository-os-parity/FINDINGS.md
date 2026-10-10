@@ -57,3 +57,10 @@ Type: ERROR-IMPLEMENTATION
 Statement: First independent policy test run failed 15 fixture checks due to a single ReferenceError (`changes is not defined`), not due to intended scope policy. README added code ticks were escaped.
 Evidence: GitHub Actions 38072923508; corrected new tests/README in A-005.
 Impact: Must rerun; never report first run as PASS.
+
+
+## F-009
+Date: 2026-10-11
+Type: ERROR-QA
+Statement: First corrected test set reached 20 PASS / 1 FAIL; the one FAIL was a malformed double-slash allowedPaths fixture for the valid positive case. Fixed as A-006.
+Impact: New green run must be observed; no false full PASS claims.

@@ -40,3 +40,11 @@ Related proposal: approved P-001
 Action: GitHub run 38072923508: original governance PASS; new independent policy test runner FAIL because test fixture `go()` accidentally referred to undefined `changes` rather than `changed`. Additionally removed literal backslash escapes from new README code spans; all legacy README original lines remain intact.
 Result: First run honestly FAILED; corrected and new run required. No curriculum or original governance changes.
 Evidence: https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38072923508
+
+
+## A-006 — Correct positive-case fixture path
+Date: 2026-10-11
+Related proposal: P-001 implementation
+Action: Run 38073007608 passed 20/21 tests; positive static case unexpectedly FAIL because the test fixture used `dir+'/**'` (double slash) instead of `dir+'**'`. Corrected only the fixture and retained old failure log.
+Result: Rerun required; no change to Work-scoping implementation logic or the old curricula.
+Evidence: https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38073007608

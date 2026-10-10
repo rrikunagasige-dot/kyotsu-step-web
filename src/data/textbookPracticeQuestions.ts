@@ -154,7 +154,7 @@ function createJapaneseFlow(
   }
 
   for (const block of section.readingFlow) {
-    if (block.type === 'heading' || block.type === 'note') {
+    if (block.type === 'heading' || block.type === 'note' || block.type === 'marker' || block.type === 'dialogue') {
       contentIndex += 1
       pushContent([{
         id: `${qid}-content-${contentIndex}`,

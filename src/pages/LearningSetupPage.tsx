@@ -135,10 +135,9 @@ export function LearningSetupPage() {
   const changeMode = (next: LearningMode) => {
     setMode(next)
     if (next === 'textbook') {
-      setSubject('physics')
       setActiveTopic(null)
       setMathExerciseType(null)
-        setActiveMathCommonTestArea(null)
+      setActiveMathCommonTestArea(null)
       setQuestionId('')
       return
     }

@@ -11,6 +11,15 @@ Updated: YYYY-MM-DD
 
 ## Scope
 
+## Review Delivery
+
+Type:
+Required review artifact:
+Delivery route:
+Current artifact verification:
+User-review readiness: NOT-READY
+Blocked reason (if any):
+
 ## Do Not Touch
 
 ## Approved Proposal

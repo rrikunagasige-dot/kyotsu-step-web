@@ -1,6 +1,6 @@
 # W-MATH-002 — 数学学習モードの表示圧縮（教材本文不変）
 
-Status: IMPLEMENTING
+Status: VERIFYING
 Approved Proposal: P-001
 Date: 2026-10-11
 Canonical target: `rrikunagasige-dot/kyotsu-step-web` (ID `1391122224`)
@@ -11,7 +11,7 @@ Implementation branch: `work/W-MATH-002-textbook-ui-compression-implementation-2
 既存の数学練習モードのcurrent-stage compressionを、教材本文の書換えではなく**表示・状態管理のアイデア**として参照し、数学教科書・学習モードの長い画面を短くする。内容、表現、語句、数式、図、穴、正解、順序は変更しない。
 
 ## Current step
-IMPLEMENTING; direct user approval for exact P-001 received 「いいと思う」 on 2026-10-11. Metadata/rendering/CSS/E2E pilot prepared; GitHub CI and regression checks not yet observed.
+VERIFYING; exact P-001 implementation completed in Draft PR #57. Current code head 66a24ea passed original Repository Governance 38104661477, Math Practice pilot 38104661486 and Math Textbook 38104661479. Published math-sets original content unchanged, 451/455 initial Git blobs identical; the only four edited original files are approved UI/CSS/E2E. Await user hands-on UI review and separate explicit merge approval. The new standalone presentation.test.ts is authored but NOT included in the existing explicit 11-file Vitest CI command; structural stage checks are exercised by passing browser tests and runtime validation. No DONE claim.
 
 ## Authority
 - Direct user: まず練習モードのsoftware上の表示工夫を調査→学習モードへの適用分析→修正案。文章自体は変えない。
@@ -29,4 +29,4 @@ Any textbook source content strings or mother Word, `src/data/textbook/math/**` 
 No main merge/Settings change without separate explicit approval.
 
 ## Next
-Run exact branch CI and Math Textbook (math-sets) E2E; audit every original source sha; fix only approved scope and present Draft implementation PR to user. STOP before merge or GitHub Settings.
+Present exact Draft PR #57 and tests to user for hands-on acceptance; no published app preview exists because no merge/deploy occurred. STOP before main merge, curriculum changes or GitHub Settings. Broader math-unit rollout requires another proposal.

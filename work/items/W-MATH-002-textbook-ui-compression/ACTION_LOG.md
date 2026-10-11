@@ -26,3 +26,12 @@ User's exact reply: 「いいと思う」 to the question 「このP-001修正�
 
 ## A-006 — First GitHub CI failure and scoped test correction (2026-10-11)
 The first implementation run [38104372113](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38104372113) passed typecheck, target unit tests, and production build but **FAILED mobile Playwright** (8 failed, 6 flaky, 17 passed); a shared E2E helper incorrectly attempted the new math-sets-only Next control on unchanged review units and sometimes before the async textbook page loaded. No source lessons changed. Fixed the helper to wait for the reader and use explicit Next only when `math-textbook-compact-flow` is present, and corrected locale labels, next-stage focus/scroll, reload/reset dialog handling, and an overly broad KaTeX expectation. Must rerun; do not report browser PASS yet.
+
+## A-007 — Full QA closure for approved implementation code (2026-10-11)
+After the first red run, re-scoped the E2E helper rather than changing the user-approved lessons. Exact code head `66a24ea41951af99459435bc1198c256c360d0e7`:
+- [Repository Governance CI 38104661477](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38104661477) SUCCESS.
+- [Math Practice pilot CI 38104661486](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38104661486) SUCCESS, mobile 36/36, desktop 36/36.
+- [Math Textbook CI 38104661479](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38104661479) SUCCESS: typecheck, Vitest 11 files / 110 tests PASS, build PASS, mobile textbook 31/31, desktop textbook 31/31, Physics Chapter 1 desktop 13/13, Math Practice setup desktop 36/36.
+- Original target main 455 tracked blobs: 451 unchanged; only four P-001-approved existing UI/CSS/E2E files modified. Nine new files confined to stage registry/test and W-MATH-002 records. No deletions or out-of-scope additions/edits; math lesson, mathematics practice, physics source and original governance 162/162 protected blobs byte-identical.
+- Standalone `src/data/textbook/math/presentation.test.ts` was added and typechecked but is not in the workflow's explicit Vitest file list; **do not count it as executed**. The runtime stage partition validator and E2E learner flow were executed in both browser projects.
+Status: Code QA PASS; actual user's visual acceptance and explicit main merge authorization remain PENDING. No Pages deploy.

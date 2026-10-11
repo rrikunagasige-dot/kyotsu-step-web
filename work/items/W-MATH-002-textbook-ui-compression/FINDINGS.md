@@ -27,3 +27,11 @@ The user replied 「いいと思う」 directly to the explicit exact P-001 impl
 ## F-008 — Confirmed first test harness failure (2026-10-11)
 Type: ERROR-QA (observed)
 First textbook CI 38104372113 reached mobile browser and failed. Failures pointed to `advanceMathStage` called from generic `answerItem` for both review-only units and some pre-mount math-sets navigation; the original renderer does not possess that control. Root-level governance and independent math-practice CI were PASS and textbook typecheck/unit/build reached later step, but learner-flow acceptance was NOT PASS. Isolate the helper to published math-sets only and wait for the page before interacting. Additional regressions need a clean rerun.
+
+## F-009 — Recovery from red mobile CI is confirmed (2026-10-11)
+Type: RESOLVED
+The first run failed a generic E2E helper's route/scope assumptions, not the practice or physics product. By restricting stage navigation to the published `math-sets` reader and awaiting initial async mount, the exact follow-up Math Textbook CI 38104661479 passed all 31 mobile and all 31 desktop browser cases and original physics/practice regression. No curriculum text was touched.
+
+## F-010 — Manual acceptance and separate unit-test selection (2026-10-11)
+Type: REVIEW REQUIRED
+User's hands-on judgment of compactness/readability is not established by CI. Also the current GitHub Math Textbook CI enumerates 11 existing Vitest test paths explicitly and does not include the new `presentation.test.ts`; that file remains authored/unexecuted in this run. Actual `math-sets` rendering invokes the strict partition validation and was covered by the 62 mobile/desktop E2E passes. Do not broaden workflow paths without a revised proposal.

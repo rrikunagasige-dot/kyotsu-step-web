@@ -1,6 +1,6 @@
 # W-MATH-002 — Verification
 
-Status: IMPLEMENTATION-PENDING-QA
+Status: CODE-QA-PASS / USER-REVIEW-PENDING
 Date: 2026-10-11
 
 ## V-001 — Repo provenance
@@ -27,3 +27,13 @@ Result: P-001 approved for implementation only via direct user reply 「いい�
 Date: 2026-10-11
 Commit: `05d61db9680490d77cba3c83a971b5fa5d3b3cc1`
 Result: PARTIAL. Governance Check [38104372096](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38104372096) PASS; independent Math Practice pilot [38104372103](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38104372103) PASS; Math textbook CI [38104372113](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38104372113) **FAIL** at mobile Playwright (8 failed, 6 flaky, 17 passed) after its typecheck/unit/build steps succeeded. Root cause isolated to common E2E helper invoking math-sets-only next-stage control on review units or before the reader had mounted. Fix staged, repeat CI required.
+
+## V-007 — Latest exact implementation code SHA (2026-10-11)
+Code head: `66a24ea41951af99459435bc1198c256c360d0e7`
+- **PASS** Repository Governance Check https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38104661477
+- **PASS** Math Practice pilot https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38104661486 (36 mobile + 36 desktop).
+- **PASS** Math Textbook https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38104661479 (11 explicit Vitest files, **110/110** cases; typecheck and production build; **31/31** mobile textbook, **31/31** desktop textbook; **13/13** Physics Chapter 1 regression; **36/36** Math Practice setup regression).
+- Math-sets new stage progression/compact card/expand/cursor/keyboard assertions were in the complete textbook E2E file and passed in both browser projects.
+- Standalone `presentation.test.ts` **not run by this workflow's enumerated Vitest command**, so do not label it Vitest PASS. Runtime partition coverage and E2E did run.
+- Baseline Git diff: 455 original blobs, 451 unchanged; four allowed original UI/CSS/test files changed; no original source data/figures/canonical mother/Constitution changed. 162 original curriculum/governance protected blobs same Git SHA. Nine new files only within P-001 scope, zero unexpected deletions or additions.
+- **PENDING** user's hands-on judgement and separately authorized merge/release. This Work stays VERIFYING; no public app is updated by the Draft PR.

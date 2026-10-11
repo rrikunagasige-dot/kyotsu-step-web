@@ -38,7 +38,7 @@ exact scope の approved proposal があるか確認する。
 - 既存Proposalからmaterialに変わる → `REVISE-PROPOSAL`
 
 ### PLAN
-How / files / migration / risk / tests を決める。承認済みSpecの意味を変えてはならない。
+How / files / migration / risk / tests を決める。承認済みSpecの意味を変えてはならない。Review Type (APP_UI / CODE / DOCUMENT / OTHER), 必須成果物、提供経路、担当・権限、URLの実画面検査まで依存Taskとして明示する。未定義ならIMPLEMENT前にBLOCKEDまたはREVISE-PROPOSALへ戻す。
 
 ### TASKS
 依存順の小さな Task ID に分解する。アプリのリンク提供が受入条件なら、その環境構築・対象SHA検証・実ブラウザ検証・リンク引渡しも明示Taskに含める。PR/ZIPへの代替はユーザーの明示的なScope改訂なしに行わない。

@@ -1,5 +1,6 @@
 # W-PREVIEW-001 — App Review Preview Infrastructure
-Status: PROPOSED (implementation NOT AUTHORIZED)
+Status: PROPOSED
+Hosting implementation: NOT AUTHORIZED
 Date: 2026-10-11
 Objective: Give users a direct browser URL to changes on an unmerged PR, starting from W-MATH-002 PR #57.
 Authority: W-GOV-008 P-001 authorizes this *proposal only*; not external hosting, deployment or Settings.

@@ -15,3 +15,8 @@ Result: Current learning flow reveals future content but does not compress compl
 Date: 2026-10-11
 Action: Prepared this Work and P-001 for user review. No source/data/code/UI/CI/prod changes, no main or Settings change.
 Result: PROPOSED; STOP before implementation. Provide review link.
+
+## A-004 — Proposal review URL and baseline checks
+Date: 2026-10-11
+Action: Created proposal-only [Draft PR #56](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/56) from a branch anchored to the verified main baseline. GitHub compare showed exactly five new `work/items/W-MATH-002-textbook-ui-compression/**` files, with no changes/deletions to original app or curriculum. Repository Governance Check [38103507520](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38103507520) SUCCESS.
+Result: Work is PROPOSED, not approved for implementation, merging or Settings modification. Proposal presented to the user for explicit review.

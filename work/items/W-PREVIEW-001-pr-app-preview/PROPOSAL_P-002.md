@@ -3,7 +3,7 @@ Status: PROPOSED
 Created: 2026-10-11
 Supersedes: P-001 (provider comparison only; unapproved)
 Implementation approval: NOT GRANTED
-Target repository: rr ik u target canonical ID 1391122224 — `rrikunagasige-dot/kyotsu-step-web`
+Target repository: `rrikunagasige-dot/kyotsu-step-web` (ID `1391122224`)
 Target math implementation: Draft PR #57, SHA `b8791e82215a56512094e265025c112d116e59d3`
 
 ## What / Why

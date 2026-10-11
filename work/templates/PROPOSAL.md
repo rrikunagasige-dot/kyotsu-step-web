@@ -19,6 +19,20 @@ Created: YYYY-MM-DD
 
 ### Verification Plan
 
+### Review Delivery Contract
+
+Review Type (APP_UI / CODE / DOCUMENT / OTHER):
+Required Review Artifact:
+Delivery Route / URL plan:
+Responsible actor (agent / CI / service / user):
+Authority / permissions already approved:
+Additional permission needed (must be separately approved):
+Delivery Tasks / dependency:
+Target commit provenance / real-browser evidence:
+Acceptance criteria for user-review readiness:
+On missing route: BLOCKED (reason) / REVISE-PROPOSAL
+User task (APP_UI normally: open a direct app URL; no local setup):
+
 ### Approval
 
 Status: WAITING

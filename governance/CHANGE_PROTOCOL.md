@@ -41,7 +41,7 @@ exact scope の approved proposal があるか確認する。
 How / files / migration / risk / tests を決める。承認済みSpecの意味を変えてはならない。
 
 ### TASKS
-依存順の小さな Task ID に分解する。
+依存順の小さな Task ID に分解する。アプリのリンク提供が受入条件なら、その環境構築・対象SHA検証・実ブラウザ検証・リンク引渡しも明示Taskに含める。PR/ZIPへの代替はユーザーの明示的なScope改訂なしに行わない。
 
 ### IMPLEMENT
 承認済みscope内だけ実装し、Actionと対象場所を記録する。

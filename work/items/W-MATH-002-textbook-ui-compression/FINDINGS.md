@@ -20,3 +20,6 @@ The practice mode is question/target-oriented; textbook mode is concept→proper
 
 ## F-006 — PERMISSION
 User confirmed SIMILAR command `CMD-WORK-001` and asked for a **proposal**, not an implementation. No exact approved P-001 exists. Current GitHub changes are limited to this proposal-only Work folder. STOP at review.
+
+## F-007 — IMPLEMENTATION APPROVAL (2026-10-11)
+The user replied 「いいと思う」 directly to the explicit exact P-001 implementation question, without changing its scope. No approval was given to merge to main or modify Settings. A separate implementation branch was created from the proposal branch and an immutable approved-proposal and explicit scope SHA were recorded.

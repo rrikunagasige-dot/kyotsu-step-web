@@ -1,8 +1,8 @@
 # W-MATH-002 / P-001 — 数学学習モードの段階的表示圧縮
 
-Status: PROPOSED
+Status: APPROVED
 Created: 2026-10-11
-Implementation approval: NOT GRANTED
+Implementation approval: GRANTED for exact P-001 scope on 2026-10-11
 Merge / Settings approval: NOT GRANTED
 Target: `rrikunagasige-dot/kyotsu-step-web`, main baseline `be98aa0dc2c4f29d5bfb33e2295bbb9063099e33`
 
@@ -65,7 +65,8 @@ ASSESS（完了）→ PROPOSE P-001（本書）→ **USER REVIEW / STOP** → �
 P-001に追加・変更条件が付いたときは`REVISE-PROPOSAL` → P-002全文提示 → STOP。`REVIEW-FEEDBACK ≠ APPROVAL`を厳守。
 
 ## 7. 承認記録
-Status: WAITING
-Approved by user: NO
-Approval evidence: NONE
+Status: APPROVED FOR IMPLEMENTATION ONLY
+Approved by user: YES
+Approval evidence: User 「いいと思う」 directly responded to explicit question 「このP-001修正案で実装へ進んでよいか？」; no changed conditions.
+No approval for main merge or GitHub Settings.
 Allowed writes now: only proposal-level Work documentation in a separate branch.

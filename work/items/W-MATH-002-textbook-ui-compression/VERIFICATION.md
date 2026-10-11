@@ -1,6 +1,6 @@
 # W-MATH-002 — Verification
 
-Status: PROPOSAL-ONLY
+Status: IMPLEMENTATION-PENDING-QA
 Date: 2026-10-11
 
 ## V-001 — Repo provenance
@@ -17,8 +17,8 @@ Result: PASS on initial proposal PR #56 commit `510bfaa12f870aac04725ef91a22d767
 
 ## V-004 — Proposed implementation
 Check: the seven QA areas in `PROPOSAL.md`.
-Result: NOT-RUN / NOT APPROVED. No app preview yet.
+Result: IMPLEMENTATION IN FEATURE BRANCH / TESTS PENDING. PR #56 remains a pure proposal. No main merge/Settings approval.
 
 ## V-005 — Authorization
 Check: no approved math textbook compact UI proposal exists in current Work; user authorized analysis/proposal only.
-Result: PASS for approval boundary. Proposal status WAITING; any revised plan must be newly reviewed. Main merge not authorized.
+Result: P-001 approved for implementation only via direct user reply 「いいと思う」. SHA anchors stored in `APPROVAL_P-001.md`. Main merge and Settings not authorized.

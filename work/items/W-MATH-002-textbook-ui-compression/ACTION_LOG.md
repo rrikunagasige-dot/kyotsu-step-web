@@ -20,3 +20,6 @@ Result: PROPOSED; STOP before implementation. Provide review link.
 Date: 2026-10-11
 Action: Created proposal-only [Draft PR #56](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/56) from a branch anchored to the verified main baseline. GitHub compare showed exactly five new `work/items/W-MATH-002-textbook-ui-compression/**` files, with no changes/deletions to original app or curriculum. Repository Governance Check [38103507520](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38103507520) SUCCESS.
 Result: Work is PROPOSED, not approved for implementation, merging or Settings modification. Proposal presented to the user for explicit review.
+
+## A-005 — P-001 approval and math-sets UI implementation (2026-10-11)
+User's exact reply: 「いいと思う」 to the question 「このP-001修正案で実装へ進んでよいか？」. Preserved proposal-only Draft PR #56; created separate work branch. Implemented **display-only** math-sets stage metadata and math-only reading view, compact history + full original expansion, prior-source references, explicit next-stage, view pointer persistence, CSS and targeted regression tests. All other mode/source data including math practice and physics remain unchanged. Implementation tests currently PENDING observed CI. See `APPROVAL_P-001.md`, `SCOPE.json`.

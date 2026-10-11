@@ -240,6 +240,21 @@ Rules:
 - This applies both when the Work is DONE and when it intentionally stops at a user review gate.
 - Do not finish a correction handoff with prose only when a review link is available.
 
+### Typed review delivery gate (W-GOV-008)
+
+The review-link priority above applies to finding the best available **link**, but does not change the approved acceptance criteria for a particular Work.
+
+Before implementing a Work, explicitly distinguish its required user review type: `APP_UI`, `CODE`, `DOCUMENT`, or `OTHER`. The Work's approved Proposal must name the deliverable, the review surface, how it will be provided, necessary permissions, and verification evidence.
+
+- `APP_UI`: a direct, browser-accessible, **actually running** application URL that serves the exact target change is required before calling the Work `USER_REVIEW_READY`. A PR, source link, ZIP, localhost-only script or instructions are **not substitutes**. A working preview needs route/asset/browser verification and build-to-commit provenance; a string that looks like a URL is not sufficient.
+- `CODE`: the relevant PR/diff can be the review artifact.
+- `DOCUMENT`: a direct link to the actual reviewed document.
+- `OTHER`: define the equivalent concrete artifact in the approved Work.
+
+If the required artifact cannot be provided, preserve implementation/test results separately and mark the Work `BLOCKED` with reason `PREVIEW_MISSING` (for `APP_UI`) or the applicable reason; do not claim readiness or replace the deliverable with another medium. If supplying it would cross the approved scope, first `REVISE-PROPOSAL` and obtain exact new approval. No unapproved executable, package or hosting/settings change follows from a generic 「よろしく」.
+
+The user's normal `APP_UI` review task is to **open the supplied application URL and inspect the result**; installation, Git clone, terminal commands, PowerShell scripts and ZIP extraction are not assigned to the user without an explicitly approved exception. Preserve distinction between CI PASS, preview VERIFIED, and USER HANDS-ON ACCEPTED.
+
 ### Record requirement
 
 修正Workでは必要に応じて:

@@ -10,3 +10,9 @@ Do Not Touch: target main, Pages, content, previous PRs, external service connec
 Current Step: proposal-only / DEPENDENCY.
 Next Step: research available preview routes, compare providers and necessary user action, request separate exact authorization.
 Completion: actual approved deploy and browser/commit/route verification; users only open link. No APP_UI delivered yet.
+
+## Review Delivery
+Review Type: CODE (proposal only, no APP_UI released)
+Required artifact: draft hosting plan PR and comparative evidence
+Delivery route: W-GOV-008 PR #58, later independent preview Work
+User-review readiness: hosting PROPOSED, no actual preview URL

@@ -117,7 +117,7 @@ function TextbookReadingFlow({ unit, section, progress, onSummaryReached }: {
   progress: TextbookUnitProgress | undefined
   onSummaryReached?: (reached: boolean) => void
 }) {
-  const { text } = useI18n()
+  const { text, language } = useI18n()
   const answerTextbook = useAppStore((state) => state.answerTextbook)
   const [activeItemId, setActiveItemId] = useState<string | null>(null)
   const groups = useMemo(() => groupReadingFlow(section.readingFlow), [section.readingFlow])
@@ -189,6 +189,11 @@ function TextbookReadingFlow({ unit, section, progress, onSummaryReached }: {
     setExpandedPastStages([])
     setExpandAllPast(false)
     window.localStorage.setItem(compactKey, String(next))
+    window.requestAnimationFrame(() => {
+      const nextSection = document.querySelector<HTMLElement>('[data-testid="math-textbook-stage-' + compactStages[next].id + '"]')
+      nextSection?.focus({ preventScroll: true })
+      nextSection?.scrollIntoView({ block: 'start', behavior: 'auto' })
+    })
   }
 
   const activeItem = activeItemId ? section.items.find((item) => item.id === activeItemId) : undefined
@@ -412,13 +417,14 @@ function TextbookReadingFlow({ unit, section, progress, onSummaryReached }: {
                 key={stage.id}
                 className={'math-textbook-stage' + (completedBefore ? ' math-textbook-stage--past' : ' math-textbook-stage--current')}
                 data-testid={'math-textbook-stage-' + stage.id}
+                tabIndex={completedBefore ? undefined : -1}
               >
                 {completedBefore ? (
                   <>
                     <div className="math-textbook-stage-summary">
                       <span className="math-textbook-stage-summary__name">
                         <Check size={16} aria-hidden="true" />
-                        {stage.label.ja}
+                        {stage.label[language]}
                       </span>
                       <button
                         type="button"
@@ -442,7 +448,7 @@ function TextbookReadingFlow({ unit, section, progress, onSummaryReached }: {
                 ) : (
                   <>
                     <header className="math-textbook-stage-active-title">
-                      <strong>{stage.label.ja}</strong>
+                      <strong>{stage.label[language]}</strong>
                       <small>{index + 1} / {compactStages.length}</small>
                     </header>
                     {stage.referenceBlockIds?.length ? (

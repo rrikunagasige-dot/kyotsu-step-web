@@ -22,3 +22,8 @@ Result: IMPLEMENTATION IN FEATURE BRANCH / TESTS PENDING. PR #56 remains a pure 
 ## V-005 — Authorization
 Check: no approved math textbook compact UI proposal exists in current Work; user authorized analysis/proposal only.
 Result: P-001 approved for implementation only via direct user reply 「いいと思う」. SHA anchors stored in `APPROVAL_P-001.md`. Main merge and Settings not authorized.
+
+## V-006 — First implementation CI
+Date: 2026-10-11
+Commit: `05d61db9680490d77cba3c83a971b5fa5d3b3cc1`
+Result: PARTIAL. Governance Check [38104372096](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38104372096) PASS; independent Math Practice pilot [38104372103](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38104372103) PASS; Math textbook CI [38104372113](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38104372113) **FAIL** at mobile Playwright (8 failed, 6 flaky, 17 passed) after its typecheck/unit/build steps succeeded. Root cause isolated to common E2E helper invoking math-sets-only next-stage control on review units or before the reader had mounted. Fix staged, repeat CI required.

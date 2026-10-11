@@ -33,9 +33,15 @@ async function advanceMathStage(page: Page) {
 }
 
 async function answerItem(page: Page, itemId: string, answer: string) {
+  await expect(page.getByTestId('textbook-reading-flow')).toBeVisible()
   const target = page.getByTestId(`textbook-item-${itemId}`)
-  // The learner explicitly advances AFTER the previous whole learning stage is read.
-  for (let i = 0; i < 20 && await target.count() === 0; i += 1) await advanceMathStage(page)
+  // Review-only units have the original renderer and must NEVER inherit math-sets
+  // navigation. Only this published math-sets pilot has explicit "次へ" stages.
+  if (await page.getByTestId('math-textbook-compact-flow').count()) {
+    for (let i = 0; i < 20 && await target.count() === 0; i += 1) {
+      await advanceMathStage(page)
+    }
+  }
   await expect(target).toBeVisible()
   await target.click()
   const panel = page.getByTestId(`inline-choice-panel-${itemId}`)
@@ -829,7 +835,7 @@ test('math-set stage compression preserves the full definition after answer, the
   await page.getByTestId('math-textbook-toggle-gather').click()
   await expect(prior.getByTestId('resolved-set-a01')).toContainText('1, 2, 3, 4, 6, 8, 12, 24')
   await expect(prior.locator('.reading-term').filter({ hasText: /^集合$/ })).toBeVisible()
-  await expect(prior.locator('annotation[encoding="application/x-tex"]')).toContainText(['A='])
+  await expect(prior.locator('annotation[encoding="application/x-tex"]').first()).toContainText('A=')
   await page.getByTestId('math-textbook-toggle-gather').click()
   await expect(prior.locator('.reading-term')).toHaveCount(0)
   await page.getByTestId('math-textbook-reference-formula-set-a').click()
@@ -846,6 +852,7 @@ test('math-set cursor resumes at the current short stage and reset does not skip
   await expect(page.getByTestId('math-textbook-stage-gather')).toBeVisible()
   await expect(page.getByTestId('textbook-item-set-a02')).toBeVisible()
   await expect(page.getByTestId('math-textbook-stage-gather').getByTestId('resolved-set-a01')).toHaveCount(0)
+  page.once('dialog', dialog => dialog.accept())
   await page.getByRole('button', { name: 'この単元を最初から' }).click()
   await expect(page.getByTestId('textbook-item-set-a01')).toBeVisible()
   await expect(page.getByTestId('textbook-item-set-a02')).toHaveCount(0)

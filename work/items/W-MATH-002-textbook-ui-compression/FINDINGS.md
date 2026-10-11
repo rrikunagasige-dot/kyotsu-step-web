@@ -23,3 +23,7 @@ User confirmed SIMILAR command `CMD-WORK-001` and asked for a **proposal**, not 
 
 ## F-007 — IMPLEMENTATION APPROVAL (2026-10-11)
 The user replied 「いいと思う」 directly to the explicit exact P-001 implementation question, without changing its scope. No approval was given to merge to main or modify Settings. A separate implementation branch was created from the proposal branch and an immutable approved-proposal and explicit scope SHA were recorded.
+
+## F-008 — Confirmed first test harness failure (2026-10-11)
+Type: ERROR-QA (observed)
+First textbook CI 38104372113 reached mobile browser and failed. Failures pointed to `advanceMathStage` called from generic `answerItem` for both review-only units and some pre-mount math-sets navigation; the original renderer does not possess that control. Root-level governance and independent math-practice CI were PASS and textbook typecheck/unit/build reached later step, but learner-flow acceptance was NOT PASS. Isolate the helper to published math-sets only and wait for the page before interacting. Additional regressions need a clean rerun.

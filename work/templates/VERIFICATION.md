@@ -12,7 +12,7 @@ Result: NOT-RUN
 Evidence:
 Follow-up:
 
-## Review artifact verification
+## User review deliverable gate
 
 Review type:
 Artifact location:

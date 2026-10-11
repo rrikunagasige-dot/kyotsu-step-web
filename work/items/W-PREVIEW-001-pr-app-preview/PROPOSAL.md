@@ -19,3 +19,12 @@ No GitHub Settings, provider OAuth, production Pages, curriculum or main modific
 
 ## Approval
 WAITING. This proposal records a dependency, not permission to connect or publish.
+
+## Review Delivery Contract
+Review Type: CODE
+Required Review Artifact: proposal review document / PR link, not an implemented app
+Delivery Route: https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/58
+Responsible Actor: agent for planning only
+Authority: planning only
+Additional Permission: exact provider connection, new workflow/Settings and deployment all require separate approval
+Acceptance: user can inspect proposed route and risks; later APP_UI delivery requires a browser-verified app URL

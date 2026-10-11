@@ -28,3 +28,12 @@ Result: NOT RUN / NO URL. W-PREVIEW-001 remains proposal-only; W-MATH-002 still 
 
 ## Remaining
 Final CI on latest doc-only commit, user CODE review of PR #58 and separate explicit merge approval. Independent agent protocol compliance test is separate W-GOV-007 pending Work; not falsely claimed here.
+
+## V-006 — Future new Work intake gate
+Result: PASS on GitHub Actions 38110262166.
+- Original governance validator: errors 0, warnings 0.
+- Node tests: 27/27 PASS (17 review record policy + 10 newly introduced Work contract intake).
+- Real PR diff intake: PASS; 2 newly added Works checked. Existing Work records are not retroactively invalidated.
+- GitHub Actions is still a *static policy* test. It cannot guarantee an independent agent obeys rules, authenticate conversation approval or verify an APP_UI URL exists.
+Evidence: https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38110262166
+Branch status: VERIFYING / Draft; no merge, deployment, Settings or user hands-on acceptance.

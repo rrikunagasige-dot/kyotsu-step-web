@@ -1,6 +1,6 @@
 /** Checks review-delivery RECORD completeness only: not a live URL or human approval proof. */
 export function checkReviewDelivery(w = {}) {
-  const fail = reason => ({ready: false, reason})
+  const fail = reason => ({recordComplete: false, userReviewReady: false, reason})
   if (!['APP_UI','CODE','DOCUMENT','OTHER'].includes(w.reviewType)) return fail('REVIEW_TYPE_MISSING')
   if (!w.approvedScope) return fail('SCOPE_NOT_APPROVED')
   if (w.proposedMeansOutsideScope) return fail('REVISE_PROPOSAL_REQUIRED')
@@ -18,11 +18,11 @@ export function checkReviewDelivery(w = {}) {
     if (!b || b.status !== 'PASS' || b.checkedUrl !== w.appUrl ||
         b.checkedCommit !== w.targetCommit || b.routeAndAssets !== 'PASS' || !b.evidenceUrl)
       return fail('BROWSER_EVIDENCE_MISSING')
-    return {ready:true,reason:'REVIEW_RECORD_READY_REQUIRES_INDEPENDENT_EVIDENCE_AUDIT'}
+    return {recordComplete:true,userReviewReady:false,reason:'RECORD_ONLY_EXTERNAL_BROWSER_CHECK_REQUIRED'}
   }
   if (w.reviewType === 'CODE') {
     if (!/^https:\/\/github\.com\/[^/]+\/[^/]+\/pull\/\d+/.test(w.reviewUrl ?? ''))
       return fail('CODE_PR_MISSING')
   } else if (!/^https:\/\//.test(w.reviewUrl ?? '')) return fail('ARTIFACT_URL_MISSING')
-  return {ready:true,reason:'REVIEW_RECORD_READY'}
+  return {recordComplete:true,userReviewReady:false,reason:'RECORD_ONLY_HUMAN_REVIEW_REQUIRED'}
 }

@@ -1,5 +1,6 @@
 # W-GOV-008 / P-001 — Typed Review Delivery Contract
-Status: APPROVED FOR GOVERNANCE IMPLEMENTATION ONLY
+Status: APPROVED
+Authorization scope: GOVERNANCE IMPLEMENTATION ONLY; not merge, Settings or hosting.
 Date: 2026-10-11
 
 ## Problem

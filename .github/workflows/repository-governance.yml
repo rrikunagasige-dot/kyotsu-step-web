@@ -17,4 +17,6 @@ jobs:
         with:
           node-version: 22
       - run: node tools/repo-governance-check.mjs
-      - run: node --test tests/governance/review-delivery-policy.test.mjs
+      - run: node --test tests/governance/review-delivery-policy.test.mjs tests/governance/review-work-intake.test.mjs
+      - if: github.event_name == 'pull_request'
+        run: node tools/review-work-intake.mjs

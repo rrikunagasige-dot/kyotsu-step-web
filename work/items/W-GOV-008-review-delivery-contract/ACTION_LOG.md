@@ -46,3 +46,9 @@ Evidence: https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/3811
 Date: 2026-10-11
 Action: Compared official Cloudflare Pages and Vercel preview deployment behavior and logged technical constraints for preview-only proposal; no provider deployed or connected.
 Result: W-PREVIEW-001/ASSESSMENT.md recorded; implementation unapproved.
+
+## A-010
+Date: 2026-10-11
+Action: Added PR-diff-based intake scanner and new Work positive/negative tests without retroactively rewriting existing Works; CI checkout fetch-depth=2.
+Result: PASS; all 27/27 tests and 2 real newly-added Work intake checks passed on Actions 38110262166.
+Evidence: https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38110262166

@@ -866,6 +866,23 @@ test('math-set cursor resumes at the current short stage and reset does not skip
   await expect(page.getByTestId('textbook-item-set-a02')).toHaveCount(0)
 })
 
+test('math-set Chinese labels and a 320px screen retain the same compact readable flow', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 700 })
+  await page.goto(appRoute('/learning/textbook/math-sets'))
+  await page.getByTestId('language-switcher').getByRole('button', { name: '中文' }).click()
+  await answerItem(page, 'set-a01', '1, 2, 3, 4, 6, 8, 12, 24')
+  await advanceMathStage(page)
+  await expect(page.getByTestId('math-textbook-history-toggle')).toContainText('之前的学习')
+  await expect(page.getByTestId('math-textbook-history-toggle')).toHaveAttribute('aria-expanded', 'false')
+  await expect(page.getByTestId('math-textbook-stage-references')).toContainText('本题需要的条件')
+  await expect(page.getByTestId('math-textbook-context-formula-set-a')).toBeVisible()
+  const viewport = await page.evaluate(() => ({
+    clientWidth: document.documentElement.clientWidth,
+    scrollWidth: document.documentElement.scrollWidth,
+  }))
+  expect(viewport.scrollWidth).toBeLessThanOrEqual(viewport.clientWidth + 1)
+})
+
 test('math-set old saved stage index resumes without automatically exposing history', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-sets'))
   await answerItem(page, 'set-a01', '1, 2, 3, 4, 6, 8, 12, 24')
@@ -920,6 +937,7 @@ test('math-set B-complement starts with U and B, not an unrelated A-complement',
   await expect(page.getByTestId('math-textbook-context-formula-d-abar')).toHaveCount(0)
   await expect(references.locator('annotation[encoding="application/x-tex"]')).toContainText(['U=\\{1,2,3,\\ldots,12\\}', 'B=\\{3,6,9,12\\}'])
   await expect(page.getByTestId('math-textbook-history-toggle')).toContainText('9段階')
+  await expect(page.locator('.math-textbook-stage--past')).toHaveCount(0)
 })
 
 test('math-set real-line continuation retains source intervals and only offers already-seen diagram', async ({ page }) => {

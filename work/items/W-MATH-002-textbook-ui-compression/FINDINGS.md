@@ -52,3 +52,7 @@ Earlier CI asserted the ability to click, reach stage, expand all and restore so
 
 ## F-015 — SCOPE AND RESUME SAFETY
 Stage anchor IDs, all 15 stage boundaries, original readingFlow and answer IDs remain unchanged. Existing numeric v1 cursor still maps identically; changing boundaries would require a migration and an explicit new review before release.
+
+
+## F-016 — ERROR-QA: 2026-10-14 first P-002 mobile CI regression
+Initial P-002 mobile test run `38425132500`: 36/37 tests PASS, one existing assertion in `correct answer fills the sentence and unlocks the next learning step` expected `math-textbook-stage-gather` always visible immediately after moving forward. This contradicts the newly approved **closed-by-default history** behavior and is a stale E2E assumption, not proof that the lesson has disappeared. Updated it to assert history initially absent, then explicitly open history, inspect original and preserve full restore. Follow-up CI must rerun; initial failure preserved.

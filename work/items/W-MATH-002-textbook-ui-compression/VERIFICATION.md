@@ -41,3 +41,7 @@ Code head: `66a24ea41951af99459435bc1198c256c360d0e7`
 
 ## V-008 — Independent browser source-import entry (2026-10-13)
 Prepared: StackBlitz documented import URL targeting exact PR57 code SHA `b8791e82215a56512094e265025c112d116e59d3`, auto-running `dev`, initial path `/kyotsu-step-web/#/learning/textbook/math-sets` (see PREVIEW_ENTRY.md). Confirmed repository public and `vite` dev script, HashRouter and configured Vite base. **Result: NOT YET VERIFIED** for actual external browser import, package installation, in-browser runtime, or user's hands-on acceptance. This is NOT a production deployment and does not close Work.
+
+
+## V-009 — P-002 pre-CI / source-scope audit (2026-10-14)
+P-002 implementation is on a new feature branch. Source code modifies only math-sets presentation metadata, guarded textbook renderer and CSS, plus math E2E/unit tests and Work documentation; curriculum source files, IDs, figures and source revision are untouched. New item-context registry validates every referenced original source block precedes its item stage; keeps unchanged 15-stage partition. Exact main-vs-branch diff and GitHub CI must be checked once PR is open. **No PASS for CI/browser QA yet**. Separately authorized main merge and user visual acceptance remain pending.

@@ -929,9 +929,9 @@ test('math-set real-line continuation retains source intervals and only offers a
   await completeComplements(page)
   await completeDeMorgan(page)
   const earlier: Array<[string, string]> = [
-    ['set-f01', '入る'], ['set-f02', '入らない'], ['set-f03', '数直線'],
-    ['set-f04', '両端を含まない'], ['set-f05', '含まない'],
-    ['set-f06', 'x<-1 または x>5'],
+    ['set-f01', '両方入る'], ['set-f02', '両方入らない'], ['set-f03', '数直線'],
+    ['set-f04', '−2と2の間で、両端を含まない'], ['set-f05', '含めない'],
+    ['set-f06', '\\{x\\mid x<-1,\\ 5<x\\}'],
   ]
   for (const [id, answer] of earlier) await answerItem(page, id, answer)
   await advanceMathStage(page)

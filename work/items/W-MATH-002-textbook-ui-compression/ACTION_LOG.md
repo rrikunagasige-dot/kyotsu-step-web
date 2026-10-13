@@ -39,3 +39,13 @@ Status: Code QA PASS; actual user's visual acceptance and explicit main merge au
 
 ## A-008 — Browser-accessible source preview launch route (2026-10-13)
 User correctly objected that PR #57 source and old Pages URL were not an actually usable application preview, and explicitly requested implementation. Investigated production Vite base/HashRouter, package `dev` script and external documented StackBlitz GitHub-import by immutable commit. Added `PREVIEW_ENTRY.md` with a commit-pinned import URL, `view=preview`, `startScript=dev` and `initialpath`. This uses real PR #57 source; **the third-party browser runtime has not been independently verified**. No production deploy, Github Settings, main merge, or curriculum changes. If import fails, this remains a BLOCKER until a real preview is confirmed.
+
+
+## A-009 — P-002 scoped implementation (2026-10-14)
+- User approved exact P-002 implementation after seeing the live PR #57 defects; no merge approval.
+- Created independent branch `work/W-MATH-002-P-002-context-and-history-20261014` from merged main `2419a6c`.
+- New per-item source-prerequisite registry and fail-closed reference validation in `presentation.ts`. The source math lesson remains unchanged.
+- The active step's first unanswered `itemId` selects context. Earlier input formulae/definitions display directly, optional figure stays click-to-expand. Completed history is one closed toggle by default.
+- Preserve legacy numeric stage cursor because all 15 stage boundaries remain unchanged.
+- Updated mobile/desktop E2E regressions, stage unit assertions, and existing CI-selected `setLesson.test.ts`.
+- Latest outcomes pending PR CI. No main merge or GitHub Pages publication.

@@ -1154,6 +1154,17 @@ button.math-theme-link {
 
 /* Math textbook "集合" view-only completion compacting.
    No academic text styling / mathematical source edits. */
+/* W-MATH-002 P-002: one closed history row, not a pile of completed titles. */
+.math-textbook-history { display: grid; gap: .45rem; min-width: 0; }
+.math-textbook-history-toggle {
+  display: flex; justify-content: space-between; align-items: center; gap: .6rem;
+  width: 100%; border: 1px solid var(--color-border);
+  background: var(--color-paper); color: var(--color-text);
+  padding: .55rem .7rem; font: inherit; font-size: .84rem;
+  font-weight: 700; text-align: left; cursor: pointer;
+}
+.math-textbook-history-toggle:hover { border-color: var(--color-primary); }
+.math-textbook-history-toggle:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 2px; }
 .math-textbook-compact-flow { display: grid; gap: .65rem; min-width: 0; }
 .math-textbook-stage { min-width: 0; scroll-margin-top: 1.5rem; }
 .math-textbook-stage--current { display: grid; gap: .85rem; }
@@ -1194,14 +1205,24 @@ button.math-theme-link {
   border-top: 1px solid var(--color-border);
 }
 .math-textbook-stage-references {
-  display: flex; flex-wrap: wrap; align-items: center; gap: .4rem;
-  font-size: .8rem; color: var(--color-text);
+  display: grid; gap: .35rem; min-width: 0;
+  padding: .55rem .65rem; border: 1px solid var(--color-line);
+  background: var(--color-paper); color: var(--color-text);
+  font-size: .82rem;
 }
-.math-textbook-stage-reference { max-width: 100%; }
+.math-textbook-stage-references__title { font-size: .8rem; color: var(--color-text); }
+.math-textbook-stage-reference { min-width: 0; max-width: 100%; }
 .math-textbook-stage-reference-content {
-  margin-top: .4rem; max-width: 100%; overflow-x: auto; padding: .35rem .5rem;
-  border: 1px solid var(--color-border); background: var(--color-paper);
+  min-width: 0; max-width: 100%; overflow-x: auto;
+  padding: .25rem .4rem; border: 0; background: transparent;
 }
+.math-textbook-stage-reference-content .reading-formula-line {
+  width: max-content; max-width: 100%; margin: 0;
+  padding: .2rem .25rem; border: 0; background: transparent;
+  text-align: left; font-size: 1rem;
+}
+.math-textbook-stage-reference-content .reading-paragraph { font-size: .86rem; line-height: 1.65; }
+.math-textbook-stage-reference-content .reading-figure { margin: 0; }
 .math-textbook-next-stage-panel {
   display: flex; align-items: center; justify-content: space-between;
   flex-wrap: wrap; gap: .6rem; padding: .7rem .8rem;

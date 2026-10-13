@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { mathSetUnit } from './setLesson'
+import { partitionMathSetReadingFlow, mathSetRequiredContextByItemId, requiredMathSetContext } from '../presentation'
 
 describe('math set textbook unit', () => {
   it('keeps the first slice as one continuous math lesson', () => {
@@ -298,3 +299,37 @@ describe('math set textbook unit', () => {
     expect(intersectionIndex).toBeGreaterThanOrEqual(0)
     expect(subsetIndex).toBeGreaterThan(intersectionIndex)
   })
+
+describe('math-set P-002 presentation regression (no source mutations)', () => {
+  it('keeps all original blocks in order while validating every explicit cross-stage prerequisite', () => {
+    const reading = mathSetUnit.sections[0].readingFlow
+    const stages = partitionMathSetReadingFlow(reading)
+    expect(stages).toHaveLength(15)
+    expect(stages.flatMap(stage => stage.blocks.map(block => block.id))).toEqual(reading.map(block => block.id))
+    const sourceStageById = new Map(stages.flatMap((stage, index) => stage.blocks.map(block => [block.id, index] as const)))
+    const targetStageByItemId = new Map(stages.flatMap((stage, index) => stage.blocks.flatMap(block =>
+      block.type === 'paragraph' || block.type === 'formula'
+        ? block.parts.filter(part => part.type === 'choice').map(part => [part.itemId, index] as const)
+        : [],
+    )))
+    for (const [itemId, refs] of Object.entries(mathSetRequiredContextByItemId)) {
+      const target = targetStageByItemId.get(itemId)
+      expect(target, itemId).toBeDefined()
+      expect(new Set(refs).size, itemId).toBe(refs.length)
+      for (const ref of refs) expect(sourceStageById.get(ref)!, itemId + '/' + ref).toBeLessThan(target!)
+    }
+  })
+  it('uses U and B to answer B-complement, not an unrelated A-complement', () => {
+    expect(requiredMathSetContext('set-d03')).toEqual(['paragraph-universal-concept', 'formula-d-b'])
+    expect(requiredMathSetContext('set-d03')).not.toContain('formula-d-abar')
+    expect(requiredMathSetContext('set-d04')).toEqual(['formula-d-a', 'formula-d-b'])
+    expect(requiredMathSetContext('set-d06')).toEqual(['formula-d-abar', 'formula-d-b'])
+  })
+  it('recovers original interval and group inputs across all risky stage boundaries', () => {
+    expect(requiredMathSetContext('set-b03')).toEqual(['formula-b-sets'])
+    expect(requiredMathSetContext('set-c04')).toEqual(['formula-c-sets'])
+    expect(requiredMathSetContext('set-f07')).toEqual(['formula-f-sets', 'figure-f-b'])
+    expect(requiredMathSetContext('set-f09')).toEqual(['formula-f-sets'])
+    expect(requiredMathSetContext('set-a01')).toEqual([])
+  })
+})

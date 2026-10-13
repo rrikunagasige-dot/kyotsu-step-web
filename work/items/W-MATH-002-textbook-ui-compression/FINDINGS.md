@@ -39,3 +39,20 @@ User's hands-on judgment of compactness/readability is not established by CI. Al
 
 ## F-011 — Preview delivery gap (2026-10-13)
 Type: ERROR-PROCESS / OPEN-QUESTION. The PR #57 frontend implementation and 3 CI workflows were complete, but user was incorrectly sent the old production Pages app as a way to see changes. That URL contains no PR #57 changes. Documented StackBlitz import of the exact immutable PR #57 source is now available as a **candidate launch route**, not a verified running deployment. This does not authorize a main merge or Pages/Settings changes. Successful launch and user visual QA remain unverified.
+
+
+## F-012 — ERROR-SPEC / ERROR-IMPLEMENTATION (user screenshot 2026-10-13)
+P-001 displayed up to fourteen cards for completed 15-stage history; the resulting page stayed long. The user rejected this in the actual Pages app. Must collapse **history itself** to a single default row. Existing 15 internal logical stages are not intended as 15 simultaneous student-facing headings.
+
+## F-013 — ERROR-IMPLEMENTATION / PEDAGOGICAL-SOLVABILITY
+At `set-d03`, the previous stage contained the original `U` definition and `B={3,6,9,12}`, but `presentation.ts` included only `formula-d-abar` in stage-wide references. Screen showed irrelevant A-complement, hid B and U needed for the answer. Other crosses: b03, c04, f07. Problem is presentation-layer dependency selection, not source pedagogy. P-002 uses per-current-hole exact earlier source IDs.
+
+## F-014 — ERROR-QA
+Earlier CI asserted the ability to click, reach stage, expand all and restore sources, but did not test whether the active question's prerequisites were visible. P-002 adds targeted learner-answerability tests and runs deterministic prerequisite checks as part of an existing enumerated CI test file.
+
+## F-015 — SCOPE AND RESUME SAFETY
+Stage anchor IDs, all 15 stage boundaries, original readingFlow and answer IDs remain unchanged. Existing numeric v1 cursor still maps identically; changing boundaries would require a migration and an explicit new review before release.
+
+
+## F-016 — ERROR-QA: 2026-10-14 first P-002 mobile CI regression
+Initial P-002 mobile test run `38425132500`: 36/37 tests PASS, one existing assertion in `correct answer fills the sentence and unlocks the next learning step` expected `math-textbook-stage-gather` always visible immediately after moving forward. This contradicts the newly approved **closed-by-default history** behavior and is a stale E2E assumption, not proof that the lesson has disappeared. Updated it to assert history initially absent, then explicitly open history, inspect original and preserve full restore. Follow-up CI must rerun; initial failure preserved.

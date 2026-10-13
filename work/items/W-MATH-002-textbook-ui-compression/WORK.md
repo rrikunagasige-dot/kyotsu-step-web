@@ -1,6 +1,6 @@
 # W-MATH-002 — 数学学習モードの表示圧縮（教材本文不変）
 
-Status: IMPLEMENTING / P-002 (P-001 already merged PR #57)
+Status: IMPLEMENTING
 Approved Proposal: P-001 (historical), P-002 (active)
 Date: 2026-10-11
 Canonical target: `rrikunagasige-dot/kyotsu-step-web` (ID `1391122224`)

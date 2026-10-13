@@ -49,3 +49,7 @@ User correctly objected that PR #57 source and old Pages URL were not an actuall
 - Preserve legacy numeric stage cursor because all 15 stage boundaries remain unchanged.
 - Updated mobile/desktop E2E regressions, stage unit assertions, and existing CI-selected `setLesson.test.ts`.
 - Latest outcomes pending PR CI. No main merge or GitHub Pages publication.
+
+
+## A-010 — QA failure handling / E2E contract upgrade (2026-10-14)
+Initial PR #59 mobile run `38425132500` ended with exactly one failed outdated assertion (36/37 successful). Reviewed raw GitHub Actions logs and modified `e2e/math-textbook-set-smoke.spec.ts` to explicitly open previously closed history before asserting original source restoration. Work stays VERIFYING pending a clean exact-head run. No main merge.

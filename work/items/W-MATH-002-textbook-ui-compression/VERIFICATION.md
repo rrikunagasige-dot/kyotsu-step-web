@@ -37,3 +37,7 @@ Code head: `66a24ea41951af99459435bc1198c256c360d0e7`
 - Standalone `presentation.test.ts` **not run by this workflow's enumerated Vitest command**, so do not label it Vitest PASS. Runtime partition coverage and E2E did run.
 - Baseline Git diff: 455 original blobs, 451 unchanged; four allowed original UI/CSS/test files changed; no original source data/figures/canonical mother/Constitution changed. 162 original curriculum/governance protected blobs same Git SHA. Nine new files only within P-001 scope, zero unexpected deletions or additions.
 - **PENDING** user's hands-on judgement and separately authorized merge/release. This Work stays VERIFYING; no public app is updated by the Draft PR.
+
+
+## V-008 — Independent browser source-import entry (2026-10-13)
+Prepared: StackBlitz documented import URL targeting exact PR57 code SHA `b8791e82215a56512094e265025c112d116e59d3`, auto-running `dev`, initial path `/kyotsu-step-web/#/learning/textbook/math-sets` (see PREVIEW_ENTRY.md). Confirmed repository public and `vite` dev script, HashRouter and configured Vite base. **Result: NOT YET VERIFIED** for actual external browser import, package installation, in-browser runtime, or user's hands-on acceptance. This is NOT a production deployment and does not close Work.

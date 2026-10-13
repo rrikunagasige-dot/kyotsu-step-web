@@ -823,23 +823,31 @@ test('real-line endpoint judgments precede complement formulas and the unit can 
 })
 
 
-test('math-set stage compression preserves the full definition after answer, then restores exact original when expanded', async ({ page }) => {
+test('math-set keeps one closed history row and shows exactly the prerequisite for the active hole', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-sets'))
   await answerItem(page, 'set-a01', '1, 2, 3, 4, 6, 8, 12, 24')
   await expect(page.locator('.reading-term').filter({ hasText: /^集合$/ })).toBeVisible()
-  await expect(page.getByTestId('math-textbook-next-stage')).toBeVisible()
   await advanceMathStage(page)
+
+  const history = page.getByTestId('math-textbook-history-toggle')
+  await expect(history).toBeVisible()
+  await expect(history).toHaveAttribute('aria-expanded', 'false')
+  await expect(history).toContainText('1段階')
+  await expect(page.getByTestId('math-textbook-stage-gather')).toHaveCount(0)
+  await expect(page.getByTestId('math-textbook-stage-references')).toHaveAttribute('data-for-item', 'set-a02')
+  await expect(page.getByTestId('math-textbook-context-formula-set-a')).toBeVisible()
+  await expect(page.getByTestId('math-textbook-stage-references').locator('annotation[encoding="application/x-tex"]').first()).toContainText('A=')
+
+  await history.click()
   const prior = page.getByTestId('math-textbook-stage-gather')
+  await expect(prior).toBeVisible()
   await expect(prior.getByTestId('resolved-set-a01')).toHaveCount(0)
-  await expect(page.getByTestId('math-textbook-reference-formula-set-a')).toBeVisible()
-  await page.getByTestId('math-textbook-toggle-gather').click()
+  await prior.getByTestId('math-textbook-toggle-gather').click()
   await expect(prior.getByTestId('resolved-set-a01')).toContainText('1, 2, 3, 4, 6, 8, 12, 24')
   await expect(prior.locator('.reading-term').filter({ hasText: /^集合$/ })).toBeVisible()
   await expect(prior.locator('annotation[encoding="application/x-tex"]').first()).toContainText('A=')
-  await page.getByTestId('math-textbook-toggle-gather').click()
-  await expect(prior.locator('.reading-term')).toHaveCount(0)
-  await page.getByTestId('math-textbook-reference-formula-set-a').click()
-  await expect(page.getByTestId('math-textbook-stage-references').locator('annotation[encoding="application/x-tex"]').first()).toContainText('A=')
+  await history.click()
+  await expect(prior).toHaveCount(0)
   await expect(page.locator('.katex-error')).toHaveCount(0)
 })
 
@@ -849,29 +857,112 @@ test('math-set cursor resumes at the current short stage and reset does not skip
   await advanceMathStage(page)
   await expect(page.getByTestId('textbook-item-set-a02')).toBeVisible()
   await page.reload()
-  await expect(page.getByTestId('math-textbook-stage-gather')).toBeVisible()
+  await expect(page.getByTestId('math-textbook-history-toggle')).toHaveAttribute('aria-expanded', 'false')
   await expect(page.getByTestId('textbook-item-set-a02')).toBeVisible()
-  await expect(page.getByTestId('math-textbook-stage-gather').getByTestId('resolved-set-a01')).toHaveCount(0)
+  await expect(page.getByTestId('math-textbook-stage-gather')).toHaveCount(0)
   page.once('dialog', dialog => dialog.accept())
   await page.getByRole('button', { name: 'この単元を最初から' }).click()
   await expect(page.getByTestId('textbook-item-set-a01')).toBeVisible()
   await expect(page.getByTestId('textbook-item-set-a02')).toHaveCount(0)
 })
 
+test('math-set old saved stage index resumes without automatically exposing history', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/math-sets'))
+  await answerItem(page, 'set-a01', '1, 2, 3, 4, 6, 8, 12, 24')
+  await page.evaluate(() => window.localStorage.setItem('math-textbook-compact-v1:math-sets:r2', '1'))
+  await page.reload()
+  await expect(page.getByTestId('textbook-item-set-a02')).toBeVisible()
+  await expect(page.getByTestId('math-textbook-history-toggle')).toHaveAttribute('aria-expanded', 'false')
+  await expect(page.getByTestId('math-textbook-stage-gather')).toHaveCount(0)
+})
+
+test('math-set union has earlier A and B available even after intersection closes', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/math-sets'))
+  await completeFirstSetsSlice(page)
+  await answerItem(page, 'set-b01', '3, 5, 7')
+  await answerItem(page, 'set-b02', 'AとBの両方に属する要素')
+  await advanceMathStage(page)
+  await expect(page.getByTestId('math-textbook-stage-references')).toHaveAttribute('data-for-item', 'set-b03')
+  await expect(page.getByTestId('math-textbook-context-formula-b-sets')).toBeVisible()
+  await expect(page.getByTestId('math-textbook-stage-intersection')).toHaveCount(0)
+})
+
+test('math-set empty-set exercise retains its earlier source A without opening the full history', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/math-sets'))
+  await completeFirstSetsSlice(page)
+  const prior: Array<[string, string]> = [
+    ['set-b01', '3, 5, 7'], ['set-b02', 'AとBの両方に属する要素'],
+    ['set-b03', '1, 2, 3, 5, 7, 9'], ['set-b04', 'ない'],
+    ['set-b05', 'AかBの少なくとも一方に属する要素'],
+    ['set-b06', '2つの円の重なりだけ'], ['set-b07', 'AとBの2つの円全体'],
+    ['set-b08', '3つすべてに属する要素'], ['set-b09', '3つのうち少なくとも1つに属する要素'],
+    ['set-c01', 'すべて入っている'], ['set-c02', '4がAにないので、全部は入っていない'],
+    ['set-c03', '0個'],
+  ]
+  for (const [id, answer] of prior) await answerItem(page, id, answer)
+  await advanceMathStage(page)
+  await expect(page.getByTestId('math-textbook-stage-references')).toHaveAttribute('data-for-item', 'set-c04')
+  await expect(page.getByTestId('math-textbook-context-formula-c-sets')).toBeVisible()
+  await expect(page.getByTestId('math-textbook-history-toggle')).toHaveAttribute('aria-expanded', 'false')
+})
+
+test('math-set B-complement starts with U and B, not an unrelated A-complement', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/math-sets'))
+  await completeFirstSetsSlice(page)
+  await completeRelationsAndSubsets(page)
+  await answerItem(page, 'set-d01', '入れない')
+  await answerItem(page, 'set-d02', '1, 3, 5, 7, 9, 11')
+  await advanceMathStage(page)
+  const references = page.getByTestId('math-textbook-stage-references')
+  await expect(references).toHaveAttribute('data-for-item', 'set-d03')
+  await expect(page.getByTestId('math-textbook-context-paragraph-universal-concept')).toBeVisible()
+  await expect(page.getByTestId('math-textbook-context-formula-d-b')).toBeVisible()
+  await expect(page.getByTestId('math-textbook-context-formula-d-abar')).toHaveCount(0)
+  await expect(references.locator('annotation[encoding="application/x-tex"]')).toContainText(['U=\\{1,2,3,\\ldots,12\\}', 'B=\\{3,6,9,12\\}'])
+  await expect(page.getByTestId('math-textbook-history-toggle')).toContainText('9段階')
+})
+
+test('math-set real-line continuation retains source intervals and only offers already-seen diagram', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/math-sets'))
+  await completeFirstSetsSlice(page)
+  await completeRelationsAndSubsets(page)
+  await completeComplements(page)
+  await completeDeMorgan(page)
+  const earlier: Array<[string, string]> = [
+    ['set-f01', '入る'], ['set-f02', '入らない'], ['set-f03', '数直線'],
+    ['set-f04', '両端を含まない'], ['set-f05', '含まない'],
+    ['set-f06', 'x<-1 または x>5'],
+  ]
+  for (const [id, answer] of earlier) await answerItem(page, id, answer)
+  await advanceMathStage(page)
+  await expect(page.getByTestId('math-textbook-stage-references')).toHaveAttribute('data-for-item', 'set-f07')
+  await expect(page.getByTestId('math-textbook-context-formula-f-sets')).toBeVisible()
+  const diagram = page.getByTestId('math-textbook-reference-figure-f-b')
+  await expect(diagram).toHaveAttribute('aria-expanded', 'false')
+  await diagram.click()
+  await expect(diagram).toHaveAttribute('aria-expanded', 'true')
+  await expect(page.getByTestId('math-textbook-history-toggle')).toHaveAttribute('aria-expanded', 'false')
+})
+
 test('math-set completed history can all expand without changing any answers, and is keyboard accessible', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-sets'))
   await answerItem(page, 'set-a01', '1, 2, 3, 4, 6, 8, 12, 24')
   await advanceMathStage(page)
+  const history = page.getByTestId('math-textbook-history-toggle')
+  await history.focus()
+  await page.keyboard.press('Enter')
+  await expect(history).toHaveAttribute('aria-expanded', 'true')
   const toggle = page.getByTestId('math-textbook-toggle-gather')
   await expect(toggle).toHaveAttribute('aria-expanded', 'false')
   await toggle.focus()
   await page.keyboard.press('Enter')
   await expect(toggle).toHaveAttribute('aria-expanded', 'true')
   await page.getByTestId('math-textbook-expand-all').click()
-  // The per-stage toggle and all-history toggle do not change item progress.
   await expect(page.getByTestId('resolved-set-a01')).toBeVisible()
   await page.getByTestId('math-textbook-expand-all').click()
   await expect(page.getByTestId('resolved-set-a01')).toBeVisible()
   await toggle.click()
   await expect(page.getByTestId('resolved-set-a01')).toHaveCount(0)
+  await history.click()
+  await expect(page.getByTestId('math-textbook-stage-gather')).toHaveCount(0)
 })

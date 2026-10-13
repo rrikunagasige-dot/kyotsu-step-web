@@ -35,3 +35,7 @@ After the first red run, re-scoped the E2E helper rather than changing the user-
 - Original target main 455 tracked blobs: 451 unchanged; only four P-001-approved existing UI/CSS/E2E files modified. Nine new files confined to stage registry/test and W-MATH-002 records. No deletions or out-of-scope additions/edits; math lesson, mathematics practice, physics source and original governance 162/162 protected blobs byte-identical.
 - Standalone `src/data/textbook/math/presentation.test.ts` was added and typechecked but is not in the workflow's explicit Vitest file list; **do not count it as executed**. The runtime stage partition validator and E2E learner flow were executed in both browser projects.
 Status: Code QA PASS; actual user's visual acceptance and explicit main merge authorization remain PENDING. No Pages deploy.
+
+
+## A-008 — Browser-accessible source preview launch route (2026-10-13)
+User correctly objected that PR #57 source and old Pages URL were not an actually usable application preview, and explicitly requested implementation. Investigated production Vite base/HashRouter, package `dev` script and external documented StackBlitz GitHub-import by immutable commit. Added `PREVIEW_ENTRY.md` with a commit-pinned import URL, `view=preview`, `startScript=dev` and `initialpath`. This uses real PR #57 source; **the third-party browser runtime has not been independently verified**. No production deploy, Github Settings, main merge, or curriculum changes. If import fails, this remains a BLOCKER until a real preview is confirmed.

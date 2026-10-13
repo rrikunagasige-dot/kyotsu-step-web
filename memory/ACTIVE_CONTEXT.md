@@ -11,3 +11,7 @@ Last completed Work: `W-GOV-005`, [governance PR #49](https://github.com/rrikuna
 
 ## Next Work policy
 The governance port is complete. Continue to verify the real live `main` HEAD on each new task; do not assume checkpoint HEAD is still current. Imported mode SPECs remain CANONICAL-CANDIDATE. Any content revision, example redesign, figure work, or cleanup requires a new approved Work. Avoid idle CI status polling and always include a real review link.
+
+
+## Active next Work — W-GOV-006 (2026-10-10)
+P-001 rejected; P-002 is approved for preservation-first G0–G4 implementation only. Current branch `work/W-GOV-006-preservation-implementation-20261010` independently audits 395 protected blob SHAs, tests approval/scope traps, and corrects stale navigation. PR merge and GitHub Settings remain independent UNAPPROVED gates. See `work/items/W-GOV-006-workflow-integrity/`. No changes to four-mode app source.

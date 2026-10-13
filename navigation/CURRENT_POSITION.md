@@ -25,11 +25,11 @@ No governance changes to `src/`, `public/`, `e2e/`, package/lockfile or Pages wo
 Imported four-mode `subjects/**/SPEC.md` are CANONICAL-CANDIDATE summaries, subordinate to target-approved lesson documents.
 
 ## Open issues
-- Adopt/review PR #49 and record its verified main merge/memory close; no false DONE.
 - Separately reconcile each imported mode spec with established target sources before declaring it canonical.
 - Product release user hands-on QA and future pedagogy remain separate Works.
 
 ## Next Executable Work
-1. Use the adopted Constitution and Work OS for each new task; recover exact approved Work before editing.
-2. Scope a separate proposal to compare each imported mode candidate spec with the accepted target mode/source.
-3. No automatic content/UI changes or destructive cleanup without explicit approval.
+1. W-GOV-006: non-destructive G0–G4 checks PASS on Draft PR #53 (run 38064137763, 395/395 protected SHA, safety 16/16, released-mode representative E2E PASS); historical lint/unit/E2E failures remain separately documented. Do NOT merge PR #53 or modify GitHub Settings without new specific user approval.
+2. Use the adopted Constitution and Work OS for each new task; recover exact approved Work before editing.
+3. Future distinct Work may compare each imported mode candidate spec with accepted target source.
+4. No automatic content/UI changes or destructive cleanup without explicit approval.

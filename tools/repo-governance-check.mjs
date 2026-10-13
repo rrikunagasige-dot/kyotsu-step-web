@@ -177,7 +177,10 @@ if (existsSync(workItemsRoot)) {
     const status = statusMatch[1]
     if (!allowedWorkStatuses.has(status)) fail(`${name}: invalid Work status ${status}`)
 
-    const proposalPath = rel(relative(root, join(itemDir, 'PROPOSAL.md')))
+    // Current approved revision may be P-002 etc; never rewrite historical P-001.
+    const approvedId = workText.match(/^Approved Proposal:\s*(P-\d+)\s*$/m)?.[1]
+    const revisionName = approvedId && approvedId !== 'P-001' ? `PROPOSAL_${approvedId}.md` : 'PROPOSAL.md'
+    const proposalPath = rel(relative(root, join(itemDir, revisionName)))
     const proposalText = read(proposalPath)
     if (['APPROVED', 'IMPLEMENTING', 'VERIFYING', 'DONE'].includes(status) && !/^Status:\s+APPROVED\s*$/m.test(proposalText)) {
       fail(`${name}: executable Work status requires an APPROVED proposal`)
@@ -244,3 +247,18 @@ for (const path of ['src/data/textbook/math/proposition/propositionReadingLesson
   if (!/status:\s*'review'/.test(read(path))) { console.error('ERROR: review-only math unit changed status: '+path); process.exitCode=1 }
 }
 if (read('.github/workflows/deploy-pages.yml').includes('ref: 2127c3d4d35793546228ac2fe2a9d38e8a9f97be')) { console.error('ERROR: Pages still pinned to obsolete lesson version'); process.exitCode=1 }
+
+
+// Semantic safety check for W-GOV-006: do not confuse old accepted provenance with unfinished actions.
+const activeCurrent = read('navigation/CURRENT_POSITION.md')
+const openCurrent = activeCurrent.split(/^## Open issues\s*$/m)[1]?.split(/^## /m)[0] || ''
+if (/PR #49/.test(openCurrent) && /merge|adopt|統合|未統合/i.test(openCurrent)) {
+  console.error('ERROR: already-merged PR #49 is still listed as a pending merger in CURRENT_POSITION'); process.exitCode=1
+}
+const currentWgov = read('work/items/W-GOV-006-workflow-integrity/WORK.md')
+if (!/^Approved Proposal: P-002$/m.test(currentWgov)) {
+  console.error('ERROR: W-GOV-006 needs an exact approved proposal reference'); process.exitCode=1
+}
+if (!/^Status: APPROVED$/m.test(read('work/items/W-GOV-006-workflow-integrity/PROPOSAL_P-002.md'))) {
+  console.error('ERROR: P-002 approval stage missing'); process.exitCode=1
+}

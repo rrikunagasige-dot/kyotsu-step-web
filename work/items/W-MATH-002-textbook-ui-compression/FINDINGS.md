@@ -35,3 +35,7 @@ The first run failed a generic E2E helper's route/scope assumptions, not the pra
 ## F-010 — Manual acceptance and separate unit-test selection (2026-10-11)
 Type: REVIEW REQUIRED
 User's hands-on judgment of compactness/readability is not established by CI. Also the current GitHub Math Textbook CI enumerates 11 existing Vitest test paths explicitly and does not include the new `presentation.test.ts`; that file remains authored/unexecuted in this run. Actual `math-sets` rendering invokes the strict partition validation and was covered by the 62 mobile/desktop E2E passes. Do not broaden workflow paths without a revised proposal.
+
+
+## F-011 — Preview delivery gap (2026-10-13)
+Type: ERROR-PROCESS / OPEN-QUESTION. The PR #57 frontend implementation and 3 CI workflows were complete, but user was incorrectly sent the old production Pages app as a way to see changes. That URL contains no PR #57 changes. Documented StackBlitz import of the exact immutable PR #57 source is now available as a **candidate launch route**, not a verified running deployment. This does not authorize a main merge or Pages/Settings changes. Successful launch and user visual QA remain unverified.

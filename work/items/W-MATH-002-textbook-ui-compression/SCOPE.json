@@ -1,0 +1,31 @@
+{
+  "workId": "W-MATH-002",
+  "proposalId": "P-001",
+  "allowedPaths": [
+    "src/pages/TextbookUnitPage.tsx",
+    "src/data/textbook/math/presentation.ts",
+    "src/data/textbook/math/presentation.test.ts",
+    "src/styles/global.css",
+    "src/styles/mobile.css",
+    "e2e/math-textbook-set-smoke.spec.ts",
+    "work/items/W-MATH-002-textbook-ui-compression/**"
+  ],
+  "forbiddenPaths": [
+    "src/data/mathPractice/**",
+    "src/data/textbook/math/set/**",
+    "src/data/textbook/math/proposition/**",
+    "src/data/textbook/math/function/**",
+    "src/data/textbook/ch01/**",
+    "src/data/textbookPracticeQuestions.ts",
+    "src/domain/**",
+    "governance/**",
+    "history/**",
+    "public/**",
+    "subjects/**",
+    ".github/**",
+    "pnpm-lock.yaml",
+    "package.json",
+    "CHATGPT_README_FIRST.md",
+    "WORKFLOW.md"
+  ]
+}

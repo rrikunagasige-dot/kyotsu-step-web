@@ -331,3 +331,12 @@
     font-size: .76rem;
   }
 }
+
+@media (max-width: 640px) {
+  .math-textbook-stage-summary { align-items: flex-start; }
+  .math-textbook-stage-active-title { flex-wrap: wrap; }
+  .math-textbook-next-stage { width: 100%; }
+  .math-textbook-stage-detail { padding-inline: .45rem; }
+  .math-textbook-compact-flow .reading-derivation-chain { min-width: 0; }
+  .math-textbook-compact-flow .reading-formula-line { max-width: 100%; }
+}

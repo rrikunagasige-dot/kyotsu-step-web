@@ -1151,3 +1151,64 @@ button.math-theme-link {
 @media (max-width: 640px) {
   [data-textbook-subject='math-1a'] .reading-choice-options { grid-template-columns: 1fr; }
 }
+
+/* Math textbook "集合" view-only completion compacting.
+   No academic text styling / mathematical source edits. */
+.math-textbook-compact-flow { display: grid; gap: .65rem; min-width: 0; }
+.math-textbook-stage { min-width: 0; scroll-margin-top: 1.5rem; }
+.math-textbook-stage--current { display: grid; gap: .85rem; }
+.math-textbook-stage--current > .reading-block-with-choice,
+.math-textbook-stage--current > .reading-derivation-chain { min-width: 0; }
+.math-textbook-stage-active-title {
+  display: flex; align-items: baseline; justify-content: space-between; gap: .5rem;
+  padding: .7rem .75rem; border-left: 4px solid var(--color-primary);
+  background: var(--color-section); color: var(--color-text);
+}
+.math-textbook-stage-active-title strong { font-size: 1rem; font-weight: 800; }
+.math-textbook-stage-active-title small { flex: 0 0 auto; color: var(--color-muted); }
+.math-textbook-stage--past { border: 1px solid var(--color-border); background: var(--color-paper); }
+.math-textbook-stage-summary {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
+  gap: .5rem; padding: .45rem .65rem;
+}
+.math-textbook-stage-summary__name {
+  display: inline-flex; align-items: center; gap: .35rem; min-width: 0;
+  color: var(--color-text); font-weight: 700; font-size: .82rem;
+}
+.math-textbook-stage-summary__name svg { flex: 0 0 auto; color: var(--color-success); }
+.math-textbook-stage-toggle, .math-textbook-expand-all,
+.math-textbook-stage-reference button {
+  padding: .3rem .5rem; border: 1px solid var(--color-border);
+  color: var(--color-text); background: var(--color-paper);
+  font: inherit; font-size: .78rem; cursor: pointer; text-decoration: underline;
+}
+.math-textbook-stage-toggle:hover, .math-textbook-expand-all:hover,
+.math-textbook-stage-reference button:hover { border-color: var(--color-primary); }
+.math-textbook-stage-toggle:focus-visible, .math-textbook-expand-all:focus-visible,
+.math-textbook-stage-reference button:focus-visible, .math-textbook-next-stage:focus-visible {
+  outline: 3px solid var(--color-primary); outline-offset: 2px;
+}
+.math-textbook-expand-all { justify-self: start; }
+.math-textbook-stage-detail {
+  display: grid; gap: .85rem; padding: .65rem .7rem 1rem;
+  border-top: 1px solid var(--color-border);
+}
+.math-textbook-stage-references {
+  display: flex; flex-wrap: wrap; align-items: center; gap: .4rem;
+  font-size: .8rem; color: var(--color-text);
+}
+.math-textbook-stage-reference { max-width: 100%; }
+.math-textbook-stage-reference-content {
+  margin-top: .4rem; max-width: 100%; overflow-x: auto; padding: .35rem .5rem;
+  border: 1px solid var(--color-border); background: var(--color-paper);
+}
+.math-textbook-next-stage-panel {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: .6rem; padding: .7rem .8rem;
+  border: 1px solid var(--color-border); background: var(--color-section);
+}
+.math-textbook-next-stage-panel span { color: var(--color-text); font-size: .83rem; }
+.math-textbook-next-stage {
+  border: 1px solid var(--color-primary); background: var(--color-primary);
+  color: white; cursor: pointer; min-height: 40px; padding: .45rem 1.1rem; font-weight: 800;
+}

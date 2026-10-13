@@ -13,6 +13,7 @@ import { useI18n } from '../i18n/runtime'
 import { normalizeTextbookMath } from '../domain/textbookMath'
 import { chapter1ChunkForUnitCode, chapter1Localized, chapter1NextUnit } from '../data/textbook/ch01/chapter1Architecture'
 import { mathTextbookNextUnitId } from '../data/textbook/math'
+import { partitionMathSetReadingFlow } from '../data/textbook/math/presentation'
 
 function interactionPrompt(item: TextbookItem, text: (ja: string, zh: string) => string, subject: TextbookUnit['subject']) {
   switch (item.purpose) {
@@ -110,12 +111,13 @@ function renderPart(
   return renderActiveChoice(item, Boolean(record), onOpen, text)
 }
 
-function TextbookReadingFlow({ unit, section, progress }: {
+function TextbookReadingFlow({ unit, section, progress, onSummaryReached }: {
   unit: TextbookUnit
   section: TextbookSection
   progress: TextbookUnitProgress | undefined
+  onSummaryReached?: (reached: boolean) => void
 }) {
-  const { text } = useI18n()
+  const { text, language } = useI18n()
   const answerTextbook = useAppStore((state) => state.answerTextbook)
   const [activeItemId, setActiveItemId] = useState<string | null>(null)
   const groups = useMemo(() => groupReadingFlow(section.readingFlow), [section.readingFlow])
@@ -130,6 +132,69 @@ function TextbookReadingFlow({ unit, section, progress }: {
   })
   const visibleGroupCount = firstIncompleteGroup === -1 ? groups.length : firstIncompleteGroup + 1
   const visibleGroups = groups.slice(0, visibleGroupCount)
+
+
+  // The published math-sets lesson alone uses explicitly authored presentation stages.
+  // This changes no readingFlow text, answer key, source order, image or stored progress.
+  const compactStages = useMemo(
+    () => unit.subject === 'math-1a' && unit.unitId === 'math-sets' && unit.status === 'published' && section.id === 'lesson'
+      ? partitionMathSetReadingFlow(section.readingFlow)
+      : null,
+    [unit.subject, unit.unitId, unit.status, section.id, section.readingFlow],
+  )
+  const [compactCursor, setCompactCursor] = useState(0)
+  const [expandedPastStages, setExpandedPastStages] = useState<readonly string[]>([])
+  const [expandAllPast, setExpandAllPast] = useState(false)
+  const [expandedReference, setExpandedReference] = useState<string | null>(null)
+  const compactKey = 'math-textbook-compact-v1:' + unit.unitId + ':r' + unit.revision
+  const firstIncompleteCompactIndex = compactStages?.findIndex(stage => {
+    const itemIds = readingGroupItemIds([...stage.blocks], section)
+    return itemIds.some(id => {
+      const item = section.items.find(candidate => candidate.id === id)
+      return !item || !isTextbookItemResolved(item, currentProgress?.answers[id])
+    })
+  }) ?? -1
+  const maxAvailableCompactIndex = compactStages
+    ? firstIncompleteCompactIndex === -1 ? compactStages.length - 1 : firstIncompleteCompactIndex
+    : 0
+  const activeCompactIndex = Math.min(compactCursor, maxAvailableCompactIndex)
+  const allMathSetItemsResolved = compactStages !== null && currentProgress !== undefined &&
+    section.items.every(item => isTextbookItemResolved(item, currentProgress.answers[item.id]))
+
+  useEffect(() => {
+    if (!compactStages) return
+    const stored = window.localStorage.getItem(compactKey)
+    const candidate = stored !== null ? Number(stored) : Math.max(0, maxAvailableCompactIndex - 1)
+    const safe = Number.isInteger(candidate) && candidate >= 0
+      ? Math.min(candidate, maxAvailableCompactIndex)
+      : 0
+    // A reset may make the saved stage unreachable; discard that stale cursor.
+    if (stored !== null && Number(stored) > maxAvailableCompactIndex) {
+      window.localStorage.setItem(compactKey, String(safe))
+    }
+    setCompactCursor(safe)
+  }, [compactKey, maxAvailableCompactIndex, compactStages])
+
+  useEffect(() => {
+    if (compactStages) {
+      onSummaryReached?.(allMathSetItemsResolved && activeCompactIndex === compactStages.length - 1)
+    }
+  }, [compactStages, activeCompactIndex, allMathSetItemsResolved, onSummaryReached])
+
+  const goToNextCompactStage = () => {
+    if (!compactStages) return
+    const next = Math.min(activeCompactIndex + 1, maxAvailableCompactIndex)
+    setCompactCursor(next)
+    setExpandedReference(null)
+    setExpandedPastStages([])
+    setExpandAllPast(false)
+    window.localStorage.setItem(compactKey, String(next))
+    window.requestAnimationFrame(() => {
+      const nextSection = document.querySelector<HTMLElement>('[data-testid="math-textbook-stage-' + compactStages[next].id + '"]')
+      nextSection?.focus({ preventScroll: true })
+      nextSection?.scrollIntoView({ block: 'start', behavior: 'auto' })
+    })
+  }
 
   const activeItem = activeItemId ? section.items.find((item) => item.id === activeItemId) : undefined
   const activeRecord = activeItem ? currentProgress?.answers[activeItem.id] : undefined
@@ -325,7 +390,111 @@ function TextbookReadingFlow({ unit, section, progress }: {
 
   return (
     <article className="textbook-reading-flow" data-testid="textbook-reading-flow">
-      {visibleGroups.map((group, groupIndex) => {
+      {compactStages ? (
+        <div className="math-textbook-compact-flow" data-testid="math-textbook-compact-flow">
+          {activeCompactIndex > 0 && (
+            <button
+              type="button"
+              className="math-textbook-expand-all"
+              data-testid="math-textbook-expand-all"
+              aria-expanded={expandAllPast}
+              onClick={() => setExpandAllPast(value => !value)}
+            >
+              {expandAllPast ? text('過去の学習を閉じる', '收起之前的学习') : text('過去の学習をすべて見る', '查看全部已学内容')}
+            </button>
+          )}
+          {compactStages.map((stage, index) => {
+            if (index > activeCompactIndex) return null
+            const completedBefore = index < activeCompactIndex
+            const expanded = expandAllPast || expandedPastStages.includes(stage.id)
+            const stageItemIds = readingGroupItemIds([...stage.blocks], section)
+            const stageAnswered = stageItemIds.every(id => {
+              const item = section.items.find(candidate => candidate.id === id)
+              return Boolean(item && isTextbookItemResolved(item, currentProgress?.answers[id]))
+            })
+            return (
+              <section
+                key={stage.id}
+                className={'math-textbook-stage' + (completedBefore ? ' math-textbook-stage--past' : ' math-textbook-stage--current')}
+                data-testid={'math-textbook-stage-' + stage.id}
+                tabIndex={completedBefore ? undefined : -1}
+              >
+                {completedBefore ? (
+                  <>
+                    <div className="math-textbook-stage-summary">
+                      <span className="math-textbook-stage-summary__name">
+                        <Check size={16} aria-hidden="true" />
+                        {stage.label[language]}
+                      </span>
+                      <button
+                        type="button"
+                        className="math-textbook-stage-toggle"
+                        data-testid={'math-textbook-toggle-' + stage.id}
+                        aria-expanded={expanded}
+                        aria-controls={'math-textbook-stage-detail-' + stage.id}
+                        onClick={() => setExpandedPastStages(current => current.includes(stage.id)
+                          ? current.filter(id => id !== stage.id)
+                          : [...current, stage.id])}
+                      >
+                        {expanded ? text('閉じる', '收起') : text('全文を見る', '查看全文')}
+                      </button>
+                    </div>
+                    {expanded && (
+                      <div className="math-textbook-stage-detail" id={'math-textbook-stage-detail-' + stage.id}>
+                        {renderVisibleBlocks([...stage.blocks])}
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <>
+                    <header className="math-textbook-stage-active-title">
+                      <strong>{stage.label[language]}</strong>
+                      <small>{index + 1} / {compactStages.length}</small>
+                    </header>
+                    {stage.referenceBlockIds?.length ? (
+                      <div className="math-textbook-stage-references" data-testid="math-textbook-stage-references">
+                        <span>{text('前に学んだこと', '之前学过的内容')}</span>
+                        {stage.referenceBlockIds.map(blockId => {
+                          const source = section.readingFlow.find(block => block.id === blockId)
+                          if (!source) return null
+                          const open = expandedReference === blockId
+                          return (
+                            <div className="math-textbook-stage-reference" key={blockId}>
+                              <button
+                                type="button"
+                                data-testid={'math-textbook-reference-' + blockId}
+                                aria-expanded={open}
+                                onClick={() => setExpandedReference(open ? null : blockId)}
+                              >
+                                {open ? text('参照を閉じる', '收起参考') : text('前の式を見る', '查看之前的式子')}
+                              </button>
+                              {open && <div className="math-textbook-stage-reference-content">{renderBlock(source)}</div>}
+                            </div>
+                          )
+                        })}
+                      </div>
+                    ) : null}
+                    {renderVisibleBlocks(visibleBlocksInGroup([...stage.blocks]))}
+                    {stageAnswered && index < compactStages.length - 1 && (
+                      <div className="math-textbook-next-stage-panel">
+                        <span>{text('ここまでの本文と図を確認したら、次へ進めます。', '读完本段正文和图后，可以继续下一段。')}</span>
+                        <button
+                          type="button"
+                          className="math-textbook-next-stage"
+                          data-testid="math-textbook-next-stage"
+                          onClick={goToNextCompactStage}
+                        >
+                          {text('次へ', '下一步')}
+                        </button>
+                      </div>
+                    )}
+                  </>
+                )}
+              </section>
+            )
+          })}
+        </div>
+      ) : visibleGroups.map((group, groupIndex) => {
         const groupItemIds = readingGroupItemIds(group, section)
         const completed = groupItemIds.length > 0 && groupItemIds.every((itemId) => {
           const item = section.items.find((candidate) => candidate.id === itemId)
@@ -352,8 +521,10 @@ export function TextbookUnitPage() {
   const [unit, setUnit] = useState<TextbookUnit | null | undefined>(undefined)
   const [selectedSectionIndex, setSelectedSectionIndex] = useState(0)
   const [visibleThroughIndex, setVisibleThroughIndex] = useState(0)
+  const [mathSummaryReached, setMathSummaryReached] = useState(false)
   const initializedUnitRef = useRef<string | null>(null)
   const progress = useAppStore((state) => state.textbookProgress[unitId])
+  useEffect(() => setMathSummaryReached(false), [unitId])
   const resetTextbookUnit = useAppStore((state) => state.resetTextbookUnit)
   const { language, text } = useI18n()
 
@@ -487,7 +658,7 @@ export function TextbookUnitPage() {
               )}
 
               {section.readingFlow.length > 0
-                ? <TextbookReadingFlow unit={unit} section={section} progress={progress} />
+                ? <TextbookReadingFlow unit={unit} section={section} progress={progress} onSummaryReached={setMathSummaryReached} />
                 : null}
 
               {!continuousLesson && sectionComplete && !unitComplete && isLastVisible && index < unit.sections.length - 1 && (
@@ -501,7 +672,7 @@ export function TextbookUnitPage() {
           )
         })}
 
-        {unitComplete && (
+        {unitComplete && (unit.unitId !== 'math-sets' || mathSummaryReached) && (
           <div className="textbook-complete-panel" data-testid="textbook-unit-complete">
             <Check size={28} aria-hidden="true" />
             <div>

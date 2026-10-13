@@ -1,9 +1,13 @@
 # W-MATH-002 — ユーザー実地レビュー手順
 
-Status: READY-FOR-HANDS-ON / NOT YET REVIEWED
+Status: SOURCE-IMPORT PREVIEW URL PREPARED / BROWSER LAUNCH NOT YET VERIFIED
 GitHub implementation: https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/57
 Branch: `work/W-MATH-002-textbook-ui-compression-implementation-20261011`
-Important: This is **NOT** deployed to GitHub Pages; current live `main` site still has the old UI. PR #57 can be reviewed as source; a rendered preview would require running the branch separately, or a separately approved release.
+Important: **NOT deployed to GitHub Pages**; public `main` still serves the old UI. A browser-only source-import launch route is prepared via StackBlitz, but actual successful launch is NOT verified.
+
+[Open PR #57 source in a browser preview](https://stackblitz.com/github/rrikunagasige-dot/kyotsu-step-web/tree/b8791e82215a56512094e265025c112d116e59d3?startScript=dev&view=preview&initialpath=%2Fkyotsu-step-web%2F%23%2Flearning%2Ftextbook%2Fmath-sets)
+
+This is the exact PR #57 app source at code SHA `b8791e82...`, not a simulated textbook and not a released production deployment. See [PREVIEW_ENTRY.md](PREVIEW_ENTRY.md) for launch assumptions, limits and QA route.
 
 ## Focused learner walkthrough — math-sets only
 1. Open Mathematics Textbook > published 集合 with clean learning progress, on the **PR #57 code build**, not main.
@@ -19,4 +23,4 @@ Important: This is **NOT** deployed to GitHub Pages; current live `main` site st
 Any manual changes to lesson prose, math expression, options, figures, math practice, physics, review-only units, original governance, GitHub Settings, main merge, release stage. Record any user objections as REVIEW-FEEDBACK and prepare P-002 rather than editing without fresh approval.
 
 ## Automation evidence / limits
-[Math Textbook workflow 38104661479](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38104661479) PASS. This does not replace user visual acceptance. No live branch preview/deploy URL was created; do not link the old published Pages site as a preview of PR #57.
+[Math Textbook workflow 38104661479](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38104661479) PASS. This does not replace user visual acceptance. An experimental source-import browser-launch URL is documented; no separately hosted deployment or verified live runtime URL exists. Never link old published Pages as if it were PR #57.

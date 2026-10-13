@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { mathSetUnit } from './set/setLesson'
-import { mathSetReadingStages, partitionMathSetReadingFlow } from './presentation'
+import { mathSetReadingStages, partitionMathSetReadingFlow, mathSetRequiredContextByItemId, requiredMathSetContext } from './presentation'
 
 describe('math-sets view-only stages', () => {
   const section = mathSetUnit.sections[0]
@@ -40,9 +40,41 @@ describe('math-sets view-only stages', () => {
   })
   it('references only earlier, already-authored blocks and retains every original source figure', () => {
     const index=new Map(stages.flatMap((stage,i)=>stage.blocks.map(b=>[b.id,i] as const)))
-    for(const [i,stage] of stages.entries()) for(const id of stage.referenceBlockIds??[])
-      expect(index.get(id)!).toBeLessThan(i)
+    const itemStage = new Map(stages.flatMap((stage,i)=>stage.blocks.flatMap(block =>
+      block.type==='paragraph'||block.type==='formula'
+        ? block.parts.filter(part=>part.type==='choice').map(part=>[part.itemId,i] as const)
+        : [],
+    )))
+    for (const [itemId, required] of Object.entries(mathSetRequiredContextByItemId)) {
+      const target = itemStage.get(itemId)
+      expect(target, itemId).toBeDefined()
+      expect(required.length, itemId).toBeGreaterThan(0)
+      expect(new Set(required).size, itemId).toBe(required.length)
+      for (const id of required) {
+        expect(index.has(id), id).toBe(true)
+        expect(index.get(id)!, id + ' must precede ' + itemId).toBeLessThan(target!)
+      }
+    }
     expect(stages.flatMap(stage=>stage.blocks.filter(b=>b.type==='figure').map(b=>b.figureId))).toEqual(
       section.readingFlow.filter(b=>b.type==='figure').map(b=>b.figureId))
   })
+  it('imports only the requirements of the currently unanswered item, not an entire previous stage', () => {
+    expect(requiredMathSetContext(null)).toEqual([])
+    expect(requiredMathSetContext('set-a01')).toEqual([])
+    expect(requiredMathSetContext('set-d03')).toEqual(['paragraph-universal-concept', 'formula-d-b'])
+    expect(requiredMathSetContext('set-d04')).toEqual(['formula-d-a', 'formula-d-b'])
+    expect(requiredMathSetContext('set-d06')).toEqual(['formula-d-abar', 'formula-d-b'])
+    expect(requiredMathSetContext('set-d11b')).toEqual(['paragraph-universal-concept'])
+    expect(requiredMathSetContext('set-b03')).toEqual(['formula-b-sets'])
+    expect(requiredMathSetContext('set-c04')).toEqual(['formula-c-sets'])
+    expect(requiredMathSetContext('set-f07')).toEqual(['formula-f-sets', 'figure-f-b'])
+    expect(requiredMathSetContext('set-f09')).toEqual(['formula-f-sets'])
+  })
+  it('never imports future De Morgan answers or its finished figures into a prerequisite', () => {
+    const future = new Set(stages.slice(10).flatMap(stage=>stage.blocks.map(block=>block.id)))
+    for (const [itemId, refs] of Object.entries(mathSetRequiredContextByItemId)) {
+      if (itemId.startsWith('set-d')) for (const ref of refs) expect(future.has(ref), ref).toBe(false)
+    }
+  })
+
 })

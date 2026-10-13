@@ -45,3 +45,8 @@ Prepared: StackBlitz documented import URL targeting exact PR57 code SHA `b8791e
 
 ## V-009 — P-002 pre-CI / source-scope audit (2026-10-14)
 P-002 implementation is on a new feature branch. Source code modifies only math-sets presentation metadata, guarded textbook renderer and CSS, plus math E2E/unit tests and Work documentation; curriculum source files, IDs, figures and source revision are untouched. New item-context registry validates every referenced original source block precedes its item stage; keeps unchanged 15-stage partition. Exact main-vs-branch diff and GitHub CI must be checked once PR is open. **No PASS for CI/browser QA yet**. Separately authorized main merge and user visual acceptance remain pending.
+
+
+## V-010 — First P-002 PR #59 exact QA (2026-10-14)
+- Initial source PR head `96ab1e406bab0277d1cf8b7855214023df8e54e8`: Governance PASS `38425132549`, targeted typecheck/Vitest/build PASS in Math Textbook `38425132500`. Mobile E2E: **36 passed, 1 failed**, stale P-001 assumption that first completed stage remained visible. The updated 1-line-history requirement intentionally removes it from the default DOM; existing test updated to open history explicitly. E2E remained FAILED for that commit, no passed-claim.
+- Correction commit `f1738b643511b5d308e0d7457be3cfd0dbffe121` revised only the incompatible assertion. Exact-head CI and separate user QA remain pending. No production release or merge.

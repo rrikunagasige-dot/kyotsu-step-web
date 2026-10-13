@@ -13,7 +13,7 @@ import { useI18n } from '../i18n/runtime'
 import { normalizeTextbookMath } from '../domain/textbookMath'
 import { chapter1ChunkForUnitCode, chapter1Localized, chapter1NextUnit } from '../data/textbook/ch01/chapter1Architecture'
 import { mathTextbookNextUnitId } from '../data/textbook/math'
-import { partitionMathSetReadingFlow } from '../data/textbook/math/presentation'
+import { partitionMathSetReadingFlow, requiredMathSetContext } from '../data/textbook/math/presentation'
 
 function interactionPrompt(item: TextbookItem, text: (ja: string, zh: string) => string, subject: TextbookUnit['subject']) {
   switch (item.purpose) {
@@ -143,6 +143,7 @@ function TextbookReadingFlow({ unit, section, progress, onSummaryReached }: {
     [unit.subject, unit.unitId, unit.status, section.id, section.readingFlow],
   )
   const [compactCursor, setCompactCursor] = useState(0)
+  const [showPastHistory, setShowPastHistory] = useState(false)
   const [expandedPastStages, setExpandedPastStages] = useState<readonly string[]>([])
   const [expandAllPast, setExpandAllPast] = useState(false)
   const [expandedReference, setExpandedReference] = useState<string | null>(null)
@@ -185,6 +186,7 @@ function TextbookReadingFlow({ unit, section, progress, onSummaryReached }: {
     if (!compactStages) return
     const next = Math.min(activeCompactIndex + 1, maxAvailableCompactIndex)
     setCompactCursor(next)
+    setShowPastHistory(false)
     setExpandedReference(null)
     setExpandedPastStages([])
     setExpandAllPast(false)
@@ -393,21 +395,44 @@ function TextbookReadingFlow({ unit, section, progress, onSummaryReached }: {
       {compactStages ? (
         <div className="math-textbook-compact-flow" data-testid="math-textbook-compact-flow">
           {activeCompactIndex > 0 && (
-            <button
-              type="button"
-              className="math-textbook-expand-all"
-              data-testid="math-textbook-expand-all"
-              aria-expanded={expandAllPast}
-              onClick={() => setExpandAllPast(value => !value)}
-            >
-              {expandAllPast ? text('過去の学習を閉じる', '收起之前的学习') : text('過去の学習をすべて見る', '查看全部已学内容')}
-            </button>
+            <div className="math-textbook-history">
+              <button
+                type="button"
+                className="math-textbook-history-toggle"
+                data-testid="math-textbook-history-toggle"
+                aria-expanded={showPastHistory}
+                onClick={() => {
+                  setShowPastHistory(value => !value)
+                  setExpandAllPast(false)
+                  setExpandedPastStages([])
+                }}
+              >
+                <span>{text('これまでの学習', '之前的学习')}（{activeCompactIndex}{text('段階', '阶段')}）</span>
+                <span aria-hidden="true">{showPastHistory ? '▲' : '▼'}</span>
+              </button>
+              {showPastHistory && (
+                <button
+                  type="button"
+                  className="math-textbook-expand-all"
+                  data-testid="math-textbook-expand-all"
+                  aria-expanded={expandAllPast}
+                  onClick={() => setExpandAllPast(value => !value)}
+                >
+                  {expandAllPast ? text('過去の学習を閉じる', '收起之前的学习') : text('過去の学習をすべて見る', '查看全部已学内容')}
+                </button>
+              )}
+            </div>
           )}
           {compactStages.map((stage, index) => {
-            if (index > activeCompactIndex) return null
+            if (index > activeCompactIndex || (index < activeCompactIndex && !showPastHistory)) return null
             const completedBefore = index < activeCompactIndex
             const expanded = expandAllPast || expandedPastStages.includes(stage.id)
             const stageItemIds = readingGroupItemIds([...stage.blocks], section)
+            const currentQuestionId = stageItemIds.find(id => {
+              const item = section.items.find(candidate => candidate.id === id)
+              return !item || !isTextbookItemResolved(item, currentProgress?.answers[id])
+            }) ?? null
+            const neededContextIds = completedBefore ? [] : requiredMathSetContext(currentQuestionId)
             const stageAnswered = stageItemIds.every(id => {
               const item = section.items.find(candidate => candidate.id === id)
               return Boolean(item && isTextbookItemResolved(item, currentProgress?.answers[id]))
@@ -451,29 +476,38 @@ function TextbookReadingFlow({ unit, section, progress, onSummaryReached }: {
                       <strong>{stage.label[language]}</strong>
                       <small>{index + 1} / {compactStages.length}</small>
                     </header>
-                    {stage.referenceBlockIds?.length ? (
-                      <div className="math-textbook-stage-references" data-testid="math-textbook-stage-references">
-                        <span>{text('前に学んだこと', '之前学过的内容')}</span>
-                        {stage.referenceBlockIds.map(blockId => {
+                    {neededContextIds.length > 0 && (
+                      <div className="math-textbook-stage-references" data-testid="math-textbook-stage-references" data-for-item={currentQuestionId ?? undefined}>
+                        <strong className="math-textbook-stage-references__title">{text('この問題で使う条件', '本题需要的条件')}</strong>
+                        {neededContextIds.map(blockId => {
                           const source = section.readingFlow.find(block => block.id === blockId)
                           if (!source) return null
+                          const isFigure = source.type === 'figure'
                           const open = expandedReference === blockId
                           return (
-                            <div className="math-textbook-stage-reference" key={blockId}>
-                              <button
-                                type="button"
-                                data-testid={'math-textbook-reference-' + blockId}
-                                aria-expanded={open}
-                                onClick={() => setExpandedReference(open ? null : blockId)}
-                              >
-                                {open ? text('参照を閉じる', '收起参考') : text('前の式を見る', '查看之前的式子')}
-                              </button>
-                              {open && <div className="math-textbook-stage-reference-content">{renderBlock(source)}</div>}
+                            <div className="math-textbook-stage-reference" key={blockId} data-testid={'math-textbook-context-' + blockId}>
+                              {isFigure ? (
+                                <>
+                                  <button
+                                    type="button"
+                                    data-testid={'math-textbook-reference-' + blockId}
+                                    aria-expanded={open}
+                                    onClick={() => setExpandedReference(open ? null : blockId)}
+                                  >
+                                    {open ? text('図を閉じる', '收起图形') : text('前に学んだ図を見る', '查看之前学过的图形')}
+                                  </button>
+                                  {open && <div className="math-textbook-stage-reference-content">{renderBlock(source)}</div>}
+                                </>
+                              ) : (
+                                <div className="math-textbook-stage-reference-content" data-testid={'math-textbook-reference-' + blockId}>
+                                  {renderBlock(source)}
+                                </div>
+                              )}
                             </div>
                           )
                         })}
                       </div>
-                    ) : null}
+                    )}
                     {renderVisibleBlocks(visibleBlocksInGroup([...stage.blocks]))}
                     {stageAnswered && index < compactStages.length - 1 && (
                       <div className="math-textbook-next-stage-panel">

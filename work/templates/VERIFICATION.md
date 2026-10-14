@@ -11,3 +11,11 @@ Expected:
 Result: NOT-RUN
 Evidence:
 Follow-up:
+
+## User review deliverable gate
+
+Review type:
+Artifact location:
+Target commit:
+Browser and asset checks (for UI):
+User review status: PENDING

@@ -60,6 +60,8 @@ if (!instructionDictionary.includes('REVIEW-FEEDBACK ≠ APPROVAL')) fail('instr
 if (!instructionDictionary.includes('修正版Proposalをユーザーへ全文提示する')) fail('CMD-WORK-001 missing revised-proposal presentation gate')
 if (!instructionDictionary.includes('### Review-link handoff')) fail('CMD-WORK-001 missing review-link handoff')
 if (!instructionDictionary.includes('rendered app / preview / directly reviewable screen')) fail('CMD-WORK-001 missing review-link priority')
+if (!instructionDictionary.includes('### Typed review delivery gate (W-GOV-008)')) fail('CMD-WORK-001 missing typed review artifact gate')
+if (!instructionDictionary.includes('A PR, source link, ZIP, localhost-only script or instructions are **not substitutes**')) fail('APP_UI review artifact substitution rule absent')
 
 
 const workSystem = read('governance/WORK_SYSTEM.md')
@@ -68,6 +70,9 @@ if (!workSystem.includes('### Proposal review loop')) fail('WORK_SYSTEM missing 
 if (!workSystem.includes('The revised proposal must be shown before implementation.')) fail('WORK_SYSTEM missing revised-proposal-before-implementation rule')
 if (!workSystem.includes('## 12A. User review handoff')) fail('WORK_SYSTEM missing user review handoff rule')
 if (!workSystem.includes('A correction handoff must not end as prose-only')) fail('WORK_SYSTEM missing correction review-link requirement')
+if (!workSystem.includes('## 12B. Review Delivery Contract')) fail('WORK_SYSTEM missing required review delivery gate')
+if (!read('work/templates/PROPOSAL.md').includes('### Review Delivery Contract')) fail('PROPOSAL template missing review plan')
+if (!read('work/templates/VERIFICATION.md').includes('## User review deliverable gate')) fail('VERIFICATION template missing actual review artifact evidence')
 
 
 const proposalTemplate = read('work/templates/PROPOSAL.md')

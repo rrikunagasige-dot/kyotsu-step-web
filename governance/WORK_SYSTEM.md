@@ -316,6 +316,24 @@ This rule applies to:
 
 A correction handoff must not end as prose-only when a usable review link exists.
 
+## 12B. Review Delivery Contract — executable Work acceptance
+
+The Work Plan must define, BEFORE implementation:
+- `Review Type`: APP_UI / CODE / DOCUMENT / OTHER.
+- `Required Review Artifact`: the deliverable the user must actually inspect.
+- `Delivery Route`: how the artifact will become accessible, without inventing a new tool/product.
+- `Ownership / Permissions`: what is already authorized and what needs a separate proposal/setting permission.
+- `Evidence / Acceptance`: target commit, actual access, rendering/navigation and required regression where applicable.
+- `Fallback / STOP`: reason code and what happens if the route does not exist.
+
+Every approved Work must have executable Tasks for its acceptance criteria. At PLAN/TASKS and again before introducing an additional script, tool, service, ZIP, deploy or other deliverable, compare the concrete means with the approved exact scope. A new material means/permission requires `REVISE-PROPOSAL` **before production**, not retroactive justification.
+
+For `APP_UI`, `USER_REVIEW_READY` is an output-gate label, **not** a new Work state. The Work remains `VERIFYING` until the app URL is proven to display the proposed code in a usable browser, with associated evidence. If this cannot be provided, use the existing exceptional Work state `BLOCKED` and reason `PREVIEW_MISSING`. A PR/ZIP/localhost package may be provided for developer diagnostics but never counted as the user-facing APP_UI review artifact.
+
+For `CODE` / `DOCUMENT` / `OTHER`, use the type-appropriate direct review artifact. This section refines, rather than removes, the link precedence in 12A.
+
+A governance text marker or test fixture cannot prove a live public URL, a user's actual approval, or an AI's compliance. Verification must distinguish schema/record checks from real browser checks, GitHub permissions and human review. Never mark the latter PASS based only on the former.
+
 ## 13. Memory promotion
 
 Work records are detailed local memory. Only durable information is promoted upward.

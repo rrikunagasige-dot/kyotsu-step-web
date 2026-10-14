@@ -8,3 +8,9 @@ Mode specs are `subjects/{mathematics,physics}/{textbook,practice}/SPEC.md`. The
 
 ## F-003 — OPEN-QUESTION: Missing original mother skill in current GitHub
 `MATHEMATICS_TEXTBOOK_MODE_MASTER_SKILL_v1` and `SCIENTIFIC_WRITING_MASTER_SKILL_2026-09-24` are mentioned historically, but their exact original source files were not located on current main. The math textbook imported summary points to the first. Do not claim those original documents were read. When authoring content dependent on the mother source, request/access the exact canonical original instead of improvising.
+
+## F-004 — ERROR-IMPLEMENTATION / corrected Markdown escaping
+Initial new Command text had 76 escaped Markdown backtick characters, potentially breaking code/path rendering. Targeted static audit found these before PR; all were removed. Regression static check `!dictionary.includes('\\`')` now PASS. No content meaning changed.
+
+## F-005 — CONFIRMED: governance scope isolation
+Diff contains only dictionary, command router, creation template, one memory lesson and this Work's five records. Existing Root/修正 command IDs and semantics remain in place; Constitution and application source were not changed.

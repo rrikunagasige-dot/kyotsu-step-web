@@ -60,6 +60,11 @@ jobs:
       - name: Build
         run: pnpm run build
 
+      - name: P-004 production build SVG decode smoke (mobile and desktop)
+        env:
+          E2E_USE_PREVIEW: '1'
+        run: pnpm exec playwright test e2e/math-textbook-set-smoke.spec.ts --grep P-004 --project=mobile-chromium --project=desktop-chromium
+
       - name: Math textbook mobile smoke
         run: pnpm exec playwright test e2e/math-textbook-set-smoke.spec.ts --project=mobile-chromium
 

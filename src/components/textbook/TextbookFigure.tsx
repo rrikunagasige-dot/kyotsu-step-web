@@ -4,7 +4,9 @@ import type { TextbookFigure as TextbookFigureData, TextbookItem } from '../../d
 
 function resolveAssetSrc(src: string) {
   if (/^(?:https?:|data:|blob:)/i.test(src)) return src
-  const viteBase = (import.meta as ImportMeta & { env?: { BASE_URL?: string } }).env?.BASE_URL ?? '/'
+  // Vite statically replaces the *direct* import.meta.env.BASE_URL expression in production.
+  // Optional chaining on import.meta.env prevented reliable GitHub Pages asset prefixes.
+  const viteBase = import.meta.env.BASE_URL
   const base = viteBase.endsWith('/') ? viteBase : `${viteBase}/`
   if (src.startsWith(base)) return src
   return `${base}${src.replace(/^\.?\/+/, '')}`

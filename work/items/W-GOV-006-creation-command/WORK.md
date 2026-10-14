@@ -1,5 +1,5 @@
 # W-GOV-006 — 「作成」命令の導入
-Status: IMPLEMENTING
+Status: VERIFYING
 Updated: 2026-10-14
 Repository: `rrikunagasige-dot/kyotsu-step-web` (ID `1391122224`)
 Base main: `994f9634e2e5288b97887e71df3948bcc3bfc717`
@@ -21,7 +21,7 @@ Constitution原則、CMD-ROOT-001 / CMD-WORK-001の既存意味、既存mode SPE
 P-001 / `PROPOSAL.md`。ユーザーが具体的な9工程と適用範囲を確認し、「いいと思う。このデザインで行きましょう」と明示承認した。承認条件の追加なし。PR作成は本Work内、mainへのmergeは別review gate。
 
 ## Current Step
-承認された設計の辞書・テンプレート実装と文書整合性検証。
+命令とTemplateを実装。Static gates 9/9 PASS。Governance CI・ユーザーreview pending。
 
 ## Next Step
 変更範囲監査→Repository Governance CI→PRリンクでユーザーレビュー。mainへのmergeは別途指示待ち。

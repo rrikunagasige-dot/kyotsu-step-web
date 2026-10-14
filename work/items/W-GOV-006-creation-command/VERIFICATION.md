@@ -25,3 +25,24 @@ Check: complete command design visible to user, not silently merged.
 Expected: present reviewable PR
 Result: NOT-RUN
 Evidence: pending PR.
+
+## V-004 — Local static governance gates
+Date: 2026-10-14
+Target: branch `work/W-GOV-006-create-command-20261014`
+Checks:
+- Existing CMD-ROOT-001 and CMD-WORK-001 preserved.
+- CMD-WORK-002 unique; precisely four mode routes.
+- Source-provenance caveat for unavailable original Master Skill.
+- Exact Proposal→review feedback→revision/STOP→approval logic.
+- Actual app review and correction handoff.
+- Router contains all three registered commands.
+- Template contains original Word, source table, dependencies, figure/Fire graph and protected scope.
+- Markdown formatting has no stray `\\`` markers.
+Result: **PASS (9/9)**.
+Evidence: GitHub branch source inspection / static condition checks in this Work; separate repository Governance CI pending.
+
+## V-005 — Branch scope verification
+Date: 2026-10-14
+Target: base main `994f9634e2e5288b97887e71df3948bcc3bfc717`
+Result: **PASS**: no unexpected files, no behind_main, no `src/`, `public/`, `e2e/`, `Constitution`, `subjects/**`, CI / Pages modifications.
+Evidence: compare_commits GitHub API, pending final commit repeat.

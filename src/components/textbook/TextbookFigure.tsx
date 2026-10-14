@@ -22,7 +22,7 @@ type TextbookFigureProps = {
 export function TextbookFigure({ figure, items, progress, onOpen }: TextbookFigureProps) {
   return (
     <figure className="reading-figure" data-testid={`textbook-figure-${figure.id}`}>
-      <div className="textbook-figure-stage">
+      <div className={`textbook-figure-stage${figure.src.startsWith('/assets/math/textbook/sets/') ? ' textbook-figure-stage--math-set-svg' : ''}`}>
         <img src={resolveAssetSrc(figure.src)} alt={figure.alt} />
         {figure.overlays.map((overlay) => {
           const item = items.find((candidate) => candidate.id === overlay.itemId)

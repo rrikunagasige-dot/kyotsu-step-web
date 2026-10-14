@@ -1025,8 +1025,12 @@ test('P-003 complements are TeX operators, not singleton sets, in De Morgan choi
   await answerItem(page, 'set-e02', '重なり以外のU全体')
   await page.getByTestId('textbook-item-set-e03').click()
   const panel = page.getByTestId('inline-choice-panel-set-e03')
-  const formula = panel.getByTestId('textbook-choice-set-e03-0').locator('annotation[encoding="application/x-tex"]')
-  await expect(formula).toHaveText('\\overline{A}\\cup\\overline{B}')
+  // Option order is intentionally randomized; inspect both math sources by value.
+  const formulae = await panel.locator('.reading-choice-option annotation[encoding="application/x-tex"]').allTextContents()
+  expect(formulae).toHaveLength(2)
+  expect(formulae).toContain('\\overline{A}\\cup\\overline{B}')
+  expect(formulae).toContain('\\overline{A}\\cap\\overline{B}')
+  expect(formulae.every(latex => !latex.includes('\\{A\\}') && !latex.includes('\\{B\\}'))).toBe(true)
   await expect(panel.locator('.katex-error')).toHaveCount(0)
 })
 

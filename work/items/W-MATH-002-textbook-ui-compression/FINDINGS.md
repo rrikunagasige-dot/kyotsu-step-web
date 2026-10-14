@@ -69,3 +69,7 @@ Current grid applies 2 columns regardless of source answer size; wrapping inside
 
 ## F-020 — OPEN-QUESTION: F01 aesthetic difference
 Both `formula-d-a` and `formula-d-abar` already use the same `TextbookFormula` renderer; the preceding `U` definition is a mixed text/math paragraph. P-003 harmonizes reference-panel KaTeX sizing but exact subjective font/alignment acceptance remains user screen QA and must not be claimed solved from CI alone.
+
+
+## F-021 — ERROR-QA: randomized alternatives are not a fixed index
+Initial P-003 mobile run `38491225573`: 39/40 cases passed, new De Morgan assertion failed because test expected correct `\\cup` alternative at option index 0 while original getTextbookChoices intentionally shuffles. Actual index 0 contained the *valid original distractor* `\\cap`, and correctly normalized TeX had no singleton-set braces. Replaced positional assertion with unordered checks for both original math choices; did not alter source or randomization.

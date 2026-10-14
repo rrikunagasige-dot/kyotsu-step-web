@@ -46,3 +46,17 @@ Date: 2026-10-14
 Target: base main `994f9634e2e5288b97887e71df3948bcc3bfc717`
 Result: **PASS**: no unexpected files, no behind_main, no `src/`, `public/`, `e2e/`, `Constitution`, `subjects/**`, CI / Pages modifications.
 Evidence: compare_commits GitHub API, pending final commit repeat.
+
+## V-006 — Repository Governance PR CI and review handoff
+Date: 2026-10-14
+Target: `8f55df9aac585927350609474c2385515b1562b7`
+Check: repository-governance.yml / `node tools/repo-governance-check.mjs`
+Expected: SUCCESS
+Result: **SUCCESS** on source head (before these evidence-only Work-record updates).
+Evidence: [Workflow 38516262229](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38516262229).
+Follow-up: CI on final evidence-only documentation HEAD to be confirmed; no app build required since no app files changed.
+
+## V-007 — Review surface
+Date: 2026-10-14
+Target: [Draft PR #63](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/63)
+Result: **REVIEWABLE**; `main` not merged, no Pages deploy, no new textbook questions implemented. User approval required for promotion/merge. User acceptance not yet claimed.

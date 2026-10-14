@@ -30,7 +30,7 @@ Mandatory:
 - 原問題の条件・元図・設問・答え・問題間参照は勝手に書き換えない。
 - 他の版と出典が食い違う場合はOPEN-QUESTIONとして停止し、canonical判定を行う。
 
-## 2. Concepts, full reasoning, dependencies
+## 2. 概念・完全解法・依存関係 / Concepts and reasoning
 
 ### 2A Concept graph (textbook)
 

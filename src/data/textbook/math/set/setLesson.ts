@@ -59,7 +59,7 @@ const rawMathSetUnit = {
         },
         {
           id: 'subset-after',
-          src: '/assets/math/textbook/sets/subset-after.svg',
+          src: '/assets/math/textbook/sets/subset-after.png',
           alt: '集合Bが集合Aに含まれ、集合Cは一部がAの外側にある図',
           caption: '「要素が全部入っているか」が部分集合を判断する基準になる。',
           overlays: [],

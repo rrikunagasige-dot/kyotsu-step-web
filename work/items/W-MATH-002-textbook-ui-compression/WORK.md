@@ -1,6 +1,6 @@
 # W-MATH-002 — 数学学習モードの表示圧縮（教材本文不変）
 
-Status: IMPLEMENTING
+Status: VERIFYING
 Approved Proposal: P-001 and P-002 (released), P-003 (active, PR #60)
 Date: 2026-10-11
 Canonical target: `rrikunagasige-dot/kyotsu-step-web` (ID `1391122224`)
@@ -35,7 +35,7 @@ Exact P-002 approved for implementation; active branch `work/W-MATH-002-P-002-co
 P-003 UI fidelity fix is implemented in independent Draft PR #60 from main 9ea189a. Four defects F01–F04 are covered. Latest code head `2f0c3216879969804e17f718a4d657e39f4e64c9` passed all three CI workflows: Governance 38491685479, math practice 38491685536, math textbook 38491685502 (40 mobile + 40 desktop + 13 physics + 36 math practice tests). Browser user-acceptance remains pending and there is no P-003 deployment/merge authorization. Source curriculum untouched. See PROPOSAL_P-003.md and APPROVAL_P-003.md.
 
 ## Current P-004 step (2026-10-14)
-P-004 explicitly approved for implementing and releasing the figure-path fix into real Pages application after compiled-image CI. Work branch `work/W-MATH-002-P-004-published-figure-assets-20261014` based on `main` merge `7eaac5d`. Source lessons and 11 SVGs untouched; progress keys preserved. Investigation found risk in Vite production asset base expression and missing image decode QA. Current stage: PR/CI; do not mark DONE until all checks, production deploy and user review link. Exact proposal and approval in `PROPOSAL_P-004.md` / `APPROVAL_P-004.md`.
+P-004 explicitly approved for implementing and releasing the figure-path fix into real Pages application after compiled-image CI. Work branch `work/W-MATH-002-P-004-published-figure-assets-20261014` based on `main` merge `7eaac5d`. Source lessons and 11 SVGs untouched; progress keys preserved. Investigation found risk in Vite production asset base expression and missing image decode QA. Exact code head `8fbecea83992fdffc0090e197cd21147ce4599ae` passed production-image and all regression gates in Math textbook CI 38496386685. PR release is authorized; main merge and Pages success still to verify. Do not mark user visually accepted. Exact proposal and approval in `PROPOSAL_P-004.md` / `APPROVAL_P-004.md`.
 
 ## Historical next step (P-001)
 Present PR #57's StackBlitz GitHub-import browser launch route for user hands-on acceptance; explicitly distinguish this unverified import route from a verified deployed preview. No new Github Pages build/merge occurred. STOP before main merge, curriculum changes or GitHub Settings. Broader math-unit rollout requires another proposal.

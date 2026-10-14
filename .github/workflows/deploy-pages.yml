@@ -51,6 +51,11 @@ jobs:
         run: pnpm exec playwright test e2e/math-textbook-set-smoke.spec.ts e2e/math-practice-pilot.spec.ts --project=desktop-chromium
       - name: Build
         run: pnpm run build
+      # Catch production-only broken paths before uploading to GitHub Pages.
+      - name: P-004 compiled math SVG decode check
+        env:
+          E2E_USE_PREVIEW: '1'
+        run: pnpm exec playwright test e2e/math-textbook-set-smoke.spec.ts --grep P-004 --project=mobile-chromium --project=desktop-chromium
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:

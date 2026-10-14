@@ -71,3 +71,20 @@ Approved implementation source head `2f0c3216879969804e17f718a4d657e39f4e64c9` p
 - Compared main `9ea189a` and code head: only approved math reader rendering, normalizer/tests, style, P-003 original-figure reference and Work records touched. No modifications to accepted source lesson, original Word, answer data, figures/assets or modes' curricula.
 - The earlier 39/40 mobile failure was an invalid fixed-choice-index expectation; corrected and preserved in V-012, and clean run confirmed PASS.
 - **Not yet verified**: human visual acceptance of F01 appearance; there is no live P-003 version URL because Draft PR #60 is not merged. No release approval inferred from technical CI.
+
+## V-014 — P-004 verification contract / pending (2026-10-14)
+Base main 7eaac5d, work branch `work/W-MATH-002-P-004-published-figure-assets-20261014`. Tests added: actual figure images require `img.complete`, positive `naturalWidth/naturalHeight` and exact GitHub Pages subpath for unfilled Venn + filled intersection after answer; each of the existing 11 SVGs loaded and decoded with a browser Image object. Both mobile+desktop run from built `dist` via `E2E_USE_PREVIEW=1` and `vite preview` in PR and Pages deployment CI (before upload). No source lesson/assets or user progress changes. **PASS NOT CLAIMED** until exact-head CI and Pages deployment return SUCCESS. Never reset learners to simulate success.
+
+## V-015 — P-004 original production-smoke failure and controlled fix
+Initial commit `da695517ba4d4dabd1531ea98d2ae226b2656c9a`, CI `38496043891`: Governance PASS, typecheck/Vitest/build PASS, but the newly added *compiled* HTML image test **FAILED for mobile and desktop** (`<img>` present with correct path but `toBeVisible() = hidden`), while all existing SVG decode tests passed on both. Therefore no merge or release was performed; this test correctly detected a defect older dev smoke missed.
+CSS/image layout patch `8fbecea83992fdffc0090e197cd21147ce4599ae` adds explicit width and height based on source SVG viewBox and responsive stage sizing; **follow-up exact HEAD CI is required**. The user progress persistence code is untouched; no reset action.
+
+## V-016 — P-004 exact source code QA PASS (2026-10-14)
+Final code commit `8fbecea83992fdffc0090e197cd21147ce4599ae` (subsequent commits only Work documents): Math textbook CI **SUCCESS** https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38496386685
+- Typecheck, unit tests, built production preview: PASS.
+- Production Venn image displayed (including actual positive width/height) in mobile and desktop Chromium: PASS.
+- All 11 original Math Set SVG decoded and loaded from `/kyotsu-step-web/assets/math/textbook/sets/`: PASS.
+- Existing Math Textbook mobile and desktop: PASS; Physics textbook regression: PASS; Math practice setup regression: PASS.
+- Independent Math practice pilot CI **SUCCESS** https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38496386687; Governance PASS https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38496386686.
+- First test run failure `38496043891` preserved in V-015. No reset or source image alterations.
+Release gate: user authorized merged Pages release within P-004, but **main merge, deployment SUCCESS, and hands-on visual approval not yet claimed here**.

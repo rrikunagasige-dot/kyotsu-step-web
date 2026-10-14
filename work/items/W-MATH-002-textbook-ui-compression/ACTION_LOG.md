@@ -61,3 +61,9 @@ After user explicitly requested locations, proposals, then approved 「よろし
 
 ## A-012 — Test assumption repair (2026-10-14)
 Inspected Actions logs `38491225573`: P-003 new De Morgan E2E incorrectly expected `\\cup` at choice index 0 despite intentional option shuffle. Replaced with order-independent assertion checking both original choices are correctly rendered, without changing educational data or production choice order. Rerun required before PASS or main release.
+
+## A-013 — P-004 investigation and targeted fix (2026-10-14)
+User screenshot: figure caption shown but SVG rectangle empty at intersection. No reset was performed; previously answered set-b01 appeared resolved. Inspected main 7eaac5d: all 11 math set SVG assets and source figure references already present, but TextbookFigure resolved prefixes through optional `import.meta.env?.BASE_URL`, unlike Vite's documented direct constant. Existing E2E only checked container visibility under Vite dev server. P-004 branch changes asset prefix to direct `import.meta.env.BASE_URL`, adds compiled-output Playwright preview mode, visible figure `img.complete/naturalWidth/naturalHeight/src` checks plus all eleven SVG browser decode checks. CI and Pages publication are gated on compiled preview smoke before upload. No reset, asset rewrite, new diagram, or content changes.
+
+## A-014 — Follow-up figure display fix after actual production test failure (2026-10-14)
+Run 38496043891 demonstrated all 11 existing source SVGs load but Venn `img` element remains hidden on PC and mobile. Source SVG metadata checked: seven 640x360 Venn/subset/De Morgan diagrams and four 720x220 number-line diagrams, all `viewBox` only. Added math-set-specific responsive image stage CSS and explicit matching `<img width height>` metadata. Physics figure sizing remains untouched. No reset, no source SVG changes. Re-run CI is the deciding gate.

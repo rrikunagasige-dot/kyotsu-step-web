@@ -1065,3 +1065,65 @@ test('P-003 long real-line choices use one card per option and two meaningful ma
   }))
   expect(viewport.scrollWidth).toBeLessThanOrEqual(viewport.clientWidth + 1)
 })
+
+test('P-004 production figure elements load and decode actual SVG pixels in the app', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/math-sets'))
+  await completeFirstSetsSlice(page)
+
+  const blank = page.getByTestId('textbook-figure-venn-two-blank').locator('img')
+  await expect(blank).toBeVisible()
+  await expect.poll(async () => blank.evaluate((img: HTMLImageElement) => ({
+    complete: img.complete,
+    hasWidth: img.naturalWidth > 0,
+    hasHeight: img.naturalHeight > 0,
+    path: new URL(img.currentSrc).pathname,
+  }))).toEqual({
+    complete: true,
+    hasWidth: true,
+    hasHeight: true,
+    path: '/kyotsu-step-web/assets/math/textbook/sets/venn-two-blank.svg',
+  })
+
+  await answerItem(page, 'set-b01', '3, 5, 7')
+  const intersection = page.getByTestId('textbook-figure-venn-intersection').locator('img')
+  await expect(intersection).toBeVisible()
+  await expect.poll(async () => intersection.evaluate((img: HTMLImageElement) => ({
+    complete: img.complete,
+    hasWidth: img.naturalWidth > 0,
+    hasHeight: img.naturalHeight > 0,
+    path: new URL(img.currentSrc).pathname,
+  }))).toEqual({
+    complete: true,
+    hasWidth: true,
+    hasHeight: true,
+    path: '/kyotsu-step-web/assets/math/textbook/sets/venn-intersection.svg',
+  })
+})
+
+test('P-004 all eleven existing math-set SVG assets load and decode under production base', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/math-sets'))
+  const names = [
+    'venn-two-blank.svg', 'venn-intersection.svg', 'venn-union.svg',
+    'subset-after.svg', 'complement-after.svg',
+    'demorgan-intersection-complement.svg', 'demorgan-union-complement.svg',
+    'number-line-a.svg', 'number-line-b.svg', 'number-line-abar.svg', 'number-line-bbar.svg',
+  ]
+  const results = await page.evaluate(async (files: string[]) => {
+    return await Promise.all(files.map(async name => {
+      const src = '/kyotsu-step-web/assets/math/textbook/sets/' + name
+      return await new Promise<{ name: string, loaded: boolean, width: number, height: number, path: string }>((resolve) => {
+        const img = new Image()
+        img.onload = () => resolve({ name, loaded: true, width: img.naturalWidth, height: img.naturalHeight, path: new URL(img.src).pathname })
+        img.onerror = () => resolve({ name, loaded: false, width: 0, height: 0, path: new URL(img.src).pathname })
+        img.src = src
+      })
+    }))
+  }, names)
+  expect(results).toHaveLength(11)
+  for (const item of results) {
+    expect(item.path, item.name).toBe('/kyotsu-step-web/assets/math/textbook/sets/' + item.name)
+    expect(item.loaded, item.name).toBe(true)
+    expect(item.width, item.name).toBeGreaterThan(0)
+    expect(item.height, item.name).toBeGreaterThan(0)
+  }
+})

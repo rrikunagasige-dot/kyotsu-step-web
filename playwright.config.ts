@@ -22,7 +22,8 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'pnpm dev --host 127.0.0.1',
+    // E2E_USE_PREVIEW=1 serves the compiled dist exactly as GitHub Pages would.
+    command: process.env.E2E_USE_PREVIEW === '1' ? 'pnpm exec vite preview --host 127.0.0.1' : 'pnpm dev --host 127.0.0.1',
     url: 'http://127.0.0.1:4173',
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,

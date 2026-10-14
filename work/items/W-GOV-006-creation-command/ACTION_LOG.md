@@ -30,3 +30,9 @@ Date: 2026-10-14
 Target: `governance/INSTRUCTION_DICTIONARY.md`、`work/templates/CREATION_DESIGN.md`.
 Action: Generated markdownに意図しないescaped backtickが76個混入していることを静的検査で発見し、Markdown記法を復元。テンプレートの「依存関係」見出しを明示。
 Result: 9項目のstatic gateを再確認し全てPASS。CI pending.
+
+## A-006 — GitHub PR and Governance CI
+Date: 2026-10-14
+Target: [PR #63](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/63)
+Action: 独立feature branchで承認済み変更を提出、差分をapproved filesのみと監査。
+Result: Draft PR #63 created; [Repository Governance workflow 38516262229](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38516262229) SUCCESS on implementation head `8f55df9aac585927350609474c2385515b1562b7`. Mainは未変更。ユーザーレビュー・mergeは独立ゲート。

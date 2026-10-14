@@ -56,3 +56,16 @@ Stage anchor IDs, all 15 stage boundaries, original readingFlow and answer IDs r
 
 ## F-016 — ERROR-QA: 2026-10-14 first P-002 mobile CI regression
 Initial P-002 mobile test run `38425132500`: 36/37 tests PASS, one existing assertion in `correct answer fills the sentence and unlocks the next learning step` expected `math-textbook-stage-gather` always visible immediately after moving forward. This contradicts the newly approved **closed-by-default history** behavior and is a stale E2E assumption, not proof that the lesson has disappeared. Updated it to assert history initially absent, then explicitly open history, inspect original and preserve full restore. Follow-up CI must rerun; initial failure preserved.
+
+
+## F-017 — ERROR-IMPLEMENTATION: TeX normalization changes grouping into singleton-set braces
+Source answers of five math set items (e03/e05/e07/e08/f12) are correct `\\overline{A}` but shared `normalizeTextbookMath` matches the command grouping `{A}` as an unescaped set literal; it creates `\\overline\\{A\\}` and changes mathematical meaning. Explicit tests protect TeX commands, radicals, vectors, subscripts and plain finite sets. Renderer / TeX library alone was not the root.
+
+## F-018 — CONFIRMED: existing asset for d08/d09/d10
+Source block `figure-d-complement` exists before d03 at setOutsideSlice.ts 107, mapped to original `public/assets/math/textbook/sets/complement-after.svg`, with no overlays. It is appropriate after earlier A-complement has been introduced; do not use as an incorrect B-only complement diagram or before learner discovers the concept. Past-stage compaction hides it; P-003 introduces a safe post-definition reference.
+
+## F-019 — ERROR-IMPLEMENTATION: fixed-width 2-column math alternatives
+Current grid applies 2 columns regardless of source answer size; wrapping inside mathematical typography for `set-f11` results in unreadable lines. Original choice uses `\\quad` between two equations; P-003 preserves the same full answer value, only presents two separate math lines inside a full-width option card.
+
+## F-020 — OPEN-QUESTION: F01 aesthetic difference
+Both `formula-d-a` and `formula-d-abar` already use the same `TextbookFormula` renderer; the preceding `U` definition is a mixed text/math paragraph. P-003 harmonizes reference-panel KaTeX sizing but exact subjective font/alignment acceptance remains user screen QA and must not be claimed solved from CI alone.

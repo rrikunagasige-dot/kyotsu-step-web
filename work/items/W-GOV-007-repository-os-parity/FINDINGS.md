@@ -1,0 +1,82 @@
+# Findings — W-GOV-007
+
+## F-001
+Date: 2026-10-11
+Type: CONFIRMED
+Statement: Main OS skeleton already exists. `governance/` 6/6, `subjects/` 8/8, Work templates 5/5. `WORK_SYSTEM`, `COMMAND_WORDS`, `CHANGE_PROTOCOL`, all five Work templates are exact upstream Git blob matches.
+Evidence: Compare Paul main Git tree `b6687b5` and target main `be98aa0`.
+Impact: Do NOT reinvent/rewrite the rules; concentrate on routing/integration/enforcement.
+Promote to Decision: NO
+
+## F-002
+Date: 2026-10-11
+Type: CONFIRMED
+Statement: Old `memory/DECISIONS/` seven files, four W-GOV Work groups and six `technical/` files are saved in the target's historical Paul import, not lost. Target technical/backend and current published subject material differ.
+Evidence: `history/imports/paulfields83-20261010/`, `governance/DOCUMENT_AUTHORITY.md`, `technical/README.md`.
+Impact: Index and distinguish history, never bulk-promote as live target canonical.
+
+## F-003
+Date: 2026-10-11
+Type: RISK
+Statement: `README.md` still largely describes an older initial app, and OS routing is confined to a prefatory note rather than a useful top-level human/AI navigation map.
+Evidence: target README vs old Paul README.
+Impact: Minimally add OS-first routing and historically label previous app prose without deleting it.
+
+## F-004
+Date: 2026-10-11
+Type: RISK
+Statement: Existing main governance CI checks structural assertions. W-GOV-006 #53's stronger policy and hash tests only run for one named proposal branch. Both upstream and target main are currently unprotected and have zero rulesets.
+Evidence: GitHub branch/rulesets API; `.github/workflows/repository-governance.yml` on main and PR #53.
+Impact: Generalize future PR scope audit but keep pilot non-required; human approval is not cryptographically established. Settings require different approval.
+
+## F-005
+Date: 2026-10-11
+Type: CONFIRMED
+Statement: Target existing published Math/Physics modes have their own accepted source and do not have the same deployment or backend state as Paul.
+Evidence: `AGENTS.md`, `navigation/MODE_STATE_2026-10-10.md`, `CHATGPT_README_FIRST.md`, archived import README.
+Impact: Preserve all app and lesson sources, refuse upstream wholesale copy.
+
+## F-006
+Date: 2026-10-11
+Type: RISK
+Statement: “GitHub rules strictly execute” has separate meanings: agents following docs; CI detecting many violations; GitHub actually blocking merges. Only the second is partially implemented; human consent and actual agent reading cannot be proven from a Git text marker.
+Evidence: `governance/WORK_SYSTEM.md`, W-GOV-006 test results, main settings.
+Impact: Report separate verification and authorization states; never advertise 100% guarantee.
+
+
+## F-007
+Date: 2026-10-11
+Type: CONFIRMED
+Statement: New generic Work integrity pilot is read-only for the target repository and implements file-scoped verdicts PROPOSAL_ONLY / SCOPE_PASS_HUMAN_REVIEW_REQUIRED / REVIEW_REQUIRED / FAIL. It never grants actual merge authority.
+Impact: Preserve human review for consent. A Git object and even the recorded approval quote can be tampered with together; SHA anchoring only detects unexpected inconsistency, not who approved.
+
+
+## F-008
+Date: 2026-10-11
+Type: ERROR-IMPLEMENTATION
+Statement: First independent policy test run failed 15 fixture checks due to a single ReferenceError (`changes is not defined`), not due to intended scope policy. README added code ticks were escaped.
+Evidence: GitHub Actions 38072923508; corrected new tests/README in A-005.
+Impact: Must rerun; never report first run as PASS.
+
+
+## F-009
+Date: 2026-10-11
+Type: ERROR-QA
+Statement: First corrected test set reached 20 PASS / 1 FAIL; the one FAIL was a malformed double-slash allowedPaths fixture for the valid positive case. Fixed as A-006.
+Impact: New green run must be observed; no false full PASS claims.
+
+
+## F-010
+Date: 2026-10-11
+Type: CONFIRMED
+Statement: PR #55 cross-Work policy passes 21 positive/negative plus recovery-route tests, audits the true PR changed paths, and reports humanApprovalVerified:false. No migration of user-approved Math/Physics materials occurred (406/406 protected blobs untouched). Need separate product regression and an actually isolated Agent test to validate beyond static routing.
+Evidence: GitHub Actions 38073085840 and Git tree scope audit.
+Impact: Keep Work VERIFYING. No claim of complete autonomous obedience or permission to merge.
+
+
+## F-011
+Date: 2026-10-11
+Type: CONFIRMED
+Statement: GitHub Actions 38073231132 passed all three independent jobs. Old Paul-style README/Work route, generic per-PR advisory and published Math/Physics code protection are working within tested scope.
+Evidence: https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38073231132 ; recursive tree 406/406 SHA.
+Impact: Ready for human review of Draft implementation PR #55, but no claim of enforced future branch protection and no proof of a memoryless separate AI's real behavior. Main merge needs new explicit user consent.

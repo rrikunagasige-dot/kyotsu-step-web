@@ -11,3 +11,7 @@ Last completed Work: `W-GOV-005`, [governance PR #49](https://github.com/rrikuna
 
 ## Next Work policy
 The governance port is complete. Continue to verify the real live `main` HEAD on each new task; do not assume checkpoint HEAD is still current. Imported mode SPECs remain CANONICAL-CANDIDATE. Any content revision, example redesign, figure work, or cleanup requires a new approved Work. Avoid idle CI status polling and always include a real review link.
+
+
+## W-GOV-007 execution (2026-10-11; branch only)
+The user replied 「我觉得可以继续」 to the exact P-001 implementation authorization request. This permits R0–R5 within the reviewed W-GOV-007 scope, but **not** merge to main, GitHub Settings, or changes to Math/Physics original files. Current feature work adds the old-Paul-style README entry route and cross-Work audit in advisory mode. Always distinguish Work proposal, code scope, human consent and merge authorization.

@@ -12,3 +12,21 @@ Date: 2026-10-14
 Target: `work/items/W-GOV-006-creation-command/WORK.md`, `PROPOSAL.md`.
 Reason: 明示承認済みの仕様/実施範囲をコード作業前にWork OSとして記録する。
 Result: Approval evidence preserved; app code excluded.
+
+## A-003 — Instruction Dictionary + router update
+Date: 2026-10-14
+Target: `governance/INSTRUCTION_DICTIONARY.md` v1.4.0; `governance/COMMAND_WORDS.md` v1.2.0.
+Action: 既存Root/修正を保持してCMD-WORK-002「作成」を登録。四モード・元問題集/教科書・教訓・Proposal STOP・user QA/修正handoffを定義。
+Result: Registered on independent feature branch only.
+
+## A-004 — Creation design and reusable lessons
+Date: 2026-10-14
+Target: `work/templates/CREATION_DESIGN.md`、`memory/LESSONS/CREATION_SOURCE_AND_MODE_ROUTING.md`.
+Action: source対応表、概念/問題内外依存、完全解法、穴、図、UI、approval、validationの記録templateとrouter教訓を作成。
+Result: Documentation-only. App code and mode sources unchanged.
+
+## A-005 — Static QA + repair
+Date: 2026-10-14
+Target: `governance/INSTRUCTION_DICTIONARY.md`、`work/templates/CREATION_DESIGN.md`.
+Action: Generated markdownに意図しないescaped backtickが76個混入していることを静的検査で発見し、Markdown記法を復元。テンプレートの「依存関係」見出しを明示。
+Result: 9項目のstatic gateを再確認し全てPASS。CI pending.

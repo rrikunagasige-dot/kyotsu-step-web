@@ -1,8 +1,8 @@
 # Command Word — 「憲法から」
 
 Status: CANONICAL
-Version: 1.1.0
-Updated: 2026-10-07
+Version: 1.2.0
+Updated: 2026-10-14
 
 ## Definition
 
@@ -186,3 +186,21 @@ Recovery / Reconstructionまで行い、変更しない。
 ## One-line semantic
 
 **「憲法から」 = 正式記憶から現在状態と対象Workを復元し、承認状態を判定し、許可された段階まで作業し、正誤・操作・検証を記録して次Chatへ引き継げる状態にする。**
+
+---
+
+## Work-command router — 「作成」と「修正」
+
+このファイルの「憲法から」の定義はそのまま維持する。GitHubの上位命令を起動したらまず `governance/INSTRUCTION_DICTIONARY.md` と照合する。
+
+| Canonical phrase | Command ID | 意味 / 起動先 |
+| --- | --- | --- |
+| `憲法から` | `CMD-ROOT-001` | Repository OSとWorkの復元。独立した実装許可ではない |
+| `修正` | `CMD-WORK-001` | 既存成果物の不具合の特定→修正案→承認→実装 |
+| `作成` | `CMD-WORK-002` | 原問題集/教科書→全問題/概念の特定→モード別教訓→設計案→承認→教材/アプリ作成→実画面QA |
+
+両Work Commandとも、未承認のProposalで実装してはならない。「作成」の合格後に次の章へ進めるか判断し、不合格なら「修正」へhandoffする。ユーザーが「作成」だけを指示して素材/範囲が未確定なら資料・対象モードなど最低限を確認する。
+
+新しいCommandは現行の `CMD-ROOT-001` / `CMD-WORK-001` を上書きせず、追加するもの。Modeの切り分け、必読教訓、承認/QA/レビュー、除外事項の詳細は指示辞書の `CMD-WORK-002` が正本。
+
+「似ている指示」の同一視やAliasの独断登録は禁止。辞書のEXACT/SIMILAR/UNKNOWNルールに従う。

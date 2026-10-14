@@ -1,8 +1,8 @@
 # 指示辞書 / Instruction Dictionary
 
 Status: CANONICAL
-Version: 1.3.0
-Updated: 2026-10-08
+Version: 1.4.0
+Updated: 2026-10-14
 
 ## Purpose
 
@@ -254,6 +254,106 @@ Rules:
 
 ユーザーから「それは違う」と訂正された内容は、適切なERROR findingとして残す。
 正しいと確認された重要事項はCONFIRMEDとして残す。
+
+---
+
+## CMD-WORK-002 — 作成
+
+Status: ACTIVE  
+Class: WORK  
+Priority: NORMAL  
+Canonical Phrase: **作成**
+
+### Purpose
+
+数学・物理の新しい章・問題導入のため、ユーザーが指定/提供する**原問題集（Word等）または教科書（PDF・Word等）**を起点に、問題/概念を漏れなく特定し、対象モードの教訓に従って、設計→明示承認→教材/アプリ作成→検証→ユーザーレビューまで進める。
+
+「作成」は**無条件にコードや問題を作り始める許可ではない**。完成/本番公開とも同義ではない。
+
+### Preconditions — identity, source, mode
+
+1. `CMD-ROOT-001`のrepo identityと現行main/Repository OSを復元し、Work OSを照合する。
+2. 原資料を確定する: Word問題集 / 教科書 / PDF / 既存教材。出典、版、章範囲、問題番号、元図、利用可否、original vs newly authoredを記録する。ファイル名の「完成版」だけでcanonicalとしない。
+3. 対象の科目とモードを**数学/物理 × 教科書/練習**から特定する。特定できなければ確認して停止。Simulationは練習へ黙って統合しない。
+4. 既存問題のguided化と、教科書を根拠にした**新規導入問題・例題の作成**を区別する。既存原問題の条件・図・正解・小問間の参照は無断変更しない。
+5. 元資料/母版を読み取れない、正本・権限・対象範囲が曖昧、教訓に矛盾がある場合は `BLOCKED` / `OPEN-QUESTION` とし、推測による大量生産を止める。
+
+### Required mode routing — do not mix pedagogy
+
+| Target | Starting authority and pedagogical route |
+| --- | --- |
+| 数学・教科書/学習 | `subjects/mathematics/textbook/SPEC.md` と正本教材/ユーザー承認済み本文。具体的な問い→概念→性質→証明（必要時のみ）→例題。元のMath Master Skillの現物が未確認なら読了扱いにしない。 |
+| 数学・練習 | `docs/MATH_PRACTICE_MASTER_LESSONS.md` を必読。該当時 `docs/MATH_PRACTICE_87_120_STRUCTURE_MAP.md`。元問題→完全解法→問題内/問題間依存→thinking nodes→holes/choices→段階解放。 |
+| 物理・教科書/学習 | `docs/physics-ch01/LEARNING_TEXT_WRITING_RULES.md`、`FORMULA_DERIVATION_RULES.md`、`CH1_USER_QA_DESIGN_LESSONS.md` と `subjects/physics/textbook/SPEC.md`。現象→図/文章→量/式→導出→意味→例題。 |
+| 物理・練習 | `subjects/physics/practice/SPEC.md` と `docs/QUESTION_SCHEMA.md`、原問題・承認済みguided例。元問題→形式分類→推論ガイド→元選択肢で最終回答。Simulationは別。 |
+
+共通の**技術/文章/デザイン**教訓: `docs/MASTER_APP_LESSONS.md`、`docs/MATH_RENDERING_RULES.md`、`docs/INFORMATION_ARCHITECTURE_RULES.md`、対応する `memory/LESSONS/` と現行アプリのsource/テスト。これらは各モードのより具体的な承認済み教訓を上書きしない。
+
+原典 `MATHEMATICS_TEXTBOOK_MODE_MASTER_SKILL_v1` / `SCIENTIFIC_WRITING_MASTER_SKILL_2026-09-24` 等を根拠とする場合、正本の所在/アクセスを確認する。現物を読めなければ未確認と明記し、既存要約を原本と取り違えない。
+
+### Expanded behavior — nine stages
+
+```text
+① 原資料受付・source authority/coverage特定
+ ↓
+② subject / mode / newly authored vs guided source を固定
+ ↓
+③ 問題・概念・性質・例題・証明・図を全件棚卸し
+   → 問題対応表 / 概念グラフ / 問題間依存
+ ↓
+④ 対象modeの文章・技術・教育教訓を探して照合
+   → 衝突と不足原典は報告し、推測しない
+ ↓
+⑤ mode別作成案 + 火柴図（詳しいノードはIDで参照）
+   → 思考ステップ/図位置/穴/文章/UI/QA/Do Not Touch
+ ↓
+⑥ exact Proposal をユーザーへ提示
+   ├─ 条件追加・修正コメント → REVISE-PROPOSAL
+   │                           → 改訂案を全文提示 → STOP
+   └─ 明示承認 → APPROVED
+                 ↓
+⑦ 承認範囲で教材/アプリ作成（まず代表単位で検証）
+ ↓
+⑧ 数理・文章・図・依存・answer leakage・実UI/回帰を検証
+ ↓
+⑨ 実物のreview linkを渡してユーザーが確認
+   ├─ 合格 → acceptance証拠 + Work/Memory Close、次単元へ
+   └─ 不合格 → 問題と証拠を記録 → CMD-WORK-001「修正」へ
+```
+
+### Required design artifact
+
+⑤では少なくとも `work/templates/CREATION_DESIGN.md` の項目を埋める:
+
+- 出典→問題/概念→作成ノードの対応表（coverage/除外理由）
+- 演習なら完全解法・問題内/問題間`depends_on`/再利用結果
+- 学習なら導入動機→意味→名称→性質→必要な証明→例題、表現の往復
+- 図が必要なノードと配置、図の出典、未解答漏洩リスク
+- 記述→holes/choices/feedback→画面での提示順
+- 章/テーマ見出し、既存state/IDs保護、Do Not Touch
+- 作成対象ごとのテスト・レビュー・合格条件
+
+図を作るか否かも**設計時に**判断し、存在しない図を捏造して作る必要はない。原問題と既存正本の図を優先する。長い制作では一括量産せず代表単位の実機レビューで適用可否を確認する。
+
+### Approval and modification rules
+
+- この命令を受けた時点では資料読解/設計はできるが、**未承認Proposalの教材・アプリ実装は不可**。既にexact Proposalが承認済みなら同じ承認を聞き直さない。
+- `REVIEW-FEEDBACK ≠ APPROVAL`、`REVISE-PROPOSAL`、明示再承認などは `governance/WORK_SYSTEM.md` と `CMD-WORK-001` の承認規則に従う。
+- 教科書モードの対話/概念導入を練習モードへ自動移植しない。練習モードのUI圧縮を教材本文変更と混同しない。
+- source fidelity、Stable ID、学習進捗、他subject/mode、原資料、既存acceptanceを守る。承認範囲外の生成/変更は別Proposal。
+- `main`のmerge/Pages公開は実装承認と区別し、既存release rulesと当該Workの権限に従う。
+
+### Completion / review-link handoff
+
+`DONE`は技術QAだけでなく対象教材のユーザーhands-on acceptanceとMemory Closeを確認してから。技術PASSは「ユーザー合格」ではない。
+
+レビュー可能な地点で **実アプリ/プレビュー → PR → branch** の順で使えるリンクを必ず提示する。リンクの実在/動作は確認し、ない場合はその理由と代替リンクを示す。
+
+不合格なら観測された具体的問題を `FINDINGS.md` に記録し、`CMD-WORK-001` の調査→修正案→承認→修正→再検証へ渡す。次単元の「作成」へ進む前に現在の受入状態を明示する。
+
+### Work records
+
+`WORK.md` / `PROPOSAL.md` / `ACTION_LOG.md` / `FINDINGS.md` / `VERIFICATION.md` と図・対応表・検証証拠を必要範囲で保持。完了時に耐久性のある教訓のみ適切なmodeの`memory/LESSONS/`または詳細`docs/`へ昇格する。
 
 ---
 

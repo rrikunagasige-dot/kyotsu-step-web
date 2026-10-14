@@ -367,6 +367,11 @@ a { color: inherit; }
 .reading-figure figcaption { color: var(--color-muted); font-size: .74rem; text-align: center; }
 .textbook-figure-stage { position: relative; width: fit-content; max-width: 100%; margin: 0 auto; }
 .textbook-figure-stage > img { display: block; width: auto; max-width: 100%; height: auto; max-height: 560px; object-fit: contain; image-rendering: auto; }
+/* Existing math-set SVGs have viewBox but no intrinsic width/height attributes.
+   Explicit stage width avoids a fit-content/auto sizing cycle collapsing the image
+   while leaving physics raster figure sizing untouched. */
+.textbook-figure-stage--math-set-svg { width: min(100%, 720px); }
+.textbook-figure-stage--math-set-svg > img { width: 100%; height: auto; }
 .textbook-figure-overlay { position: absolute; display: grid; min-width: 24px; min-height: 24px; place-items: center; padding: 0; border: 2px solid var(--color-primary); color: var(--color-primary); cursor: pointer; }
 .textbook-figure-overlay > span { padding: .1rem .22rem; background: var(--color-paper); font: 700 .62rem/1 ui-monospace, monospace; }
 .textbook-figure-overlay--mask { background: var(--color-paper); box-shadow: 0 0 0 2px rgba(255,255,255,.72); }

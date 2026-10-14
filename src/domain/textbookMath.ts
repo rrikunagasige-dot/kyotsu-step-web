@@ -70,6 +70,8 @@ export function normalizeTextbookMath(value: string) {
   next = next.replace(/\{([\-0-9A-Za-z,+\s]+)\}/g, (match, members: string, offset: number, source: string) => {
     const before = source.slice(0, offset)
     if (before.endsWith('\\') || /\\[A-Za-z]+\*?$/.test(before) || /[_^]$/.test(before)) return match
+    // A two-argument TeX command has a second group after the first closing brace.
+    if (/\\[A-Za-z]+\*?\{[^{}]*\}$/.test(before)) return match
     return `\\{${members}\\}`
   })
   next = normalizeUnicodeRadicals(next)

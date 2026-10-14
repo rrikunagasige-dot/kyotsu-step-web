@@ -54,3 +54,8 @@ P-002 implementation is on a new feature branch. Source code modifies only math-
 
 ## V-011 — P-003 pre-CI audit / release gate (2026-10-14)
 Draft PR #60 from source HEAD `9ea189a`: only math presentation registry, shared TeX normalization (with unit tests), textbook reader/CSS/E2E, CI-selected setLesson tests, and Work records changed. Original lesson source `setOutsideSlice.ts`, `setRealLineSlice.ts`, `setLesson.ts`, assets and answer IDs untouched. Regression tests added for original SVG, TeX-group preservation across five formula items, 320px two-line `set-f11`. Pending independent exact-head Governance/CI. Do not mark SUCCESS until result and user visual QA.
+
+
+## V-012 — P-003 initial exact-head CI (2026-10-14)
+- On source commit `4a8e78f70b922270f293ea00f675d17d0bac34a8`, Governance SUCCESS, math practice independent CI SUCCESS; math textbook Typecheck, original and P-003 unit tests, and Build SUCCESS.
+- Mobile E2E: **39 passed, 1 failed**. Failed assertion assumed fixed choice ordering; source/app behavior legitimately randomizes choice order. It was an invalid test expectation, not evidence of a broken mathematical renderer. Corrected at commit `093eecd57756c6b1a88f372cafee51ecf9d07471` with unordered checks; follow-up latest-head CI pending. Do not overwrite this initial failure.

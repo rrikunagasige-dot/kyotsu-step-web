@@ -201,6 +201,11 @@ function TextbookReadingFlow({ unit, section, progress, onSummaryReached }: {
   const activeItem = activeItemId ? section.items.find((item) => item.id === activeItemId) : undefined
   const activeRecord = activeItem ? currentProgress?.answers[activeItem.id] : undefined
   const activeChoices = activeItem ? getTextbookChoices(unit, activeItem) : []
+  // Wide mathematical alternatives must not be forced into two narrow cards.
+  // This is a presentation-only decision; original answer/choice strings are preserved.
+  const wideMathChoices = unit.subject === 'math-1a'
+    && activeItem?.answerType === 'formula'
+    && activeChoices.some(choice => choice.length > 27 || choice.includes('\\quad'))
   const activeHint = activeItem && activeRecord && !isTextbookItemResolved(activeItem, activeRecord) && activeRecord.attemptCount > 0 && activeItem.hints.length
     ? activeItem.hints[Math.min(activeRecord.attemptCount - 1, activeItem.hints.length - 1)]
     : undefined
@@ -251,7 +256,11 @@ function TextbookReadingFlow({ unit, section, progress, onSummaryReached }: {
             <span>{activeHint}</span>
           </div>
         )}
-        <div className="reading-choice-options" role="group" aria-label={interactionPrompt(activeItem, text, unit.subject)}>
+        <div
+          className={`reading-choice-options${wideMathChoices ? ' reading-choice-options--math-wide' : ''}`}
+          role="group"
+          aria-label={interactionPrompt(activeItem, text, unit.subject)}
+        >
           {activeChoices.map((choice, index) => {
             const isLastWrongChoice = unit.subject === 'math-1a'
               && Boolean(activeRecord)
@@ -270,7 +279,15 @@ function TextbookReadingFlow({ unit, section, progress, onSummaryReached }: {
               <span>{index + 1}</span>
               <strong>
                 {activeItem.answerType === 'formula'
-                  ? <InlineMath math={normalizeTextbookMath(choice)} />
+                  ? (
+                    <span className="reading-choice-formula-lines">
+                      {choice.split(/\\\\quad\\s*/).map((line, lineIndex) => (
+                        <span className="reading-choice-formula-line" key={lineIndex}>
+                          <InlineMath math={normalizeTextbookMath(line.trim())} />
+                        </span>
+                      ))}
+                    </span>
+                  )
                   : choice}
               </strong>
               {activeItem.unit && <small>{activeItem.unit}</small>}
@@ -487,17 +504,25 @@ function TextbookReadingFlow({ unit, section, progress, onSummaryReached }: {
                           return (
                             <div className="math-textbook-stage-reference" key={blockId} data-testid={'math-textbook-context-' + blockId}>
                               {isFigure ? (
-                                <>
-                                  <button
-                                    type="button"
-                                    data-testid={'math-textbook-reference-' + blockId}
-                                    aria-expanded={open}
-                                    onClick={() => setExpandedReference(open ? null : blockId)}
-                                  >
-                                    {open ? text('図を閉じる', '收起图形') : text('前に学んだ図を見る', '查看之前学过的图形')}
-                                  </button>
-                                  {open && <div className="math-textbook-stage-reference-content">{renderBlock(source)}</div>}
-                                </>
+                                // This pre-existing, already-learned complement diagram is necessary
+                                // for d08–d10. Keep other figures optional to avoid long pages.
+                                blockId === 'figure-d-complement' ? (
+                                  <div className="math-textbook-stage-reference-content math-textbook-stage-reference-content--figure" data-testid={'math-textbook-reference-' + blockId}>
+                                    {renderBlock(source)}
+                                  </div>
+                                ) : (
+                                  <>
+                                    <button
+                                      type="button"
+                                      data-testid={'math-textbook-reference-' + blockId}
+                                      aria-expanded={open}
+                                      onClick={() => setExpandedReference(open ? null : blockId)}
+                                    >
+                                      {open ? text('図を閉じる', '收起图形') : text('前に学んだ図を見る', '查看之前学过的图形')}
+                                    </button>
+                                    {open && <div className="math-textbook-stage-reference-content">{renderBlock(source)}</div>}
+                                  </>
+                                )
                               ) : (
                                 <div className="math-textbook-stage-reference-content" data-testid={'math-textbook-reference-' + blockId}>
                                   {renderBlock(source)}

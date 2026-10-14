@@ -281,7 +281,7 @@ function TextbookReadingFlow({ unit, section, progress, onSummaryReached }: {
                 {activeItem.answerType === 'formula'
                   ? (
                     <span className="reading-choice-formula-lines">
-                      {choice.split(/\\\\quad\\s*/).map((line, lineIndex) => (
+                      {choice.split('\\quad').map((line, lineIndex) => (
                         <span className="reading-choice-formula-line" key={lineIndex}>
                           <InlineMath math={normalizeTextbookMath(line.trim())} />
                         </span>

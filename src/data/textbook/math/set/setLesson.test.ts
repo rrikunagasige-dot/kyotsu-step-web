@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { mathSetUnit } from './setLesson'
 import { partitionMathSetReadingFlow, mathSetRequiredContextByItemId, requiredMathSetContext } from '../presentation'
-import { normalizeTextbookMath } from '../../../domain/textbookMath'
+import { normalizeTextbookMath } from '../../../../domain/textbookMath'
 
 describe('math set textbook unit', () => {
   it('keeps the first slice as one continuous math lesson', () => {

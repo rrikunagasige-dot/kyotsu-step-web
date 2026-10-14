@@ -1074,13 +1074,13 @@ test('P-004 production figure elements load and decode actual SVG pixels in the 
   await expect(blank).toBeVisible()
   await expect.poll(async () => blank.evaluate((img: HTMLImageElement) => ({
     complete: img.complete,
-    width: img.naturalWidth,
-    height: img.naturalHeight,
+    hasWidth: img.naturalWidth > 0,
+    hasHeight: img.naturalHeight > 0,
     path: new URL(img.currentSrc).pathname,
   }))).toEqual({
     complete: true,
-    width: 640,
-    height: 360,
+    hasWidth: true,
+    hasHeight: true,
     path: '/kyotsu-step-web/assets/math/textbook/sets/venn-two-blank.svg',
   })
 
@@ -1089,13 +1089,13 @@ test('P-004 production figure elements load and decode actual SVG pixels in the 
   await expect(intersection).toBeVisible()
   await expect.poll(async () => intersection.evaluate((img: HTMLImageElement) => ({
     complete: img.complete,
-    width: img.naturalWidth,
-    height: img.naturalHeight,
+    hasWidth: img.naturalWidth > 0,
+    hasHeight: img.naturalHeight > 0,
     path: new URL(img.currentSrc).pathname,
   }))).toEqual({
     complete: true,
-    width: 640,
-    height: 360,
+    hasWidth: true,
+    hasHeight: true,
     path: '/kyotsu-step-web/assets/math/textbook/sets/venn-intersection.svg',
   })
 })

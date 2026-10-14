@@ -1,3 +1,5 @@
+import { readFileSync } from 'node:fs'
+import { resolve } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { mathSetUnit } from './setLesson'
 import { partitionMathSetReadingFlow, mathSetRequiredContextByItemId, requiredMathSetContext } from '../presentation'
@@ -379,5 +381,24 @@ describe('math-set P-003 source-fidelity and existing-figure audit', () => {
       expect(original.split('\\quad')).toHaveLength(2)
       expect(normalizeTextbookMath(original)).toBe(original)
     }
+  })
+})
+
+describe('P-005 subset diagram replacement only', () => {
+  it('points solely the subset figure to approved PNG without changing its pedagogical caption', () => {
+    const section = mathSetUnit.sections[0]
+    const subset = section.figures.find(figure => figure.id === 'subset-after')
+    expect(subset?.src).toBe('/assets/math/textbook/sets/subset-after.png')
+    expect(subset?.caption).toBe('「要素が全部入っているか」が部分集合を判断する基準になる。')
+    expect(subset?.alt).toBe('集合Bが集合Aに含まれ、集合Cは一部がAの外側にある図')
+    expect(section.readingFlow.some(block => block.type === 'figure' && block.figureId === 'subset-after')).toBe(true)
+    expect(section.figures.find(figure => figure.id === 'venn-union')?.src).toBe('/assets/math/textbook/sets/venn-union.svg')
+  })
+  it('retains the exact approved PNG bytes and 720×300 dimensions', () => {
+    const p = resolve(process.cwd(), 'public/assets/math/textbook/sets/subset-after.png')
+    const bytes = readFileSync(p)
+    expect(bytes.subarray(0, 8).toString('hex')).toBe('89504e470d0a1a0a')
+    expect(bytes.readUInt32BE(16)).toBe(720)
+    expect(bytes.readUInt32BE(20)).toBe(300)
   })
 })

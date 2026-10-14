@@ -88,3 +88,6 @@ Final code commit `8fbecea83992fdffc0090e197cd21147ce4599ae` (subsequent commits
 - Independent Math practice pilot CI **SUCCESS** https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38496386687; Governance PASS https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38496386686.
 - First test run failure `38496043891` preserved in V-015. No reset or source image alterations.
 Release gate: user authorized merged Pages release within P-004, but **main merge, deployment SUCCESS, and hands-on visual approval not yet claimed here**.
+
+## V-017 — P-005 binary/target pre-CI (2026-10-14)
+Approved asset PNG is 720x300, 4515 bytes, original generated geometry maintained including overlapping C and visible label, source image cropped to the diagram region only; Git blob SHA `7a609a1e84b73dbaa46bb67ca3062b29b4e9821a` matched locally computed Git blob hash. Source figure ID `subset-after`, original caption, alt, and lesson flow remain unchanged; `venn-union` still references its original SVG; progress schema untouched. Added unit test checking PNG signature/intrinsic dimensions and app source, plus compiled-`dist` browser test for actual PNG decoded and visible at target stage. **CI and live deployment not yet verified**; must not claim published result until release workflow passes.

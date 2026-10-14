@@ -53,3 +53,11 @@ User correctly objected that PR #57 source and old Pages URL were not an actuall
 
 ## A-010 — QA failure handling / E2E contract upgrade (2026-10-14)
 Initial PR #59 mobile run `38425132500` ended with exactly one failed outdated assertion (36/37 successful). Reviewed raw GitHub Actions logs and modified `e2e/math-textbook-set-smoke.spec.ts` to explicitly open previously closed history before asserting original source restoration. Work stays VERIFYING pending a clean exact-head run. No main merge.
+
+
+## A-011 — P-003 source-fidelity and display correction (2026-10-14)
+After user explicitly requested locations, proposals, then approved 「よろしく」, created `work/W-MATH-002-P-003-display-fidelity-20261014` from released main `9ea189a` and Draft PR #60. Protected original math curriculum. Changes: preserve LaTeX command groups in `normalizeTextbookMath` while escaping plain finite-set braces; retain exact original math formula choices; add existing SVG `figure-d-complement` to d08/d09/d10 question context (auto-visible only for that existing diagram); full-width/2-line formula option rendering from original `\\quad` for long alternatives, narrower viewport CSS. Added unit/E2E tests, no new images or source alterations. Exact-head CI pending.
+
+
+## A-012 — Test assumption repair (2026-10-14)
+Inspected Actions logs `38491225573`: P-003 new De Morgan E2E incorrectly expected `\\cup` at choice index 0 despite intentional option shuffle. Replaced with order-independent assertion checking both original choices are correctly rendered, without changing educational data or production choice order. Rerun required before PASS or main release.

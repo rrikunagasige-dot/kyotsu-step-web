@@ -987,3 +987,81 @@ test('math-set completed history can all expand without changing any answers, an
   await history.click()
   await expect(page.getByTestId('math-textbook-stage-gather')).toHaveCount(0)
 })
+
+
+test('P-003 reuses the original complement figure and displays U, A, A-bar in one math style at d08', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/math-sets'))
+  await completeFirstSetsSlice(page)
+  await completeRelationsAndSubsets(page)
+  const before: Array<[string, string]> = [
+    ['set-d01', '入れない'],
+    ['set-d02', '1, 3, 5, 7, 9, 11'],
+    ['set-d03', '1, 2, 4, 5, 7, 8, 10, 11'],
+    ['set-d04', '両方'], ['set-d05', '2, 4, 8, 10'],
+    ['set-d06', '少なくとも一方'], ['set-d07', '1, 3, 5, 6, 7, 9, 11, 12'],
+  ]
+  for (const [itemId, answer] of before) await answerItem(page, itemId, answer)
+  const reference = page.getByTestId('math-textbook-stage-references')
+  await expect(reference).toHaveAttribute('data-for-item', 'set-d08')
+  await expect(page.getByTestId('math-textbook-context-figure-d-complement')).toBeVisible()
+  await expect(page.getByTestId('textbook-figure-complement-after')).toBeVisible()
+  await expect(page.getByTestId('textbook-figure-complement-after').locator('img')).toHaveAttribute('src', /complement-after\.svg$/)
+  const formulae = reference.locator('annotation[encoding="application/x-tex"]')
+  await expect(formulae).toContainText([
+    'U=\\{1,2,3,\\ldots,12\\}',
+    'A=\\{2,4,6,8,10,12\\}',
+    '\\overline{A}=\\{1,3,5,7,9,11\\}',
+  ])
+  await expect(page.getByTestId('math-textbook-history-toggle')).toHaveAttribute('aria-expanded', 'false')
+  await expect(page.locator('.katex-error')).toHaveCount(0)
+})
+
+test('P-003 complements are TeX operators, not singleton sets, in De Morgan choices', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/math-sets'))
+  await completeFirstSetsSlice(page)
+  await completeRelationsAndSubsets(page)
+  await completeComplements(page)
+  await answerItem(page, 'set-e01', '2つの円の重なり')
+  await answerItem(page, 'set-e02', '重なり以外のU全体')
+  await page.getByTestId('textbook-item-set-e03').click()
+  const panel = page.getByTestId('inline-choice-panel-set-e03')
+  // Option order is intentionally randomized; inspect both math sources by value.
+  const formulae = await panel.locator('.reading-choice-option annotation[encoding="application/x-tex"]').allTextContents()
+  expect(formulae).toHaveLength(2)
+  expect(formulae).toContain('\\overline{A}\\cup\\overline{B}')
+  expect(formulae).toContain('\\overline{A}\\cap\\overline{B}')
+  expect(formulae.every(latex => !latex.includes('\\{A\\}') && !latex.includes('\\{B\\}'))).toBe(true)
+  await expect(panel.locator('.katex-error')).toHaveCount(0)
+})
+
+test('P-003 long real-line choices use one card per option and two meaningful math lines on mobile', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 700 })
+  await page.goto(appRoute('/learning/textbook/math-sets'))
+  await completeFirstSetsSlice(page)
+  await completeRelationsAndSubsets(page)
+  await completeComplements(page)
+  await completeDeMorgan(page)
+  const earlier: Array<[string, string]> = [
+    ['set-f01', '両方入る'], ['set-f02', '両方入らない'], ['set-f03', '数直線'],
+    ['set-f04', '−2と2の間で、両端を含まない'], ['set-f05', '含めない'],
+    ['set-f06', '\\{x\\mid x<-1,\\ 5<x\\}'],
+    ['set-f07', '含める'], ['set-f08', '\\{x\\mid x\\le -2,\\ 2\\le x\\}'],
+    ['set-f09', '\\{x\\mid x\\le -2,\\ 5<x\\}'],
+    ['set-f10', '\\{x\\mid -2<x\\le 5\\}'],
+  ]
+  for (const [itemId, answer] of earlier) await answerItem(page, itemId, answer)
+  await page.getByTestId('textbook-item-set-f11').click()
+  const panel = page.getByTestId('inline-choice-panel-set-f11')
+  await expect(panel.locator('.reading-choice-options--math-wide')).toBeVisible()
+  await expect(panel.locator('.reading-choice-option')).toHaveCount(3)
+  for (let i = 0; i < 3; i += 1) {
+    const option = panel.getByTestId('textbook-choice-set-f11-' + i)
+    await expect(option.locator('.reading-choice-formula-line')).toHaveCount(2)
+  }
+  await expect(panel.locator('.katex-error')).toHaveCount(0)
+  const viewport = await page.evaluate(() => ({
+    clientWidth: document.documentElement.clientWidth,
+    scrollWidth: document.documentElement.scrollWidth,
+  }))
+  expect(viewport.scrollWidth).toBeLessThanOrEqual(viewport.clientWidth + 1)
+})

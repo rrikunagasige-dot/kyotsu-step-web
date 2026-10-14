@@ -101,4 +101,23 @@ describe('textbook math normalization', () => {
       part.type === 'math' && part.latex === 'A \\cup B',
     )).toBe(true)
   })
+  it('does not turn TeX grouping in complement operators into singleton sets', () => {
+    expect(normalizeTextbookMath('\\overline{A}\\cap\\overline{B}')).toBe('\\overline{A}\\cap\\overline{B}')
+    expect(normalizeTextbookMath('\\overline{A}\\cup\\overline{B}')).toBe('\\overline{A}\\cup\\overline{B}')
+    expect(normalizeTextbookMath('\\overline{\\overline{A}}=A')).toBe('\\overline{\\overline{A}}=A')
+    expect(normalizeTextbookMath('\\overline{A\\cap B}')).toBe('\\overline{A\\cap B}')
+  })
+
+  it('preserves other TeX groups while still escaping unescaped finite-set literals', () => {
+    expect(normalizeTextbookMath('\\sqrt{2}+\\frac{a}{b}+\\vec{r}+x^{2}')).toBe('\\sqrt{2}+\\frac{a}{b}+\\vec{r}+x^{2}')
+    expect(normalizeTextbookMath('A={1,4}')).toBe('A=\\{1,4\\}')
+    expect(normalizeTextbookMath('{A}')).toBe('\\{A\\}')
+    expect(normalizeTextbookMath('\\{1,4\\}')).toBe('\\{1,4\\}')
+  })
+
+  it('does not alter TeX groups inside the paired real-line choice', () => {
+    const latex = 'A\\cap B=\\{x\\mid -1\\le x<2\\},\\quad \\overline{A\\cap B}=\\{x\\mid x<-1,\\ 2\\le x\\}'
+    expect(normalizeTextbookMath(latex)).toBe(latex)
+  })
+
 })

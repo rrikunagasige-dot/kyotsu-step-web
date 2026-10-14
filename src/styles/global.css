@@ -393,6 +393,12 @@ button.reading-inline-blank:hover { background: var(--color-section); }
 .reading-choice-option > span { display: grid; width: 27px; height: 27px; place-items: center; border: 1px solid var(--color-border); font: 700 .7rem/1 ui-monospace, monospace; }
 .reading-choice-option > strong { overflow-wrap: anywhere; font-size: .88rem; }
 .reading-choice-option > small { color: var(--color-muted); font-weight: 700; }
+/* Math textbook P-003: keep each long mathematical alternative intact. */
+.reading-choice-options--math-wide { grid-template-columns: minmax(0, 1fr); }
+.reading-choice-options--math-wide .reading-choice-option { grid-template-columns: 30px minmax(0, 1fr); }
+.reading-choice-formula-lines { display: grid; min-width: 0; width: 100%; gap: .3rem; font-weight: 500; }
+.reading-choice-formula-line { display: block; min-width: 0; max-width: 100%; overflow-x: auto; overflow-y: hidden; white-space: nowrap; overflow-wrap: normal; line-height: 1.7; }
+.reading-choice-formula-line .katex { font-size: .98em; }
 .reading-choice-option--wrong { border-color: var(--color-error); background: #fff8f6; color: var(--color-error); }
 .reading-choice-panel > p { margin: 0; color: var(--color-error); font-size: .75rem; }
 
@@ -1222,6 +1228,17 @@ button.math-theme-link {
   text-align: left; font-size: 1rem;
 }
 .math-textbook-stage-reference-content .reading-paragraph { font-size: .86rem; line-height: 1.65; }
+.math-textbook-stage-reference-content .reading-formula-line .katex,
+.math-textbook-stage-reference-content .reading-paragraph .katex {
+  font-size: 1em; /* Keep U, A, B, and their complements in one math style. */
+}
+.math-textbook-stage-reference-content--figure .reading-figure { padding: .4rem; border: 0; background: transparent; }
+.math-textbook-stage-reference-content--figure .reading-figure img { max-height: 240px; }
+@media (max-width: 640px) {
+  .math-textbook-stage-reference-content--figure .reading-figure img { max-height: 180px; }
+  .reading-choice-formula-line .katex { font-size: .9em; }
+}
+
 .math-textbook-stage-reference-content .reading-figure { margin: 0; }
 .math-textbook-next-stage-panel {
   display: flex; align-items: center; justify-content: space-between;

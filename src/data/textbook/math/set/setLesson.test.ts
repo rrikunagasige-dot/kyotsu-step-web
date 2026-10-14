@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { mathSetUnit } from './setLesson'
 import { partitionMathSetReadingFlow, mathSetRequiredContextByItemId, requiredMathSetContext } from '../presentation'
+import { normalizeTextbookMath } from '../../../../domain/textbookMath'
 
 describe('math set textbook unit', () => {
   it('keeps the first slice as one continuous math lesson', () => {
@@ -331,5 +332,52 @@ describe('math-set P-002 presentation regression (no source mutations)', () => {
     expect(requiredMathSetContext('set-f07')).toEqual(['formula-f-sets', 'figure-f-b'])
     expect(requiredMathSetContext('set-f09')).toEqual(['formula-f-sets'])
     expect(requiredMathSetContext('set-a01')).toEqual([])
+  })
+})
+
+
+describe('math-set P-003 source-fidelity and existing-figure audit', () => {
+  it('keeps all original complement-operator choice strings valid TeX', () => {
+    const items = mathSetUnit.sections[0].items
+    for (const id of ['set-e03', 'set-e05', 'set-e07', 'set-e08', 'set-f12']) {
+      const item = items.find(candidate => candidate.id === id)
+      expect(item, id).toBeDefined()
+      expect(item?.answerType).toBe('formula')
+      for (const original of item?.choices ?? []) {
+        expect(normalizeTextbookMath(original), id + ': ' + original).toBe(original)
+      }
+    }
+    expect(normalizeTextbookMath('\\overline{\\overline{A}}=A')).toBe('\\overline{\\overline{A}}=A')
+    expect(normalizeTextbookMath('A={1,4}')).toBe('A=\\{1,4\\}')
+    expect(normalizeTextbookMath('\\sqrt{2}+\\vec{r}')).toBe('\\sqrt{2}+\\vec{r}')
+  })
+
+  it('resurfaces only the pre-existing after-definition complement diagram for d08/d09/d10', () => {
+    const section = mathSetUnit.sections[0]
+    const source = section.readingFlow.find(block => block.id === 'figure-d-complement')
+    expect(source?.type).toBe('figure')
+    if (source?.type !== 'figure') return
+    const asset = section.figures.find(figure => figure.id === source.figureId)
+    expect(asset?.src).toBe('/assets/math/textbook/sets/complement-after.svg')
+    expect(asset?.overlays).toEqual([])
+    for (const id of ['set-d08','set-d09','set-d10']) {
+      expect(requiredMathSetContext(id)).toContain('figure-d-complement')
+    }
+    expect(requiredMathSetContext('set-d03')).not.toContain('figure-d-complement')
+    const stages = partitionMathSetReadingFlow(section.readingFlow)
+    const diagramStage = stages.findIndex(stage => stage.blocks.some(block => block.id === source.id))
+    const d08Stage = stages.findIndex(stage => stage.blocks.some(block => block.type === 'paragraph' &&
+      block.parts.some(part => part.type === 'choice' && part.itemId === 'set-d08')))
+    expect(diagramStage).toBeLessThan(d08Stage)
+  })
+
+  it('keeps both real-line equations in the original f11 alternative', () => {
+    const item = mathSetUnit.sections[0].items.find(item => item.id === 'set-f11')
+    expect(item?.answerType).toBe('formula')
+    expect(item?.choices).toHaveLength(3)
+    for (const original of item?.choices ?? []) {
+      expect(original.split('\\quad')).toHaveLength(2)
+      expect(normalizeTextbookMath(original)).toBe(original)
+    }
   })
 })

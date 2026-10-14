@@ -64,8 +64,16 @@ function normalizeUnicodeRadicals(value: string) {
 export function normalizeTextbookMath(value: string) {
   let next = stripTextbookMarkdown(value)
 
-  // Finite-set braces in prose are literal mathematical braces, not TeX grouping.
-  next = next.replace(/\{([\-0-9A-Za-z,+\s]+)\}/g, '\\{$1\\}')
+  // Plain finite-set literals like {1,4} need escaped TeX braces.
+  // Never reinterpret grouping braces used by LaTeX commands (\\overline{A},
+  // \\sqrt{2}, \\frac{a}{b}, etc.) or superscripts/subscripts as sets.
+  next = next.replace(/\{([\-0-9A-Za-z,+\s]+)\}/g, (match, members: string, offset: number, source: string) => {
+    const before = source.slice(0, offset)
+    if (before.endsWith('\\') || /\\[A-Za-z]+\*?$/.test(before) || /[_^]$/.test(before)) return match
+    // A two-argument TeX command has a second group after the first closing brace.
+    if (/\\[A-Za-z]+\*?\{[^{}]*\}$/.test(before)) return match
+    return `\\{${members}\\}`
+  })
   next = normalizeUnicodeRadicals(next)
 
   next = next

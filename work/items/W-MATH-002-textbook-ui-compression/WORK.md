@@ -1,7 +1,7 @@
 # W-MATH-002 — 数学学習モードの表示圧縮（教材本文不変）
 
 Status: VERIFYING
-Approved Proposal: P-001 (historical), P-002 (active)
+Approved Proposal: P-001 and P-002 (released), P-003 (active, PR #60)
 Date: 2026-10-11
 Canonical target: `rrikunagasige-dot/kyotsu-step-web` (ID `1391122224`)
 Baseline main: `be98aa0dc2c4f29d5bfb33e2295bbb9063099e33`
@@ -30,6 +30,9 @@ No main merge/Settings change without separate explicit approval.
 
 ## Current P-002 step (2026-10-14)
 Exact P-002 approved for implementation; active branch `work/W-MATH-002-P-002-context-and-history-20261014` based on merged main PR #57. Source-safe UI/history and question-scoped prerequisites implemented; first P-002 QA found one outdated E2E history expectation (36/37 mobile passed), corrected on the branch; clean re-run pending. Do not merge without separate approval. Full scope/authorization recorded in `PROPOSAL_P-002.md` and `APPROVAL_P-002.md`.
+
+## Current P-003 step (2026-10-14)
+P-003 UI fidelity fix is implemented in independent Draft PR #60 from main 9ea189a. Four defects F01–F04 are covered. Latest code head `2f0c3216879969804e17f718a4d657e39f4e64c9` passed all three CI workflows: Governance 38491685479, math practice 38491685536, math textbook 38491685502 (40 mobile + 40 desktop + 13 physics + 36 math practice tests). Browser user-acceptance remains pending and there is no P-003 deployment/merge authorization. Source curriculum untouched. See PROPOSAL_P-003.md and APPROVAL_P-003.md.
 
 ## Historical next step (P-001)
 Present PR #57's StackBlitz GitHub-import browser launch route for user hands-on acceptance; explicitly distinguish this unverified import route from a verified deployed preview. No new Github Pages build/merge occurred. STOP before main merge, curriculum changes or GitHub Settings. Broader math-unit rollout requires another proposal.

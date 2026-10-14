@@ -50,3 +50,24 @@ P-002 implementation is on a new feature branch. Source code modifies only math-
 ## V-010 — First P-002 PR #59 exact QA (2026-10-14)
 - Initial source PR head `96ab1e406bab0277d1cf8b7855214023df8e54e8`: Governance PASS `38425132549`, targeted typecheck/Vitest/build PASS in Math Textbook `38425132500`. Mobile E2E: **36 passed, 1 failed**, stale P-001 assumption that first completed stage remained visible. The updated 1-line-history requirement intentionally removes it from the default DOM; existing test updated to open history explicitly. E2E remained FAILED for that commit, no passed-claim.
 - Correction commit `f1738b643511b5d308e0d7457be3cfd0dbffe121` revised only the incompatible assertion. Exact-head CI and separate user QA remain pending. No production release or merge.
+
+
+## V-011 — P-003 pre-CI audit / release gate (2026-10-14)
+Draft PR #60 from source HEAD `9ea189a`: only math presentation registry, shared TeX normalization (with unit tests), textbook reader/CSS/E2E, CI-selected setLesson tests, and Work records changed. Original lesson source `setOutsideSlice.ts`, `setRealLineSlice.ts`, `setLesson.ts`, assets and answer IDs untouched. Regression tests added for original SVG, TeX-group preservation across five formula items, 320px two-line `set-f11`. Pending independent exact-head Governance/CI. Do not mark SUCCESS until result and user visual QA.
+
+
+## V-012 — P-003 initial exact-head CI (2026-10-14)
+- On source commit `4a8e78f70b922270f293ea00f675d17d0bac34a8`, Governance SUCCESS, math practice independent CI SUCCESS; math textbook Typecheck, original and P-003 unit tests, and Build SUCCESS.
+- Mobile E2E: **39 passed, 1 failed**. Failed assertion assumed fixed choice ordering; source/app behavior legitimately randomizes choice order. It was an invalid test expectation, not evidence of a broken mathematical renderer. Corrected at commit `093eecd57756c6b1a88f372cafee51ecf9d07471` with unordered checks; follow-up latest-head CI pending. Do not overwrite this initial failure.
+
+
+## V-013 — P-003 code exact-head verified PASS (2026-10-14)
+Approved implementation source head `2f0c3216879969804e17f718a4d657e39f4e64c9` passed all GitHub checks:
+- **Repository Governance SUCCESS**: https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38491685479
+- **Math practice pilot SUCCESS**: https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38491685536
+- **Math textbook mode SUCCESS**: https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38491685502
+  - Typecheck, original/P-003 Vitest suite, production build PASS
+  - **Mobile math textbook 40/40**, **Desktop math textbook 40/40**, **Physics textbook 13/13**, **Math practice setup 36/36**
+- Compared main `9ea189a` and code head: only approved math reader rendering, normalizer/tests, style, P-003 original-figure reference and Work records touched. No modifications to accepted source lesson, original Word, answer data, figures/assets or modes' curricula.
+- The earlier 39/40 mobile failure was an invalid fixed-choice-index expectation; corrected and preserved in V-012, and clean run confirmed PASS.
+- **Not yet verified**: human visual acceptance of F01 appearance; there is no live P-003 version URL because Draft PR #60 is not merged. No release approval inferred from technical CI.

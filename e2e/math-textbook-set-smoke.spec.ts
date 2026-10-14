@@ -1127,3 +1127,39 @@ test('P-004 all eleven existing math-set SVG assets load and decode under produc
     expect(item.height, item.name).toBeGreaterThan(0)
   }
 })
+
+test('P-004 P-005 subset figure uses approved PNG inside real app in compiled preview', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/math-sets'))
+  await completeFirstSetsSlice(page)
+  const beforeSubset: Array<[string, string]> = [
+    ['set-b01','3, 5, 7'],
+    ['set-b02','AとBの両方に属する要素'],
+    ['set-b03','1, 2, 3, 5, 7, 9'],
+    ['set-b04','ない'],
+    ['set-b05','AかBの少なくとも一方に属する要素'],
+    ['set-b06','2つの円の重なりだけ'],
+    ['set-b07','AとBの2つの円全体'],
+    ['set-b08','3つすべてに属する要素'],
+    ['set-b09','3つのうち少なくとも1つに属する要素'],
+    ['set-c01','すべて入っている'],
+    ['set-c02','4がAにないので、全部は入っていない'],
+  ]
+  for (const [id, answer] of beforeSubset) await answerItem(page, id, answer)
+  const figure = page.getByTestId('textbook-figure-subset-after')
+  await expect(figure).toBeVisible()
+  const png = figure.locator('img')
+  await expect(png).toBeVisible()
+  await expect.poll(() => png.evaluate((img: HTMLImageElement) => ({
+    complete: img.complete,
+    width: img.naturalWidth,
+    height: img.naturalHeight,
+    path: new URL(img.currentSrc).pathname,
+    displayedWidth: img.getBoundingClientRect().width > 0,
+    displayedHeight: img.getBoundingClientRect().height > 0,
+  }))).toEqual({
+    complete: true, width: 720, height: 300,
+    path: '/kyotsu-step-web/assets/math/textbook/sets/subset-after.png',
+    displayedWidth: true, displayedHeight: true,
+  })
+  await expect(figure).toContainText('「要素が全部入っているか」が部分集合を判断する基準になる。')
+})

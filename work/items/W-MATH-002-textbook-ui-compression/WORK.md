@@ -1,7 +1,7 @@
 # W-MATH-002 — 数学学習モードの表示圧縮（教材本文不変）
 
-Status: VERIFYING
-Approved Proposal: P-001 and P-002 (released), P-003 (active, PR #60)
+Status: IMPLEMENTING
+Approved Proposal: P-005 (active: revised subset diagram PNG; historical P-001–P-004)
 Date: 2026-10-11
 Canonical target: `rrikunagasige-dot/kyotsu-step-web` (ID `1391122224`)
 Baseline main: `be98aa0dc2c4f29d5bfb33e2295bbb9063099e33`
@@ -39,3 +39,6 @@ P-004 explicitly approved for implementing and releasing the figure-path fix int
 
 ## Historical next step (P-001)
 Present PR #57's StackBlitz GitHub-import browser launch route for user hands-on acceptance; explicitly distinguish this unverified import route from a verified deployed preview. No new Github Pages build/merge occurred. STOP before main merge, curriculum changes or GitHub Settings. Broader math-unit rollout requires another proposal.
+
+## Active P-005 — approved subset PNG only (2026-10-14)
+User-approved second drawing: B fully within A, C partially overlaps A and C remains readable. Revised PNG registered at `public/assets/math/textbook/sets/subset-after.png` and source `subset-after` points there. Existing app caption unchanged; old SVG preserved. Dedicated branch `work/W-MATH-002-P-005-subset-approved-png-20261014`, baseline main `a24a3b0`. Now verifying via CI and browser image decode. Do not reset progress or modify union/other figures. See PROPOSAL_P-005.md / APPROVAL_P-005.md.

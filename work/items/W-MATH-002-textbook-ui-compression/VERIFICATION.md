@@ -74,3 +74,7 @@ Approved implementation source head `2f0c3216879969804e17f718a4d657e39f4e64c9` p
 
 ## V-014 — P-004 verification contract / pending (2026-10-14)
 Base main 7eaac5d, work branch `work/W-MATH-002-P-004-published-figure-assets-20261014`. Tests added: actual figure images require `img.complete`, positive `naturalWidth/naturalHeight` and exact GitHub Pages subpath for unfilled Venn + filled intersection after answer; each of the existing 11 SVGs loaded and decoded with a browser Image object. Both mobile+desktop run from built `dist` via `E2E_USE_PREVIEW=1` and `vite preview` in PR and Pages deployment CI (before upload). No source lesson/assets or user progress changes. **PASS NOT CLAIMED** until exact-head CI and Pages deployment return SUCCESS. Never reset learners to simulate success.
+
+## V-015 — P-004 original production-smoke failure and controlled fix
+Initial commit `da695517ba4d4dabd1531ea98d2ae226b2656c9a`, CI `38496043891`: Governance PASS, typecheck/Vitest/build PASS, but the newly added *compiled* HTML image test **FAILED for mobile and desktop** (`<img>` present with correct path but `toBeVisible() = hidden`), while all existing SVG decode tests passed on both. Therefore no merge or release was performed; this test correctly detected a defect older dev smoke missed.
+CSS/image layout patch `8fbecea83992fdffc0090e197cd21147ce4599ae` adds explicit width and height based on source SVG viewBox and responsive stage sizing; **follow-up exact HEAD CI is required**. The user progress persistence code is untouched; no reset action.

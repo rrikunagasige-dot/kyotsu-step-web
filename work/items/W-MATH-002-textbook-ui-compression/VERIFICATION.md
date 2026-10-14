@@ -50,3 +50,7 @@ P-002 implementation is on a new feature branch. Source code modifies only math-
 ## V-010 — First P-002 PR #59 exact QA (2026-10-14)
 - Initial source PR head `96ab1e406bab0277d1cf8b7855214023df8e54e8`: Governance PASS `38425132549`, targeted typecheck/Vitest/build PASS in Math Textbook `38425132500`. Mobile E2E: **36 passed, 1 failed**, stale P-001 assumption that first completed stage remained visible. The updated 1-line-history requirement intentionally removes it from the default DOM; existing test updated to open history explicitly. E2E remained FAILED for that commit, no passed-claim.
 - Correction commit `f1738b643511b5d308e0d7457be3cfd0dbffe121` revised only the incompatible assertion. Exact-head CI and separate user QA remain pending. No production release or merge.
+
+
+## V-011 — P-003 pre-CI audit / release gate (2026-10-14)
+Draft PR #60 from source HEAD `9ea189a`: only math presentation registry, shared TeX normalization (with unit tests), textbook reader/CSS/E2E, CI-selected setLesson tests, and Work records changed. Original lesson source `setOutsideSlice.ts`, `setRealLineSlice.ts`, `setLesson.ts`, assets and answer IDs untouched. Regression tests added for original SVG, TeX-group preservation across five formula items, 320px two-line `set-f11`. Pending independent exact-head Governance/CI. Do not mark SUCCESS until result and user visual QA.

@@ -26,3 +26,6 @@ Word explicitly says `解答は別冊`. Teacher answer booklet not provided, so 
 
 ## F-009 — RECOMMENDATION: N01 variable-vs-parameter caveat
 In source Q3/Q4, `5x³y` is regarded as an x-polynomial with coefficient `5y` and degree 3. Strictly this is valid in formal `R[y][x]` or generic y ≠ 0 numeric specialization; setting y=0 yields zero polynomial, whose degree is not 3. Clarify pedagogical scope without silently rewriting original problem. New N01 learner review draft includes a caveat.
+
+## F-010 — EDITORIAL-QA: N01 prior-answer leakage fixed before user review
+First `N01_LEARNER_PILOT_DRAFT.md` draft explicitly stated the cancellation/remaining highest term immediately before N01-Q10; this reduced Q10 to trivial retrieval. Replaced with a genuinely open demand to identify the resulting degree **and justify** from the Q9 expression, and made Q9 group-and-result holes explicit. This is a pilot-specific demonstration of CMD-WORK-002 leakage inspection. Original source/answers unaffected.

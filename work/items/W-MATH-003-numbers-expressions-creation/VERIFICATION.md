@@ -42,3 +42,10 @@ Date: 2026-10-17
 Check: changes limited to `W-MATH-003` work docs; no app, code, mode/spec or progress changes.
 Expected: PASS
 Result: PENDING PR diff+CI evidence.
+
+## V-008 — Governance CI initial failure and correction
+Date: 2026-10-17
+Target: Draft PR #66; initial workflow run 38985852212.
+Check: `node tools/repo-governance-check.mjs`
+Result: **FAIL** due only to `W-MATH-003-numbers-expressions-creation: WORK.md missing Status`. This was a formatter/validator mismatch, not content QA.
+Correction: use exact line `Status: BLOCKED` and move source explanation into separate `Blocker:` field. Re-run triggered on updated PR; do not discard earlier failure evidence.

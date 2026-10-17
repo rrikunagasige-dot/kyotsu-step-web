@@ -17,3 +17,15 @@ Date: 2026-10-17
 Target: `work/W-MATH-003-numbers-expressions-creation-20261017`.
 Action: Created isolated feature branch at recorded live main. Begin P-001 manifest and four-pilot detailed design as documentation only.
 Result: No app changes.
+
+## A-004 — Source manifest coverage
+Date: 2026-10-17
+Target: `work/items/W-MATH-003-numbers-expressions-creation/SOURCE_MANIFEST.md`.
+Action: Documented 16 units, 233 questions as original labels, all 12 referenced figure IDs and precise no-formula-reconstruction source gate.
+Result: Structure-only source identity recorded; not marked math QA PASS.
+
+## A-005 — Four pilot designs with original markers
+Date: 2026-10-17
+Target: `work/items/W-MATH-003-numbers-expressions-creation/PILOT_DESIGN.md`.
+Action: Designed N01 Q1–10, N03 Q1–13, N10 Q1–21, N12 Q1–15 as cognitive tasks/inline-hole candidates, with dependency/figure timing and proof guards.
+Result: 59 source markers provisionally mapped. Computed N12 plain-prose shopping example as independent check: 2650+50x, 11<=x<13, x=11/12, 3200/3250 yen; source displays still unverified.

@@ -1,6 +1,6 @@
 # 数と式 — Source Manifest / Coverage and source gate
 Date: 2026-10-17
-Status: STRUCTURE-VERIFIED / FORMULAS-UNVERIFIED
+Status: RAW-WORD-VERIFIED / PILOT-MATH-CHECKED / FULL-CHAPTER-MATH-IN-PROGRESS
 
 ## Identity
 Input: Library `01_数と式_教科書モード_対話段階導入版_v2.docx` (212863 bytes, 53 pages, upload 2026-10-10). A **teacher edited pedagogical draft**, not the publisher source itself. Title page says 数学Ⅰ「数と式」教科書モード, revised v2.0. Credits `『教科書ガイド 啓林館版 深進数学Ⅰ』（数Ⅰ711）`. Do not claim original publishing permissions or publisher source matching.
@@ -15,7 +15,7 @@ Library index permits text read (about 2596 rendered lines); the raw .docx is no
 | N02 | 多項式 | 注目文字、降べき/昇べき、多項式の加減 | 12 | — | BATCH |
 | N03 | 多項式 | 指数法則、分配法則、二項式の展開 | 13 | N03-F01 | PILOT |
 | N04 | 多項式 | 平方/和差の乗法公式の導出 | 22 | N04-F01 | BATCH |
-| N05 | 多項式 | 共通因数、平方・和積、たすき掛け | 20 | — | BATCH |
+| N05 | 多項式 | 共通因数、平方・和積、たすき掛け | 20 | N05-F01, N05-F02 | BATCH |
 | N06 | 多項式 | 置換と文字の選択による因数分解 | 16 | — | BATCH |
 | N07 | 実数 | 有理数/循環小数/無理数 | 14 | — | BATCH |
 | N08 | 実数 | 絶対値の距離・場合分け | 12 | N08-F01 | BATCH |
@@ -30,9 +30,11 @@ Library index permits text read (about 2596 rendered lines); the raw .docx is no
 
 Count: N01–N06 = 93; N07–N10 = 61; N11–N14 = 54; NE01–NE02 = 25; all = 233. These are source **markers**, not counts of valid inline blanks. PILOT = 59.
 
-## Figure gate — 12 referenced IDs
+## Figure gate — 14 verified embedded IDs
 - N03-F01: 2x2 cross-product table, four interior products unanswered.
 - N04-F01: repeated binomial multiplication table; not a metric area drawing.
+- N05-F01: たすき掛け generic cross-coefficient correspondence (before candidate comparison).
+- N05-F02: example `(x+1)(4x+3)` coefficients with verified result (show AFTER response).
 - N08-F01: marks on number line, unsigned distance remains unanswered.
 - N09-F01: location of negative decimal; integer part must obey 0<=fractional<1.
 - N11-F01: signed order reversal on matched-scale number lines.
@@ -44,7 +46,7 @@ Count: N01–N06 = 93; N07–N10 = 61; N11–N14 = 54; NE01–NE02 = 25; all = 2
 - N13-F01: x compared to coordinate 1, left/right distance.
 - N14-F01: post-result comparison of inner/outer absolute-value regions.
 
-Embedded original figures/actual scales/colors/unreadable labels cannot be checked. **Do not generate replacement figures or math answers based on these descriptions alone.** Once .docx raw is available, extract image/shape/OMML manifests and visual-render each page before deciding figure work.
+All **14 original figure binaries are recovered and visually inspected** in their raw embedded PNGs; none should be re-created by inference. Scale/axes/endpoint locations for the N12 pilot agree with exact source inequalities. Source layout image QA and future app browser rendering are separate pending checks.
 
 ## Identity & reuse conditions
 - Teacher's draft is edited secondary pedagogical source. Keep publisher citation as provenance, not an unrestricted reproduction license.
@@ -55,5 +57,5 @@ Embedded original figures/actual scales/colors/unreadable labels cannot be check
 1. Receive the raw `.docx` or a verified complete render containing equations and figures.
 2. SHA-256/hash and file size, check Word doc contains all 53 pages / full OMML and images; if different version, reconcile.
 3. Map every original marker to exact equation(s), choices, source figure, proposed cognitive node, answer and complete solution, with exclusions recorded.
-4. Check 12/12 original images; test N01/N03/N10/N12 source correctness and pilot figure ordering.
+4. Check 14/14 original images; test N01/N03/N10/N12 source correctness and pilot figure ordering.
 5. Only then mark FORMULAS-VERIFIED and permit content drafting / program changes.

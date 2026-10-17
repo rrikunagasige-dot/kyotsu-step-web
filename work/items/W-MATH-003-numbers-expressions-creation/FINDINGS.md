@@ -78,3 +78,9 @@ N02-Q03/Q09 and N09-Q02/Q04/Q08/Q14 request pairs or linked comparisons. Represe
 
 ## F-022 — OPEN-QUESTION: Teacher-edited Word source is not the publisher's official answer authority
 Independent solutions 26/26 derive from recovered original Word; separate answer booklet and direct publisher textbook cross-check remain unavailable. This caveat is inherited from F-008 and does not block user review of independently verified calculations.
+
+## F-023 — CONFIRMED: N09 sample target inequality can spoil an identical Q09 choice
+The original edited Word and design prose introduce the aim 1.41<sqrt(2)<1.42 before asking the learner to derive it. In the interactive student renderer, the Q09 exact formula would then be visually pre-answered. The implementation retains the mathematical goal but opens with “is sqrt(2) between 1.41 and 1.42?” and asks the learner to complete the strict inequality only after checking squares. No source numbers changed.
+
+## F-024 — CONFIRMED: Original N09-F01 binary has stable SHA
+The unchanged source figure image6.png (negative decimal -2.1 at left of -2) has SHA-256 24dd29dcaacd371ddfab4c8fefbccd84933fd0f1a27ed5f167372f74ca4a9cfd. The new app asset is byte-for-byte identical, with placement after Q10 in readingFlow. Alt and caption are not mounted before the figure block is unlocked.

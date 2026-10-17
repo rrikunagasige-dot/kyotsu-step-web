@@ -122,7 +122,9 @@ describe('math textbook catalog', () => {
       mathTextbookUnits.filter((unit) => unit.status === 'review').map((unit) => unit.unitId),
     ).toEqual([
       'math-numbers-expressions-n01',
+      'math-numbers-expressions-n02',
       'math-numbers-expressions-n03',
+      'math-numbers-expressions-n09',
       'math-numbers-expressions-n10',
       'math-numbers-expressions-n12',
       'math-propositions-reading',

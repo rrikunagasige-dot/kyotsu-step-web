@@ -247,3 +247,14 @@ NOT RUN: content proof in actual code, KaTeX, desktop/mobile/browser progress an
 ## V-034 — Documentation PR/scope handoff
 Date: 2026-10-17
 Expected docs-only change set: four new Markdown review/audit documents plus WORK/ACTION_LOG/FINDINGS/VERIFICATION updates. Confirm PR changes are documentation-only and provide review link; keep main and production app unchanged.
+
+## V-035 — N02/N09 source-to-app static integrity
+Date: 2026-10-17
+Input: accepted review docs / original Word SHA 93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa.
+PASS at authoring/static level: new N02/N09 TypeScript sources, shared helper, registration, catalog regression and new unit/E2E tests successfully parsed with Node 24 TypeScript strip + ECMAScript module syntax parser before committing. 12+14 choice markers exactly matched 12+14 item constructors. Unit test source asserts every original answer, original source-ID coverage, and the original PNG SHA. Direct XML audit of 71 N02/N09 OMML objects is documented in the accepted source-design PR.
+PENDING: project TypeScript typecheck, lint, Vitest, actual Playwright execution, mobile/desktop screenshot/layout and PR CI. Do not claim release or hands-on pass.
+
+## V-036 — Review-only scope and release gate
+Date: 2026-10-17
+Expected changes: two new math review units; one unchanged original PNG; source-to-item helper widened to N02/N09; internal review-unit registration and fixed review expectation; focused Vitest and Playwright checks; four Work records. No published catalog promotion, unrelated existing unit rewrite, learner progress migration, main direct write or Pages publication.
+PR/CI evidence to be recorded after connector confirmation.

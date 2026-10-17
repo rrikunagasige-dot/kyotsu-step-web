@@ -162,3 +162,17 @@ Result: Four new Markdown artifacts scoped to N02/N09. No application source/pub
 Date: 2026-10-17
 Action: Place four artifacts and updated Work records in independent documentation-only branch for exact user review; main/Pages and review-only app data remain unchanged.
 Result: Review branch and PR URL are delivered separately in handoff after connector confirmation.
+
+## A-028 — User approval of N02/N09 exact design for review-only implementation
+Date: 2026-10-17
+Evidence: User replied 「いいよつづけて」 immediately after N02/N09 source/math 26/26, exact continuous student drafts, 26 inline decisions, and Q10-gated image figure had been presented. Authorization limited to review-only app implementation; no main merge, Pages deployment, or catalog promotion.
+
+## A-029 — Implement two app units under P-001 scope
+Date: 2026-10-17
+Action: Author n02Lesson.ts, n09Lesson.ts with complete continuous learner prose, 12+14 original decisions, choices and hints; register both math units review-only in internal unit list, extend safe source mapping helper; preserve existing pilot code. Embed exact original N09 image6.png as n09-f01.png without editing.
+Result: Two review-only units, source maps and unchanged original image in isolated implementation PR; existing unit source/progress keys remain unchanged.
+
+## A-030 — Add targeted source/figure/KaTeX/mobile E2E checks
+Date: 2026-10-17
+Action: Add numbersNextBatch.test.ts (26 mappings, answers, KaTeX/option uniqueness, source image SHA, figure before/after ordering and domain math) and numbers-next-batch.spec.ts (26 real choices, N09 wrong-response gate, 320px viewport and reload persistence); update fixed review ID listing.
+Result: Static TypeScript syntax parse passed. CI and browser E2E results to be appended as actual evidence, not inferred.

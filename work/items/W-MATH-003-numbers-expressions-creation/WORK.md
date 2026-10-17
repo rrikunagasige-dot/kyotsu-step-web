@@ -64,3 +64,11 @@ Scope is exactly **N02 (12 source markers) + N09 (14 source markers)**: deeper s
 - Arithmetic source coverage now 59 previous pilot markers + 26 = **85/233 audited**; 148 original source markers still not audited. This is NOT a claim of 85 deployed questions.
 - **Current step:** await review of exact two learner texts, 26 interaction designs, and altered original figure timing. Status remains VERIFYING.
 - **Next step if explicitly accepted:** independently implement N02/N09 as review-only app work on separate PR, run live desktop/mobile/source/regression QA; obtain distinct merge+Pages authorization. Preserve existing approved main app and progress.
+
+## 2026-10-17 — N02/N09 implementation phase (latest)
+Approval evidence: Immediately after being offered the two exact N02/N09 learner design drafts, 26-choice structure, and N09 original-image delayed gate, user replied **「いいよつづけて」** on 2026-10-17. Treat as approval of **review-only app implementation** inside already approved P-001, not main merge/Pages/catalog promotion.
+- Implementation proposal: add exact N02 12-item and N09 14-item math textbook review units at stable IDs math-numbers-expressions-n02 and math-numbers-expressions-n09; retain 26 source marker→choice mappings, compound answers as one item, original image6.png unchanged, gated after N09-Q10.
+- Branch: work/W-MATH-003-n02-n09-app-review-20261017 (separate review-only PR).
+- Do Not Touch: previous N01/N03/N10/N12 data and decisions, published math-sets, practice, physics, source Word, learner IDs/progress, main directly.
+- Current step: code and asset authored; CI/desktop-mobile progression and PR QA pending.
+- Next: verify typecheck/lint/unit/browser regression, present PR live code review; separately request authorization before main merge/Pages. W-MATH-003 stays VERIFYING and 148 source markers outside this batch remain unaudited.

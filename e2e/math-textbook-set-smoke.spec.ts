@@ -1163,3 +1163,46 @@ test('P-004 P-005 subset figure uses approved PNG inside real app in compiled pr
   })
   await expect(figure).toContainText('「要素が全部入っているか」が部分集合を判断する基準になる。')
 })
+
+
+test('N01 review-only pilot: original 10 source tasks become 15 gated steps without revealing later answers', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/math-numbers-expressions-n01'))
+  await expect(page.getByRole('heading', { level: 1, name: '式の見方' })).toBeVisible()
+  await expect(page.getByTestId('textbook-reading-flow')).toBeVisible()
+  await expect(page.getByTestId('textbook-item-n01-01')).toBeVisible()
+  await expect(page.getByTestId('textbook-item-n01-09a')).toHaveCount(0)
+  await expect(page.getByTestId('textbook-item-n01-10a')).toHaveCount(0)
+
+  // Wrong options must not unlock the following items or reveal the internal answer key.
+  await chooseWrongOption(page, 'n01-01', '-1')
+  await expect(page.getByTestId('textbook-item-n01-01')).toBeVisible()
+  await expect(page.getByTestId('textbook-item-n01-02a')).toHaveCount(0)
+
+  const answers: Array<[string, string]> = [
+    ['n01-01', '-1'],
+    ['n01-02a', '(-2,1)'],
+    ['n01-02b', '(1,2)'],
+    ['n01-02c', '(-1,4)'],
+    ['n01-03', '5y'],
+    ['n01-04', '(5x^3,1)'],
+    ['n01-05', '(ay,ax)'],
+    ['n01-06a', '3x^2-5x^2'],
+    ['n01-06b', '(-5x+2x)\\quad (6-3)'],
+    ['n01-07', '-2x^2-3x+3'],
+    ['n01-08', '(2,3)'],
+    ['n01-09a', '(1-1)x^3-2x^2+(1+3)x-1'],
+    ['n01-09b', '-2x^2+4x-1'],
+    ['n01-10a', '2次式'],
+    ['n01-10b', '3次の項が整理によって消えるから'],
+  ]
+  for (const [id, answer] of answers) {
+    await answerItem(page, id, answer)
+    await expect(page.getByTestId('resolved-' + id)).toBeVisible()
+  }
+  await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
+  await page.reload()
+  await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
+  // Review pilot may be opened by its direct URL but is not listed as public curriculum.
+  await page.goto(appRoute('/learning/setup?subject=math-1a'))
+  await expect(page.getByRole('link', { name: /式の見方/ })).toHaveCount(0)
+})

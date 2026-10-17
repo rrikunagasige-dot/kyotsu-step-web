@@ -229,3 +229,37 @@ Date: 2026-10-17
 - Actual public Chrome QA: 公開版ChromeでN03は 4a^8 を選んで進捗0/13→1/13、N10は t²=25 を選んで0/21→1/21、N12は x>-7/2 と x≤1/2 を選んで0/15→2/15へ進み、Q2回答後に元の数直線図F01が見えることを画像でも確認。F03のQ15後解放はCIでの検証であり、公開版では未完走。.
 - Full 13+21+15=49 choices, original gated figures, KaTeX, typecheck, production compilation, Physics, Math Practice and mobile/desktop simulations passed automated CI on the final PR head. Public spot-check does not substitute for user hands-on feedback or independently retesting all 49 on Pages.
 - Review-only status and published-only setup catalog remain unchanged; 174/233 non-pilot source markers are not yet audited. W-MATH-003 remains VERIFYING.
+
+
+## V-031 — N02/N09 raw-source identity, coverage and original diagram
+Date: 2026-10-17
+PASS: original.docx bytes 212863 and expected SHA-256 match; direct XML inspection finds exactly Q1–12 in N02 and Q1–14 in N09, with 34+37=71 OMML objects and 0+1 figure drawings. N09-F01 source image6.png opened and checked for tick order, position and answer-leak risk. Source display altered only in design proposal, not modified file.
+
+## V-032 — Independent N02/N09 complete solution proof QA
+Date: 2026-10-17
+PASS (not author-key-verified): all 26 original markers solved in N02_N09_SOURCE_SOLUTION_AUDIT.md. Additional coefficient-vector checks of N02 A+B, A-B, 2A-3B, 3A-4B-(A-B) all PASS. N09 verifies exact 1.41²=1.9881, 1.42²=2.0164, sqrt(5)>2, sqrt(a²)=|a|, negative input floor and fractional range. Official author answer key = UNAVAILABLE.
+
+## V-033 — Learner content and future UI design traceability
+Date: 2026-10-17
+PASS at design/coverage level: N02 12/12 and N09 14/14 source stages with student-facing continuous prose, mathematically valuable inline holes, candidate choices and wrong-answer feedback. One source diagram reused unchanged with delayed reveal. 26/26 original markers mapped; no new math question or other textbook mode affected. 
+NOT RUN: content proof in actual code, KaTeX, desktop/mobile/browser progress and other-mode regression, user hands-on acceptance, app build, main merge, Pages. These require post-review implementation branch and separate release gate.
+
+## V-034 — Documentation PR/scope handoff
+Date: 2026-10-17
+Expected docs-only change set: four new Markdown review/audit documents plus WORK/ACTION_LOG/FINDINGS/VERIFICATION updates. Confirm PR changes are documentation-only and provide review link; keep main and production app unchanged.
+
+## V-035 — N02/N09 source-to-app static integrity
+Date: 2026-10-17
+Input: accepted review docs / original Word SHA 93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa.
+PASS at authoring/static level: new N02/N09 TypeScript sources, shared helper, registration, catalog regression and new unit/E2E tests successfully parsed with Node 24 TypeScript strip + ECMAScript module syntax parser before committing. 12+14 choice markers exactly matched 12+14 item constructors. Unit test source asserts every original answer, original source-ID coverage, and the original PNG SHA. Direct XML audit of 71 N02/N09 OMML objects is documented in the accepted source-design PR.
+PENDING: project TypeScript typecheck, lint, Vitest, actual Playwright execution, mobile/desktop screenshot/layout and PR CI. Do not claim release or hands-on pass.
+
+## V-036 — Review-only scope and release gate
+Date: 2026-10-17
+Expected changes: two new math review units; one unchanged original PNG; source-to-item helper widened to N02/N09; internal review-unit registration and fixed review expectation; focused Vitest and Playwright checks; four Work records. No published catalog promotion, unrelated existing unit rewrite, learner progress migration, main direct write or Pages publication.
+PR/CI evidence to be recorded after connector confirmation.
+
+## V-037 — P-002 public-review release checklist
+Date: 2026-10-17
+Gates: exactly three Chapter1 thematic cards and six source-audited unit IDs; other review units hidden, status review preserved; existing Chapter3 sets and learner state unaffected; N01/N03/N10/N12 source unchanged; N02/N09 26 choices, wrong-answer image gate, KaTeX/320px mobile and reload persistence; physics/practice regressions; TypeScript/unit/build and governance success; main integration+Pages URL and direct browser check.
+Status at authoring: PENDING actual CI, merge and public verification evidence.

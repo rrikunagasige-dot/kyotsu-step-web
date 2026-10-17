@@ -10,12 +10,15 @@ on:
       - 'src/data/textbook/math/**'
       - 'public/assets/math/textbook/**'
       - 'src/data/textbook/index.ts'
+      - 'src/repositories/textbookRepository.ts'
       - 'src/pages/TextbookUnitPage.tsx'
       - 'src/pages/LearningSetupPage.tsx'
       - 'src/components/textbook/**'
       - 'src/components/layout/AppShell.tsx'
       - 'src/styles/global.css'
       - 'e2e/math-textbook-set-smoke.spec.ts'
+      - 'e2e/numbers-next-batch.spec.ts'
+      - 'e2e/numbers-catalog-publish.spec.ts'
       - '.github/workflows/math-textbook-ci.yml'
   workflow_dispatch:
 
@@ -55,7 +58,7 @@ jobs:
         run: pnpm run typecheck
 
       - name: Textbook schema and math-unit tests
-        run: pnpm exec vitest run src/domain/textbook.test.ts src/domain/textbookSchema.test.ts src/data/textbook/math/mathCatalog.test.ts src/data/textbook/math/mathFrontmatterLeak.test.ts src/data/textbook/math/mathReviewIntegrity.test.ts src/data/textbook/math/mathFigureAssets.test.ts src/data/textbook/math/set/setLesson.test.ts src/data/textbook/math/numbers/n01Lesson.test.ts src/data/textbook/math/numbers/numbersPilots.test.ts src/data/textbook/math/proposition/propositionReadingLesson.test.ts src/data/textbook/math/proposition/quantifierLesson.test.ts src/data/textbook/math/function/functionConditionsLesson.test.ts src/data/textbook/math/proposition/propositionProofLesson.test.ts
+        run: pnpm exec vitest run src/domain/textbook.test.ts src/domain/textbookSchema.test.ts src/data/textbook/math/mathCatalog.test.ts src/data/textbook/math/mathFrontmatterLeak.test.ts src/data/textbook/math/mathReviewIntegrity.test.ts src/data/textbook/math/mathFigureAssets.test.ts src/data/textbook/math/set/setLesson.test.ts src/data/textbook/math/numbers/n01Lesson.test.ts src/data/textbook/math/numbers/numbersPilots.test.ts src/data/textbook/math/numbers/numbersNextBatch.test.ts src/data/textbook/math/proposition/propositionReadingLesson.test.ts src/data/textbook/math/proposition/quantifierLesson.test.ts src/data/textbook/math/function/functionConditionsLesson.test.ts src/data/textbook/math/proposition/propositionProofLesson.test.ts
 
       - name: Build
         run: pnpm run build
@@ -70,6 +73,12 @@ jobs:
 
       - name: Math textbook desktop smoke
         run: pnpm exec playwright test e2e/math-textbook-set-smoke.spec.ts --project=desktop-chromium
+
+      - name: N02/N09 all 26 choices and original image gate (mobile and desktop)
+        run: pnpm exec playwright test e2e/numbers-next-batch.spec.ts --project=mobile-chromium --project=desktop-chromium
+
+      - name: Chapter-1 math catalog, route and review visibility (mobile and desktop)
+        run: pnpm exec playwright test e2e/numbers-catalog-publish.spec.ts --project=mobile-chromium --project=desktop-chromium
 
       - name: Physics textbook regression
         run: pnpm exec playwright test e2e/chapter1-learning-smoke.spec.ts --project=desktop-chromium

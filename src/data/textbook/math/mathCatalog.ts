@@ -5,6 +5,7 @@ export type MathTextbookPracticeLink = {
 
 export type MathTextbookTopicCatalogEntry = {
   id: string
+  chapterId: string
   label: { ja: string; zh: string }
   flow: { ja: string; zh: string }
   practiceLinks: readonly MathTextbookPracticeLink[]
@@ -21,7 +22,35 @@ export type MathTextbookTopicCatalogEntry = {
  */
 export const mathTextbookTopics: readonly MathTextbookTopicCatalogEntry[] = [
   {
+    id: 'numbers-polynomials',
+    chapterId: 'math-ch01-numbers-expressions',
+    label: { ja: '式を整える', zh: '整理代数式' },
+    flow: { ja: '同類項 → 整理と加減 → 指数法則と展開', zh: '合并同类项 → 整理与加减 → 指数规律与展开' },
+    practiceLinks: [],
+    unitIds: ['math-numbers-expressions-n01', 'math-numbers-expressions-n02', 'math-numbers-expressions-n03'],
+    learnerHeadings: [],
+  },
+  {
+    id: 'numbers-real',
+    chapterId: 'math-ch01-numbers-expressions',
+    label: { ja: '実数を扱う', zh: '认识实数' },
+    flow: { ja: '平方根と符号 → 数直線 → 根号の計算と有理化', zh: '平方根与符号 → 数轴 → 根式计算与有理化' },
+    practiceLinks: [],
+    unitIds: ['math-numbers-expressions-n09', 'math-numbers-expressions-n10'],
+    learnerHeadings: [],
+  },
+  {
+    id: 'numbers-inequalities',
+    chapterId: 'math-ch01-numbers-expressions',
+    label: { ja: '不等式を使う', zh: '运用不等式' },
+    flow: { ja: '範囲の共通部分 → 連立不等式 → 整数条件', zh: '范围交集 → 不等式组 → 整数条件' },
+    practiceLinks: [],
+    unitIds: ['math-numbers-expressions-n12'],
+    learnerHeadings: [],
+  },
+  {
     id: 'organize-sets',
+    chapterId: 'math-ch03-sets-propositions',
     label: { ja: '集合を整理する', zh: '整理集合' },
     flow: {
       ja: '集合の表し方 → 共通部分・和集合 → 部分集合 → 補集合 → 集合の条件',
@@ -42,6 +71,7 @@ export const mathTextbookTopics: readonly MathTextbookTopicCatalogEntry[] = [
   },
   {
     id: 'read-propositions',
+    chapterId: 'math-ch03-sets-propositions',
     label: { ja: '条件から命題を読む', zh: '从条件理解命题' },
     flow: {
       ja: '真偽 → 必要条件・十分条件 → 条件の否定 → 「すべて」と「ある」',
@@ -58,6 +88,7 @@ export const mathTextbookTopics: readonly MathTextbookTopicCatalogEntry[] = [
   },
   {
     id: 'prove-propositions',
+    chapterId: 'math-ch03-sets-propositions',
     label: { ja: '命題を証明する', zh: '证明命题' },
     flow: {
       ja: '逆・裏・対偶 → 証明しやすい向き → 対偶による証明 → 矛盾を使う証明',
@@ -73,6 +104,11 @@ export const mathTextbookTopics: readonly MathTextbookTopicCatalogEntry[] = [
     learnerHeadings: [],
   },
 ] as const
+
+// The chapter-1 units are deliberately learner-visible as review previews.
+export const mathNumbersReviewUnitIds = mathTextbookTopics
+  .filter((topic) => topic.chapterId === 'math-ch01-numbers-expressions')
+  .flatMap((topic) => topic.unitIds)
 
 export function mathTextbookTopicForUnit(unitId: string) {
   return mathTextbookTopics.find((topic) => topic.unitIds.includes(unitId))

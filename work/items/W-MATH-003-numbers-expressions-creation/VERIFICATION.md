@@ -81,3 +81,8 @@ Evidence: `N01_LEARNER_PILOT_DRAFT.md`.
 Date: 2026-10-17
 Checks: PR #66 documentation changes only, no `src`/`public` or existing pedagogy changes.
 Result: PENDING latest HEAD CI; prior PR initial status syntax failure was corrected and passed on earlier revision. Retain evidence.
+
+## V-014 — N01 learner-facing answer-leak static audit
+Date: 2026-10-17
+Check: N01-Q09 cancellation result and N01-Q10 degree explanation not stated before answer; question ID 01–10 all covered; answer mapping remains teacher-only.
+Result: **PASS after correction**; initial draft had an answer leakage risk recorded in F-010, now resolved. Not a substitute for compiled app/browser QA.

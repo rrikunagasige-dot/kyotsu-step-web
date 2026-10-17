@@ -152,3 +152,28 @@ Interpretation: N01 *actual app flow under CI dev server* was browser-tested PC/
 Date: 2026-10-17
 Check: `compare_commits` main base `c184077a` → code `e9c36aad`.
 Result: **PASS** 17 files only: new math/numbers lesson+unit tests, maths index+catalog test, relevant math-textbook CI and E2E checks, Work documents. No old published math lesson, physics/practice content, user progress schema, root governance, or Pages workflow modifications; behind main 0. Concurrent duplicate module **removed from final diff**.
+
+
+## V-022 — N01 production deployment and first real-screen choice
+Date: 2026-10-17
+- [PR #66](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/66) merged to live main `1bd40d5790faeb28ccccfaa7add5090a715949a2` after distinct release assent.
+- [GitHub Pages run 38994031060](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38994031060) completed SUCCESS.
+- Direct [N01 published review page](https://rrikunagasige-dot.github.io/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n01) opened in a real Chrome UI: heading 「式の見方」, source formula, inline answer button and progress 0/15 visible. Clicked first button; candidate -1 selected correctly; progress 1/15 and next item displayed.
+- Result: **PASS for deployment and first public interaction spot-check**. Full 15/15 in desktop/mobile passed earlier PR CI; did not independently rerun all 15 on public site. No assertion of physical user-device QA.
+- After link handoff, user's immediate reply 「今のでいいと思う。続け」 is recorded as **positive user review acceptance for N01 pilot**; review-only `status` remains unchanged until distinct catalog/promotion decision.
+
+## V-023 — N03/N10/N12 design-coverage static checks
+Date: 2026-10-17
+Target: separate branch `work/W-MATH-003-next-pilots-review-20261017`.
+- Re-read the exact independently extracted source pilot passages in the handoff ZIP, and the P-001 pilot mathematical audit/figure manifest.
+- Original question rows: N03 **13/13**, N10 **21/21**, N12 **15/15**, contiguous, **no duplicate/missing numbers** in the teacher-only answer mappings.
+- Learner-facing actual candidate holes (excludes the explanatory marker in prose): N03 **13**, N10 **21**, N12 **15**. These are design candidates, not promises to render separate quiz cards.
+- Source safety guard included: N03 original four unresolved product cells; N10 proof original `a>0,b>0`; N12 F03 only after Q15 answer. Correct original source figures 1+0+3.
+- Markdown formatting normalized; no escaped backtick syntax errors in saved drafts. New material is teacher-authored adaptation explicitly separated from original Word.
+Result: **PASS for structural design/source correspondence**, **NOT app/browser/mathematical teacher-answer-booklet verification**, **NOT student-facing copy acceptance**.
+
+## V-024 — Pending next-pilot acceptance gates
+Date: 2026-10-17
+- Request user review of exact N03/N10/N12 proposed learner prose and thinking slots. Any substantive feedback must be incorporated in a new review revision and shown before code.
+- New runtime implementation, app/mobile/KaTeX/asset QA, next main release and Page publication: **NOT-RUN / NOT-AUTHORIZED FOR THESE THREE PILOTS YET**.
+- W-MATH-003 overall status: VERIFYING (chapter coverage 233, pilot verified 59, rest 174 unaudited). No full-chapter DONE claim.

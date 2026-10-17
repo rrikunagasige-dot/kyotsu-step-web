@@ -29,3 +29,11 @@ In source Q3/Q4, `5x³y` is regarded as an x-polynomial with coefficient `5y` an
 
 ## F-010 — EDITORIAL-QA: N01 prior-answer leakage fixed before user review
 First `N01_LEARNER_PILOT_DRAFT.md` draft explicitly stated the cancellation/remaining highest term immediately before N01-Q10; this reduced Q10 to trivial retrieval. Replaced with a genuinely open demand to identify the resulting degree **and justify** from the Q9 expression, and made Q9 group-and-result holes explicit. This is a pilot-specific demonstration of CMD-WORK-002 leakage inspection. Original source/answers unaffected.
+
+## F-011 — EDITORIAL/UX: Initial N01 draft not yet directly app-ready
+- First review draft placed six separate numeric placeholders in one coefficients-and-degree table for original Q2, which would encourage excessive micro-answers; v2 uses one compact **pair** choice per row (three rows).
+- The original Q3 already determines x-coefficient of `5x³y`; repeating it in Q4 as a separate click creates redundant work. v2 reuses previous result, tests only change of viewpoint to y, but still maintains Q4's source scope.
+- Student narrative introduced high-level zero-specialization/formal-variable caveat at Q4, although the source only says y is temporarily constant. Move advanced caveat to teacher-side QA; keep student exposition source-level.
+- Q6 grouping and Q9 grouping→simplification are genuinely separate reasoning operations; v2 stages them while maintaining 10 source question IDs, and ensures Q10 degree not revealed before answering.
+- Existing `TextbookReadingPartSchema` supports `choice` per item, with `TextbookItemSchema` explicit choices for published units; v2 defines **15** independent internal item IDs but requires hiding options until current question and grouping them into 10 natural source tasks.
+These are design adjustments **inside already approved P-001**; user-facing review is still required before implementing this specific copy.

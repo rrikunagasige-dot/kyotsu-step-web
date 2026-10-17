@@ -51,3 +51,16 @@ After being explicitly asked whether PR #68 may be merged into main and publishe
 
 ## Definition of Done
 Source faithfulness + math proof QA + user textbook pedagogy acceptance + browser/mobile/e2e + PR/release gates and Work/Memory Close. Technical CI alone insufficient.
+
+
+## 2026-10-17 — N02/N09 の次バッチ（最新）
+
+User directive: 「次はN02・N09の原資料監査と詳細設計から始める。かなりいいから、今は少し大胆に多くつくろう」。
+Scope is exactly **N02 (12 source markers) + N09 (14 source markers)**: deeper source audit, mathematically complete independent answer derivations, two full learner reading lines, 26 thinking stages with distractors and per-error feedback, original N09-F01 no-leak gate. This is inside approved P-001 and **design-only at this stage**, not app implementation/publishing.
+- Source: original teacher-edited DOCX 212863 bytes / original SHA-256 `93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa` verified again. Direct word/document.xml scan: N02 has 12 labels, 34 OMML, 0 drawings; N09 has 14 labels, 37 OMML, 1 drawing. N09 original image6.png visually inspected.
+- Independent solutions: N02 12/12, N09 14/14, total **26/26** math audit PASS; no official answer booklet.
+- New documents: `work/items/W-MATH-003-numbers-expressions-creation/N02_N09_BATCH_DESIGN_REVIEW.md` (review entrance), `work/items/W-MATH-003-numbers-expressions-creation/N02_N09_SOURCE_SOLUTION_AUDIT.md`, `work/items/W-MATH-003-numbers-expressions-creation/N02_LEARNER_REVIEW_V1.md`, `work/items/W-MATH-003-numbers-expressions-creation/N09_LEARNER_REVIEW_V1.md`.
+- Design choice to review: source N09-F01 appears before Q10 but labels -3/-2 and the -2.1 point; proposed app timing **after** Q10 to avoid premature answer.
+- Arithmetic source coverage now 59 previous pilot markers + 26 = **85/233 audited**; 148 original source markers still not audited. This is NOT a claim of 85 deployed questions.
+- **Current step:** await review of exact two learner texts, 26 interaction designs, and altered original figure timing. Status remains VERIFYING.
+- **Next step if explicitly accepted:** independently implement N02/N09 as review-only app work on separate PR, run live desktop/mobile/source/regression QA; obtain distinct merge+Pages authorization. Preserve existing approved main app and progress.

@@ -145,3 +145,20 @@ Date: 2026-10-17
 Target: [Pages run 39015513835](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39015513835), N03/N10/N12 review deep links.
 Action: [Pages 39015513835](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39015513835) のbuild/deploy SUCCESSを確認し、公開版ChromeでN03は 4a^8 を選んで進捗0/13→1/13、N10は t²=25 を選んで0/21→1/21、N12は x>-7/2 と x≤1/2 を選んで0/15→2/15へ進み、Q2回答後に元の数直線図F01が見えることを画像でも確認。F03のQ15後解放はCIでの検証であり、公開版では未完走。
 Result: **PASS** for real production routes, first selection progression and N12 F01 gate; the full 49/49 stage regression ran previously in PC/mobile CI, not manually repeated on the live site. The 16-unit chapter as a whole remains VERIFYING; 174 non-pilot source markers are unaudited. The user has not yet provided hands-on acceptance of these three units.
+
+
+## A-025 — N02/N09 original Word source and equation restoration
+Date: 2026-10-17
+Scope: User-requested N02 and N09 next-batch detailed design under approved W-MATH-003/P-001.
+Action: Confirm target repository `rrikunagasige-dot/kyotsu-step-web` ID 1391122224, live main `ec49a1a552b9b6878261eb2f1f4f04afcca6d480`. Rehash exact original.docx in user-provided handoff ZIP, read original_pandoc OMML-preserved segments N02/N09, enumerate question labels/OMML/drawings directly from DOCX XML, visually open untouched image6.png.
+Result: SHA matches, N02=12 labels/34 OMML/0 images, N09=14 labels/37 OMML/1 image. No source reconstruction from lossy index, no Word/picture mutation.
+
+## A-026 — Derive 26 answers and full learner review designs
+Date: 2026-10-17
+Action: Independently solve all 26 original labels, verify N02 arithmetic coefficients and N09 sign/floor/decimal bounds, write source-solution audit and two full learner passages with choices, feedback, 26 staged thinking nodes, figure gating. Add a batch review entry and content/UI QA matrix.
+Result: Four new Markdown artifacts scoped to N02/N09. No application source/public assets touched. Official separate publisher answer key unavailable.
+
+## A-027 — Design-review handoff as documentation-only PR
+Date: 2026-10-17
+Action: Place four artifacts and updated Work records in independent documentation-only branch for exact user review; main/Pages and review-only app data remain unchanged.
+Result: Review branch and PR URL are delivered separately in handoff after connector confirmation.

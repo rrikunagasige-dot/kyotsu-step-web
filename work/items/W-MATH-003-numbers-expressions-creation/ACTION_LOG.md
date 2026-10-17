@@ -126,3 +126,9 @@ Date: 2026-10-17
 Target: N10 approved lesson and its implementation/test on draft PR #68.
 Action: QA found original drafted Q14 prose restated the full correct operation immediately before its choice. Tightened only that lead-in to ask how a numerator/denominator ratio is preserved; retained the same approved choice, answer, proof assumptions and sequence. Added regression asserting the answer phrase is absent prior to Q14.
 Result: Small learner-copy QA correction remains visible in PR diff for user review; no source math or main release changed.
+
+## A-022 — Full CI SUCCESS for N03/N10/N12 approved review app
+Date: 2026-10-17
+Target: final app code HEAD dc88a631d443cf9af08f1acc5d8a44b3656b1df6 on draft PR #68.
+Action: Confirmed complete [Math textbook CI 39008959818](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39008959818): typecheck, math unit tests including KaTeX and SHA-256 original PNG fidelity, production build, real mobile and desktop browser flows, Physics mode regression and Math Practice setup regression.
+Result: ALL SUCCESS. Repository Governance Check [39008959856](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39008959856) SUCCESS. PR #68 stays draft and main/Pages unchanged. This Work-record-only evidence append is not a new app-code revision; verify its governance CI separately.

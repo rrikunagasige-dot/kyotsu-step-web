@@ -1,6 +1,6 @@
 # W-MATH-003 — 数学Ⅰ「数と式」教科書モードの作成
 Status: VERIFYING
-Source gate: RECOVERED (原Word元バイト・397 OMML・14原図を確認)。N01はPR #66/main/Pagesに統合・動作確認済みで、ユーザーから「今のでいいと思う」と肯定を受領。N03/N10/N12本文案はユーザー承認済みで、別draft PR #68にreview専用アプリを実装。CI・実画面レビュー待ち。
+Source gate: RECOVERED (原Word元バイト・397 OMML・14原図を確認)。N01はPR #66/main/Pagesに統合・動作確認済みで、ユーザーから「今のでいいと思う」と肯定を受領。N03/N10/N12本文案はユーザー承認済みで、別draft PR #68にreview専用アプリを実装。[Math textbook CI 39008959818] SUCCESS・[Governance 39008959856] SUCCESS。実画面のユーザーレビュー待ち。
 Updated: 2026-10-17
 Repo: `rrikunagasige-dot/kyotsu-step-web` (ID 1391122224)
 Previous N01 base main: `c184077a745c7d4bc077e0b5d0eaa70e9af2ddaf`; current reviewed main at start of next-pilot work: `1bd40d5790faeb28ccccfaa7add5090a715949a2`
@@ -38,7 +38,7 @@ P-001 approved in conversation on 2026-10-17 by 「いいよ。こうやって�
   - `N12_LEARNER_REVIEW_V1.md` — inequality intersections, integer money context, answer-filled figure F03 unlocked after Q15.
 
 ## Next Step
-1. Evaluate PR #68 CI, PNG/KaTeX/answer-gating, mobile/desktop smoke, physics/math-practice regressions. Repair failures before user review.
+1. PR #68 final code QA completed: typecheck, math and image hash Vitest, production build, mobile/desktop browser, Physics and Math Practice regressions all SUCCESS on code SHA dc88a631d443cf9af08f1acc5d8a44b3656b1df6.
 2. Obtain user hands-on feedback on the actual N03/N10/N12 app before release. PR #68 remains draft.
 3. Ask separately before any main merge/Pages publication; then verify the actual deployed page and user hands-on. Failure enters CMD-WORK-001.
 4. Entire 16-unit chapter and 174 unaudited source questions remain out of DONE until complete audit, design, QA and memory close. No mass autoproduction.

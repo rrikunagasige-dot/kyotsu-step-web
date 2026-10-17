@@ -1,6 +1,6 @@
 # Verification — W-MATH-003
 
-Status: PARTIAL — N01 CI+public review PASS; N03/N10/N12 draft implementation, CI and user app review pending
+Status: PARTIAL — N01 public pilot accepted; N03/N10/N12 full CI PASS, hands-on review and release authorization pending
 
 ## V-001 — Authority and scope
 Date: 2026-10-17
@@ -205,3 +205,16 @@ Target: draft PR #68 implementation code head c8e6103054e55aa43fcceca36d5f69131f
 - [Math textbook CI run 39008585976](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39008585976): typecheck, Vitest schema/math, production build PASS; mobile/desktop/physics/practice still under verification at log time.
 - [Repository Governance Check run 39008585948](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39008585948): verify separately for final PR head.
 - Adding exact source-PNG hash test and approved Work evidence in follow-up commit; **do not promote this preliminary status to final PASS until later source head CI completes.**
+
+## V-029 — Final code HEAD complete math-textbook CI SUCCESS
+Date: 2026-10-17
+Target: draft PR #68 code SHA `dc88a631d443cf9af08f1acc5d8a44b3656b1df6`.
+- [Math textbook CI 39008959818](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39008959818): **SUCCESS**.
+- TypeScript typecheck: PASS. Vitest textbook schema, math unit, 49-source/choice mapping, original PNG byte-hash, N10 Q14 no-preanswer-leak, N12 figure gate and KaTeX rendering: PASS.
+- Production build: PASS. Compiled-production SVG decode mobile/desktop: PASS.
+- Math textbook Playwright mobile: PASS, including N03/N10/N12 full 49 choices and gated PNG decode; desktop: PASS.
+- Physics textbook desktop regression: PASS. Math Practice setup regression: PASS.
+- [Repository Governance 39008959856](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39008959856): **SUCCESS**.
+- Commit compare against main `1bd40d5790faeb28ccccfaa7add5090a715949a2`: exactly 20 paths, 0 behind; 13 directly related lesson/test/PNG/CI paths and 7 W-MATH-003 work design/evidence paths. No N01, existing published lesson source, Physics, Math Practice or learner progress writes.
+- Prior CI 39008585976 was cancelled by the deliberate final anti-leak/figure-integrity revision after its mobile/desktop succeeded. The final CI 39008959818 supersedes it and fully succeeded.
+Result: **QA PASS for review-only app code**. Not merged into main or published on GitHub Pages; user hands-on review and separate release permission are still required. This verification document update is evidence-only; a subsequent governance-only check may run.

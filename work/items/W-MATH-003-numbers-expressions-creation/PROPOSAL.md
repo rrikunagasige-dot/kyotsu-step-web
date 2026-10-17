@@ -1,6 +1,6 @@
 # W-MATH-003 / P-001 — 「数と式」新規数学教科書アプリ制作
 
-Status: APPROVED (source gate BLOCKED)
+Status: APPROVED (original Word source recovered; pilot content review pending)
 Created: 2026-10-17
 
 ## Need
@@ -8,7 +8,7 @@ Created: 2026-10-17
 
 ## Exact proposal presented to and approved by user
 1. Recover **original Word bytes + full formula & figure audit** (not the lossy indexed text as answer authority).
-2. Coverage: N01–N14 + NE01–NE02 = 16 units / 233 question markers and 12 referenced figure IDs, with each question source and mapping.
+2. Coverage: N01–N14 + NE01–NE02 = 16 units / 233 question markers and **14** verified figure IDs, with each question source and mapping.
 3. Build dependency/coverage map and complete solutions, checking mathematical correctness.
 4. Build naturally linked **hole-free** explanatory narrative: motivating question→meaning→concept→properties→proof when needed→example→reuse.
 5. Classify thinking nodes, inline blanks/choices/feedback, no answer leakage, keep coherent derivations.
@@ -26,7 +26,7 @@ Initial N01 N03 N10 N12 total source markers = 10 + 13 + 21 + 15 = 59; all only 
 Invent omitted equations; claim publisher original consulted; rewrite legacy math/physics/practice or learner progress; alter technical mode laws; merge branch without approval; publish new textbook without QA and user acceptance.
 
 ## Verification
-- Original Word byte access + OCR-independent OMML/layout inspection, figure source mapping.
+- **RAW SOURCE PASS (2026-10-17)**: original Word bytes and 397 OMML + 14 embedded PNG recovered; SHA recorded in `SOURCE_OMML_AUDIT.md`.
 - All source formulas, 233 markers, and 12 figures audited, including domain, equality direction, boundary and figure timing.
 - Prototype user review, mathematics completeness, text/interaction/KaTeX/PC/mobile CI and regression.
 - PR/preview link for user; separate public deployment authorization.

@@ -97,3 +97,22 @@ Evidence: exact 15-item teacher-only mapping and complete student prose v2.
 ## V-016 — Release/approval boundary
 Date: 2026-10-17
 Result: **WAITING FOR USER CONTENT REVIEW** of N01 v2 before converting to app source. P-001 workflow already approved, but reviewer has not accepted the exact v2 lesson copy. Main, published app, other modes and student progress unchanged.
+
+## V-017 — N01 registered in app review status, not published
+Date: 2026-10-17
+Target: `math-numbers-expressions-n01`
+Check: Original N01 10→15 item map, lesson in schema-v1.1 chapter 1 p2–3 (per original Word TOC), three headings, no N01 figure, source labels kept internal, original published units retained; direct route resolves via repository. `status:'review'` means public setup list excludes pilot.
+Result: SOURCE-CODE IMPLEMENTED / BROWSER QA PENDING.
+
+## V-018 — CI first iteration: explicit failure
+Date: 2026-10-17
+Workflow: [Math textbook mode CI run 38989444753](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38989444753).
+Check: Unit math tests, production `tsc -b`.
+Result: **UNIT 126/126 PASS, BUILD FAIL TS2367 (TEST ONLY)**.
+Correction: remove redundant unreachable choice branch, rerun. Do not mark PASS until final head CI passes.
+
+## V-019 — PR scope and release
+Date: 2026-10-17
+Current target: draft [PR #66](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/66)
+Check: Chapter 1 N01 review-only files plus adjacent tests/CI and Work records. No app homepage behavior, published set/proposition, physics/practice source, or learner progress changes.
+Result: SCOPE CHECK — subject to final compare. **NO main merge, no production live N01 link yet.**

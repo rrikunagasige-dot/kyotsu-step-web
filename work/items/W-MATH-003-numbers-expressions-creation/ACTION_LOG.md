@@ -47,3 +47,9 @@ Date: 2026-10-17
 Target: `SOURCE_OMML_AUDIT.md`, `PILOT_SOLUTION_AUDIT.md`, `N01_LEARNER_PILOT_DRAFT.md`.
 Action: Independently computed all 59 pilot question answers, verified key identities and inequalities with SymPy; checked N03/N12 original image timing. Produced complete N01 one-flow teaching text with inline formula blanks, gated answer table and no invented image.
 Result: Pending exact learner-facing content/UI review, not yet deployed. Separate teacher answer booklet unavailable.
+
+## A-009 — N01 pre-review leakage correction
+Date: 2026-10-17
+Target: `N01_LEARNER_PILOT_DRAFT.md`
+Action: Removed prefilled clue for final polynomial degree/cancellation and restored open Q9 grouping→result→Q10 interpretation.
+Result: Teacher-side solution table remains separate, learner-facing draft reviewable. App still not implemented.

@@ -29,3 +29,16 @@ Result: NOT-RUN (depends on V-003 and user pilot review).
 Date: 2026-10-17
 Check: only work records and design assets, root command/other chapter/progress unchanged.
 Result: PENDING
+
+## V-006 — Four-pilot structural design inspection
+Date: 2026-10-17
+Targets: `PILOT_DESIGN.md`, `SOURCE_MANIFEST.md`
+Check: four pilots referenced; all marker ranges 1–10 / 1–13 / 1–21 / 1–15; N03 figure answer not leaked; N12 figures progressive; N10 proof nonnegativity and denominator restrictions.
+Expected: source-independent pilot structure valid, never claim source math proof.
+Result: **PASS for design structure only; FULL MATHEMATICS SOURCE QA BLOCKED**.
+
+## V-007 — Documentation-only scope and GitHub governance
+Date: 2026-10-17
+Check: changes limited to `W-MATH-003` work docs; no app, code, mode/spec or progress changes.
+Expected: PASS
+Result: PENDING PR diff+CI evidence.

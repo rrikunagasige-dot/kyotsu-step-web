@@ -2,7 +2,8 @@
 
 ## P-001 — Source-audited 数と式 mathematical textbook creation
 
-Status: **APPROVED**, with explicit non-skippable source and per-pilot review gates.
+Status: APPROVED
+Review gates: Original source, per-pilot review, app user acceptance, and release authorization remain separate.
 Approval date: 2026-10-17
 Evidence: In the immediately prior reply, the assistant presented the 16-unit source mapping + 12 figure IDs, 233 prompts, four representative units, and `NUMBERS_AND_EXPRESSIONS_CMD_WORK_002_INVENTORY_PROPOSAL_20261017.md`, asked user to review/approve P-001. User replied 「いいよ。こうやって作ろうか」 without conditions. No repeated confirmation required.
 

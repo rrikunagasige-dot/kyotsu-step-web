@@ -1,6 +1,6 @@
 # Verification — W-MATH-003
 
-Status: PARTIAL / SOURCE BLOCKED
+Status: PARTIAL — N01 CI PASS; USER APP REVIEW PENDING
 
 ## V-001 — Authority and scope
 Date: 2026-10-17
@@ -116,3 +116,26 @@ Date: 2026-10-17
 Current target: draft [PR #66](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/66)
 Check: Chapter 1 N01 review-only files plus adjacent tests/CI and Work records. No app homepage behavior, published set/proposition, physics/practice source, or learner progress changes.
 Result: SCOPE CHECK — subject to final compare. **NO main merge, no production live N01 link yet.**
+
+## V-020 — N01 review-app full CI SUCCESS
+Date: 2026-10-17
+Target: PR #66 source HEAD `e9c36aad36d40d3a03c7da177978557aff99d601`
+Workflow: [Math textbook mode CI run 38989883731](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38989883731)
+Check:
+- Typecheck: **PASS**
+- Math textbook unit/schema tests: **PASS**
+- Production build `tsc -b && vite build`: **PASS**
+- P-004 production image decode PC/mobile: **PASS**
+- Math textbook **mobile** Playwright smoke, including all 15 N01 choices and reload persistence: **PASS**
+- Math textbook **desktop** Playwright smoke, including all 15 N01 choices and reload persistence: **PASS**
+- Physics textbook browser regression: **PASS**
+- Math practice setup regression: **PASS**
+Result: **SUCCESS** for entire job. The earlier TS2367 failure was repaired; it remains in V-018 as non-deleted error evidence.
+
+## V-021 — Release separation / remaining manual acceptance
+Date: 2026-10-17
+- Governance Check: SUCCESS for source PR; all changed app files confined to new math N01 pilot, review data registration, adjacent tests, and Work records.
+- Main: `c184077a745c7d4bc077e0b5d0eaa70e9af2ddaf` baseline; PR draft, NOT MERGED, no N01 Pages publication yet.
+- Missing: **user-visible hands-on acceptance of actual app**; no pretend live URL and do not mark W-MATH-003 DONE.
+- Separate release authorization needed before main merge / Pages verification; subsequent visual review may direct to `CMD-WORK-001`.
+- This evidence-only document update triggers a new Governance CI; verify latest documentation HEAD separately.

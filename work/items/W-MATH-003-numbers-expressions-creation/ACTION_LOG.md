@@ -90,3 +90,21 @@ Date: 2026-10-17
 Code HEAD: `e9c36aad36d40d3a03c7da177978557aff99d601` on PR #66
 Action: Published work branch PR; evaluated GitHub Actions [38989883731](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38989883731) and [Governance 38989883645](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38989883645).
 Result: Both **SUCCESS**. Unit suite, typecheck/build, compiled math-set image decode, math-textbook desktop/mobile browser smoke (including 15-step N01 and reload), physics textbook and math practice regressions all PASS. Maintains review-only N01 in built repo, not published to main. Following documentation-only verification log append, compare SHA to same code tree; governance checks re-run.
+
+
+## A-016 — Authorized PR #66 main merge and Pages release
+Date: 2026-10-17
+Target: PR #66, target `rrikunagasige-dot/kyotsu-step-web` main, GitHub Pages.
+Action: User granted separate main merge/Pages release assent (「よろしく」). Confirmed source HEAD and passing CI, merged PR #66. Merge SHA `1bd40d5790faeb28ccccfaa7add5090a715949a2`; [Pages run 38994031060](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38994031060) completed SUCCESS.
+Result: N01 available at [live deep link](https://rrikunagasige-dot.github.io/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n01), but `status:'review'` and excluded from ordinary setup list. In public Chrome browser, verified heading, formula and first inline hole, correct -1 increases progress 0/15→1/15 and reveals next prompt. This is a spot check; full 15-stage desktop/mobile automation was earlier CI, not repeated manual public testing.
+
+## A-017 — User N01 pilot review and continuation
+Date: 2026-10-17
+Action: After live link and QA report, user replied 「今のでいいと思う。続け」. Record as positive N01 pilot copy/behavior acceptance and instruction to continue the already-approved W-MATH-003/P-001 workflow, without claiming manual phone testing or promotion into ordinary catalog.
+Result: Move to the remaining approved representative units N03/N10/N12 (source 13+21+15=49), keeping whole Work VERIFYING.
+
+## A-018 — Source-traceable next three learner review drafts
+Date: 2026-10-17
+Target: branch `work/W-MATH-003-next-pilots-review-20261017` starting from main `1bd40d5`.
+Action: Read original DOCX-derived N03/N10/N12 passages from authoritative handoff ZIP, independently checked source solutions and original figure manifest. Authored `N03_LEARNER_REVIEW_V1.md`, `N10_LEARNER_REVIEW_V1.md`, `N12_LEARNER_REVIEW_V1.md` with complete learner text, internal original-marker mapping, gated thinking slots, correct answers, misconception feedback focus, diagram placement and no-leak conditions.
+Result: Documentation-only review. **No app code, original DOCX, published catalog, mathematics practice, physics, or existing learner progress changed.** Next stage: validate draft PR and present to user for review/approval before implementing these exact drafts.

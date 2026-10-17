@@ -139,3 +139,16 @@ Date: 2026-10-17
 - Missing: **user-visible hands-on acceptance of actual app**; no pretend live URL and do not mark W-MATH-003 DONE.
 - Separate release authorization needed before main merge / Pages verification; subsequent visual review may direct to `CMD-WORK-001`.
 - This evidence-only document update triggers a new Governance CI; verify latest documentation HEAD separately.
+
+## V-020 — Successful complete N01 app CI
+Date: 2026-10-17
+Tested code HEAD: `e9c36aad36d40d3a03c7da177978557aff99d601`
+Checks: `pnpm run typecheck`, textbook schema/logic 126 tests, `pnpm run build`, math figure compiled-production decode, Playwright math textbook **mobile & desktop**, physics textbook desktop, math practice desktop.
+Result: **ALL SUCCESS**; complete [Math textbook CI run 38989883731](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38989883731).
+Corresponding [Repository Governance run 38989883645](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38989883645): **SUCCESS**.
+Interpretation: N01 *actual app flow under CI dev server* was browser-tested PC/mobile; source was independently built for production. No assertion that N01 is already deployed on public GitHub Pages or accepted by user. Real user visual review next.
+
+## V-021 — Final PR scope of code head
+Date: 2026-10-17
+Check: `compare_commits` main base `c184077a` → code `e9c36aad`.
+Result: **PASS** 17 files only: new math/numbers lesson+unit tests, maths index+catalog test, relevant math-textbook CI and E2E checks, Work documents. No old published math lesson, physics/practice content, user progress schema, root governance, or Pages workflow modifications; behind main 0. Concurrent duplicate module **removed from final diff**.

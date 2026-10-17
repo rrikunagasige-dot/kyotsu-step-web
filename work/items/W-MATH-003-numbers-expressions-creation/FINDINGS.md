@@ -60,3 +60,27 @@ N03 13/N10 21/N12 15 **source questions** are traceability obligations, not a ru
 ## F-017 — CONFIRMED: Separate release permission does not promote review pilots
 Date: 2026-10-17
 User said 「いいよ」 in direct reply to the explicit question whether PR #68 could be merged into main and published via GitHub Pages. With final CI and governance PASS, PR #68 was merged at `1e7a5d77e5f741d77afc7c0fe124cf978e45993e`, [Pages run 39015513835](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39015513835) deployed successfully and real Chrome verified N03/N10/N12 stage progression and N12-F01 after Q2. Their `status:'review'` and exclusion from the normal selector persist. This is release approval and technical live-spot verification, not user hands-on acceptance of all three lessons, not permission to promote to the ordinary catalog and not completion of the remaining 174 unaudited source markers.
+
+
+## F-018 — CONFIRMED: N02/N09 primary question and OMML coverage
+Date: 2026-10-17
+Source SHA: 93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa.
+N02 has original Q1–12, 34 OMML equations/math nodes, no embedded drawing. N09 has original Q1–14, 37 OMML and one original embedded number-line drawing; all 26 original markers found in raw DOCX. Exact math and independent solutions documented in N02_N09_SOURCE_SOLUTION_AUDIT.md.
+
+## F-019 — RISK / SOURCE-LEAK: Original N09-F01 diagram reveals Q10 neighboring integers
+Original image6.png marks -4,-3,-2,-1 and a black point -2.1 located between -3 and -2. In the original Word, the figure appears before Q10 asking which integer n satisfies n<=-2.1<n+1. This makes the correct integer n=-3 visually apparent. Proposed **timing** change only: reveal unchanged original figure after correct Q10 response, before Q11. Must be accepted during exact learner design review; do not silently modify source image.
+
+## F-020 — CONFIRMED: Floor-definition fractional part must stay nonnegative for negatives
+For -2.1: integer part -3 and fractional part 0.9. For sqrt(10): integer 3 and fractional sqrt(10)-3. For -sqrt(10): integer -4 and fractional 4-sqrt(10). All follow n<=x<n+1 and 0<=x-n<1. Truncation toward zero is mathematically wrong.
+
+## F-021 — PEDAGOGY: Source markers and cognitive steps need one-to-one bookkeeping, not redundant UI cards
+N02-Q03/Q09 and N09-Q02/Q04/Q08/Q14 request pairs or linked comparisons. Represent each as one progression stage with a compound response and populate multiple mathematical locations in one response. Do not turn 26 markers into an arbitrary higher progress total without explicit design change.
+
+## F-022 — OPEN-QUESTION: Teacher-edited Word source is not the publisher's official answer authority
+Independent solutions 26/26 derive from recovered original Word; separate answer booklet and direct publisher textbook cross-check remain unavailable. This caveat is inherited from F-008 and does not block user review of independently verified calculations.
+
+## F-023 — CONFIRMED: N09 sample target inequality can spoil an identical Q09 choice
+The original edited Word and design prose introduce the aim 1.41<sqrt(2)<1.42 before asking the learner to derive it. In the interactive student renderer, the Q09 exact formula would then be visually pre-answered. The implementation retains the mathematical goal but opens with “is sqrt(2) between 1.41 and 1.42?” and asks the learner to complete the strict inequality only after checking squares. No source numbers changed.
+
+## F-024 — CONFIRMED: Original N09-F01 binary has stable SHA
+The unchanged source figure image6.png (negative decimal -2.1 at left of -2) has SHA-256 24dd29dcaacd371ddfab4c8fefbccd84933fd0f1a27ed5f167372f74ca4a9cfd. The new app asset is byte-for-byte identical, with placement after Q10 in readingFlow. Alt and caption are not mounted before the figure block is unlocked.

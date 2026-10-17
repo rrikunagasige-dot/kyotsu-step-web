@@ -37,3 +37,9 @@ First `N01_LEARNER_PILOT_DRAFT.md` draft explicitly stated the cancellation/rema
 - Q6 grouping and Q9 grouping→simplification are genuinely separate reasoning operations; v2 stages them while maintaining 10 source question IDs, and ensures Q10 degree not revealed before answering.
 - Existing `TextbookReadingPartSchema` supports `choice` per item, with `TextbookItemSchema` explicit choices for published units; v2 defines **15** independent internal item IDs but requires hiding options until current question and grouping them into 10 natural source tasks.
 These are design adjustments **inside already approved P-001**; user-facing review is still required before implementing this specific copy.
+
+## F-012 — ERROR-CONCURRENCY: Duplicate review-only unit in shared PR branch
+A separate concurrent change inserted a second `mathNumbersN01Unit` import and duplicate registration, plus a variant `numbersN01Lesson.ts` representing the same unit ID and contradictory E2E answer wording. This is a real Work OS collision, not a new curricular unit. The previously user-approved `N01_LEARNER_REVIEW_V2.md` and its matching `n01Lesson.ts` were treated as current authoritative intent. Reconciled the index and catalog tests, aligned additional browser test, removed the *new duplicate unused module* from the Work branch. No legacy source deleted. Recommendation: independent PR branches when parallel authoring.
+
+## F-013 — ERROR-TEST-CODE: TS2367 in production build
+CI 38989444753: 126 unit tests passed, but production `tsc -b` rejected a redundant discriminant test in `n01Lesson.test.ts` after narrowing through `filter`. Fixed without changing source problem/lesson copy.

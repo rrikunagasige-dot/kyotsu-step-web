@@ -95,7 +95,7 @@ Use nonnegative principal-square-root meaning to show correctness of radical sim
 | 20–21 | select own nonzero factor and rationalize a fresh example | fading/self-check |
 
 ### Proof guard
-For general `√a√b=√(ab)`, require (a\ge0,b\ge0); for `√a/√b=√(a/b)`, (a\ge0,b>0). These are **mathematical guards**, not claims about what the lossy Word literally contains. Original symbol/assumption check required. Distinguish proof hypotheses from later computational conveniences. Do not hide sign/denominator checks under a generic "squaring proves equality" claim.
+For general `√a√b=√(ab)`, require `a ≥ 0, b ≥ 0`; for `√a/√b=√(a/b)`, require `a ≥ 0, b > 0`.  These are **mathematical guards**, not claims about what the lossy Word literally contains. Original symbol/assumption check required. Distinguish proof hypotheses from later computational conveniences. Do not hide sign/denominator checks under a generic "squaring proves equality" claim.
 No figure proposed without a concrete pedagogical need; well-laid out formulas are preferable.
 
 ## Pilot D — N12「連立不等式と文章題」 (15 source markers, 3 figures)

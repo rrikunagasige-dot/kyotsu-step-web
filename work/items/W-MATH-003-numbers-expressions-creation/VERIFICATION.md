@@ -56,3 +56,28 @@ Target: branch commit `fc492ecc0ee0a9c817820108b9c40369709dab1f`
 Check: GitHub Actions Repository Governance Check
 Result: **SUCCESS** for [workflow run 38986171983](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38986171983).
 Note: this is a governance-documentation pass, NOT original Word math fidelity QA, pilot runtime E2E, or user acceptance. Re-check CI on final evidence-only commit.
+
+## V-010 — Original Word raw extraction
+Date: 2026-10-17
+Target: raw user-uploaded original `.docx`
+Checks: ZIP integrity, 212863 byte size, SHA-256 `93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa`; XML 397 `m:oMath` objects, 14 PNG, 16 unit heads; independent Pandoc source 233 【n】 markers + 14 media references.
+Result: **PASS** for extraction/source inventory (previous figure-12 claim corrected).
+Evidence: `SOURCE_OMML_AUDIT.md`. Original separate answer booklet not available.
+
+## V-011 — Pilot math/figure check
+Date: 2026-10-17
+Targets: `N01` 10, `N03` 13, `N10` 21, `N12` 15 = 59 original question markers.
+Checks: full independently derived mathematical solutions; key polynomial expansions/radical simplifications and inequalities checked with SymPy, source hypotheses for N10 `a,b>0` preserved, all N03/N12 original figures inspected.
+Result: **PASS for independent four-pilot math QA**. Not official answer-booklet equality; not complete remaining 174 questions.
+Evidence: `PILOT_SOLUTION_AUDIT.md` and original source SHA.
+
+## V-012 — Learner teaching text / app
+Date: 2026-10-17
+Checks: first N01 one-flow learner prose and ten inline thinking prompts staged; actual compiled app, mobile browser, user acceptance.
+Result: **DRAFTED**, original source checked, **APP TESTS NOT-RUN**, user review pending.
+Evidence: `N01_LEARNER_PILOT_DRAFT.md`.
+
+## V-013 — Repository Governance PR status
+Date: 2026-10-17
+Checks: PR #66 documentation changes only, no `src`/`public` or existing pedagogy changes.
+Result: PENDING latest HEAD CI; prior PR initial status syntax failure was corrected and passed on earlier revision. Retain evidence.

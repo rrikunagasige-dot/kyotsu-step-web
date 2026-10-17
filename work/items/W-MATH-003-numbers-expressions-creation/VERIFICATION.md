@@ -49,3 +49,10 @@ Target: Draft PR #66; initial workflow run 38985852212.
 Check: `node tools/repo-governance-check.mjs`
 Result: **FAIL** due only to `W-MATH-003-numbers-expressions-creation: WORK.md missing Status`. This was a formatter/validator mismatch, not content QA.
 Correction: use exact line `Status: BLOCKED` and move source explanation into separate `Blocker:` field. Re-run triggered on updated PR; do not discard earlier failure evidence.
+
+## V-009 — Post-correction governance CI PASS
+Date: 2026-10-17
+Target: branch commit `fc492ecc0ee0a9c817820108b9c40369709dab1f`
+Check: GitHub Actions Repository Governance Check
+Result: **SUCCESS** for [workflow run 38986171983](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38986171983).
+Note: this is a governance-documentation pass, NOT original Word math fidelity QA, pilot runtime E2E, or user acceptance. Re-check CI on final evidence-only commit.

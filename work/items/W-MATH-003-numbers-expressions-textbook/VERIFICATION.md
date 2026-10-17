@@ -17,3 +17,9 @@ Result: NOT-RUN — exact-source equations/figures must be retrieved before full
 
 ## V-005 — User review link
 Result: PENDING — create branch/PR review surface for audit and blocker details. Do not claim app is running for this new chapter.
+
+## V-006 — Initial Governance CI failed, preserving error evidence
+Date: 2026-10-17
+Target: PR #64 head `5125d6aa8b59c6c3192e4297f84bd328b8429cef`
+Result: **FAIL** — repository-governance-check complained "W-MATH-003-numbers-expressions-textbook: WORK.md missing Status". The record had "Status: BLOCKED — detail" on one line, incompatible with the exact status regex. Corrected to standalone `Status: BLOCKED`; kept explanation on subsequent line. `PROPOSAL.md` status also normalized to a separate line. No source/pedagogy changes.
+Evidence: [GitHub Actions 38985539977](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38985539977).

@@ -3,7 +3,7 @@
 Status: REVIEW-DRAFT — **USER ACCEPTANCE PENDING**
 Date: 2026-10-17
 Work/approval: W-MATH-003 / approved P-001「数と式」作成
-Original: user-uploaded \`01_数と式_教科書モード_対話段階導入版_v2(1).docx\`, N01 Q1–Q10, exact original math in \`N01_source.md\` (not in repository), independently validated in \`PILOT_SOLUTION_AUDIT.md\`.
+Original: user-uploaded `01_数と式_教科書モード_対話段階導入版_v2(1).docx`, N01 Q1–Q10, exact original math in `N01_source.md` (not in repository), independently validated in `PILOT_SOLUTION_AUDIT.md`.
 This is **not** a lesson deployed to the app. Source problem statements are retained as anchors; student text between them is a new adaptation and must not be mislabeled as a verbatim quotation from Word.
 
 ## 1. What changed from the first N01 draft
@@ -115,19 +115,19 @@ x^3-2x^2+x-x^3+3x-1
 
 ## 4. UX implementation contract
 
-- Existing readingFlow supports inline \`choice\` entries pointing to \`items\`; equations are read as \`formula\` blocks with typed math/choice parts.
+- Existing readingFlow supports inline `choice` entries pointing to `items`; equations are read as `formula` blocks with typed math/choice parts.
 - In a sentence, choose compact inline choice with hidden options until clicked. In a formula, show full math expression with a single replaceable choice span; on correct answer, render mathematically valid complete expression.
 - Keep each source question's subchoices adjacent, inside a single teaching paragraph/table; the user should perceive **10 meaningful original tasks**, not 15 separately titled cards.
 - For the Q2 coefficient-degree comparison, avoid six independent holes. Use three row-level compound selections, each evaluated independently.
 - For Q9, regrouping correct ⇒ stage Q9b simplification; final result correct ⇒ Q10 degree; Q10 degree correct ⇒ Q10 explanation.
 - On feedback, show **which misconception caused the mistake**; don't expose future answer or select a wrongReason that repeats the correct alternative.
 - Score/progress item state IDs are stable. Reset/swap existing learner data forbidden. Avoid source label N01 as chapter-level visible heading.
-- Do not pre-render unseen future source or a hidden answer key into visible DOM/captions. Existing \`math-sets\` and other published paths must remain unchanged.
+- Do not pre-render unseen future source or a hidden answer key into visible DOM/captions. Existing `math-sets` and other published paths must remain unchanged.
 - The original Word's answer key is **separate and not supplied**; teacher answers above were independently derived from source expressions, not checked against that booklet.
 
 ## 5. Source and review gates
 
-- Direct source \`N01_source.md\` was recovered by Pandoc from uploaded DOCX; Word itself remains the provenance. No N01 figure exists.
+- Direct source `N01_source.md` was recovered by Pandoc from uploaded DOCX; Word itself remains the provenance. No N01 figure exists.
 - 10/10 source question numbers covered, 15 app interaction mapping manually inspected. This is a proposed UI structure, not a claim of source Word's original interactive widget design.
-- Reviewer should confirm the **pedagogical order and text** as a representative pilot before code. If reviewer requests substantive changes, create \`REVISE-PROPOSAL\` if outside approved P-001 scope, rather than silently mutating accepted changes.
-- No \`src/\`, \`public/\`, production Pages, existing curriculum or live progress changes until review gate cleared.
+- Reviewer should confirm the **pedagogical order and text** as a representative pilot before code. If reviewer requests substantive changes, create `REVISE-PROPOSAL` if outside approved P-001 scope, rather than silently mutating accepted changes.
+- No `src/`, `public/`, production Pages, existing curriculum or live progress changes until review gate cleared.

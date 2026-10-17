@@ -90,3 +90,45 @@ Date: 2026-10-17
 Code HEAD: `e9c36aad36d40d3a03c7da177978557aff99d601` on PR #66
 Action: Published work branch PR; evaluated GitHub Actions [38989883731](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38989883731) and [Governance 38989883645](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38989883645).
 Result: Both **SUCCESS**. Unit suite, typecheck/build, compiled math-set image decode, math-textbook desktop/mobile browser smoke (including 15-step N01 and reload), physics textbook and math practice regressions all PASS. Maintains review-only N01 in built repo, not published to main. Following documentation-only verification log append, compare SHA to same code tree; governance checks re-run.
+
+
+## A-016 — Authorized PR #66 main merge and Pages release
+Date: 2026-10-17
+Target: PR #66, target `rrikunagasige-dot/kyotsu-step-web` main, GitHub Pages.
+Action: User granted separate main merge/Pages release assent (「よろしく」). Confirmed source HEAD and passing CI, merged PR #66. Merge SHA `1bd40d5790faeb28ccccfaa7add5090a715949a2`; [Pages run 38994031060](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38994031060) completed SUCCESS.
+Result: N01 available at [live deep link](https://rrikunagasige-dot.github.io/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n01), but `status:'review'` and excluded from ordinary setup list. In public Chrome browser, verified heading, formula and first inline hole, correct -1 increases progress 0/15→1/15 and reveals next prompt. This is a spot check; full 15-stage desktop/mobile automation was earlier CI, not repeated manual public testing.
+
+## A-017 — User N01 pilot review and continuation
+Date: 2026-10-17
+Action: After live link and QA report, user replied 「今のでいいと思う。続け」. Record as positive N01 pilot copy/behavior acceptance and instruction to continue the already-approved W-MATH-003/P-001 workflow, without claiming manual phone testing or promotion into ordinary catalog.
+Result: Move to the remaining approved representative units N03/N10/N12 (source 13+21+15=49), keeping whole Work VERIFYING.
+
+## A-018 — Source-traceable next three learner review drafts
+Date: 2026-10-17
+Target: branch `work/W-MATH-003-next-pilots-review-20261017` starting from main `1bd40d5`.
+Action: Read original DOCX-derived N03/N10/N12 passages from authoritative handoff ZIP, independently checked source solutions and original figure manifest. Authored `N03_LEARNER_REVIEW_V1.md`, `N10_LEARNER_REVIEW_V1.md`, `N12_LEARNER_REVIEW_V1.md` with complete learner text, internal original-marker mapping, gated thinking slots, correct answers, misconception feedback focus, diagram placement and no-leak conditions.
+Result: Documentation-only review. **No app code, original DOCX, published catalog, mathematics practice, physics, or existing learner progress changed.** Next stage: validate draft PR and present to user for review/approval before implementing these exact drafts.
+
+## A-019 — User approval of N03/N10/N12 exact learner drafts
+Date: 2026-10-17
+Target: N03/N10/N12 approved design files in draft PR #67.
+Action: After receiving all three student-facing copy / choice / figure-placement reviews, user replied 「いいよ。よろしく」. Interpret as authority to implement in a distinct review-only PR under P-001, not authority to merge or publish.
+Result: The 49 approved source questions and four original figures are the implementation scope. No mass production or release permission.
+
+## A-020 — Implement three approved pilots in isolated review PR
+Date: 2026-10-17
+Target: draft PR #68, branch work/W-MATH-003-n03-n10-n12-app-20261017.
+Action: Created schema v1.1 N03 (13 choices), N10 (21 choices), N12 (15 choices), teacher-only source maps and original Word PNG assets image1/9/10/11. Preserved N10 root-proof sign/denominator assumptions; positioned N12-F03 only after final Q15. Added math/KaTeX/source-gate tests and mobile/desktop E2E in existing workflow; no N01 code, public catalog, physics, practice or progress changes.
+Result: Initial source commit c8e6103054e55aa43fcceca36d5f69131f451f95; Actions math 39008585976 and governance 39008585948 pending final review. Main/Pages unchanged.
+
+## A-021 — Prevent immediate Q14 answer repetition in N10 prose
+Date: 2026-10-17
+Target: N10 approved lesson and its implementation/test on draft PR #68.
+Action: QA found original drafted Q14 prose restated the full correct operation immediately before its choice. Tightened only that lead-in to ask how a numerator/denominator ratio is preserved; retained the same approved choice, answer, proof assumptions and sequence. Added regression asserting the answer phrase is absent prior to Q14.
+Result: Small learner-copy QA correction remains visible in PR diff for user review; no source math or main release changed.
+
+## A-022 — Full CI SUCCESS for N03/N10/N12 approved review app
+Date: 2026-10-17
+Target: final app code HEAD dc88a631d443cf9af08f1acc5d8a44b3656b1df6 on draft PR #68.
+Action: Confirmed complete [Math textbook CI 39008959818](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39008959818): typecheck, math unit tests including KaTeX and SHA-256 original PNG fidelity, production build, real mobile and desktop browser flows, Physics mode regression and Math Practice setup regression.
+Result: ALL SUCCESS. Repository Governance Check [39008959856](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39008959856) SUCCESS. PR #68 stays draft and main/Pages unchanged. This Work-record-only evidence append is not a new app-code revision; verify its governance CI separately.

@@ -1242,3 +1242,144 @@ test('W-MATH-003 N01 review-only pilot completes all 15 inline decisions in actu
   await page.reload()
   await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
 })
+
+
+test('W-MATH-003 N03 review: 13 source decisions, original four-cell figure, mobile KaTeX', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 720 })
+  await page.goto(appRoute('/learning/textbook/math-numbers-expressions-n03'))
+  await expect(page.getByRole('heading', { name: '指数法則と展開', exact: true })).toBeVisible()
+  await expect(page.getByTestId('textbook-item-n03-01')).toBeVisible()
+  await expect(page.getByTestId('textbook-figure-n03-f01')).toHaveCount(0)
+  await expect(page.getByTestId('textbook-item-n03-13')).toHaveCount(0)
+  const answers: Array<[string, string]> = [
+    ['n03-01', '4a^8'],
+    ['n03-02', 'a^{m+n}'],
+    ['n03-03', 'a^{mn}'],
+    ['n03-04', 'a^nb^n'],
+    ['n03-05', '(-2)^3(x^3)^3(y^2)^3'],
+    ['n03-06', '-8x^9y^6'],
+    ['n03-07', 'x^2x^2+x^2(-3x)+x^2\\cdot4'],
+    ['n03-08', 'x^4-3x^3+4x^2'],
+    ['n03-09', '2x(3x+4)+1(3x+4)'],
+    ['n03-10', '6x^2+8x+3x+4'],
+    ['n03-11', '6x^2+11x+4'],
+    ['n03-12', '3x(2x^2-x+5)-(2x^2-x+5)'],
+    ['n03-13', '6x^3-5x^2+16x-5'],
+  ]
+  for (const [id, answer] of answers) {
+    if (id === 'n03-09') {
+      const figure = page.getByTestId('textbook-figure-n03-f01')
+      await expect(figure).toBeVisible()
+      await expect.poll(() => figure.locator('img').evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true)
+      await expect(figure.locator('img')).toHaveAttribute('src', /n03-f01\.png$/)
+    }
+    await answerItem(page, id, answer)
+    await expect(page.getByTestId('resolved-' + id)).toBeVisible()
+  }
+  await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
+  await expect(page.locator('.katex-error')).toHaveCount(0)
+  const viewport = await page.evaluate(() => ({
+    width: document.documentElement.clientWidth, scroll: document.documentElement.scrollWidth,
+  }))
+  expect(viewport.scroll).toBeLessThanOrEqual(viewport.width + 1)
+})
+
+test('W-MATH-003 N10 review: proof prerequisites and all 21 roots/rationalization choices', async ({ page }) => {
+  await page.goto(appRoute('/learning/textbook/math-numbers-expressions-n10'))
+  await expect(page.getByRole('heading', { name: '平方根の証明と有理化', exact: true })).toBeVisible()
+  await expect(page.getByTestId('textbook-item-n10-01')).toBeVisible()
+  await expect(page.getByTestId('textbook-item-n10-21')).toHaveCount(0)
+  const answers: Array<[string, string]> = [
+    ['n10-01', 't^2=25'],
+    ['n10-02', '5\\sqrt5'],
+    ['n10-03', 'ab'],
+    ['n10-04', '\\sqrt{ab}'],
+    ['n10-05', '\\frac ab'],
+    ['n10-06', '\\sqrt{\\frac ab}'],
+    ['n10-07', '\\sqrt{48}=\\sqrt{16\\cdot3}'],
+    ['n10-08', '4\\sqrt3'],
+    ['n10-09', '2\\sqrt2+5\\sqrt2'],
+    ['n10-10', '7\\sqrt2'],
+    ['n10-11', '2-2\\sqrt2\\sqrt3+3'],
+    ['n10-12', '5-2\\sqrt6'],
+    ['n10-13', '7-2=5'],
+    ['n10-14', '0でない同じ数を分子・分母の両方に掛ける'],
+    ['n10-15', '\\frac1{2\\sqrt3}\\cdot\\frac{\\sqrt3}{\\sqrt3}=\\frac{\\sqrt3}{2(\\sqrt3)^2}'],
+    ['n10-16', '\\frac{\\sqrt3}{6}'],
+    ['n10-17', '\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt3-\\sqrt2}{\\sqrt3-\\sqrt2}'],
+    ['n10-18', '3-2=1'],
+    ['n10-19', '3-\\sqrt6'],
+    ['n10-20', '\\frac{(2-\\sqrt3)^2}{(2+\\sqrt3)(2-\\sqrt3)}=\\frac{(2-\\sqrt3)^2}{4-3}'],
+    ['n10-21', '7-4\\sqrt3'],
+  ]
+  for (const [id, answer] of answers) {
+    await answerItem(page, id, answer)
+    await expect(page.getByTestId('resolved-' + id)).toBeVisible()
+  }
+  await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
+  await expect(page.locator('.katex-error')).toHaveCount(0)
+})
+
+test('W-MATH-003 N12 review: original number lines gated and answer figure hidden until Q15', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 720 })
+  await page.goto(appRoute('/learning/textbook/math-numbers-expressions-n12'))
+  await expect(page.getByRole('heading', { name: '連立不等式と整数条件', exact: true })).toBeVisible()
+  await expect(page.getByTestId('textbook-item-n12-01')).toBeVisible()
+  await expect(page.getByTestId('textbook-figure-n12-f01')).toHaveCount(0)
+  await expect(page.getByTestId('textbook-figure-n12-f02')).toHaveCount(0)
+  await expect(page.getByTestId('textbook-figure-n12-f03')).toHaveCount(0)
+  await chooseWrongOption(page, 'n12-01', 'x>-\\frac72')
+  await expect(page.getByTestId('textbook-item-n12-02')).toHaveCount(0)
+
+  const answers: Array<[string, string]> = [
+    ['n12-01', 'x>-\\frac72'],
+    ['n12-02', 'x\\le\\frac12'],
+    ['n12-03', '二つ目に反するので不適'],
+    ['n12-04', '-\\frac72<x\\le\\frac12'],
+    ['n12-05', '3x+2\\le2x+4\\ \\text{かつ}\\ 2x+4\\le9-x'],
+    ['n12-06', 'x\\le2,\\quad x\\le\\frac53'],
+    ['n12-07', 'x\\le\\frac53'],
+    ['n12-08', '20-x'],
+    ['n12-09', 'x\\in\\mathbb Z,\\ 0\\le x\\le20'],
+    ['n12-10', '50+180x+130(20-x)'],
+    ['n12-11', '3200\\le50+180x+130(20-x)<3300'],
+    ['n12-12', '3200\\le2650+50x<3300'],
+    ['n12-13', '11\\le x<13'],
+    ['n12-14', 'x=11\\ \\text{または}\\ 12'],
+    ['n12-15', 'T(11)=3200\\text{円},\\ T(12)=3250\\text{円}'],
+  ]
+  for (const [id, answer] of answers) {
+    if (id === 'n12-03') {
+      await expect(page.getByTestId('textbook-figure-n12-f01')).toBeVisible()
+      await expect(page.getByTestId('textbook-figure-n12-f02')).toHaveCount(0)
+    }
+    if (id === 'n12-07') {
+      await expect(page.getByTestId('textbook-figure-n12-f02')).toBeVisible()
+      await expect(page.getByTestId('textbook-figure-n12-f03')).toHaveCount(0)
+    }
+    if (id === 'n12-15') await expect(page.getByTestId('textbook-figure-n12-f03')).toHaveCount(0)
+    await answerItem(page, id, answer)
+  }
+  const lastFigure = page.getByTestId('textbook-figure-n12-f03')
+  await expect(lastFigure).toBeVisible()
+  await expect(lastFigure.locator('img')).toHaveAttribute('src', /n12-f03\.png$/)
+  for (const id of ['n12-f01', 'n12-f02', 'n12-f03']) {
+    await expect.poll(() => page.getByTestId('textbook-figure-' + id).locator('img')
+      .evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true)
+  }
+  await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
+  await expect(page.locator('.katex-error')).toHaveCount(0)
+  const viewport = await page.evaluate(() => ({
+    width: document.documentElement.clientWidth, scroll: document.documentElement.scrollWidth,
+  }))
+  expect(viewport.scroll).toBeLessThanOrEqual(viewport.width + 1)
+})
+
+test('W-MATH-003 new review lessons remain off the public setup and keep physics intact', async ({ page }) => {
+  await page.goto(appRoute('/learning/setup?subject=math-1a'))
+  for (const name of ['指数法則と展開', '平方根の証明と有理化', '連立不等式と整数条件']) {
+    await expect(page.getByRole('link', { name })).toHaveCount(0)
+  }
+  await page.getByRole('button', { name: '物理', exact: true }).click()
+  await expect(page.getByTestId('textbook-part-list')).toBeVisible()
+})

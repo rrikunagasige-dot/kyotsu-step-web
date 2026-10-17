@@ -1,6 +1,6 @@
 # Verification — W-MATH-003
 
-Status: PARTIAL — N01 CI PASS; USER APP REVIEW PENDING
+Status: PARTIAL — N01 public pilot accepted; N03/N10/N12 full CI PASS, hands-on review and release authorization pending
 
 ## V-001 — Authority and scope
 Date: 2026-10-17
@@ -152,3 +152,69 @@ Interpretation: N01 *actual app flow under CI dev server* was browser-tested PC/
 Date: 2026-10-17
 Check: `compare_commits` main base `c184077a` → code `e9c36aad`.
 Result: **PASS** 17 files only: new math/numbers lesson+unit tests, maths index+catalog test, relevant math-textbook CI and E2E checks, Work documents. No old published math lesson, physics/practice content, user progress schema, root governance, or Pages workflow modifications; behind main 0. Concurrent duplicate module **removed from final diff**.
+
+
+## V-022 — N01 production deployment and first real-screen choice
+Date: 2026-10-17
+- [PR #66](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/66) merged to live main `1bd40d5790faeb28ccccfaa7add5090a715949a2` after distinct release assent.
+- [GitHub Pages run 38994031060](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38994031060) completed SUCCESS.
+- Direct [N01 published review page](https://rrikunagasige-dot.github.io/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n01) opened in a real Chrome UI: heading 「式の見方」, source formula, inline answer button and progress 0/15 visible. Clicked first button; candidate -1 selected correctly; progress 1/15 and next item displayed.
+- Result: **PASS for deployment and first public interaction spot-check**. Full 15/15 in desktop/mobile passed earlier PR CI; did not independently rerun all 15 on public site. No assertion of physical user-device QA.
+- After link handoff, user's immediate reply 「今のでいいと思う。続け」 is recorded as **positive user review acceptance for N01 pilot**; review-only `status` remains unchanged until distinct catalog/promotion decision.
+
+## V-023 — N03/N10/N12 design-coverage static checks
+Date: 2026-10-17
+Target: separate branch `work/W-MATH-003-next-pilots-review-20261017`.
+- Re-read the exact independently extracted source pilot passages in the handoff ZIP, and the P-001 pilot mathematical audit/figure manifest.
+- Original question rows: N03 **13/13**, N10 **21/21**, N12 **15/15**, contiguous, **no duplicate/missing numbers** in the teacher-only answer mappings.
+- Learner-facing actual candidate holes (excludes the explanatory marker in prose): N03 **13**, N10 **21**, N12 **15**. These are design candidates, not promises to render separate quiz cards.
+- Source safety guard included: N03 original four unresolved product cells; N10 proof original `a>0,b>0`; N12 F03 only after Q15 answer. Correct original source figures 1+0+3.
+- Markdown formatting normalized; no escaped backtick syntax errors in saved drafts. New material is teacher-authored adaptation explicitly separated from original Word.
+Result: **PASS for structural design/source correspondence**, **NOT app/browser/mathematical teacher-answer-booklet verification**, **NOT student-facing copy acceptance**.
+
+## V-024 — Pending next-pilot acceptance gates
+Date: 2026-10-17
+- Request user review of exact N03/N10/N12 proposed learner prose and thinking slots. Any substantive feedback must be incorporated in a new review revision and shown before code.
+- New runtime implementation, app/mobile/KaTeX/asset QA, next main release and Page publication: **NOT-RUN / NOT-AUTHORIZED FOR THESE THREE PILOTS YET**.
+- W-MATH-003 overall status: VERIFYING (chapter coverage 233, pilot verified 59, rest 174 unaudited). No full-chapter DONE claim.
+
+## V-025 — Draft PR #67 scope and governance CI
+Date: 2026-10-17
+Target: [PR #67](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/67), review-only branch `work/W-MATH-003-next-pilots-review-20261017`.
+- Compared branch head `934051256a1fe5b6577157894fbf69de2fca9fbb` against main merge `1bd40d5790faeb28ccccfaa7add5090a715949a2`: **exactly seven files**, all under `work/items/W-MATH-003-numbers-expressions-creation/` (3 new pilot drafts + 4 Work updates). No app code, source image, catalog, learner progress, existing math/physics mode or CI workflow changed.
+- [Repository Governance Check run 39007169136](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39007169136): **SUCCESS** for the pre-evidence-append head. This evidence-only append will trigger a new governance check; latest CI should be verified independently.
+- No runtime/visual tests for N03/N10/N12 are claimed, since these are Markdown reviews and no app components were implemented.
+Result: **PASS for draft documentation scope + governance**, **WAITING for user review of the exact three learner drafts**.
+
+## V-026 — Exact N03/N10/N12 content authorization and PR separation
+Date: 2026-10-17
+- User approved all three N03/N10/N12 learner drafts, thinking slots and source-figure timing with 「いいよ。よろしく」 in direct response to the approval request.
+- Implementation lives in separate draft PR #68, source-review draft PR #67 remains independently readable. Branch parent main was 1bd40d5790faeb28ccccfaa7add5090a715949a2.
+- N03 has 13 source choices, N10 21, N12 15; N01 source untouched; all three new units have `status: review`. Public math catalog and other subject lessons untouched.
+- No main merge / GitHub Pages release authorized. Hands-on user review of new units still pending.
+
+## V-027 — Original figure source fidelity and answer-leak guards
+Date: 2026-10-17
+- Four original Word-PNG SHA-256 hashes extracted from the exact supplied ZIP: N03-F01 1373f26fa3664dc39d29bd22f2fb063e2fb31c4495b5c8229498002084888e9b; N12-F01 2e5c4463165bad864269c28bac6f9dd53d1366f9e81c550c7b404e5ecbd55a0f; F02 5a04b024307022434f00ee370a117d2f25ada2b3ef1fc1ff2c02b4d23fb670a3; F03 514b2950fb24deb86ad6bfac273912bc82b66084d85d5829cf5ae57ac68cd72f.
+- Binary objects imported unmodified into `public/assets/math/textbook/numbers/`. New Vitest hash assertion and browser PNG decode checks pending final CI.
+- Reading-flow gates N03-F01 after Q8/before Q9; N12-F01 after Q2, F02 after Q6 and answer-bearing F03 only after Q15. No Q14 answer values in F03 alt/caption.
+
+## V-028 — N03/N10/N12 app CI and regression
+Date: 2026-10-17
+Target: draft PR #68 implementation code head c8e6103054e55aa43fcceca36d5f69131f451f95.
+- [Math textbook CI run 39008585976](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39008585976): typecheck, Vitest schema/math, production build PASS; mobile/desktop/physics/practice still under verification at log time.
+- [Repository Governance Check run 39008585948](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39008585948): verify separately for final PR head.
+- Adding exact source-PNG hash test and approved Work evidence in follow-up commit; **do not promote this preliminary status to final PASS until later source head CI completes.**
+
+## V-029 — Final code HEAD complete math-textbook CI SUCCESS
+Date: 2026-10-17
+Target: draft PR #68 code SHA `dc88a631d443cf9af08f1acc5d8a44b3656b1df6`.
+- [Math textbook CI 39008959818](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39008959818): **SUCCESS**.
+- TypeScript typecheck: PASS. Vitest textbook schema, math unit, 49-source/choice mapping, original PNG byte-hash, N10 Q14 no-preanswer-leak, N12 figure gate and KaTeX rendering: PASS.
+- Production build: PASS. Compiled-production SVG decode mobile/desktop: PASS.
+- Math textbook Playwright mobile: PASS, including N03/N10/N12 full 49 choices and gated PNG decode; desktop: PASS.
+- Physics textbook desktop regression: PASS. Math Practice setup regression: PASS.
+- [Repository Governance 39008959856](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39008959856): **SUCCESS**.
+- Commit compare against main `1bd40d5790faeb28ccccfaa7add5090a715949a2`: exactly 20 paths, 0 behind; 13 directly related lesson/test/PNG/CI paths and 7 W-MATH-003 work design/evidence paths. No N01, existing published lesson source, Physics, Math Practice or learner progress writes.
+- Prior CI 39008585976 was cancelled by the deliberate final anti-leak/figure-integrity revision after its mobile/desktop succeeded. The final CI 39008959818 supersedes it and fully succeeded.
+Result: **QA PASS for review-only app code**. Not merged into main or published on GitHub Pages; user hands-on review and separate release permission are still required. This verification document update is evidence-only; a subsequent governance-only check may run.

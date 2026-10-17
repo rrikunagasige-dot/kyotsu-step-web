@@ -43,3 +43,16 @@ A separate concurrent change inserted a second `mathNumbersN01Unit` import and d
 
 ## F-013 — ERROR-TEST-CODE: TS2367 in production build
 CI 38989444753: 126 unit tests passed, but production `tsc -b` rejected a redundant discriminant test in `n01Lesson.test.ts` after narrowing through `filter`. Fixed without changing source problem/lesson copy.
+
+
+## F-014 — CONFIRMED: N01 released review-only and user positive acceptance
+Date: 2026-10-17
+After distinct user release assent, PR #66 merged at `1bd40d5790faeb28ccccfaa7add5090a715949a2`. Pages workflow `38994031060` SUCCESS; browser direct link shows N01 with in-prose choice and progress advance. User responded 「今のでいいと思う。続け」 after the live page link and request to review. Treat this as acceptance of the N01 pilot at this review checkpoint; do not infer actual manual mobile-device coverage. The code's `review` status is preserved pending any later explicit catalog promotion.
+
+## F-015 — CONFIRMED: Three remaining pilots can be authored from exact recovered original
+Date: 2026-10-17
+N03 Q1–Q13, N10 Q1–Q21, N12 Q1–Q15 all have original mathematical expressions and independently derived solutions. N03-F01 is an unanswered four-cell correspondence table; N10 proof is under `a>0,b>0` and has no figure; N12-F01/F02 show original condition ranges while N12-F03 contains answer integers 11 and 12. These roles are fixed in the proposed v1 learner drafts. The original answer booklet remains unavailable and all other 174 chapter markers remain unaudited.
+
+## F-016 — RISK: Source marker count differs from appropriate UI interaction count
+Date: 2026-10-17
+N03 13/N10 21/N12 15 **source questions** are traceability obligations, not a rule to create exactly the same number of visually separate cards. Proposed internal thinking slots should be checked for genuine distinct operations, grouped into continuous prose/formula, and reduced where a user judges a stage redundant. N03 dependency on unimplemented N02 must not be misstated as pre-taught when direct pilot testing. Any material user copy change requires a revised exact review before implementation.

@@ -121,6 +121,7 @@ describe('math textbook catalog', () => {
     expect(
       mathTextbookUnits.filter((unit) => unit.status === 'review').map((unit) => unit.unitId),
     ).toEqual([
+      'math-numbers-expressions-n01',
       'math-propositions-reading',
       'math-propositions-proof',
       'math-quantifiers-all-exists',

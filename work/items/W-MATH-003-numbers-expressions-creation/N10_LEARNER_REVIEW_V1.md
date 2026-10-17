@@ -4,7 +4,7 @@ Status: REVIEW-DRAFT / NOT IMPLEMENTED / USER APPROVAL REQUIRED
 Date: 2026-10-17
 Work: W-MATH-003 / approved P-001
 Scope: source N10 Q1–Q21; no original figures.
-Source: original teacher-edited DOCX SHA-256 \`93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa\`; \`SOURCE/pilots/N10_source.md\` in authoritative handoff. Teacher-independent solutions \`PILOT_SOLUTION_AUDIT.md\`; separate official answer booklet not supplied.
+Source: original teacher-edited DOCX SHA-256 `93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa`; `SOURCE/pilots/N10_source.md` in authoritative handoff. Teacher-independent solutions `PILOT_SOLUTION_AUDIT.md`; separate official answer booklet not supplied.
 
 ## 1. 学習者向け本文（提案）
 
@@ -181,7 +181,7 @@ Source: original teacher-edited DOCX SHA-256 \`93827322a877313d4d39957dd6196c01d
 
 ## 3. 火柴図・答え漏洩と数式QA
 
-\`\`\`text
+```text
 [平方根は「2乗と符号」で定める]
        ├─ Q1→Q2: 個別例 \sqrt{125}
        ├─ Q3→Q4: 積の証明 a,b>0
@@ -200,7 +200,7 @@ Source: original teacher-edited DOCX SHA-256 \`93827322a877313d4d39957dd6196c01d
                  Q17→Q18→Q19
                         ↓
                 Q20→Q21 転用
-\`\`\`
+```
 
 - 表示順: \(a>0,b>0\) を「証明」より前に出す。実際の公式を完成形で見せるのはQ4/Q6の正答後。平方の計算だけを根拠に正負を飛ばさない。
 - Q9の和を \(\sqrt{58}\) と誤ってまとめることを正解前に露出しない。誤答時ヒントには「積と和の操作の違い」に戻すだけ。

@@ -86,3 +86,14 @@ Result: PENDING latest HEAD CI; prior PR initial status syntax failure was corre
 Date: 2026-10-17
 Check: N01-Q09 cancellation result and N01-Q10 degree explanation not stated before answer; question ID 01–10 all covered; answer mapping remains teacher-only.
 Result: **PASS after correction**; initial draft had an answer leakage risk recorded in F-010, now resolved. Not a substitute for compiled app/browser QA.
+
+## V-015 — N01 pedagogical review v2 static design QA
+Date: 2026-10-17
+Target: `N01_LEARNER_REVIEW_V2.md`
+Check: N01 Q1–Q10 retained; 15 internal choice item IDs mapping 10 original tasks; Q3 result reused by Q4; Q6 and Q9 dependent thinking stages; Q10 degree and explanation hidden until Q9 result; no new diagrams or source theorem; no 0-specialization lecture shown to students.
+Result: **PASS — reviewer draft structure only**. User acceptance pending and browser/app render NOT-RUN.
+Evidence: exact 15-item teacher-only mapping and complete student prose v2.
+
+## V-016 — Release/approval boundary
+Date: 2026-10-17
+Result: **WAITING FOR USER CONTENT REVIEW** of N01 v2 before converting to app source. P-001 workflow already approved, but reviewer has not accepted the exact v2 lesson copy. Main, published app, other modes and student progress unchanged.

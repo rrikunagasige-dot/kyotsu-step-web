@@ -1,6 +1,6 @@
 # W-MATH-003 — 数学Ⅰ「数と式」教科書モードの作成
-Status: IMPLEMENTING
-Source gate: RECOVERED (原Word元バイト・397 OMML・14画像の直接読み取り成功)。レビュー前に教材本体の変更をしない。
+Status: VERIFYING
+Source gate: RECOVERED (原Word元バイト・397 OMML・14原図を確認)。N01 v2はユーザーが実装を承認し、現在は実アプリのユーザーhands-on確認待ち。
 Updated: 2026-10-17
 Repo: `rrikunagasige-dot/kyotsu-step-web` (ID 1391122224)
 Base main: `c184077a745c7d4bc077e0b5d0eaa70e9af2ddaf`
@@ -19,7 +19,7 @@ CMD-WORK-002「作成」初回実証: 既存の「数と式」Word教材案を�
 - User-approved exemplar `集合_教科書モード_完成版_v1(1).docx` indexed in Library.
 
 ## Scope
-P-001 as approved: all-source fidelity audit, concept/problem graph, complete reasoning, four pilots N01/N03/N10/N12, design+user review, then approved batch production, regression and eventual app handoff. Present work phase = source audit + design, **no guessing missing source formulas**.
+P-001 as approved: all-source fidelity audit, concept/problem graph, complete reasoning, four pilots N01/N03/N10/N12, design+user review, then approved batch production, regression and eventual app handoff. Present work phase = N01 pilot implemented in review-only app + all PR CI PASS, **user visual acceptance and main release pending**.
 
 ## Do Not Touch
 Existing textbook `math-sets`, proposition, functions (including review-only), Math Practice, Physics, learner IDs/progress, existing app UI or active CI, old source Word, `main` directly, canonical lessons.
@@ -28,14 +28,17 @@ Existing textbook `math-sets`, proposition, functions (including review-only), M
 P-001 approved in conversation on 2026-10-17 by 「いいよ。こうやって作ろうか」 in direct answer to exact proposed workflow; no conditions added. **Approval of plan is NOT evidence that unverified source equations are valid or release approval.**
 
 ## Current Step
-原Wordから397のOMML式と14枚の原図を復元し、全233問マーカー/16単元を再監査。過去の12図は間違い（N05-F01/F02を見落としていた）。代表4単元59問の原式と独立解法を監査。生徒用N01本文・数式内穴を監査してレビュー案v2へ更新（具体的本文は未承認）。詳しくは `SOURCE_OMML_AUDIT.md` / `PILOT_SOLUTION_AUDIT.md` / `N01_LEARNER_PILOT_DRAFT.md`。
+- 原Word（397数式オブジェクト、14図）から原式を復元。16単元233問を数え、代表4単元59問の解法を独立計算で確認。別冊の公式解答とは未照合。
+- N01 v2の具体的本文と15個の段階的回答設計をユーザーに提示し、2026-10-17に「いいよ進めて」と実装承認を受けた。
+- `src/data/textbook/math/numbers/n01Lesson.ts` を単一の正本として追加。独立unitId `math-numbers-expressions-n01`、status `review`。元の数学教材・物理・練習モード、progress schema は変更していない。偶発した並行重複moduleを除去。
+- PR #66 HEAD `e9c36aad36d40d3a03c7da177978557aff99d601` で GitHub Actions [38989883731](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38989883731) **SUCCESS**。型/単体/ビルド/PC/スマホ/物理/数学練習回帰が成功。
+- **まだmain未統合・Pages未公開。生徒としての見た目のレビューは未完了。**
 
 ## Next Step
-1. N01の初回案を監査し、教科書モードの教訓に合わせた `N01_LEARNER_REVIEW_V2.md`（原10問→意味ある15回答操作）を作成。**現在はユーザーによる具体的本文レビュー待ち**。別冊解答未照合、原式は独立に検算済み。
-2. 代表4単元の初回レビュー後、承認済みの範囲でN01をアプリに実装、PC/スマホで実機QAとアプリリンク提示。
-3. N03/N10/N12を設計→実装→実機ユーザーレビュー。元原図の配置/答え漏洩をチェック。
-4. 残り174問は全数学式の解法を監査した後、段階展開。別冊解答は原稿同一性QAとして未取得と明記。
-5. `main`マージとPages本番反映は別承認ゲート。
+1. ユーザーに PR #66・検証記録・実際のアプリへ反映するための別承認ゲートを示す（PR自体は公開アプリリンクではない）。
+2. マージとPages公開が別途認められた後、`#/learning/textbook/math-numbers-expressions-n01` を実機で確認し、ユーザーhands-on評価を得る。
+3. N01が不合格なら `CMD-WORK-001 — 修正`へ引き渡す。合格したら残りの代表3単元N03/N10/N12へ進む。
+4. 全233問・14図の章全体の受入は本パイロットと分ける。未監査の174問を完了扱いにしない。
 
 ## Definition of Done
 Source faithfulness + math proof QA + user textbook pedagogy acceptance + browser/mobile/e2e + PR/release gates and Work/Memory Close. Technical CI alone insufficient.

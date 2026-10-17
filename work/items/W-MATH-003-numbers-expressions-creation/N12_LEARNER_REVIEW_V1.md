@@ -4,7 +4,7 @@ Status: REVIEW-DRAFT / NOT IMPLEMENTED / USER APPROVAL REQUIRED
 Date: 2026-10-17
 Work: W-MATH-003 / approved P-001
 Scope: original N12 Q1–Q15, three original figures N12-F01/F02/F03.
-Source: original teacher-edited DOCX SHA-256 \`93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa\`; source N12 extract in handoff ZIP. The separate original answer booklet is missing; mathematical solutions were independently checked.
+Source: original teacher-edited DOCX SHA-256 `93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa`; source N12 extract in handoff ZIP. The separate original answer booklet is missing; mathematical solutions were independently checked.
 
 ## 1. 学習者向け本文（提案）
 
@@ -142,7 +142,7 @@ T(x)=\boxed{\text{【選ぶ】}} .
 
 ## 3. 火柴図・表示ゲート
 
-\`\`\`text
+```text
 Q1 (第一不等式)       Q2 (第二不等式)
          \             /
            N12-F01 二段の元図
@@ -170,9 +170,9 @@ Q8 個数の分割 → Q9 整数・0〜20
                          Q15 代金検算
                                ↓
                    N12-F03 正答を示す元図
-\`\`\`
+```
 
-- 図の正本はZIP内 \`SOURCE/figures/image9.png\`=F01、\`image10.png\`=F02、\`image11.png\`=F03。勝手に別の数直線に置換せず、元図がスマホで読めないときは表示改善/新図案を別途提示する。
+- 図の正本はZIP内 `SOURCE/figures/image9.png`=F01、`image10.png`=F02、`image11.png`=F03。勝手に別の数直線に置換せず、元図がスマホで読めないときは表示改善/新図案を別途提示する。
 - F01: \(-7/2\) と \(1/2\)、白丸/黒丸、同縮尺。Q1/Q2完了後でなければ元の解を先出しするので不可。
 - F02: \(5/3<2\) を実位置で保持。Q6完了後でなければ解の先出しになる。
 - F03: 整数11,12が正答として図に記載されている。**Q15完了後だけ表示**。説明文・alt属性・thumbnailにも答えを含めて隠さない。

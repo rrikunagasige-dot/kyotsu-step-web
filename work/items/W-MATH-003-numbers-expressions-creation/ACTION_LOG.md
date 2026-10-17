@@ -59,3 +59,21 @@ Date: 2026-10-17
 Target: `N01_LEARNER_REVIEW_V2.md`
 Action: Compare source Word's N01 Q1–10, previous candidate `N01_LEARNER_PILOT_DRAFT.md`, imported math textbook SPEC, title/choice rendering contract. Create a review-ready learner excerpt and exact mapping of 10 source markers to 15 staged choice items without touching app code.
 Result: Draft v2 is ready for USER CONTENT REVIEW. Not yet accepted; no app/source files changed. Restored escaped Markdown markers before handoff.
+
+## A-012 — Implement N01 review app and test
+Date: 2026-10-17
+Target: `src/data/textbook/math/numbers/n01Lesson.ts`, `src/data/textbook/math/index.ts`, `mathCatalog.test.ts`, `n01Lesson.test.ts`, `e2e/math-textbook-set-smoke.spec.ts`, `math-textbook-ci.yml`.
+Action: User accepted exact N01 learner text v2 with 「いいよ進めて」. Implemented distinct `math-numbers-expressions-n01`, chapter 1, review-only, 15 stable choices over 10 source questions. 3 lightweight headings and natural inline formula/paragraph gaps. Added schema/source/answer/order/no-leak tests and real PC/mobile browser completion test. Kept published math-sets, physics/practice, other learner IDs and progress untouched.
+Result: Review-only app code on draft PR #66. No main merge/Pages publication. Next stage CI+browser QA.
+
+## A-013 — Detect and resolve simultaneous duplicate N01 implementation
+Date: 2026-10-17
+Target: branch `work/W-MATH-003-numbers-expressions-creation-20261017`
+Action: Another concurrent change introduced `numbersN01Lesson.ts` plus duplicate identical import and unit ID in math index, and a competing browser test with differently phrased answer. Compared two drafts to already user-approved v2; retained canonical `n01Lesson.ts`; fixed index/list test to one unit; aligned concurrent E2E test to v2 answer and conclusion; deleted **only** unreferenced newly created duplicate module, not original materials.
+Result: Exactly one N01 review unit registered. Existing units not changed. Note that parallel edits to a shared branch caused conflict; future writers should coordinate by separate branches.
+
+## A-014 — CI build/typecheck failure corrected
+Date: 2026-10-17
+Target: `n01Lesson.test.ts`
+Action: CI 38989444753 succeeded in Typecheck and all 126 math units, then failed at production `tsc -b`: TS2367 unreachable `part.type==='choice'` test branch after a type-narrowing filter. Removed unreachable comparison.
+Result: Build check requeued. Failure evidence preserved.

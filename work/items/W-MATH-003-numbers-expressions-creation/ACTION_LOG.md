@@ -120,3 +120,9 @@ Date: 2026-10-17
 Target: draft PR #68, branch work/W-MATH-003-n03-n10-n12-app-20261017.
 Action: Created schema v1.1 N03 (13 choices), N10 (21 choices), N12 (15 choices), teacher-only source maps and original Word PNG assets image1/9/10/11. Preserved N10 root-proof sign/denominator assumptions; positioned N12-F03 only after final Q15. Added math/KaTeX/source-gate tests and mobile/desktop E2E in existing workflow; no N01 code, public catalog, physics, practice or progress changes.
 Result: Initial source commit c8e6103054e55aa43fcceca36d5f69131f451f95; Actions math 39008585976 and governance 39008585948 pending final review. Main/Pages unchanged.
+
+## A-021 — Prevent immediate Q14 answer repetition in N10 prose
+Date: 2026-10-17
+Target: N10 approved lesson and its implementation/test on draft PR #68.
+Action: QA found original drafted Q14 prose restated the full correct operation immediately before its choice. Tightened only that lead-in to ask how a numerator/denominator ratio is preserved; retained the same approved choice, answer, proof assumptions and sequence. Added regression asserting the answer phrase is absent prior to Q14.
+Result: Small learner-copy QA correction remains visible in PR diff for user review; no source math or main release changed.

@@ -107,7 +107,7 @@ Source: original teacher-edited DOCX SHA-256 `93827322a877313d4d39957dd6196c01de
 
 **例題**　\(\dfrac1{2\sqrt3}\) の分母から根号をなくしたい。ただし分母だけを書き換えると元の分数とは異なる値になってしまう。
 
-0でない同じ数を分子・分母の両方に掛ければ、分数の値は変わらない。その操作は【選ぶ】。
+分母を変える前に、分子と分母の比を保つ操作を確認しよう。それは【選ぶ】。
 
 分母の \(\sqrt3\) と掛けて平方数を作る因子を選ぼう。
 
@@ -216,3 +216,5 @@ Source: original teacher-edited DOCX SHA-256 `93827322a877313d4d39957dd6196c01de
 
 ## Post-review approval update (2026-10-17)
 The user accepted the exact learner copy, choice positions and original-figure gate design for all three units with 「いいよ。よろしく」. This supersedes the historical pre-approval conditions and unimplemented status stated in the original design memo above. The app implementation is in separate draft PR #68; main merge, Pages publication and hands-on app acceptance have **not** been granted. No original source figures were redrawn.
+
+Implementation QA note: The N10 Q14 sentence was tightened to avoid giving the operation verbatim immediately before the choice. The validated answer, 21-step sequence and learner concept remain unchanged; this small copy edit is visible in PR #68 for review.

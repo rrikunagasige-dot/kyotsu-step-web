@@ -122,7 +122,7 @@ const rawN10 = {
       { id: 'marker-rationalize-example', type: 'marker' as const, kind: 'example' as const, text: '例題' },
       { id: 'paragraph-rationalize-intro', type: 'paragraph' as const, parts: [
         M('\\dfrac1{2\\sqrt3}'), T(' の分母から根号をなくしたい。ただし分母だけを書き換えると元の分数とは異なる値になってしまう。'),
-        T('0でない同じ数を分子・分母の両方に掛ければ、分数の値は変わらない。その操作は '),
+        T('分母を変える前に、分子と分母の比を保つ操作を確認しよう。それは '),
         C('n10-14'), T('。'),
       ] },
       { id: 'paragraph-rationalize-multiplier', type: 'paragraph' as const, parts: [

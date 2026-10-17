@@ -142,6 +142,11 @@ describe('W-MATH-003 approved numbers & expressions pilot implementation', () =>
     expect(proofCopy).toContain('a>0')
     expect(proofCopy).toContain('b>0')
     expect(proofCopy).toContain('ne0')
+    const beforeRationalizationChoice = section.readingFlow.slice(0, itemIndex(mathNumbersN10Unit, 'n10-14') + 1)
+      .flatMap(block => block.type === 'paragraph' || block.type === 'formula'
+        ? block.parts.filter(part => part.type === 'text').map(part => part.text)
+        : []).join('')
+    expect(beforeRationalizationChoice).not.toContain(section.items.find(item => item.id === 'n10-14')?.answer)
   })
 
   it('preserves N12 15 source answers and gates original figures after their prerequisite answers', () => {

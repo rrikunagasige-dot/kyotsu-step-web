@@ -53,3 +53,9 @@ Date: 2026-10-17
 Target: `N01_LEARNER_PILOT_DRAFT.md`
 Action: Removed prefilled clue for final polynomial degree/cancellation and restored open Q9 grouping→result→Q10 interpretation.
 Result: Teacher-side solution table remains separate, learner-facing draft reviewable. App still not implemented.
+
+## A-011 — N01 exact student-text review v2
+Date: 2026-10-17
+Target: `N01_LEARNER_REVIEW_V2.md`
+Action: Compare source Word's N01 Q1–10, previous candidate `N01_LEARNER_PILOT_DRAFT.md`, imported math textbook SPEC, title/choice rendering contract. Create a review-ready learner excerpt and exact mapping of 10 source markers to 15 staged choice items without touching app code.
+Result: Draft v2 is ready for USER CONTENT REVIEW. Not yet accepted; no app/source files changed. Restored escaped Markdown markers before handoff.

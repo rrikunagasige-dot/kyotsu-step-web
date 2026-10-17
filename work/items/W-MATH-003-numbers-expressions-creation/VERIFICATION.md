@@ -218,3 +218,14 @@ Target: draft PR #68 code SHA `dc88a631d443cf9af08f1acc5d8a44b3656b1df6`.
 - Commit compare against main `1bd40d5790faeb28ccccfaa7add5090a715949a2`: exactly 20 paths, 0 behind; 13 directly related lesson/test/PNG/CI paths and 7 W-MATH-003 work design/evidence paths. No N01, existing published lesson source, Physics, Math Practice or learner progress writes.
 - Prior CI 39008585976 was cancelled by the deliberate final anti-leak/figure-integrity revision after its mobile/desktop succeeded. The final CI 39008959818 supersedes it and fully succeeded.
 Result: **QA PASS for review-only app code**. Not merged into main or published on GitHub Pages; user hands-on review and separate release permission are still required. This verification document update is evidence-only; a subsequent governance-only check may run.
+
+## V-030 — N03/N10/N12 authorized main merge and production deployment
+Date: 2026-10-17
+- Consent: user said 「いいよ」 after an explicit PR #68 main merge + Pages publication request; this is not separate approval to make the `review` units visible in the general textbook selector or mark 16 units DONE.
+- Release code: PR #68 head `3a70cd8c87c14b1d45af998bae0b43c90088e70a`, clean based on main `1bd40d5790faeb28ccccfaa7add5090a715949a2`. Final premerge [Math textbook CI 39009560379](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39009560379): **SUCCESS**, [Governance 39009560317](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39009560317): **SUCCESS**.
+- [Merged PR #68](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/68) on main commit `1e7a5d77e5f741d77afc7c0fe124cf978e45993e`; [postmerge governance 39015513887](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39015513887) **SUCCESS**.
+- [Pages deployment 39015513835](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39015513835): **SUCCESS (build + deploy)**.
+- Production browser direct review URLs: [N03](https://rrikunagasige-dot.github.io/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n03), [N10](https://rrikunagasige-dot.github.io/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n10), [N12](https://rrikunagasige-dot.github.io/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n12).
+- Actual public Chrome QA: 公開版ChromeでN03は 4a^8 を選んで進捗0/13→1/13、N10は t²=25 を選んで0/21→1/21、N12は x>-7/2 と x≤1/2 を選んで0/15→2/15へ進み、Q2回答後に元の数直線図F01が見えることを画像でも確認。F03のQ15後解放はCIでの検証であり、公開版では未完走。.
+- Full 13+21+15=49 choices, original gated figures, KaTeX, typecheck, production compilation, Physics, Math Practice and mobile/desktop simulations passed automated CI on the final PR head. Public spot-check does not substitute for user hands-on feedback or independently retesting all 49 on Pages.
+- Review-only status and published-only setup catalog remain unchanged; 174/233 non-pilot source markers are not yet audited. W-MATH-003 remains VERIFYING.

@@ -113,7 +113,7 @@ describe('math textbook catalog', () => {
     )
   })
 
-  it('keeps only the approved set lesson published while the later lessons remain review-only', () => {
+  it('keeps only the approved set lesson published while all unaccepted math pilots remain review-only', () => {
     expect(
       mathTextbookUnits.filter((unit) => unit.status === 'published').map((unit) => unit.unitId),
     ).toEqual(['math-sets'])
@@ -126,6 +126,7 @@ describe('math textbook catalog', () => {
       'math-propositions-proof',
       'math-quantifiers-all-exists',
       'math-functions-conditions',
+      'math-numbers-expressions-n01',
     ])
   })
 

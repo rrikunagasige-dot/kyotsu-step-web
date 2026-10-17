@@ -96,7 +96,7 @@ export function LearningSetupPage() {
   )
 
   useEffect(() => {
-    textbookRepository.listPublished().then((units) => {
+    textbookRepository.listLearningSetup().then((units) => {
       setTextbookUnits(units)
     })
   }, [])
@@ -339,71 +339,90 @@ export function LearningSetupPage() {
             </div>
           ) : (
             <div className="textbook-part-list" data-testid="math-textbook-topic-list">
-              <section className="textbook-part-group" data-testid="math-textbook-chapter-3">
-                <header className="textbook-part-heading">
-                  <span>{text('第3章', '第3章')}</span>
-                  <strong>{text('集合と命題', '集合与命题')}</strong>
-                </header>
+              {([
+                {
+                  id: 'math-ch01-numbers-expressions',
+                  number: '1',
+                  label: { ja: '数と式', zh: '数与式' },
+                },
+                {
+                  id: 'math-ch03-sets-propositions',
+                  number: '3',
+                  label: { ja: '集合と命題', zh: '集合与命题' },
+                },
+              ] as const).map((chapter) => (
+                <section
+                  className="textbook-part-group"
+                  data-testid={`math-textbook-chapter-${chapter.number}`}
+                  key={chapter.id}
+                >
+                  <header className="textbook-part-heading">
+                    <span>{text(`第${chapter.number}章`, `第${chapter.number}章`)}</span>
+                    <strong>{chapter.label[language]}</strong>
+                  </header>
+                  <div className="textbook-unit-grid textbook-chunk-grid">
+                    {mathTextbookTopics
+                      .filter((topic) => topic.chapterId === chapter.id)
+                      .map((topic) => {
+                        const topicUnits = textbookUnits.filter((unit) =>
+                          unit.subject === 'math-1a' &&
+                          topic.unitIds.some((unitId) => unitId === unit.unitId),
+                        )
+                        const topicReady = mathTextbookTopicHasAllUnits(
+                          topic.id,
+                          topicUnits.map((unit) => unit.unitId),
+                        )
+                        if (!topicReady) {
+                          return (
+                            <div
+                              className="textbook-unit-link textbook-chunk-link textbook-unit-link--pending"
+                              data-testid={`math-textbook-topic-${topic.id}`}
+                              aria-disabled="true"
+                              key={topic.id}
+                            >
+                              <div>
+                                <strong>{topic.label[language]}</strong>
+                                <small className="textbook-chunk-flow">{topic.flow[language]}</small>
+                                <small>{text('準備中', '准备中')}</small>
+                              </div>
+                              <span className="textbook-unit-percent">—</span>
+                            </div>
+                          )
+                        }
 
-                <div className="textbook-unit-grid textbook-chunk-grid">
-                  {mathTextbookTopics.map((topic) => {
-                    const topicUnits = textbookUnits.filter((unit) =>
-                      unit.subject === 'math-1a' &&
-                      topic.unitIds.some((unitId) => unitId === unit.unitId),
-                    )
+                        const summaries = topicUnits.map((unit) =>
+                          textbookUnitProgress(unit, textbookProgress[unit.unitId]),
+                        )
+                        const completed = summaries.reduce((sum, summary) => sum + summary.completed, 0)
+                        const total = summaries.reduce((sum, summary) => sum + summary.total, 0)
+                        const percent = total > 0 ? Math.round((completed / total) * 100) : 0
+                        const resumeUnit = topicUnits.find((unit) => {
+                          const summary = textbookUnitProgress(unit, textbookProgress[unit.unitId])
+                          return summary.completed < summary.total
+                        }) ?? topicUnits[0]
 
-                    const topicReady = mathTextbookTopicHasAllUnits(
-                      topic.id,
-                      topicUnits.map((unit) => unit.unitId),
-                    )
-
-                    if (!topicReady) {
-                      return (
-                        <div
-                          className="textbook-unit-link textbook-chunk-link textbook-unit-link--pending"
-                          data-testid={`math-textbook-topic-${topic.id}`}
-                          aria-disabled="true"
-                          key={topic.id}
-                        >
-                          <div>
-                            <strong>{topic.label[language]}</strong>
-                            <small className="textbook-chunk-flow">{topic.flow[language]}</small>
-                            <small>{text('準備中', '准备中')}</small>
-                          </div>
-                          <span className="textbook-unit-percent">—</span>
-                        </div>
-                      )
-                    }
-
-                    const summaries = topicUnits.map((unit) =>
-                      textbookUnitProgress(unit, textbookProgress[unit.unitId]),
-                    )
-                    const completed = summaries.reduce((sum, summary) => sum + summary.completed, 0)
-                    const total = summaries.reduce((sum, summary) => sum + summary.total, 0)
-                    const percent = total > 0 ? Math.round((completed / total) * 100) : 0
-                    const resumeUnit = topicUnits.find((unit) => {
-                      const summary = textbookUnitProgress(unit, textbookProgress[unit.unitId])
-                      return summary.completed < summary.total
-                    }) ?? topicUnits[0]
-
-                    return (
-                      <Link
-                        className="textbook-unit-link textbook-chunk-link"
-                        data-testid={`math-textbook-topic-${topic.id}`}
-                        key={topic.id}
-                        to={`/learning/textbook/${resumeUnit.unitId}`}
-                      >
-                        <div>
-                          <strong>{topic.label[language]}</strong>
-                          <small className="textbook-chunk-flow">{topic.flow[language]}</small>
-                          <small>{text(`${completed}/${total} 完了`, `已完成 ${completed}/${total}`)}</small>
-                        </div>
-                        <span className="textbook-unit-percent">{percent}%</span>
-                      </Link>
-                    )
-                  })}
-                </div>
-              </section>
+                        return (
+                          <Link
+                            className="textbook-unit-link textbook-chunk-link"
+                            data-testid={`math-textbook-topic-${topic.id}`}
+                            key={topic.id}
+                            to={`/learning/textbook/${resumeUnit.unitId}`}
+                          >
+                            <div>
+                              <strong>{topic.label[language]}</strong>
+                              <small className="textbook-chunk-flow">{topic.flow[language]}</small>
+                              {topic.chapterId === 'math-ch01-numbers-expressions' && (
+                                <small>{text('レビュー公開中', '公开试用中')}</small>
+                              )}
+                              <small>{text(`${completed}/${total} 完了`, `已完成 ${completed}/${total}`)}</small>
+                            </div>
+                            <span className="textbook-unit-percent">{percent}%</span>
+                          </Link>
+                        )
+                      })}
+                  </div>
+                </section>
+              ))}
             </div>
           )}
         </NumberedSection>

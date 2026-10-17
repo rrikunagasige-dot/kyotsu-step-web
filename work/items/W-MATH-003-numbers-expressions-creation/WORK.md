@@ -72,3 +72,6 @@ Approval evidence: Immediately after being offered the two exact N02/N09 learner
 - Do Not Touch: previous N01/N03/N10/N12 data and decisions, published math-sets, practice, physics, source Word, learner IDs/progress, main directly.
 - Current step: code and asset authored; CI/desktop-mobile progression and PR QA pending.
 - Next: verify typecheck/lint/unit/browser regression, present PR live code review; separately request authorization before main merge/Pages. W-MATH-003 stays VERIFYING and 148 source markers outside this batch remain unaudited.
+
+## 2026-10-17 — P-002 approved: Math chapter-1 review learner navigation and Pages
+User corrected command classification to 作成, and replied 「いいよ続け」 in direct response to the revised P-002 six-unit/three-theme Pages review proposal. Approved scope and do-not-touch appear in P-002_LEARNER_CATALOG_PAGES_RELEASE.md. Six source-audited units remain review, not published. A new branch/PR integrates staged PR #71 and gates merge/Pages on QA. W-MATH-003 remains VERIFYING pending real learner acceptance.

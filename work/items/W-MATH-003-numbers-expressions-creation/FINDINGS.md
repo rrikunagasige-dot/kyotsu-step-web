@@ -84,3 +84,9 @@ The original edited Word and design prose introduce the aim 1.41<sqrt(2)<1.42 be
 
 ## F-024 — CONFIRMED: Original N09-F01 binary has stable SHA
 The unchanged source figure image6.png (negative decimal -2.1 at left of -2) has SHA-256 24dd29dcaacd371ddfab4c8fefbccd84933fd0f1a27ed5f167372f74ca4a9cfd. The new app asset is byte-for-byte identical, with placement after Q10 in readingFlow. Alt and caption are not mounted before the figure block is unlocked.
+
+## F-025 — ERROR-IMPLEMENTATION: learner path missing despite implemented lessons
+The earlier N02/N09 draft PR had source-audited content and passing E2E but no public Pages merge. Math learner setup included only Chapter3, and repository.listPublished hid existing six numbers review units. P-002 addresses actual discoverability, not just a GitHub PR URL, while excluding unrelated review candidates.
+
+## F-026 — ERROR-PROCESS corrected: route work belongs to CMD-WORK-002 作成
+The user established that source→concept→lesson→app placement→user access belongs to ongoing 作成, not a standalone 修正. P-002 separately authorizes the enlarged chapter-1 catalog/Pages review scope without retroactively expanding P-001 or claiming final learner acceptance.

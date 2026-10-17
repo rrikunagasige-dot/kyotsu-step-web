@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest'
 import { mathSetUnit } from './set/setLesson'
-import { mathTextbookNextUnitId, mathTextbookTopicForUnit, mathTextbookTopicHasAllUnits, mathTextbookTopics } from './mathCatalog'
+import { mathNumbersReviewUnitIds, mathTextbookNextUnitId, mathTextbookTopicForUnit, mathTextbookTopicHasAllUnits, mathTextbookTopics } from './mathCatalog'
 import { mathTextbookUnits } from './index'
+import { textbookRepository } from '../../../repositories/textbookRepository'
 
 describe('math textbook catalog', () => {
   it('aligns the set lesson with the overlapping practice curriculum without driving learner structure', () => {
@@ -19,13 +20,16 @@ describe('math textbook catalog', () => {
 
   it('keeps the three learning topics synchronized only where textbook content overlaps practice', () => {
     expect(mathTextbookTopics.map((topic) => topic.id)).toEqual([
+      'numbers-polynomials',
+      'numbers-real',
+      'numbers-inequalities',
       'organize-sets',
       'read-propositions',
       'prove-propositions',
     ])
-    expect(mathTextbookTopics[0].unitIds).toEqual(['math-sets'])
-    expect(mathTextbookTopics[1].unitIds).toEqual(['math-propositions-reading', 'math-quantifiers-all-exists'])
-    expect(mathTextbookTopics[2].unitIds).toEqual(['math-propositions-proof'])
+    expect(mathTextbookTopicForUnit('math-sets')?.unitIds).toEqual(['math-sets'])
+    expect(mathTextbookTopicForUnit('math-propositions-reading')?.unitIds).toEqual(['math-propositions-reading', 'math-quantifiers-all-exists'])
+    expect(mathTextbookTopicForUnit('math-propositions-proof')?.unitIds).toEqual(['math-propositions-proof'])
   })
 
 
@@ -47,13 +51,13 @@ describe('math textbook catalog', () => {
   })
 
   it('keeps practice synchronization metadata internal without forcing practice taxonomy onto learner topics', () => {
-    expect(mathTextbookTopics[1].practiceLinks).toEqual([
+    expect(mathTextbookTopicForUnit('math-propositions-reading')?.practiceLinks).toEqual([
       {
         topicId: 'read-propositions',
         questionNumbers: [98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 109],
       },
     ])
-    expect(mathTextbookTopics[2].practiceLinks).toEqual([
+    expect(mathTextbookTopicForUnit('math-propositions-proof')?.practiceLinks).toEqual([
       {
         topicId: 'prove-propositions',
         questionNumbers: [108, 110, 111, 112, 113, 114, 115, 116, 117],
@@ -91,7 +95,7 @@ describe('math textbook catalog', () => {
   })
 
   it('keeps current learner topics inside chapter 3 and leaves the function review in chapter 2', () => {
-    const chapter3UnitIds = mathTextbookTopics.flatMap((topic) => topic.unitIds)
+    const chapter3UnitIds = mathTextbookTopics.filter((topic) => topic.chapterId === 'math-ch03-sets-propositions').flatMap((topic) => topic.unitIds)
     for (const unitId of chapter3UnitIds) {
       expect(
         mathTextbookUnits.find((unit) => unit.unitId === unitId)?.chapter?.chapterNumber,
@@ -105,10 +109,10 @@ describe('math textbook catalog', () => {
   })
 
   it('keeps learner-facing topic flows aligned with the approved source-backed curriculum', () => {
-    expect(mathTextbookTopics[1].flow.ja).toBe(
+    expect(mathTextbookTopicForUnit('math-propositions-reading')?.flow.ja).toBe(
       '真偽 → 必要条件・十分条件 → 条件の否定 → 「すべて」と「ある」',
     )
-    expect(mathTextbookTopics[2].flow.ja).toBe(
+    expect(mathTextbookTopicForUnit('math-propositions-proof')?.flow.ja).toBe(
       '逆・裏・対偶 → 証明しやすい向き → 対偶による証明 → 矛盾を使う証明',
     )
   })
@@ -135,8 +139,8 @@ describe('math textbook catalog', () => {
   })
 
   it('keeps the approved three learner-facing headings in order', () => {
-    const topic = mathTextbookTopics[0]
-    expect(topic.learnerHeadings).toEqual([
+    const topic = mathTextbookTopicForUnit('math-sets')
+    expect(topic?.learnerHeadings).toEqual([
       '第1部　集合を表す',
       '第2部　集合どうしの関係を見る',
       '第3部　集合の外側まで考える',
@@ -146,6 +150,39 @@ describe('math textbook catalog', () => {
       .filter((block) => block.type === 'heading')
       .map((block) => block.text)
 
-    expect(headings).toEqual(topic.learnerHeadings)
+    expect(headings).toEqual(topic?.learnerHeadings)
+  })
+
+  it('maps six source-audited chapter-1 review lessons into exactly three learner topics', () => {
+    const chapter1 = mathTextbookTopics.filter((topic) => topic.chapterId === 'math-ch01-numbers-expressions')
+    expect(chapter1.map((topic) => topic.label.ja)).toEqual(['式を整える', '実数を扱う', '不等式を使う'])
+    expect(chapter1.map((topic) => topic.unitIds.map((id) => id.slice(-3)))).toEqual([
+      ['n01', 'n02', 'n03'], ['n09', 'n10'], ['n12'],
+    ])
+    expect(mathNumbersReviewUnitIds).toHaveLength(6)
+    for (const id of mathNumbersReviewUnitIds) {
+      const unit = mathTextbookUnits.find((candidate) => candidate.unitId === id)
+      expect(unit?.status, id).toBe('review')
+      expect(unit?.chapter?.chapterId, id).toBe('math-ch01-numbers-expressions')
+    }
+    expect(mathTextbookNextUnitId('math-numbers-expressions-n01')).toBe('math-numbers-expressions-n02')
+    expect(mathTextbookNextUnitId('math-numbers-expressions-n02')).toBe('math-numbers-expressions-n03')
+    expect(mathTextbookNextUnitId('math-numbers-expressions-n09')).toBe('math-numbers-expressions-n10')
+    expect(mathTextbookNextUnitId('math-numbers-expressions-n03')).toBeUndefined()
+  })
+
+  it('exposes ONLY chapter-1 review previews in the learner setup, without promoting their published status', async () => {
+    const published = await textbookRepository.listPublished()
+    const visible = await textbookRepository.listLearningSetup()
+    const publishedIds = published.map((unit) => unit.unitId)
+    const visibleIds = visible.map((unit) => unit.unitId)
+    expect(publishedIds).toContain('math-sets')
+    for (const id of mathNumbersReviewUnitIds) {
+      expect(publishedIds).not.toContain(id)
+      expect(visibleIds).toContain(id)
+    }
+    for (const id of ['math-propositions-reading', 'math-propositions-proof', 'math-quantifiers-all-exists', 'math-functions-conditions']) {
+      expect(visibleIds).not.toContain(id)
+    }
   })
 })

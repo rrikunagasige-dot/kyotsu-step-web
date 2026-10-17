@@ -176,3 +176,9 @@ Result: Two review-only units, source maps and unchanged original image in isola
 Date: 2026-10-17
 Action: Add numbersNextBatch.test.ts (26 mappings, answers, KaTeX/option uniqueness, source image SHA, figure before/after ordering and domain math) and numbers-next-batch.spec.ts (26 real choices, N09 wrong-response gate, 320px viewport and reload persistence); update fixed review ID listing.
 Result: Static TypeScript syntax parse passed. CI and browser E2E results to be appended as actual evidence, not inferred.
+
+## A-031 — Reconstruct and implement missing chapter-1 learner route under P-002
+Date: 2026-10-17
+Observed: Math setup hardcodes Chapter3; repository.listPublished excludes six review-status numbers lessons; PR #71 contains N02/N09 but was not in main/Pages.
+Action: Add three named Chapter1 topics and explicit six-unit review visibility; expose them in math learning setup, with progress and existing per-unit deep links; adjust Chapter1 H1/current-topic hierarchy, focused tests/CI. No main direct edits.
+Result: staged for CI and separate release PR; actual deploy evidence to follow.

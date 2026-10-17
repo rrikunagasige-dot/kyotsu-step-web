@@ -10,6 +10,7 @@ on:
       - 'src/data/textbook/math/**'
       - 'public/assets/math/textbook/**'
       - 'src/data/textbook/index.ts'
+      - 'src/repositories/textbookRepository.ts'
       - 'src/pages/TextbookUnitPage.tsx'
       - 'src/pages/LearningSetupPage.tsx'
       - 'src/components/textbook/**'
@@ -17,6 +18,7 @@ on:
       - 'src/styles/global.css'
       - 'e2e/math-textbook-set-smoke.spec.ts'
       - 'e2e/numbers-next-batch.spec.ts'
+      - 'e2e/numbers-catalog-publish.spec.ts'
       - '.github/workflows/math-textbook-ci.yml'
   workflow_dispatch:
 
@@ -74,6 +76,9 @@ jobs:
 
       - name: N02/N09 all 26 choices and original image gate (mobile and desktop)
         run: pnpm exec playwright test e2e/numbers-next-batch.spec.ts --project=mobile-chromium --project=desktop-chromium
+
+      - name: Chapter-1 math catalog, route and review visibility (mobile and desktop)
+        run: pnpm exec playwright test e2e/numbers-catalog-publish.spec.ts --project=mobile-chromium --project=desktop-chromium
 
       - name: Physics textbook regression
         run: pnpm exec playwright test e2e/chapter1-learning-smoke.spec.ts --project=desktop-chromium

@@ -258,3 +258,8 @@ PENDING: project TypeScript typecheck, lint, Vitest, actual Playwright execution
 Date: 2026-10-17
 Expected changes: two new math review units; one unchanged original PNG; source-to-item helper widened to N02/N09; internal review-unit registration and fixed review expectation; focused Vitest and Playwright checks; four Work records. No published catalog promotion, unrelated existing unit rewrite, learner progress migration, main direct write or Pages publication.
 PR/CI evidence to be recorded after connector confirmation.
+
+## V-037 — P-002 public-review release checklist
+Date: 2026-10-17
+Gates: exactly three Chapter1 thematic cards and six source-audited unit IDs; other review units hidden, status review preserved; existing Chapter3 sets and learner state unaffected; N01/N03/N10/N12 source unchanged; N02/N09 26 choices, wrong-answer image gate, KaTeX/320px mobile and reload persistence; physics/practice regressions; TypeScript/unit/build and governance success; main integration+Pages URL and direct browser check.
+Status at authoring: PENDING actual CI, merge and public verification evidence.

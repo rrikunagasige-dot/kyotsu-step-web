@@ -31,7 +31,8 @@ async function mobileLayoutCheck(page: Page) {
 test('N02 review: all 12 source-stage decisions, compound answers, no forward leakage', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 720 })
   await visitClean(page, 'math-numbers-expressions-n02')
-  await expect(page.getByRole('heading', { name: '多項式の整理と加減', exact: true })).toBeVisible()
+  await expect(page.getByRole('heading', { name: '式を整える', exact: true })).toBeVisible()
+  await expect(page.getByTestId('textbook-current-topic')).toContainText('多項式の整理と加減')
   await expect(page.getByTestId('textbook-item-n02-01')).toBeVisible()
   await expect(page.getByTestId('textbook-item-n02-02')).toHaveCount(0)
   const answers: Array<[string, string]> = [
@@ -62,7 +63,8 @@ test('N02 review: all 12 source-stage decisions, compound answers, no forward le
 test('N09 review: n=-3 gates original figure, all 14 decisions and negative fractional parts', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 720 })
   await visitClean(page, 'math-numbers-expressions-n09')
-  await expect(page.getByRole('heading', { name: '平方根の符号と数直線', exact: true })).toBeVisible()
+  await expect(page.getByRole('heading', { name: '実数を扱う', exact: true })).toBeVisible()
+  await expect(page.getByTestId('textbook-current-topic')).toContainText('平方根の符号と数直線')
   const originalFigure = page.getByTestId('textbook-figure-n09-f01')
   await expect(originalFigure).toHaveCount(0)
   await expect(page.getByTestId('textbook-item-n09-02')).toHaveCount(0)

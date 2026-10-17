@@ -12,7 +12,7 @@ import { useAppStore } from '../stores/useAppStore'
 import { useI18n } from '../i18n/runtime'
 import { normalizeTextbookMath } from '../domain/textbookMath'
 import { chapter1ChunkForUnitCode, chapter1Localized, chapter1NextUnit } from '../data/textbook/ch01/chapter1Architecture'
-import { mathTextbookNextUnitId } from '../data/textbook/math'
+import { mathTextbookNextUnitId, mathTextbookTopicForUnit } from '../data/textbook/math'
 import { partitionMathSetReadingFlow, requiredMathSetContext } from '../data/textbook/math/presentation'
 
 function interactionPrompt(item: TextbookItem, text: (ja: string, zh: string) => string, subject: TextbookUnit['subject']) {
@@ -619,7 +619,12 @@ export function TextbookUnitPage() {
     ? unit.title.slice(legacyPrefix.length + 1)
     : unit.title
   const chapterChunk = unit.subject === 'physics' ? chapter1ChunkForUnitCode(unitCode) : undefined
-  const majorTitle = chapterChunk ? chapter1Localized(chapterChunk.title, language) : displayTitle
+  const mathNumbersChunk = unit.chapter?.chapterId === 'math-ch01-numbers-expressions'
+    ? mathTextbookTopicForUnit(unit.unitId)
+    : undefined
+  const majorTitle = chapterChunk
+    ? chapter1Localized(chapterChunk.title, language)
+    : mathNumbersChunk?.label[language] ?? displayTitle
   const nextChapter1Unit = unit.subject === 'physics' ? chapter1NextUnit(unitCode) : undefined
   const nextMathUnitId = unit.subject === 'math-1a' ? mathTextbookNextUnitId(unit.unitId) : undefined
   const setupReturnPath = unit.subject === 'math-1a' ? '/learning/setup?subject=math-1a' : '/learning/setup'
@@ -657,7 +662,7 @@ export function TextbookUnitPage() {
               : `TEXTBOOK / ${subjectEyebrow}`}
           </p>
           <h1>{majorTitle}</h1>
-          {chapterChunk && (
+          {(chapterChunk || mathNumbersChunk) && (
             <p className="textbook-current-topic" data-testid="textbook-current-topic">
               <span>{text('現在', '当前')}</span>
               <strong>{displayTitle}</strong>

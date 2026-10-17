@@ -1167,7 +1167,8 @@ test('P-004 P-005 subset figure uses approved PNG inside real app in compiled pr
 
 test('N01 review-only pilot: original 10 source tasks become 15 gated steps without revealing later answers', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-numbers-expressions-n01'))
-  await expect(page.getByRole('heading', { level: 1, name: '式の見方' })).toBeVisible()
+  await expect(page.getByRole('heading', { level: 1, name: '式を整える' })).toBeVisible()
+  await expect(page.getByTestId('textbook-current-topic')).toContainText('式の見方')
   await expect(page.getByTestId('textbook-reading-flow')).toBeVisible()
   await expect(page.getByTestId('textbook-item-n01-01')).toBeVisible()
   await expect(page.getByTestId('textbook-item-n01-09a')).toHaveCount(0)
@@ -1202,15 +1203,16 @@ test('N01 review-only pilot: original 10 source tasks become 15 gated steps with
   await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
   await page.reload()
   await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
-  // Review pilot may be opened by its direct URL but is not listed as public curriculum.
+  // Review previews appear through the approved chapter-1 learner catalog.
   await page.goto(appRoute('/learning/setup?subject=math-1a'))
-  await expect(page.getByRole('link', { name: /式の見方/ })).toHaveCount(0)
+  await expect(page.getByTestId('math-textbook-topic-numbers-polynomials')).toContainText('式を整える')
 })
 
 
 test('W-MATH-003 N01 review-only pilot completes all 15 inline decisions in actual compiled app', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-numbers-expressions-n01'))
-  await expect(page.getByRole('heading', { name: '式の見方' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: '式を整える' })).toBeVisible()
+  await expect(page.getByTestId('textbook-current-topic')).toContainText('式の見方')
   await expect(page.getByTestId('textbook-reading-flow')).toBeVisible()
   await expect(page.getByTestId('textbook-item-n01-01')).toBeVisible()
   await expect(page.getByTestId('textbook-item-n01-03')).toHaveCount(0)
@@ -1247,7 +1249,8 @@ test('W-MATH-003 N01 review-only pilot completes all 15 inline decisions in actu
 test('W-MATH-003 N03 review: 13 source decisions, original four-cell figure, mobile KaTeX', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 720 })
   await page.goto(appRoute('/learning/textbook/math-numbers-expressions-n03'))
-  await expect(page.getByRole('heading', { name: '指数法則と展開', exact: true })).toBeVisible()
+  await expect(page.getByRole('heading', { name: '式を整える', exact: true })).toBeVisible()
+  await expect(page.getByTestId('textbook-current-topic')).toContainText('指数法則と展開')
   await expect(page.getByTestId('textbook-item-n03-01')).toBeVisible()
   await expect(page.getByTestId('textbook-figure-n03-f01')).toHaveCount(0)
   await expect(page.getByTestId('textbook-item-n03-13')).toHaveCount(0)
@@ -1286,7 +1289,8 @@ test('W-MATH-003 N03 review: 13 source decisions, original four-cell figure, mob
 
 test('W-MATH-003 N10 review: proof prerequisites and all 21 roots/rationalization choices', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-numbers-expressions-n10'))
-  await expect(page.getByRole('heading', { name: '平方根の証明と有理化', exact: true })).toBeVisible()
+  await expect(page.getByRole('heading', { name: '実数を扱う', exact: true })).toBeVisible()
+  await expect(page.getByTestId('textbook-current-topic')).toContainText('平方根の証明と有理化')
   await expect(page.getByTestId('textbook-item-n10-01')).toBeVisible()
   await expect(page.getByTestId('textbook-item-n10-21')).toHaveCount(0)
   const answers: Array<[string, string]> = [
@@ -1323,7 +1327,8 @@ test('W-MATH-003 N10 review: proof prerequisites and all 21 roots/rationalizatio
 test('W-MATH-003 N12 review: original number lines gated and answer figure hidden until Q15', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 720 })
   await page.goto(appRoute('/learning/textbook/math-numbers-expressions-n12'))
-  await expect(page.getByRole('heading', { name: '連立不等式と整数条件', exact: true })).toBeVisible()
+  await expect(page.getByRole('heading', { name: '不等式を使う', exact: true })).toBeVisible()
+  await expect(page.getByTestId('textbook-current-topic')).toContainText('連立不等式と整数条件')
   await expect(page.getByTestId('textbook-item-n12-01')).toBeVisible()
   await expect(page.getByTestId('textbook-figure-n12-f01')).toHaveCount(0)
   await expect(page.getByTestId('textbook-figure-n12-f02')).toHaveCount(0)
@@ -1375,10 +1380,10 @@ test('W-MATH-003 N12 review: original number lines gated and answer figure hidde
   expect(viewport.scroll).toBeLessThanOrEqual(viewport.width + 1)
 })
 
-test('W-MATH-003 new review lessons remain off the public setup and keep physics intact', async ({ page }) => {
+test('W-MATH-003 approved review themes appear on the public setup and keep physics intact', async ({ page }) => {
   await page.goto(appRoute('/learning/setup?subject=math-1a'))
-  for (const name of ['指数法則と展開', '平方根の証明と有理化', '連立不等式と整数条件']) {
-    await expect(page.getByRole('link', { name })).toHaveCount(0)
+  for (const [id, label] of [['numbers-polynomials','式を整える'], ['numbers-real','実数を扱う'], ['numbers-inequalities','不等式を使う']] as const) {
+    await expect(page.getByTestId('math-textbook-topic-' + id)).toContainText(label)
   }
   await page.getByRole('button', { name: '物理', exact: true }).click()
   await expect(page.getByTestId('textbook-part-list')).toBeVisible()

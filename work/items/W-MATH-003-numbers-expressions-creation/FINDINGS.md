@@ -56,3 +56,7 @@ N03 Q1–Q13, N10 Q1–Q21, N12 Q1–Q15 all have original mathematical expressi
 ## F-016 — RISK: Source marker count differs from appropriate UI interaction count
 Date: 2026-10-17
 N03 13/N10 21/N12 15 **source questions** are traceability obligations, not a rule to create exactly the same number of visually separate cards. Proposed internal thinking slots should be checked for genuine distinct operations, grouped into continuous prose/formula, and reduced where a user judges a stage redundant. N03 dependency on unimplemented N02 must not be misstated as pre-taught when direct pilot testing. Any material user copy change requires a revised exact review before implementation.
+
+## F-017 — CONFIRMED: Separate release permission does not promote review pilots
+Date: 2026-10-17
+User said 「いいよ」 in direct reply to the explicit question whether PR #68 could be merged into main and published via GitHub Pages. With final CI and governance PASS, PR #68 was merged at `1e7a5d77e5f741d77afc7c0fe124cf978e45993e`, [Pages run 39015513835](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39015513835) deployed successfully and real Chrome verified N03/N10/N12 stage progression and N12-F01 after Q2. Their `status:'review'` and exclusion from the normal selector persist. This is release approval and technical live-spot verification, not user hands-on acceptance of all three lessons, not permission to promote to the ordinary catalog and not completion of the remaining 174 unaudited source markers.

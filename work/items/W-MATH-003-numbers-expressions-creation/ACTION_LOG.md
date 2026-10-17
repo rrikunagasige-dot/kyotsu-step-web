@@ -132,3 +132,16 @@ Date: 2026-10-17
 Target: final app code HEAD dc88a631d443cf9af08f1acc5d8a44b3656b1df6 on draft PR #68.
 Action: Confirmed complete [Math textbook CI 39008959818](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39008959818): typecheck, math unit tests including KaTeX and SHA-256 original PNG fidelity, production build, real mobile and desktop browser flows, Physics mode regression and Math Practice setup regression.
 Result: ALL SUCCESS. Repository Governance Check [39008959856](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39008959856) SUCCESS. PR #68 stays draft and main/Pages unchanged. This Work-record-only evidence append is not a new app-code revision; verify its governance CI separately.
+
+## A-023 — User-approved PR #68 main merge
+Date: 2026-10-17
+Target: [PR #68](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/68), main and GitHub Pages deployment.
+Reason: User replied 「いいよ」 to the explicit question asking whether PR #68 could be merged into main and published to GitHub Pages, with subsequent UI review.
+Action: Reconfirmed clean mergeability (main base `1bd40d5790faeb28ccccfaa7add5090a715949a2`, PR head `3a70cd8c87c14b1d45af998bae0b43c90088e70a`), final [Math CI 39009560379](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39009560379) SUCCESS and [Governance 39009560317](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39009560317) SUCCESS. Documented consent in PR description, marked draft ready and merged to main.
+Result: Merge SHA `1e7a5d77e5f741d77afc7c0fe124cf978e45993e`; main post-merge [Governance 39015513887](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39015513887) SUCCESS. No direct branch write to main, no alteration of `status:'review'` or catalog promotion.
+
+## A-024 — GitHub Pages production handoff and live lesson check
+Date: 2026-10-17
+Target: [Pages run 39015513835](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39015513835), N03/N10/N12 review deep links.
+Action: [Pages 39015513835](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39015513835) のbuild/deploy SUCCESSを確認し、公開版ChromeでN03は 4a^8 を選んで進捗0/13→1/13、N10は t²=25 を選んで0/21→1/21、N12は x>-7/2 と x≤1/2 を選んで0/15→2/15へ進み、Q2回答後に元の数直線図F01が見えることを画像でも確認。F03のQ15後解放はCIでの検証であり、公開版では未完走。
+Result: **PASS** for real production routes, first selection progression and N12 F01 gate; the full 49/49 stage regression ran previously in PC/mobile CI, not manually repeated on the live site. The 16-unit chapter as a whole remains VERIFYING; 174 non-pilot source markers are unaudited. The user has not yet provided hands-on acceptance of these three units.

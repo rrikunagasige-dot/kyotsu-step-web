@@ -84,3 +84,9 @@ Target: `src/data/textbook/math/numbers/n01Lesson.ts`, `src/data/textbook/math/i
 Reason: User confirmed N01 v2 user-facing design with 「いいよ進めて」.
 Action: Added 10-source/15-stage continuous N01 lesson (status review) and direct review deep link through existing repository. Used existing reading-flow formula and choice UI; preserved published catalog and other modes. Parallel implementation collision temporarily produced two modules; consolidated to `n01Lesson.ts` and removed orphan.
 Result: Full [Math textbook CI run 38989883731](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38989883731) SUCCESS for source HEAD `e9c36aad36d40d3a03c7da177978557aff99d601`. Work remains VERIFYING pending user review and separate main release approval.
+
+## A-015 — Successful final math-textbook CI on code head
+Date: 2026-10-17
+Code HEAD: `e9c36aad36d40d3a03c7da177978557aff99d601` on PR #66
+Action: Published work branch PR; evaluated GitHub Actions [38989883731](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38989883731) and [Governance 38989883645](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38989883645).
+Result: Both **SUCCESS**. Unit suite, typecheck/build, compiled math-set image decode, math-textbook desktop/mobile browser smoke (including 15-step N01 and reload), physics textbook and math practice regressions all PASS. Maintains review-only N01 in built repo, not published to main. Following documentation-only verification log append, compare SHA to same code tree; governance checks re-run.

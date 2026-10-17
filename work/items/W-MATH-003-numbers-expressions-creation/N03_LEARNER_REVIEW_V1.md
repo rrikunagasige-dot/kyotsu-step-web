@@ -4,7 +4,7 @@ Status: REVIEW-DRAFT / NOT IMPLEMENTED / USER APPROVAL REQUIRED
 Date: 2026-10-17
 Work: W-MATH-003 / approved P-001「数と式」作成
 Scope: N03 original Q1–Q13; original figure N03-F01 (image1.png, 633×365); math/textbook only.
-Source: user-provided teacher-edited original DOCX SHA-256 \`93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa\`; exact N03 source in the handoff ZIP's \`SOURCE/pilots/N03_source.md\`. Solutions independently checked in \`PILOT_SOLUTION_AUDIT.md\`, not compared with absent answer booklet.
+Source: user-provided teacher-edited original DOCX SHA-256 `93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa`; exact N03 source in the handoff ZIP's `SOURCE/pilots/N03_source.md`. Solutions independently checked in `PILOT_SOLUTION_AUDIT.md`, not compared with absent answer booklet.
 
 ## 1. 学習者に表示する本文（提案）
 
@@ -137,7 +137,7 @@ x^2(x^2-3x+4)
 - Q12→Q13はfading。初めの2項への分け方だけを確認し、最後の3項への展開と整理をまとめて本人に行わせる。
 - 例題・確認の区別はラベルと余白。概念名は黒色太字、穴のみ操作色。学習者へN03・Q番号を表示しない。
 - 1本の式変形を縦に細切れの独立カードへ増やさない。モバイルでは長い \(\underbrace{}\) の初回例の折返し、4積と結果の収まりを実装時にQA。
-- Math original figure source: \`SOURCE/figures/image1.png\` in verified handoff ZIP. This design document does not add an unapproved replacement image.
+- Math original figure source: `SOURCE/figures/image1.png` in verified handoff ZIP. This design document does not add an unapproved replacement image.
 
 ## 4. 承認・実装ゲート
 

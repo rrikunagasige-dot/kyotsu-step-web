@@ -1230,7 +1230,7 @@ test('W-MATH-003 N01 review-only pilot completes all 15 inline decisions in actu
     ['n01-06a', '3x^2-5x^2'], ['n01-06b', '(-5x+2x)\\quad(6-3)'],
     ['n01-07', '-2x^2-3x+3'], ['n01-08', '(2,3)'],
     ['n01-09a', '(1-1)x^3-2x^2+(1+3)x-1'], ['n01-09b', '-2x^2+4x-1'],
-    ['n01-10a', '2次式'], ['n01-10b', 'x³の項が打ち消し合うから'],
+    ['n01-10a', '2次式'], ['n01-10b', '3次の項が整理によって消えるから'],
   ]
   for (const [id, answer] of remaining) {
     if (id === 'n01-09a') await expect(page.getByTestId('textbook-item-n01-10a')).toHaveCount(0)
@@ -1238,7 +1238,7 @@ test('W-MATH-003 N01 review-only pilot completes all 15 inline decisions in actu
     await expect(page.getByTestId('resolved-' + id)).toBeVisible()
   }
   await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
-  await expect(page.getByTestId('textbook-reading-flow')).toContainText('整理後に残った項の次数を調べる')
+  await expect(page.getByTestId('textbook-reading-flow')).toContainText('残った項の次数を判断する')
   await page.reload()
   await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
 })

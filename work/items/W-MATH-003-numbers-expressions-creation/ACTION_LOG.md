@@ -29,3 +29,9 @@ Date: 2026-10-17
 Target: `work/items/W-MATH-003-numbers-expressions-creation/PILOT_DESIGN.md`.
 Action: Designed N01 Q1–10, N03 Q1–13, N10 Q1–21, N12 Q1–15 as cognitive tasks/inline-hole candidates, with dependency/figure timing and proof guards.
 Result: 59 source markers provisionally mapped. Computed N12 plain-prose shopping example as independent check: 2650+50x, 11<=x<13, x=11/12, 3200/3250 yen; source displays still unverified.
+
+## A-006 — Fix status after CI failure
+Date: 2026-10-17
+Target: `work/items/W-MATH-003-numbers-expressions-creation/WORK.md`
+Action: Replaced unparseable Status line with formal Work OS `Status: BLOCKED` and distinct Blocker description.
+Result: Submitted fix; CI rerun pending. Source fidelity gate still BLOCKED; no app/lesson source changed.

@@ -11,3 +11,6 @@ Numerous original math glyphs/OMML expressions missing, figure graphics unavaila
 
 ## F-004 — CONFIRMED: Required authority
 Imported mathematical textbook SPEC is CANONICAL-CANDIDATE subordinate to target-approved original. User-approved `集合` example emphasizes in-prose inline cognitive holes, natural teaching flow, concept→property→proof if needed→example. Common masters govern rendering, technical QA and title compression.
+
+## F-005 — ERROR-PROCESS: Work Status line violates validator
+CI run [38985852212](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38985852212) failed `WORK.md missing Status`. Root cause: used `Status: BLOCKED (source fidelity gate); design work proceeds` instead of the exact registered value `Status: BLOCKED` demanded by repository OS. Corrected to `Status: BLOCKED` on its own line with a separate `Blocker` description. The raw Word fidelity gate remains genuinely BLOCKED.

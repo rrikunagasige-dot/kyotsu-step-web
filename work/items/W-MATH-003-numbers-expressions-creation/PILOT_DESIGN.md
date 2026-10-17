@@ -1,10 +1,10 @@
 # P-001 — Representative four-unit pilot design (conditional draft)
 Date: 2026-10-17
-Status: DESIGN-READY / FORMULAS-UNVERIFIED / IMPLEMENTATION-BLOCKED
+Status: RAW-SOURCE-VERIFIED / PILOT-MATH-INDEPENDENTLY-CHECKED / N01-LEARNER-PROSE-IN-REVIEW
 User approved: 2026-10-17, Work P-001, pilot IDs N01 N03 N10 N12.
 
 ## Zero-th invariant
-The extracted Word text drops actual mathematical expressions/embedded graphics. The mappings below are **design hypotheses based on the textual instructions**, not verified derivations or actual answer keys. Never fill in a missing formula from inference without original rendered Word/OMML. No app work before source-gate pass.
+**Historical note:** original indexed Word text had dropped OMML/graphics. The user reattached the raw .docx on 2026-10-17. Its 397 OMML math objects and 14 original PNGs were recovered; source Q statements for all four pilots and the independent 59-question solutions have now been inspected. Read `SOURCE_OMML_AUDIT.md` and `PILOT_SOLUTION_AUDIT.md`. Separate official answer booklet remains unavailable; learner-facing N01 text is in review. Preserve source provenance and do not claim a live app exists.
 
 ## Contract inherited from accepted 集合 textbook
 One lesson is a coherent reading line, not a stack of quiz cards:
@@ -160,7 +160,7 @@ Source Word (16 units, OMML/figures pending)
 Do not treat a visual arrow as established mathematical necessity without exact source conditions. A new question may be added only when a source gap/educational need is recorded and user-visible new authorship distinguished.
 
 ## Design acceptance / the next user checkpoint
-After original Word recovery, produce for each pilot:
+Original Word recovered. Produce and review for each pilot:
 1. **Source-verified** complete original question/formula/figure and author-permission notes.
 2. Complete, checked solution/derivation with all assumptions.
 3. Continuous, fully written hole-free passage, definition/property/proof/example distinction.
@@ -168,4 +168,4 @@ After original Word recovery, produce for each pilot:
 5. Source comparison and actual figure placement/render specs.
 6. Present exact user-viewable pilot content and Fire diagram for approval before mass production.
 
-Until raw input is accessible, **this document is design work, not the source-verified production prototype**.
+Raw input is now accessible in the 2026-10-17 conversation upload; this remains **reviewable design**, not yet a deployed student app.

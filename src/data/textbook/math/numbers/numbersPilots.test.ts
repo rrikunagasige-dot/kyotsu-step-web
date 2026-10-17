@@ -1,3 +1,6 @@
+import { createHash } from 'node:crypto'
+import { readFileSync } from 'node:fs'
+import { resolve } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import katex from 'katex'
 import { normalizeTextbookAnswer } from '../../../../domain/textbook'
@@ -77,6 +80,21 @@ describe('W-MATH-003 approved numbers & expressions pilot implementation', () =>
           }
         }
       }
+    }
+  })
+
+
+  it('keeps four original PNG figures byte-for-byte identical to the verified user Word images', () => {
+    const imageHashes: Record<string, string> = {
+      'n03-f01.png': '1373f26fa3664dc39d29bd22f2fb063e2fb31c4495b5c8229498002084888e9b',
+      'n12-f01.png': '2e5c4463165bad864269c28bac6f9dd53d1366f9e81c550c7b404e5ecbd55a0f',
+      'n12-f02.png': '5a04b024307022434f00ee370a117d2f25ada2b3ef1fc1ff2c02b4d23fb670a3',
+      'n12-f03.png': '514b2950fb24deb86ad6bfac273912bc82b66084d85d5829cf5ae57ac68cd72f',
+    }
+    for (const [filename, expectedHash] of Object.entries(imageHashes)) {
+      const file = readFileSync(resolve(process.cwd(), 'public/assets/math/textbook/numbers', filename))
+      expect(file.subarray(0, 8).toString('hex'), filename).toBe('89504e470d0a1a0a')
+      expect(createHash('sha256').update(file).digest('hex'), filename).toBe(expectedHash)
     }
   })
 

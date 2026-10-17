@@ -1,6 +1,6 @@
 # N03 学習本文レビュー v1 — 指数法則と展開
 
-Status: REVIEW-DRAFT / NOT IMPLEMENTED / USER APPROVAL REQUIRED
+Status: USER-APPROVED FOR REVIEW-ONLY APP / PR #68 IMPLEMENTED / NOT PUBLISHED
 Date: 2026-10-17
 Work: W-MATH-003 / approved P-001「数と式」作成
 Scope: N03 original Q1–Q13; original figure N03-F01 (image1.png, 633×365); math/textbook only.
@@ -142,3 +142,6 @@ x^2(x^2-3x+4)
 ## 4. 承認・実装ゲート
 
 これは正答の数学監査を基礎とする**新しい学習者向け文章案**であり、N03のアプリ実装・公開を行った証拠ではない。正答選択肢の日本語ラベルと誤答フィードバック文面は実装前に本案に沿って明示する。ユーザーが本文・穴・図時点を承認した場合に限り、既存のreview専用N01を保護した別PRでN03を作成し、PC/スマホ/他モード回帰→実アプリレビュー→別のmain/Pages公開承認へ進む。
+
+## Post-review approval update (2026-10-17)
+The user accepted the exact learner copy, choice positions and original-figure gate design for all three units with 「いいよ。よろしく」. This supersedes the historical pre-approval conditions and unimplemented status stated in the original design memo above. The app implementation is in separate draft PR #68; main merge, Pages publication and hands-on app acceptance have **not** been granted. No original source figures were redrawn.

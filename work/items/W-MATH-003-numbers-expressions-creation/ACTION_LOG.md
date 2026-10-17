@@ -108,3 +108,15 @@ Date: 2026-10-17
 Target: branch `work/W-MATH-003-next-pilots-review-20261017` starting from main `1bd40d5`.
 Action: Read original DOCX-derived N03/N10/N12 passages from authoritative handoff ZIP, independently checked source solutions and original figure manifest. Authored `N03_LEARNER_REVIEW_V1.md`, `N10_LEARNER_REVIEW_V1.md`, `N12_LEARNER_REVIEW_V1.md` with complete learner text, internal original-marker mapping, gated thinking slots, correct answers, misconception feedback focus, diagram placement and no-leak conditions.
 Result: Documentation-only review. **No app code, original DOCX, published catalog, mathematics practice, physics, or existing learner progress changed.** Next stage: validate draft PR and present to user for review/approval before implementing these exact drafts.
+
+## A-019 — User approval of N03/N10/N12 exact learner drafts
+Date: 2026-10-17
+Target: N03/N10/N12 approved design files in draft PR #67.
+Action: After receiving all three student-facing copy / choice / figure-placement reviews, user replied 「いいよ。よろしく」. Interpret as authority to implement in a distinct review-only PR under P-001, not authority to merge or publish.
+Result: The 49 approved source questions and four original figures are the implementation scope. No mass production or release permission.
+
+## A-020 — Implement three approved pilots in isolated review PR
+Date: 2026-10-17
+Target: draft PR #68, branch work/W-MATH-003-n03-n10-n12-app-20261017.
+Action: Created schema v1.1 N03 (13 choices), N10 (21 choices), N12 (15 choices), teacher-only source maps and original Word PNG assets image1/9/10/11. Preserved N10 root-proof sign/denominator assumptions; positioned N12-F03 only after final Q15. Added math/KaTeX/source-gate tests and mobile/desktop E2E in existing workflow; no N01 code, public catalog, physics, practice or progress changes.
+Result: Initial source commit c8e6103054e55aa43fcceca36d5f69131f451f95; Actions math 39008585976 and governance 39008585948 pending final review. Main/Pages unchanged.

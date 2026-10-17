@@ -1,6 +1,6 @@
 # N12 学習本文レビュー v1 — 連立不等式と整数条件
 
-Status: REVIEW-DRAFT / NOT IMPLEMENTED / USER APPROVAL REQUIRED
+Status: USER-APPROVED FOR REVIEW-ONLY APP / PR #68 IMPLEMENTED / NOT PUBLISHED
 Date: 2026-10-17
 Work: W-MATH-003 / approved P-001
 Scope: original N12 Q1–Q15, three original figures N12-F01/F02/F03.
@@ -183,3 +183,6 @@ Q8 個数の分割 → Q9 整数・0〜20
 ## 4. Gate
 
 数学的導出、原問15/15と図3/3の対応はレビュー案として検討済み。アプリへの実装・公開・ユーザーhands-on PASSを意味しない。N03/N10/N12三単元の具体的本文が承認されて初めて別branch/PRでreview-onlyとして教材化する。main統合・Pages公開は独立した許可と検証を要する。
+
+## Post-review approval update (2026-10-17)
+The user accepted the exact learner copy, choice positions and original-figure gate design for all three units with 「いいよ。よろしく」. This supersedes the historical pre-approval conditions and unimplemented status stated in the original design memo above. The app implementation is in separate draft PR #68; main merge, Pages publication and hands-on app acceptance have **not** been granted. No original source figures were redrawn.

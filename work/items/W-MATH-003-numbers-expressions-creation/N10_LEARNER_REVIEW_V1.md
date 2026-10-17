@@ -1,6 +1,6 @@
 # N10 学習本文レビュー v1 — 平方根の証明と有理化
 
-Status: REVIEW-DRAFT / NOT IMPLEMENTED / USER APPROVAL REQUIRED
+Status: USER-APPROVED FOR REVIEW-ONLY APP / PR #68 IMPLEMENTED / NOT PUBLISHED
 Date: 2026-10-17
 Work: W-MATH-003 / approved P-001
 Scope: source N10 Q1–Q21; no original figures.
@@ -213,3 +213,6 @@ Source: original teacher-edited DOCX SHA-256 `93827322a877313d4d39957dd6196c01de
 ## 4. Gate
 
 これはN10学習者向け本文の**要レビュー設計案**であり、app/Pagesへ未実装。数学的正答は独立計算済みだが、元Wordの別冊公式解答とは未照合。ユーザーが本文・操作・証明条件を承認した後、review-only appへ別PRで移植→型/数式/e2e/PC/スマホ/他教科回帰→ユーザー実画面確認→別途main統合・Pages公開判断。
+
+## Post-review approval update (2026-10-17)
+The user accepted the exact learner copy, choice positions and original-figure gate design for all three units with 「いいよ。よろしく」. This supersedes the historical pre-approval conditions and unimplemented status stated in the original design memo above. The app implementation is in separate draft PR #68; main merge, Pages publication and hands-on app acceptance have **not** been granted. No original source figures were redrawn.

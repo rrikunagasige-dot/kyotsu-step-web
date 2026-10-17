@@ -35,3 +35,15 @@ Date: 2026-10-17
 Target: `work/items/W-MATH-003-numbers-expressions-creation/WORK.md`
 Action: Replaced unparseable Status line with formal Work OS `Status: BLOCKED` and distinct Blocker description.
 Result: Submitted fix; CI rerun pending. Source fidelity gate still BLOCKED; no app/lesson source changed.
+
+## A-007 — Recovered and audited user-uploaded Word
+Date: 2026-10-17
+Target: `01_数と式_教科書モード_対話段階導入版_v2(1).docx` (new attachment)
+Action: Read exact attached file bytes from sandbox; SHA-256 `93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa`. Parsed DOCX ZIP and XML: 397 OMML, 14 PNG, 233 original question labels. Used Pandoc Word reader for MathML/LaTeX extraction, inspected 14 visual image binaries as contact sheet.
+Result: SOURCE-FIDELITY blocker resolved; previous figure-12 report corrected to 14 (N05-F01/F02).
+
+## A-008 — Four-pilot mathematical solutions and student narrative
+Date: 2026-10-17
+Target: `SOURCE_OMML_AUDIT.md`, `PILOT_SOLUTION_AUDIT.md`, `N01_LEARNER_PILOT_DRAFT.md`.
+Action: Independently computed all 59 pilot question answers, verified key identities and inequalities with SymPy; checked N03/N12 original image timing. Produced complete N01 one-flow teaching text with inline formula blanks, gated answer table and no invented image.
+Result: Pending exact learner-facing content/UI review, not yet deployed. Separate teacher answer booklet unavailable.

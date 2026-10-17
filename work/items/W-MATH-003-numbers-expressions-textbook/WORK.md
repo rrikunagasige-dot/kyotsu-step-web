@@ -1,5 +1,6 @@
 # W-MATH-003 — 数学Ⅰ「数と式」教科書モード「作成」
-Status: BLOCKED — original DOCX math/formula and embedded figure source unavailable for exact reconstruction
+Status: BLOCKED
+Blocker: Original DOCX math/formula and embedded figure source unavailable for exact reconstruction.
 Updated: 2026-10-17
 Repo: `rrikunagasige-dot/kyotsu-step-web` (ID 1391122224)
 Base main at Work open: `c184077a745c7d4bc077e0b5d0eaa70e9af2ddaf`

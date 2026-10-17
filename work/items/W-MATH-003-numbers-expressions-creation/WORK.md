@@ -1,5 +1,6 @@
 # W-MATH-003 — 数学Ⅰ「数と式」教科書モードの作成
-Status: BLOCKED (source fidelity gate); design work proceeds
+Status: BLOCKED
+Blocker: SOURCE-FIDELITY — 原Wordの元バイト・数式/図の読み出し待ち。設計文書の作成は継続可能。
 Updated: 2026-10-17
 Repo: `rrikunagasige-dot/kyotsu-step-web` (ID 1391122224)
 Base main: `c184077a745c7d4bc077e0b5d0eaa70e9af2ddaf`

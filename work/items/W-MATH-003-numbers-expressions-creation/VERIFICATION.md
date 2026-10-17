@@ -177,3 +177,11 @@ Date: 2026-10-17
 - Request user review of exact N03/N10/N12 proposed learner prose and thinking slots. Any substantive feedback must be incorporated in a new review revision and shown before code.
 - New runtime implementation, app/mobile/KaTeX/asset QA, next main release and Page publication: **NOT-RUN / NOT-AUTHORIZED FOR THESE THREE PILOTS YET**.
 - W-MATH-003 overall status: VERIFYING (chapter coverage 233, pilot verified 59, rest 174 unaudited). No full-chapter DONE claim.
+
+## V-025 — Draft PR #67 scope and governance CI
+Date: 2026-10-17
+Target: [PR #67](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/67), review-only branch `work/W-MATH-003-next-pilots-review-20261017`.
+- Compared branch head `934051256a1fe5b6577157894fbf69de2fca9fbb` against main merge `1bd40d5790faeb28ccccfaa7add5090a715949a2`: **exactly seven files**, all under `work/items/W-MATH-003-numbers-expressions-creation/` (3 new pilot drafts + 4 Work updates). No app code, source image, catalog, learner progress, existing math/physics mode or CI workflow changed.
+- [Repository Governance Check run 39007169136](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39007169136): **SUCCESS** for the pre-evidence-append head. This evidence-only append will trigger a new governance check; latest CI should be verified independently.
+- No runtime/visual tests for N03/N10/N12 are claimed, since these are Markdown reviews and no app components were implemented.
+Result: **PASS for draft documentation scope + governance**, **WAITING for user review of the exact three learner drafts**.

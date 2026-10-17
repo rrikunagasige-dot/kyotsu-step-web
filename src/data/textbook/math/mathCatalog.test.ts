@@ -126,7 +126,6 @@ describe('math textbook catalog', () => {
       'math-propositions-proof',
       'math-quantifiers-all-exists',
       'math-functions-conditions',
-      'math-numbers-expressions-n01',
     ])
   })
 

@@ -77,3 +77,10 @@ Date: 2026-10-17
 Target: `n01Lesson.test.ts`
 Action: CI 38989444753 succeeded in Typecheck and all 126 math units, then failed at production `tsc -b`: TS2367 unreachable `part.type==='choice'` test branch after a type-narrowing filter. Removed unreachable comparison.
 Result: Build check requeued. Failure evidence preserved.
+
+## A-012 — N01 reviewer-approved pilot app + tested browser behavior
+Date: 2026-10-17
+Target: `src/data/textbook/math/numbers/n01Lesson.ts`, `src/data/textbook/math/index.ts`, `src/data/textbook/math/mathCatalog.test.ts`, N01 unit tests, `e2e/math-textbook-set-smoke.spec.ts`
+Reason: User confirmed N01 v2 user-facing design with 「いいよ進めて」.
+Action: Added 10-source/15-stage continuous N01 lesson (status review) and direct review deep link through existing repository. Used existing reading-flow formula and choice UI; preserved published catalog and other modes. Parallel implementation collision temporarily produced two modules; consolidated to `n01Lesson.ts` and removed orphan.
+Result: Full [Math textbook CI run 38989883731](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38989883731) SUCCESS for source HEAD `e9c36aad36d40d3a03c7da177978557aff99d601`. Work remains VERIFYING pending user review and separate main release approval.

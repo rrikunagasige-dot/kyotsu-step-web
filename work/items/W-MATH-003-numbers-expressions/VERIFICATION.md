@@ -21,3 +21,8 @@ Result: NOT RUN — original source bytes and pilot implementation not available
 ## V-005 — Approval and release
 Expected: exact P-001 approved, main merge separate.
 Result: P-001 APPROVED by user 2026-10-17; merge/deploy NOT APPROVED by this acceptance.
+
+## V-006 — Governance CI failure and correction
+Date: 2026-10-17
+First PR run: [38985838944](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38985838944).
+Result: **FAILED** due to invalid composite Work status `BLOCKED-SOURCE / DESIGN-IN-PROGRESS` not recognized by repository governance validator. Work status changed to canonical `BLOCKED`; descriptive source-design state remains in body. Do not erase the initial failure. Await rerun for PASS.

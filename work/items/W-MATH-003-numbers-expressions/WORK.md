@@ -1,6 +1,6 @@
 # W-MATH-003 — 数学Ⅰ「数と式」教科書モード作成
 
-Status: BLOCKED-SOURCE / DESIGN-IN-PROGRESS
+Status: BLOCKED
 Updated: 2026-10-17
 Repository: `rrikunagasige-dot/kyotsu-step-web` (ID `1391122224`)
 Base main: `c184077a745c7d4bc077e0b5d0eaa70e9af2ddaf`

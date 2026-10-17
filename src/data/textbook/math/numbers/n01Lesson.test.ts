@@ -107,7 +107,7 @@ describe('N01 mathematics textbook review lesson', () => {
     const text = (blocks: typeof beforeQ9) => blocks.flatMap(block =>
       block.type === 'paragraph' || block.type === 'formula'
         ? block.parts.filter(part => part.type !== 'choice').map(part =>
-            part.type === 'text' || part.type === 'term' ? part.text : part.latex)
+            part.type === 'math' ? part.latex : part.type === 'choice' ? '' : part.text)
         : block.type === 'note' || block.type === 'heading' || block.type === 'marker'
           ? [block.text]
           : [],

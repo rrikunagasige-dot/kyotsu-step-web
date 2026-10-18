@@ -1,5 +1,6 @@
 # W-MATH-004 / P-001 — N12導出補完と不等式54問の品質ゲート
-Status: APPROVED FOR IMPLEMENTATION / MERGE AND PAGES NOT APPROVED
+Status: APPROVED
+Implementation gate: P-001 approved; merge and Pages NOT APPROVED.
 Approval: 2026-10-18 JST, user explicitly stated 「P-001を承認する。N12の導出6段階追加を実装し、他の承認済み単元への影響も点検して続けて。」 in this chat.
 Approval scope: exact seven-point P-001; review-only N12 app + focused tests + cross-creation audit and records; no main/Pages authority.
 Date: 2026-10-18 JST

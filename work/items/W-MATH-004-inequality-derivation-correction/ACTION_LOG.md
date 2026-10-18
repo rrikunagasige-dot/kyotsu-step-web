@@ -25,3 +25,6 @@ Inspected every item and readingFlow transition in N01 (15), N02 (12), N03 (13),
 
 ## A-008 — Pending-creation dependency and lesson timing
 Authored P003_DESIGN_DEPENDENCY.md for N11/N13/N14 without editing PR #73. Do not mark DONE or update canonical shared lessons before verified correction, user acceptance and any linked corrections.
+
+## A-009 — Resolve first governance CI failure
+First PR #76 governance job failed solely because WORK.md and PROPOSAL.md included prose on the machine-parsed Status line. The checker requires exact standalone Status: IMPLEMENTING in WORK.md and Status: APPROVED in PROPOSAL.md. Corrected those lines without changing work intent/scope. Retest in the next commit; keep original failure recorded.

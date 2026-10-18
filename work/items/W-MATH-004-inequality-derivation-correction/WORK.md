@@ -1,5 +1,6 @@
 # W-MATH-004 — 不等式の導出不足・後半品質低下の修正
-Status: IMPLEMENTING — exact P-001 approved / main and Pages not authorized
+Status: IMPLEMENTING
+Release gate: exact P-001 approved; main and Pages NOT authorized.
 Updated: 2026-10-18 JST
 Command: CMD-WORK-001「修正」
 Proposal: P-001 — APPROVED on 2026-10-18 JST (verbatim user approval in PROPOSAL.md)

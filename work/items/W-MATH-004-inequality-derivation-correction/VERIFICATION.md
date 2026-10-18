@@ -25,3 +25,5 @@ Assessment PASS is **not** app verification, user acceptance or release authoriz
 - V-009 PENDING: PR Actions typecheck/lint/Vitest/build, math textbook CI, full 21-step desktop+mobile flow, KaTeX, wrong feedback, answered-state reveal, persistence and progress restore.
 - V-010 PASS SOURCE WITH LIMIT: all approved N01/02/03/09/10 item and readingFlow source scanned; no same-signature R1/R2 confirmed; source blob and precise evidence in updated impact ledger. Browser/mobile/other errors UNVERIFIED.
 - V-011 PENDING: user hands-on acceptance, separate main merge/Pages approval, successful deployment, shared-memory close and correction-queue recheck before P-003.
+
+- V-012 FIRST RUN FAILED / REPAIR SUBMITTED: Repository Governance Check on PR #76 SHA 2219f52a9644a54167f522ee59acafc5da150d91 reported WORK.md missing Status; cause machine-readable label had explanatory suffix and Proposal also needed exact APPROVED line. Rewrote both standalone status labels, awaiting next run. Failure preserved as evidence.

@@ -102,14 +102,20 @@ export function isTextbookAnswerCorrect(item: TextbookItem, value: string) {
 }
 
 /**
- * P-002: Preserve the old N12 records while making its eleven new token gaps
- * genuinely unanswered. Old supplemental item IDs never overlap new token IDs.
- * Other units keep the ordinary revision-invalidates-progress behavior.
+ * P-002 N12 and approved W-MATH-005 N01/N03/N09: preserve previously solved
+ * original source IDs and answer history while only new local-token holes remain
+ * unanswered. All other units keep revision invalidation.
  */
 export function effectiveTextbookProgress(unit: TextbookUnit, progress: TextbookUnitProgress | undefined): TextbookUnitProgress | undefined {
   if (!progress) return undefined
   if (progress.unitRevision === unit.revision) return progress
-  if (unit.unitId !== 'math-numbers-expressions-n12' || unit.revision !== 2 || progress.unitRevision !== 1) {
+  const supportedV1ToV2 = new Set([
+    'math-numbers-expressions-n12',
+    'math-numbers-expressions-n01',
+    'math-numbers-expressions-n03',
+    'math-numbers-expressions-n09',
+  ])
+  if (!supportedV1ToV2.has(unit.unitId) || unit.revision !== 2 || progress.unitRevision !== 1 || progress.unitId !== unit.unitId) {
     return undefined
   }
 
@@ -119,7 +125,7 @@ export function effectiveTextbookProgress(unit: TextbookUnit, progress: Textbook
     migratedFromRevision: 1,
     ...(progress.completedAt !== undefined ? { previousRevisionCompletedAt: progress.completedAt } : {}),
     completedAt: undefined,
-    // Leave all 21 historical records intact. Only current 26 IDs are scored.
+    // Keep every historical answer; score only the current revision's active IDs.
     answers: { ...progress.answers },
   }
 }

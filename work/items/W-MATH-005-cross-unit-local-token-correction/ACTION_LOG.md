@@ -36,3 +36,7 @@ Extended only current local-token ID-prefix recognition and N01/N03 rev1→rev2 
 
 ## A-013 — Initial current-main CI failures explicitly retained
 PR #92 head `925baf02b1d96ca554208cbcf47ec88102dc04bf`: Math textbook CI 39136348368 Typecheck PASS and 176/177 Vitest tests PASS, but one stale sibling count in `n02ZeroTerm.test.ts` expected N01 15/N03 13 even though P-002 intentionally moves them to 18/17. Repository governance CI 39136348404 FAIL because WORK.md Status was bold-decorated instead of exact standalone enum required by `tools/repo-governance-check.mjs`. Corrected only N02 test expectations and Work status format. No N02 learner content changed; fresh CI required.
+
+
+## A-014 — Compiled-app mobile smoke fixture updated after 3 gating failures
+Second textbook CI 39136503642 passed typecheck, all Vitest tests, build, image smoke and N12 regression, then failed the original N01/N03 full-content Playwright smoke three tests: those old sequences attempted original Q07/Q10 before completing the newly inserted seven dependent stages. Added the 3 N01 and 4 N03 IDs/answers in the existing full-solve fixtures, preserving all earlier and later checks. No learner answer/content change; separate fresh CI run required.

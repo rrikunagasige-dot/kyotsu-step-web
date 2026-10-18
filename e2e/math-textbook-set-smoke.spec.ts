@@ -1190,7 +1190,7 @@ test('P-004 P-005 subset figure uses approved PNG inside real app in compiled pr
 })
 
 
-test('N01 review-only pilot: original 10 source tasks become 15 gated steps without revealing later answers', async ({ page }) => {
+test('N01 review-only pilot: original 10 source tasks plus 3 local coefficients become 18 gated steps without revealing later answers', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-numbers-expressions-n01'))
   await expect(page.getByRole('heading', { level: 1, name: '式を整える' })).toBeVisible()
   await expect(page.getByTestId('textbook-current-topic')).toContainText('式の見方')
@@ -1214,6 +1214,7 @@ test('N01 review-only pilot: original 10 source tasks become 15 gated steps with
     ['n01-05', '(ay,ax)'],
     ['n01-06a', '3x^2-5x^2'],
     ['n01-06b', '(-5x+2x)\\quad (6-3)'],
+    ['n01-r3-q07-x2coef', '-2'], ['n01-r3-q07-xcoef', '-3'], ['n01-r3-q07-const', '3'],
     ['n01-07', '-2x^2-3x+3'],
     ['n01-08', '(2,3)'],
     ['n01-09a', '(1-1)x^3-2x^2+(1+3)x-1'],
@@ -1234,7 +1235,7 @@ test('N01 review-only pilot: original 10 source tasks become 15 gated steps with
 })
 
 
-test('W-MATH-003 N01 review-only pilot completes all 15 inline decisions in actual compiled app', async ({ page }) => {
+test('W-MATH-003 N01 review-only pilot completes all 18 inline decisions in actual compiled app', async ({ page }) => {
   await page.goto(appRoute('/learning/textbook/math-numbers-expressions-n01'))
   await expect(page.getByRole('heading', { name: '式を整える' })).toBeVisible()
   await expect(page.getByTestId('textbook-current-topic')).toContainText('式の見方')
@@ -1255,6 +1256,7 @@ test('W-MATH-003 N01 review-only pilot completes all 15 inline decisions in actu
     ['n01-02a', '(-2,1)'], ['n01-02b', '(1,2)'], ['n01-02c', '(-1,4)'],
     ['n01-03', '5y'], ['n01-04', '(5x^3,1)'], ['n01-05', '(ay,ax)'],
     ['n01-06a', '3x^2-5x^2'], ['n01-06b', '(-5x+2x)\\quad (6-3)'],
+    ['n01-r3-q07-x2coef', '-2'], ['n01-r3-q07-xcoef', '-3'], ['n01-r3-q07-const', '3'],
     ['n01-07', '-2x^2-3x+3'], ['n01-08', '(2,3)'],
     ['n01-09a', '(1-1)x^3-2x^2+(1+3)x-1'], ['n01-09b', '-2x^2+4x-1'],
     ['n01-10a', '2次式'], ['n01-10b', '3次の項が整理によって消えるから'],
@@ -1271,7 +1273,7 @@ test('W-MATH-003 N01 review-only pilot completes all 15 inline decisions in actu
 })
 
 
-test('W-MATH-003 N03 review: 13 source decisions, original four-cell figure, mobile KaTeX', async ({ page }) => {
+test('W-MATH-003 N03 review: 13 source decisions plus 4 products, original four-cell figure, mobile KaTeX', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 720 })
   await page.goto(appRoute('/learning/textbook/math-numbers-expressions-n03'))
   await expect(page.getByRole('heading', { name: '式を整える', exact: true })).toBeVisible()
@@ -1289,6 +1291,8 @@ test('W-MATH-003 N03 review: 13 source decisions, original four-cell figure, mob
     ['n03-07', 'x^2x^2+x^2(-3x)+x^2\\cdot4'],
     ['n03-08', 'x^4-3x^3+4x^2'],
     ['n03-09', '2x(3x+4)+1(3x+4)'],
+    ['n03-r3-q10-p1', '6x^2'], ['n03-r3-q10-p2', '8x'],
+    ['n03-r3-q10-p3', '3x'], ['n03-r3-q10-p4', '4'],
     ['n03-10', '6x^2+8x+3x+4'],
     ['n03-11', '6x^2+11x+4'],
     ['n03-12', '3x(2x^2-x+5)-(2x^2-x+5)'],

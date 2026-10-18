@@ -45,3 +45,7 @@ After P-002 CI, repeat root-cause/signature check only for any newly observed de
 
 ## F-014 — ERROR-QA / first P-002 CI stale sibling assertions and record status
 At current-main PR #92, math CI 39136348368 failed one unit assertion in N02's test because it expected N01=15/N03=13 after approved P-002 increases them to 18/17. The N02 content and its 12 original answers remain unchanged. Governance CI 39136348404 rejected bold markdown WORK.md status: checker requires `Status: VERIFYING` exactly. Both are test/record contract failures, NOT mathematical wrong answers. Corrected in follow-up commit and retained initial failure evidence.
+
+
+## F-015 — ERROR-QA / original N01/N03 E2E didn't cover approved new prerequisites
+CI 39136503642 exposed 3 existing mobile smoke tests that completed N01/N03 by hardcoded old 15/13-item sequences, skipping the new R3 choices, then asserted later tokens visible; correctly gated app kept them hidden. Repair is test-only: explicitly solve all 3+4 new prerequisite holes before original final question, preserve wrong-answer and mobile checks. The N03 dedicated 320/375/390px test had not yet been reached by that CI; keep width status UNVERIFIED pending rerun.

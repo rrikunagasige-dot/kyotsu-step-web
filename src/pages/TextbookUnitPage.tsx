@@ -6,7 +6,7 @@ import { TextbookFigure } from '../components/textbook/TextbookFigure'
 import { TextbookFormula } from '../components/textbook/TextbookFormula'
 import { ErrorState, ProgressBar, RaisedButton, StatusBadge } from '../components/ui/Primitives'
 import { textbookRepository } from '../repositories/textbookRepository'
-import { getTextbookChoices, isTextbookItemResolved, normalizeTextbookAnswer, textbookSectionProgress, textbookUnitProgress, type TextbookAnswerRecord, type TextbookUnitProgress } from '../domain/textbook'
+import { effectiveTextbookProgress, getTextbookChoices, isTextbookItemResolved, normalizeTextbookAnswer, textbookSectionProgress, textbookUnitProgress, type TextbookAnswerRecord, type TextbookUnitProgress } from '../domain/textbook'
 import type { TextbookItem, TextbookReadingBlock, TextbookReadingPart, TextbookSection, TextbookUnit } from '../domain/textbookSchema'
 import { useAppStore } from '../stores/useAppStore'
 import { useI18n } from '../i18n/runtime'
@@ -582,7 +582,8 @@ export function TextbookUnitPage() {
   const [visibleThroughIndex, setVisibleThroughIndex] = useState(0)
   const [mathSummaryReached, setMathSummaryReached] = useState(false)
   const initializedUnitRef = useRef<string | null>(null)
-  const progress = useAppStore((state) => state.textbookProgress[unitId])
+  const savedProgress = useAppStore((state) => state.textbookProgress[unitId])
+  const progress = useMemo(() => unit ? effectiveTextbookProgress(unit, savedProgress) : savedProgress, [unit, savedProgress])
   useEffect(() => setMathSummaryReached(false), [unitId])
   const resetTextbookUnit = useAppStore((state) => state.resetTextbookUnit)
   const { language, text } = useI18n()
@@ -674,6 +675,15 @@ export function TextbookUnitPage() {
       </header>
 
       <ProgressBar label={text('単元の進み具合', '单元进度')} value={summary.completed} max={summary.total} />
+
+      {unit.unitId === 'math-numbers-expressions-n12' && progress?.migratedFromRevision === 1 && (
+        <p className="n12-progress-upgrade-note" data-testid="n12-progress-upgrade-note">
+          {text(
+            '以前に解いた元の15問と回答履歴は保存されています。新しく追加した数式内の穴だけ、順番に完成させてください。',
+            '之前完成的15道原题和答题记录已保留。请依次完成新增加的公式内部填空。',
+          )}
+        </p>
+      )}
 
       <section className="textbook-objectives">
         <strong>{text('この単元で確認すること', '本单元确认内容')}</strong>

@@ -12,3 +12,10 @@ New token IDs without per-unit revision-safe conversion may hide old completion 
 
 ## F-006 — CONFIRMED / RELEASE DEPENDENCY SATISFIED
 N12 P-002 PR #78 merged to authoritative main 51c184286e5207b189dd7b412643e99c426bc884 on the user's separate release authorization. Reuse of N12 token UI is permitted only for the three newly approved W-MATH-005 prefixes, not all math textbooks.
+
+## F-007 — VERIFIED / ALL 42 ORIGINAL ANSWERS INVARIANT
+Compared original lesson item identifiers and exact answer strings on merged N12 main 51c184286e5207b189dd7b412643e99c426bc884 with W-MATH-005 draft branch: 15/15 N01, 13/13 N03, 14/14 N09 IDs and answer values identical; the nine newly scoped IDs alone added. Original source-to-interaction map declarations and original figure ID, image URL and figure references are byte-for-byte unchanged. N03-F01 and N09-F01 reveal locations preserved.
+## F-008 — VERIFICATION LESSON / TEST BUILD-TIME NARROWING
+CI's first `tsc -b` build checks test files more comprehensively than a passing Vitest run; source-ID mapped literal tuples and discriminated `readingFlow` blocks require explicit TypeScript narrowing. Never treat a green unit-test phase as an entire-build green verdict; retain first failing run and retest. This is a test-authoring finding for this work item, not a new general R3 math lesson.
+## F-009 — CATALOG AGGREGATE / EXPECTED DERIVED COUNT SHIFT
+N09's +2 authentic local answer stages correctly change the real-number topic's aggregate catalog progress 35→37, with old progress `1/37 完了`. Existing E2E froze `1/35 完了`, so after the R3 E2E passed on both devices the later catalog test failed in CI 39100947795 on both devices. Update only the assertion to the new denominator; never change the catalog to falsely display stale counts. Future local-stage changes must audit chapter/topic aggregates and their UI test expectations.

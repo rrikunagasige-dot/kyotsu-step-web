@@ -1,9 +1,9 @@
 # W-MATH-007 / P-001 — 正答1を式中の係数として埋めるとき「x」と表示する修正案
-Status: PROPOSED
+Status: APPROVED
 Date: 2026-10-18 JST
 Command: CMD-WORK-001「修正」
 Target repo: rrikunagasige-dot/kyotsu-step-web / main 066e0da905bf4948e25ec200fe1b46e34d6ed573
-Approval: NOT YET. User has requested the correction but has not yet reviewed and approved this exact implementation proposal. No learner code change on this branch.
+Approval: APPROVED for isolated implementation and verification by user's 「いいよ続けて」 in direct response to W-MATH-007/P-001 (2026-10-18 JST). Main merge / Pages release remain unapproved.
 
 ## 1. 現在の症状・原因
 N12 Q06 左側の導出において、
@@ -40,10 +40,10 @@ Implement a **display-only, context-aware normalization at the formula part boun
 5. Isolated implementation PR and visual review; no main merge / Pages release before **separate** user authorization. After acceptance, deduplicate the lesson with existing shared math/design rules and resume paused creation queue.
 
 ## 5. Explicit approval question
-「**W-MATH-007/P-001を承認する**」 means approval to implement/test only the above display-only coefficient-one correction, beginning with N12 Q06-left, with targeted cross-unit QA on an isolated branch. It is **not** permission to change answer 1, create more questions, change other math or publish to main/Pages.
+User's direct 「いいよ続けて」 after this exact proposal approves implementation/testing only. 「**W-MATH-007/P-001を承認する**」 likewise means approval to implement/test only the above display-only coefficient-one correction, beginning with N12 Q06-left, with targeted cross-unit QA on an isolated branch. It is **not** permission to change answer 1, create more questions, change other math or publish to main/Pages.
 
 ### Review History
-- Review status: WAITING EXACT USER APPROVAL
+- Review status: APPROVED FOR IMPLEMENTATION / RELEASE NOT AUTHORIZED
 - User feedback: wants expression x after selecting coefficient 1 rather than 1x.
 - Prior W-MATH-006/P-001: separately approved, PR #83 merged and Pages deploy triggered.
-- This proposal: new scope not covered by prior release approval; learner changes blocked until approved.
+- This proposal: user approved the exact P-001 by 「いいよ続けて」 on 2026-10-18; isolated implementation branch started. No publication permission was granted.

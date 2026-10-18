@@ -43,3 +43,7 @@ N12 current revision=1; resolved progress stored per item ID, while the UI disre
 
 ## F-014 — PENDING / CROSS-CREATION R3 IMPACT
 Current R1/R2 source-level scan N01/N02/N03/N09/N10 found no same-signature confirmed defects but did not specifically test R3. A second-pass R3 ledger by unit/version is proposed, not completed. A confirmed sibling correction would need its own exact approval before content edits; creation stays paused.
+
+
+## F-015 — CONFIRMED / R3 sibling approved-creation impact and linked approval boundary
+Source-second-pass local-transformation audit confirms N01 Q07 has three coefficient/constant computations concealed by final expression selection, N03 Q10 has four independent grid products concealed by one expression, N09 Q08 has two exact decimal squares concealed by a whole compound inequality. The mathematical results are correct; the missing cognitive action is the first local evaluation. N02 and N10 are NOT-AFFECTED in the narrower R3 applicability because their late comprehensive expressions follow modeled steps, not because every operation passed live QA. See P002_R3_IMPACT_LEDGER.md for exact original blob SHAs. W-MATH-005/P-001 is only a proposal on draft PR #79. Do not auto-fix or resume creation without its explicit approval; deduplicate R3 with shared lessons only when related corrections are verified and accepted.

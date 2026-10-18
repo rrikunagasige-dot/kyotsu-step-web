@@ -17,3 +17,6 @@ Workflow 39100947795: PASS Typecheck, 167 Vitest tests, Build, compiled SVG, N12
 
 ## V-007 — W-MATH-006/P-001 SUPERCEDES ONLY LOCAL TOKEN PRESENTATION
 W-MATH-006 exact proposal user response 「いいよ」 (2026-10-18 JST) authorizes aligning the nine new N01/N03/N09 in-formula buttons with established N02 [選択] thin square-corner rectangular appearance. Same implementation as N12 draft correction #83. Existing W-MATH-005/P-001 math, nine new answer IDs/values, three original problem IDs, original forty-two answers, migrations, figure gates are not changed. E2E now asserts label, 1px border, 0px radius, >=44px touch target alongside wrong/correct, progress and mobile width. Final CI for latest branch still pending. No main or Pages authorization.
+
+## V-008 — CI FAILURE / SHARED N12 VISUAL EXPECTATION CORRECTED
+Math textbook CI 39103142659 failed at N12 old Playwright /□|×/ expectations after W-MATH-006 changed the display to [選択]. The four failed mobile/desktop N12 tests were never teaching-content failures; logs confirmed the button rendered [選択]. Synced the correct W-MATH-006/N12 expectations and geometry checks into existing draft PR #80. Fresh full CI pending; Math practice CI 39103142669 and governance 39103142658 passed on prior revision.

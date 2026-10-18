@@ -16,3 +16,6 @@ Full textbook CI run 39100947795 passed Typecheck, 167 Vitest tests, Build, N12 
 
 ## A-007 — Approved W-MATH-006/P-001 linked design-only correction (2026-10-18 JST)
 After user reported N12 token □ mismatched original N02 [選択] look, W-MATH-006/P-001 explicitly identified this same visual defect for the nine unmerged W-MATH-005 R3 holes. User answered 「いいよ」 to the exact W-MATH-006/P-001 scope. In the existing draft PR #80, switched only local token label and shared token CSS to thin 1px square-corner [選択] rectangle with minimum 44px hit height; added E2E geometry assertions. No new holes, math, answer IDs, progress mapping, source figures or main/Pages publication. N12 correction tracked separately in draft PR #83.
+
+## A-008 — W-MATH-006 label regression exposed in shared N12 E2E (2026-10-18 JST)
+CI textbook run 39103142659 failed four N12 mobile/desktop test cases because the old N12 e2e/n12-derivation.spec.ts still expected □/× after the approved UI changed to 選択/×. Browser showed the correct new [選択] label, and the error was a stale test assertion, not a wrong math answer. Copied the independently updated N12 E2E checks from W-MATH-006 draft #83, including 1px rectangular geometry, >=44px touch target and correct math/progress/figure behavior. Kept all learner source unchanged and reran full CI.

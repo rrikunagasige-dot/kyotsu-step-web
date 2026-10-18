@@ -10,7 +10,7 @@ export const n09SourceToItemIds = oneToOneSourceMap('N09', 14)
 const rawN09 = {
   schemaVersion: '1.1' as const,
   unitId: 'math-numbers-expressions-n09',
-  revision: 1, status: 'review' as const, subject: 'math-1a' as const,
+  revision: 2, status: 'review' as const, subject: 'math-1a' as const,
   chapter: {
     chapterId: 'math-ch01-numbers-expressions',
     chapterNumber: '1', chapterTitle: '数と式', unitCode: '1NUM',
@@ -115,7 +115,31 @@ const rawN09 = {
       { id: 'paragraph-approx-intro', type: 'paragraph' as const, parts: [
         M('\\sqrt2'), T(' は '), M('1.41'), T(' と '), M('1.42'),
         T(' の間にあるだろうか。近似値の暗記でなく平方から確かめよう。'),
-        T('両端の二乗を厳密に計算し、2を挟む不等式まで書くと、'),
+        T('両端を一つずつ平方して、2との大小を順に判断しよう。'),
+      ] },
+      { id: 'formula-n09-08-left-square', type: 'formula' as const, parts: [
+        M('1.41^2='), C('n09-p001-q08-left-square'),
+      ] },
+      { id: 'paragraph-n09-08-right-square', type: 'paragraph' as const, parts: [
+        T('次に右側の数も同じ方法で平方しよう。'),
+      ] },
+      { id: 'formula-n09-08-right-square', type: 'formula' as const, parts: [
+        M('1.42^2='), C('n09-p001-q08-right-square'),
+      ] },
+      { id: 'paragraph-n09-08-lower-sign', type: 'paragraph' as const, parts: [
+        T('求めた左側の平方と2の間に、正しい不等号を入れよう。'),
+      ] },
+      { id: 'formula-n09-08-lower-sign', type: 'formula' as const, parts: [
+        M('1.9881'), C('n09-p001-q08-lower-sign'), M('2'),
+      ] },
+      { id: 'paragraph-n09-08-upper-sign', type: 'paragraph' as const, parts: [
+        T('今度は2と右側の平方を比較しよう。'),
+      ] },
+      { id: 'formula-n09-08-upper-sign', type: 'formula' as const, parts: [
+        M('2'), C('n09-p001-q08-upper-sign'), M('2.0164'),
+      ] },
+      { id: 'paragraph-n09-08-combine', type: 'paragraph' as const, parts: [
+        T('四つの判断を一つにまとめ、平方の等号と2を挟む不等号の向きを確かめよう。'),
       ] },
       { id: 'formula-n09-08', type: 'formula' as const, parts: [C('n09-08')] },
       { id: 'paragraph-approx-monotone', type: 'paragraph' as const, parts: [
@@ -187,6 +211,18 @@ const rawN09 = {
         ['2-\\sqrt5>0','2-\\sqrt5=0','2-\\sqrt5\\ge0'],'causal-reasoning','medium',['どちらも非負なので、平方した4と5の大小で比べられる。']),
       item('n09-07','負の中身の絶対値を非負の式にしよう。','\\sqrt5-2','formula',
         ['2-\\sqrt5','\\sqrt5+2','-(2+\\sqrt5)'],'transfer','medium',['中身が負なので、符号を反対にすると非負になる。']),
+      item('n09-p001-q08-left-square','1.41の平方を正確に計算しよう。','1.9881','formula',
+        ['1.9981','1.9811','1.9918'],'causal-reasoning','medium',
+        ['141×141を計算し、小数点を4桁分戻そう。']),
+      item('n09-p001-q08-right-square','1.42の平方を正確に計算しよう。','2.0164','formula',
+        ['2.0104','2.0264','2.1064'],'causal-reasoning','medium',
+        ['142×142を計算し、小数点を4桁分戻そう。']),
+      item('n09-p001-q08-lower-sign','1.9881と2の間の不等号を選ぼう。','<','formula',
+        ['>','=','\\ge'],'representation-link','medium',
+        ['2を2.0000と考え、整数部と小数部を比較しよう。']),
+      item('n09-p001-q08-upper-sign','2と2.0164の間の不等号を選ぼう。','<','formula',
+        ['>','=','\\leqslant'],'representation-link','medium',
+        ['2を2.0000と考え、右側と比較しよう。']),
       item('n09-08','両方の小数を平方し、2を挟もう。','1.41^2=1.9881<2<2.0164=1.42^2','formula',
         ['1.41^2=1.9981<2<2.0164=1.42^2',
          '1.41^2=1.9881<2<2.0104=1.42^2',

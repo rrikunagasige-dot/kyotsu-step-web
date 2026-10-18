@@ -66,7 +66,7 @@ const rawN12 = {
       { id: 'formula-n12-01a', type: 'formula' as const, derivationId: 'solve-first', parts: [
         M('x-2<3x+5\\quad\\Longrightarrow\\quad-2<2x+5\\quad\\Longrightarrow\\quad'), C('n12-01a'),
       ] },
-      { id: 'paragraph-system-first-after', type: 'paragraph' as const, parts: [
+      { id: 'paragraph-system-first-after', type: 'paragraph' as const, derivationId: 'solve-first', parts: [
         T('両辺から同じ数を引いても不等号の向きは変わらない。最後は正の2で割ろう。'),
       ] },
       { id: 'formula-n12-01', type: 'formula' as const, derivationId: 'solve-first', parts: [M('-7<2x\\quad\\Longrightarrow\\quad'), C('n12-01')] },
@@ -76,7 +76,7 @@ const rawN12 = {
       { id: 'formula-n12-02a', type: 'formula' as const, derivationId: 'solve-second', parts: [
         M('x+4\\le5-x\\quad\\Longrightarrow\\quad2x+4\\le5\\quad\\Longrightarrow\\quad'), C('n12-02a'),
       ] },
-      { id: 'paragraph-system-second-after', type: 'paragraph' as const, parts: [
+      { id: 'paragraph-system-second-after', type: 'paragraph' as const, derivationId: 'solve-second', parts: [
         T('残った係数2は正なので、割っても不等号の向きはそのまま。'),
       ] },
       { id: 'formula-n12-02', type: 'formula' as const, derivationId: 'solve-second', parts: [M('2x\\le1\\quad\\Longrightarrow\\quad'), C('n12-02')] },
@@ -109,13 +109,13 @@ const rawN12 = {
       { id: 'formula-n12-06a', type: 'formula' as const, derivationId: 'triple-solve', parts: [
         M('3x+2\\le2x+4\\quad\\Longrightarrow\\quad x+2\\le4\\quad\\Longrightarrow\\quad'), C('n12-06a'),
       ] },
-      { id: 'paragraph-triple-right', type: 'paragraph' as const, parts: [
+      { id: 'paragraph-triple-right', type: 'paragraph' as const, derivationId: 'triple-solve', parts: [
         T('続いて右側。'), M('-x'), T(' を左に移した後、定数項を整理しよう。'),
       ] },
       { id: 'formula-n12-06b', type: 'formula' as const, derivationId: 'triple-solve', parts: [
         M('2x+4\\le9-x\\quad\\Longrightarrow\\quad3x+4\\le9\\quad\\Longrightarrow\\quad'), C('n12-06b'),
       ] },
-      { id: 'paragraph-triple-compare', type: 'paragraph' as const, parts: [
+      { id: 'paragraph-triple-compare', type: 'paragraph' as const, derivationId: 'triple-solve', parts: [
         T('それぞれの結果を比べる。右側の不等式は正の3で割る。'),
       ] },
       { id: 'formula-n12-06', type: 'formula' as const, derivationId: 'triple-solve', parts: [
@@ -152,26 +152,26 @@ const rawN12 = {
         T('「3200円'), K('以上'), T('3300円'), K('未満'), T('」を、今の金額を使って表すと、'),
       ] },
       { id: 'formula-n12-11', type: 'formula' as const, derivationId: 'cost-range', parts: [C('n12-11')] },
-      { id: 'paragraph-cost-simplify', type: 'paragraph' as const, parts: [
+      { id: 'paragraph-cost-simplify', type: 'paragraph' as const, derivationId: 'cost-range', parts: [
         T('まず括弧を展開する。'), M('130'), T(' は括弧の両方の項に掛かり、'), M('-x'),
         T(' に掛けた部分は負になる。'),
       ] },
       { id: 'formula-n12-12a', type: 'formula' as const, derivationId: 'cost-range', parts: [
         M('50+180x+130(20-x)\\quad\\Longrightarrow\\quad'), C('n12-12a'),
       ] },
-      { id: 'paragraph-cost-collect', type: 'paragraph' as const, parts: [
+      { id: 'paragraph-cost-collect', type: 'paragraph' as const, derivationId: 'cost-range', parts: [
         T('箱代と定数項、'), M('x'), T(' の項をそれぞれまとめ、金額の不等式に戻す。'),
       ] },
       { id: 'formula-n12-12', type: 'formula' as const, derivationId: 'cost-range', parts: [
         M('3200\\le50+180x+2600-130x<3300\\quad\\Longrightarrow\\quad'), C('n12-12'),
       ] },
-      { id: 'paragraph-cost-solve', type: 'paragraph' as const, parts: [
+      { id: 'paragraph-cost-solve', type: 'paragraph' as const, derivationId: 'cost-range', parts: [
         T('金額の三つの辺から、同じ'), M('2650'), T('を引いて整理しよう。'),
       ] },
       { id: 'formula-n12-13a', type: 'formula' as const, derivationId: 'cost-range', parts: [
         M('3200\\le2650+50x<3300\\quad\\Longrightarrow\\quad'), C('n12-13a'),
       ] },
-      { id: 'paragraph-cost-positive', type: 'paragraph' as const, parts: [
+      { id: 'paragraph-cost-positive', type: 'paragraph' as const, derivationId: 'cost-range', parts: [
         T('次はすべての辺を正の'), M('50'), T('で割る。正の数で割るときは不等号の向きが変わらない。'),
       ] },
       { id: 'formula-n12-13', type: 'formula' as const, derivationId: 'cost-range', parts: [

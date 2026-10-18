@@ -75,6 +75,9 @@ test('N12 correction: 21 progressive decisions, no early figures, wrong feedback
     }
     await expect(page.locator('.katex-error')).toHaveCount(0)
   }
+  for (const id of ['solve-first', 'solve-second', 'triple-solve', 'cost-range']) {
+    await expect(page.locator('[data-derivation-id="' + id + '"]')).toHaveCount(1)
+  }
   await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
   const viewport = await page.evaluate(() => ({
     content: document.documentElement.scrollWidth,

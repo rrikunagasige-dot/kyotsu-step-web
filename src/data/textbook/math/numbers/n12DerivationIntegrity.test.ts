@@ -87,6 +87,16 @@ describe('N12 approved six-stage derivation correction', () => {
     }
   })
 
+  it('keeps successive explanation and formula steps in one visual derivation chain', () => {
+    for (const group of ['solve-first', 'solve-second', 'triple-solve', 'cost-range']) {
+      const indexes = section.readingFlow.flatMap((block, index) =>
+        'derivationId' in block && block.derivationId === group ? [index] : [],
+      )
+      expect(indexes.length, group).toBeGreaterThanOrEqual(3)
+      expect(indexes.at(-1)! - indexes[0] + 1, group).toBe(indexes.length)
+    }
+  })
+
   it('keeps the three original figures and answer-bearing F03 after the final check', () => {
     expect(section.figures.map((figure) => figure.src)).toEqual([
       '/assets/math/textbook/numbers/n12-f01.png',

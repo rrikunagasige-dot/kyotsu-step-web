@@ -33,3 +33,5 @@ Assessment PASS is **not** app verification, user acceptance or release authoriz
 - V-014 NEW AUTOMATION AUTHORED / EXECUTION PENDING: N12 all-21 Playwright flow in mobile/desktop Chromium, explicit wrong sign branch, F01/F02/F03 gates and progress persistence; focused Vitest added to explicit math-textbook CI list. Results must be checked after the next workflow run.
 
 - V-015 SECOND MATH CI FAILURE (workflow 39092757624): Typecheck step PASS and original math tests PASS, but build TS1005 n12DerivationIntegrity.test.ts line 6 (missing closing parenthesis in test declaration). Corrected the one-character syntax error, new focused test now integrated into CI; rerun pending.
+
+- V-016 THIRD MATH CI FAILURE / PATCH: run 39092932229 passed typecheck, focused math tests (including new N12 five checks), build, preview smoke, but old mobile textbook smoke expected Q01 before Q01a (three retries). Updated old smoke progression for 21 stages. Grouped bridging paragraphs into four contiguous math derivation cards; strengthened Vitest and E2E. Latest CI pending.

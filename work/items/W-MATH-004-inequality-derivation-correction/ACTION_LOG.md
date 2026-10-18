@@ -37,3 +37,6 @@ Added e2e/n12-derivation.spec.ts for all 21 correct answers, Q01a wrong sign fee
 
 ## A-012 — Fix new regression test parse error
 The next math CI passed all 148 pre-existing focused tests, but build reported TS1005 at n12DerivationIntegrity.test.ts line 6: the new Array.from declaration on line 5 omitted the final closing parenthesis. Corrected the syntax and retained the failure in VERIFICATION; latest focused Vitest and e2e gate now awaits rerun.
+
+## A-013 — Update original N12 E2E and keep derivations visually continuous
+Math CI 39092932229 passed governance/typecheck/focused tests/build/production smoke but failed its older N12 mobile smoke because the script expected original Q01 before new Q01a. Updated that script to solve Q01a then test old Q01 wrong feedback and traverse all six extra stages. Added the same derivationId to eight bridging explanation paragraphs so intermediate formulas appear as a single visual chain. New static and E2E checks assert groups. Fresh CI pending.

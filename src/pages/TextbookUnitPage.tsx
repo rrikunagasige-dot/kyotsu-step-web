@@ -11,7 +11,7 @@ import type { TextbookItem, TextbookReadingBlock, TextbookReadingPart, TextbookS
 import { useAppStore } from '../stores/useAppStore'
 import { useI18n } from '../i18n/runtime'
 import { normalizeTextbookMath } from '../domain/textbookMath'
-import { n12CostDisplayLines } from '../domain/n12CostDisplay'
+import { textbookDisplayLines } from '../domain/textbookDisplayLines'
 import { chapter1ChunkForUnitCode, chapter1Localized, chapter1NextUnit } from '../data/textbook/ch01/chapter1Architecture'
 import { mathTextbookNextUnitId, mathTextbookTopicForUnit } from '../data/textbook/math'
 import { partitionMathSetReadingFlow, requiredMathSetContext } from '../data/textbook/math/presentation'
@@ -69,7 +69,7 @@ function renderResolvedChoice(item: TextbookItem, record: TextbookAnswerRecord) 
     <span className="reading-inline-answer" data-testid={`resolved-${item.id}`}>
       {item.answerType === 'formula'
         ? (() => {
-          const lines = n12CostDisplayLines(item.id, record.value)
+          const lines = textbookDisplayLines(item.id, record.value)
           return lines.length > 1
             ? <span className="reading-formula-n12-answer-lines">
                 {lines.map((line, i) => <span key={i}><InlineMath math={normalizeTextbookMath(line)} /></span>)}
@@ -289,7 +289,7 @@ function TextbookReadingFlow({ unit, section, progress, onSummaryReached }: {
                 {activeItem.answerType === 'formula'
                   ? (
                     <span className="reading-choice-formula-lines">
-                      {n12CostDisplayLines(activeItem.id, choice).flatMap(value => value.split('\\quad')).map((line, lineIndex) => (
+                      {textbookDisplayLines(activeItem.id, choice).flatMap(value => value.split('\\quad')).map((line, lineIndex) => (
                         <span className="reading-choice-formula-line" key={lineIndex}>
                           <InlineMath math={normalizeTextbookMath(line.trim())} />
                         </span>

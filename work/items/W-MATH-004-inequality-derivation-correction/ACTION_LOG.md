@@ -61,3 +61,13 @@ Created implementation branch from PR #77 docs snapshot; authored 11 token choic
 
 ## A-020 — Pending gates
 Run GitHub CI and inspect failures; validate formula rendering and legacy progress test behavior. R3 candidate scan on N01/N02/N03/N09/N10 must be recorded and confirmed further before downstream correction. User hands-on app acceptance and merge/Pages authorization remain separate.
+
+
+## A-021 — Repair LaTeX escape loss caught by first P-002 CI
+Run 39098464146 reported exactly 2 new N12 formula-integrity failures with typecheck otherwise passing. Traced loss of literal backslash in newly inserted LaTeX macros; removed incorrect word-boundary constraint in targeted 11-block normalization. Commit eb8e7fd922e48dd9e9f7af98354d78e891ffcfa7; original failure preserved as V-018.
+
+## A-022 — Confirm full P-002 automated gates
+At commit eb8e7fd922e48dd9e9f7af98354d78e891ffcfa7, textbook workflow 39098595400, practice pilot workflow 39098595404 and governance workflow 39098595409 completed SUCCESS. N12 original 15 answer IDs/strings, 11 new token stages, all 26 ordered active items, three figures and v1 progress transition are statically checked; mobile/desktop Playwright clicked through derivation and wrong-answer gating. No main merge or deployment.
+
+## A-023 — Record R3 approved-creation impact and distinct proposal
+Completed targeted R3 source audit N01/N02/N03/N09/N10. Confirmed R3 at N01 Q07, N03 Q10, N09 Q08; N02/N10 narrowly not affected; browser audit of siblings not claimed. Created W-MATH-005 docs-only draft PR #79 with exact 3+4+2 local-hole proposal for separate user approval, no changes to their learner code. Linked impact ledger in current Work. Lessons and P-003 creation stay paused.

@@ -21,7 +21,17 @@ async function solve(page: Page, id: string, answer: string) {
   const trigger = page.getByTestId('textbook-item-' + id)
   await expect(trigger).toBeVisible()
   await expect(trigger).toHaveClass(/reading-formula-choice--token/)
-  await expect(trigger).toContainText(/□|×/)
+  await expect(trigger).toContainText(/選択|×/)
+  // W-MATH-006/P-001: approved visual-only unification with the original N02 rectangle.
+  const metrics = await trigger.evaluate((element) => {
+    const style = getComputedStyle(element)
+    const bounds = element.getBoundingClientRect()
+    return { width: bounds.width, height: bounds.height, radius: style.borderRadius, border: style.borderTopWidth }
+  })
+  expect(metrics.width).toBeGreaterThanOrEqual(44)
+  expect(metrics.height).toBeGreaterThanOrEqual(44)
+  expect(metrics.radius).toBe('0px')
+  expect(metrics.border).toBe('1px')
   await trigger.click()
   const panel = page.getByTestId('inline-choice-panel-' + id)
   await expect(panel).toBeVisible()

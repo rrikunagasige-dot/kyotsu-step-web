@@ -1,5 +1,5 @@
 # Verification — W-MATH-005
-Status: R3 IMPLEMENTATION AND FIRST CI RUN RECORDED; FINAL CI RECHECK IN PROGRESS
+Status: R3 IMPLEMENTATION PLUS LINKED VISUAL-ONLY CORRECTION STAGED; FINAL CI RECHECK IN PROGRESS
 ## V-001 — PASS SOURCE ONLY
 Three original IDs, answers and lesson blobs checked on main f4d3ab40a27808a3ecb56c379efbe16a3fe19be4. Arithmetic: 3−5=−2; −5+2=−3; 6−3=3; 2x·3x=6x²; 2x·4=8x; 1·3x=3x; 1·4=4; 1.41²=1.9881; 1.42²=2.0164.
 ## V-002 — USER APPROVAL CONFIRMED
@@ -14,3 +14,6 @@ Compared 42 old item IDs and exact answers against main 51c184286e5207b189dd7b41
 Initial Math textbook CI 39100729652: normal Typecheck PASS, 167 Vitest tests across 16 files PASS, Build FAIL. Errors TS2345 in n01Lesson.test.ts and TS2339/TS7006 in r3LocalTokens.test.ts due to test-only union narrowing. Sequential fix commits 98a1dd358ae5a7cb137e18e60fce3e485447761a and e3d34e7517a98958619b0ceb58d630ac9baa0565; second full run 39100947795 completed with a later catalog assertion failure described in V-006. Governance check on first and second revisions passed. No claim of full PASS until workflow completes.
 ## V-006 — SECOND CI FAILURE / R3 E2E PASS, CATALOG COUNT TEST STALE
 Workflow 39100947795: PASS Typecheck, 167 Vitest tests, Build, compiled SVG, N12 26-stage E2E, math textbook mobile and desktop smoke, N02/N09 original-image/browser gate, and newly added N01/N03/N09 R3 in-equation, wrong answer, old-v1 restored-progress tests on mobile and desktop. FAIL at existing e2e/numbers-catalog-publish.spec.ts:61 after topic numerator `1` persisted but denominator now correctly `37` following N09's two new choices; old assertion `1/35 完了` contradicted correct UI `1/37 完了`. Updated test to 37. Full rerun required before final PASS declaration. Neither the catalog application code nor old learner answers were changed for this failure.
+
+## V-007 — W-MATH-006/P-001 SUPERCEDES ONLY LOCAL TOKEN PRESENTATION
+W-MATH-006 exact proposal user response 「いいよ」 (2026-10-18 JST) authorizes aligning the nine new N01/N03/N09 in-formula buttons with established N02 [選択] thin square-corner rectangular appearance. Same implementation as N12 draft correction #83. Existing W-MATH-005/P-001 math, nine new answer IDs/values, three original problem IDs, original forty-two answers, migrations, figure gates are not changed. E2E now asserts label, 1px border, 0px radius, >=44px touch target alongside wrong/correct, progress and mobile width. Final CI for latest branch still pending. No main or Pages authorization.

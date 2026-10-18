@@ -52,3 +52,12 @@ User judged the intermediate algebra mathematically right but insufficiently int
 
 ## A-017 — P-002 designed, implementation paused
 Inspected main N12 21 stages, math/choice/math rendering, sequential derivation grouping, scaffold choice filtering and progress semantics. Formally proposed 15 stable source answers + 11 local tokens = 26 answer stages; all new token IDs; N12-only revision-2 progress-safe migration; new R3 sibling audit and CI/mobile gates. Added standalone P002_PROPOSAL.md on a documentation-only branch. No learner app, schema, tests, other units, main or Pages changed in this step. Next is explicit proposal approval.
+
+## A-018 — P-002 exact approval from the user's direct assent
+2026-10-18 JST, immediately after the full P-002 design and explicit request for its approval, the user replied 「いいよ。」 with no amendment. Under CMD-WORK-001's short-affirmative exception (direct answer to exact proposal approval question), accept P-002's recorded scope for a **separate implementation branch only**. This is not main/Pages release authorization.
+
+## A-019 — N12 tokenized learner implementation staged
+Created implementation branch from PR #77 docs snapshot; authored 11 token choices (26 active stages total), preserving original 15 source IDs/answer strings and 3 original images. Targeted compact □ formula buttons and N12-only version-1→2 progress projection, prior source answers/old supplemental answer records retained. Added focused domain/lesson tests and modified two affected mobile/desktop E2E suites. No main write or Pages deployment.
+
+## A-020 — Pending gates
+Run GitHub CI and inspect failures; validate formula rendering and legacy progress test behavior. R3 candidate scan on N01/N02/N03/N09/N10 must be recorded and confirmed further before downstream correction. User hands-on app acceptance and merge/Pages authorization remain separate.

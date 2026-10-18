@@ -56,16 +56,17 @@ export function TextbookFormula({ block, section, progress, onOpen }: Props) {
           }
 
           const wrong = Boolean(record)
+          const localToken = item.id.startsWith('n12-p002-')
           return (
             <button
               type="button"
-              className={`reading-formula-choice${wrong ? ' reading-formula-choice--wrong' : ''}`}
+              className={`reading-formula-choice${wrong ? ' reading-formula-choice--wrong' : ''}${localToken ? ' reading-formula-choice--token' : ''}`}
               data-testid={`textbook-item-${item.id}`}
               aria-label={item.prompt}
               onClick={() => onOpen(item.id)}
               key={key}
             >
-              {wrong ? '×' : '選択'}
+              {wrong ? '×' : localToken ? '□' : '選択'}
             </button>
           )
         })}

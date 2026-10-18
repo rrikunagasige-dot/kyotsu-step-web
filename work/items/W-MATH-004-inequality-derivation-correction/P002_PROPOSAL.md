@@ -1,9 +1,9 @@
 # W-MATH-004 / P-002 — N12「式の中の係数・定数・符号」局所穴への修正案
-Status: PROPOSED
+Status: APPROVED
 Date: 2026-10-18 JST
 Command: CMD-WORK-001「修正」 / REVISE-PROPOSAL
 Baseline: main f4d3ab40a27808a3ecb56c379efbe16a3fe19be4, P-001 merged through PR #76 and published. N12 review lesson revision 1.
-Authority gate: learner-visible design direction accepted in conversation; **exact P-002 implementation, merge and Pages release NOT YET APPROVED.**
+Authority gate: learner-visible design direction accepted in conversation; **exact P-002 implementation was approved on 2026-10-18 JST by user's direct「いいよ」reply to its explicit approval question. Main merge and Pages release NOT YET APPROVED.**
 
 ## 1. What the feedback changes
 User feedback after observing the N12 derivation: intermediate transformations should themselves contain the answer holes. Typical answer slots are the coefficient of x, a changed constant, a negative coefficient/sign, and the endpoints of a transformed inequality. The user affirmed an illustrative in-equation token-blank design. The remaining P-001 whole-expression multiple-choice stages do not meet that interaction design, even though their mathematics was correct.
@@ -80,6 +80,6 @@ Out of scope: modifying the 15 existing source answer strings; source Word/figur
 - After implementation/test/user QA and any linked corrections: reconcile and deduplicate common rules in docs/MASTER_APP_LESSONS.md and appropriate mode-specific lessons, then recheck correction queue before resuming creation. No lesson promotion now.
 
 ## 8. Release and explicit approval gates
-Current artifact is **proposal/documentation only**. No N12 code, release configuration, deployment, or live application changes in this branch. P-001's prior release remains live until a separately authorized P-002 release.
+This document originated as a docs-only proposal in PR #77. After explicit user assent, a distinct implementation branch was created. No main merge or production deployment is authorized. P-001's prior release remains live until a separately authorized P-002 release.
 
 **Approval requested:** 「P-002を承認する」 means implement exactly the N12 15+11=26 locally embedded answer stages, targeted N12 revision-2 progress-safe migration, scoped UI, regressions and second-pass R3 audit above **on a separate implementation branch/PR**. Approval does **not** include automatic main merge, Pages publishing, changing other accepted units, or restarting N11/N13/N14 creation. After a reviewed implementation PR, ask separately for main/Pages authorization.

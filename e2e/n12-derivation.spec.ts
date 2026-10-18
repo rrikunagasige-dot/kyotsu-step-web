@@ -159,8 +159,20 @@ test('N12 P-003: 35 progressive inline holes, math, figure gates, retry and relo
     await expect(page.locator('[data-derivation-id="' + derivation + '"]')).toHaveCount(1)
   }
   await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
-  expect(await page.evaluate(() => document.documentElement.scrollWidth))
-    .toBeLessThanOrEqual(await page.evaluate(() => document.documentElement.clientWidth + 1))
+
+  // Approved W-MATH-008/P-001 visual contract: all three phone widths,
+  // including every formula's *internal* scroll (document-only is insufficient).
+  for (const width of [320, 375, 390]) {
+    await page.setViewportSize({ width, height: 760 })
+    const overflow = await page.locator('.reading-formula-line--n12').evaluateAll(lines =>
+      lines.filter(line => line.scrollWidth > line.clientWidth + 2)
+        .map(line => line.getAttribute('data-testid')),
+    )
+    expect(overflow, `N12 formula overflow at ${width}px`).toEqual([])
+    expect(await page.evaluate(() => document.documentElement.scrollWidth))
+      .toBeLessThanOrEqual(await page.evaluate(() => document.documentElement.clientWidth + 1))
+    await expect(page.locator('.katex-error')).toHaveCount(0)
+  }
   await page.reload()
   await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
   await expect(page.getByTestId('resolved-n12-p002-q01-coef')).toBeVisible()

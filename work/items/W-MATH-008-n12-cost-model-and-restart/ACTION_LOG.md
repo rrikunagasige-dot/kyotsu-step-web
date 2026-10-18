@@ -8,3 +8,4 @@ Status: VERIFYING
 - A-005 (2026-10-18): Opened implementation **draft** PR #87 against main; no merge or release requested. Initial governance CI exposed missing Work records/status in the proposal branch. Added them in follow-up; both failure and correction remain in VERIFICATION.md.
 - A-006 (2026-10-18): Read Math textbook CI job log after green typecheck/unit/build but failing mobile smoke (legacy N12 sequence assumed 26 stages). Updated e2e/math-textbook-set-smoke.spec.ts to include all nine newly gated steps. No source answer changes.
 - A-007 (2026-10-18): Audited N01/N02/N03/N09/N10 against N12's model/atomicity/display root. Recorded confidence and pending sibling proposal gates in IMPACT_AUDIT.md.
+- A-008 (2026-10-18): Verified all three GitHub Actions suites green for 7cff802. Added explicit after-completion 320/375/390px internal-scroll checks to N12 Playwright test as the approved viewport matrix requires.

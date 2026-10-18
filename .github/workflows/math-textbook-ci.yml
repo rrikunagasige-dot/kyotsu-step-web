@@ -19,6 +19,7 @@ on:
       - 'e2e/math-textbook-set-smoke.spec.ts'
       - 'e2e/numbers-next-batch.spec.ts'
       - 'e2e/n12-derivation.spec.ts'
+      - 'e2e/r3-local-token.spec.ts'
       - 'e2e/numbers-catalog-publish.spec.ts'
       - '.github/workflows/math-textbook-ci.yml'
   workflow_dispatch:
@@ -59,7 +60,7 @@ jobs:
         run: pnpm run typecheck
 
       - name: Textbook schema and math-unit tests
-        run: pnpm exec vitest run src/domain/textbook.test.ts src/domain/textbookSchema.test.ts src/data/textbook/math/mathCatalog.test.ts src/data/textbook/math/mathFrontmatterLeak.test.ts src/data/textbook/math/mathReviewIntegrity.test.ts src/data/textbook/math/mathFigureAssets.test.ts src/data/textbook/math/set/setLesson.test.ts src/data/textbook/math/numbers/n01Lesson.test.ts src/data/textbook/math/numbers/numbersPilots.test.ts src/data/textbook/math/numbers/numbersNextBatch.test.ts src/data/textbook/math/numbers/n09Atomicity.test.ts src/data/textbook/math/numbers/n02ZeroTerm.test.ts src/data/textbook/math/numbers/n12DerivationIntegrity.test.ts src/data/textbook/math/proposition/propositionReadingLesson.test.ts src/data/textbook/math/proposition/quantifierLesson.test.ts src/data/textbook/math/function/functionConditionsLesson.test.ts src/data/textbook/math/proposition/propositionProofLesson.test.ts
+        run: pnpm exec vitest run src/domain/textbook.test.ts src/domain/textbookSchema.test.ts src/data/textbook/math/mathCatalog.test.ts src/data/textbook/math/mathFrontmatterLeak.test.ts src/data/textbook/math/mathReviewIntegrity.test.ts src/data/textbook/math/mathFigureAssets.test.ts src/data/textbook/math/set/setLesson.test.ts src/data/textbook/math/numbers/n01Lesson.test.ts src/data/textbook/math/numbers/r3LocalTokens.test.ts src/data/textbook/math/numbers/numbersPilots.test.ts src/data/textbook/math/numbers/numbersNextBatch.test.ts src/data/textbook/math/numbers/n09Atomicity.test.ts src/data/textbook/math/numbers/n02ZeroTerm.test.ts src/data/textbook/math/numbers/n12DerivationIntegrity.test.ts src/data/textbook/math/proposition/propositionReadingLesson.test.ts src/data/textbook/math/proposition/quantifierLesson.test.ts src/data/textbook/math/function/functionConditionsLesson.test.ts src/data/textbook/math/proposition/propositionProofLesson.test.ts
 
       - name: Build
         run: pnpm run build
@@ -80,6 +81,9 @@ jobs:
 
       - name: N02/N09 original 26 plus four new Q08 holes and original image gate (mobile and desktop)
         run: pnpm exec playwright test e2e/numbers-next-batch.spec.ts --project=mobile-chromium --project=desktop-chromium
+
+      - name: N01/N03 P-002 seven local calculations, wrong answers, v1 restoration and mobile widths
+        run: pnpm exec playwright test e2e/r3-local-token.spec.ts --project=mobile-chromium --project=desktop-chromium
 
       - name: Chapter-1 math catalog, route and review visibility (mobile and desktop)
         run: pnpm exec playwright test e2e/numbers-catalog-publish.spec.ts --project=mobile-chromium --project=desktop-chromium

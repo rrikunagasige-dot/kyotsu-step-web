@@ -715,6 +715,16 @@ export function TextbookUnitPage() {
         </p>
       )}
 
+      {['math-numbers-expressions-n01', 'math-numbers-expressions-n03'].includes(unit.unitId)
+        && unit.revision === 2 && progress?.migratedFromRevision === 1 && (
+        <p className="n12-progress-upgrade-note" data-testid="r3-progress-upgrade-note">
+          {text(
+            '以前に解いた原問題の解答履歴は保存されています。追加した式内の計算穴だけ、順番に完成させてください。',
+            '之前完成的原题答案和记录已保留。请依次完成新增的公式内部计算填空。',
+          )}
+        </p>
+      )}
+
       <section className="textbook-objectives">
         <strong>{text('この単元で確認すること', '本单元确认内容')}</strong>
         <ol>{unit.objectives.map((objective) => <li key={objective}>{objective}</li>)}</ol>

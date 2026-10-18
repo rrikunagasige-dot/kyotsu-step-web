@@ -184,6 +184,22 @@ function migrateN09ToRevision2(progress: TextbookUnitProgress): TextbookUnitProg
 export function effectiveTextbookProgress(unit: TextbookUnit, progress: TextbookUnitProgress | undefined): TextbookUnitProgress | undefined {
   if (!progress) return undefined
   if (progress.unitRevision === unit.revision) return progress
+  // W-MATH-005/P-002: keep the N01/N03 original answer ledger while
+  // the seven new local calculations begin unanswered; N09/N12 use distinct
+  // already-released archive-and-restart migrations below.
+  if (
+    (unit.unitId === 'math-numbers-expressions-n01' || unit.unitId === 'math-numbers-expressions-n03')
+    && unit.revision === 2 && progress.unitRevision === 1 && progress.unitId === unit.unitId
+  ) {
+    return {
+      ...progress,
+      unitRevision: 2,
+      migratedFromRevision: 1,
+      ...(progress.completedAt !== undefined ? { previousRevisionCompletedAt: progress.completedAt } : {}),
+      completedAt: undefined,
+      answers: { ...progress.answers },
+    }
+  }
   if (unit.unitId === 'math-numbers-expressions-n09' && unit.revision === 2 && progress.unitRevision === 1) {
     return migrateN09ToRevision2(progress)
   }

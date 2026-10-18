@@ -30,7 +30,7 @@ function figureIndex(unit: TextbookUnit, id: string) {
 }
 
 describe('W-MATH-003 approved numbers & expressions pilot implementation', () => {
-  it.each(pilots)('$prefix stays review-only with exact source mapping and unmodified N01', ({ unit, prefix, count, pages, sourceMap }) => {
+  it.each(pilots)('$prefix stays review-only with exact source mapping and scoped local-token revision', ({ unit, prefix, count, pages, sourceMap }) => {
     expect(unit.status).toBe('review')
     expect(unit.schemaVersion).toBe('1.1')
     expect(unit.unitId).toBe('math-numbers-expressions-' + prefix.toLowerCase())
@@ -60,6 +60,11 @@ describe('W-MATH-003 approved numbers & expressions pilot implementation', () =>
         'n12-p003-q12-total-constant', 'n12-p003-q12-x-coef',
         'n12-p002-q13-lower', 'n12-p002-q13-upper',
       ])
+    } else if (prefix === 'N03') {
+      expect(itemIds).toHaveLength(count + 4)
+      expect(itemIds.filter(id => !mapped.includes(id))).toEqual([
+        'n03-r3-q10-p1', 'n03-r3-q10-p2', 'n03-r3-q10-p3', 'n03-r3-q10-p4',
+      ])
     } else {
       expect(itemIds).toEqual(mapped)
     }
@@ -73,9 +78,9 @@ describe('W-MATH-003 approved numbers & expressions pilot implementation', () =>
     expect(section.items.some(item => item.scaffoldLevel === 'light')).toBe(true)
   })
 
-  it('keeps the original N01 unchanged and independent of new lessons', () => {
+  it('preserves original N01 prompts and source pages alongside P-002 local tokens', () => {
     expect(mathNumbersN01Unit.status).toBe('review')
-    expect(mathNumbersN01Unit.sections[0].items).toHaveLength(15)
+    expect(mathNumbersN01Unit.sections[0].items).toHaveLength(18)
     expect(mathNumbersN01Unit.chapter?.sourcePages).toEqual([2, 3])
   })
 
@@ -118,7 +123,7 @@ describe('W-MATH-003 approved numbers & expressions pilot implementation', () =>
   })
 
   it('preserves thirteen N03 independently checked answers, including sign and all four products', () => {
-    expect(mathNumbersN03Unit.sections[0].items.map(item => item.answer)).toEqual([
+    expect(mathNumbersN03Unit.sections[0].items.filter(item => Object.values(n03SourceToItemIds).flat().includes(item.id)).map(item => item.answer)).toEqual([
       '4a^8', 'a^{m+n}', 'a^{mn}', 'a^nb^n',
       '(-2)^3(x^3)^3(y^2)^3', '-8x^9y^6',
       'x^2x^2+x^2(-3x)+x^2\\cdot4', 'x^4-3x^3+4x^2',

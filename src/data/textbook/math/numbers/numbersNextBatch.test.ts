@@ -80,10 +80,10 @@ describe('W-MATH-003 user-approved N02/N09 review-only implementation', () => {
     }
   })
 
-  it('preserves N01/N03/N10 while expecting P-002/P-003 N12 token stages', () => {
+  it('keeps N01/N03 local correction scoped and N09/N12 release counts unchanged', () => {
     expect(mathNumbersN01Unit.status).toBe('review')
-    expect(mathNumbersN01Unit.sections[0].items).toHaveLength(15)
-    expect(mathNumbersN03Unit.sections[0].items).toHaveLength(13)
+    expect(mathNumbersN01Unit.sections[0].items).toHaveLength(18)
+    expect(mathNumbersN03Unit.sections[0].items).toHaveLength(17)
     expect(mathNumbersN10Unit.sections[0].items).toHaveLength(21)
     expect(mathNumbersN12Unit.status).toBe('review')
     expect(mathNumbersN12Unit.sections[0].items).toHaveLength(35)

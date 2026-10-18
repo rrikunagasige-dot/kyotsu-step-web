@@ -36,7 +36,7 @@ export const n01SourceToItemIds = {
 const rawN01 = {
   schemaVersion: '1.1' as const,
   unitId: 'math-numbers-expressions-n01',
-  revision: 1,
+  revision: 2,
   status: 'review' as const,
   subject: 'math-1a' as const,
   chapter: {
@@ -133,7 +133,19 @@ const rawN01 = {
       { id: 'paragraph-n01-07-intro', type: 'paragraph' as const, parts: [
         T('三つに分けた項について、同じ文字の係数を計算しよう。'),
       ] },
-      { id: 'formula-n01-07', type: 'formula' as const, parts: [
+      { id: 'formula-r3-q07-x2coef', type: 'formula' as const, derivationId: 'n01-q07-evaluate', parts: [
+        M('=(3-5)x^2+(-5+2)x+(6-3)\\quad\\Longrightarrow\\quad('),
+        C('n01-r3-q07-x2coef'), M(')x^2+(-5+2)x+(6-3)'),
+      ] },
+      { id: 'formula-r3-q07-xcoef', type: 'formula' as const, derivationId: 'n01-q07-evaluate', parts: [
+        M('=(-2)x^2+(-5+2)x+(6-3)\\quad\\Longrightarrow\\quad(-2)x^2+('),
+        C('n01-r3-q07-xcoef'), M(')x+(6-3)'),
+      ] },
+      { id: 'formula-r3-q07-const', type: 'formula' as const, derivationId: 'n01-q07-evaluate', parts: [
+        M('=(-2)x^2+(-3)x+(6-3)\\quad\\Longrightarrow\\quad(-2)x^2+(-3)x+('),
+        C('n01-r3-q07-const'), M(')'),
+      ] },
+      { id: 'formula-n01-07', type: 'formula' as const, derivationId: 'n01-q07-evaluate', parts: [
         M('=(3-5)x^2+(-5+2)x+(6-3)='), C('n01-07'),
       ] },
       { id: 'paragraph-n01-08', type: 'paragraph' as const, parts: [
@@ -191,6 +203,12 @@ const rawN01 = {
       item('n01-06b', '残りのxの項と定数項の二組を選ぼう。', '(-5x+2x)\\quad (6-3)', 'formula',
         ['(-5x+2x)\\quad (6-3)', '(5x+2x)\\quad (6-3)', '(-5x-2x)\\quad (6+3)'], 'representation-link', 'medium',
         ['符号も含めて元の式から項を拾う。']),
+      item('n01-r3-q07-x2coef', 'x²の係数 3−5 を計算しよう。', '-2', 'formula',
+        ['-2', '2', '-8'], 'representation-link', 'medium', ['3から5を引く。符号まで答えに含めよう。']),
+      item('n01-r3-q07-xcoef', 'xの係数 −5+2 を計算しよう。', '-3', 'formula',
+        ['-3', '3', '-7'], 'representation-link', 'medium', ['負の5と正の2を加える。']),
+      item('n01-r3-q07-const', '定数項 6−3 を計算しよう。', '3', 'formula',
+        ['3', '-3', '9'], 'representation-link', 'medium', ['文字を含まない二つの数を計算する。']),
       item('n01-07', '分類した三組の係数をそれぞれ計算しよう。', '-2x^2-3x+3', 'formula',
         ['-2x^2-3x+3', '-2x^2+3x+3', '-2x^2-3x-3', '-2x-3x^2+3'], 'transfer', 'medium',
         ['各組の数だけを計算し、文字の部分は残す。']),

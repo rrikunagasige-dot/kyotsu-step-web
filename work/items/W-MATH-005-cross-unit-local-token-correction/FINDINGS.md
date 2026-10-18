@@ -41,3 +41,7 @@ N03 320px page containment was previously unverified. Added direct tests at 320/
 | original other-unit creation drafts | N04–N14 | UNVERIFIED | do not implement, creation remains paused |
 
 After P-002 CI, repeat root-cause/signature check only for any newly observed defect and record it before further changes.
+
+
+## F-014 — ERROR-QA / first P-002 CI stale sibling assertions and record status
+At current-main PR #92, math CI 39136348368 failed one unit assertion in N02's test because it expected N01=15/N03=13 after approved P-002 increases them to 18/17. The N02 content and its 12 original answers remain unchanged. Governance CI 39136348404 rejected bold markdown WORK.md status: checker requires `Status: VERIFYING` exactly. Both are test/record contract failures, NOT mathematical wrong answers. Corrected in follow-up commit and retained initial failure evidence.

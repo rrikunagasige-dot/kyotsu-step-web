@@ -22,8 +22,8 @@ describe('W-MATH-010/P-001: N02 missing zero-coefficient TERM', () => {
     expect(q05.answer).toBe('0x')
     expect(q05.choices).toEqual(['0x', 'x', '-x', '2x'])
     expect(section.items).toHaveLength(12)
-    expect(mathNumbersN01Unit.sections[0].items).toHaveLength(15)
-    expect(mathNumbersN03Unit.sections[0].items).toHaveLength(13)
+    expect(mathNumbersN01Unit.sections[0].items).toHaveLength(18)
+    expect(mathNumbersN03Unit.sections[0].items).toHaveLength(17)
   })
 
   it('asks for a missing first-degree term rather than only the coefficient', () => {

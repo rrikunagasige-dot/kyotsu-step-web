@@ -32,3 +32,7 @@ Repeated the same relevant preflight for the distinct four-product grid problem.
 
 ## A-012 — narrowly adapted current shared behavior and safety tests
 Extended only current local-token ID-prefix recognition and N01/N03 rev1→rev2 answer-history projection; kept existing N09 rev2 and N12 rev3 archive/reset routines intact. Added focused source/math/KaTeX tests, wrong-answer/progress and reload tests, mobile/desktop browser gating and N03 320/375/390px viewport checks. Enabled CI entrypoints. These are staged changes; final checks and learner review have not yet passed.
+
+
+## A-013 — Initial current-main CI failures explicitly retained
+PR #92 head `925baf02b1d96ca554208cbcf47ec88102dc04bf`: Math textbook CI 39136348368 Typecheck PASS and 176/177 Vitest tests PASS, but one stale sibling count in `n02ZeroTerm.test.ts` expected N01 15/N03 13 even though P-002 intentionally moves them to 18/17. Repository governance CI 39136348404 FAIL because WORK.md Status was bold-decorated instead of exact standalone enum required by `tools/repo-governance-check.mjs`. Corrected only N02 test expectations and Work status format. No N02 learner content changed; fresh CI required.

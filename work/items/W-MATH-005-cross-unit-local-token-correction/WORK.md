@@ -1,7 +1,8 @@
 # W-MATH-005 — N01/N03 式中計算7穴（改訂 P-002）
 
 Work ID: W-MATH-005
-Status: **IMPLEMENTING** — implementation approval only; user acceptance, merge and release pending.
+Status: VERIFYING
+Implementation approved and branch staged. QA failures recorded; user acceptance, merge and release pending.
 Updated: 2026-10-18 JST
 Command: CMD-ROOT-001 + CMD-WORK-001「修正」
 Authority: user-approved **P-002** in PROPOSAL.md, Constitution, WORK_SYSTEM §12B, MASTER_APP_LESSONS §51–53, math textbook SPEC.

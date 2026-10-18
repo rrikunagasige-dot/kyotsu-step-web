@@ -30,3 +30,9 @@ Compared current main N01 and N03 source blobs to old P-001 source baseline; bot
 
 ### V-010 — PENDING / fresh CI and browser acceptance
 New GitHub draft PR and main-head integration run must verify typecheck, N01/N03 formula/KaTeX tests, N09/N12 archived-progress regressions, 320/375/390px N03 width, wrong-answer gating, reload, desktop/mobile smoke, physics/math-practice regressions and governance. No PASS claim until run evidence is read. Separate learner hands-on QA and separate merge/Pages release remain pending.
+
+
+### V-011 — FAIL / initial CI, remediation staged
+- [Math textbook CI 39136348368](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39136348368): Typecheck PASS; 176/177 Vitest tests PASS, one FAIL in original N02 sibling regression due stale N01/N03 15/13 count assertions. Build/E2E were skipped, so not declared PASS.
+- [Repository Governance CI 39136348404](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39136348404): FAIL only exact WORK status syntax.
+- Scoped corrections: update the two N02 **test** counts to 18/17, keep N02 learner data untouched; use exact status `Status: VERIFYING`. Fresh run pending.

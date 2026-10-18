@@ -34,3 +34,6 @@ Math CI at original implementation SHA 2219f52 passed typecheck but failed three
 
 ## A-011 — Add full N12 mobile and desktop interaction gate
 Added e2e/n12-derivation.spec.ts for all 21 correct answers, Q01a wrong sign feedback/unlocking prohibition, F01/F02/F03 reveal prerequisites, KaTeX/render width, completion and reload persistence. Extended only existing math-textbook CI workflow to execute the focused Vitest and Playwright on mobile+desktop Chromium. This replaces the former gap in automation for P-001, not a shared UI or data-contract change.
+
+## A-012 — Fix new regression test parse error
+The next math CI passed all 148 pre-existing focused tests, but build reported TS1005 at n12DerivationIntegrity.test.ts line 6: the new Array.from declaration on line 5 omitted the final closing parenthesis. Corrected the syntax and retained the failure in VERIFICATION; latest focused Vitest and e2e gate now awaits rerun.

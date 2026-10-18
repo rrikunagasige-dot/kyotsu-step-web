@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { mathNumbersN12Unit, n12SourceToItemIds } from './n12Lesson'
 
 // W-MATH-004/P-001: supplemental learning stages, not new Word questions.
-const originalIds = Array.from({ length: 15 }, (_, index) => 'n12-' + String(index + 1).padStart(2, '0')
+const originalIds = Array.from({ length: 15 }, (_, index) => 'n12-' + String(index + 1).padStart(2, '0'))
 const extraIds = ['n12-01a', 'n12-02a', 'n12-06a', 'n12-06b', 'n12-12a', 'n12-13a']
 const expectedOrder = [
   'n12-01a', 'n12-01', 'n12-02a', 'n12-02',

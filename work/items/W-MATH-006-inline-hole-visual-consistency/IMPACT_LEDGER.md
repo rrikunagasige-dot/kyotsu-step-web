@@ -9,4 +9,4 @@ Root-cause signature: exact `TextbookFormula` local-token prefix => □ glyph + 
 | Draft W-MATH-005 N09 Q08 | CONFIRMED SOURCE ONLY | PR #80 `n09-r3-` same special class | Align two tokens on existing draft, no release |
 | Other mathematics textbook stages | NOT-AFFECTED UNDER PREFIX SIGNATURE | No above special prefix | No blanket UI change; unchanged controls should regress |
 | Physics learning / Mathematics practice | UNVERIFIED VISUAL (separate renderer) | No direct token branch shown | Regression only, no speculative changes |
-Pending: user approval of exact visual treatment and cross-draft impact; then E2E and secondary scan before lesson dedup.
+Approval received: user 「いいよ」 for W-MATH-006/P-001 on 2026-10-18 JST. Token UI updated only on N12 correction PR and linked draft #80. CI/browser checks pending; no main/Pages release, no shared lesson dedup or resumed creation.

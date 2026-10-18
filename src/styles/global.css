@@ -1257,15 +1257,15 @@ button.math-theme-link {
 }
 
 
-/* P-002: N12-only in-equation scalar blanks; preserve all other formula choices. */
+/* W-MATH-006/P-001: established N02-style 選択 rectangle for N12 and linked R3 local blanks; keep 44px touch height. */
 .reading-formula-choice--token {
-  min-width: 44px;
+  min-width: 3.15rem;
   min-height: 44px;
-  padding: .2rem .4rem;
-  border-width: 2px;
-  border-radius: .25rem;
-  font-size: 1.08rem;
-  font-weight: 750;
+  padding: .12rem .48rem;
+  border-width: 1px;
+  border-radius: 0;
+  font-size: inherit;
+  font-weight: inherit;
   flex: 0 0 auto;
 }
 .reading-formula-choice--token:focus-visible {

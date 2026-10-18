@@ -1,12 +1,12 @@
 # W-MATH-006 / P-001 — 数式中の穴を従来デザインへ統一する修正案
 
-Status: PROPOSED — USER APPROVAL REQUIRED BEFORE LEARNER CODE EDIT
+Status: APPROVED FOR ISOLATED IMPLEMENTATION — MAIN / PAGES RELEASE NOT AUTHORIZED
 Date: 2026-10-18 JST
 Command: CMD-WORK-001「修正」
 Direct feedback: 「N12は本当に良かった。しかし穴のデザインだけ前のデザインと違う。これだけ治せばいい。…じゃ続けてくれ」
 Identity: rrikunagasige-dot/kyotsu-step-web / main 4a4041aad05c5025075eca11e2a2beb22a390eb4
 Origin: W-MATH-004/P-002 published in PR #78; W-MATH-005/P-001 nine-hole implementation is unmerged draft PR #80.
-Authority note: Feedback identifies a new visual inconsistency; neither the earlier approval of compact □ nor the original nine-hole implementation approval covers reverting this design. Do not treat the direct feedback as approval of an unseen exact P-001.
+Authority note: The proposal was initially separate from the earlier compact □ approval. After the exact W-MATH-006/P-001 request, the user answered 「いいよ」 on 2026-10-18 JST. This authorizes only the two scoped isolated implementation branches and tests; main/Pages release remains unauthorized.
 
 ## 1. Observed mismatch, verified in published UI
 

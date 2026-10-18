@@ -28,7 +28,7 @@ describe('N01 mathematics textbook review lesson', () => {
     expect(Object.keys(n01SourceToItemIds)).toEqual(
       Array.from({ length: 10 }, (_, i) => 'N01-Q' + String(i + 1).padStart(2, '0')),
     )
-    const mappedIds = Object.values(n01SourceToItemIds).flat()
+    const mappedIds: string[] = Object.values(n01SourceToItemIds).flat()
     expect(mappedIds).toHaveLength(15)
     expect(new Set(mappedIds).size).toBe(15)
     expect(section.items.map(item => item.id).filter(id => mappedIds.includes(id))).toEqual(mappedIds)
@@ -93,7 +93,7 @@ describe('N01 mathematics textbook review lesson', () => {
       'n01-10a': '2次式',
       'n01-10b': '3次の項が整理によって消えるから',
     }
-    for (const item of section.items.filter(item => Object.values(n01SourceToItemIds).flat().includes(item.id))) {
+    for (const item of section.items.filter(item => (Object.values(n01SourceToItemIds).flat() as string[]).includes(item.id))) {
       expect(item.answer, item.id).toBe(expected[item.id])
       expect(item.choices, item.id).toContain(item.answer)
       expect(item.choices && new Set(item.choices.map(normalizeTextbookAnswer)).size, item.id)

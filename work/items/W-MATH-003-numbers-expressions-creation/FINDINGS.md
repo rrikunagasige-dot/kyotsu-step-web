@@ -90,3 +90,12 @@ The earlier N02/N09 draft PR had source-audited content and passing E2E but no p
 
 ## F-026 — ERROR-PROCESS corrected: route work belongs to CMD-WORK-002 作成
 The user established that source→concept→lesson→app placement→user access belongs to ongoing 作成, not a standalone 修正. P-002 separately authorizes the enlarged chapter-1 catalog/Pages review scope without retroactively expanding P-001 or claiming final learner acceptance.
+
+## F-027 — CONFIRMED: 123 remaining ordinary N04–N14 problem markers, nine embedded original PNG figures
+Recovered Word SHA-256 93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa independently checked again. Exact scope N04 22/N05 20/N06 16/N07 14/N08 12/N11 14/N13 9/N14 16, sum 123. N04-F01; N05-F01/F02; N08-F01; N11-F01/F02; N13-F01/F02; N14-F01 = nine original image assets. All 123 labels have an independently derived candidate answer; official author answer booklet has not been supplied. Advanced NE01/NE02 25 markers remain.
+
+## F-028 — PEDAGOGY: N08 preceding N09 root unit and N13 equation inside inequality topic require explicit bridging
+In proposed 3-topic IA, N08 uses sqrt(5) comparison before full N09 root lesson: explain it briefly as the positive square-root number without falsely claiming its full proof covered. N13 is an absolute-value equation, so the final subheading must be '絶対値の方程式と不等式', not imply N13 is an inequality. These are design choices requiring P-003 review.
+
+## F-029 — RISK: Original answer-filled figures can leak future choices
+N05-F02 completes cross factoring and must be delayed until Q15 correct; N11-F02 until Q10; N13-F02 until Q01; N14-F01 until Q06. N13-F01 location and figure semantics require actual visual/browser QA; hashes only authenticate original bytes. Existing N09 gating is untouched. If learner text/alt/caption leaks correct value prior to answer, do not ship.

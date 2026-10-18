@@ -69,6 +69,9 @@ jobs:
           E2E_USE_PREVIEW: '1'
         run: pnpm exec playwright test e2e/math-textbook-set-smoke.spec.ts --grep P-004 --project=mobile-chromium --project=desktop-chromium
 
+      - name: N12 21-step derivation, wrong feedback, figure gate and restore (mobile and desktop)
+        run: pnpm exec playwright test e2e/n12-derivation.spec.ts --project=mobile-chromium --project=desktop-chromium
+
       - name: Math textbook mobile smoke
         run: pnpm exec playwright test e2e/math-textbook-set-smoke.spec.ts --project=mobile-chromium
 
@@ -77,9 +80,6 @@ jobs:
 
       - name: N02/N09 all 26 choices and original image gate (mobile and desktop)
         run: pnpm exec playwright test e2e/numbers-next-batch.spec.ts --project=mobile-chromium --project=desktop-chromium
-
-      - name: N12 21-step derivation, wrong feedback, figure gate and restore (mobile and desktop)
-        run: pnpm exec playwright test e2e/n12-derivation.spec.ts --project=mobile-chromium --project=desktop-chromium
 
       - name: Chapter-1 math catalog, route and review visibility (mobile and desktop)
         run: pnpm exec playwright test e2e/numbers-catalog-publish.spec.ts --project=mobile-chromium --project=desktop-chromium

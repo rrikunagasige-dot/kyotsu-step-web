@@ -40,3 +40,6 @@ The next math CI passed all 148 pre-existing focused tests, but build reported T
 
 ## A-013 — Update original N12 E2E and keep derivations visually continuous
 Math CI 39092932229 passed governance/typecheck/focused tests/build/production smoke but failed its older N12 mobile smoke because the script expected original Q01 before new Q01a. Updated that script to solve Q01a then test old Q01 wrong feedback and traverse all six extra stages. Added the same derivationId to eight bridging explanation paragraphs so intermediate formulas appear as a single visual chain. New static and E2E checks assert groups. Fresh CI pending.
+
+## A-014 — Fix E2E interaction with scaffold-level choice filtering
+CI 39093203142 passed governance, Vitest, typecheck, build, preview, full math mobile+desktop and N02/N09 interaction checks. New N12 Playwright failed at its deliberate wrong choice: strong scaffold renders only two choices using stable selection, and the test hard-coded a distractor not guaranteed visible. Test now selects any actually displayed option whose aria-label differs from the correct answer; increased the long 21-step test timeout to 90 seconds and moved this focused step earlier in the CI to fail fast. App learner code unchanged.

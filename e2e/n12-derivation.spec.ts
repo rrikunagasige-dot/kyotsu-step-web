@@ -38,6 +38,7 @@ async function answer(page: Page, id: string, value: string) {
 }
 
 test('N12 correction: 21 progressive decisions, no early figures, wrong feedback, mobile/desktop and restore', async ({ page }) => {
+  test.setTimeout(90_000)
   await page.goto(path)
   await page.evaluate(() => localStorage.clear())
   await page.reload()
@@ -52,7 +53,18 @@ test('N12 correction: 21 progressive decisions, no early figures, wrong feedback
 
   // A wrong inequality reversal must not unlock the old final answer.
   await page.getByTestId('textbook-item-n12-01a').click()
-  await page.getByTestId('inline-choice-panel-n12-01a').getByRole('button', { name: '-7>2x', exact: true }).click()
+  const firstPanel = page.getByTestId('inline-choice-panel-n12-01a')
+  await expect(firstPanel).toBeVisible()
+  const displayedOptions = firstPanel.locator('.reading-choice-option')
+  let wrongClicked = false
+  for (let index = 0; index < await displayedOptions.count(); index += 1) {
+    const option = displayedOptions.nth(index)
+    if (await option.getAttribute('aria-label') === '-7<2x') continue
+    await option.click()
+    wrongClicked = true
+    break
+  }
+  expect(wrongClicked).toBe(true)
   await expect(page.getByTestId('resolved-n12-01a')).toHaveCount(0)
   await expect(page.getByTestId('textbook-item-n12-01')).toHaveCount(0)
 

@@ -78,13 +78,13 @@ describe('W-MATH-003 user-approved N02/N09 review-only implementation', () => {
     }
   })
 
-  it('preserves N01/N03/N10 while expecting the P-002 N12 token stages', () => {
+  it('preserves N01/N03/N10 while expecting P-002/P-003 N12 token stages', () => {
     expect(mathNumbersN01Unit.status).toBe('review')
     expect(mathNumbersN01Unit.sections[0].items).toHaveLength(15)
     expect(mathNumbersN03Unit.sections[0].items).toHaveLength(13)
     expect(mathNumbersN10Unit.sections[0].items).toHaveLength(21)
     expect(mathNumbersN12Unit.status).toBe('review')
-    expect(mathNumbersN12Unit.sections[0].items).toHaveLength(26)
+    expect(mathNumbersN12Unit.sections[0].items).toHaveLength(35)
   })
 
   it('independently checks N02 answers, compound Q03/Q09 and formula reuse', () => {

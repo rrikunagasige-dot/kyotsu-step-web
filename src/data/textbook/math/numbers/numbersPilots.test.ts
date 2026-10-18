@@ -46,13 +46,19 @@ describe('W-MATH-003 approved numbers & expressions pilot implementation', () =>
     const itemIds = section.items.map(item => item.id)
     expect(itemIds.filter(id => mapped.includes(id))).toEqual(mapped)
     if (prefix === 'N12') {
-      expect(itemIds).toHaveLength(count + 11) // P-002 token-level derivations, not new Word questions
+      expect(itemIds).toHaveLength(count + 20) // 11 P-002 + 9 P-003 derivation blanks, original 15 questions unchanged
       expect(itemIds.filter(id => !mapped.includes(id))).toEqual([
         'n12-p002-q01-coef', 'n12-p002-q01-const',
         'n12-p002-q02-coef', 'n12-p002-q02-const',
         'n12-p002-q06-left-coef', 'n12-p002-q06-left-const',
         'n12-p002-q06-right-coef', 'n12-p002-q06-right-const',
-        'n12-p002-q12-signed-coef', 'n12-p002-q13-lower', 'n12-p002-q13-upper',
+        'n12-p003-q10-meaning', 'n12-p003-q10-cream-coef',
+        'n12-p003-q10-pudding-coef', 'n12-p003-q10-box-fee',
+        'n12-p003-q11-lower-sign', 'n12-p003-q11-upper-sign',
+        'n12-p003-q12-product-constant',
+        'n12-p002-q12-signed-coef',
+        'n12-p003-q12-total-constant', 'n12-p003-q12-x-coef',
+        'n12-p002-q13-lower', 'n12-p002-q13-upper',
       ])
     } else {
       expect(itemIds).toEqual(mapped)

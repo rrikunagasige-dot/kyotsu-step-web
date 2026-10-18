@@ -1,0 +1,10 @@
+# VERIFICATION — W-MATH-008 / P-001
+Status: PENDING
+
+- V-001 | PASS (static data read): 26 preexisting N12 items retained exact ID/answer; 9 P-003 inserted; 35 item IDs all unique, 35 references in original order; 15 source questions unaffected. Compared baseline main n12Lesson.ts to draft implementation.
+- V-002 | PENDING: 320/375/390px phone and desktop internal/external overflow, KaTeX rendering, N02-matching 44px rectangular choice targets, keyboard and focus, answer leakage.
+- V-003 | IN PROGRESS: First Math textbook CI 39111093203 failed 2/159 tests, both incorrect *test assumptions*: a P-002 first-position inline slot is adjacent to math on its right (not left), and item.choices contains the correct answer plus three distractors (4 total). Typecheck and 14/15 unit-test files passed up to the Vitest gate; updated these assertions without changing learner answers. New CI rerun required.
+- V-004 | FAIL then correction submitted: first Repository Governance Check run 39111093197 failed; work-item record and status gate caused by proposal-only skeleton. Follow-up adds three records and exact APPROVED/VERIFYING statuses; rerun required.
+- V-005 | NOT AUTHORIZED: main merge, live app/Pages update, global lessons-memory close before user review acceptance.
+- V-006 | FAIL in follow-up Math textbook CI 39111304028 (08:28 UTC): 48/49 mobile smoke tests passed, but legacy `e2e/math-textbook-set-smoke.spec.ts` reached n12-10 without newly required 9 P-003 prerequisite stages. It timed out after Q09; not a user-facing blocked stage. Updated the old smoke test's exact N12 sequence to 35 stages, preserving its prior source/figure assertions. Rerun pending.
+- V-007 | PASS (commit 7cff802 CI 39111690801): Typecheck, N12 and sibling source/unit tests, build, N12 Playwright mobile+desktop full 35 stages, 320px old math textbook smoke, desktop smoke, N02/N09, catalog, physics and math-practice regression; governance 39111690737 PASS, math-practice pilot 39111690745 PASS. Explicit 320/375/390 internal overflow loop added in subsequent commit, rerun pending.

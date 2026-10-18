@@ -8,6 +8,7 @@ import {
   isTextbookAnswerCorrect,
   isTextbookItemResolved,
   normalizeTextbookAnswer,
+  resetTextbookUnitProgress,
   textbookUnitProgress,
   type TextbookUnitProgress,
 } from './textbook'
@@ -140,78 +141,89 @@ describe('textbook learning state', () => {
 })
 
 
-describe('N12 P-002 progress transition only', () => {
+describe('N12 P-003 revision-3 start-over with historical archive', () => {
   const lesson = mathNumbersN12Unit
   const getItem = (id: string) => lesson.sections[0].items.find(item => item.id === id)!
   const oldAnswer = (id: string, value: string, resolved = true) => ({
-    itemId: id,
-    value,
-    firstValue: value,
-    isFirstCorrect: resolved,
-    resolved,
-    attemptCount: 1,
-    firstAnsweredAt: 100,
-    lastAnsweredAt: 200,
+    itemId: id, value, firstValue: value, isFirstCorrect: resolved, resolved,
+    attemptCount: resolved ? 1 : 2, firstAnsweredAt: 100, lastAnsweredAt: 200,
   })
-
-  const oldProgress = (): TextbookUnitProgress => ({
+  const oldProgress = (revision: 1 | 2): TextbookUnitProgress => ({
     unitId: lesson.unitId,
-    unitRevision: 1,
+    unitRevision: revision,
     startedAt: 50,
     updatedAt: 200,
     completedAt: 300,
+    ...(revision === 2 ? { migratedFromRevision: 1, previousRevisionCompletedAt: 280 } : {}),
     answers: {
       'n12-01': oldAnswer('n12-01', getItem('n12-01').answer),
       'n12-01a': oldAnswer('n12-01a', '-7<2x'),
       'n12-02': oldAnswer('n12-02', getItem('n12-02').answer),
       'n12-03': oldAnswer('n12-03', '一つ目を満たすから適する', false),
+      ...(revision === 2 ? { 'n12-p002-q01-coef': oldAnswer('n12-p002-q01-coef', '2') } : {}),
     },
   })
 
-  it('retains v1 source answers and old extras but never credits old extras as new holes', () => {
-    const v1 = oldProgress()
-    const projected = effectiveTextbookProgress(lesson, v1)!
-    expect(projected.unitRevision).toBe(2)
-    expect(projected.migratedFromRevision).toBe(1)
-    expect(projected.startedAt).toBe(50)
-    expect(projected.previousRevisionCompletedAt).toBe(300)
-    expect(projected.completedAt).toBeUndefined()
-    expect(projected.answers).toEqual(v1.answers)
-    expect(textbookUnitProgress(lesson, v1)).toMatchObject({ completed: 2, total: 26 })
-    expect(textbookUnitProgress(lesson, projected).completed).toBe(2)
-    expect(getItem('n12-p002-q01-coef').answer).toBe('2')
-    expect(projected.answers['n12-p002-q01-coef']).toBeUndefined()
-    expect(effectiveTextbookProgress(lesson, projected)).toBe(projected)
+  it.each([1, 2] as const)('archives every v%d answer and presents zero of 35 as complete', (revision) => {
+    const previous = oldProgress(revision)
+    const projection = effectiveTextbookProgress(lesson, previous)!
+    expect(projection.unitRevision).toBe(3)
+    expect(projection.migratedFromRevision).toBe(revision)
+    expect(projection.completedAt).toBeUndefined()
+    expect(projection.answers).toEqual({})
+    expect(projection.archivedRevisions?.[revision].answers).toEqual(previous.answers)
+    expect(projection.archivedRevisions?.[revision].completedAt).toBe(300)
+    expect(projection.archivedRevisions?.[revision].answers['n12-03'].attemptCount).toBe(2)
+    expect(textbookUnitProgress(lesson, previous)).toEqual({ completed: 0, total: 35, percent: 0 })
+    expect(effectiveTextbookProgress(lesson, projection)).toBe(projection)
+    expect(effectiveTextbookProgress(lesson, previous)).toEqual(projection)
   })
 
-  it('converts on first new answer and keeps old completion history across subsequent answers', () => {
-    const v1 = oldProgress()
-    const coef = getItem('n12-p002-q01-coef')
-    const afterFirst = answerTextbookItem(v1, lesson, coef, coef.answer, 500)
-    expect(afterFirst.unitRevision).toBe(2)
-    expect(afterFirst.startedAt).toBe(50)
-    expect(afterFirst.completedAt).toBeUndefined()
-    expect(afterFirst.previousRevisionCompletedAt).toBe(300)
-    expect(afterFirst.answers['n12-01']).toEqual(v1.answers['n12-01'])
-    expect(afterFirst.answers['n12-01a']).toEqual(v1.answers['n12-01a'])
-    expect(textbookUnitProgress(lesson, afterFirst).completed).toBe(3)
+  it('preserves prior v2 records after first response, after reload-style reads, and after another response', () => {
+    const v2 = oldProgress(2)
+    const first = getItem('n12-p002-q01-coef')
+    const afterFirst = answerTextbookItem(v2, lesson, first, first.answer, 500)
+    expect(afterFirst.unitRevision).toBe(3)
+    expect(afterFirst.answers[first.id].value).toBe('2')
+    expect(afterFirst.answers['n12-01']).toBeUndefined()
+    expect(afterFirst.archivedRevisions?.['2'].answers['n12-01']).toEqual(v2.answers['n12-01'])
+    expect(afterFirst.archivedRevisions?.['2'].answers['n12-01a']).toEqual(v2.answers['n12-01a'])
+    expect(textbookUnitProgress(lesson, afterFirst).completed).toBe(1)
 
-    const constant = getItem('n12-p002-q01-const')
-    const afterSecond = answerTextbookItem(afterFirst, lesson, constant, constant.answer, 600)
-    expect(afterSecond.previousRevisionCompletedAt).toBe(300)
-    expect(afterSecond.migratedFromRevision).toBe(1)
-    expect(afterSecond.answers['n12-01a']).toEqual(v1.answers['n12-01a'])
-    expect(textbookUnitProgress(lesson, afterSecond).completed).toBe(4)
+    const reloaded = effectiveTextbookProgress(lesson, afterFirst)!
+    expect(reloaded).toBe(afterFirst)
+    const second = getItem('n12-p002-q01-const')
+    const afterSecond = answerTextbookItem(reloaded, lesson, second, second.answer, 600)
+    expect(afterSecond.answers[first.id].value).toBe('2')
+    expect(afterSecond.answers[second.id].value).toBe('-7')
+    expect(afterSecond.archivedRevisions).toEqual(afterFirst.archivedRevisions)
+    expect(textbookUnitProgress(lesson, afterSecond).completed).toBe(2)
   })
 
-  it('does not migrate unrelated unit revisions or artificially resolve incorrect records', () => {
-    expect(effectiveTextbookProgress(unit, {
-      ...oldProgress(), unitId: unit.unitId, unitRevision: unit.revision - 1,
-    })).toBeUndefined()
-    const v1 = oldProgress()
-    v1.completedAt = undefined
-    const migrated = effectiveTextbookProgress(lesson, v1)!
-    expect(migrated.previousRevisionCompletedAt).toBeUndefined()
-    expect(textbookUnitProgress(lesson, migrated).completed).toBe(2)
+  it('manual restart wipes only current N12 answers while retaining old version archive', () => {
+    const v2 = oldProgress(2)
+    const first = getItem('n12-p002-q01-coef')
+    const active = answerTextbookItem(v2, lesson, first, first.answer, 500)
+    const restarted = resetTextbookUnitProgress(lesson, active, 700)!
+    expect(restarted.answers).toEqual({})
+    expect(restarted.startedAt).toBe(700)
+    expect(restarted.unitRevision).toBe(3)
+    expect(restarted.archivedRevisions).toEqual(active.archivedRevisions)
+    expect(restarted.completedAt).toBeUndefined()
+    expect(textbookUnitProgress(lesson, restarted).completed).toBe(0)
+    expect(resetTextbookUnitProgress(lesson, v2, 701)?.archivedRevisions?.['2'].answers)
+      .toEqual(v2.answers)
+  })
+
+  it('keeps ordinary other-unit revision invalidation and historical P-002 migration', () => {
+    const stale = oldProgress(1)
+    expect(effectiveTextbookProgress(unit, { ...stale, unitId: unit.unitId, unitRevision: unit.revision - 1 }))
+      .toBeUndefined()
+    expect(resetTextbookUnitProgress(unit, stale, 1000)).toBeUndefined()
+    const historicalV2 = { ...lesson, revision: 2 }
+    const p002 = effectiveTextbookProgress(historicalV2, stale)!
+    expect(p002.unitRevision).toBe(2)
+    expect(p002.answers).toEqual(stale.answers)
+    expect(p002.previousRevisionCompletedAt).toBe(300)
   })
 })

@@ -1,6 +1,6 @@
 import { expect, test, type Page } from '@playwright/test'
 
-// P-002: source 15 decisions unchanged; 11 local algebra tokens add 26 total.
+// W-MATH-008/P-001: 15 original + 11 P-002 + 9 P-003 = 35 active stages.
 const path = '/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n12'
 const choices: Array<[string, string]> = [
   ['n12-p002-q01-coef', '2'],
@@ -20,9 +20,18 @@ const choices: Array<[string, string]> = [
   ['n12-07', 'x\\le\\frac53'],
   ['n12-08', '20-x'],
   ['n12-09', 'x\\in\\mathbb Z,\\ 0\\le x\\le20'],
+  ['n12-p003-q10-meaning', '箱と20個の菓子の合計金額'],
+  ['n12-p003-q10-cream-coef', '180'],
+  ['n12-p003-q10-pudding-coef', '130'],
+  ['n12-p003-q10-box-fee', '50'],
   ['n12-10', '50+180x+130(20-x)'],
+  ['n12-p003-q11-lower-sign', '\\le'],
+  ['n12-p003-q11-upper-sign', '<'],
   ['n12-11', '3200\\le50+180x+130(20-x)<3300'],
+  ['n12-p003-q12-product-constant', '2600'],
   ['n12-p002-q12-signed-coef', '-130'],
+  ['n12-p003-q12-total-constant', '2650'],
+  ['n12-p003-q12-x-coef', '50'],
   ['n12-12', '3200\\le2650+50x<3300'],
   ['n12-p002-q13-lower', '550'],
   ['n12-p002-q13-upper', '650'],
@@ -34,7 +43,7 @@ const choices: Array<[string, string]> = [
 async function answer(page: Page, id: string, value: string) {
   const trigger = page.getByTestId('textbook-item-' + id)
   await expect(trigger).toBeVisible()
-  if (id.startsWith('n12-p002-')) {
+  if (id.startsWith('n12-p002-') || (id.startsWith('n12-p003-') && id !== 'n12-p003-q10-meaning' && id !== 'n12-p003-q10-box-fee')) {
     await expect(trigger).toHaveClass(/reading-formula-choice--token/)
     await expect(trigger).toContainText(/選択|×/)
   }
@@ -45,12 +54,14 @@ async function answer(page: Page, id: string, value: string) {
   await expect(page.getByTestId('resolved-' + id)).toBeVisible()
 }
 
-test('N12 P-002: 26 progressive inline holes, math, figure gates, retry and reload', async ({ page }) => {
+test('N12 P-003: 35 progressive inline holes, math, figure gates, retry and reload', async ({ page }) => {
   test.setTimeout(150_000)
   await page.goto(path)
   await page.evaluate(() => localStorage.clear())
   await page.reload()
   await expect(page.getByTestId('textbook-reading-flow')).toBeVisible()
+  await expect(page.getByTestId('n12-restart-top')).toBeVisible()
+  expect(choices).toHaveLength(35);
   const f01 = page.getByTestId('textbook-figure-n12-f01')
   const f02 = page.getByTestId('textbook-figure-n12-f02')
   const f03 = page.getByTestId('textbook-figure-n12-f03')
@@ -137,14 +148,31 @@ test('N12 P-002: 26 progressive inline holes, math, figure gates, retry and relo
       await expect(f03.locator('img')).toHaveJSProperty('complete', true)
     }
     await expect(page.locator('.katex-error')).toHaveCount(0)
+    const overflowing = await page.locator('.reading-formula-line--n12').evaluateAll(lines =>
+      lines.filter(line => line.scrollWidth > line.clientWidth + 2)
+        .map(line => line.getAttribute('data-testid')),
+    )
+    expect(overflowing, 'No inner formula horizontal scrollbar').toEqual([])
   }
 
   for (const derivation of ['solve-first', 'solve-second', 'triple-solve', 'cost-range']) {
     await expect(page.locator('[data-derivation-id="' + derivation + '"]')).toHaveCount(1)
   }
   await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
-  expect(await page.evaluate(() => document.documentElement.scrollWidth))
-    .toBeLessThanOrEqual(await page.evaluate(() => document.documentElement.clientWidth + 1))
+
+  // Approved W-MATH-008/P-001 visual contract: all three phone widths,
+  // including every formula's *internal* scroll (document-only is insufficient).
+  for (const width of [320, 375, 390]) {
+    await page.setViewportSize({ width, height: 760 })
+    const overflow = await page.locator('.reading-formula-line--n12').evaluateAll(lines =>
+      lines.filter(line => line.scrollWidth > line.clientWidth + 2)
+        .map(line => line.getAttribute('data-testid')),
+    )
+    expect(overflow, `N12 formula overflow at ${width}px`).toEqual([])
+    expect(await page.evaluate(() => document.documentElement.scrollWidth))
+      .toBeLessThanOrEqual(await page.evaluate(() => document.documentElement.clientWidth + 1))
+    await expect(page.locator('.katex-error')).toHaveCount(0)
+  }
   await page.reload()
   await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
   await expect(page.getByTestId('resolved-n12-p002-q01-coef')).toBeVisible()
@@ -152,7 +180,7 @@ test('N12 P-002: 26 progressive inline holes, math, figure gates, retry and relo
   await expect(f03).toBeVisible()
 })
 
-test('N12 P-002: old v1 progress keeps source answers and archives supplemental history', async ({ page }) => {
+test('N12 P-003: v1 history is archived and a genuine restart begins at Q01', async ({ page }) => {
   await page.goto(path)
   await page.evaluate(() => {
     localStorage.clear()
@@ -179,21 +207,36 @@ test('N12 P-002: old v1 progress keeps source answers and archives supplemental 
 
   await answer(page, 'n12-p002-q01-coef', '2')
   await answer(page, 'n12-p002-q01-const', '-7')
-  await expect(page.getByTestId('resolved-n12-01')).toBeVisible()
+  await expect(page.getByTestId('textbook-item-n12-01')).toBeVisible()
+  await answer(page, 'n12-01', 'x>-\\frac72')
   await expect(page.getByTestId('textbook-item-n12-p002-q02-coef')).toBeVisible()
 
   const saved = await page.evaluate(() => {
     const state = JSON.parse(localStorage.getItem('kyotsu-step-store') || '{}').state
     return state.textbookProgress['math-numbers-expressions-n12']
   })
-  expect(saved.unitRevision).toBe(2)
+  expect(saved.unitRevision).toBe(3)
   expect(saved.migratedFromRevision).toBe(1)
   expect(saved.previousRevisionCompletedAt).toBe(250)
   expect(saved.completedAt).toBeUndefined()
-  expect(saved.answers['n12-01'].value).toBe('x>-\\frac72')
-  expect(saved.answers['n12-01a'].value).toBe('-7<2x')
+  expect(saved.archivedRevisions['1'].answers['n12-01'].value).toBe('x>-\\frac72')
+  expect(saved.archivedRevisions['1'].answers['n12-01a'].value).toBe('-7<2x')
   expect(saved.answers['n12-p002-q01-coef'].value).toBe('2')
   await page.reload()
   await expect(page.getByTestId('resolved-n12-01')).toBeVisible()
   await expect(page.getByTestId('textbook-item-n12-p002-q02-coef')).toBeVisible()
+
+  page.once('dialog', dialog => dialog.accept())
+  await page.getByTestId('n12-restart-top').click()
+  await expect(page.getByTestId('textbook-item-n12-p002-q01-coef')).toBeVisible()
+  await expect(page.getByTestId('resolved-n12-01')).toHaveCount(0)
+  const afterReset = await page.evaluate(() =>
+    JSON.parse(localStorage.getItem('kyotsu-step-store') || '{}').state
+      .textbookProgress['math-numbers-expressions-n12'],
+  )
+  expect(afterReset.unitRevision).toBe(3)
+  expect(afterReset.answers).toEqual({})
+  expect(afterReset.archivedRevisions['1']).toEqual(saved.archivedRevisions['1'])
+  await page.reload()
+  await expect(page.getByTestId('textbook-item-n12-p002-q01-coef')).toBeVisible()
 })

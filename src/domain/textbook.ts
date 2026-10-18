@@ -18,6 +18,16 @@ export type TextbookChapterGroup = {
   units: TextbookUnit[]
 }
 
+export type TextbookRevisionArchive = {
+  unitRevision: number
+  startedAt: number
+  updatedAt: number
+  answers: Record<string, TextbookAnswerRecord>
+  completedAt?: number
+  previousRevisionCompletedAt?: number
+  migratedFromRevision?: number
+}
+
 export type TextbookUnitProgress = {
   unitId: string
   unitRevision: number
@@ -25,9 +35,11 @@ export type TextbookUnitProgress = {
   updatedAt: number
   answers: Record<string, TextbookAnswerRecord>
   completedAt?: number
-  /** N12 v1 completion is retained for historical provenance, not v2 completion. */
+  /** N12 completion of a previous version is history, never v3 completion. */
   previousRevisionCompletedAt?: number
   migratedFromRevision?: number
+  /** N12 only: full old revision records remain recoverable after v3 restart. */
+  archivedRevisions?: Record<string, TextbookRevisionArchive>
 }
 
 export function normalizeTextbookAnswer(value: string) {
@@ -102,25 +114,77 @@ export function isTextbookAnswerCorrect(item: TextbookItem, value: string) {
 }
 
 /**
- * P-002: Preserve the old N12 records while making its eleven new token gaps
- * genuinely unanswered. Old supplemental item IDs never overlap new token IDs.
- * Other units keep the ordinary revision-invalidates-progress behavior.
+ * W-MATH-008/P-001: A revised N12 must start from its *first* hole,
+ * while preserving the complete prior answer ledger as a versioned archive.
+ * Pure and idempotent: repeated reads do not mutate the persisted source.
  */
+function migrateN12ToRevision3(progress: TextbookUnitProgress): TextbookUnitProgress {
+  const oldRevision = progress.unitRevision
+  const oldArchive: TextbookRevisionArchive = {
+    unitRevision: oldRevision,
+    startedAt: progress.startedAt,
+    updatedAt: progress.updatedAt,
+    answers: { ...progress.answers },
+    ...(progress.completedAt !== undefined ? { completedAt: progress.completedAt } : {}),
+    ...(progress.previousRevisionCompletedAt !== undefined
+      ? { previousRevisionCompletedAt: progress.previousRevisionCompletedAt } : {}),
+    ...(progress.migratedFromRevision !== undefined
+      ? { migratedFromRevision: progress.migratedFromRevision } : {}),
+  }
+  return {
+    unitId: progress.unitId,
+    unitRevision: 3,
+    startedAt: progress.updatedAt,
+    updatedAt: progress.updatedAt,
+    answers: {},
+    archivedRevisions: { ...(progress.archivedRevisions ?? {}), [String(oldRevision)]: oldArchive },
+    migratedFromRevision: oldRevision,
+    ...(progress.completedAt !== undefined
+      ? { previousRevisionCompletedAt: progress.completedAt }
+      : progress.previousRevisionCompletedAt !== undefined
+        ? { previousRevisionCompletedAt: progress.previousRevisionCompletedAt }
+        : {}),
+  }
+}
+
 export function effectiveTextbookProgress(unit: TextbookUnit, progress: TextbookUnitProgress | undefined): TextbookUnitProgress | undefined {
   if (!progress) return undefined
   if (progress.unitRevision === unit.revision) return progress
-  if (unit.unitId !== 'math-numbers-expressions-n12' || unit.revision !== 2 || progress.unitRevision !== 1) {
-    return undefined
+  if (unit.unitId !== 'math-numbers-expressions-n12') return undefined
+
+  if (unit.revision === 3 && (progress.unitRevision === 1 || progress.unitRevision === 2)) {
+    return migrateN12ToRevision3(progress)
   }
 
+  // Historical P-002 behavior is retained for older saved review builds.
+  if (unit.revision === 2 && progress.unitRevision === 1) {
+    return {
+      ...progress,
+      unitRevision: 2,
+      migratedFromRevision: 1,
+      ...(progress.completedAt !== undefined ? { previousRevisionCompletedAt: progress.completedAt } : {}),
+      completedAt: undefined,
+      answers: { ...progress.answers },
+    }
+  }
+  return undefined
+}
+
+/** N12 v3 reset keeps old archived revisions, but clears all v3 active answers. */
+export function resetTextbookUnitProgress(unit: TextbookUnit, progress: TextbookUnitProgress | undefined, now: number): TextbookUnitProgress | undefined {
+  if (unit.unitId !== 'math-numbers-expressions-n12' || unit.revision !== 3 || !progress) return undefined
+  const current = effectiveTextbookProgress(unit, progress)
+  if (!current) return undefined
   return {
-    ...progress,
-    unitRevision: 2,
-    migratedFromRevision: 1,
-    ...(progress.completedAt !== undefined ? { previousRevisionCompletedAt: progress.completedAt } : {}),
-    completedAt: undefined,
-    // Leave all 21 historical records intact. Only current 26 IDs are scored.
-    answers: { ...progress.answers },
+    unitId: unit.unitId,
+    unitRevision: 3,
+    startedAt: now,
+    updatedAt: now,
+    answers: {},
+    ...(current.archivedRevisions ? { archivedRevisions: current.archivedRevisions } : {}),
+    ...(current.migratedFromRevision !== undefined ? { migratedFromRevision: current.migratedFromRevision } : {}),
+    ...(current.previousRevisionCompletedAt !== undefined
+      ? { previousRevisionCompletedAt: current.previousRevisionCompletedAt } : {}),
   }
 }
 
@@ -162,6 +226,7 @@ export function answerTextbookItem(progress: TextbookUnitProgress | undefined, u
     answers,
     ...(currentProgress?.migratedFromRevision !== undefined ? { migratedFromRevision: currentProgress.migratedFromRevision } : {}),
     ...(currentProgress?.previousRevisionCompletedAt !== undefined ? { previousRevisionCompletedAt: currentProgress.previousRevisionCompletedAt } : {}),
+    ...(currentProgress?.archivedRevisions ? { archivedRevisions: currentProgress.archivedRevisions } : {}),
     ...(completed ? { completedAt: currentProgress?.completedAt ?? now } : {}),
   }
 }

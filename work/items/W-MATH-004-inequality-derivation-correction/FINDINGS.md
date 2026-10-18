@@ -34,3 +34,12 @@ All items and readingFlow in N01/N02/N03/N09/N10 inspected. No additional confir
 
 ## F-011 — OPEN / DELIVERY GATES
 Static authoring review is separate from typecheck/Vitest/lint/build, mobile clickthrough, wrong-answer/reveal, persistence/restore, user acceptance and independent publish approval. Do not mark DONE until these gates close or are explicitly blocked with evidence.
+
+## F-012 — CONFIRMED / NEW R3 IN-EQUATION INTERACTION GAP
+P-001 added six mathematically correct stages but they select a full transformed expression outside its *specific computed coefficient or constant*. The user wants the calculated symbol itself to be a local answer hole within the algebra. R3: a pedagogically meaningful local transform is already printed or hidden behind choosing a whole expression, preventing the learner from filling the operation's critical scalar/sign. R3 is distinct from R1 (too many unmodeled operations) and R2 (missing causal bridge); earlier R1/R2 sibling verdicts do not settle R3.
+
+## F-013 — CONFIRMED / DATA AND UI MIGRATION HAZARD
+N12 current revision=1; resolved progress stored per item ID, while the UI disregards progress on revision mismatch. Reusing a former whole-expression ID for a scalar could incorrectly mark it complete. Blind revision increase loses visibility of all old source answers. Thus P-002 requires new token IDs, targeted v1→v2 conversion retaining the 15 unchanged original-answer records and archived supplemental history, plus mobile-tested compact formula gaps. Multi-token holes in one formula block are not naturally step-gated; use one per block within a continuous derivation group.
+
+## F-014 — PENDING / CROSS-CREATION R3 IMPACT
+Current R1/R2 source-level scan N01/N02/N03/N09/N10 found no same-signature confirmed defects but did not specifically test R3. A second-pass R3 ledger by unit/version is proposed, not completed. A confirmed sibling correction would need its own exact approval before content edits; creation stays paused.

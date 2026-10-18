@@ -1,6 +1,6 @@
 # W-MATH-010 — N02 欠けた一次項と係数の言い方
 
-Status: IMPLEMENTED — DRAFT REVIEW / CI PENDING
+Status: VERIFYING
 Updated: 2026-10-18
 Command: CMD-WORK-001 修正
 Parent: W-MATH-008/P-001 impact audit

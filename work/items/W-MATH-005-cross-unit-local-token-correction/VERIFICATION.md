@@ -40,3 +40,16 @@ New GitHub draft PR and main-head integration run must verify typecheck, N01/N03
 
 ### V-012 — PARTIAL PASS + FAIL / second CI browser sequence
 [Textbook CI 39136503642](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39136503642): Typecheck, 177 Vitest checks, production build, mobile/desktop P-004 smoke and N12 browser tests passed; the full textbook mobile smoke then failed three legacy N01/N03 tests at shared answerItem(): old hardcoded solve sequences skip newly approved prerequisite tokens. Later full smoke and P-002 targeted E2E were skipped. [Governance 39136503665](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39136503665): PASS. Updated only the three original E2E sequence fixtures; no content change. Fresh CI and N03 width result pending.
+
+
+### V-013 — PASS / complete P-002 current-main technical QA
+- [Math textbook CI 39136923029](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39136923029): **SUCCESS**, app/test source commit `6144f103140a9a331ab43cd801aa8a10ef906e76`.
+  - Typecheck, all 177 Vitest tests, production build and P-004 asset decode.
+  - N12 rev3 35-stage existing browser suite PASS.
+  - Full math textbook **mobile and desktop** smoke PASS, including new N01/N03 seven steps.
+  - N02/N09 original image/math and chapter catalog regressions PASS, N09 18-stage contract preserved.
+  - Dedicated N01/N03 wrong-answer gating, old v1 completed progress preservation, attempt counts, reloaded state and N03 viewport **320/375/390px** PASS.
+  - Physics textbook E2E and Mathematics Practice setup E2E PASS.
+- [Governance CI 39136923007](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39136923007): **SUCCESS**.
+- Original 28 N01+N03 question IDs and answers, N03 original figure, N09 rev2 four holes and archive, N12 rev3 archive/restart remained invariant. Failed first/second CI runs are separately and permanently recorded above.
+- P-002 remains **VERIFYING for user hands-on acceptance**, not DONE. Main merge and Pages publication still require separate explicit approval. No fresh learner-facing preview URL exists for this unmerged branch; review at draft PR #92.

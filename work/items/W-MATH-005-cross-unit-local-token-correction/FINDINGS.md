@@ -49,3 +49,7 @@ At current-main PR #92, math CI 39136348368 failed one unit assertion in N02's t
 
 ## F-015 — ERROR-QA / original N01/N03 E2E didn't cover approved new prerequisites
 CI 39136503642 exposed 3 existing mobile smoke tests that completed N01/N03 by hardcoded old 15/13-item sequences, skipping the new R3 choices, then asserted later tokens visible; correctly gated app kept them hidden. Repair is test-only: explicitly solve all 3+4 new prerequisite holes before original final question, preserve wrong-answer and mobile checks. The N03 dedicated 320/375/390px test had not yet been reached by that CI; keep width status UNVERIFIED pending rerun.
+
+
+## F-016 — CONFIRMED / final P-002 technical QA and N03 narrow mobile
+Final textbook CI 39136923029 PASS and governance 39136923007 PASS: N01 18 / N03 17, old answer preservation, wrong-answer gating, KaTeX, chapter/catalog, N09 current 18 and N12 current 35, full mobile/desktop, Physics and practice regressions. N03 dedicated E2E passed explicit page-level overflow checks at 320, 375, 390 pixels, before and after filling tokens. Previously F-012 width was UNVERIFIED; it is now verified for these CI viewports only, not a substitute for user hands-on acceptance. No new confirmed R3 defect requiring an additional unapproved sibling edit. Review-only N04–N14 remain not investigated for release; creation queue paused.

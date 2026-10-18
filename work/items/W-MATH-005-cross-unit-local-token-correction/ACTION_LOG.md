@@ -40,3 +40,7 @@ PR #92 head `925baf02b1d96ca554208cbcf47ec88102dc04bf`: Math textbook CI 3913634
 
 ## A-014 — Compiled-app mobile smoke fixture updated after 3 gating failures
 Second textbook CI 39136503642 passed typecheck, all Vitest tests, build, image smoke and N12 regression, then failed the original N01/N03 full-content Playwright smoke three tests: those old sequences attempted original Q07/Q10 before completing the newly inserted seven dependent stages. Added the 3 N01 and 4 N03 IDs/answers in the existing full-solve fixtures, preserving all earlier and later checks. No learner answer/content change; separate fresh CI run required.
+
+
+## A-015 — Final complete CI PASS at code commit 6144f103
+Full third textbook CI [39136923029](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39136923029) completed SUCCESS after 177 tests, typecheck, build, full mobile and desktop math textbook smoke, N12 rev3 checks, N02/N09 original figure/catalog, N01/N03 P-002 old-v1/wrong-answer/reload and N03 320/375/390px, Physics textbook and Math practice regressions. Repository governance [39136923007](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39136923007) SUCCESS. All earlier CI failures retained in A-013/A-014. Draft [PR #92](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/92) remains UNMERGED; no Pages deploy or learner hands-on acceptance authorized/claimed. MASTER_APP_LESSONS §51–53 already records the common R3 rule, so do not duplicate shared lessons while user acceptance is pending.

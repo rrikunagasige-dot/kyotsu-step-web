@@ -1,5 +1,6 @@
 # W-MATH-005 — N01/N03/N09 式内局所計算穴の連動修正
-Status: VERIFYING / W-MATH-006 VISUAL CORRECTION INCLUDED / RELEASE NOT AUTHORIZED
+Status: VERIFYING
+Linked visual correction: W-MATH-006/P-001 included; main/Pages release not authorized.
 Updated: 2026-10-18 JST
 Command: CMD-WORK-001「修正」
 Root cause: W-MATH-004 F-012 / R3 (whole-expression choice obscures local evaluated value)

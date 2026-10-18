@@ -1,5 +1,7 @@
-# W-MATH-004 / P-001 — N12導出補完と不等式54問の品質ゲート（承認待ち）
-Status: PROPOSED / NOT APPROVED FOR APP IMPLEMENTATION
+# W-MATH-004 / P-001 — N12導出補完と不等式54問の品質ゲート
+Status: APPROVED FOR IMPLEMENTATION / MERGE AND PAGES NOT APPROVED
+Approval: 2026-10-18 JST, user explicitly stated 「P-001を承認する。N12の導出6段階追加を実装し、他の承認済み単元への影響も点検して続けて。」 in this chat.
+Approval scope: exact seven-point P-001; review-only N12 app + focused tests + cross-creation audit and records; no main/Pages authority.
 Date: 2026-10-18 JST
 Instruction: CMD-WORK-001「修正」 — user approved entering assessment/proposal via 「それでつづけて？」 after exact command-match question.
 Repo: rrikunagasige-dot/kyotsu-step-web, main 023bec8219fbb44194e7f69bed306af44e7e235f.
@@ -7,7 +9,7 @@ Repo: rrikunagasige-dot/kyotsu-step-web, main 023bec8219fbb44194e7f69bed306af44e
 ## Problem and verified evidence
 The user found that inequality teaching skips too much reasoning, and suspects successive later sections decline in pedagogical rigor. In the review-visible N12 learner app, original source Q01/Q02 jump directly to solved bounds; Q06 solves both branches in one answer; Q12/Q13 hide multiple arithmetic transformations in one choice. See INEQUALITY_COGNITIVE_AUDIT.md (54 rows) and FINDINGS.md. N11/N13/N14 are **unimplemented P-003 draft**, not confirmed app defects. The hypothesis of universally decreasing quality is not proven: some late-stage N03/N09/N10 derivations remain fully staged.
 
-## Exact implementation requested — only after approval
+## Exact approved implementation
 1. **Repair existing review-only N12 learner copy** in `src/data/textbook/math/numbers/n12Lesson.ts` and its focused tests. Preserve all 15 original source markers, their ordering, the original three PNGs and gating (F03 after Q15), and all current 15 stable response IDs. Keep `status:'review'` and the 3-topic/2-heading information architecture.
 2. Split five confirmed compressed locations into meaningful thought/derivation substeps, with **six additional authored inline answer stages**, not six new source questions:
    - Q01 insert `n12-01a` (after moving terms, `-7<2x`) before existing final result.
@@ -36,4 +38,4 @@ Original teacher-edited Word mother (212863 bytes), existing N01/N02/N03/N09/N10
 ## Approval question
 **P-001 approval** requests authorization for the N12 15→21 inline-cognitive-stage review-only rewrite and exactly scoped QA, plus the linked audit/design reconciliation described above. It does **not** request permission to merge to main, deploy Pages, or implement N11/N13/N14. Material feedback creates new P-002 and awaits explicit approval.
 
-Current gate: STOP — assessment/design PR only; no learner app changes.
+Current gate: IMPLEMENTING on isolated branch; do not merge to main or deploy without separate explicit approval.

@@ -1,5 +1,5 @@
 # W-MATH-004 — ACTION LOG
-Status: ASSESSMENT ONLY
+Status: APPROVED IMPLEMENTATION / CI AND USER QA PENDING
 Date: 2026-10-18 JST
 
 ## A-001 — Identity and command recovery
@@ -13,3 +13,15 @@ Read main N12 implementation and N01/N02/N03/N09/N10 lesson code. Flagged N12 Q0
 
 ## A-004 — Propose exact correction; STOP
 Authored 54-row `INEQUALITY_COGNITIVE_AUDIT.md`, preliminary `CROSS_CREATION_IMPACT_LEDGER.md`, and complete P-001 for review-only N12 repair + linked audits. No source/app/asset/Pages changes. Next action: user exact proposal approval or revision.
+
+## A-005 — Explicit user authorization
+2026-10-18 JST, user: 「P-001を承認する。N12の導出6段階追加を実装し、他の承認済み単元への影響も点検して続けて。」 No main or Pages merge approval.
+
+## A-006 — N12 in isolated implementation branch
+Preserved N12 unit ID/revision=1, 15 Word source mapping keys, 15 old response IDs, 3 image paths and F03-after-Q15 order. Added exactly six supplemental reasoning stages: n12-01a, n12-02a, n12-06a, n12-06b, n12-12a, n12-13a. Added intermediate algebra, sign/why prose and feedback. Authored n12DerivationIntegrity.test.ts for source/flow/choices/math/figure gating/headings. No other app or image changes.
+
+## A-007 — Sibling approved-creation impact audit
+Inspected every item and readingFlow transition in N01 (15), N02 (12), N03 (13), N09 (14) and N10 (21), including beginning/middle/last; recorded source blob and scope-limited R1/R2 status in CROSS_CREATION_IMPACT_LEDGER.md. No same-signature linked correction confirmed in source scan; runtime QA still open.
+
+## A-008 — Pending-creation dependency and lesson timing
+Authored P003_DESIGN_DEPENDENCY.md for N11/N13/N14 without editing PR #73. Do not mark DONE or update canonical shared lessons before verified correction, user acceptance and any linked corrections.

@@ -63,11 +63,23 @@ const rawN12 = {
       { id: 'paragraph-system-first', type: 'paragraph' as const, parts: [
         T('まず別々に解く。一つ目では、'), M('x'), T(' の項を右にまとめて、'),
       ] },
-      { id: 'formula-n12-01', type: 'formula' as const, parts: [M('x-2<3x+5\\quad\\Longrightarrow\\quad'), C('n12-01')] },
+      { id: 'formula-n12-01a', type: 'formula' as const, derivationId: 'solve-first', parts: [
+        M('x-2<3x+5\\quad\\Longrightarrow\\quad-2<2x+5\\quad\\Longrightarrow\\quad'), C('n12-01a'),
+      ] },
+      { id: 'paragraph-system-first-after', type: 'paragraph' as const, parts: [
+        T('両辺から同じ数を引いても不等号の向きは変わらない。最後は正の2で割ろう。'),
+      ] },
+      { id: 'formula-n12-01', type: 'formula' as const, derivationId: 'solve-first', parts: [M('-7<2x\\quad\\Longrightarrow\\quad'), C('n12-01')] },
       { id: 'paragraph-system-second', type: 'paragraph' as const, parts: [
         T('二つ目でも、'), M('x'), T(' を片方に集める。'),
       ] },
-      { id: 'formula-n12-02', type: 'formula' as const, parts: [M('x+4\\le5-x\\quad\\Longrightarrow\\quad'), C('n12-02')] },
+      { id: 'formula-n12-02a', type: 'formula' as const, derivationId: 'solve-second', parts: [
+        M('x+4\\le5-x\\quad\\Longrightarrow\\quad2x+4\\le5\\quad\\Longrightarrow\\quad'), C('n12-02a'),
+      ] },
+      { id: 'paragraph-system-second-after', type: 'paragraph' as const, parts: [
+        T('残った係数2は正なので、割っても不等号の向きはそのまま。'),
+      ] },
+      { id: 'formula-n12-02', type: 'formula' as const, derivationId: 'solve-second', parts: [M('2x\\le1\\quad\\Longrightarrow\\quad'), C('n12-02')] },
       { id: 'figure-first-lines', type: 'figure' as const, figureId: 'n12-f01' },
       { id: 'paragraph-system-figure', type: 'paragraph' as const, parts: [
         T('数直線の○はその端点を含まず、●は含むという意味である。上下どちらか片方に入ればよいのだろうか。'),
@@ -91,9 +103,23 @@ const rawN12 = {
         T(' を考えよう。三つの式が並ぶときも、中央の式を使って二つの条件に分ける。まず必要な二つの不等式は '),
         C('n12-05'), T('。'),
       ] },
-      { id: 'paragraph-triple-solve', type: 'paragraph' as const, parts: [T('それぞれを解くと、')] },
-      { id: 'formula-n12-06', type: 'formula' as const, parts: [
-        M('\\begin{cases}3x+2\\le2x+4\\\\2x+4\\le9-x\\end{cases}\\quad\\Longrightarrow\\quad'), C('n12-06'),
+      { id: 'paragraph-triple-solve', type: 'paragraph' as const, parts: [
+        T('二つを一度に片づけず、まず左側の不等式から。'),
+      ] },
+      { id: 'formula-n12-06a', type: 'formula' as const, derivationId: 'triple-solve', parts: [
+        M('3x+2\\le2x+4\\quad\\Longrightarrow\\quad x+2\\le4\\quad\\Longrightarrow\\quad'), C('n12-06a'),
+      ] },
+      { id: 'paragraph-triple-right', type: 'paragraph' as const, parts: [
+        T('続いて右側。'), M('-x'), T(' を左に移した後、定数項を整理しよう。'),
+      ] },
+      { id: 'formula-n12-06b', type: 'formula' as const, derivationId: 'triple-solve', parts: [
+        M('2x+4\\le9-x\\quad\\Longrightarrow\\quad3x+4\\le9\\quad\\Longrightarrow\\quad'), C('n12-06b'),
+      ] },
+      { id: 'paragraph-triple-compare', type: 'paragraph' as const, parts: [
+        T('それぞれの結果を比べる。右側の不等式は正の3で割る。'),
+      ] },
+      { id: 'formula-n12-06', type: 'formula' as const, derivationId: 'triple-solve', parts: [
+        M('\\begin{cases}x\\le2\\\\3x\\le5\\end{cases}\\quad\\Longrightarrow\\quad'), C('n12-06'),
       ] },
       { id: 'figure-triple-lines', type: 'figure' as const, figureId: 'n12-f02' },
       { id: 'paragraph-triple-limit', type: 'paragraph' as const, parts: [
@@ -126,10 +152,31 @@ const rawN12 = {
         T('「3200円'), K('以上'), T('3300円'), K('未満'), T('」を、今の金額を使って表すと、'),
       ] },
       { id: 'formula-n12-11', type: 'formula' as const, derivationId: 'cost-range', parts: [C('n12-11')] },
-      { id: 'paragraph-cost-simplify', type: 'paragraph' as const, parts: [T('計算しやすい形に整理すると、')] },
-      { id: 'formula-n12-12', type: 'formula' as const, derivationId: 'cost-range', parts: [C('n12-12')] },
-      { id: 'paragraph-cost-solve', type: 'paragraph' as const, parts: [T('さらに、両端から同じ値を引き、正の50で割ると、')] },
-      { id: 'formula-n12-13', type: 'formula' as const, derivationId: 'cost-range', parts: [C('n12-13')] },
+      { id: 'paragraph-cost-simplify', type: 'paragraph' as const, parts: [
+        T('まず括弧を展開する。'), M('130'), T(' は括弧の両方の項に掛かり、'), M('-x'),
+        T(' に掛けた部分は負になる。'),
+      ] },
+      { id: 'formula-n12-12a', type: 'formula' as const, derivationId: 'cost-range', parts: [
+        M('50+180x+130(20-x)\\quad\\Longrightarrow\\quad'), C('n12-12a'),
+      ] },
+      { id: 'paragraph-cost-collect', type: 'paragraph' as const, parts: [
+        T('箱代と定数項、'), M('x'), T(' の項をそれぞれまとめ、金額の不等式に戻す。'),
+      ] },
+      { id: 'formula-n12-12', type: 'formula' as const, derivationId: 'cost-range', parts: [
+        M('3200\\le50+180x+2600-130x<3300\\quad\\Longrightarrow\\quad'), C('n12-12'),
+      ] },
+      { id: 'paragraph-cost-solve', type: 'paragraph' as const, parts: [
+        T('金額の三つの辺から、同じ'), M('2650'), T('を引いて整理しよう。'),
+      ] },
+      { id: 'formula-n12-13a', type: 'formula' as const, derivationId: 'cost-range', parts: [
+        M('3200\\le2650+50x<3300\\quad\\Longrightarrow\\quad'), C('n12-13a'),
+      ] },
+      { id: 'paragraph-cost-positive', type: 'paragraph' as const, parts: [
+        T('次はすべての辺を正の'), M('50'), T('で割る。正の数で割るときは不等号の向きが変わらない。'),
+      ] },
+      { id: 'formula-n12-13', type: 'formula' as const, derivationId: 'cost-range', parts: [
+        M('550\\le50x<650\\quad\\Longrightarrow\\quad'), C('n12-13'),
+      ] },
       { id: 'paragraph-n12-14', type: 'paragraph' as const, parts: [
         T('ここで得たのは実数としての範囲である。問題は「お菓子を何個にするか」だった。最初に保存した整数条件 '),
         M('x\\in\\mathbb Z,\\ 0\\le x\\le20'), T(' と比べると、実際に選べる '),
@@ -146,9 +193,15 @@ const rawN12 = {
       ] },
     ],
     items: [
+      item('n12-01a', '同じ数を両辺から引き、xの項を右にまとめよう。', '-7<2x', 'formula',
+        ['-7>2x', '7<2x', '-7<4x'],
+        'representation-link', 'strong', ['まず両辺からxを引き、次に5を引く。']),
       item('n12-01', '最初の不等式をxについて解こう。', 'x>-\\frac72', 'formula',
         ['x< -\\frac72', 'x>\\frac72', 'x\\ge-\\frac72'],
         'representation-link', 'strong', ['−7<2xになったら、正の2で割る。']),
+      item('n12-02a', 'xを左に、定数を右にまとめよう。', '2x\\le1', 'formula',
+        ['2x\\ge1', '2x<1', '2x\\le9'],
+        'representation-link', 'strong', ['両辺から4を引く。等号は消さない。']),
       item('n12-02', '二つ目の不等式をxについて解こう。', 'x\\le\\frac12', 'formula',
         ['x<\\frac12', 'x\\ge\\frac12', 'x\\le-\\frac12'],
         'representation-link', 'strong', ['最後の等号は問題の条件に残っている。']),
@@ -161,6 +214,12 @@ const rawN12 = {
       item('n12-05', '三連不等式を二つの条件に分けよう。', '3x+2\\le2x+4\\ \\text{かつ}\\ 2x+4\\le9-x', 'formula',
         ['3x+2\\le9-x', '3x+2\\le2x+4\\ \\text{または}\\ 2x+4\\le9-x', '3x+2\\ge2x+4\\ \\text{かつ}\\ 2x+4\\le9-x'],
         'representation-link', 'medium', ['中央の式と両隣をそれぞれ比較する。']),
+      item('n12-06a', '左側の不等式で、xの上限は？', 'x\\le2', 'formula',
+        ['x\\ge2', 'x<2', 'x\\le-2'],
+        'representation-link', 'medium', ['x+2≤4から両辺の2を引く。']),
+      item('n12-06b', '右側の不等式を移項し、xの係数を確かめよう。', '3x\\le5', 'formula',
+        ['3x\\ge5', '3x<5', '3x\\le13'],
+        'representation-link', 'medium', ['3x+4≤9から両辺の4を引く。']),
       item('n12-06', '二つの不等式の解をそれぞれ選ぼう。', 'x\\le2,\\quad x\\le\\frac53', 'formula',
         ['x\\le2,\\quad x\\ge\\frac53', 'x\\ge2,\\quad x\\le\\frac53', 'x\\le2,\\quad x\\le\\frac35'],
         'transfer', 'medium', ['一方の計算では3x≤5になる。']),
@@ -178,9 +237,15 @@ const rawN12 = {
       item('n12-11', '金額の「以上・未満」を式にしよう。', '3200\\le50+180x+130(20-x)<3300', 'formula',
         ['3200<50+180x+130(20-x)\\le3300', '3200\\le50+180x+130(20-x)\\le3300', '3200\\ge50+180x+130(20-x)<3300'],
         'representation-link', 'medium', ['以上には等号があり、未満には等号がない。']),
+      item('n12-12a', '括弧を展開した式を選ぼう。', '50+180x+2600-130x', 'formula',
+        ['50+180x+2600+130x', '50+180x+20-130x', '50+180x+2600-130'],
+        'representation-link', 'medium', ['130を20にも−xにも掛ける。']),
       item('n12-12', '同類項をまとめて金額を整理しよう。', '3200\\le2650+50x<3300', 'formula',
         ['3200\\le2600+50x<3300', '3200\\le2650+310x<3300', '3200\\le2650-50x<3300'],
         'transfer', 'medium', ['箱代とプリン20個分を定数項にする。']),
+      item('n12-13a', '三つの辺から2650を引こう。', '550\\le50x<650', 'formula',
+        ['550<50x\\le650', '650\\le50x<550', '550\\le x<650'],
+        'representation-link', 'medium', ['3200−2650と3300−2650を計算する。']),
       item('n12-13', '実数としてのxの範囲を解こう。', '11\\le x<13', 'formula',
         ['11<x\\le13', '11\\le x\\le13', 'x\\le11\\ \\text{または}\\ x>13'],
         'transfer', 'light', ['各辺から2650を引き、正の50で割る。']),

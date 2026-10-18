@@ -1,5 +1,5 @@
 # W-MATH-004 — VERIFICATION
-Status: ASSESSMENT CHECKS ONLY / IMPLEMENTATION NOT STARTED
+Status: IMPLEMENTATION STATIC CHECKS COMPLETE / CI, BROWSER AND ACCEPTANCE PENDING
 Date: 2026-10-18 JST
 
 ## Recorded checks
@@ -18,3 +18,10 @@ Date: 2026-10-18 JST
 - V-011 pending: user actual hands-on acceptance, merged PR/Pages only under separate authorization, dedup lessons and Work DONE.
 
 Assessment PASS is **not** app verification, user acceptance or release authorization.
+
+## Implementation stage (remote CI still pending)
+- V-007 PASS STATIC: 21 unique item IDs and 21 matching inline choice refs, original 15 IDs preserved, six new substep IDs, two headings, same 3 figure paths, F03 after final Q15, same status review and revision 1. Targeted Vitest authored but execution pending.
+- V-008 PASS MATH REVIEW / CI PENDING: verified Q01/Q02/Q06/Q12/Q13 algebra, inequality direction and integer/cost boundaries x=11:3200, x=12:3250, x=13:3300. Choices contain unique plausible distractors; browser feedback remains pending.
+- V-009 PENDING: PR Actions typecheck/lint/Vitest/build, math textbook CI, full 21-step desktop+mobile flow, KaTeX, wrong feedback, answered-state reveal, persistence and progress restore.
+- V-010 PASS SOURCE WITH LIMIT: all approved N01/02/03/09/10 item and readingFlow source scanned; no same-signature R1/R2 confirmed; source blob and precise evidence in updated impact ledger. Browser/mobile/other errors UNVERIFIED.
+- V-011 PENDING: user hands-on acceptance, separate main merge/Pages approval, successful deployment, shared-memory close and correction-queue recheck before P-003.

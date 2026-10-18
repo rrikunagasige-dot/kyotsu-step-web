@@ -1,5 +1,5 @@
 # W-MATH-004 — FINDINGS
-Status: INITIAL ASSESSMENT / NOT IMPLEMENTATION VERIFICATION
+Status: APPROVED CORRECTION CODE PREPARED / CI AND USER REVIEW PENDING
 Date: 2026-10-18 JST
 
 ## F-001 — CONFIRMED / ERROR-REASONING-PEDAGOGY
@@ -25,3 +25,12 @@ WORK_SYSTEM §12B requires cross-approved-creation impact ledger and linked corr
 
 ## F-008 — OPEN-QUESTION / QA
 Original author's answer booklet absent; actual browser/phone usability and the source figures after proposed N12 changes remain untested. N11-F02/N13-F02/N14-F01 timing specified in paused P-003 and must not become answer leaks in later implementation.
+
+## F-009 — CONFIRMED / APPROVAL
+The user explicitly approved exact P-001 on 2026-10-18 JST. It authorizes review-only N12 six additional stages, focused tests, sibling impact audit. Main merge/Pages publication remain unapproved.
+
+## F-010 — SOURCE-LEVEL SIBLING IMPACT
+All items and readingFlow in N01/N02/N03/N09/N10 inspected. No additional confirmed R1/R2 match; N02 Q09 and N03 Q13 intentionally combine previously modeled operations in late transfer exercises. Findings do not certify unrelated errors or live browser/mobile behavior. See ledger and blob SHA evidence.
+
+## F-011 — OPEN / DELIVERY GATES
+Static authoring review is separate from typecheck/Vitest/lint/build, mobile clickthrough, wrong-answer/reveal, persistence/restore, user acceptance and independent publish approval. Do not mark DONE until these gates close or are explicitly blocked with evidence.

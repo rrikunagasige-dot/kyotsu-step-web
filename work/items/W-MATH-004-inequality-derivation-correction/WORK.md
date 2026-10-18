@@ -1,9 +1,9 @@
 # W-MATH-004 — 不等式の導出不足・後半品質低下の修正
-Status: PROPOSED / ASSESSMENT COMPLETE / APP CHANGE NOT AUTHORIZED
+Status: IMPLEMENTING — exact P-001 approved / main and Pages not authorized
 Updated: 2026-10-18 JST
 Command: CMD-WORK-001「修正」
-Proposal: P-001 — PROPOSED / NOT APPROVED
-Branch: work/W-MATH-004-inequality-derivation-audit-20261018 (docs-only)
+Proposal: P-001 — APPROVED on 2026-10-18 JST (verbatim user approval in PROPOSAL.md)
+Branch: work/W-MATH-004-inequality-derivation-impl-20261018 (implementation; starts from audit branch)
 Repo: rrikunagasige-dot/kyotsu-step-web, authoritative main 023bec8219fbb44194e7f69bed306af44e7e235f.
 
 ## Objective
@@ -23,8 +23,8 @@ AGENTS.md, governance/CONSTITUTION.md, governance/INSTRUCTION_DICTIONARY.md CMD-
 Assessment, creation of source/cognitive audit and impact ledger, complete P-001 proposal; subsequent N12 implementation only after exact P-001 approval. Do Not Touch: N11/N13/N14 new app code, original Word, existing accepted other units, other modes, progress state, main/Pages, PR #73.
 
 ## Next step
-1. Present exact P-001 to user; await approval. If user changes it, REVISE-PROPOSAL.
-2. On exact approval: separate implementation branch, N12 21-stage guided correction and tests, regression/cross-audit, review link, user acceptance and lesson close.
-3. Only after correction closure re-evaluate paused P-003 creation and, if materially changed, present revised creation Proposal before any N11/N13/N14 code.
+1. Commit N12 21-stage correction and focused integrity tests on a separate implementation branch; audit five other accepted units under shared R1/R2 failure signatures.
+2. Run CI, inspect math/unit typecheck, browser/mobile and progression gates; leave unknown checks explicitly unverified.
+3. Present implementation PR and review link. Await user hands-on acceptance and distinct main/Pages authorization; reconcile reusable lesson only after verification and all linked corrections close. PR #73 P-003 remains paused.
 
 Related links: [app](https://rrikunagasige-dot.github.io/kyotsu-step-web/#/learning/setup?subject=math-1a); [PR #73](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/73).

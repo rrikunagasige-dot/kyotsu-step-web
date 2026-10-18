@@ -37,3 +37,11 @@ Assessment PASS is **not** app verification, user acceptance or release authoriz
 - V-016 THIRD MATH CI FAILURE / PATCH: run 39092932229 passed typecheck, focused math tests (including new N12 five checks), build, preview smoke, but old mobile textbook smoke expected Q01 before Q01a (three retries). Updated old smoke progression for 21 stages. Grouped bridging paragraphs into four contiguous math derivation cards; strengthened Vitest and E2E. Latest CI pending.
 
 - V-017 FOURTH MATH CI FAILURE / TEST FIX: 39093203142 passed governance/typecheck/math Vitest/build/preview/mobile and desktop complete smoke/N02-N09 26 choices. New N12 E2E failed in mobile+desktop at line55 because hidden seeded distractor -7>2x was not among selected strong-scaffold 2 choices. Test now chooses a visible wrong option; longer end-to-end timeout and earlier workflow step; new run pending.
+
+## P-002 verification ledger — 2026-10-18 JST (new correction)
+Status: CODE STAGED / CI PENDING
+- Baseline: main f4d3ab40a27808a3ecb56c379efbe16a3fe19be4 / N12 revision 1 / 21 answers.
+- Code change staged only on work/W-MATH-004-P002-inline-token-implementation-20261018, originating at docs-only proposal snapshot; no main or published app mutation.
+- Static in-memory check passed: 26 flow choices, 26 matching item IDs in sequence, no active retired P-001 supplemental IDs.
+- Eleven explicit scalar/signed-coefficient bounds have exact authored math and distractors; original 15 source answer IDs untouched. Targeted UI and v1 state converter prepared.
+- Still **UNVERIFIED** until CI: KaTeX formula compilation, typecheck, Vitest 26/legacy history, Playwright mobile and desktop, figure image timing, viewport width and restored completion. Do not report this as DONE.

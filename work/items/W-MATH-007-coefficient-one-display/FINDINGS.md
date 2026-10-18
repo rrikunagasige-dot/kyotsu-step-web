@@ -19,3 +19,13 @@ Impact: must combine the variable into the visible resolved slot and trim exactl
 Corrective rule / next action: require explicit adjacent coefficient-factor context, non-effect regression, no global replacement.
 Promote to Decision: NO
 Promote to Lesson: NO
+
+## F-003
+Date: 2026-10-18 JST
+Type: CROSS-UNIT AUDIT — NO NEW CORRECTION
+Statement: Comprehensive source-only scan after P-001 implementation found the same choice-followed-by-x formula boundary only four times in N12; of those, only Q06-left has coefficient answer "1". All 11 published math lesson modules and three math slices/helpers show no second approved-unit defect with this signature; W-MATH-005 draft #80 was separately checked and unchanged. N03 matches for text "1x" are the valid value "11x" and do not indicate unit-coefficient syntax.
+Evidence: main 066e0da source tree and math lesson files; N12 n12Lesson.ts Q01/Q02/Q06-left/Q06-right values 2/2/1/3; draft #80 source review.
+Impact: isolated renderer display correction suffices; no duplicate revision directive or mass replacement warranted.
+Corrective rule / next action: complete final regression checks; defer shared lesson promotion and creation until acceptance.
+Promote to Decision: NO
+Promote to Lesson: NO — await user acceptance and deduplication.

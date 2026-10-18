@@ -1,5 +1,5 @@
 # W-MATH-007 — 式内係数1の正答表示を x にする
-Status: IMPLEMENTING
+Status: VERIFYING
 Updated: 2026-10-18 JST
 Command: CMD-WORK-001「修正」
 Mode: 数学 / 教科書・学習モード
@@ -10,4 +10,5 @@ Scope: N12 / n12-p002-q06-left-coef visible coefficient-one substitution and nar
 Protected: N12 26 original+local answers/IDs/choice values, figures, mathematical text, derivation sequence, history, titles and acceptance. W-MATH-005 PR #80 draft nine holes and its old 42 answers; unrelated lessons, physics and math-practice.
 Approval: P-001 approved by user's 「いいよ続けて」 on 2026-10-18 JST for isolated implementation/tests only; **main merge and Pages deployment are not authorized** for W-MATH-007.
 Current: Source review identifies that renderer renders a resolved choice value 1 as its own math span immediately before a following math span x+2\\le4. Result visually reads 1x+2\\le4.
-Next: Implement isolated coefficient-one rendering and N12 E2E, verify QA and secondary cross-approved-unit impact, then stop for separate release authorization. Creation and lesson updates stay paused.
+Current: Isolated implementation PR #85 at 2ea75125b3dcd2e6b616718ddb78087e3dc6c7ca completed first full Math textbook CI run #39105405248 with success, including desktop/mobile N12, N02/N09, physics and math-practice. Secondary all-math-unit source impact audit found no additional case. Additional neighbor coefficient-2 display assertions and QA records are being committed for one final verification pass.
+Next: Confirm latest PR CI, preserve draft/no-release state, request separate publication approval after user acceptance. Shared lesson updates and creation queue remain paused.

@@ -93,6 +93,10 @@ test('N12 P-002: 26 progressive inline holes, math, figure gates, retry and relo
 
   for (const [id, value] of choices) {
     await answer(page, id, value)
+    if (id === 'n12-p002-q01-coef' || id === 'n12-p002-q02-coef') {
+      // Coefficients other than 1 must remain explicit before x.
+      await expect(page.getByTestId('resolved-' + id).locator('.katex-html')).toHaveText('2')
+    }
     if (id === 'n12-p002-q02-const') {
       // A numeric answer 1 at the end of an expression must remain 1.
       await expect(page.getByTestId('resolved-n12-p002-q02-const').locator('.katex-html')).toHaveText('1')

@@ -71,3 +71,9 @@ At commit eb8e7fd922e48dd9e9f7af98354d78e891ffcfa7, textbook workflow 3909859540
 
 ## A-023 — Record R3 approved-creation impact and distinct proposal
 Completed targeted R3 source audit N01/N02/N03/N09/N10. Confirmed R3 at N01 Q07, N03 Q10, N09 Q08; N02/N10 narrowly not affected; browser audit of siblings not claimed. Created W-MATH-005 docs-only draft PR #79 with exact 3+4+2 local-hole proposal for separate user approval, no changes to their learner code. Linked impact ledger in current Work. Lessons and P-003 creation stay paused.
+
+
+## A-024 — User separately authorizes N12 main/Pages and approves linked W-MATH-005 P-001
+Direct 2026-10-18 JST message: 「N12の公開とW-MATH-005/P-001を承認する」. This grants PR #78 main integration and Pages publishing, and independently grants W-MATH-005/P-001 implementation of exactly 9 local blanks on a separate branch. It does NOT approve publishing W-MATH-005 app code or resuming paused N11/N13/N14 creation.
+## A-025 — Final N12 code-and-workflow CI PASS before release
+At PR #78 head 08dcaa89a72cdbba79ed5e119178172d398bbc36, textbook workflow 39099106182, math practice pilot 39099106186 and governance 39099106188 all SUCCESS. Label-only workflow cleanup has passed the same desktop/mobile 26-hole, history, image and unrelated-mode regressions as the earlier green commit eb8e7fd9.

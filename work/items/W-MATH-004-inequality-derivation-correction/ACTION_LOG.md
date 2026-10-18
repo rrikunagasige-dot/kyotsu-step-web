@@ -28,3 +28,6 @@ Authored P003_DESIGN_DEPENDENCY.md for N11/N13/N14 without editing PR #73. Do no
 
 ## A-009 — Resolve first governance CI failure
 First PR #76 governance job failed solely because WORK.md and PROPOSAL.md included prose on the machine-parsed Status line. The checker requires exact standalone Status: IMPLEMENTING in WORK.md and Status: APPROVED in PROPOSAL.md. Corrected those lines without changing work intent/scope. Retest in the next commit; keep original failure recorded.
+
+## A-010 — Migrate stale pilot regression assertions for approved extra stages
+Math CI at original implementation SHA 2219f52 passed typecheck but failed three legacy assertions in numbersPilots.test.ts and numbersNextBatch.test.ts that assumed all N12 UI choices remained exactly the 15 Word source questions. P-001 explicitly changes only learner substep count to 21 while preserving original 15 source mappings/answers. Updated those assertions to compare original mapped IDs/answers as a subset in original order and independently verify six supplemental stages; N01/02/03/09/10 old assertions untouched. Follow-up CI pending.

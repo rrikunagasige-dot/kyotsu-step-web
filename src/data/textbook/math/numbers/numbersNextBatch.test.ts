@@ -78,12 +78,13 @@ describe('W-MATH-003 user-approved N02/N09 review-only implementation', () => {
     }
   })
 
-  it('keeps all N01/N03/N10/N12 prior pilot status and counts unchanged', () => {
+  it('preserves N01/N03/N10 and recognizes the separately approved N12 P-001 stage count', () => {
     expect(mathNumbersN01Unit.status).toBe('review')
     expect(mathNumbersN01Unit.sections[0].items).toHaveLength(15)
     expect(mathNumbersN03Unit.sections[0].items).toHaveLength(13)
     expect(mathNumbersN10Unit.sections[0].items).toHaveLength(21)
-    expect(mathNumbersN12Unit.sections[0].items).toHaveLength(15)
+    expect(mathNumbersN12Unit.status).toBe('review')
+    expect(mathNumbersN12Unit.sections[0].items).toHaveLength(21)
   })
 
   it('independently checks N02 answers, compound Q03/Q09 and formula reuse', () => {

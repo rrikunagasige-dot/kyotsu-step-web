@@ -43,13 +43,22 @@ describe('W-MATH-003 approved numbers & expressions pilot implementation', () =>
     const mapped = Object.values(sourceMap).flat()
     expect(mapped).toHaveLength(count)
     expect(new Set(mapped).size).toBe(count)
-    expect(section.items.map(item => item.id)).toEqual(mapped)
+    const itemIds = section.items.map(item => item.id)
+    expect(itemIds.filter(id => mapped.includes(id))).toEqual(mapped)
+    if (prefix === 'N12') {
+      expect(itemIds).toHaveLength(count + 6) // P-001 extra reasoning stages, not source questions
+      expect(itemIds.filter(id => !mapped.includes(id))).toEqual([
+        'n12-01a', 'n12-02a', 'n12-06a', 'n12-06b', 'n12-12a', 'n12-13a',
+      ])
+    } else {
+      expect(itemIds).toEqual(mapped)
+    }
     const referenced = section.readingFlow.flatMap(block =>
       block.type === 'paragraph' || block.type === 'formula'
         ? block.parts.filter(part => part.type === 'choice').map(part => part.itemId)
         : [],
     )
-    expect(referenced).toEqual(mapped)
+    expect(referenced).toEqual(itemIds)
     expect(section.items[0].scaffoldLevel).toBe('strong')
     expect(section.items.some(item => item.scaffoldLevel === 'light')).toBe(true)
   })
@@ -150,7 +159,8 @@ describe('W-MATH-003 approved numbers & expressions pilot implementation', () =>
   })
 
   it('preserves N12 15 source answers and gates original figures after their prerequisite answers', () => {
-    expect(mathNumbersN12Unit.sections[0].items.map(item => item.answer)).toEqual([
+    const originalIds = Object.values(n12SourceToItemIds).flat()
+    expect(mathNumbersN12Unit.sections[0].items.filter(item => originalIds.includes(item.id)).map(item => item.answer)).toEqual([
       'x>-\\frac72', 'x\\le\\frac12', '二つ目に反するので不適', '-\\frac72<x\\le\\frac12',
       '3x+2\\le2x+4\\ \\text{かつ}\\ 2x+4\\le9-x',
       'x\\le2,\\quad x\\le\\frac53', 'x\\le\\frac53',

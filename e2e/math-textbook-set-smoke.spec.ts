@@ -1329,26 +1329,33 @@ test('W-MATH-003 N12 review: original number lines gated and answer figure hidde
   await page.goto(appRoute('/learning/textbook/math-numbers-expressions-n12'))
   await expect(page.getByRole('heading', { name: '不等式を使う', exact: true })).toBeVisible()
   await expect(page.getByTestId('textbook-current-topic')).toContainText('連立不等式と整数条件')
-  await expect(page.getByTestId('textbook-item-n12-01')).toBeVisible()
+  await expect(page.getByTestId('textbook-item-n12-01a')).toBeVisible()
+  await expect(page.getByTestId('textbook-item-n12-01')).toHaveCount(0)
   await expect(page.getByTestId('textbook-figure-n12-f01')).toHaveCount(0)
   await expect(page.getByTestId('textbook-figure-n12-f02')).toHaveCount(0)
   await expect(page.getByTestId('textbook-figure-n12-f03')).toHaveCount(0)
+  await answerItem(page, 'n12-01a', '-7<2x')
   await chooseWrongOption(page, 'n12-01', 'x>-\\frac72')
-  await expect(page.getByTestId('textbook-item-n12-02')).toHaveCount(0)
+  await expect(page.getByTestId('textbook-item-n12-02a')).toHaveCount(0)
 
   const answers: Array<[string, string]> = [
     ['n12-01', 'x>-\\frac72'],
+    ['n12-02a', '2x\\le1'],
     ['n12-02', 'x\\le\\frac12'],
     ['n12-03', '二つ目に反するので不適'],
     ['n12-04', '-\\frac72<x\\le\\frac12'],
     ['n12-05', '3x+2\\le2x+4\\ \\text{かつ}\\ 2x+4\\le9-x'],
+    ['n12-06a', 'x\\le2'],
+    ['n12-06b', '3x\\le5'],
     ['n12-06', 'x\\le2,\\quad x\\le\\frac53'],
     ['n12-07', 'x\\le\\frac53'],
     ['n12-08', '20-x'],
     ['n12-09', 'x\\in\\mathbb Z,\\ 0\\le x\\le20'],
     ['n12-10', '50+180x+130(20-x)'],
     ['n12-11', '3200\\le50+180x+130(20-x)<3300'],
+    ['n12-12a', '50+180x+2600-130x'],
     ['n12-12', '3200\\le2650+50x<3300'],
+    ['n12-13a', '550\\le50x<650'],
     ['n12-13', '11\\le x<13'],
     ['n12-14', 'x=11\\ \\text{または}\\ 12'],
     ['n12-15', 'T(11)=3200\\text{円},\\ T(12)=3250\\text{円}'],

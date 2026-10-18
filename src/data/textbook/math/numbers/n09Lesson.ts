@@ -221,7 +221,7 @@ const rawN09 = {
         ['>','=','\\ge'],'representation-link','medium',
         ['2を2.0000と考え、整数部と小数部を比較しよう。']),
       item('n09-p001-q08-upper-sign','2と2.0164の間の不等号を選ぼう。','<','formula',
-        ['>','=','\\leqslant'],'representation-link','medium',
+        ['>','=','\\ge'],'representation-link','medium',
         ['2を2.0000と考え、右側と比較しよう。']),
       item('n09-08','両方の小数を平方し、2を挟もう。','1.41^2=1.9881<2<2.0164=1.42^2','formula',
         ['1.41^2=1.9981<2<2.0164=1.42^2',

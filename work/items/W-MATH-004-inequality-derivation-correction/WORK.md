@@ -1,8 +1,8 @@
 # W-MATH-004 — 不等式の導出不足・局所穴の修正
-Status: IMPLEMENTING
+Status: VERIFYING
 Updated: 2026-10-18 JST
 Command: CMD-WORK-001「修正」
-Current revision: P-002 — APPROVED, implementing on isolated branch; main/Pages remain separate.
+Current revision: P-002 — APPROVED, code complete and all first-party CI PASS on isolated PR #78; awaiting hands-on acceptance and separate main/Pages release.
 Historical proposal: P-001 — APPROVED, six derivation stages merged to main through PR #76 (commit f4d3ab40a27808a3ecb56c379efbe16a3fe19be4), GitHub Pages published under prior user authorization.
 Repository: rrikunagasige-dot/kyotsu-step-web
 Proposal: P002_PROPOSAL.md (exact user acceptance: direct 「いいよ」 to the proposal-approval question, 2026-10-18 JST)
@@ -16,7 +16,7 @@ The derivation is mathematically correct but the *transformations themselves* sh
 - Published review-visible N12 is 15 original source-marked questions + six P-001 supplemental whole-expression choices = 21 answer stages; original 3 images and F03 after Q15 remain.
 - Current formula renderer supports adjacent math/choice/math parts, but generic choice displays a wide 「選択」 button. Grouped derivation lines reveal up to the first unresolved *block*. New compact single-token display needs a scoped change.
 - N12 revision=1 and stored progress rely on unitRevision + itemId. Reusing six supplemental IDs with different answers would risk false completion; a safe N12-only revision-2 transition is approved in P-002 and implemented only on this isolated branch.
-- Previous R1/R2 approved-creation source audit covered N01/N02/N03/N09/N10; a new R3 local-token-gate pass is proposed and still unverified.
+- R3 local-token second-pass source audit completed: N01 Q07, N03 Q10, N09 Q08 CONFIRMED; N02/N10 narrowly not affected. Linked exact proposal W-MATH-005/P-001 is unapproved, PR #79; browser sibling QA remains unverified.
 - W-MATH-003/P-003 pending creation of N11/N13/N14 remains paused.
 
 ## Approved P-002 implementation scope
@@ -27,8 +27,8 @@ The derivation is mathematically correct but the *transformations themselves* sh
 - Keep code isolated on the P-002 implementation branch; no source-image, production, main or Pages mutations without distinct authorization.
 
 ## Approval and next action
-1. Implementation in progress on isolated P-002 branch: N12 26 stages, targeted progress conversion, tests/CI, R3 cross-unit review.
-2. Report implementation PR and actual CI evidence, linked correction proposals where necessary; await user hands-on review.
+1. Implementation complete on isolated P-002 branch: N12 26 stages, targeted progress conversion, math textbook CI 39098595400 PASS, math practice 39098595404 PASS, governance 39098595409 PASS, R3 cross-unit source review documented.
+2. Review implementation PR #78 and W-MATH-005 separate docs-only proposal PR #79; await user hands-on review/authorization before either proposed content release or sibling fixes.
 3. Main merge and Pages publication require distinct authorization; W-MATH-003 creation stays paused. Close and share lessons only following verification, user acceptance and related correction queue.
 
 Related: [P-001 implementation PR #76](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/76); [app N12](https://rrikunagasige-dot.github.io/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n12); [paused creation PR #73](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/73).

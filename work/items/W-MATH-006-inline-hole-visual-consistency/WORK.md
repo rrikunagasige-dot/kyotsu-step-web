@@ -1,5 +1,6 @@
 # W-MATH-006 — 数式穴の見た目だけを従来の数学教材と一致させる
-Status: IMPLEMENTED ON ISOLATED BRANCH / CI PENDING / RELEASE NOT AUTHORIZED
+Status: IMPLEMENTING
+Release: NOT AUTHORIZED (main/Pages; independent user approval required)
 Date: 2026-10-18 JST
 Command: CMD-WORK-001「修正」
 User feedback: N12 lesson content good; new hole visual differs from older accepted design; fix only appearance.

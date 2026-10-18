@@ -1,6 +1,7 @@
 # W-MATH-006 / P-001 — 数式中の穴を従来デザインへ統一する修正案
 
-Status: APPROVED FOR ISOLATED IMPLEMENTATION — MAIN / PAGES RELEASE NOT AUTHORIZED
+Status: APPROVED
+Release: NOT AUTHORIZED (main/Pages; independent user approval required)
 Date: 2026-10-18 JST
 Command: CMD-WORK-001「修正」
 Direct feedback: 「N12は本当に良かった。しかし穴のデザインだけ前のデザインと違う。これだけ治せばいい。…じゃ続けてくれ」

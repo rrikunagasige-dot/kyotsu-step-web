@@ -1,5 +1,5 @@
 # Verification — W-MATH-010
-Status: AUTOMATED-PASS / PAGES-AND-USER-QA-PENDING
+Status: VERIFIED-AND-USER-ACCEPTED
 
 ## V-001
 Date: 2026-10-18
@@ -27,3 +27,11 @@ Expected: PASS, and retained separate N09 tests in common workflow.
 Result: PASS (AUTOMATED)
 Evidence: math CI #39119434629; governance #39119434659; PR #90 merged as 1f3ea4d18d3f13b9ee0e2125e2d26190e5a5e2ec.
 Follow-up: Confirm Pages #39119967626 and user hands-on; automated CI alone is not user QA.
+
+## V-004
+Date: 2026-10-18
+Target: N02-Q05 published app and documentation closure
+Check: Live release workflow and direct user QA acceptance, without conflating automation with the user's actual interaction.
+Expected: PASS release + user approval.
+Result: PASS (Pages deployment + user-reported acceptance); hands-on UI actions were not independently observed.
+Evidence: Pages #39119967626 PASS; user 「いいよ」 directly answering explicit N02/N09 published-app acceptance request on 2026-10-18; PR #91 for shared lesson memory.

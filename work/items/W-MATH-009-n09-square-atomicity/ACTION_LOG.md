@@ -30,3 +30,10 @@ Action: Received direct continuation assent to distinct PR integration/publicati
 Target / location: PR #89, main 9cdc86b2f5b76e8c6363bcdd6dd434e385a013c5; Pages #39119290710.
 Result: Math CI #39117627867 and governance #39117628023 PASS; Pages deployment PASS. No N02/N12 learner source was changed in PR #89.
 Evidence: https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/89
+
+## A-005
+Date: 2026-10-18
+Related proposal: P-001
+Action: Recorded user acceptance of the published N09/N02 release (direct 「いいよ」 in response to explicit QA acceptance request), checked original shared lessons and reconciled new rules via PR #91.
+Target / location: docs/MASTER_APP_LESSONS.md §§52–53, W-MATH-008 impact ledger, PR #91.
+Result: Correction work ready for memory close. User confirmation is direct textual acceptance; no independently observed manual navigation is asserted.

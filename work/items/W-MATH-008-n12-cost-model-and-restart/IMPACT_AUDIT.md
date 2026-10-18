@@ -29,3 +29,10 @@ The table above is the **historical read-only pre-correction finding**, not a cu
 - N01 remains NOT-AFFECTED by the inspected root cause. N03 and N10 still have **UNVERIFIED mobile-overflow risks**, not confirmed defects or implicit clearance; investigate with actual narrow-viewport evidence before proposing additional corrections. Missing N04–N08/N11/N13/N14 sources stay UNVERIFIED/NOT IMPLEMENTED in the audited directory.
 
 This is the second-pass disposition of known confirmed issues, not a claim that every unit has full user QA. Per governance §12B, recheck the correction queue and §52 small-block preflight before resuming creation; if either remaining visual risk becomes CONFIRMED, create a separately approved correction Work.
+
+## Acceptance and lesson close (2026-10-18)
+
+- User directly assented 「いいよ」 to the explicit published N02/N09 hands-on review acceptance request. This records **user-reported acceptance**, not independently observed browser interactions.
+- Pages #39119290710 (N09) and #39119967626 (N02+N09) both PASS; linked Work records W-MATH-009/010 are DONE on merge of shared lesson PR #91.
+- The common rule is consolidated once in `docs/MASTER_APP_LESSONS.md` §§52–53, cross-referencing existing §§7–12/20/51. No historical table rows were erased.
+- N03 and N10 narrow-mobile display risks remain UNVERIFIED, not confirmed repairs or false PASS; they belong to the next targeted evidence-gathering sweep, with a new correction proposal only if confirmed.

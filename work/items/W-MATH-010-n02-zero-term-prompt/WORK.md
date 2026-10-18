@@ -1,6 +1,6 @@
 # W-MATH-010 — N02 欠けた一次項と係数の言い方
 
-Status: VERIFYING
+Status: DONE
 Updated: 2026-10-18
 Command: CMD-WORK-001 修正
 Parent: W-MATH-008/P-001 impact audit
@@ -25,13 +25,13 @@ N02 change was approved before implementation; no N09/N12 learner lesson or Cons
 P-001 approved 2026-10-18 by 「いいよ」 replying directly to the explicit two-proposal request W-MATH-009/P-001 and W-MATH-010/P-001.
 
 ## Current Step
-PR #90 merged after new combined N02+N09 math CI and governance PASS; GitHub Pages publication and user hands-on QA are tracked separately.
+PR #90 merged after combined N02/N09 math CI and governance PASS; Pages #39119967626 deployed successfully. User directly accepted the published N02/N09 review via 「いいよ」 on 2026-10-18; independent observation of hands-on interaction is not claimed.
 
 ## Next Step
-Verify Pages deployment #39119967626 and ask user to confirm N02 Q05 wording/0x after-answer explanation in the published app.
+Correction and shared lesson-memory close staged in PR #91. Next: recheck correction queue and resume approved creation in small blocks.
 
 ## Dependencies
 N12 correction acceptance and W-MATH-009 linked audit review.
 
 ## Completion Condition
-Branch implementation and merge verified; pedagogical DONE still requires published UI user acceptance and lesson-memory close.
+Fulfilled: CI and governance PASS, Pages PASS, direct user acceptance, shared lesson close in PR #91; this record becomes DONE on PR #91 merge.

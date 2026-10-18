@@ -30,3 +30,10 @@ Action: Reconciled main N09 changes into #90 without dropping either math CI reg
 Target / location: PR #90, merge branch 3a37e2353adc83367797cf13f16b0f00c0b7db02, main 1f3ea4d18d3f13b9ee0e2125e2d26190e5a5e2ec.
 Result: Math CI #39119434629 and governance #39119434659 PASS; Pages #39119967626 publication check pending at record creation.
 Evidence: https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/90
+
+## A-005
+Date: 2026-10-18
+Related proposal: P-001
+Action: Confirmed Pages deployment, recorded direct user acceptance of N02/N09 published release, and prepared merged common lesson closure.
+Target / location: Pages #39119967626; docs/MASTER_APP_LESSONS.md §§52–53; PR #91.
+Result: W-MATH-010 ready for DONE on lesson-memory merge. Acceptance is user textual confirmation, not an independently observed manual QA recording.

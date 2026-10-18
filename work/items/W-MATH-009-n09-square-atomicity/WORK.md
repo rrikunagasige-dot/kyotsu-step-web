@@ -1,6 +1,6 @@
 # W-MATH-009 — N09 平方比較を計算する局所穴
 
-Status: VERIFYING
+Status: DONE
 Updated: 2026-10-18
 Command: CMD-WORK-001 修正
 Parent: W-MATH-008/P-001 impact audit
@@ -25,13 +25,13 @@ No N02/N12 lesson or Constitution changes were made by this correction. Later sc
 P-001 accepted in direct response 「いいよ」 to the explicitly listed pair W-MATH-009/P-001 and W-MATH-010/P-001 (2026-10-18).
 
 ## Current Step
-PR #89 merged after green math CI and governance checks. GitHub Pages #39119290710 deployed successfully; hands-on user QA remains pending.
+PR #89 merged after green math CI and governance checks. GitHub Pages #39119290710 deployed successfully. User accepted the published N09/N02 review on 2026-10-18 by replying 「いいよ」 directly to the explicit QA acceptance request; independent observation of hands-on interaction is not claimed.
 
 ## Next Step
-Ask user to confirm published N09 18-hole learning flow and regression surfaces; reconcile common lessons without treating automated QA as user QA.
+Correction and common-lesson close staged in PR #91. Next: recheck the correction queue before returning to approved creation one concept/problem block at a time.
 
 ## Dependencies
 N12 W-MATH-008 correction and associated acceptance have priority before creation resumes.
 
 ## Completion Condition
-Implementation/merge/Pages succeeded; pedagogical DONE still requires hands-on user confirmation and shared lesson-memory close.
+Fulfilled: math CI/governance PASS, Pages PASS, direct user acceptance, shared lesson close in PR #91; this record becomes DONE on PR #91 merge.

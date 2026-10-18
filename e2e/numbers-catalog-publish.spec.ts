@@ -58,6 +58,6 @@ test('chapter 1 keeps learner progress and shows unfinished topic on return', as
   await page.goto(appRoute('/learning/setup?subject=math-1a'))
   await page.reload()
   const topic = page.getByTestId('math-textbook-topic-numbers-real')
-  await expect(topic).toContainText('1/35 完了')
+  await expect(topic).toContainText('1/39 完了')
   await expect(topic).toHaveAttribute('href', '#/learning/textbook/math-numbers-expressions-n09')
 })

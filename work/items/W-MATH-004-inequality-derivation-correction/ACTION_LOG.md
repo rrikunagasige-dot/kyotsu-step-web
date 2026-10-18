@@ -1,5 +1,5 @@
 # W-MATH-004 — ACTION LOG
-Status: APPROVED IMPLEMENTATION / CI AND USER QA PENDING
+Status: P-002 PUBLISHED / USER HANDS-ON QA PENDING
 Date: 2026-10-18 JST
 
 ## A-001 — Identity and command recovery
@@ -77,3 +77,6 @@ Completed targeted R3 source audit N01/N02/N03/N09/N10. Confirmed R3 at N01 Q07,
 Direct 2026-10-18 JST message: 「N12の公開とW-MATH-005/P-001を承認する」. This grants PR #78 main integration and Pages publishing, and independently grants W-MATH-005/P-001 implementation of exactly 9 local blanks on a separate branch. It does NOT approve publishing W-MATH-005 app code or resuming paused N11/N13/N14 creation.
 ## A-025 — Final N12 code-and-workflow CI PASS before release
 At PR #78 head 08dcaa89a72cdbba79ed5e119178172d398bbc36, textbook workflow 39099106182, math practice pilot 39099106186 and governance 39099106188 all SUCCESS. Label-only workflow cleanup has passed the same desktop/mobile 26-hole, history, image and unrelated-mode regressions as the earlier green commit eb8e7fd9.
+
+## A-026 — N12 P-002 main and Pages release confirmed (2026-10-18 JST)
+On the explicit N12 publication authorization, PR #78 merged to main commit 51c184286e5207b189dd7b412643e99c426bc884. Confirmed main-triggered Pages workflow 39100536418 completed SUCCESS (build, textbook/browser/math-practice smoke, SVG checks, artifact upload and deploy job); main governance 39100536454 SUCCESS. Verified public N12 route URL https://rrikunagasige-dot.github.io/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n12. Recorded release closure only, without claiming learner hands-on acceptance or W-MATH-005 publication. Linked correction PR #80 stays draft; paused P-003 creation remains untouched.

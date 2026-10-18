@@ -11,6 +11,7 @@ import type { TextbookItem, TextbookReadingBlock, TextbookReadingPart, TextbookS
 import { useAppStore } from '../stores/useAppStore'
 import { useI18n } from '../i18n/runtime'
 import { normalizeTextbookMath } from '../domain/textbookMath'
+import { n12CostDisplayLines } from '../domain/n12CostDisplay'
 import { chapter1ChunkForUnitCode, chapter1Localized, chapter1NextUnit } from '../data/textbook/ch01/chapter1Architecture'
 import { mathTextbookNextUnitId, mathTextbookTopicForUnit } from '../data/textbook/math'
 import { partitionMathSetReadingFlow, requiredMathSetContext } from '../data/textbook/math/presentation'
@@ -67,7 +68,14 @@ function renderResolvedChoice(item: TextbookItem, record: TextbookAnswerRecord) 
   return (
     <span className="reading-inline-answer" data-testid={`resolved-${item.id}`}>
       {item.answerType === 'formula'
-        ? <InlineMath math={normalizeTextbookMath(record.value)} />
+        ? (() => {
+          const lines = n12CostDisplayLines(item.id, record.value)
+          return lines.length > 1
+            ? <span className="reading-formula-n12-answer-lines">
+                {lines.map((line, i) => <span key={i}><InlineMath math={normalizeTextbookMath(line)} /></span>)}
+              </span>
+            : <InlineMath math={normalizeTextbookMath(record.value)} />
+        })()
         : <>{record.value}</>}
     </span>
   )
@@ -281,7 +289,7 @@ function TextbookReadingFlow({ unit, section, progress, onSummaryReached }: {
                 {activeItem.answerType === 'formula'
                   ? (
                     <span className="reading-choice-formula-lines">
-                      {choice.split('\\quad').map((line, lineIndex) => (
+                      {n12CostDisplayLines(activeItem.id, choice).flatMap(value => value.split('\\quad')).map((line, lineIndex) => (
                         <span className="reading-choice-formula-line" key={lineIndex}>
                           <InlineMath math={normalizeTextbookMath(line.trim())} />
                         </span>
@@ -408,7 +416,7 @@ function TextbookReadingFlow({ unit, section, progress, onSummaryReached }: {
   }
 
   return (
-    <article className="textbook-reading-flow" data-testid="textbook-reading-flow">
+    <article className="textbook-reading-flow" data-testid="textbook-reading-flow" tabIndex={unit.unitId === 'math-numbers-expressions-n12' ? -1 : undefined}>
       {compactStages ? (
         <div className="math-textbook-compact-flow" data-testid="math-textbook-compact-flow">
           {activeCompactIndex > 0 && (
@@ -581,6 +589,7 @@ export function TextbookUnitPage() {
   const [selectedSectionIndex, setSelectedSectionIndex] = useState(0)
   const [visibleThroughIndex, setVisibleThroughIndex] = useState(0)
   const [mathSummaryReached, setMathSummaryReached] = useState(false)
+  const [n12RestartEpoch, setN12RestartEpoch] = useState(0)
   const initializedUnitRef = useRef<string | null>(null)
   const savedProgress = useAppStore((state) => state.textbookProgress[unitId])
   const progress = useMemo(() => unit ? effectiveTextbookProgress(unit, savedProgress) : savedProgress, [unit, savedProgress])
@@ -633,6 +642,22 @@ export function TextbookUnitPage() {
   const unitComplete = summary.completed === summary.total
   const canOpen = (index: number) => unitComplete || index <= firstIncompleteIndex
 
+  const restartFromBeginning = () => {
+    if (!window.confirm(text('この単元の進捗を最初からやり直しますか？', '确定要清空本单元进度并重新开始吗？'))) return
+    resetTextbookUnit(unit.unitId, unit)
+    initializedUnitRef.current = null
+    setSelectedSectionIndex(0)
+    setVisibleThroughIndex(0)
+    if (unit.unitId === 'math-numbers-expressions-n12') {
+      setN12RestartEpoch(epoch => epoch + 1)
+      window.requestAnimationFrame(() => {
+        const first = document.querySelector<HTMLElement>('[data-testid="textbook-reading-flow"]')
+        first?.focus({ preventScroll: true })
+        window.scrollTo({ top: 0, behavior: 'auto' })
+      })
+    }
+  }
+
   const scrollToSection = (index: number) => {
     window.setTimeout(() => {
       document.getElementById(`textbook-section-${index}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -675,12 +700,17 @@ export function TextbookUnitPage() {
       </header>
 
       <ProgressBar label={text('単元の進み具合', '单元进度')} value={summary.completed} max={summary.total} />
+      {unit.unitId === 'math-numbers-expressions-n12' && (
+        <button type="button" className="n12-restart-top" data-testid="n12-restart-top" onClick={restartFromBeginning}>
+          <RotateCcw size={15} aria-hidden="true" /> {text('この単元を最初から', '本单元重新开始')}
+        </button>
+      )}
 
-      {unit.unitId === 'math-numbers-expressions-n12' && progress?.migratedFromRevision === 1 && (
+      {unit.unitId === 'math-numbers-expressions-n12' && unit.revision === 3 && progress?.migratedFromRevision !== undefined && (
         <p className="n12-progress-upgrade-note" data-testid="n12-progress-upgrade-note">
           {text(
-            '以前に解いた元の15問と回答履歴は保存されています。新しく追加した数式内の穴だけ、順番に完成させてください。',
-            '之前完成的15道原题和答题记录已保留。请依次完成新增加的公式内部填空。',
+            'N12は新しい版です。以前の回答は履歴として保存し、最初の問題からすべて解き直します。',
+            'N12已更新。以前的答案已保存为历史记录，本次从第一道题重新开始。',
           )}
         </p>
       )}
@@ -732,7 +762,7 @@ export function TextbookUnitPage() {
               )}
 
               {section.readingFlow.length > 0
-                ? <TextbookReadingFlow unit={unit} section={section} progress={progress} onSummaryReached={setMathSummaryReached} />
+                ? <TextbookReadingFlow key={unit.unitId === 'math-numbers-expressions-n12' ? `n12-restart-${n12RestartEpoch}` : section.id} unit={unit} section={section} progress={progress} onSummaryReached={setMathSummaryReached} />
                 : null}
 
               {!continuousLesson && sectionComplete && !unitComplete && isLastVisible && index < unit.sections.length - 1 && (
@@ -776,14 +806,9 @@ export function TextbookUnitPage() {
         )}
       </div>
 
-      <button type="button" className="text-button textbook-reset" onClick={() => {
-        if (window.confirm(text('この単元の進捗を最初からやり直しますか？', '确定要清空本单元进度并重新开始吗？'))) {
-          resetTextbookUnit(unit.unitId)
-          initializedUnitRef.current = null
-          setSelectedSectionIndex(0)
-          setVisibleThroughIndex(0)
-        }
-      }}><RotateCcw size={15} aria-hidden="true" /> {text('この単元を最初から', '本单元重新开始')}</button>
+      <button type="button" className="text-button textbook-reset" onClick={restartFromBeginning}>
+        <RotateCcw size={15} aria-hidden="true" /> {text('この単元を最初から', '本单元重新开始')}
+      </button>
     </div>
   )
 }

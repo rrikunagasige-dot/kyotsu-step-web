@@ -5,7 +5,7 @@ import { builtInQuestionsZh } from '../data/questions.zh'
 import type { LearningAttempt, LearningSession, SimulationAttempt, SimulationSession } from '../domain/attempts'
 import { activateLearningBlank, answerLearningBlank, createLearningSession, recordExplanationOpen, recordExplanationRead, revisitLearningBlank, toLearningAttempt } from '../domain/learning'
 import type { LearningVariant, Question } from '../domain/questionSchema'
-import { answerTextbookItem, type TextbookUnitProgress } from '../domain/textbook'
+import { answerTextbookItem, resetTextbookUnitProgress, type TextbookUnitProgress } from '../domain/textbook'
 import type { TextbookUnit } from '../domain/textbookSchema'
 import { scoreSimulation } from '../domain/scoring'
 import { answerSimulationItem, createSimulationSession, setSimulationQuestion, toggleSimulationReview } from '../domain/simulation'
@@ -34,7 +34,7 @@ type AppState = {
   closeLearningExplanation: (sessionId: string, blankId: string, readMs: number) => void
   revisitLearning: (sessionId: string, blankId: string) => void
   answerTextbook: (unit: TextbookUnit, itemId: string, value: string) => void
-  resetTextbookUnit: (unitId: string) => void
+  resetTextbookUnit: (unitId: string, unit?: TextbookUnit) => void
   startSimulation: (questionIds: string[], timeMode: SimulationSession['timeMode']) => string
   answerSimulation: (sessionId: string, itemId: string, selectedOptionIds: string[], numericValue?: number) => void
   toggleSimulationReview: (sessionId: string, itemId: string) => void
@@ -108,9 +108,11 @@ export const useAppStore = create<AppState>()(persist((set, get) => ({
     const updated = answerTextbookItem(state.textbookProgress[unit.unitId], unit, item, value, Date.now())
     return { textbookProgress: { ...state.textbookProgress, [unit.unitId]: updated } }
   }),
-  resetTextbookUnit: (unitId) => set((state) => {
+  resetTextbookUnit: (unitId, unit) => set((state) => {
     const next = { ...state.textbookProgress }
-    delete next[unitId]
+    const archivedReset = unit ? resetTextbookUnitProgress(unit, next[unitId], Date.now()) : undefined
+    if (archivedReset) next[unitId] = archivedReset
+    else delete next[unitId]
     return { textbookProgress: next }
   }),
   startSimulation: (questionIds, timeMode) => {

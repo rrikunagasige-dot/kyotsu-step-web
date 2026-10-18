@@ -1284,3 +1284,68 @@ button.math-theme-link {
   color: var(--color-text);
   line-height: 1.7;
 }
+
+
+/* W-MATH-008/P-001 — N12 only: stacked mathematical transformations and intact
+   token controls. Keep other textbook units' proven layout untouched. */
+.reading-formula-line.reading-formula-line--n12 {
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: visible;
+  white-space: normal;
+}
+.reading-formula-line--n12 .reading-formula-expression {
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  column-gap: .14em;
+  row-gap: .22rem;
+}
+.reading-formula-n12-transform {
+  display: inline-flex;
+  max-width: 100%;
+  min-width: 0;
+  flex: 0 1 auto;
+  flex-direction: column;
+  align-items: center;
+  gap: .12rem;
+}
+.reading-formula-n12-arrow {
+  display: block;
+  color: var(--color-muted);
+  font-size: .8em;
+  line-height: 1;
+  text-align: center;
+}
+.reading-formula-n12-answer-lines {
+  display: inline-flex;
+  max-width: 100%;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .15rem;
+  text-align: left;
+  vertical-align: middle;
+}
+.reading-formula-n12-answer-lines > span {
+  display: block;
+  max-width: 100%;
+}
+.reading-formula-line--n12 .reading-formula-choice--token {
+  align-self: center;
+}
+.n12-restart-top {
+  display: inline-flex;
+  gap: .35rem;
+  align-items: center;
+  width: fit-content;
+  padding: .4rem .6rem;
+  border: 1px solid var(--color-primary);
+  background: white;
+  color: var(--color-primary);
+  cursor: pointer;
+  font-weight: 650;
+}
+.n12-restart-top:focus-visible { outline: 3px solid var(--focus-ring); }

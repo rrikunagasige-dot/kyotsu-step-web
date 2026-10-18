@@ -9,7 +9,7 @@ export const n12SourceToItemIds = oneToOneSourceMap('N12', 15)
 
 const rawN12 = {
   schemaVersion: '1.1' as const,
-  unitId: 'math-numbers-expressions-n12', revision: 2,
+  unitId: 'math-numbers-expressions-n12', revision: 3,
   status: 'review' as const, subject: 'math-1a' as const,
   chapter: {
     chapterId: 'math-ch01-numbers-expressions', chapterNumber: '1',
@@ -168,38 +168,91 @@ const rawN12 = {
         T(' の'), K('範囲と数の種類'), T('は '), C('n12-09'),
         T('。ここで整数条件を保存しておこう。後で不等式を解いても、この条件は消えない。'),
       ] },
-      { id: 'paragraph-cost-intro', type: 'paragraph' as const, parts: [
-        T('箱代と二種類の菓子代を足す。合計金額 '), M('T(x)'), T(' は、'),
+      { id: 'paragraph-cost-intro', type: 'paragraph' as const, derivationId: 'cost-range', parts: [
+        T('ここからは、個数を使って合計金額を作る。'), M('T(x)'), T(' が表すのは '),
+        C('n12-p003-q10-meaning'), T(' である。'),
       ] },
-      { id: 'formula-n12-10', type: 'formula' as const, parts: [M('T(x)='), C('n12-10')] },
-      { id: 'paragraph-cost-bound', type: 'paragraph' as const, parts: [
-        T('「3200円'), K('以上'), T('3300円'), K('未満'), T('」を、今の金額を使って表すと、'),
+      { id: 'paragraph-cost-cream', type: 'paragraph' as const, derivationId: 'cost-range', parts: [
+        T('まずシュークリーム。1個180円を'), M('x'), T(' 個買う。単価と個数を掛けた式を作ろう。'),
       ] },
-      { id: 'formula-n12-11', type: 'formula' as const, derivationId: 'cost-range', parts: [C('n12-11')] },
+      { id: 'formula-cost-cream', type: 'formula' as const, derivationId: 'cost-range', parts: [
+        M('180\\times x='), C('n12-p003-q10-cream-coef'), M('x'),
+      ] },
+      { id: 'paragraph-cost-pudding', type: 'paragraph' as const, derivationId: 'cost-range', parts: [
+        T('次はプリン。個数はさっき求めた'), M('20-x'), T(' 個で、1個130円。'),
+      ] },
+      { id: 'formula-cost-pudding', type: 'formula' as const, derivationId: 'cost-range', parts: [
+        M('130\\times(20-x)='), C('n12-p003-q10-pudding-coef'), M('(20-x)'),
+      ] },
+      { id: 'paragraph-cost-box-fee', type: 'paragraph' as const, derivationId: 'cost-range', parts: [
+        T('お菓子代だけではなく、箱そのものの代金も必要だ。箱の固定代金は '),
+        C('n12-p003-q10-box-fee'), T(' 円。'),
+      ] },
+      { id: 'paragraph-cost-assemble', type: 'paragraph' as const, derivationId: 'cost-range', parts: [
+        T('今求めた三つの代金を足し、'), M('T(x)'), T(' を一つの式にまとめよう。'),
+      ] },
+      { id: 'formula-n12-10', type: 'formula' as const, derivationId: 'cost-range', parts: [
+        M('T(x)='), C('n12-10'),
+      ] },
+      { id: 'paragraph-cost-bound', type: 'paragraph' as const, derivationId: 'cost-range', parts: [
+        T('目標の金額は3200円'), K('以上'), T('、3300円'), K('未満'), T('。まずそれぞれの不等号を決めよう。'),
+      ] },
+      { id: 'formula-cost-lower-bound', type: 'formula' as const, derivationId: 'cost-range', parts: [
+        M('3200'), C('n12-p003-q11-lower-sign'), M('T(x)'),
+      ] },
+      { id: 'formula-cost-upper-bound', type: 'formula' as const, derivationId: 'cost-range', parts: [
+        M('T(x)'), C('n12-p003-q11-upper-sign'), M('3300'),
+      ] },
+      { id: 'paragraph-cost-bound-assemble', type: 'paragraph' as const, derivationId: 'cost-range', parts: [
+        T('両方の条件を満たすように、さっきの合計金額の式を代入する。'),
+      ] },
+      { id: 'formula-n12-11', type: 'formula' as const, derivationId: 'cost-range', parts: [
+        C('n12-11'),
+      ] },
       { id: 'paragraph-cost-simplify', type: 'paragraph' as const, derivationId: 'cost-range', parts: [
-        T('まず括弧を展開する。'), M('130'), T(' は括弧の両方の項に掛かり、'), M('-x'),
-        T(' に掛けた部分は負になる。'),
+        T('次は括弧を展開する。まずプリン20個分に当たる定数を計算しよう。'),
+      ] },
+      { id: 'formula-cost-product-constant', type: 'formula' as const, derivationId: 'cost-range', parts: [
+        M('130\\times20='), C('n12-p003-q12-product-constant'),
+      ] },
+      { id: 'paragraph-cost-negative', type: 'paragraph' as const, derivationId: 'cost-range', parts: [
+        T('もう一方の'), M('-x'), T(' にも130を掛ける。負号を忘れずに式内へ入れよう。'),
       ] },
       { id: 'formula-q12-signed-coef', type: 'formula' as const, derivationId: 'cost-range', parts: [
-        M('50+180x+130(20-x)\\quad\\Longrightarrow\\quad50+180x+2600+('),
-        C('n12-p002-q12-signed-coef'), M(')x'),
+        M('130(20-x)=2600+('), C('n12-p002-q12-signed-coef'), M(')x'),
       ] },
       { id: 'paragraph-cost-collect', type: 'paragraph' as const, derivationId: 'cost-range', parts: [
-        T('箱代と定数項、'), M('x'), T(' の項をそれぞれまとめ、金額の不等式に戻す。'),
+        T('箱代と定数項をまとめ、次に'), M('x'), T(' の係数をまとめよう。'),
+      ] },
+      { id: 'formula-cost-total-constant', type: 'formula' as const, derivationId: 'cost-range', parts: [
+        M('50+2600='), C('n12-p003-q12-total-constant'),
+      ] },
+      { id: 'formula-cost-x-coef', type: 'formula' as const, derivationId: 'cost-range', parts: [
+        M('180-130='), C('n12-p003-q12-x-coef'),
+      ] },
+      { id: 'paragraph-cost-collect-result', type: 'paragraph' as const, derivationId: 'cost-range', parts: [
+        T('だから、合計金額は次の短い式でも表せる。'),
+      ] },
+      { id: 'formula-cost-collected-total', type: 'formula' as const, derivationId: 'cost-range', parts: [
+        M('T(x)=2650+50x'),
+      ] },
+      { id: 'paragraph-cost-collect-bound', type: 'paragraph' as const, derivationId: 'cost-range', parts: [
+        T('この式を3200円以上、3300円未満という条件に戻すと、'),
       ] },
       { id: 'formula-n12-12', type: 'formula' as const, derivationId: 'cost-range', parts: [
-        M('3200\\le50+180x+2600-130x<3300\\quad\\Longrightarrow\\quad'), C('n12-12'),
+        C('n12-12'),
       ] },
       { id: 'paragraph-cost-solve', type: 'paragraph' as const, derivationId: 'cost-range', parts: [
         T('金額の三つの辺から、同じ'), M('2650'), T('を引いて整理しよう。'),
       ] },
+      { id: 'formula-cost-subtract', type: 'formula' as const, derivationId: 'cost-range', parts: [
+        M('3200-2650\\le50x<3300-2650'),
+      ] },
       { id: 'formula-q13-lower', type: 'formula' as const, derivationId: 'cost-range', parts: [
-        M('3200-2650\\le50x<3300-2650\\quad\\Longrightarrow\\quad'),
         C('n12-p002-q13-lower'), M('\\le50x<3300-2650'),
       ] },
       { id: 'formula-q13-upper', type: 'formula' as const, derivationId: 'cost-range', parts: [
-        M('550\\le50x<3300-2650\\quad\\Longrightarrow\\quad550\\le50x<'),
-        C('n12-p002-q13-upper'),
+        M('550\\le50x<'), C('n12-p002-q13-upper'),
       ] },
       { id: 'paragraph-cost-positive', type: 'paragraph' as const, derivationId: 'cost-range', parts: [
         T('次はすべての辺を正の'), M('50'), T('で割る。正の数で割るときは不等号の向きが変わらない。'),
@@ -212,9 +265,17 @@ const rawN12 = {
         M('x\\in\\mathbb Z,\\ 0\\le x\\le20'), T(' と比べると、実際に選べる '),
         M('x'), T(' は '), C('n12-14'), T('。'),
       ] },
+      { id: 'paragraph-verify-substitution', type: 'paragraph' as const, parts: [
+        T('最後に整数11個と12個を、整理した金額の式へ代入して確かめよう。'),
+      ] },
+      { id: 'formula-verify-eleven', type: 'formula' as const, parts: [
+        M('T(11)=2650+50\\times11'),
+      ] },
+      { id: 'formula-verify-twelve', type: 'formula' as const, parts: [
+        M('T(12)=2650+50\\times12'),
+      ] },
       { id: 'paragraph-n12-15', type: 'paragraph' as const, parts: [
-        T('確かめよう。どちらの個数を選んだ場合にも、箱代を含めた合計金額を計算すると '),
-        C('n12-15'), T('。'),
+        T('二つの合計金額を計算すると '), C('n12-15'), T('。'),
       ] },
       // Answer-bearing original source image is below the FINAL choice.
       { id: 'figure-after-verification', type: 'figure' as const, figureId: 'n12-f03' },
@@ -265,14 +326,33 @@ const rawN12 = {
       item('n12-09', 'xの取りうる数の種類と範囲を選ぼう。', 'x\\in\\mathbb Z,\\ 0\\le x\\le20', 'formula',
         ['x\\in\\mathbb R,\\ 0\\le x\\le20', 'x\\in\\mathbb Z,\\ x\\ge0', 'x\\in\\mathbb Z,\\ 0<x<20'],
         'causal-reasoning', 'medium', ['個数なので小数にはできない。全部同じ種類でもよい。']),
+      item('n12-p003-q10-meaning', 'T(x) は何の金額を表す？', '箱と20個の菓子の合計金額', 'text',
+        ['箱だけの代金', 'シュークリームの個数', 'プリン1個の代金'],
+        'concept-formation', 'strong', ['xを決めたとき、箱と20個の菓子を買うための全体の金額だ。']),
+      item('n12-p003-q10-cream-coef', 'シュークリームの単価をxの係数へ入れよう。', '180', 'formula',
+        ['130', '50', '20'], 'representation-link', 'medium', ['1個の値段×個数を式で書く。']),
+      item('n12-p003-q10-pudding-coef', 'プリンの単価を括弧の係数へ入れよう。', '130', 'formula',
+        ['180', '50', '20'], 'representation-link', 'medium', ['20−x個に掛ける単価を選ぶ。']),
+      item('n12-p003-q10-box-fee', '固定の箱代はいくら？', '50', 'formula',
+        ['130', '180', '20'], 'representation-link', 'medium', ['菓子の個数に関係なく払う金額に注目する。']),
       item('n12-10', '箱代と二種類の菓子代を合わせよう。', '50+180x+130(20-x)', 'formula',
         ['180x+130(20-x)', '50+180x+130x', '50+180x+130(20+x)'],
         'representation-link', 'medium', ['箱の固定代金も加える。']),
+      item('n12-p003-q11-lower-sign', '3200円以上を表す不等号を選ぼう。', '\\le', 'formula',
+        ['<', '\\ge', '>'], 'representation-link', 'medium', ['ちょうど3200円の場合も許す。']),
+      item('n12-p003-q11-upper-sign', '3300円未満を表す不等号を選ぼう。', '<', 'formula',
+        ['\\le', '>', '\\ge'], 'representation-link', 'medium', ['3300円ちょうどは含めない。']),
       item('n12-11', '金額の「以上・未満」を式にしよう。', '3200\\le50+180x+130(20-x)<3300', 'formula',
         ['3200<50+180x+130(20-x)\\le3300', '3200\\le50+180x+130(20-x)\\le3300', '3200\\ge50+180x+130(20-x)<3300'],
         'representation-link', 'medium', ['以上には等号があり、未満には等号がない。']),
+      item('n12-p003-q12-product-constant', '130×20を計算して定数項を作ろう。', '2600', 'formula',
+        ['260', '2500', '1300'], 'representation-link', 'medium', ['130を20回足した金額に等しい。']),
       item('n12-p002-q12-signed-coef', '130を−xに分配した符号付き係数はいくつ？', '-130', 'formula',
         ['130', '-20', '2600'], 'representation-link', 'medium', ['130×(−x)=−130x。符号も答えに含める。']),
+      item('n12-p003-q12-total-constant', '箱代とプリン20個分の定数項を足そう。', '2650', 'formula',
+        ['2600', '2550', '3100'], 'representation-link', 'medium', ['50+2600を計算する。']),
+      item('n12-p003-q12-x-coef', 'xの項の係数をまとめよう。', '50', 'formula',
+        ['310', '-50', '130'], 'representation-link', 'medium', ['180−130でxの係数を求める。']),
       item('n12-12', '同類項をまとめて金額を整理しよう。', '3200\\le2650+50x<3300', 'formula',
         ['3200\\le2600+50x<3300', '3200\\le2650+310x<3300', '3200\\le2650-50x<3300'],
         'transfer', 'medium', ['箱代とプリン20個分を定数項にする。']),

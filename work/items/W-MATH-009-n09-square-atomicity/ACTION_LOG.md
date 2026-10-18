@@ -22,3 +22,11 @@ Related proposal: P-001
 Action: Rechecked common lessons before display and history blocks; N09-specific presentation split, archived v1 answers, tests for math/distractors/source mapping/browser progression.
 Target / location: src/domain/textbook.ts; src/domain/textbookDisplayLines.ts; TextbookFormula.tsx; TextbookUnitPage.tsx; tests
 Result: DRAFT REVIEW only. CI and user visual acceptance pending.
+
+## A-004
+Date: 2026-10-18
+Related proposal: P-001
+Action: Received direct continuation assent to distinct PR integration/publication request; marked #89 ready and merged after CI.
+Target / location: PR #89, main 9cdc86b2f5b76e8c6363bcdd6dd434e385a013c5; Pages #39119290710.
+Result: Math CI #39117627867 and governance #39117628023 PASS; Pages deployment PASS. No N02/N12 learner source was changed in PR #89.
+Evidence: https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/89

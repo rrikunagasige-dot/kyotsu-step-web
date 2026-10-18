@@ -3,7 +3,7 @@
 Status: PROPOSED (approval pending; NO APP IMPLEMENTATION)
 Command: CMD-WORK-001 — 修正
 Proposal: P-001 in this directory
-Repository: rr ikunagasige-dot/kyotsu-step-web (space omitted in actual owner: rrikunagasige-dot)
+Repository: rrikunagasige-dot/kyotsu-step-web
 Base: main 4cd7665a4b5bde8c8d23ddfddf803d6833458856 (2026-10-18)
 Branch: proposal/w-math-008-n12-cost-derivation
 

@@ -19,3 +19,16 @@
 
 ## Next stage
 Four imported subject/mode SPECs remain candidate summaries, pending separate comparison with accepted lesson source and user permission. No universal claim of “all four finished”.
+
+
+## W-GOV-007: Paul版Repository OSとtargetの整合
+- Comparative proposal-only [PR #54](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/54), P-001 documented without changing the original app.
+- 2026-10-11: user explicitly answered 「我觉得可以继续」 to P-001 R0–R5 implementation gate. A separate feature branch records this limited authorization and adds README, agent routing and an advisory cross-Work CI pilot.
+- Neither PR #54 nor PR #53 is approved for merge. Target main, original approved curriculum / Constitution / old archives and GitHub Settings must remain unchanged. No DONE status before verified CI and review.
+
+
+## W-GOV-007 verification checkpoint — 2026-10-11
+- Draft implementation PR #55 (not merged) adds OS-first README while preserving the legacy text; reinforces AGENTS/Work/technical and memory routes; adds universal advisory (not required GitHub branch protection).
+- [CI 38073231132](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38073231132): governance 0 errors; Work negative/positive + read-first 21/21 PASS; real PR path audit SCOPE_PASS_HUMAN_REVIEW_REQUIRED; targeted app 202/202 unit, 12 + 2 browser and typecheck/build PASS.
+- Baseline 455 original blobs all present. Only 9 approved OS routing/workflow/memory files changed; 406/406 protected original hashes identical. No source/lesson/Word/physics/math app code altered.
+- Truly unrelated no-memory AI run for 「憲法から」 is still PENDING; document tests do not establish actual model obedience. Existing full-suite historical lint/unit/E2E failures remain separate. No PR merge or GitHub Settings authority.

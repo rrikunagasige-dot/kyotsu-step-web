@@ -15,3 +15,76 @@ jobs:
         with:
           node-version: 22
       - run: node tools/repo-governance-check.mjs
+
+# Cross-Work PR-scope advisory applies to ALL PRs. Non-required and never asserts human approval.
+# Do not make this a required branch-protection check without separate owner authorization.
+  work-integrity-advisory:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Positive and negative Work scope simulations
+        run: node --test tests/governance/pr-work-policy.test.mjs tests/governance/recovery-route.test.mjs
+      - name: Compare exact PR diff to approved Work evidence (advisory)
+        continue-on-error: true
+        env:
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          git fetch --no-tags origin "$PR_BASE_SHA" "$PR_HEAD_SHA"
+          node tests/governance/pr-work-audit.mjs
+
+# Additive released-mode regression on THIS Work branch; original app/tests stay unchanged.
+  preservation-smoke-wgov007:
+    if: github.event_name == 'pull_request' && github.head_ref == 'work/W-GOV-007-repository-os-parity-implementation-20261011'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      - name: Original app typecheck
+        run: pnpm run typecheck
+      - name: Published Math and Physics content regression units
+        run: |
+          pnpm exec vitest run \
+            src/data/mathPractice/adapter.test.ts \
+            src/data/mathPractice/presentation.test.ts \
+            src/data/mathPractice/figures.test.ts \
+            src/data/mathPracticeTaxonomy.test.ts \
+            src/domain/textbookMath.test.ts \
+            src/data/questionCatalog.test.ts \
+            src/data/questionCatalog.zh.test.ts \
+            src/domain/textbook.test.ts \
+            src/domain/textbookSchema.test.ts \
+            src/data/textbook/math/mathCatalog.test.ts \
+            src/data/textbook/math/mathFrontmatterLeak.test.ts \
+            src/data/textbook/math/mathReviewIntegrity.test.ts \
+            src/data/textbook/math/mathFigureAssets.test.ts \
+            src/data/textbook/math/set/setLesson.test.ts \
+            src/data/textbook/math/proposition/propositionReadingLesson.test.ts \
+            src/data/textbook/math/proposition/quantifierLesson.test.ts \
+            src/data/textbook/math/function/functionConditionsLesson.test.ts \
+            src/data/textbook/math/proposition/propositionProofLesson.test.ts
+      - name: Production build
+        run: pnpm run build
+      - name: Published mode browser representative mobile and desktop
+        run: |
+          pnpm exec playwright test e2e/math-practice-pilot.spec.ts e2e/math-textbook-set-smoke.spec.ts e2e/chapter1-learning-smoke.spec.ts \
+            --grep "Math I・A basic theme opens its first problem directly|98 reveals the isosceles counterexample figure|math textbook setup enters the set lesson|set notation renders without KaTeX errors|audited app boots and opens the textbook setup|every Chapter 1 unit boots" \
+            --project=mobile-chromium --project=desktop-chromium --workers=2
+      - name: Physics practice guided-image smoke mobile and desktop
+        run: pnpm exec playwright test e2e/learning-flow.spec.ts --grep "physics guide keeps the original problem image visible while solving" --project=mobile-chromium --project=desktop-chromium --workers=2

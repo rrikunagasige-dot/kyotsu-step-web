@@ -69,7 +69,7 @@ jobs:
           E2E_USE_PREVIEW: '1'
         run: pnpm exec playwright test e2e/math-textbook-set-smoke.spec.ts --grep P-004 --project=mobile-chromium --project=desktop-chromium
 
-      - name: N12 21-step derivation, wrong feedback, figure gate and restore (mobile and desktop)
+      - name: N12 26-step in-equation derivation, wrong feedback, figure gate and restore (mobile and desktop)
         run: pnpm exec playwright test e2e/n12-derivation.spec.ts --project=mobile-chromium --project=desktop-chromium
 
       - name: Math textbook mobile smoke

@@ -80,13 +80,13 @@ const rawN12 = {
         T('二つ目でも、'), M('x'), T(' を片方に集める。'),
       ] },
       { id: 'formula-q02-coef', type: 'formula' as const, derivationId: 'solve-second', parts: [
-        M('x+4\le5-x\\quad\\Longrightarrow\\quad'), C('n12-p002-q02-coef'), M('x+4\le5'),
+        M('x+4\\le5-x\\quad\\Longrightarrow\\quad'), C('n12-p002-q02-coef'), M('x+4\\le5'),
       ] },
       { id: 'paragraph-q02-const', type: 'paragraph' as const, derivationId: 'solve-second', parts: [
         T('両辺から4を引く。等号を含む不等号はそのまま残そう。'),
       ] },
       { id: 'formula-q02-const', type: 'formula' as const, derivationId: 'solve-second', parts: [
-        M('2x+4\le5\\quad\\Longrightarrow\quad2x\\le'), C('n12-p002-q02-const'),
+        M('2x+4\\le5\\quad\\Longrightarrow\\quad2x\\le'), C('n12-p002-q02-const'),
       ] },
       { id: 'paragraph-system-second-after', type: 'paragraph' as const, derivationId: 'solve-second', parts: [
         T('残った係数2は正なので、割っても不等号の向きはそのまま。'),
@@ -119,25 +119,25 @@ const rawN12 = {
         T('二つを一度に片づけず、まず左側の不等式から。'),
       ] },
       { id: 'formula-q06-left-coef', type: 'formula' as const, derivationId: 'triple-solve', parts: [
-        M('3x+2\le2x+4\\quad\\Longrightarrow\\quad'), C('n12-p002-q06-left-coef'), M('x+2\le4'),
+        M('3x+2\\le2x+4\\quad\\Longrightarrow\\quad'), C('n12-p002-q06-left-coef'), M('x+2\\le4'),
       ] },
       { id: 'paragraph-q06-left-const', type: 'paragraph' as const, derivationId: 'triple-solve', parts: [
         T('係数1はふつう書かず、1x=x と表す。次は両辺から2を引こう。'),
       ] },
       { id: 'formula-q06-left-const', type: 'formula' as const, derivationId: 'triple-solve', parts: [
-        M('x+2\le4\\quad\\Longrightarrow\\quad x\\le'), C('n12-p002-q06-left-const'),
+        M('x+2\\le4\\quad\\Longrightarrow\\quad x\\le'), C('n12-p002-q06-left-const'),
       ] },
       { id: 'paragraph-triple-right', type: 'paragraph' as const, derivationId: 'triple-solve', parts: [
         T('続いて右側。'), M('-x'), T(' を左に移した後、定数項を整理しよう。'),
       ] },
       { id: 'formula-q06-right-coef', type: 'formula' as const, derivationId: 'triple-solve', parts: [
-        M('2x+4\le9-x\\quad\\Longrightarrow\\quad'), C('n12-p002-q06-right-coef'), M('x+4\le9'),
+        M('2x+4\\le9-x\\quad\\Longrightarrow\\quad'), C('n12-p002-q06-right-coef'), M('x+4\\le9'),
       ] },
       { id: 'paragraph-q06-right-const', type: 'paragraph' as const, derivationId: 'triple-solve', parts: [
         T('左側へ移した x の係数を確かめたら、両辺から4を引こう。'),
       ] },
       { id: 'formula-q06-right-const', type: 'formula' as const, derivationId: 'triple-solve', parts: [
-        M('3x+4\le9\\quad\\Longrightarrow\quad3x\\le'), C('n12-p002-q06-right-const'),
+        M('3x+4\\le9\\quad\\Longrightarrow\\quad3x\\le'), C('n12-p002-q06-right-const'),
       ] },
       { id: 'paragraph-triple-compare', type: 'paragraph' as const, derivationId: 'triple-solve', parts: [
         T('それぞれの結果を比べる。右側の不等式は正の3で割る。'),
@@ -181,7 +181,7 @@ const rawN12 = {
         T(' に掛けた部分は負になる。'),
       ] },
       { id: 'formula-q12-signed-coef', type: 'formula' as const, derivationId: 'cost-range', parts: [
-        M('50+180x+130(20-x)\\quad\\Longrightarrow\quad50+180x+2600+('),
+        M('50+180x+130(20-x)\\quad\\Longrightarrow\\quad50+180x+2600+('),
         C('n12-p002-q12-signed-coef'), M(')x'),
       ] },
       { id: 'paragraph-cost-collect', type: 'paragraph' as const, derivationId: 'cost-range', parts: [
@@ -194,11 +194,11 @@ const rawN12 = {
         T('金額の三つの辺から、同じ'), M('2650'), T('を引いて整理しよう。'),
       ] },
       { id: 'formula-q13-lower', type: 'formula' as const, derivationId: 'cost-range', parts: [
-        M('3200-2650\le50x<3300-2650\\quad\\Longrightarrow\\quad'),
-        C('n12-p002-q13-lower'), M('\le50x<3300-2650'),
+        M('3200-2650\\le50x<3300-2650\\quad\\Longrightarrow\\quad'),
+        C('n12-p002-q13-lower'), M('\\le50x<3300-2650'),
       ] },
       { id: 'formula-q13-upper', type: 'formula' as const, derivationId: 'cost-range', parts: [
-        M('550\le50x<3300-2650\\quad\\Longrightarrow\quad550\le50x<'),
+        M('550\\le50x<3300-2650\\quad\\Longrightarrow\\quad550\\le50x<'),
         C('n12-p002-q13-upper'),
       ] },
       { id: 'paragraph-cost-positive', type: 'paragraph' as const, derivationId: 'cost-range', parts: [

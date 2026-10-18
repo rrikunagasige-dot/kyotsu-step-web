@@ -66,7 +66,7 @@ export function TextbookFormula({ block, section, progress, onOpen }: Props) {
               onClick={() => onOpen(item.id)}
               key={key}
             >
-              {wrong ? '×' : localToken ? '□' : '選択'}
+              {wrong ? '×' : '選択'}
             </button>
           )
         })}

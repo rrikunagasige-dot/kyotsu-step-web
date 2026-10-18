@@ -36,7 +36,7 @@ async function answer(page: Page, id: string, value: string) {
   await expect(trigger).toBeVisible()
   if (id.startsWith('n12-p002-')) {
     await expect(trigger).toHaveClass(/reading-formula-choice--token/)
-    await expect(trigger).toContainText(/□|×/)
+    await expect(trigger).toContainText(/選択|×/)
   }
   await trigger.click()
   const panel = page.getByTestId('inline-choice-panel-' + id)
@@ -58,6 +58,20 @@ test('N12 P-002: 26 progressive inline holes, math, figure gates, retry and relo
   await expect(f02).toHaveCount(0)
   await expect(f03).toHaveCount(0)
   await expect(page.getByTestId('textbook-item-n12-01')).toHaveCount(0)
+
+  // Visual-only W-MATH-006/P-001: N02-style label/border, retained 44px touch target.
+  const firstToken = page.getByTestId('textbook-item-n12-p002-q01-coef')
+  await expect(firstToken).toHaveText('選択')
+  const tokenBox = await firstToken.boundingBox()
+  expect(tokenBox?.width).toBeGreaterThanOrEqual(44)
+  expect(tokenBox?.height).toBeGreaterThanOrEqual(44)
+  const tokenBorder = await firstToken.evaluate((element) => {
+    const style = getComputedStyle(element)
+    return { radius: style.borderRadius, top: style.borderTopWidth }
+  })
+  expect(tokenBorder).toEqual({ radius: '0px', top: '1px' })
+  await firstToken.focus()
+  await expect(firstToken).toBeFocused()
 
   // Wrong coefficient: cannot unlock either the next local constant or original final question.
   await page.getByTestId('textbook-item-n12-p002-q01-coef').click()

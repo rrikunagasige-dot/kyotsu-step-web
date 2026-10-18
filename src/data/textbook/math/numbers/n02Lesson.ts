@@ -83,10 +83,14 @@ const rawN02 = {
       ] },
       { id: 'paragraph-b-missing', type: 'paragraph' as const, parts: [
         M('A'), T(' には '), M('x'), T(' の一次項があるが、'), M('B'),
-        T(' には見当たらない。列をそろえるため、欠けた項を係数0として書ける。'),
+        T(' には一次の項が見当たらない。同じ次数の列をそろえるため、Bの値を変えずに補える一次項を考えよう。'),
       ] },
       { id: 'formula-n02-05', type: 'formula' as const, parts: [
         M('B=-x^3+2x^2+'), C('n02-05'), M('+2'),
+      ] },
+      { id: 'paragraph-n02-05-after', type: 'paragraph' as const, parts: [
+        T('一次項の係数は '), M('0'), T('。次数ごとに列をそろえるときだけ '),
+        M('0x'), T(' と書いても、もとの式の値は変わらない。'),
       ] },
       { id: 'paragraph-sum-coeff', type: 'paragraph' as const, parts: [
         T('同じ次数の係数を足す。'), M('x^3'), T(' は '), M('2+(-1)'),
@@ -155,7 +159,7 @@ const rawN02 = {
         ['(2y,\\ y^2-3y+2)','(2y-3,\\ 2)','(-3,\\ y^2-3y+2)'],'representation-link','medium',['-3xも一次項。yがあってもxがなければ定数部分。']),
       item('n02-04','xの次数順にひとつの式へ戻そう。','x^2+(2y-3)x+(y^2-3y+2)','formula',
         ['x^2+(2y-3)x+2','x^2+(2y+3)x+(y^2-3y+2)','x^2+y^2+(2y-3)x-3y+2'],'transfer','medium',['一次係数の符号と、xなし部分をそのまま残す。']),
-      item('n02-05','Bにないxの項の係数は？','0x','formula',
+      item('n02-05','係数が0の一次項を、Bの式中に補おう。','0x','formula',
         ['x','-x','2x'],'representation-link','medium',['ない項は係数0。Bの値を変えてはいけない。']),
       item('n02-06','同じ次数の係数をそれぞれ足そう。','x^3-x^2+x+1','formula',
         ['x^3-5x^2+x+1','x^3-x^2+x+3','x^3-x^2+1'],'transfer','medium',['和の計算。次数ごとの係数を一列に合わせる。']),

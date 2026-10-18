@@ -139,6 +139,31 @@ test.beforeEach(async ({ page }) => {
 })
 
 
+
+test('W-MATH-010 N02 zero-coefficient term is an after-answer explanation, not a leaked coefficient', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 720 })
+  await clearState(page)
+  await page.goto(appRoute('/learning/textbook/math-numbers-expressions-n02'))
+  for (const [id, answer] of [
+    ['n02-01', '3bx'],
+    ['n02-02', 'x^3-ax^2+3bx+5c'],
+    ['n02-03', '(2y-3,\\ y^2-3y+2)'],
+    ['n02-04', 'x^2+(2y-3)x+(y^2-3y+2)'],
+  ] as const) await answerItem(page, id, answer)
+  await expect(page.getByTestId('textbook-item-n02-05'))
+    .toHaveAttribute('aria-label', '係数が0の一次項を、Bの式中に補おう。')
+  await expect(page.getByText('もとの式の値は変わらない。')).toHaveCount(0)
+  await chooseWrongOption(page, 'n02-05', '0x')
+  await expect(page.getByTestId('textbook-item-n02-06')).toHaveCount(0)
+  await answerItem(page, 'n02-05', '0x')
+  await expect(page.getByTestId('resolved-n02-05')).toBeVisible()
+  await expect(page.getByText('もとの式の値は変わらない。')).toBeVisible()
+  await expect(page.getByTestId('textbook-item-n02-06')).toBeVisible()
+  await expect(page.locator('.katex-error')).toHaveCount(0)
+  const viewport = await page.evaluate(() => ({width: document.documentElement.clientWidth, scroll: document.documentElement.scrollWidth}))
+  expect(viewport.scroll).toBeLessThanOrEqual(viewport.width + 1)
+})
+
 test('learning setup exposes math textbook mode with the same three curriculum topics', async ({ page }) => {
   await page.goto(appRoute('/learning/setup?subject=math-1a'))
 

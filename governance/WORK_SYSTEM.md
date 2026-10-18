@@ -1,8 +1,8 @@
 # Work Operating System
 
 Status: CANONICAL
-Version: 1.2.0
-Updated: 2026-10-07
+Version: 1.3.0
+Updated: 2026-10-18
 
 ## 1. Purpose
 
@@ -315,6 +315,36 @@ This rule applies to:
 - pilot/review gates before wider rollout.
 
 A correction handoff must not end as prose-only when a usable review link exists.
+
+## 12B. Correction-first gate and approved-creation impact sweep (CMD-WORK-001 ↔ CMD-WORK-002)
+
+User-approved workflow extension: 2026-10-18 (W-GOV-007/P-001). This section is the canonical cross-command **orchestration**. It does not change the commands' own approval rules or add a new Work state.
+
+日本語要約: **未完了の修正依頼を作成より優先**し、修正中は他の**承認済み作成成果物の同型不具合を横断監査**する。見つかった修正は各Proposalの**明示承認**後に実行し、全関連修正・検証・共通教訓の重複統合後に作成を再開する。
+
+### Gate 1 — Before starting or resuming 「作成」
+
+1. Recover the current repository, Work/approval records and all **outstanding user correction requests**; record the actionable queue with Work IDs/links, scopes and evidence. Historical fixed/accepted findings are not an outstanding correction.
+2. An outstanding correction takes priority even when a creation proposal is already approved. Record the creation's paused checkpoint and dependency; do **not** cancel its approval or silently edit its source.
+3. Process the correction via CMD-WORK-001. If an exact correction proposal is approved, perform only that scope. If absent/changed, investigate and present the complete proposal or revision and STOP; the creation remains on hold while authorization is pending.
+4. A blocked or unresolved correction is not silently treated as DONE. If prioritization is impossible, ask the user explicitly rather than bypassing the queue.
+
+### Gate 2 — During every approved correction
+
+1. Diagnose the **root cause and applicability conditions**, distinguish similar symptoms with different causes, and fix/verify the approved primary target first.
+2. Before closing the correction, derive an **impact set** of other artifacts produced under approved 「作成」 proposals (live, previously accepted, and review-only). Search relevant units and shared technical/pedagogical surfaces for the same error pattern. Scope audit by shared cause or rule; do not blindly mass-edit all units or mix modes.
+3. Record an impact ledger: origin finding/Work; root-cause signature; each examined source/unit/version/approved creation Work; evidence; result CONFIRMED / NOT-AFFECTED / UNVERIFIED; and linked correction Work/proposal where applicable. Mark missing sources/permissions as UNVERIFIED, not PASS.
+4. If an additional real defect is confirmed, enqueue a linked CMD-WORK-001 correction. Existing exact approval applies only if it genuinely covers that artifact and fix; otherwise submit a new or revised full proposal and await its **explicit** approval. A cross-artifact audit is **not** automatic authorization for changes.
+5. After each approved fix, verify the original symptom and affected regression surfaces and repeat the impact check for newly identified failure patterns. Track visited (root-cause signature, artifact, version) to prevent duplicate work or an infinite loop.
+
+### Gate 3 — Memory close, lesson deduplication, return
+
+1. Only when the related approved corrections are verified and accepted as required, reconcile their findings into **shared project lessons** and specific mode exceptions. Search existing canonical rules first: exact duplicate → reference/no new lesson; partially overlapping → consolidate common rule and preserve exceptions; novel rule → add once with evidence.
+2. The canonical shared working lesson is `docs/MASTER_APP_LESSONS.md`; its specialized render/IA/pedagogy documents remain authoritative within scope. Detailed correction facts stay in Work records, while `memory/LESSONS/` points to the reusable rule. Preserve historical approvals and lessons; never silently delete or rewrite their provenance.
+3. Close the correction ledger only when there is no confirmed unresolved applicable defect, including a second pass over newly discovered linked corrections. If evidence or approval is missing, remain BLOCKED/REVISE-PROPOSAL as appropriate and report it.
+4. Recheck the correction queue **again** before resuming the paused creation; review updated lessons against the preserved creation proposal. Continue an unchanged approved scope without another approval, but use REVISE-PROPOSAL if new lessons materially change the creation design. Keep main merge/Pages authorization separate.
+
+The existing Work states and proposal-review requirements in sections 4, 11 and 15 remain unchanged. Do not confuse a successful audit with complete user acceptance, or an original creation source with a changed app artifact.
 
 ## 13. Memory promotion
 

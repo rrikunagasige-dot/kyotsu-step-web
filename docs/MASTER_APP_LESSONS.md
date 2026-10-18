@@ -1220,3 +1220,17 @@ Keep support lighter, but preserve active checkpoints when they represent distin
 Mechanical rearrangement and calculator arithmetic can remain visible rather than interactive.
 
 For mobile-only learning, judge derivation density by whether the learner actively builds the chain on the screen, not by a preset hole quota.
+
+---
+
+## 51. 修正を先に閉じ、他の承認済み作成成果物まで確認してから作成へ戻る
+
+**共通規則（2026-10-18承認）:** 新しい教材の作成/再開前に未完了の修正依頼を確認し、先に CMD-WORK-001 の承認・修正・検証を終える。修正途中で同じ**根本原因**が既存の承認済み作成成果物にもあるか、関連ソースと実アプリ（review-only を含む）を横断監査する。
+
+- 影響を受けると確認された教材だけを、個別または関連する承認済み修正Proposalで修正する。「一箇所が悪い→全章を一斉置換」は禁止。
+- 新たな同型不具合が見つかれば修正ループへ戻り、リンクしたFinding/Work、確認対象、非該当、未検証、QA証拠を明示する。過去に修正済み/確認済みの版を無意味にやり直さない。
+- 全関連修正の検証・必要なユーザー受入の後、教訓を更新する。既存教訓と**同じなら追加せず**、重なれば共通部分を統合し、モード固有の条件は残す。原典/旧教訓の履歴を削除しない。
+- 既存の §48「修正スコープの持続」と `docs/MATH_RENDERING_RULES.md` §15「別surfaceの回帰監査」はこの規則の**具体例**であり、内容をコピーして重複させない。
+- 作成への復帰条件は修正queueと教訓の更新が閉じたこと。中断した作成Proposalのスコープが新教訓で変われば改訂承認が必要。
+
+命令間の正本フロー・承認境界・横断影響表・停止条件は `governance/WORK_SYSTEM.md` §12B。個別Workの証拠は `FINDINGS.md`/`VERIFICATION.md` に残す。

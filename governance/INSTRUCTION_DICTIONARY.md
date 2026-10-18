@@ -1,8 +1,8 @@
 # 指示辞書 / Instruction Dictionary
 
 Status: CANONICAL
-Version: 1.4.0
-Updated: 2026-10-14
+Version: 1.5.0
+Updated: 2026-10-18
 
 ## Purpose
 
@@ -240,6 +240,10 @@ Rules:
 - This applies both when the Work is DONE and when it intentionally stops at a user review gate.
 - Do not finish a correction handoff with prose only when a review link is available.
 
+### Cross-creation impact audit before correction closure
+
+修正で根本原因を確定したら、その問題が他の**承認済み「作成」成果物**（公開済み・レビュー中を含む）にもあるか、関連範囲を横断監査する。同型不具合を確認したら別の/関連する `CMD-WORK-001` へ戻り、各exact Proposalの承認を守って修正・再検証する。すべての関連修正後に、共通とmode固有の教訓を既存教訓と重複照合し、必要な統合だけを行う。全条件と再帰停止条件は `governance/WORK_SYSTEM.md` §12Bを正本とする。横断監査は無承認一括修正の許可ではない。
+
 ### Record requirement
 
 修正Workでは必要に応じて:
@@ -277,6 +281,10 @@ Canonical Phrase: **作成**
 3. 対象の科目とモードを**数学/物理 × 教科書/練習**から特定する。特定できなければ確認して停止。Simulationは練習へ黙って統合しない。
 4. 既存問題のguided化と、教科書を根拠にした**新規導入問題・例題の作成**を区別する。既存原問題の条件・図・正解・小問間の参照は無断変更しない。
 5. 元資料/母版を読み取れない、正本・権限・対象範囲が曖昧、教訓に矛盾がある場合は `BLOCKED` / `OPEN-QUESTION` とし、推測による大量生産を止める。
+
+### Correction-first entry gate
+
+新規「作成」の開始時だけでなく中断からの再開時にも、未完了のユーザー修正依頼/修正Workを点検する。残件があれば `CMD-WORK-001 — 修正` を先に処理し、承認・検証・関連教材への横断監査・教訓統合を終えるまで作成を保留する。既承認の作成案は保持するが、後からmaterialに設計が変われば `REVISE-PROPOSAL` を必要とする。具体的な優先ゲートは `governance/WORK_SYSTEM.md` §12B。未承認修正を即実装してはならない。
 
 ### Required mode routing — do not mix pedagogy
 

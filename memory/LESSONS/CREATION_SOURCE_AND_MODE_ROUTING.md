@@ -32,3 +32,7 @@ Imported `subjects/**/SPEC.md` carry a CANONICAL-CANDIDATE note and cannot overr
 - Browser/user review link at every user-inspection gate.
 - Human rejection → record precise finding → route to `CMD-WORK-001`; no silent rewrite.
 - Completion = verified artifact + user acceptance + memory close (release only if approved).
+
+## Correction-before-creation bridge (2026-10-18)
+
+Before any fresh/resumed creation, check outstanding correction requests; apply CMD-WORK-001 and the approved-creation sibling impact sweep first, finish linked corrections/QA/lesson dedup, then revalidate the preserved creation Proposal. **Do not reproduce this workflow here**: its canonical detail is in `governance/WORK_SYSTEM.md` §12B; the shared pedagogical/technical lesson is `docs/MASTER_APP_LESSONS.md` §51.

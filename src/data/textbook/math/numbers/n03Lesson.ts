@@ -9,7 +9,7 @@ export const n03SourceToItemIds = oneToOneSourceMap('N03', 13)
 const rawN03 = {
   schemaVersion: '1.1' as const,
   unitId: 'math-numbers-expressions-n03',
-  revision: 1,
+  revision: 2,
   status: 'review' as const,
   subject: 'math-1a' as const,
   chapter: {
@@ -108,7 +108,19 @@ const rawN03 = {
       { id: 'paragraph-grid-products', type: 'paragraph' as const, parts: [
         T('さらに各括弧を開く。図の「?」4マスに対応する4個の積をまだまとめずに書くと、'),
       ] },
-      { id: 'formula-n03-10', type: 'formula' as const, parts: [M('='), C('n03-10')] },
+      { id: 'formula-r3-q10-p1', type: 'formula' as const, derivationId: 'n03-four-products', parts: [
+        M('2x\\cdot 3x='), C('n03-r3-q10-p1'),
+      ] },
+      { id: 'formula-r3-q10-p2', type: 'formula' as const, derivationId: 'n03-four-products', parts: [
+        M('2x\\cdot 4='), C('n03-r3-q10-p2'),
+      ] },
+      { id: 'formula-r3-q10-p3', type: 'formula' as const, derivationId: 'n03-four-products', parts: [
+        M('1\\cdot 3x='), C('n03-r3-q10-p3'),
+      ] },
+      { id: 'formula-r3-q10-p4', type: 'formula' as const, derivationId: 'n03-four-products', parts: [
+        M('1\\cdot 4='), C('n03-r3-q10-p4'),
+      ] },
+      { id: 'formula-n03-10', type: 'formula' as const, derivationId: 'n03-four-products', parts: [M('='), C('n03-10')] },
       { id: 'paragraph-grid-collect', type: 'paragraph' as const, parts: [T('同じ文字の部分を持つ項を集めると、')] },
       { id: 'formula-n03-11', type: 'formula' as const, parts: [M('='), C('n03-11')] },
       { id: 'paragraph-grid-after', type: 'paragraph' as const, parts: [
@@ -143,6 +155,14 @@ const rawN03 = {
         ['x^4-3x^2+4x^2', 'x^4+3x^3+4x^2', 'x^4-3x^3+4x'], 'transfer', 'medium', ['同じ底の指数は加え、符号はそのまま残す。']),
       item('n03-09', '最初の括弧の2項で全体を分配しよう。', '2x(3x+4)+1(3x+4)', 'formula',
         ['2x(3x+4)+1', '2x(3x+4)+1(3x)', '2x(3x+4)-1(3x+4)'], 'representation-link', 'medium', ['前の括弧の各項が後ろの括弧全体に掛かる。']),
+      item('n03-r3-q10-p1', '表の1マス目、2x×3xを計算しよう。', '6x^2', 'formula',
+        ['5x^2', '6x', '6x^3'], 'representation-link', 'medium', ['係数は2×3、文字はx×x。']),
+      item('n03-r3-q10-p2', '表の2マス目、2x×4を計算しよう。', '8x', 'formula',
+        ['8x^2', '6x', '8'], 'representation-link', 'medium', ['係数を2×4してxを残す。']),
+      item('n03-r3-q10-p3', '表の3マス目、1×3xを計算しよう。', '3x', 'formula',
+        ['3x^2', '4x', '3'], 'representation-link', 'medium', ['1を掛けても3xの値は変わらない。']),
+      item('n03-r3-q10-p4', '表の4マス目、1×4を計算しよう。', '4', 'formula',
+        ['3', '1', '4x'], 'representation-link', 'medium', ['文字のない二つの定数を掛ける。']),
       item('n03-10', '図の四つのマスに対応する積を全て書こう。', '6x^2+8x+3x+4', 'formula',
         ['6x^2+8x+4', '6x^2+8x-3x+4', '6x^2+11x+4'], 'representation-link', 'light', ['四組の積は、同類項をまとめる前に全て現れる。']),
       item('n03-11', '同類項をまとめて展開を終えよう。', '6x^2+11x+4', 'formula',

@@ -19,7 +19,7 @@ describe('N01 mathematics textbook review lesson', () => {
     expect(mathNumbersN01Unit.status).toBe('review')
     expect(mathNumbersN01Unit.chapter?.chapterNumber).toBe('1')
     expect(mathNumbersN01Unit.chapter?.sourcePages).toEqual([2, 3])
-    expect(mathNumbersN01Unit.revision).toBe(1)
+    expect(mathNumbersN01Unit.revision).toBe(2)
     expect(mathNumbersN01Unit.sections).toHaveLength(1)
     expect(section.figures).toEqual([])
   })
@@ -31,14 +31,16 @@ describe('N01 mathematics textbook review lesson', () => {
     const mappedIds = Object.values(n01SourceToItemIds).flat()
     expect(mappedIds).toHaveLength(15)
     expect(new Set(mappedIds).size).toBe(15)
-    expect(section.items.map(item => item.id)).toEqual(mappedIds)
+    expect(section.items.map(item => item.id).filter(id => mappedIds.includes(id))).toEqual(mappedIds)
+    expect(section.items).toHaveLength(18)
     for (const id of mappedIds) expect(itemIndex(id), id).toBeGreaterThanOrEqual(0)
     const referenced = section.readingFlow.flatMap(block =>
       block.type === 'paragraph' || block.type === 'formula'
         ? block.parts.filter(part => part.type === 'choice').map(part => part.itemId)
         : [],
     )
-    expect(referenced).toEqual(mappedIds)
+    expect(referenced.filter(id => mappedIds.includes(id))).toEqual(mappedIds)
+    expect(referenced).toHaveLength(18)
   })
 
   it('asks Q1 before introducing monomial, coefficient and degree', () => {
@@ -63,7 +65,10 @@ describe('N01 mathematics textbook review lesson', () => {
 
   it('requires grouping before solving and only then asks the degree and reasoning', () => {
     expect(itemIndex('n01-06a')).toBeLessThan(itemIndex('n01-06b'))
-    expect(itemIndex('n01-06b')).toBeLessThan(itemIndex('n01-07'))
+    expect(itemIndex('n01-06b')).toBeLessThan(itemIndex('n01-r3-q07-x2coef'))
+    expect(itemIndex('n01-r3-q07-x2coef')).toBeLessThan(itemIndex('n01-r3-q07-xcoef'))
+    expect(itemIndex('n01-r3-q07-xcoef')).toBeLessThan(itemIndex('n01-r3-q07-const'))
+    expect(itemIndex('n01-r3-q07-const')).toBeLessThan(itemIndex('n01-07'))
     expect(itemIndex('n01-07')).toBeLessThan(itemIndex('n01-08'))
     expect(itemIndex('n01-09a')).toBeLessThan(itemIndex('n01-09b'))
     expect(itemIndex('n01-09b')).toBeLessThan(itemIndex('n01-10a'))
@@ -88,7 +93,7 @@ describe('N01 mathematics textbook review lesson', () => {
       'n01-10a': '2次式',
       'n01-10b': '3次の項が整理によって消えるから',
     }
-    for (const item of section.items) {
+    for (const item of section.items.filter(item => Object.values(n01SourceToItemIds).flat().includes(item.id))) {
       expect(item.answer, item.id).toBe(expected[item.id])
       expect(item.choices, item.id).toContain(item.answer)
       expect(item.choices && new Set(item.choices.map(normalizeTextbookAnswer)).size, item.id)

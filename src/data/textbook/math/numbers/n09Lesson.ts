@@ -10,7 +10,7 @@ export const n09SourceToItemIds = oneToOneSourceMap('N09', 14)
 const rawN09 = {
   schemaVersion: '1.1' as const,
   unitId: 'math-numbers-expressions-n09',
-  revision: 1, status: 'review' as const, subject: 'math-1a' as const,
+  revision: 2, status: 'review' as const, subject: 'math-1a' as const,
   chapter: {
     chapterId: 'math-ch01-numbers-expressions',
     chapterNumber: '1', chapterTitle: '数と式', unitCode: '1NUM',
@@ -117,7 +117,13 @@ const rawN09 = {
         T(' の間にあるだろうか。近似値の暗記でなく平方から確かめよう。'),
         T('両端の二乗を厳密に計算し、2を挟む不等式まで書くと、'),
       ] },
-      { id: 'formula-n09-08', type: 'formula' as const, parts: [C('n09-08')] },
+      { id: 'formula-r3-q08-square141', type: 'formula' as const, derivationId: 'n09-decimal-squares', parts: [
+        M('1.41^2='), C('n09-r3-q08-square141'),
+      ] },
+      { id: 'formula-r3-q08-square142', type: 'formula' as const, derivationId: 'n09-decimal-squares', parts: [
+        M('1.42^2='), C('n09-r3-q08-square142'),
+      ] },
+      { id: 'formula-n09-08', type: 'formula' as const, derivationId: 'n09-decimal-squares', parts: [C('n09-08')] },
       { id: 'paragraph-approx-monotone', type: 'paragraph' as const, parts: [
         M('1.41'), T(' と '), M('1.42'), T(' は正なので、非負の範囲では二乗の大小と元の大小が一致する。よって、'),
       ] },
@@ -187,6 +193,10 @@ const rawN09 = {
         ['2-\\sqrt5>0','2-\\sqrt5=0','2-\\sqrt5\\ge0'],'causal-reasoning','medium',['どちらも非負なので、平方した4と5の大小で比べられる。']),
       item('n09-07','負の中身の絶対値を非負の式にしよう。','\\sqrt5-2','formula',
         ['2-\\sqrt5','\\sqrt5+2','-(2+\\sqrt5)'],'transfer','medium',['中身が負なので、符号を反対にすると非負になる。']),
+      item('n09-r3-q08-square141', '1.41²を小数第4位まで正確に計算しよう。', '1.9881', 'formula',
+        ['1.9981', '1.9811', '1.9882'], 'representation-link', 'medium', ['141²を計算し、小数点を4桁戻す。']),
+      item('n09-r3-q08-square142', '1.42²を小数第4位まで正確に計算しよう。', '2.0164', 'formula',
+        ['2.0104', '2.0146', '2.0162'], 'representation-link', 'medium', ['142²を計算し、小数点を4桁戻す。']),
       item('n09-08','両方の小数を平方し、2を挟もう。','1.41^2=1.9881<2<2.0164=1.42^2','formula',
         ['1.41^2=1.9981<2<2.0164=1.42^2',
          '1.41^2=1.9881<2<2.0104=1.42^2',

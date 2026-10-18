@@ -56,7 +56,7 @@ export function TextbookFormula({ block, section, progress, onOpen }: Props) {
           }
 
           const wrong = Boolean(record)
-          const localToken = item.id.startsWith('n12-p002-')
+          const localToken = ['n12-p002-', 'n01-r3-', 'n03-r3-', 'n09-r3-'].some((prefix) => item.id.startsWith(prefix))
           return (
             <button
               type="button"

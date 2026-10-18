@@ -45,13 +45,15 @@ describe('W-MATH-003 user-approved N02/N09 review-only implementation', () => {
     expect(mapped).toHaveLength(count)
     expect(new Set(mapped).size).toBe(count)
     expect(unit.sections).toHaveLength(1)
-    expect(unit.sections[0].items.map(item => item.id)).toEqual(mapped)
+    expect(unit.sections[0].items.map(item => item.id).filter(id => mapped.includes(id))).toEqual(mapped)
+    expect(unit.sections[0].items).toHaveLength(count + (prefix === 'N09' ? 2 : 0))
     const presented = unit.sections[0].readingFlow.flatMap(block =>
       block.type === 'paragraph' || block.type === 'formula'
         ? block.parts.filter(part => part.type === 'choice').map(part => part.itemId)
         : [],
     )
-    expect(presented).toEqual(mapped)
+    expect(presented.filter(id => mapped.includes(id))).toEqual(mapped)
+    expect(presented).toHaveLength(count + (prefix === 'N09' ? 2 : 0))
     expect(unit.sections[0].items[0].scaffoldLevel).toBe('strong')
     expect(unit.sections[0].items.some(item => item.scaffoldLevel === 'light')).toBe(true)
   })
@@ -78,10 +80,10 @@ describe('W-MATH-003 user-approved N02/N09 review-only implementation', () => {
     }
   })
 
-  it('preserves N01/N03/N10 while expecting the P-002 N12 token stages', () => {
+  it('preserves source mappings and adds only approved R3 tokens alongside P-002 N12', () => {
     expect(mathNumbersN01Unit.status).toBe('review')
-    expect(mathNumbersN01Unit.sections[0].items).toHaveLength(15)
-    expect(mathNumbersN03Unit.sections[0].items).toHaveLength(13)
+    expect(mathNumbersN01Unit.sections[0].items).toHaveLength(18)
+    expect(mathNumbersN03Unit.sections[0].items).toHaveLength(17)
     expect(mathNumbersN10Unit.sections[0].items).toHaveLength(21)
     expect(mathNumbersN12Unit.status).toBe('review')
     expect(mathNumbersN12Unit.sections[0].items).toHaveLength(26)
@@ -113,7 +115,7 @@ describe('W-MATH-003 user-approved N02/N09 review-only implementation', () => {
   })
 
   it('preserves N09 all fourteen independently checked results', () => {
-    expect(mathNumbersN09Unit.sections[0].items.map(q => q.answer)).toEqual([
+    expect(mathNumbersN09Unit.sections[0].items.filter(q => Object.values(n09SourceToItemIds).flat().includes(q.id)).map(q => q.answer)).toEqual([
       'x=4,\\ -4',
       '(4,\\ 5)',
       '4',

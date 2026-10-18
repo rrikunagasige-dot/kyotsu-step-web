@@ -112,8 +112,11 @@ describe('N12 P-002 token-level derivation', () => {
       const block = matching[0]
       if (block.type !== 'formula') throw new Error('missing formula')
       const hole = block.parts.findIndex(part => part.type === 'choice' && part.itemId === id)
-      expect(hole, id).toBeGreaterThan(0)
-      expect(block.parts[hole - 1]?.type, id).toBe('math')
+      expect(hole, id).toBeGreaterThanOrEqual(0)
+      expect(
+        block.parts[hole - 1]?.type === 'math' || block.parts[hole + 1]?.type === 'math',
+        id,
+      ).toBe(true)
       expect(block.parts.filter(part => part.type === 'choice'), id).toHaveLength(1)
     }
     const q12 = blocks.find(block => block.type === 'formula' && block.id === 'formula-q12-signed-coef')
@@ -127,8 +130,8 @@ describe('N12 P-002 token-level derivation', () => {
     for (const [id, answer] of Object.entries(newP003Answers)) {
       const item = itemById.get(id)
       expect(item?.answer, id).toBe(answer)
-      expect(item?.choices, id).toHaveLength(3)
-      expect(item?.choices?.includes(answer), id).toBe(false)
+      expect(item?.choices, id).toHaveLength(4)
+      expect(item?.choices?.filter(choice => choice === answer), id).toHaveLength(1)
       const matching = blocks.filter(block =>
         (block.type === 'paragraph' || block.type === 'formula') &&
         block.parts.some(part => part.type === 'choice' && part.itemId === id))

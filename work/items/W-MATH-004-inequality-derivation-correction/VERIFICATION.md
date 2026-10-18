@@ -1,5 +1,5 @@
 # W-MATH-004 — VERIFICATION
-Status: IMPLEMENTATION STATIC CHECKS COMPLETE / CI, BROWSER AND ACCEPTANCE PENDING
+Status: P-002 MAIN / GITHUB PAGES DEPLOY PASS; HANDS-ON ACCEPTANCE AND LINKED R3 CORRECTIONS PENDING
 Date: 2026-10-18 JST
 
 ## Recorded checks
@@ -55,3 +55,5 @@ Status: CODE STAGED / CI PENDING
 
 
 - V-022 FINAL SOURCE/CI PASS and EXPLICIT RELEASE AUTHORIZATION: Head 08dcaa89a72cdbba79ed5e119178172d398bbc36: Math textbook CI 39099106182 SUCCESS; math practice pilot CI 39099106186 SUCCESS; governance CI 39099106188 SUCCESS, including corrected 26-stage step label. User direct message 「N12の公開とW-MATH-005/P-001を承認する」 separately authorizes PR #78 main integration and Pages; user hands-on content acceptance remains a different gate. Post-merge Pages run and live URL must still be checked; this entry is not a deployment PASS.
+
+- V-023 N12 P-002 PUBLIC RELEASE VERIFIED (2026-10-18 JST): User's independent publishing authorization 「N12の公開とW-MATH-005/P-001を承認する」; PR #78 merged at main 51c184286e5207b189dd7b412643e99c426bc884. Main-triggered Pages workflow [39100536418](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39100536418) completed **SUCCESS**. Its build job ran typecheck, audited chapter-1 data and math gate, browser smoke, practice regression, N12 textbook smoke, production build and SVG decode, then uploaded the Pages artifact; deploy job completed **SUCCESS**. Main governance [39100536454](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39100536454) also SUCCESS. Stable public route: https://rrikunagasige-dot.github.io/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n12. This is a verified deployment PASS, not a claim of hands-on user content acceptance. W-MATH-005 draft code and P-003 creation remain unpublished/paused.

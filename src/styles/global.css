@@ -1255,3 +1255,32 @@ button.math-theme-link {
   border: 1px solid var(--color-primary); background: var(--color-primary);
   color: white; cursor: pointer; min-height: 40px; padding: .45rem 1.1rem; font-weight: 800;
 }
+
+
+/* P-002: N12-only in-equation scalar blanks; preserve all other formula choices. */
+.reading-formula-choice--token {
+  min-width: 44px;
+  min-height: 44px;
+  padding: .2rem .4rem;
+  border-width: 2px;
+  border-radius: .25rem;
+  font-size: 1.08rem;
+  font-weight: 750;
+  flex: 0 0 auto;
+}
+.reading-formula-choice--token:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+.reading-formula-line:has(.reading-formula-choice--token) {
+  max-width: 100%;
+  overflow-x: auto;
+}
+.n12-progress-upgrade-note {
+  margin: 0;
+  padding: .7rem .85rem;
+  border-left: 3px solid var(--color-primary);
+  background: var(--color-section);
+  color: var(--color-text);
+  line-height: 1.7;
+}

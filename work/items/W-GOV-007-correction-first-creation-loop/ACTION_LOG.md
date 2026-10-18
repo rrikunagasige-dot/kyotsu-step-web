@@ -12,3 +12,6 @@ Branch: work/W-GOV-007-correction-first-cross-creation-20261018
 
 ## A-003 — Compose non-duplicated corrective workflow
 2026-10-18: Prepare normative WORK_SYSTEM §12B; short routes in dictionary/COMMAND_WORDS; single shared master §51; concise memory pointers. Existing Work state machine, 4 modes, author approvals and app code remain unchanged. CI/PR evidence to append after actual runs.
+
+## A-004 — Repair canonical Work status formatting after CI FAIL
+2026-10-18: Governance CI run 39088866331 failed solely on new W-GOV-007 WORK.md status format. Checked validator's exact /^Status:\s+([A-Z-]+)\s*$/ and matching proposal rules. Normalized WORK Status: VERIFYING and PROPOSAL Status: APPROVED to standalone lines, moved descriptive text to separate key, retained first-run failure as V-003. Recheck on next PR commit.

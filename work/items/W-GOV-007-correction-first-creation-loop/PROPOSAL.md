@@ -1,5 +1,6 @@
 # W-GOV-007 / P-001 — CMD-WORK-001 ↔ CMD-WORK-002 common correction-first loop
-Status: APPROVED for isolated governance documentation implementation
+Status: APPROVED
+Authorized execution: isolated governance documentation implementation only
 Date: 2026-10-18 JST
 Repo: rrikunagasige-dot/kyotsu-step-web (ID 1391122224)
 Base live main: b8e7f087756a0d819abe65f69ca13d03a9fb47fb

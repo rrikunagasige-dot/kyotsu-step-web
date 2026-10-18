@@ -1,5 +1,6 @@
 # W-GOV-007 — 修正優先・承認済み作成成果物の横断監査と教訓統合
-Status: VERIFYING (docs PR; no main merge)
+Status: VERIFYING
+Review stage: documentation-only PR #74; main merge not authorized
 Date: 2026-10-18 JST
 Repo: rrikunagasige-dot/kyotsu-step-web (ID 1391122224)
 Base live main: b8e7f087756a0d819abe65f69ca13d03a9fb47fb

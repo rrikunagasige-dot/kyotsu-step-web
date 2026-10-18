@@ -19,4 +19,4 @@ Branch: work/W-GOV-007-correction-first-cross-creation-20261018
 These are design-document assertions, not executable app QA.
 
 ## V-003 — CI/release remaining
-Governance checker on PR HEAD: PENDING. App/browser test: NOT APPLICABLE (documentation-only rule update). User review and main merge: NOT AUTHORIZED YET. Record actual CI evidence after run; never claim live main updated because the feature branch exists.
+Governance checker on initial PR HEAD 61bbf7d05165dc53365ca114610fd7a82eb8c0db: **FAIL** (run 39088866331, existing validator requires WORK.md Status and PROPOSAL.md Status each on a standalone permitted-value line). Root cause: status strings contained explanatory suffixes. Both records are now normalized; follow-up CI required. App/browser test: NOT APPLICABLE (documentation-only rule update). User review and main merge: NOT AUTHORIZED YET. Record actual CI evidence after run; never claim live main updated because the feature branch exists.

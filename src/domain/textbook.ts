@@ -25,6 +25,9 @@ export type TextbookUnitProgress = {
   updatedAt: number
   answers: Record<string, TextbookAnswerRecord>
   completedAt?: number
+  /** N12 v1 completion is retained for historical provenance, not v2 completion. */
+  previousRevisionCompletedAt?: number
+  migratedFromRevision?: number
 }
 
 export function normalizeTextbookAnswer(value: string) {
@@ -98,6 +101,29 @@ export function isTextbookAnswerCorrect(item: TextbookItem, value: string) {
   return [item.answer, ...item.acceptedAnswers].some((answer) => normalizeTextbookAnswer(answer) === normalized)
 }
 
+/**
+ * P-002: Preserve the old N12 records while making its eleven new token gaps
+ * genuinely unanswered. Old supplemental item IDs never overlap new token IDs.
+ * Other units keep the ordinary revision-invalidates-progress behavior.
+ */
+export function effectiveTextbookProgress(unit: TextbookUnit, progress: TextbookUnitProgress | undefined): TextbookUnitProgress | undefined {
+  if (!progress) return undefined
+  if (progress.unitRevision === unit.revision) return progress
+  if (unit.unitId !== 'math-numbers-expressions-n12' || unit.revision !== 2 || progress.unitRevision !== 1) {
+    return undefined
+  }
+
+  return {
+    ...progress,
+    unitRevision: 2,
+    migratedFromRevision: 1,
+    ...(progress.completedAt !== undefined ? { previousRevisionCompletedAt: progress.completedAt } : {}),
+    completedAt: undefined,
+    // Leave all 21 historical records intact. Only current 26 IDs are scored.
+    answers: { ...progress.answers },
+  }
+}
+
 export function isTextbookItemResolved(item: TextbookItem, record: TextbookAnswerRecord | undefined) {
   if (!record?.resolved) return false
   if (record.isFirstCorrect) return true
@@ -105,7 +131,7 @@ export function isTextbookItemResolved(item: TextbookItem, record: TextbookAnswe
 }
 
 export function answerTextbookItem(progress: TextbookUnitProgress | undefined, unit: TextbookUnit, item: TextbookItem, value: string, now: number): TextbookUnitProgress {
-  const currentProgress = progress?.unitRevision === unit.revision ? progress : undefined
+  const currentProgress = effectiveTextbookProgress(unit, progress)
   const previous = currentProgress?.answers[item.id]
   if (isTextbookItemResolved(item, previous)) return progress!
 
@@ -134,12 +160,14 @@ export function answerTextbookItem(progress: TextbookUnitProgress | undefined, u
     startedAt: currentProgress?.startedAt ?? now,
     updatedAt: now,
     answers,
+    ...(currentProgress?.migratedFromRevision !== undefined ? { migratedFromRevision: currentProgress.migratedFromRevision } : {}),
+    ...(currentProgress?.previousRevisionCompletedAt !== undefined ? { previousRevisionCompletedAt: currentProgress.previousRevisionCompletedAt } : {}),
     ...(completed ? { completedAt: currentProgress?.completedAt ?? now } : {}),
   }
 }
 
 export function textbookSectionProgress(unit: TextbookUnit, progress: TextbookUnitProgress | undefined, sectionId: string) {
-  const currentProgress = progress?.unitRevision === unit.revision ? progress : undefined
+  const currentProgress = effectiveTextbookProgress(unit, progress)
   const section = unit.sections.find((candidate) => candidate.id === sectionId)
   if (!section) return { completed: 0, total: 0 }
   return {
@@ -149,7 +177,7 @@ export function textbookSectionProgress(unit: TextbookUnit, progress: TextbookUn
 }
 
 export function textbookUnitProgress(unit: TextbookUnit, progress: TextbookUnitProgress | undefined) {
-  const currentProgress = progress?.unitRevision === unit.revision ? progress : undefined
+  const currentProgress = effectiveTextbookProgress(unit, progress)
   const items = unit.sections.flatMap((section) => section.items)
   const completed = items.filter((item) => isTextbookItemResolved(item, currentProgress?.answers[item.id])).length
   return { completed, total: items.length, percent: items.length ? Math.round((completed / items.length) * 100) : 0 }

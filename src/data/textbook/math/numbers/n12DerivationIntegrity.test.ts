@@ -1,123 +1,136 @@
 import { describe, expect, it } from 'vitest'
 import { mathNumbersN12Unit, n12SourceToItemIds } from './n12Lesson'
 
-// W-MATH-004/P-001: supplemental learning stages, not new Word questions.
-const originalIds = Array.from({ length: 15 }, (_, index) => 'n12-' + String(index + 1).padStart(2, '0'))
-const extraIds = ['n12-01a', 'n12-02a', 'n12-06a', 'n12-06b', 'n12-12a', 'n12-13a']
-const expectedOrder = [
-  'n12-01a', 'n12-01', 'n12-02a', 'n12-02',
-  'n12-03', 'n12-04', 'n12-05',
-  'n12-06a', 'n12-06b', 'n12-06', 'n12-07',
-  'n12-08', 'n12-09', 'n12-10', 'n12-11',
-  'n12-12a', 'n12-12', 'n12-13a', 'n12-13', 'n12-14', 'n12-15',
+// P-002: fifteen original Word questions, eleven in-equation token decisions.
+const originalIds = Array.from({ length: 15 }, (_, i) => 'n12-' + String(i + 1).padStart(2, '0'))
+const tokenIds = [
+  'n12-p002-q01-coef', 'n12-p002-q01-const',
+  'n12-p002-q02-coef', 'n12-p002-q02-const',
+  'n12-p002-q06-left-coef', 'n12-p002-q06-left-const',
+  'n12-p002-q06-right-coef', 'n12-p002-q06-right-const',
+  'n12-p002-q12-signed-coef',
+  'n12-p002-q13-lower', 'n12-p002-q13-upper',
 ]
-
+const retiredP001Ids = ['n12-01a', 'n12-02a', 'n12-06a', 'n12-06b', 'n12-12a', 'n12-13a']
+const expectedOrder = [
+  ...tokenIds.slice(0, 2), 'n12-01', ...tokenIds.slice(2, 4), 'n12-02',
+  'n12-03', 'n12-04', 'n12-05', ...tokenIds.slice(4, 8),
+  'n12-06', 'n12-07', 'n12-08', 'n12-09', 'n12-10', 'n12-11',
+  tokenIds[8], 'n12-12', ...tokenIds.slice(9), 'n12-13', 'n12-14', 'n12-15',
+]
+const expectedLocal: Record<string, string> = {
+  'n12-p002-q01-coef': '2',
+  'n12-p002-q01-const': '-7',
+  'n12-p002-q02-coef': '2',
+  'n12-p002-q02-const': '1',
+  'n12-p002-q06-left-coef': '1',
+  'n12-p002-q06-left-const': '2',
+  'n12-p002-q06-right-coef': '3',
+  'n12-p002-q06-right-const': '5',
+  'n12-p002-q12-signed-coef': '-130',
+  'n12-p002-q13-lower': '550',
+  'n12-p002-q13-upper': '650',
+}
+const originalAnswers = [
+  'x>-\\frac72', 'x\\le\\frac12', '二つ目に反するので不適',
+  '-\\frac72<x\\le\\frac12', '3x+2\\le2x+4\\ \\text{かつ}\\ 2x+4\\le9-x',
+  'x\\le2,\\quad x\\le\\frac53', 'x\\le\\frac53', '20-x',
+  'x\\in\\mathbb Z,\\ 0\\le x\\le20', '50+180x+130(20-x)',
+  '3200\\le50+180x+130(20-x)<3300', '3200\\le2650+50x<3300',
+  '11\\le x<13', 'x=11\\ \\text{または}\\ 12',
+  'T(11)=3200\\text{円},\\ T(12)=3250\\text{円}',
+]
 const section = mathNumbersN12Unit.sections[0]
-const flowOrder = section.readingFlow.flatMap((block) =>
+const blocks = section.readingFlow
+const flowIds = blocks.flatMap(block =>
   block.type === 'paragraph' || block.type === 'formula'
-    ? block.parts.flatMap((part) => part.type === 'choice' ? [part.itemId] : [])
+    ? block.parts.flatMap(part => part.type === 'choice' ? [part.itemId] : [])
     : [],
 )
-const choiceById = new Map(section.items.map((item) => [item.id, item]))
+const itemById = new Map(section.items.map(item => [item.id, item]))
 
-function formulaBefore(id: string): string {
-  const block = section.readingFlow.find((part) =>
-    part.type === 'formula' && part.parts.some((fragment) =>
-      fragment.type === 'choice' && fragment.itemId === id,
-    ),
-  )
-  if (block?.type !== 'formula') throw new Error('missing formula for ' + id)
-  return block.parts.flatMap((part) => part.type === 'math' ? [part.latex] : []).join('')
-}
-
-describe('N12 approved six-stage derivation correction', () => {
-  it('preserves the original 15 Word markers and response keys', () => {
-    expect(Object.keys(n12SourceToItemIds)).toEqual(
-      Array.from({ length: 15 }, (_, index) => 'N12-Q' + String(index + 1).padStart(2, '0')),
-    )
-    for (const [index, id] of originalIds.entries()) {
-      expect(n12SourceToItemIds['N12-Q' + String(index + 1).padStart(2, '0')]).toEqual([id])
-    }
-    expect(section.items.map((item) => item.id).filter((id) => originalIds.includes(id))).toEqual(originalIds)
-  })
-
-  it('adds six distinct steps within 21 progressive inline choices', () => {
+describe('N12 P-002 token-level derivation', () => {
+  it('preserves all fifteen source IDs and answers exactly, with review status', () => {
     expect(mathNumbersN12Unit.status).toBe('review')
-    expect(section.items).toHaveLength(21)
-    expect(flowOrder).toEqual(expectedOrder)
-    expect(new Set(flowOrder).size).toBe(21)
-    expect(section.items.map((item) => item.id).filter((id) => extraIds.includes(id))).toEqual(extraIds)
-    expect(section.readingFlow.filter((block) => block.type === 'heading')).toHaveLength(2)
+    expect(mathNumbersN12Unit.revision).toBe(2)
+    expect(Object.keys(n12SourceToItemIds)).toEqual(
+      Array.from({ length: 15 }, (_, i) => 'N12-Q' + String(i + 1).padStart(2, '0')),
+    )
+    for (const [i, id] of originalIds.entries()) {
+      expect(n12SourceToItemIds['N12-Q' + String(i + 1).padStart(2, '0')]).toEqual([id])
+    }
+    expect(section.items.filter(item => originalIds.includes(item.id)).map(item => item.answer)).toEqual(originalAnswers)
   })
 
-  it('requires algebraic reasoning before revealing original final results', () => {
-    const answers: Record<string, string> = {
-      'n12-01a': '-7<2x',
-      'n12-02a': '2x\\le1',
-      'n12-06a': 'x\\le2',
-      'n12-06b': '3x\\le5',
-      'n12-12a': '50+180x+2600-130x',
-      'n12-13a': '550\\le50x<650',
-      'n12-01': 'x>-\\frac72',
-      'n12-02': 'x\\le\\frac12',
-      'n12-06': 'x\\le2,\\quad x\\le\\frac53',
-      'n12-12': '3200\\le2650+50x<3300',
-      'n12-13': '11\\le x<13',
-      'n12-14': 'x=11\\ \\text{または}\\ 12',
-    }
-    for (const [id, correct] of Object.entries(answers)) {
-      expect(choiceById.get(id)?.answer, id).toBe(correct)
-    }
-    expect(formulaBefore('n12-01a')).toContain('-2<2x+5')
-    expect(formulaBefore('n12-01')).toContain('-7<2x')
-    expect(formulaBefore('n12-02a')).toContain('2x+4\\le5')
-    expect(formulaBefore('n12-02')).toContain('2x\\le1')
-    expect(formulaBefore('n12-06a')).toContain('x+2\\le4')
-    expect(formulaBefore('n12-06b')).toContain('3x+4\\le9')
-    expect(formulaBefore('n12-06')).toContain('3x\\le5')
-    expect(formulaBefore('n12-12a')).toContain('130(20-x)')
-    expect(formulaBefore('n12-12')).toContain('2600-130x')
-    expect(formulaBefore('n12-13a')).toContain('2650+50x')
-    expect(formulaBefore('n12-13')).toContain('550\\le50x<650')
-
-    for (const id of extraIds) {
-      const item = choiceById.get(id)
-      expect(item?.choices).toHaveLength(4)
-      expect(item?.choices?.filter((choice) => choice === item?.answer)).toHaveLength(1)
-    }
+  it('replaces six legacy supplemental choices with eleven local holes in 26 progressive steps', () => {
+    expect(section.items).toHaveLength(26)
+    expect(flowIds).toEqual(expectedOrder)
+    expect(section.items.map(item => item.id)).toEqual(expectedOrder)
+    expect(new Set(flowIds).size).toBe(26)
+    expect(section.items.filter(item => tokenIds.includes(item.id)).map(item => item.id)).toEqual(tokenIds)
+    expect(retiredP001Ids.some(id => itemById.has(id))).toBe(false)
+    expect(blocks.filter(block => block.type === 'heading')).toHaveLength(2)
   })
 
-  it('keeps successive explanation and formula steps in one visual derivation chain', () => {
+  it('puts every token inside a formula with adjacent math and one gated gap per block', () => {
+    for (const [id, value] of Object.entries(expectedLocal)) {
+      const item = itemById.get(id)
+      expect(item?.answer, id).toBe(value)
+      expect(item?.answerType, id).toBe('formula')
+      expect(item?.choices, id).toHaveLength(4)
+      expect(item?.choices?.filter(option => option === value), id).toHaveLength(1)
+      const matching = blocks.filter(block =>
+        block.type === 'formula' && block.parts.some(part => part.type === 'choice' && part.itemId === id),
+      )
+      expect(matching, id).toHaveLength(1)
+      const block = matching[0]
+      if (block.type !== 'formula') throw new Error('missing formula')
+      const hole = block.parts.findIndex(part => part.type === 'choice' && part.itemId === id)
+      expect(hole, id).toBeGreaterThan(0)
+      expect(block.parts[hole - 1]?.type, id).toBe('math')
+      expect(block.parts.filter(part => part.type === 'choice'), id).toHaveLength(1)
+    }
+    const q12 = blocks.find(block => block.type === 'formula' && block.id === 'formula-q12-signed-coef')
+    expect(q12?.type === 'formula' ? q12.parts.at(-1) : null).toMatchObject({ type: 'math', latex: ')x' })
+    const q13 = blocks.find(block => block.type === 'formula' && block.id === 'formula-q13-lower')
+    expect(q13?.type === 'formula' ? q13.parts.at(-1) : null).toMatchObject({ type: 'math', latex: '\\le50x<3300-2650' })
+  })
+
+  it('keeps contiguous visual derivations and source figure timing', () => {
     for (const group of ['solve-first', 'solve-second', 'triple-solve', 'cost-range']) {
-      const indexes = section.readingFlow.flatMap((block, index) =>
+      const indexes = blocks.flatMap((block, index) =>
         'derivationId' in block && block.derivationId === group ? [index] : [],
       )
-      expect(indexes.length, group).toBeGreaterThanOrEqual(3)
-      expect(indexes.at(-1)! - indexes[0] + 1, group).toBe(indexes.length)
+      expect(indexes.length).toBeGreaterThanOrEqual(5)
+      expect(indexes.at(-1)! - indexes[0] + 1).toBe(indexes.length)
     }
-  })
-
-  it('keeps the three original figures and answer-bearing F03 after the final check', () => {
-    expect(section.figures.map((figure) => figure.src)).toEqual([
+    expect(section.figures.map(f => f.src)).toEqual([
       '/assets/math/textbook/numbers/n12-f01.png',
       '/assets/math/textbook/numbers/n12-f02.png',
       '/assets/math/textbook/numbers/n12-f03.png',
     ])
-    const figureF03 = section.readingFlow.findIndex((block) => block.type === 'figure' && block.figureId === 'n12-f03')
-    const lastQuestion = section.readingFlow.findIndex((block) =>
+    const choicePosition = (id: string) => blocks.findIndex(block =>
       (block.type === 'paragraph' || block.type === 'formula') &&
-      block.parts.some((part) => part.type === 'choice' && part.itemId === 'n12-15'),
+      block.parts.some(part => part.type === 'choice' && part.itemId === id),
     )
-    expect(lastQuestion).toBeGreaterThan(-1)
-    expect(figureF03).toBeGreaterThan(lastQuestion)
+    const figurePosition = (id: string) => blocks.findIndex(block => block.type === 'figure' && block.figureId === id)
+    expect(choicePosition('n12-02')).toBeLessThan(figurePosition('n12-f01'))
+    expect(choicePosition('n12-06')).toBeLessThan(figurePosition('n12-f02'))
+    expect(choicePosition('n12-15')).toBeLessThan(figurePosition('n12-f03'))
   })
 
-  it('preserves inequality direction and validates integer/cost endpoints', () => {
-    const good = [11, 12].filter((x) => x >= 0 && x <= 20 && x >= 11 && x < 13)
-    expect(good).toEqual([11, 12])
-    expect(good.map((x) => 50 + 180 * x + 130 * (20 - x))).toEqual([3200, 3250])
-    expect(50 + 180 * 13 + 130 * (20 - 13)).toBe(3300)
-    expect((-7 / 2) < 1 && 1 > 1 / 2).toBe(true)
-    expect(5 / 3 < 2).toBe(true)
+  it('has correct inequality and cost mathematics', () => {
+    expect(1 - 3).toBe(-2)
+    expect(-2 - 5).toBe(-7)
+    expect(5 - 4).toBe(1)
+    expect(3 - 2).toBe(1)
+    expect(2 + 1).toBe(3)
+    expect(9 - 4).toBe(5)
+    expect(130 * (-1)).toBe(-130)
+    expect(3200 - 2650).toBe(550)
+    expect(3300 - 2650).toBe(650)
+    expect([11, 12].map(x => 50 + 180*x + 130*(20-x))).toEqual([3200, 3250])
+    expect(-7/2).toBeLessThan(1/2)
+    expect(5/3).toBeLessThan(2)
   })
 })

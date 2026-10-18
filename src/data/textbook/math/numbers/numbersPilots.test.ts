@@ -46,9 +46,13 @@ describe('W-MATH-003 approved numbers & expressions pilot implementation', () =>
     const itemIds = section.items.map(item => item.id)
     expect(itemIds.filter(id => mapped.includes(id))).toEqual(mapped)
     if (prefix === 'N12') {
-      expect(itemIds).toHaveLength(count + 6) // P-001 extra reasoning stages, not source questions
+      expect(itemIds).toHaveLength(count + 11) // P-002 token-level derivations, not new Word questions
       expect(itemIds.filter(id => !mapped.includes(id))).toEqual([
-        'n12-01a', 'n12-02a', 'n12-06a', 'n12-06b', 'n12-12a', 'n12-13a',
+        'n12-p002-q01-coef', 'n12-p002-q01-const',
+        'n12-p002-q02-coef', 'n12-p002-q02-const',
+        'n12-p002-q06-left-coef', 'n12-p002-q06-left-const',
+        'n12-p002-q06-right-coef', 'n12-p002-q06-right-const',
+        'n12-p002-q12-signed-coef', 'n12-p002-q13-lower', 'n12-p002-q13-upper',
       ])
     } else {
       expect(itemIds).toEqual(mapped)

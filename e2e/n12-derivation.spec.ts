@@ -93,6 +93,36 @@ test('N12 P-002: 26 progressive inline holes, math, figure gates, retry and relo
 
   for (const [id, value] of choices) {
     await answer(page, id, value)
+    if (id === 'n12-p002-q01-coef' || id === 'n12-p002-q02-coef') {
+      // Coefficients other than 1 must remain explicit before x.
+      await expect(page.getByTestId('resolved-' + id).locator('.katex-html')).toHaveText('2')
+    }
+    if (id === 'n12-p002-q02-const') {
+      // A numeric answer 1 at the end of an expression must remain 1.
+      await expect(page.getByTestId('resolved-n12-p002-q02-const').locator('.katex-html')).toHaveText('1')
+    }
+    if (id === 'n12-p002-q06-left-coef') {
+      // W-MATH-007: retain answer "1" internally, but the rendered formula reads x+2, never 1x.
+      const solved = page.getByTestId('resolved-n12-p002-q06-left-coef')
+      await expect(solved.locator('.katex-html')).toHaveText('x')
+      await expect(solved).toHaveAttribute('aria-label', '係数は1（式ではx）')
+      const visibleParts = await page
+        .getByTestId('textbook-formula-formula-q06-left-coef')
+        .locator('.katex-html').allInnerTexts()
+      const visibleFormula = visibleParts.join('').replace(/\s+/g, '')
+      expect(visibleFormula).toContain('x+2')
+      expect(visibleFormula).not.toContain('1x')
+      expect(visibleFormula).not.toContain('xx+2')
+      const savedAnswer = await page.evaluate(() =>
+        JSON.parse(localStorage.getItem('kyotsu-step-store') || '{}')
+          .state.textbookProgress['math-numbers-expressions-n12']
+          .answers['n12-p002-q06-left-coef'].value,
+      )
+      expect(savedAnswer).toBe('1')
+    }
+    if (id === 'n12-p002-q06-right-coef') {
+      await expect(page.getByTestId('resolved-n12-p002-q06-right-coef').locator('.katex-html')).toHaveText('3')
+    }
     if (id === 'n12-02') {
       await expect(f01).toBeVisible()
       await expect(f02).toHaveCount(0)
@@ -118,6 +148,7 @@ test('N12 P-002: 26 progressive inline holes, math, figure gates, retry and relo
   await page.reload()
   await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
   await expect(page.getByTestId('resolved-n12-p002-q01-coef')).toBeVisible()
+  await expect(page.getByTestId('resolved-n12-p002-q06-left-coef').locator('.katex-html')).toHaveText('x')
   await expect(f03).toBeVisible()
 })
 

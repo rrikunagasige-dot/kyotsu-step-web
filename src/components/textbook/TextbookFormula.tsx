@@ -13,6 +13,25 @@ type Props = {
   onOpen: (itemId: string) => void
 }
 
+// Display-only: one solved coefficient of 1 immediately before the simple factor x+….
+// Keep the recorded answer as "1" and leave constants and other algebraic forms untouched.
+function isSolvedUnitCoefficientBeforeX(
+  block: FormulaBlock,
+  index: number,
+  section: TextbookSection,
+  progress: TextbookUnitProgress | undefined,
+): boolean {
+  const part = block.parts[index]
+  const next = block.parts[index + 1]
+  if (part?.type !== 'choice' || next?.type !== 'math' || !/^x\+/.test(next.latex)) return false
+
+  const item = section.items.find((candidate) => candidate.id === part.itemId)
+  if (!item || item.answerType !== 'formula') return false
+
+  const record = progress?.answers[item.id]
+  return isTextbookItemResolved(item, record) && (record?.value ?? item.answer) === '1'
+}
+
 export function TextbookFormula({ block, section, progress, onOpen }: Props) {
   return (
     <div
@@ -25,7 +44,9 @@ export function TextbookFormula({ block, section, progress, onOpen }: Props) {
           const key = `${block.id}-part-${index}`
 
           if (part.type === 'math') {
-            return <span className="reading-formula-math" key={key}><InlineMath math={part.latex} /></span>
+            const followsUnitCoefficient = isSolvedUnitCoefficientBeforeX(block, index - 1, section, progress)
+            const latex = followsUnitCoefficient ? part.latex.slice(1) : part.latex
+            return <span className="reading-formula-math" key={key}><InlineMath math={latex} /></span>
           }
 
           if (part.type === 'text') {
@@ -46,10 +67,16 @@ export function TextbookFormula({ block, section, progress, onOpen }: Props) {
 
           if (resolved) {
             const value = record?.value ?? item.answer
+            const showCoefficientAsX = isSolvedUnitCoefficientBeforeX(block, index, section, progress)
             return (
-              <span className="reading-formula-answer" data-testid={`resolved-${item.id}`} key={key}>
+              <span
+                className="reading-formula-answer"
+                data-testid={`resolved-${item.id}`}
+                aria-label={showCoefficientAsX ? '係数は1（式ではx）' : undefined}
+                key={key}
+              >
                 {item.answerType === 'formula'
-                  ? <InlineMath math={normalizeTextbookMath(value)} />
+                  ? <InlineMath math={showCoefficientAsX ? 'x' : normalizeTextbookMath(value)} />
                   : value}
               </span>
             )

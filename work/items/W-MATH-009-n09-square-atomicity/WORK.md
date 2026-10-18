@@ -1,6 +1,6 @@
 # W-MATH-009 — N09 平方比較を計算する局所穴
 
-Status: IMPLEMENTED — DRAFT REVIEW / CI PENDING
+Status: VERIFYING
 Updated: 2026-10-18
 Command: CMD-WORK-001 修正
 Parent: W-MATH-008/P-001 impact audit

@@ -52,7 +52,9 @@ describe('W-MATH-005 P-001 approved local transform additions', () => {
     const grouped = section.readingFlow.filter(block =>
       block.type === 'formula' && block.derivationId === group)
     expect(grouped).toHaveLength(newIds.length + 1)
-    expect(grouped.flatMap(block => block.parts.filter(part => part.type === 'choice').map(part => part.itemId)))
+    expect(grouped.flatMap(block => block.type === 'formula'
+      ? block.parts.filter(part => part.type === 'choice').map(part => part.itemId)
+      : []))
       .toEqual([...newIds, final])
 
     for (const [id, answer] of newAnswers) {
@@ -68,7 +70,8 @@ describe('W-MATH-005 P-001 approved local transform additions', () => {
       const p = flowBlock.parts.findIndex(part => part.type === 'choice')
       expect(p).toBeGreaterThan(0)
       expect(flowBlock.parts[p - 1].type).toBe('math')
-      expect(flowBlock.parts[p - 1].type === 'math' && flowBlock.parts[p - 1].latex.endsWith('='))
+      const preceding = flowBlock.parts[p - 1]
+      expect(preceding.type === 'math' && preceding.latex.endsWith('='))
         .toBe(id.startsWith('n03-') || id.startsWith('n09-'))
     }
 

@@ -1409,3 +1409,59 @@ test('W-MATH-003 approved review themes appear on the public setup and keep phys
   await page.getByRole('button', { name: '物理', exact: true }).click()
   await expect(page.getByTestId('textbook-part-list')).toBeVisible()
 })
+
+test('W-MATH-009 N09 Q08: four gated calculation/sign holes, reload and 320/375/390px math layout', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 720 })
+  await clearState(page)
+  await page.goto(appRoute('/learning/textbook/math-numbers-expressions-n09'))
+  const originals: Array<[string, string]> = [
+    ['n09-01', 'x=4,\\ -4'],
+    ['n09-02', '(4,\\ 5)'],
+    ['n09-03', '4'],
+    ['n09-04', '(a,\\ -a)'],
+    ['n09-05', '|a|'],
+    ['n09-06', '2-\\sqrt5<0'],
+    ['n09-07', '\\sqrt5-2'],
+  ]
+  await expect(page.getByTestId('textbook-item-n09-p001-q08-left-square')).toHaveCount(0)
+  for (const [id, answer] of originals) await answerItem(page, id, answer)
+
+  await expect(page.getByTestId('textbook-item-n09-p001-q08-left-square')).toBeVisible()
+  await expect(page.getByTestId('textbook-item-n09-p001-q08-right-square')).toHaveCount(0)
+  await chooseWrongOption(page, 'n09-p001-q08-left-square', '1.9881')
+  await expect(page.getByTestId('textbook-item-n09-p001-q08-right-square')).toHaveCount(0)
+  await answerItem(page, 'n09-p001-q08-left-square', '1.9881')
+  await page.reload()
+  await expect(page.getByTestId('resolved-n09-p001-q08-left-square')).toBeVisible()
+
+  for (const [id, answer] of [
+    ['n09-p001-q08-right-square', '2.0164'],
+    ['n09-p001-q08-lower-sign', '<'],
+    ['n09-p001-q08-upper-sign', '<'],
+  ] as const) await answerItem(page, id, answer)
+
+  for (const width of [320, 375, 390]) {
+    await page.setViewportSize({ width, height: 720 })
+    await expect(page.getByTestId('textbook-item-n09-08')).toBeVisible()
+    await page.getByTestId('textbook-item-n09-08').click()
+    const options = page.getByTestId('inline-choice-panel-n09-08').locator('.reading-choice-option')
+    await expect(options).toHaveCount(3) // medium scaffold: correct + two wrong
+    await expect(page.locator('.katex-error')).toHaveCount(0)
+    for (const option of await options.all()) {
+      const rows = option.locator('.reading-choice-formula-line')
+      await expect(rows).toHaveCount(3)
+      const box = await option.boundingBox()
+      expect(box).not.toBeNull()
+      expect(box!.width).toBeLessThanOrEqual(width)
+    }
+    const viewport = await page.evaluate(() => ({
+      width: document.documentElement.clientWidth, scroll: document.documentElement.scrollWidth,
+    }))
+    expect(viewport.scroll).toBeLessThanOrEqual(viewport.width + 1)
+    await page.getByTestId('textbook-item-n09-08').click()
+  }
+  await answerItem(page, 'n09-08', '1.41^2=1.9881<2<2.0164=1.42^2')
+  await expect(page.getByTestId('resolved-n09-08')).toBeVisible()
+  await expect(page.getByTestId('textbook-item-n09-09')).toBeVisible()
+  await expect(page.locator('.katex-error')).toHaveCount(0)
+})

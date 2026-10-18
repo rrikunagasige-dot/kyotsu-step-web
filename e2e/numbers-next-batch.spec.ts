@@ -60,7 +60,7 @@ test('N02 review: all 12 source-stage decisions, compound answers, no forward le
   await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
 })
 
-test('N09 review: n=-3 gates original figure, all 14 decisions and negative fractional parts', async ({ page }) => {
+test('N09 review: n=-3 gates original figure, all 14 original plus 4 square decisions and negative fractional parts', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 720 })
   await visitClean(page, 'math-numbers-expressions-n09')
   await expect(page.getByRole('heading', { name: '実数を扱う', exact: true })).toBeVisible()
@@ -77,6 +77,10 @@ test('N09 review: n=-3 gates original figure, all 14 decisions and negative frac
     ['n09-05','|a|'],
     ['n09-06','2-\\sqrt5<0'],
     ['n09-07','\\sqrt5-2'],
+    ['n09-p001-q08-left-square','1.9881'],
+    ['n09-p001-q08-right-square','2.0164'],
+    ['n09-p001-q08-lower-sign','<'],
+    ['n09-p001-q08-upper-sign','<'],
     ['n09-08','1.41^2=1.9881<2<2.0164=1.42^2'],
     ['n09-09','1.41<\\sqrt2<1.42'],
   ]

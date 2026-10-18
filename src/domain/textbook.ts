@@ -35,10 +35,10 @@ export type TextbookUnitProgress = {
   updatedAt: number
   answers: Record<string, TextbookAnswerRecord>
   completedAt?: number
-  /** N12 completion of a previous version is history, never v3 completion. */
+  /** Prior revision completion is history, never current-version completion. */
   previousRevisionCompletedAt?: number
   migratedFromRevision?: number
-  /** N12 only: full old revision records remain recoverable after v3 restart. */
+  /** Full old revision records remain recoverable after an approved restart. */
   archivedRevisions?: Record<string, TextbookRevisionArchive>
 }
 
@@ -147,9 +147,46 @@ function migrateN12ToRevision3(progress: TextbookUnitProgress): TextbookUnitProg
   }
 }
 
+/**
+ * W-MATH-009/P-001: N09 v2 introduces four prerequisite decisions before Q08.
+ * Keep every v1 answer in a versioned archive, but restart active Q01 onward.
+ * Never interpret old Q08 as an answer to the new prerequisite holes.
+ */
+function migrateN09ToRevision2(progress: TextbookUnitProgress): TextbookUnitProgress {
+  const oldRevision = progress.unitRevision
+  const oldArchive: TextbookRevisionArchive = {
+    unitRevision: oldRevision,
+    startedAt: progress.startedAt,
+    updatedAt: progress.updatedAt,
+    answers: { ...progress.answers },
+    ...(progress.completedAt !== undefined ? { completedAt: progress.completedAt } : {}),
+    ...(progress.previousRevisionCompletedAt !== undefined
+      ? { previousRevisionCompletedAt: progress.previousRevisionCompletedAt } : {}),
+    ...(progress.migratedFromRevision !== undefined
+      ? { migratedFromRevision: progress.migratedFromRevision } : {}),
+  }
+  return {
+    unitId: progress.unitId,
+    unitRevision: 2,
+    startedAt: progress.updatedAt,
+    updatedAt: progress.updatedAt,
+    answers: {},
+    archivedRevisions: { ...(progress.archivedRevisions ?? {}), [String(oldRevision)]: oldArchive },
+    migratedFromRevision: oldRevision,
+    ...(progress.completedAt !== undefined
+      ? { previousRevisionCompletedAt: progress.completedAt }
+      : progress.previousRevisionCompletedAt !== undefined
+        ? { previousRevisionCompletedAt: progress.previousRevisionCompletedAt }
+        : {}),
+  }
+}
+
 export function effectiveTextbookProgress(unit: TextbookUnit, progress: TextbookUnitProgress | undefined): TextbookUnitProgress | undefined {
   if (!progress) return undefined
   if (progress.unitRevision === unit.revision) return progress
+  if (unit.unitId === 'math-numbers-expressions-n09' && unit.revision === 2 && progress.unitRevision === 1) {
+    return migrateN09ToRevision2(progress)
+  }
   if (unit.unitId !== 'math-numbers-expressions-n12') return undefined
 
   if (unit.revision === 3 && (progress.unitRevision === 1 || progress.unitRevision === 2)) {

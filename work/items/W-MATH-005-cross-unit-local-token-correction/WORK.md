@@ -1,0 +1,11 @@
+# W-MATH-005 — N01/N03/N09 式内局所計算穴の連動修正
+Status: IMPLEMENTING
+Updated: 2026-10-18 JST
+Command: CMD-WORK-001「修正」
+Root cause: W-MATH-004 F-012 / R3 (whole-expression choice obscures local evaluated value)
+Approval: P-001 APPROVED by exact user message 2026-10-18 JST; only isolated code/QA. Main/Pages release remains unapproved.
+Scope: approved/review-visible N01 Q07, N03 Q10, N09 Q08; nine local result holes proposed.
+Do not touch: N02/N10, N12 P-002, unapproved N11/N13/N14, original source figures/Word or main/Pages.
+Dependency: N12 P-002 merged in PR #78, main 51c184286e5207b189dd7b412643e99c426bc884; W-MATH-003/P-003 creation paused.
+Evidence: W-MATH-004/P002_R3_IMPACT_LEDGER.md.
+Proposal: PROPOSAL.md / P-001 — APPROVED. Implementation branch: work/W-MATH-005-R3-local-token-implementation-20261018. Next: add 9 local slots, revision-safe progress, tests, linked R3 audit; hand off PR for user QA; no main/Pages publish.

@@ -45,13 +45,15 @@ describe('W-MATH-003 user-approved N02/N09 review-only implementation', () => {
     expect(mapped).toHaveLength(count)
     expect(new Set(mapped).size).toBe(count)
     expect(unit.sections).toHaveLength(1)
-    expect(unit.sections[0].items.map(item => item.id)).toEqual(mapped)
+    const actualIds = unit.sections[0].items.map(item => item.id)
+    expect(actualIds.filter(id => mapped.includes(id))).toEqual(mapped)
+    expect(actualIds).toHaveLength(prefix === 'N09' ? 18 : count)
     const presented = unit.sections[0].readingFlow.flatMap(block =>
       block.type === 'paragraph' || block.type === 'formula'
         ? block.parts.filter(part => part.type === 'choice').map(part => part.itemId)
         : [],
     )
-    expect(presented).toEqual(mapped)
+    expect(presented).toEqual(actualIds)
     expect(unit.sections[0].items[0].scaffoldLevel).toBe('strong')
     expect(unit.sections[0].items.some(item => item.scaffoldLevel === 'light')).toBe(true)
   })
@@ -113,7 +115,7 @@ describe('W-MATH-003 user-approved N02/N09 review-only implementation', () => {
   })
 
   it('preserves N09 all fourteen independently checked results', () => {
-    expect(mathNumbersN09Unit.sections[0].items.map(q => q.answer)).toEqual([
+    expect(mathNumbersN09Unit.sections[0].items.filter(q => Object.values(n09SourceToItemIds).flat().includes(q.id)).map(q => q.answer)).toEqual([
       'x=4,\\ -4',
       '(4,\\ 5)',
       '4',

@@ -29,3 +29,5 @@ Assessment PASS is **not** app verification, user acceptance or release authoriz
 - V-012 FIRST RUN FAILED / REPAIR SUBMITTED: Repository Governance Check on PR #76 SHA 2219f52a9644a54167f522ee59acafc5da150d91 reported WORK.md missing Status; cause machine-readable label had explanatory suffix and Proposal also needed exact APPROVED line. Rewrote both standalone status labels, awaiting next run. Failure preserved as evidence.
 
 - V-013 FIRST MATH CI FAILED, PRECISE CAUSE AND PATCH: 2026-10-18 workflow 39092607921 typecheck PASS; Vitest 145 PASS/3 FAIL in old N12 pilot/nextbatch assertions expecting 15 total item IDs/answers. This is the approved 15→21 change, not an algebra failure. Updated those tests to distinguish 15 original source IDs from 6 additional learning stages. Re-run full math CI and do not conceal initial failures.
+
+- V-014 NEW AUTOMATION AUTHORED / EXECUTION PENDING: N12 all-21 Playwright flow in mobile/desktop Chromium, explicit wrong sign branch, F01/F02/F03 gates and progress persistence; focused Vitest added to explicit math-textbook CI list. Results must be checked after the next workflow run.

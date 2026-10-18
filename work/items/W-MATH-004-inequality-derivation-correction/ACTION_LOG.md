@@ -31,3 +31,6 @@ First PR #76 governance job failed solely because WORK.md and PROPOSAL.md includ
 
 ## A-010 — Migrate stale pilot regression assertions for approved extra stages
 Math CI at original implementation SHA 2219f52 passed typecheck but failed three legacy assertions in numbersPilots.test.ts and numbersNextBatch.test.ts that assumed all N12 UI choices remained exactly the 15 Word source questions. P-001 explicitly changes only learner substep count to 21 while preserving original 15 source mappings/answers. Updated those assertions to compare original mapped IDs/answers as a subset in original order and independently verify six supplemental stages; N01/02/03/09/10 old assertions untouched. Follow-up CI pending.
+
+## A-011 — Add full N12 mobile and desktop interaction gate
+Added e2e/n12-derivation.spec.ts for all 21 correct answers, Q01a wrong sign feedback/unlocking prohibition, F01/F02/F03 reveal prerequisites, KaTeX/render width, completion and reload persistence. Extended only existing math-textbook CI workflow to execute the focused Vitest and Playwright on mobile+desktop Chromium. This replaces the former gap in automation for P-001, not a shared UI or data-contract change.

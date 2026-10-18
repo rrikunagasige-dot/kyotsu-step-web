@@ -18,6 +18,7 @@ on:
       - 'src/styles/global.css'
       - 'e2e/math-textbook-set-smoke.spec.ts'
       - 'e2e/numbers-next-batch.spec.ts'
+      - 'e2e/n12-derivation.spec.ts'
       - 'e2e/numbers-catalog-publish.spec.ts'
       - '.github/workflows/math-textbook-ci.yml'
   workflow_dispatch:
@@ -58,7 +59,7 @@ jobs:
         run: pnpm run typecheck
 
       - name: Textbook schema and math-unit tests
-        run: pnpm exec vitest run src/domain/textbook.test.ts src/domain/textbookSchema.test.ts src/data/textbook/math/mathCatalog.test.ts src/data/textbook/math/mathFrontmatterLeak.test.ts src/data/textbook/math/mathReviewIntegrity.test.ts src/data/textbook/math/mathFigureAssets.test.ts src/data/textbook/math/set/setLesson.test.ts src/data/textbook/math/numbers/n01Lesson.test.ts src/data/textbook/math/numbers/numbersPilots.test.ts src/data/textbook/math/numbers/numbersNextBatch.test.ts src/data/textbook/math/proposition/propositionReadingLesson.test.ts src/data/textbook/math/proposition/quantifierLesson.test.ts src/data/textbook/math/function/functionConditionsLesson.test.ts src/data/textbook/math/proposition/propositionProofLesson.test.ts
+        run: pnpm exec vitest run src/domain/textbook.test.ts src/domain/textbookSchema.test.ts src/data/textbook/math/mathCatalog.test.ts src/data/textbook/math/mathFrontmatterLeak.test.ts src/data/textbook/math/mathReviewIntegrity.test.ts src/data/textbook/math/mathFigureAssets.test.ts src/data/textbook/math/set/setLesson.test.ts src/data/textbook/math/numbers/n01Lesson.test.ts src/data/textbook/math/numbers/numbersPilots.test.ts src/data/textbook/math/numbers/numbersNextBatch.test.ts src/data/textbook/math/numbers/n12DerivationIntegrity.test.ts src/data/textbook/math/proposition/propositionReadingLesson.test.ts src/data/textbook/math/proposition/quantifierLesson.test.ts src/data/textbook/math/function/functionConditionsLesson.test.ts src/data/textbook/math/proposition/propositionProofLesson.test.ts
 
       - name: Build
         run: pnpm run build
@@ -76,6 +77,9 @@ jobs:
 
       - name: N02/N09 all 26 choices and original image gate (mobile and desktop)
         run: pnpm exec playwright test e2e/numbers-next-batch.spec.ts --project=mobile-chromium --project=desktop-chromium
+
+      - name: N12 21-step derivation, wrong feedback, figure gate and restore (mobile and desktop)
+        run: pnpm exec playwright test e2e/n12-derivation.spec.ts --project=mobile-chromium --project=desktop-chromium
 
       - name: Chapter-1 math catalog, route and review visibility (mobile and desktop)
         run: pnpm exec playwright test e2e/numbers-catalog-publish.spec.ts --project=mobile-chromium --project=desktop-chromium

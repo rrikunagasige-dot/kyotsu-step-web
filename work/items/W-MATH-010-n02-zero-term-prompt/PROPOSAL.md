@@ -1,6 +1,6 @@
 # W-MATH-010 — Proposal P-001: N02 Q05「係数0」と「項0x」の混同
 
-Status: APPROVED — IMPLEMENTED ON REVIEW BRANCH
+Status: APPROVED
 Created: 2026-10-18
 
 ### Problem / Need

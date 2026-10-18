@@ -1,6 +1,6 @@
 # W-MATH-009 — Proposal P-001: N09 Q08 計算を穴へ
 
-Status: APPROVED — IMPLEMENTED ON REVIEW BRANCH
+Status: APPROVED
 Created: 2026-10-18
 
 ### Problem / Need

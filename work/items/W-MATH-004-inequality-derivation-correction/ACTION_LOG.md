@@ -43,3 +43,12 @@ Math CI 39092932229 passed governance/typecheck/focused tests/build/production s
 
 ## A-014 — Fix E2E interaction with scaffold-level choice filtering
 CI 39093203142 passed governance, Vitest, typecheck, build, preview, full math mobile+desktop and N02/N09 interaction checks. New N12 Playwright failed at its deliberate wrong choice: strong scaffold renders only two choices using stable selection, and the test hard-coded a distractor not guaranteed visible. Test now selects any actually displayed option whose aria-label differs from the correct answer; increased the long 21-step test timeout to 90 seconds and moved this focused step earlier in the CI to fail fast. App learner code unchanged.
+
+## A-015 — P-001 merged and published before P-002 feedback
+Authoritative main commit f4d3ab40a27808a3ecb56c379efbe16a3fe19be4 is the PR #76 merge of the approved N12 21-stage correction. The merge message records the user's separate integration and GitHub Pages authorization. The Work front matter had not been reconciled with that release; this proposal-only revision corrects the current status without rewriting the historical P-001 approval.
+
+## A-016 — User identifies missing *in-equation* cognitive blanks
+User judged the intermediate algebra mathematically right but insufficiently interactive: coefficient of x, changed constants and signs should themselves be holes within the equation. User accepted the illustrated design direction with 「そうそうそう。これなんだよね。ってそれは非常にいいよ。そういう感じのやつだよ。」 This does not approve exact future code.
+
+## A-017 — P-002 designed, implementation paused
+Inspected main N12 21 stages, math/choice/math rendering, sequential derivation grouping, scaffold choice filtering and progress semantics. Formally proposed 15 stable source answers + 11 local tokens = 26 answer stages; all new token IDs; N12-only revision-2 progress-safe migration; new R3 sibling audit and CI/mobile gates. Added standalone P002_PROPOSAL.md on a documentation-only branch. No learner app, schema, tests, other units, main or Pages changed in this step. Next is explicit proposal approval.

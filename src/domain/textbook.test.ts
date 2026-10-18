@@ -2,13 +2,17 @@ import { describe, expect, it } from 'vitest'
 import { builtInTextbookUnits } from '../data/textbookUnits'
 import {
   answerTextbookItem,
+  effectiveTextbookProgress,
   getTextbookChoices,
   groupTextbookUnitsByChapter,
   isTextbookAnswerCorrect,
   isTextbookItemResolved,
   normalizeTextbookAnswer,
   textbookUnitProgress,
+  type TextbookUnitProgress,
 } from './textbook'
+
+import { mathNumbersN12Unit } from '../data/textbook/math/numbers/n12Lesson'
 
 const unit = builtInTextbookUnits[0]
 const firstItem = unit.sections[0].items[0]
@@ -132,5 +136,82 @@ describe('textbook learning state', () => {
 
     expect(isTextbookItemResolved(firstItem, legacyWrong)).toBe(false)
     expect(isTextbookItemResolved(firstItem, legacyCorrect)).toBe(true)
+  })
+})
+
+
+describe('N12 P-002 progress transition only', () => {
+  const lesson = mathNumbersN12Unit
+  const getItem = (id: string) => lesson.sections[0].items.find(item => item.id === id)!
+  const oldAnswer = (id: string, value: string, resolved = true) => ({
+    itemId: id,
+    value,
+    firstValue: value,
+    isFirstCorrect: resolved,
+    resolved,
+    attemptCount: 1,
+    firstAnsweredAt: 100,
+    lastAnsweredAt: 200,
+  })
+
+  const oldProgress = (): TextbookUnitProgress => ({
+    unitId: lesson.unitId,
+    unitRevision: 1,
+    startedAt: 50,
+    updatedAt: 200,
+    completedAt: 300,
+    answers: {
+      'n12-01': oldAnswer('n12-01', getItem('n12-01').answer),
+      'n12-01a': oldAnswer('n12-01a', '-7<2x'),
+      'n12-02': oldAnswer('n12-02', getItem('n12-02').answer),
+      'n12-03': oldAnswer('n12-03', '一つ目を満たすから適する', false),
+    },
+  })
+
+  it('retains v1 source answers and old extras but never credits old extras as new holes', () => {
+    const v1 = oldProgress()
+    const projected = effectiveTextbookProgress(lesson, v1)!
+    expect(projected.unitRevision).toBe(2)
+    expect(projected.migratedFromRevision).toBe(1)
+    expect(projected.startedAt).toBe(50)
+    expect(projected.previousRevisionCompletedAt).toBe(300)
+    expect(projected.completedAt).toBeUndefined()
+    expect(projected.answers).toEqual(v1.answers)
+    expect(textbookUnitProgress(lesson, v1)).toMatchObject({ completed: 2, total: 26 })
+    expect(textbookUnitProgress(lesson, projected).completed).toBe(2)
+    expect(getItem('n12-p002-q01-coef').answer).toBe('2')
+    expect(projected.answers['n12-p002-q01-coef']).toBeUndefined()
+    expect(effectiveTextbookProgress(lesson, projected)).toBe(projected)
+  })
+
+  it('converts on first new answer and keeps old completion history across subsequent answers', () => {
+    const v1 = oldProgress()
+    const coef = getItem('n12-p002-q01-coef')
+    const afterFirst = answerTextbookItem(v1, lesson, coef, coef.answer, 500)
+    expect(afterFirst.unitRevision).toBe(2)
+    expect(afterFirst.startedAt).toBe(50)
+    expect(afterFirst.completedAt).toBeUndefined()
+    expect(afterFirst.previousRevisionCompletedAt).toBe(300)
+    expect(afterFirst.answers['n12-01']).toEqual(v1.answers['n12-01'])
+    expect(afterFirst.answers['n12-01a']).toEqual(v1.answers['n12-01a'])
+    expect(textbookUnitProgress(lesson, afterFirst).completed).toBe(3)
+
+    const constant = getItem('n12-p002-q01-const')
+    const afterSecond = answerTextbookItem(afterFirst, lesson, constant, constant.answer, 600)
+    expect(afterSecond.previousRevisionCompletedAt).toBe(300)
+    expect(afterSecond.migratedFromRevision).toBe(1)
+    expect(afterSecond.answers['n12-01a']).toEqual(v1.answers['n12-01a'])
+    expect(textbookUnitProgress(lesson, afterSecond).completed).toBe(4)
+  })
+
+  it('does not migrate unrelated unit revisions or artificially resolve incorrect records', () => {
+    expect(effectiveTextbookProgress(unit, {
+      ...oldProgress(), unitId: unit.unitId, unitRevision: unit.revision - 1,
+    })).toBeUndefined()
+    const v1 = oldProgress()
+    v1.completedAt = undefined
+    const migrated = effectiveTextbookProgress(lesson, v1)!
+    expect(migrated.previousRevisionCompletedAt).toBeUndefined()
+    expect(textbookUnitProgress(lesson, migrated).completed).toBe(2)
   })
 })

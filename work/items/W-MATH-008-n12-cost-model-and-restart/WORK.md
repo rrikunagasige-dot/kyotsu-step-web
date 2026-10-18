@@ -1,11 +1,12 @@
 # W-MATH-008 — N12: T(x)の組立て・式内穴・表示と最初からの再挑戦
 
-Status: PROPOSED (approval pending; NO APP IMPLEMENTATION)
+Status: VERIFYING
 Command: CMD-WORK-001 — 修正
 Proposal: P-001 in this directory
 Repository: rrikunagasige-dot/kyotsu-step-web
 Base: main 4cd7665a4b5bde8c8d23ddfddf803d6833458856 (2026-10-18)
-Branch: proposal/w-math-008-n12-cost-derivation
+Implementation branch: fix/w-math-008-n12-cost-derivation
+Review PR: https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/87
 
 ## Objective
 N12の原問Q10〜Q12で、T(x)の意味→個数×単価→固定費→合計→金額条件→分配・同類項の全思考線を、初学者に計算させる局所穴でつなぐ。小さな数式を縦に並べる。前回履歴が残っていても新しい版の最初の問いから実際に再挑戦できるようにする。
@@ -25,7 +26,7 @@ N12 Q10–12 new local holes, N12 progress restart and old-record archival, narr
 Constitution; original teacher Word/images; original source Q01–Q15 IDs and answer keys; other math/physics modes or units; unrelated progress; main/Pages without separate approval; paused creation queue.
 
 ## Current Step
-Source and lesson audit completed. Full proposed design under P-001 awaits explicit user approval.
+User approved P-001 for implementation on 2026-10-18; 35-stage N12 implementation committed on a separate feature branch (efa826e). CI and cross-unit impact QA in progress. Main/Pages release is NOT approved.
 
 ## Next Step
-Present full P-001 to user. STOP before feature implementation. Following exact approval, implement on a separate branch/PR, verify and request independent release approval. After user acceptance, reconcile existing lessons and add the approved pre-small-task lesson recheck process without duplicating canonical rules.
+Resolve required CI checks and layout verification; complete impact audit. Present review link and request distinct publication authorization after acceptance. Reconcile/deduplicate lesson rules only after user acceptance.

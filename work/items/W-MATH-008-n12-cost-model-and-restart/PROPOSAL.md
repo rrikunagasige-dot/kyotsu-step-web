@@ -1,11 +1,12 @@
 # W-MATH-008 / P-001 — N12: T(x)の導出・局所穴・最初から再挑戦
 
-Status: **PROPOSED / USER APPROVAL REQUIRED**
+Status: APPROVED
 Date: 2026-10-18 JST
 Command: CMD-WORK-001「修正」
 Baseline: main 4cd7665a4b5bde8c8d23ddfddf803d6833458856
 Branch: proposal/w-math-008-n12-cost-derivation
-**No learner source code has changed. No release is authorized.**
+**Approved for implementation only, not for main merge or Pages release.**
+Implementation PR: https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/87 (draft, verification pending).
 
 ## 1. Verified faults and root cause
 

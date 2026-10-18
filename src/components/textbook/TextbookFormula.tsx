@@ -2,7 +2,7 @@ import { InlineMath } from 'react-katex'
 import type { TextbookUnitProgress } from '../../domain/textbook'
 import { isTextbookItemResolved } from '../../domain/textbook'
 import { normalizeTextbookMath } from '../../domain/textbookMath'
-import { n12CostDisplayLines } from '../../domain/n12CostDisplay'
+import { textbookDisplayLines } from '../../domain/textbookDisplayLines'
 import type { TextbookReadingBlock, TextbookSection } from '../../domain/textbookSchema'
 
 type FormulaBlock = Extract<TextbookReadingBlock, { type: 'formula' }>
@@ -92,7 +92,7 @@ export function TextbookFormula({ block, section, progress, onOpen }: Props) {
               >
                 {item.answerType === 'formula'
                   ? (() => {
-                    const lines = n12Formula ? n12CostDisplayLines(item.id, value) : [value]
+                    const lines = textbookDisplayLines(item.id, value)
                     return lines.length > 1
                       ? <span className="reading-formula-n12-answer-lines">
                           {lines.map((line, i) =>
@@ -106,7 +106,7 @@ export function TextbookFormula({ block, section, progress, onOpen }: Props) {
           }
 
           const wrong = Boolean(record)
-          const localToken = item.id.startsWith('n12-p002-') || item.id.startsWith('n12-p003-')
+          const localToken = item.id.startsWith('n12-p002-') || item.id.startsWith('n12-p003-') || item.id.startsWith('n09-p001-')
           return (
             <button
               type="button"

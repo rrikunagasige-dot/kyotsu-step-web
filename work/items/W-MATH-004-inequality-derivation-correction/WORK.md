@@ -2,7 +2,7 @@
 Status: VERIFYING
 Updated: 2026-10-18 JST
 Command: CMD-WORK-001「修正」
-Current revision: P-002 — APPROVED, code complete and all first-party CI PASS on isolated PR #78; awaiting hands-on acceptance and separate main/Pages release.
+Current revision: P-002 — APPROVED and fully tested; user independently authorized PR #78 main integration and Pages publication on 2026-10-18 JST. Await deployment evidence and hands-on acceptance.
 Historical proposal: P-001 — APPROVED, six derivation stages merged to main through PR #76 (commit f4d3ab40a27808a3ecb56c379efbe16a3fe19be4), GitHub Pages published under prior user authorization.
 Repository: rrikunagasige-dot/kyotsu-step-web
 Proposal: P002_PROPOSAL.md (exact user acceptance: direct 「いいよ」 to the proposal-approval question, 2026-10-18 JST)
@@ -28,7 +28,7 @@ The derivation is mathematically correct but the *transformations themselves* sh
 
 ## Approval and next action
 1. Implementation complete on isolated P-002 branch: N12 26 stages, targeted progress conversion, math textbook CI 39098595400 PASS, math practice 39098595404 PASS, governance 39098595409 PASS, R3 cross-unit source review documented.
-2. Review implementation PR #78 and W-MATH-005 separate docs-only proposal PR #79; await user hands-on review/authorization before either proposed content release or sibling fixes.
-3. Main merge and Pages publication require distinct authorization; W-MATH-003 creation stays paused. Close and share lessons only following verification, user acceptance and related correction queue.
+2. User explicitly authorized PR #78 main integration and Pages publication, and approved W-MATH-005/P-001's nine-hole isolated implementation. Verify deployment and then proceed with W-MATH-005 implementation in its own PR; do not publish sibling corrections yet.
+3. N12 main/Pages authorization received; actual publication pending workflow evidence. W-MATH-005 implementation is approved but merge/Pages remains separately gated; W-MATH-003 creation stays paused. Close and share lessons only following verification, user acceptance and related correction queue.
 
 Related: [P-001 implementation PR #76](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/76); [app N12](https://rrikunagasige-dot.github.io/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n12); [paused creation PR #73](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/73).

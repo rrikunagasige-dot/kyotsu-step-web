@@ -11,6 +11,10 @@ test.describe('W-GOV-008 exact-head isolated app review pilot', () => {
     if (sha) await expect(page.getByTestId('review-preview-sha')).toContainText(sha)
     const before = await page.evaluate(() => localStorage.getItem('kyotsu-step-store'))
 
+    await expect(page.getByTestId('review-mark-formula-r3-q07-x2coef')).toContainText('確認①')
+    await expect(page.getByTestId('review-mark-formula-n01-07')).toHaveCount(0)
+    await expect(page.getByRole('button', { name: /最初の確認箇所へ/ })).toBeVisible()
+
     const first = 'n01-r3-q07-x2coef'
     await page.getByTestId('textbook-item-' + first).click()
     await page.getByTestId('inline-choice-panel-' + first).getByRole('button', { name: '2', exact: true }).click()
@@ -30,6 +34,8 @@ test.describe('W-GOV-008 exact-head isolated app review pilot', () => {
       await expect(page.getByTestId('resolved-' + id)).toBeVisible()
     }
     await expect(page.getByTestId('review-preview-count')).toContainText('4/4')
+    await expect(page.getByTestId('review-mark-formula-r3-q07-xcoef')).toContainText('確認②')
+    await expect(page.getByTestId('review-mark-formula-r3-q07-const')).toContainText('確認③')
     expect(await page.evaluate(() => localStorage.getItem('kyotsu-step-store'))).toBe(before)
     await page.reload()
     await expect(page.getByTestId('textbook-item-' + first)).toBeVisible()
@@ -41,6 +47,7 @@ test.describe('W-GOV-008 exact-head isolated app review pilot', () => {
     await expect(page.getByTestId('review-preview-ready')).toBeVisible()
     await expect(page.getByTestId('review-preview-count')).toContainText('全17穴')
     await expect(page.getByAltText(/積の対応を考える表/)).toBeVisible()
+    await expect(page.getByTestId('review-mark-formula-n03-10')).toHaveCount(0)
     const before = await page.evaluate(() => localStorage.getItem('kyotsu-step-store'))
 
     for (const [id, answer] of [
@@ -53,6 +60,9 @@ test.describe('W-GOV-008 exact-head isolated app review pilot', () => {
       await expect(page.getByTestId('resolved-' + id)).toBeVisible()
     }
     await expect(page.getByTestId('review-preview-count')).toContainText('5/5')
+    for (const [number, id] of ['p1', 'p2', 'p3', 'p4'].entries()) {
+      await expect(page.getByTestId('review-mark-formula-r3-q10-' + id)).toContainText('確認' + String.fromCharCode(0x2460 + number))
+    }
     expect(await page.evaluate(() => localStorage.getItem('kyotsu-step-store'))).toBe(before)
     const excess = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)
     expect(excess).toBeLessThanOrEqual(1)

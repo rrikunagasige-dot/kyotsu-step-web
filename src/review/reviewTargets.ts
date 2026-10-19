@@ -10,6 +10,10 @@ export type ReviewTarget = {
   blockIds: readonly string[]
   itemIds: readonly string[]
   expectedAnswers: readonly string[]
+  /** Only these existing readingFlow blocks receive review-only markers. */
+  markBlockIds: readonly string[]
+  /** Accepted work remains in history; markers are absent from the next review build. */
+  reviewState: 'awaiting-user' | 'needs-fix' | 'accepted'
 }
 
 /**
@@ -27,6 +31,8 @@ const targets: Record<string, ReviewTarget> = {
     ],
     itemIds: ['n01-r3-q07-x2coef', 'n01-r3-q07-xcoef', 'n01-r3-q07-const', 'n01-07'],
     expectedAnswers: ['-2', '-3', '3', '-2x^2-3x+3'],
+    markBlockIds: ['formula-r3-q07-x2coef', 'formula-r3-q07-xcoef', 'formula-r3-q07-const'],
+    reviewState: 'awaiting-user',
   },
   'n03-q10': {
     id: 'n03-q10', unitId: 'math-numbers-expressions-n03', title: 'N03 Q10', question: '四つの積',
@@ -38,13 +44,22 @@ const targets: Record<string, ReviewTarget> = {
     ],
     itemIds: ['n03-r3-q10-p1', 'n03-r3-q10-p2', 'n03-r3-q10-p3', 'n03-r3-q10-p4', 'n03-10'],
     expectedAnswers: ['6x^2', '8x', '3x', '4', '6x^2+8x+3x+4'],
+    markBlockIds: ['formula-r3-q10-p1', 'formula-r3-q10-p2', 'formula-r3-q10-p3', 'formula-r3-q10-p4'],
+    reviewState: 'awaiting-user',
   },
 }
 
 export const reviewTargets = targets
 
+/** Never expose markers for a block that the user has already accepted. */
+export function activeReviewMarkIds(target: ReviewTarget): readonly string[] {
+  return target.reviewState === 'accepted' ? [] : target.markBlockIds
+}
+
 export function extractReviewSection(unit: TextbookUnit, target: ReviewTarget): TextbookSection | null {
   if (unit.unitId !== target.unitId || unit.revision !== target.revision) return null
+  if (new Set(target.markBlockIds).size !== target.markBlockIds.length) return null
+  if (target.markBlockIds.some(id => !target.blockIds.includes(id))) return null
   const section = unit.sections.find(candidate => candidate.id === 'lesson')
   if (!section || section.items.length !== target.totalItems) return null
 

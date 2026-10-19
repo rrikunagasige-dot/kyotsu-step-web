@@ -4,7 +4,7 @@ import { answerTextbookItem, isTextbookItemResolved, type TextbookUnitProgress }
 import type { TextbookItem, TextbookUnit } from '../domain/textbookSchema'
 import { textbookRepository } from '../repositories/textbookRepository'
 import { TextbookReadingFlow } from '../pages/TextbookUnitPage'
-import { extractReviewSection, reviewTargets } from './reviewTargets'
+import { activeReviewMarkIds, extractReviewSection, reviewTargets } from './reviewTargets'
 import './review.css'
 
 /** Intentionally ephemeral: review attempts never reach Zustand or localStorage. */
@@ -14,6 +14,9 @@ export function ReviewTextbookPage() {
   const [unit, setUnit] = useState<TextbookUnit | null | undefined>(undefined)
   const [reviewProgress, setReviewProgress] = useState<TextbookUnitProgress | undefined>()
   const reviewSection = useMemo(() => unit && target ? extractReviewSection(unit, target) : null, [unit, target])
+  const reviewMarks = useMemo(() => target
+    ? Object.fromEntries(activeReviewMarkIds(target).map((id, index) => [id, index + 1]))
+    : {}, [target])
 
   useEffect(() => {
     if (!target) return
@@ -54,7 +57,16 @@ export function ReviewTextbookPage() {
         <div>
           <p className="eyebrow">APP REVIEW / {target.title}</p>
           <h1>{target.question}</h1>
-          <p>今回追加された計算穴から、通常の教材と同じ画面・選択肢で順番に試せます。</p>
+          <p>黄色の「確認①〜」が付いた計算だけを見てください。教材の操作はいつもと同じです。</p>
+          {activeReviewMarkIds(target).length > 0 && (
+            <button
+              className="review-preview__jump"
+              type="button"
+              onClick={() => document.querySelector('.review-preview .review-marked-block')?.scrollIntoView({ behavior: 'smooth', block: 'center' })}
+            >
+              <span aria-hidden="true">↘</span> 最初の確認箇所へ
+            </button>
+          )}
         </div>
       </header>
       <div className="review-preview__switch">
@@ -68,9 +80,10 @@ export function ReviewTextbookPage() {
         section={reviewSection}
         progress={reviewProgress}
         onReviewAnswer={answer}
+        reviewMarks={reviewMarks}
       />
       <button className="text-button" type="button" onClick={() => setReviewProgress(undefined)}>この確認だけ最初から</button>
-      <p className="review-preview__footnote">確認用の回答はページを閉じると消えます。ほかの単元や正式な学習進捗には影響しません。</p>
+      <p className="review-preview__footnote">確認したら ChatGPT 側で「OK」か「要修正」を選んでください。ここでの正解・不正解は修正承認にはなりません。確認用の回答はページを閉じると消え、正式な学習記録には残りません。</p>
     </div>
   )
 }

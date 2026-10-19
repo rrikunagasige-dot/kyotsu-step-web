@@ -18,7 +18,7 @@ const content = makeReviewSteps('n08', [
     title:'中の式の正負を決めてから絶対値を外す',
     intro:'絶対値の中が差の形だからといって負とは限らない。まず数の大小を比べ、それから式全体の符号を扱う。',
     steps:[
-      {q:5,lead:'√5は二乗すると5になる正の数。3も正なので、二乗した5と9を比べれば順序が決まる。',expr:'\\sqrt5,\\quad3',prompt:'二乗の比較を根拠として大小を選ぼう。',answer:'\\sqrt5<3',wrong:['\\sqrt5>3','\\sqrt5=3','\\sqrt5<-3'],hint:'5と3²=9を比べる。ともに0以上の数である。',after:'平方根の記号√5は「平方が5となる非負の数」を表す。ここでは大小の判断にだけ使う。'},
+      {q:5,lead:'√5と3はどちらも非負の数。二乗した値を自分で求めて比較すれば、元の二数の大小が決められる。',expr:'\\sqrt5,\\quad3',prompt:'二乗した値の大小比較と、√5と3の大小関係を組にして選ぼう。',answer:'5<9,\\quad\\sqrt5<3',wrong:['5>9,\\quad\\sqrt5>3','5<9,\\quad\\sqrt5>3','5=9,\\quad\\sqrt5=3'],hint:'√5を二乗すると5、3を二乗すると9。二つとも非負なので大小の向きは保たれる。',after:'5<9であり、両方非負なので√5<3。理由と結論の両方を確認できた。'}
       {q:6,lead:'直前の大小関係から、二つの数の差の符号が分かる。',expr:'\\sqrt5-3',prompt:'この式の符号を選ぼう。',kind:'text',answer:'負',wrong:['正','0','符号は決まらない'],hint:'左の数のほうが小さければ、左から右を引いた値はどうなるか。',after:'中身が負だと分かったので、絶対値を外すときは式全体に−1を掛ける。'},
       {q:7,lead:'中身が負のときは、括弧を付けて式全体を反転する。',expr:'|\\sqrt5-3|',prompt:'絶対値を外した式を選ぼう。',answer:'3-\\sqrt5',wrong:['\\sqrt5-3','-\\sqrt5-3','3+\\sqrt5'],hint:'−(√5−3)の括弧を外すと両項の符号が変わる。',after:'判定→括弧全体の反転という二段階を区別する。'},
       {q:8,lead:'今度は3−π。円周率πは3.14159…と分かっている。',expr:'3-\\pi',prompt:'差の符号と根拠を選ぼう。',kind:'text',answer:'負（πは3より大きい）',wrong:['正（3はπより大きい）','0（πは3と等しい）','符号は決められない'],hint:'πの小数表示の整数部分と続く数字を比べる。',after:'ここでも先に中身の符号を確定した。'},
@@ -37,7 +37,7 @@ const content = makeReviewSteps('n08', [
   },
 ], [{id:'n08-f01',q:1,when:'before'}])
 const rawN08={
-  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n08',revision:1,status:'review' as const,subject:'math-1a' as const,
+  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n08',revision:2,status:'review' as const,subject:'math-1a' as const,
   chapter:{chapterId:'math-ch01-numbers-expressions',chapterNumber:'1',chapterTitle:'数と式',unitCode:'1NUM',orderInChapter:8,sourcePages:[20,21]},
   title:'向きと距離を分けて、絶対値を読む',subtitle:'数直線の距離から場合分けを作り、式全体の符号を判定する。',
   source:{type:'reference' as const,label:'ユーザー提供「数と式」教科書モード対話段階導入版 v2 / N08',

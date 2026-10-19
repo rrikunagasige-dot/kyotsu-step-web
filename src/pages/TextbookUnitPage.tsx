@@ -119,13 +119,15 @@ function renderPart(
   return renderActiveChoice(item, Boolean(record), onOpen, text)
 }
 
-export function TextbookReadingFlow({ unit, section, progress, onSummaryReached, onReviewAnswer }: {
+export function TextbookReadingFlow({ unit, section, progress, onSummaryReached, onReviewAnswer, reviewMarks }: {
   unit: TextbookUnit
   section: TextbookSection
   progress: TextbookUnitProgress | undefined
   onSummaryReached?: (reached: boolean) => void
   /** Isolated preview: grade the real item without touching persisted learner progress. */
   onReviewAnswer?: (item: TextbookItem, choice: string) => void
+  /** Never passed by the ordinary learner route; visual annotations only. */
+  reviewMarks?: Readonly<Record<string, number>>
 }) {
   const { text, language } = useI18n()
   const answerTextbook = useAppStore((state) => state.answerTextbook)
@@ -372,6 +374,19 @@ export function TextbookReadingFlow({ unit, section, progress, onSummaryReached,
     )
   }
 
+  const renderBlockWithReviewMark = (block: TextbookReadingBlock) => {
+    const mark = reviewMarks?.[block.id]
+    if (!mark) return renderBlock(block)
+    return (
+      <div className="review-marked-block" data-testid={`review-mark-${block.id}`} key={block.id}>
+        <span className="review-marked-block__label" aria-label={`確認 ${mark}`}>
+          確認{String.fromCharCode(0x2460 + mark - 1)}
+        </span>
+        {renderBlock(block)}
+      </div>
+    )
+  }
+
   const renderVisibleBlocks = (blocks: TextbookReadingBlock[]) => {
     const rendered: ReactNode[] = []
     let index = 0
@@ -403,7 +418,7 @@ export function TextbookReadingFlow({ unit, section, progress, onSummaryReached,
                 className={`reading-derivation-step reading-derivation-step--${entry.type}`}
                 key={entry.id}
               >
-                {renderBlock(entry)}
+                {renderBlockWithReviewMark(entry)}
               </div>
             ))}
           </div>,
@@ -411,7 +426,7 @@ export function TextbookReadingFlow({ unit, section, progress, onSummaryReached,
         continue
       }
 
-      rendered.push(renderBlock(block))
+      rendered.push(renderBlockWithReviewMark(block))
       index += 1
     }
 

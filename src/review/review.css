@@ -20,3 +20,44 @@
   border-radius: 0.5rem;
 }
 .review-preview__footnote { color: #4b5d64; font-size: 0.9rem; }
+
+
+/* W-GOV-008/P-002: annotations are present only under the isolated review page. */
+.review-preview .review-marked-block {
+  box-sizing: border-box;
+  min-width: 0;
+  margin-block: 0.55rem;
+  padding: 0.65rem;
+  border: 2px solid #c48b14;
+  border-inline-start-width: 5px;
+  border-radius: 0.7rem;
+  background: #fff8dc;
+  scroll-margin-top: 1rem;
+}
+.review-preview .review-marked-block__label {
+  display: inline-block;
+  margin-bottom: 0.45rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background: #805318;
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.review-preview__jump {
+  min-height: 44px;
+  padding: 0.6rem 0.95rem;
+  border: 2px solid #805318;
+  border-radius: 0.55rem;
+  background: #fff8dc;
+  color: #4b300b;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.review-preview__jump:focus-visible,
+.review-preview__switch a:focus-visible {
+  outline: 3px solid #007b95;
+  outline-offset: 3px;
+}

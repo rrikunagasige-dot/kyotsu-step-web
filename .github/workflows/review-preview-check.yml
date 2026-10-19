@@ -27,18 +27,35 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm run typecheck
       # Existing unrelated repository-wide lint debt is outside this approved task.
-      - run: pnpm exec eslint src/review/reviewTargets.ts src/review/reviewTargets.test.ts src/review/ReviewTextbookPage.tsx src/pages/TextbookUnitPage.tsx e2e/review-preview-gate.spec.ts --max-warnings=0
+      - run: pnpm exec eslint src/review/reviewTargets.ts src/review/reviewTargets.test.ts src/review/ReviewTextbookPage.tsx src/pages/TextbookUnitPage.tsx e2e/review-preview-gate.spec.ts e2e/review-p003-visual-evidence.spec.ts --max-warnings=0
       # The legacy global suite has two unrelated catalog-count assertion failures.
       - run: pnpm exec vitest run src/review/reviewTargets.test.ts
       - run: pnpm run build
       # This checks actual interaction ONLY on a dedicated PR #92-derived review
       # candidate. The main-based governance branch lacks the seven new holes.
       - name: Install Chromium for N01/N03 pilot
-        if: ${{ (github.base_ref == 'work/W-MATH-005-P002-n01-n03-20261018' || github.base_ref == 'work/W-GOV-008-P001-pr92-review-pilot-20261019') }}
+        if: ${{ (github.base_ref == 'work/W-MATH-005-P002-n01-n03-20261018' || github.base_ref == 'work/W-GOV-008-P001-pr92-review-pilot-20261019' || github.base_ref == 'work/W-GOV-008-P002-marked-review-20261019') }}
         run: pnpm exec playwright install --with-deps chromium
       - name: Review interaction gate on PR92-derived branch
-        if: ${{ (github.base_ref == 'work/W-MATH-005-P002-n01-n03-20261018' || github.base_ref == 'work/W-GOV-008-P001-pr92-review-pilot-20261019') }}
+        if: ${{ (github.base_ref == 'work/W-MATH-005-P002-n01-n03-20261018' || github.base_ref == 'work/W-GOV-008-P001-pr92-review-pilot-20261019' || github.base_ref == 'work/W-GOV-008-P002-marked-review-20261019') }}
         env:
           E2E_REVIEW_PREVIEW: '1'
           E2E_USE_PREVIEW: '1'
         run: pnpm exec playwright test e2e/review-preview-gate.spec.ts --project=mobile-chromium --project=desktop-chromium
+
+      # P-003 pilot: screenshot genuine, numbered in-app marks from exact PR head.
+      # Read-only GitHub-hosted runner, no Pages/Vercel publish or branch push.
+      - name: Capture seven actual marked decisions as screenshot evidence
+        if: ${{ github.base_ref == 'work/W-GOV-008-P002-marked-review-20261019' }}
+        env:
+          E2E_REVIEW_EVIDENCE: '1'
+          E2E_USE_PREVIEW: '1'
+        run: pnpm exec playwright test e2e/review-p003-visual-evidence.spec.ts --project=mobile-chromium --project=desktop-chromium
+      - name: Store limited-lifetime visual evidence (not a public app)
+        if: ${{ always() && github.base_ref == 'work/W-GOV-008-P002-marked-review-20261019' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: wgov008-p003-actual-screen-${{ github.event.pull_request.head.sha }}
+          path: e2e-evidence/
+          if-no-files-found: warn
+          retention-days: 1

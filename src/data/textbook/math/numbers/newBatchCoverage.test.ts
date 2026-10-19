@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import katex from 'katex'
+import { effectiveTextbookProgress, type TextbookAnswerRecord, type TextbookUnitProgress } from '../../../../domain/textbook'
 import { mathTextbookUnits } from '../index'
 import { n04SourceToItemIds } from './n04Lesson'
 import { n05SourceToItemIds } from './n05Lesson'
@@ -44,7 +45,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       const unit = mathTextbookUnits.find(u => u.unitId === 'math-numbers-expressions-n' + n)
       expect(unit, 'N' + n).toBeDefined()
       expect(unit?.status).toBe('review')
-      expect(unit?.revision).toBe(1)
+      expect(unit?.revision).toBe(n === '13' ? 1 : 2)
       expect(Object.keys(map)).toEqual(Array.from({ length: count }, (_, i) => 'N' + n + '-Q' + String(i + 1).padStart(2, '0')))
       const items = unit?.sections.flatMap(section => section.items) ?? []
       const choiceIds = unit?.sections.flatMap(section => section.readingFlow.flatMap(block =>
@@ -121,4 +122,65 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       }
     }
   })
+
+  it('P-004 keeps 123 source markers/127 decisions while recovering eight omitted reasoning operations', () => {
+    const cases = [
+      ['04', 'n04-13', ['3x\\cdot2=6x', '1\\cdot x=x', '3x^2+7x+2']],
+      ['05', 'n05-17', ['異符号', 'rs=-3<0']],
+      ['06', 'n06-08', ['xについて3次', 'yについて1次', 'yで整理']],
+      ['07', 'n07-06', ['10\\text{倍}', '10x=8.\\overline8']],
+      ['08', 'n08-05', ['5<9', '\\sqrt5<3']],
+      ['11', 'n11-05', ['両辺に }2\\text{ を足す', '3x<7']],
+      ['14', 'n14-06', ['x\\le-4', '\\text{または}', 'x\\ge4']],
+      ['14', 'n14-11', ['x+3\\le-2', '\\text{または}', 'x+3\\ge2']],
+    ] as const
+    for (const [n, id, requirements] of cases) {
+      const section = mathTextbookUnits.find(unit => unit.unitId.endsWith('n' + n))!.sections[0]
+      const item = section.items.find(q => q.id === id)!
+      for (const part of requirements) expect(item.answer, id).toContain(part)
+      expect(item.choices, id).toHaveLength(4)
+    }
+    const getLead = (n: string, q: string) => {
+      const section = mathTextbookUnits.find(u => u.unitId.endsWith('n' + n))!.sections[0]
+      const lead = section.readingFlow.find(b => b.id === 'n' + n + '-lead-' + q)
+      return JSON.stringify(lead)
+    }
+    expect(getLead('06', '08')).not.toContain('三次、yは一次')
+    expect(getLead('07', '06')).not.toContain('10倍すると')
+    expect(getLead('11', '05')).not.toContain('両辺に2を足す')
+    expect(getLead('14', '06')).not.toContain('または')
+    expect(getLead('14', '11')).not.toContain('外側の二領域を境界込み')
+  })
+
+  it('P-004 archives old decisions and reopens only repaired questions after a review revision bump', () => {
+    const affected: Record<string, string[]> = {
+      '04': ['n04-13'], '05': ['n05-17'], '06': ['n06-08'],
+      '07': ['n07-06'], '08': ['n08-05'], '11': ['n11-05'],
+      '14': ['n14-06', 'n14-11'],
+    }
+    const record = (itemId: string): TextbookAnswerRecord => ({
+      itemId, value: 'historical answer', firstValue: 'historical answer',
+      isFirstCorrect: true, resolved: true, attemptCount: 1,
+      firstAnsweredAt: 100, lastAnsweredAt: 200,
+    })
+    for (const [n, changed] of Object.entries(affected)) {
+      const unit = mathTextbookUnits.find(u => u.unitId.endsWith('n' + n))!
+      const keep = unit.sections[0].items.find(item => !changed.includes(item.id))!.id
+      const answers = Object.fromEntries([keep, ...changed].map(id => [id, record(id)]))
+      const previous: TextbookUnitProgress = {
+        unitId: unit.unitId, unitRevision: 1, startedAt: 100, updatedAt: 200, completedAt: 200, answers,
+      }
+      const upgraded = effectiveTextbookProgress(unit, previous)!
+      expect(upgraded.unitRevision, n).toBe(2)
+      expect(upgraded.completedAt, n).toBeUndefined()
+      expect(upgraded.answers[keep], n).toEqual(answers[keep])
+      expect(upgraded.migratedFromRevision, n).toBe(1)
+      for (const id of changed) {
+        expect(upgraded.answers[id], id).toBeUndefined()
+        expect(upgraded.archivedRevisions?.['1']?.answers[id], id).toEqual(answers[id])
+      }
+      expect(upgraded.previousRevisionCompletedAt, n).toBe(200)
+    }
+  })
+
 })

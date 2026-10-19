@@ -11,7 +11,7 @@ Status: TECHNICAL-PASS / BLOCK-CHECK-PENDING (user has not accepted)
 | Learner state isolation | PASS — E2E tests assert no persistent learner writes |
 | Governance, TS, lint, Vitest, build, E2E | PASS — visual run `39203622766`; governance `39203622823` |
 | Human-readable actual screenshot | PASS inspected — corrected N01 frame, N03 marks; F-005 formula horizontal legibility note retained |
-| GitHub hosted per-mark inline screenshot sheets | PENDING final exact-path/readability verification at committed review branch |
+| GitHub hosted per-mark inline screenshot sheets | PASS — reviewed actual GitHub contents and all 10 image blobs (7 inline marks, 3 PC extras), at commit `4e34495d3e6d16b7049182877f83cba2a49d8ad4` |
 | User `細部OK` | NOT RECEIVED; do not mark block approved |
 | Later horizontal audit and `総チェックOK` | NOT READY, not performed |
 | Deployment, billing, main | NONE |

@@ -8,3 +8,5 @@
 - 2026-10-19 — Downloaded artifact `12164484000` (14 PNG and 4 JSON; 1-day retention), inspected corrected N01 desktop/mobile and four N03 mobile screenshot pixels. Vertical target crop corrected; N01 long inline formula still partly clips horizontally in a single narrow view. Transparently disclosed in user sheet; no learner UI code changed.
 - 2026-10-19 — Attached immutable image blobs and direct Markdown GitHub review sheets `docs/reviews/W-GOV-008-P003/N01-Q07.md`, `docs/reviews/W-GOV-008-P003/N03-Q10.md` to pilot branch; verify exact repo paths before asking for user feedback. Artifact ZIP is for engineers, **not** user's task.
 - 2026-10-19 — Await `細部OK` or `要修正` separately for each block. Do not infer acceptance or final `総チェックOK` from passing automation.
+
+- 2026-10-19 — Post-publish GitHub read check: N01 sheet embeds 3 mobile screenshots; N03 embeds 4; all ten PNG blobs verified by exact sha/size and branch/main refs. After normalizing the strict Work Status format, latest governance `39204581026` and app checks `39204580997` both PASS. User visual checks remain pending.

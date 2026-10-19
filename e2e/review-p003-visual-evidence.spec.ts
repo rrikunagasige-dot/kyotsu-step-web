@@ -5,6 +5,16 @@ type Step = { mark: string; item: string; correct: string; label: string }
 
 const targets: ReadonlyArray<{ route: string; steps: readonly Step[] }> = [
   {
+    route: 'n04-q01',
+    steps: [
+      { mark: 'formula-n04-q01-p1', item: 'n04-q01-p1', correct: '25x^2', label: '確認①' },
+      { mark: 'formula-n04-q01-p2', item: 'n04-q01-p2', correct: '20xy', label: '確認②' },
+      { mark: 'formula-n04-q01-p3', item: 'n04-q01-p3', correct: '20xy', label: '確認③' },
+      { mark: 'formula-n04-q01-p4', item: 'n04-q01-p4', correct: '16y^2', label: '確認④' },
+      { mark: 'formula-n04-q01-complete', item: 'n04-01', correct: '25x^2+20xy+20xy+16y^2', label: '確認⑤' },
+    ],
+  },
+  {
     route: 'n01-q07',
     steps: [
       { mark: 'formula-r3-q07-x2coef', item: 'n01-r3-q07-x2coef', correct: '-2', label: '確認①' },

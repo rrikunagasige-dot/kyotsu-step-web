@@ -76,3 +76,66 @@ jobs:
           path: e2e-evidence/
           if-no-files-found: warn
           retention-days: 1
+
+  # W-MATH-003 N04-Q01: genuine screenshots for this independent PR only.
+  n04-q01-authentic-screenshots:
+    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && startsWith(github.head_ref, 'work/W-MATH-003-n04-q01-') }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      CI: 'true'
+      VITE_REVIEW_PREVIEW: 'true'
+      VITE_BASE_PATH: '/'
+      VITE_PREVIEW_COMMIT: ${{ github.event.pull_request.head.sha }}
+      E2E_REVIEW_EVIDENCE: '1'
+      E2E_USE_PREVIEW: '1'
+      TARGET_BRANCH: ${{ github.head_ref }}
+      CAPTURE_SHA: ${{ github.event.pull_request.head.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: true
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run typecheck && pnpm run build
+      - run: pnpm exec playwright install --with-deps chromium
+      - name: Capture five real marked interactions on phone and desktop
+        run: pnpm exec playwright test e2e/review-p003-visual-evidence.spec.ts --grep n04-q01 --project=mobile-chromium --project=desktop-chromium
+      - name: Retain fallback evidence without deploying
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: n04-q01-genuine-screen-${{ github.event.pull_request.head.sha }}
+          path: e2e-evidence/n04-q01-*
+          if-no-files-found: ignore
+          retention-days: 7
+      - name: Place exact-commit images only on the PR head branch
+        run: |
+          evidence_dir="work/items/W-MATH-003-numbers-expressions-creation/evidence/n04-q01"
+          mkdir -p "$evidence_dir"
+          for number in 1 2 3 4 5; do
+            cp "e2e-evidence/n04-q01-review-${number}-mobile-390.png" "$evidence_dir/confirm-${number}-mobile.png"
+            cp "e2e-evidence/n04-q01-review-${number}-desktop-1440.png" "$evidence_dir/confirm-${number}-desktop.png"
+          done
+          {
+            printf '# N04-Q01 — 実画面・確認①〜⑤\n\n'
+            printf '描画・操作した教材コードの完全SHA: %s\n\n' "$CAPTURE_SHA"
+            printf '画像は上のSHAから実際に起動したアプリの各穴の選択直前を撮影。図面・モックではありません。\n\n'
+            for number in 1 2 3 4 5; do
+              printf '## 確認%s\n\n![確認%s スマホ実画面](confirm-%s-mobile.png)\n\n[PC画面](confirm-%s-desktop.png)\n\n' "$number" "$number" "$number" "$number"
+            done
+            printf '細部の視覚確認のみ。main統合・本番公開・新規公開環境・課金は未承認。\n'
+          } > "$evidence_dir/README.md"
+          git add "$evidence_dir"
+          git diff --cached --quiet && exit 0
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Store genuine N04-Q01 marked screenshots [review only]'
+          git push origin "HEAD:refs/heads/$TARGET_BRANCH"

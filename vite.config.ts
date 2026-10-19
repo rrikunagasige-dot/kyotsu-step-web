@@ -3,7 +3,8 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/kyotsu-step-web/',
+  // GitHub Pages production keeps its existing base; isolated PR previews can serve at /.
+  base: process.env.VITE_BASE_PATH || '/kyotsu-step-web/',
   server: { port: 4173, strictPort: true },
   preview: { port: 4173, strictPort: true },
   build: {

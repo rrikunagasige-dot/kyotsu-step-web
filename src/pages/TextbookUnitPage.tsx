@@ -119,11 +119,13 @@ function renderPart(
   return renderActiveChoice(item, Boolean(record), onOpen, text)
 }
 
-function TextbookReadingFlow({ unit, section, progress, onSummaryReached }: {
+export function TextbookReadingFlow({ unit, section, progress, onSummaryReached, onReviewAnswer }: {
   unit: TextbookUnit
   section: TextbookSection
   progress: TextbookUnitProgress | undefined
   onSummaryReached?: (reached: boolean) => void
+  /** Isolated preview: grade the real item without touching persisted learner progress. */
+  onReviewAnswer?: (item: TextbookItem, choice: string) => void
 }) {
   const { text, language } = useI18n()
   const answerTextbook = useAppStore((state) => state.answerTextbook)
@@ -232,7 +234,8 @@ function TextbookReadingFlow({ unit, section, progress, onSummaryReached }: {
 
   const selectChoice = (choice: string) => {
     if (!activeItem || isTextbookItemResolved(activeItem, activeRecord)) return
-    answerTextbook(unit, activeItem.id, choice)
+    if (onReviewAnswer) onReviewAnswer(activeItem, choice)
+    else answerTextbook(unit, activeItem.id, choice)
     setActiveItemId(null)
   }
 

@@ -1,0 +1,22 @@
+.review-preview__banner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  padding: 0.85rem 1rem;
+  border: 2px solid #347a8b;
+  border-radius: 0.8rem;
+  background: #ebf7f8;
+  color: #174753;
+}
+.review-preview__banner small { overflow-wrap: anywhere; }
+.review-preview__switch { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+.review-preview__switch a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #8eb5bd;
+  border-radius: 0.5rem;
+}
+.review-preview__footnote { color: #4b5d64; font-size: 0.9rem; }

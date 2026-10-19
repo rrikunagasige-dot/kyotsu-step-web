@@ -1,0 +1,40 @@
+name: Review Preview Code Check (not a deployment)
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      VITE_REVIEW_PREVIEW: 'true'
+      VITE_BASE_PATH: '/'
+      VITE_PREVIEW_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run typecheck
+      - run: pnpm run build
+      # This checks actual interaction ONLY on a dedicated PR #92-derived review
+      # candidate. The main-based governance branch lacks the seven new holes.
+      - name: Install Chromium for N01/N03 pilot
+        if: ${{ github.base_ref == 'work/W-MATH-005-P002-n01-n03-20261018' }}
+        run: pnpm exec playwright install --with-deps chromium
+      - name: Review interaction gate on PR92-derived branch
+        if: ${{ github.base_ref == 'work/W-MATH-005-P002-n01-n03-20261018' }}
+        env:
+          E2E_REVIEW_PREVIEW: '1'
+          E2E_USE_PREVIEW: '1'
+        run: pnpm exec playwright test e2e/review-preview-gate.spec.ts --project=mobile-chromium --project=desktop-chromium

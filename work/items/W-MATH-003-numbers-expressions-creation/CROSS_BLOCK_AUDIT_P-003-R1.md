@@ -74,3 +74,21 @@ Source re-acquired: teacher-edited original Word, 212863 bytes, SHA-256 `9382732
 **Correction-first entry:** the eight confirmed pedagogical gaps are a correction queue under CMD-WORK-001 and WORK_SYSTEM §12B. Root-cause hypotheses: (a) original multi-operation question reduced to one answer choice (N04-Q13, N05-Q17, N08-Q05); (b) pre-answer lead gives away the learner decision (N06-Q08, N07-Q06, N11-Q05, N14-Q06, N14-Q11). Check all other approved creation artifacts for the same mechanisms, distinguishing true defects from intentional taught scaffolding. This diagnosis is **not** permission to edit those artifacts. The previously approved creation is paused at Gate② until the exact repair proposal is approved, repairs verified, and impact loop closed. Original Word, main, release/deployment, review statuses, stable progress and image bytes remain untouched.
 
 **Current: Gate② FAILED-VERIFICATION / NOT CROSS-VERIFIED. Gate③ FINAL-REVIEW-NOT-READY.**
+
+
+
+## 2026-10-20 P-004 post-correction Gate② audit continuation (supersedes prior eight-defect open status)
+
+| Check | Verified status | Exact source |
+|---|---|---|
+| Eight originally confirmed pedagogical defects | **REPAIRED, TEST PASS; revised visual acceptance pending** | Full Math CI `39343256282` at app code SHA `7fce8fa93511df5406602d1a3e0d3c6e1f3dfdf9`; gallery P-004 48 images |
+| 123 original ID / 127 app operation continuity | **PASS** | `newBatchCoverage.test.ts`, entire mobile and desktop `new-batch-walkthrough.spec.ts` |
+| Seven revised-unit v1 progress histories and N04-Q01 review continuity | **PASS** | `effectiveTextbookProgress` migration tests, N04-Q01 review integrity |
+| Wrong→closed panel→reopen→hint→correct for each repaired ID, 320/390px and reload | **PASS** | 16 scenarios of `p004-repair-interactions.spec.ts`, CI 39343256282 |
+| Unchanged original nine diagrams and gating | **PASS in tested source SHA** | SHA-256 source image byte test, mobile/desktop screenshot evidence |
+| Previous six math, physics textbook, practice regressions | **PASS** | CI 39343256282 |
+| Cross-creation two defect classes, all 14 units | **NEW CONFIRMED UNRESOLVED: N06-Q11 and N14-Q05** | `P004_ROOT_CAUSE_IMPACT_LEDGER.md`; correction outside original eight requires P-004-R1 approval |
+| Independent full 123 original answer and distractor proof, publisher key | **UNVERIFIED** | Original Word available; official key unavailable. Do not substitute '127 clicks passed' for independently proved algebra |
+| Updated P-004 human visual review | **PENDING** | Revised image gallery marks ①〜⑧, no revised visual approval recorded |
+
+**Gate② remains NOT CROSS-VERIFIED due two confirmed new disclosure defects and incomplete original-key independent audit.** Gate③ cannot begin. P-004-R1 is an **unapproved revision of the existing correction plan**, not permission to edit N06-Q11 or N14-Q05. The initial Gate① original-batch acceptance is preserved without rewriting history.

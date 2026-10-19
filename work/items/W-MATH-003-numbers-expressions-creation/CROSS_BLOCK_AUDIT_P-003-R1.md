@@ -53,3 +53,24 @@ Previously accepted blocks: N01,N02,N03,N09,N10,N12; user accepted consolidated 
 - [ ] Prepare/freeze final candidate and verify **playable** app URL after Gate② closes
 
 **Gate②: IN-PROGRESS / NOT CROSS-VERIFIED. Gate③: FINAL-REVIEW-NOT-READY.** The existing Vercel auto-PR preview's GitHub "Ready" comment does not establish that its URL is user-accessible or matches a tested candidate; prior Vercel access was 403. Do not substitute old main Pages or an image gallery for the app.
+
+
+## 2026-10-20 addendum — source recovered, eight pedagogical defects confirmed
+
+This appendix supersedes the older source-403 limitation and the older statement "No new reproducible application defect confirmed" **for the evidence now available**. Preserve prior observations as chronology rather than silently deleting them.
+
+Source re-acquired: teacher-edited original Word, 212863 bytes, SHA-256 `93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa`; eight-unit original question markers 123; app authored operations 127. Full question/key inventory and the original nine figure mappings are now in [N04_N14_SOURCE_SOLUTION_AUDIT.md](./N04_N14_SOURCE_SOLUTION_AUDIT.md), commit `c89355b38d207ba5fb7055a97004337057bf8aa4`. This is a source-to-app cognitive-fidelity check, **not** an official-answer-booklet comparison or fully independent proof of all 123 keys.
+
+| Required Gate② surface | Updated status | Evidence |
+| --- | --- | --- |
+| Source identity, question IDs, original PNG bytes | **PASS for identity/coverage** | Original Word SHA, 123 marker inventory, nine PNG SHA matches; question cognitive-fidelity separately FAIL |
+| Source question/cognitive-operation fidelity | **FAIL** | N04-Q13, N05-Q17, N06-Q08, N07-Q06, N08-Q05, N11-Q05, N14-Q06, N14-Q11 |
+| Mathematical key correctness/complete independent derivation | **UNVERIFIED** | Authored keys inventoried, no demonstrably false algebraic final key found in this comparison, official booklet absent; exhaustive independent solution/distractor proof not documented |
+| Pre-answer leakage, decision timing | **FAIL** | N06-Q08, N07-Q06, N11-Q05, N14-Q06, N14-Q11; additional N14-Q05 risk pending assessment |
+| Wrong/retry branch, 320px/390px, reset/isolation | **UNVERIFIED** | Existing E2E confirms correct paths only; no new runs claimed |
+| Figure hashes and existing verified Pixel7/desktop snapshots | **PASS within prior tested scope** | Prior CI and 66 screenshots; does not imply 320/390 PASS |
+| Previous math/physics regressions | **PASS within prior tested scope** | Prior CI unchanged; changes still need new regression after approved repair |
+
+**Correction-first entry:** the eight confirmed pedagogical gaps are a correction queue under CMD-WORK-001 and WORK_SYSTEM §12B. Root-cause hypotheses: (a) original multi-operation question reduced to one answer choice (N04-Q13, N05-Q17, N08-Q05); (b) pre-answer lead gives away the learner decision (N06-Q08, N07-Q06, N11-Q05, N14-Q06, N14-Q11). Check all other approved creation artifacts for the same mechanisms, distinguishing true defects from intentional taught scaffolding. This diagnosis is **not** permission to edit those artifacts. The previously approved creation is paused at Gate② until the exact repair proposal is approved, repairs verified, and impact loop closed. Original Word, main, release/deployment, review statuses, stable progress and image bytes remain untouched.
+
+**Current: Gate② FAILED-VERIFICATION / NOT CROSS-VERIFIED. Gate③ FINAL-REVIEW-NOT-READY.**

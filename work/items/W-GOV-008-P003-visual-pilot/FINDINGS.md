@@ -1,16 +1,19 @@
 # Findings — W-GOV-008/P-003 visual pilot
 
 ## F-001 — CONFIRMED
-P-002 app markers exist with strict stable IDs and original source material; its previous CI verified mobile/desktop, wrong/correct and progress isolation, but passing tests did not produce an accessible image sheet.
+P-002 real app markers have the seven approved stable IDs and unmodified original problem/source. The GitHub image sheets now target exactly those controls.
 
-## F-002 — RISK
-On the initial reading flow only the next question may be visible. To avoid a counterfeit all-at-once overview, the capture test must **advance through real answers**, taking each screenshot before that numbered marked decision is answered. Separate 320/390 desktop QA is retained; capture must fail on wrong SHA or unexpectedly missing mark.
+## F-002 — CONFIRMED
+Only a subsequent step is rendered after the previous response, so genuine E2E screenshots advance through real user answers and capture each targeted `確認①` etc. **before** answering it. Capture tests assert full checked-out build SHA and no persistent learner state.
 
-## F-003 — RISK
-A GitHub Actions artifact alone may be a downloadable ZIP. That is **engineering evidence**, not the user handoff. The reviewer-ready state demands **individual GitHub-rendered actual images** in the sheet; if extraction/embedding fails, remain BLOCK-CHECK-PENDING.
+## F-003 — RESOLVED (engineering delivery)
+The short-lived GitHub Actions artifact was downloaded and its genuine PNG members were committed as individual files and embedded via relative Markdown links. Reviewers no longer need a ZIP, PR diff or artifact viewer. Actual GitHub rendered path verification is recorded separately.
 
 ## F-004 — AUTHORIZATION
-A new public app host would need separate approval. Existing public-repository standard Ubuntu GitHub-hosted Actions are documented as free for use, but this Work creates no paid runner/provider. Screenshot artifact retention set to one day.
+No public app environment, production deployment, Vercel removal, payment or main integration. Public-repo standard GitHub runner; artifact retention 1 day.
 
-## F-005 — CONFIRMED first capture framing defect (not yet a learner-code defect)
-Initial GitHub runner screenshots (workflow run `39203069126`, head `adaf8c78fa627ab4a944b4274152c1f23966a06e`) passed Playwright but visual inspection showed N01 Q07 `確認①` near the sticky bottom and its actual math expression clipped from the 390px screenshot. Some later N01 shots also show horizontally displaced equation context. The automated visible-marker assertion alone is insufficient to prove the image is useful to a human. Before handoff, reframe each mark by **root-only vertical scroll** and inspect the new pixels; if the equation still genuinely clips in the app, keep `BLOCK-CHECK-PENDING` and open a separate correction proposal for learner UI rather than silently modifying content.
+## F-005 — PARTIALLY RESOLVED screenshot framing; UI/capture limitation disclosed
+First capture run `39203069126` cropped N01 `確認①` vertically; fixed by root-only vertical centering and visually rechecked run `39203622766`. Nevertheless, N01 has a long horizontally scrollable line in the genuine app view, so not every symbol in the entire equation is visible in one screenshot at either capture width. The selected calculation and numbered target are visible, and the user sheet explicitly invites `要修正：N01の式が切れる`. This is a **visual risk / possible UX correction**, not permission to modify source. If the user rejects legibility, open a separate `修正` Work/proposal for confirmation and do not silently change lesson code.
+
+## F-006 — REVIEW PENDING
+The sheets show expected values to facilitate non-technical review, but neither N01 nor N03 has user `細部OK`. Horizontal cross-block audit and final actual-app full walkthrough cannot be labeled approved.

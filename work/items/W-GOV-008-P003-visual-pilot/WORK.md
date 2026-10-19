@@ -1,23 +1,27 @@
 # W-GOV-008/P-003 — GitHub actual-image review pilot for P-002 seven marks
 
-Status: VERIFYING
+Status: VERIFYING (technical images captured; user small-block acceptance pending)
 Updated: 2026-10-19 JST
 Review label: BLOCK-CHECK-PENDING
-Branch: `work/W-GOV-008-P003-pilot-visual-sheets-20261019` (P-002 draft PR #95 head `a6d4e09be50ad5aaf731abc9352207f5d113a5a2` base)
-Main: `154a16ff379321016f4692bb0ac6fe9a8a596214`; unmodified
+Branch: `work/W-GOV-008-P003-pilot-visual-sheets-20261019`
+Main: `154a16ff379321016f4692bb0ac6fe9a8a596214` (unmodified)
 
 ## Scope
-Materialize **real GitHub-viewable screenshot evidence** for the already-approved seven P-002 app-side marks: N01 Q07 coefficient (-2,-3,3) and N03 Q10 products (6x²,8x,3x,4). Use P-003's **GitHub small-block visual review**, retaining original P-002 code, answers, learner progress and isolated preview-only markers.
+Materialize authentic GitHub-viewable screenshots for the already-approved P-002 marks:
+- N01 Q07 coefficient `-2, -3, 3`
+- N03 Q10 four products `6x², 8x, 3x, 4`
 
-## Approval
-The user approved P-002 seven-mark implementation (CMD-WORK-001) and separately approved the full P-003 GitHub visual review rules. The latest “いいよ。続けて” resumes these approved pending review tasks; it is **not** new approval of learner changes, main merge, hosted release or costs.
+## Approval provenance
+The user approved P-002 correction implementation and P-003 GitHub-first review governance as distinct independent-branch work. The latest `いいよ。続けて` means proceed within these scopes; it is not authorization for main/production/public hosting/fees.
 
-## Deliverables and finish gate
-- CI produces screenshots of the **real** app renderer per `確認①` etc. at an exact checkout full SHA, at desktop and phone.
-- Download/inspect evidence and embed truthful screenshots in GitHub-rendered N01/N03 small-block sheets with stable IDs and 2–4 points. Do **not** mark them visually ready until users can view those actual images from GitHub.
-- Record image SHA, build SHA, app route, test result, viewport and inspection.
-- User `細部OK` remains pending. Final product `総チェック` is separately pending.
-- Work technical `DONE` needs screenshot evidence and verification; if artifact inaccessible, remain BLOCKED.
+## User-facing evidence
+- [Open the two-check entrance](../../../docs/reviews/W-GOV-008-P003/README.md)
+- [N01 Q07 three screenshot checkpoints](../../../docs/reviews/W-GOV-008-P003/N01-Q07.md)
+- [N03 Q10 four screenshot checkpoints](../../../docs/reviews/W-GOV-008-P003/N03-Q10.md)
+- Source capture: `3ffe0bab97da9a509d7fe21ce7aa9dd78b52b141`, GitHub Actions `39203622766`, screenshot artifact `12164484000` (temporary download 1 day), committed real PNGs are durable on this branch.
+
+## Gates
+Automation passed; a screenshot framing issue was fixed, and N01 horizontal formula legibility limitation is documented. Explicit `細部OK` per block **not yet received**. Overall `総チェック` separately remains `FINAL-REVIEW-NOT-READY`.
 
 ## Not authorized
-No main/production/Pages/new public stage, Vercel deletion, bank/card/billing, code change to learning content or student persistent state, old history deletion.
+No main merge, public hosting, production, Vercel deletion, billing, learner content/state updates, or deletion of historical evidence.

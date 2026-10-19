@@ -1,6 +1,7 @@
 # Verification — W-GOV-008/P-003 visual pilot
 
-Status: TECHNICAL-PASS / BLOCK-VISUAL-OK (both named blocks only)
+Status: PASS
+Review label: TECHNICAL-PASS / BLOCK-VISUAL-OK (both named blocks only)
 
 | Gate | Observed result |
 | --- | --- |

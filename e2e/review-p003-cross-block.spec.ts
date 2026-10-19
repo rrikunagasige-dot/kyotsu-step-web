@@ -37,7 +37,7 @@ test.describe('W-GOV-008/P-003 Gate ② — two-block cross-audit, no app public
       await page.setViewportSize({ width, height: 740 })
       await page.goto('/#/review/n01-q07')
       await expect(page.getByTestId('review-preview-ready')).toBeVisible()
-      const formula = page.getByTestId('textbook-formula-formula-like-original')
+      const formula = page.getByTestId('textbook-formula-formula-r3-q07-x2coef')
       await expect(formula).toBeVisible()
       const start = await formula.evaluate((el) => ({ max: el.scrollWidth - el.clientWidth, width: el.clientWidth }))
       expect(start.width).toBeGreaterThan(0)

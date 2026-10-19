@@ -29,3 +29,6 @@ Library title lookup found two native v2 Word files, each 212,863 bytes. N01 Q7 
 
 ## F-210 — PENDING N01 formula scroll-to-end test
 N01 original equation has a genuine inner horizontal scrollbar on small phones. Add read-only Playwright checks at 320px and 390px that scroll reaches the right end without root overflow. Preserve the user's valid visual acceptance of seven marked choices; do not infer formula ergonomics PASS without exact green run.
+
+## F-211 — CONFIRMED test-only target mistake and governance metadata mismatch, not a learner defect
+At SHA `165468e3fc920dd5254ebd8e5968928a396e7981`, governance run `39207719786` failed because accepted narrow Work `Status: DONE` paired with noncanonical verification status; corrected to exact `Status: PASS`. Code check run `39207719880` passed TS, lint, 27 Vitest, build and prior interaction test, but failed the newly added scroll test in two browser projects because it targeted short `formula-like-original` (no horizontal overflow), not the longer coefficient derivation `formula-r3-q07-x2coef`. Original learner source proves the distinction. Fix only test locator; keep failed runs in the audit history and wait for exact new CI before declaring pass.

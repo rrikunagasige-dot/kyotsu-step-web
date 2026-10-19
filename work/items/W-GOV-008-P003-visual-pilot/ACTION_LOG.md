@@ -12,3 +12,5 @@
 - 2026-10-19 — Post-publish GitHub read check: N01 sheet embeds 3 mobile screenshots; N03 embeds 4; all ten PNG blobs verified by exact sha/size and branch/main refs. After normalizing the strict Work Status format, latest governance `39204581026` and app checks `39204580997` both PASS. User visual checks remain pending.
 
 - 2026-10-19 14:55 JST — Exact user response individually names `細部OK N01 Q07` and `細部OK N03 Q10` and says both real screens were seen. Log both as `BLOCK-VISUAL-OK` only, bound to review sheet `e7cdc5209aa3afdaae2285591031e0abb429c0f9` and capture `3ffe0bab97da9a509d7fe21ce7aa9dd78b52b141`. Full exact words, stable block IDs and scope in append-only `ACCEPTANCE_LOG.md`. No overall acceptance or publication.
+
+- 2026-10-19 — Initial post-acceptance governance run 39207719786 FAILED solely because narrow pilot `WORK.md` was DONE while `VERIFICATION.md` first line did not say the required exact `Status: PASS`. Corrected status metadata without changing acceptance scope. Running app workflow 39207719880 was a separate test-execution issue logged in cross-audit.

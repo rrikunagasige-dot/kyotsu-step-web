@@ -11,7 +11,7 @@ Branch: work/W-GOV-008-P001-review-link-20261019
 Stop asking 陸君 to interpret PR #92 or start Codespaces. Deliver a tested, single-tap changed-app link with a short check list before requesting user PASS/要修正.
 
 ## Authority
-CMD-WORK-001「修正」, exact proposal W-GOV-008/P-001 explicitly approved by the user with 「いいよ。今の感じはすごくいい。特に ... ちゃんと辞書確認したね。じゃよろしく頼む！」 immediately after the targeted approval question on 2026-10-19 JST. Constitution and existing Dictionary / WORK_SYSTEM govern all action.
+CMD-WORK-001「修正」, exact proposal W-GOV-008/P-001 explicitly approved by the user with 「いいよ。今の感じはすごくいい。特に ... ちゃんと辞書確認したね。じゃよろしく頼む！」. On 2026-10-19 JST, the user also replied "IIYO" to the separate exact question asking to connect Vercel and GitHub and publish an isolated, no-login, link-accessible review app. This authorizes ONLY that provider connection and such preview publication, not billing, paid contracts, production Pages or main merge. Constitution and existing Dictionary / WORK_SYSTEM govern all action.
 
 ## Scope
 - WORK_SYSTEM §12A canonical review readiness; dictionary's CMD-WORK-001/002 review handoff consistency; MASTER_APP_LESSONS §54 and memory lesson.
@@ -20,19 +20,19 @@ CMD-WORK-001「修正」, exact proposal W-GOV-008/P-001 explicitly approved by 
 - QA workflow for preview build and pilot E2E, source and Work records, independent branch and draft PR.
 
 ## Do Not Touch
-Constitution, command aliases, old accepted content, math/physics authored source, progress schema, direct main, Pages production workflow/deployment, PR #92 head without separate review of the integration, external hosting/service account, public preview publication or billing, ordinary learner gating, unrelated modes. GitHub Pages release and main merge each separately authorized.
+Constitution, command aliases, old accepted content, math/physics authored source, progress schema, direct main, Pages production workflow/deployment, PR #92 head without separate review of the integration, unapproved hosting/service accounts or other public publication, billing or paid plans, ordinary learner gating, unrelated modes. GitHub Pages release and main merge each separately authorized.
 
 ## Approved Proposal
 W-GOV-008/P-001 in PROPOSAL.md, approved 2026-10-19 JST.
 
 ## Current Step
-Draft PR #93 implements the governance rule and reviewer module (head c69e56ad7b9787600e6513bd8a90a42354e3d891). Draft PR #94 is a separate pilot based on PR #92's cb726d8 head, candidate 6fa112a4c3f8728f0fbf62fe7f0a847d1d1765b6. Governance PR #93 and PR92-derived pilot #94: preview build, governance gate and four desktop/mobile real-interaction tests PASS. Full Math textbook regression CI still running; no hosted URL.
+Draft PR #93 implements the governance rule and reviewer module (head c69e56ad7b9787600e6513bd8a90a42354e3d891). Draft PR #94 is a separate pilot based on PR #92's cb726d8 head, candidate 6fa112a4c3f8728f0fbf62fe7f0a847d1d1765b6. Governance PR #93 and PR92-derived pilot #94: preview build, governance gate and four desktop/mobile real-interaction tests PASS. All three PR #94 CI workflows PASS including full Math textbook regression. PR #93 governance and preview-code CI PASS; its full Math textbook regression was still running at last check. Vercel approval granted, but its ChatGPT integration is not installed/connected; no hosted URL.
 
 ## Next Step
-The code-only PR and PR92-derived interactive pilot have passed targeted CI. Obtain a separate explicit decision on provider/account integration and an accessible isolated **preview publication**; publish only after that permission, verify both full URLs/commit/viewport gates, then ask 陸君 for hands-on PASS/要修正. Do not touch main or Pages.
+The code-only PR and PR92-derived interactive pilot have passed targeted CI. Wait for the user's one-tap Vercel integration connection, then create only the approved isolated, no-login **preview publication** for exact PR #94 candidate SHA. Stop before any paid-plan requirement; verify both live full URLs/commit/viewport gates, then ask 陸君 for hands-on PASS/要修正. Do not touch main or Pages.
 
 ## Dependencies
-PR #92 (draft, unmerged, head cb726d843263c645bfa08891cc5cef7375a82f8d at last read). PR #92 user hands-on approval pending. Hosting provider not selected or approved.
+PR #92 (draft, unmerged, head cb726d843263c645bfa08891cc5cef7375a82f8d at last read). PR #92 user hands-on approval pending. Vercel isolated public review preview selected and separately approved by "IIYO"; integration not installed/connected.
 
 ## Completion Condition
 Consistent governance + tests, exact-head PR preview available and verified at both deep links, user hands-on acceptance of review experience, Work verification/memory close. Engineering CI alone is not DONE.

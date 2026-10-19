@@ -17,3 +17,10 @@ Status: **PENDING** until CI and hosted app check evidence is appended.
 | User approval | **NOT RECEIVED** — implementation authorization only |
 
 Append CI runs, final commit SHA, and user feedback as new dated rows; never infer pass from draft PR creation.
+
+### Interim checks (2026-10-19)
+
+- Repository Governance Check: PASS, GitHub Actions run 39198282490.
+- TypeScript, modified-file ESLint: PASS; review-target Vitest: PASS (3/3), run 39198282450.
+- Full legacy Vitest: FAIL on unrelated existing catalog count tests; the new review-specific CI step restricts its Vitest target; no change to legacy data.
+- Vercel automatic preview on isolated project: READY (not production), but protected app fetching blocked 403. Human review still NOT READY.

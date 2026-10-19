@@ -8,6 +8,7 @@ import { LearningSetupPage } from '../pages/LearningSetupPage'
 import { LearningSessionPage } from '../pages/LearningSessionPage'
 import { LearningResultPage } from '../pages/LearningResultPage'
 import { TextbookUnitPage } from '../pages/TextbookUnitPage'
+import { ReviewTextbookPage } from '../review/ReviewTextbookPage'
 import { SimulationSetupPage } from '../pages/SimulationSetupPage'
 import { SimulationSessionPage } from '../pages/SimulationSessionPage'
 import { SimulationResultPage } from '../pages/SimulationResultPage'
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="/learning/session/:sessionId" element={<LearningSessionPage />} />
         <Route path="/learning/result/:sessionId" element={<LearningResultPage />} />
         <Route path="/learning/textbook/:unitId" element={<TextbookUnitPage />} />
+        {import.meta.env.VITE_REVIEW_PREVIEW === 'true' && <Route path="/review/:targetId" element={<ReviewTextbookPage />} />}
         <Route path="/simulation/setup" element={<SimulationSetupPage />} />
         <Route path="/simulation/session/:sessionId" element={<SimulationSessionPage />} />
         <Route path="/simulation/result/:sessionId" element={<SimulationResultPage />} />

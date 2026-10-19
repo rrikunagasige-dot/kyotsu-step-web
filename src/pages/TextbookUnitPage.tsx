@@ -119,11 +119,15 @@ function renderPart(
   return renderActiveChoice(item, Boolean(record), onOpen, text)
 }
 
-function TextbookReadingFlow({ unit, section, progress, onSummaryReached }: {
+export function TextbookReadingFlow({ unit, section, progress, onSummaryReached, onReviewAnswer, reviewMarks }: {
   unit: TextbookUnit
   section: TextbookSection
   progress: TextbookUnitProgress | undefined
   onSummaryReached?: (reached: boolean) => void
+  /** Isolated preview: grade the real item without touching persisted learner progress. */
+  onReviewAnswer?: (item: TextbookItem, choice: string) => void
+  /** Never passed by the ordinary learner route; visual annotations only. */
+  reviewMarks?: Readonly<Record<string, number>>
 }) {
   const { text, language } = useI18n()
   const answerTextbook = useAppStore((state) => state.answerTextbook)
@@ -232,7 +236,8 @@ function TextbookReadingFlow({ unit, section, progress, onSummaryReached }: {
 
   const selectChoice = (choice: string) => {
     if (!activeItem || isTextbookItemResolved(activeItem, activeRecord)) return
-    answerTextbook(unit, activeItem.id, choice)
+    if (onReviewAnswer) onReviewAnswer(activeItem, choice)
+    else answerTextbook(unit, activeItem.id, choice)
     setActiveItemId(null)
   }
 
@@ -369,6 +374,19 @@ function TextbookReadingFlow({ unit, section, progress, onSummaryReached }: {
     )
   }
 
+  const renderBlockWithReviewMark = (block: TextbookReadingBlock) => {
+    const mark = reviewMarks?.[block.id]
+    if (!mark) return renderBlock(block)
+    return (
+      <div className="review-marked-block" data-testid={`review-mark-${block.id}`} key={block.id}>
+        <span className="review-marked-block__label" aria-label={`確認 ${mark}`}>
+          確認{String.fromCharCode(0x2460 + mark - 1)}
+        </span>
+        {renderBlock(block)}
+      </div>
+    )
+  }
+
   const renderVisibleBlocks = (blocks: TextbookReadingBlock[]) => {
     const rendered: ReactNode[] = []
     let index = 0
@@ -400,7 +418,7 @@ function TextbookReadingFlow({ unit, section, progress, onSummaryReached }: {
                 className={`reading-derivation-step reading-derivation-step--${entry.type}`}
                 key={entry.id}
               >
-                {renderBlock(entry)}
+                {renderBlockWithReviewMark(entry)}
               </div>
             ))}
           </div>,
@@ -408,7 +426,7 @@ function TextbookReadingFlow({ unit, section, progress, onSummaryReached }: {
         continue
       }
 
-      rendered.push(renderBlock(block))
+      rendered.push(renderBlockWithReviewMark(block))
       index += 1
     }
 
@@ -711,6 +729,16 @@ export function TextbookUnitPage() {
           {text(
             'N12は新しい版です。以前の回答は履歴として保存し、最初の問題からすべて解き直します。',
             'N12已更新。以前的答案已保存为历史记录，本次从第一道题重新开始。',
+          )}
+        </p>
+      )}
+
+      {['math-numbers-expressions-n01', 'math-numbers-expressions-n03'].includes(unit.unitId)
+        && unit.revision === 2 && progress?.migratedFromRevision === 1 && (
+        <p className="n12-progress-upgrade-note" data-testid="r3-progress-upgrade-note">
+          {text(
+            '以前に解いた原問題の解答履歴は保存されています。追加した式内の計算穴だけ、順番に完成させてください。',
+            '之前完成的原题答案和记录已保留。请依次完成新增的公式内部计算填空。',
           )}
         </p>
       )}

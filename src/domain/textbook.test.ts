@@ -14,6 +14,9 @@ import {
 } from './textbook'
 
 import { mathNumbersN12Unit } from '../data/textbook/math/numbers/n12Lesson'
+import { mathNumbersN01Unit, n01SourceToItemIds } from '../data/textbook/math/numbers/n01Lesson'
+import { mathNumbersN03Unit, n03SourceToItemIds } from '../data/textbook/math/numbers/n03Lesson'
+import { mathNumbersN09Unit } from '../data/textbook/math/numbers/n09Lesson'
 
 const unit = builtInTextbookUnits[0]
 const firstItem = unit.sections[0].items[0]
@@ -225,5 +228,94 @@ describe('N12 P-003 revision-3 start-over with historical archive', () => {
     expect(p002.unitRevision).toBe(2)
     expect(p002.answers).toEqual(stale.answers)
     expect(p002.previousRevisionCompletedAt).toBe(300)
+  })
+})
+
+
+describe('W-MATH-005/P-002: N01/N03-only v1 to v2 answer preservation', () => {
+  const cases = [
+    { lesson: mathNumbersN01Unit, source: n01SourceToItemIds,
+      tokens: ['n01-r3-q07-x2coef', 'n01-r3-q07-xcoef', 'n01-r3-q07-const'], total: 18 },
+    { lesson: mathNumbersN03Unit, source: n03SourceToItemIds,
+      tokens: ['n03-r3-q10-p1', 'n03-r3-q10-p2', 'n03-r3-q10-p3', 'n03-r3-q10-p4'], total: 17 },
+  ]
+
+  for (const { lesson, source, tokens, total } of cases) {
+    it(lesson.unitId + ': preserves all original completion and attempts, while seven-hole family is unanswered', () => {
+      const ids = Object.values(source).flat()
+      const answers = Object.fromEntries(ids.map(id => {
+        const item = lesson.sections[0].items.find(candidate => candidate.id === id)!
+        return [id, {
+          itemId: id, value: item.answer, firstValue: item.answer, isFirstCorrect: true,
+          resolved: true, attemptCount: 3, firstAnsweredAt: 100, lastAnsweredAt: 200,
+        }]
+      }))
+      const old: TextbookUnitProgress = {
+        unitId: lesson.unitId, unitRevision: 1, startedAt: 80,
+        updatedAt: 200, completedAt: 300, answers,
+      }
+      const migrated = effectiveTextbookProgress(lesson, old)!
+      expect(migrated.unitRevision).toBe(2)
+      expect(migrated.migratedFromRevision).toBe(1)
+      expect(migrated.previousRevisionCompletedAt).toBe(300)
+      expect(migrated.completedAt).toBeUndefined()
+      expect(migrated.answers).toEqual(old.answers)
+      expect(migrated.startedAt).toBe(80)
+      expect(textbookUnitProgress(lesson, old)).toMatchObject({ completed: ids.length, total })
+      expect(effectiveTextbookProgress(lesson, migrated)).toBe(migrated)
+      for (const id of tokens) expect(migrated.answers[id]).toBeUndefined()
+
+      let active = old
+      tokens.forEach((id, index) => {
+        const item = lesson.sections[0].items.find(candidate => candidate.id === id)!
+        active = answerTextbookItem(active, lesson, item, item.answer, 400 + index)
+      })
+      expect(textbookUnitProgress(lesson, active)).toMatchObject({ completed: total, total, percent: 100 })
+      expect(active.completedAt).toBeDefined()
+      expect(active.previousRevisionCompletedAt).toBe(300)
+      expect(active.answers[ids[0]].attemptCount).toBe(3)
+      expect(effectiveTextbookProgress(lesson, active)).toBe(active)
+    })
+
+    it(lesson.unitId + ': wrong old answers and unrelated revision never become solved', () => {
+      const id = Object.values(source).flat()[0]
+      const item = lesson.sections[0].items.find(candidate => candidate.id === id)!
+      const wrong = {
+        itemId: id, value: 'wrong', firstValue: 'wrong',
+        isFirstCorrect: false, resolved: true,
+        attemptCount: 2, firstAnsweredAt: 100, lastAnsweredAt: 200,
+      }
+      const old: TextbookUnitProgress = {
+        unitId: lesson.unitId, unitRevision: 1, startedAt: 100, updatedAt: 200,
+        answers: { [id]: wrong },
+      }
+      const migrated = effectiveTextbookProgress(lesson, old)!
+      expect(migrated.answers[id]).toEqual(wrong)
+      expect(textbookUnitProgress(lesson, old).completed).toBe(0)
+      const corrected = answerTextbookItem(old, lesson, item, item.answer, 400)
+      expect(corrected.answers[id].firstValue).toBe('wrong')
+      expect(corrected.answers[id].attemptCount).toBe(3)
+      expect(textbookUnitProgress(lesson, corrected).completed).toBe(1)
+      expect(effectiveTextbookProgress(lesson, { ...old, unitRevision: 0 })).toBeUndefined()
+      expect(effectiveTextbookProgress(lesson, { ...old, unitId: 'math-numbers-expressions-n02' })).toBeUndefined()
+    })
+  }
+
+  it('keeps already-released N09 restart and N12 35-stage archive behavior', () => {
+    const n09old: TextbookUnitProgress = {
+      unitId: mathNumbersN09Unit.unitId, unitRevision: 1, startedAt: 10, updatedAt: 20,
+      completedAt: 30, answers: {},
+    }
+    const n09 = effectiveTextbookProgress(mathNumbersN09Unit, n09old)!
+    expect(n09.answers).toEqual({})
+    expect(n09.archivedRevisions?.['1'].completedAt).toBe(30)
+    expect(textbookUnitProgress(mathNumbersN09Unit, n09old).total).toBe(18)
+
+    const n12old: TextbookUnitProgress = { ...n09old, unitId: mathNumbersN12Unit.unitId, unitRevision: 2 }
+    const n12 = effectiveTextbookProgress(mathNumbersN12Unit, n12old)!
+    expect(n12.unitRevision).toBe(3)
+    expect(n12.answers).toEqual({})
+    expect(n12.archivedRevisions?.['2'].completedAt).toBe(30)
+    expect(textbookUnitProgress(mathNumbersN12Unit, n12old).total).toBe(35)
   })
 })

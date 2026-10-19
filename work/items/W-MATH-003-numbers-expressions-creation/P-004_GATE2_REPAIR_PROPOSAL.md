@@ -1,6 +1,6 @@
-# P-004 — N04–N14 Gate② source-fidelity repair proposal (UNAPPROVED)
+# P-004 — N04–N14 Gate② source-fidelity repair proposal (APPROVED)
 
-Status: PROPOSED — **no learner code edits authorized**. Linked work W-MATH-003, Gate② findings F-028-A–H; follows CMD-WORK-001 修正, WORK_SYSTEM §12A/§12B, and Mathematics Textbook SPEC. This is an evidence-only proposal, not a modification of P-003-R1 creation authorization.
+Status: **APPROVED 2026-10-20** by user's explicit 「承認」. Exactly eight listed learner blocks plus scoped tests and required state preservation authorized. Additional defects outside the eight remain NOT authorized. Linked work W-MATH-003, Gate② findings F-028-A–H; follows CMD-WORK-001 修正, WORK_SYSTEM §12A/§12B, and Mathematics Textbook SPEC. This is an evidence-only proposal, not a modification of P-003-R1 creation authorization.
 
 ## Need and verified evidence
 
@@ -40,4 +40,9 @@ KEEP: 123 original source IDs; original Word unchanged; original nine PNG byte h
 
 ## Approval gate
 
-**Await explicit user approval of this exact P-004 proposal before any source/UI/test modification.** Feedback that materially changes it requires a new proposal revision, presented and approved before execution. Main merge / publication separately gated.
+**Approval received for these eight blocks only on 2026-10-20.** Feedback that materially changes it requires a new proposal revision, presented and approved before execution. Main merge / publication separately gated.
+
+
+## Post-approval checkpoint
+
+P-004 eight learner corrections have been implemented on draft PR #101 only. Final source head for full CI: `7fce8fa93511df5406602d1a3e0d3c6e1f3dfdf9`; [Math textbook CI 39343256282](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39343256282) **success**. Includes 188 Vitest assertions, 127-step mobile/desktop walkthrough, 16 repaired-question 320/390px wrong→reopen→hint→correct scenarios, physics and practice regressions. Genuine 48 repaired screenshot evidence: code `e397d77e39168958499eafd8f7ad0025243ee7e6`, image commit `d74b210187d90c98628271f173ed5cf795c3f964`. Separate confirmed source-leakage findings N06-Q11 and N14-Q05 **are not included in this P-004 approval**. Gate② and Gate③ remain open pending complete impact-loop closure and user acceptance.

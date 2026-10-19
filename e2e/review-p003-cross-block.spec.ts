@@ -32,6 +32,28 @@ test.describe('W-GOV-008/P-003 Gate ② — two-block cross-audit, no app public
     expect(rootOverflow).toBeLessThanOrEqual(1)
   })
 
+  test('320px and 390px N01 formula: scroll to its right end without root overflow', async ({ page }) => {
+    for (const width of [320, 390]) {
+      await page.setViewportSize({ width, height: 740 })
+      await page.goto('/#/review/n01-q07')
+      await expect(page.getByTestId('review-preview-ready')).toBeVisible()
+      const formula = page.getByTestId('textbook-formula-formula-like-original')
+      await expect(formula).toBeVisible()
+      const start = await formula.evaluate((el) => ({ max: el.scrollWidth - el.clientWidth, width: el.clientWidth }))
+      expect(start.width).toBeGreaterThan(0)
+      expect(start.max).toBeGreaterThan(1)
+      await formula.evaluate((el) => { el.scrollLeft = el.scrollWidth })
+      const end = await formula.evaluate((el) => {
+        const last = el.querySelector('.reading-formula-expression')?.lastElementChild
+        return { left: el.scrollLeft, max: el.scrollWidth - el.clientWidth,
+          lastRight: last?.getBoundingClientRect().right ?? Infinity, rightEdge: el.getBoundingClientRect().right }
+      })
+      expect(end.left).toBeGreaterThanOrEqual(end.max - 2)
+      expect(end.lastRight).toBeLessThanOrEqual(end.rightEdge + 3)
+      expect(await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(1)
+    }
+  })
+
   test('320px N03 grid: wrong answer cannot unlock next product, retry and all five results work', async ({ page }) => {
     await page.setViewportSize({ width: 320, height: 740 })
     await page.goto('/#/review/n03-q10')

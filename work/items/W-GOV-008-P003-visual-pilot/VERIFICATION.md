@@ -1,6 +1,6 @@
 # Verification — W-GOV-008/P-003 visual pilot
 
-Status: TECHNICAL-PASS / BLOCK-CHECK-PENDING (user has not accepted)
+Status: TECHNICAL-PASS / BLOCK-VISUAL-OK (both named blocks only)
 
 | Gate | Observed result |
 | --- | --- |
@@ -12,6 +12,6 @@ Status: TECHNICAL-PASS / BLOCK-CHECK-PENDING (user has not accepted)
 | Governance, TS, lint, Vitest, build, E2E | PASS — visual run `39203622766`; governance `39203622823` |
 | Human-readable actual screenshot | PASS inspected — corrected N01 frame, N03 marks; F-005 formula horizontal legibility note retained |
 | GitHub hosted per-mark inline screenshot sheets | PASS — reviewed actual GitHub contents and all 10 image blobs (7 inline marks, 3 PC extras), at commit `4e34495d3e6d16b7049182877f83cba2a49d8ad4` |
-| User `細部OK` | NOT RECEIVED; do not mark block approved |
-| Later horizontal audit and `総チェックOK` | NOT READY, not performed |
+| User `細部OK` | PASS — exact 2026-10-19 14:55 JST user reply explicitly accepts N01 Q07 and N03 Q10 actual screenshots; original SHA/IDs in `ACCEPTANCE_LOG.md`. Visual only. |
+| Later horizontal audit and `総チェックOK` | Gate ② technical checks ran; some independent evidence pending. Gate ③ full-app check NOT READY and no `総チェックOK` recorded. |
 | Deployment, billing, main | NONE |

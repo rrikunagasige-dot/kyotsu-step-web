@@ -9,8 +9,8 @@ Review route is gated by `VITE_REVIEW_PREVIEW`; ordinary `TextbookReadingFlow` r
 ## F-203 — OPEN / visual limitation
 The authentic N01 long formula in screenshot spans more width than one viewport. Its marker and intended choice were readable, but the complete expression could not fit in a single frame. This matches P-003 pilot F-005. Do not claim visual fit fully cleared or edit the lesson automatically. If user reports a usability defect, create exact CMD-WORK-001 correction proposal and audit other affected math textbook long derivations.
 
-## F-204 — OPEN / human acceptance semantics
-User's `大丈夫だよ。そのまま続けて` is general positive feedback after the two sheets. Exact `細部OK` for each block/SHA has not yet been independently recorded; this audit cannot promote `BLOCK-VISUAL-OK` for both without clear mapping. This is distinct from the technical verification.
+## F-204 — CONFIRMED two per-block human visual acceptances
+Previously `大丈夫だよ。そのまま続けて` was continuation only. User's 2026-10-19 14:55 JST exact message names both `細部OK N01 Q07` and `細部OK N03 Q10` and says both actual screens were seen. Gate ① acceptance now applies to precisely those seven marks, captured in pilot `ACCEPTANCE_LOG.md` with original screenshot SHA. It does not clear Gate ② independent audit or Gate ③ app-wide playthrough.
 
 ## F-205 — PENDING new CI coverage
 Expanded math source/static and Playwright 320px/wrong/retry tests require a new successful GitHub Actions run; failure is not yet observed.
@@ -23,3 +23,9 @@ At `9a379173ffc91e92b2c5014b1013b7299f68fce9`, run `39206502799` passed the full
 
 ## F-208 — UNVERIFIED related long-formula surface outside seven targets
 Repository-only scan inspected N02/N09/N10/N12 math textbook review lesson formula fragments. These can contain wider derivations (notably N02 grouped polynomials, N10 radicals, N12 inequalities), but no equivalent actual mobile capture was made; no confirmed same-root defect or license to mass-repair. Track for future creation/repair preflight, with Master §§16/21/26 and Math Rendering §13 as existing deduplicated authority.
+
+## F-209 — UNVERIFIED new direct source comparison; historical raw audit retained
+Library title lookup found two native v2 Word files, each 212,863 bytes. N01 Q7 appears on indexed page 4, N03 Q10 on page 8, but the Library text extraction loses the math. Page-image read to inspect the actual embedded equation returned 403 Forbidden. No new raw/OMML byte check performed. Prior W-MATH-003 `SOURCE_OMML_AUDIT.md` and `PILOT_SOLUTION_AUDIT.md` evidence (input SHA-256 `93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa`) remains provenance and is not a newly repeated independent check.
+
+## F-210 — PENDING N01 formula scroll-to-end test
+N01 original equation has a genuine inner horizontal scrollbar on small phones. Add read-only Playwright checks at 320px and 390px that scroll reaches the right end without root overflow. Preserve the user's valid visual acceptance of seven marked choices; do not infer formula ergonomics PASS without exact green run.

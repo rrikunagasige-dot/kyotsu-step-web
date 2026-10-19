@@ -1,6 +1,6 @@
 # Verification — W-GOV-008
 
-Status: PENDING CI AND HOSTED PILOT. USER-REVIEW-NOT-READY.
+Status: BLOCKED — repository checks PASS; hosted pilot and user acceptance NOT READY.
 
 ## V-001 — target identity
 Date: 2026-10-19 JST
@@ -43,3 +43,18 @@ Result: PASS — 4 Playwright tests across mobile/desktop in 7.1s, plus typechec
 Date: 2026-10-19 JST
 Check: governance PR #93 run 39190577614.
 Result: FAIL — the revised test required a non-rendered plain literal PASS / 要修正; actual user template separates bold tokens. Corrected assertion in follow-up commit; new CI pending.
+
+## V-010 — corrected governance and reviewer build
+Date: 2026-10-19 JST
+Check: final PR #93 head e9dac5537b46df37b019db07d22e2c5de7535ce1; status on repository check and preview build.
+Result: PASS — governance run 39190685740, preview typecheck/build run 39190685725. Two prior governance failures (39190305363, 39190577614) remain documented above.
+
+## V-011 — PR #92 lineage and app isolation
+Date: 2026-10-19 JST
+Check: exact source lineage, changes between PR92 head and dedicated pilot, main and PR #92 status.
+Result: PASS — PR92 still draft cb726d843263c645bfa08891cc5cef7375a82f8d; main 154a16ff379321016f4692bb0ac6fe9a8a596214 unchanged; PR #94 differs by only 8 review-only app/QA files. Pilot governance run 39190450073 SUCCESS.
+
+## V-012 — hosting and user acceptance
+Date: 2026-10-19 JST
+Check: third-party service connection, exact SHA app URLs and user on-device result.
+Result: BLOCKED, not attempted — separate explicit host/publication permission absent. Do not tell user to review PR #93/#94 or old Pages instead.

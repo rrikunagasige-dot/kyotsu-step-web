@@ -46,3 +46,15 @@ Type: ERROR-QA
 Statement: The updated validator assumed plain literal PASS / 要修正, but the template correctly uses bold Markdown around the two reply words, producing one more false failure.
 Evidence: governance run 39190577614, one error.
 Corrective rule: check the two actual display phrases separately, not a non-rendered combined literal.
+
+## F-008 — 2026-10-19 JST
+Type: CONFIRMED
+Statement: The derived candidate PR #94 contains only eight reviewer/runtime/test files beyond the exact PR #92 head; original mathematics and figure source are unchanged.
+Evidence: GitHub commit comparison cb726d843263c645bfa08891cc5cef7375a82f8d → 6fa112a4c3f8728f0fbf62fe7f0a847d1d1765b6; Playwright run 39190449912 (4/4).
+Impact: an isolated, authentic pilot is technically feasible without main merge.
+
+## F-009 — 2026-10-19 JST
+Type: RISK
+Statement: Vercel can generate preview deployments without touching the GitHub Pages site, but service connection/publishing, audience access/protection and potentially commercial-use pricing still require authorization.
+Evidence: Vercel official preview, deployment protection and Hobby plan documentation; Vercel plugin suggestion is not a connection.
+Impact: no public or access-controlled review URLs yet; user hands-on acceptance must remain pending.

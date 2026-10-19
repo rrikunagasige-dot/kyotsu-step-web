@@ -39,3 +39,13 @@ Result: 8 review-only code/test files; seven learner decision values remain in b
 Action: Inspect first CI result and identify inherited validator syntax check.
 Target: governance run 39190305363.
 Result: FAILED — checker still required obsolete PR-fallback wording and one-line Status. Corrective validator update in the next feature-branch commit, preserving historical failure.
+
+## A-009 — 2026-10-19 JST
+Action: Confirm governance and PR92-derived interaction checks.
+Target: PR #93 head e9dac5537b46df37b019db07d22e2c5de7535ce1; PR #94 head 6fa112a4c3f8728f0fbf62fe7f0a847d1d1765b6.
+Result: governance run 39190685740 SUCCESS; preview build run 39190685725 SUCCESS; pilot run 39190449912 SUCCESS with four Playwright cases across mobile+desktop and real PR #92 added holes. Original PR #92 head and main verified unchanged.
+
+## A-010 — 2026-10-19 JST
+Action: Survey hosting integration without connecting or deploying.
+Target: Vercel plugin directory and official preview/deployment-protection information.
+Result: Vercel connector eligible but not installed/connected; a plugin suggestion was shown. No account, hosting project, public URL or paid plan created. User's separate explicit permission remains required.

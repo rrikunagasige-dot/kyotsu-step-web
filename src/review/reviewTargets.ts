@@ -1,0 +1,68 @@
+import type { TextbookSection, TextbookUnit } from '../domain/textbookSchema'
+
+export type ReviewTarget = {
+  id: string
+  unitId: string
+  title: string
+  question: string
+  revision: number
+  totalItems: number
+  blockIds: readonly string[]
+  itemIds: readonly string[]
+  expectedAnswers: readonly string[]
+}
+
+/**
+ * User-approved W-GOV-008/P-001 pilot. All content is selected by IDs from the
+ * real PR lesson; no copied solution text or substituted illustration is used.
+ */
+const targets: Record<string, ReviewTarget> = {
+  'n01-q07': {
+    id: 'n01-q07', unitId: 'math-numbers-expressions-n01', title: 'N01 Q07', question: '同類項の係数',
+    revision: 2, totalItems: 18,
+    blockIds: [
+      'formula-like-original', 'paragraph-n01-07-intro',
+      'formula-r3-q07-x2coef', 'formula-r3-q07-xcoef',
+      'formula-r3-q07-const', 'formula-n01-07',
+    ],
+    itemIds: ['n01-r3-q07-x2coef', 'n01-r3-q07-xcoef', 'n01-r3-q07-const', 'n01-07'],
+    expectedAnswers: ['-2', '-3', '3', '-2x^2-3x+3'],
+  },
+  'n03-q10': {
+    id: 'n03-q10', unitId: 'math-numbers-expressions-n03', title: 'N03 Q10', question: '四つの積',
+    revision: 2, totalItems: 17,
+    blockIds: [
+      'paragraph-two-brackets', 'figure-multiplication-grid', 'paragraph-grid-products',
+      'formula-r3-q10-p1', 'formula-r3-q10-p2',
+      'formula-r3-q10-p3', 'formula-r3-q10-p4', 'formula-n03-10',
+    ],
+    itemIds: ['n03-r3-q10-p1', 'n03-r3-q10-p2', 'n03-r3-q10-p3', 'n03-r3-q10-p4', 'n03-10'],
+    expectedAnswers: ['6x^2', '8x', '3x', '4', '6x^2+8x+3x+4'],
+  },
+}
+
+export const reviewTargets = targets
+
+export function extractReviewSection(unit: TextbookUnit, target: ReviewTarget): TextbookSection | null {
+  if (unit.unitId !== target.unitId || unit.revision !== target.revision) return null
+  const section = unit.sections.find(candidate => candidate.id === 'lesson')
+  if (!section || section.items.length !== target.totalItems) return null
+
+  const blocks = target.blockIds.map(id => section.readingFlow.find(block => block.id === id))
+  const items = target.itemIds.map(id => section.items.find(item => item.id === id))
+  if (blocks.some(block => !block) || items.some(item => !item)) return null
+
+  // Guard against stale/partial PR content and any accidental answer/key change.
+  if (items.some((item, index) => item?.answer !== target.expectedAnswers[index])) return null
+  const actualChoiceOrder = blocks.flatMap(block => {
+    if (!block || (block.type !== 'paragraph' && block.type !== 'formula')) return []
+    return block.parts.filter(part => part.type === 'choice').map(part => part.itemId)
+  })
+  if (actualChoiceOrder.join('|') !== target.itemIds.join('|')) return null
+
+  return {
+    ...section,
+    readingFlow: blocks as TextbookSection['readingFlow'],
+    items: items as TextbookSection['items'],
+  }
+}

@@ -1,8 +1,8 @@
 # 指示辞書 / Instruction Dictionary
 
 Status: CANONICAL
-Version: 1.5.0
-Updated: 2026-10-18
+Version: 1.6.0
+Updated: 2026-10-19
 
 ## Purpose
 
@@ -225,20 +225,9 @@ approved correction proposal exists?
 - Do Not Touch
 - 必要なverification
 
-### Review-link handoff
+### User review handoff (W-GOV-008/P-001)
 
-Every time a correction Work reaches a user-reviewable stopping point, the final handoff must include at least one usable review link.
-
-Priority:
-1. rendered app / preview / directly reviewable screen;
-2. Pull Request;
-3. branch or exact GitHub location if no better review surface exists.
-
-Rules:
-- Prefer the link that lets the user inspect the actual corrected result.
-- If no preview/app link exists, say so and provide the best available fallback.
-- This applies both when the Work is DONE and when it intentionally stops at a user review gate.
-- Do not finish a correction handoff with prose only when a review link is available.
+The exact user-review gate is governance/WORK_SYSTEM.md §12A. A correction is **not USER-REVIEW-READY** until the agent has verified a directly opening app-preview URL for the exact changed place and exact implementation commit, with a short observation checklist. An unpublished PR cannot be reviewed through an older live Pages URL. PR, branch, ZIP and CI links are **technical evidence only** and cannot stand in for user hands-on acceptance. If no valid preview exists, report USER-REVIEW-NOT-READY/BLOCKED and remedy it; do not ask the user to decipher GitHub or start a development environment. External preview publication/connection needs separate approval.
 
 ### Cross-creation impact audit before correction closure
 
@@ -355,7 +344,7 @@ Canonical Phrase: **作成**
 
 `DONE`は技術QAだけでなく対象教材のユーザーhands-on acceptanceとMemory Closeを確認してから。技術PASSは「ユーザー合格」ではない。
 
-レビュー可能な地点で **実アプリ/プレビュー → PR → branch** の順で使えるリンクを必ず提示する。リンクの実在/動作は確認し、ない場合はその理由と代替リンクを示す。
+レビュー依頼は governance/WORK_SYSTEM.md §12A に従う。**変更した箇所へ直接開く、対象commitを検証済みの実アプリ・プレビューURL**と短いチェック項目がなければ USER-REVIEW-READY と呼ばず、ユーザーに合否判定を依頼しない。PR/branch/ZIP/CIは技術証拠であり代替リンクとして受入依頼に使わない。外部ホスティング連携・公開、本番merge/Pagesは別の明示承認を要する。
 
 不合格なら観測された具体的問題を `FINDINGS.md` に記録し、`CMD-WORK-001` の調査→修正案→承認→修正→再検証へ渡す。次単元の「作成」へ進む前に現在の受入状態を明示する。
 

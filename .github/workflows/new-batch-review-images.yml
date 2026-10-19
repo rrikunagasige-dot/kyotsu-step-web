@@ -7,6 +7,7 @@ on:
       - 'src/data/textbook/math/**'
       - 'public/assets/math/textbook/numbers/**'
       - 'e2e/new-batch-walkthrough.spec.ts'
+      - 'e2e/p004-repair-interactions.spec.ts'
       - '.github/workflows/new-batch-review-images.yml'
   workflow_dispatch:
 
@@ -23,6 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       E2E_BATCH_EVIDENCE: '1'
+      E2E_P004_EVIDENCE: '1'
       E2E_USE_PREVIEW: '1'
     steps:
       - uses: actions/checkout@v4
@@ -42,6 +44,7 @@ jobs:
         run: |
           mkdir -p e2e-evidence
           pnpm exec playwright test e2e/new-batch-walkthrough.spec.ts --project=mobile-chromium --project=desktop-chromium
+          pnpm exec playwright test e2e/p004-repair-interactions.spec.ts --project=mobile-chromium
       - name: Save raw evidence as an artifact
         if: always()
         uses: actions/upload-artifact@v4

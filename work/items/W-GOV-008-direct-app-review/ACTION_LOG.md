@@ -54,3 +54,8 @@ Result: Vercel connector eligible but not installed/connected; a plugin suggesti
 Action: Receive separate express hosting approval and re-check connection status.
 Target: direct user reply "IIYO" to the exact Vercel/GitHub link-accessible preview authorization question; PR #94 candidate 6fa112a4c3f8728f0fbf62fe7f0a847d1d1765b6.
 Result: Vercel/GitHub connection and a no-login, link-accessible isolated preview specifically authorized; user did NOT approve billing, paid plans, merging to main or GitHub Pages release. The Vercel integration remains NOT INSTALLED/NOT CONNECTED (confirmed after approval); a connection action was offered to the user. Do not mark USER-REVIEW-READY. All PR #94 CI checks completed SUCCESS, including full Math textbook regression; PR #93 governance and preview-code checks completed SUCCESS, full regression ongoing.
+
+## A-012 — 2026-10-19 JST
+Action: Verify newly enabled Vercel connector against the intended GitHub repository.
+Target: authenticated Vercel personal Hobby account rrikunagasige-5663; approved PR #94 candidate 6fa112a4c3f8728f0fbf62fe7f0a847d1d1765b6.
+Result: ChatGPT Vercel plugin now installed=true and Vercel user authenticated; no Vercel projects or GitHub namespaces detected. Explicit defaultTeamId-scoped repo/project lookups returned Vercel 403 forbidden, requesting authorization to scope rrikunagasige-5663. Per permission boundary, stopped without creating a project, linking Git, deploying, billing or touching main. User must grant the Vercel-side GitHub/repository and account-scope access (or diagnose 403) before an exact-SHA preview can be safely deployed.

@@ -64,3 +64,9 @@ Type: BLOCKER-CONNECTION / AUTHORITY
 Statement: The user explicitly approved the narrowly scoped Vercel/GitHub connection and no-login isolated reviewer URL with "IIYO" after the direct question. Live provider status still reports Vercel installed=false, despite prior suggestion. Explicit approval does not complete OAuth/app installation.
 Evidence: user reply, post-approval plugin search, PR #94 exact head 6fa112a4c3f8728f0fbf62fe7f0a847d1d1765b6 and all three successful CI checks.
 Impact: complete account connection first; do not present PR #94 or unmodified production Pages as learner acceptance, deploy somewhere else without approval, or initiate paid subscription. USER-REVIEW-NOT-READY remains correct.
+
+## F-011 — 2026-10-19 JST
+Type: BLOCKER-PERMISSION
+Statement: Newly installed Vercel connector authenticates a Hobby personal user but GitHub namespaces are empty and no project is listed; Vercel explicitly rejects calls under the supplied defaultTeamId with HTTP 403 forbidden. ChatGPT connector installation is NOT equivalent to connecting the Vercel GitHub App.
+Evidence: Vercel get_auth_user / list_teams / git_namespaces / list_projects / search_repo responses after plugin installed=true.
+Impact: user must complete Vercel-to-GitHub authorization and address Vercel scope access before deployment. No project created, no preview publicly served, no paid plan, no merge or Pages release.

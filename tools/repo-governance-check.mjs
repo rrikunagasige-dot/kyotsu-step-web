@@ -37,6 +37,7 @@ const requiredFiles = [
   'work/templates/ACTION_LOG.md',
   'work/templates/FINDINGS.md',
   'work/templates/VERIFICATION.md',
+  'work/templates/REVIEW_HANDOFF.md',
   'subjects/mathematics/AGENTS.md',
   'subjects/mathematics/textbook/SPEC.md',
   'subjects/mathematics/practice/SPEC.md',
@@ -58,17 +59,23 @@ if (!instructionDictionary.includes('### 2. SIMILAR')) fail('instruction diction
 if (!instructionDictionary.includes('今回この指示として扱いますか？')) fail('SIMILAR rule missing explicit user confirmation prompt')
 if (!instructionDictionary.includes('REVIEW-FEEDBACK ≠ APPROVAL')) fail('instruction dictionary missing review-feedback approval separation')
 if (!instructionDictionary.includes('修正版Proposalをユーザーへ全文提示する')) fail('CMD-WORK-001 missing revised-proposal presentation gate')
-if (!instructionDictionary.includes('### Review-link handoff')) fail('CMD-WORK-001 missing review-link handoff')
-if (!instructionDictionary.includes('rendered app / preview / directly reviewable screen')) fail('CMD-WORK-001 missing review-link priority')
+if (!instructionDictionary.includes('### User review handoff (W-GOV-008/P-001)')) fail('CMD-WORK-001 missing direct-app review handoff')
+if (!instructionDictionary.includes('USER-REVIEW-NOT-READY')) fail('CMD-WORK-001 missing no-preview stop gate')
 
 
 const workSystem = read('governance/WORK_SYSTEM.md')
 if (!workSystem.includes('REVIEW-FEEDBACK ≠ APPROVAL')) fail('WORK_SYSTEM missing review-feedback approval separation')
 if (!workSystem.includes('### Proposal review loop')) fail('WORK_SYSTEM missing proposal review loop')
 if (!workSystem.includes('The revised proposal must be shown before implementation.')) fail('WORK_SYSTEM missing revised-proposal-before-implementation rule')
-if (!workSystem.includes('## 12A. User review handoff')) fail('WORK_SYSTEM missing user review handoff rule')
-if (!workSystem.includes('A correction handoff must not end as prose-only')) fail('WORK_SYSTEM missing correction review-link requirement')
+if (!workSystem.includes('## 12A. User hands-on acceptance — direct app preview gate')) fail('WORK_SYSTEM missing direct app review gate')
+if (!workSystem.includes('**not** as a substitute for the user review link')) fail('WORK_SYSTEM missing PR-as-non-substitute requirement')
 
+
+const reviewHandoff = read('work/templates/REVIEW_HANDOFF.md')
+if (!reviewHandoff.includes('USER-REVIEW-NOT-READY')) fail('review handoff template missing no-preview stop')
+if (!reviewHandoff.includes('合格なら **PASS**') || !reviewHandoff.includes('**要修正：')) fail('review handoff template missing simple user result')
+const reviewApp = read('src/app/App.tsx')
+if (!reviewApp.includes("VITE_REVIEW_PREVIEW === 'true'")) fail('review route must remain preview-build-only')
 
 const proposalTemplate = read('work/templates/PROPOSAL.md')
 if (!proposalTemplate.includes('### Review History')) fail('PROPOSAL template missing review history')

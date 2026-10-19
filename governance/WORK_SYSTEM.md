@@ -1,8 +1,8 @@
 # Work Operating System
 
 Status: CANONICAL
-Version: 1.3.0
-Updated: 2026-10-18
+Version: 1.4.0
+Updated: 2026-10-19
 
 ## 1. Purpose
 
@@ -298,23 +298,23 @@ MEMORY CLOSE
 DONE
 ```
 
-## 12A. User review handoff
+## 12A. User hands-on acceptance — direct app preview gate
 
-When a Work reaches a user-reviewable stopping point, the handoff is incomplete until it includes at least one usable review link.
+Approved by user on 2026-10-19 JST as W-GOV-008/P-001 (CMD-WORK-001). This replaces the old PR-fallback rule without changing proposal approval, Work states, or release authorization.
 
-Link priority:
-1. live/rendered app or preview URL;
-2. Pull Request;
-3. branch or exact GitHub location.
+**User review is a product interaction, not a source-code inspection.** For any app/content creation or correction, an agent must not label a Work USER-REVIEW-READY, ask for hands-on acceptance, or claim DONE merely by linking a GitHub PR, branch, CI artifact, ZIP, or developer tool. These remain engineering evidence.
 
-If the best link type is unavailable, state that limitation and provide the best available fallback.
+Before asking the user for PASS / 要修正:
 
-This rule applies to:
-- DONE correction work;
-- VERIFYING work paused for user review;
-- pilot/review gates before wider rollout.
+1. Prepare an isolated preview of the **exact implementation commit** under review; a PR/branch-specific preview may be hosted through a separately approved provider. Keep the existing main, learner data and GitHub Pages production unaffected.
+2. Give a direct, tap-to-open **app URL for each changed place**, including the target unit/question/first new hole or decision, rather than an app homepage or a generic PR page. In review-only mode, a safe temporary jump may bypass previously answered questions, but never modify real learner progress, item IDs, answers or production lesson gating.
+3. Verify the preview URL actually opens in the app (no auth/build errors), displays the intended branch/head SHA and revision, reaches the specified decision without manual setup, and works on a phone viewport and desktop. Check interaction for unanswered, wrong and correct states, progress isolation, and regression surfaces. Record evidence and timestamp in the Work's VERIFICATION.
+4. Hand off in ordinary language: **what changed / exact place / what should appear / 2–4 things to check / PASS or 要修正**. Use the reusable template work/templates/REVIEW_HANDOFF.md. Do not require the user to install tools, run commands, interpret a PR, download an artifact, or extract a ZIP.
+5. Keep automated PASS, preview readiness, user hands-on acceptance, main merge and Pages production release as **separate gates**. Only an explicit hands-on result from the user establishes user acceptance; preview viewing alone is not approval.
 
-A correction handoff must not end as prose-only when a usable review link exists.
+If an accessible and verified **exact-head app preview** is unavailable, mark the handoff USER-REVIEW-NOT-READY (and Work BLOCKED if preview delivery prevents progress), state the blocker, and prepare the needed remedy. A PR link may be supplied solely as optional engineering evidence, **not** as a substitute for the user review link or a request for acceptance. Never substitute an older Pages app for an unpublished PR result.
+
+Provider account connection, third-party publication, public visibility changes, possible billing, main merge, and Pages release require their own applicable explicit authorization. Repository-only preview preparation does **not** grant these permissions. Existing approval rules in sections 4, 11, and 15 remain in force.
 
 ## 12B. Correction-first gate and approved-creation impact sweep (CMD-WORK-001 ↔ CMD-WORK-002)
 

@@ -1,7 +1,7 @@
 # W-GOV-008/P-003 Gate ② — N01/N03 Cross-block audit
 
-Status: VERIFYING
-Review status: IN-PROGRESS (Gate ① N01+N03 accepted; Gate ② N01/N03 + N02/N09/N10/N12 phone-screen technical tests PASS; independent fresh Word/OMML source comparison UNVERIFIED after 403)
+Status: DONE
+Review status: CROSS-VERIFIED (Gate ① user-approved named marks; Gate ② source/interaction/related impact PASSED; Gate ③ app-wide user playthrough separate and not approved)
 Updated: 2026-10-19 JST
 Branch: `work/W-GOV-008-P003-pilot-visual-sheets-20261019` (independent; draft PR #97)
 
@@ -28,3 +28,8 @@ No main integration, production/Pages/new public staging, Vercel deletion, billi
 - Scope remains the approved verification-only P-003 Gate ②. Current audit source HEAD is `8a0ba5063d2dd31dbde235009d9ccdaca1880b17` before this metadata synchronization, app Actions [39209911335](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39209911335) SUCCESS and governance [39209911210](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39209911210) SUCCESS.
 - Original N01/N03 320px/390px mobile/desktop, interaction, wrong/retry, storage, existing 27 Vitest PASS. Related math normal-route N02 r1/N09 r2/N10 r1/N12 r3 rendered mobile full interactions 4/4 PASS, 86 decisions and 84 formula blocks. Status **not** `CROSS-VERIFIED` because independent Word/OMML fresh byte comparison is missing.
 - Original native Word v2 source retrieval returned 403 on direct page-render. No permission circumvention, alternative credential or source substitution permitted. To finish, request user-provided authorized DOCX attachment/source access; independently hash and inspect the source then compare the same N01 Q07 / N03 Q10 math and figure references. Gate ③ remains NOT-READY until Gate ② passes; no new public preview, main merge or payment.
+
+## 2026-10-19 source restoration and Gate ② close
+- The user supplied the original Word again, now named `v2(2).docx`, byte-for-byte identical in size (212,863) and SHA-256 (`93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa`) to the audited `v2(1).docx`. Fresh raw OMML counts, N01 Q07/N03 Q10 source math, and original figure bytes verified in `SOURCE_DIRECT_RECHECK.md`.
+- All approved Gate ② ledger rows now PASS, with no confirmed learner-source defect or new correction Work. Historical 403 and prior failed verification-only selectors remain in findings. This Work is DONE / `CROSS-VERIFIED` for the scoped two blocks, **not** the app-wide user `総チェックOK`.
+- The seven historical accepted yellow markers are preserved as evidence, not presented to the user as fresh unreviewed blocks. Hide accepted marks before any separate final-app preview; the pilot review artifact is not a released app. No `main` integration, public hosting, new staging/Vercel environment, source edits or fees.

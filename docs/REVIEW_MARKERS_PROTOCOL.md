@@ -1,6 +1,6 @@
 # W-GOV-008 / P-002 — App-side review marks
 
-Status: **implemented in isolated review branch; awaiting engineering CI and the user's visual acceptance**.
+Status: **HISTORICAL P-002 protocol.** Its seven named marks were accepted on 2026-10-19; the N01/N03 learner release was subsequently merged and published via PR #98 and accepted in the final app Gate ③. The P-003 addendum below is the forward-looking review rule.
 
 ## Purpose and boundaries
 
@@ -40,3 +40,15 @@ Status: **implemented in isolated review branch; awaiting engineering CI and the
 ## Build-origin fingerprint
 
 The UI commit label must derive from the real Git checkout, **never** an old manually set Vercel `VITE_PREVIEW_COMMIT`. Vite compile-time substitution prefers `VERCEL_GIT_COMMIT_SHA` (Vercel system environment variables) and, only for GitHub Actions, `VITE_PREVIEW_COMMIT` from the PR head. Without a valid 40-hex SHA the review route renders `review-preview-mismatch`; it cannot be used for approval. For protected Vercel projects verify source head, label, access and exact marks before requesting OK.
+
+## P-003 現行三段階確認（2026-10-19 承認・正式運用）
+
+**P-002 provenance:** 上記のアプリ内マーカー、旧レビュー直リンク要求、当時の未公開/未確認状態は履歴として保存する。これからの小ブロック確認は、実アプリから作成した画像と確認番号を載せたGitHub確認票を使用する。正本は `governance/WORK_SYSTEM.md` §12A、CMD-WORK-001/002、および MASTER §54。
+
+1. **Gate① 細部:** exact SHA、stable IDs、実スクリーンショット、`確認①`などの番号、2〜4項目を含む `work/templates/BLOCK_REVIEW_SHEET.md`。ユーザーの `細部OK` は視覚確認のみ。履歴に追記し、次の新しい確認票だけ承認済みマークを消す。画像/SHA欠落は `BLOCK-CHECK-PENDING`。
+2. **Gate② 横断:** `work/templates/CROSS_BLOCK_AUDIT.md` に原典・数理・採点・図・漏洩・UI・遷移・端末・保存と、同型不具合の影響を記録。FAIL/UNVERIFIEDをPASSにしない。修正は §12B と個別Proposal承認へ戻す。
+3. **Gate③ 全体:** `work/templates/FINAL_APP_WALKTHROUGH.md` に候補SHA・全対象範囲・実際に開けるアプリURLを示し、本人が最初から最後まで操作する。アプリ未検証なら `FINAL-REVIEW-NOT-READY`。main統合・本番公開・新規公開環境・課金は別承認。
+
+**今回の先行実績:** 2026-10-19 N01 Q07 / N03 Q10 の個別 `細部OK`、元Wordを直接照合したGate② `CROSS-VERIFIED`、PR #98の既存Pages公開版についてユーザーが「だから確認終わったよ。いいよって」と明確に説明したGate③承認。証拠は https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/98#issuecomment-6262808123 。これは当該リリースについての事実で、未確認の別アプリの承認ではない。
+
+**証拠生成:** 任意の手動 `.github/workflows/review-screenshot-evidence.yml` は画像を生成するだけ。公開・課金・ユーザー承認は行わない。受け手にGitHubコード・PR差分・ZIPの技術判断を要求しない。

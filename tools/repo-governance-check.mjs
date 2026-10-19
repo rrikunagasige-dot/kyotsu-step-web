@@ -73,7 +73,7 @@ if (!workSystem.includes('**not** as a substitute for the user review link')) fa
 
 const reviewHandoff = read('work/templates/REVIEW_HANDOFF.md')
 if (!reviewHandoff.includes('USER-REVIEW-NOT-READY')) fail('review handoff template missing no-preview stop')
-if (!reviewHandoff.includes('PASS / 要修正')) fail('review handoff template missing simple user result')
+if (!reviewHandoff.includes('合格なら **PASS**') || !reviewHandoff.includes('**要修正：')) fail('review handoff template missing simple user result')
 const reviewApp = read('src/app/App.tsx')
 if (!reviewApp.includes("VITE_REVIEW_PREVIEW === 'true'")) fail('review route must remain preview-build-only')
 

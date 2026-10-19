@@ -40,3 +40,9 @@ Statement: Governance CI enforces literal legacy §12A headings/fallback phrases
 Evidence: GitHub run 39190305363 (5 errors for old section strings and Work Status).
 Impact: false CI failure from stale assertions, but it correctly exposed a malformed new Work status.
 Corrective rule: change assertions to enforce stronger direct-app readiness contract and keep Status on its own canonical line; rerun.
+
+## F-007 — 2026-10-19 JST
+Type: ERROR-QA
+Statement: The updated validator assumed plain literal PASS / 要修正, but the template correctly uses bold Markdown around the two reply words, producing one more false failure.
+Evidence: governance run 39190577614, one error.
+Corrective rule: check the two actual display phrases separately, not a non-rendered combined literal.

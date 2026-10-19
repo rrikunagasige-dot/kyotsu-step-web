@@ -32,3 +32,14 @@ Result: BLOCKED — no hosting provider/publication approved; no URLs exist.
 ## V-007 — human acceptance / release
 Check: user PASS or 要修正 for the actual app, independent main merge/Pages.
 Result: PENDING. Do not present technical CI as user PASS.
+
+## V-008 — PR92-derived pilot automated UI
+Date: 2026-10-19 JST
+Target: PR #94 candidate 6fa112a4c3f8728f0fbf62fe7f0a847d1d1765b6.
+Check: Review Preview Code Check 39190449912, preview build with VITE_BASE_PATH=/, actual N01/N03 direct routes, wrong/correct choices, reload nonpersistence and original N03 image.
+Result: PASS — 4 Playwright tests across mobile/desktop in 7.1s, plus typecheck and build. No public preview URL produced by this check.
+
+## V-009 — inherited validator follow-up
+Date: 2026-10-19 JST
+Check: governance PR #93 run 39190577614.
+Result: FAIL — the revised test required a non-rendered plain literal PASS / 要修正; actual user template separates bold tokens. Corrected assertion in follow-up commit; new CI pending.

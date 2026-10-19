@@ -1,7 +1,7 @@
 # W-GOV-008/P-003 Gate ② — N01/N03 Cross-block audit
 
 Status: VERIFYING
-Review status: IN-PROGRESS (agent audit, user visual acceptance separate)
+Review status: IN-PROGRESS (Gate ① N01+N03 accepted; Gate ② core technical tests PASS, independent source and related-unit impact pending)
 Updated: 2026-10-19 JST
 Branch: `work/W-GOV-008-P003-pilot-visual-sheets-20261019` (independent; draft PR #97)
 

@@ -7,7 +7,7 @@ App screenshot source/build SHA: `3ffe0bab97da9a509d7fe21ce7aa9dd78b52b141`
 Auditor + date: agent, 2026-10-19 JST
 Blocks: N01 Q07 (`formula-r3-q07-x2coef`, `xcoef`, `const`), N03 Q10 (`formula-r3-q10-p1..p4`), math textbook learning review mode.
 Earlier `大丈夫だよ。そのまま続けて` was continuation only. Exact new user response at 2026-10-19 14:55 JST names `細部OK N01 Q07` and `細部OK N03 Q10`, after viewing both actual sheets. Pilot `ACCEPTANCE_LOG.md` records the words and SHA; Gate ① `BLOCK-VISUAL-OK`, not Gate ②/③.
-Unresolved correction queue: none known for seven arithmetic answers; N01 long-formula legibility remains F-203 possible UX issue, not authorized for source change.
+Unresolved correction queue: no confirmed wrong answer or app defect in N01/N03 target scope. N01 long equation requires inner horizontal scrolling, verified reachable at 320/390px; user accepted original marked screen. Other-unit impacts still unverified; no new learner code change authorized.
 
 ## Audit ledger
 | Surface | Block IDs / mode | Status | Evidence / SHA / observation | Finding |
@@ -16,10 +16,10 @@ Unresolved correction queue: none known for seven arithmetic answers; N01 long-f
 | Mathematical chain / dependencies | N01/N03 | PASS | N01 `(3−5,−5+2,6−3)=(−2,−3,3)`; N03 four distributive products yield `6x²+11x+4` | F-201 |
 | Answer keys / choice types | all seven plus two final sums | PASS | 27 scoped Vitest including N01 and N03 original answer, unique choices, KaTeX: run 39206502799 at `9a379173ffc91e92b2c5014b1013b7299f68fce9` | F-201/F-207 |
 | Premature hints / leakage | same nine choices | PASS | Before answering, future marked step absent; N03 wrong stays unresolved, hint then shown, no next product until correction: 39206502799 | F-207 |
-| Figure, cells, KaTeX / visual | N03 figure, N01 formula | UNVERIFIED | Original PNG hash, all KaTeX alternatives and 390/1440 captures PASS (39206502799); N01 long equation needs horizontal scroll, complete expression not within a single image | F-203 |
+| Figure, cells, KaTeX / visual | N03 figure, N01 target formula | PASS (two target review routes) | Original figure PNG integrity and KaTeX alternatives in scoped Vitest; 390/1440 genuine screen captures. Complete N01 equation does not fit one still image, but tested full rightmost access by horizontal scroll at 320/390px: code run 39207997970 (SHA `2249e8a66aab6519f83e5b74f144e6566d455d04`). UX limitation disclosed and accepted; do not generalize to other units. | F-203/F-210 |
 | Wrong/retry/correct/nav | both review routes | PASS | Existing + new 320px N01 4 steps, N03 5 steps with wrong/hint/retry, review switch and invalid target: 39206502799 | F-207 |
 | Shared UI / other modes | ordinary route + math textbook | PASS (pilot isolation only) | Optional review prop, review route feature-flagged; ordinary /problems has zero amber marks; PR #97 changes no content/shared renderer. Other subject full walkthrough separately pending | F-202/F-207 |
-| Phone 320/390 and desktop | all 7 marks | UNVERIFIED (complete formula access) | User accepted seven screenshot checkpoints at 390px, automated 320px root overflow and interactions PASS, 390/1440 capture PASS. Long N01 formula only horizontally scrollable; 320/390 scroll-to-end verifier queued separately, pending CI. | F-203/F-207/F-210 |
+| Phone 320/390 and desktop | all 7 marks | PASS (two target routes, horizontal scroll required) | User accepted seven authentic 390px marked images. At exact SHA `2249e8a66aab6519f83e5b74f144e6566d455d04`, app run 39207997970 PASS includes 320+390px N01 full rightmost-access assertions in both mobile/desktop Chromium and root horizontal-overflow checks; refreshed marked captures 390/1440 PASS. Other creation unit phone screens not covered. | F-203/F-207/F-210 |
 | Progress/persistence/reset | both isolated review routes | PASS | Existing and new E2E assert unchanged `kyotsu-step-store` even after wrong/retry; reload resets ephemeral review answers: 39206502799 | F-202/F-207 |
 | Previous approved work / acceptance | P002/P003 source and snapshots | PASS (Gate ① named marks only) | Exact user `細部OK N01 Q07` + `細部OK N03 Q10`, original app capture SHA and immutable GitHub sheets; pilot `ACCEPTANCE_LOG.md`. Separate source/mobile/global acceptance remains pending. | F-204 |
 
@@ -36,7 +36,7 @@ Lesson dedup: see `docs/MASTER_APP_LESSONS.md` §§16,21,26 and `docs/MATH_RENDE
 - [x] Real GitHub screenshot assets tied to full tested source SHA
 - [x] No source/content or public app updates
 - [x] Explicit per-block `細部OK` in pilot `ACCEPTANCE_LOG.md` (visual only; not final-app acceptance)
-- [x] Prior CI PASS at `9a379173ffc91e92b2c5014b1013b7299f68fce9` / 39206502799; extra scroll test pending CI, other unresolved evidence remains
+- [x] Latest governance PASS `39207997979` and application PASS `39207997970` at exact SHA `2249e8a66aab6519f83e5b74f144e6566d455d04`, including new scroll-to-end test; original independent OMML recheck and creation-impact screen sweep remain UNVERIFIED
 - [ ] Release candidate and actual verified app link (separate final phase, not yet authorized)
 
 **Never treat this in-progress agent audit as final app acceptance.**

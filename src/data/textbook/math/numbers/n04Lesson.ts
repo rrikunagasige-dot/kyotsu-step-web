@@ -22,7 +22,7 @@ const rawN04 = {
     chapterTitle: '数と式',
     unitCode: '1NUM',
     orderInChapter: 4,
-    sourcePages: [10, 11],
+    sourcePages: [10],
   },
   title: '展開に現れる同じ形をまとめる',
   subtitle: '同じ括弧を二つ掛けると、積はいくつ現れるだろう。',

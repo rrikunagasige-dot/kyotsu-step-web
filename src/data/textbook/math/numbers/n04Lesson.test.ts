@@ -11,7 +11,7 @@ describe('W-MATH-003 / N04-Q01 independently sourced small-block pilot', () => {
   it('maps only the first original Word marker, leaves F01 and later markers unbuilt', () => {
     expect(mathNumbersN04Unit.unitId).toBe('math-numbers-expressions-n04')
     expect(mathNumbersN04Unit.status).toBe('review')
-    expect(mathNumbersN04Unit.chapter?.sourcePages).toEqual([10, 11])
+    expect(mathNumbersN04Unit.chapter?.sourcePages).toEqual([10])
     expect(Object.keys(n04SourceToItemIds)).toEqual(['N04-Q01'])
     expect(section.items.map(item => item.id)).toEqual(n04SourceToItemIds['N04-Q01'])
     expect(section.figures).toEqual([]) // N04-F01 belongs to source Q04–Q05, not Q01.

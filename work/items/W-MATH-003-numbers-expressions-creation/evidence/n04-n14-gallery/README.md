@@ -15,6 +15,20 @@
 | ⑦ | N13：絶対値方程式 | [開始](n13-start-mobile.png) ・ [中盤](n13-middle-mobile.png) ・ [最終](n13-finish-mobile.png) | [開始](n13-start-desktop.png) ・ [中盤](n13-middle-desktop.png) ・ [最終](n13-finish-desktop.png) |
 | ⑧ | N14：絶対値不等式 | [開始](n14-start-mobile.png) ・ [中盤](n14-middle-mobile.png) ・ [最終](n14-finish-mobile.png) | [開始](n14-start-desktop.png) ・ [中盤](n14-middle-desktop.png) ・ [最終](n14-finish-desktop.png) |
 
+## 元図の確認位置（元Wordと同一画像・アプリ内の表示時点）
+
+| 単元 | 元図 | スマホ | PC |
+|---|---|---|---|
+| N04 | N04-F01 | [実画面を見る](n04-figure-n04-f01-mobile.png) | [実画面を見る](n04-figure-n04-f01-desktop.png) |
+| N05 | N05-F01 | [実画面を見る](n05-figure-n05-f01-mobile.png) | [実画面を見る](n05-figure-n05-f01-desktop.png) |
+| N05 | N05-F02 | [実画面を見る](n05-figure-n05-f02-mobile.png) | [実画面を見る](n05-figure-n05-f02-desktop.png) |
+| N08 | N08-F01 | [実画面を見る](n08-figure-n08-f01-mobile.png) | [実画面を見る](n08-figure-n08-f01-desktop.png) |
+| N11 | N11-F01 | [実画面を見る](n11-figure-n11-f01-mobile.png) | [実画面を見る](n11-figure-n11-f01-desktop.png) |
+| N11 | N11-F02 | [実画面を見る](n11-figure-n11-f02-mobile.png) | [実画面を見る](n11-figure-n11-f02-desktop.png) |
+| N13 | N13-F02 | [実画面を見る](n13-figure-n13-f02-mobile.png) | [実画面を見る](n13-figure-n13-f02-desktop.png) |
+| N13 | N13-F01 | [実画面を見る](n13-figure-n13-f01-mobile.png) | [実画面を見る](n13-figure-n13-f01-desktop.png) |
+| N14 | N14-F01 | [実画面を見る](n14-figure-n14-f01-mobile.png) | [実画面を見る](n14-figure-n14-f01-desktop.png) |
+
 元図は `public/assets/math/textbook/numbers/nXX-fXX.png` に原Wordの画像バイトを保持しています。完成図の表示はそれぞれ関連する穴への正答後です。画像生成コミットに撮影対象コードの完全SHAを明記し、変更の履歴が追えるようにします。
 
 **最後の「アプリ全体総チェック」は別のゲートです。** 新しい公開環境は作っておらず、これは画像確認票です。動作するアプリの正確なブランチ版リンクが提供できる状態になったら、最初から最後まで総チェックします。`main`への統合・本番公開・課金は承認されていません。

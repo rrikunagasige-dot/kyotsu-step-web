@@ -17,11 +17,26 @@ for (const n of units) {
     await expect(page.getByTestId('textbook-item-' + items[0].id)).toBeVisible()
     const evidence = process.env.E2E_BATCH_EVIDENCE === '1'
     const device = testInfo.project.name.includes('mobile') ? 'mobile' : 'desktop'
+    const pictured = new Set<string>()
+    async function captureFigureWhenUnlocked() {
+      for (const fig of figureIds) {
+        if (pictured.has(fig)) continue
+        const locator = page.getByTestId('textbook-figure-' + fig)
+        if (await locator.count() === 0) continue
+        await expect(locator).toBeVisible()
+        pictured.add(fig)
+        if (evidence) {
+          await locator.scrollIntoViewIfNeeded()
+          await page.screenshot({ path: 'e2e-evidence/n' + n + '-figure-' + fig + '-' + device + '.png', fullPage: false })
+        }
+      }
+    }
     for (const fig of figureIds) {
       const locator = page.getByTestId('textbook-figure-' + fig)
       if (fig === 'n08-f01' || fig === 'n11-f01') await expect(locator).toBeVisible()
       else await expect(locator).toHaveCount(0)
     }
+    await captureFigureWhenUnlocked()
 
     for (const [i, item] of items.entries()) {
       const trigger = page.getByTestId('textbook-item-' + item.id)
@@ -35,6 +50,7 @@ for (const n of units) {
       }
       await panel.getByRole('button', { name: item.answer, exact: true }).click()
       await expect(page.getByTestId('resolved-' + item.id)).toBeVisible()
+      await captureFigureWhenUnlocked()
       await expect(page.locator('.katex-error')).toHaveCount(0)
       if (i + 1 < items.length) await expect(page.getByTestId('textbook-item-' + items[i + 1].id)).toBeVisible()
     }

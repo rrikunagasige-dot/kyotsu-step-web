@@ -71,7 +71,7 @@ export function makeReviewSteps(
       readingFlow.push({
         id: prefix + '-formula-' + q,
         type: step.kind === 'text' ? 'paragraph' : 'formula',
-        parts: step.kind === 'text' ? [T('考えて選ぶ：'), C(id)] : [M(step.stem ?? '\\text{ここから}\\;'), C(id)],
+        parts: step.kind === 'text' ? [T('考えて選ぶ：'), C(id)] : step.stem ? [M(step.stem), C(id)] : [C(id)],
       })
       readingFlow.push({
         id: prefix + '-after-' + q,

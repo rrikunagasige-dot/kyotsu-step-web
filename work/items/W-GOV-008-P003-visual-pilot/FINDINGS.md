@@ -11,3 +11,6 @@ A GitHub Actions artifact alone may be a downloadable ZIP. That is **engineering
 
 ## F-004 — AUTHORIZATION
 A new public app host would need separate approval. Existing public-repository standard Ubuntu GitHub-hosted Actions are documented as free for use, but this Work creates no paid runner/provider. Screenshot artifact retention set to one day.
+
+## F-005 — CONFIRMED first capture framing defect (not yet a learner-code defect)
+Initial GitHub runner screenshots (workflow run `39203069126`, head `adaf8c78fa627ab4a944b4274152c1f23966a06e`) passed Playwright but visual inspection showed N01 Q07 `確認①` near the sticky bottom and its actual math expression clipped from the 390px screenshot. Some later N01 shots also show horizontally displaced equation context. The automated visible-marker assertion alone is insufficient to prove the image is useful to a human. Before handoff, reframe each mark by **root-only vertical scroll** and inspect the new pixels; if the equation still genuinely clips in the app, keep `BLOCK-CHECK-PENDING` and open a separate correction proposal for learner UI rather than silently modifying content.

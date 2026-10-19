@@ -46,7 +46,14 @@ test.describe('W-GOV-008/P-003 — actual pilot screenshot evidence, no hosted d
       for (const [index, step] of target.steps.entries()) {
         const marker = page.getByTestId('review-mark-' + step.mark)
         await expect(marker).toContainText(step.label)
-        await marker.scrollIntoViewIfNeeded()
+        // Move the root document vertically only, avoiding horizontal formula scroll.
+        // scrollIntoViewIfNeeded() may leave the first mark cut off behind sticky UI.
+        await marker.evaluate((element) => {
+          const box = element.getBoundingClientRect()
+          const top = window.scrollY + box.top - window.innerHeight * 0.38
+          window.scrollTo({ top: Math.max(0, top), left: 0, behavior: 'instant' })
+        })
+        await expect(marker).toBeVisible()
         const file = `e2e-evidence/${target.route}-review-${index + 1}-${mobile ? 'mobile' : 'desktop'}-${width}.png`
         await page.screenshot({ path: file, fullPage: false })
         evidence.push({ file, label: step.label, mark: step.mark, item: step.item, viewport: width })

@@ -59,3 +59,8 @@ Result: Vercel/GitHub connection and a no-login, link-accessible isolated previe
 Action: Verify newly enabled Vercel connector against the intended GitHub repository.
 Target: authenticated Vercel personal Hobby account rrikunagasige-5663; approved PR #94 candidate 6fa112a4c3f8728f0fbf62fe7f0a847d1d1765b6.
 Result: ChatGPT Vercel plugin now installed=true and Vercel user authenticated; no Vercel projects or GitHub namespaces detected. Explicit defaultTeamId-scoped repo/project lookups returned Vercel 403 forbidden, requesting authorization to scope rrikunagasige-5663. Per permission boundary, stopped without creating a project, linking Git, deploying, billing or touching main. User must grant the Vercel-side GitHub/repository and account-scope access (or diagnose 403) before an exact-SHA preview can be safely deployed.
+
+## A-013 — 2026-10-19 JST
+Action: Recheck Vercel after user reports "GitHub接続した".
+Target: authenticated Vercel integration, github git namespaces with/without viewer metadata, github repo search and project list (unscoped to avoid previous defaultTeamId 403), canonical PR #94 head 6fa112a4c3f8728f0fbf62fe7f0a847d1d1765b6.
+Result: User explicitly reports GitHub connection; API still returns 0 namespaces, 0 repositories and 0 projects, even on second read. No inference that the user failed; possible UI/API authorization or propagation discrepancy. No preview deployment initiated and no actual app URL exists. Ask user to check visible Import Git Repository listing or provide a screenshot; continue only with verified access.

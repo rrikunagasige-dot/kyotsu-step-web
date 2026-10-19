@@ -27,9 +27,9 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm run typecheck
       # Existing unrelated repository-wide lint debt is outside this approved task.
-      - run: pnpm exec eslint src/review/reviewTargets.ts src/review/reviewTargets.test.ts src/review/ReviewTextbookPage.tsx src/pages/TextbookUnitPage.tsx e2e/review-preview-gate.spec.ts e2e/review-p003-visual-evidence.spec.ts --max-warnings=0
+      - run: pnpm exec eslint src/review/reviewTargets.ts src/review/reviewTargets.test.ts src/review/ReviewTextbookPage.tsx src/pages/TextbookUnitPage.tsx e2e/review-preview-gate.spec.ts e2e/review-p003-visual-evidence.spec.ts e2e/review-p003-cross-block.spec.ts --max-warnings=0
       # The legacy global suite has two unrelated catalog-count assertion failures.
-      - run: pnpm exec vitest run src/review/reviewTargets.test.ts
+      - run: pnpm exec vitest run src/review/reviewTargets.test.ts src/data/textbook/math/numbers/n01Lesson.test.ts src/data/textbook/math/numbers/numbersPilots.test.ts src/data/textbook/math/mathReviewIntegrity.test.ts
       - run: pnpm run build
       # This checks actual interaction ONLY on a dedicated PR #92-derived review
       # candidate. The main-based governance branch lacks the seven new holes.
@@ -42,6 +42,15 @@ jobs:
           E2E_REVIEW_PREVIEW: '1'
           E2E_USE_PREVIEW: '1'
         run: pnpm exec playwright test e2e/review-preview-gate.spec.ts --project=mobile-chromium --project=desktop-chromium
+
+      # P-003 Gate ②: cross-check both units at 320px and 390px with wrong/retry,
+      # source/answer invariants and unaffected ordinary route, without deployment.
+      - name: Cross-block audit for N01/N03 and unaffected routes
+        if: ${{ github.base_ref == 'work/W-GOV-008-P002-marked-review-20261019' }}
+        env:
+          E2E_REVIEW_CROSS: '1'
+          E2E_USE_PREVIEW: '1'
+        run: pnpm exec playwright test e2e/review-p003-cross-block.spec.ts --project=mobile-chromium --project=desktop-chromium
 
       # P-003 pilot: screenshot genuine, numbered in-app marks from exact PR head.
       # Read-only GitHub-hosted runner, no Pages/Vercel publish or branch push.

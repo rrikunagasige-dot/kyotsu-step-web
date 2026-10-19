@@ -1,0 +1,53 @@
+name: Review Screenshots — manual evidence only, NO DEPLOY
+
+on:
+  workflow_dispatch:
+    inputs:
+      review_route:
+        description: 'Existing real app review route, e.g. /#/review/n01-q07 (must exist in checkout)'
+        type: string
+        required: true
+  workflow_call:
+    inputs:
+      review_route:
+        type: string
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    env:
+      VITE_REVIEW_PREVIEW: 'true'
+      VITE_BASE_PATH: '/'
+      VITE_PREVIEW_COMMIT: ${{ github.sha }}
+      E2E_REVIEW_EVIDENCE: '1'
+      E2E_USE_PREVIEW: '1'
+      REVIEW_EVIDENCE_ROUTE: ${{ inputs.review_route }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Typecheck & build actual checked-out app without publishing
+        run: pnpm run typecheck && pnpm run build
+      - name: Install Chromium for local screenshot
+        run: pnpm exec playwright install --with-deps chromium
+      - name: Screenshot exact-head review route on phone and desktop
+        run: pnpm exec playwright test e2e/review-evidence.spec.ts --project=mobile-chromium --project=desktop-chromium
+      - name: Retain actual screenshot evidence only (not a published app)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: review-evidence-${{ github.sha }}
+          path: e2e-evidence/*.png
+          if-no-files-found: ignore
+          retention-days: 7

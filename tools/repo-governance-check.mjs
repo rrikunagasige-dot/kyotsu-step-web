@@ -38,6 +38,10 @@ const requiredFiles = [
   'work/templates/FINDINGS.md',
   'work/templates/VERIFICATION.md',
   'work/templates/REVIEW_HANDOFF.md',
+  'work/templates/BLOCK_REVIEW_SHEET.md',
+  'work/templates/CROSS_BLOCK_AUDIT.md',
+  'work/templates/FINAL_APP_WALKTHROUGH.md',
+  'docs/REVIEW_MARKERS_PROTOCOL.md',
   'subjects/mathematics/AGENTS.md',
   'subjects/mathematics/textbook/SPEC.md',
   'subjects/mathematics/practice/SPEC.md',
@@ -59,21 +63,30 @@ if (!instructionDictionary.includes('### 2. SIMILAR')) fail('instruction diction
 if (!instructionDictionary.includes('今回この指示として扱いますか？')) fail('SIMILAR rule missing explicit user confirmation prompt')
 if (!instructionDictionary.includes('REVIEW-FEEDBACK ≠ APPROVAL')) fail('instruction dictionary missing review-feedback approval separation')
 if (!instructionDictionary.includes('修正版Proposalをユーザーへ全文提示する')) fail('CMD-WORK-001 missing revised-proposal presentation gate')
-if (!instructionDictionary.includes('### User review handoff (W-GOV-008/P-001)')) fail('CMD-WORK-001 missing direct-app review handoff')
-if (!instructionDictionary.includes('USER-REVIEW-NOT-READY')) fail('CMD-WORK-001 missing no-preview stop gate')
+if (!instructionDictionary.includes('### User review handoff (W-GOV-008/P-003')) fail('CMD-WORK-001 missing P-003 three-gate review handoff')
+if (!instructionDictionary.includes('FINAL-REVIEW-NOT-READY')) fail('CMD-WORK-001 missing final-app no-preview stop gate')
 
 
 const workSystem = read('governance/WORK_SYSTEM.md')
 if (!workSystem.includes('REVIEW-FEEDBACK ≠ APPROVAL')) fail('WORK_SYSTEM missing review-feedback approval separation')
 if (!workSystem.includes('### Proposal review loop')) fail('WORK_SYSTEM missing proposal review loop')
 if (!workSystem.includes('The revised proposal must be shown before implementation.')) fail('WORK_SYSTEM missing revised-proposal-before-implementation rule')
-if (!workSystem.includes('## 12A. User hands-on acceptance — direct app preview gate')) fail('WORK_SYSTEM missing direct app review gate')
-if (!workSystem.includes('**not** as a substitute for the user review link')) fail('WORK_SYSTEM missing PR-as-non-substitute requirement')
+if (!workSystem.includes('## 12A. W-GOV-008/P-003')) fail('WORK_SYSTEM missing P-003 three-gate review rule')
+if (!workSystem.includes('## 12B. Correction-first gate')) fail('WORK_SYSTEM must preserve correction-first gate')
+for (const label of ['BLOCK-CHECK-PENDING', 'BLOCK-VISUAL-OK', 'CROSS-VERIFIED', 'FINAL-REVIEW-NOT-READY', 'FINAL-REVIEW-READY', 'FINAL-APP-ACCEPTED']) {
+  if (!workSystem.includes(label)) fail('WORK_SYSTEM missing review label: '+label)
+}
+if (workSystem.includes('## 12A. User hands-on acceptance — direct app preview gate')) fail('P-001 per-block link rule was not explicitly superseded')
 
 
 const reviewHandoff = read('work/templates/REVIEW_HANDOFF.md')
-if (!reviewHandoff.includes('USER-REVIEW-NOT-READY')) fail('review handoff template missing no-preview stop')
-if (!reviewHandoff.includes('合格なら **PASS**') || !reviewHandoff.includes('**要修正：')) fail('review handoff template missing simple user result')
+if (!reviewHandoff.includes('FINAL-REVIEW-NOT-READY')) fail('review handoff template missing final-app no-preview stop')
+if (!reviewHandoff.includes('細部OK') || !reviewHandoff.includes('総チェックOK') || !reviewHandoff.includes('要修正')) fail('review handoff missing separated block and final result')
+for (const path of ['work/templates/BLOCK_REVIEW_SHEET.md','work/templates/CROSS_BLOCK_AUDIT.md','work/templates/FINAL_APP_WALKTHROUGH.md']) {
+  if (!read(path).includes('W-GOV-008/P-003')) fail('review template missing P-003 provenance: '+path)
+}
+if (!read('docs/MASTER_APP_LESSONS.md').includes('§54 改定 — W-GOV-008/P-003')) fail('shared MASTER missing approved P-003 modification')
+if (!read('docs/REVIEW_MARKERS_PROTOCOL.md').includes('P-002 provenance')) fail('review markers protocol missing separate P-002 provenance')
 const reviewApp = read('src/app/App.tsx')
 if (!reviewApp.includes("VITE_REVIEW_PREVIEW === 'true'")) fail('review route must remain preview-build-only')
 

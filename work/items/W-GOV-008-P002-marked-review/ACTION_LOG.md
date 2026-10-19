@@ -8,3 +8,5 @@
 
 - 2026-10-19 — CI: governance PASS; scoped lint PASS; new review-marker Vitest PASS (3/3). Full global Vitest reported two pre-existing catalog-count failures (physicsTaxonomy 17→3; questionSchema 19→39), so the review-specific gate now runs its own tests; no catalog/test source was modified.
 - 2026-10-19 — Auto Git integration built a Vercel **preview** for exact commit 1387cb699119bdb7b92bca0bf8b1d9d70b3c55b7 (deployment dpl_CEWHaNQMP4BzUGRyEVMDKb4tF526, target:null, READY). Authenticated app-fetch returned 403 at protection-bypass read; therefore URL is not yet user-review verified. No protection setting changed.
+
+- 2026-10-19 — Found stale project-level public `VITE_PREVIEW_COMMIT=6fa112...` on Vercel despite exact-HEAD deployment b171891.... Added Git-origin compile-time fingerprint and fail-closed check; require new CI/build verification.

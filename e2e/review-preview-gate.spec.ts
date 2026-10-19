@@ -8,7 +8,9 @@ test.describe('W-GOV-008 exact-head isolated app review pilot', () => {
     await expect(page.getByTestId('review-preview-ready')).toBeVisible()
     await expect(page.getByTestId('review-preview-count')).toContainText('全18穴')
     const sha = process.env.VITE_PREVIEW_COMMIT
-    if (sha) await expect(page.getByTestId('review-preview-sha')).toContainText(sha)
+    if (!sha) throw new Error('Missing exact review commit in CI')
+    expect(sha).toMatch(/^[0-9a-f]{40}$/i)
+    await expect(page.getByTestId('review-preview-sha')).toContainText(sha)
     const before = await page.evaluate(() => localStorage.getItem('kyotsu-step-store'))
 
     await expect(page.getByTestId('review-mark-formula-r3-q07-x2coef')).toContainText('確認①')

@@ -36,3 +36,7 @@ Status: **implemented in isolated review branch; awaiting engineering CI and the
 - Verify preview source hash, gate on/off, stale-content fail-closed behavior, representative wrong/correct answer operation.
 - `ENGINEERING-PASS` means the code passes checks; `USER-REVIEW-ACCEPTED` requires an actual user OK after using verified app links.
 - No preview deployment currently established. Do not guess a hostname or claim a live working URL.
+
+## Build-origin fingerprint
+
+The UI commit label must derive from the real Git checkout, **never** an old manually set Vercel `VITE_PREVIEW_COMMIT`. Vite compile-time substitution prefers `VERCEL_GIT_COMMIT_SHA` (Vercel system environment variables) and, only for GitHub Actions, `VITE_PREVIEW_COMMIT` from the PR head. Without a valid 40-hex SHA the review route renders `review-preview-mismatch`; it cannot be used for approval. For protected Vercel projects verify source head, label, access and exact marks before requesting OK.

@@ -36,7 +36,13 @@ export function ReviewTextbookPage() {
     </div>
   )
 
-  const previewSha = import.meta.env.VITE_PREVIEW_COMMIT || '未設定（確認不可）'
+  const previewSha = import.meta.env.VITE_PREVIEW_COMMIT || ''
+  if (!/^[0-9a-f]{40}$/i.test(previewSha)) return (
+    <div className="state-panel" data-testid="review-preview-mismatch">
+      <h1>このプレビューは確認に使えません</h1>
+      <p>検証対象のコミット番号が不明です。誤った版の承認を防ぐため、確認画面を停止しました。</p>
+    </div>
+  )
   const resolvedCount = target.itemIds.filter(id => {
     const item = reviewSection.items.find(candidate => candidate.id === id)
     return Boolean(item && isTextbookItemResolved(item, reviewProgress?.answers[id]))

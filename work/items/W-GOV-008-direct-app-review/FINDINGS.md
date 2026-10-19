@@ -58,3 +58,9 @@ Type: RISK
 Statement: Vercel can generate preview deployments without touching the GitHub Pages site, but service connection/publishing, audience access/protection and potentially commercial-use pricing still require authorization.
 Evidence: Vercel official preview, deployment protection and Hobby plan documentation; Vercel plugin suggestion is not a connection.
 Impact: no public or access-controlled review URLs yet; user hands-on acceptance must remain pending.
+
+## F-010 — 2026-10-19 JST
+Type: BLOCKER-CONNECTION / AUTHORITY
+Statement: The user explicitly approved the narrowly scoped Vercel/GitHub connection and no-login isolated reviewer URL with "IIYO" after the direct question. Live provider status still reports Vercel installed=false, despite prior suggestion. Explicit approval does not complete OAuth/app installation.
+Evidence: user reply, post-approval plugin search, PR #94 exact head 6fa112a4c3f8728f0fbf62fe7f0a847d1d1765b6 and all three successful CI checks.
+Impact: complete account connection first; do not present PR #94 or unmodified production Pages as learner acceptance, deploy somewhere else without approval, or initiate paid subscription. USER-REVIEW-NOT-READY remains correct.

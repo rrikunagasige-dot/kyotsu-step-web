@@ -23,7 +23,7 @@ The P-001/P-002 review prototype expected **a working live app deep link for eve
 ## App-side marks vs GitHub sheets
 
 - Stable IDs, not screen coordinates, identify each changed learning decision. On GitHub use `work/templates/BLOCK_REVIEW_SHEET.md`, real screenshot, `確認①` markers and expected content (2–4 points).
-- In P-002 the seven pilot marks were N01 Q07: `formula-r3-q07-x2coef` (-2), `formula-r3-q07-xcoef` (-3), `formula-r3-q07-const` (3); N03 Q10: `formula-r3-q10-p1` (6x²), `p2` (8x), `p3` (3x), `p4` (4). These mark IDs are historical prototypes **not** proof they run on this branch.
+- In P-002 the seven pilot marks were N01 Q07: `formula-r3-q07-x2coef` (-2), `formula-r3-q07-xcoef` (-3), `formula-r3-q07-const` (3); N03 Q10: `formula-r3-q10-p1` (6x²), `formula-r3-q10-p2` (8x), `formula-r3-q10-p3` (3x), `formula-r3-q10-p4` (4). These mark IDs are historical prototypes **not** proof they run on this branch.
 - Never include answer keys or future solutions in learner-visible state simply to create a marker. Keep preview-only gates and permanent learner progress isolated.
 - `細部OK` / `要修正` arrive in ChatGPT. The agent updates append-only Work records with response, date, screenshot asset link, full SHA, block IDs. Only then do accepted marks disappear **in the next screenshot/review output**, without deleting the accepted records.
 - A new affected SHA/revision invalidates only acceptance genuinely affected by the change; require new visual check and redo impacted cross-app QA. Never mutate earlier acceptance logs to pretend the new commit was reviewed.

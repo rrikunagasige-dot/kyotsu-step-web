@@ -16,6 +16,11 @@ Result: PASS. Base dependence is visible and preserved.
 Action: Implement approved W-GOV-008/P-003 policy/templates/protocol, SHA-gated capture workflow, governance assertion and separate Work records. Preserve historical §54/P-001 and P-002 provenance.
 Result: Changes confined to P-003 independent branch. Exact committed SHA / CI to be appended in later verification entries.
 
-## A-005 — pending until verified
-Action: Record final P-003 branch commit, CI, negative authorization checks and PR link.
-Result: PENDING (never infer user `細部OK` or `総チェックOK` from technical checks).
+## A-005 — 2026-10-19 JST
+Action: Save 16 scoped files on isolated branch, open draft PR #96 targeting P-001 only.
+Result: Commit `3f0ba0ad82b28ffe6f0fa7288006ebbe2ac558da`; compare vs P-001 shows 16 files, no app learner source or production/workflow publish change. PR https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/96.
+
+## A-006 — 2026-10-19 JST
+Action: Inspect GitHub Actions for exact commit and validate mandatory safeguards.
+Result: Repository Governance Check run `39201150414` SUCCESS; Review Preview Code Check run `39201150420` SUCCESS (typecheck and build). PR92-only E2E appropriately SKIPPED on governance branch. Manual new screenshot workflow NOT RUN, no public hosting. Main remained `154a16ff379321016f4692bb0ac6fe9a8a596214`. No user `細部OK` or `総チェックOK` presumed.
+

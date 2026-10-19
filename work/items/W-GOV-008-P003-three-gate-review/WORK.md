@@ -1,9 +1,10 @@
 # W-GOV-008 / P-003 — GitHub small blocks, cross audit and final app playthrough
 
-Status: VERIFYING
+Status: DONE
 Updated: 2026-10-19 JST
 Command: CMD-WORK-001「修正」 (exact user authorization)
 Proposal: P-003 APPROVED
+App-wide review label: FINAL-REVIEW-NOT-READY (separate from governance Work DONE)
 Branch: `work/W-GOV-008-P003-github-review-final-check-20261019` based on P-001 head `80e6fdc2151c1b7ac4a2aea181f82bd3cad81b43`
 Main source at approval: `154a16ff379321016f4692bb0ac6fe9a8a596214`; not modified.
 
@@ -39,3 +40,7 @@ User on 2026-10-19 explicitly approved **the complete P-003 proposal**, as CMD-W
 - Confirm review statuses distinguish `細部OK` from `総チェックOK`
 - No fake screenshots, no fake final app link, no user final acceptance claimed
 - Final product gate remains `FINAL-REVIEW-NOT-READY` until a separately authorized accessible candidate exists
+
+## Closure for this governance-only Work
+
+The documented P-003 rules and evidence helper passed repository governance check `39201150414` and code typecheck/build check `39201150420` on implementation SHA `3f0ba0ad82b28ffe6f0fa7288006ebbe2ac558da`. The app-wide Gate ③ is explicitly still `FINAL-REVIEW-NOT-READY` and P-002 interaction screenshots have not been collected on this branch. Work `DONE` **does not** assert user `総チェックOK`, product release readiness, or app changes.

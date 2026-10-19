@@ -15,7 +15,8 @@ Last completed Work: `W-GOV-005`, [governance PR #49](https://github.com/rrikuna
 - [ドラフト PR #101](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/101) で N04/N05/N06/N07/N08/N11/N13/N14 計8単元・原Word123マーカー・127選択段階・元図9点をレビュー専用として実装。旧6単元は変更せず、3教材テーマの並びと短い小見出しを保つ。
 - [一括ギャラリー](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/work/W-MATH-003-p003-r1-n04-n14-batch-20261019/work/items/W-MATH-003-numbers-expressions-creation/evidence/n04-n14-gallery/README.md) に、スマホ/PC全単元実画面と元図の表示時点を集約。原問の数学監査・画像SHA/KaTeX/全127操作/既存回帰をGitHub CIで検証。
 - `main` の基準HEAD `537c3cbf28d40f45228d8a0c4bdd20327136aa93` を変えない。Vercel・新ステージング・本番公開・課金・削除・統合は未承認。
-- **残るゲート**：ユーザー一括細部チェック、修正があれば当該ブランチで再検証、別途の実働アプリ全体総チェックと明示的公開/統合承認。画像は実アプリの代わりの公開リンクではない。Work `DONE` / `FINAL-APP-ACCEPTED` と混同禁止。
+- **2026-10-19 JST ユーザー承認**：「結構いいぞ。承認する！」で確認①〜⑧の実画面画像を**一括細部OK**として受け入れ。原問別の個別再確認は不要。
+- **残るゲート**：実際に動くアプリ全体の最終総チェック（未実施）。独立ブランチの動作URLはまだなく、新公開環境・Vercel・main統合・本番公開・課金の承認ではない。画像承認を `DONE` / `FINAL-APP-ACCEPTED` と混同しない。
 - 詳細 Work 記録：`work/items/W-MATH-003-numbers-expressions-creation/P-003-R1_IMPLEMENTATION_RECORD.md`。この日付の段落より下の旧チェックポイントは履歴として保持する。
 
 ## Next Work policy

@@ -27,7 +27,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm run typecheck
       # Existing unrelated repository-wide lint debt is outside this approved task.
-      - run: pnpm exec eslint src/review/reviewTargets.ts src/review/reviewTargets.test.ts src/review/ReviewTextbookPage.tsx src/pages/TextbookUnitPage.tsx e2e/review-preview-gate.spec.ts e2e/review-p003-visual-evidence.spec.ts e2e/review-p003-cross-block.spec.ts --max-warnings=0
+      - run: pnpm exec eslint src/review/reviewTargets.ts src/review/reviewTargets.test.ts src/review/ReviewTextbookPage.tsx src/pages/TextbookUnitPage.tsx e2e/review-preview-gate.spec.ts e2e/review-p003-visual-evidence.spec.ts e2e/review-p003-cross-block.spec.ts e2e/review-p003-related-mobile.spec.ts --max-warnings=0
       # The legacy global suite has two unrelated catalog-count assertion failures.
       - run: pnpm exec vitest run src/review/reviewTargets.test.ts src/data/textbook/math/numbers/n01Lesson.test.ts src/data/textbook/math/numbers/numbersPilots.test.ts src/data/textbook/math/mathReviewIntegrity.test.ts
       - run: pnpm run build
@@ -52,6 +52,14 @@ jobs:
           E2E_USE_PREVIEW: '1'
         run: pnpm exec playwright test e2e/review-p003-cross-block.spec.ts --project=mobile-chromium --project=desktop-chromium
 
+      # P-003 Gate ②: inspect all math/choice right ends while actually solving
+      # related approved review lessons at 320px, then completed view at 390px.
+      - name: Related math creation mobile formula audit
+        if: ${{ github.base_ref == 'work/W-GOV-008-P002-marked-review-20261019' }}
+        env:
+          E2E_REVIEW_RELATED: '1'
+          E2E_USE_PREVIEW: '1'
+        run: pnpm exec playwright test e2e/review-p003-related-mobile.spec.ts --project=mobile-chromium
       # P-003 pilot: screenshot genuine, numbered in-app marks from exact PR head.
       # Read-only GitHub-hosted runner, no Pages/Vercel publish or branch push.
       - name: Capture seven actual marked decisions as screenshot evidence

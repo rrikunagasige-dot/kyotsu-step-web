@@ -26,7 +26,7 @@ Unresolved correction queue: no confirmed wrong answer or app defect in N01/N03 
 ## Root-cause sweep / correction recursion
 Origin: Pilot F-005/F-203 screen-width legibility of horizontally long N01 formula.
 Applicability: other math textbook review-only long formula sequences, potential but not proven.
-Impact result: N01 **CONFIRMED limited single-frame legibility** (CSS provides intentional horizontal scrolling); N03 **NOT-AFFECTED** among the seven marks; N02/N09/N10/N12 other approved creation candidates **UNVERIFIED on actual mobile screens** after static source scan.
+Impact result: N01 **CONFIRMED limited single-frame legibility** (CSS provides intentional horizontal scrolling); N03 **NOT-AFFECTED** among the seven marks; N02/N09/N10/N12 other approved creation candidates **UNVERIFIED on actual mobile screens** after static source scan. Verification-only Playwright sweep is staged in `e2e/review-p003-related-mobile.spec.ts` and scoped workflow; see `IMPACT_SCREEN_SWEEP.md`. Do not claim pass before exact GitHub Actions result.
 Proposed repair: none implemented, no exact approval for learner UI change. If user marks `要修正`, open separate CMD-WORK-001 proposal before editing.
 Visited tuple: `(long-inline-formula, N01-Q07, 3ffe0bab97da9a509d7fe21ce7aa9dd78b52b141)`; N03 inspected as comparison.
 Lesson dedup: see `docs/MASTER_APP_LESSONS.md` §§16,21,26 and `docs/MATH_RENDERING_RULES.md` §13; avoid duplicating these lessons.

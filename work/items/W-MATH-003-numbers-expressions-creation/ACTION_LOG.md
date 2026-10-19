@@ -182,3 +182,9 @@ Date: 2026-10-17
 Observed: Math setup hardcodes Chapter3; repository.listPublished excludes six review-status numbers lessons; PR #71 contains N02/N09 but was not in main/Pages.
 Action: Add three named Chapter1 topics and explicit six-unit review visibility; expose them in math learning setup, with progress and existing per-unit deep links; adjust Chapter1 H1/current-topic hierarchy, focused tests/CI. No main direct edits.
 Result: staged for CI and separate release PR; actual deploy evidence to follow.
+
+## A-032 — P-003-R1 Gate② formal audit ledger (2026-10-19 JST)
+Target: isolated branch at pre-record SHA `71c650c3167aae5bab1ca288feb7b1dbb53469da`; original code-head `aa1c6a748665f34462a08c2b4a1641d5164d5e92`.
+Action: Recovered CMD-ROOT-001 / CMD-WORK-002 / §12A–12B, verified live main and draft PR #101, checked math CI 39256098487 / governance 39256098473 / review check 39256098569 at current source head, inspected mapping Vitest, 127-step Playwright, Pixel7/desktop configs and main→branch diff. Created `CROSS_BLOCK_AUDIT_P-003-R1.md` on the existing branch.
+Source restriction: The exact teacher Word was found by Library metadata (212863 bytes), but the direct document read returned 403 Forbidden; did not bypass access control or claim full mathematical source reconciliation.
+Result: Gate① user's eight screenshot acceptance preserved; Gate② **IN-PROGRESS**, outstanding cells explicitly **UNVERIFIED**; Gate③ **FINAL-REVIEW-NOT-READY**. No learner app code/source/approval/release modified.

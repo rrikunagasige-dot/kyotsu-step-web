@@ -49,3 +49,8 @@ Result: governance run 39190685740 SUCCESS; preview build run 39190685725 SUCCES
 Action: Survey hosting integration without connecting or deploying.
 Target: Vercel plugin directory and official preview/deployment-protection information.
 Result: Vercel connector eligible but not installed/connected; a plugin suggestion was shown. No account, hosting project, public URL or paid plan created. User's separate explicit permission remains required.
+
+## A-011 — 2026-10-19 JST
+Action: Receive separate express hosting approval and re-check connection status.
+Target: direct user reply "IIYO" to the exact Vercel/GitHub link-accessible preview authorization question; PR #94 candidate 6fa112a4c3f8728f0fbf62fe7f0a847d1d1765b6.
+Result: Vercel/GitHub connection and a no-login, link-accessible isolated preview specifically authorized; user did NOT approve billing, paid plans, merging to main or GitHub Pages release. The Vercel integration remains NOT INSTALLED/NOT CONNECTED (confirmed after approval); a connection action was offered to the user. Do not mark USER-REVIEW-READY. All PR #94 CI checks completed SUCCESS, including full Math textbook regression; PR #93 governance and preview-code checks completed SUCCESS, full regression ongoing.

@@ -42,7 +42,13 @@ test.describe('W-GOV-008/P-003 Gate ② — two-block cross-audit, no app public
     const before = await page.evaluate(() => localStorage.getItem('kyotsu-step-store'))
     const first = 'n03-r3-q10-p1'
     await page.getByTestId('textbook-item-' + first).click()
-    await page.getByTestId('inline-choice-panel-' + first).getByRole('button', { name: '6x', exact: true }).click()
+    const panel = page.getByTestId('inline-choice-panel-' + first)
+    const offered = await panel.locator('.reading-choice-option').evaluateAll((buttons) =>
+      buttons.map((button) => button.getAttribute('aria-label') ?? ''),
+    )
+    const wrong = offered.find((choice) => choice !== '6x^2')
+    if (!wrong) throw new Error('N03 first blank had no incorrect option')
+    await panel.getByRole('button', { name: wrong, exact: true }).click()
     await expect(page.getByTestId('textbook-item-' + first)).toBeVisible()
     await expect(page.getByTestId('review-mark-formula-r3-q10-p2')).toHaveCount(0)
     await page.getByTestId('textbook-item-' + first).click()

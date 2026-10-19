@@ -14,3 +14,6 @@ User's `大丈夫だよ。そのまま続けて` is general positive feedback af
 
 ## F-205 — PENDING new CI coverage
 Expanded math source/static and Playwright 320px/wrong/retry tests require a new successful GitHub Actions run; failure is not yet observed.
+
+## F-206 — CONFIRMED test-only assumption error, not an app defect
+Expanded CI at `637132fb9fa0772b8a721bfdfa9a154ac5aecaad` / run `39206109937` failed because test demanded visible option `6x` without checking `getTextbookChoices` desired medium count 3. The learner source defines three distractors but presents two after stable shuffle; `6x` may be omitted. The corrected test selects an actually rendered wrong choice by its aria-label and then verifies the error state/retry. No lesson/state change authorized or made. Retest pending.

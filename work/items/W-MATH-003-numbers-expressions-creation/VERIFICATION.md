@@ -263,3 +263,10 @@ PR/CI evidence to be recorded after connector confirmation.
 Date: 2026-10-17
 Gates: exactly three Chapter1 thematic cards and six source-audited unit IDs; other review units hidden, status review preserved; existing Chapter3 sets and learner state unaffected; N01/N03/N10/N12 source unchanged; N02/N09 26 choices, wrong-answer image gate, KaTeX/320px mobile and reload persistence; physics/practice regressions; TypeScript/unit/build and governance success; main integration+Pages URL and direct browser check.
 Status at authoring: PENDING actual CI, merge and public verification evidence.
+
+## V-038 — P-003-R1 formal Gate② audit (2026-10-19 JST)
+Scope: N04/N05/N06/N07/N08/N11/N13/N14, 123 Word markers / 127 guided actions, on independent draft PR #101 pre-evidence SHA `71c650c3167aae5bab1ca288feb7b1dbb53469da`, app-code SHA `aa1c6a748665f34462a08c2b4a1641d5164d5e92`.
+- PASS with first-party evidence: [Math CI 39256098487](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39256098487) full success (typecheck, lint, Vitest, build, 127 correct-path E2E mobile+desktop, N01/N03/N12/N02/N09, Physics textbook, Math Practice setup). [Governance 39256098473](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39256098473) success. Original figure PNG SHA tests; no existing six lesson files touched.
+- UNVERIFIED: independent all-123 source/math audit, full 127-step prose/leak audit, wrong/retry behavior for all new units, explicit new-unit 320/390px widths, cross-unit review progress isolation. Original teacher Word contents access returned 403 Forbidden. `P-003-R1_IMPLEMENTATION_RECORD.md` references two unavailable source/design audit documents.
+- No confirmed new content defect and no authorization to alter original source or publish. User Gate① accepted as screenshot review only.
+- Formal ledger: `CROSS_BLOCK_AUDIT_P-003-R1.md`. **Gate② IN-PROGRESS / NOT CROSS-VERIFIED; Gate③ FINAL-REVIEW-NOT-READY**. Not eligible for app-wide user play handoff.

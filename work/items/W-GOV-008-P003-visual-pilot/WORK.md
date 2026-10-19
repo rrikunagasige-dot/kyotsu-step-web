@@ -1,6 +1,7 @@
 # W-GOV-008/P-003 — GitHub actual-image review pilot for P-002 seven marks
 
-Status: VERIFYING (technical images captured; user small-block acceptance pending)
+Status: VERIFYING
+Technical evidence: PASS; human small-block acceptance pending
 Updated: 2026-10-19 JST
 Review label: BLOCK-CHECK-PENDING
 Branch: `work/W-GOV-008-P003-pilot-visual-sheets-20261019`

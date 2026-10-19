@@ -1,15 +1,17 @@
 # 関連作成物のスマホ数式影響確認 — Gate ②
 
-Status: IN-PROGRESS / four related review units UNVERIFIED pending exact GitHub Actions result.
+Status: PASS (scoped rendered-browser right-end accessibility of four related review lessons); independent source OMML and whole-app Gate ②/③ remain UNVERIFIED.
+Exact tested candidate SHA: `4212ee2a851e8eaa6fb34ac390f9b6e7a9026f50`.
+GitHub Actions: app [39209590187](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39209590187) SUCCESS; governance [39209590046](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39209590046) SUCCESS.
 Approved scope: W-GOV-008/P-003 Gate ② cross-artifact impact of N01 long inline formula. Prior math lesson authoring is W-MATH-003/P-001; do not re-author it.
 Candidate before this verification-only change: `2c3f1716947315f64ba8d438eaea7b0b38944bbc`.
 
 | Unit | Test scope | Initial evidence | Result |
 | --- | --- | --- | --- |
-| N02 | All learner decisions and formula/choice horizontal ends at 320px; completed 390px | Static source review, long grouped-polynomial terms | UNVERIFIED (CI pending) |
-| N09 | Same, including actual N09 image/answer flow | Static source review, long radical/negative-number expressions | UNVERIFIED (CI pending) |
-| N10 | Same, including rationalization and multi-line choices | Static source review, long conjugate/radical expressions | UNVERIFIED (CI pending) |
-| N12 | Same, including all conditional inequalities and money formulas | Static source review, long expressions and original source figures | UNVERIFIED (CI pending) |
+| N02 | 12 decisions; 13 source formula blocks; 51 visible formula/choice spans inspected at 320px, 13 at completed 390px | Actual ordinary route, rendered inner scroll and root-width checks | PASS (scoped) |
+| N09 | 18 decisions; 19 source formula blocks; 80 visible formula/choice spans at 320px, 19 at completed 390px | Actual ordinary route, radical/negative terms; figure fidelity excluded | PASS (scoped) |
+| N10 | 21 decisions; 20 source formula blocks; 84 visible formula/choice spans at 320px, 20 at completed 390px | Actual ordinary route, long radical and conjugate choices | PASS (scoped) |
+| N12 | 35 decisions; 32 source formula blocks; 139 visible formula/choice spans at 320px, 32 at completed 390px | Actual ordinary route, long inequality and money formulas; figure fidelity excluded | PASS (scoped) |
 
 ## Method and interpretation
 - Browser automation visits ordinary `/#/learning/textbook/math-numbers-expressions-nXX` routes, clears only ephemeral test browser localStorage, answers all items using existing repository answer values solely to reveal every later screen, and does not assert independent mathematical correctness.
@@ -17,3 +19,9 @@ Candidate before this verification-only change: `2c3f1716947315f64ba8d438eaea7b0
 - If a test fails, check selectors/assumptions before calling it an app defect. Preserve failed-run evidence and re-run corrected verifier without lesson edits. If a genuine lesson/layout bug is established, log the exact reproduction and request a new CMD-WORK-001 approval before changing learner UI/source.
 - No `src/` edits, original source edits, deploy, Vercel, merge, production/public environment or billable action in this evidence run.
 - The independent fresh original DOCX math/OMML comparison is still UNVERIFIED after a 403 source-page read. Do not bypass permission or promote Gate ②/③ based on these tests.
+
+## Exact CI outcome / classification
+- `e2e/review-p003-related-mobile.spec.ts` mobile Chromium **4/4 PASS (17.7 s)**; all 86 decisions unlocked with existing keys; 84/84 source formula blocks observed by the end at both 320px and 390px; each visible formula/choice line scrolled to its rightmost bound, with endpoint visibility, root-width <= 1px, and no `.katex-error`.
+- Existing N01/N03 review interaction and cross-block E2E, 27 scoped Vitest, typecheck, eslint, build and authentic screen capture steps all PASS in same run. No learner UI/source changes were introduced.
+- This is **NOT proof of one-frame full expression fit, visual non-overlap in every animation, independent answer correctness, or exact Word OMML fidelity**. On narrow phones some equations require their intended inner horizontal scrolling; their right ends were accessible. No confirmed new cross-artifact regression in these tested surfaces.
+- `main` rechecked unchanged at `154a16ff379321016f4692bb0ac6fe9a8a596214`. No merge, production release, new hosting, Vercel action or payment.

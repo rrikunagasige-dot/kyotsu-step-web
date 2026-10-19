@@ -23,10 +23,12 @@ Unresolved correction queue: no confirmed wrong answer or app defect in N01/N03 
 | Progress/persistence/reset | both isolated review routes | PASS | Existing and new E2E assert unchanged `kyotsu-step-store` even after wrong/retry; reload resets ephemeral review answers: 39206502799 | F-202/F-207 |
 | Previous approved work / acceptance | P002/P003 source and snapshots | PASS (Gate ① named marks only) | Exact user `細部OK N01 Q07` + `細部OK N03 Q10`, original app capture SHA and immutable GitHub sheets; pilot `ACCEPTANCE_LOG.md`. Separate source/mobile/global acceptance remains pending. | F-204 |
 
+| Related created units / ordinary phone screens | N02/N09/N10/N12 | PASS (right-end access, NOT full visual/source acceptance) | Exact SHA `4212ee2a851e8eaa6fb34ac390f9b6e7a9026f50`, [app 39209590187](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39209590187) mobile Chromium 4/4: 86 choices answered, 84 formula blocks scanned at 320px/390px; no document overflow / KaTeX errors, each rendered math/choice right end reachable. One-screen fitting and fresh OMML still UNVERIFIED. | F-208/F-213 |
+
 ## Root-cause sweep / correction recursion
 Origin: Pilot F-005/F-203 screen-width legibility of horizontally long N01 formula.
 Applicability: other math textbook review-only long formula sequences, potential but not proven.
-Impact result: N01 **CONFIRMED limited single-frame legibility** (CSS provides intentional horizontal scrolling); N03 **NOT-AFFECTED** among the seven marks; N02/N09/N10/N12 other approved creation candidates **UNVERIFIED on actual mobile screens** after static source scan. Verification-only Playwright sweep is staged in `e2e/review-p003-related-mobile.spec.ts` and scoped workflow; see `IMPACT_SCREEN_SWEEP.md`. Do not claim pass before exact GitHub Actions result.
+Impact result: N01 **CONFIRMED limited single-frame legibility** (CSS provides intentional horizontal scrolling); N03 **NOT-AFFECTED** among the seven marks; N02/N09/N10/N12 other approved creation candidates **PASS for actual 320px inner-scroll right-end accessibility and 390px completed reflow** under full normal lesson interaction, GitHub Actions app run `39209590187` / SHA `4212ee2a851e8eaa6fb34ac390f9b6e7a9026f50`. No root horizontal overflow or KaTeX errors; one-frame fit and fresh original-Word source comparison remain unverified. See `IMPACT_SCREEN_SWEEP.md`.
 Proposed repair: none implemented, no exact approval for learner UI change. If user marks `要修正`, open separate CMD-WORK-001 proposal before editing.
 Visited tuple: `(long-inline-formula, N01-Q07, 3ffe0bab97da9a509d7fe21ce7aa9dd78b52b141)`; N03 inspected as comparison.
 Lesson dedup: see `docs/MASTER_APP_LESSONS.md` §§16,21,26 and `docs/MATH_RENDERING_RULES.md` §13; avoid duplicating these lessons.
@@ -36,7 +38,7 @@ Lesson dedup: see `docs/MASTER_APP_LESSONS.md` §§16,21,26 and `docs/MATH_RENDE
 - [x] Real GitHub screenshot assets tied to full tested source SHA
 - [x] No source/content or public app updates
 - [x] Explicit per-block `細部OK` in pilot `ACCEPTANCE_LOG.md` (visual only; not final-app acceptance)
-- [x] Latest governance PASS `39207997979` and application PASS `39207997970` at exact SHA `2249e8a66aab6519f83e5b74f144e6566d455d04`, including new scroll-to-end test; original independent OMML recheck and creation-impact screen sweep remain UNVERIFIED
+- [x] Latest exact SHA `4212ee2a851e8eaa6fb34ac390f9b6e7a9026f50`: governance PASS `39209590046`, app PASS `39209590187`, including original N01/N03 + four related-unit phone right-end sweep. Original independent Word/OMML recheck remains UNVERIFIED; no Gate ② `CROSS-VERIFIED` promotion.
 - [ ] Release candidate and actual verified app link (separate final phase, not yet authorized)
 
 **Never treat this in-progress agent audit as final app acceptance.**

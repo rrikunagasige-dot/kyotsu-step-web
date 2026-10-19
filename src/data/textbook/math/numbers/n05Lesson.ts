@@ -44,7 +44,7 @@ const content = makeReviewSteps('n05', [
     marker:'check',
     steps:[
       {q:16,lead:'5x²−2x−3を(x+r)(5x+s)へ戻す。r,sはこれから決める数である。',expr:'(x+r)(5x+s)',prompt:'一次係数と定数項から二条件を選ぼう。',answer:'s+5r=-2,\\quad rs=-3',wrong:['s+5r=-3,\\quad rs=-2','s+r=-2,\\quad rs=-3','s-5r=-2,\\quad rs=3'],hint:'展開した一次項はsx+5rx、定数はrs。',after:'二数の積が負であることから、符号の組を絞れる。'},
-      {q:17,lead:'条件rs=−3に注目し、rとsの符号を判断する。',expr:'rs=-3',prompt:'二数の符号について正しい判断を選ぼう。',kind:'text',answer:'rとsは異符号',wrong:['rとsはともに正','rとsはともに負','符号は必ず両方0'],hint:'二数の積が負になるのはどんな符号の組か。',after:'積の符号だけでは、どちらが正かまではまだ決まらない。'},
+      {q:17,lead:'直前に得た積の条件rs=−3から、二数の符号を判定しよう。判断には条件そのものを根拠として使う。',expr:'rs=-3',prompt:'rとsの符号関係と、その理由を組にして選ぼう。',kind:'text',answer:'rとsは異符号（rs=-3<0だから）',wrong:['rとsは同符号（rs=-3<0だから）','rとsは異符号（r+s=-2だから）','rとsはともに負（rs=-3だから）'],hint:'積の正負と、二数の符号の組合せを対応させよう。和の条件だけでは理由にならない。',after:'rs=−3<0なのでrとsは異符号。どちらが正かは和の条件も使って決める。'}
       {q:18,lead:'符号の異なる因子のうち、s+5r=−2も満たす組を探す。',expr:'5x^2-2x-3',prompt:'両条件に一致する因数分解を選ぼう。',answer:'(x-1)(5x+3)',wrong:['(x+1)(5x-3)','(x-3)(5x+1)','(x-1)(5x-3)'],hint:'r=−1、s=3ならs+5rを計算して確認できる。',after:'積と一次係数の両方を満たすか、最後に逆展開して確かめる。'},
       {q:19,lead:'3a²b−12b³では、すべての項に共通する係数と文字を最初に外へ出す。',expr:'3a^2b-12b^3',prompt:'共通因数でくくった最初の形を選ぼう。',answer:'3b(a^2-4b^2)',wrong:['3(a^2-4b^2)','3b(a^2-4b)','3b(a^2+4b^2)'],hint:'3とbが両項に掛かる。−12b³÷3bを計算する。',after:'括弧内にまだ二つの平方の差が残っている。'},
       {q:20,lead:'共通因数を残したまま、a²−(2b)²を和と差の積へ変える。',expr:'3b(a^2-4b^2)',prompt:'できるところまで因数分解しよう。',answer:'3b(a-2b)(a+2b)',wrong:['3b(a-4b)(a+4b)','3b(a-2b)^2','3b(a^2-2b)(a+2b)'],hint:'4b²=(2b)²。平方差A²−B²の公式を使う。',after:'共通因数を外に出す→括弧内の形を見る→さらに因数分解する、という順序が有効である。'},
@@ -55,7 +55,7 @@ const content = makeReviewSteps('n05', [
   {id:'n05-f02',q:15,when:'after'},
 ])
 const rawN05 = {
-  schemaVersion:'1.1' as const, unitId:'math-numbers-expressions-n05', revision:1,
+  schemaVersion:'1.1' as const, unitId:'math-numbers-expressions-n05', revision:2,
   status:'review' as const, subject:'math-1a' as const,
   chapter:{chapterId:'math-ch01-numbers-expressions',chapterNumber:'1',chapterTitle:'数と式',unitCode:'1NUM',orderInChapter:5,sourcePages:[11,12,13,14]},
   title:'展開を逆にたどり、積の形を見つける',

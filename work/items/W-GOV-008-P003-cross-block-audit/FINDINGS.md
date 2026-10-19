@@ -17,3 +17,9 @@ Expanded math source/static and Playwright 320px/wrong/retry tests require a new
 
 ## F-206 — CONFIRMED test-only assumption error, not an app defect
 Expanded CI at `637132fb9fa0772b8a721bfdfa9a154ac5aecaad` / run `39206109937` failed because test demanded visible option `6x` without checking `getTextbookChoices` desired medium count 3. The learner source defines three distractors but presents two after stable shuffle; `6x` may be omitted. The corrected test selects an actually rendered wrong choice by its aria-label and then verifies the error state/retry. No lesson/state change authorized or made. Retest pending.
+
+## F-207 — CONFIRMED expanded cross-block technical pass
+At `9a379173ffc91e92b2c5014b1013b7299f68fce9`, run `39206502799` passed the full approved verification workflow: 27 scoped Vitest, typecheck, lint, build, existing interactive E2E, six new cross-block E2E executions across mobile/desktop, and seven screenshots captured at two viewports. N03 actually chosen visible incorrect option stays unresolved, reveals hint only after wrong answer, and requires a correct retry to unlock future product; regular /problems route has no marker. No saved learner progress changed.
+
+## F-208 — UNVERIFIED related long-formula surface outside seven targets
+Repository-only scan inspected N02/N09/N10/N12 math textbook review lesson formula fragments. These can contain wider derivations (notably N02 grouped polynomials, N10 radicals, N12 inequalities), but no equivalent actual mobile capture was made; no confirmed same-root defect or license to mass-repair. Track for future creation/repair preflight, with Master §§16/21/26 and Math Rendering §13 as existing deduplicated authority.

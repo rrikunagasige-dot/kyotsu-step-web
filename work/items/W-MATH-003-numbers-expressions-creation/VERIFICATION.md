@@ -263,3 +263,10 @@ PR/CI evidence to be recorded after connector confirmation.
 Date: 2026-10-17
 Gates: exactly three Chapter1 thematic cards and six source-audited unit IDs; other review units hidden, status review preserved; existing Chapter3 sets and learner state unaffected; N01/N03/N10/N12 source unchanged; N02/N09 26 choices, wrong-answer image gate, KaTeX/320px mobile and reload persistence; physics/practice regressions; TypeScript/unit/build and governance success; main integration+Pages URL and direct browser check.
 Status at authoring: PENDING actual CI, merge and public verification evidence.
+
+## V-038 — P-003 raw source coverage, solutions and figure byte audit (DESIGN)
+Date: 2026-10-18
+PASS source identity: original DOCX = 212863 bytes; SHA-256 93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa.
+PASS design scope: 8 listed units, exact 22+20+16+14+12+14+9+16=123 original question markers, contiguous per-unit sequence; eight 123-row independent candidate solutions and cognitive actions. Overall 208/233 labels audited, 25 advanced markers outstanding.
+PASS design traceability: 39 teaching sections; 123 candidate sourceId-to-node references; nine original figure image names and SHA-256, preliminary before/after gates, 3 existing topic cards and 2–3 title plan. This is mathematical/detailed design QA, not user-facing textbook acceptance.
+UNVERIFIED: answers against an author/publisher answer booklet, image legibility/accurate cropping, completed individualized learner copy and distractors, source redistribution rights, 8 new app modules, CI, browser/mobile QA, real app link, user exact P-003 approval, main merge and Pages. Do not present as passed or published.

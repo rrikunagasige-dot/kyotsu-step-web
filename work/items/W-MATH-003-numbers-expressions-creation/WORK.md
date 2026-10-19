@@ -75,3 +75,13 @@ Approval evidence: Immediately after being offered the two exact N02/N09 learner
 
 ## 2026-10-17 — P-002 approved: Math chapter-1 review learner navigation and Pages
 User corrected command classification to 作成, and replied 「いいよ続け」 in direct response to the revised P-002 six-unit/three-theme Pages review proposal. Approved scope and do-not-touch appear in P-002_LEARNER_CATALOG_PAGES_RELEASE.md. Six source-audited units remain review, not published. A new branch/PR integrates staged PR #71 and gates merge/Pages on QA. W-MATH-003 remains VERIFYING pending real learner acceptance.
+
+## 2026-10-18 — P-003 proposed: N04〜N14 eight-unit / 123-source bulk design (newest)
+
+User requested 「一気にN04からN14までやろう」. Under CMD-WORK-002, recover raw Word again (212863 bytes / SHA-256 93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa) and scope eight missing units: N04 22, N05 20, N06 16, N07 14, N08 12, N11 14, N13 9, N14 16; sum 123 source question labels. N09/N10/N12 are already in live review scope and must remain unmodified.
+- Independent complete teacher-side solutions and cognitive-operation source map: N04_N14_SOURCE_SOLUTION_AUDIT.md (123/123 audited, not publisher-answer verified).
+- Learning dependency graph and detailed design: N04_N14_LEARNER_DESIGN_MAP.md (39 instructional segments, 123 mapped node IDs, nine unchanged original PNG hashes and gating).
+- Exact P-003 proposal: P-003_N04_N14_BATCH_CREATION_REVIEW.md (**PROPOSED / USER APPROVAL PENDING**).
+- Whole original source bookkeeping: existing 85 source labels + newly independently solved 123 = **208/233 audited**; remaining NE01+NE02 25 advanced markers. This does not mean 208 in-app choices or 8 new published units.
+- Keep the three learner theme cards with 2–3 subheadings each, preserve all six prior modules and 90 choices, and gate answer-filled original figures.
+- **No N04–N14 app code or live route yet.** Per CMD-WORK-002 first seek explicit review of this exact P-003, then pilot N04/N05, followed by the other six and QA; merge/Pages approval remains separate. W-MATH-003 stays VERIFYING.

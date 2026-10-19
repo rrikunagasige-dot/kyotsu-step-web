@@ -182,3 +182,13 @@ Date: 2026-10-17
 Observed: Math setup hardcodes Chapter3; repository.listPublished excludes six review-status numbers lessons; PR #71 contains N02/N09 but was not in main/Pages.
 Action: Add three named Chapter1 topics and explicit six-unit review visibility; expose them in math learning setup, with progress and existing per-unit deep links; adjust Chapter1 H1/current-topic hierarchy, focused tests/CI. No main direct edits.
 Result: staged for CI and separate release PR; actual deploy evidence to follow.
+
+## A-032 — Recover and audit eight remaining N04–N14 units
+Date: 2026-10-18
+Action: Re-identify canonical DOCX bytes/hash, extract original math via OMML-aware Word import, enumerate all 123 markers and derive 123 complete mathematical answers independently; recover and SHA-check nine N04–N14 original figures with source paths and planned reveal timing.
+Result: N04_N14_SOURCE_SOLUTION_AUDIT.md; source 208/233 markers independently audited in total. Source and application files not modified.
+
+## A-033 — Propose P-003 eight-unit learning design and stop before app implementation
+Date: 2026-10-18
+Action: Map 123 source IDs into 39 coherent mathematical teaching segments and source-to-thinking nodes, diagram no-leak policy, topic/subheading layout, pilot-first rollout and QA. Present P-003 exact approval boundary, preserve preexisting six review modules and all release permissions.
+Result: N04_N14_LEARNER_DESIGN_MAP.md + P-003_N04_N14_BATCH_CREATION_REVIEW.md in docs-only draft review change. Approval not assumed; no new app UI, preview or Pages deployment.

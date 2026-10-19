@@ -1,6 +1,6 @@
 # W-MATH-003 / P-003-R1 — 承認済み8単元の一括制作・検証記録
 
-Status: **IMPLEMENTED ON INDEPENDENT DRAFT BRANCH / USER CONSOLIDATED REVIEW PENDING**  
+Status: **IMPLEMENTED ON INDEPENDENT DRAFT BRANCH / USER CONSOLIDATED IMAGE REVIEW APPROVED / FULL APP WALKTHROUGH PENDING**  
 Date: 2026-10-19 UTC  
 Command: 最新ユーザー指示「N04〜N14は途中の個別承認で止めず、全部作成し最後に一括確認」。辞書 CMD-WORK-001「修正優先」の既存未解決事象照合後、承認済み W-MATH-003/P-003-R1 の CMD-WORK-002「作成」を実行。ユーザーによる新提案は出していない。
 
@@ -41,7 +41,7 @@ Command: 最新ユーザー指示「N04〜N14は途中の個別承認で止め�
 
 ## 受入ゲート（混同しない）
 1. 内部の原文・数学・UI・運用横断検証：全件実行／最新CI最終結果を確認。
-2. **細部一括チェック：まだユーザー未確認。** GitHub画像を8単元まとめて渡し、`確認①〜⑧：OK／要修正`を一回で受ける。個々の原問ごとにユーザーを止めない。
-3. **実際に動くアプリ全体の総チェック：未実施。** exact candidate commitで最初から最後までplayするためのアプリリンクが別途必要。新しい公開環境・Vercel環境の作成権限はないため、画像ギャラリーを本物のアプリURLと偽らない。
+2. **細部一括チェック：ユーザー承認済（2026-10-19 JST）。** GitHubの確認①〜⑧一括ギャラリーを案内し、陸君は「結構いいぞ。承認する！」と回答。これは8単元の画像に基づく一括細部承認であり、アプリ全体の実操作承認、公開承認、main統合承認ではない。
+3. **実際に動くアプリ全体の総チェック：未実施・次の受入ゲート。** exact candidate commitで最初から最後までplayするためのアプリリンクが別途必要。新しい公開環境・Vercel環境の作成権限はないため、画像ギャラリーを本物のアプリURLと偽らない。
 
 `main`への統合・本番公開・新公開環境・既存Vercelの削除・課金はすべて**未承認**。無断で実行しない。

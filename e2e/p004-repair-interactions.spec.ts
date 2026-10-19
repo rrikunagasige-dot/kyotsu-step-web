@@ -48,13 +48,19 @@ for (const [n, id] of repaired) {
           }
           expect(wrongButton, 'visible incorrect choice required').toBeDefined()
           await wrongButton!.click()
-          await expect(hint).toBeVisible()
+          // The canonical renderer intentionally closes the panel after a wrong
+          // attempt. The learner taps "もう一度" and then sees the hint.
+          await expect(page.getByTestId('inline-choice-panel-' + id)).toHaveCount(0)
           await expect(page.getByTestId('resolved-' + id)).toHaveCount(0)
+          await expect(trigger).toContainText('もう一度')
+          await trigger.click()
+          const retryPanel = page.getByTestId('inline-choice-panel-' + id)
+          await expect(retryPanel).toBeVisible()
+          await expect(hint).toBeVisible()
           if (save) {
             await page.screenshot({ path: 'e2e-evidence/p004-' + id + '-' + width + '-wrong.png' })
           }
-          // Retrying uses the same open panel and must keep the intended correct key.
-          correct = page.getByTestId('inline-choice-panel-' + id).getByRole('button', { name: item.answer, exact: true })
+          correct = retryPanel.getByRole('button', { name: item.answer, exact: true })
         }
         await correct.click()
         await expect(page.getByTestId('resolved-' + item.id)).toBeVisible()

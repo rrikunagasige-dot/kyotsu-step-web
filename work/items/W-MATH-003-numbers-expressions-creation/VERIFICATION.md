@@ -270,3 +270,13 @@ Scope: N04/N05/N06/N07/N08/N11/N13/N14, 123 Word markers / 127 guided actions, o
 - UNVERIFIED: independent all-123 source/math audit, full 127-step prose/leak audit, wrong/retry behavior for all new units, explicit new-unit 320/390px widths, cross-unit review progress isolation. Original teacher Word contents access returned 403 Forbidden. `P-003-R1_IMPLEMENTATION_RECORD.md` references two unavailable source/design audit documents.
 - No confirmed new content defect and no authorization to alter original source or publish. User Gate① accepted as screenshot review only.
 - Formal ledger: `CROSS_BLOCK_AUDIT_P-003-R1.md`. **Gate② IN-PROGRESS / NOT CROSS-VERIFIED; Gate③ FINAL-REVIEW-NOT-READY**. Not eligible for app-wide user play handoff.
+
+
+
+## V-039 — P-004 full CI PASS, pending two new correction findings and user review (2026-10-20)
+- Exact approved eight-block correction (CMD-WORK-001 修正) on branch `work/W-MATH-003-p003-r1-n04-n14-batch-20261019`. **No merge or deployment.**
+- [Math textbook CI 39343256282](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39343256282) conclusion **success**, exact source SHA `7fce8fa93511df5406602d1a3e0d3c6e1f3dfdf9`. Tests include TypeScript, ESLint, 188 Vitest tests, build, previous six-math content regressions, 127 new decision progression mobile/desktop, all 16 P-004 wrong/reopen/hint/correct with 320/390 screen overflow and persistence, physics and practice regressions. Governance and Review Preview Code Check on this SHA were successful.
+- Genuine P-004 48 screenshot assets at `d74b210187d90c98628271f173ed5cf795c3f964`, stamped with exact app code `e397d77e39168958499eafd8f7ad0025243ee7e6`. [Gallery](./evidence/n04-n14-gallery/README.md) has one-link user check with marks ①〜⑧. Revised P-004 human fine visual acceptance **PENDING**, previously accepted original gallery remains valid only for its earlier SHA.
+- Byte-identical nine original figures asserted in `newBatchCoverage.test.ts`. Legacy review-progress migration tests pass. Previous transient failures are preserved in CI run history.
+- **UNVERIFIED**: official external answer booklet, exhaustive independent derivation of all 123 keys/distractors and final cross-unit learner review. Root-cause sweep found 2 new confirmed source-leakage problems N06-Q11 and N14-Q05 **not corrected** because outside approved P-004; see ledger and P-004-R1 proposed scope.
+- **Gate② NOT CROSS-VERIFIED. Gate③ FINAL-REVIEW-NOT-READY.** No new app public link, PR merge, Pages deployment, Vercel changes or billing authorized.

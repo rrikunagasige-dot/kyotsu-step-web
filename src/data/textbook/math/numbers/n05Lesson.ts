@@ -34,7 +34,7 @@ const content = makeReviewSteps('n05', [
     steps:[
       {q:12,lead:'(px+q)(rx+s)では、最初どうし・交差どうし・最後どうしを掛ける。',expr:'(px+q)(rx+s)',prompt:'三つの係数が見える形へ展開しよう。',answer:'prx^2+(ps+qr)x+qs',wrong:['prx^2+(pq+rs)x+qs','prx^2+(ps-qr)x+qs','prx^2+psx+qs'],hint:'一次の積はpx×sとq×rxの二組。',after:'この交差する二つの積を足す考えが、たすき掛けの根拠になる。'},
       {q:13,lead:'4x²+7x+3になるためには、二次、一次、定数の三つの係数が一致しなければならない。',expr:'4x^2+7x+3',prompt:'p,q,r,sについて必要な三条件を選ぼう。',answer:'pr=4,\\quad ps+qr=7,\\quad qs=3',wrong:['pr=4,\\quad ps+qr=3,\\quad qs=7','pr=4,\\quad pq+rs=7,\\quad qs=3','pr=7,\\quad ps+qr=4,\\quad qs=3'],hint:'二次の積・交差項の和・最後の積を順番に比べる。',after:'両端の積だけが合っても、中央の係数が不一致なら因数分解にはならない。'},
-      {q:14,lead:'原図のA・B・C候補で、斜めに掛けた二つの積の和を比べる。',prompt:'A、B、Cの一次係数をこの順に選ぼう。',answer:'8,\\quad 7,\\quad 13',wrong:['7,\\quad8,\\quad13','8,\\quad13,\\quad7','8,\\quad7,\\quad12'],hint:'図の左右の組を縦ではなく斜めに掛け、それぞれ足す。',after:'狙う一次係数は7なので、これに一致する候補だけが残る。'},
+      {q:14,lead:'原Wordの表の三候補を実際の積として並べる。Aは(2x+1)(2x+3)、Bは(x+1)(4x+3)、Cは(x+3)(4x+1)。原図の交差積をそれぞれ足そう。',exprLines:['\\text{候補 A: }(2x+1)(2x+3)','\\text{候補 B: }(x+1)(4x+3)','\\text{候補 C: }(x+3)(4x+1)'],prompt:'A、B、Cの一次係数をこの順に選ぼう。',answer:'8,\\quad 7,\\quad 13',wrong:['7,\\quad8,\\quad13','8,\\quad13,\\quad7','8,\\quad7,\\quad12'],hint:'図の左右の組を縦ではなく斜めに掛け、それぞれ足す。',after:'狙う一次係数は7なので、これに一致する候補だけが残る。'},
       {q:15,lead:'三条件を満たす候補を選び、実際の一次式の積へ戻す。',expr:'4x^2+7x+3',prompt:'原図の候補と因数分解の組を選ぼう。',answer:'(x+1)(4x+3)',wrong:['(x+3)(4x+1)','(2x+1)(2x+3)','(x-1)(4x-3)'],hint:'x×3と1×4xの和は7x。',after:'ここまで確かめた後で、完成形の原図を開いて斜めの積を逆展開で照合する。'},
     ],
   },
@@ -66,7 +66,7 @@ const rawN05 = {
   sections:[{id:'lesson',number:'05',title:'本文',role:'concept' as const,
     description:'和から積へ戻るとき、各係数の一致を確かめる。',
     figures:[
-      {id:'n05-f01',src:'/assets/math/textbook/numbers/n05-f01.png',alt:'三つの係数候補A、B、Cを斜めの線で結んだ元の未完成たすき掛け図。',caption:'斜めに掛けた積の和を、候補ごとに確かめよう。',overlays:[]},
+      {id:'n05-f01',src:'/assets/math/textbook/numbers/n05-f01.png',alt:'係数p、q、r、sを斜めの矢印で結び、交差積を考える元の一般たすき掛け図。',caption:'斜めに掛けた積の和を、候補ごとに確かめよう。',overlays:[]},
       {id:'n05-f02',src:'/assets/math/textbook/numbers/n05-f02.png',alt:'正しい組を選んだ後に確認する、原Wordの完成たすき掛け図。',caption:'ここまでの判断を完成図で検算する。',overlays:[]},
     ], readingFlow:content.readingFlow,items:content.items}],
 }

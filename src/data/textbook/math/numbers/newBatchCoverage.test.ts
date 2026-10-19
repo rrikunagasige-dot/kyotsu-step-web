@@ -90,6 +90,16 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
     expect(index('13', 'n13-show-n13-f01')).toBeLessThan(index('13', 'n13-formula-05'))
   })
 
+  it('shows the actual three source-table sashigake candidates before Q14, not just a generic diagram', () => {
+    const section = mathTextbookUnits.find(u => u.unitId.endsWith('n05'))!.sections[0]
+    const candidates = section.readingFlow.filter(b => b.type === 'formula' && b.id.startsWith('n05-source-14-'))
+    expect(candidates).toHaveLength(3)
+    const copy = JSON.stringify(candidates)
+    for (const factor of ['(2x+1)(2x+3)', '(x+1)(4x+3)', '(x+3)(4x+1)']) expect(copy).toContain(factor)
+    const q14 = section.readingFlow.findIndex(b => b.id === 'n05-formula-14')
+    expect(section.readingFlow.findIndex(b => b.id === 'n05-source-14-3')).toBeLessThan(q14)
+  })
+
   it('has four distinct authored choices and KaTeX-valid formulas for every decision', () => {
     for (const [n] of specs) {
       const unit = mathTextbookUnits.find(u => u.unitId.endsWith('n' + n))!

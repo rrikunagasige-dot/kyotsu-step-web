@@ -42,6 +42,9 @@ test('theme navigation and stable N02/N09 deep links show the real source lesson
   await expect(page.getByTestId('textbook-current-topic')).toContainText('分数と小数で、同じ数を表す')
   await expect(page.getByTestId('textbook-item-n07-01')).toBeVisible()
 
+  await page.goto(appRoute('/learning/textbook/math-numbers-expressions-n09'))
+  await expect(page.getByTestId('textbook-item-n09-01')).toBeVisible()
+
   await page.goto(appRoute('/learning/textbook/math-numbers-expressions-n02'))
   await expect(page.getByRole('heading', { name: '式を整える', exact: true })).toBeVisible()
   await expect(page.getByTestId('textbook-current-topic')).toContainText('多項式の整理と加減')
@@ -52,9 +55,9 @@ test('theme navigation and stable N02/N09 deep links show the real source lesson
 
 test('chapter 1 keeps learner progress and shows unfinished topic on return', async ({ page }) => {
   await page.getByTestId('math-textbook-topic-numbers-real').click()
-  await page.getByTestId('textbook-item-n09-01').click()
+  await page.getByTestId('textbook-item-n07-01').click()
   await page.getByTestId('inline-choice-panel-n07-01').getByRole('button', { name: '0.75（小数第2位で終了）', exact: true }).click()
-  await expect(page.getByTestId('resolved-n09-01')).toBeVisible()
+  await expect(page.getByTestId('resolved-n07-01')).toBeVisible()
   await page.goto(appRoute('/learning/setup?subject=math-1a'))
   await page.reload()
   const topic = page.getByTestId('math-textbook-topic-numbers-real')

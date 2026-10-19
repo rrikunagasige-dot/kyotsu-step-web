@@ -11,6 +11,7 @@ export type GuidedStep = {
   q: number
   lead: string
   expr?: string
+  exprLines?: string[]
   stem?: string
   prompt: string
   answer: string
@@ -64,6 +65,9 @@ export function makeReviewSteps(
         id: prefix + '-lead-' + q, type: 'paragraph',
         parts: step.expr ? [T(step.lead), M(step.expr)] : [T(step.lead)],
       })
+      for (const [lineIndex, latex] of (step.exprLines ?? []).entries()) {
+        readingFlow.push({ id: prefix + '-source-' + q + '-' + (lineIndex + 1), type: 'formula', parts: [M(latex)] })
+      }
       readingFlow.push({
         id: prefix + '-formula-' + q,
         type: step.kind === 'text' ? 'paragraph' : 'formula',

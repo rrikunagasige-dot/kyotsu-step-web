@@ -24,3 +24,18 @@ Result: normative direct-preview gate, review template/setup, ephemeral route, t
 Action: Integrate a PR92-based pilot with exact new holes, test and verify actual hosted URLs.
 Target: separate review candidate based on PR #92, not production.
 Result: NOT STARTED; external provider connection/publication needs separate approval.
+
+## A-006 — 2026-10-19 JST
+Action: Create draft implementation PR #93 based on live main.
+Target: work/W-GOV-008-P001-review-link-20261019 head c69e56ad7b9787600e6513bd8a90a42354e3d891.
+Result: 19-file isolated draft; no main merge or Pages deployment.
+
+## A-007 — 2026-10-19 JST
+Action: Create PR #92-derived pilot without editing original PR #92.
+Target: work/W-GOV-008-P001-pr92-review-pilot-20261019 head 6fa112a4c3f8728f0fbf62fe7f0a847d1d1765b6, draft PR #94 based on original PR #92 head cb726d843263c645bfa08891cc5cef7375a82f8d.
+Result: 8 review-only code/test files; seven learner decision values remain in base.
+
+## A-008 — 2026-10-19 JST
+Action: Inspect first CI result and identify inherited validator syntax check.
+Target: governance run 39190305363.
+Result: FAILED — checker still required obsolete PR-fallback wording and one-line Status. Corrective validator update in the next feature-branch commit, preserving historical failure.

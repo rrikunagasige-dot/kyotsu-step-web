@@ -15,15 +15,15 @@ Result: PASS for approval and branch creation. Commit diff must be checked after
 ## V-003 — policy static contract
 Date: 2026-10-19 JST
 Check: Work OS §12A, instruction handoffs, master/memory lesson and template forbid PR-only acceptance, preserve independent release gate.
-Result: PREPARED; verify exact committed files and governance CI.
+Result: INITIAL FAIL — run 39190305363 enforced obsolete review-link markers; update validator and rerun. Do not hide failure.
 
 ## V-004 — code typecheck/preview build
 Check: Vite base override, review route guarded by VITE_REVIEW_PREVIEW, no persistent store writes.
-Result: NOT RUN until draft PR CI.
+Result: PASS for preview typecheck/build on PR #93 CI run 39190305343. Ordinary Math textbook CI was still running at this checkpoint.
 
 ## V-005 — PR92-derived real pilot
 Check: N01 Q07 4 decisions / N03 Q10 5 decisions, seven new calculations, original figure, wrong/correct, reload, 320/390/desktop and no persistent progress.
-Result: NOT RUN. Main-derived governance branch deliberately does not contain the seven unmerged PR92 additions. e2e/review-preview-gate.spec.ts is for downstream pilot.
+Result: RUNNING on separate PR #94 (head 6fa112a4c3f8728f0fbf62fe7f0a847d1d1765b6, based on PR #92 original cb726d843263c645bfa08891cc5cef7375a82f8d). Main-derived PR #93 intentionally lacks the seven unpublished additions.
 
 ## V-006 — link and SHA truth
 Check: open both hosted deep links with exact PR head/revision and no user setup.

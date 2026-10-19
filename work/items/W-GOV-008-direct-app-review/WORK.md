@@ -1,6 +1,7 @@
 # W-GOV-008 — ユーザー確認はPRではなく変更箇所に直行する実アプリ
 
-Status: IMPLEMENTING (repository-only preparation; user app preview is not yet deployed)
+Status: IMPLEMENTING
+Review state: USER-REVIEW-NOT-READY (repository-only preparation; user app preview is not yet deployed)
 Updated: 2026-10-19 JST
 Repo: rrikunagasige-dot/kyotsu-step-web (ID 1391122224)
 Base live main: 154a16ff379321016f4692bb0ac6fe9a8a596214
@@ -25,7 +26,7 @@ Constitution, command aliases, old accepted content, math/physics authored sourc
 W-GOV-008/P-001 in PROPOSAL.md, approved 2026-10-19 JST.
 
 ## Current Step
-Prepare and verify independent documentation + reviewer module; CI, pilot overlay and external provider remain distinct gates.
+Draft PR #93 implements the governance rule and reviewer module (head c69e56ad7b9787600e6513bd8a90a42354e3d891). Draft PR #94 is a separate pilot based on PR #92's cb726d8 head, candidate 6fa112a4c3f8728f0fbf62fe7f0a847d1d1765b6. Engineering CI underway; no hosted URL.
 
 ## Next Step
 Open draft PR from this feature branch; verify CI and code. Then construct an isolated PR92-derived pilot, prove actual N01/N03 behavior, and ask separate explicit authorization before any third-party hosting/publication. Give user **no acceptance request** until direct URLs are truly working.

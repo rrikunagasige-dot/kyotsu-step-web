@@ -33,3 +33,10 @@ Type: RISK
 Statement: Hosting provider authorization, public exposure, privacy and potential cost have not been granted.
 Impact: do not connect accounts/deploy; code-only branch is not USER-REVIEW-READY.
 Corrective rule: ask separately, keep user acceptance pending.
+
+## F-006 — 2026-10-19 JST
+Type: ERROR-QA
+Statement: Governance CI enforces literal legacy §12A headings/fallback phrases, so an approved policy correction legitimately failed the inherited validator until its checks are migrated.
+Evidence: GitHub run 39190305363 (5 errors for old section strings and Work Status).
+Impact: false CI failure from stale assertions, but it correctly exposed a malformed new Work status.
+Corrective rule: change assertions to enforce stronger direct-app readiness contract and keep Status on its own canonical line; rerun.

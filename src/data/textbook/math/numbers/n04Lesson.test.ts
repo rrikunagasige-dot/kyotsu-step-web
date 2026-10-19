@@ -55,11 +55,11 @@ describe('W-MATH-003 / N04 22-source-marker batch, preserving exact Q01 pilot', 
 
   it('restricts numbered review marks to this exact real reading flow', () => {
     const target = reviewTargets['n04-q01']
-    expect(target.revision).toBe(1)
+    expect(target.revision).toBe(2)
     expect(target.totalItems).toBe(5)
     expect(activeReviewMarkIds(target)).toHaveLength(5)
     expect(extractReviewSection(mathNumbersN04Unit,target)?.items.map(item=>item.answer)).toEqual(answers)
-    expect(extractReviewSection(mathNumbersN04Unit,{ ...target, revision: 2 })).toBeNull()
+    expect(extractReviewSection(mathNumbersN04Unit,{ ...target, revision: 1 })).toBeNull()
     expect(activeReviewMarkIds({ ...target, reviewState: 'accepted' })).toEqual([])
   })
 

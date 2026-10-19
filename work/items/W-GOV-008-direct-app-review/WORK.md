@@ -26,13 +26,13 @@ Constitution, command aliases, old accepted content, math/physics authored sourc
 W-GOV-008/P-001 in PROPOSAL.md, approved 2026-10-19 JST.
 
 ## Current Step
-Draft PR #93 implements the governance rule and reviewer module (head c69e56ad7b9787600e6513bd8a90a42354e3d891). Draft PR #94 is a separate pilot based on PR #92's cb726d8 head, candidate 6fa112a4c3f8728f0fbf62fe7f0a847d1d1765b6. Governance PR #93 and PR92-derived pilot #94: preview build, governance gate and four desktop/mobile real-interaction tests PASS. All three PR #94 CI workflows PASS including full Math textbook regression. PR #93 governance and preview-code CI PASS; its full Math textbook regression was still running at last check. Vercel approval granted, but its ChatGPT integration is not installed/connected; no hosted URL.
+Draft PR #93 implements the governance rule and reviewer module (head c69e56ad7b9787600e6513bd8a90a42354e3d891). Draft PR #94 is a separate pilot based on PR #92's cb726d8 head, candidate 6fa112a4c3f8728f0fbf62fe7f0a847d1d1765b6. Governance PR #93 and PR92-derived pilot #94: preview build, governance gate and four desktop/mobile real-interaction tests PASS. All three PR #94 CI workflows PASS including full Math textbook regression. PR #93 governance and preview-code CI PASS; its full Math textbook regression was still running at last check. Vercel approval granted and ChatGPT connector installed/authenticated on 2026-10-19 JST, but Vercel has no visible linked GitHub repository/project; explicitly scoped API reads failed with 403 forbidden. No hosted URL.
 
 ## Next Step
-The code-only PR and PR92-derived interactive pilot have passed targeted CI. Wait for the user's one-tap Vercel integration connection, then create only the approved isolated, no-login **preview publication** for exact PR #94 candidate SHA. Stop before any paid-plan requirement; verify both live full URLs/commit/viewport gates, then ask 陸君 for hands-on PASS/要修正. Do not touch main or Pages.
+The code-only PR and PR92-derived interactive pilot have passed targeted CI. Await Vercel-side GitHub repository authorization and 403 account scope resolution. Then create only the approved isolated, no-login **preview publication** for exact PR #94 candidate SHA. Stop before any paid-plan requirement; verify both live full URLs/commit/viewport gates, then ask 陸君 for hands-on PASS/要修正. Do not touch main or Pages.
 
 ## Dependencies
-PR #92 (draft, unmerged, head cb726d843263c645bfa08891cc5cef7375a82f8d at last read). PR #92 user hands-on approval pending. Vercel isolated public review preview selected and separately approved by "IIYO"; integration not installed/connected.
+PR #92 (draft, unmerged, head cb726d843263c645bfa08891cc5cef7375a82f8d at last read). PR #92 user hands-on approval pending. Vercel isolated public review preview selected and separately approved by "IIYO"; ChatGPT integration installed/authenticated; Vercel GitHub repository link and API scope access unresolved (403).
 
 ## Completion Condition
 Consistent governance + tests, exact-head PR preview available and verified at both deep links, user hands-on acceptance of review experience, Work verification/memory close. Engineering CI alone is not DONE.

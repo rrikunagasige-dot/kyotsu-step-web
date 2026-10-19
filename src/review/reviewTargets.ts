@@ -36,7 +36,7 @@ const targets: Record<string, ReviewTarget> = {
   },
   'n04-q01': {
     id: 'n04-q01', unitId: 'math-numbers-expressions-n04', title: 'N04 Q01', question: '四つの積',
-    revision: 1, totalItems: 5,
+    revision: 2, totalItems: 5,
     blockIds: [
       'paragraph-n04-intro', 'paragraph-n04-dialogue', 'paragraph-n04-four-products',
       'formula-n04-q01-p1', 'formula-n04-q01-p2',

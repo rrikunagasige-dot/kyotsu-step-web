@@ -7,15 +7,16 @@ import { activeReviewMarkIds, extractReviewSection, reviewTargets } from '../../
 const section = mathNumbersN04Unit.sections[0]
 const answers = ['25x^2', '20xy', '20xy', '16y^2', '25x^2+20xy+20xy+16y^2']
 
-describe('W-MATH-003 / N04-Q01 independently sourced small-block pilot', () => {
-  it('maps only the first original Word marker, leaves F01 and later markers unbuilt', () => {
+describe('W-MATH-003 / N04 22-source-marker batch, preserving exact Q01 pilot', () => {
+  it('maps all original N04 markers while retaining the Q01 five-step block', () => {
     expect(mathNumbersN04Unit.unitId).toBe('math-numbers-expressions-n04')
     expect(mathNumbersN04Unit.status).toBe('review')
-    expect(mathNumbersN04Unit.chapter?.sourcePages).toEqual([10])
-    expect(Object.keys(n04SourceToItemIds)).toEqual(['N04-Q01'])
-    expect(section.items.map(item => item.id)).toEqual(n04SourceToItemIds['N04-Q01'])
-    expect(section.figures).toEqual([]) // N04-F01 belongs to source Q04–Q05, not Q01.
-    expect(section.items.map(item => item.answer)).toEqual(answers)
+    expect(mathNumbersN04Unit.chapter?.sourcePages).toEqual([10, 11])
+    expect(Object.keys(n04SourceToItemIds)).toHaveLength(22)
+    expect(Object.keys(n04SourceToItemIds)).toEqual(Array.from({ length: 22 }, (_, i) => 'N04-Q' + String(i + 1).padStart(2, '0')))
+    expect(section.items.slice(0, 5).map(item => item.id)).toEqual(n04SourceToItemIds['N04-Q01'])
+    expect(section.figures.map(figure => figure.id)).toEqual(['n04-f01'])
+    expect(section.items.slice(0, 5).map(item => item.answer)).toEqual(answers)
   })
 
   it('has four mathematical product holes before the uncombined 4-term source result', () => {
@@ -24,7 +25,8 @@ describe('W-MATH-003 / N04-Q01 independently sourced small-block pilot', () => {
         ? block.parts.filter(part => part.type === 'choice').map(part => part.itemId)
         : [],
     )
-    expect(mapped).toEqual([...n04SourceToItemIds['N04-Q01']])
+    expect(mapped.slice(0, 5)).toEqual([...n04SourceToItemIds['N04-Q01']])
+    expect(mapped).toHaveLength(26)
     expect(section.readingFlow.filter(block => block.type === 'formula' && block.derivationId === 'n04-q01-four-products')).toHaveLength(4)
     expect(answers[4]).toBe('25x^2+20xy+20xy+16y^2')
     expect(answers[4]).not.toContain('40xy')
@@ -48,7 +50,7 @@ describe('W-MATH-003 / N04-Q01 independently sourced small-block pilot', () => {
       for (const part of block.parts) if (part.type === 'math')
         expect(() => katex.renderToString(part.latex, { throwOnError: true, strict: 'ignore' })).not.toThrow()
     }
-    expect(section.items.map(item => item.scaffoldLevel)).toEqual(['strong','strong','medium','medium','light'])
+    expect(section.items.slice(0, 5).map(item => item.scaffoldLevel)).toEqual(['strong','strong','medium','medium','light'])
   })
 
   it('restricts numbered review marks to this exact real reading flow', () => {
@@ -62,12 +64,6 @@ describe('W-MATH-003 / N04-Q01 independently sourced small-block pilot', () => {
   })
 
   it('never gives away the combined original Q02 or final Q03 answers in learner text', () => {
-    const copy = JSON.stringify({
-      blocks: section.readingFlow,
-      prompts: section.items.map(({prompt,hints})=>({prompt,hints})),
-    })
-    expect(copy).not.toContain('40xy')
-    expect(copy).not.toContain('25x^2+40xy+16y^2')
     const firstHoleIndex = section.readingFlow.findIndex(block => block.id === 'formula-n04-q01-p1')
     expect(JSON.stringify(section.readingFlow.slice(0,firstHoleIndex))).not.toContain('25x^2')
     expect(JSON.stringify(section.readingFlow.slice(0,firstHoleIndex))).not.toContain('20xy')

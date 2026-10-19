@@ -20,7 +20,7 @@ export function reviewItem(
   }
 }
 
-export function oneToOneSourceMap(prefix: 'N02' | 'N03' | 'N09' | 'N10' | 'N12', count: number) {
+export function oneToOneSourceMap(prefix: 'N02' | 'N03' | 'N04' | 'N05' | 'N06' | 'N07' | 'N08' | 'N09' | 'N10' | 'N11' | 'N12' | 'N13' | 'N14', count: number) {
   return Object.fromEntries(
     Array.from({ length: count }, (_, index) => {
       const n = String(index + 1).padStart(2, '0')

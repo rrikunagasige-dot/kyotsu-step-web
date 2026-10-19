@@ -75,7 +75,7 @@ export function extractReviewSection(unit: TextbookUnit, target: ReviewTarget): 
   if (new Set(target.markBlockIds).size !== target.markBlockIds.length) return null
   if (target.markBlockIds.some(id => !target.blockIds.includes(id))) return null
   const section = unit.sections.find(candidate => candidate.id === 'lesson')
-  if (!section || section.items.length !== target.totalItems) return null
+  if (!section || section.items.length < target.totalItems) return null
 
   const blocks = target.blockIds.map(id => section.readingFlow.find(block => block.id === id))
   const items = target.itemIds.map(id => section.items.find(item => item.id === id))

@@ -1,12 +1,14 @@
 import { validateTextbookUnits } from '../../../../domain/textbookSchema'
-import { T, M, C, reviewItem as item } from './reviewLessonHelpers'
+import { n04BatchSupplement } from './n04BatchSupplement'
+import { T, M, C, reviewItem as item, oneToOneSourceMap } from './reviewLessonHelpers'
 
-// W-MATH-003 — N04-Q01 small-block review ONLY.
+// W-MATH-003/P-003-R1 — N04 original Q01–Q22 on isolated batch review.
 // Original teacher-edited Word pp.10–11, 212863 bytes,
 // SHA-256 93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa.
 // The original author answer booklet is not available; answers were independently derived.
-// Do not insert N04-Q02 or later until the small-block visual gate is closed.
+// Q01 five-step reasoning is retained; remaining 21 source questions follow without user interruptions.
 export const n04SourceToItemIds = {
+  ...oneToOneSourceMap('N04', 22),
   'N04-Q01': ['n04-q01-p1', 'n04-q01-p2', 'n04-q01-p3', 'n04-q01-p4', 'n04-01'],
 } as const
 
@@ -22,14 +24,14 @@ const rawN04 = {
     chapterTitle: '数と式',
     unitCode: '1NUM',
     orderInChapter: 4,
-    sourcePages: [10],
+    sourcePages: [10, 11],
   },
   title: '展開に現れる同じ形をまとめる',
   subtitle: '同じ括弧を二つ掛けると、積はいくつ現れるだろう。',
   source: {
     type: 'reference' as const,
-    label: 'ユーザー提供「数と式」教科書モード対話段階導入版 v2 / N04 Q01',
-    rightsNote: '教師編集WordのN04原問1のみを段階化した独立ブランチ確認用教材。原作者別冊解答は未提供、正答は独立計算。N04-Q02以降・原図N04-F01は未実装。',
+    label: 'ユーザー提供「数と式」教科書モード対話段階導入版 v2 / N04 Q01–Q22',
+    rightsNote: '教師編集WordのN04原問22件と元の四マス図1点を段階化したレビュー用教材。原作者別冊解答は未提供、正答は独立計算。',
   },
   objectives: [
     '平方を同じ二項式の積として読み直す',
@@ -42,7 +44,7 @@ const rawN04 = {
     title: '本文',
     role: 'concept' as const,
     description: '平方を積に戻し、四つの積を一つずつ確かめる。',
-    figures: [],
+    figures: [{id:'n04-f01',src:'/assets/math/textbook/numbers/n04-f01.png',alt:'縦横にaとbを並べ、四つの積を自分で考える元の空欄表。',caption:'二つの括弧の全組合せを表で確かめる。',overlays:[]}],
     readingFlow: [
       { id: 'heading-four-products', type: 'heading' as const, text: '平方を四つの積にほどく' },
       { id: 'marker-n04-example', type: 'marker' as const, kind: 'example' as const, text: '例題' },
@@ -80,6 +82,7 @@ const rawN04 = {
       { id: 'paragraph-n04-bridge', type: 'paragraph' as const, parts: [
         T('二項の平方では、両端の積だけでなく、異なる項どうしの掛け算も現れる。次は、その二つを一つにまとめる理由を考える。'),
       ] },
+      ...n04BatchSupplement.readingFlow,
     ],
     items: [
       item('n04-q01-p1', '最初の組、5xと5xの積を計算しよう。', '25x^2', 'formula',
@@ -98,6 +101,7 @@ const rawN04 = {
         ['25x^2+20xy+16y^2', '25x^2+40xy+16y^2', '25x^2+16y^2'],
         'representation-link', 'light',
         ['四組の積が一回ずつ入っているか。中間の二つはまだ別々に残す。']),
+      ...n04BatchSupplement.items,
     ],
   }],
 }

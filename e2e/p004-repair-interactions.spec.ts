@@ -52,7 +52,7 @@ for (const [n, id] of repaired) {
           // attempt. The learner taps "もう一度" and then sees the hint.
           await expect(page.getByTestId('inline-choice-panel-' + id)).toHaveCount(0)
           await expect(page.getByTestId('resolved-' + id)).toHaveCount(0)
-          await expect(trigger).toContainText('もう一度')
+          await expect(trigger).toHaveAttribute('class', /--wrong/)
           await trigger.click()
           const retryPanel = page.getByTestId('inline-choice-panel-' + id)
           await expect(retryPanel).toBeVisible()

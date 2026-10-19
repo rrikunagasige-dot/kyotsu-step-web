@@ -1,5 +1,7 @@
 # WORK — W-GOV-008/P-002
 
+Status: VERIFYING
+
 - 命令: **CMD-WORK-001 修正**
 - 根拠: W-GOV-008/P-002 全項目をユーザーが明示承認（2026-10-19）。
 - 独立ブランチ: `work/W-GOV-008-P002-marked-review-20261019` (base `work/W-GOV-008-P001-pr92-review-pilot-20261019`, exact `6fa112a4c3f8728f0fbf62fe7f0a847d1d1765b6`)

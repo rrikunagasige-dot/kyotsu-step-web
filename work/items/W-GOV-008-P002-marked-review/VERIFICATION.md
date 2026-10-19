@@ -1,5 +1,7 @@
 # VERIFICATION — W-GOV-008/P-002
 
+Status: PENDING
+
 Status: **PENDING** until CI and hosted app check evidence is appended.
 
 | Gate | Evidence / status |

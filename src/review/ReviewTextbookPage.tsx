@@ -73,7 +73,7 @@ export function ReviewTextbookPage() {
         <Link to="/review/n01-q07">N01 Q07 を確認</Link>
         <Link to="/review/n03-q10">N03 Q10 を確認</Link>
       </div>
-      <p data-testid="review-preview-count">この箇所の進行: {resolvedCount}/{target.itemIds.length}　|　教材 第{unit.revision}版 / 全{target.totalItems}穴</p>
+      <p data-testid="review-preview-count">この箇所の進行: {resolvedCount}/{target.itemIds.length} / 教材 第{unit.revision}版 / 全{target.totalItems}穴</p>
       <TextbookReadingFlow
         key={target.id}
         unit={unit}

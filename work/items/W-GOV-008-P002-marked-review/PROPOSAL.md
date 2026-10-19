@@ -1,5 +1,7 @@
 # APPROVED PROPOSAL — W-GOV-008/P-002
 
+Status: APPROVED
+
 Approved by user 2026-10-19: `CMD-WORK-001 修正`, all W-GOV-008/P-002 items; isolated branch only.
 
 1. Visible amber numbered marks only around precisely changed content within authentic app reading flow.

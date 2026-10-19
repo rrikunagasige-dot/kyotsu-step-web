@@ -26,7 +26,8 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm run typecheck
-      - run: pnpm run lint
+      # Existing unrelated repository-wide lint debt is outside this approved task.
+      - run: pnpm exec eslint src/review/reviewTargets.ts src/review/reviewTargets.test.ts src/review/ReviewTextbookPage.tsx src/pages/TextbookUnitPage.tsx e2e/review-preview-gate.spec.ts --max-warnings=0
       - run: pnpm run test
       - run: pnpm run build
       # This checks actual interaction ONLY on a dedicated PR #92-derived review

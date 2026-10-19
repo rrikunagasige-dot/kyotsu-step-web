@@ -1,7 +1,7 @@
 # 指示辞書 / Instruction Dictionary
 
 Status: CANONICAL
-Version: 1.6.0
+Version: 1.7.0
 Updated: 2026-10-19
 
 ## Purpose
@@ -225,9 +225,9 @@ approved correction proposal exists?
 - Do Not Touch
 - 必要なverification
 
-### User review handoff (W-GOV-008/P-001)
+### User review handoff (W-GOV-008/P-003 — updated)
 
-The exact user-review gate is governance/WORK_SYSTEM.md §12A. A correction is **not USER-REVIEW-READY** until the agent has verified a directly opening app-preview URL for the exact changed place and exact implementation commit, with a short observation checklist. An unpublished PR cannot be reviewed through an older live Pages URL. PR, branch, ZIP and CI links are **technical evidence only** and cannot stand in for user hands-on acceptance. If no valid preview exists, report USER-REVIEW-NOT-READY/BLOCKED and remedy it; do not ask the user to decipher GitHub or start a development environment. External preview publication/connection needs separate approval.
+`governance/WORK_SYSTEM.md` §12A is the canonical three-gate flow. For this correction's **small visual block**, provide an authentic **GitHub-viewable** review sheet with an actual image, exact SHA, numbered `確認` marker, stable IDs and 2–4 short points; ask only `細部OK` / `要修正`. Individual `細部OK` is **visual approval only**, not live app hands-on approval, revised proposal authorization, or release permission. Hide accepted marks only in the subsequent review output; preserve Work logs and final pending status. The §12B correction-first impact audit still applies; no confirmed defect may silently propagate. After cross-block QA, a **verified playable whole-app URL for the exact frozen candidate SHA** is mandatory at the final `総チェック` gate; absent an authorized host/app link, record `FINAL-REVIEW-NOT-READY`. PR/ZIP/old-main Pages are not that final app. Host/publication/main/cost permissions remain separate.
 
 ### Cross-creation impact audit before correction closure
 
@@ -340,13 +340,13 @@ Canonical Phrase: **作成**
 - source fidelity、Stable ID、学習進捗、他subject/mode、原資料、既存acceptanceを守る。承認範囲外の生成/変更は別Proposal。
 - `main`のmerge/Pages公開は実装承認と区別し、既存release rulesと当該Workの権限に従う。
 
-### Completion / review-link handoff
+### Completion / review handoff — W-GOV-008/P-003
 
-`DONE`は技術QAだけでなく対象教材のユーザーhands-on acceptanceとMemory Closeを確認してから。技術PASSは「ユーザー合格」ではない。
+小ブロックは §12A の GitHub確認票・実スクリーンショット・`確認①` マーカー・SHAで `細部OK / 要修正` を受け取る。小ブロックの `細部OK` は**表示内容だけ**の受入で、実アプリを操作した証拠ではない。承認済みマークを次回非表示にしても履歴と最終総チェック待ちは保持する。
 
-レビュー依頼は governance/WORK_SYSTEM.md §12A に従う。**変更した箇所へ直接開く、対象commitを検証済みの実アプリ・プレビューURL**と短いチェック項目がなければ USER-REVIEW-READY と呼ばず、ユーザーに合否判定を依頼しない。PR/branch/ZIP/CIは技術証拠であり代替リンクとして受入依頼に使わない。外部ホスティング連携・公開、本番merge/Pagesは別の明示承認を要する。
+作成Workの技術的 `DONE` は各Work自身の検証・承認条件の充足を意味するが、**アプリ全体の受入・公開可能性を意味しない**。全小ブロックの記録と横断監査を完了し、release-candidate SHAを固定して初めて、実際に起動するアプリリンクでユーザーが最初から最後まで `総チェック` する。`総チェックOK` まで `FINAL-APP-ACCEPTED` と呼ばない。アプリへの直行リンクをまだ用意できない場合は `FINAL-REVIEW-NOT-READY` と明記し、勝手に新規公開しない。
 
-不合格なら観測された具体的問題を `FINDINGS.md` に記録し、`CMD-WORK-001` の調査→修正案→承認→修正→再検証へ渡す。次単元の「作成」へ進む前に現在の受入状態を明示する。
+不合格は `FINDINGS.md` と §12B 修正優先・他の作成成果物の影響監査へ戻す。提案そのものへの承認（`REVIEW-FEEDBACK ≠ APPROVAL`）、モード正本、原資料、学習進捗、main/Pages公開の個別承認も維持する。
 
 ### Work records
 

@@ -90,3 +90,6 @@ The earlier N02/N09 draft PR had source-audited content and passing E2E but no p
 
 ## F-026 — ERROR-PROCESS corrected: route work belongs to CMD-WORK-002 作成
 The user established that source→concept→lesson→app placement→user access belongs to ongoing 作成, not a standalone 修正. P-002 separately authorizes the enlarged chapter-1 catalog/Pages review scope without retroactively expanding P-001 or claiming final learner acceptance.
+
+## F-027 — ERROR-EVIDENCE / UNVERIFIED: automated 123/127 checks do not substitute for source-to-answer audit (2026-10-19)
+Gate② inspection confirms exact original-marker ID coverage and 127 correct-path browser actions; however the existing assertions do not independently re-read all 123 original Word equations or derive every answer. The batch implementation record mentions `N04_N14_SOURCE_SOLUTION_AUDIT.md` and `N04_N14_LEARNER_DESIGN_MAP.md`, which are absent from the current Work directory. This is a **documentation/evidence gap**, not a proven wrong answer in the app. The original Word's Library content request returned **403 Forbidden**; no unauthorized access workaround was attempted. Official separate answer booklet remains unavailable. Record every affected Gate② row as UNVERIFIED, not PASS. Exact evidence: `CROSS_BLOCK_AUDIT_P-003-R1.md`.

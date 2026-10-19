@@ -15,7 +15,7 @@ export const n04SourceToItemIds = {
 const rawN04 = {
   schemaVersion: '1.1' as const,
   unitId: 'math-numbers-expressions-n04',
-  revision: 1,
+  revision: 2,
   status: 'review' as const,
   subject: 'math-1a' as const,
   chapter: {

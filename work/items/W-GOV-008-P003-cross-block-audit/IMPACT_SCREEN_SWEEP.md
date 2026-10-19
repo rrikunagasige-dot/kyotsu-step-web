@@ -8,10 +8,10 @@ Candidate before this verification-only change: `2c3f1716947315f64ba8d438eaea7b0
 
 | Unit | Test scope | Initial evidence | Result |
 | --- | --- | --- | --- |
-| N02 | 12 decisions; 13 source formula blocks; 51 visible formula/choice spans inspected at 320px, 13 at completed 390px | Actual ordinary route, rendered inner scroll and root-width checks | PASS (scoped) |
-| N09 | 18 decisions; 19 source formula blocks; 80 visible formula/choice spans at 320px, 19 at completed 390px | Actual ordinary route, radical/negative terms; figure fidelity excluded | PASS (scoped) |
-| N10 | 21 decisions; 20 source formula blocks; 84 visible formula/choice spans at 320px, 20 at completed 390px | Actual ordinary route, long radical and conjugate choices | PASS (scoped) |
-| N12 | 35 decisions; 32 source formula blocks; 139 visible formula/choice spans at 320px, 32 at completed 390px | Actual ordinary route, long inequality and money formulas; figure fidelity excluded | PASS (scoped) |
+| N02 r1 | 12 decisions; 13 source formula blocks; 51 visible formula/choice spans inspected at 320px, 13 at completed 390px | Actual ordinary route, rendered inner scroll and root-width checks | PASS (scoped) |
+| N09 r2 | 18 decisions; 19 source formula blocks; 80 visible formula/choice spans at 320px, 19 at completed 390px | Actual ordinary route, radical/negative terms; figure fidelity excluded | PASS (scoped) |
+| N10 r1 | 21 decisions; 20 source formula blocks; 84 visible formula/choice spans at 320px, 20 at completed 390px | Actual ordinary route, long radical and conjugate choices | PASS (scoped) |
+| N12 r3 | 35 decisions; 32 source formula blocks; 139 visible formula/choice spans at 320px, 32 at completed 390px | Actual ordinary route, long inequality and money formulas; figure fidelity excluded | PASS (scoped) |
 
 ## Method and interpretation
 - Browser automation visits ordinary `/#/learning/textbook/math-numbers-expressions-nXX` routes, clears only ephemeral test browser localStorage, answers all items using existing repository answer values solely to reveal every later screen, and does not assert independent mathematical correctness.
@@ -25,3 +25,5 @@ Candidate before this verification-only change: `2c3f1716947315f64ba8d438eaea7b0
 - Existing N01/N03 review interaction and cross-block E2E, 27 scoped Vitest, typecheck, eslint, build and authentic screen capture steps all PASS in same run. No learner UI/source changes were introduced.
 - This is **NOT proof of one-frame full expression fit, visual non-overlap in every animation, independent answer correctness, or exact Word OMML fidelity**. On narrow phones some equations require their intended inner horizontal scrolling; their right ends were accessible. No confirmed new cross-artifact regression in these tested surfaces.
 - `main` rechecked unchanged at `154a16ff379321016f4692bb0ac6fe9a8a596214`. No merge, production release, new hosting, Vercel action or payment.
+
+Version provenance for this impact ledger: `src/data/textbook/math/numbers/n02Lesson.ts` revision 1, `n09Lesson.ts` revision 2, `n10Lesson.ts` revision 1, `n12Lesson.ts` revision 3, all status `review` and originally prepared under approved `W-MATH-003/P-001`. These revisions were read from the exact P-003 candidate, not inferred from filenames.

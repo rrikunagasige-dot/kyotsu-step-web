@@ -1,7 +1,7 @@
 # W-GOV-008/P-003 Gate ② — N01/N03 Cross-block audit
 
 Status: VERIFYING
-Review status: IN-PROGRESS (Gate ① N01+N03 accepted; Gate ② core technical tests PASS, independent source and related-unit impact pending)
+Review status: IN-PROGRESS (Gate ① N01+N03 accepted; Gate ② N01/N03 + N02/N09/N10/N12 phone-screen technical tests PASS; independent fresh Word/OMML source comparison UNVERIFIED after 403)
 Updated: 2026-10-19 JST
 Branch: `work/W-GOV-008-P003-pilot-visual-sheets-20261019` (independent; draft PR #97)
 
@@ -23,3 +23,8 @@ Existing expressly approved W-GOV-008/P-003 Gate ②, CMD-WORK-001 review/rule i
 
 ## Do not touch
 No main integration, production/Pages/new public staging, Vercel deletion, billing, original Word, lesson text/answers, true learner progress or historical Work.
+
+## 2026-10-19 exact latest verification checkpoint
+- Scope remains the approved verification-only P-003 Gate ②. Current audit source HEAD is `8a0ba5063d2dd31dbde235009d9ccdaca1880b17` before this metadata synchronization, app Actions [39209911335](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39209911335) SUCCESS and governance [39209911210](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39209911210) SUCCESS.
+- Original N01/N03 320px/390px mobile/desktop, interaction, wrong/retry, storage, existing 27 Vitest PASS. Related math normal-route N02 r1/N09 r2/N10 r1/N12 r3 rendered mobile full interactions 4/4 PASS, 86 decisions and 84 formula blocks. Status **not** `CROSS-VERIFIED` because independent Word/OMML fresh byte comparison is missing.
+- Original native Word v2 source retrieval returned 403 on direct page-render. No permission circumvention, alternative credential or source substitution permitted. To finish, request user-provided authorized DOCX attachment/source access; independently hash and inspect the source then compare the same N01 Q07 / N03 Q10 math and figure references. Gate ③ remains NOT-READY until Gate ② passes; no new public preview, main merge or payment.

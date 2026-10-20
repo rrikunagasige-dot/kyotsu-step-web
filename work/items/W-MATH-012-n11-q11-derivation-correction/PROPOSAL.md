@@ -1,5 +1,6 @@
 # W-MATH-012 / P-001 — N11-Q11「展開→移項→整理」の導き修正案
-Status: **APPROVED IN CHAT — user's 「続けて」 replied directly to this exact one-question P-001 approval request. Implementation not yet verified.**
+Status: APPROVED
+Approval evidence: user replied 「続けて」 directly to the exact W-MATH-012/P-001 single-question approval request. Implementation/CI is not yet accepted.
 Date: 2026-10-21 JST; linked to W-MATH-011 Gate② root-cause impact [ledger](../W-MATH-011-n11-inequality-derivation-correction/CROSS_BLOCK_AUDIT_N11_P001_20261021.md), CMD-WORK-001 and existing §12B.
 Frozen code SHA `2ebdf7fbb0c7387ae05753c286b3c457da74e17c`; N11 revision 4. Draft PR #101 only. Source: original teacher Word, N11-Q11, equation `3(2x+3)\ge10x-17`. Its single current learner choice directly answers `-4x\ge-26` after **three hidden nontrivial operations**; current formula, keys and distractors mathematically valid but insufficiently taught for first expanded complex inequality. No changes to canonical lessons necessary.
 

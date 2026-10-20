@@ -38,6 +38,22 @@ for (const [n, id] of repaired) {
         await expect(panel).toBeVisible()
         let correct = panel.getByRole('button', { name: item.answer, exact: true })
         await expect(correct).toBeVisible()
+        if (item.id === id && id === 'n07-09') {
+          // P-004-R3: page-level overflow PASS alone misses clipped formula rows.
+          // The original three decisions must each be visible WITHOUT inner scrolling.
+          const options = panel.locator('.reading-choice-option')
+          expect(await options.count()).toBeGreaterThanOrEqual(2)
+          for (const option of await options.all()) {
+            const rows = option.locator('.reading-choice-formula-line')
+            await expect(rows).toHaveCount(3)
+            for (const line of await rows.all()) {
+              const [whole, visible] = await line.evaluate(element =>
+                [element.scrollWidth, element.clientWidth])
+              expect(whole, 'N07-Q09 inner clipped math row at ' + width + 'px')
+                .toBeLessThanOrEqual(visible + 1)
+            }
+          }
+        }
         if (item.id === id) {
           const hint = page.getByTestId('textbook-hint-' + id)
           await expect(hint).toHaveCount(0)

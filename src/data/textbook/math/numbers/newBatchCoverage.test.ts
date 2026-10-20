@@ -183,4 +183,29 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
     }
   })
 
+
+  it('P-004-R1 protects both learner decisions against pre-answer disclosure while retaining old keys', () => {
+    const get = (n: string, q: string) => {
+      const section = mathTextbookUnits.find(unit => unit.unitId.endsWith('n' + n))!.sections[0]
+      const item = section.items.find(value => value.id === 'n' + n + '-' + q)!
+      const lead = section.readingFlow.find(block => block.id === 'n' + n + '-lead-' + q)
+      expect(lead).toBeDefined()
+      return { item, lead: JSON.stringify(lead) }
+    }
+    const factor = get('06', '11')
+    expect(factor.item.answer).toBe('(x+y)(x^2+x-2)')
+    expect(factor.item.choices).toHaveLength(4)
+    expect(factor.lead).toContain('どの括弧が共通')
+    expect(factor.lead).not.toContain('(y+x)T')
+    expect(factor.lead).not.toContain('(x+y)(x^2+x-2)')
+    const distance = get('14', '05')
+    expect(distance.item.answer).toBe('境界−4と4、外側、端点を含む')
+    expect(distance.item.choices).toHaveLength(4)
+    expect(distance.lead).toContain('間と外側のどちらを残すか')
+    expect(distance.lead).not.toContain('原点から離れた点を残し')
+    expect(distance.lead).not.toContain('等号も許す')
+    expect(mathTextbookUnits.find(u => u.unitId.endsWith('n06'))!.revision).toBe(2)
+    expect(mathTextbookUnits.find(u => u.unitId.endsWith('n14'))!.revision).toBe(2)
+  })
+
 })

@@ -101,3 +101,7 @@ Teacher Word/interactive source comparison identified eight reasoning/answer-gat
 
 ## F-029 — TWO NEW CONFIRMED pre-answer disclosures OUTSIDE P-004 scope
 **N06-Q11 (Word p.20):** original prompts the learner to factor the common bracket. App lead says `同じ括弧をTと置けば(y+x)Tである` with `T=x²+x−2` from the previous step, essentially furnishing the requested factorization. **N14-Q05 (Word p.45):** original asks learner to determine the boundary, inside/outside, and whether equality is included. App lead explicitly says `原点から離れた点を残し、等号も許す`, disclosing two requested judgements. These are **CONFIRMED not fixed**, not evidence of wrong final mathematical keys. Check against intentional teaching scaffolds before extending this diagnosis to other questions. P-004-R1 records the exact minimal corrections and is **UNAPPROVED**. No unauthorized code edit.
+
+
+## F-030 — P-004-R1 二つの先出し不具合を修正（2026-10-20）
+N06-Q11とN14-Q05で、質問前に生徒の判断結果を示していた説明を、それぞれ1行だけ修正した。問題ID・正答・誤答選択肢・図・教材revisionは不変。変更前の発見履歴F-029は保存し、現在の判定だけを「修正実施・検証合格」へ更新する。修正後の教材SHAは `2604589da22062cb67928ee5e1569a5de0338845`。数学の全CI [#39346035269](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39346035269) 合格。10問60枚の[実画面一覧](./evidence/n04-n14-gallery/README.md)はユーザー細部確認待ち。Gate②の123問独立監査はなお未完了。

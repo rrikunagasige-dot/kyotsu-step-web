@@ -1,6 +1,6 @@
 # P-004-R4 — Narrow display-only split for long *resolved* operation-plus-result answers
 
-Status: **PROPOSED / NOT APPROVED / NO CODE CHANGE**
+Status: **APPROVED (user explicit 「いいよ」, repeated after interrupted thinking); IMPLEMENTING / CI PENDING**
 Date: 2026-10-20 JST
 Work: W-MATH-003, CMD-WORK-001「修正」, correction-first, prior P-004/R1/R2/R3 boundaries retained.
 Audited actual app-code SHA: `06b1e0e217fc0933d203192ea0b2e11337bcee83`; screenshots commit `ad78002113827ac78b2d832bd1292c9308b32e47`. [Full approved P-004-R3 CI #39372583858](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39372583858) PASS; [real-image capture #39372579155](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39372579155) PASS.
@@ -28,4 +28,4 @@ The earlier screenshot/choice audit additionally sampled N11-Q06/Q08/Q09 and N14
 
 ## Stop/go
 
-No approval of R4 has been given; user-approved R3 only covered five different preceding prose texts and the `n07-09` item-specific display split. **Do not implement R4 until the user explicitly approves this exact scope.** R3 technical work and its verified evidence are complete; R4 is another issue discovered by visual cross-audit. Main merge, Pages/Vercel publication and billing remain prohibited without separate authorization.
+**Approval received:** The user responded 「いいよ」 to the exact three-ID R4 proposal, and repeated 「いいよ」 following an interrupted assistant turn. Authorized only those three item-specific display-only line breaks and associated tests/evidence. R3 history remains approved. Main merge, Pages/Vercel publication and billing remain prohibited without separate authorization.

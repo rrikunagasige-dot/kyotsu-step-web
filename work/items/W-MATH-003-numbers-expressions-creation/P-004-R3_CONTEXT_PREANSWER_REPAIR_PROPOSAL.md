@@ -1,6 +1,6 @@
 # W-MATH-003 / P-004-R3 — 残存する先出し5箇所とN07長文選択肢の改行1件
 
-Status: **PROPOSED / NOT APPROVED / NOT IMPLEMENTED**
+Status: **APPROVED 2026-10-20 (user's explicit 「承認」), IMPLEMENTING**
 Date: 2026-10-20 JST
 Command: CMD-WORK-001「修正」; this revision supersedes the initial unapproved R3 draft (3 paragraphs) after authentic browser screenshot and pre-answer-order audit. It is **not** covered by prior explicit P-004, P-004-R1, or P-004-R2 approvals.
 Audited lesson-code SHA: `f48509b7fca51c758c644d5274551bb2804e20df`.
@@ -44,4 +44,4 @@ No new progress revision is necessary because the five paragraph changes and one
 
 ## Approval gate
 
-**P-004-R3 remains PROPOSED / NOT APPROVED.** The user approved exact P-004-R2 and it was implemented/QA-ed; this R3 scope is additional. Show the complete R3 proposal and obtain a new explicit 「承認」 before touching the five paragraphs or the display helper. No main merge or publishing permission is inferred.
+**Approval received:** The user replied 「承認」 directly to this exact six-change P-004-R3, followed by 「いいよ」 to proceed. Authorized only five specified prose fields and the N07-Q09 layout-only splitter plus scoped tests/evidence, without main merge/publication.

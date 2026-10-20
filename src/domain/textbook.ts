@@ -185,6 +185,42 @@ export function effectiveTextbookProgress(unit: TextbookUnit, progress: Textbook
   if (!progress) return undefined
   if (progress.unitRevision === unit.revision) return progress
 
+  // W-MATH-012/P-001: two new Q11 decisions; original n11-11 answer
+  // meaning remains unchanged. Existing old answers all survive active v5,
+  // while v4 and older historical completion evidence remains archived.
+  // Each older revision first traverses its earlier approved migrations.
+  if (unit.unitId === 'math-numbers-expressions-n11' && unit.revision === 5
+    && progress.unitId === unit.unitId
+    && [1, 2, 3, 4].includes(progress.unitRevision)) {
+    const fromV4 = progress.unitRevision === 4 ? progress
+      : effectiveTextbookProgress({ ...unit, revision: 4 }, progress)
+    if (!fromV4 || fromV4.unitRevision !== 4) return undefined
+    const oldArchive: TextbookRevisionArchive = {
+      unitRevision: 4,
+      startedAt: fromV4.startedAt,
+      updatedAt: fromV4.updatedAt,
+      answers: { ...fromV4.answers },
+      ...(fromV4.completedAt !== undefined ? { completedAt: fromV4.completedAt } : {}),
+      ...(fromV4.previousRevisionCompletedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV4.previousRevisionCompletedAt } : {}),
+      ...(fromV4.migratedFromRevision !== undefined
+        ? { migratedFromRevision: fromV4.migratedFromRevision } : {}),
+    }
+    return {
+      unitId: unit.unitId,
+      unitRevision: 5,
+      startedAt: fromV4.startedAt,
+      updatedAt: fromV4.updatedAt,
+      answers: { ...fromV4.answers },
+      migratedFromRevision: 4,
+      archivedRevisions: { ...(fromV4.archivedRevisions ?? {}), '4': oldArchive },
+      ...(fromV4.completedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV4.completedAt }
+        : fromV4.previousRevisionCompletedAt !== undefined
+          ? { previousRevisionCompletedAt: fromV4.previousRevisionCompletedAt } : {}),
+    }
+  }
+
   // W-MATH-011/P-001: N11's four original source questions now contain
   // nine active proof decisions, five of them entirely new. Old Q01/Q02
   // remain valid; only old Q03/Q04 change answer meaning. Archive every

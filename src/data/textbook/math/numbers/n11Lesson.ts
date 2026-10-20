@@ -8,6 +8,7 @@ export const n11SourceToItemIds = {
   'N11-Q02': ['n11-02', 'n11-wm011-q02-compare'],
   'N11-Q03': ['n11-wm011-q03-factor', 'n11-wm011-q03-positive', 'n11-03', 'n11-wm011-q03-zero'],
   'N11-Q04': ['n11-wm011-q04-fraction', 'n11-04'],
+  'N11-Q11': ['n11-wm012-q11-expand', 'n11-wm012-q11-xcoef', 'n11-11'],
 }
 const oldContent = makeReviewSteps('n11', [
   {
@@ -126,13 +127,79 @@ const firstFlow: TextbookReadingBlock[] = [
 ]
 const restReadingIndex = oldContent.readingFlow.findIndex(block => block.id === 'n11-heading-2')
 if (restReadingIndex < 0) throw new Error('N11 second-group boundary disappeared')
+// W-MATH-012/P-001: only original Q11 gains two explicit, formula-local
+// operations; n11-11 retains its existing single correct key and 3 wrong
+// choices, and Q05–Q10/Q12–Q14 remain generated and unchanged.
+const q11NewItems: TextbookItem[] = [
+  reviewItem('n11-wm012-q11-expand', '括弧の両方の項に3を掛けて、展開した左辺を選ぼう。',
+    '6x+9', 'formula', ['6x+3', '2x+9', '6x+6'],
+    'causal-reasoning', 'medium', ['3を2xと3のそれぞれに掛けよう。']),
+  reviewItem('n11-wm012-q11-xcoef', '両辺から10xを引いたあとの、左辺のxの係数を選ぼう。',
+    '-4', 'formula', ['4', '-10', '16'],
+    'causal-reasoning', 'medium', ['6x−10xの係数を計算しよう。']),
+]
+const q11Start = oldContent.readingFlow.findIndex(b => b.id === 'n11-lead-11')
+const q11End = oldContent.readingFlow.findIndex(b => b.id === 'n11-after-11')
+if (q11Start < restReadingIndex || q11End < q11Start) {
+  throw new Error('Approved N11-Q11 source reading-flow boundary missing')
+}
+const q11Flow: TextbookReadingBlock[] = [
+  { id: 'n11-lead-wm012-q11-expand', type: 'paragraph', parts: [
+    T('まず括弧を展開する。括弧内の二つの項に3を掛け、左辺がどんな式になるか考えよう。'),
+    M('3(2x+3)\\ge10x-17'),
+  ] },
+  { id: 'n11-formula-wm012-q11-expand', type: 'formula', parts: [
+    M('3(2x+3)='), C('n11-wm012-q11-expand'),
+  ] },
+  { id: 'n11-after-wm012-q11-expand', type: 'paragraph', parts: [
+    T('3×2x=6x、3×3=9。したがって6x+9≥10x−17となる。次はxの項を左に集める。'),
+  ] },
+  { id: 'n11-lead-wm012-q11-xcoef', type: 'paragraph', parts: [
+    T('両辺から同じ10xを引くと右辺の10xが消える。左辺のxの係数は6−10で決まる。'),
+    M('6x+9\\ge10x-17'),
+  ] },
+  { id: 'n11-formula-wm012-q11-xcoef', type: 'formula', parts: [
+    C('n11-wm012-q11-xcoef'), M('x+9\\ge-17'),
+  ] },
+  { id: 'n11-after-wm012-q11-xcoef', type: 'paragraph', parts: [
+    T('移項後は−4x+9≥−17となる。次は左辺の定数9を消す操作を考えよう。'),
+  ] },
+  { id: 'n11-lead-11', type: 'paragraph', parts: [
+    T('−4x+9≥−17の両辺から同じ9を引いて、xの項だけを残そう。'),
+    M('-4x+9\\ge-17'),
+  ] },
+  { id: 'n11-formula-11', type: 'formula', parts: [
+    M('-4x+9\\ge-17\\quad\\Longrightarrow\\quad'), C('n11-11'),
+  ] },
+  { id: 'n11-after-wm012-q11-const', type: 'paragraph', parts: [
+    T('右辺の定数は−17−9=−26。係数が負の−4のままなので、−4x≥−26となる。'),
+  ] },
+  oldContent.readingFlow[q11End],
+]
+const originalTail = oldContent.readingFlow.slice(restReadingIndex)
+const q11Offset = q11Start - restReadingIndex
+const q11AfterOffset = q11End - restReadingIndex
+const oldItems = oldContent.items.filter(item =>
+  !['n11-01', 'n11-02', 'n11-03', 'n11-04'].includes(item.id))
+const originalQ11Index = oldItems.findIndex(item => item.id === 'n11-11')
+if (originalQ11Index < 0) throw new Error('Approved N11 original Q11 item missing')
 const content = {
-  readingFlow: [...firstFlow, ...oldContent.readingFlow.slice(restReadingIndex)],
-  items: [...firstItems, ...oldContent.items.filter(item => !['n11-01', 'n11-02', 'n11-03', 'n11-04'].includes(item.id))],
+  readingFlow: [
+    ...firstFlow,
+    ...originalTail.slice(0, q11Offset),
+    ...q11Flow,
+    ...originalTail.slice(q11AfterOffset + 1),
+  ],
+  items: [
+    ...firstItems,
+    ...oldItems.slice(0, originalQ11Index),
+    ...q11NewItems,
+    ...oldItems.slice(originalQ11Index),
+  ],
 }
 
 const rawN11={
-  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n11',revision:4,status:'review' as const,subject:'math-1a' as const,
+  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n11',revision:5,status:'review' as const,subject:'math-1a' as const,
   chapter:{chapterId:'math-ch01-numbers-expressions',chapterNumber:'1',chapterTitle:'数と式',unitCode:'1NUM',orderInChapter:11,sourcePages:[27,28,29]},
   title:'大小関係を保つ変形を選ぶ',subtitle:'不等号が変わる根拠を、差の符号と数直線で確かめる。',
   source:{type:'reference' as const,label:'ユーザー提供「数と式」教科書モード対話段階導入版 v2 / N11',

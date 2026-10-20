@@ -228,6 +228,54 @@ export function effectiveTextbookProgress(unit: TextbookUnit, progress: Textbook
     }
   }
 
+  // W-MATH-003/P-004-R2: three revised review lessons now require learners
+  // to choose the actual operation, not only the previous v2 result.
+  // Reopen exactly these eight changed keys while preserving every earlier
+  // attempt in version archives. A direct v1 -> v3 upgrade first applies
+  // the already-approved v1 -> v2 correction map, without skipping it.
+  const r2Reopen: Record<string, string[]> = {
+    'math-numbers-expressions-n07': ['n07-09'],
+    'math-numbers-expressions-n11': ['n11-06', 'n11-08', 'n11-09', 'n11-13'],
+    'math-numbers-expressions-n14': ['n14-10', 'n14-14', 'n14-15'],
+  }
+  const r2Changed = r2Reopen[unit.unitId]
+  if (r2Changed && unit.revision === 3 && progress.unitId === unit.unitId
+    && (progress.unitRevision === 1 || progress.unitRevision === 2)) {
+    const fromV2 = progress.unitRevision === 1
+      ? effectiveTextbookProgress({ ...unit, revision: 2 }, progress)
+      : progress
+    if (!fromV2 || fromV2.unitRevision !== 2) return undefined
+    const oldArchive: TextbookRevisionArchive = {
+      unitRevision: 2,
+      startedAt: fromV2.startedAt,
+      updatedAt: fromV2.updatedAt,
+      answers: { ...fromV2.answers },
+      ...(fromV2.completedAt !== undefined ? { completedAt: fromV2.completedAt } : {}),
+      ...(fromV2.previousRevisionCompletedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV2.previousRevisionCompletedAt } : {}),
+      ...(fromV2.migratedFromRevision !== undefined
+        ? { migratedFromRevision: fromV2.migratedFromRevision } : {}),
+    }
+    const answers = { ...fromV2.answers }
+    for (const id of r2Changed) delete answers[id]
+    return {
+      unitId: unit.unitId,
+      unitRevision: 3,
+      startedAt: fromV2.startedAt,
+      updatedAt: fromV2.updatedAt,
+      answers,
+      migratedFromRevision: 2,
+      archivedRevisions: {
+        ...(fromV2.archivedRevisions ?? {}),
+        '2': oldArchive,
+      },
+      ...(fromV2.completedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV2.completedAt }
+        : fromV2.previousRevisionCompletedAt !== undefined
+          ? { previousRevisionCompletedAt: fromV2.previousRevisionCompletedAt } : {}),
+    }
+  }
+
   // W-MATH-005/P-002: keep the N01/N03 original answer ledger while
   // the seven new local calculations begin unanswered; N09/N12 use distinct
   // already-released archive-and-restart migrations below.

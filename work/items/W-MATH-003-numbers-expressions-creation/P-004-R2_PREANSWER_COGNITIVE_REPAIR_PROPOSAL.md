@@ -42,7 +42,7 @@ The same root-cause B from P-004 persists outside the previous ten approved ques
   - N14-Q10: 「−5<x−3<5の中央をxだけにするには、三辺にどの操作を行えばよいだろう。」
   - N14-Q14: 「−4≤3x−2≤4の定数を消す、三辺共通の操作を考えよう。」
   - N14-Q15: 「−2≤3x≤6の中央の係数を1にする操作と、得られる範囲を考えよう。」
-- For 7 compound-operation choices (N07-Q09, N11-Q06/Q08/Q09/Q13, N14-Q10/Q14/Q15 = **8** items), retain the **mathematical final expressions unchanged** while adding the source-requested operation to the correct answer. Regenerate exactly three distinct **plausible incorrect** paired alternatives per item. Preserve uniqueness and valid LaTeX. (8 = 1 + 4 + 3.)
+- For 8 compound-operation choices (N07-Q09, N11-Q06/Q08/Q09/Q13, N14-Q10/Q14/Q15 = **8** items), retain the **mathematical final expressions unchanged** while adding the source-requested operation to the correct answer. Regenerate exactly three distinct **plausible incorrect** paired alternatives per item. Preserve uniqueness and valid LaTeX. (8 = 1 + 4 + 3.)
 - N06-Q01/Q05, N08-Q02 keep their mathematical choice keys and distractors unchanged.
 - Recheck question text, supporting explanation and **pre-answer accessibility** in the actual `readingFlow`: no completed answer in preceding prose, figures, accessible alt or hint. Hints may appear only after a wrong choice.
 
@@ -50,12 +50,12 @@ The same root-cause B from P-004 persists outside the previous ten approved ques
 
 Teacher original DOCX, the nine byte-identical original diagrams, source marker IDs 123/123, app operation IDs 127/127, unrelated question answers, other lessons N01/N02/N03/N09/N10/N12, published math-sets, physics and practice, existing learner progress/revision migration, catalog publication, main, Pages, Vercel, permissions, billing.
 
-No extra learner items, unit revision bump, shared helper changes, schema migration or figure edits are authorized by this *proposal*. If any of those become necessary, return to REVISE-PROPOSAL before changing them.
+Progress preservation is essential because eight correct-choice strings will change. Propose `revision: 2 → 3` **only for N07, N11 and N14**, with narrowly scoped migration following the existing P-004 v1→v2 archive-and-reopen pattern: archive old attempts, reopen **only** the changed Q09 / Q06,Q08,Q09,Q13 / Q10,Q14,Q15; preserve every unchanged answer, stable item ID and old progress history. N06 and N08 lead-only edits do not require revision changes. The matching review pins and migration regression tests are in scope. Any broader shared-helper or schema rewrite, extra items, figure edits, or loss of prior progress would require REVISE-PROPOSAL before execution.
 
 ## Independent verification to perform **after explicit approval**
 
 1. Word source cognitive request vs 11 revised leads/prompts/choices, independently solve every changed item and all three new distractors.
-2. Test all 11 wrong → panel closed → reopen → hint → correct, at 320px and 390px, plus no prior disclosure and persistence.
+2. Test v2→v3 migration for the three affected units: unchanged prior answers retained and only modified choice decisions reopened, plus test all 11 wrong → panel closed → reopen → hint → correct, at 320px and 390px, plus no prior disclosure and persistence.
 3. Full 123 original marker → 127 fixed item mapping; all 127 correct paths on desktop and mobile; original nine diagrams SHA and gated timing.
 4. TypeScript, ESLint, textbook tests, production build, all accepted earlier math units, Math Practice, Physics Textbook and related regression.
 5. Real app screenshots at answer-before, wrong/hint and after for all **11** changed entries (two widths), tied to a single code SHA; existing Gate① procedure.

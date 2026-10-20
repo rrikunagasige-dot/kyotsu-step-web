@@ -31,3 +31,6 @@ Gate③ `FINAL-REVIEW-NOT-READY`: R5 candidate not on hosted Pages, existing mai
 
 ## Next Work policy
 The governance port is complete. Continue to verify the real live `main` HEAD on each new task; do not assume checkpoint HEAD is still current. Imported mode SPECs remain CANONICAL-CANDIDATE. Any content revision, example redesign, figure work, or cleanup requires a new approved Work. Avoid idle CI status polling and always include a real review link.
+
+## 2026-10-20 Vercel existing-preview additional Gate3 evidence
+For **exact frozen R5 learner commit SHA `ad77318b37e90b9c39150b14ee706283b3f59355`**, GitHub status says `Vercel / Deployment has completed`. PR #101 Vercel bot [comment](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/101#issuecomment-6267043642) supplies actual existing alias `https://kyotsu-step-web-review-wgov008-git-wo-7f4744-rrikunagasige-5663.vercel.app`; a second comment reports the Free tier's >100 deployments/day rate limit. **Do not declare actual app URL verified**: Vercel connector returned 403 team scope, web checker could not access preview; alias may be stale/protected. Need public access and SHA verification before Gate③ FINAL-REVIEW-READY. No extra deployment/merge/paid tier performed. Current Gate① and Gate② already accepted/closed. See Gate③ prep addendum.

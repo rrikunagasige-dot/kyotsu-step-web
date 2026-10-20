@@ -103,7 +103,53 @@ Each *active* choice has three distinct distractors. Formula/text type may be lo
 | NEW q04-fraction | \`-a/5>-b/5; 負数倍なので反転\` | \`-a/5<-b/5; 保存\`; \`-a/5=-b/5; 等号になる\`; \`-a/5>-b/5; 正数倍なので反転\` (result true, reasoning false) |
 | n11-04 REVISED | \`3-a>3-b\` | \`3-a<3-b\`; \`3-a=3-b\`; \`3+a>3+b\` (the last contradicts \`a<b\`) |
 
-**Implementation exactization gate:** Japanese phrase ↔ KaTeX \`\\text\`, \`\\quad\` canonical answer strings and responsive two-line splitting for compound choices shall be frozen in the user-approved exact change set before coding. Avoid duplicate mathematical equivalent distractors; verify normalized distinctness in the grading helper. The proof/meaning decisions above are exact semantic specifications, not yet copied as literal TS strings.
+**Canonical accepted answer strings / wrong alternatives are fixed below**, not invented during implementation; these are raw LaTeX/UI values *before TypeScript source escaping*. The original \`n11-01\` and \`n11-02\` correct/wrong value strings are unchanged from the frozen app. If a mathematical answer is paired with a reason, \`,\quad\` is a losslessly split, two-line **display** delimiter only. The raw entire string remains the scoring authority. Do not edit any choice value without a revised exact proposal.
+
+\`\`\`text
+id = n11-wm011-q02-compare
+answer = a+c<b+c,\quad\text{差は正のまま}
+wrong1 = a+c>b+c,\quad\text{差は負になる}
+wrong2 = a+c=b+c,\quad\text{差は0}
+wrong3 = a+c>b+c,\quad\text{差は正のまま}
+
+id = n11-wm011-q03-factor
+answer = c
+wrong1 = -c
+wrong2 = c^2
+wrong3 = 1
+
+id = n11-wm011-q03-positive
+answer = ac<bc,\quad bc-ac>0
+wrong1 = ac>bc,\quad bc-ac<0
+wrong2 = ac=bc,\quad bc-ac=0
+wrong3 = ac<bc,\quad bc-ac<0
+
+id = n11-03  [REVISE old key semantics; reopen this old completion]
+answer = ac>bc,\quad bc-ac<0
+wrong1 = ac<bc,\quad bc-ac>0
+wrong2 = ac=bc,\quad bc-ac=0
+wrong3 = ac>bc,\quad bc-ac>0
+
+id = n11-wm011-q03-zero
+answer = ac=bc=0,\quad\text{元の厳密な大小は失われる}
+wrong1 = ac<bc,\quad\text{そのまま保つ}
+wrong2 = ac>bc,\quad\text{逆転する}
+wrong3 = ac=bc=0,\quad\text{元の不等号を保つ}
+
+id = n11-wm011-q04-fraction
+answer = -\frac a5>-\frac b5,\quad\text{負数倍なので反転}
+wrong1 = -\frac a5<-\frac b5,\quad\text{向きを保つ}
+wrong2 = -\frac a5=-\frac b5,\quad\text{等号になる}
+wrong3 = -\frac a5>-\frac b5,\quad\text{正数倍なので反転}
+
+id = n11-04 [REVISE old key semantics; reopen this old completion]
+answer = 3-a>3-b
+wrong1 = 3-a<3-b
+wrong2 = 3-a=3-b
+wrong3 = 3+a>3+b
+\`\`\`
+
+**Answer leak and exact visual preflight:** \`n11-wm011-q02-compare\` is AFTER the arithmetic \`n11-02\`, not before; \`bc-ac=c(b-a)\` is AFTER \`q03-factor\`; never render \`bc-ac>0\` or \`ac<bc\` until the positive branch is answered, never \`bc-ac<0\` or \`ac>bc\` until the negative branch, and never \`3-a>3-b\` until \`n11-04\` is completed. Only the current unresolved choice and previously solved line(s) are visible. Recheck every answer/three negatives with KaTeX, real \`getTextbookChoices\` strong/medium/light choice-count policy and mobile 320px screenshots.
 
 ## 5. Fire diagram / order / answer and figure gate
 

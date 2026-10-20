@@ -9,6 +9,12 @@ Last completed Work: `W-GOV-005`, [governance PR #49](https://github.com/rrikuna
 - Upstream numeric Q95/Q98 have different content; no ID-only transfer.
 - Check actual live repo + HEAD, exact approved Work and mode authority before each new task.
 
+## 2026-10-20 W-MATH-003 latest active context (supersedes 2026-10-19 handoff)
+- Exact work: MathⅠ original Word 数と式 source 123 question markers → 127 selections, 9 original figures, isolated Draft [PR #101](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/101), no main/Pages/Vercel publication. All P-004/R1/R2/R3/R4/R5 small source-cognitive/visibility repairs were user-authorized and implemented without changing protected earlier units.
+- Latest app code SHA `ad77318b37e90b9c39150b14ee706283b3f59355`. [Math CI 39419920062 SUCCESS](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39419920062), [real screenshots 39419915311 SUCCESS](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39419915311). R5 three new source-reasoning questions N06-Q15, N08-Q10, N13-Q08, progress archiving and KaTeX two-line screens completed. New 18 R5 images in screenshot commit `0c8177880ee6d71a441d02da7655a04c8c5ce47c`, earlier 66 R2/R3/R4 images retained.
+- Gate② source-key/distractor independent audit: **123 source questions + 381 wrong candidates reviewed**, and post-R5 3 repaired questions/9 new wrong candidates reverified PASS at current code SHA; 127/127 operations + 24 wrong→retry paths + cross-mode regression PASS. See `work/items/W-MATH-003-numbers-expressions-creation/GATE2_P004_R5_POST_REPAIR_INDEPENDENT_AUDIT_20261020.md`.
+- **Next exact action (established Gate①):** [only 3 R5 new screen cases](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/work/W-MATH-003-p003-r1-n04-n14-batch-20261019/work/items/W-MATH-003-numbers-expressions-creation/evidence/n04-n14-gallery/README.md) for user visual detail OK; **do not re-request approved 8-unit and prior repair reviews**. Formal Gate② closure after that, then Gate③ code-matching playable real app URL + complete user play; separate approval for main merge/release. No new gate invented.
+
 ## 2026-10-19 新しい作業位置 — W-MATH-003 / P-003-R1（独立ブランチ）
 
 - ユーザーが最新指示で「N04〜N14をすべて先に実装、各Qでは止めず最後に一括確認」と再明示。旧 N04-Q01-only 承認待ち運用はこの作業に適用しない。こちらからの未承認提案はない。

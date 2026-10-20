@@ -1,6 +1,6 @@
 # W-MATH-003 / P-004-R2 — 原問の思考操作を先出しする11件の追加修正案
 
-Status: PROPOSED / NOT APPROVED / NO IMPLEMENTATION
+Status: APPROVED / IMPLEMENTING (2026-10-20 JST; exact proposal approved by user's 「承認」)
 Date: 2026-10-20 JST
 Command: CMD-WORK-001「修正」 / correction-first (§12B)
 Parent: approved P-004 (8 cases), approved P-004-R1 (2 cases), both implemented and CI PASS
@@ -63,7 +63,7 @@ Progress preservation is essential because eight correct-choice strings will cha
 
 ## Review/approval boundary
 
-**STOP before code changes.** The user's 「続けて」 authorizes continuing the already-approved audit, not approval of this new exact corrective scope. Present this whole P-004-R2 for explicit approval. Preserve P-004 / P-004-R1 approval and earlier Gate① visual history; do not reinterpret them as P-004-R2 approval. Gate② NOT CROSS-VERIFIED; Gate③ NOT READY.
+**EXACT APPROVAL RECEIVED 2026-10-20:** User responded 「承認」 directly to this unchanged P-004-R2. Proceed only within the explicit scope, no source/production releases. Preserve P-004 / P-004-R1 approval and earlier Gate① visual history; do not reinterpret them as P-004-R2 approval. Gate② NOT CROSS-VERIFIED; Gate③ NOT READY.
 
 ## Exact selectable options for all eight compound changes
 

@@ -280,3 +280,9 @@ Scope: N04/N05/N06/N07/N08/N11/N13/N14, 123 Word markers / 127 guided actions, o
 - Byte-identical nine original figures asserted in `newBatchCoverage.test.ts`. Legacy review-progress migration tests pass. Previous transient failures are preserved in CI run history.
 - **UNVERIFIED**: official external answer booklet, exhaustive independent derivation of all 123 keys/distractors and final cross-unit learner review. Root-cause sweep found 2 new confirmed source-leakage problems N06-Q11 and N14-Q05 **not corrected** because outside approved P-004; see ledger and P-004-R1 proposed scope.
 - **Gate② NOT CROSS-VERIFIED. Gate③ FINAL-REVIEW-NOT-READY.** No new app public link, PR merge, Pages deployment, Vercel changes or billing authorized.
+
+
+## V-040 — P-004-R1 二問追加修正の最終自動検証（2026-10-20）
+コードSHA `2604589da22062cb67928ee5e1569a5de0338845` を対象とした[Math textbook CI #39346035269](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39346035269)は **SUCCESS**。型・Lint・単体・ビルド、N04〜N14の127操作（スマホ/PC）、修正10問×320/390px=20ケースの誤答→再開→ヒント→正答・保存復元、旧数学・物理・練習モードの回帰が通過。実画面60枚は同SHAから生成され、画像commit `fd1cc4192b9c19ec5acae9f0154425df38249174` に保存。一括[確認①〜⑩](./evidence/n04-n14-gallery/README.md)はまだユーザー細部OK待ち。
+
+9原図・123原問ID・127選択操作・既承認教材の保護を確認。独立した123問すべての正答・誤答候補の数学的証明（公式解答別冊は未提供）は **UNVERIFIED**。したがってGate② **NOT CROSS-VERIFIED**、Gate③ **NOT READY**。main統合・本番公開・課金は行っていない。

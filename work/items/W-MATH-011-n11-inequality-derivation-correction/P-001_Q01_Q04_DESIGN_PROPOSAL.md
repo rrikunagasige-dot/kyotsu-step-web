@@ -1,6 +1,6 @@
 # W-MATH-011 / P-001 — N11「不等号の性質を導く」Q01〜Q04 詳細修正案
 
-**Status: PROPOSED / DESIGN ONLY / NOT YET APPROVED FOR IMPLEMENTATION**
+**Status: APPROVED FOR EXACT Q01–Q04 IMPLEMENTATION (user's direct 「いいよ」 after explicit P-001 approval question); TECHNICAL QA PENDING**
 **Date:** 2026-10-20 (JST)
 **Command:** CMD-WORK-001「修正」, governance/INSTRUCTION_DICTIONARY.md / WORK_SYSTEM.md §§12A–12B and docs/MASTER_APP_LESSONS.md §52 small-block preflight.
 **Target:** rrikunagasige-dot/kyotsu-step-web, Draft PR #101, work/W-MATH-003-p003-r1-n04-n14-batch-20261019. Observed current documentation HEAD 71b226846484624dfc59657f23b9ccda3c03d1ae. **Frozen learner code** ad77318b37e90b9c39150b14ee706283b3f59355 (N11 revision 3). Main 537c3cbf28d40f45228d8a0c4bdd20327136aa93. No learner code changes in this proposal.

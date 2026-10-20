@@ -92,3 +92,7 @@ Source re-acquired: teacher-edited original Word, 212863 bytes, SHA-256 `9382732
 | Updated P-004 human visual review | **PENDING** | Revised image gallery marks ①〜⑧, no revised visual approval recorded |
 
 **Gate② remains NOT CROSS-VERIFIED due two confirmed new disclosure defects and incomplete original-key independent audit.** Gate③ cannot begin. P-004-R1 is an **unapproved revision of the existing correction plan**, not permission to edit N06-Q11 or N14-Q05. The initial Gate① original-batch acceptance is preserved without rewriting history.
+
+
+## 2026-10-20 P-004-R1 final test evidence
+The two additional source-disclosure findings N06-Q11 and N14-Q05 are **FIXED** in source SHA `2604589da22062cb67928ee5e1569a5de0338845`. [CI 39346035269](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39346035269) **PASS**: 20 correction/retry cases at 320/390px, full 127 interactions on mobile/PC, math/physics/practice regression, type/lint/unit/build. The [60 genuine app screenshots](./evidence/n04-n14-gallery/README.md) are stored under image commit `fd1cc4192b9c19ec5acae9f0154425df38249174` and **await user fine visual acceptance**. Historical wording above saying the two were not fixed is superseded for current status. Full independent mathematical derivation of all 123 original answers and distractors is still **UNVERIFIED** (official answer booklet unavailable). **Gate② remains NOT CROSS-VERIFIED; Gate③ remains NOT READY.**

@@ -1,8 +1,8 @@
-# W-MATH-003 / P-004-R1 — Gate② 同型不具合2問の追加修正（未承認・実装停止）
+# W-MATH-003 / P-004-R1 — Gate② 同型不具合2問の追加修正（承認済み・検証中）
 
 **命令：CMD-WORK-001「修正」**。本書は既に承認済みP-004の根本原因横断監査から発見した**同型不具合の範囲追加だけ**を扱う改訂Proposal。新しい仕事方式や「作成」命令の提案ではない。
 
-**STATUS: REVISE-PROPOSAL / USER APPROVAL REQUIRED.** P-004の当初8件の実装・テスト承認は維持するが、今回の追加2問は**未承認**。教材コードにはまだ反映していない。
+**STATUS: APPROVED 2026-10-20 — IMPLEMENTED, VERIFICATION IN PROGRESS.** ユーザーは本書全文に「承認」と明示。既承認P-004の8件の権限はそのまま保持し、本書の追加2問のleadのみ実装を許可した。main統合・公開・課金の承認ではない。
 
 ## 0. 原文・原因・何を直すか
 
@@ -26,8 +26,13 @@
 
 ## 3. 受入・停止条件
 
-- 実装前にユーザーがこの**改訂Proposal全文**を明示承認すること。現時点では未承認で、コード変更不可。
+- 実装前にユーザーがこの**改訂Proposal全文**を明示承認すること。ユーザーの明示承認を受領した（2026-10-20）。追加2問のlead変更のみを許可し、それ以外は変更不可。
 - CIがPASSしただけではGate②の独立全件監査やユーザー細部OKを代替しない。新しい問題が出た場合は根本原因ループへ戻る。
 - ユーザーにはコードやPR番号の読解を求めず、**アプリの実画面画像で10か所を一括確認**してもらう。全体総チェック・本番公開は別承認。
 
-根拠：`P004_ROOT_CAUSE_IMPACT_LEDGER.md`、`P-004_GATE2_REPAIR_PROPOSAL.md`、原Word第20/45頁、`WORK_SYSTEM.md` §12A/§12B。元の8件のP-004修正は [Math CI 39343256282](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39343256282) で合格済み。**追加2問は未修正のまま保持している。**
+根拠：`P004_ROOT_CAUSE_IMPACT_LEDGER.md`、`P-004_GATE2_REPAIR_PROPOSAL.md`、原Word第20/45頁、`WORK_SYSTEM.md` §12A/§12B。元の8件のP-004修正は [Math CI 39343256282](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39343256282) で合格済み。**追加2問はこの承認後にleadのみ修正。正答・ID・revisionは維持し、最終検証結果は後続記録で判定する。**
+
+
+## 承認と実装の追跡（2026-10-20）
+
+承認文言：ユーザー「承認」。対象は上記N06-Q11/N14-Q05の2件に限る。修正commit N06-Q11 `9e74f2d1662a787a0a6efdb70d152f7fb9acd29e`、N14-Q05 `d31fef4af66231ed8ae132549ded95fec4594479`。両方とも質問前leadの一文を変更したのみで、正答・選択肢・ID・図・revisionは変更していない。静的検証追加 `600307089725d1c63cb2529e1bafe7c5055f8e97`。ブラウザ操作テストの2件追加はGitHub更新操作の安全性チェックにより拒否されたため、現時点で**未実施**。勝手に他手段で回避せず、対応するテスト証拠が得られるまではGate②合格・Gate③開始を宣言しない。

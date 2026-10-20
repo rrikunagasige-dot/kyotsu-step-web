@@ -5,6 +5,13 @@ Repository: `rrikunagasige-dot/kyotsu-step-web` (ID `1391122224`)
 Verified main at checkpoint: `6e398f923c45fe895e53bc1f0f055f038acc41b6` — app release PR #50, [Pages SUCCESS](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38055876654).
 NOTE: This HEAD is a dated checkpoint, not a substitute for reading live main on every new task.
 
+## 2026-10-20 CURRENT ACTUAL STATE — R4 code verified (supersedes previous "R4 proposed" checkpoint)
+
+- Target: `rrikunagasige-dot/kyotsu-step-web`, repo ID 1391122224; main last checked `537c3cbf28d40f45228d8a0c4bdd20327136aa93`; review branch `work/W-MATH-003-p003-r1-n04-n14-batch-20261019`; Draft PR #101 unmerged.
+- Prior user approvals P-004 (8), P-004-R1 (2), P-004-R2 (11), P-004-R3 (five source-ordered prose + N07 Q09 format), **P-004-R4 (three remaining resolved-math 2-row views)** are all recorded. R4 is IMPLEMENTED/VERIFIED. Final test code SHA `61498366f2bed5324326e55d09b8f5c984a1a714`, [full CI SUCCESS](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39374550368), [real image capture SUCCESS](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39374547022), screenshot save commit `7a4a1c846ff03923136b29e3dd9ec5490ca9dc40`. 123 source questions→127 guided operations, 9 byte-identical original diagrams preserved. Four neighboring long compound rows N11-Q06/Q08/Q09/N14-Q10 were inspected and need no matching repair.
+- **Next gate**: [one consolidated actual-screen Gate① review of 11 affected questions](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/work/W-MATH-003-p003-r1-n04-n14-batch-20261019/work/items/W-MATH-003-numbers-expressions-creation/evidence/n04-n14-gallery/README.md) from 66 320px/390px images; user has NOT said final `確認01〜11 細部OK`. Do not force re-review of earlier approved eight-unit initial screens or prior 10 known earlier repair review.
+- **Gate② still NOT CROSS-VERIFIED**: original 123 key/distractor independent proof still outstanding; partial 48 symbolic claims do not close it. **Gate③ not ready**: audited-SHA real playable URL and complete user walk-through not yet validated. No main/Pages/Vercel/release permission inferred. Follow established three-gate mechanism; do not invent separate new gate.
+
 ## 2026-10-20 authoritative latest — W-MATH-003 / PR #101
 
 - Authoritative target repo `rrikunagasige-dot/kyotsu-step-web` (ID 1391122224), last checked main `537c3cbf28d40f45228d8a0c4bdd20327136aa93`, branch `work/W-MATH-003-p003-r1-n04-n14-batch-20261019`, Draft PR #101 unmerged.

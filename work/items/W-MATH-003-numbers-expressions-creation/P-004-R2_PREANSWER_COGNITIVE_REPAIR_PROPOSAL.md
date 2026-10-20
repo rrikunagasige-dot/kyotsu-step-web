@@ -64,3 +64,20 @@ Progress preservation is essential because eight correct-choice strings will cha
 ## Review/approval boundary
 
 **STOP before code changes.** The user's 「続けて」 authorizes continuing the already-approved audit, not approval of this new exact corrective scope. Present this whole P-004-R2 for explicit approval. Preserve P-004 / P-004-R1 approval and earlier Gate① visual history; do not reinterpret them as P-004-R2 approval. Gate② NOT CROSS-VERIFIED; Gate③ NOT READY.
+
+## Exact selectable options for all eight compound changes
+
+These are **proposed mathematical choice strings**, not executed code. Keep each original stable item ID, preserve one correct answer and three wrong choices, and independently revalidate every distractor before implementation. Prefix the question's existing prompt with a minimal “操作と結果を組にして” wording where needed. Existing answer value after the operation must remain the same.
+
+| ID | Proposed correct choice | Proposed wrong choices (three, left to right) |
+| --- | --- | --- |
+| N07-Q09 | `\text{100倍},\;100x=69.\overline{69},\;99x=69` | 1. `\text{10倍},\;10x=6.\overline{96},\;9x=6`; 2. `\text{100倍},\;100x=69.\overline{69},\;100x=69`; 3. `\text{1000倍},\;1000x=696.\overline{96},\;999x=696` |
+| N11-Q06 | `\text{両辺を正の}3\text{で割る},\quad x<\frac73` | 1. `\text{両辺を負の}3\text{で割る},\quad x>\frac73`; 2. `\text{両辺を正の}3\text{で割る},\quad x>\frac73`; 3. `\text{両辺を正の}3\text{で割る},\quad x\le\frac73` |
+| N11-Q08 | `\text{両辺から}3\text{を引く},\quad-2x\le2` | 1. `\text{両辺に}3\text{を足す},\quad-2x\le8`; 2. `\text{両辺から}3\text{を引く},\quad-2x\ge2`; 3. `\text{両辺から}3\text{を引く},\quad2x\le2` |
+| N11-Q09 | `\text{両辺を}-2\text{で割る},\quad x\ge-1` | 1. `\text{両辺を}-2\text{で割る},\quad x\le-1`; 2. `\text{両辺を}2\text{で割る},\quad x\le1`; 3. `\text{両辺を}-2\text{で割る},\quad x>-1` |
+| N11-Q13 | `\text{両辺に正の}3\text{を掛ける},\quad x-2\le6x+3` | 1. `\text{両辺に正の}3\text{を掛ける},\quad x-2\ge6x+3`; 2. `\text{両辺に正の}3\text{を掛ける},\quad x-2\le2x+3`; 3. `\text{両辺に負の}3\text{を掛ける},\quad x-2\le6x+3` |
+| N14-Q10 | `\text{三辺に}3\text{を足す},\quad-2<x<8` | 1. `\text{三辺から}3\text{を引く},\quad-8<x<2`; 2. `\text{三辺に}3\text{を足す},\quad-2\le x\le8`; 3. `\text{三辺に}3\text{を足す},\quad-5<x<8` |
+| N14-Q14 | `\text{三辺に}2\text{を足す},\quad-2\le3x\le6` | 1. `\text{三辺から}2\text{を引く},\quad-6\le3x\le2`; 2. `\text{三辺に}2\text{を足す},\quad-2<3x<6`; 3. `\text{三辺に}2\text{を足す},\quad-2\le3x\le4` |
+| N14-Q15 | `\text{三辺を正の}3\text{で割る},\quad-\frac23\le x\le2` | 1. `\text{三辺を正の}3\text{で割る},\quad-\frac23<x<2`; 2. `\text{三辺を正の}3\text{で割る},\quad-2\le x\le6`; 3. `\text{三辺を負の}3\text{で割る},\quad-\frac23\le x\le2` |
+
+N06-Q01, N06-Q05 and N08-Q02 change **lead only**: keep their current `answer`, `wrong` and item IDs exactly as implemented. The full replacement lead texts for all 11 appear in the preceding section.

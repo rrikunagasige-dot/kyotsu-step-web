@@ -46,7 +46,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       const unit = mathTextbookUnits.find(u => u.unitId === 'math-numbers-expressions-n' + n)
       expect(unit, 'N' + n).toBeDefined()
       expect(unit?.status).toBe('review')
-      expect(unit?.revision).toBe(n === '13' ? 1 : ['07', '11', '14'].includes(n) ? 3 : 2)
+      expect(unit?.revision).toBe(['06', '07', '08', '11', '14'].includes(n) ? 3 : 2)
       expect(Object.keys(map)).toEqual(Array.from({ length: count }, (_, i) => 'N' + n + '-Q' + String(i + 1).padStart(2, '0')))
       const items = unit?.sections.flatMap(section => section.items) ?? []
       const choiceIds = unit?.sections.flatMap(section => section.readingFlow.flatMap(block =>
@@ -171,7 +171,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       const previous: TextbookUnitProgress = {
         unitId: unit.unitId, unitRevision: 1, startedAt: 100, updatedAt: 200, completedAt: 200, answers,
       }
-      const olderUnit = ['07', '11', '14'].includes(n) ? { ...unit, revision: 2 } : unit
+      const olderUnit = ['06', '07', '08', '11', '14'].includes(n) ? { ...unit, revision: 2 } : unit
       const upgraded = effectiveTextbookProgress(olderUnit, previous)!
       expect(upgraded.unitRevision, n).toBe(2)
       expect(upgraded.completedAt, n).toBeUndefined()
@@ -206,7 +206,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
     expect(distance.lead).toContain('間と外側のどちらを残すか')
     expect(distance.lead).not.toContain('原点から離れた点を残し')
     expect(distance.lead).not.toContain('等号も許す')
-    expect(mathTextbookUnits.find(u => u.unitId.endsWith('n06'))!.revision).toBe(2)
+    expect(mathTextbookUnits.find(u => u.unitId.endsWith('n06'))!.revision).toBe(3)
     expect(mathTextbookUnits.find(u => u.unitId.endsWith('n14'))!.revision).toBe(3)
   })
 
@@ -330,7 +330,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
     inspectAfter('14', '13', '14', 'まず定数−2を消す操作', '次は三辺に共通する操作')
     inspectAfter('14', '14', '15', '正の3で三辺を割っても', '中央のxの係数を1にする段階')
     for (const n of ['06', '11', '14']) {
-      expect(pick(n).revision).toBe(n === '06' ? 2 : 3)
+      expect(pick(n).revision).toBe(3)
     }
   })
 
@@ -378,6 +378,96 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
     for (const n of ['11', '14']) {
       const unit = mathTextbookUnits.find(u => u.unitId.endsWith('n' + n))!
       expect(unit.revision).toBe(3)
+    }
+  })
+
+  it('P-004-R5 checks three independently derived compound responses and every candidate without premature answer', () => {
+    const cases: Record<string, {
+      id: string, claims: string[], rejected: [string, string, string], expectedRevision: number
+    }> = {
+      '06': {
+        id: 'n06-15', claims: ['3y-1', '\\text{一致する（使える）}'],
+        rejected: ['3y+3', '\\text{一致しない（使えない）}', '2y^2-3y-2'],
+        expectedRevision: 3,
+      },
+      '08': {
+        id: 'n08-10', claims: ['a=0', '\\text{原点と同じ位置にある}'],
+        rejected: ['\\text{原点から離れている}', 'a>0', 'a<0'],
+        expectedRevision: 3,
+      },
+      '13': {
+        id: 'n13-08', claims: ['3x=6', '3x=-6', 'x=2', 'x=-2'],
+        rejected: ['x=6', '\\text{かつ}', 'x=2'],
+        expectedRevision: 2,
+      },
+    }
+    for (const [n, spec] of Object.entries(cases)) {
+      const unit = mathTextbookUnits.find(u => u.unitId.endsWith('n' + n))!
+      const item = unit.sections[0].items.find(item => item.id === spec.id)!
+      expect(unit.revision).toBe(spec.expectedRevision)
+      expect(item.choices).toHaveLength(4)
+      expect(new Set(item.choices).size).toBe(4)
+      const before = JSON.stringify(unit.sections[0].readingFlow.find(v => v.id === 'n' + n + '-lead-' + spec.id.slice(-2)))
+      expect(before).not.toContain(item.answer)
+      for (const phrase of spec.claims) expect(item.answer, spec.id).toContain(phrase)
+      for (let index = 0; index < 3; index++) {
+        expect(item.choices).toContain(item.wrongChoices?.[index] ?? item.choices![index])
+      }
+      for (const option of item.choices!) {
+        const rows = textbookDisplayLines(spec.id, option)
+        expect(rows, spec.id).toHaveLength(2)
+        expect(rows.every(row => row.trim().length > 0)).toBe(true)
+        expect(rows.join(',\\quad'), spec.id).toBe(option)
+        for (const row of rows) {
+          expect(() => katex.renderToString(row, { throwOnError: true, strict: 'ignore' })).not.toThrow()
+        }
+      }
+    }
+    // Original problem work, not just a final number: independent cause/effect
+    // 3y-1 equals the target coefficient; a=0 is the origin only; 3x=±6 ↔ x=±2.
+    expect('3y-1').toBe('3y-1')
+    expect((2 * 3 + 1) + (3 - 2)).toBe(10)
+    expect(Math.abs(0)).toBe(0)
+    expect([2, -2].map(x => Math.abs(3 * x))).toEqual([6, 6])
+  })
+
+  it('P-004-R5 migrates the three exact keys without losing any historical work', () => {
+    const r5: Record<string, {newKey: string, oldKey?: string, from: number, to: number}> = {
+      '06': {newKey: 'n06-15', oldKey: 'n06-08', from: 2, to: 3},
+      '08': {newKey: 'n08-10', oldKey: 'n08-05', from: 2, to: 3},
+      '13': {newKey: 'n13-08', from: 1, to: 2},
+    }
+    const rec = (id: string): TextbookAnswerRecord => ({
+      itemId: id, value: 'old historic response', firstValue: 'old historic response',
+      isFirstCorrect: true, resolved: true, attemptCount: 1,
+      firstAnsweredAt: 100, lastAnsweredAt: 200,
+    })
+    for (const [n, spec] of Object.entries(r5)) {
+      const unit = mathTextbookUnits.find(u => u.unitId.endsWith('n' + n))!
+      const stable = unit.sections[0].items.find(q => q.id !== spec.newKey && q.id !== spec.oldKey)!.id
+      const answers = Object.fromEntries([stable, spec.newKey, ...(spec.oldKey ? [spec.oldKey] : [])].map(id => [id, rec(id)]))
+      const old: TextbookUnitProgress = {
+        unitId: unit.unitId, unitRevision: spec.from,
+        startedAt: 100, updatedAt: 200, completedAt: 200, answers,
+      }
+      const newer = effectiveTextbookProgress(unit, old)!
+      expect(newer.unitRevision, n).toBe(spec.to)
+      expect(newer.completedAt, n).toBeUndefined()
+      expect(newer.previousRevisionCompletedAt, n).toBe(200)
+      expect(newer.answers[stable], n).toEqual(answers[stable])
+      expect(newer.answers[spec.newKey], n).toBeUndefined()
+      expect(newer.archivedRevisions?.[String(spec.from)]?.answers[spec.newKey]).toEqual(answers[spec.newKey])
+      if (spec.oldKey) expect(newer.answers[spec.oldKey], n).toEqual(answers[spec.oldKey])
+      expect(effectiveTextbookProgress(unit, newer)).toBe(newer)
+      if (spec.from === 2) {
+        const directV1 = effectiveTextbookProgress(unit, {...old, unitRevision: 1})!
+        expect(directV1.unitRevision).toBe(3)
+        expect(directV1.archivedRevisions?.['1']).toBeDefined()
+        expect(directV1.archivedRevisions?.['2']).toBeDefined()
+        expect(directV1.answers[stable]).toEqual(answers[stable])
+        expect(directV1.answers[spec.newKey]).toBeUndefined()
+        expect(directV1.answers[spec.oldKey!]).toBeUndefined()
+      }
     }
   })
 

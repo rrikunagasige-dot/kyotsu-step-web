@@ -8,6 +8,7 @@ on:
       - 'public/assets/math/textbook/numbers/**'
       - 'e2e/new-batch-walkthrough.spec.ts'
       - 'e2e/p004-repair-interactions.spec.ts'
+      - 'e2e/wmath011-n11-proof.spec.ts'
       - '.github/workflows/new-batch-review-images.yml'
   workflow_dispatch:
 
@@ -25,6 +26,7 @@ jobs:
     env:
       E2E_BATCH_EVIDENCE: '1'
       E2E_P004_EVIDENCE: '1'
+      E2E_WM011_EVIDENCE: '1'
       E2E_USE_PREVIEW: '1'
     steps:
       - uses: actions/checkout@v4
@@ -40,11 +42,12 @@ jobs:
       - run: pnpm exec playwright install --with-deps chromium
       - name: Build actual app source without deploying it
         run: pnpm run typecheck && pnpm run build
-      - name: Walk through all 127 decisions and capture mobile/PC screens
+      - name: Walk through all 132 decisions and capture mobile/PC screens
         run: |
           mkdir -p e2e-evidence
           pnpm exec playwright test e2e/new-batch-walkthrough.spec.ts --project=mobile-chromium --project=desktop-chromium
           pnpm exec playwright test e2e/p004-repair-interactions.spec.ts --project=mobile-chromium
+          pnpm exec playwright test e2e/wmath011-n11-proof.spec.ts --project=mobile-chromium
       - name: Save raw evidence as an artifact
         if: always()
         uses: actions/upload-artifact@v4

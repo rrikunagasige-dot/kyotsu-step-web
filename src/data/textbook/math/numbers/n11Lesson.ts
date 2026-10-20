@@ -91,7 +91,7 @@ const firstItems: TextbookItem[] = [
 const firstFlow: TextbookReadingBlock[] = [
   { id: 'n11-heading-1', type: 'heading', text: '不等号の向きが変わる理由' },
   { id: 'n11-marker-1', type: 'marker', kind: 'proof', text: '導出' },
-  { id: 'n11-group-1', type: 'paragraph', parts: [T('2<5の両辺に同じ数を足すとどうなるだろう。たとえば2を引くと0<3、正の4を掛けると8<20となる。では負の数を掛けたときは、数直線上の位置で確かめよう。')] },
+  { id: 'n11-group-1', type: 'paragraph', parts: [T('2<5の両辺に同じ数を加えたり引いたりすると、どうなるだろう。たとえば2を引くと0<3、正の4を掛けると8<20となる。では負の数を掛けたときは、数直線上の位置で確かめよう。')] },
   { id: 'n11-show-n11-f01', type: 'figure', figureId: 'n11-f01' },
   { id: 'n11-lead-01', type: 'paragraph', parts: [T('元の2と5の位置、符号を変えた−2と−5の位置を見比べよう。'), M('2<5') ] },
   { id: 'n11-formula-01', type: 'formula', parts: [M('-2\\;\\mathrel{?}\\;-5\\quad'), C('n11-01')] },
@@ -100,7 +100,7 @@ const firstFlow: TextbookReadingBlock[] = [
   { id: 'n11-lead-02', type: 'paragraph', parts: [T('a<bならば右から左を引いた差b−aは正になる。aとbに同じcを足したときの差を、先に計算しよう。'), M('(b+c)-(a+c)')] },
   { id: 'n11-formula-02', type: 'formula', parts: [M('(b+c)-(a+c)='), C('n11-02')] },
   { id: 'n11-after-02', type: 'paragraph', parts: [T('展開するとb+c−a−c。cと−cが打ち消し合うので、差は元のb−aのままだ。ここから大小を決めよう。')] },
-  { id: 'n11-lead-wm011-q02-compare', type: 'paragraph', parts: [T('もとの差b−aは正で、足したあとの右−左の差も同じ正の値である。')] },
+  { id: 'n11-lead-wm011-q02-compare', type: 'paragraph', parts: [T('元の差b−aは正で、足したあとの右−左の差も同じ正の値である。')] },
   { id: 'n11-formula-wm011-q02-compare', type: 'formula', parts: [C('n11-wm011-q02-compare')] },
   { id: 'n11-after-wm011-q02-compare', type: 'paragraph', parts: [T('両方に同じ数を足しても差の符号は変わらない。したがって不等号の向きは保たれる。引き算は負の数を足すことなので同じ理由で成り立つ。')] },
 

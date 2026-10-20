@@ -30,3 +30,9 @@
 
 ## Next stage
 Four imported subject/mode SPECs remain candidate summaries, pending separate comparison with accepted lesson source and user permission. No universal claim of “all four finished”.
+
+## 2026-10-20 W-MATH-003 progress — R5 fully tested, Gate① three new screens pending
+- Completion: initial N04–N14 review batch (eight units, 123 original Q, 127 UI choices, nine original PNG), approved P-004 / R1 / R2 / R3 / R4 / R5 corrections, 3 last source-reasoning repairs N06-Q15/N08-Q10/N13-Q08 and selective progress history safe revisions. **Code SHA `ad77318b37e90b9c39150b14ee706283b3f59355`; [full CI #39419920062](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39419920062) SUCCESS; [real image workflow #39419915311](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39419915311) SUCCESS, 18 new R5 screenshots** at `0c8177880ee6d71a441d02da7655a04c8c5ce47c`.
+- Independent original-source audit **123/123 prompts, all 381 wrong alternatives, 127 app decisions**; three previously flagged cognitive gaps rechecked post-R5 PASS. Earlier 48/53 symbolic checks overlap, never sum as distinct source proof.
+- **Still OPEN:** user **Gate①** fine-review of only 3 newly revised R5 actual screens; formal Gate② paperwork after human gate; Gate③ real code-SHA-matching hosted playable URL with user full play and explicit `総チェックOK`. Draft PR #101 unmerged; protected main/Pages/Vercel and billing unchanged.
+

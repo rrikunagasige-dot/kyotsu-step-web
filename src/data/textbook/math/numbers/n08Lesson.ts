@@ -30,14 +30,14 @@ const content = makeReviewSteps('n08', [
     intro:'個々の計算を超えて、原点からの距離の性質を考える。どれも絶対値の定義から説明できる。',
     marker:'proof',
     steps:[
-      {q:10,lead:'原点との距離が0になる点は数直線のどこにあるだろう。',expr:'|a|=0',prompt:'aの値の条件を選ぼう。',answer:'a=0',wrong:['a>0','a<0','a=1'],hint:'離れている距離が0なら、原点と同じ位置。',after:'絶対値が0になるのは、もとの数そのものが0のときだけ。'},
+      {q:10,lead:'原点との距離が0になる点は数直線のどこにあるだろう。',expr:'|a|=0',prompt:'aの値と、数直線上で距離が0になる理由を組にして選ぼう。',answer:'a=0,\\quad\\text{原点と同じ位置にある}',wrong:['a=0,\\quad\\text{原点から離れている}','a>0,\\quad\\text{原点と同じ位置にある}','a<0,\\quad\\text{原点と同じ位置にある}'],hint:'離れている距離が0なら、原点と同じ位置。',after:'絶対値が0になるのは、もとの数そのものが0のときだけ。'},
       {q:11,lead:'aと−aは原点を挟んで左右対称な位置にある。',expr:'|a|,\\quad|-a|',prompt:'原点までの距離の関係を選ぼう。',answer:'|a|=|-a|',wrong:['|a|=-|-a|','|a|>|-a|','|a|+|-a|=0'],hint:'左右対称な点は原点から同じ距離にある。',after:'符号を反転させても絶対値は変わらない。'},
       {q:12,lead:'aが正でも負でも、|a|はaか−aのいずれか。その二乗の値を比較する。',expr:'|a|^2',prompt:'絶対値の二乗をaで表そう。',answer:'a^2',wrong:['|a|','-a^2','2a'],hint:'(+a)²と(−a)²は等しい。',after:'距離は非負だが、その二乗はもとの数の二乗に等しい。次の根号の学習へつながる。'},
     ],
   },
 ], [{id:'n08-f01',q:1,when:'before'}])
 const rawN08={
-  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n08',revision:2,status:'review' as const,subject:'math-1a' as const,
+  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n08',revision:3,status:'review' as const,subject:'math-1a' as const,
   chapter:{chapterId:'math-ch01-numbers-expressions',chapterNumber:'1',chapterTitle:'数と式',unitCode:'1NUM',orderInChapter:8,sourcePages:[20,21]},
   title:'向きと距離を分けて、絶対値を読む',subtitle:'数直線の距離から場合分けを作り、式全体の符号を判定する。',
   source:{type:'reference' as const,label:'ユーザー提供「数と式」教科書モード対話段階導入版 v2 / N08',

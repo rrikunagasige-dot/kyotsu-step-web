@@ -105,3 +105,8 @@ Teacher Word/interactive source comparison identified eight reasoning/answer-gat
 
 ## F-030 — P-004-R1 二つの先出し不具合を修正（2026-10-20）
 N06-Q11とN14-Q05で、質問前に生徒の判断結果を示していた説明を、それぞれ1行だけ修正した。問題ID・正答・誤答選択肢・図・教材revisionは不変。変更前の発見履歴F-029は保存し、現在の判定だけを「修正実施・検証合格」へ更新する。修正後の教材SHAは `2604589da22062cb67928ee5e1569a5de0338845`。数学の全CI [#39346035269](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39346035269) 合格。10問60枚の[実画面一覧](./evidence/n04-n14-gallery/README.md)はユーザー細部確認待ち。Gate②の123問独立監査はなお未完了。
+
+## F-029 — ERROR-ANALYSIS / CONFIRMED: 11 more pre-answer cognitive-operation leaks (2026-10-20)
+Source: author-edited original Word SHA-256 `93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa` vs review app code SHA `2604589da22062cb67928ee5e1569a5de0338845`.
+Independent pass over Word Q-instructions and app leads/keys confirmed **11 additional IDs outside approved P-004/P-004-R1 ten**: N06-Q01/Q05; N07-Q09; N08-Q02; N11-Q06/Q08/Q09/Q13; N14-Q10/Q14/Q15. These are missing learner operations in the cognition flow, not demonstrated false final algebra results. Five related groups, exact before/after boundaries and three-unit progress preservation are specified in `P-004-R2_PREANSWER_COGNITIVE_REPAIR_PROPOSAL.md` (**PROPOSED, NOT APPROVED**). N08-Q03 remains RISK until source-pedagogy intent independently assessed, not silently elevated to confirmed.
+Correction-first applies: no learner code edits outside already approved scopes, no merge/publication or Gate② PASS claim. Earlier statement in P004 impact ledger “no new confirmed defects” was true at its recorded checkpoint but **is superseded for current status**.

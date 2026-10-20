@@ -33,3 +33,18 @@
 - 48 real screenshot files committed at `d74b210187d90c98628271f173ed5cf795c3f964`; [one-link image check](./evidence/n04-n14-gallery/README.md). Visual acceptance of revised P-004 screenshots remains **PENDING**.
 - **Gate② status: NOT CROSS-VERIFIED**; two new confirmed B defects N06-Q11 / N14-Q05 unresolved, complete independent proof of all 123 answer/distractor mathematical equivalences (official key absent) remains marked separately UNVERIFIED. Gate③ FINAL-REVIEW-NOT-READY.
 - W-GOV-008 and P-004 prohibit unauthorized expansion. Do not alter Q11/Q05, main, deploy, status acceptance, other lessons or learner history without exact user permission.
+
+
+
+## 2026-10-20 P-004-R1 追跡監査 — 追加2件を修正・検証済みに更新
+
+この節は上の「N06-Q11/N14-Q05未修正」という作業当時の記載を**現行状態について上書きする**。発見時の記録は履歴として保存する。
+
+| 不具合 | 承認後の変更 | 現行評価と証拠 |
+|---|---|---|
+| N06-Q11 | pre-answer leadから完成式 `(y+x)T` を除いた。共通因数を学習者に探させ、正答・選択肢は変更せず | **FIXED / AUTOMATED-PASS** at `2604589da22062cb67928ee5e1569a5de0338845`; original Word p.20 と照合 |
+| N14-Q05 | pre-answer leadから「外側」「等号も許す」の結論を削除。境界・内外・等号を自分で判断する問いへ戻した | **FIXED / AUTOMATED-PASS** at 同SHA; original Word p.45 と照合 |
+
+全14単元のA（複数操作の欠落）・B（質問前の答え漏洩）同型影響調査では、確認できた10件を修正し、追加の**新規確定不具合を現時点で記録していない**。これは「全原問の数学的正しさを独立証明済み」という意味ではない。旧6単元・元Word・図9点・原問ID・学習記録・他モードを変更していない。テストは [CI #39346035269](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39346035269) **PASS**。画像60枚は [一括チェック表](./evidence/n04-n14-gallery/README.md) にあり、修正後ユーザー細部OK待ち。
+
+Gate② **NOT CROSS-VERIFIED**（123問の独立解答／誤答候補検証などUNVERIFIEDは残る）、Gate③ **FINAL-REVIEW-NOT-READY**。追加変更の権限はここで打ち止め。

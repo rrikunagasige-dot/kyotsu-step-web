@@ -12,7 +12,7 @@ The '誤答1/2/3' column corresponds **in order** to the three current `wrong` a
 
 | Source Q | Independently derived correct result or principle | Wrong choice 1 / 2 / 3 independent defect reason | Status |
 | --- | --- | --- | --- |
-| N08-Q01 | 原点との距離：\|−2.3\|=2.3、\|−5\|=5 | 負距離／負距離／−5.0も負距離 | PASS |
+| N08-Q01 | 原点との距離：\|2.3\|=2.3、\|−5\|=5 | 負距離／負距離／−5.0も負距離 | PASS |
 | N08-Q02 | a≥0なら\|a\|=a | −aは一般には不一致／0はa>0で不一致／a²は一般に不一致 | PASS |
 | N08-Q03 | a<0なら0−a=−a>0 | 符号誤り／a−0は負／0+aは負 | PASS |
 | N08-Q04 | a=−5より−(−5)=5 | −5を答える／−5=5は偽／0を答える | PASS |

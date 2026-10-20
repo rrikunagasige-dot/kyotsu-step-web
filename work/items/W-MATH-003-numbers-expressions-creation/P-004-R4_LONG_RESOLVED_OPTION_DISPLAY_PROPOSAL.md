@@ -1,6 +1,6 @@
 # P-004-R4 — Narrow display-only split for long *resolved* operation-plus-result answers
 
-Status: **APPROVED (user explicit 「いいよ」, repeated after interrupted thinking); IMPLEMENTING / CI PENDING**
+Status: **APPROVED / IMPLEMENTED / CI PASS / 66 GENUINE SCREENSHOTS SAVED**
 Date: 2026-10-20 JST
 Work: W-MATH-003, CMD-WORK-001「修正」, correction-first, prior P-004/R1/R2/R3 boundaries retained.
 Audited actual app-code SHA: `06b1e0e217fc0933d203192ea0b2e11337bcee83`; screenshots commit `ad78002113827ac78b2d832bd1292c9308b32e47`. [Full approved P-004-R3 CI #39372583858](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39372583858) PASS; [real-image capture #39372579155](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39372579155) PASS.
@@ -29,3 +29,8 @@ The earlier screenshot/choice audit additionally sampled N11-Q06/Q08/Q09 and N14
 ## Stop/go
 
 **Approval received:** The user responded 「いいよ」 to the exact three-ID R4 proposal, and repeated 「いいよ」 following an interrupted assistant turn. Authorized only those three item-specific display-only line breaks and associated tests/evidence. R3 history remains approved. Main merge, Pages/Vercel publication and billing remain prohibited without separate authorization.
+
+## Verified completion (2026-10-20)
+- Code SHA `61498366f2bed5324326e55d09b8f5c984a1a714`: approved three IDs only in display helper, unit and real phone tests; original 123/127 and correct/three distractor strings untouched.
+- [Full Math CI #39374550368](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39374550368) SUCCESS; [real screenshot capture #39374547022](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39374547022) SUCCESS. 66 screenshots saved by commit `7a4a1c846ff03923136b29e3dd9ec5490ca9dc40`, all source SHA anchored.
+- All 3 before/right-clipped 320px **resolved** results now actually visible as two complete rows. Other related N11-Q06/Q08/Q09 and N14-Q10 tested visually; no matching clipping found. Source task still VERIFYING: user one-batch Gate① review and independent full 123 answer/distractor Gate② are not completed; Gate③ not ready.

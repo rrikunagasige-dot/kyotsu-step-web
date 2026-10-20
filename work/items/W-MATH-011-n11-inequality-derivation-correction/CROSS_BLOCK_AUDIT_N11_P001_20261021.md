@@ -33,7 +33,7 @@ Confirmed primary root: **R1** previously unmodeled nontrivial operations collap
 - (`R2/N14 Q07/Q08/Q12`, rev3): **UNVERIFIED**, risk of insufficient generalization/branch reasoning; no code change authorized. Previous W-MATH-004 audit classified as design risks, not confirmed failures. Other N14 Q01–06/Q09–11/Q13–16 previously audited & mathematically valid; recheck on a separately approved correction if required.
 - (shared math/physics/practice, frozen candidate): **NOT-AFFECTED in CI**; no source data modification, chapter regression verified.
 
-No master lesson modification necessary: [existing §7/8/11/18/51/52/53](../../../../docs/MASTER_APP_LESSONS.md) and [mode SPEC](../../../../subjects/mathematics/textbook/SPEC.md) already cover the derivation/gating technique. Later new confirmed bugs must also enter §12B; don't force unverified risks into PASS.
+No master lesson modification necessary: [existing §7/8/11/18/51/52/53](../../../docs/MASTER_APP_LESSONS.md) and [mode SPEC](../../../subjects/mathematics/textbook/SPEC.md) already cover the derivation/gating technique. Later new confirmed bugs must also enter §12B; don't force unverified risks into PASS.
 
 ## Closure decision
 

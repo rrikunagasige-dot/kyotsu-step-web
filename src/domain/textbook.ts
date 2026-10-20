@@ -276,6 +276,80 @@ export function effectiveTextbookProgress(unit: TextbookUnit, progress: Textbook
     }
   }
 
+  // W-MATH-003/P-004-R5: preserve all historical attempts for the two
+  // second-revision fixes while reopening only the newly compound response.
+  // A v1 -> v3 upgrade must first run the existing P-004 v1 -> v2 rule.
+  const r5Revision3Changed: Record<string, string> = {
+    'math-numbers-expressions-n06': 'n06-15',
+    'math-numbers-expressions-n08': 'n08-10',
+  }
+  const r5Changed = r5Revision3Changed[unit.unitId]
+  if (r5Changed && unit.revision === 3 && progress.unitId === unit.unitId
+    && (progress.unitRevision === 1 || progress.unitRevision === 2)) {
+    const fromV2 = progress.unitRevision === 1
+      ? effectiveTextbookProgress({ ...unit, revision: 2 }, progress)
+      : progress
+    if (!fromV2 || fromV2.unitRevision !== 2) return undefined
+    const oldArchive: TextbookRevisionArchive = {
+      unitRevision: 2,
+      startedAt: fromV2.startedAt,
+      updatedAt: fromV2.updatedAt,
+      answers: { ...fromV2.answers },
+      ...(fromV2.completedAt !== undefined ? { completedAt: fromV2.completedAt } : {}),
+      ...(fromV2.previousRevisionCompletedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV2.previousRevisionCompletedAt } : {}),
+      ...(fromV2.migratedFromRevision !== undefined
+        ? { migratedFromRevision: fromV2.migratedFromRevision } : {}),
+    }
+    const answers = { ...fromV2.answers }
+    delete answers[r5Changed]
+    return {
+      unitId: unit.unitId,
+      unitRevision: 3,
+      startedAt: fromV2.startedAt,
+      updatedAt: fromV2.updatedAt,
+      answers,
+      migratedFromRevision: 2,
+      archivedRevisions: { ...(fromV2.archivedRevisions ?? {}), '2': oldArchive },
+      ...(fromV2.completedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV2.completedAt }
+        : fromV2.previousRevisionCompletedAt !== undefined
+          ? { previousRevisionCompletedAt: fromV2.previousRevisionCompletedAt } : {}),
+    }
+  }
+
+  // R5 N13 was originally review v1. Its new two-part response must be
+  // answered afresh, without deleting any previous evidence or other answers.
+  if (unit.unitId === 'math-numbers-expressions-n13' && unit.revision === 2
+    && progress.unitId === unit.unitId && progress.unitRevision === 1) {
+    const oldArchive: TextbookRevisionArchive = {
+      unitRevision: 1,
+      startedAt: progress.startedAt,
+      updatedAt: progress.updatedAt,
+      answers: { ...progress.answers },
+      ...(progress.completedAt !== undefined ? { completedAt: progress.completedAt } : {}),
+      ...(progress.previousRevisionCompletedAt !== undefined
+        ? { previousRevisionCompletedAt: progress.previousRevisionCompletedAt } : {}),
+      ...(progress.migratedFromRevision !== undefined
+        ? { migratedFromRevision: progress.migratedFromRevision } : {}),
+    }
+    const answers = { ...progress.answers }
+    delete answers['n13-08']
+    return {
+      unitId: unit.unitId,
+      unitRevision: 2,
+      startedAt: progress.startedAt,
+      updatedAt: progress.updatedAt,
+      answers,
+      migratedFromRevision: 1,
+      archivedRevisions: { ...(progress.archivedRevisions ?? {}), '1': oldArchive },
+      ...(progress.completedAt !== undefined
+        ? { previousRevisionCompletedAt: progress.completedAt }
+        : progress.previousRevisionCompletedAt !== undefined
+          ? { previousRevisionCompletedAt: progress.previousRevisionCompletedAt } : {}),
+    }
+  }
+
   // W-MATH-005/P-002: keep the N01/N03 original answer ledger while
   // the seven new local calculations begin unanswered; N09/N12 use distinct
   // already-released archive-and-restart migrations below.

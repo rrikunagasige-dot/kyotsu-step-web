@@ -95,3 +95,9 @@ Source-cognitive Gate② audit on the unchanged approved code SHA confirmed 11 n
 
 ## 2026-10-20 P-004-R2 implementation checkpoint
 P-004-R2 received explicit user 「承認」 and its **eleven exact learner blocks plus eight compound choices** were implemented without changing existing IDs/source diagrams/main. Three units N07,N11,N14 revision 2→3 with selective archive/reopen migration; regression and real UI tests extended. Status: VERIFYING (full CI and screenshot gallery pending). Separate F-030 confirms three pre-choice leaks from prior prose, and exact P-004-R3 is **PROPOSED / NOT APPROVED**. Continue already-approved verification, but do not modify those three prose strings until P-004-R3 approval. Gate② still NOT CROSS-VERIFIED (full independent 123 source/distractor proof pending), Gate③ not ready; no merge or publication.
+
+## 2026-10-20 P-004-R2 completed CI / pending exact R3 approval
+
+At code SHA `f48509b7fca51c758c644d5274551bb2804e20df`, P-004-R2 eleven approved small learner corrections and three-unit selective progress migration passed complete Math textbook CI `39369756687`. GitHub Actions screenshot workflow `39369752514` generated and saved all 66 new 320px/390px screenshots in `evidence/n04-n14-gallery/`, anchored to code SHA with image commit `8ea2b1e331f4e64e3976ef8860fbe1ebdd1b7193` and numbered README. Existing 123→127 mapping and 9 PNG hashes are covered by PASS CI.
+
+**Gate② educational visual audit still FAIL / unclosed:** source-order preanswer leak 5 fields and N07-Q09 compound choice inner scroll; exact **P-004-R3 is PROPOSED / NOT APPROVED**, no R3 learner code changed. Next action requires user decision on that exact proposal; after approval patch 5 strings + N07-only 3-line display, test and regenerate screenshots; complete all 123 original answer/distractor independent checks before Gate② PASS. Gate③ final user complete-app check remains unready, Draft PR #101 unmerged, main/deployment unchanged.

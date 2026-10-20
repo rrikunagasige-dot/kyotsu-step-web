@@ -1,9 +1,15 @@
 import { validateTextbookUnits } from '../../../../domain/textbookSchema'
-import { oneToOneSourceMap } from './reviewLessonHelpers'
+import { C, M, T, oneToOneSourceMap, reviewItem } from './reviewLessonHelpers'
+import type { TextbookItem, TextbookReadingBlock } from '../../../../domain/textbookSchema'
 import { makeReviewSteps } from './newBatchGuidedSteps'
 
-export const n11SourceToItemIds = oneToOneSourceMap('N11', 14)
-const content = makeReviewSteps('n11', [
+export const n11SourceToItemIds = {
+  ...oneToOneSourceMap('N11', 14),
+  'N11-Q02': ['n11-02', 'n11-wm011-q02-compare'],
+  'N11-Q03': ['n11-wm011-q03-factor', 'n11-wm011-q03-positive', 'n11-03', 'n11-wm011-q03-zero'],
+  'N11-Q04': ['n11-wm011-q04-fraction', 'n11-04'],
+}
+const oldContent = makeReviewSteps('n11', [
   {
     title:'不等号の向きが変わる理由',
     intro:'不等式では、左右の大小関係を保つ操作と反転させる操作がある。先に具体的な数直線で見てから、差の符号を使って確かめる。',
@@ -41,8 +47,92 @@ const content = makeReviewSteps('n11', [
   {id:'n11-f01',q:1,when:'before'},
   {id:'n11-f02',q:10,when:'after'},
 ])
+// W-MATH-011/P-001: *only* N11's first four original source markers use
+// staged, hand-authored proof decisions. Keep Q05–Q14's original generated
+// reading flow and keys verbatim, and the two original Word figures untouched.
+const firstItems: TextbookItem[] = [
+  reviewItem('n11-01', '数直線の−2と−5を比べよう。', '-2>-5', 'formula',
+    ['-2<-5', '-2=-5', '2>-5'], 'concept-formation', 'strong', ['右側の点ほど大きい数を表す。']),
+  reviewItem('n11-02', '両辺に同じcを加えたあとの差を計算しよう。', 'b-a', 'formula',
+    ['b-a+2c', 'b-a-c', 'a-b'], 'causal-reasoning', 'strong', ['+cと−cを整理しよう。']),
+  reviewItem('n11-wm011-q02-compare', '差の符号を根拠に、加えたあとの大小関係を選ぼう。',
+    'a+c<b+c,\\quad\\text{差は正のまま}', 'formula',
+    ['a+c>b+c,\\quad\\text{差は負になる}', 'a+c=b+c,\\quad\\text{差は0}',
+     'a+c>b+c,\\quad\\text{差は正のまま}'], 'causal-reasoning', 'medium',
+    ['右−左の差が正なら、どちらが大きいだろう。']),
+  reviewItem('n11-wm011-q03-factor', '共通の(b−a)を残して、括り出す係数を選ぼう。',
+    'c', 'formula', ['-c', 'c^2', '1'], 'causal-reasoning', 'medium',
+    ['bc−acを分配法則の逆向きで見よう。']),
+  reviewItem('n11-wm011-q03-positive', 'c>0のとき、差の符号と大小関係を判断しよう。',
+    'ac<bc,\\quad bc-ac>0', 'formula',
+    ['ac>bc,\\quad bc-ac<0', 'ac=bc,\\quad bc-ac=0', 'ac<bc,\\quad bc-ac<0'],
+    'causal-reasoning', 'medium', ['正の数と正の数の積は正。右−左が正なら左が小さい。']),
+  reviewItem('n11-03', 'c<0のとき、差の符号と大小関係を判断しよう。',
+    'ac>bc,\\quad bc-ac<0', 'formula',
+    ['ac<bc,\\quad bc-ac>0', 'ac=bc,\\quad bc-ac=0', 'ac>bc,\\quad bc-ac>0'],
+    'causal-reasoning', 'medium', ['負の数×正の数は負。右−左が負なら左が大きい。']),
+  reviewItem('n11-wm011-q03-zero', 'c=0のとき、両辺と厳密な不等号はどうなるだろう。',
+    'ac=bc=0,\\quad\\text{元の厳密な大小は失われる}', 'formula',
+    ['ac<bc,\\quad\\text{そのまま保つ}', 'ac>bc,\\quad\\text{逆転する}',
+     'ac=bc=0,\\quad\\text{元の不等号を保つ}'],
+    'causal-reasoning', 'medium', ['左右とも0。等号になると元の「<」は成り立たない。']),
+  reviewItem('n11-wm011-q04-fraction', 'a<bの両辺に負の1/5を掛けるとどうなるだろう。',
+    '-\\frac a5>-\\frac b5,\\quad\\text{負数倍なので反転}', 'formula',
+    ['-\\frac a5<-\\frac b5,\\quad\\text{向きを保つ}',
+     '-\\frac a5=-\\frac b5,\\quad\\text{等号になる}',
+     '-\\frac a5>-\\frac b5,\\quad\\text{正数倍なので反転}'],
+    'transfer', 'light', ['倍率−1/5は負。先ほど確かめた差の符号を使おう。']),
+  reviewItem('n11-04', 'a<bから−1倍と+3を順に行った大小関係を選ぼう。',
+    '3-a>3-b', 'formula',
+    ['3-a<3-b', '3-a=3-b', '3+a>3+b'],
+    'transfer', 'light', ['独立した変形として−a>−bから両辺に3を足す。']),
+]
+
+const firstFlow: TextbookReadingBlock[] = [
+  { id: 'n11-heading-1', type: 'heading', text: '不等号の向きが変わる理由' },
+  { id: 'n11-marker-1', type: 'marker', kind: 'proof', text: '導出' },
+  { id: 'n11-group-1', type: 'paragraph', parts: [T('2<5の両辺に同じ数を足すとどうなるだろう。たとえば2を引くと0<3、正の4を掛けると8<20となる。では負の数を掛けたときは、数直線上の位置で確かめよう。')] },
+  { id: 'n11-show-n11-f01', type: 'figure', figureId: 'n11-f01' },
+  { id: 'n11-lead-01', type: 'paragraph', parts: [T('元の2と5の位置、符号を変えた−2と−5の位置を見比べよう。'), M('2<5') ] },
+  { id: 'n11-formula-01', type: 'formula', parts: [M('-2\\;\\mathrel{?}\\;-5\\quad'), C('n11-01')] },
+  { id: 'n11-after-01', type: 'paragraph', parts: [T('−2は−5より数直線の右側にある。具体例で並び方の変化が見えた。次は一般の文字で、差の符号から理由を確かめる。')] },
+
+  { id: 'n11-lead-02', type: 'paragraph', parts: [T('a<bならば右から左を引いた差b−aは正になる。aとbに同じcを足したときの差を、先に計算しよう。'), M('(b+c)-(a+c)')] },
+  { id: 'n11-formula-02', type: 'formula', parts: [M('(b+c)-(a+c)='), C('n11-02')] },
+  { id: 'n11-after-02', type: 'paragraph', parts: [T('展開するとb+c−a−c。cと−cが打ち消し合うので、差は元のb−aのままだ。ここから大小を決めよう。')] },
+  { id: 'n11-lead-wm011-q02-compare', type: 'paragraph', parts: [T('もとの差b−aは正で、足したあとの右−左の差も同じ正の値である。')] },
+  { id: 'n11-formula-wm011-q02-compare', type: 'formula', parts: [C('n11-wm011-q02-compare')] },
+  { id: 'n11-after-wm011-q02-compare', type: 'paragraph', parts: [T('両方に同じ数を足しても差の符号は変わらない。したがって不等号の向きは保たれる。引き算は負の数を足すことなので同じ理由で成り立つ。')] },
+
+  { id: 'n11-lead-wm011-q03-factor', type: 'paragraph', parts: [T('掛け算の場合も、右−左の差を調べる。bとaに同じcを掛けると差はbc−ac。分配法則の逆を使い、共通の係数を括り出そう。')] },
+  { id: 'n11-formula-wm011-q03-factor', type: 'formula', parts: [M('bc-ac='), C('n11-wm011-q03-factor'), M('(b-a)')] },
+  { id: 'n11-after-wm011-q03-factor', type: 'paragraph', parts: [T('よってbc−ac=c(b−a)。b−aは正だから、この積の符号はcの符号によって決まる。')] },
+  { id: 'n11-lead-wm011-q03-positive', type: 'paragraph', parts: [T('まずc>0を考える。正の数同士を掛けたc(b−a)はどの符号になるだろう。'), M('c>0,\\quad b-a>0')] },
+  { id: 'n11-formula-wm011-q03-positive', type: 'formula', parts: [C('n11-wm011-q03-positive')] },
+  { id: 'n11-after-wm011-q03-positive', type: 'paragraph', parts: [T('右−左の差が正だから、cが正のときはac<bcであり、不等号はそのままになる。')] },
+  { id: 'n11-lead-03', type: 'paragraph', parts: [T('ではc<0にする。負の数と正の数の積から右−左の差を判断しよう。'), M('c<0,\\quad b-a>0')] },
+  { id: 'n11-formula-03', type: 'formula', parts: [C('n11-03')] },
+  { id: 'n11-after-03', type: 'paragraph', parts: [T('右−左の差が負なら、右の数bcのほうが小さい。したがって負数を掛けたときはac>bcとなる。')] },
+  { id: 'n11-lead-wm011-q03-zero', type: 'paragraph', parts: [T('最後にc=0を考える。両辺はどの数になるだろう。'), M('c=0')] },
+  { id: 'n11-formula-wm011-q03-zero', type: 'formula', parts: [C('n11-wm011-q03-zero')] },
+  { id: 'n11-after-wm011-q03-zero', type: 'paragraph', parts: [T('整理すると、正の数を両辺に掛けると不等号を保ち、負の数では向きが逆になり、0倍では等号になる。0で割ることはできない。')] },
+
+  { id: 'n11-lead-wm011-q04-fraction', type: 'paragraph', parts: [T('証明した規則を二つの別々の式で確かめる。一つ目はa<bの両辺に負の1/5を掛ける場合だ。'), M('a<b')] },
+  { id: 'n11-formula-wm011-q04-fraction', type: 'formula', parts: [C('n11-wm011-q04-fraction')] },
+  { id: 'n11-after-wm011-q04-fraction', type: 'paragraph', parts: [T('負の1/5倍では大小が反転する。これは次の式と独立した変形である。')] },
+  { id: 'n11-lead-04', type: 'paragraph', parts: [T('二つ目は元のa<bに戻って、両辺に−1を掛けてから3を足す。先ほどの−1/5倍の式に3を足すわけではない。'), M('a<b\\quad\\Longrightarrow\\quad-a>-b')] },
+  { id: 'n11-formula-04', type: 'formula', parts: [C('n11-04')] },
+  { id: 'n11-after-04', type: 'paragraph', parts: [T('−1倍したあとに同じ3を足すので3−a>3−bとなる。−1/5倍の式に3を足すなら3−a/5>3−b/5であり、二つの操作は区別する。')] },
+]
+const restReadingIndex = oldContent.readingFlow.findIndex(block => block.id === 'n11-heading-2')
+if (restReadingIndex < 0) throw new Error('N11 second-group boundary disappeared')
+const content = {
+  readingFlow: [...firstFlow, ...oldContent.readingFlow.slice(restReadingIndex)],
+  items: [...firstItems, ...oldContent.items.filter(item => !['n11-01', 'n11-02', 'n11-03', 'n11-04'].includes(item.id))],
+}
+
 const rawN11={
-  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n11',revision:3,status:'review' as const,subject:'math-1a' as const,
+  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n11',revision:4,status:'review' as const,subject:'math-1a' as const,
   chapter:{chapterId:'math-ch01-numbers-expressions',chapterNumber:'1',chapterTitle:'数と式',unitCode:'1NUM',orderInChapter:11,sourcePages:[27,28,29]},
   title:'大小関係を保つ変形を選ぶ',subtitle:'不等号が変わる根拠を、差の符号と数直線で確かめる。',
   source:{type:'reference' as const,label:'ユーザー提供「数と式」教科書モード対話段階導入版 v2 / N11',

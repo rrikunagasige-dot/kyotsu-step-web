@@ -19,10 +19,10 @@ const content = makeReviewSteps('n11', [
     intro:'不等式を解くとは、一つの数を求めることではなく、条件を満たすすべての実数の範囲を残すこと。',
     steps:[
       {q:5,lead:'3x−2<5を解く。左辺の定数−2をなくすため、両辺に施す同じ操作を選んでから不等式を変形しよう。',expr:'3x-2<5',prompt:'両辺への操作と、変形直後の不等式を組にして選ぼう。',answer:'\\text{両辺に }2\\text{ を足す},\\quad3x<7',wrong:['\\text{両辺から }2\\text{ を引く},\\quad3x<3','\\text{両辺に }2\\text{ を足す},\\quad3x>7','\\text{両辺に }2\\text{ を足す},\\quad x<7'],hint:'−2を打ち消す数を両辺に加えよう。加減だけなら不等号の向きは変わらない。',after:'両辺に2を足して3x<7となる。正負の倍率を使っていないので不等号はそのまま。'},
-      {q:6,lead:'xの前にある正の3で両辺を割る。',expr:'3x<7',prompt:'すべての解を表す範囲を選ぼう。',answer:'x<\\frac73',wrong:['x>\\frac73','x<\\frac37','x\\le\\frac73'],hint:'正の3で割るので向きはそのまま。等号が付いていたかも確認する。',after:'解は「7/3より小さい実数すべて」であり、ひとつの値ではない。'},
+      {q:6,lead:'3x<7から係数を1にする操作と、不等号の向きを考えよう。',expr:'3x<7',prompt:'操作と変形結果を組にして選ぼう。',answer:'\\text{両辺を正の}3\\text{で割る},\\quad x<\\frac73',wrong:['\\text{両辺を負の}3\\text{で割る},\\quad x>\\frac73','\\text{両辺を正の}3\\text{で割る},\\quad x>\\frac73','\\text{両辺を正の}3\\text{で割る},\\quad x\\le\\frac73'],hint:'正の3で割るので向きはそのまま。等号が付いていたかも確認する。',after:'解は「7/3より小さい実数すべて」であり、ひとつの値ではない。'},
       {q:7,lead:'境界x=7/3を元の不等式に代入すると、左右は同じ値になる。',expr:'3\\left(\\frac73\\right)-2<5',prompt:'境界の値が含まれるかを選ぼう。',kind:'text',answer:'含まれない（等号となり<を満たさない）',wrong:['含まれる（左右が等しくなるから）','含まれる（3は正だから）','判断できない（分数だから）'],hint:'元の記号は「<」で、等号は許されていない。',after:'厳密不等号の境界は数直線では白丸で表す。'},
-      {q:8,lead:'−2x+3≤5から定数3を除くため、左右に−3を足す。',expr:'-2x+3\\le5',prompt:'一段目の変形を選ぼう。',answer:'-2x\\le2',wrong:['-2x\\le8','-2x\\ge2','2x\\le2'],hint:'同じ数を加減した段階では不等号の向きは変わらない。',after:'次は負の数で割るので、先ほどとは向きの扱いが異なる。'},
-      {q:9,lead:'−2x≤2を−2で割る。負の倍率のときは不等号を逆にしなければならない。',expr:'-2x\\le2',prompt:'xについて解いた範囲を選ぼう。',answer:'x\\ge-1',wrong:['x\\le-1','x\\ge1','x>-1'],hint:'−2で割ると向きが逆になり、右辺は−1になる。',after:'負数除算は符号だけでなく、不等号の向きもセットで扱う。'},
+      {q:8,lead:'−2x+3≤5で左辺の定数を消すには、両辺に何をすればよいだろう。',expr:'-2x+3\\le5',prompt:'操作と変形結果を組にして選ぼう。',answer:'\\text{両辺から}3\\text{を引く},\\quad-2x\\le2',wrong:['\\text{両辺に}3\\text{を足す},\\quad-2x\\le8','\\text{両辺から}3\\text{を引く},\\quad-2x\\ge2','\\text{両辺から}3\\text{を引く},\\quad2x\\le2'],hint:'同じ数を加減した段階では不等号の向きは変わらない。',after:'次は負の数で割るので、先ほどとは向きの扱いが異なる。'},
+      {q:9,lead:'−2x≤2から係数を1にする。割る数の符号と不等号の向きを判断しよう。',expr:'-2x\\le2',prompt:'操作と変形結果を組にして選ぼう。',answer:'\\text{両辺を}-2\\text{で割る},\\quad x\\ge-1',wrong:['\\text{両辺を}-2\\text{で割る},\\quad x\\le-1','\\text{両辺を}2\\text{で割る},\\quad x\\le1','\\text{両辺を}-2\\text{で割る},\\quad x>-1'],hint:'−2で割ると向きが逆になり、右辺は−1になる。',after:'負数除算は符号だけでなく、不等号の向きもセットで扱う。'},
       {q:10,lead:'x=−1を元の−2x+3≤5に戻して、境界に等号を含めてよいか調べる。',expr:'-2(-1)+3\\le5',prompt:'境界を含むかどうか、根拠とともに選ぼう。',kind:'text',answer:'含む（代入すると5≤5）',wrong:['含まない（負の数だから）','含まない（代入すると5<5）','含む（不等号を逆にしないから）'],hint:'元の≤は等号を許し、境界を代入すると左右が一致する。',after:'境界の黒丸と白丸の違いは、不等号に等号があるかどうかから決まる。'},
     ],
   },
@@ -33,7 +33,7 @@ const content = makeReviewSteps('n11', [
     steps:[
       {q:11,lead:'3(2x+3)≥10x−17を展開し、x項を左、定数項を右へ集める。',expr:'3(2x+3)\\ge10x-17',prompt:'整理した不等式を選ぼう。',answer:'-4x\\ge-26',wrong:['-4x\\le-26','4x\\ge-26','-4x\\ge26'],hint:'左は6x+9。両辺から10xと9を引く。',after:'係数が負の−4になったことが次の変形の要点である。'},
       {q:12,lead:'−4x≥−26を負の−4で割る。不等号の反転と分数の符号の両方を確認しよう。',expr:'-4x\\ge-26',prompt:'解の範囲を選ぼう。',answer:'x\\le\\frac{13}{2}',wrong:['x\\ge\\frac{13}{2}','x\\le-\\frac{13}{2}','x<\\frac{13}{2}'],hint:'負の数で割るので≥は≤になり、負÷負は正。',after:'境界で等号が成立するので、その値も解に含む。'},
-      {q:13,lead:'(x−2)/3≤2x+1の分母3は正。まず左右に3を掛ける。',expr:'\\frac{x-2}{3}\\le2x+1',prompt:'分母を払った直後の不等式を選ぼう。',answer:'x-2\\le6x+3',wrong:['x-2\\ge6x+3','x-2\\le2x+3','x-2\\le6x+1'],hint:'右辺の2xと1の両方に3を掛ける。',after:'分母を払った後は通常の一次不等式として移項できる。'},
+      {q:13,lead:'(x−2)/3≤2x+1の分母をなくす操作と、その直後の不等式を考えよう。',expr:'\\frac{x-2}{3}\\le2x+1',prompt:'操作と変形結果を組にして選ぼう。',answer:'\\text{両辺に正の}3\\text{を掛ける},\\quad x-2\\le6x+3',wrong:['\\text{両辺に正の}3\\text{を掛ける},\\quad x-2\\ge6x+3','\\text{両辺に正の}3\\text{を掛ける},\\quad x-2\\le2x+3','\\text{両辺に負の}3\\text{を掛ける},\\quad x-2\\le6x+3'],hint:'右辺の2xと1の両方に3を掛ける。',after:'分母を払った後は通常の一次不等式として移項できる。'},
       {q:14,lead:'x−2≤6x+3のxを右に集め、定数を左に集める。',expr:'x-2\\le6x+3',prompt:'最終的な解の範囲を選ぼう。',answer:'x\\ge-1',wrong:['x\\le-1','x\\ge1','x>-1'],hint:'−5≤5xとなり、正の5で割る。',after:'括弧や分数の有無に関係なく、各変形で同じ条件を保てているか確かめる。'},
     ],
   },
@@ -42,7 +42,7 @@ const content = makeReviewSteps('n11', [
   {id:'n11-f02',q:10,when:'after'},
 ])
 const rawN11={
-  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n11',revision:2,status:'review' as const,subject:'math-1a' as const,
+  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n11',revision:3,status:'review' as const,subject:'math-1a' as const,
   chapter:{chapterId:'math-ch01-numbers-expressions',chapterNumber:'1',chapterTitle:'数と式',unitCode:'1NUM',orderInChapter:11,sourcePages:[27,28,29]},
   title:'大小関係を保つ変形を選ぶ',subtitle:'不等号が変わる根拠を、差の符号と数直線で確かめる。',
   source:{type:'reference' as const,label:'ユーザー提供「数と式」教科書モード対話段階導入版 v2 / N11',

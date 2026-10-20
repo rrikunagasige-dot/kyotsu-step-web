@@ -1,6 +1,7 @@
 # W-MATH-011 — N11 Q01〜Q04 1次不等式の導出修正
 
-**Current status: PROPOSED / AWAITING EXACT P-001 APPROVAL. NO LEARNER CODE EDIT.**
+Status: IMPLEMENTING
+**Current status: APPROVED / implementation in progress, CI pending.**
 Date: 2026-10-20 JST. Command CMD-WORK-001「修正」.
 Source: teacher-edited original Word 212863 B SHA \`93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa\`, N11 Q01–Q04 (word pages 36–37, printed pages 27–28); mode mathematics/textbook (NOT mathematics/practice). Frozen review app \`src/data/textbook/math/numbers/n11Lesson.ts\` revision 3, learner code SHA \`ad77318b37e90b9c39150b14ee706283b3f59355\` in draft PR #101. Main \`537c3cbf28d40f45228d8a0c4bdd20327136aa93\`.
 User: complained N11 inequalities pedagogical flow poor and explicitly forbade revising lessons because lessons already contain solution. Assistant compared original Word, target code, Math Textbook canonical lessons AND the ORIGINAL \`MATHEMATICS_TEXTBOOK_MODE_MASTER_SKILL_v1(3).md\` from Library, as well as historical W-MATH-004 N12 fix. User approved proceeding **to design before a separate implementation approval** via 「そうだね。よろしく。」. This is NOT P-001 code approval.

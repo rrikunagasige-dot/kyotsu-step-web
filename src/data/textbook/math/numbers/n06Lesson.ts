@@ -42,13 +42,13 @@ const content = makeReviewSteps('n06', [
     steps:[
       {q:13,lead:'x²+3xy+2y²−x−3y−2を、xの二次・一次・定数の順に並べる。',expr:'x^2+3xy+2y^2-x-3y-2',prompt:'xについて整理した形を選ぼう。',answer:'x^2+(3y-1)x+(2y^2-3y-2)',wrong:['x^2+(3y+1)x+(2y^2-3y-2)','x^2+(3y-1)x+(2y^2+3y-2)','x^2+(3y-1)+(2y^2-3y-2)x'],hint:'3xy−xからxを外へ出し、残りはxを含まない項。',after:'xの係数3y−1と定数項2y²−3y−2を区別できた。'},
       {q:14,lead:'xに依存しない部分2y²−3y−2を、二つの一次式の積へ分ける。',expr:'2y^2-3y-2',prompt:'定数項の因数分解を選ぼう。',answer:'(2y+1)(y-2)',wrong:['(2y-1)(y+2)','(2y+1)(y+2)','(y-1)(2y+2)'],hint:'先頭は2y²、最後は−2。交差積を合わせる。',after:'二つの因子の組は、xの一次係数との一致も検査する。'},
-      {q:15,lead:'(2y+1)と(y−2)を二つの一次式の定数項と見たとき、展開後のxの係数は何になるだろう。',expr:'(2y+1)+(y-2)',prompt:'二つの因子を足し、求めたい係数に一致するか答えよう。',answer:'3y-1',wrong:['3y+3','2y^2-y-2','y-1'],hint:'文字の項2yとy、定数1と−2を別々に足す。',after:'和も積も一致したので、xについての二つの一次式へ戻せる。'},
+      {q:15,lead:'(2y+1)と(y−2)を二つの一次式の定数項と見たとき、展開後のxの係数は何になるだろう。',expr:'(2y+1)+(y-2)',prompt:'和を計算し、元のxの係数に一致して因数分解に使えるか判断しよう。',answer:'3y-1,\\quad\\text{一致する（使える）}',wrong:['3y+3,\\quad\\text{一致する（使える）}','3y-1,\\quad\\text{一致しない（使えない）}','2y^2-3y-2,\\quad\\text{一致しない（使えない）}'],hint:'文字の項2yとy、定数1と−2を別々に足す。',after:'和も積も一致したので、xについての二つの一次式へ戻せる。'},
       {q:16,lead:'x²+(3y−1)x+(2y+1)(y−2)を、xに関する二つの一次式へまとめる。',expr:'x^2+(3y-1)x+(2y^2-3y-2)',prompt:'xとyを含む因数分解の完成形を選ぼう。',answer:'(x+2y+1)(x+y-2)',wrong:['(x+2y-1)(x+y+2)','(x+2y+1)(x+y+2)','(x+2y-2)(x+y+1)'],hint:'二つの定数項は2y+1とy−2で、足すと3y−1。',after:'係数が数でも文字式でも、先頭・中央・定数のすべてを逆展開で照合する。'},
     ],
   },
 ])
 const rawN06 = {
-  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n06',revision:2,status:'review' as const,subject:'math-1a' as const,
+  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n06',revision:3,status:'review' as const,subject:'math-1a' as const,
   chapter:{chapterId:'math-ch01-numbers-expressions',chapterNumber:'1',chapterTitle:'数と式',unitCode:'1NUM',orderInChapter:6,sourcePages:[15,16]},
   title:'複雑な式を、既に知っている形へ戻す',subtitle:'式の塊を一文字と見て、因数分解の道筋を選ぶ。',
   source:{type:'reference' as const,label:'ユーザー提供「数と式」教科書モード対話段階導入版 v2 / N06',

@@ -14,6 +14,9 @@ const repaired = [
   ['14', 'n14-14'], ['14', 'n14-15'],
 ] as const
 
+const r2Ids = new Set(['n06-01', 'n06-05', 'n07-09', 'n08-02', 'n11-06', 'n11-08', 'n11-09', 'n11-13', 'n14-10', 'n14-14', 'n14-15'])
+if (r2Ids.size !== 11 || repaired.length !== 21) throw new Error('P-004/R2 source repair list changed unexpectedly')
+
 for (const [n, id] of repaired) {
   for (const width of [320, 390]) {
     test('P-004 N' + n + ' ' + id + ' wrong/hint/retry + genuine ' + width + 'px screenshot', async ({ page }) => {
@@ -26,7 +29,7 @@ for (const [n, id] of repaired) {
       await page.reload()
       await expect(page.getByTestId('textbook-reading-flow')).toBeVisible()
       const save = process.env.E2E_P004_EVIDENCE === '1'
-      const prefix = ['n06-01', 'n06-05', 'n07-09', 'n08-02', 'n11-06', 'n11-08', 'n11-09', 'n11-13', 'n14-10', 'n14-14', 'n14-15'].includes(id) ? 'p004-r2-' : 'p004-'
+      const prefix = r2Ids.has(id) ? 'p004-r2-' : 'p004-'
       for (const item of items) {
         const trigger = page.getByTestId('textbook-item-' + item.id)
         await expect(trigger, item.id).toBeVisible()

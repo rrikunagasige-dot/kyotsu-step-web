@@ -27,6 +27,19 @@ Review-only branch: `work/W-MATH-003-p003-r1-n04-n14-batch-20261019`; [Draft PR 
 
 **Do NOT give an old main Pages URL to the user as though it contains the new eight units.** Do NOT claim screenshots, a PR code URL, Actions success, or a local Vite server are equivalent to this Gate③ URL. Vercel is optional and not part of this Work's approval.
 
+## 2026-10-20 22:42 JST additional existing Vercel preview discovery (read-only; supersedes absolute "no deployment" assumption)
+
+GitHub's **actual** commit status for the frozen R5 learner code SHA `ad77318b37e90b9c39150b14ee706283b3f59355` includes Vercel context **success / “Deployment has completed”** and [Vercel dashboard deployment record](https://vercel.com/rrikunagasige-5663/kyotsu-step-web-review-wgov008/3dCuVRGDooUAM1rfc7xxmXkeSz3P). This confirms **one existing preview deployment job completed for the candidate**, contrary to assuming no preview exists. This was not a deployment commanded in this task. It does **not** verify that the actual public HTML/JS are accessible or that a branch alias currently resolves to the same deployment.
+
+GitHub PR #101's Vercel bot [comment](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/101#issuecomment-6267043642) (updated 2026-10-20 13:42:39 UTC) supplies a real **existing preview alias** (not a guessed URL):
+`https://kyotsu-step-web-review-wgov008-git-wo-7f4744-rrikunagasige-5663.vercel.app`.
+
+**Remaining verification failures/blockers:** The web URL check was not accessible from the available checker; the Vercel connector explicitly returned **403 scope forbidden** for team `rrikunagasige-5663`, so the deployment hostname/alias association and body source SHA could not be independently inspected. Public comments also show a later Vercel bot **free-tier daily deployment limit** error ([rate-limit comment](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/101#issuecomment-6284556463)), so an older preview/alias may be served even when a previous exact-SHA status was successful. Do not retry unauthorised deploys, buy a plan, or assume rerunning will fix it.
+
+**Therefore existing Vercel preview LINK IS CANDIDATE-ONLY, NOT YET GATE③ READY.** Before distributing it as the actual review link, confirm users can open the existing alias without an auth wall, the loaded app's candidate SHA matches `ad77318...`, correct lesson routing and no production data contamination, on both phone and desktop. This *might* avoid any new hosting/merge authorization; prefer verifying what already exists before requesting a public main merge. If cannot verify without user action, ask them only to check accessibility/visible SHA, not to declare `総チェックOK` on an unverified build. All other Gate③ requirements remain unchanged.
+
+---
+
 ## Proposed full-play checklist under already approved Gate③ (do not assume sampling)
 
 Review the **entire existing target app UI** from its real front page, while specifically checking newly authored MathⅠ textbook N04,N05,N06,N07,N08,N11,N13,N14 plus inherited math textbook N01,N02,N03,N09,N10,N12, and old Math `math-sets`/other actually reachable topic routes. Other existing modes remain in **the full product walkthrough**: Math Practice Q87–120, Physics Textbook Chapter 1 units 1A–1G, and the actual Physics Practice guided items exposed by the audited build. The exact enabled product navigation at hosted candidate shall be read and copied into final checklist at URL verification time rather than invented now. Not-yet-authored NE01/NE02 source markers are **NOT** an app feature; review-only status does not automatically make a unit public catalog material.

@@ -73,3 +73,20 @@ Separate main merge/public release authorization (not granted)
 ```
 Unapproved global cleanup, Vercel/Pages publishing, source Word changes, physics/practice modifications and billing remain prohibited. Other project nodes retain their earlier status; this graph does not rewrite them.
 
+## W-MATH-003 final Gate status 2026-10-20 (supersedes prior R5 pending visual node)
+
+```
+N04–N14 (8 units, 123 Word Q, 127 choices)
+   → P-004 through R5 all approved+corrected
+   → frozen learner SHA ad77318b37e90b9c39150b14ee706283b3f59355
+   ├─ Gate① BLOCK-VISUAL-OK (latest user "ok続けて" for R5 3 screens)
+   ├─ Gate② CROSS-VERIFIED (123 keys / 381 wrong, CI/real screens)
+   └─ Gate③ FINAL-REVIEW-NOT-READY
+              ↓ REQUIRES distinct hosting/publication authorization
+       Actual reachable SHA-matching review app URL (NONE VERIFIED)
+              ↓
+       User beginning-to-end app play + explicit "総チェックOK"
+              ↓
+       FINAL-APP-ACCEPTED (NOT YET)
+```
+Latest main GitHub Pages at `537c3cb...` ≠ frozen R5 SHA; Draft PR #101 not merged; GitHub screenshot/PR links are not app URLs. [Cross audit](../work/items/W-MATH-003-numbers-expressions-creation/CROSS_BLOCK_AUDIT_FINAL_R5_20261020.md) / [Gate3 prep](../work/items/W-MATH-003-numbers-expressions-creation/FINAL_APP_WALKTHROUGH_PREP_R5_20261020.md). Do not modify main/hosting/billing without separate explicit permission.

@@ -4,6 +4,7 @@ import { resolve } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import katex from 'katex'
 import { effectiveTextbookProgress, type TextbookAnswerRecord, type TextbookUnitProgress } from '../../../../domain/textbook'
+import { textbookDisplayLines } from '../../../../domain/textbookDisplayLines'
 import { mathTextbookUnits } from '../index'
 import { n04SourceToItemIds } from './n04Lesson'
 import { n05SourceToItemIds } from './n05Lesson'
@@ -301,6 +302,53 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       expect(fromV1.answers[stable]).toEqual(answers[stable])
       for (const id of [...changed[n], ...oldV1[n]]) expect(fromV1.answers[id]).toBeUndefined()
     }
+  })
+
+  it('P-004-R3 keeps five predecessor paragraphs from disclosing later learner operations', () => {
+    const pick = (n: string) => mathTextbookUnits.find(unit => unit.unitId.endsWith('n' + n))!
+    const n06 = pick('06')
+    const n06Flow = n06.sections[0].readingFlow
+    const n06Start = n06Flow.findIndex(block => block.id === 'n06-lead-05')
+    expect(n06Start).toBeGreaterThan(0)
+    const n06Before = JSON.stringify(n06Flow.slice(0, n06Start))
+    expect(n06Before).not.toContain('そこをTと置く')
+    expect(n06Before).not.toContain('x²が繰り返し使われていれば')
+
+    const inspectAfter = (n: string, prev: string, next: string, oldCopy: string, replacement: string) => {
+      const section = pick(n).sections[0]
+      const prevBlock = section.readingFlow.find(block => block.id === 'n' + n + '-after-' + prev)
+      const nextBlock = section.readingFlow.find(block => block.id === 'n' + n + '-lead-' + next)
+      expect(prevBlock, n + prev).toBeDefined()
+      expect(nextBlock, n + next).toBeDefined()
+      const after = JSON.stringify(prevBlock)
+      expect(after).not.toContain(oldCopy)
+      expect(after).toContain(replacement)
+      expect(section.readingFlow.indexOf(prevBlock!)).toBeLessThan(section.readingFlow.indexOf(nextBlock!))
+    }
+    inspectAfter('11', '08', '09', '次は負の数で割るので', '次はxの係数を1にする操作')
+    inspectAfter('14', '09', '10', '次は三辺に同じ3を足して', '次は三辺に同じ操作をして')
+    inspectAfter('14', '13', '14', 'まず定数−2を消す操作', '次は三辺に共通する操作')
+    inspectAfter('14', '14', '15', '正の3で三辺を割っても', '中央のxの係数を1にする段階')
+    for (const n of ['06', '11', '14']) {
+      expect(pick(n).revision).toBe(n === '06' ? 2 : 3)
+    }
+  })
+
+  it('P-004-R3 splits only N07-Q09 display-only compound choices into three complete math lines', () => {
+    const unit = mathTextbookUnits.find(unit => unit.unitId.endsWith('n07'))!
+    const item = unit.sections[0].items.find(q => q.id === 'n07-09')!
+    expect(item.choices).toHaveLength(4)
+    for (const choice of item.choices!) {
+      const displayRows = textbookDisplayLines(item.id, choice)
+      expect(displayRows).toHaveLength(3)
+      expect(displayRows.every(line => Boolean(line.trim()))).toBe(true)
+      expect(displayRows.join(',\\;')).toBe(choice)
+      for (const row of displayRows) {
+        expect(() => katex.renderToString(row, { throwOnError: true, strict: 'ignore' })).not.toThrow()
+      }
+    }
+    expect(textbookDisplayLines('n11-09', item.answer)).toEqual([item.answer])
+    expect(textbookDisplayLines('n14-15', item.answer)).toEqual([item.answer])
   })
 
 })

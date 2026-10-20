@@ -90,6 +90,22 @@ for (const [n, id] of repaired) {
         }
         await correct.click()
         await expect(page.getByTestId('resolved-' + item.id)).toBeVisible()
+        if (item.id === id && ['n11-13', 'n14-14', 'n14-15'].includes(id)) {
+          // P-004-R4: the 320/390px *resolved* white formula card must
+          // show operation and inequality as two distinct, fully readable rows.
+          const answer = page.getByTestId('resolved-' + id)
+          const lines = answer.locator('.reading-formula-n12-answer-lines > span')
+          await expect(lines).toHaveCount(2)
+          for (const line of await lines.all()) {
+            const box = await line.evaluate(element => ({
+              actual: element.scrollWidth, viewport: element.clientWidth,
+              rendered: element.getBoundingClientRect().width,
+            }))
+            expect(box.viewport, id + ' zero-width resolved line').toBeGreaterThan(0)
+            expect(box.actual, id + ' clipped resolved math line at ' + width + 'px')
+              .toBeLessThanOrEqual(box.viewport + 1)
+          }
+        }
         if (item.id === id) {
           await expect(page.locator('.katex-error')).toHaveCount(0)
           const widths = await page.evaluate(() => [

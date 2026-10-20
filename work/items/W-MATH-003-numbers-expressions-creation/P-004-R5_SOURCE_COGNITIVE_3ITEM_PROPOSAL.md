@@ -1,6 +1,6 @@
 # W-MATH-003 / P-004-R5 — Original-Word cognitive fidelity on exactly three items
 
-Status: **APPROVED IN CHAT (user's 「続けて」 directly following P-004-R5 approval question) / IMPLEMENTING**
+Status: **APPROVED / IMPLEMENTED / FULL CI PASS / REAL IMAGE EVIDENCE SAVED**
 Date: 2026-10-20 JST
 Command: CMD-WORK-001「修正」, correction-first §12B, under existing accepted Gate①→Gate②→Gate③. Preserve all separately completed P-004 / R1 / R2 / R3 / R4 approvals and regression.
 Source: teacher Word 212863 B SHA-256 \`93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa\`. Audited code SHA: \`61498366f2bed5324326e55d09b8f5c984a1a714\`, Draft PR #101. Independent full row-by-row evidence: \`GATE2_PHASE2_INDEPENDENT_KEY_DISTRACTOR_AUDIT_20261020.md\` (N08/N11/N13/N14 51 markers/153 wrong options) + \`GATE2_PHASE3_REMAINING_SOURCE_DISTRACTOR_AUDIT_20261020.md\` (N04/N05/N06/N07 72 markers/228 wrong options, including N04-Q01's 5 local interactions). All **123 source question markers, 127 decisions, 381 wrong candidates** have been inspected, with **three** confirmed final-value-correct but source-cognitive-incomplete rows. 53 new SymPy independent claims PASS; previous 48 claims overlap and are not additive.
@@ -65,3 +65,8 @@ Changing the accepted answer key means previously "correct" saved decisions are 
 No touch to original teacher Word/DOCX, other modes, math sets, physics, practice, existing original question ID/figure binaries, prior accepted initial eight-unit Gate①, PR #101 merge, \`main\`, public Pages, Vercel or billing. No invented deployment mechanism. For remaining Gate②, replay source-to-key/cognitive audit for the three amended answers and verify 381 alternatives still all pedagogically false under the **current amended option list**, plus source-order/no-premature-revelation cross-audit at tested SHA.
 
 **Approval update 2026-10-20:** Earlier 「おけ続」 was Gate②-only, but the subsequent user message 「続けて」 was given **directly in response to the explicit approval question naming this exact P-004-R5 three-item proposal**. It authorizes the exact displayed three-item R5 repair, no additional scope. Main/public deployment remains separate. Existing P-004/R1/R2/R3/R4 approvals remain valid.
+
+## Verified completion on approved source (2026-10-20)
+- Exact source SHA `ad77318b37e90b9c39150b14ee706283b3f59355`: all 3 compound choices/prompts, 9 wrong alternatives, three narrow revision changes and lossless selective history migration implemented. No extra learner blocks changed.
+- [Full Math CI #39419920062](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39419920062) **SUCCESS**; [real 320/390 screenshot #39419915311](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39419915311) **SUCCESS**; 18 genuine screenshots committed at `0c8177880ee6d71a441d02da7655a04c8c5ce47c`.
+- Independent postrepair Word math/reason/distractor result: [3 repaired questions + 9 wrong choices rechecked](./GATE2_P004_R5_POST_REPAIR_INDEPENDENT_AUDIT_20261020.md) PASS, combined unchanged original 123/381 full inventory PASS. Human Gate① three new screens still await explicit fine-review acknowledgment; Gate③ not ready; do not merge/deploy.

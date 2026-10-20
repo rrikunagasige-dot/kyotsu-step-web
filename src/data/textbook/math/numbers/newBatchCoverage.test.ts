@@ -358,7 +358,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       expect(item.choices).toHaveLength(4)
       expect(item.choices).toContain(item.answer)
       expect(new Set(item.choices).size).toBe(4)
-      for (const choice of item.choices) {
+      for (const choice of item.choices!) {
         const lines = textbookDisplayLines(id, choice)
         expect(lines, id).toHaveLength(2)
         expect(lines.every(line => line.trim().length > 0)).toBe(true)

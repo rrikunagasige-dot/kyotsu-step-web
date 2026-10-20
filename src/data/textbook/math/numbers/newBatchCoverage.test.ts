@@ -45,7 +45,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       const unit = mathTextbookUnits.find(u => u.unitId === 'math-numbers-expressions-n' + n)
       expect(unit, 'N' + n).toBeDefined()
       expect(unit?.status).toBe('review')
-      expect(unit?.revision).toBe(n === '13' ? 1 : 2)
+      expect(unit?.revision).toBe(n === '13' ? 1 : ['07', '11', '14'].includes(n) ? 3 : 2)
       expect(Object.keys(map)).toEqual(Array.from({ length: count }, (_, i) => 'N' + n + '-Q' + String(i + 1).padStart(2, '0')))
       const items = unit?.sections.flatMap(section => section.items) ?? []
       const choiceIds = unit?.sections.flatMap(section => section.readingFlow.flatMap(block =>
@@ -170,7 +170,8 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       const previous: TextbookUnitProgress = {
         unitId: unit.unitId, unitRevision: 1, startedAt: 100, updatedAt: 200, completedAt: 200, answers,
       }
-      const upgraded = effectiveTextbookProgress(unit, previous)!
+      const olderUnit = ['07', '11', '14'].includes(n) ? { ...unit, revision: 2 } : unit
+      const upgraded = effectiveTextbookProgress(olderUnit, previous)!
       expect(upgraded.unitRevision, n).toBe(2)
       expect(upgraded.completedAt, n).toBeUndefined()
       expect(upgraded.answers[keep], n).toEqual(answers[keep])
@@ -205,7 +206,101 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
     expect(distance.lead).not.toContain('原点から離れた点を残し')
     expect(distance.lead).not.toContain('等号も許す')
     expect(mathTextbookUnits.find(u => u.unitId.endsWith('n06'))!.revision).toBe(2)
-    expect(mathTextbookUnits.find(u => u.unitId.endsWith('n14'))!.revision).toBe(2)
+    expect(mathTextbookUnits.find(u => u.unitId.endsWith('n14'))!.revision).toBe(3)
+  })
+
+  it('P-004-R2 requires 11 actual original-source cognitive actions before disclosing answers', () => {
+    const specs: Record<string, Record<string, string[]>> = {
+      '06': { '01': ['X=x+2y', '(X+1)(X-2)-4'], '05': ['T=x^2', 'T^2-5T+4'] },
+      '07': { '09': ['100\\text{倍}', '100x=69.', '99x=69'] },
+      '08': { '02': ['|a|=a'] },
+      '11': {
+        '06': ['\\text{両辺を正の}3\\text{で割る}', 'x<\\frac73'],
+        '08': ['\\text{両辺から}3\\text{を引く}', '-2x\\le2'],
+        '09': ['\\text{両辺を}-2\\text{で割る}', 'x\\ge-1'],
+        '13': ['\\text{両辺に正の}3\\text{を掛ける}', 'x-2\\le6x+3'],
+      },
+      '14': {
+        '10': ['\\text{三辺に}3\\text{を足す}', '-2<x<8'],
+        '14': ['\\text{三辺に}2\\text{を足す}', '-2\\le3x\\le6'],
+        '15': ['\\text{三辺を正の}3\\text{で割る}', '-\\frac23\\le x\\le2'],
+      },
+    }
+    let count = 0
+    for (const [n, questions] of Object.entries(specs)) {
+      const section = mathTextbookUnits.find(u => u.unitId.endsWith('n' + n))!.sections[0]
+      for (const [q, expected] of Object.entries(questions)) {
+        count += 1
+        const id = 'n' + n + '-' + q
+        const item = section.items.find(v => v.id === id)!
+        const lead = section.readingFlow.find(block => block.id === 'n' + n + '-lead-' + q)
+        expect(lead).toBeDefined()
+        const leadCopy = JSON.stringify(lead)
+        expect(leadCopy, id).not.toContain(item.answer)
+        for (const required of expected) expect(item.answer, id).toContain(required)
+        expect(item.choices).toHaveLength(4)
+        expect(new Set(item.choices)).toHaveProperty('size', 4)
+      }
+    }
+    expect(count).toBe(11)
+    for (const [n, q, forbidden] of [
+      ['06', '01', 'x+2yが繰り返し現れる'], ['06', '05', 'x²を一つの文字T'],
+      ['07', '09', '二桁ずらす'], ['08', '02', '距離は座標と同じ'],
+      ['11', '06', '正の3で両辺を割る'], ['11', '08', '左右に−3を足す'],
+      ['11', '09', '−2で割る'], ['11', '13', '左右に3を掛ける'],
+      ['14', '10', '同じ3を足そう'], ['14', '14', '三辺に2を足す'],
+      ['14', '15', '正の3で割り'],
+    ] as const) {
+      const section = mathTextbookUnits.find(u => u.unitId.endsWith('n' + n))!.sections[0]
+      const lead = JSON.stringify(section.readingFlow.find(v => v.id === 'n' + n + '-lead-' + q))
+      expect(lead, 'n' + n + '-' + q).not.toContain(forbidden)
+    }
+  })
+
+  it('P-004-R2 archives and reopens only eight changed choices, including a direct v1→v3 upgrade', () => {
+    const changed: Record<string, string[]> = {
+      '07': ['n07-09'],
+      '11': ['n11-06', 'n11-08', 'n11-09', 'n11-13'],
+      '14': ['n14-10', 'n14-14', 'n14-15'],
+    }
+    const oldV1: Record<string, string[]> = {
+      '07': ['n07-06'], '11': ['n11-05'], '14': ['n14-06', 'n14-11'],
+    }
+    const record = (id: string): TextbookAnswerRecord => ({
+      itemId: id, value: 'old answer', firstValue: 'old answer',
+      isFirstCorrect: true, resolved: true, attemptCount: 1,
+      firstAnsweredAt: 100, lastAnsweredAt: 200,
+    })
+    for (const n of Object.keys(changed)) {
+      const unit = mathTextbookUnits.find(u => u.unitId.endsWith('n' + n))!
+      expect(unit.revision).toBe(3)
+      const stable = unit.sections[0].items.find(item => !changed[n].includes(item.id)
+        && !oldV1[n].includes(item.id))!.id
+      const keys = [stable, ...changed[n], ...oldV1[n]]
+      const answers = Object.fromEntries(keys.map(id => [id, record(id)]))
+      const savedV2: TextbookUnitProgress = {
+        unitId: unit.unitId, unitRevision: 2,
+        startedAt: 100, updatedAt: 200, completedAt: 200, answers,
+      }
+      const migrated = effectiveTextbookProgress(unit, savedV2)!
+      expect(migrated.unitRevision).toBe(3)
+      expect(migrated.migratedFromRevision).toBe(2)
+      expect(migrated.completedAt).toBeUndefined()
+      expect(migrated.previousRevisionCompletedAt).toBe(200)
+      expect(migrated.answers[stable]).toEqual(answers[stable])
+      for (const id of oldV1[n]) expect(migrated.answers[id]).toEqual(answers[id])
+      for (const id of changed[n]) {
+        expect(migrated.answers[id]).toBeUndefined()
+        expect(migrated.archivedRevisions?.['2']?.answers[id]).toEqual(answers[id])
+      }
+      expect(effectiveTextbookProgress(unit, migrated)).toBe(migrated)
+      const fromV1 = effectiveTextbookProgress(unit, { ...savedV2, unitRevision: 1 })!
+      expect(fromV1.unitRevision).toBe(3)
+      expect(fromV1.archivedRevisions?.['1']).toBeDefined()
+      expect(fromV1.archivedRevisions?.['2']).toBeDefined()
+      expect(fromV1.answers[stable]).toEqual(answers[stable])
+      for (const id of [...changed[n], ...oldV1[n]]) expect(fromV1.answers[id]).toBeUndefined()
+    }
   })
 
 })

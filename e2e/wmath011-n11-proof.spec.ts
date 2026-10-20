@@ -54,7 +54,7 @@ for (const width of [320, 390]) {
       }
       const correctId = await correct.getAttribute('data-testid')
       const other = await panel.getByRole('button').all()
-      let wrong = other.find(() => false) // choose a real different rendered item below
+      let wrong: (typeof other)[number] | undefined
       for (const button of other) {
         if ((await button.getAttribute('data-testid')) !== correctId) { wrong = button; break }
       }

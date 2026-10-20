@@ -5,6 +5,14 @@ Repository: `rrikunagasige-dot/kyotsu-step-web` (ID `1391122224`)
 Verified main at checkpoint: `6e398f923c45fe895e53bc1f0f055f038acc41b6` — app release PR #50, [Pages SUCCESS](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38055876654).
 NOTE: This HEAD is a dated checkpoint, not a substitute for reading live main on every new task.
 
+## 2026-10-20 authoritative latest — W-MATH-003 / PR #101
+
+- Authoritative target repo `rrikunagasige-dot/kyotsu-step-web` (ID 1391122224), last checked main `537c3cbf28d40f45228d8a0c4bdd20327136aa93`, branch `work/W-MATH-003-p003-r1-n04-n14-batch-20261019`, Draft PR #101 unmerged.
+- N04/N05/N06/N07/N08/N11/N13/N14 Word source 123 question markers → 127 guided actions, nine original PNG figures protected, six earlier units untouched. P-004 8 fixes, P-004-R1 2, P-004-R2 11 and **P-004-R3 6** explicitly approved and implemented.
+- R3 exact app-code SHA `06b1e0e217fc0933d203192ea0b2e11337bcee83`; [Math CI SUCCESS](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39372583858), [genuine image workflow SUCCESS](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39372579155), 66 R3 actual images at `ad78002113827ac78b2d832bd1292c9308b32e47`; [11-item screenshot index](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/work/W-MATH-003-p003-r1-n04-n14-batch-20261019/work/items/W-MATH-003-numbers-expressions-creation/evidence/n04-n14-gallery/README.md).
+- **Next correction-first gate:** separate exact **P-004-R4 PROPOSED / NOT APPROVED**: N11-Q13/N14-Q14/N14-Q15 320px resolved long math cards require two visible lines; proposal `work/items/W-MATH-003-numbers-expressions-creation/P-004-R4_LONG_RESOLVED_OPTION_DISPLAY_PROPOSAL.md`. No code edited for R4. After approval, narrowly fix/reverify and consolidate revised-user visual review. Prior approvals are not to be repeated.
+- **Gate② NOT CROSS-VERIFIED**: 48 independent math claims pass but full 123 source answers and all wrong options not yet individually proven; **Gate③ NOT READY**: real code-matching app URL and full user play `総チェックOK` not yet completed. No main merge, Pages, Vercel, billing or publication authorization.
+
 ## 2026-10-19 新しい作業位置 — W-MATH-003 / P-003-R1（独立ブランチ）
 
 - ユーザーが最新指示で「N04〜N14をすべて先に実装、各Qでは止めず最後に一括確認」と再明示。旧 N04-Q01-only 承認待ち運用はこの作業に適用しない。こちらからの未承認提案はない。

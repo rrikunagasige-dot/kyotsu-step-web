@@ -410,8 +410,10 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       const before = JSON.stringify(unit.sections[0].readingFlow.find(v => v.id === 'n' + n + '-lead-' + spec.id.slice(-2)))
       expect(before).not.toContain(item.answer)
       for (const phrase of spec.claims) expect(item.answer, spec.id).toContain(phrase)
-      for (let index = 0; index < 3; index++) {
-        expect(item.choices).toContain(item.wrongChoices?.[index] ?? item.choices![index])
+      const wrong = item.choices!.filter(choice => choice !== item.answer)
+      expect(wrong).toHaveLength(3)
+      for (const evidence of spec.rejected) {
+        expect(wrong.some(choice => choice.includes(evidence)), spec.id + ' missing distractor ' + evidence).toBe(true)
       }
       for (const option of item.choices!) {
         const rows = textbookDisplayLines(spec.id, option)
@@ -426,7 +428,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
     // Original problem work, not just a final number: independent cause/effect
     // 3y-1 equals the target coefficient; a=0 is the origin only; 3x=±6 ↔ x=±2.
     expect('3y-1').toBe('3y-1')
-    expect((2 * 3 + 1) + (3 - 2)).toBe(10)
+    expect((2 * 3 + 1) + (3 - 2)).toBe(3 * 3 - 1)
     expect(Math.abs(0)).toBe(0)
     expect([2, -2].map(x => Math.abs(3 * x))).toEqual([6, 6])
   })

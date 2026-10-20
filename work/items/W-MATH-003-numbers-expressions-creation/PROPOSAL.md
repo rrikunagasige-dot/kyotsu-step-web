@@ -38,3 +38,9 @@ Scope unchanged; this does not waive blocked raw-source requirement.
 
 ## Revision history
 P-001 is approved as proposed. No revised proposal/conditions at present.
+
+## 2026-10-20 — Corrective proposal state
+- P-004 (8 items), P-004-R1 (2 items), P-004-R2 (11 items): separately user-approved, implemented, CI PASS.
+- **P-004-R3** (five preceding paragraphs + N07-Q09 item-specific display-only line breaks): user explicit 「承認」 then 「いいよ」; **APPROVED, IMPLEMENTED AND VERIFIED**. Code SHA `06b1e0e217fc0933d203192ea0b2e11337bcee83`, Math CI `39372583858` PASS, screenshot workflow `39372579155` PASS, image commit `ad78002113827ac78b2d832bd1292c9308b32e47`.
+- **P-004-R4** (three narrow *resolved-state* visual line breaks at N11-Q13/N14-Q14/N14-Q15): independent 320px screenshot sweep found clipping, **PROPOSED / NOT APPROVED, no R4 learner code changes**. Exact `P-004-R4_LONG_RESOLVED_OPTION_DISPLAY_PROPOSAL.md`.
+- Source Word, figure bytes, original IDs, other modes, production, main remain protected. Gate② all-123-and-distractors independent proof and Gate③ user play NOT DONE. R3 does not authorize R4 or publishing.

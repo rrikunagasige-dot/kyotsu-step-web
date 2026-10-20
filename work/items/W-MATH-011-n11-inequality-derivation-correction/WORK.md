@@ -1,7 +1,7 @@
 # W-MATH-011 — N11 Q01〜Q04 1次不等式の導出修正
 
 Status: VERIFYING
-**Current status: IMPLEMENTED / TECHNICAL CI PASS; Gate① new four-block human review PENDING.**
+**Current status: IMPLEMENTED / TECHNICAL CI PASS; Gate① visual accepted; Gate② §12B linked defect blocks closure.**
 Date: 2026-10-20 JST. Command CMD-WORK-001「修正」.
 Source: teacher-edited original Word 212863 B SHA \`93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa\`, N11 Q01–Q04 (word pages 36–37, printed pages 27–28); mode mathematics/textbook (NOT mathematics/practice). Frozen review app \`src/data/textbook/math/numbers/n11Lesson.ts\` revision 3, learner code SHA \`ad77318b37e90b9c39150b14ee706283b3f59355\` in draft PR #101. Main \`537c3cbf28d40f45228d8a0c4bdd20327136aa93\`.
 User: complained N11 inequalities pedagogical flow poor and explicitly forbade revising lessons because lessons already contain solution. Assistant compared original Word, target code, Math Textbook canonical lessons AND the ORIGINAL \`MATHEMATICS_TEXTBOOK_MODE_MASTER_SKILL_v1(3).md\` from Library, as well as historical W-MATH-004 N12 fix. User approved proceeding **to design before a separate implementation approval** via 「そうだね。よろしく。」. This is NOT P-001 code approval.
@@ -16,3 +16,9 @@ Next: ask user to approve exact P-001 or propose edits; after exact approval, pe
 - [Authentic screenshots #39440719673](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39440719673): **SUCCESS** on exact learner SHA; all **54 N11 images** (9 stages × widths 320/390 × before/wrong/resolved), saved in screenshot commit `3e94827402bb0a1f53101c84fd3d1c8fae907f4c`; mobile Q01/Q02/Q03/Q04 screenshot content inspected. Original two N11 drawings and nine original figure bytes unchanged.
 - Independent original-source [9-stage mathematical proof and changed distractor audit](./P-001_INDEPENDENT_PROOF_AUDIT.md) PASS. Four source markers Q01–Q04 preserved, five local answers added, N11 v3→v4 archives old records and reopens precisely Q03/Q04; Q05–Q14 untouched.
 - **Status: IMPLEMENTED + TECHNICAL-QA PASS; EXISTING Gate① visual review for *these four newly corrected source-question groups* PENDING**. [Actual review sheet](./GATE1_N11_Q01_Q04_REVIEW_SHEET.md). Gate② affected N11 content must be recrosschecked after explicit human visual acceptance; Gate③ hosted SHA-matching real app + user full-play still unverified and not authorized. **No main merge, public hosting, lesson edit, Word edit, Vercel permission or payment change**.
+
+## 2026-10-21 Gate① USER ACCEPTED; Gate② independent impact BLOCKED
+- User's **verbatim** response to the four-source-group actual screenshot sheet was 「いいよ」. Treat as **BLOCK-VISUAL-OK for N11 Q01〜Q04** on frozen code SHA `2ebdf7fbb0c7387ae05753c286b3c457da74e17c`, authentic 54 screenshots, not publication or app-wide play acceptance. Don't pretend user typed exact `細部OK`.
+- Local 9 proof stages mathematically, layout, persistence and CI PASS [#39442017686](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39442017686); original 14 N11 labels, N11 19 active / entire eight-unit 132 guided operations.
+- [Formal Gate② audit](./CROSS_BLOCK_AUDIT_N11_P001_20261021.md) is **BLOCKED** for whole inequality Work due **CONFIRMED linked N11-Q11 underguided expansion/移項**, new [W-MATH-012/P-001](../W-MATH-012-n11-q11-derivation-correction/PROPOSAL.md) **PROPOSED / AWAITING USER APPROVAL**. Q12/Q14/N14 linked risks unresolved and cannot be modified without own scope/approval.
+- No learner/source/release code changed in this assessment, no master lesson changes. Main remains protected, PR #101 unmerged, Gate③ full live app review NOT READY. W-MATH-011 stays VERIFYING; no DONE or CROSS-VERIFIED claim for entire area.

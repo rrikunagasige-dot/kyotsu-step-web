@@ -1,5 +1,8 @@
 # PROGRESS — rriku（2026-10-19 追記）
 
+## 2026-10-21 newest authoritative N11 gate status: Gate① ACCEPTED, Gate② §12B BLOCKED
+User's direct latest 「いいよ」 = **N11 Q01–Q04 Gate① BLOCK-VISUAL-OK**, actual 54 R4 screenshot views at learner SHA `2ebdf7fbb0c7387ae05753c286b3c457da74e17c`; technical math regression [#39442017686](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39442017686) SUCCESS. Independent Gate② finds **one new confirmed same-root issue N11-Q11** (expansion→x-transposition→constant step collapsed). [W-MATH-011 Gate② impact ledger](../work/items/W-MATH-011-n11-inequality-derivation-correction/CROSS_BLOCK_AUDIT_N11_P001_20261021.md) **BLOCKED for entire inequality scope**, [W-MATH-012 exact single-Q11 proposal](../work/items/W-MATH-012-n11-q11-derivation-correction/PROPOSAL.md) **PROPOSED, unapproved**. Q12/Q14/N14 some derivation risks are not proven defects and have no code approval. Earlier Gate① accepted Q01–04 stays valid; no global Gate② pass, no app Gate③ acceptance/merge/hosting. Master lessons/source Word/learner code unchanged by this audit.
+
 ## 2026-10-21 W-MATH-011 Q01〜Q04 実装・技術監査成功
 - 承認済みP-001、N11の4原問を9思考操作に分解し、本体修正を完了（教材SHA `2ebdf7fbb0c7387ae05753c286b3c457da74e17c`）。N11全19操作、8新単元計132操作。元の教訓・Word・N11-Q05〜14・画像9点・他モード変更なし。
 - [CI 39442017686](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39442017686) SUCCESS；[54枚の実画像 39440719673](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39440719673) SUCCESS。旧rev1/2/3の履歴を保持し、N11-Q03とQ04のみ再回答。旧24修正問、N12、物理、数学練習の回帰PASS。

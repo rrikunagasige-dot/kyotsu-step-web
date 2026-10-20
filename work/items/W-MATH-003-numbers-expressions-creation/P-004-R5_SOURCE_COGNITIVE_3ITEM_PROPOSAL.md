@@ -1,6 +1,6 @@
 # W-MATH-003 / P-004-R5 — Original-Word cognitive fidelity on exactly three items
 
-Status: **PROPOSED / NOT APPROVED / NO LEARNER CODE CHANGE**
+Status: **APPROVED IN CHAT (user's 「続けて」 directly following P-004-R5 approval question) / IMPLEMENTING**
 Date: 2026-10-20 JST
 Command: CMD-WORK-001「修正」, correction-first §12B, under existing accepted Gate①→Gate②→Gate③. Preserve all separately completed P-004 / R1 / R2 / R3 / R4 approvals and regression.
 Source: teacher Word 212863 B SHA-256 \`93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa\`. Audited code SHA: \`61498366f2bed5324326e55d09b8f5c984a1a714\`, Draft PR #101. Independent full row-by-row evidence: \`GATE2_PHASE2_INDEPENDENT_KEY_DISTRACTOR_AUDIT_20261020.md\` (N08/N11/N13/N14 51 markers/153 wrong options) + \`GATE2_PHASE3_REMAINING_SOURCE_DISTRACTOR_AUDIT_20261020.md\` (N04/N05/N06/N07 72 markers/228 wrong options, including N04-Q01's 5 local interactions). All **123 source question markers, 127 decisions, 381 wrong candidates** have been inspected, with **three** confirmed final-value-correct but source-cognitive-incomplete rows. 53 new SymPy independent claims PASS; previous 48 claims overlap and are not additive.
@@ -64,4 +64,4 @@ Changing the accepted answer key means previously "correct" saved decisions are 
 
 No touch to original teacher Word/DOCX, other modes, math sets, physics, practice, existing original question ID/figure binaries, prior accepted initial eight-unit Gate①, PR #101 merge, \`main\`, public Pages, Vercel or billing. No invented deployment mechanism. For remaining Gate②, replay source-to-key/cognitive audit for the three amended answers and verify 381 alternatives still all pedagogically false under the **current amended option list**, plus source-order/no-premature-revelation cross-audit at tested SHA.
 
-**STOP: P-004-R5 is currently PROPOSED, NOT APPROVED.** User's 「おけ続」 only confirmed proceeding with Gate② work, not license to implement these new source-cognitive choice/key changes. Obtain user's explicit decision on this exact R5 before any learner-content, revision or progress-code edit. Existing P-004/R1/R2/R3/R4 approvals remain valid; do not seek duplicate approval.
+**Approval update 2026-10-20:** Earlier 「おけ続」 was Gate②-only, but the subsequent user message 「続けて」 was given **directly in response to the explicit approval question naming this exact P-004-R5 three-item proposal**. It authorizes the exact displayed three-item R5 repair, no additional scope. Main/public deployment remains separate. Existing P-004/R1/R2/R3/R4 approvals remain valid.

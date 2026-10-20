@@ -7,6 +7,11 @@ const repaired = [
   ['07', 'n07-06'], ['08', 'n08-05'], ['11', 'n11-05'],
   ['14', 'n14-06'], ['14', 'n14-11'],
   ['06', 'n06-11'], ['14', 'n14-05'],
+  // P-004-R2: eleven newly approved source-cognitive repairs.
+  ['06', 'n06-01'], ['06', 'n06-05'], ['07', 'n07-09'],
+  ['08', 'n08-02'], ['11', 'n11-06'], ['11', 'n11-08'],
+  ['11', 'n11-09'], ['11', 'n11-13'], ['14', 'n14-10'],
+  ['14', 'n14-14'], ['14', 'n14-15'],
 ] as const
 
 for (const [n, id] of repaired) {
@@ -21,6 +26,7 @@ for (const [n, id] of repaired) {
       await page.reload()
       await expect(page.getByTestId('textbook-reading-flow')).toBeVisible()
       const save = process.env.E2E_P004_EVIDENCE === '1'
+      const prefix = ['n06-01', 'n06-05', 'n07-09', 'n08-02', 'n11-06', 'n11-08', 'n11-09', 'n11-13', 'n14-10', 'n14-14', 'n14-15'].includes(id) ? 'p004-r2-' : 'p004-'
       for (const item of items) {
         const trigger = page.getByTestId('textbook-item-' + item.id)
         await expect(trigger, item.id).toBeVisible()
@@ -34,7 +40,7 @@ for (const [n, id] of repaired) {
           await expect(hint).toHaveCount(0)
           if (save) {
             await trigger.scrollIntoViewIfNeeded()
-            await page.screenshot({ path: 'e2e-evidence/p004-' + id + '-' + width + '-before.png' })
+            await page.screenshot({ path: 'e2e-evidence/' + prefix + id + '-' + width + '-before.png' })
           }
           const correctTestId = await correct.getAttribute('data-testid')
           const buttons = await panel.getByRole('button').all()
@@ -59,7 +65,7 @@ for (const [n, id] of repaired) {
           await expect(retryPanel).toBeVisible()
           await expect(hint).toBeVisible()
           if (save) {
-            await page.screenshot({ path: 'e2e-evidence/p004-' + id + '-' + width + '-wrong.png' })
+            await page.screenshot({ path: 'e2e-evidence/' + prefix + id + '-' + width + '-wrong.png' })
           }
           correct = retryPanel.getByRole('button', { name: item.answer, exact: true })
         }
@@ -72,7 +78,7 @@ for (const [n, id] of repaired) {
           ])
           expect(widths[0], id + ' overflow at ' + width + 'px').toBeLessThanOrEqual(widths[1] + 2)
           if (save) {
-            await page.screenshot({ path: 'e2e-evidence/p004-' + id + '-' + width + '-resolved.png' })
+            await page.screenshot({ path: 'e2e-evidence/' + prefix + id + '-' + width + '-resolved.png' })
           }
           await page.reload()
           await expect(page.getByTestId('resolved-' + id)).toBeVisible()

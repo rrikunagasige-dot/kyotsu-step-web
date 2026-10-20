@@ -348,7 +348,37 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       }
     }
     expect(textbookDisplayLines('n11-09', item.answer)).toEqual([item.answer])
-    expect(textbookDisplayLines('n14-15', item.answer)).toEqual([item.answer])
+    expect(textbookDisplayLines('n14-10', item.answer)).toEqual([item.answer])
+  })
+
+  it('P-004-R4 preserves three compound grading keys while displaying operation and inequality as two KaTeX rows', () => {
+    for (const id of ['n11-13', 'n14-14', 'n14-15']) {
+      const section = mathTextbookUnits.find(unit => unit.unitId.endsWith(id.slice(0, 3)))!.sections[0]
+      const item = section.items.find(candidate => candidate.id === id)!
+      expect(item.choices).toHaveLength(4)
+      expect(item.choices).toContain(item.answer)
+      expect(new Set(item.choices).size).toBe(4)
+      for (const choice of item.choices) {
+        const lines = textbookDisplayLines(id, choice)
+        expect(lines, id).toHaveLength(2)
+        expect(lines.every(line => line.trim().length > 0)).toBe(true)
+        expect(lines.join(',\\quad'), id).toBe(choice)
+        for (const line of lines) {
+          expect(() => katex.renderToString(line.trim(), { throwOnError: true, strict: 'ignore' })).not.toThrow()
+        }
+      }
+    }
+    const preserved = mathTextbookUnits.find(unit => unit.unitId.endsWith('n07'))!.sections[0].items.find(item => item.id === 'n07-09')!
+    expect(textbookDisplayLines(preserved.id, preserved.answer)).toHaveLength(3)
+    for (const id of ['n11-06', 'n11-08', 'n11-09', 'n14-10']) {
+      const section = mathTextbookUnits.find(unit => unit.unitId.endsWith(id.slice(0, 3)))!.sections[0]
+      const item = section.items.find(candidate => candidate.id === id)!
+      expect(textbookDisplayLines(item.id, item.answer)).toEqual([item.answer])
+    }
+    for (const n of ['11', '14']) {
+      const unit = mathTextbookUnits.find(u => u.unitId.endsWith('n' + n))!
+      expect(unit.revision).toBe(3)
+    }
   })
 
 })

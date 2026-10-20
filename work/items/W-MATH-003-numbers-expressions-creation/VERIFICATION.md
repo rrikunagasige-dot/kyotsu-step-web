@@ -286,3 +286,9 @@ Scope: N04/N05/N06/N07/N08/N11/N13/N14, 123 Word markers / 127 guided actions, o
 コードSHA `2604589da22062cb67928ee5e1569a5de0338845` を対象とした[Math textbook CI #39346035269](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39346035269)は **SUCCESS**。型・Lint・単体・ビルド、N04〜N14の127操作（スマホ/PC）、修正10問×320/390px=20ケースの誤答→再開→ヒント→正答・保存復元、旧数学・物理・練習モードの回帰が通過。実画面60枚は同SHAから生成され、画像commit `fd1cc4192b9c19ec5acae9f0154425df38249174` に保存。一括[確認①〜⑩](./evidence/n04-n14-gallery/README.md)はまだユーザー細部OK待ち。
 
 9原図・123原問ID・127選択操作・既承認教材の保護を確認。独立した123問すべての正答・誤答候補の数学的証明（公式解答別冊は未提供）は **UNVERIFIED**。したがってGate② **NOT CROSS-VERIFIED**、Gate③ **NOT READY**。main統合・本番公開・課金は行っていない。
+
+## V-041 — Gate② 48 independent computations / 11 new source-cognitive findings (2026-10-20)
+- Recovered ZIP-embedded original Word: 212863 bytes, exact historical SHA-256. Independently ran 48 SymPy equality / real-solution / denominator-enumeration checks; **48/48 PASS**, with method and exact per-unit mathematical claims in `GATE2_INDEPENDENT_ALGEBRA_CHECKPOINT_20261020.md`. These 48 checks overlap source markers, and **are not** 123/123 complete independent key-and-distractor proofs; no official answer booklet.
+- Against exact source app SHA `2604589da22062cb67928ee5e1569a5de0338845`, source-cognitive mismatch 11/11 IDs identified in F-029; exact P-004-R2 is unapproved. Original prior ten corrections' test success is preserved at their own code SHA.
+- User reported “一旦確認もうした” re revised visuals; it records the review happened, **not a fabricated verbatim `細部OK`**.
+- Gate② = **NOT CROSS-VERIFIED** due 11 newly confirmed pedagogical defects and incomplete independent proof of 123 original questions / all distractors. Gate③ = FINAL-REVIEW-NOT-READY.

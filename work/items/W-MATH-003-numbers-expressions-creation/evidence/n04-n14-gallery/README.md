@@ -1,5 +1,8 @@
 # W-MATH-003/P-003-R1 — 8単元まとめて確認（実アプリ画面画像）
 
+## W-MATH-011 N11-Q01〜Q04 修正（2026-10-21）
+[**4原問・9操作の細部確認票（全54枚の実画面）**](../../../W-MATH-011-n11-inequality-derivation-correction/GATE1_N11_Q01_Q04_REVIEW_SHEET.md) — 320px/390px、各回答前・誤答後・正答後。対象コードSHA `2ebdf7fbb0c7387ae05753c286b3c457da74e17c`、[撮影 #39440719673](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39440719673) PASS、[全数学CI #39442017686](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39442017686) PASS。以前のR5画像は別バージョンの歴史的監査証拠として以下に残す。今回のGate①ユーザー細部確認は未取得。
+
 ## P-004-R5｜数学独立監査で補った3問の実画面（新規一括確認）
 
 **対象コードSHA**：`ad77318b37e90b9c39150b14ee706283b3f59355`。

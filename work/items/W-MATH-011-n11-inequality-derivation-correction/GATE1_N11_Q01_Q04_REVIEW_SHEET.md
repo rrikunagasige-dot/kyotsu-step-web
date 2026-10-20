@@ -1,6 +1,6 @@
 # W-MATH-011 / Gate① — N11「不等式」Q01〜Q04 実画面細部確認
 
-**Status: REVIEW READY (images captured, user review PENDING).** Source code SHA `2ebdf7fbb0c7387ae05753c286b3c457da74e17c`, screenshot save commit `3e94827402bb0a1f53101c84fd3d1c8fae907f4c`. Original source **4 questions→9 learner stages**, 5 newly authored stable IDs; all nine preserved original PNGs unmodified; N11-F01 before Q01 and N11-F02 after Q10. Image run [#39440719673](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39440719673) **SUCCESS**; full Math CI [#39440728483](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39440728483) status must be checked fresh before claiming final PASS.
+**Status: REVIEW READY (images captured, user review PENDING).** Source code SHA `2ebdf7fbb0c7387ae05753c286b3c457da74e17c`, screenshot save commit `3e94827402bb0a1f53101c84fd3d1c8fae907f4c`. Original source **4 questions→9 learner stages**, 5 newly authored stable IDs; all nine preserved original PNGs unmodified; N11-F01 before Q01 and N11-F02 after Q10. Image run [#39440719673](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39440719673) **SUCCESS**; full Math CI [#39442017686](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39442017686) **SUCCESS** (same reviewed learner code SHA, later notes-only GitHub commit).
 
 9 item IDs × 320px/390px × before/wrong/resolved = **54 actual screen PNGs** from a real app controlled browser, not mockups. All original figure bytes stay unchanged. User must inspect **four source question groups**; do not automatically call `細部OK` from CI.
 
@@ -53,6 +53,6 @@
 | Q03 | `n11-wm011-q03-factor`, `n11-wm011-q03-positive`, `n11-03`, `n11-wm011-q03-zero` |
 | Q04 | `n11-wm011-q04-fraction`, `n11-04` |
 
-Full screenshot file prefix: `../W-MATH-003-numbers-expressions-creation/evidence/n04-n14-gallery/wmath011-{itemId}-{320|390}-{before|wrong|resolved}.png`. Both figure placement and full 132-step math walkthrough need independent CI acceptance before Gate② formal closure. Gate③ whole-app playable URL + user end-to-end acceptance remains on hold; no main merge, Pages/Vercel preview deployment or billing authorized.
+Full screenshot file prefix: `../W-MATH-003-numbers-expressions-creation/evidence/n04-n14-gallery/wmath011-{itemId}-{320|390}-{before|wrong|resolved}.png`. Both figure placement and full 132-step math walkthrough **have technical CI PASS**; independent user Gate① visual approval and subsequent formal Gate② review still required. Gate③ whole-app playable URL + user end-to-end acceptance remains on hold; no main merge, Pages/Vercel preview deployment or billing authorized.
 
 **User acceptance gate:** reply `確認01〜04 細部OK` if all four source groups are acceptable, otherwise `要修正` with source question ID and observable issue. This is small-block visual approval, not full application final acceptance.

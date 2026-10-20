@@ -1,5 +1,5 @@
 # W-MATH-012 / P-001 — N11-Q11「展開→移項→整理」の導き修正案
-Status: **PROPOSED / NOT APPROVED / NO LEARNER CODE CHANGE**
+Status: **APPROVED IN CHAT — user's 「続けて」 replied directly to this exact one-question P-001 approval request. Implementation not yet verified.**
 Date: 2026-10-21 JST; linked to W-MATH-011 Gate② root-cause impact [ledger](../W-MATH-011-n11-inequality-derivation-correction/CROSS_BLOCK_AUDIT_N11_P001_20261021.md), CMD-WORK-001 and existing §12B.
 Frozen code SHA `2ebdf7fbb0c7387ae05753c286b3c457da74e17c`; N11 revision 4. Draft PR #101 only. Source: original teacher Word, N11-Q11, equation `3(2x+3)\ge10x-17`. Its single current learner choice directly answers `-4x\ge-26` after **three hidden nontrivial operations**; current formula, keys and distractors mathematically valid but insufficiently taught for first expanded complex inequality. No changes to canonical lessons necessary.
 
@@ -41,4 +41,4 @@ No answer or subsequent complete derived line is displayed before the learner fi
 
 ## Before-implementation stop
 
-**No edits are authorized yet.** User must explicitly approve this exact **single Q11 P-001** before changing any learner code or unit revision. Q12/Q14 and N14 linked risks remain independent future decisions; do not silently bundle them. No modification to project lessons or source Word; no new workflows or gate definitions.
+**Approval recorded 2026-10-21:** User replied 「続けて」 immediately following the explicit invitation to approve this exact single-Q11 plan. This authorizes the bounded two new steps and rev4→5 archival migration, **not** another question, source lesson or deployment. Implementation/technical QA remain pending. Q12/Q14 and N14 linked risks remain independent future decisions; do not silently bundle them. No modification to project lessons or source Word; no new workflows or gate definitions.

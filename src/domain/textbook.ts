@@ -185,6 +185,46 @@ export function effectiveTextbookProgress(unit: TextbookUnit, progress: Textbook
   if (!progress) return undefined
   if (progress.unitRevision === unit.revision) return progress
 
+  // W-MATH-011/P-001: N11's four original source questions now contain
+  // nine active proof decisions, five of them entirely new. Old Q01/Q02
+  // remain valid; only old Q03/Q04 change answer meaning. Archive every
+  // historical answer and reopen exactly those two old IDs.
+  // v1/v2 records first traverse the already-approved v2 and v3 repairs.
+  if (unit.unitId === 'math-numbers-expressions-n11' && unit.revision === 4
+    && progress.unitId === unit.unitId
+    && [1, 2, 3].includes(progress.unitRevision)) {
+    const fromV3 = progress.unitRevision === 3 ? progress
+      : effectiveTextbookProgress({ ...unit, revision: 3 }, progress)
+    if (!fromV3 || fromV3.unitRevision !== 3) return undefined
+    const oldArchive: TextbookRevisionArchive = {
+      unitRevision: 3,
+      startedAt: fromV3.startedAt,
+      updatedAt: fromV3.updatedAt,
+      answers: { ...fromV3.answers },
+      ...(fromV3.completedAt !== undefined ? { completedAt: fromV3.completedAt } : {}),
+      ...(fromV3.previousRevisionCompletedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV3.previousRevisionCompletedAt } : {}),
+      ...(fromV3.migratedFromRevision !== undefined
+        ? { migratedFromRevision: fromV3.migratedFromRevision } : {}),
+    }
+    const answers = { ...fromV3.answers }
+    delete answers['n11-03']
+    delete answers['n11-04']
+    return {
+      unitId: unit.unitId,
+      unitRevision: 4,
+      startedAt: fromV3.startedAt,
+      updatedAt: fromV3.updatedAt,
+      answers,
+      migratedFromRevision: 3,
+      archivedRevisions: { ...(fromV3.archivedRevisions ?? {}), '3': oldArchive },
+      ...(fromV3.completedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV3.completedAt }
+        : fromV3.previousRevisionCompletedAt !== undefined
+          ? { previousRevisionCompletedAt: fromV3.previousRevisionCompletedAt } : {}),
+    }
+  }
+
   // P-004: the seven affected review lessons changed answer semantics.
   // Preserve all v1 attempts in history, keep unaffected resolved answers,
   // and reopen only the corrected learner decisions. Never reuse old-key

@@ -85,3 +85,7 @@ Status remains `VERIFYING`, not DONE. Gate①: accepted by user's 「結構い�
 ## 2026-10-20 — P-004 repaired and tested, correction-first loop still open
 The user explicitly approved P-004 eight-question correction. All eight were repaired, preserved 123 source markers/127 interactions/9 original figures, and passed full CI 39343256282 at source SHA `7fce8fa93511df5406602d1a3e0d3c6e1f3dfdf9`; 48 real revised screenshots are in the existing gallery. Gate① original batch remains accepted; revised P-004 eight-question fine visual check is pending.
 P-004 scope and full 14-unit root-cause sweep found **two more confirmed source-cognitive leakages** N06-Q11 and N14-Q05. These remain **UNTOUCHED** pending user's exact separate scope permission under `P004-R1_ADDITIONAL_LEAK_REPAIR_PROPOSAL.md`. Keep Work `VERIFYING`, Gate② NOT CROSS-VERIFIED and Gate③ NOT READY. Do not merge, publish or alter billing; do not start a new creation Work while correction-first issues remain unresolved.
+
+
+## 2026-10-20 — P-004-R1 追加2問の修正・自動検証を完了
+N06-Q11/N14-Q05の回答前説明のみを承認済み範囲で修正した。10問の誤答・ヒント・再挑戦20ケース、127操作と旧数学・物理・練習回帰が[Math CI #39346035269](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39346035269)で **PASS**（教材SHA `2604589da22062cb67928ee5e1569a5de0338845`）。[60枚の実画面・確認①〜⑩](./evidence/n04-n14-gallery/README.md)を整理済み。修正後の**一括細部確認はユーザー待ち**。Gate②は123問の独立証明等が未検証なのでNOT CROSS-VERIFIED、Gate③ NOT READY。既存8単元の承認履歴は保持し、main統合・本番公開・Vercel変更・課金は行っていない。Workは引き続きVERIFYING。

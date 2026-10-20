@@ -212,7 +212,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
   it('P-004-R2 requires 11 actual original-source cognitive actions before disclosing answers', () => {
     const specs: Record<string, Record<string, string[]>> = {
       '06': { '01': ['X=x+2y', '(X+1)(X-2)-4'], '05': ['T=x^2', 'T^2-5T+4'] },
-      '07': { '09': ['100\\text{倍}', '100x=69.', '99x=69'] },
+      '07': { '09': ['\\text{100倍}', '100x=69.', '99x=69'] },
       '08': { '02': ['|a|=a'] },
       '11': {
         '06': ['\\text{両辺を正の}3\\text{で割る}', 'x<\\frac73'],

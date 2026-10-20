@@ -12,10 +12,13 @@ const repaired = [
   ['08', 'n08-02'], ['11', 'n11-06'], ['11', 'n11-08'],
   ['11', 'n11-09'], ['11', 'n11-13'], ['14', 'n14-10'],
   ['14', 'n14-14'], ['14', 'n14-15'],
+  // P-004-R5: approved three source-cognitive compound response repairs.
+  ['06', 'n06-15'], ['08', 'n08-10'], ['13', 'n13-08'],
 ] as const
 
 const r2Ids = new Set(['n06-01', 'n06-05', 'n07-09', 'n08-02', 'n11-06', 'n11-08', 'n11-09', 'n11-13', 'n14-10', 'n14-14', 'n14-15'])
-if (r2Ids.size !== 11 || repaired.length !== 21) throw new Error('P-004/R2 source repair list changed unexpectedly')
+const r5Ids = new Set(['n06-15', 'n08-10', 'n13-08'])
+if (r2Ids.size !== 11 || r5Ids.size !== 3 || repaired.length !== 24) throw new Error('P-004/R2 source repair list changed unexpectedly')
 
 for (const [n, id] of repaired) {
   for (const width of [320, 390]) {
@@ -29,7 +32,7 @@ for (const [n, id] of repaired) {
       await page.reload()
       await expect(page.getByTestId('textbook-reading-flow')).toBeVisible()
       const save = process.env.E2E_P004_EVIDENCE === '1'
-      const prefix = r2Ids.has(id) ? 'p004-r2-' : 'p004-'
+      const prefix = r5Ids.has(id) ? 'p004-r5-' : r2Ids.has(id) ? 'p004-r2-' : 'p004-'
       for (const item of items) {
         const trigger = page.getByTestId('textbook-item-' + item.id)
         await expect(trigger, item.id).toBeVisible()
@@ -38,6 +41,20 @@ for (const [n, id] of repaired) {
         await expect(panel).toBeVisible()
         let correct = panel.getByRole('button', { name: item.answer, exact: true })
         await expect(correct).toBeVisible()
+        if (item.id === id && r5Ids.has(id)) {
+          const options = panel.locator('.reading-choice-option')
+          expect(await options.count()).toBeGreaterThanOrEqual(2)
+          for (const option of await options.all()) {
+            const rows = option.locator('.reading-choice-formula-line')
+            await expect(rows).toHaveCount(2)
+            for (const line of await rows.all()) {
+              const [whole, visible] = await line.evaluate(element =>
+                [element.scrollWidth, element.clientWidth])
+              expect(whole, id + ' clipped source operation at ' + width + 'px')
+                .toBeLessThanOrEqual(visible + 1)
+            }
+          }
+        }
         if (item.id === id && id === 'n07-09') {
           // P-004-R3: page-level overflow PASS alone misses clipped formula rows.
           // The original three decisions must each be visible WITHOUT inner scrolling.
@@ -90,7 +107,7 @@ for (const [n, id] of repaired) {
         }
         await correct.click()
         await expect(page.getByTestId('resolved-' + item.id)).toBeVisible()
-        if (item.id === id && ['n11-13', 'n14-14', 'n14-15'].includes(id)) {
+        if (item.id === id && (r5Ids.has(id) || ['n11-13', 'n14-14', 'n14-15'].includes(id))) {
           // P-004-R4: the 320/390px *resolved* white formula card must
           // show operation and inequality as two distinct, fully readable rows.
           const answer = page.getByTestId('resolved-' + id)

@@ -28,7 +28,7 @@ const content = makeReviewSteps('n13', [
     steps:[
       {q:6,lead:'|x+2|=3を解く。中身のx+2を、原点から距離3の一つの数と見よう。',expr:'|x+2|=3',prompt:'絶対値なしの二つの方程式を選ぼう。',answer:'x+2=3\\;\\text{または}\\;x+2=-3',wrong:['x=3\\;\\text{または}\\;x=-3','x+2=3\\;\\text{かつ}\\;x+2=-3','x-2=3\\;\\text{または}\\;x-2=-3'],hint:'中の式全体が3か−3のどちらかになる。',after:'二つの方程式を解くとき、+2を両方の枝から引く。'},
       {q:7,lead:'x+2=3とx+2=−3をそれぞれ解く。',expr:'|x+2|=3',prompt:'両方の解を選ぼう。',answer:'x=1\\;\\text{または}\\;x=-5',wrong:['x=1','x=5\\;\\text{または}\\;x=-1','x=-1\\;\\text{または}\\;x=-5'],hint:'どちらの枝も両辺から2を引く。',after:'二つの解は−2を中心に左右へ3ずつ離れた位置にある。'},
-      {q:8,lead:'|3x|=6の中身は3x全体。正と負の二つの等式へ分け、3で割ろう。',expr:'|3x|=6',prompt:'二つの解を選ぼう。',answer:'x=2\\;\\text{または}\\;x=-2',wrong:['x=6\\;\\text{または}\\;x=-6','x=2','x=3\\;\\text{または}\\;x=-3'],hint:'3x=6か3x=−6かを解く。',after:'係数付きでも、絶対値の中身全体の符号を先に分けるのが原則。'},
+      {q:8,lead:'|3x|=6の中身は3x全体。正と負の二つの等式へ分け、3で割ろう。',expr:'|3x|=6',prompt:'絶対値を外した二つの方程式と、得られた解を組にして選ぼう。',answer:'3x=6\\;\\text{または}\\;3x=-6,\\quad x=2\\;\\text{または}\\;x=-2',wrong:['3x=6\\;\\text{または}\\;3x=-6,\\quad x=6\\;\\text{または}\\;x=-6','3x=6\\;\\text{かつ}\\;3x=-6,\\quad x=2\\;\\text{または}\\;x=-2','3x=6\\;\\text{または}\\;3x=-6,\\quad x=2'],hint:'3x=6か3x=−6かを解く。',after:'係数付きでも、絶対値の中身全体の符号を先に分けるのが原則。'},
       {q:9,lead:'絶対値は負にならない。距離が0の場合と負の値を要求される場合を比べる。',expr:'|x|=0,\\quad|x|=-2',prompt:'それぞれの実数解について選ぼう。',kind:'text',answer:'0ならx=0、負なら実数解なし',wrong:['0ならx=±0、負ならx=±2','0なら解なし、負ならx=−2','両方ともすべての実数'],hint:'距離0は原点、負の距離を持つ点は存在しない。',after:'|X|=aでは、a>0なら二枝、a=0なら一つ、a<0なら実数解なし。次は距離に上限・下限を付ける。'},
     ],
   },
@@ -37,7 +37,7 @@ const content = makeReviewSteps('n13', [
   {id:'n13-f01',q:4,when:'after'},
 ])
 const rawN13={
-  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n13',revision:1,status:'review' as const,subject:'math-1a' as const,
+  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n13',revision:2,status:'review' as const,subject:'math-1a' as const,
   chapter:{chapterId:'math-ch01-numbers-expressions',chapterNumber:'1',chapterTitle:'数と式',unitCode:'1NUM',orderInChapter:13,sourcePages:[33,34]},
   title:'距離の条件を、二つの位置へ戻す',subtitle:'絶対値方程式を左右二つの位置と「または」で解く。',
   source:{type:'reference' as const,label:'ユーザー提供「数と式」教科書モード対話段階導入版 v2 / N13',

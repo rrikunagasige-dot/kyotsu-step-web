@@ -1,7 +1,7 @@
 # W-MATH-018 — N14 Q10 三辺同時の式変形を復元
 
 ## P-001
-Status: PROPOSED — explicit user approval required; NO CODE IMPLEMENTATION
+Status: APPROVED — user direct reply 「続けて」 to this exact P-001 proposal (2026-10-22 JST); only N14-Q10 scope.
 Date: 2026-10-21 JST. Canonical command: CMD-WORK-001 修正; WORK_SYSTEM §§12A,12B.
 Existing source: src/data/textbook/math/numbers/n14Lesson.ts, revision 6, original N14 Q10. The linked §12B impact ledger is W-MATH-017/P-003.
 
@@ -43,3 +43,6 @@ Mathematical equivalence for boundary/interior/exterior points: −5<x−3<5 iff
 Status: WAITING; user has NOT approved N14-Q10. P008 Gate① affirmative 「いいよ続けて」 is not P001 authorization. Ask explicit unchanged proposal approval before editing any N14 code.
 
 **Approval requested: exactly these 3 equation rows, 1 reason, 5 holes and selective N14 v6→v7 migration?**
+
+## Explicit execution authorization in current chat
+The user replied **「続けて」** directly after the full P-001 correction proposal and request for approval. In this immediate context, this authorizes proceeding with the **unchanged P-001 correction**. It does NOT authorize other N14 Q14/Q15 rewrites, public merging, hosting or bypass of Gates.

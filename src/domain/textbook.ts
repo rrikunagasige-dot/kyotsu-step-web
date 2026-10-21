@@ -322,6 +322,37 @@ export function effectiveTextbookProgress(unit: TextbookUnit, progress: Textbook
     }
   }
 
+  // W-MATH-018/P-001: the old N14-Q10 one-choice operation+final range
+  // is replaced by the left numerical endpoint; reopen ONLY its old key.
+  // Keep original v6 attempts and every earlier archive for review.
+  if (unit.unitId === 'math-numbers-expressions-n14' && unit.revision === 7
+    && progress.unitId === unit.unitId && [1,2,3,4,5,6].includes(progress.unitRevision)) {
+    const fromV6 = progress.unitRevision === 6 ? progress
+      : effectiveTextbookProgress({ ...unit, revision: 6 }, progress)
+    if (!fromV6 || fromV6.unitRevision !== 6) return undefined
+    const archive: TextbookRevisionArchive = {
+      unitRevision: 6, startedAt: fromV6.startedAt, updatedAt: fromV6.updatedAt,
+      answers: { ...fromV6.answers },
+      ...(fromV6.completedAt !== undefined ? { completedAt: fromV6.completedAt } : {}),
+      ...(fromV6.previousRevisionCompletedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV6.previousRevisionCompletedAt } : {}),
+      ...(fromV6.migratedFromRevision !== undefined
+        ? { migratedFromRevision: fromV6.migratedFromRevision } : {}),
+    }
+    const answers = { ...fromV6.answers }
+    delete answers['n14-10']
+    return {
+      unitId: unit.unitId, unitRevision: 7,
+      startedAt: fromV6.startedAt, updatedAt: fromV6.updatedAt,
+      answers, migratedFromRevision: 6,
+      archivedRevisions: { ...(fromV6.archivedRevisions ?? {}), '6': archive },
+      ...(fromV6.completedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV6.completedAt }
+        : fromV6.previousRevisionCompletedAt !== undefined
+          ? { previousRevisionCompletedAt: fromV6.previousRevisionCompletedAt } : {}),
+    }
+  }
+
   // W-MATH-016/P-001: Q12 adds two distinct subtraction decisions.
   // Normalize historical v1–v4 through existing approved v5 migration,
   // then snapshot v5 including Q07, Q08 and original Q12 answers.

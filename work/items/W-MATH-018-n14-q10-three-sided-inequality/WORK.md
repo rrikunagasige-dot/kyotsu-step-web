@@ -1,5 +1,5 @@
 # W-MATH-018 — N14 Q10 三辺同時の式変形
-Status: PROPOSED
+Status: IMPLEMENTING
 Updated: 2026-10-21 JST
 
 ## Objective
@@ -22,3 +22,6 @@ Present exact P001 and STOP before editing N14 Q10 until direct unchanged user a
 
 ## Dependencies and Completion Condition
 Prior W-MATH-017 P008 small-block user accepted; full math CI 39611931626 SUCCESS after narrow older-test fix. Completion requires explicit proposal approval, source-only correction and verification; no main/publication permissions granted.
+
+## 2026-10-22 exact approval and execution
+- User: 「続けて」 directly after full P-001, treated as approval to execute exactly this N14 Q10 correction. Live main/head, instructions, prior approved N14 Q07/Q08/Q12 and 16-source map rechecked. Implement only Q10 3 equations, 1 explanatory paragraph, 5 choice holes; N14 revision7 selective archived migration. CI and real screenshot Gate① pending; no main merge.

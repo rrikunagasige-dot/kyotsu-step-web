@@ -44,3 +44,10 @@ P-003 correctness CI PASS and screenshot files do not amount to Gate① user acc
 - Initial review-image workflow 39592697619 FAIL because its screenshot test still assumed a removed formula review marker; normal learner tests for all 3 widths PASS. Fixed only the test expectation; later screenshot workflow 39593071069 PASS, saving source-SHA images in ./evidence/p003-gate1/README.md.
 - Unit/Typecheck/Lint/Build and N12 26-step browser QA PASS in workflow 39593071259, whose full conclusion was still RUNNING at this record time. No claim of entire Gate② QA or Gate③ acceptance.
 - Current user Gate①: REAL-IMAGES-READY / USER-ACCEPTANCE-PENDING. Gate② independent cross-audit OPEN. Gate③ frozen-SHA live whole-app acceptance OPEN. Binary teacher Word was not available for fresh independent verification here.
+
+
+## P-006 FINAL CI + human Gate①
+- [Math CI #39593071259](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39593071259): **SUCCESS** on tested code SHA `2c568703cb3e56b5ef4ab119b411bdb89e674cc6`, includes math textbook mobile/desktop, all 134 batch interactions, N11 proof and Q11/Q14, original N12 derivation, physics textbook and math practice setup regressions.
+- [Actual review and screenshots #39593071069](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39593071069): **SUCCESS** on same code SHA; artifact/screenshot-only commit `540e2eee7671fe6b540dd6c68b0273eca1d04780` matches.
+- User replied 「可以这样就行了继续」 immediately after P-006 screenshot review request: **BLOCK-VISUAL-OK** for P-006 two explanation paragraphs. [Exact acceptance record](./P006_GATE1_VISUAL_ACCEPTANCE.md). No formal app-wide `総チェックOK`.
+- [Partial Gate② result](./P006_GATE2_CROSS_BLOCK_AUDIT.md) is IN-PROGRESS/BLOCKED; confirmed same-root Q08/Q09 and other sibling corrections still require separately approved design, full Word fidelity check UNVERIFIED. No MAIN merge, no new publish or Pages acceptance.

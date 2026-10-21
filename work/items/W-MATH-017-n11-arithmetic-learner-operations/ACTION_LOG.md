@@ -58,3 +58,9 @@ Read main `governance/INSTRUCTION_DICTIONARY.md`: user corrective comment maps S
 - Captured real source and screenshot commit pair: student source 2c568703cb3e56b5ef4ab119b411bdb89e674cc6, GitHub Actions screenshot commit 540e2eee7671fe6b540dd6c68b0273eca1d04780.
 - Review CI failure 39592697619 caused by stale script expecting a marker on an unchanged original formula. Learner normal Playwright tests already PASS. Corrected script and review selection only; screenshot job 39593071069 PASS. No student formula/answer change from this test repair.
 - Continue via user Gate① on two explanation paragraphs, then independent Gate②. Do not publish or merge before frozen code URL and user's final whole-app 総チェックOK.
+
+
+## 2026-10-21 — P-006 human Gate① accepted; full CI final PASS; preflight for P-007
+- Direct user phrase 「可以这样就行了继续」 maps to P-006 two-paragraph BLOCK-VISUAL-OK only. Stored reviewer/time/2 block IDs/exact SHA/GitHub real images in P006_GATE1_VISUAL_ACCEPTANCE.md. Future review output hides these accepted marks while preserving source sheet and history. Not `総チェックOK`.
+- Verified final math CI https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39593071259 completed SUCCESS on source SHA `2c568703cb3e56b5ef4ab119b411bdb89e674cc6`; documented independent audit cells, still Gate② blocked by sibling defect register and original teacher Word not materialized.
+- Re-read approved N11 Q01–Q04 and Q11/Q14 Work, main Constitution/Dictionary/WORK_SYSTEM §§12A/12B, MASTER §52, math SPEC, N11 Q08/Q09 exact current generated answer/hints and original-Q boundary Q07/Q10. Confirmed root-cause operation+already-final choice, distinct learner decisions (Q08 cancellation/same-operation/numeric result, Q09 negative reversal/numeric quotient). Prepared precise P-007 **PROPOSAL ONLY**, no source/renderer/progress/mode/main mutation.

@@ -1,6 +1,6 @@
 # W-MATH-017 — 文章に学習操作を統合する教材修正
 
-Status: IMPLEMENTING
+Status: REVISE-PROPOSAL
 Approval: P-003 user-approved; technical/human gates OPEN
 Updated: 2026-10-21 JST
 Command: CMD-WORK-001 「修正」
@@ -68,3 +68,10 @@ User explicitly authorized merge of reviewed P-005 design and additionally reque
 - New Gate① markers apply only to P-006 cancellation and positive division explanatory paragraphs; user small-block 細部OK / 要修正 pending. Old Q01 and P-005 4-line equation blocks are not reapproval targets.
 - Math CI https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39593071259 unit/typecheck/lint/build/N12 regression PASS individually, full run still in progress at last verified checkpoint.
 - Gate② and Gate③ OPEN; published main/Pages unchanged, prior merge authorization intention preserved but not yet exercised.
+
+
+## 2026-10-21 — latest P-006 Gate① acceptance and P-007 preflight
+- User directly responded `可以这样就行了继续` to the actual P-006 numbered sheet and small-block reply request. Treat as **BLOCK-VISUAL-OK** for exactly two added explanatory paragraphs at rendered SHA `2c568703cb3e56b5ef4ab119b411bdb89e674cc6` (see [acceptance ledger](./P006_GATE1_VISUAL_ACCEPTANCE.md)); not literal 「細部OK」 text, not merged Gate③ acceptance. The next visual review must omit accepted yellow marks without deleting this sheet. Earlier accepted P-005 four equation rows remain protected.
+- Final full Math textbook CI [39593071259](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39593071259) **SUCCESS**, including N01–N14, math UI/graphics, physics textbook and math practice regression. Real review screenshot [39593071069](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39593071069) **SUCCESS**; source unchanged since frozen rendered commit (documentation-only descendants).
+- New [P-006 independent Gate② scope/impact audit](./P006_GATE2_CROSS_BLOCK_AUDIT.md) documents PASS/UNVERIFIED/FAIL; whole Gate② **NOT CROSS-VERIFIED** because confirmed same-root N11 Q08/Q09/Q13 and N14 Q10/Q14/Q15 remain and fresh original Word missing.
+- §12B next exact-source small-block preflight: [P-007 N11 Q08/Q09 subtraction and negative division proposal](./PROPOSAL_P007_N11_Q08_Q09_MATH_CHAIN.md), **PROPOSED / no code edits**, user's next explicit approval required. All other N units remain analysis queue only. Keep main unchanged and PR #107 Draft.

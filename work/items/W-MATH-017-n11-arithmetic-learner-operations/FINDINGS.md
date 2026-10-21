@@ -45,3 +45,7 @@ In math N12 authored source and `TextbookReadingFlow.renderVisibleBlocks`, conti
 
 ## F-017-13 — review-marker test repair (confirmed and repaired)
 The initial P-006 screenshot test expected a yellow marker on an original formula even though P-006 requires review markers only around the two new explanatory paragraphs. First real capture FAIL was a test expectation defect (job 39592697619), not a learner-equation defect. Normal learner flow 320/390/1440 PASS in the same job. The expected marker scope was corrected without changing student content. Subsequent real review capture PASS: workflow 39593071069. This is already covered by existing §12A lesson about marking only changed blocks; do not duplicate global lessons.
+
+
+## F-017-14 / QA IMPACT STATUS (2026-10-21)
+P-006 implementation and Gate①: direct positive user reply to P-006 real 2-paragraph image sheet now recorded as BLOCK-VISUAL-OK. Full math CI on matching source SHA finalized SUCCESS; previous running interim status in older records is superseded, not erased. Independent Gate② remains blocked by confirmed ready-made operation+result choices for N11-Q08/Q09, Q13 and N14 Q10/Q14/Q15, as previously listed in P003_SIBLING_COGNITIVE_LEDGER; fresh teacher DOCX line-by-line verification not available this session. Next distinct P-007 is proposed only. Old P-006 acceptance preserved; no mass conversion of all units authorized.

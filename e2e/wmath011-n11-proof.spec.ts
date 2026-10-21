@@ -20,7 +20,7 @@ for (const width of [320, 390]) {
     await page.setViewportSize({ width, height: 850 })
     const unit = mathTextbookUnits.find(u => u.unitId.endsWith('n11'))!
     const original = unit.sections[0].items
-    expect(original.length).toBe(23)
+    expect(original.length).toBe(24)
     expect(original.slice(0, 9).map(x => x.id)).toEqual([...ids])
     await page.goto('/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n11')
     await page.evaluate(() => localStorage.clear())
@@ -86,7 +86,7 @@ for (const width of [320, 390]) {
     }
     await page.reload()
     for (const id of ids) await expect(page.getByTestId('resolved-' + id)).toBeVisible()
-    await expect(page.getByTestId('textbook-item-n11-05')).toBeVisible()
+    await expect(page.getByTestId('textbook-item-n11-wm017-q05-operation')).toBeVisible()
     // The original complete-solution figure cannot be used to reveal Q05–Q10.
     await expect(page.getByTestId('textbook-figure-n11-f02')).toHaveCount(0)
   })

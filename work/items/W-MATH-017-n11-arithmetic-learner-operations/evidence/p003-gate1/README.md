@@ -1,8 +1,44 @@
 # W-MATH-017/P-003 — N11 Q01 / Q05 実アプリ Gate① 確認票
 
-描画・操作した教材コード SHA: \`2c5909b5b1b4efb9500f68894b10ab0dfb457070\`
+描画・操作した教材コード SHA: \`0a5d695ec5622519a5398274b7b14bbecb2fb587\`
 
 GitHub Actions の実 Chromium による操作とスクリーンショット。図面・モックではありません。学習履歴は保存されません。
+
+## 普段の学習画面（黄色い確認枠なし）
+
+これらは独立の教材ページでなく、N11 を最初から9操作解いて Q05 に到達した通常の教材画面です。
+
+### q01-before
+
+![通常画面 q01-before 390px](n11-normal-q01-before-390.png)
+
+[320px](n11-normal-q01-before-320.png) ・ [PC 1440px](n11-normal-q01-before-1440.png)
+
+### q01-after
+
+![通常画面 q01-after 390px](n11-normal-q01-after-390.png)
+
+[320px](n11-normal-q01-after-320.png) ・ [PC 1440px](n11-normal-q01-after-1440.png)
+
+### q05-operation-before
+
+![通常画面 q05-operation-before 390px](n11-normal-q05-operation-before-390.png)
+
+[320px](n11-normal-q05-operation-before-320.png) ・ [PC 1440px](n11-normal-q05-operation-before-1440.png)
+
+### q05-result-before
+
+![通常画面 q05-result-before 390px](n11-normal-q05-result-before-390.png)
+
+[320px](n11-normal-q05-result-before-320.png) ・ [PC 1440px](n11-normal-q05-result-before-1440.png)
+
+### q05-after
+
+![通常画面 q05-after 390px](n11-normal-q05-after-390.png)
+
+[320px](n11-normal-q05-after-320.png) ・ [PC 1440px](n11-normal-q05-after-1440.png)
+
+## 既存Gate①の番号付き確認枠
 
 ## n11-q01
 

@@ -143,7 +143,7 @@ jobs:
 
   # W-MATH-017/P-003 — reuse W-GOV-008's exact-SHA, numbered in-app Gate① method.
   # Only this review PR. Never publish Pages, merge main or change learner progress.
-  n11-q01-q05-authentic-screenshots:
+  n11-p007-q08-q09-authentic-screenshots:
     if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && startsWith(github.head_ref, 'work/W-MATH-017-p003-inline-prose-correction-') }}
     runs-on: ubuntu-latest
     permissions:
@@ -166,7 +166,7 @@ jobs:
         id: need
         shell: bash
         run: |
-          if git log -1 --format=%s | grep -q '^Store genuine N11 Q01/Q05 Gate1 images'; then
+          if git log -1 --format=%s | grep -q '^Store genuine N11 P007 Gate1 images'; then
             echo 'capture=false' >> "$GITHUB_OUTPUT"
           else
             echo 'capture=true' >> "$GITHUB_OUTPUT"
@@ -189,7 +189,7 @@ jobs:
         run: pnpm exec playwright install --with-deps chromium
       - name: Capture actual numbered learner decisions (320/390/1440px)
         if: ${{ steps.need.outputs.capture == 'true' }}
-        run: pnpm exec playwright test e2e/wmath017-n11-gate1-evidence.spec.ts --project=mobile-chromium --project=desktop-chromium
+        run: pnpm exec playwright test e2e/wmath017-n11-p007-gate1.spec.ts --project=mobile-chromium --project=desktop-chromium
       - name: Preserve raw screenshot artifact even on test failure
         if: ${{ always() && steps.need.outputs.capture == 'true' }}
         uses: actions/upload-artifact@v4
@@ -202,40 +202,29 @@ jobs:
         if: ${{ success() && steps.need.outputs.capture == 'true' }}
         shell: bash
         run: |
-          dir="work/items/W-MATH-017-n11-arithmetic-learner-operations/evidence/p003-gate1"
+          dir="work/items/W-MATH-017-n11-arithmetic-learner-operations/evidence/p007-gate1"
           mkdir -p "$dir"
-          cp e2e-evidence/n11-q01-* "$dir/"
-          cp e2e-evidence/n11-q05-* "$dir/"
-          cp e2e-evidence/n11-normal-* "$dir/"
+          cp e2e-evidence/p007-* "$dir/"
           {
-            printf '# W-MATH-017/P-006 — N11 Q05〜Q06 式間説明の実画面確認票\n\n'
-            printf '描画・操作した教材コード SHA: \`%s\`\n\n' "$CAPTURE_SHA"
-            printf 'GitHub Actions の実 Chromium による操作とスクリーンショット。図面・モックではありません。学習履歴は保存されません。\n\n'
-            printf '## 普段の学習画面（黄色い確認枠なし）\n\n'
-            printf 'N11をQ01から解き進めた通常の教材画面です。P-006変更対象はQ05〜Q06の式の間に追加した2つの短い説明だけです。Q01は既存承認履歴の参照画像です。\n\n'
-            for part in q01-before q01-after q05-operation-before q05-balance-before q05-result-before q06-fraction-before q06-after; do
-              printf '### %s\n\n![通常画面 %s 390px](n11-normal-%s-390.png)\n\n[320px](n11-normal-%s-320.png) ・ [PC 1440px](n11-normal-%s-1440.png)\n\n' "$part" "$part" "$part" "$part" "$part"
+            printf '# W-MATH-017/P-007 — N11 Q08〜Q09 実アプリ Gate①\n\n'
+            printf '対象教材コード SHA: \`%s\`\n\n' "$CAPTURE_SHA"
+            printf '実Chromiumで通常のN11をQ01から順に解いた画像と、新しいQ08/Q09だけの番号付き確認画像。320・390・1440px。図面・モックではありません。\n\n'
+            printf '## 通常の学習画面（黄色い確認枠なし）\n\n'
+            for part in q08-left-before q08-right-before q08-arithmetic-before q09-direction-before q09-quotient-before q09-finished; do
+              printf '### %s\n\n![通常画面 %s 390px](p007-normal-%s-390.png)\n\n[320px](p007-normal-%s-320.png) ・ [PC1440px](p007-normal-%s-1440.png)\n\n' "$part" "$part" "$part" "$part" "$part"
             done
-            printf '## 今回の説明文だけを示す番号付き確認枠\n\n'
-            printf '**確認①：** 左右に2を足した直後の理由（q05-step-3-before）。\n\n'
-            printf '**確認②：** 右辺を7まで計算した直後、正の3で割る理由（q05-step-4-before）。\n\n'
-
-            for id in n11-q01 n11-q05; do
-              printf '## %s\n\n' "$id"
-              steps=1
-              if [ "$id" = 'n11-q05' ]; then steps=4; fi
-              for number in $(seq 1 "$steps"); do
-                printf '### 確認%s\n\n' "$number"
-                for state in before wrong resolved; do
-                  printf '**%s**\n\n![%s %s %s 390px](%s-step-%s-%s-390.png)\n\n' "$state" "$id" "$number" "$state" "$id" "$number" "$state"
-                  printf '[320px](%s-step-%s-%s-320.png) ・ [PC 1440px](%s-step-%s-%s-1440.png)\n\n' "$id" "$number" "$state" "$id" "$number" "$state"
-                done
+            printf '## 今回だけの番号付き確認（Q08・Q09）\n\n'
+            printf '**確認①** 左右の引き算を同じ式の中で選べる。**確認②** 左右で同じ数を引く理由。**確認③** 右辺の計算。**確認④** 負の数で割る理由。**確認⑤** 不等号の向きと商の計算。\n\n'
+            for i in 1 2 3 4 5; do
+              printf '### Q08〜Q09 小操作 %s\n\n' "$i"
+              for state in before wrong resolved; do
+                printf '**%s**\n\n![%s 390px](p007-review-step-%s-%s-390.png)\n\n[320px](p007-review-step-%s-%s-320.png) ・ [PC1440px](p007-review-step-%s-%s-1440.png)\n\n' "$state" "$state" "$i" "$state" "$i" "$state" "$i" "$state"
               done
             done
-            printf 'P-006の新規確認対象はN11 Q05〜Q06の式間説明2箇所のみ。Q01やP-005承認済み4行式の再承認は求めません。Gate②・Gate③は別です。\n'
+            printf 'P-006 Q05〜Q06は既にBLOCK-VISUAL-OKであり再承認対象外。今回新たな対象はQ08・Q09のみ。Gate②・Gate③は別です。\n'
           } > "$dir/README.md"
           git add "$dir"
           if ! git diff --cached --quiet; then
-            git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Store genuine N11 Q01/Q05 Gate1 images [review only]'
+            git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Store genuine N11 P007 Gate1 images [review only]'
             git push origin "HEAD:refs/heads/$TARGET_BRANCH"
           fi

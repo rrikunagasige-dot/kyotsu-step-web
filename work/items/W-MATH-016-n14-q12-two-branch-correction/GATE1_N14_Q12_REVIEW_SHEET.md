@@ -1,5 +1,5 @@
 # W-MATH-016/P-001 N14 Q12 — 実アプリ Gate① 細部確認票
-Status: BLOCK-CHECK-PENDING
+Status: BLOCK-VISUAL-OK
 
 ## 実アプリ画像・変更範囲・テストの正本
 - 対象：教師編集Word N14-Q12 **1原問だけ**。Q11で得た二枝のそれぞれの引き算を新しい式中穴で解かせた後、元の n14-12 の最終4択からORの結合を選ぶ。新しい原問番号や図は追加しない。
@@ -45,3 +45,6 @@ Status: BLOCK-CHECK-PENDING
 - [ ] ユーザーが**Q12だけ**Gate①の細部OKを明示する
 - [ ] 123原問と既存修正の独立横断監査 Gate② 総PASS
 - [ ] exact-SHA実働アプリでユーザーが全範囲を通しプレイしてGate③ 総チェック
+
+## 2026-10-21 実画面Gate①：ユーザーの次工程了承
+ユーザーの原文 **「いいよ続けて」** は、このQ12の18枚の実画像を提示し「Q12 細部OK または 要修正」を尋ねた直後の返信。**Q12 BLOCK-VISUAL-OK（視覚確認のみ）**として受理し、元の「Q12 細部OK」という文字列を発言したことにはしない。実画像18点、ソースSHA `43ef4fae17b8ce9d0d9eb62358e392c47146cac1`、[撮影 #39549614892](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39549614892) SUCCESS、[Math CI #39549620273](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39549620273) SUCCESS。数式と説明の密着、長い文章、旧Q12のヒントの曖昧さという観察は隠さず、承認済みの注意事項として保持。無断修正、公開、アプリ全体の承認には拡張しない。上の未チェック項目は受理前の履歴であり、本節がQ12 Gate①に関して優先する。

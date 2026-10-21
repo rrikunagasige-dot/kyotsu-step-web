@@ -26,11 +26,11 @@ describe('W-MATH-017 P-005 — four-line continuous formula derivation',()=>{
     expect(indices).toEqual([indices[0],indices[0]+1,indices[0]+2,indices[0]+3])
     const bs=indices.map(i=>section.readingFlow[i])
     expect(bs.every(b=>b.type==='formula'&&b.derivationId==='n11-q05-q06-chain')).toBe(true)
-    if(bs.some(b=>b.type!=='formula'))return
-    expect(bs.map(b=>b.parts.filter(p=>p.type==='math').map(p=>p.latex))).toEqual([
+    const formulaBlocks=bs.map(b=>{if(b.type!=='formula')throw Error('derivation includes non-formula block');return b})
+    expect(formulaBlocks.map(b=>b.parts.filter(p=>p.type==='math').map(p=>p.latex))).toEqual([
       ['3x-2<5'],['3x-2+','<5+'],['3x<'],['x<'],
     ])
-    expect(bs.map(b=>b.parts.filter(p=>p.type==='choice').map(p=>p.itemId))).toEqual([
+    expect(formulaBlocks.map(b=>b.parts.filter(p=>p.type==='choice').map(p=>p.itemId))).toEqual([
       [],['n11-wm017-q05-operation','n11-wm017-q05-balance'],['n11-05'],['n11-06'],
     ])
     expect(index('n11-lead-06')).toBe(-1)
@@ -41,7 +41,7 @@ describe('W-MATH-017 P-005 — four-line continuous formula derivation',()=>{
     expect(section.items.map(i=>i.id)).toEqual(Object.values(n11SourceToItemIds).flat())
     expect(section.items).toHaveLength(25)
     expect(n11SourceToItemIds['N11-Q05']).toEqual(['n11-wm017-q05-operation','n11-wm017-q05-balance','n11-05'])
-    expect(n11SourceToItemIds['N11-Q06']).toEqual(['n11-06'])
+    expect((n11SourceToItemIds as Record<string,readonly string[]>)['N11-Q06']).toEqual(['n11-06'])
     expect([item('n11-wm017-q05-operation').answer,item('n11-wm017-q05-balance').answer,item('n11-05').answer,item('n11-06').answer])
       .toEqual(['2','2','7','\\frac73'])
     expect(section.readingFlow[index('n11-lead-07')]).toBeDefined()

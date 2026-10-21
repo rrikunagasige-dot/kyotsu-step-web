@@ -125,7 +125,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
     }
   })
 
-  it('P-004 keeps the original 123 source markers while recovering eight omitted reasoning operations', () => {
+  it('P-004 and P-005 preserve the 123 Word questions while N11-Q06 changes from combined answer to numeric result', () => {
     const cases = [
       ['04', 'n04-13', ['3x\\cdot2=6x', '1\\cdot x=x', '3x^2+7x+2']],
       ['05', 'n05-17', ['異符号', 'rs=-3<0']],

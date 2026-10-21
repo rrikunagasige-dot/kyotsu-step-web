@@ -47,3 +47,6 @@ No master lesson modification necessary: [existing §7/8/11/18/51/52/53](../../.
 - [ ] Gate③ candidate-app live URL/full user play NOT READY.
 
 **W-MATH-011 status remains VERIFYING/BLOCKED-AUDIT, not DONE.** The confirmed next Work W-MATH-012/P-001 is PROPOSAL ONLY; obtain exact user approval before touching learner code. Avoid re-requesting N11 Q01–04 visual acceptance. No merge, new Vercel project, public Pages, rule change, teacher Word edit or billing action.
+
+## 2026-10-21 latest correction and sibling sweep
+Previously stated Q11 Gate① PENDING/W-MATH-012 proposed is historical, now superseded: user 「じゃいいよ。続けて」 accepted Q11's three actual blanks and their visual Gate① at frozen code 74b73ad275b8aced7ccf99c3ef0ffc943f02d208. Four previously accepted Q01–04 groups stay accepted. [Current five-item independent audit](./CROSS_BLOCK_AUDIT_N11_N14_FOLLOWUP_20261021.md): N11 Q12 R1/R2 NOT-AFFECTED; new pedagogical gaps N11 Q14, N14 Q07/Q08/Q12 CONFIRMED. No code corrections authorized. Gate② FAIL/NOT CROSS-VERIFIED; Gate③ NOT READY.

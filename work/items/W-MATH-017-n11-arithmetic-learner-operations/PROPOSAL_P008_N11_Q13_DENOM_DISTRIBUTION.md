@@ -1,5 +1,5 @@
 # W-MATH-017 / P-008 — N11 Q13 分母を払う→右辺を展開する連続式
-Status: PROPOSED — AWAITING EXACT USER APPROVAL; NO LEARNER CODE IMPLEMENTATION
+Status: APPROVED — user direct 「いいよ続けて」 to complete P-008 exact proposal (2026-10-21 JST).
 Date: 2026-10-21 JST
 Command: existing CMD-WORK-001「修正」 / §12B affected sibling in same original lesson
 Current validated learner source SHA: `76ab0e708f0706fbbfa7df1109f19d5263c7db19` (Math CI [39598038354](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39598038354) PASS; real screenshot [39598038524](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39598038524) PASS)
@@ -64,3 +64,6 @@ Proof: multiplying both sides of `(x-2)/3≤2x+1` by positive3 gives `x-2≤3(2x
 ## Scope and explicit approval requirement
 Current user 「いいよ」 was an affirmative answer to **P-007 real screenshot Gate①**. It is NOT approval of this new P-008 proposal. No P-008 learner code may be changed until user directly approves this exact proposal. If user changes a block/text/choice/migration, revise the proposal and seek approval before implementation.
 **Approval request: N11 Q13 four rows, four genuine holes, two explanations, and revision9→10 selective archival migration — approve as written?**
+
+## Approval recorded
+The user replied 「いいよ続けて」 directly after the entire exact P-008 explanation and request 「このP-008案でよければ『承認』としてください」. No revisions or new conditions were stated. Under CMD-WORK-001 this accepts precisely the shown proposal. No authorization for other N units/main/publication/cost-bearing hosting; Gate①/②/③ remain distinct.

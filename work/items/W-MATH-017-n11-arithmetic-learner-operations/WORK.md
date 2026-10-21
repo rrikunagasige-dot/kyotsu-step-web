@@ -1,6 +1,6 @@
 # W-MATH-017 — 文章に学習操作を統合する教材修正
 
-Status: REVISE-PROPOSAL
+Status: IMPLEMENTING
 Approval: P-003 user-approved; technical/human gates OPEN
 Updated: 2026-10-21 JST
 Command: CMD-WORK-001 「修正」
@@ -93,3 +93,9 @@ User explicitly authorized merge of reviewed P-005 design and additionally reque
 - [Math CI run 39598038354](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39598038354) **SUCCESS** on same exact SHA including math/physics/practice regression. [Actual review screenshots 39598038524](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39598038524) **SUCCESS**. Prior P-006 Gate① remains accepted and unchanged.
 - Confirmed §12B same-root original Word N11 Q13 ready-made operation + complete result still present in source, while Q12/Q14 are previously approved and must be protected. Prepared [P-008 exact Q13 proposal](./PROPOSAL_P008_N11_Q13_DENOM_DISTRIBUTION.md) **PROPOSED** / source implementation unauthorized until exact user approval; N14 other affected siblings unchanged.
 - P-007 review marker `reviewState` should turn `accepted` **in next code review build only**, bundled with separately approved Q13 implementation so previous already captured and approved screenshots are not re-run. Gate②/③ remain OPEN; main stays unchanged, PR #107 Draft.
+
+
+## 2026-10-21 — P-008 exact approval and bounded implementation
+- User explicitly replied 「いいよ続けて」 directly to [P-008 exact Q13 proposal](./PROPOSAL_P008_N11_Q13_DENOM_DISTRIBUTION.md) without modification. Scope N11-Q13 original Word marker only; P-006/P-007 already accepted and preserved.
+- Four formula rows, two conditional explanations, four decisions with n11-13 now coefficient6. N11 revision10 archives full revision9 and selectively reopens n11-13; previous Q05/Q08/Q09/Q11/Q14 retained. No global render/other unit/main/deployment modifications.
+- Technical CI, screenshot user Gate①, independent Gate②, final Gate③ PENDING. Keep PR #107 Draft.

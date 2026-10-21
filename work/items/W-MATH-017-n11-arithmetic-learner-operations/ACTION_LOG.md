@@ -82,3 +82,9 @@ Read main `governance/INSTRUCTION_DICTIONARY.md`: user corrective comment maps S
 - User's direct "いいよ" to P-007 real screenshot review question is equivalent to BLOCK-VISUAL-OK of exactly Q08/Q09; preserve literal wording, target SHA and screenshot link. Do not infer Gate③ app acceptance or new P-008 code authority.
 - Full math CI on P-007 source SHA `76ab0e708f0706fbbfa7df1109f19d5263c7db19` finished SUCCESS https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39598038354; actual 320/390/1440 real screenshot and recovery run https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39598038524 SUCCESS. Screenshot-only descendants have action_required statuses, not code CI failures.
 - Reread 2026-10-19 §12A/§12B, math SPEC/MASTER, original N11 Q11/Q12/Q13/Q14 source, Q14 protected W-MATH-013 flow, original generator signature, existing sibling ledger. Confirmed Q13 one graded choice bundles positive3 multiplication and resulting distributed RHS6x+3. Drafted exact P-008 4-row/2-reason/4-hole source Q13; v9→10 selective archive/reopen n11-13 only; no code or release changes.
+
+
+## 2026-10-21 — approved exact P-008 Q13 implementation
+- User direct 「いいよ続けて」 confirmed unchanged P-008 proposal approval. Rechecked live main/head, CONSTITUTION, CMD-WORK-001, WORK_SYSTEM §12A/12B, MASTER and math SPEC, v9 source, source map, old migrations and approved Q14.
+- Bounded N11 Q13 only: four consecutive formula lines / 2 interstitial reasons / 4 graded decisions. Changes n11-13 from premade full output to numeric coefficient6 and 3 new Q13 IDs; rev9→10 archive old answers and reopen n11-13 only. Q14 previously approved 2 extra decisions and all other units remain untouched.
+- Verification and authentic Gate① screenshots are pending; no main merge/public release.

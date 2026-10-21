@@ -185,6 +185,37 @@ export function effectiveTextbookProgress(unit: TextbookUnit, progress: Textbook
   if (!progress) return undefined
   if (progress.unitRevision === unit.revision) return progress
 
+  // W-MATH-017/P-008: Q13's old full operation + completed equation
+  // is replaced by local 6x coefficient; archive v9 and reopen only Q13.
+  if (unit.unitId === 'math-numbers-expressions-n11' && unit.revision === 10
+    && progress.unitId === unit.unitId
+    && [1,2,3,4,5,6,7,8,9].includes(progress.unitRevision)) {
+    const fromV9 = progress.unitRevision === 9 ? progress
+      : effectiveTextbookProgress({ ...unit, revision: 9 }, progress)
+    if (!fromV9 || fromV9.unitRevision !== 9) return undefined
+    const archive: TextbookRevisionArchive = {
+      unitRevision: 9, startedAt: fromV9.startedAt, updatedAt: fromV9.updatedAt,
+      answers: { ...fromV9.answers },
+      ...(fromV9.completedAt !== undefined ? { completedAt: fromV9.completedAt } : {}),
+      ...(fromV9.previousRevisionCompletedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV9.previousRevisionCompletedAt } : {}),
+      ...(fromV9.migratedFromRevision !== undefined
+        ? { migratedFromRevision: fromV9.migratedFromRevision } : {}),
+    }
+    const answers = { ...fromV9.answers }
+    delete answers['n11-13']
+    return {
+      unitId: unit.unitId, unitRevision: 10,
+      startedAt: fromV9.startedAt, updatedAt: fromV9.updatedAt,
+      answers, migratedFromRevision: 9,
+      archivedRevisions: { ...(fromV9.archivedRevisions ?? {}), '9': archive },
+      ...(fromV9.completedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV9.completedAt }
+        : fromV9.previousRevisionCompletedAt !== undefined
+          ? { previousRevisionCompletedAt: fromV9.previousRevisionCompletedAt } : {}),
+    }
+  }
+
   // W-MATH-017/P-007: Q08/Q09 changed from premade operation+result
   // answers into local numeric answers. Preserve every v8 attempt in the
   // immutable archive, reopening ONLY the two repurposed stable IDs.

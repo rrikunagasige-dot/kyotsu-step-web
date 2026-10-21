@@ -99,3 +99,9 @@ User explicitly authorized merge of reviewed P-005 design and additionally reque
 - User explicitly replied 「いいよ続けて」 directly to [P-008 exact Q13 proposal](./PROPOSAL_P008_N11_Q13_DENOM_DISTRIBUTION.md) without modification. Scope N11-Q13 original Word marker only; P-006/P-007 already accepted and preserved.
 - Four formula rows, two conditional explanations, four decisions with n11-13 now coefficient6. N11 revision10 archives full revision9 and selectively reopens n11-13; previous Q05/Q08/Q09/Q11/Q14 retained. No global render/other unit/main/deployment modifications.
 - Technical CI, screenshot user Gate①, independent Gate②, final Gate③ PENDING. Keep PR #107 Draft.
+
+
+## 2026-10-21 — P-008 authentic Gate① source-checkpoint
+- Implemented approved original N11 Q13 only, rev10, four true equation rows with 2 intermediate prose reasons, 4 decisions (two multiplier holes and 2 distributed terms). P-006/P-007 acceptance and previously approved Q11/Q14 source unchanged.
+- The final code+test screenshot capture SHA is `62c1702fa41175bec3bb5dfa7b468e61dc5e80b4`; [P-008 real GitHub evidence album](./evidence/p008-gate1/README.md), screenshot-only bot commit `17dc9635c8533d0d4dcb61a58a02442cb37ad5fa`, real Chromium GitHub Actions run [39608141779](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39608141779) **SUCCESS**.
+- [P-008 revised short reviewer sheet](./P008_GATE1_REVIEW_SHEET.md) is READY. The user still needs to inspect only newly changed Q13 for Gate①. [Math textbook whole CI](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39608141804) passed typecheck/lint/Vitest/build/N12/mobile smoke, final still RUNNING as recorded. Gate② siblings and fresh teacher Word check OPEN, Gate③ FINAL-REVIEW-NOT-READY; Draft PR not merged, main unchanged.

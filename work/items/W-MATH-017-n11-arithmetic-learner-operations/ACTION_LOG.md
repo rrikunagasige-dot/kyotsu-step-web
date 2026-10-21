@@ -69,3 +69,10 @@ Read main `governance/INSTRUCTION_DICTIONARY.md`: user corrective comment maps S
 ## 2026-10-21 — user P-007 exact proposal approval
 - Direct 「いいね承認」 after verbatim P-007 entire proposal: applies to original N11-Q08/Q09 only. Re-read live main, current branch, approved N11 P-006, MASTER §52/Work §§12A/12B and original source mapping.
 - Source correction: four formula rows and two interleaved reasons, 5 student decisions in place of two premade compound options, 3 new IDs, revision9 selective archival migration. No main merge/publication. Tests/real screenshot pending.
+
+## 2026-10-21 — P-007 exact implementation and reviewer evidence
+- Implemented approved N11 Q08→Q09 four formulas/two reasons, 5 graded decisions (two +3 subtraction choices, RHS 2, ≥ relation, RHS −1) under `n11-q08-q09-chain`. Source-map original Word 14 labels unchanged; 28 active choices and original figures.
+- Initial CI runs failed from pre-P-007 hard-coded v8 revision, old count25, and P-004 detached Q08/Q09 textual assumptions. Updated **test expectations only**, preserving historical older-version migration tests in constructed revision8. Direct new migration tests for v8→v9 and v3→9 added. No global generator/renderer modifications.
+- Verified screenshot job [39598038524](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39598038524) SUCCESS, 320/390/1440 actual ordinary lesson and numbered review, correct/wrong/retry, no KaTeX error/mobile overflow, Q10 still gated until 5th answer. Source SHA `76ab0e708f0706fbbfa7df1109f19d5263c7db19`, evidence commit `55cb9fdfe06a819eb230789de7d797fe74daa084`.
+- N11 P-006 `BLOCK-VISUAL-OK` carried forward with `reviewState:'accepted'`, Q05/Q06 source unchanged; screenshot album not overwritten.
+- Await user P-007 Gate① at [review sheet](./P007_GATE1_REVIEW_SHEET.md), then independently audit siblings and prepare exact P-008 if confirmed. No main merge.

@@ -49,3 +49,8 @@ The initial P-006 screenshot test expected a yellow marker on an original formul
 
 ## F-017-14 / QA IMPACT STATUS (2026-10-21)
 P-006 implementation and Gate①: direct positive user reply to P-006 real 2-paragraph image sheet now recorded as BLOCK-VISUAL-OK. Full math CI on matching source SHA finalized SUCCESS; previous running interim status in older records is superseded, not erased. Independent Gate② remains blocked by confirmed ready-made operation+result choices for N11-Q08/Q09, Q13 and N14 Q10/Q14/Q15, as previously listed in P003_SIBLING_COGNITIVE_LEDGER; fresh teacher DOCX line-by-line verification not available this session. Next distinct P-007 is proposed only. Old P-006 acceptance preserved; no mass conversion of all units authorized.
+
+## F-017-15 / CONFIRMED P-007 same-root repair and historical test updates
+Q08/Q09 formerly graded premade operation+completed-result in one choice; exactly approved P-007 now assigns left/right shared subtraction, RHS arithmetic, sign-direction reversal, negative quotient to separate in-equation holes. Previously live accepted P-006 equation chain protected, no repeated user approval requested.
+Legacy test failures after new semantic grading are not mathematical regressions: they expected revision8/count25 and looked for detached Q08→Q09 prose, including a false text-substring check where correct answer '2' occurs as the coefficient in '-2x'. The test now checks complete expression answer leakage rather than raw single-character existence, retains original v8 behavior via explicit revision8 fixture, and tests v9 migrations separately.
+Actual screenshots at all widths show math-first chain; user P-007 visual review still pending. Sibling N11-Q13/N14-Q10/Q14/Q15 and other units not automatically fixed.

@@ -51,3 +51,11 @@ P-003 correctness CI PASS and screenshot files do not amount to Gate① user acc
 - [Actual review and screenshots #39593071069](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39593071069): **SUCCESS** on same code SHA; artifact/screenshot-only commit `540e2eee7671fe6b540dd6c68b0273eca1d04780` matches.
 - User replied 「可以这样就行了继续」 immediately after P-006 screenshot review request: **BLOCK-VISUAL-OK** for P-006 two explanation paragraphs. [Exact acceptance record](./P006_GATE1_VISUAL_ACCEPTANCE.md). No formal app-wide `総チェックOK`.
 - [Partial Gate② result](./P006_GATE2_CROSS_BLOCK_AUDIT.md) is IN-PROGRESS/BLOCKED; confirmed same-root Q08/Q09 and other sibling corrections still require separately approved design, full Word fidelity check UNVERIFIED. No MAIN merge, no new publish or Pages acceptance.
+
+## P-007 QA source and screenshot evidence (2026-10-21)
+- Exact source full SHA `76ab0e708f0706fbbfa7df1109f19d5263c7db19`, N11 revision9, Q08–Q09 original labels, five independent blanks, four formula lines and two explanatory paragraphs in one derivation.
+- [Review+capture run 39598038524](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39598038524) SUCCESS with real Chromium screenshots at 320/390/1440, review marker ①–⑤ and unmarked normal learner from Q01→Q10. Code hash is captured SHA; image-only bot commit `55cb9fdfe06a819eb230789de7d797fe74daa084` is *not* itself the student rendered build.
+- [Source/visual Gate① GitHub review sheet](./P007_GATE1_REVIEW_SHEET.md). **User response pending**; not accepted merely because tests passed.
+- Progress: N11 v8→v9 archive exactly all v8 answers; reopen n11-08/n11-09 only. Historical v3→9 path and previously accepted answers verified in focused Vitest. No Q05/Q06 P-006 regression or hidden new visual marks.
+- Full math CI [39598038354](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39598038354) unit/schema/typecheck/lint/build/N12+mobile steps passed at last observation, further jobs pending; final verdict not assumed.
+- Gate② overall OPEN/NOT CROSS-VERIFIED due other confirmed same-root siblings and new Word direct read UNVERIFIED; Gate③ not ready, no main Pages release.

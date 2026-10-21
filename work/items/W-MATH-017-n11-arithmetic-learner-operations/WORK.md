@@ -80,3 +80,9 @@ User explicitly authorized merge of reviewed P-005 design and additionally reque
 ## 2026-10-21 — P-007 exact approval, scoped N11 Q08/Q09 implementation
 - User directly approved exact [P-007](./PROPOSAL_P007_N11_Q08_Q09_MATH_CHAIN.md) with 「いいね承認」. N11 Q08, Q09 form one four-equation/two-short-reason chain, five source-mapped decision holes. N11 revision9 selectively archives revision8 and reopens precisely n11-08 and n11-09 (changed grading meaning); P-006 Q05/Q06 accepted flow untouched.
 - Implement on isolated PR #107, no source Word, figure, shared renderer/generator, unrelated lesson, Math Practice/Physics, main or Pages modification. Gate① real image and independent Gate② pending, Gate③ not ready.
+
+## 2026-10-21 — P-007 learner source + real-image checkpoint
+- Exact P-007 user approval 「いいね承認」; four formula/2 explanation blocks for original N11 Q08/Q09, five decisions, 28 N11 decisions total, N11 revision9. Only previous n11-08 and n11-09 keys reset under selective archived rev8→9 migration; all P-006 Q05/Q06 prior accepted blocks unmodified.
+- Source/test/capture SHA `76ab0e708f0706fbbfa7df1109f19d5263c7db19`; real [P-007 Gate① GitHub screenshots](./P007_GATE1_REVIEW_SHEET.md) from PASS [run 39598038524](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39598038524), stored by screenshot-only commit `55cb9fdfe06a819eb230789de7d797fe74daa084`. Original P-006 Gate① accept remains recorded, markers hidden in new review.
+- Scope tests, typecheck/lint/Vitest/build, N12 baseline and mobile smoke in Math CI [39598038354](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39598038354) PASS as stages; full run still in progress at this snapshot. Do not infer final entire CI result.
+- [ ] P-007 actual user `細部OK` pending. Gate② sibling corrections N11-Q13/N14 Q10/Q14/Q15 and source Word reinspection outstanding. Gate③ FINAL-REVIEW-NOT-READY, PR #107 Draft, main unchanged.

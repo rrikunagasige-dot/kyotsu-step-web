@@ -5,6 +5,7 @@ import { makeReviewSteps } from './newBatchGuidedSteps'
 export const n14SourceToItemIds = oneToOneSourceMap('N14', 16)
 n14SourceToItemIds['N14-Q07'] = ['n14-wm014-q07-nonnegative', 'n14-wm014-q07-negative', 'n14-07']
 n14SourceToItemIds['N14-Q08'] = ['n14-wm015-q08-nonnegative', 'n14-wm015-q08-negative', 'n14-08']
+n14SourceToItemIds['N14-Q12'] = ['n14-wm016-q12-left', 'n14-wm016-q12-right', 'n14-12']
 const originalContent = makeReviewSteps('n14', [
   {
     title:'近い点は内側、遠い点は外側',
@@ -155,7 +156,7 @@ const q08Flow: TextbookReadingBlock[] = [
     M('|X|>a\\iff\\left(X<-a\\;\\text{または}\\;X>a\\right)\\quad(a>0)'),
   ] },
 ]
-const content = {
+const q08Content = {
   readingFlow: [
     ...originalContent.readingFlow.slice(0, firstQ07),
     ...q07Flow,
@@ -171,8 +172,76 @@ const content = {
     ...originalContent.items.slice(oldQ08Index),
   ],
 }
+// W-MATH-016/P-001 — Q12 source asks for EACH subtraction before final OR.
+// Preserve Q07/Q08 already approved and the original n14-12 final four-choice.
+const q12NewItems: TextbookItem[] = [
+  reviewItem('n14-wm016-q12-left',
+    '左側の不等式x+3≤−2について、両辺から3を引こう。',
+    'x\\le-5', 'formula', ['x<-5', 'x\\ge-5', 'x\\le-1'],
+    'causal-reasoning','medium',
+    ['両辺から同じ3を引いても不等号の向きは変わらない。']),
+  reviewItem('n14-wm016-q12-right',
+    '右側の不等式x+3≥2について、両辺から3を引こう。',
+    'x\\ge-1', 'formula', ['x>-1', 'x\\le-1', 'x\\ge1'],
+    'causal-reasoning','medium',
+    ['右辺では2−3を計算する。両辺から3を引くと向きは変わらない。']),
+]
+const q12First = q08Content.readingFlow.findIndex(block => block.id === 'n14-lead-12')
+const q12End = q08Content.readingFlow.findIndex(block => block.id === 'n14-after-12')
+const q13Start = q08Content.readingFlow.findIndex(block => block.id === 'n14-lead-13')
+const oldQ12Index = q08Content.items.findIndex(item => item.id === 'n14-12')
+if (q12First<0 || q12End<=q12First || q13Start<=q12End
+    || oldQ12Index!==15 || q08Content.readingFlow[q12First+1].id!=='n14-formula-12')
+  throw new Error('N14-Q12 original approved source boundary drifted')
+const q12Flow: TextbookReadingBlock[] = [
+  { id:'n14-lead-wm016-q12-left',type:'paragraph',parts:[
+    T('前の問題で得た二つの条件は「または」で結ばれている。まず左側を一つずつ解こう。'),
+    M('x+3\\le-2'),
+    T('両辺から3を引いたときのxの範囲を選ぼう。'),
+  ]},
+  { id:'n14-formula-wm016-q12-left',type:'formula',parts:[
+    C('n14-wm016-q12-left'),
+  ]},
+  { id:'n14-after-wm016-q12-left',type:'paragraph',parts:[
+    T('両辺から同じ3を引けば不等号の向きは変わらない。右辺は−2−3=−5なので、x≤−5となる。'),
+  ]},
+  { id:'n14-lead-wm016-q12-right',type:'paragraph',parts:[
+    T('次は右側の条件を解こう。左側とは別に、同じ操作を行う。'),
+    M('x+3\\ge2'),
+    T('両辺から3を引いてxの範囲を選ぼう。'),
+  ]},
+  { id:'n14-formula-wm016-q12-right',type:'formula',parts:[
+    C('n14-wm016-q12-right'),
+  ]},
+  { id:'n14-after-wm016-q12-right',type:'paragraph',parts:[
+    T('2−3=−1だからx≥−1となる。ここでも同じ数を引くだけなので、不等号は反転しない。'),
+  ]},
+  { id:'n14-lead-12',type:'paragraph',parts:[
+    T('左右の不等式をそれぞれ解いた。前問の「または」を保って、二つの範囲を合わせた最終解を選ぼう。'),
+    M('|x+3|\\ge2'),
+  ]},
+  q08Content.readingFlow[q12First+1],
+  q08Content.readingFlow[q12End],
+  { id:'n14-after-wm016-q12-union',type:'paragraph',parts:[
+    T('左の枝ではx≤−5、右の枝ではx≥−1。どちらか一方を満たせばよいため「または」で結ぶ。'),
+    T('もとの不等号には等号があるので、x=−5とx=−1はどちらも解に含まれる。その間は解にならない。'),
+    M('x\\le-5\\;\\text{または}\\;x\\ge-1'),
+  ]},
+]
+const content = {
+  readingFlow: [
+    ...q08Content.readingFlow.slice(0,q12First),
+    ...q12Flow,
+    ...q08Content.readingFlow.slice(q12End+1),
+  ],
+  items: [
+    ...q08Content.items.slice(0,oldQ12Index),
+    ...q12NewItems,
+    ...q08Content.items.slice(oldQ12Index),
+  ],
+}
 const rawN14={
-  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n14',revision:5,status:'review' as const,subject:'math-1a' as const,
+  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n14',revision:6,status:'review' as const,subject:'math-1a' as const,
   chapter:{chapterId:'math-ch01-numbers-expressions',chapterNumber:'1',chapterTitle:'数と式',unitCode:'1NUM',orderInChapter:14,sourcePages:[35,36]},
   title:'距離の上限と下限から、残す範囲を決める',subtitle:'絶対値の内側・外側と端点を、数直線で選び分ける。',
   source:{type:'reference' as const,label:'ユーザー提供「数と式」教科書モード対話段階導入版 v2 / N14',

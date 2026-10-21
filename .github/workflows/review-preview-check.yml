@@ -208,15 +208,17 @@ jobs:
           cp e2e-evidence/n11-q05-* "$dir/"
           cp e2e-evidence/n11-normal-* "$dir/"
           {
-            printf '# W-MATH-017/P-003 — N11 Q01 / Q05 実アプリ Gate① 確認票\n\n'
+            printf '# W-MATH-017/P-006 — N11 Q05〜Q06 式間説明の実画面確認票\n\n'
             printf '描画・操作した教材コード SHA: \`%s\`\n\n' "$CAPTURE_SHA"
             printf 'GitHub Actions の実 Chromium による操作とスクリーンショット。図面・モックではありません。学習履歴は保存されません。\n\n'
             printf '## 普段の学習画面（黄色い確認枠なし）\n\n'
-            printf 'これらは独立の教材ページでなく、N11 を最初から9操作解いて Q05 に到達した通常の教材画面です。\n\n'
+            printf 'N11をQ01から解き進めた通常の教材画面です。P-006変更対象はQ05〜Q06の式の間に追加した2つの短い説明だけです。Q01は既存承認履歴の参照画像です。\n\n'
             for part in q01-before q01-after q05-operation-before q05-balance-before q05-result-before q06-fraction-before q06-after; do
               printf '### %s\n\n![通常画面 %s 390px](n11-normal-%s-390.png)\n\n[320px](n11-normal-%s-320.png) ・ [PC 1440px](n11-normal-%s-1440.png)\n\n' "$part" "$part" "$part" "$part" "$part"
             done
-            printf '## 既存Gate①の番号付き確認枠\n\n'
+            printf '## 今回の説明文だけを示す番号付き確認枠\n\n'
+            printf '**確認①：** 左右に2を足した直後の理由（q05-step-3-before）。\n\n'
+            printf '**確認②：** 右辺を7まで計算した直後、正の3で割る理由（q05-step-4-before）。\n\n'
 
             for id in n11-q01 n11-q05; do
               printf '## %s\n\n' "$id"
@@ -230,7 +232,7 @@ jobs:
                 done
               done
             done
-            printf '確認対象は新規修正された N11 Q01 と Q05 だけ。他の承認済みブロックは再承認対象外。Gate②とGate③は別。\n'
+            printf 'P-006の新規確認対象はN11 Q05〜Q06の式間説明2箇所のみ。Q01やP-005承認済み4行式の再承認は求めません。Gate②・Gate③は別です。\n'
           } > "$dir/README.md"
           git add "$dir"
           if ! git diff --cached --quiet; then

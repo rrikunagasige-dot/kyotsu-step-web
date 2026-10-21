@@ -20,7 +20,7 @@ const specs = [
   },
 ] as const
 
-test.describe('W-MATH-017 P-005 SHA-locked real application gate-1 images', () => {
+test.describe('W-MATH-017 P-005/P-006 SHA-locked real application gate-1 images', () => {
   for (const width of [320,390,1440]) for (const spec of specs) {
     test(spec.route + ' real learner before/wrong/retry/resolved at ' + width, async ({ page }, info) => {
       test.skip(process.env.E2E_WM017_GATE1 !== '1', 'Only existing approved PR evidence flow')
@@ -37,11 +37,16 @@ test.describe('W-MATH-017 P-005 SHA-locked real application gate-1 images', () =
       const evidence=[]
 
       for(const [i,step] of spec.steps.entries()){
-        const mark=page.getByTestId('review-mark-'+step.block)
-        await expect(mark).toContainText(step.label)
-        await expect(mark).toBeVisible()
+        const changedExplanationId=spec.route==='n11-q05'
+          ? (i===2?'n11-p006-q05-cancel-explain':i===3?'n11-p006-q06-positive-explain':null)
+          : null
+        const mark=page.getByTestId('review-mark-'+(changedExplanationId??step.block))
         const trigger=page.getByTestId('textbook-item-'+step.item)
         await expect(trigger).toBeVisible()
+        if(spec.route==='n11-q01'||changedExplanationId){
+          await expect(mark).toContainText(spec.route==='n11-q01'?'確認①':i===2?'確認①':'確認②')
+          await expect(mark).toBeVisible()
+        }
         if(spec.route==='n11-q05' && i===0){
           // Operation chosen first; worked-out transformed line must remain gated.
           await expect(page.getByTestId('textbook-item-n11-05')).toHaveCount(0)
@@ -52,10 +57,13 @@ test.describe('W-MATH-017 P-005 SHA-locked real application gate-1 images', () =
         if(spec.route==='n11-q05' && i<3){
           await expect(page.getByTestId('textbook-item-n11-06')).toHaveCount(0)
         }
-        if(spec.route==='n11-q05' && i===3){
-          await expect(mark).toContainText('x')
+        if(spec.route==='n11-q05'){
+          const explanations=page.locator('[data-derivation-id="n11-q05-q06-chain"] .reading-derivation-step--paragraph')
+          await expect(explanations).toHaveCount(i<2?0:i===2?1:2)
+          if(i===2)await expect(page.getByTestId('review-mark-n11-p006-q06-positive-explain')).toHaveCount(0)
         }
-        await mark.evaluate(e=>window.scrollTo({top:Math.max(0,window.scrollY+e.getBoundingClientRect().top-innerHeight*0.32),left:0,behavior:'instant'}))
+        const anchor=(spec.route==='n11-q01'||changedExplanationId)?mark:trigger
+        await anchor.evaluate(e=>window.scrollTo({top:Math.max(0,window.scrollY+e.getBoundingClientRect().top-innerHeight*0.32),left:0,behavior:'instant'}))
         for(const state of ['before','wrong','resolved'] as const){
           if(state==='before'){
             await expect(mark).toBeVisible()
@@ -95,7 +103,7 @@ test.describe('W-MATH-017 P-005 SHA-locked real application gate-1 images', () =
 })
 
 
-test.describe('W-MATH-017 P-005 full four-line derivation in normal learner route', () => {
+test.describe('W-MATH-017 P-006 four-line derivation plus conditional explanations in normal learner route', () => {
   for (const width of [320,390,1440]) {
     test('N11 ordinary lesson four-row Q05/Q06 at '+width, async ({page},info)=>{
       test.skip(process.env.E2E_WM017_GATE1 !== '1','Only approved existing Gate1 evidence runner')
@@ -138,16 +146,26 @@ test.describe('W-MATH-017 P-005 full four-line derivation in normal learner rout
       const calc='n11-05'
       const fraction='n11-06'
       const chain=page.locator('[data-derivation-id="n11-q05-q06-chain"]')
+      const explanation1='両辺に同じ数を足しても、不等号の向きは変わらない。左辺では−2と＋2が打ち消し合う。'
+      const explanation2='xの係数は正の3なので、両辺を3で割っても不等号の向きは変わらない。'
+      const reasons=chain.locator('.reading-derivation-step--paragraph')
       await screenshot('q05-operation-before',op)
+      await expect(reasons).toHaveCount(0)
       await expect(chain.locator('.reading-formula-line')).toHaveCount(2)
       await expect(page.getByTestId('textbook-item-'+calc)).toHaveCount(0)
       await answer(op,'2')
       await screenshot('q05-balance-before',balance)
+      await expect(reasons).toHaveCount(0)
       await expect(page.getByTestId('textbook-item-'+calc)).toHaveCount(0)
       await answer(balance,'2')
+      await expect(reasons).toHaveCount(1)
+      await expect(reasons.nth(0)).toContainText(explanation1)
+      await expect(page.getByText(explanation2,{exact:true})).toHaveCount(0)
       await screenshot('q05-result-before',calc)
       await expect(chain.locator('.reading-formula-line')).toHaveCount(3)
       await answer(calc,'7')
+      await expect(reasons).toHaveCount(2)
+      await expect(reasons.nth(1)).toContainText(explanation2)
       await screenshot('q06-fraction-before',fraction)
       await expect(chain.locator('.reading-formula-line')).toHaveCount(4)
       await answer(fraction,'\\frac73')

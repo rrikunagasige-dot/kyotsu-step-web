@@ -1,5 +1,6 @@
 import { mkdirSync, writeFileSync } from 'node:fs'
 import { expect, test } from '@playwright/test'
+import { mathNumbersN11Unit } from '../src/data/textbook/math/numbers/n11Lesson'
 
 const specs = [
   {
@@ -82,6 +83,59 @@ test.describe('W-MATH-017 P-003 SHA-locked real application gate-1 images', () =
       }
       expect(await page.evaluate(()=>localStorage.getItem('kyotsu-step-store'))).toBe(originalStorage)
       writeFileSync('e2e-evidence/'+spec.route+'-manifest-'+width+'.json',JSON.stringify({sha,route:spec.route,width,evidence},null,2)+'\n')
+    })
+  }
+})
+
+
+test.describe('W-MATH-017 P-003 full learner route vs highlighted review', () => {
+  for (const width of [320,390,1440]) {
+    test('N11 actual ordinary lesson Q01 to Q05 before and after at '+width, async ({page},info)=>{
+      test.skip(process.env.E2E_WM017_GATE1 !== '1','Only approved existing Gate1 evidence runner')
+      test.skip(width===1440 ? info.project.name!=='desktop-chromium' : info.project.name!=='mobile-chromium')
+      test.setTimeout(240_000)
+      const sha=process.env.CAPTURE_SHA||''
+      expect(sha).toMatch(/^[0-9a-f]{40}$/)
+      await page.setViewportSize({width,height:width===1440?1000:850})
+      await page.goto('/#/learning/textbook/math-numbers-expressions-n11')
+      await page.evaluate(()=>localStorage.clear())
+      await page.reload()
+      await expect(page.getByTestId('textbook-reading-flow')).toBeVisible()
+      const items=mathNumbersN11Unit.sections[0].items
+      const screenshot=async(name:string,triggerId:string)=>{
+        const trigger=page.getByTestId('textbook-item-'+triggerId)
+        if(await trigger.count()) await trigger.scrollIntoViewIfNeeded()
+        else {
+          const resolved=page.getByTestId('resolved-'+triggerId)
+          await resolved.scrollIntoViewIfNeeded()
+        }
+        await expect(page.locator('.review-marked-block')).toHaveCount(0)
+        await expect(page.locator('.katex-error')).toHaveCount(0)
+        if(width!==1440){
+          const over=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth)
+          expect(over,name+' ordinary page overflow').toBeLessThanOrEqual(2)
+        }
+        await page.screenshot({path:'e2e-evidence/n11-normal-'+name+'-'+width+'.png',fullPage:false})
+      }
+      const answer=async(id:string,correct:string)=>{
+        await page.getByTestId('textbook-item-'+id).click()
+        await page.getByTestId('inline-choice-panel-'+id).getByRole('button',{name:correct,exact:true}).click()
+        await expect(page.getByTestId('resolved-'+id)).toBeVisible()
+      }
+      await screenshot('q01-before','n11-01')
+      await answer('n11-01',items[0].answer)
+      await screenshot('q01-after','n11-01')
+      for(const item of items.slice(1,9))await answer(item.id,item.answer)
+      const op='n11-wm017-q05-operation'
+      const calc='n11-05'
+      await screenshot('q05-operation-before',op)
+      await expect(page.getByTestId('textbook-item-'+calc)).toHaveCount(0)
+      await answer(op,'2')
+      await screenshot('q05-result-before',calc)
+      await answer(calc,'7')
+      await screenshot('q05-after',calc)
+      await expect(page.getByTestId('textbook-item-n11-06')).toBeVisible()
+      writeFileSync('e2e-evidence/n11-normal-manifest-'+width+'.json',JSON.stringify({sha,route:'ordinary N11 complete context',width,ids:['n11-01',op,calc]},null,2)+'\n')
     })
   }
 })

@@ -206,10 +206,18 @@ jobs:
           mkdir -p "$dir"
           cp e2e-evidence/n11-q01-* "$dir/"
           cp e2e-evidence/n11-q05-* "$dir/"
+          cp e2e-evidence/n11-normal-* "$dir/"
           {
             printf '# W-MATH-017/P-003 — N11 Q01 / Q05 実アプリ Gate① 確認票\n\n'
             printf '描画・操作した教材コード SHA: \`%s\`\n\n' "$CAPTURE_SHA"
             printf 'GitHub Actions の実 Chromium による操作とスクリーンショット。図面・モックではありません。学習履歴は保存されません。\n\n'
+            printf '## 普段の学習画面（黄色い確認枠なし）\n\n'
+            printf 'これらは独立の教材ページでなく、N11 を最初から9操作解いて Q05 に到達した通常の教材画面です。\n\n'
+            for part in q01-before q01-after q05-operation-before q05-result-before q05-after; do
+              printf '### %s\n\n![通常画面 %s 390px](n11-normal-%s-390.png)\n\n[320px](n11-normal-%s-320.png) ・ [PC 1440px](n11-normal-%s-1440.png)\n\n' "$part" "$part" "$part" "$part" "$part"
+            done
+            printf '## 既存Gate①の番号付き確認枠\n\n'
+
             for id in n11-q01 n11-q05; do
               printf '## %s\n\n' "$id"
               steps=1

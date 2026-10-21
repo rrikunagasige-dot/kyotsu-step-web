@@ -1,8 +1,8 @@
 # W-MATH-013 / P-001 — N11-Q14 1原問・2つの式中穴による導出修正案
-Status: PROPOSED
+Status: APPROVED
 Created: 2026-10-21
 Command: CMD-WORK-001「修正」 (not creation).
-Approval status: WAITING — **NOT authorized for learner-code implementation**.
+Approval status: APPROVED exact P-001 isolated implementation; main merge/deployment NOT APPROVED.
 Proposal authoring permission: user 「いいよ続けて」 immediately after the assistant committed to producing a formal N11-Q14 correction proposal.
 
 ## 1. 問題 / 原典 / 既存の不具合
@@ -82,3 +82,6 @@ N11 conclusion and transition to N12 unchanged`
 - **Implementation approval: WAITING**; no app source edits, no testing of future revision, no fake screenshot.
 - One block per approval: after Q14, independently preflight N14 Q07, then Q08, Q12. Each needs its own scoped Proposal and QA, unless user explicitly approves revised grouping.
 - Final status before explicit user authorization: **PROPOSED / NOT APPROVED FOR IMPLEMENTATION**.
+
+## 8. Actual user authorization — 2026-10-21
+After the completed exact W-MATH-013/P-001 was presented, the user explicitly replied 「承認します。」. This authorizes only the 2 new N11 Q14 in-equation choices, rev5→6 selective migration, scoped source/tests/browser evidence. Existing final Q14 key and N11 Q01–04/Q11 approvals are preserved. Historical WAITING descriptions above remain provenance, not current status. No authorization for PR #101 merge, public hosting, N14 corrections, lesson rewrites or shared renderer changes.

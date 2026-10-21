@@ -1,5 +1,5 @@
 # W-MATH-013 — N11-Q14 同類項整理の3段階導出を復元する修正
-Status: PROPOSED
+Status: VERIFYING
 Updated: 2026-10-21
 
 ## Objective
@@ -24,7 +24,7 @@ Updated: 2026-10-21
 Original DOCX, N11 Q01–Q13 answers/reading/figures/progress (including accepted Q01–Q04/Q11), Q14 existing `n11-14` key/distractors, N12/N14 units, original PNG bytes, Math Practice, Physics, master lessons, mode SPEC, shared global renderer/schema unless separately re-proposed, CI/deploy config, billing, `main`/GitHub Pages/Vercel/public release.
 
 ## Approved Proposal
-**None yet.** [P-001](./PROPOSAL.md) is drafted only; user's latest 「いいよ続けて」 authorized **preparation of the exact proposal**, not its implementation/merge.
+**W-MATH-013/P-001 exact isolated implementation APPROVED** by user 「承認します。」 after complete Proposal. No main merge or deployment approval.
 
 ## Current Step
 Complete source-grounded small-block design, mathematical/distractor checks, strict migration and verification contract; present the whole P-001 to user for exact implementation approval.
@@ -37,3 +37,9 @@ N11 Q11 v5 approved visual review; N11 Q12 R1 NOT-AFFECTED; N14 Q07/Q08/Q12 open
 
 ## Completion Condition
 Only scoped approved and tested code + 320/390 actual images + explicit new Q14 Gate① + independent Gate② replay and closure of linked defects. Entire-app Gate③ separate.
+
+## 2026-10-21 approved implementation snapshot
+- User implementation approval: 「承認します。」 in direct answer to finished P-001, after prior drafting-only instruction.
+- Isolated work branch `work/W-MATH-013-n11-q14-derivation-20261021`, based on Proposal commit `472063abfe4d6af5b8d487a37d040812cd12259c`.
+- Bounded source/test code commit `b22db8b3f5cf08bca1c2f48d0d086c5ae41dad47`; no main/PR #101 integration, UI helper/asset/master changes.
+- Next: run actual PR CI, inspect real browser wrong/hint/retry and 320/390 screenshots, present new Q14-only GitHub Gate①. Status VERIFYING not DONE; global Gate② remains blocked by separate N14 Q07/Q08/Q12.

@@ -8,3 +8,8 @@ Status: PROPOSED
 4. User message 「いいよ続けて」 was permission to **prepare** a formal repair plan. It was **not** an approval of an as-yet-unshown implementation proposal.
 5. Created isolated **proposal-only** branch `proposal/W-MATH-013-n11-q14-derivation-20261021` from PR #101 tested-document head. No app/source/renderer/progress/deployment modifications.
 6. Authored exact `P-001` (2 new local formula choices, existing final answer unchanged, rev5→6 selective archive, Gate①/②/③ verification, stop guards); awaits explicit user review and approval.
+
+## 2026-10-21 approved implementation phase
+7. User responded 「承認します。」 directly to the complete exact P-001; this authorized bounded N11 Q14 code, selective rev6 migration and adjacent QA on an isolated implementation branch, not main merge/deployment.
+8. Created `work/W-MATH-013-n11-q14-derivation-20261021` from proposal SHA `472063abfe4d6af5b8d487a37d040812cd12259c` and committed scoped 5-file source/test change `b22db8b3f5cf08bca1c2f48d0d086c5ae41dad47`.
+9. New source map N11-Q14→2 new formula-local nodes plus unchanged `n11-14`; N11 v5→v6 migration preserves old answers/archived completion. Old Q01–Q04/Q11 visual approvals not reopened. CI, captured screens, approval of Q14 remain pending before gate closure.

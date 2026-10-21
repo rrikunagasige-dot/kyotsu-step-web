@@ -13,3 +13,9 @@ Status: PENDING
 V01—source/answer; V02—6 new wrong alternatives independently false; V03—source map 14→23/N11 and 123→136 batch; V04—rev1–5 migration to v6 archive/history/old answer; V05—no pre-answer leakage and correctly gated after text; V06—320px,390px and desktop actual app screenshot/KaTeX; V07—wrong→hint→retry→correct→reload for Q14 three stages; V08—N11 Q01–Q04/Q11 and N12/other mode regressions; V09—allowed diff/CI tested SHA exact and real CI SUCCESS; V10—new Q14 only Gate① visual acceptance, Gate② separate and Gate③ NOT READY.
 
 **Do not mark these future checks PASS until independently verified evidence exists.**
+
+## Post-approval implementation preliminary checklist — 2026-10-21
+- User approval for the complete exact P-001 recorded: 「承認します。」; main merge and hosting not authorized.
+- Initial source/test commit `b22db8b3f5cf08bca1c2f48d0d086c5ae41dad47` includes N11 Q14 only, N11 rev6 migration, related coverage and Playwright checks.
+- Predicted active counts: N11 23/14 source, total eight-unit 136/123 source. Tests for 2 new nodes, original key unchanged, all rev1–5→6 preservation, and 320/390 browser wrong→hint→retry→correct→reload added; **CI not yet claimed**.
+- Real 18 screenshots and GitHub Gate① user visual review: **PENDING**. Gate② N14 Q07/Q08/Q12 remain independently open; entire app Gate③ NOT READY.

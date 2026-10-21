@@ -4,6 +4,7 @@ import { makeReviewSteps } from './newBatchGuidedSteps'
 
 export const n14SourceToItemIds = oneToOneSourceMap('N14', 16)
 n14SourceToItemIds['N14-Q07'] = ['n14-wm014-q07-nonnegative', 'n14-wm014-q07-negative', 'n14-07']
+n14SourceToItemIds['N14-Q08'] = ['n14-wm015-q08-nonnegative', 'n14-wm015-q08-negative', 'n14-08']
 const originalContent = makeReviewSteps('n14', [
   {
     title:'近い点は内側、遠い点は外側',
@@ -100,20 +101,78 @@ const q07Flow: TextbookReadingBlock[] = [
 ]
 if (originalContent.readingFlow[firstQ07+1].id !== 'n14-formula-07')
   throw new Error('original n14-07 final choice block changed')
+// W-MATH-015/P-001 — source Q08 only, after frozen approved Q07 block.
+// Keep original final n14-08 (same answer+3 distractors and history).
+const newQ08Items: TextbookItem[] = [
+  reviewItem('n14-wm015-q08-nonnegative',
+    'Xが0以上のとき、|X|>aを絶対値のない条件へ直そう。',
+    'X>a', 'formula', ['X\\ge a', '0\\le X<a', 'X<-a'],
+    'causal-reasoning', 'medium',
+    ['X≥0なら|X|はXのまま。元の不等号は「より大きい」。']),
+  reviewItem('n14-wm015-q08-negative',
+    'Xが負のとき、−X>aを解こう。',
+    'X<-a', 'formula', ['X\\le-a', 'X>-a', 'X>a'],
+    'causal-reasoning', 'medium',
+    ['−1を掛けると不等号の向きが変わる。']),
+]
+const q08End = originalContent.readingFlow.findIndex(block => block.id === 'n14-after-08')
+const oldQ08Index = originalContent.items.findIndex(item => item.id === 'n14-08')
+if (q08Start <= lastQ07 || q08End <= q08Start || oldQ08Index !== 7
+    || originalContent.readingFlow[q08Start+1].id !== 'n14-formula-08')
+  throw new Error('Approved N14-Q08 source boundary changed')
+const q08Flow: TextbookReadingBlock[] = [
+  { id: 'n14-lead-wm015-q08-nonnegative', type: 'paragraph', parts: [
+    T('次は原点からの距離がaより大きい場合を考える。a>0として、まずXが0以上のとき。'),
+    M('|X|>a\\quad(a>0)'),
+    T('X≥0では|X|=X。この場合に必要な条件を選ぼう。'),
+  ] },
+  { id: 'n14-formula-wm015-q08-nonnegative', type: 'formula', parts: [
+    C('n14-wm015-q08-nonnegative'),
+  ] },
+  { id: 'n14-after-wm015-q08-nonnegative', type: 'paragraph', parts: [
+    T('X≥0なら|X|=Xなので、この場合はX>aとなる。等号は含めない。'),
+  ] },
+  { id: 'n14-lead-wm015-q08-negative', type: 'paragraph', parts: [
+    T('X<0なら|X|=−X。−X>aの両辺に−1を掛けると不等号の向きが変わる。'),
+    M('-X>a\\quad(X<0)'),
+    T('負の場合に残る範囲を選ぼう。'),
+  ] },
+  { id: 'n14-formula-wm015-q08-negative', type: 'formula', parts: [
+    C('n14-wm015-q08-negative'),
+  ] },
+  { id: 'n14-after-wm015-q08-negative', type: 'paragraph', parts: [
+    T('−X>aを−1倍するとX<−aとなる。こちらも等号を含めない。'),
+  ] },
+  { id: 'n14-lead-08', type: 'paragraph', parts: [
+    T('二つの場合のいずれかに入ればよい。左右に離れた範囲の結び方も考えて、絶対値のない条件を選ぼう。'),
+    M('|X|>a\\quad(a>0)'),
+  ] },
+  originalContent.readingFlow[q08Start+1],
+  originalContent.readingFlow[q08End],
+  { id: 'n14-after-wm015-q08-converse', type: 'paragraph', parts: [
+    T('逆も確かめよう。X>aならa>0よりX>0なので|X|=X>a。X<−aならX<0なので|X|=−X>a。'),
+    T('左右のどちらか一方でよく「または」で結ぶ。「かつ」では両方同時に満たせない。X=±aも等号がないため含まれない。'),
+    M('|X|>a\\iff\\left(X<-a\\;\\text{または}\\;X>a\\right)\\quad(a>0)'),
+  ] },
+]
 const content = {
   readingFlow: [
     ...originalContent.readingFlow.slice(0, firstQ07),
     ...q07Flow,
-    ...originalContent.readingFlow.slice(lastQ07+1),
+    ...originalContent.readingFlow.slice(lastQ07+1, q08Start),
+    ...q08Flow,
+    ...originalContent.readingFlow.slice(q08End+1),
   ],
   items: [
     ...originalContent.items.slice(0, oldQ07Index),
     ...newQ07Items,
-    ...originalContent.items.slice(oldQ07Index),
+    ...originalContent.items.slice(oldQ07Index, oldQ08Index),
+    ...newQ08Items,
+    ...originalContent.items.slice(oldQ08Index),
   ],
 }
 const rawN14={
-  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n14',revision:4,status:'review' as const,subject:'math-1a' as const,
+  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n14',revision:5,status:'review' as const,subject:'math-1a' as const,
   chapter:{chapterId:'math-ch01-numbers-expressions',chapterNumber:'1',chapterTitle:'数と式',unitCode:'1NUM',orderInChapter:14,sourcePages:[35,36]},
   title:'距離の上限と下限から、残す範囲を決める',subtitle:'絶対値の内側・外側と端点を、数直線で選び分ける。',
   source:{type:'reference' as const,label:'ユーザー提供「数と式」教科書モード対話段階導入版 v2 / N14',

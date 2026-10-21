@@ -185,6 +185,40 @@ export function effectiveTextbookProgress(unit: TextbookUnit, progress: Textbook
   if (!progress) return undefined
   if (progress.unitRevision === unit.revision) return progress
 
+  // W-MATH-015/P-001: Q08 adds two sign-case checks, preserving the
+  // unchanged original n14-08. Normalize v1–v3 through the approved v4
+  // migration, then archive v4 without losing Q07 or other old answers.
+  if (unit.unitId === 'math-numbers-expressions-n14' && unit.revision === 5
+    && progress.unitId === unit.unitId && [1,2,3,4].includes(progress.unitRevision)) {
+    const fromV4 = progress.unitRevision === 4 ? progress
+      : effectiveTextbookProgress({ ...unit, revision: 4 }, progress)
+    if (!fromV4 || fromV4.unitRevision !== 4) return undefined
+    const prior: TextbookRevisionArchive = {
+      unitRevision: 4,
+      startedAt: fromV4.startedAt,
+      updatedAt: fromV4.updatedAt,
+      answers: { ...fromV4.answers },
+      ...(fromV4.completedAt !== undefined ? { completedAt: fromV4.completedAt } : {}),
+      ...(fromV4.previousRevisionCompletedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV4.previousRevisionCompletedAt } : {}),
+      ...(fromV4.migratedFromRevision !== undefined
+        ? { migratedFromRevision: fromV4.migratedFromRevision } : {}),
+    }
+    return {
+      unitId: unit.unitId,
+      unitRevision: 5,
+      startedAt: fromV4.startedAt,
+      updatedAt: fromV4.updatedAt,
+      answers: { ...fromV4.answers },
+      migratedFromRevision: 4,
+      archivedRevisions: { ...(fromV4.archivedRevisions ?? {}), '4': prior },
+      ...(fromV4.completedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV4.completedAt }
+        : fromV4.previousRevisionCompletedAt !== undefined
+          ? { previousRevisionCompletedAt: fromV4.previousRevisionCompletedAt } : {}),
+    }
+  }
+
   // W-MATH-014/P-001: two new N14 Q07 sign-case choices before the
   // UNCHANGED n14-07 final. Archive v3, keep every old answer active.
   // Older v1/v2 first pass through the approved v2 and v3 migrations.

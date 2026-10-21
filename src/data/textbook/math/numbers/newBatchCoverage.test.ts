@@ -46,7 +46,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       const unit = mathTextbookUnits.find(u => u.unitId === 'math-numbers-expressions-n' + n)
       expect(unit, 'N' + n).toBeDefined()
       expect(unit?.status).toBe('review')
-      expect(unit?.revision).toBe(n === '11' ? 6 : n === '14' ? 4 : ['06', '07', '08'].includes(n) ? 3 : 2)
+      expect(unit?.revision).toBe(n === '11' ? 6 : n === '14' ? 5 : ['06', '07', '08'].includes(n) ? 3 : 2)
       expect(Object.keys(map)).toEqual(Array.from({ length: count }, (_, i) => 'N' + n + '-Q' + String(i + 1).padStart(2, '0')))
       const items = unit?.sections.flatMap(section => section.items) ?? []
       const choiceIds = unit?.sections.flatMap(section => section.readingFlow.flatMap(block =>
@@ -58,7 +58,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       expect(items.map(i => i.id), 'N' + n).toEqual(mapped)
       allChoiceCount += items.length
     }
-    expect(allChoiceCount).toBe(138) // 123 original + 4 N04 + 5 N11 proof + 2 Q11 + 2 Q14 + 2 N14 Q07
+    expect(allChoiceCount).toBe(140) // 123 original + 4 N04 + 5 N11 proof + 2 Q11 + 2 Q14 + 2 Q07 + 2 Q08
   })
 
   it('keeps every original figure byte-for-byte and its original question-answer gates', () => {
@@ -207,7 +207,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
     expect(distance.lead).not.toContain('原点から離れた点を残し')
     expect(distance.lead).not.toContain('等号も許す')
     expect(mathTextbookUnits.find(u => u.unitId.endsWith('n06'))!.revision).toBe(3)
-    expect(mathTextbookUnits.find(u => u.unitId.endsWith('n14'))!.revision).toBe(4)
+    expect(mathTextbookUnits.find(u => u.unitId.endsWith('n14'))!.revision).toBe(5)
   })
 
   it('P-004-R2 requires 11 actual original-source cognitive actions before disclosing answers', () => {
@@ -331,7 +331,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
     inspectAfter('14', '13', '14', 'まず定数−2を消す操作', '次は三辺に共通する操作')
     inspectAfter('14', '14', '15', '正の3で三辺を割っても', '中央のxの係数を1にする段階')
     for (const n of ['06', '11', '14']) {
-      expect(pick(n).revision).toBe(n === '11' ? 6 : n === '14' ? 4 : 3)
+      expect(pick(n).revision).toBe(n === '11' ? 6 : n === '14' ? 5 : 3)
     }
   })
 
@@ -378,7 +378,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
     }
     for (const n of ['11', '14']) {
       const unit = mathTextbookUnits.find(u => u.unitId.endsWith('n' + n))!
-      expect(unit.revision).toBe(n === '11' ? 6 : 4)
+      expect(unit.revision).toBe(n === '11' ? 6 : 5)
     }
   })
 
@@ -765,8 +765,8 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
     const unit=mathTextbookUnits.find(u=>u.unitId.endsWith('n14'))!
     const section=unit.sections[0]
     const ids=['n14-wm014-q07-nonnegative','n14-wm014-q07-negative','n14-07']
-    expect(unit.revision).toBe(4)
-    expect(section.items).toHaveLength(18)
+    expect(unit.revision).toBe(5)
+    expect(section.items).toHaveLength(20)
     expect(Object.keys(n14SourceToItemIds)).toHaveLength(16)
     expect(n14SourceToItemIds['N14-Q07']).toEqual(ids)
     expect(Object.values(n14SourceToItemIds).flat()).toEqual(section.items.map(i=>i.id))
@@ -795,7 +795,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
   })
 
   it('W-MATH-014/P-001 N14 revision1/2/3→4 preserves prior answers and completion in archives', () => {
-    const unit=mathTextbookUnits.find(u=>u.unitId.endsWith('n14'))!
+    const unit={...mathTextbookUnits.find(u=>u.unitId.endsWith('n14'))!, revision: 4}
     const keys=['n14-01','n14-06','n14-07','n14-08','n14-10','n14-11','n14-12','n14-14','n14-15']
     const record=(itemId:string):TextbookAnswerRecord=>({
       itemId,value:'historical',firstValue:'historical',isFirstCorrect:true,
@@ -821,6 +821,94 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       expect(effectiveTextbookProgress(unit,v4)).toBe(v4)
       if(from<3)expect(v4.archivedRevisions?.['2']).toBeDefined()
       if(from===1)expect(v4.archivedRevisions?.['1']).toBeDefined()
+    }
+  })
+
+
+  it('W-MATH-015/P-001 Q08 adds two branch choices, original OR 4-choice key and gated reverse proof',()=>{
+    const unit=mathTextbookUnits.find(u=>u.unitId.endsWith('n14'))!
+    const section=unit.sections[0],items=section.items
+    const ids=['n14-wm015-q08-nonnegative','n14-wm015-q08-negative','n14-08']
+    expect(unit.revision).toBe(5)
+    expect(Object.keys(n14SourceToItemIds)).toHaveLength(16)
+    expect(items).toHaveLength(20)
+    expect(n14SourceToItemIds['N14-Q08']).toEqual(ids)
+    expect(Object.values(n14SourceToItemIds).flat()).toEqual(items.map(i=>i.id))
+    const q7=['n14-wm014-q07-nonnegative','n14-wm014-q07-negative','n14-07']
+    expect(items.slice(6,9).map(i=>i.id)).toEqual(q7)
+    const three=items.slice(9,12)
+    expect(three.map(i=>i.id)).toEqual(ids)
+    expect(three[0].answer).toBe('X>a')
+    expect(three[0].choices).toEqual(['X>a','X\\ge a','0\\le X<a','X<-a'])
+    expect(three[1].answer).toBe('X<-a')
+    expect(three[1].choices).toEqual(['X<-a','X\\le-a','X>-a','X>a'])
+    expect(three[2].answer).toBe('X<-a\\;\\text{または}\\;X>a')
+    expect(three[2].choices).toEqual([
+      'X<-a\\;\\text{または}\\;X>a',
+      '-a<X<a',
+      'X\\le-a\\;\\text{または}\\;X\\ge a',
+      'X<-a\\;\\text{かつ}\\;X>a',
+    ])
+    for(const item of three) {
+      expect(item.choices).toHaveLength(4)
+      expect(new Set(item.choices).size).toBe(4)
+      for(const option of item.choices!)
+        expect(()=>katex.renderToString(option,{throwOnError:true,strict:'ignore'})).not.toThrow()
+    }
+    const flow=section.readingFlow
+    const at=(id:string)=>flow.findIndex(b=>b.id===id)
+    const plus=at('n14-formula-wm015-q08-nonnegative')
+    const minus=at('n14-formula-wm015-q08-negative')
+    const final=at('n14-formula-08')
+    const reverse=at('n14-after-wm015-q08-converse')
+    expect(plus).toBeGreaterThan(at('n14-after-wm014-q07-converse'))
+    expect(minus).toBeGreaterThan(plus)
+    expect(final).toBeGreaterThan(minus)
+    expect(reverse).toBeGreaterThan(at('n14-after-08'))
+    expect(reverse).toBeLessThan(at('n14-lead-09'))
+    expect(flow[plus]).toEqual({id:'n14-formula-wm015-q08-nonnegative',type:'formula',parts:[{type:'choice',itemId:ids[0]}]})
+    expect(flow[minus]).toEqual({id:'n14-formula-wm015-q08-negative',type:'formula',parts:[{type:'choice',itemId:ids[1]}]})
+    expect(flow[final]).toEqual({id:'n14-formula-08',type:'formula',parts:[{type:'choice',itemId:ids[2]}]})
+    // Hidden formula answer is not revealed in formula blocks before its own choice.
+    expect(JSON.stringify(flow.slice(0,final))).not.toContain('X<-a\\\\;\\\\text{または}\\\\;X>a')
+    for(const a of [0.1,1,2.5,5])for(const X of [-3*a,-a,-a/2,0,a/2,a,3*a]){
+      const positive=X>=0&&X>a,negative=X<0&&X<-a
+      const union=negative||positive, intersection=negative&&positive
+      expect(Math.abs(X)>a).toBe(union)
+      expect(X<-a||X>a).toBe(union)
+      expect(intersection).toBe(false)
+      if(Math.abs(X)===a)expect(union).toBe(false)
+    }
+  })
+
+  it('W-MATH-015/P-001 migrates N14 rev1–4 to 5 with Q07/Q08 answers and exact history preserved',()=>{
+    const unit=mathTextbookUnits.find(u=>u.unitId.endsWith('n14'))!
+    const ids=['n14-01','n14-06','n14-wm014-q07-nonnegative','n14-wm014-q07-negative','n14-07','n14-08','n14-10','n14-12','n14-16']
+    const record=(itemId:string):TextbookAnswerRecord=>({
+      itemId,value:'old',firstValue:'old',isFirstCorrect:true,resolved:true,
+      attemptCount:2,firstAnsweredAt:100,lastAnsweredAt:200,
+    })
+    for(const from of [1,2,3,4]){
+      const prev:TextbookUnitProgress={
+        unitId:unit.unitId,unitRevision:from,startedAt:100,updatedAt:200,
+        completedAt:230,answers:Object.fromEntries(ids.map(i=>[i,record(i)])),
+      }
+      const v4=from===4?prev:effectiveTextbookProgress({...unit,revision:4},prev)!
+      const v5=effectiveTextbookProgress(unit,prev)!
+      expect(v5.unitRevision).toBe(5)
+      expect(v5.migratedFromRevision).toBe(4)
+      expect(v5.answers).toEqual(v4.answers)
+      expect(v5.answers['n14-07']).toEqual(v4.answers['n14-07'])
+      expect(v5.answers['n14-08']).toEqual(v4.answers['n14-08'])
+      expect(v5.answers['n14-wm014-q07-nonnegative']).toEqual(v4.answers['n14-wm014-q07-nonnegative'])
+      expect(v5.answers['n14-wm015-q08-nonnegative']).toBeUndefined()
+      expect(v5.answers['n14-wm015-q08-negative']).toBeUndefined()
+      expect(v5.archivedRevisions?.['4']?.answers).toEqual(v4.answers)
+      expect(v5.archivedRevisions?.['4']?.completedAt).toBe(v4.completedAt)
+      expect(v5.previousRevisionCompletedAt).toBe(v4.completedAt??v4.previousRevisionCompletedAt)
+      expect(v5.completedAt).toBeUndefined()
+      expect(effectiveTextbookProgress(unit,v5)).toBe(v5)
+      if(from<4)expect(v5.archivedRevisions?.['3']).toBeDefined()
     }
   })
 

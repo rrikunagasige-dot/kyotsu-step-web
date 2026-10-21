@@ -226,8 +226,8 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
         '13': ['6'], // P008 Q13 coefficient only
       },
       '14': {
-        '10': ['-2'], // P001: local left bound, three operations and upper bound graded separately
-        '14': ['\\text{三辺に}2\\text{を足す}', '-2\\le3x\\le6'],
+        '10': ['-2'], // Q10 local left bound and separate computations
+        '14': ['-2'], // W-MATH-019: Q14 now grades the left endpoint only
         '15': ['\\text{三辺を正の}3\\text{で割る}', '-\\frac23\\le x\\le2'],
       },
     }
@@ -250,6 +250,9 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
           // Assert the *completed result and orientation* are not revealed.
           expect(leadCopy,id).not.toContain('x\\ge-1')
           expect(leadCopy,id).not.toContain('-2x\\le2')
+        } else if(n === '14' && q === '14') {
+          // The premise 3x−2 already contains -2; forbid the completed range, not substring -2.
+          expect(leadCopy,id).not.toContain('-2\\le3x\\le6')
         } else expect(leadCopy, id).not.toContain(item.answer)
         for (const required of expected) expect(item.answer, id).toContain(required)
         expect(item.choices).toHaveLength(4)
@@ -376,8 +379,11 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
     expect(textbookDisplayLines('n14-10', item.answer)).toEqual([item.answer])
   })
 
-  it('P-004-R4 preserves three compound grading keys while displaying operation and inequality as two KaTeX rows', () => {
-    for (const id of ['n14-14', 'n14-15']) {
+  it('P-004-R4 preserves remaining Q15 compound grading while Q14 is a local result', () => {
+    const q14=mathTextbookUnits.find(unit=>unit.unitId.endsWith('n14'))!.sections[0].items.find(item=>item.id==='n14-14')!
+    expect(q14.answer).toBe('-2')
+    expect(textbookDisplayLines(q14.id,q14.answer)).toEqual(['-2'])
+    for (const id of ['n14-15']) {
       const section = mathTextbookUnits.find(unit => unit.unitId.endsWith(id.slice(0, 3)))!.sections[0]
       const item = section.items.find(candidate => candidate.id === id)!
       expect(item.choices).toHaveLength(4)

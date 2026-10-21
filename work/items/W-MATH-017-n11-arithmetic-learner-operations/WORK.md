@@ -1,6 +1,6 @@
 # W-MATH-017 — 文章に学習操作を統合する教材修正
 
-Status: IMPLEMENTING
+Status: REVISE-PROPOSAL
 Approval: P-003 user-approved; technical/human gates OPEN
 Updated: 2026-10-21 JST
 Command: CMD-WORK-001 「修正」
@@ -28,3 +28,6 @@ User Word, source mathematical conditions, original PNG bytes/figure timing, unr
 
 ## Next
 Wait only for the user's new Q01/Q05 `細部OK` / `要修正` after they inspect **actual app + numbered review** images, and complete any still-running full math CI. Meanwhile prepare sibling/source cognitive audit without altering other lessons. If `要修正`, return to §12B root-cause and exact changes. Existing accepted blocks are never re-requested. Gate② and Gate③ remain OPEN.
+
+## 2026-10-21 — Latest user feedback: generic learner "確認" rejected
+The user refused Gate① visual acceptance because the lesson does not yet follow the original 集合 continuous prose. Identified learner-label root cause in `newBatchGuidedSteps.ts`: generic `check` marks repeat at N11 second/third groups, unlike Set. Also separated yellow `確認①` from actual learner marker. **P-004** created as materially different proposal (pending explicit approval); preserve already-approved P-003 code and all evidence. No P-004 implementation, no Gate① `細部OK`, no merger/publication.

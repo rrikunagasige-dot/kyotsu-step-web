@@ -25,3 +25,7 @@ Review-only targets show yellow numbered boxes around approved learner blocks; t
 
 ## F-017-08 / SOURCE-VERIFIED (N11/N14 Word)
 Source Word chapter N11 original Q06/Q09/Q13 requires a transformation with result; Q08 demands remove constant. N14 Q10/Q14 demands apply a shared operation to all three inequality members; Q15 demands coefficient division and resulting range. Code currently grades each as a single option bundling operation and completed result. Whether and how to add an independent operation/calculation action must be decided per original marker after confirming the actual predecessor/next relation; it is not approval for all seven edits. Existing prior Gate① approvals remain protected.
+
+
+## F-017-09 / ERROR-IMPLEMENTATION+ERROR-QA / user-review feedback
+Latest user response: 「いや確認というのはいやだな。だって文章として取り入れていないというか。そもそもさ最初の集合だって確認とかなかったよ」. Distinct causal surfaces: (1) normal N11 `n11-marker-2/3` `確認` inserted by `makeReviewSteps` default, (2) yellow numbered `確認①` wrapper only in Gate① image; they are not synonymous. Approved Set authoring uses `例題` marker and coherent prose/inline choices, no global auto check markers. N11 passing mathematical correctness/browser tests did NOT establish matching Set's pedagogical flow. §12B sibling exposure spans other `makeReviewSteps` units; no global deletion authorized. Exact new proposal P-004 is pending.

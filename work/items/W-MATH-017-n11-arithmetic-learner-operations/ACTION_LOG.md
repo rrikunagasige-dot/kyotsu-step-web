@@ -17,3 +17,9 @@ Read main `governance/INSTRUCTION_DICTIONARY.md`: user corrective comment maps S
 - Initial Gate① images: screenshot-only commit `ab31baf31b3a4d6684827ac0798d154428e92aeb`, 27 genuine screenshots, 320/390/1440.
 - To avoid users mistaking the yellow **review marker** for real app learner layout, added **normal full lesson** screenshots to same verified method at learner source SHA `0a5d695ec5622519a5398274b7b14bbecb2fb587`. Capture job PASS, screenshot-only commit `07b7104eb6a3ff2c682d6bdcbe2157c2700f600d`, 42 PNGs with README. Normal N11 Q01/Q05 visually inspected: hole is embedded in prose rather than a separate answer formula frame; prior Q04 standalone formula remains out of accepted scope.
 - User has not yet judged new images. §12A Gate① only IMAGES-READY, never user-accepted. Original Word N11/N14 consulted before sibling cognitive classification; 7 old combined operation/result items remain candidates for individually designed repair.
+
+
+## 2026-10-21 — REVIEW-FEEDBACK -> REVISE-PROPOSAL (no learner code edits)
+- Compared live main `setLesson.ts`, `newBatchGuidedSteps.ts`, actual N11 branch, math SPEC §4, MASTER §§52/54, instruction dictionary CMD-WORK-001 and Work §11.
+- Detected automatic generic `確認` in N11 `marker-2/3` and analogous generated math units; explained difference from mandatory review-only `確認①` overlay.
+- Authored `PROPOSAL_P004_N11_CONFIRM_TO_PROSE.md`, set Work `REVISE-PROPOSAL`, left prior P-003 approved content/code/screenshots intact. NO changes to lesson files, renderer, original figures, CI definitions or production. Await user decision.

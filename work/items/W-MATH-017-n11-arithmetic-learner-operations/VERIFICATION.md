@@ -22,3 +22,7 @@ Candidate code commit: `1739a98f55e1320209795131442044ef81fc39fe` (earlier docs+
 - Review Preview Check [39581161131](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39581161131) **PASS**, including bounded screenshot job. Governance check [39581161063](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39581161063) **PASS**. Full Math Textbook CI [39581161230](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39581161230) **RUNNING at this snapshot** (specific single tests/typecheck/build/mobile smoke already PASS); never infer final result.
 - Original N11 Q01 relation and Q05 independent operation/numeric computation are correct in actual normal learner UI, without a detached formula-choice box; yellow frames only mark review blocks, not normal learner appearance. The remainder of older N11 author's formula blocks are not modified/approved by this Gate①.
 - Gate① STATUS: `REAL-IMAGES-READY / USER-SMALL-BLOCK-ACCEPTANCE-PENDING`; Gate② `OPEN / §12B sibling impact ongoing`; Gate③ `FAILED/REOPENED`. No user `細部OK` or `総チェックOK` has been received at this point.
+
+
+## Review-feedback status
+P-003 correctness CI PASS and screenshot files do not amount to Gate① user acceptance. User raised an additional **pedagogical continuity** defect for generic learner `確認` markers; P-004 is proposed only, no new Gate① PASS. Original answer/revision invariants untouched pending P-004 approval.

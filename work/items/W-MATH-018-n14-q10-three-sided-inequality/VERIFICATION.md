@@ -1,5 +1,5 @@
 # W-MATH-018 — VERIFICATION
-Status: NEEDS-FIX
+Status: VERIFYING — P-004 TECHNICAL PASS / Gate① USER PENDING
 Updated: 2026-10-22 JST
 
 | Check | Status |
@@ -45,3 +45,10 @@ Do not mark a CI PASS or user acceptance until results obtained. Keep older acce
 - [Raw real screenshot artifact](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39642196191/artifacts/12364463820) retains 320 normal, 390/1440 regular/review screenshots; failed marked-review 320 state assertion logs exist, but its image was NOT committed/retained in this artifact. Do not re-label normal320 as failing marked320.
 - [Repository governance #39642196256](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39642196256) SUCCESS; [math practice #39642196216](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39642196216) SUCCESS. Full Math Textbook #39642196185 was **still IN PROGRESS at this checkpoint**, not claimed PASS.
 - Outcome: **FAILED-VERIFICATION (P-003 review mobile)**; W-MATH-018 returns **REVISE-PROPOSAL**, exact new P-004 awaiting user approval. Keep P-003 content/math approval and previous block Gate① acceptances. Gate① Q10 not ready; Gate② and Gate③ not accepted; no main/Pages/host.
+
+## 2026-10-22 P-004 exact-source verification and independent gate boundaries
+- User exact P-004 approval: **APPROVED**; `src/review/review.css` Q10 yellow review frame only. Learner source math, original Q10 3 logical lines / 1 explanation / 5 decisions, wrong keys, N14 revision7 selective archive all **unchanged**.
+- Tested source full SHA `f058ec38a6e21f2925fc4535c34d0c741f356046` (not the screenshot-only branch head `044525020a58394361f2fb0a3be711b617b781a5`). [Real screenshot/E2E run #39643764980](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39643764980) **SUCCESS**. Six valid tests: actual learner Q01→Q11 and numbered reviewer at 320/390/1440; inner scrollWidth <= clientWidth+1; all 6 formula parts in bounds; original blue「選択」/red「×」; canonical button size, focus/keyboard; 5 answers, wrong/hint/retry, explanation timing; mobile two visible rows / desktop one.
+- [Math Textbook Full CI #39643764939](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39643764939) **SUCCESS**, [Math Practice #39643765326](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39643765326) **SUCCESS**, [Repository Governance #39643764970](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39643764970) **SUCCESS**. Previously accepted N11/N14 and protected Physics/Math practice regression covered. Source teacher OMML still UNVERIFIED; separate N14 Q14/Q15 remain OPEN.
+- Actual GitHub screenshot storage commit `044525020a58394361f2fb0a3be711b617b781a5`; [correct P004 Gate① sheet](./GATE1_P004_N14_Q10_REVIEW_SHEET.md) binds three annotated photo states to source `f058ec38a6e21f2925fc4535c34d0c741f356046`. [GitHub comment mirror](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/107#issuecomment-6322494573). **Gate① SCREENSHOT READY, user `細部OK` / `要修正` PENDING — do not infer acceptance**.
+- **Gate② global independent cross audit OPEN**, with separate source Word and sibling findings. **Gate③ FINAL-REVIEW-NOT-READY**, no verified exact-SHA hosted playable full app or user `総チェックOK`. PR #107 remains Draft/unmerged; main and public app untouched.

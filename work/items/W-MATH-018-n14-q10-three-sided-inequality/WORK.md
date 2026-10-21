@@ -1,6 +1,6 @@
 # W-MATH-018 — N14 Q10 三辺同時の式変形
-Status: REVISE-PROPOSAL
-Updated: 2026-10-21 JST
+Status: VERIFYING
+Updated: 2026-10-22 JST
 
 ## Objective
 Fix same-root operation+already-completed-result error under existing N14 Q10 only, respecting prior approved N14 blocks.
@@ -57,3 +57,9 @@ Prior W-MATH-017 P008 small-block user accepted; full math CI 39611931626 SUCCES
 - Scope locked to one learner-independent code file `src/review/review.css`: at mobile <=430px, ONLY `[data-testid="review-mark-n14-formula-10"]` padding-inline `.65rem`→`.4rem`. No learner CSS, formula buttons, source/data, answers, archive, other review marks, main or public app edits.
 - Upon implementation, require authentic 320/390/1440 Chromium review and normal route, exact tested SHA, existing full CI and mobile cross-surface regression. If true 320px marked review still fails, STOP and enter REVISE-PROPOSAL; do not automatically adjust other wrappers/controls.
 - Gate① Q10 screenshot+user `細部OK` still pending; Gate② and Gate③ independent.
+
+## 2026-10-22 — P-004 tested CSS and Gate① image handoff
+- User explicitly approved P-004. Scoped code commit `f058ec38a6e21f2925fc4535c34d0c741f356046` changes ONLY `src/review/review.css` in learner-visible source files, plus exact approval/Work records. Existing N14-Q10 math/answers/IDs/revision7 and all prior approvals unaffected.
+- [Authentic review+normal screenshot Action #39643764980](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39643764980) **SUCCESS** at SHA `f058ec38a6e21f2925fc4535c34d0c741f356046`: 320/390/1440 all **six** E2E scenarios PASS, including 320 numbered view previous failure, literal original blue「選択」/red「×」, six formula parts, two-visual-row mobile / one-row desktop, five decisions, hints, wrong/retry, keyboard focus/activation and normal Q01→Q11. Screenshot-only commit `044525020a58394361f2fb0a3be711b617b781a5`.
+- [Full Math Textbook CI #39643764939](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39643764939) **SUCCESS**, [Math Practice #39643765326](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39643765326) **SUCCESS**, [Governance #39643764970](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39643764970) **SUCCESS**.
+- P-004 [GitHub Gate① N14 Q10 true-image sheet](./GATE1_P004_N14_Q10_REVIEW_SHEET.md) and [PR conversation mirror](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/107#issuecomment-6322494573). **USER `細部OK` or `要修正` PENDING.** Previously accepted N11/N14 screenshots must not be reapproved; Gate② and Gate③ remain separate, no main/Pages/release.

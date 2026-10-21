@@ -1,5 +1,5 @@
 # W-MATH-018 — ACTION LOG
-Status: IMPLEMENTING
+Status: VERIFYING
 
 ## 2026-10-22 Approved correction preflight
 - User direct response 「続けて」 in immediate reply to full W-MATH-018/P-001 was treated as approval of the unchanged exact design only, not main/release/Gate acceptance.
@@ -37,3 +37,10 @@ Status: IMPLEMENTING
 - A-P003-04: initial approved formula-row padding .12rem failed at 320 marked review (216px vs 213px); P-003 allowed container-only padding adjustment to zero in `98de588ec8950b62b745aa397bc7d94a3276799e`.
 - A-P003-05: [real Chrome review run #39642196191](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39642196191) **still FAIL** at marked 320; other five selected genuine route/width tests passed. [Raw actual screenshot artifact](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39642196191/artifacts/12364463820) retains successful-state images; the failing 320 marked screenshot itself is not in that artifact, so do not claim otherwise. The failed Playwright assertion/log is the numeric proof.
 - A-P003-06: no further learner-code/CSS changes authorized after P-003 stop rule. Diagnosed `review.css` review-only padding and prepared **unimplemented** exact P-004 proposal. No Gate① human acceptance or main merge.
+
+## 2026-10-22 — P-004 approved CSS-only implementation and actual evidence
+- A-P004-01 USER APPROVAL: direct unqualified 「承認」 responding to exact P-004 proposal. Previous P-003 execution approval preserved; no release rights.
+- A-P004-02 IMPL: `f058ec38a6e21f2925fc4535c34d0c741f356046`, exactly `src/review/review.css` adds at widths <=430px `.review-preview [data-testid="review-mark-n14-formula-10"] { padding-inline:.4rem; }`; same commit records Approval and Work scope. Compare commit with prior head `666a7c5b9d5ec79e0ec798c82b081a8170ce4220`; no common formula/button/lesson data changed.
+- A-P004-03 TEST: [real Chromium #39643764980](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39643764980) PASS 6/6 selected width×normal/review cases. Bot screenshot commit `044525020a58394361f2fb0a3be711b617b781a5`, images [GitHub path](./evidence/p002-gate1/README.md) (old filename/description P002 is historical workflow copy; do not rely on caption for actual source version). Verified image blobs of 320 normal, 320 review before/wrong/final, 390 and desktop. [P-004 corrected Gate① sheet](./GATE1_P004_N14_Q10_REVIEW_SHEET.md) binds them to tested `f058ec38a6e21f2925fc4535c34d0c741f356046`.
+- A-P004-04 FULL REGRESSION: [Math Textbook CI #39643764939](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39643764939) SUCCESS at exactly `f058ec38a6e21f2925fc4535c34d0c741f356046` including N04–N14, N11, N12, Physics textbook and Maths Practice setup. [Math practice pilot #39643765326](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39643765326) SUCCESS; [Governance #39643764970](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39643764970) SUCCESS; [PR #107](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/107) still Draft.
+- A-P004-05 USER HANDOFF: [GitHub-image review comment](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/107#issuecomment-6322494573) and Work review sheet. **Await N14 Q10 Gate① `細部OK` or `要修正` only**. Do not mark block visual acceptance, overall Gate② or Gate③ DONE.

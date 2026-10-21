@@ -143,7 +143,7 @@ jobs:
 
   # W-MATH-017/P-003 — reuse W-GOV-008's exact-SHA, numbered in-app Gate① method.
   # Only this review PR. Never publish Pages, merge main or change learner progress.
-  n11-p008-q13-authentic-screenshots:
+  n14-wmath018-q10-authentic-screenshots:
     if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && startsWith(github.head_ref, 'work/W-MATH-017-p003-inline-prose-correction-') }}
     runs-on: ubuntu-latest
     permissions:
@@ -153,7 +153,7 @@ jobs:
       VITE_REVIEW_PREVIEW: 'true'
       VITE_BASE_PATH: '/'
       VITE_PREVIEW_COMMIT: ${{ github.event.pull_request.head.sha }}
-      E2E_WM017_GATE1: '1'
+      E2E_WM018_GATE1: '1'
       E2E_USE_PREVIEW: '1'
       TARGET_BRANCH: ${{ github.head_ref }}
       CAPTURE_SHA: ${{ github.event.pull_request.head.sha }}
@@ -166,7 +166,7 @@ jobs:
         id: need
         shell: bash
         run: |
-          if git log -1 --format=%s | grep -q '^Store genuine N11 P008 Gate1 images'; then
+          if git log -1 --format=%s | grep -q '^Store genuine N14 Q10 Gate1 images'; then
             echo 'capture=false' >> "$GITHUB_OUTPUT"
           else
             echo 'capture=true' >> "$GITHUB_OUTPUT"
@@ -189,12 +189,12 @@ jobs:
         run: pnpm exec playwright install --with-deps chromium
       - name: Capture actual numbered learner decisions (320/390/1440px)
         if: ${{ steps.need.outputs.capture == 'true' }}
-        run: pnpm exec playwright test e2e/wmath017-n11-p008-gate1.spec.ts --project=mobile-chromium --project=desktop-chromium
+        run: pnpm exec playwright test e2e/wmath018-n14-q10-gate1.spec.ts --project=mobile-chromium --project=desktop-chromium
       - name: Preserve raw screenshot artifact even on test failure
         if: ${{ always() && steps.need.outputs.capture == 'true' }}
         uses: actions/upload-artifact@v4
         with:
-          name: wmath017-real-gate1-${{ github.event.pull_request.head.sha }}
+          name: wmath018-q10-real-gate1-${{ github.event.pull_request.head.sha }}
           path: e2e-evidence/
           if-no-files-found: ignore
           retention-days: 7
@@ -202,29 +202,31 @@ jobs:
         if: ${{ success() && steps.need.outputs.capture == 'true' }}
         shell: bash
         run: |
-          dir="work/items/W-MATH-017-n11-arithmetic-learner-operations/evidence/p008-gate1"
+          dir="work/items/W-MATH-018-n14-q10-three-sided-inequality/evidence/p001-gate1"
           mkdir -p "$dir"
-          cp e2e-evidence/p008-* "$dir/"
+          cp e2e-evidence/p001-* "$dir/"
           {
-            printf '# W-MATH-017/P-008 — N11 Q13 実アプリ Gate①確認票\n\n'
-            printf '描画・操作した教材コードの完全SHA: \`%s\`\n\n' "$CAPTURE_SHA"
-            printf '実Chromiumで通常のN11をQ01から順に解いた画像と、Q13の新規4操作だけの確認画像（320/390/1440px）。モックではありません。\n\n'
-            printf '## 通常の学習画面：4行と2つの理由\n\n'
-            for part in q13-mul-left-before q13-mul-right-before q13-xcoef-before q13-constant-before q13-resolved; do
-              printf '### %s\n\n![普通の教材 %s 390px](p008-normal-%s-390.png)\n\n[320px](p008-normal-%s-320.png) ・ [PC1440px](p008-normal-%s-1440.png)\n\n' "$part" "$part" "$part" "$part" "$part"
+            printf '# W-MATH-018/P-001 — N14 Q10 実際の教材画面の細部確認\n\n'
+            printf '描画した実教材コードの完全SHA: %s\n\n' "$CAPTURE_SHA"
+            printf 'GitHub ActionsのChromiumによる実画面操作・スクリーンショット。320/390/1440px。図面やモックではありません。\n\n'
+            printf '## 通常の学習画面（確認用の黄色い枠なし）\n\n'
+            for part in left-before addition-2-before addition-3-before left-bound-before right-bound-before final; do
+              printf '### %s\n\n![実際の教材 %s 390px](p001-normal-%s-390.png)\n\n[320px](p001-normal-%s-320.png) ・ [PC1440px](p001-normal-%s-1440.png)\n\n' "$part" "$part" "$part" "$part" "$part"
             done
-            printf '## 今回変更した箇所だけの番号付き確認\n\n'
-            printf '**確認①** 左辺に掛ける3。**確認②** 右辺にも掛ける3。**確認③** 3(2x+1)のxの係数6。**確認④** 定数3。式の間には正の倍率・分配法則の短い説明。\n\n'
-            for i in 1 2 3 4; do
-              printf '### 確認%s\n\n' "$i"
+            printf '## 今回だけの変更箇所・確認①〜③\n\n'
+            printf '**確認①：** 三辺に同じ数を足す第2式の中に3つの穴が並ぶ。\n\n'
+            printf '**確認②：** 三辺に同じ数を足す理由は第2式を解いた後、第3式の前に出る。\n\n'
+            printf '**確認③：** 最終行の左端と右端は、それぞれ独立した数値穴になる。\n\n'
+            for i in 1 2 3 4 5; do
+              printf '### 解答小操作 %s\n\n' "$i"
               for state in before wrong resolved; do
-                printf '**%s**\n\n![確認%s %s 390px](p008-review-step-%s-%s-390.png)\n\n[320px](p008-review-step-%s-%s-320.png) ・ [PC1440px](p008-review-step-%s-%s-1440.png)\n\n' "$state" "$i" "$state" "$i" "$state" "$i" "$state" "$i" "$state"
+                printf '**%s**\n\n![操作%s %s 390px](p001-review-%s-%s-390.png)\n\n[320px](p001-review-%s-%s-320.png) ・ [PC1440px](p001-review-%s-%s-1440.png)\n\n' "$state" "$i" "$state" "$i" "$state" "$i" "$state" "$i" "$state"
               done
             done
-            printf 'P-005/P-006 Q05〜Q06とP-007 Q08〜Q09は承認済み・非表示。今回の再承認対象外。今回対象はN11 Q13のみ。Gate②・Gate③は別。\n'
+            printf 'N14 Q07/Q08/Q12とN11 P006/P007/P008は既に細部承認済み。今回の確認はN14 Q10のみであり、Gate②横断監査とGate③全体総チェックとは別です。\n'
           } > "$dir/README.md"
           git add "$dir"
           if ! git diff --cached --quiet; then
-            git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Store genuine N11 P008 Gate1 images [review only]'
+            git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Store genuine N14 Q10 Gate1 images [review only]'
             git push origin "HEAD:refs/heads/$TARGET_BRANCH"
           fi

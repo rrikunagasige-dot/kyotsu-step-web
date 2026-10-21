@@ -18,3 +18,10 @@ Original W-MATH-003/P-001 already specifically approved naturally linked prose w
 
 ## F-017-06 / CONFIRMED (Q01 and Q05 limited correction)
 Existing `TextbookReadingFlow` supports inline paragraph decisions, and existing v6 revision migration precedent supports selective reopen. Approved implementation uses no global renderer change and keeps original teacher Word and figures intact. Visual Gate① and all CI at new SHA remain UNVERIFIED until actual evidence.
+
+
+## F-017-07 / CONFIRMED / genuine display difference between review and learner surfaces
+Review-only targets show yellow numbered boxes around approved learner blocks; this wrapper is **not a learner UI formula card**. The normal app snapshots from source SHA `0a5d695ec5622519a5398274b7b14bbecb2fb587` show N11 Q01 and Q05 as prose-integrated choices; old standalone formula rows from other questions still exist and are covered by the broader 123-marker preflight, not by approval of these two screens.
+
+## F-017-08 / SOURCE-VERIFIED (N11/N14 Word)
+Source Word chapter N11 original Q06/Q09/Q13 requires a transformation with result; Q08 demands remove constant. N14 Q10/Q14 demands apply a shared operation to all three inequality members; Q15 demands coefficient division and resulting range. Code currently grades each as a single option bundling operation and completed result. Whether and how to add an independent operation/calculation action must be decided per original marker after confirming the actual predecessor/next relation; it is not approval for all seven edits. Existing prior Gate① approvals remain protected.

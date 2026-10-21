@@ -4,6 +4,9 @@ Reviewed: 2026-10-21 JST. User's reply **「いいよ」** directly to the four-
 Frozen learner code SHA `2ebdf7fbb0c7387ae05753c286b3c457da74e17c`; later commits only .md/.png based on GitHub compare to previous branch head `dd7a2af49502503ecb8656caedbe503a4c635d93`. Original teacher Word 123 source markers, eight-unit 132 guided choices (N11 14 original Q → 19 choices). Reviewed N11 v4. Draft PR #101 not merged; main unchanged.
 Source: teacher edited Word SHA `93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa`; exact nine-stage independent proof audit `P-001_INDEPENDENT_PROOF_AUDIT.md`; genuine 54 screenshot review `GATE1_N11_Q01_Q04_REVIEW_SHEET.md`; full CI https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39442017686 SUCCESS. NO new master lesson created or revised.
 
+## 2026-10-21 addendum: linked N11-Q11 technical repair completed, subject to Gate①
+The former R1 underguided-Q11 confirmed issue has a **tested bounded fix** via [W-MATH-012/P-001](../W-MATH-012-n11-q11-derivation-correction/PROPOSAL.md): code SHA `74b73ad275b8aced7ccf99c3ef0ffc943f02d208`, [CI #39519336157](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39519336157) SUCCESS, [18 real images](../W-MATH-012-n11-q11-derivation-correction/GATE1_N11_Q11_REVIEW_SHEET.md), Gate① user confirmation **PENDING**. Earlier "Q11 is unresolved" conclusions below describe the older candidate SHA; do not misread as the current code. **Still cannot call entire N11 Gate② CROSS-VERIFIED** until Q11 visual acceptance and independent source review of Q12/Q14/N14 remaining risks. Q01–Q04 original Gate① remains accepted.
+
 ## Actual cross-block checklist (canonical template)
 
 | Surface | Target/source | Status | Verified evidence / limit |

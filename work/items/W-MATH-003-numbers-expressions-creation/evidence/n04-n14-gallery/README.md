@@ -1,5 +1,8 @@
 # W-MATH-003/P-003-R1 — 8単元まとめて確認（実アプリ画面画像）
 
+## W-MATH-012 N11-Q11：新しい3段階の導出（2026-10-21）
+[**Q11の実画面レビュー票：18枚（320/390×回答前・誤答・正答後）**](../../../W-MATH-012-n11-q11-derivation-correction/GATE1_N11_Q11_REVIEW_SHEET.md)。教材SHA `74b73ad275b8aced7ccf99c3ef0ffc943f02d208`、[撮影 #39519331072](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39519331072) SUCCESS、[最終数学CI #39519336157](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39519336157) SUCCESS。初回画像で判明した320pxの式の横切れは修正済みで、**最終画像18枚だけが承認用**。今回のQ11 Gate①はユーザー確認待ち、従来Q01〜Q04 Gate①は承認済み。
+
 ## W-MATH-011 N11-Q01〜Q04 修正（2026-10-21）
 [**4原問・9操作の細部確認票（全54枚の実画面）**](../../../W-MATH-011-n11-inequality-derivation-correction/GATE1_N11_Q01_Q04_REVIEW_SHEET.md) — 320px/390px、各回答前・誤答後・正答後。対象コードSHA `2ebdf7fbb0c7387ae05753c286b3c457da74e17c`、[撮影 #39440719673](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39440719673) PASS、[全数学CI #39442017686](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39442017686) PASS。以前のR5画像は別バージョンの歴史的監査証拠として以下に残す。今回のGate①ユーザー細部確認は未取得。
 

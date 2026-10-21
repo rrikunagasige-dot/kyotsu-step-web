@@ -4,7 +4,7 @@ Status: BLOCK-CHECK-PENDING
 ## 証拠と承認対象
 - N14 Q07原問1問だけ：非負の場合・負の場合の2つの新しい式中穴、そのあとに元の n14-07 最終4択。元Word N14 Q08/Q12は別修正待ち。
 - 本当のアプリコード（撮影したreview-only mergeの全SHA）：`e42356de0b01a314e3e39779de1ab98a57f4f85b`。これに対応する[撮影ジョブ #39538301948](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39538301948) は SUCCESS、画像保存コミット `50465039632687ab1891687678a85b10904c9276`。
-- N14の修正単独SHA `e2bd800e72c488fe9e51c98a4a01ec4b56086ff7` に対する[数学CI #39536925762](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39536925762) は SUCCESS。review merge SHAの[数学CI #39538308020](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39538308020) は独立した最終結果の照合対象であり、この確認票の初版では未判定として記録。
+- N14の修正単独SHA `e2bd800e72c488fe9e51c98a4a01ec4b56086ff7` に対する[数学CI #39536925762](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39536925762) は SUCCESS。review merge SHAの[数学CI #39538308020](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39538308020) は **SUCCESS**（実撮影したsource SHA `e42356de0b01a314e3e39779de1ab98a57f4f85b`に対して確認済み）。初版の未判定から実結果に更新。
 - 3段階 × 320/390px × 回答前・誤答とヒント・正答後＝18枚。GitHubギャラリーで全18ファイル実在確認済み（PNGサイズ非ゼロ）。合成ではない。
 - Q07 Gate①のみを対象とし、N11 Q01〜Q04・Q11・Q14の既承認を維持。Gate②全体はQ08/Q12等が未完。Gate③とmain/publicationの許可ではない。
 

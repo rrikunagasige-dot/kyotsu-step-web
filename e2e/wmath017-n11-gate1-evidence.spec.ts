@@ -12,13 +12,15 @@ const specs = [
   {
     route: 'n11-q05',
     steps: [
-      { block: 'n11-lead-05', item: 'n11-wm017-q05-operation', correct: '2', label: '確認①' },
-      { block: 'n11-formula-05', item: 'n11-05', correct: '7', label: '確認②' },
+      { block: 'n11-formula-05', item: 'n11-wm017-q05-operation', correct: '2', label: '確認①' },
+      { block: 'n11-formula-05', item: 'n11-wm017-q05-balance', correct: '2', label: '確認①' },
+      { block: 'n11-after-05', item: 'n11-05', correct: '7', label: '確認②' },
+      { block: 'n11-formula-06', item: 'n11-06', correct: '\\frac73', label: '確認③' },
     ],
   },
 ] as const
 
-test.describe('W-MATH-017 P-003 SHA-locked real application gate-1 images', () => {
+test.describe('W-MATH-017 P-005 SHA-locked real application gate-1 images', () => {
   for (const width of [320,390,1440]) for (const spec of specs) {
     test(spec.route + ' real learner before/wrong/retry/resolved at ' + width, async ({ page }, info) => {
       test.skip(process.env.E2E_WM017_GATE1 !== '1', 'Only existing approved PR evidence flow')
@@ -44,9 +46,14 @@ test.describe('W-MATH-017 P-003 SHA-locked real application gate-1 images', () =
           // Operation chosen first; worked-out transformed line must remain gated.
           await expect(page.getByTestId('textbook-item-n11-05')).toHaveCount(0)
         }
-        if(spec.route==='n11-q05' && i===1){
-          await expect(mark).toContainText('3x')
-          await expect(page.getByText('ここまでで')).toHaveCount(0)
+        if(spec.route==='n11-q05' && i<2){
+          await expect(page.getByTestId('textbook-item-n11-05')).toHaveCount(0)
+        }
+        if(spec.route==='n11-q05' && i<3){
+          await expect(page.getByTestId('textbook-item-n11-06')).toHaveCount(0)
+        }
+        if(spec.route==='n11-q05' && i===3){
+          await expect(mark).toContainText('x')
         }
         await mark.evaluate(e=>window.scrollTo({top:Math.max(0,window.scrollY+e.getBoundingClientRect().top-innerHeight*0.32),left:0,behavior:'instant'}))
         for(const state of ['before','wrong','resolved'] as const){
@@ -88,9 +95,9 @@ test.describe('W-MATH-017 P-003 SHA-locked real application gate-1 images', () =
 })
 
 
-test.describe('W-MATH-017 P-003 full learner route vs highlighted review', () => {
+test.describe('W-MATH-017 P-005 full four-line derivation in normal learner route', () => {
   for (const width of [320,390,1440]) {
-    test('N11 actual ordinary lesson Q01 to Q05 before and after at '+width, async ({page},info)=>{
+    test('N11 ordinary lesson four-row Q05/Q06 at '+width, async ({page},info)=>{
       test.skip(process.env.E2E_WM017_GATE1 !== '1','Only approved existing Gate1 evidence runner')
       test.skip(width===1440 ? info.project.name!=='desktop-chromium' : info.project.name!=='mobile-chromium')
       test.setTimeout(240_000)
@@ -127,15 +134,27 @@ test.describe('W-MATH-017 P-003 full learner route vs highlighted review', () =>
       await screenshot('q01-after','n11-01')
       for(const item of items.slice(1,9))await answer(item.id,item.answer)
       const op='n11-wm017-q05-operation'
+      const balance='n11-wm017-q05-balance'
       const calc='n11-05'
+      const fraction='n11-06'
+      const chain=page.locator('[data-derivation-id="n11-q05-q06-chain"]')
       await screenshot('q05-operation-before',op)
+      await expect(chain.locator('.reading-formula-line')).toHaveCount(2)
       await expect(page.getByTestId('textbook-item-'+calc)).toHaveCount(0)
       await answer(op,'2')
+      await screenshot('q05-balance-before',balance)
+      await expect(page.getByTestId('textbook-item-'+calc)).toHaveCount(0)
+      await answer(balance,'2')
       await screenshot('q05-result-before',calc)
+      await expect(chain.locator('.reading-formula-line')).toHaveCount(3)
       await answer(calc,'7')
-      await screenshot('q05-after',calc)
-      await expect(page.getByTestId('textbook-item-n11-06')).toBeVisible()
-      writeFileSync('e2e-evidence/n11-normal-manifest-'+width+'.json',JSON.stringify({sha,route:'ordinary N11 complete context',width,ids:['n11-01',op,calc]},null,2)+'\n')
+      await screenshot('q06-fraction-before',fraction)
+      await expect(chain.locator('.reading-formula-line')).toHaveCount(4)
+      await answer(fraction,'\\frac73')
+      await screenshot('q06-after',fraction)
+      await expect(chain.locator('.reading-formula-line')).toHaveCount(4)
+      await expect(page.getByTestId('textbook-item-n11-07')).toBeVisible()
+      writeFileSync('e2e-evidence/n11-normal-manifest-'+width+'.json',JSON.stringify({sha,route:'ordinary N11 four-line complete context',width,ids:['n11-01',op,balance,calc,fraction]},null,2)+'\n')
     })
   }
 })

@@ -25,7 +25,7 @@ const targets: Record<string, ReviewTarget> = {
   // The original unit and item instances are reused, never mocked.
   'n11-q01': {
     id: 'n11-q01', unitId: 'math-numbers-expressions-n11', title: 'N11 Q01', question: '負の数の大小比較',
-    revision: 7, totalItems: 24,
+    revision: 8, totalItems: 25,
     blockIds: ['n11-group-1', 'n11-show-n11-f01', 'n11-lead-01', 'n11-formula-01', 'n11-after-01'],
     itemIds: ['n11-01'],
     expectedAnswers: ['>'],
@@ -33,12 +33,12 @@ const targets: Record<string, ReviewTarget> = {
     reviewState: 'awaiting-user',
   },
   'n11-q05': {
-    id: 'n11-q05', unitId: 'math-numbers-expressions-n11', title: 'N11 Q05', question: '一次不等式の操作と計算',
-    revision: 7, totalItems: 24,
-    blockIds: ['n11-after-04', 'n11-lead-05', 'n11-formula-05', 'n11-after-05'],
-    itemIds: ['n11-wm017-q05-operation', 'n11-05'],
-    expectedAnswers: ['2', '7'],
-    markBlockIds: ['n11-lead-05', 'n11-formula-05'],
+    id: 'n11-q05', unitId: 'math-numbers-expressions-n11', title: 'N11 Q05–Q06', question: '一次不等式の四段連続変形',
+    revision: 8, totalItems: 25,
+    blockIds: ['n11-lead-05', 'n11-formula-05', 'n11-after-05', 'n11-formula-06', 'n11-after-06'],
+    itemIds: ['n11-wm017-q05-operation', 'n11-wm017-q05-balance', 'n11-05', 'n11-06'],
+    expectedAnswers: ['2', '2', '7', '\\frac73'],
+    markBlockIds: ['n11-formula-05', 'n11-after-05', 'n11-formula-06'],
     reviewState: 'awaiting-user',
   },
   'n01-q07': {

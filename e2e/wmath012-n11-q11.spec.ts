@@ -9,7 +9,7 @@ for (const width of [320, 390]) {
     const unit = mathTextbookUnits.find(u => u.unitId.endsWith('n11'))!
     const items = unit.sections[0].items
     const ids = ['n11-wm012-q11-expand', 'n11-wm012-q11-xcoef', 'n11-11']
-    expect(unit.revision).toBe(7)
+    expect(unit.revision).toBe(8)
     const first = items.findIndex(item => item.id === ids[0])
     expect(first).toBeGreaterThan(10)
     expect(items.slice(first, first + 3).map(item => item.id)).toEqual(ids)
@@ -95,7 +95,7 @@ for (const width of [320, 390]) {
     test.setTimeout(240_000)
     await page.setViewportSize({ width, height: 850 })
     const unit = mathTextbookUnits.find(u => u.unitId.endsWith('n11'))!
-    expect(unit.revision).toBe(7)
+    expect(unit.revision).toBe(8)
     const items = unit.sections[0].items
     const ids = ['n11-wm013-q14-xcoef', 'n11-wm013-q14-const', 'n11-14']
     const first = items.findIndex(item => item.id === ids[0])

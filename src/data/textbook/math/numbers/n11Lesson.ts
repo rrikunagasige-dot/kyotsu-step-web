@@ -191,7 +191,6 @@ const q06End = oldContent.readingFlow.findIndex(b => b.id === 'n11-after-06')
 if (q05Start < restReadingIndex || q05End !== q05Start + 2 || q06End !== q05End + 3)
   throw new Error('N11 original Q05/Q06 four-equation source flow boundary changed')
 const q05Offset = q05Start - restReadingIndex
-const q05AfterOffset = q05End - restReadingIndex
 // W-MATH-017/P-005 — approved four-row derivation: the mathematical
 // transformation is primary, with holes *inside* its successive equations.
 // The two '2' choices test LHS cancellation and mirroring it on the RHS.

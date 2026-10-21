@@ -8,13 +8,13 @@ describe('W-GOV-008/P-002 review marker boundaries', () => {
   it('W-MATH-017 P-003 reuses exact N11 revision7 source blocks with two distinct Q05 thinking steps', () => {
     const q1 = reviewTargets['n11-q01']
     const q5 = reviewTargets['n11-q05']
-    expect(q1.revision).toBe(7)
-    expect(q5.revision).toBe(7)
+    expect(q1.revision).toBe(8)
+    expect(q5.revision).toBe(8)
     expect(activeReviewMarkIds(q1)).toEqual(['n11-formula-01'])
-    expect(activeReviewMarkIds(q5)).toEqual(['n11-lead-05', 'n11-formula-05'])
+    expect(activeReviewMarkIds(q5)).toEqual(['n11-formula-05', 'n11-after-05', 'n11-formula-06'])
     expect(extractReviewSection(mathNumbersN11Unit,q1)?.items.map(i=>i.answer)).toEqual(['>'])
-    expect(extractReviewSection(mathNumbersN11Unit,q5)?.items.map(i=>i.answer)).toEqual(['2','7'])
-    expect(extractReviewSection({...mathNumbersN11Unit,revision:6},q5)).toBeNull()
+    expect(extractReviewSection(mathNumbersN11Unit,q5)?.items.map(i=>i.answer)).toEqual(['2','2','7','\\frac73'])
+    expect(extractReviewSection({...mathNumbersN11Unit,revision:7},q5)).toBeNull()
     expect(activeReviewMarkIds({...q1,reviewState:'accepted'})).toEqual([])
     expect(activeReviewMarkIds({...q5,reviewState:'accepted'})).toEqual([])
   })

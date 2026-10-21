@@ -10,7 +10,7 @@ const item=(id:string)=>section.items.find(entry=>entry.id===id)!
 describe('W-MATH-017 P-005/P-006 — four-line continuous formula derivation with interstitial reasons',()=>{
   const chain=['n11-lead-05','n11-formula-05','n11-after-05','n11-formula-06']
   it('preserves Q01 correct signed-number relation while retaining original figure',()=>{
-    expect(lesson.revision).toBe(8)
+    expect(lesson.revision).toBe(9)
     const b=section.readingFlow[index('n11-formula-01')]
     expect(b.type).toBe('paragraph')
     if(b.type!=='paragraph')return
@@ -52,7 +52,7 @@ describe('W-MATH-017 P-005/P-006 — four-line continuous formula derivation wit
     expect(prefix).not.toContain('3x<7')
     expect(prefix).not.toContain('x<\\frac73')
     expect(section.items.map(i=>i.id)).toEqual(Object.values(n11SourceToItemIds).flat())
-    expect(section.items).toHaveLength(25)
+    expect(section.items).toHaveLength(28)
     expect(n11SourceToItemIds['N11-Q05']).toEqual(['n11-wm017-q05-operation','n11-wm017-q05-balance','n11-05'])
     expect((n11SourceToItemIds as Record<string,readonly string[]>)['N11-Q06']).toEqual(['n11-06'])
     expect([item('n11-wm017-q05-operation').answer,item('n11-wm017-q05-balance').answer,item('n11-05').answer,item('n11-06').answer])
@@ -74,7 +74,7 @@ describe('W-MATH-017 P-005/P-006 — four-line continuous formula derivation wit
         'n11-wm012-q11-expand':record('n11-wm012-q11-expand','6x+9'),
       },
     }
-    const now=effectiveTextbookProgress(lesson,old)!
+    const now=effectiveTextbookProgress({...lesson,revision:8},old)!
     expect(now.unitRevision).toBe(8)
     expect(now.answers['n11-01']).toEqual(old.answers['n11-01'])
     expect(now.answers['n11-wm017-q05-operation']).toEqual(old.answers['n11-wm017-q05-operation'])
@@ -86,7 +86,7 @@ describe('W-MATH-017 P-005/P-006 — four-line continuous formula derivation wit
     expect(now.archivedRevisions?.['7']?.completedAt).toBe(210)
     expect(now.previousRevisionCompletedAt).toBe(210)
     expect(now.completedAt).toBeUndefined()
-    expect(effectiveTextbookProgress(lesson,now)).toBe(now)
+    expect(effectiveTextbookProgress({...lesson,revision:8},now)).toBe(now)
   })
   it('chains rev3→7→8, keeping all prior archives and unaffected proof decisions',()=>{
     const old:TextbookUnitProgress={
@@ -98,7 +98,7 @@ describe('W-MATH-017 P-005/P-006 — four-line continuous formula derivation wit
         'n11-06':record('n11-06','old compound fraction'),
       },
     }
-    const now=effectiveTextbookProgress(lesson,old)!
+    const now=effectiveTextbookProgress({...lesson,revision:8},old)!
     expect(now.unitRevision).toBe(8)
     expect(now.archivedRevisions?.['3']).toBeDefined()
     expect(now.archivedRevisions?.['6']).toBeDefined()

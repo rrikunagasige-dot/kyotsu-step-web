@@ -1,5 +1,5 @@
 # W-MATH-018 — N14 Q10 三辺同時の式変形
-Status: VERIFYING — N14 Q10 user-chosen concise layout accepted, Gate② open
+Status: VERIFYING
 Updated: 2026-10-22 JST
 
 ## Objective

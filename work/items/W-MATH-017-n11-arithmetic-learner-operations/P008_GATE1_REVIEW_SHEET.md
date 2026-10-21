@@ -1,5 +1,5 @@
 # W-MATH-017/P-008 — N11 Q13 Gate① 小ブロック実画像確認
-Status: BLOCK-CHECK-PENDING / REAL-IMAGES-READY / USER VISUAL ACCEPTANCE NOT YET GIVEN
+Status: BLOCK-VISUAL-OK — user direct reply 「いいよ続けて」 after this Q13 image sheet, 2026-10-21 JST
 Date: 2026-10-21 JST
 Approved exact proposal: [P-008](./PROPOSAL_P008_N11_Q13_DENOM_DISTRIBUTION.md), user 「いいよ続けて」
 Source N11 rev10, original teacher Word Q13 only, learner screenshot tested SHA `62c1702fa41175bec3bb5dfa7b468e61dc5e80b4`
@@ -46,7 +46,11 @@ P-006 Q05/Q06 and P-007 Q08/Q09 are **already accepted**: no repeat request; old
 - [x] Four formula rows + two paragraph bridges, four graded gaps, no grading of full premade result.
 - [x] Original 14 N11 Word markers; current 31 graded operations, local Q13 source ID stable; revision9→10 archives v9 answer records then reopens only repurposed `n11-13`; older archives preserved in focused tests.
 - [x] Real Chromium review + actual N11 beginning→Q14 normal route, wrong/hint/retry, 320/390/1440, exact SHA `62c1702fa41175bec3bb5dfa7b468e61dc5e80b4`.
-- [ ] User Gate① answer.
-- [ ] Final Math Textbook CI run #39608141804 conclusion pending at time of this record.
+- [x] Direct user reply 「いいよ続けて」, accepted for N11 Q13 only. User did not literally type 細部OK, and this is not 総チェックOK.
+- [x] Earlier CI #39608141804 failed because the obsolete P-004 N11-Q13 test expected a two-line complete operation/result card. A limited test-only repair 9e5d55706359e09a9ebd3250d915fd1e7708a4e1 preserved wrong/hint/retry and confirmed numerical inline form; FINAL math CI #39611931626 SUCCESS including physics textbook and math-practice regressions.
 - [ ] Gate② overall / fresh original teacher Word line-by-line, N14 affected siblings.
 - [ ] Gate③ SHA-matched public playable URL and user whole-app check.
+
+
+## User visual acceptance, exact immutable evidence
+2026-10-21 JST, user responded 「いいよ続けて」 to this actual Q13 Gate① review after the request for 細部OK/要修正. This means Q13 four formula rows, two explanatory paragraphs and four holes only, with photographed student code SHA 62c1702fa41175bec3bb5dfa7b468e61dc5e80b4. The original matching GitHub-visible screenshot+sheet version is pinned at https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/a35c971baef2d41d4d87e900eb2ce557ea9fac50/work/items/W-MATH-017-n11-arithmetic-learner-operations/P008_GATE1_REVIEW_SHEET.md ; never replace its image provenance with a later bot screenshot. Test-only code 9e5d557 preserves the learner lesson and passes CI 39611931626. The earlier P-006 and P-007 approvals stand. Gate② and Gate③ remain OPEN.

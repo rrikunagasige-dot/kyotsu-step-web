@@ -96,3 +96,9 @@ Read main `governance/INSTRUCTION_DICTIONARY.md`: user corrective comment maps S
 - Review image labels were initially mismatched in generated README (labeled 4 choices separately, while visual marks are 4 changed blocks: factor row, sign reason, distribute reason, result row). Corrected **README text only**, leaving actual real images/code intact; [P-008 sheet](./P008_GATE1_REVIEW_SHEET.md) uses exact block-based names.
 - Adjusted Q13 hints not to print the answer verbatim before students choose. Four mathematical values/IDs and original approved operation progression unchanged.
 - P-007 previously accepted marks were hidden by setting `reviewState:'accepted'` in the first subsequent reviewed build, keeping older screenshots and exact user response. No new P-007 acceptance request.
+
+
+## 2026-10-21 — Q13 human accept and failing-to-passing full CI
+- Exact user response 「いいよ続けて」 directly after actual P008 Q13 screenshots: BLOCK-VISUAL-OK for Q13 only, source SHA 62c1702fa41175bec3bb5dfa7b468e61dc5e80b4, real image action 39608141779.
+- CI 39608141804 failed two mobile test cases expecting a two-line completed Q13 result; this was historical P004 UI shape, incompatible with now-approved numeric x coefficient gap. Focused E2E update at commit 9e5d557 checks numeric fit while preserving error/hint/retry. Full retest 39611931626 SUCCESS.
+- Indexed original Word v2 N14 Q10 question found (「だけを中央へ残すため、各辺に同じ操作をしよう。」). Embedded equation OOXML was not accessible for direct comparison; fidelity UNVERIFIED. Separate proposed correction W-MATH-018 not implemented. No N14 edits or main merge.

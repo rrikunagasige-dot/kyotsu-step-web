@@ -73,3 +73,9 @@ P-003 correctness CI PASS and screenshot files do not amount to Gate① user acc
 - First E2E false-negative `constant placeholder count==0` was invalid for two gaps sharing one row. Fixed the test assertion only. No original pedagogy change.
 - Math CI [#39608141804](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39608141804) typecheck/lint/Vitest/build + SVG decode/N12/mobile smoke individual PASS, final report not yet confirmed at write time.
 - P-008 Gate① HUMAN PENDING, Gate② `NOT CROSS-VERIFIED` (fresh original DOCX unavailable, N14 Q10/Q14/Q15 same-root still open), Gate③ FINAL-REVIEW-NOT-READY. Main unmerged.
+
+
+## Current final P008 verification (2026-10-21)
+- P008 Q13 Gate① user affirmative recorded, actual screenshot build 62c1702fa41175bec3bb5dfa7b468e61dc5e80b4 (GitHub capture 39608141779 PASS), exact immutable sheet linked in P008_GATE1_REVIEW_SHEET.md.
+- Initial whole math CI 39608141804 FAILED due stale P004 Q13 two-row assertion, source mathematics unaffected. Narrow test-only repair SHA 9e5d55706359e09a9ebd3250d915fd1e7708a4e1; final whole Math textbook CI https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39611931626 SUCCESS including maths original 134 interactions, N11 proof/Q11, physics textbook, math-practice setup. Code source lesson unchanged between actual image and retest; no blanket Gate② claim.
+- Still UNVERIFIED: original Word mathematical content OOXML, affected N14 Q10/Q14/Q15 same-root fixes. Gate② open, Gate③ exact live playable app + user 総チェックOK not available. No main publication.

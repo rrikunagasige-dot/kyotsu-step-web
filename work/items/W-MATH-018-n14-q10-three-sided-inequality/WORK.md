@@ -1,5 +1,5 @@
 # W-MATH-018 — N14 Q10 三辺同時の式変形
-Status: VERIFYING
+Status: VERIFYING — N14 Q10 user-chosen concise layout accepted, Gate② open
 Updated: 2026-10-22 JST
 
 ## Objective
@@ -63,3 +63,8 @@ Prior W-MATH-017 P008 small-block user accepted; full math CI 39611931626 SUCCES
 - [Authentic review+normal screenshot Action #39643764980](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39643764980) **SUCCESS** at SHA `f058ec38a6e21f2925fc4535c34d0c741f356046`: 320/390/1440 all **six** E2E scenarios PASS, including 320 numbered view previous failure, literal original blue「選択」/red「×」, six formula parts, two-visual-row mobile / one-row desktop, five decisions, hints, wrong/retry, keyboard focus/activation and normal Q01→Q11. Screenshot-only commit `044525020a58394361f2fb0a3be711b617b781a5`.
 - [Full Math Textbook CI #39643764939](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39643764939) **SUCCESS**, [Math Practice #39643765326](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39643765326) **SUCCESS**, [Governance #39643764970](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39643764970) **SUCCESS**.
 - P-004 [GitHub Gate① N14 Q10 true-image sheet](./GATE1_P004_N14_Q10_REVIEW_SHEET.md) and [PR conversation mirror](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/107#issuecomment-6322494573). **USER `細部OK` or `要修正` PENDING.** Previously accepted N11/N14 screenshots must not be reapproved; Gate② and Gate③ remain separate, no main/Pages/release.
+
+## 2026-10-22 — N14 Q10 concise visual approval and continuation
+User explicitly asked to see ONLY the compact three-equation/two-visual-middle-row mathematical layout instead of a repeated screenshot gallery, following earlier source-matched genuine app screenshots in ChatGPT. On seeing that exact concise layout, the user replied **「对对对，可以的继续」**.
+This accepts the N14 Q10 **concise mathematical layout and move-on decision** (BLOCK-VISUAL-OK for the user-selected representation), not a separate claim that the user inspected every 320/390/1440 screenshot. Genuine source-matched screenshot evidence remains GitHub Action #39643764980, target SHA f058ec38a6e21f2925fc4535c34d0c741f356046.
+Prior N11/N14 acceptances are retained. Gate② independent wider audit remains OPEN; N14 Q14/Q15 same-root candidates require separate proposals and approval. Gate③ user whole-app play and release permission are NOT given. No production main/pages changes.

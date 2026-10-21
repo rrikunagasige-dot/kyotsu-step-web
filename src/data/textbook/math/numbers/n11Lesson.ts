@@ -8,6 +8,7 @@ export const n11SourceToItemIds = {
   'N11-Q02': ['n11-02', 'n11-wm011-q02-compare'],
   'N11-Q03': ['n11-wm011-q03-factor', 'n11-wm011-q03-positive', 'n11-03', 'n11-wm011-q03-zero'],
   'N11-Q04': ['n11-wm011-q04-fraction', 'n11-04'],
+  'N11-Q05': ['n11-wm017-q05-operation', 'n11-05'],
   'N11-Q11': ['n11-wm012-q11-expand', 'n11-wm012-q11-xcoef', 'n11-11'],
   'N11-Q14': ['n11-wm013-q14-xcoef', 'n11-wm013-q14-const', 'n11-14'],
 }
@@ -53,8 +54,8 @@ const oldContent = makeReviewSteps('n11', [
 // staged, hand-authored proof decisions. Keep Q05–Q14's original generated
 // reading flow and keys verbatim, and the two original Word figures untouched.
 const firstItems: TextbookItem[] = [
-  reviewItem('n11-01', '数直線の−2と−5を比べよう。', '-2>-5', 'formula',
-    ['-2<-5', '-2=-5', '2>-5'], 'concept-formation', 'strong', ['右側の点ほど大きい数を表す。']),
+  reviewItem('n11-01', '数直線の−2と−5を比べ、不等号を選ぼう。', '>', 'formula',
+    ['<', '=', '\\le'], 'concept-formation', 'light', ['数直線では右にある数のほうが大きい。']),
   reviewItem('n11-02', '両辺に同じcを加えたあとの差を計算しよう。', 'b-a', 'formula',
     ['b-a+2c', 'b-a-c', 'a-b'], 'causal-reasoning', 'strong', ['+cと−cを整理しよう。']),
   reviewItem('n11-wm011-q02-compare', '差の符号を根拠に、加えたあとの大小関係を選ぼう。',
@@ -96,7 +97,9 @@ const firstFlow: TextbookReadingBlock[] = [
   { id: 'n11-group-1', type: 'paragraph', parts: [T('2<5の両辺に同じ数を加えたり引いたりすると、どうなるだろう。たとえば2を引くと0<3、正の4を掛けると8<20となる。では負の数を掛けたときは、数直線上の位置で確かめよう。')] },
   { id: 'n11-show-n11-f01', type: 'figure', figureId: 'n11-f01' },
   { id: 'n11-lead-01', type: 'paragraph', parts: [T('元の2と5の位置、符号を変えた−2と−5の位置を見比べよう。'), M('2<5') ] },
-  { id: 'n11-formula-01', type: 'formula', parts: [M('-2\\;\\mathrel{?}\\;-5\\quad'), C('n11-01')] },
+  { id: 'n11-formula-01', type: 'paragraph', parts: [
+    T('符号を変えた二つの数を比べると、'), M('(-2)'), T(' '), C('n11-01'), T(' '), M('(-5)'), T(' となる。'),
+  ] },
   { id: 'n11-after-01', type: 'paragraph', parts: [T('−2は−5より数直線の右側にある。具体例で並び方の変化が見えた。次は一般の文字で、差の符号から理由を確かめる。')] },
 
   { id: 'n11-lead-02', type: 'paragraph', parts: [T('a<bならば右から左を引いた差b−aは正になる。aとbに同じcを足したときの差を、先に計算しよう。'), M('(b+c)-(a+c)')] },
@@ -180,10 +183,43 @@ const q11Flow: TextbookReadingBlock[] = [
   oldContent.readingFlow[q11End],
 ]
 const originalTail = oldContent.readingFlow.slice(restReadingIndex)
+// W-MATH-017/P-003: preserve the Word Q05 source while grading separately
+// the cancellation operation and the arithmetic result within flowing prose.
+const q05Start = oldContent.readingFlow.findIndex(b => b.id === 'n11-lead-05')
+const q05End = oldContent.readingFlow.findIndex(b => b.id === 'n11-after-05')
+if (q05Start < restReadingIndex || q05End !== q05Start + 2)
+  throw new Error('N11 original Q05 flow boundary changed')
+const q05Offset = q05Start - restReadingIndex
+const q05AfterOffset = q05End - restReadingIndex
+const q05Flow: TextbookReadingBlock[] = [
+  { id: 'n11-lead-05', type: 'paragraph', parts: [
+    T('次は一次不等式を解こう。'), M('3x-2<5'),
+    T(' の左辺から定数の −2 をなくしたい。両辺に同じ数を足しても不等号の向きは変わらない。そこで、両辺に '),
+    C('n11-wm017-q05-operation'), T(' を加える。'),
+  ] },
+  { id: 'n11-formula-05', type: 'paragraph', parts: [
+    T('両辺に同じ数を加えると '), M('3x-2+2<5+2'),
+    T('。左辺の定数は打ち消し合う。右辺を計算すると '),
+    M('3x<'), C('n11-05'), T(' となる。'),
+  ] },
+  { id: 'n11-after-05', type: 'paragraph', parts: [
+    T('ここまでで '), M('3x<7'), T(' が得られた。加減では不等号の向きは変わらない。次は正の3で割り、解の範囲を確かめよう。'),
+  ] },
+]
+const q05NewItem: TextbookItem = reviewItem(
+  'n11-wm017-q05-operation', '左辺の −2 を消すために両辺に加える数を選ぼう。',
+  '2', 'formula', ['-2', '3', '0'], 'causal-reasoning', 'light',
+  ['−2 と足して0になる数を探そう。'],
+)
 const q11Offset = q11Start - restReadingIndex
 const q11AfterOffset = q11End - restReadingIndex
 const oldItems = oldContent.items.filter(item =>
-  !['n11-01', 'n11-02', 'n11-03', 'n11-04'].includes(item.id))
+  !['n11-01', 'n11-02', 'n11-03', 'n11-04'].includes(item.id)).map(item => item.id === 'n11-05'
+  ? reviewItem('n11-05', '両辺に2を足したあとの右辺の値を計算しよう。',
+    '7', 'formula', ['3', '5', '9'], 'causal-reasoning', 'light',
+    ['右辺は5+2。左辺の−2+2は0になる。']) : item)
+const originalQ05Index = oldItems.findIndex(item => item.id === 'n11-05')
+if (originalQ05Index !== 0) throw new Error('N11 Q05 item boundary changed')
 const originalQ11Index = oldItems.findIndex(item => item.id === 'n11-11')
 if (originalQ11Index < 0) throw new Error('Approved N11 original Q11 item missing')
 // W-MATH-013/P-001: two local Q14 thinking operations; original n11-14 is unchanged.
@@ -236,7 +272,9 @@ if (originalQ14Index <= originalQ11Index)
 const content = {
   readingFlow: [
     ...firstFlow,
-    ...originalTail.slice(0, q11Offset),
+    ...originalTail.slice(0, q05Offset),
+    ...q05Flow,
+    ...originalTail.slice(q05AfterOffset + 1, q11Offset),
     ...q11Flow,
     ...originalTail.slice(q11AfterOffset + 1, q14Offset),
     ...q14Flow,
@@ -244,7 +282,9 @@ const content = {
   ],
   items: [
     ...firstItems,
-    ...oldItems.slice(0, originalQ11Index),
+    ...oldItems.slice(0, originalQ05Index),
+    q05NewItem,
+    ...oldItems.slice(originalQ05Index, originalQ11Index),
     ...q11NewItems,
     ...oldItems.slice(originalQ11Index, originalQ14Index),
     ...q14NewItems,
@@ -253,7 +293,7 @@ const content = {
 }
 
 const rawN11={
-  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n11',revision:6,status:'review' as const,subject:'math-1a' as const,
+  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n11',revision:7,status:'review' as const,subject:'math-1a' as const,
   chapter:{chapterId:'math-ch01-numbers-expressions',chapterNumber:'1',chapterTitle:'数と式',unitCode:'1NUM',orderInChapter:11,sourcePages:[27,28,29]},
   title:'大小関係を保つ変形を選ぶ',subtitle:'不等号が変わる根拠を、差の符号と数直線で確かめる。',
   source:{type:'reference' as const,label:'ユーザー提供「数と式」教科書モード対話段階導入版 v2 / N11',

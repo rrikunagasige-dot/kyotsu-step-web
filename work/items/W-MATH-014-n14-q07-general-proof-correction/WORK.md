@@ -1,5 +1,5 @@
 # W-MATH-014 — N14 Q07 一般化の証明の小ブロック修正
-Status: PROPOSED
+Status: VERIFYING
 Updated: 2026-10-21
 
 ## Objective
@@ -22,3 +22,6 @@ All N14 Q08/Q12 source, existing Q07 key/3 authored wrong options, N14 original 
 
 ## Next step / stop rule
 Present exact proposal; STOP before learner implementation. On exact approval implement on isolated branch, verify 18 actual screenshots and Q07 user Gate①, then independent impact audit. No future done or approval claims now.
+
+## 2026-10-21 implementation checkpoint (supersedes old STOP-before-approval)
+User replied **「いいよ」** after full P-001 approval question; exact learner implementation APPROVED. Source/test branch `work/W-MATH-014-n14-q07-general-proof-20261021` from proposal SHA `a8171711f1410e5cb9def0470e3389e809345b35`. Initial code-only commit `bcfebfb6e3c94e632eb7c0326ead88980805080a` has Q07 local guided branches, N14-only revision4 migration, 138-ops source math tests and browser 320/390 proof/wrong/retry checks. No other N14 question or main changed. Test results and Q07 Gate① images currently PENDING, not assumed PASS. N11 Q01–04/Q11/Q14 Gate① accepted unaffected; next work only after exact-SHA verification.

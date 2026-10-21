@@ -1,8 +1,8 @@
 # W-MATH-014 / P-001 — N14 Q07 絶対値不等式の一般導出を復元
-Status: PROPOSED
+Status: APPROVED
 Updated: 2026-10-21
 Command: CMD-WORK-001「修正」
-Implementation approval: WAITING — source code must not be edited before this exact Proposal is approved.
+Implementation approval: APPROVED by user 「いいよ」 directly after full P-001 presentation (2026-10-21). Main merge/deployment not approved.
 
 ## 1. What / why / original authority
 Original teacher-edited 01_数と式_教科書モード_対話段階導入版_v2 Word, 212863 bytes, SHA256 93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa. Its N14 Q07 belongs to 導出 and asks to generalize for a>0 and real X. Current source: src/data/textbook/math/numbers/n14Lesson.ts, blob 15cfb7bb70153a9661a9377270ae090974d54c1b, original n14-07 answer −a<X<a, with three unchanged erroneous choices. Both mathematical answer and old distractors are correct as answer keys. Defect R2 from W-MATH-011: current text directly asserts “inside” without explaining WHY the two sign cases give the general formula, and lacks a complete proof of equivalence. This is not a confirmed exact-answer leak. Existing MASTER_APP_LESSONS and Mathematics Textbook SPEC §§5–8 already address explanation/proof/holes: do not add or alter a lesson.
@@ -46,3 +46,6 @@ User said 「おけ続けて」 in direct response to N11 Q14 image Gate①, so 
 
 ## 8. Existing and expected evidence
 Live review branch base 5f5d92a1a798259dc6e947ff561065a4800850c6; original N14 blob 15cfb7bb70153a9661a9377270ae090974d54c1b; user Word SHA256 above; W-MATH-011 maths/source audit confirms R2. Counts, test ideas and screenshot count above are **targets, not completed tests**.
+
+## 9. User's exact P-001 implementation approval
+User responded **「いいよ」** directly to the question of approving the unchanged full W-MATH-014/P-001. This authorizes only N14 Q07 two sign cases, original final n14-07 unchanged, after-choice converse proof, N14-only v3→v4 selective migration and related tests/screenshots on an isolated branch. Earlier WAITING prose above is historical, not new blocking authority. No N14 Q08/Q12 edits or main/hosting approval.

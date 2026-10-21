@@ -1,6 +1,6 @@
 # W-MATH-017/P-003 — N11 Q01 / Q05 実アプリ Gate① 確認票
 
-描画・操作した教材コード SHA: \`0a5d695ec5622519a5398274b7b14bbecb2fb587\`
+描画・操作した教材コード SHA: \`0b443f5ad51a07836710b099db9c1eb4960b4055\`
 
 GitHub Actions の実 Chromium による操作とスクリーンショット。図面・モックではありません。学習履歴は保存されません。
 
@@ -26,17 +26,29 @@ GitHub Actions の実 Chromium による操作とスクリーンショット。�
 
 [320px](n11-normal-q05-operation-before-320.png) ・ [PC 1440px](n11-normal-q05-operation-before-1440.png)
 
+### q05-balance-before
+
+![通常画面 q05-balance-before 390px](n11-normal-q05-balance-before-390.png)
+
+[320px](n11-normal-q05-balance-before-320.png) ・ [PC 1440px](n11-normal-q05-balance-before-1440.png)
+
 ### q05-result-before
 
 ![通常画面 q05-result-before 390px](n11-normal-q05-result-before-390.png)
 
 [320px](n11-normal-q05-result-before-320.png) ・ [PC 1440px](n11-normal-q05-result-before-1440.png)
 
-### q05-after
+### q06-fraction-before
 
-![通常画面 q05-after 390px](n11-normal-q05-after-390.png)
+![通常画面 q06-fraction-before 390px](n11-normal-q06-fraction-before-390.png)
 
-[320px](n11-normal-q05-after-320.png) ・ [PC 1440px](n11-normal-q05-after-1440.png)
+[320px](n11-normal-q06-fraction-before-320.png) ・ [PC 1440px](n11-normal-q06-fraction-before-1440.png)
+
+### q06-after
+
+![通常画面 q06-after 390px](n11-normal-q06-after-390.png)
+
+[320px](n11-normal-q06-after-320.png) ・ [PC 1440px](n11-normal-q06-after-1440.png)
 
 ## 既存Gate①の番号付き確認枠
 
@@ -103,5 +115,45 @@ GitHub Actions の実 Chromium による操作とスクリーンショット。�
 ![n11-q05 2 resolved 390px](n11-q05-step-2-resolved-390.png)
 
 [320px](n11-q05-step-2-resolved-320.png) ・ [PC 1440px](n11-q05-step-2-resolved-1440.png)
+
+### 確認3
+
+**before**
+
+![n11-q05 3 before 390px](n11-q05-step-3-before-390.png)
+
+[320px](n11-q05-step-3-before-320.png) ・ [PC 1440px](n11-q05-step-3-before-1440.png)
+
+**wrong**
+
+![n11-q05 3 wrong 390px](n11-q05-step-3-wrong-390.png)
+
+[320px](n11-q05-step-3-wrong-320.png) ・ [PC 1440px](n11-q05-step-3-wrong-1440.png)
+
+**resolved**
+
+![n11-q05 3 resolved 390px](n11-q05-step-3-resolved-390.png)
+
+[320px](n11-q05-step-3-resolved-320.png) ・ [PC 1440px](n11-q05-step-3-resolved-1440.png)
+
+### 確認4
+
+**before**
+
+![n11-q05 4 before 390px](n11-q05-step-4-before-390.png)
+
+[320px](n11-q05-step-4-before-320.png) ・ [PC 1440px](n11-q05-step-4-before-1440.png)
+
+**wrong**
+
+![n11-q05 4 wrong 390px](n11-q05-step-4-wrong-390.png)
+
+[320px](n11-q05-step-4-wrong-320.png) ・ [PC 1440px](n11-q05-step-4-wrong-1440.png)
+
+**resolved**
+
+![n11-q05 4 resolved 390px](n11-q05-step-4-resolved-390.png)
+
+[320px](n11-q05-step-4-resolved-320.png) ・ [PC 1440px](n11-q05-step-4-resolved-1440.png)
 
 確認対象は新規修正された N11 Q01 と Q05 だけ。他の承認済みブロックは再承認対象外。Gate②とGate③は別。

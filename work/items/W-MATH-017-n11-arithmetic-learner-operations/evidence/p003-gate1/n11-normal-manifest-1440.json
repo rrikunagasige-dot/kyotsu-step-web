@@ -1,10 +1,12 @@
 {
-  "sha": "0a5d695ec5622519a5398274b7b14bbecb2fb587",
-  "route": "ordinary N11 complete context",
+  "sha": "0b443f5ad51a07836710b099db9c1eb4960b4055",
+  "route": "ordinary N11 four-line complete context",
   "width": 1440,
   "ids": [
     "n11-01",
     "n11-wm017-q05-operation",
-    "n11-05"
+    "n11-wm017-q05-balance",
+    "n11-05",
+    "n11-06"
   ]
 }

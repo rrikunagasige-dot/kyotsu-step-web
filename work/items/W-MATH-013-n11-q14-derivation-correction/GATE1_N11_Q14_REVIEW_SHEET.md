@@ -1,5 +1,5 @@
 # W-MATH-013 / P-001 — N11 Q14 実画面Gate① 細部確認
-Status: BLOCK-CHECK-PENDING
+Status: BLOCK-VISUAL-OK
 
 ## 対象と検証証拠
 - 対象は元Word N11-Q14「同類項を整理して解こう」**1原問だけ**。既存の最終問題 `n11-14` の前に式中の穴を2つ追加し、合計3段階にした。N11 Q01–04とQ11のGate①は以前に承認済みで再確認しない。
@@ -44,3 +44,6 @@ Status: BLOCK-CHECK-PENDING
 - [ ] ユーザーによるQ14細部確認
 - [ ] 別件N14を含むGate②横断監査完了
 - [ ] Gate③ユーザー全アプリ総チェック完了
+
+## 2026-10-21 — user Q14 visual acceptance, supersedes historical pending state
+The user replied exactly **「おけ続けて」** immediately following presentation of the authentic 18-image Q14 Gate① review sheet and the explicit request for Q14 detailed acceptance. Interpret as **BLOCK-VISUAL-OK for N11 Q14 only**. The screenshots come from checked-out app code `91a7c7ee74ceab747079b27089271b1c65e5f65f`, screenshots saved by `f44a8a0017429370194e048fb16cf56902a947eb` and recorded at `8f99d7cf471c8a18ab7e5da1ac7f194abfe0404e`. Preserve the earlier PENDING text as pre-approval history, not current status. Previously accepted N11 Q01–Q04 and Q11 remain accepted; no full Gate②/③/main/deployment approval. Proceed to independent correction **N14 Q07 proposal design**, do not implement it before distinct user approval.

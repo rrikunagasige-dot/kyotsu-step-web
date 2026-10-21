@@ -28,3 +28,6 @@ V01—source/answer; V02—6 new wrong alternatives independently false; V03—s
 - **NOT A FAIL/NOT PASS** — screenshot bot's image-only new HEAD `f44a8a0017429370194e048fb16cf56902a947eb` has new GitHub Actions `action_required` status (not an actual CI failure or pass); source code blob byte-identical to tested merge and exact code SHA for screenshots. No need to fabricate post-screenshot success.
 - **PENDING** — user Q14 Gate① acceptance (Q01–04/Q11 accepted unchanged). Global Gate② blocked by N14 Q07/Q08/Q12 and remaining cross-unit audit, Gate③ full live app check NOT READY.
 - **No release authorization** — `main`, the deployment target, external hosting, teacher DOCX, master lessons, original figures and approved unrelated math/physics modes unchanged.
+
+## Q14 Gate① acceptance (2026-10-21)
+**PASS — HUMAN BLOCK-VISUAL-OK** from immediate user 「おけ続けて」 after review sheet with 18 genuine Q14 screenshots, generated from code SHA `91a7c7ee74ceab747079b27089271b1c65e5f65f`. This is a user visual approval, not another CI test and not all-unit Gate② or whole-app Gate③. Other accepted N11 Q01–Q04/Q11 unchanged. N14 Q07/Q08/Q12 must still be separately proposed and repaired if user approves. `main` and hosting remain untouched. Prior PENDING statements above are historical.

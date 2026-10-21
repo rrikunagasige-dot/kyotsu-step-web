@@ -34,3 +34,13 @@ The user refused Gate① visual acceptance because the lesson does not yet follo
 
 ## 2026-10-21 P-005 approval
 User explicitly approved P-005 four-equation first, holes embedded inside equations. P-004 remains historical unapproved, superseded; P-003 Q01 unchanged. Scope first N11 Q05/Q06 four-row derivation, one additional right balance decision, revision8 migration, tests and real gate image. Gate① human acceptance pending, Gate②/③ open.
+
+
+## 2026-10-21 — P-005 implemented and photographed
+- [x] 4 successive mathematical lines with inside gaps in **one** `n11-q05-q06-chain` frame: `3x-2<5` → `3x-2+[2]<5+[2]` → `3x<[7]` → `x<[7/3]`.
+- [x] Original N11-Q05/Q06 mapping remains two Word originals; one additional independently graded right-side balancing operation, 25 total N11 decisions/144 in all eight reference units; revision8 archives revision7 answers, reopens changed old Q06 only, and keeps Q01/Q05 prior valid answers.
+- [x] Genuine full-lesson and numbered-review screenshots at 320/390/1440px: [GitHub Gate① sheet](./evidence/p003-gate1/README.md), source SHA `0bb59e4e9fa6314dcdda7b8d5dd5559f7fd92944`, image-only follow-up head `77b2de3e9edf0cd90392e75ce7674dd24809521c`.
+- [x] Tech PASS at 0bb59e4: Repository Governance [39587993960](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39587993960), Review Preview + authentic Chromium capture [39587993923](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39587993923), Vitest/Typecheck/Lint/Build as steps in Math CI [39587993927](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39587993927).
+- [ ] Full Math Textbook regression CI final result pending at last observation; do **not** count it PASS before action completed.
+- [ ] User Gate① `細部OK` for **P-005 four-line Q05/Q06 only** pending. Subsequent §12B sibling audit, Gate② and Gate③ remain OPEN. Historical accepted Q01 and other blocks are not reopened by default.
+- [ ] Do not merge/publish main: PR #107 remains draft.

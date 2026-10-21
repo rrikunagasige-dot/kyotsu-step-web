@@ -28,3 +28,9 @@ Read main `governance/INSTRUCTION_DICTIONARY.md`: user corrective comment maps S
 ## 2026-10-21 — User P-005 explicit approval
 - Confirmed exact P-005 direct affirmative response; renewed permission applies to bounded four-line N11 Q05/Q06 derivation only, with inline holes and no learner generic check label at this boundary.
 - Read current source, existing mathematical-derivation grouping renderer, ID schema, revision7 migration and original Word conditions. Prior P-004 archived unapproved; preserve original figures, N11 Q01/Q11/Q14 and other lessons.
+
+
+## 2026-10-21 — P-005 bounded code and evidence
+- Code commits `9dc8269ca20b9989f21e3c86dd8ee85d14c2900e` (four-row mathematical flow + v8 history), `cb26f5679a838c94174463dee0fac76507873dbb` (source/review/domain assertions), `e58f52a567d1aac27821c022161d512383461a4d` (normal/review E2E), and `0bb59e4e9fa6314dcdda7b8d5dd5559f7fd92944` (updated historically anchored CI expectations).
+- The existing authentic screenshot job successfully played normal N11 Q01–Q06 and saved a new normal + Gate① image sheet in automatic image-only commit `77b2de3e9edf0cd90392e75ce7674dd24809521c`. Its stored source SHA points back to the code actually rendered, not the later screenshot commit.
+- GitHub Draft PR #107 metadata updated to P-005, no base change, merge or release. All previous failures and incomplete CI conclusions retained in Actions.

@@ -29,3 +29,7 @@ Source Word chapter N11 original Q06/Q09/Q13 requires a transformation with resu
 
 ## F-017-09 / ERROR-IMPLEMENTATION+ERROR-QA / user-review feedback
 Latest user response: 「いや確認というのはいやだな。だって文章として取り入れていないというか。そもそもさ最初の集合だって確認とかなかったよ」. Distinct causal surfaces: (1) normal N11 `n11-marker-2/3` `確認` inserted by `makeReviewSteps` default, (2) yellow numbered `確認①` wrapper only in Gate① image; they are not synonymous. Approved Set authoring uses `例題` marker and coherent prose/inline choices, no global auto check markers. N11 passing mathematical correctness/browser tests did NOT establish matching Set's pedagogical flow. §12B sibling exposure spans other `makeReviewSteps` units; no global deletion authorized. Exact new proposal P-004 is pending.
+
+
+## F-017-10 / CONFIRMED (P-005 math-primary design)
+After user rejected both generic `確認` and prose-first P-004, the exact direct user approval was to first lay out 4 equations vertically and open blanks within those lines. Correct resolution is `3x-2<5` → `3x-2+2<5+2` → `3x<7` → `x<7/3`. Each step now progresses only when required choice resolves. Actual Chromium normal-route captures show one grouped mathematical derivation and no generic learner `確認` before Q05. Independent GitHub review-only `確認①` images are not a learner label. All other lesson styles are unchanged pending separate §12B checks; no global "formula everywhere" rule invented.

@@ -20,7 +20,7 @@ for (const width of [320, 390]) {
     await page.setViewportSize({ width, height: 850 })
     const unit = mathTextbookUnits.find(u => u.unitId.endsWith('n11'))!
     const original = unit.sections[0].items
-    expect(original.length).toBe(28)
+    expect(original.length).toBe(31)
     expect(original.slice(0, 9).map(x => x.id)).toEqual([...ids])
     await page.goto('/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n11')
     await page.evaluate(() => localStorage.clear())

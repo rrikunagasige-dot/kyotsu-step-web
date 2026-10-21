@@ -25,7 +25,7 @@ const targets: Record<string, ReviewTarget> = {
   // The original unit and item instances are reused, never mocked.
   'n11-q01': {
     id: 'n11-q01', unitId: 'math-numbers-expressions-n11', title: 'N11 Q01', question: '負の数の大小比較',
-    revision: 9, totalItems: 28,
+    revision: 10, totalItems: 31,
     blockIds: ['n11-group-1', 'n11-show-n11-f01', 'n11-lead-01', 'n11-formula-01', 'n11-after-01'],
     itemIds: ['n11-01'],
     expectedAnswers: ['>'],
@@ -34,7 +34,7 @@ const targets: Record<string, ReviewTarget> = {
   },
   'n11-q05': {
     id: 'n11-q05', unitId: 'math-numbers-expressions-n11', title: 'N11 Q05–Q06', question: 'P-006 四行導出の式間説明',
-    revision: 9, totalItems: 28,
+    revision: 10, totalItems: 31,
     blockIds: ['n11-lead-05', 'n11-formula-05', 'n11-p006-q05-cancel-explain', 'n11-after-05', 'n11-p006-q06-positive-explain', 'n11-formula-06', 'n11-after-06'],
     itemIds: ['n11-wm017-q05-operation', 'n11-wm017-q05-balance', 'n11-05', 'n11-06'],
     expectedAnswers: ['2', '2', '7', '\\frac73'],
@@ -44,13 +44,22 @@ const targets: Record<string, ReviewTarget> = {
   // P007: highlight only Q08/Q09, keep P006 accepted markers hidden.
   'n11-q08-q09': {
     id:'n11-q08-q09', unitId:'math-numbers-expressions-n11', title:'N11 Q08〜Q09', question:'引き算と負数除算',
-    revision:9, totalItems:28,
+    revision:10, totalItems:31,
     blockIds:['n11-lead-08','n11-formula-08','n11-p007-q08-explain',
       'n11-after-08','n11-p007-q09-explain','n11-formula-09','n11-after-09'],
     itemIds:['n11-p007-q08-subtract-left','n11-p007-q08-subtract-right','n11-08','n11-p007-q09-direction','n11-09'],
     expectedAnswers:['3','3','2','\\ge','-1'],
     markBlockIds:['n11-formula-08','n11-p007-q08-explain','n11-after-08',
       'n11-p007-q09-explain','n11-formula-09'],
+    reviewState:'accepted', // P007 user 「いいよ」; suppress old markers
+  },
+  'n11-q13': {
+    id:'n11-q13',unitId:'math-numbers-expressions-n11',title:'N11 Q13',question:'正の3を掛ける→右辺を展開',
+    revision:10,totalItems:31,
+    blockIds:['n11-lead-13','n11-formula-13','n11-p008-q13-positive-explain','n11-p008-q13-cancel','n11-p008-q13-distribute-explain','n11-p008-q13-result','n11-after-13'],
+    itemIds:['n11-p008-q13-mul-left','n11-p008-q13-mul-right','n11-13','n11-p008-q13-constant'],
+    expectedAnswers:['3','3','6','3'],
+    markBlockIds:['n11-formula-13','n11-p008-q13-positive-explain','n11-p008-q13-distribute-explain','n11-p008-q13-result'],
     reviewState:'awaiting-user',
   },
   'n01-q07': {

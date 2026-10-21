@@ -9,7 +9,7 @@ for (const width of [320, 390]) {
     const unit = mathTextbookUnits.find(u => u.unitId.endsWith('n11'))!
     const items = unit.sections[0].items
     const ids = ['n11-wm012-q11-expand', 'n11-wm012-q11-xcoef', 'n11-11']
-    expect(unit.revision).toBe(9)
+    expect(unit.revision).toBe(10)
     const first = items.findIndex(item => item.id === ids[0])
     expect(first).toBeGreaterThan(10)
     expect(items.slice(first, first + 3).map(item => item.id)).toEqual(ids)
@@ -95,11 +95,11 @@ for (const width of [320, 390]) {
     test.setTimeout(240_000)
     await page.setViewportSize({ width, height: 850 })
     const unit = mathTextbookUnits.find(u => u.unitId.endsWith('n11'))!
-    expect(unit.revision).toBe(9)
+    expect(unit.revision).toBe(10)
     const items = unit.sections[0].items
     const ids = ['n11-wm013-q14-xcoef', 'n11-wm013-q14-const', 'n11-14']
     const first = items.findIndex(item => item.id === ids[0])
-    expect(first).toBe(25) // P007 adds 3 Q08/09 decisions before preserved Q14 block
+    expect(first).toBe(28) // P008 adds 3 Q13 decisions before protected Q14
     expect(items.slice(first, first + 3).map(item => item.id)).toEqual(ids)
     await page.goto('/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n11')
     await page.evaluate(() => localStorage.clear())

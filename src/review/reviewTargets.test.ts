@@ -8,8 +8,8 @@ describe('W-GOV-008/P-002 review marker boundaries', () => {
   it('W-MATH-017 P-006 marks only the new explanatory paragraphs in existing N11 revision8', () => {
     const q1 = reviewTargets['n11-q01']
     const q5 = reviewTargets['n11-q05']
-    expect(q1.revision).toBe(9)
-    expect(q5.revision).toBe(9)
+    expect(q1.revision).toBe(10)
+    expect(q5.revision).toBe(10)
     expect(activeReviewMarkIds(q1)).toEqual(['n11-formula-01'])
     expect(activeReviewMarkIds(q5)).toEqual([]) // P006 user visual approved
     expect(extractReviewSection(mathNumbersN11Unit,q1)?.items.map(i=>i.answer)).toEqual(['>'])
@@ -18,10 +18,13 @@ describe('W-GOV-008/P-002 review marker boundaries', () => {
     expect(activeReviewMarkIds({...q1,reviewState:'accepted'})).toEqual([])
     expect(activeReviewMarkIds({...q5,reviewState:'accepted'})).toEqual([])
     const q89=reviewTargets['n11-q08-q09']
-    expect(q89.revision).toBe(9)
+    expect(q89.revision).toBe(10)
     expect(extractReviewSection(mathNumbersN11Unit,q89)?.items.map(i=>i.answer)).toEqual(['3','3','2','\\ge','-1'])
-    expect(activeReviewMarkIds(q89)).toEqual(q89.markBlockIds)
-    expect(extractReviewSection({...mathNumbersN11Unit,revision:8},q89)).toBeNull()
+    expect(activeReviewMarkIds(q89)).toEqual([]) // P007 accepted
+    const q13=reviewTargets['n11-q13']
+    expect(extractReviewSection(mathNumbersN11Unit,q13)?.items.map(i=>i.answer)).toEqual(['3','3','6','3'])
+    expect(activeReviewMarkIds(q13)).toEqual(q13.markBlockIds)
+    expect(extractReviewSection({...mathNumbersN11Unit,revision:9},q89)).toBeNull()
   })
 
   it('marks only the seven user-review blocks, not original final examples', () => {

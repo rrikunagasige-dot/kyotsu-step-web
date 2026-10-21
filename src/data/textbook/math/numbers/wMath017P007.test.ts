@@ -9,7 +9,7 @@ const item = (id:string) => sec.items.find(i=>i.id===id)!
 
 describe('P-007 N11 Q08–Q09 four-row inequality math and histories',()=>{
  it('keeps four formula rows and two conditional reasons in one frame, source mapping exact',()=>{
-  expect(unit.revision).toBe(9)
+  expect(unit.revision).toBe(10)
   const ids=['n11-lead-08','n11-formula-08','n11-p007-q08-explain','n11-after-08','n11-p007-q09-explain','n11-formula-09']
   const n=ids.map(at)
   expect(n.every(x=>x>=0)).toBe(true)
@@ -27,7 +27,7 @@ describe('P-007 N11 Q08–Q09 four-row inequality math and histories',()=>{
   expect(at('n11-formula-10')).toBeGreaterThan(at('n11-formula-09'))
   expect(at('n11-show-n11-f02')).toBeGreaterThan(at('n11-formula-10'))
   expect(at('n11-p006-q05-cancel-explain')).toBeGreaterThan(0)
-  expect(sec.items).toHaveLength(28)
+  expect(sec.items).toHaveLength(31)
   expect(sec.items.map(i=>i.id)).toEqual(Object.values(n11SourceToItemIds).flat())
   expect(Object.keys(n11SourceToItemIds)).toHaveLength(14)
   expect(n11SourceToItemIds['N11-Q08']).toEqual(['n11-p007-q08-subtract-left','n11-p007-q08-subtract-right','n11-08'])
@@ -62,7 +62,7 @@ describe('P-007 N11 Q08–Q09 four-row inequality math and histories',()=>{
       'n11-14':record('n11-14','x\\ge-1'),
     },
   }
-  const current=effectiveTextbookProgress(unit,previous)!
+  const current=effectiveTextbookProgress({...unit,revision:9},previous)!
   expect(current.unitRevision).toBe(9)
   expect(current.migratedFromRevision).toBe(8)
   expect(current.completedAt).toBeUndefined()
@@ -71,14 +71,14 @@ describe('P-007 N11 Q08–Q09 four-row inequality math and histories',()=>{
   expect(current.archivedRevisions?.['8']?.completedAt).toBe(210)
   for(const id of ['n11-01','n11-05','n11-06','n11-14'])expect(current.answers[id]).toEqual(previous.answers[id])
   for(const id of ['n11-08','n11-09','n11-p007-q08-subtract-left','n11-p007-q08-subtract-right','n11-p007-q09-direction'])expect(current.answers[id]).toBeUndefined()
-  expect(effectiveTextbookProgress(unit,current)).toBe(current)
+  expect(effectiveTextbookProgress({...unit,revision:9},current)).toBe(current)
  })
  it('migrates previous v3 all the way to v9 while preserving archived revision boundaries',()=>{
   const previous:TextbookUnitProgress={
     unitId:unit.unitId,unitRevision:3,startedAt:10,updatedAt:200,
     answers:{'n11-02':record('n11-02','b-a'),'n11-08':record('n11-08','old'),'n11-09':record('n11-09','old')},
   }
-  const current=effectiveTextbookProgress(unit,previous)!
+  const current=effectiveTextbookProgress({...unit,revision:9},previous)!
   expect(current.unitRevision).toBe(9)
   for(const rev of ['3','4','5','6','7','8'])expect(current.archivedRevisions?.[rev]).toBeDefined()
   expect(current.answers['n11-02']).toEqual(previous.answers['n11-02'])

@@ -1,4 +1,5 @@
 import './wMath017ProseIntegration.test'
+import './wMath018P001.test'
 import { createHash } from 'node:crypto'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'

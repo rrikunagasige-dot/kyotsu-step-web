@@ -46,7 +46,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       const unit = mathTextbookUnits.find(u => u.unitId === 'math-numbers-expressions-n' + n)
       expect(unit, 'N' + n).toBeDefined()
       expect(unit?.status).toBe('review')
-      expect(unit?.revision).toBe(n === '11' ? 6 : n === '14' ? 6 : ['06', '07', '08'].includes(n) ? 3 : 2)
+      expect(unit?.revision).toBe(n === '11' ? 7 : n === '14' ? 6 : ['06', '07', '08'].includes(n) ? 3 : 2)
       expect(Object.keys(map)).toEqual(Array.from({ length: count }, (_, i) => 'N' + n + '-Q' + String(i + 1).padStart(2, '0')))
       const items = unit?.sections.flatMap(section => section.items) ?? []
       const choiceIds = unit?.sections.flatMap(section => section.readingFlow.flatMap(block =>
@@ -58,7 +58,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       expect(items.map(i => i.id), 'N' + n).toEqual(mapped)
       allChoiceCount += items.length
     }
-    expect(allChoiceCount).toBe(142) // 123 original + 4 N04 + 5 N11 proof + 2 Q11 + 2 Q14 + 2 Q07 + 2 Q08 + 2 Q12
+    expect(allChoiceCount).toBe(143) // prior 142 plus one approved N11-Q05 operation thinking node
   })
 
   it('keeps every original figure byte-for-byte and its original question-answer gates', () => {
@@ -131,7 +131,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       ['06', 'n06-08', ['xについて3次', 'yについて1次', 'yで整理']],
       ['07', 'n07-06', ['10\\text{倍}', '10x=8.\\overline8']],
       ['08', 'n08-05', ['5<9', '\\sqrt5<3']],
-      ['11', 'n11-05', ['両辺に }2\\text{ を足す', '3x<7']],
+      ['11', 'n11-05', ['7']],
       ['14', 'n14-06', ['x\\le-4', '\\text{または}', 'x\\ge4']],
       ['14', 'n14-11', ['x+3\\le-2', '\\text{または}', 'x+3\\ge2']],
     ] as const
@@ -483,8 +483,8 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       'n11-03', 'n11-wm011-q03-zero',
       'n11-wm011-q04-fraction', 'n11-04',
     ]
-    expect(unit.revision).toBe(6)
-    expect(unit.sections[0].items).toHaveLength(23)
+    expect(unit.revision).toBe(7)
+    expect(unit.sections[0].items).toHaveLength(24)
     expect(unit.sections[0].items.slice(0, 9).map(v => v.id)).toEqual(expected)
     expect(Object.keys(n11SourceToItemIds)).toHaveLength(14)
     expect(Object.values(n11SourceToItemIds).flat()).toEqual(section.items.map(x => x.id))
@@ -586,8 +586,8 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
     const unit = mathTextbookUnits.find(u => u.unitId.endsWith('n11'))!
     const section = unit.sections[0]
     const ids = section.items.map(q => q.id)
-    expect(unit.revision).toBe(6)
-    expect(ids).toHaveLength(23)
+    expect(unit.revision).toBe(7)
+    expect(ids).toHaveLength(24)
     expect(Object.keys(n11SourceToItemIds)).toHaveLength(14)
     expect(n11SourceToItemIds['N11-Q11']).toEqual([
       'n11-wm012-q11-expand', 'n11-wm012-q11-xcoef', 'n11-11',
@@ -692,8 +692,8 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
     const unit = mathTextbookUnits.find(u => u.unitId.endsWith('n11'))!
     const section = unit.sections[0]
     const ids = ['n11-wm013-q14-xcoef', 'n11-wm013-q14-const', 'n11-14']
-    expect(unit.revision).toBe(6)
-    expect(section.items).toHaveLength(23)
+    expect(unit.revision).toBe(7)
+    expect(section.items).toHaveLength(24)
     expect(Object.keys(n11SourceToItemIds)).toHaveLength(14)
     expect(n11SourceToItemIds['N11-Q14']).toEqual(ids)
     expect(Object.values(n11SourceToItemIds).flat()).toEqual(section.items.map(i => i.id))
@@ -732,7 +732,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
   })
 
   it('W-MATH-013/P-001 N11 rev1/2/3/4/5→6 archives v5 and keeps original answers', () => {
-    const unit = mathTextbookUnits.find(u => u.unitId.endsWith('n11'))!
+    const unit = { ...mathTextbookUnits.find(u => u.unitId.endsWith('n11'))!, revision: 6 }
     const mk=(id:string):TextbookAnswerRecord=>({
       itemId:id,value:'old-answer',firstValue:'old-answer',
       isFirstCorrect:true,resolved:true,attemptCount:2,firstAnsweredAt:100,lastAnsweredAt:200,

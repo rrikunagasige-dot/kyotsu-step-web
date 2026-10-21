@@ -1,8 +1,8 @@
 # 指示辞書 / Instruction Dictionary
 
 Status: CANONICAL
-Version: 1.7.0
-Updated: 2026-10-19
+Version: 1.7.1
+Updated: 2026-10-21
 
 ## Purpose
 
@@ -225,6 +225,8 @@ approved correction proposal exists?
 - Do Not Touch
 - 必要なverification
 
+CI待機中は `governance/WORK_SYSTEM.md` §12C に従い、実run・tested SHA・復帰地点を記録し、承認済みの独立作業だけを選ぶ。CI待機は無承認修正の許可ではない。
+
 ### User review handoff (W-GOV-008/P-003 — updated)
 
 `governance/WORK_SYSTEM.md` §12A is the canonical three-gate flow. For this correction's **small visual block**, provide an authentic **GitHub-viewable** review sheet with an actual image, exact SHA, numbered `確認` marker, stable IDs and 2–4 short points; ask only `細部OK` / `要修正`. Individual `細部OK` is **visual approval only**, not live app hands-on approval, revised proposal authorization, or release permission. Hide accepted marks only in the subsequent review output; preserve Work logs and final pending status. The §12B correction-first impact audit still applies; no confirmed defect may silently propagate. After cross-block QA, a **verified playable whole-app URL for the exact frozen candidate SHA** is mandatory at the final `総チェック` gate; absent an authorized host/app link, record `FINAL-REVIEW-NOT-READY`. PR/ZIP/old-main Pages are not that final app. Host/publication/main/cost permissions remain separate.
@@ -341,6 +343,8 @@ Canonical Phrase: **作成**
 - `main`のmerge/Pages公開は実装承認と区別し、既存release rulesと当該Workの権限に従う。
 
 ### Completion / review handoff — W-GOV-008/P-003
+
+作成中のCI待機も `governance/WORK_SYSTEM.md` §12C の選択・復帰規則を参照する。§12B修正優先、exact Proposal承認、§12Aの既存Gateは変わらない。
 
 小ブロックは §12A の GitHub確認票・実スクリーンショット・`確認①` マーカー・SHAで `細部OK / 要修正` を受け取る。小ブロックの `細部OK` は**表示内容だけ**の受入で、実アプリを操作した証拠ではない。承認済みマークを次回非表示にしても履歴と最終総チェック待ちは保持する。
 

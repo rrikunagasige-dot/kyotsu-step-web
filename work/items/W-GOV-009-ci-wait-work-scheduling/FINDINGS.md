@@ -1,0 +1,26 @@
+# W-GOV-009 — Findings
+Status: assessment recorded; no implementation claim
+Date: 2026-10-21 JST
+
+- CONFIRMED: target repo is `rrikunagasige-dot/kyotsu-step-web`, ID 1391122224; observed live main HEAD `537c3cbf28d40f45228d8a0c4bdd20327136aa93`.
+- CONFIRMED: `memory/PROGRESS.md` Durable errors already includes the older remedy: avoid repeated idle CI polling, work independently while CI runs, resume from last proven checkpoint.
+- CONFIRMED: canonical `governance/WORK_SYSTEM.md` v1.5.0 contains §11 exact approval; §12A visual/cross/final Gate separation; §12B correction-first impact sweep. New scheduling must preserve them.
+- GAP: existing normative Work OS does not explicitly define a complete CI checkpoint, an independence predicate for other approved Works, one-active-secondary limit, recheck boundaries, SHA safety or return after CI failure/API disconnect.
+- DESIGN CONSTRAINT: moving on to another `作成` while any correction is still actionable violates existing §12B, even if the active correction is awaiting CI. Reading/analyzing independent risks is a different activity from implementing a new creation.
+- CONFIRMED: main work/items listed W-GOV-005 through W-GOV-008; branch and PR search found no W-GOV-009 at proposal creation time. The Work ID is newly allocated for this exact purpose.
+- NOT-APPROVED: wording of a new §12C, dictionary pointers and AGENTS edits are only proposals. No existing lesson, learner implementation or authority may be silently changed.
+- REVIEW-RISK: older conversational CI-cadence suggestions are not themselves a durable permission for background execution or newly created work states. Use observable checkpoints instead of invented timers.
+
+## Implementation-stage findings
+- CONFIRMED: exact P-001 implementation approved by user's unqualified 「いいよ」 following the approval request; independent main merge NOT authorized.
+- DESIGN: §12C inserts after §12B; §12A/B wording and existing Work states remain unchanged.
+- DESIGN: independent Work requires approval, separate SHA/branch and nonconflicting source/progress; CI RUNNING does not close §12B correction queue.
+- UNVERIFIED: PR governance CI not completed by initial implementation commit. No speculative PASS.
+
+
+## Verification findings (2026-10-21)
+- CONFIRMED: governance validator `tools/repo-governance-check.mjs` requires `WORK.md` line `Status: VERIFYING` and `PROPOSAL.md` line `Status: APPROVED` exactly. An initially appended human explanation in the status line was an ERROR-QA-preflight; it was corrected without changing §12C.
+- CONFIRMED: §12A/§12B normative body is byte-identical to base main; C1–C8 added after §12B; two dictionary references and one AGENTS referral, no command/status/Gate definition replaced.
+- CONFIRMED: approved change diff contains only eight allowed file paths; PR #102 remains Draft and unmerged.
+- VERIFIED-EVIDENCE: GitHub governance and review-code workflows SUCCESS for exact rule SHA `f5759ab8b1ffd87d7e4537081ecea97ff4ea9bb1`; V01–V10 are desk/table coverage, not exercised multiple parallel CI jobs.
+- PROVENANCE: automated Vercel check on the Draft PR is an existing integration side effect, not a manually requested deployment or an authorized Gate③ app review.

@@ -185,6 +185,40 @@ export function effectiveTextbookProgress(unit: TextbookUnit, progress: Textbook
   if (!progress) return undefined
   if (progress.unitRevision === unit.revision) return progress
 
+  // W-MATH-017/P-007: Q08/Q09 changed from premade operation+result
+  // answers into local numeric answers. Preserve every v8 attempt in the
+  // immutable archive, reopening ONLY the two repurposed stable IDs.
+  if (unit.unitId === 'math-numbers-expressions-n11' && unit.revision === 9
+    && progress.unitId === unit.unitId
+    && [1, 2, 3, 4, 5, 6, 7, 8].includes(progress.unitRevision)) {
+    const fromV8 = progress.unitRevision === 8 ? progress
+      : effectiveTextbookProgress({ ...unit, revision: 8 }, progress)
+    if (!fromV8 || fromV8.unitRevision !== 8) return undefined
+    const archive: TextbookRevisionArchive = {
+      unitRevision: 8,
+      startedAt: fromV8.startedAt, updatedAt: fromV8.updatedAt,
+      answers: { ...fromV8.answers },
+      ...(fromV8.completedAt !== undefined ? { completedAt: fromV8.completedAt } : {}),
+      ...(fromV8.previousRevisionCompletedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV8.previousRevisionCompletedAt } : {}),
+      ...(fromV8.migratedFromRevision !== undefined
+        ? { migratedFromRevision: fromV8.migratedFromRevision } : {}),
+    }
+    const answers = { ...fromV8.answers }
+    delete answers['n11-08']
+    delete answers['n11-09']
+    return {
+      unitId: unit.unitId, unitRevision: 9,
+      startedAt: fromV8.startedAt, updatedAt: fromV8.updatedAt,
+      answers, migratedFromRevision: 8,
+      archivedRevisions: { ...(fromV8.archivedRevisions ?? {}), '8': archive },
+      ...(fromV8.completedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV8.completedAt }
+        : fromV8.previousRevisionCompletedAt !== undefined
+          ? { previousRevisionCompletedAt: fromV8.previousRevisionCompletedAt } : {}),
+    }
+  }
+
   // W-MATH-017/P-005: the old Q06 compound operation/result key is
   // replaced by the fractional number alone in the fourth equation row.
   // Archive all rev7 answers, reopen ONLY n11-06 and the newly added

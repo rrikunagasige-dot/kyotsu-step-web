@@ -1,5 +1,5 @@
 # W-MATH-017 / P-007 — N11 Q08–Q09: 引き算と負数除算を式中の判断へ分ける
-Status: PROPOSED — EXACT USER APPROVAL REQUIRED / NOT IMPLEMENTED
+Status: APPROVED — EXACT USER APPROVAL: 「いいね承認」 in direct reply to full P-007 (2026-10-21 JST). No other unit or main approval.
 Date: 2026-10-21 JST
 Command: CMD-WORK-001「修正」, §12B same-root sibling of accepted P-005/P-006.
 Target: N11 ORIGINAL source Q08 and Q09 **only** (both are adjacent and mathematically dependent). Do not change Q01–Q07, Q10–Q14, other N units or original source Word.
@@ -59,6 +59,6 @@ N11 source mappings become `N11-Q08`→3 actions and `N11-Q09`→2 actions, with
 - Gate② independent post-change §12B audit remains open until all affected siblings assessed. Gate③ frozen SHA real app total-play user `総チェックOK`; old Pages and GitHub PR are not the candidate app. No main merge, Pages/deployment, new host, cost, or repo cleanup in this proposal.
 
 ## Exclusions and approval
-This P-007 is the **next exact correction proposal**, not an automatic entitlement from the user's “继续” or P-006 small-block acceptance. NO P-007 code edits are authorized yet. If user approves P-007 unchanged, enter `APPROVED/IMPLEMENTING` and perform per-Q08 then per-Q09 preflight and bounded implementation. If user requests changes, remain `REVISE-PROPOSAL` and present revised exact proposal before implementing.
+This P-007 is the **next exact correction proposal**, not an automatic entitlement from the user's “继续” or P-006 small-block acceptance. P-007 was approved unchanged by the user's direct 「いいね承認」. Enter `APPROVED/IMPLEMENTING` and perform per-Q08 then per-Q09 preflight and bounded implementation. If user requests changes, remain `REVISE-PROPOSAL` and present revised exact proposal before implementing.
 
-**Approval request: Do you approve the 4 math rows, two conditional explanations, 5 total learner decisions, and selective v8→v9 migration exactly as written?**
+**Approval result: APPROVED unchanged (user 「いいね承認」). Gate① actual screenshot acceptance and Gate②/③ remain independent.**

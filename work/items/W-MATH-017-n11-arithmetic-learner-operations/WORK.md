@@ -1,6 +1,6 @@
 # W-MATH-017 — 文章に学習操作を統合する教材修正
 
-Status: REVISE-PROPOSAL
+Status: IMPLEMENTING
 Approval: P-003 user-approved; technical/human gates OPEN
 Updated: 2026-10-21 JST
 Command: CMD-WORK-001 「修正」
@@ -75,3 +75,8 @@ User explicitly authorized merge of reviewed P-005 design and additionally reque
 - Final full Math textbook CI [39593071259](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39593071259) **SUCCESS**, including N01–N14, math UI/graphics, physics textbook and math practice regression. Real review screenshot [39593071069](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39593071069) **SUCCESS**; source unchanged since frozen rendered commit (documentation-only descendants).
 - New [P-006 independent Gate② scope/impact audit](./P006_GATE2_CROSS_BLOCK_AUDIT.md) documents PASS/UNVERIFIED/FAIL; whole Gate② **NOT CROSS-VERIFIED** because confirmed same-root N11 Q08/Q09/Q13 and N14 Q10/Q14/Q15 remain and fresh original Word missing.
 - §12B next exact-source small-block preflight: [P-007 N11 Q08/Q09 subtraction and negative division proposal](./PROPOSAL_P007_N11_Q08_Q09_MATH_CHAIN.md), **PROPOSED / no code edits**, user's next explicit approval required. All other N units remain analysis queue only. Keep main unchanged and PR #107 Draft.
+
+
+## 2026-10-21 — P-007 exact approval, scoped N11 Q08/Q09 implementation
+- User directly approved exact [P-007](./PROPOSAL_P007_N11_Q08_Q09_MATH_CHAIN.md) with 「いいね承認」. N11 Q08, Q09 form one four-equation/two-short-reason chain, five source-mapped decision holes. N11 revision9 selectively archives revision8 and reopens precisely n11-08 and n11-09 (changed grading meaning); P-006 Q05/Q06 accepted flow untouched.
+- Implement on isolated PR #107, no source Word, figure, shared renderer/generator, unrelated lesson, Math Practice/Physics, main or Pages modification. Gate① real image and independent Gate② pending, Gate③ not ready.

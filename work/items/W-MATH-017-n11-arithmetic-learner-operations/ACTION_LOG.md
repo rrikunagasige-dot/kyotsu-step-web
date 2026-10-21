@@ -64,3 +64,8 @@ Read main `governance/INSTRUCTION_DICTIONARY.md`: user corrective comment maps S
 - Direct user phrase 「可以这样就行了继续」 maps to P-006 two-paragraph BLOCK-VISUAL-OK only. Stored reviewer/time/2 block IDs/exact SHA/GitHub real images in P006_GATE1_VISUAL_ACCEPTANCE.md. Future review output hides these accepted marks while preserving source sheet and history. Not `総チェックOK`.
 - Verified final math CI https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39593071259 completed SUCCESS on source SHA `2c568703cb3e56b5ef4ab119b411bdb89e674cc6`; documented independent audit cells, still Gate② blocked by sibling defect register and original teacher Word not materialized.
 - Re-read approved N11 Q01–Q04 and Q11/Q14 Work, main Constitution/Dictionary/WORK_SYSTEM §§12A/12B, MASTER §52, math SPEC, N11 Q08/Q09 exact current generated answer/hints and original-Q boundary Q07/Q10. Confirmed root-cause operation+already-final choice, distinct learner decisions (Q08 cancellation/same-operation/numeric result, Q09 negative reversal/numeric quotient). Prepared precise P-007 **PROPOSAL ONLY**, no source/renderer/progress/mode/main mutation.
+
+
+## 2026-10-21 — user P-007 exact proposal approval
+- Direct 「いいね承認」 after verbatim P-007 entire proposal: applies to original N11-Q08/Q09 only. Re-read live main, current branch, approved N11 P-006, MASTER §52/Work §§12A/12B and original source mapping.
+- Source correction: four formula rows and two interleaved reasons, 5 student decisions in place of two premade compound options, 3 new IDs, revision9 selective archival migration. No main merge/publication. Tests/real screenshot pending.

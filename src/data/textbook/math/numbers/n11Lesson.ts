@@ -9,6 +9,8 @@ export const n11SourceToItemIds = {
   'N11-Q03': ['n11-wm011-q03-factor', 'n11-wm011-q03-positive', 'n11-03', 'n11-wm011-q03-zero'],
   'N11-Q04': ['n11-wm011-q04-fraction', 'n11-04'],
   'N11-Q05': ['n11-wm017-q05-operation', 'n11-wm017-q05-balance', 'n11-05'],
+  'N11-Q08': ['n11-p007-q08-subtract-left', 'n11-p007-q08-subtract-right', 'n11-08'],
+  'N11-Q09': ['n11-p007-q09-direction', 'n11-09'],
   'N11-Q11': ['n11-wm012-q11-expand', 'n11-wm012-q11-xcoef', 'n11-11'],
   'N11-Q14': ['n11-wm013-q14-xcoef', 'n11-wm013-q14-const', 'n11-14'],
 }
@@ -230,6 +232,53 @@ const q05BalanceItem: TextbookItem = reviewItem(
   ['左辺だけでなく右辺にも同じ操作をする。'],
 )
 
+// W-MATH-017/P-007: original source Q08→Q09 is ONE continuous mathematical
+// inequality. Four formula rows and two short explanations share derivationId.
+// Neither operation+result is a premade whole-choice answer.
+const q08Start = oldContent.readingFlow.findIndex(b => b.id === 'n11-lead-08')
+const q09End = oldContent.readingFlow.findIndex(b => b.id === 'n11-after-09')
+if (q08Start <= q06End || q09End !== q08Start + 5 || q09End >= q11Start)
+  throw new Error('N11 original Q08/Q09 source boundary changed')
+const q08Offset = q08Start - restReadingIndex
+const q09AfterOffset = q09End - restReadingIndex
+const q08Q09Flow: TextbookReadingBlock[] = [
+  { id: 'n11-lead-08', type: 'formula', derivationId: 'n11-q08-q09-chain', parts: [
+    M('-2x+3\\le5'),
+  ] },
+  { id: 'n11-formula-08', type: 'formula', derivationId: 'n11-q08-q09-chain', parts: [
+    M('-2x+3-'), C('n11-p007-q08-subtract-left'),
+    M('\\le5-'), C('n11-p007-q08-subtract-right'),
+  ] },
+  { id: 'n11-p007-q08-explain', type: 'paragraph', derivationId: 'n11-q08-q09-chain', parts: [
+    T('両辺から同じ数を引いても、不等号の向きは変わらない。左辺の＋3と−3を打ち消す。'),
+  ] },
+  { id: 'n11-after-08', type: 'formula', derivationId: 'n11-q08-q09-chain', parts: [
+    M('-2x\\le'), C('n11-08'),
+  ] },
+  { id: 'n11-p007-q09-explain', type: 'paragraph', derivationId: 'n11-q08-q09-chain', parts: [
+    T('xの係数は負の数。両辺をその係数で割ると、不等号の向きが逆になる。'),
+  ] },
+  { id: 'n11-formula-09', type: 'formula', derivationId: 'n11-q08-q09-chain', parts: [
+    M('x'), C('n11-p007-q09-direction'), C('n11-09'),
+  ] },
+  oldContent.readingFlow[q09End],  // original Q09 afterword remains outside the chain
+]
+const q08LeftItem: TextbookItem = reviewItem(
+  'n11-p007-q08-subtract-left', '左辺の＋3を打ち消すため、引く数を選ぼう。',
+  '3', 'formula', ['-3', '2', '5'], 'causal-reasoning', 'light',
+  ['＋3と打ち消し合うのは、何を引くときだろう。'],
+)
+const q08RightItem: TextbookItem = reviewItem(
+  'n11-p007-q08-subtract-right', '同じ操作を右辺にも行う。右辺から引く数を選ぼう。',
+  '3', 'formula', ['-3', '5', '2'], 'causal-reasoning', 'light',
+  ['左右に同じ操作をすると不等号の関係を保てる。'],
+)
+const q09DirectionItem: TextbookItem = reviewItem(
+  'n11-p007-q09-direction', '負の係数で割った後の不等号を選ぼう。',
+  '\\ge', 'formula', ['\\le', '>', '<'], 'causal-reasoning', 'light',
+  ['係数は負。向きと等号の有無をそれぞれ確かめよう。'],
+)
+
 const q11Offset = q11Start - restReadingIndex
 const q11AfterOffset = q11End - restReadingIndex
 const oldItems = oldContent.items.filter(item =>
@@ -237,6 +286,14 @@ const oldItems = oldContent.items.filter(item =>
   ? reviewItem('n11-05', '左辺の定数を打ち消したあと、右辺の5+2を計算しよう。',
     '7', 'formula', ['3', '5', '9'], 'causal-reasoning', 'light',
     ['5+2を計算して、3xの右側に置こう。'])
+  : item.id === 'n11-08'
+    ? reviewItem('n11-08', '左辺を整理したあとの右辺、5−3を計算しよう。',
+      '2', 'formula', ['8', '-2', '5'], 'causal-reasoning', 'light',
+      ['右辺の引き算を行ってから、−2xの右側に置こう。'])
+  : item.id === 'n11-09'
+    ? reviewItem('n11-09', '負の2で割った右辺、2÷(−2)を計算しよう。',
+      '-1', 'formula', ['1', '-2', '2'], 'causal-reasoning', 'light',
+      ['正の数を負の数で割ると結果の符号はどうなるだろう。'])
   : item.id === 'n11-06'
     ? reviewItem('n11-06', '3x<7の両辺を正の3で割ったときの右辺を計算しよう。',
       '\\frac73', 'formula', ['\\frac37', '-\\frac73', '7'],
@@ -244,6 +301,10 @@ const oldItems = oldContent.items.filter(item =>
     : item)
 const originalQ05Index = oldItems.findIndex(item => item.id === 'n11-05')
 if (originalQ05Index !== 0) throw new Error('N11 Q05 item boundary changed')
+const originalQ08Index = oldItems.findIndex(item => item.id === 'n11-08')
+const originalQ09Index = oldItems.findIndex(item => item.id === 'n11-09')
+if (originalQ08Index < 0 || originalQ09Index !== originalQ08Index + 1)
+  throw new Error('N11 original Q08/Q09 item boundary changed')
 const originalQ11Index = oldItems.findIndex(item => item.id === 'n11-11')
 if (originalQ11Index < 0) throw new Error('Approved N11 original Q11 item missing')
 // W-MATH-013/P-001: two local Q14 thinking operations; original n11-14 is unchanged.
@@ -301,7 +362,9 @@ const content = {
         ? { ...block, parts: [T('不等式を解くとは、成り立つすべての実数の範囲を求めること。まず次の式を順に変形しよう。')] }
         : block),
     ...q05Flow,
-    ...originalTail.slice(q06End - restReadingIndex + 1, q11Offset),
+    ...originalTail.slice(q06End - restReadingIndex + 1, q08Offset),
+    ...q08Q09Flow,
+    ...originalTail.slice(q09AfterOffset + 1, q11Offset),
     ...q11Flow,
     ...originalTail.slice(q11AfterOffset + 1, q14Offset),
     ...q14Flow,
@@ -312,7 +375,12 @@ const content = {
     ...oldItems.slice(0, originalQ05Index),
     q05NewItem,
     q05BalanceItem,
-    ...oldItems.slice(originalQ05Index, originalQ11Index),
+    ...oldItems.slice(originalQ05Index, originalQ08Index),
+    q08LeftItem,
+    q08RightItem,
+    oldItems[originalQ08Index],
+    q09DirectionItem,
+    ...oldItems.slice(originalQ09Index, originalQ11Index),
     ...q11NewItems,
     ...oldItems.slice(originalQ11Index, originalQ14Index),
     ...q14NewItems,
@@ -321,7 +389,7 @@ const content = {
 }
 
 const rawN11={
-  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n11',revision:8,status:'review' as const,subject:'math-1a' as const,
+  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n11',revision:9,status:'review' as const,subject:'math-1a' as const,
   chapter:{chapterId:'math-ch01-numbers-expressions',chapterNumber:'1',chapterTitle:'数と式',unitCode:'1NUM',orderInChapter:11,sourcePages:[27,28,29]},
   title:'大小関係を保つ変形を選ぶ',subtitle:'不等号が変わる根拠を、差の符号と数直線で確かめる。',
   source:{type:'reference' as const,label:'ユーザー提供「数と式」教科書モード対話段階導入版 v2 / N11',

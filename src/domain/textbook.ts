@@ -322,6 +322,39 @@ export function effectiveTextbookProgress(unit: TextbookUnit, progress: Textbook
     }
   }
 
+  // W-MATH-019/P-001: old N14-Q14 graded the operation AND finished range
+  // in one choice. It now grades only the computed left endpoint.
+  // Archive all v7 attempts, keep all unaffected Q07/Q08/Q10/Q12/Q15 keys
+  // active, and reopen ONLY the re-keyed n14-14 plus four newly added IDs.
+  if (unit.unitId === 'math-numbers-expressions-n14' && unit.revision === 8
+    && progress.unitId === unit.unitId
+    && [1,2,3,4,5,6,7].includes(progress.unitRevision)) {
+    const fromV7 = progress.unitRevision === 7 ? progress
+      : effectiveTextbookProgress({ ...unit, revision: 7 }, progress)
+    if (!fromV7 || fromV7.unitRevision !== 7) return undefined
+    const archive: TextbookRevisionArchive = {
+      unitRevision: 7, startedAt: fromV7.startedAt, updatedAt: fromV7.updatedAt,
+      answers: { ...fromV7.answers },
+      ...(fromV7.completedAt !== undefined ? { completedAt: fromV7.completedAt } : {}),
+      ...(fromV7.previousRevisionCompletedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV7.previousRevisionCompletedAt } : {}),
+      ...(fromV7.migratedFromRevision !== undefined
+        ? { migratedFromRevision: fromV7.migratedFromRevision } : {}),
+    }
+    const answers = { ...fromV7.answers }
+    delete answers['n14-14']
+    return {
+      unitId: unit.unitId, unitRevision: 8,
+      startedAt: fromV7.startedAt, updatedAt: fromV7.updatedAt,
+      answers, migratedFromRevision: 7,
+      archivedRevisions: { ...(fromV7.archivedRevisions ?? {}), '7': archive },
+      ...(fromV7.completedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV7.completedAt }
+        : fromV7.previousRevisionCompletedAt !== undefined
+          ? { previousRevisionCompletedAt: fromV7.previousRevisionCompletedAt } : {}),
+    }
+  }
+
   // W-MATH-018/P-001: the old N14-Q10 one-choice operation+final range
   // is replaced by the left numerical endpoint; reopen ONLY its old key.
   // Keep original v6 attempts and every earlier archive for review.

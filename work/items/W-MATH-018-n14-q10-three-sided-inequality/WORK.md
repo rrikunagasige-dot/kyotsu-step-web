@@ -51,3 +51,9 @@ Prior W-MATH-017 P008 small-block user accepted; full math CI 39611931626 SUCCES
 - Actual Chromium review screenshot workflow [#39642196191](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39642196191) on code SHA `98de588ec8950b62b745aa397bc7d94a3276799e`: **5 PASS, 1 FAIL**, the marked 320px review Q10 first-step `scrollWidth=216` vs `clientWidth=213`. Normal N14 320/390 and reviewer390/desktop1440 PASS. No P-003 Gate① user request or acceptance.
 - Root isolated to additional review-only `review-marked-block` border/padding in `src/review/review.css`. Do NOT alter canonical buttons or shrink math to mask overflow. By P-003's explicit stop rule, return to `REVISE-PROPOSAL`.
 - New [P-004 exact review-frame proposal](./PROPOSAL_P004_Q10_REVIEW_FRAME_MOBILE_FIT.md) is **PROPOSED ONLY**. `src/review/review.css` must remain untouched until its separate explicit approval. Main/Pages unchanged; Gate②/③ open.
+
+## 2026-10-22 — P-004 exact approval, implementation preflight
+- User direct reply **「承認」** to the exact P-004 review-frame-only proposal. Proceed under CMD-WORK-001 and WORK_SYSTEM §12A/B without reapproving prior accepted N11/N14 blocks.
+- Scope locked to one learner-independent code file `src/review/review.css`: at mobile <=430px, ONLY `[data-testid="review-mark-n14-formula-10"]` padding-inline `.65rem`→`.4rem`. No learner CSS, formula buttons, source/data, answers, archive, other review marks, main or public app edits.
+- Upon implementation, require authentic 320/390/1440 Chromium review and normal route, exact tested SHA, existing full CI and mobile cross-surface regression. If true 320px marked review still fails, STOP and enter REVISE-PROPOSAL; do not automatically adjust other wrappers/controls.
+- Gate① Q10 screenshot+user `細部OK` still pending; Gate② and Gate③ independent.

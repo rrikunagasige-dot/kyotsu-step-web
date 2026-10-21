@@ -1,5 +1,5 @@
 # W-MATH-018/P-004 — N14 Q10 確認専用の黄色枠だけ320pxで内幅を確保
-Status: PROPOSED — EXACT USER APPROVAL REQUIRED; NO P-004 IMPLEMENTATION
+Status: APPROVED — user direct 「承認」 on 2026-10-22 JST; ONLY exact review frame CSS change authorized
 Date: 2026-10-22 JST
 Command: CMD-WORK-001 修正 / WORK_SYSTEM §12A・§12B / W-MATH-018 P-003 measured stop
 
@@ -37,3 +37,6 @@ No change to `src/styles/global.css` P-003 formula grid/normal learner view, `sr
 
 ## Exact approval request
 **N14 Q10の通常教材と穴は一切変えず、スマホ430px以下の「確認専用」黄色枠 `review-mark-n14-formula-10` の左右余白だけを .65rem から .4rem に縮め、320pxの不足3pxを解消するP-004を承認しますか。**
+
+## Explicit user authorization — 2026-10-22 JST
+User directly replied **「承認」** to the specific P-004 proposal and approval question. This authorizes solely the proposed `src/review/review.css` scoped padding change and corresponding verification/Work evidence. It is not Gate① visual acceptance, Gate② PASS, Gate③ `総チェックOK`, main merge, or deployment consent. P-003 approved full-size choices and P-001 mathematics must remain unchanged.

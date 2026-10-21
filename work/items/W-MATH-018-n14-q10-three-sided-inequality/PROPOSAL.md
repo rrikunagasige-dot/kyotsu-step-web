@@ -1,7 +1,8 @@
 # W-MATH-018 — N14 Q10 三辺同時の式変形を復元
 
 ## P-001
-Status: APPROVED — user direct reply 「続けて」 to this exact P-001 proposal (2026-10-22 JST); only N14-Q10 scope.
+Status: APPROVED
+Approval evidence: user direct reply 「続けて」 to the exact W-MATH-018/P-001 proposal (2026-10-22 JST). Scope ONLY original N14 Q10.
 Date: 2026-10-21 JST. Canonical command: CMD-WORK-001 修正; WORK_SYSTEM §§12A,12B.
 Existing source: src/data/textbook/math/numbers/n14Lesson.ts, revision 6, original N14 Q10. The linked §12B impact ledger is W-MATH-017/P-003.
 

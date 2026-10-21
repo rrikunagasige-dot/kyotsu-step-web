@@ -23,3 +23,8 @@ Read main `governance/INSTRUCTION_DICTIONARY.md`: user corrective comment maps S
 - Compared live main `setLesson.ts`, `newBatchGuidedSteps.ts`, actual N11 branch, math SPEC §4, MASTER §§52/54, instruction dictionary CMD-WORK-001 and Work §11.
 - Detected automatic generic `確認` in N11 `marker-2/3` and analogous generated math units; explained difference from mandatory review-only `確認①` overlay.
 - Authored `PROPOSAL_P004_N11_CONFIRM_TO_PROSE.md`, set Work `REVISE-PROPOSAL`, left prior P-003 approved content/code/screenshots intact. NO changes to lesson files, renderer, original figures, CI definitions or production. Await user decision.
+
+
+## 2026-10-21 — User P-005 explicit approval
+- Confirmed exact P-005 direct affirmative response; renewed permission applies to bounded four-line N11 Q05/Q06 derivation only, with inline holes and no learner generic check label at this boundary.
+- Read current source, existing mathematical-derivation grouping renderer, ID schema, revision7 migration and original Word conditions. Prior P-004 archived unapproved; preserve original figures, N11 Q01/Q11/Q14 and other lessons.

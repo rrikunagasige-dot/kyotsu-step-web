@@ -185,6 +185,40 @@ export function effectiveTextbookProgress(unit: TextbookUnit, progress: Textbook
   if (!progress) return undefined
   if (progress.unitRevision === unit.revision) return progress
 
+  // W-MATH-017/P-005: the old Q06 compound operation/result key is
+  // replaced by the fractional number alone in the fourth equation row.
+  // Archive all rev7 answers, reopen ONLY n11-06 and the newly added
+  // right-side balancing hole; preserve rev7 Q01/Q05 and all other progress.
+  if (unit.unitId === 'math-numbers-expressions-n11' && unit.revision === 8
+    && progress.unitId === unit.unitId
+    && [1, 2, 3, 4, 5, 6, 7].includes(progress.unitRevision)) {
+    const fromV7 = progress.unitRevision === 7 ? progress
+      : effectiveTextbookProgress({ ...unit, revision: 7 }, progress)
+    if (!fromV7 || fromV7.unitRevision !== 7) return undefined
+    const archive: TextbookRevisionArchive = {
+      unitRevision: 7,
+      startedAt: fromV7.startedAt, updatedAt: fromV7.updatedAt,
+      answers: { ...fromV7.answers },
+      ...(fromV7.completedAt !== undefined ? { completedAt: fromV7.completedAt } : {}),
+      ...(fromV7.previousRevisionCompletedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV7.previousRevisionCompletedAt } : {}),
+      ...(fromV7.migratedFromRevision !== undefined
+        ? { migratedFromRevision: fromV7.migratedFromRevision } : {}),
+    }
+    const answers = { ...fromV7.answers }
+    delete answers['n11-06']
+    return {
+      unitId: unit.unitId, unitRevision: 8,
+      startedAt: fromV7.startedAt, updatedAt: fromV7.updatedAt,
+      answers, migratedFromRevision: 7,
+      archivedRevisions: { ...(fromV7.archivedRevisions ?? {}), '7': archive },
+      ...(fromV7.completedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV7.completedAt }
+        : fromV7.previousRevisionCompletedAt !== undefined
+          ? { previousRevisionCompletedAt: fromV7.previousRevisionCompletedAt } : {}),
+    }
+  }
+
   // W-MATH-017/P-003: Q01 (complete formula -> relation) and Q05
   // (combined answer -> computed result) have new grading semantics.
   // Preserve full prior attempts in the v6 archive; reopen only those two IDs.

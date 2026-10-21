@@ -1,6 +1,6 @@
 # W-MATH-017 — 文章に学習操作を統合する教材修正
 
-Status: REVISE-PROPOSAL
+Status: IMPLEMENTING
 Approval: P-003 user-approved; technical/human gates OPEN
 Updated: 2026-10-21 JST
 Command: CMD-WORK-001 「修正」
@@ -31,3 +31,6 @@ Wait only for the user's new Q01/Q05 `細部OK` / `要修正` after they inspect
 
 ## 2026-10-21 — Latest user feedback: generic learner "確認" rejected
 The user refused Gate① visual acceptance because the lesson does not yet follow the original 集合 continuous prose. Identified learner-label root cause in `newBatchGuidedSteps.ts`: generic `check` marks repeat at N11 second/third groups, unlike Set. Also separated yellow `確認①` from actual learner marker. **P-004** created as materially different proposal (pending explicit approval); preserve already-approved P-003 code and all evidence. No P-004 implementation, no Gate① `細部OK`, no merger/publication.
+
+## 2026-10-21 P-005 approval
+User explicitly approved P-005 four-equation first, holes embedded inside equations. P-004 remains historical unapproved, superseded; P-003 Q01 unchanged. Scope first N11 Q05/Q06 four-row derivation, one additional right balance decision, revision8 migration, tests and real gate image. Gate① human acceptance pending, Gate②/③ open.

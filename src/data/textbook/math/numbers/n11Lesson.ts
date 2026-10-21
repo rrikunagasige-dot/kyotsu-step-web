@@ -8,7 +8,7 @@ export const n11SourceToItemIds = {
   'N11-Q02': ['n11-02', 'n11-wm011-q02-compare'],
   'N11-Q03': ['n11-wm011-q03-factor', 'n11-wm011-q03-positive', 'n11-03', 'n11-wm011-q03-zero'],
   'N11-Q04': ['n11-wm011-q04-fraction', 'n11-04'],
-  'N11-Q05': ['n11-wm017-q05-operation', 'n11-05'],
+  'N11-Q05': ['n11-wm017-q05-operation', 'n11-wm017-q05-balance', 'n11-05'],
   'N11-Q11': ['n11-wm012-q11-expand', 'n11-wm012-q11-xcoef', 'n11-11'],
   'N11-Q14': ['n11-wm013-q14-xcoef', 'n11-wm013-q14-const', 'n11-14'],
 }
@@ -187,37 +187,56 @@ const originalTail = oldContent.readingFlow.slice(restReadingIndex)
 // the cancellation operation and the arithmetic result within flowing prose.
 const q05Start = oldContent.readingFlow.findIndex(b => b.id === 'n11-lead-05')
 const q05End = oldContent.readingFlow.findIndex(b => b.id === 'n11-after-05')
-if (q05Start < restReadingIndex || q05End !== q05Start + 2)
-  throw new Error('N11 original Q05 flow boundary changed')
+const q06End = oldContent.readingFlow.findIndex(b => b.id === 'n11-after-06')
+if (q05Start < restReadingIndex || q05End !== q05Start + 2 || q06End !== q05End + 3)
+  throw new Error('N11 original Q05/Q06 four-equation source flow boundary changed')
 const q05Offset = q05Start - restReadingIndex
 const q05AfterOffset = q05End - restReadingIndex
+// W-MATH-017/P-005 — approved four-row derivation: the mathematical
+// transformation is primary, with holes *inside* its successive equations.
+// The two '2' choices test LHS cancellation and mirroring it on the RHS.
+// They are within one mathematical row, not detached explanatory quizzes.
 const q05Flow: TextbookReadingBlock[] = [
-  { id: 'n11-lead-05', type: 'paragraph', parts: [
-    T('次は一次不等式を解こう。'), M('3x-2<5'),
-    T(' の左辺から定数の −2 をなくしたい。両辺に同じ数を足しても不等号の向きは変わらない。そこで、両辺に '),
-    C('n11-wm017-q05-operation'), T(' を加える。'),
+  { id: 'n11-lead-05', type: 'formula', derivationId: 'n11-q05-q06-chain', parts: [
+    M('3x-2<5'),
   ] },
-  { id: 'n11-formula-05', type: 'paragraph', parts: [
-    T('両辺に同じ数を加えると '), M('3x-2+2<5+2'),
-    T('。左辺の定数は打ち消し合う。右辺を計算すると '),
-    M('3x<'), C('n11-05'), T(' となる。'),
+  { id: 'n11-formula-05', type: 'formula', derivationId: 'n11-q05-q06-chain', parts: [
+    M('3x-2+'), C('n11-wm017-q05-operation'),
+    M('<5+'), C('n11-wm017-q05-balance'),
   ] },
-  { id: 'n11-after-05', type: 'paragraph', parts: [
-    T('ここまでで '), M('3x<7'), T(' が得られた。加減では不等号の向きは変わらない。次は正の3で割り、解の範囲を確かめよう。'),
+  { id: 'n11-after-05', type: 'formula', derivationId: 'n11-q05-q06-chain', parts: [
+    M('3x<'), C('n11-05'),
+  ] },
+  { id: 'n11-formula-06', type: 'formula', derivationId: 'n11-q05-q06-chain', parts: [
+    M('x<'), C('n11-06'),
+  ] },
+  { id: 'n11-after-06', type: 'paragraph', parts: [
+    T('両辺に同じ数を足しても不等号の向きは変わらない。最後は正の3で割ったので、解は7/3より小さい実数すべてになる。境界が含まれるか、元の式に代入して確かめよう。'),
   ] },
 ]
 const q05NewItem: TextbookItem = reviewItem(
-  'n11-wm017-q05-operation', '左辺の −2 を消すために両辺に加える数を選ぼう。',
+  'n11-wm017-q05-operation', '左辺の−2を消すため、左辺に加える数を考えよう。',
   '2', 'formula', ['-2', '3', '0'], 'causal-reasoning', 'light',
-  ['−2 と足して0になる数を探そう。'],
+  ['−2と足して0になる数は何だろう。'],
 )
+const q05BalanceItem: TextbookItem = reviewItem(
+  'n11-wm017-q05-balance', '不等号の向きを保つために、右辺にも加える同じ数を選ぼう。',
+  '2', 'formula', ['-2', '5', '0'], 'causal-reasoning', 'light',
+  ['左辺だけでなく右辺にも同じ操作をする。'],
+)
+
 const q11Offset = q11Start - restReadingIndex
 const q11AfterOffset = q11End - restReadingIndex
 const oldItems = oldContent.items.filter(item =>
   !['n11-01', 'n11-02', 'n11-03', 'n11-04'].includes(item.id)).map(item => item.id === 'n11-05'
-  ? reviewItem('n11-05', '両辺に2を足したあとの右辺の値を計算しよう。',
+  ? reviewItem('n11-05', '左辺の定数を打ち消したあと、右辺の5+2を計算しよう。',
     '7', 'formula', ['3', '5', '9'], 'causal-reasoning', 'light',
-    ['右辺は5+2。左辺の−2+2は0になる。']) : item)
+    ['5+2を計算して、3xの右側に置こう。'])
+  : item.id === 'n11-06'
+    ? reviewItem('n11-06', '3x<7の両辺を正の3で割ったときの右辺を計算しよう。',
+      '\\frac73', 'formula', ['\\frac37', '-\\frac73', '7'],
+      'transfer', 'light', ['正の3で割るので、<の向きは変わらない。'])
+    : item)
 const originalQ05Index = oldItems.findIndex(item => item.id === 'n11-05')
 if (originalQ05Index !== 0) throw new Error('N11 Q05 item boundary changed')
 const originalQ11Index = oldItems.findIndex(item => item.id === 'n11-11')
@@ -272,9 +291,12 @@ if (originalQ14Index <= originalQ11Index)
 const content = {
   readingFlow: [
     ...firstFlow,
-    ...originalTail.slice(0, q05Offset),
+    ...originalTail.slice(0, q05Offset).filter(block => block.id !== 'n11-marker-2').map(block =>
+      block.id === 'n11-group-2' && block.type === 'paragraph'
+        ? { ...block, parts: [T('不等式を解くとは、成り立つすべての実数の範囲を求めること。まず次の式を順に変形しよう。')] }
+        : block),
     ...q05Flow,
-    ...originalTail.slice(q05AfterOffset + 1, q11Offset),
+    ...originalTail.slice(q06End - restReadingIndex + 1, q11Offset),
     ...q11Flow,
     ...originalTail.slice(q11AfterOffset + 1, q14Offset),
     ...q14Flow,
@@ -284,6 +306,7 @@ const content = {
     ...firstItems,
     ...oldItems.slice(0, originalQ05Index),
     q05NewItem,
+    q05BalanceItem,
     ...oldItems.slice(originalQ05Index, originalQ11Index),
     ...q11NewItems,
     ...oldItems.slice(originalQ11Index, originalQ14Index),
@@ -293,7 +316,7 @@ const content = {
 }
 
 const rawN11={
-  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n11',revision:7,status:'review' as const,subject:'math-1a' as const,
+  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n11',revision:8,status:'review' as const,subject:'math-1a' as const,
   chapter:{chapterId:'math-ch01-numbers-expressions',chapterNumber:'1',chapterTitle:'数と式',unitCode:'1NUM',orderInChapter:11,sourcePages:[27,28,29]},
   title:'大小関係を保つ変形を選ぶ',subtitle:'不等号が変わる根拠を、差の符号と数直線で確かめる。',
   source:{type:'reference' as const,label:'ユーザー提供「数と式」教科書モード対話段階導入版 v2 / N11',

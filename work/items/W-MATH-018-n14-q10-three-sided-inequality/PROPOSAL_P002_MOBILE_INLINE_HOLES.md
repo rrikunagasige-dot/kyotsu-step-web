@@ -1,5 +1,5 @@
 # W-MATH-018/P-002 — N14 Q10の三辺にある選択穴をスマホで見切れなくする
-Status: PROPOSED — NOT APPROVED / CSS CHANGE NOT IMPLEMENTED
+Status: APPROVED — user direct 「続けて」 on 2026-10-22 JST, exact P-002 scope only
 Date: 2026-10-22 JST
 Command: CMD-WORK-001「修正」 §12B, material visual repair to approved P-001. Reason: actual user-visible defect shown in [P001_GATE1_VISUAL_DEFECT.md](./P001_GATE1_VISUAL_DEFECT.md).
 
@@ -25,5 +25,5 @@ The rule's purpose is precisely to remove `選択` label width, **not** to give 
 
 ## Scope and approval boundary
 P-001's pedagogy and source code remain approved. The discovered 320/390 layout defect does NOT permit automatic CSS change: the user's prior 「続けて」 approved P-001, not this material responsive design. No N14 Q14/Q15 content, global CSS defaults, new host, main merge, or unrelated chapter edits.
-Status: WAITING FOR EXACT USER APPROVAL.
+Status: APPROVED, bounded scoped CSS/test implementation authorized by direct user reply 「続けて」. Not approval of screenshots, main merge or release.
 **承認確認：スマホ430px以下のN14 Q10の穴だけを `□`（誤答後は `↻`）にコンパクト化し、数学の3行・5操作を保持したまま式全体を見えるようにしてよいか？**

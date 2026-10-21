@@ -17,3 +17,9 @@ Status: IMPLEMENTING
 - Root CSS: .reading-formula-line overflow-x:auto and white-space:nowrap, expression min-width:max-content; wide unfilled button label 選択 occupies much more width than numeric 3. Other maths steps and historic progression unaffected.
 - Prepared new P002 exact scoped mobile <=430px compact □/↻ and local CSS proposed ONLY; no CSS code change without user signoff. Prior visual image kept as defect evidence.
 - Independent old N14 Q07/Q08/Q12 E2E regression from CI 39629959584 failed due revision6 vs7 and Q12 offset15→19; corrected only tests in 0b63f8a... and need full rerun. Gate②/③ remain open.
+
+
+## 2026-10-22 — P002 approved scoped responsive patch
+- Exact user 「続けて」 authorizes P002 N14-Q10 only. CSS-only change in `src/styles/global.css` scoped to derivationId n14-q10-chain under 430px, 2rem accessible button min width and 34px min height, compact visual square/↻ with aria-label preserved. No renderer, item, math, source, progress, main or other approved blocks changed.
+- Added actual inner formula overflow and hole visibility checks at 320/390 in `e2e/wmath018-n14-q10-gate1.spec.ts`; validates normal Q01→Q11 and Q10-only marked actual review with wrong/hint/retry. Exact-SHA screenshot capture creates independent `p002-gate1` directory, preserving P001 clipped evidence and old P008 image snapshots.
+- CI, screenshots and visual audit still PENDING. No Gate① acceptance inferred.

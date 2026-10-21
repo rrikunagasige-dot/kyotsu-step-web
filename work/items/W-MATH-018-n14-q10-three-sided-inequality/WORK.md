@@ -1,5 +1,5 @@
 # W-MATH-018 — N14 Q10 三辺同時の式変形
-Status: REVISE-PROPOSAL
+Status: IMPLEMENTING
 Updated: 2026-10-21 JST
 
 ## Objective
@@ -32,3 +32,9 @@ Prior W-MATH-017 P008 small-block user accepted; full math CI 39611931626 SUCCES
 - Recorded images, exact learner source SHA e1e913f2230c42175bc5e67a53e726d030752634, blocker and root cause in [P001_GATE1_VISUAL_DEFECT.md](./P001_GATE1_VISUAL_DEFECT.md). Gate① USER CHECK NOT READY. No main merge.
 - [P002 compact mobile inline holes](./PROPOSAL_P002_MOBILE_INLINE_HOLES.md) proposal ONLY; no CSS/learner code changes until new exact user approval. Existing P001 mathematics+v7 archived history remain implemented, not accepted visually.
 - Full math CI [39629959584](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39629959584) failed 6 N14 Q07/Q08/Q12 historical browser cases still expecting rev6/Q12 old index. Test-only update commit 0b63f8a1fc9b6d70d8ce6c0f90732345d431e8a9 preserves their real learner content. Retest pending; previous complete unit tests/schema, desktop/mobile smoke and N12 tests PASS.
+
+
+## 2026-10-22 — P002 exact user authorization and minimal implementation
+- User replied 「続けて」 immediately to [P002 mobile-only 320/390 clipping proposal](./PROPOSAL_P002_MOBILE_INLINE_HOLES.md), approving precisely this responsive layout repair; NOT P001 visual Gate① nor full release.
+- CSS only adds a max-width:430px rule targeting derivationId `n14-q10-chain`: in-unanswered-hole visual `□`, wrong `↻`, min 2rem × 34px, text/answer unchanged, .9rem equation and minimal gap; 1440 and other N units untouched.
+- Test now measures the **inner three-sided formula row's own scrollWidth/clientWidth and every actual hole bounding rect** at 320/390, wrong/restore/resolve in both true learner route and review mode. Original clipped P001 images in `evidence/p001-gate1` preserved; new P002 evidence goes to `evidence/p002-gate1` and carries exact SHA. Gate① pending until genuine PASS and human visual confirmation. Other gates unchanged.

@@ -166,7 +166,7 @@ jobs:
         id: need
         shell: bash
         run: |
-          if git log -1 --format=%s | grep -q '^Store genuine N14 Q10 Gate1 images'; then
+          if git log -1 --format=%s | grep -q '^Store genuine N14 Q10 P002 Gate1 images'; then
             echo 'capture=false' >> "$GITHUB_OUTPUT"
           else
             echo 'capture=true' >> "$GITHUB_OUTPUT"
@@ -202,16 +202,16 @@ jobs:
         if: ${{ success() && steps.need.outputs.capture == 'true' }}
         shell: bash
         run: |
-          dir="work/items/W-MATH-018-n14-q10-three-sided-inequality/evidence/p001-gate1"
+          dir="work/items/W-MATH-018-n14-q10-three-sided-inequality/evidence/p002-gate1"
           mkdir -p "$dir"
-          cp e2e-evidence/p001-* "$dir/"
+          cp e2e-evidence/p002-* "$dir/"
           {
-            printf '# W-MATH-018/P-001 — N14 Q10 実際の教材画面の細部確認\n\n'
+            printf '# W-MATH-018/P-002 — N14 Q10 スマホ横切れ修正・実アプリ細部確認\n\n'
             printf '描画した実教材コードの完全SHA: %s\n\n' "$CAPTURE_SHA"
-            printf 'GitHub ActionsのChromiumによる実画面操作・スクリーンショット。320/390/1440px。図面やモックではありません。\n\n'
+            printf 'GitHub Actions Chromiumで実画面操作。320/390pxでは第2式の内側scrollWidth、全ての未回答穴の表示領域、幅と高さ、誤答後の↻も検査。1440pxは従来表示を保つ。図面やモックではありません。\n\n'
             printf '## 通常の学習画面（確認用の黄色い枠なし）\n\n'
             for part in left-before addition-2-before addition-3-before left-bound-before right-bound-before final; do
-              printf '### %s\n\n![実際の教材 %s 390px](p001-normal-%s-390.png)\n\n[320px](p001-normal-%s-320.png) ・ [PC1440px](p001-normal-%s-1440.png)\n\n' "$part" "$part" "$part" "$part" "$part"
+              printf '### %s\n\n![実際の教材 %s 390px](p002-normal-%s-390.png)\n\n[320px](p002-normal-%s-320.png) ・ [PC1440px](p002-normal-%s-1440.png)\n\n' "$part" "$part" "$part" "$part" "$part"
             done
             printf '## 今回だけの変更箇所・確認①〜③\n\n'
             printf '**確認①：** 三辺に同じ数を足す第2式の中に3つの穴が並ぶ。\n\n'
@@ -220,13 +220,13 @@ jobs:
             for i in 1 2 3 4 5; do
               printf '### 解答小操作 %s\n\n' "$i"
               for state in before wrong resolved; do
-                printf '**%s**\n\n![操作%s %s 390px](p001-review-%s-%s-390.png)\n\n[320px](p001-review-%s-%s-320.png) ・ [PC1440px](p001-review-%s-%s-1440.png)\n\n' "$state" "$i" "$state" "$i" "$state" "$i" "$state" "$i" "$state"
+                printf '**%s**\n\n![操作%s %s 390px](p002-review-%s-%s-390.png)\n\n[320px](p002-review-%s-%s-320.png) ・ [PC1440px](p002-review-%s-%s-1440.png)\n\n' "$state" "$i" "$state" "$i" "$state" "$i" "$state" "$i" "$state"
               done
             done
             printf 'N14 Q07/Q08/Q12とN11 P006/P007/P008は既に細部承認済み。今回の確認はN14 Q10のみであり、Gate②横断監査とGate③全体総チェックとは別です。\n'
           } > "$dir/README.md"
           git add "$dir"
           if ! git diff --cached --quiet; then
-            git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Store genuine N14 Q10 Gate1 images [review only]'
+            git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Store genuine N14 Q10 P002 Gate1 images [review only]'
             git push origin "HEAD:refs/heads/$TARGET_BRANCH"
           fi

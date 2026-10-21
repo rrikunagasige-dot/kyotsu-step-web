@@ -1,5 +1,5 @@
 import { mkdirSync, writeFileSync } from 'node:fs'
-import { expect, test } from '@playwright/test'
+import { expect, test, type Page } from '@playwright/test'
 import { mathNumbersN14Unit } from '../src/data/textbook/math/numbers/n14Lesson'
 
 const steps=[
@@ -12,7 +12,46 @@ const steps=[
 const widths=[320,390,1440] as const
 const evidence='e2e-evidence/'
 
-test.describe('W-MATH-018/P-001 exact-SHA genuine N14 Q10 Gate①',()=>{
+
+// A document may have no horizontal overflow while a scrollable formula
+// silently clips the last of the THREE N14 Q10 terms. Check the actual inner
+// mathematical line and its clickable choices before each review screenshot.
+async function assertQ10EquationFits(page:Page,width:number){
+  const line=page.locator('[data-derivation-id="n14-q10-chain"] .reading-formula-line').nth(1)
+  await expect(line).toBeVisible()
+  if(width>430)return
+  const measurements=await line.evaluate(element=>{
+    const rect=element.getBoundingClientRect()
+    const buttons=Array.from(element.querySelectorAll('button.reading-inline-blank'))
+    return {
+      scrollWidth:element.scrollWidth,clientWidth:element.clientWidth,
+      lineLeft:rect.left,lineRight:rect.right,
+      viewport:document.documentElement.clientWidth,
+      buttons:buttons.map(button=>{
+        const box=button.getBoundingClientRect()
+        return {
+          left:box.left,right:box.right,width:box.width,height:box.height,
+          label:button.getAttribute('aria-label'),
+          pseudo:getComputedStyle(button.querySelector('strong')!,'::after').content,
+        }
+      }),
+    }
+  })
+  expect(measurements.scrollWidth, 'Q10 3-term equation inner horizontal clipping at '+width)
+    .toBeLessThanOrEqual(measurements.clientWidth+1)
+  expect(measurements.lineRight, 'Q10 line viewport clipping at '+width)
+    .toBeLessThanOrEqual(measurements.viewport+1)
+  for(const button of measurements.buttons){
+    expect(button.left, 'Q10 hole left is clipped at '+width).toBeGreaterThanOrEqual(measurements.lineLeft-1)
+    expect(button.right, 'Q10 hole right is clipped at '+width).toBeLessThanOrEqual(measurements.lineRight+1)
+    expect(button.width, 'Q10 clickable hole minimum width at '+width).toBeGreaterThanOrEqual(31.5)
+    expect(button.height, 'Q10 clickable hole minimum height at '+width).toBeGreaterThanOrEqual(33.5)
+    expect(button.label, 'Q10 hole retains semantic accessible name').toBeTruthy()
+    expect(button.pseudo, 'Q10 compact square or retry at '+width).toMatch(/□|↻/)
+  }
+}
+
+test.describe('W-MATH-018/P-002 exact-SHA no-clipping mobile Q10 Gate①',()=>{
  for(const width of widths){
   test('five numbered reviewer actions '+width,async({page},info)=>{
    test.skip(process.env.E2E_WM018_GATE1!=='1','Q10 approved PR review screenshots only')
@@ -37,7 +76,8 @@ test.describe('W-MATH-018/P-001 exact-SHA genuine N14 Q10 Gate①',()=>{
      await expect(page.getByTestId('textbook-item-n14-10')).toHaveCount(0)
     }
     await trigger.scrollIntoViewIfNeeded()
-    await page.screenshot({path:evidence+'p001-review-'+(i+1)+'-before-'+width+'.png'})
+    await assertQ10EquationFits(page,width)
+    await page.screenshot({path:evidence+'p002-review-'+(i+1)+'-before-'+width+'.png'})
     await trigger.click()
     const panel=page.getByTestId('inline-choice-panel-'+id)
     await expect(panel).toBeVisible()
@@ -51,16 +91,18 @@ test.describe('W-MATH-018/P-001 exact-SHA genuine N14 Q10 Gate①',()=>{
     await expect(page.getByTestId('resolved-'+id)).toHaveCount(0)
     await trigger.click()
     await expect(page.getByTestId('textbook-hint-'+id)).toBeVisible()
-    await page.screenshot({path:evidence+'p001-review-'+(i+1)+'-wrong-'+width+'.png'})
+    await assertQ10EquationFits(page,width) // wrong/retry plus other unfilled gaps
+    await page.screenshot({path:evidence+'p002-review-'+(i+1)+'-wrong-'+width+'.png'})
     await panel.getByRole('button',{name:answer,exact:true}).click()
     await expect(page.getByTestId('resolved-'+id)).toBeVisible()
-    await page.screenshot({path:evidence+'p001-review-'+(i+1)+'-resolved-'+width+'.png'})
+    await assertQ10EquationFits(page,width)
+    await page.screenshot({path:evidence+'p002-review-'+(i+1)+'-resolved-'+width+'.png'})
     await expect(page.locator('.katex-error')).toHaveCount(0)
     if(width!==1440)
       expect(await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth)).toBeLessThanOrEqual(2)
    }
    await expect(page.getByTestId('review-preview-count')).toContainText('5/5')
-   writeFileSync(evidence+'p001-review-manifest-'+width+'.json',JSON.stringify({sha,width,steps},null,2)+'\n')
+   writeFileSync(evidence+'p002-review-manifest-'+width+'.json',JSON.stringify({sha,width,steps},null,2)+'\n')
   })
 
   test('real normal N14 from Q01 to Q11 and exact equation layout '+width,async({page},info)=>{
@@ -93,9 +135,10 @@ test.describe('W-MATH-018/P-001 exact-SHA genuine N14 Q10 Gate①',()=>{
      if(await trigger.count())await trigger.scrollIntoViewIfNeeded()
      await expect(page.locator('.review-marked-block')).toHaveCount(0)
      await expect(page.locator('.katex-error')).toHaveCount(0)
+     await assertQ10EquationFits(page,width) // actual formula row, not document scroll only
      if(width!==1440)
        expect(await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth)).toBeLessThanOrEqual(2)
-     await page.screenshot({path:evidence+'p001-normal-'+label+'-'+width+'.png'})
+     await page.screenshot({path:evidence+'p002-normal-'+label+'-'+width+'.png'})
    }
    await expect(chain.locator('.reading-formula-line')).toHaveCount(2)
    await expect(explanations).toHaveCount(0)
@@ -120,7 +163,7 @@ test.describe('W-MATH-018/P-001 exact-SHA genuine N14 Q10 Gate①',()=>{
    await answer(steps[4].id,steps[4].answer)
    await photo('final','n14-11')
    await expect(page.getByTestId('textbook-item-n14-11')).toBeVisible()
-   writeFileSync(evidence+'p001-normal-manifest-'+width+'.json',JSON.stringify({sha,width,source:'N14-Q10',steps},null,2)+'\n')
+   writeFileSync(evidence+'p002-normal-manifest-'+width+'.json',JSON.stringify({sha,width,source:'N14-Q10',steps},null,2)+'\n')
   })
  }
 })

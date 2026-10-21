@@ -24,3 +24,9 @@ Do not mark a CI PASS or user acceptance until results obtained. Keep older acce
 - Real Chromium Gate① capture #39629959612 successfully stored genuine 320/390/1440 screenshots. Source SHA e1e913f2230c42175bc5e67a53e726d030752634, evidence commit 06643939685a06f6d3c23046b3b85730a5cc4244. VISUAL FAIL/NEEDS-FIX at 320 and 390: Q10 formula row's last incomplete operand clipped. Full screenshot defect proof P001_GATE1_VISUAL_DEFECT.md; Gate① cannot be offered.
 - Math CI #39629959584 overall FAIL: original Q07/Q08/Q12 E2E revision6 expectations obsolete under Q10 revision7, six mobile cases; the source/maths/unit schema, build and smaller E2Es passed prior stage. Test-only correction 0b63f8a1fc9b6d70d8ce6c0f90732345d431e8a9 must be rerun. No P002 CSS changes implemented.
 - Need new P002 exact responsive CSS proposal approval and 320/390 real screenshot no *inner* scroll/clipping before human Gate①. Gate② open, full Word OMML still UNVERIFIED, sibling Q14/Q15 open; Gate③ FINAL-REVIEW-NOT-READY.
+
+
+## P002 exact-scope verification (await actual result)
+- User direct 「続けて」 approved responsive compact display for n14-q10-chain at <=430px, not other lessons.
+- Candidate CSS added, test now FAILS on any *inner* formula scroll overflow, any missing/clipped unfinished hole or sub-2rem×34px active control at 320/390 and checks aria-label and □/↻. Genuine P002 screenshot run to confirm before Gate①.
+- Old P001 clipped images retained under `evidence/p001-gate1`; new tests/images `evidence/p002-gate1` and source SHA to be recorded after run. Gate① pending, Gate②/③ open.

@@ -13,3 +13,10 @@ Status: CONFIRMED
 - Approved conditional sign-case choice: X≥0 → X>a and X<0 → X<−a. Original final `n14-08` and its 3 original authored wrong keys preserved; reverse iff and OR/AND explanation only after final correct choice.
 - N14 Q07 has human Gate① acceptance and its source content is untouched; N14 Q12 R1 is a separate unapproved correction.
 - New N14 revision5 migration chains old revisions and archives v4 including all previous original answers and Q07 added nodes; until CI tests this is an implementation hypothesis, not a verified runtime result.
+
+
+## 2026-10-21 source, distractor, adjacent-unit and §12C follow-up
+- Indep. mathematical equivalence for any a>0: |X|>a iff X<−a OR X>a, never AND, excludes X=±a/0. 42 numerical boundary/inner/outer tests zero discrepancies, all 9 false alternatives have a valid counterexample in appropriate sign-case. Original n14-08 authored final key+3 wrongs unchanged in code.
+- Scoped code diff only Q08 local source map/items and after-choice converse, N14-only v4→v5 history preservation, source tests/E2E, five Work records. Entire Q07 flow and original Q08 source/object/Q12 source preserved byte-identically; source/test blob equality between PR105 tested SHA and reviewer merge confirmed.
+- Adjacent original N14 Q01–Q06 and Q09–Q16 final answers source/arithmetically verified. No new algebraic defect; **R1 known issue N14 Q12 underguided two independent branches remains OPEN**. Proposed W-MATH-016 P-001 as docs-only, no code/approval.
+- §12C complied in this turn: performed bounded independent secondary source/math audit and Q12 proposal while CI RUNNING instead of arbitrary waits, revisited at block boundaries, preserved exact source-SHA evidence. No unilateral merge into main, publication, master lesson edits or schema changes.

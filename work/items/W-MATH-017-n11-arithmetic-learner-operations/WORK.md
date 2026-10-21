@@ -1,12 +1,27 @@
-# W-MATH-017 — 不等式の「見るだけ選択」を計算へ戻す
-Status: PROPOSED
-Updated: 2026-10-21
-Command routing: user live-site corrective feedback -> SIMILAR CMD-WORK-001 「修正」 (not approved implementation).
-Authoritative main SHA: `15ae503455bc6ae75b080caa1c4919cafb250027`, published GitHub Pages #39563303759 SUCCESS; **Gate③ user run reports defects and cannot be FINAL-APP-ACCEPTED**.
-Target: Mathematics Textbook Chapter 1, N11 Q01 display and N11 Q05 actual algebra, plus §12B sibling impact. Protected: user Word, existing original source questions/figures, N11 other accepted Gates unless specifically affected, all other modes, main/Pages, credentials/cost.
+# W-MATH-017 — 文章に学習操作を統合する教材修正
 
-Evidence: user two authentic live app screenshots on 2026-10-21; repository source `src/data/textbook/math/numbers/n11Lesson.ts`, helper `newBatchGuidedSteps.ts`. Canonical comparison `src/data/textbook/math/set/setLesson.ts`, `setOutsideSlice.ts`, `setRealLineSlice.ts`, math mode `subjects/mathematics/textbook/SPEC.md`, and existing `docs/MASTER_APP_LESSONS.md` §§8–11,20,53. The original Set example gives concrete case -> student choice embedded in meaningful sentence/figure -> after-answer explanation -> conceptual formula and next application; it does NOT justify a finished algebra expression as the only computational act.
+Status: IMPLEMENTING (P-003 user approved; technical/human gates OPEN)
+Updated: 2026-10-21 JST
+Command: CMD-WORK-001 「修正」
+Main baseline: `15ae503455bc6ae75b080caa1c4919cafb250027` (public Gate③ reopened/FAILED due user's actual Q01/Q05 findings)
+Branch: `work/W-MATH-017-p003-inline-prose-correction-20261021`
+Current learner code/tests branch checkpoint: `1739a98f55e1320209795131442044ef81fc39fe` (newer documentation-only commits do not substitute tested SHA)
 
-New correction proposals: [P-001 N11 Q01](./PROPOSAL_Q01.md) and [P-002 N11 Q05](./PROPOSAL_Q05.md). **Both are not approved.** No learner/app changes, merge, publication or deployment authorized. Submit exact small block proposal for user review, then implement only separately approved scope; preserve historical progress / stable original Word IDs / visual Gates as applicable.
+## Objective
+Restore the approved **集合** prose-first cognitive/presentation standard; original teacher Word 123 markers in N04–N14, compare N01–N14; preserve meaningful continuous mathematical derivations. Approved exact P-003 encompasses historical *unapproved* P-001 Q01 and P-002 Q05; both older documents remain historical and cannot independently grant authorization.
 
-Affected Gate status: user-discovered live defect => **Gate③ failed / reopened** for current public main. Previously documented math Gate② CROSS-VERIFIED cannot be used as a valid final clearance for N11 Q01/Q05 cognition/presentation; **reopen impacted Gate② cells** (not falsify historical test runs), complete §12B sibling sweep and rerun affected/Gate③ after authorized fixes. Stop unrelated CMD-WORK-002 creation pending correction closure.
+## Current scope and checkpoint
+- [x] Recover live repo identity/main/Constitution/instruction dictionary/MASTER §52/math SPEC/previous correction Work.
+- [x] Register approved P-003; author source-structure preflight 123/123 (structural risks ≠ 123 confirmed defects).
+- [x] N11 Q01/Q05 bounded **candidate code** on independent branch, revision7 selective archive; associated static, domain tests and historical E2E expected positions updated.
+- [ ] CI on frozen exact head; do not declare PASS until real runs finish.
+- [ ] Real app-derived GitHub Gate① sheet/screenshots for Q01 and Q05 and user's `細部OK`.
+- [ ] §12B sibling audit and remaining confirmed corrective Work if required; no broad unapproved change.
+- [ ] Impacted Gate② independent cross-audit, source math, comprehension/prose, mobile/desktop, progress and unaffected modes.
+- [ ] Gate③ new exact SHA playable application and user's `総チェックOK`; separate hosting/merge/release permissions remain required.
+
+## Do Not Touch
+User Word, source mathematical conditions, original PNG bytes/figure timing, unrelated Math Practice/Physics modes, unaffected stable IDs, old student answer history, approved unrelated gates, published main/Pages, costs/credentials, global renderer/SDK/workflows without separately approved material scope.
+
+## Next
+Fix any concrete test/provenance failures (not old CI status). On technical PASS obtain genuine screenshots for local Q01/Q05, prepare existing §12A GitHub visual sheet and request only new affected blocks' `細部OK`. Historical accepted blocks are not re-requested.

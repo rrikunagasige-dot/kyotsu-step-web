@@ -11,3 +11,10 @@ F-017-03 / siblings pending block-specific correction audit under §12B: same ex
 F-017-04 / prior skill comparison: published Set chapter `setLesson.ts` embeds one meaningful learner choice in concrete prompts, discusses meaning after answer, then introduces formal relation and subsequent transfer; use as writing/pedagogy reference, **not identical formula formatting copied blindly**. `subjects/mathematics/textbook/SPEC.md` §§5–8 and `docs/MASTER_APP_LESSONS.md` §§8–11,20,53 already demand learner-originated transformation and local answer visibility. Do NOT revise MASTER because the rule was already present. Failure occurred in N11 generated `makeReviewSteps` content and insufficient cognitive Gate② check, not primarily in missing general governance.
 
 Previously published public main `15ae503455bc6ae75b080caa1c4919cafb250027` remains unchanged. Gate③ whole app not accepted due confirmed live user finding. Preserve historical CI/Gate② reports as historical evidence, but they do NOT clear the new failures. Scope next: P-001 Q01 and P-002 Q05 separate exact user decisions, then audit analogous questions in §12B before resuming unrelated creation.
+
+
+## F-017-05 / ERROR-SPEC+ERROR-IMPLEMENTATION+ERROR-QA (P-003 confirmed)
+Original W-MATH-003/P-001 already specifically approved naturally linked prose with inline choices. The actual `makeReviewSteps` generator emits a uniform separate formula-choice block after the lead paragraph. This differs from satisfied Set-mode inline pedagogy and was not rejected by the old Gate②. Root cause exists at the source authoring/presentation design, not a lack of a new MASTER rule. The source-structure audit marks 123 original markers for per-block **review**; it does not establish 123 defects.
+
+## F-017-06 / CONFIRMED (Q01 and Q05 limited correction)
+Existing `TextbookReadingFlow` supports inline paragraph decisions, and existing v6 revision migration precedent supports selective reopen. Approved implementation uses no global renderer change and keeps original teacher Word and figures intact. Visual Gate① and all CI at new SHA remain UNVERIFIED until actual evidence.

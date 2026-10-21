@@ -1,6 +1,6 @@
 # W-MATH-017/P-003 — N11 Q01 / Q05 実アプリ Gate① 確認票
 
-描画・操作した教材コード SHA: \`0e56bfcbd13d859b787ce0c00cd97dd0d1e9d725\`
+描画・操作した教材コード SHA: \`0bb59e4e9fa6314dcdda7b8d5dd5559f7fd92944\`
 
 GitHub Actions の実 Chromium による操作とスクリーンショット。図面・モックではありません。学習履歴は保存されません。
 

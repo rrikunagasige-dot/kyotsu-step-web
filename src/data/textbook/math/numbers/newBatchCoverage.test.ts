@@ -240,7 +240,13 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
           (n === '11' && q === '06' ? 'n11-formula-06' : 'n' + n + '-lead-' + q))
         expect(lead).toBeDefined()
         const leadCopy = JSON.stringify(lead)
-        expect(leadCopy, id).not.toContain(item.answer)
+        if(n === '11' && (q === '08' || q === '09')) {
+          // P-007: checking for a one-character answer inside an earlier
+          // mathematical premise is invalid (the -2x coefficient contains 2).
+          // Assert the *completed result and orientation* are not revealed.
+          expect(leadCopy,id).not.toContain('x\\ge-1')
+          expect(leadCopy,id).not.toContain('-2x\\le2')
+        } else expect(leadCopy, id).not.toContain(item.answer)
         for (const required of expected) expect(item.answer, id).toContain(required)
         expect(item.choices).toHaveLength(4)
         expect(new Set(item.choices)).toHaveProperty('size', 4)
@@ -256,7 +262,9 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       ['14', '15', '正の3で割り'],
     ] as const) {
       const section = mathTextbookUnits.find(u => u.unitId.endsWith('n' + n))!.sections[0]
-      const leadBlockId = n === '11' && q === '06' ? 'n11-formula-06' : 'n' + n + '-lead-' + q
+      const leadBlockId = n === '11' && q === '06' ? 'n11-formula-06'
+        : n === '11' && q === '09' ? 'n11-formula-09'
+        : 'n' + n + '-lead-' + q
       const lead = section.readingFlow.find(v => v.id === leadBlockId)
       expect(lead, leadBlockId).toBeDefined()
       expect(JSON.stringify(lead), 'n' + n + '-' + q).not.toContain(forbidden)

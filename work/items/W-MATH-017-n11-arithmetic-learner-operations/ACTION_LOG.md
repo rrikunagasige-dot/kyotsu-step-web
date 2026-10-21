@@ -39,3 +39,10 @@ Read main `governance/INSTRUCTION_DICTIONARY.md`: user corrective comment maps S
 ## 2026-10-21 — requested merge permission and all-N explanation audit
 - Read live main and PR #107 HEAD, WORK_SYSTEM §12A Gate①→②→③, §12B and source code for all `n01Lesson.ts`–`n14Lesson.ts` plus N04 supplement and the approved N12 mixed paragraph/derivation implementation. All 14 units classified in [analysis ledger](./N01_N14_INTERSTITIAL_EXPLANATION_ANALYSIS_20261021.md) with exact target Q ranges and protected items. Original binary teacher Word not available to current Project file search, marked UNVERIFIED for separate source visual QA.
 - User's new request is analysis plus later code change permission only after proposal revision: refrain from touching learner code, shared renderer, figures, source IDs, published main. Record user intent to merge but **no merge** until cross-audit and final real-app Gate③ fulfill canonical existing protocol. No repeated approval demanded for unchanged P-005 design.
+
+
+## 2026-10-21 — post all-N analysis follow-on / P-006 bounded proposal
+- Verified live target GitHub main `15ae503455bc6ae75b080caa1c4919cafb250027`, PR #107 draft, prior real Math CI for code SHA `c12c84dce3570c2c4e98dadff93a0ee0aeb57440` success, new GitHub branch docs only.
+- Reread Constitution, dictionary §CMD-WORK-001, WORK_SYSTEM §§11/12A/12B, MASTER §§7–12/20/23/52–54, math SPEC, N11 `q05Flow`, N12 already mixed derivation, group rendering and actual gate tests.
+- Prepared full exact P-006 before learner code changes; explicitly two short paragraph blocks with same derivationId between existing four equation lines, plus concise post-chain explanation without prematurely answering Q07. All 14 units prioritized in separate design-only queue.
+- No P-006 code changes, no new revision/grade semantics, no main merge, no Pages; hold `REVISE-PROPOSAL` for explicit P-006 approval.

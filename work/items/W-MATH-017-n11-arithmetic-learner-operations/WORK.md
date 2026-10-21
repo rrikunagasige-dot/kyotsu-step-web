@@ -48,3 +48,9 @@ User explicitly approved P-005 four-equation first, holes embedded inside equati
 
 ## 2026-10-21 — merge instruction with new interstitial-prose review feedback
 User explicitly authorized merge of reviewed P-005 design and additionally requested analysis of whether/where mathematical explanation sentences belong **between** equation rows in every N01–N14. Main integration is NOT performed because §12A Gate② and exact-SHA Gate③ still unclosed; the new material Q05–Q06 explanation-design issue requires a revised proposal/approval before modifying learner code. See [N01–N14 full source-based teaching-transition audit](./N01_N14_INTERSTITIAL_EXPLANATION_ANALYSIS_20261021.md). Proposal revised state; accepted old blocks protected. No new implementation or deployment authorized for additional N items.
+
+
+## 2026-10-21 — P-006 exact proposal drafted, no learner code implementation
+- User said 「いいよじゃよろしく」 after requested N01–N14 analysis, authorizing continuation of existing proposal/audit steps. Under instruction dictionary this is NOT approval of a yet-undrafted exact change; P-006 is PROPOSED and must receive direct user approval before changes.
+- [P-006 exact N11 Q05–Q06 two short interstitial paragraphs](./PROPOSAL_P006_N11_INTERSTITIAL_REASONS.md): math-primary 4-line original P-005 preserved; no answer/ID/progress changes. [N01–N14 bounded future design queue](./N01_N14_INTERSTITIAL_BLOCK_DESIGN_QUEUE.md) is a design-only list, not bulk edit authorization.
+- Existing code tested SHA `c12c84dce3570c2c4e98dadff93a0ee0aeb57440` full Math CI [39589056130](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39589056130) PASS; PR #107 draft and main unchanged. Gate① P-006 new block, Gate② and Gate③ are OPEN. No merge or production.

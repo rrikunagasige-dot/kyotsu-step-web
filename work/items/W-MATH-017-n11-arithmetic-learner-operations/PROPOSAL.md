@@ -16,3 +16,8 @@ User review feedback rejected the **generic `確認` section label** and its dis
 
 ## Current approved design
 [P-005 four sequential in-equation holes](./PROPOSAL_P005_FOUR_LINE_DERIVATION.md): APPROVED from explicit user confirmation. P-004 is a superseded historical PROPOSED design, NOT approved. Original P-003 Q01 fix remains effective. This status line applies to P-005, not retroactive approval for P-004.
+
+
+## Next proposed revision (not approved yet)
+- [P-006 N11 Q05–Q06 two brief reasons between the four equation rows](./PROPOSAL_P006_N11_INTERSTITIAL_REASONS.md) — `PROPOSED`. The user confirmed P-005 and requested additional analysis, but the exact sentences/placement have **not** yet been approved. Work remains `REVISE-PROPOSAL`; protect P-005's earlier APPROVED status, source, answer IDs and progress.
+- [N01–N14 block design queue](./N01_N14_INTERSTITIAL_BLOCK_DESIGN_QUEUE.md) — audit/design only, not approved changes. New scope must return via CMD-WORK-001 exact proposals for individual blocks.

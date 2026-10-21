@@ -1,5 +1,6 @@
 # W-GOV-009 — Verification / plan
-Status: ISOLATED IMPLEMENTATION / GOVERNANCE CI NOT YET CONFIRMED
+Status: PENDING
+Stage: isolated implementation and governance CI, not yet confirmed
 Date: 2026-10-21 JST
 Baseline: observed GitHub main SHA `537c3cbf28d40f45228d8a0c4bdd20327136aa93`
 

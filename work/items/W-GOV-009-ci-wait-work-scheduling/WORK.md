@@ -1,5 +1,6 @@
 # W-GOV-009 — CI待機中の安全な独立作業・復帰フロー
-Status: VERIFYING (approved isolated implementation; governance CI/user review pending, main unmerged)
+Status: VERIFYING
+Review stage: approved isolated implementation; governance CI and review pending, main unmerged
 Command: CMD-WORK-001「修正」; W-GOV-009/P-001 exact implementation approval recorded 2026-10-21.
 Date: 2026-10-21 JST
 Target: `rrikunagasige-dot/kyotsu-step-web`, repository ID 1391122224

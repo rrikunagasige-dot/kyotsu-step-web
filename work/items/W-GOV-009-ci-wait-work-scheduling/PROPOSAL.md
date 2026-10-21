@@ -1,5 +1,6 @@
 # W-GOV-009 / P-001 — CI待機時間の安全な並行作業と確実な元Work復帰
-Status: APPROVED for isolated implementation; main merge NOT authorized
+Status: APPROVED
+Release authorization: isolated implementation only; main merge NOT authorized
 Created: 2026-10-21 JST
 Command: CMD-WORK-001「修正」 (user agreed to this command classification and proposal creation only)
 

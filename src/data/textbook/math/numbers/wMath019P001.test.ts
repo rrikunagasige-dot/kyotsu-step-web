@@ -37,7 +37,7 @@ describe('W-MATH-019/P-001 N14 Q14: original three inequalities, reason and five
     expect(at('n14-lead-15')).toBe(at('n14-after-14')+1)
     expect(item('n14-15').answer).toBe('\\text{三辺を正の}3\\text{で割る},\\quad-\\frac23\\le x\\le2')
     expect(at('n14-wm018-q10-result')).toBeGreaterThan(0)
-    expect(at('n14-wm016-q12-left')).toBeGreaterThan(0)
+    expect(at('n14-formula-wm016-q12-left')).toBeGreaterThan(0)
     expect(section.figures.map(f=>f.id)).toEqual(['n14-f01'])
   })
   it('requires all 3 additions and both endpoint calculations, with no leaked complete result',()=>{
@@ -94,7 +94,7 @@ describe('W-MATH-019/P-001 N14 Q14: original three inequalities, reason and five
     expect(now.answers['n14-02']).toEqual(previous.answers['n14-02'])
     expect(now.answers['n14-14']).toBeUndefined()
     expect(now.answers['n14-10']).toBeUndefined() // prior Q10 semantics were already re-keyed at rev7
-    expect(now.answers['n14-15']).toEqual(previous.answers['n14-15'])
-    expect(now.archivedRevisions?.['7']?.answers['n14-15']).toEqual(previous.answers['n14-15'])
+    expect(now.answers['n14-15']).toBeUndefined() // older v2→v3 already reopened Q15; never resurrect it
+    expect(now.archivedRevisions?.['1']?.answers['n14-15']).toEqual(previous.answers['n14-15'])
   })
 })

@@ -7,7 +7,7 @@ const section=lesson.sections[0]
 const index=(id:string)=>section.readingFlow.findIndex(block=>block.id===id)
 const item=(id:string)=>section.items.find(entry=>entry.id===id)!
 
-describe('W-MATH-017 P-005 — four-line continuous formula derivation',()=>{
+describe('W-MATH-017 P-005/P-006 — four-line continuous formula derivation with interstitial reasons',()=>{
   const chain=['n11-lead-05','n11-formula-05','n11-after-05','n11-formula-06']
   it('preserves Q01 correct signed-number relation while retaining original figure',()=>{
     expect(lesson.revision).toBe(8)
@@ -23,7 +23,19 @@ describe('W-MATH-017 P-005 — four-line continuous formula derivation',()=>{
     expect(index('n11-marker-2')).toBe(-1)
     const indices=chain.map(index)
     expect(indices.every(i=>i>=0)).toBe(true)
-    expect(indices).toEqual([indices[0],indices[0]+1,indices[0]+2,indices[0]+3])
+    expect(indices).toEqual([indices[0],indices[0]+1,indices[0]+3,indices[0]+5])
+    const explanation1=section.readingFlow[indices[0]+2]
+    const explanation2=section.readingFlow[indices[0]+4]
+    expect(explanation1).toEqual({
+      id:'n11-p006-q05-cancel-explain',type:'paragraph',
+      derivationId:'n11-q05-q06-chain',parts:[{type:'text',text:'両辺に同じ数を足しても、不等号の向きは変わらない。左辺では−2と＋2が打ち消し合う。'}],
+    })
+    expect(explanation2).toEqual({
+      id:'n11-p006-q06-positive-explain',type:'paragraph',
+      derivationId:'n11-q05-q06-chain',parts:[{type:'text',text:'xの係数は正の3なので、両辺を3で割っても不等号の向きは変わらない。'}],
+    })
+    expect(section.readingFlow.slice(indices[0],indices[3]+1).map(b=>b.type))
+      .toEqual(['formula','formula','paragraph','formula','paragraph','formula'])
     const bs=indices.map(i=>section.readingFlow[i])
     expect(bs.every(b=>b.type==='formula'&&b.derivationId==='n11-q05-q06-chain')).toBe(true)
     const formulaBlocks=bs.map(b=>{if(b.type!=='formula')throw Error('derivation includes non-formula block');return b})
@@ -35,6 +47,7 @@ describe('W-MATH-017 P-005 — four-line continuous formula derivation',()=>{
     ])
     expect(index('n11-lead-06')).toBe(-1)
     expect(index('n11-after-06')).toBe(indices[3]+1)
+    expect(section.readingFlow[index('n11-after-06')]).toEqual({id:'n11-after-06',type:'paragraph',parts:[{type:'text',text:'求めたのは一つの値ではなく、不等式を満たす実数の範囲である。境界の値を元の式に代入して、含まれるか確かめよう。'}]})
     const prefix=JSON.stringify(section.readingFlow.slice(0,index('n11-formula-05')+1))
     expect(prefix).not.toContain('3x<7')
     expect(prefix).not.toContain('x<\\frac73')

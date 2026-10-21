@@ -46,3 +46,8 @@ Read main `governance/INSTRUCTION_DICTIONARY.md`: user corrective comment maps S
 - Reread Constitution, dictionary §CMD-WORK-001, WORK_SYSTEM §§11/12A/12B, MASTER §§7–12/20/23/52–54, math SPEC, N11 `q05Flow`, N12 already mixed derivation, group rendering and actual gate tests.
 - Prepared full exact P-006 before learner code changes; explicitly two short paragraph blocks with same derivationId between existing four equation lines, plus concise post-chain explanation without prematurely answering Q07. All 14 units prioritized in separate design-only queue.
 - No P-006 code changes, no new revision/grade semantics, no main merge, no Pages; hold `REVISE-PROPOSAL` for explicit P-006 approval.
+
+
+## 2026-10-21 — P-006 approved / initial bounded code
+- Explicit direct user approval of exact P-006 established (no new content qualifiers). Implemented precisely 2 paragraph blocks in existing `n11-q05-q06-chain`, plus final nonleaking paragraph revision; preserve 4 original formula blocks, all 25 N11 student decisions, graded answers and revision8 student history.
+- Added unit-level assertions for 6 consecutive same-derivation blocks, placement and exact paragraphs. Browser screenshot and QA still pending; do NOT claim Gate① approval, complete Gate②, or merge.

@@ -203,14 +203,20 @@ const q05Flow: TextbookReadingBlock[] = [
     M('3x-2+'), C('n11-wm017-q05-operation'),
     M('<5+'), C('n11-wm017-q05-balance'),
   ] },
+  { id: 'n11-p006-q05-cancel-explain', type: 'paragraph', derivationId: 'n11-q05-q06-chain', parts: [
+    T('両辺に同じ数を足しても、不等号の向きは変わらない。左辺では−2と＋2が打ち消し合う。'),
+  ] },
   { id: 'n11-after-05', type: 'formula', derivationId: 'n11-q05-q06-chain', parts: [
     M('3x<'), C('n11-05'),
+  ] },
+  { id: 'n11-p006-q06-positive-explain', type: 'paragraph', derivationId: 'n11-q05-q06-chain', parts: [
+    T('xの係数は正の3なので、両辺を3で割っても不等号の向きは変わらない。'),
   ] },
   { id: 'n11-formula-06', type: 'formula', derivationId: 'n11-q05-q06-chain', parts: [
     M('x<'), C('n11-06'),
   ] },
   { id: 'n11-after-06', type: 'paragraph', parts: [
-    T('両辺に同じ数を足しても不等号の向きは変わらない。最後は正の3で割ったので、解は7/3より小さい実数すべてになる。境界が含まれるか、元の式に代入して確かめよう。'),
+    T('求めたのは一つの値ではなく、不等式を満たす実数の範囲である。境界の値を元の式に代入して、含まれるか確かめよう。'),
   ] },
 ]
 const q05NewItem: TextbookItem = reviewItem(

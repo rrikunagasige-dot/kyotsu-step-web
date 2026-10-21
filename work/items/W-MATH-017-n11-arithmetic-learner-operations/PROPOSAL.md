@@ -21,3 +21,7 @@ User review feedback rejected the **generic `確認` section label** and its dis
 ## Next proposed revision (not approved yet)
 - [P-006 N11 Q05–Q06 two brief reasons between the four equation rows](./PROPOSAL_P006_N11_INTERSTITIAL_REASONS.md) — `PROPOSED`. The user confirmed P-005 and requested additional analysis, but the exact sentences/placement have **not** yet been approved. Work remains `REVISE-PROPOSAL`; protect P-005's earlier APPROVED status, source, answer IDs and progress.
 - [N01–N14 block design queue](./N01_N14_INTERSTITIAL_BLOCK_DESIGN_QUEUE.md) — audit/design only, not approved changes. New scope must return via CMD-WORK-001 exact proposals for individual blocks.
+
+
+## Latest approved precise revision
+[P-006 two interstitial explanations in N11's existing four-line chain](./PROPOSAL_P006_N11_INTERSTITIAL_REASONS.md): APPROVED by user's direct 「承認」 in immediate response to P-006. Scope is only N11 q05Flow explanatory paragraphs/postchain text. Source IDs, answers, revision8 and previous P-005 approvals protected. Gate① human visual approval is **still pending**.

@@ -1,6 +1,6 @@
 # W-MATH-017 — 文章に学習操作を統合する教材修正
 
-Status: REVISE-PROPOSAL
+Status: IMPLEMENTING
 Approval: P-003 user-approved; technical/human gates OPEN
 Updated: 2026-10-21 JST
 Command: CMD-WORK-001 「修正」
@@ -54,3 +54,9 @@ User explicitly authorized merge of reviewed P-005 design and additionally reque
 - User said 「いいよじゃよろしく」 after requested N01–N14 analysis, authorizing continuation of existing proposal/audit steps. Under instruction dictionary this is NOT approval of a yet-undrafted exact change; P-006 is PROPOSED and must receive direct user approval before changes.
 - [P-006 exact N11 Q05–Q06 two short interstitial paragraphs](./PROPOSAL_P006_N11_INTERSTITIAL_REASONS.md): math-primary 4-line original P-005 preserved; no answer/ID/progress changes. [N01–N14 bounded future design queue](./N01_N14_INTERSTITIAL_BLOCK_DESIGN_QUEUE.md) is a design-only list, not bulk edit authorization.
 - Existing code tested SHA `c12c84dce3570c2c4e98dadff93a0ee0aeb57440` full Math CI [39589056130](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39589056130) PASS; PR #107 draft and main unchanged. Gate① P-006 new block, Gate② and Gate③ are OPEN. No merge or production.
+
+
+## 2026-10-21 — P-006 exact approval and first bounded implementation
+- User explicitly replied 「承認」 directly to full [P-006 proposal](./PROPOSAL_P006_N11_INTERSTITIAL_REASONS.md). N11 Q05/Q06 only; 4 formula lines preserved, 2 short explanation paragraphs inserted, closing paragraph narrowed.
+- Item IDs, original Word Q05/Q06 mapping, N11 revision8 and progress migration unchanged. N01–N14 remaining analysis/design queue is not approved for code changes.
+- Implementation and focused source invariant tests now in progress on independent PR #107. Gate① new real screenshots, independent Gate②, final app Gate③ remain open; no merge or deployment.

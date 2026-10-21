@@ -1,11 +1,12 @@
 # W-MATH-017 / P-006 — 式のまとまりの中へ必要な説明を挿入する
-Status: PROPOSED — AWAITING USER'S EXACT APPROVAL
+Status: APPROVED
+Approval evidence: user's direct 「承認」 reply to the immediately preceding complete P-006 proposal (2026-10-21 JST). This exact scoped approval permits implementation of 2 interstitial paragraphs and reduced post-chain paragraph; it does not approve other N items or main merge.
 Command: CMD-WORK-001 修正 / Work state: REVISE-PROPOSAL
 Date: 2026-10-21 JST
 Branch: `work/W-MATH-017-p003-inline-prose-correction-20261021`
 App source baseline: `c12c84dce3570c2c4e98dadff93a0ee0aeb57440` (Math textbook CI [39589056130](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39589056130) PASS)
 Current PR: [#107](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/107), draft, not merged
-User review trigger: user approved P-005 4-line equations, but observed that **some meaningful reasoning needs short prose BETWEEN equation rows**; then requested analysis of all N01–N14 and continuation. This is review feedback, **not exact P-006 approval**. P-005 retains original APPROVED status and code.
+User review trigger: user approved P-005 4-line equations, but observed that **some meaningful reasoning needs short prose BETWEEN equation rows**; then requested analysis of all N01–N14 and continuation. The complete P-006 proposal was subsequently explicitly **approved** by user. P-005 retains original APPROVED status and code.
 
 ## Explicit goal and current problem
 Preserve a **single mathematical derivation** in this exact row order, with no detached answer-choice formula cards:
@@ -44,7 +45,7 @@ Do not alter the four equations, math choices, answers, numbering, grading or so
 - Original "Q05 + Q06" as two Word source markers and 25 learner decisions in N11, 144 in 8-unit count unchanged. Since NO question/answer identity/choices or order changes, continue N11 revision8; preserve all revision1→8 migration and existing progress. Test as no-graded-semantic-change **and record a fresh exact source SHA for affected visual acceptance**. If later revision policy or a genuinely changed graded meaning requires revision9, treat that as a materially new proposal; do not sneak in a new progress migration.
 
 ## Technical scope and dependencies
-Allowed only after explicit P-006 approval:
+Approved limited scope (P-006):
 - `src/data/textbook/math/numbers/n11Lesson.ts`, specifically `q05Flow` 2 explanatory paragraphs + existing final paragraph string.
 - Focused N11 `wMath017ProseIntegration.test.ts` assertions for ID, order, shared derivationId and no early revelation; existing review target tests/proofs only if newly required by these blocks (never rewrite unrelated accepted assertions).
 - Existing GitHub Actions real-app screenshots at mobile 320/390 and desktop 1440; update **only** affected Gate① P-006 marks and image sheet after code commit; document the exact tested 40-hex SHA.
@@ -65,4 +66,4 @@ Allowed only after explicit P-006 approval:
 - This **does not** authorize changes to all other N units, even though the user requested their analysis. Their exact candidate ledger is recorded separately.
 - User has said “統合しよう”, recorded as future merge authorization intent, but current §12A Gate② and Gate③ remain unclosed. No premature GitHub merge.
 
-Approval question: **Do you approve P-006 exact text/placement and limited N11 code changes above?** Upon approval continue without re-asking for previously accepted P-005 rows.
+Approval outcome: **APPROVED** by user's immediate direct reply. Continue bounded implementation without re-asking for P-005 rows; Gate① visual acceptance remains separate.

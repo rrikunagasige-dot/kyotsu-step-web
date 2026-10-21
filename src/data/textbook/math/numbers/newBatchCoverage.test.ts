@@ -46,7 +46,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       const unit = mathTextbookUnits.find(u => u.unitId === 'math-numbers-expressions-n' + n)
       expect(unit, 'N' + n).toBeDefined()
       expect(unit?.status).toBe('review')
-      expect(unit?.revision).toBe(n === '11' ? 5 : ['06', '07', '08', '14'].includes(n) ? 3 : 2)
+      expect(unit?.revision).toBe(n === '11' ? 6 : ['06', '07', '08', '14'].includes(n) ? 3 : 2)
       expect(Object.keys(map)).toEqual(Array.from({ length: count }, (_, i) => 'N' + n + '-Q' + String(i + 1).padStart(2, '0')))
       const items = unit?.sections.flatMap(section => section.items) ?? []
       const choiceIds = unit?.sections.flatMap(section => section.readingFlow.flatMap(block =>
@@ -58,7 +58,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       expect(items.map(i => i.id), 'N' + n).toEqual(mapped)
       allChoiceCount += items.length
     }
-    expect(allChoiceCount).toBe(134) // 123 source questions + 4 N04 local + 5 N11 P-001 + 2 Q11 derivation decisions
+    expect(allChoiceCount).toBe(136) // 123 source questions + 4 N04 local + 5 N11 proof + 2 Q11 + 2 Q14
   })
 
   it('keeps every original figure byte-for-byte and its original question-answer gates', () => {
@@ -331,7 +331,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
     inspectAfter('14', '13', '14', 'まず定数−2を消す操作', '次は三辺に共通する操作')
     inspectAfter('14', '14', '15', '正の3で三辺を割っても', '中央のxの係数を1にする段階')
     for (const n of ['06', '11', '14']) {
-      expect(pick(n).revision).toBe(n === '11' ? 5 : 3)
+      expect(pick(n).revision).toBe(n === '11' ? 6 : 3)
     }
   })
 
@@ -378,7 +378,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
     }
     for (const n of ['11', '14']) {
       const unit = mathTextbookUnits.find(u => u.unitId.endsWith('n' + n))!
-      expect(unit.revision).toBe(n === '11' ? 5 : 3)
+      expect(unit.revision).toBe(n === '11' ? 6 : 3)
     }
   })
 
@@ -483,8 +483,8 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       'n11-03', 'n11-wm011-q03-zero',
       'n11-wm011-q04-fraction', 'n11-04',
     ]
-    expect(unit.revision).toBe(5)
-    expect(unit.sections[0].items).toHaveLength(21)
+    expect(unit.revision).toBe(6)
+    expect(unit.sections[0].items).toHaveLength(23)
     expect(unit.sections[0].items.slice(0, 9).map(v => v.id)).toEqual(expected)
     expect(Object.keys(n11SourceToItemIds)).toHaveLength(14)
     expect(Object.values(n11SourceToItemIds).flat()).toEqual(section.items.map(x => x.id))
@@ -586,8 +586,8 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
     const unit = mathTextbookUnits.find(u => u.unitId.endsWith('n11'))!
     const section = unit.sections[0]
     const ids = section.items.map(q => q.id)
-    expect(unit.revision).toBe(5)
-    expect(ids).toHaveLength(21)
+    expect(unit.revision).toBe(6)
+    expect(ids).toHaveLength(23)
     expect(Object.keys(n11SourceToItemIds)).toHaveLength(14)
     expect(n11SourceToItemIds['N11-Q11']).toEqual([
       'n11-wm012-q11-expand', 'n11-wm012-q11-xcoef', 'n11-11',
@@ -641,7 +641,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
   })
 
   it('W-MATH-012/P-001 archives N11 v1/v2/v3/v4 into v5 without erasing old original Q11 correctness', () => {
-    const unit = mathTextbookUnits.find(u => u.unitId.endsWith('n11'))!
+    const unit = { ...mathTextbookUnits.find(u => u.unitId.endsWith('n11'))!, revision: 5 }
     const mk = (id: string): TextbookAnswerRecord => ({
       itemId: id, value: 'old-answer', firstValue: 'old-answer',
       isFirstCorrect: true, resolved: true, attemptCount: 1,
@@ -684,6 +684,79 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       }
       if (from === 2) expect(now.answers['n11-05']).toEqual(mk('n11-05'))
       expect(effectiveTextbookProgress(unit, now)).toBe(now)
+    }
+  })
+
+
+  it('W-MATH-013/P-001 Q14 adds two formula blanks with original final key preserved', () => {
+    const unit = mathTextbookUnits.find(u => u.unitId.endsWith('n11'))!
+    const section = unit.sections[0]
+    const ids = ['n11-wm013-q14-xcoef', 'n11-wm013-q14-const', 'n11-14']
+    expect(unit.revision).toBe(6)
+    expect(section.items).toHaveLength(23)
+    expect(Object.keys(n11SourceToItemIds)).toHaveLength(14)
+    expect(n11SourceToItemIds['N11-Q14']).toEqual(ids)
+    expect(Object.values(n11SourceToItemIds).flat()).toEqual(section.items.map(i => i.id))
+    const finalThree = section.items.slice(-3)
+    expect(finalThree.map(i => i.id)).toEqual(ids)
+    expect(finalThree[0].answer).toBe('5')
+    expect(finalThree[0].choices).toEqual(['5','6','7','-5'])
+    expect(finalThree[1].answer).toBe('-5')
+    expect(finalThree[1].choices).toEqual(['-5','1','-2','5'])
+    expect(finalThree[2].answer).toBe('x\\ge-1')
+    expect(finalThree[2].choices).toEqual(['x\\ge-1','x\\le-1','x\\ge1','x>-1'])
+    const flow = section.readingFlow
+    const at = (id: string) => flow.findIndex(b => b.id === id)
+    const a = at('n11-formula-wm013-q14-xcoef')
+    const b = at('n11-formula-wm013-q14-const')
+    const c = at('n11-formula-14')
+    expect(a).toBeGreaterThan(at('n11-formula-13'))
+    expect(b).toBeGreaterThan(a)
+    expect(c).toBeGreaterThan(b)
+    expect(c).toBeLessThan(at('n11-after-14'))
+    expect(flow[c]).toEqual({id:'n11-formula-14',type:'formula',parts:[{type:'choice',itemId:'n11-14'}]})
+    expect(JSON.stringify(flow.slice(a+1,b))).not.toContain('-2-3=-5')
+    expect(JSON.stringify(flow.slice(b+1,c))).not.toContain('x\\ge-1')
+    for(const item of finalThree) {
+      expect(item.choices).toHaveLength(4)
+      expect(new Set(item.choices).size).toBe(4)
+      for(const candidate of item.choices!) {
+        expect(() => katex.renderToString(candidate,{throwOnError:true,strict:'ignore'})).not.toThrow()
+      }
+    }
+    for(const x of [-8,-2,-1,0,2,8]){
+      expect(x-2 <= 6*x+3).toBe(-2 <= 5*x+3)
+      expect(-2 <= 5*x+3).toBe(-5 <= 5*x)
+      expect(-5 <= 5*x).toBe(x >= -1)
+    }
+  })
+
+  it('W-MATH-013/P-001 N11 rev1/2/3/4/5→6 archives v5 and keeps original answers', () => {
+    const unit = mathTextbookUnits.find(u => u.unitId.endsWith('n11'))!
+    const mk=(id:string):TextbookAnswerRecord=>({
+      itemId:id,value:'old-answer',firstValue:'old-answer',
+      isFirstCorrect:true,resolved:true,attemptCount:2,firstAnsweredAt:100,lastAnsweredAt:200,
+    })
+    const ids=['n11-01','n11-02','n11-05','n11-11','n11-wm012-q11-expand','n11-wm012-q11-xcoef','n11-14']
+    for(const from of [1,2,3,4,5]) {
+      const prev:TextbookUnitProgress={
+        unitId:unit.unitId,unitRevision:from,startedAt:100,updatedAt:200,
+        completedAt:230,answers:Object.fromEntries(ids.map(id=>[id,mk(id)])),
+      }
+      const v5=from===5?prev:effectiveTextbookProgress({...unit,revision:5},prev)!
+      const v6=effectiveTextbookProgress(unit,prev)!
+      expect(v6.unitRevision).toBe(6)
+      expect(v6.migratedFromRevision).toBe(5)
+      expect(v6.completedAt).toBeUndefined()
+      expect(v6.archivedRevisions?.['5']?.answers).toEqual(v5.answers)
+      expect(v6.archivedRevisions?.['5']?.completedAt).toBe(v5.completedAt)
+      expect(v6.answers).toEqual(v5.answers)
+      expect(v6.answers['n11-14']).toEqual(v5.answers['n11-14'])
+      expect(v6.answers['n11-wm013-q14-xcoef']).toBeUndefined()
+      expect(v6.answers['n11-wm013-q14-const']).toBeUndefined()
+      expect(v6.previousRevisionCompletedAt).toBe(v5.completedAt??v5.previousRevisionCompletedAt)
+      expect(effectiveTextbookProgress(unit,v6)).toBe(v6)
+      if(from<5)expect(v6.archivedRevisions?.['4']).toBeDefined()
     }
   })
 

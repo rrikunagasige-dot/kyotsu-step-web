@@ -185,6 +185,41 @@ export function effectiveTextbookProgress(unit: TextbookUnit, progress: Textbook
   if (!progress) return undefined
   if (progress.unitRevision === unit.revision) return progress
 
+  // W-MATH-013/P-001: Q14 two new decisions, original n11-14 final
+  // answer retains its meaning. Archive the full previous v5 snapshot;
+  // retain all v5 answers active while newly introduced Q14 nodes are open.
+  if (unit.unitId === 'math-numbers-expressions-n11' && unit.revision === 6
+    && progress.unitId === unit.unitId
+    && [1,2,3,4,5].includes(progress.unitRevision)) {
+    const fromV5 = progress.unitRevision === 5 ? progress
+      : effectiveTextbookProgress({ ...unit, revision: 5 }, progress)
+    if (!fromV5 || fromV5.unitRevision !== 5) return undefined
+    const oldArchive: TextbookRevisionArchive = {
+      unitRevision: 5,
+      startedAt: fromV5.startedAt,
+      updatedAt: fromV5.updatedAt,
+      answers: { ...fromV5.answers },
+      ...(fromV5.completedAt !== undefined ? { completedAt: fromV5.completedAt } : {}),
+      ...(fromV5.previousRevisionCompletedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV5.previousRevisionCompletedAt } : {}),
+      ...(fromV5.migratedFromRevision !== undefined
+        ? { migratedFromRevision: fromV5.migratedFromRevision } : {}),
+    }
+    return {
+      unitId: unit.unitId,
+      unitRevision: 6,
+      startedAt: fromV5.startedAt,
+      updatedAt: fromV5.updatedAt,
+      answers: { ...fromV5.answers },
+      migratedFromRevision: 5,
+      archivedRevisions: { ...(fromV5.archivedRevisions ?? {}), '5': oldArchive },
+      ...(fromV5.completedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV5.completedAt }
+        : fromV5.previousRevisionCompletedAt !== undefined
+          ? { previousRevisionCompletedAt: fromV5.previousRevisionCompletedAt } : {}),
+    }
+  }
+
   // W-MATH-012/P-001: two new Q11 decisions; original n11-11 answer
   // meaning remains unchanged. Existing old answers all survive active v5,
   // while v4 and older historical completion evidence remains archived.

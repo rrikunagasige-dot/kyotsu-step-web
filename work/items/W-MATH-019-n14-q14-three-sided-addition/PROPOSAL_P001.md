@@ -1,5 +1,5 @@
 # W-MATH-019/P-001 — N14 Q14 三辺に同じ2を足す過程を式中穴として導く
-Status: PROPOSED — EXACT USER APPROVAL REQUIRED / CODE NOT IMPLEMENTED
+Status: APPROVED — scoped Q14 correction only; learner implementation and verification underway
 Date: 2026-10-22 JST
 Command: CMD-WORK-001 修正 (same-root approved-creation sweep §12B)
 Stable original source marker: N14-Q14. Source: teacher-edit Word indexed N14 Q13→Q14→Q15 and current src/data/textbook/math/numbers/n14Lesson.ts rev7.
@@ -38,3 +38,6 @@ Stable original source marker: N14-Q14. Source: teacher-edit Word indexed N14 Q1
 
 ## Explicit approval boundary
 Only *after* user approves this exact P-001 may N14 Q14 be implemented on an isolated branch. The concise formula preview in conversation is a proposed pedagogical layout, not an actual screenshot or Gate① acceptance. N14 Q15 is not implicitly approved.
+
+## Approval record / exact user reply
+User replied exactly 「继续」 immediately to the full concise N14 Q14 5-hole math design and assistant's explicit statement that approval would start implementation. Under CMD-WORK-001 this approves P-001 **only for N14 Q14**, not N14 Q15, review Gate① acceptance, independent Gate②, overall Gate③ or main/Pages/publication.

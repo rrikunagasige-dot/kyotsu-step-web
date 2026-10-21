@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { mathNumbersN01Unit } from '../data/textbook/math/numbers/n01Lesson'
 import { mathNumbersN03Unit } from '../data/textbook/math/numbers/n03Lesson'
 import { mathNumbersN11Unit } from '../data/textbook/math/numbers/n11Lesson'
+import { mathNumbersN14Unit } from '../data/textbook/math/numbers/n14Lesson'
 import { activeReviewMarkIds, extractReviewSection, reviewTargets } from './reviewTargets'
 
 describe('W-GOV-008/P-002 review marker boundaries', () => {
@@ -23,7 +24,13 @@ describe('W-GOV-008/P-002 review marker boundaries', () => {
     expect(activeReviewMarkIds(q89)).toEqual([]) // P007 accepted
     const q13=reviewTargets['n11-q13']
     expect(extractReviewSection(mathNumbersN11Unit,q13)?.items.map(i=>i.answer)).toEqual(['3','3','6','3'])
-    expect(activeReviewMarkIds(q13)).toEqual(q13.markBlockIds)
+    expect(activeReviewMarkIds(q13)).toEqual([]) // P008 accepted
+    const n14=reviewTargets['n14-q10']
+    expect(n14.revision).toBe(7)
+    expect(n14.totalItems).toBe(26)
+    expect(extractReviewSection(mathNumbersN14Unit,n14)?.items.map(i=>i.answer)).toEqual(['3','3','3','-2','8'])
+    expect(activeReviewMarkIds(n14)).toEqual(n14.markBlockIds)
+    expect(extractReviewSection({...mathNumbersN14Unit,revision:6},n14)).toBeNull()
     expect(extractReviewSection({...mathNumbersN11Unit,revision:9},q89)).toBeNull()
   })
 

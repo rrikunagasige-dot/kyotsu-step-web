@@ -60,6 +60,16 @@ const targets: Record<string, ReviewTarget> = {
     itemIds:['n11-p008-q13-mul-left','n11-p008-q13-mul-right','n11-13','n11-p008-q13-constant'],
     expectedAnswers:['3','3','6','3'],
     markBlockIds:['n11-formula-13','n11-p008-q13-positive-explain','n11-p008-q13-distribute-explain','n11-p008-q13-result'],
+    reviewState:'accepted', // P008 Q13 user 「いいよ続けて」: previously accepted image
+  },
+  // W-MATH-018/P-001 — marks only the N14 Q10 source correction
+  'n14-q10': {
+    id:'n14-q10',unitId:'math-numbers-expressions-n14',title:'N14 Q10',
+    question:'三辺への同じ操作と左右の境界値',revision:7,totalItems:26,
+    blockIds:['n14-lead-10','n14-formula-10','n14-wm018-q10-explain','n14-wm018-q10-result','n14-after-10'],
+    itemIds:['n14-wm018-q10-add-left','n14-wm018-q10-add-center','n14-wm018-q10-add-right','n14-10','n14-wm018-q10-bound-right'],
+    expectedAnswers:['3','3','3','-2','8'],
+    markBlockIds:['n14-formula-10','n14-wm018-q10-explain','n14-wm018-q10-result'],
     reviewState:'awaiting-user',
   },
   'n01-q07': {

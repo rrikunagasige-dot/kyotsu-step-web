@@ -33,3 +33,7 @@ Latest user response: 「いや確認というのはいやだな。だって文�
 
 ## F-017-10 / CONFIRMED (P-005 math-primary design)
 After user rejected both generic `確認` and prose-first P-004, the exact direct user approval was to first lay out 4 equations vertically and open blanks within those lines. Correct resolution is `3x-2<5` → `3x-2+2<5+2` → `3x<7` → `x<7/3`. Each step now progresses only when required choice resolves. Actual Chromium normal-route captures show one grouped mathematical derivation and no generic learner `確認` before Q05. Independent GitHub review-only `確認①` images are not a learner label. All other lesson styles are unchanged pending separate §12B checks; no global "formula everywhere" rule invented.
+
+
+## F-017-11 / confirmed new user review feedback + scoped analysis
+The revised four-line equation chain is the user's requested primary form, but for certain nontrivial transformations the missing **interstitial explanation** is an actual learning-design weakness. Compare N12 where paragraphs and formulas deliberately share one `derivationId`: the renderer supports this already, so a shared rendering change is unnecessary. Candidate N11 row2→row3 explain cancellation & same operation; row3→row4 explain positive division & unchanged direction, without revealing the holes. Broader N01–N14 candidates (and preserved blocks) are listed in `N01_N14_INTERSTITIAL_EXPLANATION_ANALYSIS_20261021.md`. A source-structure candidate is not a verified visual defect in every student-facing question. Additional exact proposal approval required to implement.

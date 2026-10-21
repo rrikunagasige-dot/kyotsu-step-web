@@ -1,6 +1,6 @@
 # W-MATH-017 — 文章に学習操作を統合する教材修正
 
-Status: IMPLEMENTING
+Status: REVISE-PROPOSAL
 Approval: P-003 user-approved; technical/human gates OPEN
 Updated: 2026-10-21 JST
 Command: CMD-WORK-001 「修正」
@@ -44,3 +44,7 @@ User explicitly approved P-005 four-equation first, holes embedded inside equati
 - [ ] Full Math Textbook regression CI final result pending at last observation; do **not** count it PASS before action completed.
 - [ ] User Gate① `細部OK` for **P-005 four-line Q05/Q06 only** pending. Subsequent §12B sibling audit, Gate② and Gate③ remain OPEN. Historical accepted Q01 and other blocks are not reopened by default.
 - [ ] Do not merge/publish main: PR #107 remains draft.
+
+
+## 2026-10-21 — merge instruction with new interstitial-prose review feedback
+User explicitly authorized merge of reviewed P-005 design and additionally requested analysis of whether/where mathematical explanation sentences belong **between** equation rows in every N01–N14. Main integration is NOT performed because §12A Gate② and exact-SHA Gate③ still unclosed; the new material Q05–Q06 explanation-design issue requires a revised proposal/approval before modifying learner code. See [N01–N14 full source-based teaching-transition audit](./N01_N14_INTERSTITIAL_EXPLANATION_ANALYSIS_20261021.md). Proposal revised state; accepted old blocks protected. No new implementation or deployment authorized for additional N items.

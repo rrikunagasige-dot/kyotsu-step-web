@@ -1,5 +1,5 @@
 # W-MATH-018/P-003 — 既存の青い「選択」穴を維持し、N14 Q10だけ折り返して全式表示
-Status: PROPOSED — EXACT USER REAPPROVAL REQUIRED; NOT IMPLEMENTED
+Status: APPROVED — exact user approval 「承認する」 2026-10-22 JST; P-003 scoped implementation authorized
 Date: 2026-10-22 JST
 Command: CMD-WORK-001 修正, REVISE-PROPOSAL from P-002 after explicit user feedback.
 Reason: user message 「いいけど、穴のデザインが前と違うじゃない？　続けて」 directly after P-002. This is a *material change/condition*, not blanket approval of a new hole design.
@@ -39,3 +39,8 @@ The second visual line continues the same chained inequality after the same `<` 
 The user expressly objected to P-002's different hole design while saying 「続けて」. Under CMD-WORK-001, feedback changing a material part of a proposal returns to REVISE-PROPOSAL and requires exact approval for the replacement. Do not treat that feedback as approval of this **new** wrapping scheme.
 
 **Approval request: Keep identical blue 「選択」/red 「×」 buttons and, only on mobile <=430px, wrap Q10's long second equation into two visual lines while retaining the original three mathematical derivation steps and five graded decisions — approved?**
+
+## 2026-10-22 — exact user approval
+- User replied **「承認する。」** immediately to this exact P-003 proposal in the new conversation, after the handoff and the full P-003 modification boundary had been shown. This is unqualified explicit approval of **P-003 only**, not Gate①/②/③ acceptance, permission to merge, or authorization to publish.
+- Implementation authorized only for the Q10-specific 430px CSS grid wrap, replacing P-002 ineffective styles, and directly affected verification/screenshot evidence. Preserve original blue 「選択」/red 「×」 buttons, three logical equations, five decisions and all earlier accepted N14/N11 blocks.
+- After coding, **real** 320/390/1440 Chromium checks and existing §12A/§12B gates remain required. A failure at full original button size returns to REVISE-PROPOSAL; no font or control downsizing is authorized.

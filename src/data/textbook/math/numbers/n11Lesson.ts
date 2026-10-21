@@ -354,17 +354,17 @@ const q13Flow: TextbookReadingBlock[] = [
 const q13LeftItem: TextbookItem = reviewItem(
   'n11-p008-q13-mul-left', '左辺の分母3を消すために掛ける数を選ぼう。',
   '3', 'formula', ['-3','1','6'], 'causal-reasoning', 'light',
-  ['正の3で掛ければ左辺の分母の3を消せる。'],
+  ['分母を消すには、分母と同じ大きさの正の数を掛ける。'],
 )
 const q13RightItem: TextbookItem = reviewItem(
   'n11-p008-q13-mul-right', '右辺にも同じ数を掛けよう。',
   '3', 'formula', ['1','-3','6'], 'causal-reasoning', 'light',
-  ['両辺に同じ正の数を掛ければ大小関係を保てる。'],
+  ['左辺に選んだ倍率と同じ数を右辺にも掛ける。'],
 )
 const q13ConstantItem: TextbookItem = reviewItem(
   'n11-p008-q13-constant', '3(2x+1) の定数項を計算しよう。',
   '3', 'formula', ['1','-3','6'], 'causal-reasoning', 'light',
-  ['かっこの中の定数1にも3を掛ける。'],
+  ['かっこの中の定数項にも外側の数を掛ける。'],
 )
 
 const q14Start = oldContent.readingFlow.findIndex(b => b.id === 'n11-lead-14')

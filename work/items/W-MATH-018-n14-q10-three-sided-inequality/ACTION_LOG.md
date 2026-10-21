@@ -23,3 +23,9 @@ Status: IMPLEMENTING
 - Exact user 「続けて」 authorizes P002 N14-Q10 only. CSS-only change in `src/styles/global.css` scoped to derivationId n14-q10-chain under 430px, 2rem accessible button min width and 34px min height, compact visual square/↻ with aria-label preserved. No renderer, item, math, source, progress, main or other approved blocks changed.
 - Added actual inner formula overflow and hole visibility checks at 320/390 in `e2e/wmath018-n14-q10-gate1.spec.ts`; validates normal Q01→Q11 and Q10-only marked actual review with wrong/hint/retry. Exact-SHA screenshot capture creates independent `p002-gate1` directory, preserving P001 clipped evidence and old P008 image snapshots.
 - CI, screenshots and visual audit still PENDING. No Gate① acceptance inferred.
+
+
+## 2026-10-22 — P002 display divergence diagnosis / revised proposal only
+- User rejected newly proposed Q10 hole appearance: 「穴のデザインが前と違うじゃない？」. Confirmed canonical formula input component `src/components/textbook/TextbookFormula.tsx` renders `reading-formula-choice` labels `選択`/wrong `×`, existing blue border and aria prompt. P002 CSS on `reading-inline-blank > strong::after` can never affect these Q10 formula choice buttons. No actual source/persisted answer defect, but user-visible clipping remains.
+- Review capture #39634288270 FAILED with Q10 internal 300px content against client 213/241 at viewport320 and 283 at viewport390. Build/gov pass is not actual Gate① screenshot pass.
+- Created exact revised [P003](./PROPOSAL_P003_CANONICAL_CHOICES_WRAP.md), retaining established button appearance and wrapping only the 2nd Q10 formula line at <=430 CSS px. No CSS write beyond already implemented P002; previous P002 approval and failed screenshots retained. Wait for P003 explicit approval, then implement scoped replace and re-test.

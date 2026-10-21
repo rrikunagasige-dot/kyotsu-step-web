@@ -18,3 +18,10 @@ Full real screenshots on exact SHA e1e913f2230c42175bc5e67a53e726d030752634: 320
 
 ## F-018-04 — historical E2E rev6/Q12 offsets obsolete, original contents protected
 Full math CI 39629959584 reached N04–N14 batch then six N14 Q07/Q08/Q12 cases failed on expecting revision6 while actual rev7; Q12 also tests old source offset slice15:18. Corrected only their test expectations in 0b63f8a1fc9b6d70d8ce6c0f90732345d431e8a9, preserving Q07/08/12 earlier user-approved content and historic v6 migration tests. Other tests still need rerun; do not declare overall PASS.
+
+
+## F-018-05 / P002 wrong-button-selector and hole-style inconsistency — CONFIRMED, NOT FIXED
+- P002 intended custom `□`/wrong `↻` display only on N14 Q10 at mobile widths; user identifies that this looks different from previously accepted math problems.
+- Actual React formula renderer `TextbookFormula.tsx` renders `button.reading-formula-choice` with canonical 「選択」 and wrong 「×」, not `reading-inline-blank > strong`. This mismatch means P002 CSS pseudo labels never apply to its formula holes. P002 shrinking the formula outer padding/font does NOT fix clipped horizontal content.
+- GitHub authentic preview #39634288270: FAIL (300px internal scrollwidth >213/241 320 clientwidth and >283 390). The prior ordinary screenshot only checked document-level width; new stronger internal assertion reveals persisting bug.
+- Response is separate revised P003 proposal: restore original button design exactly, wrap only the second equation at 320/390 on mobile into two *visual* continuation lines with original source/decision progression. No learner source alteration or CSS remediation before P003 explicit approval. This is the existing §12B correction-first rule, not a new global lesson.

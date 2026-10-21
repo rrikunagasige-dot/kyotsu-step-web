@@ -1,5 +1,5 @@
 # W-MATH-018 — N14 Q10 三辺同時の式変形
-Status: IMPLEMENTING
+Status: REVISE-PROPOSAL
 Updated: 2026-10-21 JST
 
 ## Objective
@@ -38,3 +38,9 @@ Prior W-MATH-017 P008 small-block user accepted; full math CI 39611931626 SUCCES
 - User replied 「続けて」 immediately to [P002 mobile-only 320/390 clipping proposal](./PROPOSAL_P002_MOBILE_INLINE_HOLES.md), approving precisely this responsive layout repair; NOT P001 visual Gate① nor full release.
 - CSS only adds a max-width:430px rule targeting derivationId `n14-q10-chain`: in-unanswered-hole visual `□`, wrong `↻`, min 2rem × 34px, text/answer unchanged, .9rem equation and minimal gap; 1440 and other N units untouched.
 - Test now measures the **inner three-sided formula row's own scrollWidth/clientWidth and every actual hole bounding rect** at 320/390, wrong/restore/resolve in both true learner route and review mode. Original clipped P001 images in `evidence/p001-gate1` preserved; new P002 evidence goes to `evidence/p002-gate1` and carries exact SHA. Gate① pending until genuine PASS and human visual confirmation. Other gates unchanged.
+
+
+## 2026-10-22 — user challenged P002 different hole design; new P003 proposal pending
+- User said 「いいけど、穴のデザインが前と違うじゃない？　続けて」. Under CMD-WORK-001, conditional feedback changes the exact styling proposal, so NOT approval of P002's `□/↻` approach. Work returns to REVISE-PROPOSAL.
+- Audited actual `TextbookFormula.tsx`: canonical `button.reading-formula-choice` displays blue `選択` and red `×` after wrong, unlike P002's proposed pseudo `□/↻`; P002 CSS targeted `reading-inline-blank` (wrong component), so compact label was ineffective. Real screenshot #39634288270 FAIL: formula scroll width300, client widths213/241 at 320 and 283 at 390. Gate① Q10 not ready.
+- Prepared [P003 exact proposal](./PROPOSAL_P003_CANONICAL_CHOICES_WRAP.md): preserve exact established blue/red button design and use Q10-only mobile CSS grid to wrap the second equation into two **visual** lines, still 3 logical equations + 1 explanation and 5 decisions. **NO P003 code change authorized**, main not merged, previous approved content protected.

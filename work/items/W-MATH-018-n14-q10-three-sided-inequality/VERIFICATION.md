@@ -30,3 +30,9 @@ Do not mark a CI PASS or user acceptance until results obtained. Keep older acce
 - User direct 「続けて」 approved responsive compact display for n14-q10-chain at <=430px, not other lessons.
 - Candidate CSS added, test now FAILS on any *inner* formula scroll overflow, any missing/clipped unfinished hole or sub-2rem×34px active control at 320/390 and checks aria-label and □/↻. Genuine P002 screenshot run to confirm before Gate①.
 - Old P001 clipped images retained under `evidence/p001-gate1`; new tests/images `evidence/p002-gate1` and source SHA to be recorded after run. Gate① pending, Gate②/③ open.
+
+
+## 2026-10-22 P002 exact-SHA browser failure and required new approval
+- P002 current tested source SHA `936a9a0b7fdee86de8df02519255df7a2652b14b` in GitHub Actions [39634288270](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39634288270) **FAIL** for real reviewed Q10 formula: scrollWidth 300 vs clientWidth213 or241 at 320, and 300 vs283 at 390. Neither old P001 nor P002 has acceptable Gate① mobile screenshot. No visual acceptance to request.
+- P002 CSS improperly targets `button.reading-inline-blank` while formula displays `button.reading-formula-choice`. The user specifically asked to preserve hole design; new `□/↻` was not accepted as equivalent to the existing blue 「選択」/red 「×」 controls.
+- Replaced proposed plan is [P003 unchanged canonical button + mobile-only equation wrapping](./PROPOSAL_P003_CANONICAL_CHOICES_WRAP.md) with strict inner overflow/visibility tests. P003 PROPOSED ONLY, no implementation. Whole Math CI for P002 was RUNNING when checked; do not claim PASS. Gate②/③ remain open, main untouched.

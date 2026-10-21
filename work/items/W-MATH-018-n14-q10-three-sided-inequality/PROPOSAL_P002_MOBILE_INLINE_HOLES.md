@@ -27,3 +27,7 @@ The rule's purpose is precisely to remove `選択` label width, **not** to give 
 P-001's pedagogy and source code remain approved. The discovered 320/390 layout defect does NOT permit automatic CSS change: the user's prior 「続けて」 approved P-001, not this material responsive design. No N14 Q14/Q15 content, global CSS defaults, new host, main merge, or unrelated chapter edits.
 Status: APPROVED, bounded scoped CSS/test implementation authorized by direct user reply 「続けて」. Not approval of screenshots, main merge or release.
 **承認確認：スマホ430px以下のN14 Q10の穴だけを `□`（誤答後は `↻`）にコンパクト化し、数学の3行・5操作を保持したまま式全体を見えるようにしてよいか？**
+
+
+## 2026-10-22 — historical P-002 now requires revision after user feedback
+The original P-002 approval, branch commit `936a9a0b7fdee86de8df02519255df7a2652b14b`, and failed screenshot run 39634288270 are preserved. Subsequent user feedback **「いいけど、穴のデザインが前と違うじゃない？　続けて」** expressly rejects making Q10's holes look different. P-002's `□/↻` proposal cannot be treated as accepted visual design. Further implementation **STOPPED**, pending separate approval of [P-003 (keep existing 「選択」/「×」 design and wrap only Q10's long formula on mobile)](./PROPOSAL_P003_CANONICAL_CHOICES_WRAP.md). P-002 history is NOT deleted or rewritten.

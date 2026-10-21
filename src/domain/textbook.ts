@@ -185,6 +185,41 @@ export function effectiveTextbookProgress(unit: TextbookUnit, progress: Textbook
   if (!progress) return undefined
   if (progress.unitRevision === unit.revision) return progress
 
+  // W-MATH-016/P-001: Q12 adds two distinct subtraction decisions.
+  // Normalize historical v1–v4 through existing approved v5 migration,
+  // then snapshot v5 including Q07, Q08 and original Q12 answers.
+  if (unit.unitId === 'math-numbers-expressions-n14' && unit.revision === 6
+    && progress.unitId === unit.unitId
+    && [1,2,3,4,5].includes(progress.unitRevision)) {
+    const fromV5 = progress.unitRevision === 5 ? progress
+      : effectiveTextbookProgress({ ...unit, revision: 5 }, progress)
+    if (!fromV5 || fromV5.unitRevision !== 5) return undefined
+    const archive: TextbookRevisionArchive = {
+      unitRevision: 5,
+      startedAt: fromV5.startedAt,
+      updatedAt: fromV5.updatedAt,
+      answers: { ...fromV5.answers },
+      ...(fromV5.completedAt !== undefined ? { completedAt: fromV5.completedAt } : {}),
+      ...(fromV5.previousRevisionCompletedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV5.previousRevisionCompletedAt } : {}),
+      ...(fromV5.migratedFromRevision !== undefined
+        ? { migratedFromRevision: fromV5.migratedFromRevision } : {}),
+    }
+    return {
+      unitId: unit.unitId,
+      unitRevision: 6,
+      startedAt: fromV5.startedAt,
+      updatedAt: fromV5.updatedAt,
+      answers: { ...fromV5.answers },
+      migratedFromRevision: 5,
+      archivedRevisions: { ...(fromV5.archivedRevisions ?? {}), '5': archive },
+      ...(fromV5.completedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV5.completedAt }
+        : fromV5.previousRevisionCompletedAt !== undefined
+          ? { previousRevisionCompletedAt: fromV5.previousRevisionCompletedAt } : {}),
+    }
+  }
+
   // W-MATH-015/P-001: Q08 adds two sign-case checks, preserving the
   // unchanged original n14-08. Normalize v1–v3 through the approved v4
   // migration, then archive v4 without losing Q07 or other old answers.

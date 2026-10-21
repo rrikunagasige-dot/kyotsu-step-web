@@ -51,3 +51,10 @@ Read main `governance/INSTRUCTION_DICTIONARY.md`: user corrective comment maps S
 ## 2026-10-21 — P-006 approved / initial bounded code
 - Explicit direct user approval of exact P-006 established (no new content qualifiers). Implemented precisely 2 paragraph blocks in existing `n11-q05-q06-chain`, plus final nonleaking paragraph revision; preserve 4 original formula blocks, all 25 N11 student decisions, graded answers and revision8 student history.
 - Added unit-level assertions for 6 consecutive same-derivation blocks, placement and exact paragraphs. Browser screenshot and QA still pending; do NOT claim Gate① approval, complete Gate②, or merge.
+
+
+## 2026-10-21 — approved P-006 implementation and verification
+- The user's direct 承認 to exact P-006 was recorded and implemented in isolated PR #107.
+- Captured real source and screenshot commit pair: student source 2c568703cb3e56b5ef4ab119b411bdb89e674cc6, GitHub Actions screenshot commit 540e2eee7671fe6b540dd6c68b0273eca1d04780.
+- Review CI failure 39592697619 caused by stale script expecting a marker on an unchanged original formula. Learner normal Playwright tests already PASS. Corrected script and review selection only; screenshot job 39593071069 PASS. No student formula/answer change from this test repair.
+- Continue via user Gate① on two explanation paragraphs, then independent Gate②. Do not publish or merge before frozen code URL and user's final whole-app 総チェックOK.

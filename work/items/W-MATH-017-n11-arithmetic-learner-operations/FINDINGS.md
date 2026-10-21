@@ -41,3 +41,7 @@ The revised four-line equation chain is the user's requested primary form, but f
 
 ## F-017-12 / CONFIRMED integration mechanism; no implementation authorization
 In math N12 authored source and `TextbookReadingFlow.renderVisibleBlocks`, continuous formula and prose blocks sharing the same `derivationId` are grouped into one mathematical visual chain; `visibleBlocksInGroup` cuts off before the first unanswered choice-bearing block. N11 P-005 lacks explanation between its four rows but already uses the grouping mechanism. P-006 proposes prose IDs to bridge row2→3 and row3→4 while preserving 25 learner decisions and revision8; exact paragraphs are not approved. Other N source-level candidates are listed separately as not-yet-confirmed defects.
+
+
+## F-017-13 — review-marker test repair (confirmed and repaired)
+The initial P-006 screenshot test expected a yellow marker on an original formula even though P-006 requires review markers only around the two new explanatory paragraphs. First real capture FAIL was a test expectation defect (job 39592697619), not a learner-equation defect. Normal learner flow 320/390/1440 PASS in the same job. The expected marker scope was corrected without changing student content. Subsequent real review capture PASS: workflow 39593071069. This is already covered by existing §12A lesson about marking only changed blocks; do not duplicate global lessons.

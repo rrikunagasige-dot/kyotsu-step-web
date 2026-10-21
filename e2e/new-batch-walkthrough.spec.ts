@@ -83,7 +83,7 @@ for(const width of [320,390]){
       const unit=mathTextbookUnits.find(u=>u.unitId.endsWith('n14'))!
       const items=unit.sections[0].items
       const ids=['n14-wm014-q07-nonnegative','n14-wm014-q07-negative','n14-07']
-      expect(unit.revision).toBe(4)
+      expect(unit.revision).toBe(5)
       expect(items.slice(6,9).map(i=>i.id)).toEqual(ids)
       await page.goto('/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n14')
       await page.evaluate(()=>localStorage.clear())
@@ -143,9 +143,90 @@ for(const width of [320,390]){
           path:'e2e-evidence/wmath014-'+id+'-'+width+'-resolved.png',
         })
       }
-      await expect(page.getByTestId('textbook-item-n14-08')).toBeVisible()
+      await expect(page.getByTestId('textbook-item-n14-wm015-q08-nonnegative')).toBeVisible()
       await page.reload()
       for(const id of ids)await expect(page.getByTestId('resolved-'+id)).toBeVisible()
+      await expect(page.getByTestId('textbook-figure-n14-f01')).toBeVisible()
+    })
+}
+
+
+// W-MATH-015/P-001: true browser interaction with N14 Q08 positive,
+// negative and original final "または" choices; real screenshots only
+// under preexisting E2E_BATCH_EVIDENCE flow, not mock screenshots.
+for(const width of [320,390]){
+  test('W-MATH-015 N14 Q08 strict outside proof and history at '+width+'px',
+    async({page},testInfo)=>{
+      test.skip(testInfo.project.name!=='mobile-chromium','Capture on mobile chromium')
+      test.setTimeout(240_000)
+      await page.setViewportSize({width,height:850})
+      const unit=mathTextbookUnits.find(u=>u.unitId.endsWith('n14'))!
+      const items=unit.sections[0].items
+      const ids=['n14-wm015-q08-nonnegative','n14-wm015-q08-negative','n14-08']
+      expect(unit.revision).toBe(5)
+      expect(items.slice(9,12).map(x=>x.id)).toEqual(ids)
+      await page.goto('/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n14')
+      await page.evaluate(()=>localStorage.clear())
+      await page.reload()
+      await expect(page.getByTestId('textbook-reading-flow')).toBeVisible()
+      for(const item of items.slice(0,9)){
+        const trigger=page.getByTestId('textbook-item-'+item.id)
+        await expect(trigger,item.id).toBeVisible()
+        await trigger.click()
+        const panel=page.getByTestId('inline-choice-panel-'+item.id)
+        await panel.getByRole('button',{name:item.answer,exact:true}).click()
+        await expect(page.getByTestId('resolved-'+item.id)).toBeVisible()
+      }
+      const evidence=process.env.E2E_BATCH_EVIDENCE==='1'
+      if(evidence)mkdirSync('e2e-evidence',{recursive:true})
+      for(const id of ids){
+        const item=items.find(z=>z.id===id)!
+        const trigger=page.getByTestId('textbook-item-'+id)
+        await expect(trigger).toBeVisible()
+        await trigger.click()
+        let panel=page.getByTestId('inline-choice-panel-'+id)
+        await expect(panel).toBeVisible()
+        const right=panel.getByRole('button',{name:item.answer,exact:true})
+        await expect(right).toBeVisible()
+        const rightKey=await right.getAttribute('data-testid')
+        for(const option of await panel.locator('.reading-choice-option').all())
+          for(const line of await option.locator('.reading-choice-formula-line').all()){
+            const widths=await line.evaluate(node=>[node.scrollWidth,node.clientWidth])
+            expect(widths[0],id+' choice overflow').toBeLessThanOrEqual(widths[1]+1)
+          }
+        if(evidence){
+          await trigger.scrollIntoViewIfNeeded()
+          await page.screenshot({path:'e2e-evidence/wmath015-'+id+'-'+width+'-before.png'})
+        }
+        const choices=await panel.getByRole('button').all()
+        let wrong:(typeof choices)[number]|undefined
+        for(const choice of choices){
+          if((await choice.getAttribute('data-testid'))!==rightKey){wrong=choice;break}
+        }
+        expect(wrong).toBeDefined()
+        await wrong!.click()
+        await expect(page.getByTestId('resolved-'+id)).toHaveCount(0)
+        await trigger.click()
+        panel=page.getByTestId('inline-choice-panel-'+id)
+        await expect(page.getByTestId('textbook-hint-'+id)).toBeVisible()
+        if(evidence)await page.screenshot({
+          path:'e2e-evidence/wmath015-'+id+'-'+width+'-wrong.png',
+        })
+        await panel.getByRole('button',{name:item.answer,exact:true}).click()
+        await expect(page.getByTestId('resolved-'+id)).toBeVisible()
+        await expect(page.locator('.katex-error')).toHaveCount(0)
+        const bounds=await page.evaluate(()=>[
+          document.documentElement.scrollWidth,document.documentElement.clientWidth,
+        ])
+        expect(bounds[0],id+' page overflow').toBeLessThanOrEqual(bounds[1]+2)
+        if(evidence)await page.screenshot({
+          path:'e2e-evidence/wmath015-'+id+'-'+width+'-resolved.png',
+        })
+      }
+      await expect(page.getByTestId('textbook-item-n14-09')).toBeVisible()
+      await page.reload()
+      for(const id of ids)await expect(page.getByTestId('resolved-'+id)).toBeVisible()
+      await expect(page.getByTestId('resolved-n14-07')).toBeVisible()
       await expect(page.getByTestId('textbook-figure-n14-f01')).toBeVisible()
     })
 }

@@ -99,7 +99,7 @@ for (const width of [320, 390]) {
     const items = unit.sections[0].items
     const ids = ['n11-wm013-q14-xcoef', 'n11-wm013-q14-const', 'n11-14']
     const first = items.findIndex(item => item.id === ids[0])
-    expect(first).toBe(21)
+    expect(first).toBe(22) // P-005 added one Q05 balancing decision before this already-approved Q14 block
     expect(items.slice(first, first + 3).map(item => item.id)).toEqual(ids)
     await page.goto('/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n11')
     await page.evaluate(() => localStorage.clear())

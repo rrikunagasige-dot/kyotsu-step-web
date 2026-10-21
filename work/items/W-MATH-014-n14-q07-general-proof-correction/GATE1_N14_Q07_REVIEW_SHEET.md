@@ -1,5 +1,5 @@
 # W-MATH-014/P-001 — N14 Q07 実画面 Gate① 細部確認票
-Status: BLOCK-CHECK-PENDING
+Status: BLOCK-VISUAL-OK
 
 ## 証拠と承認対象
 - N14 Q07原問1問だけ：非負の場合・負の場合の2つの新しい式中穴、そのあとに元の n14-07 最終4択。元Word N14 Q08/Q12は別修正待ち。
@@ -41,3 +41,6 @@ Status: BLOCK-CHECK-PENDING
 - [ ] ユーザーによるQ07 Gate①細部承認
 - [ ] Gate②横断監査完了（別件Q08/Q12未完）
 - [ ] Gate③実URL総チェック
+
+## 2026-10-21 Human Gate① acceptance (latest decision)
+The user replied exactly **「いいよ」** to the preceding message explicitly identifying TWO pending decisions: Q07 Gate① visual approval and separately W-MATH-015/P-001 Q08 implementation approval. Thus Q07 **BLOCK-VISUAL-OK** on existing 18 genuine screenshots from fixed source SHA `e42356de0b01a314e3e39779de1ab98a57f4f85b`, saved by `50465039632687ab1891687678a85b10904c9276`, screenshot workflow #39538301948 SUCCESS, and review math CI #39538308020 SUCCESS. Historical pending checkboxes above are earlier checkpoints, not new pending approval. This acceptance does not approve N14 Q12, Gate②, Gate③, main merge or any deployment. N11 previously accepted Q01–Q04/Q11/Q14 unchanged.

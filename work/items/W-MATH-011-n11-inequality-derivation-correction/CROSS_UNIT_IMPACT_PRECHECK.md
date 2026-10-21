@@ -1,0 +1,15 @@
+# W-MATH-011 — 初期横断影響調査 (R1/R2/R3 cause-family), not a bulk repair license
+
+**Date 2026-10-20 JST; status FIRST PASS, code edits NOT AUTHORIZED**
+Root causes: R1 skipped nontrivial proof/transition, R2 missing causal bridge, R3 combined final-answer choice hides intermediate math thinking; plus premature answer prose and incompatible stated operation. Exact source app baseline SHA \`ad77318b37e90b9c39150b14ee706283b3f59355\`.
+
+| Reviewed unit/block | Evidence from current code and historical audit | Verdict for this particular cause | Next |
+| --- | --- | --- | --- |
+| **N11-Q01–Q04** | Existing source \`n11Lesson.ts\` original 4 decisions. Q01 leaks “逆転”; Q02 single result; Q03 finished c sign theorem; Q04 mistaken sequential provenance. | **CONFIRMED** | Await exact [P-001](./P-001_Q01_Q04_DESIGN_PROPOSAL.md) user approval |
+| **N11-Q05–Q14** | Existing first review found compressed multistep at Q11/Q14; source Q12 lead preannounces negative-four division. | **CONFIRMED linked pedagogical risks; OUT OF THIS P-001 SCOPE** | Separate follow-up correction design/approval, don't edit now |
+| **N12 v3** | Code has previously approved \`n12-p002-q01-coef/const\` and q06/q13 local in-equation blanks; prior W-MATH-004/P-002 solved this first cognitive defect. Still accepts newer user pedagogical review if needed. | **NOT-AFFECTED by specific Q01–04 wrong-operation story and one-choice Q03 proof at verified local instances; full quality not blanket PASS** | Keep code untouched, review N11→N12 bridge during Gate② regression |
+| **N13 v2** | Absolute-value equation lesson not a proof of sign-change for inequality multiplication. Q08 recently repaired two equations and both solutions. | **NOT-AFFECTED for N11 specific negative-multiplier property, not a global teaching-quality claim** | Preserve approved R5, separate original source if any own issue |
+| **N14 v3** | Q07–08 present general absolute-value inequalities as ready-made answer selection, proof/inner-outer reason is relatively weak; Q11–12 two-branch calculations combined. | **RISK / LINKED USER-IDENTIFIED UNDERGUIDED DERIVATION, separate scope** | After N11 first small block, inspect N14 in existing correction workflow; do not auto-fix |
+| **Mathematics Practice / Physics lessons** | Separate learning objectives, source/mode instruction prohibits mixing math textbook pedagogy with other modes. | **NOT-AFFECTED for source-level N11 teaching defect; shared UI change if any requires regression** | No changes; regression only if common component modified |
+
+Do not interpret historical \`CROSS_CREATION_IMPACT_LEDGER.md\` R1/R2 NOT-AFFECTED for older code as proof the newly created N11 has no failures; it predated W-MATH-003 current implementation. Apply existing §12B per-block correction loop; after approved N11 fix, check the actual app again and record full updated impact results. Do not edit \`docs/MASTER_APP_LESSONS.md\`, mode SPEC, the teacher Word, published main, any sibling units or GitHub Pages.

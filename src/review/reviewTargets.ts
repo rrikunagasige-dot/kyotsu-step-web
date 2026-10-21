@@ -34,6 +34,20 @@ const targets: Record<string, ReviewTarget> = {
     markBlockIds: ['formula-r3-q07-x2coef', 'formula-r3-q07-xcoef', 'formula-r3-q07-const'],
     reviewState: 'awaiting-user',
   },
+  'n04-q01': {
+    id: 'n04-q01', unitId: 'math-numbers-expressions-n04', title: 'N04 Q01', question: '四つの積',
+    revision: 2, totalItems: 5,
+    blockIds: [
+      'paragraph-n04-intro', 'paragraph-n04-dialogue', 'paragraph-n04-four-products',
+      'formula-n04-q01-p1', 'formula-n04-q01-p2',
+      'formula-n04-q01-p3', 'formula-n04-q01-p4',
+      'paragraph-n04-collect-without-combining', 'formula-n04-q01-complete',
+    ],
+    itemIds: ['n04-q01-p1', 'n04-q01-p2', 'n04-q01-p3', 'n04-q01-p4', 'n04-01'],
+    expectedAnswers: ['25x^2', '20xy', '20xy', '16y^2', '25x^2+20xy+20xy+16y^2'],
+    markBlockIds: ['formula-n04-q01-p1', 'formula-n04-q01-p2', 'formula-n04-q01-p3', 'formula-n04-q01-p4', 'formula-n04-q01-complete'],
+    reviewState: 'awaiting-user',
+  },
   'n03-q10': {
     id: 'n03-q10', unitId: 'math-numbers-expressions-n03', title: 'N03 Q10', question: '四つの積',
     revision: 2, totalItems: 17,
@@ -61,7 +75,7 @@ export function extractReviewSection(unit: TextbookUnit, target: ReviewTarget): 
   if (new Set(target.markBlockIds).size !== target.markBlockIds.length) return null
   if (target.markBlockIds.some(id => !target.blockIds.includes(id))) return null
   const section = unit.sections.find(candidate => candidate.id === 'lesson')
-  if (!section || section.items.length !== target.totalItems) return null
+  if (!section || section.items.length < target.totalItems) return null
 
   const blocks = target.blockIds.map(id => section.readingFlow.find(block => block.id === id))
   const items = target.itemIds.map(id => section.items.find(item => item.id === id))

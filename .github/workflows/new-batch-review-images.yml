@@ -1,0 +1,76 @@
+name: N04–N14 real app image gallery (no deploy)
+on:
+  push:
+    branches:
+      - 'work/W-MATH-003-p003-r1-n04-n14-batch-*'
+    paths:
+      - 'src/data/textbook/math/**'
+      - 'public/assets/math/textbook/numbers/**'
+      - 'e2e/new-batch-walkthrough.spec.ts'
+      - 'e2e/p004-repair-interactions.spec.ts'
+      - 'e2e/wmath011-n11-proof.spec.ts'
+      - 'e2e/wmath012-n11-q11.spec.ts'
+      - '.github/workflows/new-batch-review-images.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: n04-n14-real-images
+  cancel-in-progress: false
+
+jobs:
+  evidence:
+    if: github.repository == 'rrikunagasige-dot/kyotsu-step-web'
+    runs-on: ubuntu-latest
+    env:
+      E2E_BATCH_EVIDENCE: '1'
+      E2E_P004_EVIDENCE: '1'
+      E2E_WM011_EVIDENCE: '1'
+      E2E_WM012_EVIDENCE: '1'
+      E2E_USE_PREVIEW: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      - name: Build actual app source without deploying it
+        run: pnpm run typecheck && pnpm run build
+      - name: Walk through all 134 decisions and capture mobile/PC screens
+        run: |
+          mkdir -p e2e-evidence
+          pnpm exec playwright test e2e/new-batch-walkthrough.spec.ts --project=mobile-chromium --project=desktop-chromium
+          pnpm exec playwright test e2e/p004-repair-interactions.spec.ts --project=mobile-chromium
+          pnpm exec playwright test e2e/wmath011-n11-proof.spec.ts --project=mobile-chromium
+          pnpm exec playwright test e2e/wmath012-n11-q11.spec.ts --project=mobile-chromium
+      - name: Save raw evidence as an artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: n04-n14-real-review-images
+          path: e2e-evidence/*.png
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Commit genuine screenshots to this independent branch ONLY
+        if: success()
+        env:
+          EXPECTED_BRANCH: work/W-MATH-003-p003-r1-n04-n14-batch-20261019
+        run: |
+          test "$GITHUB_REF_NAME" = "$EXPECTED_BRANCH"
+          mkdir -p work/items/W-MATH-003-numbers-expressions-creation/evidence/n04-n14-gallery
+          cp e2e-evidence/*.png work/items/W-MATH-003-numbers-expressions-creation/evidence/n04-n14-gallery/
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add work/items/W-MATH-003-numbers-expressions-creation/evidence/n04-n14-gallery/
+          if ! git diff --cached --quiet; then
+            git commit -m "Real N04-N14 app screenshots from code $GITHUB_SHA [no deploy]"
+            git push origin "HEAD:refs/heads/$GITHUB_REF_NAME"
+          fi

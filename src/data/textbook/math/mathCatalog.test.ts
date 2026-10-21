@@ -128,9 +128,17 @@ describe('math textbook catalog', () => {
       'math-numbers-expressions-n01',
       'math-numbers-expressions-n02',
       'math-numbers-expressions-n03',
+      'math-numbers-expressions-n04',
+      'math-numbers-expressions-n05',
+      'math-numbers-expressions-n06',
+      'math-numbers-expressions-n07',
+      'math-numbers-expressions-n08',
       'math-numbers-expressions-n09',
       'math-numbers-expressions-n10',
+      'math-numbers-expressions-n11',
       'math-numbers-expressions-n12',
+      'math-numbers-expressions-n13',
+      'math-numbers-expressions-n14',
       'math-propositions-reading',
       'math-propositions-proof',
       'math-quantifiers-all-exists',
@@ -153,13 +161,13 @@ describe('math textbook catalog', () => {
     expect(headings).toEqual(topic?.learnerHeadings)
   })
 
-  it('maps six source-audited chapter-1 review lessons into exactly three learner topics', () => {
+  it('maps fourteen source-audited chapter-1 review lessons into exactly three learner topics', () => {
     const chapter1 = mathTextbookTopics.filter((topic) => topic.chapterId === 'math-ch01-numbers-expressions')
     expect(chapter1.map((topic) => topic.label.ja)).toEqual(['式を整える', '実数を扱う', '不等式を使う'])
     expect(chapter1.map((topic) => topic.unitIds.map((id) => id.slice(-3)))).toEqual([
-      ['n01', 'n02', 'n03'], ['n09', 'n10'], ['n12'],
+      ['n01', 'n02', 'n03', 'n04', 'n05', 'n06'], ['n07', 'n08', 'n09', 'n10'], ['n11', 'n12', 'n13', 'n14'],
     ])
-    expect(mathNumbersReviewUnitIds).toHaveLength(6)
+    expect(mathNumbersReviewUnitIds).toHaveLength(14)
     for (const id of mathNumbersReviewUnitIds) {
       const unit = mathTextbookUnits.find((candidate) => candidate.unitId === id)
       expect(unit?.status, id).toBe('review')
@@ -168,7 +176,8 @@ describe('math textbook catalog', () => {
     expect(mathTextbookNextUnitId('math-numbers-expressions-n01')).toBe('math-numbers-expressions-n02')
     expect(mathTextbookNextUnitId('math-numbers-expressions-n02')).toBe('math-numbers-expressions-n03')
     expect(mathTextbookNextUnitId('math-numbers-expressions-n09')).toBe('math-numbers-expressions-n10')
-    expect(mathTextbookNextUnitId('math-numbers-expressions-n03')).toBeUndefined()
+    expect(mathTextbookNextUnitId('math-numbers-expressions-n03')).toBe('math-numbers-expressions-n04')
+    expect(mathTextbookNextUnitId('math-numbers-expressions-n14')).toBeUndefined()
   })
 
   it('exposes ONLY chapter-1 review previews in the learner setup, without promoting their published status', async () => {

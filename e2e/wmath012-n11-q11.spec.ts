@@ -64,7 +64,16 @@ for (const width of [320, 390]) {
       await expect(page.getByTestId('textbook-hint-' + id)).toBeVisible()
       if (evidence) await page.screenshot({ path: 'e2e-evidence/wmath012-' + id + '-' + width + '-wrong.png' })
       await panel.getByRole('button', { name: item.answer, exact: true }).click()
-      await expect(page.getByTestId('resolved-' + id)).toBeVisible()
+      const resolved = page.getByTestId('resolved-' + id)
+      await expect(resolved).toBeVisible()
+      if (id === 'n11-11') {
+        const fit = await resolved.evaluate(node => ({
+          right: node.getBoundingClientRect().right,
+          viewport: document.documentElement.clientWidth,
+        }))
+        expect(fit.right, 'Q11 final formula must fit 320px after removing duplicate premise')
+          .toBeLessThanOrEqual(fit.viewport - 4)
+      }
       await expect(page.locator('.katex-error')).toHaveCount(0)
       const w = await page.evaluate(() => [document.documentElement.scrollWidth, document.documentElement.clientWidth])
       expect(w[0], id + ' document overflow').toBeLessThanOrEqual(w[1] + 2)

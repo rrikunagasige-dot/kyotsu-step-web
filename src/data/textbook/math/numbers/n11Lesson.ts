@@ -168,8 +168,10 @@ const q11Flow: TextbookReadingBlock[] = [
     T('−4x+9≥−17の両辺から同じ9を引いて、xの項だけを残そう。'),
     M('-4x+9\\ge-17'),
   ] },
+  // Keep the already-visible premise in the preceding paragraph. A full
+  // premise+arrow+complete-choice on the SAME 320px line clips the last key.
   { id: 'n11-formula-11', type: 'formula', parts: [
-    M('-4x+9\\ge-17\\quad\\Longrightarrow\\quad'), C('n11-11'),
+    C('n11-11'),
   ] },
   { id: 'n11-after-wm012-q11-const', type: 'paragraph', parts: [
     T('右辺の定数は−17−9=−26。係数が負の−4のままなので、−4x≥−26となる。'),

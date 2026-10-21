@@ -611,6 +611,14 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
     expect(b).toBeGreaterThan(a)
     expect(c).toBeGreaterThan(b)
     expect(c).toBeLessThan(at('n11-formula-12'))
+    // Do not concatenate a full before→after formula in one narrow 320px
+    // math box: the premise is already visible immediately before this hole.
+    const finalBlock = flow[c]
+    expect(finalBlock.type).toBe('formula')
+    if (finalBlock.type === 'formula') {
+      expect(finalBlock.parts).toHaveLength(1)
+      expect(finalBlock.parts[0]).toEqual({ type: 'choice', itemId: 'n11-11' })
+    }
     const beforeExpand = JSON.stringify(flow.slice(0, a))
     const beforeXcoef = JSON.stringify(flow.slice(a + 1, b))
     const beforeConst = JSON.stringify(flow.slice(b + 1, c))

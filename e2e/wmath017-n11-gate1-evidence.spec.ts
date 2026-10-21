@@ -66,7 +66,11 @@ test.describe('W-MATH-017 P-005/P-006 SHA-locked real application gate-1 images'
         await anchor.evaluate(e=>window.scrollTo({top:Math.max(0,window.scrollY+e.getBoundingClientRect().top-innerHeight*0.32),left:0,behavior:'instant'}))
         for(const state of ['before','wrong','resolved'] as const){
           if(state==='before'){
-            await expect(mark).toBeVisible()
+            // P-006: only two new explanatory paragraphs have review marks.
+            // The preexisting formula choices must still be checked as
+            // live learner controls, without fabricating old review markers.
+            if(spec.route==='n11-q01'||changedExplanationId) await expect(mark).toBeVisible()
+            else await expect(trigger).toBeVisible()
           } else if(state==='wrong'){
             await trigger.click()
             const panel=page.getByTestId('inline-choice-panel-'+step.item)

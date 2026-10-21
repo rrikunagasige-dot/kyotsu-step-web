@@ -106,7 +106,9 @@ test.describe('W-MATH-017/P-008 exact-SHA four-row real-app Q13 Gate①',()=>{
    await expect(reasons.nth(1)).toContainText('二つの項それぞれに')
    await expect(chain.locator('.reading-formula-line')).toHaveCount(4)
    await shot('q13-xcoef-before',steps[2].id)
-   await expect(page.getByTestId('textbook-item-n11-p008-q13-constant')).toHaveCount(0)
+   // Both holes intentionally share one equation row: the second gap is
+   // visible before the coefficient is solved, but Q14 remains gated.
+   await expect(page.getByTestId('textbook-item-n11-p008-q13-constant')).toBeVisible()
    await expect(page.getByTestId('textbook-item-n11-wm013-q14-xcoef')).toHaveCount(0)
    await answer(steps[2].id,steps[2].answer)
    await shot('q13-constant-before',steps[3].id)

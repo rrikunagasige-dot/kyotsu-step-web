@@ -13,45 +13,70 @@ const widths=[320,390,1440] as const
 const evidence='e2e-evidence/'
 
 
-// A document may have no horizontal overflow while a scrollable formula
-// silently clips the last of the THREE N14 Q10 terms. Check the actual inner
-// mathematical line and its clickable choices before each review screenshot.
+// W-MATH-018/P-003: document-wide no-overflow is insufficient: verify all SIX
+// unchanged formula parts, original full-size choice buttons and two mobile rows.
+// Screenshot filenames keep the existing p002-* capture convention because its
+// approved review workflow copies those paths; they are newly captured P003 SHA.
 async function assertQ10EquationFits(page:Page,width:number){
-  const line=page.locator('[data-derivation-id="n14-q10-chain"] .reading-formula-line').nth(1)
+  const line=page.getByTestId('textbook-formula-n14-formula-10')
   await expect(line).toBeVisible()
-  if(width>430)return
-  const measurements=await line.evaluate(element=>{
+  const m=await line.evaluate(element=>{
     const rect=element.getBoundingClientRect()
-    const buttons=Array.from(element.querySelectorAll('button.reading-inline-blank'))
+    const expression=element.querySelector('.reading-formula-expression') as HTMLElement
+    const parts=Array.from(expression.children).map(part=>{
+      const box=part.getBoundingClientRect()
+      return {left:box.left,right:box.right,top:box.top,bottom:box.bottom}
+    })
+    const rootSize=parseFloat(getComputedStyle(document.documentElement).fontSize)
+    const buttons=Array.from(element.querySelectorAll('button.reading-formula-choice')).map(button=>{
+      const box=button.getBoundingClientRect(), style=getComputedStyle(button)
+      return {
+        left:box.left,right:box.right,width:box.width,height:box.height,
+        label:button.getAttribute('aria-label'),text:button.textContent?.trim(),
+        wrong:button.classList.contains('reading-formula-choice--wrong'),
+        minWidth:parseFloat(style.minWidth),minHeight:parseFloat(style.minHeight),
+        borderColor:style.borderColor,color:style.color,borderWidth:style.borderWidth,
+        pseudo:getComputedStyle(button,'::after').content,
+      }
+    })
     return {
       scrollWidth:element.scrollWidth,clientWidth:element.clientWidth,
       lineLeft:rect.left,lineRight:rect.right,
       viewport:document.documentElement.clientWidth,
-      buttons:buttons.map(button=>{
-        const box=button.getBoundingClientRect()
-        return {
-          left:box.left,right:box.right,width:box.width,height:box.height,
-          label:button.getAttribute('aria-label'),
-          pseudo:getComputedStyle(button.querySelector('strong')!,'::after').content,
-        }
-      }),
+      display:getComputedStyle(expression).display,parts,buttons,rootSize,
     }
   })
-  expect(measurements.scrollWidth, 'Q10 3-term equation inner horizontal clipping at '+width)
-    .toBeLessThanOrEqual(measurements.clientWidth+1)
-  expect(measurements.lineRight, 'Q10 line viewport clipping at '+width)
-    .toBeLessThanOrEqual(measurements.viewport+1)
-  for(const button of measurements.buttons){
-    expect(button.left, 'Q10 hole left is clipped at '+width).toBeGreaterThanOrEqual(measurements.lineLeft-1)
-    expect(button.right, 'Q10 hole right is clipped at '+width).toBeLessThanOrEqual(measurements.lineRight+1)
-    expect(button.width, 'Q10 clickable hole minimum width at '+width).toBeGreaterThanOrEqual(31.5)
-    expect(button.height, 'Q10 clickable hole minimum height at '+width).toBeGreaterThanOrEqual(33.5)
-    expect(button.label, 'Q10 hole retains semantic accessible name').toBeTruthy()
-    expect(button.pseudo, 'Q10 compact square or retry at '+width).toMatch(/□|↻/)
+  expect(m.parts, 'Q10 must retain exactly six source-order DOM parts').toHaveLength(6)
+  expect(m.scrollWidth,'Q10 inner equation clipping at '+width).toBeLessThanOrEqual(m.clientWidth+1)
+  expect(m.lineRight,'Q10 equation clipped by viewport '+width).toBeLessThanOrEqual(m.viewport+1)
+  for(const [i,part] of m.parts.entries()){
+    expect(part.left,'Q10 part '+(i+1)+' clipped left at '+width).toBeGreaterThanOrEqual(m.lineLeft-1)
+    expect(part.right,'Q10 part '+(i+1)+' clipped right at '+width).toBeLessThanOrEqual(m.lineRight+1)
+  }
+  for(const button of m.buttons){
+    expect(button.text,'retain canonical red × or blue 選択 at '+width)
+      .toBe(button.wrong?'×':'選択')
+    expect(button.label,'Q10 retains item.prompt accessibility').toBeTruthy()
+    expect(button.minWidth,'canonical CSS min-width').toBeGreaterThanOrEqual(3.15*m.rootSize-1)
+    expect(button.minHeight,'canonical CSS min-height').toBeGreaterThanOrEqual(2*m.rootSize-1)
+    expect(button.width,'actual canonical button width').toBeGreaterThanOrEqual(3.15*m.rootSize-1)
+    expect(button.height,'actual canonical button height').toBeGreaterThanOrEqual(2*m.rootSize-1)
+    expect(button.borderColor,'canonical border follows choice text state').toBe(button.color)
+    expect(button.borderWidth,'canonical outlined control').toBe('1px')
+    expect(button.pseudo,'P002 □/↻ pseudo labels must not return').not.toMatch(/□|↻/)
+  }
+  if(width<=430){
+    expect(m.display,'mobile second equation is the same logical grid block').toBe('grid')
+    const firstTop=Math.min(...m.parts.slice(0,4).map(p=>p.top))
+    const secondTop=Math.min(...m.parts.slice(4,6).map(p=>p.top))
+    expect(secondTop-firstTop,'second visual row is below the first at '+width)
+      .toBeGreaterThan(12)
+  }else{
+    expect(m.display,'desktop preserves original inline flex').toBe('flex')
   }
 }
 
-test.describe('W-MATH-018/P-002 exact-SHA no-clipping mobile Q10 Gate①',()=>{
+test.describe('W-MATH-018/P-003 canonical controls and two-row N14 Q10 Gate①',()=>{
  for(const width of widths){
   test('five numbered reviewer actions '+width,async({page},info)=>{
    test.skip(process.env.E2E_WM018_GATE1!=='1','Q10 approved PR review screenshots only')
@@ -78,7 +103,9 @@ test.describe('W-MATH-018/P-002 exact-SHA no-clipping mobile Q10 Gate①',()=>{
     await trigger.scrollIntoViewIfNeeded()
     await assertQ10EquationFits(page,width)
     await page.screenshot({path:evidence+'p002-review-'+(i+1)+'-before-'+width+'.png'})
-    await trigger.click()
+    await trigger.focus()
+    await expect(trigger).toBeFocused()
+    await trigger.press('Enter') // verify original keyboard activation, not only mouse
     const panel=page.getByTestId('inline-choice-panel-'+id)
     await expect(panel).toBeVisible()
     const correct=panel.getByRole('button',{name:answer,exact:true})

@@ -237,7 +237,9 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
         const id = 'n' + n + '-' + q
         const item = section.items.find(v => v.id === id)!
         const lead = section.readingFlow.find(block => block.id ===
-          (n === '11' && q === '06' ? 'n11-formula-06' : 'n' + n + '-lead-' + q))
+          (n === '11' && q === '06' ? 'n11-formula-06'
+            : n === '11' && q === '09' ? 'n11-formula-09'
+            : 'n' + n + '-lead-' + q))
         expect(lead).toBeDefined()
         const leadCopy = JSON.stringify(lead)
         if(n === '11' && (q === '08' || q === '09')) {
@@ -339,7 +341,14 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       expect(after).toContain(replacement)
       expect(section.readingFlow.indexOf(prevBlock!)).toBeLessThan(section.readingFlow.indexOf(nextBlock!))
     }
-    inspectAfter('11', '08', '09', '次は負の数で割るので', '次はxの係数を1にする操作')
+    // P007 supersedes the old detached Q08→Q09 paragraph: the negative
+    // division reason now lives *inside* the same sequential derivation.
+    const newN11Flow = pick('11').sections[0].readingFlow
+    const reason = newN11Flow.findIndex(b=>b.id==='n11-p007-q09-explain')
+    const final = newN11Flow.findIndex(b=>b.id==='n11-formula-09')
+    expect(reason).toBeGreaterThan(newN11Flow.findIndex(b=>b.id==='n11-after-08'))
+    expect(final).toBeGreaterThan(reason)
+    expect(JSON.stringify(newN11Flow[reason])).toContain('不等号の向きが逆になる')
     inspectAfter('14', '09', '10', '次は三辺に同じ3を足して', '次は三辺に同じ操作をして')
     inspectAfter('14', '13', '14', 'まず定数−2を消す操作', '次は三辺に共通する操作')
     inspectAfter('14', '14', '15', '正の3で三辺を割っても', '中央のxの係数を1にする段階')

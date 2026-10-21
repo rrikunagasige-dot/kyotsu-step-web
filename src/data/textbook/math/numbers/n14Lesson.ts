@@ -1,9 +1,10 @@
-import { validateTextbookUnits } from '../../../../domain/textbookSchema'
-import { oneToOneSourceMap } from './reviewLessonHelpers'
+import { validateTextbookUnits, type TextbookItem, type TextbookReadingBlock } from '../../../../domain/textbookSchema'
+import { oneToOneSourceMap, T, M, C, reviewItem } from './reviewLessonHelpers'
 import { makeReviewSteps } from './newBatchGuidedSteps'
 
 export const n14SourceToItemIds = oneToOneSourceMap('N14', 16)
-const content = makeReviewSteps('n14', [
+n14SourceToItemIds['N14-Q07'] = ['n14-wm014-q07-nonnegative', 'n14-wm014-q07-negative', 'n14-07']
+const originalContent = makeReviewSteps('n14', [
   {
     title:'近い点は内側、遠い点は外側',
     intro:'絶対値の不等式を距離の条件として読む。「より近い」と「少なくともこれだけ遠い」では残す範囲が反対になる。',
@@ -41,8 +42,78 @@ const content = makeReviewSteps('n14', [
     ],
   },
 ], [{id:'n14-f01',q:6,when:'after'}])
+
+// W-MATH-014/P-001 — under the EXISTING source marker N14-Q07,
+// derive the two signs before asking for the original four-choice union.
+// Do not alter N14-Q08 / Q12, figure n14-f01 or old n14-07 answer.
+const newQ07Items: TextbookItem[] = [
+  reviewItem('n14-wm014-q07-nonnegative',
+    'Xが0以上のとき、|X|<aとX≥0の両方から範囲を考えよう。',
+    '0\\le X<a', 'formula', ['0\\le X\\le a', 'X>a', '-a<X<0'],
+    'causal-reasoning', 'medium',
+    ['X≥0では絶対値を外すとXのまま。もとの「より小さい」は厳密な不等号。']),
+  reviewItem('n14-wm014-q07-negative',
+    'Xが負のとき、−X<aを解き、X<0と組み合わせよう。',
+    '-a<X<0', 'formula', ['-a\\le X<0', 'X<-a', '0\\le X<a'],
+    'causal-reasoning', 'medium',
+    ['Xに直すため−1倍すると、不等号の向きが逆になる。X<0も忘れない。']),
+]
+const firstQ07 = originalContent.readingFlow.findIndex(block => block.id === 'n14-lead-07')
+const lastQ07 = originalContent.readingFlow.findIndex(block => block.id === 'n14-after-07')
+const q08Start = originalContent.readingFlow.findIndex(block => block.id === 'n14-lead-08')
+const oldQ07Index = originalContent.items.findIndex(item => item.id === 'n14-07')
+if (firstQ07 < 0 || lastQ07 < firstQ07 || q08Start <= lastQ07 || oldQ07Index !== 6)
+  throw new Error('N14-Q07 approved source boundary has changed')
+const q07Flow: TextbookReadingBlock[] = [
+  { id: 'n14-lead-wm014-q07-nonnegative', type: 'paragraph', parts: [
+    T('距離の規則を一般の数Xで考える。a>0とし、まずXが0以上の場合を調べよう。'),
+    M('|X|<a\\quad(a>0)'),
+    T('X≥0なら|X|=Xとなる。この場合に成り立つXの範囲を選ぼう。'),
+  ] },
+  { id: 'n14-formula-wm014-q07-nonnegative', type: 'formula', parts: [
+    C('n14-wm014-q07-nonnegative'),
+  ] },
+  { id: 'n14-after-wm014-q07-nonnegative', type: 'paragraph', parts: [
+    T('X≥0なので|X|=X。よってX<aであり、二つの条件を合わせて0≤X<aとなる。'),
+  ] },
+  { id: 'n14-lead-wm014-q07-negative', type: 'paragraph', parts: [
+    T('次にXが負の場合を調べる。X<0なら|X|=−Xだから、−X<aとなる。両辺に−1を掛けると不等号は反転する。X<0も考慮した範囲を選ぼう。'),
+    M('-X<a\\quad(X<0)'),
+  ] },
+  { id: 'n14-formula-wm014-q07-negative', type: 'formula', parts: [
+    C('n14-wm014-q07-negative'),
+  ] },
+  { id: 'n14-after-wm014-q07-negative', type: 'paragraph', parts: [
+    T('−X<aの両辺を−1倍するとX>−a。X<0と合わせて−a<X<0となる。'),
+  ] },
+  { id: 'n14-lead-07', type: 'paragraph', parts: [
+    T('X≥0とX<0の二つの場合を合わせよう。いずれか一方に入るX全体を、絶対値なしの一つの範囲で表す。'),
+    M('|X|<a\\quad(a>0)'),
+  ] },
+  // Keep the original final item, its four original choices and review key.
+  originalContent.readingFlow[firstQ07 + 1],
+  originalContent.readingFlow[lastQ07],
+  { id: 'n14-after-wm014-q07-converse', type: 'paragraph', parts: [
+    T('逆も確かめる。今得た範囲にXがあるとする。X≥0なら|X|=X<a。X<0ならX>−aより−X<aであり、|X|=−X<a。どちらも元の条件を満たすので、両方向が成り立つ。'),
+    M('|X|<a\\iff -a<X<a\\quad(a>0)'),
+  ] },
+]
+if (originalContent.readingFlow[firstQ07+1].id !== 'n14-formula-07')
+  throw new Error('original n14-07 final choice block changed')
+const content = {
+  readingFlow: [
+    ...originalContent.readingFlow.slice(0, firstQ07),
+    ...q07Flow,
+    ...originalContent.readingFlow.slice(lastQ07+1),
+  ],
+  items: [
+    ...originalContent.items.slice(0, oldQ07Index),
+    ...newQ07Items,
+    ...originalContent.items.slice(oldQ07Index),
+  ],
+}
 const rawN14={
-  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n14',revision:3,status:'review' as const,subject:'math-1a' as const,
+  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n14',revision:4,status:'review' as const,subject:'math-1a' as const,
   chapter:{chapterId:'math-ch01-numbers-expressions',chapterNumber:'1',chapterTitle:'数と式',unitCode:'1NUM',orderInChapter:14,sourcePages:[35,36]},
   title:'距離の上限と下限から、残す範囲を決める',subtitle:'絶対値の内側・外側と端点を、数直線で選び分ける。',
   source:{type:'reference' as const,label:'ユーザー提供「数と式」教科書モード対話段階導入版 v2 / N14',

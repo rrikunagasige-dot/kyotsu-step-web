@@ -1,5 +1,5 @@
 # W-MATH-018 — N14 Q10 三辺同時の式変形
-Status: IMPLEMENTING
+Status: REVISE-PROPOSAL
 Updated: 2026-10-21 JST
 
 ## Objective
@@ -25,3 +25,10 @@ Prior W-MATH-017 P008 small-block user accepted; full math CI 39611931626 SUCCES
 
 ## 2026-10-22 exact approval and execution
 - User: 「続けて」 directly after full P-001, treated as approval to execute exactly this N14 Q10 correction. Live main/head, instructions, prior approved N14 Q07/Q08/Q12 and 16-source map rechecked. Implement only Q10 3 equations, 1 explanatory paragraph, 5 choice holes; N14 revision7 selective archived migration. CI and real screenshot Gate① pending; no main merge.
+
+
+## 2026-10-22 — P001 visual FAIL, exact P002 proposal required
+- Real Chromium screenshot run [39629959612](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39629959612) succeeded in capturing actual Q10, but **actual normal 320/390px screenshots are clipped**: rightmost 5+unfinished selection control hidden/partially hidden. Test originally checked page-level not formula-inner overflow.
+- Recorded images, exact learner source SHA e1e913f2230c42175bc5e67a53e726d030752634, blocker and root cause in [P001_GATE1_VISUAL_DEFECT.md](./P001_GATE1_VISUAL_DEFECT.md). Gate① USER CHECK NOT READY. No main merge.
+- [P002 compact mobile inline holes](./PROPOSAL_P002_MOBILE_INLINE_HOLES.md) proposal ONLY; no CSS/learner code changes until new exact user approval. Existing P001 mathematics+v7 archived history remain implemented, not accepted visually.
+- Full math CI [39629959584](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39629959584) failed 6 N14 Q07/Q08/Q12 historical browser cases still expecting rev6/Q12 old index. Test-only update commit 0b63f8a1fc9b6d70d8ce6c0f90732345d431e8a9 preserves their real learner content. Retest pending; previous complete unit tests/schema, desktop/mobile smoke and N12 tests PASS.

@@ -11,3 +11,10 @@ Status: SOURCE-STRUCTURE-CONFIRMED / P-001 IMPLEMENTING
 
 ## F-018-02 Governance metadata failure
 New Work folder initially had only WORK and PROPOSAL files and a status line with suffix; repository-governance-check.mjs requires ACTION_LOG.md, FINDINGS.md, VERIFICATION.md and a standalone `Status: APPROVED` line for executable Work. This is a record/template error, not learner-app source defect.
+
+
+## F-018-03 — gate1 evidence discovers inner Q10 formula clipping at 320px AND 390px
+Full real screenshots on exact SHA e1e913f2230c42175bc5e67a53e726d030752634: 320 pre-Q10 third 5+□ hidden; 390 initial third 選択 partly hidden. After all 3 are resolved, numeric 3 fits. Because global formula line overflow-x:auto hides excess inside the row, the existing E2E document-width test passed, **false positive**. See P001_GATE1_VISUAL_DEFECT.md. No user visual check yet. P002 local responsive CSS change is proposed only.
+
+## F-018-04 — historical E2E rev6/Q12 offsets obsolete, original contents protected
+Full math CI 39629959584 reached N04–N14 batch then six N14 Q07/Q08/Q12 cases failed on expecting revision6 while actual rev7; Q12 also tests old source offset slice15:18. Corrected only their test expectations in 0b63f8a1fc9b6d70d8ce6c0f90732345d431e8a9, preserving Q07/08/12 earlier user-approved content and historic v6 migration tests. Other tests still need rerun; do not declare overall PASS.

@@ -218,7 +218,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       '07': { '09': ['\\text{100倍}', '100x=69.', '99x=69'] },
       '08': { '02': ['|a|=a'] },
       '11': {
-        '06': ['\\text{両辺を正の}3\\text{で割る}', 'x<\\frac73'],
+        '06': ['\\frac73'], // P-005: operation is taught by the four-row chain; Q06 now grades the fractional RHS
         '08': ['\\text{両辺から}3\\text{を引く}', '-2x\\le2'],
         '09': ['\\text{両辺を}-2\\text{で割る}', 'x\\ge-1'],
         '13': ['\\text{両辺に正の}3\\text{を掛ける}', 'x-2\\le6x+3'],
@@ -236,7 +236,8 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
         count += 1
         const id = 'n' + n + '-' + q
         const item = section.items.find(v => v.id === id)!
-        const lead = section.readingFlow.find(block => block.id === 'n' + n + '-lead-' + q)
+        const lead = section.readingFlow.find(block => block.id ===
+          (n === '11' && q === '06' ? 'n11-formula-06' : 'n' + n + '-lead-' + q))
         expect(lead).toBeDefined()
         const leadCopy = JSON.stringify(lead)
         expect(leadCopy, id).not.toContain(item.answer)

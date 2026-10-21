@@ -1,8 +1,8 @@
 # Work Operating System
 
 Status: CANONICAL
-Version: 1.5.0
-Updated: 2026-10-19
+Version: 1.6.0
+Updated: 2026-10-21
 
 ## 1. Purpose
 
@@ -359,6 +359,73 @@ User-approved workflow extension: 2026-10-18 (W-GOV-007/P-001). This section is 
 4. Recheck the correction queue **again** before resuming the paused creation; review updated lessons against the preserved creation proposal. Continue an unchanged approved scope without another approval, but use REVISE-PROPOSAL if new lessons materially change the creation design. Keep main merge/Pages authorization separate.
 
 The existing Work states and proposal-review requirements in sections 4, 11 and 15 remain unchanged. Do not confuse a successful audit with complete user acceptance, or an original creation source with a changed app artifact.
+
+## 12C. W-GOV-009/P-001 — CI待機中の独立作業と元Workへの復帰
+
+Approved proposal: **W-GOV-009/P-001**. User replied 「いいよ」 on 2026-10-21 JST to the exact unchanged implementation proposal. This rule governs only **authorized** in-progress Work; approval to implement it on an isolated branch does not grant `main` merge. No new command, Work state, fourth user review gate, background automation, or unilateral authorization is created.
+
+**Unchanged higher/adjacent authorities:** Constitution, §11 approval/REVISE-PROPOSAL, §12A small-block GitHub screenshot → independent cross-audit → SHA-matched live app complete playthrough, and §12B correction-first/sibling impact audit. CI running does not close an outstanding correction. Optimize safe progress on the primary Work rather than maximizing parallel work.
+
+### C1. CI開始時のチェックポイント
+
+Immediately on launching or discovering a CI run, record in existing `ACTION_LOG.md` and `VERIFICATION.md`:
+1. Primary Work ID, exact approved Proposal/revision, current step, Do Not Touch and next permitted Gate.
+2. Verified repository/owner/ID, current live `main` HEAD, primary branch, **full CI-tested commit SHA**, and branch HEAD if different.
+3. Workflow name, actual run ID/URL or explicit `PENDING` if unavailable, test surfaces, and current `RUNNING/PENDING` evidence; do not invent runs or PASS.
+4. Separate §12A Gate①/②/③ and human approval states, including any review/host blocker.
+5. Safe return instruction for SUCCESS, FAILURE, CANCELLED/TIMED OUT, API/disconnect; identify secondary Work/branch/scope if selected.
+
+For cross-chat handoff, update the existing `ACTIVE_CONTEXT.md` pointer only under separate applicable authorization, without overwriting unrelated Work. No new formal Work status is introduced.
+
+### C2. 待機中の候補と優先順位
+
+Select the first **safe, independent and authorized** candidate; never interpret a waiting CI as permission to bypass §12B:
+- **P0:** A detected primary CI failure or integrity/provenance issue → checkpoint secondary B and return to primary A.
+- **P1:** Primary A's independent original-source/mathematical checks, source audit, known-root impact assessment, or clearly unverified review preparation.
+- **P2:** Related outstanding correction audits or linked corrections with exact approved scope, within §12B.
+- **P3:** Other already exactly approved independent corrections on separate Work branches.
+- **P4:** Other exactly approved creation implementation **only after** the §12B correction queue is genuinely empty, even if any earlier correction CI is RUNNING.
+- **P5:** Already authorized nondestructive records/provenance checks relevant to the goal.
+
+A waiting human Gate①/③, missing hosting authorization, or unapproved proposal is not resolved by CI completion. Do not invent irrelevant tasks to occupy time.
+
+### C3. Independent-work predicate — ALL conditions necessary
+
+Before switching A → B, verify:
+1. B's results do not rely on A's pending CI, unaccepted lesson changes, or unavailable approval; record dependencies.
+2. B has a stable Work ID, verified exact Proposal and Do Not Touch. Only independently authorized research/proposal drafting may proceed without an implementation approval; never implement unapproved scope.
+3. B does not conflict with A's file paths, canonical source data, stable IDs, shared renderer/schema/lockfile, progress migrations or derived artifacts. Two branches alone do not establish non-conflict. Defer overlap or obtain a separately exact-approved reconciliation plan.
+4. Any B implementation uses its **own** feature branch from a known SHA, not `main` and not A's frozen test branch. The SHA under CI must remain identifiable and reproducible.
+5. A and B use separate action/results/verification records; old CI successes never verify changed HEADs or other work.
+6. §12B correction-first, §12A user acceptance and all source/lesson/merge/hosting/cost authorization boundaries remain unchanged.
+
+If any condition fails, perform only permitted non-writing independent assessment where applicable, or do not switch.
+
+### C4. Context-switch budget
+
+Keep **one primary Work and at most one actively executing secondary Work** in a single agent turn. A candidate list is not a mandate to start multiple unfinished branches. Finish one meaningful small block and leave an exact checkpoint before switching again. Do not fabricate DONE/APPROVED to clear capacity.
+
+### C5. CI状態再確認とSHA整合
+
+Avoid repeatedly polling unchanged workflow runs without intervening meaningful work or material new evidence. Recheck at the end of a secondary small block, or before any primary operation that depends on CI results. With no safe independent task, check as needed; do not invent a timer, background job or autonomous watcher.
+
+CI outcome applies **only to the run's tested commit SHA and covered surfaces**. Compare branch HEAD, SHA and outputs before treating any PASS as current. If HEAD changed, keep the older PASS as history and rerun affected checks for new code. `RUNNING` or `PENDING` is never PASS, and a partial job PASS is not the whole Work gate.
+
+### C6. Safe return to primary A
+
+- **SUCCESS:** record real URL, full tested SHA, verified coverage; resume the next permitted primary action, separately preserving human Gate①/②/③.
+- **FAILURE:** at the first discovered failure, checkpoint B safely, record job/step/evidence and return to A for root-cause diagnosis and exactly approved repair/retest. Material changes use `REVISE-PROPOSAL`.
+- **CANCELLED/TIMED OUT:** log NOT VERIFIED, inspect why; rerun only when appropriate within authorization.
+- **API/permissions/network/chat disconnect:** log last **proven** branch/run/SHA, error and pending step. Avoid tight retry loops; upon resumption verify true target repo/live main, A and B checkpoints, and actual CI status before acting.
+- **Human-review or hosting blocker:** preserve existing Gate/Work pending states. Independent work cannot silently clear authorization blockers.
+
+### C7. Collisions and stopping conditions
+
+Never concurrently write to the same branch HEAD or overlapping source/progress/schema/renderer/lockfile or stable-ID set without separately exact-approved conflict resolution. A discovered same-root defect enters §12B linked correction with its own approval. CI waiting does not permit unsolicited merge, publishing, deployment, deletion, billing, credential changes, lesson rewrite or workflow/infrastructure modifications.
+
+### C8. Records and closure
+
+Use existing `WORK.md`, `PROPOSAL.md`, `ACTION_LOG.md`, `FINDINGS.md` and `VERIFICATION.md` for A/B IDs, branch SHA, dependencies, reason for safe task selection, CI runs/results and return checkpoints. After interruption, resume only from the last **verified** checkpoint. Existing Work state machine, memory close and §12A final user acceptance retain their original meanings.
 
 ## 13. Memory promotion
 

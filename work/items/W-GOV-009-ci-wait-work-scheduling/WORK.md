@@ -1,6 +1,6 @@
 # W-GOV-009 — CI待機中の安全な独立作業・復帰フロー
-Status: PROPOSED (governance rule NOT approved)
-Command: CMD-WORK-001「修正」; proposal-authoring authorization only.
+Status: VERIFYING (approved isolated implementation; governance CI/user review pending, main unmerged)
+Command: CMD-WORK-001「修正」; W-GOV-009/P-001 exact implementation approval recorded 2026-10-21.
 Date: 2026-10-21 JST
 Target: `rrikunagasige-dot/kyotsu-step-web`, repository ID 1391122224
 Proposal branch: `proposal/W-GOV-009-ci-wait-independent-work-20261021`
@@ -22,3 +22,9 @@ Present full P-001 proposal to user. STOP. Upon explicit P-001 approval, only th
 
 ## Scope and protections
 Allowed now: proposal, findings, planned tests and history logs. Do not touch Constitution, §12A/§12B meanings, existing Work states, existing approvals, original textbooks, MASTER lessons, source app, accepted screenshot reviews, main, deployment, paid hosts.
+
+## 2026-10-21 P-001 approved implementation checkpoint
+- User said 「いいよ」 immediately after the full P-001 authorization question; same exact scope, no additional conditions.
+- Branch: `work/W-GOV-009-ci-wait-implementation-20261021` based on proposal commit `738b5ab584d8266d131eb152b89144ca81ed88e2`.
+- Scope: WORK_SYSTEM §12C, AGENTS one pointer, dictionary two pointers, Work records. No learner or hosting changes. Earlier proposal-only checkpoint text above is historical.
+- Next: verify actual diff, create Draft PR for governance checks, record CI run/SHA, obtain user review; merge into main requires separate permission.

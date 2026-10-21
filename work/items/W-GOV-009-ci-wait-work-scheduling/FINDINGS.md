@@ -10,3 +10,9 @@ Date: 2026-10-21 JST
 - CONFIRMED: main work/items listed W-GOV-005 through W-GOV-008; branch and PR search found no W-GOV-009 at proposal creation time. The Work ID is newly allocated for this exact purpose.
 - NOT-APPROVED: wording of a new §12C, dictionary pointers and AGENTS edits are only proposals. No existing lesson, learner implementation or authority may be silently changed.
 - REVIEW-RISK: older conversational CI-cadence suggestions are not themselves a durable permission for background execution or newly created work states. Use observable checkpoints instead of invented timers.
+
+## Implementation-stage findings
+- CONFIRMED: exact P-001 implementation approved by user's unqualified 「いいよ」 following the approval request; independent main merge NOT authorized.
+- DESIGN: §12C inserts after §12B; §12A/B wording and existing Work states remain unchanged.
+- DESIGN: independent Work requires approval, separate SHA/branch and nonconflicting source/progress; CI RUNNING does not close §12B correction queue.
+- UNVERIFIED: PR governance CI not completed by initial implementation commit. No speculative PASS.

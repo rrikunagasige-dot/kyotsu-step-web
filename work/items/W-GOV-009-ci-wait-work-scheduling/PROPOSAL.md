@@ -1,7 +1,9 @@
 # W-GOV-009 / P-001 — CI待機時間の安全な並行作業と確実な元Work復帰
-Status: PROPOSED / NOT APPROVED for rule implementation
+Status: APPROVED for isolated implementation; main merge NOT authorized
 Created: 2026-10-21 JST
 Command: CMD-WORK-001「修正」 (user agreed to this command classification and proposal creation only)
+
+**Approval 2026-10-21 JST:** The user replied 「いいよ」 immediately to the exact unchanged P-001 implementation approval question. Original preapproval language is retained below as history; normative text becomes effective only in the implementation branch until separately approved main merge.
 
 ## 1. Problem / Need
 正式な `memory/PROGRESS.md` に「avoid repeated idle CI polling; do independent work while CI runs. After disconnect resume from latest proven checkpoint.」がある。しかし `WORK_SYSTEM.md` は独立タスクの選定・他Work実装の許可条件・CI中のbranch/SHA保護・復帰記録・CI失敗時の割込を具体化していない。結果としてCI中の無駄な確認、無計画な別作業、復帰地点の取り違えを防ぎ切れない。目的はCIを速くすることではなく、今のWorkを安全に前進させつつ有効な独立作業に時間を使うことである。
@@ -98,3 +100,8 @@ V10. Governance-only patch scope: no edits to Constitution, app/source/assets/e2
 **Proposal-writing permission:** user replied 「いいよ続けて」 to the invitation to treat this as CMD-WORK-001 and create a formal GitHub proposal. This is NOT approval to implement §12C.
 **Required before rule changes:** Explicit user approval of this *complete* W-GOV-009/P-001 proposal and its exact touched paths. Feedback changing any material term → REVISE-PROPOSAL, present complete revision, STOP.
 **Required separately:** Any later main merge or deployment/publication authorization, even after documentation QA.
+
+## 9. Recorded implementation approval
+- User's exact reply: 「いいよ」 to full W-GOV-009/P-001, no changed conditions.
+- Scope: §12C, brief AGENTS and dictionary pointers, these Work records, isolated branch implementation + verification.
+- Still prohibited: main merge/publication/deployment, learner code, source Word, master lessons, billing and CI workflow changes.

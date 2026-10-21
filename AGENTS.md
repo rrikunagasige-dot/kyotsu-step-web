@@ -43,6 +43,7 @@ Conflicts are OPEN-QUESTION / BLOCKED; NEVER silently choose old upstream conten
 
 ## 4. Workflow / safety
 Use `governance/WORK_SYSTEM.md` for WORK / PROPOSAL / ACTION_LOG / FINDINGS / VERIFICATION.
+While CI runs, follow §12C of the same Work OS: record the exact tested SHA/run/return step; pursue only authorized, independent, nonconflicting work; recheck at safe task boundaries and return to primary. §12A/§12B and all approvals remain binding.
 REVIEW-FEEDBACK is NOT approval; new scope needs new exact proposal approval.
 Record errors and success, run relevant QA and attach a real review link at handoff.
 Preserve `main`, source archives, old PRs/branches, stable IDs, previous user-approved pedagogy.

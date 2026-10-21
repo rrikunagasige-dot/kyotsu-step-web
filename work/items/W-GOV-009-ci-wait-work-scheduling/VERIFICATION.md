@@ -1,5 +1,5 @@
 # W-GOV-009 — Verification / plan
-Status: PROPOSAL-ONLY REVIEW / implementation tests NOT RUN
+Status: ISOLATED IMPLEMENTATION / GOVERNANCE CI NOT YET CONFIRMED
 Date: 2026-10-21 JST
 Baseline: observed GitHub main SHA `537c3cbf28d40f45228d8a0c4bdd20327136aa93`
 
@@ -16,3 +16,8 @@ See `PROPOSAL.md` V01–V10. Check source/approval/priority/independence gate, s
 
 ## Stop condition
 Present full proposal to the user; if changed, revise exact proposal and stop; if accepted, execute only approved files and record evidence, then request separate main merge approval. This file must not label proposed workflow semantics as already deployed/validated.
+
+## Implementation checkpoints (2026-10-21)
+- P-001 exact approval recorded; no main merge authorization.
+- Static review required: §12A/§12B body byte unchanged, §12C C1–C8 present, two dictionary references, one AGENTS reference, no Work state or command creation, allowed paths only.
+- V01–V09: specified policy scenarios require decision-table analysis; they are not claims of nine actual concurrent CI runs. V10: confirm actual PR change list and governance CI with full run SHA.

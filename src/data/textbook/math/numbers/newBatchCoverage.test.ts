@@ -256,8 +256,10 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       ['14', '15', '正の3で割り'],
     ] as const) {
       const section = mathTextbookUnits.find(u => u.unitId.endsWith('n' + n))!.sections[0]
-      const lead = JSON.stringify(section.readingFlow.find(v => v.id === 'n' + n + '-lead-' + q))
-      expect(lead, 'n' + n + '-' + q).not.toContain(forbidden)
+      const leadBlockId = n === '11' && q === '06' ? 'n11-formula-06' : 'n' + n + '-lead-' + q
+      const lead = section.readingFlow.find(v => v.id === leadBlockId)
+      expect(lead, leadBlockId).toBeDefined()
+      expect(JSON.stringify(lead), 'n' + n + '-' + q).not.toContain(forbidden)
     }
   })
 

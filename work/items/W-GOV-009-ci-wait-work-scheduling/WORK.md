@@ -29,3 +29,12 @@ Allowed now: proposal, findings, planned tests and history logs. Do not touch Co
 - Branch: `work/W-GOV-009-ci-wait-implementation-20261021` based on proposal commit `738b5ab584d8266d131eb152b89144ca81ed88e2`.
 - Scope: WORK_SYSTEM §12C, AGENTS one pointer, dictionary two pointers, Work records. No learner or hosting changes. Earlier proposal-only checkpoint text above is historical.
 - Next: verify actual diff, create Draft PR for governance checks, record CI run/SHA, obtain user review; merge into main requires separate permission.
+
+
+## Latest authoritative handoff — 2026-10-21 technical CI success (pre-final-record commit)
+- Exact W-GOV-009/P-001 implementation approved; main integration NOT authorized.
+- Draft [PR #102](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/102) open, unmerged.
+- Normative/docs tested SHA: `f5759ab8b1ffd87d7e4537081ecea97ff4ea9bb1`; §12C, AGENTS and dictionary approved changes verified.
+- [Repository Governance Check #39526681491](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39526681491) SUCCESS and [Review Preview Code Check #39526681402](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39526681402) SUCCESS on that SHA.
+- V01–V10 policy cases documented in VERIFICATION.md with **textual decision coverage**; not ten real parallel CI executions.
+- Additional final Work-record documentation commit must be rechecked for its own HEAD; rule content unchanged by records update. Remain VERIFYING for user review and separate merge authorization. Do not merge, publish or make app/lesson changes.

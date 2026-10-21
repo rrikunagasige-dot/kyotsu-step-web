@@ -16,3 +16,11 @@ Date: 2026-10-21 JST
 - DESIGN: §12C inserts after §12B; §12A/B wording and existing Work states remain unchanged.
 - DESIGN: independent Work requires approval, separate SHA/branch and nonconflicting source/progress; CI RUNNING does not close §12B correction queue.
 - UNVERIFIED: PR governance CI not completed by initial implementation commit. No speculative PASS.
+
+
+## Verification findings (2026-10-21)
+- CONFIRMED: governance validator `tools/repo-governance-check.mjs` requires `WORK.md` line `Status: VERIFYING` and `PROPOSAL.md` line `Status: APPROVED` exactly. An initially appended human explanation in the status line was an ERROR-QA-preflight; it was corrected without changing §12C.
+- CONFIRMED: §12A/§12B normative body is byte-identical to base main; C1–C8 added after §12B; two dictionary references and one AGENTS referral, no command/status/Gate definition replaced.
+- CONFIRMED: approved change diff contains only eight allowed file paths; PR #102 remains Draft and unmerged.
+- VERIFIED-EVIDENCE: GitHub governance and review-code workflows SUCCESS for exact rule SHA `f5759ab8b1ffd87d7e4537081ecea97ff4ea9bb1`; V01–V10 are desk/table coverage, not exercised multiple parallel CI jobs.
+- PROVENANCE: automated Vercel check on the Draft PR is an existing integration side effect, not a manually requested deployment or an authorized Gate③ app review.

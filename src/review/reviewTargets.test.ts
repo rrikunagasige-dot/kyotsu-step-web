@@ -26,11 +26,17 @@ describe('W-GOV-008/P-002 review marker boundaries', () => {
     expect(extractReviewSection(mathNumbersN11Unit,q13)?.items.map(i=>i.answer)).toEqual(['3','3','6','3'])
     expect(activeReviewMarkIds(q13)).toEqual([]) // P008 accepted
     const n14=reviewTargets['n14-q10']
-    expect(n14.revision).toBe(7)
-    expect(n14.totalItems).toBe(26)
+    expect(n14.revision).toBe(8)
+    expect(n14.totalItems).toBe(30)
     expect(extractReviewSection(mathNumbersN14Unit,n14)?.items.map(i=>i.answer)).toEqual(['3','3','3','-2','8'])
-    expect(activeReviewMarkIds(n14)).toEqual(n14.markBlockIds)
+    expect(activeReviewMarkIds(n14)).toEqual([])
     expect(extractReviewSection({...mathNumbersN14Unit,revision:6},n14)).toBeNull()
+    const q14=reviewTargets['n14-q14']
+    expect(q14.revision).toBe(8)
+    expect(q14.totalItems).toBe(30)
+    expect(extractReviewSection(mathNumbersN14Unit,q14)?.items.map(i=>i.answer)).toEqual(['2','2','2','-2','6'])
+    expect(activeReviewMarkIds(q14)).toEqual(q14.markBlockIds)
+    expect(extractReviewSection({...mathNumbersN14Unit,revision:7},q14)).toBeNull()
     expect(extractReviewSection({...mathNumbersN11Unit,revision:9},q89)).toBeNull()
   })
 

@@ -60,3 +60,23 @@ Review the **entire existing target app UI** from its real front page, while spe
 5. Fixes discovered in Gate③ return to CMD-WORK-001, Gate①/② relevant recheck and new frozen SHA. Public release/merge authorizations remain separately scoped.
 
 **Current verdict: FINAL-REVIEW-NOT-READY because NO AUTHORIZED, REACHABLE CODE-MATCHING APP URL.** This is an authorization/provenance barrier, **not a claim that Math CI/independent proof failed**. The Work remains `VERIFYING`, not final app accepted.
+
+
+---
+
+## 2026-10-21 — W-MATH-016後のGate③再確認（本節が旧127操作・旧R5候補SHA欄を更新）
+
+Status: **FINAL-REVIEW-NOT-READY** — Gate①全対象視覚確認終了、Gate②全対象数式/原典/誤答/回帰CROSS-VERIFIED、しかし現行SHAと一致する到達可能なアプリURLおよび別個のmain統合・公開承認は**未確保**。
+
+- **今回の検証済み教材コード候補（40桁）**：`43ef4fae17b8ce9d0d9eb62358e392c47146cac1`。前の`ad77318b37e90b9c39150b14ee706283b3f59355`は旧R5段階の歴史的SHAであり、現在のGate③候補ではない。レビューPR #101最新Gate②記録コミット `06f770e163d232d0d092a118dc5bdfa902409119`。両SHAのGitHub差分は**md/pngのみ47ファイル、教材コード差分0**。
+- **今回の数学範囲**：8単元の教師Word原問123件、現行**142学習操作・426誤答候補**、N11 revision 6/N14 revision 6。以前の「127操作」は古いR5表示なのでGate③の今回の試行回数として扱わない。継承する数学旧6単元ほか実際のナビゲーション、Physics Textbook・Practice、Math Practiceなど既存の総チェック対象は旧票のとおり。新規の未公開教材を勝手に追加しない。
+- **Gate①**：N11およびN14 Q07/Q08の既承認、Q12のユーザー原文「いいよ続けて」を直接の実画像細部承認として記録。全対象の細部はBLOCK-VISUAL-OK。体験全体のユーザー受入ではない。
+- **Gate②**：[現行の既存様式監査](./CROSS_BLOCK_AUDIT_POST_WM016_20261021.md)で**CROSS-VERIFIED**。旧R5の123原問・誤答381件のうち選択内容不変375件を継承し、新規15/再構成既存2の51誤答を独立再監査。Mathematics Textbook CI [#39548305543](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39548305543)（元実装）と[#39549620273](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39549620273)（レビュー統合実装）はともにSUCCESS。Q12実画面18枚の撮影[#39549614892](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39549614892) SUCCESS。
+- **main**：読み取り時`2f05c6b34e4853a76bc5b24b9eb0b0cee6ac3c79`、Draft PR #101は未統合。したがって旧mainに紐づく既存Pagesを今回候補の実アプリリンクとして出せない。
+- **既存Vercelプレビュー**：PR #101の[botコメント](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/101#issuecomment-6267043642)に示された実在の旧Alias `https://kyotsu-step-web-review-wgov008-git-wo-7f4744-rrikunagasige-5663.vercel.app`。GitHub commit statusに、現行コードSHA `43ef4fa...` はVercel context **success** / [deployment record](https://vercel.com/rrikunagasige-5663/kyotsu-step-web-review-wgov008/64JcsePHYej49dXBgdTpS7rBgb4m)、後続ドキュメントHEAD `06f770...`もVercel context **success** と記録。しかしsuccessはデプロイジョブに限り、URL実体の応答・ログイン不要・alias→current commitの対応は証明していない。既存の後続無料枠上限[botコメント](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/101#issuecomment-6284556463)も保持。
+- **現時点の到達/同一性監査**：プレビューURLはWeb checkerからアクセスできず、こちらのHTTP read-only試行も名前解決失敗（ユーザーの環境でのアクセス不可能と断定しない）。Vercel deployment detail read-onlyはteam `rrikunagasige-5663` への許可不足で**403 forbidden**。別の公開ホストを勝手に作らず、無料上限を回避する課金・再デプロイを行わない。**既存プレビューは候補リンクのままでGate③用として未検証**。
+
+### 現行Gate③受入条件（従来手順そのまま）
+1. 別途ユーザーの明示承認がある方法だけを使い、**現在の候補SHAと内容を証明できる**実際のアプリURLを得る。既存プレビューを使う場合はアクセス権/alias/コードSHAを実証。PR #101→mainとGitHub Pages公開を使う場合は両方の明示承認を受けてから動かす。
+2. URLを開き、認証壁なし、端末320px/390px/desktop、実際の章/モードのナビゲーション、進捗の分離、対象ソースSHAを照合し、問題なければ`FINAL-REVIEW-READY`。
+3. 既存の総チェック票のモジュール（Math Textbook N01～N14および到達できる他教材、Math Practice、Physics Textbook、Physics Practice）に沿って、ユーザーが最初から最後まで操作し、**`総チェックOK`** と伝えたときのみ`FINAL-APP-ACCEPTED`。それまではWork `VERIFYING`、main未統合、公開未承認のまま。

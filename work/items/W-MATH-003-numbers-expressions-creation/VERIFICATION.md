@@ -352,3 +352,7 @@ Gate② remains **NOT CROSS-VERIFIED**, both because of those six issues and bec
 
 ## 2026-10-21 Gate② — W-MATH-016後の差分横断監査
 既存様式・証拠：[CROSS_BLOCK_AUDIT_POST_WM016_20261021.md](./CROSS_BLOCK_AUDIT_POST_WM016_20261021.md)。対象8単元のGate② **CROSS-VERIFIED**（最終アプリ受入とは無関係）。旧R5独立123問・381誤答監査を継承し、既存125組誤答375件は変化なし、N11 Q03/Q04の既存2組を再検査、追加15組を再検査、現行**142組/426誤答候補**と計上。変更17組・誤答51件を再導出・再検査。N04/05/06/07/08/13の6ソースはblob完全一致、N11/N14原問定義30件も一致。Q12 Gate①ユーザー「いいよ続けて」を受理。過去の修正と旧履歴のテストSUCCESS、学習者コードSHA `43ef4fae17b8ce9d0d9eb62358e392c47146cac1`。**Gate③はFINAL-REVIEW-NOT-READY**：同一SHAの実働アプリURLと公開/Previewの認可・全編ユーザープレイは別工程、`main`不変。
+
+
+## V-049 — 2026-10-21 Gate③ candidate access audit
+Frozen code SHA `43ef4fae17b8ce9d0d9eb62358e392c47146cac1`, PR #101 Draft, main `2f05c6b34e4853a76bc5b24b9eb0b0cee6ac3c79`, exact maths CI PASS #39549620273. [Post-WM016 Gate②](./CROSS_BLOCK_AUDIT_POST_WM016_20261021.md) CROSS-VERIFIED, 142/426, Q12 visual Gate① acceptance. GitHub Vercel commit status says SUCCESS on code SHA, BUT existing alias URL read-only check inaccessible and Vercel team detail returned 403; no independent proof of reachable hosted same-SHA app. Public old Pages not matching code. Gate③ **FINAL-REVIEW-NOT-READY**, no separate approval to merge PR #101/main/Pages or create new hosting; do not invent final playable URL or call UI screenshots a full user play. [Existing final application walkthrough prep](./FINAL_APP_WALKTHROUGH_PREP_R5_20261020.md) appended with current facts.

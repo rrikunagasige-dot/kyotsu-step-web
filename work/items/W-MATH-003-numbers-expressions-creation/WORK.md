@@ -126,3 +126,7 @@ Latest exact user reply `ok続けて` to R5's 3-image visual confirmation reques
 
 ## 2026-10-21 Gate② — W-MATH-016後の差分横断監査
 既存様式・証拠：[CROSS_BLOCK_AUDIT_POST_WM016_20261021.md](./CROSS_BLOCK_AUDIT_POST_WM016_20261021.md)。対象8単元のGate② **CROSS-VERIFIED**（最終アプリ受入とは無関係）。旧R5独立123問・381誤答監査を継承し、既存125組誤答375件は変化なし、N11 Q03/Q04の既存2組を再検査、追加15組を再検査、現行**142組/426誤答候補**と計上。変更17組・誤答51件を再導出・再検査。N04/05/06/07/08/13の6ソースはblob完全一致、N11/N14原問定義30件も一致。Q12 Gate①ユーザー「いいよ続けて」を受理。過去の修正と旧履歴のテストSUCCESS、学習者コードSHA `43ef4fae17b8ce9d0d9eb62358e392c47146cac1`。**Gate③はFINAL-REVIEW-NOT-READY**：同一SHAの実働アプリURLと公開/Previewの認可・全編ユーザープレイは別工程、`main`不変。
+
+
+## 2026-10-21 — Gate② closed, Gate③ URL authorization barrier
+Previous R5 stage is superseded by [current W-MATH-016 post-audit](./CROSS_BLOCK_AUDIT_POST_WM016_20261021.md) CROSS-VERIFIED at frozen code SHA `43ef4fae17b8ce9d0d9eb62358e392c47146cac1`, 142 learner decisions/426 distractors, Q12 user visual Gate① accepted with exact reply 「いいよ続けて」. [Current Gate③ entry and blockers](./FINAL_APP_WALKTHROUGH_PREP_R5_20261020.md) appended without overwriting historical R5. Latest PR #101 stays Draft and main unchanged; preview URL access and SHA not verified despite GitHub Vercel deploy status success; Vercel team 403, read-only public access check inaccessible. Await **separate exact main+Pages publication approval or other authorized SHA-verifiable access**. Work remains VERIFYING, never FINAL-APP-ACCEPTED until user whole-app play.

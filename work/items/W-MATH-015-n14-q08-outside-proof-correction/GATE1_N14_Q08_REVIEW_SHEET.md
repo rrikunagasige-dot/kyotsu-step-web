@@ -7,7 +7,7 @@ Status: BLOCK-CHECK-PENDING
 - 実画像の元アプリはレビュー専用Merge SHA `1983966b718bbdd38ac13f8de5eb3a0709d4445b`。4つのコード・テストblobを上記単独CIのソースと照合し**すべて一致**。公開mainとは別。
 - [実画像撮影 #39543275894](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39543275894) **SUCCESS**。保存コミット `b94fe90710aafef37e04d8200ceffb1bbd4cc3fb` は48個のPNG差分のみで**教材コード変更ゼロ**。このうちQ08の3段階×320/390px×回答前/誤答後/正答後の**18 PNG全件・実サイズ非ゼロ**を確認済み。
 - 元のQ08の正答「X<−a または X>a」と従来の誤答3件は不変。N14 Q07コード、Q12原文、N11承認済み箇所、元Wordと図も変更なし。
-- 画像保存後のHEADのActions `action_required` はスクリーンショット保存用Botコミットによる状態であり、実行済みソースCIの失敗と混同しない。レビュー用Merge SHAの数学CI #39543280746は結果確認の別対象。
+- 画像保存後のHEADのActions `action_required` はスクリーンショット保存用Botコミットによる状態であり、実行済みソースCIの失敗と混同しない。レビュー用Merge SHAの数学CI #39543280746はその後のブランチ更新により **CANCELLED**（SUCCESSではない）。一方、同一4コードblobの単独実装CI #39541910451 はSUCCESSであり、撮影 #39543275894 もSUCCESS。
 - ユーザーQ08細部OKは**まだ受領していない**。Gate②（Q12の別R1修正）とGate③（全実働アプリのユーザープレイ）は未完了。main統合/公開も未許可。
 
 ## 18枚の本物のアプリ画面

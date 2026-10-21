@@ -76,3 +76,9 @@ Read main `governance/INSTRUCTION_DICTIONARY.md`: user corrective comment maps S
 - Verified screenshot job [39598038524](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39598038524) SUCCESS, 320/390/1440 actual ordinary lesson and numbered review, correct/wrong/retry, no KaTeX error/mobile overflow, Q10 still gated until 5th answer. Source SHA `76ab0e708f0706fbbfa7df1109f19d5263c7db19`, evidence commit `55cb9fdfe06a819eb230789de7d797fe74daa084`.
 - N11 P-006 `BLOCK-VISUAL-OK` carried forward with `reviewState:'accepted'`, Q05/Q06 source unchanged; screenshot album not overwritten.
 - Await user P-007 Gate① at [review sheet](./P007_GATE1_REVIEW_SHEET.md), then independently audit siblings and prepare exact P-008 if confirmed. No main merge.
+
+
+## 2026-10-21 — P-007 Gate① direct yes; P-008 Q13 source-specific design
+- User's direct "いいよ" to P-007 real screenshot review question is equivalent to BLOCK-VISUAL-OK of exactly Q08/Q09; preserve literal wording, target SHA and screenshot link. Do not infer Gate③ app acceptance or new P-008 code authority.
+- Full math CI on P-007 source SHA `76ab0e708f0706fbbfa7df1109f19d5263c7db19` finished SUCCESS https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39598038354; actual 320/390/1440 real screenshot and recovery run https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39598038524 SUCCESS. Screenshot-only descendants have action_required statuses, not code CI failures.
+- Reread 2026-10-19 §12A/§12B, math SPEC/MASTER, original N11 Q11/Q12/Q13/Q14 source, Q14 protected W-MATH-013 flow, original generator signature, existing sibling ledger. Confirmed Q13 one graded choice bundles positive3 multiplication and resulting distributed RHS6x+3. Drafted exact P-008 4-row/2-reason/4-hole source Q13; v9→10 selective archive/reopen n11-13 only; no code or release changes.

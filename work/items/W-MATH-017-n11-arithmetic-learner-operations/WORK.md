@@ -1,6 +1,6 @@
 # W-MATH-017 — 文章に学習操作を統合する教材修正
 
-Status: IMPLEMENTING
+Status: REVISE-PROPOSAL
 Approval: P-003 user-approved; technical/human gates OPEN
 Updated: 2026-10-21 JST
 Command: CMD-WORK-001 「修正」
@@ -86,3 +86,10 @@ User explicitly authorized merge of reviewed P-005 design and additionally reque
 - Source/test/capture SHA `76ab0e708f0706fbbfa7df1109f19d5263c7db19`; real [P-007 Gate① GitHub screenshots](./P007_GATE1_REVIEW_SHEET.md) from PASS [run 39598038524](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39598038524), stored by screenshot-only commit `55cb9fdfe06a819eb230789de7d797fe74daa084`. Original P-006 Gate① accept remains recorded, markers hidden in new review.
 - Scope tests, typecheck/lint/Vitest/build, N12 baseline and mobile smoke in Math CI [39598038354](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39598038354) PASS as stages; full run still in progress at this snapshot. Do not infer final entire CI result.
 - [ ] P-007 actual user `細部OK` pending. Gate② sibling corrections N11-Q13/N14 Q10/Q14/Q15 and source Word reinspection outstanding. Gate③ FINAL-REVIEW-NOT-READY, PR #107 Draft, main unchanged.
+
+
+## 2026-10-21 — P-007 user Gate① accepted; final CI pass; P-008 design only
+- User replied exact **「いいよ」** directly to [P-007 numbered real screenshot sheet](./P007_GATE1_REVIEW_SHEET.md), following `細部OK / 要修正` question. This is **BLOCK-VISUAL-OK** for N11 Q08/Q09 new 5 marked blocks on source SHA `76ab0e708f0706fbbfa7df1109f19d5263c7db19` only. Not exact P-008 Proposal approval, not `総チェックOK`.
+- [Math CI run 39598038354](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39598038354) **SUCCESS** on same exact SHA including math/physics/practice regression. [Actual review screenshots 39598038524](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39598038524) **SUCCESS**. Prior P-006 Gate① remains accepted and unchanged.
+- Confirmed §12B same-root original Word N11 Q13 ready-made operation + complete result still present in source, while Q12/Q14 are previously approved and must be protected. Prepared [P-008 exact Q13 proposal](./PROPOSAL_P008_N11_Q13_DENOM_DISTRIBUTION.md) **PROPOSED** / source implementation unauthorized until exact user approval; N14 other affected siblings unchanged.
+- P-007 review marker `reviewState` should turn `accepted` **in next code review build only**, bundled with separately approved Q13 implementation so previous already captured and approved screenshots are not re-run. Gate②/③ remain OPEN; main stays unchanged, PR #107 Draft.

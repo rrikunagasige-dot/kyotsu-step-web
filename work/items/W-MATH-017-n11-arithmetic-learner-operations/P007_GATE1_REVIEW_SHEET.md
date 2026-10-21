@@ -1,5 +1,5 @@
 # W-MATH-017/P-007 — N11 Q08〜Q09 小ブロック GitHub確認票
-Status: BLOCK-CHECK-READY / USER VISUAL RESPONSE PENDING
+Status: BLOCK-VISUAL-OK — User accepted on 2026-10-21 JST; literal reply 「いいよ」 directly to numbered P-007 screenshot review
 Work: W-MATH-017; Proposal: P-007 (user approved via 「いいね承認」)
 Exact tested/captured full SHA: `76ab0e708f0706fbbfa7df1109f19d5263c7db19`
 Lesson version: N11 revision9, original teacher Word Q08 and Q09, 2 source markers (not 5 new source questions)
@@ -33,6 +33,9 @@ Protected accepted blocks: N11 Q05/Q06 P-006 `BLOCK-VISUAL-OK` (no new review ma
 - [x] Capture exact SHA, source displayed, Chromium success 320/390/1440.
 - [x] 5 numbered marks only for the new Q08/Q09 blocks, previously accepted P-006 unmarked.
 - [x] Normal math lesson screenshots without reviewer yellow frames.
-- [ ] User actual `細部OK / 要修正` reply.
+- [x] User affirmative reply 「いいよ」 to exact P-007 Gate① sheet accepted as equivalent `細部OK`, with no changes/conditions. User did not literally type `細部OK`. This approves only visible new Q08/Q09 blocks, not whole-app `総チェックOK`.
 - [ ] Cross-block independent Gate②. Original DOCX fresh line-level check UNVERIFIED.
 - [ ] Gate③ full-app exact-SHA live link and user `総チェックOK`. Do not merge main.
+
+## 受入記録（新しい修正案の許可ではない）
+User's direct response to the immediately preceding P-007 Gate① review and `細部OK / 要修正` question: **「いいよ」** (2026-10-21 JST; no invented clock time). Record as `BLOCK-VISUAL-OK` for 5 newly marked Q08/Q09 blocks only, on frozen screenshot source SHA `76ab0e708f0706fbbfa7df1109f19d5263c7db19`. Previously approved P-006 remains accepted; no new user acceptance of Q13, N14, Gate② or Gate③. In the *next* Gate① image/review output, hide P-007 markers using `reviewState:'accepted'`; preserve these images and the original text of response. Do not change review code now while awaiting separate exact P-008 approval.

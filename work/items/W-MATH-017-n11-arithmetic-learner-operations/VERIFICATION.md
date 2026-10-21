@@ -59,3 +59,9 @@ P-003 correctness CI PASS and screenshot files do not amount to Gate① user acc
 - Progress: N11 v8→v9 archive exactly all v8 answers; reopen n11-08/n11-09 only. Historical v3→9 path and previously accepted answers verified in focused Vitest. No Q05/Q06 P-006 regression or hidden new visual marks.
 - Full math CI [39598038354](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39598038354) unit/schema/typecheck/lint/build/N12+mobile steps passed at last observation, further jobs pending; final verdict not assumed.
 - Gate② overall OPEN/NOT CROSS-VERIFIED due other confirmed same-root siblings and new Word direct read UNVERIFIED; Gate③ not ready, no main Pages release.
+
+
+## P-007 confirmed user small-block acceptance + full QA result
+- [P007_GATE1_REVIEW_SHEET.md](./P007_GATE1_REVIEW_SHEET.md) now records user's exact positive reply **「いいよ」** directly to `細部OK / 要修正` screenshot request (2026-10-21 JST). Five Q08/Q09 numbered new blocks only, exact tested SHA `76ab0e708f0706fbbfa7df1109f19d5263c7db19`. This is display acceptance only, no browser user play or `総チェックOK`.
+- [Math full CI 39598038354](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39598038354) **SUCCESS** and [actual image/preview CI 39598038524](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39598038524) **SUCCESS**, both on same tested source SHA. Source map 14 markers, 28 choices; selective v8→9 progress archival PASS. Screenshot-only/docs commits do not change these student source results.
+- Gate② overall **NOT CROSS-VERIFIED**: N11-Q13 and N14-Q10/Q14/Q15 same-root defects still need exact proposals and source word DOCX fresh comparison remains UNVERIFIED. Gate③ `FINAL-REVIEW-NOT-READY`. Next P-008 is proposal only until approval.

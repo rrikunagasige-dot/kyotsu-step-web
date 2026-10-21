@@ -26,3 +26,7 @@ Do not re-edit accepted P-006 nor change common generator without exact approval
 
 ## Close condition
 **Gate② must remain NOT CROSS-VERIFIED** until fresh source-level provenance and all confirmed sibling defects (including P-007 if approved) have individually verified repairs or a reasoned documented no-change determination. Gate③ FINAL-REVIEW-NOT-READY; user's earlier merge intent remains on record but no main merge/publication yet.
+
+
+## 2026-10-21 Gate② status update after P-007
+Superseding the historical P-006-era P-007 `PROPOSED` row **only**: N11-Q08/Q09 P-007 now implemented, Math CI [39598038354](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39598038354) PASS, real Chromium Gate① [39598038524](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39598038524) PASS, user visual acceptance verbatim `いいよ` recorded in [P-007 sheet](./P007_GATE1_REVIEW_SHEET.md). N11-Q13 **OPEN — P-008 proposal only**; N14-Q10/Q14/Q15 **OPEN**; original DOCX direct source-level new reinspection **UNVERIFIED**. Gate② overall still not CROSS-VERIFIED; Gate③ still not ready. Do not mark full chapter accepted or merge.

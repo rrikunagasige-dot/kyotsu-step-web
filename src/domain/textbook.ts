@@ -185,6 +185,41 @@ export function effectiveTextbookProgress(unit: TextbookUnit, progress: Textbook
   if (!progress) return undefined
   if (progress.unitRevision === unit.revision) return progress
 
+  // W-MATH-014/P-001: two new N14 Q07 sign-case choices before the
+  // UNCHANGED n14-07 final. Archive v3, keep every old answer active.
+  // Older v1/v2 first pass through the approved v2 and v3 migrations.
+  if (unit.unitId === 'math-numbers-expressions-n14' && unit.revision === 4
+    && progress.unitId === unit.unitId
+    && [1, 2, 3].includes(progress.unitRevision)) {
+    const fromV3 = progress.unitRevision === 3 ? progress
+      : effectiveTextbookProgress({ ...unit, revision: 3 }, progress)
+    if (!fromV3 || fromV3.unitRevision !== 3) return undefined
+    const oldArchive: TextbookRevisionArchive = {
+      unitRevision: 3,
+      startedAt: fromV3.startedAt,
+      updatedAt: fromV3.updatedAt,
+      answers: { ...fromV3.answers },
+      ...(fromV3.completedAt !== undefined ? { completedAt: fromV3.completedAt } : {}),
+      ...(fromV3.previousRevisionCompletedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV3.previousRevisionCompletedAt } : {}),
+      ...(fromV3.migratedFromRevision !== undefined
+        ? { migratedFromRevision: fromV3.migratedFromRevision } : {}),
+    }
+    return {
+      unitId: unit.unitId,
+      unitRevision: 4,
+      startedAt: fromV3.startedAt,
+      updatedAt: fromV3.updatedAt,
+      answers: { ...fromV3.answers },
+      migratedFromRevision: 3,
+      archivedRevisions: { ...(fromV3.archivedRevisions ?? {}), '3': oldArchive },
+      ...(fromV3.completedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV3.completedAt }
+        : fromV3.previousRevisionCompletedAt !== undefined
+          ? { previousRevisionCompletedAt: fromV3.previousRevisionCompletedAt } : {}),
+    }
+  }
+
   // W-MATH-013/P-001: Q14 two new decisions, original n11-14 final
   // answer retains its meaning. Archive the full previous v5 snapshot;
   // retain all v5 answers active while newly introduced Q14 nodes are open.

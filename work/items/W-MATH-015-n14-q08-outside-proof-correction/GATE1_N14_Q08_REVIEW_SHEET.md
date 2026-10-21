@@ -1,5 +1,5 @@
 # W-MATH-015/P-001 — N14 Q08 実画面 Gate① 細部確認
-Status: BLOCK-CHECK-PENDING
+Status: BLOCK-VISUAL-OK
 
 ## 実コード・実画像・CIの証拠
 - レビュー対象は原Word N14 Q08の**1問だけ**。2つの新規式中穴と元のn14-08最終4択、回答後の逆向き証明。N14 Q07とN11のユーザー既承認部分は再承認不要。
@@ -44,3 +44,6 @@ Status: BLOCK-CHECK-PENDING
 - [ ] User Q08 Gate① visual acceptance
 - [ ] W-MATH-016/P-001 Q12 separate correction, independent whole Gate② PASS
 - [ ] Entire app Gate③ complete user play on SHA-matched real URL
+
+## 2026-10-21 contextual user visual acceptance — current state
+The user responded exactly **「続けて」** directly after the Q08 actual-image Gate① review invitation, with next step stated as Q12 proposal approval stage. In this existing small-block acceptance workflow this is interpreted as **Q08 BLOCK-VISUAL-OK, permission to move to the next decision**, not authorization to implement Q12. The utterance was not literally 「Q08 細部OK」; preserve that distinction. 18 genuine Q08 screenshot images from tested review source SHA `1983966b718bbdd38ac13f8de5eb3a0709d4445b`, screenshot job #39543275894 SUCCESS, saved image commit `b94fe90710aafef37e04d8200ceffb1bbd4cc3fb`. Initial exact code source CI #39541910451 SUCCESS and matching source blobs confirmed; a separate review-merge CI #39543280746 was CANCELLED, not SUCCESS. Historical unchecked checkbox above predates this user decision. No Q12 learner-code, global Gate②/③, main merge, hosting/publication approval implied.

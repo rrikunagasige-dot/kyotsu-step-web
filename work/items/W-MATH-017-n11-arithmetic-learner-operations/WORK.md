@@ -1,6 +1,7 @@
 # W-MATH-017 — 文章に学習操作を統合する教材修正
 
-Status: IMPLEMENTING (P-003 user approved; technical/human gates OPEN)
+Status: IMPLEMENTING
+Approval: P-003 user-approved; technical/human gates OPEN
 Updated: 2026-10-21 JST
 Command: CMD-WORK-001 「修正」
 Main baseline: `15ae503455bc6ae75b080caa1c4919cafb250027` (public Gate③ reopened/FAILED due user's actual Q01/Q05 findings)

@@ -1,5 +1,7 @@
 # W-MATH-017 Proposal registry — canonical routing
 
+Status: APPROVED
+
 Current exactly user-approved proposal: [P-003文章統合・教育設計修正](./PROPOSAL_P003_INLINE_PROSE.md), approved 2026-10-21 by user's direct 「承認」 to the fully presented proposal. This is a correction Work (CMD-WORK-001); approval authorizes independent-branch implementation for the exact scope, **not** main merge, hosting, extra global renderer changes, or Gate③ acceptance.
 
 Historical superseded proposals remain visible without altered approval claims:

@@ -332,7 +332,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
     inspectAfter('14', '13', '14', 'まず定数−2を消す操作', '次は三辺に共通する操作')
     inspectAfter('14', '14', '15', '正の3で三辺を割っても', '中央のxの係数を1にする段階')
     for (const n of ['06', '11', '14']) {
-      expect(pick(n).revision).toBe(n === '11' ? 6 : n === '14' ? 6 : 3)
+      expect(pick(n).revision).toBe(n === '11' ? 7 : n === '14' ? 6 : 3)
     }
   })
 
@@ -379,7 +379,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
     }
     for (const n of ['11', '14']) {
       const unit = mathTextbookUnits.find(u => u.unitId.endsWith('n' + n))!
-      expect(unit.revision).toBe(n === '11' ? 6 : 6)
+      expect(unit.revision).toBe(n === '11' ? 7 : 6)
     }
   })
 

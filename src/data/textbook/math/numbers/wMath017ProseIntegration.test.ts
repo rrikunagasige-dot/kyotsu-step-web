@@ -17,7 +17,7 @@ describe('W-MATH-017/P-003 prose integration / preserved progress', () => {
     expect(block.parts.filter(p => p.type === 'math').map(p => p.latex)).toEqual(['(-2)','(-5)'])
     expect(item('n11-01').answer).toBe('>')
     expect(item('n11-01').choices).toEqual(['>','<','=','\\le'])
-    expect(getTextbookChoices(lesson,item('n11-01'))).toHaveLength(4)
+    expect(getTextbookChoices(lesson,item('n11-01'))).toHaveLength(2) // strong first step, four authored choices kept
     expect(JSON.stringify(block)).not.toContain('mathrel{?}')
   })
   it('grades Q05 operation and the real 5+2 arithmetic separately in prose', () => {

@@ -55,7 +55,7 @@ const oldContent = makeReviewSteps('n11', [
 // reading flow and keys verbatim, and the two original Word figures untouched.
 const firstItems: TextbookItem[] = [
   reviewItem('n11-01', '数直線の−2と−5を比べ、不等号を選ぼう。', '>', 'formula',
-    ['<', '=', '\\le'], 'concept-formation', 'light', ['数直線では右にある数のほうが大きい。']),
+    ['<', '=', '\\le'], 'concept-formation', 'strong', ['数直線では右にある数のほうが大きい。']),
   reviewItem('n11-02', '両辺に同じcを加えたあとの差を計算しよう。', 'b-a', 'formula',
     ['b-a+2c', 'b-a-c', 'a-b'], 'causal-reasoning', 'strong', ['+cと−cを整理しよう。']),
   reviewItem('n11-wm011-q02-compare', '差の符号を根拠に、加えたあとの大小関係を選ぼう。',

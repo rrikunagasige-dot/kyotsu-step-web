@@ -43,3 +43,10 @@ Only scoped approved and tested code + 320/390 actual images + explicit new Q14 
 - Isolated work branch `work/W-MATH-013-n11-q14-derivation-20261021`, based on Proposal commit `472063abfe4d6af5b8d487a37d040812cd12259c`.
 - Bounded source/test code commit `b22db8b3f5cf08bca1c2f48d0d086c5ae41dad47`; no main/PR #101 integration, UI helper/asset/master changes.
 - Next: run actual PR CI, inspect real browser wrong/hint/retry and 320/390 screenshots, present new Q14-only GitHub Gate①. Status VERIFYING not DONE; global Gate② remains blocked by separate N14 Q07/Q08/Q12.
+
+
+## 2026-10-21 Gate① ready; preserve approval boundary
+- Implementation/QA on isolated feature branch passed: [Math CI #39532210400](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39532210400) SUCCESS (code `a06c8f2e8353b9a7a1e6f4f304e8e45d1a546c4a`); internal PR #103 merged to **review-only PR #101 branch**, code SHA `91a7c7ee74ceab747079b27089271b1c65e5f65f`.
+- Review-branch [Math CI #39533384786](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39533384786) SUCCESS for merge code SHA; [real app capture #39533380704](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39533380704) SUCCESS. Actual 18 files saved by screenshot-only commit `f44a8a0017429370194e048fb16cf56902a947eb` (no learner source edits).
+- [Gate① Q14 18-image review sheet](./GATE1_N11_Q14_REVIEW_SHEET.md): **BLOCK-CHECK-PENDING for the user's Q14-only visual check**. Q01–Q04/Q11 earlier Gate① approvals remain accepted. Gate② N14 Q07/Q08/Q12 separate issues; Gate③ NOT READY.
+- Historical 'Current Step' / 'Next Step' above are snapshots before user approval and now superseded by this latest checkpoint. No `main` merge or app publication.

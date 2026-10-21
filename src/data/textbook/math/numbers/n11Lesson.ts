@@ -9,6 +9,7 @@ export const n11SourceToItemIds = {
   'N11-Q03': ['n11-wm011-q03-factor', 'n11-wm011-q03-positive', 'n11-03', 'n11-wm011-q03-zero'],
   'N11-Q04': ['n11-wm011-q04-fraction', 'n11-04'],
   'N11-Q11': ['n11-wm012-q11-expand', 'n11-wm012-q11-xcoef', 'n11-11'],
+  'N11-Q14': ['n11-wm013-q14-xcoef', 'n11-wm013-q14-const', 'n11-14'],
 }
 const oldContent = makeReviewSteps('n11', [
   {
@@ -185,23 +186,74 @@ const oldItems = oldContent.items.filter(item =>
   !['n11-01', 'n11-02', 'n11-03', 'n11-04'].includes(item.id))
 const originalQ11Index = oldItems.findIndex(item => item.id === 'n11-11')
 if (originalQ11Index < 0) throw new Error('Approved N11 original Q11 item missing')
+// W-MATH-013/P-001: two local Q14 thinking operations; original n11-14 is unchanged.
+const q14NewItems: TextbookItem[] = [
+  reviewItem('n11-wm013-q14-xcoef', '両辺からxを引いて右辺のxの係数を選ぼう。',
+    '5', 'formula', ['6','7','-5'], 'causal-reasoning', 'medium',
+    ['6xからxを引くので、係数6から1を引く。']),
+  reviewItem('n11-wm013-q14-const', '両辺から3を引いて左辺の定数を選ぼう。',
+    '-5', 'formula', ['1','-2','5'], 'causal-reasoning', 'medium',
+    ['左辺の−2からさらに3を引く。']),
+]
+const q14Start = oldContent.readingFlow.findIndex(b => b.id === 'n11-lead-14')
+const q14End = oldContent.readingFlow.findIndex(b => b.id === 'n11-after-14')
+if (q14Start <= q11End || q14End !== oldContent.readingFlow.length - 1)
+  throw new Error('N11-Q14 reading-flow boundary changed')
+const q14Offset = q14Start - restReadingIndex
+const q14AfterOffset = q14End - restReadingIndex
+const q14Flow: TextbookReadingBlock[] = [
+  { id: 'n11-lead-wm013-q14-xcoef', type: 'paragraph', parts: [
+    T('最後は同類項を整理する。両辺からxを引き、右辺にxの項を集めよう。'),
+    M('x-2\\le6x+3'),
+  ] },
+  { id: 'n11-formula-wm013-q14-xcoef', type: 'formula', parts: [
+    M('-2\\le'), C('n11-wm013-q14-xcoef'), M('x+3'),
+  ] },
+  { id: 'n11-after-wm013-q14-xcoef', type: 'paragraph', parts: [
+    T('6x−x=5xだから、−2≤5x+3となる。次は定数の項を左に集める。'),
+  ] },
+  { id: 'n11-lead-wm013-q14-const', type: 'paragraph', parts: [
+    T('−2≤5x+3の両辺から同じ3を引く。左辺の数を考えよう。'),
+    M('-2\\le5x+3'),
+  ] },
+  { id: 'n11-formula-wm013-q14-const', type: 'formula', parts: [
+    C('n11-wm013-q14-const'), M('\\le5x'),
+  ] },
+  { id: 'n11-after-wm013-q14-const', type: 'paragraph', parts: [
+    T('−2−3=−5だから、−5≤5xとなる。最後は正の数で割る。'),
+  ] },
+  { id: 'n11-lead-14', type: 'paragraph', parts: [
+    T('−5≤5xの両辺を正の5で割ろう。不等号の向きに注意して解の範囲を選ぶ。'),
+    M('-5\\le5x'),
+  ] },
+  // Keep premise and long final choice in separate blocks to avoid mobile clipping.
+  { id: 'n11-formula-14', type: 'formula', parts: [C('n11-14')] },
+  oldContent.readingFlow[q14End],
+]
+const originalQ14Index = oldItems.findIndex(item => item.id === 'n11-14')
+if (originalQ14Index <= originalQ11Index)
+  throw new Error('N11-Q14 original item/order missing')
 const content = {
   readingFlow: [
     ...firstFlow,
     ...originalTail.slice(0, q11Offset),
     ...q11Flow,
-    ...originalTail.slice(q11AfterOffset + 1),
+    ...originalTail.slice(q11AfterOffset + 1, q14Offset),
+    ...q14Flow,
+    ...originalTail.slice(q14AfterOffset + 1),
   ],
   items: [
     ...firstItems,
     ...oldItems.slice(0, originalQ11Index),
     ...q11NewItems,
-    ...oldItems.slice(originalQ11Index),
+    ...oldItems.slice(originalQ11Index, originalQ14Index),
+    ...q14NewItems,
+    ...oldItems.slice(originalQ14Index),
   ],
 }
 
 const rawN11={
-  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n11',revision:5,status:'review' as const,subject:'math-1a' as const,
+  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n11',revision:6,status:'review' as const,subject:'math-1a' as const,
   chapter:{chapterId:'math-ch01-numbers-expressions',chapterNumber:'1',chapterTitle:'数と式',unitCode:'1NUM',orderInChapter:11,sourcePages:[27,28,29]},
   title:'大小関係を保つ変形を選ぶ',subtitle:'不等号が変わる根拠を、差の符号と数直線で確かめる。',
   source:{type:'reference' as const,label:'ユーザー提供「数と式」教科書モード対話段階導入版 v2 / N11',

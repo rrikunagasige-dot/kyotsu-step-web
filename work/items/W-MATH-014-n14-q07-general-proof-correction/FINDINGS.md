@@ -12,3 +12,9 @@ Status: CONFIRMED
 - Implemented approved sign-case interval decisions before the original `n14-07` final choice; original Q07 final wrong-key discrimination retained, converse proof after final answer. No new figure or new source question.
 - Q07 two new IDs are scoped as source map N14-Q07 only; N14 original 16 source questions unchanged, expected 18 learning decisions. Existing Q08 and Q12 gaps remain separate findings and must not be automatically modified.
 - N14 rev3→4 migration implemented as archive+preserve, including historical v1/v2→v3 normalization; independent runtime assertion still pending CI.
+
+
+## Operational finding — §12C C2/C5 execution failure
+- Observation: user attached activity log showing the assistant repeatedly waiting 12/18/30 seconds and checking GitHub CI with no meaningful independent approved work between polls.
+- Cause in execution: the assistant prioritized eager repeated status checks over the already approved CI wait scheduling policy. Rule §12C already explicitly prohibits this pattern; it is **not** a missing lesson or reason to add a new command.
+- Corrective practice: preserve exact tested code SHA and active CI run ID at launch, select P1 source-provenance/math audit and P2 linked Q08 proof/proposal-only study when genuinely independent, record Work A/B boundaries; one check at a work boundary, then return to A. No unsanctioned implementation, no double-branch conflict, no extra user approval for an unchanged exact proposal.

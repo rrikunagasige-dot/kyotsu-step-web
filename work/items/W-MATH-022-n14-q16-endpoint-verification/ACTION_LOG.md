@@ -13,3 +13,9 @@
 - Added revision9→10 N14 archive with only active n14-16 invalidated. Previous revision history and approved items survive.
 - Added wMath022P001 unit tests, imported into existing newBatchCoverage CI; updated narrow snapshot-dependent assertions and appended Q16 320/390/1440 Chromium wrong/hint/retry path to existing batch E2E.
 - No PR merged and no Pages or external hosting, user visual Gate① still pending; test PASS not claimed until actual run succeeds.
+
+## 2026-10-22 JST — Actual Q16 tests PASS, evidence and remaining gates
+- Frozen learner code `e64fd99b18ba167364c2dd6b108a6f7fef76f439`; all 4 native workflows PASS: textbook #39752264193 attempt2, practice #39752264279, review #39752264290, governance #39752264397. Textbook first attempt was cancelled, retry SUCCESS.
+- Dedicated Q16 320px/390px/1440px real Chrome numbered and normal route job PASS; 15 real PNG images uploaded into Work evidence, all sourced from frozen SHA.
+- Subsequent evidence/review-sheet commits changed no learner/test/CI source. Q10/Q14/Q15 original parent code prefix compared byte-for-byte and protected.
+- Gate① `BLOCK-CHECK-PENDING`, user `細部OK` still missing; Gate② not CROSS-VERIFIED, Gate③ FINAL-REVIEW-NOT-READY. PR #111 remains DRAFT, main still 15ae503455bc6ae75b080caa1c4919cafb250027.

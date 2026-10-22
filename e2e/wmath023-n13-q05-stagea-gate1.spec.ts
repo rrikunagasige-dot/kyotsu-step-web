@@ -18,16 +18,18 @@ const checkFit = async(page:Page,width:number)=>{
       const root=parseFloat(getComputedStyle(document.documentElement).fontSize)
       const parts=Array.from(expr.children).map(p=>{
         const r=p.getBoundingClientRect()
-        return {left:r.left,right:r.right,height:r.height}
+        return {left:r.left,right:r.right,top:r.top,height:r.height}
       })
       const buttons=Array.from(e.querySelectorAll('button.reading-formula-choice')).map(q=>{
         const r=q.getBoundingClientRect()
         const st=getComputedStyle(q)
         return {text:q.textContent?.trim(),aria:q.getAttribute('aria-label'),width:r.width,height:r.height,color:st.color,border:st.borderColor}
       })
-      return {left:b.left,right:b.right,width:e.clientWidth,scroll:e.scrollWidth,parts,buttons,root,viewport:document.documentElement.clientWidth}
+      return {left:b.left,right:b.right,width:e.clientWidth,scroll:e.scrollWidth,display:getComputedStyle(expr).display,parts,buttons,root,viewport:document.documentElement.clientWidth}
     })
     expect(v.parts,id).toHaveLength(2)
+    if(width<=350){expect(v.display).toBe('grid');expect(v.parts[1].top-v.parts[0].top).toBeGreaterThan(8)}
+    else expect(v.display).toBe('flex')
     expect(v.right,id+' viewport at '+width).toBeLessThanOrEqual(v.viewport+1)
     expect(v.scroll,id+' overflow at '+width).toBeLessThanOrEqual(v.width+1)
     for(const p of v.parts){expect(p.left).toBeGreaterThanOrEqual(v.left-1);expect(p.right).toBeLessThanOrEqual(v.right+1)}

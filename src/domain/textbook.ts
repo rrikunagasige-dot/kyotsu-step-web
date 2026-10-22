@@ -322,6 +322,38 @@ export function effectiveTextbookProgress(unit: TextbookUnit, progress: Textbook
     }
   }
 
+  // W-MATH-022/P-001: N14 Q16 no longer grades the old completed two-endpoint
+  // expression. Archive all v9 progress, retaining earlier version archives and
+  // reopening ONLY re-keyed n14-16; approved Q10/Q14/Q15 progress survives.
+  if (unit.unitId === 'math-numbers-expressions-n14' && unit.revision === 10
+    && progress.unitId === unit.unitId
+    && [1,2,3,4,5,6,7,8,9].includes(progress.unitRevision)) {
+    const fromV9 = progress.unitRevision === 9 ? progress
+      : effectiveTextbookProgress({ ...unit, revision: 9 }, progress)
+    if (!fromV9 || fromV9.unitRevision !== 9) return undefined
+    const archive: TextbookRevisionArchive = {
+      unitRevision: 9, startedAt: fromV9.startedAt, updatedAt: fromV9.updatedAt,
+      answers: { ...fromV9.answers },
+      ...(fromV9.completedAt !== undefined ? { completedAt: fromV9.completedAt } : {}),
+      ...(fromV9.previousRevisionCompletedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV9.previousRevisionCompletedAt } : {}),
+      ...(fromV9.migratedFromRevision !== undefined
+        ? { migratedFromRevision: fromV9.migratedFromRevision } : {}),
+    }
+    const answers = { ...fromV9.answers }
+    delete answers['n14-16']
+    return {
+      unitId: unit.unitId, unitRevision: 10,
+      startedAt: fromV9.startedAt, updatedAt: fromV9.updatedAt,
+      answers, migratedFromRevision: 9,
+      archivedRevisions: { ...(fromV9.archivedRevisions ?? {}), '9': archive },
+      ...(fromV9.completedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV9.completedAt }
+        : fromV9.previousRevisionCompletedAt !== undefined
+          ? { previousRevisionCompletedAt: fromV9.previousRevisionCompletedAt } : {}),
+    }
+  }
+
   // W-MATH-020/P-001: archive prior v8 (and all earlier archives);
   // the old n14-15 graded a compound operation+final range, while the
   // new n14-15 grades ONLY the left fractional endpoint.

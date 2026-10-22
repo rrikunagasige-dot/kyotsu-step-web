@@ -28,7 +28,7 @@ describe('W-MATH-024/P-001 approved hint-only N05-Q18',()=>{
     expect(q.hints[0]).not.toContain('r=−1')
     expect(q.hints[0]).not.toContain('s=3なら')
     expect(new Set(q.choices).size).toBe(4)
-    for(const o of q.choices)expect(()=>katex.renderToString(o,{throwOnError:true})).not.toThrow()
+    for(const o of q.choices ?? [])expect(()=>katex.renderToString(o,{throwOnError:true})).not.toThrow()
     const blocks=section.readingFlow.filter(b=>['n05-lead-18','n05-formula-18','n05-after-18'].includes(b.id))
     expect(blocks.map(b=>b.id)).toEqual(['n05-lead-18','n05-formula-18','n05-after-18'])
     expect(blocks[1].type).toBe('formula')

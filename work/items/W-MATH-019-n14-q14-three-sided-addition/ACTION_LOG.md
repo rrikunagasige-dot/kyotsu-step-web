@@ -9,3 +9,7 @@ Status: IMPLEMENTING
 - CSS only Q14 mobile 2 visual rows and matching Q14 review wrapper padding; review target registered for Q14 and Q10 previously accepted marker suppressed; original Q10 formula/answers unchanged.
 - Typecheck on first CI of intermediate state found typing oversight in new test; corrected. Governance on first CI required normal-form Status and mandatory Work files; corrected without changing learner formula.
 - E2E/real 320/390/1440, full CI, Gate① user visual, Gate② and Gate③ pending. Do not claim PASS in advance.
+
+## 2026-10-22 real Gate①: failed at narrower yellow reviewer 320
+- At test source SHA `594c17c7226bdcbab67a255d50e1773cfd880aac` [genuine Chrome #39707797563](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39707797563) had exactly 1 failure / 6 cases: review marked Q14 320 innerScrollWidth 225 > clientWidth 220. Review 390, review PC 1440 and normal lesson 320/390/1440 PASS; code P001 maths and main intact. Artifact 12396235441 retained partial images. Stop; no fabricated visual PASS.
+- Exact [P-002](./PROPOSAL_P002_320_REVIEW_INSET.md) authored only, proposed 320-only Q14 yellow inset .15rem, not implemented or approved. Preserve earlier accepted N11/N14; await new user consent.

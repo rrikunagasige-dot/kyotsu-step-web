@@ -380,14 +380,14 @@ const q14Content = {
 // W-MATH-020/P-001: preserve all prior approved blocks; correct only original
 // N14 Q15 bundled operation+completed answer into 3 division choices
 // followed by 2 endpoint calculations, between accepted Q14 and intact Q16.
-const q15Start = q14Content.readingFlow.findIndex(b=>b.id==='n14-lead-15')
+const q15Wm020Start = q14Content.readingFlow.findIndex(b=>b.id==='n14-lead-15')
 const q15After = q14Content.readingFlow.findIndex(b=>b.id==='n14-after-15')
 const q14Prev = q14Content.readingFlow.findIndex(b=>b.id==='n14-after-14')
 const q16Start = q14Content.readingFlow.findIndex(b=>b.id==='n14-lead-16')
 const oldQ15Index=q14Content.items.findIndex(i=>i.id==='n14-15')
-if(q15Start<0 || q15After!==q15Start+2 || q14Prev!==q15Start-1 ||
+if(q15Wm020Start<0 || q15After!==q15Wm020Start+2 || q14Prev!==q15Wm020Start-1 ||
    q16Start!==q15After+1 || oldQ15Index<0 ||
-   q14Content.readingFlow[q15Start+1]?.id!=='n14-formula-15')
+   q14Content.readingFlow[q15Wm020Start+1]?.id!=='n14-formula-15')
   throw new Error('N14 accepted Q14→original Q15→Q16 boundary has changed')
 const q15Flow:TextbookReadingBlock[]=[
   {id:'n14-lead-15',type:'formula',derivationId:'n14-q15-chain',parts:[
@@ -433,7 +433,7 @@ const q15BoundRight:TextbookItem=reviewItem(
 )
 const q15Content={
   readingFlow:[
-    ...q14Content.readingFlow.slice(0,q15Start),
+    ...q14Content.readingFlow.slice(0,q15Wm020Start),
     ...q15Flow,
     ...q14Content.readingFlow.slice(q15After+1),
   ],

@@ -3,7 +3,13 @@ Status: VERIFYING
 Date: 2026-10-22 JST
 Command: CMD-WORK-001 修正 (linked to W-MATH-022 §12B impact audit)
 
-## Latest authoritative checkpoint — 2026-10-22 JST, Q05 Stage A tech PASS / human Gate① pending
+## CURRENT authoritative 2026-10-22 — Q05 Gate① accepted; Q08 Stage B coded+photographed, Q08 Gate① pending
+- **W-MATH-023 Status: VERIFYING**, P-002 approved. User's verbatim 「いいよ続けて。因みに今どこまで進んでいる？」 accepted Q05 authentic two-point visual; **Q05 BLOCK-VISUAL-OK**. Q05 accepted source `c911529360f070a5b6ddb6cf2a104eabe4abd708`, immutable images `913a7b0d6ce165f910c85bb3498fb5a9921c6a7d`. Never re-request Q05 acceptance.
+- Stage B **Q08-only**: N13 rev3→4 (9 original Word markers; 10→12 graded steps), three meaningful choices: ± branches, positive root, negative root. Preserve Q05 blocks exactly, archive3, clear only old bundled Q08 active answer. **Learner code and actual Chrome tested SHA `f5c0b2934ae1682a63f36401386d4bb24084c06a`**, authentic corrected 320/390/1440 screenshots in immutable commit `43fb15e835c008d69cc5606612dbd26bbbc28185` — [Q08 Gate① numbered review](./GATE1_N13_Q08_REVIEW_SHEET.md). **Q08 Gate① user response NOT YET RECEIVED: BLOCK-CHECK-PENDING**.
+- Dedicated Q08 Chromium screenshot job **39782844611** SUCCESS and corrected-path job **39782844611** SUCCESS; correct 15 images source SHA and Noto CJK JP verified. Whole work governance and review CI success at checked SHA. Math textbook complete CI **39783808307** failed on R5 obsolete Q08 two-line Playwright assertion and unrelated math-set keyboard toggle; obsolete Q08 expectation now repaired in test file only, rerun on later SHA **39785732319** pending (no PASS claim). Historical Stage A v3 test fixture idempotence fixed; 229 unit tests then passed.
+- W-MATH-022 N14 Q16 separate Gate① still pending. Q08 Gate②/whole-app Gate③ not started; no main merge, production hosting, release or paid services. All lower sections describing proposal-only or Q05 pending are historical and superseded here.
+
+## Historical checkpoint — 2026-10-22 JST, Q05 Stage A tech PASS / human Gate① pending
 - **Status: VERIFYING, BLOCK-CHECK-PENDING**; the student-facing Stage A N13 Q05 is coded at source SHA `c911529360f070a5b6ddb6cf2a104eabe4abd708`, not merged. Q08 Stage B **not started**.
 - Native math textbook CI #39777436006, math practice #39777435983, governance #39777435948, review preview + real Chrome #39777436057 all SUCCESS on that exact SHA.
 - Initial images showed square placeholders for Japanese. GitHub Actions screenshot font setup was corrected to Noto CJK JP; reproduced 320/390/1440 screenshots in storage commit `913a7b0d6ce165f910c85bb3498fb5a9921c6a7d`, source code unchanged. Verified screenshot images directly; see [Q05 numbered Gate① sheet](./GATE1_N13_Q05_REVIEW_SHEET.md).

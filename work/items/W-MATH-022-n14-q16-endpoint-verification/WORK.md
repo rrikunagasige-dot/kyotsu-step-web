@@ -1,5 +1,5 @@
 # W-MATH-022 — N14 Q16 端点代入・絶対値による確認
-Status: PROPOSED
+Status: VERIFYING
 Updated: 2026-10-22 JST
 Command: CMD-WORK-001 — 修正
 
@@ -24,13 +24,13 @@ Original N14 Q16; code reading and impact audit; PROPOSAL_P001 exact design (fiv
 N14 Q10/Q14/Q15 approved mathematics, Q15 P-003 four-stage wrong hint, other N14 blocks, original Word and one canonical figure n14-f01; math practice/physics; main, production, Pages, Vercel, PR merges, costs. No learner source, unit revision, history, tests, CSS, generated images changed in this proposal-only branch.
 
 ## Approved Proposal
-None. P-001 awaits direct user approval.
+P-001, 2026-10-22 JST: user's direct 「いいよ。続けて」 to the exact Q16 proposal. Not a visual Gate① acceptance or release authorization.
 
 ## Current Step
-Root cause and original OMML/source inspection completed; exact proposal written; no code implementation.
+P-001 approved; five Q16 decisions, v9→v10 selective progress archive, dedicated unit/browser tests implemented in isolated branch. Native CI verification pending.
 
 ## Next Step
-Show P-001 in ChatGPT and await explicit user approval or requested revision. Changed proposal => REVISE-PROPOSAL, present full revision and STOP. After approval, scoped code/migration/test changes, 320/390/1440 genuine Chrome, Gate① user fine review, Gate② cross-audit, Gate③ SHA-matched whole-app user 「総チェックOK」 only when separately ready.
+Run exact-SHA native GitHub CI and real Chromium 320/390/1440; check Q16-specific phone line wrapping and all 5 wrong/hint/retry; create real GitHub images and Gate① only after verified. Gate② and Gate③ remain open.
 
 ## Dependencies
 Q13→accepted Q14→accepted Q15 results → Q16. Q16 needs Q15 endpoints -2/3 and 2; Q16 new answers must not leak earlier holes.

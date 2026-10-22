@@ -6,3 +6,10 @@
 - Identified Q16 single bundled completed expression, wrong-state leak, and N14 rev9->10 archive risk. Scoped unrelated sibling effects UNVERIFIED rather than PASS.
 - Created independent proposal branch from approved parent HEAD; wrote Work/FINDINGS/P-001. **No learner app source or history migration, tests, screen capture, PR merge, main/public app or deployment changed.**
 - Current stop: USER REVIEW OF EXACT P-001; Q16 implementation permission NOT GRANTED. Gate②/③ not closed.
+
+## 2026-10-22 JST — P-001 user approval and isolated implementation
+- Exact proposal approved by direct 「いいよ。続けて」 immediately after the P-001 Q16 visual/5-decision proposal. Not main/host/release approval.
+- Changed Q16 ONLY in n14Lesson.ts: left inner, left absolute, right inner, right absolute, final inclusion; preserving accepted Q10/Q14/Q15. Q16 CSS applies only to n14-q16-chain and <=430px.
+- Added revision9→10 N14 archive with only active n14-16 invalidated. Previous revision history and approved items survive.
+- Added wMath022P001 unit tests, imported into existing newBatchCoverage CI; updated narrow snapshot-dependent assertions and appended Q16 320/390/1440 Chromium wrong/hint/retry path to existing batch E2E.
+- No PR merged and no Pages or external hosting, user visual Gate① still pending; test PASS not claimed until actual run succeeds.

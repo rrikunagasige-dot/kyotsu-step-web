@@ -1,5 +1,5 @@
 # W-MATH-023 / P-002 — N13 Q05→Q08 sequential correction and history-safe migration
-Status: PROPOSED
+Status: APPROVED — only scoped Stage A Q05 implementation; Q08 gated by Q05 user visual approval
 Date: 2026-10-22 JST
 Command: CMD-WORK-001 修正
 Historical original P-001 (not approved): PROPOSAL_P001_HISTORICAL.md
@@ -60,4 +60,4 @@ Only after the third answer, show x=2 または x=-2, explaining that they are a
 - Produce separate Q08 numbered genuine SHA-matched visual GitHub sheet; STOP for user's explicit Q08 「細部OK」 or 「要修正」. Later Gate② independent cross-block math, hint and progress audit; Gate③ needs separately approved verified full-app playable SHA and user 総チェックOK.
 
 ## Approval and STOP
-This is a NEW exact P-002, still PROPOSED. Only an explicit reply to the request to approve **this** proposal may authorize Stage A implementation and contingent Stage B after Q05 Gate①. Short vague continuation, viewing the links or approval of N14 Q16 cannot count. If the user requests different copy, keys, revisions or scope, REVISE-PROPOSAL and ask again before any code edits. No merge, public hosting, billing or deployment permission requested.
+**P-002 received implementation approval 2026-10-22 JST:** the user's direct 「いいよ続けて」 immediately answered the preceding exact P-002 approval question, with no changes requested. Scope is Stage A Q05 now; Stage B contingent on separately explicit Q05 「細部OK」. This is NOT Q05 Gate① itself nor N14 Q16 Gate①. Short vague continuation, viewing the links or approval of N14 Q16 cannot count. If the user requests different copy, keys, revisions or scope, REVISE-PROPOSAL and ask again before any code edits. No merge, public hosting, billing or deployment permission requested.

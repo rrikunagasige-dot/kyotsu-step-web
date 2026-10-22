@@ -3,6 +3,13 @@ Status: VERIFYING
 Date: 2026-10-22 JST
 Command: CMD-WORK-001 修正 (linked to W-MATH-022 §12B impact audit)
 
+## Latest authoritative checkpoint — 2026-10-22 JST, Q05 Stage A tech PASS / human Gate① pending
+- **Status: VERIFYING, BLOCK-CHECK-PENDING**; the student-facing Stage A N13 Q05 is coded at source SHA `c911529360f070a5b6ddb6cf2a104eabe4abd708`, not merged. Q08 Stage B **not started**.
+- Native math textbook CI #39777436006, math practice #39777435983, governance #39777435948, review preview + real Chrome #39777436057 all SUCCESS on that exact SHA.
+- Initial images showed square placeholders for Japanese. GitHub Actions screenshot font setup was corrected to Noto CJK JP; reproduced 320/390/1440 screenshots in storage commit `913a7b0d6ce165f910c85bb3498fb5a9921c6a7d`, source code unchanged. Verified screenshot images directly; see [Q05 numbered Gate① sheet](./GATE1_N13_Q05_REVIEW_SHEET.md).
+- **Human `細部OK` has NOT been received**. Gate② and Gate③ uncompleted. W-MATH-022 N14 Q16 separately remains Gate① pending. No merge, release, hosting, or costs authorized.
+- The sections below are historical snapshots; assertions that code remains proposal-only or CI pending were superseded by the checkpoint above.
+
 ## Exact authority and current status
 - Origin: W-MATH-022 `IMPACT_AUDIT_PRESCREEN_20261022.md`, confirmed sibling F-022-S1/F-022-S2.
 - Original teacher Word SHA256 `93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa`, N13 Q05 paragraph 557, Q08 paragraph 566.

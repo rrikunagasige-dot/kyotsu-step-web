@@ -1,5 +1,5 @@
 # W-MATH-021/P-001 — Remove direct answer from Q15 middle's error hint
-Status: PROPOSED — EXACT USER APPROVAL REQUIRED; NO CODE MODIFIED
+Status: APPROVED — direct user 「承認」, 2026-10-22 JST; one-hint replacement implemented; verification ongoing
 Date: 2026-10-22 JST
 
 ## Confirmed behavior and reason
@@ -24,3 +24,6 @@ If any unexpected source or display change occurs, stop and propose a new exact 
 
 ## Approval boundary
 Only an explicit separate user approval of this one Q15 center-hint sentence permits changing learner code. This proposal does not close independent Gate② or whole-app Gate③.
+
+## Explicit exact approval and implementation — 2026-10-22
+After being shown the full one-hint substitution and asked 「この1文の修正を承認しますか？」, the user replied **「承認」** without changes. On isolated W-MATH-021 branch, changed exactly the Q15 center item on-error `hints` literal in `src/data/textbook/math/numbers/n14Lesson.ts`. Did NOT change answers, formulas, accepted Q15 visuals, Q10/Q14/Q16, revision9, math renderer, main or public application. Focused Vitest assertion and dedicated authentic 320/390/1440 ordinary-app wrong/hint/retry screenshot capture added; no Gate① changed-hint user acceptance until actual tests/screenshots succeed. Full independent Gate② and Gate③ remain open.

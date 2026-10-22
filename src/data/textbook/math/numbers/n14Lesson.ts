@@ -462,11 +462,11 @@ const q16Flow:TextbookReadingBlock[]=[
     M('|3x-2|\\le4'),
   ]},
   {id:'n14-formula-16',type:'formula',derivationId:'n14-q16-chain',parts:[
-    M('x=-\\frac23:\\quad|3(-\\frac23)-2|=|'),
+    M('x=-\\frac23:\\quad|3(-\\frac23)-2|'),M('=|'),
     C('n14-wm022-q16-left-inner'),M('|='),C('n14-wm022-q16-left-abs'),
   ]},
   {id:'n14-wm022-q16-right',type:'formula',derivationId:'n14-q16-chain',parts:[
-    M('x=2:\\quad|3\\cdot2-2|=|'),
+    M('x=2:\\quad|3\\cdot2-2|'),M('=|'),
     C('n14-wm022-q16-right-inner'),M('|='),C('n14-wm022-q16-right-abs'),
   ]},
   {id:'n14-wm022-q16-bridge',type:'paragraph',derivationId:'n14-q16-chain',parts:[

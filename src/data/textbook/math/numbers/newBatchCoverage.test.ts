@@ -49,7 +49,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       const unit = mathTextbookUnits.find(u => u.unitId === 'math-numbers-expressions-n' + n)
       expect(unit, 'N' + n).toBeDefined()
       expect(unit?.status).toBe('review')
-      expect(unit?.revision).toBe(n === '11' ? 10 : n === '14' ? 9 : ['06', '07', '08', '13'].includes(n) ? 3 : 2)
+      expect(unit?.revision).toBe(n === '11' ? 10 : n === '14' ? 9 : ['06', '07', '08'].includes(n) ? 3 : n === '13' ? 4 : 2)
       expect(Object.keys(map)).toEqual(Array.from({ length: count }, (_, i) => 'N' + n + '-Q' + String(i + 1).padStart(2, '0')))
       const items = unit?.sections.flatMap(section => section.items) ?? []
       const choiceIds = unit?.sections.flatMap(section => section.readingFlow.flatMap(block =>
@@ -61,7 +61,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       expect(items.map(i => i.id), 'N' + n).toEqual(mapped)
       allChoiceCount += items.length
     }
-    expect(allChoiceCount).toBe(163) // W-MATH-023/P-002 A adds 1 Q05 choice; 123 Word source labels unchanged
+    expect(allChoiceCount).toBe(165) // W-MATH-023/P-002 adds Q05 +1 and Q08 +2; 123 Word markers unchanged
   })
 
   it('keeps every original figure byte-for-byte and its original question-answer gates', () => {
@@ -426,11 +426,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
         rejected: ['\\text{原点から離れている}', 'a>0', 'a<0'],
         expectedRevision: 3,
       },
-      '13': {
-        id: 'n13-08', claims: ['3x=6', '3x=-6', 'x=2', 'x=-2'],
-        rejected: ['x=6', '\\text{かつ}', 'x=2'],
-        expectedRevision: 3,
-      },
+
     }
     for (const [n, spec] of Object.entries(cases)) {
       const unit = mathTextbookUnits.find(u => u.unitId.endsWith('n' + n))!

@@ -1,5 +1,5 @@
 # W-MATH-019 — N14 Q14 三辺の同時加算を生徒が導く
-Status: VERIFYING
+Status: REVISE-PROPOSAL
 Date: 2026-10-22 JST
 Command: CMD-WORK-001 修正; WORK_SYSTEM §§12A–12B.
 Authority: main Constitution/dictionary, MASTER §52–54, Mathematics Textbook SPEC §§5–8; live main 15ae503455bc6ae75b080caa1c4919cafb250027; based on isolated review branch 857127cba2351054a1070b65b10cda2a56d64209.
@@ -19,3 +19,7 @@ User replied exactly 「继续」 immediately to the specific Q14 5-hole proposa
 - User reply **「いいよ」** to the explicit new P-002 approval request is authoritative. On <=350px only Q14's yellow `[data-testid="review-mark-n14-formula-14"]` horizontal inset changes from .4rem to .15rem. Q10 and all other reviewer markers, normal lesson and buttons retain existing CSS. No math/React/answers/history changes.
 - Prior native 320 review failed 225px content vs 220px inner width; predicted +8px from this authorized correction. Must measure anew before claiming PASS, record exact current learner SHA and genuine screenshots.
 - Gate① user visual acceptance of Q14, independent Gate② and playable SHA-matched Gate③ remain OPEN. Draft PR #108 and main unchanged; Q15 correction is a distinct future Work.
+
+
+## 2026-10-22 P-002 verified stop / P-003 pending
+Real Chromium #39709378275 at SHA 4700299964b946cb9dc440606dd986dfe233b2ad: 5/6 cases PASS; 320px marked review FAIL. Original 225px vs 220px inner-width assertion no longer fails. The next assertion finds a math child left coordinate 47.125px against minimum 47.578125px, exceeding 1px allowance by 0.453125px (1.453125px outside formula line). Reviewed 390/1440 and ordinary 320/390/1440 PASS. P-002 approval and CSS implementation stand; no full Gate1 PASS. No reapproval of math content needed. P-003 only PROPOSED, code not changed.

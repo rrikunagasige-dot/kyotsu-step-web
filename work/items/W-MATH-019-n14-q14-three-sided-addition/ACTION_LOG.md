@@ -17,3 +17,8 @@ Status: IMPLEMENTING
 ## 2026-10-22 — P-002 approved by user「いいよ」 and narrowly implemented
 - Exact new P-002 approval received after authentic Chromium 320-only reviewer 225 vs 220 FAIL. Changed only reviewer-specific `src/review/review.css` at <=350px for `review-mark-n14-formula-14` to `padding-inline:.15rem`. Added append-only Work and approval records. No formula button resizing, other CSS refactor, source lesson, Q15, main or public app change.
 - Verified results must be linked to SHA after rerun; no Gate① acceptance before native screenshots/tests pass and user replies to requested concise Q14 mathematics layout.
+
+
+## 2026-10-22 P-002 native QA failed
+Real Chromium #39709378275 at SHA 4700299964b946cb9dc440606dd986dfe233b2ad: 5/6 cases PASS; 320px marked review FAIL. Original 225px vs 220px inner-width assertion no longer fails. The next assertion finds a math child left coordinate 47.125px against minimum 47.578125px, exceeding 1px allowance by 0.453125px (1.453125px outside formula line). Reviewed 390/1440 and ordinary 320/390/1440 PASS. P-002 approval and CSS implementation stand; no full Gate1 PASS. No reapproval of math content needed. P-003 only PROPOSED, code not changed.
+Stopped per P-002 rule; no weakening of tests, button shrinking, or speculative CSS applied.

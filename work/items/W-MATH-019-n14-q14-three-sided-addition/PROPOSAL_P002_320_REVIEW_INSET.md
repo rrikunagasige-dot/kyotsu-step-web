@@ -30,3 +30,8 @@ P-001 was already approved and its mathematical content tested; P-002 exact 320p
 
 ## Approval and implementation checkpoint — 2026-10-22 JST
 User directly answered **「いいよ」** to the immediately preceding exact P-002 question about reducing **only** Q14's <=350px numbered-review wrapper horizontal padding from .4rem to .15rem. This authorizes precisely the scoped CSS change plus the necessary verification and evidence; **not** Q14 new math, Q15, accepted Q10/N11 blocks, main/Pages, publication, or Gate① user acceptance. Rerun genuine reviewer+normal screens at 320/390/1440. No additional CSS tuning if measurement fails; return to REVISE-PROPOSAL.
+
+
+## Postapproval real verification
+Real Chromium #39709378275 at SHA 4700299964b946cb9dc440606dd986dfe233b2ad: 5/6 cases PASS; 320px marked review FAIL. Original 225px vs 220px inner-width assertion no longer fails. The next assertion finds a math child left coordinate 47.125px against minimum 47.578125px, exceeding 1px allowance by 0.453125px (1.453125px outside formula line). Reviewed 390/1440 and ordinary 320/390/1440 PASS. P-002 approval and CSS implementation stand; no full Gate1 PASS. No reapproval of math content needed. P-003 only PROPOSED, code not changed.
+See proposed follow-up P-003 document; never conflate existing P-002 user approval with P-003 permission.

@@ -26,3 +26,8 @@ No synthetic image can substitute for native screenshots. Report CI status accur
 
 ## Current authorized P-002 review-only code adjustment (2026-10-22)
 - User explicitly said **「いいよ」** to exact 320px review-only inset correction; `src/review/review.css` adds scoped <=350px 0.15rem rule without touching normal learner or canonical button styles. Actual native Chromium recheck 320/390/1440 required, not presumed. Previous P-001 global full CI success is not a pass for this CSS-only fix. Gate①/Q14 user acceptance PENDING. Gate② and Gate③ remain NOT DONE.
+
+
+## P-002 exact native QA checkpoint 2026-10-22
+Real Chromium #39709378275 at SHA 4700299964b946cb9dc440606dd986dfe233b2ad: 5/6 cases PASS; 320px marked review FAIL. Original 225px vs 220px inner-width assertion no longer fails. The next assertion finds a math child left coordinate 47.125px against minimum 47.578125px, exceeding 1px allowance by 0.453125px (1.453125px outside formula line). Reviewed 390/1440 and ordinary 320/390/1440 PASS. P-002 approval and CSS implementation stand; no full Gate1 PASS. No reapproval of math content needed. P-003 only PROPOSED, code not changed.
+Governance #39709378281 SUCCESS, Math practice #39709378228 SUCCESS; Review Preview workflow #39709378275 FAIL (320 marked reviewer). Full Textbook CI #39709378334 was still in progress at this checkpoint. Gate1 user visual PENDING, Gate2 OPEN, Gate3 NOT READY, main/public unchanged.

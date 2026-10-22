@@ -414,7 +414,7 @@ const q15DivisionLeft:TextbookItem=reviewItem(
 const q15DivisionCenter:TextbookItem=reviewItem(
   'n14-wm020-q15-divide-center','中央3xの係数を1にする除数を選ぼう。',
   '3','formula',['-3','1','6'],'causal-reasoning','light',
-  ['3xの係数を1にするには、どんな正の数で割ればよいか考えよう。正の数で割れば不等号の向きと等号は変わらない。'],
+  ['係数を1にする方法を、まず小さい数で考えよう。① 2×□=1 の□には何が入る？ ② 3×□=1 では？ ③ 同じ考え方で、3x×□=x の□には何が入る？ ④ この掛け算を割り算に直すと、3x÷□=x の□には何が入る？'],
 )
 const q15DivisionRight:TextbookItem=reviewItem(
   'n14-wm020-q15-divide-right','右端6にも同じ正の除数を使おう。',

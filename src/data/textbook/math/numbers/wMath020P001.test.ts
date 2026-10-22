@@ -77,10 +77,14 @@ describe('W-MATH-020/P-001 N14 Q15 source and guarded archive',()=>{
  })
  it('W-MATH-021 P-001 guides the incorrect center divisor without directly giving 3x÷3=x',()=>{
    const center=item('n14-wm020-q15-divide-center')
-   const afterWrong='3xの係数を1にするには、どんな正の数で割ればよいか考えよう。正の数で割れば不等号の向きと等号は変わらない。'
+   const afterWrong='係数を1にする方法を、まず小さい数で考えよう。① 2×□=1 の□には何が入る？ ② 3×□=1 では？ ③ 同じ考え方で、3x×□=x の□には何が入る？ ④ この掛け算を割り算に直すと、3x÷□=x の□には何が入る？'
    expect(center.answer).toBe('3')
    expect(center.choices).toEqual(['3','-3','1','6'])
    expect(center.hints).toEqual([afterWrong])
+   const examples=['2×□=1','3×□=1','3x×□=x','3x÷□=x']
+   const positions=examples.map(example=>afterWrong.indexOf(example))
+   expect(positions.every(n=>n>=0)).toBe(true)
+   expect(positions).toEqual([...positions].sort((a,b)=>a-b))
    expect(center.hints.join('')).not.toContain('3x÷3=x')
    expect(sec.items.find(i=>i.id==='n14-wm020-q15-divide-left')?.answer).toBe('3')
    expect(sec.items.find(i=>i.id==='n14-wm020-q15-divide-right')?.answer).toBe('3')

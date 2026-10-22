@@ -26,3 +26,8 @@ User answered **「承認」** to exactly this hint one-string correction. Teste
 
 ## 2026-10-22 review revision P-003
 - User rejected P-002 rhetorical questioning and requested example-based scaffolding `2×□=1 → 3×□=1 → 3x...`. New [P-003](./PROPOSAL_P003_EXAMPLES_TO_DIVISION.md) proposes four-stage single hint; **NO CODE ALTERED**, unit/Chromium checks for this new wording NOT RUN. Historical P-001 run CI SUCCESS still valid for older wording only. Await new exact P-003 approval; Q15 math Gate① remains accepted, changed-hint visual Gate① pending, Gate②/③ open.
+
+## 2026-10-22 — P-003 explicit approval + scoped implementation
+- User said exactly **「承認お願いします。」** to the P-003 “2×□=1 → 3×□=1 → 3x×□=x → 3x÷□=x” staged hint. Changed only one Q15-center after-wrong `hints[0]` literal, not the previously accepted three formulas/five graded answer keys, Q10/Q14/Q16, revision9, CSS, source markers, renderer or progress history.
+- Updated focused tests and real normal-app 320/390/1440 wrong→hint→retry E2E for the four unsolved examples in order; re-enabled source-bound screenshot recapture for the *new* P-003 wording. Old P-001 evidence retained by identical Git blobs in [history/p001](./evidence/history/p001-before-example-first/README.md).
+- Native Chromium/full CI not yet checked at this checkpoint; do not claim PASS. Changed-hint Gate① user visual pending; Gate②/③ incomplete, PR #110 draft, main/Pages unchanged.

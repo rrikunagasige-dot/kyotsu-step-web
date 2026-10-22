@@ -3,7 +3,7 @@ import { expect, test } from '@playwright/test'
 import { mathNumbersN14Unit } from '../src/data/textbook/math/numbers/n14Lesson'
 
 const id = 'n14-wm020-q15-divide-center'
-const hintText = '3xの係数を1にするには、どんな正の数で割ればよいか考えよう。正の数で割れば不等号の向きと等号は変わらない。'
+const hintText = '係数を1にする方法を、まず小さい数で考えよう。① 2×□=1 の□には何が入る？ ② 3×□=1 では？ ③ 同じ考え方で、3x×□=x の□には何が入る？ ④ この掛け算を割り算に直すと、3x÷□=x の□には何が入る？'
 const out = 'e2e-evidence/'
 for (const width of [320, 390, 1440]) {
   test('W-MATH-021 approved Q15 center wrong-hint real learning '+width, async ({page}, info) => {
@@ -54,6 +54,11 @@ for (const width of [320, 390, 1440]) {
     await expect(hint).toBeVisible()
     await expect(hint.locator('span')).toHaveText(hintText) // ignore the unchanged 'ヒント' heading
     await expect(hint).not.toContainText('3x÷3=x')
+    const examples=['2×□=1','3×□=1','3x×□=x','3x÷□=x']
+    const actual=await hint.locator('span').innerText()
+    const positions=examples.map(k=>actual.indexOf(k))
+    expect(positions.every(n=>n>=0)).toBe(true)
+    expect(positions).toEqual([...positions].sort((a,b)=>a-b))
     await expect(page.getByTestId('textbook-item-n14-15')).toHaveCount(0)
     await hint.scrollIntoViewIfNeeded()
     const root=await hint.evaluate(el=>{

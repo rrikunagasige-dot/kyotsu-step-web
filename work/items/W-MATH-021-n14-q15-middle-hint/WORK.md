@@ -1,5 +1,5 @@
 # W-MATH-021 — N14 Q15 center after-wrong hint
-Status: REVISE-PROPOSAL
+Status: VERIFYING
 Date: 2026-10-22 JST
 Command: CMD-WORK-001 修正 / WORK_SYSTEM §§12A–B
 
@@ -29,3 +29,8 @@ Another old Q16 hint containing both endpoint calculations is a separate sibling
 - User said **「不对。这还是问句」** about the earlier P-002 direct-questions text, and specifically requested starting `2×?=1`, then `3×?=1`, deriving from those to ask what happens to `3x`. This is a **concrete pedagogic design revision**: genuine example-to-target progression, not just more interrogative sentences. P-002 was neither approved nor implemented and is now superseded (historical preserved).
 - [P-003](./PROPOSAL_P003_EXAMPLES_TO_DIVISION.md) proposes the exact one-hint four-stage plain text: 「係数を1にする方法を、まず小さい数で考えよう。① 2×□=1 の□には何が入る？ ② 3×□=1 では？ ③ 同じ考え方で、3x×□=x の□には何が入る？ ④ この掛け算を割り算に直すと、3x÷□=x の□には何が入る？」. Key logical bridge: coefficient inverse `3x×□=x` → equivalent division `3x÷□=x`, because the currently graded blank is a divisor. Examples have noninteractive square glyphs; **no new student operations or math answers**. It does not show the solved divisor, unlike the original evaluated `3x÷3=x` hint.
 - Existing approved P-001 string and real 320/390/1440 screenshots remain historical unchanged on branch; no P-003 code/UI/test edits made. Work remains REVISE-PROPOSAL, requiring exact approval of **new** P-003 before implementation; Gate① changed-hint approval remains pending. Earlier accepted Q15 math and Q10/Q14/N11 are not reopened; Q16 sibling separate, Gate②/③ still open.
+
+## 2026-10-22 — P-003 explicit approval + scoped implementation
+- User said exactly **「承認お願いします。」** to the P-003 “2×□=1 → 3×□=1 → 3x×□=x → 3x÷□=x” staged hint. Changed only one Q15-center after-wrong `hints[0]` literal, not the previously accepted three formulas/five graded answer keys, Q10/Q14/Q16, revision9, CSS, source markers, renderer or progress history.
+- Updated focused tests and real normal-app 320/390/1440 wrong→hint→retry E2E for the four unsolved examples in order; re-enabled source-bound screenshot recapture for the *new* P-003 wording. Old P-001 evidence retained by identical Git blobs in [history/p001](./evidence/history/p001-before-example-first/README.md).
+- Native Chromium/full CI not yet checked at this checkpoint; do not claim PASS. Changed-hint Gate① user visual pending; Gate②/③ incomplete, PR #110 draft, main/Pages unchanged.

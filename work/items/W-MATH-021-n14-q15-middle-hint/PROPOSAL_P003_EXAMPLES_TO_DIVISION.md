@@ -1,5 +1,5 @@
 # W-MATH-021/P-003 — N14 Q15 中央の誤答ヒントを「簡単な例→3xへの転用→割り算」に導く
-Status: PROPOSED — exact user approval required; NO CODE IMPLEMENTATION
+Status: APPROVED — exact user 「承認お願いします。」, 2026-10-22 JST; implemented, real app tests pending
 Date: 2026-10-22 JST
 Command: CMD-WORK-001 修正; user feedback during Gate① → REVISE-PROPOSAL
 Original reviewed draft SHA: `ae057b6075dc78ba7e905a4313df92393699d7f3`, Draft PR #110; main unchanged.
@@ -44,3 +44,6 @@ The `□` here are only **noninteractive example blanks in one existing hint str
 
 ## Decision and STOP
 Is this **four-stage small-example → reciprocal → 3x → division** one-hint P-003 text approved? The status is PROPOSED/REVISE-PROPOSAL and **no P-003 learner code change has been made**.
+
+## User approval and scope
+The user replied **「承認お願いします。」** directly after the P-003 four-example hint review. Implement only the one Q15 center after-wrong hint as given; P-002's rhetorical-question alternative never implemented. Focused tests and 320/390/1440 real screenshot recapture follow. Earlier P-001 genuine images are preserved by their original Git blobs in evidence/history/p001-before-example-first. No new choices, stage nodes, formula, CSS, Q16 edit, Gate② or Gate③ approval.

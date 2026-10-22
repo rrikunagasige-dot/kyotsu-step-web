@@ -1,4 +1,6 @@
 # N05 Q18 — 実アプリ Gate① 確認①（誤答ヒント）
+
+**Gate①受入済み（2026-10-23 JST）：** 実画像に対しユーザーが「おｋ。残りの仕事はまたどれぐらい？」と返答。Q18の細部を了承したこととして記録。以下は承認に使用した固定画像の履歴で、再承認は不要。Gate②とGate③は未完了。
 **Work:** W-MATH-024 / approved P-001  
 **Status:** BLOCK-CHECK-PENDING（ユーザー細部確認待ち）  
 **Source/actual browser SHA:** `7112121f1976c5d3ddb10e32c81ced665c9bd958`  

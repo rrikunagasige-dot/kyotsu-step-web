@@ -696,7 +696,8 @@ jobs:
 
   # W-MATH-024/P-001: one N05 Q18 wrong-only hint; exact-SHA native visual Gate①.
   wmath024-n05-q18-genuine-screenshots:
-    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'work/W-MATH-024-n05-q18-hint-leak-impl-20261022' }}
+    # Q18 visual Gate1 accepted: preserve frozen 18 genuine images and their real tested SHA.
+    if: ${{ false }}
     runs-on: ubuntu-latest
     concurrency:
       group: wmath024-n05-q18-${{ github.head_ref }}

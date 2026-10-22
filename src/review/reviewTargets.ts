@@ -125,7 +125,7 @@ const targets: Record<string, ReviewTarget> = {
     itemIds:['n05-18'],
     expectedAnswers:['(x-1)(5x+3)'],
     markBlockIds:['n05-formula-18'],
-    reviewState:'awaiting-user',
+    reviewState:'accepted',
   },
   'n01-q07': {
     id: 'n01-q07', unitId: 'math-numbers-expressions-n01', title: 'N01 Q07', question: '同類項の係数',

@@ -23,3 +23,6 @@ User answered **「承認」** to exactly this hint one-string correction. Teste
 
 ## W-MATH-021 P-002 user style feedback
 - P-001 technical full CI/Chrome = historical PASS only; at Gate① user commented **「不有问句是引导」** (question-led guidance required). Do not mark changed hint visual OK. [P-002](./PROPOSAL_P002_INTERROGATIVE_HINT.md) exact question-style alternative is PROPOSED and has no changed app code, screenshot or new test run. Current source SHA remains `98b7513d34914213b76a70746a6905a4cd87a9df` (code SHA for previous P-001 screenshots recorded separately). Other math small-block approvals stand, Gate②/③ incomplete.
+
+## 2026-10-22 review revision P-003
+- User rejected P-002 rhetorical questioning and requested example-based scaffolding `2×□=1 → 3×□=1 → 3x...`. New [P-003](./PROPOSAL_P003_EXAMPLES_TO_DIVISION.md) proposes four-stage single hint; **NO CODE ALTERED**, unit/Chromium checks for this new wording NOT RUN. Historical P-001 run CI SUCCESS still valid for older wording only. Await new exact P-003 approval; Q15 math Gate① remains accepted, changed-hint visual Gate① pending, Gate②/③ open.

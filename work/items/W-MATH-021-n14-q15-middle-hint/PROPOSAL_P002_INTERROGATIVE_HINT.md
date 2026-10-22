@@ -40,3 +40,6 @@ Both sentences are **genuine interrogative guidance** rather than a worked arith
 **Does the user approve replacing ONLY the existing Q15 center wrong-state hint with exactly the two question-form sentences above?**
 
 No code has been altered for P-002. Stop here until new direct approval.
+
+## Superseded by user feedback, not implemented — 2026-10-22
+The user replied to this P-002 with **「不对。这还是问句」**, followed by specific instructions to start with `2×?=1`, `3×?=1` and then use that to reach `3x`. The P-002 wording never received approval and was never written to learner code. Preserve it as revision history; see new [P-003](./PROPOSAL_P003_EXAMPLES_TO_DIVISION.md) for the exact proposed four-step teaching scaffold.

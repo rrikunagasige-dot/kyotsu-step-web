@@ -502,11 +502,25 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           persist-credentials: true
-      - name: Skip recursion on bot screenshot-only commit
+      - name: Skip existing evidence when Q16 learner and review code is unchanged
         id: need
         shell: bash
         run: |
+          evidence="work/items/W-MATH-022-n14-q16-endpoint-verification/evidence/gate1/README.md"
+          checked_sha="e64fd99b18ba167364c2dd6b108a6f7fef76f439"
           if git log -1 --format=%s | grep -q '^Store genuine N14 Q16 P001 Gate1 images'; then
+            echo 'capture=false' >> "$GITHUB_OUTPUT"
+          elif test -f "$evidence" && git diff --quiet "$checked_sha" HEAD -- \
+            src/data/textbook/math/numbers/n14Lesson.ts \
+            src/domain/textbook.ts \
+            src/review/reviewTargets.ts \
+            src/styles/global.css \
+            src/pages/TextbookUnitPage.tsx \
+            src/review/ReviewTextbookPage.tsx \
+            e2e/wmath022-n14-q16-gate1.spec.ts \
+            e2e/new-batch-walkthrough.spec.ts; then
+            # Documentation and stored images do not change the checked-out app.
+            # The reviewed image SHA stays the actual prior capture SHA.
             echo 'capture=false' >> "$GITHUB_OUTPUT"
           else
             echo 'capture=true' >> "$GITHUB_OUTPUT"

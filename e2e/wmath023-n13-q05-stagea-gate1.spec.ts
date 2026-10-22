@@ -55,7 +55,7 @@ test.describe('W-MATH-023 P-002 Stage A — N13 Q05 real exact-SHA Gate1 evidenc
       await expect(page.getByTestId('review-preview-count')).toContainText('0/2')
       await expect(page.getByTestId('review-preview-count')).toContainText('全10穴')
       await expect(page.getByTestId('review-mark-n13-wm023-q05-right')).toContainText('確認①')
-      await expect(page.getByTestId('review-mark-n13-formula-05')).toContainText('確認②')
+      await expect(page.getByTestId('review-mark-n13-formula-05')).toHaveCount(0) // locked until first case is answered
       const before=await page.evaluate(()=>localStorage.getItem('kyotsu-step-store'))
       await expect(page.getByTestId('textbook-figure-n13-f01')).toBeVisible()
       await page.getByTestId('textbook-item-'+choices[0][0]).scrollIntoViewIfNeeded()
@@ -76,7 +76,10 @@ test.describe('W-MATH-023 P-002 Stage A — N13 Q05 real exact-SHA Gate1 evidenc
         if(i===0)await snapshot(page,'review-wrong',width)
         await panel.getByRole('button',{name:answer,exact:true}).click()
         await expect(page.getByTestId('resolved-'+id)).toBeVisible()
-        if(i===0)await expect(page.getByTestId('textbook-item-n13-05')).toBeVisible()
+        if(i===0){
+          await expect(page.getByTestId('textbook-item-n13-05')).toBeVisible()
+          await expect(page.getByTestId('review-mark-n13-formula-05')).toContainText('確認②')
+        }
         await expect(page.getByTestId('review-preview-count')).toContainText((i+1)+'/2')
       }
       await expect(page.locator('.katex-error')).toHaveCount(0)

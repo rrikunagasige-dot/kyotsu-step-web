@@ -4,7 +4,7 @@ Updated: 2026-10-22 JST
 Command: CMD-WORK-001 — 修正
 
 ## Objective
-原Word N14【16】「両端の値を元の絶対値に代入し、どちらも含めてよいことを確認しよう。」を、完成計算の一括選択から、生徒自身の端点代入・絶対値・境界包含の段階確認へ直す。ただし本Workでは診断・exact提案まで。Q16 learner code実装は未承認。
+原Word N14【16】「両端の値を元の絶対値に代入し、どちらも含めてよいことを確認しよう。」を、完成計算の一括選択から、生徒自身の端点代入・絶対値・境界包含の段階確認へ直す。P-001の承認によりQ16限定実装・技術検証済み。Gate①のユーザー画像確認待ち。
 
 ## Authority
 - Repository: rrikunagasige-dot/kyotsu-step-web。repo ID 1391122224。
@@ -15,25 +15,25 @@ Command: CMD-WORK-001 — 修正
 - Earlier W-MATH-020 Q15 + W-MATH-021 4-stage hint accepted; W-MATH-021 FINDINGS F-021-02 confirms the Q16 sibling.
 
 ## Branch
-work/W-MATH-022-n14-q16-endpoint-proposal-20261022; created from W-MATH-021 HEAD, **proposal documents only**.
+work/W-MATH-022-n14-q16-endpoint-proposal-20261022; created from W-MATH-021 HEAD, now contains approved Q16 implementation, PASS-tested source SHA, genuine evidence and review records, Draft PR #111.
 
 ## Scope
-Original N14 Q16; code reading and impact audit; PROPOSAL_P001 exact design (five distinct learning decisions) awaiting individual user review.
+Original N14 Q16; exact P-001 implemented (five distinct learning decisions), N14 v9→v10 selective archival, genuine phone/PC technical QA passed; user visual Gate① still pending.
 
 ## Do Not Touch
-N14 Q10/Q14/Q15 approved mathematics, Q15 P-003 four-stage wrong hint, other N14 blocks, original Word and one canonical figure n14-f01; math practice/physics; main, production, Pages, Vercel, PR merges, costs. No learner source, unit revision, history, tests, CSS, generated images changed in this proposal-only branch.
+N14 Q10/Q14/Q15 approved mathematics, Q15 P-003 four-stage wrong hint, other N14 blocks, original Word and one canonical figure n14-f01; math practice/physics; main, production, Pages, Vercel, PR merges, costs. Previously approved learner blocks unchanged; only P-001's Q16 and minimum migration/test/review surfaces modified.
 
 ## Approved Proposal
 P-001, 2026-10-22 JST: user's direct 「いいよ。続けて」 to the exact Q16 proposal. Not a visual Gate① acceptance or release authorization.
 
 ## Current Step
-P-001 approved; five Q16 decisions, v9→v10 selective progress archive, dedicated unit/browser tests implemented in isolated branch. Native CI verification pending.
+P-001 approved and technical-verification PASS on learner-source SHA e64fd99b18ba167364c2dd6b108a6f7fef76f439; Gate① BLOCK-CHECK-PENDING (no 細部OK), Gate② open, Gate③ not ready.
 
 ## Next Step
-Run exact-SHA native GitHub CI and real Chromium 320/390/1440; check Q16-specific phone line wrapping and all 5 wrong/hint/retry; create real GitHub images and Gate① only after verified. Gate② and Gate③ remain open.
+User visual review of actual numbered Gate① sheet and explicit 細部OK / 要修正. Then and only then continue §12A Gate② independent cross-block audit; whole-app Gate③ remains separately authorized.
 
 ## Dependencies
 Q13→accepted Q14→accepted Q15 results → Q16. Q16 needs Q15 endpoints -2/3 and 2; Q16 new answers must not leak earlier holes.
 
 ## Completion Condition
-Proposal stage is completed when diagnosis/impact + exact proposed text/answers/hints/IDs/migration/tests is recorded and user can decide. Work itself cannot reach DONE without explicit approval, scoped implementation/verification and its applicable gates. Overall Gate②/③ remain OPEN.
+Q16 technical implementation and verification are complete, not overall Work DONE. Gate① user visual acceptance is still required; Gate②/③ OPEN. Do not merge/release without separate approval.

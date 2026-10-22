@@ -9,6 +9,7 @@ n14SourceToItemIds['N14-Q12'] = ['n14-wm016-q12-left', 'n14-wm016-q12-right', 'n
 n14SourceToItemIds['N14-Q10'] = ['n14-wm018-q10-add-left', 'n14-wm018-q10-add-center', 'n14-wm018-q10-add-right', 'n14-10', 'n14-wm018-q10-bound-right']
 n14SourceToItemIds['N14-Q14'] = ['n14-wm019-q14-add-left', 'n14-wm019-q14-add-center', 'n14-wm019-q14-add-right', 'n14-14', 'n14-wm019-q14-bound-right']
 n14SourceToItemIds['N14-Q15'] = ['n14-wm020-q15-divide-left', 'n14-wm020-q15-divide-center', 'n14-wm020-q15-divide-right', 'n14-15', 'n14-wm020-q15-bound-right']
+n14SourceToItemIds['N14-Q16'] = ['n14-wm022-q16-left-inner', 'n14-wm022-q16-left-abs', 'n14-wm022-q16-right-inner', 'n14-wm022-q16-right-abs', 'n14-16']
 const originalContent = makeReviewSteps('n14', [
   {
     title:'近い点は内側、遠い点は外側',
@@ -444,8 +445,77 @@ const q15Content={
   ],
 }
 
+// W-MATH-022/P-001 — Q16 alone: substitute each endpoint, take absolute values,
+// then interpret inclusion. The accepted Q10/Q14/Q15 blocks are never rewritten.
+const q16Start=q15Content.readingFlow.findIndex(b=>b.id==='n14-lead-16')
+const q16After=q15Content.readingFlow.findIndex(b=>b.id==='n14-after-16')
+const oldQ16Index=q15Content.items.findIndex(i=>i.id==='n14-16')
+if(q16Start<0 || q16After!==q16Start+2 ||
+   q15Content.readingFlow[q16Start-1]?.id!=='n14-after-15' ||
+   q15Content.readingFlow[q16Start+1]?.id!=='n14-formula-16' ||
+   oldQ16Index!==q15Content.items.length-1) {
+  throw new Error('N14 accepted Q15 to original Q16 final boundary changed')
+}
+const q16Flow:TextbookReadingBlock[]=[
+  {id:'n14-lead-16',type:'paragraph',derivationId:'n14-q16-chain',parts:[
+    T('前問で求めた左端 x=−2/3 と右端 x=2 を、元の不等式に戻して確かめよう。まず絶対値の中身を計算し、次に絶対値を求める。'),
+    M('|3x-2|\le4'),
+  ]},
+  {id:'n14-formula-16',type:'formula',derivationId:'n14-q16-chain',parts:[
+    M('x=-\frac23:\quad|3(-\frac23)-2|=|'),
+    C('n14-wm022-q16-left-inner'),M('|='),C('n14-wm022-q16-left-abs'),
+  ]},
+  {id:'n14-wm022-q16-right',type:'formula',derivationId:'n14-q16-chain',parts:[
+    M('x=2:\quad|3\cdot2-2|=|'),
+    C('n14-wm022-q16-right-inner'),M('|='),C('n14-wm022-q16-right-abs'),
+  ]},
+  {id:'n14-wm022-q16-bridge',type:'paragraph',derivationId:'n14-q16-chain',parts:[
+    T('元の条件は絶対値が4以下であること。左右とも、その条件を満たすか考えよう。'),
+  ]},
+  {id:'n14-wm022-q16-conclusion',type:'paragraph',derivationId:'n14-q16-chain',parts:[
+    T('両端の扱いを選ぼう。'),C('n14-16'),
+  ]},
+  {id:'n14-after-16',type:'paragraph',parts:[
+    T('左端も右端も絶対値が4となり、4≤4を満たす。もとの不等号には等号があるので、両端とも解に含まれる。'),
+  ]},
+]
+const q16Items:TextbookItem[]=[
+  reviewItem('n14-wm022-q16-left-inner',
+    '左端x=−2/3を代入して、3x−2を計算しよう。',
+    '-4','formula',['4','-2','0'],'causal-reasoning','light',
+    ['まず3×(−1/3)=−1を考えよう。今度は−2/3を掛ける。その積を求めた後で2を引こう。']),
+  reviewItem('n14-wm022-q16-left-abs',
+    '左端の中身を使って絶対値を求めよう。',
+    '4','formula',['-4','2','0'],'causal-reasoning','light',
+    ['たとえば|−3|=3。絶対値は0からの距離だよ。直前に求めた負の数にも同じ規則を使おう。']),
+  reviewItem('n14-wm022-q16-right-inner',
+    '右端x=2を代入して、3x−2を計算しよう。',
+    '4','formula',['-4','2','6'],'causal-reasoning','light',
+    ['たとえばx=1なら3×1−2を計算する。同じ順序で、今回はx=2を入れよう。']),
+  reviewItem('n14-wm022-q16-right-abs',
+    '右端の中身を使って絶対値を求めよう。',
+    '4','formula',['-4','2','0'],'causal-reasoning','light',
+    ['たとえば|2|=2。中身が0以上のときは、その値がそのまま距離になる。直前の結果に当てはめよう。']),
+  reviewItem('n14-16','元の不等式を満たすか確認し、両端の扱いを選ぼう。',
+    '両端とも含む','text',['左端だけ含む','右端だけ含む','両端とも含まない'],
+    'transfer','light',
+    ['たとえば|−2|≤2は、等号でも成り立つ。左右の絶対値と元の上限4を一つずつ比べよう。']),
+]
+const q16Content={
+  readingFlow:[
+    ...q15Content.readingFlow.slice(0,q16Start),
+    ...q16Flow,
+    ...q15Content.readingFlow.slice(q16After+1),
+  ],
+  items:[
+    ...q15Content.items.slice(0,oldQ16Index),
+    ...q16Items,
+    ...q15Content.items.slice(oldQ16Index+1),
+  ],
+}
+
 const rawN14={
-  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n14',revision:9,status:'review' as const,subject:'math-1a' as const,
+  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n14',revision:10,status:'review' as const,subject:'math-1a' as const,
   chapter:{chapterId:'math-ch01-numbers-expressions',chapterNumber:'1',chapterTitle:'数と式',unitCode:'1NUM',orderInChapter:14,sourcePages:[35,36]},
   title:'距離の上限と下限から、残す範囲を決める',subtitle:'絶対値の内側・外側と端点を、数直線で選び分ける。',
   source:{type:'reference' as const,label:'ユーザー提供「数と式」教科書モード対話段階導入版 v2 / N14',
@@ -454,6 +524,6 @@ const rawN14={
   sections:[{id:'lesson',number:'14',title:'本文',role:'concept' as const,
     description:'範囲の意味から変形し、元の条件へ戻して検算する。',
     figures:[{id:'n14-f01',src:'/assets/math/textbook/numbers/n14-f01.png',alt:'距離が3より小さい範囲と4以上の範囲を上下で比較した、解答後確認用の元図。',caption:'二つの範囲を導いた後で、内側と外側を図で比較する。',overlays:[]}],
-    readingFlow:q15Content.readingFlow,items:q15Content.items}],
+    readingFlow:q16Content.readingFlow,items:q16Content.items}],
 }
 export const mathNumbersN14Unit=validateTextbookUnits([rawN14])[0]

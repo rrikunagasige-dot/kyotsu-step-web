@@ -83,7 +83,7 @@ for(const width of [320,390]){
       const unit=mathTextbookUnits.find(u=>u.unitId.endsWith('n14'))!
       const items=unit.sections[0].items
       const ids=['n14-wm014-q07-nonnegative','n14-wm014-q07-negative','n14-07']
-      expect(unit.revision).toBe(9) // Q15 P001 adds 4 decisions; earlier approved items unchanged
+      expect(unit.revision).toBe(10) // Q16 P-001 adds 4 decisions; all earlier accepted steps unchanged
       expect(items.slice(6,9).map(i=>i.id)).toEqual(ids)
       await page.goto('/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n14')
       await page.evaluate(()=>localStorage.clear())
@@ -163,7 +163,7 @@ for(const width of [320,390]){
       const unit=mathTextbookUnits.find(u=>u.unitId.endsWith('n14'))!
       const items=unit.sections[0].items
       const ids=['n14-wm015-q08-nonnegative','n14-wm015-q08-negative','n14-08']
-      expect(unit.revision).toBe(9) // Q15 P001 adds 4 decisions; earlier approved items unchanged
+      expect(unit.revision).toBe(10) // Q16 P-001 adds 4 decisions; all earlier accepted steps unchanged
       expect(items.slice(9,12).map(x=>x.id)).toEqual(ids)
       await page.goto('/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n14')
       await page.evaluate(()=>localStorage.clear())
@@ -243,7 +243,7 @@ for(const width of [320,390]){
       const unit=mathTextbookUnits.find(u=>u.unitId.endsWith('n14'))!
       const items=unit.sections[0].items
       const ids=['n14-wm016-q12-left','n14-wm016-q12-right','n14-12']
-      expect(unit.revision).toBe(9) // Q15 P001 adds 4 decisions; earlier approved items unchanged
+      expect(unit.revision).toBe(10) // Q16 P-001 adds 4 decisions; all earlier accepted steps unchanged
       expect(items.slice(19,22).map(x=>x.id)).toEqual(ids) // Q10 adds four prior items
       await page.goto('/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n14')
       await page.evaluate(()=>localStorage.clear())

@@ -57,7 +57,7 @@ describe('W-MATH-022/P-001 N14 Q16 endpoint verification', () => {
     for (const [index, id] of ids.entries()) {
       const q = item(id)
       expect(q.choices).toHaveLength(4)
-      expect(new Set(q.choices)).toHaveLength(4)
+      expect(new Set(q.choices).size).toBe(4)
       expect(q.choices.filter(option => option === q.answer)).toHaveLength(1)
       expect(q.hints).toHaveLength(1)
       expect(q.hints[0]).not.toContain('3x−2=−4')

@@ -1,6 +1,6 @@
 # N14 Q15 genuine Chromium images; not synthetic
 
-Operated source code SHA: 4a59ca3f8ae9bd7a0ff50c8b06db226815d063c3
+Operated source code SHA: 649a86b76b873f3b53766f64566b42c7dd2c986f
 
 320px, 390px, 1440px real normal + numbered review screens. Gate1 visual user acceptance PENDING; Gate2 and Gate3 not approved.
 

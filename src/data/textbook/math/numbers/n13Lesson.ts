@@ -47,7 +47,8 @@ const q05After = originalContent.readingFlow.findIndex(block => block.id === 'n1
 const q05ItemIndex = originalContent.items.findIndex(item => item.id === 'n13-05')
 if (q05Lead < 0 || q05Choice !== q05Lead + 1 ||
     q05After !== q05Lead + 2 || q05ItemIndex !== 4 ||
-    originalContent.readingFlow[q05Lead - 1]?.id !== 'n13-show-n13-f01') {
+    originalContent.readingFlow[q05Lead - 1]?.id !== 'n13-group-2' ||
+    originalContent.readingFlow.findIndex(block => block.id === 'n13-show-n13-f01') >= q05Lead) {
   throw new Error('N13 Q05 source figure and guarded readingFlow changed')
 }
 const q05Blocks: TextbookReadingBlock[] = [

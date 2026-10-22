@@ -1,8 +1,8 @@
 {
-  "sourceSha": "d7148e8e06cb3bcebd327f6ac382285be85866b7",
+  "sourceSha": "0718c4fcb06740ee52a5fdb8ac321f77c32ded2c",
   "width": 390,
   "changedId": "n14-wm020-q15-divide-center",
-  "hint": "3xの係数を1にするには、どんな正の数で割ればよいか考えよう。正の数で割れば不等号の向きと等号は変わらない。",
+  "hint": "係数を1にする方法を、まず小さい数で考えよう。① 2×□=1 の□には何が入る？ ② 3×□=1 では？ ③ 同じ考え方で、3x×□=x の□には何が入る？ ④ この掛け算を割り算に直すと、3x÷□=x の□には何が入る？",
   "source": "real ordinary textbook N14, wrong then hint then retry",
   "rest": [
     "n14-wm020-q15-divide-right",

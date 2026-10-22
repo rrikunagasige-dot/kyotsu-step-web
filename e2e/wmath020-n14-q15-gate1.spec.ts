@@ -5,7 +5,7 @@ const cases=[['n14-wm020-q15-divide-left','3'],['n14-wm020-q15-divide-center','3
 const dir='e2e-evidence/'
 const photo=async(page:Page,name:string,w:number)=>{mkdirSync(dir,{recursive:true});await page.screenshot({path:dir+'q15-'+name+'-'+w+'.png'})}
 async function fit(page:Page,w:number){
-  const row=page.getByTestId('textbook-formula-n14-formula-14')
+  const row=page.getByTestId('textbook-formula-n14-formula-15')
   const m=await row.evaluate(el=>{
     const r=el.getBoundingClientRect(), exp=el.querySelector('.reading-formula-expression') as HTMLElement
     const parts=Array.from(exp.children).map(p=>{const z=p.getBoundingClientRect();return{l:z.left,r:z.right,t:z.top}})
@@ -25,7 +25,7 @@ async function fit(page:Page,w:number){
   else expect(m.display).toBe('flex')
 }
 const widths=[320,390,1440] as const
-test.describe('W-MATH-019/P-001 SHA-bound native Gate1 capture',()=>{
+test.describe('W-MATH-020/P-001 SHA-bound native Gate1 capture',()=>{
   for(const width of widths){
     test('numbered review '+width,async({page},info)=>{
       test.skip(process.env.E2E_WM020_GATE1!=='1')
@@ -37,7 +37,7 @@ test.describe('W-MATH-019/P-001 SHA-bound native Gate1 capture',()=>{
       await page.goto('/#/review/n14-q15')
       await expect(page.getByTestId('review-preview-ready')).toBeVisible()
       await expect(page.getByTestId('review-preview-sha')).toContainText(sha)
-      await expect(page.getByTestId('review-mark-n14-formula-14')).toBeVisible()
+      await expect(page.getByTestId('review-mark-n14-formula-15')).toBeVisible()
       await expect(page.getByTestId('review-mark-n14-formula-10')).toHaveCount(0)
       await fit(page,width)
       await page.getByTestId('textbook-item-'+cases[0][0]).scrollIntoViewIfNeeded()

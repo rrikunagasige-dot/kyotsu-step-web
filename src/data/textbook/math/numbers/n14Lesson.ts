@@ -447,12 +447,12 @@ const q15Content={
 
 // W-MATH-022/P-001 — Q16 alone: substitute each endpoint, take absolute values,
 // then interpret inclusion. The accepted Q10/Q14/Q15 blocks are never rewritten.
-const q16Start=q15Content.readingFlow.findIndex(b=>b.id==='n14-lead-16')
+const q16Wm022Start=q15Content.readingFlow.findIndex(b=>b.id==='n14-lead-16')
 const q16After=q15Content.readingFlow.findIndex(b=>b.id==='n14-after-16')
 const oldQ16Index=q15Content.items.findIndex(i=>i.id==='n14-16')
-if(q16Start<0 || q16After!==q16Start+2 ||
-   q15Content.readingFlow[q16Start-1]?.id!=='n14-after-15' ||
-   q15Content.readingFlow[q16Start+1]?.id!=='n14-formula-16' ||
+if(q16Wm022Start<0 || q16After!==q16Wm022Start+2 ||
+   q15Content.readingFlow[q16Wm022Start-1]?.id!=='n14-after-15' ||
+   q15Content.readingFlow[q16Wm022Start+1]?.id!=='n14-formula-16' ||
    oldQ16Index!==q15Content.items.length-1) {
   throw new Error('N14 accepted Q15 to original Q16 final boundary changed')
 }
@@ -503,7 +503,7 @@ const q16Items:TextbookItem[]=[
 ]
 const q16Content={
   readingFlow:[
-    ...q15Content.readingFlow.slice(0,q16Start),
+    ...q15Content.readingFlow.slice(0,q16Wm022Start),
     ...q16Flow,
     ...q15Content.readingFlow.slice(q16After+1),
   ],

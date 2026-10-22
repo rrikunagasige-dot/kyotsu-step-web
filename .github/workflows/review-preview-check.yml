@@ -515,7 +515,7 @@ jobs:
           fi
           if git log -1 --format=%s | grep -q '^Store genuine N13 Q05 Stage A real images'; then
             echo 'capture=false' >> "$GITHUB_OUTPUT"
-          elif test -n "$saved" && git fetch --no-tags --depth=1 origin "$saved" >/dev/null 2>&1 &&
+          elif test -n "$saved" && grep -Fq 'Font coverage: Noto CJK JP verified' "$evidence" && git fetch --no-tags --depth=1 origin "$saved" >/dev/null 2>&1 &&
               git diff --quiet "$saved" HEAD -- src/data/textbook/math/numbers/n13Lesson.ts \
                 src/domain/textbook.ts src/review/reviewTargets.ts \
                 src/pages/TextbookUnitPage.tsx src/review/ReviewTextbookPage.tsx \
@@ -538,6 +538,15 @@ jobs:
         run: pnpm install --frozen-lockfile
       - if: ${{ steps.need.outputs.capture == 'true' }}
         run: pnpm run typecheck && pnpm run build
+      - name: Install verified Japanese glyph coverage for authentic Gate1 screenshots
+        if: ${{ steps.need.outputs.capture == 'true' }}
+        shell: bash
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends fonts-noto-cjk
+          fc-cache -f
+          fc-match -f '%{family}\n' ':lang=ja' | grep -q 'Noto'
+          fc-list :lang=ja | grep -q 'Noto Sans CJK JP'
       - if: ${{ steps.need.outputs.capture == 'true' }}
         run: pnpm exec playwright install chromium
       - name: N13 Q05 normal and numbered Chrome widths 320 390 1440
@@ -561,6 +570,7 @@ jobs:
           {
             printf '# N13 Q05 actual native Gate① images (not yet human approved)\n\n'
             printf 'Real operated source SHA: \x60%s\x60\n\n' "$CAPTURE_SHA"
+            printf 'Font coverage: Noto CJK JP verified\n\n'
             printf 'Q05 Stage A only. 320/390/1440 actual Chromium normal and numbered. Original N13-Q08 is untouched.\n\n'
             for width in 320 390 1440; do
               printf '## %spx\n\n' "$width"

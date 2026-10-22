@@ -11,13 +11,13 @@ Command: CMD-WORK-001 修正 (linked to W-MATH-022 §12B impact audit)
 - W-MATH-022 Q16 Gate① user visual acceptance still pending. This new Work does **not** skip that human gate.
 
 ## Purpose
-Proposal-only linked corrections for **two independently reviewed N13 source questions**, restoring the student operations the teacher Word asks. Per-block Gate① will be separate, with Q05 before Q08; no implementation until user approval of exact combined proposal or explicitly separated approved scope.
+Proposal-only linked corrections for **two independently reviewed N13 source questions**, restoring the student operations the teacher Word asks. Per-block Gate① must be separate: P-002 proposes Q05 only at revision3, and Q08 only after Q05's user Gate① at revision4. Neither stage implemented; revised P-002 remains unapproved.
 
 ## Protected boundary
 Never edit N14 Q10/Q14/Q15/Q16 or accepted revisions/4-step hints, N13 Q01–04/Q06–07/Q09, original Word and N13 figures n13-f01/n13-f02, common makeReviewSteps, renderer, other modes, main/release/hosting. Do not merge or open production URLs.
 
 ## Proposal
-See `PROPOSAL.md` (full student-facing exact P-001). **No approval received.** Current Work status remains PROPOSED.
+See `PROPOSAL.md` — **P-002**, correcting the prior contradictory stage/revision assumptions. Historical unapproved P-001 retained verbatim in `PROPOSAL_P001_HISTORICAL.md`. **P-002 has not been approved.** Work remains PROPOSED.
 
 ## Next authorized action
-Present full P-001 for explicit user approval. If changed, REVISE-PROPOSAL; don't implement. Meanwhile W-MATH-022 Gate① awaits explicit `細部OK`.
+Present exact P-002 for distinct approval. Only if approved: N13-Q05 revision2→3, browser images, Q05 Gate① user 細部OK; then N13-Q08 revision3→4 and its own Gate①. Until then, no code changes. W-MATH-022 Q16 Gate① still awaits user 細部OK.

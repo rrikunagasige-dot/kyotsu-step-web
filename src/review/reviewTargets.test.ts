@@ -77,17 +77,23 @@ describe('W-GOV-008/P-002 review marker boundaries', () => {
       ...target, markBlockIds: [target.markBlockIds[0], target.markBlockIds[0]],
     })).toBeNull()
   })
-  it('W-MATH-023/P-002 Stage A has only Q05 numbered real source blocks and two separate choices',()=>{
-    const target=reviewTargets['n13-q05']
-    expect(target.revision).toBe(3)
-    expect(target.totalItems).toBe(10)
-    expect(target.itemIds).toEqual(['n13-wm023-q05-right','n13-05'])
-    expect(target.expectedAnswers).toEqual(['x-1','1-x'])
-    expect(activeReviewMarkIds(target)).toEqual(['n13-wm023-q05-right','n13-formula-05'])
-    expect(extractReviewSection(mathNumbersN13Unit,target)?.items.map(i=>i.answer)).toEqual(['x-1','1-x'])
-    expect(extractReviewSection({...mathNumbersN13Unit,revision:2},target)).toBeNull()
-    expect(activeReviewMarkIds({...target,reviewState:'accepted'})).toEqual([])
-    expect(reviewTargets['n13-q08']).toBeUndefined()
+
+  it('W-MATH-023/P-002 Stage B keeps accepted Q05 review silent and opens Q08 only',()=>{
+    const q05=reviewTargets['n13-q05']
+    expect(q05.revision).toBe(4)
+    expect(q05.totalItems).toBe(12)
+    expect(q05.itemIds).toEqual(['n13-wm023-q05-right','n13-05'])
+    expect(q05.expectedAnswers).toEqual(['x-1','1-x'])
+    expect(activeReviewMarkIds(q05)).toEqual([])
+    expect(extractReviewSection(mathNumbersN13Unit,q05)?.items.map(i=>i.answer)).toEqual(['x-1','1-x'])
+    const q08=reviewTargets['n13-q08']
+    expect(q08.revision).toBe(4)
+    expect(q08.totalItems).toBe(12)
+    expect(q08.itemIds).toEqual(['n13-wm023-q08-branches','n13-wm023-q08-positive-root','n13-08'])
+    expect(q08.expectedAnswers).toEqual(['3x=6\\;\\text{または}\\;3x=-6','2','-2'])
+    expect(activeReviewMarkIds(q08)).toEqual(['n13-formula-08','n13-wm023-q08-positive-root','n13-wm023-q08-negative-root'])
+    expect(extractReviewSection(mathNumbersN13Unit,q08)?.items.map(i=>i.answer)).toEqual(q08.expectedAnswers)
+    expect(extractReviewSection({...mathNumbersN13Unit,revision:3},q08)).toBeNull()
   })
 
 })

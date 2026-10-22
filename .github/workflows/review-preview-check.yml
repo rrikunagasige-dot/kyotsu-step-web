@@ -485,6 +485,9 @@ jobs:
   n13-wmath023-q05-actual-gate1-screenshots:
     if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'work/W-MATH-023-n13-q05-q08-sibling-proposal-20261022' }}
     runs-on: ubuntu-latest
+    concurrency:
+      group: wmath023-n13-q05-${{ github.head_ref }}
+      cancel-in-progress: true
     permissions:
       contents: write
     env:
@@ -536,7 +539,7 @@ jobs:
       - if: ${{ steps.need.outputs.capture == 'true' }}
         run: pnpm run typecheck && pnpm run build
       - if: ${{ steps.need.outputs.capture == 'true' }}
-        run: pnpm exec playwright install --with-deps chromium
+        run: pnpm exec playwright install chromium
       - name: N13 Q05 normal and numbered Chrome widths 320 390 1440
         if: ${{ steps.need.outputs.capture == 'true' }}
         run: pnpm exec playwright test e2e/wmath023-n13-q05-stagea-gate1.spec.ts --project=mobile-chromium --project=desktop-chromium

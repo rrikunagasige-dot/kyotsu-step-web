@@ -3,6 +3,7 @@ import { mathNumbersN01Unit } from '../data/textbook/math/numbers/n01Lesson'
 import { mathNumbersN03Unit } from '../data/textbook/math/numbers/n03Lesson'
 import { mathNumbersN11Unit } from '../data/textbook/math/numbers/n11Lesson'
 import { mathNumbersN14Unit } from '../data/textbook/math/numbers/n14Lesson'
+import { mathNumbersN13Unit } from '../data/textbook/math/numbers/n13Lesson'
 import { activeReviewMarkIds, extractReviewSection, reviewTargets } from './reviewTargets'
 
 describe('W-GOV-008/P-002 review marker boundaries', () => {
@@ -76,4 +77,17 @@ describe('W-GOV-008/P-002 review marker boundaries', () => {
       ...target, markBlockIds: [target.markBlockIds[0], target.markBlockIds[0]],
     })).toBeNull()
   })
+  it('W-MATH-023/P-002 Stage A has only Q05 numbered real source blocks and two separate choices',()=>{
+    const target=reviewTargets['n13-q05']
+    expect(target.revision).toBe(3)
+    expect(target.totalItems).toBe(10)
+    expect(target.itemIds).toEqual(['n13-wm023-q05-right','n13-05'])
+    expect(target.expectedAnswers).toEqual(['x-1','1-x'])
+    expect(activeReviewMarkIds(target)).toEqual(['n13-wm023-q05-right','n13-formula-05'])
+    expect(extractReviewSection(mathNumbersN13Unit,target)?.items.map(i=>i.answer)).toEqual(['x-1','1-x'])
+    expect(extractReviewSection({...mathNumbersN13Unit,revision:2},target)).toBeNull()
+    expect(activeReviewMarkIds({...target,reviewState:'accepted'})).toEqual([])
+    expect(reviewTargets['n13-q08']).toBeUndefined()
+  })
+
 })

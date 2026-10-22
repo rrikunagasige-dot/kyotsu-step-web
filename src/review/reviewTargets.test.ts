@@ -4,6 +4,7 @@ import { mathNumbersN03Unit } from '../data/textbook/math/numbers/n03Lesson'
 import { mathNumbersN11Unit } from '../data/textbook/math/numbers/n11Lesson'
 import { mathNumbersN14Unit } from '../data/textbook/math/numbers/n14Lesson'
 import { mathNumbersN13Unit } from '../data/textbook/math/numbers/n13Lesson'
+import { mathNumbersN05Unit } from '../data/textbook/math/numbers/n05Lesson'
 import { activeReviewMarkIds, extractReviewSection, reviewTargets } from './reviewTargets'
 
 describe('W-GOV-008/P-002 review marker boundaries', () => {
@@ -95,6 +96,21 @@ describe('W-GOV-008/P-002 review marker boundaries', () => {
     expect(q08.markBlockIds).toEqual(['n13-formula-08','n13-wm023-q08-positive-root','n13-wm023-q08-negative-root'])
     expect(extractReviewSection(mathNumbersN13Unit,q08)?.items.map(i=>i.answer)).toEqual(q08.expectedAnswers)
     expect(extractReviewSection({...mathNumbersN13Unit,revision:3},q08)).toBeNull()
+  })
+
+  it('W-MATH-024/P-001 N05 Q18 actual one-question hint review, no accepted N13 markers',()=>{
+    const target=reviewTargets['n05-q18']
+    expect(target.revision).toBe(2)
+    expect(target.totalItems).toBe(20)
+    expect(target.blockIds).toEqual(['n05-lead-18','n05-formula-18','n05-after-18'])
+    expect(target.itemIds).toEqual(['n05-18'])
+    expect(target.expectedAnswers).toEqual(['(x-1)(5x+3)'])
+    expect(activeReviewMarkIds(target)).toEqual(['n05-formula-18'])
+    expect(extractReviewSection(mathNumbersN05Unit,target)?.items.map(i=>i.answer)).toEqual(['(x-1)(5x+3)'])
+    expect(extractReviewSection({...mathNumbersN05Unit,revision:1},target)).toBeNull()
+    expect(activeReviewMarkIds({...target,reviewState:'accepted'})).toEqual([])
+    expect(activeReviewMarkIds(reviewTargets['n13-q05'])).toEqual([])
+    expect(activeReviewMarkIds(reviewTargets['n13-q08'])).toEqual([])
   })
 
 })

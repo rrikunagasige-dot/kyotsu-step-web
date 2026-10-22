@@ -117,6 +117,17 @@ const targets: Record<string, ReviewTarget> = {
     reviewState:'accepted',
   },
   // W-MATH-024/P-001: one real original Q18 after-wrong hint; no learner content copy.
+  // W-MATH-025/P-001: N05 Q11 only; N05 Q18 remains accepted.
+  'n05-q11': {
+    id:'n05-q11',unitId:'math-numbers-expressions-n05',title:'N05 Q11',
+    question:'二整数の候補を自分で探せるヒント',
+    revision:2,totalItems:20,
+    blockIds:['n05-lead-11','n05-formula-11','n05-after-11'],
+    itemIds:['n05-11'],
+    expectedAnswers:['(a-8)(a+2)'],
+    markBlockIds:['n05-formula-11'],
+    reviewState:'awaiting-user',
+  },
   'n05-q18': {
     id:'n05-q18',unitId:'math-numbers-expressions-n05',title:'N05 Q18',
     question:'二条件で正しい因数分解を選び、誤答ヒントが正解の係数を先出ししないか確かめる',

@@ -114,4 +114,17 @@ describe('W-GOV-008/P-002 review marker boundaries', () => {
     expect(activeReviewMarkIds(reviewTargets['n13-q08'])).toEqual([])
   })
 
+  it('W-MATH-025/P-001 N05 Q11 only has new numbered mark, Q18/N13 accepted',()=>{
+    const target=reviewTargets['n05-q11']
+    expect(target.revision).toBe(2)
+    expect(target.totalItems).toBe(20)
+    expect(target.blockIds).toEqual(['n05-lead-11','n05-formula-11','n05-after-11'])
+    expect(target.itemIds).toEqual(['n05-11'])
+    expect(target.expectedAnswers).toEqual(['(a-8)(a+2)'])
+    expect(activeReviewMarkIds(target)).toEqual(['n05-formula-11'])
+    expect(extractReviewSection(mathNumbersN05Unit,target)?.items.map(x=>x.answer)).toEqual(['(a-8)(a+2)'])
+    for(const accepted of ['n05-q18','n13-q05','n13-q08'])
+      expect(activeReviewMarkIds(reviewTargets[accepted])).toEqual([])
+  })
+
 })

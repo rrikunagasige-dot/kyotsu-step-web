@@ -625,7 +625,7 @@ jobs:
               git diff --quiet "$saved" HEAD -- src/data/textbook/math/numbers/n13Lesson.ts \
                 src/domain/textbook.ts src/review/reviewTargets.ts \
                 src/pages/TextbookUnitPage.tsx src/review/ReviewTextbookPage.tsx \
-                src/styles/global.css e2e/wmath023-n13-q08-stagea-gate1.spec.ts; then
+                src/styles/global.css e2e/wmath023-n13-q08-stageb-gate1.spec.ts; then
             echo 'capture=false' >> "$GITHUB_OUTPUT"
           else
             echo 'capture=true' >> "$GITHUB_OUTPUT"
@@ -657,7 +657,7 @@ jobs:
         run: pnpm exec playwright install chromium
       - name: N13 Q08 normal and numbered Chrome widths 320 390 1440
         if: ${{ steps.need.outputs.capture == 'true' }}
-        run: pnpm exec playwright test e2e/wmath023-n13-q08-stagea-gate1.spec.ts --project=mobile-chromium --project=desktop-chromium
+        run: pnpm exec playwright test e2e/wmath023-n13-q08-stageb-gate1.spec.ts --project=mobile-chromium --project=desktop-chromium
       - name: Preserve real evidence when checks fail
         if: ${{ always() && steps.need.outputs.capture == 'true' }}
         uses: actions/upload-artifact@v4

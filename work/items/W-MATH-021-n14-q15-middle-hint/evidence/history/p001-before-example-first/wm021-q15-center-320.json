@@ -1,0 +1,13 @@
+{
+  "sourceSha": "d7148e8e06cb3bcebd327f6ac382285be85866b7",
+  "width": 320,
+  "changedId": "n14-wm020-q15-divide-center",
+  "hint": "3xの係数を1にするには、どんな正の数で割ればよいか考えよう。正の数で割れば不等号の向きと等号は変わらない。",
+  "source": "real ordinary textbook N14, wrong then hint then retry",
+  "rest": [
+    "n14-wm020-q15-divide-right",
+    "n14-15",
+    "n14-wm020-q15-bound-right"
+  ],
+  "image": "wm021-q15-center-wrong-320.png"
+}

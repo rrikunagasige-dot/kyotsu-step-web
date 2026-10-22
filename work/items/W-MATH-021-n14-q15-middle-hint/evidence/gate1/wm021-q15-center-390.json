@@ -1,0 +1,13 @@
+{
+  "sourceSha": "0718c4fcb06740ee52a5fdb8ac321f77c32ded2c",
+  "width": 390,
+  "changedId": "n14-wm020-q15-divide-center",
+  "hint": "係数を1にする方法を、まず小さい数で考えよう。① 2×□=1 の□には何が入る？ ② 3×□=1 では？ ③ 同じ考え方で、3x×□=x の□には何が入る？ ④ この掛け算を割り算に直すと、3x÷□=x の□には何が入る？",
+  "source": "real ordinary textbook N14, wrong then hint then retry",
+  "rest": [
+    "n14-wm020-q15-divide-right",
+    "n14-15",
+    "n14-wm020-q15-bound-right"
+  ],
+  "image": "wm021-q15-center-wrong-390.png"
+}

@@ -377,7 +377,7 @@ jobs:
       - name: Preserve genuine images on PR branch only
         if: ${{ success() && steps.need.outputs.capture == 'true' }}
         run: |
-          dir="work/items/W-MATH-020-n14-q15-three-sided-addition/evidence/gate1"
+          dir="work/items/W-MATH-020-n14-q15-three-sided-division/evidence/gate1"
           mkdir -p "$dir"
           cp e2e-evidence/q15-* "$dir/"
           {

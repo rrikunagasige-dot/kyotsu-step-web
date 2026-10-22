@@ -13,3 +13,7 @@ Status: IMPLEMENTING
 ## 2026-10-22 real Gate①: failed at narrower yellow reviewer 320
 - At test source SHA `594c17c7226bdcbab67a255d50e1773cfd880aac` [genuine Chrome #39707797563](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39707797563) had exactly 1 failure / 6 cases: review marked Q14 320 innerScrollWidth 225 > clientWidth 220. Review 390, review PC 1440 and normal lesson 320/390/1440 PASS; code P001 maths and main intact. Artifact 12396235441 retained partial images. Stop; no fabricated visual PASS.
 - Exact [P-002](./PROPOSAL_P002_320_REVIEW_INSET.md) authored only, proposed 320-only Q14 yellow inset .15rem, not implemented or approved. Preserve earlier accepted N11/N14; await new user consent.
+
+## 2026-10-22 — P-002 approved by user「いいよ」 and narrowly implemented
+- Exact new P-002 approval received after authentic Chromium 320-only reviewer 225 vs 220 FAIL. Changed only reviewer-specific `src/review/review.css` at <=350px for `review-mark-n14-formula-14` to `padding-inline:.15rem`. Added append-only Work and approval records. No formula button resizing, other CSS refactor, source lesson, Q15, main or public app change.
+- Verified results must be linked to SHA after rerun; no Gate① acceptance before native screenshots/tests pass and user replies to requested concise Q14 mathematics layout.

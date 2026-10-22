@@ -1,5 +1,5 @@
 # W-MATH-019/P-002 — 320px reviewer-only horizontal inset correction
-Status: PROPOSED — USER APPROVAL PENDING
+Status: APPROVED — exact user consent 「いいよ」 2026-10-22 JST; correction-only implementation in draft
 Date: 2026-10-22 JST
 Command: CMD-WORK-001 修正; WORK_SYSTEM §12B.
 Source candidate code SHA: `594c17c7226bdcbab67a255d50e1773cfd880aac` (P001 Q14 mathematics unchanged).
@@ -27,3 +27,6 @@ At a 16px root font, reducing each side from .4rem (6.4px) to .15rem (2.4px) gai
 
 ## Approval boundary
 P-001 was already approved and its mathematical content tested; P-002 exact 320px CSS change is **NOT APPROVED** yet. Await the user's direct `承認` or equivalent reply before altering any code. Existing P-001 approval cannot substitute for P-002 approval.
+
+## Approval and implementation checkpoint — 2026-10-22 JST
+User directly answered **「いいよ」** to the immediately preceding exact P-002 question about reducing **only** Q14's <=350px numbered-review wrapper horizontal padding from .4rem to .15rem. This authorizes precisely the scoped CSS change plus the necessary verification and evidence; **not** Q14 new math, Q15, accepted Q10/N11 blocks, main/Pages, publication, or Gate① user acceptance. Rerun genuine reviewer+normal screens at 320/390/1440. No additional CSS tuning if measurement fails; return to REVISE-PROPOSAL.

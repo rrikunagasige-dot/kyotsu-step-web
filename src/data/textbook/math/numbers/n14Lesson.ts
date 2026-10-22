@@ -414,7 +414,7 @@ const q15DivisionLeft:TextbookItem=reviewItem(
 const q15DivisionCenter:TextbookItem=reviewItem(
   'n14-wm020-q15-divide-center','中央3xの係数を1にする除数を選ぼう。',
   '3','formula',['-3','1','6'],'causal-reasoning','light',
-  ['3x÷3=x。正の数で割ると不等号の向きと等号は保たれる。'],
+  ['3xの係数を1にするには、どんな正の数で割ればよいか考えよう。正の数で割れば不等号の向きと等号は変わらない。'],
 )
 const q15DivisionRight:TextbookItem=reviewItem(
   'n14-wm020-q15-divide-right','右端6にも同じ正の除数を使おう。',

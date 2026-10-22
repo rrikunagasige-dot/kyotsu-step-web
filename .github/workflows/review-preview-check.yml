@@ -876,7 +876,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: wmath025-q11-real-${{ github.event.pull_request.head.sha }}
-          path: e2e-evidence/wm024-q11-*.png
+          path: e2e-evidence/wm025-q11-*.png
           if-no-files-found: ignore
           retention-days: 7
       - name: Store successful Q11 images only on isolated review branch
@@ -885,7 +885,7 @@ jobs:
         run: |
           dir="work/items/W-MATH-025-factor-hint-leak-qa-proposals/evidence/n05-q11/gate1"
           mkdir -p "$dir"
-          cp e2e-evidence/wm024-q11-*.png "$dir/"
+          cp e2e-evidence/wm025-q11-*.png "$dir/"
           {
             printf '# N05 Q11 actual numbered Gate1 images — user acceptance pending\n\n'
             printf 'Real operated source SHA: %s\n\n' "$CAPTURE_SHA"
@@ -893,7 +893,7 @@ jobs:
             for width in 320 390 1440; do
               printf '## %spx\n\n' "$width"
               for state in review-before review-wrong review-complete normal-before normal-wrong normal-complete; do
-                printf '**%s**\n\n![N05 Q11 %s width %s](wm024-q11-%s-%s.png)\n\n' "$state" "$state" "$width" "$state" "$width"
+                printf '**%s**\n\n![N05 Q11 %s width %s](wm025-q11-%s-%s.png)\n\n' "$state" "$state" "$width" "$state" "$width"
               done
             done
             printf 'Human Gate1 Q11 remains BLOCK-CHECK-PENDING; no main merge or host/deploy.\n'

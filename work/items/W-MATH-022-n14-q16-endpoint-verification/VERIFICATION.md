@@ -27,3 +27,27 @@ Date: 2026-10-22 JST
 
 ## Next step
 New PR run after corrective commit; track exact checked SHA and real run IDs; do not mark PASS until success.
+
+## 2026-10-22 JST — FINAL TECHNICAL PASS (not human Gate①)
+Status: TECHNICAL-PASS / BLOCK-CHECK-PENDING / CROSS-VERIFIED-NOT-CLAIMED / FINAL-REVIEW-NOT-READY
+
+### Frozen tested learner-source SHA
+`e64fd99b18ba167364c2dd6b108a6f7fef76f439` (PR #111). Latest reviewed evidence branch HEAD before this record: `aaf3254436ea00e7cf8f2e32b907765d282e27a2`.
+GitHub compare from frozen SHA to review HEAD: ONLY 15 real PNGs and README, Gate1 review sheet. No src/, e2e/, .github/ source changes. Later documentation-only record edits do not invalidate frozen-source results; do not assume a changed learner SHA passed.
+
+### Actual successful GitHub Actions on frozen SHA (all 2026-10-22 JST)
+- [Math textbook mode CI #39752264193](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39752264193), attempt 2 **SUCCESS**. Typecheck, math lint, textbook schema/Vitest, build, SVG smoke, N12, normal phone/desktop, N02/N09, N01/N03, eight-unit N04–N14 progression, N11 proof, N11 Q11, P-004 repairs, physics textbook and math-practice setup regressions all SUCCESS. Attempt 1 was CANCELLED by concurrency; successful retry is distinct.
+- [Math practice pilot CI #39752264279](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39752264279) **SUCCESS**; unit tests + mobile/desktop smoke + build.
+- [Review Preview Check #39752264290](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39752264290) **SUCCESS**, including exact source-SHA numbered Q16 review + ordinary learner Chrome 320/390/1440 and wrong/hint/retry, persistence/preview isolation; 15 genuine screenshots committed to evidence/gate1. The accepted Q10/Q14/Q15 review-mark suppression remains covered.
+- [Repository Governance #39752264397](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39752264397) **SUCCESS**.
+- After evidence-only SHA `37f8b4acbb56b4228a44536ac0937ab14af87e4b`, review-code/practice/governance jobs also SUCCESS; math-textbook job cancelled on content-only branch update, not a math-test failure. Frozen source SHA's complete run passed separately as above.
+
+### Verified invariants and gate boundary
+- Byte-identical Q10/Q14/Q15 authored learner data prefix vs W-MATH-021 parent, except new N14 Q16 map line; no Q10/Q14/Q15 problem content modified. Existing 16 original source question labels; current N14=38 decisions, revision=10, figure `n14-f01` preserved.
+- Old Q16 `n14-16` graded completed pair; new Q16 `n14-16` grades text inclusion. Unit-test checks old v1–v9 archives/new four keys and old combination being reopened. No reinterpretation of accepted Q10/Q14/Q15 progress.
+- Screenshot provenance: `e64fd99b...` with parent screenshot commit `f5b15694740325b56077fe64d740c7a7dc8fb22e`, [review sheet](./GATE1_N14_Q16_REVIEW_SHEET.md).
+- **Gate①** BLOCK-CHECK-PENDING: no user `細部OK` response yet. **Gate②** not marked CROSS-VERIFIED; §12B impact ledger still requires independent closure. **Gate③** FINAL-REVIEW-NOT-READY: no authorized live whole-app SHA URL/user `総チェックOK`.
+- No main merge, Pages/Vercel deployment, cost-bearing action, teacher Word edit, or previously approved answer changes.
+
+### Next authorized action
+Present authentic numbered Q16 visual sheet and receive user's explicit `細部OK` or `要修正`. Until then, preserve Gate① as pending; no Gate② or Gate③ success claim.

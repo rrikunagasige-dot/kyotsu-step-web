@@ -1,5 +1,5 @@
 # W-MATH-020/P-001 — N14 Q15 positive three-member division as five local learner decisions
-Status: PROPOSED — EXACT USER APPROVAL REQUIRED; NO CODE CHANGE
+Status: APPROVED — exact user reply「いいよ」 on 2026-10-22; Q15 P-001 only
 Date: 2026-10-22 JST
 Command: CMD-WORK-001 修正. Existing correction-first, one-block preflight and Gate①→②→③ apply.
 
@@ -31,3 +31,6 @@ Command: CMD-WORK-001 修正. Existing correction-first, one-block preflight and
 
 ## Approval boundary
 This file is only a *proposal*. Await explicit user `いいよ` / `承認` **to the N14 Q15 layout** before any learner-code implementation. Existing N14 Q14 acceptance is NOT Q15 consent.
+
+## Explicit user approval — 2026-10-22 JST
+User's immediate **「いいよ」** to the concise N14 Q15 three-equation, two-visual-line, five-hole presentation and offer to continue is exact approval to implement this P-001 scope. It is NOT Gate① human visual approval of the coded screen, independent Gate② or Gate③, Q14 reapproval, main merge or public release.

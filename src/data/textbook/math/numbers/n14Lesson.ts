@@ -8,6 +8,7 @@ n14SourceToItemIds['N14-Q08'] = ['n14-wm015-q08-nonnegative', 'n14-wm015-q08-neg
 n14SourceToItemIds['N14-Q12'] = ['n14-wm016-q12-left', 'n14-wm016-q12-right', 'n14-12']
 n14SourceToItemIds['N14-Q10'] = ['n14-wm018-q10-add-left', 'n14-wm018-q10-add-center', 'n14-wm018-q10-add-right', 'n14-10', 'n14-wm018-q10-bound-right']
 n14SourceToItemIds['N14-Q14'] = ['n14-wm019-q14-add-left', 'n14-wm019-q14-add-center', 'n14-wm019-q14-add-right', 'n14-14', 'n14-wm019-q14-bound-right']
+n14SourceToItemIds['N14-Q15'] = ['n14-wm020-q15-divide-left', 'n14-wm020-q15-divide-center', 'n14-wm020-q15-divide-right', 'n14-15', 'n14-wm020-q15-bound-right']
 const originalContent = makeReviewSteps('n14', [
   {
     title:'近い点は内側、遠い点は外側',
@@ -376,8 +377,75 @@ const q14Content = {
   ],
 }
 
+// W-MATH-020/P-001: preserve all prior approved blocks; correct only original
+// N14 Q15 bundled operation+completed answer into 3 division choices
+// followed by 2 endpoint calculations, between accepted Q14 and intact Q16.
+const q15Start = q14Content.readingFlow.findIndex(b=>b.id==='n14-lead-15')
+const q15After = q14Content.readingFlow.findIndex(b=>b.id==='n14-after-15')
+const q14Prev = q14Content.readingFlow.findIndex(b=>b.id==='n14-after-14')
+const q16Start = q14Content.readingFlow.findIndex(b=>b.id==='n14-lead-16')
+const oldQ15Index=q14Content.items.findIndex(i=>i.id==='n14-15')
+if(q15Start<0 || q15After!==q15Start+2 || q14Prev!==q15Start-1 ||
+   q16Start!==q15After+1 || oldQ15Index<0 ||
+   q14Content.readingFlow[q15Start+1]?.id!=='n14-formula-15')
+  throw new Error('N14 accepted Q14→original Q15→Q16 boundary has changed')
+const q15Flow:TextbookReadingBlock[]=[
+  {id:'n14-lead-15',type:'formula',derivationId:'n14-q15-chain',parts:[
+    M('-2\\le3x\\le6'),
+  ]},
+  {id:'n14-formula-15',type:'formula',derivationId:'n14-q15-chain',parts:[
+    M('-2\\div'),C('n14-wm020-q15-divide-left'),
+    M('\\le3x\\div'),C('n14-wm020-q15-divide-center'),
+    M('\\le6\\div'),C('n14-wm020-q15-divide-right'),
+  ]},
+  {id:'n14-wm020-q15-explain',type:'paragraph',derivationId:'n14-q15-chain',parts:[
+    T('三辺を正の3で割っても、不等号の向きと等号は変わらない。中央の3xを3で割ると、xだけが残る。'),
+  ]},
+  {id:'n14-wm020-q15-result',type:'formula',derivationId:'n14-q15-chain',parts:[
+    C('n14-15'),M('\\le x\\le'),C('n14-wm020-q15-bound-right'),
+  ]},
+  q14Content.readingFlow[q15After], // original bridge into Q16
+]
+const q15DivisionLeft:TextbookItem=reviewItem(
+  'n14-wm020-q15-divide-left','左端−2を割る正の数を選ぼう。',
+  '3','formula',['-3','2','6'],'causal-reasoning','light',
+  ['中央の3xから係数3を取り除くには何で割ればよいか考え、左端にも同じ除数を使おう。'],
+)
+const q15DivisionCenter:TextbookItem=reviewItem(
+  'n14-wm020-q15-divide-center','中央3xの係数を1にする除数を選ぼう。',
+  '3','formula',['-3','1','6'],'causal-reasoning','light',
+  ['3x÷3=x。正の数で割ると不等号の向きと等号は保たれる。'],
+)
+const q15DivisionRight:TextbookItem=reviewItem(
+  'n14-wm020-q15-divide-right','右端6にも同じ正の除数を使おう。',
+  '3','formula',['-3','2','6'],'causal-reasoning','light',
+  ['左端と中央に使った正の除数と同じ数で割ろう。'],
+)
+const q15BoundLeft:TextbookItem=reviewItem(
+  'n14-15','左端−2を正の3で割った値を計算しよう。',
+  '-\\frac23','formula',['\\frac23','-6','-\\frac32'],'causal-reasoning','light',
+  ['負の2を正の3で割るので答えは負。分子と分母を確認しよう。'],
+)
+const q15BoundRight:TextbookItem=reviewItem(
+  'n14-wm020-q15-bound-right','右端6を正の3で割った値を計算しよう。',
+  '2','formula',['3','-2','\\frac12'],'causal-reasoning','light',
+  ['6÷3を計算し、等号の有無を変えずに右端の境界を埋めよう。'],
+)
+const q15Content={
+  readingFlow:[
+    ...q14Content.readingFlow.slice(0,q15Start),
+    ...q15Flow,
+    ...q14Content.readingFlow.slice(q15After+1),
+  ],
+  items:[
+    ...q14Content.items.slice(0,oldQ15Index),
+    q15DivisionLeft,q15DivisionCenter,q15DivisionRight,q15BoundLeft,q15BoundRight,
+    ...q14Content.items.slice(oldQ15Index+1),
+  ],
+}
+
 const rawN14={
-  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n14',revision:8,status:'review' as const,subject:'math-1a' as const,
+  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n14',revision:9,status:'review' as const,subject:'math-1a' as const,
   chapter:{chapterId:'math-ch01-numbers-expressions',chapterNumber:'1',chapterTitle:'数と式',unitCode:'1NUM',orderInChapter:14,sourcePages:[35,36]},
   title:'距離の上限と下限から、残す範囲を決める',subtitle:'絶対値の内側・外側と端点を、数直線で選び分ける。',
   source:{type:'reference' as const,label:'ユーザー提供「数と式」教科書モード対話段階導入版 v2 / N14',
@@ -386,6 +454,6 @@ const rawN14={
   sections:[{id:'lesson',number:'14',title:'本文',role:'concept' as const,
     description:'範囲の意味から変形し、元の条件へ戻して検算する。',
     figures:[{id:'n14-f01',src:'/assets/math/textbook/numbers/n14-f01.png',alt:'距離が3より小さい範囲と4以上の範囲を上下で比較した、解答後確認用の元図。',caption:'二つの範囲を導いた後で、内側と外側を図で比較する。',overlays:[]}],
-    readingFlow:q14Content.readingFlow,items:q14Content.items}],
+    readingFlow:q15Content.readingFlow,items:q15Content.items}],
 }
 export const mathNumbersN14Unit=validateTextbookUnits([rawN14])[0]

@@ -322,6 +322,38 @@ export function effectiveTextbookProgress(unit: TextbookUnit, progress: Textbook
     }
   }
 
+  // W-MATH-020/P-001: archive prior v8 (and all earlier archives);
+  // the old n14-15 graded a compound operation+final range, while the
+  // new n14-15 grades ONLY the left fractional endpoint.
+  if(unit.unitId==='math-numbers-expressions-n14' && unit.revision===9
+    && progress.unitId===unit.unitId
+    && [1,2,3,4,5,6,7,8].includes(progress.unitRevision)){
+    const fromV8=progress.unitRevision===8 ? progress
+      : effectiveTextbookProgress({...unit,revision:8},progress)
+    if(!fromV8 || fromV8.unitRevision!==8) return undefined
+    const archive:TextbookRevisionArchive={
+      unitRevision:8,startedAt:fromV8.startedAt,updatedAt:fromV8.updatedAt,
+      answers:{...fromV8.answers},
+      ...(fromV8.completedAt!==undefined?{completedAt:fromV8.completedAt}:{}),
+      ...(fromV8.previousRevisionCompletedAt!==undefined
+        ?{previousRevisionCompletedAt:fromV8.previousRevisionCompletedAt}:{}),
+      ...(fromV8.migratedFromRevision!==undefined
+        ?{migratedFromRevision:fromV8.migratedFromRevision}:{}),
+    }
+    const answers={...fromV8.answers}
+    delete answers['n14-15']
+    return{
+      unitId:unit.unitId,unitRevision:9,
+      startedAt:fromV8.startedAt,updatedAt:fromV8.updatedAt,
+      answers,migratedFromRevision:8,
+      archivedRevisions:{...(fromV8.archivedRevisions??{}),'8':archive},
+      ...(fromV8.completedAt!==undefined
+        ?{previousRevisionCompletedAt:fromV8.completedAt}
+        :fromV8.previousRevisionCompletedAt!==undefined
+          ?{previousRevisionCompletedAt:fromV8.previousRevisionCompletedAt}:{}),
+    }
+  }
+
   // W-MATH-019/P-001: old N14-Q14 graded the operation AND finished range
   // in one choice. It now grades only the computed left endpoint.
   // Archive all v7 attempts, keep all unaffected Q07/Q08/Q10/Q12/Q15 keys

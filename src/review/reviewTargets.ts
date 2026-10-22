@@ -92,6 +92,30 @@ const targets: Record<string, ReviewTarget> = {
     markBlockIds:['n14-formula-15','n14-wm020-q15-explain','n14-wm020-q15-result'],
     reviewState:'accepted', // user 「続けて」 to concise Q15 math Gate1 layout; preserve source-matched image history
   },
+  // W-MATH-023/P-002 Stage A: original Q05 is now two meaningful choices.
+  // No marker or other learner changes for historical N13 Q08 (Stage B pending).
+  'n13-q05': {
+    id:'n13-q05',unitId:'math-numbers-expressions-n13',title:'N13 Q05',
+    question:'xと1の二点間の距離を、x≥1とx<1の場合に分けて表す',
+    revision:4,totalItems:12,
+    blockIds:['n13-show-n13-f01','n13-lead-05','n13-wm023-q05-right','n13-formula-05','n13-after-05'],
+    itemIds:['n13-wm023-q05-right','n13-05'],
+    expectedAnswers:['x-1','1-x'],
+    markBlockIds:['n13-wm023-q05-right','n13-formula-05'],
+    reviewState:'accepted',
+  },
+  // W-MATH-023/P-002 Stage B: only Q08 receives new numbered review markers.
+  'n13-q08': {
+    id:'n13-q08',unitId:'math-numbers-expressions-n13',title:'N13 Q08',
+    question:'絶対値の正負2枝を作り、それぞれの方程式を解く',
+    revision:4,totalItems:12,
+    blockIds:['n13-lead-08','n13-formula-08','n13-wm023-q08-positive-root',
+      'n13-wm023-q08-negative-root','n13-after-08'],
+    itemIds:['n13-wm023-q08-branches','n13-wm023-q08-positive-root','n13-08'],
+    expectedAnswers:['3x=6\\;\\text{または}\\;3x=-6','2','-2'],
+    markBlockIds:['n13-formula-08','n13-wm023-q08-positive-root','n13-wm023-q08-negative-root'],
+    reviewState:'accepted',
+  },
   'n01-q07': {
     id: 'n01-q07', unitId: 'math-numbers-expressions-n01', title: 'N01 Q07', question: '同類項の係数',
     revision: 2, totalItems: 18,

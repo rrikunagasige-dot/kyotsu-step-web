@@ -479,3 +479,216 @@ jobs:
             git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Store genuine N14 Q15 center hint screenshots [review only]'
             git push origin "HEAD:refs/heads/$TARGET_BRANCH"
           fi
+
+
+  # W-MATH-023/P-002 Stage A: N13 Q05 only, Q08 untouched, no deployment.
+  n13-wmath023-q05-actual-gate1-screenshots:
+    # Frozen accepted Q05 image proof is immutable; skip recaptures during Q08 Stage B.
+    if: ${{ false }}
+    runs-on: ubuntu-latest
+    concurrency:
+      group: wmath023-n13-q05-${{ github.head_ref }}
+      cancel-in-progress: true
+    permissions:
+      contents: write
+    env:
+      CI: 'true'
+      VITE_REVIEW_PREVIEW: 'true'
+      VITE_BASE_PATH: '/'
+      VITE_PREVIEW_COMMIT: ${{ github.event.pull_request.head.sha }}
+      E2E_WM023_Q05: '1'
+      E2E_USE_PREVIEW: '1'
+      CAPTURE_SHA: ${{ github.event.pull_request.head.sha }}
+      TARGET_BRANCH: ${{ github.head_ref }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: true
+      - name: Skip repeated Q05 capture when only documents or images changed
+        id: need
+        shell: bash
+        run: |
+          evidence="work/items/W-MATH-023-n13-q05-q08-sibling/evidence/gate1/README.md"
+          saved=""
+          if test -f "$evidence"; then
+            saved=$(sed -n 's/^Real operated source SHA: \x60\([a-f0-9]*\)\x60$/\1/p' "$evidence" | head -n 1)
+          fi
+          if git log -1 --format=%s | grep -q '^Store genuine N13 Q05 Stage A real images'; then
+            echo 'capture=false' >> "$GITHUB_OUTPUT"
+          elif test -n "$saved" && grep -Fq 'Font coverage: Noto CJK JP verified' "$evidence" && git fetch --no-tags --depth=1 origin "$saved" >/dev/null 2>&1 &&
+              git diff --quiet "$saved" HEAD -- src/data/textbook/math/numbers/n13Lesson.ts \
+                src/domain/textbook.ts src/review/reviewTargets.ts \
+                src/pages/TextbookUnitPage.tsx src/review/ReviewTextbookPage.tsx \
+                src/styles/global.css e2e/wmath023-n13-q05-stagea-gate1.spec.ts; then
+            echo 'capture=false' >> "$GITHUB_OUTPUT"
+          else
+            echo 'capture=true' >> "$GITHUB_OUTPUT"
+          fi
+      - if: ${{ steps.need.outputs.capture == 'true' }}
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - if: ${{ steps.need.outputs.capture == 'true' }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - if: ${{ steps.need.outputs.capture == 'true' }}
+        run: pnpm install --frozen-lockfile
+      - if: ${{ steps.need.outputs.capture == 'true' }}
+        run: pnpm run typecheck && pnpm run build
+      - name: Install verified Japanese glyph coverage for authentic Gate1 screenshots
+        if: ${{ steps.need.outputs.capture == 'true' }}
+        shell: bash
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends fonts-noto-cjk
+          fc-cache -f
+          fc-match -f '%{family}\n' ':lang=ja' | grep -q 'Noto'
+          fc-list :lang=ja | grep -q 'Noto Sans CJK JP'
+      - if: ${{ steps.need.outputs.capture == 'true' }}
+        run: pnpm exec playwright install chromium
+      - name: N13 Q05 normal and numbered Chrome widths 320 390 1440
+        if: ${{ steps.need.outputs.capture == 'true' }}
+        run: pnpm exec playwright test e2e/wmath023-n13-q05-stagea-gate1.spec.ts --project=mobile-chromium --project=desktop-chromium
+      - name: Preserve real evidence when checks fail
+        if: ${{ always() && steps.need.outputs.capture == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: wmath023-q05-real-${{ github.event.pull_request.head.sha }}
+          path: e2e-evidence/wm023-q05-*.png
+          if-no-files-found: ignore
+          retention-days: 7
+      - name: Commit authentic Q05 Chrome evidence to isolated review branch
+        if: ${{ success() && steps.need.outputs.capture == 'true' }}
+        shell: bash
+        run: |
+          dir="work/items/W-MATH-023-n13-q05-q08-sibling/evidence/gate1"
+          mkdir -p "$dir"
+          cp e2e-evidence/wm023-q05-*.png "$dir/"
+          {
+            printf '# N13 Q05 actual native Gate① images (not yet human approved)\n\n'
+            printf 'Real operated source SHA: \x60%s\x60\n\n' "$CAPTURE_SHA"
+            printf 'Font coverage: Noto CJK JP verified\n\n'
+            printf 'Q05 Stage A only. 320/390/1440 actual Chromium normal and numbered. Original N13-Q08 is untouched.\n\n'
+            for width in 320 390 1440; do
+              printf '## %spx\n\n' "$width"
+              for stage in review-before review-wrong review-complete normal-before normal-complete; do
+                printf '**%s**\n\n![N13 Q05 %s %spx](wm023-q05-%s-%s.png)\n\n' "$stage" "$stage" "$width" "$stage" "$width"
+              done
+            done
+            printf 'Gate① Q05 user 細部OK still required before Q08 Stage B. No merge, public host or release.\n'
+          } > "$dir/README.md"
+          git add "$dir"
+          if ! git diff --cached --quiet; then
+            git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Store genuine N13 Q05 Stage A real images [review only]'
+            git push origin "HEAD:refs/heads/$TARGET_BRANCH"
+          fi
+
+  # W-MATH-023/P-002 Stage B: N13 Q08 only, Q08 untouched, no deployment.
+  n13-wmath023-q08-actual-gate1-screenshots:
+    # Q08 Gate① accepted; preserve immutable pre-acceptance image SHA; no repeated screenshots.
+    if: ${{ false }}
+    runs-on: ubuntu-latest
+    concurrency:
+      group: wmath023-n13-q08-${{ github.head_ref }}
+      cancel-in-progress: true
+    permissions:
+      contents: write
+    env:
+      CI: 'true'
+      VITE_REVIEW_PREVIEW: 'true'
+      VITE_BASE_PATH: '/'
+      VITE_PREVIEW_COMMIT: ${{ github.event.pull_request.head.sha }}
+      E2E_WM023_Q08: '1'
+      E2E_USE_PREVIEW: '1'
+      CAPTURE_SHA: ${{ github.event.pull_request.head.sha }}
+      TARGET_BRANCH: ${{ github.head_ref }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: true
+      - name: Skip repeated Q08 capture when only documents or images changed
+        id: need
+        shell: bash
+        run: |
+          evidence="work/items/W-MATH-023-n13-q05-q08-sibling/evidence/gate1-q08/README.md"
+          saved=""
+          if test -f "$evidence"; then
+            saved=$(sed -n 's/^Real operated source SHA: \x60\([a-f0-9]*\)\x60$/\1/p' "$evidence" | head -n 1)
+          fi
+          if git log -1 --format=%s | grep -q '^Store genuine N13 Q08 Stage B real images'; then
+            echo 'capture=false' >> "$GITHUB_OUTPUT"
+          elif test -n "$saved" && grep -Fq 'Font coverage: Noto CJK JP verified' "$evidence" && git fetch --no-tags --depth=1 origin "$saved" >/dev/null 2>&1 &&
+              git diff --quiet "$saved" HEAD -- src/data/textbook/math/numbers/n13Lesson.ts \
+                src/domain/textbook.ts src/review/reviewTargets.ts \
+                src/pages/TextbookUnitPage.tsx src/review/ReviewTextbookPage.tsx \
+                src/styles/global.css e2e/wmath023-n13-q08-stageb-gate1.spec.ts; then
+            echo 'capture=false' >> "$GITHUB_OUTPUT"
+          else
+            echo 'capture=true' >> "$GITHUB_OUTPUT"
+          fi
+      - if: ${{ steps.need.outputs.capture == 'true' }}
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - if: ${{ steps.need.outputs.capture == 'true' }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - if: ${{ steps.need.outputs.capture == 'true' }}
+        run: pnpm install --frozen-lockfile
+      - if: ${{ steps.need.outputs.capture == 'true' }}
+        run: pnpm run typecheck && pnpm run build
+      - name: Install verified Japanese glyph coverage for authentic Gate1 screenshots
+        if: ${{ steps.need.outputs.capture == 'true' }}
+        shell: bash
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends fonts-noto-cjk
+          fc-cache -f
+          fc-match -f '%{family}\n' ':lang=ja' | grep -q 'Noto'
+          fc-list :lang=ja | grep -q 'Noto Sans CJK JP'
+      - if: ${{ steps.need.outputs.capture == 'true' }}
+        run: pnpm exec playwright install chromium
+      - name: N13 Q08 normal and numbered Chrome widths 320 390 1440
+        if: ${{ steps.need.outputs.capture == 'true' }}
+        run: pnpm exec playwright test e2e/wmath023-n13-q08-stageb-gate1.spec.ts --project=mobile-chromium --project=desktop-chromium
+      - name: Preserve real evidence when checks fail
+        if: ${{ always() && steps.need.outputs.capture == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: wmath023-q08-real-${{ github.event.pull_request.head.sha }}
+          path: e2e-evidence/wm023-q08-*.png
+          if-no-files-found: ignore
+          retention-days: 7
+      - name: Commit authentic Q08 Chrome evidence to isolated review branch
+        if: ${{ success() && steps.need.outputs.capture == 'true' }}
+        shell: bash
+        run: |
+          dir="work/items/W-MATH-023-n13-q05-q08-sibling/evidence/gate1-q08"
+          mkdir -p "$dir"
+          cp e2e-evidence/wm023-q08-*.png "$dir/"
+          {
+            printf '# N13 Q08 actual native Gate① images (not yet human approved)\n\n'
+            printf 'Real operated source SHA: \x60%s\x60\n\n' "$CAPTURE_SHA"
+            printf 'Font coverage: Noto CJK JP verified\n\n'
+            printf 'Q08 Stage B: 320/390/1440 real Chromium normal and numbered, three new decisions; accepted Q05 protected.\n\n'
+            for width in 320 390 1440; do
+              printf '## %spx\n\n' "$width"
+              for stage in review-before review-wrong review-complete normal-before normal-complete; do
+                printf '**%s**\n\n![N13 Q08 %s %spx](wm023-q08-%s-%s.png)\n\n' "$stage" "$stage" "$width" "$stage" "$width"
+              done
+            done
+            printf 'Gate① Q08 user 細部OK still required. Q05 is approved; no merge, public host or release.\n'
+          } > "$dir/README.md"
+          git add "$dir"
+          if ! git diff --cached --quiet; then
+            git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Store genuine N13 Q08 Stage B real images [review only]'
+            git push origin "HEAD:refs/heads/$TARGET_BRANCH"
+          fi

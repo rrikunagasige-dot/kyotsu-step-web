@@ -41,7 +41,7 @@ for (const [n, id] of repaired) {
         await expect(panel).toBeVisible()
         let correct = panel.getByRole('button', { name: item.answer, exact: true })
         await expect(correct).toBeVisible()
-        if (item.id === id && r5Ids.has(id)) {
+        if (item.id === id && r5Ids.has(id) && id !== 'n13-08') {
           const options = panel.locator('.reading-choice-option')
           expect(await options.count()).toBeGreaterThanOrEqual(2)
           for (const option of await options.all()) {
@@ -53,6 +53,21 @@ for (const [n, id] of repaired) {
               expect(whole, id + ' clipped source operation at ' + width + 'px')
                 .toBeLessThanOrEqual(visible + 1)
             }
+          }
+        }
+        // W-MATH-023/P-002 Stage B supersedes original compound-answer R5
+        // only for N13-Q08: now n13-08 is ONE root (x=-2), not two formula rows.
+        // Earlier two-line combined R5 behavior remains tested historically by
+        // revision2 fixture and current N06/N08 R5 source repairs.
+        if (item.id === id && id === 'n13-08') {
+          const options=panel.locator('.reading-choice-option')
+          expect(await options.count()).toBeGreaterThanOrEqual(2)
+          for (const option of await options.all()) {
+            const rows=option.locator('.reading-choice-formula-line')
+            await expect(rows).toHaveCount(1)
+            const line=rows.first()
+            const size=await line.evaluate(e=>[e.scrollWidth,e.clientWidth])
+            expect(size[0],id+' single-root option clipped at '+width+'px').toBeLessThanOrEqual(size[1]+1)
           }
         }
         if (item.id === id && id === 'n07-09') {
@@ -137,7 +152,7 @@ for (const [n, id] of repaired) {
           const box=await answer.evaluate(element=>[element.scrollWidth,element.clientWidth])
           expect(box[0],'Q15 local fractional endpoint clipped at '+width+'px').toBeLessThanOrEqual(box[1]+1)
         }
-        if (item.id === id && r5Ids.has(id)) {
+        if (item.id === id && r5Ids.has(id) && id !== 'n13-08') {
           // P-004-R4: the 320/390px *resolved* white formula card must
           // show operation and inequality as two distinct, fully readable rows.
           const answer = page.getByTestId('resolved-' + id)
@@ -152,6 +167,13 @@ for (const [n, id] of repaired) {
             expect(box.actual, id + ' clipped resolved math line at ' + width + 'px')
               .toBeLessThanOrEqual(box.viewport + 1)
           }
+        }
+        if(item.id===id && id==='n13-08'){
+          const answer=page.getByTestId('resolved-'+id)
+          const rows=answer.locator('.reading-formula-n12-answer-lines > span')
+          await expect(rows).toHaveCount(0)
+          const box=await answer.evaluate(e=>[e.scrollWidth,e.clientWidth])
+          expect(box[0],id+' one-root resolved answer clipped at '+width+'px').toBeLessThanOrEqual(box[1]+1)
         }
         if (item.id === id) {
           await expect(page.locator('.katex-error')).toHaveCount(0)

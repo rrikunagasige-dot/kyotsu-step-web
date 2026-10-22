@@ -1,9 +1,12 @@
 import { validateTextbookUnits } from '../../../../domain/textbookSchema'
-import { oneToOneSourceMap } from './reviewLessonHelpers'
+import { T, M, C, reviewItem, oneToOneSourceMap } from './reviewLessonHelpers'
+import type { TextbookItem, TextbookReadingBlock } from '../../../../domain/textbookSchema'
 import { makeReviewSteps } from './newBatchGuidedSteps'
 
 export const n13SourceToItemIds = oneToOneSourceMap('N13', 9)
-const content = makeReviewSteps('n13', [
+n13SourceToItemIds['N13-Q05'] = ['n13-wm023-q05-right', 'n13-05']
+n13SourceToItemIds['N13-Q08'] = ['n13-wm023-q08-branches','n13-wm023-q08-positive-root','n13-08']
+const originalContent = makeReviewSteps('n13', [
   {
     title:'距離を満たす二つの位置',
     intro:'絶対値は数直線上の距離を表す。距離が正であれば原点の左右に同じ距離の点が一つずつある。「または」で二つの位置を表す。',
@@ -36,8 +39,115 @@ const content = makeReviewSteps('n13', [
   {id:'n13-f02',q:1,when:'after'},
   {id:'n13-f01',q:4,when:'after'},
 ])
+
+// W-MATH-023/P-002, Stage A: original Q05 becomes two independent distance
+// decisions, while original Q08 and every other original marker remain intact.
+const q05Lead = originalContent.readingFlow.findIndex(block => block.id === 'n13-lead-05')
+const q05Choice = originalContent.readingFlow.findIndex(block => block.id === 'n13-formula-05')
+const q05After = originalContent.readingFlow.findIndex(block => block.id === 'n13-after-05')
+const q05ItemIndex = originalContent.items.findIndex(item => item.id === 'n13-05')
+if (q05Lead < 0 || q05Choice !== q05Lead + 1 ||
+    q05After !== q05Lead + 2 || q05ItemIndex !== 4 ||
+    originalContent.readingFlow[q05Lead - 1]?.id !== 'n13-group-2' ||
+    originalContent.readingFlow.findIndex(block => block.id === 'n13-show-n13-f01') >= q05Lead) {
+  throw new Error('N13 Q05 source figure and guarded readingFlow changed')
+}
+const q05Blocks: TextbookReadingBlock[] = [
+  {id:'n13-lead-05',type:'paragraph',derivationId:'n13-q05-chain',parts:[
+    T('|x−1| は点 x と点 1 の距離。数直線でどちらが右にあるかを先に見て、右の座標から左の座標を引こう。'),
+  ]},
+  {id:'n13-wm023-q05-right',type:'formula',derivationId:'n13-q05-chain',parts:[
+    M('x\\ge1:\\quad |x-1|='),C('n13-wm023-q05-right'),
+  ]},
+  {id:'n13-formula-05',type:'formula',derivationId:'n13-q05-chain',parts:[
+    M('x<1:\\quad |x-1|='),C('n13-05'),
+  ]},
+  {id:'n13-after-05',type:'paragraph',parts:[
+    T('x≥1ならx−1≥0、x<1なら1−x>0。どちらも二点間の距離として負にならない。'),
+  ]},
+]
+const q05Items: TextbookItem[] = [
+  reviewItem('n13-wm023-q05-right','x≥1 のとき、距離を式で表そう。',
+    'x-1','formula',['1-x','x+1','-1-x'],'causal-reasoning','medium',
+    ['たとえば x=3 のときは点3が点1より右。2点の距離はどちらの座標からどちらを引くだろう。']),
+  reviewItem('n13-05','x<1 のとき、距離を式で表そう。',
+    '1-x','formula',['x-1','1+x','-1-x'],'causal-reasoning','medium',
+    ['たとえば x=0 のときは点1が点0より右。右側から左側を引く順番を、文字 x に戻そう。']),
+]
+const q05Content = {
+  readingFlow: [
+    ...originalContent.readingFlow.slice(0,q05Lead),
+    ...q05Blocks,
+    ...originalContent.readingFlow.slice(q05After+1),
+  ],
+  items: [
+    ...originalContent.items.slice(0,q05ItemIndex),
+    ...q05Items,
+    ...originalContent.items.slice(q05ItemIndex+1),
+  ],
+}
+
+// W-MATH-023/P-002 Stage B: Q05 Gate① user accepted. Keep its two existing
+// decisions and all N13 Q01–04/Q06–07/Q09; only replace original Q08
+// with branch-choice -> positive root -> negative root (3 separate choices).
+const q08Start = q05Content.readingFlow.findIndex(block => block.id === 'n13-lead-08')
+const q08OriginalChoice = q05Content.readingFlow.findIndex(block => block.id === 'n13-formula-08')
+const q08After = q05Content.readingFlow.findIndex(block => block.id === 'n13-after-08')
+const q08OriginalItemIndex = q05Content.items.findIndex(item => item.id === 'n13-08')
+if (q08Start < 0 || q08OriginalChoice !== q08Start + 1 ||
+    q08After !== q08Start + 2 || q08OriginalItemIndex !== 8 ||
+    q05Content.readingFlow[q08Start-1]?.id !== 'n13-after-07' ||
+    q05Content.readingFlow[q08After+1]?.id !== 'n13-lead-09') {
+  throw new Error('N13 Q08 original boundaries/approved Q05 order changed')
+}
+const q08Blocks:TextbookReadingBlock[]=[
+  {id:'n13-lead-08',type:'paragraph',derivationId:'n13-q08-chain',parts:[
+    T('|3x|=6 では、はじめに絶対値の中身がとり得る二通りの等式を作り、それぞれを x について解こう。'),
+    M('|3x|=6'),
+  ]},
+  {id:'n13-formula-08',type:'formula',derivationId:'n13-q08-chain',parts:[
+    C('n13-wm023-q08-branches'),
+  ]},
+  {id:'n13-wm023-q08-positive-root',type:'formula',derivationId:'n13-q08-chain',parts:[
+    M('3x=6\\Rightarrow x='),C('n13-wm023-q08-positive-root'),
+  ]},
+  {id:'n13-wm023-q08-negative-root',type:'formula',derivationId:'n13-q08-chain',parts:[
+    M('3x=-6\\Rightarrow x='),C('n13-08'),
+  ]},
+  {id:'n13-after-08',type:'paragraph',parts:[
+    M('x=2\\;\\text{または}\\;x=-2'),
+    T('。二つの解は「または」で結ぶ。両方の条件を同時に満たすという意味ではない。'),
+  ]},
+]
+const q08Items:TextbookItem[]=[
+  reviewItem('n13-wm023-q08-branches',
+    '中身3xがとり得る二つの等式を選ぼう。',
+    '3x=6\\;\\text{または}\\;3x=-6','formula',
+    ['3x=6\\;\\text{かつ}\\;3x=-6','3x=6','3x=-6'],
+    'causal-reasoning','medium',
+    ['|y|=3なら、正の位置と負の位置の両方がある。その2通りを今の中身3xに当てはめよう。']),
+  reviewItem('n13-wm023-q08-positive-root',
+    '3x=6 の解を求めよう。',
+    '2','formula',['-2','6','\\frac12'],'causal-reasoning','medium',
+    ['たとえば2u=6なら両辺を2で割ってu=3。ここでは係数3を使おう。']),
+  reviewItem('n13-08','3x=−6 の解を求めよう。',
+    '-2','formula',['2','-6','-\\frac12'],'causal-reasoning','medium',
+    ['たとえば2u=−6ならu=−3。負の方も同じ正の係数3で割ろう。']),
+]
+const content={
+  readingFlow:[
+    ...q05Content.readingFlow.slice(0,q08Start),
+    ...q08Blocks,
+    ...q05Content.readingFlow.slice(q08After+1),
+  ],
+  items:[
+    ...q05Content.items.slice(0,q08OriginalItemIndex),
+    ...q08Items,
+    ...q05Content.items.slice(q08OriginalItemIndex+1),
+  ],
+}
 const rawN13={
-  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n13',revision:2,status:'review' as const,subject:'math-1a' as const,
+  schemaVersion:'1.1' as const,unitId:'math-numbers-expressions-n13',revision:4,status:'review' as const,subject:'math-1a' as const,
   chapter:{chapterId:'math-ch01-numbers-expressions',chapterNumber:'1',chapterTitle:'数と式',unitCode:'1NUM',orderInChapter:13,sourcePages:[33,34]},
   title:'距離の条件を、二つの位置へ戻す',subtitle:'絶対値方程式を左右二つの位置と「または」で解く。',
   source:{type:'reference' as const,label:'ユーザー提供「数と式」教科書モード対話段階導入版 v2 / N13',

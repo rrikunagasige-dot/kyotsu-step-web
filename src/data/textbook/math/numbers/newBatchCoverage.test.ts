@@ -49,7 +49,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       const unit = mathTextbookUnits.find(u => u.unitId === 'math-numbers-expressions-n' + n)
       expect(unit, 'N' + n).toBeDefined()
       expect(unit?.status).toBe('review')
-      expect(unit?.revision).toBe(n === '11' ? 10 : n === '14' ? 9 : ['06', '07', '08'].includes(n) ? 3 : 2)
+      expect(unit?.revision).toBe(n === '11' ? 10 : n === '14' ? 9 : ['06', '07', '08'].includes(n) ? 3 : n === '13' ? 4 : 2)
       expect(Object.keys(map)).toEqual(Array.from({ length: count }, (_, i) => 'N' + n + '-Q' + String(i + 1).padStart(2, '0')))
       const items = unit?.sections.flatMap(section => section.items) ?? []
       const choiceIds = unit?.sections.flatMap(section => section.readingFlow.flatMap(block =>
@@ -61,7 +61,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       expect(items.map(i => i.id), 'N' + n).toEqual(mapped)
       allChoiceCount += items.length
     }
-    expect(allChoiceCount).toBe(162) // W-MATH-018 adds 4 Q10 learner actions; 123 Word source labels unchanged
+    expect(allChoiceCount).toBe(165) // W-MATH-023/P-002 adds Q05 +1 and Q08 +2; 123 Word markers unchanged
   })
 
   it('keeps every original figure byte-for-byte and its original question-answer gates', () => {
@@ -426,11 +426,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
         rejected: ['\\text{原点から離れている}', 'a>0', 'a<0'],
         expectedRevision: 3,
       },
-      '13': {
-        id: 'n13-08', claims: ['3x=6', '3x=-6', 'x=2', 'x=-2'],
-        rejected: ['x=6', '\\text{かつ}', 'x=2'],
-        expectedRevision: 2,
-      },
+
     }
     for (const [n, spec] of Object.entries(cases)) {
       const unit = mathTextbookUnits.find(u => u.unitId.endsWith('n' + n))!
@@ -483,7 +479,8 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
         unitId: unit.unitId, unitRevision: spec.from,
         startedAt: 100, updatedAt: 200, completedAt: 200, answers,
       }
-      const newer = effectiveTextbookProgress(unit, old)!
+      const historical = n === '13' ? {...unit, revision: 2} : unit
+      const newer = effectiveTextbookProgress(historical, old)!
       expect(newer.unitRevision, n).toBe(spec.to)
       expect(newer.completedAt, n).toBeUndefined()
       expect(newer.previousRevisionCompletedAt, n).toBe(200)
@@ -491,7 +488,7 @@ describe('W-MATH-003/P-003-R1 eight-unit cross-check', () => {
       expect(newer.answers[spec.newKey], n).toBeUndefined()
       expect(newer.archivedRevisions?.[String(spec.from)]?.answers[spec.newKey]).toEqual(answers[spec.newKey])
       if (spec.oldKey) expect(newer.answers[spec.oldKey], n).toEqual(answers[spec.oldKey])
-      expect(effectiveTextbookProgress(unit, newer)).toBe(newer)
+      expect(effectiveTextbookProgress(historical, newer)).toBe(newer)
       if (spec.from === 2) {
         const directV1 = effectiveTextbookProgress(unit, {...old, unitRevision: 1})!
         expect(directV1.unitRevision).toBe(3)

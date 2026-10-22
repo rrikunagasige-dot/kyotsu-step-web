@@ -6,7 +6,7 @@
 **Actual successful action:** [#39796060750](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39796060750) — Review Code Check + real N05-Q18 Chromium screenshot job both SUCCESS, using the exact source SHA above.  
 **Widths:** 320px / 390px / 1440px, authentic numbered and ordinary lesson, normal/before/wrong/retry/completed states, with Noto CJK JP font installed.  
 **Unit:** N05 revision 2 / 20 Word question markers / 20 graded choices; original figures and older user progress untouched.  
-**CI caveat:** Complete math-textbook regression and canonical governance reruns may still be queued/in progress. This image review is visual Gate① ONLY, not global Gate②/③ or publication permission.
+**CI result:** Full math textbook [#39797852305](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39797852305) **SUCCESS**, governance [#39797851985](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39797851985) **SUCCESS**, review [#39797852142](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39797852142) **SUCCESS**, all at `5d9be0e0ba53a3d29cecb37b4c377a57a3acc28a`. Screenshot-source student code is byte-identical. Visual Gate① response remains pending. Gate② blocked by independent sibling findings.
 
 ## 今回確認するのは N05 Q18 のヒント1文だけ
 

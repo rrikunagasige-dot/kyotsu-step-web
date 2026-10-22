@@ -14,9 +14,9 @@ const record=(itemId:string,value:string):TextbookAnswerRecord=>({
 
 describe('W-MATH-019/P-001 N14 Q14: original three inequalities, reason and five local choices',()=>{
   it('inserts only the N14 Q14 source block between unchanged Q13 and Q15',()=>{
-    expect(unit.revision).toBe(8)
+    expect(unit.revision).toBe(9)
     expect(Object.keys(n14SourceToItemIds)).toHaveLength(16)
-    expect(section.items).toHaveLength(30)
+    expect(section.items).toHaveLength(34)
     expect(section.items.map(i=>i.id)).toEqual(Object.values(n14SourceToItemIds).flat())
     const ids=['n14-lead-14','n14-formula-14','n14-wm019-q14-explain','n14-wm019-q14-result']
     const atIds=ids.map(at)
@@ -35,7 +35,7 @@ describe('W-MATH-019/P-001 N14 Q14: original three inequalities, reason and five
     expect(at('n14-after-13')).toBe(atIds[0]-1)
     expect(at('n14-after-14')).toBe(atIds[3]+1)
     expect(at('n14-lead-15')).toBe(at('n14-after-14')+1)
-    expect(item('n14-15').answer).toBe('\\text{三辺を正の}3\\text{で割る},\\quad-\\frac23\\le x\\le2')
+    expect(item('n14-15').answer).toBe('-\\frac23') // Q15 is now another, separately approved source step
     expect(at('n14-wm018-q10-result')).toBeGreaterThan(0)
     expect(at('n14-formula-wm016-q12-left')).toBeGreaterThan(0)
     expect(section.figures.map(f=>f.id)).toEqual(['n14-f01'])
@@ -67,7 +67,7 @@ describe('W-MATH-019/P-001 N14 Q14: original three inequalities, reason and five
         'n14-15':record('n14-15','original'),
       },
     }
-    const now=effectiveTextbookProgress(unit,prev)!
+    const now=effectiveTextbookProgress({...unit,revision:8},prev)!
     expect(now.unitRevision).toBe(8)
     expect(now.migratedFromRevision).toBe(7)
     expect(now.completedAt).toBeUndefined()
@@ -76,7 +76,7 @@ describe('W-MATH-019/P-001 N14 Q14: original three inequalities, reason and five
     expect(now.archivedRevisions?.['7']?.completedAt).toBe(230)
     for(const id of Object.keys(prev.answers).filter(id=>id!=='n14-14'))expect(now.answers[id]).toEqual(prev.answers[id])
     for(const id of n14SourceToItemIds['N14-Q14'])expect(now.answers[id]).toBeUndefined()
-    expect(effectiveTextbookProgress(unit,now)).toBe(now)
+    expect(effectiveTextbookProgress({...unit,revision:8},now)).toBe(now)
   })
   it('migrates historical revisions 1–7 into v8 without resetting unrelated resolved answers',()=>{
     const previous:TextbookUnitProgress={
@@ -88,7 +88,7 @@ describe('W-MATH-019/P-001 N14 Q14: original three inequalities, reason and five
         'n14-15':record('n14-15','original unchanged'),
       },
     }
-    const now=effectiveTextbookProgress(unit,previous)!
+    const now=effectiveTextbookProgress({...unit,revision:8},previous)!
     expect(now.unitRevision).toBe(8)
     for(const rev of ['1','2','3','4','5','6','7'])expect(now.archivedRevisions?.[rev]).toBeDefined()
     expect(now.answers['n14-02']).toEqual(previous.answers['n14-02'])

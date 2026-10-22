@@ -314,3 +314,86 @@ jobs:
             git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Store genuine N14 Q14 P001 Gate1 images [review only]'
             git push origin "HEAD:refs/heads/$TARGET_BRANCH"
           fi
+
+  # W-MATH-020/P-001: identical native SHA-bound Gate① method as Q10,
+  # scoped only to isolated Q15 draft PR. No Pages/public release.
+  n14-wmath020-q15-authentic-screenshots:
+    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'work/W-MATH-020-n14-q15-proposal-20261022' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      CI: 'true'
+      VITE_REVIEW_PREVIEW: 'true'
+      VITE_BASE_PATH: '/'
+      VITE_PREVIEW_COMMIT: ${{ github.event.pull_request.head.sha }}
+      E2E_WM020_GATE1: '1'
+      E2E_USE_PREVIEW: '1'
+      TARGET_BRANCH: ${{ github.head_ref }}
+      CAPTURE_SHA: ${{ github.event.pull_request.head.sha }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: true
+      - name: Do not re-capture bot evidence commit
+        id: need
+        run: |
+          # Keep existing genuine source-SHA images after human Gate1 approval.
+          # New learner changes must separately reopen the review target before recapture.
+          if git log -1 --format=%s | grep -q '^Store genuine N14 Q15 P001 Gate1 images' || \
+             (grep -A 12 "  'n14-q15': {" src/review/reviewTargets.ts | grep -q "reviewState:'accepted'"); then
+            echo 'capture=false' >> "$GITHUB_OUTPUT"
+          else
+            echo 'capture=true' >> "$GITHUB_OUTPUT"
+          fi
+      - if: ${{ steps.need.outputs.capture == 'true' }}
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - if: ${{ steps.need.outputs.capture == 'true' }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - if: ${{ steps.need.outputs.capture == 'true' }}
+        run: pnpm install --frozen-lockfile
+      - if: ${{ steps.need.outputs.capture == 'true' }}
+        run: pnpm run typecheck && pnpm run build
+      - if: ${{ steps.need.outputs.capture == 'true' }}
+        run: pnpm exec playwright install --with-deps chromium
+      - name: Real 320/390/1440 Q15 review and normal app
+        if: ${{ steps.need.outputs.capture == 'true' }}
+        run: pnpm exec playwright test e2e/wmath020-n14-q15-gate1.spec.ts --project=mobile-chromium --project=desktop-chromium
+      - name: Preserve screenshots even on failure
+        if: ${{ always() && steps.need.outputs.capture == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: wmath020-q15-real-gate1-${{ github.event.pull_request.head.sha }}
+          path: e2e-evidence/q15-*
+          if-no-files-found: ignore
+          retention-days: 7
+      - name: Preserve genuine images on PR branch only
+        if: ${{ success() && steps.need.outputs.capture == 'true' }}
+        run: |
+          dir="work/items/W-MATH-020-n14-q15-three-sided-division/evidence/gate1"
+          mkdir -p "$dir"
+          cp e2e-evidence/q15-* "$dir/"
+          {
+            printf '# N14 Q15 genuine Chromium images; not synthetic\n\n'
+            printf 'Operated source code SHA: %s\n\n' "$CAPTURE_SHA"
+            printf '320px, 390px, 1440px real normal + numbered review screens. Gate1 visual user acceptance PENDING; Gate2 and Gate3 not approved.\n\n'
+            for width in 320 390 1440; do
+              printf '## %spx\n\n' "$width"
+              for state in review-before review-wrong review-bounds normal-before normal-bounds; do
+                printf '**%s**\n\n![Real Q15 %s %spx](q15-%s-%s.png)\n\n' "$state" "$state" "$width" "$state" "$width"
+              done
+            done
+            printf 'User requested only concise math layout in the ChatGPT conversation; retain actual images as reproducible technical proof.\n'
+          } > "$dir/README.md"
+          git add "$dir"
+          if ! git diff --cached --quiet; then
+            git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Store genuine N14 Q15 P001 Gate1 images [review only]'
+            git push origin "HEAD:refs/heads/$TARGET_BRANCH"
+          fi

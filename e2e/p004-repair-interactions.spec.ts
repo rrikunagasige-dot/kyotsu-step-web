@@ -129,7 +129,15 @@ for (const [n, id] of repaired) {
           const box=await answer.evaluate(element=>[element.scrollWidth,element.clientWidth])
           expect(box[0], 'Q14 local endpoint clipped at '+width+'px').toBeLessThanOrEqual(box[1]+1)
         }
-        if (item.id === id && (r5Ids.has(id) || id === 'n14-15')) {
+        if(item.id===id && id==='n14-15'){
+          // W-MATH-020/P-001 supersedes the old Q15 combined card.
+          const answer=page.getByTestId('resolved-'+id)
+          await expect(answer).toBeVisible()
+          await expect(answer.locator('.reading-formula-n12-answer-lines > span')).toHaveCount(0)
+          const box=await answer.evaluate(element=>[element.scrollWidth,element.clientWidth])
+          expect(box[0],'Q15 local fractional endpoint clipped at '+width+'px').toBeLessThanOrEqual(box[1]+1)
+        }
+        if (item.id === id && r5Ids.has(id)) {
           // P-004-R4: the 320/390px *resolved* white formula card must
           // show operation and inequality as two distinct, fully readable rows.
           const answer = page.getByTestId('resolved-' + id)

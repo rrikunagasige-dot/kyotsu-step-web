@@ -55,6 +55,20 @@
   }
 }
 
+
+/* W-MATH-020/P-001: Q15-only narrow numbered reviewer. Exact width
+   tests decide pass/fail; do not shrink original canonical buttons. */
+@media (max-width: 430px) {
+  .review-preview [data-testid="review-mark-n14-formula-15"] {
+    padding-inline: .4rem;
+  }
+}
+@media (max-width: 350px) {
+  .review-preview [data-testid="review-mark-n14-formula-15"] {
+    padding-inline: 0;
+  }
+}
+
 .review-preview .review-marked-block__label {
   display: inline-block;
   margin-bottom: 0.45rem;

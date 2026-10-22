@@ -1,0 +1,26 @@
+{
+  "sha": "4a59ca3f8ae9bd7a0ff50c8b06db226815d063c3",
+  "width": 390,
+  "cases": [
+    [
+      "n14-wm020-q15-divide-left",
+      "3"
+    ],
+    [
+      "n14-wm020-q15-divide-center",
+      "3"
+    ],
+    [
+      "n14-wm020-q15-divide-right",
+      "3"
+    ],
+    [
+      "n14-15",
+      "-\\frac23"
+    ],
+    [
+      "n14-wm020-q15-bound-right",
+      "2"
+    ]
+  ]
+}

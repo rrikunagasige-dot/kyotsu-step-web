@@ -404,7 +404,9 @@ for(const width of [320,390,1440] as const){
       }
       if(i!==4) await expect(page.getByTestId('textbook-item-n14-15')).toHaveCount(0)
     }
-    await expect(page.getByTestId('textbook-item-n14-15')).toBeVisible()
+    // W-MATH-020: Q15 opens with three division choices before its re-keyed left bound.
+    await expect(page.getByTestId('textbook-item-n14-wm020-q15-divide-left')).toBeVisible()
+    await expect(page.getByTestId('textbook-item-n14-15')).toHaveCount(0)
     await expect(page.locator('.katex-error')).toHaveCount(0)
     const v=await page.evaluate(()=>[document.documentElement.scrollWidth,document.documentElement.clientWidth])
     expect(v[0]).toBeLessThanOrEqual(v[1]+2)

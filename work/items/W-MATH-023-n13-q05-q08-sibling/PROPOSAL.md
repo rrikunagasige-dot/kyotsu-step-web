@@ -1,5 +1,6 @@
 # W-MATH-023 / P-002 — N13 Q05→Q08 sequential correction and history-safe migration
-Status: APPROVED — only scoped Stage A Q05 implementation; Q08 gated by Q05 user visual approval
+Status: APPROVED
+Implementation scope: Stage A Q05 only. Stage B Q08 is blocked until Q05 user Gate①.
 Date: 2026-10-22 JST
 Command: CMD-WORK-001 修正
 Historical original P-001 (not approved): PROPOSAL_P001_HISTORICAL.md

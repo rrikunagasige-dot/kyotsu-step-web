@@ -1,6 +1,8 @@
 # N13 Q05 actual native Gate① images (not yet human approved)
 
-Real operated source SHA: `e57939a9105a85bad79c3a38d8684bfd34bcaecd`
+Real operated source SHA: `c911529360f070a5b6ddb6cf2a104eabe4abd708`
+
+Font coverage: Noto CJK JP verified
 
 Q05 Stage A only. 320/390/1440 actual Chromium normal and numbered. Original N13-Q08 is untouched.
 

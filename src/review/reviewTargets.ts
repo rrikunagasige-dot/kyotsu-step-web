@@ -92,6 +92,18 @@ const targets: Record<string, ReviewTarget> = {
     markBlockIds:['n14-formula-15','n14-wm020-q15-explain','n14-wm020-q15-result'],
     reviewState:'accepted', // user 「続けて」 to concise Q15 math Gate1 layout; preserve source-matched image history
   },
+  // W-MATH-023/P-002 Stage A: original Q05 is now two meaningful choices.
+  // No marker or other learner changes for historical N13 Q08 (Stage B pending).
+  'n13-q05': {
+    id:'n13-q05',unitId:'math-numbers-expressions-n13',title:'N13 Q05',
+    question:'xと1の二点間の距離を、x≥1とx<1の場合に分けて表す',
+    revision:3,totalItems:10,
+    blockIds:['n13-show-n13-f01','n13-lead-05','n13-wm023-q05-right','n13-formula-05','n13-after-05'],
+    itemIds:['n13-wm023-q05-right','n13-05'],
+    expectedAnswers:['x-1','1-x'],
+    markBlockIds:['n13-wm023-q05-right','n13-formula-05'],
+    reviewState:'awaiting-user',
+  },
   'n01-q07': {
     id: 'n01-q07', unitId: 'math-numbers-expressions-n01', title: 'N01 Q07', question: '同類項の係数',
     revision: 2, totalItems: 18,

@@ -52,7 +52,7 @@ for (const width of [320, 390, 1440]) {
     panel=page.getByTestId('inline-choice-panel-'+id)
     await expect(panel).toBeVisible()
     await expect(hint).toBeVisible()
-    await expect(hint).toHaveText(hintText)
+    await expect(hint.locator('span')).toHaveText(hintText) // ignore the unchanged 'ヒント' heading
     await expect(hint).not.toContainText('3x÷3=x')
     await expect(page.getByTestId('textbook-item-n14-wm020-q15-divide-right')).toHaveCount(0)
     await hint.scrollIntoViewIfNeeded()

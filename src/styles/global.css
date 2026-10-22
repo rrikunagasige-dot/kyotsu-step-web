@@ -1448,3 +1448,31 @@ button.math-theme-link {
     grid-row: 2;
   }
 }
+
+
+/* W-MATH-023/P-002 Stage A: narrow-phone Q05 only.
+   Keep the accepted blue 選択 / red × native button width and feedback;
+   show the case condition+distance formula above its choice, not clipped. */
+@media (max-width: 350px) {
+  .reading-derivation-chain[data-derivation-id="n13-q05-chain"]
+    [data-testid="textbook-formula-n13-wm023-q05-right"],
+  .reading-derivation-chain[data-derivation-id="n13-q05-chain"]
+    [data-testid="textbook-formula-n13-formula-05"] {
+    padding-inline: 0;
+  }
+  .reading-derivation-chain[data-derivation-id="n13-q05-chain"]
+    [data-testid="textbook-formula-n13-wm023-q05-right"] .reading-formula-expression,
+  .reading-derivation-chain[data-derivation-id="n13-q05-chain"]
+    [data-testid="textbook-formula-n13-formula-05"] .reading-formula-expression {
+    display: grid;
+    grid-template-columns: max-content;
+    grid-template-rows: auto auto;
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+    justify-items: center;
+    align-items: baseline;
+    row-gap: .16rem;
+  }
+}

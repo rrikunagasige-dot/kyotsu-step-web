@@ -90,7 +90,7 @@ const targets: Record<string, ReviewTarget> = {
     itemIds:['n14-wm020-q15-divide-left','n14-wm020-q15-divide-center','n14-wm020-q15-divide-right','n14-15','n14-wm020-q15-bound-right'],
     expectedAnswers:['3','3','3','-\\frac23','2'],
     markBlockIds:['n14-formula-15','n14-wm020-q15-explain','n14-wm020-q15-result'],
-    reviewState:'awaiting-user',
+    reviewState:'accepted', // user 「続けて」 to concise Q15 math Gate1 layout; preserve source-matched image history
   },
   'n01-q07': {
     id: 'n01-q07', unitId: 'math-numbers-expressions-n01', title: 'N01 Q07', question: '同類項の係数',

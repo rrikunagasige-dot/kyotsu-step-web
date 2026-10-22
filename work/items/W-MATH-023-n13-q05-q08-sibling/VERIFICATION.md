@@ -8,3 +8,5 @@ Status: PENDING / PROPOSAL-ONLY
 - No PR, merge, Pages/Vercel, costs, main modifications, student content changes.
 
 - P-002 proposal documentation exists; all N13 software functionality, revised migrations, exact original PNG assets and browser evidence for new stages remain UNIMPLEMENTED/UNVERIFIED. No CI PASS claimed for unbuilt N13 corrections.
+
+- P-002 read-only preflight documented: `P002_PREFLIGHT_AUDIT_20261022.md`; verified source/revision staging and existing reviewTargets expectation. Separate W-MATH-021 baseline does not contain Q16 W-MATH-022 implementation, so candidate/shipping SHA reconciliation is a future separate permission gate. Nothing implemented; no Q05 or Q08 CI/screenshot claim.

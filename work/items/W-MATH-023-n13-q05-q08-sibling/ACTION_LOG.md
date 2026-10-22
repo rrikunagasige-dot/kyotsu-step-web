@@ -7,3 +7,5 @@
 
 - Prior P-001 had material stage/revision conflict (single v2→v3 and 9→12 though Q05 Gate① must precede Q08). Saved exact original as `PROPOSAL_P001_HISTORICAL.md`, then wrote P-002 staged v2→v3 Q05 only (9→10) and later v3→v4 Q08 only (10→12). N13 authoring and migration files **untouched**.
 - User's 「ネットが切れた続けて」 was a continuation after interrupted GitHub file write, not a direct exact P-002 approval. P-002 is PROPOSED; next permitted action is present it, then stop pending user response. Q16 Gate① separately pending.
+
+- 2026-10-22 P-002 preflight (user generic 「続けて」): refreshed live main/branch, CMD-WORK-001 and §12A/B/C. Per P-002 consent text, not sufficient to mark APPROVED. Audited R5 v1→v2 migration, the 9→10→12 stage math, reviewTargets gate contracts, and existing snapshot fixture risks. Found independent W-MATH-023 branch still rooted W-MATH-021 and lacking W-MATH-022 Q16 code; keep future integration separated. See P002_PREFLIGHT_AUDIT_20261022.md; N13 code untouched.

@@ -34,7 +34,7 @@ for (const width of [320, 390, 1440]) {
     await expect(trigger).toBeVisible()
     const hint=page.getByTestId('textbook-hint-'+id)
     await expect(hint).toHaveCount(0)
-    await expect(page.getByTestId('textbook-item-n14-wm020-q15-divide-right')).toHaveCount(0)
+    await expect(page.getByTestId('textbook-item-n14-15')).toHaveCount(0)
     await trigger.focus()
     await trigger.press('Enter')
     let panel=page.getByTestId('inline-choice-panel-'+id)
@@ -54,7 +54,7 @@ for (const width of [320, 390, 1440]) {
     await expect(hint).toBeVisible()
     await expect(hint.locator('span')).toHaveText(hintText) // ignore the unchanged 'ヒント' heading
     await expect(hint).not.toContainText('3x÷3=x')
-    await expect(page.getByTestId('textbook-item-n14-wm020-q15-divide-right')).toHaveCount(0)
+    await expect(page.getByTestId('textbook-item-n14-15')).toHaveCount(0)
     await hint.scrollIntoViewIfNeeded()
     const root=await hint.evaluate(el=>{
       const r=el.getBoundingClientRect()

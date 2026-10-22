@@ -83,7 +83,7 @@ for(const width of [320,390]){
       const unit=mathTextbookUnits.find(u=>u.unitId.endsWith('n14'))!
       const items=unit.sections[0].items
       const ids=['n14-wm014-q07-nonnegative','n14-wm014-q07-negative','n14-07']
-      expect(unit.revision).toBe(7) // Q10 P001 adds four decisions; existing Q07/Q08/Q12 content unchanged
+      expect(unit.revision).toBe(8) // Q14 P001 adds four decisions; existing Q07/Q08/Q10/Q12 content unchanged
       expect(items.slice(6,9).map(i=>i.id)).toEqual(ids)
       await page.goto('/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n14')
       await page.evaluate(()=>localStorage.clear())
@@ -163,7 +163,7 @@ for(const width of [320,390]){
       const unit=mathTextbookUnits.find(u=>u.unitId.endsWith('n14'))!
       const items=unit.sections[0].items
       const ids=['n14-wm015-q08-nonnegative','n14-wm015-q08-negative','n14-08']
-      expect(unit.revision).toBe(7) // Q10 P001 adds four decisions; existing Q07/Q08/Q12 content unchanged
+      expect(unit.revision).toBe(8) // Q14 P001 adds four decisions; existing Q07/Q08/Q10/Q12 content unchanged
       expect(items.slice(9,12).map(x=>x.id)).toEqual(ids)
       await page.goto('/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n14')
       await page.evaluate(()=>localStorage.clear())
@@ -243,7 +243,7 @@ for(const width of [320,390]){
       const unit=mathTextbookUnits.find(u=>u.unitId.endsWith('n14'))!
       const items=unit.sections[0].items
       const ids=['n14-wm016-q12-left','n14-wm016-q12-right','n14-12']
-      expect(unit.revision).toBe(7) // Q10 P001 adds four decisions; existing Q07/Q08/Q12 content unchanged
+      expect(unit.revision).toBe(8) // Q14 P001 adds four decisions; existing Q07/Q08/Q10/Q12 content unchanged
       expect(items.slice(19,22).map(x=>x.id)).toEqual(ids) // Q10 adds four prior items
       await page.goto('/kyotsu-step-web/#/learning/textbook/math-numbers-expressions-n14')
       await page.evaluate(()=>localStorage.clear())
@@ -310,4 +310,106 @@ for(const width of [320,390]){
         await expect(page.getByTestId('resolved-'+id)).toBeVisible()
       await expect(page.getByTestId('textbook-figure-n14-f01')).toBeVisible()
     })
+}
+
+
+// W-MATH-019/P-001: independent real-browser Q14 check in an already-approved
+// math E2E workflow. Never infer formula fit from document scrollWidth only.
+for(const width of [320,390,1440] as const){
+  test('W-MATH-019/Q14 narrow real Chromium '+width, async({page},info)=>{
+    test.skip(width===1440?info.project.name!=='desktop-chromium':info.project.name!=='mobile-chromium')
+    test.setTimeout(240_000)
+    await page.setViewportSize({width,height:width===1440?1000:850})
+    const unit=mathTextbookUnits.find(u=>u.unitId.endsWith('n14'))!
+    const ids=['n14-wm019-q14-add-left','n14-wm019-q14-add-center','n14-wm019-q14-add-right','n14-14','n14-wm019-q14-bound-right']
+    const items=unit.sections[0].items
+    const first=items.findIndex(i=>i.id===ids[0])
+    expect(first).toBeGreaterThan(20)
+    await page.goto(route('14'))
+    await page.evaluate(()=>localStorage.clear())
+    await page.reload()
+    const answer=async(id:string,value:string)=>{
+      const button=page.getByTestId('textbook-item-'+id)
+      await expect(button,id).toBeVisible()
+      await button.click()
+      await page.getByTestId('inline-choice-panel-'+id).getByRole('button',{name:value,exact:true}).click()
+      await expect(page.getByTestId('resolved-'+id)).toBeVisible()
+    }
+    for(const prior of items.slice(0,first)) await answer(prior.id,prior.answer)
+    const line=page.getByTestId('textbook-formula-n14-formula-14')
+    const chain=page.locator('[data-derivation-id="n14-q14-chain"]')
+    const reason=chain.locator('.reading-derivation-step--paragraph')
+    await expect(line).toBeVisible()
+    await expect(reason).toHaveCount(0)
+    await expect(chain.locator('.reading-formula-line')).toHaveCount(2)
+    const measure=async()=>{
+      const m=await line.evaluate(el=>{
+        const b=el.getBoundingClientRect()
+        const e=el.querySelector('.reading-formula-expression') as HTMLElement
+        const parts=Array.from(e.children).map(k=>{const r=k.getBoundingClientRect();return {left:r.left,right:r.right,top:r.top}})
+        const buttons=Array.from(el.querySelectorAll('button.reading-formula-choice')).map(k=>{
+          const s=getComputedStyle(k),r=k.getBoundingClientRect()
+          return {text:k.textContent?.trim(),w:r.width,h:r.height,minw:parseFloat(s.minWidth),minh:parseFloat(s.minHeight),
+            label:k.getAttribute('aria-label'),color:s.color,borderColor:s.borderColor}
+        })
+        return {scrollWidth:el.scrollWidth,clientWidth:el.clientWidth,left:b.left,right:b.right,
+          display:getComputedStyle(e).display,parts,buttons}
+      })
+      expect(m.parts).toHaveLength(6)
+      expect(m.scrollWidth,'N14 Q14 formula clips internally at '+width).toBeLessThanOrEqual(m.clientWidth+1)
+      for(const p of m.parts){
+        expect(p.left,'N14 Q14 left clip '+width).toBeGreaterThanOrEqual(m.left-1)
+        expect(p.right,'N14 Q14 right clip '+width).toBeLessThanOrEqual(m.right+1)
+      }
+      for(const b of m.buttons){
+        expect(['選択','×']).toContain(b.text)
+        expect(b.label).toBeTruthy()
+        expect(b.w).toBeGreaterThanOrEqual(b.minw-1)
+        expect(b.h).toBeGreaterThanOrEqual(b.minh-1)
+        expect(b.color).toBe(b.borderColor)
+      }
+      if(width<=430){
+        expect(m.display).toBe('grid')
+        expect(Math.min(...m.parts.slice(4).map(k=>k.top))-Math.min(...m.parts.slice(0,4).map(k=>k.top))).toBeGreaterThan(12)
+      }else expect(m.display).toBe('flex')
+      return m
+    }
+    for(const [i,id] of ids.entries()){
+      const item=items.find(k=>k.id===id)!
+      await page.getByTestId('textbook-item-'+id).scrollIntoViewIfNeeded()
+      if(i<3){
+        await measure()
+        await expect(reason).toHaveCount(0)
+        await expect(page.getByTestId('textbook-item-n14-14')).toHaveCount(0)
+      }else await expect(reason).toHaveCount(1)
+      const button=page.getByTestId('textbook-item-'+id)
+      await button.focus()
+      await button.press('Enter')
+      const panel=page.getByTestId('inline-choice-panel-'+id)
+      const opts=await panel.getByRole('button').all()
+      const right=panel.getByRole('button',{name:item.answer,exact:true})
+      const rightId=await right.getAttribute('data-testid')
+      let bad:(typeof opts)[number]|undefined
+      for(const opt of opts)if((await opt.getAttribute('data-testid'))!==rightId){bad=opt;break}
+      expect(bad).toBeDefined()
+      await bad!.click()
+      await expect(page.getByTestId('resolved-'+id)).toHaveCount(0)
+      await button.click()
+      await expect(page.getByTestId('textbook-hint-'+id)).toBeVisible()
+      await panel.getByRole('button',{name:item.answer,exact:true}).click()
+      await expect(page.getByTestId('resolved-'+id)).toBeVisible()
+      if(i===2){
+        await expect(reason).toHaveCount(1)
+        await expect(reason.first()).toContainText('中央の−2と＋2')
+      }
+      if(i!==4) await expect(page.getByTestId('textbook-item-n14-15')).toHaveCount(0)
+    }
+    await expect(page.getByTestId('textbook-item-n14-15')).toBeVisible()
+    await expect(page.locator('.katex-error')).toHaveCount(0)
+    const v=await page.evaluate(()=>[document.documentElement.scrollWidth,document.documentElement.clientWidth])
+    expect(v[0]).toBeLessThanOrEqual(v[1]+2)
+    await page.reload()
+    for(const id of ids)await expect(page.getByTestId('resolved-'+id)).toBeVisible()
+    await expect(page.getByTestId('resolved-n14-10')).toBeVisible()
+  })
 }

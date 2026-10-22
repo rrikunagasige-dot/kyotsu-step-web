@@ -32,8 +32,8 @@ describe('W-MATH-018/P-001 N14 Q10 source-cognitive correction and archived hist
    expect(at('n14-formula-wm016-q12-left')).toBeGreaterThan(at('n14-lead-11'))
    expect(sec.figures).toHaveLength(1)
    expect(sec.figures[0].id).toBe('n14-f01')
-   expect(unit.revision).toBe(7)
-   expect(sec.items).toHaveLength(26)
+   expect(unit.revision).toBe(8)
+   expect(sec.items).toHaveLength(30)
    expect(Object.keys(n14SourceToItemIds)).toHaveLength(16)
    expect(sec.items.map(x=>x.id)).toEqual(Object.values(n14SourceToItemIds).flat())
  })
@@ -72,7 +72,7 @@ describe('W-MATH-018/P-001 N14 Q10 source-cognitive correction and archived hist
        'n14-15':mk('n14-15','old'),
      },
    }
-   const now=effectiveTextbookProgress(unit,prev)!
+   const now=effectiveTextbookProgress({...unit,revision:7},prev)!
    expect(now.unitRevision).toBe(7)
    expect(now.migratedFromRevision).toBe(6)
    expect(now.completedAt).toBeUndefined()
@@ -82,14 +82,14 @@ describe('W-MATH-018/P-001 N14 Q10 source-cognitive correction and archived hist
    for(const id of Object.keys(prev.answers).filter(x=>x!=='n14-10')) expect(now.answers[id]).toEqual(prev.answers[id])
    expect(now.answers['n14-10']).toBeUndefined()
    for(const id of n14SourceToItemIds['N14-Q10'].filter(x=>x!=='n14-10'))expect(now.answers[id]).toBeUndefined()
-   expect(effectiveTextbookProgress(unit,now)).toBe(now)
+   expect(effectiveTextbookProgress({...unit,revision:7},now)).toBe(now)
  })
  it('preserves complete archival ladder from revisions 1–6 into revision7',()=>{
    const previous:TextbookUnitProgress={
      unitId:unit.unitId,unitRevision:1,startedAt:50,updatedAt:100,
      answers:{'n14-02':mk('n14-02','-3,3'),'n14-10':mk('n14-10','old')},
    }
-   const next=effectiveTextbookProgress(unit,previous)!
+   const next=effectiveTextbookProgress({...unit,revision:7},previous)!
    expect(next.unitRevision).toBe(7)
    for(const r of ['1','2','3','4','5','6'])expect(next.archivedRevisions?.[r]).toBeDefined()
    expect(next.answers['n14-02']).toEqual(previous.answers['n14-02'])

@@ -1,5 +1,5 @@
 # W-MATH-020 — action log
-Status: PROPOSED
+Status: VERIFYING
 
 2026-10-22 JST: After user accepted N14 Q14 concise Gate① with exact 「いいよ」, read existing N14 Q13→Q14→Q15→Q16 original and W-MATH-017/F-017-08. Authored Q15 one-block P-001 proposal only, branch isolated from main. No source/CSS/answers/migration implemented. Await user exact Q15 approval. Gate② and Gate③ remain distinct.
 
@@ -17,3 +17,8 @@ Status: PROPOSED
 - The first evidence bot workflow accidentally used the non-authoritative folder name `W-MATH-020-n14-q15-three-sided-addition` (copied from earlier Q14) rather than the actual Q15 Work `...three-sided-division`. The authorized lesson source was never incorrect. Corrected the workflow to write to [canonical images](./evidence/gate1/README.md); a second genuine capture succeeded for source SHA `649a86b76b873f3b53766f64566b42c7dd2c986f` in bot commit `5001c6a1413ba9e907e4dc5cd5fa6aab784329a1`.
 - To satisfy the existing one-Work-folder governance and avoid destructive loss, copied the first **22 exact original Git blob files** into [immutable historical evidence](./evidence/history/source-4a59ca3f8ae9bd7a0ff50c8b06db226815d063c3/README.md), then removed only the empty misnamed Work folder from the current Git tree **atomically**; all 22 files remain as byte-identical history, all 22 newest images remain under canonical Gate1. The earlier Git commits are also unchanged. No formula, answer, history migration, CSS, reviewer state or accepted Q14/Q10/N11 changes.
 - This is **Q15 TECHNICAL Gate① PASS / USER VISUAL PENDING**, not user acceptance. Previously approved blocks remain accepted. Independent Gate② cross-audit and Gate③ exact-SHA playable full app remain OPEN. Governance/review code checks on candidate source passed; full Math textbook regression may have been cancelled by evidence-only branch updates, so report its actual final status rather than invent PASS. Main and published app unchanged.
+
+## 2026-10-22 — Q15 visual accepted and full-regression legacy assertion diagnosed
+- User's direct **「続けて」** after the concise Q15 visual and 「細部確認をお願いします」 accepts that limited mathematical layout and continuation. Preserved original authentic 320/390/1440 before/wrong/bounds image evidence; no claim of individually viewing each image.
+- `reviewTargets['n14-q15']` accepted, approved yellow marker suppressed in new review output; metadata test adjusted, source/answers and Q10/Q14/N11 preserved.
+- Full Math textbook #39717059416 FAILED because its old Q14 regression expected completed Q15 endpoint `n14-15` immediately after Q14. With five new Q15 steps, Q14 unlocks `n14-wm020-q15-divide-left` instead. Test-only correction applied; recheck exact new SHA CI before global PASS claims. No main merge, publication, Gate②/③ acceptance.

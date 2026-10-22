@@ -40,6 +40,7 @@ test.describe('W-MATH-024 original N05-Q18 image-backed Gate1',()=>{
       test.setTimeout(240_000)
       await page.setViewportSize({width,height:width===1440?1000:850})
       await page.goto('/#/learning/textbook/math-numbers-expressions-n05')
+      mkdirSync('e2e-evidence',{recursive:true})
       const items=mathNumbersN05Unit.sections[0].items
       expect(items).toHaveLength(20)
       for(const q of items.slice(0,17)){

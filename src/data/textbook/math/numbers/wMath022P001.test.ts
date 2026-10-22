@@ -56,14 +56,15 @@ describe('W-MATH-022/P-001 N14 Q16 endpoint verification', () => {
     const targets = ['3\\times(-\\frac13)', '|-3|=3', '3×1−2', '|2|=2', '|−2|≤2']
     for (const [index, id] of ids.entries()) {
       const q = item(id)
-      expect(q.choices).toHaveLength(4)
-      expect(new Set(q.choices).size).toBe(4)
-      expect(q.choices.filter(option => option === q.answer)).toHaveLength(1)
+      const choices = q.choices ?? []
+      expect(choices).toHaveLength(4)
+      expect(new Set(choices).size).toBe(4)
+      expect(choices.filter(option => option === q.answer)).toHaveLength(1)
       expect(q.hints).toHaveLength(1)
       expect(q.hints[0]).not.toContain('3x−2=−4')
       expect(q.hints[0]).not.toContain('3x−2=4')
       if (index < 4) {
-        for (const answer of q.choices) expect(() => katex.renderToString(answer, { throwOnError: true })).not.toThrow()
+        for (const answer of choices) expect(() => katex.renderToString(answer, { throwOnError: true })).not.toThrow()
       }
     }
     expect(item(ids[0]).hints[0]).toContain('3×(−1/3)')

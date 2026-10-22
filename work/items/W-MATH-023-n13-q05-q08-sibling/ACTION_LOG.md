@@ -20,3 +20,8 @@
 - Opened *actual* new Q05 320px complete and 390px before photographs: Japanese text and marks rendered legibly; no □ tofu. Confirmed the earlier N14 Q16 pinned screenshot `f5b15694740325b56077fe64d740c7a7dc8fb22e` also renders Japanese correctly; no confirmed retroactive N14 font defect.
 - Created [Q05 Gate① numbered review sheet](./GATE1_N13_Q05_REVIEW_SHEET.md) with **immutable pinned** screen images from `913a7b0d6ce165f910c85bb3498fb5a9921c6a7d`, subject SHA `c911529360f070a5b6ddb6cf2a104eabe4abd708`.
 - Q05 Gate① **BLOCK-CHECK-PENDING** until explicit user `細部OK` or `要修正`; Q08 cannot begin before that. Gate②, Gate③, main merge, public hosting remain not authorized.
+
+## 2026-10-22 JST — N13 Q05 Stage A Gate① user visual acceptance
+- User's immediate response to the authentic [Q05 source-SHA numbered review sheet](./GATE1_N13_Q05_REVIEW_SHEET.md), for confirmations ① and ②: **「いいよ続けて。因みに今どこまで進んでいる？」** (verbatim; NOT a quoted 「細部OK」 literal). In direct context, this accepts the two displayed visual points and requests continuing to next P-002 step.
+- Gate① N13 Q05 **BLOCK-VISUAL-OK** based on explicit affirmative reply to this precise two-point sheet. Source/test SHA: `c911529360f070a5b6ddb6cf2a104eabe4abd708`; genuine readable Japanese images pinned to `913a7b0d6ce165f910c85bb3498fb5a9921c6a7d`; graded IDs `n13-wm023-q05-right`, `n13-05`.
+- Scope visual/layout only, **not** Q08 Gate①, Q16 Gate①, independent Gate② or full-app Gate③ `総チェックOK`; not main merge/release/hosting/paid action. Proceed with previously approved P-002 Stage B **Q08 only**; do not re-open Q05 approval.

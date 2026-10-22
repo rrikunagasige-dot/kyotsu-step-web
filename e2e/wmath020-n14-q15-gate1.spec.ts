@@ -1,7 +1,7 @@
 import {mkdirSync,writeFileSync} from 'node:fs'
 import {expect,test,type Page} from '@playwright/test'
 import {mathNumbersN14Unit} from '../src/data/textbook/math/numbers/n14Lesson'
-const cases=[['n14-wm020-q15-divide-left','3'],['n14-wm020-q15-divide-center','3'],['n14-wm020-q15-divide-right','3'],['n14-15','-\frac23'],['n14-wm020-q15-bound-right','2']] as const
+const cases=[['n14-wm020-q15-divide-left','3'],['n14-wm020-q15-divide-center','3'],['n14-wm020-q15-divide-right','3'],['n14-15','-\\frac23'],['n14-wm020-q15-bound-right','2']] as const
 const dir='e2e-evidence/'
 const photo=async(page:Page,name:string,w:number)=>{mkdirSync(dir,{recursive:true});await page.screenshot({path:dir+'q15-'+name+'-'+w+'.png'})}
 async function fit(page:Page,w:number){

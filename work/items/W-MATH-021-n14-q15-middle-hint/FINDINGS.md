@@ -13,3 +13,5 @@ F-021-06 (CONFIRMED USER CORRECTION 2026-10-22): P-002 two questions were insuff
 
 
 F-021-08 (VERIFIED): authorized one-hint P-003 source SHA 0718c4fcb06740ee52a5fdb8ac321f77c32ded2c, real browser 320/390/1440 #39729380880 SUCCESS, full textbook #39729380733 SUCCESS. Only Q15 center after-wrong hint differs from previous code. User replied 「続けて」 to the image-linked P-003 implementation report; accepted scoped continuation, no claims of individually viewing screenshots. Q16 separate confirmed correction candidate.
+
+F-021-09 (USER EXPLICIT ACCEPTANCE): P-003 4-stage error hint Gate① scoped accepted by direct 「承認」 following the screenshot-linked display. Native 3/3 Chrome and CI SUCCESS source SHA 0718c4fcb06740ee52a5fdb8ac321f77c32ded2c. No Q16 authorization, broad Gate② and Gate③ remain open.

@@ -1,5 +1,5 @@
 # W-MATH-021 — Verification
-Status: VERIFYING
+Status: DONE
 
 | Check | Result |
 | --- | --- |
@@ -39,3 +39,10 @@ User answered **「承認」** to exactly this hint one-string correction. Teste
 - [Full Math textbook regression #39729380733](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39729380733) **SUCCESS** at the same source SHA, including physics and math practice regressions. [Repository Governance #39729380731](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39729380731) SUCCESS; review code job #39729380880 SUCCESS.
 - After the response showing the genuine P-003 320px screenshot and technical findings, user replied **「続けて」**. Record **continuation/acceptance of the displayed P-003 hint presentation only**, NOT individual review of all 320/390/1440 screenshots and NOT a broad Gate② or Gate③ approval. No need to reapprove the Q15 3-equation mathematical lesson. Future changed hint version would require a new exact proposal and user review.
 - Independent full Gate② remains NOT CROSS-VERIFIED: Q16's bundled endpoint-check choice and directly evaluated after-wrong hint are confirmed candidate(s) requiring independent one-block analysis/proposal, other original source & cross-mode audits incomplete. Gate③ SHA-matched live playable app and `総チェックOK` remain not ready. Draft PR #110 unmerged, main/Pages/public unchanged.
+
+
+## 2026-10-22 — explicit final visual acceptance of P-003 changed hint
+- After the P-003 screenshot-driven report and prior continuation, the user separately answered **「承認」**. Record **Gate① BLOCK-VISUAL-OK for W-MATH-021 N14 Q15 *changed center after-wrong four-example hint only***. Earlier tentative 「続けて」 acknowledgement is now supplemented by this explicit approval. The user did NOT explicitly state they separately viewed every screenshot, so do not make that claim.
+- The accepted hint contains noninteractive steps `2×□=1 → 3×□=1 → 3x×□=x → 3x÷□=x`. Code source SHA **`0718c4fcb06740ee52a5fdb8ac321f77c32ded2c`**; actual 320/390/1440 image set in [Gate① evidence](./evidence/gate1/README.md), with historical P-001 evidence intact. Native wrong→hint→retry and 3/3 screenshots [#39729380880](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39729380880) SUCCESS. Full Math textbook #39729380733 SUCCESS. Latest *documentation-only* head `36b7065b6c43964926e7f65c2d3adfb6c5a73cbb` also passed textbook #39731174878, Governance #39731174973 and Review code #39731175170; math source and visual content unchanged.
+- Q15's previously accepted mathematical three logical formulas/five choices, Q10/Q14/N11 and original screenshot evidence are not reopened or reauthorized. This approval is NOT independent project-wide Gate② or user Gate③ full playable app `総チェックOK`; PR #110 DRAFT, main unchanged.
+- Next correction-first queue: Q16 original bundled endpoint-substitution answer and directly worked after-wrong hint, CONFIRMED sibling but **no implementation permission**. Review source and propose exact separate Work before any code change.

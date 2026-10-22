@@ -1,5 +1,5 @@
 # W-MATH-022 / P-001 — N14 Q16 端点の代入・絶対値・境界判定を一つの導出で可視化
-Status: PROPOSED / NOT IMPLEMENTED / UNAPPROVED
+Status: APPROVED — scoped Q16 implementation on isolated branch; QA in progress
 Date: 2026-10-22 JST
 Command: CMD-WORK-001 修正. Canon: WORK_SYSTEM §§12A/12B.
 
@@ -50,4 +50,9 @@ All 5 are locally meaningful: two substitutions, two sign-sensitive absolute val
 - Parent branch chain PR#107–110 remain DRAFT; new Work must not merge/publish/host or incur charges. Q10/Q14/Q15 already accepted and never need renewed fine approval for this change.
 
 ## Approval boundary
-**No Q16 implementation approval exists.** This is P-001 only. Show exact student text, formula blanks, chosen hints and five answer semantics to user. Approval to implement requires the user's explicit acceptance of this precise P-001. Any changed content requires REVISE-PROPOSAL, fully re-presented and separately accepted. CI passing or "続けて" addressed to another Work is not Q16 authorization.
+**Q16 implementation approved on 2026-10-22 JST by user's direct 「いいよ。続けて」 to the exact P-001; this is NOT Gate① human visual approval, release, merge or hosting consent.** This is P-001 only. Show exact student text, formula blanks, chosen hints and five answer semantics to user. Approval to implement requires the user's explicit acceptance of this precise P-001. Any changed content requires REVISE-PROPOSAL, fully re-presented and separately accepted. CI passing or "続けて" addressed to another Work is not Q16 authorization.
+
+
+## Explicit approval record — 2026-10-22 JST
+- User immediately replied 「いいよ。続けて」 to the displayed P-001 Q16 design and confirmation request. Exact P-001 authorized for implementation, existing Q10/Q14/Q15 remain protected.
+- Work proceeds in isolation; native screenshot review, Gate② and Gate③ remain separate.

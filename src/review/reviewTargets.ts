@@ -116,6 +116,17 @@ const targets: Record<string, ReviewTarget> = {
     markBlockIds:['n13-formula-08','n13-wm023-q08-positive-root','n13-wm023-q08-negative-root'],
     reviewState:'accepted',
   },
+  // W-MATH-024/P-001: one real original Q18 after-wrong hint; no learner content copy.
+  'n05-q18': {
+    id:'n05-q18',unitId:'math-numbers-expressions-n05',title:'N05 Q18',
+    question:'二条件で正しい因数分解を選び、誤答ヒントが正解の係数を先出ししないか確かめる',
+    revision:2,totalItems:20,
+    blockIds:['n05-lead-18','n05-formula-18','n05-after-18'],
+    itemIds:['n05-18'],
+    expectedAnswers:['(x-1)(5x+3)'],
+    markBlockIds:['n05-formula-18'],
+    reviewState:'awaiting-user',
+  },
   'n01-q07': {
     id: 'n01-q07', unitId: 'math-numbers-expressions-n01', title: 'N01 Q07', question: '同類項の係数',
     revision: 2, totalItems: 18,

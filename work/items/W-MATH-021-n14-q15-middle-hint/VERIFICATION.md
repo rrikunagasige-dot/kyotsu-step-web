@@ -1,10 +1,10 @@
 # W-MATH-021 — Verification
-Status: DONE
+Status: PASS
 
 | Check | Result |
 | --- | --- |
 | Q15 unresolved center answer and hint 3x÷3=x | CONFIRMED live source |
-| Proposed hint source code change | IMPLEMENTED only exact user-approved hint; browser + CI pending |
+| Approved P-003 four-step Q15 center hint | VERIFIED: exact source SHA 0718c4fcb06740ee52a5fdb8ac321f77c32ded2c; 320/390/1440 real Chromium and full textbook CI SUCCESS; user Gate① accepted |
 | Q10/Q14 adjacent hints | NOT-AFFECTED by exact completed-divider signature |
 | Q16 direct worked after-wrong endpoints | CONFIRMED sibling, not in scope |
 | Q15 previous math Gate① | ALREADY USER ACCEPTED, preserved |

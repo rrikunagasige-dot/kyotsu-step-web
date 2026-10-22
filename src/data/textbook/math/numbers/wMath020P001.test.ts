@@ -75,6 +75,18 @@ describe('W-MATH-020/P-001 N14 Q15 source and guarded archive',()=>{
    for(const id of n14SourceToItemIds['N14-Q15'])expect(now.answers[id]).toBeUndefined()
    expect(effectiveTextbookProgress(unit,now)).toBe(now)
  })
+ it('W-MATH-021 P-001 guides the incorrect center divisor without directly giving 3x÷3=x',()=>{
+   const center=item('n14-wm020-q15-divide-center')
+   const afterWrong='3xの係数を1にするには、どんな正の数で割ればよいか考えよう。正の数で割れば不等号の向きと等号は変わらない。'
+   expect(center.answer).toBe('3')
+   expect(center.choices).toEqual(['3','-3','1','6'])
+   expect(center.hints).toEqual([afterWrong])
+   expect(center.hints.join('')).not.toContain('3x÷3=x')
+   expect(sec.items.find(i=>i.id==='n14-wm020-q15-divide-left')?.answer).toBe('3')
+   expect(sec.items.find(i=>i.id==='n14-wm020-q15-divide-right')?.answer).toBe('3')
+   expect(unit.revision).toBe(9)
+   expect(sec.items).toHaveLength(34)
+ })
  it('normalizes ancient revision 1 into 9 without resurrecting old combined keys',()=>{
    const first:TextbookUnitProgress={
      unitId:unit.unitId,unitRevision:1,startedAt:11,updatedAt:21,completedAt:31,

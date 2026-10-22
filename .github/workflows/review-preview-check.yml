@@ -614,7 +614,7 @@ jobs:
         id: need
         shell: bash
         run: |
-          evidence="work/items/W-MATH-023-n13-q08-q08-sibling/evidence/gate1-q08/README.md"
+          evidence="work/items/W-MATH-023-n13-q05-q08-sibling/evidence/gate1-q08/README.md"
           saved=""
           if test -f "$evidence"; then
             saved=$(sed -n 's/^Real operated source SHA: \x60\([a-f0-9]*\)\x60$/\1/p' "$evidence" | head -n 1)
@@ -670,7 +670,7 @@ jobs:
         if: ${{ success() && steps.need.outputs.capture == 'true' }}
         shell: bash
         run: |
-          dir="work/items/W-MATH-023-n13-q08-q08-sibling/evidence/gate1-q08"
+          dir="work/items/W-MATH-023-n13-q05-q08-sibling/evidence/gate1-q08"
           mkdir -p "$dir"
           cp e2e-evidence/wm023-q08-*.png "$dir/"
           {

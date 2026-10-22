@@ -766,6 +766,37 @@ export function effectiveTextbookProgress(unit: TextbookUnit, progress: Textbook
     }
   }
 
+  // W-MATH-023/P-002 Stage A: old N13 Q05 bundled two case expressions.
+  // Preserve original R5 v1→v2 migration, archive v2, reopen ONLY old Q05.
+  // Q08 bundled answer is intentionally NOT changed before Q05 Gate①.
+  if (unit.unitId === 'math-numbers-expressions-n13' && unit.revision === 3
+    && progress.unitId === unit.unitId && (progress.unitRevision === 1 || progress.unitRevision === 2)) {
+    const fromV2 = progress.unitRevision === 2 ? progress
+      : effectiveTextbookProgress({ ...unit, revision: 2 }, progress)
+    if (!fromV2 || fromV2.unitRevision !== 2) return undefined
+    const oldArchive: TextbookRevisionArchive = {
+      unitRevision: 2, startedAt: fromV2.startedAt, updatedAt: fromV2.updatedAt,
+      answers: { ...fromV2.answers },
+      ...(fromV2.completedAt !== undefined ? { completedAt: fromV2.completedAt } : {}),
+      ...(fromV2.previousRevisionCompletedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV2.previousRevisionCompletedAt } : {}),
+      ...(fromV2.migratedFromRevision !== undefined
+        ? { migratedFromRevision: fromV2.migratedFromRevision } : {}),
+    }
+    const answers = { ...fromV2.answers }
+    delete answers['n13-05']
+    return {
+      unitId: unit.unitId, unitRevision: 3,
+      startedAt: fromV2.startedAt, updatedAt: fromV2.updatedAt,
+      answers, migratedFromRevision: 2,
+      archivedRevisions: { ...(fromV2.archivedRevisions ?? {}), '2': oldArchive },
+      ...(fromV2.completedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV2.completedAt }
+        : fromV2.previousRevisionCompletedAt !== undefined
+          ? { previousRevisionCompletedAt: fromV2.previousRevisionCompletedAt } : {}),
+    }
+  }
+
   // R5 N13 was originally review v1. Its new two-part response must be
   // answered afresh, without deleting any previous evidence or other answers.
   if (unit.unitId === 'math-numbers-expressions-n13' && unit.revision === 2

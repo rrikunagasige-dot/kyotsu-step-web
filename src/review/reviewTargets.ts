@@ -114,7 +114,7 @@ const targets: Record<string, ReviewTarget> = {
     itemIds:['n13-wm023-q08-branches','n13-wm023-q08-positive-root','n13-08'],
     expectedAnswers:['3x=6\\;\\text{または}\\;3x=-6','2','-2'],
     markBlockIds:['n13-formula-08','n13-wm023-q08-positive-root','n13-wm023-q08-negative-root'],
-    reviewState:'awaiting-user',
+    reviewState:'accepted',
   },
   'n01-q07': {
     id: 'n01-q07', unitId: 'math-numbers-expressions-n01', title: 'N01 Q07', question: '同類項の係数',

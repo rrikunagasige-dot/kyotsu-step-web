@@ -589,7 +589,8 @@ jobs:
 
   # W-MATH-023/P-002 Stage B: N13 Q08 only, Q08 untouched, no deployment.
   n13-wmath023-q08-actual-gate1-screenshots:
-    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'work/W-MATH-023-n13-q05-q08-sibling-proposal-20261022' }}
+    # Q08 Gate① accepted; preserve immutable pre-acceptance image SHA; no repeated screenshots.
+    if: ${{ false }}
     runs-on: ubuntu-latest
     concurrency:
       group: wmath023-n13-q08-${{ github.head_ref }}

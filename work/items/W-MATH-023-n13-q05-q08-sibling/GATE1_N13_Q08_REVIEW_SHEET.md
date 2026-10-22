@@ -1,5 +1,8 @@
 # N13 Q08 — 実画像 Gate① 確認①〜③
 
+**受入済み（2026-10-22 JST）：** 実画像の確認①〜③に対し、ユーザーが直後に「いいよ続けて」と回答。Q08のGate①は **BLOCK-VISUAL-OK**。以下は承認の根拠となった固定画像の履歴です。旧確認依頼部分は履歴として残し、再承認は求めません。Gate②・Gate③は別段階です。
+
+
 Work: W-MATH-023 / P-002 Stage B（N13 Q08 のみ）  
 **Status: BLOCK-CHECK-PENDING — User visual confirmation not yet received**  
 **Learner code exact SHA (Chrome actually operated):** `f5c0b2934ae1682a63f36401386d4bb24084c06a`  

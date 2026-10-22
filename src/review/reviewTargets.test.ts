@@ -35,7 +35,7 @@ describe('W-GOV-008/P-002 review marker boundaries', () => {
     expect(q14.revision).toBe(8)
     expect(q14.totalItems).toBe(30)
     expect(extractReviewSection(mathNumbersN14Unit,q14)?.items.map(i=>i.answer)).toEqual(['2','2','2','-2','6'])
-    expect(activeReviewMarkIds(q14)).toEqual(q14.markBlockIds)
+    expect(activeReviewMarkIds(q14)).toEqual([]) // Q14 user accepted concise formula Gate1 layout
     expect(extractReviewSection({...mathNumbersN14Unit,revision:7},q14)).toBeNull()
     expect(extractReviewSection({...mathNumbersN11Unit,revision:9},q89)).toBeNull()
   })

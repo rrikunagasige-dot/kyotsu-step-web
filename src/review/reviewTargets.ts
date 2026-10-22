@@ -80,7 +80,7 @@ const targets: Record<string, ReviewTarget> = {
     itemIds:['n14-wm019-q14-add-left','n14-wm019-q14-add-center','n14-wm019-q14-add-right','n14-14','n14-wm019-q14-bound-right'],
     expectedAnswers:['2','2','2','-2','6'],
     markBlockIds:['n14-formula-14','n14-wm019-q14-explain','n14-wm019-q14-result'],
-    reviewState:'awaiting-user',
+    reviewState:'accepted', // 2026-10-22 user「いいよ」 to concise 3-equation N14 Q14 Gate1 visual; retain history
   },
   'n01-q07': {
     id: 'n01-q07', unitId: 'math-numbers-expressions-n01', title: 'N01 Q07', question: '同類項の係数',

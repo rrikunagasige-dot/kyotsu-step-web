@@ -71,3 +71,8 @@ Operated source code SHA: ba6eeb32c94be79230a414ce6aa8688ce05d5fcd
 ![Real Q14 normal-bounds 1440px](q14-normal-bounds-1440.png)
 
 User requested only concise math layout in the ChatGPT conversation; retain actual images as reproducible technical proof.
+
+## Post-capture user decision (separate from code-SHA drawing)
+- User directly replied **「いいよ」** in ChatGPT to the concise N14 Q14 3-equation visual confirmation on 2026-10-22 JST, after authentic screenshots had been inspected by agent and archived. **Q14 BLOCK-VISUAL-OK (concise math/layout only)**. The original preceding `PENDING` caption is historical capture-time state, not current status. Do not claim the user inspected each native screenshot.
+- Original screenshot capture remains bound to SHA `ba6eeb32c94be79230a414ce6aa8688ce05d5fcd` as shown at top of this README, with original mathematical learner code SHA `391468fc8fd9d8f990ddfc7873d8d51308851877` (documentation-only changes between). No recapture or false SHA overwriting.
+- Gate② and Gate③ still open; approved Q14 markers hidden from new review outputs, originals preserved.

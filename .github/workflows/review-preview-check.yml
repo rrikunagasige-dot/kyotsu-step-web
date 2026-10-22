@@ -256,7 +256,10 @@ jobs:
       - name: Do not re-capture bot evidence commit
         id: need
         run: |
-          if git log -1 --format=%s | grep -q '^Store genuine N14 Q14 P001 Gate1 images'; then
+          # Keep existing genuine source-SHA images after human Gate1 approval.
+          # New learner changes must separately reopen the review target before recapture.
+          if git log -1 --format=%s | grep -q '^Store genuine N14 Q14 P001 Gate1 images' || \
+             (grep -A 12 "  'n14-q14': {" src/review/reviewTargets.ts | grep -q "reviewState:'accepted'"); then
             echo 'capture=false' >> "$GITHUB_OUTPUT"
           else
             echo 'capture=true' >> "$GITHUB_OUTPUT"

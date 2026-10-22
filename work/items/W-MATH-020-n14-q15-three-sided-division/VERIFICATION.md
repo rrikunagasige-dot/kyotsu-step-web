@@ -1,5 +1,5 @@
 # W-MATH-020 — verification
-Status: PROPOSED
+Status: VERIFYING
 
 | Surface | Result |
 | --- | --- |
@@ -24,3 +24,8 @@ No production app changed.
 - The first evidence bot workflow accidentally used the non-authoritative folder name `W-MATH-020-n14-q15-three-sided-addition` (copied from earlier Q14) rather than the actual Q15 Work `...three-sided-division`. The authorized lesson source was never incorrect. Corrected the workflow to write to [canonical images](./evidence/gate1/README.md); a second genuine capture succeeded for source SHA `649a86b76b873f3b53766f64566b42c7dd2c986f` in bot commit `5001c6a1413ba9e907e4dc5cd5fa6aab784329a1`.
 - To satisfy the existing one-Work-folder governance and avoid destructive loss, copied the first **22 exact original Git blob files** into [immutable historical evidence](./evidence/history/source-4a59ca3f8ae9bd7a0ff50c8b06db226815d063c3/README.md), then removed only the empty misnamed Work folder from the current Git tree **atomically**; all 22 files remain as byte-identical history, all 22 newest images remain under canonical Gate1. The earlier Git commits are also unchanged. No formula, answer, history migration, CSS, reviewer state or accepted Q14/Q10/N11 changes.
 - This is **Q15 TECHNICAL Gate① PASS / USER VISUAL PENDING**, not user acceptance. Previously approved blocks remain accepted. Independent Gate② cross-audit and Gate③ exact-SHA playable full app remain OPEN. Governance/review code checks on candidate source passed; full Math textbook regression may have been cancelled by evidence-only branch updates, so report its actual final status rather than invent PASS. Main and published app unchanged.
+
+## 2026-10-22 — authentic Q15 Gate① accepted; independent Gate② unfinished
+- Q15 accepted limited user-selected mathematical layout: user direct **「続けて」** to the concise 3-formula, 2-visual-line, 5-hole Gate① review. Mark **BLOCK-VISUAL-OK (Q15 only)**, not all screenshot inspection. Authentic app reviewer and normal cases 320/390/1440 **PASS 6/6**, source-matched screenshots at [evidence/gate1](./evidence/gate1/README.md), existing accepted blocks unchanged.
+- Full textbook CI #39717059416 initially FAILED at old Q14-to-Q15 test assertion. Failure trace at `e2e/new-batch-walkthrough.spec.ts:407` confirmed old final `n14-15` should now be locked while initial Q15 division choice is visible. Corrected test only, source math and CSS unchanged. Full Math textbook new run PENDING at this checkpoint; do not record full PASS prematurely.
+- Independent Gate② all-mode/source/OMML audit NOT CROSS-VERIFIED, Gate③ SHA-matched whole-app user `総チェックOK` NOT STARTED, PR draft, main/Pages/public unchanged.

@@ -6,7 +6,8 @@ Work: W-MATH-023 / P-002 Stage B（N13 Q08 のみ）
 **Immutable screenshot storage commit (15 PNGs):** `43fb15e835c008d69cc5606612dbd26bbbc28185`  
 **Original Word:** N13-Q08 `|3x|=6`; 9 original source problems, revision4, 12 grading decisions.  
 **Browser proof:** [GitHub Actions #39782844611](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39782844611) and correct-path screenshot run [#39782844611](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39782844611); actual final corrected recording uses source SHA `f5c0b2934ae1682a63f36401386d4bb24084c06a`. Noto CJK JP, real Chrome 320/390/1440, normal + isolated review, wrong→hint→retry, reload and no horizontal clipping: PASS. 
-**Global CI status:** Separate Math textbook full-suite CI found a revision3 fixture reference (fixed), and legacy Q08 two-line check (fixed); an *unrelated math-set keyboard accessibility regression check* has not yet passed. Current re-run is IN PROGRESS. This review image sheet is Stage B small-block visual only, NOT independent Gate② or total app success.
+**Verified all-green CI (2026-10-22 JST):** [math textbook #39786779525](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39786779525), [math practice #39786779552](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39786779552), [governance #39786779527](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39786779527), [review #39786779528](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39786779528) all **SUCCESS** on exact SHA `9816954b94593389fd6e92bed47dede35621eee2`. The image-source SHA and this all-green SHA use byte-identical N13 lesson, progression migration, review targets, CSS and dedicated Q08 browser test. The formerly failing math-set keyboard regression passed on both mobile and desktop in this final run, without changes to set code.
+
 
 ## 今回、ここだけ見る
 

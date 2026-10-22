@@ -64,7 +64,6 @@ test.describe('W-MATH-023/P-002 Stage B real exact-SHA Q08 review',()=>{
         await mobileOverflow(page,width)
       }
       await expect(page.getByText('二つの解は「または」で結ぶ。')).toBeVisible()
-      await snapshotReadableJapanese(page)
       await screenshot(page,'review-complete',width)
       expect(await page.evaluate(()=>localStorage.getItem('kyotsu-step-store'))).toBe(before)
       await expect(page.locator('.review-marked-block')).toHaveCount(3)
@@ -102,7 +101,6 @@ test.describe('W-MATH-023/P-002 Stage B real exact-SHA Q08 review',()=>{
       }
       await expect(page.getByTestId('textbook-item-n13-09')).toBeVisible()
       await mobileOverflow(page,width)
-      await snapshotReadableJapanese(page)
       await screenshot(page,'normal-complete',width)
       await page.reload()
       for(const id of [...list.slice(0,8).map(i=>i.id),...ids])
@@ -110,12 +108,3 @@ test.describe('W-MATH-023/P-002 Stage B real exact-SHA Q08 review',()=>{
     })
   }
 })
-async function snapshotReadableJapanese(page:import('@playwright/test').Page){
-  const result=await page.evaluate(()=>{
-    const ok=Array.from(document.fonts).some(f=>f.family.includes('Noto'))
-    return {fontOk:ok,fontList:Array.from(document.fonts).map(f=>f.family).slice(0,20)}
-  })
-  // Browser-side CSS can use system fallback fonts not declared in document.fonts.
-  // The CI independently verifies installed Japanese font via fc-match/fc-list.
-  expect(result.fontList).toBeDefined()
-}

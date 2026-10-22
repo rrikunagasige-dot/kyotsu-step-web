@@ -12,3 +12,11 @@
 
 - User direct 「いいよ続けて」 to exact W-MATH-023/P-002 approval request (2026-10-22) counted as **P-002 implementation approval** under instruction dictionary; distinct from user Q05 Gate① and N14 Q16 Gate①.
 - Stage A alone: revised n13Lesson original Q05 into two independent distance expressions, unit revision2→3; added selective v2 history archive and reopens old n13-05 only. Q08 original teacher response and hint remain unchanged. Added dedicated math Vitest and normal/numbered real Chromium spec; CI status pending.
+
+## 2026-10-22 JST — repaired screenshot font failure, source-SHA verified
+- Actual Q05 Stage A candidate first captured 15 browser images, but direct image inspection found □/tofu Japanese on initial screenshot `a4d669c16d333fc08c29a73027473b08800111bc`. Marked those images unsuitable for human Gate①; did **not** ask user to accept illegible pictures.
+- Narrowly updated `.github/workflows/review-preview-check.yml` Q05 evidence job to install `fonts-noto-cjk` and verify `fc-match/fc-list` in genuine Chromium runner; **no learner copy, N13 Q08, N14 code, or styling changes**.
+- Frozen verified learner code + photography source SHA `c911529360f070a5b6ddb6cf2a104eabe4abd708`. All four completed SUCCESS: textbook #39777436006, math practice #39777435983, governance #39777435948, review+15 photos #39777436057. Screenshot-only storage commit `913a7b0d6ce165f910c85bb3498fb5a9921c6a7d`, compare shows only PNGs and evidence README changed.
+- Opened *actual* new Q05 320px complete and 390px before photographs: Japanese text and marks rendered legibly; no □ tofu. Confirmed the earlier N14 Q16 pinned screenshot `f5b15694740325b56077fe64d740c7a7dc8fb22e` also renders Japanese correctly; no confirmed retroactive N14 font defect.
+- Created [Q05 Gate① numbered review sheet](./GATE1_N13_Q05_REVIEW_SHEET.md) with **immutable pinned** screen images from `913a7b0d6ce165f910c85bb3498fb5a9921c6a7d`, subject SHA `c911529360f070a5b6ddb6cf2a104eabe4abd708`.
+- Q05 Gate① **BLOCK-CHECK-PENDING** until explicit user `細部OK` or `要修正`; Q08 cannot begin before that. Gate②, Gate③, main merge, public hosting remain not authorized.

@@ -1,5 +1,5 @@
 # W-MATH-019/P-003 — Q14 320px numbered review left-edge clearance
-Status: PROPOSED — EXACT USER APPROVAL REQUIRED; NOT IMPLEMENTED
+Status: APPROVED — user exact reply 「いいよ」; P-003 scoped CSS implemented; technical verification pending
 Date: 2026-10-22 JST
 Command: CMD-WORK-001 修正, WORK_SYSTEM 12A/12B
 
@@ -20,3 +20,6 @@ User prefers a concise equation-only presentation for Q14 Gate1 once native revi
 
 ## Exact approval request
 Approve ONLY Q14 yellow numbered review <=350px horizontal padding .15rem -> 0? P-003 remains proposed until explicit reply.
+
+## Exact approval ledger — 2026-10-22 JST
+The user directly replied **「いいよ。」** to the P-003 exact yes/no question. This authorizes ONLY the Q14 yellow numbered review wrapper `padding-inline:.15rem → 0` for widths <=350px, and its direct code-SHA/browser verification and Work records. It does not approve edits to formulas, buttons, Q10/Q15, earlier accepted blocks, main/Pages, deployment, Gate① visual reception, Gate② or Gate③. If Chromium still fails, STOP and return to REVISE-PROPOSAL without guessing extra CSS.

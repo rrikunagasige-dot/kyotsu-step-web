@@ -51,7 +51,7 @@
 /* W-MATH-019/P-002: Q14 yellow numbered reviewer at 320px only. */
 @media (max-width: 350px) {
   .review-preview [data-testid="review-mark-n14-formula-14"] {
-    padding-inline: .15rem;
+    padding-inline: 0;
   }
 }
 

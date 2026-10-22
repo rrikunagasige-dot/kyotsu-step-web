@@ -1,5 +1,5 @@
 # W-MATH-019 — N14 Q14 三辺の同時加算を生徒が導く
-Status: REVISE-PROPOSAL
+Status: VERIFYING
 Date: 2026-10-22 JST
 Command: CMD-WORK-001 修正; WORK_SYSTEM §§12A–12B.
 Authority: main Constitution/dictionary, MASTER §52–54, Mathematics Textbook SPEC §§5–8; live main 15ae503455bc6ae75b080caa1c4919cafb250027; based on isolated review branch 857127cba2351054a1070b65b10cda2a56d64209.
@@ -23,3 +23,9 @@ User replied exactly 「继续」 immediately to the specific Q14 5-hole proposa
 
 ## 2026-10-22 P-002 verified stop / P-003 pending
 Real Chromium #39709378275 at SHA 4700299964b946cb9dc440606dd986dfe233b2ad: 5/6 cases PASS; 320px marked review FAIL. Original 225px vs 220px inner-width assertion no longer fails. The next assertion finds a math child left coordinate 47.125px against minimum 47.578125px, exceeding 1px allowance by 0.453125px (1.453125px outside formula line). Reviewed 390/1440 and ordinary 320/390/1440 PASS. P-002 approval and CSS implementation stand; no full Gate1 PASS. No reapproval of math content needed. P-003 only PROPOSED, code not changed.
+
+
+## 2026-10-22 — P-003 exact approval and 320px-only Q14 yellow reviewer scope
+- User replied **「いいよ。」** immediately to W-MATH-019/P-003, separately authorizing only the Q14 yellow numbered reviewer CSS <=350px from `.15rem` to `0`; full-size original buttons, three logical formulas, five choices, revision8 answer archive, Q10 and Q15 stay untouched.
+- Review the real native 320/390/1440 numbered and normal app test results after code commit, including six fragment bounds, blue「選択」/red「×」, keyboard/hint/wrong/retry, and authentic SHA-based screenshot preservation. Failed 320 prior P-002 history remains preserved.
+- Gate① Q14 user visual acceptance PENDING, independent Gate②/③ OPEN. Main/public app not modified.

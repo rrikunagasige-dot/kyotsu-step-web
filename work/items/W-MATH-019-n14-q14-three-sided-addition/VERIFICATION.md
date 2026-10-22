@@ -31,3 +31,7 @@ No synthetic image can substitute for native screenshots. Report CI status accur
 ## P-002 exact native QA checkpoint 2026-10-22
 Real Chromium #39709378275 at SHA 4700299964b946cb9dc440606dd986dfe233b2ad: 5/6 cases PASS; 320px marked review FAIL. Original 225px vs 220px inner-width assertion no longer fails. The next assertion finds a math child left coordinate 47.125px against minimum 47.578125px, exceeding 1px allowance by 0.453125px (1.453125px outside formula line). Reviewed 390/1440 and ordinary 320/390/1440 PASS. P-002 approval and CSS implementation stand; no full Gate1 PASS. No reapproval of math content needed. P-003 only PROPOSED, code not changed.
 Governance #39709378281 SUCCESS, Math practice #39709378228 SUCCESS; Review Preview workflow #39709378275 FAIL (320 marked reviewer). Full Textbook CI #39709378334 was still in progress at this checkpoint. Gate1 user visual PENDING, Gate2 OPEN, Gate3 NOT READY, main/public unchanged.
+
+## 2026-10-22 P-003 exact acceptance and review-only code checkpoint
+- P-003 separately APPROVED by user 「いいよ。」; code only `@media(max-width:350px) .review-preview [data-testid=review-mark-n14-formula-14] {padding-inline:0}`. Original P-001 learner math, full-size choice buttons and Q10/Q15 unchanged. Prior P-002 measured 320 marked review failure remains real; only post-P003 authentic Chrome proves correction.
+- Status VERIFYING; 320/390/1440 real app photos and full CI not yet asserted, Gate① user acceptance PENDING, Gate② and Gate③ OPEN.

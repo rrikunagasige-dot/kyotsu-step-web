@@ -22,3 +22,7 @@ Status: IMPLEMENTING
 ## 2026-10-22 P-002 native QA failed
 Real Chromium #39709378275 at SHA 4700299964b946cb9dc440606dd986dfe233b2ad: 5/6 cases PASS; 320px marked review FAIL. Original 225px vs 220px inner-width assertion no longer fails. The next assertion finds a math child left coordinate 47.125px against minimum 47.578125px, exceeding 1px allowance by 0.453125px (1.453125px outside formula line). Reviewed 390/1440 and ordinary 320/390/1440 PASS. P-002 approval and CSS implementation stand; no full Gate1 PASS. No reapproval of math content needed. P-003 only PROPOSED, code not changed.
 Stopped per P-002 rule; no weakening of tests, button shrinking, or speculative CSS applied.
+
+## 2026-10-22 — P-003 explicitly approved and narrow CSS implemented
+- Exact user reply 「いいよ。」 to P-003 (`Q14 yellow numbered reviewer <=350px padding-inline .15rem -> 0`). Applied only one CSS property to `src/review/review.css`, no learner math/buttons/Q10/Q15/revision changes.
+- All native screenshot/test checks remain subject to their actual post-change source SHA. No Gate①/②/③ completion assumed.

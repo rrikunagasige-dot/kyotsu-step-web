@@ -12,14 +12,14 @@ const rec = (id: string, value = 'old value'): TextbookAnswerRecord => ({
   attemptCount:1, firstAnsweredAt:101, lastAnsweredAt:202,
 })
 
-describe('W-MATH-023/P-002 Stage A — N13 Q05 only',()=>{
+describe('W-MATH-023/P-002 Stage A regression after Stage B acceptance',()=>{
   it('preserves nine original Word questions, ten independent graded steps and original diagrams',()=>{
-    expect(unit.revision).toBe(3)
+    expect(unit.revision).toBe(4)
     expect(Object.keys(n13SourceToItemIds)).toEqual(
       Array.from({length:9},(_,i)=>'N13-Q'+String(i+1).padStart(2,'0')),
     )
     expect(n13SourceToItemIds['N13-Q05']).toEqual(['n13-wm023-q05-right','n13-05'])
-    expect(section.items).toHaveLength(10)
+    expect(section.items).toHaveLength(12)
     expect(section.items.map(i=>i.id)).toEqual(Object.values(n13SourceToItemIds).flat())
     expect(section.figures.map(f=>f.id)).toEqual(['n13-f02','n13-f01'])
     expect(at('n13-show-n13-f01')).toBeLessThan(at('n13-lead-05'))
@@ -64,15 +64,10 @@ describe('W-MATH-023/P-002 Stage A — N13 Q05 only',()=>{
     expect(1-0).toBe(1)
   })
 
-  it('keeps Q08 bundled teacher response, distractors and hint unchanged until Stage B',()=>{
-    const old=findItem('n13-08')
-    expect(n13SourceToItemIds['N13-Q08']).toEqual(['n13-08'])
-    expect(old.answer).toBe('3x=6\\;\\text{または}\\;3x=-6,\\quad x=2\\;\\text{または}\\;x=-2')
-    expect(old.hints).toEqual(['3x=6か3x=−6かを解く。'])
-    expect(old.choices).toHaveLength(4)
-    expect(section.readingFlow[at('n13-lead-08')]).toMatchObject({type:'paragraph'})
-    expect(section.readingFlow[at('n13-formula-08')]).toMatchObject({type:'formula'})
-    expect(section.readingFlow[at('n13-after-08')]).toMatchObject({type:'paragraph'})
+  it('Stage A Q05 remains identical while Q08 now has three separate decisions',()=>{
+    expect(n13SourceToItemIds['N13-Q05']).toEqual(['n13-wm023-q05-right','n13-05'])
+    expect(n13SourceToItemIds['N13-Q08']).toEqual(['n13-wm023-q08-branches','n13-wm023-q08-positive-root','n13-08'])
+    expect(findItem('n13-08').answer).toBe('-2')
   })
 
   it('archives v2 completed evidence while clearing only rekeyed n13-05 (not existing n13-08)',()=>{
@@ -84,7 +79,7 @@ describe('W-MATH-023/P-002 Stage A — N13 Q05 only',()=>{
       unitId:unit.unitId,unitRevision:2,startedAt:90,updatedAt:205,completedAt:209,answers,
       archivedRevisions:{'1':{unitRevision:1,startedAt:1,updatedAt:3,answers:{'n13-08':rec('n13-08','rev1 bundled')}}},
     }
-    const now=effectiveTextbookProgress(unit,old)!
+    const now=effectiveTextbookProgress({...unit,revision:3},old)!
     expect(now.unitRevision).toBe(3)
     expect(now.completedAt).toBeUndefined()
     expect(now.previousRevisionCompletedAt).toBe(209)
@@ -98,7 +93,7 @@ describe('W-MATH-023/P-002 Stage A — N13 Q05 only',()=>{
     expect(now.answers['n13-08']).toEqual(answers['n13-08'])
     for(const id of Object.keys(answers).filter(id=>id!=='n13-05'))
       expect(now.answers[id]).toEqual(answers[id])
-    expect(effectiveTextbookProgress(unit,now)).toBe(now)
+    expect(effectiveTextbookProgress({...unit,revision:3},now)).toBe(now)
   })
 
   it('chains v1→v2 historical R5 before v2→v3 with both old archives retained',()=>{
@@ -106,7 +101,7 @@ describe('W-MATH-023/P-002 Stage A — N13 Q05 only',()=>{
       unitId:unit.unitId,unitRevision:1,startedAt:1,updatedAt:2,completedAt:3,
       answers:{'n13-03':rec('n13-03','keep'),'n13-05':rec('n13-05','old Q05'),'n13-08':rec('n13-08','old Q08')},
     }
-    const now=effectiveTextbookProgress(unit,previous)!
+    const now=effectiveTextbookProgress({...unit,revision:3},previous)!
     expect(now.unitRevision).toBe(3)
     expect(now.answers['n13-03']).toEqual(previous.answers['n13-03'])
     expect(now.answers['n13-05']).toBeUndefined()

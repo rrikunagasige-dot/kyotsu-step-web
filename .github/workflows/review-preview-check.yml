@@ -483,7 +483,7 @@ jobs:
 
   # W-MATH-023/P-002 Stage A: N13 Q05 only, Q08 untouched, no deployment.
   n13-wmath023-q05-actual-gate1-screenshots:
-    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'work/W-MATH-023-n13-q05-q08-sibling-proposal-20261022' ]]
+    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'work/W-MATH-023-n13-q05-q08-sibling-proposal-20261022' }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -491,15 +491,15 @@ jobs:
       CI: 'true'
       VITE_REVIEW_PREVIEW: 'true'
       VITE_BASE_PATH: '/'
-      VITE_PREVIEW_COMMIT: ${{ github.event.pull_request.head.sha ]]
+      VITE_PREVIEW_COMMIT: ${{ github.event.pull_request.head.sha }}
       E2E_WM023_Q05: '1'
       E2E_USE_PREVIEW: '1'
-      CAPTURE_SHA: ${{ github.event.pull_request.head.sha ]]
-      TARGET_BRANCH: ${{ github.head_ref ]]
+      CAPTURE_SHA: ${{ github.event.pull_request.head.sha }}
+      TARGET_BRANCH: ${{ github.head_ref }}
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha ]]
+          ref: ${{ github.event.pull_request.head.sha }}
           persist-credentials: true
       - name: Skip repeated Q05 capture when only documents or images changed
         id: need
@@ -521,35 +521,35 @@ jobs:
           else
             echo 'capture=true' >> "$GITHUB_OUTPUT"
           fi
-      - if: ${{ steps.need.outputs.capture == 'true' ]]
+      - if: ${{ steps.need.outputs.capture == 'true' }}
         uses: pnpm/action-setup@v4
         with:
           version: 11.9.0
           run_install: false
-      - if: ${{ steps.need.outputs.capture == 'true' ]]
+      - if: ${{ steps.need.outputs.capture == 'true' }}
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: pnpm
-      - if: ${{ steps.need.outputs.capture == 'true' ]]
+      - if: ${{ steps.need.outputs.capture == 'true' }}
         run: pnpm install --frozen-lockfile
-      - if: ${{ steps.need.outputs.capture == 'true' ]]
+      - if: ${{ steps.need.outputs.capture == 'true' }}
         run: pnpm run typecheck && pnpm run build
-      - if: ${{ steps.need.outputs.capture == 'true' ]]
+      - if: ${{ steps.need.outputs.capture == 'true' }}
         run: pnpm exec playwright install --with-deps chromium
       - name: N13 Q05 normal and numbered Chrome widths 320 390 1440
-        if: ${{ steps.need.outputs.capture == 'true' ]]
+        if: ${{ steps.need.outputs.capture == 'true' }}
         run: pnpm exec playwright test e2e/wmath023-n13-q05-stagea-gate1.spec.ts --project=mobile-chromium --project=desktop-chromium
       - name: Preserve real evidence when checks fail
-        if: ${{ always() && steps.need.outputs.capture == 'true' ]]
+        if: ${{ always() && steps.need.outputs.capture == 'true' }}
         uses: actions/upload-artifact@v4
         with:
-          name: wmath023-q05-real-${{ github.event.pull_request.head.sha ]]
+          name: wmath023-q05-real-${{ github.event.pull_request.head.sha }}
           path: e2e-evidence/wm023-q05-*.png
           if-no-files-found: ignore
           retention-days: 7
       - name: Commit authentic Q05 Chrome evidence to isolated review branch
-        if: ${{ success() && steps.need.outputs.capture == 'true' ]]
+        if: ${{ success() && steps.need.outputs.capture == 'true' }}
         shell: bash
         run: |
           dir="work/items/W-MATH-023-n13-q05-q08-sibling/evidence/gate1"

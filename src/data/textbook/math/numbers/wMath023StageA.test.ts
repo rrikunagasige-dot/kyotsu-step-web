@@ -109,6 +109,6 @@ describe('W-MATH-023/P-002 Stage A regression after Stage B acceptance',()=>{
     expect(now.archivedRevisions?.['1']?.answers).toEqual(previous.answers)
     expect(now.archivedRevisions?.['2']).toBeDefined()
     expect(now.previousRevisionCompletedAt).toBe(3)
-    expect(effectiveTextbookProgress(unit,now)).toBe(now)
+    expect(effectiveTextbookProgress({...unit,revision:3},now)).toBe(now)
   })
 })

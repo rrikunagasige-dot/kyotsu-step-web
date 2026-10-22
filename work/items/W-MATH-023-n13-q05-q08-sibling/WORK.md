@@ -1,5 +1,5 @@
 # W-MATH-023 — N13 Q05/Q08 完成式の一括選択・ヒント先出し
-Status: VERIFYING — P-002 Stage A Q05 only
+Status: VERIFYING
 Date: 2026-10-22 JST
 Command: CMD-WORK-001 修正 (linked to W-MATH-022 §12B impact audit)
 

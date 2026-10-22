@@ -116,7 +116,7 @@ const q08Blocks:TextbookReadingBlock[]=[
   ]},
   {id:'n13-after-08',type:'paragraph',parts:[
     M('x=2\\;\\text{または}\\;x=-2'),
-    T('二つの解は「または」で結ぶ。両方の条件を同時に満たすという意味ではない。'),
+    T('。二つの解は「または」で結ぶ。両方の条件を同時に満たすという意味ではない。'),
   ]},
 ]
 const q08Items:TextbookItem[]=[

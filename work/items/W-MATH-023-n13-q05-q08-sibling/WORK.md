@@ -1,5 +1,5 @@
 # W-MATH-023 — N13 Q05/Q08 完成式の一括選択・ヒント先出し
-Status: PROPOSED
+Status: VERIFYING — P-002 Stage A Q05 only
 Date: 2026-10-22 JST
 Command: CMD-WORK-001 修正 (linked to W-MATH-022 §12B impact audit)
 
@@ -17,7 +17,7 @@ Proposal-only linked corrections for **two independently reviewed N13 source que
 Never edit N14 Q10/Q14/Q15/Q16 or accepted revisions/4-step hints, N13 Q01–04/Q06–07/Q09, original Word and N13 figures n13-f01/n13-f02, common makeReviewSteps, renderer, other modes, main/release/hosting. Do not merge or open production URLs.
 
 ## Proposal
-See `PROPOSAL.md` — **P-002**, correcting the prior contradictory stage/revision assumptions. Historical unapproved P-001 retained verbatim in `PROPOSAL_P001_HISTORICAL.md`. **P-002 has not been approved.** Work remains PROPOSED.
+See `PROPOSAL.md` — **P-002**, correcting the prior contradictory stage/revision assumptions. Historical unapproved P-001 retained verbatim in `PROPOSAL_P001_HISTORICAL.md`. **P-002 approved for staged implementation by direct user 「いいよ続けて」 after exact P-002 approval question; Stage A Q05 implementing. Stage B Q08 still BLOCKED by Q05 user Gate①.**
 
 ## Next authorized action
-Present exact P-002 for distinct approval. Only if approved: N13-Q05 revision2→3, browser images, Q05 Gate① user 細部OK; then N13-Q08 revision3→4 and its own Gate①. Until then, no code changes. W-MATH-022 Q16 Gate① still awaits user 細部OK.
+Stage A scoped Q05 revision2→3 is implemented in isolated branch, CI and genuine screenshot Gate① in progress. Stage B Q08 MUST wait for Q05 user 細部OK. No merge/release/hosting. W-MATH-022 Q16 Gate① still awaits user 細部OK.

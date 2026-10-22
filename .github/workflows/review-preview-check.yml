@@ -798,3 +798,108 @@ jobs:
             git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Store genuine N05 Q18 W-MATH-024 images [review only]'
             git push origin "HEAD:refs/heads/$TARGET_BRANCH"
           fi
+
+  # W-MATH-025/P-001: one N05 Q11 wrong-only hint; exact-SHA native visual Gate①.
+  wmath025-n05-q11-genuine-screenshots:
+    # N05 Q11 approved P-001; user visual Gate1 confirmation still pending.
+    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'work/W-MATH-025-n05-q11-p001-implementation-20261023' }}
+    runs-on: ubuntu-latest
+    concurrency:
+      group: wmath025-n05-q11-${{ github.head_ref }}
+      cancel-in-progress: true
+    permissions:
+      contents: write
+    env:
+      CI: 'true'
+      VITE_REVIEW_PREVIEW: 'true'
+      VITE_BASE_PATH: '/'
+      VITE_PREVIEW_COMMIT: ${{ github.event.pull_request.head.sha }}
+      E2E_USE_PREVIEW: '1'
+      E2E_WM025_Q11: '1'
+      CAPTURE_SHA: ${{ github.event.pull_request.head.sha }}
+      TARGET_BRANCH: ${{ github.head_ref }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: true
+      - name: Skip recapturing unchanged Q11 code on documentation-only commits
+        id: need
+        shell: bash
+        run: |
+          evidence="work/items/W-MATH-025-factor-hint-leak-qa-proposals/evidence/n05-q11/gate1/README.md"
+          saved=""
+          if test -f "$evidence"; then
+            saved=$(grep '^Real operated source SHA:' "$evidence" | grep -oE '[a-f0-9]{40}' | head -n 1)
+          fi
+          if git log -1 --format=%s | grep -q '^Store genuine N05 Q11 W-MATH-025 images'; then
+            echo 'capture=false' >> "$GITHUB_OUTPUT"
+          elif test -n "$saved" && git fetch --no-tags --depth=1 origin "$saved" >/dev/null 2>&1 &&
+              git diff --quiet "$saved" HEAD -- src/data/textbook/math/numbers/n05Lesson.ts \
+                src/review/reviewTargets.ts src/pages/TextbookUnitPage.tsx \
+                src/review/ReviewTextbookPage.tsx src/styles/global.css \
+                e2e/wmath025-n05-q11-gate1.spec.ts; then
+            echo 'capture=false' >> "$GITHUB_OUTPUT"
+          else
+            echo 'capture=true' >> "$GITHUB_OUTPUT"
+          fi
+      - if: ${{ steps.need.outputs.capture == 'true' }}
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - if: ${{ steps.need.outputs.capture == 'true' }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - if: ${{ steps.need.outputs.capture == 'true' }}
+        run: pnpm install --frozen-lockfile
+      - if: ${{ steps.need.outputs.capture == 'true' }}
+        run: pnpm run typecheck && pnpm run build
+      - name: Install readable Japanese font for Q11 Gate1 screenshots
+        if: ${{ steps.need.outputs.capture == 'true' }}
+        shell: bash
+        run: |
+          sudo apt-get update -qq
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends fonts-noto-cjk
+          fc-cache -f
+          fc-match -f '%{family}\n' ':lang=ja' | grep -q 'Noto'
+          fc-list :lang=ja | grep -q 'Noto Sans CJK JP'
+      - if: ${{ steps.need.outputs.capture == 'true' }}
+        run: pnpm exec playwright install chromium
+      - name: N05 Q11 review and normal lesson authentic 320 390 1440
+        if: ${{ steps.need.outputs.capture == 'true' }}
+        run: pnpm exec playwright test e2e/wmath025-n05-q11-gate1.spec.ts --project=mobile-chromium --project=desktop-chromium
+      - name: Retain Q11 diagnostic images even when a check fails
+        if: ${{ always() && steps.need.outputs.capture == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: wmath025-q11-real-${{ github.event.pull_request.head.sha }}
+          path: e2e-evidence/wm024-q11-*.png
+          if-no-files-found: ignore
+          retention-days: 7
+      - name: Store successful Q11 images only on isolated review branch
+        if: ${{ success() && steps.need.outputs.capture == 'true' }}
+        shell: bash
+        run: |
+          dir="work/items/W-MATH-025-factor-hint-leak-qa-proposals/evidence/n05-q11/gate1"
+          mkdir -p "$dir"
+          cp e2e-evidence/wm024-q11-*.png "$dir/"
+          {
+            printf '# N05 Q11 actual numbered Gate1 images — user acceptance pending\n\n'
+            printf 'Real operated source SHA: %s\n\n' "$CAPTURE_SHA"
+            printf 'Noto CJK JP installed. Authentic Chromium 320/390/1440, review and normal lesson, wrong hint, retry; no new answer keys.\n\n'
+            for width in 320 390 1440; do
+              printf '## %spx\n\n' "$width"
+              for state in review-before review-wrong review-complete normal-before normal-wrong normal-complete; do
+                printf '**%s**\n\n![N05 Q11 %s width %s](wm024-q11-%s-%s.png)\n\n' "$state" "$state" "$width" "$state" "$width"
+              done
+            done
+            printf 'Human Gate1 Q11 remains BLOCK-CHECK-PENDING; no main merge or host/deploy.\n'
+          } > "$dir/README.md"
+          git add "$dir"
+          if ! git diff --cached --quiet; then
+            git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Store genuine N05 Q11 W-MATH-025 images [review only]'
+            git push origin "HEAD:refs/heads/$TARGET_BRANCH"
+          fi

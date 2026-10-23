@@ -123,7 +123,16 @@ const targets: Record<string, ReviewTarget> = {
     revision:2,totalItems:20,
     blockIds:['n05-lead-11','n05-formula-11','n05-after-11'],
     itemIds:['n05-11'],expectedAnswers:['(a-8)(a+2)'],
-    markBlockIds:['n05-formula-11'],reviewState:'awaiting-user',
+    markBlockIds:['n05-formula-11'],reviewState:'accepted', // user 「続けていいよ」 accepted Q11 visual on 2026-10-23
+  },
+  // W-MATH-025/P-002 Stage B: only the original N06 Q12 wrong hint is changed.
+  'n06-q12': {
+    id:'n06-q12',unitId:'math-numbers-expressions-n06',title:'N06 Q12',
+    question:'二数の符号を手掛かりにし、先の因子も残す誤答ヒント',
+    revision:3,totalItems:16,
+    blockIds:['n06-lead-12','n06-formula-12','n06-after-12'],
+    itemIds:['n06-12'],expectedAnswers:['(x+y)(x+2)(x-1)'],
+    markBlockIds:['n06-formula-12'],reviewState:'awaiting-user',
   },
   // W-MATH-024/P-001: one real original Q18 after-wrong hint; no learner content copy.
   'n05-q18': {

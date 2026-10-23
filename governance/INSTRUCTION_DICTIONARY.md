@@ -368,3 +368,9 @@ Canonical Phrase: **作成**
 ## Target-specific identity enforcement (2026-10-10)
 
 For this repository, CMD-ROOT-001 Stage 0 MUST verify the exact owner `rrikunagasige-dot`, repo ID `1391122224`, `main`, and its live HEAD. Do not use historical snapshots or the upstream `paulfields83` repository as current authority. If ownership or repository differs, STOP, report ERROR-PROVENANCE and re-evaluate. No cross-repository action is authorized by a generic instruction.
+
+
+
+## P-002 internal execution binding
+
+既存のCMD-WORK-001（修正）/CMD-WORK-002（作成）は `workflow/README.md` の実行器へ接続する。新しい自然言語命令は追加しない。`next / claim / submit / auto / render` は内部操作名であり、提案・既承認・三Gate・公開権限を変更しない。

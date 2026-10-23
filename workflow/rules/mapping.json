@@ -1,0 +1,139 @@
+{
+  "status": "IMPLEMENTATION_MAPPING_NOT_A_NEW_CONSTITUTION",
+  "rules": [
+    {
+      "id": "CONST-I",
+      "path": "governance/CONSTITUTION.md",
+      "article": "Principle I",
+      "source_sha": "e907bf5fc22025fbd74127b9b72176b90aaeb36e",
+      "sha256": "ba75d43f4d929e3ecfe814a98ff2bd7b1e1a3dd825e40689243d2eea59431cfc",
+      "responsibility": "CODE + AI",
+      "enforcement": "manifest固定・出所照合。資料の権限判断はAI"
+    },
+    {
+      "id": "CONST-II",
+      "path": "governance/CONSTITUTION.md",
+      "article": "Principle II",
+      "source_sha": "e907bf5fc22025fbd74127b9b72176b90aaeb36e",
+      "sha256": "ba75d43f4d929e3ecfe814a98ff2bd7b1e1a3dd825e40689243d2eea59431cfc",
+      "responsibility": "CODE + AI",
+      "enforcement": "next課題に局所入力・規則参照。読む順序の妥当性はAI"
+    },
+    {
+      "id": "CONST-III",
+      "path": "governance/CONSTITUTION.md",
+      "article": "Principle III",
+      "source_sha": "e907bf5fc22025fbd74127b9b72176b90aaeb36e",
+      "sha256": "ba75d43f4d929e3ecfe814a98ff2bd7b1e1a3dd825e40689243d2eea59431cfc",
+      "responsibility": "CODE + USER",
+      "enforcement": "承認済みproposalとscope、差分ハッシュの照合"
+    },
+    {
+      "id": "CONST-IV",
+      "path": "governance/CONSTITUTION.md",
+      "article": "Principle IV",
+      "source_sha": "e907bf5fc22025fbd74127b9b72176b90aaeb36e",
+      "sha256": "ba75d43f4d929e3ecfe814a98ff2bd7b1e1a3dd825e40689243d2eea59431cfc",
+      "responsibility": "CODE + AI",
+      "enforcement": "安定ノード、依存、生成現在地。意味の依存はAI"
+    },
+    {
+      "id": "CONST-V",
+      "path": "governance/CONSTITUTION.md",
+      "article": "Principle V",
+      "source_sha": "e907bf5fc22025fbd74127b9b72176b90aaeb36e",
+      "sha256": "ba75d43f4d929e3ecfe814a98ff2bd7b1e1a3dd825e40689243d2eea59431cfc",
+      "responsibility": "CODE + AI",
+      "enforcement": "イベント・課題結果・規範・派生表示を分離。既存記憶の整理はAI"
+    },
+    {
+      "id": "CONST-VI",
+      "path": "governance/CONSTITUTION.md",
+      "article": "Principle VI",
+      "source_sha": "e907bf5fc22025fbd74127b9b72176b90aaeb36e",
+      "sha256": "ba75d43f4d929e3ecfe814a98ff2bd7b1e1a3dd825e40689243d2eea59431cfc",
+      "responsibility": "CODE + USER",
+      "enforcement": "限定差分・保護scope。削除/改名/ID移行は未対応で停止"
+    },
+    {
+      "id": "CONST-VII",
+      "path": "governance/CONSTITUTION.md",
+      "article": "Principle VII",
+      "source_sha": "e907bf5fc22025fbd74127b9b72176b90aaeb36e",
+      "sha256": "ba75d43f4d929e3ecfe814a98ff2bd7b1e1a3dd825e40689243d2eea59431cfc",
+      "responsibility": "CODE + AI + USER",
+      "enforcement": "検査・三Gate・事例の更新。教育的妥当性は自動証明しない"
+    },
+    {
+      "id": "CONST-VIII",
+      "path": "governance/CONSTITUTION.md",
+      "article": "Principle VIII",
+      "source_sha": "e907bf5fc22025fbd74127b9b72176b90aaeb36e",
+      "sha256": "ba75d43f4d929e3ecfe814a98ff2bd7b1e1a3dd825e40689243d2eea59431cfc",
+      "responsibility": "CODE + AI",
+      "enforcement": "subject/mode/Workを分離。別領域への適用はAI"
+    },
+    {
+      "id": "WORK-11",
+      "path": "governance/WORK_SYSTEM.md",
+      "article": "11. Approval gate",
+      "source_sha": "e907bf5fc22025fbd74127b9b72176b90aaeb36e",
+      "sha256": "78b1543f5ec0acd1f9935517e8d490386c194ca795df3ed7d61a2b749ee84ba2",
+      "responsibility": "CODE + USER",
+      "enforcement": "提案版・scopeに有効な承認を再使用"
+    },
+    {
+      "id": "WORK-12A",
+      "path": "governance/WORK_SYSTEM.md",
+      "article": "12A.",
+      "source_sha": "e907bf5fc22025fbd74127b9b72176b90aaeb36e",
+      "sha256": "78b1543f5ec0acd1f9935517e8d490386c194ca795df3ed7d61a2b749ee84ba2",
+      "responsibility": "CODE + AI + USER",
+      "enforcement": "教材にGate①②③、技術限定Workと区別"
+    },
+    {
+      "id": "WORK-12B",
+      "path": "governance/WORK_SYSTEM.md",
+      "article": "12B.",
+      "source_sha": "e907bf5fc22025fbd74127b9b72176b90aaeb36e",
+      "sha256": "78b1543f5ec0acd1f9935517e8d490386c194ca795df3ed7d61a2b749ee84ba2",
+      "responsibility": "CODE + AI",
+      "enforcement": "修正優先、影響調査、事例dedup。原因同定はAI"
+    },
+    {
+      "id": "WORK-12C",
+      "path": "governance/WORK_SYSTEM.md",
+      "article": "12C.",
+      "source_sha": "e907bf5fc22025fbd74127b9b72176b90aaeb36e",
+      "sha256": "78b1543f5ec0acd1f9935517e8d490386c194ca795df3ed7d61a2b749ee84ba2",
+      "responsibility": "CODE + AI",
+      "enforcement": "SHA・CI・中断課題復元。待機中の独立作業選択は未自動化"
+    },
+    {
+      "id": "CMD-001",
+      "path": "governance/INSTRUCTION_DICTIONARY.md",
+      "article": "CMD-WORK-001",
+      "source_sha": "e907bf5fc22025fbd74127b9b72176b90aaeb36e",
+      "sha256": "86cb4c4446fbf4dc935967e1a91fdccc2ed16bda450b0adca313a0110f23d486",
+      "responsibility": "CODE + AI",
+      "enforcement": "R01〜R08へ振分"
+    },
+    {
+      "id": "CMD-002",
+      "path": "governance/INSTRUCTION_DICTIONARY.md",
+      "article": "CMD-WORK-002",
+      "source_sha": "e907bf5fc22025fbd74127b9b72176b90aaeb36e",
+      "sha256": "86cb4c4446fbf4dc935967e1a91fdccc2ed16bda450b0adca313a0110f23d486",
+      "responsibility": "CODE + AI",
+      "enforcement": "C01〜C09へ振分"
+    }
+  ],
+  "unmapped_or_human_judgment": [
+    "全自然言語規則の論理的完全性",
+    "教科書を読むような文章か・導出が十分かの意味審査",
+    "独立監査の実質的独立性（担当IDだけでは証明不能）",
+    "教材IDの変更を伴う履歴移行",
+    "§12Cの他Workへの自動切替と常駐AI起動"
+  ],
+  "mode_rules": "各教材Workのrules manifestに承認済みモード正本と教訓を必ず追加。P001 catalogの領域外へ自動一般化しない。"
+}

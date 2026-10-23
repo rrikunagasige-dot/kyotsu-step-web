@@ -8,6 +8,7 @@ import type { TextbookReadingBlock, TextbookSection } from '../../domain/textboo
 type FormulaBlock = Extract<TextbookReadingBlock, { type: 'formula' }>
 
 type Props = {
+  unitId: string
   block: FormulaBlock
   section: TextbookSection
   progress: TextbookUnitProgress | undefined
@@ -33,8 +34,8 @@ function isSolvedUnitCoefficientBeforeX(
   return isTextbookItemResolved(item, record) && (record?.value ?? item.answer) === '1'
 }
 
-export function TextbookFormula({ block, section, progress, onOpen }: Props) {
-  const n12Formula = section.items.some((item) => item.id === 'n12-01')
+export function TextbookFormula({ block, section, progress, onOpen, unitId }: Props) {
+  const n12Formula = unitId === 'math-numbers-expressions-n12'
   return (
     <div
       className={`reading-formula-line${n12Formula ? ' reading-formula-line--n12' : ''}`}

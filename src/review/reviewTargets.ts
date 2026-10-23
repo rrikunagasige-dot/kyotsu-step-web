@@ -259,7 +259,7 @@ const targets: Record<string, ReviewTarget> = {
     revision:2,totalItems:26,
     blockIds:["n04-lead-20","n04-formula-20","n04-after-20"],
     itemIds:["n04-20"],expectedAnswers:["(x^2+5x+4)(x^2+5x+6)"],
-    markBlockIds:['n04-formula-20'],reviewState:'awaiting-user',
+    markBlockIds:['n04-formula-20'],reviewState:'accepted',
   },
   // W025/P-009: exact approved hint-only scope; previous accepted blocks stay closed.
   'n10-q07-hint': {
@@ -268,7 +268,7 @@ const targets: Record<string, ReviewTarget> = {
     revision:1,totalItems:21,
     blockIds:["paragraph-product-check","formula-n10-07"],
     itemIds:["n10-07"],expectedAnswers:["\\sqrt{48}=\\sqrt{16\\cdot3}"],
-    markBlockIds:['formula-n10-07'],reviewState:'awaiting-user',
+    markBlockIds:['formula-n10-07'],reviewState:'accepted',
   },
   // W025/P-010: exact approved hint-only scope; previous accepted blocks stay closed.
   'n10-q08-hint': {
@@ -277,7 +277,7 @@ const targets: Record<string, ReviewTarget> = {
     revision:1,totalItems:21,
     blockIds:["paragraph-product-check","formula-n10-07","formula-n10-08"],
     itemIds:["n10-07","n10-08"],expectedAnswers:["\\sqrt{48}=\\sqrt{16\\cdot3}","4\\sqrt3"],
-    markBlockIds:['formula-n10-08'],reviewState:'awaiting-user',
+    markBlockIds:['formula-n10-08'],reviewState:'accepted',
   },
   // W025/P-011: exact approved hint-only scope; previous accepted blocks stay closed.
   'n12-q06-coef-hint': {
@@ -286,7 +286,7 @@ const targets: Record<string, ReviewTarget> = {
     revision:3,totalItems:35,
     blockIds:["paragraph-triple-solve","formula-q06-left-coef","paragraph-q06-left-const"],
     itemIds:["n12-p002-q06-left-coef"],expectedAnswers:["1"],
-    markBlockIds:['formula-q06-left-coef'],reviewState:'awaiting-user',
+    markBlockIds:['formula-q06-left-coef'],reviewState:'accepted',
   },
   // W025/P-012: exact approved hint-only scope; previous accepted blocks stay closed.
   'n12-q12-coef-hint': {
@@ -295,7 +295,7 @@ const targets: Record<string, ReviewTarget> = {
     revision:3,totalItems:35,
     blockIds:["paragraph-cost-negative","formula-q12-signed-coef","paragraph-cost-collect"],
     itemIds:["n12-p002-q12-signed-coef"],expectedAnswers:["-130"],
-    markBlockIds:['formula-q12-signed-coef'],reviewState:'awaiting-user',
+    markBlockIds:['formula-q12-signed-coef'],reviewState:'accepted',
   },
   // W025/P-013: exact approved hint-only scope; previous accepted blocks stay closed.
   'n04-q22-hint': {
@@ -304,7 +304,7 @@ const targets: Record<string, ReviewTarget> = {
     revision:2,totalItems:26,
     blockIds:["n04-lead-22","n04-formula-22","n04-after-22"],
     itemIds:["n04-22"],expectedAnswers:["x^4+10x^3+35x^2+50x+24"],
-    markBlockIds:['n04-formula-22'],reviewState:'awaiting-user',
+    markBlockIds:['n04-formula-22'],reviewState:'accepted',
   },
   // W025/P-014: exact approved hint-only scope; previous accepted blocks stay closed.
   'n07-q11-hint': {
@@ -313,7 +313,21 @@ const targets: Record<string, ReviewTarget> = {
     revision:3,totalItems:14,
     blockIds:["n07-lead-11","n07-formula-11","n07-after-11"],
     itemIds:["n07-11"],expectedAnswers:["2^k\\cdot5^k"],
-    markBlockIds:['n07-formula-11'],reviewState:'awaiting-user',
+    markBlockIds:['n07-formula-11'],reviewState:'accepted',
+  },
+  'n12-q06-layout': {
+    id:'n12-q06-layout',unitId:'math-numbers-expressions-n12',
+    title:'N12 Q06 数式の表示',question:'通常学習と同じ折り返しで、数式と係数欄を読めるか確認する',
+    revision:3,totalItems:35,blockIds:["paragraph-triple-solve","formula-q06-left-coef","paragraph-q06-left-const"],
+    itemIds:["n12-p002-q06-left-coef"],expectedAnswers:["1"],
+    markBlockIds:["formula-q06-left-coef"],reviewState:'awaiting-user',
+  },
+  'n12-q12-layout': {
+    id:'n12-q12-layout',unitId:'math-numbers-expressions-n12',
+    title:'N12 Q12 数式の表示',question:'通常学習と同じ折り返しで、数式と係数欄を読めるか確認する',
+    revision:3,totalItems:35,blockIds:["paragraph-cost-negative","formula-q12-signed-coef","paragraph-cost-collect"],
+    itemIds:["n12-p002-q12-signed-coef"],expectedAnswers:["-130"],
+    markBlockIds:["formula-q12-signed-coef"],reviewState:'awaiting-user',
   },
 }
 

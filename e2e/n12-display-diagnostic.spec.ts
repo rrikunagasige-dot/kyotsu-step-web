@@ -1,7 +1,6 @@
 import { mkdirSync,writeFileSync } from 'node:fs'
 import { test,expect,type Page } from '@playwright/test'
 import { mathNumbersN12Unit as unit } from '../src/data/textbook/math/numbers/n12Lesson'
-import { builtInTextbookUnits } from '../src/data/textbookUnits'
 import { reviewTargets,extractReviewSection } from '../src/review/reviewTargets'
 import { getTextbookChoices } from '../src/domain/textbook'
 const cases=[
@@ -70,8 +69,8 @@ test.describe('N12 read-only review identity diagnosis',()=>{
    await page.getByTestId('textbook-hint-'+c.id).scrollIntoViewIfNeeded()
    rows.normalWrong=await measure(page,c.block)
    await page.screenshot({path:'e2e-evidence/n12-diag-'+c.id+'-normal-baseline-'+width+'.png'})
-   const extracted=Object.values(reviewTargets).map(t=>{
-    const u=builtInTextbookUnits.find(v=>v.unitId===t.unitId)
+   const extracted=Object.values(reviewTargets).filter(t=>t.unitId===unit.unitId).map(t=>{
+    const u=unit
     const section=u?extractReviewSection(u,t):null
     return {target:t.id,unit:t.unitId,valid:!!section,originalN12Class:u?.sections.find(s=>s.id==='lesson')?.items.some(q=>q.id==='n12-01')??false,
      extractedN12Class:section?.items.some(q=>q.id==='n12-01')??false,items:section?.items.map(q=>q.id)??[]}

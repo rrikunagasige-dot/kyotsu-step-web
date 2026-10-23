@@ -33,3 +33,14 @@ PASS: Node24 syntax checks for new TS unit/E2E; exact source diff is one wrong[2
 Source fe9a7301dbcd4d4c386418c9937c4da5effd537b:
 Governance39899834019 FAIL (status string), Review39899834095 FAIL (new test syntax; existing35 tests PASS), Math39899834012 FAIL (same test lint). Captures not executed, so no visual or full-regression PASS.
 Corrections: canonical VERIFYING status; remove extra closing parenthesis by naming answerSignature. Learner-source, renderer, schema/history unchanged from first W026 commit. Prior local Node --check syntax PASS was insufficient and is superseded by the native failure. Revised native results PENDING.
+
+### Corrected-source result
+Sourced894e38820829c387386d207ff2d44d1ac95eebb, native Review39900003982 SUCCESS (check120239161134 unit5files38PASS; capture120239161585 6realPASS/6matrix skips), Governance39900003884 SUCCESS。Original images24 + README at113298ed523af9f3523aaa1f87469fc3aa737528, parent/source/code identity confirmed by compare。
+Mobile390review allfour choices and normal old-record hint readable;320hint no horizontal clipping, last choice below fold;1440capture upper2 visible, lower2 require scroll (do not claim allfour in one screenshot). Native tests can operate four choices and correct gated retry on all widths.
+Full Math39900003882 RUNNING at preparation; not PASS yet. At safe boundary inspect final result before final record push.
+Independent static18-step/72-choice coefficient audit and limited lexical101record/50pureproduct sweep completed; scope/context and UNVERIFIED surfaces in IMPACT_AUDIT_Q12_CHOICES_20261023.md. N06Q07 incomplete-factorization distractor intentionally equivalent but fails requested form; no new defect.
+
+### 2026-10-23 full native regression complete
+Exact source **d894e38820829c387386d207ff2d44d1ac95eebb**, Math **39900003882 SUCCESS**, job120239160609: **25unit files/240tests PASS、254browser cases PASS/9explicit skips**。型/lint/build、数学スマホ/PC・図/導出/ゲート/保存、物理教科書・数学演習setupまで全step成功。
+Review39900003982/Governance39900003884 SUCCESS。専用実画面6realPASS/6matrix skips、固定24PNG子113298ed523af9f3523aaa1f87469fc3aa737528。初回失敗は履歴に保持。
+これらはsourceSHAの技術結果で、Q12視覚受入・Gate②全体・Gate③総チェックOKとは別。最終記録commitはsourceとアプリ/review/E2E/workflow完全一致、追加はWork Markdownだけとcompareで照合する。記録HEADに新CIが走れば実sourceの結果と混同しない。

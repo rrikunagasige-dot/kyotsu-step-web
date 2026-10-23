@@ -21,3 +21,12 @@
 
 ### ERROR-IMPLEMENTATION / ERROR-QA
 初回専用test44行の閉括弧誤りとWork状態名IN-PROGRESSがNative CIで検出された。教材修正は一文字列のまま。新testの比較式を単純化し、状態を既存VERIFYINGへ訂正。Node --check TS成功だけでは本プロジェクト構文検証にならなかったため、Native lint/build/Vitest完了までPASSにしない。単発の記録誤りは既存のstate machine/検証原則で扱い、新規共通規則を重複作成しない。
+
+### Verified revised-source facts
+Sourced894e38820829c387386d207ff2d44d1ac95eebb has genuine 24-image proof113298ed523af9f3523aaa1f87469fc3aa737528 and dedicated runtime/review PASS. Removed old answer remains unresolved after restore and can be retried without losing first attempt. Q12 learner diff is still one approved string.
+Exact polynomial scan across related18steps/72choices found one intentional semantic distinction (Q07 complete linear factors vs partial factors), not an additional Q12-type defect. Bounded lexical scan does not cover dynamic/supplemental/other-mode full audit.
+
+### 2026-10-23 full native regression complete
+Exact source **d894e38820829c387386d207ff2d44d1ac95eebb**, Math **39900003882 SUCCESS**, job120239160609: **25unit files/240tests PASS、254browser cases PASS/9explicit skips**。型/lint/build、数学スマホ/PC・図/導出/ゲート/保存、物理教科書・数学演習setupまで全step成功。
+Review39900003982/Governance39900003884 SUCCESS。専用実画面6realPASS/6matrix skips、固定24PNG子113298ed523af9f3523aaa1f87469fc3aa737528。初回失敗は履歴に保持。
+これらはsourceSHAの技術結果で、Q12視覚受入・Gate②全体・Gate③総チェックOKとは別。最終記録commitはsourceとアプリ/review/E2E/workflow完全一致、追加はWork Markdownだけとcompareで照合する。記録HEADに新CIが走れば実sourceの結果と混同しない。

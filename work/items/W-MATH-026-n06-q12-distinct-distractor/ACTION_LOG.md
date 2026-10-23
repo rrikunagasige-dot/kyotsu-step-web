@@ -26,3 +26,19 @@
 - Review39899834095 check120238615442、capture120238615702、Math39899834012/job120238615002 FAIL: 新しいunit test44行目の余分な閉括弧。照合用signatureを変数へ分けて修正。既存review35件はPASSだが全体PASSとはしない。capture前なので原画像は未生成。
 - ブランチ作成にupdate_refを使った最初の呼出は422 Reference does not exist。変更なし。専用create_branchで正しい独立枝を作成。403は発生していない。
 - Node --checkだけをTS構文検査PASSと扱った事前記載を訂正。Native build/lint/Vitestが正本であり、初回SHAはFAILED-VERIFICATIONとして履歴保持。修復後の新SHAで再実行する。
+
+### Native revised-source evidence
+- 修復sourced894e38820829c387386d207ff2d44d1ac95eebb: Review39900003982 / Governance39900003884 SUCCESS。Review unit5files/38tests PASS。実capture120239161585で6実ケースPASS/6matrix skips、24PNGを113298ed523af9f3523aaa1f87469fc3aa737528へ固定。
+- 画像子commitのparentがd894e38820829c387386d207ff2d44d1ac95eebb、差分25filesが専用24PNG+READMEだけであることをGitHub compareで照合。
+- 390review四択、320review誤答hint、390normal旧履歴復元hint、1440reviewchoicesの原画像をbase64取得し直接視認。PC画像下段はviewport外であり、全四択が一枚に写ったとは記録しない。
+- 初回PNG取得encoding省略によるUTF-8 decodeerrorはbase64指定で解消。実画像を加工していない。
+- 影響監査: 18因数分解段階/72choicesを独立整数係数展開。Q07は同値でも要求された一次式の積が未完なので正当な誤答。新たな修正対象なし。限定1行形式101record/純積50choicesに因子順序重複なし。残る文法/共有面/別枝/他モードをUNVERIFIEDとして保持。
+- N14Q16 PR111 HEAD b37ac791fb583d947a3044dca11372139a156d8bと既存review票をlive照合、別SHA/未受入を保持。
+- 先行44e記録版Math39898515492はSUCCESS完了。現在sourced894e38820829c387386d207ff2d44d1ac95eebbの全体Math39900003882はRUNNING、完了まで記録pushを控え同じrefをcancelしない。
+
+- 章全体の残数を別勘定で確認。現候補treeにN01–N14 lesson14本、NE01/NE02 runtime無し。母本body見出し618/645を起点に原問13+12=25を直接数えた。W003計画16単元/233原問の残制作をREMAINING_WORK_20261023.mdへ記録。今回5件を章全体残5問とは表示しない。
+
+### 2026-10-23 full native regression complete
+Exact source **d894e38820829c387386d207ff2d44d1ac95eebb**, Math **39900003882 SUCCESS**, job120239160609: **25unit files/240tests PASS、254browser cases PASS/9explicit skips**。型/lint/build、数学スマホ/PC・図/導出/ゲート/保存、物理教科書・数学演習setupまで全step成功。
+Review39900003982/Governance39900003884 SUCCESS。専用実画面6realPASS/6matrix skips、固定24PNG子113298ed523af9f3523aaa1f87469fc3aa737528。初回失敗は履歴に保持。
+これらはsourceSHAの技術結果で、Q12視覚受入・Gate②全体・Gate③総チェックOKとは別。最終記録commitはsourceとアプリ/review/E2E/workflow完全一致、追加はWork Markdownだけとcompareで照合する。記録HEADに新CIが走れば実sourceの結果と混同しない。

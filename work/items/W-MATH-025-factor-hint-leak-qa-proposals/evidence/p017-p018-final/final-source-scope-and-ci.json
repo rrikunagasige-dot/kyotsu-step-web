@@ -1,0 +1,39 @@
+{
+  "source": "68338688f22ffb3acaa7074b5c0c0f79584604c5",
+  "parent": "db21a111f582f28f669725fe80a84fc8856e4b3e",
+  "changedFiles": [
+    ".github/workflows/p017-layout-gate.yml",
+    "e2e/wmath025-chapter-final-audit.spec.ts",
+    "e2e/wmath025-p016-n12-layout.spec.ts",
+    "src/components/textbook/TextbookFormula.test.tsx",
+    "src/components/textbook/TextbookFormula.tsx",
+    "src/components/textbook/formulaWrap.test.tsx",
+    "src/components/textbook/formulaWrap.ts",
+    "src/review/reviewTargets.ts",
+    "src/styles/global.css",
+    "work/items/W-MATH-025-factor-hint-leak-qa-proposals/ACTION_LOG.md",
+    "work/items/W-MATH-025-factor-hint-leak-qa-proposals/P018_CHAPTER_OVERFLOW_CORRECTION.md",
+    "work/items/W-MATH-025-factor-hint-leak-qa-proposals/VERIFICATION.md",
+    "work/items/W-MATH-025-factor-hint-leak-qa-proposals/WORK.md",
+    "work/items/W-MATH-025-factor-hint-leak-qa-proposals/export-p017-runtime-audit.mjs"
+  ],
+  "noLessonDataEdits": true,
+  "noDomainStorageSchemaEdits": true,
+  "images": {
+    "originalImages": 90,
+    "originalArchiveParts": 4,
+    "allGitBlobHashesMatchLocal": true
+  },
+  "runIds": {
+    "math": 39929067911,
+    "practice": 39929067929,
+    "review": 39929067958,
+    "governance": 39929067945,
+    "native": 39929067924
+  },
+  "humanNewVisualAcceptance": "PENDING",
+  "formalGate2": "OPEN",
+  "gate3": "FINAL-REVIEW-NOT-READY",
+  "main": "15ae503455bc6ae75b080caa1c4919cafb250027",
+  "imageCommit": "f51852465fdad67d4a49357138b88e278df4f997"
+}

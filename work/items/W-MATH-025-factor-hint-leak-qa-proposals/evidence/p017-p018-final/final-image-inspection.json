@@ -1,0 +1,12 @@
+{
+  "source": "68338688f22ffb3acaa7074b5c0c0f79584604c5",
+  "review390Screens": 4,
+  "normalWrong320FormulaScreens": 44,
+  "normalComplete320FormulaScreens": 42,
+  "allNinetyDirectlyInspected": true,
+  "allOriginalBlobHashesVerified": true,
+  "horizontalFlags": 0,
+  "verticalUnderbraceLabelCollision": false,
+  "n12CoefficientAndParenthesisGroups": "PASS",
+  "note": "Fullviewport images use normal vertical scrolling;not all options are claimed visible at once."
+}

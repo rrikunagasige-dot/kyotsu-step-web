@@ -638,3 +638,16 @@ Repair scope after the 88 pilot gate passed:
 - browser regression covers problem-88 leakage/compression on mobile and desktop
 
 Do not “fix” this by replacing the mathematics with plain prose. Repair the host-language escaping.
+
+
+---
+
+## 21. 2026-10-23 — MR16: mathematical groups, intrinsic width and answer-state expansion
+
+W-MATH-025/P017–P018. Centered flex expressions with min-width:max-content placed long N01/N02/N03 expressions partly outside the scrollable start; separately rendered coefficient controls detached from following factors. An initial wrong-state fix alone missed longer resolved answers. Tight flex-row spacing also put an underbrace count label against a following-row control.
+
+Repair:opt in only the46confirmedblocks (fourN12groups and42chapterexpressions);preserve operators/parenthesized factors/braces/radicals/fractions and coefficient×factor groups. Only19actual longcompletedvalues need internal mathematical boundary wrapping;keep shortcompletedvalues atomic. Preserve canonical control sizes,answers,stableIDs andsavedprogress. Allow sufficient rowgap for count labels. Do not solve a layout defect by rewriting correct mathematics or shrinking buttons.
+
+Executable evidence:formulaWrap.test.tsx exactsource reconstruction andactualinitial/resolvedrendering;nativeall14units/290operations at320/390/1440;all256completedformulas×3widths,wrong/hint/retry/reload/history,acceptedcorrections,N12rowbinding,underbrace-label/button collision. Finalsource`68338688f22ffb3acaa7074b5c0c0f79584604c5`;native39929067924SUCCESS73unit/63actualbrowser;fullMath39929067911SUCCESS250unit/257browser. Zerooverflowinbothwrongandcompletedstates;directlyinspected90originalimages. [Scoped results/limits](../work/items/W-MATH-025-factor-hint-leak-qa-proposals/P017_P018_CHAPTER_AUDIT_FINAL_20261023.md).
+
+This is the concrete defect record under existing §§1/8/13/15 and MASTER_APP_LESSONS §§16/51–54,not a new work/approval flow. Humannew-layout/final-appacceptance andrelease remain separate.

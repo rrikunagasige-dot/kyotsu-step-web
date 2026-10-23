@@ -1,9 +1,13 @@
+## Approval and execution close — 2026-10-23 JST
+
+User exact「いいよ。残りの仕事全部まとめて修正して、章全体確認まで止まないでよ」approved this proposal and explicitly directed all remaining corrections through chapter verification without per-question approval pauses. P017four are implemented;linkedP01842additionalconfirmedblocksareimplementedunderthesameexplicitinstruction. [Finalsource/results](./P017_P018_CHAPTER_AUDIT_FINAL_20261023.md). Newvisualuseracceptancepending;previousP016visualapprovalpreserved.
+
 # W-MATH-025 / P017 — N12 remaining four mathematical groups
 
-Status: PROPOSED
+Status: APPROVED
 Command: CMD-WORK-001
 Date: 2026-10-23 JST
-Approval: NOT YET RECEIVED
+Approval: direct user quote above
 
 ## Evidence / cause
 

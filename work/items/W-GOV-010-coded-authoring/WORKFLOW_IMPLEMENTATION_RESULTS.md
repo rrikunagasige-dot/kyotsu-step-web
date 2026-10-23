@@ -20,13 +20,13 @@
 
 ## ローカル検証
 
-- 実行器66試験 PASS。正常経路と禁止遷移、旧版、再開、切断、後続否定、scope、参照、台帳破損を検証。
+- 実行器69試験 PASS。正常経路と禁止遷移、旧版、再開、切断、後続否定、scope、参照、台帳破損を検証。
 - P-001既存27試験 PASS。追加計算120例と破損20例の評価を再実行。生成器自体は変更していない。
 - 既存生成器の教科書・練習の両アダプタがTECHNICAL_PASS。意味の受入とは別。
 - 作成27ノード、修正27ノード、技術限定8ノードの模擬通し実行がDONE。模擬の承認・画像・監査・ホスト確認であり、実ユーザーの教材受入ではない。
 - 機械的な失敗再現では、修正適用後に記録を失った場合も実ファイルを照合して復元した。未知の第三の差分は自動復旧しない。
 
-実行コマンドは workflow/README.md。模擬台帳・派生表示・生のローカル結果は workflow-evidence/ に保持する。最終コード: d206b6de91cd869cd15c2f60f9f84327deed4143。CI [#39979184049](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39979184049) completed/success、対象SHA一致。検査・模擬台帳再生・成果物保存の全step成功を確認した。
+実行コマンドは workflow/README.md。模擬台帳・派生表示・生のローカル結果は workflow-evidence/ に保持する。最終コード: d379a251f5753dccb08b21696027acf33c54e588。CI [#39980481915](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39980481915) completed/success、対象SHA一致。検査・模擬台帳再生・成果物保存の全step成功を確認した。
 
 ## 保証の限界と残る位置
 
@@ -46,3 +46,10 @@ main正式反映と教材公開は別の権限。具体的な統合差分とCI�
 実装中に見つかった正本exportの改行差分と、模擬出力先への旧イベント混在をそれぞれ回帰検査へ取り込んだ。新しい模擬記録は別Storeから再生してDONEを確認し、simulation-ledgers.zipへ保存。事例の品質ラベルはUNKNOWNのまま、既存規則と検査へ結んだ。
 
 mainとのGitツリー全体を比較し、教材データ・UI・履歴・既存e2e・依存設定・憲法本文に変更がないことを確認した。正式統合候補の具体的な変更はINTEGRATION_REVIEW.mdに整理した。
+
+
+## 影響範囲の欠落を機械的に拒否
+
+R03で表が存在するだけでは不十分だったため、Workに登録した全ブロックIDと資料の組を必須行として照合する検査を追加した。必要ならimpact_inventoryへ関連する承認済み成果物を追加する。行の欠落、IDの取り違え、古い対象版を拒否する三試験を追加し、計69試験PASS。登録していない外部教材の発見・原因の意味判断はAI担当として残る。
+
+最終の技術限定記録はworkflow-impact-execution/で八ノードDONE。初回のworkflow-execution/はd206b6d時点の履歴として保持する。最新コードd379a25では専用CI、Repository Governance Check、Review Preview Code Checkが全て成功した。

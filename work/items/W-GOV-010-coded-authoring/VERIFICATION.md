@@ -54,3 +54,8 @@
 
 教育効果・独立未使用教材の品質評価・アプリ全体Gate③は未実施。mainへの正式採用とW-MATH-027の再開は残る。
 
+
+
+### 最終追補 — 影響調査の完全性
+
+最終コード: d379a251f5753dccb08b21696027acf33c54e588。専用CI https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39980481915 SUCCESS、head_sha一致。Repository Governance Check #39980482099、Review Preview Code Check #39980481937もSUCCESS。実行器69試験、既存27試験、両アダプタ、三経路の保存台帳再生を確認。追加実行記録はworkflow-impact-execution/、旧記録は対応する旧コード版の履歴として保持する。

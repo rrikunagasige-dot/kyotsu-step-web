@@ -1,0 +1,114 @@
+{
+  "work": "W-GOV-010-P002-IMPACT-COVERAGE",
+  "engine_version": "1.0.0",
+  "ledger_head": "cb5c28f0fa926fe425744fc4609dbca6cf5d871391f096f37a080d26266d464b",
+  "work_status": "DONE",
+  "profile": "technical",
+  "simulation": false,
+  "candidate_sha": "d379a251f5753dccb08b21696027acf33c54e588",
+  "next": {
+    "status": "DONE",
+    "reason": "全工程の有効な証拠を照合"
+  },
+  "nodes": [
+    {
+      "id": "S00_RECOVER",
+      "actor": "CODE",
+      "depends_on": [],
+      "required": [],
+      "block": null,
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "S01_ROUTE",
+      "actor": "CODE",
+      "depends_on": [
+        "S00_RECOVER"
+      ],
+      "required": [],
+      "block": null,
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "T01_ANALYSIS",
+      "actor": "AI",
+      "depends_on": [
+        "S01_ROUTE"
+      ],
+      "required": [
+        "rule_mapping",
+        "design",
+        "protected_scope",
+        "unknowns"
+      ],
+      "block": null,
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "T02_APPROVAL",
+      "actor": "USER",
+      "depends_on": [
+        "T01_ANALYSIS"
+      ],
+      "required": [],
+      "block": null,
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "T03_BUILD",
+      "actor": "TOOL",
+      "depends_on": [
+        "T02_APPROVAL"
+      ],
+      "required": [],
+      "block": null,
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "T04_VERIFY",
+      "actor": "TOOL",
+      "depends_on": [
+        "T03_BUILD"
+      ],
+      "required": [],
+      "block": null,
+      "watch": "candidate",
+      "status": "PASSED"
+    },
+    {
+      "id": "L01_LEARNING",
+      "actor": "AI",
+      "depends_on": [
+        "T04_VERIFY"
+      ],
+      "required": [
+        "case_updates",
+        "rule_links",
+        "regression_links",
+        "unresolved",
+        "deduplication"
+      ],
+      "block": null,
+      "watch": "learning",
+      "status": "PASSED"
+    },
+    {
+      "id": "Z01_CLOSE",
+      "actor": "CODE",
+      "depends_on": [
+        "L01_LEARNING"
+      ],
+      "required": [],
+      "block": null,
+      "watch": "all",
+      "status": "PASSED"
+    }
+  ],
+  "pending_issues": [],
+  "application_accepted": false
+}

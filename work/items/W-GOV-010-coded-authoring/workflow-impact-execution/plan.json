@@ -1,0 +1,49 @@
+{
+  "work_id": "W-GOV-010-P002-IMPACT-COVERAGE",
+  "profile": "technical",
+  "command": "GOVERNANCE",
+  "subject": "governance",
+  "mode": "workflow-engine",
+  "source_sha": "d379a251f5753dccb08b21696027acf33c54e588",
+  "source_manifest": {
+    "workflow/runtime.py": "b925dd2dec79b1fddb8c0e0a385d0b80938f7a0df5e95bf3dd7141eb6068ed4f"
+  },
+  "rules": {
+    "AGENTS.md": "5abeabb4f7fa60ca8e54ac4695910ed5a37eee397f89f381a123dcfef17a1d0e",
+    "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
+    "governance/WORK_SYSTEM.md": "dbdda29511567c2a5c85bbef8e58909368ebf1396360d531a5db4b3dc76f6346",
+    "governance/INSTRUCTION_DICTIONARY.md": "61374d8b18f39a679fb34517007a989f5cf3251c04cf642899fe7f2d80549472",
+    "workflow/rules/mapping.json": "2c41cd47c0294e63e90355c766cc0e0763d3afc2c0289c4e355d29962bed4822"
+  },
+  "blocks": [
+    {
+      "id": "ENGINE",
+      "sources": [
+        "workflow/runtime.py"
+      ]
+    }
+  ],
+  "proposal": {
+    "id": "P-002",
+    "hash": "4f47bc1523dc7917a70b1721bde66ac087accffd15416d02749cd9f208249d8f"
+  },
+  "scope": {
+    "paths": [
+      "workflow/",
+      "AGENTS.md",
+      "governance/WORK_SYSTEM.md",
+      "governance/INSTRUCTION_DICTIONARY.md",
+      ".github/workflows/workflow-engine.yml",
+      "work/items/W-GOV-010-coded-authoring/"
+    ],
+    "preserve": [
+      "src/",
+      "public/",
+      "package.json",
+      "pnpm-lock.yaml",
+      "governance/CONSTITUTION.md"
+    ]
+  },
+  "simulation": false,
+  "bootstrap_note": "実行器が存在する前の初回実装。承認は実装前のユーザー発言へ対応。台帳は実装成果と現時点の分析を取り込み、過去の全操作を遡及的に強制したとは扱わない。"
+}

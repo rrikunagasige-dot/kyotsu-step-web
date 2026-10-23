@@ -7,6 +7,11 @@ test_original_rule_change_cannot_be_smuggled_into_revision (test_workflow.AddedB
 test_pending_patch_intent_blocks_even_before_first_file (test_workflow.AddedBoundaries.test_pending_patch_intent_blocks_even_before_first_file) ... ok
 test_quality_unknown_can_be_recorded_without_invented_praise (test_workflow.AddedBoundaries.test_quality_unknown_can_be_recorded_without_invented_praise) ... ok
 test_reject_block_invalidates_only_its_gate (test_workflow.AddedBoundaries.test_reject_block_invalidates_only_its_gate) ... ok
+test_exact_export_preserves_blob (test_workflow.ExportProvenance.test_exact_export_preserves_blob) ... ok
+test_extra_newline_export_refused (test_workflow.ExportProvenance.test_extra_newline_export_refused) ... ok
+test_missing_other_block_is_not_complete_impact_sweep (test_workflow.ImpactCompleteness.test_missing_other_block_is_not_complete_impact_sweep) ... ok
+test_stale_impact_version_refused (test_workflow.ImpactCompleteness.test_stale_impact_version_refused) ... ok
+test_wrong_block_id_cannot_cover_same_file (test_workflow.ImpactCompleteness.test_wrong_block_id_cannot_cover_same_file) ... ok
 test_artifact_corruption (test_workflow.LedgerTests.test_artifact_corruption) ... ok
 test_cas (test_workflow.LedgerTests.test_cas) ... ok
 test_corruption (test_workflow.LedgerTests.test_corruption) ... ok
@@ -61,9 +66,10 @@ test_unverified_impact_cannot_pass (test_workflow.Routes.test_unverified_impact_
 test_verification_invalidated_on_new_sha (test_workflow.Routes.test_verification_invalidated_on_new_sha) ... ok
 test_views_deterministic_and_drift_detected (test_workflow.Routes.test_views_deterministic_and_drift_detected) ... ok
 test_visual_acceptance_preserves_unchanged_block (test_workflow.Routes.test_visual_acceptance_preserves_unchanged_block) ... ok
+test_exported_ledgers_replay_and_repeated_destination_rejected (test_workflow.ScenarioReplay.test_exported_ledgers_replay_and_repeated_destination_rejected) ... ok
 
 ----------------------------------------------------------------------
-Ran 63 tests in 3.427s
+Ran 69 tests in 4.397s
 
 OK
-{"workflow_tests": 63, "workflow_failures": 0, "P001_tests_returncode": 0, "adapters": [{"mode": "textbook", "returncode": 0, "status": "TECHNICAL_PASS", "semantic_acceptance": false}, {"mode": "practice", "returncode": 0, "status": "TECHNICAL_PASS", "semantic_acceptance": false}], "educational_effectiveness": "NOT_MEASURED", "actual_user_acceptance": false}
+{"workflow_tests": 69, "workflow_failures": 0, "P001_tests_returncode": 0, "adapters": [{"mode": "textbook", "returncode": 0, "status": "TECHNICAL_PASS", "semantic_acceptance": false}, {"mode": "practice", "returncode": 0, "status": "TECHNICAL_PASS", "semantic_acceptance": false}], "educational_effectiveness": "NOT_MEASURED", "actual_user_acceptance": false}

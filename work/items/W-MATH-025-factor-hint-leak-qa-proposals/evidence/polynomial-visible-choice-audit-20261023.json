@@ -1,0 +1,127 @@
+{
+  "runtimeSource": "fc27e7f5fbdc28345917276d43602ea4787537bd",
+  "currentHintOnlyReplacementDoesNotAlterChoices": true,
+  "method": "actual getTextbookChoices;exact integer multivariate polynomial coefficients;literal integer TeX powers only,unsupported grouping rejected",
+  "fullyParsedItems": 78,
+  "unparsedItems": [
+    "n01-02a",
+    "n01-02b",
+    "n01-02c",
+    "n01-04",
+    "n01-05",
+    "n01-06b",
+    "n01-08",
+    "n02-03",
+    "n02-09",
+    "n03-01",
+    "n03-02",
+    "n03-03",
+    "n03-04",
+    "n03-06",
+    "n04-08",
+    "n04-10",
+    "n04-13",
+    "n04-17",
+    "n05-06",
+    "n05-10",
+    "n05-13",
+    "n05-14",
+    "n05-16",
+    "n06-01",
+    "n06-05",
+    "n06-15"
+  ],
+  "equalValuePairsAfterPromptFormReview": [
+    {
+      "id": "n02-02",
+      "prompt": "xの次数3→2→1→0の順へ。",
+      "pair": [
+        "5c+3bx-ax^2+x^3",
+        "x^3-ax^2+3bx+5c"
+      ],
+      "status": "FORM-DISTINCT-NOT-A-DEFECT",
+      "reason": "Prompt requires descending powers of x;the equal-value distractor is ascending."
+    },
+    {
+      "id": "n02-04",
+      "prompt": "xの次数順にひとつの式へ戻そう。",
+      "pair": [
+        "x^2+(2y-3)x+(y^2-3y+2)",
+        "x^2+y^2+(2y-3)x-3y+2"
+      ],
+      "status": "FORM-DISTINCT-NOT-A-DEFECT",
+      "reason": "Prompt requires descending powers of x;the distractor inserts x-free y² before the x term."
+    },
+    {
+      "id": "n03-10",
+      "prompt": "図の四つのマスに対応する積を全て書こう。",
+      "pair": [
+        "6x^2+11x+4",
+        "6x^2+8x+3x+4"
+      ],
+      "status": "FORM-DISTINCT-NOT-A-DEFECT",
+      "reason": "Four grid products must remain separate;the equal-value distractor combines the middle products."
+    },
+    {
+      "id": "n04-01",
+      "prompt": "四組すべてを、同類項をまとめずに並べよう。",
+      "pair": [
+        "25x^2+20xy+20xy+16y^2",
+        "25x^2+40xy+16y^2"
+      ],
+      "status": "FORM-DISTINCT-NOT-A-DEFECT",
+      "reason": "Prompt explicitly says not to combine like terms."
+    },
+    {
+      "id": "n04-04",
+      "prompt": "四つの積を、まだ同類項をまとめずに並べよう。",
+      "pair": [
+        "a^2+ab+ba+b^2",
+        "a^2+2ab+b^2"
+      ],
+      "status": "FORM-DISTINCT-NOT-A-DEFECT",
+      "reason": "Prompt explicitly asks four uncombined products."
+    },
+    {
+      "id": "n04-20",
+      "prompt": "一次係数が同じになる二つの積を選ぼう。",
+      "pair": [
+        "(x^2+4x+3)(x^2+6x+8)",
+        "(x^2+3x+2)(x^2+7x+12)"
+      ],
+      "status": "FORM-DISTINCT-NOT-A-DEFECT",
+      "reason": "Prompt asks equal linear coefficients in the two quadratics;distractor coefficient pairs(4,6)/(3,7)fail versus(5,5)."
+    },
+    {
+      "id": "n04-20",
+      "prompt": "一次係数が同じになる二つの積を選ぼう。",
+      "pair": [
+        "(x^2+4x+3)(x^2+6x+8)",
+        "(x^2+5x+4)(x^2+5x+6)"
+      ],
+      "status": "FORM-DISTINCT-NOT-A-DEFECT",
+      "reason": "Prompt asks equal linear coefficients in the two quadratics;distractor coefficient pairs(4,6)/(3,7)fail versus(5,5)."
+    },
+    {
+      "id": "n04-20",
+      "prompt": "一次係数が同じになる二つの積を選ぼう。",
+      "pair": [
+        "(x^2+3x+2)(x^2+7x+12)",
+        "(x^2+5x+4)(x^2+5x+6)"
+      ],
+      "status": "FORM-DISTINCT-NOT-A-DEFECT",
+      "reason": "Prompt asks equal linear coefficients in the two quadratics;distractor coefficient pairs(4,6)/(3,7)fail versus(5,5)."
+    },
+    {
+      "id": "n06-07",
+      "prompt": "一次式の積まで因数分解しよう。",
+      "pair": [
+        "(x-1)(x+1)(x-2)(x+2)",
+        "(x-1)(x+1)(x^2-4)"
+      ],
+      "status": "FORM-DISTINCT-NOT-A-DEFECT",
+      "reason": "Prompt requires only linear factors;the distractor still contains quadratic x²−4."
+    }
+  ],
+  "limit": "No new duplicate-selection defect confirmed among the parsed sets after task-form review;not a proof of original-key correctness or of unparsed grammar."
+}

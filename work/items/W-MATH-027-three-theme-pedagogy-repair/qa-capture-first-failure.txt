@@ -1,0 +1,1287 @@
+﻿2026-10-23T16:16:53.4897644Z Current runner version: '2.338.0'
+2026-10-23T16:16:53.4918758Z ##[group]Runner Image Provisioner
+2026-10-23T16:16:53.4919462Z Hosted Compute Agent
+2026-10-23T16:16:53.4919950Z Version: 20261012.601
+2026-10-23T16:16:53.4920467Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+2026-10-23T16:16:53.4921125Z Build Date: 2026-10-12T17:48:21Z
+2026-10-23T16:16:53.4922051Z Worker ID: {71693023-2d66-46a8-8705-6c0b00794b1b}
+2026-10-23T16:16:53.4922609Z Region: centralus
+2026-10-23T16:16:53.4923034Z Cloud: Azure
+2026-10-23T16:16:53.4923501Z ##[endgroup]
+2026-10-23T16:16:53.4924633Z ##[group]Operating System
+2026-10-23T16:16:53.4925136Z Ubuntu
+2026-10-23T16:16:53.4925539Z 24.04.5
+2026-10-23T16:16:53.4925917Z LTS
+2026-10-23T16:16:53.4926345Z ##[endgroup]
+2026-10-23T16:16:53.4926796Z ##[group]Runner Image
+2026-10-23T16:16:53.4927485Z Image: ubuntu-24.04
+2026-10-23T16:16:53.4927963Z Version: 20261012.334.1
+2026-10-23T16:16:53.4928989Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-23T16:16:53.4930198Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+2026-10-23T16:16:53.4930944Z ##[endgroup]
+2026-10-23T16:16:53.4931893Z ##[group]GITHUB_TOKEN Permissions
+2026-10-23T16:16:53.4933642Z Contents: read
+2026-10-23T16:16:53.4934126Z Metadata: read
+2026-10-23T16:16:53.4934569Z ##[endgroup]
+2026-10-23T16:16:53.4936529Z Secret source: Actions
+2026-10-23T16:16:53.4937500Z Cache mode: write
+2026-10-23T16:16:53.4938124Z Prepare workflow directory
+2026-10-23T16:16:53.5375496Z Prepare all required actions
+2026-10-23T16:16:53.5420265Z Getting action download info
+2026-10-23T16:16:53.7877773Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-23T16:16:53.8863431Z Download action repository 'pnpm/action-setup@v4' (SHA:b906affcce14559ad1aafd4ab0e942779e9f58b1)
+2026-10-23T16:16:54.5164786Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2026-10-23T16:16:54.6501182Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-23T16:16:54.9019374Z Complete job name: verify
+2026-10-23T16:16:54.9856932Z ##[group]Run actions/checkout@v4
+2026-10-23T16:16:54.9858467Z with:
+2026-10-23T16:16:54.9859438Z   fetch-depth: 0
+2026-10-23T16:16:54.9860388Z   repository: rrikunagasige-dot/kyotsu-step-web
+2026-10-23T16:16:54.9867657Z   token: ***
+2026-10-23T16:16:54.9868562Z   ssh-strict: true
+2026-10-23T16:16:54.9869410Z   ssh-user: git
+2026-10-23T16:16:54.9870407Z   persist-credentials: true
+2026-10-23T16:16:54.9871325Z   clean: true
+2026-10-23T16:16:54.9872149Z   sparse-checkout-cone-mode: true
+2026-10-23T16:16:54.9873192Z   fetch-tags: false
+2026-10-23T16:16:54.9874033Z   show-progress: true
+2026-10-23T16:16:54.9874900Z   lfs: false
+2026-10-23T16:16:54.9875740Z   submodules: false
+2026-10-23T16:16:54.9876577Z   set-safe-directory: true
+2026-10-23T16:16:54.9877784Z   allow-unsafe-pr-checkout: false
+2026-10-23T16:16:54.9879052Z env:
+2026-10-23T16:16:54.9879809Z   CI: true
+2026-10-23T16:16:54.9880769Z   CAPTURE_SHA: 414137fe25a8e3d818b2e9f9cf7a3fb2be472641
+2026-10-23T16:16:54.9882092Z   E2E_USE_PREVIEW: 1
+2026-10-23T16:16:54.9882956Z ##[endgroup]
+2026-10-23T16:16:55.0749109Z Syncing repository: rrikunagasige-dot/kyotsu-step-web
+2026-10-23T16:16:55.0752077Z ##[group]Getting Git version info
+2026-10-23T16:16:55.0753748Z Working directory is '/home/runner/work/kyotsu-step-web/kyotsu-step-web'
+2026-10-23T16:16:55.0756114Z [command]/usr/bin/git version
+2026-10-23T16:16:55.0846959Z git version 2.55.0
+2026-10-23T16:16:55.0883866Z ##[endgroup]
+2026-10-23T16:16:55.0894863Z Temporarily overriding HOME='/home/runner/work/_temp/306fa22e-2295-493c-954f-17ef2de5f006' before making global git config changes
+2026-10-23T16:16:55.0898164Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-23T16:16:55.0900860Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/kyotsu-step-web/kyotsu-step-web
+2026-10-23T16:16:55.0946847Z Deleting the contents of '/home/runner/work/kyotsu-step-web/kyotsu-step-web'
+2026-10-23T16:16:55.0950058Z ##[group]Initializing the repository
+2026-10-23T16:16:55.0952637Z [command]/usr/bin/git init /home/runner/work/kyotsu-step-web/kyotsu-step-web
+2026-10-23T16:16:55.1073434Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-23T16:16:55.1078614Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-23T16:16:55.1081150Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-23T16:16:55.1083008Z hint: call:
+2026-10-23T16:16:55.1084047Z hint:
+2026-10-23T16:16:55.1085480Z hint: 	git config --global init.defaultBranch <name>
+2026-10-23T16:16:55.1086989Z hint:
+2026-10-23T16:16:55.1088730Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-23T16:16:55.1090839Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-23T16:16:55.1092578Z hint:
+2026-10-23T16:16:55.1093627Z hint: 	git branch -m <name>
+2026-10-23T16:16:55.1094713Z hint:
+2026-10-23T16:16:55.1096169Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-23T16:16:55.1102203Z Initialized empty Git repository in /home/runner/work/kyotsu-step-web/kyotsu-step-web/.git/
+2026-10-23T16:16:55.1108871Z [command]/usr/bin/git remote add origin https://github.com/rrikunagasige-dot/kyotsu-step-web
+2026-10-23T16:16:55.1153192Z ##[endgroup]
+2026-10-23T16:16:55.1155221Z ##[group]Disabling automatic garbage collection
+2026-10-23T16:16:55.1162298Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-23T16:16:55.1192117Z ##[endgroup]
+2026-10-23T16:16:55.1193734Z ##[group]Setting up auth
+2026-10-23T16:16:55.1201382Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-23T16:16:55.1230586Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-23T16:16:55.1574906Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-23T16:16:55.1602414Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-23T16:16:55.1765561Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-23T16:16:55.1793175Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-23T16:16:55.1954104Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-23T16:16:55.1988352Z ##[endgroup]
+2026-10-23T16:16:55.1989873Z ##[group]Fetching the repository
+2026-10-23T16:16:55.1997610Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
+2026-10-23T16:17:03.3149127Z From https://github.com/rrikunagasige-dot/kyotsu-step-web
+2026-10-23T16:17:03.3149937Z  * [new branch]        backend         -> origin/backend
+2026-10-23T16:17:03.3150770Z  * [new branch]        backup/main-before-ch01-questionbank-20260928 -> origin/backup/main-before-ch01-questionbank-20260928
+2026-10-23T16:17:03.3151906Z  * [new branch]        backup/main-before-physics-taxonomy-20260928 -> origin/backup/main-before-physics-taxonomy-20260928
+2026-10-23T16:17:03.3152844Z  * [new branch]        backup/main-before-reader-repair-docs-20260929 -> origin/backup/main-before-reader-repair-docs-20260929
+2026-10-23T16:17:03.3153657Z  * [new branch]        backup/main-before-source-archive-p32-20260929 -> origin/backup/main-before-source-archive-p32-20260929
+2026-10-23T16:17:03.3154448Z  * [new branch]        backup/main-before-textbook-catalog-p20-p25-20260928 -> origin/backup/main-before-textbook-catalog-p20-p25-20260928
+2026-10-23T16:17:03.3155595Z  * [new branch]        backup/main-before-textbook-reader-repair-20260928 -> origin/backup/main-before-textbook-reader-repair-20260928
+2026-10-23T16:17:03.3156352Z  * [new branch]        chatgpt/math-100-counterexample-pilot -> origin/chatgpt/math-100-counterexample-pilot
+2026-10-23T16:17:03.3157045Z  * [new branch]        chatgpt/math-101-negation-pilot -> origin/chatgpt/math-101-negation-pilot
+2026-10-23T16:17:03.3158437Z  * [new branch]        chatgpt/math-102-and-or-pilot -> origin/chatgpt/math-102-and-or-pilot
+2026-10-23T16:17:03.3159206Z  * [new branch]        chatgpt/math-103-compound-negation-pilot -> origin/chatgpt/math-103-compound-negation-pilot
+2026-10-23T16:17:03.3160037Z  * [new branch]        chatgpt/math-104-necessary-sufficient-pilot -> origin/chatgpt/math-104-necessary-sufficient-pilot
+2026-10-23T16:17:03.3160702Z  * [new branch]        chatgpt/math-105-truth-pilot -> origin/chatgpt/math-105-truth-pilot
+2026-10-23T16:17:03.3161499Z  * [new branch]        chatgpt/math-106-set-condition-pilot -> origin/chatgpt/math-106-set-condition-pilot
+2026-10-23T16:17:03.3162526Z  * [new branch]        chatgpt/math-107-necessary-sufficient-advanced-pilot -> origin/chatgpt/math-107-necessary-sufficient-advanced-pilot
+2026-10-23T16:17:03.3163539Z  * [new branch]        chatgpt/math-107-necessary-sufficient-pilot -> origin/chatgpt/math-107-necessary-sufficient-pilot
+2026-10-23T16:17:03.3164342Z  * [new branch]        chatgpt/math-108-equivalence-proof-pilot -> origin/chatgpt/math-108-equivalence-proof-pilot
+2026-10-23T16:17:03.3165034Z  * [new branch]        chatgpt/math-109-quantifier-negation-pilot -> origin/chatgpt/math-109-quantifier-negation-pilot
+2026-10-23T16:17:03.3165816Z  * [new branch]        chatgpt/math-110-converse-contrapositive-inverse-pilot -> origin/chatgpt/math-110-converse-contrapositive-inverse-pilot
+2026-10-23T16:17:03.3166590Z  * [new branch]        chatgpt/math-111-contrapositive-proof-pilot -> origin/chatgpt/math-111-contrapositive-proof-pilot
+2026-10-23T16:17:03.3167451Z  * [new branch]        chatgpt/math-112-irrational-proof-pilot -> origin/chatgpt/math-112-irrational-proof-pilot
+2026-10-23T16:17:03.3168661Z  * [new branch]        chatgpt/math-112-irrationality-proof-pilot -> origin/chatgpt/math-112-irrationality-proof-pilot
+2026-10-23T16:17:03.3169352Z  * [new branch]        chatgpt/math-113-sqrt-irrational-pilot -> origin/chatgpt/math-113-sqrt-irrational-pilot
+2026-10-23T16:17:03.3170042Z  * [new branch]        chatgpt/math-114-divisibility-proof-pilot -> origin/chatgpt/math-114-divisibility-proof-pilot
+2026-10-23T16:17:03.3170729Z  * [new branch]        chatgpt/math-115-irrational-difference-pilot -> origin/chatgpt/math-115-irrational-difference-pilot
+2026-10-23T16:17:03.3171470Z  * [new branch]        chatgpt/math-116-rational-irrational-linear-proof -> origin/chatgpt/math-116-rational-irrational-linear-proof
+2026-10-23T16:17:03.3172238Z  * [new branch]        chatgpt/math-117-cross-problem-theorem-pilot -> origin/chatgpt/math-117-cross-problem-theorem-pilot
+2026-10-23T16:17:03.3173056Z  * [new branch]        chatgpt/math-118-function-criterion-pilot -> origin/chatgpt/math-118-function-criterion-pilot
+2026-10-23T16:17:03.3173779Z  * [new branch]        chatgpt/math-119-120-prep -> origin/chatgpt/math-119-120-prep
+2026-10-23T16:17:03.3174736Z  * [new branch]        chatgpt/math-119-function-values-pilot -> origin/chatgpt/math-119-function-values-pilot
+2026-10-23T16:17:03.3175450Z  * [new branch]        chatgpt/math-120-verbal-function-pilot -> origin/chatgpt/math-120-verbal-function-pilot
+2026-10-23T16:17:03.3176200Z  * [new branch]        chatgpt/math-120-verbal-function-pilot-clean -> origin/chatgpt/math-120-verbal-function-pilot-clean
+2026-10-23T16:17:03.3176895Z  * [new branch]        chatgpt/math-87-120-final-qa-audit -> origin/chatgpt/math-87-120-final-qa-audit
+2026-10-23T16:17:03.3177657Z  * [new branch]        chatgpt/math-87-120-structure-map -> origin/chatgpt/math-87-120-structure-map
+2026-10-23T16:17:03.3178384Z  * [new branch]        chatgpt/math-87-97-subproblem-compression -> origin/chatgpt/math-87-97-subproblem-compression
+2026-10-23T16:17:03.3179025Z  * [new branch]        chatgpt/math-87-inline-markup-fix -> origin/chatgpt/math-87-inline-markup-fix
+2026-10-23T16:17:03.3179697Z  * [new branch]        chatgpt/math-87-textbook-like-design -> origin/chatgpt/math-87-textbook-like-design
+2026-10-23T16:17:03.3180332Z  * [new branch]        chatgpt/math-88-96-content-design -> origin/chatgpt/math-88-96-content-design
+2026-10-23T16:17:03.3180920Z  * [new branch]        chatgpt/math-88-96-implementation -> origin/chatgpt/math-88-96-implementation
+2026-10-23T16:17:03.3181493Z  * [new branch]        chatgpt/math-88-review-repair -> origin/chatgpt/math-88-review-repair
+2026-10-23T16:17:03.3182074Z  * [new branch]        chatgpt/math-94-97-textbook-flow -> origin/chatgpt/math-94-97-textbook-flow
+2026-10-23T16:17:03.3182747Z  * [new branch]        chatgpt/math-94-subproblem-compression -> origin/chatgpt/math-94-subproblem-compression
+2026-10-23T16:17:03.3183501Z  * [new branch]        chatgpt/math-98-120-reasoning-figures-v2 -> origin/chatgpt/math-98-120-reasoning-figures-v2
+2026-10-23T16:17:03.3184170Z  * [new branch]        chatgpt/math-98-proposition-pilot -> origin/chatgpt/math-98-proposition-pilot
+2026-10-23T16:17:03.3184794Z  * [new branch]        chatgpt/math-99-implication-pilot -> origin/chatgpt/math-99-implication-pilot
+2026-10-23T16:17:03.3185475Z  * [new branch]        chatgpt/math-pilot-target-rendering-repair -> origin/chatgpt/math-pilot-target-rendering-repair
+2026-10-23T16:17:03.3186134Z  * [new branch]        chatgpt/math-practice-119-v1 -> origin/chatgpt/math-practice-119-v1
+2026-10-23T16:17:03.3186778Z  * [new branch]        chatgpt/math-practice-87-120-final-qa -> origin/chatgpt/math-practice-87-120-final-qa
+2026-10-23T16:17:03.3187647Z  * [new branch]        chatgpt/math-practice-87-120-integration -> origin/chatgpt/math-practice-87-120-integration
+2026-10-23T16:17:03.3188362Z  * [new branch]        chatgpt/math-practice-entry-architecture -> origin/chatgpt/math-practice-entry-architecture
+2026-10-23T16:17:03.3189239Z  * [new branch]        chatgpt/math-practice-master-lessons -> origin/chatgpt/math-practice-master-lessons
+2026-10-23T16:17:03.3190082Z  * [new branch]        chatgpt/math-practice-physics-title-layout -> origin/chatgpt/math-practice-physics-title-layout
+2026-10-23T16:17:03.3190815Z  * [new branch]        chatgpt/math-practice-release-qa-docs -> origin/chatgpt/math-practice-release-qa-docs
+2026-10-23T16:17:03.3191496Z  * [new branch]        chatgpt/math-practice-release-qa-figures -> origin/chatgpt/math-practice-release-qa-figures
+2026-10-23T16:17:03.3192259Z  * [new branch]        chatgpt/math-practice-title-architecture -> origin/chatgpt/math-practice-title-architecture
+2026-10-23T16:17:03.3193123Z  * [new branch]        chatgpt/math-release-qa-figures-99-101-110 -> origin/chatgpt/math-release-qa-figures-99-101-110
+2026-10-23T16:17:03.3193988Z  * [new branch]        chatgpt/math-textbook-sets-v1 -> origin/chatgpt/math-textbook-sets-v1
+2026-10-23T16:17:03.3194664Z  * [new branch]        chatgpt/math-theme-direct-entry -> origin/chatgpt/math-theme-direct-entry
+2026-10-23T16:17:03.3195396Z  * [new branch]        chatgpt/physics-ch01-e2e-route-fix -> origin/chatgpt/physics-ch01-e2e-route-fix
+2026-10-23T16:17:03.3196180Z  * [new branch]        chatgpt/physics-ch01-full-e2e-fix2 -> origin/chatgpt/physics-ch01-full-e2e-fix2
+2026-10-23T16:17:03.3196931Z  * [new branch]        chatgpt/physics-ch01-full-e2e-fix3 -> origin/chatgpt/physics-ch01-full-e2e-fix3
+2026-10-23T16:17:03.3197854Z  * [new branch]        chatgpt/physics-ch01-full-e2e-fix4 -> origin/chatgpt/physics-ch01-full-e2e-fix4
+2026-10-23T16:17:03.3198596Z  * [new branch]        chatgpt/physics-ch01-full-e2e-fix5 -> origin/chatgpt/physics-ch01-full-e2e-fix5
+2026-10-23T16:17:03.3199313Z  * [new branch]        chatgpt/physics-ch01-p14-finalize -> origin/chatgpt/physics-ch01-p14-finalize
+2026-10-23T16:17:03.3200137Z  * [new branch]        chatgpt/physics-ch01-questionbank-docs -> origin/chatgpt/physics-ch01-questionbank-docs
+2026-10-23T16:17:03.3201189Z  * [new branch]        chatgpt/physics-ch01-questionbank-v1 -> origin/chatgpt/physics-ch01-questionbank-v1
+2026-10-23T16:17:03.3202085Z  * [new branch]        chatgpt/physics-ch01-textbook-v2 -> origin/chatgpt/physics-ch01-textbook-v2
+2026-10-23T16:17:03.3202919Z  * [new branch]        chatgpt/physics-export-package-20261003 -> origin/chatgpt/physics-export-package-20261003
+2026-10-23T16:17:03.3203666Z  * [new branch]        chatgpt/physics-pedagogy-handoff-p33 -> origin/chatgpt/physics-pedagogy-handoff-p33
+2026-10-23T16:17:03.3204317Z  * [new branch]        chatgpt/physics-taxonomy-v1 -> origin/chatgpt/physics-taxonomy-v1
+2026-10-23T16:17:03.3204934Z  * [new branch]        chatgpt/physics-textbook-catalog-docs -> origin/chatgpt/physics-textbook-catalog-docs
+2026-10-23T16:17:03.3205684Z  * [new branch]        chatgpt/physics-textbook-catalog-p20-p25 -> origin/chatgpt/physics-textbook-catalog-p20-p25
+2026-10-23T16:17:03.3206332Z  * [new branch]        chatgpt/source-archive-index-p32 -> origin/chatgpt/source-archive-index-p32
+2026-10-23T16:17:03.3207371Z  * [new branch]        chatgpt/textbook-reader-repair-docs -> origin/chatgpt/textbook-reader-repair-docs
+2026-10-23T16:17:03.3208055Z  * [new branch]        chatgpt/textbook-reader-repair-v1 -> origin/chatgpt/textbook-reader-repair-v1
+2026-10-23T16:17:03.3208673Z  * [new branch]        docs/w-math-009-010-memory-close -> origin/docs/w-math-009-010-memory-close
+2026-10-23T16:17:03.3209275Z  * [new branch]        fix/w-math-008-n12-cost-derivation -> origin/fix/w-math-008-n12-cost-derivation
+2026-10-23T16:17:03.3209932Z  * [new branch]        fix/w-math-009-n09-square-atomicity -> origin/fix/w-math-009-n09-square-atomicity
+2026-10-23T16:17:03.3210539Z  * [new branch]        fix/w-math-010-n02-zero-term-prompt -> origin/fix/w-math-010-n02-zero-term-prompt
+2026-10-23T16:17:03.3211109Z  * [new branch]        front-ui--test  -> origin/front-ui--test
+2026-10-23T16:17:03.3211733Z  * [new branch]        governance/close-repository-os-port-20261010 -> origin/governance/close-repository-os-port-20261010
+2026-10-23T16:17:03.3212502Z  * [new branch]        governance/port-repository-os-20261010 -> origin/governance/port-repository-os-20261010
+2026-10-23T16:17:03.3213091Z  * [new branch]        main            -> origin/main
+2026-10-23T16:17:03.3213702Z  * [new branch]        proposal/W-GOV-006-workflow-integrity-20261010 -> origin/proposal/W-GOV-006-workflow-integrity-20261010
+2026-10-23T16:17:03.3214533Z  * [new branch]        proposal/W-GOV-007-repository-os-parity-20261011 -> origin/proposal/W-GOV-007-repository-os-parity-20261011
+2026-10-23T16:17:03.3215364Z  * [new branch]        proposal/W-GOV-009-ci-wait-independent-work-20261021 -> origin/proposal/W-GOV-009-ci-wait-independent-work-20261021
+2026-10-23T16:17:03.3216186Z  * [new branch]        proposal/W-MATH-002-textbook-ui-compression-20261011 -> origin/proposal/W-MATH-002-textbook-ui-compression-20261011
+2026-10-23T16:17:03.3216985Z  * [new branch]        proposal/W-MATH-013-n11-q14-derivation-20261021 -> origin/proposal/W-MATH-013-n11-q14-derivation-20261021
+2026-10-23T16:17:03.3217934Z  * [new branch]        proposal/W-MATH-014-n14-q07-general-proof-20261021 -> origin/proposal/W-MATH-014-n14-q07-general-proof-20261021
+2026-10-23T16:17:03.3218741Z  * [new branch]        proposal/W-MATH-015-n14-q08-outside-proof-20261021 -> origin/proposal/W-MATH-015-n14-q08-outside-proof-20261021
+2026-10-23T16:17:03.3219521Z  * [new branch]        proposal/W-MATH-016-n14-q12-two-branches-20261021 -> origin/proposal/W-MATH-016-n14-q12-two-branches-20261021
+2026-10-23T16:17:03.3220368Z  * [new branch]        proposal/W-MATH-017-n11-arithmetic-learner-operations-20261021 -> origin/proposal/W-MATH-017-n11-arithmetic-learner-operations-20261021
+2026-10-23T16:17:03.3221440Z  * [new branch]        proposal/w-math-008-n12-cost-derivation -> origin/proposal/w-math-008-n12-cost-derivation
+2026-10-23T16:17:03.3222196Z  * [new branch]        proposal/w-math-009-010-cross-unit-audit -> origin/proposal/w-math-009-010-cross-unit-audit
+2026-10-23T16:17:03.3223185Z  * [new branch]        release/sync-completed-modes-20261010 -> origin/release/sync-completed-modes-20261010
+2026-10-23T16:17:03.3223797Z  * [new branch]        source-archives -> origin/source-archives
+2026-10-23T16:17:03.3224353Z  * [new branch]        work/W-GOV-006-create-command-20261014 -> origin/work/W-GOV-006-create-command-20261014
+2026-10-23T16:17:03.3225239Z  * [new branch]        work/W-GOV-006-preservation-implementation-20261010 -> origin/work/W-GOV-006-preservation-implementation-20261010
+2026-10-23T16:17:03.3226214Z  * [new branch]        work/W-GOV-007-correction-first-cross-creation-20261018 -> origin/work/W-GOV-007-correction-first-cross-creation-20261018
+2026-10-23T16:17:03.3227339Z  * [new branch]        work/W-GOV-007-repository-os-parity-implementation-20261011 -> origin/work/W-GOV-007-repository-os-parity-implementation-20261011
+2026-10-23T16:17:03.3228307Z  * [new branch]        work/W-GOV-008-P001-pr92-review-pilot-20261019 -> origin/work/W-GOV-008-P001-pr92-review-pilot-20261019
+2026-10-23T16:17:03.3229117Z  * [new branch]        work/W-GOV-008-P001-review-link-20261019 -> origin/work/W-GOV-008-P001-review-link-20261019
+2026-10-23T16:17:03.3229806Z  * [new branch]        work/W-GOV-008-P002-marked-review-20261019 -> origin/work/W-GOV-008-P002-marked-review-20261019
+2026-10-23T16:17:03.3230630Z  * [new branch]        work/W-GOV-008-P003-github-review-final-check-20261019 -> origin/work/W-GOV-008-P003-github-review-final-check-20261019
+2026-10-23T16:17:03.3231813Z  * [new branch]        work/W-GOV-008-P003-main-rule-integration-20261019 -> origin/work/W-GOV-008-P003-main-rule-integration-20261019
+2026-10-23T16:17:03.3233128Z  * [new branch]        work/W-GOV-008-P003-pilot-visual-sheets-20261019 -> origin/work/W-GOV-008-P003-pilot-visual-sheets-20261019
+2026-10-23T16:17:03.3234275Z  * [new branch]        work/W-GOV-008-review-delivery-contract-20261011 -> origin/work/W-GOV-008-review-delivery-contract-20261011
+2026-10-23T16:17:03.3235684Z  * [new branch]        work/W-GOV-009-ci-wait-implementation-20261021 -> origin/work/W-GOV-009-ci-wait-implementation-20261021
+2026-10-23T16:17:03.3236482Z  * [new branch]        work/W-GOV-010-adoption-close-20261024 -> origin/work/W-GOV-010-adoption-close-20261024
+2026-10-23T16:17:03.3237646Z  * [new branch]        work/W-GOV-010-coded-authoring-proposal-20261023 -> origin/work/W-GOV-010-coded-authoring-proposal-20261023
+2026-10-23T16:17:03.3238449Z  * [new branch]        work/W-MATH-002-P-002-context-and-history-20261014 -> origin/work/W-MATH-002-P-002-context-and-history-20261014
+2026-10-23T16:17:03.3239366Z  * [new branch]        work/W-MATH-002-P-003-display-fidelity-20261014 -> origin/work/W-MATH-002-P-003-display-fidelity-20261014
+2026-10-23T16:17:03.3240356Z  * [new branch]        work/W-MATH-002-P-004-published-figure-assets-20261014 -> origin/work/W-MATH-002-P-004-published-figure-assets-20261014
+2026-10-23T16:17:03.3241207Z  * [new branch]        work/W-MATH-002-P-005-subset-approved-png-20261014 -> origin/work/W-MATH-002-P-005-subset-approved-png-20261014
+2026-10-23T16:17:03.3242112Z  * [new branch]        work/W-MATH-002-textbook-ui-compression-implementation-20261011 -> origin/work/W-MATH-002-textbook-ui-compression-implementation-20261011
+2026-10-23T16:17:03.3242900Z  * [new branch]        work/W-MATH-003-gate3-pages-20261023 -> origin/work/W-MATH-003-gate3-pages-20261023
+2026-10-23T16:17:03.3243715Z  * [new branch]        work/W-MATH-003-n02-n09-app-review-20261017 -> origin/work/W-MATH-003-n02-n09-app-review-20261017
+2026-10-23T16:17:03.3244660Z  * [new branch]        work/W-MATH-003-n02-n09-source-design-20261017 -> origin/work/W-MATH-003-n02-n09-source-design-20261017
+2026-10-23T16:17:03.3245412Z  * [new branch]        work/W-MATH-003-n03-n10-n12-app-20261017 -> origin/work/W-MATH-003-n03-n10-n12-app-20261017
+2026-10-23T16:17:03.3246153Z  * [new branch]        work/W-MATH-003-n03-n10-n12-release-evidence-20261017 -> origin/work/W-MATH-003-n03-n10-n12-release-evidence-20261017
+2026-10-23T16:17:03.3246988Z  * [new branch]        work/W-MATH-003-n04-q01-first-block-20261019 -> origin/work/W-MATH-003-n04-q01-first-block-20261019
+2026-10-23T16:17:03.3247894Z  * [new branch]        work/W-MATH-003-ne01-ne02-app-20261023 -> origin/work/W-MATH-003-ne01-ne02-app-20261023
+2026-10-23T16:17:03.3248614Z  * [new branch]        work/W-MATH-003-ne01-ne02-batch-design-20261023 -> origin/work/W-MATH-003-ne01-ne02-batch-design-20261023
+2026-10-23T16:17:03.3249379Z  * [new branch]        work/W-MATH-003-ne01-ne02-evidence-20261023 -> origin/work/W-MATH-003-ne01-ne02-evidence-20261023
+2026-10-23T16:17:03.3250245Z  * [new branch]        work/W-MATH-003-next-pilots-review-20261017 -> origin/work/W-MATH-003-next-pilots-review-20261017
+2026-10-23T16:17:03.3251177Z  * [new branch]        work/W-MATH-003-numbers-expressions-creation-20261017 -> origin/work/W-MATH-003-numbers-expressions-creation-20261017
+2026-10-23T16:17:03.3252168Z  * [new branch]        work/W-MATH-003-numbers-expressions-pilot-20261017 -> origin/work/W-MATH-003-numbers-expressions-pilot-20261017
+2026-10-23T16:17:03.3253041Z  * [new branch]        work/W-MATH-003-numbers-expressions-textbook-20261017 -> origin/work/W-MATH-003-numbers-expressions-textbook-20261017
+2026-10-23T16:17:03.3253937Z  * [new branch]        work/W-MATH-003-p002-chapter1-review-pages-20261017 -> origin/work/W-MATH-003-p002-chapter1-review-pages-20261017
+2026-10-23T16:17:03.3254776Z  * [new branch]        work/W-MATH-003-p003-n04-n14-123-source-review-20261018 -> origin/work/W-MATH-003-p003-n04-n14-123-source-review-20261018
+2026-10-23T16:17:03.3255559Z  * [new branch]        work/W-MATH-003-p003-r1-n04-n14-batch-20261019 -> origin/work/W-MATH-003-p003-r1-n04-n14-batch-20261019
+2026-10-23T16:17:03.3256346Z  * [new branch]        work/W-MATH-004-N12-published-release-evidence-20261018 -> origin/work/W-MATH-004-N12-published-release-evidence-20261018
+2026-10-23T16:17:03.3257423Z  * [new branch]        work/W-MATH-004-P002-inline-token-implementation-20261018 -> origin/work/W-MATH-004-P002-inline-token-implementation-20261018
+2026-10-23T16:17:03.3258516Z  * [new branch]        work/W-MATH-004-P002-inline-token-proposal-20261018 -> origin/work/W-MATH-004-P002-inline-token-proposal-20261018
+2026-10-23T16:17:03.3259391Z  * [new branch]        work/W-MATH-004-inequality-derivation-audit-20261018 -> origin/work/W-MATH-004-inequality-derivation-audit-20261018
+2026-10-23T16:17:03.3260209Z  * [new branch]        work/W-MATH-004-inequality-derivation-impl-20261018 -> origin/work/W-MATH-004-inequality-derivation-impl-20261018
+2026-10-23T16:17:03.3260908Z  * [new branch]        work/W-MATH-005-P002-n01-n03-20261018 -> origin/work/W-MATH-005-P002-n01-n03-20261018
+2026-10-23T16:17:03.3261611Z  * [new branch]        work/W-MATH-005-R3-linked-proposal-20261018 -> origin/work/W-MATH-005-R3-linked-proposal-20261018
+2026-10-23T16:17:03.3262387Z  * [new branch]        work/W-MATH-005-R3-local-token-implementation-20261018 -> origin/work/W-MATH-005-R3-local-token-implementation-20261018
+2026-10-23T16:17:03.3263292Z  * [new branch]        work/W-MATH-006-inline-hole-visual-implementation-20261018 -> origin/work/W-MATH-006-inline-hole-visual-implementation-20261018
+2026-10-23T16:17:03.3264144Z  * [new branch]        work/W-MATH-006-inline-hole-visual-proposal-20261018 -> origin/work/W-MATH-006-inline-hole-visual-proposal-20261018
+2026-10-23T16:17:03.3265037Z  * [new branch]        work/W-MATH-007-coefficient-one-display-implementation-20261018 -> origin/work/W-MATH-007-coefficient-one-display-implementation-20261018
+2026-10-23T16:17:03.3265994Z  * [new branch]        work/W-MATH-007-coefficient-one-display-proposal-20261018 -> origin/work/W-MATH-007-coefficient-one-display-proposal-20261018
+2026-10-23T16:17:03.3266871Z  * [new branch]        work/W-MATH-013-n11-q14-derivation-20261021 -> origin/work/W-MATH-013-n11-q14-derivation-20261021
+2026-10-23T16:17:03.3267799Z  * [new branch]        work/W-MATH-014-n14-q07-general-proof-20261021 -> origin/work/W-MATH-014-n14-q07-general-proof-20261021
+2026-10-23T16:17:03.3268652Z  * [new branch]        work/W-MATH-015-n14-q08-outside-proof-20261021 -> origin/work/W-MATH-015-n14-q08-outside-proof-20261021
+2026-10-23T16:17:03.3269360Z  * [new branch]        work/W-MATH-016-n14-q12-two-branches-20261021 -> origin/work/W-MATH-016-n14-q12-two-branches-20261021
+2026-10-23T16:17:03.3270172Z  * [new branch]        work/W-MATH-017-p003-inline-prose-correction-20261021 -> origin/work/W-MATH-017-p003-inline-prose-correction-20261021
+2026-10-23T16:17:03.3270916Z  * [new branch]        work/W-MATH-019-n14-q14-proposal-20261022 -> origin/work/W-MATH-019-n14-q14-proposal-20261022
+2026-10-23T16:17:03.3272081Z  * [new branch]        work/W-MATH-020-n14-q15-proposal-20261022 -> origin/work/W-MATH-020-n14-q15-proposal-20261022
+2026-10-23T16:17:03.3272893Z  * [new branch]        work/W-MATH-021-n14-q15-middle-hint-proposal-20261022 -> origin/work/W-MATH-021-n14-q15-middle-hint-proposal-20261022
+2026-10-23T16:17:03.3273799Z  * [new branch]        work/W-MATH-022-n14-q16-endpoint-check-proposal-20261022 -> origin/work/W-MATH-022-n14-q16-endpoint-check-proposal-20261022
+2026-10-23T16:17:03.3274719Z  * [new branch]        work/W-MATH-022-n14-q16-endpoint-proposal-20261022 -> origin/work/W-MATH-022-n14-q16-endpoint-proposal-20261022
+2026-10-23T16:17:03.3275642Z  * [new branch]        work/W-MATH-022-n14-q16-endpoint-substitution-proposal-20261022 -> origin/work/W-MATH-022-n14-q16-endpoint-substitution-proposal-20261022
+2026-10-23T16:17:03.3276730Z  * [new branch]        work/W-MATH-022-n14-q16-endpoint-verification-proposal-20261022 -> origin/work/W-MATH-022-n14-q16-endpoint-verification-proposal-20261022
+2026-10-23T16:17:03.3278030Z  * [new branch]        work/W-MATH-022-n14-q16-endpoints-proposal-20261022 -> origin/work/W-MATH-022-n14-q16-endpoints-proposal-20261022
+2026-10-23T16:17:03.3279121Z  * [new branch]        work/W-MATH-022-q16-reconcile-accepted-20261023 -> origin/work/W-MATH-022-q16-reconcile-accepted-20261023
+2026-10-23T16:17:03.3280053Z  * [new branch]        work/W-MATH-022-q16-reconcile-evidence-20261023 -> origin/work/W-MATH-022-q16-reconcile-evidence-20261023
+2026-10-23T16:17:03.3280947Z  * [new branch]        work/W-MATH-023-n13-q05-q08-sibling-proposal-20261022 -> origin/work/W-MATH-023-n13-q05-q08-sibling-proposal-20261022
+2026-10-23T16:17:03.3281716Z  * [new branch]        work/W-MATH-024-n05-q18-hint-leak-impl-20261022 -> origin/work/W-MATH-024-n05-q18-hint-leak-impl-20261022
+2026-10-23T16:17:03.3282470Z  * [new branch]        work/W-MATH-024-n05-q18-hint-leak-proposal-20261022 -> origin/work/W-MATH-024-n05-q18-hint-leak-proposal-20261022
+2026-10-23T16:17:03.3283413Z  * [new branch]        work/W-MATH-025-chapter-audit-20261023 -> origin/work/W-MATH-025-chapter-audit-20261023
+2026-10-23T16:17:03.3284271Z  * [new branch]        work/W-MATH-025-factor-hint-leak-qa-proposals-20261022 -> origin/work/W-MATH-025-factor-hint-leak-qa-proposals-20261022
+2026-10-23T16:17:03.3285053Z  * [new branch]        work/W-MATH-025-five-accepted-audit-20261023 -> origin/work/W-MATH-025-five-accepted-audit-20261023
+2026-10-23T16:17:03.3285804Z  * [new branch]        work/W-MATH-025-hints-p005-p007-batch-20261023 -> origin/work/W-MATH-025-hints-p005-p007-batch-20261023
+2026-10-23T16:17:03.3286552Z  * [new branch]        work/W-MATH-025-n05-q11-hint-approved-20261023 -> origin/work/W-MATH-025-n05-q11-hint-approved-20261023
+2026-10-23T16:17:03.3287523Z  * [new branch]        work/W-MATH-025-n05-q11-p001-implementation-20261023 -> origin/work/W-MATH-025-n05-q11-p001-implementation-20261023
+2026-10-23T16:17:03.3288636Z  * [new branch]        work/W-MATH-025-n12-display-diagnosis-20261023 -> origin/work/W-MATH-025-n12-display-diagnosis-20261023
+2026-10-23T16:17:03.3289372Z  * [new branch]        work/W-MATH-025-p008-p014-evidence-20261023 -> origin/work/W-MATH-025-p008-p014-evidence-20261023
+2026-10-23T16:17:03.3290105Z  * [new branch]        work/W-MATH-025-p008-p014-hints-approved-20261023 -> origin/work/W-MATH-025-p008-p014-hints-approved-20261023
+2026-10-23T16:17:03.3290946Z  * [new branch]        work/W-MATH-025-p015-frozen-capture-20261023 -> origin/work/W-MATH-025-p015-frozen-capture-20261023
+2026-10-23T16:17:03.3291685Z  * [new branch]        work/W-MATH-025-p015-n12-layout-approved-20261023 -> origin/work/W-MATH-025-p015-n12-layout-approved-20261023
+2026-10-23T16:17:03.3292485Z  * [new branch]        work/W-MATH-025-p015-n12-layout-evidence-20261023 -> origin/work/W-MATH-025-p015-n12-layout-evidence-20261023
+2026-10-23T16:17:03.3293221Z  * [new branch]        work/W-MATH-025-p016-groups-approved-20261023 -> origin/work/W-MATH-025-p016-groups-approved-20261023
+2026-10-23T16:17:03.3294020Z  * [new branch]        work/W-MATH-025-p016-groups-evidence-20261023 -> origin/work/W-MATH-025-p016-groups-evidence-20261023
+2026-10-23T16:17:03.3295033Z  * [new branch]        work/W-MATH-025-p017-first-audit-evidence-20261023 -> origin/work/W-MATH-025-p017-first-audit-evidence-20261023
+2026-10-23T16:17:03.3295977Z  * [new branch]        work/W-MATH-025-p017-groups-approved-20261023 -> origin/work/W-MATH-025-p017-groups-approved-20261023
+2026-10-23T16:17:03.3296886Z  * [new branch]        work/W-MATH-025-p017-p018-final-evidence-20261023 -> origin/work/W-MATH-025-p017-p018-final-evidence-20261023
+2026-10-23T16:17:03.3297950Z  * [new branch]        work/W-MATH-025-p018-second-audit-evidence-20261023 -> origin/work/W-MATH-025-p018-second-audit-evidence-20261023
+2026-10-23T16:17:03.3298746Z  * [new branch]        work/W-MATH-025-p018-third-audit-evidence-20261023 -> origin/work/W-MATH-025-p018-third-audit-evidence-20261023
+2026-10-23T16:17:03.3299573Z  * [new branch]        work/W-MATH-026-n06-q12-distinct-distractor-20261023 -> origin/work/W-MATH-026-n06-q12-distinct-distractor-20261023
+2026-10-23T16:17:03.3300383Z  * [new branch]        work/W-MATH-027-three-theme-pedagogy-repair-20261023 -> origin/work/W-MATH-027-three-theme-pedagogy-repair-20261023
+2026-10-23T16:17:03.3301136Z  * [new branch]        work/W-MATH-027-workflow-resume-20261024 -> origin/work/W-MATH-027-workflow-resume-20261024
+2026-10-23T16:17:03.3302875Z [command]/usr/bin/git branch --list --remote origin/work/W-MATH-027-workflow-resume-20261024
+2026-10-23T16:17:03.3303581Z   origin/work/W-MATH-027-workflow-resume-20261024
+2026-10-23T16:17:03.3304478Z [command]/usr/bin/git rev-parse refs/remotes/origin/work/W-MATH-027-workflow-resume-20261024
+2026-10-23T16:17:03.3305014Z 414137fe25a8e3d818b2e9f9cf7a3fb2be472641
+2026-10-23T16:17:03.3306180Z ##[endgroup]
+2026-10-23T16:17:03.3306729Z ##[group]Determining the checkout info
+2026-10-23T16:17:03.3307675Z ##[endgroup]
+2026-10-23T16:17:03.3308039Z [command]/usr/bin/git sparse-checkout disable
+2026-10-23T16:17:03.3309091Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-23T16:17:03.3310162Z ##[group]Checking out the ref
+2026-10-23T16:17:03.3311482Z [command]/usr/bin/git checkout --progress --force -B work/W-MATH-027-workflow-resume-20261024 refs/remotes/origin/work/W-MATH-027-workflow-resume-20261024
+2026-10-23T16:17:04.3556239Z Updating files:  86% (2111/2450)
+2026-10-23T16:17:04.3571567Z Updating files:  87% (2132/2450)
+2026-10-23T16:17:04.3580528Z Updating files:  88% (2156/2450)
+2026-10-23T16:17:04.3596895Z Updating files:  89% (2181/2450)
+2026-10-23T16:17:04.3608450Z Updating files:  90% (2205/2450)
+2026-10-23T16:17:04.3628685Z Updating files:  91% (2230/2450)
+2026-10-23T16:17:04.3822706Z Updating files:  92% (2254/2450)
+2026-10-23T16:17:04.3884399Z Updating files:  93% (2279/2450)
+2026-10-23T16:17:04.3951448Z Updating files:  94% (2303/2450)
+2026-10-23T16:17:04.4097398Z Updating files:  95% (2328/2450)
+2026-10-23T16:17:04.4144001Z Updating files:  96% (2352/2450)
+2026-10-23T16:17:04.4149953Z Updating files:  97% (2377/2450)
+2026-10-23T16:17:04.4157479Z Updating files:  98% (2401/2450)
+2026-10-23T16:17:04.4166706Z Updating files:  99% (2426/2450)
+2026-10-23T16:17:04.4167345Z Updating files: 100% (2450/2450)
+2026-10-23T16:17:04.4167708Z Updating files: 100% (2450/2450), done.
+2026-10-23T16:17:04.4204627Z Switched to a new branch 'work/W-MATH-027-workflow-resume-20261024'
+2026-10-23T16:17:04.4210428Z branch 'work/W-MATH-027-workflow-resume-20261024' set up to track 'origin/work/W-MATH-027-workflow-resume-20261024'.
+2026-10-23T16:17:04.4240622Z ##[endgroup]
+2026-10-23T16:17:04.4283185Z [command]/usr/bin/git log -1 --format=%H
+2026-10-23T16:17:04.4306744Z 414137fe25a8e3d818b2e9f9cf7a3fb2be472641
+2026-10-23T16:17:04.4526677Z ##[group]Run pnpm/action-setup@v4
+2026-10-23T16:17:04.4526955Z with:
+2026-10-23T16:17:04.4527479Z   version: 11.9.0
+2026-10-23T16:17:04.4527745Z   run_install: false
+2026-10-23T16:17:04.4528388Z   dest: ~/setup-pnpm
+2026-10-23T16:17:04.4528800Z   cache: false
+2026-10-23T16:17:04.4529082Z   cache_dependency_path: pnpm-lock.yaml
+2026-10-23T16:17:04.4529405Z   package_json_file: package.json
+2026-10-23T16:17:04.4529693Z   standalone: false
+2026-10-23T16:17:04.4529925Z env:
+2026-10-23T16:17:04.4530158Z   CI: true
+2026-10-23T16:17:04.4530430Z   CAPTURE_SHA: 414137fe25a8e3d818b2e9f9cf7a3fb2be472641
+2026-10-23T16:17:04.4530777Z   E2E_USE_PREVIEW: 1
+2026-10-23T16:17:04.4531017Z ##[endgroup]
+2026-10-23T16:17:04.5708747Z ##[group]Running self-installer...
+2026-10-23T16:17:04.8733716Z (node:2111) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-23T16:17:04.8734725Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-23T16:17:05.2509695Z Progress: resolved 1, reused 0, downloaded 0, added 0
+2026-10-23T16:17:05.2577969Z Packages: +1
+2026-10-23T16:17:05.2578365Z +
+2026-10-23T16:17:05.6473311Z Progress: resolved 1, reused 0, downloaded 1, added 1, done
+2026-10-23T16:17:05.6843933Z 
+2026-10-23T16:17:05.6844940Z dependencies:
+2026-10-23T16:17:05.6845694Z + pnpm 11.9.0 (12.15.0 is available)
+2026-10-23T16:17:05.6846048Z 
+2026-10-23T16:17:05.6975793Z Done in 987ms
+2026-10-23T16:17:05.7139868Z ##[endgroup]
+2026-10-23T16:17:05.7140381Z Installation Completed!
+2026-10-23T16:17:05.7309161Z ##[group]Run actions/setup-node@v4
+2026-10-23T16:17:05.7309485Z with:
+2026-10-23T16:17:05.7309728Z   node-version: 22
+2026-10-23T16:17:05.7309967Z   cache: pnpm
+2026-10-23T16:17:05.7310213Z   always-auth: false
+2026-10-23T16:17:05.7310484Z   check-latest: false
+2026-10-23T16:17:05.7312482Z   token: ***
+2026-10-23T16:17:05.7312718Z env:
+2026-10-23T16:17:05.7312948Z   CI: true
+2026-10-23T16:17:05.7313227Z   CAPTURE_SHA: 414137fe25a8e3d818b2e9f9cf7a3fb2be472641
+2026-10-23T16:17:05.7313565Z   E2E_USE_PREVIEW: 1
+2026-10-23T16:17:05.7313866Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2026-10-23T16:17:05.7314176Z ##[endgroup]
+2026-10-23T16:17:05.8453365Z Found in cache @ /opt/hostedtoolcache/node/22.23.3/x64
+2026-10-23T16:17:05.8457745Z (node:2125) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-23T16:17:05.8458570Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-23T16:17:05.8459605Z ##[group]Environment details
+2026-10-23T16:17:06.2015478Z node: v22.23.3
+2026-10-23T16:17:06.2015895Z npm: 10.9.9
+2026-10-23T16:17:06.2016279Z yarn: 1.22.22
+2026-10-23T16:17:06.2016990Z ##[endgroup]
+2026-10-23T16:17:06.2056879Z [command]/home/runner/setup-pnpm/node_modules/.bin/pnpm store path --silent
+2026-10-23T16:17:06.6738209Z /home/runner/setup-pnpm/node_modules/.bin/store/v11
+2026-10-23T16:17:06.8406348Z Cache hit for: node-cache-Linux-x64-pnpm-01ee216ea82b63e1ccb25aa940a3aa310c134ab5f3b7006929ff62e052de4ca4
+2026-10-23T16:17:06.8490830Z (node:2125) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-23T16:17:07.7728705Z Received 38356394 of 38356394 (100.0%), 45.7 MBs/sec
+2026-10-23T16:17:07.7729583Z Cache Size: ~37 MB (38356394 B)
+2026-10-23T16:17:07.7753452Z [command]/usr/bin/tar -xf /home/runner/work/_temp/370f6cb7-19a5-41a3-834f-5411abae7a4c/cache.tzst -P -C /home/runner/work/kyotsu-step-web/kyotsu-step-web --use-compress-program unzstd
+2026-10-23T16:17:08.0682273Z Cache restored successfully
+2026-10-23T16:17:08.0700159Z Cache restored from key: node-cache-Linux-x64-pnpm-01ee216ea82b63e1ccb25aa940a3aa310c134ab5f3b7006929ff62e052de4ca4
+2026-10-23T16:17:08.0838622Z ##[group]Run pnpm install --frozen-lockfile
+2026-10-23T16:17:08.0839121Z [36;1mpnpm install --frozen-lockfile[0m
+2026-10-23T16:17:08.1004799Z shell: /usr/bin/bash -e {0}
+2026-10-23T16:17:08.1005239Z env:
+2026-10-23T16:17:08.1005519Z   CI: true
+2026-10-23T16:17:08.1005786Z   CAPTURE_SHA: 414137fe25a8e3d818b2e9f9cf7a3fb2be472641
+2026-10-23T16:17:08.1006188Z   E2E_USE_PREVIEW: 1
+2026-10-23T16:17:08.1006499Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2026-10-23T16:17:08.1006845Z ##[endgroup]
+2026-10-23T16:17:08.5109023Z ? Verifying lockfile against supply-chain policies (334 entries)...
+2026-10-23T16:17:08.5160355Z Lockfile is up to date, resolution step is skipped
+2026-10-23T16:17:08.5935319Z Progress: resolved 1, reused 0, downloaded 0, added 0
+2026-10-23T16:17:08.6272527Z Packages: +283
+2026-10-23T16:17:08.6301078Z ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2026-10-23T16:17:09.5955144Z Progress: resolved 283, reused 283, downloaded 0, added 202
+2026-10-23T16:17:09.6960874Z Progress: resolved 283, reused 283, downloaded 0, added 283, done
+2026-10-23T16:17:11.4308703Z ✓ Lockfile passes supply-chain policies (334 entries in 2.9s)
+2026-10-23T16:17:11.5597842Z 
+2026-10-23T16:17:11.5598850Z dependencies:
+2026-10-23T16:17:11.5599586Z + katex 0.16.47
+2026-10-23T16:17:11.5599993Z + lucide-react 0.468.0
+2026-10-23T16:17:11.5600395Z + react 19.2.8
+2026-10-23T16:17:11.5600810Z + react-dom 19.2.8
+2026-10-23T16:17:11.5601233Z + react-katex 3.1.0
+2026-10-23T16:17:11.5601668Z + react-router-dom 7.18.2
+2026-10-23T16:17:11.5602038Z + zod 4.4.3
+2026-10-23T16:17:11.5602419Z + zustand 5.0.14
+2026-10-23T16:17:11.5602605Z 
+2026-10-23T16:17:11.5602783Z devDependencies:
+2026-10-23T16:17:11.5603095Z + @eslint/js 9.39.5
+2026-10-23T16:17:11.5603511Z + @playwright/test 1.62.1
+2026-10-23T16:17:11.5604062Z + @testing-library/jest-dom 6.9.1
+2026-10-23T16:17:11.5604480Z + @testing-library/react 16.3.2
+2026-10-23T16:17:11.5604848Z + @types/katex 0.16.8
+2026-10-23T16:17:11.5605143Z + @types/node 24.13.3
+2026-10-23T16:17:11.5605427Z + @types/react 19.2.18
+2026-10-23T16:17:11.5605704Z + @types/react-dom 19.2.4
+2026-10-23T16:17:11.5606139Z + @vitejs/plugin-react 4.7.0
+2026-10-23T16:17:11.5606420Z + eslint 9.39.5
+2026-10-23T16:17:11.5606714Z + eslint-plugin-react-hooks 5.2.0
+2026-10-23T16:17:11.5607472Z + eslint-plugin-react-refresh 0.4.26
+2026-10-23T16:17:11.5607969Z + globals 16.5.0
+2026-10-23T16:17:11.5608346Z + jsdom 26.1.0
+2026-10-23T16:17:11.5608642Z + typescript 5.8.3
+2026-10-23T16:17:11.5608930Z + typescript-eslint 8.65.0
+2026-10-23T16:17:11.5609273Z + vite 7.3.6
+2026-10-23T16:17:11.5609550Z + vitest 3.2.7
+2026-10-23T16:17:11.5609712Z 
+2026-10-23T16:17:11.5874929Z Done in 3.4s using pnpm v11.9.0
+2026-10-23T16:17:11.6215412Z ##[group]Run pnpm run typecheck
+2026-10-23T16:17:11.6215914Z [36;1mpnpm run typecheck[0m
+2026-10-23T16:17:11.6254985Z shell: /usr/bin/bash -e {0}
+2026-10-23T16:17:11.6255433Z env:
+2026-10-23T16:17:11.6255689Z   CI: true
+2026-10-23T16:17:11.6256048Z   CAPTURE_SHA: 414137fe25a8e3d818b2e9f9cf7a3fb2be472641
+2026-10-23T16:17:11.6256415Z   E2E_USE_PREVIEW: 1
+2026-10-23T16:17:11.6256776Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2026-10-23T16:17:11.6257097Z ##[endgroup]
+2026-10-23T16:17:12.0071782Z $ tsc --noEmit
+2026-10-23T16:17:12.1642490Z ##[group]Run node work/items/W-MATH-027-three-theme-pedagogy-repair/qa/verify-source.mjs
+2026-10-23T16:17:12.1643163Z [36;1mnode work/items/W-MATH-027-three-theme-pedagogy-repair/qa/verify-source.mjs[0m
+2026-10-23T16:17:12.1680562Z shell: /usr/bin/bash -e {0}
+2026-10-23T16:17:12.1680920Z env:
+2026-10-23T16:17:12.1681280Z   CI: true
+2026-10-23T16:17:12.1681580Z   CAPTURE_SHA: 414137fe25a8e3d818b2e9f9cf7a3fb2be472641
+2026-10-23T16:17:12.1682145Z   E2E_USE_PREVIEW: 1
+2026-10-23T16:17:12.1682449Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2026-10-23T16:17:12.1682807Z ##[endgroup]
+2026-10-23T16:17:13.3120617Z [2m4:17:13 PM[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/data/textbook/math/numbers/.w027-before-ne01Lesson.ts[22m
+2026-10-23T16:17:13.3633452Z [2m4:17:13 PM[22m [36m[1m[vite][22m[39m [34m[2m(ssr)[22m[39m [32mpage reload [39m[2msrc/data/textbook/math/numbers/.w027-before-ne02Lesson.ts[22m
+2026-10-23T16:17:13.4361920Z ##[group]Run pnpm exec vitest run src/data/textbook/math/mathCatalog.test.ts src/data/textbook/math/numbers/developmentLessons.test.ts src/domain/textbook.test.ts
+2026-10-23T16:17:13.4362960Z [36;1mpnpm exec vitest run src/data/textbook/math/mathCatalog.test.ts src/data/textbook/math/numbers/developmentLessons.test.ts src/domain/textbook.test.ts[0m
+2026-10-23T16:17:13.4400946Z shell: /usr/bin/bash -e {0}
+2026-10-23T16:17:13.4401332Z env:
+2026-10-23T16:17:13.4401595Z   CI: true
+2026-10-23T16:17:13.4401941Z   CAPTURE_SHA: 414137fe25a8e3d818b2e9f9cf7a3fb2be472641
+2026-10-23T16:17:13.4402273Z   E2E_USE_PREVIEW: 1
+2026-10-23T16:17:13.4402574Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2026-10-23T16:17:13.4402931Z ##[endgroup]
+2026-10-23T16:17:14.0728370Z 
+2026-10-23T16:17:14.0739603Z [1m[46m RUN [49m[22m [36mv3.2.7 [39m[90m/home/runner/work/kyotsu-step-web/kyotsu-step-web[39m
+2026-10-23T16:17:14.0740530Z 
+2026-10-23T16:17:14.9203909Z  [32m✓[39m src/domain/textbook.test.ts [2m([22m[2m16 tests[22m[2m)[22m[32m 25[2mms[22m[39m
+2026-10-23T16:17:14.9281270Z  [32m✓[39m src/data/textbook/math/mathCatalog.test.ts [2m([22m[2m12 tests[22m[2m)[22m[32m 11[2mms[22m[39m
+2026-10-23T16:17:15.0836808Z  [32m✓[39m src/data/textbook/math/numbers/developmentLessons.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 140[2mms[22m[39m
+2026-10-23T16:17:15.0954130Z 
+2026-10-23T16:17:15.0958447Z [2m Test Files [22m [1m[32m3 passed[39m[22m[90m (3)[39m
+2026-10-23T16:17:15.0959501Z [2m      Tests [22m [1m[32m33 passed[39m[22m[90m (33)[39m
+2026-10-23T16:17:15.0960424Z [2m   Start at [22m 16:17:14
+2026-10-23T16:17:15.0961794Z [2m   Duration [22m 1.02s[2m (transform 680ms, setup 0ms, collect 1.78s, tests 176ms, environment 1ms, prepare 287ms)[22m
+2026-10-23T16:17:15.0962595Z 
+2026-10-23T16:17:15.2048618Z ##[group]Run pnpm run build
+2026-10-23T16:17:15.2049091Z [36;1mpnpm run build[0m
+2026-10-23T16:17:15.2096568Z shell: /usr/bin/bash -e {0}
+2026-10-23T16:17:15.2096972Z env:
+2026-10-23T16:17:15.2097463Z   CI: true
+2026-10-23T16:17:15.2097783Z   CAPTURE_SHA: 414137fe25a8e3d818b2e9f9cf7a3fb2be472641
+2026-10-23T16:17:15.2098182Z   E2E_USE_PREVIEW: 1
+2026-10-23T16:17:15.2098500Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2026-10-23T16:17:15.2098821Z ##[endgroup]
+2026-10-23T16:17:15.5579025Z $ tsc -b && vite build
+2026-10-23T16:17:22.8358032Z [36mvite v7.3.6 [32mbuilding client environment for production...[36m[39m
+2026-10-23T16:17:22.9036951Z transforming...
+2026-10-23T16:17:26.0634380Z [32m✓[39m 1792 modules transformed.
+2026-10-23T16:17:26.3499174Z rendering chunks...
+2026-10-23T16:17:26.5434435Z computing gzip size...
+2026-10-23T16:17:26.5738374Z [33m
+2026-10-23T16:17:26.5766411Z [2mdist/[22m[32mindex.html                                       [39m[1m[2m    2.41 kB[22m[1m[22m[2m │ gzip:   1.17 kB[22m
+2026-10-23T16:17:26.5767457Z [2mdist/[22m[2massets/[22m[32mKaTeX_Size3-Regular-CTq5MqoE.woff         [39m[1m[2m    4.42 kB[22m[1m[22m
+2026-10-23T16:17:26.5768483Z (!) Some chunks are larger than 500 kB after minification. Consider:
+2026-10-23T16:17:26.5769678Z [2mdist/[22m[2massets/[22m[32mKaTeX_Size4-Regular-Dl5lxZxV.woff2        [39m[1m[2m    4.93 kB[22m[1m[22m
+2026-10-23T16:17:26.5771047Z [2mdist/[22m[2massets/[22m[32mKaTeX_Size2-Regular-Dy4dx90m.woff2        [39m[1m[2m    5.21 kB[22m[1m[22m
+2026-10-23T16:17:26.5772691Z [2mdist/[22m[2massets/[22m[32mKaTeX_Size1-Regular-mCD8mA8B.woff2        [39m[1m[2m    5.47 kB[22m[1m[22m
+2026-10-23T16:17:26.5773967Z [2mdist/[22m[2massets/[22m[32mKaTeX_Size4-Regular-BF-4gkZK.woff         [39m[1m[2m    5.98 kB[22m[1m[22m
+2026-10-23T16:17:26.5775212Z [2mdist/[22m[2massets/[22m[32mKaTeX_Size2-Regular-oD1tc_U0.woff         [39m[1m[2m    6.19 kB[22m[1m[22m
+2026-10-23T16:17:26.5776521Z [2mdist/[22m[2massets/[22m[32mKaTeX_Size1-Regular-C195tn64.woff         [39m[1m[2m    6.50 kB[22m[1m[22m
+2026-10-23T16:17:26.5778111Z [2mdist/[22m[2massets/[22m[32mKaTeX_Caligraphic-Regular-Di6jR-x-.woff2  [39m[1m[2m    6.91 kB[22m[1m[22m
+2026-10-23T16:17:26.5779553Z [2mdist/[22m[2massets/[22m[32mKaTeX_Caligraphic-Bold-Dq_IR9rO.woff2     [39m[1m[2m    6.91 kB[22m[1m[22m
+2026-10-23T16:17:26.5782242Z - Using dynamic import() to code-split the application
+2026-10-23T16:17:26.5783447Z - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+2026-10-23T16:17:26.5784707Z - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.[39m
+2026-10-23T16:17:26.5798388Z [2mdist/[22m[2massets/[22m[32mKaTeX_Size3-Regular-DgpXs0kz.ttf          [39m[1m[2m    7.59 kB[22m[1m[22m
+2026-10-23T16:17:26.5799710Z [2mdist/[22m[2massets/[22m[32mKaTeX_Caligraphic-Regular-CTRA-rTL.woff   [39m[1m[2m    7.66 kB[22m[1m[22m
+2026-10-23T16:17:26.5801053Z [2mdist/[22m[2massets/[22m[32mKaTeX_Caligraphic-Bold-BEiXGLvX.woff      [39m[1m[2m    7.72 kB[22m[1m[22m
+2026-10-23T16:17:26.5802409Z [2mdist/[22m[2massets/[22m[32mKaTeX_Script-Regular-D3wIWfF6.woff2       [39m[1m[2m    9.64 kB[22m[1m[22m
+2026-10-23T16:17:26.5803711Z [2mdist/[22m[2massets/[22m[32mKaTeX_SansSerif-Regular-DDBCnlJ7.woff2    [39m[1m[2m   10.34 kB[22m[1m[22m
+2026-10-23T16:17:26.5804994Z [2mdist/[22m[2massets/[22m[32mKaTeX_Size4-Regular-DWFBv043.ttf          [39m[1m[2m   10.36 kB[22m[1m[22m
+2026-10-23T16:17:26.5806300Z [2mdist/[22m[2massets/[22m[32mKaTeX_Script-Regular-D5yQViql.woff        [39m[1m[2m   10.59 kB[22m[1m[22m
+2026-10-23T16:17:26.5807648Z [2mdist/[22m[2massets/[22m[32mKaTeX_Fraktur-Regular-CTYiF6lA.woff2      [39m[1m[2m   11.32 kB[22m[1m[22m
+2026-10-23T16:17:26.5809240Z [2mdist/[22m[2massets/[22m[32mKaTeX_Fraktur-Bold-CL6g_b3V.woff2         [39m[1m[2m   11.35 kB[22m[1m[22m
+2026-10-23T16:17:26.5810498Z [2mdist/[22m[2massets/[22m[32mKaTeX_Size2-Regular-B7gKUWhC.ttf          [39m[1m[2m   11.51 kB[22m[1m[22m
+2026-10-23T16:17:26.5811814Z [2mdist/[22m[2massets/[22m[32mKaTeX_SansSerif-Italic-C3H0VqGB.woff2     [39m[1m[2m   12.03 kB[22m[1m[22m
+2026-10-23T16:17:26.5813135Z [2mdist/[22m[2massets/[22m[32mKaTeX_SansSerif-Bold-D1sUS0GD.woff2       [39m[1m[2m   12.22 kB[22m[1m[22m
+2026-10-23T16:17:26.5814410Z [2mdist/[22m[2massets/[22m[32mKaTeX_Size1-Regular-Dbsnue_I.ttf          [39m[1m[2m   12.23 kB[22m[1m[22m
+2026-10-23T16:17:26.5815764Z [2mdist/[22m[2massets/[22m[32mKaTeX_SansSerif-Regular-CS6fqUqJ.woff     [39m[1m[2m   12.32 kB[22m[1m[22m
+2026-10-23T16:17:26.5817052Z [2mdist/[22m[2massets/[22m[32mKaTeX_Caligraphic-Regular-wX97UBjC.ttf    [39m[1m[2m   12.34 kB[22m[1m[22m
+2026-10-23T16:17:26.5818503Z [2mdist/[22m[2massets/[22m[32mKaTeX_Caligraphic-Bold-ATXxdsX0.ttf       [39m[1m[2m   12.37 kB[22m[1m[22m
+2026-10-23T16:17:26.5819878Z [2mdist/[22m[2massets/[22m[32mKaTeX_Fraktur-Regular-Dxdc4cR9.woff       [39m[1m[2m   13.21 kB[22m[1m[22m
+2026-10-23T16:17:26.5821270Z [2mdist/[22m[2massets/[22m[32mKaTeX_Fraktur-Bold-BsDP51OF.woff          [39m[1m[2m   13.30 kB[22m[1m[22m
+2026-10-23T16:17:26.5822616Z [2mdist/[22m[2massets/[22m[32mKaTeX_Typewriter-Regular-CO6r4hn1.woff2   [39m[1m[2m   13.57 kB[22m[1m[22m
+2026-10-23T16:17:26.5824071Z [2mdist/[22m[2massets/[22m[32mKaTeX_SansSerif-Italic-DN2j7dab.woff      [39m[1m[2m   14.11 kB[22m[1m[22m
+2026-10-23T16:17:26.5825570Z [2mdist/[22m[2massets/[22m[32mKaTeX_SansSerif-Bold-DbIhKOiC.woff        [39m[1m[2m   14.41 kB[22m[1m[22m
+2026-10-23T16:17:26.5826910Z [2mdist/[22m[2massets/[22m[32mKaTeX_Typewriter-Regular-C0xS9mPB.woff    [39m[1m[2m   16.03 kB[22m[1m[22m
+2026-10-23T16:17:26.5828498Z [2mdist/[22m[2massets/[22m[32mKaTeX_Math-BoldItalic-CZnvNsCZ.woff2      [39m[1m[2m   16.40 kB[22m[1m[22m
+2026-10-23T16:17:26.5829857Z [2mdist/[22m[2massets/[22m[32mKaTeX_Math-Italic-t53AETM-.woff2          [39m[1m[2m   16.44 kB[22m[1m[22m
+2026-10-23T16:17:26.5831134Z [2mdist/[22m[2massets/[22m[32mKaTeX_Script-Regular-C5JkGWo-.ttf         [39m[1m[2m   16.65 kB[22m[1m[22m
+2026-10-23T16:17:26.5832509Z [2mdist/[22m[2massets/[22m[32mKaTeX_Main-BoldItalic-DxDJ3AOS.woff2      [39m[1m[2m   16.78 kB[22m[1m[22m
+2026-10-23T16:17:26.5834074Z [2mdist/[22m[2massets/[22m[32mKaTeX_Main-Italic-NWA7e6Wa.woff2          [39m[1m[2m   16.99 kB[22m[1m[22m
+2026-10-23T16:17:26.5835627Z [2mdist/[22m[2massets/[22m[32mKaTeX_Math-BoldItalic-iY-2wyZ7.woff       [39m[1m[2m   18.67 kB[22m[1m[22m
+2026-10-23T16:17:26.5837927Z [2mdist/[22m[2massets/[22m[32mKaTeX_Math-Italic-DA0__PXp.woff           [39m[1m[2m   18.75 kB[22m[1m[22m
+2026-10-23T16:17:26.5839636Z [2mdist/[22m[2massets/[22m[32mKaTeX_Main-BoldItalic-SpSLRI95.woff       [39m[1m[2m   19.41 kB[22m[1m[22m
+2026-10-23T16:17:26.5841240Z [2mdist/[22m[2massets/[22m[32mKaTeX_SansSerif-Regular-BNo7hRIc.ttf      [39m[1m[2m   19.44 kB[22m[1m[22m
+2026-10-23T16:17:26.5842777Z [2mdist/[22m[2massets/[22m[32mKaTeX_Fraktur-Regular-CB_wures.ttf        [39m[1m[2m   19.57 kB[22m[1m[22m
+2026-10-23T16:17:26.5844286Z [2mdist/[22m[2massets/[22m[32mKaTeX_Fraktur-Bold-BdnERNNW.ttf           [39m[1m[2m   19.58 kB[22m[1m[22m
+2026-10-23T16:17:26.5845861Z [2mdist/[22m[2massets/[22m[32mKaTeX_Main-Italic-BMLOBm91.woff           [39m[1m[2m   19.68 kB[22m[1m[22m
+2026-10-23T16:17:26.5847502Z [2mdist/[22m[2massets/[22m[32mKaTeX_SansSerif-Italic-YYjJ1zSn.ttf       [39m[1m[2m   22.36 kB[22m[1m[22m
+2026-10-23T16:17:26.5849154Z [2mdist/[22m[2massets/[22m[32mKaTeX_SansSerif-Bold-CFMepnvq.ttf         [39m[1m[2m   24.50 kB[22m[1m[22m
+2026-10-23T16:17:26.5850840Z [2mdist/[22m[2massets/[22m[32mKaTeX_Main-Bold-Cx986IdX.woff2            [39m[1m[2m   25.32 kB[22m[1m[22m
+2026-10-23T16:17:26.5852456Z [2mdist/[22m[2massets/[22m[32mKaTeX_Main-Regular-B22Nviop.woff2         [39m[1m[2m   26.27 kB[22m[1m[22m
+2026-10-23T16:17:26.5854020Z [2mdist/[22m[2massets/[22m[32mKaTeX_Typewriter-Regular-D3Ib7_Hf.ttf     [39m[1m[2m   27.56 kB[22m[1m[22m
+2026-10-23T16:17:26.5855581Z [2mdist/[22m[2massets/[22m[32mKaTeX_AMS-Regular-BQhdFMY1.woff2          [39m[1m[2m   28.08 kB[22m[1m[22m
+2026-10-23T16:17:26.5857374Z [2mdist/[22m[2massets/[22m[32mKaTeX_Main-Bold-Jm3AIy58.woff             [39m[1m[2m   29.91 kB[22m[1m[22m
+2026-10-23T16:17:26.5858898Z [2mdist/[22m[2massets/[22m[32mKaTeX_Main-Regular-Dr94JaBh.woff          [39m[1m[2m   30.77 kB[22m[1m[22m
+2026-10-23T16:17:26.5860466Z [2mdist/[22m[2massets/[22m[32mKaTeX_Math-BoldItalic-B3XSjfu4.ttf        [39m[1m[2m   31.20 kB[22m[1m[22m
+2026-10-23T16:17:26.5861939Z [2mdist/[22m[2massets/[22m[32mKaTeX_Math-Italic-flOr_0UB.ttf            [39m[1m[2m   31.31 kB[22m[1m[22m
+2026-10-23T16:17:26.5863480Z [2mdist/[22m[2massets/[22m[32mKaTeX_Main-BoldItalic-DzxPMmG6.ttf        [39m[1m[2m   32.97 kB[22m[1m[22m
+2026-10-23T16:17:26.5865029Z [2mdist/[22m[2massets/[22m[32mKaTeX_AMS-Regular-DMm9YOAa.woff           [39m[1m[2m   33.52 kB[22m[1m[22m
+2026-10-23T16:17:26.5866481Z [2mdist/[22m[2massets/[22m[32mKaTeX_Main-Italic-3WenGoN9.ttf            [39m[1m[2m   33.58 kB[22m[1m[22m
+2026-10-23T16:17:26.5868105Z [2mdist/[22m[2massets/[22m[32mKaTeX_Main-Bold-waoOVXN0.ttf              [39m[1m[2m   51.34 kB[22m[1m[22m
+2026-10-23T16:17:26.5869736Z [2mdist/[22m[2massets/[22m[32mKaTeX_Main-Regular-ypZvNtVU.ttf           [39m[1m[2m   53.58 kB[22m[1m[22m
+2026-10-23T16:17:26.5871272Z [2mdist/[22m[2massets/[22m[32mKaTeX_AMS-Regular-DRggAlZN.ttf            [39m[1m[2m   63.63 kB[22m[1m[22m
+2026-10-23T16:17:26.5872990Z [2mdist/[22m[2massets/[22m[35mApp-Ck5Vv4iO.css                          [39m[1m[2m    1.75 kB[22m[1m[22m[2m │ gzip:   0.60 kB[22m
+2026-10-23T16:17:26.5874693Z [2mdist/[22m[2massets/[22m[35mmath-renderer-BuLMlLbP.css                [39m[1m[2m   30.23 kB[22m[1m[22m[2m │ gzip:   8.07 kB[22m
+2026-10-23T16:17:26.5876455Z [2mdist/[22m[2massets/[22m[35mindex-D-8bi7dm.css                        [39m[1m[2m   71.79 kB[22m[1m[22m[2m │ gzip:  11.56 kB[22m
+2026-10-23T16:17:26.5878212Z [2mdist/[22m[2massets/[22m[36mErrorBoundary-CYgDKDe2.js                 [39m[1m[2m    0.99 kB[22m[1m[22m[2m │ gzip:   0.70 kB[22m
+2026-10-23T16:17:26.5879961Z [2mdist/[22m[2massets/[22m[36mstate-BxtOnv23.js                         [39m[1m[2m    2.69 kB[22m[1m[22m[2m │ gzip:   1.33 kB[22m
+2026-10-23T16:17:26.5881588Z [2mdist/[22m[2massets/[22m[36mindex-BCrlcdYe.js                         [39m[1m[2m    3.05 kB[22m[1m[22m[2m │ gzip:   1.56 kB[22m
+2026-10-23T16:17:26.5883215Z [2mdist/[22m[2massets/[22m[36micons-B3Rw4lb9.js                         [39m[1m[2m    9.57 kB[22m[1m[22m[2m │ gzip:   3.52 kB[22m
+2026-10-23T16:17:26.5884897Z [2mdist/[22m[2massets/[22m[36mschema-CWbv-TH7.js                        [39m[1m[2m   72.18 kB[22m[1m[22m[2m │ gzip:  19.25 kB[22m
+2026-10-23T16:17:26.5886605Z [2mdist/[22m[2massets/[22m[36mreact-core-EjQVioS3.js                    [39m[1m[2m  231.39 kB[22m[1m[22m[2m │ gzip:  74.24 kB[22m
+2026-10-23T16:17:26.5888371Z [2mdist/[22m[2massets/[22m[36mApp-CeOAQVDV.js                           [39m[1m[2m  235.62 kB[22m[1m[22m[2m │ gzip:  66.43 kB[22m
+2026-10-23T16:17:26.5889974Z [2mdist/[22m[2massets/[22m[36mmath-renderer-sfYjQULv.js                 [39m[1m[2m  266.11 kB[22m[1m[22m[2m │ gzip:  78.75 kB[22m
+2026-10-23T16:17:26.5891782Z [2mdist/[22m[2massets/[22m[36museAppStore-CGFFcg4c.js                   [39m[1m[33m1,080.30 kB[39m[22m[2m │ gzip: 239.79 kB[22m
+2026-10-23T16:17:26.5892954Z [32m✓ built in 3.72s[39m
+2026-10-23T16:17:26.6358383Z ##[group]Run sudo apt-get update -qq
+2026-10-23T16:17:26.6358907Z [36;1msudo apt-get update -qq[0m
+2026-10-23T16:17:26.6359399Z [36;1msudo apt-get install -y fonts-noto-cjk[0m
+2026-10-23T16:17:26.6359869Z [36;1mfc-match -f '%{family}\n' ':lang=ja'[0m
+2026-10-23T16:17:26.6399290Z shell: /usr/bin/bash -e {0}
+2026-10-23T16:17:26.6399767Z env:
+2026-10-23T16:17:26.6400121Z   CI: true
+2026-10-23T16:17:26.6400493Z   CAPTURE_SHA: 414137fe25a8e3d818b2e9f9cf7a3fb2be472641
+2026-10-23T16:17:26.6400961Z   E2E_USE_PREVIEW: 1
+2026-10-23T16:17:26.6401402Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2026-10-23T16:17:26.6401877Z ##[endgroup]
+2026-10-23T16:17:33.7413694Z Reading package lists...
+2026-10-23T16:17:33.9405566Z Building dependency tree...
+2026-10-23T16:17:33.9412851Z Reading state information...
+2026-10-23T16:17:34.0959721Z Suggested packages:
+2026-10-23T16:17:34.0960024Z   fonts-noto-cjk-extra
+2026-10-23T16:17:34.1099095Z The following NEW packages will be installed:
+2026-10-23T16:17:34.1106354Z   fonts-noto-cjk
+2026-10-23T16:17:34.1262808Z 0 upgraded, 1 newly installed, 0 to remove and 99 not upgraded.
+2026-10-23T16:17:34.1263304Z Need to get 61.2 MB of archives.
+2026-10-23T16:17:34.1263755Z After this operation, 93.2 MB of additional disk space will be used.
+2026-10-23T16:17:34.1264251Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-10-23T16:17:34.2084570Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 fonts-noto-cjk all 1:20230817+repack1-3 [61.2 MB]
+2026-10-23T16:17:35.4214857Z Fetched 61.2 MB in 1s (56.1 MB/s)
+2026-10-23T16:17:35.4439608Z Selecting previously unselected package fonts-noto-cjk.
+2026-10-23T16:17:35.4626714Z (Reading database ... 
+2026-10-23T16:17:35.4627027Z (Reading database ... 5%
+2026-10-23T16:17:35.4627489Z (Reading database ... 10%
+2026-10-23T16:17:35.4627757Z (Reading database ... 15%
+2026-10-23T16:17:35.4627987Z (Reading database ... 20%
+2026-10-23T16:17:35.4628198Z (Reading database ... 25%
+2026-10-23T16:17:35.4628431Z (Reading database ... 30%
+2026-10-23T16:17:35.4628642Z (Reading database ... 35%
+2026-10-23T16:17:35.4628847Z (Reading database ... 40%
+2026-10-23T16:17:35.4629065Z (Reading database ... 45%
+2026-10-23T16:17:35.4629266Z (Reading database ... 50%
+2026-10-23T16:17:35.4677060Z (Reading database ... 55%
+2026-10-23T16:17:35.5745720Z (Reading database ... 60%
+2026-10-23T16:17:35.7674935Z (Reading database ... 65%
+2026-10-23T16:17:35.9696798Z (Reading database ... 70%
+2026-10-23T16:17:36.1735285Z (Reading database ... 75%
+2026-10-23T16:17:36.2813310Z (Reading database ... 80%
+2026-10-23T16:17:36.4275212Z (Reading database ... 85%
+2026-10-23T16:17:36.5583737Z (Reading database ... 90%
+2026-10-23T16:17:36.7007501Z (Reading database ... 95%
+2026-10-23T16:17:36.7007881Z (Reading database ... 100%
+2026-10-23T16:17:36.7008241Z (Reading database ... 203540 files and directories currently installed.)
+2026-10-23T16:17:36.7055066Z Preparing to unpack .../fonts-noto-cjk_1%3a20230817+repack1-3_all.deb ...
+2026-10-23T16:17:36.7199062Z Unpacking fonts-noto-cjk (1:20230817+repack1-3) ...
+2026-10-23T16:17:37.4287542Z Setting up fonts-noto-cjk (1:20230817+repack1-3) ...
+2026-10-23T16:17:37.4360064Z Processing triggers for fontconfig (2.15.0-1.1ubuntu2) ...
+2026-10-23T16:17:37.9725911Z 
+2026-10-23T16:17:37.9726606Z Running kernel seems to be up-to-date.
+2026-10-23T16:17:37.9726834Z 
+2026-10-23T16:17:37.9726958Z No services need to be restarted.
+2026-10-23T16:17:37.9727282Z 
+2026-10-23T16:17:37.9727466Z No containers need to be restarted.
+2026-10-23T16:17:37.9727612Z 
+2026-10-23T16:17:37.9727761Z No user sessions are running outdated binaries.
+2026-10-23T16:17:37.9727931Z 
+2026-10-23T16:17:37.9728144Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2026-10-23T16:17:38.8917949Z Noto Sans CJK JP
+2026-10-23T16:17:38.9652663Z ##[group]Run pnpm exec playwright install --with-deps chromium
+2026-10-23T16:17:38.9653058Z [36;1mpnpm exec playwright install --with-deps chromium[0m
+2026-10-23T16:17:38.9690055Z shell: /usr/bin/bash -e {0}
+2026-10-23T16:17:38.9690311Z env:
+2026-10-23T16:17:38.9690495Z   CI: true
+2026-10-23T16:17:38.9690728Z   CAPTURE_SHA: 414137fe25a8e3d818b2e9f9cf7a3fb2be472641
+2026-10-23T16:17:38.9690994Z   E2E_USE_PREVIEW: 1
+2026-10-23T16:17:38.9691239Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2026-10-23T16:17:38.9691498Z ##[endgroup]
+2026-10-23T16:17:39.7699334Z Installing dependencies...
+2026-10-23T16:17:39.7796250Z Switching to root user to install dependencies...
+2026-10-23T16:17:39.8413716Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-10-23T16:17:39.8709644Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2026-10-23T16:17:39.8723024Z Hit:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease
+2026-10-23T16:17:39.8736472Z Hit:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease
+2026-10-23T16:17:39.8740452Z Hit:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease
+2026-10-23T16:17:39.8890174Z Hit:6 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease
+2026-10-23T16:17:40.9725815Z Reading package lists...
+2026-10-23T16:17:40.9951419Z Reading package lists...
+2026-10-23T16:17:41.1696556Z Building dependency tree...
+2026-10-23T16:17:41.1702793Z Reading state information...
+2026-10-23T16:17:41.3252040Z libasound2t64 is already the newest version (1.2.11-1ubuntu0.3).
+2026-10-23T16:17:41.3252565Z libasound2t64 set to manually installed.
+2026-10-23T16:17:41.3253030Z libatk-bridge2.0-0t64 is already the newest version (2.52.0-1build1).
+2026-10-23T16:17:41.3253517Z libatk-bridge2.0-0t64 set to manually installed.
+2026-10-23T16:17:41.3253929Z libatk1.0-0t64 is already the newest version (2.52.0-1build1).
+2026-10-23T16:17:41.3255006Z libatk1.0-0t64 set to manually installed.
+2026-10-23T16:17:41.3255399Z libatspi2.0-0t64 is already the newest version (2.52.0-1build1).
+2026-10-23T16:17:41.3255848Z libatspi2.0-0t64 set to manually installed.
+2026-10-23T16:17:41.3256193Z libcairo2 is already the newest version (1.18.0-3build1).
+2026-10-23T16:17:41.3256496Z libcairo2 set to manually installed.
+2026-10-23T16:17:41.3256820Z libcups2t64 is already the newest version (2.4.7-1.2ubuntu7.14).
+2026-10-23T16:17:41.3257469Z libcups2t64 set to manually installed.
+2026-10-23T16:17:41.3257808Z libdbus-1-3 is already the newest version (1.14.10-4ubuntu4.1).
+2026-10-23T16:17:41.3258127Z libdbus-1-3 set to manually installed.
+2026-10-23T16:17:41.3258454Z libdrm2 is already the newest version (2.4.125-1ubuntu0.1~24.04.2).
+2026-10-23T16:17:41.3258783Z libdrm2 set to manually installed.
+2026-10-23T16:17:41.3259096Z libgbm1 is already the newest version (25.2.8-0ubuntu0.24.04.4).
+2026-10-23T16:17:41.3259444Z libgbm1 set to manually installed.
+2026-10-23T16:17:41.3259765Z libnspr4 is already the newest version (2:4.35-1.1build1).
+2026-10-23T16:17:41.3260086Z libnspr4 set to manually installed.
+2026-10-23T16:17:41.3260456Z libpango-1.0-0 is already the newest version (1.52.1+ds-1build1).
+2026-10-23T16:17:41.3260864Z libpango-1.0-0 set to manually installed.
+2026-10-23T16:17:41.3261194Z libx11-6 is already the newest version (2:1.8.7-1ubuntu0.1).
+2026-10-23T16:17:41.3261486Z libx11-6 set to manually installed.
+2026-10-23T16:17:41.3261766Z libxcb1 is already the newest version (1.15-1ubuntu2).
+2026-10-23T16:17:41.3262049Z libxcb1 set to manually installed.
+2026-10-23T16:17:41.3262363Z libxcomposite1 is already the newest version (1:0.4.5-1build3).
+2026-10-23T16:17:41.3262674Z libxcomposite1 set to manually installed.
+2026-10-23T16:17:41.3263047Z libxdamage1 is already the newest version (1:1.1.6-1build1).
+2026-10-23T16:17:41.3263346Z libxdamage1 set to manually installed.
+2026-10-23T16:17:41.3263647Z libxext6 is already the newest version (2:1.3.4-1build2).
+2026-10-23T16:17:41.3263951Z libxext6 set to manually installed.
+2026-10-23T16:17:41.3264521Z libxfixes3 is already the newest version (1:6.0.0-2build1).
+2026-10-23T16:17:41.3264848Z libxfixes3 set to manually installed.
+2026-10-23T16:17:41.3265162Z libxkbcommon0 is already the newest version (1.6.0-1build1).
+2026-10-23T16:17:41.3265475Z libxkbcommon0 set to manually installed.
+2026-10-23T16:17:41.3265790Z libxrandr2 is already the newest version (2:1.5.2-2build1).
+2026-10-23T16:17:41.3266082Z libxrandr2 set to manually installed.
+2026-10-23T16:17:41.3266472Z fonts-noto-color-emoji is already the newest version (2.047-0ubuntu0.24.04.1).
+2026-10-23T16:17:41.3266896Z libfontconfig1 is already the newest version (2.15.0-1.1ubuntu2).
+2026-10-23T16:17:41.3267332Z libfontconfig1 set to manually installed.
+2026-10-23T16:17:41.3267726Z libfreetype6 is already the newest version (2.13.2+dfsg-1ubuntu0.2).
+2026-10-23T16:17:41.3268058Z libfreetype6 set to manually installed.
+2026-10-23T16:17:41.3268377Z fonts-liberation is already the newest version (1:2.1.5-3).
+2026-10-23T16:17:41.3268718Z fonts-liberation set to manually installed.
+2026-10-23T16:17:41.3269033Z The following additional packages will be installed:
+2026-10-23T16:17:41.3269617Z   gir1.2-glib-2.0 libglib2.0-bin libglib2.0-data libnss3-tools
+2026-10-23T16:17:41.3270110Z   xfonts-encodings xfonts-utils xserver-common
+2026-10-23T16:17:41.3270513Z Suggested packages:
+2026-10-23T16:17:41.3270860Z   low-memory-monitor
+2026-10-23T16:17:41.3271221Z Recommended packages:
+2026-10-23T16:17:41.3271637Z   fonts-ipafont-mincho fonts-tlwg-loma xfonts-base
+2026-10-23T16:17:41.3447621Z The following NEW packages will be installed:
+2026-10-23T16:17:41.3448157Z   fonts-freefont-ttf fonts-ipafont-gothic fonts-tlwg-loma-otf fonts-unifont
+2026-10-23T16:17:41.3453152Z   fonts-wqy-zenhei xfonts-cyrillic xfonts-encodings xfonts-scalable
+2026-10-23T16:17:41.3453548Z   xfonts-utils
+2026-10-23T16:17:41.3456997Z The following packages will be upgraded:
+2026-10-23T16:17:41.3459090Z   gir1.2-glib-2.0 libglib2.0-0t64 libglib2.0-bin libglib2.0-data libnss3
+2026-10-23T16:17:41.3463177Z   libnss3-tools xserver-common xvfb
+2026-10-23T16:17:41.3601495Z 8 upgraded, 9 newly installed, 0 to remove and 91 not upgraded.
+2026-10-23T16:17:41.3601875Z Need to get 25.9 MB of archives.
+2026-10-23T16:17:41.3602212Z After this operation, 79.5 MB of additional disk space will be used.
+2026-10-23T16:17:41.3602590Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-10-23T16:17:41.4272415Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 fonts-ipafont-gothic all 00303-21ubuntu1 [3513 kB]
+2026-10-23T16:17:41.4977373Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libglib2.0-data all 2.80.0-6ubuntu3.10 [50.2 kB]
+2026-10-23T16:17:41.5330228Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libglib2.0-bin amd64 2.80.0-6ubuntu3.10 [97.9 kB]
+2026-10-23T16:17:41.5681913Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 gir1.2-glib-2.0 amd64 2.80.0-6ubuntu3.10 [183 kB]
+2026-10-23T16:17:41.6038347Z Get:6 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libglib2.0-0t64 amd64 2.80.0-6ubuntu3.10 [1548 kB]
+2026-10-23T16:17:41.6546004Z Get:7 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 fonts-freefont-ttf all 20211204+svn4273-2 [5641 kB]
+2026-10-23T16:17:41.7512456Z Get:8 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 fonts-tlwg-loma-otf all 1:0.7.3-1 [107 kB]
+2026-10-23T16:17:41.7834069Z Get:9 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 fonts-unifont all 1:15.1.01-1build1 [2993 kB]
+2026-10-23T16:17:41.8485375Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 fonts-wqy-zenhei all 0.9.45-8 [7472 kB]
+2026-10-23T16:17:41.9538708Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libnss3 amd64 2:3.98-1ubuntu0.3 [1445 kB]
+2026-10-23T16:17:41.9963754Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libnss3-tools amd64 2:3.98-1ubuntu0.3 [615 kB]
+2026-10-23T16:17:42.0334369Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 xfonts-encodings all 1:1.0.5-0ubuntu2 [578 kB]
+2026-10-23T16:17:42.0808177Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 xfonts-utils amd64 1:7.7+6build3 [94.4 kB]
+2026-10-23T16:17:42.1170098Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 xfonts-cyrillic all 1:1.0.5+nmu1 [384 kB]
+2026-10-23T16:17:42.1561363Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 xfonts-scalable all 1:1.0.3-1.3 [304 kB]
+2026-10-23T16:17:42.1930137Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 xserver-common all 2:21.1.12-1ubuntu1.9 [35.0 kB]
+2026-10-23T16:17:42.2274793Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 xvfb amd64 2:21.1.12-1ubuntu1.9 [877 kB]
+2026-10-23T16:17:42.4474004Z Fetched 25.9 MB in 1s (29.3 MB/s)
+2026-10-23T16:17:42.4802308Z Selecting previously unselected package fonts-ipafont-gothic.
+2026-10-23T16:17:42.4832893Z (Reading database ... 
+2026-10-23T16:17:42.4833189Z (Reading database ... 5%
+2026-10-23T16:17:42.4833479Z (Reading database ... 10%
+2026-10-23T16:17:42.4833755Z (Reading database ... 15%
+2026-10-23T16:17:42.4834013Z (Reading database ... 20%
+2026-10-23T16:17:42.4834328Z (Reading database ... 25%
+2026-10-23T16:17:42.4834591Z (Reading database ... 30%
+2026-10-23T16:17:42.4834828Z (Reading database ... 35%
+2026-10-23T16:17:42.4835032Z (Reading database ... 40%
+2026-10-23T16:17:42.4835235Z (Reading database ... 45%
+2026-10-23T16:17:42.4835434Z (Reading database ... 50%
+2026-10-23T16:17:42.4846665Z (Reading database ... 55%
+2026-10-23T16:17:42.4942129Z (Reading database ... 60%
+2026-10-23T16:17:42.4965080Z (Reading database ... 65%
+2026-10-23T16:17:42.4980166Z (Reading database ... 70%
+2026-10-23T16:17:42.5008073Z (Reading database ... 75%
+2026-10-23T16:17:42.5031379Z (Reading database ... 80%
+2026-10-23T16:17:42.5053047Z (Reading database ... 85%
+2026-10-23T16:17:42.5360498Z (Reading database ... 90%
+2026-10-23T16:17:42.5451316Z (Reading database ... 95%
+2026-10-23T16:17:42.5451571Z (Reading database ... 100%
+2026-10-23T16:17:42.5451969Z (Reading database ... 203556 files and directories currently installed.)
+2026-10-23T16:17:42.5490000Z Preparing to unpack .../00-fonts-ipafont-gothic_00303-21ubuntu1_all.deb ...
+2026-10-23T16:17:42.5545613Z Unpacking fonts-ipafont-gothic (00303-21ubuntu1) ...
+2026-10-23T16:17:42.8109713Z Preparing to unpack .../01-libglib2.0-data_2.80.0-6ubuntu3.10_all.deb ...
+2026-10-23T16:17:42.8130774Z Unpacking libglib2.0-data (2.80.0-6ubuntu3.10) over (2.80.0-6ubuntu3.9) ...
+2026-10-23T16:17:42.8440689Z Preparing to unpack .../02-libglib2.0-bin_2.80.0-6ubuntu3.10_amd64.deb ...
+2026-10-23T16:17:42.8463569Z Unpacking libglib2.0-bin (2.80.0-6ubuntu3.10) over (2.80.0-6ubuntu3.9) ...
+2026-10-23T16:17:42.8915801Z Preparing to unpack .../03-gir1.2-glib-2.0_2.80.0-6ubuntu3.10_amd64.deb ...
+2026-10-23T16:17:42.8939220Z Unpacking gir1.2-glib-2.0:amd64 (2.80.0-6ubuntu3.10) over (2.80.0-6ubuntu3.9) ...
+2026-10-23T16:17:42.9332926Z Preparing to unpack .../04-libglib2.0-0t64_2.80.0-6ubuntu3.10_amd64.deb ...
+2026-10-23T16:17:42.9397530Z Unpacking libglib2.0-0t64:amd64 (2.80.0-6ubuntu3.10) over (2.80.0-6ubuntu3.9) ...
+2026-10-23T16:17:42.9916496Z Selecting previously unselected package fonts-freefont-ttf.
+2026-10-23T16:17:43.0038420Z Preparing to unpack .../05-fonts-freefont-ttf_20211204+svn4273-2_all.deb ...
+2026-10-23T16:17:43.0045564Z Unpacking fonts-freefont-ttf (20211204+svn4273-2) ...
+2026-10-23T16:17:43.1023535Z Selecting previously unselected package fonts-tlwg-loma-otf.
+2026-10-23T16:17:43.1138874Z Preparing to unpack .../06-fonts-tlwg-loma-otf_1%3a0.7.3-1_all.deb ...
+2026-10-23T16:17:43.1147501Z Unpacking fonts-tlwg-loma-otf (1:0.7.3-1) ...
+2026-10-23T16:17:43.1322733Z Selecting previously unselected package fonts-unifont.
+2026-10-23T16:17:43.1430954Z Preparing to unpack .../07-fonts-unifont_1%3a15.1.01-1build1_all.deb ...
+2026-10-23T16:17:43.1438872Z Unpacking fonts-unifont (1:15.1.01-1build1) ...
+2026-10-23T16:17:43.3469374Z Selecting previously unselected package fonts-wqy-zenhei.
+2026-10-23T16:17:43.3583773Z Preparing to unpack .../08-fonts-wqy-zenhei_0.9.45-8_all.deb ...
+2026-10-23T16:17:43.3663009Z Unpacking fonts-wqy-zenhei (0.9.45-8) ...
+2026-10-23T16:17:43.8840383Z Preparing to unpack .../09-libnss3_2%3a3.98-1ubuntu0.3_amd64.deb ...
+2026-10-23T16:17:43.8865550Z Unpacking libnss3:amd64 (2:3.98-1ubuntu0.3) over (2:3.98-1ubuntu0.2) ...
+2026-10-23T16:17:43.9436117Z Preparing to unpack .../10-libnss3-tools_2%3a3.98-1ubuntu0.3_amd64.deb ...
+2026-10-23T16:17:43.9457551Z Unpacking libnss3-tools (2:3.98-1ubuntu0.3) over (2:3.98-1ubuntu0.2) ...
+2026-10-23T16:17:43.9907878Z Selecting previously unselected package xfonts-encodings.
+2026-10-23T16:17:44.0023929Z Preparing to unpack .../11-xfonts-encodings_1%3a1.0.5-0ubuntu2_all.deb ...
+2026-10-23T16:17:44.0031920Z Unpacking xfonts-encodings (1:1.0.5-0ubuntu2) ...
+2026-10-23T16:17:44.0300171Z Selecting previously unselected package xfonts-utils.
+2026-10-23T16:17:44.0409470Z Preparing to unpack .../12-xfonts-utils_1%3a7.7+6build3_amd64.deb ...
+2026-10-23T16:17:44.0417640Z Unpacking xfonts-utils (1:7.7+6build3) ...
+2026-10-23T16:17:44.0678188Z Selecting previously unselected package xfonts-cyrillic.
+2026-10-23T16:17:44.0789608Z Preparing to unpack .../13-xfonts-cyrillic_1%3a1.0.5+nmu1_all.deb ...
+2026-10-23T16:17:44.0798644Z Unpacking xfonts-cyrillic (1:1.0.5+nmu1) ...
+2026-10-23T16:17:44.1059791Z Selecting previously unselected package xfonts-scalable.
+2026-10-23T16:17:44.1171713Z Preparing to unpack .../14-xfonts-scalable_1%3a1.0.3-1.3_all.deb ...
+2026-10-23T16:17:44.1180643Z Unpacking xfonts-scalable (1:1.0.3-1.3) ...
+2026-10-23T16:17:44.1500265Z Preparing to unpack .../15-xserver-common_2%3a21.1.12-1ubuntu1.9_all.deb ...
+2026-10-23T16:17:44.1528885Z Unpacking xserver-common (2:21.1.12-1ubuntu1.9) over (2:21.1.12-1ubuntu1.8) ...
+2026-10-23T16:17:44.1831276Z Preparing to unpack .../16-xvfb_2%3a21.1.12-1ubuntu1.9_amd64.deb ...
+2026-10-23T16:17:44.1854563Z Unpacking xvfb (2:21.1.12-1ubuntu1.9) over (2:21.1.12-1ubuntu1.8) ...
+2026-10-23T16:17:44.2600055Z Setting up fonts-wqy-zenhei (0.9.45-8) ...
+2026-10-23T16:17:44.2708754Z Setting up fonts-freefont-ttf (20211204+svn4273-2) ...
+2026-10-23T16:17:44.2729667Z Setting up libnss3:amd64 (2:3.98-1ubuntu0.3) ...
+2026-10-23T16:17:44.2753246Z Setting up libglib2.0-0t64:amd64 (2.80.0-6ubuntu3.10) ...
+2026-10-23T16:17:44.2854979Z Setting up libglib2.0-data (2.80.0-6ubuntu3.10) ...
+2026-10-23T16:17:44.2875356Z Setting up fonts-tlwg-loma-otf (1:0.7.3-1) ...
+2026-10-23T16:17:44.2896494Z Setting up xfonts-encodings (1:1.0.5-0ubuntu2) ...
+2026-10-23T16:17:44.2918539Z Setting up gir1.2-glib-2.0:amd64 (2.80.0-6ubuntu3.10) ...
+2026-10-23T16:17:44.2940417Z Setting up fonts-ipafont-gothic (00303-21ubuntu1) ...
+2026-10-23T16:17:44.2996796Z update-alternatives: using /usr/share/fonts/opentype/ipafont-gothic/ipag.ttf to provide /usr/share/fonts/truetype/fonts-japanese-gothic.ttf (fonts-japanese-gothic.ttf) in auto mode
+2026-10-23T16:17:44.3012909Z Setting up xserver-common (2:21.1.12-1ubuntu1.9) ...
+2026-10-23T16:17:44.3033300Z Setting up libnss3-tools (2:3.98-1ubuntu0.3) ...
+2026-10-23T16:17:44.3055600Z Setting up fonts-unifont (1:15.1.01-1build1) ...
+2026-10-23T16:17:44.3079533Z Setting up xvfb (2:21.1.12-1ubuntu1.9) ...
+2026-10-23T16:17:44.3103979Z Setting up libglib2.0-bin (2.80.0-6ubuntu3.10) ...
+2026-10-23T16:17:44.3125006Z Setting up xfonts-utils (1:7.7+6build3) ...
+2026-10-23T16:17:44.3167490Z Setting up xfonts-cyrillic (1:1.0.5+nmu1) ...
+2026-10-23T16:17:44.3399508Z Setting up xfonts-scalable (1:1.0.3-1.3) ...
+2026-10-23T16:17:44.3601688Z Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+2026-10-23T16:17:44.5421812Z Processing triggers for man-db (2.12.0-4build2) ...
+2026-10-23T16:17:44.5445669Z Not building database; man-db/auto-update is not 'true'.
+2026-10-23T16:17:44.5459791Z Processing triggers for fontconfig (2.15.0-1.1ubuntu2) ...
+2026-10-23T16:17:44.9604235Z 
+2026-10-23T16:17:44.9605395Z Running kernel seems to be up-to-date.
+2026-10-23T16:17:44.9605781Z 
+2026-10-23T16:17:44.9605901Z Restarting services...
+2026-10-23T16:17:44.9938224Z  systemctl restart packagekit.service php8.3-fpm.service polkit.service udisks2.service
+2026-10-23T16:17:45.0939869Z 
+2026-10-23T16:17:45.0940553Z Service restarts being deferred:
+2026-10-23T16:17:45.0940940Z  systemctl restart ModemManager.service
+2026-10-23T16:17:45.0941349Z  systemctl restart networkd-dispatcher.service
+2026-10-23T16:17:45.0941594Z 
+2026-10-23T16:17:45.0944385Z No containers need to be restarted.
+2026-10-23T16:17:45.0944662Z 
+2026-10-23T16:17:45.0944865Z No user sessions are running outdated binaries.
+2026-10-23T16:17:45.0945100Z 
+2026-10-23T16:17:45.0945383Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2026-10-23T16:17:45.9563338Z Downloading Chrome for Testing 151.0.7922.34 (playwright chromium v1234) from https://cdn.playwright.dev/builds/cft/151.0.7922.34/linux64/chrome-linux64.zip
+2026-10-23T16:17:46.9311907Z |                                                                                |   0% of 184.3 MiB
+2026-10-23T16:17:47.1726969Z |■■■■■■■■                                                                        |  10% of 184.3 MiB
+2026-10-23T16:17:47.2368708Z |■■■■■■■■■■■■■■■■                                                                |  20% of 184.3 MiB
+2026-10-23T16:17:47.2799563Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 184.3 MiB
+2026-10-23T16:17:47.3200820Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 184.3 MiB
+2026-10-23T16:17:47.3728456Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 184.3 MiB
+2026-10-23T16:17:47.4212550Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 184.3 MiB
+2026-10-23T16:17:47.4701452Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 184.3 MiB
+2026-10-23T16:17:47.5172931Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 184.3 MiB
+2026-10-23T16:17:47.5775266Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 184.3 MiB
+2026-10-23T16:17:47.6213832Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 184.3 MiB
+2026-10-23T16:17:50.4903912Z Chrome for Testing 151.0.7922.34 (playwright chromium v1234) downloaded to /home/runner/.cache/ms-playwright/chromium-1234
+2026-10-23T16:17:50.4906983Z Downloading FFmpeg (playwright ffmpeg v1011) from https://cdn.playwright.dev/dbazure/download/playwright/builds/ffmpeg/1011/ffmpeg-linux.zip
+2026-10-23T16:17:51.4291844Z |                                                                                |   0% of 2.3 MiB
+2026-10-23T16:17:51.4674991Z |■■■■■■■■                                                                        |  10% of 2.3 MiB
+2026-10-23T16:17:51.4828233Z |■■■■■■■■■■■■■■■■                                                                |  20% of 2.3 MiB
+2026-10-23T16:17:51.4963599Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 2.3 MiB
+2026-10-23T16:17:51.4994047Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 2.3 MiB
+2026-10-23T16:17:51.5104874Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 2.3 MiB
+2026-10-23T16:17:51.5135535Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 2.3 MiB
+2026-10-23T16:17:51.5240161Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 2.3 MiB
+2026-10-23T16:17:51.5256302Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 2.3 MiB
+2026-10-23T16:17:51.5279288Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 2.3 MiB
+2026-10-23T16:17:51.5369205Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 2.3 MiB
+2026-10-23T16:17:51.5882131Z FFmpeg (playwright ffmpeg v1011) downloaded to /home/runner/.cache/ms-playwright/ffmpeg-1011
+2026-10-23T16:17:51.5884550Z Downloading Chrome Headless Shell 151.0.7922.34 (playwright chromium-headless-shell v1234) from https://cdn.playwright.dev/builds/cft/151.0.7922.34/linux64/chrome-headless-shell-linux64.zip
+2026-10-23T16:17:52.5456584Z |                                                                                |   0% of 114.7 MiB
+2026-10-23T16:17:52.7589265Z |■■■■■■■■                                                                        |  10% of 114.7 MiB
+2026-10-23T16:17:52.7994848Z |■■■■■■■■■■■■■■■■                                                                |  20% of 114.7 MiB
+2026-10-23T16:17:52.8350797Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 114.7 MiB
+2026-10-23T16:17:52.8716716Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 114.7 MiB
+2026-10-23T16:17:52.9009755Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 114.7 MiB
+2026-10-23T16:17:52.9311705Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 114.7 MiB
+2026-10-23T16:17:52.9640209Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 114.7 MiB
+2026-10-23T16:17:52.9953789Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 114.7 MiB
+2026-10-23T16:17:53.0423307Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 114.7 MiB
+2026-10-23T16:17:53.0805607Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 114.7 MiB
+2026-10-23T16:17:55.1158838Z Chrome Headless Shell 151.0.7922.34 (playwright chromium-headless-shell v1234) downloaded to /home/runner/.cache/ms-playwright/chromium_headless_shell-1234
+2026-10-23T16:17:55.1379725Z ##[group]Run pnpm exec playwright test e2e/wmath027-three-themes.spec.ts e2e/numbers-catalog-publish.spec.ts --project=mobile-chromium --project=desktop-chromium --workers=2
+2026-10-23T16:17:55.1380838Z [36;1mpnpm exec playwright test e2e/wmath027-three-themes.spec.ts e2e/numbers-catalog-publish.spec.ts --project=mobile-chromium --project=desktop-chromium --workers=2[0m
+2026-10-23T16:17:55.1416936Z shell: /usr/bin/bash -e {0}
+2026-10-23T16:17:55.1417357Z env:
+2026-10-23T16:17:55.1417532Z   CI: true
+2026-10-23T16:17:55.1417753Z   CAPTURE_SHA: 414137fe25a8e3d818b2e9f9cf7a3fb2be472641
+2026-10-23T16:17:55.1418009Z   E2E_USE_PREVIEW: 1
+2026-10-23T16:17:55.1418230Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2026-10-23T16:17:55.1418470Z ##[endgroup]
+2026-10-23T16:17:57.3722822Z 
+2026-10-23T16:17:57.3723486Z Running 14 tests using 2 workers
+2026-10-23T16:17:57.3723839Z 
+2026-10-23T16:17:59.5769959Z   ✓   2 [mobile-chromium] › e2e/numbers-catalog-publish.spec.ts:11:1 › chapter 1 has exactly three approved reachable review topics; chapter 3 and physics remain intact (1.5s)
+2026-10-23T16:17:59.5985063Z   ✓   1 [mobile-chromium] › e2e/numbers-catalog-publish.spec.ts:38:1 › theme navigation and stable N02/N09 deep links show the real source lessons (1.5s)
+2026-10-23T16:18:01.0299681Z   ✘   4 [mobile-chromium] › e2e/wmath027-three-themes.spec.ts:44:3 › W027 three cards and two actual bridge paragraphs 320 (1.2s)
+2026-10-23T16:18:01.0307636Z   ✓   3 [mobile-chromium] › e2e/numbers-catalog-publish.spec.ts:56:1 › chapter 1 keeps learner progress and shows unfinished topic on return (1.4s)
+2026-10-23T16:18:02.5569703Z   ✘   5 [mobile-chromium] › e2e/wmath027-three-themes.spec.ts:44:3 › W027 three cards and two actual bridge paragraphs 390 (1.3s)
+2026-10-23T16:18:02.9597345Z   ✘   6 [mobile-chromium] › e2e/wmath027-three-themes.spec.ts:44:3 › W027 three cards and two actual bridge paragraphs 320 (retry #1) (1.2s)
+2026-10-23T16:18:04.6316567Z   ✘   7 [mobile-chromium] › e2e/wmath027-three-themes.spec.ts:44:3 › W027 three cards and two actual bridge paragraphs 390 (retry #1) (1.4s)
+2026-10-23T16:18:04.9552217Z   ✘   8 [mobile-chromium] › e2e/wmath027-three-themes.spec.ts:44:3 › W027 three cards and two actual bridge paragraphs 320 (retry #2) (1.2s)
+2026-10-23T16:18:05.9048440Z   -  10 [mobile-chromium] › e2e/wmath027-three-themes.spec.ts:44:3 › W027 three cards and two actual bridge paragraphs 1440
+2026-10-23T16:18:06.7555764Z   ✘   9 [mobile-chromium] › e2e/wmath027-three-themes.spec.ts:44:3 › W027 three cards and two actual bridge paragraphs 390 (retry #2) (1.4s)
+2026-10-23T16:18:08.6629523Z   ✓  12 [desktop-chromium] › e2e/numbers-catalog-publish.spec.ts:11:1 › chapter 1 has exactly three approved reachable review topics; chapter 3 and physics remain intact (1.3s)
+2026-10-23T16:18:09.8323020Z   ✓  13 [desktop-chromium] › e2e/numbers-catalog-publish.spec.ts:38:1 › theme navigation and stable N02/N09 deep links show the real source lessons (1.1s)
+2026-10-23T16:18:09.8717432Z   ✓  11 [mobile-chromium] › e2e/wmath027-three-themes.spec.ts:84:1 › W027 saved answers survive regrouping, resume each development unit and preserve history (4.0s)
+2026-10-23T16:18:10.8960277Z   -  15 [desktop-chromium] › e2e/wmath027-three-themes.spec.ts:44:3 › W027 three cards and two actual bridge paragraphs 320
+2026-10-23T16:18:11.0727399Z   -  16 [desktop-chromium] › e2e/wmath027-three-themes.spec.ts:44:3 › W027 three cards and two actual bridge paragraphs 390
+2026-10-23T16:18:11.4946678Z   ✓  14 [desktop-chromium] › e2e/numbers-catalog-publish.spec.ts:56:1 › chapter 1 keeps learner progress and shows unfinished topic on return (1.6s)
+2026-10-23T16:18:12.5422788Z   ✘  17 [desktop-chromium] › e2e/wmath027-three-themes.spec.ts:44:3 › W027 three cards and two actual bridge paragraphs 1440 (1.3s)
+2026-10-23T16:18:14.9013675Z   ✘  19 [desktop-chromium] › e2e/wmath027-three-themes.spec.ts:44:3 › W027 three cards and two actual bridge paragraphs 1440 (retry #1) (1.5s)
+2026-10-23T16:18:15.4589942Z   ✓  18 [desktop-chromium] › e2e/wmath027-three-themes.spec.ts:84:1 › W027 saved answers survive regrouping, resume each development unit and preserve history (3.8s)
+2026-10-23T16:18:16.5435811Z   ✘  20 [desktop-chromium] › e2e/wmath027-three-themes.spec.ts:44:3 › W027 three cards and two actual bridge paragraphs 1440 (retry #2) (926ms)
+2026-10-23T16:18:16.5623336Z 
+2026-10-23T16:18:16.5626057Z 
+2026-10-23T16:18:16.5636464Z   1) [mobile-chromium] › e2e/wmath027-three-themes.spec.ts:44:3 › W027 three cards and two actual bridge paragraphs 320 
+2026-10-23T16:18:16.5637008Z 
+2026-10-23T16:18:16.5637469Z     Error: fixed navigation must not cover any of the three captured cards
+2026-10-23T16:18:16.5637790Z 
+2026-10-23T16:18:16.5637956Z     expect(received).toEqual(expected) // deep equality
+2026-10-23T16:18:16.5638165Z 
+2026-10-23T16:18:16.5638259Z     - Expected  - 1
+2026-10-23T16:18:16.5638538Z     + Received  + 3
+2026-10-23T16:18:16.5638644Z 
+2026-10-23T16:18:16.5638710Z     - Array []
+2026-10-23T16:18:16.5638961Z     + Array [
+2026-10-23T16:18:16.5639313Z     +   "math-textbook-topic-numbers-inequalities",
+2026-10-23T16:18:16.5639660Z     + ]
+2026-10-23T16:18:16.5639779Z 
+2026-10-23T16:18:16.5639942Z       67 |       }).map(() => node.getAttribute('data-testid'))
+2026-10-23T16:18:16.5640354Z       68 |     }))
+2026-10-23T16:18:16.5640867Z     > 69 |     expect(blockers, 'fixed navigation must not cover any of the three captured cards').toEqual([])
+2026-10-23T16:18:16.5641466Z          |                                                                                         ^
+2026-10-23T16:18:16.5642091Z       70 |     for (const card of await links.all()) await expect(card).toBeInViewport({ ratio: 1 })
+2026-10-23T16:18:16.5643904Z       71 |     await page.screenshot({ path: `${root}/catalog-${width}.png` })
+2026-10-23T16:18:16.5644460Z       72 |     for (const [code, title, bridge] of [['ne01', labels[0], bridge1], ['ne02', labels[1], bridge2]]) {
+2026-10-23T16:18:16.5645155Z         at /home/runner/work/kyotsu-step-web/kyotsu-step-web/e2e/wmath027-three-themes.spec.ts:69:89
+2026-10-23T16:18:16.5645811Z 
+2026-10-23T16:18:16.5646241Z     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5646850Z     test-results/wmath027-three-themes-W027-c2aee-ctual-bridge-paragraphs-320-mobile-chromium/test-failed-1.png
+2026-10-23T16:18:16.5647634Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5647875Z 
+2026-10-23T16:18:16.5648220Z     Error Context: test-results/wmath027-three-themes-W027-c2aee-ctual-bridge-paragraphs-320-mobile-chromium/error-context.md
+2026-10-23T16:18:16.5648562Z 
+2026-10-23T16:18:16.5648839Z     attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5649335Z     test-results/wmath027-three-themes-W027-c2aee-ctual-bridge-paragraphs-320-mobile-chromium/trace.zip
+2026-10-23T16:18:16.5649687Z     Usage:
+2026-10-23T16:18:16.5649774Z 
+2026-10-23T16:18:16.5650146Z         pnpm exec playwright show-trace test-results/wmath027-three-themes-W027-c2aee-ctual-bridge-paragraphs-320-mobile-chromium/trace.zip
+2026-10-23T16:18:16.5650529Z 
+2026-10-23T16:18:16.5650772Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5650960Z 
+2026-10-23T16:18:16.5651212Z     Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5651411Z 
+2026-10-23T16:18:16.5651579Z     Error: fixed navigation must not cover any of the three captured cards
+2026-10-23T16:18:16.5651767Z 
+2026-10-23T16:18:16.5651936Z     expect(received).toEqual(expected) // deep equality
+2026-10-23T16:18:16.5652132Z 
+2026-10-23T16:18:16.5652209Z     - Expected  - 1
+2026-10-23T16:18:16.5652385Z     + Received  + 3
+2026-10-23T16:18:16.5652471Z 
+2026-10-23T16:18:16.5652545Z     - Array []
+2026-10-23T16:18:16.5652714Z     + Array [
+2026-10-23T16:18:16.5653080Z     +   "math-textbook-topic-numbers-inequalities",
+2026-10-23T16:18:16.5653338Z     + ]
+2026-10-23T16:18:16.5653428Z 
+2026-10-23T16:18:16.5653555Z       67 |       }).map(() => node.getAttribute('data-testid'))
+2026-10-23T16:18:16.5653795Z       68 |     }))
+2026-10-23T16:18:16.5654113Z     > 69 |     expect(blockers, 'fixed navigation must not cover any of the three captured cards').toEqual([])
+2026-10-23T16:18:16.5654494Z          |                                                                                         ^
+2026-10-23T16:18:16.5654896Z       70 |     for (const card of await links.all()) await expect(card).toBeInViewport({ ratio: 1 })
+2026-10-23T16:18:16.5655340Z       71 |     await page.screenshot({ path: `${root}/catalog-${width}.png` })
+2026-10-23T16:18:16.5655754Z       72 |     for (const [code, title, bridge] of [['ne01', labels[0], bridge1], ['ne02', labels[1], bridge2]]) {
+2026-10-23T16:18:16.5656262Z         at /home/runner/work/kyotsu-step-web/kyotsu-step-web/e2e/wmath027-three-themes.spec.ts:69:89
+2026-10-23T16:18:16.5656520Z 
+2026-10-23T16:18:16.5656929Z     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5657754Z     test-results/wmath027-three-themes-W027-c2aee-ctual-bridge-paragraphs-320-mobile-chromium-retry1/test-failed-1.png
+2026-10-23T16:18:16.5658468Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5658714Z 
+2026-10-23T16:18:16.5659130Z     Error Context: test-results/wmath027-three-themes-W027-c2aee-ctual-bridge-paragraphs-320-mobile-chromium-retry1/error-context.md
+2026-10-23T16:18:16.5659601Z 
+2026-10-23T16:18:16.5659952Z     attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5660699Z     test-results/wmath027-three-themes-W027-c2aee-ctual-bridge-paragraphs-320-mobile-chromium-retry1/trace.zip
+2026-10-23T16:18:16.5661232Z     Usage:
+2026-10-23T16:18:16.5661351Z 
+2026-10-23T16:18:16.5661941Z         pnpm exec playwright show-trace test-results/wmath027-three-themes-W027-c2aee-ctual-bridge-paragraphs-320-mobile-chromium-retry1/trace.zip
+2026-10-23T16:18:16.5662562Z 
+2026-10-23T16:18:16.5662887Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5663151Z 
+2026-10-23T16:18:16.5663448Z     Retry #2 ───────────────────────────────────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5663732Z 
+2026-10-23T16:18:16.5663946Z     Error: fixed navigation must not cover any of the three captured cards
+2026-10-23T16:18:16.5664217Z 
+2026-10-23T16:18:16.5664388Z     expect(received).toEqual(expected) // deep equality
+2026-10-23T16:18:16.5664602Z 
+2026-10-23T16:18:16.5664709Z     - Expected  - 1
+2026-10-23T16:18:16.5664921Z     + Received  + 3
+2026-10-23T16:18:16.5665054Z 
+2026-10-23T16:18:16.5665142Z     - Array []
+2026-10-23T16:18:16.5665356Z     + Array [
+2026-10-23T16:18:16.5665836Z     +   "math-textbook-topic-numbers-inequalities",
+2026-10-23T16:18:16.5666154Z     + ]
+2026-10-23T16:18:16.5666280Z 
+2026-10-23T16:18:16.5666461Z       67 |       }).map(() => node.getAttribute('data-testid'))
+2026-10-23T16:18:16.5666758Z       68 |     }))
+2026-10-23T16:18:16.5667762Z     > 69 |     expect(blockers, 'fixed navigation must not cover any of the three captured cards').toEqual([])
+2026-10-23T16:18:16.5668299Z          |                                                                                         ^
+2026-10-23T16:18:16.5668803Z       70 |     for (const card of await links.all()) await expect(card).toBeInViewport({ ratio: 1 })
+2026-10-23T16:18:16.5669372Z       71 |     await page.screenshot({ path: `${root}/catalog-${width}.png` })
+2026-10-23T16:18:16.5669928Z       72 |     for (const [code, title, bridge] of [['ne01', labels[0], bridge1], ['ne02', labels[1], bridge2]]) {
+2026-10-23T16:18:16.5670586Z         at /home/runner/work/kyotsu-step-web/kyotsu-step-web/e2e/wmath027-three-themes.spec.ts:69:89
+2026-10-23T16:18:16.5670943Z 
+2026-10-23T16:18:16.5671368Z     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5672167Z     test-results/wmath027-three-themes-W027-c2aee-ctual-bridge-paragraphs-320-mobile-chromium-retry2/test-failed-1.png
+2026-10-23T16:18:16.5672881Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5673153Z 
+2026-10-23T16:18:16.5673614Z     Error Context: test-results/wmath027-three-themes-W027-c2aee-ctual-bridge-paragraphs-320-mobile-chromium-retry2/error-context.md
+2026-10-23T16:18:16.5674115Z 
+2026-10-23T16:18:16.5674508Z     attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5675221Z     test-results/wmath027-three-themes-W027-c2aee-ctual-bridge-paragraphs-320-mobile-chromium-retry2/trace.zip
+2026-10-23T16:18:16.5675768Z     Usage:
+2026-10-23T16:18:16.5675885Z 
+2026-10-23T16:18:16.5676288Z         pnpm exec playwright show-trace test-results/wmath027-three-themes-W027-c2aee-ctual-bridge-paragraphs-320-mobile-chromium-retry2/trace.zip
+2026-10-23T16:18:16.5676705Z 
+2026-10-23T16:18:16.5676970Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5677590Z 
+2026-10-23T16:18:16.5678077Z   2) [mobile-chromium] › e2e/wmath027-three-themes.spec.ts:44:3 › W027 three cards and two actual bridge paragraphs 390 
+2026-10-23T16:18:16.5678381Z 
+2026-10-23T16:18:16.5678548Z     Error: fixed navigation must not cover any of the three captured cards
+2026-10-23T16:18:16.5678749Z 
+2026-10-23T16:18:16.5678912Z     expect(received).toEqual(expected) // deep equality
+2026-10-23T16:18:16.5679077Z 
+2026-10-23T16:18:16.5679164Z     - Expected  - 1
+2026-10-23T16:18:16.5679336Z     + Received  + 3
+2026-10-23T16:18:16.5679433Z 
+2026-10-23T16:18:16.5679509Z     - Array []
+2026-10-23T16:18:16.5679666Z     + Array [
+2026-10-23T16:18:16.5680085Z     +   "math-textbook-topic-numbers-inequalities",
+2026-10-23T16:18:16.5680383Z     + ]
+2026-10-23T16:18:16.5680466Z 
+2026-10-23T16:18:16.5680613Z       67 |       }).map(() => node.getAttribute('data-testid'))
+2026-10-23T16:18:16.5680870Z       68 |     }))
+2026-10-23T16:18:16.5681240Z     > 69 |     expect(blockers, 'fixed navigation must not cover any of the three captured cards').toEqual([])
+2026-10-23T16:18:16.5681672Z          |                                                                                         ^
+2026-10-23T16:18:16.5682079Z       70 |     for (const card of await links.all()) await expect(card).toBeInViewport({ ratio: 1 })
+2026-10-23T16:18:16.5682517Z       71 |     await page.screenshot({ path: `${root}/catalog-${width}.png` })
+2026-10-23T16:18:16.5683047Z       72 |     for (const [code, title, bridge] of [['ne01', labels[0], bridge1], ['ne02', labels[1], bridge2]]) {
+2026-10-23T16:18:16.5683503Z         at /home/runner/work/kyotsu-step-web/kyotsu-step-web/e2e/wmath027-three-themes.spec.ts:69:89
+2026-10-23T16:18:16.5683747Z 
+2026-10-23T16:18:16.5684036Z     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5684565Z     test-results/wmath027-three-themes-W027-2d1a2-ctual-bridge-paragraphs-390-mobile-chromium/test-failed-1.png
+2026-10-23T16:18:16.5685189Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5685398Z 
+2026-10-23T16:18:16.5685767Z     Error Context: test-results/wmath027-three-themes-W027-2d1a2-ctual-bridge-paragraphs-390-mobile-chromium/error-context.md
+2026-10-23T16:18:16.5686159Z 
+2026-10-23T16:18:16.5686463Z     attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5687043Z     test-results/wmath027-three-themes-W027-2d1a2-ctual-bridge-paragraphs-390-mobile-chromium/trace.zip
+2026-10-23T16:18:16.5687599Z     Usage:
+2026-10-23T16:18:16.5687712Z 
+2026-10-23T16:18:16.5688121Z         pnpm exec playwright show-trace test-results/wmath027-three-themes-W027-2d1a2-ctual-bridge-paragraphs-390-mobile-chromium/trace.zip
+2026-10-23T16:18:16.5688590Z 
+2026-10-23T16:18:16.5688845Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5689054Z 
+2026-10-23T16:18:16.5689335Z     Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5689551Z 
+2026-10-23T16:18:16.5689739Z     Error: fixed navigation must not cover any of the three captured cards
+2026-10-23T16:18:16.5689959Z 
+2026-10-23T16:18:16.5690095Z     expect(received).toEqual(expected) // deep equality
+2026-10-23T16:18:16.5690279Z 
+2026-10-23T16:18:16.5690363Z     - Expected  - 1
+2026-10-23T16:18:16.5690546Z     + Received  + 3
+2026-10-23T16:18:16.5690654Z 
+2026-10-23T16:18:16.5690726Z     - Array []
+2026-10-23T16:18:16.5690905Z     + Array [
+2026-10-23T16:18:16.5691145Z     +   "math-textbook-topic-numbers-inequalities",
+2026-10-23T16:18:16.5691455Z     + ]
+2026-10-23T16:18:16.5691565Z 
+2026-10-23T16:18:16.5691714Z       67 |       }).map(() => node.getAttribute('data-testid'))
+2026-10-23T16:18:16.5691970Z       68 |     }))
+2026-10-23T16:18:16.5692327Z     > 69 |     expect(blockers, 'fixed navigation must not cover any of the three captured cards').toEqual([])
+2026-10-23T16:18:16.5692719Z          |                                                                                         ^
+2026-10-23T16:18:16.5693116Z       70 |     for (const card of await links.all()) await expect(card).toBeInViewport({ ratio: 1 })
+2026-10-23T16:18:16.5693494Z       71 |     await page.screenshot({ path: `${root}/catalog-${width}.png` })
+2026-10-23T16:18:16.5693903Z       72 |     for (const [code, title, bridge] of [['ne01', labels[0], bridge1], ['ne02', labels[1], bridge2]]) {
+2026-10-23T16:18:16.5694356Z         at /home/runner/work/kyotsu-step-web/kyotsu-step-web/e2e/wmath027-three-themes.spec.ts:69:89
+2026-10-23T16:18:16.5694603Z 
+2026-10-23T16:18:16.5694894Z     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5695507Z     test-results/wmath027-three-themes-W027-2d1a2-ctual-bridge-paragraphs-390-mobile-chromium-retry1/test-failed-1.png
+2026-10-23T16:18:16.5696161Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5696381Z 
+2026-10-23T16:18:16.5696776Z     Error Context: test-results/wmath027-three-themes-W027-2d1a2-ctual-bridge-paragraphs-390-mobile-chromium-retry1/error-context.md
+2026-10-23T16:18:16.5697310Z 
+2026-10-23T16:18:16.5697619Z     attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5698288Z     test-results/wmath027-three-themes-W027-2d1a2-ctual-bridge-paragraphs-390-mobile-chromium-retry1/trace.zip
+2026-10-23T16:18:16.5698668Z     Usage:
+2026-10-23T16:18:16.5698759Z 
+2026-10-23T16:18:16.5699185Z         pnpm exec playwright show-trace test-results/wmath027-three-themes-W027-2d1a2-ctual-bridge-paragraphs-390-mobile-chromium-retry1/trace.zip
+2026-10-23T16:18:16.5699708Z 
+2026-10-23T16:18:16.5699990Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5700212Z 
+2026-10-23T16:18:16.5700483Z     Retry #2 ───────────────────────────────────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5700706Z 
+2026-10-23T16:18:16.5700981Z     Error: fixed navigation must not cover any of the three captured cards
+2026-10-23T16:18:16.5701241Z 
+2026-10-23T16:18:16.5701437Z     expect(received).toEqual(expected) // deep equality
+2026-10-23T16:18:16.5701711Z 
+2026-10-23T16:18:16.5701907Z     - Expected  - 1
+2026-10-23T16:18:16.5702126Z     + Received  + 3
+2026-10-23T16:18:16.5702243Z 
+2026-10-23T16:18:16.5702329Z     - Array []
+2026-10-23T16:18:16.5702518Z     + Array [
+2026-10-23T16:18:16.5702793Z     +   "math-textbook-topic-numbers-inequalities",
+2026-10-23T16:18:16.5703121Z     + ]
+2026-10-23T16:18:16.5703234Z 
+2026-10-23T16:18:16.5703405Z       67 |       }).map(() => node.getAttribute('data-testid'))
+2026-10-23T16:18:16.5703740Z       68 |     }))
+2026-10-23T16:18:16.5704218Z     > 69 |     expect(blockers, 'fixed navigation must not cover any of the three captured cards').toEqual([])
+2026-10-23T16:18:16.5704664Z          |                                                                                         ^
+2026-10-23T16:18:16.5705072Z       70 |     for (const card of await links.all()) await expect(card).toBeInViewport({ ratio: 1 })
+2026-10-23T16:18:16.5705493Z       71 |     await page.screenshot({ path: `${root}/catalog-${width}.png` })
+2026-10-23T16:18:16.5706060Z       72 |     for (const [code, title, bridge] of [['ne01', labels[0], bridge1], ['ne02', labels[1], bridge2]]) {
+2026-10-23T16:18:16.5706636Z         at /home/runner/work/kyotsu-step-web/kyotsu-step-web/e2e/wmath027-three-themes.spec.ts:69:89
+2026-10-23T16:18:16.5706987Z 
+2026-10-23T16:18:16.5707942Z     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5708819Z     test-results/wmath027-three-themes-W027-2d1a2-ctual-bridge-paragraphs-390-mobile-chromium-retry2/test-failed-1.png
+2026-10-23T16:18:16.5709772Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5710115Z 
+2026-10-23T16:18:16.5710714Z     Error Context: test-results/wmath027-three-themes-W027-2d1a2-ctual-bridge-paragraphs-390-mobile-chromium-retry2/error-context.md
+2026-10-23T16:18:16.5711303Z 
+2026-10-23T16:18:16.5711672Z     attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5712445Z     test-results/wmath027-three-themes-W027-2d1a2-ctual-bridge-paragraphs-390-mobile-chromium-retry2/trace.zip
+2026-10-23T16:18:16.5713138Z     Usage:
+2026-10-23T16:18:16.5713261Z 
+2026-10-23T16:18:16.5713850Z         pnpm exec playwright show-trace test-results/wmath027-three-themes-W027-2d1a2-ctual-bridge-paragraphs-390-mobile-chromium-retry2/trace.zip
+2026-10-23T16:18:16.5714562Z 
+2026-10-23T16:18:16.5715003Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5715275Z 
+2026-10-23T16:18:16.5715840Z   3) [desktop-chromium] › e2e/wmath027-three-themes.spec.ts:44:3 › W027 three cards and two actual bridge paragraphs 1440 
+2026-10-23T16:18:16.5716296Z 
+2026-10-23T16:18:16.5716548Z     Error: fixed navigation must not cover any of the three captured cards
+2026-10-23T16:18:16.5716850Z 
+2026-10-23T16:18:16.5717048Z     expect(received).toEqual(expected) // deep equality
+2026-10-23T16:18:16.5717497Z 
+2026-10-23T16:18:16.5717605Z     - Expected  - 1
+2026-10-23T16:18:16.5717861Z     + Received  + 3
+2026-10-23T16:18:16.5717989Z 
+2026-10-23T16:18:16.5718093Z     - Array []
+2026-10-23T16:18:16.5718351Z     + Array [
+2026-10-23T16:18:16.5718668Z     +   "math-textbook-topic-numbers-inequalities",
+2026-10-23T16:18:16.5719053Z     + ]
+2026-10-23T16:18:16.5719185Z 
+2026-10-23T16:18:16.5719363Z       67 |       }).map(() => node.getAttribute('data-testid'))
+2026-10-23T16:18:16.5719672Z       68 |     }))
+2026-10-23T16:18:16.5720124Z     > 69 |     expect(blockers, 'fixed navigation must not cover any of the three captured cards').toEqual([])
+2026-10-23T16:18:16.5720679Z          |                                                                                         ^
+2026-10-23T16:18:16.5721272Z       70 |     for (const card of await links.all()) await expect(card).toBeInViewport({ ratio: 1 })
+2026-10-23T16:18:16.5721867Z       71 |     await page.screenshot({ path: `${root}/catalog-${width}.png` })
+2026-10-23T16:18:16.5722460Z       72 |     for (const [code, title, bridge] of [['ne01', labels[0], bridge1], ['ne02', labels[1], bridge2]]) {
+2026-10-23T16:18:16.5723112Z         at /home/runner/work/kyotsu-step-web/kyotsu-step-web/e2e/wmath027-three-themes.spec.ts:69:89
+2026-10-23T16:18:16.5723501Z 
+2026-10-23T16:18:16.5724092Z     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5724827Z     test-results/wmath027-three-themes-W027-8514e-tual-bridge-paragraphs-1440-desktop-chromium/test-failed-1.png
+2026-10-23T16:18:16.5725694Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5725985Z 
+2026-10-23T16:18:16.5726594Z     Error Context: test-results/wmath027-three-themes-W027-8514e-tual-bridge-paragraphs-1440-desktop-chromium/error-context.md
+2026-10-23T16:18:16.5727486Z 
+2026-10-23T16:18:16.5727940Z     attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5728746Z     test-results/wmath027-three-themes-W027-8514e-tual-bridge-paragraphs-1440-desktop-chromium/trace.zip
+2026-10-23T16:18:16.5729278Z     Usage:
+2026-10-23T16:18:16.5729396Z 
+2026-10-23T16:18:16.5729938Z         pnpm exec playwright show-trace test-results/wmath027-three-themes-W027-8514e-tual-bridge-paragraphs-1440-desktop-chromium/trace.zip
+2026-10-23T16:18:16.5730669Z 
+2026-10-23T16:18:16.5731033Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5731334Z 
+2026-10-23T16:18:16.5731730Z     Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5732059Z 
+2026-10-23T16:18:16.5732308Z     Error: fixed navigation must not cover any of the three captured cards
+2026-10-23T16:18:16.5732660Z 
+2026-10-23T16:18:16.5732845Z     expect(received).toEqual(expected) // deep equality
+2026-10-23T16:18:16.5733074Z 
+2026-10-23T16:18:16.5733181Z     - Expected  - 1
+2026-10-23T16:18:16.5733403Z     + Received  + 3
+2026-10-23T16:18:16.5733538Z 
+2026-10-23T16:18:16.5733687Z     - Array []
+2026-10-23T16:18:16.5733926Z     + Array [
+2026-10-23T16:18:16.5734214Z     +   "math-textbook-topic-numbers-inequalities",
+2026-10-23T16:18:16.5734548Z     + ]
+2026-10-23T16:18:16.5734675Z 
+2026-10-23T16:18:16.5734859Z       67 |       }).map(() => node.getAttribute('data-testid'))
+2026-10-23T16:18:16.5735198Z       68 |     }))
+2026-10-23T16:18:16.5735650Z     > 69 |     expect(blockers, 'fixed navigation must not cover any of the three captured cards').toEqual([])
+2026-10-23T16:18:16.5736256Z          |                                                                                         ^
+2026-10-23T16:18:16.5736778Z       70 |     for (const card of await links.all()) await expect(card).toBeInViewport({ ratio: 1 })
+2026-10-23T16:18:16.5737598Z       71 |     await page.screenshot({ path: `${root}/catalog-${width}.png` })
+2026-10-23T16:18:16.5738248Z       72 |     for (const [code, title, bridge] of [['ne01', labels[0], bridge1], ['ne02', labels[1], bridge2]]) {
+2026-10-23T16:18:16.5738937Z         at /home/runner/work/kyotsu-step-web/kyotsu-step-web/e2e/wmath027-three-themes.spec.ts:69:89
+2026-10-23T16:18:16.5739368Z 
+2026-10-23T16:18:16.5740031Z     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5740823Z     test-results/wmath027-three-themes-W027-8514e-tual-bridge-paragraphs-1440-desktop-chromium-retry1/test-failed-1.png
+2026-10-23T16:18:16.5741662Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5741934Z 
+2026-10-23T16:18:16.5742501Z     Error Context: test-results/wmath027-three-themes-W027-8514e-tual-bridge-paragraphs-1440-desktop-chromium-retry1/error-context.md
+2026-10-23T16:18:16.5743184Z 
+2026-10-23T16:18:16.5743653Z     attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5744462Z     test-results/wmath027-three-themes-W027-8514e-tual-bridge-paragraphs-1440-desktop-chromium-retry1/trace.zip
+2026-10-23T16:18:16.5744993Z     Usage:
+2026-10-23T16:18:16.5745108Z 
+2026-10-23T16:18:16.5745664Z         pnpm exec playwright show-trace test-results/wmath027-three-themes-W027-8514e-tual-bridge-paragraphs-1440-desktop-chromium-retry1/trace.zip
+2026-10-23T16:18:16.5746410Z 
+2026-10-23T16:18:16.5746807Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5747337Z 
+2026-10-23T16:18:16.5747741Z     Retry #2 ───────────────────────────────────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5748016Z 
+2026-10-23T16:18:16.5748254Z     Error: fixed navigation must not cover any of the three captured cards
+2026-10-23T16:18:16.5748522Z 
+2026-10-23T16:18:16.5748685Z     expect(received).toEqual(expected) // deep equality
+2026-10-23T16:18:16.5748919Z 
+2026-10-23T16:18:16.5749026Z     - Expected  - 1
+2026-10-23T16:18:16.5749249Z     + Received  + 3
+2026-10-23T16:18:16.5749390Z 
+2026-10-23T16:18:16.5749479Z     - Array []
+2026-10-23T16:18:16.5749758Z     + Array [
+2026-10-23T16:18:16.5750029Z     +   "math-textbook-topic-numbers-inequalities",
+2026-10-23T16:18:16.5750337Z     + ]
+2026-10-23T16:18:16.5750463Z 
+2026-10-23T16:18:16.5750655Z       67 |       }).map(() => node.getAttribute('data-testid'))
+2026-10-23T16:18:16.5751007Z       68 |     }))
+2026-10-23T16:18:16.5751473Z     > 69 |     expect(blockers, 'fixed navigation must not cover any of the three captured cards').toEqual([])
+2026-10-23T16:18:16.5752107Z          |                                                                                         ^
+2026-10-23T16:18:16.5752638Z       70 |     for (const card of await links.all()) await expect(card).toBeInViewport({ ratio: 1 })
+2026-10-23T16:18:16.5753163Z       71 |     await page.screenshot({ path: `${root}/catalog-${width}.png` })
+2026-10-23T16:18:16.5753722Z       72 |     for (const [code, title, bridge] of [['ne01', labels[0], bridge1], ['ne02', labels[1], bridge2]]) {
+2026-10-23T16:18:16.5754273Z         at /home/runner/work/kyotsu-step-web/kyotsu-step-web/e2e/wmath027-three-themes.spec.ts:69:89
+2026-10-23T16:18:16.5754535Z 
+2026-10-23T16:18:16.5754883Z     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5755473Z     test-results/wmath027-three-themes-W027-8514e-tual-bridge-paragraphs-1440-desktop-chromium-retry2/test-failed-1.png
+2026-10-23T16:18:16.5756069Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5756269Z 
+2026-10-23T16:18:16.5756696Z     Error Context: test-results/wmath027-three-themes-W027-8514e-tual-bridge-paragraphs-1440-desktop-chromium-retry2/error-context.md
+2026-10-23T16:18:16.5757388Z 
+2026-10-23T16:18:16.5757772Z     attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5758500Z     test-results/wmath027-three-themes-W027-8514e-tual-bridge-paragraphs-1440-desktop-chromium-retry2/trace.zip
+2026-10-23T16:18:16.5758980Z     Usage:
+2026-10-23T16:18:16.5759072Z 
+2026-10-23T16:18:16.5759585Z         pnpm exec playwright show-trace test-results/wmath027-three-themes-W027-8514e-tual-bridge-paragraphs-1440-desktop-chromium-retry2/trace.zip
+2026-10-23T16:18:16.5760005Z 
+2026-10-23T16:18:16.5760273Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-10-23T16:18:16.5760470Z 
+2026-10-23T16:18:16.5760533Z   3 failed
+2026-10-23T16:18:16.5761074Z     [mobile-chromium] › e2e/wmath027-three-themes.spec.ts:44:3 › W027 three cards and two actual bridge paragraphs 320 
+2026-10-23T16:18:16.5761961Z     [mobile-chromium] › e2e/wmath027-three-themes.spec.ts:44:3 › W027 three cards and two actual bridge paragraphs 390 
+2026-10-23T16:18:16.5762865Z     [desktop-chromium] › e2e/wmath027-three-themes.spec.ts:44:3 › W027 three cards and two actual bridge paragraphs 1440 
+2026-10-23T16:18:16.5763381Z   3 skipped
+2026-10-23T16:18:16.5763613Z   8 passed (20.6s)
+2026-10-23T16:18:16.6250830Z ##[error]Process completed with exit code 1.
+2026-10-23T16:18:16.6339561Z ##[group]Run actions/upload-artifact@v4
+2026-10-23T16:18:16.6339789Z with:
+2026-10-23T16:18:16.6340014Z   name: wmath027-real-414137fe25a8e3d818b2e9f9cf7a3fb2be472641
+2026-10-23T16:18:16.6340421Z   path: e2e-evidence/wmath027/
+test-results/
+
+2026-10-23T16:18:16.6340650Z   retention-days: 7
+2026-10-23T16:18:16.6340834Z   if-no-files-found: warn
+2026-10-23T16:18:16.6341026Z   compression-level: 6
+2026-10-23T16:18:16.6341210Z   overwrite: false
+2026-10-23T16:18:16.6341387Z   include-hidden-files: false
+2026-10-23T16:18:16.6341577Z env:
+2026-10-23T16:18:16.6341725Z   CI: true
+2026-10-23T16:18:16.6341914Z   CAPTURE_SHA: 414137fe25a8e3d818b2e9f9cf7a3fb2be472641
+2026-10-23T16:18:16.6342159Z   E2E_USE_PREVIEW: 1
+2026-10-23T16:18:16.6342364Z   PNPM_HOME: /home/runner/setup-pnpm/node_modules/.bin
+2026-10-23T16:18:16.6342595Z ##[endgroup]
+2026-10-23T16:18:16.7588262Z (node:4690) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-23T16:18:16.7588990Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-23T16:18:16.7704392Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-10-23T16:18:16.7705305Z The least common ancestor is /home/runner/work/kyotsu-step-web/kyotsu-step-web. This will be the root directory of the artifact
+2026-10-23T16:18:16.7705785Z With the provided path, there will be 28 files uploaded
+2026-10-23T16:18:16.7709210Z Artifact name is valid!
+2026-10-23T16:18:16.7709783Z Root directory input is valid!
+2026-10-23T16:18:17.0425535Z Beginning upload of artifact content to blob storage
+2026-10-23T16:18:17.1962333Z (node:4690) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-23T16:18:17.6616682Z Uploaded bytes 4286391
+2026-10-23T16:18:17.7053920Z Finished uploading artifact content to blob storage!
+2026-10-23T16:18:17.7054762Z SHA256 digest of uploaded artifact zip is e6e6de6bc9b7f1862803d97e2f42fafd7a6ee6103f673c35f3ce27835e9aa7bb
+2026-10-23T16:18:17.7058474Z Finalizing artifact upload
+2026-10-23T16:18:18.1858410Z Artifact wmath027-real-414137fe25a8e3d818b2e9f9cf7a3fb2be472641.zip successfully finalized. Artifact ID 12515197768
+2026-10-23T16:18:18.1859440Z Artifact wmath027-real-414137fe25a8e3d818b2e9f9cf7a3fb2be472641 has been successfully uploaded! Final size is 4286391 bytes. Artifact ID is 12515197768
+2026-10-23T16:18:18.1863894Z Artifact download URL: https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39985460395/artifacts/12515197768
+2026-10-23T16:18:18.2011028Z Post job cleanup.
+2026-10-23T16:18:18.3074108Z Pruning is unnecessary.
+2026-10-23T16:18:18.3200843Z Post job cleanup.
+2026-10-23T16:18:18.3928307Z [command]/usr/bin/git version
+2026-10-23T16:18:18.3962684Z git version 2.55.0
+2026-10-23T16:18:18.4006278Z Temporarily overriding HOME='/home/runner/work/_temp/0880b778-879a-483a-876c-ecccc42e0d61' before making global git config changes
+2026-10-23T16:18:18.4008412Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-23T16:18:18.4015117Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/kyotsu-step-web/kyotsu-step-web
+2026-10-23T16:18:18.4056495Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-23T16:18:18.4094726Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-23T16:18:18.4336098Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-23T16:18:18.4361649Z http.https://github.com/.extraheader
+2026-10-23T16:18:18.4376834Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-23T16:18:18.4414142Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-23T16:18:18.4603716Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-23T16:18:18.4628917Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-23T16:18:18.4911092Z Cleaning up orphan processes
+2026-10-23T16:18:18.5161431Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4, actions/upload-artifact@v4, pnpm/action-setup@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+

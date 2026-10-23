@@ -82,7 +82,7 @@ def solve(lesson):
         m,n,a,b,c,d=integer_params(lesson['params'],6)
         if any(v==0 for v in (m,n,a,b,c,d)): raise Unsupported('この初回パターンは非零係数を前提とする。退化形は別の型が必要')
         A=f'({a})*x+({b})'; B=f'({c})*x+({d})'; source=f'({m})*({A})+({n})*({B})'
-        terms=[f'({m})*({a})*x',f'({m})*({b})',f'({n})*({c})*x',f'({n})*({d})']
+        terms=[f'({m})*(({a})*x)',f'({m})*({b})',f'({n})*(({c})*x)',f'({n})*({d})']
         results=[f'({m*a})*x',str(m*b),f'({n*c})*x',str(n*d)]
         steps=[step(f'product{i}',terms[i],results[i],'括弧の外の数を、この項へ掛ける。','分配後の計算') for i in range(4)]
         multipliers=[m,m,n,n]; items=[f'({a})*x',str(b),f'({c})*x',str(d)]
@@ -127,12 +127,16 @@ def bind_blanks(lesson,solution):
 def choices_for(blank):
     answer=blank['answer']; p=polynomial(answer)
     # 誤答候補の出所を保持。正答と一致・他候補と一致する場合は採用しない。
-    op=tree(blank['operation']); operands=[]
+    op=tree(blank['operation']); candidates=[]
     if isinstance(op,ast.BinOp):
-        operands=[('omit_right_operand',ast.unparse(op.left)),('omit_left_operand',ast.unparse(op.right)),
-                  ('reverse_left_sign',f'-({ast.unparse(op.left)})+({ast.unparse(op.right)})')]
-    candidates=operands+[('sign',expression([-c for c in p])),('offset_coefficient',expression([c+(1 if i==len(p)-1 else 0) for i,c in enumerate(p)])),
-                ('forget_degree',expression([sum(p)])),('extra_constant',f'({answer})+1'),('subtract_constant',f'({answer})-1'),('double',f'2*({answer})')]
+        a,b=ast.unparse(op.left),ast.unparse(op.right)
+        if isinstance(op.op,ast.Mult):
+            candidates=[('multiply_as_addition',f'({a})+({b})'),('multiply_as_subtraction',f'({a})-({b})'),
+                        ('omit_right_factor',a),('omit_left_factor',b)]
+        elif isinstance(op.op,ast.Add):
+            candidates=[('omit_right_term',a),('omit_left_term',b),('reverse_left_sign',f'-({a})+({b})'),('reverse_right_sign',f'({a})-({b})')]
+    candidates += [('reverse_result_sign',expression([-c for c in p]))]
+    if len(p)>2:candidates.append(('forget_degree',expression([0,p[-1]])))
     selected=[dict(value=answer,misconception=None)]
     for tag,value in candidates:
         if not any(same(value,x['value']) for x in selected): selected.append(dict(value=value,misconception=tag))

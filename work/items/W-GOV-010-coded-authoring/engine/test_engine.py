@@ -1,7 +1,9 @@
 import copy
 import json
 import unittest
-from engine import compile_project,solve,verify_solution,bind_blanks,choices_for,verify_choices,design_hash,render
+import tempfile
+from pathlib import Path
+from engine import compile_project,solve,verify_solution,bind_blanks,choices_for,verify_choices,design_hash,render,run
 from math_core import polynomial,independent_identity,Unsupported
 from make_examples import lesson,project,review
 
@@ -62,5 +64,15 @@ class EngineTests(unittest.TestCase):
         self.p['mode']='practice';self.p['lessons'][0].pop('prerequisite_result_ids');self.fails(self.p)
     def test_empty_source_and_lesson(self):
         self.p['lessons']=[];self.p['scope']['expected_units']=[];self.fails(self.p)
+    def test_degenerate_case_is_explicitly_unsupported(self):
+        self.p['lessons'][0]['params']=[3,0,1,2]
+        self.assertEqual(compile_project(self.p)[1]['status'],'UNVERIFIED')
+    def test_incomplete_build_does_not_leave_playable_stale_output(self):
+        with tempfile.TemporaryDirectory() as temp:
+            p=Path(temp);source=p/'input.json';source.write_text(json.dumps(self.p))
+            run(source,p/'out');self.assertTrue((p/'out/preview.html').exists())
+            self.p['lessons'][0]['pattern']='unsupported';source.write_text(json.dumps(self.p))
+            run(source,p/'out');self.assertFalse((p/'out/preview.html').exists())
+            self.assertTrue((p/'out/preview.html.stale').exists())
 
 if __name__=='__main__': unittest.main()

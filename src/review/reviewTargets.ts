@@ -252,6 +252,69 @@ const targets: Record<string, ReviewTarget> = {
     markBlockIds: ['formula-r3-q10-p1', 'formula-r3-q10-p2', 'formula-r3-q10-p3', 'formula-r3-q10-p4'],
     reviewState: 'awaiting-user',
   },
+  // W025/P-008: exact approved hint-only scope; previous accepted blocks stay closed.
+  'n04-q20-hint': {
+    id:'n04-q20-hint',unitId:'math-numbers-expressions-n04',title:'N04 Q20 hint',
+    question:'現在の答えを先出しせず、計算・判断の手順を案内する誤答ヒント',
+    revision:2,totalItems:26,
+    blockIds:["n04-lead-20","n04-formula-20","n04-after-20"],
+    itemIds:["n04-20"],expectedAnswers:["(x^2+5x+4)(x^2+5x+6)"],
+    markBlockIds:['n04-formula-20'],reviewState:'awaiting-user',
+  },
+  // W025/P-009: exact approved hint-only scope; previous accepted blocks stay closed.
+  'n10-q07-hint': {
+    id:'n10-q07-hint',unitId:'math-numbers-expressions-n10',title:'N10 Q07 hint',
+    question:'現在の答えを先出しせず、計算・判断の手順を案内する誤答ヒント',
+    revision:1,totalItems:21,
+    blockIds:["paragraph-product-check","formula-n10-07"],
+    itemIds:["n10-07"],expectedAnswers:["\\sqrt{48}=\\sqrt{16\\cdot3}"],
+    markBlockIds:['formula-n10-07'],reviewState:'awaiting-user',
+  },
+  // W025/P-010: exact approved hint-only scope; previous accepted blocks stay closed.
+  'n10-q08-hint': {
+    id:'n10-q08-hint',unitId:'math-numbers-expressions-n10',title:'N10 Q08 hint',
+    question:'現在の答えを先出しせず、計算・判断の手順を案内する誤答ヒント',
+    revision:1,totalItems:21,
+    blockIds:["paragraph-product-check","formula-n10-07","formula-n10-08"],
+    itemIds:["n10-07","n10-08"],expectedAnswers:["\\sqrt{48}=\\sqrt{16\\cdot3}","4\\sqrt3"],
+    markBlockIds:['formula-n10-08'],reviewState:'awaiting-user',
+  },
+  // W025/P-011: exact approved hint-only scope; previous accepted blocks stay closed.
+  'n12-q06-coef-hint': {
+    id:'n12-q06-coef-hint',unitId:'math-numbers-expressions-n12',title:'N12 Q06 hint',
+    question:'現在の答えを先出しせず、計算・判断の手順を案内する誤答ヒント',
+    revision:3,totalItems:35,
+    blockIds:["paragraph-triple-solve","formula-q06-left-coef","paragraph-q06-left-const"],
+    itemIds:["n12-p002-q06-left-coef"],expectedAnswers:["1"],
+    markBlockIds:['formula-q06-left-coef'],reviewState:'awaiting-user',
+  },
+  // W025/P-012: exact approved hint-only scope; previous accepted blocks stay closed.
+  'n12-q12-coef-hint': {
+    id:'n12-q12-coef-hint',unitId:'math-numbers-expressions-n12',title:'N12 Q12 hint',
+    question:'現在の答えを先出しせず、計算・判断の手順を案内する誤答ヒント',
+    revision:3,totalItems:35,
+    blockIds:["paragraph-cost-negative","formula-q12-signed-coef","paragraph-cost-collect"],
+    itemIds:["n12-p002-q12-signed-coef"],expectedAnswers:["-130"],
+    markBlockIds:['formula-q12-signed-coef'],reviewState:'awaiting-user',
+  },
+  // W025/P-013: exact approved hint-only scope; previous accepted blocks stay closed.
+  'n04-q22-hint': {
+    id:'n04-q22-hint',unitId:'math-numbers-expressions-n04',title:'N04 Q22 hint',
+    question:'現在の答えを先出しせず、計算・判断の手順を案内する誤答ヒント',
+    revision:2,totalItems:26,
+    blockIds:["n04-lead-22","n04-formula-22","n04-after-22"],
+    itemIds:["n04-22"],expectedAnswers:["x^4+10x^3+35x^2+50x+24"],
+    markBlockIds:['n04-formula-22'],reviewState:'awaiting-user',
+  },
+  // W025/P-014: exact approved hint-only scope; previous accepted blocks stay closed.
+  'n07-q11-hint': {
+    id:'n07-q11-hint',unitId:'math-numbers-expressions-n07',title:'N07 Q11 hint',
+    question:'現在の答えを先出しせず、計算・判断の手順を案内する誤答ヒント',
+    revision:3,totalItems:14,
+    blockIds:["n07-lead-11","n07-formula-11","n07-after-11"],
+    itemIds:["n07-11"],expectedAnswers:["2^k\\cdot5^k"],
+    markBlockIds:['n07-formula-11'],reviewState:'awaiting-user',
+  },
 }
 
 export const reviewTargets = targets

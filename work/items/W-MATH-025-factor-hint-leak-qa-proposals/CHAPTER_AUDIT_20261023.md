@@ -1,3 +1,9 @@
+
+## 2026-10-23 — seven exact hints approved and implementation started
+User direct response **「まとめて修正してくれ」** followed the seven exact proposed new hints/P008–P014 and the explicit grouped approval question. This approves precisely those seven hint strings;no repeated approval is required. Record parentd95dd283d204095bf58ece70faef9544abe1d42d/source runtimefc27e7f5fbdc28345917276d43602ea4787537bd;live main15ae503455bc6ae75b080caa1c4919cafb250027 unchanged;account/repo1391122224 verified.
+Seven replacements in four files only. Keep keys,authored/visible choices,original208 markers/290 graded decisions,unit revisions,flow/math,text/figures,schema,renderer and progress semantics. Prior five accepted blocks and N13/Q16 migrations remain intact. Verification adds exact real review sections,seven boundary cases,and real normal/review Chromium320/390/1440 cases. N10Q08 includes its actual Q07 prerequisite in preview;N12 uses actual sub-item indices;N04Q22 correctly handles final-unit completion. Uses getTextbookChoices actual2/3/4 choices. Source CI and authentic images **PENDING** until actual native results. Evidence archived on a separate branch so source CI is not cancelled by image commits.
+[P008–P014 approved batch](./BATCH_HINT_PROPOSALS_P008_P014.md). New seven human Gate① is pending after engineering QA;prior five remain accepted. Gate② OPEN;Gate③ FINAL-REVIEW-NOT-READY;no main merge/deploy or NE01/NE02 creation.
+
 # W025 current chapter audit — 2026-10-23
 Status: IN-PROGRESS
 Command: CMD-WORK-001 修正

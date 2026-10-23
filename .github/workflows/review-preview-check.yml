@@ -1530,3 +1530,90 @@ jobs:
           path: e2e-evidence/q16-*.png
           if-no-files-found: ignore
           retention-days: 7
+
+  wmath025-p008-p014-hints-genuine-screenshots:
+    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'work/W-MATH-025-p008-p014-hints-approved-20261023' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      CI: 'true'
+      VITE_REVIEW_PREVIEW: 'true'
+      VITE_BASE_PATH: '/'
+      VITE_PREVIEW_COMMIT: ${{ github.event.pull_request.head.sha }}
+      E2E_USE_PREVIEW: '1'
+      E2E_WM025_SEVEN_HINTS: '1'
+      CAPTURE_SHA: ${{ github.event.pull_request.head.sha }}
+      EVIDENCE_BRANCH: work/W-MATH-025-p008-p014-evidence-20261023
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: true
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run typecheck && pnpm run build
+      - name: Install readable Japanese font for P008–P014 hint batch Gate1 screenshots
+        shell: bash
+        timeout-minutes: 4
+        run: |
+          font_dir="$RUNNER_TEMP/kyotsu-hint-batch-fonts"
+          mkdir -p "$font_dir"
+          for weight in Regular Bold; do
+            curl --fail --location --connect-timeout 15 --max-time 90 --retry 1 --retry-max-time 120 \
+              "https://raw.githubusercontent.com/notofonts/noto-cjk/main/Sans/OTF/Japanese/NotoSansCJKjp-$weight.otf" \
+              -o "$font_dir/NotoSansCJKjp-$weight.otf"
+          done
+          sudo mkdir -p /usr/local/share/fonts/kyotsu-hint-batch
+          sudo install -m 644 "$font_dir/"*.otf /usr/local/share/fonts/kyotsu-hint-batch/
+          sha256sum "$font_dir/"*.otf
+          fc-cache -f
+          fc-match -f '%{family}\n' ':lang=ja' | grep -q 'Noto'
+          fc-list :lang=ja | grep -q 'Noto Sans CJK JP'
+      - run: pnpm exec playwright install chromium
+      - name: Seven approved hints review and normal lesson authentic 320 390 1440
+        run: pnpm exec playwright test e2e/wmath025-p008-p014-hints-gate1.spec.ts --project=mobile-chromium --project=desktop-chromium
+      - name: Retain P008–P014 hint batch diagnostic images even when a check fails
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: wmath025-p008-p014-hints-real-${{ github.event.pull_request.head.sha }}
+          path: e2e-evidence/wm025-seven-*.png
+          if-no-files-found: ignore
+          retention-days: 7
+      - name: Archive original PNGs on separate evidence branch, leaving tested source frozen
+        if: ${{ success() }}
+        shell: bash
+        run: |
+          dir="work/items/W-MATH-025-factor-hint-leak-qa-proposals/evidence/gate1-p008-p014"
+          mkdir -p "$dir"
+          cp e2e-evidence/wm025-seven-*.png "$dir/"
+          {
+            printf '# Seven approved hints — authentic current-source images\n\n'
+            printf 'Real operated source SHA: %s\n\n' "$CAPTURE_SHA"
+            printf 'Actual Chromium320/390/1440,normal/review,wrong-hint-retry,persistence and real unit completion. Human visual acceptance pending for this new seven-item batch;prior five remain accepted.\n\n'
+            for id in n04-20 n04-22 n07-11 n10-07 n10-08 n12-p002-q06-left-coef n12-p002-q12-signed-coef; do
+              printf '## %s\n\n' "$id"
+              for width in 320 390 1440; do
+                printf '### %spx\n\n' "$width"
+                for mode in review normal; do
+                  for state in before choices wrong complete; do
+                    printf '![%s %s %s %spx](wm025-seven-%s-%s-%s-%s.png)\n\n' "$id" "$mode" "$state" "$width" "$id" "$mode" "$state" "$width"
+                  done
+                done
+              done
+            done
+          } > "$dir/README.md"
+          sha256sum "$dir/"*.png > "$dir/SHA256SUMS.txt"
+          git add "$dir"
+          if ! git diff --cached --quiet; then
+            git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Archive original seven-hint Gate1 images on separate evidence branch'
+            git push origin "HEAD:refs/heads/$EVIDENCE_BRANCH"
+          fi

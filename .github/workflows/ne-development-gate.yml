@@ -37,7 +37,7 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm run typecheck
-      - run: pnpm exec eslint src/data/textbook/math/numbers/ne01Lesson.ts src/data/textbook/math/numbers/ne02Lesson.ts src/data/textbook/math/numbers/developmentFeedback.ts src/data/textbook/math/numbers/developmentLessons.test.ts src/domain/neDevelopmentDisplay.ts src/domain/textbookDisplayLines.ts src/data/textbook/math/mathCatalog.ts src/pages/TextbookUnitPage.tsx src/components/textbook/formulaWrap.ts src/review/reviewTargets.ts e2e/ne-development.spec.ts e2e/wmath025-chapter-final-audit.spec.ts --max-warnings=0
+      - run: pnpm exec eslint src/data/textbook/math/numbers/ne01Lesson.ts src/data/textbook/math/numbers/ne02Lesson.ts src/data/textbook/math/numbers/developmentFeedback.ts src/data/textbook/math/numbers/developmentLessons.test.ts src/domain/neDevelopmentDisplay.ts src/domain/mathFractionDisplay.ts src/domain/textbookDisplayLines.ts src/data/textbook/math/mathCatalog.ts src/pages/TextbookUnitPage.tsx src/components/textbook/formulaWrap.ts src/review/reviewTargets.ts e2e/ne-development.spec.ts e2e/wmath025-chapter-final-audit.spec.ts --max-warnings=0
       - run: pnpm exec vitest run src/data/textbook/math/numbers/developmentLessons.test.ts src/data/textbook/math/mathCatalog.test.ts src/data/textbook/math/mathReviewIntegrity.test.ts src/components/textbook/TextbookFormula.test.tsx src/components/textbook/formulaWrap.test.tsx src/review/reviewTargets.test.ts
       - run: pnpm run build
       - run: node work/items/W-MATH-003-numbers-expressions-creation/NE01_NE02/export-runtime.mjs

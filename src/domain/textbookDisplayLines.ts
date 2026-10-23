@@ -1,3 +1,4 @@
+import { mathFractionDisplayValue } from './mathFractionDisplay'
 import { neDevelopmentDisplayLines } from './neDevelopmentDisplay'
 import { n12CostDisplayLines } from './n12CostDisplay'
 
@@ -7,7 +8,7 @@ import { n12CostDisplayLines } from './n12CostDisplay'
  */
 export function textbookDisplayLines(itemId: string, value: string): string[] {
   const developmentLines = neDevelopmentDisplayLines(itemId, value)
-  if (developmentLines) return developmentLines
+  if (developmentLines) return developmentLines.map(line => mathFractionDisplayValue(itemId, line))
   // P-004-R3: one specific long original-source choice, three independent facts.
   // Visual line breaks only; grading, stored answer and other items are unchanged.
   if (itemId === 'n07-09') return value.split(',\\;')
@@ -26,6 +27,6 @@ export function textbookDisplayLines(itemId: string, value: string): string[] {
       return [`1.41^2=${left}`, `${left}${leftSign}2${rightSign}${right}`, `${right}=1.42^2`]
     }
   }
-  return n12CostDisplayLines(itemId, value)
+  return n12CostDisplayLines(itemId, mathFractionDisplayValue(itemId, value))
 }
 

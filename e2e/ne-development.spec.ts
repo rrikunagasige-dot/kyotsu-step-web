@@ -1,5 +1,7 @@
 import { mkdirSync, writeFileSync } from 'node:fs'
 import { expect, test, type Page } from '@playwright/test'
+import { mathNumbersN07Unit as n07 } from '../src/data/textbook/math/numbers/n07Lesson'
+import { mathNumbersN10Unit as n10 } from '../src/data/textbook/math/numbers/n10Lesson'
 import { mathNumbersNE01Unit as ne01 } from '../src/data/textbook/math/numbers/ne01Lesson'
 import { mathNumbersNE02Unit as ne02 } from '../src/data/textbook/math/numbers/ne02Lesson'
 import { developmentFeedback } from '../src/data/textbook/math/numbers/developmentFeedback'
@@ -8,6 +10,8 @@ const units=[ne01,ne02]
 const root='e2e-evidence/ne-development'
 async function fits(page: Page){
  await expect(page.locator('.katex-error')).toHaveCount(0)
+ const badDenominators=await page.locator('.katex-mathml mfrac').evaluateAll(nodes=>nodes.map(n=>n.lastElementChild?.textContent??'').filter(s=>s.includes('{')||s.includes('}')))
+ expect(badDenominators,'actual MathML denominators are numbers or roots, never literal set braces').toEqual([])
  const overflow=await page.locator('.reading-formula-line, .reading-choice-option').evaluateAll(nodes=>nodes.flatMap(n=>{
   const e=n as HTMLElement,r=e.getBoundingClientRect()
   const children=Array.from(e.querySelectorAll('.katex-html')).map(c=>c.getBoundingClientRect())
@@ -17,6 +21,26 @@ async function fits(page: Page){
  const w=await page.evaluate(()=>[document.documentElement.clientWidth,document.documentElement.scrollWidth])
  expect(w[1]).toBeLessThanOrEqual(w[0]+1)
 }
+async function captureFullReading(page: Page, path: string) {
+ // Actual browser viewport only. Never hide navigation or inject DOM/CSS.
+ // Normal phone-height interactions were verified in the frozen-source chapter run.
+ const extent=await page.locator('body').evaluate(el=>el.scrollHeight)
+ await page.setViewportSize({width:390,height:Math.ceil(extent)+300})
+ await page.evaluate(()=>window.scrollTo(0,0))
+ const flow=page.getByTestId('textbook-reading-flow')
+ const overlap=await flow.evaluate(el=>{
+   const r=el.getBoundingClientRect()
+   return Array.from(document.querySelectorAll('nav')).some(n=>{
+     const style=getComputedStyle(n),b=n.getBoundingClientRect()
+     return style.position==='fixed' && Math.min(r.right,b.right)-Math.max(r.left,b.left)>1 && Math.min(r.bottom,b.bottom)-Math.max(r.top,b.top)>1
+   })
+ })
+ expect(overlap,'fixed navigation must be outside the captured reading flow').toBe(false)
+ await fits(page)
+ await flow.screenshot({path})
+ await page.setViewportSize({width:390,height:1000})
+}
+
 for(const unit of units)for(const width of [320,390,1440])test('P005 all choices '+unit.unitId+' '+width,async({page},info)=>{
  test.skip(process.env.E2E_NE_DEVELOPMENT!=='1','approved P005 CI only')
  test.skip(width===1440?info.project.name!=='desktop-chromium':info.project.name!=='mobile-chromium')
@@ -60,8 +84,23 @@ for(const unit of units)for(const item of unit.sections[0].items)test('P005 auth
  const choices=getTextbookChoices(unit,item),wrong=choices.find(c=>c!==item.answer)!
  await panel.getByRole('button',{name:wrong,exact:true}).click();await trigger.click();await fits(page)
  mkdirSync(root,{recursive:true})
- await page.getByTestId('textbook-reading-flow').screenshot({path:root+'/'+item.id+'-wrong-390.png'})
+ await captureFullReading(page,root+'/'+item.id+'-wrong-390.png')
  await panel.getByRole('button',{name:item.answer,exact:true}).click();await fits(page)
- await page.getByTestId('textbook-reading-flow').screenshot({path:root+'/'+item.id+'-complete-390.png'})
+ await captureFullReading(page,root+'/'+item.id+'-complete-390.png')
  expect(await page.evaluate(()=>localStorage.getItem('kyotsu-step-store')??'')).not.toContain(item.id)
+})
+
+for(const c of [{unit:n07,id:'n07-08',target:'n07-q08-fraction-display'},{unit:n10,id:'n10-16',target:'n10-q16-fraction-display'}])for(const width of [320,390,1440])test('P005 related fraction '+c.id+' '+width,async({page},info)=>{
+ test.skip(process.env.E2E_NE_DEVELOPMENT!=='1')
+ test.skip(width===1440?info.project.name!=='desktop-chromium':info.project.name!=='mobile-chromium')
+ await page.setViewportSize({width,height:1000})
+ await page.goto('/#/review/'+c.target)
+ const item=c.unit.sections[0].items.find(q=>q.id===c.id)!
+ const trigger=page.getByTestId('textbook-item-'+item.id),panel=page.getByTestId('inline-choice-panel-'+item.id)
+ await trigger.click();await fits(page)
+ const wrong=getTextbookChoices(c.unit,item).find(v=>v!==item.answer)!
+ await panel.getByRole('button',{name:wrong,exact:true}).click();await trigger.click();await fits(page)
+ if(width===390){mkdirSync(root,{recursive:true});await captureFullReading(page,root+'/'+item.id+'-wrong-390.png')}
+ await panel.getByRole('button',{name:item.answer,exact:true}).click();await fits(page)
+ if(width===390)await captureFullReading(page,root+'/'+item.id+'-complete-390.png')
 })

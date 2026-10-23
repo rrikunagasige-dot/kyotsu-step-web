@@ -24,6 +24,8 @@ on:
       - 'src/data/questionCatalog.zh.test.ts'
       - 'src/domain/questionSchema.ts'
       - 'src/domain/neDevelopmentDisplay.ts'
+      - 'src/domain/mathFractionDisplay.ts'
+      - 'src/domain/textbookDisplayLines.ts'
       - 'src/pages/TextbookUnitPage.tsx'
       - 'src/domain/textbookMath.ts'
       - 'src/domain/textbookMath.test.ts'
@@ -80,3 +82,4 @@ jobs:
 
       - name: Desktop pilot smoke
         run: pnpm exec playwright test e2e/math-practice-pilot.spec.ts --project=desktop-chromium
+

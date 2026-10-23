@@ -1,3 +1,5 @@
+import { normalizeTextbookMath } from '../../../../domain/textbookMath'
+import { mathTextbookUnits } from '../index'
 import { describe, expect, it } from 'vitest'
 import katex from 'katex'
 import { mathNumbersNE01Unit, ne01SourceToItemIds } from './ne01Lesson'
@@ -29,7 +31,7 @@ describe('P005 source coverage and real lesson contracts', () => {
       expect(new Set(item.choices).size).toBe(3)
       for(const choice of item.choices!) {
         expect(()=>katex.renderToString(choice,{throwOnError:true,strict:'ignore'})).not.toThrow()
-        for(const line of textbookDisplayLines(item.id,choice))expect(()=>katex.renderToString(line,{throwOnError:true,strict:'ignore'})).not.toThrow()
+        for(const line of textbookDisplayLines(item.id,choice))expect(()=>katex.renderToString(normalizeTextbookMath(line),{throwOnError:true,strict:'ignore'})).not.toThrow()
       }
       const visible=getTextbookChoices(unit,item)
       expect(visible.filter(c=>c===item.answer)).toHaveLength(1)
@@ -61,4 +63,23 @@ describe('P005 source coverage and real lesson contracts', () => {
     expect(JSON.stringify(before)).not.toContain('5と4')
     expect(developmentFeedback('n12-01','anything')).toBeUndefined()
   })
+  it('keeps numeric fraction denominators as numbers through the real presentation and normalization chain',()=>{
+    const checked=[]
+    for(const unit of mathTextbookUnits.filter(u=>u.unitId.startsWith('math-numbers-expressions-')))for(const section of unit.sections)for(const item of section.items)for(const choice of item.choices??[]){
+      if(!choice.includes('\\frac'))continue
+      for(const line of textbookDisplayLines(item.id,choice)){
+        const normalized=normalizeTextbookMath(line)
+        expect(normalized,item.id+' '+choice).not.toContain('\\{')
+        const html=katex.renderToString(normalized,{throwOnError:true,strict:'ignore',output:'mathml'})
+        expect(html,item.id+' '+choice).not.toContain('<mo>{</mo>')
+      }
+      checked.push(item.id)
+    }
+    expect(checked).toContain('n07-08')
+    expect(checked).toContain('n10-16')
+    expect(checked).toContain('ne02-10')
+    expect(checked).toContain('ne02-12')
+    expect(normalizeTextbookMath('\\frac{\\sqrt{10}+\\sqrt2}{2}')).toContain('\\{2\\}')
+  })
+
 })

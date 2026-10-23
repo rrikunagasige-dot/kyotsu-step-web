@@ -43,6 +43,15 @@ function developmentTargets(unit: TextbookUnit): Record<string, ReviewTarget> {
 }
 
 const targets: Record<string, ReviewTarget> = {
+  'n07-q08-fraction-display': {
+    id:'n07-q08-fraction-display',unitId:'math-numbers-expressions-n07',title:'循環小数の分数表示',question:'分母が数として正しく表示される',
+    revision:3,totalItems:14,blockIds:['n07-lead-08','n07-formula-08','n07-after-08'],itemIds:['n07-08'],expectedAnswers:['x=\\frac89'],markBlockIds:['n07-formula-08'],reviewState:'awaiting-user',
+  },
+  'n10-q16-fraction-display': {
+    id:'n10-q16-fraction-display',unitId:'math-numbers-expressions-n10',title:'有理化後の分数表示',question:'選択肢と完成式の分母を正しく保つ',
+    revision:1,totalItems:21,blockIds:['formula-n10-16','paragraph-rationalize-concept'],itemIds:['n10-16'],expectedAnswers:['\\frac{\\sqrt3}{6}'],markBlockIds:['formula-n10-16'],reviewState:'awaiting-user',
+  },
+
   ...developmentTargets(mathNumbersNE01Unit),
   ...developmentTargets(mathNumbersNE02Unit),
   // W-MATH-025/P-005: exact approved after-wrong hint only.

@@ -1,0 +1,136 @@
+{
+  "status": "DESIGN-MATH-CHECKED / APP-NOT-IMPLEMENTED",
+  "sourceSha256": "93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa",
+  "sourceQuestions": 25,
+  "sourceMathObjects": 28,
+  "sourceFigures": 0,
+  "exactChecks": [
+    {
+      "id": "ne01-01",
+      "result": "PASS"
+    },
+    {
+      "id": "ne01-02",
+      "result": "PASS"
+    },
+    {
+      "id": "ne01-03",
+      "result": "PASS"
+    },
+    {
+      "id": "ne01-04",
+      "result": "PASS"
+    },
+    {
+      "id": "ne01-05",
+      "result": "PASS"
+    },
+    {
+      "id": "ne01-06",
+      "result": "PASS"
+    },
+    {
+      "id": "ne01-07",
+      "result": "PASS"
+    },
+    {
+      "id": "ne01-08",
+      "result": "PASS"
+    },
+    {
+      "id": "ne01-09",
+      "result": "PASS"
+    },
+    {
+      "id": "ne01-10",
+      "result": "PASS"
+    },
+    {
+      "id": "ne01-11",
+      "result": "PASS"
+    },
+    {
+      "id": "ne01-12",
+      "result": "PASS"
+    },
+    {
+      "id": "ne01-13",
+      "result": "PASS"
+    },
+    {
+      "id": "ne01-12-first-cube",
+      "result": "PASS"
+    },
+    {
+      "id": "ne01-13-first-factor",
+      "result": "PASS"
+    },
+    {
+      "id": "ne02-04-square",
+      "result": "PASS"
+    },
+    {
+      "id": "ne02-06-coefficient",
+      "result": "PASS"
+    },
+    {
+      "id": "ne02-07-square-plus",
+      "result": "PASS"
+    },
+    {
+      "id": "ne02-07-square-minus",
+      "result": "PASS"
+    },
+    {
+      "id": "ne02-09-radicand",
+      "result": "PASS"
+    },
+    {
+      "id": "ne02-11-numerator",
+      "result": "PASS"
+    },
+    {
+      "id": "ne02-12-rationalization",
+      "result": "PASS"
+    },
+    {
+      "id": "ne02-12-square",
+      "result": "PASS"
+    },
+    {
+      "id": "ne02-03-sum",
+      "result": "PASS"
+    },
+    {
+      "id": "ne02-03-product",
+      "result": "PASS"
+    },
+    {
+      "id": "ne02-07-sum",
+      "result": "PASS"
+    },
+    {
+      "id": "ne02-07-product",
+      "result": "PASS"
+    },
+    {
+      "id": "ne02-11-sum",
+      "result": "PASS"
+    },
+    {
+      "id": "ne02-11-product",
+      "result": "PASS"
+    },
+    {
+      "id": "ne02-08-principal-root-sign",
+      "result": "PASS",
+      "proof": "sqrt(5) and 2 positive; 5>4 implies sqrt(5)>2"
+    }
+  ],
+  "exactCheckCount": 30,
+  "designRows": 25,
+  "authoredDistractors": 50,
+  "semanticReview": "All 25 completions and 50 distractors reviewed by this assistant; not an independent reviewer. Exact checks above validate the listed identities, conditions and signs, not a full general TeX parser.",
+  "appRendering": "UNVERIFIED: design only",
+  "userAcceptance": "PENDING"
+}

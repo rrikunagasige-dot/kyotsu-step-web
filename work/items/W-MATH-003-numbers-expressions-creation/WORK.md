@@ -1,3 +1,13 @@
+## 2026-10-23 — P-005 NE01/NE02 remaining 25-question batch design
+
+User latest directive: 「続けて」. Continue source audit/design under approved creation P-001; do not manufacture acceptance of previously pending screenshots or approval of an unseen exact design.
+
+[Complete two-unit / 25-question proposal](./NE01_NE02/P005_NE01_NE02_BATCH_REVIEW.md), [NE01 full learner draft](./NE01_NE02/NE01_LEARNER_REVIEW_V1.md), [NE02 full learner draft](./NE01_NE02/NE02_LEARNER_REVIEW_V1.md). Source Word hash reverified, direct paragraphs 618–668, 25 original markers, 28 OMML math objects, zero figures. All 25 completions and 50 distractors authored and semantically reviewed; 30 exact identity/condition/sign checks PASS in reproducible audit. This is same-assistant verification, not an independent-agent audit or browser proof. New app data/code not implemented; P-005 exact review-only implementation approval PENDING. Review both units together, then implement/verify as one batch after approval, never one question at a time.
+
+Existing chapter correction engineering remains at frozen code SHA `68338688f22ffb3acaa7074b5c0c0f79584604c5`: 46 layout repairs, existing 14 units/208 originals/290 decisions/926 visible choices/256 formula blocks; final-source CI successful. [Authoritative correction report](../W-MATH-025-factor-hint-leak-qa-proposals/P017_P018_CHAPTER_AUDIT_FINAL_20261023.md), [46 real-image gallery](../W-MATH-025-factor-hint-leak-qa-proposals/GATE1_P017_P018_ALL_LAYOUTS.md). User visual acceptance of those new repairs is still pending; no remaining confirmed unfixed defect in that final tested engineering scope. New-creation research/design is independent and does not waive correction acceptance. Gate② formal closure and Gate③ user entire-app play not granted.
+
+Work stays VERIFYING. Current branch main observed `15ae503455bc6ae75b080caa1c4919cafb250027`; no main/deploy/publication, billing, existing learner IDs/history, source Word or figures changed. Next: one consolidated decision on exact P-005 design, then review-only implementation plus real 320/390/1440px testing, source audit and chapter regression; preserve pending human gates.
+
 # W-MATH-003 — 数学Ⅰ「数と式」教科書モードの作成
 Status: VERIFYING
 Source gate: RECOVERED (原Word元バイト・397 OMML・14原図を確認)。N01はPR #66/main/Pagesで確認済み。N03/N10/N12のユーザー承認済みreview専用アプリはPR #68でmain統合（merge `1e7a5d77e5f741d77afc7c0fe124cf978e45993e`）。最終PR CI 39009560379／ガバナンス 39009560317、統合後ガバナンス 39015513887はSUCCESS。[Pages 39015513835](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39015513835) SUCCESS、N03/N10/N12の公開Chrome操作はPASS。教材一覧への正式昇格・ユーザー実機受入は未実施。

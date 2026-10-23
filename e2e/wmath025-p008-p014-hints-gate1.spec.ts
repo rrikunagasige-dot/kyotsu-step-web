@@ -36,6 +36,7 @@ test.describe('W025 P008–P014 approved hint batch, genuine app evidence',()=>{
           await expect(page.getByTestId('review-preview-ready')).toBeVisible()
           await expect(page.locator('[data-testid^="review-mark-"]')).toHaveCount(0)
         }
+        await page.goto('/#/') // establish app origin before reading localStorage in a fresh browser context
         const before=await page.evaluate(()=>localStorage.getItem('kyotsu-step-store'))
         await page.goto('/#/review/'+c.target)
         await expect(page.getByTestId('review-preview-ready')).toBeVisible()

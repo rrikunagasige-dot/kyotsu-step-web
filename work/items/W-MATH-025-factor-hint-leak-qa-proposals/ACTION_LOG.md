@@ -1,4 +1,7 @@
 
+## Native QA repair — fresh origin before localStorage read
+Review39910902077/capture120273422981 failed because the optimized accepted-marker sweep runs only for P008;other preview tests were still on about:blank when reading localStorage,causing SecurityError before app navigation. Actual normal21 cases and P008's three preview cases passed;18 remaining preview cases failed for this same harness error. Navigate to the real app origin before taking the storage baseline,then enter the target preview. Keep the isolation assertion itself intact. No app/storage/lesson change. Initial39910753265 was FAILURE and initial Math39910753299 CANCELLED,not passed. Source48dc0a928de9b424f33260724c964ea0fb457a32 has now been superseded only for this necessary test repair. New exact-source native results PENDING;failed/cancelled evidence remains history.
+
 ## QA preflight correction — prerequisite-first marker visibility
 Initial source d52a90b359403d34cda56fc19b92a2485436a2b2 had the new Q08 preview test assert its marker before solving prerequisite Q07. Existing renderer intentionally hides later blocks until the prior choice is resolved. Move the assertion after real Q07 completion;no lesson/review target/production UI change. Preserve initial run IDs39910753299 Math,39910753265 Review,39910753272 Gov as history. A new exact test-source commit supersedes them;do not inherit a cancelled/unfinished run's PASS. Required test correction is made now rather than misdiagnosing the correct app gate.
 

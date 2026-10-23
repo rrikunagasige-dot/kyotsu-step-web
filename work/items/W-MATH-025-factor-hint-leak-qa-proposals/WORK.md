@@ -1,3 +1,7 @@
+## 2026-10-23 — P016 directly approved and implemented
+
+User exact「いいよ続けて」directly followed the complete P016 two-block grouping proposal and its approval question,with no changed conditions. P016 APPROVED/IMPLEMENTING→VERIFYING. Scope:only N12formula-q06-left-coef andformula-q12-signed-coef get semanticgroups;renderer andscopedCSSplusregressiontests. P015stableunitIDkept,allprevioushintacceptanceskept,keys/choices/math/data/IDs/revisions/storageunchanged. Parent29e788315f951196ec20abbc6a27735078c72aa7;main15ae503455bc6ae75b080caa1c4919cafb250027unchanged. Nativeverificationpendingatthissource. Testrowbinding,notonlyoverflow;11candidatesauditedwithoutunauthorizedrelatededits. PriorP015automatedPASSandvisualFAILremainhistory. NewtwoimageGate①notrequesteduntilactualimageinspectionPASS. WholechapterGate②OPEN/Gate③NOTREADY;no deployment.
+
 ## 2026-10-23 — P015 implemented; automated regression PASS; semantic layout FAIL; P016 PROPOSED
 
 P015 was explicitly approved by「いいよ続けて」and implemented on944dcbdf5687a52789ae5baf55b1193537267837. FullMath39916191960SUCCESS250unit/257browser/12skip;Review39916192203/Gov39916191961SUCCESS;frozen-sourcecapture39916932746SUCCESS25unit/6browser/6matrixskip. [Exact execution evidence and infra history](./P015_EXECUTION_20261023.md).

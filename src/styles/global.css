@@ -1512,3 +1512,33 @@ button.math-theme-link {
     justify-self: center;
   }
 }
+
+
+/* W-MATH-025/P016: semantic groups ONLY for the two approved N12 blocks.
+   Keep canonical token sizes and all other formula layouts unchanged. */
+.reading-formula-line--n12 .reading-formula-expression--p016 {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: .22em;
+}
+.reading-formula-expression--p016 > .reading-formula-group {
+  display: inline-flex;
+  flex: 0 0 auto;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  gap: .08em;
+  white-space: nowrap;
+}
+.reading-formula-p016-arrow { flex: 0 0 auto; line-height: 1.2; }
+.reading-formula-p016-narrow { display: none; }
+@media (max-width: 430px) {
+  .reading-formula-line--n12 .reading-formula-expression--p016 {
+    flex-direction: column;
+    align-items: center;
+    gap: .16rem;
+  }
+  .reading-formula-p016-wide { display: none; }
+  .reading-formula-p016-narrow { display: block; }
+}

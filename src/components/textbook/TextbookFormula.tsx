@@ -36,91 +36,127 @@ function isSolvedUnitCoefficientBeforeX(
 
 export function TextbookFormula({ block, section, progress, onOpen, unitId }: Props) {
   const n12Formula = unitId === 'math-numbers-expressions-n12'
+  const renderedParts = block.parts.map((part, index) => {
+    const key = `${block.id}-part-${index}`
+
+    if (part.type === 'math') {
+      const followsUnitCoefficient = isSolvedUnitCoefficientBeforeX(block, index - 1, section, progress)
+      const latex = followsUnitCoefficient ? part.latex.slice(1) : part.latex
+      const arrow = '\\quad\\Longrightarrow\\quad'
+      const arrowAt = n12Formula ? latex.indexOf(arrow) : -1
+      if (arrowAt >= 0) {
+        const left = latex.slice(0, arrowAt)
+        const right = latex.slice(arrowAt + arrow.length)
+        return (
+          <span className="reading-formula-n12-transform" key={key}>
+            {left && <span className="reading-formula-math"><InlineMath math={left} /></span>}
+            <span className="reading-formula-n12-arrow" aria-label="次の式へ">↓</span>
+            {right && <span className="reading-formula-math"><InlineMath math={right} /></span>}
+          </span>
+        )
+      }
+      return <span className="reading-formula-math" key={key}><InlineMath math={latex} /></span>
+    }
+
+    if (part.type === 'text') {
+      return <span className="reading-formula-text" key={key}>{part.text}</span>
+    }
+
+    if (part.type === 'term') {
+      return <strong className="reading-term reading-formula-term" key={key}>{part.text}</strong>
+    }
+
+    const item = section.items.find((candidate) => candidate.id === part.itemId)
+    if (!item) {
+      return <span className="reading-formula-missing" key={key}>□</span>
+    }
+
+    const record = progress?.answers[item.id]
+    const resolved = isTextbookItemResolved(item, record)
+
+    if (resolved) {
+      const value = record?.value ?? item.answer
+      const showCoefficientAsX = isSolvedUnitCoefficientBeforeX(block, index, section, progress)
+      return (
+        <span
+          className="reading-formula-answer"
+          data-testid={`resolved-${item.id}`}
+          aria-label={showCoefficientAsX ? '係数は1（式ではx）' : undefined}
+          key={key}
+        >
+          {item.answerType === 'formula'
+            ? (() => {
+              const lines = textbookDisplayLines(item.id, value)
+              return lines.length > 1
+                ? <span className="reading-formula-n12-answer-lines">
+                    {lines.map((line, i) =>
+                      <span key={i}><InlineMath math={normalizeTextbookMath(line)} /></span>)}
+                  </span>
+                : <InlineMath math={showCoefficientAsX ? 'x' : normalizeTextbookMath(value)} />
+            })()
+            : value}
+        </span>
+      )
+    }
+
+    const wrong = Boolean(record)
+    const localToken = ['n12-p002-', 'n12-p003-', 'n09-p001-', 'n01-r3-', 'n03-r3-'].some(prefix => item.id.startsWith(prefix))
+    return (
+      <button
+        type="button"
+        className={`reading-formula-choice${wrong ? ' reading-formula-choice--wrong' : ''}${localToken ? ' reading-formula-choice--token' : ''}`}
+        data-testid={`textbook-item-${item.id}`}
+        aria-label={item.prompt}
+        onClick={() => onOpen(item.id)}
+        key={key}
+      >
+        {wrong ? '×' : '選択'}
+      </button>
+    )
+  })
+  const first = block.parts[0]
+  const n12Choice = block.parts[1]
+  const suffix = block.parts[2]
+  const q06Layout = n12Formula && block.parts.length === 3 && block.id === 'formula-q06-left-coef'
+    && first?.type === 'math' && first.latex.endsWith('\\quad\\Longrightarrow\\quad')
+    && n12Choice?.type === 'choice' && n12Choice.itemId === 'n12-p002-q06-left-coef'
+    && suffix?.type === 'math'
+  const q12Layout = n12Formula && block.parts.length === 3 && block.id === 'formula-q12-signed-coef'
+    && first?.type === 'math' && first.latex.includes('=')
+    && n12Choice?.type === 'choice' && n12Choice.itemId === 'n12-p002-q12-signed-coef'
+    && suffix?.type === 'math'
+  const grouped = q06Layout || q12Layout
   return (
     <div
       className={`reading-formula-line${n12Formula ? ' reading-formula-line--n12' : ''}`}
       data-testid={`textbook-formula-${block.id}`}
       data-latex-status="ok"
     >
-      <div className="reading-formula-expression">
-        {block.parts.map((part, index) => {
-          const key = `${block.id}-part-${index}`
-
-          if (part.type === 'math') {
-            const followsUnitCoefficient = isSolvedUnitCoefficientBeforeX(block, index - 1, section, progress)
-            const latex = followsUnitCoefficient ? part.latex.slice(1) : part.latex
-            const arrow = '\\quad\\Longrightarrow\\quad'
-            const arrowAt = n12Formula ? latex.indexOf(arrow) : -1
-            if (arrowAt >= 0) {
-              const left = latex.slice(0, arrowAt)
-              const right = latex.slice(arrowAt + arrow.length)
-              return (
-                <span className="reading-formula-n12-transform" key={key}>
-                  {left && <span className="reading-formula-math"><InlineMath math={left} /></span>}
-                  <span className="reading-formula-n12-arrow" aria-label="次の式へ">↓</span>
-                  {right && <span className="reading-formula-math"><InlineMath math={right} /></span>}
-                </span>
-              )
-            }
-            return <span className="reading-formula-math" key={key}><InlineMath math={latex} /></span>
-          }
-
-          if (part.type === 'text') {
-            return <span className="reading-formula-text" key={key}>{part.text}</span>
-          }
-
-          if (part.type === 'term') {
-            return <strong className="reading-term reading-formula-term" key={key}>{part.text}</strong>
-          }
-
-          const item = section.items.find((candidate) => candidate.id === part.itemId)
-          if (!item) {
-            return <span className="reading-formula-missing" key={key}>□</span>
-          }
-
-          const record = progress?.answers[item.id]
-          const resolved = isTextbookItemResolved(item, record)
-
-          if (resolved) {
-            const value = record?.value ?? item.answer
-            const showCoefficientAsX = isSolvedUnitCoefficientBeforeX(block, index, section, progress)
-            return (
-              <span
-                className="reading-formula-answer"
-                data-testid={`resolved-${item.id}`}
-                aria-label={showCoefficientAsX ? '係数は1（式ではx）' : undefined}
-                key={key}
-              >
-                {item.answerType === 'formula'
-                  ? (() => {
-                    const lines = textbookDisplayLines(item.id, value)
-                    return lines.length > 1
-                      ? <span className="reading-formula-n12-answer-lines">
-                          {lines.map((line, i) =>
-                            <span key={i}><InlineMath math={normalizeTextbookMath(line)} /></span>)}
-                        </span>
-                      : <InlineMath math={showCoefficientAsX ? 'x' : normalizeTextbookMath(value)} />
-                  })()
-                  : value}
-              </span>
-            )
-          }
-
-          const wrong = Boolean(record)
-          const localToken = ['n12-p002-', 'n12-p003-', 'n09-p001-', 'n01-r3-', 'n03-r3-'].some(prefix => item.id.startsWith(prefix))
-          return (
-            <button
-              type="button"
-              className={`reading-formula-choice${wrong ? ' reading-formula-choice--wrong' : ''}${localToken ? ' reading-formula-choice--token' : ''}`}
-              data-testid={`textbook-item-${item.id}`}
-              aria-label={item.prompt}
-              onClick={() => onOpen(item.id)}
-              key={key}
-            >
-              {wrong ? '×' : '選択'}
-            </button>
-          )
-        })}
+      <div className={`reading-formula-expression${grouped ? ' reading-formula-expression--p016' : ''}`}>
+        {q06Layout && first?.type === 'math' ? (
+          <>
+            <span className="reading-formula-group" data-testid="p016-left">
+              <InlineMath math={first.latex.slice(0, first.latex.indexOf('\\quad\\Longrightarrow\\quad'))} />
+            </span>
+            <span className="reading-formula-p016-arrow" aria-label="次の式へ">
+              <span className="reading-formula-p016-wide" aria-hidden="true">⇒</span>
+              <span className="reading-formula-p016-narrow" aria-hidden="true">↓</span>
+            </span>
+            <span className="reading-formula-group" data-testid="p016-right">
+              {renderedParts.slice(1)}
+            </span>
+          </>
+        ) : q12Layout && first?.type === 'math' ? (
+          <>
+            <span className="reading-formula-group" data-testid="p016-left">
+              <InlineMath math={first.latex.slice(0, first.latex.indexOf('='))} />
+            </span>
+            <span className="reading-formula-group" data-testid="p016-right">
+              <InlineMath math={first.latex.slice(first.latex.indexOf('='))} />
+              {renderedParts.slice(1)}
+            </span>
+          </>
+        ) : renderedParts}
       </div>
     </div>
   )

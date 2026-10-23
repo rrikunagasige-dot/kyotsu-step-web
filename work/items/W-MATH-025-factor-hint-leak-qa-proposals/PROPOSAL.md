@@ -1,3 +1,9 @@
+## 2026-10-23 — P015 implemented; automated regression PASS; semantic layout FAIL; P016 PROPOSED
+
+P015 was explicitly approved by「いいよ続けて」and implemented on944dcbdf5687a52789ae5baf55b1193537267837. FullMath39916191960SUCCESS250unit/257browser/12skip;Review39916192203/Gov39916191961SUCCESS;frozen-sourcecapture39916932746SUCCESS25unit/6browser/6matrixskip. [Exact execution evidence and infra history](./P015_EXECUTION_20261023.md).
+
+**FAILED-VERIFICATION / REVISE-PROPOSAL for overall layout.** Actual screenshots show Q06choice detached fromfollowingx at320/390,andQ12closingparenthesis)x detached at390 (openingparenthesisseparatedat320). P015 restores existingN12wrapping;it doesnotprotect mathematicalgroups. Nativegeometry/functionalityPASSdoesnotclosevisualgroupingFAIL. Do NOT ask human acceptance of these knownbadnew2layouts. [Actual visual failures](./P015_VISUAL_FAILURE_20261023.md),[P016 exact next proposal](./PROPOSAL_P016.md) PROPOSED/NOTIMPLEMENTED. Priorsevenacceptedhintsremainacceptedandhidden;no repetition. New11same-patternN12sourcecandidatesremainUNVERIFIEDuntilnativegroupaudit. WholechapterGate②OPEN/Gate③NOTREADY;mainunchanged,nodeploy. Olderpending/implementedclaimsbelow are source-specifichistory.
+
 ## 2026-10-23 — seven accepted; N12 display diagnosis complete; P015 PROPOSED
 
 User「じゃ続けて」is recorded as visual acceptance of P008–P014 on source22cc/images97ed3d8. All prior accepted items remain accepted. [Exact acceptance](./SEVEN_ITEM_ACCEPTANCE_20261023.md). No repeat seven-item acceptance request.

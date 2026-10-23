@@ -1,3 +1,7 @@
+## 2026-10-23 JST — P016 two visual blocks accepted; P017 four-block proposal prepared
+
+User exact「いいよ続けて」directly answered the two authentic-image visual acceptance question with no conditions. P016 Q06LEFT/Q12signed BLOCK-VISUAL-OK on source91f7/images e2743; do not ask again. [Acceptance](./P016_VISUAL_ACCEPTANCE_20261023.md). All prior accepted hints/layouts preserved. New [P017](./PROPOSAL_P017.md) covers FOUR confirmed320px defects, PROPOSED/NOTIMPLEMENTED; exact mobile group/line shapes and protected scope documented. No learner/review-target/CSS edits this turn; next permitted action is exact P017 implementation after user approval. Gate② OPEN/Gate③ NOTREADY; main15ae503455bc6ae75b080caa1c4919cafb250027 unchanged.
+
 
 ### Frozen-source final CI
 

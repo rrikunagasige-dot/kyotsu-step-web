@@ -8,7 +8,7 @@ test.beforeEach(async ({ page }) => {
   await page.reload()
 })
 
-test('chapter 1 has three core and one optional reachable review topics; chapter 3 and physics remain intact', async ({ page }) => {
+test('chapter 1 has exactly three approved reachable review topics; chapter 3 and physics remain intact', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 720 })
   const chapter1 = page.getByTestId('math-textbook-chapter-1')
   await expect(chapter1).toContainText('数と式')
@@ -16,10 +16,9 @@ test('chapter 1 has three core and one optional reachable review topics; chapter
     ['numbers-polynomials', '式を整える', 'math-numbers-expressions-n01'],
     ['numbers-real', '実数を扱う', 'math-numbers-expressions-n07'],
     ['numbers-inequalities', '不等式を使う', 'math-numbers-expressions-n11'],
-    ['numbers-development', '参考・発展', 'math-numbers-expressions-ne01'],
   ] as const
   const links = chapter1.locator('a[data-testid^="math-textbook-topic-"]')
-  await expect(links).toHaveCount(4)
+  await expect(links).toHaveCount(3)
   for (const [topic, title, firstUnit] of labels) {
     const link = page.getByTestId('math-textbook-topic-' + topic)
     await expect(link).toContainText(title)
@@ -62,7 +61,8 @@ test('chapter 1 keeps learner progress and shows unfinished topic on return', as
   await page.goto(appRoute('/learning/setup?subject=math-1a'))
   await page.reload()
   const topic = page.getByTestId('math-textbook-topic-numbers-real')
-  await expect(topic).toContainText('1/65 完了')
+  await expect(topic).toContainText('1/77 完了')
   await expect(topic).toHaveAttribute('href', '#/learning/textbook/math-numbers-expressions-n07')
 })
+
 

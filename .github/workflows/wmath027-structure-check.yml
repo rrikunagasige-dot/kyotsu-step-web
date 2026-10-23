@@ -1,0 +1,59 @@
+name: W-MATH-027 structure verification — NO DEPLOY
+on:
+  push:
+    branches: ['work/W-MATH-027-workflow-resume-20261024']
+    paths:
+      - 'src/data/textbook/math/**'
+      - 'e2e/wmath027-three-themes.spec.ts'
+      - 'e2e/numbers-catalog-publish.spec.ts'
+      - 'work/items/W-MATH-027-three-theme-pedagogy-repair/qa/**'
+      - '.github/workflows/wmath027-structure-check.yml'
+permissions:
+  contents: read
+concurrency:
+  group: wmath027-structure
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      CI: 'true'
+      CAPTURE_SHA: ${{ github.sha }}
+      E2E_USE_PREVIEW: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run typecheck
+      - name: Actual data and saved-answer invariants against frozen original
+        run: node work/items/W-MATH-027-three-theme-pedagogy-repair/qa/verify-source.mjs
+      - name: Catalog, both development lessons and progress domain regressions
+        run: pnpm exec vitest run src/data/textbook/math/mathCatalog.test.ts src/data/textbook/math/numbers/developmentLessons.test.ts src/domain/textbook.test.ts
+      - run: pnpm run build
+      - name: Install Japanese font
+        timeout-minutes: 2
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y fonts-noto-cjk
+          fc-match -f '%{family}\n' ':lang=ja'
+      - run: pnpm exec playwright install --with-deps chromium
+      - name: Actual card layout, direct links, bridges and persisted progress
+        run: pnpm exec playwright test e2e/wmath027-three-themes.spec.ts e2e/numbers-catalog-publish.spec.ts --project=mobile-chromium --project=desktop-chromium --workers=2
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: wmath027-real-${{ github.sha }}
+          path: |
+            e2e-evidence/wmath027/
+            test-results/
+          retention-days: 7

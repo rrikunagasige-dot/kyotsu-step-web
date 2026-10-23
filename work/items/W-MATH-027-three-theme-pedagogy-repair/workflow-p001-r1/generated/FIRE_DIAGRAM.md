@@ -3,7 +3,7 @@
 ```mermaid
 flowchart TD
   N0["RESTORE 2/2"]
-  N1["BLOCK_CHAPTER1-STRUCTURE 9/10"]
+  N1["BLOCK_CHAPTER1-STRUCTURE 10/10"]
   N2["G2_AUDIT 0/1"]
   N3["G3_HOST 0/1"]
   N4["G3_FINAL 0/1"]
@@ -17,6 +17,6 @@ flowchart TD
   N0 --> N1
 ```
 
-現在の経路: material / 次ノード: G1_VISUAL@CHAPTER1-STRUCTURE / WAITING
+現在の経路: material / 次ノード: G2_AUDIT / READY
 
 各ブロック内のノード・担当・失効・依存は CURRENT_POSITION.md と snapshot.json を参照。

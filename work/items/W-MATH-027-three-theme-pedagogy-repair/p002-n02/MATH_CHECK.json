@@ -1,0 +1,170 @@
+{
+  "status": "PASS",
+  "method": "exact integer polynomial coefficients, no numerical sampling",
+  "candidate_is_design_only": true,
+  "source_sha": "f3c69618d5f97cf235d2f0d0d9256f33056e9525",
+  "equations": [
+    {
+      "block": "N02-Q06",
+      "equation": "A+B=(2*x**3-3*x**2+x-1)+(-x**3+2*x**2+0*x+2)",
+      "status": "PASS"
+    },
+    {
+      "block": "N02-Q06",
+      "equation": "A+B=(2+(-1))*x**3+(-3+2)*x**2+(1+0)*x+(-1+2)",
+      "status": "PASS"
+    },
+    {
+      "block": "N02-Q06",
+      "equation": "A+B=x**3-x**2+x+1",
+      "status": "PASS"
+    },
+    {
+      "block": "N02-Q07",
+      "equation": "-B=(-1)*(-x**3)+(-1)*(2*x**2)+(-1)*2",
+      "status": "PASS"
+    },
+    {
+      "block": "N02-Q07",
+      "equation": "-B=x**3-2*x**2-2",
+      "status": "PASS"
+    },
+    {
+      "block": "N02-Q08",
+      "equation": "A-B=(2*x**3-3*x**2+x-1)+(x**3-2*x**2-2)",
+      "status": "PASS"
+    },
+    {
+      "block": "N02-Q08",
+      "equation": "A-B=(2+1)*x**3+(-3+(-2))*x**2+x+(-1+(-2))",
+      "status": "PASS"
+    },
+    {
+      "block": "N02-Q08",
+      "equation": "A-B=3*x**3-5*x**2+x-3",
+      "status": "PASS"
+    },
+    {
+      "block": "N02-Q09",
+      "equation": "2*A=2*(2*x**3)+2*(-3*x**2)+2*x+2*(-1)",
+      "status": "PASS"
+    },
+    {
+      "block": "N02-Q09",
+      "equation": "2*A=4*x**3-6*x**2+2*x-2",
+      "status": "PASS"
+    },
+    {
+      "block": "N02-Q09",
+      "equation": "-3*B=(-3)*(-x**3)+(-3)*(2*x**2)+(-3)*2",
+      "status": "PASS"
+    },
+    {
+      "block": "N02-Q09",
+      "equation": "-3*B=3*x**3-6*x**2-6",
+      "status": "PASS"
+    },
+    {
+      "block": "N02-Q10",
+      "equation": "2*A-3*B=(4*x**3-6*x**2+2*x-2)+(3*x**3-6*x**2-6)",
+      "status": "PASS"
+    },
+    {
+      "block": "N02-Q10",
+      "equation": "2*A-3*B=(4+3)*x**3+(-6+(-6))*x**2+2*x+(-2+(-6))",
+      "status": "PASS"
+    },
+    {
+      "block": "N02-Q10",
+      "equation": "2*A-3*B=7*x**3-12*x**2+2*x-8",
+      "status": "PASS"
+    },
+    {
+      "block": "N02-Q11",
+      "equation": "3*A-4*B-(A-B)=3*A-4*B-A+B",
+      "status": "PASS"
+    },
+    {
+      "block": "N02-Q11",
+      "equation": "3*A-4*B-(A-B)=(3-1)*A+(-4+1)*B",
+      "status": "PASS"
+    },
+    {
+      "block": "N02-Q11",
+      "equation": "3*A-4*B-(A-B)=2*A-3*B",
+      "status": "PASS"
+    },
+    {
+      "block": "N02-Q12",
+      "equation": "3*A-4*B-(A-B)=2*A-3*B",
+      "status": "PASS"
+    },
+    {
+      "block": "N02-Q12",
+      "equation": "3*A-4*B-(A-B)=7*x**3-12*x**2+2*x-8",
+      "status": "PASS"
+    }
+  ],
+  "holes": [
+    {
+      "id": "n02-06",
+      "status": "PASS",
+      "wrong_choices": 3
+    },
+    {
+      "id": "n02-r2-q07-x3",
+      "status": "PASS",
+      "wrong_choices": 3
+    },
+    {
+      "id": "n02-07",
+      "status": "PASS",
+      "wrong_choices": 3
+    },
+    {
+      "id": "n02-08",
+      "status": "PASS",
+      "wrong_choices": 3
+    },
+    {
+      "id": "n02-r2-q09-a2",
+      "status": "PASS",
+      "wrong_choices": 3
+    },
+    {
+      "id": "n02-09",
+      "status": "PASS",
+      "wrong_choices": 3
+    },
+    {
+      "id": "n02-10",
+      "status": "PASS",
+      "wrong_choices": 3
+    },
+    {
+      "id": "n02-r2-q11-sign",
+      "status": "PASS",
+      "wrong_choices": 1
+    },
+    {
+      "id": "n02-11",
+      "status": "PASS",
+      "wrong_choices": 3
+    },
+    {
+      "id": "n02-12",
+      "status": "PASS",
+      "wrong_choices": 3
+    }
+  ],
+  "counts": {
+    "original_source_questions": 12,
+    "actions_before": 12,
+    "actions_after": 15,
+    "chapter_actions_after": 318
+  },
+  "not_proven": [
+    "実画面・実装・履歴移行は未実施",
+    "文章の読みやすさ・学習効果はコード検算から断定しない"
+  ]
+}

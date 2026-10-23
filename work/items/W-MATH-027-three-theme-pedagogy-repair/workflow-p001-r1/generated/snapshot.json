@@ -1,28 +1,33 @@
 {
   "work": "W-MATH-027-P001-R1",
   "engine_version": "1.0.0",
-  "ledger_head": "17f787e864fc799abaf384e1e5a07f59362fd7ce4fca82947e24dcebf870851c",
+  "ledger_head": "b1b6f595480310a36d79164f4259fce84bb70147234683cdad2981288ce7d30c",
   "work_status": "VERIFYING",
   "profile": "material",
   "simulation": false,
   "candidate_sha": "f3c69618d5f97cf235d2f0d0d9256f33056e9525",
   "next": {
-    "status": "WAITING",
-    "reason": "USER_DECISION",
+    "status": "READY",
     "task": {
       "work_id": "W-MATH-027-P001-R1",
       "node": {
-        "id": "G1_VISUAL@CHAPTER1-STRUCTURE",
-        "actor": "USER",
+        "id": "G2_AUDIT",
+        "actor": "AUDITOR",
         "depends_on": [
-          "R08_CAPTURE_LEARNING@CHAPTER1-STRUCTURE"
+          "G1_VISUAL@CHAPTER1-STRUCTURE",
+          "R07_VERIFY@CHAPTER1-STRUCTURE"
         ],
-        "required": [],
-        "block": "CHAPTER1-STRUCTURE",
-        "watch": "visual"
+        "required": [
+          "audit_rows",
+          "independence",
+          "original_source_refs",
+          "unknowns"
+        ],
+        "block": null,
+        "watch": "candidate"
       },
-      "task_id": "39c0ef87fac7fccaef5cfdbe29cace46f5bf8650be3573e40dfcc1ed1e974996",
-      "input_hash": "4b197ba1b3ebcc1c45e48c47bd80d7d2b11fe79c08bdb87b054188c7ca66a2cd",
+      "task_id": "d4276acb9a65b0754696fc3ce9bd687ada7b0fda99a7af4face62f149525c9bd",
+      "input_hash": "cbba853531b0460979182d113c014fb7cfdedd6df85ac10c2f5f3860c8bce674",
       "source_sha": "30f1e9363ca33a88ffffccfd87c4abbd54f21c01",
       "candidate_sha": "f3c69618d5f97cf235d2f0d0d9256f33056e9525",
       "rules": {
@@ -65,11 +70,18 @@
         "src/data/textbook/math/numbers/ne02Lesson.ts": "d9317ed72eaca7bb7ce28e100c6f892749fc1fa60edf7e89535ad312f2529af9"
       },
       "previous_results": {
-        "R08_CAPTURE_LEARNING@CHAPTER1-STRUCTURE": {
-          "actor": "current-chat/learning-intake",
-          "artifact": "ad0d092dbec045fcc8cb33b1cd232ff672bf5eb799941b3150fe6583e2114388",
-          "input_hash": "c399dca86991654b310b666172e4c7b27c742c85983cdbd2eae3f2abfb6777fd",
-          "node": "R08_CAPTURE_LEARNING@CHAPTER1-STRUCTURE",
+        "G1_VISUAL@CHAPTER1-STRUCTURE": {
+          "actor": "user-record/conversation_transcribed",
+          "artifact": "fe960e237a7226cfd2399454cbcbaa9971ba4afdfbeda091255a1266d8cad573",
+          "input_hash": "4b197ba1b3ebcc1c45e48c47bd80d7d2b11fe79c08bdb87b054188c7ca66a2cd",
+          "node": "G1_VISUAL@CHAPTER1-STRUCTURE",
+          "verdict": "PASS"
+        },
+        "R07_VERIFY@CHAPTER1-STRUCTURE": {
+          "actor": "GitHub Actions/final-source-browser-and-governance-verification",
+          "artifact": "6dda382630e621227da46c7bf235c3725573ce7d0b8943f3ecea11c4e4318d6e",
+          "input_hash": "2c7cbbd4662a4adce599536d6fcfaf8f735cb76fb97c77a6a8a2e244c1edd686",
+          "node": "R07_VERIFY@CHAPTER1-STRUCTURE",
           "verdict": "PASS"
         }
       },
@@ -245,7 +257,7 @@
       "required": [],
       "block": "CHAPTER1-STRUCTURE",
       "watch": "visual",
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "G2_AUDIT",
@@ -315,6 +327,17 @@
       "status": "PENDING"
     }
   ],
-  "pending_issues": [],
+  "pending_issues": [
+    {
+      "block": "CHAPTER1-STRUCTURE",
+      "description": "構成差分のPASSと章本文の修正完了を混同しない。N02の分配・整理・符号処理が複合候補のまま残る。P-002-N02-R1へ関連付け。元10件と他テーマも未閉鎖。",
+      "evidence_refs": [
+        "224972bc-efc9-4355-b151-e49fa6419548"
+      ],
+      "id": "W027-N02-BUNDLED-DERIVATIONS",
+      "root_cause": "STEP-POLYNOMIAL-COMPOUND-CHOICE",
+      "version": "f3c69618d5f97cf235d2f0d0d9256f33056e9525"
+    }
+  ],
   "application_accepted": false
 }

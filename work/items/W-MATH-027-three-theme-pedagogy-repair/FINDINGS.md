@@ -15,3 +15,7 @@ These implementation and QA findings have UNKNOWN educational-quality labels. Th
 ## Final verified checkpoint — 2026-10-24 JST
 
 最初のスクロール修正414137fも固定ナビの重なり検査で失敗したため、実カード位置を基準に画面位置を修正。最終9枚は全て実物を確認。CI成功を無条件で画像合格にしない事例として記録。ユーザーからの品質評価は未取得。
+
+## Gate② and first body proposal — 2026-10-24 JST
+
+ERROR-SCOPE-REPORTING: 三見出しのCI合格を本文全体の修正完了と受け取れる報告だった。元の修正範囲は三テーマと本文全体で継続する。新たな憲法は増やさずMASTER §48と既存Workの範囲を参照。N02 Q07も同根として最初の具体案に含む。残る二テーマはN07 Q09/Q12、NE02 Q11/Q12、N13 Q04/Q07を現候補で再確認。

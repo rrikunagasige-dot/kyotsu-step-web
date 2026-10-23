@@ -1,13 +1,13 @@
 # W-MATH-027 — 現在地（2026-10-24 JST）
 
-Status: VERIFYING / BLOCK-CHECK-PENDING
+Status: VERIFYING / Gate① visual accepted; Gate② not passed / N02 proposal pending
 Work execution: W-MATH-027-P001-R1
 Source branch: work/W-MATH-027-workflow-resume-20261024
 Frozen candidate: f3c69618d5f97cf235d2f0d0d9256f33056e9525
 
-最新の「いいよ。」で固定P-001-R1四ファイルの実装を承認。適用、CI、実画像9枚の確認、修正事例の学習取込まで実施済み。現在は[確認①](GATE1_P001_R1_REVIEW.md)へのユーザー応答待ち。実装承認を細部OKや総チェックOKへ転用しない。
+最新の「いいよ。」で固定P-001-R1四ファイルの実装を承認。適用、CI、実画像9枚の確認、修正事例の学習取込まで実施済み。確認①への「いいよ。次は何？」を視覚確認として記録済み。現在は[Gate②所見](GATE2_P001_R1_AUDIT.md)のFAIL/UNVERIFIEDが残り、[N02本文の具体案](p002-n02/PROPOSAL.md)を提示する段階。実装承認を細部OKや総チェックOKへ転用しない。
 
-[生成された現在地](workflow-p001-r1/generated/CURRENT_POSITION.md)と[火柴図](workflow-p001-r1/generated/FIRE_DIAGRAM.md)は追記イベント台帳から生成。G1_VISUALは未通過、アプリ受入はfalse。
+[生成された現在地](workflow-p001-r1/generated/CURRENT_POSITION.md)と[火柴図](workflow-p001-r1/generated/FIRE_DIAGRAM.md)は追記イベント台帳から生成。G1_VISUALは通過、G2_AUDITは未通過、アプリ受入はfalse。
 
 main未統合・未公開。教材の推導・図・選択肢・文章設計など元の指摘はAUDIT_FINDINGSとSOURCE_AUDIT_LEDGERに保持し、今回の見出し修正と区別して継続する。
 

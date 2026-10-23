@@ -1,5 +1,5 @@
 # 次の5件へ進むための新3ヒント案
-Status: APPROVED / 実装・検証へ進行
+Status: APPROVED / exact3hint実装・専用QA済み / grouped visual pending
 提示単位: 3案を一括で承認→3修正をまとめて技術確認→既存Q12choices/N14Q16と合わせ5件の実画面を一度に提示。
 ユーザーの約5問まとめ提示指示は記録済み。Q12とQ16の実装承認は再要求しない。
 
@@ -57,3 +57,6 @@ revision3 / 原12問。元Word body paragraph345。リスク: 数値を教えな
 承認後に3件を実装・検証し、Q12choicesと別SHAのN14Q16を含む5件をまとめ提示する。各問の内部QAは省略しない。全体監査/通し確認とmain統合/公開は別に残る。
 
 根拠: [WORK_SYSTEM §12B Gate2.4](../../../governance/WORK_SYSTEM.md)「Existing exact approval applies only if it genuinely covers that artifact and fix; otherwise submit a new or revised full proposal and await its explicit approval.」
+
+### Latest implementation evidence
+sourceb1025cab41342b7648acb191abadfa8aaaa66e5c、Review39902362044/Gov39902362009SUCCESS、72原画像8a3cfc05d173a92386f5bf8244fa28a1d31fabd1。全体Math39902361997もSUCCESS（240unit/254browser PASS、9explicit skips）。[5件の実画面を一括確認](../W-MATH-025-factor-hint-leak-qa-proposals/GATE1_FIVE_ITEM_REVIEW_20261023.md)。今回承認が必要なのは実装案ではなく、この5件の視覚受入。新規同根不具合は別exactscopeに従い、未検証をPASSにしない。

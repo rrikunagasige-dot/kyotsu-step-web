@@ -181,3 +181,15 @@ Return: success→inspect originals and record actualSHA/runs→present5together
 
 ### Local precommit PASS
 3hint exact差分/全source他フィールド不変、原20/14/12問rev2/3/3、workflow YAML/env/branch/sourcepaths、TS strip後JS構文はPASS。Native build/lint/runtime及び全回帰はPENDING。
+
+## V-BATCH-DEDICATED-PASS
+Sourceb1025cab41342b7648acb191abadfa8aaaa66e5c, images8a3cfc05d173a92386f5bf8244fa28a1d31fabd1。Review39902362044 SUCCESS/5files41unit、capture18realPASS/18matrix skips、72PNG+READMEのみの子commit73files/sourcecode完全一致を照合。Gov39902362009SUCCESS。
+通常の全20/14/12問を3幅で完了/復元、wrong/reload ledger同値/retry firstValue/firstAnsweredAt/isFirstCorrect/attemptCount保全、次問gate、acceptedmarkers無し、preview通常localStorage無変更。新hint3文はDOMspan完全一致、旧hintを含まない。
+直接視認7枚で日本語/KaTeX/折返しを確認。Q16の旧mobilefullpage固定header重なりは元証拠制約として残しPC画像で五判断全式を確認。今回runtime障害と断定しない。全impact/viewportチェックが終わっていない面をPASSにしない。
+独立math/Python exact signature/Fraction/square comparison PASS。既存3sourceの他fields byte不変、schema/CSS/progress/shared renderer不変。
+FullMath39902361997 RUNNING until final result; no falsePASS。Q12choices/新3hint/Q16の5件humanGate①はBLOCK-CHECK-PENDING。Gate②OPEN、Gate③NOT-READY。mainmerge/公開なし。
+
+## 2026-10-23 final engineering result — exact source
+Source **b1025cab41342b7648acb191abadfa8aaaa66e5c**, full Math **39902361997 SUCCESS** (job120246569059): **25unit files/240tests PASS、254browser cases PASS/9explicit skips**。型/lint/build、数学phone/PC・図・導出・wrong/retry・保存、物理教科書・数学練習setupまで全step完了。
+Review39902362044 SUCCESS (5files41unit +18real browser cases PASS/18matrix skips)、Gov39902362009SUCCESS。Original72PNG+README fixedchild8a3cfc05d173a92386f5bf8244fa28a1d31fabd1はsource/runtime差分0。
+5件groupは **ENGINEERING-READY / BLOCK-CHECK-PENDING**。CIを人手受入やGate②/③へ読み替えない。追加記録commitで再CIが走っても、実際に試験したsourceSHAと記録HEADを区別する。source→記録HEADの差分はWork Markdownと固定画像のみと照合する。

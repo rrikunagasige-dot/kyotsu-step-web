@@ -153,3 +153,18 @@ Single-hint/source/target/YAML checks PASS. A local structural audit initially e
 - Source SHA/PR/run PENDING until actual creation. 先行f731記録版Math39901305699は開始時RUNNING、Review39901305734/Gov39901305659 SUCCESS。新枝は別refで既存runをcancelしない。
 
 - A-BATCH-002 local precommit PASS: source3ファイル各1hintのみ、原20/14/12問とrev2/3/3維持、両workflow YAMLとbranch/env/source paths整合、3review/E2EファイルをTS strip→JS parserで検査PASS。Native run前なのでruntime/回帰/画面はPENDING。
+
+## A-BATCH-003 — actual source-SHA evidence and image inspection
+- Sourceb1025cab41342b7648acb191abadfa8aaaa66e5c, Draft PR117, native Review39902362044 SUCCESS (check120246569696 unit5files41tests; capture120246569941 18realPASS/18matrix skips)、Gov39902362009SUCCESS。
+- Original72PNG+README child8a3cfc05d173a92386f5bf8244fa28a1d31fabd1 has parentb1025cab41342b7648acb191abadfa8aaaa66e5c。Compare73files allinsidegate1-p005-p007、PNG72、source/runtime/workflow changes0。
+- 原画像をbase64で直接視認: 各390review-wrong3枚、N07review-wrong320、N08review-wrong1440、N05normal-wrong320、N08normal-complete390。日本語hint全文/数式/三行折返しが読め、横はみ出し無し。末尾choiceは縦scroll。PC新captureは高さ1400。
+- NotoCJK Regular68a3fc98800b2a27b371f2fb79991daf3633bd89309d4ffaa6946fd587f375b5 / Bold e53dcb0dcb2922e45d01aae1ebd2f382bb81d4229b18b6b883bd170678af1f76 (runner only)。
+- Python exact単項式次数/係数でN05の四つのauthored choices正答一意、FractionでN07最小100倍と99x=69/誤答不成立、非負の平方比較でN08sqrt5<3を独立検算PASS。新hintに求める数値が無いことと原Wordの計算行為を保持。
+- Q12原画像/source前turn証拠を保持。Q16 PR111headb37ac791fb583d947a3044dca11372139a156d8b unchanged、原画像3枚(390complete/320wrong/1440complete)を直接視認。旧mobile fullpage screenshotは固定headerが一部に重なるため、五判断全式が読めるPC原画像を一覧主画像に選び、旧mobile制約を明示。加工や未承認runtime修正なし。
+- GalleryのQ16確認票は別枝なのでrelative参照では当候補に無い。固定b37ac…のGitHub absoluteURLへ準備時修正し、元記録は保持。
+- 全体Math39902361997はRUNNING。doc準備だけを行い、現在refのfullCIをcancelするpushは控える。
+
+## 2026-10-23 final engineering result — exact source
+Source **b1025cab41342b7648acb191abadfa8aaaa66e5c**, full Math **39902361997 SUCCESS** (job120246569059): **25unit files/240tests PASS、254browser cases PASS/9explicit skips**。型/lint/build、数学phone/PC・図・導出・wrong/retry・保存、物理教科書・数学練習setupまで全step完了。
+Review39902362044 SUCCESS (5files41unit +18real browser cases PASS/18matrix skips)、Gov39902362009SUCCESS。Original72PNG+README fixedchild8a3cfc05d173a92386f5bf8244fa28a1d31fabd1はsource/runtime差分0。
+5件groupは **ENGINEERING-READY / BLOCK-CHECK-PENDING**。CIを人手受入やGate②/③へ読み替えない。追加記録commitで再CIが走っても、実際に試験したsourceSHAと記録HEADを区別する。source→記録HEADの差分はWork Markdownと固定画像のみと照合する。

@@ -104,3 +104,13 @@ See IMPACT_AUDIT_STAGEB_PRECHECK_20261023.md. N06 Q03/Q06 exact answer-factor hi
 
 ## F-BATCH-APPROVED
 最新直接「いいよ」が、直前の新3案全文リンク/変更前後への一括承認である。提示頻度を約5問へ変更する直接指示のもと、3hintをまとめて実装/検証しても各案のexact範囲は増やさない。Q12/Q16の未受入をCIや本承認で自動受入にしない。元Word/図/schema/CSS/保存移行に変更なし。
+
+## F-BATCH-VERIFIED
+P005/P006/P007の原症状はexact新hintで解消し、専用実画面/全問進行/保存QAを通過。問題・数式・答・選択肢・元図・20/14/12問とrev2/3/3は完全保持。独立mathは正答と誤答の数値/次数/条件を再検証。今回専用範囲で新たな不具合は検出せず。
+Q16はrev10の別候補で、現在branchrev9へ未統合。旧mobilefullpage画像の固定header位置は証拠制約として明示。PC原画像は五判断を遮らず読める。画像加工で欠点を隠したり、承認のないUI修正を行わない。
+全体回帰の終了結果と人手group受入/全影響監査は別に残り、Work全体DONEは付けない。
+
+## 2026-10-23 final engineering result — exact source
+Source **b1025cab41342b7648acb191abadfa8aaaa66e5c**, full Math **39902361997 SUCCESS** (job120246569059): **25unit files/240tests PASS、254browser cases PASS/9explicit skips**。型/lint/build、数学phone/PC・図・導出・wrong/retry・保存、物理教科書・数学練習setupまで全step完了。
+Review39902362044 SUCCESS (5files41unit +18real browser cases PASS/18matrix skips)、Gov39902362009SUCCESS。Original72PNG+README fixedchild8a3cfc05d173a92386f5bf8244fa28a1d31fabd1はsource/runtime差分0。
+5件groupは **ENGINEERING-READY / BLOCK-CHECK-PENDING**。CIを人手受入やGate②/③へ読み替えない。追加記録commitで再CIが走っても、実際に試験したsourceSHAと記録HEADを区別する。source→記録HEADの差分はWork Markdownと固定画像のみと照合する。

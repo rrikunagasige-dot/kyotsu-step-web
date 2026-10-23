@@ -35,18 +35,18 @@ Q09の原文・正答・全誤答・既承認の式の折返しを保持。Q10�
 ### Approval
 Status: APPROVED
 Approved by user: YES
-Approval date:
-Approval evidence: なし。今回の「ヒントならいいよじゃ続けて」はQ03のhint用途の受入と既承認Q06への継続であり、この新しいP-006を許可していない。
+Approval date: 2026-10-23 JST
+Approval evidence: ユーザーは、f73122d82b45e4c9ff4b04348383f121126a8322の新3案一括全文/変更前後への明示質問に直接 **「いいよ」** と回答。本P-006を含むP005/P006/P007の変更後hint literal各1文だけを承認。以前のQ03/Q06の回答とは別事象。
 
 ### Review History
-- Review status: NOT-REVIEWED
-- User feedback: 未提示。
+- Review status: APPROVED
+- User feedback: 直接「いいよ」。一括提示されたexact3案を承認。
 - Supersedes: None.
 - Superseded by: None.
 - 全文提案の明示承認前に学習内容を実装しない。現時点は診断と提案だけ。
 
-### 2026-10-23 grouped presentation
+### HISTORICAL — 2026-10-23 grouped presentation before direct approval
 ユーザーは今後約5問をまとめて完成・提示するよう指示。本案のhint literal/範囲/リスク/検証内容は変更せず、[新3案一括の変更前後](../W-MATH-026-n06-q12-distinct-distractor/BATCH_HINT_PROPOSALS_P005_P007.md)で一度に提示。**Status: WAITING / Approved by user: NO / 未実装**。Q06画像了承やQ12既存承認を新3案へ流用しない。承認後の一括実装/まとめQAと5件group提示は最新直接指示の運用に従う。
 
 ### Current execution scope
-P-006は承認済み限定実装へ進行。sourcen07Lesson.ts q09 hintだけを変更。現在sourceSHA/NativeCI/画像はcommit後確定でPENDING、未検証をPASSにしない。
+P-006は承認済み限定実装へ進行。sourcen07Lesson.ts q09 hintだけを変更。実装sourceb1025cab41342b7648acb191abadfa8aaaa66e5c、固定画像8a3cfc05d173a92386f5bf8244fa28a1d31fabd1。Review39902362044/Gov39902362009と専用18realケースPASS。全体Math39902361997もSUCCESS（240unit、254browser PASS/9skips）。5件まとめの細部受入待ち。

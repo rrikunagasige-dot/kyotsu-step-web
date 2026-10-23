@@ -12,3 +12,6 @@
 5件ごとに問別の実装、内部確認、source/画像SHA、2–4確認点を一枚の入口にまとめる。N14は別候補SHAであることを明記。1問ごとの人手待ちを繰り返さない。
 新3案のexact内容は提示後の承認が必要（WORK_SYSTEM §12B Gate2.4）。既存Q12承認を求め直さない。
 5件終了後も、同根影響/共有面の横断監査、候補整合、Gate②、全体app Gate③が残る。全体残数を5と断定しない。
+
+## Current completed engineering batch
+最新直接「いいよ」でP005/P006/P007のexact3hintを承認、sourceb1025cab41342b7648acb191abadfa8aaaa66e5cで実装・専用18case/全体回帰PASS。Q12choicesと別候補Q16の固定実画像を含む[5件一括確認](../W-MATH-025-factor-hint-leak-qa-proposals/GATE1_FIVE_ITEM_REVIEW_20261023.md)へ進む。新3案の承認を求め直さない。Gate①group pending、Gate②/③は別に未了。

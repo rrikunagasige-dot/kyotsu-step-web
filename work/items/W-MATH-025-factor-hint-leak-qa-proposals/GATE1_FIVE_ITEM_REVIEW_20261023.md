@@ -1,5 +1,10 @@
+
+## 2026-10-23 — latest authoritative five-item acceptance
+User: **「続けていいよ。5件承認。　後仕事はまたどれぐらい残っているのか私に状況説明」**.
+All five items in the [review sheet](./GATE1_FIVE_ITEM_REVIEW_20261023.md) are BLOCK-VISUAL-OK. This supersedes older pending/next-user-review statements below. No reapproval of these five is required. [Acceptance, evidence and remaining work](./FIVE_ITEM_ACCEPTANCE_20261023.md). Gate② remains OPEN; Gate③ is not ready.
+
 # 5件の実画面 — 一括細部確認
-Status: BLOCK-CHECK-PENDING / ENGINEERING-READY
+Status: BLOCK-VISUAL-OK / ENGINEERING-READY
 作成・限定修正と問別技術QAをまとめて行い、約5問ずつ提示するユーザー指示に従う。今回の人手回答はこの5件一括のみ。
 
 | 番号 | 対象 | 今回の内容 | 運用 |
@@ -11,7 +16,7 @@ Status: BLOCK-CHECK-PENDING / ENGINEERING-READY
 | 5 | N14 Q16 | 左右端の代入・絶対値・端点包含の5判断 | 生徒の計算を段階に分けた既作成候補 |
 
 共通確認: **数式と説明を読めるか／各ヒントが考え直す手掛かりになるか**。5番は左端と右端の計算をたどり、最後に両端を含むと自分で判断できるか。
-返信は「5件OK」、または「番号と直したい点」を一度に。
+2026-10-23のユーザー「5件承認」で、この5件の細部受入は完了。再回答は不要。
 これはGate①の細部受入であり、アプリ全体の総チェックOKやmain統合/公開への承認にはならない。
 
 ## 1 — N06 Q12 選択肢

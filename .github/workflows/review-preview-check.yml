@@ -1247,7 +1247,7 @@ jobs:
 
   # W-MATH-026/P-001 approved Q12 one distinct distractor; authentic source-SHA evidence.
   wmath026-n06-q12-choices-genuine-screenshots:
-    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'work/W-MATH-026-n06-q12-distinct-distractor-20261023' }}
+    if: ${{ false }} # five-item visual accepted 2026-10-23; immutable originals retained
     runs-on: ubuntu-latest
     concurrency:
       group: wmath026-n06-q12-choices-${{ github.head_ref }}
@@ -1360,7 +1360,7 @@ jobs:
 
   # W-MATH-025/P-005/P-006/P-007 approved hint batch; authentic source-SHA evidence.
   wmath025-p005-p007-hints-genuine-screenshots:
-    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'work/W-MATH-025-hints-p005-p007-batch-20261023' }}
+    if: ${{ false }} # five-item visual accepted 2026-10-23; immutable originals retained
     runs-on: ubuntu-latest
     concurrency:
       group: wmath025-p005-p007-hints-${{ github.head_ref }}

@@ -189,7 +189,8 @@ describe('W-GOV-008/P-002 review marker boundaries', () => {
     expect(target.totalItems).toBe(16)
     expect(target.itemIds).toEqual(['n06-12'])
     expect(target.blockIds).toEqual(['n06-lead-12','n06-formula-12','n06-after-12'])
-    expect(activeReviewMarkIds(target)).toEqual(['n06-formula-12'])
+    expect(target.markBlockIds).toEqual(['n06-formula-12'])
+    expect(activeReviewMarkIds(target)).toEqual([]) // grouped five-item visual acceptance, 2026-10-23
     const extracted=extractReviewSection(mathNumbersN06Unit,target)
     expect(extracted?.items.map(i=>i.answer)).toEqual(['(x+y)(x+2)(x-1)'])
     expect(extractReviewSection({...mathNumbersN06Unit,revision:2},target)).toBeNull()
@@ -202,7 +203,8 @@ describe('W-GOV-008/P-002 review marker boundaries', () => {
     expect(target.revision).toBe(2)
     expect(target.totalItems).toBe(20)
     expect(target.itemIds).toEqual(['n05-06'])
-    expect(activeReviewMarkIds(target)).toEqual(['n05-formula-06'])
+    expect(target.markBlockIds).toEqual(['n05-formula-06'])
+    expect(activeReviewMarkIds(target)).toEqual([]) // grouped five-item visual acceptance, 2026-10-23
     const extracted=extractReviewSection(mathNumbersN05Unit,target)
     expect(extracted?.items.map(item=>item.id)).toEqual(['n05-06'])
     expect(extracted?.items.map(item=>item.answer)).toEqual(['(4x)^2,\\quad(3y)^2'])
@@ -217,7 +219,8 @@ describe('W-GOV-008/P-002 review marker boundaries', () => {
     expect(target.revision).toBe(3)
     expect(target.totalItems).toBe(14)
     expect(target.itemIds).toEqual(['n07-09'])
-    expect(activeReviewMarkIds(target)).toEqual(['n07-formula-09'])
+    expect(target.markBlockIds).toEqual(['n07-formula-09'])
+    expect(activeReviewMarkIds(target)).toEqual([]) // grouped five-item visual acceptance, 2026-10-23
     const extracted=extractReviewSection(mathNumbersN07Unit,target)
     expect(extracted?.items.map(item=>item.id)).toEqual(['n07-09'])
     expect(extracted?.items.map(item=>item.answer)).toEqual(['\\text{100倍},\\;100x=69.\\overline{69},\\;99x=69'])
@@ -232,7 +235,8 @@ describe('W-GOV-008/P-002 review marker boundaries', () => {
     expect(target.revision).toBe(3)
     expect(target.totalItems).toBe(12)
     expect(target.itemIds).toEqual(['n08-05'])
-    expect(activeReviewMarkIds(target)).toEqual(['n08-formula-05'])
+    expect(target.markBlockIds).toEqual(['n08-formula-05'])
+    expect(activeReviewMarkIds(target)).toEqual([]) // grouped five-item visual acceptance, 2026-10-23
     const extracted=extractReviewSection(mathNumbersN08Unit,target)
     expect(extracted?.items.map(item=>item.id)).toEqual(['n08-05'])
     expect(extracted?.items.map(item=>item.answer)).toEqual(['5<9,\\quad\\sqrt5<3'])

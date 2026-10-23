@@ -4,7 +4,7 @@ Created: 2026-10-23 JST
 Command: CMD-WORK-001 修正
 
 ### 2026-10-23 execution checkpoint
-承認済み、未実装。先行小問の実画像Gate①後にexact範囲で実装。承認を再度求めない。
+Q03はヒントとして直接「ヒントならいいよじゃ続けて」で受入済み。P-004の既存exact承認を用い、今回Q06hint1文のみを実装。実画像・技術検証・人間Gate①は未了、承認を再度求めない。
 
 ### Problem / Need
 教師原Word SHA256 `93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa`。対象repo `rrikunagasige-dot/kyotsu-step-web` (ID1391122224)、確認した教材SHA `b1dc7e2ce7542ea1b7dd244a9490dfd1d4c2bf10`、N06 revision3 / 原問16件 / 選択16件。原Wordは読取専用。

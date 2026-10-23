@@ -12,10 +12,10 @@ Updated: 2026-10-23 JST
 | --- | --- | --- |
 | Q01 | Hint locates a repeated expression, without supplying the whole substitution and transformed polynomial. | NOT-AFFECTED for this root |
 | Q02 | Gives cross-products to add, leaving the coefficient and constant addition to the student. | NOT-AFFECTED |
-| Q03 | Old hint supplied −3 and2. Exact P-003 removes those values and leaves sign + sum/product checks. | CONFIRMED old defect; IMPLEMENTED; real Chrome6 cases PASS, user Gate① pending |
+| Q03 | Old hint supplied −3 and2. Exact P-003 removes those values and leaves sign + sum/product checks. | CONFIRMED old defect; IMPLEMENTED; real Chrome6 cases PASS, hint-only Gate① accepted 「ヒントならいいよじゃ続けて」 |
 | Q04 | Reminds replacing both occurrences of X; does not give the restored final product. | NOT-AFFECTED |
 | Q05 | Points to exponent2 in the substituted quadratic, without the complete definition plus polynomial answer. | NOT-AFFECTED; P-004-R2 protected |
-| Q06 | Current hint explicitly supplies T−1 and T−4 before the student's factorization. | CONFIRMED; exact P-004 APPROVED but deferred until Q03 Gate① |
+| Q06 | Current hint explicitly supplies T−1 and T−4 before the student's factorization. | CONFIRMED old defect; exact P-004 APPROVED and Stage D q6hint implemented; real Chrome and Q06 human Gate① pending |
 | Q07 | General difference-of-squares identity, not the completed four-factor answer. | NOT-AFFECTED |
 | Q08 | Requests separate degree counts from the original expression; does not give the final pair of degrees plus sorting choice. | NOT-AFFECTED |
 | Q09 | Locates the original y-containing terms; does not supply the collected complete expression. | NOT-AFFECTED |

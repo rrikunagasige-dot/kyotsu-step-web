@@ -125,6 +125,15 @@ const targets: Record<string, ReviewTarget> = {
     itemIds:['n05-11'],expectedAnswers:['(a-8)(a+2)'],
     markBlockIds:['n05-formula-11'],reviewState:'accepted', // user 「続けていいよ」 accepted Q11 visual on 2026-10-23
   },
+  // W-MATH-025/P-004: one original Q06 wrong-only hint; no change to the student task.
+  'n06-q06': {
+    id:'n06-q06',unitId:'math-numbers-expressions-n06',title:'N06 Q06',
+    question:'完成した因数を教えず、符号と置換の復元を手掛かりにする誤答ヒント',
+    revision:3,totalItems:16,
+    blockIds:['n06-lead-06','n06-formula-06','n06-after-06'],
+    itemIds:['n06-06'],expectedAnswers:['(x^2-1)(x^2-4)'],
+    markBlockIds:['n06-formula-06'],reviewState:'awaiting-user',
+  },
   // W-MATH-025/P-003: the one original Q03 wrong-only hint; source revision unchanged.
   'n06-q03': {
     id:'n06-q03',unitId:'math-numbers-expressions-n06',title:'N06 Q03',
@@ -132,7 +141,7 @@ const targets: Record<string, ReviewTarget> = {
     revision:3,totalItems:16,
     blockIds:['n06-lead-03','n06-formula-03','n06-after-03'],
     itemIds:['n06-03'],expectedAnswers:['(X-3)(X+2)'],
-    markBlockIds:['n06-formula-03'],reviewState:'awaiting-user',
+    markBlockIds:['n06-formula-03'],reviewState:'accepted', // hint-only visual accepted by 「ヒントならいいよじゃ続けて」
   },
   // W-MATH-025/P-002: hint-only visual accepted; immutable evidence retained.
   'n06-q12': {

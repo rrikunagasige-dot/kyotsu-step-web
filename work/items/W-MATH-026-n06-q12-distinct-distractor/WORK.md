@@ -19,3 +19,6 @@ P-001 APPROVED by direct 「いいよ続けて」 to the three-proposal request 
 
 ## Dependencies / Completion Condition
 W-MATH-025の既受入hintを保全。Q03/Q06案を実施する場合は各Gate①後のSHAを採用し、同じファイルを並行変更しない。別N14 Q16 branchは未統合。原症状・保存済み旧誤答の再回答・数学的に異なる4択・関連回帰・実画像受入を完了してからWork完了を判断。全体Gate②/③・main統合・公開承認は別に残る。
+
+## 2026-10-23 current execution dependency
+Q03のヒントGate①は直接「ヒントならいいよじゃ続けて」で了承済み。先行P-004 Q06の限定実装/実画像Gate①が進行中。本Work P-001 exact承認を保持し、まだQ12選択肢や実装ブランチは変更しない。次はQ06 Gate①後の確定SHAから順番に実装。

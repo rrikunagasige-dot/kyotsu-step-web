@@ -1,6 +1,6 @@
 # N06 Q03 — 実画像 Gate① 確認①「整数組を先に教えないヒント」
 Work: W-MATH-025/P-003
-Status: BLOCK-CHECK-PENDING — authentic images verified; user Q03 visual response pending
+Status: BLOCK-VISUAL-OK — hint-only user acceptance 「ヒントならいいよじゃ続けて」
 
 **対象・撮影コード完全SHA:** `7bad9d800d143dcc99f52fecb96b867914ca09d7`  
 **原画像18枚の固定コミット:** `d889a22957362c50ef0cf88c3d023cf2e9b844c7`  
@@ -21,7 +21,7 @@ Status: BLOCK-CHECK-PENDING — authentic images verified; user Q03 visual respo
 - 確認①：正解の−3と2を教えず、符号と和・積から考え直す手掛かりになるか。
 - 同じ確認①：スマホでもヒントと数式を読めるか。
 
-**返信:** このQ03の**ヒント1文**について `細部OK` または `要修正（気になる箇所）`。既定WORK_SYSTEM §12Aの小ブロックGate①としてこの2点だけ確認します。
+**受入記録:** 2026-10-23 JST、ユーザーはQ03の実画像提示と「文章は誤答後のヒントとしてそのまま表示される」という説明を受け、**「ヒントならいいよじゃ続けて」** と直接回答。Q03のヒント1文を **BLOCK-VISUAL-OK** として記録する。説明用に示したr,sの導出構成例の実装承認ではなく、本文・式・穴の設計変更は行わない。 元の確認①画像は当時の履歴として保持し、次回レビュー出力では受入済みマーカーを非表示にする。
 
 ## Agent ledger
 - [x] Exact P-003/P-004/W-MATH-026 P-001 implementation approval recorded from the direct three-proposal 「いいよ続けて」 response; no reapproval requested.
@@ -31,6 +31,6 @@ Status: BLOCK-CHECK-PENDING — authentic images verified; user Q03 visual respo
 - [x] Fixed child commit has18 genuine PNGs + README only; images source SHA exactly matches the successful operated code. Preview attempts do not alter normal learner localStorage.
 - [x] Read original320/390 wrong,390 correct,1440 normal screenshots directly. Hint and math readable. Mobile choices can continue by normal vertical scrolling; no scope expansion to shared UI.
 - [x] Accepted Q11/Q18/Q12 hint/N13 markers remain hidden and old immutable images preserved.
-- [ ] Q03 user visual acceptance. 「続けて」 during preparation is not fabricated as this review's acceptance.
+- [x] Q03 hint-only user visual acceptance after the original image and subsequent clarification: exact response 「ヒントならいいよじゃ続けて」. Earlier preparation-time continuation remains separate; no fabricated literal 「細部OK」.
 - [ ] Entire Gate②: Q06 same-root and Q12 separate-cause fixes still deferred, sibling/root audit and required regressions open. See focused impact ledger.
 - [ ] Separate N14 Q16 Gate① / complete SHA-matched playable-app Gate③ / merge/publication authority.

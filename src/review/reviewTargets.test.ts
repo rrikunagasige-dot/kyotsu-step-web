@@ -149,18 +149,34 @@ describe('W-GOV-008/P-002 review marker boundaries', () => {
     expect(activeReviewMarkIds(reviewTargets['n13-q08'])).toEqual([])
   })
 
-  it('W-MATH-025/P003 selects only original Q03, keeps accepted Q12 silent and rejects stale revision',()=>{
+  it('W-MATH-025/P003 accepted hint-only Q03 keeps its original boundaries with its marker hidden',()=>{
     const target=reviewTargets['n06-q03']
     expect(target.revision).toBe(3)
     expect(target.totalItems).toBe(16)
     expect(target.itemIds).toEqual(['n06-03'])
     expect(target.blockIds).toEqual(['n06-lead-03','n06-formula-03','n06-after-03'])
-    expect(activeReviewMarkIds(target)).toEqual(['n06-formula-03'])
+    expect(activeReviewMarkIds(target)).toEqual([])
+    expect(target.markBlockIds).toEqual(['n06-formula-03'])
     const extracted=extractReviewSection(mathNumbersN06Unit,target)
     expect(extracted?.items.map(i=>i.id)).toEqual(['n06-03'])
     expect(extracted?.items.map(i=>i.answer)).toEqual(['(X-3)(X+2)'])
     expect(extractReviewSection({...mathNumbersN06Unit,revision:2},target)).toBeNull()
     for(const id of ['n06-q12','n05-q11','n05-q18','n13-q05','n13-q08'])
+      expect(activeReviewMarkIds(reviewTargets[id])).toEqual([])
+  })
+
+  it('W-MATH-025/P004 selects Q06 only and preserves all accepted sibling marker states',()=>{
+    const target=reviewTargets['n06-q06']
+    expect(target.revision).toBe(3)
+    expect(target.totalItems).toBe(16)
+    expect(target.itemIds).toEqual(['n06-06'])
+    expect(target.blockIds).toEqual(['n06-lead-06','n06-formula-06','n06-after-06'])
+    expect(activeReviewMarkIds(target)).toEqual(['n06-formula-06'])
+    const extracted=extractReviewSection(mathNumbersN06Unit,target)
+    expect(extracted?.items.map(i=>i.id)).toEqual(['n06-06'])
+    expect(extracted?.items.map(i=>i.answer)).toEqual(['(x^2-1)(x^2-4)'])
+    expect(extractReviewSection({...mathNumbersN06Unit,revision:2},target)).toBeNull()
+    for(const id of ['n06-q03','n06-q12','n05-q11','n05-q18','n13-q05','n13-q08'])
       expect(activeReviewMarkIds(reviewTargets[id])).toEqual([])
   })
 

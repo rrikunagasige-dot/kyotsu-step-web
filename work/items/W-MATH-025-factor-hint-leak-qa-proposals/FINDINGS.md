@@ -1,0 +1,17 @@
+# W-MATH-025 — 独立照合／§12B影響範囲
+**Status: CONFIRMED SAME-ROOT; no edits authorized.**
+
+1. N05 Q11： `a²−6a−16`、目標は積−16・和−6の整数組と因数分解。正答 `(a−8)(a+2)`; 現行誤答ヒントが `−8と2` を直接公開。同種シグネチャー `answer_preexposure_on_wrong_attempt`。修正案P-001、未承認。
+2. N06 Q12： `(x+y)(x²+x−2)` の二次項を因数分解。正答 `(x+y)(x+2)(x−1)`; 現行誤答ヒントが `2と−1` を直接公開。同種。修正案P-002、未承認。
+3. N05 Q18： W-MATH-024/P-001のみ明示承認済み。正答ペアが直接示された以前のヒントを、`r=1,s=−3` の不成立例に変更済み。実画像18枚 320/390/1440px、source SHA `7112121f1976c5d3ddb10e32c81ced665c9bd958`; actual Chrome job #39796060750 SUCCESS、human Gate①は当該Workで未完。
+4. N05 Q17、N07 Q13：ヒントに符号・整数性の方向性はあるが、現状の照合では正答文や求める係数対の全面開示とは判定しない。大きな別改善を勝手に提案しない。
+5. 完全一括書換えは禁止。各問の正答と学習目的を原典・現行コードで確認した上で、影響は一文限定で承認を得て修正する。W-MATH-023 Gate②全体はこれらの同根未修正事象のため CROSS-VERIFIED にできない。
+
+コード照合元は `rrikunagasige-dot/kyotsu-step-web` 現行N05/N06。提案保存枝は既存N13 Gate①承認版 `4502f92bc25abddaa90b8e6673d990c7a4a17867` に由来し、W-MATH-024のN05 Q18修正を含まない。後日実装する場合に同Workの最新履歴を再照合する。
+
+## 2026-10-23 JST — both exact original proposals approved, staged sequentially
+- The user replied **「承認続けて」** directly to the explicit question confirming **both** W-MATH-025/P-001 (N05-Q11) and P-002 (N06-Q12). This approves the existing exact one-hint-only scope of each proposal, **not** mass changes, merging or release.
+- User later replied **「继续」** to continuation. Canonical Work §12A stages each small question independently: **N05 Q11 implementation and real numbered Gate① first**. N06 Q12 P-002 approval is preserved, its learner code remains untouched until Q11 visual Gate① is explicitly accepted; do not ask for P-002 reapproval.
+- Implementation branch `work/W-MATH-025-n05-q11-hint-approved-20261023` forked from W-MATH-024 Q18 approved Gate① HEAD `524a26ea9d765d166a42d8324d2f2bead493e4b1`, not from stale W-MATH-025 proposal-only branch. In this Stage A, **the sole learner code change is N05-Q11 wrong-only hint**: `積が負なので二数の符号は異なる。和が負になるには、絶対値の大きい方が負になる。積が−16、和が−6の両方に合うか確かめよう。`.
+- New focused N05-Q11 Vitest, a single preview-native `n05-q11` review marker, 320/390/1440 exact-SHA Playwright wrong/hint/retry and normal-mode regression, and GitHub capture CI are verification-only additions. N05 revision2, 20 original source questions and choice keys, original figures and historic progress unchanged. Protected accepted N05 Q18 and N13 Q05/Q08; N14 Q16 separate Gate① pending.
+- **Q11 Gate① BLOCK-CHECK-PENDING** until real screenshots pass and user reviews numbered authentic sheet. **Q12 approved but not implemented**. Gate② open for both; Gate③/not yet hosted; no main merge, release or fee.

@@ -1,0 +1,32 @@
+{
+  "sha": "76ab0e708f0706fbbfa7df1109f19d5263c7db19",
+  "width": 1440,
+  "route": "/#/review/n11-q08-q09",
+  "steps": [
+    {
+      "id": "n11-p007-q08-subtract-left",
+      "answer": "3",
+      "mark": "n11-formula-08"
+    },
+    {
+      "id": "n11-p007-q08-subtract-right",
+      "answer": "3",
+      "mark": "n11-formula-08"
+    },
+    {
+      "id": "n11-08",
+      "answer": "2",
+      "mark": "n11-after-08"
+    },
+    {
+      "id": "n11-p007-q09-direction",
+      "answer": "\\ge",
+      "mark": "n11-formula-09"
+    },
+    {
+      "id": "n11-09",
+      "answer": "-1",
+      "mark": "n11-formula-09"
+    }
+  ]
+}

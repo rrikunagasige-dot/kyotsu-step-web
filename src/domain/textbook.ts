@@ -185,6 +185,174 @@ export function effectiveTextbookProgress(unit: TextbookUnit, progress: Textbook
   if (!progress) return undefined
   if (progress.unitRevision === unit.revision) return progress
 
+  // W-MATH-017/P-008: Q13's old full operation + completed equation
+  // is replaced by local 6x coefficient; archive v9 and reopen only Q13.
+  if (unit.unitId === 'math-numbers-expressions-n11' && unit.revision === 10
+    && progress.unitId === unit.unitId
+    && [1,2,3,4,5,6,7,8,9].includes(progress.unitRevision)) {
+    const fromV9 = progress.unitRevision === 9 ? progress
+      : effectiveTextbookProgress({ ...unit, revision: 9 }, progress)
+    if (!fromV9 || fromV9.unitRevision !== 9) return undefined
+    const archive: TextbookRevisionArchive = {
+      unitRevision: 9, startedAt: fromV9.startedAt, updatedAt: fromV9.updatedAt,
+      answers: { ...fromV9.answers },
+      ...(fromV9.completedAt !== undefined ? { completedAt: fromV9.completedAt } : {}),
+      ...(fromV9.previousRevisionCompletedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV9.previousRevisionCompletedAt } : {}),
+      ...(fromV9.migratedFromRevision !== undefined
+        ? { migratedFromRevision: fromV9.migratedFromRevision } : {}),
+    }
+    const answers = { ...fromV9.answers }
+    delete answers['n11-13']
+    return {
+      unitId: unit.unitId, unitRevision: 10,
+      startedAt: fromV9.startedAt, updatedAt: fromV9.updatedAt,
+      answers, migratedFromRevision: 9,
+      archivedRevisions: { ...(fromV9.archivedRevisions ?? {}), '9': archive },
+      ...(fromV9.completedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV9.completedAt }
+        : fromV9.previousRevisionCompletedAt !== undefined
+          ? { previousRevisionCompletedAt: fromV9.previousRevisionCompletedAt } : {}),
+    }
+  }
+
+  // W-MATH-017/P-007: Q08/Q09 changed from premade operation+result
+  // answers into local numeric answers. Preserve every v8 attempt in the
+  // immutable archive, reopening ONLY the two repurposed stable IDs.
+  if (unit.unitId === 'math-numbers-expressions-n11' && unit.revision === 9
+    && progress.unitId === unit.unitId
+    && [1, 2, 3, 4, 5, 6, 7, 8].includes(progress.unitRevision)) {
+    const fromV8 = progress.unitRevision === 8 ? progress
+      : effectiveTextbookProgress({ ...unit, revision: 8 }, progress)
+    if (!fromV8 || fromV8.unitRevision !== 8) return undefined
+    const archive: TextbookRevisionArchive = {
+      unitRevision: 8,
+      startedAt: fromV8.startedAt, updatedAt: fromV8.updatedAt,
+      answers: { ...fromV8.answers },
+      ...(fromV8.completedAt !== undefined ? { completedAt: fromV8.completedAt } : {}),
+      ...(fromV8.previousRevisionCompletedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV8.previousRevisionCompletedAt } : {}),
+      ...(fromV8.migratedFromRevision !== undefined
+        ? { migratedFromRevision: fromV8.migratedFromRevision } : {}),
+    }
+    const answers = { ...fromV8.answers }
+    delete answers['n11-08']
+    delete answers['n11-09']
+    return {
+      unitId: unit.unitId, unitRevision: 9,
+      startedAt: fromV8.startedAt, updatedAt: fromV8.updatedAt,
+      answers, migratedFromRevision: 8,
+      archivedRevisions: { ...(fromV8.archivedRevisions ?? {}), '8': archive },
+      ...(fromV8.completedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV8.completedAt }
+        : fromV8.previousRevisionCompletedAt !== undefined
+          ? { previousRevisionCompletedAt: fromV8.previousRevisionCompletedAt } : {}),
+    }
+  }
+
+  // W-MATH-017/P-005: the old Q06 compound operation/result key is
+  // replaced by the fractional number alone in the fourth equation row.
+  // Archive all rev7 answers, reopen ONLY n11-06 and the newly added
+  // right-side balancing hole; preserve rev7 Q01/Q05 and all other progress.
+  if (unit.unitId === 'math-numbers-expressions-n11' && unit.revision === 8
+    && progress.unitId === unit.unitId
+    && [1, 2, 3, 4, 5, 6, 7].includes(progress.unitRevision)) {
+    const fromV7 = progress.unitRevision === 7 ? progress
+      : effectiveTextbookProgress({ ...unit, revision: 7 }, progress)
+    if (!fromV7 || fromV7.unitRevision !== 7) return undefined
+    const archive: TextbookRevisionArchive = {
+      unitRevision: 7,
+      startedAt: fromV7.startedAt, updatedAt: fromV7.updatedAt,
+      answers: { ...fromV7.answers },
+      ...(fromV7.completedAt !== undefined ? { completedAt: fromV7.completedAt } : {}),
+      ...(fromV7.previousRevisionCompletedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV7.previousRevisionCompletedAt } : {}),
+      ...(fromV7.migratedFromRevision !== undefined
+        ? { migratedFromRevision: fromV7.migratedFromRevision } : {}),
+    }
+    const answers = { ...fromV7.answers }
+    delete answers['n11-06']
+    return {
+      unitId: unit.unitId, unitRevision: 8,
+      startedAt: fromV7.startedAt, updatedAt: fromV7.updatedAt,
+      answers, migratedFromRevision: 7,
+      archivedRevisions: { ...(fromV7.archivedRevisions ?? {}), '7': archive },
+      ...(fromV7.completedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV7.completedAt }
+        : fromV7.previousRevisionCompletedAt !== undefined
+          ? { previousRevisionCompletedAt: fromV7.previousRevisionCompletedAt } : {}),
+    }
+  }
+
+  // W-MATH-017/P-003: Q01 (complete formula -> relation) and Q05
+  // (combined answer -> computed result) have new grading semantics.
+  // Preserve full prior attempts in the v6 archive; reopen only those two IDs.
+  if (unit.unitId === 'math-numbers-expressions-n11' && unit.revision === 7
+    && progress.unitId === unit.unitId
+    && [1,2,3,4,5,6].includes(progress.unitRevision)) {
+    const fromV6 = progress.unitRevision === 6 ? progress
+      : effectiveTextbookProgress({ ...unit, revision: 6 }, progress)
+    if (!fromV6 || fromV6.unitRevision !== 6) return undefined
+    const oldArchive: TextbookRevisionArchive = {
+      unitRevision: 6,
+      startedAt: fromV6.startedAt,
+      updatedAt: fromV6.updatedAt,
+      answers: { ...fromV6.answers },
+      ...(fromV6.completedAt !== undefined ? { completedAt: fromV6.completedAt } : {}),
+      ...(fromV6.previousRevisionCompletedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV6.previousRevisionCompletedAt } : {}),
+      ...(fromV6.migratedFromRevision !== undefined
+        ? { migratedFromRevision: fromV6.migratedFromRevision } : {}),
+    }
+    const answers = { ...fromV6.answers }
+    delete answers['n11-01']
+    delete answers['n11-05']
+    return {
+      unitId: unit.unitId,
+      unitRevision: 7,
+      startedAt: fromV6.startedAt,
+      updatedAt: fromV6.updatedAt,
+      answers,
+      migratedFromRevision: 6,
+      archivedRevisions: { ...(fromV6.archivedRevisions ?? {}), '6': oldArchive },
+      ...(fromV6.completedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV6.completedAt }
+        : fromV6.previousRevisionCompletedAt !== undefined
+          ? { previousRevisionCompletedAt: fromV6.previousRevisionCompletedAt } : {}),
+    }
+  }
+
+  // W-MATH-018/P-001: the old N14-Q10 one-choice operation+final range
+  // is replaced by the left numerical endpoint; reopen ONLY its old key.
+  // Keep original v6 attempts and every earlier archive for review.
+  if (unit.unitId === 'math-numbers-expressions-n14' && unit.revision === 7
+    && progress.unitId === unit.unitId && [1,2,3,4,5,6].includes(progress.unitRevision)) {
+    const fromV6 = progress.unitRevision === 6 ? progress
+      : effectiveTextbookProgress({ ...unit, revision: 6 }, progress)
+    if (!fromV6 || fromV6.unitRevision !== 6) return undefined
+    const archive: TextbookRevisionArchive = {
+      unitRevision: 6, startedAt: fromV6.startedAt, updatedAt: fromV6.updatedAt,
+      answers: { ...fromV6.answers },
+      ...(fromV6.completedAt !== undefined ? { completedAt: fromV6.completedAt } : {}),
+      ...(fromV6.previousRevisionCompletedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV6.previousRevisionCompletedAt } : {}),
+      ...(fromV6.migratedFromRevision !== undefined
+        ? { migratedFromRevision: fromV6.migratedFromRevision } : {}),
+    }
+    const answers = { ...fromV6.answers }
+    delete answers['n14-10']
+    return {
+      unitId: unit.unitId, unitRevision: 7,
+      startedAt: fromV6.startedAt, updatedAt: fromV6.updatedAt,
+      answers, migratedFromRevision: 6,
+      archivedRevisions: { ...(fromV6.archivedRevisions ?? {}), '6': archive },
+      ...(fromV6.completedAt !== undefined
+        ? { previousRevisionCompletedAt: fromV6.completedAt }
+        : fromV6.previousRevisionCompletedAt !== undefined
+          ? { previousRevisionCompletedAt: fromV6.previousRevisionCompletedAt } : {}),
+    }
+  }
+
   // W-MATH-016/P-001: Q12 adds two distinct subtraction decisions.
   // Normalize historical v1–v4 through existing approved v5 migration,
   // then snapshot v5 including Q07, Q08 and original Q12 answers.

@@ -13,15 +13,15 @@ jobs:
       CI: 'true'
       VITE_REVIEW_PREVIEW: 'true'
       VITE_BASE_PATH: '/'
-      VITE_PREVIEW_COMMIT: '3cb825ba100a5bd8bef7a14e6c00f411c637e914'
-      CAPTURE_SHA: '3cb825ba100a5bd8bef7a14e6c00f411c637e914'
+      VITE_PREVIEW_COMMIT: 'f8ff1d0c7e82e1a2dee57bb07b3c53c17ec52ec0'
+      CAPTURE_SHA: 'f8ff1d0c7e82e1a2dee57bb07b3c53c17ec52ec0'
       CAPTURE_HARNESS_SHA: ${{ github.event.pull_request.head.sha }}
       E2E_USE_PREVIEW: '1'
       E2E_NE_DEVELOPMENT: '1'
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: '3cb825ba100a5bd8bef7a14e6c00f411c637e914'
+          ref: 'f8ff1d0c7e82e1a2dee57bb07b3c53c17ec52ec0'
           persist-credentials: false
       - uses: actions/checkout@v4
         with:

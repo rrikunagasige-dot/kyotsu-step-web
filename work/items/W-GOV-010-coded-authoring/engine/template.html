@@ -34,7 +34,7 @@ function render(){
    return `<div class="step active" data-step="${esc(s.id)}"><p class="reason">${esc(s.reason)}</p><div class="equation">${esc(s.left_display||math(s.left))} = <span class="hole" aria-label="計算結果の穴">□</span></div><div class="options">${options.map(o=>`<button type="button" data-choice="${esc(o.id)}">${esc(o.text)}</button>`).join('')}</div><p class="feedback" role="status" aria-live="polite"></p><button type="button" class="show-hint">ヒントを見る</button><p class="hint" hidden></p></div>`;
  }).join('');
  const fig=l.figure?`<figure>${FIGURES[l.id]}<figcaption>${esc(l.figure.how_to_read)} ${esc(l.figure.purpose)}</figcaption></figure>`:'';
- article.innerHTML=`<h2>${esc(l.title)}</h2><p class="status">${DATA.mode==='textbook'?'教科書モード':'練習モード'}</p><div class="problem"><strong>例題</strong><p>${esc(l.original_problem)}</p><div class="equation">${esc(l.solution.source_display)}</div></div>${DATA.mode==='textbook'?`<p>${esc(l.prose.lead)}</p><p class="concept">${esc(l.prose.concept)}</p>`:''}<p>${esc(l.prose.goal)}</p>${fig}<section class="derivation" aria-label="一続きの計算"><p>分配法則で、それぞれの項の積を作る。</p><div class="equation distribution">${esc(l.solution.distribution)}</div>${steps}${!activeFound?`<p>計算した項を合わせると、元の式は次のようになる。</p><div class="equation final-result">${esc(l.solution.source_display)} = ${esc(l.final_display)}</div>`:''}</section>${!activeFound?`<p id="closing">${esc(l.prose.closing)}</p>`:'<p class="status">いまの計算を完成させると、続きが表示されます。</p>'}`;
+ article.innerHTML=`<h2>${esc(l.title)}</h2><p class="status">${DATA.mode==='textbook'?'教科書モード':'練習モード'}</p><div class="problem"><strong>${DATA.mode==='textbook'?'例題':'問題'}</strong><p>${esc(l.original_problem)}</p><div class="equation">${esc(l.solution.source_display)}</div></div>${DATA.mode==='textbook'?`<p>${esc(l.prose.lead)}</p><p class="concept">${esc(l.prose.concept)}</p>`:''}<p>${esc(l.prose.goal)}</p>${fig}<section class="derivation" aria-label="一続きの計算"><p>分配法則で、それぞれの項の積を作る。</p><div class="equation distribution">${esc(l.solution.distribution)}</div>${steps}${!activeFound?`<p>計算した項を合わせると、元の式は次のようになる。</p><div class="equation final-result">${esc(l.solution.source_display)} = ${esc(l.final_display)}</div>`:''}</section>${!activeFound?`<p id="closing">${esc(l.prose.closing)}</p>`:'<p class="status">いまの計算を完成させると、続きが表示されます。</p>'}`;
  const current=article.querySelector('.active');if(!current)return;
  const s=l.solution.steps.find(x=>x.id===current.dataset.step);
  current.querySelectorAll('[data-choice]').forEach(button=>button.addEventListener('click',()=>{
@@ -43,7 +43,7 @@ function render(){
    st.done.push(s.id);save();render();
  }));
  current.querySelector('.show-hint').addEventListener('click',()=>{
-   const hints=['今は、表示されている左辺の計算に注目しよう。',s.purpose==='積の計算'?'数の部分とxの部分を分けて考えよう。':'掛ける計算か、同じ種類の項をまとめる計算かを確認しよう。','負の数の符号と、xが何個掛かっているかを確認しよう。',s.reason];
+   const hints=s.hints;
    const n=Math.min(Number(st.hints[s.id])||0,3);const p=current.querySelector('.hint');p.hidden=false;p.textContent=hints[n];st.hints[s.id]=n+1;save();
  });
 }

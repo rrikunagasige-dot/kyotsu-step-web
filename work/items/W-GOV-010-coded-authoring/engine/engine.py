@@ -10,13 +10,14 @@ from math_core import Unsupported, polynomial, same, independent_identity, expre
 VERSION='0.1.0'
 REGISTRY=json.loads(Path(__file__).with_name('patterns.json').read_text())
 CATALOG=json.loads(Path(__file__).with_name('catalog.json').read_text())
+TEMPLATES=json.loads(Path(__file__).with_name('templates.json').read_text())
 PATTERNS={name:spec['version'] for name,spec in REGISTRY.items()}
 STAGES=['structure','solution','blanks','choices','prose_figures','final']
 
 def digest(value): return hashlib.sha256(json.dumps(value,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
 
 def implementation_hash():
-    return digest({name:Path(__file__).with_name(name).read_text() for name in ('engine.py','math_core.py','patterns.json','catalog.json','template.html')})
+    return digest({name:Path(__file__).with_name(name).read_text() for name in ('engine.py','math_core.py','patterns.json','catalog.json','templates.json','template.html')})
 
 def design_hash(project):
     p=copy.deepcopy(project); p.pop('semantic_review',None)
@@ -25,10 +26,12 @@ def design_hash(project):
 def require(condition,message):
     if not condition: raise ValueError(message)
 
-def structure(project):
+def structure(project,approved_plan=None):
     require(project.get('schema_version')==1,'未対応の入力スキーマ')
     require(project.get('mode') in ('textbook','practice'),'モードが未定義')
     policy=project['policy']; themes=project['themes']; lessons=project['lessons']
+    template=TEMPLATES[project['mode']]
+    require(policy==template['policy'],'教材入力によって固定した見出し規則を変更している')
     require(len(themes)==policy['major_title_count'],'同格の大見出し数が規則に不一致')
     require([t['title'] for t in themes]==policy['major_titles'],'大見出しの名称または順序が不一致')
     require(bool(lessons),'教材が空')
@@ -39,6 +42,9 @@ def structure(project):
     require(len(assigned)==len(set(assigned)) and set(assigned)==set(ids),'所属の重複・欠落・未知の教材')
     require(assigned==ids,'テーマ内の教材順序不一致')
     require(project['scope']['kind']=='prototype_subset','試作範囲の明示が必要')
+    if approved_plan is not None:
+        require(approved_plan['mode']==project['mode'],'収録計画のモードが異なる')
+        require(ids==approved_plan['expected_units'],'固定した収録計画から教材が欠落・追加・移動されている')
     for l in lessons:
         require(bool(l.get('source',{}).get('id')) and bool(l['source'].get('kind')),'元資料の参照がない')
         require(l['source']['kind'] in ('prototype_authored','corpus_positive'),'原資料の種別が未登録')
@@ -49,6 +55,9 @@ def structure(project):
         if l.get('pattern') in PATTERNS:
             require(l.get('pattern_version')==PATTERNS[l['pattern']],'パターン版が未登録')
         require(bool(l.get('original_problem')),'元問題がない')
+        if approved_plan is not None:
+            require(l['original_expression']==approved_plan['original_expressions'][l['id']],'固定した原問題の式が変更されている')
+        require(all(l.get('prose',{}).get(k) for k in template['required_prose']),'モードの必須説明が不足')
         require(l.get('prose',{}).get('goal') and l['prose'].get('closing'),'導入の目的／結びがない')
         if project['mode']=='textbook':
             require(l['prose'].get('lead') and l['prose'].get('concept'),'教科書の導入／意味の説明がない')
@@ -61,7 +70,14 @@ def integer_params(values,count):
     return values
 
 def step(sid,left,right,reason,purpose,deps=()):
-    return dict(id=sid,left=left,right=right,reason=reason,purpose=purpose,depends_on=list(deps),operation_count=1)
+    if purpose=='同類項の整理':
+        middle=['xの項どうしは、係数に注目してまとめよう。','xを共通に残し、係数を符号付きで足してみよう。']
+    elif purpose=='定数項の整理':
+        middle=['xを含まない数どうしの和を計算しよう。','正負の符号を確かめ、符号付きの足算として整理しよう。']
+    else:
+        middle=['数の部分と、xの部分を分けて掛けよう。','掛ける数の符号を決め、xどうしの積があれば指数も確かめよう。']
+    return dict(id=sid,left=left,right=right,reason=reason,purpose=purpose,depends_on=list(deps),operation_count=1,
+                hints=['今は、表示されている左辺の計算に注目しよう。',*middle,reason])
 
 def solve(lesson):
     pattern=lesson['pattern']
@@ -173,13 +189,15 @@ def verify_prose_figures(lesson,solution):
         require(figure.get('position')=='before_distribution','参照する前に図を置く必要がある')
     return {'structure':'目的・読み方・接続先・表示位置を検査','meaning':'文章と図の理解しやすさは意味の審査が必要'}
 
-def compile_project(project):
+def compile_project(project,approved_plan=None):
     report={'engine_version':VERSION,'implementation_hash':implementation_hash(),'design_hash':design_hash(project),'stages':{},'lessons':[],'release_accepted':False,
             'data_receipt':{'source_sha256':CATALOG['source_sha256'],'case_count':len(CATALOG['cases']),
                             'unknown_quarantined':sum(c['quality_label']=='UNKNOWN' for c in CATALOG['cases'].values()),
-                            'positive_training_used':0,'training_run':False}}
+                            'positive_training_used':0,'training_run':False},
+            'scope_authority':'FIXED_PROTOTYPE_PLAN' if approved_plan is not None else 'DECLARED_FOR_TECHNICAL_TEST'}
+    report['approved_plan_hash']=digest(approved_plan) if approved_plan is not None else None
     try:
-        report['stages']['structure']={'status':'PASS',**structure(project)}
+        report['stages']['structure']={'status':'PASS',**structure(project,approved_plan)}
     except (KeyError,ValueError,TypeError) as e:
         report['stages']['structure']={'status':'FAIL','reason':str(e)}; report['status']='FAIL'; return None,report
     output=[]
@@ -225,9 +243,10 @@ def render(compiled,template):
     figures={l['id']:grid_svg(l['solution']['figure_data']) for l in compiled['lessons'] if l.get('figure')}
     return template.replace('__PAYLOAD__',payload).replace('__FIGURES__',json.dumps(figures,ensure_ascii=False).replace('<','\\u003c'))
 
-def run(input_file,output_dir):
+def run(input_file,output_dir,plan_file=None):
     project=json.loads(Path(input_file).read_text()); out=Path(output_dir); out.mkdir(parents=True,exist_ok=True)
-    compiled,report=compile_project(project)
+    plan=json.loads(Path(plan_file).read_text())[project['mode']] if plan_file is not None else None
+    compiled,report=compile_project(project,plan)
     (out/'report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
     if compiled and report['status'] in ('TECHNICAL_PASS','SEMANTIC_REVIEW_REQUIRED'):
         (out/'compiled.json').write_text(json.dumps(compiled,ensure_ascii=False,indent=2)+'\n')
@@ -242,5 +261,6 @@ def run(input_file,output_dir):
 if __name__=='__main__':
     import argparse
     parser=argparse.ArgumentParser(); parser.add_argument('input'); parser.add_argument('--out',required=True)
-    args=parser.parse_args(); report=run(args.input,args.out);print(json.dumps(report,ensure_ascii=False,indent=2))
+    parser.add_argument('--plan',default=str(Path(__file__).with_name('approved_plans.json')))
+    args=parser.parse_args(); report=run(args.input,args.out,args.plan);print(json.dumps(report,ensure_ascii=False,indent=2))
     raise SystemExit(0 if report['status'] in ('TECHNICAL_PASS','SEMANTIC_REVIEW_REQUIRED') else 2)

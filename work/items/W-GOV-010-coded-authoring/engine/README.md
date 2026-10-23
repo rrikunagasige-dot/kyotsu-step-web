@@ -40,6 +40,8 @@ build_catalog.pyで36件の台帳から版と品質ラベルを読み込み、ca
 - allowed_learning_actions：穴にすることを認める学習行為。
 - semantic_review：AIによる意味の審査記録。承認済みの教材・正例ラベルとは別。
 
+templates.jsonが固定したモード別の規則であり、教材入力のpolicyを書き換えても規則を変更できない。CLIは教材入力とは別のapproved_plans.jsonを読み、試作3教材／練習1教材の固定した収録一覧と原式を照合する。直接APIで実行する合成試験はDECLARED_FOR_TECHNICAL_TEST、固定計画を使うCLIの成果物はFIXED_PROTOTYPE_PLANとして区別する。計画のハッシュも検査結果へ保存する。
+
 出力はcompiled.json、機械検査のreport.json、外部サービスなしで開くpreview.html。未対応または失敗ならプレイ可能な出力を作らず、前回の出力がある場合も.staleへ退避する。未生成の教材を黙って落としたプレビューにはしない。
 
 ## 実行

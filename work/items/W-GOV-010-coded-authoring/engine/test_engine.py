@@ -19,6 +19,14 @@ class EngineTests(unittest.TestCase):
             with self.assertRaises(Unsupported,msg=expr):polynomial(expr)
     def test_title_budget(self):
         self.p['themes'].append({'title':'参考・発展','units':[]});self.fails(self.p)
+    def test_input_cannot_redefine_title_rule(self):
+        self.p['themes'].append({'title':'参考・発展','units':[]})
+        self.p['policy']['major_title_count']=4;self.p['policy']['major_titles'].append('参考・発展')
+        self.fails(self.p)
+    def test_input_cannot_redefine_frozen_inventory(self):
+        p=copy.deepcopy(self.p)
+        plan={'mode':p['mode'],'expected_units':['test','missing'],'original_expressions':{'test':p['lessons'][0]['original_expression']}}
+        self.assertEqual(compile_project(p,plan)[1]['status'],'FAIL')
     def test_unit_coverage_and_order(self):
         self.p['scope']['expected_units'].append('missing');self.fails(self.p)
     def test_duplicate_membership(self):

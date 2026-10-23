@@ -1,3 +1,7 @@
+## 2026-10-23 — seven-item visual acceptance and next bounded audit
+
+User「じゃ続けて」after seven real images: P008–P014 BLOCK-VISUAL-OK on source22cc/images97ed3d8. [Acceptance and exact scope](./SEVEN_ITEM_ACCEPTANCE_20261023.md). Previous five remain accepted;do not ask again. N12 mobile review formula-layout finding remains OPEN;read-only diagnosis and exact next proposal,not broad renderer implementation. Whole-chapterGate② OPEN/Gate③ NOT-READY. Historical pending descriptions below are superseded for these seven visual acceptances only.
+
 ## 2026-10-23 — current seven-hint implementation and native evidence
 
 Latest source `22ccf559a70d758689b958c77d19f4c9cdd43b7e`,image child `97ed3d8e4a03ec4a6af8cc96987f79f5ba31aa3b`,Draft PR121. P008–P014 APPROVED by user「まとめて修正してくれ」and implemented exactly. Review39911476014 SUCCESS:48unit,42realbrowser/42explicitmatrixskips;Governance39911475938 SUCCESS. Math39911475985 SUCCESS:250unit/257browser/12explicit skips. [Current exact results/history/limits](./SEVEN_HINTS_EXECUTION_20261023.md),[all seven actual images](./GATE1_SEVEN_ITEM_REVIEW_20261023.md). No repeated implementation approval. New seven visual Gate① remains BLOCK-CHECK-PENDING;prior five accepted unchanged. Work VERIFYING;whole-chapterGate② OPEN;Gate③ FINAL-REVIEW-NOT-READY. Main unchanged;no merge/deploy. Older pending/proposed/test-failure status paragraphs below are retained history,not current outcome.

@@ -1,8 +1,11 @@
 # W-MATH-026 — N06 Q12の数学的に重複した誤答
 ## P-001
-Status: PROPOSED
+Status: APPROVED
 Created: 2026-10-23 JST
 Command: CMD-WORK-001 修正
+
+### 2026-10-23 execution checkpoint
+承認済み、未実装。先行小問の実画像Gate①後にexact範囲で実装。承認を再度求めない。
 
 ### Problem / Need
 教師原Word SHA256 `93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa`。対象repo `rrikunagasige-dot/kyotsu-step-web` (ID1391122224)、確認した教材SHA `b1dc7e2ce7542ea1b7dd244a9490dfd1d4c2bf10`、N06 revision3 / 原問16件 / 選択16件。原Wordは読取専用。
@@ -33,14 +36,14 @@ Command: CMD-WORK-001 修正
 承認後は一文字列だけのsource diff、数学的同値/非同値、4択中の正解が1つだけ、誤答を正解扱いしないことを確認する。旧wrong[2]を保存した状態→reload→新4択→再回答、旧firstValue・attemptCount・初回正誤維持、正答済み/全16問完了の復元を検証する。320/390/1440pxで実画面の4択とヒントを確認し、通常/preview双方で誤答時Q13未解放・正答後のみ解放を検証。既存schema/型/lint/build・数学/他モード回帰、同根影響表の再監査を行う。Q12選択肢だけの実画像Gate①、全体Gate②/③、統合/公開は分ける。
 
 ### Approval
-Status: WAITING
-Approved by user: NO
-Approval date:
-Approval evidence: 未提示のこの新案に対する承認はまだない。Q12ヒント確認への「いいよ続けて」は本案の実装承認ではない。
+Status: APPROVED
+Approved by user: YES
+Approval date: 2026-10-23 JST
+Approval evidence: ユーザーは本チャットで、3案の全文リンクと変更内容を示し「この3案を承認し、Q03から1問ずつ進めてよいですか？」と明示した直後に **「いいよ続けて」** と回答（2026-10-23 JST）。対象は9ef406823375a267d13d493c2a3c57af5e938bebで固定したW-MATH-025/P-003、P-004、W-MATH-026/P-001の3案。これは前のQ12ヒントGate①への同文回答とは別の承認事象。各案のexact範囲を順番に許可し、一括実装・Gate①省略・main統合/公開は許可しない。
 
 ### Review History
-- Review status: NOT-REVIEWED
-- User feedback: なし。
+- Review status: APPROVED
+- User feedback: 「いいよ続けて」; exact unchanged proposal approved, execution staged per question.
 - Supersedes: None.
 - Superseded by: None.
 - 内容に変更が必要なら新しいrevisionを全文提示し、明示承認を待つ。

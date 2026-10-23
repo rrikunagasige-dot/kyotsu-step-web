@@ -1,6 +1,19 @@
 # W-MATH-025 — 独立照合／§12B影響範囲
 
-## CURRENT — 2026-10-23 JST Q12 hint-only Gate① accepted; new proposals await approval
+## CURRENT — 2026-10-23 JST three exact proposals approved; Stage C Q03 only
+- ユーザーは本チャットで、3案の全文リンクと変更内容を示し「この3案を承認し、Q03から1問ずつ進めてよいですか？」と明示した直後に **「いいよ続けて」** と回答（2026-10-23 JST）。対象は9ef406823375a267d13d493c2a3c57af5e938bebで固定したW-MATH-025/P-003、P-004、W-MATH-026/P-001の3案。これは前のQ12ヒントGate①への同文回答とは別の承認事象。各案のexact範囲を順番に許可し、一括実装・Gate①省略・main統合/公開は許可しない。
+- Primary A: **W-MATH-025/P-003**, next one-question block `n06-03` / `n06-formula-03`, revision3 / 16 original questions and 16 decisions. The only learner change is q3 hint: `−3と2の和・積をそれぞれ計算する。` → `積が負なので二数は異符号。和が負になるには、絶対値の大きい方が負になる。和と積の両方を確かめよう。`.
+- P-004 Q06 and W-MATH-026/P-001 Q12 distractor retain their exact approval but **are not implemented**. Their next implementation waits for preceding independent human Gate①; never re-request unchanged proposal approval.
+- Preflight: MASTER §§19/20/21/23/51–54, WORK_SYSTEM §§12A/12B/12C, mode SPEC, teacher Word SHA256 `93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa` paragraphs252–255 and current source Q01–Q04 reread. `(X-3)(X+2)=X²-X-6` independently checked; the new hint contains neither answer integers nor completed factors.
+- Do Not Touch: q3 other fields and all other learner source, N06 revision3/16 IDs/options/keys/history, accepted Q11/Q18/Q12-hint and N13 Q05/Q08, source Word/figures/CSS/progress. N14 Q16 stays separate PR111.
+- Branch: `work/W-MATH-025-n05-q11-hint-approved-20261023`, Draft PR115, live main `15ae503455bc6ae75b080caa1c4919cafb250027`, implementation parent `9ef406823375a267d13d493c2a3c57af5e938beb`. Source SHA/run for this new C implementation initially PENDING until actual commit/Actions discovery; no invented PASS.
+- Previous parent Review39893335371 and Governance39893335361 SUCCESS; parent full Math39893335363 **SUCCESS** (all workflow steps including physics/math-practice completed). Earlier b1dc7e2ce7542ea1b7dd244a9490dfd1d4c2bf10 full Math39891841676 SUCCESS (237 unit /254 browser PASS,9 skips) remains history for its exact SHA.
+- Verification surfaces: one Q03 review-only target and existing boundary suite, exact-source authentic Chrome images 320/390/1440, normal all16 with wrong→reload→same firstValue/attemptCount→retry and completion restore, accepted sibling markers absent. Capture folder `evidence/gate1-q03/` only; accepted Q12 images/job remain frozen/disabled.
+- Safe return: on success inspect original source-SHA images and present only Q03 Gate①; on failure diagnose the actual step under approved P-003 and recheck affected surfaces; cancellation/timeout is NOT VERIFIED. While CI runs, only independent primary source/root-impact audit and review preparation; no concurrent Q06/choice implementation.
+- **Q03 BLOCK-CHECK-PENDING**, Gate② OPEN and Gate③ FINAL-REVIEW-NOT-READY. Do not infer user visual acceptance from this implementation approval or CI, and do not merge/publish.
+- Earlier snapshots retain their original historical states; this CURRENT block governs the present checkpoint.
+
+## HISTORICAL — Q12 acceptance before follow-up proposal approval
 - User's direct response **「いいよ続けて」** followed the numbered authentic Q12 hint review in this chat. Record **W-MATH-025/P-002 BLOCK-VISUAL-OK** for the hint-only scope, without inventing a literal 「細部OK」 quotation.
 - Accepted IDs: item `n06-12`, block `n06-formula-12`, review target `n06-q12`; frozen app/source SHA `6d75ec551e738abc92be3af22b4502bb55e18a99`, original 18 PNG commit `0f93e549f418b3f67851dbfee161b726b278d7b7`; reviewed sheet predecessor `b1dc7e2ce7542ea1b7dd244a9490dfd1d4c2bf10`. The existing marker is hidden in subsequent review output, its IDs/history retained, and its accepted capture job disabled. Historical images are not replaced.
 - This checkpoint changes review acceptance, its existing assertion and records only. **No learner source, hint, answer, choice, revision, progress, shared UI or original source changes.** Q11/Q18 and N13 Q05/Q08 acceptance remains intact.

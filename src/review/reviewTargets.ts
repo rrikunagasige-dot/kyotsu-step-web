@@ -125,7 +125,16 @@ const targets: Record<string, ReviewTarget> = {
     itemIds:['n05-11'],expectedAnswers:['(a-8)(a+2)'],
     markBlockIds:['n05-formula-11'],reviewState:'accepted', // user 「続けていいよ」 accepted Q11 visual on 2026-10-23
   },
-  // W-MATH-025/P-002 Stage B: only the original N06 Q12 wrong hint is changed.
+  // W-MATH-025/P-003: the one original Q03 wrong-only hint; source revision unchanged.
+  'n06-q03': {
+    id:'n06-q03',unitId:'math-numbers-expressions-n06',title:'N06 Q03',
+    question:'整数組を先に教えず、符号と和・積から考え直す誤答ヒント',
+    revision:3,totalItems:16,
+    blockIds:['n06-lead-03','n06-formula-03','n06-after-03'],
+    itemIds:['n06-03'],expectedAnswers:['(X-3)(X+2)'],
+    markBlockIds:['n06-formula-03'],reviewState:'awaiting-user',
+  },
+  // W-MATH-025/P-002: hint-only visual accepted; immutable evidence retained.
   'n06-q12': {
     id:'n06-q12',unitId:'math-numbers-expressions-n06',title:'N06 Q12',
     question:'二数の符号を手掛かりにし、先の因子も残す誤答ヒント',

@@ -1,7 +1,7 @@
 {
   "work": "W-GOV-010-P002-IMPACT-COVERAGE",
   "engine_version": "1.0.0",
-  "ledger_head": "cb5c28f0fa926fe425744fc4609dbca6cf5d871391f096f37a080d26266d464b",
+  "ledger_head": "6285de900aa7fefa532ab8aa5756fa08432fa4e2d6a14da940b3b26353be75f4",
   "work_status": "DONE",
   "profile": "technical",
   "simulation": false,

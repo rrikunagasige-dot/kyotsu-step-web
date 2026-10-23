@@ -1,3 +1,16 @@
+# W-GOV-010 — P-002 正式採用完了
+
+Status: DONE（仕組みの実装・検証・正式採用の範囲）
+Updated: 2026-10-24 JST
+
+ユーザーがPR #129のmain反映と教材修正への復帰に「いいよ。」と明示承認。承認対象HEAD3543b2f4618213804b4d9000c717569b96bc0b8aを照合し、同SHAの専用CI・統治検査・コード検査の全成功を確認してmergeした。main採用SHA7c66bb6bbc1647b82601fb5010ffbef3cd4ef6e2、PR #129 merged true、live main一致、採用後統治CI #39981664914 SUCCESS。
+
+正式採用は教材の品質受入・総チェックOK・公開許可ではない。元の教材修正はW-MATH-027で再開し、三見出し復元の具体差分P-001-R1へ進めた。以前のP-001の未承認状態を実装承認へ変換しない。
+
+操作の出所とrequest hashはMAIN_ADOPTION_20261024.md、実イベントはworkflow-impact-execution/runtime/に保持。
+
+## 採用前の記録（履歴）
+
 # W-GOV-010 — P-002 実装・検証
 
 Status: VERIFYING — 実装・技術検証完了、正式統合の確認へ

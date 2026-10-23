@@ -2,7 +2,7 @@
 
 状態: VERIFYING / 内部: WAITING / 次: G1_VISUAL@N02-Q06-Q12
 
-台帳HEAD: `3d065ca021e118f524f12f0531cb8c024f4fd130e025cb012efcdb75ba2f30b6`
+台帳HEAD: `5c62c739ccf8e727cb59e719b71b8a709eb5a607656aabdac7f35213cb954f5e`
 候補SHA: `59aeba91056e954ccc65e51a02c7227e642a2c3a`
 
 模擬実行: False。アプリ受入: False。技術試験合格だけで教材の品質は確定しない。

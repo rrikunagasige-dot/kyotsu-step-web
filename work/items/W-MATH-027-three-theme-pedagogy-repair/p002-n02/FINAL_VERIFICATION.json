@@ -1,0 +1,59 @@
+{
+  "source_sha": "59aeba91056e954ccc65e51a02c7227e642a2c3a",
+  "runs": [
+    {
+      "id": 39996255814,
+      "name": "W-MATH-027 N02 compile and real screens — NO DEPLOY",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "59aeba91056e954ccc65e51a02c7227e642a2c3a",
+      "html_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39996255814"
+    },
+    {
+      "id": 39996264122,
+      "name": "Repository Governance Check",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "59aeba91056e954ccc65e51a02c7227e642a2c3a",
+      "html_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39996264122"
+    },
+    {
+      "id": 39996264165,
+      "name": "Review Preview Code Check (not a deployment)",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "59aeba91056e954ccc65e51a02c7227e642a2c3a",
+      "html_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39996264165"
+    },
+    {
+      "id": 39996263754,
+      "name": "Math textbook mode CI",
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "59aeba91056e954ccc65e51a02c7227e642a2c3a",
+      "html_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39996263754"
+    }
+  ],
+  "dedicated_unit_tests": 299,
+  "dedicated_browser_passed": 18,
+  "dedicated_browser_out_of_scope_skipped": 6,
+  "real_png_count": 12,
+  "widths": [
+    320,
+    390,
+    1440
+  ],
+  "original_questions": 233,
+  "actions": 318,
+  "theme_counts": [
+    125,
+    77,
+    116
+  ],
+  "next_node": "G1_VISUAL@N02-Q06-Q12",
+  "learner_quality": "UNKNOWN",
+  "main_sha_unchanged": "c4a7aca0e72f15896a54d6753197fca196702aa4",
+  "publication": false,
+  "n03": "proposal only; R05 approval pending",
+  "other_findings": "parent Work remains open"
+}

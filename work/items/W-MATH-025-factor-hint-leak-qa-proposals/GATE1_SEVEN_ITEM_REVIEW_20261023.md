@@ -1,3 +1,7 @@
+## Accepted — 2026-10-23
+
+User「じゃ続けて」after this grouped seven-image sheet:all seven BLOCK-VISUAL-OK on source22ccf559a70d758689b958c77d19f4c9cdd43b7e/image97ed3d8e4a03ec4a6af8cc96987f79f5ba31aa3b. [Acceptance record](./SEVEN_ITEM_ACCEPTANCE_20261023.md). The original marked images and request below are historical;do not ask for their acceptance again. Separate N12 display finding is diagnosed in[P015](./PROPOSAL_P015.md),stillPROPOSED. This acceptance does not mark the display defect fixed or the app final accepted.
+
 # ヒント7件の一括確認
 
 Status: BLOCK-CHECK-PENDING / implementation APPROVED, implemented and native browser tested.

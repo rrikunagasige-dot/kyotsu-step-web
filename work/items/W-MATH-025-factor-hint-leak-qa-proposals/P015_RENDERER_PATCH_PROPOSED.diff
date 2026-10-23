@@ -1,0 +1,32 @@
+--- a/src/components/textbook/TextbookFormula.tsx
++++ b/src/components/textbook/TextbookFormula.tsx
+@@ -8,6 +8,7 @@
+ type FormulaBlock = Extract<TextbookReadingBlock, { type: 'formula' }>
+ 
+ type Props = {
++  unitId: string
+   block: FormulaBlock
+   section: TextbookSection
+   progress: TextbookUnitProgress | undefined
+@@ -33,8 +34,8 @@
+   return isTextbookItemResolved(item, record) && (record?.value ?? item.answer) === '1'
+ }
+ 
+-export function TextbookFormula({ block, section, progress, onOpen }: Props) {
+-  const n12Formula = section.items.some((item) => item.id === 'n12-01')
++export function TextbookFormula({ block, section, progress, onOpen, unitId }: Props) {
++  const n12Formula = unitId === 'math-numbers-expressions-n12'
+   return (
+     <div
+       className={`reading-formula-line${n12Formula ? ' reading-formula-line--n12' : ''}`}
+--- a/src/pages/TextbookUnitPage.tsx
++++ b/src/pages/TextbookUnitPage.tsx
+@@ -354,7 +354,7 @@
+     if (block.type === 'formula') {
+       return (
+         <div className="reading-block-with-choice" key={block.id}>
+-          <TextbookFormula block={block} section={section} progress={currentProgress} onOpen={setActiveItemId} />
++          <TextbookFormula block={block} section={section} progress={currentProgress} onOpen={setActiveItemId} unitId={unit.unitId} />
+           {renderInlineChoicePanel(block)}
+         </div>
+       )

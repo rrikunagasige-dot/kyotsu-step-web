@@ -1,3 +1,11 @@
+## 2026-10-23 — seven accepted; N12 display diagnosis complete; P015 PROPOSED
+
+User「じゃ続けて」is recorded as visual acceptance of P008–P014 on source22cc/images97ed3d8. All prior accepted items remain accepted. [Exact acceptance](./SEVEN_ITEM_ACCEPTANCE_20261023.md). No repeat seven-item acceptance request.
+
+Separate display diagnosis on2bc979a20ea914e895f351a97b5129a763da5fed is complete;learner code equals22cc. Native39914505047 SUCCESS:6actual cases/6explicit matrix skips;Review39914505142/Gov39914505041 SUCCESS. All29review targets inspected:only N12Q06/Q12 lose their normal N12 classification after extracting item subsets. Normal N12 has32formula blocks. Root cause uses presence of n12-01 instead of stable unitId. [Native metrics/images/ZIP/failure history](./evidence/n12-display-diagnosis-20261023/README.md).
+
+[P015 exact limited two-file renderer proposal](./PROPOSAL_P015.md),[proposed patch text only](./P015_RENDERER_PATCH_PROPOSED.diff),NOT APPROVED/NOT IMPLEMENTED. The existing CSSclass was temporarily added only in a browser-session diagnostic;this proves CSS geometry,not the final JSX-rendered fix or its visual acceptance. No learner/app source changes during diagnosis. Whole-chapterGate② OPEN;Gate③ FINAL-REVIEW-NOT-READY. Main/production unchanged. Older statuses below remain historical.
+
 ## 2026-10-23 — current seven-hint implementation and native evidence
 
 Latest source `22ccf559a70d758689b958c77d19f4c9cdd43b7e`,image child `97ed3d8e4a03ec4a6af8cc96987f79f5ba31aa3b`,Draft PR121. P008–P014 APPROVED by user「まとめて修正してくれ」and implemented exactly. Review39911476014 SUCCESS:48unit,42realbrowser/42explicitmatrixskips;Governance39911475938 SUCCESS. Math39911475985 SUCCESS:250unit/257browser/12explicit skips. [Current exact results/history/limits](./SEVEN_HINTS_EXECUTION_20261023.md),[all seven actual images](./GATE1_SEVEN_ITEM_REVIEW_20261023.md). No repeated implementation approval. New seven visual Gate① remains BLOCK-CHECK-PENDING;prior five accepted unchanged. Work VERIFYING;whole-chapterGate② OPEN;Gate③ FINAL-REVIEW-NOT-READY. Main unchanged;no merge/deploy. Older pending/proposed/test-failure status paragraphs below are retained history,not current outcome.

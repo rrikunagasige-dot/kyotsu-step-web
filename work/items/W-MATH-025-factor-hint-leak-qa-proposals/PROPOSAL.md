@@ -1,3 +1,11 @@
+## 2026-10-23 — seven accepted; N12 display diagnosis complete; P015 PROPOSED
+
+User「じゃ続けて」is recorded as visual acceptance of P008–P014 on source22cc/images97ed3d8. All prior accepted items remain accepted. [Exact acceptance](./SEVEN_ITEM_ACCEPTANCE_20261023.md). No repeat seven-item acceptance request.
+
+Separate display diagnosis on2bc979a20ea914e895f351a97b5129a763da5fed is complete;learner code equals22cc. Native39914505047 SUCCESS:6actual cases/6explicit matrix skips;Review39914505142/Gov39914505041 SUCCESS. All29review targets inspected:only N12Q06/Q12 lose their normal N12 classification after extracting item subsets. Normal N12 has32formula blocks. Root cause uses presence of n12-01 instead of stable unitId. [Native metrics/images/ZIP/failure history](./evidence/n12-display-diagnosis-20261023/README.md).
+
+[P015 exact limited two-file renderer proposal](./PROPOSAL_P015.md),[proposed patch text only](./P015_RENDERER_PATCH_PROPOSED.diff),NOT APPROVED/NOT IMPLEMENTED. The existing CSSclass was temporarily added only in a browser-session diagnostic;this proves CSS geometry,not the final JSX-rendered fix or its visual acceptance. No learner/app source changes during diagnosis. Whole-chapterGate② OPEN;Gate③ FINAL-REVIEW-NOT-READY. Main/production unchanged. Older statuses below remain historical.
+
 
 ## 2026-10-23 — seven exact hints approved and implementation started
 User direct response **「まとめて修正してくれ」** followed the seven exact proposed new hints/P008–P014 and the explicit grouped approval question. This approves precisely those seven hint strings;no repeated approval is required. Record parentd95dd283d204095bf58ece70faef9544abe1d42d/source runtimefc27e7f5fbdc28345917276d43602ea4787537bd;live main15ae503455bc6ae75b080caa1c4919cafb250027 unchanged;account/repo1391122224 verified.

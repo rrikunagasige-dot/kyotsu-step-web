@@ -1,0 +1,336 @@
+{
+  "width": 390,
+  "id": "n12-p002-q12-signed-coef",
+  "source": "2bc979a20ea914e895f351a97b5129a763da5fed",
+  "learnerSource": "22ccf559a70d758689b958c77d19f4c9cdd43b7e",
+  "reviewBefore": {
+    "n12": false,
+    "scrollLeft": 0,
+    "scrollWidth": 282,
+    "clientWidth": 282,
+    "expression": {
+      "left": 63.765625,
+      "right": 331.234375,
+      "width": 267.46875,
+      "wrap": "nowrap",
+      "minWidth": "max-content"
+    },
+    "formula": {
+      "left": 56.578125,
+      "right": 338.421875,
+      "overflow": "auto"
+    },
+    "parts": [
+      {
+        "class": "reading-formula-math",
+        "text": "130(20−x)=2600+(130(20-x)=2600+(130(20−x)=2600+(",
+        "left": 64.5625,
+        "right": 259.5,
+        "top": 874.453125,
+        "bottom": 906.453125
+      },
+      {
+        "class": "reading-formula-choice reading-formula-choice--token",
+        "text": "選択",
+        "left": 260.765625,
+        "right": 311.15625,
+        "top": 868.453125,
+        "bottom": 912.453125
+      },
+      {
+        "class": "reading-formula-math",
+        "text": ")x)x)x",
+        "left": 312.421875,
+        "right": 330.421875,
+        "top": 874.453125,
+        "bottom": 906.453125
+      }
+    ]
+  },
+  "reviewWrong": {
+    "n12": false,
+    "scrollLeft": 0,
+    "scrollWidth": 282,
+    "clientWidth": 282,
+    "expression": {
+      "left": 63.765625,
+      "right": 331.234375,
+      "width": 267.46875,
+      "wrap": "nowrap",
+      "minWidth": "max-content"
+    },
+    "formula": {
+      "left": 56.578125,
+      "right": 338.421875,
+      "overflow": "auto"
+    },
+    "parts": [
+      {
+        "class": "reading-formula-math",
+        "text": "130(20−x)=2600+(130(20-x)=2600+(130(20−x)=2600+(",
+        "left": 64.5625,
+        "right": 259.5,
+        "top": 568.453125,
+        "bottom": 600.453125
+      },
+      {
+        "class": "reading-formula-choice reading-formula-choice--wrong reading-formula-choice--token",
+        "text": "×",
+        "left": 260.765625,
+        "right": 311.15625,
+        "top": 562.453125,
+        "bottom": 606.453125
+      },
+      {
+        "class": "reading-formula-math",
+        "text": ")x)x)x",
+        "left": 312.421875,
+        "right": 330.421875,
+        "top": 568.453125,
+        "bottom": 600.453125
+      }
+    ]
+  },
+  "reviewAtScrollZero": {
+    "n12": false,
+    "scrollLeft": 0,
+    "scrollWidth": 282,
+    "clientWidth": 282,
+    "expression": {
+      "left": 63.765625,
+      "right": 331.234375,
+      "width": 267.46875,
+      "wrap": "nowrap",
+      "minWidth": "max-content"
+    },
+    "formula": {
+      "left": 56.578125,
+      "right": 338.421875,
+      "overflow": "auto"
+    },
+    "parts": [
+      {
+        "class": "reading-formula-math",
+        "text": "130(20−x)=2600+(130(20-x)=2600+(130(20−x)=2600+(",
+        "left": 64.5625,
+        "right": 259.5,
+        "top": 568.453125,
+        "bottom": 600.453125
+      },
+      {
+        "class": "reading-formula-choice reading-formula-choice--wrong reading-formula-choice--token",
+        "text": "×",
+        "left": 260.765625,
+        "right": 311.15625,
+        "top": 562.453125,
+        "bottom": 606.453125
+      },
+      {
+        "class": "reading-formula-math",
+        "text": ")x)x)x",
+        "left": 312.421875,
+        "right": 330.421875,
+        "top": 568.453125,
+        "bottom": 600.453125
+      }
+    ]
+  },
+  "reviewRestoredClassProbe": {
+    "n12": true,
+    "scrollLeft": 0,
+    "scrollWidth": 282,
+    "clientWidth": 282,
+    "expression": {
+      "left": 63.765625,
+      "right": 331.234375,
+      "width": 267.46875,
+      "wrap": "wrap",
+      "minWidth": "0px"
+    },
+    "formula": {
+      "left": 56.578125,
+      "right": 338.421875,
+      "overflow": "visible"
+    },
+    "parts": [
+      {
+        "class": "reading-formula-math",
+        "text": "130(20−x)=2600+(130(20-x)=2600+(130(20−x)=2600+(",
+        "left": 73.71875,
+        "right": 268.65625,
+        "top": 574.453125,
+        "bottom": 606.453125
+      },
+      {
+        "class": "reading-formula-choice reading-formula-choice--wrong reading-formula-choice--token",
+        "text": "×",
+        "left": 270.890625,
+        "right": 321.28125,
+        "top": 562.453125,
+        "bottom": 606.453125
+      },
+      {
+        "class": "reading-formula-math",
+        "text": ")x)x)x",
+        "left": 188.5,
+        "right": 206.5,
+        "top": 609.96875,
+        "bottom": 641.96875
+      }
+    ]
+  },
+  "reviewReload": {
+    "n12": false,
+    "scrollLeft": 0,
+    "scrollWidth": 282,
+    "clientWidth": 282,
+    "expression": {
+      "left": 63.765625,
+      "right": 331.234375,
+      "width": 267.46875,
+      "wrap": "nowrap",
+      "minWidth": "max-content"
+    },
+    "formula": {
+      "left": 56.578125,
+      "right": 338.421875,
+      "overflow": "auto"
+    },
+    "parts": [
+      {
+        "class": "reading-formula-math",
+        "text": "130(20−x)=2600+(130(20-x)=2600+(130(20−x)=2600+(",
+        "left": 64.5625,
+        "right": 259.5,
+        "top": 874.453125,
+        "bottom": 906.453125
+      },
+      {
+        "class": "reading-formula-choice reading-formula-choice--token",
+        "text": "選択",
+        "left": 260.765625,
+        "right": 311.15625,
+        "top": 868.453125,
+        "bottom": 912.453125
+      },
+      {
+        "class": "reading-formula-math",
+        "text": ")x)x)x",
+        "left": 312.421875,
+        "right": 330.421875,
+        "top": 874.453125,
+        "bottom": 906.453125
+      }
+    ]
+  },
+  "normalBefore": {
+    "n12": true,
+    "scrollLeft": 0,
+    "scrollWidth": 310,
+    "clientWidth": 310,
+    "expression": {
+      "left": 48.375,
+      "right": 343.625,
+      "width": 295.25,
+      "wrap": "wrap",
+      "minWidth": "0px"
+    },
+    "formula": {
+      "left": 41.1875,
+      "right": 350.8125,
+      "overflow": "visible"
+    },
+    "parts": [
+      {
+        "class": "reading-formula-math",
+        "text": "130(20−x)=2600+(130(20-x)=2600+(130(20−x)=2600+(",
+        "left": 62.09375,
+        "right": 257.03125,
+        "top": 912.078125,
+        "bottom": 944.078125
+      },
+      {
+        "class": "reading-formula-choice reading-formula-choice--token",
+        "text": "選択",
+        "left": 259.265625,
+        "right": 309.65625,
+        "top": 900.078125,
+        "bottom": 944.078125
+      },
+      {
+        "class": "reading-formula-math",
+        "text": ")x)x)x",
+        "left": 311.890625,
+        "right": 329.890625,
+        "top": 912.078125,
+        "bottom": 944.078125
+      }
+    ]
+  },
+  "normalWrong": {
+    "n12": true,
+    "scrollLeft": 0,
+    "scrollWidth": 310,
+    "clientWidth": 310,
+    "expression": {
+      "left": 48.375,
+      "right": 343.625,
+      "width": 295.25,
+      "wrap": "wrap",
+      "minWidth": "0px"
+    },
+    "formula": {
+      "left": 41.1875,
+      "right": 350.8125,
+      "overflow": "visible"
+    },
+    "parts": [
+      {
+        "class": "reading-formula-math",
+        "text": "130(20−x)=2600+(130(20-x)=2600+(130(20−x)=2600+(",
+        "left": 62.09375,
+        "right": 257.03125,
+        "top": 816.078125,
+        "bottom": 848.078125
+      },
+      {
+        "class": "reading-formula-choice reading-formula-choice--wrong reading-formula-choice--token",
+        "text": "×",
+        "left": 259.265625,
+        "right": 309.65625,
+        "top": 804.078125,
+        "bottom": 848.078125
+      },
+      {
+        "class": "reading-formula-math",
+        "text": ")x)x)x",
+        "left": 311.890625,
+        "right": 329.890625,
+        "top": 816.078125,
+        "bottom": 848.078125
+      }
+    ]
+  },
+  "extractionSurvey": [
+    {
+      "target": "n12-q06-coef-hint",
+      "unit": "math-numbers-expressions-n12",
+      "valid": true,
+      "originalN12Class": true,
+      "extractedN12Class": false,
+      "items": [
+        "n12-p002-q06-left-coef"
+      ]
+    },
+    {
+      "target": "n12-q12-coef-hint",
+      "unit": "math-numbers-expressions-n12",
+      "valid": true,
+      "originalN12Class": true,
+      "extractedN12Class": false,
+      "items": [
+        "n12-p002-q12-signed-coef"
+      ]
+    }
+  ]
+}

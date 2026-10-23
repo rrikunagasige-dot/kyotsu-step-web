@@ -1,3 +1,11 @@
+## 2026-10-23 — seven accepted; N12 display diagnosis complete; P015 PROPOSED
+
+User「じゃ続けて」is recorded as visual acceptance of P008–P014 on source22cc/images97ed3d8. All prior accepted items remain accepted. [Exact acceptance](./SEVEN_ITEM_ACCEPTANCE_20261023.md). No repeat seven-item acceptance request.
+
+Separate display diagnosis on2bc979a20ea914e895f351a97b5129a763da5fed is complete;learner code equals22cc. Native39914505047 SUCCESS:6actual cases/6explicit matrix skips;Review39914505142/Gov39914505041 SUCCESS. All29review targets inspected:only N12Q06/Q12 lose their normal N12 classification after extracting item subsets. Normal N12 has32formula blocks. Root cause uses presence of n12-01 instead of stable unitId. [Native metrics/images/ZIP/failure history](./evidence/n12-display-diagnosis-20261023/README.md).
+
+[P015 exact limited two-file renderer proposal](./PROPOSAL_P015.md),[proposed patch text only](./P015_RENDERER_PATCH_PROPOSED.diff),NOT APPROVED/NOT IMPLEMENTED. The existing CSSclass was temporarily added only in a browser-session diagnostic;this proves CSS geometry,not the final JSX-rendered fix or its visual acceptance. No learner/app source changes during diagnosis. Whole-chapterGate② OPEN;Gate③ FINAL-REVIEW-NOT-READY. Main/production unchanged. Older statuses below remain historical.
+
 ## 2026-10-23 — seven-item visual acceptance and next bounded audit
 
 User「じゃ続けて」after seven real images: P008–P014 BLOCK-VISUAL-OK on source22cc/images97ed3d8. [Acceptance and exact scope](./SEVEN_ITEM_ACCEPTANCE_20261023.md). Previous five remain accepted;do not ask again. N12 mobile review formula-layout finding remains OPEN;read-only diagnosis and exact next proposal,not broad renderer implementation. Whole-chapterGate② OPEN/Gate③ NOT-READY. Historical pending descriptions below are superseded for these seven visual acceptances only.

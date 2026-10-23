@@ -1,0 +1,336 @@
+{
+  "width": 320,
+  "id": "n12-p002-q06-left-coef",
+  "source": "2bc979a20ea914e895f351a97b5129a763da5fed",
+  "learnerSource": "22ccf559a70d758689b958c77d19f4c9cdd43b7e",
+  "reviewBefore": {
+    "n12": false,
+    "scrollLeft": 138,
+    "scrollWidth": 358,
+    "clientWidth": 212,
+    "expression": {
+      "left": -74.234375,
+      "right": 269.0625,
+      "width": 343.296875,
+      "wrap": "nowrap",
+      "minWidth": "max-content"
+    },
+    "formula": {
+      "left": 56.578125,
+      "right": 268.421875,
+      "overflow": "auto"
+    },
+    "parts": [
+      {
+        "class": "reading-formula-math",
+        "text": "3x+2≤2x+4⟹3x+2\\le2x+4\\quad\\Longrightarrow\\quad3x+2≤2x+4⟹",
+        "left": -74.234375,
+        "right": 135.796875,
+        "top": 545.546875,
+        "bottom": 577.546875
+      },
+      {
+        "class": "reading-formula-choice reading-formula-choice--token",
+        "text": "選択",
+        "left": 137.0625,
+        "right": 187.453125,
+        "top": 539.546875,
+        "bottom": 583.546875
+      },
+      {
+        "class": "reading-formula-math",
+        "text": "x+2≤4x+2\\le4x+2≤4",
+        "left": 188.71875,
+        "right": 269.0625,
+        "top": 545.546875,
+        "bottom": 577.546875
+      }
+    ]
+  },
+  "reviewWrong": {
+    "n12": false,
+    "scrollLeft": 138,
+    "scrollWidth": 358,
+    "clientWidth": 212,
+    "expression": {
+      "left": -74.234375,
+      "right": 269.0625,
+      "width": 343.296875,
+      "wrap": "nowrap",
+      "minWidth": "max-content"
+    },
+    "formula": {
+      "left": 56.578125,
+      "right": 268.421875,
+      "overflow": "auto"
+    },
+    "parts": [
+      {
+        "class": "reading-formula-math",
+        "text": "3x+2≤2x+4⟹3x+2\\le2x+4\\quad\\Longrightarrow\\quad3x+2≤2x+4⟹",
+        "left": -74.234375,
+        "right": 135.796875,
+        "top": 545.546875,
+        "bottom": 577.546875
+      },
+      {
+        "class": "reading-formula-choice reading-formula-choice--wrong reading-formula-choice--token",
+        "text": "×",
+        "left": 137.0625,
+        "right": 187.453125,
+        "top": 539.546875,
+        "bottom": 583.546875
+      },
+      {
+        "class": "reading-formula-math",
+        "text": "x+2≤4x+2\\le4x+2≤4",
+        "left": 188.71875,
+        "right": 269.0625,
+        "top": 545.546875,
+        "bottom": 577.546875
+      }
+    ]
+  },
+  "reviewAtScrollZero": {
+    "n12": false,
+    "scrollLeft": 0,
+    "scrollWidth": 358,
+    "clientWidth": 212,
+    "expression": {
+      "left": 63.765625,
+      "right": 407.0625,
+      "width": 343.296875,
+      "wrap": "nowrap",
+      "minWidth": "max-content"
+    },
+    "formula": {
+      "left": 56.578125,
+      "right": 268.421875,
+      "overflow": "auto"
+    },
+    "parts": [
+      {
+        "class": "reading-formula-math",
+        "text": "3x+2≤2x+4⟹3x+2\\le2x+4\\quad\\Longrightarrow\\quad3x+2≤2x+4⟹",
+        "left": 63.765625,
+        "right": 273.796875,
+        "top": 545.546875,
+        "bottom": 577.546875
+      },
+      {
+        "class": "reading-formula-choice reading-formula-choice--wrong reading-formula-choice--token",
+        "text": "×",
+        "left": 275.0625,
+        "right": 325.453125,
+        "top": 539.546875,
+        "bottom": 583.546875
+      },
+      {
+        "class": "reading-formula-math",
+        "text": "x+2≤4x+2\\le4x+2≤4",
+        "left": 326.71875,
+        "right": 407.0625,
+        "top": 545.546875,
+        "bottom": 577.546875
+      }
+    ]
+  },
+  "reviewRestoredClassProbe": {
+    "n12": true,
+    "scrollLeft": 0,
+    "scrollWidth": 212,
+    "clientWidth": 212,
+    "expression": {
+      "left": 63.765625,
+      "right": 261.234375,
+      "width": 197.46875,
+      "wrap": "wrap",
+      "minWidth": "0px"
+    },
+    "formula": {
+      "left": 56.578125,
+      "right": 268.421875,
+      "overflow": "visible"
+    },
+    "parts": [
+      {
+        "class": "reading-formula-math",
+        "text": "3x+2≤2x+4⟹3x+2\\le2x+4\\quad\\Longrightarrow\\quad3x+2≤2x+4⟹",
+        "left": 63.765625,
+        "right": 261.234375,
+        "top": 539.546875,
+        "bottom": 603.546875
+      },
+      {
+        "class": "reading-formula-choice reading-formula-choice--wrong reading-formula-choice--token",
+        "text": "×",
+        "left": 96.015625,
+        "right": 146.40625,
+        "top": 607.0625,
+        "bottom": 651.0625
+      },
+      {
+        "class": "reading-formula-math",
+        "text": "x+2≤4x+2\\le4x+2≤4",
+        "left": 148.640625,
+        "right": 228.984375,
+        "top": 619.0625,
+        "bottom": 651.0625
+      }
+    ]
+  },
+  "reviewReload": {
+    "n12": false,
+    "scrollLeft": 0,
+    "scrollWidth": 358,
+    "clientWidth": 212,
+    "expression": {
+      "left": 63.765625,
+      "right": 407.0625,
+      "width": 343.296875,
+      "wrap": "nowrap",
+      "minWidth": "max-content"
+    },
+    "formula": {
+      "left": 56.578125,
+      "right": 268.421875,
+      "overflow": "auto"
+    },
+    "parts": [
+      {
+        "class": "reading-formula-math",
+        "text": "3x+2≤2x+4⟹3x+2\\le2x+4\\quad\\Longrightarrow\\quad3x+2≤2x+4⟹",
+        "left": 63.765625,
+        "right": 273.796875,
+        "top": 1038.546875,
+        "bottom": 1070.546875
+      },
+      {
+        "class": "reading-formula-choice reading-formula-choice--token",
+        "text": "選択",
+        "left": 275.0625,
+        "right": 325.453125,
+        "top": 1032.546875,
+        "bottom": 1076.546875
+      },
+      {
+        "class": "reading-formula-math",
+        "text": "x+2≤4x+2\\le4x+2≤4",
+        "left": 326.71875,
+        "right": 407.0625,
+        "top": 1038.546875,
+        "bottom": 1070.546875
+      }
+    ]
+  },
+  "normalBefore": {
+    "n12": true,
+    "scrollLeft": 0,
+    "scrollWidth": 240,
+    "clientWidth": 240,
+    "expression": {
+      "left": 48.375,
+      "right": 273.625,
+      "width": 225.25,
+      "wrap": "wrap",
+      "minWidth": "0px"
+    },
+    "formula": {
+      "left": 41.1875,
+      "right": 280.8125,
+      "overflow": "visible"
+    },
+    "parts": [
+      {
+        "class": "reading-formula-n12-transform",
+        "text": "3x+2≤2x+43x+2\\le2x+43x+2≤2x+4↓",
+        "left": 67.21875,
+        "right": 202.15625,
+        "top": 748.46875,
+        "bottom": 795.171875
+      },
+      {
+        "class": "reading-formula-choice reading-formula-choice--token",
+        "text": "選択",
+        "left": 204.390625,
+        "right": 254.78125,
+        "top": 749.8125,
+        "bottom": 793.8125
+      },
+      {
+        "class": "reading-formula-math",
+        "text": "x+2≤4x+2\\le4x+2≤4",
+        "left": 120.828125,
+        "right": 201.171875,
+        "top": 798.6875,
+        "bottom": 830.6875
+      }
+    ]
+  },
+  "normalWrong": {
+    "n12": true,
+    "scrollLeft": 0,
+    "scrollWidth": 240,
+    "clientWidth": 240,
+    "expression": {
+      "left": 48.375,
+      "right": 273.625,
+      "width": 225.25,
+      "wrap": "wrap",
+      "minWidth": "0px"
+    },
+    "formula": {
+      "left": 41.1875,
+      "right": 280.8125,
+      "overflow": "visible"
+    },
+    "parts": [
+      {
+        "class": "reading-formula-n12-transform",
+        "text": "3x+2≤2x+43x+2\\le2x+43x+2≤2x+4↓",
+        "left": 67.21875,
+        "right": 202.15625,
+        "top": 725.46875,
+        "bottom": 772.171875
+      },
+      {
+        "class": "reading-formula-choice reading-formula-choice--wrong reading-formula-choice--token",
+        "text": "×",
+        "left": 204.390625,
+        "right": 254.78125,
+        "top": 726.8125,
+        "bottom": 770.8125
+      },
+      {
+        "class": "reading-formula-math",
+        "text": "x+2≤4x+2\\le4x+2≤4",
+        "left": 120.828125,
+        "right": 201.171875,
+        "top": 775.6875,
+        "bottom": 807.6875
+      }
+    ]
+  },
+  "extractionSurvey": [
+    {
+      "target": "n12-q06-coef-hint",
+      "unit": "math-numbers-expressions-n12",
+      "valid": true,
+      "originalN12Class": true,
+      "extractedN12Class": false,
+      "items": [
+        "n12-p002-q06-left-coef"
+      ]
+    },
+    {
+      "target": "n12-q12-coef-hint",
+      "unit": "math-numbers-expressions-n12",
+      "valid": true,
+      "originalN12Class": true,
+      "extractedN12Class": false,
+      "items": [
+        "n12-p002-q12-signed-coef"
+      ]
+    }
+  ]
+}

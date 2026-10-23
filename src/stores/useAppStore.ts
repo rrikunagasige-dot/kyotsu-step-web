@@ -156,7 +156,8 @@ export const useAppStore = create<AppState>()(persist((set, get) => ({
   setSettings: (partial) => set((state) => ({ settings: { ...state.settings, ...partial } })),
   resetProgress: () => set({ learningSessions: {}, learningAttempts: [], simulationSessions: {}, simulationAttempts: [], textbookProgress: {} }),
 }), {
-  name: 'kyotsu-step-store',
+  // Review deployments use an isolated key; ordinary builds retain the existing history.
+  name: import.meta.env.VITE_STORAGE_NAMESPACE || 'kyotsu-step-store',
   version: 1,
   partialize: (state) => ({
     learningSessions: state.learningSessions,

@@ -1,0 +1,136 @@
+{
+  "parentValidatedRuntime": "fc27e7f5fbdc28345917276d43602ea4787537bd",
+  "currentSource": "944dcbdf5687a52789ae5baf55b1193537267837",
+  "method": "All actual full math sections: compare old sentinel predicate and new stable-unit predicate. Hint-only differences from this runtime do not alter unit IDs, item IDs or blocks. Renderer change has only primitive identity input/predicate;unchanged boolean gives unchanged renderer branch for each full section. Not a standalone browser layout proof.",
+  "rows": [
+    {
+      "unitId": "math-numbers-expressions-n01",
+      "section": "lesson",
+      "gradedItems": 18,
+      "formulaBlocks": 11,
+      "oldN12": false,
+      "newN12": false,
+      "identicalPredicate": true
+    },
+    {
+      "unitId": "math-numbers-expressions-n02",
+      "section": "lesson",
+      "gradedItems": 12,
+      "formulaBlocks": 13,
+      "oldN12": false,
+      "newN12": false,
+      "identicalPredicate": true
+    },
+    {
+      "unitId": "math-numbers-expressions-n03",
+      "section": "lesson",
+      "gradedItems": 17,
+      "formulaBlocks": 17,
+      "oldN12": false,
+      "newN12": false,
+      "identicalPredicate": true
+    },
+    {
+      "unitId": "math-numbers-expressions-n04",
+      "section": "lesson",
+      "gradedItems": 26,
+      "formulaBlocks": 25,
+      "oldN12": false,
+      "newN12": false,
+      "identicalPredicate": true
+    },
+    {
+      "unitId": "math-numbers-expressions-n05",
+      "section": "lesson",
+      "gradedItems": 20,
+      "formulaBlocks": 22,
+      "oldN12": false,
+      "newN12": false,
+      "identicalPredicate": true
+    },
+    {
+      "unitId": "math-numbers-expressions-n06",
+      "section": "lesson",
+      "gradedItems": 16,
+      "formulaBlocks": 15,
+      "oldN12": false,
+      "newN12": false,
+      "identicalPredicate": true
+    },
+    {
+      "unitId": "math-numbers-expressions-n07",
+      "section": "lesson",
+      "gradedItems": 14,
+      "formulaBlocks": 8,
+      "oldN12": false,
+      "newN12": false,
+      "identicalPredicate": true
+    },
+    {
+      "unitId": "math-numbers-expressions-n08",
+      "section": "lesson",
+      "gradedItems": 12,
+      "formulaBlocks": 10,
+      "oldN12": false,
+      "newN12": false,
+      "identicalPredicate": true
+    },
+    {
+      "unitId": "math-numbers-expressions-n09",
+      "section": "lesson",
+      "gradedItems": 18,
+      "formulaBlocks": 19,
+      "oldN12": false,
+      "newN12": false,
+      "identicalPredicate": true
+    },
+    {
+      "unitId": "math-numbers-expressions-n10",
+      "section": "lesson",
+      "gradedItems": 21,
+      "formulaBlocks": 20,
+      "oldN12": false,
+      "newN12": false,
+      "identicalPredicate": true
+    },
+    {
+      "unitId": "math-numbers-expressions-n11",
+      "section": "lesson",
+      "gradedItems": 31,
+      "formulaBlocks": 27,
+      "oldN12": false,
+      "newN12": false,
+      "identicalPredicate": true
+    },
+    {
+      "unitId": "math-numbers-expressions-n12",
+      "section": "lesson",
+      "gradedItems": 35,
+      "formulaBlocks": 32,
+      "oldN12": true,
+      "newN12": true,
+      "identicalPredicate": true
+    },
+    {
+      "unitId": "math-numbers-expressions-n13",
+      "section": "lesson",
+      "gradedItems": 12,
+      "formulaBlocks": 11,
+      "oldN12": false,
+      "newN12": false,
+      "identicalPredicate": true
+    },
+    {
+      "unitId": "math-numbers-expressions-n14",
+      "section": "lesson",
+      "gradedItems": 38,
+      "formulaBlocks": 26,
+      "oldN12": false,
+      "newN12": false,
+      "identicalPredicate": true
+    }
+  ],
+  "allSame": true,
+  "totalFormulaBlocks": 256,
+  "limits": "Fourteen numbers-and-expressions units only;other math/physics modes rely on native regression,not inferred from this table."
+}

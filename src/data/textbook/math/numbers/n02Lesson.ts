@@ -115,7 +115,7 @@ const rawN02 = {
         "parts": [
           {
             "type": "math" as const,
-            "latex": "\\begin{aligned}A+B={}&(2+(-1))x^3\\\\&+(-3+2)x^2\\\\&+(1+0)x+(-1+2)\\end{aligned}"
+            "latex": "\\begin{aligned}&A+B\\\\&=(2+(-1))x^3\\\\&\\quad+(-3+2)x^2\\\\&\\quad+(1+0)x+(-1+2)\\end{aligned}"
           }
         ],
         "derivationId": "n02-r2-add"
@@ -190,7 +190,7 @@ const rawN02 = {
         "parts": [
           {
             "type": "math" as const,
-            "latex": "\\begin{aligned}-B={}&(-1)(-x^3)\\\\&+(-1)(2x^2)+(-1)\\cdot2\\end{aligned}"
+            "latex": "\\begin{aligned}&-B\\\\&=(-1)(-x^3)\\\\&\\quad+(-1)(2x^2)+(-1)\\cdot2\\end{aligned}"
           }
         ],
         "derivationId": "n02-r2-minus"
@@ -264,7 +264,7 @@ const rawN02 = {
         "parts": [
           {
             "type": "math" as const,
-            "latex": "\\begin{aligned}A-B={}&(2x^3-3x^2+x-1)\\\\&+(x^3-2x^2-2)\\end{aligned}"
+            "latex": "\\begin{aligned}&A-B\\\\&=(2x^3-3x^2+x-1)\\\\&\\quad+(x^3-2x^2-2)\\end{aligned}"
           }
         ],
         "derivationId": "n02-r2-subtract"
@@ -275,7 +275,7 @@ const rawN02 = {
         "parts": [
           {
             "type": "math" as const,
-            "latex": "\\begin{aligned}A-B={}&(2+1)x^3\\\\&+(-3+(-2))x^2\\\\&+x+(-1+(-2))\\end{aligned}"
+            "latex": "\\begin{aligned}&A-B\\\\&=(2+1)x^3\\\\&\\quad+(-3+(-2))x^2\\\\&\\quad+x+(-1+(-2))\\end{aligned}"
           }
         ],
         "derivationId": "n02-r2-subtract"
@@ -362,7 +362,7 @@ const rawN02 = {
         "parts": [
           {
             "type": "math" as const,
-            "latex": "\\begin{aligned}2A={}&2(2x^3)+2(-3x^2)\\\\&+2x+2(-1)\\end{aligned}"
+            "latex": "\\begin{aligned}&2A\\\\&=2(2x^3)+2(-3x^2)\\\\&\\quad+2x+2(-1)\\end{aligned}"
           }
         ],
         "derivationId": "n02-r2-two-a"
@@ -432,7 +432,7 @@ const rawN02 = {
         "parts": [
           {
             "type": "math" as const,
-            "latex": "\\begin{aligned}-3B={}&(-3)(-x^3)\\\\&+(-3)(2x^2)+(-3)\\cdot2\\end{aligned}"
+            "latex": "\\begin{aligned}&-3B\\\\&=(-3)(-x^3)\\\\&\\quad+(-3)(2x^2)\\\\&\\quad+(-3)\\cdot2\\end{aligned}"
           }
         ],
         "derivationId": "n02-r2-three-b"
@@ -502,7 +502,7 @@ const rawN02 = {
         "parts": [
           {
             "type": "math" as const,
-            "latex": "\\begin{aligned}2A-3B={}&(4x^3-6x^2+2x-2)\\\\&+(3x^3-6x^2-6)\\end{aligned}"
+            "latex": "\\begin{aligned}&2A-3B\\\\&=(4x^3-6x^2+2x-2)\\\\&\\quad+(3x^3-6x^2-6)\\end{aligned}"
           }
         ],
         "derivationId": "n02-r2-multiple-add"
@@ -513,7 +513,7 @@ const rawN02 = {
         "parts": [
           {
             "type": "math" as const,
-            "latex": "\\begin{aligned}2A-3B={}&(4+3)x^3\\\\&+(-6+(-6))x^2\\\\&+2x+(-2+(-6))\\end{aligned}"
+            "latex": "\\begin{aligned}&2A-3B\\\\&=(4+3)x^3\\\\&\\quad+(-6+(-6))x^2\\\\&\\quad+2x+(-2+(-6))\\end{aligned}"
           }
         ],
         "derivationId": "n02-r2-multiple-add"
@@ -550,7 +550,7 @@ const rawN02 = {
         "parts": [
           {
             "type": "math" as const,
-            "latex": "2A-3B=7x^3-12x^2+2x-8"
+            "latex": "\\begin{aligned}&2A-3B\\\\&=7x^3-12x^2+2x-8\\end{aligned}"
           }
         ],
         "derivationId": "n02-r2-multiple-add"
@@ -613,7 +613,7 @@ const rawN02 = {
         "parts": [
           {
             "type": "math" as const,
-            "latex": "3A-4B-(A-B)=3A-4B-A+B"
+            "latex": "\\begin{aligned}&3A-4B-(A-B)\\\\&=3A-4B-A+B\\end{aligned}"
           }
         ],
         "derivationId": "n02-r2-structure"
@@ -672,7 +672,7 @@ const rawN02 = {
         "parts": [
           {
             "type": "math" as const,
-            "latex": "3A-4B-(A-B)=2A-3B"
+            "latex": "\\begin{aligned}&3A-4B-(A-B)\\\\&=2A-3B\\end{aligned}"
           }
         ],
         "derivationId": "n02-r2-structure"
@@ -694,7 +694,7 @@ const rawN02 = {
         "parts": [
           {
             "type": "math" as const,
-            "latex": "2A-3B="
+            "latex": "="
           },
           {
             "type": "choice" as const,

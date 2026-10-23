@@ -13,6 +13,14 @@ async function fits(page: Page) {
   await expect(page.locator('.katex-error')).toHaveCount(0)
   const widths = await page.evaluate(() => [document.documentElement.clientWidth, document.documentElement.scrollWidth])
   expect(widths[1]).toBeLessThanOrEqual(widths[0] + 1)
+    const clipped = await page.locator('[data-derivation-id^="n02-r2-"] .reading-formula-expression').evaluateAll(nodes => nodes.flatMap(node => {
+      const parent = node.getBoundingClientRect()
+      return Array.from(node.querySelectorAll('.katex')).filter(math => {
+        const r = math.getBoundingClientRect()
+        return r.right > parent.right + 1 || r.left < parent.left - 1
+      }).map(math => ({ formula: node.parentElement?.getAttribute('data-testid'), width: math.getBoundingClientRect().width, available: parent.width }))
+    }))
+    expect(clipped, 'new N02 math must fit its own formula container, not only the document').toEqual([])
 }
 async function setup(page: Page) {
   await page.goto(route('/learning/setup?subject=math-1a'))

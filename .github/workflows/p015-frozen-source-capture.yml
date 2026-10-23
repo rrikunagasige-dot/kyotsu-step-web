@@ -1,0 +1,60 @@
+name: P015 frozen-source authentic screenshot capture
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/p015-frozen-source-capture.yml'
+permissions:
+  contents: read
+jobs:
+  diagnostic:
+    if: ${{ github.head_ref == 'work/W-MATH-025-p015-frozen-capture-20261023' }}
+    runs-on: ubuntu-latest
+    env:
+      CI: 'true'
+      VITE_REVIEW_PREVIEW: 'true'
+      VITE_BASE_PATH: '/'
+      VITE_PREVIEW_COMMIT: 944dcbdf5687a52789ae5baf55b1193537267837
+      CAPTURE_SHA: 944dcbdf5687a52789ae5baf55b1193537267837
+      E2E_USE_PREVIEW: '1'
+      E2E_P015_LAYOUT: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 944dcbdf5687a52789ae5baf55b1193537267837
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run typecheck && pnpm run build
+      - run: pnpm exec vitest run src/components/textbook/TextbookFormula.test.tsx src/review/reviewTargets.test.ts
+      - run: pnpm exec eslint src/components/textbook/TextbookFormula.tsx src/components/textbook/TextbookFormula.test.tsx src/pages/TextbookUnitPage.tsx src/review/reviewTargets.ts src/review/reviewTargets.test.ts e2e/wmath025-p015-n12-layout.spec.ts --max-warnings=0
+      - name: Bounded Japanese font installation
+        shell: bash
+        timeout-minutes: 4
+        run: |
+          font_dir="$RUNNER_TEMP/p015-fonts"
+          mkdir -p "$font_dir"
+          for weight in Regular Bold; do
+            curl --fail --location --connect-timeout 15 --max-time 90 --retry 1 --retry-max-time 120 \
+              "https://raw.githubusercontent.com/notofonts/noto-cjk/main/Sans/OTF/Japanese/NotoSansCJKjp-$weight.otf" \
+              -o "$font_dir/NotoSansCJKjp-$weight.otf"
+          done
+          sudo mkdir -p /usr/local/share/fonts/p015
+          sudo install -m 644 "$font_dir/"*.otf /usr/local/share/fonts/p015/
+          fc-cache -f
+          fc-match -f '%{family}\\n' ':lang=ja' | grep -q 'Noto'
+      - run: pnpm exec playwright install chromium
+      - run: pnpm exec playwright test e2e/wmath025-p015-n12-layout.spec.ts --project=mobile-chromium --project=desktop-chromium
+      - if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: p015-n12-layout-944dcbdf5687a52789ae5baf55b1193537267837
+          path: e2e-evidence/p015-*
+          if-no-files-found: error
+          retention-days: 7

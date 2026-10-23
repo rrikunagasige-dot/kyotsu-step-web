@@ -1,5 +1,7 @@
 # W-MATH-025 — 因数分解ヒントの同根先出し残留
-Status: IMPLEMENTING; Command: CMD-WORK-001 修正; Date: 2026-10-22 JST
+Status: VERIFYING
+Command: CMD-WORK-001 修正
+Date: 2026-10-23 JST
 
 §12B correction-first。N05 Q11 と N06 Q12 に、誤答後ヒントがまだ求める整数組を直接教える同根問題を確認した。**このWorkは調査・exact提案書のみ**で、source、review marker、figure、schema、progress、CI、公開環境は一切変更していない。
 

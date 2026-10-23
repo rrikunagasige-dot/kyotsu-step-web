@@ -37,6 +37,8 @@ export function formulaWrapChunks(block: FormulaBlock): string[] {
 }
 
 export const auditedWrapBlocks: Readonly<Record<string, readonly string[]>> = {
+  'math-numbers-expressions-ne02': ["ne02-problem-01", "ne02-formula-01", "ne02-before-02-1", "ne02-formula-02", "ne02-formula-03", "ne02-formula-04", "ne02-problem-05", "ne02-formula-05", "ne02-before-06-1", "ne02-formula-06", "ne02-result-06-1", "ne02-formula-07", "ne02-formula-08", "ne02-result-08-1", "ne02-problem-09", "ne02-formula-09", "ne02-formula-10", "ne02-formula-11", "ne02-before-12-1", "ne02-formula-12", "ne02-result-12-1"],
+  'math-numbers-expressions-ne01': ["ne01-problem-01", "ne01-formula-01", "ne01-before-02-1", "ne01-before-02-2", "ne01-formula-02", "ne01-formula-03", "ne01-formula-04", "ne01-formula-05", "ne01-formula-06", "ne01-problem-07", "ne01-formula-07", "ne01-result-07-1", "ne01-formula-08", "ne01-before-09-1", "ne01-formula-09", "ne01-result-09-1", "ne01-formula-10", "ne01-formula-11", "ne01-problem-12", "ne01-formula-12", "ne01-formula-13"],
   'math-numbers-expressions-n01': ['formula-n01-01', 'formula-n01-02a', 'formula-n01-02b', 'formula-n01-02c', 'formula-r3-q07-x2coef', 'formula-r3-q07-xcoef', 'formula-r3-q07-const', 'formula-n01-07'],
   'math-numbers-expressions-n02': ['formula-n02-02', 'formula-n02-03', 'formula-n02-04', 'formula-n02-07', 'formula-n02-08', 'formula-n02-09', 'formula-n02-10', 'formula-n02-11', 'formula-n02-12'],
   'math-numbers-expressions-n03': ['formula-n03-01', 'formula-n03-04', 'formula-n03-12', 'formula-n03-05', 'formula-n03-07', 'formula-n03-09'],

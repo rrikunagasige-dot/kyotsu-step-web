@@ -1,3 +1,5 @@
+import { mathNumbersNE01Unit } from '../data/textbook/math/numbers/ne01Lesson'
+import { mathNumbersNE02Unit } from '../data/textbook/math/numbers/ne02Lesson'
 import type { TextbookSection, TextbookUnit } from '../domain/textbookSchema'
 
 export type ReviewTarget = {
@@ -20,7 +22,27 @@ export type ReviewTarget = {
  * User-approved W-GOV-008/P-001 pilot. All content is selected by IDs from the
  * real PR lesson; no copied solution text or substituted illustration is used.
  */
+function developmentTargets(unit: TextbookUnit): Record<string, ReviewTarget> {
+  const section = unit.sections[0]
+  return Object.fromEntries(section.items.map(item => {
+    const [prefix, number] = item.id.split('-')
+    const first = section.readingFlow.findIndex(block => block.id === prefix + '-lead-' + number)
+    const next = section.readingFlow.findIndex((block, index) => index > first && (block.id.startsWith(prefix + '-lead-') || block.type === 'heading'))
+    const blocks = section.readingFlow.slice(first, next < 0 ? undefined : next)
+    const id = prefix + '-q' + number
+    return [id, {
+      id, unitId: unit.unitId, title: unit.title,
+      question: '式と説明のつながり、選択穴と誤答ヒントを確かめる',
+      revision: unit.revision, totalItems: section.items.length,
+      blockIds: blocks.map(block => block.id), itemIds: [item.id], expectedAnswers: [item.answer],
+      markBlockIds: [prefix + '-formula-' + number], reviewState: 'awaiting-user',
+    } satisfies ReviewTarget]
+  }))
+}
+
 const targets: Record<string, ReviewTarget> = {
+  ...developmentTargets(mathNumbersNE01Unit),
+  ...developmentTargets(mathNumbersNE02Unit),
   // W-MATH-025/P-005: exact approved after-wrong hint only.
   'n05-q06-hint': {
     id:'n05-q06-hint',unitId:'math-numbers-expressions-n05',title:'N05 Q06 ヒント',
@@ -391,3 +413,4 @@ export function extractReviewSection(unit: TextbookUnit, target: ReviewTarget): 
     items: items as TextbookSection['items'],
   }
 }
+

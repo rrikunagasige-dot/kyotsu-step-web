@@ -49,6 +49,15 @@ export const mathTextbookTopics: readonly MathTextbookTopicCatalogEntry[] = [
     learnerHeadings: ['一次不等式','絶対値の方程式と不等式'],
   },
   {
+    id: 'numbers-development',
+    chapterId: 'math-ch01-numbers-expressions',
+    label: { ja: '参考・発展', zh: '参考与拓展' },
+    flow: { ja: '3次の展開と因数分解 → 二重根号', zh: '三次展开与因式分解 → 二重根式' },
+    practiceLinks: [],
+    unitIds: ['math-numbers-expressions-ne01', 'math-numbers-expressions-ne02'],
+    learnerHeadings: ['3次の展開と因数分解', '二重根号'],
+  },
+  {
     id: 'organize-sets',
     chapterId: 'math-ch03-sets-propositions',
     label: { ja: '集合を整理する', zh: '整理集合' },
@@ -129,3 +138,4 @@ export function mathTextbookNextUnitId(unitId: string) {
   if (index < 0 || index >= topic.unitIds.length - 1) return undefined
   return topic.unitIds[index + 1]
 }
+

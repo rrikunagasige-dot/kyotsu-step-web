@@ -1,3 +1,11 @@
+## 2026-10-23 — P-005 exact approval and full-batch implementation
+
+User replied **「続けて」** directly to the question asking permission to implement the complete, already presented NE01/NE02 25-question P-005 design. This is exact review-only implementation approval for both units together, not an acceptance of yet-unseen rendered images or main/hosting permission. No question-by-question permission pause.
+
+Implemented stable new units NE01/NE02 revision1/review with 13+12 source-mapped operations; optional 参考・発展 theme; exact per-distractor feedback without schema change; scoped display rows for long compound formulas; 25 real-data review slices. Original N01–N14 source data/answers/revisions/progress untouched. Formula wrapping only adds opt-in new-unit block IDs. Full source CI and actual 320/390/1440px all-25-question and 16-unit chapter tests are prepared, results PENDING. Work stays VERIFYING; Gate① PENDING, no formal Gate② closure/Gate③ user play.
+
+Source Word hash unchanged. Current LibreOffice regeneration produces **40 pages**, with NE01 on37–38 and NE02 on39–40. New units explicitly label these sourcePages as regenerated rendition; historical Library 53-page indexing is not claimed identical. Paragraph mappings remain canonical for question provenance.
+
 ## 2026-10-23 — P-005 NE01/NE02 remaining 25-question batch design
 
 User latest directive: 「続けて」. Continue source audit/design under approved creation P-001; do not manufacture acceptance of previously pending screenshots or approval of an unseen exact design.

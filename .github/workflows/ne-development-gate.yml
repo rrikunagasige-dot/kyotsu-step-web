@@ -1,0 +1,70 @@
+name: P005 complete NE01 NE02 and sixteen-unit chapter audit
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/ne-development-gate.yml'
+      - 'src/data/textbook/math/numbers/ne*'
+      - 'src/data/textbook/math/numbers/development*'
+      - 'src/domain/neDevelopmentDisplay.ts'
+      - 'e2e/ne-development.spec.ts'
+permissions:
+  contents: read
+jobs:
+  verify:
+    if: ${{ github.head_ref == 'work/W-MATH-003-ne01-ne02-app-20261023' }}
+    runs-on: ubuntu-latest
+    env:
+      CI: 'true'
+      VITE_REVIEW_PREVIEW: 'true'
+      VITE_BASE_PATH: '/'
+      VITE_PREVIEW_COMMIT: ${{ github.event.pull_request.head.sha }}
+      CAPTURE_SHA: ${{ github.event.pull_request.head.sha }}
+      E2E_USE_PREVIEW: '1'
+      E2E_NE_DEVELOPMENT: '1'
+      E2E_P017_LAYOUT: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run typecheck
+      - run: pnpm exec eslint src/data/textbook/math/numbers/ne01Lesson.ts src/data/textbook/math/numbers/ne02Lesson.ts src/data/textbook/math/numbers/developmentFeedback.ts src/data/textbook/math/numbers/developmentLessons.test.ts src/domain/neDevelopmentDisplay.ts src/domain/textbookDisplayLines.ts src/data/textbook/math/mathCatalog.ts src/pages/TextbookUnitPage.tsx src/components/textbook/formulaWrap.ts src/review/reviewTargets.ts e2e/ne-development.spec.ts e2e/wmath025-chapter-final-audit.spec.ts --max-warnings=0
+      - run: pnpm exec vitest run src/data/textbook/math/numbers/developmentLessons.test.ts src/data/textbook/math/mathCatalog.test.ts src/data/textbook/math/mathReviewIntegrity.test.ts src/components/textbook/TextbookFormula.test.tsx src/components/textbook/formulaWrap.test.tsx src/review/reviewTargets.test.ts
+      - run: pnpm run build
+      - run: node work/items/W-MATH-003-numbers-expressions-creation/NE01_NE02/export-runtime.mjs
+      - name: Bounded Japanese font installation
+        shell: bash
+        timeout-minutes: 4
+        run: |
+          font_dir="$RUNNER_TEMP/ne-fonts"
+          mkdir -p "$font_dir"
+          for weight in Regular Bold; do
+            curl --fail --location --connect-timeout 15 --max-time 90 --retry 1 --retry-max-time 120 \
+              "https://raw.githubusercontent.com/notofonts/noto-cjk/main/Sans/OTF/Japanese/NotoSansCJKjp-$weight.otf" \
+              -o "$font_dir/NotoSansCJKjp-$weight.otf"
+          done
+          sudo mkdir -p /usr/local/share/fonts/ne-development
+          sudo install -m 644 "$font_dir/"*.otf /usr/local/share/fonts/ne-development/
+          fc-cache -f
+          fc-match -f '%{family}\n' ':lang=ja' | grep -q 'Noto'
+      - run: pnpm exec playwright install chromium
+      - run: pnpm exec playwright test e2e/ne-development.spec.ts e2e/wmath025-chapter-final-audit.spec.ts --project=mobile-chromium --project=desktop-chromium
+      - if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ne-development-${{ github.event.pull_request.head.sha }}
+          path: |
+            e2e-evidence/ne-development/**
+            e2e-evidence/chapter-final/**
+            e2e-evidence/chapter-runtime/**
+          if-no-files-found: warn
+          retention-days: 7

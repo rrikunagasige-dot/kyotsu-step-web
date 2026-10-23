@@ -1,3 +1,5 @@
+import { mathNumbersNE01Unit as ne01 } from '../src/data/textbook/math/numbers/ne01Lesson'
+import { mathNumbersNE02Unit as ne02 } from '../src/data/textbook/math/numbers/ne02Lesson'
 import { mkdirSync, writeFileSync } from 'node:fs'
 import { expect,test } from '@playwright/test'
 import { getTextbookChoices } from '../src/domain/textbook'
@@ -15,7 +17,7 @@ import { mathNumbersN11Unit as n11 } from '../src/data/textbook/math/numbers/n11
 import { mathNumbersN12Unit as n12 } from '../src/data/textbook/math/numbers/n12Lesson'
 import { mathNumbersN13Unit as n13 } from '../src/data/textbook/math/numbers/n13Lesson'
 import { mathNumbersN14Unit as n14 } from '../src/data/textbook/math/numbers/n14Lesson'
-const units=[n01,n02,n03,n04,n05,n06,n07,n08,n09,n10,n11,n12,n13,n14]
+const units=[n01,n02,n03,n04,n05,n06,n07,n08,n09,n10,n11,n12,n13,n14,ne01,ne02]
 for(const unit of units)for(const width of [320,390,1440])test('chapter '+unit.unitId+' '+width,async({page},info)=>{
  test.skip(process.env.E2E_P017_LAYOUT!=='1','authorized chapter final audit')
  test.skip(width===1440?info.project.name!=='desktop-chromium':info.project.name!=='mobile-chromium')
@@ -86,3 +88,4 @@ for(const unit of units)for(const width of [320,390,1440])test('chapter '+unit.u
  expect(wrongOverflow,'all chapter wrong-state expressions fit').toEqual([])
  expect(completedOverflow,'all chapter completed expressions fit').toEqual([])
 })
+

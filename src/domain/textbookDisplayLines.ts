@@ -1,3 +1,4 @@
+import { neDevelopmentDisplayLines } from './neDevelopmentDisplay'
 import { n12CostDisplayLines } from './n12CostDisplay'
 
 /**
@@ -5,6 +6,8 @@ import { n12CostDisplayLines } from './n12CostDisplay'
  * Canonical answers, comparison signs and grading strings never change.
  */
 export function textbookDisplayLines(itemId: string, value: string): string[] {
+  const developmentLines = neDevelopmentDisplayLines(itemId, value)
+  if (developmentLines) return developmentLines
   // P-004-R3: one specific long original-source choice, three independent facts.
   // Visual line breaks only; grading, stored answer and other items are unchanged.
   if (itemId === 'n07-09') return value.split(',\\;')
@@ -25,3 +28,4 @@ export function textbookDisplayLines(itemId: string, value: string): string[] {
   }
   return n12CostDisplayLines(itemId, value)
 }
+

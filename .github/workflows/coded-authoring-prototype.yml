@@ -1,0 +1,47 @@
+name: Coded authoring prototype — tests only, NO DEPLOY
+
+on:
+  push:
+    branches: ['work/W-GOV-010-coded-authoring-proposal-20261023']
+    paths:
+      - 'work/items/W-GOV-010-coded-authoring/engine/**'
+      - '.github/workflows/coded-authoring-prototype.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  prototype:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      - name: Verify pipeline and generate isolated examples
+        working-directory: work/items/W-GOV-010-coded-authoring/engine
+        run: |
+          python3 -m unittest discover -p 'test_engine.py' -v
+          python3 evaluate.py
+          python3 make_examples.py
+          python3 engine.py example_textbook.json --out output/textbook
+          python3 engine.py example_practice.json --out output/practice
+      - name: Play generated output at 320, 390 and 1440px
+        run: node work/items/W-GOV-010-coded-authoring/engine/browser_check.cjs
+      - name: Retain reproducible report, generated preview and real screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coded-authoring-${{ github.sha }}
+          path: |
+            work/items/W-GOV-010-coded-authoring/engine/output/
+            work/items/W-GOV-010-coded-authoring/engine/evaluation.json
+          retention-days: 7

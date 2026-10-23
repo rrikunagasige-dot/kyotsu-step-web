@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "mode": "textbook",
+  "policy": {
+    "major_title_count": 3,
+    "major_titles": [
+      "式を整える",
+      "実数を扱う",
+      "不等式を使う"
+    ]
+  },
+  "scope": {
+    "kind": "prototype_subset",
+    "expected_units": [
+      "product-basic",
+      "product-signed",
+      "linear"
+    ],
+    "excluded_topics": [
+      "実数を扱う",
+      "不等式を使う"
+    ]
+  },
+  "themes": [
+    {
+      "title": "式を整える",
+      "units": [
+        "product-basic",
+        "product-signed",
+        "linear"
+      ]
+    },
+    {
+      "title": "実数を扱う",
+      "units": []
+    },
+    {
+      "title": "不等式を使う",
+      "units": []
+    }
+  ],
+  "lessons": [
+    {
+      "id": "product-basic",
+      "title": "四つの積を作ってまとめる",
+      "pattern": "distribute_binomials",
+      "pattern_version": 1,
+      "params": [
+        3,
+        1,
+        1,
+        2
+      ],
+      "source": {
+        "kind": "prototype_authored",
+        "id": "W-GOV-010/product-basic"
+      },
+      "original_problem": "次の式を展開し、同類項をまとめよう。",
+      "allowed_learning_actions": [
+        "積の計算",
+        "同類項の整理",
+        "分配後の計算",
+        "定数項の整理"
+      ],
+      "prerequisite_result_ids": [],
+      "prose": {
+        "lead": "括弧どうしの積では、一方の各項を、もう一方の各項へ掛ける。まず、どの項どうしを掛けるかを並べてみよう。",
+        "concept": "分配法則を使うと、項を掛ける段階と、同じ種類の項をまとめる段階を分けて考えられる。",
+        "goal": "各項の積を計算してから、同じxの項をまとめる。途中の結果を使い、最後に元の式全体を整えよう。",
+        "closing": "展開では各項を漏れなく掛け、その後で同類項をまとめる。この二つを分けると、符号や項の見落としを確かめやすい。"
+      },
+      "figure": {
+        "id": "product-basic-grid",
+        "kind": "multiplication_grid",
+        "position": "before_distribution",
+        "purpose": "四つの積の対応を表す。",
+        "how_to_read": "左側の行の項と、上側の列の項を掛ける。左上の欄から右へ進み、次に下の行へ進むと、四つの積を漏れなく作れる。",
+        "connects_to": "distribution",
+        "provenance": "この試作用の数式データから生成する正確な表。既存の元図を置換しない。"
+      },
+      "original_expression": "((3)*x+(1))*((1)*x+(2))",
+      "blank_targets": [
+        "product0.result",
+        "product1.result",
+        "product2.result",
+        "product3.result",
+        "collect.result"
+      ]
+    },
+    {
+      "id": "product-signed",
+      "title": "負の項を含む積を計算する",
+      "pattern": "distribute_binomials",
+      "pattern_version": 1,
+      "params": [
+        2,
+        -3,
+        3,
+        4
+      ],
+      "source": {
+        "kind": "prototype_authored",
+        "id": "W-GOV-010/product-signed"
+      },
+      "original_problem": "次の式を展開し、同類項をまとめよう。",
+      "allowed_learning_actions": [
+        "積の計算",
+        "同類項の整理",
+        "分配後の計算",
+        "定数項の整理"
+      ],
+      "prerequisite_result_ids": [],
+      "prose": {
+        "lead": "括弧どうしの積では、一方の各項を、もう一方の各項へ掛ける。まず、どの項どうしを掛けるかを並べてみよう。",
+        "concept": "分配法則を使うと、項を掛ける段階と、同じ種類の項をまとめる段階を分けて考えられる。",
+        "goal": "各項の積を計算してから、同じxの項をまとめる。途中の結果を使い、最後に元の式全体を整えよう。",
+        "closing": "展開では各項を漏れなく掛け、その後で同類項をまとめる。この二つを分けると、符号や項の見落としを確かめやすい。"
+      },
+      "figure": {
+        "id": "product-signed-grid",
+        "kind": "multiplication_grid",
+        "position": "before_distribution",
+        "purpose": "四つの積の対応を表す。",
+        "how_to_read": "左側の行の項と、上側の列の項を掛ける。左上の欄から右へ進み、次に下の行へ進むと、四つの積を漏れなく作れる。",
+        "connects_to": "distribution",
+        "provenance": "この試作用の数式データから生成する正確な表。既存の元図を置換しない。"
+      },
+      "original_expression": "((2)*x+(-3))*((3)*x+(4))",
+      "blank_targets": [
+        "product0.result",
+        "product1.result",
+        "product2.result",
+        "product3.result",
+        "collect.result"
+      ]
+    },
+    {
+      "id": "linear",
+      "title": "括弧の前の数を各項に掛ける",
+      "pattern": "linear_combination",
+      "pattern_version": 1,
+      "params": [
+        2,
+        -3,
+        3,
+        1,
+        2,
+        -4
+      ],
+      "source": {
+        "kind": "prototype_authored",
+        "id": "W-GOV-010/linear"
+      },
+      "original_problem": "括弧を外し、xの項と定数項をそれぞれまとめよう。",
+      "allowed_learning_actions": [
+        "積の計算",
+        "同類項の整理",
+        "分配後の計算",
+        "定数項の整理"
+      ],
+      "prerequisite_result_ids": [],
+      "prose": {
+        "lead": "括弧の前にある数は、括弧の中の両方の項に掛かる。負の数を掛ける項も、一つずつ符号を追ってみよう。",
+        "concept": "分配法則を使うと、項を掛ける段階と、同じ種類の項をまとめる段階を分けて考えられる。",
+        "goal": "先に四つの掛算を行い、その結果をxの項と定数項に分けてまとめる。",
+        "closing": "展開では各項を漏れなく掛け、その後で同類項をまとめる。この二つを分けると、符号や項の見落としを確かめやすい。"
+      },
+      "original_expression": "(2)*((3)*x+(1))+(-3)*((2)*x+(-4))",
+      "blank_targets": [
+        "product0.result",
+        "product1.result",
+        "product2.result",
+        "product3.result",
+        "collect_x.result",
+        "collect_const.result"
+      ]
+    }
+  ],
+  "semantic_review": {
+    "organization": "REVIEWED",
+    "applicability": "REVIEWED",
+    "learning_actions": "REVIEWED",
+    "distractors": "REVIEWED",
+    "prose_figures": "REVIEWED",
+    "reasoning": "REVIEWED",
+    "design_hash": "e91282e880e6c8753d8d62764b632b8e610e4848114cc0e41e9cae5666e2516f",
+    "reviewer": "AIによる試作設計審査（ユーザー受入・独立審査ではない）",
+    "notes": [
+      "大見出しは既存の三つを表示し、今回対象外の二テーマはその旨を明示する。",
+      "四つの積は各項の対応と符号を一つずつ追い、最後に同類項をまとめる。完成式を先に選ばせない。",
+      "図は四つの積を作るための表として先に置く。欄は未計算の積を示し、結果の先出しを避ける。",
+      "符号・次数・係数の誤り候補は機械検算済み。適切な支援量と文章の読みやすさは実際のレビューで確かめる。"
+    ]
+  }
+}

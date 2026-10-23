@@ -1,0 +1,7 @@
+# 実承認と実成果物を結んだ技術Work
+
+plan.jsonとruntime/の追記イベント・成果物が正本、generated/は同じ台帳から生成。元コードはsource_sha、検証対象はcandidate_shaへ固定する。実装承認はユーザーのP-002への返答を会話から転記したもので、暗号署名ではない。CIはGitHubコネクタ結果を転記して対象SHAと照合した。
+
+技術限定八ノードDONE、アプリ受入false。仕組みを作る前の初回操作をこの仕組みで強制したとは主張しない。BOOTSTRAP_HISTORY.py/CLOSE_HISTORY.pyは今回の転記・操作の履歴であり、汎用コマンドや再実行指示ではない。
+
+再生には正規repoの候補SHAのファイルとplanのrules hashが一致するrootを指定し、workflow/cli.py statusを使う。別の版やmainでは規則hashが異なるため止まる。現在地はWork内に限定し、他のWorkや全体現在地を上書きしない。

@@ -1,0 +1,13 @@
+{
+  "id": 39979184049,
+  "name": "Workflow engine — verification only",
+  "status": "completed",
+  "conclusion": "success",
+  "head_sha": "d206b6de91cd869cd15c2f60f9f84327deed4143",
+  "html_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39979184049",
+  "event": "push",
+  "created_at": "2026-10-23T15:32:43Z",
+  "updated_at": "2026-10-23T15:33:07Z",
+  "verification_level": "tool_result_transcribed",
+  "source_ref": "GitHub connector /actions/runs?head_sha=d206b6de91cd869cd15c2f60f9f84327deed4143"
+}

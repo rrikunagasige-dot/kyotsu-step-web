@@ -1,0 +1,21 @@
+# W-GOV-010-P002-IMPLEMENTATION — 現在地（GENERATED）
+
+状態: DONE / 内部: DONE / 次: —
+
+台帳HEAD: `227671c25383e9462d1ca6ddc4b9390aae4036868312e89107c5602b4603e478`
+候補SHA: `d206b6de91cd869cd15c2f60f9f84327deed4143`
+
+模擬実行: False。アプリ受入: False。技術試験合格だけで教材の品質は確定しない。
+
+| Node | 担当 | 状態 | 依存 |
+|---|---|---|---|
+| S00_RECOVER | CODE | PASSED |  |
+| S01_ROUTE | CODE | PASSED | S00_RECOVER |
+| T01_ANALYSIS | AI | PASSED | S01_ROUTE |
+| T02_APPROVAL | USER | PASSED | T01_ANALYSIS |
+| T03_BUILD | TOOL | PASSED | T02_APPROVAL |
+| T04_VERIFY | TOOL | PASSED | T03_BUILD |
+| L01_LEARNING | AI | PASSED | T04_VERIFY |
+| Z01_CLOSE | CODE | PASSED | L01_LEARNING |
+
+待機理由: 全工程の有効な証拠を照合

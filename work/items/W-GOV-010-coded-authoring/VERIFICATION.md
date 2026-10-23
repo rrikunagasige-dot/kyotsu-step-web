@@ -41,3 +41,16 @@
 | 7d4e5b7c501a0502ece2e77e41506b1a57b8f801 | 39969162480 | SUCCESS＋実画像確認 | 固定日本語フォントと実描画フォント検査を追加 |
 
 最終成果物ZIPのSHA256：89c0cc95efde05426a037726a90c5a40dd57840a6fe47a40eb9e5562b11c252d。
+
+
+## P-002最終コードの検証（2026-10-24 JST）
+
+- コードSHA: d206b6de91cd869cd15c2f60f9f84327deed4143
+- 専用CI: https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39979184049 — completed/success、head_sha一致。検査・三経路再生・成果物保存の全step成功をコネクタで照合した。
+- 実行器66試験、既存生成器27試験、教科書/練習の両アダプタPASS。既存の追加計算120例・破損20例も再実行。
+- 作成27・修正27・技術限定8ノードの模擬通し実行と、保存後の再生を確認。模擬のユーザー承認は実承認ではない。
+- 実際のP-002実装承認とCIを使った技術限定Work: workflow-execution/、DONE、application_accepted:false。
+- Gitツリー全体の比較: src/public/e2e、package/lock、憲法本文の差分なし。変更範囲は実行器・テスト用CI・入口/運用文書・Work内の試作と検証記録。
+
+教育効果・独立未使用教材の品質評価・アプリ全体Gate③は未実施。mainへの正式採用とW-MATH-027の再開は残る。
+

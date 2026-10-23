@@ -71,4 +71,4 @@ python workflow/verify_all.py --engine work/items/W-GOV-010-coded-authoring/engi
 python workflow/scenarios.py workflow-test-output/scenarios
 ```
 
-模擬経路の承認・監査・アプリ証拠は全てsimulationであり、本当のユーザー承認ではない。既存生成器は登録済みの狭い数学領域だけ。教材の品質改善率・独立した未使用教材への汎化・生徒の理解向上は未測定。詳細な規則対応と未自動化部分は `rules/mapping.json`、実装結果はWorkの `WORKFLOW_IMPLEMENTATION_RESULTS.md` を参照する。
+模擬出力先は空のディレクトリを指定する。既存台帳への混在は拒否する。模擬経路の承認・監査・アプリ証拠は全てsimulationであり、本当のユーザー承認ではない。既存生成器は登録済みの狭い数学領域だけ。教材の品質改善率・独立した未使用教材への汎化・生徒の理解向上は未測定。詳細な規則対応と未自動化部分は `rules/mapping.json`、実装結果はWorkの `WORKFLOW_IMPLEMENTATION_RESULTS.md` を参照する。

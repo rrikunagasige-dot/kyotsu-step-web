@@ -1,1 +1,0 @@
-{"audit_rows":[{"evidence_refs":["be43046f-3a0a-45e2-85a1-8abb73cc72b6"],"status":"PASS","surface":"all"}],"evidence_refs":["be43046f-3a0a-45e2-85a1-8abb73cc72b6"],"independence":{"method":"separate fixture reviewer, not actual audit","reviewer":"independent-test"},"original_source_refs":["be43046f-3a0a-45e2-85a1-8abb73cc72b6"],"unknowns":[],"verdict":"PASS"}

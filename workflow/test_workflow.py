@@ -270,3 +270,10 @@ class ExportProvenance(unittest.TestCase):
         import hashlib
         data=b'rules\n';blob=hashlib.sha1(b'blob 6\0'+data).hexdigest()
         with self.assertRaises(Rejected):verify_git_export(data+b'\n',blob)
+
+class ScenarioReplay(unittest.TestCase):
+    def test_exported_ledgers_replay_and_repeated_destination_rejected(self):
+        from scenarios import run
+        with tempfile.TemporaryDirectory() as tmp:
+            reports=run(Path(tmp)/'scenarios');self.assertEqual([r['status'] for r in reports],['DONE']*3)
+            with self.assertRaises(ValueError):run(Path(tmp)/'scenarios')

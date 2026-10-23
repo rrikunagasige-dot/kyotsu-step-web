@@ -1,1 +1,0 @@
-{"audit_rows":[{"evidence_refs":["eadea64e-94c7-4252-a24d-c8fab19687a3"],"status":"PASS","surface":"all"}],"evidence_refs":["eadea64e-94c7-4252-a24d-c8fab19687a3"],"independence":{"method":"separate fixture reviewer, not actual audit","reviewer":"independent-test"},"original_source_refs":["eadea64e-94c7-4252-a24d-c8fab19687a3"],"unknowns":[],"verdict":"PASS"}

@@ -58,7 +58,17 @@ for (const width of [320, 390, 1440]) {
     }
     await expect(page.getByTestId('math-textbook-topic-numbers-development')).toHaveCount(0)
     await fits(page)
-    await page.screenshot({ path: `${root}/catalog-${width}.png`, fullPage: true })
+    await chapter.scrollIntoViewIfNeeded()
+    const blockers = await links.evaluateAll(nodes => nodes.flatMap(node => {
+      const r = node.getBoundingClientRect()
+      return Array.from(document.querySelectorAll('nav')).filter(nav => {
+        const b = nav.getBoundingClientRect()
+        return getComputedStyle(nav).position === 'fixed' && Math.min(r.right, b.right) > Math.max(r.left, b.left) + 1 && Math.min(r.bottom, b.bottom) > Math.max(r.top, b.top) + 1
+      }).map(() => node.getAttribute('data-testid'))
+    }))
+    expect(blockers, 'fixed navigation must not cover any of the three captured cards').toEqual([])
+    for (const card of await links.all()) await expect(card).toBeInViewport({ ratio: 1 })
+    await page.screenshot({ path: `${root}/catalog-${width}.png` })
     for (const [code, title, bridge] of [['ne01', labels[0], bridge1], ['ne02', labels[1], bridge2]]) {
       await page.goto(route('/learning/textbook/' + unit(code).unitId))
       await expect(page.getByRole('heading', { level: 1 })).toHaveText(title)

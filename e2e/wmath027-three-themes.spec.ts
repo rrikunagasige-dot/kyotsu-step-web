@@ -159,7 +159,7 @@ for (const width of [320, 390, 1440]) {
         await expect(trigger).toBeInViewport({ ratio: 1 })
         const overlap = await trigger.evaluate(el => {
           const a = el.getBoundingClientRect()
-          return [...document.querySelectorAll('nav,header')].some(n => {
+          return Array.from(document.querySelectorAll('nav,header')).some(n => {
             const b = n.getBoundingClientRect()
             return ['fixed', 'sticky'].includes(getComputedStyle(n).position)
               && Math.min(a.right, b.right) > Math.max(a.left, b.left)

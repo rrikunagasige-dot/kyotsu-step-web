@@ -28,7 +28,7 @@ const targets: Record<string, ReviewTarget> = {
     revision:2,totalItems:20,
     blockIds:['n05-lead-06','n05-formula-06','n05-after-06'],
     itemIds:['n05-06'],expectedAnswers:['(4x)^2,\\quad(3y)^2'],
-    markBlockIds:['n05-formula-06'],reviewState:'awaiting-user',
+    markBlockIds:['n05-formula-06'],reviewState:'accepted',
   },
   // W-MATH-025/P-006: exact approved after-wrong hint only.
   'n07-q09-hint': {
@@ -37,7 +37,7 @@ const targets: Record<string, ReviewTarget> = {
     revision:3,totalItems:14,
     blockIds:['n07-lead-09','n07-formula-09','n07-after-09'],
     itemIds:['n07-09'],expectedAnswers:['\\text{100倍},\\;100x=69.\\overline{69},\\;99x=69'],
-    markBlockIds:['n07-formula-09'],reviewState:'awaiting-user',
+    markBlockIds:['n07-formula-09'],reviewState:'accepted',
   },
   // W-MATH-025/P-007: exact approved after-wrong hint only.
   'n08-q05-hint': {
@@ -46,7 +46,7 @@ const targets: Record<string, ReviewTarget> = {
     revision:3,totalItems:12,
     blockIds:['n08-lead-05','n08-formula-05','n08-after-05'],
     itemIds:['n08-05'],expectedAnswers:['5<9,\\quad\\sqrt5<3'],
-    markBlockIds:['n08-formula-05'],reviewState:'awaiting-user',
+    markBlockIds:['n08-formula-05'],reviewState:'accepted',
   },
   // W-MATH-017/P-003: precisely the two newly approved learner blocks.
   // The original unit and item instances are reused, never mocked.
@@ -168,7 +168,7 @@ const targets: Record<string, ReviewTarget> = {
     revision:3,totalItems:16,
     blockIds:['n06-lead-12','n06-formula-12','n06-after-12'],
     itemIds:['n06-12'],expectedAnswers:['(x+y)(x+2)(x-1)'],
-    markBlockIds:['n06-formula-12'],reviewState:'awaiting-user',
+    markBlockIds:['n06-formula-12'],reviewState:'accepted',
   },
   // W-MATH-025/P-003: the one original Q03 wrong-only hint; source revision unchanged.
   'n06-q03': {

@@ -1,3 +1,8 @@
+
+## 2026-10-23 — latest authoritative five-item acceptance
+User: **「続けていいよ。5件承認。　後仕事はまたどれぐらい残っているのか私に状況説明」**.
+All five items in the [review sheet](../W-MATH-025-factor-hint-leak-qa-proposals/GATE1_FIVE_ITEM_REVIEW_20261023.md) are BLOCK-VISUAL-OK. This supersedes older pending/next-user-review statements below. No reapproval of these five is required. [Acceptance, evidence and remaining work](../W-MATH-025-factor-hint-leak-qa-proposals/FIVE_ITEM_ACCEPTANCE_20261023.md). Gate② remains OPEN; Gate③ is not ready.
+
 # 次の5件へ進むための新3ヒント案
 Status: APPROVED / exact3hint実装・専用QA済み / grouped visual pending
 提示単位: 3案を一括で承認→3修正をまとめて技術確認→既存Q12choices/N14Q16と合わせ5件の実画面を一度に提示。

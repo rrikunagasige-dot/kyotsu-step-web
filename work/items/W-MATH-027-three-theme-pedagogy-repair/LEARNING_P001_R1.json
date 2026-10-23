@@ -1,0 +1,42 @@
+{
+  "quality_policy": "続行と実装承認は教育品質評価に変換しない。明示評価がない事例はUNKNOWN。",
+  "cases": [
+    {
+      "id": "W027-FOURTH-CARD-FIXTURE",
+      "disposition": "TEST",
+      "quality": "UNKNOWN",
+      "target_version": "f3c69618d5f97cf235d2f0d0d9256f33056e9525",
+      "description": "旧四枚を正解とするテスト期待値も同じ根本原因。承認済み三テーマと所属・数を固定する回帰へ修正",
+      "links": [
+        "e2e/numbers-catalog-publish.spec.ts",
+        "e2e/wmath027-three-themes.spec.ts",
+        "src/data/textbook/math/mathCatalog.test.ts"
+      ]
+    },
+    {
+      "id": "W027-CAPTURE-NAV-OCCLUSION",
+      "disposition": "TEST",
+      "quality": "UNKNOWN",
+      "target_version": "f3c69618d5f97cf235d2f0d0d9256f33056e9525",
+      "description": "CI成功でも全ページPNGを固定ナビが遮った。画像レビューで却下し、カードの完全表示とnav交差を実測する検査で再撮影。最初の修正も検査に失敗し保持",
+      "links": [
+        "e2e/wmath027-three-themes.spec.ts",
+        "work/items/W-MATH-027-three-theme-pedagogy-repair/qa-capture-first-failure.txt",
+        "work/items/W-MATH-027-three-theme-pedagogy-repair/evidence/gate1-p001-r1/MANIFEST.json"
+      ]
+    },
+    {
+      "id": "W027-MISSING-WORK-RECORDS",
+      "disposition": "EXISTING_RULE",
+      "quality": "UNKNOWN",
+      "target_version": "f3c69618d5f97cf235d2f0d0d9256f33056e9525",
+      "description": "旧Workの必須入口・操作・発見・検証記録の不足を既存統治検査が検出。検査を弱めず補完",
+      "links": [
+        "work/items/W-MATH-027-three-theme-pedagogy-repair/PROPOSAL.md",
+        "work/items/W-MATH-027-three-theme-pedagogy-repair/ACTION_LOG.md",
+        "work/items/W-MATH-027-three-theme-pedagogy-repair/FINDINGS.md",
+        "work/items/W-MATH-027-three-theme-pedagogy-repair/VERIFICATION.md"
+      ]
+    }
+  ]
+}

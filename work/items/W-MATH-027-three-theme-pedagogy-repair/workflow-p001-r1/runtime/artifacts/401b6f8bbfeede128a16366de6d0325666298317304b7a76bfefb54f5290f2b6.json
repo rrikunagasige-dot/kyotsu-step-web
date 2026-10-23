@@ -1,0 +1,1 @@
+{"evidence_refs":["CI-39984857012","89e7f410-ef30-49b7-9c53-4624cf6aea1a"],"protected_scope_review":"承認済み四ファイルのhashを保持。画面キャプチャの方法のみ修正する。","regression_review":"保存履歴・再開・次単元は専用CIで確認。既存全数学回帰は別CI待ち。","symptom_resolution":"専用CIの実データ・動作検査はPASS。章入口画像に固定下部ナビの重なりがあるため細部確認へは渡せない。","unknowns":["Gate1用の三カードを遮らない実画像の再取得"],"verdict":"UNVERIFIED"}

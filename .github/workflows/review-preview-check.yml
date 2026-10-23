@@ -965,9 +965,16 @@ jobs:
         shell: bash
         timeout-minutes: 4
         run: |
-          if ! fc-list :lang=ja | grep -q 'Noto Sans CJK JP'; then
-            timeout 180s sudo env DEBIAN_FRONTEND=noninteractive apt-get -o Acquire::Retries=1 -o Acquire::http::Timeout=20 -o Acquire::https::Timeout=20 install -y --no-install-recommends fonts-noto-cjk
-          fi
+          font_dir="$RUNNER_TEMP/kyotsu-q12-fonts"
+          mkdir -p "$font_dir"
+          for weight in Regular Bold; do
+            curl --fail --location --connect-timeout 15 --max-time 90 --retry 1 --retry-max-time 120 \
+              "https://raw.githubusercontent.com/notofonts/noto-cjk/main/Sans/OTF/Japanese/NotoSansCJKjp-$weight.otf" \
+              -o "$font_dir/NotoSansCJKjp-$weight.otf"
+          done
+          sudo mkdir -p /usr/local/share/fonts/kyotsu-q12
+          sudo install -m 644 "$font_dir/"*.otf /usr/local/share/fonts/kyotsu-q12/
+          sha256sum "$font_dir/"*.otf
           fc-cache -f
           fc-match -f '%{family}\n' ':lang=ja' | grep -q 'Noto'
           fc-list :lang=ja | grep -q 'Noto Sans CJK JP'

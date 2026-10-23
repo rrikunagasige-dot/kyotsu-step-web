@@ -7,6 +7,7 @@ on:
       - 'e2e/wmath027-three-themes.spec.ts'
       - 'e2e/numbers-catalog-publish.spec.ts'
       - 'work/items/W-MATH-027-three-theme-pedagogy-repair/qa/**'
+      - 'work/items/W-MATH-027-three-theme-pedagogy-repair/*.md'
       - '.github/workflows/wmath027-structure-check.yml'
 permissions:
   contents: read

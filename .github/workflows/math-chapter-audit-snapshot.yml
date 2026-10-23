@@ -1,0 +1,34 @@
+name: Math chapter audit snapshot
+on:
+  pull_request:
+    paths:
+      - 'work/items/W-MATH-025-factor-hint-leak-qa-proposals/export-runtime-audit.mjs'
+      - '.github/workflows/math-chapter-audit-snapshot.yml'
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    if: ${{ false }} # frozen native export archived after run39908283290; no record-only recapture
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Export actual validated frozen-source units through Vite SSR
+        run: node work/items/W-MATH-025-factor-hint-leak-qa-proposals/export-runtime-audit.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: math-chapter-runtime-audit-${{ github.event.pull_request.head.sha }}
+          path: e2e-evidence/chapter-audit/
+          if-no-files-found: error
+          retention-days: 7

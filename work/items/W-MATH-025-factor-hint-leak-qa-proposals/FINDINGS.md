@@ -1,4 +1,9 @@
 
+## 2026-10-23 — current chapter audit and new exact seven-hint proposals
+Source fc27e7f5fbdc28345917276d43602ea4787537bd;all prior five accepted and reconciled.14 real units/208 Word originals/290 current graded decisions exported with real Vite/Zod validation. Original marker IDs/counts PASS;new seven hint pre-exposures confirmed. **P008–P014 are PROPOSED,not approved or implemented.** [Seven before/after hints](./BATCH_HINT_PROPOSALS_P008_P014.md),[current audit/remaining cells](./CHAPTER_AUDIT_20261023.md),[native evidence](./evidence/chapter-audit-20261023/README.md). Snapshot39908283290,Review39908283307,Governance39908283211 SUCCESS on audit execution3cea41ef729ec21a6e0b6233346b677b0feffab5;learner source remains exactly frozen. Prior runtime Math250unit/257browser remains source-specific evidence,not proof of hint quality.
+No learner field/ID/revision/key/choice/history/figure/rendering change. Correction queue now contains these seven proposals;request one grouped exact approval,not repeated old acceptance. Gate② OPEN withconfirmed hint FAIL and remaining UNVERIFIED;Gate③ not ready;no main/deploy. Earlier statuses below are historical where superseded.
+
+
 ## 2026-10-23 — latest authoritative five-item acceptance
 User: **「続けていいよ。5件承認。　後仕事はまたどれぐらい残っているのか私に状況説明」**.
 All five items in the [review sheet](./GATE1_FIVE_ITEM_REVIEW_20261023.md) are BLOCK-VISUAL-OK. This supersedes older pending/next-user-review statements below. No reapproval of these five is required. [Acceptance, evidence and remaining work](./FIVE_ITEM_ACCEPTANCE_20261023.md). Gate② remains OPEN; Gate③ is not ready.

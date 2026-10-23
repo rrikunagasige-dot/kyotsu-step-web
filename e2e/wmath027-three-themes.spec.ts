@@ -58,7 +58,10 @@ for (const width of [320, 390, 1440]) {
     }
     await expect(page.getByTestId('math-textbook-topic-numbers-development')).toHaveCount(0)
     await fits(page)
-    await chapter.scrollIntoViewIfNeeded()
+    await links.first().evaluate(el => {
+      const top = window.scrollY + el.getBoundingClientRect().top - 150
+      window.scrollTo({ top, behavior: 'instant' })
+    })
     const blockers = await links.evaluateAll(nodes => nodes.flatMap(node => {
       const r = node.getBoundingClientRect()
       return Array.from(document.querySelectorAll('nav')).filter(nav => {

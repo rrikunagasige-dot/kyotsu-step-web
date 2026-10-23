@@ -1,6 +1,10 @@
 # W-MATH-025 — approved P-001 & P-002, staged execution
 Status: APPROVED
 
+## Current 2026-10-23
+P-001 Q11 visual accepted by direct 「続けていいよ」. P-002 exact hint is implemented; its original 18-image Gate① is ready but user acceptance is pending. Frozen capture/source `6d75ec551e738abc92be3af22b4502bb55e18a99`; images `0f93e549f418b3f67851dbfee161b726b278d7b7`. Review/Chrome and Governance succeeded; full regression/Gate② remains incomplete. See [current verification](./VERIFICATION.md) and [Q12 review](./GATE1_N06_Q12_REVIEW_SHEET.md). No additional finding is authorized for implementation.
+
+
 ## 2026-10-23 JST — authoritative Q11 visual acceptance and Stage B checkpoint
 - Direct user response **「続けていいよ」** immediately followed this chat's Q11 確認① real-image review and explicit request for `細部OK / 要修正`. This is **Q11 BLOCK-VISUAL-OK**, not a fabricated literal `細部OK` quote, not Gate②/③ or release permission.
 - Accepted original Q11 IDs: `n05-11`, `n05-formula-11`, review target `n05-q11`; original screenshot source `26c6e82130e52ff89a7bec352ec785aed2a062ad`, immutable images `eb7d99d0901562b7909e89903af01483f6aa23c1`. Reviewed current predecessor `aa6758fa8a8a8656a9c10860bd3815e4c51de57c`; all three source-head CI successes independently rechecked. Retain old evidence/history; hide only Q11's accepted marker and stop its recapture job.

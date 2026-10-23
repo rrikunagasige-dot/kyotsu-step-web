@@ -1,5 +1,9 @@
 # W-MATH-025/P-002 — N06 Q12 誤答ヒントの因数先出しを防ぐ
 **Status: APPROVED — Stage B N06 Q12 IMPLEMENTED, technical/Gate① pending**  
+
+## Current 2026-10-23
+P-001 Q11 visual accepted by direct 「続けていいよ」. P-002 exact hint is implemented; its original 18-image Gate① is ready but user acceptance is pending. Frozen capture/source `6d75ec551e738abc92be3af22b4502bb55e18a99`; images `0f93e549f418b3f67851dbfee161b726b278d7b7`. Review/Chrome and Governance succeeded; full regression/Gate② remains incomplete. See [current verification](./VERIFICATION.md) and [Q12 review](./GATE1_N06_Q12_REVIEW_SHEET.md). No additional finding is authorized for implementation.
+
 Command: CMD-WORK-001「修正」／§12B同根事象  
 2026-10-22 JST
 

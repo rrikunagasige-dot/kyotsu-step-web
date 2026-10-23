@@ -1,5 +1,13 @@
 # W-MATH-025 — Action Log
 
+## 2026-10-23 primary checkpoint for Q12 visual review
+- Exact new hint implemented and one-line learner diff verified; source 6d75ec551e738abc92be3af22b4502bb55e18a99, fixed image-only child 0f93e549f418b3f67851dbfee161b726b278d7b7.
+- Directly inspected 320/390 review wrong images, 390 complete image and 1440 ordinary wrong image. Dedicated source-native Chrome run 39890748804 SUCCESS (6 actual tests / 18 PNG) and Governance 39890748808 SUCCESS.
+- Q11 「続けていいよ」 preserved as visual acceptance; Q12 still awaiting its own human response. Real review sheet ready; no overall Work DONE.
+- Full math 39890748816 last observed still in dependency-install preparation. Browser-only install from successful dedicated Chrome job is used for full CI with a 5-minute setup bound; all tests unchanged. Its new HEAD/run is initially PENDING; exact successor must be recovered before declaring Gate② pass.
+- Three additional confirmed defects stay unmodified/unapproved. N14 Q16 visual and whole-app Gate③ remain open. Main/deployment untouched.
+
+
 ## 2026-10-23 JST — authoritative Q11 visual acceptance and Stage B checkpoint
 - Direct user response **「続けていいよ」** immediately followed this chat's Q11 確認① real-image review and explicit request for `細部OK / 要修正`. This is **Q11 BLOCK-VISUAL-OK**, not a fabricated literal `細部OK` quote, not Gate②/③ or release permission.
 - Accepted original Q11 IDs: `n05-11`, `n05-formula-11`, review target `n05-q11`; original screenshot source `26c6e82130e52ff89a7bec352ec785aed2a062ad`, immutable images `eb7d99d0901562b7909e89903af01483f6aa23c1`. Reviewed current predecessor `aa6758fa8a8a8656a9c10860bd3815e4c51de57c`; all three source-head CI successes independently rechecked. Retain old evidence/history; hide only Q11's accepted marker and stop its recapture job.
@@ -43,3 +51,19 @@
 
 ## Font preparation checkpoint — no learner-scope change
 The Q12 native job 120203193623 / run 39888774248 remained in the Japanese font installation step for about ten minutes, while full math regression continued. Active-job logs were not yet available (404 BlobNotFound); do not claim a specific network subcommand failure. Replace only the Q12 capture job font setup with an existing-font check and a bounded package installation (4-minute step / 180-second install). Keep both actual Japanese font assertions. This is capture-environment repair within P-002 verification; Q12 hint, answers, IDs, revision and other learner files stay unchanged. On source push the old same-group capture run may be superseded; record cancellation separately from technical PASS.
+
+## Actual bounded-font source checkpoint
+- Actual commit/branch HEAD: d8efbbb6d9108f190d575d639ad841545e6100e3. Parent 8423d50d30d8634bed19d10b17ef42e5f9c64c9a. Native runs for this head PENDING retrieval.
+- This commit only changes Q12 capture font preparation and Work records. All learner files, review targets/tests and Q12 E2E bytes remain those of 8423d50d.
+- Earlier source-run outcomes must be read as they stand (including cancellation); no unverified overall PASS.
+- Return to primary: inspect actual Noto/Chrome job output and fixed Q12 images; record fresh exact-SHA native full CI results before completing technical verification.
+
+## Font failure evidence and verified return plan
+- Source 8423d50d: review run 39888774248 CANCELLED during font package download; math run 39888774291 CANCELLED after the next source push. No overall PASS is claimed.
+- Source d8efbbb6: Q12 capture job 120207126336 / run 39889974392 FAILED with exit 124 after the bounded 180-second install. Actual logs show apt fetched metadata successfully, then stalled downloading the 61.2MB fonts-noto-cjk package from http://azure.archive.ubuntu.com/ubuntu. This establishes a font-package transfer blocker, not a learner-code failure.
+- Repair within capture environment: download official Noto CJK JP Regular and Bold OTF files from https://raw.githubusercontent.com/notofonts/noto-cjk/main/Sans/OTF/Japanese/ with bounded curl, install only in the ephemeral runner, print SHA256 and validate actual Japanese font family before Chrome. No application font/CSS/content mutation. Native run results for the next SHA remain PENDING.
+
+## Actual official-font capture source
+- Full commit/branch SHA: 6d75ec551e738abc92be3af22b4502bb55e18a99; parent d8efbbb6d9108f190d575d639ad841545e6100e3.
+- Learner data, Q12 E2E, CSS and review targets remain byte-identical to scoped implementation 8423d50d30d8634bed19d10b17ef42e5f9c64c9a. Only capture font environment/Work history differs.
+- New native capture/full CI run IDs PENDING retrieval; Q12 Gate① still pending. After completed capture, inspect original PNGs, not constructed images.

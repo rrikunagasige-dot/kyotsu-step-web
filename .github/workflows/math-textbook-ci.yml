@@ -63,7 +63,8 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Install Playwright Chromium
-        run: pnpm exec playwright install --with-deps chromium
+        timeout-minutes: 5
+        run: pnpm exec playwright install chromium
 
       - name: Typecheck
         run: pnpm run typecheck

@@ -1,4 +1,17 @@
 # W-MATH-025 — Verification
+Status: VERIFYING
+
+## CURRENT — 2026-10-23 Q12 authentic visual review ready, Gate① user pending
+- Q11 Gate① **BLOCK-VISUAL-OK**, verbatim direct response **「続けていいよ」** in this chat after its numbered actual image; Q11 marker now hidden and its fixed images preserved. Q18 / N13 Q05/Q08 prior acceptance unchanged.
+- Approved P-002 Q12 learner change remains exactly one hint literal. N06 revision3 / 16 teacher Word markers / 16 decisions, original answers/choices/history preserved. Actual frozen Chrome/source SHA **`6d75ec551e738abc92be3af22b4502bb55e18a99`**, fixed 18-image-only commit **`0f93e549f418b3f67851dbfee161b726b278d7b7`**.
+- Native Review code + actual Chrome run [39890748804](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39890748804) **SUCCESS**; capture job 120209654721 **6 actual tests PASS / 6 project-matrix skips**, 320/390/1440, review+normal, before/wrong/correct states, wrong does not unlock Q13, all 16 normal-route answers and reload restoration. Governance [39890748808](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39890748808) **SUCCESS** on the same full source SHA.
+- Original implementation `8423d50d30d8634bed19d10b17ef42e5f9c64c9a` math job independently logged **237 Vitest tests PASS / 24 files**, plus math-browser scenarios, before its overall run was superseded/cancelled. Every app/review/E2E source byte is identical from 8423d50d to 6d75ec551e738abc92be3af22b4502bb55e18a99; do not relabel that cancelled full run as overall PASS.
+- Full math/regression run [39890748816](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39890748816) was still in `Install Playwright Chromium` at the last check. Keep full regression **NOT COMPLETE**. Use the browser-only installation already proven by the dedicated Chrome job, with a bounded setup step; all full-regression test commands remain unchanged. Its successor SHA/run is initially PENDING and must be checked before any Gate② closure.
+- Directly inspected original 320/390 wrong-state images, 390 completed image, and 1440 ordinary-route wrong-state image: readable Japanese, exact approved hint, one Q12 confirmation marker, readable formula, preserved answer, no KaTeX error. [Q12 sole human check](./GATE1_N06_Q12_REVIEW_SHEET.md).
+- New independently confirmed **unapproved** findings remain: N06 Q03 and Q06 wrong-hint answer pre-exposure; mathematically identical Q12 distractors. See [impact precheck](./IMPACT_AUDIT_STAGEB_PRECHECK_20261023.md). P-002 does not authorize changing them. **Gate② cannot be CROSS-VERIFIED** until applicable linked proposals/authorized corrections and required regressions close.
+- **Next permitted human step: Q12 確認① only** (`細部OK / 要修正`). Then preserve that specific acceptance and continue existing §12B and separate N14 Q16 Gate①. Gate③ FINAL-REVIEW-NOT-READY; no user whole-app acceptance, main merge, hosting or publication.
+- Source/Word/accepted history remain protected. Earlier snapshots below are historical on current status.
+
 
 ## 2026-10-23 JST — authoritative Q11 visual acceptance and Stage B checkpoint
 - Direct user response **「続けていいよ」** immediately followed this chat's Q11 確認① real-image review and explicit request for `細部OK / 要修正`. This is **Q11 BLOCK-VISUAL-OK**, not a fabricated literal `細部OK` quote, not Gate②/③ or release permission.
@@ -59,3 +72,19 @@ Status: VERIFYING N05-Q11 Stage A; actual browser evidence and full CI pending; 
 
 ## Font preparation checkpoint — no learner-scope change
 The Q12 native job 120203193623 / run 39888774248 remained in the Japanese font installation step for about ten minutes, while full math regression continued. Active-job logs were not yet available (404 BlobNotFound); do not claim a specific network subcommand failure. Replace only the Q12 capture job font setup with an existing-font check and a bounded package installation (4-minute step / 180-second install). Keep both actual Japanese font assertions. This is capture-environment repair within P-002 verification; Q12 hint, answers, IDs, revision and other learner files stay unchanged. On source push the old same-group capture run may be superseded; record cancellation separately from technical PASS.
+
+## Actual bounded-font source checkpoint
+- Actual commit/branch HEAD: d8efbbb6d9108f190d575d639ad841545e6100e3. Parent 8423d50d30d8634bed19d10b17ef42e5f9c64c9a. Native runs for this head PENDING retrieval.
+- This commit only changes Q12 capture font preparation and Work records. All learner files, review targets/tests and Q12 E2E bytes remain those of 8423d50d.
+- Earlier source-run outcomes must be read as they stand (including cancellation); no unverified overall PASS.
+- Return to primary: inspect actual Noto/Chrome job output and fixed Q12 images; record fresh exact-SHA native full CI results before completing technical verification.
+
+## Font failure evidence and verified return plan
+- Source 8423d50d: review run 39888774248 CANCELLED during font package download; math run 39888774291 CANCELLED after the next source push. No overall PASS is claimed.
+- Source d8efbbb6: Q12 capture job 120207126336 / run 39889974392 FAILED with exit 124 after the bounded 180-second install. Actual logs show apt fetched metadata successfully, then stalled downloading the 61.2MB fonts-noto-cjk package from http://azure.archive.ubuntu.com/ubuntu. This establishes a font-package transfer blocker, not a learner-code failure.
+- Repair within capture environment: download official Noto CJK JP Regular and Bold OTF files from https://raw.githubusercontent.com/notofonts/noto-cjk/main/Sans/OTF/Japanese/ with bounded curl, install only in the ephemeral runner, print SHA256 and validate actual Japanese font family before Chrome. No application font/CSS/content mutation. Native run results for the next SHA remain PENDING.
+
+## Actual official-font capture source
+- Full commit/branch SHA: 6d75ec551e738abc92be3af22b4502bb55e18a99; parent d8efbbb6d9108f190d575d639ad841545e6100e3.
+- Learner data, Q12 E2E, CSS and review targets remain byte-identical to scoped implementation 8423d50d30d8634bed19d10b17ef42e5f9c64c9a. Only capture font environment/Work history differs.
+- New native capture/full CI run IDs PENDING retrieval; Q12 Gate① still pending. After completed capture, inspect original PNGs, not constructed images.

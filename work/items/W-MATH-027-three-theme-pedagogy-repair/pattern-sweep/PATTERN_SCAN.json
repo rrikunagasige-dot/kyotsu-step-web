@@ -1,0 +1,856 @@
+{
+  "source_sha": "59aeba91056e954ccc65e51a02c7227e642a2c3a",
+  "source_files": 19,
+  "units": 16,
+  "originalQuestions": 233,
+  "actions": 318,
+  "method": "Evaluate verified data-only TypeScript using Node type stripping and an identity schema boundary. This extracts authored objects; it does NOT run Zod validation. Actual schema/type/build checks are separately provided by CI.",
+  "candidates": [
+    {
+      "unit": "math-numbers-expressions-n01",
+      "item": "n01-06a",
+      "prompt": "x²を含む二つの項を符号ごと選ぼう。",
+      "answer": "3x^2-5x^2",
+      "flags": [
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n01",
+      "item": "n01-06b",
+      "prompt": "残りのxの項と定数項の二組を選ぼう。",
+      "answer": "(-5x+2x)\\quad (6-3)",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n02",
+      "item": "n02-01",
+      "prompt": "二つのx一次項の係数を足そう。",
+      "answer": "3bx",
+      "flags": [
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n03",
+      "item": "n03-10",
+      "prompt": "図の四つのマスに対応する積を全て書こう。",
+      "answer": "6x^2+8x+3x+4",
+      "flags": [
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n04",
+      "item": "n04-01",
+      "prompt": "四組すべてを、同類項をまとめずに並べよう。",
+      "answer": "25x^2+20xy+20xy+16y^2",
+      "flags": [
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n04",
+      "item": "n04-02",
+      "prompt": "欠けていた二つの交差項を同類項としてまとめよう。",
+      "answer": "40xy",
+      "flags": [
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n04",
+      "item": "n04-03",
+      "prompt": "すべての項を係数まで整理して展開しよう。",
+      "answer": "25x^2+40xy+16y^2",
+      "flags": [
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n04",
+      "item": "n04-09",
+      "prompt": "二つの式で使う公式と、対応する二つのまとまりを選ぼう。",
+      "answer": "差の平方：2aと5／和差の積：3xと2",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE",
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n04",
+      "item": "n04-10",
+      "prompt": "左から順に展開結果を選ぼう。",
+      "answer": "4a^2-20a+25,\\quad9x^2-4",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n04",
+      "item": "n04-13",
+      "prompt": "一次項を作る二つの積と、整理した展開結果をこの順で選ぼう。",
+      "answer": "3x\\cdot2=6x,\\quad1\\cdot x=x,\\quad3x^2+7x+2",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE",
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n04",
+      "item": "n04-15",
+      "prompt": "すべての交差項を含む形を選ぼう。",
+      "answer": "a^2+b^2+c^2+2ab+2ac+2bc",
+      "flags": [
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n04",
+      "item": "n04-17",
+      "prompt": "共通する塊と符号が反対の塊を選ぼう。",
+      "answer": "x^2+1,\\quad x",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n04",
+      "item": "n04-20",
+      "prompt": "一次係数が同じになる二つの積を選ぼう。",
+      "answer": "(x^2+5x+4)(x^2+5x+6)",
+      "flags": [
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n04",
+      "item": "n04-22",
+      "prompt": "四次式としてすべての項をまとめよう。",
+      "answer": "x^4+10x^3+35x^2+50x+24",
+      "flags": [
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n05",
+      "item": "n05-06",
+      "prompt": "最初と最後の項をそれぞれ平方として表そう。",
+      "answer": "(4x)^2,\\quad(3y)^2",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n05",
+      "item": "n05-10",
+      "prompt": "r+sとrsが満たす条件を選ぼう。",
+      "answer": "r+s=-6,\\quad rs=-16",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n05",
+      "item": "n05-13",
+      "prompt": "p,q,r,sについて必要な三条件を選ぼう。",
+      "answer": "pr=4,\\quad ps+qr=7,\\quad qs=3",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n05",
+      "item": "n05-14",
+      "prompt": "A、B、Cの一次係数をこの順に選ぼう。",
+      "answer": "8,\\quad 7,\\quad 13",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n05",
+      "item": "n05-16",
+      "prompt": "一次係数と定数項から二条件を選ぼう。",
+      "answer": "s+5r=-2,\\quad rs=-3",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n05",
+      "item": "n05-17",
+      "prompt": "rとsの符号関係と、その理由を組にして選ぼう。",
+      "answer": "rとsは異符号（rs=-3<0だから）",
+      "flags": [
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n06",
+      "item": "n06-01",
+      "prompt": "Xの定義と置換後の式を選ぼう。",
+      "answer": "X=x+2y,\\quad(X+1)(X-2)-4",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n06",
+      "item": "n06-05",
+      "prompt": "置換の定義とTの二次式を選ぼう。",
+      "answer": "T=x^2,\\quad T^2-5T+4",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n06",
+      "item": "n06-15",
+      "prompt": "和を計算し、元のxの係数に一致して因数分解に使えるか判断しよう。",
+      "answer": "3y-1,\\quad\\text{一致する（使える）}",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n07",
+      "item": "n07-02",
+      "prompt": "二つの小数の位の「商・余り」を順に選ぼう。",
+      "answer": "（0・余り10）→（9・余り1）",
+      "flags": [
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n07",
+      "item": "n07-04",
+      "prompt": "二数の小数分類と有理数かどうかを選ぼう。",
+      "answer": "有限小数／循環小数、どちらも有理数",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n07",
+      "item": "n07-06",
+      "prompt": "繰り返す部分がそろう最小の倍率と、掛けた後の小数を選ぼう。",
+      "answer": "10\\text{倍},\\quad10x=8.\\overline8",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n07",
+      "item": "n07-09",
+      "prompt": "最小倍率、倍率後の式、引き算の結果を組にして選ぼう。",
+      "answer": "\\text{100倍},\\;100x=69.\\overline{69},\\;99x=69",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE",
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n07",
+      "item": "n07-13",
+      "prompt": "二つの値と自然数かどうかを選ぼう。",
+      "answer": "−1と2/3、どちらも自然数でない",
+      "flags": [
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n08",
+      "item": "n08-01",
+      "prompt": "二点から原点までの距離を選ぼう。",
+      "answer": "2.3,\\quad5",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n08",
+      "item": "n08-05",
+      "prompt": "二乗した値の大小比較と、√5と3の大小関係を組にして選ぼう。",
+      "answer": "5<9,\\quad\\sqrt5<3",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE",
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n08",
+      "item": "n08-10",
+      "prompt": "aの値と、数直線上で距離が0になる理由を組にして選ぼう。",
+      "answer": "a=0,\\quad\\text{原点と同じ位置にある}",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE",
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n09",
+      "item": "n09-01",
+      "prompt": "二乗して16になる実数をすべて書こう。",
+      "answer": "x=4,\\ -4",
+      "flags": [
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n09",
+      "item": "n09-05",
+      "prompt": "二つの場合を絶対値でまとめよう。",
+      "answer": "|a|",
+      "flags": [
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n09",
+      "item": "n09-08",
+      "prompt": "両方の小数を平方し、2を挟もう。",
+      "answer": "1.41^2=1.9881<2<2.0164=1.42^2",
+      "flags": [
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n09",
+      "item": "n09-14",
+      "prompt": "正負の整数部分・小数部分を組で選ぼう。",
+      "answer": "\\begin{aligned}\\sqrt{10}&:(3,\\sqrt{10}-3)\\\\-\\sqrt{10}&:(-4,4-\\sqrt{10})\\end{aligned}",
+      "flags": [
+        "LONG_COMPLEX_ANSWER_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n10",
+      "item": "n10-04",
+      "prompt": "2乗と正であることの両方から積を特定しよう。",
+      "answer": "\\sqrt{ab}",
+      "flags": [
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n10",
+      "item": "n10-11",
+      "prompt": "平方公式の中項まで全て展開しよう。",
+      "answer": "2-2\\sqrt2\\sqrt3+3",
+      "flags": [
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n10",
+      "item": "n10-15",
+      "prompt": "√3を使って値を変えずに有理化しよう。",
+      "answer": "\\frac1{2\\sqrt3}\\cdot\\frac{\\sqrt3}{\\sqrt3}=\\frac{\\sqrt3}{2(\\sqrt3)^2}",
+      "flags": [
+        "LONG_COMPLEX_ANSWER_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n10",
+      "item": "n10-17",
+      "prompt": "和の分母を和差の積にする因子を選ぼう。",
+      "answer": "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt3-\\sqrt2}{\\sqrt3-\\sqrt2}",
+      "flags": [
+        "LONG_COMPLEX_ANSWER_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n10",
+      "item": "n10-20",
+      "prompt": "共役因子を選び、掛けた直後の分数を作ろう。",
+      "answer": "\\frac{(2-\\sqrt3)^2}{(2+\\sqrt3)(2-\\sqrt3)}=\\frac{(2-\\sqrt3)^2}{4-3}",
+      "flags": [
+        "LONG_COMPLEX_ANSWER_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n11",
+      "item": "n11-wm011-q02-compare",
+      "prompt": "差の符号を根拠に、加えたあとの大小関係を選ぼう。",
+      "answer": "a+c<b+c,\\quad\\text{差は正のまま}",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n11",
+      "item": "n11-wm011-q03-positive",
+      "prompt": "c>0のとき、差の符号と大小関係を判断しよう。",
+      "answer": "ac<bc,\\quad bc-ac>0",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n11",
+      "item": "n11-03",
+      "prompt": "c<0のとき、差の符号と大小関係を判断しよう。",
+      "answer": "ac>bc,\\quad bc-ac<0",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n11",
+      "item": "n11-wm011-q03-zero",
+      "prompt": "c=0のとき、両辺と厳密な不等号はどうなるだろう。",
+      "answer": "ac=bc=0,\\quad\\text{元の厳密な大小は失われる}",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n11",
+      "item": "n11-wm011-q04-fraction",
+      "prompt": "a<bの両辺に負の1/5を掛けるとどうなるだろう。",
+      "answer": "-\\frac a5>-\\frac b5,\\quad\\text{負数倍なので反転}",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n11",
+      "item": "n11-wm012-q11-expand",
+      "prompt": "括弧の両方の項に3を掛けて、展開した左辺を選ぼう。",
+      "answer": "6x+9",
+      "flags": [
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n12",
+      "item": "n12-02",
+      "prompt": "二つ目の不等式をxについて解こう。",
+      "answer": "x\\le\\frac12",
+      "flags": [
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n12",
+      "item": "n12-03",
+      "prompt": "x=1は二つとも満たす？",
+      "answer": "二つ目に反するので不適",
+      "flags": [
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n12",
+      "item": "n12-04",
+      "prompt": "二つの範囲の共通部分を選ぼう。",
+      "answer": "-\\frac72<x\\le\\frac12",
+      "flags": [
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n12",
+      "item": "n12-05",
+      "prompt": "三連不等式を二つの条件に分けよう。",
+      "answer": "3x+2\\le2x+4\\ \\text{かつ}\\ 2x+4\\le9-x",
+      "flags": [
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n12",
+      "item": "n12-06",
+      "prompt": "二つの不等式の解をそれぞれ選ぼう。",
+      "answer": "x\\le2,\\quad x\\le\\frac53",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE",
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n12",
+      "item": "n12-07",
+      "prompt": "二つの上限のうち、共通に残る範囲は？",
+      "answer": "x\\le\\frac53",
+      "flags": [
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n12",
+      "item": "n12-15",
+      "prompt": "箱代を含め、候補二つの合計金額を確かめよう。",
+      "answer": "T(11)=3200\\text{円},\\ T(12)=3250\\text{円}",
+      "flags": [
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n13",
+      "item": "n13-01",
+      "prompt": "すべての実数解を選ぼう。",
+      "answer": "x=5\\;\\text{または}\\;x=-5",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE",
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n13",
+      "item": "n13-02",
+      "prompt": "Xについての二つの可能性を選ぼう。",
+      "answer": "X=4\\;\\text{または}\\;X=-4",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE",
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n13",
+      "item": "n13-03",
+      "prompt": "xについての二つの方程式を書こう。",
+      "answer": "x-1=4\\;\\text{または}\\;x-1=-4",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE",
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n13",
+      "item": "n13-04",
+      "prompt": "xの解をすべて選ぼう。",
+      "answer": "x=5\\;\\text{または}\\;x=-3",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE",
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n13",
+      "item": "n13-06",
+      "prompt": "絶対値なしの二つの方程式を選ぼう。",
+      "answer": "x+2=3\\;\\text{または}\\;x+2=-3",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE",
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n13",
+      "item": "n13-07",
+      "prompt": "両方の解を選ぼう。",
+      "answer": "x=1\\;\\text{または}\\;x=-5",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE",
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n13",
+      "item": "n13-wm023-q08-branches",
+      "prompt": "中身3xがとり得る二つの等式を選ぼう。",
+      "answer": "3x=6\\;\\text{または}\\;3x=-6",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE",
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n14",
+      "item": "n14-02",
+      "prompt": "二つの境界を選ぼう。",
+      "answer": "x=-3,\\quad x=3",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE",
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n14",
+      "item": "n14-06",
+      "prompt": "残す範囲と二つの枝のつなぎ方を選ぼう。",
+      "answer": "x\\le-4\\;\\text{または}\\;x\\ge4",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE",
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n14",
+      "item": "n14-wm014-q07-nonnegative",
+      "prompt": "Xが0以上のとき、|X|<aとX≥0の両方から範囲を考えよう。",
+      "answer": "0\\le X<a",
+      "flags": [
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n14",
+      "item": "n14-08",
+      "prompt": "絶対値のない二つの範囲を選ぼう。",
+      "answer": "X<-a\\;\\text{または}\\;X>a",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE",
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n14",
+      "item": "n14-11",
+      "prompt": "内外と端点を判断し、絶対値を外した二条件を選ぼう。",
+      "answer": "x+3\\le-2\\;\\text{または}\\;x+3\\ge2",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-n14",
+      "item": "n14-12",
+      "prompt": "最終的な二領域を選ぼう。",
+      "answer": "x\\le-5\\;\\text{または}\\;x\\ge-1",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-ne01",
+      "item": "ne01-01",
+      "prompt": "三つの同じ因子のうち二つを先に掛ける。平方で生まれる中央の項も残し、一次式と二次式の積に直す。",
+      "answer": "(x+3)(x^2+6x+9)",
+      "flags": [
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-ne01",
+      "item": "ne01-02",
+      "prompt": "前の積で、一次式の各項を二次式のすべての項へ掛ける。六つの積を書いてから同類項をまとめる。",
+      "answer": "x^3+9x^2+27x+27",
+      "flags": [
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-ne01",
+      "item": "ne01-03",
+      "prompt": "具体例の3を一般の実数bへ置き換える。同じ因子二つを平方にまとめ、既習の和の平方を使う。",
+      "answer": "(a+b)(a^2+2ab+b^2)",
+      "flags": [
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-ne01",
+      "item": "ne01-08",
+      "prompt": "3乗の和だけを取り出すため、和の3乗で生じた中央二項に注目する。両方に共通する因数でまとめる。",
+      "answer": "3ab(a+b)",
+      "flags": [
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-ne01",
+      "item": "ne01-09",
+      "prompt": "中央二項を移すとa³+b³=(a+b)³−3ab(a+b)になる。二つの項に共通するa+bを一つ取り出す。",
+      "answer": "(a+b)((a+b)^2-3ab)",
+      "flags": [
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-ne01",
+      "item": "ne01-11",
+      "prompt": "和の因数分解にb→−bを使う。一次の因子と二次の因子の両方へ置換を反映し、3乗の差を作る。",
+      "answer": "(a-b)(a^2+ab+b^2)",
+      "flags": [
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-ne01",
+      "item": "ne01-12",
+      "prompt": "二つの確認問題で、それぞれ何の3乗かを見つける。式の係数も文字と一緒に三乗の内側へ戻す。",
+      "answer": "x^3-1^3\\quad;\\quad(2x)^3+(3y)^3",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE",
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-ne01",
+      "item": "ne01-13",
+      "prompt": "前の対応を使って、差には差の公式、和には和の公式を選ぶ。二つとも最後の積まで完成させる。",
+      "answer": "(x-1)(x^2+x+1)\\quad;\\quad(2x+3y)(4x^2-6xy+9y^2)",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE",
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-ne02",
+      "item": "ne02-01",
+      "prompt": "a,bを正の実数とする。平方根の和を二乗し、平方の項と二つの交差項を分けて書く。",
+      "answer": "a+b+2\\sqrt{ab}",
+      "flags": [
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-ne02",
+      "item": "ne02-02",
+      "prompt": "前の平方の展開を5+2√6と比べる。根号の外の部分と、交差項の根号の中を対応させる。",
+      "answer": "a+b=5,\\quad ab=6",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-ne02",
+      "item": "ne02-03",
+      "prompt": "和と積の二条件を同時に満たす正の二数を探す。順番はどちらでもよい。",
+      "answer": "a=2,\\quad b=3\\quad(\\text{順不同})",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-ne02",
+      "item": "ne02-04",
+      "prompt": "平方が一致しただけでは符号が決まらない。候補が非負であることも確かめ、元の根号の値を選ぶ。",
+      "answer": "\\sqrt2+\\sqrt3>0,\\quad\\sqrt{5+2\\sqrt6}=\\sqrt2+\\sqrt3",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-ne02",
+      "item": "ne02-06",
+      "prompt": "交差項の係数をそろえて比べられるよう、4√5を係数2と一つの根号の積へ直す。和と積を別々の条件にする。",
+      "answer": "a+b=9,\\quad ab=20",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-ne02",
+      "item": "ne02-07",
+      "prompt": "和と積を満たす二数を求め、平方根の差へ戻す。この段階では二つの順序を候補として残す。",
+      "answer": "a=5,\\ b=4:\\ \\sqrt5-2\\quad\\text{または}\\quad a=4,\\ b=5:\\ 2-\\sqrt5",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE",
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-ne02",
+      "item": "ne02-08",
+      "prompt": "二つの候補の大小を平方で比較する。根号そのものを表す非負の方を一つ選ぶ。",
+      "answer": "\\sqrt5>2,\\quad\\sqrt{9-4\\sqrt5}=\\sqrt5-2",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE",
+        "MULTIPLE_REQUESTS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    },
+    {
+      "unit": "math-numbers-expressions-ne02",
+      "item": "ne02-11",
+      "prompt": "分子へ、最初の例題で作った和と積の方法を使う。条件、二数、非負の平方根の和までを一つの対応として選ぶ。",
+      "answer": "a+b=6,\\ ab=5;\\ \\{a,b\\}=\\{5,1\\};\\ \\sqrt{6+2\\sqrt5}=\\sqrt5+1",
+      "flags": [
+        "MULTIPLE_REPRESENTATIONS_CANDIDATE"
+      ],
+      "verdict": "NEEDS_SEMANTIC_REVIEW"
+    }
+  ],
+  "quality_labels_assigned": 0,
+  "limitations": [
+    "Flags are review candidates, not confirmed defects or quality labels.",
+    "Current math/schema correctness is not inferred from lexical patterns.",
+    "This does not prove every educational defect was found."
+  ]
+}

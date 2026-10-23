@@ -1,5 +1,10 @@
 # W-MATH-025 — 独立照合／§12B影響範囲
 
+## CURRENT — 2026-10-23 P005/P006/P007 direct batch approval
+ユーザーはf73122d82b45e4c9ff4b04348383f121126a8322の「ヒント3件の変更案・変更前後」をリンクし、一括実行可否を尋ねた直後に **「いいよ」** と直接回答。P-005 N05Q06 / P-006 N07Q09 / P-007 N08Q05のexact3hint literalを **APPROVED** と記録。以前のQ06画像了承を流用したものではない。変更後文・各範囲/リスク/検証は不変。直前の「5問ずつ修正・検証・実画面をまとめ提示」指示も保持。
+起点はDraft PR116 HEAD f73122d82b45e4c9ff4b04348383f121126a8322。独立した順次枝 `work/W-MATH-025-hints-p005-p007-batch-20261023` を使い、同ref実行中CIをcancelしない。3sourcefileに各1hintだけ、版/キー/選択肢/ID/履歴/図/schema/rendererは保持。Q12choicesとQ16を含む5件groupを完成後、一度に提示する。Q16は別PR111のrev10固定sourceであり、未承認の候補統合はしない。
+
+
 ## 2026-10-23 最新ユーザー受入・まとめ提示指示
 ユーザー直接発言: **「承認！続けて。後仕事どれぐらい残っているのか教えてくれ。次からは例えば一つQ06じゃなくて5個のやつ全部完成して私に見せてください。その方が効率いいから」**。
 直前に提示したQ06ヒント実画像98ffc53ca390ef4769a4800a58cf3436f87b2057 / 固定画像dd0842e26de33565afdc28e412d26182ad3dec35への受入として、Q06 hint-onlyを **BLOCK-VISUAL-OK** と記録する。既存ID/原画像/元履歴を保ち、次候補でQ06マーカーを非表示、再撮影を停止する。
@@ -96,3 +101,6 @@ P-001 Q11 accepted; approved P-002 Q12 hint corrected and actual images verified
 
 ## Stage B precheck: additional findings kept outside P-002
 See IMPACT_AUDIT_STAGEB_PRECHECK_20261023.md. N06 Q03/Q06 exact answer-factor hints and duplicate mathematical Q12 distractors are confirmed, unapproved and unchanged. Gate② remains OPEN; Q12 hint-only acceptance is separate.
+
+## F-BATCH-APPROVED
+最新直接「いいよ」が、直前の新3案全文リンク/変更前後への一括承認である。提示頻度を約5問へ変更する直接指示のもと、3hintをまとめて実装/検証しても各案のexact範囲は増やさない。Q12/Q16の未受入をCIや本承認で自動受入にしない。元Word/図/schema/CSS/保存移行に変更なし。

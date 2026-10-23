@@ -1,5 +1,10 @@
 # W-MATH-025 — Action Log
 
+## CURRENT — 2026-10-23 P005/P006/P007 direct batch approval
+ユーザーはf73122d82b45e4c9ff4b04348383f121126a8322の「ヒント3件の変更案・変更前後」をリンクし、一括実行可否を尋ねた直後に **「いいよ」** と直接回答。P-005 N05Q06 / P-006 N07Q09 / P-007 N08Q05のexact3hint literalを **APPROVED** と記録。以前のQ06画像了承を流用したものではない。変更後文・各範囲/リスク/検証は不変。直前の「5問ずつ修正・検証・実画面をまとめ提示」指示も保持。
+起点はDraft PR116 HEAD f73122d82b45e4c9ff4b04348383f121126a8322。独立した順次枝 `work/W-MATH-025-hints-p005-p007-batch-20261023` を使い、同ref実行中CIをcancelしない。3sourcefileに各1hintだけ、版/キー/選択肢/ID/履歴/図/schema/rendererは保持。Q12choicesとQ16を含む5件groupを完成後、一度に提示する。Q16は別PR111のrev10固定sourceであり、未承認の候補統合はしない。
+
+
 ## 2026-10-23 最新ユーザー受入・まとめ提示指示
 ユーザー直接発言: **「承認！続けて。後仕事どれぐらい残っているのか教えてくれ。次からは例えば一つQ06じゃなくて5個のやつ全部完成して私に見せてください。その方が効率いいから」**。
 直前に提示したQ06ヒント実画像98ffc53ca390ef4769a4800a58cf3436f87b2057 / 固定画像dd0842e26de33565afdc28e412d26182ad3dec35への受入として、Q06 hint-onlyを **BLOCK-VISUAL-OK** と記録する。既存ID/原画像/元履歴を保ち、次候補でQ06マーカーを非表示、再撮影を停止する。
@@ -138,3 +143,13 @@ The Q12 native job 120203193623 / run 39888774248 remained in the Japanese font 
 
 ## Stage D local pre-commit checks
 Single-hint/source/target/YAML checks PASS. A local structural audit initially expected the standalone quoted string 'n06-07' while the actual E2E correctly uses the full 'textbook-item-n06-07' selector; corrected the audit expectation and it PASSed. No application or E2E repair was needed for that audit assertion. Native TypeScript/lint/browser checks remain pending until actual CI.
+
+## A-BATCH-001 — source and execution preflight
+- Auth login rrikunagasige-dot/332552275、repo1391122224、live main15ae503455bc6ae75b080caa1c4919cafb250027、PR116headf73122d82b45e4c9ff4b04348383f121126a8322とgit tree457f3bd6fc86da14674d0af97468fcf8e55fbacdを照合。新枝prefixは不存在。
+- §12A/§12B/§12C、MASTER原文/認知行為/誤答hint/保存/モバイル教訓、原Word SHA25693827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa body209/305/345の既照合箇所とexact承認案を各小問前に再照合。
+- N05Q06は16=4²/9=3²の数値を生徒が求める、N07Q09は二桁周期→最小100倍→99x=69、N08Q05は非負比較5<9→√5<3。各hintを方法の手掛かりに限定し、数式/説明本文は保持。
+- 同じ一次枝で3件を順次限定実装、各原20/14/12問とrev2/3/3、全choice/答/図/進捗を保持。N06 Q12修正もそのまま。
+- 専用captureは18real cases（3問×3幅×normal/review）、18matrix skipsを想定。72原PNGを専用folderへ保存予定。PC幅1440は高さ1400で下のchoiceも写す。実行前なので件数は予定、PASS未記録。
+- Source SHA/PR/run PENDING until actual creation. 先行f731記録版Math39901305699は開始時RUNNING、Review39901305734/Gov39901305659 SUCCESS。新枝は別refで既存runをcancelしない。
+
+- A-BATCH-002 local precommit PASS: source3ファイル各1hintのみ、原20/14/12問とrev2/3/3維持、両workflow YAMLとbranch/env/source paths整合、3review/E2EファイルをTS strip→JS parserで検査PASS。Native run前なのでruntime/回帰/画面はPENDING。

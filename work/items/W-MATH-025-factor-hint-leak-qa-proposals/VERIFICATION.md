@@ -1,5 +1,10 @@
 # W-MATH-025 — Verification
 
+## CURRENT — 2026-10-23 P005/P006/P007 direct batch approval
+ユーザーはf73122d82b45e4c9ff4b04348383f121126a8322の「ヒント3件の変更案・変更前後」をリンクし、一括実行可否を尋ねた直後に **「いいよ」** と直接回答。P-005 N05Q06 / P-006 N07Q09 / P-007 N08Q05のexact3hint literalを **APPROVED** と記録。以前のQ06画像了承を流用したものではない。変更後文・各範囲/リスク/検証は不変。直前の「5問ずつ修正・検証・実画面をまとめ提示」指示も保持。
+起点はDraft PR116 HEAD f73122d82b45e4c9ff4b04348383f121126a8322。独立した順次枝 `work/W-MATH-025-hints-p005-p007-batch-20261023` を使い、同ref実行中CIをcancelしない。3sourcefileに各1hintだけ、版/キー/選択肢/ID/履歴/図/schema/rendererは保持。Q12choicesとQ16を含む5件groupを完成後、一度に提示する。Q16は別PR111のrev10固定sourceであり、未承認の候補統合はしない。
+
+
 ## 2026-10-23 最新ユーザー受入・まとめ提示指示
 ユーザー直接発言: **「承認！続けて。後仕事どれぐらい残っているのか教えてくれ。次からは例えば一つQ06じゃなくて5個のやつ全部完成して私に見せてください。その方が効率いいから」**。
 直前に提示したQ06ヒント実画像98ffc53ca390ef4769a4800a58cf3436f87b2057 / 固定画像dd0842e26de33565afdc28e412d26182ad3dec35への受入として、Q06 hint-onlyを **BLOCK-VISUAL-OK** と記録する。既存ID/原画像/元履歴を保ち、次候補でQ06マーカーを非表示、再撮影を停止する。
@@ -168,3 +173,11 @@ Original teacher body markers N05 Q06 paragraph209, N07 Q09 paragraph305, N08 Q0
 
 ## Completed exact-source full regression
 Source98ffc53ca390ef4769a4800a58cf3436f87b2057: Math39897233018 / validate120230370702 SUCCESS;24 Vitest files237 tests PASS,13 browser batches254 PASS and9 explicit skips. Final math-practice batch completed2026-10-23T04:04:11Z. Review39897233016 (codecheck34 tests + actual Q06 capture6 executed cases with6 matrix skips) and Governance39897232993 SUCCESS. Original18 Q06 PNG remain fixed atdd0842e26de33565afdc28e412d26182ad3dec35, an image-only child. The following Work-record-only commit has new HEAD checks initiallyPENDING; prior runs remain tied to their actual source SHA.
+
+## V-BATCH-PENDING — exact three-hint batch
+Primary W025/P005/P006/P007 approved by latest direct「いいよ」to grouped exact full proposal. Source SHA/run PENDING until GitHub commit. Basef73122d82b45e4c9ff4b04348383f121126a8322, branchwork/W-MATH-025-hints-p005-p007-batch-20261023, main unchanged15ae503455bc6ae75b080caa1c4919cafb250027.
+Local exact3hint-only diff/math/workflow/TS checks PENDING. Native type/lint/build/unit/regression and genuine18case browser capture PENDING. Gate① five-item presentation pending; Gate②OPEN; Gate③NOT-READY。
+Return: success→inspect originals and record actualSHA/runs→present5together. Failure→return primary and fix only approved scope; cancel/timeout notverified;403 stop/report. DuringCI only independent source/root audit and grouped review preparation, no new learner edits.
+
+### Local precommit PASS
+3hint exact差分/全source他フィールド不変、原20/14/12問rev2/3/3、workflow YAML/env/branch/sourcepaths、TS strip後JS構文はPASS。Native build/lint/runtime及び全回帰はPENDING。

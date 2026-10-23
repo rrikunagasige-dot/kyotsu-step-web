@@ -1,0 +1,1281 @@
+{
+  "source": "68338688f22ffb3acaa7074b5c0c0f79584604c5",
+  "width": 320,
+  "unit": "math-numbers-expressions-n12",
+  "revision": 3,
+  "rows": [
+    {
+      "id": "n12-p002-q01-coef",
+      "geometry": {
+        "left": 41.1875,
+        "right": 280.8125,
+        "width": 240,
+        "scrollWidth": 240,
+        "children": [
+          {
+            "left": 48.796875,
+            "right": 173.734375
+          },
+          {
+            "left": 175.96875,
+            "right": 226.359375
+          },
+          {
+            "left": 228.59375,
+            "right": 273.1875
+          }
+        ]
+      },
+      "choices": [
+        "-2",
+        "2"
+      ]
+    },
+    {
+      "id": "n12-p002-q01-const",
+      "geometry": {
+        "left": 41.1875,
+        "right": 280.8125,
+        "width": 240,
+        "scrollWidth": 240,
+        "children": [
+          {
+            "left": 60.203125,
+            "right": 165.546875
+          },
+          {
+            "left": 167.78125,
+            "right": 218.171875
+          },
+          {
+            "left": 220.40625,
+            "right": 261.78125
+          }
+        ]
+      },
+      "choices": [
+        "7",
+        "-7"
+      ]
+    },
+    {
+      "id": "n12-01",
+      "geometry": {
+        "left": 41.1875,
+        "right": 280.8125,
+        "width": 240,
+        "scrollWidth": 240,
+        "children": [
+          {
+            "left": 98.8125,
+            "right": 170.5625
+          },
+          {
+            "left": 172.796875,
+            "right": 223.1875
+          }
+        ]
+      },
+      "choices": [
+        "x< -\\frac72",
+        "x>-\\frac72"
+      ]
+    },
+    {
+      "id": "n12-p002-q02-coef",
+      "geometry": {
+        "left": 41.1875,
+        "right": 280.8125,
+        "width": 240,
+        "scrollWidth": 240,
+        "children": [
+          {
+            "left": 103.53125,
+            "right": 218.46875
+          },
+          {
+            "left": 154.296875,
+            "right": 167.703125
+          },
+          {
+            "left": 95,
+            "right": 227
+          }
+        ]
+      },
+      "choices": [
+        "2",
+        "-2"
+      ]
+    },
+    {
+      "id": "n12-p002-q02-const",
+      "geometry": {
+        "left": 41.1875,
+        "right": 280.8125,
+        "width": 240,
+        "scrollWidth": 240,
+        "children": [
+          {
+            "left": 89.515625,
+            "right": 179.859375
+          },
+          {
+            "left": 182.09375,
+            "right": 232.484375
+          }
+        ]
+      },
+      "choices": [
+        "1",
+        "4"
+      ]
+    },
+    {
+      "id": "n12-02",
+      "geometry": {
+        "left": 41.1875,
+        "right": 280.8125,
+        "width": 240,
+        "scrollWidth": 240,
+        "children": [
+          {
+            "left": 106.3125,
+            "right": 163.0625
+          },
+          {
+            "left": 165.296875,
+            "right": 215.6875
+          }
+        ]
+      },
+      "choices": [
+        "x\\le\\frac12",
+        "x\\ge\\frac12"
+      ]
+    },
+    {
+      "id": "n12-03",
+      "geometry": null,
+      "choices": [
+        "一つ目を満たすから適する",
+        "二つ目に反するので不適"
+      ]
+    },
+    {
+      "id": "n12-04",
+      "geometry": {
+        "left": 27,
+        "right": 293,
+        "width": 264,
+        "scrollWidth": 264,
+        "children": [
+          {
+            "left": 134.796875,
+            "right": 185.1875
+          }
+        ]
+      },
+      "choices": [
+        "-\\frac72<x<\\frac12",
+        "x>-\\frac72\\ \\text{または}\\ x\\le\\frac12",
+        "-\\frac72<x\\le\\frac12"
+      ]
+    },
+    {
+      "id": "n12-05",
+      "geometry": null,
+      "choices": [
+        "3x+2\\le2x+4\\ \\text{かつ}\\ 2x+4\\le9-x",
+        "3x+2\\le2x+4\\ \\text{または}\\ 2x+4\\le9-x",
+        "3x+2\\le9-x"
+      ]
+    },
+    {
+      "id": "n12-p002-q06-left-coef",
+      "geometry": {
+        "left": 41.1875,
+        "right": 280.8125,
+        "width": 240,
+        "scrollWidth": 240,
+        "children": [
+          {
+            "left": 93.53125,
+            "right": 228.46875
+          },
+          {
+            "left": 154.296875,
+            "right": 167.703125
+          },
+          {
+            "left": 95,
+            "right": 227
+          }
+        ]
+      },
+      "choices": [
+        "-1",
+        "2",
+        "1"
+      ]
+    },
+    {
+      "id": "n12-p002-q06-left-const",
+      "geometry": {
+        "left": 41.1875,
+        "right": 280.8125,
+        "width": 240,
+        "scrollWidth": 240,
+        "children": [
+          {
+            "left": 94.515625,
+            "right": 174.859375
+          },
+          {
+            "left": 177.09375,
+            "right": 227.484375
+          }
+        ]
+      },
+      "choices": [
+        "4",
+        "2",
+        "6"
+      ]
+    },
+    {
+      "id": "n12-p002-q06-right-coef",
+      "geometry": {
+        "left": 41.1875,
+        "right": 280.8125,
+        "width": 240,
+        "scrollWidth": 240,
+        "children": [
+          {
+            "left": 98.53125,
+            "right": 223.46875
+          },
+          {
+            "left": 154.296875,
+            "right": 167.703125
+          },
+          {
+            "left": 95,
+            "right": 227
+          }
+        ]
+      },
+      "choices": [
+        "3",
+        "2",
+        "-3"
+      ]
+    },
+    {
+      "id": "n12-p002-q06-right-const",
+      "geometry": {
+        "left": 41.1875,
+        "right": 280.8125,
+        "width": 240,
+        "scrollWidth": 240,
+        "children": [
+          {
+            "left": 89.515625,
+            "right": 179.859375
+          },
+          {
+            "left": 182.09375,
+            "right": 232.484375
+          }
+        ]
+      },
+      "choices": [
+        "9",
+        "13",
+        "5"
+      ]
+    },
+    {
+      "id": "n12-06",
+      "geometry": {
+        "left": 41.1875,
+        "right": 280.8125,
+        "width": 240,
+        "scrollWidth": 240,
+        "children": [
+          {
+            "left": 97.65625,
+            "right": 171.71875
+          },
+          {
+            "left": 173.953125,
+            "right": 224.34375
+          }
+        ]
+      },
+      "choices": [
+        "x\\ge2,\\quad x\\le\\frac53",
+        "x\\le2,\\quad x\\le\\frac53",
+        "x\\le2,\\quad x\\le\\frac35"
+      ]
+    },
+    {
+      "id": "n12-07",
+      "geometry": {
+        "left": 27,
+        "right": 293,
+        "width": 264,
+        "scrollWidth": 264,
+        "children": [
+          {
+            "left": 134.796875,
+            "right": 185.1875
+          }
+        ]
+      },
+      "choices": [
+        "x\\le\\frac53",
+        "x\\ge\\frac53",
+        "\\frac53\\le x\\le2"
+      ]
+    },
+    {
+      "id": "n12-08",
+      "geometry": null,
+      "choices": [
+        "20-x",
+        "20"
+      ]
+    },
+    {
+      "id": "n12-09",
+      "geometry": null,
+      "choices": [
+        "x\\in\\mathbb Z,\\ 0\\le x\\le20",
+        "x\\in\\mathbb Z,\\ 0<x<20",
+        "x\\in\\mathbb Z,\\ x\\ge0"
+      ]
+    },
+    {
+      "id": "n12-p003-q10-meaning",
+      "geometry": null,
+      "choices": [
+        "箱と20個の菓子の合計金額",
+        "シュークリームの個数"
+      ]
+    },
+    {
+      "id": "n12-p003-q10-cream-coef",
+      "geometry": {
+        "left": 41.1875,
+        "right": 280.8125,
+        "width": 240,
+        "scrollWidth": 240,
+        "children": [
+          {
+            "left": 85.578125,
+            "right": 170.546875
+          },
+          {
+            "left": 172.78125,
+            "right": 223.171875
+          },
+          {
+            "left": 225.40625,
+            "right": 236.40625
+          }
+        ]
+      },
+      "choices": [
+        "180",
+        "20",
+        "130"
+      ]
+    },
+    {
+      "id": "n12-p003-q10-pudding-coef",
+      "geometry": {
+        "left": 41.1875,
+        "right": 280.8125,
+        "width": 240,
+        "scrollWidth": 240,
+        "children": [
+          {
+            "left": 99.90625,
+            "right": 222.09375
+          },
+          {
+            "left": 92.734375,
+            "right": 229.25
+          }
+        ]
+      },
+      "choices": [
+        "20",
+        "130",
+        "180"
+      ]
+    },
+    {
+      "id": "n12-p003-q10-box-fee",
+      "geometry": null,
+      "choices": [
+        "180",
+        "20",
+        "50"
+      ]
+    },
+    {
+      "id": "n12-10",
+      "geometry": {
+        "left": 41.1875,
+        "right": 280.8125,
+        "width": 240,
+        "scrollWidth": 240,
+        "children": [
+          {
+            "left": 105.15625,
+            "right": 164.21875
+          },
+          {
+            "left": 166.453125,
+            "right": 216.84375
+          }
+        ]
+      },
+      "choices": [
+        "50+180x+130(20-x)",
+        "180x+130(20-x)",
+        "50+180x+130x"
+      ]
+    },
+    {
+      "id": "n12-p003-q11-lower-sign",
+      "geometry": {
+        "left": 41.1875,
+        "right": 280.8125,
+        "width": 240,
+        "scrollWidth": 240,
+        "children": [
+          {
+            "left": 94.21875,
+            "right": 134.21875
+          },
+          {
+            "left": 136.453125,
+            "right": 186.84375
+          },
+          {
+            "left": 189.078125,
+            "right": 227.765625
+          }
+        ]
+      },
+      "choices": [
+        "\\le",
+        ">",
+        "<"
+      ]
+    },
+    {
+      "id": "n12-p003-q11-upper-sign",
+      "geometry": {
+        "left": 41.1875,
+        "right": 280.8125,
+        "width": 240,
+        "scrollWidth": 240,
+        "children": [
+          {
+            "left": 94.21875,
+            "right": 132.90625
+          },
+          {
+            "left": 135.140625,
+            "right": 185.53125
+          },
+          {
+            "left": 187.765625,
+            "right": 227.765625
+          }
+        ]
+      },
+      "choices": [
+        "\\ge",
+        "<",
+        ">"
+      ]
+    },
+    {
+      "id": "n12-11",
+      "geometry": {
+        "left": 41.1875,
+        "right": 280.8125,
+        "width": 240,
+        "scrollWidth": 240,
+        "children": [
+          {
+            "left": 135.796875,
+            "right": 186.1875
+          }
+        ]
+      },
+      "choices": [
+        "3200\\ge50+180x+130(20-x)<3300",
+        "3200\\le50+180x+130(20-x)<3300",
+        "3200<50+180x+130(20-x)\\le3300"
+      ]
+    },
+    {
+      "id": "n12-p003-q12-product-constant",
+      "geometry": {
+        "left": 41.1875,
+        "right": 280.8125,
+        "width": 240,
+        "scrollWidth": 240,
+        "children": [
+          {
+            "left": 87.703125,
+            "right": 181.671875
+          },
+          {
+            "left": 183.90625,
+            "right": 234.296875
+          }
+        ]
+      },
+      "choices": [
+        "2600",
+        "2500",
+        "1300"
+      ]
+    },
+    {
+      "id": "n12-p002-q12-signed-coef",
+      "geometry": {
+        "left": 41.1875,
+        "right": 280.8125,
+        "width": 240,
+        "scrollWidth": 240,
+        "children": [
+          {
+            "left": 111.703125,
+            "right": 210.296875
+          },
+          {
+            "left": 80.046875,
+            "right": 241.9375
+          }
+        ]
+      },
+      "choices": [
+        "-20",
+        "130",
+        "-130"
+      ]
+    },
+    {
+      "id": "n12-p003-q12-total-constant",
+      "geometry": {
+        "left": 41.1875,
+        "right": 280.8125,
+        "width": 240,
+        "scrollWidth": 240,
+        "children": [
+          {
+            "left": 82.703125,
+            "right": 186.671875
+          },
+          {
+            "left": 188.90625,
+            "right": 239.296875
+          }
+        ]
+      },
+      "choices": [
+        "2600",
+        "2650",
+        "3100"
+      ]
+    },
+    {
+      "id": "n12-p003-q12-x-coef",
+      "geometry": {
+        "left": 41.1875,
+        "right": 280.8125,
+        "width": 240,
+        "scrollWidth": 240,
+        "children": [
+          {
+            "left": 82.703125,
+            "right": 186.671875
+          },
+          {
+            "left": 188.90625,
+            "right": 239.296875
+          }
+        ]
+      },
+      "choices": [
+        "-50",
+        "130",
+        "50"
+      ]
+    },
+    {
+      "id": "n12-12",
+      "geometry": {
+        "left": 41.1875,
+        "right": 280.8125,
+        "width": 240,
+        "scrollWidth": 240,
+        "children": [
+          {
+            "left": 135.796875,
+            "right": 186.1875
+          }
+        ]
+      },
+      "choices": [
+        "3200\\le2650-50x<3300",
+        "3200\\le2600+50x<3300",
+        "3200\\le2650+50x<3300"
+      ]
+    },
+    {
+      "id": "n12-p002-q13-lower",
+      "geometry": {
+        "left": 41.1875,
+        "right": 280.8125,
+        "width": 240,
+        "scrollWidth": 240,
+        "children": [
+          {
+            "left": 73.1875,
+            "right": 248.8125
+          },
+          {
+            "left": 124.84375,
+            "right": 248.8125
+          }
+        ]
+      },
+      "choices": [
+        "-550",
+        "550",
+        "650"
+      ]
+    },
+    {
+      "id": "n12-p002-q13-upper",
+      "geometry": {
+        "left": 41.1875,
+        "right": 280.8125,
+        "width": 240,
+        "scrollWidth": 240,
+        "children": [
+          {
+            "left": 81.125,
+            "right": 188.25
+          },
+          {
+            "left": 190.484375,
+            "right": 240.875
+          }
+        ]
+      },
+      "choices": [
+        "650",
+        "550",
+        "-650"
+      ]
+    },
+    {
+      "id": "n12-13",
+      "geometry": {
+        "left": 41.1875,
+        "right": 280.8125,
+        "width": 240,
+        "scrollWidth": 240,
+        "children": [
+          {
+            "left": 63.4375,
+            "right": 205.9375
+          },
+          {
+            "left": 208.171875,
+            "right": 258.5625
+          }
+        ]
+      },
+      "choices": [
+        "11<x\\le13",
+        "11\\le x\\le13",
+        "11\\le x<13",
+        "x\\le11\\ \\text{または}\\ x>13"
+      ]
+    },
+    {
+      "id": "n12-14",
+      "geometry": null,
+      "choices": [
+        "x=11\\ \\text{のみ}",
+        "11\\le x\\le13",
+        "x=11\\ \\text{または}\\ 12",
+        "x=12\\ \\text{または}\\ 13"
+      ]
+    },
+    {
+      "id": "n12-15",
+      "geometry": null,
+      "choices": [
+        "T(11)=3200\\text{円},\\ T(12)=3250\\text{円}",
+        "T(11)=3150\\text{円},\\ T(12)=3200\\text{円}",
+        "T(11)=3200\\text{円},\\ T(12)=3300\\text{円}",
+        "T(11)=3250\\text{円},\\ T(12)=3200\\text{円}"
+      ]
+    }
+  ],
+  "completeGeometry": [
+    {
+      "id": "textbook-formula-formula-system",
+      "left": 27,
+      "right": 293,
+      "width": 264,
+      "scrollWidth": 264,
+      "children": [
+        {
+          "left": 89.1875,
+          "right": 230.796875
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-q01-coef",
+      "left": 41.1875,
+      "right": 280.8125,
+      "width": 240,
+      "scrollWidth": 240,
+      "children": [
+        {
+          "left": 69,
+          "right": 193.9375
+        },
+        {
+          "left": 196.171875,
+          "right": 206.171875
+        },
+        {
+          "left": 208.40625,
+          "right": 253
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-q01-const",
+      "left": 41.1875,
+      "right": 280.8125,
+      "width": 240,
+      "scrollWidth": 240,
+      "children": [
+        {
+          "left": 72.90625,
+          "right": 178.25
+        },
+        {
+          "left": 180.484375,
+          "right": 205.484375
+        },
+        {
+          "left": 207.71875,
+          "right": 249.09375
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-n12-01",
+      "left": 41.1875,
+      "right": 280.8125,
+      "width": 240,
+      "scrollWidth": 240,
+      "children": [
+        {
+          "left": 92.3125,
+          "right": 164.0625
+        },
+        {
+          "left": 166.296875,
+          "right": 229.671875
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-q02-coef",
+      "left": 41.1875,
+      "right": 280.8125,
+      "width": 240,
+      "scrollWidth": 240,
+      "children": [
+        {
+          "left": 103.53125,
+          "right": 218.46875
+        },
+        {
+          "left": 154.296875,
+          "right": 167.703125
+        },
+        {
+          "left": 115.1875,
+          "right": 206.796875
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-q02-const",
+      "left": 41.1875,
+      "right": 280.8125,
+      "width": 240,
+      "scrollWidth": 240,
+      "children": [
+        {
+          "left": 109.703125,
+          "right": 200.046875
+        },
+        {
+          "left": 202.28125,
+          "right": 212.28125
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-n12-02",
+      "left": 41.1875,
+      "right": 280.8125,
+      "width": 240,
+      "scrollWidth": 240,
+      "children": [
+        {
+          "left": 107.3125,
+          "right": 164.0625
+        },
+        {
+          "left": 166.296875,
+          "right": 214.671875
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-n12-04",
+      "left": 27,
+      "right": 293,
+      "width": 264,
+      "scrollWidth": 264,
+      "children": [
+        {
+          "left": 109.9375,
+          "right": 210.0625
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-q06-left-coef",
+      "left": 41.1875,
+      "right": 280.8125,
+      "width": 240,
+      "scrollWidth": 240,
+      "children": [
+        {
+          "left": 93.53125,
+          "right": 228.46875
+        },
+        {
+          "left": 154.296875,
+          "right": 167.703125
+        },
+        {
+          "left": 124.484375,
+          "right": 197.5
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-q06-left-const",
+      "left": 41.1875,
+      "right": 280.8125,
+      "width": 240,
+      "scrollWidth": 240,
+      "children": [
+        {
+          "left": 114.703125,
+          "right": 195.046875
+        },
+        {
+          "left": 197.28125,
+          "right": 207.28125
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-q06-right-coef",
+      "left": 41.1875,
+      "right": 280.8125,
+      "width": 240,
+      "scrollWidth": 240,
+      "children": [
+        {
+          "left": 98.53125,
+          "right": 223.46875
+        },
+        {
+          "left": 154.296875,
+          "right": 167.703125
+        },
+        {
+          "left": 115.1875,
+          "right": 206.796875
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-q06-right-const",
+      "left": 41.1875,
+      "right": 280.8125,
+      "width": 240,
+      "scrollWidth": 240,
+      "children": [
+        {
+          "left": 109.703125,
+          "right": 200.046875
+        },
+        {
+          "left": 202.28125,
+          "right": 212.28125
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-n12-06",
+      "left": 41.1875,
+      "right": 280.8125,
+      "width": 240,
+      "scrollWidth": 240,
+      "children": [
+        {
+          "left": 61.5,
+          "right": 135.5625
+        },
+        {
+          "left": 137.796875,
+          "right": 260.5
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-n12-07",
+      "left": 27,
+      "right": 293,
+      "width": 264,
+      "scrollWidth": 264,
+      "children": [
+        {
+          "left": 135.96875,
+          "right": 184.03125
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-cost-cream",
+      "left": 41.1875,
+      "right": 280.8125,
+      "width": 240,
+      "scrollWidth": 240,
+      "children": [
+        {
+          "left": 95.78125,
+          "right": 180.75
+        },
+        {
+          "left": 182.984375,
+          "right": 212.984375
+        },
+        {
+          "left": 215.21875,
+          "right": 226.21875
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-cost-pudding",
+      "left": 41.1875,
+      "right": 280.8125,
+      "width": 240,
+      "scrollWidth": 240,
+      "children": [
+        {
+          "left": 99.90625,
+          "right": 222.09375
+        },
+        {
+          "left": 102.9375,
+          "right": 219.0625
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-n12-10",
+      "left": 41.1875,
+      "right": 280.8125,
+      "width": 240,
+      "scrollWidth": 240,
+      "children": [
+        {
+          "left": 73.546875,
+          "right": 132.609375
+        },
+        {
+          "left": 134.84375,
+          "right": 248.4375
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-cost-lower-bound",
+      "left": 41.1875,
+      "right": 280.8125,
+      "width": 240,
+      "scrollWidth": 240,
+      "children": [
+        {
+          "left": 111.921875,
+          "right": 151.921875
+        },
+        {
+          "left": 154.15625,
+          "right": 169.15625
+        },
+        {
+          "left": 171.390625,
+          "right": 210.078125
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-cost-upper-bound",
+      "left": 41.1875,
+      "right": 280.8125,
+      "width": 240,
+      "scrollWidth": 240,
+      "children": [
+        {
+          "left": 111.921875,
+          "right": 150.609375
+        },
+        {
+          "left": 152.84375,
+          "right": 167.84375
+        },
+        {
+          "left": 170.078125,
+          "right": 210.078125
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-n12-11",
+      "left": 41.1875,
+      "right": 280.8125,
+      "width": 240,
+      "scrollWidth": 240,
+      "children": [
+        {
+          "left": 71.328125,
+          "right": 250.671875
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-cost-product-constant",
+      "left": 41.1875,
+      "right": 280.8125,
+      "width": 240,
+      "scrollWidth": 240,
+      "children": [
+        {
+          "left": 92.890625,
+          "right": 186.859375
+        },
+        {
+          "left": 189.09375,
+          "right": 229.09375
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-q12-signed-coef",
+      "left": 41.1875,
+      "right": 280.8125,
+      "width": 240,
+      "scrollWidth": 240,
+      "children": [
+        {
+          "left": 111.703125,
+          "right": 210.296875
+        },
+        {
+          "left": 82.75,
+          "right": 239.25
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-cost-total-constant",
+      "left": 41.1875,
+      "right": 280.8125,
+      "width": 240,
+      "scrollWidth": 240,
+      "children": [
+        {
+          "left": 87.890625,
+          "right": 191.859375
+        },
+        {
+          "left": 194.09375,
+          "right": 234.09375
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-cost-x-coef",
+      "left": 41.1875,
+      "right": 280.8125,
+      "width": 240,
+      "scrollWidth": 240,
+      "children": [
+        {
+          "left": 97.890625,
+          "right": 201.859375
+        },
+        {
+          "left": 204.09375,
+          "right": 224.09375
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-cost-collected-total",
+      "left": 41.1875,
+      "right": 280.8125,
+      "width": 240,
+      "scrollWidth": 240,
+      "children": [
+        {
+          "left": 81.484375,
+          "right": 240.515625
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-n12-12",
+      "left": 41.1875,
+      "right": 280.8125,
+      "width": 240,
+      "scrollWidth": 240,
+      "children": [
+        {
+          "left": 48.375,
+          "right": 273.625
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-cost-subtract",
+      "left": 41.1875,
+      "right": 280.8125,
+      "width": 240,
+      "scrollWidth": 240,
+      "children": [
+        {
+          "left": 48.375,
+          "right": 273.625
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-q13-lower",
+      "left": 41.1875,
+      "right": 280.8125,
+      "width": 240,
+      "scrollWidth": 240,
+      "children": [
+        {
+          "left": 83.375,
+          "right": 238.609375
+        },
+        {
+          "left": 114.640625,
+          "right": 238.609375
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-q13-upper",
+      "left": 41.1875,
+      "right": 280.8125,
+      "width": 240,
+      "scrollWidth": 240,
+      "children": [
+        {
+          "left": 91.3125,
+          "right": 198.4375
+        },
+        {
+          "left": 200.671875,
+          "right": 230.671875
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-n12-13",
+      "left": 41.1875,
+      "right": 280.8125,
+      "width": 240,
+      "scrollWidth": 240,
+      "children": [
+        {
+          "left": 89.75,
+          "right": 232.25
+        },
+        {
+          "left": 109.75,
+          "right": 212.25
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-verify-eleven",
+      "left": 27,
+      "right": 293,
+      "width": 264,
+      "scrollWidth": 264,
+      "children": [
+        {
+          "left": 60.015625,
+          "right": 259.984375
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-verify-twelve",
+      "left": 27,
+      "right": 293,
+      "width": 264,
+      "scrollWidth": 264,
+      "children": [
+        {
+          "left": 60.015625,
+          "right": 259.984375
+        }
+      ]
+    }
+  ],
+  "complete": true
+}

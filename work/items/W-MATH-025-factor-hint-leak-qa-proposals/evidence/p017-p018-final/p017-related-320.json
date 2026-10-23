@@ -1,0 +1,578 @@
+{
+  "source": "68338688f22ffb3acaa7074b5c0c0f79584604c5",
+  "width": 320,
+  "rows": [
+    {
+      "item": "n12-p002-q01-coef",
+      "block": "formula-q01-coef",
+      "before": {
+        "nextExists": true,
+        "sameRow": true,
+        "slot": {
+          "left": 175.96875,
+          "right": 226.359375,
+          "top": 768,
+          "bottom": 812
+        },
+        "next": {
+          "left": 228.59375,
+          "right": 273.1875,
+          "top": 798.3125,
+          "bottom": 830.3125
+        }
+      },
+      "wrong": {
+        "nextExists": true,
+        "sameRow": true,
+        "slot": {
+          "left": 175.96875,
+          "right": 226.359375,
+          "top": 768,
+          "bottom": 812
+        },
+        "next": {
+          "left": 228.59375,
+          "right": 273.1875,
+          "top": 798.3125,
+          "bottom": 830.3125
+        }
+      },
+      "correct": {
+        "nextExists": true,
+        "sameRow": true,
+        "slot": {
+          "left": 196.171875,
+          "right": 206.171875,
+          "top": 639.3125,
+          "bottom": 671.3125
+        },
+        "next": {
+          "left": 208.40625,
+          "right": 253,
+          "top": 639.3125,
+          "bottom": 671.3125
+        }
+      }
+    },
+    {
+      "item": "n12-p002-q01-const",
+      "block": "formula-q01-const",
+      "before": {
+        "nextExists": true,
+        "sameRow": true,
+        "slot": {
+          "left": 167.78125,
+          "right": 218.171875,
+          "top": 784.578125,
+          "bottom": 828.578125
+        },
+        "next": {
+          "left": 220.40625,
+          "right": 261.78125,
+          "top": 797.9375,
+          "bottom": 829.9375
+        }
+      },
+      "wrong": {
+        "nextExists": true,
+        "sameRow": true,
+        "slot": {
+          "left": 167.78125,
+          "right": 218.171875,
+          "top": 784.578125,
+          "bottom": 828.578125
+        },
+        "next": {
+          "left": 220.40625,
+          "right": 261.78125,
+          "top": 797.9375,
+          "bottom": 829.9375
+        }
+      },
+      "correct": {
+        "nextExists": true,
+        "sameRow": true,
+        "slot": {
+          "left": 180.484375,
+          "right": 205.484375,
+          "top": 639.9375,
+          "bottom": 671.9375
+        },
+        "next": {
+          "left": 207.71875,
+          "right": 249.09375,
+          "top": 639.9375,
+          "bottom": 671.9375
+        }
+      }
+    },
+    {
+      "item": "n12-p002-q02-coef",
+      "block": "formula-q02-coef",
+      "before": {
+        "nextExists": true,
+        "sameRow": true,
+        "slot": {
+          "left": 95,
+          "right": 145.390625,
+          "top": 955.890625,
+          "bottom": 999.890625
+        },
+        "next": {
+          "left": 146.65625,
+          "right": 227,
+          "top": 955.890625,
+          "bottom": 987.890625
+        }
+      },
+      "wrong": {
+        "nextExists": true,
+        "sameRow": true,
+        "slot": {
+          "left": 95,
+          "right": 145.390625,
+          "top": 785.890625,
+          "bottom": 829.890625
+        },
+        "next": {
+          "left": 146.65625,
+          "right": 227,
+          "top": 785.890625,
+          "bottom": 817.890625
+        }
+      },
+      "correct": {
+        "nextExists": true,
+        "sameRow": true,
+        "slot": {
+          "left": 115.1875,
+          "right": 125.1875,
+          "top": 745.890625,
+          "bottom": 777.890625
+        },
+        "next": {
+          "left": 126.453125,
+          "right": 206.796875,
+          "top": 745.890625,
+          "bottom": 777.890625
+        }
+      }
+    },
+    {
+      "item": "n12-p002-q06-left-coef",
+      "block": "formula-q06-left-coef",
+      "before": {
+        "nextExists": true,
+        "sameRow": true,
+        "slot": {
+          "left": 95,
+          "right": 145.390625,
+          "top": 786.328125,
+          "bottom": 830.328125
+        },
+        "next": {
+          "left": 146.65625,
+          "right": 227,
+          "top": 786.328125,
+          "bottom": 818.328125
+        }
+      },
+      "wrong": {
+        "nextExists": true,
+        "sameRow": true,
+        "slot": {
+          "left": 95,
+          "right": 145.390625,
+          "top": 786.328125,
+          "bottom": 830.328125
+        },
+        "next": {
+          "left": 146.65625,
+          "right": 227,
+          "top": 786.328125,
+          "bottom": 818.328125
+        }
+      },
+      "correct": {
+        "nextExists": true,
+        "sameRow": true,
+        "slot": {
+          "left": 124.484375,
+          "right": 135.484375,
+          "top": 635.328125,
+          "bottom": 667.328125
+        },
+        "next": {
+          "left": 136.75,
+          "right": 197.5,
+          "top": 635.328125,
+          "bottom": 667.328125
+        }
+      }
+    },
+    {
+      "item": "n12-p002-q06-right-coef",
+      "block": "formula-q06-right-coef",
+      "before": {
+        "nextExists": true,
+        "sameRow": true,
+        "slot": {
+          "left": 95,
+          "right": 145.390625,
+          "top": 955.78125,
+          "bottom": 999.78125
+        },
+        "next": {
+          "left": 146.65625,
+          "right": 227,
+          "top": 955.78125,
+          "bottom": 987.78125
+        }
+      },
+      "wrong": {
+        "nextExists": true,
+        "sameRow": true,
+        "slot": {
+          "left": 95,
+          "right": 145.390625,
+          "top": 786.78125,
+          "bottom": 830.78125
+        },
+        "next": {
+          "left": 146.65625,
+          "right": 227,
+          "top": 786.78125,
+          "bottom": 818.78125
+        }
+      },
+      "correct": {
+        "nextExists": true,
+        "sameRow": true,
+        "slot": {
+          "left": 115.1875,
+          "right": 125.1875,
+          "top": 766.78125,
+          "bottom": 798.78125
+        },
+        "next": {
+          "left": 126.453125,
+          "right": 206.796875,
+          "top": 766.78125,
+          "bottom": 798.78125
+        }
+      }
+    },
+    {
+      "item": "n12-p003-q10-cream-coef",
+      "block": "formula-cost-cream",
+      "before": {
+        "nextExists": true,
+        "sameRow": true,
+        "slot": {
+          "left": 172.78125,
+          "right": 223.171875,
+          "top": 939.453125,
+          "bottom": 983.453125
+        },
+        "next": {
+          "left": 225.40625,
+          "right": 236.40625,
+          "top": 951.453125,
+          "bottom": 983.453125
+        }
+      },
+      "wrong": {
+        "nextExists": true,
+        "sameRow": true,
+        "slot": {
+          "left": 172.78125,
+          "right": 223.171875,
+          "top": 786.453125,
+          "bottom": 830.453125
+        },
+        "next": {
+          "left": 225.40625,
+          "right": 236.40625,
+          "top": 798.453125,
+          "bottom": 830.453125
+        }
+      },
+      "correct": {
+        "nextExists": true,
+        "sameRow": true,
+        "slot": {
+          "left": 182.984375,
+          "right": 212.984375,
+          "top": 766.453125,
+          "bottom": 798.453125
+        },
+        "next": {
+          "left": 215.21875,
+          "right": 226.21875,
+          "top": 766.453125,
+          "bottom": 798.453125
+        }
+      }
+    },
+    {
+      "item": "n12-p003-q10-pudding-coef",
+      "block": "formula-cost-pudding",
+      "before": {
+        "nextExists": true,
+        "sameRow": true,
+        "slot": {
+          "left": 109,
+          "right": 159.390625,
+          "top": 915.28125,
+          "bottom": 959.28125
+        },
+        "next": {
+          "left": 160.65625,
+          "right": 229.25,
+          "top": 915.28125,
+          "bottom": 947.28125
+        }
+      },
+      "wrong": {
+        "nextExists": true,
+        "sameRow": true,
+        "slot": {
+          "left": 109,
+          "right": 159.390625,
+          "top": 786.28125,
+          "bottom": 830.28125
+        },
+        "next": {
+          "left": 160.65625,
+          "right": 229.25,
+          "top": 786.28125,
+          "bottom": 818.28125
+        }
+      },
+      "correct": {
+        "nextExists": true,
+        "sameRow": true,
+        "slot": {
+          "left": 119.203125,
+          "right": 149.203125,
+          "top": 699.28125,
+          "bottom": 731.28125
+        },
+        "next": {
+          "left": 150.46875,
+          "right": 219.0625,
+          "top": 699.28125,
+          "bottom": 731.28125
+        }
+      }
+    },
+    {
+      "item": "n12-p003-q11-lower-sign",
+      "block": "formula-cost-lower-bound",
+      "before": {
+        "nextExists": true,
+        "sameRow": true,
+        "slot": {
+          "left": 136.453125,
+          "right": 186.84375,
+          "top": 955.96875,
+          "bottom": 999.96875
+        },
+        "next": {
+          "left": 189.078125,
+          "right": 227.765625,
+          "top": 967.96875,
+          "bottom": 999.96875
+        }
+      },
+      "wrong": {
+        "nextExists": true,
+        "sameRow": true,
+        "slot": {
+          "left": 136.453125,
+          "right": 186.84375,
+          "top": 785.96875,
+          "bottom": 829.96875
+        },
+        "next": {
+          "left": 189.078125,
+          "right": 227.765625,
+          "top": 797.96875,
+          "bottom": 829.96875
+        }
+      },
+      "correct": {
+        "nextExists": true,
+        "sameRow": true,
+        "slot": {
+          "left": 154.15625,
+          "right": 169.15625,
+          "top": 745.96875,
+          "bottom": 777.96875
+        },
+        "next": {
+          "left": 171.390625,
+          "right": 210.078125,
+          "top": 745.96875,
+          "bottom": 777.96875
+        }
+      }
+    },
+    {
+      "item": "n12-p003-q11-upper-sign",
+      "block": "formula-cost-upper-bound",
+      "before": {
+        "nextExists": true,
+        "sameRow": true,
+        "slot": {
+          "left": 135.140625,
+          "right": 185.53125,
+          "top": 793.796875,
+          "bottom": 837.796875
+        },
+        "next": {
+          "left": 187.765625,
+          "right": 227.765625,
+          "top": 805.796875,
+          "bottom": 837.796875
+        }
+      },
+      "wrong": {
+        "nextExists": true,
+        "sameRow": true,
+        "slot": {
+          "left": 135.140625,
+          "right": 185.53125,
+          "top": 793.796875,
+          "bottom": 837.796875
+        },
+        "next": {
+          "left": 187.765625,
+          "right": 227.765625,
+          "top": 805.796875,
+          "bottom": 837.796875
+        }
+      },
+      "correct": {
+        "nextExists": true,
+        "sameRow": true,
+        "slot": {
+          "left": 152.84375,
+          "right": 167.84375,
+          "top": 683.796875,
+          "bottom": 715.796875
+        },
+        "next": {
+          "left": 170.078125,
+          "right": 210.078125,
+          "top": 683.796875,
+          "bottom": 715.796875
+        }
+      }
+    },
+    {
+      "item": "n12-p002-q12-signed-coef",
+      "block": "formula-q12-signed-coef",
+      "before": {
+        "nextExists": true,
+        "sameRow": true,
+        "slot": {
+          "left": 172.28125,
+          "right": 222.671875,
+          "top": 786.21875,
+          "bottom": 830.21875
+        },
+        "next": {
+          "left": 223.9375,
+          "right": 241.9375,
+          "top": 786.21875,
+          "bottom": 818.21875
+        }
+      },
+      "wrong": {
+        "nextExists": true,
+        "sameRow": true,
+        "slot": {
+          "left": 172.28125,
+          "right": 222.671875,
+          "top": 786.21875,
+          "bottom": 830.21875
+        },
+        "next": {
+          "left": 223.9375,
+          "right": 241.9375,
+          "top": 786.21875,
+          "bottom": 818.21875
+        }
+      },
+      "correct": {
+        "nextExists": true,
+        "sameRow": true,
+        "slot": {
+          "left": 174.984375,
+          "right": 219.984375,
+          "top": 672.21875,
+          "bottom": 704.21875
+        },
+        "next": {
+          "left": 221.25,
+          "right": 239.25,
+          "top": 672.21875,
+          "bottom": 704.21875
+        }
+      }
+    },
+    {
+      "item": "n12-p002-q13-lower",
+      "block": "formula-q13-lower",
+      "before": {
+        "nextExists": true,
+        "sameRow": true,
+        "slot": {
+          "left": 73.1875,
+          "right": 123.578125,
+          "top": 956,
+          "bottom": 1000
+        },
+        "next": {
+          "left": 124.84375,
+          "right": 248.8125,
+          "top": 956,
+          "bottom": 988
+        }
+      },
+      "wrong": {
+        "nextExists": true,
+        "sameRow": true,
+        "slot": {
+          "left": 73.1875,
+          "right": 123.578125,
+          "top": 752,
+          "bottom": 796
+        },
+        "next": {
+          "left": 124.84375,
+          "right": 248.8125,
+          "top": 752,
+          "bottom": 784
+        }
+      },
+      "correct": {
+        "nextExists": true,
+        "sameRow": true,
+        "slot": {
+          "left": 83.375,
+          "right": 113.375,
+          "top": 704,
+          "bottom": 736
+        },
+        "next": {
+          "left": 114.640625,
+          "right": 238.609375,
+          "top": 704,
+          "bottom": 736
+        }
+      }
+    }
+  ]
+}

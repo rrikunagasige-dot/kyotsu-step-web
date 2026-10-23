@@ -1,0 +1,766 @@
+{
+  "source": "68338688f22ffb3acaa7074b5c0c0f79584604c5",
+  "width": 390,
+  "unit": "math-numbers-expressions-n03",
+  "revision": 2,
+  "rows": [
+    {
+      "id": "n03-01",
+      "geometry": {
+        "left": 27,
+        "right": 363,
+        "width": 334,
+        "scrollWidth": 334,
+        "children": [
+          {
+            "left": 100.0625,
+            "right": 118
+          },
+          {
+            "left": 119.25,
+            "right": 162.1875
+          },
+          {
+            "left": 163.4375,
+            "right": 193.703125
+          },
+          {
+            "left": 194.953125,
+            "right": 289.921875
+          },
+          {
+            "left": 80.78125,
+            "right": 242.5625
+          },
+          {
+            "left": 243.8125,
+            "right": 309.203125
+          }
+        ]
+      },
+      "choices": [
+        "4a^{15}",
+        "4a^8"
+      ]
+    },
+    {
+      "id": "n03-02",
+      "geometry": {
+        "left": 27,
+        "right": 363,
+        "width": 334,
+        "scrollWidth": 334,
+        "children": [
+          {
+            "left": 138.609375,
+            "right": 199.75
+          },
+          {
+            "left": 201,
+            "right": 251.390625
+          }
+        ]
+      },
+      "choices": [
+        "a^{m+n}",
+        "a^{m-n}"
+      ]
+    },
+    {
+      "id": "n03-03",
+      "geometry": {
+        "left": 27,
+        "right": 363,
+        "width": 334,
+        "scrollWidth": 334,
+        "children": [
+          {
+            "left": 136.609375,
+            "right": 201.75
+          },
+          {
+            "left": 203,
+            "right": 253.390625
+          }
+        ]
+      },
+      "choices": [
+        "a^{mn}",
+        "na^m",
+        "a^{m+n}"
+      ]
+    },
+    {
+      "id": "n03-04",
+      "geometry": {
+        "left": 27,
+        "right": 363,
+        "width": 334,
+        "scrollWidth": 334,
+        "children": [
+          {
+            "left": 68.296875,
+            "right": 109.234375
+          },
+          {
+            "left": 110.484375,
+            "right": 255.0625
+          },
+          {
+            "left": 256.3125,
+            "right": 321.703125
+          }
+        ]
+      },
+      "choices": [
+        "ab^n",
+        "a^nb^n",
+        "a^{2n}b^n"
+      ]
+    },
+    {
+      "id": "n03-05",
+      "geometry": {
+        "left": 41.1875,
+        "right": 350.8125,
+        "width": 310,
+        "scrollWidth": 310,
+        "children": [
+          {
+            "left": 120.890625,
+            "right": 204.4375
+          },
+          {
+            "left": 205.703125,
+            "right": 271.09375
+          }
+        ]
+      },
+      "choices": [
+        "(-2)^3(x^3)^3(y^2)^3",
+        "(-2)^3(x^3)^3y^2",
+        "(-2)(x^3)^3(y^2)^3"
+      ]
+    },
+    {
+      "id": "n03-06",
+      "geometry": {
+        "left": 41.1875,
+        "right": 350.8125,
+        "width": 310,
+        "scrollWidth": 310,
+        "children": [
+          {
+            "left": 162.671875,
+            "right": 177.671875
+          },
+          {
+            "left": 178.9375,
+            "right": 229.328125
+          }
+        ]
+      },
+      "choices": [
+        "-6x^9y^6",
+        "8x^9y^6",
+        "-8x^9y^6"
+      ]
+    },
+    {
+      "id": "n03-07",
+      "geometry": {
+        "left": 41.1875,
+        "right": 350.8125,
+        "width": 310,
+        "scrollWidth": 310,
+        "children": [
+          {
+            "left": 97.625,
+            "right": 227.71875
+          },
+          {
+            "left": 228.984375,
+            "right": 294.375
+          }
+        ]
+      },
+      "choices": [
+        "x^2x^2+x^2(3x)+x^2\\cdot4",
+        "x^2x^2+(-3x)+4",
+        "x^2x^2+x^2(-3x)+x^2\\cdot4"
+      ]
+    },
+    {
+      "id": "n03-08",
+      "geometry": {
+        "left": 41.1875,
+        "right": 350.8125,
+        "width": 310,
+        "scrollWidth": 310,
+        "children": [
+          {
+            "left": 162.671875,
+            "right": 177.671875
+          },
+          {
+            "left": 178.9375,
+            "right": 229.328125
+          }
+        ]
+      },
+      "choices": [
+        "x^4-3x^2+4x^2",
+        "x^4-3x^3+4x^2",
+        "x^4+3x^3+4x^2"
+      ]
+    },
+    {
+      "id": "n03-09",
+      "geometry": {
+        "left": 27,
+        "right": 363,
+        "width": 334,
+        "scrollWidth": 334,
+        "children": [
+          {
+            "left": 93.265625,
+            "right": 230.078125
+          },
+          {
+            "left": 231.328125,
+            "right": 296.71875
+          }
+        ]
+      },
+      "choices": [
+        "2x(3x+4)+1(3x+4)",
+        "2x(3x+4)+1(3x)",
+        "2x(3x+4)-1(3x+4)"
+      ]
+    },
+    {
+      "id": "n03-r3-q10-p1",
+      "geometry": {
+        "left": 41.1875,
+        "right": 350.8125,
+        "width": 310,
+        "scrollWidth": 310,
+        "children": [
+          {
+            "left": 132.1875,
+            "right": 208.15625
+          },
+          {
+            "left": 209.421875,
+            "right": 259.8125
+          }
+        ]
+      },
+      "choices": [
+        "6x^3",
+        "5x^2",
+        "6x^2"
+      ]
+    },
+    {
+      "id": "n03-r3-q10-p2",
+      "geometry": {
+        "left": 41.1875,
+        "right": 350.8125,
+        "width": 310,
+        "scrollWidth": 310,
+        "children": [
+          {
+            "left": 137.6875,
+            "right": 202.65625
+          },
+          {
+            "left": 203.921875,
+            "right": 254.3125
+          }
+        ]
+      },
+      "choices": [
+        "8x",
+        "8x^2",
+        "6x"
+      ]
+    },
+    {
+      "id": "n03-r3-q10-p3",
+      "geometry": {
+        "left": 41.1875,
+        "right": 350.8125,
+        "width": 310,
+        "scrollWidth": 310,
+        "children": [
+          {
+            "left": 137.6875,
+            "right": 202.65625
+          },
+          {
+            "left": 203.921875,
+            "right": 254.3125
+          }
+        ]
+      },
+      "choices": [
+        "4x",
+        "3x",
+        "3"
+      ]
+    },
+    {
+      "id": "n03-r3-q10-p4",
+      "geometry": {
+        "left": 41.1875,
+        "right": 350.8125,
+        "width": 310,
+        "scrollWidth": 310,
+        "children": [
+          {
+            "left": 143.1875,
+            "right": 197.15625
+          },
+          {
+            "left": 198.421875,
+            "right": 248.8125
+          }
+        ]
+      },
+      "choices": [
+        "1",
+        "4x",
+        "4"
+      ]
+    },
+    {
+      "id": "n03-10",
+      "geometry": {
+        "left": 41.1875,
+        "right": 350.8125,
+        "width": 310,
+        "scrollWidth": 310,
+        "children": [
+          {
+            "left": 162.671875,
+            "right": 177.671875
+          },
+          {
+            "left": 178.9375,
+            "right": 229.328125
+          }
+        ]
+      },
+      "choices": [
+        "6x^2+8x-3x+4",
+        "6x^2+8x+4",
+        "6x^2+11x+4",
+        "6x^2+8x+3x+4"
+      ]
+    },
+    {
+      "id": "n03-11",
+      "geometry": {
+        "left": 27,
+        "right": 363,
+        "width": 334,
+        "scrollWidth": 334,
+        "children": [
+          {
+            "left": 161.671875,
+            "right": 176.671875
+          },
+          {
+            "left": 177.921875,
+            "right": 228.3125
+          }
+        ]
+      },
+      "choices": [
+        "6x^2+11x+4",
+        "6x^2+11x",
+        "6x^2+5x+4",
+        "6x^2+12x+4"
+      ]
+    },
+    {
+      "id": "n03-12",
+      "geometry": {
+        "left": 41.1875,
+        "right": 350.8125,
+        "width": 310,
+        "scrollWidth": 310,
+        "children": [
+          {
+            "left": 72.796875,
+            "right": 252.53125
+          },
+          {
+            "left": 253.796875,
+            "right": 319.1875
+          }
+        ]
+      },
+      "choices": [
+        "3x(2x^2-x+5)-(2x^2-x)",
+        "3x(2x^2-x+5)+(2x^2-x+5)",
+        "3x(2x^2-x+5)-(2x^2-x+5)",
+        "3x(2x^2-x+5)-1"
+      ]
+    },
+    {
+      "id": "n03-13",
+      "geometry": {
+        "left": 41.1875,
+        "right": 350.8125,
+        "width": 310,
+        "scrollWidth": 310,
+        "children": [
+          {
+            "left": 162.671875,
+            "right": 177.671875
+          },
+          {
+            "left": 178.9375,
+            "right": 229.328125
+          }
+        ]
+      },
+      "choices": [
+        "6x^3-5x^2+14x-5",
+        "6x^3-5x^2+16x+5",
+        "6x^3-5x^2+16x-5",
+        "6x^3-3x^2+14x-5"
+      ]
+    }
+  ],
+  "completeGeometry": [
+    {
+      "id": "textbook-formula-formula-n03-01",
+      "left": 27,
+      "right": 363,
+      "width": 334,
+      "scrollWidth": 334,
+      "children": [
+        {
+          "left": 100.0625,
+          "right": 118
+        },
+        {
+          "left": 119.25,
+          "right": 162.1875
+        },
+        {
+          "left": 163.4375,
+          "right": 193.703125
+        },
+        {
+          "left": 194.953125,
+          "right": 289.921875
+        },
+        {
+          "left": 92.015625,
+          "right": 253.796875
+        },
+        {
+          "left": 255.046875,
+          "right": 297.984375
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-n03-02",
+      "left": 27,
+      "right": 363,
+      "width": 334,
+      "scrollWidth": 334,
+      "children": [
+        {
+          "left": 143.828125,
+          "right": 204.96875
+        },
+        {
+          "left": 206.21875,
+          "right": 246.15625
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-n03-03",
+      "left": 27,
+      "right": 363,
+      "width": 334,
+      "scrollWidth": 334,
+      "children": [
+        {
+          "left": 146.828125,
+          "right": 211.96875
+        },
+        {
+          "left": 213.21875,
+          "right": 243.15625
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-n03-04",
+      "left": 27,
+      "right": 363,
+      "width": 334,
+      "scrollWidth": 334,
+      "children": [
+        {
+          "left": 75.546875,
+          "right": 116.484375
+        },
+        {
+          "left": 117.734375,
+          "right": 262.3125
+        },
+        {
+          "left": 263.5625,
+          "right": 314.4375
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-n03-05",
+      "left": 41.1875,
+      "right": 350.8125,
+      "width": 310,
+      "scrollWidth": 310,
+      "children": [
+        {
+          "left": 82.359375,
+          "right": 165.90625
+        },
+        {
+          "left": 167.171875,
+          "right": 309.625
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-n03-06",
+      "left": 41.1875,
+      "right": 350.8125,
+      "width": 310,
+      "scrollWidth": 310,
+      "children": [
+        {
+          "left": 157.0625,
+          "right": 172.0625
+        },
+        {
+          "left": 173.328125,
+          "right": 234.921875
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-n03-07",
+      "left": 41.1875,
+      "right": 350.8125,
+      "width": 310,
+      "scrollWidth": 310,
+      "children": [
+        {
+          "left": 61.25,
+          "right": 191.34375
+        },
+        {
+          "left": 192.609375,
+          "right": 245.515625
+        },
+        {
+          "left": 246.78125,
+          "right": 330.734375
+        },
+        {
+          "left": 167.21875,
+          "right": 224.765625
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-n03-08",
+      "left": 41.1875,
+      "right": 350.8125,
+      "width": 310,
+      "scrollWidth": 310,
+      "children": [
+        {
+          "left": 125.84375,
+          "right": 140.84375
+        },
+        {
+          "left": 142.109375,
+          "right": 266.15625
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-n03-09",
+      "left": 27,
+      "right": 363,
+      "width": 334,
+      "scrollWidth": 334,
+      "children": [
+        {
+          "left": 73.765625,
+          "right": 210.578125
+        },
+        {
+          "left": 211.828125,
+          "right": 316.234375
+        },
+        {
+          "left": 148.296875,
+          "right": 241.703125
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-r3-q10-p1",
+      "left": 41.1875,
+      "right": 350.8125,
+      "width": 310,
+      "scrollWidth": 310,
+      "children": [
+        {
+          "left": 142.90625,
+          "right": 218.875
+        },
+        {
+          "left": 220.140625,
+          "right": 249.09375
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-r3-q10-p2",
+      "left": 41.1875,
+      "right": 350.8125,
+      "width": 310,
+      "scrollWidth": 310,
+      "children": [
+        {
+          "left": 152.375,
+          "right": 217.34375
+        },
+        {
+          "left": 218.609375,
+          "right": 239.609375
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-r3-q10-p3",
+      "left": 41.1875,
+      "right": 350.8125,
+      "width": 310,
+      "scrollWidth": 310,
+      "children": [
+        {
+          "left": 152.375,
+          "right": 217.34375
+        },
+        {
+          "left": 218.609375,
+          "right": 239.609375
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-r3-q10-p4",
+      "left": 41.1875,
+      "right": 350.8125,
+      "width": 310,
+      "scrollWidth": 310,
+      "children": [
+        {
+          "left": 163.375,
+          "right": 217.34375
+        },
+        {
+          "left": 218.609375,
+          "right": 228.609375
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-n03-10",
+      "left": 41.1875,
+      "right": 350.8125,
+      "width": 310,
+      "scrollWidth": 310,
+      "children": [
+        {
+          "left": 112,
+          "right": 127
+        },
+        {
+          "left": 128.265625,
+          "right": 280
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-n03-11",
+      "left": 27,
+      "right": 363,
+      "width": 334,
+      "scrollWidth": 334,
+      "children": [
+        {
+          "left": 128.5,
+          "right": 143.5
+        },
+        {
+          "left": 144.75,
+          "right": 261.5
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-n03-12",
+      "left": 41.1875,
+      "right": 350.8125,
+      "width": 310,
+      "scrollWidth": 310,
+      "children": [
+        {
+          "left": 106.125,
+          "right": 285.859375
+        },
+        {
+          "left": 58.71875,
+          "right": 205.859375
+        },
+        {
+          "left": 207.125,
+          "right": 333.265625
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-n03-13",
+      "left": 41.1875,
+      "right": 350.8125,
+      "width": 310,
+      "scrollWidth": 310,
+      "children": [
+        {
+          "left": 103.015625,
+          "right": 118.015625
+        },
+        {
+          "left": 119.28125,
+          "right": 288.96875
+        }
+      ]
+    }
+  ],
+  "complete": true
+}

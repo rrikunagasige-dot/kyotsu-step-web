@@ -1,0 +1,546 @@
+{
+  "source": "68338688f22ffb3acaa7074b5c0c0f79584604c5",
+  "width": 390,
+  "unit": "math-numbers-expressions-n06",
+  "revision": 3,
+  "rows": [
+    {
+      "id": "n06-01",
+      "geometry": {
+        "left": 27,
+        "right": 363,
+        "width": 334,
+        "scrollWidth": 334,
+        "children": [
+          {
+            "left": 169.796875,
+            "right": 220.1875
+          }
+        ]
+      },
+      "choices": [
+        "X=x+2y,\\quad(X+1)(X-2)-4",
+        "X=x+2y,\\quad(X+1)(X+2)-4"
+      ]
+    },
+    {
+      "id": "n06-02",
+      "geometry": {
+        "left": 27,
+        "right": 363,
+        "width": 334,
+        "scrollWidth": 334,
+        "children": [
+          {
+            "left": 169.796875,
+            "right": 220.1875
+          }
+        ]
+      },
+      "choices": [
+        "X^2-2X-6",
+        "X^2-X-6"
+      ]
+    },
+    {
+      "id": "n06-03",
+      "geometry": {
+        "left": 27,
+        "right": 363,
+        "width": 334,
+        "scrollWidth": 334,
+        "children": [
+          {
+            "left": 169.796875,
+            "right": 220.1875
+          }
+        ]
+      },
+      "choices": [
+        "(X-3)(X-2)",
+        "(X-3)(X+2)",
+        "(X+3)(X-2)"
+      ]
+    },
+    {
+      "id": "n06-04",
+      "geometry": {
+        "left": 27,
+        "right": 363,
+        "width": 334,
+        "scrollWidth": 334,
+        "children": [
+          {
+            "left": 169.796875,
+            "right": 220.1875
+          }
+        ]
+      },
+      "choices": [
+        "(x+2y-3)(x+2y+2)",
+        "(x+2y+3)(x+2y-2)",
+        "(x+2y-3)(X+2)"
+      ]
+    },
+    {
+      "id": "n06-05",
+      "geometry": {
+        "left": 27,
+        "right": 363,
+        "width": 334,
+        "scrollWidth": 334,
+        "children": [
+          {
+            "left": 169.796875,
+            "right": 220.1875
+          }
+        ]
+      },
+      "choices": [
+        "T=x,\\quad T^2-5T+4",
+        "T=x^2,\\quad T^2-5T+4",
+        "T=x^2,\\quad T^2+5T+4"
+      ]
+    },
+    {
+      "id": "n06-06",
+      "geometry": {
+        "left": 27,
+        "right": 363,
+        "width": 334,
+        "scrollWidth": 334,
+        "children": [
+          {
+            "left": 169.796875,
+            "right": 220.1875
+          }
+        ]
+      },
+      "choices": [
+        "(x^2-1)(x^2-4)",
+        "(x^2-2)(x^2-2)",
+        "(x^2-1)(x^2+4)"
+      ]
+    },
+    {
+      "id": "n06-07",
+      "geometry": {
+        "left": 27,
+        "right": 363,
+        "width": 334,
+        "scrollWidth": 334,
+        "children": [
+          {
+            "left": 169.796875,
+            "right": 220.1875
+          }
+        ]
+      },
+      "choices": [
+        "(x-1)^2(x-2)^2",
+        "(x-1)(x+1)(x-2)(x+2)",
+        "(x-1)(x+1)(x^2-4)"
+      ]
+    },
+    {
+      "id": "n06-08",
+      "geometry": null,
+      "choices": [
+        "xについて3次、yについて1次。yで整理",
+        "xについて2次、yについて2次。どちらでも同じ",
+        "xについて1次、yについて3次。yで整理"
+      ]
+    },
+    {
+      "id": "n06-09",
+      "geometry": {
+        "left": 27,
+        "right": 363,
+        "width": 334,
+        "scrollWidth": 334,
+        "children": [
+          {
+            "left": 169.796875,
+            "right": 220.1875
+          }
+        ]
+      },
+      "choices": [
+        "y(x^2+x-2)+(x^3-x^2-2x)",
+        "y(x^2+x-2)+(x^3+x^2-2x)",
+        "y(x^2+x-2)+(x^3+x^2)"
+      ]
+    },
+    {
+      "id": "n06-10",
+      "geometry": {
+        "left": 27,
+        "right": 363,
+        "width": 334,
+        "scrollWidth": 334,
+        "children": [
+          {
+            "left": 169.796875,
+            "right": 220.1875
+          }
+        ]
+      },
+      "choices": [
+        "x^2(x+1-2x)",
+        "x(x^2+x-2)",
+        "x(x^2-x-2)"
+      ]
+    },
+    {
+      "id": "n06-11",
+      "geometry": {
+        "left": 27,
+        "right": 363,
+        "width": 334,
+        "scrollWidth": 334,
+        "children": [
+          {
+            "left": 169.796875,
+            "right": 220.1875
+          }
+        ]
+      },
+      "choices": [
+        "(x+y)(x^2+x-2)",
+        "(x+y)(x^2-x-2)",
+        "xy(x^2+x-2)"
+      ]
+    },
+    {
+      "id": "n06-12",
+      "geometry": {
+        "left": 27,
+        "right": 363,
+        "width": 334,
+        "scrollWidth": 334,
+        "children": [
+          {
+            "left": 169.796875,
+            "right": 220.1875
+          }
+        ]
+      },
+      "choices": [
+        "(x+y)(x+2)(x-1)",
+        "(x+y)(x-2)(x+1)",
+        "(x+y)(x+2)(x+1)",
+        "(x-y)(x+2)(x-1)"
+      ]
+    },
+    {
+      "id": "n06-13",
+      "geometry": {
+        "left": 27,
+        "right": 363,
+        "width": 334,
+        "scrollWidth": 334,
+        "children": [
+          {
+            "left": 169.796875,
+            "right": 220.1875
+          }
+        ]
+      },
+      "choices": [
+        "x^2+(3y-1)x+(2y^2+3y-2)",
+        "x^2+(3y-1)+(2y^2-3y-2)x",
+        "x^2+(3y+1)x+(2y^2-3y-2)",
+        "x^2+(3y-1)x+(2y^2-3y-2)"
+      ]
+    },
+    {
+      "id": "n06-14",
+      "geometry": {
+        "left": 27,
+        "right": 363,
+        "width": 334,
+        "scrollWidth": 334,
+        "children": [
+          {
+            "left": 169.796875,
+            "right": 220.1875
+          }
+        ]
+      },
+      "choices": [
+        "(2y+1)(y-2)",
+        "(2y+1)(y+2)",
+        "(2y-1)(y+2)",
+        "(y-1)(2y+2)"
+      ]
+    },
+    {
+      "id": "n06-15",
+      "geometry": {
+        "left": 27,
+        "right": 363,
+        "width": 334,
+        "scrollWidth": 334,
+        "children": [
+          {
+            "left": 169.796875,
+            "right": 220.1875
+          }
+        ]
+      },
+      "choices": [
+        "3y+3,\\quad\\text{一致する（使える）}",
+        "3y-1,\\quad\\text{一致しない（使えない）}",
+        "3y-1,\\quad\\text{一致する（使える）}",
+        "2y^2-3y-2,\\quad\\text{一致しない（使えない）}"
+      ]
+    },
+    {
+      "id": "n06-16",
+      "geometry": {
+        "left": 27,
+        "right": 363,
+        "width": 334,
+        "scrollWidth": 334,
+        "children": [
+          {
+            "left": 169.796875,
+            "right": 220.1875
+          }
+        ]
+      },
+      "choices": [
+        "(x+2y+1)(x+y-2)",
+        "(x+2y-1)(x+y+2)",
+        "(x+2y-2)(x+y+1)",
+        "(x+2y+1)(x+y+2)"
+      ]
+    }
+  ],
+  "completeGeometry": [
+    {
+      "id": "textbook-formula-n06-formula-01",
+      "left": 27,
+      "right": 363,
+      "width": 334,
+      "scrollWidth": 334,
+      "children": [
+        {
+          "left": 61.40625,
+          "right": 78.890625
+        },
+        {
+          "left": 80.140625,
+          "right": 111.40625
+        },
+        {
+          "left": 112.65625,
+          "right": 152.328125
+        },
+        {
+          "left": 153.578125,
+          "right": 302.328125
+        },
+        {
+          "left": 303.578125,
+          "right": 328.578125
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-n06-formula-02",
+      "left": 27,
+      "right": 363,
+      "width": 334,
+      "scrollWidth": 334,
+      "children": [
+        {
+          "left": 145.140625,
+          "right": 244.859375
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-n06-formula-03",
+      "left": 27,
+      "right": 363,
+      "width": 334,
+      "scrollWidth": 334,
+      "children": [
+        {
+          "left": 130.109375,
+          "right": 259.890625
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-n06-formula-04",
+      "left": 27,
+      "right": 363,
+      "width": 334,
+      "scrollWidth": 334,
+      "children": [
+        {
+          "left": 93.515625,
+          "right": 296.484375
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-n06-formula-05",
+      "left": 27,
+      "right": 363,
+      "width": 334,
+      "scrollWidth": 334,
+      "children": [
+        {
+          "left": 101.390625,
+          "right": 288.609375
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-n06-formula-06",
+      "left": 27,
+      "right": 363,
+      "width": 334,
+      "scrollWidth": 334,
+      "children": [
+        {
+          "left": 128.65625,
+          "right": 261.34375
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-n06-formula-07",
+      "left": 27,
+      "right": 363,
+      "width": 334,
+      "scrollWidth": 334,
+      "children": [
+        {
+          "left": 78.1875,
+          "right": 311.8125
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-n06-formula-09",
+      "left": 27,
+      "right": 363,
+      "width": 334,
+      "scrollWidth": 334,
+      "children": [
+        {
+          "left": 71.8125,
+          "right": 182.234375
+        },
+        {
+          "left": 183.484375,
+          "right": 318.171875
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-n06-formula-10",
+      "left": 27,
+      "right": 363,
+      "width": 334,
+      "scrollWidth": 334,
+      "children": [
+        {
+          "left": 139.125,
+          "right": 250.875
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-n06-formula-11",
+      "left": 27,
+      "right": 363,
+      "width": 334,
+      "scrollWidth": 334,
+      "children": [
+        {
+          "left": 115.578125,
+          "right": 274.40625
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-n06-formula-12",
+      "left": 27,
+      "right": 363,
+      "width": 334,
+      "scrollWidth": 334,
+      "children": [
+        {
+          "left": 107.546875,
+          "right": 282.4375
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-n06-formula-13",
+      "left": 27,
+      "right": 363,
+      "width": 334,
+      "scrollWidth": 334,
+      "children": [
+        {
+          "left": 71.1875,
+          "right": 90.125
+        },
+        {
+          "left": 91.375,
+          "right": 184.453125
+        },
+        {
+          "left": 185.703125,
+          "right": 318.796875
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-n06-formula-14",
+      "left": 27,
+      "right": 363,
+      "width": 334,
+      "scrollWidth": 334,
+      "children": [
+        {
+          "left": 132.921875,
+          "right": 257.078125
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-n06-formula-15",
+      "left": 27,
+      "right": 363,
+      "width": 334,
+      "scrollWidth": 334,
+      "children": [
+        {
+          "left": 110,
+          "right": 280
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-n06-formula-16",
+      "left": 27,
+      "right": 363,
+      "width": 334,
+      "scrollWidth": 334,
+      "children": [
+        {
+          "left": 98.515625,
+          "right": 291.484375
+        }
+      ]
+    }
+  ],
+  "complete": true
+}

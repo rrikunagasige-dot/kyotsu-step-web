@@ -1,0 +1,14 @@
+{
+  "source": "68338688f22ffb3acaa7074b5c0c0f79584604c5",
+  "gradedOperations": 870,
+  "completedFormulaWidthCases": 768,
+  "widths": [
+    320,
+    390,
+    1440
+  ],
+  "wrongOverflow": 0,
+  "completedOverflow": 0,
+  "underbraceLabelButtonOverlap": "native assertion PASS",
+  "result": "PASS"
+}

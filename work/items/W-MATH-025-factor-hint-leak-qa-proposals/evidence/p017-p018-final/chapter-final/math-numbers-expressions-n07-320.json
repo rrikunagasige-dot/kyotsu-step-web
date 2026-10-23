@@ -1,0 +1,332 @@
+{
+  "source": "68338688f22ffb3acaa7074b5c0c0f79584604c5",
+  "width": 320,
+  "unit": "math-numbers-expressions-n07",
+  "revision": 3,
+  "rows": [
+    {
+      "id": "n07-01",
+      "geometry": null,
+      "choices": [
+        "0.7（小数第1位で終了）",
+        "0.75（小数第2位で終了）"
+      ]
+    },
+    {
+      "id": "n07-02",
+      "geometry": null,
+      "choices": [
+        "（0・余り10）→（9・余り1）",
+        "（0・余り1）→（9・余り10）"
+      ]
+    },
+    {
+      "id": "n07-03",
+      "geometry": {
+        "left": 27,
+        "right": 293,
+        "width": 264,
+        "scrollWidth": 264,
+        "children": [
+          {
+            "left": 134.796875,
+            "right": 185.1875
+          }
+        ]
+      },
+      "choices": [
+        "2.\\overline{09}",
+        "2.09",
+        "2.\\overline9"
+      ]
+    },
+    {
+      "id": "n07-04",
+      "geometry": null,
+      "choices": [
+        "どちらも有限小数、どちらも有理数",
+        "どちらも循環小数、後者は無理数",
+        "有限小数／循環小数、どちらも有理数"
+      ]
+    },
+    {
+      "id": "n07-05",
+      "geometry": null,
+      "choices": [
+        "余りはいつまでも違う数へ増え続ける",
+        "商の数字は必ず0か1だけになる",
+        "0以外の余りは有限種類なので同じ余りが再び現れる"
+      ]
+    },
+    {
+      "id": "n07-06",
+      "geometry": {
+        "left": 27,
+        "right": 293,
+        "width": 264,
+        "scrollWidth": 264,
+        "children": [
+          {
+            "left": 134.796875,
+            "right": 185.1875
+          }
+        ]
+      },
+      "choices": [
+        "100\\text{倍},\\quad100x=88.\\overline8",
+        "10\\text{倍},\\quad10x=8.\\overline8",
+        "10\\text{倍},\\quad10x=0.\\overline8"
+      ]
+    },
+    {
+      "id": "n07-07",
+      "geometry": {
+        "left": 27,
+        "right": 293,
+        "width": 264,
+        "scrollWidth": 264,
+        "children": [
+          {
+            "left": 134.796875,
+            "right": 185.1875
+          }
+        ]
+      },
+      "choices": [
+        "9x=8",
+        "9x=88",
+        "9x=0.8"
+      ]
+    },
+    {
+      "id": "n07-08",
+      "geometry": {
+        "left": 27,
+        "right": 293,
+        "width": 264,
+        "scrollWidth": 264,
+        "children": [
+          {
+            "left": 134.796875,
+            "right": 185.1875
+          }
+        ]
+      },
+      "choices": [
+        "x=\\frac{88}{9}",
+        "x=\\frac89",
+        "x=\\frac8{10}"
+      ]
+    },
+    {
+      "id": "n07-09",
+      "geometry": {
+        "left": 27,
+        "right": 293,
+        "width": 264,
+        "scrollWidth": 264,
+        "children": [
+          {
+            "left": 134.796875,
+            "right": 185.1875
+          }
+        ]
+      },
+      "choices": [
+        "\\text{100倍},\\;100x=69.\\overline{69},\\;99x=69",
+        "\\text{1000倍},\\;1000x=696.\\overline{96},\\;999x=696",
+        "\\text{10倍},\\;10x=6.\\overline{96},\\;9x=6"
+      ]
+    },
+    {
+      "id": "n07-10",
+      "geometry": {
+        "left": 27,
+        "right": 293,
+        "width": 264,
+        "scrollWidth": 264,
+        "children": [
+          {
+            "left": 134.796875,
+            "right": 185.1875
+          }
+        ]
+      },
+      "choices": [
+        "\\frac{23}{99}",
+        "\\frac{33}{23}",
+        "\\frac{69}{100}",
+        "\\frac{23}{33}"
+      ]
+    },
+    {
+      "id": "n07-11",
+      "geometry": {
+        "left": 27,
+        "right": 293,
+        "width": 264,
+        "scrollWidth": 264,
+        "children": [
+          {
+            "left": 134.796875,
+            "right": 185.1875
+          }
+        ]
+      },
+      "choices": [
+        "2^k\\cdot5^k",
+        "10k",
+        "2^k+5^k",
+        "2^{2k}\\cdot5^k"
+      ]
+    },
+    {
+      "id": "n07-12",
+      "geometry": {
+        "left": 27,
+        "right": 293,
+        "width": 264,
+        "scrollWidth": 264,
+        "children": [
+          {
+            "left": 134.796875,
+            "right": 185.1875
+          }
+        ]
+      },
+      "choices": [
+        "2,4,5,8,10,12,16,20",
+        "2,4,5,8,10,16,20",
+        "2,4,5,8,10,16",
+        "2,4,5,8,10,15,20"
+      ]
+    },
+    {
+      "id": "n07-13",
+      "geometry": null,
+      "choices": [
+        "1と2/3、後者だけ自然数でない",
+        "−1と2/3、両方自然数",
+        "−1と2/3、どちらも自然数でない",
+        "−1と3/2、どちらも自然数でない"
+      ]
+    },
+    {
+      "id": "n07-14",
+      "geometry": null,
+      "choices": [
+        "無理数（小数が無限に続く）",
+        "無理数（整数ではない）",
+        "有理数（小数第2位で終わる）",
+        "有理数（23/33と表せる）"
+      ]
+    }
+  ],
+  "completeGeometry": [
+    {
+      "id": "textbook-formula-n07-formula-03",
+      "left": 27,
+      "right": 293,
+      "width": 264,
+      "scrollWidth": 264,
+      "children": [
+        {
+          "left": 142.5,
+          "right": 177.5
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-n07-formula-06",
+      "left": 27,
+      "right": 293,
+      "width": 264,
+      "scrollWidth": 264,
+      "children": [
+        {
+          "left": 86.171875,
+          "right": 233.828125
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-n07-formula-07",
+      "left": 27,
+      "right": 293,
+      "width": 264,
+      "scrollWidth": 264,
+      "children": [
+        {
+          "left": 131.734375,
+          "right": 188.265625
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-n07-formula-08",
+      "left": 27,
+      "right": 293,
+      "width": 264,
+      "scrollWidth": 264,
+      "children": [
+        {
+          "left": 135.96875,
+          "right": 184.03125
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-n07-formula-09",
+      "left": 27,
+      "right": 293,
+      "width": 264,
+      "scrollWidth": 264,
+      "children": [
+        {
+          "left": 104.234375,
+          "right": 215.765625
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-n07-formula-10",
+      "left": 27,
+      "right": 293,
+      "width": 264,
+      "scrollWidth": 264,
+      "children": [
+        {
+          "left": 150.734375,
+          "right": 169.265625
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-n07-formula-11",
+      "left": 27,
+      "right": 293,
+      "width": 264,
+      "scrollWidth": 264,
+      "children": [
+        {
+          "left": 134.953125,
+          "right": 185.046875
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-n07-formula-12",
+      "left": 27,
+      "right": 293,
+      "width": 264,
+      "scrollWidth": 264,
+      "children": [
+        {
+          "left": 85.53125,
+          "right": 234.46875
+        }
+      ]
+    }
+  ],
+  "complete": true
+}

@@ -1,0 +1,415 @@
+{
+  "source": "68338688f22ffb3acaa7074b5c0c0f79584604c5",
+  "width": 390,
+  "unit": "math-numbers-expressions-n13",
+  "revision": 4,
+  "rows": [
+    {
+      "id": "n13-01",
+      "geometry": {
+        "left": 27,
+        "right": 363,
+        "width": 334,
+        "scrollWidth": 334,
+        "children": [
+          {
+            "left": 169.796875,
+            "right": 220.1875
+          }
+        ]
+      },
+      "choices": [
+        "x=5\\;\\text{または}\\;x=-5",
+        "x=-5"
+      ]
+    },
+    {
+      "id": "n13-02",
+      "geometry": {
+        "left": 27,
+        "right": 363,
+        "width": 334,
+        "scrollWidth": 334,
+        "children": [
+          {
+            "left": 169.796875,
+            "right": 220.1875
+          }
+        ]
+      },
+      "choices": [
+        "X=4",
+        "X=4\\;\\text{または}\\;X=-4"
+      ]
+    },
+    {
+      "id": "n13-03",
+      "geometry": {
+        "left": 27,
+        "right": 363,
+        "width": 334,
+        "scrollWidth": 334,
+        "children": [
+          {
+            "left": 169.796875,
+            "right": 220.1875
+          }
+        ]
+      },
+      "choices": [
+        "x-1=4\\;\\text{かつ}\\;x-1=-4",
+        "x=4\\;\\text{または}\\;x=-4",
+        "x-1=4\\;\\text{または}\\;x-1=-4"
+      ]
+    },
+    {
+      "id": "n13-04",
+      "geometry": {
+        "left": 27,
+        "right": 363,
+        "width": 334,
+        "scrollWidth": 334,
+        "children": [
+          {
+            "left": 169.796875,
+            "right": 220.1875
+          }
+        ]
+      },
+      "choices": [
+        "x=5\\;\\text{または}\\;x=-3",
+        "x=3\\;\\text{または}\\;x=-5",
+        "x=5"
+      ]
+    },
+    {
+      "id": "n13-wm023-q05-right",
+      "geometry": {
+        "left": 41.1875,
+        "right": 350.8125,
+        "width": 310,
+        "scrollWidth": 310,
+        "children": [
+          {
+            "left": 91.75,
+            "right": 248.578125
+          },
+          {
+            "left": 249.84375,
+            "right": 300.234375
+          }
+        ]
+      },
+      "choices": [
+        "-1-x",
+        "1-x",
+        "x-1"
+      ]
+    },
+    {
+      "id": "n13-05",
+      "geometry": {
+        "left": 41.1875,
+        "right": 350.8125,
+        "width": 310,
+        "scrollWidth": 310,
+        "children": [
+          {
+            "left": 91.75,
+            "right": 248.578125
+          },
+          {
+            "left": 249.84375,
+            "right": 300.234375
+          }
+        ]
+      },
+      "choices": [
+        "-1-x",
+        "x-1",
+        "1-x"
+      ]
+    },
+    {
+      "id": "n13-06",
+      "geometry": {
+        "left": 27,
+        "right": 363,
+        "width": 334,
+        "scrollWidth": 334,
+        "children": [
+          {
+            "left": 169.796875,
+            "right": 220.1875
+          }
+        ]
+      },
+      "choices": [
+        "x+2=3\\;\\text{または}\\;x+2=-3",
+        "x+2=3\\;\\text{かつ}\\;x+2=-3",
+        "x-2=3\\;\\text{または}\\;x-2=-3"
+      ]
+    },
+    {
+      "id": "n13-07",
+      "geometry": {
+        "left": 27,
+        "right": 363,
+        "width": 334,
+        "scrollWidth": 334,
+        "children": [
+          {
+            "left": 169.796875,
+            "right": 220.1875
+          }
+        ]
+      },
+      "choices": [
+        "x=1\\;\\text{または}\\;x=-5",
+        "x=-1\\;\\text{または}\\;x=-5",
+        "x=1",
+        "x=5\\;\\text{または}\\;x=-1"
+      ]
+    },
+    {
+      "id": "n13-wm023-q08-branches",
+      "geometry": {
+        "left": 41.1875,
+        "right": 350.8125,
+        "width": 310,
+        "scrollWidth": 310,
+        "children": [
+          {
+            "left": 170.796875,
+            "right": 221.1875
+          }
+        ]
+      },
+      "choices": [
+        "3x=6\\;\\text{または}\\;3x=-6",
+        "3x=6\\;\\text{かつ}\\;3x=-6",
+        "3x=6"
+      ]
+    },
+    {
+      "id": "n13-wm023-q08-positive-root",
+      "geometry": {
+        "left": 41.1875,
+        "right": 350.8125,
+        "width": 310,
+        "scrollWidth": 310,
+        "children": [
+          {
+            "left": 111.234375,
+            "right": 229.109375
+          },
+          {
+            "left": 230.375,
+            "right": 280.765625
+          }
+        ]
+      },
+      "choices": [
+        "2",
+        "6",
+        "-2"
+      ]
+    },
+    {
+      "id": "n13-08",
+      "geometry": {
+        "left": 41.1875,
+        "right": 350.8125,
+        "width": 310,
+        "scrollWidth": 310,
+        "children": [
+          {
+            "left": 103.734375,
+            "right": 236.609375
+          },
+          {
+            "left": 237.875,
+            "right": 288.265625
+          }
+        ]
+      },
+      "choices": [
+        "-2",
+        "2",
+        "-\\frac12"
+      ]
+    },
+    {
+      "id": "n13-09",
+      "geometry": null,
+      "choices": [
+        "両方ともすべての実数",
+        "0なら解なし、負ならx=−2",
+        "0ならx=0、負なら実数解なし",
+        "0ならx=±0、負ならx=±2"
+      ]
+    }
+  ],
+  "completeGeometry": [
+    {
+      "id": "textbook-formula-n13-formula-01",
+      "left": 27,
+      "right": 363,
+      "width": 334,
+      "scrollWidth": 334,
+      "children": [
+        {
+          "left": 107.203125,
+          "right": 282.796875
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-n13-formula-02",
+      "left": 27,
+      "right": 363,
+      "width": 334,
+      "scrollWidth": 334,
+      "children": [
+        {
+          "left": 100.71875,
+          "right": 289.28125
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-n13-formula-03",
+      "left": 27,
+      "right": 363,
+      "width": 334,
+      "scrollWidth": 334,
+      "children": [
+        {
+          "left": 73.796875,
+          "right": 316.203125
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-n13-formula-04",
+      "left": 27,
+      "right": 363,
+      "width": 334,
+      "scrollWidth": 334,
+      "children": [
+        {
+          "left": 107.203125,
+          "right": 282.796875
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-n13-wm023-q05-right",
+      "left": 41.1875,
+      "right": 350.8125,
+      "width": 310,
+      "scrollWidth": 310,
+      "children": [
+        {
+          "left": 94.65625,
+          "right": 251.484375
+        },
+        {
+          "left": 252.75,
+          "right": 297.34375
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-n13-formula-05",
+      "left": 41.1875,
+      "right": 350.8125,
+      "width": 310,
+      "scrollWidth": 310,
+      "children": [
+        {
+          "left": 94.65625,
+          "right": 251.484375
+        },
+        {
+          "left": 252.75,
+          "right": 297.34375
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-n13-formula-06",
+      "left": 27,
+      "right": 363,
+      "width": 334,
+      "scrollWidth": 334,
+      "children": [
+        {
+          "left": 73.796875,
+          "right": 316.203125
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-n13-formula-07",
+      "left": 27,
+      "right": 363,
+      "width": 334,
+      "scrollWidth": 334,
+      "children": [
+        {
+          "left": 107.203125,
+          "right": 282.796875
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-n13-formula-08",
+      "left": 41.1875,
+      "right": 350.8125,
+      "width": 310,
+      "scrollWidth": 310,
+      "children": [
+        {
+          "left": 97.875,
+          "right": 294.125
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-n13-wm023-q08-positive-root",
+      "left": 41.1875,
+      "right": 350.8125,
+      "width": 310,
+      "scrollWidth": 310,
+      "children": [
+        {
+          "left": 131.421875,
+          "right": 249.296875
+        },
+        {
+          "left": 250.5625,
+          "right": 260.5625
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-n13-wm023-q08-negative-root",
+      "left": 41.1875,
+      "right": 350.8125,
+      "width": 310,
+      "scrollWidth": 310,
+      "children": [
+        {
+          "left": 116.421875,
+          "right": 249.296875
+        },
+        {
+          "left": 250.5625,
+          "right": 275.5625
+        }
+      ]
+    }
+  ],
+  "complete": true
+}

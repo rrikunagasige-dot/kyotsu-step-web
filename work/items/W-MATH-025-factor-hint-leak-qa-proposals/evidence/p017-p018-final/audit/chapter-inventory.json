@@ -1,0 +1,86 @@
+[
+  {
+    "unit": "N01",
+    "originals": 10,
+    "graded": 18,
+    "formulas": 11
+  },
+  {
+    "unit": "N02",
+    "originals": 12,
+    "graded": 12,
+    "formulas": 13
+  },
+  {
+    "unit": "N03",
+    "originals": 13,
+    "graded": 17,
+    "formulas": 17
+  },
+  {
+    "unit": "N04",
+    "originals": 22,
+    "graded": 26,
+    "formulas": 25
+  },
+  {
+    "unit": "N05",
+    "originals": 20,
+    "graded": 20,
+    "formulas": 22
+  },
+  {
+    "unit": "N06",
+    "originals": 16,
+    "graded": 16,
+    "formulas": 15
+  },
+  {
+    "unit": "N07",
+    "originals": 14,
+    "graded": 14,
+    "formulas": 8
+  },
+  {
+    "unit": "N08",
+    "originals": 12,
+    "graded": 12,
+    "formulas": 10
+  },
+  {
+    "unit": "N09",
+    "originals": 14,
+    "graded": 18,
+    "formulas": 19
+  },
+  {
+    "unit": "N10",
+    "originals": 21,
+    "graded": 21,
+    "formulas": 20
+  },
+  {
+    "unit": "N11",
+    "originals": 14,
+    "graded": 31,
+    "formulas": 27
+  },
+  {
+    "unit": "N12",
+    "originals": 15,
+    "graded": 35,
+    "formulas": 32
+  },
+  {
+    "unit": "N13",
+    "originals": 9,
+    "graded": 12,
+    "formulas": 11
+  },
+  {
+    "unit": "N14",
+    "originals": 16,
+    "graded": 38,
+    "formulas": 26
+  }
+]

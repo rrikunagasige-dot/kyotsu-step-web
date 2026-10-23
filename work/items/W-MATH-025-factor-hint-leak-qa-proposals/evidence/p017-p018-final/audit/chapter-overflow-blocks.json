@@ -1,0 +1,388 @@
+[
+  {
+    "unit": "math-numbers-expressions-n01",
+    "block": "formula-n01-01",
+    "parts": [
+      {
+        "type": "math",
+        "latex": "-x^2y^2="
+      },
+      {
+        "type": "choice",
+        "itemId": "n01-01"
+      },
+      {
+        "type": "math",
+        "latex": "\\times x\\times x\\times y\\times y"
+      }
+    ]
+  },
+  {
+    "unit": "math-numbers-expressions-n01",
+    "block": "formula-n01-02a",
+    "parts": [
+      {
+        "type": "math",
+        "latex": "-2x\\;\\longrightarrow\\; (\\text{係数,次数})="
+      },
+      {
+        "type": "choice",
+        "itemId": "n01-02a"
+      }
+    ]
+  },
+  {
+    "unit": "math-numbers-expressions-n01",
+    "block": "formula-n01-02b",
+    "parts": [
+      {
+        "type": "math",
+        "latex": "x^2\\;\\longrightarrow\\; (\\text{係数,次数})="
+      },
+      {
+        "type": "choice",
+        "itemId": "n01-02b"
+      }
+    ]
+  },
+  {
+    "unit": "math-numbers-expressions-n01",
+    "block": "formula-n01-02c",
+    "parts": [
+      {
+        "type": "math",
+        "latex": "-x^2y^2\\;\\longrightarrow\\; (\\text{係数,次数})="
+      },
+      {
+        "type": "choice",
+        "itemId": "n01-02c"
+      }
+    ]
+  },
+  {
+    "unit": "math-numbers-expressions-n01",
+    "block": "formula-r3-q07-x2coef",
+    "parts": [
+      {
+        "type": "math",
+        "latex": "=(3-5)x^2+(-5+2)x+(6-3)\\quad\\Longrightarrow\\quad("
+      },
+      {
+        "type": "choice",
+        "itemId": "n01-r3-q07-x2coef"
+      },
+      {
+        "type": "math",
+        "latex": ")x^2+(-5+2)x+(6-3)"
+      }
+    ]
+  },
+  {
+    "unit": "math-numbers-expressions-n01",
+    "block": "formula-r3-q07-xcoef",
+    "parts": [
+      {
+        "type": "math",
+        "latex": "=(-2)x^2+(-5+2)x+(6-3)\\quad\\Longrightarrow\\quad(-2)x^2+("
+      },
+      {
+        "type": "choice",
+        "itemId": "n01-r3-q07-xcoef"
+      },
+      {
+        "type": "math",
+        "latex": ")x+(6-3)"
+      }
+    ]
+  },
+  {
+    "unit": "math-numbers-expressions-n01",
+    "block": "formula-r3-q07-const",
+    "parts": [
+      {
+        "type": "math",
+        "latex": "=(-2)x^2+(-3)x+(6-3)\\quad\\Longrightarrow\\quad(-2)x^2+(-3)x+("
+      },
+      {
+        "type": "choice",
+        "itemId": "n01-r3-q07-const"
+      },
+      {
+        "type": "math",
+        "latex": ")"
+      }
+    ]
+  },
+  {
+    "unit": "math-numbers-expressions-n01",
+    "block": "formula-n01-07",
+    "parts": [
+      {
+        "type": "math",
+        "latex": "=(3-5)x^2+(-5+2)x+(6-3)="
+      },
+      {
+        "type": "choice",
+        "itemId": "n01-07"
+      }
+    ]
+  },
+  {
+    "unit": "math-numbers-expressions-n02",
+    "block": "formula-n02-02",
+    "parts": [
+      {
+        "type": "math",
+        "latex": "2bx+x^3+5c-ax^2+bx="
+      },
+      {
+        "type": "choice",
+        "itemId": "n02-02"
+      }
+    ]
+  },
+  {
+    "unit": "math-numbers-expressions-n02",
+    "block": "formula-n02-03",
+    "parts": [
+      {
+        "type": "math",
+        "latex": "\\bigl(\\text{一次係数},\\ \\text{定数部分}\\bigr)="
+      },
+      {
+        "type": "choice",
+        "itemId": "n02-03"
+      }
+    ]
+  },
+  {
+    "unit": "math-numbers-expressions-n02",
+    "block": "formula-n02-04",
+    "parts": [
+      {
+        "type": "math",
+        "latex": "x^2+2xy+y^2-3x-3y+2="
+      },
+      {
+        "type": "choice",
+        "itemId": "n02-04"
+      }
+    ]
+  },
+  {
+    "unit": "math-numbers-expressions-n02",
+    "block": "formula-n02-07",
+    "parts": [
+      {
+        "type": "math",
+        "latex": "-B=-(-x^3+2x^2+2)="
+      },
+      {
+        "type": "choice",
+        "itemId": "n02-07"
+      }
+    ]
+  },
+  {
+    "unit": "math-numbers-expressions-n02",
+    "block": "formula-n02-08",
+    "parts": [
+      {
+        "type": "math",
+        "latex": "A-B=(2x^3-3x^2+x-1)+(x^3-2x^2-2)="
+      },
+      {
+        "type": "choice",
+        "itemId": "n02-08"
+      }
+    ]
+  },
+  {
+    "unit": "math-numbers-expressions-n03",
+    "block": "formula-n03-01",
+    "parts": [
+      {
+        "type": "math",
+        "latex": "a^3\\times4a^5=4\\times\\underbrace{a\\times a\\times a}_{3\\text{個}}\\times\\underbrace{a\\times a\\times a\\times a\\times a}_{5\\text{個}}="
+      },
+      {
+        "type": "choice",
+        "itemId": "n03-01"
+      }
+    ]
+  },
+  {
+    "unit": "math-numbers-expressions-n03",
+    "block": "formula-n03-04",
+    "parts": [
+      {
+        "type": "math",
+        "latex": "(ab)^n=(ab)(ab)\\cdots(ab)="
+      },
+      {
+        "type": "choice",
+        "itemId": "n03-04"
+      }
+    ]
+  },
+  {
+    "unit": "math-numbers-expressions-n03",
+    "block": "formula-n03-12",
+    "parts": [
+      {
+        "type": "math",
+        "latex": "(3x-1)(2x^2-x+5)="
+      },
+      {
+        "type": "choice",
+        "itemId": "n03-12"
+      }
+    ]
+  },
+  {
+    "unit": "math-numbers-expressions-n09",
+    "block": "formula-n09-04",
+    "parts": [
+      {
+        "type": "math",
+        "latex": "\\bigl(a\\ge0\\text{のとき},\\ a<0\\text{のとき}\\bigr)="
+      },
+      {
+        "type": "choice",
+        "itemId": "n09-04"
+      }
+    ]
+  },
+  {
+    "unit": "math-numbers-expressions-n09",
+    "block": "formula-n09-07",
+    "parts": [
+      {
+        "type": "math",
+        "latex": "\\sqrt{(2-\\sqrt5)^2}=|2-\\sqrt5|="
+      },
+      {
+        "type": "choice",
+        "itemId": "n09-07"
+      }
+    ]
+  },
+  {
+    "unit": "math-numbers-expressions-n10",
+    "block": "formula-n10-01",
+    "parts": [
+      {
+        "type": "math",
+        "latex": "(t\\sqrt5)^2=5t^2=125\\quad\\Longrightarrow\\quad"
+      },
+      {
+        "type": "choice",
+        "itemId": "n10-01"
+      }
+    ]
+  },
+  {
+    "unit": "math-numbers-expressions-n10",
+    "block": "formula-n10-03",
+    "parts": [
+      {
+        "type": "math",
+        "latex": "(\\sqrt a\\sqrt b)^2=(\\sqrt a)^2(\\sqrt b)^2="
+      },
+      {
+        "type": "choice",
+        "itemId": "n10-03"
+      }
+    ]
+  },
+  {
+    "unit": "math-numbers-expressions-n10",
+    "block": "formula-n10-06",
+    "parts": [
+      {
+        "type": "math",
+        "latex": "\\frac{\\sqrt a}{\\sqrt b}="
+      },
+      {
+        "type": "choice",
+        "itemId": "n10-06"
+      },
+      {
+        "type": "math",
+        "latex": "\\qquad(a>0,\\ b>0)"
+      }
+    ]
+  },
+  {
+    "unit": "math-numbers-expressions-n10",
+    "block": "formula-n10-13",
+    "parts": [
+      {
+        "type": "math",
+        "latex": "(\\sqrt7+\\sqrt2)(\\sqrt7-\\sqrt2)="
+      },
+      {
+        "type": "choice",
+        "itemId": "n10-13"
+      }
+    ]
+  },
+  {
+    "unit": "math-numbers-expressions-n10",
+    "block": "formula-n10-18",
+    "parts": [
+      {
+        "type": "math",
+        "latex": "(\\sqrt3+\\sqrt2)(\\sqrt3-\\sqrt2)="
+      },
+      {
+        "type": "choice",
+        "itemId": "n10-18"
+      }
+    ]
+  },
+  {
+    "unit": "math-numbers-expressions-n11",
+    "block": "n11-formula-08",
+    "parts": [
+      {
+        "type": "math",
+        "latex": "-2x+3-"
+      },
+      {
+        "type": "choice",
+        "itemId": "n11-p007-q08-subtract-left"
+      },
+      {
+        "type": "math",
+        "latex": "\\le5-"
+      },
+      {
+        "type": "choice",
+        "itemId": "n11-p007-q08-subtract-right"
+      }
+    ]
+  },
+  {
+    "unit": "math-numbers-expressions-n11",
+    "block": "n11-formula-13",
+    "parts": [
+      {
+        "type": "choice",
+        "itemId": "n11-p008-q13-mul-left"
+      },
+      {
+        "type": "math",
+        "latex": "\\cdot\\frac{x-2}{3}\\le"
+      },
+      {
+        "type": "choice",
+        "itemId": "n11-p008-q13-mul-right"
+      },
+      {
+        "type": "math",
+        "latex": "(2x+1)"
+      }
+    ]
+  }
+]

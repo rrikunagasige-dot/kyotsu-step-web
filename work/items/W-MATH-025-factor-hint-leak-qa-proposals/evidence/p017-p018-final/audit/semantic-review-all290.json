@@ -1,0 +1,3836 @@
+{
+  "source": "68338688f22ffb3acaa7074b5c0c0f79584604c5",
+  "runtimeExportSHA256": "82a53c591e10e7a1ad7ada8d277abc030b73821160391e63328e5cb71bfc19c4",
+  "reviewedItems": 290,
+  "visibleChoices": 926,
+  "units": 14,
+  "rows": [
+    {
+      "unit": "01",
+      "item": "n01-01",
+      "answer": "-1",
+      "choices": [
+        "-2",
+        "-1"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "指定変数以外を係数へ含める。単項式の次数は指数の和、整理後の次数は残る最大次数。x³項の相殺と定数項を原式で照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "01",
+      "item": "n01-02a",
+      "answer": "(-2,1)",
+      "choices": [
+        "(-2,2)",
+        "(-2,1)"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "指定変数以外を係数へ含める。単項式の次数は指数の和、整理後の次数は残る最大次数。x³項の相殺と定数項を原式で照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "01",
+      "item": "n01-02b",
+      "answer": "(1,2)",
+      "choices": [
+        "(1,2)",
+        "(2,1)"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "指定変数以外を係数へ含める。単項式の次数は指数の和、整理後の次数は残る最大次数。x³項の相殺と定数項を原式で照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "01",
+      "item": "n01-02c",
+      "answer": "(-1,4)",
+      "choices": [
+        "(-1,4)",
+        "(1,4)",
+        "(-1,2)"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "指定変数以外を係数へ含める。単項式の次数は指数の和、整理後の次数は残る最大次数。x³項の相殺と定数項を原式で照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "01",
+      "item": "n01-03",
+      "answer": "5y",
+      "choices": [
+        "5x",
+        "5y"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "指定変数以外を係数へ含める。単項式の次数は指数の和、整理後の次数は残る最大次数。x³項の相殺と定数項を原式で照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "01",
+      "item": "n01-04",
+      "answer": "(5x^3,1)",
+      "choices": [
+        "(5y,3)",
+        "(5x^3,1)",
+        "(5x^3,3)"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "指定変数以外を係数へ含める。単項式の次数は指数の和、整理後の次数は残る最大次数。x³項の相殺と定数項を原式で照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "01",
+      "item": "n01-05",
+      "answer": "(ay,ax)",
+      "choices": [
+        "(ay,ax)",
+        "(a,a)",
+        "(ax,ay)"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "指定変数以外を係数へ含める。単項式の次数は指数の和、整理後の次数は残る最大次数。x³項の相殺と定数項を原式で照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "01",
+      "item": "n01-06a",
+      "answer": "3x^2-5x^2",
+      "choices": [
+        "3x^2-5x^2",
+        "3x^2+5x^2",
+        "3x^2-5x"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "指定変数以外を係数へ含める。単項式の次数は指数の和、整理後の次数は残る最大次数。x³項の相殺と定数項を原式で照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "01",
+      "item": "n01-06b",
+      "answer": "(-5x+2x)\\quad (6-3)",
+      "choices": [
+        "(5x+2x)\\quad (6-3)",
+        "(-5x-2x)\\quad (6+3)",
+        "(-5x+2x)\\quad (6-3)"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "指定変数以外を係数へ含める。単項式の次数は指数の和、整理後の次数は残る最大次数。x³項の相殺と定数項を原式で照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "01",
+      "item": "n01-r3-q07-x2coef",
+      "answer": "-2",
+      "choices": [
+        "2",
+        "-8",
+        "-2"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "指定変数以外を係数へ含める。単項式の次数は指数の和、整理後の次数は残る最大次数。x³項の相殺と定数項を原式で照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "01",
+      "item": "n01-r3-q07-xcoef",
+      "answer": "-3",
+      "choices": [
+        "3",
+        "-7",
+        "-3"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "指定変数以外を係数へ含める。単項式の次数は指数の和、整理後の次数は残る最大次数。x³項の相殺と定数項を原式で照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "01",
+      "item": "n01-r3-q07-const",
+      "answer": "3",
+      "choices": [
+        "9",
+        "3",
+        "-3"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "指定変数以外を係数へ含める。単項式の次数は指数の和、整理後の次数は残る最大次数。x³項の相殺と定数項を原式で照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "01",
+      "item": "n01-07",
+      "answer": "-2x^2-3x+3",
+      "choices": [
+        "-2x^2-3x+3",
+        "-2x-3x^2+3",
+        "-2x^2+3x+3"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "指定変数以外を係数へ含める。単項式の次数は指数の和、整理後の次数は残る最大次数。x³項の相殺と定数項を原式で照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "01",
+      "item": "n01-08",
+      "answer": "(2,3)",
+      "choices": [
+        "(3,2)",
+        "(2,-3)",
+        "(2,3)"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "指定変数以外を係数へ含める。単項式の次数は指数の和、整理後の次数は残る最大次数。x³項の相殺と定数項を原式で照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "01",
+      "item": "n01-09a",
+      "answer": "(1-1)x^3-2x^2+(1+3)x-1",
+      "choices": [
+        "(1+1)x^3-2x^2+(1+3)x-1",
+        "(1-1)x^3-2x^2+(1-3)x-1",
+        "(1-1)x^3-2x^2+(1+3)x-1",
+        "(1-1)x^3+2x^2+(1+3)x-1"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "指定変数以外を係数へ含める。単項式の次数は指数の和、整理後の次数は残る最大次数。x³項の相殺と定数項を原式で照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "01",
+      "item": "n01-09b",
+      "answer": "-2x^2+4x-1",
+      "choices": [
+        "2x^3-2x^2+4x-1",
+        "-2x^2+4x-1",
+        "-2x^2+4x+1",
+        "-2x^2+2x-1"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "指定変数以外を係数へ含める。単項式の次数は指数の和、整理後の次数は残る最大次数。x³項の相殺と定数項を原式で照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "01",
+      "item": "n01-10a",
+      "answer": "2次式",
+      "choices": [
+        "3次式",
+        "1次式",
+        "2次式",
+        "0次式"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "指定変数以外を係数へ含める。単項式の次数は指数の和、整理後の次数は残る最大次数。x³項の相殺と定数項を原式で照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "01",
+      "item": "n01-10b",
+      "answer": "3次の項が整理によって消えるから",
+      "choices": [
+        "負の係数があるから",
+        "式にはxが3回出てくるから",
+        "定数項があるから",
+        "3次の項が整理によって消えるから"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "指定変数以外を係数へ含める。単項式の次数は指数の和、整理後の次数は残る最大次数。x³項の相殺と定数項を原式で照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "02",
+      "item": "n02-01",
+      "answer": "3bx",
+      "choices": [
+        "3bx",
+        "2bx^2"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "元のA,Bを独立に展開し、和・差・係数倍を照合。降べき順と定数部分のまとまりは値の同値性だけで採点しない。欠項0xの意味を保持。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "02",
+      "item": "n02-02",
+      "answer": "x^3-ax^2+3bx+5c",
+      "choices": [
+        "5c+3bx-ax^2+x^3",
+        "x^3-ax^2+3bx+5c"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "元のA,Bを独立に展開し、和・差・係数倍を照合。降べき順と定数部分のまとまりは値の同値性だけで採点しない。欠項0xの意味を保持。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "02",
+      "item": "n02-03",
+      "answer": "(2y-3,\\ y^2-3y+2)",
+      "choices": [
+        "(2y-3,\\ 2)",
+        "(2y-3,\\ y^2-3y+2)",
+        "(-3,\\ y^2-3y+2)"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "元のA,Bを独立に展開し、和・差・係数倍を照合。降べき順と定数部分のまとまりは値の同値性だけで採点しない。欠項0xの意味を保持。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "02",
+      "item": "n02-04",
+      "answer": "x^2+(2y-3)x+(y^2-3y+2)",
+      "choices": [
+        "x^2+(2y-3)x+(y^2-3y+2)",
+        "x^2+(2y+3)x+(y^2-3y+2)",
+        "x^2+y^2+(2y-3)x-3y+2"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "元のA,Bを独立に展開し、和・差・係数倍を照合。降べき順と定数部分のまとまりは値の同値性だけで採点しない。欠項0xの意味を保持。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "02",
+      "item": "n02-05",
+      "answer": "0x",
+      "choices": [
+        "-x",
+        "0x",
+        "x"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "元のA,Bを独立に展開し、和・差・係数倍を照合。降べき順と定数部分のまとまりは値の同値性だけで採点しない。欠項0xの意味を保持。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "02",
+      "item": "n02-06",
+      "answer": "x^3-x^2+x+1",
+      "choices": [
+        "x^3-x^2+x+1",
+        "x^3-5x^2+x+1",
+        "x^3-x^2+1"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "元のA,Bを独立に展開し、和・差・係数倍を照合。降べき順と定数部分のまとまりは値の同値性だけで採点しない。欠項0xの意味を保持。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "02",
+      "item": "n02-07",
+      "answer": "x^3-2x^2-2",
+      "choices": [
+        "x^3-2x^2+2",
+        "x^3-2x^2-2",
+        "-x^3-2x^2-2"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "元のA,Bを独立に展開し、和・差・係数倍を照合。降べき順と定数部分のまとまりは値の同値性だけで採点しない。欠項0xの意味を保持。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "02",
+      "item": "n02-08",
+      "answer": "3x^3-5x^2+x-3",
+      "choices": [
+        "x^3-x^2+x+1",
+        "3x^3-x^2+x-3",
+        "3x^3-5x^2+x+1",
+        "3x^3-5x^2+x-3"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "元のA,Bを独立に展開し、和・差・係数倍を照合。降べき順と定数部分のまとまりは値の同値性だけで採点しない。欠項0xの意味を保持。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "02",
+      "item": "n02-09",
+      "answer": "(4x^3-6x^2+2x-2,\\ 3x^3-6x^2-6)",
+      "choices": [
+        "(4x^3-6x^2+2x-2,\\ 3x^3+6x^2-6)",
+        "(4x^3-6x^2+2x-2,\\ 3x^3-6x^2+6)",
+        "(4x^3-6x^2+2x-2,\\ 3x^3-6x^2-6)"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "元のA,Bを独立に展開し、和・差・係数倍を照合。降べき順と定数部分のまとまりは値の同値性だけで採点しない。欠項0xの意味を保持。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "02",
+      "item": "n02-10",
+      "answer": "7x^3-12x^2+2x-8",
+      "choices": [
+        "7x^3-12x^2+2x-8",
+        "x^3-12x^2+2x-8",
+        "7x^3-12x^2+2x+4",
+        "7x^3+0x^2+2x-8"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "元のA,Bを独立に展開し、和・差・係数倍を照合。降べき順と定数部分のまとまりは値の同値性だけで採点しない。欠項0xの意味を保持。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "02",
+      "item": "n02-11",
+      "answer": "2A-3B",
+      "choices": [
+        "2A-5B",
+        "2A-4B",
+        "2A-3B",
+        "4A-5B"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "元のA,Bを独立に展開し、和・差・係数倍を照合。降べき順と定数部分のまとまりは値の同値性だけで採点しない。欠項0xの意味を保持。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "02",
+      "item": "n02-12",
+      "answer": "7x^3-12x^2+2x-8",
+      "choices": [
+        "7x^3-12x^2+2x-8",
+        "3x^3-5x^2+x-3",
+        "x^3-x^2+x+1",
+        "7x^3-12x^2+2x-6"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "元のA,Bを独立に展開し、和・差・係数倍を照合。降べき順と定数部分のまとまりは値の同値性だけで採点しない。欠項0xの意味を保持。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "03",
+      "item": "n03-01",
+      "answer": "4a^8",
+      "choices": [
+        "4a^{15}",
+        "4a^8"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "正整数指数の積・累乗・積の累乗は因子の個数から導く。係数は指数に足さない。全4積を残す段階と同類項整理後を区別。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "03",
+      "item": "n03-02",
+      "answer": "a^{m+n}",
+      "choices": [
+        "a^{m+n}",
+        "a^{m-n}"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "正整数指数の積・累乗・積の累乗は因子の個数から導く。係数は指数に足さない。全4積を残す段階と同類項整理後を区別。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "03",
+      "item": "n03-03",
+      "answer": "a^{mn}",
+      "choices": [
+        "a^{mn}",
+        "na^m",
+        "a^{m+n}"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "正整数指数の積・累乗・積の累乗は因子の個数から導く。係数は指数に足さない。全4積を残す段階と同類項整理後を区別。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "03",
+      "item": "n03-04",
+      "answer": "a^nb^n",
+      "choices": [
+        "ab^n",
+        "a^nb^n",
+        "a^{2n}b^n"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "正整数指数の積・累乗・積の累乗は因子の個数から導く。係数は指数に足さない。全4積を残す段階と同類項整理後を区別。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "03",
+      "item": "n03-05",
+      "answer": "(-2)^3(x^3)^3(y^2)^3",
+      "choices": [
+        "(-2)^3(x^3)^3(y^2)^3",
+        "(-2)^3(x^3)^3y^2",
+        "(-2)(x^3)^3(y^2)^3"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "正整数指数の積・累乗・積の累乗は因子の個数から導く。係数は指数に足さない。全4積を残す段階と同類項整理後を区別。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "03",
+      "item": "n03-06",
+      "answer": "-8x^9y^6",
+      "choices": [
+        "-6x^9y^6",
+        "8x^9y^6",
+        "-8x^9y^6"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "正整数指数の積・累乗・積の累乗は因子の個数から導く。係数は指数に足さない。全4積を残す段階と同類項整理後を区別。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "03",
+      "item": "n03-07",
+      "answer": "x^2x^2+x^2(-3x)+x^2\\cdot4",
+      "choices": [
+        "x^2x^2+x^2(3x)+x^2\\cdot4",
+        "x^2x^2+(-3x)+4",
+        "x^2x^2+x^2(-3x)+x^2\\cdot4"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "正整数指数の積・累乗・積の累乗は因子の個数から導く。係数は指数に足さない。全4積を残す段階と同類項整理後を区別。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "03",
+      "item": "n03-08",
+      "answer": "x^4-3x^3+4x^2",
+      "choices": [
+        "x^4-3x^2+4x^2",
+        "x^4-3x^3+4x^2",
+        "x^4+3x^3+4x^2"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "正整数指数の積・累乗・積の累乗は因子の個数から導く。係数は指数に足さない。全4積を残す段階と同類項整理後を区別。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "03",
+      "item": "n03-09",
+      "answer": "2x(3x+4)+1(3x+4)",
+      "choices": [
+        "2x(3x+4)+1(3x+4)",
+        "2x(3x+4)+1(3x)",
+        "2x(3x+4)-1(3x+4)"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "正整数指数の積・累乗・積の累乗は因子の個数から導く。係数は指数に足さない。全4積を残す段階と同類項整理後を区別。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "03",
+      "item": "n03-r3-q10-p1",
+      "answer": "6x^2",
+      "choices": [
+        "6x^3",
+        "5x^2",
+        "6x^2"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "正整数指数の積・累乗・積の累乗は因子の個数から導く。係数は指数に足さない。全4積を残す段階と同類項整理後を区別。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "03",
+      "item": "n03-r3-q10-p2",
+      "answer": "8x",
+      "choices": [
+        "8x",
+        "8x^2",
+        "6x"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "正整数指数の積・累乗・積の累乗は因子の個数から導く。係数は指数に足さない。全4積を残す段階と同類項整理後を区別。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "03",
+      "item": "n03-r3-q10-p3",
+      "answer": "3x",
+      "choices": [
+        "4x",
+        "3x",
+        "3"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "正整数指数の積・累乗・積の累乗は因子の個数から導く。係数は指数に足さない。全4積を残す段階と同類項整理後を区別。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "03",
+      "item": "n03-r3-q10-p4",
+      "answer": "4",
+      "choices": [
+        "1",
+        "4x",
+        "4"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "正整数指数の積・累乗・積の累乗は因子の個数から導く。係数は指数に足さない。全4積を残す段階と同類項整理後を区別。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "03",
+      "item": "n03-10",
+      "answer": "6x^2+8x+3x+4",
+      "choices": [
+        "6x^2+8x-3x+4",
+        "6x^2+8x+4",
+        "6x^2+11x+4",
+        "6x^2+8x+3x+4"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "正整数指数の積・累乗・積の累乗は因子の個数から導く。係数は指数に足さない。全4積を残す段階と同類項整理後を区別。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "03",
+      "item": "n03-11",
+      "answer": "6x^2+11x+4",
+      "choices": [
+        "6x^2+11x+4",
+        "6x^2+11x",
+        "6x^2+5x+4",
+        "6x^2+12x+4"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "正整数指数の積・累乗・積の累乗は因子の個数から導く。係数は指数に足さない。全4積を残す段階と同類項整理後を区別。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "03",
+      "item": "n03-12",
+      "answer": "3x(2x^2-x+5)-(2x^2-x+5)",
+      "choices": [
+        "3x(2x^2-x+5)-(2x^2-x)",
+        "3x(2x^2-x+5)+(2x^2-x+5)",
+        "3x(2x^2-x+5)-(2x^2-x+5)",
+        "3x(2x^2-x+5)-1"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "正整数指数の積・累乗・積の累乗は因子の個数から導く。係数は指数に足さない。全4積を残す段階と同類項整理後を区別。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "03",
+      "item": "n03-13",
+      "answer": "6x^3-5x^2+16x-5",
+      "choices": [
+        "6x^3-5x^2+14x-5",
+        "6x^3-5x^2+16x+5",
+        "6x^3-5x^2+16x-5",
+        "6x^3-3x^2+14x-5"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "正整数指数の積・累乗・積の累乗は因子の個数から導く。係数は指数に足さない。全4積を残す段階と同類項整理後を区別。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "04",
+      "item": "n04-q01-p1",
+      "answer": "25x^2",
+      "choices": [
+        "20xy",
+        "25x^2"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "二項・三項の平方、平方差、一般二項積の係数を照合。未整理の四項と整理後の三項を区別。四因子の組分けは一次係数が共通となる条件も必要。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "04",
+      "item": "n04-q01-p2",
+      "answer": "20xy",
+      "choices": [
+        "20xy",
+        "20y"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "二項・三項の平方、平方差、一般二項積の係数を照合。未整理の四項と整理後の三項を区別。四因子の組分けは一次係数が共通となる条件も必要。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "04",
+      "item": "n04-q01-p3",
+      "answer": "20xy",
+      "choices": [
+        "20x",
+        "20y^2",
+        "20xy"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "二項・三項の平方、平方差、一般二項積の係数を照合。未整理の四項と整理後の三項を区別。四因子の組分けは一次係数が共通となる条件も必要。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "04",
+      "item": "n04-q01-p4",
+      "answer": "16y^2",
+      "choices": [
+        "20xy",
+        "8y^2",
+        "16y^2"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "二項・三項の平方、平方差、一般二項積の係数を照合。未整理の四項と整理後の三項を区別。四因子の組分けは一次係数が共通となる条件も必要。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "04",
+      "item": "n04-01",
+      "answer": "25x^2+20xy+20xy+16y^2",
+      "choices": [
+        "25x^2+20xy+20xy+16y^2",
+        "25x^2+16y^2",
+        "25x^2+20xy+16y^2",
+        "25x^2+40xy+16y^2"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "二項・三項の平方、平方差、一般二項積の係数を照合。未整理の四項と整理後の三項を区別。四因子の組分けは一次係数が共通となる条件も必要。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "04",
+      "item": "n04-02",
+      "answer": "40xy",
+      "choices": [
+        "80xy",
+        "40xy"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "二項・三項の平方、平方差、一般二項積の係数を照合。未整理の四項と整理後の三項を区別。四因子の組分けは一次係数が共通となる条件も必要。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "04",
+      "item": "n04-03",
+      "answer": "25x^2+40xy+16y^2",
+      "choices": [
+        "25x^2+40xy+16y^2",
+        "25x^2-40xy+16y^2"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "二項・三項の平方、平方差、一般二項積の係数を照合。未整理の四項と整理後の三項を区別。四因子の組分けは一次係数が共通となる条件も必要。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "04",
+      "item": "n04-04",
+      "answer": "a^2+ab+ba+b^2",
+      "choices": [
+        "a^2+ab+ba+b^2",
+        "a^2+2ab+b^2",
+        "a^2+ab+b^2"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "二項・三項の平方、平方差、一般二項積の係数を照合。未整理の四項と整理後の三項を区別。四因子の組分けは一次係数が共通となる条件も必要。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "04",
+      "item": "n04-05",
+      "answer": "a^2+2ab+b^2",
+      "choices": [
+        "a^2+2a+2b+b^2",
+        "a^2+2ab+b^2",
+        "a^2+ab+b^2"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "二項・三項の平方、平方差、一般二項積の係数を照合。未整理の四項と整理後の三項を区別。四因子の組分けは一次係数が共通となる条件も必要。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "04",
+      "item": "n04-06",
+      "answer": "a^2-ab-ba+b^2",
+      "choices": [
+        "a^2+ab+ba+b^2",
+        "a^2-ab+ba-b^2",
+        "a^2-ab-ba+b^2"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "二項・三項の平方、平方差、一般二項積の係数を照合。未整理の四項と整理後の三項を区別。四因子の組分けは一次係数が共通となる条件も必要。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "04",
+      "item": "n04-07",
+      "answer": "a^2-2ab+b^2",
+      "choices": [
+        "a^2-2ab-b^2",
+        "a^2-2ab+b^2",
+        "a^2-ab+b^2"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "二項・三項の平方、平方差、一般二項積の係数を照合。未整理の四項と整理後の三項を区別。四因子の組分けは一次係数が共通となる条件も必要。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "04",
+      "item": "n04-08",
+      "answer": "a^2-ab+ab-b^2=a^2-b^2",
+      "choices": [
+        "a^2-ab+ab+b^2=a^2+b^2",
+        "a^2+2ab-b^2",
+        "a^2-ab+ab-b^2=a^2-b^2"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "二項・三項の平方、平方差、一般二項積の係数を照合。未整理の四項と整理後の三項を区別。四因子の組分けは一次係数が共通となる条件も必要。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "04",
+      "item": "n04-09",
+      "answer": "差の平方：2aと5／和差の積：3xと2",
+      "choices": [
+        "差の平方：2aと5／差の平方：3xと2",
+        "差の平方：2aと5／和差の積：3xと2",
+        "和の平方：2aと5／和差の積：3xと2"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "二項・三項の平方、平方差、一般二項積の係数を照合。未整理の四項と整理後の三項を区別。四因子の組分けは一次係数が共通となる条件も必要。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "04",
+      "item": "n04-10",
+      "answer": "4a^2-20a+25,\\quad9x^2-4",
+      "choices": [
+        "4a^2+20a+25,\\quad9x^2-4",
+        "4a^2-20a+25,\\quad9x^2-4",
+        "4a^2-10a+25,\\quad9x^2-4"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "二項・三項の平方、平方差、一般二項積の係数を照合。未整理の四項と整理後の三項を区別。四因子の組分けは一次係数が共通となる条件も必要。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "04",
+      "item": "n04-11",
+      "answer": "acx^2+adx+bcx+bd",
+      "choices": [
+        "acx^2+adx+bd",
+        "acx^2+ad+bcx+bd",
+        "acx^2+adx+bcx+bd"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "二項・三項の平方、平方差、一般二項積の係数を照合。未整理の四項と整理後の三項を区別。四因子の組分けは一次係数が共通となる条件も必要。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "04",
+      "item": "n04-12",
+      "answer": "acx^2+(ad+bc)x+bd",
+      "choices": [
+        "acx^2+adbcx+bd",
+        "acx^2+(ad+bc)x+bd",
+        "acx^2+(ab+cd)x+bd"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "二項・三項の平方、平方差、一般二項積の係数を照合。未整理の四項と整理後の三項を区別。四因子の組分けは一次係数が共通となる条件も必要。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "04",
+      "item": "n04-13",
+      "answer": "3x\\cdot2=6x,\\quad1\\cdot x=x,\\quad3x^2+7x+2",
+      "choices": [
+        "3x\\cdot2=6x,\\quad1\\cdot x=x,\\quad3x^2+7x+2",
+        "3x\\cdot2=3x,\\quad1\\cdot x=x,\\quad3x^2+4x+2",
+        "3x\\cdot2=6x,\\quad1\\cdot x=x,\\quad3x^2+6x+2"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "二項・三項の平方、平方差、一般二項積の係数を照合。未整理の四項と整理後の三項を区別。四因子の組分けは一次係数が共通となる条件も必要。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "04",
+      "item": "n04-14",
+      "answer": "T^2+2Tc+c^2",
+      "choices": [
+        "T^2+2T+c^2",
+        "T^2+2Tc+c^2",
+        "T^2-c^2"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "二項・三項の平方、平方差、一般二項積の係数を照合。未整理の四項と整理後の三項を区別。四因子の組分けは一次係数が共通となる条件も必要。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "04",
+      "item": "n04-15",
+      "answer": "a^2+b^2+c^2+2ab+2ac+2bc",
+      "choices": [
+        "a^2+b^2+c^2+2ab+2ac+2bc",
+        "a^2+b^2+c^2+ab+ac+bc",
+        "a^2+b^2+c^2+2ab"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "二項・三項の平方、平方差、一般二項積の係数を照合。未整理の四項と整理後の三項を区別。四因子の組分けは一次係数が共通となる条件も必要。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "04",
+      "item": "n04-16",
+      "answer": "a^2+b^2+c^2+2ab-2ac-2bc",
+      "choices": [
+        "a^2+b^2+c^2+2ab-2ac-2bc",
+        "a^2+b^2-c^2+2ab-2ac-2bc",
+        "a^2+b^2+c^2+2ab+2ac-2bc",
+        "a^2+b^2+c^2-2ab-2ac-2bc"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "二項・三項の平方、平方差、一般二項積の係数を照合。未整理の四項と整理後の三項を区別。四因子の組分けは一次係数が共通となる条件も必要。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "04",
+      "item": "n04-17",
+      "answer": "x^2+1,\\quad x",
+      "choices": [
+        "x^2,\\quad x+1",
+        "x^2+1,\\quad x",
+        "x^2+1,\\quad -1",
+        "x^2+x,\\quad1"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "二項・三項の平方、平方差、一般二項積の係数を照合。未整理の四項と整理後の三項を区別。四因子の組分けは一次係数が共通となる条件も必要。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "04",
+      "item": "n04-18",
+      "answer": "(x^2+1)^2-x^2",
+      "choices": [
+        "x^4+1-x^2",
+        "(x^2+1)^2+x^2",
+        "(x^2+1)^2-x^2",
+        "(x^2+1)^2-x"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "二項・三項の平方、平方差、一般二項積の係数を照合。未整理の四項と整理後の三項を区別。四因子の組分けは一次係数が共通となる条件も必要。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "04",
+      "item": "n04-19",
+      "answer": "x^4+x^2+1",
+      "choices": [
+        "x^4+2x^2+1",
+        "x^4-x^2+1",
+        "x^4+x^2-1",
+        "x^4+x^2+1"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "二項・三項の平方、平方差、一般二項積の係数を照合。未整理の四項と整理後の三項を区別。四因子の組分けは一次係数が共通となる条件も必要。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "04",
+      "item": "n04-20",
+      "answer": "(x^2+5x+4)(x^2+5x+6)",
+      "choices": [
+        "(x^2+5x+5)(x^2+5x+6)",
+        "(x^2+4x+3)(x^2+6x+8)",
+        "(x^2+3x+2)(x^2+7x+12)",
+        "(x^2+5x+4)(x^2+5x+6)"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "二項・三項の平方、平方差、一般二項積の係数を照合。未整理の四項と整理後の三項を区別。四因子の組分けは一次係数が共通となる条件も必要。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "04",
+      "item": "n04-21",
+      "answer": "T^2+10T+24",
+      "choices": [
+        "T^2+10T+24",
+        "T^2+2T+24",
+        "T^2+24T+10",
+        "T^2+10T+10"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "二項・三項の平方、平方差、一般二項積の係数を照合。未整理の四項と整理後の三項を区別。四因子の組分けは一次係数が共通となる条件も必要。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "04",
+      "item": "n04-22",
+      "answer": "x^4+10x^3+35x^2+50x+24",
+      "choices": [
+        "x^4+10x^3+25x^2+50x+24",
+        "x^4+10x^3+35x^2+50x+24",
+        "x^4+10x^3+35x^2+24",
+        "x^4+5x^3+35x^2+50x+24"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "二項・三項の平方、平方差、一般二項積の係数を照合。未整理の四項と整理後の三項を区別。四因子の組分けは一次係数が共通となる条件も必要。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "05",
+      "item": "n05-01",
+      "answer": "y+5",
+      "choices": [
+        "y-5",
+        "y+5"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "共通因数、逆展開、係数比較3条件を使う。和−6/積−16、s+5r=−2/rs=−3を両方照合。符号の理由に積の条件を使う。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "05",
+      "item": "n05-02",
+      "answer": "(x-3)(y+5)",
+      "choices": [
+        "(x-3)(y+5)",
+        "(x-3)(y-5)"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "共通因数、逆展開、係数比較3条件を使う。和−6/積−16、s+5r=−2/rs=−3を両方照合。符号の理由に積の条件を使う。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "05",
+      "item": "n05-03",
+      "answer": "xy+5x-3y-15",
+      "choices": [
+        "xy+5x-3y+15",
+        "xy+5x+3y-15",
+        "xy+5x-3y-15"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "共通因数、逆展開、係数比較3条件を使う。和−6/積−16、s+5r=−2/rs=−3を両方照合。符号の理由に積の条件を使う。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "05",
+      "item": "n05-04",
+      "answer": "-(a-b)",
+      "choices": [
+        "-a-b",
+        "a-b",
+        "-(a-b)"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "共通因数、逆展開、係数比較3条件を使う。和−6/積−16、s+5r=−2/rs=−3を両方照合。符号の理由に積の条件を使う。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "05",
+      "item": "n05-05",
+      "answer": "(a-b)(x-y)",
+      "choices": [
+        "(a-b)(x-y)",
+        "(a-b)(x+y)",
+        "(a+b)(x-y)"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "共通因数、逆展開、係数比較3条件を使う。和−6/積−16、s+5r=−2/rs=−3を両方照合。符号の理由に積の条件を使う。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "05",
+      "item": "n05-06",
+      "answer": "(4x)^2,\\quad(3y)^2",
+      "choices": [
+        "(4x)^2,\\quad(9y)^2",
+        "(4x)^2,\\quad(3y)^2",
+        "(8x)^2,\\quad(3y)^2"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "共通因数、逆展開、係数比較3条件を使う。和−6/積−16、s+5r=−2/rs=−3を両方照合。符号の理由に積の条件を使う。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "05",
+      "item": "n05-07",
+      "answer": "24xy",
+      "choices": [
+        "24xy",
+        "12xy",
+        "24x^2y^2"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "共通因数、逆展開、係数比較3条件を使う。和−6/積−16、s+5r=−2/rs=−3を両方照合。符号の理由に積の条件を使う。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "05",
+      "item": "n05-08",
+      "answer": "(4x+3y)^2",
+      "choices": [
+        "(16x+9y)^2",
+        "(4x+3y)^2",
+        "(4x+3y)(4x-3y)"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "共通因数、逆展開、係数比較3条件を使う。和−6/積−16、s+5r=−2/rs=−3を両方照合。符号の理由に積の条件を使う。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "05",
+      "item": "n05-09",
+      "answer": "a^2+(r+s)a+rs",
+      "choices": [
+        "a^2+(r-s)a+rs",
+        "a^2+(r+s)a+r+s",
+        "a^2+(r+s)a+rs"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "共通因数、逆展開、係数比較3条件を使う。和−6/積−16、s+5r=−2/rs=−3を両方照合。符号の理由に積の条件を使う。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "05",
+      "item": "n05-10",
+      "answer": "r+s=-6,\\quad rs=-16",
+      "choices": [
+        "r+s=-6,\\quad rs=-16",
+        "r+s=-16,\\quad rs=-6",
+        "r+s=6,\\quad rs=-16"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "共通因数、逆展開、係数比較3条件を使う。和−6/積−16、s+5r=−2/rs=−3を両方照合。符号の理由に積の条件を使う。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "05",
+      "item": "n05-11",
+      "answer": "(a-8)(a+2)",
+      "choices": [
+        "(a-8)(a-2)",
+        "(a-4)(a+4)",
+        "(a-8)(a+2)"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "共通因数、逆展開、係数比較3条件を使う。和−6/積−16、s+5r=−2/rs=−3を両方照合。符号の理由に積の条件を使う。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "05",
+      "item": "n05-12",
+      "answer": "prx^2+(ps+qr)x+qs",
+      "choices": [
+        "prx^2+(ps+qr)x+qs",
+        "prx^2+psx+qs",
+        "prx^2+(pq+rs)x+qs"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "共通因数、逆展開、係数比較3条件を使う。和−6/積−16、s+5r=−2/rs=−3を両方照合。符号の理由に積の条件を使う。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "05",
+      "item": "n05-13",
+      "answer": "pr=4,\\quad ps+qr=7,\\quad qs=3",
+      "choices": [
+        "pr=7,\\quad ps+qr=4,\\quad qs=3",
+        "pr=4,\\quad ps+qr=7,\\quad qs=3",
+        "pr=4,\\quad pq+rs=7,\\quad qs=3"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "共通因数、逆展開、係数比較3条件を使う。和−6/積−16、s+5r=−2/rs=−3を両方照合。符号の理由に積の条件を使う。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "05",
+      "item": "n05-14",
+      "answer": "8,\\quad 7,\\quad 13",
+      "choices": [
+        "8,\\quad 7,\\quad 13",
+        "7,\\quad8,\\quad13",
+        "8,\\quad13,\\quad7"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "共通因数、逆展開、係数比較3条件を使う。和−6/積−16、s+5r=−2/rs=−3を両方照合。符号の理由に積の条件を使う。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "05",
+      "item": "n05-15",
+      "answer": "(x+1)(4x+3)",
+      "choices": [
+        "(x+1)(4x+3)",
+        "(x+3)(4x+1)",
+        "(x-1)(4x-3)",
+        "(2x+1)(2x+3)"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "共通因数、逆展開、係数比較3条件を使う。和−6/積−16、s+5r=−2/rs=−3を両方照合。符号の理由に積の条件を使う。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "05",
+      "item": "n05-16",
+      "answer": "s+5r=-2,\\quad rs=-3",
+      "choices": [
+        "s-5r=-2,\\quad rs=3",
+        "s+r=-2,\\quad rs=-3",
+        "s+5r=-3,\\quad rs=-2",
+        "s+5r=-2,\\quad rs=-3"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "共通因数、逆展開、係数比較3条件を使う。和−6/積−16、s+5r=−2/rs=−3を両方照合。符号の理由に積の条件を使う。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "05",
+      "item": "n05-17",
+      "answer": "rとsは異符号（rs=-3<0だから）",
+      "choices": [
+        "rとsは異符号（rs=-3<0だから）",
+        "rとsはともに負（rs=-3だから）",
+        "rとsは同符号（rs=-3<0だから）",
+        "rとsは異符号（r+s=-2だから）"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "共通因数、逆展開、係数比較3条件を使う。和−6/積−16、s+5r=−2/rs=−3を両方照合。符号の理由に積の条件を使う。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "05",
+      "item": "n05-18",
+      "answer": "(x-1)(5x+3)",
+      "choices": [
+        "(x-3)(5x+1)",
+        "(x-1)(5x+3)",
+        "(x+1)(5x-3)",
+        "(x-1)(5x-3)"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "共通因数、逆展開、係数比較3条件を使う。和−6/積−16、s+5r=−2/rs=−3を両方照合。符号の理由に積の条件を使う。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "05",
+      "item": "n05-19",
+      "answer": "3b(a^2-4b^2)",
+      "choices": [
+        "3(a^2-4b^2)",
+        "3b(a^2-4b)",
+        "3b(a^2-4b^2)",
+        "3b(a^2+4b^2)"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "共通因数、逆展開、係数比較3条件を使う。和−6/積−16、s+5r=−2/rs=−3を両方照合。符号の理由に積の条件を使う。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "05",
+      "item": "n05-20",
+      "answer": "3b(a-2b)(a+2b)",
+      "choices": [
+        "3b(a-2b)(a+2b)",
+        "3b(a-2b)^2",
+        "3b(a^2-2b)(a+2b)",
+        "3b(a-4b)(a+4b)"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "共通因数、逆展開、係数比較3条件を使う。和−6/積−16、s+5r=−2/rs=−3を両方照合。符号の理由に積の条件を使う。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "06",
+      "item": "n06-01",
+      "answer": "X=x+2y,\\quad(X+1)(X-2)-4",
+      "choices": [
+        "X=x+2y,\\quad(X+1)(X-2)-4",
+        "X=x+2y,\\quad(X+1)(X+2)-4"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "X=x+2y/T=x²を元の変数へ戻す。各因子の逆展開と、xについて3次/yについて1次を照合。最後までの因数分解と途中形を区別。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "06",
+      "item": "n06-02",
+      "answer": "X^2-X-6",
+      "choices": [
+        "X^2-2X-6",
+        "X^2-X-6"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "X=x+2y/T=x²を元の変数へ戻す。各因子の逆展開と、xについて3次/yについて1次を照合。最後までの因数分解と途中形を区別。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "06",
+      "item": "n06-03",
+      "answer": "(X-3)(X+2)",
+      "choices": [
+        "(X-3)(X-2)",
+        "(X-3)(X+2)",
+        "(X+3)(X-2)"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "X=x+2y/T=x²を元の変数へ戻す。各因子の逆展開と、xについて3次/yについて1次を照合。最後までの因数分解と途中形を区別。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "06",
+      "item": "n06-04",
+      "answer": "(x+2y-3)(x+2y+2)",
+      "choices": [
+        "(x+2y-3)(x+2y+2)",
+        "(x+2y+3)(x+2y-2)",
+        "(x+2y-3)(X+2)"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "X=x+2y/T=x²を元の変数へ戻す。各因子の逆展開と、xについて3次/yについて1次を照合。最後までの因数分解と途中形を区別。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "06",
+      "item": "n06-05",
+      "answer": "T=x^2,\\quad T^2-5T+4",
+      "choices": [
+        "T=x,\\quad T^2-5T+4",
+        "T=x^2,\\quad T^2-5T+4",
+        "T=x^2,\\quad T^2+5T+4"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "X=x+2y/T=x²を元の変数へ戻す。各因子の逆展開と、xについて3次/yについて1次を照合。最後までの因数分解と途中形を区別。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "06",
+      "item": "n06-06",
+      "answer": "(x^2-1)(x^2-4)",
+      "choices": [
+        "(x^2-1)(x^2-4)",
+        "(x^2-2)(x^2-2)",
+        "(x^2-1)(x^2+4)"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "X=x+2y/T=x²を元の変数へ戻す。各因子の逆展開と、xについて3次/yについて1次を照合。最後までの因数分解と途中形を区別。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "06",
+      "item": "n06-07",
+      "answer": "(x-1)(x+1)(x-2)(x+2)",
+      "choices": [
+        "(x-1)^2(x-2)^2",
+        "(x-1)(x+1)(x-2)(x+2)",
+        "(x-1)(x+1)(x^2-4)"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "X=x+2y/T=x²を元の変数へ戻す。各因子の逆展開と、xについて3次/yについて1次を照合。最後までの因数分解と途中形を区別。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "06",
+      "item": "n06-08",
+      "answer": "xについて3次、yについて1次。yで整理",
+      "choices": [
+        "xについて3次、yについて1次。yで整理",
+        "xについて2次、yについて2次。どちらでも同じ",
+        "xについて1次、yについて3次。yで整理"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "X=x+2y/T=x²を元の変数へ戻す。各因子の逆展開と、xについて3次/yについて1次を照合。最後までの因数分解と途中形を区別。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "06",
+      "item": "n06-09",
+      "answer": "y(x^2+x-2)+(x^3+x^2-2x)",
+      "choices": [
+        "y(x^2+x-2)+(x^3-x^2-2x)",
+        "y(x^2+x-2)+(x^3+x^2-2x)",
+        "y(x^2+x-2)+(x^3+x^2)"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "X=x+2y/T=x²を元の変数へ戻す。各因子の逆展開と、xについて3次/yについて1次を照合。最後までの因数分解と途中形を区別。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "06",
+      "item": "n06-10",
+      "answer": "x(x^2+x-2)",
+      "choices": [
+        "x^2(x+1-2x)",
+        "x(x^2+x-2)",
+        "x(x^2-x-2)"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "X=x+2y/T=x²を元の変数へ戻す。各因子の逆展開と、xについて3次/yについて1次を照合。最後までの因数分解と途中形を区別。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "06",
+      "item": "n06-11",
+      "answer": "(x+y)(x^2+x-2)",
+      "choices": [
+        "(x+y)(x^2+x-2)",
+        "(x+y)(x^2-x-2)",
+        "xy(x^2+x-2)"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "X=x+2y/T=x²を元の変数へ戻す。各因子の逆展開と、xについて3次/yについて1次を照合。最後までの因数分解と途中形を区別。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "06",
+      "item": "n06-12",
+      "answer": "(x+y)(x+2)(x-1)",
+      "choices": [
+        "(x+y)(x+2)(x-1)",
+        "(x+y)(x-2)(x+1)",
+        "(x+y)(x+2)(x+1)",
+        "(x-y)(x+2)(x-1)"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "X=x+2y/T=x²を元の変数へ戻す。各因子の逆展開と、xについて3次/yについて1次を照合。最後までの因数分解と途中形を区別。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "06",
+      "item": "n06-13",
+      "answer": "x^2+(3y-1)x+(2y^2-3y-2)",
+      "choices": [
+        "x^2+(3y-1)x+(2y^2+3y-2)",
+        "x^2+(3y-1)+(2y^2-3y-2)x",
+        "x^2+(3y+1)x+(2y^2-3y-2)",
+        "x^2+(3y-1)x+(2y^2-3y-2)"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "X=x+2y/T=x²を元の変数へ戻す。各因子の逆展開と、xについて3次/yについて1次を照合。最後までの因数分解と途中形を区別。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "06",
+      "item": "n06-14",
+      "answer": "(2y+1)(y-2)",
+      "choices": [
+        "(2y+1)(y-2)",
+        "(2y+1)(y+2)",
+        "(2y-1)(y+2)",
+        "(y-1)(2y+2)"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "X=x+2y/T=x²を元の変数へ戻す。各因子の逆展開と、xについて3次/yについて1次を照合。最後までの因数分解と途中形を区別。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "06",
+      "item": "n06-15",
+      "answer": "3y-1,\\quad\\text{一致する（使える）}",
+      "choices": [
+        "3y+3,\\quad\\text{一致する（使える）}",
+        "3y-1,\\quad\\text{一致しない（使えない）}",
+        "3y-1,\\quad\\text{一致する（使える）}",
+        "2y^2-3y-2,\\quad\\text{一致しない（使えない）}"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "X=x+2y/T=x²を元の変数へ戻す。各因子の逆展開と、xについて3次/yについて1次を照合。最後までの因数分解と途中形を区別。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "06",
+      "item": "n06-16",
+      "answer": "(x+2y+1)(x+y-2)",
+      "choices": [
+        "(x+2y+1)(x+y-2)",
+        "(x+2y-1)(x+y+2)",
+        "(x+2y-2)(x+y+1)",
+        "(x+2y+1)(x+y+2)"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "X=x+2y/T=x²を元の変数へ戻す。各因子の逆展開と、xについて3次/yについて1次を照合。最後までの因数分解と途中形を区別。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "07",
+      "item": "n07-01",
+      "answer": "0.75（小数第2位で終了）",
+      "choices": [
+        "0.7（小数第1位で終了）",
+        "0.75（小数第2位で終了）"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "3/4=0.75、23/11=2+9/99。余り10→1の復帰から周期09。最小倍率10/100で循環部分をそろえ、8/9と23/33を得る。有限小数の既約分母の素因数は2,5のみ。自然数は正整数。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "07",
+      "item": "n07-02",
+      "answer": "（0・余り10）→（9・余り1）",
+      "choices": [
+        "（0・余り10）→（9・余り1）",
+        "（0・余り1）→（9・余り10）"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "3/4=0.75、23/11=2+9/99。余り10→1の復帰から周期09。最小倍率10/100で循環部分をそろえ、8/9と23/33を得る。有限小数の既約分母の素因数は2,5のみ。自然数は正整数。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "07",
+      "item": "n07-03",
+      "answer": "2.\\overline{09}",
+      "choices": [
+        "2.\\overline{09}",
+        "2.09",
+        "2.\\overline9"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "3/4=0.75、23/11=2+9/99。余り10→1の復帰から周期09。最小倍率10/100で循環部分をそろえ、8/9と23/33を得る。有限小数の既約分母の素因数は2,5のみ。自然数は正整数。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "07",
+      "item": "n07-04",
+      "answer": "有限小数／循環小数、どちらも有理数",
+      "choices": [
+        "どちらも有限小数、どちらも有理数",
+        "どちらも循環小数、後者は無理数",
+        "有限小数／循環小数、どちらも有理数"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "3/4=0.75、23/11=2+9/99。余り10→1の復帰から周期09。最小倍率10/100で循環部分をそろえ、8/9と23/33を得る。有限小数の既約分母の素因数は2,5のみ。自然数は正整数。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "07",
+      "item": "n07-05",
+      "answer": "0以外の余りは有限種類なので同じ余りが再び現れる",
+      "choices": [
+        "余りはいつまでも違う数へ増え続ける",
+        "商の数字は必ず0か1だけになる",
+        "0以外の余りは有限種類なので同じ余りが再び現れる"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "3/4=0.75、23/11=2+9/99。余り10→1の復帰から周期09。最小倍率10/100で循環部分をそろえ、8/9と23/33を得る。有限小数の既約分母の素因数は2,5のみ。自然数は正整数。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "07",
+      "item": "n07-06",
+      "answer": "10\\text{倍},\\quad10x=8.\\overline8",
+      "choices": [
+        "100\\text{倍},\\quad100x=88.\\overline8",
+        "10\\text{倍},\\quad10x=8.\\overline8",
+        "10\\text{倍},\\quad10x=0.\\overline8"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "3/4=0.75、23/11=2+9/99。余り10→1の復帰から周期09。最小倍率10/100で循環部分をそろえ、8/9と23/33を得る。有限小数の既約分母の素因数は2,5のみ。自然数は正整数。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "07",
+      "item": "n07-07",
+      "answer": "9x=8",
+      "choices": [
+        "9x=8",
+        "9x=88",
+        "9x=0.8"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "3/4=0.75、23/11=2+9/99。余り10→1の復帰から周期09。最小倍率10/100で循環部分をそろえ、8/9と23/33を得る。有限小数の既約分母の素因数は2,5のみ。自然数は正整数。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "07",
+      "item": "n07-08",
+      "answer": "x=\\frac89",
+      "choices": [
+        "x=\\frac{88}{9}",
+        "x=\\frac89",
+        "x=\\frac8{10}"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "3/4=0.75、23/11=2+9/99。余り10→1の復帰から周期09。最小倍率10/100で循環部分をそろえ、8/9と23/33を得る。有限小数の既約分母の素因数は2,5のみ。自然数は正整数。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "07",
+      "item": "n07-09",
+      "answer": "\\text{100倍},\\;100x=69.\\overline{69},\\;99x=69",
+      "choices": [
+        "\\text{100倍},\\;100x=69.\\overline{69},\\;99x=69",
+        "\\text{1000倍},\\;1000x=696.\\overline{96},\\;999x=696",
+        "\\text{10倍},\\;10x=6.\\overline{96},\\;9x=6"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "3/4=0.75、23/11=2+9/99。余り10→1の復帰から周期09。最小倍率10/100で循環部分をそろえ、8/9と23/33を得る。有限小数の既約分母の素因数は2,5のみ。自然数は正整数。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "07",
+      "item": "n07-10",
+      "answer": "\\frac{23}{33}",
+      "choices": [
+        "\\frac{23}{99}",
+        "\\frac{33}{23}",
+        "\\frac{69}{100}",
+        "\\frac{23}{33}"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "3/4=0.75、23/11=2+9/99。余り10→1の復帰から周期09。最小倍率10/100で循環部分をそろえ、8/9と23/33を得る。有限小数の既約分母の素因数は2,5のみ。自然数は正整数。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "07",
+      "item": "n07-11",
+      "answer": "2^k\\cdot5^k",
+      "choices": [
+        "2^k\\cdot5^k",
+        "10k",
+        "2^k+5^k",
+        "2^{2k}\\cdot5^k"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "3/4=0.75、23/11=2+9/99。余り10→1の復帰から周期09。最小倍率10/100で循環部分をそろえ、8/9と23/33を得る。有限小数の既約分母の素因数は2,5のみ。自然数は正整数。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "07",
+      "item": "n07-12",
+      "answer": "2,4,5,8,10,16,20",
+      "choices": [
+        "2,4,5,8,10,12,16,20",
+        "2,4,5,8,10,16,20",
+        "2,4,5,8,10,16",
+        "2,4,5,8,10,15,20"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "3/4=0.75、23/11=2+9/99。余り10→1の復帰から周期09。最小倍率10/100で循環部分をそろえ、8/9と23/33を得る。有限小数の既約分母の素因数は2,5のみ。自然数は正整数。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "07",
+      "item": "n07-13",
+      "answer": "−1と2/3、どちらも自然数でない",
+      "choices": [
+        "1と2/3、後者だけ自然数でない",
+        "−1と2/3、両方自然数",
+        "−1と2/3、どちらも自然数でない",
+        "−1と3/2、どちらも自然数でない"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "3/4=0.75、23/11=2+9/99。余り10→1の復帰から周期09。最小倍率10/100で循環部分をそろえ、8/9と23/33を得る。有限小数の既約分母の素因数は2,5のみ。自然数は正整数。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "07",
+      "item": "n07-14",
+      "answer": "有理数（23/33と表せる）",
+      "choices": [
+        "無理数（小数が無限に続く）",
+        "無理数（整数ではない）",
+        "有理数（小数第2位で終わる）",
+        "有理数（23/33と表せる）"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "3/4=0.75、23/11=2+9/99。余り10→1の復帰から周期09。最小倍率10/100で循環部分をそろえ、8/9と23/33を得る。有限小数の既約分母の素因数は2,5のみ。自然数は正整数。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "08",
+      "item": "n08-01",
+      "answer": "2.3,\\quad5",
+      "choices": [
+        "2.3,\\quad5",
+        "-2.3,\\quad5"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "距離は非負。a≥0で|a|=a、a<0で|a|=−a。5<9とπ>3から差の符号を決め、負の中身全体を反転。|a|²=a²は全実数で成立。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "08",
+      "item": "n08-02",
+      "answer": "|a|=a",
+      "choices": [
+        "|a|=-a",
+        "|a|=a"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "距離は非負。a≥0で|a|=a、a<0で|a|=−a。5<9とπ>3から差の符号を決め、負の中身全体を反転。|a|²=a²は全実数で成立。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "08",
+      "item": "n08-03",
+      "answer": "0-a=-a",
+      "choices": [
+        "a-0=a",
+        "0-a=-a",
+        "0+a=a"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "距離は非負。a≥0で|a|=a、a<0で|a|=−a。5<9とπ>3から差の符号を決め、負の中身全体を反転。|a|²=a²は全実数で成立。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "08",
+      "item": "n08-04",
+      "answer": "-(-5)=5",
+      "choices": [
+        "-5=5",
+        "-(-5)=0",
+        "-(-5)=5"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "距離は非負。a≥0で|a|=a、a<0で|a|=−a。5<9とπ>3から差の符号を決め、負の中身全体を反転。|a|²=a²は全実数で成立。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "08",
+      "item": "n08-05",
+      "answer": "5<9,\\quad\\sqrt5<3",
+      "choices": [
+        "5<9,\\quad\\sqrt5>3",
+        "5<9,\\quad\\sqrt5<3",
+        "5>9,\\quad\\sqrt5>3"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "距離は非負。a≥0で|a|=a、a<0で|a|=−a。5<9とπ>3から差の符号を決め、負の中身全体を反転。|a|²=a²は全実数で成立。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "08",
+      "item": "n08-06",
+      "answer": "負",
+      "choices": [
+        "符号は決まらない",
+        "正",
+        "負"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "距離は非負。a≥0で|a|=a、a<0で|a|=−a。5<9とπ>3から差の符号を決め、負の中身全体を反転。|a|²=a²は全実数で成立。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "08",
+      "item": "n08-07",
+      "answer": "3-\\sqrt5",
+      "choices": [
+        "\\sqrt5-3",
+        "3-\\sqrt5",
+        "-\\sqrt5-3"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "距離は非負。a≥0で|a|=a、a<0で|a|=−a。5<9とπ>3から差の符号を決め、負の中身全体を反転。|a|²=a²は全実数で成立。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "08",
+      "item": "n08-08",
+      "answer": "負（πは3より大きい）",
+      "choices": [
+        "負（πは3より大きい）",
+        "0（πは3と等しい）",
+        "符号は決められない"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "距離は非負。a≥0で|a|=a、a<0で|a|=−a。5<9とπ>3から差の符号を決め、負の中身全体を反転。|a|²=a²は全実数で成立。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "08",
+      "item": "n08-09",
+      "answer": "\\pi-3",
+      "choices": [
+        "\\pi-3",
+        "3+\\pi",
+        "-\\pi-3",
+        "3-\\pi"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "距離は非負。a≥0で|a|=a、a<0で|a|=−a。5<9とπ>3から差の符号を決め、負の中身全体を反転。|a|²=a²は全実数で成立。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "08",
+      "item": "n08-10",
+      "answer": "a=0,\\quad\\text{原点と同じ位置にある}",
+      "choices": [
+        "a=0,\\quad\\text{原点から離れている}",
+        "a<0,\\quad\\text{原点と同じ位置にある}",
+        "a=0,\\quad\\text{原点と同じ位置にある}",
+        "a>0,\\quad\\text{原点と同じ位置にある}"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "距離は非負。a≥0で|a|=a、a<0で|a|=−a。5<9とπ>3から差の符号を決め、負の中身全体を反転。|a|²=a²は全実数で成立。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "08",
+      "item": "n08-11",
+      "answer": "|a|=|-a|",
+      "choices": [
+        "|a|+|-a|=0",
+        "|a|>|-a|",
+        "|a|=-|-a|",
+        "|a|=|-a|"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "距離は非負。a≥0で|a|=a、a<0で|a|=−a。5<9とπ>3から差の符号を決め、負の中身全体を反転。|a|²=a²は全実数で成立。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "08",
+      "item": "n08-12",
+      "answer": "a^2",
+      "choices": [
+        "|a|",
+        "2a",
+        "a^2",
+        "-a^2"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "距離は非負。a≥0で|a|=a、a<0で|a|=−a。5<9とπ>3から差の符号を決め、負の中身全体を反転。|a|²=a²は全実数で成立。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "09",
+      "item": "n09-01",
+      "answer": "x=4,\\ -4",
+      "choices": [
+        "x=4",
+        "x=4,\\ -4"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "平方根の正負2解と根号の非負1値を区別。平方比較は両辺非負で用いる。1.41²<2<1.42²。整数部分はfloorで小数部分が[0,1)、−√10の整数部分は−4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "09",
+      "item": "n09-02",
+      "answer": "(4,\\ 5)",
+      "choices": [
+        "(4,\\ 5)",
+        "(-4,\\ 5)"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "平方根の正負2解と根号の非負1値を区別。平方比較は両辺非負で用いる。1.41²<2<1.42²。整数部分はfloorで小数部分が[0,1)、−√10の整数部分は−4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "09",
+      "item": "n09-03",
+      "answer": "4",
+      "choices": [
+        "\\pm4",
+        "16",
+        "4"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "平方根の正負2解と根号の非負1値を区別。平方比較は両辺非負で用いる。1.41²<2<1.42²。整数部分はfloorで小数部分が[0,1)、−√10の整数部分は−4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "09",
+      "item": "n09-04",
+      "answer": "(a,\\ -a)",
+      "choices": [
+        "(-a,\\ -a)",
+        "(a,\\ -a)",
+        "(a,\\ a)"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "平方根の正負2解と根号の非負1値を区別。平方比較は両辺非負で用いる。1.41²<2<1.42²。整数部分はfloorで小数部分が[0,1)、−√10の整数部分は−4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "09",
+      "item": "n09-05",
+      "answer": "|a|",
+      "choices": [
+        "-a",
+        "a",
+        "|a|"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "平方根の正負2解と根号の非負1値を区別。平方比較は両辺非負で用いる。1.41²<2<1.42²。整数部分はfloorで小数部分が[0,1)、−√10の整数部分は−4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "09",
+      "item": "n09-06",
+      "answer": "2-\\sqrt5<0",
+      "choices": [
+        "2-\\sqrt5=0",
+        "2-\\sqrt5<0",
+        "2-\\sqrt5>0"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "平方根の正負2解と根号の非負1値を区別。平方比較は両辺非負で用いる。1.41²<2<1.42²。整数部分はfloorで小数部分が[0,1)、−√10の整数部分は−4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "09",
+      "item": "n09-07",
+      "answer": "\\sqrt5-2",
+      "choices": [
+        "\\sqrt5-2",
+        "\\sqrt5+2",
+        "-(2+\\sqrt5)"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "平方根の正負2解と根号の非負1値を区別。平方比較は両辺非負で用いる。1.41²<2<1.42²。整数部分はfloorで小数部分が[0,1)、−√10の整数部分は−4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "09",
+      "item": "n09-p001-q08-left-square",
+      "answer": "1.9881",
+      "choices": [
+        "1.9881",
+        "1.9981",
+        "1.9811"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "平方根の正負2解と根号の非負1値を区別。平方比較は両辺非負で用いる。1.41²<2<1.42²。整数部分はfloorで小数部分が[0,1)、−√10の整数部分は−4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "09",
+      "item": "n09-p001-q08-right-square",
+      "answer": "2.0164",
+      "choices": [
+        "2.1064",
+        "2.0164",
+        "2.0264"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "平方根の正負2解と根号の非負1値を区別。平方比較は両辺非負で用いる。1.41²<2<1.42²。整数部分はfloorで小数部分が[0,1)、−√10の整数部分は−4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "09",
+      "item": "n09-p001-q08-lower-sign",
+      "answer": "<",
+      "choices": [
+        "<",
+        ">",
+        "\\ge"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "平方根の正負2解と根号の非負1値を区別。平方比較は両辺非負で用いる。1.41²<2<1.42²。整数部分はfloorで小数部分が[0,1)、−√10の整数部分は−4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "09",
+      "item": "n09-p001-q08-upper-sign",
+      "answer": "<",
+      "choices": [
+        "=",
+        ">",
+        "<"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "平方根の正負2解と根号の非負1値を区別。平方比較は両辺非負で用いる。1.41²<2<1.42²。整数部分はfloorで小数部分が[0,1)、−√10の整数部分は−4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "09",
+      "item": "n09-08",
+      "answer": "1.41^2=1.9881<2<2.0164=1.42^2",
+      "choices": [
+        "1.41^2=1.9881<2<2.0104=1.42^2",
+        "1.41^2=1.9881<2<2.0164=1.42^2",
+        "1.41^2=1.9981<2<2.0164=1.42^2"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "平方根の正負2解と根号の非負1値を区別。平方比較は両辺非負で用いる。1.41²<2<1.42²。整数部分はfloorで小数部分が[0,1)、−√10の整数部分は−4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "09",
+      "item": "n09-09",
+      "answer": "1.41<\\sqrt2<1.42",
+      "choices": [
+        "1.41>\\sqrt2>1.42",
+        "1.42<\\sqrt2<1.41",
+        "1.41<\\sqrt2<1.42"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "平方根の正負2解と根号の非負1値を区別。平方比較は両辺非負で用いる。1.41²<2<1.42²。整数部分はfloorで小数部分が[0,1)、−√10の整数部分は−4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "09",
+      "item": "n09-10",
+      "answer": "-3",
+      "choices": [
+        "-3",
+        "-2",
+        "-1"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "平方根の正負2解と根号の非負1値を区別。平方比較は両辺非負で用いる。1.41²<2<1.42²。整数部分はfloorで小数部分が[0,1)、−√10の整数部分は−4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "09",
+      "item": "n09-11",
+      "answer": "-3+0.9",
+      "choices": [
+        "-2-0.1",
+        "-3+0.9",
+        "-2+0.1"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "平方根の正負2解と根号の非負1値を区別。平方比較は両辺非負で用いる。1.41²<2<1.42²。整数部分はfloorで小数部分が[0,1)、−√10の整数部分は−4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "09",
+      "item": "n09-12",
+      "answer": "3<\\sqrt{10}<4",
+      "choices": [
+        "4<\\sqrt{10}<5",
+        "3<\\sqrt{10}<3",
+        "2<\\sqrt{10}<3",
+        "3<\\sqrt{10}<4"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "平方根の正負2解と根号の非負1値を区別。平方比較は両辺非負で用いる。1.41²<2<1.42²。整数部分はfloorで小数部分が[0,1)、−√10の整数部分は−4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "09",
+      "item": "n09-13",
+      "answer": "-4<-\\sqrt{10}<-3",
+      "choices": [
+        "-4<-\\sqrt{10}<-3",
+        "-3<-\\sqrt{10}<-4",
+        "-5<-\\sqrt{10}<-4",
+        "-3<-\\sqrt{10}<-2"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "平方根の正負2解と根号の非負1値を区別。平方比較は両辺非負で用いる。1.41²<2<1.42²。整数部分はfloorで小数部分が[0,1)、−√10の整数部分は−4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "09",
+      "item": "n09-14",
+      "answer": "\\begin{aligned}\\sqrt{10}&:(3,\\sqrt{10}-3)\\\\-\\sqrt{10}&:(-4,4-\\sqrt{10})\\end{aligned}",
+      "choices": [
+        "\\begin{aligned}\\sqrt{10}&:(3,\\sqrt{10}-3)\\\\-\\sqrt{10}&:(-3,3-\\sqrt{10})\\end{aligned}",
+        "\\begin{aligned}\\sqrt{10}&:(3,\\sqrt{10}-3)\\\\-\\sqrt{10}&:(-4,4-\\sqrt{10})\\end{aligned}",
+        "\\begin{aligned}\\sqrt{10}&:(3,\\sqrt{10}-3)\\\\-\\sqrt{10}&:(-3,\\sqrt{10}-3)\\end{aligned}",
+        "\\begin{aligned}\\sqrt{10}&:(4,\\sqrt{10}-4)\\\\-\\sqrt{10}&:(-4,4-\\sqrt{10})\\end{aligned}"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "平方根の正負2解と根号の非負1値を区別。平方比較は両辺非負で用いる。1.41²<2<1.42²。整数部分はfloorで小数部分が[0,1)、−√10の整数部分は−4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "10",
+      "item": "n10-01",
+      "answer": "t^2=25",
+      "choices": [
+        "t=25",
+        "t^2=25"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "根号の積/商の証明は平方値と正値条件の両方が必要。b>0で商を定義。√48=4√3、√8+√50=7√2、平方差と共役因子で有理化。比を保つだけでは現在求める有理化の因子とは限らない。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "10",
+      "item": "n10-02",
+      "answer": "5\\sqrt5",
+      "choices": [
+        "5\\sqrt5",
+        "25\\sqrt5"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "根号の積/商の証明は平方値と正値条件の両方が必要。b>0で商を定義。√48=4√3、√8+√50=7√2、平方差と共役因子で有理化。比を保つだけでは現在求める有理化の因子とは限らない。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "10",
+      "item": "n10-03",
+      "answer": "ab",
+      "choices": [
+        "a^2b^2",
+        "ab"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "根号の積/商の証明は平方値と正値条件の両方が必要。b>0で商を定義。√48=4√3、√8+√50=7√2、平方差と共役因子で有理化。比を保つだけでは現在求める有理化の因子とは限らない。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "10",
+      "item": "n10-04",
+      "answer": "\\sqrt{ab}",
+      "choices": [
+        "-\\sqrt{ab}",
+        "\\sqrt{ab}",
+        "ab"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "根号の積/商の証明は平方値と正値条件の両方が必要。b>0で商を定義。√48=4√3、√8+√50=7√2、平方差と共役因子で有理化。比を保つだけでは現在求める有理化の因子とは限らない。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "10",
+      "item": "n10-05",
+      "answer": "\\frac ab",
+      "choices": [
+        "\\frac ab",
+        "ab",
+        "\\frac ba"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "根号の積/商の証明は平方値と正値条件の両方が必要。b>0で商を定義。√48=4√3、√8+√50=7√2、平方差と共役因子で有理化。比を保つだけでは現在求める有理化の因子とは限らない。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "10",
+      "item": "n10-06",
+      "answer": "\\sqrt{\\frac ab}",
+      "choices": [
+        "\\frac ab",
+        "\\sqrt a\\sqrt b",
+        "\\sqrt{\\frac ab}"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "根号の積/商の証明は平方値と正値条件の両方が必要。b>0で商を定義。√48=4√3、√8+√50=7√2、平方差と共役因子で有理化。比を保つだけでは現在求める有理化の因子とは限らない。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "10",
+      "item": "n10-07",
+      "answer": "\\sqrt{48}=\\sqrt{16\\cdot3}",
+      "choices": [
+        "\\sqrt{48}=\\sqrt{16\\cdot3}",
+        "\\sqrt{48}=\\sqrt{16\\cdot2}",
+        "\\sqrt{48}=\\sqrt{8\\cdot8}"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "根号の積/商の証明は平方値と正値条件の両方が必要。b>0で商を定義。√48=4√3、√8+√50=7√2、平方差と共役因子で有理化。比を保つだけでは現在求める有理化の因子とは限らない。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "10",
+      "item": "n10-08",
+      "answer": "4\\sqrt3",
+      "choices": [
+        "4\\sqrt{12}",
+        "16\\sqrt3",
+        "4\\sqrt3"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "根号の積/商の証明は平方値と正値条件の両方が必要。b>0で商を定義。√48=4√3、√8+√50=7√2、平方差と共役因子で有理化。比を保つだけでは現在求める有理化の因子とは限らない。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "10",
+      "item": "n10-09",
+      "answer": "2\\sqrt2+5\\sqrt2",
+      "choices": [
+        "2\\sqrt2+25\\sqrt2",
+        "\\sqrt{58}",
+        "2\\sqrt2+5\\sqrt2"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "根号の積/商の証明は平方値と正値条件の両方が必要。b>0で商を定義。√48=4√3、√8+√50=7√2、平方差と共役因子で有理化。比を保つだけでは現在求める有理化の因子とは限らない。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "10",
+      "item": "n10-10",
+      "answer": "7\\sqrt2",
+      "choices": [
+        "7\\sqrt2",
+        "3\\sqrt2",
+        "7\\sqrt{2+2}"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "根号の積/商の証明は平方値と正値条件の両方が必要。b>0で商を定義。√48=4√3、√8+√50=7√2、平方差と共役因子で有理化。比を保つだけでは現在求める有理化の因子とは限らない。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "10",
+      "item": "n10-11",
+      "answer": "2-2\\sqrt2\\sqrt3+3",
+      "choices": [
+        "2-\\sqrt2\\sqrt3+3",
+        "2-2\\sqrt2\\sqrt3+9",
+        "2-2\\sqrt2\\sqrt3+3"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "根号の積/商の証明は平方値と正値条件の両方が必要。b>0で商を定義。√48=4√3、√8+√50=7√2、平方差と共役因子で有理化。比を保つだけでは現在求める有理化の因子とは限らない。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "10",
+      "item": "n10-12",
+      "answer": "5-2\\sqrt6",
+      "choices": [
+        "5-\\sqrt6",
+        "5-2\\sqrt6",
+        "5+2\\sqrt6",
+        "6-2\\sqrt6"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "根号の積/商の証明は平方値と正値条件の両方が必要。b>0で商を定義。√48=4√3、√8+√50=7√2、平方差と共役因子で有理化。比を保つだけでは現在求める有理化の因子とは限らない。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "10",
+      "item": "n10-13",
+      "answer": "7-2=5",
+      "choices": [
+        "7-2=5",
+        "7-\\sqrt{14}",
+        "7-4=3",
+        "7+2=9"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "根号の積/商の証明は平方値と正値条件の両方が必要。b>0で商を定義。√48=4√3、√8+√50=7√2、平方差と共役因子で有理化。比を保つだけでは現在求める有理化の因子とは限らない。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "10",
+      "item": "n10-14",
+      "answer": "0でない同じ数を分子・分母の両方に掛ける",
+      "choices": [
+        "分母から根号をそのまま消す",
+        "分母だけに同じ数を掛ける",
+        "0でない同じ数を分子・分母の両方に掛ける"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "根号の積/商の証明は平方値と正値条件の両方が必要。b>0で商を定義。√48=4√3、√8+√50=7√2、平方差と共役因子で有理化。比を保つだけでは現在求める有理化の因子とは限らない。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "10",
+      "item": "n10-15",
+      "answer": "\\frac1{2\\sqrt3}\\cdot\\frac{\\sqrt3}{\\sqrt3}=\\frac{\\sqrt3}{2(\\sqrt3)^2}",
+      "choices": [
+        "\\frac1{2\\sqrt3}\\cdot\\frac3{\\sqrt3}",
+        "\\frac1{2\\sqrt3}\\cdot\\frac{\\sqrt3}{\\sqrt3}=\\frac{\\sqrt3}{2(\\sqrt3)^2}",
+        "\\frac1{2\\sqrt3}\\cdot\\frac{\\sqrt2}{\\sqrt2}"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "根号の積/商の証明は平方値と正値条件の両方が必要。b>0で商を定義。√48=4√3、√8+√50=7√2、平方差と共役因子で有理化。比を保つだけでは現在求める有理化の因子とは限らない。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "10",
+      "item": "n10-16",
+      "answer": "\\frac{\\sqrt3}{6}",
+      "choices": [
+        "\\frac1{6\\sqrt3}",
+        "\\frac{\\sqrt3}{2}",
+        "\\frac{\\sqrt3}{6}"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "根号の積/商の証明は平方値と正値条件の両方が必要。b>0で商を定義。√48=4√3、√8+√50=7√2、平方差と共役因子で有理化。比を保つだけでは現在求める有理化の因子とは限らない。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "10",
+      "item": "n10-17",
+      "answer": "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt3-\\sqrt2}{\\sqrt3-\\sqrt2}",
+      "choices": [
+        "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt3-\\sqrt2}{\\sqrt3-\\sqrt2}",
+        "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt2}{\\sqrt2}",
+        "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt3+\\sqrt2}{\\sqrt3+\\sqrt2}",
+        "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt3}{\\sqrt3}"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "根号の積/商の証明は平方値と正値条件の両方が必要。b>0で商を定義。√48=4√3、√8+√50=7√2、平方差と共役因子で有理化。比を保つだけでは現在求める有理化の因子とは限らない。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "10",
+      "item": "n10-18",
+      "answer": "3-2=1",
+      "choices": [
+        "\\sqrt3-\\sqrt2",
+        "3-\\sqrt6",
+        "3+2=5",
+        "3-2=1"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "根号の積/商の証明は平方値と正値条件の両方が必要。b>0で商を定義。√48=4√3、√8+√50=7√2、平方差と共役因子で有理化。比を保つだけでは現在求める有理化の因子とは限らない。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "10",
+      "item": "n10-19",
+      "answer": "3-\\sqrt6",
+      "choices": [
+        "3-\\sqrt6",
+        "3-2\\sqrt6",
+        "3+\\sqrt6",
+        "1-\\sqrt6"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "根号の積/商の証明は平方値と正値条件の両方が必要。b>0で商を定義。√48=4√3、√8+√50=7√2、平方差と共役因子で有理化。比を保つだけでは現在求める有理化の因子とは限らない。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "10",
+      "item": "n10-20",
+      "answer": "\\frac{(2-\\sqrt3)^2}{(2+\\sqrt3)(2-\\sqrt3)}=\\frac{(2-\\sqrt3)^2}{4-3}",
+      "choices": [
+        "\\frac{(2-\\sqrt3)^2}{(2+\\sqrt3)^2}",
+        "\\frac{2-\\sqrt3}{2+\\sqrt3}\\cdot\\frac{2+\\sqrt3}{2+\\sqrt3}",
+        "\\frac{(2-\\sqrt3)^2}{(2+\\sqrt3)(2-\\sqrt3)}=\\frac{(2-\\sqrt3)^2}{4-3}",
+        "\\frac{(2-\\sqrt3)^2}{4+3}"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "根号の積/商の証明は平方値と正値条件の両方が必要。b>0で商を定義。√48=4√3、√8+√50=7√2、平方差と共役因子で有理化。比を保つだけでは現在求める有理化の因子とは限らない。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "10",
+      "item": "n10-21",
+      "answer": "7-4\\sqrt3",
+      "choices": [
+        "1-4\\sqrt3",
+        "7+4\\sqrt3",
+        "7-2\\sqrt3",
+        "7-4\\sqrt3"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "根号の積/商の証明は平方値と正値条件の両方が必要。b>0で商を定義。√48=4√3、√8+√50=7√2、平方差と共役因子で有理化。比を保つだけでは現在求める有理化の因子とは限らない。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "11",
+      "item": "n11-01",
+      "answer": ">",
+      "choices": [
+        ">",
+        "\\le"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a<bでb−a>0。加法は差を維持、c正/負で積の差の符号が決まり、c=0では厳密順序を失う。負数で割ると不等号反転、等号の有無と境界代入を別途照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "11",
+      "item": "n11-02",
+      "answer": "b-a",
+      "choices": [
+        "a-b",
+        "b-a"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a<bでb−a>0。加法は差を維持、c正/負で積の差の符号が決まり、c=0では厳密順序を失う。負数で割ると不等号反転、等号の有無と境界代入を別途照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "11",
+      "item": "n11-wm011-q02-compare",
+      "answer": "a+c<b+c,\\quad\\text{差は正のまま}",
+      "choices": [
+        "a+c<b+c,\\quad\\text{差は正のまま}",
+        "a+c>b+c,\\quad\\text{差は正のまま}",
+        "a+c>b+c,\\quad\\text{差は負になる}"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a<bでb−a>0。加法は差を維持、c正/負で積の差の符号が決まり、c=0では厳密順序を失う。負数で割ると不等号反転、等号の有無と境界代入を別途照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "11",
+      "item": "n11-wm011-q03-factor",
+      "answer": "c",
+      "choices": [
+        "c^2",
+        "-c",
+        "c"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a<bでb−a>0。加法は差を維持、c正/負で積の差の符号が決まり、c=0では厳密順序を失う。負数で割ると不等号反転、等号の有無と境界代入を別途照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "11",
+      "item": "n11-wm011-q03-positive",
+      "answer": "ac<bc,\\quad bc-ac>0",
+      "choices": [
+        "ac=bc,\\quad bc-ac=0",
+        "ac<bc,\\quad bc-ac<0",
+        "ac<bc,\\quad bc-ac>0"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a<bでb−a>0。加法は差を維持、c正/負で積の差の符号が決まり、c=0では厳密順序を失う。負数で割ると不等号反転、等号の有無と境界代入を別途照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "11",
+      "item": "n11-03",
+      "answer": "ac>bc,\\quad bc-ac<0",
+      "choices": [
+        "ac<bc,\\quad bc-ac>0",
+        "ac>bc,\\quad bc-ac<0",
+        "ac=bc,\\quad bc-ac=0"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a<bでb−a>0。加法は差を維持、c正/負で積の差の符号が決まり、c=0では厳密順序を失う。負数で割ると不等号反転、等号の有無と境界代入を別途照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "11",
+      "item": "n11-wm011-q03-zero",
+      "answer": "ac=bc=0,\\quad\\text{元の厳密な大小は失われる}",
+      "choices": [
+        "ac>bc,\\quad\\text{逆転する}",
+        "ac=bc=0,\\quad\\text{元の不等号を保つ}",
+        "ac=bc=0,\\quad\\text{元の厳密な大小は失われる}"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a<bでb−a>0。加法は差を維持、c正/負で積の差の符号が決まり、c=0では厳密順序を失う。負数で割ると不等号反転、等号の有無と境界代入を別途照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "11",
+      "item": "n11-wm011-q04-fraction",
+      "answer": "-\\frac a5>-\\frac b5,\\quad\\text{負数倍なので反転}",
+      "choices": [
+        "-\\frac a5>-\\frac b5,\\quad\\text{負数倍なので反転}",
+        "-\\frac a5=-\\frac b5,\\quad\\text{等号になる}",
+        "-\\frac a5<-\\frac b5,\\quad\\text{向きを保つ}",
+        "-\\frac a5>-\\frac b5,\\quad\\text{正数倍なので反転}"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a<bでb−a>0。加法は差を維持、c正/負で積の差の符号が決まり、c=0では厳密順序を失う。負数で割ると不等号反転、等号の有無と境界代入を別途照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "11",
+      "item": "n11-04",
+      "answer": "3-a>3-b",
+      "choices": [
+        "3+a>3+b",
+        "3-a=3-b",
+        "3-a<3-b",
+        "3-a>3-b"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a<bでb−a>0。加法は差を維持、c正/負で積の差の符号が決まり、c=0では厳密順序を失う。負数で割ると不等号反転、等号の有無と境界代入を別途照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "11",
+      "item": "n11-wm017-q05-operation",
+      "answer": "2",
+      "choices": [
+        "2",
+        "0",
+        "-2",
+        "3"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "a<bでb−a>0。加法は差を維持、c正/負で積の差の符号が決まり、c=0では厳密順序を失う。負数で割ると不等号反転、等号の有無と境界代入を別途照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "11",
+      "item": "n11-wm017-q05-balance",
+      "answer": "2",
+      "choices": [
+        "0",
+        "5",
+        "-2",
+        "2"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "a<bでb−a>0。加法は差を維持、c正/負で積の差の符号が決まり、c=0では厳密順序を失う。負数で割ると不等号反転、等号の有無と境界代入を別途照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "11",
+      "item": "n11-05",
+      "answer": "7",
+      "choices": [
+        "7",
+        "3",
+        "9",
+        "5"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "a<bでb−a>0。加法は差を維持、c正/負で積の差の符号が決まり、c=0では厳密順序を失う。負数で割ると不等号反転、等号の有無と境界代入を別途照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "11",
+      "item": "n11-06",
+      "answer": "\\frac73",
+      "choices": [
+        "7",
+        "\\frac37",
+        "\\frac73",
+        "-\\frac73"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a<bでb−a>0。加法は差を維持、c正/負で積の差の符号が決まり、c=0では厳密順序を失う。負数で割ると不等号反転、等号の有無と境界代入を別途照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "11",
+      "item": "n11-07",
+      "answer": "含まれない（等号となり<を満たさない）",
+      "choices": [
+        "判断できない（分数だから）",
+        "含まれない（等号となり<を満たさない）",
+        "含まれる（3は正だから）"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a<bでb−a>0。加法は差を維持、c正/負で積の差の符号が決まり、c=0では厳密順序を失う。負数で割ると不等号反転、等号の有無と境界代入を別途照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "11",
+      "item": "n11-p007-q08-subtract-left",
+      "answer": "3",
+      "choices": [
+        "5",
+        "-3",
+        "2",
+        "3"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a<bでb−a>0。加法は差を維持、c正/負で積の差の符号が決まり、c=0では厳密順序を失う。負数で割ると不等号反転、等号の有無と境界代入を別途照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "11",
+      "item": "n11-p007-q08-subtract-right",
+      "answer": "3",
+      "choices": [
+        "3",
+        "2",
+        "-3",
+        "5"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a<bでb−a>0。加法は差を維持、c正/負で積の差の符号が決まり、c=0では厳密順序を失う。負数で割ると不等号反転、等号の有無と境界代入を別途照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "11",
+      "item": "n11-08",
+      "answer": "2",
+      "choices": [
+        "5",
+        "-2",
+        "8",
+        "2"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "a<bでb−a>0。加法は差を維持、c正/負で積の差の符号が決まり、c=0では厳密順序を失う。負数で割ると不等号反転、等号の有無と境界代入を別途照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "11",
+      "item": "n11-p007-q09-direction",
+      "answer": "\\ge",
+      "choices": [
+        "\\le",
+        ">",
+        "<",
+        "\\ge"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a<bでb−a>0。加法は差を維持、c正/負で積の差の符号が決まり、c=0では厳密順序を失う。負数で割ると不等号反転、等号の有無と境界代入を別途照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "11",
+      "item": "n11-09",
+      "answer": "-1",
+      "choices": [
+        "1",
+        "2",
+        "-1",
+        "-2"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "a<bでb−a>0。加法は差を維持、c正/負で積の差の符号が決まり、c=0では厳密順序を失う。負数で割ると不等号反転、等号の有無と境界代入を別途照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "11",
+      "item": "n11-10",
+      "answer": "含む（代入すると5≤5）",
+      "choices": [
+        "含む（代入すると5≤5）",
+        "含まない（代入すると5<5）",
+        "含む（不等号を逆にしないから）",
+        "含まない（負の数だから）"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a<bでb−a>0。加法は差を維持、c正/負で積の差の符号が決まり、c=0では厳密順序を失う。負数で割ると不等号反転、等号の有無と境界代入を別途照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "11",
+      "item": "n11-wm012-q11-expand",
+      "answer": "6x+9",
+      "choices": [
+        "6x+9",
+        "6x+6",
+        "2x+9"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a<bでb−a>0。加法は差を維持、c正/負で積の差の符号が決まり、c=0では厳密順序を失う。負数で割ると不等号反転、等号の有無と境界代入を別途照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "11",
+      "item": "n11-wm012-q11-xcoef",
+      "answer": "-4",
+      "choices": [
+        "16",
+        "-4",
+        "4"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "a<bでb−a>0。加法は差を維持、c正/負で積の差の符号が決まり、c=0では厳密順序を失う。負数で割ると不等号反転、等号の有無と境界代入を別途照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "11",
+      "item": "n11-11",
+      "answer": "-4x\\ge-26",
+      "choices": [
+        "-4x\\le-26",
+        "-4x\\ge26",
+        "-4x\\ge-26",
+        "4x\\ge-26"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a<bでb−a>0。加法は差を維持、c正/負で積の差の符号が決まり、c=0では厳密順序を失う。負数で割ると不等号反転、等号の有無と境界代入を別途照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "11",
+      "item": "n11-12",
+      "answer": "x\\le\\frac{13}{2}",
+      "choices": [
+        "x\\le\\frac{13}{2}",
+        "x\\ge\\frac{13}{2}",
+        "x<\\frac{13}{2}",
+        "x\\le-\\frac{13}{2}"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a<bでb−a>0。加法は差を維持、c正/負で積の差の符号が決まり、c=0では厳密順序を失う。負数で割ると不等号反転、等号の有無と境界代入を別途照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "11",
+      "item": "n11-p008-q13-mul-left",
+      "answer": "3",
+      "choices": [
+        "6",
+        "1",
+        "3",
+        "-3"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a<bでb−a>0。加法は差を維持、c正/負で積の差の符号が決まり、c=0では厳密順序を失う。負数で割ると不等号反転、等号の有無と境界代入を別途照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "11",
+      "item": "n11-p008-q13-mul-right",
+      "answer": "3",
+      "choices": [
+        "1",
+        "3",
+        "6",
+        "-3"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a<bでb−a>0。加法は差を維持、c正/負で積の差の符号が決まり、c=0では厳密順序を失う。負数で割ると不等号反転、等号の有無と境界代入を別途照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "11",
+      "item": "n11-13",
+      "answer": "6",
+      "choices": [
+        "9",
+        "2",
+        "3",
+        "6"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "a<bでb−a>0。加法は差を維持、c正/負で積の差の符号が決まり、c=0では厳密順序を失う。負数で割ると不等号反転、等号の有無と境界代入を別途照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "11",
+      "item": "n11-p008-q13-constant",
+      "answer": "3",
+      "choices": [
+        "3",
+        "-3",
+        "1",
+        "6"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "a<bでb−a>0。加法は差を維持、c正/負で積の差の符号が決まり、c=0では厳密順序を失う。負数で割ると不等号反転、等号の有無と境界代入を別途照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "11",
+      "item": "n11-wm013-q14-xcoef",
+      "answer": "5",
+      "choices": [
+        "7",
+        "5",
+        "-5"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "a<bでb−a>0。加法は差を維持、c正/負で積の差の符号が決まり、c=0では厳密順序を失う。負数で割ると不等号反転、等号の有無と境界代入を別途照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "11",
+      "item": "n11-wm013-q14-const",
+      "answer": "-5",
+      "choices": [
+        "-2",
+        "-5",
+        "1"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "a<bでb−a>0。加法は差を維持、c正/負で積の差の符号が決まり、c=0では厳密順序を失う。負数で割ると不等号反転、等号の有無と境界代入を別途照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "11",
+      "item": "n11-14",
+      "answer": "x\\ge-1",
+      "choices": [
+        "x\\le-1",
+        "x>-1",
+        "x\\ge-1",
+        "x\\ge1"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a<bでb−a>0。加法は差を維持、c正/負で積の差の符号が決まり、c=0では厳密順序を失う。負数で割ると不等号反転、等号の有無と境界代入を別途照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-p002-q01-coef",
+      "answer": "2",
+      "choices": [
+        "-2",
+        "2"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-p002-q01-const",
+      "answer": "-7",
+      "choices": [
+        "7",
+        "-7"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-01",
+      "answer": "x>-\\frac72",
+      "choices": [
+        "x< -\\frac72",
+        "x>-\\frac72"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-p002-q02-coef",
+      "answer": "2",
+      "choices": [
+        "2",
+        "-2"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-p002-q02-const",
+      "answer": "1",
+      "choices": [
+        "1",
+        "4"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-02",
+      "answer": "x\\le\\frac12",
+      "choices": [
+        "x\\le\\frac12",
+        "x\\ge\\frac12"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-03",
+      "answer": "二つ目に反するので不適",
+      "choices": [
+        "一つ目を満たすから適する",
+        "二つ目に反するので不適"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-04",
+      "answer": "-\\frac72<x\\le\\frac12",
+      "choices": [
+        "-\\frac72<x<\\frac12",
+        "x>-\\frac72\\ \\text{または}\\ x\\le\\frac12",
+        "-\\frac72<x\\le\\frac12"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-05",
+      "answer": "3x+2\\le2x+4\\ \\text{かつ}\\ 2x+4\\le9-x",
+      "choices": [
+        "3x+2\\le2x+4\\ \\text{かつ}\\ 2x+4\\le9-x",
+        "3x+2\\le2x+4\\ \\text{または}\\ 2x+4\\le9-x",
+        "3x+2\\le9-x"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-p002-q06-left-coef",
+      "answer": "1",
+      "choices": [
+        "-1",
+        "2",
+        "1"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-p002-q06-left-const",
+      "answer": "2",
+      "choices": [
+        "4",
+        "2",
+        "6"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-p002-q06-right-coef",
+      "answer": "3",
+      "choices": [
+        "3",
+        "2",
+        "-3"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-p002-q06-right-const",
+      "answer": "5",
+      "choices": [
+        "9",
+        "13",
+        "5"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-06",
+      "answer": "x\\le2,\\quad x\\le\\frac53",
+      "choices": [
+        "x\\ge2,\\quad x\\le\\frac53",
+        "x\\le2,\\quad x\\le\\frac53",
+        "x\\le2,\\quad x\\le\\frac35"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-07",
+      "answer": "x\\le\\frac53",
+      "choices": [
+        "x\\le\\frac53",
+        "x\\ge\\frac53",
+        "\\frac53\\le x\\le2"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-08",
+      "answer": "20-x",
+      "choices": [
+        "20-x",
+        "20"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-09",
+      "answer": "x\\in\\mathbb Z,\\ 0\\le x\\le20",
+      "choices": [
+        "x\\in\\mathbb Z,\\ 0\\le x\\le20",
+        "x\\in\\mathbb Z,\\ 0<x<20",
+        "x\\in\\mathbb Z,\\ x\\ge0"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-p003-q10-meaning",
+      "answer": "箱と20個の菓子の合計金額",
+      "choices": [
+        "箱と20個の菓子の合計金額",
+        "シュークリームの個数"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-p003-q10-cream-coef",
+      "answer": "180",
+      "choices": [
+        "180",
+        "20",
+        "130"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-p003-q10-pudding-coef",
+      "answer": "130",
+      "choices": [
+        "20",
+        "130",
+        "180"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-p003-q10-box-fee",
+      "answer": "50",
+      "choices": [
+        "180",
+        "20",
+        "50"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-10",
+      "answer": "50+180x+130(20-x)",
+      "choices": [
+        "50+180x+130(20-x)",
+        "180x+130(20-x)",
+        "50+180x+130x"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-p003-q11-lower-sign",
+      "answer": "\\le",
+      "choices": [
+        "\\le",
+        ">",
+        "<"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-p003-q11-upper-sign",
+      "answer": "<",
+      "choices": [
+        "\\ge",
+        "<",
+        ">"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-11",
+      "answer": "3200\\le50+180x+130(20-x)<3300",
+      "choices": [
+        "3200\\ge50+180x+130(20-x)<3300",
+        "3200\\le50+180x+130(20-x)<3300",
+        "3200<50+180x+130(20-x)\\le3300"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-p003-q12-product-constant",
+      "answer": "2600",
+      "choices": [
+        "2600",
+        "2500",
+        "1300"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-p002-q12-signed-coef",
+      "answer": "-130",
+      "choices": [
+        "-20",
+        "130",
+        "-130"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-p003-q12-total-constant",
+      "answer": "2650",
+      "choices": [
+        "2600",
+        "2650",
+        "3100"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-p003-q12-x-coef",
+      "answer": "50",
+      "choices": [
+        "-50",
+        "130",
+        "50"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-12",
+      "answer": "3200\\le2650+50x<3300",
+      "choices": [
+        "3200\\le2650-50x<3300",
+        "3200\\le2600+50x<3300",
+        "3200\\le2650+50x<3300"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-p002-q13-lower",
+      "answer": "550",
+      "choices": [
+        "-550",
+        "550",
+        "650"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-p002-q13-upper",
+      "answer": "650",
+      "choices": [
+        "650",
+        "550",
+        "-650"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-13",
+      "answer": "11\\le x<13",
+      "choices": [
+        "11<x\\le13",
+        "11\\le x\\le13",
+        "11\\le x<13",
+        "x\\le11\\ \\text{または}\\ x>13"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-14",
+      "answer": "x=11\\ \\text{または}\\ 12",
+      "choices": [
+        "x=11\\ \\text{のみ}",
+        "11\\le x\\le13",
+        "x=11\\ \\text{または}\\ 12",
+        "x=12\\ \\text{または}\\ 13"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "12",
+      "item": "n12-15",
+      "answer": "T(11)=3200\\text{円},\\ T(12)=3250\\text{円}",
+      "choices": [
+        "T(11)=3200\\text{円},\\ T(12)=3250\\text{円}",
+        "T(11)=3150\\text{円},\\ T(12)=3200\\text{円}",
+        "T(11)=3200\\text{円},\\ T(12)=3300\\text{円}",
+        "T(11)=3250\\text{円},\\ T(12)=3200\\text{円}"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "共通部分はAND、離れた解の和集合と混同しない。上限min(2,5/3)=5/3。20個の整数条件と箱代50を保持。T=2650+50x、3200≤T<3300より11≤x<13、整数11,12、代金3200,3250。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "13",
+      "item": "n13-01",
+      "answer": "x=5\\;\\text{または}\\;x=-5",
+      "choices": [
+        "x=5\\;\\text{または}\\;x=-5",
+        "x=-5"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "|ax+b|=c>0はax+b=±cの2枝、c=0は中身0、c<0は実数解なし。xと1の距離の左右別表式、各一次方程式と全解の漏れを照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "13",
+      "item": "n13-02",
+      "answer": "X=4\\;\\text{または}\\;X=-4",
+      "choices": [
+        "X=4",
+        "X=4\\;\\text{または}\\;X=-4"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "|ax+b|=c>0はax+b=±cの2枝、c=0は中身0、c<0は実数解なし。xと1の距離の左右別表式、各一次方程式と全解の漏れを照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "13",
+      "item": "n13-03",
+      "answer": "x-1=4\\;\\text{または}\\;x-1=-4",
+      "choices": [
+        "x-1=4\\;\\text{かつ}\\;x-1=-4",
+        "x=4\\;\\text{または}\\;x=-4",
+        "x-1=4\\;\\text{または}\\;x-1=-4"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "|ax+b|=c>0はax+b=±cの2枝、c=0は中身0、c<0は実数解なし。xと1の距離の左右別表式、各一次方程式と全解の漏れを照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "13",
+      "item": "n13-04",
+      "answer": "x=5\\;\\text{または}\\;x=-3",
+      "choices": [
+        "x=5\\;\\text{または}\\;x=-3",
+        "x=3\\;\\text{または}\\;x=-5",
+        "x=5"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "|ax+b|=c>0はax+b=±cの2枝、c=0は中身0、c<0は実数解なし。xと1の距離の左右別表式、各一次方程式と全解の漏れを照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "13",
+      "item": "n13-wm023-q05-right",
+      "answer": "x-1",
+      "choices": [
+        "-1-x",
+        "1-x",
+        "x-1"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "|ax+b|=c>0はax+b=±cの2枝、c=0は中身0、c<0は実数解なし。xと1の距離の左右別表式、各一次方程式と全解の漏れを照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "13",
+      "item": "n13-05",
+      "answer": "1-x",
+      "choices": [
+        "-1-x",
+        "x-1",
+        "1-x"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "|ax+b|=c>0はax+b=±cの2枝、c=0は中身0、c<0は実数解なし。xと1の距離の左右別表式、各一次方程式と全解の漏れを照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "13",
+      "item": "n13-06",
+      "answer": "x+2=3\\;\\text{または}\\;x+2=-3",
+      "choices": [
+        "x+2=3\\;\\text{または}\\;x+2=-3",
+        "x+2=3\\;\\text{かつ}\\;x+2=-3",
+        "x-2=3\\;\\text{または}\\;x-2=-3"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "|ax+b|=c>0はax+b=±cの2枝、c=0は中身0、c<0は実数解なし。xと1の距離の左右別表式、各一次方程式と全解の漏れを照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "13",
+      "item": "n13-07",
+      "answer": "x=1\\;\\text{または}\\;x=-5",
+      "choices": [
+        "x=1\\;\\text{または}\\;x=-5",
+        "x=-1\\;\\text{または}\\;x=-5",
+        "x=1",
+        "x=5\\;\\text{または}\\;x=-1"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "|ax+b|=c>0はax+b=±cの2枝、c=0は中身0、c<0は実数解なし。xと1の距離の左右別表式、各一次方程式と全解の漏れを照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "13",
+      "item": "n13-wm023-q08-branches",
+      "answer": "3x=6\\;\\text{または}\\;3x=-6",
+      "choices": [
+        "3x=6\\;\\text{または}\\;3x=-6",
+        "3x=6\\;\\text{かつ}\\;3x=-6",
+        "3x=6"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "|ax+b|=c>0はax+b=±cの2枝、c=0は中身0、c<0は実数解なし。xと1の距離の左右別表式、各一次方程式と全解の漏れを照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "13",
+      "item": "n13-wm023-q08-positive-root",
+      "answer": "2",
+      "choices": [
+        "2",
+        "6",
+        "-2"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "|ax+b|=c>0はax+b=±cの2枝、c=0は中身0、c<0は実数解なし。xと1の距離の左右別表式、各一次方程式と全解の漏れを照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "13",
+      "item": "n13-08",
+      "answer": "-2",
+      "choices": [
+        "-2",
+        "2",
+        "-\\frac12"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "|ax+b|=c>0はax+b=±cの2枝、c=0は中身0、c<0は実数解なし。xと1の距離の左右別表式、各一次方程式と全解の漏れを照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "13",
+      "item": "n13-09",
+      "answer": "0ならx=0、負なら実数解なし",
+      "choices": [
+        "両方ともすべての実数",
+        "0なら解なし、負ならx=−2",
+        "0ならx=0、負なら実数解なし",
+        "0ならx=±0、負ならx=±2"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "|ax+b|=c>0はax+b=±cの2枝、c=0は中身0、c<0は実数解なし。xと1の距離の左右別表式、各一次方程式と全解の漏れを照合。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-01",
+      "answer": "原点からの距離が3より小さい",
+      "choices": [
+        "原点からの距離が3より大きい",
+        "原点からの距離が3より小さい"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-02",
+      "answer": "x=-3,\\quad x=3",
+      "choices": [
+        "x=-3,\\quad x=3",
+        "x=-3,\\quad x=0"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-03",
+      "answer": "二点の間、両端を含まない",
+      "choices": [
+        "二点の間、両端を含む",
+        "二点の外側、両端を含まない",
+        "二点の間、両端を含まない"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-04",
+      "answer": "-3<x<3",
+      "choices": [
+        "-3\\le x\\le3",
+        "-3<x<3",
+        "x<-3\\;\\text{または}\\;x>3"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-05",
+      "answer": "境界−4と4、外側、端点を含む",
+      "choices": [
+        "境界−4と4、外側、端点を含む",
+        "境界−4と4、内側、端点を含む",
+        "境界0と4、外側、端点を含む"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-06",
+      "answer": "x\\le-4\\;\\text{または}\\;x\\ge4",
+      "choices": [
+        "x<-4\\;\\text{または}\\;x>4",
+        "x\\le-4\\;\\text{または}\\;x\\ge4",
+        "-4\\le x\\le4"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-wm014-q07-nonnegative",
+      "answer": "0\\le X<a",
+      "choices": [
+        "X>a",
+        "-a<X<0",
+        "0\\le X<a"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-wm014-q07-negative",
+      "answer": "-a<X<0",
+      "choices": [
+        "0\\le X<a",
+        "-a<X<0",
+        "-a\\le X<0"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-07",
+      "answer": "-a<X<a",
+      "choices": [
+        "-a<X<a",
+        "-a\\le X\\le a",
+        "a<X<-a"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-wm015-q08-nonnegative",
+      "answer": "X>a",
+      "choices": [
+        "X>a",
+        "X<-a",
+        "X\\ge a"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-wm015-q08-negative",
+      "answer": "X<-a",
+      "choices": [
+        "X>a",
+        "X\\le-a",
+        "X<-a"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-08",
+      "answer": "X<-a\\;\\text{または}\\;X>a",
+      "choices": [
+        "X<-a\\;\\text{かつ}\\;X>a",
+        "-a<X<a",
+        "X<-a\\;\\text{または}\\;X>a"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-09",
+      "answer": "-5<x-3<5",
+      "choices": [
+        "-5<x-3<5",
+        "-5<x<5",
+        "-5\\le x-3\\le5"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-wm018-q10-add-left",
+      "answer": "3",
+      "choices": [
+        "3",
+        "5",
+        "-3",
+        "2"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-wm018-q10-add-center",
+      "answer": "3",
+      "choices": [
+        "3",
+        "-3",
+        "0",
+        "5"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-wm018-q10-add-right",
+      "answer": "3",
+      "choices": [
+        "-3",
+        "2",
+        "-5",
+        "3"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-10",
+      "answer": "-2",
+      "choices": [
+        "2",
+        "-5",
+        "-8",
+        "-2"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-wm018-q10-bound-right",
+      "answer": "8",
+      "choices": [
+        "-8",
+        "2",
+        "8",
+        "5"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-11",
+      "answer": "x+3\\le-2\\;\\text{または}\\;x+3\\ge2",
+      "choices": [
+        "x+3<-2\\;\\text{または}\\;x+3>2",
+        "x+3\\le-2\\;\\text{または}\\;x+3\\ge2",
+        "x+3\\le-2\\;\\text{かつ}\\;x+3\\ge2"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-wm016-q12-left",
+      "answer": "x\\le-5",
+      "choices": [
+        "x\\ge-5",
+        "x\\le-1",
+        "x\\le-5"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-wm016-q12-right",
+      "answer": "x\\ge-1",
+      "choices": [
+        "x\\ge-1",
+        "x\\ge1",
+        "x>-1"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-12",
+      "answer": "x\\le-5\\;\\text{または}\\;x\\ge-1",
+      "choices": [
+        "-5\\le x\\le-1",
+        "x\\le-5\\;\\text{または}\\;x\\ge-1",
+        "x\\le-1\\;\\text{または}\\;x\\ge5",
+        "x<-5\\;\\text{または}\\;x>-1"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-13",
+      "answer": "-4\\le3x-2\\le4",
+      "choices": [
+        "-4\\le3x-2\\le4",
+        "3x-2\\le-4\\;\\text{または}\\;3x-2\\ge4",
+        "-4\\le3x\\le4",
+        "-4<3x-2<4"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-wm019-q14-add-left",
+      "answer": "2",
+      "choices": [
+        "6",
+        "2",
+        "-2",
+        "4"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-wm019-q14-add-center",
+      "answer": "2",
+      "choices": [
+        "-2",
+        "2",
+        "3",
+        "0"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-wm019-q14-add-right",
+      "answer": "2",
+      "choices": [
+        "-2",
+        "4",
+        "2",
+        "0"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-14",
+      "answer": "-2",
+      "choices": [
+        "2",
+        "-6",
+        "-4",
+        "-2"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-wm019-q14-bound-right",
+      "answer": "6",
+      "choices": [
+        "2",
+        "4",
+        "-6",
+        "6"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-wm020-q15-divide-left",
+      "answer": "3",
+      "choices": [
+        "-3",
+        "2",
+        "3",
+        "6"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-wm020-q15-divide-center",
+      "answer": "3",
+      "choices": [
+        "3",
+        "1",
+        "-3",
+        "6"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-wm020-q15-divide-right",
+      "answer": "3",
+      "choices": [
+        "6",
+        "3",
+        "-3",
+        "2"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-15",
+      "answer": "-\\frac23",
+      "choices": [
+        "-\\frac23",
+        "-6",
+        "\\frac23",
+        "-\\frac32"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-wm020-q15-bound-right",
+      "answer": "2",
+      "choices": [
+        "2",
+        "3",
+        "\\frac12",
+        "-2"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-wm022-q16-left-inner",
+      "answer": "-4",
+      "choices": [
+        "-4",
+        "4",
+        "0",
+        "-2"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-wm022-q16-left-abs",
+      "answer": "4",
+      "choices": [
+        "-4",
+        "0",
+        "4",
+        "2"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-wm022-q16-right-inner",
+      "answer": "4",
+      "choices": [
+        "2",
+        "-4",
+        "6",
+        "4"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-wm022-q16-right-abs",
+      "answer": "4",
+      "choices": [
+        "2",
+        "0",
+        "-4",
+        "4"
+      ],
+      "method": "exact-calculation-plus-semantic-review",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    },
+    {
+      "unit": "14",
+      "item": "n14-16",
+      "answer": "両端とも含む",
+      "choices": [
+        "両端とも含まない",
+        "両端とも含む",
+        "左端だけ含む",
+        "右端だけ含む"
+      ],
+      "method": "semantic-review-of-source-premise-and-required-form",
+      "reason": "a>0で|X|<aは内側AND、|X|>aは外側OR。端点の開閉を元の記号から維持。|x−3|<5→−2<x<8、|x+3|≥2→x≤−5またはx≥−1、|3x−2|≤4→−2/3≤x≤2。両端の元式の絶対値はいずれも4。",
+      "result": "PASS reviewed scope"
+    }
+  ],
+  "limitations": "An assistant semantic review with exact calculation support, not an independent agent, official answer booklet or proof that every prose sentence is verbatim Word text. Original208 question prompts were read from exact Word paragraph map; authored reformulations preserve teaching purpose. Existing figure-gate and source/math regressions are tracked separately. User visual/final-app acceptance is not inferred."
+}

@@ -1,0 +1,329 @@
+{
+  "source": "68338688f22ffb3acaa7074b5c0c0f79584604c5",
+  "id": "n12-p003-q10-pudding-coef",
+  "width": 320,
+  "reviewBefore": {
+    "n12": true,
+    "scroll": 0,
+    "width": 212,
+    "scrollWidth": 212,
+    "left": 56.578125,
+    "right": 268.421875,
+    "group": {
+      "width": 137,
+      "scrollWidth": 137,
+      "parts": [
+        {
+          "left": 94.234375,
+          "right": 109.234375,
+          "top": 937.296875,
+          "bottom": 969.296875
+        },
+        {
+          "left": 110.5,
+          "right": 160.890625,
+          "top": 937.296875,
+          "bottom": 981.296875
+        },
+        {
+          "left": 162.15625,
+          "right": 230.75,
+          "top": 937.296875,
+          "bottom": 969.296875
+        }
+      ]
+    },
+    "leftGroup": {
+      "top": 902.75,
+      "bottom": 934.75
+    },
+    "rightGroup": {
+      "top": 937.296875,
+      "bottom": 981.296875
+    },
+    "parts": [
+      {
+        "left": 101.40625,
+        "right": 223.59375,
+        "top": 902.75,
+        "bottom": 934.75
+      },
+      {
+        "left": 94.234375,
+        "right": 230.75,
+        "top": 937.296875,
+        "bottom": 981.296875
+      }
+    ]
+  },
+  "reviewWrong": {
+    "n12": true,
+    "scroll": 0,
+    "width": 212,
+    "scrollWidth": 212,
+    "left": 56.578125,
+    "right": 268.421875,
+    "group": {
+      "width": 137,
+      "scrollWidth": 137,
+      "parts": [
+        {
+          "left": 94.234375,
+          "right": 109.234375,
+          "top": 539.296875,
+          "bottom": 571.296875
+        },
+        {
+          "left": 110.5,
+          "right": 160.890625,
+          "top": 539.296875,
+          "bottom": 583.296875
+        },
+        {
+          "left": 162.15625,
+          "right": 230.75,
+          "top": 539.296875,
+          "bottom": 571.296875
+        }
+      ]
+    },
+    "leftGroup": {
+      "top": 504.75,
+      "bottom": 536.75
+    },
+    "rightGroup": {
+      "top": 539.296875,
+      "bottom": 583.296875
+    },
+    "parts": [
+      {
+        "left": 101.40625,
+        "right": 223.59375,
+        "top": 504.75,
+        "bottom": 536.75
+      },
+      {
+        "left": 94.234375,
+        "right": 230.75,
+        "top": 539.296875,
+        "bottom": 583.296875
+      }
+    ]
+  },
+  "reviewCorrect": {
+    "n12": true,
+    "scroll": 0,
+    "width": 212,
+    "scrollWidth": 212,
+    "left": 56.578125,
+    "right": 268.421875,
+    "group": {
+      "width": 116,
+      "scrollWidth": 116,
+      "parts": [
+        {
+          "left": 104.4375,
+          "right": 119.4375,
+          "top": 551.296875,
+          "bottom": 583.296875
+        },
+        {
+          "left": 120.703125,
+          "right": 150.703125,
+          "top": 551.296875,
+          "bottom": 583.296875
+        },
+        {
+          "left": 151.96875,
+          "right": 220.5625,
+          "top": 551.296875,
+          "bottom": 583.296875
+        }
+      ]
+    },
+    "leftGroup": {
+      "top": 516.75,
+      "bottom": 548.75
+    },
+    "rightGroup": {
+      "top": 551.296875,
+      "bottom": 583.296875
+    },
+    "parts": [
+      {
+        "left": 101.40625,
+        "right": 223.59375,
+        "top": 516.75,
+        "bottom": 548.75
+      },
+      {
+        "left": 104.4375,
+        "right": 220.5625,
+        "top": 551.296875,
+        "bottom": 583.296875
+      }
+    ]
+  },
+  "reviewReload": {
+    "n12": true,
+    "scroll": 0,
+    "width": 212,
+    "scrollWidth": 212,
+    "left": 56.578125,
+    "right": 268.421875,
+    "group": {
+      "width": 137,
+      "scrollWidth": 137,
+      "parts": [
+        {
+          "left": 94.234375,
+          "right": 109.234375,
+          "top": 937.296875,
+          "bottom": 969.296875
+        },
+        {
+          "left": 110.5,
+          "right": 160.890625,
+          "top": 937.296875,
+          "bottom": 981.296875
+        },
+        {
+          "left": 162.15625,
+          "right": 230.75,
+          "top": 937.296875,
+          "bottom": 969.296875
+        }
+      ]
+    },
+    "leftGroup": {
+      "top": 902.75,
+      "bottom": 934.75
+    },
+    "rightGroup": {
+      "top": 937.296875,
+      "bottom": 981.296875
+    },
+    "parts": [
+      {
+        "left": 101.40625,
+        "right": 223.59375,
+        "top": 902.75,
+        "bottom": 934.75
+      },
+      {
+        "left": 94.234375,
+        "right": 230.75,
+        "top": 937.296875,
+        "bottom": 981.296875
+      }
+    ]
+  },
+  "normalWrong": {
+    "n12": true,
+    "scroll": 0,
+    "width": 240,
+    "scrollWidth": 240,
+    "left": 41.1875,
+    "right": 280.8125,
+    "group": {
+      "width": 137,
+      "scrollWidth": 137,
+      "parts": [
+        {
+          "left": 92.734375,
+          "right": 107.734375,
+          "top": 786.28125,
+          "bottom": 818.28125
+        },
+        {
+          "left": 109,
+          "right": 159.390625,
+          "top": 786.28125,
+          "bottom": 830.28125
+        },
+        {
+          "left": 160.65625,
+          "right": 229.25,
+          "top": 786.28125,
+          "bottom": 818.28125
+        }
+      ]
+    },
+    "leftGroup": {
+      "top": 751.734375,
+      "bottom": 783.734375
+    },
+    "rightGroup": {
+      "top": 786.28125,
+      "bottom": 830.28125
+    },
+    "parts": [
+      {
+        "left": 99.90625,
+        "right": 222.09375,
+        "top": 751.734375,
+        "bottom": 783.734375
+      },
+      {
+        "left": 92.734375,
+        "right": 229.25,
+        "top": 786.28125,
+        "bottom": 830.28125
+      }
+    ]
+  },
+  "normalComplete": {
+    "n12": true,
+    "scroll": 0,
+    "width": 240,
+    "scrollWidth": 240,
+    "left": 41.1875,
+    "right": 280.8125,
+    "group": {
+      "width": 116,
+      "scrollWidth": 116,
+      "parts": [
+        {
+          "left": 102.9375,
+          "right": 117.9375,
+          "top": 5200.28125,
+          "bottom": 5232.28125
+        },
+        {
+          "left": 119.203125,
+          "right": 149.203125,
+          "top": 5200.28125,
+          "bottom": 5232.28125
+        },
+        {
+          "left": 150.46875,
+          "right": 219.0625,
+          "top": 5200.28125,
+          "bottom": 5232.28125
+        }
+      ]
+    },
+    "leftGroup": {
+      "top": 5165.734375,
+      "bottom": 5197.734375
+    },
+    "rightGroup": {
+      "top": 5200.28125,
+      "bottom": 5232.28125
+    },
+    "parts": [
+      {
+        "left": 99.90625,
+        "right": 222.09375,
+        "top": 5165.734375,
+        "bottom": 5197.734375
+      },
+      {
+        "left": 102.9375,
+        "right": 219.0625,
+        "top": 5200.28125,
+        "bottom": 5232.28125
+      }
+    ]
+  }
+}

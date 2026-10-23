@@ -1,0 +1,1281 @@
+{
+  "source": "68338688f22ffb3acaa7074b5c0c0f79584604c5",
+  "width": 1440,
+  "unit": "math-numbers-expressions-n12",
+  "revision": 3,
+  "rows": [
+    {
+      "id": "n12-p002-q01-coef",
+      "geometry": {
+        "left": 430.78125,
+        "right": 1011.21875,
+        "width": 580,
+        "scrollWidth": 580,
+        "children": [
+          {
+            "left": 601.671875,
+            "right": 736.828125
+          },
+          {
+            "left": 739.234375,
+            "right": 789.625
+          },
+          {
+            "left": 792.03125,
+            "right": 840.3125
+          }
+        ]
+      },
+      "choices": [
+        "-2",
+        "2"
+      ]
+    },
+    {
+      "id": "n12-p002-q01-const",
+      "geometry": {
+        "left": 430.78125,
+        "right": 1011.21875,
+        "width": 580,
+        "scrollWidth": 580,
+        "children": [
+          {
+            "left": 614.0625,
+            "right": 727.9375
+          },
+          {
+            "left": 730.34375,
+            "right": 780.734375
+          },
+          {
+            "left": 783.140625,
+            "right": 827.9375
+          }
+        ]
+      },
+      "choices": [
+        "7",
+        "-7"
+      ]
+    },
+    {
+      "id": "n12-01",
+      "geometry": {
+        "left": 430.78125,
+        "right": 1011.21875,
+        "width": 580,
+        "scrollWidth": 580,
+        "children": [
+          {
+            "left": 655.796875,
+            "right": 733.390625
+          },
+          {
+            "left": 735.796875,
+            "right": 786.1875
+          }
+        ]
+      },
+      "choices": [
+        "x< -\\frac72",
+        "x>-\\frac72"
+      ]
+    },
+    {
+      "id": "n12-p002-q02-coef",
+      "geometry": {
+        "left": 430.78125,
+        "right": 1011.21875,
+        "width": 580,
+        "scrollWidth": 580,
+        "children": [
+          {
+            "left": 578.5625,
+            "right": 702.71875
+          },
+          {
+            "left": 706.515625,
+            "right": 720.984375
+          },
+          {
+            "left": 724.78125,
+            "right": 863.421875
+          }
+        ]
+      },
+      "choices": [
+        "2",
+        "-2"
+      ]
+    },
+    {
+      "id": "n12-p002-q02-const",
+      "geometry": {
+        "left": 430.78125,
+        "right": 1011.21875,
+        "width": 580,
+        "scrollWidth": 580,
+        "children": [
+          {
+            "left": 645.65625,
+            "right": 743.53125
+          },
+          {
+            "left": 745.9375,
+            "right": 796.328125
+          }
+        ]
+      },
+      "choices": [
+        "1",
+        "4"
+      ]
+    },
+    {
+      "id": "n12-02",
+      "geometry": {
+        "left": 430.78125,
+        "right": 1011.21875,
+        "width": 580,
+        "scrollWidth": 580,
+        "children": [
+          {
+            "left": 663.796875,
+            "right": 725.390625
+          },
+          {
+            "left": 727.796875,
+            "right": 778.1875
+          }
+        ]
+      },
+      "choices": [
+        "x\\le\\frac12",
+        "x\\ge\\frac12"
+      ]
+    },
+    {
+      "id": "n12-03",
+      "geometry": null,
+      "choices": [
+        "一つ目を満たすから適する",
+        "二つ目に反するので不適"
+      ]
+    },
+    {
+      "id": "n12-04",
+      "geometry": {
+        "left": 416.59375,
+        "right": 1023.40625,
+        "width": 605,
+        "scrollWidth": 605,
+        "children": [
+          {
+            "left": 694.796875,
+            "right": 745.1875
+          }
+        ]
+      },
+      "choices": [
+        "-\\frac72<x<\\frac12",
+        "x>-\\frac72\\ \\text{または}\\ x\\le\\frac12",
+        "-\\frac72<x\\le\\frac12"
+      ]
+    },
+    {
+      "id": "n12-05",
+      "geometry": null,
+      "choices": [
+        "3x+2\\le2x+4\\ \\text{かつ}\\ 2x+4\\le9-x",
+        "3x+2\\le2x+4\\ \\text{または}\\ 2x+4\\le9-x",
+        "3x+2\\le9-x"
+      ]
+    },
+    {
+      "id": "n12-p002-q06-left-coef",
+      "geometry": {
+        "left": 430.78125,
+        "right": 1011.21875,
+        "width": 580,
+        "scrollWidth": 580,
+        "children": [
+          {
+            "left": 567.5625,
+            "right": 713.71875
+          },
+          {
+            "left": 717.515625,
+            "right": 731.984375
+          },
+          {
+            "left": 735.78125,
+            "right": 874.421875
+          }
+        ]
+      },
+      "choices": [
+        "-1",
+        "2",
+        "1"
+      ]
+    },
+    {
+      "id": "n12-p002-q06-left-const",
+      "geometry": {
+        "left": 430.78125,
+        "right": 1011.21875,
+        "width": 580,
+        "scrollWidth": 580,
+        "children": [
+          {
+            "left": 651.15625,
+            "right": 738.03125
+          },
+          {
+            "left": 740.4375,
+            "right": 790.828125
+          }
+        ]
+      },
+      "choices": [
+        "4",
+        "2",
+        "6"
+      ]
+    },
+    {
+      "id": "n12-p002-q06-right-coef",
+      "geometry": {
+        "left": 430.78125,
+        "right": 1011.21875,
+        "width": 580,
+        "scrollWidth": 580,
+        "children": [
+          {
+            "left": 573.0625,
+            "right": 708.21875
+          },
+          {
+            "left": 712.015625,
+            "right": 726.484375
+          },
+          {
+            "left": 730.28125,
+            "right": 868.921875
+          }
+        ]
+      },
+      "choices": [
+        "3",
+        "2",
+        "-3"
+      ]
+    },
+    {
+      "id": "n12-p002-q06-right-const",
+      "geometry": {
+        "left": 430.78125,
+        "right": 1011.21875,
+        "width": 580,
+        "scrollWidth": 580,
+        "children": [
+          {
+            "left": 645.65625,
+            "right": 743.53125
+          },
+          {
+            "left": 745.9375,
+            "right": 796.328125
+          }
+        ]
+      },
+      "choices": [
+        "9",
+        "13",
+        "5"
+      ]
+    },
+    {
+      "id": "n12-06",
+      "geometry": {
+        "left": 430.78125,
+        "right": 1011.21875,
+        "width": 580,
+        "scrollWidth": 580,
+        "children": [
+          {
+            "left": 654.046875,
+            "right": 735.140625
+          },
+          {
+            "left": 737.546875,
+            "right": 787.9375
+          }
+        ]
+      },
+      "choices": [
+        "x\\ge2,\\quad x\\le\\frac53",
+        "x\\le2,\\quad x\\le\\frac53",
+        "x\\le2,\\quad x\\le\\frac35"
+      ]
+    },
+    {
+      "id": "n12-07",
+      "geometry": {
+        "left": 416.59375,
+        "right": 1023.40625,
+        "width": 605,
+        "scrollWidth": 605,
+        "children": [
+          {
+            "left": 694.796875,
+            "right": 745.1875
+          }
+        ]
+      },
+      "choices": [
+        "x\\le\\frac53",
+        "x\\ge\\frac53",
+        "\\frac53\\le x\\le2"
+      ]
+    },
+    {
+      "id": "n12-08",
+      "geometry": null,
+      "choices": [
+        "20-x",
+        "20"
+      ]
+    },
+    {
+      "id": "n12-09",
+      "geometry": null,
+      "choices": [
+        "x\\in\\mathbb Z,\\ 0\\le x\\le20",
+        "x\\in\\mathbb Z,\\ 0<x<20",
+        "x\\in\\mathbb Z,\\ x\\ge0"
+      ]
+    },
+    {
+      "id": "n12-p003-q10-meaning",
+      "geometry": null,
+      "choices": [
+        "箱と20個の菓子の合計金額",
+        "シュークリームの個数"
+      ]
+    },
+    {
+      "id": "n12-p003-q10-cream-coef",
+      "geometry": {
+        "left": 430.78125,
+        "right": 1011.21875,
+        "width": 580,
+        "scrollWidth": 580,
+        "children": [
+          {
+            "left": 641.359375,
+            "right": 733.4375
+          },
+          {
+            "left": 735.84375,
+            "right": 786.234375
+          },
+          {
+            "left": 788.640625,
+            "right": 800.640625
+          }
+        ]
+      },
+      "choices": [
+        "180",
+        "20",
+        "130"
+      ]
+    },
+    {
+      "id": "n12-p003-q10-pudding-coef",
+      "geometry": {
+        "left": 430.78125,
+        "right": 1011.21875,
+        "width": 580,
+        "scrollWidth": 580,
+        "children": [
+          {
+            "left": 580.109375,
+            "right": 713.671875
+          },
+          {
+            "left": 717.46875,
+            "right": 861.890625
+          }
+        ]
+      },
+      "choices": [
+        "20",
+        "130",
+        "180"
+      ]
+    },
+    {
+      "id": "n12-p003-q10-box-fee",
+      "geometry": null,
+      "choices": [
+        "180",
+        "20",
+        "50"
+      ]
+    },
+    {
+      "id": "n12-10",
+      "geometry": {
+        "left": 430.78125,
+        "right": 1011.21875,
+        "width": 580,
+        "scrollWidth": 580,
+        "children": [
+          {
+            "left": 662.25,
+            "right": 726.9375
+          },
+          {
+            "left": 729.34375,
+            "right": 779.734375
+          }
+        ]
+      },
+      "choices": [
+        "50+180x+130(20-x)",
+        "180x+130(20-x)",
+        "50+180x+130x"
+      ]
+    },
+    {
+      "id": "n12-p003-q11-lower-sign",
+      "geometry": {
+        "left": 430.78125,
+        "right": 1011.21875,
+        "width": 580,
+        "scrollWidth": 580,
+        "children": [
+          {
+            "left": 649.953125,
+            "right": 693.953125
+          },
+          {
+            "left": 696.359375,
+            "right": 746.75
+          },
+          {
+            "left": 749.15625,
+            "right": 792.046875
+          }
+        ]
+      },
+      "choices": [
+        "\\le",
+        ">",
+        "<"
+      ]
+    },
+    {
+      "id": "n12-p003-q11-upper-sign",
+      "geometry": {
+        "left": 430.78125,
+        "right": 1011.21875,
+        "width": 580,
+        "scrollWidth": 580,
+        "children": [
+          {
+            "left": 649.953125,
+            "right": 692.84375
+          },
+          {
+            "left": 695.25,
+            "right": 745.640625
+          },
+          {
+            "left": 748.046875,
+            "right": 792.046875
+          }
+        ]
+      },
+      "choices": [
+        "\\ge",
+        "<",
+        ">"
+      ]
+    },
+    {
+      "id": "n12-11",
+      "geometry": {
+        "left": 430.78125,
+        "right": 1011.21875,
+        "width": 580,
+        "scrollWidth": 580,
+        "children": [
+          {
+            "left": 695.796875,
+            "right": 746.1875
+          }
+        ]
+      },
+      "choices": [
+        "3200\\ge50+180x+130(20-x)<3300",
+        "3200\\le50+180x+130(20-x)<3300",
+        "3200<50+180x+130(20-x)\\le3300"
+      ]
+    },
+    {
+      "id": "n12-p003-q12-product-constant",
+      "geometry": {
+        "left": 430.78125,
+        "right": 1011.21875,
+        "width": 580,
+        "scrollWidth": 580,
+        "children": [
+          {
+            "left": 643.5625,
+            "right": 745.640625
+          },
+          {
+            "left": 748.046875,
+            "right": 798.4375
+          }
+        ]
+      },
+      "choices": [
+        "2600",
+        "2500",
+        "1300"
+      ]
+    },
+    {
+      "id": "n12-p002-q12-signed-coef",
+      "geometry": {
+        "left": 430.78125,
+        "right": 1011.21875,
+        "width": 580,
+        "scrollWidth": 580,
+        "children": [
+          {
+            "left": 578.84375,
+            "right": 687.125
+          },
+          {
+            "left": 690.921875,
+            "right": 863.140625
+          }
+        ]
+      },
+      "choices": [
+        "-20",
+        "130",
+        "-130"
+      ]
+    },
+    {
+      "id": "n12-p003-q12-total-constant",
+      "geometry": {
+        "left": 430.78125,
+        "right": 1011.21875,
+        "width": 580,
+        "scrollWidth": 580,
+        "children": [
+          {
+            "left": 638.0625,
+            "right": 751.140625
+          },
+          {
+            "left": 753.546875,
+            "right": 803.9375
+          }
+        ]
+      },
+      "choices": [
+        "2600",
+        "2650",
+        "3100"
+      ]
+    },
+    {
+      "id": "n12-p003-q12-x-coef",
+      "geometry": {
+        "left": 430.78125,
+        "right": 1011.21875,
+        "width": 580,
+        "scrollWidth": 580,
+        "children": [
+          {
+            "left": 638.0625,
+            "right": 751.140625
+          },
+          {
+            "left": 753.546875,
+            "right": 803.9375
+          }
+        ]
+      },
+      "choices": [
+        "-50",
+        "130",
+        "50"
+      ]
+    },
+    {
+      "id": "n12-12",
+      "geometry": {
+        "left": 430.78125,
+        "right": 1011.21875,
+        "width": 580,
+        "scrollWidth": 580,
+        "children": [
+          {
+            "left": 695.796875,
+            "right": 746.1875
+          }
+        ]
+      },
+      "choices": [
+        "3200\\le2650-50x<3300",
+        "3200\\le2600+50x<3300",
+        "3200\\le2650+50x<3300"
+      ]
+    },
+    {
+      "id": "n12-p002-q13-lower",
+      "geometry": {
+        "left": 430.78125,
+        "right": 1011.21875,
+        "width": 580,
+        "scrollWidth": 580,
+        "children": [
+          {
+            "left": 598.984375,
+            "right": 706.546875
+          },
+          {
+            "left": 707.921875,
+            "right": 843
+          }
+        ]
+      },
+      "choices": [
+        "-550",
+        "550",
+        "650"
+      ]
+    },
+    {
+      "id": "n12-p002-q13-upper",
+      "geometry": {
+        "left": 430.78125,
+        "right": 1011.21875,
+        "width": 580,
+        "scrollWidth": 580,
+        "children": [
+          {
+            "left": 636.40625,
+            "right": 752.796875
+          },
+          {
+            "left": 755.203125,
+            "right": 805.59375
+          }
+        ]
+      },
+      "choices": [
+        "650",
+        "550",
+        "-650"
+      ]
+    },
+    {
+      "id": "n12-13",
+      "geometry": {
+        "left": 430.78125,
+        "right": 1011.21875,
+        "width": 580,
+        "scrollWidth": 580,
+        "children": [
+          {
+            "left": 617,
+            "right": 772.1875
+          },
+          {
+            "left": 774.59375,
+            "right": 824.984375
+          }
+        ]
+      },
+      "choices": [
+        "11<x\\le13",
+        "11\\le x\\le13",
+        "11\\le x<13",
+        "x\\le11\\ \\text{または}\\ x>13"
+      ]
+    },
+    {
+      "id": "n12-14",
+      "geometry": null,
+      "choices": [
+        "x=11\\ \\text{のみ}",
+        "11\\le x\\le13",
+        "x=11\\ \\text{または}\\ 12",
+        "x=12\\ \\text{または}\\ 13"
+      ]
+    },
+    {
+      "id": "n12-15",
+      "geometry": null,
+      "choices": [
+        "T(11)=3200\\text{円},\\ T(12)=3250\\text{円}",
+        "T(11)=3150\\text{円},\\ T(12)=3200\\text{円}",
+        "T(11)=3200\\text{円},\\ T(12)=3300\\text{円}",
+        "T(11)=3250\\text{円},\\ T(12)=3200\\text{円}"
+      ]
+    }
+  ],
+  "completeGeometry": [
+    {
+      "id": "textbook-formula-formula-system",
+      "left": 416.59375,
+      "right": 1023.40625,
+      "width": 605,
+      "scrollWidth": 605,
+      "children": [
+        {
+          "left": 642.671875,
+          "right": 797.328125
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-q01-coef",
+      "left": 430.78125,
+      "right": 1011.21875,
+      "width": 580,
+      "scrollWidth": 580,
+      "children": [
+        {
+          "left": 621.375,
+          "right": 756.53125
+        },
+        {
+          "left": 758.9375,
+          "right": 769.9375
+        },
+        {
+          "left": 772.34375,
+          "right": 820.625
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-q01-const",
+      "left": 430.78125,
+      "right": 1011.21875,
+      "width": 580,
+      "scrollWidth": 580,
+      "children": [
+        {
+          "left": 625.75,
+          "right": 739.625
+        },
+        {
+          "left": 742.03125,
+          "right": 769.03125
+        },
+        {
+          "left": 771.4375,
+          "right": 816.234375
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-n12-01",
+      "left": 430.78125,
+      "right": 1011.21875,
+      "width": 580,
+      "scrollWidth": 580,
+      "children": [
+        {
+          "left": 646.703125,
+          "right": 724.296875
+        },
+        {
+          "left": 726.703125,
+          "right": 795.296875
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-q02-coef",
+      "left": 430.78125,
+      "right": 1011.21875,
+      "width": 580,
+      "scrollWidth": 580,
+      "children": [
+        {
+          "left": 598.265625,
+          "right": 722.421875
+        },
+        {
+          "left": 726.21875,
+          "right": 740.6875
+        },
+        {
+          "left": 744.484375,
+          "right": 843.734375
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-q02-const",
+      "left": 430.78125,
+      "right": 1011.21875,
+      "width": 580,
+      "scrollWidth": 580,
+      "children": [
+        {
+          "left": 665.359375,
+          "right": 763.234375
+        },
+        {
+          "left": 765.640625,
+          "right": 776.640625
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-n12-02",
+      "left": 430.78125,
+      "right": 1011.21875,
+      "width": 580,
+      "scrollWidth": 580,
+      "children": [
+        {
+          "left": 662.703125,
+          "right": 724.296875
+        },
+        {
+          "left": 726.703125,
+          "right": 779.296875
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-n12-04",
+      "left": 416.59375,
+      "right": 1023.40625,
+      "width": 605,
+      "scrollWidth": 605,
+      "children": [
+        {
+          "left": 665.40625,
+          "right": 774.59375
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-q06-left-coef",
+      "left": 430.78125,
+      "right": 1011.21875,
+      "width": 580,
+      "scrollWidth": 580,
+      "children": [
+        {
+          "left": 597.40625,
+          "right": 743.5625
+        },
+        {
+          "left": 747.359375,
+          "right": 761.828125
+        },
+        {
+          "left": 765.625,
+          "right": 844.59375
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-q06-left-const",
+      "left": 430.78125,
+      "right": 1011.21875,
+      "width": 580,
+      "scrollWidth": 580,
+      "children": [
+        {
+          "left": 670.859375,
+          "right": 757.734375
+        },
+        {
+          "left": 760.140625,
+          "right": 771.140625
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-q06-right-coef",
+      "left": 430.78125,
+      "right": 1011.21875,
+      "width": 580,
+      "scrollWidth": 580,
+      "children": [
+        {
+          "left": 592.765625,
+          "right": 727.921875
+        },
+        {
+          "left": 731.71875,
+          "right": 746.1875
+        },
+        {
+          "left": 749.984375,
+          "right": 849.234375
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-q06-right-const",
+      "left": 430.78125,
+      "right": 1011.21875,
+      "width": 580,
+      "scrollWidth": 580,
+      "children": [
+        {
+          "left": 665.359375,
+          "right": 763.234375
+        },
+        {
+          "left": 765.640625,
+          "right": 776.640625
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-n12-06",
+      "left": 430.78125,
+      "right": 1011.21875,
+      "width": 580,
+      "scrollWidth": 580,
+      "children": [
+        {
+          "left": 612.453125,
+          "right": 693.546875
+        },
+        {
+          "left": 695.953125,
+          "right": 829.53125
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-n12-07",
+      "left": 416.59375,
+      "right": 1023.40625,
+      "width": 605,
+      "scrollWidth": 605,
+      "children": [
+        {
+          "left": 693.703125,
+          "right": 746.296875
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-cost-cream",
+      "left": 430.78125,
+      "right": 1011.21875,
+      "width": 580,
+      "scrollWidth": 580,
+      "children": [
+        {
+          "left": 650.046875,
+          "right": 742.125
+        },
+        {
+          "left": 744.53125,
+          "right": 777.53125
+        },
+        {
+          "left": 779.9375,
+          "right": 791.9375
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-cost-pudding",
+      "left": 430.78125,
+      "right": 1011.21875,
+      "width": 580,
+      "scrollWidth": 580,
+      "children": [
+        {
+          "left": 588.796875,
+          "right": 722.359375
+        },
+        {
+          "left": 726.15625,
+          "right": 853.1875
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-n12-10",
+      "left": 430.78125,
+      "right": 1011.21875,
+      "width": 580,
+      "scrollWidth": 580,
+      "children": [
+        {
+          "left": 625.3125,
+          "right": 690
+        },
+        {
+          "left": 692.40625,
+          "right": 816.6875
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-cost-lower-bound",
+      "left": 430.78125,
+      "right": 1011.21875,
+      "width": 580,
+      "scrollWidth": 580,
+      "children": [
+        {
+          "left": 667.140625,
+          "right": 711.140625
+        },
+        {
+          "left": 713.546875,
+          "right": 729.546875
+        },
+        {
+          "left": 731.953125,
+          "right": 774.84375
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-cost-upper-bound",
+      "left": 430.78125,
+      "right": 1011.21875,
+      "width": 580,
+      "scrollWidth": 580,
+      "children": [
+        {
+          "left": 667.140625,
+          "right": 710.03125
+        },
+        {
+          "left": 712.4375,
+          "right": 728.4375
+        },
+        {
+          "left": 730.84375,
+          "right": 774.84375
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-n12-11",
+      "left": 430.78125,
+      "right": 1011.21875,
+      "width": 580,
+      "scrollWidth": 580,
+      "children": [
+        {
+          "left": 623.0625,
+          "right": 818.9375
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-cost-product-constant",
+      "left": 430.78125,
+      "right": 1011.21875,
+      "width": 580,
+      "scrollWidth": 580,
+      "children": [
+        {
+          "left": 646.75,
+          "right": 748.828125
+        },
+        {
+          "left": 751.234375,
+          "right": 795.234375
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-q12-signed-coef",
+      "left": 430.78125,
+      "right": 1011.21875,
+      "width": 580,
+      "scrollWidth": 580,
+      "children": [
+        {
+          "left": 579.546875,
+          "right": 687.828125
+        },
+        {
+          "left": 691.625,
+          "right": 862.453125
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-cost-total-constant",
+      "left": 430.78125,
+      "right": 1011.21875,
+      "width": 580,
+      "scrollWidth": 580,
+      "children": [
+        {
+          "left": 641.25,
+          "right": 754.328125
+        },
+        {
+          "left": 756.734375,
+          "right": 800.734375
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-cost-x-coef",
+      "left": 430.78125,
+      "right": 1011.21875,
+      "width": 580,
+      "scrollWidth": 580,
+      "children": [
+        {
+          "left": 652.25,
+          "right": 765.328125
+        },
+        {
+          "left": 767.734375,
+          "right": 789.734375
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-cost-collected-total",
+      "left": 430.78125,
+      "right": 1011.21875,
+      "width": 580,
+      "scrollWidth": 580,
+      "children": [
+        {
+          "left": 634.109375,
+          "right": 807.875
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-n12-12",
+      "left": 430.78125,
+      "right": 1011.21875,
+      "width": 580,
+      "scrollWidth": 580,
+      "children": [
+        {
+          "left": 597.765625,
+          "right": 844.234375
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-cost-subtract",
+      "left": 430.78125,
+      "right": 1011.21875,
+      "width": 580,
+      "scrollWidth": 580,
+      "children": [
+        {
+          "left": 563.125,
+          "right": 878.875
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-q13-lower",
+      "left": 430.78125,
+      "right": 1011.21875,
+      "width": 580,
+      "scrollWidth": 580,
+      "children": [
+        {
+          "left": 607.6875,
+          "right": 697.859375
+        },
+        {
+          "left": 699.234375,
+          "right": 834.3125
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-q13-upper",
+      "left": 430.78125,
+      "right": 1011.21875,
+      "width": 580,
+      "scrollWidth": 580,
+      "children": [
+        {
+          "left": 645.09375,
+          "right": 761.484375
+        },
+        {
+          "left": 763.890625,
+          "right": 796.890625
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-n12-13",
+      "left": 430.78125,
+      "right": 1011.21875,
+      "width": 580,
+      "scrollWidth": 580,
+      "children": [
+        {
+          "left": 586.609375,
+          "right": 741.796875
+        },
+        {
+          "left": 744.203125,
+          "right": 855.390625
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-verify-eleven",
+      "left": 416.59375,
+      "right": 1023.40625,
+      "width": 605,
+      "scrollWidth": 605,
+      "children": [
+        {
+          "left": 610.46875,
+          "right": 829.515625
+        }
+      ]
+    },
+    {
+      "id": "textbook-formula-formula-verify-twelve",
+      "left": 416.59375,
+      "right": 1023.40625,
+      "width": 605,
+      "scrollWidth": 605,
+      "children": [
+        {
+          "left": 610.46875,
+          "right": 829.515625
+        }
+      ]
+    }
+  ],
+  "complete": true
+}

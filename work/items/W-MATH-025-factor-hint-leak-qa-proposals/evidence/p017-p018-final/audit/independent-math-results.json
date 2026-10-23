@@ -1,0 +1,1011 @@
+{
+  "inputSHA256": "82a53c591e10e7a1ad7ada8d277abc030b73821160391e63328e5cb71bfc19c4",
+  "source": "68338688f22ffb3acaa7074b5c0c0f79584604c5",
+  "result": "PASS bounded independent exact calculations",
+  "checkedKeys": 138,
+  "identityChecks": 156,
+  "checks": [
+    {
+      "id": "n01-01",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "-1 = -1",
+      "result": "PASS"
+    },
+    {
+      "id": "n01-02a",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "-2 = -2",
+      "result": "PASS"
+    },
+    {
+      "id": "n01-02a",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "1 = 1",
+      "result": "PASS"
+    },
+    {
+      "id": "n01-02b",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "1 = 1",
+      "result": "PASS"
+    },
+    {
+      "id": "n01-02b",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "2 = 2",
+      "result": "PASS"
+    },
+    {
+      "id": "n01-02c",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "-1 = -1",
+      "result": "PASS"
+    },
+    {
+      "id": "n01-02c",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "4 = 4",
+      "result": "PASS"
+    },
+    {
+      "id": "n01-03",
+      "method": "exact coefficient extraction",
+      "calculation": "5x^3y coefficient x^3",
+      "result": "PASS"
+    },
+    {
+      "id": "n01-04",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "5x^3 = 5x^3",
+      "result": "PASS"
+    },
+    {
+      "id": "n01-04",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "1 = 1",
+      "result": "PASS"
+    },
+    {
+      "id": "n01-05",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "ay = ay",
+      "result": "PASS"
+    },
+    {
+      "id": "n01-05",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "ax = ax",
+      "result": "PASS"
+    },
+    {
+      "id": "n01-06a",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "3x^2-5x^2 = 3x^2-5x^2",
+      "result": "PASS"
+    },
+    {
+      "id": "n01-r3-q07-x2coef",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "-2 = 3-5",
+      "result": "PASS"
+    },
+    {
+      "id": "n01-r3-q07-xcoef",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "-3 = -5+2",
+      "result": "PASS"
+    },
+    {
+      "id": "n01-r3-q07-const",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "3 = 6-3",
+      "result": "PASS"
+    },
+    {
+      "id": "n01-07",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "-2x^2-3x+3 = 3x^2-5x+6-5x^2+2x-3",
+      "result": "PASS"
+    },
+    {
+      "id": "n01-08",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "2 = 2",
+      "result": "PASS"
+    },
+    {
+      "id": "n01-08",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "3 = 3",
+      "result": "PASS"
+    },
+    {
+      "id": "n01-09a",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "(1-1)x^3-2x^2+(1+3)x-1 = x^3-2x^2+x-x^3+3x-1",
+      "result": "PASS"
+    },
+    {
+      "id": "n01-09b",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "-2x^2+4x-1 = x^3-2x^2+x-x^3+3x-1",
+      "result": "PASS"
+    },
+    {
+      "id": "n02-01",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "3bx = 2bx+bx",
+      "result": "PASS"
+    },
+    {
+      "id": "n02-02",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "x^3-ax^2+3bx+5c = 2bx+x^3+5c-ax^2+bx",
+      "result": "PASS"
+    },
+    {
+      "id": "n02-03",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "2y-3 = 2y-3",
+      "result": "PASS"
+    },
+    {
+      "id": "n02-03",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "\\ y^2-3y+2 = y^2-3y+2",
+      "result": "PASS"
+    },
+    {
+      "id": "n02-04",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "x^2+(2y-3)x+(y^2-3y+2) = x^2+2xy+y^2-3x-3y+2",
+      "result": "PASS"
+    },
+    {
+      "id": "n02-05",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "0x = 0",
+      "result": "PASS"
+    },
+    {
+      "id": "n02-06",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "x^3-x^2+x+1 = (2x^3-3x^2+x-1)+(-x^3+2x^2+2)",
+      "result": "PASS"
+    },
+    {
+      "id": "n02-07",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "x^3-2x^2-2 = -(-x^3+2x^2+2)",
+      "result": "PASS"
+    },
+    {
+      "id": "n02-08",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "3x^3-5x^2+x-3 = (2x^3-3x^2+x-1)-(-x^3+2x^2+2)",
+      "result": "PASS"
+    },
+    {
+      "id": "n02-10",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "7x^3-12x^2+2x-8 = 2*(2x^3-3x^2+x-1)-3*(-x^3+2x^2+2)",
+      "result": "PASS"
+    },
+    {
+      "id": "n02-11",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "2A-3B = 3A-4B-(A-B)",
+      "result": "PASS"
+    },
+    {
+      "id": "n02-12",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "7x^3-12x^2+2x-8 = 3*(2x^3-3x^2+x-1)-4*(-x^3+2x^2+2)-((2x^3-3x^2+x-1)-(-x^3+2x^2+2))",
+      "result": "PASS"
+    },
+    {
+      "id": "n02-09",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "4x^3-6x^2+2x-2 = 2*(2x^3-3x^2+x-1)",
+      "result": "PASS"
+    },
+    {
+      "id": "n02-09",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "\\ 3x^3-6x^2-6 = -3*(-x^3+2x^2+2)",
+      "result": "PASS"
+    },
+    {
+      "id": "n03-01",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "4a^8 = a^3*4a^5",
+      "result": "PASS"
+    },
+    {
+      "id": "n03-05",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "(-2)^3(x^3)^3(y^2)^3 = (-2x^3y^2)^3",
+      "result": "PASS"
+    },
+    {
+      "id": "n03-06",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "-8x^9y^6 = (-2x^3y^2)^3",
+      "result": "PASS"
+    },
+    {
+      "id": "n03-07",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "x^2x^2+x^2(-3x)+x^2\\cdot4 = x^2*(x^2-3x+4)",
+      "result": "PASS"
+    },
+    {
+      "id": "n03-08",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "x^4-3x^3+4x^2 = x^2*(x^2-3x+4)",
+      "result": "PASS"
+    },
+    {
+      "id": "n03-09",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "2x(3x+4)+1(3x+4) = (2x+1)*(3x+4)",
+      "result": "PASS"
+    },
+    {
+      "id": "n03-10",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "6x^2+8x+3x+4 = (2x+1)*(3x+4)",
+      "result": "PASS"
+    },
+    {
+      "id": "n03-11",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "6x^2+11x+4 = (2x+1)*(3x+4)",
+      "result": "PASS"
+    },
+    {
+      "id": "n03-12",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "3x(2x^2-x+5)-(2x^2-x+5) = (3x-1)*(2x^2-x+5)",
+      "result": "PASS"
+    },
+    {
+      "id": "n03-13",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "6x^3-5x^2+16x-5 = (3x-1)*(2x^2-x+5)",
+      "result": "PASS"
+    },
+    {
+      "id": "n03-r3-q10-p1",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "6x^2 = 2x*3x",
+      "result": "PASS"
+    },
+    {
+      "id": "n03-r3-q10-p2",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "8x = 2x*4",
+      "result": "PASS"
+    },
+    {
+      "id": "n03-r3-q10-p3",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "3x = 1*3x",
+      "result": "PASS"
+    },
+    {
+      "id": "n03-r3-q10-p4",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "4 = 1*4",
+      "result": "PASS"
+    },
+    {
+      "id": "n04-q01-p1",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "25x^2 = 5x*5x",
+      "result": "PASS"
+    },
+    {
+      "id": "n04-q01-p2",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "20xy = 5x*4y",
+      "result": "PASS"
+    },
+    {
+      "id": "n04-q01-p3",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "20xy = 4y*5x",
+      "result": "PASS"
+    },
+    {
+      "id": "n04-q01-p4",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "16y^2 = 4y*4y",
+      "result": "PASS"
+    },
+    {
+      "id": "n04-01",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "25x^2+20xy+20xy+16y^2 = (5x+4y)^2",
+      "result": "PASS"
+    },
+    {
+      "id": "n04-02",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "40xy = 5x*4y+4y*5x",
+      "result": "PASS"
+    },
+    {
+      "id": "n04-03",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "25x^2+40xy+16y^2 = (5x+4y)^2",
+      "result": "PASS"
+    },
+    {
+      "id": "n04-04",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "a^2+ab+ba+b^2 = (a+b)^2",
+      "result": "PASS"
+    },
+    {
+      "id": "n04-05",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "a^2+2ab+b^2 = (a+b)^2",
+      "result": "PASS"
+    },
+    {
+      "id": "n04-06",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "a^2-ab-ba+b^2 = (a-b)^2",
+      "result": "PASS"
+    },
+    {
+      "id": "n04-07",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "a^2-2ab+b^2 = (a-b)^2",
+      "result": "PASS"
+    },
+    {
+      "id": "n04-11",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "acx^2+adx+bcx+bd = (ax+b)*(cx+d)",
+      "result": "PASS"
+    },
+    {
+      "id": "n04-12",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "acx^2+(ad+bc)x+bd = (ax+b)*(cx+d)",
+      "result": "PASS"
+    },
+    {
+      "id": "n04-14",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "T^2+2Tc+c^2 = (T+c)^2",
+      "result": "PASS"
+    },
+    {
+      "id": "n04-15",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "a^2+b^2+c^2+2ab+2ac+2bc = (a+b+c)^2",
+      "result": "PASS"
+    },
+    {
+      "id": "n04-16",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "a^2+b^2+c^2+2ab-2ac-2bc = (a+b-c)^2",
+      "result": "PASS"
+    },
+    {
+      "id": "n04-18",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "(x^2+1)^2-x^2 = (x^2+x+1)*(x^2-x+1)",
+      "result": "PASS"
+    },
+    {
+      "id": "n04-19",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "x^4+x^2+1 = (x^2+x+1)*(x^2-x+1)",
+      "result": "PASS"
+    },
+    {
+      "id": "n04-20",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "(x^2+5x+4)(x^2+5x+6) = (x+1)*(x+2)*(x+3)*(x+4)",
+      "result": "PASS"
+    },
+    {
+      "id": "n04-21",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "T^2+10T+24 = (T+4)*(T+6)",
+      "result": "PASS"
+    },
+    {
+      "id": "n04-22",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "x^4+10x^3+35x^2+50x+24 = (x+1)*(x+2)*(x+3)*(x+4)",
+      "result": "PASS"
+    },
+    {
+      "id": "n04-08",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "a^2-ab+ab-b^2 = (a+b)*(a-b)",
+      "result": "PASS"
+    },
+    {
+      "id": "n04-08",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "a^2-b^2 = (a+b)*(a-b)",
+      "result": "PASS"
+    },
+    {
+      "id": "n04-10",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "4a^2-20a+25 = (2a-5)^2",
+      "result": "PASS"
+    },
+    {
+      "id": "n04-10",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "\\quad9x^2-4 = (3x-2)*(3x+2)",
+      "result": "PASS"
+    },
+    {
+      "id": "n04-17",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "x^2+1 = x^2+1",
+      "result": "PASS"
+    },
+    {
+      "id": "n04-17",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "\\quad x = x",
+      "result": "PASS"
+    },
+    {
+      "id": "n04-13",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "\\quad3x^2+7x+2 = (3x+1)*(x+2)",
+      "result": "PASS"
+    },
+    {
+      "id": "n04-13",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "6x = 3x*2",
+      "result": "PASS"
+    },
+    {
+      "id": "n04-13",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "x = 1*x",
+      "result": "PASS"
+    },
+    {
+      "id": "n05-01",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "y+5 = y+5",
+      "result": "PASS"
+    },
+    {
+      "id": "n05-02",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "(x-3)(y+5) = x*(y+5)-3*(y+5)",
+      "result": "PASS"
+    },
+    {
+      "id": "n05-03",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "xy+5x-3y-15 = (x-3)*(y+5)",
+      "result": "PASS"
+    },
+    {
+      "id": "n05-04",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "-(a-b) = b-a",
+      "result": "PASS"
+    },
+    {
+      "id": "n05-05",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "(a-b)(x-y) = (a-b)*x+(b-a)*y",
+      "result": "PASS"
+    },
+    {
+      "id": "n05-07",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "24xy = 4x*3y+3y*4x",
+      "result": "PASS"
+    },
+    {
+      "id": "n05-08",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "(4x+3y)^2 = 16x^2+24xy+9y^2",
+      "result": "PASS"
+    },
+    {
+      "id": "n05-09",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "a^2+(r+s)a+rs = (a+r)*(a+s)",
+      "result": "PASS"
+    },
+    {
+      "id": "n05-11",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "(a-8)(a+2) = a^2-6a-16",
+      "result": "PASS"
+    },
+    {
+      "id": "n05-12",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "prx^2+(ps+qr)x+qs = (px+q)*(rx+s)",
+      "result": "PASS"
+    },
+    {
+      "id": "n05-15",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "(x+1)(4x+3) = 4x^2+7x+3",
+      "result": "PASS"
+    },
+    {
+      "id": "n05-18",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "(x-1)(5x+3) = 5x^2-2x-3",
+      "result": "PASS"
+    },
+    {
+      "id": "n05-19",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "3b(a^2-4b^2) = 3a^2b-12b^3",
+      "result": "PASS"
+    },
+    {
+      "id": "n05-20",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "3b(a-2b)(a+2b) = 3a^2b-12b^3",
+      "result": "PASS"
+    },
+    {
+      "id": "n05-06",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "(4x)^2 = 16x^2",
+      "result": "PASS"
+    },
+    {
+      "id": "n05-06",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "\\quad(3y)^2 = 9y^2",
+      "result": "PASS"
+    },
+    {
+      "id": "n05-14",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "8 = 8",
+      "result": "PASS"
+    },
+    {
+      "id": "n05-14",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "\\quad 7 = 7",
+      "result": "PASS"
+    },
+    {
+      "id": "n05-14",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "\\quad 13 = 13",
+      "result": "PASS"
+    },
+    {
+      "id": "n06-01",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "x+2y = x+2y",
+      "result": "PASS"
+    },
+    {
+      "id": "n06-01",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "\\quad(X+1)(X-2)-4 = (X+1)*(X-2)-4",
+      "result": "PASS"
+    },
+    {
+      "id": "n06-02",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "X^2-X-6 = (X+1)*(X-2)-4",
+      "result": "PASS"
+    },
+    {
+      "id": "n06-03",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "(X-3)(X+2) = X^2-X-6",
+      "result": "PASS"
+    },
+    {
+      "id": "n06-04",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "(x+2y-3)(x+2y+2) = (x+2y+1)*(x+2y-2)-4",
+      "result": "PASS"
+    },
+    {
+      "id": "n06-06",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "(x^2-1)(x^2-4) = x^4-5x^2+4",
+      "result": "PASS"
+    },
+    {
+      "id": "n06-07",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "(x-1)(x+1)(x-2)(x+2) = x^4-5x^2+4",
+      "result": "PASS"
+    },
+    {
+      "id": "n06-09",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "y(x^2+x-2)+(x^3+x^2-2x) = x^3+x^2y+x^2+xy-2x-2y",
+      "result": "PASS"
+    },
+    {
+      "id": "n06-10",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "x(x^2+x-2) = x^3+x^2-2x",
+      "result": "PASS"
+    },
+    {
+      "id": "n06-11",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "(x+y)(x^2+x-2) = x^3+x^2y+x^2+xy-2x-2y",
+      "result": "PASS"
+    },
+    {
+      "id": "n06-12",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "(x+y)(x+2)(x-1) = x^3+x^2y+x^2+xy-2x-2y",
+      "result": "PASS"
+    },
+    {
+      "id": "n06-13",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "x^2+(3y-1)x+(2y^2-3y-2) = x^2+3xy+2y^2-x-3y-2",
+      "result": "PASS"
+    },
+    {
+      "id": "n06-14",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "(2y+1)(y-2) = 2y^2-3y-2",
+      "result": "PASS"
+    },
+    {
+      "id": "n06-16",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "(x+2y+1)(x+y-2) = x^2+3xy+2y^2-x-3y-2",
+      "result": "PASS"
+    },
+    {
+      "id": "n06-05",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "x^2 = x^2",
+      "result": "PASS"
+    },
+    {
+      "id": "n06-05",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "\\quad T^2-5T+4 = T^2-5T+4",
+      "result": "PASS"
+    },
+    {
+      "id": "n06-15",
+      "method": "exact rational multivariate coefficients",
+      "calculation": "3y-1 = (2y+1)+(y-2)",
+      "result": "PASS"
+    },
+    {
+      "id": "n09-p001-q08-left-square",
+      "method": "exact rational arithmetic",
+      "calculation": "19881/10000",
+      "result": "PASS"
+    },
+    {
+      "id": "n09-p001-q08-right-square",
+      "method": "exact rational arithmetic",
+      "calculation": "5041/2500",
+      "result": "PASS"
+    },
+    {
+      "id": "n09-10",
+      "method": "exact rational arithmetic",
+      "calculation": "-3",
+      "result": "PASS"
+    },
+    {
+      "id": "n11-wm017-q05-operation",
+      "method": "exact rational arithmetic",
+      "calculation": "2",
+      "result": "PASS"
+    },
+    {
+      "id": "n11-wm017-q05-balance",
+      "method": "exact rational arithmetic",
+      "calculation": "2",
+      "result": "PASS"
+    },
+    {
+      "id": "n11-05",
+      "method": "exact rational arithmetic",
+      "calculation": "7",
+      "result": "PASS"
+    },
+    {
+      "id": "n11-08",
+      "method": "exact rational arithmetic",
+      "calculation": "2",
+      "result": "PASS"
+    },
+    {
+      "id": "n11-09",
+      "method": "exact rational arithmetic",
+      "calculation": "-1",
+      "result": "PASS"
+    },
+    {
+      "id": "n11-wm012-q11-xcoef",
+      "method": "exact rational arithmetic",
+      "calculation": "-4",
+      "result": "PASS"
+    },
+    {
+      "id": "n11-13",
+      "method": "exact rational arithmetic",
+      "calculation": "6",
+      "result": "PASS"
+    },
+    {
+      "id": "n11-p008-q13-constant",
+      "method": "exact rational arithmetic",
+      "calculation": "3",
+      "result": "PASS"
+    },
+    {
+      "id": "n11-wm013-q14-xcoef",
+      "method": "exact rational arithmetic",
+      "calculation": "5",
+      "result": "PASS"
+    },
+    {
+      "id": "n11-wm013-q14-const",
+      "method": "exact rational arithmetic",
+      "calculation": "-5",
+      "result": "PASS"
+    },
+    {
+      "id": "n12-p002-q01-coef",
+      "method": "exact rational arithmetic",
+      "calculation": "2",
+      "result": "PASS"
+    },
+    {
+      "id": "n12-p002-q01-const",
+      "method": "exact rational arithmetic",
+      "calculation": "-7",
+      "result": "PASS"
+    },
+    {
+      "id": "n12-p002-q02-coef",
+      "method": "exact rational arithmetic",
+      "calculation": "2",
+      "result": "PASS"
+    },
+    {
+      "id": "n12-p002-q02-const",
+      "method": "exact rational arithmetic",
+      "calculation": "1",
+      "result": "PASS"
+    },
+    {
+      "id": "n12-p002-q06-left-coef",
+      "method": "exact rational arithmetic",
+      "calculation": "1",
+      "result": "PASS"
+    },
+    {
+      "id": "n12-p002-q06-left-const",
+      "method": "exact rational arithmetic",
+      "calculation": "2",
+      "result": "PASS"
+    },
+    {
+      "id": "n12-p002-q06-right-coef",
+      "method": "exact rational arithmetic",
+      "calculation": "3",
+      "result": "PASS"
+    },
+    {
+      "id": "n12-p002-q06-right-const",
+      "method": "exact rational arithmetic",
+      "calculation": "5",
+      "result": "PASS"
+    },
+    {
+      "id": "n12-p003-q10-cream-coef",
+      "method": "exact rational arithmetic",
+      "calculation": "180",
+      "result": "PASS"
+    },
+    {
+      "id": "n12-p003-q10-pudding-coef",
+      "method": "exact rational arithmetic",
+      "calculation": "130",
+      "result": "PASS"
+    },
+    {
+      "id": "n12-p003-q10-box-fee",
+      "method": "exact rational arithmetic",
+      "calculation": "50",
+      "result": "PASS"
+    },
+    {
+      "id": "n12-p003-q12-product-constant",
+      "method": "exact rational arithmetic",
+      "calculation": "2600",
+      "result": "PASS"
+    },
+    {
+      "id": "n12-p002-q12-signed-coef",
+      "method": "exact rational arithmetic",
+      "calculation": "-130",
+      "result": "PASS"
+    },
+    {
+      "id": "n12-p003-q12-total-constant",
+      "method": "exact rational arithmetic",
+      "calculation": "2650",
+      "result": "PASS"
+    },
+    {
+      "id": "n12-p003-q12-x-coef",
+      "method": "exact rational arithmetic",
+      "calculation": "50",
+      "result": "PASS"
+    },
+    {
+      "id": "n12-p002-q13-lower",
+      "method": "exact rational arithmetic",
+      "calculation": "550",
+      "result": "PASS"
+    },
+    {
+      "id": "n12-p002-q13-upper",
+      "method": "exact rational arithmetic",
+      "calculation": "650",
+      "result": "PASS"
+    },
+    {
+      "id": "n13-wm023-q08-positive-root",
+      "method": "exact rational arithmetic",
+      "calculation": "2",
+      "result": "PASS"
+    },
+    {
+      "id": "n13-08",
+      "method": "exact rational arithmetic",
+      "calculation": "-2",
+      "result": "PASS"
+    },
+    {
+      "id": "n14-10",
+      "method": "exact rational arithmetic",
+      "calculation": "-2",
+      "result": "PASS"
+    },
+    {
+      "id": "n14-wm018-q10-bound-right",
+      "method": "exact rational arithmetic",
+      "calculation": "8",
+      "result": "PASS"
+    },
+    {
+      "id": "n14-14",
+      "method": "exact rational arithmetic",
+      "calculation": "-2",
+      "result": "PASS"
+    },
+    {
+      "id": "n14-wm019-q14-bound-right",
+      "method": "exact rational arithmetic",
+      "calculation": "6",
+      "result": "PASS"
+    },
+    {
+      "id": "n14-wm020-q15-bound-right",
+      "method": "exact rational arithmetic",
+      "calculation": "2",
+      "result": "PASS"
+    },
+    {
+      "id": "n14-wm022-q16-left-inner",
+      "method": "exact rational arithmetic",
+      "calculation": "-4",
+      "result": "PASS"
+    },
+    {
+      "id": "n14-wm022-q16-left-abs",
+      "method": "exact rational arithmetic",
+      "calculation": "4",
+      "result": "PASS"
+    },
+    {
+      "id": "n14-wm022-q16-right-inner",
+      "method": "exact rational arithmetic",
+      "calculation": "4",
+      "result": "PASS"
+    },
+    {
+      "id": "n14-wm022-q16-right-abs",
+      "method": "exact rational arithmetic",
+      "calculation": "4",
+      "result": "PASS"
+    }
+  ],
+  "intervalCertificates": {
+    "N11-3x-2<5": {
+      "bound": "7/3",
+      "direction": "<"
+    },
+    "N11--2x+3<=5": {
+      "bound": "-1",
+      "direction": ">="
+    },
+    "N11-3(2x+3)>=10x-17": {
+      "bound": "13/2",
+      "direction": "<="
+    },
+    "N11-(x-2)/3<=2x+1": {
+      "bound": "-1",
+      "direction": ">="
+    },
+    "N12-system": {
+      "left": "-7/2",
+      "leftClosed": false,
+      "right": "1/2",
+      "rightClosed": true
+    },
+    "N12-triple": {
+      "right": "5/3",
+      "closed": true
+    },
+    "N12-cost-integers": [
+      11,
+      12
+    ],
+    "N13-|x-1|=4": [
+      -3,
+      5
+    ],
+    "N13-|x+2|=3": [
+      -5,
+      1
+    ],
+    "N13-|3x|=6": [
+      "-2",
+      "2"
+    ],
+    "N14-|x-3|<5": [
+      -2,
+      8
+    ],
+    "N14-|x+3|>=2": [
+      -5,
+      -1
+    ],
+    "N14-|3x-2|<=4": [
+      "-2/3",
+      "2"
+    ]
+  },
+  "finiteDecimalDenominators": [
+    2,
+    4,
+    5,
+    8,
+    10,
+    16,
+    20
+  ],
+  "scope": "Exact polynomial/rational calculations and original-premise interval certificates; not a claim that every textual choice is CAS-certified. Parametric exponent/positivity/pigeonhole arguments require recorded semantic review."
+}

@@ -354,7 +354,7 @@ export function TextbookReadingFlow({ unit, section, progress, onSummaryReached,
     if (block.type === 'formula') {
       return (
         <div className="reading-block-with-choice" key={block.id}>
-          <TextbookFormula block={block} section={section} progress={currentProgress} onOpen={setActiveItemId} />
+          <TextbookFormula block={block} section={section} progress={currentProgress} onOpen={setActiveItemId} unitId={unit.unitId} />
           {renderInlineChoicePanel(block)}
         </div>
       )

@@ -1,3 +1,7 @@
+## 2026-10-23 — P015 explicitly approved and implemented
+
+User exact reply「いいよ続けて」directly answered the exact two-item P015 proposal and implementation approval question,without changed conditions. P015 APPROVED;implement only stable unitId prop/predicate in TextbookFormula plus caller,meaningful regression tests and two new display-only review targets. Seven earlier hint targets nowaccepted under recorded prior visual acceptance;do not reapprove. No lesson/CSS/revision/key/choice/ID/schema/progress changes. Source parent83edbb5ae44d16aa5ac96d998ee2401f34a39714;main15ae503455bc6ae75b080caa1c4919cafb250027 unchanged. React checklist:primitive prop,no new hooks/effects/state/subscriptions/requests,list keys/button semantics/storage paths unchanged. Native fullMath/Review/Gov/P015 browser results PENDING at this source. New two layout visualGate① pending;whole-chapterGate② OPEN/Gate③NOT-READY. Older proposed/diagnostic results below are historical,not current implementation verification.
+
 # P015 — N12確認画面の単元判定を安定させる
 
 Status: PROPOSED / NOT APPROVED / NOT IMPLEMENTED

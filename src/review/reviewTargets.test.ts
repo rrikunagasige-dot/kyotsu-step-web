@@ -275,7 +275,8 @@ describe('W025 P008–P014 exact hint review boundaries',()=>{
     expect(target.totalItems).toBe(c.count)
     expect(target.revision).toBe(c.unit.revision)
     expect(extractReviewSection(c.unit,target)?.items.map(q=>q.id)).toEqual(c.ids)
-    expect(activeReviewMarkIds(target)).toEqual([c.mark])
+    expect(target.markBlockIds).toEqual([c.mark])
+    expect(activeReviewMarkIds(target)).toEqual([]) // user accepted all seven images
     expect(extractReviewSection({...c.unit,revision:c.unit.revision+1},target)).toBeNull()
     for(const accepted of ['n06-q12-choices','n05-q06-hint','n07-q09-hint','n08-q05-hint','n14-q16'])
       expect(activeReviewMarkIds(reviewTargets[accepted])).toEqual([])

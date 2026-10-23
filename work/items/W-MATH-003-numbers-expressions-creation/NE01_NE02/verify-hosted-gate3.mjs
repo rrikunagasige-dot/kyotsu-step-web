@@ -1,6 +1,6 @@
 import fs from 'node:fs'
 import assert from 'node:assert/strict'
-import { chromium } from 'playwright'
+import { chromium } from '@playwright/test'
 // Authorized by the user's 2026-10-23 「いいよ」 to publish the frozen candidate
 // to the existing Pages site. Main learner source is not merged by this harness.
 const base=process.env.LIVE_APP_URL

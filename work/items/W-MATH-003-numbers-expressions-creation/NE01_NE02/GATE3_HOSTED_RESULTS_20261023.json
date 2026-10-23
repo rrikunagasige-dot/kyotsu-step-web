@@ -1,0 +1,232 @@
+{
+  "sourceSHA": "171c04781f32c1286a0762905891b582714834f9",
+  "lessonBaseline": "3055ed71b25057b80b85d46b1d219f1005d0a35d",
+  "url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/",
+  "storageKey": "kyotsu-step-gate3-math-20261023",
+  "results": [
+    {
+      "unit": "math-numbers-expressions-n01",
+      "item": "n01-01",
+      "width": 320,
+      "wrongHintCorrectReload": true,
+      "productionHistoryUnchanged": true
+    },
+    {
+      "unit": "math-numbers-expressions-n02",
+      "item": "n02-01",
+      "width": 320,
+      "wrongHintCorrectReload": true,
+      "productionHistoryUnchanged": true
+    },
+    {
+      "unit": "math-numbers-expressions-n03",
+      "item": "n03-01",
+      "width": 320,
+      "wrongHintCorrectReload": true,
+      "productionHistoryUnchanged": true
+    },
+    {
+      "unit": "math-numbers-expressions-n04",
+      "item": "n04-q01-p1",
+      "width": 320,
+      "wrongHintCorrectReload": true,
+      "productionHistoryUnchanged": true
+    },
+    {
+      "unit": "math-numbers-expressions-n05",
+      "item": "n05-01",
+      "width": 320,
+      "wrongHintCorrectReload": true,
+      "productionHistoryUnchanged": true
+    },
+    {
+      "unit": "math-numbers-expressions-n06",
+      "item": "n06-01",
+      "width": 320,
+      "wrongHintCorrectReload": true,
+      "productionHistoryUnchanged": true
+    },
+    {
+      "unit": "math-numbers-expressions-n07",
+      "item": "n07-01",
+      "width": 320,
+      "wrongHintCorrectReload": true,
+      "productionHistoryUnchanged": true
+    },
+    {
+      "unit": "math-numbers-expressions-n08",
+      "item": "n08-01",
+      "width": 320,
+      "wrongHintCorrectReload": true,
+      "productionHistoryUnchanged": true
+    },
+    {
+      "unit": "math-numbers-expressions-n09",
+      "item": "n09-01",
+      "width": 320,
+      "wrongHintCorrectReload": true,
+      "productionHistoryUnchanged": true
+    },
+    {
+      "unit": "math-numbers-expressions-n10",
+      "item": "n10-01",
+      "width": 320,
+      "wrongHintCorrectReload": true,
+      "productionHistoryUnchanged": true
+    },
+    {
+      "unit": "math-numbers-expressions-n11",
+      "item": "n11-01",
+      "width": 320,
+      "wrongHintCorrectReload": true,
+      "productionHistoryUnchanged": true
+    },
+    {
+      "unit": "math-numbers-expressions-n12",
+      "item": "n12-p002-q01-coef",
+      "width": 320,
+      "wrongHintCorrectReload": true,
+      "productionHistoryUnchanged": true
+    },
+    {
+      "unit": "math-numbers-expressions-n13",
+      "item": "n13-01",
+      "width": 320,
+      "wrongHintCorrectReload": true,
+      "productionHistoryUnchanged": true
+    },
+    {
+      "unit": "math-numbers-expressions-n14",
+      "item": "n14-01",
+      "width": 320,
+      "wrongHintCorrectReload": true,
+      "productionHistoryUnchanged": true
+    },
+    {
+      "unit": "math-numbers-expressions-ne01",
+      "item": "ne01-01",
+      "width": 320,
+      "wrongHintCorrectReload": true,
+      "productionHistoryUnchanged": true
+    },
+    {
+      "unit": "math-numbers-expressions-ne02",
+      "item": "ne02-01",
+      "width": 320,
+      "wrongHintCorrectReload": true,
+      "productionHistoryUnchanged": true
+    },
+    {
+      "unit": "math-numbers-expressions-n01",
+      "item": "n01-01",
+      "width": 1440,
+      "wrongHintCorrectReload": true,
+      "productionHistoryUnchanged": true
+    },
+    {
+      "unit": "math-numbers-expressions-n02",
+      "item": "n02-01",
+      "width": 1440,
+      "wrongHintCorrectReload": true,
+      "productionHistoryUnchanged": true
+    },
+    {
+      "unit": "math-numbers-expressions-n03",
+      "item": "n03-01",
+      "width": 1440,
+      "wrongHintCorrectReload": true,
+      "productionHistoryUnchanged": true
+    },
+    {
+      "unit": "math-numbers-expressions-n04",
+      "item": "n04-q01-p1",
+      "width": 1440,
+      "wrongHintCorrectReload": true,
+      "productionHistoryUnchanged": true
+    },
+    {
+      "unit": "math-numbers-expressions-n05",
+      "item": "n05-01",
+      "width": 1440,
+      "wrongHintCorrectReload": true,
+      "productionHistoryUnchanged": true
+    },
+    {
+      "unit": "math-numbers-expressions-n06",
+      "item": "n06-01",
+      "width": 1440,
+      "wrongHintCorrectReload": true,
+      "productionHistoryUnchanged": true
+    },
+    {
+      "unit": "math-numbers-expressions-n07",
+      "item": "n07-01",
+      "width": 1440,
+      "wrongHintCorrectReload": true,
+      "productionHistoryUnchanged": true
+    },
+    {
+      "unit": "math-numbers-expressions-n08",
+      "item": "n08-01",
+      "width": 1440,
+      "wrongHintCorrectReload": true,
+      "productionHistoryUnchanged": true
+    },
+    {
+      "unit": "math-numbers-expressions-n09",
+      "item": "n09-01",
+      "width": 1440,
+      "wrongHintCorrectReload": true,
+      "productionHistoryUnchanged": true
+    },
+    {
+      "unit": "math-numbers-expressions-n10",
+      "item": "n10-01",
+      "width": 1440,
+      "wrongHintCorrectReload": true,
+      "productionHistoryUnchanged": true
+    },
+    {
+      "unit": "math-numbers-expressions-n11",
+      "item": "n11-01",
+      "width": 1440,
+      "wrongHintCorrectReload": true,
+      "productionHistoryUnchanged": true
+    },
+    {
+      "unit": "math-numbers-expressions-n12",
+      "item": "n12-p002-q01-coef",
+      "width": 1440,
+      "wrongHintCorrectReload": true,
+      "productionHistoryUnchanged": true
+    },
+    {
+      "unit": "math-numbers-expressions-n13",
+      "item": "n13-01",
+      "width": 1440,
+      "wrongHintCorrectReload": true,
+      "productionHistoryUnchanged": true
+    },
+    {
+      "unit": "math-numbers-expressions-n14",
+      "item": "n14-01",
+      "width": 1440,
+      "wrongHintCorrectReload": true,
+      "productionHistoryUnchanged": true
+    },
+    {
+      "unit": "math-numbers-expressions-ne01",
+      "item": "ne01-01",
+      "width": 1440,
+      "wrongHintCorrectReload": true,
+      "productionHistoryUnchanged": true
+    },
+    {
+      "unit": "math-numbers-expressions-ne02",
+      "item": "ne02-01",
+      "width": 1440,
+      "wrongHintCorrectReload": true,
+      "productionHistoryUnchanged": true
+    }
+  ]
+}

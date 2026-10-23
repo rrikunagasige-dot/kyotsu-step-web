@@ -4,7 +4,10 @@ Status: APPROVED
 Created: 2026-10-23 JST
 Command: CMD-WORK-001 修正
 
-### 2026-10-23 execution checkpoint
+### 2026-10-23 latest execution checkpoint
+P-001のexact内容は不変。Q06hintの受入後、専用順次枝PR116に限定実装済み。sourced894e38820829c387386d207ff2d44d1ac95eebb、全体Math39900003882/Review39900003982/Governance39900003884 SUCCESS。旧wrong履歴保持の再回答と24実画像まで検証。ユーザー直接指示によりQ12一問で止めず、次5件groupの視覚受入へ保持する。
+
+### HISTORICAL — 2026-10-23 execution checkpoint
 承認済み、未実装。先行小問の実画像Gate①後にexact範囲で実装。承認を再度求めない。
 
 ### Problem / Need

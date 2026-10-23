@@ -39,3 +39,6 @@ Approval evidence: なし。今回の「ヒントならいいよじゃ続けて�
 - Supersedes: None.
 - Superseded by: None.
 - 全文提案の明示承認前に学習内容を実装しない。現時点は診断と提案だけ。
+
+### 2026-10-23 grouped presentation
+ユーザーは今後約5問をまとめて完成・提示するよう指示。本案のhint literal/範囲/リスク/検証内容は変更せず、[新3案一括の変更前後](../W-MATH-026-n06-q12-distinct-distractor/BATCH_HINT_PROPOSALS_P005_P007.md)で一度に提示。**Status: WAITING / Approved by user: NO / 未実装**。Q06画像了承やQ12既存承認を新3案へ流用しない。承認後の一括実装/まとめQAと5件group提示は最新直接指示の運用に従う。

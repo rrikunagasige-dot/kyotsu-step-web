@@ -132,7 +132,16 @@ const targets: Record<string, ReviewTarget> = {
     revision:3,totalItems:16,
     blockIds:['n06-lead-06','n06-formula-06','n06-after-06'],
     itemIds:['n06-06'],expectedAnswers:['(x^2-1)(x^2-4)'],
-    markBlockIds:['n06-formula-06'],reviewState:'awaiting-user',
+    markBlockIds:['n06-formula-06'],reviewState:'accepted', // user Q06 hint visual acceptance; fixed evidence retained
+  },
+  // W-MATH-026/P-001: a distinct review of choices; accepted Q12 hint stays closed.
+  'n06-q12-choices': {
+    id:'n06-q12-choices',unitId:'math-numbers-expressions-n06',title:'N06 Q12 選択肢',
+    question:'数学的に異なる四つの選択肢と、保存済み旧誤答からの再回答',
+    revision:3,totalItems:16,
+    blockIds:['n06-lead-12','n06-formula-12','n06-after-12'],
+    itemIds:['n06-12'],expectedAnswers:['(x+y)(x+2)(x-1)'],
+    markBlockIds:['n06-formula-12'],reviewState:'awaiting-user',
   },
   // W-MATH-025/P-003: the one original Q03 wrong-only hint; source revision unchanged.
   'n06-q03': {

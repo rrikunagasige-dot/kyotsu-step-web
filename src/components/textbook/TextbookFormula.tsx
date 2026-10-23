@@ -93,7 +93,7 @@ export function TextbookFormula({ block, section, progress, onOpen, unitId }: Pr
                     {lines.map((line, i) =>
                       <span key={i}><InlineMath math={normalizeTextbookMath(line)} /></span>)}
                   </span>
-                : <InlineMath math={showCoefficientAsX ? 'x' : normalizeTextbookMath(value)} />
+                : <InlineMath math={showCoefficientAsX ? 'x' : normalizeTextbookMath(lines[0])} />
             })()
             : value}
         </span>

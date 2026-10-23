@@ -1,0 +1,70 @@
+name: P005 authentic full review image recapture
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/ne-development-recapture.yml'
+permissions:
+  contents: read
+jobs:
+  capture:
+    if: ${{ github.head_ref == 'work/W-MATH-003-ne01-ne02-evidence-20261023' }}
+    runs-on: ubuntu-latest
+    env:
+      CI: 'true'
+      VITE_REVIEW_PREVIEW: 'true'
+      VITE_BASE_PATH: '/'
+      VITE_PREVIEW_COMMIT: '3cb825ba100a5bd8bef7a14e6c00f411c637e914'
+      CAPTURE_SHA: '3cb825ba100a5bd8bef7a14e6c00f411c637e914'
+      CAPTURE_HARNESS_SHA: ${{ github.event.pull_request.head.sha }}
+      E2E_USE_PREVIEW: '1'
+      E2E_NE_DEVELOPMENT: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: '3cb825ba100a5bd8bef7a14e6c00f411c637e914'
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          path: capture-harness
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run build
+      - name: Preserve exact frozen learner source and install only external capture test
+        run: |
+          test "$(git rev-parse HEAD)" = "$CAPTURE_SHA"
+          git diff --exit-code -- src public
+          cp capture-harness/work/items/W-MATH-003-numbers-expressions-creation/NE01_NE02/capture-review-images.spec.ts e2e/ne-recapture.spec.ts
+          mkdir -p e2e-evidence/ne-development-recapture
+          node -e 'require("fs").writeFileSync("e2e-evidence/ne-development-recapture/source.json", JSON.stringify({learnerSource:process.env.CAPTURE_SHA,captureHarness:process.env.CAPTURE_HARNESS_SHA,width:390,viewport:"actual tall browser viewport; fixed navigation remains visible outside the captured region",learnerMutation:false},null,2))'
+      - name: Bounded Japanese font installation
+        shell: bash
+        timeout-minutes: 4
+        run: |
+          font_dir="$RUNNER_TEMP/ne-fonts"
+          mkdir -p "$font_dir"
+          for weight in Regular Bold; do
+            curl --fail --location --connect-timeout 15 --max-time 90 --retry 1 --retry-max-time 120 \
+              "https://raw.githubusercontent.com/notofonts/noto-cjk/main/Sans/OTF/Japanese/NotoSansCJKjp-$weight.otf" \
+              -o "$font_dir/NotoSansCJKjp-$weight.otf"
+          done
+          sudo mkdir -p /usr/local/share/fonts/ne-development
+          sudo install -m 644 "$font_dir/"*.otf /usr/local/share/fonts/ne-development/
+          fc-cache -f
+      - run: pnpm exec playwright install chromium
+      - run: pnpm exec playwright test e2e/ne-recapture.spec.ts --project=mobile-chromium
+      - if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ne-development-unoccluded-${{ env.CAPTURE_SHA }}
+          path: e2e-evidence/ne-development-recapture/**
+          if-no-files-found: error
+          retention-days: 7

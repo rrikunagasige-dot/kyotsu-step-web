@@ -4,7 +4,7 @@ let chromium;
 try{({chromium}=require('@playwright/test'));}catch{({chromium}=require(process.env.CODEX_PRIMARY_RUNTIME_NODE_MODULES+'/playwright'));}
 const root=__dirname;
 async function main(){
- const browser=await chromium.launch({headless:true});const results=[];
+ const browser=await chromium.launch({headless:true,...(process.env.CODED_AUTHORING_CHROME?{executablePath:process.env.CODED_AUTHORING_CHROME}:{})});const results=[];
  const evidence=path.join(root,'output','evidence');fs.mkdirSync(evidence,{recursive:true});
  try{
   for(const width of [320,390,1440])for(const mode of ['textbook','practice']){
@@ -48,7 +48,7 @@ async function main(){
    const p=path.join(root,'output',mode,'report.json'),r=JSON.parse(fs.readFileSync(p,'utf8'));
    r.stages.final.browser='PASS';r.stages.final.user_gates='PENDING';fs.writeFileSync(p,JSON.stringify(r,null,2)+'\n');
   }
-  const report={status:'PASS',cases:results.length,results,browser:'Chromium',user_gates:'PENDING',independent_pedagogy_audit:false,source_sha:process.env.GITHUB_SHA||'LOCAL'};
+  const report={status:'PASS',cases:results.length,results,browser:'Chromium',browser_version:browser.version(),user_gates:'PENDING',independent_pedagogy_audit:false,source_sha:process.env.GITHUB_SHA||'LOCAL'};
   fs.writeFileSync(path.join(root,'output','browser_results.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));
  }finally{await browser.close();}
 }

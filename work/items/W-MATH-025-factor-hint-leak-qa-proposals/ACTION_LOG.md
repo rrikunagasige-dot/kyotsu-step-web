@@ -1,3 +1,20 @@
+
+### Frozen-source final CI
+
+- Full Math run39919622275 / job120301428632 SUCCESS:250unit tests/25files,257 actual browser cases/12explicit matrix skips; typecheck/lint/build and all textbook/physics/practice regressions PASS.
+- Practice run39919621970 / job120301426606 SUCCESS:95unit tests/7files,72actual browser cases (36mobile+36desktop).
+- Review run39919622184 / check120301428288 SUCCESS:48unit tests/5files, typecheck/lint/build. This workflow's branch-specific capture/browser jobs were skipped; no browser counts are claimed for them.
+- Governance run39919622162 SUCCESS.
+- P016 dedicated run39919622149 / job120301427245 SUCCESS:26unit/2files,9actual browser cases/9matrix skips. Related-audit findings remain FOUR; execution success does not erase them.
+
+Technical verification of approved two-block scope: PASS. Human two-block visual acceptance: PENDING. Whole chapter: NOT COMPLETE. Gate② OPEN / Gate③ NOT-READY.
+
+## 2026-10-23 — P016 current technical result and bounded impact audit
+
+Frozen learner source `91f7b2df72d5403931e0a0df0b656627516116d8`, Draft PR #125; source branch is unchanged. Exact user approval「いいよ続けて」covered these two formula groups. Real-source dedicated run39919622149 SUCCESS:26unit tests,9 actual browser cases,9 project-matrix skips. Six target cases (two blocks ×320/390/1440) passed row-binding, mobile ordering, PC single-line, overflow, normal/review wrong→hint→retry, reload/history/isolation and all35graded interactions. Direct inspection of six target wrong-state images confirms readable Japanese and intact coefficient/parenthesis/x groups. No artificial DOM/CSS injection. Original34PNG+9JSON preserved in image commit `e2743fefc3a4652ec94cea8b8b5c40247fa434c7`.
+
+Related11-pair audit executed at3widths/3states: FOUR other320px blocks remain visually defective (Q02coefficient,Q06RIGHTcoefficient,Q10puddingcoefficient,Q13lower). These are findings, not test PASS claims; no unauthorized fixes. [Impact audit](./P016_IMPACT_AUDIT_20261023.md). Prior seven hint acceptances and earlier five accepted fixes remain accepted. Keys/options/math/hints/IDs/revisions/storage unchanged; original part renderer identical and CSS append-only scoped to two exact identities. Human new-two visual acceptance PENDING; [two-item real image sheet](./GATE1_P016_TWO_LAYOUTS.md). Whole chapter Gate② OPEN; Gate③ NOT-READY. Main remains15ae503455bc6ae75b080caa1c4919cafb250027; no merge/deploy.
+
 ## 2026-10-23 — P016 directly approved and implemented
 
 User exact「いいよ続けて」directly followed the complete P016 two-block grouping proposal and its approval question,with no changed conditions. P016 APPROVED/IMPLEMENTING→VERIFYING. Scope:only N12formula-q06-left-coef andformula-q12-signed-coef get semanticgroups;renderer andscopedCSSplusregressiontests. P015stableunitIDkept,allprevioushintacceptanceskept,keys/choices/math/data/IDs/revisions/storageunchanged. Parent29e788315f951196ec20abbc6a27735078c72aa7;main15ae503455bc6ae75b080caa1c4919cafb250027unchanged. Nativeverificationpendingatthissource. Testrowbinding,notonlyoverflow;11candidatesauditedwithoutunauthorizedrelatededits. PriorP015automatedPASSandvisualFAILremainhistory. NewtwoimageGate①notrequesteduntilactualimageinspectionPASS. WholechapterGate②OPEN/Gate③NOTREADY;no deployment.

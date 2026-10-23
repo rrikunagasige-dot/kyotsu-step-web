@@ -1,3 +1,7 @@
+## 2026-10-23 — P016 directly approved and implemented
+
+User exact「いいよ続けて」directly followed the complete P016 two-block grouping proposal and its approval question,with no changed conditions. P016 APPROVED/IMPLEMENTING→VERIFYING. Scope:only N12formula-q06-left-coef andformula-q12-signed-coef get semanticgroups;renderer andscopedCSSplusregressiontests. P015stableunitIDkept,allprevioushintacceptanceskept,keys/choices/math/data/IDs/revisions/storageunchanged. Parent29e788315f951196ec20abbc6a27735078c72aa7;main15ae503455bc6ae75b080caa1c4919cafb250027unchanged. Nativeverificationpendingatthissource. Testrowbinding,notonlyoverflow;11candidatesauditedwithoutunauthorizedrelatededits. PriorP015automatedPASSandvisualFAILremainhistory. NewtwoimageGate①notrequesteduntilactualimageinspectionPASS. WholechapterGate②OPEN/Gate③NOTREADY;no deployment.
+
 # P016 — N12 Q06/Q12の式のまとまりを保つ改行
 
 Status: PROPOSED / NOT APPROVED / NOT IMPLEMENTED
@@ -20,13 +24,13 @@ P015 sourceの元の文字列:
 
 狭幅では、最初の不等式、下向き矢印、変形後の式の3視覚行。
 
-$
+$$
 \begin{gathered}
 3x+2\le2x+4\\
 \Downarrow\\
 \boxed{\text{選択}}\,x+2\le4
 \end{gathered}
-$
+$$
 
 最終行の係数欄とx+2≤4は一つの折り返さないまとまり。PCでは同じ左右の式を「⇒」で一行に並べる。解答後の係数1は既存表示規則どおりxとし、1xへ戻さない。
 
@@ -34,12 +38,12 @@ $
 
 狭幅では等号の直前を区切りにした2視覚行。
 
-$
+$$
 \begin{gathered}
 130(20-x)\\
 =2600+(\boxed{\text{選択}})x
 \end{gathered}
-$
+$$
 
 第二行全体を折り返さないまとまりにし、開き括弧・係数欄・閉じ括弧・xを離さない。PCでは一行で表示。原データのM/C/M、採点値−130、ヒントは維持。
 

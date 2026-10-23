@@ -1476,3 +1476,39 @@ button.math-theme-link {
     row-gap: .16rem;
   }
 }
+
+
+
+/* W-MATH-022/P-001: Q16-only phone wrapping, one logical substitution
+   per formula. Split after the entire substitution, before the '=|...|='
+   result; all original native choices retain their size and color. */
+@media (max-width: 430px) {
+  .reading-derivation-chain[data-derivation-id="n14-q16-chain"]
+    [data-testid="textbook-formula-n14-formula-16"],
+  .reading-derivation-chain[data-derivation-id="n14-q16-chain"]
+    [data-testid="textbook-formula-n14-wm022-q16-right"] {
+    padding-inline: 0;
+  }
+  .reading-derivation-chain[data-derivation-id="n14-q16-chain"]
+    [data-testid="textbook-formula-n14-formula-16"] .reading-formula-expression,
+  .reading-derivation-chain[data-derivation-id="n14-q16-chain"]
+    [data-testid="textbook-formula-n14-wm022-q16-right"] .reading-formula-expression {
+    display: grid;
+    min-width: 0;
+    width: 100%;
+    grid-template-columns: repeat(4, max-content);
+    grid-template-rows: auto auto;
+    justify-content: center;
+    align-items: baseline;
+    column-gap: .1em;
+    row-gap: .16rem;
+  }
+  .reading-derivation-chain[data-derivation-id="n14-q16-chain"]
+    [data-testid="textbook-formula-n14-formula-16"] .reading-formula-expression > :first-child,
+  .reading-derivation-chain[data-derivation-id="n14-q16-chain"]
+    [data-testid="textbook-formula-n14-wm022-q16-right"] .reading-formula-expression > :first-child {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    justify-self: center;
+  }
+}

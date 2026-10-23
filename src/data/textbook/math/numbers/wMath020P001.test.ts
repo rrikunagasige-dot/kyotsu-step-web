@@ -10,9 +10,9 @@ const record=(id:string,value:string):TextbookAnswerRecord=>({
 })
 describe('W-MATH-020/P-001 N14 Q15 source and guarded archive',()=>{
  it('keeps 16 source markers, 34 actions, Q14→Q15→Q16 and the original figure',()=>{
-   expect(unit.revision).toBe(9)
+   expect(unit.revision).toBe(10)
    expect(Object.keys(n14SourceToItemIds)).toHaveLength(16)
-   expect(sec.items).toHaveLength(34)
+   expect(sec.items).toHaveLength(38)
    expect(sec.items.map(i=>i.id)).toEqual(Object.values(n14SourceToItemIds).flat())
    const ids=['n14-lead-15','n14-formula-15','n14-wm020-q15-explain','n14-wm020-q15-result']
    const indices=ids.map(pos)
@@ -30,7 +30,7 @@ describe('W-MATH-020/P-001 N14 Q15 source and guarded archive',()=>{
    expect(pos('n14-after-14')).toBe(indices[0]-1)
    expect(pos('n14-after-15')).toBe(indices[3]+1)
    expect(pos('n14-lead-16')).toBe(pos('n14-after-15')+1)
-   expect(item('n14-16').answer).toBe('|-4|=4,\\quad|4|=4')
+   expect(item('n14-16').answer).toBe('両端とも含む')
    expect(n14SourceToItemIds['N14-Q14']).toEqual(['n14-wm019-q14-add-left','n14-wm019-q14-add-center','n14-wm019-q14-add-right','n14-14','n14-wm019-q14-bound-right'])
    expect(n14SourceToItemIds['N14-Q10']).toHaveLength(5)
    expect(sec.figures.map(f=>f.id)).toEqual(['n14-f01'])
@@ -63,7 +63,7 @@ describe('W-MATH-020/P-001 N14 Q15 source and guarded archive',()=>{
        'n14-16':record('n14-16','|-4|=4,\\quad|4|=4'),
      },
    }
-   const now=effectiveTextbookProgress(unit,previous)!
+   const now=effectiveTextbookProgress({...unit,revision:9},previous)!
    expect(now.unitRevision).toBe(9)
    expect(now.migratedFromRevision).toBe(8)
    expect(now.completedAt).toBeUndefined()
@@ -73,7 +73,7 @@ describe('W-MATH-020/P-001 N14 Q15 source and guarded archive',()=>{
    for(const id of Object.keys(previous.answers).filter(id=>id!=='n14-15'))
      expect(now.answers[id]).toEqual(previous.answers[id])
    for(const id of n14SourceToItemIds['N14-Q15'])expect(now.answers[id]).toBeUndefined()
-   expect(effectiveTextbookProgress(unit,now)).toBe(now)
+   expect(effectiveTextbookProgress({...unit,revision:9},now)).toBe(now)
  })
  it('W-MATH-021 P-001 guides the incorrect center divisor without directly giving 3x÷3=x',()=>{
    const center=item('n14-wm020-q15-divide-center')
@@ -88,8 +88,8 @@ describe('W-MATH-020/P-001 N14 Q15 source and guarded archive',()=>{
    expect(center.hints.join('')).not.toContain('3x÷3=x')
    expect(sec.items.find(i=>i.id==='n14-wm020-q15-divide-left')?.answer).toBe('3')
    expect(sec.items.find(i=>i.id==='n14-wm020-q15-divide-right')?.answer).toBe('3')
-   expect(unit.revision).toBe(9)
-   expect(sec.items).toHaveLength(34)
+   expect(unit.revision).toBe(10)
+   expect(sec.items).toHaveLength(38)
  })
  it('normalizes ancient revision 1 into 9 without resurrecting old combined keys',()=>{
    const first:TextbookUnitProgress={
@@ -97,7 +97,7 @@ describe('W-MATH-020/P-001 N14 Q15 source and guarded archive',()=>{
      answers:{'n14-01':record('n14-01','old'),'n14-10':record('n14-10','old'),'n14-14':record('n14-14','old'),
        'n14-15':record('n14-15','old'),'n14-16':record('n14-16','old')},
    }
-   const now=effectiveTextbookProgress(unit,first)!
+   const now=effectiveTextbookProgress({...unit,revision:9},first)!
    expect(now.unitRevision).toBe(9)
    for(let rev=1;rev<=8;rev++)expect(now.archivedRevisions?.[String(rev)]).toBeDefined()
    expect(now.answers['n14-01']).toEqual(first.answers['n14-01'])

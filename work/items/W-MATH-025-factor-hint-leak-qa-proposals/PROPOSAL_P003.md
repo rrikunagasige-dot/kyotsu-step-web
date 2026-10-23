@@ -4,7 +4,7 @@ Created: 2026-10-23 JST
 Command: CMD-WORK-001 修正
 
 ### 2026-10-23 execution checkpoint
-P-003 Q03だけを今回実装・検証。実画像Gate①は未受入。
+P-003 Q03だけを実装。source 7bad9d800d143dcc99f52fecb96b867914ca09d7、原画像18枚 d889a22957362c50ef0cf88c3d023cf2e9b844c7、実Chrome/Review39894543039 SUCCESS。ヒント1文のみの実画像Gate①はユーザー未受入、全体Math39894542994も同じsource SHAでSUCCESS（237単体/254画面成功、9skip）。
 
 ### Problem / Need
 教師原Word SHA256 `93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa`。対象repo `rrikunagasige-dot/kyotsu-step-web` (ID1391122224)、確認した教材SHA `b1dc7e2ce7542ea1b7dd244a9490dfd1d4c2bf10`、N06 revision3 / 原問16件 / 選択16件。原Wordは読取専用。

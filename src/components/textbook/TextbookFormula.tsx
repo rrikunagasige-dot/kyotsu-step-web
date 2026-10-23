@@ -125,15 +125,26 @@ export function TextbookFormula({ block, section, progress, onOpen, unitId }: Pr
     && first?.type === 'math' && first.latex.includes('=')
     && n12Choice?.type === 'choice' && n12Choice.itemId === 'n12-p002-q12-signed-coef'
     && suffix?.type === 'math'
-  const grouped = q06Layout || q12Layout
+  const transformLayout = n12Formula && block.parts.length === 3
+    && ((block.id === 'formula-q02-coef' && n12Choice?.type === 'choice' && n12Choice.itemId === 'n12-p002-q02-coef')
+      || (block.id === 'formula-q06-right-coef' && n12Choice?.type === 'choice' && n12Choice.itemId === 'n12-p002-q06-right-coef'))
+    && first?.type === 'math' && first.latex.endsWith('\\quad\\Longrightarrow\\quad') && suffix?.type === 'math'
+  const puddingLayout = n12Formula && block.id === 'formula-cost-pudding' && block.parts.length === 3
+    && first?.type === 'math' && first.latex === '130\\times(20-x)='
+    && n12Choice?.type === 'choice' && n12Choice.itemId === 'n12-p003-q10-pudding-coef'
+    && suffix?.type === 'math' && suffix.latex === '(20-x)'
+  const lowerLayout = n12Formula && block.id === 'formula-q13-lower' && block.parts.length === 2
+    && first?.type === 'choice' && first.itemId === 'n12-p002-q13-lower'
+    && n12Choice?.type === 'math' && n12Choice.latex === '\\le50x<3300-2650'
+  const grouped = q06Layout || q12Layout || transformLayout || puddingLayout
   return (
     <div
       className={`reading-formula-line${n12Formula ? ' reading-formula-line--n12' : ''}`}
       data-testid={`textbook-formula-${block.id}`}
       data-latex-status="ok"
     >
-      <div className={`reading-formula-expression${grouped ? ' reading-formula-expression--p016' : ''}`}>
-        {q06Layout && first?.type === 'math' ? (
+      <div className={`reading-formula-expression${grouped ? ' reading-formula-expression--p016' : ''}${lowerLayout ? ' reading-formula-expression--p017-chain' : ''}`}>
+        {(q06Layout || transformLayout) && first?.type === 'math' ? (
           <>
             <span className="reading-formula-group" data-testid="p016-left">
               <InlineMath math={first.latex.slice(0, first.latex.indexOf('\\quad\\Longrightarrow\\quad'))} />
@@ -146,7 +157,7 @@ export function TextbookFormula({ block, section, progress, onOpen, unitId }: Pr
               {renderedParts.slice(1)}
             </span>
           </>
-        ) : q12Layout && first?.type === 'math' ? (
+        ) : (q12Layout || puddingLayout) && first?.type === 'math' ? (
           <>
             <span className="reading-formula-group" data-testid="p016-left">
               <InlineMath math={first.latex.slice(0, first.latex.indexOf('='))} />
@@ -155,6 +166,13 @@ export function TextbookFormula({ block, section, progress, onOpen, unitId }: Pr
               <InlineMath math={first.latex.slice(first.latex.indexOf('='))} />
               {renderedParts.slice(1)}
             </span>
+          </>
+        ) : lowerLayout ? (
+          <>
+            <span className="reading-formula-p017-bound" data-testid="p017-bound">
+              {renderedParts[0]}<span className="reading-formula-math"><InlineMath math="\\le50x" /></span>
+            </span>
+            <span className="reading-formula-math reading-formula-p017-continuation" data-testid="p017-continuation"><InlineMath math="<3300-2650" /></span>
           </>
         ) : renderedParts}
       </div>

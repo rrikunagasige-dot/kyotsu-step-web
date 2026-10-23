@@ -1542,3 +1542,41 @@ button.math-theme-link {
   .reading-formula-p016-wide { display: none; }
   .reading-formula-p016-narrow { display: block; }
 }
+
+/* W-MATH-025/P017: preserve the lower-bound chain at its relation boundary. */
+.reading-formula-line--n12 .reading-formula-expression--p017-chain {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: .08em;
+}
+.reading-formula-p017-bound {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: baseline;
+  gap: .08em;
+  white-space: nowrap;
+}
+.reading-formula-p017-continuation { white-space: nowrap; }
+@media (max-width: 430px) {
+  .reading-formula-line--n12 .reading-formula-expression--p017-chain {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    justify-content: center;
+    align-items: baseline;
+    column-gap: .08em;
+    row-gap: .16rem;
+  }
+  .reading-formula-expression--p017-chain > .reading-formula-p017-bound {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+  .reading-formula-expression--p017-chain > .reading-formula-p017-continuation {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: start;
+  }
+}

@@ -1,0 +1,74 @@
+[
+  {
+    "name": "textbook-product-basic-320-before.png",
+    "bytes": 162336,
+    "sha256": "733cf8e5d3cd50c16935a99b58d9d1ef3aa9607b3a7f04d6778661a6331c3ac3",
+    "git_blob": "b41dec5ef7621ca2810f5a6dbbd78016925d2d4a",
+    "repo_path": "work/items/W-GOV-010-coded-authoring/evidence/textbook-product-basic-320-before.png",
+    "source_sha": "7d4e5b7c501a0502ece2e77e41506b1a57b8f801",
+    "run_id": 39969162480
+  },
+  {
+    "name": "textbook-product-basic-320-complete.png",
+    "bytes": 205481,
+    "sha256": "1995f7256de2f209ebcf68f172298f4715f8f80b250548328b1986843d80c16b",
+    "git_blob": "4b6a3e2466afa2a75891cdcb49b7b1f1eafd81be",
+    "repo_path": "work/items/W-GOV-010-coded-authoring/evidence/textbook-product-basic-320-complete.png",
+    "source_sha": "7d4e5b7c501a0502ece2e77e41506b1a57b8f801",
+    "run_id": 39969162480
+  },
+  {
+    "name": "textbook-product-signed-390-before.png",
+    "bytes": 172023,
+    "sha256": "9b0636dfa6aaff83bee27072f276e650a47cef7f959b7475681bd87a9f5f785a",
+    "git_blob": "186bdcf4162baa9d95340d6350d9c374daee46b7",
+    "repo_path": "work/items/W-GOV-010-coded-authoring/evidence/textbook-product-signed-390-before.png",
+    "source_sha": "7d4e5b7c501a0502ece2e77e41506b1a57b8f801",
+    "run_id": 39969162480
+  },
+  {
+    "name": "textbook-product-signed-390-complete.png",
+    "bytes": 219215,
+    "sha256": "f6bb56e7ee07f6adf8fead3c16ca262e5e29a5e093c1e013aa8607e46205f280",
+    "git_blob": "87d9a7b1166eeffe096d3d79cdc8201eb4838916",
+    "repo_path": "work/items/W-GOV-010-coded-authoring/evidence/textbook-product-signed-390-complete.png",
+    "source_sha": "7d4e5b7c501a0502ece2e77e41506b1a57b8f801",
+    "run_id": 39969162480
+  },
+  {
+    "name": "textbook-linear-320-before.png",
+    "bytes": 140976,
+    "sha256": "9df185abc7c388321d7f2729d7039101cf7add9de03eb7a7da9478644fe7e5cd",
+    "git_blob": "2e675ae00a09828466e756f4855168eb07c30491",
+    "repo_path": "work/items/W-GOV-010-coded-authoring/evidence/textbook-linear-320-before.png",
+    "source_sha": "7d4e5b7c501a0502ece2e77e41506b1a57b8f801",
+    "run_id": 39969162480
+  },
+  {
+    "name": "textbook-linear-320-complete.png",
+    "bytes": 188381,
+    "sha256": "b7d4319d8ec324ad0d8730e4e900f2f89bd934701fd9856fb6a846234dba8057",
+    "git_blob": "58232ad937acc6b9fedcde0f0c120dc9d60ab44f",
+    "repo_path": "work/items/W-GOV-010-coded-authoring/evidence/textbook-linear-320-complete.png",
+    "source_sha": "7d4e5b7c501a0502ece2e77e41506b1a57b8f801",
+    "run_id": 39969162480
+  },
+  {
+    "name": "practice-practice-product-390-before.png",
+    "bytes": 117026,
+    "sha256": "987c3adf9c0d5ece57f9f1f08a052918e8b8df6fc8dc3d513160fc77239e5d92",
+    "git_blob": "86562daea3fcacb7f104b39272d0c01f54f11519",
+    "repo_path": "work/items/W-GOV-010-coded-authoring/evidence/practice-practice-product-390-before.png",
+    "source_sha": "7d4e5b7c501a0502ece2e77e41506b1a57b8f801",
+    "run_id": 39969162480
+  },
+  {
+    "name": "practice-practice-product-390-complete.png",
+    "bytes": 164490,
+    "sha256": "d2b319ea87a721a8d19e1249ce5c16a8b78b5a08c43377799ca26336e682176d",
+    "git_blob": "d6bb3da1d8e94136d15806da4e4dbe1af0bc4332",
+    "repo_path": "work/items/W-GOV-010-coded-authoring/evidence/practice-practice-product-390-complete.png",
+    "source_sha": "7d4e5b7c501a0502ece2e77e41506b1a57b8f801",
+    "run_id": 39969162480
+  }
+]

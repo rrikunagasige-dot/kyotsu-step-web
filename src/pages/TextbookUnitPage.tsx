@@ -220,7 +220,7 @@ export function TextbookReadingFlow({ unit, section, progress, onSummaryReached,
     && activeItem?.answerType === 'formula'
     && activeChoices.some(choice => choice.length > 27 || choice.includes('\\quad'))
   const activeHint = activeItem && activeRecord && !isTextbookItemResolved(activeItem, activeRecord) && activeRecord.attemptCount > 0 && activeItem.hints.length
-    ? developmentFeedback(activeItem.id, activeRecord.value) ?? activeItem.hints[Math.min(activeRecord.attemptCount - 1, activeItem.hints.length - 1)]
+    ? [developmentFeedback(activeItem.id, activeRecord.value), activeItem.hints[Math.min(activeRecord.attemptCount - 1, activeItem.hints.length - 1)]].filter(Boolean).join(' ')
     : undefined
   const continuousLesson = unit.sections.length === 1 && section.id === 'lesson'
 

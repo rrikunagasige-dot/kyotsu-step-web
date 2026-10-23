@@ -32,7 +32,7 @@ for(const unit of units)for(const width of [320,390,1440])test('P005 all choices
   for(const wrong of choices.filter(c=>c!==item.answer)){
    await panel.getByRole('button',{name:wrong,exact:true}).click()
    await trigger.click()
-   await expect(page.getByTestId('textbook-hint-'+item.id)).toHaveText('ヒント'+developmentFeedback(item.id,wrong))
+   await expect(page.getByTestId('textbook-hint-'+item.id)).toHaveText('ヒント'+developmentFeedback(item.id,wrong)+' '+item.hints[0])
    await fits(page)
   }
   await panel.getByRole('button',{name:item.answer,exact:true}).click()

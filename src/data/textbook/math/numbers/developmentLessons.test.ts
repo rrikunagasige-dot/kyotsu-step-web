@@ -48,6 +48,12 @@ describe('P005 source coverage and real lesson contracts', () => {
     expect(progress?.completedAt).toBeTruthy()
   })
 
+  it('keeps the actual two original problem expressions in the first compound review slice', () => {
+    const section=extractReviewSection(mathNumbersNE01Unit,reviewTargets['ne01-q12'])!
+    expect(JSON.stringify(section.readingFlow)).toContain('x^3-1')
+    expect(JSON.stringify(section.readingFlow)).toContain('27y^3')
+  })
+
   it('keeps the sum/product step free of its unseen numerical result',()=>{
     const flow=mathNumbersNE02Unit.sections[0].readingFlow
     const before=flow.slice(flow.findIndex(b=>b.id==='ne02-heading-05'),flow.findIndex(b=>b.id==='ne02-formula-06'))

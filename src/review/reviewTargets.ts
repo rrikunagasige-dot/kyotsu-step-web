@@ -26,8 +26,10 @@ function developmentTargets(unit: TextbookUnit): Record<string, ReviewTarget> {
   const section = unit.sections[0]
   return Object.fromEntries(section.items.map(item => {
     const [prefix, number] = item.id.split('-')
-    const first = section.readingFlow.findIndex(block => block.id === prefix + '-lead-' + number)
-    const next = section.readingFlow.findIndex((block, index) => index > first && (block.id.startsWith(prefix + '-lead-') || block.type === 'heading'))
+    const lead = section.readingFlow.findIndex(block => block.id === prefix + '-lead-' + number)
+    const intro = section.readingFlow.findIndex(block => block.id === prefix + '-intro-' + number)
+    const first = intro >= 0 ? intro : lead
+    const next = section.readingFlow.findIndex((block, index) => index > lead && (block.id.startsWith(prefix + '-lead-') || block.type === 'heading'))
     const blocks = section.readingFlow.slice(first, next < 0 ? undefined : next)
     const id = prefix + '-q' + number
     return [id, {

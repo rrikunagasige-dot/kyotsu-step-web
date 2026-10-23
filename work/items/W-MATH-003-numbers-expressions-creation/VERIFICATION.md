@@ -1,3 +1,7 @@
+## P-005 feedback and review context refinement — 2026-10-23
+
+At second source e0219bd6c96569f900914d5b7297d601dfa51440, dedicated schema/unit/type/lint/build passed and browser/chapter run is in progress; practice regression SUCCESS. Refined new-unit wrong feedback to show both the exact per-distractor reason AND the approved general hint. Preserves old-unit hint output byte-for-byte for all unmatched item IDs. Included original problem/intro in each first-stage isolated review slice, with source-expression assertions; avoids showing a compound question without its parent expressions. Existing source keys and all25 approved answer/choice/hint strings remain unchanged. Current real browser validation will run again on new exact source; no prior PASS is promoted to final source proof.
+
 ## P-005 first verification checkpoint — 2026-10-23
 
 Initial source `85d1b1b3353dab0c25afa53c97d953123df3eba1`: typecheck/lint PASS, dedicated unit run134 PASS/1 FAIL. The single failure was an existing wrapping-test global count42 after adding42 opt-in formula blocks from the approved new units; old block assertions remain unchanged. Fixed the assertion to separately preserve old42 and bound new entries to NE01/NE02, total84. No learner answer/design change. Initial browser capture did not run; do not claim visual PASS. Math and review runs and all failures remain in history. Expanded existing practice CI path to cover the changed shared textbook-page call site and scoped development display module.

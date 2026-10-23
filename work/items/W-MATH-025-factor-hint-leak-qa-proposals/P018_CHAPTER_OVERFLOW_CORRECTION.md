@@ -1,3 +1,7 @@
+## 2026-10-23 JST — P018 second pass: completed-expression overflow, continue to repair
+
+Sourcee149fdea7ba35892560da54f7329874fb2850952 native39925681698 SUCCESS:56unit/63actualbrowser/63matrixskips. Originalartifact12489627271=17,243,349bytes,SHA2568b8b417bbb197d521aa14bc26a6d306b92493932f98019a0c4df2adbb119b973. ALL wrong-state geometry flags now0. Extended final-completion geometry found25width flags across19blocks,17additional distinctblocks beyondfirst25. Fix same root for42totalexactblocks including resolved math, retaining actual answer value/history/IDs and original order. Semantic chunking now substitutes already-resolved math before grouping and retains resolved test IDs on actual first answer segment. No text/key/choice/hint/schema/storage edits. Native chapter tests now explicitly FAIL on any wrong or completed overflow after saving metrics; authentic formula-only screenshots cover all42changedblocksbothstatesat320. Earlier runs remain historical,not verification of this new source. This is execution under user's explicit all-remaining-corrections-through-chapter instruction;no further implementation permission pause. Gate① newbatchimagespending,agentchapterverificationstillinprogress,Gate③NOTREADY/mainunchanged.
+
 # W-MATH-025/P018 — additional chapter overflow correction
 
 Status: APPROVED

@@ -138,6 +138,19 @@ export function TextbookFormula({ block, section, progress, onOpen, unitId }: Pr
     && first?.type === 'choice' && first.itemId === 'n12-p002-q13-lower'
     && n12Choice?.type === 'math' && n12Choice.latex === '\\le50x<3300-2650'
   const auditedWrap = auditedWrapBlocks[unitId]?.includes(block.id) ?? false
+  const wrapBlock = auditedWrap ? {
+    ...block,
+    parts: block.parts.map((part, index) => {
+      if (part.type !== 'choice') return part
+      const item = section.items.find(q => q.id === part.itemId)
+      const record = progress?.answers[part.itemId]
+      return item && isTextbookItemResolved(item, record)
+        ? { type: 'math' as const, latex: `§a${index}§${normalizeTextbookMath(record?.value ?? item.answer)}§z${index}§` }
+        : part
+    }),
+  } : block
+  let wrappedAnswer: number | undefined
+  const markedAnswers = new Set<number>()
   const grouped = q06Layout || q12Layout || transformLayout || puddingLayout
   return (
     <div
@@ -176,12 +189,18 @@ export function TextbookFormula({ block, section, progress, onOpen, unitId }: Pr
             </span>
             <span className="reading-formula-math reading-formula-p017-continuation" data-testid="p017-continuation"><InlineMath math="<3300-2650" /></span>
           </>
-        ) : auditedWrap ? formulaWrapChunks(block).map((chunk, groupIndex) => (
+        ) : auditedWrap ? formulaWrapChunks(wrapBlock).map((chunk, groupIndex) => (
           <span className="reading-formula-wrap-group" key={`${block.id}-wrap-${groupIndex}`}>
-            {chunk.split(/(§\d+§)/).filter(Boolean).map((part, partIndex) => {
+            {chunk.split(/(§(?:\d+|a\d+|z\d+)§)/).filter(Boolean).map((part, partIndex) => {
+              const begin = part.match(/^§a(\d+)§$/)
+              if (begin) { wrappedAnswer = Number(begin[1]); return null }
+              if (/^§z\d+§$/.test(part)) { wrappedAnswer = undefined; return null }
               const choice = part.match(/^§(\d+)§$/)
+              const answerPart = wrappedAnswer === undefined ? undefined : block.parts[wrappedAnswer]
+              const answerId = answerPart?.type === 'choice' && !markedAnswers.has(wrappedAnswer!) ? answerPart.itemId : undefined
+              if (answerId) markedAnswers.add(wrappedAnswer!)
               return choice ? renderedParts[Number(choice[1])]
-                : <span className="reading-formula-math" key={`${block.id}-wrap-${groupIndex}-${partIndex}`}><InlineMath math={part} /></span>
+                : <span className="reading-formula-math" data-testid={answerId ? `resolved-${answerId}` : undefined} key={`${block.id}-wrap-${groupIndex}-${partIndex}`}><InlineMath math={part} /></span>
             })}
           </span>
         )) : renderedParts}

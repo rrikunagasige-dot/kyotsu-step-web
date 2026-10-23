@@ -45,6 +45,10 @@ for(const unit of units)for(const width of [320,390,1440])test('chapter '+unit.u
    await trigger.scrollIntoViewIfNeeded()
    await page.screenshot({path:'e2e-evidence/chapter-final/'+item.id+'-overflow-'+width+'.png'})
   }
+  if(width===320 && await trigger.locator('xpath=ancestor::*[contains(@class,"reading-formula-line")]').locator('.reading-formula-expression--chapter-wrap').count()){
+   mkdirSync('e2e-evidence/chapter-final',{recursive:true})
+   await trigger.locator('xpath=ancestor::*[contains(@class,"reading-formula-line")]').screenshot({path:'e2e-evidence/chapter-final/'+item.id+'-wrong-formula-320.png'})
+  }
   rows.push({id:item.id,geometry,choices})
   await panel.getByRole('button',{name:item.answer,exact:true}).click()
   await expect(page.getByTestId('resolved-'+item.id)).toBeVisible()
@@ -62,4 +66,15 @@ for(const unit of units)for(const width of [320,390,1440])test('chapter '+unit.u
   return {id:el.getAttribute('data-testid'),left:r.left,right:r.right,width:el.clientWidth,scrollWidth:el.scrollWidth,children:Array.from(el.querySelectorAll('.reading-formula-expression > *')).map(n=>{const r=n.getBoundingClientRect();return {left:r.left,right:r.right}})}
  }))
  writeFileSync('e2e-evidence/chapter-final/'+unit.unitId+'-'+width+'.json',JSON.stringify({source:process.env.CAPTURE_SHA,width,unit:unit.unitId,revision:unit.revision,rows,completeGeometry,complete:true},null,2)+'\n')
+ if(width===320){
+  const expressions=page.locator('.reading-formula-line:has(.reading-formula-expression--chapter-wrap)')
+  for(let i=0;i<await expressions.count();i++){
+   const el=expressions.nth(i),id=await el.getAttribute('data-testid')
+   await el.screenshot({path:'e2e-evidence/chapter-final/'+id+'-complete-formula-320.png'})
+  }
+ }
+ const wrongOverflow=rows.filter(row=>{const g=row.geometry as {left:number;right:number;width:number;scrollWidth:number;children:{left:number;right:number}[]}|null;return g&&(g.scrollWidth-g.width>1||g.children.some(c=>c.left<g.left-1||c.right>g.right+1))})
+ const completedOverflow=completeGeometry.filter(g=>g.scrollWidth-g.width>1||g.children.some(c=>c.left<g.left-1||c.right>g.right+1))
+ expect(wrongOverflow,'all chapter wrong-state expressions fit').toEqual([])
+ expect(completedOverflow,'all chapter completed expressions fit').toEqual([])
 })

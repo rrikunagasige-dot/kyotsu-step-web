@@ -32,5 +32,5 @@ describe('chapter overflow mathematical boundaries', () => {
       })
     }
   }
-  it('limits the new wrapping to the confirmed twenty-five blocks', () => expect(count).toBe(25))
+  it('limits the new wrapping to the confirmed audited blocks', () => expect(count).toBe(42))
 })

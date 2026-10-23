@@ -1,3 +1,6 @@
+import { mathNumbersN04Unit } from '../data/textbook/math/numbers/n04Lesson'
+import { mathNumbersN10Unit } from '../data/textbook/math/numbers/n10Lesson'
+import { mathNumbersN12Unit } from '../data/textbook/math/numbers/n12Lesson'
 import { describe, expect, it } from 'vitest'
 import { mathNumbersN01Unit } from '../data/textbook/math/numbers/n01Lesson'
 import { mathNumbersN03Unit } from '../data/textbook/math/numbers/n03Lesson'
@@ -254,4 +257,27 @@ describe('W-GOV-008/P-002 review marker boundaries', () => {
       expect(activeReviewMarkIds(reviewTargets[id])).toEqual([])
   })
 
+})
+
+
+describe('W025 P008–P014 exact hint review boundaries',()=>{
+  const cases=[
+    {unit:mathNumbersN04Unit,target:"n04-q20-hint",ids:["n04-20"],mark:"n04-formula-20",count:26},
+    {unit:mathNumbersN10Unit,target:"n10-q07-hint",ids:["n10-07"],mark:"formula-n10-07",count:21},
+    {unit:mathNumbersN10Unit,target:"n10-q08-hint",ids:["n10-07","n10-08"],mark:"formula-n10-08",count:21},
+    {unit:mathNumbersN12Unit,target:"n12-q06-coef-hint",ids:["n12-p002-q06-left-coef"],mark:"formula-q06-left-coef",count:35},
+    {unit:mathNumbersN12Unit,target:"n12-q12-coef-hint",ids:["n12-p002-q12-signed-coef"],mark:"formula-q12-signed-coef",count:35},
+    {unit:mathNumbersN04Unit,target:"n04-q22-hint",ids:["n04-22"],mark:"n04-formula-22",count:26},
+    {unit:mathNumbersN07Unit,target:"n07-q11-hint",ids:["n07-11"],mark:"n07-formula-11",count:14},
+  ]
+  it.each(cases)('$target maps only real items and the one changed hint marker',c=>{
+    const target=reviewTargets[c.target]
+    expect(target.totalItems).toBe(c.count)
+    expect(target.revision).toBe(c.unit.revision)
+    expect(extractReviewSection(c.unit,target)?.items.map(q=>q.id)).toEqual(c.ids)
+    expect(activeReviewMarkIds(target)).toEqual([c.mark])
+    expect(extractReviewSection({...c.unit,revision:c.unit.revision+1},target)).toBeNull()
+    for(const accepted of ['n06-q12-choices','n05-q06-hint','n07-q09-hint','n08-q05-hint','n14-q16'])
+      expect(activeReviewMarkIds(reviewTargets[accepted])).toEqual([])
+  })
 })

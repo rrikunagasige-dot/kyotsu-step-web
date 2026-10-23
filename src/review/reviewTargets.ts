@@ -116,6 +116,15 @@ const targets: Record<string, ReviewTarget> = {
     markBlockIds:['n13-formula-08','n13-wm023-q08-positive-root','n13-wm023-q08-negative-root'],
     reviewState:'accepted',
   },
+  // W-MATH-025/P-001: one original N05 Q11 hint, source-native visuals only.
+  'n05-q11': {
+    id:'n05-q11',unitId:'math-numbers-expressions-n05',title:'N05 Q11',
+    question:'整数組を先出しせず、積と和の条件を確かめる誤答ヒント',
+    revision:2,totalItems:20,
+    blockIds:['n05-lead-11','n05-formula-11','n05-after-11'],
+    itemIds:['n05-11'],expectedAnswers:['(a-8)(a+2)'],
+    markBlockIds:['n05-formula-11'],reviewState:'awaiting-user',
+  },
   // W-MATH-024/P-001: one real original Q18 after-wrong hint; no learner content copy.
   'n05-q18': {
     id:'n05-q18',unitId:'math-numbers-expressions-n05',title:'N05 Q18',

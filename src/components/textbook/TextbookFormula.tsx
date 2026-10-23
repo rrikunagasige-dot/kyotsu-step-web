@@ -1,5 +1,5 @@
 import { InlineMath } from 'react-katex'
-import { auditedWrapBlocks, formulaWrapChunks } from './formulaWrap'
+import { auditedResolvedWrapBlocks, auditedWrapBlocks, formulaWrapChunks } from './formulaWrap'
 import type { TextbookUnitProgress } from '../../domain/textbook'
 import { isTextbookItemResolved } from '../../domain/textbook'
 import { normalizeTextbookMath } from '../../domain/textbookMath'
@@ -141,7 +141,7 @@ export function TextbookFormula({ block, section, progress, onOpen, unitId }: Pr
   const wrapBlock = auditedWrap ? {
     ...block,
     parts: block.parts.map((part, index) => {
-      if (part.type !== 'choice') return part
+      if (part.type !== 'choice' || !auditedResolvedWrapBlocks.includes(block.id)) return part
       const item = section.items.find(q => q.id === part.itemId)
       const record = progress?.answers[part.itemId]
       return item && isTextbookItemResolved(item, record)

@@ -17,7 +17,7 @@ export function formulaWrapChunks(block: FormulaBlock): string[] {
       if (!braces && !parentheses && !absolute) {
         if (/^\\(?:Longrightarrow|longrightarrow)$/.test(command)) {
           push(i); push(i + command.length)
-        } else if (/^\\(?:times|cdot|qquad)$/.test(command) && i > start) push(i)
+        } else if ((command === '\\qquad' || (block.id === 'formula-n03-01' && /^\\(?:times|cdot)$/.test(command)) || /^\\(?:le|ge|lt|gt)$/.test(command)) && i > start) push(i)
       }
       i += command.length - 1
       continue
@@ -47,3 +47,6 @@ export const auditedWrapBlocks: Readonly<Record<string, readonly string[]>> = {
   'math-numbers-expressions-n05': ['n05-formula-13'],
   'math-numbers-expressions-n06': ['n06-formula-01', 'n06-formula-09', 'n06-formula-13'],
 }
+
+// Only these nineteen completed answers themselves exceeded the available width.
+export const auditedResolvedWrapBlocks: readonly string[] = ["formula-n02-04", "formula-n02-09", "formula-n02-10", "formula-n02-11", "formula-n02-12", "formula-n03-05", "formula-n03-07", "formula-n03-09", "formula-n03-12", "formula-n04-q01-complete", "formula-n10-11", "formula-n10-20", "n04-formula-13", "n04-formula-15", "n04-formula-16", "n05-formula-13", "n06-formula-01", "n06-formula-09", "n06-formula-13"]

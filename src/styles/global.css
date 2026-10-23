@@ -1592,7 +1592,7 @@ button.math-theme-link {
   flex-wrap: wrap;
   justify-content: safe center;
   align-items: baseline;
-  gap: .12rem .08em;
+  gap: .55rem .08em;
   min-width: 0;
   max-width: 100%;
 }

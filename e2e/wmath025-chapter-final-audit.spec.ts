@@ -49,6 +49,14 @@ for(const unit of units)for(const width of [320,390,1440])test('chapter '+unit.u
    mkdirSync('e2e-evidence/chapter-final',{recursive:true})
    await trigger.locator('xpath=ancestor::*[contains(@class,"reading-formula-line")]').screenshot({path:'e2e-evidence/chapter-final/'+item.id+'-wrong-formula-320.png'})
   }
+  if(item.id==='n03-01' && width===320){
+   const overlap=await trigger.locator('xpath=ancestor::*[contains(@class,"reading-formula-line")]').evaluate(el=>{
+    const buttons=Array.from(el.querySelectorAll('button')).map(n=>n.getBoundingClientRect())
+    const labels=Array.from(el.querySelectorAll('.vlist .mord.text')).map(n=>n.getBoundingClientRect())
+    return labels.some(l=>buttons.some(b=>Math.min(l.right,b.right)-Math.max(l.left,b.left)>1 && Math.min(l.bottom,b.bottom)-Math.max(l.top,b.top)>1))
+   })
+   expect(overlap,'underbrace count labels do not collide with the next-row control').toBe(false)
+  }
   rows.push({id:item.id,geometry,choices})
   await panel.getByRole('button',{name:item.answer,exact:true}).click()
   await expect(page.getByTestId('resolved-'+item.id)).toBeVisible()

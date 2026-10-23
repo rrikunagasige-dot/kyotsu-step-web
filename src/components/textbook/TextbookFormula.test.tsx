@@ -1,3 +1,5 @@
+import { mathNumbersN07Unit as n07 } from '../../data/textbook/math/numbers/n07Lesson'
+import { mathNumbersNE02Unit as ne02 } from '../../data/textbook/math/numbers/ne02Lesson'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { describe,expect,it } from 'vitest'
 import { answerTextbookItem } from '../../domain/textbook'
@@ -63,3 +65,18 @@ for(const [targetId,blockId] of [['n12-q02-layout','formula-q02-coef'],['n12-q06
   expect(html).not.toContain('katex-error')
  })
 }
+
+it('renders all four protected fraction answers through the real completed formula component',()=>{
+ for(const unit of [n07,n10,ne02])for(const section of unit.sections)for(const item of section.items.filter(q=>['n07-08','n10-16','ne02-10','ne02-12'].includes(q.id))){
+  const progress=answerTextbookItem(undefined,unit,item,item.answer,1)
+  for(const block of section.readingFlow.filter(b=>b.type==='formula'&&b.parts.some(p=>p.type==='choice'&&p.itemId===item.id))){
+   if(block.type!=='formula')continue
+   const html=renderToStaticMarkup(<TextbookFormula unitId={unit.unitId} section={section} block={block} progress={progress} onOpen={()=>{}} />)
+   expect(html,item.id).toContain('data-testid="resolved-'+item.id+'"')
+   expect(html,item.id).not.toContain('<mo>{</mo>')
+   expect(html,item.id).not.toContain('<mo>}</mo>')
+   expect(html,item.id).not.toContain('katex-error')
+   expect(progress.answers[item.id].value).toBe(item.answer)
+  }
+ }
+})

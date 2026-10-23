@@ -963,9 +963,11 @@ jobs:
       - name: Install readable Japanese font for Q12 Gate1 screenshots
         if: ${{ steps.need.outputs.capture == 'true' }}
         shell: bash
+        timeout-minutes: 4
         run: |
-          sudo apt-get update -qq
-          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends fonts-noto-cjk
+          if ! fc-list :lang=ja | grep -q 'Noto Sans CJK JP'; then
+            timeout 180s sudo env DEBIAN_FRONTEND=noninteractive apt-get -o Acquire::Retries=1 -o Acquire::http::Timeout=20 -o Acquire::https::Timeout=20 install -y --no-install-recommends fonts-noto-cjk
+          fi
           fc-cache -f
           fc-match -f '%{family}\n' ':lang=ja' | grep -q 'Noto'
           fc-list :lang=ja | grep -q 'Noto Sans CJK JP'

@@ -29,3 +29,33 @@ Status: VERIFYING N05-Q11 Stage A; actual browser evidence and full CI pending; 
 - Exactly one original student-visible N05-Q11 hint changed; N05 revision2, 20 original teacher questions, figures and options stay the same, Q18 accepted hint preserved. Review-only target `n05-q11` adds one `確認①`; accepted Q18 and N13 remain without old markers.
 - Initial full math CI at source SHA failed due a **Vitest JavaScript -0 vs +0** comparison in the new dedicated polynomial expansion assertion, not lesson data; fixed by numeric difference. Initial governance failed because Work and Proposal status fields were not machine-readable standalone lines; now changed to `Status: VERIFYING` and `Status: APPROVED` respectively. Latest all-suite native CI running; do not claim final PASS before verification.
 - **Q11 Gate① BLOCK-CHECK-PENDING**. N06 Q12 P-002 not implemented, Gate② pending, separate N14 Q16 Gate① pending, Gate③ unavailable. Draft PR #115 only, main and published app untouched.
+
+
+## C1 — actual Stage B CI checkpoint, 2026-10-23 JST
+- Primary: W-MATH-025/P-002, approved exact Q12 hint only; Q11 Gate① accepted by direct user 「続けていいよ」.
+- Target: rrikunagasige-dot/kyotsu-step-web, repository ID 1391122224; live main 15ae503455bc6ae75b080caa1c4919cafb250027.
+- Actual source/branch SHA: 8423d50d30d8634bed19d10b17ef42e5f9c64c9a; branch work/W-MATH-025-n05-q11-hint-approved-20261023, Draft PR #115; native workflow run IDs PENDING retrieval.
+- Local precheck PASS: exact one-hint diff; 16 original N06 items/revision3; symbolic polynomial coefficient expansion; both YAML workflows parse; Q11 capture disabled and Q12 evidence in separate folder. Browser/typecheck/full regression remain PENDING.
+- No secondary implementation. While CI runs, permitted primary-only source/math/known-root assessment. No other learner edits.
+- Return: SUCCESS -> inspect original 18 Q12 images and record exact capture SHA; FAILURE -> job evidence and approved-scope repair; API/disconnect -> preserve this SHA and actual latest run state.
+- Q12 user Gate① BLOCK-CHECK-PENDING; Gate② open; separate N14 Q16 Gate① pending; Gate③ FINAL-REVIEW-NOT-READY; main/deployment unchanged.
+
+### Native CI runs at source 8423d50d30d8634bed19d10b17ef42e5f9c64c9a
+- Math textbook CI 39888774291 RUNNING: https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39888774291
+- Review code + actual Q12 Chrome 39888774248 RUNNING: https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39888774248
+- Governance 39888774251 SUCCESS: https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39888774251
+- Pending runs are not PASS. No secondary implementation and no additional learner changes.
+
+## V-025-B-LOCAL — independent mathematical / source preflight
+- Original Word Q12 (paragraph 271): 残る二次式を因数分解し、全体を完成させよう。
+- N06 Q11 already establishes (x+y)(x²+x−2); retaining (x+y) in the Q12 hint recalls a prerequisite, not an unreached factor.
+- For x²+x−2, coefficients require r+s=1 and rs=−2. Product negative gives opposite signs; positive sum gives larger absolute value positive. New approved hint is mathematically valid and withholds r=2,s=−1.
+- Exact coefficient multiplication: (x+y)(x+2)(x−1)=x³+x²y+x²+xy−2x−2y. Correct key remains unique among all four choices even though two wrong choices duplicate each other.
+- Static learner diff old→new is exactly one q:12 hint literal; full file equality restored by reversing that replacement. 16 original Q markers, answer/choice literals, revision3 and all other learner modules are unchanged in actual GitHub comparison aa6758fa→8423d50d.
+- Q11 accepted marker retained as history but inactive. Q18 and N13 Q05/Q08 accepted state preserved. Q12 marker is isolated and defaults to awaiting-user.
+- Local YAML parsing passed for both edited workflow files. Chromium/typecheck/build/native regression evidence comes only from real GitHub jobs; do not replace with this static precheck.
+
+- Protected baseline source/figure blobs were absent from the actual Stage B GitHub diff. Original teacher Word SHA256 independently rechecked unchanged. Local font/browser logs are not substituted for native runtime evidence.
+
+## Font preparation checkpoint — no learner-scope change
+The Q12 native job 120203193623 / run 39888774248 remained in the Japanese font installation step for about ten minutes, while full math regression continued. Active-job logs were not yet available (404 BlobNotFound); do not claim a specific network subcommand failure. Replace only the Q12 capture job font setup with an existing-font check and a bounded package installation (4-minute step / 180-second install). Keep both actual Japanese font assertions. This is capture-environment repair within P-002 verification; Q12 hint, answers, IDs, revision and other learner files stay unchanged. On source push the old same-group capture run may be superseded; record cancellation separately from technical PASS.

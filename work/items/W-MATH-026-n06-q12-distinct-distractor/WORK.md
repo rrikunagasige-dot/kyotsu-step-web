@@ -1,5 +1,5 @@
 # W-MATH-026 — N06 Q12 数学的重複誤答の限定修正
-Status: IN-PROGRESS
+Status: VERIFYING
 Updated: 2026-10-23 JST
 
 ## Objective / Authority

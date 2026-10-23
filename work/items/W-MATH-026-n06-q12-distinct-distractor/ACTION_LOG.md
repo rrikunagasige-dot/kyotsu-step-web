@@ -20,3 +20,9 @@
 - ローカル準備時apply_patchが同一path Delete/Addを拒否。部分適用なし。別prepared directoryへAddで再準備。教材/GitHubへの影響なし。
 
 - ローカル事前検査PASS。現在44e版Math39898515492は引続きin_progress。新W026は別refで既存実行を中断しない。
+
+### Native failure and bounded repair
+- source fe9a7301dbcd4d4c386418c9937c4da5effd537b, Draft PR116, Governance39899834019/job120238614469 FAIL: Work status IN-PROGRESSは規定外。既存state machineのVERIFYINGへ機械修正。規則は変更しない。
+- Review39899834095 check120238615442、capture120238615702、Math39899834012/job120238615002 FAIL: 新しいunit test44行目の余分な閉括弧。照合用signatureを変数へ分けて修正。既存review35件はPASSだが全体PASSとはしない。capture前なので原画像は未生成。
+- ブランチ作成にupdate_refを使った最初の呼出は422 Reference does not exist。変更なし。専用create_branchで正しい独立枝を作成。403は発生していない。
+- Node --checkだけをTS構文検査PASSと扱った事前記載を訂正。Native build/lint/Vitestが正本であり、初回SHAはFAILED-VERIFICATIONとして履歴保持。修復後の新SHAで再実行する。

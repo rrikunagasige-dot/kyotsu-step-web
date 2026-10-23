@@ -28,3 +28,8 @@ Return on SUCCESS: inspect actual images/logs and record exactSHA/runs, keep gro
 
 ### Local pre-commit result
 PASS: Node24 syntax checks for new TS unit/E2E; exact source diff is one wrong[2] string; 16 original items and revision3 retained; both workflow YAML files parse, new capture is branch-limited and accepted Q06 capture disabled. Independent Python integer-coefficient expansion reproduces old duplicate and confirms four new choices pairwise distinct with exactly the source polynomial as key. Native runtime/UI CI remains PENDING.
+
+### FAILED initial native run — retained, not erased
+Source fe9a7301dbcd4d4c386418c9937c4da5effd537b:
+Governance39899834019 FAIL (status string), Review39899834095 FAIL (new test syntax; existing35 tests PASS), Math39899834012 FAIL (same test lint). Captures not executed, so no visual or full-regression PASS.
+Corrections: canonical VERIFYING status; remove extra closing parenthesis by naming answerSignature. Learner-source, renderer, schema/history unchanged from first W026 commit. Prior local Node --check syntax PASS was insufficient and is superseded by the native failure. Revised native results PENDING.

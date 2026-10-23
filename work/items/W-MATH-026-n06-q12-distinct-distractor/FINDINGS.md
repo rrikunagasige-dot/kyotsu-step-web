@@ -18,3 +18,6 @@
 - 元のwrong[0]とwrong[2]は交換法則で同じ多項式。新wrong[2]は中央係数3・定数2の二次式を含み、四つの選択肢は独立展開で全て異なる。
 - 既存保存schemaは変更不要。旧値が新choicesに無くてもunresolved/ヒント/再回答を保ち、赤い選択肢印が無いことはP-001で事前開示済み。firstValueを新候補へ置換しない。
 - 既知の教材修正4件: Q12 choices（本Work、既承認）、N05Q06/N07Q09/N08Q05 hint（P005/006/007、未承認）。既存N14Q16実画像確認1件。全体横断監査・N14候補整合・Gate③が別に残り、全残件確定/残り時間は主張しない。
+
+### ERROR-IMPLEMENTATION / ERROR-QA
+初回専用test44行の閉括弧誤りとWork状態名IN-PROGRESSがNative CIで検出された。教材修正は一文字列のまま。新testの比較式を単純化し、状態を既存VERIFYINGへ訂正。Node --check TS成功だけでは本プロジェクト構文検証にならなかったため、Native lint/build/Vitest完了までPASSにしない。単発の記録誤りは既存のstate machine/検証原則で扱い、新規共通規則を重複作成しない。

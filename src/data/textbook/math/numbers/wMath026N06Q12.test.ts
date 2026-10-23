@@ -41,7 +41,8 @@ describe('W-MATH-026/P-001 mathematical distinctions and unchanged revision3 his
     expect(new Set(expanded.map(value=>JSON.stringify(value))).size).toBe(4)
     const source={'3,0':1,'2,1':1,'2,0':1,'1,1':1,'1,0':-2,'0,1':-2}
     expect(coefficients(item.answer)).toEqual(source)
-    expect(expanded.filter(value=>JSON.stringify(value)===JSON.stringify(coefficients(item.answer))))).toHaveLength(1)
+    const answerSignature=JSON.stringify(coefficients(item.answer))
+    expect(expanded.filter(value=>JSON.stringify(value)===answerSignature)).toHaveLength(1)
     expect(choices.filter(value=>isTextbookAnswerCorrect(item,value))).toEqual([item.answer])
   })
   it('preserves a removed wrong answer verbatim, then retains its first attempt on retry',()=>{

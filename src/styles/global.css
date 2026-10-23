@@ -1580,3 +1580,26 @@ button.math-theme-link {
     justify-self: start;
   }
 }
+
+/* Chapter audit: only the 25 confirmed overflowing expressions opt into wrapping. */
+.reading-formula-line:has(.reading-formula-expression--chapter-wrap) {
+  min-width: 0;
+  overflow-x: auto;
+  white-space: normal;
+}
+.reading-formula-expression.reading-formula-expression--chapter-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: safe center;
+  align-items: baseline;
+  gap: .12rem .08em;
+  min-width: 0;
+  max-width: 100%;
+}
+.reading-formula-wrap-group {
+  display: inline-flex;
+  flex: 0 0 auto;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  white-space: nowrap;
+}

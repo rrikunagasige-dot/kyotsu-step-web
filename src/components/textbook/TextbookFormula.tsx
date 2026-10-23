@@ -1,4 +1,5 @@
 import { InlineMath } from 'react-katex'
+import { auditedWrapBlocks, formulaWrapChunks } from './formulaWrap'
 import type { TextbookUnitProgress } from '../../domain/textbook'
 import { isTextbookItemResolved } from '../../domain/textbook'
 import { normalizeTextbookMath } from '../../domain/textbookMath'
@@ -136,6 +137,7 @@ export function TextbookFormula({ block, section, progress, onOpen, unitId }: Pr
   const lowerLayout = n12Formula && block.id === 'formula-q13-lower' && block.parts.length === 2
     && first?.type === 'choice' && first.itemId === 'n12-p002-q13-lower'
     && n12Choice?.type === 'math' && n12Choice.latex === '\\le50x<3300-2650'
+  const auditedWrap = auditedWrapBlocks[unitId]?.includes(block.id) ?? false
   const grouped = q06Layout || q12Layout || transformLayout || puddingLayout
   return (
     <div
@@ -143,7 +145,7 @@ export function TextbookFormula({ block, section, progress, onOpen, unitId }: Pr
       data-testid={`textbook-formula-${block.id}`}
       data-latex-status="ok"
     >
-      <div className={`reading-formula-expression${grouped ? ' reading-formula-expression--p016' : ''}${lowerLayout ? ' reading-formula-expression--p017-chain' : ''}`}>
+      <div className={`reading-formula-expression${grouped ? ' reading-formula-expression--p016' : ''}${lowerLayout ? ' reading-formula-expression--p017-chain' : ''}${auditedWrap ? ' reading-formula-expression--chapter-wrap' : ''}`}>
         {(q06Layout || transformLayout) && first?.type === 'math' ? (
           <>
             <span className="reading-formula-group" data-testid="p016-left">
@@ -174,7 +176,15 @@ export function TextbookFormula({ block, section, progress, onOpen, unitId }: Pr
             </span>
             <span className="reading-formula-math reading-formula-p017-continuation" data-testid="p017-continuation"><InlineMath math="<3300-2650" /></span>
           </>
-        ) : renderedParts}
+        ) : auditedWrap ? formulaWrapChunks(block).map((chunk, groupIndex) => (
+          <span className="reading-formula-wrap-group" key={`${block.id}-wrap-${groupIndex}`}>
+            {chunk.split(/(§\d+§)/).filter(Boolean).map((part, partIndex) => {
+              const choice = part.match(/^§(\d+)§$/)
+              return choice ? renderedParts[Number(choice[1])]
+                : <span className="reading-formula-math" key={`${block.id}-wrap-${groupIndex}-${partIndex}`}><InlineMath math={part} /></span>
+            })}
+          </span>
+        )) : renderedParts}
       </div>
     </div>
   )

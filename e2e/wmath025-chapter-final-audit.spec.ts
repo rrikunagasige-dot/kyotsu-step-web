@@ -57,5 +57,9 @@ for(const unit of units)for(const width of [320,390,1440])test('chapter '+unit.u
  expect(await page.evaluate(id=>JSON.parse(localStorage.getItem('kyotsu-step-store')??'{}').state.textbookProgress[id],unit.unitId)).toEqual(saved)
  await expect(page.locator('.katex-error')).toHaveCount(0)
  mkdirSync('e2e-evidence/chapter-final',{recursive:true})
- writeFileSync('e2e-evidence/chapter-final/'+unit.unitId+'-'+width+'.json',JSON.stringify({source:process.env.CAPTURE_SHA,width,unit:unit.unitId,revision:unit.revision,rows,complete:true},null,2)+'\n')
+ const completeGeometry=await page.locator('.reading-formula-line').evaluateAll(lines=>lines.map(line=>{
+  const el=line as HTMLElement,r=el.getBoundingClientRect()
+  return {id:el.getAttribute('data-testid'),left:r.left,right:r.right,width:el.clientWidth,scrollWidth:el.scrollWidth,children:Array.from(el.querySelectorAll('.reading-formula-expression > *')).map(n=>{const r=n.getBoundingClientRect();return {left:r.left,right:r.right}})}
+ }))
+ writeFileSync('e2e-evidence/chapter-final/'+unit.unitId+'-'+width+'.json',JSON.stringify({source:process.env.CAPTURE_SHA,width,unit:unit.unitId,revision:unit.revision,rows,completeGeometry,complete:true},null,2)+'\n')
 })

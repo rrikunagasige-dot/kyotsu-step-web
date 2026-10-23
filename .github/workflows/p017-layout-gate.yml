@@ -32,8 +32,8 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm run typecheck && pnpm run build
-      - run: pnpm exec vitest run src/components/textbook/TextbookFormula.test.tsx src/review/reviewTargets.test.ts
-      - run: pnpm exec eslint src/components/textbook/TextbookFormula.tsx src/components/textbook/TextbookFormula.test.tsx src/pages/TextbookUnitPage.tsx src/review/reviewTargets.ts src/review/reviewTargets.test.ts e2e/wmath025-p016-n12-layout.spec.ts e2e/wmath025-chapter-final-audit.spec.ts --max-warnings=0
+      - run: pnpm exec vitest run src/components/textbook/TextbookFormula.test.tsx src/components/textbook/formulaWrap.test.tsx src/review/reviewTargets.test.ts
+      - run: pnpm exec eslint src/components/textbook/TextbookFormula.tsx src/components/textbook/formulaWrap.ts src/components/textbook/formulaWrap.test.tsx src/components/textbook/TextbookFormula.test.tsx src/pages/TextbookUnitPage.tsx src/review/reviewTargets.ts src/review/reviewTargets.test.ts e2e/wmath025-p016-n12-layout.spec.ts e2e/wmath025-chapter-final-audit.spec.ts --max-warnings=0
       - run: node work/items/W-MATH-025-factor-hint-leak-qa-proposals/export-p017-runtime-audit.mjs
       - name: Bounded Japanese font installation
         shell: bash

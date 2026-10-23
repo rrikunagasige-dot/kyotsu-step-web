@@ -40,8 +40,6 @@ test.describe('W025 P008–P014 approved hint batch, genuine app evidence',()=>{
         await page.goto('/#/review/'+c.target)
         await expect(page.getByTestId('review-preview-ready')).toBeVisible()
         await expect(page.getByTestId('review-preview-sha')).toContainText(sha)
-        await expect(page.locator('[data-testid^="review-mark-"]')).toHaveCount(1)
-        await expect(page.getByTestId('review-mark-'+c.mark)).toContainText('確認①')
         await expect(page.getByTestId('review-preview-count')).toContainText('0/'+(c.prereq.length+1))
         await expect(page.getByTestId('review-preview-count')).toContainText('全'+c.count+'穴')
         for(const id of c.prereq){
@@ -50,6 +48,8 @@ test.describe('W025 P008–P014 approved hint batch, genuine app evidence',()=>{
           await page.getByTestId('inline-choice-panel-'+id).getByRole('button',{name:prior.answer,exact:true}).click()
           await expect(page.getByTestId('resolved-'+id)).toBeVisible()
         }
+        await expect(page.locator('[data-testid^="review-mark-"]')).toHaveCount(1)
+        await expect(page.getByTestId('review-mark-'+c.mark)).toContainText('確認①')
         mkdirSync('e2e-evidence',{recursive:true})
         const snap=async(state:string)=>page.screenshot({path:'e2e-evidence/wm025-seven-'+c.id+'-review-'+state+'-'+width+'.png'})
         const trigger=page.getByTestId('textbook-item-'+c.id)

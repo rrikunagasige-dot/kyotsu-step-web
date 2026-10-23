@@ -175,7 +175,7 @@ describe('math textbook catalog', () => {
     expect(chapter1.map((topic) => topic.unitIds.reduce((total, id) => {
       const unit = mathTextbookUnits.find((candidate) => candidate.unitId === id)
       return total + (unit?.sections.reduce((count, section) => count + section.items.length, 0) ?? 0)
-    }, 0))).toEqual([122, 77, 116])
+    }, 0))).toEqual([125, 77, 116])
     expect(mathTextbookNextUnitId('math-numbers-expressions-n06')).toBe('math-numbers-expressions-ne01')
     expect(mathTextbookNextUnitId('math-numbers-expressions-n10')).toBe('math-numbers-expressions-ne02')
     expect(mathTextbookNextUnitId('math-numbers-expressions-ne01')).toBeUndefined()

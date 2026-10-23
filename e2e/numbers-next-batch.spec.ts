@@ -28,7 +28,7 @@ async function mobileLayoutCheck(page: Page) {
   expect(viewport.content).toBeLessThanOrEqual(viewport.client + 1)
 }
 
-test('N02 review: all 12 source-stage decisions, compound answers, no forward leakage', async ({ page }) => {
+test('N02 review: 12 source questions through 15 local decisions, no forward leakage', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 720 })
   await visitClean(page, 'math-numbers-expressions-n02')
   await expect(page.getByRole('heading', { name: '式を整える', exact: true })).toBeVisible()
@@ -41,18 +41,21 @@ test('N02 review: all 12 source-stage decisions, compound answers, no forward le
     ['n02-03','(2y-3,\\ y^2-3y+2)'],
     ['n02-04','x^2+(2y-3)x+(y^2-3y+2)'],
     ['n02-05','0x'],
-    ['n02-06','x^3-x^2+x+1'],
-    ['n02-07','x^3-2x^2-2'],
-    ['n02-08','3x^3-5x^2+x-3'],
-    ['n02-09','(4x^3-6x^2+2x-2,\\ 3x^3-6x^2-6)'],
-    ['n02-10','7x^3-12x^2+2x-8'],
-    ['n02-11','2A-3B'],
+    ['n02-06','-1'],
+    ['n02-r2-q07-x3','1'],
+    ['n02-07','-2'],
+    ['n02-08','-3'],
+    ['n02-r2-q09-a2','-6'],
+    ['n02-09','3'],
+    ['n02-10','-12'],
+    ['n02-r2-q11-sign','+'],
+    ['n02-11','-3'],
     ['n02-12','7x^3-12x^2+2x-8'],
   ]
   for (const [id, answer] of answers) {
     await choose(page, id, answer)
     if (id === 'n02-07') await expect(page.getByTestId('textbook-item-n02-08')).toBeVisible()
-    if (id === 'n02-10') await expect(page.getByTestId('textbook-item-n02-11')).toBeVisible()
+    if (id === 'n02-10') await expect(page.getByTestId('textbook-item-n02-r2-q11-sign')).toBeVisible()
   }
   await expect(page.getByTestId('textbook-unit-complete')).toBeVisible()
   await mobileLayoutCheck(page)

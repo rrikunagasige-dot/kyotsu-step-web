@@ -1,3 +1,4 @@
+import { mathNumbersN02Unit, n02SourceToItemIds } from '../data/textbook/math/numbers/n02Lesson'
 import { describe, expect, it } from 'vitest'
 import { builtInTextbookUnits } from '../data/textbookUnits'
 import {
@@ -317,5 +318,69 @@ describe('W-MATH-005/P-002: N01/N03-only v1 to v2 answer preservation', () => {
     expect(n12.answers).toEqual({})
     expect(n12.archivedRevisions?.['2'].completedAt).toBe(30)
     expect(textbookUnitProgress(mathNumbersN12Unit, n12old).total).toBe(35)
+  })
+})
+
+describe('W-MATH-027 N02 v2 retains history and reopens only changed decisions', () => {
+  const n02 = mathNumbersN02Unit
+  const oldAnswers = ['3bx', 'x^3-ax^2+3bx+5c', '(2y-3,\\ y^2-3y+2)', 'x^2+(2y-3)x+(y^2-3y+2)', '0x',
+    'x^3-x^2+x+1', 'x^3-2x^2-2', '3x^3-5x^2+x-3',
+    '(4x^3-6x^2+2x-2,\\ 3x^3-6x^2-6)', '7x^3-12x^2+2x-8', '2A-3B', '7x^3-12x^2+2x-8']
+  function legacy(count: number): TextbookUnitProgress {
+    return {
+      unitId: n02.unitId, unitRevision: 1, startedAt: 100, updatedAt: 200,
+      answers: Object.fromEntries(oldAnswers.slice(0, count).map((value, i) => {
+        const itemId = 'n02-' + String(i + 1).padStart(2, '0')
+        return [itemId, { itemId, value, firstValue: 'old wrong attempt', isFirstCorrect: false,
+          resolved: true, attemptCount: 2, firstAnsweredAt: 110, lastAnsweredAt: 190 }]
+      })), ...(count === 12 ? { completedAt: 199 } : {}),
+    }
+  }
+  it.each([0, 5, 8, 12])('preserves %i old answers and all attempt metadata in the revision archive', count => {
+    const old = legacy(count)
+    const before = JSON.stringify(old)
+    const active = effectiveTextbookProgress(n02, old)!
+    expect(JSON.stringify(old)).toBe(before)
+    expect(active.unitRevision).toBe(2)
+    expect(active.archivedRevisions?.['1'].answers).toEqual(old.answers)
+    expect(active.archivedRevisions?.['1'].completedAt).toBe(old.completedAt)
+    expect(active.completedAt).toBeUndefined()
+    expect(active.previousRevisionCompletedAt).toBe(old.completedAt)
+    const retained = Object.keys(old.answers).filter(id => ['n02-01', 'n02-02', 'n02-03', 'n02-04', 'n02-05', 'n02-12'].includes(id))
+    expect(Object.keys(active.answers)).toEqual(retained)
+    for (const id of retained) expect(active.answers[id]).toEqual(old.answers[id])
+    expect(effectiveTextbookProgress(n02, old)).toEqual(active)
+    expect(effectiveTextbookProgress(n02, active)).toBe(active)
+  })
+  it('resumes a completed old version at Q06 and never maps the compound Q09 to numeric 3', () => {
+    const old = legacy(12)
+    const active = effectiveTextbookProgress(n02, old)!
+    const next = n02.sections[0].items.find(q => !isTextbookItemResolved(q, active.answers[q.id]))
+    expect(next?.id).toBe('n02-06')
+    expect(active.answers['n02-09']).toBeUndefined()
+    expect(active.answers['n02-r2-q07-x3']).toBeUndefined()
+    const q06 = n02.sections[0].items.find(q => q.id === 'n02-06')!
+    const wrong = answerTextbookItem(old, n02, q06, '1', 300)
+    expect(wrong.unitRevision).toBe(2)
+    expect(wrong.answers[q06.id].resolved).toBe(false)
+    const correct = answerTextbookItem(wrong, n02, q06, '-1', 400)
+    expect(correct.answers[q06.id].attemptCount).toBe(2)
+    expect(correct.answers[q06.id].firstValue).toBe('1')
+    expect(correct.archivedRevisions?.['1'].answers).toEqual(old.answers)
+    expect(correct.answers['n02-05']).toEqual(old.answers['n02-05'])
+    expect(correct.completedAt).toBeUndefined()
+  })
+  it('keeps all original source questions, the one-step choices and Q05 answer type', () => {
+    expect(Object.keys(n02SourceToItemIds)).toHaveLength(12)
+    expect(Object.values(n02SourceToItemIds).flat()).toEqual(n02.sections[0].items.map(q => q.id))
+    expect(n02.sections[0].items).toHaveLength(15)
+    expect(n02.sections[0].items.find(q => q.id === 'n02-05')?.answer).toBe('0x')
+    const sign = n02.sections[0].items.find(q => q.id === 'n02-r2-q11-sign')!
+    expect(getTextbookChoices(n02, sign).sort()).toEqual(['+', '-'].sort())
+    expect(effectiveTextbookProgress(n02, undefined)).toBeUndefined()
+    const sameVersion = { ...legacy(5), unitRevision: 2 }
+    expect(effectiveTextbookProgress(n02, sameVersion)).toBe(sameVersion)
+    const sibling = { ...legacy(5), unitId: mathNumbersN03Unit.unitId, unitRevision: mathNumbersN03Unit.revision }
+    expect(effectiveTextbookProgress(mathNumbersN03Unit, sibling)).toBe(sibling)
   })
 })

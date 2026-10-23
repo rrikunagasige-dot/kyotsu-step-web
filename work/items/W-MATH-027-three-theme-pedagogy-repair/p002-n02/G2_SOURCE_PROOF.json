@@ -1,0 +1,28 @@
+{
+  "baseline": "30f1e9363ca33a88ffffccfd87c4abbd54f21c01",
+  "candidate": "f3c69618d5f97cf235d2f0d0d9256f33056e9525",
+  "changed_learner_paths": [
+    {
+      "path": "src/data/textbook/math/mathCatalog.test.ts",
+      "status": "modified",
+      "sha": "603fea2832318f61fbe462df08b720aef7c63f29"
+    },
+    {
+      "path": "src/data/textbook/math/mathCatalog.ts",
+      "status": "modified",
+      "sha": "a3995518d2a0fc21e9a99ae5c4b24e081dd01103"
+    },
+    {
+      "path": "src/data/textbook/math/numbers/ne01Lesson.ts",
+      "status": "modified",
+      "sha": "a364099319101c5d8ea953003e90d1c1ffd96777"
+    },
+    {
+      "path": "src/data/textbook/math/numbers/ne02Lesson.ts",
+      "status": "modified",
+      "sha": "df68c2768e8124dec02b1fc4a14eb909bacf388d"
+    }
+  ],
+  "original_word_sha256": "93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa",
+  "canonical_main": "c4a7aca0e72f15896a54d6753197fca196702aa4"
+}

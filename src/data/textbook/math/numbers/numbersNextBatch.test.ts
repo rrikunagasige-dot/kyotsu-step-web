@@ -42,12 +42,12 @@ describe('W-MATH-003 user-approved N02/N09 review-only implementation', () => {
     expect(unit.chapter?.sourcePages).toEqual(pages)
     expect(Object.keys(sourceMap)).toEqual(Array.from({ length: count }, (_, i) => prefix + '-Q' + String(i + 1).padStart(2, '0')))
     const mapped = Object.values(sourceMap).flat()
-    expect(mapped).toHaveLength(count)
-    expect(new Set(mapped).size).toBe(count)
+    expect(mapped).toHaveLength(prefix === 'N02' ? 15 : count)
+    expect(new Set(mapped).size).toBe(prefix === 'N02' ? 15 : count)
     expect(unit.sections).toHaveLength(1)
     const actualIds = unit.sections[0].items.map(item => item.id)
     expect(actualIds.filter(id => mapped.includes(id))).toEqual(mapped)
-    expect(actualIds).toHaveLength(prefix === 'N09' ? 18 : count)
+    expect(actualIds).toHaveLength(prefix === 'N09' ? 18 : 15)
     const presented = unit.sections[0].readingFlow.flatMap(block =>
       block.type === 'paragraph' || block.type === 'formula'
         ? block.parts.filter(part => part.type === 'choice').map(part => part.itemId)
@@ -58,13 +58,13 @@ describe('W-MATH-003 user-approved N02/N09 review-only implementation', () => {
     expect(unit.sections[0].items.some(item => item.scaffoldLevel === 'light')).toBe(true)
   })
 
-  it.each(batch)('$prefix has nonduplicated four-choice math interactions and valid KaTeX everywhere', ({ unit }) => {
+  it.each(batch)('$prefix has distinct scoped choices and valid math interactions and valid KaTeX everywhere', ({ unit }) => {
     for (const section of unit.sections) {
       for (const q of section.items) {
         expect(q.answerType).toBe('formula')
-        expect(q.choices).toHaveLength(4)
+        expect(q.choices).toHaveLength(q.id === 'n02-r2-q11-sign' ? 2 : 4)
         expect(q.choices).toContain(q.answer)
-        expect(new Set(q.choices?.map(normalizeTextbookAnswer)).size).toBe(4)
+        expect(new Set(q.choices?.map(normalizeTextbookAnswer)).size).toBe(q.id === 'n02-r2-q11-sign' ? 2 : 4)
         for (const option of q.choices ?? []) {
           expect(() => katex.renderToString(option, { throwOnError: true, strict: 'ignore' }), q.id + ' ' + option).not.toThrow()
         }
@@ -89,21 +89,8 @@ describe('W-MATH-003 user-approved N02/N09 review-only implementation', () => {
     expect(mathNumbersN12Unit.sections[0].items).toHaveLength(35)
   })
 
-  it('independently checks N02 answers, compound Q03/Q09 and formula reuse', () => {
-    expect(mathNumbersN02Unit.sections[0].items.map(q => q.answer)).toEqual([
-      '3bx',
-      'x^3-ax^2+3bx+5c',
-      '(2y-3,\\ y^2-3y+2)',
-      'x^2+(2y-3)x+(y^2-3y+2)',
-      '0x',
-      'x^3-x^2+x+1',
-      'x^3-2x^2-2',
-      '3x^3-5x^2+x-3',
-      '(4x^3-6x^2+2x-2,\\ 3x^3-6x^2-6)',
-      '7x^3-12x^2+2x-8',
-      '2A-3B',
-      '7x^3-12x^2+2x-8',
-    ])
+  it('checks the approved N02 local answers, Q03 pair and final result reuse', () => {
+    expect(mathNumbersN02Unit.sections[0].items.map(q => q.answer)).toEqual(["3bx", "x^3-ax^2+3bx+5c", "(2y-3,\\ y^2-3y+2)", "x^2+(2y-3)x+(y^2-3y+2)", "0x", "-1", "1", "-2", "-3", "-6", "3", "-12", "+", "-3", "7x^3-12x^2+2x-8"])
     expect(itemIndex(mathNumbersN02Unit, 'n02-03')).toBeLessThan(itemIndex(mathNumbersN02Unit, 'n02-04'))
     expect(itemIndex(mathNumbersN02Unit, 'n02-07')).toBeLessThan(itemIndex(mathNumbersN02Unit, 'n02-08'))
     expect(itemIndex(mathNumbersN02Unit, 'n02-09')).toBeLessThan(itemIndex(mathNumbersN02Unit, 'n02-10'))

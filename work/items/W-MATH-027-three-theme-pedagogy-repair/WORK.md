@@ -1,18 +1,17 @@
-# W-MATH-027 — 新フローで修正を再開
+# W-MATH-027 — 現在地（2026-10-24 JST）
 
-Status: PROPOSED（具体差分P-001-R1の実装承認待ち）
-Updated: 2026-10-24 JST
-Branch: work/W-MATH-027-workflow-resume-20261024
+Status: VERIFYING / Gate① visual accepted; Gate② not passed / N02 proposal pending
+Work execution: W-MATH-027-P001-R1
+Source branch: work/W-MATH-027-workflow-resume-20261024
+Frozen candidate: f3c69618d5f97cf235d2f0d0d9256f33056e9525
 
-P-002の仕組みはPR #129でmainへ正式採用済み。ユーザーのmain反映と教材修正への復帰の承認を受け、修正工程を再開した。採用main7c66bb6bbc1647b82601fb5010ffbef3cd4ef6e2、教材の保留元30f1e9363ca33a88ffffccfd87c4abbd54f21c01。元教材171c04781f32c1286a0762905891b582714834f9とのsrc/public全blob一致を再確認した。
+最新の「いいよ。」で固定P-001-R1四ファイルの実装を承認。適用、CI、実画像9枚の確認、修正事例の学習取込まで実施済み。確認①への「いいよ。次は何？」を視覚確認として記録済み。現在は[Gate②所見](GATE2_P001_R1_AUDIT.md)のFAIL/UNVERIFIEDが残り、[N02本文の具体案](p002-n02/PROPOSAL.md)を提示する段階。実装承認を細部OKや総チェックOKへ転用しない。
 
-実行器でR01指摘固定→R02原因→R03全三テーマと第四カードの影響調査→R04具体案を提出。runtime-r1/generated/が派生現在地。次ノードはR05_APPROVAL。四ファイルの予定差分PATCH_P001_R1.jsonとhashを固定した。テストは変更対象ソースとして固定し、変更不能な規則ファイルとは分離した。初回復帰計画はruntime-resumeに履歴保存し、実装前の固定計画をruntime-r1で再開した。既承認の三見出しを再承認させるのではなく、保留中だった内容配置・接続文・検査差分のP-001-R1への承認を照合する。main反映の承認を教材差分の承認にはしない。
+[生成された現在地](workflow-p001-r1/generated/CURRENT_POSITION.md)と[火柴図](workflow-p001-r1/generated/FIRE_DIAGRAM.md)は追記イベント台帳から生成。G1_VISUALは通過、G2_AUDITは未通過、アプリ受入はfalse。
 
-16内部単元、233原問、315操作を保持する配置案を照合し、集計122/77/116を確認。三つの見出しの所属、NE01/NE02の接続、古い四枚のテスト期待値を対象とする。教材ファイルとテストはまだ変更していない。
+main未統合・未公開。教材の推導・図・選択肢・文章設計など元の指摘はAUDIT_FINDINGSとSOURCE_AUDIT_LEDGERに保持し、今回の見出し修正と区別して継続する。
 
-画像10件と追加の本文・図・途中式・選択肢の指摘はAUDIT_FINDINGS/SOURCE_AUDIT_LEDGERへ保持し、この構造修正だけで本文まで解消としない。N11/N14の無関係な既承認局所修正、他モード、原Word・原図、保存履歴を保護する。
-
-## 保留前の履歴
+## 以下は当初の調査・保留時点の履歴
 
 # W-MATH-027 — 数と式の3テーマ復元と教材設計の再監査
 
@@ -55,3 +54,7 @@ Next: PROPOSAL_P001.mdをユーザーへ提示。承認前に実装しない。�
 ## 最新指示 — 教材修正を保留
 
 2026-10-23 JST、ユーザーが修正作業を一度止め、AIの自由判断に依存する部分とコード化できる部分を分ける仕組みの提案を先に求めた。W-GOV-010/P-001（提案保存SHA d4d6774a89df74fc01425bdb74250afa79f21912）が現在の優先Work。W-MATH-027/P-001は未承認のまま保持し、実装しない。新仕組みの初期整理・試作・比較評価を承認された場合も、それを本番教材の変更許可へ拡大しない。
+
+## Approved N02 execution — 2026-10-24 JST
+
+User explicitly approved P-002-N02-R1 and immediate compilation. W-MATH-027-N02-R1-EXEC applied the fixed nine-existing-file patch through hash/scope checks. Learner changes are only N02 Q06-Q12 and its N02-only progress migration. Necessary existing QA fixtures and the compile workflow follow the new 15-action N02 and 318-action chapter. No shared UI, other learner units, main or public deployment changed. R07 compile/real-screen verification is next.

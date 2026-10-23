@@ -1,0 +1,21 @@
+{
+  "candidate_sha": "f3c69618d5f97cf235d2f0d0d9256f33056e9525",
+  "run_id": 39986137882,
+  "artifact_id": 12515752235,
+  "artifact_sha256": "f6e130e766fd403d886201ccb77c6f912273f6c2d2099426d18cad843b661f8c",
+  "files": {
+    "catalog-1440.png": "7733ed352699b4d4c0f19d18c7856900cff70bca7f4f397dc5990820dc05ee6f",
+    "catalog-320.png": "eb9268b4a5e55a866ba33f819f41d97e12d98494cc42f2c7044bb47b40beea04",
+    "catalog-390.png": "31f3a27eeec3b9f213cb25d10fc66b903e7d1c38a51e5d94a1735b346a3e1329",
+    "ne01-bridge-1440.png": "30f189ee05f12ea12ea1f5de19cadde55f1051ae330135b05da230f9274fcd1f",
+    "ne01-bridge-320.png": "fe3aa747b13ca7f4861afda5ea7a9e87d230ba4fa6009e4a6680417304750309",
+    "ne01-bridge-390.png": "99fa9124543280f3621c6b425b5643b4c96a70ce6660e11eed7b40d72c4f9b87",
+    "ne02-bridge-1440.png": "e7dfd38c0f439501300aafc18c5983cb01c33274b1053190c77e0ec375492ff3",
+    "ne02-bridge-320.png": "63af42b156d8ebe46021d75b7c8a09f13c7e6f6db775f296d69853aa80cb46f3",
+    "ne02-bridge-390.png": "fccc241beefb8daad4bba157ed079fb1842f9ecef7b4073719cba0009d29030f",
+    "screens-1440.json": "95e513293fd5747276bc9b9a6b998c404d8d7f331f5ffbaca0dc1f3a90030de0",
+    "screens-320.json": "361753234fbc3bf46cbb346728a76c3e5e9fbcb93e8de5f792fed44ee0806777",
+    "screens-390.json": "b9d77c29e415364ff763078ecaf3136c6ed740d371cbfa42e1a15a335d5f7cd5",
+    "source-invariants.json": "72fa1e337850d44aaf955d5abcda2cf4ebea0d1fb240955490c4beac90fbbd02"
+  }
+}

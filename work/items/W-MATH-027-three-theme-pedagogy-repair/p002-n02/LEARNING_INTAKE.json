@@ -1,0 +1,25 @@
+{
+  "quality": "UNKNOWN",
+  "reason": "続行と視覚確認は教材全体への強い品質肯定にしない。",
+  "cases": [
+    {
+      "id": "W027-SCOPE-REPORTING",
+      "fact": "構成の技術PASSと本文全体の修正完了を混同しない",
+      "disposition": "EXISTING_RULE",
+      "links": [
+        "docs/MASTER_APP_LESSONS.md §48",
+        "GATE2_P001_R1_AUDIT.md"
+      ]
+    },
+    {
+      "id": "W027-N02-Q07",
+      "fact": "Q07にも全符号反転の中間式不足がある",
+      "disposition": "PATTERN_CANDIDATE",
+      "links": [
+        "DESIGN.json",
+        "PROPOSAL.md"
+      ],
+      "validation": "未実装。汎化や学習効果は未確認。"
+    }
+  ]
+}

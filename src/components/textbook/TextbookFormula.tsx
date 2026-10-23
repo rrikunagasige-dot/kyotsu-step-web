@@ -1,4 +1,5 @@
 import { InlineMath } from 'react-katex'
+import { auditedResolvedWrapBlocks, auditedWrapBlocks, formulaWrapChunks } from './formulaWrap'
 import type { TextbookUnitProgress } from '../../domain/textbook'
 import { isTextbookItemResolved } from '../../domain/textbook'
 import { normalizeTextbookMath } from '../../domain/textbookMath'
@@ -125,15 +126,40 @@ export function TextbookFormula({ block, section, progress, onOpen, unitId }: Pr
     && first?.type === 'math' && first.latex.includes('=')
     && n12Choice?.type === 'choice' && n12Choice.itemId === 'n12-p002-q12-signed-coef'
     && suffix?.type === 'math'
-  const grouped = q06Layout || q12Layout
+  const transformLayout = n12Formula && block.parts.length === 3
+    && ((block.id === 'formula-q02-coef' && n12Choice?.type === 'choice' && n12Choice.itemId === 'n12-p002-q02-coef')
+      || (block.id === 'formula-q06-right-coef' && n12Choice?.type === 'choice' && n12Choice.itemId === 'n12-p002-q06-right-coef'))
+    && first?.type === 'math' && first.latex.endsWith('\\quad\\Longrightarrow\\quad') && suffix?.type === 'math'
+  const puddingLayout = n12Formula && block.id === 'formula-cost-pudding' && block.parts.length === 3
+    && first?.type === 'math' && first.latex === '130\\times(20-x)='
+    && n12Choice?.type === 'choice' && n12Choice.itemId === 'n12-p003-q10-pudding-coef'
+    && suffix?.type === 'math' && suffix.latex === '(20-x)'
+  const lowerLayout = n12Formula && block.id === 'formula-q13-lower' && block.parts.length === 2
+    && first?.type === 'choice' && first.itemId === 'n12-p002-q13-lower'
+    && n12Choice?.type === 'math' && n12Choice.latex === '\\le50x<3300-2650'
+  const auditedWrap = auditedWrapBlocks[unitId]?.includes(block.id) ?? false
+  const wrapBlock = auditedWrap ? {
+    ...block,
+    parts: block.parts.map((part, index) => {
+      if (part.type !== 'choice' || !auditedResolvedWrapBlocks.includes(block.id)) return part
+      const item = section.items.find(q => q.id === part.itemId)
+      const record = progress?.answers[part.itemId]
+      return item && isTextbookItemResolved(item, record)
+        ? { type: 'math' as const, latex: `§a${index}§${normalizeTextbookMath(record?.value ?? item.answer)}§z${index}§` }
+        : part
+    }),
+  } : block
+  let wrappedAnswer: number | undefined
+  const markedAnswers = new Set<number>()
+  const grouped = q06Layout || q12Layout || transformLayout || puddingLayout
   return (
     <div
       className={`reading-formula-line${n12Formula ? ' reading-formula-line--n12' : ''}`}
       data-testid={`textbook-formula-${block.id}`}
       data-latex-status="ok"
     >
-      <div className={`reading-formula-expression${grouped ? ' reading-formula-expression--p016' : ''}`}>
-        {q06Layout && first?.type === 'math' ? (
+      <div className={`reading-formula-expression${grouped ? ' reading-formula-expression--p016' : ''}${lowerLayout ? ' reading-formula-expression--p017-chain' : ''}${auditedWrap ? ' reading-formula-expression--chapter-wrap' : ''}`}>
+        {(q06Layout || transformLayout) && first?.type === 'math' ? (
           <>
             <span className="reading-formula-group" data-testid="p016-left">
               <InlineMath math={first.latex.slice(0, first.latex.indexOf('\\quad\\Longrightarrow\\quad'))} />
@@ -146,7 +172,7 @@ export function TextbookFormula({ block, section, progress, onOpen, unitId }: Pr
               {renderedParts.slice(1)}
             </span>
           </>
-        ) : q12Layout && first?.type === 'math' ? (
+        ) : (q12Layout || puddingLayout) && first?.type === 'math' ? (
           <>
             <span className="reading-formula-group" data-testid="p016-left">
               <InlineMath math={first.latex.slice(0, first.latex.indexOf('='))} />
@@ -156,7 +182,28 @@ export function TextbookFormula({ block, section, progress, onOpen, unitId }: Pr
               {renderedParts.slice(1)}
             </span>
           </>
-        ) : renderedParts}
+        ) : lowerLayout ? (
+          <>
+            <span className="reading-formula-p017-bound" data-testid="p017-bound">
+              {renderedParts[0]}<span className="reading-formula-math"><InlineMath math={'\\le50x'} /></span>
+            </span>
+            <span className="reading-formula-math reading-formula-p017-continuation" data-testid="p017-continuation"><InlineMath math="<3300-2650" /></span>
+          </>
+        ) : auditedWrap ? formulaWrapChunks(wrapBlock).map((chunk, groupIndex) => (
+          <span className="reading-formula-wrap-group" key={`${block.id}-wrap-${groupIndex}`}>
+            {chunk.split(/(§(?:\d+|a\d+|z\d+)§)/).filter(Boolean).map((part, partIndex) => {
+              const begin = part.match(/^§a(\d+)§$/)
+              if (begin) { wrappedAnswer = Number(begin[1]); return null }
+              if (/^§z\d+§$/.test(part)) { wrappedAnswer = undefined; return null }
+              const choice = part.match(/^§(\d+)§$/)
+              const answerPart = wrappedAnswer === undefined ? undefined : block.parts[wrappedAnswer]
+              const answerId = answerPart?.type === 'choice' && !markedAnswers.has(wrappedAnswer!) ? answerPart.itemId : undefined
+              if (answerId) markedAnswers.add(wrappedAnswer!)
+              return choice ? renderedParts[Number(choice[1])]
+                : <span className="reading-formula-math" data-testid={answerId ? `resolved-${answerId}` : undefined} key={`${block.id}-wrap-${groupIndex}-${partIndex}`}><InlineMath math={part} /></span>
+            })}
+          </span>
+        )) : renderedParts}
       </div>
     </div>
   )

@@ -21,7 +21,7 @@ describe('P015 stable identity and P016 mathematical groups',()=>{
    expect(html).toContain('data-testid="textbook-item-'+target.itemIds[0]+'"')
    expect(html).toContain('data-testid="p016-right"')
    expect(html).toContain('data-testid="p016-left"')
-   expect(activeReviewMarkIds(target)).toEqual([blockId])
+   expect(activeReviewMarkIds(target)).toEqual([])
   })
  }
  it('keeps the existing full N12 formula controls and identities',()=>{
@@ -30,7 +30,7 @@ describe('P015 stable identity and P016 mathematical groups',()=>{
   for(const block of blocks){
    const html=renderToStaticMarkup(<TextbookFormula unitId={n12.unitId} section={section} block={block} progress={undefined} onOpen={()=>{}} />)
    expect(html).toContain('reading-formula-line--n12')
-   expect(html.includes('reading-formula-expression--p016')).toBe(['formula-q06-left-coef','formula-q12-signed-coef'].includes(block.id))
+   expect(html.includes('reading-formula-expression--p016')).toBe(['formula-q06-left-coef','formula-q12-signed-coef','formula-q02-coef','formula-q06-right-coef','formula-cost-pudding'].includes(block.id))
    for(const part of block.parts)if(part.type==='choice')expect(html).toContain('data-testid="textbook-item-'+part.itemId+'"')
    expect(html).not.toContain('katex-error')
   }
@@ -52,3 +52,14 @@ describe('P015 stable identity and P016 mathematical groups',()=>{
   expect(html).toContain('data-testid="p016-right"')
  })
 })
+
+for(const [targetId,blockId] of [['n12-q02-layout','formula-q02-coef'],['n12-q06-right-layout','formula-q06-right-coef'],['n12-q10-pudding-layout','formula-cost-pudding'],['n12-q13-lower-layout','formula-q13-lower']]){
+ it('P017 '+targetId+' preserves actual choice and a bound mathematical group',()=>{
+  const target=reviewTargets[targetId],section=extractReviewSection(n12,target)!
+  const html=renderToStaticMarkup(<TextbookFormula unitId={n12.unitId} section={section} block={formula(section,blockId)} progress={undefined} onOpen={()=>{}} />)
+  expect(html).toContain('data-testid="textbook-item-'+target.itemIds[0]+'"')
+  expect(html).toContain(blockId==='formula-q13-lower'?'data-testid="p017-bound"':'data-testid="p016-right"')
+  expect(activeReviewMarkIds(target)).toEqual([blockId])
+  expect(html).not.toContain('katex-error')
+ })
+}

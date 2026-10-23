@@ -1,0 +1,19 @@
+{
+  "code_sha": "7d4e5b7c501a0502ece2e77e41506b1a57b8f801",
+  "files": {
+    "work/items/W-GOV-010-coded-authoring/engine/engine.py": "03305c9cc58a07fc5303c2112433b56ea6233b09928c8a6dcdce89e41257bb70",
+    "work/items/W-GOV-010-coded-authoring/engine/math_core.py": "5a112b2824234beadfe6fd00f3f8a066bd8a646c0b6f69624e5490ed6f0ae53d",
+    "work/items/W-GOV-010-coded-authoring/engine/patterns.json": "9ed6fbe18c20b51bd739538ccb8c1f16b402d7ba50a0366cfa8cc8f57119a2ef",
+    "work/items/W-GOV-010-coded-authoring/engine/templates.json": "24853ab01295136dcd07918a0b392e74013b55a2ee06ddbe0721df917ef6887c",
+    "work/items/W-GOV-010-coded-authoring/engine/catalog.json": "fea34b9859b86619811c81e91a8977857d62c245a34579ec157127a66edb29be",
+    "work/items/W-GOV-010-coded-authoring/engine/template.html": "2ac492603ed6a003ab31206675aa594649bfe590c472b9dad64fc40cb1b2397d",
+    "work/items/W-GOV-010-coded-authoring/engine/approved_plans.json": "bce2bb875c44aa6d4bd02217747ba7e6b18fa4e7fb93ef7ebc49841dfef8e02b",
+    "work/items/W-GOV-010-coded-authoring/engine/example_textbook.json": "35083be7035ffe6c202605e9778f034e04b12825321b90eeb8f512502935e085",
+    "work/items/W-GOV-010-coded-authoring/engine/example_practice.json": "d5084607b2b030c43536028ad3f998d8ec737044aa4deb7e7762411a597ed83d",
+    "work/items/W-GOV-010-coded-authoring/engine/test_engine.py": "e3541f4923698fbd973aaa2ea23cca73e29571cefec82470e0efa9a4c24b44e6",
+    "work/items/W-GOV-010-coded-authoring/engine/evaluate.py": "5b9b28d512cccddfbb6735954b10a21b603c0473963e583f514ba5a3eaa345af",
+    "work/items/W-GOV-010-coded-authoring/engine/browser_check.cjs": "988c48a512fefdbfff9fe8bafedb07b0e6795b83de0950adaa7d5eb067da4fac",
+    "work/items/W-GOV-010-coded-authoring/engine/install_test_font.py": "8703fa54e9d06c4bc189071072753db7f7f85b8fb66b52f8b1fc931c6ab120bd",
+    ".github/workflows/coded-authoring-prototype.yml": "60f185098f604c3e67b34047723165cde9a24613e881c4d11ce6744173ddbb89"
+  }
+}

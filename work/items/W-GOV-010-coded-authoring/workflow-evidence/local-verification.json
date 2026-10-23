@@ -1,0 +1,21 @@
+{
+  "workflow_tests": 69,
+  "workflow_failures": 0,
+  "P001_tests_returncode": 0,
+  "adapters": [
+    {
+      "mode": "textbook",
+      "returncode": 0,
+      "status": "TECHNICAL_PASS",
+      "semantic_acceptance": false
+    },
+    {
+      "mode": "practice",
+      "returncode": 0,
+      "status": "TECHNICAL_PASS",
+      "semantic_acceptance": false
+    }
+  ],
+  "educational_effectiveness": "NOT_MEASURED",
+  "actual_user_acceptance": false
+}

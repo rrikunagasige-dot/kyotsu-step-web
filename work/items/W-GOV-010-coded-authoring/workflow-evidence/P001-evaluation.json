@@ -1,0 +1,1736 @@
+{
+  "known_issue_representations": [
+    {
+      "id": "N01",
+      "status": "FAIL",
+      "method": "大見出し4つの入力を再現"
+    },
+    {
+      "id": "N02",
+      "status": "FAIL",
+      "method": "計算段階の欠落を登録パターンで再現。元のA/B式全体の移植ではない"
+    },
+    {
+      "id": "N03",
+      "status": "UNVERIFIED",
+      "method": "三項式を含む積は未登録"
+    },
+    {
+      "id": "N04",
+      "status": "FAIL",
+      "method": "図の読み方メタデータ欠落。説明の意味の良否は別"
+    },
+    {
+      "id": "N05",
+      "status": "FAIL",
+      "method": "積と整理の一括提示に相当する段階欠落の再現"
+    },
+    {
+      "id": "N06",
+      "status": "SEMANTIC_REVIEW_REQUIRED",
+      "method": "目的が分からない操作は意味の審査へ。自動判定していない"
+    },
+    {
+      "id": "N07",
+      "status": "FAIL",
+      "method": "三操作を一つの穴へ束ねる入力を拒否"
+    },
+    {
+      "id": "N08",
+      "status": "UNVERIFIED",
+      "method": "置換を含む導出は未登録"
+    },
+    {
+      "id": "N09",
+      "status": "SEMANTIC_REVIEW_REQUIRED",
+      "method": "本文変更で意味の審査を無効化。断片的文章の意味は自動検出していない"
+    },
+    {
+      "id": "N10",
+      "status": "UNVERIFIED",
+      "method": "四因子の組合せは未登録"
+    }
+  ],
+  "additional_synthetic_cases": [
+    {
+      "id": "extra0",
+      "pattern": "distribute_binomials",
+      "params": [
+        1,
+        -1,
+        -2,
+        3
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra1",
+      "pattern": "linear_combination",
+      "params": [
+        2,
+        -1,
+        2,
+        -5,
+        3,
+        -3
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra2",
+      "pattern": "distribute_binomials",
+      "params": [
+        3,
+        -3,
+        -1,
+        -1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra3",
+      "pattern": "linear_combination",
+      "params": [
+        1,
+        1,
+        2,
+        -5,
+        3,
+        -5
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra4",
+      "pattern": "distribute_binomials",
+      "params": [
+        -2,
+        1,
+        2,
+        1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra5",
+      "pattern": "linear_combination",
+      "params": [
+        -2,
+        1,
+        -5,
+        1,
+        -1,
+        3
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra6",
+      "pattern": "distribute_binomials",
+      "params": [
+        1,
+        -1,
+        4,
+        -1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra7",
+      "pattern": "linear_combination",
+      "params": [
+        -5,
+        -5,
+        1,
+        1,
+        -2,
+        -1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra8",
+      "pattern": "distribute_binomials",
+      "params": [
+        2,
+        3,
+        4,
+        -1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra9",
+      "pattern": "linear_combination",
+      "params": [
+        1,
+        2,
+        -5,
+        1,
+        -2,
+        1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra10",
+      "pattern": "distribute_binomials",
+      "params": [
+        -1,
+        -3,
+        -4,
+        -5
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra11",
+      "pattern": "linear_combination",
+      "params": [
+        2,
+        -2,
+        -5,
+        -2,
+        -5,
+        -1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra12",
+      "pattern": "distribute_binomials",
+      "params": [
+        -3,
+        5,
+        -2,
+        -1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra13",
+      "pattern": "linear_combination",
+      "params": [
+        1,
+        1,
+        -5,
+        5,
+        3,
+        5
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra14",
+      "pattern": "distribute_binomials",
+      "params": [
+        3,
+        3,
+        1,
+        -5
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra15",
+      "pattern": "linear_combination",
+      "params": [
+        -2,
+        2,
+        -2,
+        -1,
+        5,
+        1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra16",
+      "pattern": "distribute_binomials",
+      "params": [
+        3,
+        3,
+        2,
+        1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra17",
+      "pattern": "linear_combination",
+      "params": [
+        -5,
+        -1,
+        -3,
+        5,
+        -1,
+        1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra18",
+      "pattern": "distribute_binomials",
+      "params": [
+        -5,
+        -3,
+        2,
+        -3
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra19",
+      "pattern": "linear_combination",
+      "params": [
+        2,
+        5,
+        -2,
+        2,
+        5,
+        -3
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra20",
+      "pattern": "distribute_binomials",
+      "params": [
+        -1,
+        -1,
+        -2,
+        -1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra21",
+      "pattern": "linear_combination",
+      "params": [
+        5,
+        -5,
+        -5,
+        3,
+        5,
+        -5
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra22",
+      "pattern": "distribute_binomials",
+      "params": [
+        -3,
+        5,
+        2,
+        -5
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra23",
+      "pattern": "linear_combination",
+      "params": [
+        1,
+        3,
+        2,
+        -5,
+        1,
+        -1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra24",
+      "pattern": "distribute_binomials",
+      "params": [
+        -3,
+        1,
+        -1,
+        -5
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra25",
+      "pattern": "linear_combination",
+      "params": [
+        1,
+        2,
+        -3,
+        -3,
+        2,
+        -2
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra26",
+      "pattern": "distribute_binomials",
+      "params": [
+        -2,
+        -1,
+        2,
+        -1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra27",
+      "pattern": "linear_combination",
+      "params": [
+        -1,
+        -3,
+        -2,
+        -3,
+        -1,
+        1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra28",
+      "pattern": "distribute_binomials",
+      "params": [
+        -3,
+        -3,
+        -4,
+        1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra29",
+      "pattern": "linear_combination",
+      "params": [
+        2,
+        -5,
+        -5,
+        -2,
+        -1,
+        -1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra30",
+      "pattern": "distribute_binomials",
+      "params": [
+        -5,
+        -1,
+        2,
+        -3
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra31",
+      "pattern": "linear_combination",
+      "params": [
+        -5,
+        1,
+        3,
+        1,
+        1,
+        -5
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra32",
+      "pattern": "distribute_binomials",
+      "params": [
+        -5,
+        -1,
+        4,
+        1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra33",
+      "pattern": "linear_combination",
+      "params": [
+        -1,
+        -3,
+        5,
+        3,
+        5,
+        5
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra34",
+      "pattern": "distribute_binomials",
+      "params": [
+        2,
+        3,
+        -4,
+        -3
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra35",
+      "pattern": "linear_combination",
+      "params": [
+        2,
+        -1,
+        1,
+        5,
+        2,
+        -2
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra36",
+      "pattern": "distribute_binomials",
+      "params": [
+        2,
+        3,
+        -1,
+        3
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra37",
+      "pattern": "linear_combination",
+      "params": [
+        -3,
+        5,
+        -2,
+        -3,
+        2,
+        1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra38",
+      "pattern": "distribute_binomials",
+      "params": [
+        2,
+        1,
+        1,
+        5
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra39",
+      "pattern": "linear_combination",
+      "params": [
+        1,
+        -5,
+        -5,
+        -2,
+        5,
+        3
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra40",
+      "pattern": "distribute_binomials",
+      "params": [
+        -2,
+        5,
+        2,
+        1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra41",
+      "pattern": "linear_combination",
+      "params": [
+        1,
+        2,
+        3,
+        1,
+        5,
+        -3
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra42",
+      "pattern": "distribute_binomials",
+      "params": [
+        3,
+        1,
+        1,
+        -5
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra43",
+      "pattern": "linear_combination",
+      "params": [
+        2,
+        -3,
+        -5,
+        -5,
+        3,
+        2
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra44",
+      "pattern": "distribute_binomials",
+      "params": [
+        5,
+        -3,
+        2,
+        -5
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra45",
+      "pattern": "linear_combination",
+      "params": [
+        1,
+        -1,
+        1,
+        -3,
+        1,
+        -5
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra46",
+      "pattern": "distribute_binomials",
+      "params": [
+        -3,
+        -3,
+        1,
+        1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra47",
+      "pattern": "linear_combination",
+      "params": [
+        1,
+        3,
+        -3,
+        -3,
+        2,
+        2
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra48",
+      "pattern": "distribute_binomials",
+      "params": [
+        -3,
+        -5,
+        1,
+        3
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra49",
+      "pattern": "linear_combination",
+      "params": [
+        5,
+        5,
+        -2,
+        -1,
+        -5,
+        -2
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra50",
+      "pattern": "distribute_binomials",
+      "params": [
+        3,
+        1,
+        1,
+        3
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra51",
+      "pattern": "linear_combination",
+      "params": [
+        3,
+        -3,
+        5,
+        -1,
+        1,
+        1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra52",
+      "pattern": "distribute_binomials",
+      "params": [
+        -1,
+        1,
+        -1,
+        3
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra53",
+      "pattern": "linear_combination",
+      "params": [
+        -3,
+        5,
+        -1,
+        -1,
+        -1,
+        1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra54",
+      "pattern": "distribute_binomials",
+      "params": [
+        -3,
+        -3,
+        4,
+        -5
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra55",
+      "pattern": "linear_combination",
+      "params": [
+        1,
+        1,
+        -2,
+        -1,
+        -2,
+        5
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra56",
+      "pattern": "distribute_binomials",
+      "params": [
+        3,
+        -1,
+        4,
+        -1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra57",
+      "pattern": "linear_combination",
+      "params": [
+        1,
+        -1,
+        5,
+        3,
+        -1,
+        1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra58",
+      "pattern": "distribute_binomials",
+      "params": [
+        1,
+        -3,
+        -1,
+        5
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra59",
+      "pattern": "linear_combination",
+      "params": [
+        -5,
+        -5,
+        -3,
+        3,
+        3,
+        -5
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra60",
+      "pattern": "distribute_binomials",
+      "params": [
+        2,
+        3,
+        -1,
+        -5
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra61",
+      "pattern": "linear_combination",
+      "params": [
+        -5,
+        -1,
+        3,
+        1,
+        1,
+        -5
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra62",
+      "pattern": "distribute_binomials",
+      "params": [
+        1,
+        1,
+        2,
+        5
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra63",
+      "pattern": "linear_combination",
+      "params": [
+        -2,
+        -5,
+        -3,
+        5,
+        -3,
+        -1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra64",
+      "pattern": "distribute_binomials",
+      "params": [
+        -2,
+        -3,
+        4,
+        -1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra65",
+      "pattern": "linear_combination",
+      "params": [
+        -3,
+        -1,
+        -2,
+        -5,
+        2,
+        1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra66",
+      "pattern": "distribute_binomials",
+      "params": [
+        2,
+        3,
+        -2,
+        3
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra67",
+      "pattern": "linear_combination",
+      "params": [
+        -2,
+        1,
+        -1,
+        -3,
+        -1,
+        -3
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra68",
+      "pattern": "distribute_binomials",
+      "params": [
+        5,
+        -1,
+        1,
+        5
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra69",
+      "pattern": "linear_combination",
+      "params": [
+        -5,
+        -5,
+        1,
+        1,
+        -2,
+        -1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra70",
+      "pattern": "distribute_binomials",
+      "params": [
+        -5,
+        3,
+        -2,
+        -3
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra71",
+      "pattern": "linear_combination",
+      "params": [
+        -1,
+        5,
+        2,
+        -1,
+        -2,
+        2
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra72",
+      "pattern": "distribute_binomials",
+      "params": [
+        -3,
+        -3,
+        -4,
+        5
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra73",
+      "pattern": "linear_combination",
+      "params": [
+        -5,
+        2,
+        3,
+        5,
+        1,
+        -3
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra74",
+      "pattern": "distribute_binomials",
+      "params": [
+        -1,
+        -3,
+        -4,
+        -3
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra75",
+      "pattern": "linear_combination",
+      "params": [
+        -5,
+        -2,
+        5,
+        -2,
+        -2,
+        2
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra76",
+      "pattern": "distribute_binomials",
+      "params": [
+        -2,
+        1,
+        4,
+        -1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra77",
+      "pattern": "linear_combination",
+      "params": [
+        5,
+        -3,
+        5,
+        -2,
+        5,
+        -1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra78",
+      "pattern": "distribute_binomials",
+      "params": [
+        1,
+        -3,
+        -1,
+        1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra79",
+      "pattern": "linear_combination",
+      "params": [
+        2,
+        5,
+        -3,
+        -3,
+        -1,
+        1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra80",
+      "pattern": "distribute_binomials",
+      "params": [
+        2,
+        3,
+        2,
+        3
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra81",
+      "pattern": "linear_combination",
+      "params": [
+        5,
+        2,
+        3,
+        -3,
+        -2,
+        5
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra82",
+      "pattern": "distribute_binomials",
+      "params": [
+        3,
+        -5,
+        1,
+        -5
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra83",
+      "pattern": "linear_combination",
+      "params": [
+        3,
+        -3,
+        -3,
+        2,
+        5,
+        -2
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra84",
+      "pattern": "distribute_binomials",
+      "params": [
+        -2,
+        -5,
+        4,
+        1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra85",
+      "pattern": "linear_combination",
+      "params": [
+        -5,
+        -1,
+        5,
+        -2,
+        -5,
+        -2
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra86",
+      "pattern": "distribute_binomials",
+      "params": [
+        -5,
+        1,
+        -1,
+        -5
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra87",
+      "pattern": "linear_combination",
+      "params": [
+        1,
+        1,
+        -2,
+        2,
+        3,
+        -5
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra88",
+      "pattern": "distribute_binomials",
+      "params": [
+        -3,
+        -1,
+        1,
+        -3
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra89",
+      "pattern": "linear_combination",
+      "params": [
+        -5,
+        2,
+        3,
+        -5,
+        5,
+        -1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra90",
+      "pattern": "distribute_binomials",
+      "params": [
+        5,
+        -1,
+        -1,
+        -3
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra91",
+      "pattern": "linear_combination",
+      "params": [
+        -2,
+        3,
+        -2,
+        2,
+        1,
+        -2
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra92",
+      "pattern": "distribute_binomials",
+      "params": [
+        -5,
+        1,
+        -1,
+        3
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra93",
+      "pattern": "linear_combination",
+      "params": [
+        -1,
+        5,
+        1,
+        2,
+        3,
+        2
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra94",
+      "pattern": "distribute_binomials",
+      "params": [
+        1,
+        -5,
+        4,
+        3
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra95",
+      "pattern": "linear_combination",
+      "params": [
+        3,
+        2,
+        2,
+        -5,
+        1,
+        1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra96",
+      "pattern": "distribute_binomials",
+      "params": [
+        3,
+        -5,
+        1,
+        -5
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra97",
+      "pattern": "linear_combination",
+      "params": [
+        -3,
+        -5,
+        2,
+        2,
+        5,
+        -2
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra98",
+      "pattern": "distribute_binomials",
+      "params": [
+        3,
+        5,
+        -1,
+        -1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra99",
+      "pattern": "linear_combination",
+      "params": [
+        -1,
+        5,
+        3,
+        -2,
+        -1,
+        5
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra100",
+      "pattern": "distribute_binomials",
+      "params": [
+        -1,
+        3,
+        4,
+        -5
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra101",
+      "pattern": "linear_combination",
+      "params": [
+        5,
+        -3,
+        2,
+        3,
+        -2,
+        -5
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra102",
+      "pattern": "distribute_binomials",
+      "params": [
+        -1,
+        5,
+        4,
+        3
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra103",
+      "pattern": "linear_combination",
+      "params": [
+        -2,
+        -1,
+        1,
+        1,
+        2,
+        1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra104",
+      "pattern": "distribute_binomials",
+      "params": [
+        -1,
+        -5,
+        1,
+        -3
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra105",
+      "pattern": "linear_combination",
+      "params": [
+        -1,
+        1,
+        3,
+        -2,
+        -3,
+        -2
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra106",
+      "pattern": "distribute_binomials",
+      "params": [
+        5,
+        5,
+        1,
+        3
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra107",
+      "pattern": "linear_combination",
+      "params": [
+        -1,
+        2,
+        2,
+        -1,
+        -1,
+        -1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra108",
+      "pattern": "distribute_binomials",
+      "params": [
+        -5,
+        5,
+        -2,
+        -3
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra109",
+      "pattern": "linear_combination",
+      "params": [
+        -1,
+        3,
+        -1,
+        -2,
+        -5,
+        -2
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra110",
+      "pattern": "distribute_binomials",
+      "params": [
+        -2,
+        -5,
+        1,
+        3
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra111",
+      "pattern": "linear_combination",
+      "params": [
+        -1,
+        1,
+        5,
+        1,
+        2,
+        -1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra112",
+      "pattern": "distribute_binomials",
+      "params": [
+        3,
+        3,
+        4,
+        1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra113",
+      "pattern": "linear_combination",
+      "params": [
+        -3,
+        -1,
+        -5,
+        -3,
+        -3,
+        -2
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra114",
+      "pattern": "distribute_binomials",
+      "params": [
+        -1,
+        5,
+        1,
+        1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra115",
+      "pattern": "linear_combination",
+      "params": [
+        -3,
+        1,
+        -3,
+        -3,
+        3,
+        5
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra116",
+      "pattern": "distribute_binomials",
+      "params": [
+        2,
+        -5,
+        4,
+        1
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra117",
+      "pattern": "linear_combination",
+      "params": [
+        3,
+        -2,
+        -3,
+        2,
+        -2,
+        -5
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra118",
+      "pattern": "distribute_binomials",
+      "params": [
+        -3,
+        3,
+        1,
+        -5
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    },
+    {
+      "id": "extra119",
+      "pattern": "linear_combination",
+      "params": [
+        1,
+        1,
+        -2,
+        -5,
+        1,
+        2
+      ],
+      "technical": "PASS",
+      "semantic": "PENDING"
+    }
+  ],
+  "corruptions": [
+    {
+      "id": 0,
+      "defect": "途中式に+1",
+      "status": "FAIL"
+    },
+    {
+      "id": 1,
+      "defect": "途中式に+1",
+      "status": "FAIL"
+    },
+    {
+      "id": 2,
+      "defect": "途中式に+1",
+      "status": "FAIL"
+    },
+    {
+      "id": 3,
+      "defect": "途中式に+1",
+      "status": "FAIL"
+    },
+    {
+      "id": 4,
+      "defect": "途中式に+1",
+      "status": "FAIL"
+    },
+    {
+      "id": 5,
+      "defect": "途中式に+1",
+      "status": "FAIL"
+    },
+    {
+      "id": 6,
+      "defect": "途中式に+1",
+      "status": "FAIL"
+    },
+    {
+      "id": 7,
+      "defect": "途中式に+1",
+      "status": "FAIL"
+    },
+    {
+      "id": 8,
+      "defect": "途中式に+1",
+      "status": "FAIL"
+    },
+    {
+      "id": 9,
+      "defect": "途中式に+1",
+      "status": "FAIL"
+    },
+    {
+      "id": 10,
+      "defect": "途中式に+1",
+      "status": "FAIL"
+    },
+    {
+      "id": 11,
+      "defect": "途中式に+1",
+      "status": "FAIL"
+    },
+    {
+      "id": 12,
+      "defect": "途中式に+1",
+      "status": "FAIL"
+    },
+    {
+      "id": 13,
+      "defect": "途中式に+1",
+      "status": "FAIL"
+    },
+    {
+      "id": 14,
+      "defect": "途中式に+1",
+      "status": "FAIL"
+    },
+    {
+      "id": 15,
+      "defect": "途中式に+1",
+      "status": "FAIL"
+    },
+    {
+      "id": 16,
+      "defect": "途中式に+1",
+      "status": "FAIL"
+    },
+    {
+      "id": 17,
+      "defect": "途中式に+1",
+      "status": "FAIL"
+    },
+    {
+      "id": 18,
+      "defect": "途中式に+1",
+      "status": "FAIL"
+    },
+    {
+      "id": 19,
+      "defect": "途中式に+1",
+      "status": "FAIL"
+    }
+  ],
+  "summary": {
+    "known_structural_rejections": 5,
+    "known_unsupported": 3,
+    "known_semantic_review_required": 2,
+    "additional_math_cases": 120,
+    "additional_technical_pass": 120,
+    "injected_math_defects_rejected": 20,
+    "positive_training_cases_used": 0,
+    "training_run": false,
+    "heldout": false,
+    "education_effect_measured": false,
+    "elapsed_seconds": 0.912
+  },
+  "limitations": [
+    "画像や旧アプリを自動解析した結果ではなく、指摘内容を構造化した再現試験。",
+    "追加問題は合成した技術試験であり、独立した未使用教材の品質評価ではない。",
+    "単一AIによる設計と意味の審査。独立横断監査・ユーザー受入は未完。"
+  ]
+}

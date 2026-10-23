@@ -1,0 +1,26 @@
+{
+  "textbook": {
+    "mode": "textbook",
+    "authorization": "W-GOV-010の独立試作を作成・試験する最新ユーザー指示。公開教材の受入ではない。",
+    "expected_units": [
+      "product-basic",
+      "product-signed",
+      "linear"
+    ],
+    "original_expressions": {
+      "product-basic": "((3)*x+(1))*((1)*x+(2))",
+      "product-signed": "((2)*x+(-3))*((3)*x+(4))",
+      "linear": "(2)*((3)*x+(1))+(-3)*((2)*x+(-4))"
+    }
+  },
+  "practice": {
+    "mode": "practice",
+    "authorization": "W-GOV-010の独立試作を作成・試験する最新ユーザー指示。公開教材の受入ではない。",
+    "expected_units": [
+      "practice-product"
+    ],
+    "original_expressions": {
+      "practice-product": "((2)*x+(3))*((1)*x+(-4))"
+    }
+  }
+}

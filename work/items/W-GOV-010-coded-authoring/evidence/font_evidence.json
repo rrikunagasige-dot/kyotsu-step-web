@@ -1,0 +1,7 @@
+{
+  "source_url": "https://raw.githubusercontent.com/notofonts/noto-cjk/f8d157532fbfaeda587e826d4cd5b21a49186f7c/Sans/OTF/Japanese/NotoSansCJKjp-Regular.otf",
+  "git_blob_sha": "f56224957fb13a81b4c14bac34f2f058a017f9fb",
+  "sha256": "68a3fc98800b2a27b371f2fb79991daf3633bd89309d4ffaa6946fd587f375b5",
+  "bytes": 16467736,
+  "purpose": "CI表示検査のみ"
+}

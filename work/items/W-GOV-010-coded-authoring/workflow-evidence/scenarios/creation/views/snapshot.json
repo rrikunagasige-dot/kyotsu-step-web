@@ -1,0 +1,388 @@
+{
+  "work": "W",
+  "engine_version": "1.0.0",
+  "ledger_head": "ff67effbc9fbf3f607a6f4a094138a00ffa4269186885ea2a8422ff727f4e918",
+  "work_status": "DONE",
+  "profile": "material",
+  "simulation": true,
+  "candidate_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "next": {
+    "status": "DONE",
+    "reason": "全工程の有効な証拠を照合"
+  },
+  "nodes": [
+    {
+      "id": "S00_RECOVER",
+      "actor": "CODE",
+      "depends_on": [],
+      "required": [],
+      "block": null,
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "S01_ROUTE",
+      "actor": "CODE",
+      "depends_on": [
+        "S00_RECOVER"
+      ],
+      "required": [],
+      "block": null,
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "C01_SOURCE@A",
+      "actor": "AI",
+      "depends_on": [
+        "S01_ROUTE"
+      ],
+      "required": [
+        "source_inventory",
+        "source_versions",
+        "unknowns"
+      ],
+      "block": "A",
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "C02_CONCEPT@A",
+      "actor": "AI",
+      "depends_on": [
+        "C01_SOURCE@A"
+      ],
+      "required": [
+        "learning_goal",
+        "concept_dependencies",
+        "organization_reason"
+      ],
+      "block": "A",
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "C03_PATTERN@A",
+      "actor": "AI",
+      "depends_on": [
+        "C02_CONCEPT@A"
+      ],
+      "required": [
+        "pattern_id",
+        "applicability",
+        "non_applicability",
+        "unknowns"
+      ],
+      "block": "A",
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "C04_SOLUTION@A",
+      "actor": "AI",
+      "depends_on": [
+        "C03_PATTERN@A"
+      ],
+      "required": [
+        "complete_steps",
+        "reasons",
+        "prerequisites",
+        "conclusion",
+        "math_evidence"
+      ],
+      "block": "A",
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "C05_DESIGN@A",
+      "actor": "AI",
+      "depends_on": [
+        "C04_SOLUTION@A"
+      ],
+      "required": [
+        "blank_targets",
+        "learning_actions",
+        "distractors",
+        "prose",
+        "figures",
+        "protected_scope"
+      ],
+      "block": "A",
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "C06_APPROVAL@A",
+      "actor": "USER",
+      "depends_on": [
+        "C05_DESIGN@A"
+      ],
+      "required": [],
+      "block": "A",
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "C07_BUILD@A",
+      "actor": "TOOL",
+      "depends_on": [
+        "C06_APPROVAL@A"
+      ],
+      "required": [],
+      "block": "A",
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "C08_VERIFY@A",
+      "actor": "TOOL",
+      "depends_on": [
+        "C07_BUILD@A"
+      ],
+      "required": [],
+      "block": "A",
+      "watch": "candidate_block",
+      "status": "PASSED"
+    },
+    {
+      "id": "C09_SEMANTIC@A",
+      "actor": "AI",
+      "depends_on": [
+        "C08_VERIFY@A"
+      ],
+      "required": [
+        "reasoning_review",
+        "prose_figure_review",
+        "choice_review",
+        "unknowns"
+      ],
+      "block": "A",
+      "watch": "candidate_block",
+      "status": "PASSED"
+    },
+    {
+      "id": "G1_VISUAL@A",
+      "actor": "USER",
+      "depends_on": [
+        "C09_SEMANTIC@A"
+      ],
+      "required": [],
+      "block": "A",
+      "watch": "visual",
+      "status": "PASSED"
+    },
+    {
+      "id": "C01_SOURCE@B",
+      "actor": "AI",
+      "depends_on": [
+        "S01_ROUTE"
+      ],
+      "required": [
+        "source_inventory",
+        "source_versions",
+        "unknowns"
+      ],
+      "block": "B",
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "C02_CONCEPT@B",
+      "actor": "AI",
+      "depends_on": [
+        "C01_SOURCE@B"
+      ],
+      "required": [
+        "learning_goal",
+        "concept_dependencies",
+        "organization_reason"
+      ],
+      "block": "B",
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "C03_PATTERN@B",
+      "actor": "AI",
+      "depends_on": [
+        "C02_CONCEPT@B"
+      ],
+      "required": [
+        "pattern_id",
+        "applicability",
+        "non_applicability",
+        "unknowns"
+      ],
+      "block": "B",
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "C04_SOLUTION@B",
+      "actor": "AI",
+      "depends_on": [
+        "C03_PATTERN@B"
+      ],
+      "required": [
+        "complete_steps",
+        "reasons",
+        "prerequisites",
+        "conclusion",
+        "math_evidence"
+      ],
+      "block": "B",
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "C05_DESIGN@B",
+      "actor": "AI",
+      "depends_on": [
+        "C04_SOLUTION@B"
+      ],
+      "required": [
+        "blank_targets",
+        "learning_actions",
+        "distractors",
+        "prose",
+        "figures",
+        "protected_scope"
+      ],
+      "block": "B",
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "C06_APPROVAL@B",
+      "actor": "USER",
+      "depends_on": [
+        "C05_DESIGN@B"
+      ],
+      "required": [],
+      "block": "B",
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "C07_BUILD@B",
+      "actor": "TOOL",
+      "depends_on": [
+        "C06_APPROVAL@B"
+      ],
+      "required": [],
+      "block": "B",
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "C08_VERIFY@B",
+      "actor": "TOOL",
+      "depends_on": [
+        "C07_BUILD@B"
+      ],
+      "required": [],
+      "block": "B",
+      "watch": "candidate_block",
+      "status": "PASSED"
+    },
+    {
+      "id": "C09_SEMANTIC@B",
+      "actor": "AI",
+      "depends_on": [
+        "C08_VERIFY@B"
+      ],
+      "required": [
+        "reasoning_review",
+        "prose_figure_review",
+        "choice_review",
+        "unknowns"
+      ],
+      "block": "B",
+      "watch": "candidate_block",
+      "status": "PASSED"
+    },
+    {
+      "id": "G1_VISUAL@B",
+      "actor": "USER",
+      "depends_on": [
+        "C09_SEMANTIC@B"
+      ],
+      "required": [],
+      "block": "B",
+      "watch": "visual",
+      "status": "PASSED"
+    },
+    {
+      "id": "G2_AUDIT",
+      "actor": "AUDITOR",
+      "depends_on": [
+        "G1_VISUAL@A",
+        "G1_VISUAL@B",
+        "C08_VERIFY@A",
+        "C08_VERIFY@B"
+      ],
+      "required": [
+        "audit_rows",
+        "independence",
+        "original_source_refs",
+        "unknowns"
+      ],
+      "block": null,
+      "watch": "candidate",
+      "status": "PASSED"
+    },
+    {
+      "id": "G3_HOST",
+      "actor": "TOOL",
+      "depends_on": [
+        "G2_AUDIT"
+      ],
+      "required": [],
+      "block": null,
+      "watch": "candidate",
+      "status": "PASSED"
+    },
+    {
+      "id": "G3_FINAL",
+      "actor": "USER",
+      "depends_on": [
+        "G3_HOST"
+      ],
+      "required": [],
+      "block": null,
+      "watch": "candidate",
+      "status": "PASSED"
+    },
+    {
+      "id": "L01_LEARNING",
+      "actor": "AI",
+      "depends_on": [
+        "G3_FINAL"
+      ],
+      "required": [
+        "case_updates",
+        "rule_links",
+        "regression_links",
+        "unresolved",
+        "deduplication"
+      ],
+      "block": null,
+      "watch": "learning",
+      "status": "PASSED"
+    },
+    {
+      "id": "Z01_CLOSE",
+      "actor": "CODE",
+      "depends_on": [
+        "L01_LEARNING"
+      ],
+      "required": [],
+      "block": null,
+      "watch": "all",
+      "status": "PASSED"
+    }
+  ],
+  "pending_issues": [],
+  "application_accepted": true
+}

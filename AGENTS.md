@@ -48,3 +48,8 @@ REVIEW-FEEDBACK is NOT approval; new scope needs new exact proposal approval.
 Record errors and success, run relevant QA and attach a real review link at handoff.
 Preserve `main`, source archives, old PRs/branches, stable IDs, previous user-approved pedagogy.
 Do not confuse upstream Q95/Q98 with target Q95/Q98.
+
+
+
+## 5. P-002 executable workflow router
+教材の作成・修正と対応する技術Workでは、先に `workflow/README.md` を読み、Workごとの固定計画とイベント台帳を復元する。`python workflow/cli.py --root . --store <Work>/runtime next --work <ID>` で次課題を照合する。AI課題の claim / submit と既存承認の記録を分離し、結果未提出の工程を飛ばさない。憲法・本入口の正本確認を省略しない。技術試験の完了は教材Gate完了ではない。

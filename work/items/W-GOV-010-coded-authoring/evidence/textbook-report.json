@@ -1,0 +1,116 @@
+{
+  "engine_version": "0.1.0",
+  "implementation_hash": "8ca4888b3b7cd4d6536af0a11e3bcd7658e93999d917768ab41f3cb4c08ab437",
+  "design_hash": "3341ed16edb5fbfab4ce9b68784da74e7af8ec2bd7f931a777e5300801d0985a",
+  "stages": {
+    "structure": {
+      "status": "PASS",
+      "scope": "試作対象の収録・大見出し・所属・順序。章全体の完成を保証しない"
+    },
+    "solution": {
+      "status": "PASS"
+    },
+    "blanks": {
+      "status": "PASS"
+    },
+    "choices": {
+      "status": "PASS"
+    },
+    "prose_figures": {
+      "status": "PASS"
+    },
+    "final": {
+      "status": "REVIEW_PENDING",
+      "technical": "PASS",
+      "browser": "PASS",
+      "user_gates": "PENDING"
+    }
+  },
+  "lessons": [
+    {
+      "id": "product-basic",
+      "stages": {
+        "solution": {
+          "status": "PASS",
+          "proof_domain": "有理係数一変数多項式、次数8以下、定数除算のみ",
+          "oracle": "係数演算と、原式へのd+1個の有理数点の直接代入"
+        },
+        "blanks": {
+          "status": "PASS",
+          "count": 5
+        },
+        "choices": {
+          "status": "PASS",
+          "count": 20
+        },
+        "prose_figures": {
+          "status": "PASS",
+          "structure": "目的・読み方・接続先・表示位置を検査",
+          "meaning": "文章と図の理解しやすさは意味の審査が必要"
+        }
+      }
+    },
+    {
+      "id": "product-signed",
+      "stages": {
+        "solution": {
+          "status": "PASS",
+          "proof_domain": "有理係数一変数多項式、次数8以下、定数除算のみ",
+          "oracle": "係数演算と、原式へのd+1個の有理数点の直接代入"
+        },
+        "blanks": {
+          "status": "PASS",
+          "count": 5
+        },
+        "choices": {
+          "status": "PASS",
+          "count": 20
+        },
+        "prose_figures": {
+          "status": "PASS",
+          "structure": "目的・読み方・接続先・表示位置を検査",
+          "meaning": "文章と図の理解しやすさは意味の審査が必要"
+        }
+      }
+    },
+    {
+      "id": "linear",
+      "stages": {
+        "solution": {
+          "status": "PASS",
+          "proof_domain": "有理係数一変数多項式、次数8以下、定数除算のみ",
+          "oracle": "係数演算と、原式へのd+1個の有理数点の直接代入"
+        },
+        "blanks": {
+          "status": "PASS",
+          "count": 6
+        },
+        "choices": {
+          "status": "PASS",
+          "count": 24
+        },
+        "prose_figures": {
+          "status": "PASS",
+          "structure": "目的・読み方・接続先・表示位置を検査",
+          "meaning": "文章と図の理解しやすさは意味の審査が必要"
+        }
+      }
+    }
+  ],
+  "release_accepted": false,
+  "data_receipt": {
+    "source_sha256": "9c639e8e2c6f0827e1f55462ca74fc8fa42bbb3be160b844cb025b6815224b06",
+    "case_count": 36,
+    "unknown_quarantined": 26,
+    "positive_training_used": 0,
+    "training_run": false
+  },
+  "scope_authority": "FIXED_PROTOTYPE_PLAN",
+  "approved_plan_hash": "2b3761720993926ac3eefa5949e67fb9c638d9ae4731c9dc0439f765273a532f",
+  "semantic_review": {
+    "status": "RECORDED_AI_REVIEW",
+    "independent_review": false,
+    "user_acceptance": false
+  },
+  "status": "TECHNICAL_PASS"
+}

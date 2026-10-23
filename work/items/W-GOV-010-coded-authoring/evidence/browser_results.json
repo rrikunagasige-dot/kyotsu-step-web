@@ -1,0 +1,239 @@
+{
+  "status": "PASS",
+  "cases": 12,
+  "results": [
+    {
+      "mode": "textbook",
+      "lesson": "product-basic",
+      "width": 320,
+      "answered": 5,
+      "wrong_retry": true,
+      "four_hints": true,
+      "reload": true,
+      "overflow": false,
+      "one_derivation_frame": true,
+      "rendered_fonts": [
+        {
+          "familyName": "Noto Sans CJK JP",
+          "postScriptName": "NotoSansCJKjp-Regular",
+          "isCustomFont": false,
+          "glyphCount": 12
+        }
+      ]
+    },
+    {
+      "mode": "textbook",
+      "lesson": "product-signed",
+      "width": 320,
+      "answered": 5,
+      "wrong_retry": true,
+      "four_hints": true,
+      "reload": true,
+      "overflow": false,
+      "one_derivation_frame": true,
+      "rendered_fonts": [
+        {
+          "familyName": "Noto Sans CJK JP",
+          "postScriptName": "NotoSansCJKjp-Regular",
+          "isCustomFont": false,
+          "glyphCount": 12
+        }
+      ]
+    },
+    {
+      "mode": "textbook",
+      "lesson": "linear",
+      "width": 320,
+      "answered": 6,
+      "wrong_retry": true,
+      "four_hints": true,
+      "reload": true,
+      "overflow": false,
+      "one_derivation_frame": true,
+      "rendered_fonts": [
+        {
+          "familyName": "Noto Sans CJK JP",
+          "postScriptName": "NotoSansCJKjp-Regular",
+          "isCustomFont": false,
+          "glyphCount": 13
+        }
+      ]
+    },
+    {
+      "mode": "practice",
+      "lesson": "practice-product",
+      "width": 320,
+      "answered": 5,
+      "wrong_retry": true,
+      "four_hints": true,
+      "reload": true,
+      "overflow": false,
+      "one_derivation_frame": true,
+      "rendered_fonts": [
+        {
+          "familyName": "Noto Sans CJK JP",
+          "postScriptName": "NotoSansCJKjp-Regular",
+          "isCustomFont": false,
+          "glyphCount": 9
+        }
+      ]
+    },
+    {
+      "mode": "textbook",
+      "lesson": "product-basic",
+      "width": 390,
+      "answered": 5,
+      "wrong_retry": true,
+      "four_hints": true,
+      "reload": true,
+      "overflow": false,
+      "one_derivation_frame": true,
+      "rendered_fonts": [
+        {
+          "familyName": "Noto Sans CJK JP",
+          "postScriptName": "NotoSansCJKjp-Regular",
+          "isCustomFont": false,
+          "glyphCount": 12
+        }
+      ]
+    },
+    {
+      "mode": "textbook",
+      "lesson": "product-signed",
+      "width": 390,
+      "answered": 5,
+      "wrong_retry": true,
+      "four_hints": true,
+      "reload": true,
+      "overflow": false,
+      "one_derivation_frame": true,
+      "rendered_fonts": [
+        {
+          "familyName": "Noto Sans CJK JP",
+          "postScriptName": "NotoSansCJKjp-Regular",
+          "isCustomFont": false,
+          "glyphCount": 12
+        }
+      ]
+    },
+    {
+      "mode": "textbook",
+      "lesson": "linear",
+      "width": 390,
+      "answered": 6,
+      "wrong_retry": true,
+      "four_hints": true,
+      "reload": true,
+      "overflow": false,
+      "one_derivation_frame": true,
+      "rendered_fonts": [
+        {
+          "familyName": "Noto Sans CJK JP",
+          "postScriptName": "NotoSansCJKjp-Regular",
+          "isCustomFont": false,
+          "glyphCount": 13
+        }
+      ]
+    },
+    {
+      "mode": "practice",
+      "lesson": "practice-product",
+      "width": 390,
+      "answered": 5,
+      "wrong_retry": true,
+      "four_hints": true,
+      "reload": true,
+      "overflow": false,
+      "one_derivation_frame": true,
+      "rendered_fonts": [
+        {
+          "familyName": "Noto Sans CJK JP",
+          "postScriptName": "NotoSansCJKjp-Regular",
+          "isCustomFont": false,
+          "glyphCount": 9
+        }
+      ]
+    },
+    {
+      "mode": "textbook",
+      "lesson": "product-basic",
+      "width": 1440,
+      "answered": 5,
+      "wrong_retry": true,
+      "four_hints": true,
+      "reload": true,
+      "overflow": false,
+      "one_derivation_frame": true,
+      "rendered_fonts": [
+        {
+          "familyName": "Noto Sans CJK JP",
+          "postScriptName": "NotoSansCJKjp-Regular",
+          "isCustomFont": false,
+          "glyphCount": 12
+        }
+      ]
+    },
+    {
+      "mode": "textbook",
+      "lesson": "product-signed",
+      "width": 1440,
+      "answered": 5,
+      "wrong_retry": true,
+      "four_hints": true,
+      "reload": true,
+      "overflow": false,
+      "one_derivation_frame": true,
+      "rendered_fonts": [
+        {
+          "familyName": "Noto Sans CJK JP",
+          "postScriptName": "NotoSansCJKjp-Regular",
+          "isCustomFont": false,
+          "glyphCount": 12
+        }
+      ]
+    },
+    {
+      "mode": "textbook",
+      "lesson": "linear",
+      "width": 1440,
+      "answered": 6,
+      "wrong_retry": true,
+      "four_hints": true,
+      "reload": true,
+      "overflow": false,
+      "one_derivation_frame": true,
+      "rendered_fonts": [
+        {
+          "familyName": "Noto Sans CJK JP",
+          "postScriptName": "NotoSansCJKjp-Regular",
+          "isCustomFont": false,
+          "glyphCount": 13
+        }
+      ]
+    },
+    {
+      "mode": "practice",
+      "lesson": "practice-product",
+      "width": 1440,
+      "answered": 5,
+      "wrong_retry": true,
+      "four_hints": true,
+      "reload": true,
+      "overflow": false,
+      "one_derivation_frame": true,
+      "rendered_fonts": [
+        {
+          "familyName": "Noto Sans CJK JP",
+          "postScriptName": "NotoSansCJKjp-Regular",
+          "isCustomFont": false,
+          "glyphCount": 9
+        }
+      ]
+    }
+  ],
+  "browser": "Chromium",
+  "browser_version": "155.0.8059.39",
+  "user_gates": "PENDING",
+  "independent_pedagogy_audit": false,
+  "source_sha": "7d4e5b7c501a0502ece2e77e41506b1a57b8f801"
+}

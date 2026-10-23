@@ -1,0 +1,14 @@
+{
+  "textbook": {
+    "version": 1,
+    "scope": "数と式の独立試作。既存W-MATH-003/P-002の大見出し名を保持",
+    "policy": {"major_title_count": 3, "major_titles": ["式を整える", "実数を扱う", "不等式を使う"]},
+    "required_prose": ["lead", "concept", "goal", "closing"]
+  },
+  "practice": {
+    "version": 1,
+    "scope": "独立した試験用の練習1問。既存練習モードの正本を改定しない",
+    "policy": {"major_title_count": 3, "major_titles": ["式を整える", "実数を扱う", "不等式を使う"]},
+    "required_prose": ["goal", "closing"]
+  }
+}

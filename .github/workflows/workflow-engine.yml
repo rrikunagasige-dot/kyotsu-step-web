@@ -1,0 +1,29 @@
+name: Workflow engine — verification only
+on:
+  push:
+    branches: ['work/W-GOV-010-coded-authoring-proposal-20261023']
+    paths: ['workflow/**', '.github/workflows/workflow-engine.yml', 'governance/WORK_SYSTEM.md', 'governance/INSTRUCTION_DICTIONARY.md', 'AGENTS.md']
+  pull_request:
+    paths: ['workflow/**', '.github/workflows/workflow-engine.yml', 'governance/WORK_SYSTEM.md', 'governance/INSTRUCTION_DICTIONARY.md', 'AGENTS.md']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  engine:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check current runtime, original authoring engine and both adapters
+        run: python workflow/verify_all.py --engine work/items/W-GOV-010-coded-authoring/engine --out workflow-test-output
+      - name: Replay creation, correction and technical workflows
+        run: python workflow/scenarios.py workflow-test-output/scenarios
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: workflow-engine-${{ github.sha }}
+          path: workflow-test-output/
+          retention-days: 14

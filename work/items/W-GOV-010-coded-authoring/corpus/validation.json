@@ -1,0 +1,23 @@
+{
+  "total": 36,
+  "by_subject": {
+    "physics": 19,
+    "math": 17
+  },
+  "by_label": {
+    "UNKNOWN": 26,
+    "NEGATIVE": 10
+  },
+  "feedback_signals": {
+    "REJECTION_REPORTED": 14,
+    "DESIGN_APPROVAL_OR_TECHNICAL_PASS_ONLY": 7,
+    "STRONG_PRAISE_REPORTED": 3,
+    "NO_TARGETED_EVALUATION": 2,
+    "EXPLICIT_REJECTION": 10
+  },
+  "direct_evidence_eligible": 10,
+  "positive_training_cases": 0,
+  "training_run": false,
+  "heldout_evaluation": false,
+  "integrity_check": "PASS"
+}

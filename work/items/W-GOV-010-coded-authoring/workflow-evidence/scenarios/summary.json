@@ -1,0 +1,29 @@
+[
+  {
+    "scenario": "creation",
+    "simulation": true,
+    "status": "DONE",
+    "nodes": 27,
+    "events": 61,
+    "actual_user_acceptance": false,
+    "ledger_head": "ff67effbc9fbf3f607a6f4a094138a00ffa4269186885ea2a8422ff727f4e918"
+  },
+  {
+    "scenario": "correction",
+    "simulation": true,
+    "status": "DONE",
+    "nodes": 27,
+    "events": 61,
+    "actual_user_acceptance": false,
+    "ledger_head": "da68bb6a18d6ee870c8fbccc6298e04dc8cb92e49253d99ed08be0a443ca4084"
+  },
+  {
+    "scenario": "technical",
+    "simulation": true,
+    "status": "DONE",
+    "nodes": 8,
+    "events": 16,
+    "actual_user_acceptance": false,
+    "ledger_head": "21f75a53d50635c1f7cddb88d57ba1c13d0420bcb8f3a61e1dac805bfb03caef"
+  }
+]

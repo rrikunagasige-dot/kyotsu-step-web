@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "mode": "practice",
+  "policy": {
+    "major_title_count": 3,
+    "major_titles": [
+      "式を整える",
+      "実数を扱う",
+      "不等式を使う"
+    ]
+  },
+  "scope": {
+    "kind": "prototype_subset",
+    "expected_units": [
+      "practice-product"
+    ],
+    "excluded_topics": [
+      "実数を扱う",
+      "不等式を使う"
+    ]
+  },
+  "themes": [
+    {
+      "title": "式を整える",
+      "units": [
+        "practice-product"
+      ]
+    },
+    {
+      "title": "実数を扱う",
+      "units": []
+    },
+    {
+      "title": "不等式を使う",
+      "units": []
+    }
+  ],
+  "lessons": [
+    {
+      "id": "practice-product",
+      "title": "展開を自分で進める",
+      "pattern": "distribute_binomials",
+      "pattern_version": 1,
+      "params": [
+        2,
+        3,
+        1,
+        -4
+      ],
+      "source": {
+        "kind": "prototype_authored",
+        "id": "W-GOV-010/practice-product"
+      },
+      "original_problem": "次の式を展開し、同類項をまとめよう。",
+      "allowed_learning_actions": [
+        "積の計算",
+        "同類項の整理",
+        "分配後の計算",
+        "定数項の整理"
+      ],
+      "prerequisite_result_ids": [],
+      "prose": {
+        "lead": "括弧どうしの積では、一方の各項を、もう一方の各項へ掛ける。まず、どの項どうしを掛けるかを並べてみよう。",
+        "concept": "分配法則を使うと、項を掛ける段階と、同じ種類の項をまとめる段階を分けて考えられる。",
+        "goal": "各項の積を計算してから、同じxの項をまとめる。途中の結果を使い、最後に元の式全体を整えよう。",
+        "closing": "展開では各項を漏れなく掛け、その後で同類項をまとめる。この二つを分けると、符号や項の見落としを確かめやすい。"
+      },
+      "original_expression": "((2)*x+(3))*((1)*x+(-4))",
+      "blank_targets": [
+        "product0.result",
+        "product1.result",
+        "product2.result",
+        "product3.result",
+        "collect.result"
+      ]
+    }
+  ],
+  "semantic_review": {
+    "organization": "REVIEWED",
+    "applicability": "REVIEWED",
+    "learning_actions": "REVIEWED",
+    "distractors": "REVIEWED",
+    "prose_figures": "REVIEWED",
+    "reasoning": "REVIEWED",
+    "design_hash": "3d83c3288e16a8243ca6bf1832052f5cf1b5d669ccf48aa148f278eaac76a3ee",
+    "reviewer": "AIによる試作設計審査（ユーザー受入・独立審査ではない）",
+    "notes": [
+      "大見出しは既存の三つを表示し、今回対象外の二テーマはその旨を明示する。",
+      "四つの積は各項の対応と符号を一つずつ追い、最後に同類項をまとめる。完成式を先に選ばせない。",
+      "図は四つの積を作るための表として先に置く。欄は未計算の積を示し、結果の先出しを避ける。",
+      "符号・次数・係数の誤り候補は機械検算済み。適切な支援量と文章の読みやすさは実際のレビューで確かめる。"
+    ]
+  }
+}

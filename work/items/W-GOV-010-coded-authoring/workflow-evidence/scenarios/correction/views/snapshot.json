@@ -1,0 +1,388 @@
+{
+  "work": "W",
+  "engine_version": "1.0.0",
+  "ledger_head": "da68bb6a18d6ee870c8fbccc6298e04dc8cb92e49253d99ed08be0a443ca4084",
+  "work_status": "DONE",
+  "profile": "material",
+  "simulation": true,
+  "candidate_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "next": {
+    "status": "DONE",
+    "reason": "全工程の有効な証拠を照合"
+  },
+  "nodes": [
+    {
+      "id": "S00_RECOVER",
+      "actor": "CODE",
+      "depends_on": [],
+      "required": [],
+      "block": null,
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "S01_ROUTE",
+      "actor": "CODE",
+      "depends_on": [
+        "S00_RECOVER"
+      ],
+      "required": [],
+      "block": null,
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "R01_CAPTURE@A",
+      "actor": "AI",
+      "depends_on": [
+        "S01_ROUTE"
+      ],
+      "required": [
+        "complaint",
+        "before_evidence",
+        "reproduction",
+        "target_versions"
+      ],
+      "block": "A",
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "R02_CAUSE@A",
+      "actor": "AI",
+      "depends_on": [
+        "R01_CAPTURE@A"
+      ],
+      "required": [
+        "symptoms",
+        "confirmed_causes",
+        "hypotheses",
+        "missing_learning_actions",
+        "root_cause_signatures"
+      ],
+      "block": "A",
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "R03_IMPACT@A",
+      "actor": "AI",
+      "depends_on": [
+        "R02_CAUSE@A"
+      ],
+      "required": [
+        "impact_rows",
+        "source_inventory",
+        "unknowns"
+      ],
+      "block": "A",
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "R04_PROPOSAL@A",
+      "actor": "AI",
+      "depends_on": [
+        "R03_IMPACT@A"
+      ],
+      "required": [
+        "before_after",
+        "protected_scope",
+        "patch_plan",
+        "verification_plan",
+        "proposal_hash"
+      ],
+      "block": "A",
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "R05_APPROVAL@A",
+      "actor": "USER",
+      "depends_on": [
+        "R04_PROPOSAL@A"
+      ],
+      "required": [],
+      "block": "A",
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "R06_PATCH@A",
+      "actor": "TOOL",
+      "depends_on": [
+        "R05_APPROVAL@A"
+      ],
+      "required": [],
+      "block": "A",
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "R07_VERIFY@A",
+      "actor": "TOOL",
+      "depends_on": [
+        "R06_PATCH@A"
+      ],
+      "required": [],
+      "block": "A",
+      "watch": "candidate_block",
+      "status": "PASSED"
+    },
+    {
+      "id": "R07_SEMANTIC@A",
+      "actor": "AI",
+      "depends_on": [
+        "R07_VERIFY@A"
+      ],
+      "required": [
+        "symptom_resolution",
+        "regression_review",
+        "protected_scope_review",
+        "unknowns"
+      ],
+      "block": "A",
+      "watch": "candidate_block",
+      "status": "PASSED"
+    },
+    {
+      "id": "R08_CAPTURE_LEARNING@A",
+      "actor": "AI",
+      "depends_on": [
+        "R07_SEMANTIC@A"
+      ],
+      "required": [
+        "case_updates",
+        "rule_links",
+        "regression_links",
+        "unresolved"
+      ],
+      "block": "A",
+      "watch": "candidate_block",
+      "status": "PASSED"
+    },
+    {
+      "id": "G1_VISUAL@A",
+      "actor": "USER",
+      "depends_on": [
+        "R08_CAPTURE_LEARNING@A"
+      ],
+      "required": [],
+      "block": "A",
+      "watch": "visual",
+      "status": "PASSED"
+    },
+    {
+      "id": "R01_CAPTURE@B",
+      "actor": "AI",
+      "depends_on": [
+        "S01_ROUTE"
+      ],
+      "required": [
+        "complaint",
+        "before_evidence",
+        "reproduction",
+        "target_versions"
+      ],
+      "block": "B",
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "R02_CAUSE@B",
+      "actor": "AI",
+      "depends_on": [
+        "R01_CAPTURE@B"
+      ],
+      "required": [
+        "symptoms",
+        "confirmed_causes",
+        "hypotheses",
+        "missing_learning_actions",
+        "root_cause_signatures"
+      ],
+      "block": "B",
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "R03_IMPACT@B",
+      "actor": "AI",
+      "depends_on": [
+        "R02_CAUSE@B"
+      ],
+      "required": [
+        "impact_rows",
+        "source_inventory",
+        "unknowns"
+      ],
+      "block": "B",
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "R04_PROPOSAL@B",
+      "actor": "AI",
+      "depends_on": [
+        "R03_IMPACT@B"
+      ],
+      "required": [
+        "before_after",
+        "protected_scope",
+        "patch_plan",
+        "verification_plan",
+        "proposal_hash"
+      ],
+      "block": "B",
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "R05_APPROVAL@B",
+      "actor": "USER",
+      "depends_on": [
+        "R04_PROPOSAL@B"
+      ],
+      "required": [],
+      "block": "B",
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "R06_PATCH@B",
+      "actor": "TOOL",
+      "depends_on": [
+        "R05_APPROVAL@B"
+      ],
+      "required": [],
+      "block": "B",
+      "watch": "source",
+      "status": "PASSED"
+    },
+    {
+      "id": "R07_VERIFY@B",
+      "actor": "TOOL",
+      "depends_on": [
+        "R06_PATCH@B"
+      ],
+      "required": [],
+      "block": "B",
+      "watch": "candidate_block",
+      "status": "PASSED"
+    },
+    {
+      "id": "R07_SEMANTIC@B",
+      "actor": "AI",
+      "depends_on": [
+        "R07_VERIFY@B"
+      ],
+      "required": [
+        "symptom_resolution",
+        "regression_review",
+        "protected_scope_review",
+        "unknowns"
+      ],
+      "block": "B",
+      "watch": "candidate_block",
+      "status": "PASSED"
+    },
+    {
+      "id": "R08_CAPTURE_LEARNING@B",
+      "actor": "AI",
+      "depends_on": [
+        "R07_SEMANTIC@B"
+      ],
+      "required": [
+        "case_updates",
+        "rule_links",
+        "regression_links",
+        "unresolved"
+      ],
+      "block": "B",
+      "watch": "candidate_block",
+      "status": "PASSED"
+    },
+    {
+      "id": "G1_VISUAL@B",
+      "actor": "USER",
+      "depends_on": [
+        "R08_CAPTURE_LEARNING@B"
+      ],
+      "required": [],
+      "block": "B",
+      "watch": "visual",
+      "status": "PASSED"
+    },
+    {
+      "id": "G2_AUDIT",
+      "actor": "AUDITOR",
+      "depends_on": [
+        "G1_VISUAL@A",
+        "G1_VISUAL@B",
+        "R07_VERIFY@A",
+        "R07_VERIFY@B"
+      ],
+      "required": [
+        "audit_rows",
+        "independence",
+        "original_source_refs",
+        "unknowns"
+      ],
+      "block": null,
+      "watch": "candidate",
+      "status": "PASSED"
+    },
+    {
+      "id": "G3_HOST",
+      "actor": "TOOL",
+      "depends_on": [
+        "G2_AUDIT"
+      ],
+      "required": [],
+      "block": null,
+      "watch": "candidate",
+      "status": "PASSED"
+    },
+    {
+      "id": "G3_FINAL",
+      "actor": "USER",
+      "depends_on": [
+        "G3_HOST"
+      ],
+      "required": [],
+      "block": null,
+      "watch": "candidate",
+      "status": "PASSED"
+    },
+    {
+      "id": "L01_LEARNING",
+      "actor": "AI",
+      "depends_on": [
+        "G3_FINAL"
+      ],
+      "required": [
+        "case_updates",
+        "rule_links",
+        "regression_links",
+        "unresolved",
+        "deduplication"
+      ],
+      "block": null,
+      "watch": "learning",
+      "status": "PASSED"
+    },
+    {
+      "id": "Z01_CLOSE",
+      "actor": "CODE",
+      "depends_on": [
+        "L01_LEARNING"
+      ],
+      "required": [],
+      "block": null,
+      "watch": "all",
+      "status": "PASSED"
+    }
+  ],
+  "pending_issues": [],
+  "application_accepted": true
+}

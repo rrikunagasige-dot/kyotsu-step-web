@@ -1,0 +1,70 @@
+{
+  "engine_version": "0.1.0",
+  "implementation_hash": "8ca4888b3b7cd4d6536af0a11e3bcd7658e93999d917768ab41f3cb4c08ab437",
+  "design_hash": "3d83c3288e16a8243ca6bf1832052f5cf1b5d669ccf48aa148f278eaac76a3ee",
+  "stages": {
+    "structure": {
+      "status": "PASS",
+      "scope": "試作対象の収録・大見出し・所属・順序。章全体の完成を保証しない"
+    },
+    "solution": {
+      "status": "PASS"
+    },
+    "blanks": {
+      "status": "PASS"
+    },
+    "choices": {
+      "status": "PASS"
+    },
+    "prose_figures": {
+      "status": "PASS"
+    },
+    "final": {
+      "status": "REVIEW_PENDING",
+      "technical": "PASS",
+      "browser": "PASS",
+      "user_gates": "PENDING"
+    }
+  },
+  "lessons": [
+    {
+      "id": "practice-product",
+      "stages": {
+        "solution": {
+          "status": "PASS",
+          "proof_domain": "有理係数一変数多項式、次数8以下、定数除算のみ",
+          "oracle": "係数演算と、原式へのd+1個の有理数点の直接代入"
+        },
+        "blanks": {
+          "status": "PASS",
+          "count": 5
+        },
+        "choices": {
+          "status": "PASS",
+          "count": 20
+        },
+        "prose_figures": {
+          "status": "PASS",
+          "structure": "目的・読み方・接続先・表示位置を検査",
+          "meaning": "文章と図の理解しやすさは意味の審査が必要"
+        }
+      }
+    }
+  ],
+  "release_accepted": false,
+  "data_receipt": {
+    "source_sha256": "9c639e8e2c6f0827e1f55462ca74fc8fa42bbb3be160b844cb025b6815224b06",
+    "case_count": 36,
+    "unknown_quarantined": 26,
+    "positive_training_used": 0,
+    "training_run": false
+  },
+  "scope_authority": "FIXED_PROTOTYPE_PLAN",
+  "approved_plan_hash": "96802fa7c34edb342519f2fd22b5b646e097a6cd2e65a72388c31281b4720372",
+  "semantic_review": {
+    "status": "RECORDED_AI_REVIEW",
+    "independent_review": false,
+    "user_acceptance": false
+  },
+  "status": "TECHNICAL_PASS"
+}

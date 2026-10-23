@@ -23,6 +23,7 @@ describe('math textbook catalog', () => {
       'numbers-polynomials',
       'numbers-real',
       'numbers-inequalities',
+      'numbers-development',
       'organize-sets',
       'read-propositions',
       'prove-propositions',
@@ -139,6 +140,8 @@ describe('math textbook catalog', () => {
       'math-numbers-expressions-n12',
       'math-numbers-expressions-n13',
       'math-numbers-expressions-n14',
+      'math-numbers-expressions-ne01',
+      'math-numbers-expressions-ne02',
       'math-propositions-reading',
       'math-propositions-proof',
       'math-quantifiers-all-exists',
@@ -161,13 +164,13 @@ describe('math textbook catalog', () => {
     expect(headings).toEqual(topic?.learnerHeadings)
   })
 
-  it('maps fourteen source-audited chapter-1 review lessons into exactly three learner topics', () => {
+  it('maps sixteen source-audited chapter-1 review lessons into three core topics and optional development', () => {
     const chapter1 = mathTextbookTopics.filter((topic) => topic.chapterId === 'math-ch01-numbers-expressions')
-    expect(chapter1.map((topic) => topic.label.ja)).toEqual(['式を整える', '実数を扱う', '不等式を使う'])
-    expect(chapter1.map((topic) => topic.unitIds.map((id) => id.slice(-3)))).toEqual([
-      ['n01', 'n02', 'n03', 'n04', 'n05', 'n06'], ['n07', 'n08', 'n09', 'n10'], ['n11', 'n12', 'n13', 'n14'],
+    expect(chapter1.map((topic) => topic.label.ja)).toEqual(['式を整える', '実数を扱う', '不等式を使う', '参考・発展'])
+    expect(chapter1.map((topic) => topic.unitIds.map((id) => id.replace('math-numbers-expressions-', '')))).toEqual([
+      ['n01', 'n02', 'n03', 'n04', 'n05', 'n06'], ['n07', 'n08', 'n09', 'n10'], ['n11', 'n12', 'n13', 'n14'], ['ne01', 'ne02'],
     ])
-    expect(mathNumbersReviewUnitIds).toHaveLength(14)
+    expect(mathNumbersReviewUnitIds).toHaveLength(16)
     for (const id of mathNumbersReviewUnitIds) {
       const unit = mathTextbookUnits.find((candidate) => candidate.unitId === id)
       expect(unit?.status, id).toBe('review')
@@ -195,3 +198,4 @@ describe('math textbook catalog', () => {
     }
   })
 })
+

@@ -1,3 +1,27 @@
+## 2026-10-23 — confirmed fraction semantic display repair (P-005 + continuing chapter correction scope)
+
+Latest user「続けて」approved full NE01/NE02 implementation. Earlier direct「残りの仕事全部まとめて修正して、章全体確認まで止まないでよ」continues to authorize remaining confirmed existing-chapter layout repairs. No repeated per-question permission is required for these display-only cases. Exact new impact: NE02-Q10/Q12 and existing N07-Q08/N10-Q16, **six authored candidate strings across four items**. All16 units/all authored fraction choices audited:74 strings. Legacy generic finite-set normalization mistakes a fraction's numeric second group for a literal set when the first argument is nested or bare. Three old bad candidates exist; only N07's8/10 is currently visible, N10's3/6 is hidden by existing scaffolding. Keys, choices, hints, revisions and persisted values remain byte-for-byte unchanged.
+
+Scoped textbook display adapter protects only those four IDs by expressing a numeric denominator as mathord (same mathematical value). Generic normalizer and other modes are unchanged. Local actual-runtime/actual-normalizer audit:74 fraction alternatives checked, remaining bad0. New unit regression checks normalized KaTeX/MathML, not just parse success; browser tests assert no literal braces in real fraction denominators. Added two related review groups and copied the successful real tall-viewport capture strategy into the main native test so all27 groups have unobstructed images.
+
+Historical source3cb825ba100a5bd8bef7a14e6c00f411c637e914 had CI/native PASS and no horizontal overflow, but direct image inspection found this semantic rendering FAIL; those results are not final visual acceptance. Its full native archive12494288620 and recapture12495780427 are historical evidence only. First native archive footer overlap was separately corrected by recapture; no DOM/CSS hiding or image reconstruction. Frozen-source recapture harness9cd545a12c216bdad9d5ea1c95d91425b0f2de3b remains unmerged. Current repaired source needs fresh final CI and all affected real images before handoff.
+
+## P-005 feedback and review context refinement — 2026-10-23
+
+At second source e0219bd6c96569f900914d5b7297d601dfa51440, dedicated schema/unit/type/lint/build passed and browser/chapter run is in progress; practice regression SUCCESS. Refined new-unit wrong feedback to show both the exact per-distractor reason AND the approved general hint. Preserves old-unit hint output byte-for-byte for all unmatched item IDs. Included original problem/intro in each first-stage isolated review slice, with source-expression assertions; avoids showing a compound question without its parent expressions. Existing source keys and all25 approved answer/choice/hint strings remain unchanged. Current real browser validation will run again on new exact source; no prior PASS is promoted to final source proof.
+
+## P-005 first verification checkpoint — 2026-10-23
+
+Initial source `85d1b1b3353dab0c25afa53c97d953123df3eba1`: typecheck/lint PASS, dedicated unit run134 PASS/1 FAIL. The single failure was an existing wrapping-test global count42 after adding42 opt-in formula blocks from the approved new units; old block assertions remain unchanged. Fixed the assertion to separately preserve old42 and bound new entries to NE01/NE02, total84. No learner answer/design change. Initial browser capture did not run; do not claim visual PASS. Math and review runs and all failures remain in history. Expanded existing practice CI path to cover the changed shared textbook-page call site and scoped development display module.
+
+## 2026-10-23 — P-005 exact approval and full-batch implementation
+
+User replied **「続けて」** directly to the question asking permission to implement the complete, already presented NE01/NE02 25-question P-005 design. This is exact review-only implementation approval for both units together, not an acceptance of yet-unseen rendered images or main/hosting permission. No question-by-question permission pause.
+
+Implemented stable new units NE01/NE02 revision1/review with 13+12 source-mapped operations; optional 参考・発展 theme; exact per-distractor feedback without schema change; scoped display rows for long compound formulas; 25 real-data review slices. Original N01–N14 source data/answers/revisions/progress untouched. Formula wrapping only adds opt-in new-unit block IDs. Full source CI and actual 320/390/1440px all-25-question and 16-unit chapter tests are prepared, results PENDING. Work stays VERIFYING; Gate① PENDING, no formal Gate② closure/Gate③ user play.
+
+Source Word hash unchanged. Current LibreOffice regeneration produces **40 pages**, with NE01 on37–38 and NE02 on39–40. New units explicitly label these sourcePages as regenerated rendition; historical Library 53-page indexing is not claimed identical. Paragraph mappings remain canonical for question provenance.
+
 ## 2026-10-23 — P-005 NE01/NE02 remaining 25-question batch design
 
 User latest directive: 「続けて」. Continue source audit/design under approved creation P-001; do not manufacture acceptance of previously pending screenshots or approval of an unseen exact design.

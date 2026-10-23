@@ -1,3 +1,5 @@
+import { mathNumbersNE01Unit } from '../data/textbook/math/numbers/ne01Lesson'
+import { mathNumbersNE02Unit } from '../data/textbook/math/numbers/ne02Lesson'
 import type { TextbookSection, TextbookUnit } from '../domain/textbookSchema'
 
 export type ReviewTarget = {
@@ -20,7 +22,38 @@ export type ReviewTarget = {
  * User-approved W-GOV-008/P-001 pilot. All content is selected by IDs from the
  * real PR lesson; no copied solution text or substituted illustration is used.
  */
+function developmentTargets(unit: TextbookUnit): Record<string, ReviewTarget> {
+  const section = unit.sections[0]
+  return Object.fromEntries(section.items.map(item => {
+    const [prefix, number] = item.id.split('-')
+    const lead = section.readingFlow.findIndex(block => block.id === prefix + '-lead-' + number)
+    const intro = section.readingFlow.findIndex(block => block.id === prefix + '-intro-' + number)
+    const first = intro >= 0 ? intro : lead
+    const next = section.readingFlow.findIndex((block, index) => index > lead && (block.id.startsWith(prefix + '-lead-') || block.type === 'heading'))
+    const blocks = section.readingFlow.slice(first, next < 0 ? undefined : next)
+    const id = prefix + '-q' + number
+    return [id, {
+      id, unitId: unit.unitId, title: unit.title,
+      question: '式と説明のつながり、選択穴と誤答ヒントを確かめる',
+      revision: unit.revision, totalItems: section.items.length,
+      blockIds: blocks.map(block => block.id), itemIds: [item.id], expectedAnswers: [item.answer],
+      markBlockIds: [prefix + '-formula-' + number], reviewState: 'awaiting-user',
+    } satisfies ReviewTarget]
+  }))
+}
+
 const targets: Record<string, ReviewTarget> = {
+  'n07-q08-fraction-display': {
+    id:'n07-q08-fraction-display',unitId:'math-numbers-expressions-n07',title:'循環小数の分数表示',question:'分母が数として正しく表示される',
+    revision:3,totalItems:14,blockIds:['n07-lead-08','n07-formula-08','n07-after-08'],itemIds:['n07-08'],expectedAnswers:['x=\\frac89'],markBlockIds:['n07-formula-08'],reviewState:'awaiting-user',
+  },
+  'n10-q16-fraction-display': {
+    id:'n10-q16-fraction-display',unitId:'math-numbers-expressions-n10',title:'有理化後の分数表示',question:'選択肢と完成式の分母を正しく保つ',
+    revision:1,totalItems:21,blockIds:['formula-n10-16','paragraph-rationalize-concept'],itemIds:['n10-16'],expectedAnswers:['\\frac{\\sqrt3}{6}'],markBlockIds:['formula-n10-16'],reviewState:'awaiting-user',
+  },
+
+  ...developmentTargets(mathNumbersNE01Unit),
+  ...developmentTargets(mathNumbersNE02Unit),
   // W-MATH-025/P-005: exact approved after-wrong hint only.
   'n05-q06-hint': {
     id:'n05-q06-hint',unitId:'math-numbers-expressions-n05',title:'N05 Q06 ヒント',
@@ -391,3 +424,4 @@ export function extractReviewSection(unit: TextbookUnit, target: ReviewTarget): 
     items: items as TextbookSection['items'],
   }
 }
+

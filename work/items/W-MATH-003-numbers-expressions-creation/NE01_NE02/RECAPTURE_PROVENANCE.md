@@ -1,0 +1,5 @@
+# Authentic review recapture — 2026-10-23
+
+Frozen learner code: `3cb825ba100a5bd8bef7a14e6c00f411c637e914`. Full chapter native run39938046235 PASS, all16 units. Its original 290-file archive remains authentic but several long review-region images have the fixed bottom navigation painted across their last choices. Actual normal-route interactions passed; this is a review-image capture issue, not an untested content repair.
+
+This evidence-only branch adds a capture harness, not learner code. The workflow explicitly checks out and builds frozen3cb source; separately checks out this branch only to copy the external Playwright capture test. `src/` and `public/` diffs must be empty before capture. Width390, actual tall browser viewport so fixed navigation naturally stays outside the element screenshot; no DOM/CSS injection, hiding, stitching or reconstructed images. Full mobile-height320/390 and desktop1440 correctness/geometry/persistence remain proved by original native run. Source and harness SHAs are independently recorded. Replacement50 images require direct inspection before handoff.

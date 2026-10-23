@@ -1,0 +1,114 @@
+[
+  {
+    "unit": "01",
+    "sourceQuestions": 10,
+    "operations": 18,
+    "choices": 54,
+    "formulas": 11
+  },
+  {
+    "unit": "02",
+    "sourceQuestions": 12,
+    "operations": 12,
+    "choices": 38,
+    "formulas": 13
+  },
+  {
+    "unit": "03",
+    "sourceQuestions": 13,
+    "operations": 17,
+    "choices": 53,
+    "formulas": 17
+  },
+  {
+    "unit": "04",
+    "sourceQuestions": 22,
+    "operations": 26,
+    "choices": 82,
+    "formulas": 25
+  },
+  {
+    "unit": "05",
+    "sourceQuestions": 20,
+    "operations": 20,
+    "choices": 64,
+    "formulas": 22
+  },
+  {
+    "unit": "06",
+    "sourceQuestions": 16,
+    "operations": 16,
+    "choices": 51,
+    "formulas": 15
+  },
+  {
+    "unit": "07",
+    "sourceQuestions": 14,
+    "operations": 14,
+    "choices": 45,
+    "formulas": 8
+  },
+  {
+    "unit": "08",
+    "sourceQuestions": 12,
+    "operations": 12,
+    "choices": 38,
+    "formulas": 10
+  },
+  {
+    "unit": "09",
+    "sourceQuestions": 14,
+    "operations": 18,
+    "choices": 55,
+    "formulas": 19
+  },
+  {
+    "unit": "10",
+    "sourceQuestions": 21,
+    "operations": 21,
+    "choices": 67,
+    "formulas": 20
+  },
+  {
+    "unit": "11",
+    "sourceQuestions": 14,
+    "operations": 31,
+    "choices": 110,
+    "formulas": 27
+  },
+  {
+    "unit": "12",
+    "sourceQuestions": 15,
+    "operations": 35,
+    "choices": 99,
+    "formulas": 32
+  },
+  {
+    "unit": "13",
+    "sourceQuestions": 9,
+    "operations": 12,
+    "choices": 36,
+    "formulas": 11
+  },
+  {
+    "unit": "14",
+    "sourceQuestions": 16,
+    "operations": 38,
+    "choices": 134,
+    "formulas": 26
+  },
+  {
+    "unit": "e01",
+    "sourceQuestions": 13,
+    "operations": 13,
+    "choices": 38,
+    "formulas": 21
+  },
+  {
+    "unit": "e02",
+    "sourceQuestions": 12,
+    "operations": 12,
+    "choices": 35,
+    "formulas": 21
+  }
+]

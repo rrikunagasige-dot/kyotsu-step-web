@@ -1,0 +1,67 @@
+{
+  "work_id": "W-MATH-027-N03-R1",
+  "node": {
+    "id": "R05_APPROVAL@N03-Q05-Q13",
+    "actor": "USER",
+    "depends_on": [
+      "R04_PROPOSAL@N03-Q05-Q13"
+    ],
+    "required": [],
+    "block": "N03-Q05-Q13",
+    "watch": "source"
+  },
+  "task_id": "37017c237c80f137d3bcccd080558502348eb20967ea9879416145a3b440507a",
+  "input_hash": "e01c61dc2e418e74ca01245e555aba2610946701183db52b7670748f71f5ff66",
+  "source_sha": "59aeba91056e954ccc65e51a02c7227e642a2c3a",
+  "candidate_sha": "59aeba91056e954ccc65e51a02c7227e642a2c3a",
+  "rules": {
+    "AGENTS.md": "5abeabb4f7fa60ca8e54ac4695910ed5a37eee397f89f381a123dcfef17a1d0e",
+    "docs/INFORMATION_ARCHITECTURE_RULES.md": "05a164ae53eb1bf34e384c6af34b8ec4d133fb1e3b1db3551b29d560b53044c0",
+    "docs/MASTER_APP_LESSONS.md": "03fef64877de2cbb536391a72a0c95e46e1952ff2dda7d0ef74553637ada458a",
+    "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
+    "governance/INSTRUCTION_DICTIONARY.md": "61374d8b18f39a679fb34517007a989f5cf3251c04cf642899fe7f2d80549472",
+    "governance/WORK_SYSTEM.md": "dbdda29511567c2a5c85bbef8e58909368ebf1396360d531a5db4b3dc76f6346",
+    "src/pages/LearningSetupPage.tsx": "830707a236991cdf3d70574dfa100bb53028d50712a3e6acb0a18c7fdb5a8e22",
+    "src/pages/TextbookUnitPage.tsx": "d562e95bf1d30ae1aef51a05beaa7685d28418cd9ab327fffeaa9ebee4d893a0",
+    "work/items/W-MATH-003-numbers-expressions-creation/P-002_LEARNER_CATALOG_PAGES_RELEASE.md": "be9bd6bad6a553c82d05bc44895f84b1a6f9bc35af2d27631ec0b391d94ed8a9"
+  },
+  "proposal": {
+    "hash": "241c09fc4afd910e0e20464cc1db245448e30b0759ee3f7a8c49667cc016061a",
+    "id": "P-003-N03-R1"
+  },
+  "scope": {
+    "paths": [
+      "src/data/textbook/math/numbers/n03Lesson.ts",
+      "src/domain/textbook.ts"
+    ],
+    "preserve": [
+      "原問IDと原図",
+      "他単元本文",
+      "三テーマ",
+      "承認済みQ10の四積",
+      "旧版履歴"
+    ]
+  },
+  "source_manifest": {
+    "handoff/KYOTSU_MATH_W025_Q11_GATE1_AUTHORITATIVE_HANDOFF_20261023/SOURCE/teacher_numbers_expressions_original_20261022.docx": "93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa",
+    "src/data/textbook/math/numbers/n03Lesson.ts": "6023d6847ce830834e4f17890c0938580e6da270e0f1e185eb68d124167f2c01",
+    "src/domain/textbook.ts": "9ec3f3dd5382f4bc126f420a7b9f851d9f46bd8c5d7d5c0e4d9300f87f391b64"
+  },
+  "previous_results": {
+    "R04_PROPOSAL@N03-Q05-Q13": {
+      "actor": "current-chat/n03-proposal",
+      "artifact": "7eb2e3a63661d9c50e9aefb5da56fde20101554f859740ef61944d7cc9a5f0ef",
+      "input_hash": "a2b75908d3d7cba5a567cf4bfbabbd52d57199aa93c20ebc9810714cfaef8679",
+      "node": "R04_PROPOSAL@N03-Q05-Q13",
+      "verdict": "PASS"
+    }
+  },
+  "do_not_touch": [
+    "原問IDと原図",
+    "他単元本文",
+    "三テーマ",
+    "承認済みQ10の四積",
+    "旧版履歴"
+  ],
+  "completion_is_not_semantic_proof": true
+}

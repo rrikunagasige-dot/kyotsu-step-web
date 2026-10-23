@@ -1,0 +1,27 @@
+import sys,json
+from pathlib import Path
+sys.path.insert(0,'repair-resume-root/workflow')
+from runtime import Runtime
+from contracts import manifest,sha
+from views import render
+root=Path('repair-resume-root');out=Path('repair-resume-record');w='W-MATH-027-P001-STRUCTURE-RESUME';rt=Runtime(out/'runtime',root)
+base='work/items/W-MATH-027-three-theme-pedagogy-repair/';catalog='src/data/textbook/math/mathCatalog.ts';proposal=base+'PROPOSAL_P001_R1.md';ledger=base+'SOURCE_AUDIT_LEDGER.json'
+sources=[catalog,'src/data/textbook/math/numbers/ne01Lesson.ts','src/data/textbook/math/numbers/ne02Lesson.ts']
+rules=['AGENTS.md','governance/CONSTITUTION.md','governance/WORK_SYSTEM.md','governance/INSTRUCTION_DICTIONARY.md','docs/MASTER_APP_LESSONS.md','docs/INFORMATION_ARCHITECTURE_RULES.md','src/pages/TextbookUnitPage.tsx','src/pages/LearningSetupPage.tsx','src/data/textbook/math/mathCatalog.test.ts','work/items/W-MATH-003-numbers-expressions-creation/P-002_LEARNER_CATALOG_PAGES_RELEASE.md']
+plan={'work_id':w,'profile':'material','command':'CMD-WORK-001','subject':'math','mode':'textbook','source_sha':'30f1e9363ca33a88ffffccfd87c4abbd54f21c01','source_manifest':manifest(root,sources),'rules':manifest(root,rules),'blocks':[{'id':'CHAPTER1-STRUCTURE','sources':sources}],'impact_inventory':[{'block_id':x,'artifact':catalog} for x in ['numbers-polynomials','numbers-real','numbers-inequalities','numbers-development']],'proposal':{'id':'P-001-R1','hash':sha(root/proposal)},'scope':{'paths':sources+['src/data/textbook/math/mathCatalog.test.ts'],'preserve':['src/data/mathPractice/','src/data/textbook/physics/','public/','package.json','pnpm-lock.yaml','src/pages/','source-Word-and-original-figures']},'simulation':False,'context':'三見出しの原則は既承認。具体的な移動・接続文・検査差分の旧P001は未承認で保留。mainへの仕組み採用承認を教材差分承認へ転用しない。','governance_sha':'7c66bb6bbc1647b82601fb5010ffbef3cd4ef6e2'}
+rt.open(plan);refs={}
+for p in [catalog,ledger,base+'AUDIT_FINDINGS.md',proposal,'src/pages/LearningSetupPage.tsx','src/pages/TextbookUnitPage.tsx','src/data/textbook/math/mathCatalog.test.ts']:
+ refs[p]=rt.evidence(w,'file',{'path':p,'sha256':sha(root/p)},source_ref=('local concrete proposal, not implementation' if p==proposal else 'GitHub verified original blob at 30f1e9363ca33a88ffffccfd87c4abbd54f21c01'),verification_level='local_execution')
+rt.user(w,'resume','いいよ。','PR129-main-adoption-and-return-to-repair','conversation:latest-user-reply',event_id='resume-after-P002-main-adoption')
+rt.execute(w,'S00_RECOVER');rt.execute(w,'S01_ROUTE')
+def submit(n,data):
+ t=rt.claim(w,n+'@CHAPTER1-STRUCTURE','current-chat');data.update(verdict='PASS',evidence_refs=list(refs.values()));rt.submit(w,t['node']['id'],t['claim_token'],data)
+submit('R01_CAPTURE',{'complaint':'既承認は三つの大見出し。第四も統合し、他の二テーマも同根欠陥を調べる。元の画像10件と派生指摘はAUDIT_FINDINGSへ保持。','before_evidence':{'catalog':refs[catalog],'audit':refs[base+'AUDIT_FINDINGS.md'],'original_images':'旧Workのevidence/user-01.png〜user-10.png、原画像。今回は再描画・加工していない。'},'reproduction':'math-ch01のcatalogにnumbers-developmentが独立して存在し、Setupが同章の全エントリをカード化する。現状のtestも四枚を正解としている。実画面の新しい確認は実装後。','target_versions':{'lesson':'171c04781f32c1286a0762905891b582714834f9','branch':plan['source_sha'],'src_public_blobs_identical':True}})
+submit('R02_CAUSE',{'symptoms':['大見出し四枚','発展2単元が第三の内容区分でなく第四の同格カード','古いテストの期待値が違反を固定'],'confirmed_causes':['内部分類をそのまま学習者向けテーマへ昇格した','正答・操作・寸法のQAと、既承認の情報設計への適合を混同した'],'hypotheses':[],'missing_learning_actions':['N06からNE01への接続理由','N10からNE02への接続理由'],'root_cause_signatures':['IA-TITLE-BUDGET','QA-ENCODES-UNAPPROVED-STRUCTURE']})
+rows=[]
+for bid in ['numbers-polynomials','numbers-real','numbers-inequalities','numbers-development']:
+ rows.append({'block_id':bid,'artifact':catalog,'version':plan['source_sha'],'status':'NOT-AFFECTED' if bid=='numbers-inequalities' else 'AFFECTED','evidence_refs':[refs[catalog],refs[ledger]],'reason':'本文の別欠陥は別scopeへ保持。今回は配置・見出しの変更不要' if bid=='numbers-inequalities' else 'NE01/NE02の統合元または統合先'})
+rows += [{'block_id':'SETUP','artifact':'src/pages/LearningSetupPage.tsx','version':plan['source_sha'],'status':'AFFECTED','evidence_refs':[refs['src/pages/LearningSetupPage.tsx']],'reason':'表示・集計・再開先はcatalog変更から派生。共通UIは直接編集せず回帰で確認'},{'block_id':'UNIT-PAGE','artifact':'src/pages/TextbookUnitPage.tsx','version':plan['source_sha'],'status':'AFFECTED','evidence_refs':[refs['src/pages/TextbookUnitPage.tsx']],'reason':'H1と次単元はcatalogを参照。直リンクと終端は維持'}]
+submit('R03_IMPACT',{'impact_rows':rows,'source_inventory':{'themes':3,'existing_wrong_extra':1,'units':16,'actions_by_proposed_theme':[122,77,116],'total_actions':315,'full_original_defect_queue':base+'AUDIT_FINDINGS.md','scope_note':'NOT-AFFECTEDは今回のタイトル配置だけ。第三テーマの本文まで合格とはしない。'},'unknowns':[]})
+submit('R04_PROPOSAL',{'before_after':{'before':['式を整える','実数を扱う','不等式を使う','参考・発展'],'after':['式を整える + NE01','実数を扱う + NE02','不等式を使う'],'concrete_text':proposal},'protected_scope':plan['scope']['preserve'],'patch_plan':['catalogの所属を三テーマに復元','既存ne01-intro-01/ne02-intro-01へ具体案の接続文を追加し元の説明を保持','古い四枚のテストを三枚と完全所属・継続先・集計へ修正','ID/正答/図/保存キー/revision/無関係な既承認修正を保護'],'verification_plan':['3名称順序、16単元の一意な所属、233原問、315操作','122/77/116集計、保存済み回答、未完再開、継続先と旧直リンク','320/390pxとPCの実画像、既存三Gate、他章・物理・練習回帰'],'proposal_hash':plan['proposal']['hash']})
+render(rt,w,out/'generated');out.mkdir(exist_ok=True);(out/'plan.json').write_text(json.dumps(plan,ensure_ascii=False,indent=2)+'\n');print(json.dumps(rt.next(w),ensure_ascii=False,indent=2))

@@ -82,7 +82,7 @@
     "distractors": "REVIEWED",
     "prose_figures": "REVIEWED",
     "reasoning": "REVIEWED",
-    "design_hash": "9099962b6e89bb869874218bfca2a8bf67f4db476d0c334f614264c8ec144229",
+    "design_hash": "acdc2b9c2f47b94e9c9484f6683a2b35601316afe6cbc8df15909f9cf2e4d30a",
     "reviewer": "AIによる試作設計審査（ユーザー受入・独立審査ではない）",
     "notes": [
       "大見出しは既存の三つを表示し、今回対象外の二テーマはその旨を明示する。",

@@ -9,17 +9,18 @@ from math_core import Unsupported, polynomial, same, independent_identity, expre
 
 VERSION='0.1.0'
 REGISTRY=json.loads(Path(__file__).with_name('patterns.json').read_text())
+CATALOG=json.loads(Path(__file__).with_name('catalog.json').read_text())
 PATTERNS={name:spec['version'] for name,spec in REGISTRY.items()}
 STAGES=['structure','solution','blanks','choices','prose_figures','final']
 
 def digest(value): return hashlib.sha256(json.dumps(value,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
 
 def implementation_hash():
-    return digest({name:Path(__file__).with_name(name).read_text() for name in ('engine.py','math_core.py','patterns.json','template.html')})
+    return digest({name:Path(__file__).with_name(name).read_text() for name in ('engine.py','math_core.py','patterns.json','catalog.json','template.html')})
 
 def design_hash(project):
     p=copy.deepcopy(project); p.pop('semantic_review',None)
-    return digest({'engine':VERSION,'project':p})
+    return digest({'engine':VERSION,'implementation':implementation_hash(),'project':p})
 
 def require(condition,message):
     if not condition: raise ValueError(message)
@@ -40,6 +41,11 @@ def structure(project):
     require(project['scope']['kind']=='prototype_subset','試作範囲の明示が必要')
     for l in lessons:
         require(bool(l.get('source',{}).get('id')) and bool(l['source'].get('kind')),'元資料の参照がない')
+        require(l['source']['kind'] in ('prototype_authored','corpus_positive'),'原資料の種別が未登録')
+        if l['source']['kind']=='corpus_positive':
+            case=CATALOG['cases'].get(l['source'].get('case_id'),{})
+            require(case.get('quality_label')=='POSITIVE' and case.get('training_eligible'),'未確認の事例を正例として採用している')
+            require(case.get('artifact_version')==l['source'].get('artifact_version'),'正例の対象版が不一致')
         if l.get('pattern') in PATTERNS:
             require(l.get('pattern_version')==PATTERNS[l['pattern']],'パターン版が未登録')
         require(bool(l.get('original_problem')),'元問題がない')
@@ -168,7 +174,10 @@ def verify_prose_figures(lesson,solution):
     return {'structure':'目的・読み方・接続先・表示位置を検査','meaning':'文章と図の理解しやすさは意味の審査が必要'}
 
 def compile_project(project):
-    report={'engine_version':VERSION,'implementation_hash':implementation_hash(),'design_hash':design_hash(project),'stages':{},'lessons':[],'release_accepted':False}
+    report={'engine_version':VERSION,'implementation_hash':implementation_hash(),'design_hash':design_hash(project),'stages':{},'lessons':[],'release_accepted':False,
+            'data_receipt':{'source_sha256':CATALOG['source_sha256'],'case_count':len(CATALOG['cases']),
+                            'unknown_quarantined':sum(c['quality_label']=='UNKNOWN' for c in CATALOG['cases'].values()),
+                            'positive_training_used':0,'training_run':False}}
     try:
         report['stages']['structure']={'status':'PASS',**structure(project)}
     except (KeyError,ValueError,TypeError) as e:
@@ -233,4 +242,5 @@ def run(input_file,output_dir):
 if __name__=='__main__':
     import argparse
     parser=argparse.ArgumentParser(); parser.add_argument('input'); parser.add_argument('--out',required=True)
-    args=parser.parse_args(); print(json.dumps(run(args.input,args.out),ensure_ascii=False,indent=2))
+    args=parser.parse_args(); report=run(args.input,args.out);print(json.dumps(report,ensure_ascii=False,indent=2))
+    raise SystemExit(0 if report['status'] in ('TECHNICAL_PASS','SEMANTIC_REVIEW_REQUIRED') else 2)

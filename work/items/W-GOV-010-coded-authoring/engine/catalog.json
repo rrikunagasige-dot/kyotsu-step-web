@@ -1,0 +1,295 @@
+{
+  "source": "W-GOV-010/corpus/cases.json",
+  "source_sha256": "9c639e8e2c6f0827e1f55462ca74fc8fa42bbb3be160b844cb025b6815224b06",
+  "cases": {
+    "P01": {
+      "quality_label": "UNKNOWN",
+      "training_eligible": false,
+      "artifact_version": null,
+      "source_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/e907bf5fc22025fbd74127b9b72176b90aaeb36e/docs/physics-ch01/CH1_USER_QA_DESIGN_LESSONS.md",
+      "feedback_signal": "REJECTION_REPORTED",
+      "evidence_level": "repository_user_qa_summary"
+    },
+    "P02": {
+      "quality_label": "UNKNOWN",
+      "training_eligible": false,
+      "artifact_version": null,
+      "source_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/e907bf5fc22025fbd74127b9b72176b90aaeb36e/docs/physics-ch01/CH1_USER_QA_DESIGN_LESSONS.md",
+      "feedback_signal": "REJECTION_REPORTED",
+      "evidence_level": "repository_user_qa_summary"
+    },
+    "P03": {
+      "quality_label": "UNKNOWN",
+      "training_eligible": false,
+      "artifact_version": null,
+      "source_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/e907bf5fc22025fbd74127b9b72176b90aaeb36e/docs/physics-ch01/P39_HOLE_QUALITY_AUDIT.md",
+      "feedback_signal": "REJECTION_REPORTED",
+      "evidence_level": "repository_user_qa_summary"
+    },
+    "P04": {
+      "quality_label": "UNKNOWN",
+      "training_eligible": false,
+      "artifact_version": null,
+      "source_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/e907bf5fc22025fbd74127b9b72176b90aaeb36e/docs/physics-ch01/CH1_USER_QA_DESIGN_LESSONS.md",
+      "feedback_signal": "REJECTION_REPORTED",
+      "evidence_level": "repository_user_qa_summary"
+    },
+    "P05": {
+      "quality_label": "UNKNOWN",
+      "training_eligible": false,
+      "artifact_version": null,
+      "source_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/e907bf5fc22025fbd74127b9b72176b90aaeb36e/docs/physics-ch01/P39_LIVE_APP_DEFECT_AUDIT.md",
+      "feedback_signal": "REJECTION_REPORTED",
+      "evidence_level": "repository_user_qa_summary"
+    },
+    "P06": {
+      "quality_label": "UNKNOWN",
+      "training_eligible": false,
+      "artifact_version": null,
+      "source_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/e907bf5fc22025fbd74127b9b72176b90aaeb36e/docs/physics-ch01/CH1_USER_QA_DESIGN_LESSONS.md",
+      "feedback_signal": "REJECTION_REPORTED",
+      "evidence_level": "repository_user_qa_summary"
+    },
+    "P07": {
+      "quality_label": "UNKNOWN",
+      "training_eligible": false,
+      "artifact_version": null,
+      "source_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/e907bf5fc22025fbd74127b9b72176b90aaeb36e/docs/physics-ch01/CH1_USER_QA_DESIGN_LESSONS.md",
+      "feedback_signal": "REJECTION_REPORTED",
+      "evidence_level": "repository_user_qa_summary"
+    },
+    "P08": {
+      "quality_label": "UNKNOWN",
+      "training_eligible": false,
+      "artifact_version": null,
+      "source_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/e907bf5fc22025fbd74127b9b72176b90aaeb36e/docs/physics-ch01/WORKLOG.md",
+      "feedback_signal": "REJECTION_REPORTED",
+      "evidence_level": "repository_user_qa_summary"
+    },
+    "P09": {
+      "quality_label": "UNKNOWN",
+      "training_eligible": false,
+      "artifact_version": null,
+      "source_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/e907bf5fc22025fbd74127b9b72176b90aaeb36e/docs/physics-ch01/WORKLOG.md",
+      "feedback_signal": "REJECTION_REPORTED",
+      "evidence_level": "repository_user_qa_summary"
+    },
+    "P10": {
+      "quality_label": "UNKNOWN",
+      "training_eligible": false,
+      "artifact_version": null,
+      "source_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/e907bf5fc22025fbd74127b9b72176b90aaeb36e/docs/physics-ch01/WORKLOG.md",
+      "feedback_signal": "REJECTION_REPORTED",
+      "evidence_level": "repository_user_qa_summary"
+    },
+    "P11": {
+      "quality_label": "UNKNOWN",
+      "training_eligible": false,
+      "artifact_version": null,
+      "source_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/e907bf5fc22025fbd74127b9b72176b90aaeb36e/docs/physics-ch01/WORKLOG.md",
+      "feedback_signal": "REJECTION_REPORTED",
+      "evidence_level": "repository_user_qa_summary"
+    },
+    "P12": {
+      "quality_label": "UNKNOWN",
+      "training_eligible": false,
+      "artifact_version": null,
+      "source_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/e907bf5fc22025fbd74127b9b72176b90aaeb36e/docs/physics-ch01/WORKLOG.md",
+      "feedback_signal": "REJECTION_REPORTED",
+      "evidence_level": "repository_user_qa_summary"
+    },
+    "P13": {
+      "quality_label": "UNKNOWN",
+      "training_eligible": false,
+      "artifact_version": null,
+      "source_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/e907bf5fc22025fbd74127b9b72176b90aaeb36e/docs/physics-ch01/WORKLOG.md",
+      "feedback_signal": "DESIGN_APPROVAL_OR_TECHNICAL_PASS_ONLY",
+      "evidence_level": "repository_user_qa_summary"
+    },
+    "P14": {
+      "quality_label": "UNKNOWN",
+      "training_eligible": false,
+      "artifact_version": null,
+      "source_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/e907bf5fc22025fbd74127b9b72176b90aaeb36e/docs/physics-ch01/WORKLOG.md",
+      "feedback_signal": "DESIGN_APPROVAL_OR_TECHNICAL_PASS_ONLY",
+      "evidence_level": "repository_user_qa_summary"
+    },
+    "P15": {
+      "quality_label": "UNKNOWN",
+      "training_eligible": false,
+      "artifact_version": null,
+      "source_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/e907bf5fc22025fbd74127b9b72176b90aaeb36e/docs/physics-ch01/WORKLOG.md",
+      "feedback_signal": "DESIGN_APPROVAL_OR_TECHNICAL_PASS_ONLY",
+      "evidence_level": "repository_user_qa_summary"
+    },
+    "P16": {
+      "quality_label": "UNKNOWN",
+      "training_eligible": false,
+      "artifact_version": null,
+      "source_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/e907bf5fc22025fbd74127b9b72176b90aaeb36e/docs/physics-ch01/WORKLOG.md",
+      "feedback_signal": "DESIGN_APPROVAL_OR_TECHNICAL_PASS_ONLY",
+      "evidence_level": "repository_user_qa_summary"
+    },
+    "P17": {
+      "quality_label": "UNKNOWN",
+      "training_eligible": false,
+      "artifact_version": null,
+      "source_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/e907bf5fc22025fbd74127b9b72176b90aaeb36e/docs/physics-ch01/WORKLOG.md",
+      "feedback_signal": "DESIGN_APPROVAL_OR_TECHNICAL_PASS_ONLY",
+      "evidence_level": "repository_user_qa_summary"
+    },
+    "P18": {
+      "quality_label": "UNKNOWN",
+      "training_eligible": false,
+      "artifact_version": null,
+      "source_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/e907bf5fc22025fbd74127b9b72176b90aaeb36e/docs/physics-ch01/WORKLOG.md",
+      "feedback_signal": "DESIGN_APPROVAL_OR_TECHNICAL_PASS_ONLY",
+      "evidence_level": "repository_user_qa_summary"
+    },
+    "P19": {
+      "quality_label": "UNKNOWN",
+      "training_eligible": false,
+      "artifact_version": null,
+      "source_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/e907bf5fc22025fbd74127b9b72176b90aaeb36e/docs/physics-ch01/WORKLOG.md",
+      "feedback_signal": "DESIGN_APPROVAL_OR_TECHNICAL_PASS_ONLY",
+      "evidence_level": "repository_user_qa_summary"
+    },
+    "S01": {
+      "quality_label": "UNKNOWN",
+      "training_eligible": false,
+      "artifact_version": null,
+      "source_url": null,
+      "feedback_signal": "REJECTION_REPORTED",
+      "evidence_level": "conversation_retrieval_summary"
+    },
+    "S02": {
+      "quality_label": "UNKNOWN",
+      "training_eligible": false,
+      "artifact_version": null,
+      "source_url": null,
+      "feedback_signal": "REJECTION_REPORTED",
+      "evidence_level": "conversation_retrieval_summary"
+    },
+    "S03": {
+      "quality_label": "UNKNOWN",
+      "training_eligible": false,
+      "artifact_version": null,
+      "source_url": null,
+      "feedback_signal": "STRONG_PRAISE_REPORTED",
+      "evidence_level": "conversation_retrieval_summary"
+    },
+    "S04": {
+      "quality_label": "UNKNOWN",
+      "training_eligible": false,
+      "artifact_version": "e907bf5fc22025fbd74127b9b72176b90aaeb36e",
+      "source_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/e907bf5fc22025fbd74127b9b72176b90aaeb36e/src/data/textbook/math/set/setLesson.ts",
+      "feedback_signal": "NO_TARGETED_EVALUATION",
+      "evidence_level": "repository_user_qa_summary"
+    },
+    "S05": {
+      "quality_label": "UNKNOWN",
+      "training_eligible": false,
+      "artifact_version": "e907bf5fc22025fbd74127b9b72176b90aaeb36e",
+      "source_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/e907bf5fc22025fbd74127b9b72176b90aaeb36e/src/data/textbook/math/set/setOutsideSlice.ts",
+      "feedback_signal": "NO_TARGETED_EVALUATION",
+      "evidence_level": "repository_user_qa_summary"
+    },
+    "R01": {
+      "quality_label": "UNKNOWN",
+      "training_eligible": false,
+      "artifact_version": null,
+      "source_url": null,
+      "feedback_signal": "STRONG_PRAISE_REPORTED",
+      "evidence_level": "conversation_retrieval_summary"
+    },
+    "R02": {
+      "quality_label": "UNKNOWN",
+      "training_eligible": false,
+      "artifact_version": null,
+      "source_url": null,
+      "feedback_signal": "STRONG_PRAISE_REPORTED",
+      "evidence_level": "conversation_retrieval_summary"
+    },
+    "N01": {
+      "quality_label": "NEGATIVE",
+      "training_eligible": true,
+      "artifact_version": "171c04781f32c1286a0762905891b582714834f9",
+      "source_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/aadab755adc6d38fa2d348e060dec193bea7a68b/work/items/W-MATH-027-three-theme-pedagogy-repair/evidence/user-01.png",
+      "feedback_signal": "EXPLICIT_REJECTION",
+      "evidence_level": "current_user_feedback_with_numbered_image"
+    },
+    "N02": {
+      "quality_label": "NEGATIVE",
+      "training_eligible": true,
+      "artifact_version": "171c04781f32c1286a0762905891b582714834f9",
+      "source_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/aadab755adc6d38fa2d348e060dec193bea7a68b/work/items/W-MATH-027-three-theme-pedagogy-repair/evidence/user-02.png",
+      "feedback_signal": "EXPLICIT_REJECTION",
+      "evidence_level": "current_user_feedback_with_numbered_image"
+    },
+    "N03": {
+      "quality_label": "NEGATIVE",
+      "training_eligible": true,
+      "artifact_version": "171c04781f32c1286a0762905891b582714834f9",
+      "source_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/aadab755adc6d38fa2d348e060dec193bea7a68b/work/items/W-MATH-027-three-theme-pedagogy-repair/evidence/user-03.png",
+      "feedback_signal": "EXPLICIT_REJECTION",
+      "evidence_level": "current_user_feedback_with_numbered_image"
+    },
+    "N04": {
+      "quality_label": "NEGATIVE",
+      "training_eligible": true,
+      "artifact_version": "171c04781f32c1286a0762905891b582714834f9",
+      "source_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/aadab755adc6d38fa2d348e060dec193bea7a68b/work/items/W-MATH-027-three-theme-pedagogy-repair/evidence/user-04.png",
+      "feedback_signal": "EXPLICIT_REJECTION",
+      "evidence_level": "current_user_feedback_with_numbered_image"
+    },
+    "N05": {
+      "quality_label": "NEGATIVE",
+      "training_eligible": true,
+      "artifact_version": "171c04781f32c1286a0762905891b582714834f9",
+      "source_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/aadab755adc6d38fa2d348e060dec193bea7a68b/work/items/W-MATH-027-three-theme-pedagogy-repair/evidence/user-05.png",
+      "feedback_signal": "EXPLICIT_REJECTION",
+      "evidence_level": "current_user_feedback_with_numbered_image"
+    },
+    "N06": {
+      "quality_label": "NEGATIVE",
+      "training_eligible": true,
+      "artifact_version": "171c04781f32c1286a0762905891b582714834f9",
+      "source_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/aadab755adc6d38fa2d348e060dec193bea7a68b/work/items/W-MATH-027-three-theme-pedagogy-repair/evidence/user-06.png",
+      "feedback_signal": "EXPLICIT_REJECTION",
+      "evidence_level": "current_user_feedback_with_numbered_image"
+    },
+    "N07": {
+      "quality_label": "NEGATIVE",
+      "training_eligible": true,
+      "artifact_version": "171c04781f32c1286a0762905891b582714834f9",
+      "source_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/aadab755adc6d38fa2d348e060dec193bea7a68b/work/items/W-MATH-027-three-theme-pedagogy-repair/evidence/user-07.png",
+      "feedback_signal": "EXPLICIT_REJECTION",
+      "evidence_level": "current_user_feedback_with_numbered_image"
+    },
+    "N08": {
+      "quality_label": "NEGATIVE",
+      "training_eligible": true,
+      "artifact_version": "171c04781f32c1286a0762905891b582714834f9",
+      "source_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/aadab755adc6d38fa2d348e060dec193bea7a68b/work/items/W-MATH-027-three-theme-pedagogy-repair/evidence/user-08.png",
+      "feedback_signal": "EXPLICIT_REJECTION",
+      "evidence_level": "current_user_feedback_with_numbered_image"
+    },
+    "N09": {
+      "quality_label": "NEGATIVE",
+      "training_eligible": true,
+      "artifact_version": "171c04781f32c1286a0762905891b582714834f9",
+      "source_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/aadab755adc6d38fa2d348e060dec193bea7a68b/work/items/W-MATH-027-three-theme-pedagogy-repair/evidence/user-09.png",
+      "feedback_signal": "EXPLICIT_REJECTION",
+      "evidence_level": "current_user_feedback_with_numbered_image"
+    },
+    "N10": {
+      "quality_label": "NEGATIVE",
+      "training_eligible": true,
+      "artifact_version": "171c04781f32c1286a0762905891b582714834f9",
+      "source_url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/aadab755adc6d38fa2d348e060dec193bea7a68b/work/items/W-MATH-027-three-theme-pedagogy-repair/evidence/user-10.png",
+      "feedback_signal": "EXPLICIT_REJECTION",
+      "evidence_level": "current_user_feedback_with_numbered_image"
+    }
+  },
+  "policy": "UNKNOWNを正例として採用しない。今回、正例による学習は行わない。"
+}

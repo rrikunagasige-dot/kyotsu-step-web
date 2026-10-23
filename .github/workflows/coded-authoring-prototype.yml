@@ -30,6 +30,7 @@ jobs:
         working-directory: work/items/W-GOV-010-coded-authoring/engine
         run: |
           python3 -m unittest discover -p 'test_engine.py' -v
+          python3 build_catalog.py ../corpus/cases.json
           python3 evaluate.py
           python3 make_examples.py
           python3 engine.py example_textbook.json --out output/textbook

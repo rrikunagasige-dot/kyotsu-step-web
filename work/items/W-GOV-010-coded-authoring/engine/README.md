@@ -13,7 +13,9 @@ W-GOV-010 / 0.1.0。六工程を、入力JSON→完全解法→穴と選択肢�
 | 文章・図 | verify_prose_figures / template.html | 必須説明、図の目的・読み方・接続先・由来・表示順。式の結果を先出ししない表 | 自然な文章、図を使う必然性、読みやすさ |
 | 最終確認 | test_engine.py / evaluate.py / browser_check.cjs | 数学、拒否動作、実画面の操作・幅・復元・履歴分離 | 独立した横断監査と既存のユーザー受入 |
 
-単一AIの意味の審査は入力のsemantic_reviewに、設計ハッシュ・審査観点・注記を付けて保存する。設計が変わると審査はPENDINGへ戻る。これはユーザーの教材承認や独立審査を代行しない。
+単一AIの意味の審査は入力のsemantic_reviewに、設計ハッシュ・審査観点・注記を付けて保存する。設計・コンパイラ・登録パターン・事例カタログが変わると審査はPENDINGへ戻る。これはユーザーの教材承認や独立審査を代行しない。
+
+build_catalog.pyで36件の台帳から版と品質ラベルを読み込み、catalog.jsonへ渡す。未知の事例を正例の出典に指定した入力は拒否する。検査結果には、参照データのハッシュ、事例数、不明26件の隔離、学習未実施を記録する。
 
 ## 対応する範囲
 
@@ -46,6 +48,7 @@ Python 3の標準ライブラリのみ。
 
 ```bash
 python3 -m unittest discover -p 'test_engine.py' -v
+python3 build_catalog.py ../corpus/cases.json
 python3 evaluate.py
 python3 make_examples.py
 python3 engine.py example_textbook.json --out output/textbook

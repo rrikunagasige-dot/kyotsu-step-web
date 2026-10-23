@@ -67,6 +67,9 @@ class EngineTests(unittest.TestCase):
     def test_degenerate_case_is_explicitly_unsupported(self):
         self.p['lessons'][0]['params']=[3,0,1,2]
         self.assertEqual(compile_project(self.p)[1]['status'],'UNVERIFIED')
+    def test_unconfirmed_example_cannot_be_used_as_positive_source(self):
+        self.p['lessons'][0]['source'].update(kind='corpus_positive',case_id='S03',artifact_version='unconfirmed')
+        self.fails(self.p)
     def test_incomplete_build_does_not_leave_playable_stale_output(self):
         with tempfile.TemporaryDirectory() as temp:
             p=Path(temp);source=p/'input.json';source.write_text(json.dumps(self.p))

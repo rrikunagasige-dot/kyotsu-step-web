@@ -23,7 +23,7 @@ class Fixture(unittest.TestCase):
         r={k:'根拠のある模擬課題結果' for k in n['required']};r.update(verdict='PASS',evidence_refs=[ref or self.ref])
         for k in ('unknowns','unresolved','case_updates','rule_links','regression_links'): 
             if k in r:r[k]=[]
-        if n['id'].startswith('R03'):r['impact_rows']=[{'artifact':'a.json','version':'a'*40,'status':'AFFECTED','evidence_refs':[self.ref]},{'artifact':'b.json','version':'a'*40,'status':'NOT-AFFECTED','evidence_refs':[self.ref]}]
+        if n['id'].startswith('R03'):r['impact_rows']=[{'block_id':'A','artifact':'a.json','version':'a'*40,'status':'AFFECTED','evidence_refs':[self.ref]},{'block_id':'B','artifact':'b.json','version':'a'*40,'status':'NOT-AFFECTED','evidence_refs':[self.ref]}]
         if n['id'].startswith('R04'):r['proposal_hash']=self.rt.state('W')['plan']['proposal']['hash']
         if n['actor']=='AUDITOR':r.update(audit_rows=[{'surface':'all','status':'PASS','evidence_refs':[self.ref]}],independence={'reviewer':'independent-test','method':'separate fixture reviewer, not actual audit'},original_source_refs=[self.ref])
         return r
@@ -277,3 +277,15 @@ class ScenarioReplay(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             reports=run(Path(tmp)/'scenarios');self.assertEqual([r['status'] for r in reports],['DONE']*3)
             with self.assertRaises(ValueError):run(Path(tmp)/'scenarios')
+
+
+class ImpactCompleteness(Fixture):
+    def test_missing_other_block_is_not_complete_impact_sweep(self):
+        self.replace_plan();self.until('R03');t=self.rt.claim('W','R03_IMPACT@A','x');r=self.output(t['node']);r['impact_rows']=r['impact_rows'][:1]
+        with self.assertRaises(Rejected):self.rt.submit('W','R03_IMPACT@A',t['claim_token'],r)
+    def test_wrong_block_id_cannot_cover_same_file(self):
+        self.replace_plan();self.until('R03');t=self.rt.claim('W','R03_IMPACT@A','x');r=self.output(t['node']);r['impact_rows'][1]['block_id']='A'
+        with self.assertRaises(Rejected):self.rt.submit('W','R03_IMPACT@A',t['claim_token'],r)
+    def test_stale_impact_version_refused(self):
+        self.replace_plan();self.until('R03');t=self.rt.claim('W','R03_IMPACT@A','x');r=self.output(t['node']);r['impact_rows'][1]['version']='obsolete'
+        with self.assertRaises(Rejected):self.rt.submit('W','R03_IMPACT@A',t['claim_token'],r)

@@ -195,6 +195,13 @@ class Runtime:
             need(result['independence']['reviewer']==c['actor'],'監査の課題担当と結果の担当が異なる')
             need(result['independence']['reviewer'] not in creators,'作成者と同じ担当を独立監査と呼べない')
             self.fingerprint_refs(s,result['original_source_refs'])
+        if n['id'].startswith('R03'):
+            inventory=s['plan'].get('impact_inventory') or [{'block_id':b['id'],'artifact':path} for b in s['plan']['blocks'] for path in b['sources']]
+            required={(row['block_id'],row['artifact']) for row in inventory}
+            supplied={(row.get('block_id'),row['artifact']) for row in result['impact_rows']}
+            need(required<=supplied,'全影響範囲の表から既知のブロックが抜けている')
+            for row in result['impact_rows']:
+                need(row['version'] in (s['plan']['source_sha'],s['candidate_sha']),'影響調査の対象版が現在のWorkと対応しない')
         if n['id'].startswith('R04'):need(result['proposal_hash']==s['plan']['proposal']['hash'],'提出した修正案と承認対象の版が違う')
         if n['id'].startswith(('L01','R08')):
             covered={x['id'] for x in result['case_updates']};need(set(s['issues'])<=covered,'未取込の指摘がある')

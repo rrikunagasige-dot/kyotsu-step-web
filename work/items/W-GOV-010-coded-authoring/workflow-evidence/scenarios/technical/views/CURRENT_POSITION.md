@@ -2,7 +2,7 @@
 
 状態: DONE / 内部: DONE / 次: —
 
-台帳HEAD: `6585e6f1a035c4c4eb695d62c3d47de72505ba3683c962e82393e36fd98e08b8`
+台帳HEAD: `21f75a53d50635c1f7cddb88d57ba1c13d0420bcb8f3a61e1dac805bfb03caef`
 候補SHA: `aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa`
 
 模擬実行: True。アプリ受入: False。技術試験合格だけで教材の品質は確定しない。

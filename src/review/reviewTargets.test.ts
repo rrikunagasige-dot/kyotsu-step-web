@@ -171,12 +171,27 @@ describe('W-GOV-008/P-002 review marker boundaries', () => {
     expect(target.totalItems).toBe(16)
     expect(target.itemIds).toEqual(['n06-06'])
     expect(target.blockIds).toEqual(['n06-lead-06','n06-formula-06','n06-after-06'])
-    expect(activeReviewMarkIds(target)).toEqual(['n06-formula-06'])
+    expect(activeReviewMarkIds(target)).toEqual([])
+    expect(target.markBlockIds).toEqual(['n06-formula-06'])
     const extracted=extractReviewSection(mathNumbersN06Unit,target)
     expect(extracted?.items.map(i=>i.id)).toEqual(['n06-06'])
     expect(extracted?.items.map(i=>i.answer)).toEqual(['(x^2-1)(x^2-4)'])
     expect(extractReviewSection({...mathNumbersN06Unit,revision:2},target)).toBeNull()
     for(const id of ['n06-q03','n06-q12','n05-q11','n05-q18','n13-q05','n13-q08'])
+      expect(activeReviewMarkIds(reviewTargets[id])).toEqual([])
+  })
+
+  it('W-MATH-026/P001 isolates Q12 choices without reopening accepted hint marks',()=>{
+    const target=reviewTargets['n06-q12-choices']
+    expect(target.revision).toBe(3)
+    expect(target.totalItems).toBe(16)
+    expect(target.itemIds).toEqual(['n06-12'])
+    expect(target.blockIds).toEqual(['n06-lead-12','n06-formula-12','n06-after-12'])
+    expect(activeReviewMarkIds(target)).toEqual(['n06-formula-12'])
+    const extracted=extractReviewSection(mathNumbersN06Unit,target)
+    expect(extracted?.items.map(i=>i.answer)).toEqual(['(x+y)(x+2)(x-1)'])
+    expect(extractReviewSection({...mathNumbersN06Unit,revision:2},target)).toBeNull()
+    for(const id of ['n06-q06','n06-q03','n06-q12','n05-q11','n05-q18','n13-q05','n13-q08'])
       expect(activeReviewMarkIds(reviewTargets[id])).toEqual([])
   })
 

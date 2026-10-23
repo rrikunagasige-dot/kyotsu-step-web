@@ -29,7 +29,7 @@ jobs:
       # Existing unrelated repository-wide lint debt is outside this approved task.
       - run: pnpm exec eslint src/review/reviewTargets.ts src/review/reviewTargets.test.ts src/review/ReviewTextbookPage.tsx src/pages/TextbookUnitPage.tsx e2e/review-preview-gate.spec.ts e2e/review-p003-visual-evidence.spec.ts e2e/review-p003-cross-block.spec.ts e2e/review-p003-related-mobile.spec.ts --max-warnings=0
       # The legacy global suite has two unrelated catalog-count assertion failures.
-      - run: pnpm exec vitest run src/review/reviewTargets.test.ts src/data/textbook/math/numbers/n01Lesson.test.ts src/data/textbook/math/numbers/numbersPilots.test.ts src/data/textbook/math/mathReviewIntegrity.test.ts
+      - run: pnpm exec vitest run src/review/reviewTargets.test.ts src/data/textbook/math/numbers/n01Lesson.test.ts src/data/textbook/math/numbers/numbersPilots.test.ts src/data/textbook/math/mathReviewIntegrity.test.ts src/data/textbook/math/numbers/wMath026N06Q12.test.ts
       - run: pnpm run build
       # This checks actual interaction ONLY on a dedicated PR #92-derived review
       # candidate. The main-based governance branch lacks the seven new holes.
@@ -1134,7 +1134,7 @@ jobs:
 
   # W-MATH-025/P-004 approved Q06 hint only; authentic source-SHA evidence.
   wmath025-n06-q06-genuine-screenshots:
-    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'work/W-MATH-025-n05-q11-hint-approved-20261023' }}
+    if: ${{ false }} # Q06 hint visually accepted; immutable evidence retained
     runs-on: ubuntu-latest
     concurrency:
       group: wmath025-n06-q06-${{ github.head_ref }}
@@ -1242,5 +1242,118 @@ jobs:
           git add "$dir"
           if ! git diff --cached --quiet; then
             git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Store genuine N06 Q06 W-MATH-025 images [review only]'
+            git push origin "HEAD:refs/heads/$TARGET_BRANCH"
+          fi
+
+  # W-MATH-026/P-001 approved Q12 one distinct distractor; authentic source-SHA evidence.
+  wmath026-n06-q12-choices-genuine-screenshots:
+    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'work/W-MATH-026-n06-q12-distinct-distractor-20261023' }}
+    runs-on: ubuntu-latest
+    concurrency:
+      group: wmath026-n06-q12-choices-${{ github.head_ref }}
+      cancel-in-progress: true
+    permissions:
+      contents: write
+    env:
+      CI: 'true'
+      VITE_REVIEW_PREVIEW: 'true'
+      VITE_BASE_PATH: '/'
+      VITE_PREVIEW_COMMIT: ${{ github.event.pull_request.head.sha }}
+      E2E_USE_PREVIEW: '1'
+      E2E_WM026_Q12: '1'
+      CAPTURE_SHA: ${{ github.event.pull_request.head.sha }}
+      TARGET_BRANCH: ${{ github.head_ref }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: true
+      - name: Skip recapturing unchanged Q12 choices code on documentation-only commits
+        id: need
+        shell: bash
+        run: |
+          evidence="work/items/W-MATH-026-n06-q12-distinct-distractor/evidence/gate1-q12-choices/README.md"
+          saved=""
+          if test -f "$evidence"; then
+            saved=$(grep '^Real operated source SHA:' "$evidence" | grep -oE '[a-f0-9]{40}' | head -n 1)
+          fi
+          if git log -1 --format=%s | grep -q '^Store genuine N06 Q12 choices W-MATH-026 images'; then
+            echo 'capture=false' >> "$GITHUB_OUTPUT"
+          elif test -n "$saved" && git fetch --no-tags --depth=1 origin "$saved" >/dev/null 2>&1 &&
+              git diff --quiet "$saved" HEAD -- src/data/textbook/math/numbers/n06Lesson.ts \
+                src/review/reviewTargets.ts src/pages/TextbookUnitPage.tsx \
+                src/review/ReviewTextbookPage.tsx src/styles/global.css \
+                e2e/wmath026-n06-q12-choices-gate1.spec.ts; then
+            echo 'capture=false' >> "$GITHUB_OUTPUT"
+          else
+            echo 'capture=true' >> "$GITHUB_OUTPUT"
+          fi
+      - if: ${{ steps.need.outputs.capture == 'true' }}
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - if: ${{ steps.need.outputs.capture == 'true' }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - if: ${{ steps.need.outputs.capture == 'true' }}
+        run: pnpm install --frozen-lockfile
+      - if: ${{ steps.need.outputs.capture == 'true' }}
+        run: pnpm run typecheck && pnpm run build
+      - name: Install readable Japanese font for Q12 choices Gate1 screenshots
+        if: ${{ steps.need.outputs.capture == 'true' }}
+        shell: bash
+        timeout-minutes: 4
+        run: |
+          font_dir="$RUNNER_TEMP/kyotsu-q12-choices-fonts"
+          mkdir -p "$font_dir"
+          for weight in Regular Bold; do
+            curl --fail --location --connect-timeout 15 --max-time 90 --retry 1 --retry-max-time 120 \
+              "https://raw.githubusercontent.com/notofonts/noto-cjk/main/Sans/OTF/Japanese/NotoSansCJKjp-$weight.otf" \
+              -o "$font_dir/NotoSansCJKjp-$weight.otf"
+          done
+          sudo mkdir -p /usr/local/share/fonts/kyotsu-q12-choices
+          sudo install -m 644 "$font_dir/"*.otf /usr/local/share/fonts/kyotsu-q12-choices/
+          sha256sum "$font_dir/"*.otf
+          fc-cache -f
+          fc-match -f '%{family}\n' ':lang=ja' | grep -q 'Noto'
+          fc-list :lang=ja | grep -q 'Noto Sans CJK JP'
+      - if: ${{ steps.need.outputs.capture == 'true' }}
+        run: pnpm exec playwright install chromium
+      - name: N06 Q12 choices review and normal lesson authentic 320 390 1440
+        if: ${{ steps.need.outputs.capture == 'true' }}
+        run: pnpm exec playwright test e2e/wmath026-n06-q12-choices-gate1.spec.ts --project=mobile-chromium --project=desktop-chromium
+      - name: Retain Q12 choices diagnostic images even when a check fails
+        if: ${{ always() && steps.need.outputs.capture == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: wmath026-q12-choices-real-${{ github.event.pull_request.head.sha }}
+          path: e2e-evidence/wm026-q12-choices-*.png
+          if-no-files-found: ignore
+          retention-days: 7
+      - name: Store successful Q12 choices images only on isolated review branch
+        if: ${{ success() && steps.need.outputs.capture == 'true' }}
+        shell: bash
+        run: |
+          dir="work/items/W-MATH-026-n06-q12-distinct-distractor/evidence/gate1-q12-choices"
+          mkdir -p "$dir"
+          cp e2e-evidence/wm026-q12-choices-*.png "$dir/"
+          {
+            printf '# N06 Q12 choices actual numbered Gate1 images — user acceptance pending\n\n'
+            printf 'Real operated source SHA: %s\n\n' "$CAPTURE_SHA"
+            printf 'Noto CJK JP installed. Authentic Chromium 320/390/1440, four distinct choices, old revision3 wrong record restore and retry; accepted hint and answer unchanged.\n\n'
+            for width in 320 390 1440; do
+              printf '## %spx\n\n' "$width"
+              for state in review-before review-choices review-wrong review-complete normal-before normal-choices normal-wrong normal-complete; do
+                printf '**%s**\n\n![N06 Q12 choices %s width %s](wm026-q12-choices-%s-%s.png)\n\n' "$state" "$state" "$width" "$state" "$width"
+              done
+            done
+            printf 'Human Gate1 Q12 choices remains BLOCK-CHECK-PENDING; no main merge or host/deploy.\n'
+          } > "$dir/README.md"
+          git add "$dir"
+          if ! git diff --cached --quiet; then
+            git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Store genuine N06 Q12 choices W-MATH-026 images [review only]'
             git push origin "HEAD:refs/heads/$TARGET_BRANCH"
           fi

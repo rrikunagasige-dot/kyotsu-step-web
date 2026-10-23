@@ -14,3 +14,17 @@ Status: APPROVED
 | Implementation / schema / actual Chrome / 320-390-1440 / restore / regression | UNVERIFIED | Proposal unapproved; no learner code edits, CI or images from this new fix |
 | Same-root other artifacts | UNVERIFIED | Impact set in FINDINGS; no blanket clearance |
 | User Gate① / overall Gate② / Gate③ | PENDING / OPEN / FINAL-REVIEW-NOT-READY | Prior Q12 acceptance covers its hint only, not this proposal |
+
+## 2026-10-23 exact-source verification plan/checkpoint
+Primary W026/P001, approved one-string correction. Source SHA/CI run PENDING until commit. Branch `work/W-MATH-026-n06-q12-distinct-distractor-20261023` from44e42bf42d065057d54785d6bbe578ef9b4cbb5b; main remains15ae503455bc6ae75b080caa1c4919cafb250027.
+- Learner diff: q12 wrong[2] only; all other source fields, key, hints, revision3 protected. Local audit PENDING.
+- Integer coefficient comparison: old pair equivalent; new 4choices distinct; source polynomial x³+x²y+x²+xy−2x−2y matches exactly one. Local audit/Native unit PENDING.
+- Browser: 320/390/1440 × normal/review. Choice display/new wrong/retry, old removedwrong ledger restore/firstValue and attempt retention, previous11 unchanged, Q13 gate, full16 completion/reload, no preview persistence. PENDING.
+- Type/lint/build, review boundary, math/physics-textbook/math-practice regression: PENDING native CI. Prior W025 PASS is historical only.
+- Q06 hint human Gate①: BLOCK-VISUAL-OK by latest direct approval; frozen evidence retained.
+- Q12 choices Gate①: BLOCK-CHECK-PENDING, wait for approximately5-item delivery, no per-question human interruption.
+- Cross-block Gate②: OPEN (three new unapproved hints + required UNVERIFIED surfaces). Gate③ FINAL-REVIEW-NOT-READY.
+Return on SUCCESS: inspect actual images/logs and record exactSHA/runs, keep grouped human review pending. FAILURE: diagnose primary, repair only approved scope; CANCEL/TIMEOUT is unverified, 403 stops/report. No independent learner edits while CI.
+
+### Local pre-commit result
+PASS: Node24 syntax checks for new TS unit/E2E; exact source diff is one wrong[2] string; 16 original items and revision3 retained; both workflow YAML files parse, new capture is branch-limited and accepted Q06 capture disabled. Independent Python integer-coefficient expansion reproduces old duplicate and confirms four new choices pairwise distinct with exactly the source polynomial as key. Native runtime/UI CI remains PENDING.

@@ -1,24 +1,24 @@
 # W-MATH-026 — N06 Q12 数学的重複誤答の限定修正
-Status: APPROVED
+Status: IN-PROGRESS
 Updated: 2026-10-23 JST
 
 ## Objective / Authority
-W-MATH-025 Gate②監査で確認した別原因 `mathematically_duplicate_distractors` を、[P-001](./PROPOSAL.md) の1選択肢だけの変更案として提示。直接ユーザー指示・憲法・WORK_SYSTEM §12Bに従う。3案への直接回答「いいよ続けて」でP-001 exact範囲は承認済み。先行Q03/Q06のGate①を待ち、まだ実装しない。
+既承認P-001（直接「いいよ続けて」）の1選択肢だけを修正。P-001全文とexact承認を保持。Q06は最新直接「承認！続けて…」でhint-only画像受入。ユーザーは次から約5問を完成させ一度に見るよう指示。Q12一問だけのGate①承認を要求せず、次のまとめ提示へ証拠を保持する。
 
-## Branch
-現文書はPR115の監査記録に同居する。実装枝は未作成。承認後、W-MATH-025と重複するn06Lessonへの同時書込を避け、検証済み最新SHAから独立したW-MATH-026 feature branchで順番に実施する。mainは変更しない。
+## Branch / Provenance
+canonical target: `rrikunagasige-dot/kyotsu-step-web` (ID1391122224)。
+main `15ae503455bc6ae75b080caa1c4919cafb250027` を読取照合。
+起点はPR115 HEAD `44e42bf42d065057d54785d6bbe578ef9b4cbb5b`。
+独立した順次実装枝 `work/W-MATH-026-n06-q12-distinct-distractor-20261023`、Draft PRのbaseはW025枝。main/N14別枝を統合しない。W025の旧SHAのCI結果を本修正のPASSとしない。
 
 ## Scope / Do Not Touch
-q12 `wrong[2]` のexact変更だけを提案。正答・他選択肢・既受入ヒント・原16問・stable ID・revision3・全進捗、元資料、他単元、renderer/CSS/schemaは保護。別原因/別小問を本案でまとめて変更しない。
-
-## Approved Proposal
-P-001 APPROVED by direct 「いいよ続けて」 to the three-proposal request on 2026-10-23 JST.
+q12 wrong[2]のみ `(x+y)(x+1)(x-2)` → `(x+y)(x+2)(x+1)`。
+正答、他2誤答、受入済みヒント、他15問、原16問、stable ID、revision3、全履歴、renderer/CSS/schema、母本と図は保持。Q06受入済みreviewマーカーを隠し、Q12選択肢は別targetで証拠化する。
+W025/P005–007はPROPOSED/未実装。N14 Q16はPR111の別SHA証拠として扱い、勝手にrev9/rev10を混ぜない。
 
 ## Current Step / Next Step
-個別承認を取得。先行Q03→Q06の限定実装と各Gate①後、確定SHAからQ12の1選択肢だけを実装→実検証→Q12選択肢Gate①。承認済み、未実装。
+限定変更・保存済み旧誤答の再回答・四択の数学的非同値性・実画面証拠を準備。新source SHAとCI runはcommit生成後に確定記録する。現段階はCI PENDING、Gate①は5件まとめ提示に向け保留、Gate②OPEN、Gate③FINAL-REVIEW-NOT-READY。
+次: Native CI/実画像を照合→新3ヒント案をまとめ提示→承認済み範囲を進め、5件の確認票を一度に提示する。
 
-## Dependencies / Completion Condition
-W-MATH-025の既受入hintを保全。Q03/Q06案を実施する場合は各Gate①後のSHAを採用し、同じファイルを並行変更しない。別N14 Q16 branchは未統合。原症状・保存済み旧誤答の再回答・数学的に異なる4択・関連回帰・実画像受入を完了してからWork完了を判断。全体Gate②/③・main統合・公開承認は別に残る。
-
-## 2026-10-23 current execution dependency
-Q03のヒントGate①は直接「ヒントならいいよじゃ続けて」で了承済み。先行P-004 Q06の限定実装/実画像Gate①が進行中。本Work P-001 exact承認を保持し、まだQ12選択肢や実装ブランチは変更しない。次はQ06 Gate①後の確定SHAから順番に実装。
+## Completion Condition
+旧誤答保存を無改変復元、初回値/日時/試行数保全、誤答でQ13未解放・正答で解放、全16問完了復元、4つの多項式の非同値、正答一意、320/390/1440通常/reviewを確認。source/画像SHA付き問別受入後に閉鎖。全体監査/通し確認/統合公開は別状態。

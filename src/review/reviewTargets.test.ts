@@ -114,4 +114,19 @@ describe('W-GOV-008/P-002 review marker boundaries', () => {
     expect(activeReviewMarkIds(reviewTargets['n13-q08'])).toEqual([])
   })
 
+  it('W-MATH-025/P001 N05 Q11 new one-mark review, accepted Q18 and N13 remain silent',()=>{
+    const target=reviewTargets['n05-q11']
+    expect(target.revision).toBe(2)
+    expect(target.totalItems).toBe(20)
+    expect(target.itemIds).toEqual(['n05-11'])
+    expect(target.expectedAnswers).toEqual(['(a-8)(a+2)'])
+    expect(target.blockIds).toEqual(['n05-lead-11','n05-formula-11','n05-after-11'])
+    expect(activeReviewMarkIds(target)).toEqual(['n05-formula-11'])
+    expect(extractReviewSection(mathNumbersN05Unit,target)?.items.map(i=>i.answer)).toEqual(['(a-8)(a+2)'])
+    expect(extractReviewSection({...mathNumbersN05Unit,revision:1},target)).toBeNull()
+    expect(activeReviewMarkIds(reviewTargets['n05-q18'])).toEqual([])
+    expect(activeReviewMarkIds(reviewTargets['n13-q05'])).toEqual([])
+    expect(activeReviewMarkIds(reviewTargets['n13-q08'])).toEqual([])
+  })
+
 })

@@ -1,0 +1,72 @@
+{
+  "work": "W-MATH-027-P001-R1",
+  "previous_ledger_head": "b1b6f595480310a36d79164f4259fce84bb70147234683cdad2981288ce7d30c",
+  "new_ledger_head": "c42ff95969237628af1a009148f82f16fd4483e8db69a36c4bfb223b0af396b3",
+  "new_events": [
+    {
+      "id": "evidence-e6a595c4-5266-4247-b269-0102f8c32e4d",
+      "kind": "evidence",
+      "payload": {
+        "data": {
+          "path": "work/items/W-MATH-027-three-theme-pedagogy-repair/eju-guidance-audit/NUMBERS_GUIDANCE_AUDIT.md",
+          "sha256": "d3d770aa6eb062442e81a689fa7d43993b87237ebc16c03f28bdf710a22bbd47"
+        },
+        "id": "e6a595c4-5266-4247-b269-0102f8c32e4d",
+        "kind": "file",
+        "source_ref": "User requested numbers-only audit against concrete EJU guidance/dependency criterion; fixed public and comparison versions",
+        "verification_level": "local_execution"
+      },
+      "previous": "b1b6f595480310a36d79164f4259fce84bb70147234683cdad2981288ce7d30c",
+      "seq": 71,
+      "time": 1792779773.2074928,
+      "work": "W-MATH-027-P001-R1",
+      "hash": "b444caee79a84d2a3cf28b515afdcaf9dcf4cc2339c13ef0f163462cd2b28305"
+    },
+    {
+      "id": "evidence-458a5940-f900-49f4-ac58-7f1374d10788",
+      "kind": "evidence",
+      "payload": {
+        "data": {
+          "path": "work/items/W-MATH-027-three-theme-pedagogy-repair/eju-guidance-audit/SOURCE_PROOF.json",
+          "sha256": "5ffa270a54531f713e7c220057f278bdb392b6c02ccdf1890d971b38425cc651"
+        },
+        "id": "458a5940-f900-49f4-ac58-7f1374d10788",
+        "kind": "file",
+        "source_ref": "User requested numbers-only audit against concrete EJU guidance/dependency criterion; fixed public and comparison versions",
+        "verification_level": "local_execution"
+      },
+      "previous": "b444caee79a84d2a3cf28b515afdcaf9dcf4cc2339c13ef0f163462cd2b28305",
+      "seq": 72,
+      "time": 1792779773.2129915,
+      "work": "W-MATH-027-P001-R1",
+      "hash": "efa26b6b68402dd301e0496e77d560f1a687e54053e9f17c47e8b6ab9b17c3ff"
+    },
+    {
+      "id": "issue-W027-EJU-GOAL-OPERATION-MISMATCH",
+      "kind": "issue",
+      "payload": {
+        "block": "NUMBERS-ALL16",
+        "comparison_version": "59aeba91056e954ccc65e51a02c7227e642a2c3a",
+        "description": "N04Q20 returns pre-grouped expanded results for a grouping task; NE02Q11 supplies all sum/product conditions in every alternative; N12 auxiliary holes copy given coefficients. N02 candidate improves explanations but often grades integer arithmetic after structural choices are supplied. Preserve working derivations; do not infer every composite answer is defective.",
+        "evidence_refs": [
+          "e6a595c4-5266-4247-b269-0102f8c32e4d",
+          "458a5940-f900-49f4-ac58-7f1374d10788"
+        ],
+        "id": "W027-EJU-GOAL-OPERATION-MISMATCH",
+        "origin": "current user audit request; author review, not independent Gate2",
+        "quality": "UNKNOWN",
+        "root_cause": "GOAL_PATH_AND_INTERACTION_MISMATCH",
+        "version": "171c04781f32c1286a0762905891b582714834f9"
+      },
+      "previous": "efa26b6b68402dd301e0496e77d560f1a687e54053e9f17c47e8b6ab9b17c3ff",
+      "seq": 73,
+      "time": 1792779773.2182677,
+      "work": "W-MATH-027-P001-R1",
+      "hash": "c42ff95969237628af1a009148f82f16fd4483e8db69a36c4bfb223b0af396b3"
+    }
+  ],
+  "next_node": "G2_AUDIT",
+  "gate2_passed": false,
+  "app_source_changed": false,
+  "new_user_approval": false
+}

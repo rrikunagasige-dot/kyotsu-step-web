@@ -1,0 +1,58 @@
+math-numbers-expressions-n09 平方根の符号と数直線
+heading-roots 平方根は二つあることがある。でも根号は一つを表す
+marker-roots-example 例題
+paragraph-roots-question 2乗すると16になる実数を、すべて挙げよう。4 を2回掛けると16。負の数どうしを掛けても正になる。正負両方を平方で確かめると、
+formula-n09-01 x^2=16\quad\Longrightarrow\quad【n09-01→x=4,\ -4】
+paragraph-roots-definition 2乗して a になる数を a の 平方根 という。正の数 a には正負二つの平方根があり、正の方を \sqrt a、負の方を -\sqrt a と書く。根号は非負の一つの数を表し、二つをまとめた記号ではない。
+marker-roots-check 確認
+paragraph-roots-contrast \sqrt{16} は正の平方根を選ぶ記号だが、(-\sqrt5)^2 は負の平方根を実際に2乗する。二つの値を組で答えよう。
+formula-n09-02 \bigl(\sqrt{16},\ (-\sqrt5)^2\bigr)=【n09-02→(4,\ 5)】
+paragraph-roots-zero 0の平方根は0だけで \sqrt0=0。実数を2乗して負の数にはならない。負の数の平方根は、ここで扱う実数の範囲にはない。
+heading-square 根号を外す前に、負の値を確かめる
+marker-square-example 例題
+paragraph-square-first \sqrt{(-4)^2} は内側が -4 だからといって負のまま出せるだろうか。先に2乗して、根号が表す非負の値を確かめる。
+formula-n09-03 \sqrt{(-4)^2}=\sqrt{16}=【n09-03→4】
+marker-square-proof 導出
+paragraph-sign-cases 一般の実数 a でも a^2=(-a)^2 だが、根号で選ぶのは非負の方だ。a\ge0 と a<0 でそれぞれ非負の方を組で選ぶと、
+formula-n09-04 \bigl(a\ge0\text{のとき},\ a<0\text{のとき}\bigr)=【n09-04→(a,\ -a)】
+paragraph-abs-definition 0からの距離を表す 絶対値 は、正でも負でも非負になる。先ほどの二つの場合を一つの記号へまとめると、
+formula-n09-05 \sqrt{a^2}=【n09-05→|a|】\qquad(a\in\mathbb R)
+paragraph-abs-after 「2乗と根号を機械的に消す」のではない。すべての実数で結果を非負にする性質だ。
+marker-abs-check 確認
+paragraph-sign-radical \sqrt{(2-\sqrt5)^2} の根号を外す前に、内側の数の符号を決める。2 と \sqrt5 はどちらも非負。二乗すると4と5なので比較できる。すると、
+formula-n09-06 【n09-06→2-\sqrt5<0】
+paragraph-abs-apply 今の負の符号を、絶対値を外す判断に使おう。
+formula-n09-07 \sqrt{(2-\sqrt5)^2}=|2-\sqrt5|=【n09-07→\sqrt5-2】
+heading-approximation 近似は平方で両側から挟んで確かめる
+marker-approx-example 例題
+paragraph-approx-intro \sqrt2 は 1.41 と 1.42 の間にあるだろうか。近似値の暗記でなく平方から確かめよう。両端を一つずつ平方して、2との大小を順に判断しよう。
+formula-n09-08-left-square 1.41^2=【n09-p001-q08-left-square→1.9881】
+paragraph-n09-08-right-square 次に右側の数も同じ方法で平方しよう。
+formula-n09-08-right-square 1.42^2=【n09-p001-q08-right-square→2.0164】
+paragraph-n09-08-lower-sign 求めた左側の平方と2の間に、正しい不等号を入れよう。
+formula-n09-08-lower-sign 1.9881【n09-p001-q08-lower-sign→<】2
+paragraph-n09-08-upper-sign 今度は2と右側の平方を比較しよう。
+formula-n09-08-upper-sign 2【n09-p001-q08-upper-sign→<】2.0164
+paragraph-n09-08-combine 四つの判断を一つにまとめ、平方の等号と2を挟む不等号の向きを確かめよう。
+formula-n09-08 【n09-08→1.41^2=1.9881<2<2.0164=1.42^2】
+paragraph-approx-monotone 1.41 と 1.42 は正なので、非負の範囲では二乗の大小と元の大小が一致する。よって、
+formula-n09-09 【n09-09→1.41<\sqrt2<1.42】
+paragraph-approx-after 平方の計算と、比較する数の非負性を組にしたので、両側から挟めた。
+heading-floor 負の数も、整数＋0以上1未満に分ける
+marker-floor-example 例題
+paragraph-floor-intro -2.1 を「整数＋0以上1未満の数」に分けよう。-2-0.1 と書くだけでは残りが負になってしまう。整数 n で n\le x<n+1 を満たすものを探す。x=-2.1 で左端の整数を選ぶと、
+formula-n09-10 n=【n09-10→-3】
+formula-floor-confirm -3\le-2.1<-2
+figure-negative-number-line {"id": "n09-f01", "src": "/assets/math/textbook/numbers/n09-f01.png", "alt": "元の数直線で、等間隔の目盛り-4、-3、-2、-1と、その-3と-2の間にある-2.1の点を示す。", "caption": "直前に求めた整数の間に、負の小数の点があることを確かめよう。", "overlays": []}
+paragraph-figure-after 元の数直線でも、今選んだ整数と次の整数の間に点がある。この整数からの残りを、0以上1未満にそろえると、
+formula-n09-11 -2.1=【n09-11→-3+0.9】
+paragraph-floor-definition n\le x<n+1 を満たす整数 n を x の 整数部分、残り x-n を 小数部分という。小数部分は必ず 0\le x-n<1。負数の表示から小数桁を切り出す操作ではない。
+heading-root-parts 正負の根号を、同じ定義で挟む
+marker-parts-check 確認
+paragraph-parts-root \sqrt{10} と -\sqrt{10} の整数部分・小数部分を求めよう。3^2=9、4^2=16。9<10<16 から正の根号を隣り合う整数で挟むと、
+formula-n09-12 【n09-12→3<\sqrt{10}<4】
+paragraph-parts-minus 次に不等式の全体へ -1 を掛けると向きが逆になる。小さい順に並べ直すと、
+formula-n09-13 【n09-13→-4<-\sqrt{10}<-3】
+paragraph-parts-final どちらも「整数＋0以上1未満」の形にする。正負それぞれの（整数部分,小数部分）の組は、
+formula-n09-14 【n09-14→\begin{aligned}\sqrt{10}&:(3,\sqrt{10}-3)\\-\sqrt{10}&:(-4,4-\sqrt{10})\end{aligned}】
+paragraph-final-bridge 二乗の結果に加えて、根号が表す非負の値を確認した。数の位置を隣接する整数で挟めば負数の小数部分も常に0以上1未満になる。次はこの考えを根号の積や商の計算の証明へ使う。

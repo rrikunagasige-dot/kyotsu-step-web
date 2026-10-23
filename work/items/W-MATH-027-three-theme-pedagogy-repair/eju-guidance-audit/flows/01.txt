@@ -1,0 +1,40 @@
+math-numbers-expressions-n01 式の見方
+heading-factors 式を掛け算に戻す
+marker-factor-example 例題
+paragraph-intro 次の三つの式を比べよう。-2x,\quad x^2,\quad -x^2y^2。どれも数と文字の掛け算で読める。例えば x^2=x\times x である。マイナスがあるときは、符号も数の部分に含めて考える。
+formula-n01-01 -x^2y^2=【n01-01→-1】\times x\times x\times y\times y
+paragraph-concept-monomial このように数と文字の積で表した式を単項式という。ここでは文字の指数を0以上の整数として扱う。数の部分を係数、掛け合わせた文字の総数を次数という。
+paragraph-coefficient-compare 三つの式をもう一度見よう。次の各式について（係数，次数）の組を完成させよう。文字の前に数が書かれていなくても、数の部分はある。
+formula-n01-02a -2x\;\longrightarrow\; (\text{係数,次数})=【n01-02a→(-2,1)】
+formula-n01-02b x^2\;\longrightarrow\; (\text{係数,次数})=【n01-02b→(1,2)】
+formula-n01-02c -x^2y^2\;\longrightarrow\; (\text{係数,次数})=【n01-02c→(-1,4)】
+heading-variable どの文字を見るか
+marker-variable-example 例題
+paragraph-variable-intro 同じ式 5x^3y でも、注目する文字によって見方が変わる。x に注目するとき、y は変わらない数とみなす。そこで、x^3 の前に掛かるものを一つにまとめよう。
+formula-n01-03 5x^3y=【n01-03→5y】\,x^3
+paragraph-variable-switch いまの結果から、x に注目した係数が読める。同じ式を今度は y について見ると、（係数，次数）は 【n01-04→(5x^3,1)】 となる。
+marker-variable-check 確認
+paragraph-n01-05 同じ考え方を axy に使おう。x に注目した係数と、y に注目した係数をこの順に書くと 【n01-05→(ay,ax)】 となる。
+paragraph-variable-bridge 注目する文字以外を、係数側にひとまとめにする。式そのものを別の式に変えたわけではない。
+heading-like-terms 同じ種類の項を集める
+marker-like-example 例題
+paragraph-like-intro 次の式を簡単にしよう。
+formula-like-original 3x^2-5x+6-5x^2+2x-3
+paragraph-term-concept 引き算は負の数を足すこととして読み取れる。符号も含めた一つ一つのまとまりを項といい、単項式の和で表した式を多項式という。文字の部分が同じ項を同類項という。同類項をまとめるときは、符号もその項と一緒に扱う。
+paragraph-n01-06a まず x^2 の項を取り出すと 【n01-06a→3x^2-5x^2】 である。
+paragraph-n01-06b 残る x の項と定数の項を分けると 【n01-06b→(-5x+2x)\quad (6-3)】 となる。
+paragraph-n01-07-intro 三つに分けた項について、同じ文字の係数を計算しよう。
+formula-r3-q07-x2coef =(3-5)x^2+(-5+2)x+(6-3)\quad\Longrightarrow\quad(【n01-r3-q07-x2coef→-2】)x^2+(-5+2)x+(6-3)
+formula-r3-q07-xcoef =(-2)x^2+(-5+2)x+(6-3)\quad\Longrightarrow\quad(-2)x^2+(【n01-r3-q07-xcoef→-3】)x+(6-3)
+formula-r3-q07-const =(-2)x^2+(-3)x+(6-3)\quad\Longrightarrow\quad(-2)x^2+(-3)x+(【n01-r3-q07-const→3】)
+formula-n01-07 =(3-5)x^2+(-5+2)x+(6-3)=【n01-07→-2x^2-3x+3】
+paragraph-n01-08 多項式の次数は、同類項をまとめた後に残る項の次数の最大値。注目する文字を含まない項を定数項という。今整理した式の（次数，定数項）は 【n01-08→(2,3)】 となる。
+marker-degree-check 確認
+paragraph-cancellation-intro 整理する前に次数を決めてよいのだろうか。次の式を同じ手順で整理してみよう。
+formula-cancellation-original x^3-2x^2+x-x^3+3x-1
+paragraph-n01-09a 同類項で組み直すと 【n01-09a→(1-1)x^3-2x^2+(1+3)x-1】 となる。
+paragraph-n01-09b 係数を計算して整理すると 【n01-09b→-2x^2+4x-1】 である。
+paragraph-n01-10a 整理した結果、この多項式は 【n01-10a→2次式】 である。
+paragraph-n01-10b そのように判断できる理由は 【n01-10b→3次の項が整理によって消えるから】。
+marker-n01-summary ここまでの要点
+paragraph-summary 式を読むときは、注目する文字を決め、同類項をまとめてから、残った項の次数を判断する。この考え方を次の長い式の整理と足し引きにも使う。

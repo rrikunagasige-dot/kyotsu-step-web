@@ -1,0 +1,968 @@
+{
+  "scope": "numbers-and-expressions-only",
+  "public_source": "171c04781f32c1286a0762905891b582714834f9",
+  "comparison_source": "59aeba91056e954ccc65e51a02c7227e642a2c3a",
+  "public_units": 16,
+  "public_original_questions": 233,
+  "public_actions": 315,
+  "comparison_actions": 318,
+  "runtime_export_sha256": "8c6265b6c8010b049bf99fc7b2ca18141acc2f83b2de70a4b3300b5de7b8ad7c",
+  "export_source": "3055ed71b25057b80b85d46b1d219f1005d0a35d",
+  "verified_current_public_git_blobs": {
+    "src/data/textbook/math/numbers/developmentFeedback.ts": "94cb7cfdfb83af4f57b9feb6cdd9d228e3d74ae0",
+    "src/data/textbook/math/numbers/developmentLessons.test.ts": "d530ab7de35cbf8e6ac56b96a513989e92a3da88",
+    "src/data/textbook/math/numbers/n01Lesson.test.ts": "30969b96332b68e8f14a6ced5a3c68608e58dfb1",
+    "src/data/textbook/math/numbers/n01Lesson.ts": "ed74537eeed63aca7a6f1c0347a173c2270fba06",
+    "src/data/textbook/math/numbers/n02Lesson.ts": "c4935663ae96e04e4568268b8f23714890076d7e",
+    "src/data/textbook/math/numbers/n02ZeroTerm.test.ts": "3af7803a2dbb6d4972a1b1f2d9c78e9bb79175b8",
+    "src/data/textbook/math/numbers/n03Lesson.ts": "4d45efb21ee431076c5cbd18e77f07ffdf0200c3",
+    "src/data/textbook/math/numbers/n04BatchSupplement.ts": "23e6a28cd8be1031793bf5d0015110430302163d",
+    "src/data/textbook/math/numbers/n04Lesson.test.ts": "180b8554ec81f73510db1e1f22340ae84d7cd733",
+    "src/data/textbook/math/numbers/n04Lesson.ts": "e7fad886acb80af3953ae06842b63dfb291506fb",
+    "src/data/textbook/math/numbers/n05Lesson.ts": "ba143dd6fc5207f92f3278979ddcbdcbf6c41243",
+    "src/data/textbook/math/numbers/n06Lesson.ts": "f4b3986a9309eef33752a7793d214d210aae85e5",
+    "src/data/textbook/math/numbers/n07Lesson.ts": "c94784ec37fea5884d1ec3990d28cc45db0ed3c8",
+    "src/data/textbook/math/numbers/n08Lesson.ts": "399243e722aadccd01a9970ca26beb3811f8bc81",
+    "src/data/textbook/math/numbers/n09Atomicity.test.ts": "21c33392c47d3ff1520ff698ae355493652c6e53",
+    "src/data/textbook/math/numbers/n09Lesson.ts": "fe387b76da2012aa88e171726addfd818895c715",
+    "src/data/textbook/math/numbers/n10Lesson.ts": "36032f04c468d397b047e6470a446a4a5f70f688",
+    "src/data/textbook/math/numbers/n11Lesson.ts": "48ea8421495227ea464b544d4c11b3bbdf1f3223",
+    "src/data/textbook/math/numbers/n12DerivationIntegrity.test.ts": "cab6a3f43c14883935e673e8b4741c2b2c231bda",
+    "src/data/textbook/math/numbers/n12Lesson.ts": "278f192220bb19d7a5d6f2659976985aa5a601cc",
+    "src/data/textbook/math/numbers/n13Lesson.ts": "eabc2ce47f84d387bf6f7c7d21af55c61a634591",
+    "src/data/textbook/math/numbers/n14Lesson.ts": "4c361178f172c8a03b8e86385b3f2a3217af145c",
+    "src/data/textbook/math/numbers/ne01Lesson.ts": "cc24b25aeac9ade92526efe03a1e361a2a9da968",
+    "src/data/textbook/math/numbers/ne02Lesson.ts": "525729f28b9d80d5afc9ad21e605f6b922268e49",
+    "src/data/textbook/math/numbers/newBatchCoverage.test.ts": "ae3e412bcd69bf0e1df9fadca911d0f056f14001",
+    "src/data/textbook/math/numbers/newBatchGuidedSteps.ts": "d6e8edcb8bd4f41a184bfd241ed7f8db7d953be6",
+    "src/data/textbook/math/numbers/numbersNextBatch.test.ts": "b7b72c11b8392ad9f71da0f089caec58712f611e",
+    "src/data/textbook/math/numbers/numbersPilots.test.ts": "3f4bfe307dd297a6765e584d498aec6ffcb6ec5f",
+    "src/data/textbook/math/numbers/r3LocalTokens.test.ts": "605cad56118a323b2811270d5a630cd4d5710d09",
+    "src/data/textbook/math/numbers/reviewLessonHelpers.ts": "6bcb2907373cd8236cbdcc82e7982b215527badd",
+    "src/data/textbook/math/numbers/wMath017P007.test.ts": "36b29b0255708c3f955d9909326f9081078e1ff9",
+    "src/data/textbook/math/numbers/wMath017P008.test.ts": "2b4d7cf33a096697657542d2cadf622ba4a4aa7f",
+    "src/data/textbook/math/numbers/wMath017ProseIntegration.test.ts": "cb7aaf4afac1bdd912c483a6c1b22d2f5e477ca6",
+    "src/data/textbook/math/numbers/wMath018P001.test.ts": "2e6487e2ebec10967d65dd9a709305ba4cc23c2d",
+    "src/data/textbook/math/numbers/wMath019P001.test.ts": "c0c999ea92556aa688931a1677d192df4e248c0a",
+    "src/data/textbook/math/numbers/wMath020P001.test.ts": "bd5f7fcc67ea3706b97808df407d002547793d17",
+    "src/data/textbook/math/numbers/wMath022P001.test.ts": "3ccd97fd026d85552751a14c491394b8bd3763b1",
+    "src/data/textbook/math/numbers/wMath023StageA.test.ts": "e0d92f789e066daf27e0f43be10c5857e2dc7e7a",
+    "src/data/textbook/math/numbers/wMath023StageB.test.ts": "f184dc582d741610e41ae0f59af12207df42e6b7",
+    "src/data/textbook/math/numbers/wMath024N05Q18.test.ts": "b611c1350b2b2429127f17988890b31f364e43c6",
+    "src/data/textbook/math/numbers/wMath025N05Q11.test.ts": "d2b134a1b8932926fe7c2107e9610300431c5a72",
+    "src/data/textbook/math/numbers/wMath026N06Q12.test.ts": "9625f7477915e80480206694600c5862ae198e57",
+    "src/domain/textbook.ts": "708d7f64bf88b81fb1deed41ee25fd7462091334",
+    "src/domain/textbookSchema.ts": "10bcd4a96860214c8578f8d698c032e6e46a26ef"
+  },
+  "all_export_source_blobs_match_public": true,
+  "units": [
+    {
+      "unit": "math-numbers-expressions-n01",
+      "title": "式の見方",
+      "actions": 18,
+      "source_map": {
+        "N01-Q01": [
+          "n01-01"
+        ],
+        "N01-Q02": [
+          "n01-02a",
+          "n01-02b",
+          "n01-02c"
+        ],
+        "N01-Q03": [
+          "n01-03"
+        ],
+        "N01-Q04": [
+          "n01-04"
+        ],
+        "N01-Q05": [
+          "n01-05"
+        ],
+        "N01-Q06": [
+          "n01-06a",
+          "n01-06b"
+        ],
+        "N01-Q07": [
+          "n01-07"
+        ],
+        "N01-Q08": [
+          "n01-08"
+        ],
+        "N01-Q09": [
+          "n01-09a",
+          "n01-09b"
+        ],
+        "N01-Q10": [
+          "n01-10a",
+          "n01-10b"
+        ]
+      },
+      "reading_order_sha256": "8f67670e8e1b9db5dfc059c1cc362cc36aa106e5d18c3fe18f65bb39ee75d5d8",
+      "changed_fields_in_comparison": []
+    },
+    {
+      "unit": "math-numbers-expressions-n02",
+      "title": "多項式の整理と加減",
+      "actions": 12,
+      "source_map": {
+        "N02-Q01": [
+          "n02-01"
+        ],
+        "N02-Q02": [
+          "n02-02"
+        ],
+        "N02-Q03": [
+          "n02-03"
+        ],
+        "N02-Q04": [
+          "n02-04"
+        ],
+        "N02-Q05": [
+          "n02-05"
+        ],
+        "N02-Q06": [
+          "n02-06"
+        ],
+        "N02-Q07": [
+          "n02-07"
+        ],
+        "N02-Q08": [
+          "n02-08"
+        ],
+        "N02-Q09": [
+          "n02-09"
+        ],
+        "N02-Q10": [
+          "n02-10"
+        ],
+        "N02-Q11": [
+          "n02-11"
+        ],
+        "N02-Q12": [
+          "n02-12"
+        ]
+      },
+      "reading_order_sha256": "0329c515a69adaa9b54a75933a3ed01a5b0c11bcf788c530ad037a860247c7e4",
+      "changed_fields_in_comparison": [
+        "revision",
+        "sections"
+      ]
+    },
+    {
+      "unit": "math-numbers-expressions-n03",
+      "title": "指数法則と展開",
+      "actions": 17,
+      "source_map": {
+        "N03-Q01": [
+          "n03-01"
+        ],
+        "N03-Q02": [
+          "n03-02"
+        ],
+        "N03-Q03": [
+          "n03-03"
+        ],
+        "N03-Q04": [
+          "n03-04"
+        ],
+        "N03-Q05": [
+          "n03-05"
+        ],
+        "N03-Q06": [
+          "n03-06"
+        ],
+        "N03-Q07": [
+          "n03-07"
+        ],
+        "N03-Q08": [
+          "n03-08"
+        ],
+        "N03-Q09": [
+          "n03-09"
+        ],
+        "N03-Q10": [
+          "n03-10"
+        ],
+        "N03-Q11": [
+          "n03-11"
+        ],
+        "N03-Q12": [
+          "n03-12"
+        ],
+        "N03-Q13": [
+          "n03-13"
+        ]
+      },
+      "reading_order_sha256": "b704947aa3b12eec228ef410d2291176d0abe84f7773d4d410c1f87565c4c1ab",
+      "changed_fields_in_comparison": []
+    },
+    {
+      "unit": "math-numbers-expressions-n04",
+      "title": "展開に現れる同じ形をまとめる",
+      "actions": 26,
+      "source_map": {
+        "N04-Q01": [
+          "n04-q01-p1",
+          "n04-q01-p2",
+          "n04-q01-p3",
+          "n04-q01-p4",
+          "n04-01"
+        ],
+        "N04-Q02": [
+          "n04-02"
+        ],
+        "N04-Q03": [
+          "n04-03"
+        ],
+        "N04-Q04": [
+          "n04-04"
+        ],
+        "N04-Q05": [
+          "n04-05"
+        ],
+        "N04-Q06": [
+          "n04-06"
+        ],
+        "N04-Q07": [
+          "n04-07"
+        ],
+        "N04-Q08": [
+          "n04-08"
+        ],
+        "N04-Q09": [
+          "n04-09"
+        ],
+        "N04-Q10": [
+          "n04-10"
+        ],
+        "N04-Q11": [
+          "n04-11"
+        ],
+        "N04-Q12": [
+          "n04-12"
+        ],
+        "N04-Q13": [
+          "n04-13"
+        ],
+        "N04-Q14": [
+          "n04-14"
+        ],
+        "N04-Q15": [
+          "n04-15"
+        ],
+        "N04-Q16": [
+          "n04-16"
+        ],
+        "N04-Q17": [
+          "n04-17"
+        ],
+        "N04-Q18": [
+          "n04-18"
+        ],
+        "N04-Q19": [
+          "n04-19"
+        ],
+        "N04-Q20": [
+          "n04-20"
+        ],
+        "N04-Q21": [
+          "n04-21"
+        ],
+        "N04-Q22": [
+          "n04-22"
+        ]
+      },
+      "reading_order_sha256": "a6d072d962de7fddf30b16c4965f40bfa963b6167734899454082b0651bffb58",
+      "changed_fields_in_comparison": []
+    },
+    {
+      "unit": "math-numbers-expressions-n05",
+      "title": "展開を逆にたどり、積の形を見つける",
+      "actions": 20,
+      "source_map": {
+        "N05-Q01": [
+          "n05-01"
+        ],
+        "N05-Q02": [
+          "n05-02"
+        ],
+        "N05-Q03": [
+          "n05-03"
+        ],
+        "N05-Q04": [
+          "n05-04"
+        ],
+        "N05-Q05": [
+          "n05-05"
+        ],
+        "N05-Q06": [
+          "n05-06"
+        ],
+        "N05-Q07": [
+          "n05-07"
+        ],
+        "N05-Q08": [
+          "n05-08"
+        ],
+        "N05-Q09": [
+          "n05-09"
+        ],
+        "N05-Q10": [
+          "n05-10"
+        ],
+        "N05-Q11": [
+          "n05-11"
+        ],
+        "N05-Q12": [
+          "n05-12"
+        ],
+        "N05-Q13": [
+          "n05-13"
+        ],
+        "N05-Q14": [
+          "n05-14"
+        ],
+        "N05-Q15": [
+          "n05-15"
+        ],
+        "N05-Q16": [
+          "n05-16"
+        ],
+        "N05-Q17": [
+          "n05-17"
+        ],
+        "N05-Q18": [
+          "n05-18"
+        ],
+        "N05-Q19": [
+          "n05-19"
+        ],
+        "N05-Q20": [
+          "n05-20"
+        ]
+      },
+      "reading_order_sha256": "0fa6c45cadb64a65c1d8372dc5693ef7fca2d45429cef2c5fa81f21509c16518",
+      "changed_fields_in_comparison": []
+    },
+    {
+      "unit": "math-numbers-expressions-n06",
+      "title": "複雑な式を、既に知っている形へ戻す",
+      "actions": 16,
+      "source_map": {
+        "N06-Q01": [
+          "n06-01"
+        ],
+        "N06-Q02": [
+          "n06-02"
+        ],
+        "N06-Q03": [
+          "n06-03"
+        ],
+        "N06-Q04": [
+          "n06-04"
+        ],
+        "N06-Q05": [
+          "n06-05"
+        ],
+        "N06-Q06": [
+          "n06-06"
+        ],
+        "N06-Q07": [
+          "n06-07"
+        ],
+        "N06-Q08": [
+          "n06-08"
+        ],
+        "N06-Q09": [
+          "n06-09"
+        ],
+        "N06-Q10": [
+          "n06-10"
+        ],
+        "N06-Q11": [
+          "n06-11"
+        ],
+        "N06-Q12": [
+          "n06-12"
+        ],
+        "N06-Q13": [
+          "n06-13"
+        ],
+        "N06-Q14": [
+          "n06-14"
+        ],
+        "N06-Q15": [
+          "n06-15"
+        ],
+        "N06-Q16": [
+          "n06-16"
+        ]
+      },
+      "reading_order_sha256": "a4ee83d19c2bb913dd68f6d9eebb218f546ac879753ab1824a82358ade65199c",
+      "changed_fields_in_comparison": []
+    },
+    {
+      "unit": "math-numbers-expressions-n07",
+      "title": "分数と小数で、同じ数を表す",
+      "actions": 14,
+      "source_map": {
+        "N07-Q01": [
+          "n07-01"
+        ],
+        "N07-Q02": [
+          "n07-02"
+        ],
+        "N07-Q03": [
+          "n07-03"
+        ],
+        "N07-Q04": [
+          "n07-04"
+        ],
+        "N07-Q05": [
+          "n07-05"
+        ],
+        "N07-Q06": [
+          "n07-06"
+        ],
+        "N07-Q07": [
+          "n07-07"
+        ],
+        "N07-Q08": [
+          "n07-08"
+        ],
+        "N07-Q09": [
+          "n07-09"
+        ],
+        "N07-Q10": [
+          "n07-10"
+        ],
+        "N07-Q11": [
+          "n07-11"
+        ],
+        "N07-Q12": [
+          "n07-12"
+        ],
+        "N07-Q13": [
+          "n07-13"
+        ],
+        "N07-Q14": [
+          "n07-14"
+        ]
+      },
+      "reading_order_sha256": "272d4e9587815ea3e3d2796c707a3d9d6b686f982ac7b958227fadf8ee370670",
+      "changed_fields_in_comparison": []
+    },
+    {
+      "unit": "math-numbers-expressions-n08",
+      "title": "向きと距離を分けて、絶対値を読む",
+      "actions": 12,
+      "source_map": {
+        "N08-Q01": [
+          "n08-01"
+        ],
+        "N08-Q02": [
+          "n08-02"
+        ],
+        "N08-Q03": [
+          "n08-03"
+        ],
+        "N08-Q04": [
+          "n08-04"
+        ],
+        "N08-Q05": [
+          "n08-05"
+        ],
+        "N08-Q06": [
+          "n08-06"
+        ],
+        "N08-Q07": [
+          "n08-07"
+        ],
+        "N08-Q08": [
+          "n08-08"
+        ],
+        "N08-Q09": [
+          "n08-09"
+        ],
+        "N08-Q10": [
+          "n08-10"
+        ],
+        "N08-Q11": [
+          "n08-11"
+        ],
+        "N08-Q12": [
+          "n08-12"
+        ]
+      },
+      "reading_order_sha256": "fc4a90a32e0600df61ef18f36ac642742b442ec05ce4175881cbc7f4fdfeeec1",
+      "changed_fields_in_comparison": []
+    },
+    {
+      "unit": "math-numbers-expressions-n09",
+      "title": "平方根の符号と数直線",
+      "actions": 18,
+      "source_map": {
+        "N09-Q01": [
+          "n09-01"
+        ],
+        "N09-Q02": [
+          "n09-02"
+        ],
+        "N09-Q03": [
+          "n09-03"
+        ],
+        "N09-Q04": [
+          "n09-04"
+        ],
+        "N09-Q05": [
+          "n09-05"
+        ],
+        "N09-Q06": [
+          "n09-06"
+        ],
+        "N09-Q07": [
+          "n09-07"
+        ],
+        "N09-Q08": [
+          "n09-08"
+        ],
+        "N09-Q09": [
+          "n09-09"
+        ],
+        "N09-Q10": [
+          "n09-10"
+        ],
+        "N09-Q11": [
+          "n09-11"
+        ],
+        "N09-Q12": [
+          "n09-12"
+        ],
+        "N09-Q13": [
+          "n09-13"
+        ],
+        "N09-Q14": [
+          "n09-14"
+        ]
+      },
+      "reading_order_sha256": "bb8a2f77b4d6669308906daf45ded602997a769d64dfe6f66dcb9bd5d0798589",
+      "changed_fields_in_comparison": []
+    },
+    {
+      "unit": "math-numbers-expressions-n10",
+      "title": "平方根の証明と有理化",
+      "actions": 21,
+      "source_map": {
+        "N10-Q01": [
+          "n10-01"
+        ],
+        "N10-Q02": [
+          "n10-02"
+        ],
+        "N10-Q03": [
+          "n10-03"
+        ],
+        "N10-Q04": [
+          "n10-04"
+        ],
+        "N10-Q05": [
+          "n10-05"
+        ],
+        "N10-Q06": [
+          "n10-06"
+        ],
+        "N10-Q07": [
+          "n10-07"
+        ],
+        "N10-Q08": [
+          "n10-08"
+        ],
+        "N10-Q09": [
+          "n10-09"
+        ],
+        "N10-Q10": [
+          "n10-10"
+        ],
+        "N10-Q11": [
+          "n10-11"
+        ],
+        "N10-Q12": [
+          "n10-12"
+        ],
+        "N10-Q13": [
+          "n10-13"
+        ],
+        "N10-Q14": [
+          "n10-14"
+        ],
+        "N10-Q15": [
+          "n10-15"
+        ],
+        "N10-Q16": [
+          "n10-16"
+        ],
+        "N10-Q17": [
+          "n10-17"
+        ],
+        "N10-Q18": [
+          "n10-18"
+        ],
+        "N10-Q19": [
+          "n10-19"
+        ],
+        "N10-Q20": [
+          "n10-20"
+        ],
+        "N10-Q21": [
+          "n10-21"
+        ]
+      },
+      "reading_order_sha256": "db457b72d388ec35b7fac2c577d88c8c7748f04834f997ba43fddaa26cb6ff8c",
+      "changed_fields_in_comparison": []
+    },
+    {
+      "unit": "math-numbers-expressions-n11",
+      "title": "大小関係を保つ変形を選ぶ",
+      "actions": 31,
+      "source_map": {
+        "N11-Q01": [
+          "n11-01"
+        ],
+        "N11-Q02": [
+          "n11-02",
+          "n11-wm011-q02-compare"
+        ],
+        "N11-Q03": [
+          "n11-wm011-q03-factor",
+          "n11-wm011-q03-positive",
+          "n11-03",
+          "n11-wm011-q03-zero"
+        ],
+        "N11-Q04": [
+          "n11-wm011-q04-fraction",
+          "n11-04"
+        ],
+        "N11-Q05": [
+          "n11-wm017-q05-operation",
+          "n11-wm017-q05-balance",
+          "n11-05"
+        ],
+        "N11-Q06": [
+          "n11-06"
+        ],
+        "N11-Q07": [
+          "n11-07"
+        ],
+        "N11-Q08": [
+          "n11-p007-q08-subtract-left",
+          "n11-p007-q08-subtract-right",
+          "n11-08"
+        ],
+        "N11-Q09": [
+          "n11-p007-q09-direction",
+          "n11-09"
+        ],
+        "N11-Q10": [
+          "n11-10"
+        ],
+        "N11-Q11": [
+          "n11-wm012-q11-expand",
+          "n11-wm012-q11-xcoef",
+          "n11-11"
+        ],
+        "N11-Q12": [
+          "n11-12"
+        ],
+        "N11-Q13": [
+          "n11-p008-q13-mul-left",
+          "n11-p008-q13-mul-right",
+          "n11-13",
+          "n11-p008-q13-constant"
+        ],
+        "N11-Q14": [
+          "n11-wm013-q14-xcoef",
+          "n11-wm013-q14-const",
+          "n11-14"
+        ]
+      },
+      "reading_order_sha256": "605b2795018a38ceb405ae8cc5efa72de0444f4e6ee448bb3d5782f8640077e1",
+      "changed_fields_in_comparison": []
+    },
+    {
+      "unit": "math-numbers-expressions-n12",
+      "title": "連立不等式と整数条件",
+      "actions": 35,
+      "source_map": {
+        "N12-Q01": [
+          "n12-01"
+        ],
+        "N12-Q02": [
+          "n12-02"
+        ],
+        "N12-Q03": [
+          "n12-03"
+        ],
+        "N12-Q04": [
+          "n12-04"
+        ],
+        "N12-Q05": [
+          "n12-05"
+        ],
+        "N12-Q06": [
+          "n12-06"
+        ],
+        "N12-Q07": [
+          "n12-07"
+        ],
+        "N12-Q08": [
+          "n12-08"
+        ],
+        "N12-Q09": [
+          "n12-09"
+        ],
+        "N12-Q10": [
+          "n12-10"
+        ],
+        "N12-Q11": [
+          "n12-11"
+        ],
+        "N12-Q12": [
+          "n12-12"
+        ],
+        "N12-Q13": [
+          "n12-13"
+        ],
+        "N12-Q14": [
+          "n12-14"
+        ],
+        "N12-Q15": [
+          "n12-15"
+        ]
+      },
+      "reading_order_sha256": "9e2fc178e6777790ca842f03928f8a4eddeaabf6bc9f9873f2b6878a4b59477d",
+      "changed_fields_in_comparison": []
+    },
+    {
+      "unit": "math-numbers-expressions-n13",
+      "title": "距離の条件を、二つの位置へ戻す",
+      "actions": 12,
+      "source_map": {
+        "N13-Q01": [
+          "n13-01"
+        ],
+        "N13-Q02": [
+          "n13-02"
+        ],
+        "N13-Q03": [
+          "n13-03"
+        ],
+        "N13-Q04": [
+          "n13-04"
+        ],
+        "N13-Q05": [
+          "n13-wm023-q05-right",
+          "n13-05"
+        ],
+        "N13-Q06": [
+          "n13-06"
+        ],
+        "N13-Q07": [
+          "n13-07"
+        ],
+        "N13-Q08": [
+          "n13-wm023-q08-branches",
+          "n13-wm023-q08-positive-root",
+          "n13-08"
+        ],
+        "N13-Q09": [
+          "n13-09"
+        ]
+      },
+      "reading_order_sha256": "e7e032f88246e42e9d85be1cf5081e8d6e2ecaf1124b90fecdd24ff065bd68bb",
+      "changed_fields_in_comparison": []
+    },
+    {
+      "unit": "math-numbers-expressions-n14",
+      "title": "距離の上限と下限から、残す範囲を決める",
+      "actions": 38,
+      "source_map": {
+        "N14-Q01": [
+          "n14-01"
+        ],
+        "N14-Q02": [
+          "n14-02"
+        ],
+        "N14-Q03": [
+          "n14-03"
+        ],
+        "N14-Q04": [
+          "n14-04"
+        ],
+        "N14-Q05": [
+          "n14-05"
+        ],
+        "N14-Q06": [
+          "n14-06"
+        ],
+        "N14-Q07": [
+          "n14-wm014-q07-nonnegative",
+          "n14-wm014-q07-negative",
+          "n14-07"
+        ],
+        "N14-Q08": [
+          "n14-wm015-q08-nonnegative",
+          "n14-wm015-q08-negative",
+          "n14-08"
+        ],
+        "N14-Q09": [
+          "n14-09"
+        ],
+        "N14-Q10": [
+          "n14-wm018-q10-add-left",
+          "n14-wm018-q10-add-center",
+          "n14-wm018-q10-add-right",
+          "n14-10",
+          "n14-wm018-q10-bound-right"
+        ],
+        "N14-Q11": [
+          "n14-11"
+        ],
+        "N14-Q12": [
+          "n14-wm016-q12-left",
+          "n14-wm016-q12-right",
+          "n14-12"
+        ],
+        "N14-Q13": [
+          "n14-13"
+        ],
+        "N14-Q14": [
+          "n14-wm019-q14-add-left",
+          "n14-wm019-q14-add-center",
+          "n14-wm019-q14-add-right",
+          "n14-14",
+          "n14-wm019-q14-bound-right"
+        ],
+        "N14-Q15": [
+          "n14-wm020-q15-divide-left",
+          "n14-wm020-q15-divide-center",
+          "n14-wm020-q15-divide-right",
+          "n14-15",
+          "n14-wm020-q15-bound-right"
+        ],
+        "N14-Q16": [
+          "n14-wm022-q16-left-inner",
+          "n14-wm022-q16-left-abs",
+          "n14-wm022-q16-right-inner",
+          "n14-wm022-q16-right-abs",
+          "n14-16"
+        ]
+      },
+      "reading_order_sha256": "e5fa73310d7838018b1965edf3e2ca0659e7b551a86edaf0f9ee7cc914297835",
+      "changed_fields_in_comparison": []
+    },
+    {
+      "unit": "math-numbers-expressions-ne01",
+      "title": "3次の展開と因数分解",
+      "actions": 13,
+      "source_map": {
+        "NE01-Q01": [
+          "ne01-01"
+        ],
+        "NE01-Q02": [
+          "ne01-02"
+        ],
+        "NE01-Q03": [
+          "ne01-03"
+        ],
+        "NE01-Q04": [
+          "ne01-04"
+        ],
+        "NE01-Q05": [
+          "ne01-05"
+        ],
+        "NE01-Q06": [
+          "ne01-06"
+        ],
+        "NE01-Q07": [
+          "ne01-07"
+        ],
+        "NE01-Q08": [
+          "ne01-08"
+        ],
+        "NE01-Q09": [
+          "ne01-09"
+        ],
+        "NE01-Q10": [
+          "ne01-10"
+        ],
+        "NE01-Q11": [
+          "ne01-11"
+        ],
+        "NE01-Q12": [
+          "ne01-12"
+        ],
+        "NE01-Q13": [
+          "ne01-13"
+        ]
+      },
+      "reading_order_sha256": "ea7d27df21729eb1960c895613a2569d8f06db19c63687e061f758d0e2a2e73b",
+      "changed_fields_in_comparison": [
+        "sections"
+      ]
+    },
+    {
+      "unit": "math-numbers-expressions-ne02",
+      "title": "二重根号を、平方の形から外す",
+      "actions": 12,
+      "source_map": {
+        "NE02-Q01": [
+          "ne02-01"
+        ],
+        "NE02-Q02": [
+          "ne02-02"
+        ],
+        "NE02-Q03": [
+          "ne02-03"
+        ],
+        "NE02-Q04": [
+          "ne02-04"
+        ],
+        "NE02-Q05": [
+          "ne02-05"
+        ],
+        "NE02-Q06": [
+          "ne02-06"
+        ],
+        "NE02-Q07": [
+          "ne02-07"
+        ],
+        "NE02-Q08": [
+          "ne02-08"
+        ],
+        "NE02-Q09": [
+          "ne02-09"
+        ],
+        "NE02-Q10": [
+          "ne02-10"
+        ],
+        "NE02-Q11": [
+          "ne02-11"
+        ],
+        "NE02-Q12": [
+          "ne02-12"
+        ]
+      },
+      "reading_order_sha256": "82c22eb79acc72aff6b5dc8bf8e96553997eed39091bd3cdd0316200a69e9cf8",
+      "changed_fields_in_comparison": [
+        "sections"
+      ]
+    }
+  ],
+  "quality_labels_assigned": 0,
+  "limitations": [
+    "Source-level semantic review; not a new hands-on app playthrough.",
+    "Not independent Gate2 acceptance.",
+    "Most routes exist does not certify every hole or educational outcome.",
+    "No source modification or publication authorization inferred."
+  ]
+}

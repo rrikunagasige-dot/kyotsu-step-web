@@ -1,0 +1,81 @@
+math-numbers-expressions-n12 連立不等式と整数条件
+heading-system 二つの条件の共通部分を探す
+marker-system-example 例題
+paragraph-system-intro 次の二つの不等式を同時に満たす実数 x を求めよう。
+formula-system \begin{cases}x-2<3x+5\\x+4\le5-x\end{cases}
+paragraph-system-first まず別々に解く。一つ目では、x の項を右にまとめて、
+formula-q01-coef x-2<3x+5\quad\Longrightarrow\quad-2<【n12-p002-q01-coef→2】x+5
+paragraph-q01-const ここまでで x の係数を求めた。続いて両辺から5を引いて、左側の定数を計算しよう。
+formula-q01-const -2<2x+5\quad\Longrightarrow\quad【n12-p002-q01-const→-7】<2x
+paragraph-system-first-after 両辺から同じ数を引いても不等号の向きは変わらない。最後は正の2で割ろう。
+formula-n12-01 -7<2x\quad\Longrightarrow\quad【n12-01→x>-\frac72】
+paragraph-system-second 二つ目でも、x を片方に集める。
+formula-q02-coef x+4\le5-x\quad\Longrightarrow\quad【n12-p002-q02-coef→2】x+4\le5
+paragraph-q02-const 両辺から4を引く。等号を含む不等号はそのまま残そう。
+formula-q02-const 2x+4\le5\quad\Longrightarrow\quad2x\le【n12-p002-q02-const→1】
+paragraph-system-second-after 残った係数2は正なので、割っても不等号の向きはそのまま。
+formula-n12-02 2x\le1\quad\Longrightarrow\quad【n12-02→x\le\frac12】
+figure-first-lines {"id": "n12-f01", "src": "/assets/math/textbook/numbers/n12-f01.png", "alt": "二つの不等式を別々の段に表した元の数直線。左端は白丸、右端は黒丸。", "caption": "二つの条件の範囲を上下で比べよう。共通部分はまだ選ばない。", "overlays": []}
+paragraph-system-figure 数直線の○はその端点を含まず、●は含むという意味である。上下どちらか片方に入ればよいのだろうか。
+paragraph-n12-03 例えば x=1 を試そう。一つ目を満たすだけでなく、二つ目も満たすかを確かめると、x=1 は 【n12-03→二つ目に反するので不適】。
+paragraph-system-overlap 「同時に満たす」とは、どちらの範囲にも入っているということである。二本の図の共通部分を端点の違いも含めて書くと、
+formula-n12-04 【n12-04→-\frac72<x\le\frac12】
+paragraph-system-term このように二つ以上の不等式を組にしたものを連立不等式という。答えは各不等式の解の共通部分であって、どちらか一方の解全部ではない。
+marker-system-check 確認
+paragraph-triple-intro 今度は、3x+2\le2x+4\le9-x を考えよう。三つの式が並ぶときも、中央の式を使って二つの条件に分ける。まず必要な二つの不等式は 【n12-05→3x+2\le2x+4\ \text{かつ}\ 2x+4\le9-x】。
+paragraph-triple-solve 二つを一度に片づけず、まず左側の不等式から。
+formula-q06-left-coef 3x+2\le2x+4\quad\Longrightarrow\quad【n12-p002-q06-left-coef→1】x+2\le4
+paragraph-q06-left-const 係数1はふつう書かず、1x=x と表す。次は両辺から2を引こう。
+formula-q06-left-const x+2\le4\quad\Longrightarrow\quad x\le【n12-p002-q06-left-const→2】
+paragraph-triple-right 続いて右側。-x を左に移した後、定数項を整理しよう。
+formula-q06-right-coef 2x+4\le9-x\quad\Longrightarrow\quad【n12-p002-q06-right-coef→3】x+4\le9
+paragraph-q06-right-const 左側へ移した x の係数を確かめたら、両辺から4を引こう。
+formula-q06-right-const 3x+4\le9\quad\Longrightarrow\quad3x\le【n12-p002-q06-right-const→5】
+paragraph-triple-compare それぞれの結果を比べる。右側の不等式は正の3で割る。
+formula-n12-06 \begin{cases}x\le2\\3x\le5\end{cases}\quad\Longrightarrow\quad【n12-06→x\le2,\quad x\le\frac53】
+figure-triple-lines {"id": "n12-f02", "src": "/assets/math/textbook/numbers/n12-f02.png", "alt": "上限が2と5/3で異なる二つの範囲を示した元の二段の数直線。", "caption": "上下のどちらの上限まで残るかを考えよう。", "overlays": []}
+paragraph-triple-limit 両方の条件を満たすには、x=2 まで残してよいだろうか。二つの上限のうち、実際に残せる範囲を選ぶと、
+formula-n12-07 【n12-07→x\le\frac53】
+paragraph-triple-after 元の三連不等式では、左端と右端だけを比べても不十分である。中央の式との二つの比較が、両方必要になる。
+heading-integer 数値の範囲を、実際の個数に戻す
+marker-integer-example 例題
+paragraph-count-intro 50円の箱に、1個180円のシュークリームと1個130円のプリンを合わせて20個入れる。全体の金額を3200円以上3300円未満にしたい。シュークリームを何個にできるだろう。
+paragraph-n12-08 シュークリームの個数を x とする。残りはすべてプリンだから、プリンの個数は 【n12-08→20-x】。
+paragraph-n12-09 どちらも個数であり、20個の内訳である。x の範囲と数の種類は 【n12-09→x\in\mathbb Z,\ 0\le x\le20】。ここで整数条件を保存しておこう。後で不等式を解いても、この条件は消えない。
+paragraph-cost-intro ここからは、個数を使って合計金額を作る。T(x) が表すのは 【n12-p003-q10-meaning→箱と20個の菓子の合計金額】 である。
+paragraph-cost-cream まずシュークリーム。1個180円をx 個買う。単価と個数を掛けた式を作ろう。
+formula-cost-cream 180\times x=【n12-p003-q10-cream-coef→180】x
+paragraph-cost-pudding 次はプリン。個数はさっき求めた20-x 個で、1個130円。
+formula-cost-pudding 130\times(20-x)=【n12-p003-q10-pudding-coef→130】(20-x)
+paragraph-cost-box-fee お菓子代だけではなく、箱そのものの代金も必要だ。箱の固定代金は 【n12-p003-q10-box-fee→50】 円。
+paragraph-cost-assemble 今求めた三つの代金を足し、T(x) を一つの式にまとめよう。
+formula-n12-10 T(x)=【n12-10→50+180x+130(20-x)】
+paragraph-cost-bound 目標の金額は3200円以上、3300円未満。まずそれぞれの不等号を決めよう。
+formula-cost-lower-bound 3200【n12-p003-q11-lower-sign→\le】T(x)
+formula-cost-upper-bound T(x)【n12-p003-q11-upper-sign→<】3300
+paragraph-cost-bound-assemble 両方の条件を満たすように、さっきの合計金額の式を代入する。
+formula-n12-11 【n12-11→3200\le50+180x+130(20-x)<3300】
+paragraph-cost-simplify 次は括弧を展開する。まずプリン20個分に当たる定数を計算しよう。
+formula-cost-product-constant 130\times20=【n12-p003-q12-product-constant→2600】
+paragraph-cost-negative もう一方の-x にも130を掛ける。負号を忘れずに式内へ入れよう。
+formula-q12-signed-coef 130(20-x)=2600+(【n12-p002-q12-signed-coef→-130】)x
+paragraph-cost-collect 箱代と定数項をまとめ、次にx の係数をまとめよう。
+formula-cost-total-constant 50+2600=【n12-p003-q12-total-constant→2650】
+formula-cost-x-coef 180-130=【n12-p003-q12-x-coef→50】
+paragraph-cost-collect-result だから、合計金額は次の短い式でも表せる。
+formula-cost-collected-total T(x)=2650+50x
+paragraph-cost-collect-bound この式を3200円以上、3300円未満という条件に戻すと、
+formula-n12-12 【n12-12→3200\le2650+50x<3300】
+paragraph-cost-solve 金額の三つの辺から、同じ2650を引いて整理しよう。
+formula-cost-subtract 3200-2650\le50x<3300-2650
+formula-q13-lower 【n12-p002-q13-lower→550】\le50x<3300-2650
+formula-q13-upper 550\le50x<【n12-p002-q13-upper→650】
+paragraph-cost-positive 次はすべての辺を正の50で割る。正の数で割るときは不等号の向きが変わらない。
+formula-n12-13 550\le50x<650\quad\Longrightarrow\quad【n12-13→11\le x<13】
+paragraph-n12-14 ここで得たのは実数としての範囲である。問題は「お菓子を何個にするか」だった。最初に保存した整数条件 x\in\mathbb Z,\ 0\le x\le20 と比べると、実際に選べる x は 【n12-14→x=11\ \text{または}\ 12】。
+paragraph-verify-substitution 最後に整数11個と12個を、整理した金額の式へ代入して確かめよう。
+formula-verify-eleven T(11)=2650+50\times11
+formula-verify-twelve T(12)=2650+50\times12
+paragraph-n12-15 二つの合計金額を計算すると 【n12-15→T(11)=3200\text{円},\ T(12)=3250\text{円}】。
+figure-after-verification {"id": "n12-f03", "src": "/assets/math/textbook/numbers/n12-f03.png", "alt": "最後の検算まで終えた後のまとめの数直線。整数の解を示している。", "caption": "整数条件と金額の検算を終えた後のまとめ。", "overlays": []}
+paragraph-integer-final 文章題では、式を解く前に「どんな数が許されるか」を決める。そして計算後にその条件へ戻る。次は絶対値を数直線上の距離として解釈する。

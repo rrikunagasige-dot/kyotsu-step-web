@@ -1,0 +1,43 @@
+math-numbers-expressions-n03 指数法則と展開
+heading-indices 指数は、掛けた個数を数える
+marker-example-powers 例題
+paragraph-powers-intro a^3\times4a^5 を簡単にしよう。a^3 は a を3回掛けたもの、a^5 は5回掛けたものである。このように同じ数を繰り返し掛けた形を累乗、右上の数を指数という。ここでは指数を正の整数として考える。
+paragraph-powers-count 途中の 4 は a の個数には入らない。数の部分を前へ置き、文字を数え直すと、
+formula-n03-01 a^3\times4a^5=4\times\underbrace{a\times a\times a}_{3\text{個}}\times\underbrace{a\times a\times a\times a\times a}_{5\text{個}}=【n03-01→4a^8】
+paragraph-powers-after となる。ここでは a の個数を足した。
+paragraph-powers-product では正の整数 m,n について考えよう。a^ma^n では m 個と n 個が続いている。したがって、
+formula-n03-02 a^ma^n=【n03-02→a^{m+n}】
+paragraph-powers-power 一方、(a^m)^n は「a を m 回掛けた組」が n 組ある。m+n 個ではなく、m 個の組を n 回重ねるから、
+formula-n03-03 (a^m)^n=【n03-03→a^{mn}】
+paragraph-powers-factors 最後に (ab)^n を考える。掛け算の交換法則・結合法則で、a と b をそれぞれ集められる。
+formula-n03-04 (ab)^n=(ab)(ab)\cdots(ab)=【n03-04→a^nb^n】
+paragraph-powers-rules ここで作った三つの関係を指数法則という。「同じ底の積」「累乗の累乗」「積の累乗」は、それぞれ掛け合わせる構造が異なるので、指数の計算も区別する。
+marker-powers-check 確認
+paragraph-powers-check (-2x^3y^2)^3 を簡単にしよう。負号を含む -2 も、括弧の中の一つの因子である。
+formula-n03-05 (-2x^3y^2)^3=【n03-05→(-2)^3(x^3)^3(y^2)^3】
+formula-n03-06 =【n03-06→-8x^9y^6】
+paragraph-powers-check-after 最初は係数・x・y に分け、次に符号と指数を計算した。
+heading-distribute 括弧の全ての項に掛ける
+marker-distribute-example 例題
+paragraph-distribute-intro x^2(x^2-3x+4) を展開しよう。中学校の分配法則 A(B+C)=AB+AC は、括弧の中が三つの項でも同じである。x^2 は最初の x^2 だけでなく、-3x と 4 にも掛かる。まず積を残して書こう。
+formula-n03-07 x^2(x^2-3x+4)=【n03-07→x^2x^2+x^2(-3x)+x^2\cdot4】
+formula-n03-08 =【n03-08→x^4-3x^3+4x^2】
+paragraph-distribute-after このように積の形を単項式の和へ書き直すことを展開するという。後ろの式が3項なら、対応する積も3個である。
+paragraph-two-brackets 今度は (2x+1)(3x+4) を考えよう。前の括弧も2項なので、掛け合わせる組を抜かさないことが大切だ。
+figure-multiplication-grid {"id": "n03-f01", "src": "/assets/math/textbook/numbers/n03-f01.png", "alt": "積の対応を考える表。上に3xと4、左に2xと1があり、内側の四つのマスは全て疑問符。", "caption": "二つの括弧の項を一つずつ組み合わせる。まだ答えは書き込まない。", "overlays": []}
+paragraph-grid-first まず 2x と 1 を、それぞれ後ろの括弧全体に掛けると、
+formula-n03-09 (2x+1)(3x+4)=【n03-09→2x(3x+4)+1(3x+4)】
+paragraph-grid-products さらに各括弧を開く。図の「?」4マスに対応する4個の積をまだまとめずに書くと、
+formula-r3-q10-p1 2x\cdot 3x=【n03-r3-q10-p1→6x^2】
+formula-r3-q10-p2 2x\cdot 4=【n03-r3-q10-p2→8x】
+formula-r3-q10-p3 1\cdot 3x=【n03-r3-q10-p3→3x】
+formula-r3-q10-p4 1\cdot 4=【n03-r3-q10-p4→4】
+formula-n03-10 =【n03-10→6x^2+8x+3x+4】
+paragraph-grid-collect 同じ文字の部分を持つ項を集めると、
+formula-n03-11 =【n03-11→6x^2+11x+4】
+paragraph-grid-after 「どの項どうしを掛けるか」を決めてから、「同類項をまとめる」という二段階を踏めば、項の抜けや符号の誤りを防げる。
+marker-final-check 確認
+paragraph-final-check (3x-1)(2x^2-x+5) では、後ろの括弧が3項になった。同じ方法で、まず前の括弧の二つの項に分けよう。
+formula-n03-12 (3x-1)(2x^2-x+5)=【n03-12→3x(2x^2-x+5)-(2x^2-x+5)】
+formula-n03-13 =【n03-13→6x^3-5x^2+16x-5】
+paragraph-final-bridge 最後は積の対応図を使わず、分配の考えを新しい式へ適用した。次は、展開に繰り返し現れる形を乗法公式として整理する。

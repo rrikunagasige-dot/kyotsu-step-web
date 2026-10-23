@@ -1,0 +1,54 @@
+math-numbers-expressions-n10 平方根の証明と有理化
+heading-roots 根号を簡単にするとき、何を確かめるか
+marker-root-example 例題
+paragraph-root-example \sqrt{125} を根号の中の数が小さくなる形に直そう。125=25\cdot5 である。t>0 として、t\sqrt5 という形を考える。もし \sqrt{125}=t\sqrt5 なら、両辺を2乗した値は一致するはずだ。
+formula-n10-01 (t\sqrt5)^2=5t^2=125\quad\Longrightarrow\quad【n10-01→t^2=25】
+paragraph-root-sign この等式から t を一つに決めるには、t>0 の条件も使う。すると、
+formula-n10-02 \sqrt{125}=【n10-02→5\sqrt5】
+paragraph-root-after 「2乗すると125になる」だけでなく、「正である」ことも確かめた。正の数の平方根を一つに決めるために、この二つの条件が必要になる。
+marker-root-proof 証明
+paragraph-proof-product a>0,\ b>0 とする。\sqrt a\sqrt b と \sqrt{ab} の関係を、平方根の意味から調べよう。まず積の2乗は、
+formula-n10-03 (\sqrt a\sqrt b)^2=(\sqrt a)^2(\sqrt b)^2=【n10-03→ab】
+paragraph-proof-product-sign しかし2乗の値が同じだけでは、正負どちらかを区別できない。\sqrt a と \sqrt b はそれぞれ正なので、その積も正である。これで
+formula-n10-04 \sqrt a\sqrt b=【n10-04→\sqrt{ab}】
+paragraph-proof-quotient 続いて、商 \frac{\sqrt a}{\sqrt b} を調べよう。b>0 だから \sqrt b\ne0 であり、商が定義できる。2乗して、
+formula-n10-05 \left(\frac{\sqrt a}{\sqrt b}\right)^2=\frac{(\sqrt a)^2}{(\sqrt b)^2}=【n10-05→\frac ab】
+paragraph-proof-quotient-sign 商も正であることを合わせると、
+formula-n10-06 \frac{\sqrt a}{\sqrt b}=【n10-06→\sqrt{\frac ab}】\qquad(a>0,\ b>0)
+paragraph-proof-after ここまでが証明である。どちらも「候補の2乗」と「候補の符号」を確認してから結論を出した。次の例題ではこの関係を道具として使う。
+marker-root-check 確認
+paragraph-product-check \sqrt6\sqrt8 を簡単にしよう。まず一つの根号にして、根号の内側から平方数を見つけると、
+formula-n10-07 \sqrt6\sqrt8=【n10-07→\sqrt{48}=\sqrt{16\cdot3}】
+formula-n10-08 =【n10-08→4\sqrt3】
+marker-sum-example 例題
+paragraph-sum-intro \sqrt8+\sqrt{50} を考えよう。いま扱っているのは積ではなく和である。積の法則をそのまま足し算へ移さず、それぞれの項を簡単にしてみよう。
+formula-n10-09 \sqrt8+\sqrt{50}=【n10-09→2\sqrt2+5\sqrt2】
+formula-n10-10 =【n10-10→7\sqrt2】
+paragraph-sum-after 同じ根号の部分が残れば、以前に学んだ同類項のように数の係数を足せる。
+marker-formula-check 確認
+paragraph-square-intro 乗法公式も、根号を含む数に使える。(\sqrt2-\sqrt3)^2 をまず平方の公式で展開すると、
+formula-n10-11 (\sqrt2-\sqrt3)^2=【n10-11→2-2\sqrt2\sqrt3+3】
+formula-n10-12 =【n10-12→5-2\sqrt6】
+paragraph-difference-squares さらに (\sqrt7+\sqrt2)(\sqrt7-\sqrt2) では、和と差の積に注目しよう。
+formula-n10-13 (\sqrt7+\sqrt2)(\sqrt7-\sqrt2)=【n10-13→7-2=5】
+paragraph-difference-after 二つの数の和と差を掛け合わせると、真ん中の交差する項が打ち消し合う。この仕組みを次の分数に利用する。
+heading-rationalize 分数の値を保って、分母の根号をなくす
+marker-rationalize-example 例題
+paragraph-rationalize-intro \dfrac1{2\sqrt3} の分母から根号をなくしたい。ただし分母だけを書き換えると元の分数とは異なる値になってしまう。分母を変える前に、分子と分母の比を保つ操作を確認しよう。それは 【n10-14→0でない同じ数を分子・分母の両方に掛ける】。
+paragraph-rationalize-multiplier 分母の \sqrt3 と掛けて平方数を作る因子を選ぼう。
+formula-n10-15 \frac1{2\sqrt3}=【n10-15→\frac1{2\sqrt3}\cdot\frac{\sqrt3}{\sqrt3}=\frac{\sqrt3}{2(\sqrt3)^2}】
+formula-n10-16 =【n10-16→\frac{\sqrt3}{6}】
+paragraph-rationalize-concept このように分数の値を変えずに分母の根号をなくすことを、分母を有理化するという。
+marker-conjugate-example 例題
+paragraph-conjugate-intro 次は \dfrac{\sqrt3}{\sqrt3+\sqrt2} である。分母が和の形なので、ただ \sqrt3 を掛けても根号が一つ残る。直前の「和と差の積」の性質を思い出そう。
+formula-n10-17 \frac{\sqrt3}{\sqrt3+\sqrt2}=【n10-17→\frac{\sqrt3}{\sqrt3+\sqrt2}\cdot\frac{\sqrt3-\sqrt2}{\sqrt3-\sqrt2}】
+paragraph-conjugate-denominator 分母は
+formula-n10-18 (\sqrt3+\sqrt2)(\sqrt3-\sqrt2)=【n10-18→3-2=1】
+paragraph-conjugate-result 分子も展開して分数全体を完成させると、
+formula-n10-19 =【n10-19→3-\sqrt6】
+paragraph-conjugate-after ここでも掛けた \sqrt3-\sqrt2 は0でないので、分数の値は確かに保たれている。
+marker-rationalize-check 確認
+paragraph-rationalize-transfer \dfrac{2-\sqrt3}{2+\sqrt3} は自分で有理化しよう。使う因子を選び、掛けた直後の式を作る。
+formula-n10-20 \frac{2-\sqrt3}{2+\sqrt3}=【n10-20→\frac{(2-\sqrt3)^2}{(2+\sqrt3)(2-\sqrt3)}=\frac{(2-\sqrt3)^2}{4-3}】
+formula-n10-21 =【n10-21→7-4\sqrt3】
+paragraph-rationalize-final 同じ操作でも、今度は分子の平方を最後まで計算する必要がある。根号の計算も、これまでの積・商、乗法公式、正負条件を組み合わせて成り立っている。

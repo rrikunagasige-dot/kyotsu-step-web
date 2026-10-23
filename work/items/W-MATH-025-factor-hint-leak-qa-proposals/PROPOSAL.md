@@ -1,3 +1,8 @@
+# W-MATH-025 — approved P-001 & P-002, staged execution
+Status: APPROVED
+
+**Current 2026-10-23:** exact separate P-001/P-002 both approved by 「承認続けて」. P-001 Q11 Stage A implemented and under verification; P-002 Q12 approved but code not touched until Q11 user Gate①. Historical prose below records original proposal-only state.
+
 # W-MATH-025 — 同じ根本原因の未修正2問（提案のみ）
 **Status: BOTH P-001/P-002 APPROVED; Stage A Q11 IMPLEMENTING / Q12 PENDING**
 

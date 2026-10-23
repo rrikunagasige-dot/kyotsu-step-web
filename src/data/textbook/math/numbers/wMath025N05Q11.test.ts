@@ -30,7 +30,7 @@ describe('W-MATH-025 P-001 N05 Q11 accepted hint-only change',()=>{
   it('independently checks integer pair and expansion',()=>{
     expect((-8)*2).toBe(-16)
     expect((-8)+2).toBe(-6)
-    for(const a of [-2,-1,0,1,2])expect((a-8)*(a+2)).toBe(a*a-6*a-16)
+    for(const a of [-2,-1,0,1,2])expect(Math.abs((a-8)*(a+2)-(a*a-6*a-16))).toBeLessThan(1e-10)
   })
   it('retains saved N05 Q11 progress unchanged at same revision2',()=>{
     const old:TextbookUnitProgress={

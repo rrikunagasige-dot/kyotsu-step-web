@@ -132,7 +132,7 @@ const targets: Record<string, ReviewTarget> = {
     revision:3,totalItems:16,
     blockIds:['n06-lead-12','n06-formula-12','n06-after-12'],
     itemIds:['n06-12'],expectedAnswers:['(x+y)(x+2)(x-1)'],
-    markBlockIds:['n06-formula-12'],reviewState:'awaiting-user',
+    markBlockIds:['n06-formula-12'],reviewState:'accepted',
   },
   // W-MATH-024/P-001: one real original Q18 after-wrong hint; no learner content copy.
   'n05-q18': {

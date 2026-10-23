@@ -131,13 +131,14 @@ describe('W-GOV-008/P-002 review marker boundaries', () => {
     expect(activeReviewMarkIds(reviewTargets['n13-q08'])).toEqual([])
   })
 
-  it('W-MATH-025/P002 selects original N06 Q12 only and rejects stale revisions',()=>{
+  it('W-MATH-025/P002 accepted Q12 marker is hidden while original IDs and revision checks remain',()=>{
     const target=reviewTargets['n06-q12']
     expect(target.revision).toBe(3)
     expect(target.totalItems).toBe(16)
     expect(target.itemIds).toEqual(['n06-12'])
     expect(target.blockIds).toEqual(['n06-lead-12','n06-formula-12','n06-after-12'])
-    expect(activeReviewMarkIds(target)).toEqual(['n06-formula-12'])
+    expect(activeReviewMarkIds(target)).toEqual([])
+    expect(target.markBlockIds).toEqual(['n06-formula-12'])
     const extracted=extractReviewSection(mathNumbersN06Unit,target)
     expect(extracted?.items.map(i=>i.id)).toEqual(['n06-12'])
     expect(extracted?.items.map(i=>i.answer)).toEqual(['(x+y)(x+2)(x-1)'])

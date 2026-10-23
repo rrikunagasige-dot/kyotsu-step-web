@@ -1,0 +1,21 @@
+# W-MATH-026 — N06 Q12 数学的重複誤答の限定修正
+Status: PROPOSED
+Updated: 2026-10-23 JST
+
+## Objective / Authority
+W-MATH-025 Gate②監査で確認した別原因 `mathematically_duplicate_distractors` を、[P-001](./PROPOSAL.md) の1選択肢だけの変更案として提示。直接ユーザー指示・憲法・WORK_SYSTEM §12Bに従う。まだ実装承認なし。
+
+## Branch
+現文書はPR115の監査記録に同居する。実装枝は未作成。承認後、W-MATH-025と重複するn06Lessonへの同時書込を避け、検証済み最新SHAから独立したW-MATH-026 feature branchで順番に実施する。mainは変更しない。
+
+## Scope / Do Not Touch
+q12 `wrong[2]` のexact変更だけを提案。正答・他選択肢・既受入ヒント・原16問・stable ID・revision3・全進捗、元資料、他単元、renderer/CSS/schemaは保護。別原因/別小問を本案でまとめて変更しない。
+
+## Approved Proposal
+None. P-001 PROPOSED / WAITING.
+
+## Current Step / Next Step
+診断・独立検算・全文提案作成まで。ユーザーへ提示し、個別承認後に限定実装→実検証→Q12選択肢Gate①。承認前はsource変更しない。
+
+## Dependencies / Completion Condition
+W-MATH-025の既受入hintを保全。Q03/Q06案を実施する場合は各Gate①後のSHAを採用し、同じファイルを並行変更しない。別N14 Q16 branchは未統合。原症状・保存済み旧誤答の再回答・数学的に異なる4択・関連回帰・実画像受入を完了してからWork完了を判断。全体Gate②/③・main統合・公開承認は別に残る。

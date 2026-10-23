@@ -904,8 +904,10 @@ jobs:
           fi
 
   # W-MATH-025/P-002: one N06 Q12 wrong-only hint; exact-SHA native visual Gate①.
+  # Q12 hint-only Gate① accepted 2026-10-23 by direct 「いいよ続けて」.
+  # Preserve source 6d75ec5 / immutable images 0f93e54; do not recapture an accepted mark.
   wmath025-n06-q12-genuine-screenshots:
-    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'work/W-MATH-025-n05-q11-hint-approved-20261023' }}
+    if: ${{ false }}
     runs-on: ubuntu-latest
     concurrency:
       group: wmath025-n06-q12-${{ github.head_ref }}

@@ -1,7 +1,22 @@
 # W-MATH-025 — Verification
 Status: VERIFYING
 
-## CURRENT — 2026-10-23 Q12 authentic visual review ready, Gate① user pending
+## CURRENT — 2026-10-23 JST Q12 hint-only Gate① accepted; new proposals await approval
+- User's direct response **「いいよ続けて」** followed the numbered authentic Q12 hint review in this chat. Record **W-MATH-025/P-002 BLOCK-VISUAL-OK** for the hint-only scope, without inventing a literal 「細部OK」 quotation.
+- Accepted IDs: item `n06-12`, block `n06-formula-12`, review target `n06-q12`; frozen app/source SHA `6d75ec551e738abc92be3af22b4502bb55e18a99`, original 18 PNG commit `0f93e549f418b3f67851dbfee161b726b278d7b7`; reviewed sheet predecessor `b1dc7e2ce7542ea1b7dd244a9490dfd1d4c2bf10`. The existing marker is hidden in subsequent review output, its IDs/history retained, and its accepted capture job disabled. Historical images are not replaced.
+- This checkpoint changes review acceptance, its existing assertion and records only. **No learner source, hint, answer, choice, revision, progress, shared UI or original source changes.** Q11/Q18 and N13 Q05/Q08 acceptance remains intact.
+- Full regression on predecessor `b1dc7e2ce7542ea1b7dd244a9490dfd1d4c2bf10`: Math [39891841676](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39891841676) **SUCCESS**, validate job 120213458428 (typecheck/lint/schema-unit tests/build, math mobile+desktop/source+derivations+figures+restore, physics textbook, math-practice setup); Review 39891841672 and Governance 39891841720 **SUCCESS**. This records CI success, not Gate② clearance of the independently confirmed unresolved defects. Updated acceptance HEAD CI is initially PENDING; recover actual SHA/run rather than treating prior PASS as verification of changed files.
+- New exact proposals, **all PROPOSED / unapproved / not implemented**: [P-003 N06 Q03 hint](./PROPOSAL_P003.md), [P-004 N06 Q06 hint](./PROPOSAL_P004.md); different-cause [W-MATH-026/P-001 Q12 one duplicate distractor](../W-MATH-026-n06-q12-distinct-distractor/PROPOSAL.md). Drafting under §12B/§12C is authorized; this visual response does not approve those new edits.
+- Next: present the three exact proposals, then execute only separately approved scope, one question and authentic Gate① at a time. Gate② remains OPEN due confirmed unresolved defects and required audits; separate N14 Q16 Gate① remains pending on PR111. Gate③ FINAL-REVIEW-NOT-READY; no main merge or publication authorization.
+- Earlier snapshots below retain historical facts and pending states as of their own checkpoints; this CURRENT checkpoint governs present status.
+
+
+### Full-regression evidence recovered before acceptance-record commit
+- Tested exact SHA: `b1dc7e2ce7542ea1b7dd244a9490dfd1d4c2bf10`; [Math run 39891841676](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39891841676), job `120213458428`, conclusion **SUCCESS**.
+- Native log: **24 Vitest files / 237 tests PASS**; browser batches **254 PASS / 9 explicitly skipped** across the unchanged workflow commands. Typecheck, scoped ESLint, schema/unit tests, production build, SVG decode/figure gates, math mobile+desktop and authored derivations, restoration, physics textbook and math-practice setup all completed successfully. The 9 skips remain skips; no manual Gate② audit is inferred from them.
+- This acceptance-record commit changes review state/assertion and disables only an already accepted screenshot capture; native checks for the resulting new SHA are initially PENDING and must be independently rechecked. Prior run success remains tied to b1dc7e2c only.
+
+## HISTORICAL SNAPSHOT — Q12 review-ready before the user's visual response
 - Q11 Gate① **BLOCK-VISUAL-OK**, verbatim direct response **「続けていいよ」** in this chat after its numbered actual image; Q11 marker now hidden and its fixed images preserved. Q18 / N13 Q05/Q08 prior acceptance unchanged.
 - Approved P-002 Q12 learner change remains exactly one hint literal. N06 revision3 / 16 teacher Word markers / 16 decisions, original answers/choices/history preserved. Actual frozen Chrome/source SHA **`6d75ec551e738abc92be3af22b4502bb55e18a99`**, fixed 18-image-only commit **`0f93e549f418b3f67851dbfee161b726b278d7b7`**.
 - Native Review code + actual Chrome run [39890748804](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39890748804) **SUCCESS**; capture job 120209654721 **6 actual tests PASS / 6 project-matrix skips**, 320/390/1440, review+normal, before/wrong/correct states, wrong does not unlock Q13, all 16 normal-route answers and reload restoration. Governance [39890748808](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/39890748808) **SUCCESS** on the same full source SHA.

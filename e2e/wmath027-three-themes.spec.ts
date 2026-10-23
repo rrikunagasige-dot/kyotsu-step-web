@@ -105,7 +105,7 @@ test('W027 saved answers survive regrouping, resume each development unit and pr
   expect(after).toEqual(before)
   await setup(page); await seed(page, ['ne01', 'ne02'], [])
   const fullySaved = await page.evaluate(() => JSON.parse(localStorage.getItem('kyotsu-step-store')!).state.textbookProgress)
-  await expect(page.getByTestId('math-textbook-topic-numbers-polynomials')).toContainText('122/122 完了')
+  await expect(page.getByTestId('math-textbook-topic-numbers-polynomials')).toContainText('125/125 完了')
   await expect(page.getByTestId('math-textbook-topic-numbers-real')).toContainText('77/77 完了')
   for (const code of ['ne01', 'ne02']) {
     await page.goto(route('/learning/textbook/' + unit(code).unitId))
@@ -140,6 +140,7 @@ for (const width of [320, 390, 1440]) {
       localStorage.setItem('kyotsu-step-store', JSON.stringify(raw))
     }, legacy)
     await page.goto(route('/learning/textbook/' + unit('n02').unitId))
+    await page.reload()
     await expect(page.getByTestId('resolved-n02-05')).toBeVisible()
     await expect(page.getByTestId('textbook-item-n02-06')).toBeVisible()
     await expect(page.getByTestId('textbook-item-n02-r2-q07-x3')).toHaveCount(0)

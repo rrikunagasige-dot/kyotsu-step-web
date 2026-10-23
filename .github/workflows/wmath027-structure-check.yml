@@ -1,23 +1,20 @@
-name: W-MATH-027 structure verification — NO DEPLOY
+name: W-MATH-027 N02 compile and real screens — NO DEPLOY
 on:
   push:
-    branches: ['work/W-MATH-027-workflow-resume-20261024']
+    branches: ['work/W-MATH-027-n02-r1-20261024']
     paths:
-      - 'src/data/textbook/math/**'
-      - 'e2e/wmath027-three-themes.spec.ts'
-      - 'e2e/numbers-catalog-publish.spec.ts'
-      - 'work/items/W-MATH-027-three-theme-pedagogy-repair/qa/**'
-      - 'work/items/W-MATH-027-three-theme-pedagogy-repair/*.md'
+      - 'src/**'
+      - 'e2e/**'
       - '.github/workflows/wmath027-structure-check.yml'
 permissions:
   contents: read
 concurrency:
-  group: wmath027-structure
+  group: wmath027-n02-${{ github.ref }}
   cancel-in-progress: true
 jobs:
-  verify:
+  compile:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 12
     env:
       CI: 'true'
       CAPTURE_SHA: ${{ github.sha }}
@@ -36,25 +33,57 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm run typecheck
-      - name: Actual data and saved-answer invariants against frozen original
-        run: node work/items/W-MATH-027-three-theme-pedagogy-repair/qa/verify-source.mjs
-      - name: Catalog, both development lessons and progress domain regressions
-        run: pnpm exec vitest run src/data/textbook/math/mathCatalog.test.ts src/data/textbook/math/numbers/developmentLessons.test.ts src/domain/textbook.test.ts
-      - run: pnpm run build
-      - name: Install Japanese font
-        timeout-minutes: 2
+      - name: Compile current app immediately after approved patch
+        run: |
+          pnpm run build
+          node -e "require('fs').writeFileSync('dist/build-verification.json', JSON.stringify({source_sha:process.env.CAPTURE_SHA,scope:'N02 P-002-N02-R1',publication:false}))"
+      - name: Actual source, old Q01-Q05 and approved action-count invariants
+        run: |
+          node --input-type=module <<'JS'
+          import { createServer } from 'vite'
+          import { writeFileSync, unlinkSync, mkdirSync } from 'node:fs'
+          import { execFileSync } from 'node:child_process'
+          import assert from 'node:assert/strict'
+          const path = 'src/data/textbook/math/numbers/n02BaselineForCheck.ts'
+          writeFileSync(path, execFileSync('git', ['show', 'f3c69618d5f97cf235d2f0d0d9256f33056e9525:src/data/textbook/math/numbers/n02Lesson.ts']))
+          const server = await createServer({ server: { middlewareMode: true } })
+          try {
+            const now = await server.ssrLoadModule('/src/data/textbook/math/numbers/n02Lesson.ts')
+            const old = await server.ssrLoadModule('/' + path)
+            const math = await server.ssrLoadModule('/src/data/textbook/math/index.ts')
+            assert.deepEqual(now.mathNumbersN02Unit.sections[0].items.slice(0, 5), old.mathNumbersN02Unit.sections[0].items.slice(0, 5))
+            const oldFlow = old.mathNumbersN02Unit.sections[0].readingFlow
+            const newFlow = now.mathNumbersN02Unit.sections[0].readingFlow
+            const boundary = oldFlow.findIndex(x => x.id === 'paragraph-sum-coeff')
+            assert.deepEqual(newFlow.slice(0, boundary), oldFlow.slice(0, boundary))
+            assert.equal(Object.keys(now.n02SourceToItemIds).length, 12)
+            assert.equal(now.mathNumbersN02Unit.sections[0].items.length, 15)
+            const chapter = math.mathTextbookUnits.filter(u => u.chapter?.chapterId === 'math-ch01-numbers-expressions')
+            assert.equal(chapter.length, 16)
+            assert.equal(chapter.reduce((n,u) => n + u.sections.flatMap(s=>s.items).length, 0), 318)
+            const catalog = await server.ssrLoadModule('/src/data/textbook/math/mathCatalog.ts')
+            const counts = catalog.mathTextbookTopics.filter(t=>t.chapterId==='math-ch01-numbers-expressions').map(t=>t.unitIds.reduce((n,id)=>n+chapter.find(u=>u.unitId===id).sections.flatMap(s=>s.items).length,0))
+            assert.deepEqual(counts, [125,77,116])
+            mkdirSync('e2e-evidence/wmath027-n02', {recursive:true})
+            writeFileSync('e2e-evidence/wmath027-n02/source-invariants.json', JSON.stringify({source:process.env.CAPTURE_SHA,baseline:'f3c69618d5f97cf235d2f0d0d9256f33056e9525',units:16,originalQuestions:233,actions:318,counts,unchangedQ01Q05:true,status:'PASS'},null,2))
+          } finally { await server.close(); unlinkSync(path) }
+          JS
+      - name: Math, schema and all progress regression tests
+        run: pnpm exec vitest run src/data/textbook/math src/domain/textbook.test.ts src/domain/textbookSchema.test.ts
+      - name: Install Japanese font and browser
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y fonts-noto-cjk
-          fc-match -f '%{family}\n' ':lang=ja'
-      - run: pnpm exec playwright install --with-deps chromium
-      - name: Actual card layout, direct links, bridges and persisted progress
-        run: pnpm exec playwright test e2e/wmath027-three-themes.spec.ts e2e/numbers-catalog-publish.spec.ts --project=mobile-chromium --project=desktop-chromium --workers=2
+          pnpm exec playwright install --with-deps chromium
+      - name: Compiled-app real screens, migration, wrong/hint/reload and original routes
+        run: pnpm exec playwright test e2e/wmath027-three-themes.spec.ts e2e/numbers-next-batch.spec.ts e2e/numbers-catalog-publish.spec.ts --project=mobile-chromium --project=desktop-chromium --workers=2
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: wmath027-real-${{ github.sha }}
+          name: wmath027-n02-compiled-${{ github.sha }}
           path: |
+            e2e-evidence/wmath027-n02/
             e2e-evidence/wmath027/
             test-results/
+            dist/
           retention-days: 7

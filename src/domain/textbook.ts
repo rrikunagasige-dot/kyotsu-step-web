@@ -185,6 +185,33 @@ export function effectiveTextbookProgress(unit: TextbookUnit, progress: Textbook
   if (!progress) return undefined
   if (progress.unitRevision === unit.revision) return progress
 
+  // W-MATH-027/P-002-N02-R1: preserve all v1 attempts; reopen only
+  // six re-keyed answers and three new local decisions, retaining Q01-Q05/Q12.
+  if (unit.unitId === 'math-numbers-expressions-n02' && unit.revision === 2
+    && progress.unitId === unit.unitId && progress.unitRevision === 1) {
+    const archive: TextbookRevisionArchive = {
+      unitRevision: 1, startedAt: progress.startedAt, updatedAt: progress.updatedAt,
+      answers: { ...progress.answers },
+      ...(progress.completedAt !== undefined ? { completedAt: progress.completedAt } : {}),
+      ...(progress.previousRevisionCompletedAt !== undefined
+        ? { previousRevisionCompletedAt: progress.previousRevisionCompletedAt } : {}),
+      ...(progress.migratedFromRevision !== undefined
+        ? { migratedFromRevision: progress.migratedFromRevision } : {}),
+    }
+    const answers = { ...progress.answers }
+    for (const id of ['n02-06', 'n02-07', 'n02-08', 'n02-09', 'n02-10', 'n02-11']) delete answers[id]
+    return {
+      unitId: unit.unitId, unitRevision: 2,
+      startedAt: progress.startedAt, updatedAt: progress.updatedAt,
+      answers, migratedFromRevision: 1,
+      archivedRevisions: { ...(progress.archivedRevisions ?? {}), '1': archive },
+      ...(progress.completedAt !== undefined
+        ? { previousRevisionCompletedAt: progress.completedAt }
+        : progress.previousRevisionCompletedAt !== undefined
+          ? { previousRevisionCompletedAt: progress.previousRevisionCompletedAt } : {}),
+    }
+  }
+
   // W-MATH-017/P-008: Q13's old full operation + completed equation
   // is replaced by local 6x coefficient; archive v9 and reopen only Q13.
   if (unit.unitId === 'math-numbers-expressions-n11' && unit.revision === 10

@@ -54,3 +54,7 @@ Next: PROPOSAL_P001.mdをユーザーへ提示。承認前に実装しない。�
 ## 最新指示 — 教材修正を保留
 
 2026-10-23 JST、ユーザーが修正作業を一度止め、AIの自由判断に依存する部分とコード化できる部分を分ける仕組みの提案を先に求めた。W-GOV-010/P-001（提案保存SHA d4d6774a89df74fc01425bdb74250afa79f21912）が現在の優先Work。W-MATH-027/P-001は未承認のまま保持し、実装しない。新仕組みの初期整理・試作・比較評価を承認された場合も、それを本番教材の変更許可へ拡大しない。
+
+## Approved N02 execution — 2026-10-24 JST
+
+User explicitly approved P-002-N02-R1 and immediate compilation. W-MATH-027-N02-R1-EXEC applied the fixed nine-existing-file patch through hash/scope checks. Learner changes are only N02 Q06-Q12 and its N02-only progress migration. Necessary existing QA fixtures and the compile workflow follow the new 15-action N02 and 318-action chapter. No shared UI, other learner units, main or public deployment changed. R07 compile/real-screen verification is next.

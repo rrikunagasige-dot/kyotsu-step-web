@@ -17,3 +17,7 @@ Governance CI found the old W-MATH-027 folder lacked required PROPOSAL/ACTION_LO
 ## Gate② and first body proposal — 2026-10-24 JST
 
 確認①への直接応答「いいよ。次は何？」を構成/接続文のみのaccept_blockとして記録。その後の指示に従いGate②の証拠表を作成。構成差分は検証済みだが本文FAILと独立性等UNVERIFIEDを残し、G2のPASSを作らない。N02 Q06〜Q12の具体案、20等式/10解答セットの厳密検算、R01〜R04実行記録を作成。教材・main・公開環境は未変更。
+
+## Approved N02 execution — 2026-10-24 JST
+
+User explicitly approved P-002-N02-R1 and immediate compilation. W-MATH-027-N02-R1-EXEC applied the fixed nine-existing-file patch through hash/scope checks. Learner changes are only N02 Q06-Q12 and its N02-only progress migration. Necessary existing QA fixtures and the compile workflow follow the new 15-action N02 and 318-action chapter. No shared UI, other learner units, main or public deployment changed. R07 compile/real-screen verification is next.

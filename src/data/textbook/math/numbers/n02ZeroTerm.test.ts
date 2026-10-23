@@ -14,14 +14,14 @@ const q05Index = blocks.findIndex(block =>
   && block.parts.some(part => part.type === 'choice' && part.itemId === 'n02-05'))
 
 describe('W-MATH-010/P-001: N02 missing zero-coefficient TERM', () => {
-  it('keeps all original Q01-Q12 source IDs, answer keys, source status and sibling units', () => {
+  it('preserves Q05 exactly during approved Q06-Q12 revision and keeps all 12 source mappings', () => {
     const originalIds = Object.values(n02SourceToItemIds).flat()
     expect(section.items.map(q => q.id)).toEqual(originalIds)
-    expect(mathNumbersN02Unit.revision).toBe(1)
+    expect(mathNumbersN02Unit.revision).toBe(2)
     expect(mathNumbersN02Unit.status).toBe('review')
     expect(q05.answer).toBe('0x')
     expect(q05.choices).toEqual(['0x', 'x', '-x', '2x'])
-    expect(section.items).toHaveLength(12)
+    expect(section.items).toHaveLength(15)
     expect(mathNumbersN01Unit.sections[0].items).toHaveLength(18)
     expect(mathNumbersN03Unit.sections[0].items).toHaveLength(17)
   })

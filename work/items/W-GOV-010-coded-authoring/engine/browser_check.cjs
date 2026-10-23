@@ -11,9 +11,14 @@ async function main(){
    const dir=path.join(root,'output',mode), model=JSON.parse(fs.readFileSync(path.join(dir,'compiled.json'),'utf8'));
    const context=await browser.newContext({viewport:{width,height:900}});const page=await context.newPage();const errors=[];
    page.on('pageerror',e=>errors.push(String(e)));await page.goto('file://'+path.join(dir,'preview.html'));
+   const cdp=await context.newCDPSession(page);await cdp.send('DOM.enable');await cdp.send('CSS.enable');
    await page.evaluate(()=>localStorage.setItem('kyotsu-step-store','production-sentinel'));
    for(const l of model.lessons){
     await page.selectOption('#lesson',l.id);assert.equal(await page.locator('.theme').count(),3);
+    const doc=await cdp.send('DOM.getDocument');
+    const node=await cdp.send('DOM.querySelector',{nodeId:doc.root.nodeId,selector:'#article h2'});
+    const fontUsage=await cdp.send('CSS.getPlatformFontsForNode',{nodeId:node.nodeId});
+    assert(fontUsage.fonts.some(f=>f.familyName.includes('Noto Sans CJK JP')&&f.glyphCount>0),'日本語の実描画フォントがない');
     assert.equal(await page.locator('.derivation').count(),1);assert.equal(await page.locator('.final-result').count(),0);
     assert.equal(await page.locator('.active').count(),1);
     await page.screenshot({path:path.join(evidence,`${mode}-${l.id}-${width}-before.png`),fullPage:true});
@@ -39,7 +44,7 @@ async function main(){
     assert.equal(await page.locator('#closing').isVisible(),true);
     await page.screenshot({path:path.join(evidence,`${mode}-${l.id}-${width}-complete.png`),fullPage:true});
     await page.reload();await page.selectOption('#lesson',l.id);assert.equal(await page.locator('.final-result').count(),1);
-    results.push({mode,lesson:l.id,width,answered,wrong_retry:true,four_hints:true,reload:true,overflow:false,one_derivation_frame:true});
+    results.push({mode,lesson:l.id,width,answered,wrong_retry:true,four_hints:true,reload:true,overflow:false,one_derivation_frame:true,rendered_fonts:fontUsage.fonts});
    }
    assert.equal(await page.evaluate(()=>localStorage.getItem('kyotsu-step-store')),'production-sentinel');
    assert.deepEqual(errors,[]);await context.close();

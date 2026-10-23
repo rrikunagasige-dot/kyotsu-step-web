@@ -34,6 +34,9 @@ jobs:
           else
             pnpm exec playwright install --with-deps chromium
           fi
+      - name: Install pinned Japanese font and verify its source
+        timeout-minutes: 2
+        run: python3 work/items/W-GOV-010-coded-authoring/engine/install_test_font.py
       - name: Verify pipeline and generate isolated examples
         working-directory: work/items/W-GOV-010-coded-authoring/engine
         run: |

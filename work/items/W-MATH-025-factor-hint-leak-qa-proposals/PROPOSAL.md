@@ -1,5 +1,17 @@
 # W-MATH-025 — approved P-001 & P-002, staged execution
 
+## CURRENT — approved three-hint implementation / five-item review
+最新ユーザー直接「いいよ」は、直前のf73122d82b45e4c9ff4b04348383f121126a8322に固定した新3案全文・変更前後への一括承認。P005/P006/P007はexact3hintだけ実装済み。5件まとめ提示の直接指示に従い、問別内部QAを省略せず一問ごとの人手待ちを止める。
+Source **b1025cab41342b7648acb191abadfa8aaaa66e5c**、固定72原画像子 **8a3cfc05d173a92386f5bf8244fa28a1d31fabd1**、Draft PR117（base PR116）。Review39902362044/Gov39902362009 SUCCESS。review5files/41unit、専用18realケースPASS/18matrix skips。全体Math39902361997もSUCCESS：25unit files/240tests、254browser cases PASS/9explicit skips。原20/14/12問rev2/3/3・正答・選択肢・履歴・図・共有UI/schemaは保持。Word209/305/345と独立計算を再照合。
+[5件一括の実画面](./GATE1_FIVE_ITEM_REVIEW_20261023.md)、[修正後影響表](./IMPACT_AUDIT_STAGEE_P005_P007_20261023.md)。Q12choicesはsource d894…の固定画像、Q16は別候補source e64fd…/rev10の固定画像。統合済みと偽らず各SHAを表示する。
+全体CIも成功を記録済み。次は5件を一度に提示→5件の視覚受入→残る横断監査/候補整合→アプリ全体の通し確認。今回の承認は実装の許可であり5件画像の受入やGate②/③ではない。main15ae503455bc6ae75b080caa1c4919cafb250027不変、main統合/公開なし。
+
+
+## CURRENT — 2026-10-23 P005/P006/P007 direct batch approval
+ユーザーはf73122d82b45e4c9ff4b04348383f121126a8322の「ヒント3件の変更案・変更前後」をリンクし、一括実行可否を尋ねた直後に **「いいよ」** と直接回答。P-005 N05Q06 / P-006 N07Q09 / P-007 N08Q05のexact3hint literalを **APPROVED** と記録。以前のQ06画像了承を流用したものではない。変更後文・各範囲/リスク/検証は不変。直前の「5問ずつ修正・検証・実画面をまとめ提示」指示も保持。
+起点はDraft PR116 HEAD f73122d82b45e4c9ff4b04348383f121126a8322。独立した順次枝 `work/W-MATH-025-hints-p005-p007-batch-20261023` を使い、同ref実行中CIをcancelしない。3sourcefileに各1hintだけ、版/キー/選択肢/ID/履歴/図/schema/rendererは保持。Q12choicesとQ16を含む5件groupを完成後、一度に提示する。Q16は別PR111のrev10固定sourceであり、未承認の候補統合はしない。
+
+
 ## 2026-10-23 最新ユーザー受入・まとめ提示指示
 ユーザー直接発言: **「承認！続けて。後仕事どれぐらい残っているのか教えてくれ。次からは例えば一つQ06じゃなくて5個のやつ全部完成して私に見せてください。その方が効率いいから」**。
 直前に提示したQ06ヒント実画像98ffc53ca390ef4769a4800a58cf3436f87b2057 / 固定画像dd0842e26de33565afdc28e412d26182ad3dec35への受入として、Q06 hint-onlyを **BLOCK-VISUAL-OK** と記録する。既存ID/原画像/元履歴を保ち、次候補でQ06マーカーを非表示、再撮影を停止する。

@@ -6,6 +6,8 @@ import { mathNumbersN14Unit } from '../data/textbook/math/numbers/n14Lesson'
 import { mathNumbersN13Unit } from '../data/textbook/math/numbers/n13Lesson'
 import { mathNumbersN05Unit } from '../data/textbook/math/numbers/n05Lesson'
 import { mathNumbersN06Unit } from '../data/textbook/math/numbers/n06Lesson'
+import { mathNumbersN07Unit } from '../data/textbook/math/numbers/n07Lesson'
+import { mathNumbersN08Unit } from '../data/textbook/math/numbers/n08Lesson'
 import { activeReviewMarkIds, extractReviewSection, reviewTargets } from './reviewTargets'
 
 describe('W-GOV-008/P-002 review marker boundaries', () => {
@@ -191,6 +193,51 @@ describe('W-GOV-008/P-002 review marker boundaries', () => {
     const extracted=extractReviewSection(mathNumbersN06Unit,target)
     expect(extracted?.items.map(i=>i.answer)).toEqual(['(x+y)(x+2)(x-1)'])
     expect(extractReviewSection({...mathNumbersN06Unit,revision:2},target)).toBeNull()
+    for(const id of ['n06-q06','n06-q03','n06-q12','n05-q11','n05-q18','n13-q05','n13-q08'])
+      expect(activeReviewMarkIds(reviewTargets[id])).toEqual([])
+  })
+
+  it('W025/P-005 N05 Q06 hint is one original item with accepted siblings hidden',()=>{
+    const target=reviewTargets['n05-q06-hint']
+    expect(target.revision).toBe(2)
+    expect(target.totalItems).toBe(20)
+    expect(target.itemIds).toEqual(['n05-06'])
+    expect(activeReviewMarkIds(target)).toEqual(['n05-formula-06'])
+    const extracted=extractReviewSection(mathNumbersN05Unit,target)
+    expect(extracted?.items.map(item=>item.id)).toEqual(['n05-06'])
+    expect(extracted?.items.map(item=>item.answer)).toEqual(['(4x)^2,\\quad(3y)^2'])
+    expect(extracted?.items[0].hints[0]).toBe("両端の係数と文字の指数を別々に見て、それぞれ何を二乗すると元の項に戻るか確かめよう。")
+    expect(extractReviewSection({...mathNumbersN05Unit,revision:1},target)).toBeNull()
+    for(const id of ['n06-q06','n06-q03','n06-q12','n05-q11','n05-q18','n13-q05','n13-q08'])
+      expect(activeReviewMarkIds(reviewTargets[id])).toEqual([])
+  })
+
+  it('W025/P-006 N07 Q09 hint is one original item with accepted siblings hidden',()=>{
+    const target=reviewTargets['n07-q09-hint']
+    expect(target.revision).toBe(3)
+    expect(target.totalItems).toBe(14)
+    expect(target.itemIds).toEqual(['n07-09'])
+    expect(activeReviewMarkIds(target)).toEqual(['n07-formula-09'])
+    const extracted=extractReviewSection(mathNumbersN07Unit,target)
+    expect(extracted?.items.map(item=>item.id)).toEqual(['n07-09'])
+    expect(extracted?.items.map(item=>item.answer)).toEqual(['\\text{100倍},\\;100x=69.\\overline{69},\\;99x=69'])
+    expect(extracted?.items[0].hints[0]).toBe("繰り返す数字の一周期が何桁か数えよう。その桁数だけ小数点を右へ動かして元の小数部分と揃え、差をとろう。")
+    expect(extractReviewSection({...mathNumbersN07Unit,revision:2},target)).toBeNull()
+    for(const id of ['n06-q06','n06-q03','n06-q12','n05-q11','n05-q18','n13-q05','n13-q08'])
+      expect(activeReviewMarkIds(reviewTargets[id])).toEqual([])
+  })
+
+  it('W025/P-007 N08 Q05 hint is one original item with accepted siblings hidden',()=>{
+    const target=reviewTargets['n08-q05-hint']
+    expect(target.revision).toBe(3)
+    expect(target.totalItems).toBe(12)
+    expect(target.itemIds).toEqual(['n08-05'])
+    expect(activeReviewMarkIds(target)).toEqual(['n08-formula-05'])
+    const extracted=extractReviewSection(mathNumbersN08Unit,target)
+    expect(extracted?.items.map(item=>item.id)).toEqual(['n08-05'])
+    expect(extracted?.items.map(item=>item.answer)).toEqual(['5<9,\\quad\\sqrt5<3'])
+    expect(extracted?.items[0].hints[0]).toBe("根号の付いた数は、二乗すると根号の中の数に戻る。もう一方も二乗し、二つの値を比べよう。両方とも非負なので大小の向きは保たれる。")
+    expect(extractReviewSection({...mathNumbersN08Unit,revision:2},target)).toBeNull()
     for(const id of ['n06-q06','n06-q03','n06-q12','n05-q11','n05-q18','n13-q05','n13-q08'])
       expect(activeReviewMarkIds(reviewTargets[id])).toEqual([])
   })

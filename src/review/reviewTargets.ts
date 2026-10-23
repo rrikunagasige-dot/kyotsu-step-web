@@ -21,6 +21,33 @@ export type ReviewTarget = {
  * real PR lesson; no copied solution text or substituted illustration is used.
  */
 const targets: Record<string, ReviewTarget> = {
+  // W-MATH-025/P-005: exact approved after-wrong hint only.
+  'n05-q06-hint': {
+    id:'n05-q06-hint',unitId:'math-numbers-expressions-n05',title:'N05 Q06 ヒント',
+    question:'誤答後に計算方法を案内し、求める数値を先に教えない',
+    revision:2,totalItems:20,
+    blockIds:['n05-lead-06','n05-formula-06','n05-after-06'],
+    itemIds:['n05-06'],expectedAnswers:['(4x)^2,\\quad(3y)^2'],
+    markBlockIds:['n05-formula-06'],reviewState:'awaiting-user',
+  },
+  // W-MATH-025/P-006: exact approved after-wrong hint only.
+  'n07-q09-hint': {
+    id:'n07-q09-hint',unitId:'math-numbers-expressions-n07',title:'N07 Q09 ヒント',
+    question:'誤答後に計算方法を案内し、求める数値を先に教えない',
+    revision:3,totalItems:14,
+    blockIds:['n07-lead-09','n07-formula-09','n07-after-09'],
+    itemIds:['n07-09'],expectedAnswers:['\\text{100倍},\\;100x=69.\\overline{69},\\;99x=69'],
+    markBlockIds:['n07-formula-09'],reviewState:'awaiting-user',
+  },
+  // W-MATH-025/P-007: exact approved after-wrong hint only.
+  'n08-q05-hint': {
+    id:'n08-q05-hint',unitId:'math-numbers-expressions-n08',title:'N08 Q05 ヒント',
+    question:'誤答後に計算方法を案内し、求める数値を先に教えない',
+    revision:3,totalItems:12,
+    blockIds:['n08-lead-05','n08-formula-05','n08-after-05'],
+    itemIds:['n08-05'],expectedAnswers:['5<9,\\quad\\sqrt5<3'],
+    markBlockIds:['n08-formula-05'],reviewState:'awaiting-user',
+  },
   // W-MATH-017/P-003: precisely the two newly approved learner blocks.
   // The original unit and item instances are reused, never mocked.
   'n11-q01': {

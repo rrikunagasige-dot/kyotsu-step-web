@@ -1,4 +1,9 @@
 # 残作業 — 2026-10-23
+
+## CURRENT — 3hint implementation/QA complete; grouped visual pending
+最新直接「いいよ」でP005/P006/P007を一括承認し、sourceb1025cab41342b7648acb191abadfa8aaaa66e5cでexact3文実装・全体回帰まで成功。今回の既知修正4件(Q12choices+3hint)は実装済み。残るのはQ12/新3hint/Q16の5件まとめ細部受入、必須残surfaceの横断監査/候補整合、同一SHAapp全体通し確認。新3案の再承認を求めない。NE01/NE02の2単元25原問は別に未実装。
+[5件の実画面](../W-MATH-025-factor-hint-leak-qa-proposals/GATE1_FIVE_ITEM_REVIEW_20261023.md)。以下の修正3件未実装という表は承認前のHISTORICAL状態として保持する。
+
 Evidence source: current candidate `d894e38820829c387386d207ff2d44d1ac95eebb`, W003 original16-unit plan and teacher Word SHA25693827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa。
 「次の5件」は今回の修正/確認groupであり、章全体の残りが5問という意味ではない。
 

@@ -1,5 +1,10 @@
 # W-MATH-025 — Verification
 
+## CURRENT — 2026-10-23 P005/P006/P007 direct batch approval
+ユーザーはf73122d82b45e4c9ff4b04348383f121126a8322の「ヒント3件の変更案・変更前後」をリンクし、一括実行可否を尋ねた直後に **「いいよ」** と直接回答。P-005 N05Q06 / P-006 N07Q09 / P-007 N08Q05のexact3hint literalを **APPROVED** と記録。以前のQ06画像了承を流用したものではない。変更後文・各範囲/リスク/検証は不変。直前の「5問ずつ修正・検証・実画面をまとめ提示」指示も保持。
+起点はDraft PR116 HEAD f73122d82b45e4c9ff4b04348383f121126a8322。独立した順次枝 `work/W-MATH-025-hints-p005-p007-batch-20261023` を使い、同ref実行中CIをcancelしない。3sourcefileに各1hintだけ、版/キー/選択肢/ID/履歴/図/schema/rendererは保持。Q12choicesとQ16を含む5件groupを完成後、一度に提示する。Q16は別PR111のrev10固定sourceであり、未承認の候補統合はしない。
+
+
 ## 2026-10-23 最新ユーザー受入・まとめ提示指示
 ユーザー直接発言: **「承認！続けて。後仕事どれぐらい残っているのか教えてくれ。次からは例えば一つQ06じゃなくて5個のやつ全部完成して私に見せてください。その方が効率いいから」**。
 直前に提示したQ06ヒント実画像98ffc53ca390ef4769a4800a58cf3436f87b2057 / 固定画像dd0842e26de33565afdc28e412d26182ad3dec35への受入として、Q06 hint-onlyを **BLOCK-VISUAL-OK** と記録する。既存ID/原画像/元履歴を保ち、次候補でQ06マーカーを非表示、再撮影を停止する。
@@ -168,3 +173,23 @@ Original teacher body markers N05 Q06 paragraph209, N07 Q09 paragraph305, N08 Q0
 
 ## Completed exact-source full regression
 Source98ffc53ca390ef4769a4800a58cf3436f87b2057: Math39897233018 / validate120230370702 SUCCESS;24 Vitest files237 tests PASS,13 browser batches254 PASS and9 explicit skips. Final math-practice batch completed2026-10-23T04:04:11Z. Review39897233016 (codecheck34 tests + actual Q06 capture6 executed cases with6 matrix skips) and Governance39897232993 SUCCESS. Original18 Q06 PNG remain fixed atdd0842e26de33565afdc28e412d26182ad3dec35, an image-only child. The following Work-record-only commit has new HEAD checks initiallyPENDING; prior runs remain tied to their actual source SHA.
+
+## V-BATCH-PENDING — exact three-hint batch
+Primary W025/P005/P006/P007 approved by latest direct「いいよ」to grouped exact full proposal. Source SHA/run PENDING until GitHub commit. Basef73122d82b45e4c9ff4b04348383f121126a8322, branchwork/W-MATH-025-hints-p005-p007-batch-20261023, main unchanged15ae503455bc6ae75b080caa1c4919cafb250027.
+Local exact3hint-only diff/math/workflow/TS checks PENDING. Native type/lint/build/unit/regression and genuine18case browser capture PENDING. Gate① five-item presentation pending; Gate②OPEN; Gate③NOT-READY。
+Return: success→inspect originals and record actualSHA/runs→present5together. Failure→return primary and fix only approved scope; cancel/timeout notverified;403 stop/report. DuringCI only independent source/root audit and grouped review preparation, no new learner edits.
+
+### Local precommit PASS
+3hint exact差分/全source他フィールド不変、原20/14/12問rev2/3/3、workflow YAML/env/branch/sourcepaths、TS strip後JS構文はPASS。Native build/lint/runtime及び全回帰はPENDING。
+
+## V-BATCH-DEDICATED-PASS
+Sourceb1025cab41342b7648acb191abadfa8aaaa66e5c, images8a3cfc05d173a92386f5bf8244fa28a1d31fabd1。Review39902362044 SUCCESS/5files41unit、capture18realPASS/18matrix skips、72PNG+READMEのみの子commit73files/sourcecode完全一致を照合。Gov39902362009SUCCESS。
+通常の全20/14/12問を3幅で完了/復元、wrong/reload ledger同値/retry firstValue/firstAnsweredAt/isFirstCorrect/attemptCount保全、次問gate、acceptedmarkers無し、preview通常localStorage無変更。新hint3文はDOMspan完全一致、旧hintを含まない。
+直接視認7枚で日本語/KaTeX/折返しを確認。Q16の旧mobilefullpage固定header重なりは元証拠制約として残しPC画像で五判断全式を確認。今回runtime障害と断定しない。全impact/viewportチェックが終わっていない面をPASSにしない。
+独立math/Python exact signature/Fraction/square comparison PASS。既存3sourceの他fields byte不変、schema/CSS/progress/shared renderer不変。
+FullMath39902361997 RUNNING until final result; no falsePASS。Q12choices/新3hint/Q16の5件humanGate①はBLOCK-CHECK-PENDING。Gate②OPEN、Gate③NOT-READY。mainmerge/公開なし。
+
+## 2026-10-23 final engineering result — exact source
+Source **b1025cab41342b7648acb191abadfa8aaaa66e5c**, full Math **39902361997 SUCCESS** (job120246569059): **25unit files/240tests PASS、254browser cases PASS/9explicit skips**。型/lint/build、数学phone/PC・図・導出・wrong/retry・保存、物理教科書・数学練習setupまで全step完了。
+Review39902362044 SUCCESS (5files41unit +18real browser cases PASS/18matrix skips)、Gov39902362009SUCCESS。Original72PNG+README fixedchild8a3cfc05d173a92386f5bf8244fa28a1d31fabd1はsource/runtime差分0。
+5件groupは **ENGINEERING-READY / BLOCK-CHECK-PENDING**。CIを人手受入やGate②/③へ読み替えない。追加記録commitで再CIが走っても、実際に試験したsourceSHAと記録HEADを区別する。source→記録HEADの差分はWork Markdownと固定画像のみと照合する。

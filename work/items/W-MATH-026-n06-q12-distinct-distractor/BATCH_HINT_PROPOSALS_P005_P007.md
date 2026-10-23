@@ -1,7 +1,11 @@
 # 次の5件へ進むための新3ヒント案
-Status: PROPOSED / WAITING / 未実装
+Status: APPROVED / exact3hint実装・専用QA済み / grouped visual pending
 提示単位: 3案を一括で承認→3修正をまとめて技術確認→既存Q12choices/N14Q16と合わせ5件の実画面を一度に提示。
 ユーザーの約5問まとめ提示指示は記録済み。Q12とQ16の実装承認は再要求しない。
+
+## CURRENT — 2026-10-23 P005/P006/P007 direct batch approval
+ユーザーはf73122d82b45e4c9ff4b04348383f121126a8322の「ヒント3件の変更案・変更前後」をリンクし、一括実行可否を尋ねた直後に **「いいよ」** と直接回答。P-005 N05Q06 / P-006 N07Q09 / P-007 N08Q05のexact3hint literalを **APPROVED** と記録。以前のQ06画像了承を流用したものではない。変更後文・各範囲/リスク/検証は不変。直前の「5問ずつ修正・検証・実画面をまとめ提示」指示も保持。
+起点はDraft PR116 HEAD f73122d82b45e4c9ff4b04348383f121126a8322。独立した順次枝 `work/W-MATH-025-hints-p005-p007-batch-20261023` を使い、同ref実行中CIをcancelしない。3sourcefileに各1hintだけ、版/キー/選択肢/ID/履歴/図/schema/rendererは保持。Q12choicesとQ16を含む5件groupを完成後、一度に提示する。Q16は別PR111のrev10固定sourceであり、未承認の候補統合はしない。
 
 共通範囲: 各指定qのhint literal1文のみ。問題文・数式・正答・全選択肢・他問・revision・ID・全進捗・図・renderer/CSS/schema・元Wordを変更しない。誤答後だけ表示されるヒントであり、問題本文や数式説明を置換しない。
 教師Word SHA25693827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaaとOMMLを照合済み。具体的結果を与える旧hintを、計算/判断方法を案内する文へ変える。
@@ -53,3 +57,6 @@ revision3 / 原12問。元Word body paragraph345。リスク: 数値を教えな
 承認後に3件を実装・検証し、Q12choicesと別SHAのN14Q16を含む5件をまとめ提示する。各問の内部QAは省略しない。全体監査/通し確認とmain統合/公開は別に残る。
 
 根拠: [WORK_SYSTEM §12B Gate2.4](../../../governance/WORK_SYSTEM.md)「Existing exact approval applies only if it genuinely covers that artifact and fix; otherwise submit a new or revised full proposal and await its explicit approval.」
+
+### Latest implementation evidence
+sourceb1025cab41342b7648acb191abadfa8aaaa66e5c、Review39902362044/Gov39902362009SUCCESS、72原画像8a3cfc05d173a92386f5bf8244fa28a1d31fabd1。全体Math39902361997もSUCCESS（240unit/254browser PASS、9explicit skips）。[5件の実画面を一括確認](../W-MATH-025-factor-hint-leak-qa-proposals/GATE1_FIVE_ITEM_REVIEW_20261023.md)。今回承認が必要なのは実装案ではなく、この5件の視覚受入。新規同根不具合は別exactscopeに従い、未検証をPASSにしない。

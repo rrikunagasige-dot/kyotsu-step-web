@@ -23,7 +23,6 @@ describe('math textbook catalog', () => {
       'numbers-polynomials',
       'numbers-real',
       'numbers-inequalities',
-      'numbers-development',
       'organize-sets',
       'read-propositions',
       'prove-propositions',
@@ -164,12 +163,23 @@ describe('math textbook catalog', () => {
     expect(headings).toEqual(topic?.learnerHeadings)
   })
 
-  it('maps sixteen source-audited chapter-1 review lessons into three core topics and optional development', () => {
+  it('keeps all sixteen chapter-1 lessons under exactly three approved learner topics', () => {
     const chapter1 = mathTextbookTopics.filter((topic) => topic.chapterId === 'math-ch01-numbers-expressions')
-    expect(chapter1.map((topic) => topic.label.ja)).toEqual(['式を整える', '実数を扱う', '不等式を使う', '参考・発展'])
+    expect(chapter1.map((topic) => topic.label.ja)).toEqual(['式を整える', '実数を扱う', '不等式を使う'])
     expect(chapter1.map((topic) => topic.unitIds.map((id) => id.replace('math-numbers-expressions-', '')))).toEqual([
-      ['n01', 'n02', 'n03', 'n04', 'n05', 'n06'], ['n07', 'n08', 'n09', 'n10'], ['n11', 'n12', 'n13', 'n14'], ['ne01', 'ne02'],
+      ['n01', 'n02', 'n03', 'n04', 'n05', 'n06', 'ne01'], ['n07', 'n08', 'n09', 'n10', 'ne02'], ['n11', 'n12', 'n13', 'n14'],
     ])
+    const assigned = chapter1.flatMap((topic) => topic.unitIds)
+    expect(assigned).toHaveLength(16)
+    expect(new Set(assigned).size).toBe(16)
+    expect(chapter1.map((topic) => topic.unitIds.reduce((total, id) => {
+      const unit = mathTextbookUnits.find((candidate) => candidate.unitId === id)
+      return total + (unit?.sections.reduce((count, section) => count + section.items.length, 0) ?? 0)
+    }, 0))).toEqual([122, 77, 116])
+    expect(mathTextbookNextUnitId('math-numbers-expressions-n06')).toBe('math-numbers-expressions-ne01')
+    expect(mathTextbookNextUnitId('math-numbers-expressions-n10')).toBe('math-numbers-expressions-ne02')
+    expect(mathTextbookNextUnitId('math-numbers-expressions-ne01')).toBeUndefined()
+    expect(mathTextbookNextUnitId('math-numbers-expressions-ne02')).toBeUndefined()
     expect(mathNumbersReviewUnitIds).toHaveLength(16)
     for (const id of mathNumbersReviewUnitIds) {
       const unit = mathTextbookUnits.find((candidate) => candidate.unitId === id)

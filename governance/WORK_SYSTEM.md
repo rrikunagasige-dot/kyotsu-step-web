@@ -490,3 +490,17 @@ Avoid:
 - speculative internal monologue,
 - untraceable “seems fixed” claims,
 - rewriting old failures out of history.
+
+
+
+## 12D. W-GOV-010/P-002 — executable workflow binding
+
+P-002の実装入口は `workflow/README.md`。命令・承認の意味と§12A/12B/12Cは維持する。CMD-WORK-001を修正経路、CMD-WORK-002を作成経路へ渡し、実装済みの技術限定Workは別profileで扱う。新しい第四Gateを追加しない。
+
+イベント台帳 `<Work>/runtime/events/` を実行状態の正本とし、AI課題・結果・承認原文・証拠はhashで対応付ける。現在地・火柴図・次課題は同じ台帳から生成する。既存WORK/ACTION_LOG等は規範・要約・履歴として参照を残す。全体CURRENT_POSITIONや他チャットの現在地は個別Workの生成物で上書きしない。
+
+既存の具体案・版・範囲に有効な承認があれば再使用する。会話転記は暗号署名ではなく、出所と検証段階を記録する。AI出力のapprovedフラグを承認と扱わない。修正差分は承認scope・保護範囲・前後hash・安定ID・保存履歴を照合して適用し、原症状の機械検証とAIによる意味の審査をともに残す。未知の変更、未確定の外部操作、中断された差分は自動再実行しない。
+
+正本・規則・入力・候補SHAの変更を検出して必要な結果を失効させる。変更のないブロックのGate①は内容hashで保持できるが、Gate②・③とCIは現在の対象版を要する。後続の否定を事例更新へ戻し、単なる続行や実装承認は教材の正例へ変換しない。
+
+この実行器は、終了したチャットの自動起動・任意教材の意味理解・分散系の完全な一度限り実行を保証しない。自然言語規則の対応状況と未自動化部分は `workflow/rules/mapping.json` に残す。憲法本文の変更はない。

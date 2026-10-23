@@ -1,0 +1,75 @@
+{
+  "work_id": "W-MATH-027-P001-R1",
+  "node": {
+    "id": "R05_APPROVAL@CHAPTER1-STRUCTURE",
+    "actor": "USER",
+    "depends_on": [
+      "R04_PROPOSAL@CHAPTER1-STRUCTURE"
+    ],
+    "required": [],
+    "block": "CHAPTER1-STRUCTURE",
+    "watch": "source"
+  },
+  "task_id": "821d110a561a74a00770197cc65719e4bd484977cc5ae9e685cbf9f3652a6e24",
+  "input_hash": "dcd39a888cb3bbda678603e8702370fc16032180fbed79a086f2109479b11b52",
+  "source_sha": "30f1e9363ca33a88ffffccfd87c4abbd54f21c01",
+  "candidate_sha": "30f1e9363ca33a88ffffccfd87c4abbd54f21c01",
+  "rules": {
+    "AGENTS.md": "5abeabb4f7fa60ca8e54ac4695910ed5a37eee397f89f381a123dcfef17a1d0e",
+    "docs/INFORMATION_ARCHITECTURE_RULES.md": "05a164ae53eb1bf34e384c6af34b8ec4d133fb1e3b1db3551b29d560b53044c0",
+    "docs/MASTER_APP_LESSONS.md": "03fef64877de2cbb536391a72a0c95e46e1952ff2dda7d0ef74553637ada458a",
+    "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
+    "governance/INSTRUCTION_DICTIONARY.md": "61374d8b18f39a679fb34517007a989f5cf3251c04cf642899fe7f2d80549472",
+    "governance/WORK_SYSTEM.md": "dbdda29511567c2a5c85bbef8e58909368ebf1396360d531a5db4b3dc76f6346",
+    "src/pages/LearningSetupPage.tsx": "830707a236991cdf3d70574dfa100bb53028d50712a3e6acb0a18c7fdb5a8e22",
+    "src/pages/TextbookUnitPage.tsx": "d562e95bf1d30ae1aef51a05beaa7685d28418cd9ab327fffeaa9ebee4d893a0",
+    "work/items/W-MATH-003-numbers-expressions-creation/P-002_LEARNER_CATALOG_PAGES_RELEASE.md": "be9bd6bad6a553c82d05bc44895f84b1a6f9bc35af2d27631ec0b391d94ed8a9"
+  },
+  "proposal": {
+    "hash": "5fd7052a200ba00676d1cc28321441822164fc558525a146002208a1356b9f00",
+    "id": "P-001-R1",
+    "patch_hash": "da0236c4396fcae6fda34caf1e9c82ced6d2a1b123441db8115a1900f6e047c1"
+  },
+  "scope": {
+    "paths": [
+      "src/data/textbook/math/mathCatalog.ts",
+      "src/data/textbook/math/numbers/ne01Lesson.ts",
+      "src/data/textbook/math/numbers/ne02Lesson.ts",
+      "src/data/textbook/math/mathCatalog.test.ts"
+    ],
+    "preserve": [
+      "src/data/mathPractice/",
+      "src/data/textbook/physics/",
+      "public/",
+      "package.json",
+      "pnpm-lock.yaml",
+      "src/pages/",
+      "source-Word-and-original-figures"
+    ]
+  },
+  "source_manifest": {
+    "src/data/textbook/math/mathCatalog.test.ts": "8e7e08d19fb2d1fcdc203fccc59954f9037d3dae7ebd75ded4ffdadb915af69b",
+    "src/data/textbook/math/mathCatalog.ts": "8b4beed4ff4d6334172776ec2abc7633b38494081e4fe073c169a13f9794db08",
+    "src/data/textbook/math/numbers/ne01Lesson.ts": "763aecf69ef211f1b60f46aec119e6ad8dd1ce731ef95d83abcdf472110722c5",
+    "src/data/textbook/math/numbers/ne02Lesson.ts": "d9317ed72eaca7bb7ce28e100c6f892749fc1fa60edf7e89535ad312f2529af9"
+  },
+  "previous_results": {
+    "R04_PROPOSAL@CHAPTER1-STRUCTURE": {
+      "actor": "current-chat",
+      "artifact": "9c136f188f76dd5211674cd2bfa435636e79a9983c248948e0f2603158737dff",
+      "input_hash": "b31f8d4e38789eb981a794eec33db694cd9faa27320e7ea8b8e075508ede7c72",
+      "node": "R04_PROPOSAL@CHAPTER1-STRUCTURE",
+      "verdict": "PASS"
+    }
+  },
+  "do_not_touch": [
+    "src/data/mathPractice/",
+    "src/data/textbook/physics/",
+    "public/",
+    "package.json",
+    "pnpm-lock.yaml",
+    "src/pages/",
+    "source-Word-and-original-figures"
+  ],
+  "completion_is_not_semantic_proof": true
+}

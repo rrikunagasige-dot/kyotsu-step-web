@@ -1,0 +1,18 @@
+{
+  "sourceSHA": "fc27e7f5fbdc28345917276d43602ea4787537bd",
+  "visibleGenerator": "unmodified current src/domain/textbook.ts executed after stripping type-only syntax",
+  "visibleItems": 290,
+  "narrowExactGrammar": "integer constants and single positive-integer radicand times signed integer coefficient;no sums,expressions or prompt-form equivalence assumed",
+  "fullyParsableVisibleItems": 56,
+  "visibleEquivalentPairs": [],
+  "authoredEquivalentPairs": [
+    {
+      "id": "n10-08",
+      "pair": [
+        "4\\sqrt{12}",
+        "8\\sqrt3"
+      ],
+      "surface": "authored"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+# W-MATH-025/P-008 — N04 Q20 hint-only correction
+Status: PROPOSED
+Command: CMD-WORK-001 修正
+Created: 2026-10-23 JST
+
+## Problem and independent evidence
+Wordは先に掛ける二組を自分で選ばせるが、hintが正しい二組(1,4)/(2,3)を直接指定する。Q19は別の三項式の展開で、この組合せを求めていない。
+Teacher Word SHA25693827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa body paragraph186. Native runtime export39908283290/job120265153221 loaded real Vite/Zod modules. Frozen learner source fc27e7f5fbdc28345917276d43602ea4787537bd;execution3cea41ef729ec21a6e0b6233346b677b0feffab5. Source file `src/data/textbook/math/numbers/n04BatchSupplement.ts`,blob `d8cc8e96b7bcadba87969e16a5b9f71ad95659fc`;actual target `n04-20`.
+
+## Exact proposed hint
+旧: `1と4を組にし、2と3を組にすると和が揃う。`
+新: `二つずつ組にして展開したとき、xの係数が何の和になるか考えよう。その和が同じになる組合せを探そう。`
+
+## Scope and protected content
+Only this hint string in `src/data/textbook/math/numbers/n04BatchSupplement.ts`. N04 revision2,original22 questions,stable item IDs,grading key `(x^2+5x+4)(x^2+5x+6)`,all authored and actual visible choices,reading-flow math/paragraphs,figures,progress/migration semantics remain unchanged. Do not raise revision or reset saved attempts for a hint-only edit. All previous five accepted fixes and Q16 reconciliation remain intact. No blanket rewording,no other learner changes,no main merge/hosting/deployment.
+
+## Block preflight and mathematical check
+MASTER §§19/20/51–54 and WORK_SYSTEM §12A/B/C. Learn by deciding/calculating the current quantity;general methods and previously resolved values are allowed,explicit current output is not the hint. 三通りの組合せの一次係数は(3,7),(4,6),(5,5)。正答は(x²+5x+4)(x²+5x+6)。
+
+## Verification plan after approval
+Exact one-hint diff per target and unchanged other fields/source blobs. Ordinary/review320/390/1440 wrong→hint→retry and gated next step;completed/reload and prior firstValue/attemptCount/time preserve history. Actual getTextbookChoices controls visible option count (scaffold may yield2/3/4);do not falsely assert four everywhere. Existing math/review/shared-mode regression and scoped source/math audit. Group all approved items' genuine images for one user Gate① response;no per-item approval pauses. Gate②/③ remain distinct.
+
+## Approval
+Approved by user: NO
+Status: PROPOSED
+The prior「進めてくれ」authorized audit continuation,not these newly specified hints. No learner code has changed. Present this exact batch before implementation.

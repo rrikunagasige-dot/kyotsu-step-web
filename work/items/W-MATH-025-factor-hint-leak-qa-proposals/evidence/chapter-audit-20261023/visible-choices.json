@@ -1,0 +1,4975 @@
+[
+  {
+    "unit": "01",
+    "id": "n01-01",
+    "answer": "-1",
+    "scaffold": "strong",
+    "authored": [
+      "-1",
+      "1",
+      "-2"
+    ],
+    "visible": [
+      "-2",
+      "-1"
+    ]
+  },
+  {
+    "unit": "01",
+    "id": "n01-02a",
+    "answer": "(-2,1)",
+    "scaffold": "strong",
+    "authored": [
+      "(-2,1)",
+      "(2,1)",
+      "(-2,2)"
+    ],
+    "visible": [
+      "(-2,2)",
+      "(-2,1)"
+    ]
+  },
+  {
+    "unit": "01",
+    "id": "n01-02b",
+    "answer": "(1,2)",
+    "scaffold": "strong",
+    "authored": [
+      "(1,2)",
+      "(2,1)",
+      "(0,2)"
+    ],
+    "visible": [
+      "(1,2)",
+      "(2,1)"
+    ]
+  },
+  {
+    "unit": "01",
+    "id": "n01-02c",
+    "answer": "(-1,4)",
+    "scaffold": "medium",
+    "authored": [
+      "(-1,4)",
+      "(1,4)",
+      "(-1,2)"
+    ],
+    "visible": [
+      "(-1,4)",
+      "(1,4)",
+      "(-1,2)"
+    ]
+  },
+  {
+    "unit": "01",
+    "id": "n01-03",
+    "answer": "5y",
+    "scaffold": "strong",
+    "authored": [
+      "5y",
+      "5",
+      "5x"
+    ],
+    "visible": [
+      "5x",
+      "5y"
+    ]
+  },
+  {
+    "unit": "01",
+    "id": "n01-04",
+    "answer": "(5x^3,1)",
+    "scaffold": "medium",
+    "authored": [
+      "(5x^3,1)",
+      "(5y,3)",
+      "(5x^3,3)"
+    ],
+    "visible": [
+      "(5y,3)",
+      "(5x^3,1)",
+      "(5x^3,3)"
+    ]
+  },
+  {
+    "unit": "01",
+    "id": "n01-05",
+    "answer": "(ay,ax)",
+    "scaffold": "medium",
+    "authored": [
+      "(ay,ax)",
+      "(ax,ay)",
+      "(a,a)"
+    ],
+    "visible": [
+      "(ay,ax)",
+      "(a,a)",
+      "(ax,ay)"
+    ]
+  },
+  {
+    "unit": "01",
+    "id": "n01-06a",
+    "answer": "3x^2-5x^2",
+    "scaffold": "medium",
+    "authored": [
+      "3x^2-5x^2",
+      "3x^2+5x^2",
+      "3x^2-5x"
+    ],
+    "visible": [
+      "3x^2-5x^2",
+      "3x^2+5x^2",
+      "3x^2-5x"
+    ]
+  },
+  {
+    "unit": "01",
+    "id": "n01-06b",
+    "answer": "(-5x+2x)\\quad (6-3)",
+    "scaffold": "medium",
+    "authored": [
+      "(-5x+2x)\\quad (6-3)",
+      "(5x+2x)\\quad (6-3)",
+      "(-5x-2x)\\quad (6+3)"
+    ],
+    "visible": [
+      "(5x+2x)\\quad (6-3)",
+      "(-5x-2x)\\quad (6+3)",
+      "(-5x+2x)\\quad (6-3)"
+    ]
+  },
+  {
+    "unit": "01",
+    "id": "n01-r3-q07-x2coef",
+    "answer": "-2",
+    "scaffold": "medium",
+    "authored": [
+      "-2",
+      "2",
+      "-8"
+    ],
+    "visible": [
+      "2",
+      "-8",
+      "-2"
+    ]
+  },
+  {
+    "unit": "01",
+    "id": "n01-r3-q07-xcoef",
+    "answer": "-3",
+    "scaffold": "medium",
+    "authored": [
+      "-3",
+      "3",
+      "-7"
+    ],
+    "visible": [
+      "3",
+      "-7",
+      "-3"
+    ]
+  },
+  {
+    "unit": "01",
+    "id": "n01-r3-q07-const",
+    "answer": "3",
+    "scaffold": "medium",
+    "authored": [
+      "3",
+      "-3",
+      "9"
+    ],
+    "visible": [
+      "9",
+      "3",
+      "-3"
+    ]
+  },
+  {
+    "unit": "01",
+    "id": "n01-07",
+    "answer": "-2x^2-3x+3",
+    "scaffold": "medium",
+    "authored": [
+      "-2x^2-3x+3",
+      "-2x^2+3x+3",
+      "-2x^2-3x-3",
+      "-2x-3x^2+3"
+    ],
+    "visible": [
+      "-2x^2-3x+3",
+      "-2x-3x^2+3",
+      "-2x^2+3x+3"
+    ]
+  },
+  {
+    "unit": "01",
+    "id": "n01-08",
+    "answer": "(2,3)",
+    "scaffold": "medium",
+    "authored": [
+      "(2,3)",
+      "(3,2)",
+      "(2,-3)"
+    ],
+    "visible": [
+      "(3,2)",
+      "(2,-3)",
+      "(2,3)"
+    ]
+  },
+  {
+    "unit": "01",
+    "id": "n01-09a",
+    "answer": "(1-1)x^3-2x^2+(1+3)x-1",
+    "scaffold": "light",
+    "authored": [
+      "(1-1)x^3-2x^2+(1+3)x-1",
+      "(1+1)x^3-2x^2+(1+3)x-1",
+      "(1-1)x^3+2x^2+(1+3)x-1",
+      "(1-1)x^3-2x^2+(1-3)x-1"
+    ],
+    "visible": [
+      "(1+1)x^3-2x^2+(1+3)x-1",
+      "(1-1)x^3-2x^2+(1-3)x-1",
+      "(1-1)x^3-2x^2+(1+3)x-1",
+      "(1-1)x^3+2x^2+(1+3)x-1"
+    ]
+  },
+  {
+    "unit": "01",
+    "id": "n01-09b",
+    "answer": "-2x^2+4x-1",
+    "scaffold": "light",
+    "authored": [
+      "-2x^2+4x-1",
+      "2x^3-2x^2+4x-1",
+      "-2x^2+2x-1",
+      "-2x^2+4x+1"
+    ],
+    "visible": [
+      "2x^3-2x^2+4x-1",
+      "-2x^2+4x-1",
+      "-2x^2+4x+1",
+      "-2x^2+2x-1"
+    ]
+  },
+  {
+    "unit": "01",
+    "id": "n01-10a",
+    "answer": "2次式",
+    "scaffold": "light",
+    "authored": [
+      "2次式",
+      "3次式",
+      "1次式",
+      "0次式"
+    ],
+    "visible": [
+      "3次式",
+      "1次式",
+      "2次式",
+      "0次式"
+    ]
+  },
+  {
+    "unit": "01",
+    "id": "n01-10b",
+    "answer": "3次の項が整理によって消えるから",
+    "scaffold": "light",
+    "authored": [
+      "3次の項が整理によって消えるから",
+      "式にはxが3回出てくるから",
+      "定数項があるから",
+      "負の係数があるから"
+    ],
+    "visible": [
+      "負の係数があるから",
+      "式にはxが3回出てくるから",
+      "定数項があるから",
+      "3次の項が整理によって消えるから"
+    ]
+  },
+  {
+    "unit": "02",
+    "id": "n02-01",
+    "answer": "3bx",
+    "scaffold": "strong",
+    "authored": [
+      "3bx",
+      "3b^2x",
+      "2bx^2",
+      "bx"
+    ],
+    "visible": [
+      "3bx",
+      "2bx^2"
+    ]
+  },
+  {
+    "unit": "02",
+    "id": "n02-02",
+    "answer": "x^3-ax^2+3bx+5c",
+    "scaffold": "strong",
+    "authored": [
+      "x^3-ax^2+3bx+5c",
+      "5c+3bx-ax^2+x^3",
+      "x^3+3bx-ax^2+5c",
+      "x^3-ax^2+2bx+5c"
+    ],
+    "visible": [
+      "5c+3bx-ax^2+x^3",
+      "x^3-ax^2+3bx+5c"
+    ]
+  },
+  {
+    "unit": "02",
+    "id": "n02-03",
+    "answer": "(2y-3,\\ y^2-3y+2)",
+    "scaffold": "medium",
+    "authored": [
+      "(2y-3,\\ y^2-3y+2)",
+      "(2y,\\ y^2-3y+2)",
+      "(2y-3,\\ 2)",
+      "(-3,\\ y^2-3y+2)"
+    ],
+    "visible": [
+      "(2y-3,\\ 2)",
+      "(2y-3,\\ y^2-3y+2)",
+      "(-3,\\ y^2-3y+2)"
+    ]
+  },
+  {
+    "unit": "02",
+    "id": "n02-04",
+    "answer": "x^2+(2y-3)x+(y^2-3y+2)",
+    "scaffold": "medium",
+    "authored": [
+      "x^2+(2y-3)x+(y^2-3y+2)",
+      "x^2+(2y-3)x+2",
+      "x^2+(2y+3)x+(y^2-3y+2)",
+      "x^2+y^2+(2y-3)x-3y+2"
+    ],
+    "visible": [
+      "x^2+(2y-3)x+(y^2-3y+2)",
+      "x^2+(2y+3)x+(y^2-3y+2)",
+      "x^2+y^2+(2y-3)x-3y+2"
+    ]
+  },
+  {
+    "unit": "02",
+    "id": "n02-05",
+    "answer": "0x",
+    "scaffold": "medium",
+    "authored": [
+      "0x",
+      "x",
+      "-x",
+      "2x"
+    ],
+    "visible": [
+      "-x",
+      "0x",
+      "x"
+    ]
+  },
+  {
+    "unit": "02",
+    "id": "n02-06",
+    "answer": "x^3-x^2+x+1",
+    "scaffold": "medium",
+    "authored": [
+      "x^3-x^2+x+1",
+      "x^3-5x^2+x+1",
+      "x^3-x^2+x+3",
+      "x^3-x^2+1"
+    ],
+    "visible": [
+      "x^3-x^2+x+1",
+      "x^3-5x^2+x+1",
+      "x^3-x^2+1"
+    ]
+  },
+  {
+    "unit": "02",
+    "id": "n02-07",
+    "answer": "x^3-2x^2-2",
+    "scaffold": "medium",
+    "authored": [
+      "x^3-2x^2-2",
+      "x^3+2x^2+2",
+      "x^3-2x^2+2",
+      "-x^3-2x^2-2"
+    ],
+    "visible": [
+      "x^3-2x^2+2",
+      "x^3-2x^2-2",
+      "-x^3-2x^2-2"
+    ]
+  },
+  {
+    "unit": "02",
+    "id": "n02-08",
+    "answer": "3x^3-5x^2+x-3",
+    "scaffold": "light",
+    "authored": [
+      "3x^3-5x^2+x-3",
+      "x^3-x^2+x+1",
+      "3x^3-x^2+x-3",
+      "3x^3-5x^2+x+1"
+    ],
+    "visible": [
+      "x^3-x^2+x+1",
+      "3x^3-x^2+x-3",
+      "3x^3-5x^2+x+1",
+      "3x^3-5x^2+x-3"
+    ]
+  },
+  {
+    "unit": "02",
+    "id": "n02-09",
+    "answer": "(4x^3-6x^2+2x-2,\\ 3x^3-6x^2-6)",
+    "scaffold": "medium",
+    "authored": [
+      "(4x^3-6x^2+2x-2,\\ 3x^3-6x^2-6)",
+      "(4x^3-3x^2+2x-1,\\ 3x^3-6x^2-6)",
+      "(4x^3-6x^2+2x-2,\\ 3x^3+6x^2-6)",
+      "(4x^3-6x^2+2x-2,\\ 3x^3-6x^2+6)"
+    ],
+    "visible": [
+      "(4x^3-6x^2+2x-2,\\ 3x^3+6x^2-6)",
+      "(4x^3-6x^2+2x-2,\\ 3x^3-6x^2+6)",
+      "(4x^3-6x^2+2x-2,\\ 3x^3-6x^2-6)"
+    ]
+  },
+  {
+    "unit": "02",
+    "id": "n02-10",
+    "answer": "7x^3-12x^2+2x-8",
+    "scaffold": "light",
+    "authored": [
+      "7x^3-12x^2+2x-8",
+      "7x^3+0x^2+2x-8",
+      "x^3-12x^2+2x-8",
+      "7x^3-12x^2+2x+4"
+    ],
+    "visible": [
+      "7x^3-12x^2+2x-8",
+      "x^3-12x^2+2x-8",
+      "7x^3-12x^2+2x+4",
+      "7x^3+0x^2+2x-8"
+    ]
+  },
+  {
+    "unit": "02",
+    "id": "n02-11",
+    "answer": "2A-3B",
+    "scaffold": "light",
+    "authored": [
+      "2A-3B",
+      "2A-5B",
+      "4A-5B",
+      "2A-4B"
+    ],
+    "visible": [
+      "2A-5B",
+      "2A-4B",
+      "2A-3B",
+      "4A-5B"
+    ]
+  },
+  {
+    "unit": "02",
+    "id": "n02-12",
+    "answer": "7x^3-12x^2+2x-8",
+    "scaffold": "light",
+    "authored": [
+      "7x^3-12x^2+2x-8",
+      "3x^3-5x^2+x-3",
+      "x^3-x^2+x+1",
+      "7x^3-12x^2+2x-6"
+    ],
+    "visible": [
+      "7x^3-12x^2+2x-8",
+      "3x^3-5x^2+x-3",
+      "x^3-x^2+x+1",
+      "7x^3-12x^2+2x-6"
+    ]
+  },
+  {
+    "unit": "03",
+    "id": "n03-01",
+    "answer": "4a^8",
+    "scaffold": "strong",
+    "authored": [
+      "4a^8",
+      "4a^{15}",
+      "a^8",
+      "4a^2"
+    ],
+    "visible": [
+      "4a^{15}",
+      "4a^8"
+    ]
+  },
+  {
+    "unit": "03",
+    "id": "n03-02",
+    "answer": "a^{m+n}",
+    "scaffold": "strong",
+    "authored": [
+      "a^{m+n}",
+      "a^{mn}",
+      "a^{m-n}",
+      "2a^{mn}"
+    ],
+    "visible": [
+      "a^{m+n}",
+      "a^{m-n}"
+    ]
+  },
+  {
+    "unit": "03",
+    "id": "n03-03",
+    "answer": "a^{mn}",
+    "scaffold": "medium",
+    "authored": [
+      "a^{mn}",
+      "a^{m+n}",
+      "a^{m^n}",
+      "na^m"
+    ],
+    "visible": [
+      "a^{mn}",
+      "na^m",
+      "a^{m+n}"
+    ]
+  },
+  {
+    "unit": "03",
+    "id": "n03-04",
+    "answer": "a^nb^n",
+    "scaffold": "medium",
+    "authored": [
+      "a^nb^n",
+      "a^nb",
+      "ab^n",
+      "a^{2n}b^n"
+    ],
+    "visible": [
+      "ab^n",
+      "a^nb^n",
+      "a^{2n}b^n"
+    ]
+  },
+  {
+    "unit": "03",
+    "id": "n03-05",
+    "answer": "(-2)^3(x^3)^3(y^2)^3",
+    "scaffold": "medium",
+    "authored": [
+      "(-2)^3(x^3)^3(y^2)^3",
+      "(-2)(x^3)^3(y^2)^3",
+      "(-2)^3x^3y^6",
+      "(-2)^3(x^3)^3y^2"
+    ],
+    "visible": [
+      "(-2)^3(x^3)^3(y^2)^3",
+      "(-2)^3(x^3)^3y^2",
+      "(-2)(x^3)^3(y^2)^3"
+    ]
+  },
+  {
+    "unit": "03",
+    "id": "n03-06",
+    "answer": "-8x^9y^6",
+    "scaffold": "medium",
+    "authored": [
+      "-8x^9y^6",
+      "8x^9y^6",
+      "-6x^9y^6",
+      "-8x^6y^5"
+    ],
+    "visible": [
+      "-6x^9y^6",
+      "8x^9y^6",
+      "-8x^9y^6"
+    ]
+  },
+  {
+    "unit": "03",
+    "id": "n03-07",
+    "answer": "x^2x^2+x^2(-3x)+x^2\\cdot4",
+    "scaffold": "medium",
+    "authored": [
+      "x^2x^2+x^2(-3x)+x^2\\cdot4",
+      "x^2x^2+x^2\\cdot4",
+      "x^2x^2+x^2(3x)+x^2\\cdot4",
+      "x^2x^2+(-3x)+4"
+    ],
+    "visible": [
+      "x^2x^2+x^2(3x)+x^2\\cdot4",
+      "x^2x^2+(-3x)+4",
+      "x^2x^2+x^2(-3x)+x^2\\cdot4"
+    ]
+  },
+  {
+    "unit": "03",
+    "id": "n03-08",
+    "answer": "x^4-3x^3+4x^2",
+    "scaffold": "medium",
+    "authored": [
+      "x^4-3x^3+4x^2",
+      "x^4-3x^2+4x^2",
+      "x^4+3x^3+4x^2",
+      "x^4-3x^3+4x"
+    ],
+    "visible": [
+      "x^4-3x^2+4x^2",
+      "x^4-3x^3+4x^2",
+      "x^4+3x^3+4x^2"
+    ]
+  },
+  {
+    "unit": "03",
+    "id": "n03-09",
+    "answer": "2x(3x+4)+1(3x+4)",
+    "scaffold": "medium",
+    "authored": [
+      "2x(3x+4)+1(3x+4)",
+      "2x(3x+4)+1",
+      "2x(3x+4)+1(3x)",
+      "2x(3x+4)-1(3x+4)"
+    ],
+    "visible": [
+      "2x(3x+4)+1(3x+4)",
+      "2x(3x+4)+1(3x)",
+      "2x(3x+4)-1(3x+4)"
+    ]
+  },
+  {
+    "unit": "03",
+    "id": "n03-r3-q10-p1",
+    "answer": "6x^2",
+    "scaffold": "medium",
+    "authored": [
+      "6x^2",
+      "5x^2",
+      "6x",
+      "6x^3"
+    ],
+    "visible": [
+      "6x^3",
+      "5x^2",
+      "6x^2"
+    ]
+  },
+  {
+    "unit": "03",
+    "id": "n03-r3-q10-p2",
+    "answer": "8x",
+    "scaffold": "medium",
+    "authored": [
+      "8x",
+      "8x^2",
+      "6x",
+      "8"
+    ],
+    "visible": [
+      "8x",
+      "8x^2",
+      "6x"
+    ]
+  },
+  {
+    "unit": "03",
+    "id": "n03-r3-q10-p3",
+    "answer": "3x",
+    "scaffold": "medium",
+    "authored": [
+      "3x",
+      "3x^2",
+      "4x",
+      "3"
+    ],
+    "visible": [
+      "4x",
+      "3x",
+      "3"
+    ]
+  },
+  {
+    "unit": "03",
+    "id": "n03-r3-q10-p4",
+    "answer": "4",
+    "scaffold": "medium",
+    "authored": [
+      "4",
+      "3",
+      "1",
+      "4x"
+    ],
+    "visible": [
+      "1",
+      "4x",
+      "4"
+    ]
+  },
+  {
+    "unit": "03",
+    "id": "n03-10",
+    "answer": "6x^2+8x+3x+4",
+    "scaffold": "light",
+    "authored": [
+      "6x^2+8x+3x+4",
+      "6x^2+8x+4",
+      "6x^2+8x-3x+4",
+      "6x^2+11x+4"
+    ],
+    "visible": [
+      "6x^2+8x-3x+4",
+      "6x^2+8x+4",
+      "6x^2+11x+4",
+      "6x^2+8x+3x+4"
+    ]
+  },
+  {
+    "unit": "03",
+    "id": "n03-11",
+    "answer": "6x^2+11x+4",
+    "scaffold": "light",
+    "authored": [
+      "6x^2+11x+4",
+      "6x^2+5x+4",
+      "6x^2+12x+4",
+      "6x^2+11x"
+    ],
+    "visible": [
+      "6x^2+11x+4",
+      "6x^2+11x",
+      "6x^2+5x+4",
+      "6x^2+12x+4"
+    ]
+  },
+  {
+    "unit": "03",
+    "id": "n03-12",
+    "answer": "3x(2x^2-x+5)-(2x^2-x+5)",
+    "scaffold": "light",
+    "authored": [
+      "3x(2x^2-x+5)-(2x^2-x+5)",
+      "3x(2x^2-x+5)-(2x^2-x)",
+      "3x(2x^2-x+5)+(2x^2-x+5)",
+      "3x(2x^2-x+5)-1"
+    ],
+    "visible": [
+      "3x(2x^2-x+5)-(2x^2-x)",
+      "3x(2x^2-x+5)+(2x^2-x+5)",
+      "3x(2x^2-x+5)-(2x^2-x+5)",
+      "3x(2x^2-x+5)-1"
+    ]
+  },
+  {
+    "unit": "03",
+    "id": "n03-13",
+    "answer": "6x^3-5x^2+16x-5",
+    "scaffold": "light",
+    "authored": [
+      "6x^3-5x^2+16x-5",
+      "6x^3-3x^2+14x-5",
+      "6x^3-5x^2+16x+5",
+      "6x^3-5x^2+14x-5"
+    ],
+    "visible": [
+      "6x^3-5x^2+14x-5",
+      "6x^3-5x^2+16x+5",
+      "6x^3-5x^2+16x-5",
+      "6x^3-3x^2+14x-5"
+    ]
+  },
+  {
+    "unit": "04",
+    "id": "n04-q01-p1",
+    "answer": "25x^2",
+    "scaffold": "strong",
+    "authored": [
+      "25x^2",
+      "10x^2",
+      "25x",
+      "20xy"
+    ],
+    "visible": [
+      "20xy",
+      "25x^2"
+    ]
+  },
+  {
+    "unit": "04",
+    "id": "n04-q01-p2",
+    "answer": "20xy",
+    "scaffold": "strong",
+    "authored": [
+      "20xy",
+      "20x^2y",
+      "9xy",
+      "20y"
+    ],
+    "visible": [
+      "20xy",
+      "20y"
+    ]
+  },
+  {
+    "unit": "04",
+    "id": "n04-q01-p3",
+    "answer": "20xy",
+    "scaffold": "medium",
+    "authored": [
+      "20xy",
+      "20y^2",
+      "9xy",
+      "20x"
+    ],
+    "visible": [
+      "20x",
+      "20y^2",
+      "20xy"
+    ]
+  },
+  {
+    "unit": "04",
+    "id": "n04-q01-p4",
+    "answer": "16y^2",
+    "scaffold": "medium",
+    "authored": [
+      "16y^2",
+      "8y^2",
+      "16y",
+      "20xy"
+    ],
+    "visible": [
+      "20xy",
+      "8y^2",
+      "16y^2"
+    ]
+  },
+  {
+    "unit": "04",
+    "id": "n04-01",
+    "answer": "25x^2+20xy+20xy+16y^2",
+    "scaffold": "light",
+    "authored": [
+      "25x^2+20xy+20xy+16y^2",
+      "25x^2+20xy+16y^2",
+      "25x^2+40xy+16y^2",
+      "25x^2+16y^2"
+    ],
+    "visible": [
+      "25x^2+20xy+20xy+16y^2",
+      "25x^2+16y^2",
+      "25x^2+20xy+16y^2",
+      "25x^2+40xy+16y^2"
+    ]
+  },
+  {
+    "unit": "04",
+    "id": "n04-02",
+    "answer": "40xy",
+    "scaffold": "strong",
+    "authored": [
+      "40xy",
+      "20xy",
+      "25xy",
+      "80xy"
+    ],
+    "visible": [
+      "80xy",
+      "40xy"
+    ]
+  },
+  {
+    "unit": "04",
+    "id": "n04-03",
+    "answer": "25x^2+40xy+16y^2",
+    "scaffold": "strong",
+    "authored": [
+      "25x^2+40xy+16y^2",
+      "25x^2+20xy+16y^2",
+      "25x^2+16y^2",
+      "25x^2-40xy+16y^2"
+    ],
+    "visible": [
+      "25x^2+40xy+16y^2",
+      "25x^2-40xy+16y^2"
+    ]
+  },
+  {
+    "unit": "04",
+    "id": "n04-04",
+    "answer": "a^2+ab+ba+b^2",
+    "scaffold": "medium",
+    "authored": [
+      "a^2+ab+ba+b^2",
+      "a^2+ab+b^2",
+      "a^2+2ab+b^2",
+      "a^2+b^2"
+    ],
+    "visible": [
+      "a^2+ab+ba+b^2",
+      "a^2+2ab+b^2",
+      "a^2+ab+b^2"
+    ]
+  },
+  {
+    "unit": "04",
+    "id": "n04-05",
+    "answer": "a^2+2ab+b^2",
+    "scaffold": "medium",
+    "authored": [
+      "a^2+2ab+b^2",
+      "a^2+ab+b^2",
+      "a^2+2a+2b+b^2",
+      "a^2-b^2"
+    ],
+    "visible": [
+      "a^2+2a+2b+b^2",
+      "a^2+2ab+b^2",
+      "a^2+ab+b^2"
+    ]
+  },
+  {
+    "unit": "04",
+    "id": "n04-06",
+    "answer": "a^2-ab-ba+b^2",
+    "scaffold": "medium",
+    "authored": [
+      "a^2-ab-ba+b^2",
+      "a^2-ab+ba-b^2",
+      "a^2+ab+ba+b^2",
+      "a^2-ab-ba-b^2"
+    ],
+    "visible": [
+      "a^2+ab+ba+b^2",
+      "a^2-ab+ba-b^2",
+      "a^2-ab-ba+b^2"
+    ]
+  },
+  {
+    "unit": "04",
+    "id": "n04-07",
+    "answer": "a^2-2ab+b^2",
+    "scaffold": "medium",
+    "authored": [
+      "a^2-2ab+b^2",
+      "a^2+2ab+b^2",
+      "a^2-2ab-b^2",
+      "a^2-ab+b^2"
+    ],
+    "visible": [
+      "a^2-2ab-b^2",
+      "a^2-2ab+b^2",
+      "a^2-ab+b^2"
+    ]
+  },
+  {
+    "unit": "04",
+    "id": "n04-08",
+    "answer": "a^2-ab+ab-b^2=a^2-b^2",
+    "scaffold": "medium",
+    "authored": [
+      "a^2-ab+ab-b^2=a^2-b^2",
+      "a^2+2ab-b^2",
+      "a^2-ab+ab+b^2=a^2+b^2",
+      "a^2-2ab-b^2"
+    ],
+    "visible": [
+      "a^2-ab+ab+b^2=a^2+b^2",
+      "a^2+2ab-b^2",
+      "a^2-ab+ab-b^2=a^2-b^2"
+    ]
+  },
+  {
+    "unit": "04",
+    "id": "n04-09",
+    "answer": "差の平方：2aと5／和差の積：3xと2",
+    "scaffold": "medium",
+    "authored": [
+      "差の平方：2aと5／和差の積：3xと2",
+      "和の平方：2aと5／和差の積：3xと2",
+      "差の平方：2aと5／差の平方：3xと2",
+      "差の平方：2aと−5／和の平方：3xと2"
+    ],
+    "visible": [
+      "差の平方：2aと5／差の平方：3xと2",
+      "差の平方：2aと5／和差の積：3xと2",
+      "和の平方：2aと5／和差の積：3xと2"
+    ]
+  },
+  {
+    "unit": "04",
+    "id": "n04-10",
+    "answer": "4a^2-20a+25,\\quad9x^2-4",
+    "scaffold": "medium",
+    "authored": [
+      "4a^2-20a+25,\\quad9x^2-4",
+      "4a^2-10a+25,\\quad9x^2-4",
+      "4a^2-20a-25,\\quad9x^2+4",
+      "4a^2+20a+25,\\quad9x^2-4"
+    ],
+    "visible": [
+      "4a^2+20a+25,\\quad9x^2-4",
+      "4a^2-20a+25,\\quad9x^2-4",
+      "4a^2-10a+25,\\quad9x^2-4"
+    ]
+  },
+  {
+    "unit": "04",
+    "id": "n04-11",
+    "answer": "acx^2+adx+bcx+bd",
+    "scaffold": "medium",
+    "authored": [
+      "acx^2+adx+bcx+bd",
+      "acx^2+ad+bcx+bd",
+      "acx^2+adx+bd",
+      "acx^2+abx+cdx+bd"
+    ],
+    "visible": [
+      "acx^2+adx+bd",
+      "acx^2+ad+bcx+bd",
+      "acx^2+adx+bcx+bd"
+    ]
+  },
+  {
+    "unit": "04",
+    "id": "n04-12",
+    "answer": "acx^2+(ad+bc)x+bd",
+    "scaffold": "medium",
+    "authored": [
+      "acx^2+(ad+bc)x+bd",
+      "acx^2+adbcx+bd",
+      "acx^2+(ab+cd)x+bd",
+      "acx^2+(ad-bc)x+bd"
+    ],
+    "visible": [
+      "acx^2+adbcx+bd",
+      "acx^2+(ad+bc)x+bd",
+      "acx^2+(ab+cd)x+bd"
+    ]
+  },
+  {
+    "unit": "04",
+    "id": "n04-13",
+    "answer": "3x\\cdot2=6x,\\quad1\\cdot x=x,\\quad3x^2+7x+2",
+    "scaffold": "medium",
+    "authored": [
+      "3x\\cdot2=6x,\\quad1\\cdot x=x,\\quad3x^2+7x+2",
+      "3x\\cdot2=6x,\\quad1\\cdot x=x,\\quad3x^2+6x+2",
+      "3x\\cdot2=3x,\\quad1\\cdot x=x,\\quad3x^2+4x+2",
+      "3x\\cdot2=6x,\\quad1\\cdot x=2x,\\quad3x^2+8x+2"
+    ],
+    "visible": [
+      "3x\\cdot2=6x,\\quad1\\cdot x=x,\\quad3x^2+7x+2",
+      "3x\\cdot2=3x,\\quad1\\cdot x=x,\\quad3x^2+4x+2",
+      "3x\\cdot2=6x,\\quad1\\cdot x=x,\\quad3x^2+6x+2"
+    ]
+  },
+  {
+    "unit": "04",
+    "id": "n04-14",
+    "answer": "T^2+2Tc+c^2",
+    "scaffold": "medium",
+    "authored": [
+      "T^2+2Tc+c^2",
+      "T^2+Tc+c^2",
+      "T^2+2T+c^2",
+      "T^2-c^2"
+    ],
+    "visible": [
+      "T^2+2T+c^2",
+      "T^2+2Tc+c^2",
+      "T^2-c^2"
+    ]
+  },
+  {
+    "unit": "04",
+    "id": "n04-15",
+    "answer": "a^2+b^2+c^2+2ab+2ac+2bc",
+    "scaffold": "medium",
+    "authored": [
+      "a^2+b^2+c^2+2ab+2ac+2bc",
+      "a^2+b^2+c^2+2ab",
+      "a^2+b^2+c^2+ab+ac+bc",
+      "a^2+b^2+c^2-2ab+2ac+2bc"
+    ],
+    "visible": [
+      "a^2+b^2+c^2+2ab+2ac+2bc",
+      "a^2+b^2+c^2+ab+ac+bc",
+      "a^2+b^2+c^2+2ab"
+    ]
+  },
+  {
+    "unit": "04",
+    "id": "n04-16",
+    "answer": "a^2+b^2+c^2+2ab-2ac-2bc",
+    "scaffold": "light",
+    "authored": [
+      "a^2+b^2+c^2+2ab-2ac-2bc",
+      "a^2+b^2-c^2+2ab-2ac-2bc",
+      "a^2+b^2+c^2-2ab-2ac-2bc",
+      "a^2+b^2+c^2+2ab+2ac-2bc"
+    ],
+    "visible": [
+      "a^2+b^2+c^2+2ab-2ac-2bc",
+      "a^2+b^2-c^2+2ab-2ac-2bc",
+      "a^2+b^2+c^2+2ab+2ac-2bc",
+      "a^2+b^2+c^2-2ab-2ac-2bc"
+    ]
+  },
+  {
+    "unit": "04",
+    "id": "n04-17",
+    "answer": "x^2+1,\\quad x",
+    "scaffold": "light",
+    "authored": [
+      "x^2+1,\\quad x",
+      "x^2,\\quad x+1",
+      "x^2+x,\\quad1",
+      "x^2+1,\\quad -1"
+    ],
+    "visible": [
+      "x^2,\\quad x+1",
+      "x^2+1,\\quad x",
+      "x^2+1,\\quad -1",
+      "x^2+x,\\quad1"
+    ]
+  },
+  {
+    "unit": "04",
+    "id": "n04-18",
+    "answer": "(x^2+1)^2-x^2",
+    "scaffold": "light",
+    "authored": [
+      "(x^2+1)^2-x^2",
+      "(x^2+1)^2+x^2",
+      "(x^2+1)^2-x",
+      "x^4+1-x^2"
+    ],
+    "visible": [
+      "x^4+1-x^2",
+      "(x^2+1)^2+x^2",
+      "(x^2+1)^2-x^2",
+      "(x^2+1)^2-x"
+    ]
+  },
+  {
+    "unit": "04",
+    "id": "n04-19",
+    "answer": "x^4+x^2+1",
+    "scaffold": "light",
+    "authored": [
+      "x^4+x^2+1",
+      "x^4+2x^2+1",
+      "x^4-x^2+1",
+      "x^4+x^2-1"
+    ],
+    "visible": [
+      "x^4+2x^2+1",
+      "x^4-x^2+1",
+      "x^4+x^2-1",
+      "x^4+x^2+1"
+    ]
+  },
+  {
+    "unit": "04",
+    "id": "n04-20",
+    "answer": "(x^2+5x+4)(x^2+5x+6)",
+    "scaffold": "light",
+    "authored": [
+      "(x^2+5x+4)(x^2+5x+6)",
+      "(x^2+3x+2)(x^2+7x+12)",
+      "(x^2+4x+3)(x^2+6x+8)",
+      "(x^2+5x+5)(x^2+5x+6)"
+    ],
+    "visible": [
+      "(x^2+5x+5)(x^2+5x+6)",
+      "(x^2+4x+3)(x^2+6x+8)",
+      "(x^2+3x+2)(x^2+7x+12)",
+      "(x^2+5x+4)(x^2+5x+6)"
+    ]
+  },
+  {
+    "unit": "04",
+    "id": "n04-21",
+    "answer": "T^2+10T+24",
+    "scaffold": "light",
+    "authored": [
+      "T^2+10T+24",
+      "T^2+24T+10",
+      "T^2+10T+10",
+      "T^2+2T+24"
+    ],
+    "visible": [
+      "T^2+10T+24",
+      "T^2+2T+24",
+      "T^2+24T+10",
+      "T^2+10T+10"
+    ]
+  },
+  {
+    "unit": "04",
+    "id": "n04-22",
+    "answer": "x^4+10x^3+35x^2+50x+24",
+    "scaffold": "light",
+    "authored": [
+      "x^4+10x^3+35x^2+50x+24",
+      "x^4+10x^3+25x^2+50x+24",
+      "x^4+5x^3+35x^2+50x+24",
+      "x^4+10x^3+35x^2+24"
+    ],
+    "visible": [
+      "x^4+10x^3+25x^2+50x+24",
+      "x^4+10x^3+35x^2+50x+24",
+      "x^4+10x^3+35x^2+24",
+      "x^4+5x^3+35x^2+50x+24"
+    ]
+  },
+  {
+    "unit": "05",
+    "id": "n05-01",
+    "answer": "y+5",
+    "scaffold": "strong",
+    "authored": [
+      "y+5",
+      "x-3",
+      "xy+5",
+      "y-5"
+    ],
+    "visible": [
+      "y-5",
+      "y+5"
+    ]
+  },
+  {
+    "unit": "05",
+    "id": "n05-02",
+    "answer": "(x-3)(y+5)",
+    "scaffold": "strong",
+    "authored": [
+      "(x-3)(y+5)",
+      "(x+3)(y+5)",
+      "(x-3)(y-5)",
+      "x-3(y+5)"
+    ],
+    "visible": [
+      "(x-3)(y+5)",
+      "(x-3)(y-5)"
+    ]
+  },
+  {
+    "unit": "05",
+    "id": "n05-03",
+    "answer": "xy+5x-3y-15",
+    "scaffold": "medium",
+    "authored": [
+      "xy+5x-3y-15",
+      "xy+5x+3y-15",
+      "xy+5x-3y+15",
+      "xy+5x-3y"
+    ],
+    "visible": [
+      "xy+5x-3y+15",
+      "xy+5x+3y-15",
+      "xy+5x-3y-15"
+    ]
+  },
+  {
+    "unit": "05",
+    "id": "n05-04",
+    "answer": "-(a-b)",
+    "scaffold": "medium",
+    "authored": [
+      "-(a-b)",
+      "a-b",
+      "a+b",
+      "-a-b"
+    ],
+    "visible": [
+      "-a-b",
+      "a-b",
+      "-(a-b)"
+    ]
+  },
+  {
+    "unit": "05",
+    "id": "n05-05",
+    "answer": "(a-b)(x-y)",
+    "scaffold": "medium",
+    "authored": [
+      "(a-b)(x-y)",
+      "(a-b)(x+y)",
+      "(a+b)(x-y)",
+      "(a-b)(y-x)"
+    ],
+    "visible": [
+      "(a-b)(x-y)",
+      "(a-b)(x+y)",
+      "(a+b)(x-y)"
+    ]
+  },
+  {
+    "unit": "05",
+    "id": "n05-06",
+    "answer": "(4x)^2,\\quad(3y)^2",
+    "scaffold": "medium",
+    "authored": [
+      "(4x)^2,\\quad(3y)^2",
+      "(8x)^2,\\quad(3y)^2",
+      "(4x)^2,\\quad(9y)^2",
+      "(4x)^2,\\quad(-3y)"
+    ],
+    "visible": [
+      "(4x)^2,\\quad(9y)^2",
+      "(4x)^2,\\quad(3y)^2",
+      "(8x)^2,\\quad(3y)^2"
+    ]
+  },
+  {
+    "unit": "05",
+    "id": "n05-07",
+    "answer": "24xy",
+    "scaffold": "medium",
+    "authored": [
+      "24xy",
+      "12xy",
+      "7xy",
+      "24x^2y^2"
+    ],
+    "visible": [
+      "24xy",
+      "12xy",
+      "24x^2y^2"
+    ]
+  },
+  {
+    "unit": "05",
+    "id": "n05-08",
+    "answer": "(4x+3y)^2",
+    "scaffold": "medium",
+    "authored": [
+      "(4x+3y)^2",
+      "(4x-3y)^2",
+      "(4x+3y)(4x-3y)",
+      "(16x+9y)^2"
+    ],
+    "visible": [
+      "(16x+9y)^2",
+      "(4x+3y)^2",
+      "(4x+3y)(4x-3y)"
+    ]
+  },
+  {
+    "unit": "05",
+    "id": "n05-09",
+    "answer": "a^2+(r+s)a+rs",
+    "scaffold": "medium",
+    "authored": [
+      "a^2+(r+s)a+rs",
+      "a^2+rsa+(r+s)",
+      "a^2+(r-s)a+rs",
+      "a^2+(r+s)a+r+s"
+    ],
+    "visible": [
+      "a^2+(r-s)a+rs",
+      "a^2+(r+s)a+r+s",
+      "a^2+(r+s)a+rs"
+    ]
+  },
+  {
+    "unit": "05",
+    "id": "n05-10",
+    "answer": "r+s=-6,\\quad rs=-16",
+    "scaffold": "medium",
+    "authored": [
+      "r+s=-6,\\quad rs=-16",
+      "r+s=-16,\\quad rs=-6",
+      "r+s=6,\\quad rs=-16",
+      "r+s=-6,\\quad rs=16"
+    ],
+    "visible": [
+      "r+s=-6,\\quad rs=-16",
+      "r+s=-16,\\quad rs=-6",
+      "r+s=6,\\quad rs=-16"
+    ]
+  },
+  {
+    "unit": "05",
+    "id": "n05-11",
+    "answer": "(a-8)(a+2)",
+    "scaffold": "medium",
+    "authored": [
+      "(a-8)(a+2)",
+      "(a-4)(a+4)",
+      "(a-2)(a+8)",
+      "(a-8)(a-2)"
+    ],
+    "visible": [
+      "(a-8)(a-2)",
+      "(a-4)(a+4)",
+      "(a-8)(a+2)"
+    ]
+  },
+  {
+    "unit": "05",
+    "id": "n05-12",
+    "answer": "prx^2+(ps+qr)x+qs",
+    "scaffold": "medium",
+    "authored": [
+      "prx^2+(ps+qr)x+qs",
+      "prx^2+(pq+rs)x+qs",
+      "prx^2+(ps-qr)x+qs",
+      "prx^2+psx+qs"
+    ],
+    "visible": [
+      "prx^2+(ps+qr)x+qs",
+      "prx^2+psx+qs",
+      "prx^2+(pq+rs)x+qs"
+    ]
+  },
+  {
+    "unit": "05",
+    "id": "n05-13",
+    "answer": "pr=4,\\quad ps+qr=7,\\quad qs=3",
+    "scaffold": "medium",
+    "authored": [
+      "pr=4,\\quad ps+qr=7,\\quad qs=3",
+      "pr=4,\\quad ps+qr=3,\\quad qs=7",
+      "pr=4,\\quad pq+rs=7,\\quad qs=3",
+      "pr=7,\\quad ps+qr=4,\\quad qs=3"
+    ],
+    "visible": [
+      "pr=7,\\quad ps+qr=4,\\quad qs=3",
+      "pr=4,\\quad ps+qr=7,\\quad qs=3",
+      "pr=4,\\quad pq+rs=7,\\quad qs=3"
+    ]
+  },
+  {
+    "unit": "05",
+    "id": "n05-14",
+    "answer": "8,\\quad 7,\\quad 13",
+    "scaffold": "medium",
+    "authored": [
+      "8,\\quad 7,\\quad 13",
+      "7,\\quad8,\\quad13",
+      "8,\\quad13,\\quad7",
+      "8,\\quad7,\\quad12"
+    ],
+    "visible": [
+      "8,\\quad 7,\\quad 13",
+      "7,\\quad8,\\quad13",
+      "8,\\quad13,\\quad7"
+    ]
+  },
+  {
+    "unit": "05",
+    "id": "n05-15",
+    "answer": "(x+1)(4x+3)",
+    "scaffold": "light",
+    "authored": [
+      "(x+1)(4x+3)",
+      "(x+3)(4x+1)",
+      "(2x+1)(2x+3)",
+      "(x-1)(4x-3)"
+    ],
+    "visible": [
+      "(x+1)(4x+3)",
+      "(x+3)(4x+1)",
+      "(x-1)(4x-3)",
+      "(2x+1)(2x+3)"
+    ]
+  },
+  {
+    "unit": "05",
+    "id": "n05-16",
+    "answer": "s+5r=-2,\\quad rs=-3",
+    "scaffold": "light",
+    "authored": [
+      "s+5r=-2,\\quad rs=-3",
+      "s+5r=-3,\\quad rs=-2",
+      "s+r=-2,\\quad rs=-3",
+      "s-5r=-2,\\quad rs=3"
+    ],
+    "visible": [
+      "s-5r=-2,\\quad rs=3",
+      "s+r=-2,\\quad rs=-3",
+      "s+5r=-3,\\quad rs=-2",
+      "s+5r=-2,\\quad rs=-3"
+    ]
+  },
+  {
+    "unit": "05",
+    "id": "n05-17",
+    "answer": "rとsは異符号（rs=-3<0だから）",
+    "scaffold": "light",
+    "authored": [
+      "rとsは異符号（rs=-3<0だから）",
+      "rとsは同符号（rs=-3<0だから）",
+      "rとsは異符号（r+s=-2だから）",
+      "rとsはともに負（rs=-3だから）"
+    ],
+    "visible": [
+      "rとsは異符号（rs=-3<0だから）",
+      "rとsはともに負（rs=-3だから）",
+      "rとsは同符号（rs=-3<0だから）",
+      "rとsは異符号（r+s=-2だから）"
+    ]
+  },
+  {
+    "unit": "05",
+    "id": "n05-18",
+    "answer": "(x-1)(5x+3)",
+    "scaffold": "light",
+    "authored": [
+      "(x-1)(5x+3)",
+      "(x+1)(5x-3)",
+      "(x-3)(5x+1)",
+      "(x-1)(5x-3)"
+    ],
+    "visible": [
+      "(x-3)(5x+1)",
+      "(x-1)(5x+3)",
+      "(x+1)(5x-3)",
+      "(x-1)(5x-3)"
+    ]
+  },
+  {
+    "unit": "05",
+    "id": "n05-19",
+    "answer": "3b(a^2-4b^2)",
+    "scaffold": "light",
+    "authored": [
+      "3b(a^2-4b^2)",
+      "3(a^2-4b^2)",
+      "3b(a^2-4b)",
+      "3b(a^2+4b^2)"
+    ],
+    "visible": [
+      "3(a^2-4b^2)",
+      "3b(a^2-4b)",
+      "3b(a^2-4b^2)",
+      "3b(a^2+4b^2)"
+    ]
+  },
+  {
+    "unit": "05",
+    "id": "n05-20",
+    "answer": "3b(a-2b)(a+2b)",
+    "scaffold": "light",
+    "authored": [
+      "3b(a-2b)(a+2b)",
+      "3b(a-4b)(a+4b)",
+      "3b(a-2b)^2",
+      "3b(a^2-2b)(a+2b)"
+    ],
+    "visible": [
+      "3b(a-2b)(a+2b)",
+      "3b(a-2b)^2",
+      "3b(a^2-2b)(a+2b)",
+      "3b(a-4b)(a+4b)"
+    ]
+  },
+  {
+    "unit": "06",
+    "id": "n06-01",
+    "answer": "X=x+2y,\\quad(X+1)(X-2)-4",
+    "scaffold": "strong",
+    "authored": [
+      "X=x+2y,\\quad(X+1)(X-2)-4",
+      "X=x-2y,\\quad(X+1)(X-2)-4",
+      "X=x+2y,\\quad(X+1)(X+2)-4",
+      "X=x+2y,\\quad(X+1)(X-2)+4"
+    ],
+    "visible": [
+      "X=x+2y,\\quad(X+1)(X-2)-4",
+      "X=x+2y,\\quad(X+1)(X+2)-4"
+    ]
+  },
+  {
+    "unit": "06",
+    "id": "n06-02",
+    "answer": "X^2-X-6",
+    "scaffold": "strong",
+    "authored": [
+      "X^2-X-6",
+      "X^2+X-6",
+      "X^2-X+2",
+      "X^2-2X-6"
+    ],
+    "visible": [
+      "X^2-2X-6",
+      "X^2-X-6"
+    ]
+  },
+  {
+    "unit": "06",
+    "id": "n06-03",
+    "answer": "(X-3)(X+2)",
+    "scaffold": "medium",
+    "authored": [
+      "(X-3)(X+2)",
+      "(X+3)(X-2)",
+      "(X-6)(X+1)",
+      "(X-3)(X-2)"
+    ],
+    "visible": [
+      "(X-3)(X-2)",
+      "(X-3)(X+2)",
+      "(X+3)(X-2)"
+    ]
+  },
+  {
+    "unit": "06",
+    "id": "n06-04",
+    "answer": "(x+2y-3)(x+2y+2)",
+    "scaffold": "medium",
+    "authored": [
+      "(x+2y-3)(x+2y+2)",
+      "(x+2y-3)(X+2)",
+      "(x+2y+3)(x+2y-2)",
+      "(x-2y-3)(x-2y+2)"
+    ],
+    "visible": [
+      "(x+2y-3)(x+2y+2)",
+      "(x+2y+3)(x+2y-2)",
+      "(x+2y-3)(X+2)"
+    ]
+  },
+  {
+    "unit": "06",
+    "id": "n06-05",
+    "answer": "T=x^2,\\quad T^2-5T+4",
+    "scaffold": "medium",
+    "authored": [
+      "T=x^2,\\quad T^2-5T+4",
+      "T=x,\\quad T^2-5T+4",
+      "T=x^2,\\quad T^4-5T+4",
+      "T=x^2,\\quad T^2+5T+4"
+    ],
+    "visible": [
+      "T=x,\\quad T^2-5T+4",
+      "T=x^2,\\quad T^2-5T+4",
+      "T=x^2,\\quad T^2+5T+4"
+    ]
+  },
+  {
+    "unit": "06",
+    "id": "n06-06",
+    "answer": "(x^2-1)(x^2-4)",
+    "scaffold": "medium",
+    "authored": [
+      "(x^2-1)(x^2-4)",
+      "(x^2+1)(x^2+4)",
+      "(x^2-2)(x^2-2)",
+      "(x^2-1)(x^2+4)"
+    ],
+    "visible": [
+      "(x^2-1)(x^2-4)",
+      "(x^2-2)(x^2-2)",
+      "(x^2-1)(x^2+4)"
+    ]
+  },
+  {
+    "unit": "06",
+    "id": "n06-07",
+    "answer": "(x-1)(x+1)(x-2)(x+2)",
+    "scaffold": "medium",
+    "authored": [
+      "(x-1)(x+1)(x-2)(x+2)",
+      "(x-1)^2(x-2)^2",
+      "(x-1)(x+1)(x^2-4)",
+      "(x+1)(x+2)(x^2-2)"
+    ],
+    "visible": [
+      "(x-1)^2(x-2)^2",
+      "(x-1)(x+1)(x-2)(x+2)",
+      "(x-1)(x+1)(x^2-4)"
+    ]
+  },
+  {
+    "unit": "06",
+    "id": "n06-08",
+    "answer": "xについて3次、yについて1次。yで整理",
+    "scaffold": "medium",
+    "authored": [
+      "xについて3次、yについて1次。yで整理",
+      "xについて3次、yについて1次。xで整理",
+      "xについて1次、yについて3次。yで整理",
+      "xについて2次、yについて2次。どちらでも同じ"
+    ],
+    "visible": [
+      "xについて3次、yについて1次。yで整理",
+      "xについて2次、yについて2次。どちらでも同じ",
+      "xについて1次、yについて3次。yで整理"
+    ]
+  },
+  {
+    "unit": "06",
+    "id": "n06-09",
+    "answer": "y(x^2+x-2)+(x^3+x^2-2x)",
+    "scaffold": "medium",
+    "authored": [
+      "y(x^2+x-2)+(x^3+x^2-2x)",
+      "y(x^2+x-2)+(x^3+x^2)",
+      "y(x^2+x+2)+(x^3+x^2-2x)",
+      "y(x^2+x-2)+(x^3-x^2-2x)"
+    ],
+    "visible": [
+      "y(x^2+x-2)+(x^3-x^2-2x)",
+      "y(x^2+x-2)+(x^3+x^2-2x)",
+      "y(x^2+x-2)+(x^3+x^2)"
+    ]
+  },
+  {
+    "unit": "06",
+    "id": "n06-10",
+    "answer": "x(x^2+x-2)",
+    "scaffold": "medium",
+    "authored": [
+      "x(x^2+x-2)",
+      "x(x^2+x+2)",
+      "x^2(x+1-2x)",
+      "x(x^2-x-2)"
+    ],
+    "visible": [
+      "x^2(x+1-2x)",
+      "x(x^2+x-2)",
+      "x(x^2-x-2)"
+    ]
+  },
+  {
+    "unit": "06",
+    "id": "n06-11",
+    "answer": "(x+y)(x^2+x-2)",
+    "scaffold": "medium",
+    "authored": [
+      "(x+y)(x^2+x-2)",
+      "(x-y)(x^2+x-2)",
+      "(x+y)(x^2-x-2)",
+      "xy(x^2+x-2)"
+    ],
+    "visible": [
+      "(x+y)(x^2+x-2)",
+      "(x+y)(x^2-x-2)",
+      "xy(x^2+x-2)"
+    ]
+  },
+  {
+    "unit": "06",
+    "id": "n06-12",
+    "answer": "(x+y)(x+2)(x-1)",
+    "scaffold": "light",
+    "authored": [
+      "(x+y)(x+2)(x-1)",
+      "(x+y)(x-2)(x+1)",
+      "(x-y)(x+2)(x-1)",
+      "(x+y)(x+2)(x+1)"
+    ],
+    "visible": [
+      "(x+y)(x+2)(x-1)",
+      "(x+y)(x-2)(x+1)",
+      "(x+y)(x+2)(x+1)",
+      "(x-y)(x+2)(x-1)"
+    ]
+  },
+  {
+    "unit": "06",
+    "id": "n06-13",
+    "answer": "x^2+(3y-1)x+(2y^2-3y-2)",
+    "scaffold": "light",
+    "authored": [
+      "x^2+(3y-1)x+(2y^2-3y-2)",
+      "x^2+(3y+1)x+(2y^2-3y-2)",
+      "x^2+(3y-1)x+(2y^2+3y-2)",
+      "x^2+(3y-1)+(2y^2-3y-2)x"
+    ],
+    "visible": [
+      "x^2+(3y-1)x+(2y^2+3y-2)",
+      "x^2+(3y-1)+(2y^2-3y-2)x",
+      "x^2+(3y+1)x+(2y^2-3y-2)",
+      "x^2+(3y-1)x+(2y^2-3y-2)"
+    ]
+  },
+  {
+    "unit": "06",
+    "id": "n06-14",
+    "answer": "(2y+1)(y-2)",
+    "scaffold": "light",
+    "authored": [
+      "(2y+1)(y-2)",
+      "(2y-1)(y+2)",
+      "(2y+1)(y+2)",
+      "(y-1)(2y+2)"
+    ],
+    "visible": [
+      "(2y+1)(y-2)",
+      "(2y+1)(y+2)",
+      "(2y-1)(y+2)",
+      "(y-1)(2y+2)"
+    ]
+  },
+  {
+    "unit": "06",
+    "id": "n06-15",
+    "answer": "3y-1,\\quad\\text{一致する（使える）}",
+    "scaffold": "light",
+    "authored": [
+      "3y-1,\\quad\\text{一致する（使える）}",
+      "3y+3,\\quad\\text{一致する（使える）}",
+      "3y-1,\\quad\\text{一致しない（使えない）}",
+      "2y^2-3y-2,\\quad\\text{一致しない（使えない）}"
+    ],
+    "visible": [
+      "3y+3,\\quad\\text{一致する（使える）}",
+      "3y-1,\\quad\\text{一致しない（使えない）}",
+      "3y-1,\\quad\\text{一致する（使える）}",
+      "2y^2-3y-2,\\quad\\text{一致しない（使えない）}"
+    ]
+  },
+  {
+    "unit": "06",
+    "id": "n06-16",
+    "answer": "(x+2y+1)(x+y-2)",
+    "scaffold": "light",
+    "authored": [
+      "(x+2y+1)(x+y-2)",
+      "(x+2y-1)(x+y+2)",
+      "(x+2y+1)(x+y+2)",
+      "(x+2y-2)(x+y+1)"
+    ],
+    "visible": [
+      "(x+2y+1)(x+y-2)",
+      "(x+2y-1)(x+y+2)",
+      "(x+2y-2)(x+y+1)",
+      "(x+2y+1)(x+y+2)"
+    ]
+  },
+  {
+    "unit": "07",
+    "id": "n07-01",
+    "answer": "0.75（小数第2位で終了）",
+    "scaffold": "strong",
+    "authored": [
+      "0.75（小数第2位で終了）",
+      "0.7（小数第1位で終了）",
+      "0.75（無限に循環）",
+      "0.075（小数第3位で終了）"
+    ],
+    "visible": [
+      "0.7（小数第1位で終了）",
+      "0.75（小数第2位で終了）"
+    ]
+  },
+  {
+    "unit": "07",
+    "id": "n07-02",
+    "answer": "（0・余り10）→（9・余り1）",
+    "scaffold": "strong",
+    "authored": [
+      "（0・余り10）→（9・余り1）",
+      "（9・余り1）→（0・余り10）",
+      "（0・余り1）→（9・余り10）",
+      "（0・余り10）→（0・余り10）"
+    ],
+    "visible": [
+      "（0・余り10）→（9・余り1）",
+      "（0・余り1）→（9・余り10）"
+    ]
+  },
+  {
+    "unit": "07",
+    "id": "n07-03",
+    "answer": "2.\\overline{09}",
+    "scaffold": "medium",
+    "authored": [
+      "2.\\overline{09}",
+      "2.\\overline9",
+      "2.09",
+      "2.\\overline{90}"
+    ],
+    "visible": [
+      "2.\\overline{09}",
+      "2.09",
+      "2.\\overline9"
+    ]
+  },
+  {
+    "unit": "07",
+    "id": "n07-04",
+    "answer": "有限小数／循環小数、どちらも有理数",
+    "scaffold": "medium",
+    "authored": [
+      "有限小数／循環小数、どちらも有理数",
+      "有限小数／循環小数、後者は無理数",
+      "どちらも有限小数、どちらも有理数",
+      "どちらも循環小数、後者は無理数"
+    ],
+    "visible": [
+      "どちらも有限小数、どちらも有理数",
+      "どちらも循環小数、後者は無理数",
+      "有限小数／循環小数、どちらも有理数"
+    ]
+  },
+  {
+    "unit": "07",
+    "id": "n07-05",
+    "answer": "0以外の余りは有限種類なので同じ余りが再び現れる",
+    "scaffold": "medium",
+    "authored": [
+      "0以外の余りは有限種類なので同じ余りが再び現れる",
+      "商の数字は必ず0か1だけになる",
+      "余りはいつまでも違う数へ増え続ける",
+      "余りが0でなければ分数は無理数になる"
+    ],
+    "visible": [
+      "余りはいつまでも違う数へ増え続ける",
+      "商の数字は必ず0か1だけになる",
+      "0以外の余りは有限種類なので同じ余りが再び現れる"
+    ]
+  },
+  {
+    "unit": "07",
+    "id": "n07-06",
+    "answer": "10\\text{倍},\\quad10x=8.\\overline8",
+    "scaffold": "medium",
+    "authored": [
+      "10\\text{倍},\\quad10x=8.\\overline8",
+      "100\\text{倍},\\quad100x=88.\\overline8",
+      "10\\text{倍},\\quad10x=0.\\overline8",
+      "10\\text{倍},\\quad10x=8.8"
+    ],
+    "visible": [
+      "100\\text{倍},\\quad100x=88.\\overline8",
+      "10\\text{倍},\\quad10x=8.\\overline8",
+      "10\\text{倍},\\quad10x=0.\\overline8"
+    ]
+  },
+  {
+    "unit": "07",
+    "id": "n07-07",
+    "answer": "9x=8",
+    "scaffold": "medium",
+    "authored": [
+      "9x=8",
+      "9x=0.8",
+      "10x=8",
+      "9x=88"
+    ],
+    "visible": [
+      "9x=8",
+      "9x=88",
+      "9x=0.8"
+    ]
+  },
+  {
+    "unit": "07",
+    "id": "n07-08",
+    "answer": "x=\\frac89",
+    "scaffold": "medium",
+    "authored": [
+      "x=\\frac89",
+      "x=\\frac9{8}",
+      "x=\\frac8{10}",
+      "x=\\frac{88}{9}"
+    ],
+    "visible": [
+      "x=\\frac{88}{9}",
+      "x=\\frac89",
+      "x=\\frac8{10}"
+    ]
+  },
+  {
+    "unit": "07",
+    "id": "n07-09",
+    "answer": "\\text{100倍},\\;100x=69.\\overline{69},\\;99x=69",
+    "scaffold": "medium",
+    "authored": [
+      "\\text{100倍},\\;100x=69.\\overline{69},\\;99x=69",
+      "\\text{10倍},\\;10x=6.\\overline{96},\\;9x=6",
+      "\\text{100倍},\\;100x=69.\\overline{69},\\;100x=69",
+      "\\text{1000倍},\\;1000x=696.\\overline{96},\\;999x=696"
+    ],
+    "visible": [
+      "\\text{100倍},\\;100x=69.\\overline{69},\\;99x=69",
+      "\\text{1000倍},\\;1000x=696.\\overline{96},\\;999x=696",
+      "\\text{10倍},\\;10x=6.\\overline{96},\\;9x=6"
+    ]
+  },
+  {
+    "unit": "07",
+    "id": "n07-10",
+    "answer": "\\frac{23}{33}",
+    "scaffold": "light",
+    "authored": [
+      "\\frac{23}{33}",
+      "\\frac{69}{100}",
+      "\\frac{23}{99}",
+      "\\frac{33}{23}"
+    ],
+    "visible": [
+      "\\frac{23}{99}",
+      "\\frac{33}{23}",
+      "\\frac{69}{100}",
+      "\\frac{23}{33}"
+    ]
+  },
+  {
+    "unit": "07",
+    "id": "n07-11",
+    "answer": "2^k\\cdot5^k",
+    "scaffold": "light",
+    "authored": [
+      "2^k\\cdot5^k",
+      "2^k+5^k",
+      "10k",
+      "2^{2k}\\cdot5^k"
+    ],
+    "visible": [
+      "2^k\\cdot5^k",
+      "10k",
+      "2^k+5^k",
+      "2^{2k}\\cdot5^k"
+    ]
+  },
+  {
+    "unit": "07",
+    "id": "n07-12",
+    "answer": "2,4,5,8,10,16,20",
+    "scaffold": "light",
+    "authored": [
+      "2,4,5,8,10,16,20",
+      "2,4,5,8,10,12,16,20",
+      "2,4,5,8,10,15,20",
+      "2,4,5,8,10,16"
+    ],
+    "visible": [
+      "2,4,5,8,10,12,16,20",
+      "2,4,5,8,10,16,20",
+      "2,4,5,8,10,16",
+      "2,4,5,8,10,15,20"
+    ]
+  },
+  {
+    "unit": "07",
+    "id": "n07-13",
+    "answer": "−1と2/3、どちらも自然数でない",
+    "scaffold": "light",
+    "authored": [
+      "−1と2/3、どちらも自然数でない",
+      "1と2/3、後者だけ自然数でない",
+      "−1と2/3、両方自然数",
+      "−1と3/2、どちらも自然数でない"
+    ],
+    "visible": [
+      "1と2/3、後者だけ自然数でない",
+      "−1と2/3、両方自然数",
+      "−1と2/3、どちらも自然数でない",
+      "−1と3/2、どちらも自然数でない"
+    ]
+  },
+  {
+    "unit": "07",
+    "id": "n07-14",
+    "answer": "有理数（23/33と表せる）",
+    "scaffold": "light",
+    "authored": [
+      "有理数（23/33と表せる）",
+      "無理数（小数が無限に続く）",
+      "無理数（整数ではない）",
+      "有理数（小数第2位で終わる）"
+    ],
+    "visible": [
+      "無理数（小数が無限に続く）",
+      "無理数（整数ではない）",
+      "有理数（小数第2位で終わる）",
+      "有理数（23/33と表せる）"
+    ]
+  },
+  {
+    "unit": "08",
+    "id": "n08-01",
+    "answer": "2.3,\\quad5",
+    "scaffold": "strong",
+    "authored": [
+      "2.3,\\quad5",
+      "2.3,\\quad-5",
+      "-2.3,\\quad5",
+      "2.3,\\quad-5.0"
+    ],
+    "visible": [
+      "2.3,\\quad5",
+      "-2.3,\\quad5"
+    ]
+  },
+  {
+    "unit": "08",
+    "id": "n08-02",
+    "answer": "|a|=a",
+    "scaffold": "strong",
+    "authored": [
+      "|a|=a",
+      "|a|=-a",
+      "|a|=0",
+      "|a|=a^2"
+    ],
+    "visible": [
+      "|a|=-a",
+      "|a|=a"
+    ]
+  },
+  {
+    "unit": "08",
+    "id": "n08-03",
+    "answer": "0-a=-a",
+    "scaffold": "medium",
+    "authored": [
+      "0-a=-a",
+      "0-a=a",
+      "a-0=a",
+      "0+a=a"
+    ],
+    "visible": [
+      "a-0=a",
+      "0-a=-a",
+      "0+a=a"
+    ]
+  },
+  {
+    "unit": "08",
+    "id": "n08-04",
+    "answer": "-(-5)=5",
+    "scaffold": "medium",
+    "authored": [
+      "-(-5)=5",
+      "-(-5)=-5",
+      "-5=5",
+      "-(-5)=0"
+    ],
+    "visible": [
+      "-5=5",
+      "-(-5)=0",
+      "-(-5)=5"
+    ]
+  },
+  {
+    "unit": "08",
+    "id": "n08-05",
+    "answer": "5<9,\\quad\\sqrt5<3",
+    "scaffold": "medium",
+    "authored": [
+      "5<9,\\quad\\sqrt5<3",
+      "5>9,\\quad\\sqrt5>3",
+      "5<9,\\quad\\sqrt5>3",
+      "5=9,\\quad\\sqrt5=3"
+    ],
+    "visible": [
+      "5<9,\\quad\\sqrt5>3",
+      "5<9,\\quad\\sqrt5<3",
+      "5>9,\\quad\\sqrt5>3"
+    ]
+  },
+  {
+    "unit": "08",
+    "id": "n08-06",
+    "answer": "負",
+    "scaffold": "medium",
+    "authored": [
+      "負",
+      "正",
+      "0",
+      "符号は決まらない"
+    ],
+    "visible": [
+      "符号は決まらない",
+      "正",
+      "負"
+    ]
+  },
+  {
+    "unit": "08",
+    "id": "n08-07",
+    "answer": "3-\\sqrt5",
+    "scaffold": "medium",
+    "authored": [
+      "3-\\sqrt5",
+      "\\sqrt5-3",
+      "-\\sqrt5-3",
+      "3+\\sqrt5"
+    ],
+    "visible": [
+      "\\sqrt5-3",
+      "3-\\sqrt5",
+      "-\\sqrt5-3"
+    ]
+  },
+  {
+    "unit": "08",
+    "id": "n08-08",
+    "answer": "負（πは3より大きい）",
+    "scaffold": "medium",
+    "authored": [
+      "負（πは3より大きい）",
+      "正（3はπより大きい）",
+      "0（πは3と等しい）",
+      "符号は決められない"
+    ],
+    "visible": [
+      "負（πは3より大きい）",
+      "0（πは3と等しい）",
+      "符号は決められない"
+    ]
+  },
+  {
+    "unit": "08",
+    "id": "n08-09",
+    "answer": "\\pi-3",
+    "scaffold": "light",
+    "authored": [
+      "\\pi-3",
+      "3-\\pi",
+      "-\\pi-3",
+      "3+\\pi"
+    ],
+    "visible": [
+      "\\pi-3",
+      "3+\\pi",
+      "-\\pi-3",
+      "3-\\pi"
+    ]
+  },
+  {
+    "unit": "08",
+    "id": "n08-10",
+    "answer": "a=0,\\quad\\text{原点と同じ位置にある}",
+    "scaffold": "light",
+    "authored": [
+      "a=0,\\quad\\text{原点と同じ位置にある}",
+      "a=0,\\quad\\text{原点から離れている}",
+      "a>0,\\quad\\text{原点と同じ位置にある}",
+      "a<0,\\quad\\text{原点と同じ位置にある}"
+    ],
+    "visible": [
+      "a=0,\\quad\\text{原点から離れている}",
+      "a<0,\\quad\\text{原点と同じ位置にある}",
+      "a=0,\\quad\\text{原点と同じ位置にある}",
+      "a>0,\\quad\\text{原点と同じ位置にある}"
+    ]
+  },
+  {
+    "unit": "08",
+    "id": "n08-11",
+    "answer": "|a|=|-a|",
+    "scaffold": "light",
+    "authored": [
+      "|a|=|-a|",
+      "|a|=-|-a|",
+      "|a|>|-a|",
+      "|a|+|-a|=0"
+    ],
+    "visible": [
+      "|a|+|-a|=0",
+      "|a|>|-a|",
+      "|a|=-|-a|",
+      "|a|=|-a|"
+    ]
+  },
+  {
+    "unit": "08",
+    "id": "n08-12",
+    "answer": "a^2",
+    "scaffold": "light",
+    "authored": [
+      "a^2",
+      "|a|",
+      "-a^2",
+      "2a"
+    ],
+    "visible": [
+      "|a|",
+      "2a",
+      "a^2",
+      "-a^2"
+    ]
+  },
+  {
+    "unit": "09",
+    "id": "n09-01",
+    "answer": "x=4,\\ -4",
+    "scaffold": "strong",
+    "authored": [
+      "x=4,\\ -4",
+      "x=4",
+      "x=-4",
+      "x=16,\\ -16"
+    ],
+    "visible": [
+      "x=4",
+      "x=4,\\ -4"
+    ]
+  },
+  {
+    "unit": "09",
+    "id": "n09-02",
+    "answer": "(4,\\ 5)",
+    "scaffold": "strong",
+    "authored": [
+      "(4,\\ 5)",
+      "(\\pm4,\\ 5)",
+      "(-4,\\ 5)",
+      "(4,\\ -5)"
+    ],
+    "visible": [
+      "(4,\\ 5)",
+      "(-4,\\ 5)"
+    ]
+  },
+  {
+    "unit": "09",
+    "id": "n09-03",
+    "answer": "4",
+    "scaffold": "medium",
+    "authored": [
+      "4",
+      "-4",
+      "\\pm4",
+      "16"
+    ],
+    "visible": [
+      "\\pm4",
+      "16",
+      "4"
+    ]
+  },
+  {
+    "unit": "09",
+    "id": "n09-04",
+    "answer": "(a,\\ -a)",
+    "scaffold": "medium",
+    "authored": [
+      "(a,\\ -a)",
+      "(a,\\ a)",
+      "(-a,\\ -a)",
+      "(-a,\\ a)"
+    ],
+    "visible": [
+      "(-a,\\ -a)",
+      "(a,\\ -a)",
+      "(a,\\ a)"
+    ]
+  },
+  {
+    "unit": "09",
+    "id": "n09-05",
+    "answer": "|a|",
+    "scaffold": "medium",
+    "authored": [
+      "|a|",
+      "a",
+      "-a",
+      "a^2"
+    ],
+    "visible": [
+      "-a",
+      "a",
+      "|a|"
+    ]
+  },
+  {
+    "unit": "09",
+    "id": "n09-06",
+    "answer": "2-\\sqrt5<0",
+    "scaffold": "medium",
+    "authored": [
+      "2-\\sqrt5<0",
+      "2-\\sqrt5>0",
+      "2-\\sqrt5=0",
+      "2-\\sqrt5\\ge0"
+    ],
+    "visible": [
+      "2-\\sqrt5=0",
+      "2-\\sqrt5<0",
+      "2-\\sqrt5>0"
+    ]
+  },
+  {
+    "unit": "09",
+    "id": "n09-07",
+    "answer": "\\sqrt5-2",
+    "scaffold": "medium",
+    "authored": [
+      "\\sqrt5-2",
+      "2-\\sqrt5",
+      "\\sqrt5+2",
+      "-(2+\\sqrt5)"
+    ],
+    "visible": [
+      "\\sqrt5-2",
+      "\\sqrt5+2",
+      "-(2+\\sqrt5)"
+    ]
+  },
+  {
+    "unit": "09",
+    "id": "n09-p001-q08-left-square",
+    "answer": "1.9881",
+    "scaffold": "medium",
+    "authored": [
+      "1.9881",
+      "1.9981",
+      "1.9811",
+      "1.9918"
+    ],
+    "visible": [
+      "1.9881",
+      "1.9981",
+      "1.9811"
+    ]
+  },
+  {
+    "unit": "09",
+    "id": "n09-p001-q08-right-square",
+    "answer": "2.0164",
+    "scaffold": "medium",
+    "authored": [
+      "2.0164",
+      "2.0104",
+      "2.0264",
+      "2.1064"
+    ],
+    "visible": [
+      "2.1064",
+      "2.0164",
+      "2.0264"
+    ]
+  },
+  {
+    "unit": "09",
+    "id": "n09-p001-q08-lower-sign",
+    "answer": "<",
+    "scaffold": "medium",
+    "authored": [
+      "<",
+      ">",
+      "=",
+      "\\ge"
+    ],
+    "visible": [
+      "<",
+      ">",
+      "\\ge"
+    ]
+  },
+  {
+    "unit": "09",
+    "id": "n09-p001-q08-upper-sign",
+    "answer": "<",
+    "scaffold": "medium",
+    "authored": [
+      "<",
+      ">",
+      "=",
+      "\\ge"
+    ],
+    "visible": [
+      "=",
+      ">",
+      "<"
+    ]
+  },
+  {
+    "unit": "09",
+    "id": "n09-08",
+    "answer": "1.41^2=1.9881<2<2.0164=1.42^2",
+    "scaffold": "medium",
+    "authored": [
+      "1.41^2=1.9881<2<2.0164=1.42^2",
+      "1.41^2=1.9981<2<2.0164=1.42^2",
+      "1.41^2=1.9881<2<2.0104=1.42^2",
+      "1.41^2=1.9881<2>2.0164=1.42^2"
+    ],
+    "visible": [
+      "1.41^2=1.9881<2<2.0104=1.42^2",
+      "1.41^2=1.9881<2<2.0164=1.42^2",
+      "1.41^2=1.9981<2<2.0164=1.42^2"
+    ]
+  },
+  {
+    "unit": "09",
+    "id": "n09-09",
+    "answer": "1.41<\\sqrt2<1.42",
+    "scaffold": "medium",
+    "authored": [
+      "1.41<\\sqrt2<1.42",
+      "1.42<\\sqrt2<1.41",
+      "1.41>\\sqrt2>1.42",
+      "1.41=\\sqrt2"
+    ],
+    "visible": [
+      "1.41>\\sqrt2>1.42",
+      "1.42<\\sqrt2<1.41",
+      "1.41<\\sqrt2<1.42"
+    ]
+  },
+  {
+    "unit": "09",
+    "id": "n09-10",
+    "answer": "-3",
+    "scaffold": "medium",
+    "authored": [
+      "-3",
+      "-2",
+      "-1",
+      "-4"
+    ],
+    "visible": [
+      "-3",
+      "-2",
+      "-1"
+    ]
+  },
+  {
+    "unit": "09",
+    "id": "n09-11",
+    "answer": "-3+0.9",
+    "scaffold": "medium",
+    "authored": [
+      "-3+0.9",
+      "-2-0.1",
+      "-2+0.1",
+      "-3-0.9"
+    ],
+    "visible": [
+      "-2-0.1",
+      "-3+0.9",
+      "-2+0.1"
+    ]
+  },
+  {
+    "unit": "09",
+    "id": "n09-12",
+    "answer": "3<\\sqrt{10}<4",
+    "scaffold": "light",
+    "authored": [
+      "3<\\sqrt{10}<4",
+      "2<\\sqrt{10}<3",
+      "3<\\sqrt{10}<3",
+      "4<\\sqrt{10}<5"
+    ],
+    "visible": [
+      "4<\\sqrt{10}<5",
+      "3<\\sqrt{10}<3",
+      "2<\\sqrt{10}<3",
+      "3<\\sqrt{10}<4"
+    ]
+  },
+  {
+    "unit": "09",
+    "id": "n09-13",
+    "answer": "-4<-\\sqrt{10}<-3",
+    "scaffold": "light",
+    "authored": [
+      "-4<-\\sqrt{10}<-3",
+      "-3<-\\sqrt{10}<-4",
+      "-5<-\\sqrt{10}<-4",
+      "-3<-\\sqrt{10}<-2"
+    ],
+    "visible": [
+      "-4<-\\sqrt{10}<-3",
+      "-3<-\\sqrt{10}<-4",
+      "-5<-\\sqrt{10}<-4",
+      "-3<-\\sqrt{10}<-2"
+    ]
+  },
+  {
+    "unit": "09",
+    "id": "n09-14",
+    "answer": "\\begin{aligned}\\sqrt{10}&:(3,\\sqrt{10}-3)\\\\-\\sqrt{10}&:(-4,4-\\sqrt{10})\\end{aligned}",
+    "scaffold": "light",
+    "authored": [
+      "\\begin{aligned}\\sqrt{10}&:(3,\\sqrt{10}-3)\\\\-\\sqrt{10}&:(-4,4-\\sqrt{10})\\end{aligned}",
+      "\\begin{aligned}\\sqrt{10}&:(3,\\sqrt{10}-3)\\\\-\\sqrt{10}&:(-3,3-\\sqrt{10})\\end{aligned}",
+      "\\begin{aligned}\\sqrt{10}&:(3,\\sqrt{10}-3)\\\\-\\sqrt{10}&:(-3,\\sqrt{10}-3)\\end{aligned}",
+      "\\begin{aligned}\\sqrt{10}&:(4,\\sqrt{10}-4)\\\\-\\sqrt{10}&:(-4,4-\\sqrt{10})\\end{aligned}"
+    ],
+    "visible": [
+      "\\begin{aligned}\\sqrt{10}&:(3,\\sqrt{10}-3)\\\\-\\sqrt{10}&:(-3,3-\\sqrt{10})\\end{aligned}",
+      "\\begin{aligned}\\sqrt{10}&:(3,\\sqrt{10}-3)\\\\-\\sqrt{10}&:(-4,4-\\sqrt{10})\\end{aligned}",
+      "\\begin{aligned}\\sqrt{10}&:(3,\\sqrt{10}-3)\\\\-\\sqrt{10}&:(-3,\\sqrt{10}-3)\\end{aligned}",
+      "\\begin{aligned}\\sqrt{10}&:(4,\\sqrt{10}-4)\\\\-\\sqrt{10}&:(-4,4-\\sqrt{10})\\end{aligned}"
+    ]
+  },
+  {
+    "unit": "10",
+    "id": "n10-01",
+    "answer": "t^2=25",
+    "scaffold": "strong",
+    "authored": [
+      "t^2=25",
+      "t=25",
+      "t^2=125",
+      "t^2=5"
+    ],
+    "visible": [
+      "t=25",
+      "t^2=25"
+    ]
+  },
+  {
+    "unit": "10",
+    "id": "n10-02",
+    "answer": "5\\sqrt5",
+    "scaffold": "strong",
+    "authored": [
+      "5\\sqrt5",
+      "-5\\sqrt5",
+      "25\\sqrt5",
+      "5\\sqrt{25}"
+    ],
+    "visible": [
+      "5\\sqrt5",
+      "25\\sqrt5"
+    ]
+  },
+  {
+    "unit": "10",
+    "id": "n10-03",
+    "answer": "ab",
+    "scaffold": "strong",
+    "authored": [
+      "ab",
+      "a+b",
+      "\\sqrt{ab}",
+      "a^2b^2"
+    ],
+    "visible": [
+      "a^2b^2",
+      "ab"
+    ]
+  },
+  {
+    "unit": "10",
+    "id": "n10-04",
+    "answer": "\\sqrt{ab}",
+    "scaffold": "medium",
+    "authored": [
+      "\\sqrt{ab}",
+      "-\\sqrt{ab}",
+      "ab",
+      "\\sqrt a+\\sqrt b"
+    ],
+    "visible": [
+      "-\\sqrt{ab}",
+      "\\sqrt{ab}",
+      "ab"
+    ]
+  },
+  {
+    "unit": "10",
+    "id": "n10-05",
+    "answer": "\\frac ab",
+    "scaffold": "medium",
+    "authored": [
+      "\\frac ab",
+      "\\frac ba",
+      "\\sqrt{\\frac ab}",
+      "ab"
+    ],
+    "visible": [
+      "\\frac ab",
+      "ab",
+      "\\frac ba"
+    ]
+  },
+  {
+    "unit": "10",
+    "id": "n10-06",
+    "answer": "\\sqrt{\\frac ab}",
+    "scaffold": "medium",
+    "authored": [
+      "\\sqrt{\\frac ab}",
+      "-\\sqrt{\\frac ab}",
+      "\\frac ab",
+      "\\sqrt a\\sqrt b"
+    ],
+    "visible": [
+      "\\frac ab",
+      "\\sqrt a\\sqrt b",
+      "\\sqrt{\\frac ab}"
+    ]
+  },
+  {
+    "unit": "10",
+    "id": "n10-07",
+    "answer": "\\sqrt{48}=\\sqrt{16\\cdot3}",
+    "scaffold": "medium",
+    "authored": [
+      "\\sqrt{48}=\\sqrt{16\\cdot3}",
+      "\\sqrt{14}",
+      "\\sqrt{48}=\\sqrt{8\\cdot8}",
+      "\\sqrt{48}=\\sqrt{16\\cdot2}"
+    ],
+    "visible": [
+      "\\sqrt{48}=\\sqrt{16\\cdot3}",
+      "\\sqrt{48}=\\sqrt{16\\cdot2}",
+      "\\sqrt{48}=\\sqrt{8\\cdot8}"
+    ]
+  },
+  {
+    "unit": "10",
+    "id": "n10-08",
+    "answer": "4\\sqrt3",
+    "scaffold": "medium",
+    "authored": [
+      "4\\sqrt3",
+      "16\\sqrt3",
+      "4\\sqrt{12}",
+      "8\\sqrt3"
+    ],
+    "visible": [
+      "4\\sqrt{12}",
+      "16\\sqrt3",
+      "4\\sqrt3"
+    ]
+  },
+  {
+    "unit": "10",
+    "id": "n10-09",
+    "answer": "2\\sqrt2+5\\sqrt2",
+    "scaffold": "medium",
+    "authored": [
+      "2\\sqrt2+5\\sqrt2",
+      "\\sqrt{58}",
+      "2\\sqrt2+25\\sqrt2",
+      "2\\sqrt2+5\\sqrt{10}"
+    ],
+    "visible": [
+      "2\\sqrt2+25\\sqrt2",
+      "\\sqrt{58}",
+      "2\\sqrt2+5\\sqrt2"
+    ]
+  },
+  {
+    "unit": "10",
+    "id": "n10-10",
+    "answer": "7\\sqrt2",
+    "scaffold": "medium",
+    "authored": [
+      "7\\sqrt2",
+      "7\\sqrt4",
+      "7\\sqrt{2+2}",
+      "3\\sqrt2"
+    ],
+    "visible": [
+      "7\\sqrt2",
+      "3\\sqrt2",
+      "7\\sqrt{2+2}"
+    ]
+  },
+  {
+    "unit": "10",
+    "id": "n10-11",
+    "answer": "2-2\\sqrt2\\sqrt3+3",
+    "scaffold": "medium",
+    "authored": [
+      "2-2\\sqrt2\\sqrt3+3",
+      "2+2\\sqrt2\\sqrt3+3",
+      "2-\\sqrt2\\sqrt3+3",
+      "2-2\\sqrt2\\sqrt3+9"
+    ],
+    "visible": [
+      "2-\\sqrt2\\sqrt3+3",
+      "2-2\\sqrt2\\sqrt3+9",
+      "2-2\\sqrt2\\sqrt3+3"
+    ]
+  },
+  {
+    "unit": "10",
+    "id": "n10-12",
+    "answer": "5-2\\sqrt6",
+    "scaffold": "light",
+    "authored": [
+      "5-2\\sqrt6",
+      "5+2\\sqrt6",
+      "5-\\sqrt6",
+      "6-2\\sqrt6"
+    ],
+    "visible": [
+      "5-\\sqrt6",
+      "5-2\\sqrt6",
+      "5+2\\sqrt6",
+      "6-2\\sqrt6"
+    ]
+  },
+  {
+    "unit": "10",
+    "id": "n10-13",
+    "answer": "7-2=5",
+    "scaffold": "light",
+    "authored": [
+      "7-2=5",
+      "7+2=9",
+      "7-\\sqrt{14}",
+      "7-4=3"
+    ],
+    "visible": [
+      "7-2=5",
+      "7-\\sqrt{14}",
+      "7-4=3",
+      "7+2=9"
+    ]
+  },
+  {
+    "unit": "10",
+    "id": "n10-14",
+    "answer": "0でない同じ数を分子・分母の両方に掛ける",
+    "scaffold": "medium",
+    "authored": [
+      "0でない同じ数を分子・分母の両方に掛ける",
+      "分母だけに同じ数を掛ける",
+      "分子だけに平方根を足す",
+      "分母から根号をそのまま消す"
+    ],
+    "visible": [
+      "分母から根号をそのまま消す",
+      "分母だけに同じ数を掛ける",
+      "0でない同じ数を分子・分母の両方に掛ける"
+    ]
+  },
+  {
+    "unit": "10",
+    "id": "n10-15",
+    "answer": "\\frac1{2\\sqrt3}\\cdot\\frac{\\sqrt3}{\\sqrt3}=\\frac{\\sqrt3}{2(\\sqrt3)^2}",
+    "scaffold": "medium",
+    "authored": [
+      "\\frac1{2\\sqrt3}\\cdot\\frac{\\sqrt3}{\\sqrt3}=\\frac{\\sqrt3}{2(\\sqrt3)^2}",
+      "\\frac1{2\\sqrt3}\\cdot\\sqrt3",
+      "\\frac1{2\\sqrt3}\\cdot\\frac3{\\sqrt3}",
+      "\\frac1{2\\sqrt3}\\cdot\\frac{\\sqrt2}{\\sqrt2}"
+    ],
+    "visible": [
+      "\\frac1{2\\sqrt3}\\cdot\\frac3{\\sqrt3}",
+      "\\frac1{2\\sqrt3}\\cdot\\frac{\\sqrt3}{\\sqrt3}=\\frac{\\sqrt3}{2(\\sqrt3)^2}",
+      "\\frac1{2\\sqrt3}\\cdot\\frac{\\sqrt2}{\\sqrt2}"
+    ]
+  },
+  {
+    "unit": "10",
+    "id": "n10-16",
+    "answer": "\\frac{\\sqrt3}{6}",
+    "scaffold": "medium",
+    "authored": [
+      "\\frac{\\sqrt3}{6}",
+      "\\frac{\\sqrt3}{2}",
+      "\\frac3{6}",
+      "\\frac1{6\\sqrt3}"
+    ],
+    "visible": [
+      "\\frac1{6\\sqrt3}",
+      "\\frac{\\sqrt3}{2}",
+      "\\frac{\\sqrt3}{6}"
+    ]
+  },
+  {
+    "unit": "10",
+    "id": "n10-17",
+    "answer": "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt3-\\sqrt2}{\\sqrt3-\\sqrt2}",
+    "scaffold": "light",
+    "authored": [
+      "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt3-\\sqrt2}{\\sqrt3-\\sqrt2}",
+      "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt3+\\sqrt2}{\\sqrt3+\\sqrt2}",
+      "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt3}{\\sqrt3}",
+      "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt2}{\\sqrt2}"
+    ],
+    "visible": [
+      "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt3-\\sqrt2}{\\sqrt3-\\sqrt2}",
+      "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt2}{\\sqrt2}",
+      "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt3+\\sqrt2}{\\sqrt3+\\sqrt2}",
+      "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt3}{\\sqrt3}"
+    ]
+  },
+  {
+    "unit": "10",
+    "id": "n10-18",
+    "answer": "3-2=1",
+    "scaffold": "light",
+    "authored": [
+      "3-2=1",
+      "3+2=5",
+      "3-\\sqrt6",
+      "\\sqrt3-\\sqrt2"
+    ],
+    "visible": [
+      "\\sqrt3-\\sqrt2",
+      "3-\\sqrt6",
+      "3+2=5",
+      "3-2=1"
+    ]
+  },
+  {
+    "unit": "10",
+    "id": "n10-19",
+    "answer": "3-\\sqrt6",
+    "scaffold": "light",
+    "authored": [
+      "3-\\sqrt6",
+      "3+\\sqrt6",
+      "1-\\sqrt6",
+      "3-2\\sqrt6"
+    ],
+    "visible": [
+      "3-\\sqrt6",
+      "3-2\\sqrt6",
+      "3+\\sqrt6",
+      "1-\\sqrt6"
+    ]
+  },
+  {
+    "unit": "10",
+    "id": "n10-20",
+    "answer": "\\frac{(2-\\sqrt3)^2}{(2+\\sqrt3)(2-\\sqrt3)}=\\frac{(2-\\sqrt3)^2}{4-3}",
+    "scaffold": "light",
+    "authored": [
+      "\\frac{(2-\\sqrt3)^2}{(2+\\sqrt3)(2-\\sqrt3)}=\\frac{(2-\\sqrt3)^2}{4-3}",
+      "\\frac{(2-\\sqrt3)^2}{(2+\\sqrt3)^2}",
+      "\\frac{2-\\sqrt3}{2+\\sqrt3}\\cdot\\frac{2+\\sqrt3}{2+\\sqrt3}",
+      "\\frac{(2-\\sqrt3)^2}{4+3}"
+    ],
+    "visible": [
+      "\\frac{(2-\\sqrt3)^2}{(2+\\sqrt3)^2}",
+      "\\frac{2-\\sqrt3}{2+\\sqrt3}\\cdot\\frac{2+\\sqrt3}{2+\\sqrt3}",
+      "\\frac{(2-\\sqrt3)^2}{(2+\\sqrt3)(2-\\sqrt3)}=\\frac{(2-\\sqrt3)^2}{4-3}",
+      "\\frac{(2-\\sqrt3)^2}{4+3}"
+    ]
+  },
+  {
+    "unit": "10",
+    "id": "n10-21",
+    "answer": "7-4\\sqrt3",
+    "scaffold": "light",
+    "authored": [
+      "7-4\\sqrt3",
+      "7+4\\sqrt3",
+      "7-2\\sqrt3",
+      "1-4\\sqrt3"
+    ],
+    "visible": [
+      "1-4\\sqrt3",
+      "7+4\\sqrt3",
+      "7-2\\sqrt3",
+      "7-4\\sqrt3"
+    ]
+  },
+  {
+    "unit": "11",
+    "id": "n11-01",
+    "answer": ">",
+    "scaffold": "strong",
+    "authored": [
+      ">",
+      "<",
+      "=",
+      "\\le"
+    ],
+    "visible": [
+      ">",
+      "\\le"
+    ]
+  },
+  {
+    "unit": "11",
+    "id": "n11-02",
+    "answer": "b-a",
+    "scaffold": "strong",
+    "authored": [
+      "b-a",
+      "b-a+2c",
+      "b-a-c",
+      "a-b"
+    ],
+    "visible": [
+      "a-b",
+      "b-a"
+    ]
+  },
+  {
+    "unit": "11",
+    "id": "n11-wm011-q02-compare",
+    "answer": "a+c<b+c,\\quad\\text{差は正のまま}",
+    "scaffold": "medium",
+    "authored": [
+      "a+c<b+c,\\quad\\text{差は正のまま}",
+      "a+c>b+c,\\quad\\text{差は負になる}",
+      "a+c=b+c,\\quad\\text{差は0}",
+      "a+c>b+c,\\quad\\text{差は正のまま}"
+    ],
+    "visible": [
+      "a+c<b+c,\\quad\\text{差は正のまま}",
+      "a+c>b+c,\\quad\\text{差は正のまま}",
+      "a+c>b+c,\\quad\\text{差は負になる}"
+    ]
+  },
+  {
+    "unit": "11",
+    "id": "n11-wm011-q03-factor",
+    "answer": "c",
+    "scaffold": "medium",
+    "authored": [
+      "c",
+      "-c",
+      "c^2",
+      "1"
+    ],
+    "visible": [
+      "c^2",
+      "-c",
+      "c"
+    ]
+  },
+  {
+    "unit": "11",
+    "id": "n11-wm011-q03-positive",
+    "answer": "ac<bc,\\quad bc-ac>0",
+    "scaffold": "medium",
+    "authored": [
+      "ac<bc,\\quad bc-ac>0",
+      "ac>bc,\\quad bc-ac<0",
+      "ac=bc,\\quad bc-ac=0",
+      "ac<bc,\\quad bc-ac<0"
+    ],
+    "visible": [
+      "ac=bc,\\quad bc-ac=0",
+      "ac<bc,\\quad bc-ac<0",
+      "ac<bc,\\quad bc-ac>0"
+    ]
+  },
+  {
+    "unit": "11",
+    "id": "n11-03",
+    "answer": "ac>bc,\\quad bc-ac<0",
+    "scaffold": "medium",
+    "authored": [
+      "ac>bc,\\quad bc-ac<0",
+      "ac<bc,\\quad bc-ac>0",
+      "ac=bc,\\quad bc-ac=0",
+      "ac>bc,\\quad bc-ac>0"
+    ],
+    "visible": [
+      "ac<bc,\\quad bc-ac>0",
+      "ac>bc,\\quad bc-ac<0",
+      "ac=bc,\\quad bc-ac=0"
+    ]
+  },
+  {
+    "unit": "11",
+    "id": "n11-wm011-q03-zero",
+    "answer": "ac=bc=0,\\quad\\text{元の厳密な大小は失われる}",
+    "scaffold": "medium",
+    "authored": [
+      "ac=bc=0,\\quad\\text{元の厳密な大小は失われる}",
+      "ac<bc,\\quad\\text{そのまま保つ}",
+      "ac>bc,\\quad\\text{逆転する}",
+      "ac=bc=0,\\quad\\text{元の不等号を保つ}"
+    ],
+    "visible": [
+      "ac>bc,\\quad\\text{逆転する}",
+      "ac=bc=0,\\quad\\text{元の不等号を保つ}",
+      "ac=bc=0,\\quad\\text{元の厳密な大小は失われる}"
+    ]
+  },
+  {
+    "unit": "11",
+    "id": "n11-wm011-q04-fraction",
+    "answer": "-\\frac a5>-\\frac b5,\\quad\\text{負数倍なので反転}",
+    "scaffold": "light",
+    "authored": [
+      "-\\frac a5>-\\frac b5,\\quad\\text{負数倍なので反転}",
+      "-\\frac a5<-\\frac b5,\\quad\\text{向きを保つ}",
+      "-\\frac a5=-\\frac b5,\\quad\\text{等号になる}",
+      "-\\frac a5>-\\frac b5,\\quad\\text{正数倍なので反転}"
+    ],
+    "visible": [
+      "-\\frac a5>-\\frac b5,\\quad\\text{負数倍なので反転}",
+      "-\\frac a5=-\\frac b5,\\quad\\text{等号になる}",
+      "-\\frac a5<-\\frac b5,\\quad\\text{向きを保つ}",
+      "-\\frac a5>-\\frac b5,\\quad\\text{正数倍なので反転}"
+    ]
+  },
+  {
+    "unit": "11",
+    "id": "n11-04",
+    "answer": "3-a>3-b",
+    "scaffold": "light",
+    "authored": [
+      "3-a>3-b",
+      "3-a<3-b",
+      "3-a=3-b",
+      "3+a>3+b"
+    ],
+    "visible": [
+      "3+a>3+b",
+      "3-a=3-b",
+      "3-a<3-b",
+      "3-a>3-b"
+    ]
+  },
+  {
+    "unit": "11",
+    "id": "n11-wm017-q05-operation",
+    "answer": "2",
+    "scaffold": "light",
+    "authored": [
+      "2",
+      "-2",
+      "3",
+      "0"
+    ],
+    "visible": [
+      "2",
+      "0",
+      "-2",
+      "3"
+    ]
+  },
+  {
+    "unit": "11",
+    "id": "n11-wm017-q05-balance",
+    "answer": "2",
+    "scaffold": "light",
+    "authored": [
+      "2",
+      "-2",
+      "5",
+      "0"
+    ],
+    "visible": [
+      "0",
+      "5",
+      "-2",
+      "2"
+    ]
+  },
+  {
+    "unit": "11",
+    "id": "n11-05",
+    "answer": "7",
+    "scaffold": "light",
+    "authored": [
+      "7",
+      "3",
+      "5",
+      "9"
+    ],
+    "visible": [
+      "7",
+      "3",
+      "9",
+      "5"
+    ]
+  },
+  {
+    "unit": "11",
+    "id": "n11-06",
+    "answer": "\\frac73",
+    "scaffold": "light",
+    "authored": [
+      "\\frac73",
+      "\\frac37",
+      "-\\frac73",
+      "7"
+    ],
+    "visible": [
+      "7",
+      "\\frac37",
+      "\\frac73",
+      "-\\frac73"
+    ]
+  },
+  {
+    "unit": "11",
+    "id": "n11-07",
+    "answer": "含まれない（等号となり<を満たさない）",
+    "scaffold": "medium",
+    "authored": [
+      "含まれない（等号となり<を満たさない）",
+      "含まれる（左右が等しくなるから）",
+      "含まれる（3は正だから）",
+      "判断できない（分数だから）"
+    ],
+    "visible": [
+      "判断できない（分数だから）",
+      "含まれない（等号となり<を満たさない）",
+      "含まれる（3は正だから）"
+    ]
+  },
+  {
+    "unit": "11",
+    "id": "n11-p007-q08-subtract-left",
+    "answer": "3",
+    "scaffold": "light",
+    "authored": [
+      "3",
+      "-3",
+      "2",
+      "5"
+    ],
+    "visible": [
+      "5",
+      "-3",
+      "2",
+      "3"
+    ]
+  },
+  {
+    "unit": "11",
+    "id": "n11-p007-q08-subtract-right",
+    "answer": "3",
+    "scaffold": "light",
+    "authored": [
+      "3",
+      "-3",
+      "5",
+      "2"
+    ],
+    "visible": [
+      "3",
+      "2",
+      "-3",
+      "5"
+    ]
+  },
+  {
+    "unit": "11",
+    "id": "n11-08",
+    "answer": "2",
+    "scaffold": "light",
+    "authored": [
+      "2",
+      "8",
+      "-2",
+      "5"
+    ],
+    "visible": [
+      "5",
+      "-2",
+      "8",
+      "2"
+    ]
+  },
+  {
+    "unit": "11",
+    "id": "n11-p007-q09-direction",
+    "answer": "\\ge",
+    "scaffold": "light",
+    "authored": [
+      "\\ge",
+      "\\le",
+      ">",
+      "<"
+    ],
+    "visible": [
+      "\\le",
+      ">",
+      "<",
+      "\\ge"
+    ]
+  },
+  {
+    "unit": "11",
+    "id": "n11-09",
+    "answer": "-1",
+    "scaffold": "light",
+    "authored": [
+      "-1",
+      "1",
+      "-2",
+      "2"
+    ],
+    "visible": [
+      "1",
+      "2",
+      "-1",
+      "-2"
+    ]
+  },
+  {
+    "unit": "11",
+    "id": "n11-10",
+    "answer": "含む（代入すると5≤5）",
+    "scaffold": "light",
+    "authored": [
+      "含む（代入すると5≤5）",
+      "含まない（負の数だから）",
+      "含まない（代入すると5<5）",
+      "含む（不等号を逆にしないから）"
+    ],
+    "visible": [
+      "含む（代入すると5≤5）",
+      "含まない（代入すると5<5）",
+      "含む（不等号を逆にしないから）",
+      "含まない（負の数だから）"
+    ]
+  },
+  {
+    "unit": "11",
+    "id": "n11-wm012-q11-expand",
+    "answer": "6x+9",
+    "scaffold": "medium",
+    "authored": [
+      "6x+9",
+      "6x+3",
+      "2x+9",
+      "6x+6"
+    ],
+    "visible": [
+      "6x+9",
+      "6x+6",
+      "2x+9"
+    ]
+  },
+  {
+    "unit": "11",
+    "id": "n11-wm012-q11-xcoef",
+    "answer": "-4",
+    "scaffold": "medium",
+    "authored": [
+      "-4",
+      "4",
+      "-10",
+      "16"
+    ],
+    "visible": [
+      "16",
+      "-4",
+      "4"
+    ]
+  },
+  {
+    "unit": "11",
+    "id": "n11-11",
+    "answer": "-4x\\ge-26",
+    "scaffold": "light",
+    "authored": [
+      "-4x\\ge-26",
+      "-4x\\le-26",
+      "4x\\ge-26",
+      "-4x\\ge26"
+    ],
+    "visible": [
+      "-4x\\le-26",
+      "-4x\\ge26",
+      "-4x\\ge-26",
+      "4x\\ge-26"
+    ]
+  },
+  {
+    "unit": "11",
+    "id": "n11-12",
+    "answer": "x\\le\\frac{13}{2}",
+    "scaffold": "light",
+    "authored": [
+      "x\\le\\frac{13}{2}",
+      "x\\ge\\frac{13}{2}",
+      "x\\le-\\frac{13}{2}",
+      "x<\\frac{13}{2}"
+    ],
+    "visible": [
+      "x\\le\\frac{13}{2}",
+      "x\\ge\\frac{13}{2}",
+      "x<\\frac{13}{2}",
+      "x\\le-\\frac{13}{2}"
+    ]
+  },
+  {
+    "unit": "11",
+    "id": "n11-p008-q13-mul-left",
+    "answer": "3",
+    "scaffold": "light",
+    "authored": [
+      "3",
+      "-3",
+      "1",
+      "6"
+    ],
+    "visible": [
+      "6",
+      "1",
+      "3",
+      "-3"
+    ]
+  },
+  {
+    "unit": "11",
+    "id": "n11-p008-q13-mul-right",
+    "answer": "3",
+    "scaffold": "light",
+    "authored": [
+      "3",
+      "1",
+      "-3",
+      "6"
+    ],
+    "visible": [
+      "1",
+      "3",
+      "6",
+      "-3"
+    ]
+  },
+  {
+    "unit": "11",
+    "id": "n11-13",
+    "answer": "6",
+    "scaffold": "light",
+    "authored": [
+      "6",
+      "2",
+      "3",
+      "9"
+    ],
+    "visible": [
+      "9",
+      "2",
+      "3",
+      "6"
+    ]
+  },
+  {
+    "unit": "11",
+    "id": "n11-p008-q13-constant",
+    "answer": "3",
+    "scaffold": "light",
+    "authored": [
+      "3",
+      "1",
+      "-3",
+      "6"
+    ],
+    "visible": [
+      "3",
+      "-3",
+      "1",
+      "6"
+    ]
+  },
+  {
+    "unit": "11",
+    "id": "n11-wm013-q14-xcoef",
+    "answer": "5",
+    "scaffold": "medium",
+    "authored": [
+      "5",
+      "6",
+      "7",
+      "-5"
+    ],
+    "visible": [
+      "7",
+      "5",
+      "-5"
+    ]
+  },
+  {
+    "unit": "11",
+    "id": "n11-wm013-q14-const",
+    "answer": "-5",
+    "scaffold": "medium",
+    "authored": [
+      "-5",
+      "1",
+      "-2",
+      "5"
+    ],
+    "visible": [
+      "-2",
+      "-5",
+      "1"
+    ]
+  },
+  {
+    "unit": "11",
+    "id": "n11-14",
+    "answer": "x\\ge-1",
+    "scaffold": "light",
+    "authored": [
+      "x\\ge-1",
+      "x\\le-1",
+      "x\\ge1",
+      "x>-1"
+    ],
+    "visible": [
+      "x\\le-1",
+      "x>-1",
+      "x\\ge-1",
+      "x\\ge1"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-p002-q01-coef",
+    "answer": "2",
+    "scaffold": "strong",
+    "authored": [
+      "2",
+      "-2",
+      "3",
+      "4"
+    ],
+    "visible": [
+      "-2",
+      "2"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-p002-q01-const",
+    "answer": "-7",
+    "scaffold": "strong",
+    "authored": [
+      "-7",
+      "7",
+      "-3",
+      "3"
+    ],
+    "visible": [
+      "7",
+      "-7"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-01",
+    "answer": "x>-\\frac72",
+    "scaffold": "strong",
+    "authored": [
+      "x>-\\frac72",
+      "x< -\\frac72",
+      "x>\\frac72",
+      "x\\ge-\\frac72"
+    ],
+    "visible": [
+      "x< -\\frac72",
+      "x>-\\frac72"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-p002-q02-coef",
+    "answer": "2",
+    "scaffold": "strong",
+    "authored": [
+      "2",
+      "0",
+      "-2",
+      "1"
+    ],
+    "visible": [
+      "2",
+      "-2"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-p002-q02-const",
+    "answer": "1",
+    "scaffold": "strong",
+    "authored": [
+      "1",
+      "9",
+      "-1",
+      "4"
+    ],
+    "visible": [
+      "1",
+      "4"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-02",
+    "answer": "x\\le\\frac12",
+    "scaffold": "strong",
+    "authored": [
+      "x\\le\\frac12",
+      "x<\\frac12",
+      "x\\ge\\frac12",
+      "x\\le-\\frac12"
+    ],
+    "visible": [
+      "x\\le\\frac12",
+      "x\\ge\\frac12"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-03",
+    "answer": "二つ目に反するので不適",
+    "scaffold": "strong",
+    "authored": [
+      "二つ目に反するので不適",
+      "一つ目を満たすから適する",
+      "二つとも満たす",
+      "どちらも満たさない"
+    ],
+    "visible": [
+      "一つ目を満たすから適する",
+      "二つ目に反するので不適"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-04",
+    "answer": "-\\frac72<x\\le\\frac12",
+    "scaffold": "medium",
+    "authored": [
+      "-\\frac72<x\\le\\frac12",
+      "-\\frac72\\le x\\le\\frac12",
+      "-\\frac72<x<\\frac12",
+      "x>-\\frac72\\ \\text{または}\\ x\\le\\frac12"
+    ],
+    "visible": [
+      "-\\frac72<x<\\frac12",
+      "x>-\\frac72\\ \\text{または}\\ x\\le\\frac12",
+      "-\\frac72<x\\le\\frac12"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-05",
+    "answer": "3x+2\\le2x+4\\ \\text{かつ}\\ 2x+4\\le9-x",
+    "scaffold": "medium",
+    "authored": [
+      "3x+2\\le2x+4\\ \\text{かつ}\\ 2x+4\\le9-x",
+      "3x+2\\le9-x",
+      "3x+2\\le2x+4\\ \\text{または}\\ 2x+4\\le9-x",
+      "3x+2\\ge2x+4\\ \\text{かつ}\\ 2x+4\\le9-x"
+    ],
+    "visible": [
+      "3x+2\\le2x+4\\ \\text{かつ}\\ 2x+4\\le9-x",
+      "3x+2\\le2x+4\\ \\text{または}\\ 2x+4\\le9-x",
+      "3x+2\\le9-x"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-p002-q06-left-coef",
+    "answer": "1",
+    "scaffold": "medium",
+    "authored": [
+      "1",
+      "2",
+      "-1",
+      "5"
+    ],
+    "visible": [
+      "-1",
+      "2",
+      "1"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-p002-q06-left-const",
+    "answer": "2",
+    "scaffold": "medium",
+    "authored": [
+      "2",
+      "6",
+      "-2",
+      "4"
+    ],
+    "visible": [
+      "4",
+      "2",
+      "6"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-p002-q06-right-coef",
+    "answer": "3",
+    "scaffold": "medium",
+    "authored": [
+      "3",
+      "1",
+      "-3",
+      "2"
+    ],
+    "visible": [
+      "3",
+      "2",
+      "-3"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-p002-q06-right-const",
+    "answer": "5",
+    "scaffold": "medium",
+    "authored": [
+      "5",
+      "13",
+      "-5",
+      "9"
+    ],
+    "visible": [
+      "9",
+      "13",
+      "5"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-06",
+    "answer": "x\\le2,\\quad x\\le\\frac53",
+    "scaffold": "medium",
+    "authored": [
+      "x\\le2,\\quad x\\le\\frac53",
+      "x\\le2,\\quad x\\ge\\frac53",
+      "x\\ge2,\\quad x\\le\\frac53",
+      "x\\le2,\\quad x\\le\\frac35"
+    ],
+    "visible": [
+      "x\\ge2,\\quad x\\le\\frac53",
+      "x\\le2,\\quad x\\le\\frac53",
+      "x\\le2,\\quad x\\le\\frac35"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-07",
+    "answer": "x\\le\\frac53",
+    "scaffold": "medium",
+    "authored": [
+      "x\\le\\frac53",
+      "x\\le2",
+      "x\\ge\\frac53",
+      "\\frac53\\le x\\le2"
+    ],
+    "visible": [
+      "x\\le\\frac53",
+      "x\\ge\\frac53",
+      "\\frac53\\le x\\le2"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-08",
+    "answer": "20-x",
+    "scaffold": "strong",
+    "authored": [
+      "20-x",
+      "20+x",
+      "x-20",
+      "20"
+    ],
+    "visible": [
+      "20-x",
+      "20"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-09",
+    "answer": "x\\in\\mathbb Z,\\ 0\\le x\\le20",
+    "scaffold": "medium",
+    "authored": [
+      "x\\in\\mathbb Z,\\ 0\\le x\\le20",
+      "x\\in\\mathbb R,\\ 0\\le x\\le20",
+      "x\\in\\mathbb Z,\\ x\\ge0",
+      "x\\in\\mathbb Z,\\ 0<x<20"
+    ],
+    "visible": [
+      "x\\in\\mathbb Z,\\ 0\\le x\\le20",
+      "x\\in\\mathbb Z,\\ 0<x<20",
+      "x\\in\\mathbb Z,\\ x\\ge0"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-p003-q10-meaning",
+    "answer": "箱と20個の菓子の合計金額",
+    "scaffold": "strong",
+    "authored": [
+      "箱と20個の菓子の合計金額",
+      "箱だけの代金",
+      "シュークリームの個数",
+      "プリン1個の代金"
+    ],
+    "visible": [
+      "箱と20個の菓子の合計金額",
+      "シュークリームの個数"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-p003-q10-cream-coef",
+    "answer": "180",
+    "scaffold": "medium",
+    "authored": [
+      "180",
+      "130",
+      "50",
+      "20"
+    ],
+    "visible": [
+      "180",
+      "20",
+      "130"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-p003-q10-pudding-coef",
+    "answer": "130",
+    "scaffold": "medium",
+    "authored": [
+      "130",
+      "180",
+      "50",
+      "20"
+    ],
+    "visible": [
+      "20",
+      "130",
+      "180"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-p003-q10-box-fee",
+    "answer": "50",
+    "scaffold": "medium",
+    "authored": [
+      "50",
+      "130",
+      "180",
+      "20"
+    ],
+    "visible": [
+      "180",
+      "20",
+      "50"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-10",
+    "answer": "50+180x+130(20-x)",
+    "scaffold": "medium",
+    "authored": [
+      "50+180x+130(20-x)",
+      "180x+130(20-x)",
+      "50+180x+130x",
+      "50+180x+130(20+x)"
+    ],
+    "visible": [
+      "50+180x+130(20-x)",
+      "180x+130(20-x)",
+      "50+180x+130x"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-p003-q11-lower-sign",
+    "answer": "\\le",
+    "scaffold": "medium",
+    "authored": [
+      "\\le",
+      "<",
+      "\\ge",
+      ">"
+    ],
+    "visible": [
+      "\\le",
+      ">",
+      "<"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-p003-q11-upper-sign",
+    "answer": "<",
+    "scaffold": "medium",
+    "authored": [
+      "<",
+      "\\le",
+      ">",
+      "\\ge"
+    ],
+    "visible": [
+      "\\ge",
+      "<",
+      ">"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-11",
+    "answer": "3200\\le50+180x+130(20-x)<3300",
+    "scaffold": "medium",
+    "authored": [
+      "3200\\le50+180x+130(20-x)<3300",
+      "3200<50+180x+130(20-x)\\le3300",
+      "3200\\le50+180x+130(20-x)\\le3300",
+      "3200\\ge50+180x+130(20-x)<3300"
+    ],
+    "visible": [
+      "3200\\ge50+180x+130(20-x)<3300",
+      "3200\\le50+180x+130(20-x)<3300",
+      "3200<50+180x+130(20-x)\\le3300"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-p003-q12-product-constant",
+    "answer": "2600",
+    "scaffold": "medium",
+    "authored": [
+      "2600",
+      "260",
+      "2500",
+      "1300"
+    ],
+    "visible": [
+      "2600",
+      "2500",
+      "1300"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-p002-q12-signed-coef",
+    "answer": "-130",
+    "scaffold": "medium",
+    "authored": [
+      "-130",
+      "130",
+      "-20",
+      "2600"
+    ],
+    "visible": [
+      "-20",
+      "130",
+      "-130"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-p003-q12-total-constant",
+    "answer": "2650",
+    "scaffold": "medium",
+    "authored": [
+      "2650",
+      "2600",
+      "2550",
+      "3100"
+    ],
+    "visible": [
+      "2600",
+      "2650",
+      "3100"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-p003-q12-x-coef",
+    "answer": "50",
+    "scaffold": "medium",
+    "authored": [
+      "50",
+      "310",
+      "-50",
+      "130"
+    ],
+    "visible": [
+      "-50",
+      "130",
+      "50"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-12",
+    "answer": "3200\\le2650+50x<3300",
+    "scaffold": "medium",
+    "authored": [
+      "3200\\le2650+50x<3300",
+      "3200\\le2600+50x<3300",
+      "3200\\le2650+310x<3300",
+      "3200\\le2650-50x<3300"
+    ],
+    "visible": [
+      "3200\\le2650-50x<3300",
+      "3200\\le2600+50x<3300",
+      "3200\\le2650+50x<3300"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-p002-q13-lower",
+    "answer": "550",
+    "scaffold": "medium",
+    "authored": [
+      "550",
+      "650",
+      "-550",
+      "3200"
+    ],
+    "visible": [
+      "-550",
+      "550",
+      "650"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-p002-q13-upper",
+    "answer": "650",
+    "scaffold": "medium",
+    "authored": [
+      "650",
+      "550",
+      "-650",
+      "3300"
+    ],
+    "visible": [
+      "650",
+      "550",
+      "-650"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-13",
+    "answer": "11\\le x<13",
+    "scaffold": "light",
+    "authored": [
+      "11\\le x<13",
+      "11<x\\le13",
+      "11\\le x\\le13",
+      "x\\le11\\ \\text{または}\\ x>13"
+    ],
+    "visible": [
+      "11<x\\le13",
+      "11\\le x\\le13",
+      "11\\le x<13",
+      "x\\le11\\ \\text{または}\\ x>13"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-14",
+    "answer": "x=11\\ \\text{または}\\ 12",
+    "scaffold": "light",
+    "authored": [
+      "x=11\\ \\text{または}\\ 12",
+      "11\\le x\\le13",
+      "x=12\\ \\text{または}\\ 13",
+      "x=11\\ \\text{のみ}"
+    ],
+    "visible": [
+      "x=11\\ \\text{のみ}",
+      "11\\le x\\le13",
+      "x=11\\ \\text{または}\\ 12",
+      "x=12\\ \\text{または}\\ 13"
+    ]
+  },
+  {
+    "unit": "12",
+    "id": "n12-15",
+    "answer": "T(11)=3200\\text{円},\\ T(12)=3250\\text{円}",
+    "scaffold": "light",
+    "authored": [
+      "T(11)=3200\\text{円},\\ T(12)=3250\\text{円}",
+      "T(11)=3150\\text{円},\\ T(12)=3200\\text{円}",
+      "T(11)=3200\\text{円},\\ T(12)=3300\\text{円}",
+      "T(11)=3250\\text{円},\\ T(12)=3200\\text{円}"
+    ],
+    "visible": [
+      "T(11)=3200\\text{円},\\ T(12)=3250\\text{円}",
+      "T(11)=3150\\text{円},\\ T(12)=3200\\text{円}",
+      "T(11)=3200\\text{円},\\ T(12)=3300\\text{円}",
+      "T(11)=3250\\text{円},\\ T(12)=3200\\text{円}"
+    ]
+  },
+  {
+    "unit": "13",
+    "id": "n13-01",
+    "answer": "x=5\\;\\text{または}\\;x=-5",
+    "scaffold": "strong",
+    "authored": [
+      "x=5\\;\\text{または}\\;x=-5",
+      "x=5",
+      "x=-5",
+      "x=5\\;\\text{かつ}\\;x=-5"
+    ],
+    "visible": [
+      "x=5\\;\\text{または}\\;x=-5",
+      "x=-5"
+    ]
+  },
+  {
+    "unit": "13",
+    "id": "n13-02",
+    "answer": "X=4\\;\\text{または}\\;X=-4",
+    "scaffold": "strong",
+    "authored": [
+      "X=4\\;\\text{または}\\;X=-4",
+      "X=4",
+      "X=4\\;\\text{かつ}\\;X=-4",
+      "X=\\pm1"
+    ],
+    "visible": [
+      "X=4",
+      "X=4\\;\\text{または}\\;X=-4"
+    ]
+  },
+  {
+    "unit": "13",
+    "id": "n13-03",
+    "answer": "x-1=4\\;\\text{または}\\;x-1=-4",
+    "scaffold": "medium",
+    "authored": [
+      "x-1=4\\;\\text{または}\\;x-1=-4",
+      "x=4\\;\\text{または}\\;x=-4",
+      "x+1=4\\;\\text{または}\\;x+1=-4",
+      "x-1=4\\;\\text{かつ}\\;x-1=-4"
+    ],
+    "visible": [
+      "x-1=4\\;\\text{かつ}\\;x-1=-4",
+      "x=4\\;\\text{または}\\;x=-4",
+      "x-1=4\\;\\text{または}\\;x-1=-4"
+    ]
+  },
+  {
+    "unit": "13",
+    "id": "n13-04",
+    "answer": "x=5\\;\\text{または}\\;x=-3",
+    "scaffold": "medium",
+    "authored": [
+      "x=5\\;\\text{または}\\;x=-3",
+      "x=5",
+      "x=3\\;\\text{または}\\;x=-5",
+      "x=4\\;\\text{または}\\;x=-4"
+    ],
+    "visible": [
+      "x=5\\;\\text{または}\\;x=-3",
+      "x=3\\;\\text{または}\\;x=-5",
+      "x=5"
+    ]
+  },
+  {
+    "unit": "13",
+    "id": "n13-wm023-q05-right",
+    "answer": "x-1",
+    "scaffold": "medium",
+    "authored": [
+      "x-1",
+      "1-x",
+      "x+1",
+      "-1-x"
+    ],
+    "visible": [
+      "-1-x",
+      "1-x",
+      "x-1"
+    ]
+  },
+  {
+    "unit": "13",
+    "id": "n13-05",
+    "answer": "1-x",
+    "scaffold": "medium",
+    "authored": [
+      "1-x",
+      "x-1",
+      "1+x",
+      "-1-x"
+    ],
+    "visible": [
+      "-1-x",
+      "x-1",
+      "1-x"
+    ]
+  },
+  {
+    "unit": "13",
+    "id": "n13-06",
+    "answer": "x+2=3\\;\\text{または}\\;x+2=-3",
+    "scaffold": "medium",
+    "authored": [
+      "x+2=3\\;\\text{または}\\;x+2=-3",
+      "x=3\\;\\text{または}\\;x=-3",
+      "x+2=3\\;\\text{かつ}\\;x+2=-3",
+      "x-2=3\\;\\text{または}\\;x-2=-3"
+    ],
+    "visible": [
+      "x+2=3\\;\\text{または}\\;x+2=-3",
+      "x+2=3\\;\\text{かつ}\\;x+2=-3",
+      "x-2=3\\;\\text{または}\\;x-2=-3"
+    ]
+  },
+  {
+    "unit": "13",
+    "id": "n13-07",
+    "answer": "x=1\\;\\text{または}\\;x=-5",
+    "scaffold": "light",
+    "authored": [
+      "x=1\\;\\text{または}\\;x=-5",
+      "x=1",
+      "x=5\\;\\text{または}\\;x=-1",
+      "x=-1\\;\\text{または}\\;x=-5"
+    ],
+    "visible": [
+      "x=1\\;\\text{または}\\;x=-5",
+      "x=-1\\;\\text{または}\\;x=-5",
+      "x=1",
+      "x=5\\;\\text{または}\\;x=-1"
+    ]
+  },
+  {
+    "unit": "13",
+    "id": "n13-wm023-q08-branches",
+    "answer": "3x=6\\;\\text{または}\\;3x=-6",
+    "scaffold": "medium",
+    "authored": [
+      "3x=6\\;\\text{または}\\;3x=-6",
+      "3x=6\\;\\text{かつ}\\;3x=-6",
+      "3x=6",
+      "3x=-6"
+    ],
+    "visible": [
+      "3x=6\\;\\text{または}\\;3x=-6",
+      "3x=6\\;\\text{かつ}\\;3x=-6",
+      "3x=6"
+    ]
+  },
+  {
+    "unit": "13",
+    "id": "n13-wm023-q08-positive-root",
+    "answer": "2",
+    "scaffold": "medium",
+    "authored": [
+      "2",
+      "-2",
+      "6",
+      "\\frac12"
+    ],
+    "visible": [
+      "2",
+      "6",
+      "-2"
+    ]
+  },
+  {
+    "unit": "13",
+    "id": "n13-08",
+    "answer": "-2",
+    "scaffold": "medium",
+    "authored": [
+      "-2",
+      "2",
+      "-6",
+      "-\\frac12"
+    ],
+    "visible": [
+      "-2",
+      "2",
+      "-\\frac12"
+    ]
+  },
+  {
+    "unit": "13",
+    "id": "n13-09",
+    "answer": "0ならx=0、負なら実数解なし",
+    "scaffold": "light",
+    "authored": [
+      "0ならx=0、負なら実数解なし",
+      "0ならx=±0、負ならx=±2",
+      "0なら解なし、負ならx=−2",
+      "両方ともすべての実数"
+    ],
+    "visible": [
+      "両方ともすべての実数",
+      "0なら解なし、負ならx=−2",
+      "0ならx=0、負なら実数解なし",
+      "0ならx=±0、負ならx=±2"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-01",
+    "answer": "原点からの距離が3より小さい",
+    "scaffold": "strong",
+    "authored": [
+      "原点からの距離が3より小さい",
+      "原点からの距離が3より大きい",
+      "座標が3より大きい",
+      "原点からの距離が3以上"
+    ],
+    "visible": [
+      "原点からの距離が3より大きい",
+      "原点からの距離が3より小さい"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-02",
+    "answer": "x=-3,\\quad x=3",
+    "scaffold": "strong",
+    "authored": [
+      "x=-3,\\quad x=3",
+      "x=0,\\quad x=3",
+      "x=-3,\\quad x=0",
+      "x=3,\\quad x=6"
+    ],
+    "visible": [
+      "x=-3,\\quad x=3",
+      "x=-3,\\quad x=0"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-03",
+    "answer": "二点の間、両端を含まない",
+    "scaffold": "medium",
+    "authored": [
+      "二点の間、両端を含まない",
+      "二点の外側、両端を含まない",
+      "二点の間、両端を含む",
+      "二点の外側、両端を含む"
+    ],
+    "visible": [
+      "二点の間、両端を含む",
+      "二点の外側、両端を含まない",
+      "二点の間、両端を含まない"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-04",
+    "answer": "-3<x<3",
+    "scaffold": "medium",
+    "authored": [
+      "-3<x<3",
+      "x<-3\\;\\text{または}\\;x>3",
+      "-3\\le x\\le3",
+      "3<x<-3"
+    ],
+    "visible": [
+      "-3\\le x\\le3",
+      "-3<x<3",
+      "x<-3\\;\\text{または}\\;x>3"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-05",
+    "answer": "境界−4と4、外側、端点を含む",
+    "scaffold": "medium",
+    "authored": [
+      "境界−4と4、外側、端点を含む",
+      "境界−4と4、内側、端点を含む",
+      "境界−4と4、外側、端点を含まない",
+      "境界0と4、外側、端点を含む"
+    ],
+    "visible": [
+      "境界−4と4、外側、端点を含む",
+      "境界−4と4、内側、端点を含む",
+      "境界0と4、外側、端点を含む"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-06",
+    "answer": "x\\le-4\\;\\text{または}\\;x\\ge4",
+    "scaffold": "medium",
+    "authored": [
+      "x\\le-4\\;\\text{または}\\;x\\ge4",
+      "-4\\le x\\le4",
+      "x<-4\\;\\text{または}\\;x>4",
+      "x\\le-4\\;\\text{かつ}\\;x\\ge4"
+    ],
+    "visible": [
+      "x<-4\\;\\text{または}\\;x>4",
+      "x\\le-4\\;\\text{または}\\;x\\ge4",
+      "-4\\le x\\le4"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-wm014-q07-nonnegative",
+    "answer": "0\\le X<a",
+    "scaffold": "medium",
+    "authored": [
+      "0\\le X<a",
+      "0\\le X\\le a",
+      "X>a",
+      "-a<X<0"
+    ],
+    "visible": [
+      "X>a",
+      "-a<X<0",
+      "0\\le X<a"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-wm014-q07-negative",
+    "answer": "-a<X<0",
+    "scaffold": "medium",
+    "authored": [
+      "-a<X<0",
+      "-a\\le X<0",
+      "X<-a",
+      "0\\le X<a"
+    ],
+    "visible": [
+      "0\\le X<a",
+      "-a<X<0",
+      "-a\\le X<0"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-07",
+    "answer": "-a<X<a",
+    "scaffold": "medium",
+    "authored": [
+      "-a<X<a",
+      "X<-a\\;\\text{または}\\;X>a",
+      "-a\\le X\\le a",
+      "a<X<-a"
+    ],
+    "visible": [
+      "-a<X<a",
+      "-a\\le X\\le a",
+      "a<X<-a"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-wm015-q08-nonnegative",
+    "answer": "X>a",
+    "scaffold": "medium",
+    "authored": [
+      "X>a",
+      "X\\ge a",
+      "0\\le X<a",
+      "X<-a"
+    ],
+    "visible": [
+      "X>a",
+      "X<-a",
+      "X\\ge a"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-wm015-q08-negative",
+    "answer": "X<-a",
+    "scaffold": "medium",
+    "authored": [
+      "X<-a",
+      "X\\le-a",
+      "X>-a",
+      "X>a"
+    ],
+    "visible": [
+      "X>a",
+      "X\\le-a",
+      "X<-a"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-08",
+    "answer": "X<-a\\;\\text{または}\\;X>a",
+    "scaffold": "medium",
+    "authored": [
+      "X<-a\\;\\text{または}\\;X>a",
+      "-a<X<a",
+      "X\\le-a\\;\\text{または}\\;X\\ge a",
+      "X<-a\\;\\text{かつ}\\;X>a"
+    ],
+    "visible": [
+      "X<-a\\;\\text{かつ}\\;X>a",
+      "-a<X<a",
+      "X<-a\\;\\text{または}\\;X>a"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-09",
+    "answer": "-5<x-3<5",
+    "scaffold": "medium",
+    "authored": [
+      "-5<x-3<5",
+      "x-3<-5\\;\\text{または}\\;x-3>5",
+      "-5\\le x-3\\le5",
+      "-5<x<5"
+    ],
+    "visible": [
+      "-5<x-3<5",
+      "-5<x<5",
+      "-5\\le x-3\\le5"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-wm018-q10-add-left",
+    "answer": "3",
+    "scaffold": "light",
+    "authored": [
+      "3",
+      "-3",
+      "2",
+      "5"
+    ],
+    "visible": [
+      "3",
+      "5",
+      "-3",
+      "2"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-wm018-q10-add-center",
+    "answer": "3",
+    "scaffold": "light",
+    "authored": [
+      "3",
+      "-3",
+      "0",
+      "5"
+    ],
+    "visible": [
+      "3",
+      "-3",
+      "0",
+      "5"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-wm018-q10-add-right",
+    "answer": "3",
+    "scaffold": "light",
+    "authored": [
+      "3",
+      "-3",
+      "-5",
+      "2"
+    ],
+    "visible": [
+      "-3",
+      "2",
+      "-5",
+      "3"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-10",
+    "answer": "-2",
+    "scaffold": "light",
+    "authored": [
+      "-2",
+      "2",
+      "-8",
+      "-5"
+    ],
+    "visible": [
+      "2",
+      "-5",
+      "-8",
+      "-2"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-wm018-q10-bound-right",
+    "answer": "8",
+    "scaffold": "light",
+    "authored": [
+      "8",
+      "2",
+      "5",
+      "-8"
+    ],
+    "visible": [
+      "-8",
+      "2",
+      "8",
+      "5"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-11",
+    "answer": "x+3\\le-2\\;\\text{または}\\;x+3\\ge2",
+    "scaffold": "medium",
+    "authored": [
+      "x+3\\le-2\\;\\text{または}\\;x+3\\ge2",
+      "-2\\le x+3\\le2",
+      "x+3<-2\\;\\text{または}\\;x+3>2",
+      "x+3\\le-2\\;\\text{かつ}\\;x+3\\ge2"
+    ],
+    "visible": [
+      "x+3<-2\\;\\text{または}\\;x+3>2",
+      "x+3\\le-2\\;\\text{または}\\;x+3\\ge2",
+      "x+3\\le-2\\;\\text{かつ}\\;x+3\\ge2"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-wm016-q12-left",
+    "answer": "x\\le-5",
+    "scaffold": "medium",
+    "authored": [
+      "x\\le-5",
+      "x<-5",
+      "x\\ge-5",
+      "x\\le-1"
+    ],
+    "visible": [
+      "x\\ge-5",
+      "x\\le-1",
+      "x\\le-5"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-wm016-q12-right",
+    "answer": "x\\ge-1",
+    "scaffold": "medium",
+    "authored": [
+      "x\\ge-1",
+      "x>-1",
+      "x\\le-1",
+      "x\\ge1"
+    ],
+    "visible": [
+      "x\\ge-1",
+      "x\\ge1",
+      "x>-1"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-12",
+    "answer": "x\\le-5\\;\\text{または}\\;x\\ge-1",
+    "scaffold": "light",
+    "authored": [
+      "x\\le-5\\;\\text{または}\\;x\\ge-1",
+      "-5\\le x\\le-1",
+      "x<-5\\;\\text{または}\\;x>-1",
+      "x\\le-1\\;\\text{または}\\;x\\ge5"
+    ],
+    "visible": [
+      "-5\\le x\\le-1",
+      "x\\le-5\\;\\text{または}\\;x\\ge-1",
+      "x\\le-1\\;\\text{または}\\;x\\ge5",
+      "x<-5\\;\\text{または}\\;x>-1"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-13",
+    "answer": "-4\\le3x-2\\le4",
+    "scaffold": "light",
+    "authored": [
+      "-4\\le3x-2\\le4",
+      "3x-2\\le-4\\;\\text{または}\\;3x-2\\ge4",
+      "-4<3x-2<4",
+      "-4\\le3x\\le4"
+    ],
+    "visible": [
+      "-4\\le3x-2\\le4",
+      "3x-2\\le-4\\;\\text{または}\\;3x-2\\ge4",
+      "-4\\le3x\\le4",
+      "-4<3x-2<4"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-wm019-q14-add-left",
+    "answer": "2",
+    "scaffold": "light",
+    "authored": [
+      "2",
+      "-2",
+      "4",
+      "6"
+    ],
+    "visible": [
+      "6",
+      "2",
+      "-2",
+      "4"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-wm019-q14-add-center",
+    "answer": "2",
+    "scaffold": "light",
+    "authored": [
+      "2",
+      "-2",
+      "0",
+      "3"
+    ],
+    "visible": [
+      "-2",
+      "2",
+      "3",
+      "0"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-wm019-q14-add-right",
+    "answer": "2",
+    "scaffold": "light",
+    "authored": [
+      "2",
+      "-2",
+      "4",
+      "0"
+    ],
+    "visible": [
+      "-2",
+      "4",
+      "2",
+      "0"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-14",
+    "answer": "-2",
+    "scaffold": "light",
+    "authored": [
+      "-2",
+      "2",
+      "-6",
+      "-4"
+    ],
+    "visible": [
+      "2",
+      "-6",
+      "-4",
+      "-2"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-wm019-q14-bound-right",
+    "answer": "6",
+    "scaffold": "light",
+    "authored": [
+      "6",
+      "2",
+      "4",
+      "-6"
+    ],
+    "visible": [
+      "2",
+      "4",
+      "-6",
+      "6"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-wm020-q15-divide-left",
+    "answer": "3",
+    "scaffold": "light",
+    "authored": [
+      "3",
+      "-3",
+      "2",
+      "6"
+    ],
+    "visible": [
+      "-3",
+      "2",
+      "3",
+      "6"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-wm020-q15-divide-center",
+    "answer": "3",
+    "scaffold": "light",
+    "authored": [
+      "3",
+      "-3",
+      "1",
+      "6"
+    ],
+    "visible": [
+      "3",
+      "1",
+      "-3",
+      "6"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-wm020-q15-divide-right",
+    "answer": "3",
+    "scaffold": "light",
+    "authored": [
+      "3",
+      "-3",
+      "2",
+      "6"
+    ],
+    "visible": [
+      "6",
+      "3",
+      "-3",
+      "2"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-15",
+    "answer": "-\\frac23",
+    "scaffold": "light",
+    "authored": [
+      "-\\frac23",
+      "\\frac23",
+      "-6",
+      "-\\frac32"
+    ],
+    "visible": [
+      "-\\frac23",
+      "-6",
+      "\\frac23",
+      "-\\frac32"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-wm020-q15-bound-right",
+    "answer": "2",
+    "scaffold": "light",
+    "authored": [
+      "2",
+      "3",
+      "-2",
+      "\\frac12"
+    ],
+    "visible": [
+      "2",
+      "3",
+      "\\frac12",
+      "-2"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-wm022-q16-left-inner",
+    "answer": "-4",
+    "scaffold": "light",
+    "authored": [
+      "-4",
+      "4",
+      "-2",
+      "0"
+    ],
+    "visible": [
+      "-4",
+      "4",
+      "0",
+      "-2"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-wm022-q16-left-abs",
+    "answer": "4",
+    "scaffold": "light",
+    "authored": [
+      "4",
+      "-4",
+      "2",
+      "0"
+    ],
+    "visible": [
+      "-4",
+      "0",
+      "4",
+      "2"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-wm022-q16-right-inner",
+    "answer": "4",
+    "scaffold": "light",
+    "authored": [
+      "4",
+      "-4",
+      "2",
+      "6"
+    ],
+    "visible": [
+      "2",
+      "-4",
+      "6",
+      "4"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-wm022-q16-right-abs",
+    "answer": "4",
+    "scaffold": "light",
+    "authored": [
+      "4",
+      "-4",
+      "2",
+      "0"
+    ],
+    "visible": [
+      "2",
+      "0",
+      "-4",
+      "4"
+    ]
+  },
+  {
+    "unit": "14",
+    "id": "n14-16",
+    "answer": "両端とも含む",
+    "scaffold": "light",
+    "authored": [
+      "両端とも含む",
+      "左端だけ含む",
+      "右端だけ含む",
+      "両端とも含まない"
+    ],
+    "visible": [
+      "両端とも含まない",
+      "両端とも含む",
+      "左端だけ含む",
+      "右端だけ含む"
+    ]
+  }
+]

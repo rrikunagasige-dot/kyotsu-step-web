@@ -8,7 +8,7 @@ permissions:
   contents: read
 jobs:
   snapshot:
-    if: ${{ github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'work/W-MATH-025-chapter-audit-20261023' }}
+    if: ${{ false }} # frozen native export archived after run39908283290; no record-only recapture
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

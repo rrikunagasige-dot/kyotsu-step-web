@@ -23,6 +23,8 @@ on:
       - 'src/data/questionCatalog.test.ts'
       - 'src/data/questionCatalog.zh.test.ts'
       - 'src/domain/questionSchema.ts'
+      - 'src/domain/neDevelopmentDisplay.ts'
+      - 'src/pages/TextbookUnitPage.tsx'
       - 'src/domain/textbookMath.ts'
       - 'src/domain/textbookMath.test.ts'
       - 'src/pages/LearningSessionPage.tsx'

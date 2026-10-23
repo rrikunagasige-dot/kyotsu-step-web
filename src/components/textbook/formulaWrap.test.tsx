@@ -32,5 +32,11 @@ describe('chapter overflow mathematical boundaries', () => {
       })
     }
   }
-  it('limits the new wrapping to the confirmed audited blocks', () => expect(count).toBe(42))
+  it('preserves the original forty-two blocks and explicitly opts in only the two approved development units', () => {
+    const existing = Object.entries(auditedWrapBlocks).filter(([id]) => !id.endsWith('-ne01') && !id.endsWith('-ne02'))
+    expect(existing.flatMap(([, ids]) => ids)).toHaveLength(42)
+    expect(Object.entries(auditedWrapBlocks).filter(([id]) => id.endsWith('-ne01') || id.endsWith('-ne02')).map(([id]) => id).sort())
+      .toEqual(['math-numbers-expressions-ne01', 'math-numbers-expressions-ne02'])
+    expect(count).toBe(84)
+  })
 })

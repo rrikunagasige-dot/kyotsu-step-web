@@ -1,3 +1,7 @@
+## P-005 first verification checkpoint — 2026-10-23
+
+Initial source `85d1b1b3353dab0c25afa53c97d953123df3eba1`: typecheck/lint PASS, dedicated unit run134 PASS/1 FAIL. The single failure was an existing wrapping-test global count42 after adding42 opt-in formula blocks from the approved new units; old block assertions remain unchanged. Fixed the assertion to separately preserve old42 and bound new entries to NE01/NE02, total84. No learner answer/design change. Initial browser capture did not run; do not claim visual PASS. Math and review runs and all failures remain in history. Expanded existing practice CI path to cover the changed shared textbook-page call site and scoped development display module.
+
 ## 2026-10-23 — P-005 exact approval and full-batch implementation
 
 User replied **「続けて」** directly to the question asking permission to implement the complete, already presented NE01/NE02 25-question P-005 design. This is exact review-only implementation approval for both units together, not an acceptance of yet-unseen rendered images or main/hosting permission. No question-by-question permission pause.

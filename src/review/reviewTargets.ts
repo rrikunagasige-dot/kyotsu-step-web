@@ -116,6 +116,42 @@ const targets: Record<string, ReviewTarget> = {
     markBlockIds:['n13-formula-08','n13-wm023-q08-positive-root','n13-wm023-q08-negative-root'],
     reviewState:'accepted',
   },
+  // W-MATH-025/P-001: one original N05 Q11 hint, source-native visuals only.
+  'n05-q11': {
+    id:'n05-q11',unitId:'math-numbers-expressions-n05',title:'N05 Q11',
+    question:'整数組を先出しせず、積と和の条件を確かめる誤答ヒント',
+    revision:2,totalItems:20,
+    blockIds:['n05-lead-11','n05-formula-11','n05-after-11'],
+    itemIds:['n05-11'],expectedAnswers:['(a-8)(a+2)'],
+    markBlockIds:['n05-formula-11'],reviewState:'accepted', // user 「続けていいよ」 accepted Q11 visual on 2026-10-23
+  },
+  // W-MATH-025/P-004: one original Q06 wrong-only hint; no change to the student task.
+  'n06-q06': {
+    id:'n06-q06',unitId:'math-numbers-expressions-n06',title:'N06 Q06',
+    question:'完成した因数を教えず、符号と置換の復元を手掛かりにする誤答ヒント',
+    revision:3,totalItems:16,
+    blockIds:['n06-lead-06','n06-formula-06','n06-after-06'],
+    itemIds:['n06-06'],expectedAnswers:['(x^2-1)(x^2-4)'],
+    markBlockIds:['n06-formula-06'],reviewState:'awaiting-user',
+  },
+  // W-MATH-025/P-003: the one original Q03 wrong-only hint; source revision unchanged.
+  'n06-q03': {
+    id:'n06-q03',unitId:'math-numbers-expressions-n06',title:'N06 Q03',
+    question:'整数組を先に教えず、符号と和・積から考え直す誤答ヒント',
+    revision:3,totalItems:16,
+    blockIds:['n06-lead-03','n06-formula-03','n06-after-03'],
+    itemIds:['n06-03'],expectedAnswers:['(X-3)(X+2)'],
+    markBlockIds:['n06-formula-03'],reviewState:'accepted', // hint-only visual accepted by 「ヒントならいいよじゃ続けて」
+  },
+  // W-MATH-025/P-002: hint-only visual accepted; immutable evidence retained.
+  'n06-q12': {
+    id:'n06-q12',unitId:'math-numbers-expressions-n06',title:'N06 Q12',
+    question:'二数の符号を手掛かりにし、先の因子も残す誤答ヒント',
+    revision:3,totalItems:16,
+    blockIds:['n06-lead-12','n06-formula-12','n06-after-12'],
+    itemIds:['n06-12'],expectedAnswers:['(x+y)(x+2)(x-1)'],
+    markBlockIds:['n06-formula-12'],reviewState:'accepted',
+  },
   // W-MATH-024/P-001: one real original Q18 after-wrong hint; no learner content copy.
   'n05-q18': {
     id:'n05-q18',unitId:'math-numbers-expressions-n05',title:'N05 Q18',

@@ -1,3 +1,7 @@
+
+## 2026-10-23 — five accepted items now in one candidate
+All five remain visually accepted. Q16 is reconciled into source fc27e7f5fbdc28345917276d43602ea4787537bd ([PR119](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/119));N13 migrations and all prior hint/choice fixes retained. All source-specific required CI PASS:250 math unit/257 browser;Q16 dedicated6 browser;Review41 unit;Math practice95 unit/72browser;Governance. [Current reconciliation and scoped audit](../W-MATH-022-n14-q16-endpoint-verification/RECONCILIATION_20261023.md). Older not-integrated/pending descriptions below are historical. W025 whole-chapter Gate② remains OPEN;Gate③ not ready;NE01/NE02 still25 originals. No repeat five-item acceptance required.
+
 # Five-item acceptance and remaining work
 Status: BLOCK-VISUAL-OK
 

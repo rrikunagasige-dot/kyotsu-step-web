@@ -1,4 +1,22 @@
 
+## Final source-SHA verification — 2026-10-23
+Frozen runtime/review source: **fc27e7f5fbdc28345917276d43602ea4787537bd**, [PR119](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/119). **All required reconciliation CI succeeded.**
+
+| Native run/job | Actual result |
+|---|---|
+| Math textbook39905633260 /120256818120 | SUCCESS:25 unit files250 tests;257 browser passes,12 explicit project-width skips;type/lint/build, math phone/desktop, source/figure/derivation/accepted repairs, physics textbook and math practice setup |
+| Review39905633261 /120256818022 | SUCCESS:5 unit files41 tests,type/lint/build |
+| Q16 viewport39905633261 /120256818263 | SUCCESS:6 real normal/review cases at320/390/1440;6 explicit project-width skips |
+| Math practice39905633309 /120256818220 | SUCCESS:7 unit files95 tests;36 mobile+36 desktop browser passes |
+| Governance39905633270 | SUCCESS |
+
+[15 immutable, unmodified current-source images](./evidence/reconciled-20261023/README.md). Archive f9a764de2d0565c119ade4956fe9addaef2df695 contains images/README only; source PR119 remains frozen. Evidence updates stay on a separate branch so they do not cancel or redundantly rerun the completed source CI. [Scoped Q16 cross-audit](./CROSS_BLOCK_AUDIT_RECONCILED_20261023.md).
+
+**Q16 Gate① remains accepted. Scoped Q16 reconciliation/related Gate② checks are CROSS-VERIFIED. Whole-chapter W025 Gate② remains OPEN** for its other UNVERIFIED root-cause/educational audit cells. Gate③ FINAL-REVIEW-NOT-READY. No user whole-app acceptance,main merge,hosting or deployment is claimed. NE01/NE02 still2 units/25 original questions.
+
+This final checkpoint supersedes earlier pending CI/candidate statements below; older source/evidence remains history.
+
+
 ## 2026-10-23 — current accepted candidate reconciliation
 User visually accepted all five items with 「続けていいよ。5件承認。　後仕事はまたどれぐらい残っているのか私に状況説明」, then authorized continuation 「おけいいよ。じゃ続けて」. **Q16 Gate① is BLOCK-VISUAL-OK; no repeat acceptance required.** Older pending statements below are historical.
 This branch reconciles the exact accepted Q16 lesson from e64fd99b18ba167364c2dd6b108a6f7fef76f439 into PR118/e4f9cbe850379d0dd30d1a5c9484e8bdf606390d. Preserve current N13 rev3/rev4 migrations and all accepted hint/choice changes. Q16 original images remain immutable at f5b15694740325b56077fe64d740c7a7dc8fb22e; [original evidence](https://github.com/rrikunagasige-dot/kyotsu-step-web/tree/f5b15694740325b56077fe64d740c7a7dc8fb22e/work/items/W-MATH-022-n14-q16-endpoint-verification/evidence/gate1). New candidate QA is **PENDING**. [Reconciliation and audit](./RECONCILIATION_20261023.md). Gate② OPEN; Gate③ FINAL-REVIEW-NOT-READY; no main merge or deployment.

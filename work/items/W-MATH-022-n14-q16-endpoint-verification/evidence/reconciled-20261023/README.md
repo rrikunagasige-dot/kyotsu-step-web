@@ -1,13 +1,13 @@
 # Reconciled accepted Q16 — native viewport evidence
-Status: VERIFYING
+Status: VERIFIED-EVIDENCE
 Real operated source SHA: fc27e7f5fbdc28345917276d43602ea4787537bd
 Source PR: https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/119
 
 These are15 unmodified native Chromium PNGs, not mockups. All five items including Q16 were already accepted; no repeat human Gate① requested. Source and image branch are separate so evidence storage does not cancel the frozen source's running full regression.
 
-Native Review run39905633261 SUCCESS: review check41 tests passed; Q16 capture job120256818263 six browser cases passed/six project-width matrix skips. The six cases are normal/review at320/390/1440. Each preview case verifies wrong→hint→retry, all five decisions, zero accepted markers, zero KaTeX errors and unchanged learner localStorage. Normal cases solve all38 decisions and check completion. Artifact12480756171 ZIP SHA256 d1014c0c375740a65eea504eef2a7d4eba786aedb43125b54faa3c7fe83f0e73 matched local download. Math practice pilot39905633309 SUCCESS. Governance39905633270 SUCCESS. Full Math39905633260 RUNNING at image archival; not a claimed PASS.
+Native Review run39905633261 SUCCESS: review check41 tests passed; Q16 capture job120256818263 six browser cases passed/six project-width matrix skips. The six cases are normal/review at320/390/1440. Each preview case verifies wrong→hint→retry, all five decisions, zero accepted markers, zero KaTeX errors and unchanged learner localStorage. Normal cases solve all38 decisions and check completion. Artifact12480756171 ZIP SHA256 d1014c0c375740a65eea504eef2a7d4eba786aedb43125b54faa3c7fe83f0e73 matched local download. Math practice pilot39905633309 SUCCESS. Governance39905633270 SUCCESS. Full Math39905633260 subsequently SUCCESS at the frozen source:250 unit tests;257 browser passes/12 explicit project-width skips.
 
-Direct visual inspection: q16-review-wrong-320, q16-review-complete-390 and q16-normal-complete-1440. Japanese readable, Q16 math and wrong-state hint present, accepted markers absent. The390 complete viewport shows both endpoint substitutions, absolute values and inclusion together without the old full-page fixed-header overlay. The320 wrong viewport intentionally scrolls in the long choice panel; it is not evidence that every choice fits simultaneously. Original accepted full-page evidence remains unchanged on its original commit.
+Direct visual inspection:six PNGs — q16-review-wrong-320,q16-review-complete-390,q16-normal-complete-1440,q16-review-complete-320,q16-normal-complete-390,q16-review-complete-1440. Japanese readable, Q16 math and wrong-state hint present, accepted markers absent. The390 complete viewport shows both endpoint substitutions, absolute values and inclusion together without the old full-page fixed-header overlay. The320 wrong viewport intentionally scrolls in the long choice panel; it is not evidence that every choice fits simultaneously. Original accepted full-page evidence remains unchanged on its original commit.
 
 | File | SHA256 |
 |---|---|

@@ -1,3 +1,21 @@
+
+## Final source-SHA verification — 2026-10-23
+Frozen runtime/review source: **fc27e7f5fbdc28345917276d43602ea4787537bd**, [PR119](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/119). **All required reconciliation CI succeeded.**
+
+| Native run/job | Actual result |
+|---|---|
+| Math textbook39905633260 /120256818120 | SUCCESS:25 unit files250 tests;257 browser passes,12 explicit project-width skips;type/lint/build, math phone/desktop, source/figure/derivation/accepted repairs, physics textbook and math practice setup |
+| Review39905633261 /120256818022 | SUCCESS:5 unit files41 tests,type/lint/build |
+| Q16 viewport39905633261 /120256818263 | SUCCESS:6 real normal/review cases at320/390/1440;6 explicit project-width skips |
+| Math practice39905633309 /120256818220 | SUCCESS:7 unit files95 tests;36 mobile+36 desktop browser passes |
+| Governance39905633270 | SUCCESS |
+
+[15 immutable, unmodified current-source images](./evidence/reconciled-20261023/README.md). Archive f9a764de2d0565c119ade4956fe9addaef2df695 contains images/README only; source PR119 remains frozen. Evidence updates stay on a separate branch so they do not cancel or redundantly rerun the completed source CI. [Scoped Q16 cross-audit](./CROSS_BLOCK_AUDIT_RECONCILED_20261023.md).
+
+**Q16 Gate① remains accepted. Scoped Q16 reconciliation/related Gate② checks are CROSS-VERIFIED. Whole-chapter W025 Gate② remains OPEN** for its other UNVERIFIED root-cause/educational audit cells. Gate③ FINAL-REVIEW-NOT-READY. No user whole-app acceptance,main merge,hosting or deployment is claimed. NE01/NE02 still2 units/25 original questions.
+
+This final checkpoint supersedes earlier pending CI/candidate statements below; older source/evidence remains history.
+
 # Accepted Q16 reconciliation
 Status: VERIFYING
 Command: CMD-WORK-001 修正
@@ -34,3 +52,15 @@ Native Governance, Review boundary/type/build, Q16 320/390/1440 Chromium normal/
 | Accepted corrections | Exact Q16 and other lesson bytes/states preserved; current regression PENDING |
 
 Gate② is OPEN, not CROSS-VERIFIED. Whole-app Gate③ needs exact-SHA playable URL and user's full playthrough after audits. NE01/NE02 creation remains25 original questions and is outside this correction. Main/hosting unchanged.
+
+## Post-commit QA checkpoint — source fc27e7f5fbdc28345917276d43602ea4787537bd
+- Governance39905633270 SUCCESS.
+- Review39905633261 SUCCESS; check120256818022:5 files41 unit tests. Q16 regression120256818263:6 browser cases PASS/6 explicit width-project skips.
+- Math practice pilot39905633309 SUCCESS:7 files95 unit tests;36 mobile and36 desktop browser tests.
+- Math textbook39905633260 subsequently completed SUCCESS:250 unit/257 browser passes,12 explicit skips.
+-15 original viewport PNGs frozen in image-only f9a764de2d0565c119ade4956fe9addaef2df695. ZIP digest and all15 Git blob hashes match originals. Runtime/review source on PR119 remains fc27e7f5fbdc28345917276d43602ea4787537bd.
+- Additional direct visual inspection:320 review complete,390 normal complete,1440 review complete (six images total inspected). Normal scrolling may leave prior content above the fixed header; this is not a fabricated full-page rendering.
+- Independent rational arithmetic and teacher Word paragraphs607–611 verify Q14→Q15→Q16 endpoints−2/3,2; inner−4,4; absolutes4,4; both included.
+-18 selected N05/N06 factor stages/72 authored choices re-expanded at the current candidate. N06Q12 pairwise distinct. N06Q07 has the known equivalent unfinished quadratic factor versus completed linear factors: prompt explicitly requires a product of linear factors, so this is a justified incomplete-form distractor, not a new duplicate-answer defect. Do not silently report all18 pairwise distinct or broaden this proof to the whole chapter.
+
+Remaining: whole-chapter W025 Gate② audit rows; exact-SHA playable app/full user Gate③. NE01/NE02 remain two units/25 original questions; no creation started during correction queue.

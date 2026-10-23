@@ -68,3 +68,10 @@ def result_check(node,result):
             if case['quality']!='UNKNOWN':need(case.get('evaluation_event') and case.get('target_version'),'品質の原発言と対象版がない')
             need(case.get('links'),'事例の対応先がない')
             need(case['disposition']!='UNRESOLVED' or result['verdict']!='PASS','未解決事例を完了へ転用しない')
+
+def verify_git_export(content,expected_blob):
+    """GitHub正本の転記に改行などが紛れた場合、SHA256計画へ固定する前に拒否する。"""
+    data=content.encode() if isinstance(content,str) else content
+    actual=hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+    need(actual==expected_blob,'正本Git blobとローカル書出しが一致しない')
+    return hashlib.sha256(data).hexdigest()

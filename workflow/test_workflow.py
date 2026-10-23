@@ -259,3 +259,14 @@ class ResumeAnalysis(Fixture):
     def test_passed_analysis_cannot_be_silently_deleted(self):
         self.until('C02')
         with self.assertRaises(Rejected):self.rt.reopen('W','C01_SOURCE@A','erase accepted work',[self.ref])
+
+class ExportProvenance(unittest.TestCase):
+    def test_exact_export_preserves_blob(self):
+        from contracts import verify_git_export
+        import hashlib
+        data='規則\n'.encode();blob=hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest();self.assertEqual(verify_git_export(data,blob),hashlib.sha256(data).hexdigest())
+    def test_extra_newline_export_refused(self):
+        from contracts import verify_git_export
+        import hashlib
+        data=b'rules\n';blob=hashlib.sha1(b'blob 6\0'+data).hexdigest()
+        with self.assertRaises(Rejected):verify_git_export(data+b'\n',blob)

@@ -1,5 +1,5 @@
 {
-  "workflow_tests": 63,
+  "workflow_tests": 65,
   "workflow_failures": 0,
   "P001_tests_returncode": 0,
   "adapters": [

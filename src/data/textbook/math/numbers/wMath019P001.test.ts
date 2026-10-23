@@ -14,9 +14,9 @@ const record=(itemId:string,value:string):TextbookAnswerRecord=>({
 
 describe('W-MATH-019/P-001 N14 Q14: original three inequalities, reason and five local choices',()=>{
   it('inserts only the N14 Q14 source block between unchanged Q13 and Q15',()=>{
-    expect(unit.revision).toBe(9)
+    expect(unit.revision).toBe(10)
     expect(Object.keys(n14SourceToItemIds)).toHaveLength(16)
-    expect(section.items).toHaveLength(34)
+    expect(section.items).toHaveLength(38)
     expect(section.items.map(i=>i.id)).toEqual(Object.values(n14SourceToItemIds).flat())
     const ids=['n14-lead-14','n14-formula-14','n14-wm019-q14-explain','n14-wm019-q14-result']
     const atIds=ids.map(at)

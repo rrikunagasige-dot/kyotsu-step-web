@@ -92,7 +92,7 @@ const targets: Record<string, ReviewTarget> = {
   // W-MATH-018/P-001 — marks only the N14 Q10 source correction
   'n14-q10': {
     id:'n14-q10',unitId:'math-numbers-expressions-n14',title:'N14 Q10',
-    question:'三辺への同じ操作と左右の境界値',revision:9,totalItems:34,
+    question:'三辺への同じ操作と左右の境界値',revision:10,totalItems:38,
     blockIds:['n14-lead-10','n14-formula-10','n14-wm018-q10-explain','n14-wm018-q10-result','n14-after-10'],
     itemIds:['n14-wm018-q10-add-left','n14-wm018-q10-add-center','n14-wm018-q10-add-right','n14-10','n14-wm018-q10-bound-right'],
     expectedAnswers:['3','3','3','-2','8'],
@@ -102,7 +102,7 @@ const targets: Record<string, ReviewTarget> = {
   // W-MATH-019/P-001 — Q14 only, genuine original 5-step formula review.
   'n14-q14': {
     id:'n14-q14',unitId:'math-numbers-expressions-n14',title:'N14 Q14',
-    question:'三辺に同じ2を足して境界を計算する',revision:9,totalItems:34,
+    question:'三辺に同じ2を足して境界を計算する',revision:10,totalItems:38,
     blockIds:['n14-lead-14','n14-formula-14','n14-wm019-q14-explain','n14-wm019-q14-result','n14-after-14'],
     itemIds:['n14-wm019-q14-add-left','n14-wm019-q14-add-center','n14-wm019-q14-add-right','n14-14','n14-wm019-q14-bound-right'],
     expectedAnswers:['2','2','2','-2','6'],
@@ -112,12 +112,25 @@ const targets: Record<string, ReviewTarget> = {
   // W-MATH-020/P-001 — original Q15 positive division, five decision stages.
   'n14-q15': {
     id:'n14-q15',unitId:'math-numbers-expressions-n14',title:'N14 Q15',
-    question:'三辺を正の3で割り、左右の境界を求める',revision:9,totalItems:34,
+    question:'三辺を正の3で割り、左右の境界を求める',revision:10,totalItems:38,
     blockIds:['n14-lead-15','n14-formula-15','n14-wm020-q15-explain','n14-wm020-q15-result','n14-after-15'],
     itemIds:['n14-wm020-q15-divide-left','n14-wm020-q15-divide-center','n14-wm020-q15-divide-right','n14-15','n14-wm020-q15-bound-right'],
     expectedAnswers:['3','3','3','-\\frac23','2'],
     markBlockIds:['n14-formula-15','n14-wm020-q15-explain','n14-wm020-q15-result'],
     reviewState:'accepted', // user 「続けて」 to concise Q15 math Gate1 layout; preserve source-matched image history
+  },
+  // W-MATH-022/P-001: the original Q16 now has five genuine decisions.
+  // All five grouped visuals accepted 2026-10-23; keep immutable evidence.
+  'n14-q16': {
+    id:'n14-q16',unitId:'math-numbers-expressions-n14',title:'N14 Q16',
+    question:'左右の端点を代入して絶対値と境界包含を確かめる',revision:10,totalItems:38,
+    blockIds:['n14-lead-16','n14-formula-16','n14-wm022-q16-right',
+      'n14-wm022-q16-bridge','n14-wm022-q16-conclusion','n14-after-16'],
+    itemIds:['n14-wm022-q16-left-inner','n14-wm022-q16-left-abs',
+      'n14-wm022-q16-right-inner','n14-wm022-q16-right-abs','n14-16'],
+    expectedAnswers:['-4','4','4','4','両端とも含む'],
+    markBlockIds:['n14-formula-16','n14-wm022-q16-right','n14-wm022-q16-conclusion'],
+    reviewState:'accepted',
   },
   // W-MATH-023/P-002 Stage A: original Q05 is now two meaningful choices.
   // No marker or other learner changes for historical N13 Q08 (Stage B pending).

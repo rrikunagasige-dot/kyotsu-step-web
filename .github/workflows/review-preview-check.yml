@@ -1472,3 +1472,61 @@ jobs:
             git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Store genuine N05 Q06 N07 Q09 N08 Q05 hint batch W-MATH-025 batch images [review only]'
             git push origin "HEAD:refs/heads/$TARGET_BRANCH"
           fi
+
+
+  # Regression of the accepted Q16 in the reconciled candidate; no new acceptance requested.
+  wmath022-q16-reconciled-genuine-screenshots:
+    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'work/W-MATH-022-q16-reconcile-accepted-20261023' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      CI: 'true'
+      VITE_REVIEW_PREVIEW: 'true'
+      VITE_BASE_PATH: '/'
+      VITE_PREVIEW_COMMIT: ${{ github.event.pull_request.head.sha }}
+      E2E_USE_PREVIEW: '1'
+      E2E_WM022_GATE1: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run typecheck && pnpm run build
+      - name: Install readable Japanese font for reconciled Q16 Gate1 screenshots
+        shell: bash
+        timeout-minutes: 4
+        run: |
+          font_dir="$RUNNER_TEMP/kyotsu-hint-batch-fonts"
+          mkdir -p "$font_dir"
+          for weight in Regular Bold; do
+            curl --fail --location --connect-timeout 15 --max-time 90 --retry 1 --retry-max-time 120 \
+              "https://raw.githubusercontent.com/notofonts/noto-cjk/main/Sans/OTF/Japanese/NotoSansCJKjp-$weight.otf" \
+              -o "$font_dir/NotoSansCJKjp-$weight.otf"
+          done
+          sudo mkdir -p /usr/local/share/fonts/kyotsu-hint-batch
+          sudo install -m 644 "$font_dir/"*.otf /usr/local/share/fonts/kyotsu-hint-batch/
+          sha256sum "$font_dir/"*.otf
+          fc-cache -f
+          fc-match -f '%{family}\n' ':lang=ja' | grep -q 'Noto'
+          fc-list :lang=ja | grep -q 'Noto Sans CJK JP'
+      - run: pnpm exec playwright install chromium
+      - name: N14 Q16 accepted candidate review and normal lesson authentic 320 390 1440
+        run: pnpm exec playwright test e2e/wmath022-n14-q16-gate1.spec.ts --project=mobile-chromium --project=desktop-chromium
+      - name: Retain reconciled Q16 diagnostic images even when a check fails
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: wmath022-q16-reconciled-real-${{ github.event.pull_request.head.sha }}
+          path: e2e-evidence/q16-*.png
+          if-no-files-found: ignore
+          retention-days: 7

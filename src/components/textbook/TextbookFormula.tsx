@@ -170,7 +170,7 @@ export function TextbookFormula({ block, section, progress, onOpen, unitId }: Pr
         ) : lowerLayout ? (
           <>
             <span className="reading-formula-p017-bound" data-testid="p017-bound">
-              {renderedParts[0]}<span className="reading-formula-math"><InlineMath math="\\le50x" /></span>
+              {renderedParts[0]}<span className="reading-formula-math"><InlineMath math={'\\le50x'} /></span>
             </span>
             <span className="reading-formula-math reading-formula-p017-continuation" data-testid="p017-continuation"><InlineMath math="<3300-2650" /></span>
           </>

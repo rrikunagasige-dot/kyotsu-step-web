@@ -1,0 +1,439 @@
+{
+  "simulation": false,
+  "isolatedCapabilityProbe": true,
+  "flowSubmitted": false,
+  "lessonAccepted": false,
+  "sourceSHA": "2e88d598f34fcc224bc11ac3b9669bfca9fe1fa3",
+  "ledgerHead": "9e7fd9ee010a19c672e7aa08d1fab10d8d0a99a35192ff3fd2bb9692b8377520",
+  "events": [
+    {
+      "id": "46ecc6e8-a5b0-4721-a524-a5ae2684e014",
+      "kind": "opened",
+      "payload": {
+        "definition_hash": "af3a32105f89ae95050034e9d8d34d82fa14fa02644689b394534d6636fbb76a",
+        "original_snapshot": "2f2c13a3efe590a50249bbca0a7f0386571e9f396f6a9080cb13c8ae487227bb",
+        "plan": {
+          "approval_bundles": [
+            {
+              "block_ids": [
+                "metadata"
+              ],
+              "content_hash": "7c2ce6b1bf01896294cb2a8a53b6e3440be75fd1d8d929e93a89a6d49c253785",
+              "id": "proposal",
+              "proposal_hash": "7c2ce6b1bf01896294cb2a8a53b6e3440be75fd1d8d929e93a89a6d49c253785"
+            }
+          ],
+          "blocks": [
+            {
+              "change_facets": [
+                "math",
+                "design",
+                "render"
+              ],
+              "depends_on_blocks": [],
+              "fact_dependencies": [],
+              "id": "metadata",
+              "release_unit": "probe",
+              "sources": [
+                "tools/textbook/fixtures/n07-source-index.json"
+              ]
+            }
+          ],
+          "command": "CMD-WORK-001",
+          "mode": "textbook",
+          "profile": "material",
+          "proposal": {
+            "hash": "7c2ce6b1bf01896294cb2a8a53b6e3440be75fd1d8d929e93a89a6d49c253785",
+            "id": "P004-adapter-probe"
+          },
+          "protected_manifest": {},
+          "release_units": [
+            {
+              "block_ids": [
+                "metadata"
+              ],
+              "id": "probe"
+            }
+          ],
+          "rules": {
+            "work/items/W-GOV-010-learning-production-workflow/integration/P004_INTEGRATION_DESIGN.md": "7c2ce6b1bf01896294cb2a8a53b6e3440be75fd1d8d929e93a89a6d49c253785"
+          },
+          "scope": {
+            "paths": [
+              "workflow/"
+            ],
+            "preserve": []
+          },
+          "simulation": false,
+          "source_manifest": {
+            "tools/textbook/fixtures/n07-source-index.json": "62a1ad951166eabc9672eca0a81a997aa6a362fe01aed045705caecd77a2982b"
+          },
+          "source_sha": "2e88d598f34fcc224bc11ac3b9669bfca9fe1fa3",
+          "subject": "math",
+          "work_id": "P004-READ-ONLY-PROBE",
+          "workflow_version": "production/2"
+        }
+      },
+      "previous": "0000000000000000000000000000000000000000000000000000000000000000",
+      "seq": 1,
+      "time": 1792861550.428461,
+      "work": "P004-READ-ONLY-PROBE",
+      "hash": "a67044bcdcfbc9186031fa59a9ebe3f1af096a65183bea01a1c1f2a793bd142a"
+    },
+    {
+      "id": "bd5000f7-5ef9-4ef3-8573-140d673d78ba",
+      "kind": "capability_result",
+      "payload": {
+        "cache_key": "851612ab53baf397d16efd4f8d370ca14819e69c413d8bc6ec4d17872b79859a",
+        "capability": "source.fixed",
+        "output": "c4b95150f70a0c9e190ab5da45873bf34d3d9836b8445f5749abff8f4ceefd24",
+        "phase": "pre-design"
+      },
+      "previous": "a67044bcdcfbc9186031fa59a9ebe3f1af096a65183bea01a1c1f2a793bd142a",
+      "seq": 2,
+      "time": 1792861550.4380322,
+      "work": "P004-READ-ONLY-PROBE",
+      "hash": "11e8782b59df30f2aa020a2eddf8869a4818df9b014d2cd78d661f367a95aaa2"
+    },
+    {
+      "id": "26fee6fd-5857-4be6-b5f7-d9b0f3b0f4c3",
+      "kind": "capability_bound",
+      "payload": {
+        "input_hash": "0a86d7657a6cf42f33fd3ca862447c830ae00352925d6aa8c55c0ae1d91a1c0f",
+        "node": "R01_CAPTURE@metadata",
+        "receipt": "aa5f800eb9d293e524230c187e00aaaa2e9b6578322ad22a7ae176f5d874b820"
+      },
+      "previous": "11e8782b59df30f2aa020a2eddf8869a4818df9b014d2cd78d661f367a95aaa2",
+      "seq": 3,
+      "time": 1792861550.446726,
+      "work": "P004-READ-ONLY-PROBE",
+      "hash": "c56d81c3838f1b7e2cad5052742ca7af75083f3799a4c4bd6c9c9f13b81349f7"
+    },
+    {
+      "id": "be4d48f6-329e-4306-95d3-658a8351cbd1",
+      "kind": "capability_result",
+      "payload": {
+        "cache_key": "835e1f1583fe434b7c104a18675b276090fe0ca1c09ea557fb7eb12d79246ebc",
+        "capability": "math.verify",
+        "output": "e7c13ef4b1fe90b6620fd75c8973e90b3a3023aa815ae9669f4b5d0361973ff3",
+        "phase": "pre-design"
+      },
+      "previous": "c56d81c3838f1b7e2cad5052742ca7af75083f3799a4c4bd6c9c9f13b81349f7",
+      "seq": 4,
+      "time": 1792861550.4807394,
+      "work": "P004-READ-ONLY-PROBE",
+      "hash": "dbdefdcb4e55e991a4ef88898301529f7a538cc1cc8b26592cb98b53a52d6baf"
+    },
+    {
+      "id": "65bc5858-1a0b-4c84-853f-a77ad225a277",
+      "kind": "capability_bound",
+      "payload": {
+        "input_hash": "bfffef26a639d2734fd8cae36b555d35f9776ad47743c914b6d369997b7bc593",
+        "node": "R02_CAUSE@metadata",
+        "receipt": "f34cdf6f6a1d6a6afe1a5462f318458da6f9b7e1241e4da8b8584bd0d392e634"
+      },
+      "previous": "dbdefdcb4e55e991a4ef88898301529f7a538cc1cc8b26592cb98b53a52d6baf",
+      "seq": 5,
+      "time": 1792861550.487875,
+      "work": "P004-READ-ONLY-PROBE",
+      "hash": "e4c8ba923c0b81e0b6a5863a27ee45a1e6a5ae641e6892c996fd86c797e4dd04"
+    },
+    {
+      "id": "9c815973-0d00-470c-9498-1052b327fd37",
+      "kind": "capability_result",
+      "payload": {
+        "cache_key": "a07218159d1151ed3550ad20f5576b3136a6d0fbaded1f7d9f1f8bcdf0db5025",
+        "capability": "math.verify",
+        "output": "88a9431b24732fbfaf0393739216ee4e34abd354e946cc3e0b6186937d410681",
+        "phase": "pre-design"
+      },
+      "previous": "e4c8ba923c0b81e0b6a5863a27ee45a1e6a5ae641e6892c996fd86c797e4dd04",
+      "seq": 6,
+      "time": 1792861550.5226674,
+      "work": "P004-READ-ONLY-PROBE",
+      "hash": "e16498602966b8077de3052aa732865d07f2cfdd82a0cf83779c3c2630047d10"
+    },
+    {
+      "id": "7cfcd8ee-018b-4c75-9988-b845ca88d72e",
+      "kind": "capability_bound",
+      "payload": {
+        "input_hash": "bfffef26a639d2734fd8cae36b555d35f9776ad47743c914b6d369997b7bc593",
+        "node": "R02_CAUSE@metadata",
+        "receipt": "a876e560015f656df5173255316f6f850b367344361c467fca1b69adab72addf"
+      },
+      "previous": "e16498602966b8077de3052aa732865d07f2cfdd82a0cf83779c3c2630047d10",
+      "seq": 7,
+      "time": 1792861550.5285933,
+      "work": "P004-READ-ONLY-PROBE",
+      "hash": "bd17bba9996d655a79e44d49899e55fd8a2a62ae6772de190ac56f2a346ba000"
+    },
+    {
+      "id": "b12ba4f0-cb89-4449-966a-00ec3a470039",
+      "kind": "capability_result",
+      "payload": {
+        "cache_key": "0f4cf8372472da148b3a7b0695f01b2467647515da628890e02b4638d262832b",
+        "capability": "ir.compile",
+        "output": "2c41ed38a6ced9412b036daf0fd8bf29280e856957e6278c64fca7e79a654a63",
+        "phase": "pre-design"
+      },
+      "previous": "bd17bba9996d655a79e44d49899e55fd8a2a62ae6772de190ac56f2a346ba000",
+      "seq": 8,
+      "time": 1792861550.7164528,
+      "work": "P004-READ-ONLY-PROBE",
+      "hash": "376166a28696cdf0851dfa85937be8eeaf92714e747c4d0ef4cbe78e216ecddc"
+    },
+    {
+      "id": "e051075d-92a8-4397-9920-e6779f075e47",
+      "kind": "capability_bound",
+      "payload": {
+        "input_hash": "7aa1159435ec1ebe3b04ec513be34b5c91c9922ef7b68c7c896bddd2fe18a4b4",
+        "node": "R06_PATCH@metadata",
+        "receipt": "3a1add896c87a6251b30801f74581224cf25ba71614aa488e62f2e4a8a290be4"
+      },
+      "previous": "376166a28696cdf0851dfa85937be8eeaf92714e747c4d0ef4cbe78e216ecddc",
+      "seq": 9,
+      "time": 1792861550.7237382,
+      "work": "P004-READ-ONLY-PROBE",
+      "hash": "9e7fd9ee010a19c672e7aa08d1fab10d8d0a99a35192ff3fd2bb9692b8377520"
+    }
+  ],
+  "receipts": {
+    "source": {
+      "cache_key": "851612ab53baf397d16efd4f8d370ca14819e69c413d8bc6ec4d17872b79859a",
+      "capability": "source.fixed",
+      "consumed_artifacts": [],
+      "consumed_case_ids": [],
+      "implementation_hash": "a2fbfcc6d314cc280974f36c6c98b4ba1ce1ad30a88964ee3f8b4315e7026178",
+      "input_hash": "0a86d7657a6cf42f33fd3ca862447c830ae00352925d6aa8c55c0ae1d91a1c0f",
+      "model_ref": null,
+      "node": "R01_CAPTURE@metadata",
+      "output": "c4b95150f70a0c9e190ab5da45873bf34d3d9836b8445f5749abff8f4ceefd24",
+      "phase": "pre-design",
+      "reused": false,
+      "status": "PASS"
+    },
+    "identity": {
+      "cache_key": "835e1f1583fe434b7c104a18675b276090fe0ca1c09ea557fb7eb12d79246ebc",
+      "capability": "math.verify",
+      "consumed_artifacts": [],
+      "consumed_case_ids": [],
+      "implementation_hash": "a2fbfcc6d314cc280974f36c6c98b4ba1ce1ad30a88964ee3f8b4315e7026178",
+      "input_hash": "bfffef26a639d2734fd8cae36b555d35f9776ad47743c914b6d369997b7bc593",
+      "model_ref": null,
+      "node": "R02_CAUSE@metadata",
+      "output": "e7c13ef4b1fe90b6620fd75c8973e90b3a3023aa815ae9669f4b5d0361973ff3",
+      "phase": "pre-design",
+      "reused": false,
+      "status": "PASS"
+    },
+    "wrong_identity": {
+      "cache_key": "a07218159d1151ed3550ad20f5576b3136a6d0fbaded1f7d9f1f8bcdf0db5025",
+      "capability": "math.verify",
+      "consumed_artifacts": [],
+      "consumed_case_ids": [],
+      "implementation_hash": "a2fbfcc6d314cc280974f36c6c98b4ba1ce1ad30a88964ee3f8b4315e7026178",
+      "input_hash": "bfffef26a639d2734fd8cae36b555d35f9776ad47743c914b6d369997b7bc593",
+      "model_ref": null,
+      "node": "R02_CAUSE@metadata",
+      "output": "88a9431b24732fbfaf0393739216ee4e34abd354e946cc3e0b6186937d410681",
+      "phase": "pre-design",
+      "reused": false,
+      "status": "FAIL"
+    },
+    "compile": {
+      "cache_key": "0f4cf8372472da148b3a7b0695f01b2467647515da628890e02b4638d262832b",
+      "capability": "ir.compile",
+      "consumed_artifacts": [],
+      "consumed_case_ids": [],
+      "implementation_hash": "a2fbfcc6d314cc280974f36c6c98b4ba1ce1ad30a88964ee3f8b4315e7026178",
+      "input_hash": "7aa1159435ec1ebe3b04ec513be34b5c91c9922ef7b68c7c896bddd2fe18a4b4",
+      "model_ref": null,
+      "node": "R06_PATCH@metadata",
+      "output": "2c41ed38a6ced9412b036daf0fd8bf29280e856957e6278c64fca7e79a654a63",
+      "phase": "pre-design",
+      "reused": false,
+      "status": "PASS"
+    }
+  },
+  "outputs": {
+    "source": {
+      "expectedManifest": {
+        "tools/textbook/fixtures/n07-source-index.json": "62a1ad951166eabc9672eca0a81a997aa6a362fe01aed045705caecd77a2982b"
+      },
+      "scope": {
+        "paths": [
+          "workflow/"
+        ],
+        "preserve": []
+      },
+      "sourceManifest": {
+        "tools/textbook/fixtures/n07-source-index.json": "62a1ad951166eabc9672eca0a81a997aa6a362fe01aed045705caecd77a2982b"
+      },
+      "status": "PASS"
+    },
+    "identity": {
+      "domain": "rational univariate polynomial, legacy degree bounds",
+      "equivalent": true,
+      "independent": true,
+      "proofStatus": "SYMBOLIC_VERIFIED",
+      "status": "PASS"
+    },
+    "wrong_identity": {
+      "domain": "rational univariate polynomial, legacy degree bounds",
+      "equivalent": false,
+      "independent": false,
+      "proofStatus": "SYMBOLIC_VERIFIED",
+      "status": "FAIL"
+    },
+    "compile": {
+      "compiled": {
+        "equationGroups": [
+          {
+            "id": "coefficient-chain",
+            "layoutProfile": "aligned-transform",
+            "mode": "group-end",
+            "relation": "equality",
+            "stableId": "coefficient-equation"
+          }
+        ],
+        "equationNumbers": {
+          "coefficient-equation": 1
+        },
+        "expectedSemanticIds": [
+          "input-math",
+          "coefficient-slot",
+          "output-x",
+          "defined-term",
+          "inline-result"
+        ],
+        "irHash": "d0f4bc1579adb3104a61c4441c2db3920635e1186788f4703d106ba3e5c936d6",
+        "nodes": [
+          {
+            "after": [
+              {
+                "id": "explanation-after",
+                "parts": [
+                  {
+                    "semanticId": "defined-term",
+                    "text": "係数",
+                    "type": "term",
+                    "usage": "first_definition"
+                  },
+                  {
+                    "latex": "9x",
+                    "semanticId": "inline-result",
+                    "type": "math"
+                  }
+                ],
+                "type": "paragraph"
+              }
+            ],
+            "before": [
+              {
+                "id": "explanation-before",
+                "parts": [
+                  {
+                    "semanticId": "lead-text",
+                    "text": "係数の差を計算する。",
+                    "type": "text"
+                  }
+                ],
+                "type": "paragraph"
+              },
+              {
+                "derivationId": "coefficient-chain",
+                "id": "coefficient-chain",
+                "parts": [
+                  {
+                    "latex": "(10-1)x",
+                    "semanticId": "input-math",
+                    "type": "math"
+                  },
+                  {
+                    "latex": "=",
+                    "type": "math"
+                  },
+                  {
+                    "itemId": "coefficient-choice",
+                    "semanticId": "coefficient-slot",
+                    "type": "choice"
+                  },
+                  {
+                    "latex": "x",
+                    "semanticId": "output-x",
+                    "type": "math"
+                  }
+                ],
+                "type": "formula"
+              }
+            ],
+            "contextNeed": [],
+            "id": "node-one",
+            "interaction": {
+              "answerInsertion": {
+                "blockId": "coefficient-chain",
+                "slotId": "coefficient-slot"
+              },
+              "choices": [
+                {
+                  "content": "9",
+                  "feedback": "係数の差は9。",
+                  "id": "correct-choice"
+                },
+                {
+                  "content": "11",
+                  "feedback": "差を求める。",
+                  "id": "wrong-choice",
+                  "misconception": "add-instead-subtract"
+                }
+              ],
+              "expected": {
+                "form": "number",
+                "semanticType": "coefficient",
+                "value": "9"
+              },
+              "hints": [
+                "xの前の数に注目する。"
+              ],
+              "id": "coefficient-choice",
+              "learningAction": "calculation",
+              "prerequisiteIds": [
+                "fact-start"
+              ],
+              "targetPath": "operation.kind",
+              "whyHere": "共通文字を残して係数だけ計算する"
+            }
+          }
+        ],
+        "schemaVersion": "production-compiled/1",
+        "semanticMap": {
+          "coefficient-slot": {
+            "kind": "answerSlot",
+            "semanticRef": "fact-end"
+          },
+          "defined-term": {
+            "kind": "term",
+            "semanticRef": "coefficient"
+          },
+          "inline-result": {
+            "kind": "math",
+            "semanticRef": "fact-start"
+          },
+          "input-math": {
+            "kind": "math",
+            "semanticRef": "fact-start"
+          },
+          "lead-text": {
+            "kind": "text",
+            "semanticRef": null
+          },
+          "output-x": {
+            "kind": "math",
+            "semanticRef": "fact-start"
+          }
+        }
+      },
+      "status": "PASS"
+    }
+  }
+}

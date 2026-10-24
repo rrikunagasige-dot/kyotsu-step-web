@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "proposal": "P-004",
+  "learnerAcceptance": false,
+  "deploymentPerformed": false,
+  "simulations": {
+    "creation": {
+      "simulation": true,
+      "status": "DONE",
+      "visited": [
+        "S00_RECOVER",
+        "S01_ROUTE",
+        "C01_SOURCE@a",
+        "C02_CONCEPT@a",
+        "C03_PATTERN@a",
+        "C04_SOLUTION@a",
+        "C05_DESIGN@a",
+        "C01_SOURCE@b",
+        "C02_CONCEPT@b",
+        "C03_PATTERN@b",
+        "C04_SOLUTION@b",
+        "C05_DESIGN@b",
+        "C06_APPROVAL@a",
+        "C07_BUILD@a",
+        "C08_VERIFY@a",
+        "C09_SEMANTIC@a",
+        "G2_AUDIT@u1",
+        "G3_HOST@u1",
+        "G3_FINAL@u1",
+        "L01_LEARNING@u1",
+        "C06_APPROVAL@b",
+        "C07_BUILD@b",
+        "C08_VERIFY@b",
+        "C09_SEMANTIC@b",
+        "G2_AUDIT@u2",
+        "G3_HOST@u2",
+        "G3_FINAL@u2",
+        "L01_LEARNING@u2",
+        "Z01_CLOSE"
+      ],
+      "approvalEvents": 1,
+      "firstReleaseBeforeSecondBuild": true
+    },
+    "correction": {
+      "simulation": true,
+      "status": "DONE",
+      "visited": [
+        "S00_RECOVER",
+        "S01_ROUTE",
+        "R01_CAPTURE@a",
+        "R02_CAUSE@a",
+        "R03_IMPACT@a",
+        "R04_PROPOSAL@a",
+        "R01_CAPTURE@b",
+        "R02_CAUSE@b",
+        "R03_IMPACT@b",
+        "R04_PROPOSAL@b",
+        "R05_APPROVAL@a",
+        "R06_PATCH@a",
+        "R07_VERIFY@a",
+        "R07_SEMANTIC@a",
+        "G2_AUDIT@u1",
+        "G3_HOST@u1",
+        "G3_FINAL@u1",
+        "R03_IMPACT_SWEEP@u1",
+        "R08_CAPTURE_LEARNING@a",
+        "L01_LEARNING@u1",
+        "R05_APPROVAL@b",
+        "R06_PATCH@b",
+        "R07_VERIFY@b",
+        "R07_SEMANTIC@b",
+        "G2_AUDIT@u2",
+        "G3_HOST@u2",
+        "G3_FINAL@u2",
+        "R03_IMPACT_SWEEP@u2",
+        "R08_CAPTURE_LEARNING@b",
+        "L01_LEARNING@u2",
+        "Z01_CLOSE"
+      ],
+      "approvalEvents": 1,
+      "firstReleaseBeforeSecondBuild": true
+    }
+  },
+  "realAdapters": {
+    "source": "PASS",
+    "identity": "PASS",
+    "wrong_identity": "FAIL",
+    "compile": "PASS"
+  },
+  "realQueue": {
+    "status": "BLOCKED",
+    "reason": "CORRECTION_FIRST",
+    "caseIds": [
+      "N07-USER-F01",
+      "N07-USER-F02",
+      "N07-USER-F03",
+      "N07-USER-F04",
+      "N07-USER-F05",
+      "N07-USER-F06"
+    ]
+  }
+}

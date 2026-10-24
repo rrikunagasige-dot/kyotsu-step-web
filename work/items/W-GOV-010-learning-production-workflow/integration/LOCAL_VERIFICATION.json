@@ -1,0 +1,24 @@
+{
+  "proposal": "P-004",
+  "status": "LOCAL_VERIFIED",
+  "definitionHash": "af3a32105f89ae95050034e9d8d34d82fa14fa02644689b394534d6636fbb76a",
+  "tests": {
+    "workflow": 115,
+    "newIntegration": 37,
+    "productionNode": 19,
+    "sourceCorpusML": 8,
+    "authoringNode": 35,
+    "authoringTS": 4,
+    "legacy": 27,
+    "learner": 620
+  },
+  "build": "PASS",
+  "diffCheck": "PASS",
+  "baselineExclusions": [
+    "src/data/physicsTaxonomy.test.ts",
+    "src/domain/questionSchema.test.ts"
+  ],
+  "actualLessonAcceptance": false,
+  "modelStatus": "OFFLINE_ONLY",
+  "publicationChanged": false
+}

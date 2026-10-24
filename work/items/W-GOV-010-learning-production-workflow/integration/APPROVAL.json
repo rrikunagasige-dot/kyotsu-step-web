@@ -1,0 +1,12 @@
+{
+  "proposal": "P-004",
+  "status": "APPROVED",
+  "quote": "可以可以那就来做做看把",
+  "source": "current-conversation:direct-approval-after-P004-detailed-proposal",
+  "documents": {
+    "P004_INTEGRATION_DESIGN.md": "7c2ce6b1bf01896294cb2a8a53b6e3440be75fd1d8d929e93a89a6d49c253785",
+    "P004_MAPPING.json": "d78d31458ad3118e3156c809c0d9f62d57a58d45e858ef5c4b3633214628d2e8"
+  },
+  "branch": "work/workflow-cr-integration-p004-20261024",
+  "scope": "C/R graph and capability integration, contracts, queues, diagrams, scoped reuse, migration and verification; no learner lesson edits"
+}

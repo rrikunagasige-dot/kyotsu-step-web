@@ -1,0 +1,53 @@
+$ node --test tools/textbook/tests/pipeline.test.mjs && vitest run --config tools/textbook/vitest.config.mjs
+✔ exact long division 3/4 (4.120021ms)
+✔ exact long division 23/11 (0.259622ms)
+✔ exact long division 1/6 (0.243999ms)
+✔ exact long division -1/8 (0.746277ms)
+✔ exact long division 2/1 (0.277449ms)
+✔ zero divisor is rejected (0.657984ms)
+✔ cycle value and minimum scale 8 (0.654448ms)
+✔ cycle value and minimum scale 69 (0.452193ms)
+✔ cycle value and minimum scale 6969 (0.289377ms)
+✔ cycle value and minimum scale 09 (0.374235ms)
+✔ 0/9 repeating profiles do not manufacture a teaching trace (0.738095ms)
+✔ finite decimal checks reduced denominator (0.272632ms)
+✔ all19 range candidates are checked (1.161143ms)
+✔ equivalence and required form differ (0.666677ms)
+✔ complete N07 design validates and compiles deterministically (87.848251ms)
+✔ fault injection: future reference (19.903253ms)
+✔ fault injection: unintroduced definition (16.705565ms)
+✔ fault injection: answer shown early (8.605905ms)
+✔ fault injection: wrong problem scope (20.842587ms)
+✔ fault injection: missing unnumbered source (16.657804ms)
+✔ fault injection: duplicate item (9.281605ms)
+✔ fault injection: equivalent distractor (12.828706ms)
+✔ fault injection: source reverse correspondence (5.868772ms)
+✔ fault injection: original question mismatch (6.952368ms)
+✔ fault injection: missing order node (5.354355ms)
+✔ empty selected unit cannot PASS (6.287985ms)
+✔ past known result reuse is permitted when designed (5.198169ms)
+✔ raw source stays out of public repo and production writes are refused (0.501257ms)
+✔ source revision mismatch stops authoring (0.30472ms)
+✔ job reuse fingerprints inputs, implementation and stored output; failure is resumable (4.090677ms)
+✔ current review policy rejects retired approval requirements (0.351121ms)
+✔ verification FAIL never becomes a cached successful job (0.669391ms)
+✔ exact arithmetic refuses already-rounded numeric input (0.315176ms)
+✔ all designed interactions require correct answers; wrong answers never reveal future results (6.025388ms)
+✔ unmapped source explanations cannot be automatically treated as headings (2.375077ms)
+ℹ tests 35
+ℹ suites 0
+ℹ pass 35
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 606.711692
+
+ RUN  v3.2.7 /workspace/scratch/f79c5816761e/theme-one-repair
+
+ ✓ tools/textbook/tests/runtime-adapter.test.ts (4 tests) 183ms
+
+ Test Files  1 passed (1)
+      Tests  4 passed (4)
+   Start at  09:58:34
+   Duration  875ms (transform 215ms, setup 0ms, collect 375ms, tests 183ms, environment 0ms, prepare 96ms)

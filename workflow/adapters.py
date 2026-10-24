@@ -14,9 +14,13 @@ def apply_patch(rt,work,node,token,patch):
     s=rt.state(work);c=s['claims'].get(node)
     need(c and c['expires_at']>time.time() and c['token']==token and c['input_hash']==rt.input_hash(s,__import__('definitions').instantiate(s['plan'])[node]),'有効な修正課題ではない')
     need(node.startswith(('R06_PATCH','C07_BUILD','T03_BUILD')),'限定修正の工程ではない')
-    need(rt.approval(s),'現在の具体案の承認がない')
+    need(rt.approval(s,__import__('definitions').instantiate(s['plan'])[node]),'現在のblockの具体案の承認がない')
     need(not rt.integrity(s),'適用前に未記録差分がある')
-    need(digest(patch)==s['plan']['proposal'].get('patch_hash'),'承認された差分版ではない')
+    patch_hash=s['plan']['proposal'].get('patch_hash')
+    if s['plan'].get('workflow_version')=='production/2':
+        block=__import__('definitions').instantiate(s['plan'])[node]['block']
+        patch_hash=next(b.get('patch_hash',patch_hash) for b in s['plan']['blocks'] if b['id']==block)
+    need(digest(patch)==patch_hash,'承認された差分版ではない')
     need(patch.get('files'),'空の差分')
     need(len({x['path'] for x in patch['files']})==len(patch['files']),'同じファイルの重複変更')
     staged=[]

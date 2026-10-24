@@ -1,10 +1,12 @@
-# P-003 制作ワークフローの実行入口
+# P-004 作成・修正への統合入口
+
+現行の実行手順は [workflow/INTEGRATION_RUNBOOK.md](../../workflow/INTEGRATION_RUNBOOK.md)。入口は作成/CMD-WORK-002と修正/CMD-WORK-001。ブロック、承認bundle、release unitを分け、既存code/AI/MLを各C/R工程から使う。以下は共通サービスと旧版互換の説明。
 
 工程と権限の正本は `workflow/Runtime` とそのStore。Node jobやMLはその課題に接続する制作側ツールであり、学習者の進捗・回答を学習へ自動収集しない。
 
 ## 現在使えるもの
 
-- 25工程DAG、版・claim・hash失効・再開・AI入出力・差戻し付き火柴図。旧工程と台帳を保存。
+- C/R別のブロックDAG、版・claim・属性別hash失効、修正queueと復帰、単元ごとの公開・受入、三階層の火柴図。旧25工程は履歴として保存。
 - 旧多項式検証器とN07分数/循環小数の対応範囲付きadapter。未対応はUNSUPPORTED。
 - typedIR: 本文/数式/概念/文中の穴、等式等の関係、式番号、前結果、source coverage、未知前提・先出し等の検査。
 - 既存組版へ渡すcompilerとopt-in inline renderer。既存N07本文を自動修正しない。
@@ -21,7 +23,7 @@ pnpm run test:textbook-authoring
 python workflow/cli.py --help
 ```
 
-工程の台帳を開くplanには既存のsource/rules/proposal/scope/blocksと `workflow_version:"production/1"` を含める。教材compileにはproposalの `contentDesignHash` と実IRのhashの一致が必要。基盤設計への承認を、新しい教材内容の承認へ転用できない。
+工程の台帳を開くplanには既存のsource/rules/proposal/scope/blocksと `workflow_version:"production/2"` を含める。教材compileには各blockの `content_design_hash` またはapproval bundleの `content_hash` と実IRのhashの一致が必要。旧production/1はproposalの `contentDesignHash` を使用する。基盤設計への承認を、新しい教材内容の承認へ転用できない。
 
 ```sh
 python workflow/cli.py --root . --store /tmp/production-ledger open --json plan.json
@@ -64,4 +66,4 @@ python tools/textbook/production_cli.py predict < prediction-request.json > pred
 
 具体教材の設計承認→内部QA→既存release経路→実配信source確認→直接URL。旧画像票の承認待ち・公開再許可は復活させない。公開操作が未実施ならNEEDS_EXTERNAL_OPERATIONとして止まり、URL queryだけで配信版を判定しない。
 
-今回の基盤実装は教材本文・元図・ID・進捗を変更せず、N07の六指摘もOPEN。次の教材制作では、この基盤から具体設計・実修正・実UI検査・公開へ進む。
+P-004の統合実装は教材本文・元図・ID・進捗を変更せず、N07の六指摘もOPEN。次の教材制作では、この基盤から具体設計・実修正・実UI検査・公開へ進む。

@@ -64,3 +64,8 @@ Exact codebba4df752bf4f9ad8a4972f57ca303b3f304ea45; CI40109892971 SUCCESS. Scope
 ## P-004 design consistency
 
 Read-only instantiate comparison: correction graph==creation graph;25 nodes, all block=None, no R-prefixed node underproduction/1. P004_DOCUMENT_CHECK.json confirms all25 former capabilities mapped,9 C-stage kinds and9 R-stage kinds covered, balanced diagram fences, approval/release/contract/migration/implementation sections present. This verifies document consistency, not the proposed runtime behavior. No application/runtime tests or implementation performed in this design turn.
+
+
+## P-004 local verification — 2026-10-24
+
+詳細とログ: integration/IMPLEMENTATION_RESULTS.md、integration/evidence/checks/。新規C/R統合の試験、旧78 workflow試験、既存Node/源資料/ML検査、39 authoring、620 learner、27 legacy solver、buildを実行。既存のphysicsTaxonomy/questionSchemaの二つのbaseline失敗は前回同様にlearner集合から除外し、修正・合格とは報告しない。実source/正負等式/IR compileのprobeと、模擬フロー・実app受入を分離。次に保存した実装SHAのCIで同じ検査と四幅320/390/430/1440の既存UIを確認する。

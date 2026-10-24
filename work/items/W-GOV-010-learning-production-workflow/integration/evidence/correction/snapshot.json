@@ -1,0 +1,1391 @@
+{
+  "work": "repair",
+  "engine_version": "1.0.0",
+  "ledger_head": "e750d80eee558c704aed21af45ddda228e37b0e365eb223a491c9df0877c5837",
+  "work_status": "DONE",
+  "profile": "material",
+  "simulation": true,
+  "candidate_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "next": {
+    "status": "DONE",
+    "reason": "全工程の有効な証拠を照合"
+  },
+  "nodes": [
+    {
+      "id": "S00_RECOVER",
+      "stage_kind": "S00_RECOVER",
+      "contract_kind": "S00_RECOVER",
+      "actor": "CODE",
+      "depends_on": [],
+      "required": [],
+      "block": null,
+      "release_unit": null,
+      "watch": "integration",
+      "phase": "analysis",
+      "priority": -1,
+      "source_refs": [],
+      "protected_refs": [],
+      "capability_requests": [],
+      "required_code_receipts": [],
+      "required_ai_receipts": [],
+      "status": "PASSED"
+    },
+    {
+      "id": "S01_ROUTE",
+      "stage_kind": "S01_ROUTE",
+      "contract_kind": "S01_ROUTE",
+      "actor": "CODE",
+      "depends_on": [
+        "S00_RECOVER"
+      ],
+      "required": [],
+      "block": null,
+      "release_unit": null,
+      "watch": "integration",
+      "phase": "analysis",
+      "priority": -1,
+      "source_refs": [],
+      "protected_refs": [],
+      "capability_requests": [],
+      "required_code_receipts": [],
+      "required_ai_receipts": [],
+      "status": "PASSED"
+    },
+    {
+      "id": "R01_CAPTURE@a",
+      "stage_kind": "R01_CAPTURE",
+      "contract_kind": "R01_CAPTURE",
+      "actor": "AI",
+      "depends_on": [
+        "S01_ROUTE"
+      ],
+      "required": [
+        "complaint",
+        "before_evidence",
+        "reproduction",
+        "target_versions"
+      ],
+      "block": "a",
+      "release_unit": "u1",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 0,
+      "source_refs": [
+        "a.json"
+      ],
+      "protected_refs": [],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "source.fixed",
+        "feedback.capture"
+      ],
+      "required_code_receipts": [
+        "source.fixed",
+        "feedback.capture"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "R02_CAUSE@a",
+      "stage_kind": "R02_CAUSE",
+      "contract_kind": "R02_CAUSE",
+      "actor": "AI",
+      "depends_on": [
+        "R01_CAPTURE@a"
+      ],
+      "required": [
+        "symptoms",
+        "confirmed_causes",
+        "hypotheses",
+        "missing_learning_actions",
+        "root_cause_signatures"
+      ],
+      "block": "a",
+      "release_unit": "u1",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 0,
+      "source_refs": [
+        "a.json"
+      ],
+      "protected_refs": [],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "case.retrieve",
+        "knowledge.ledger",
+        "math.verify",
+        "ir.verify",
+        "source.audit",
+        "novice.audit"
+      ],
+      "required_code_receipts": [
+        "case.retrieve",
+        "knowledge.ledger",
+        "math.verify",
+        "ir.verify",
+        "source.audit",
+        "novice.audit"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "R03_IMPACT@a",
+      "stage_kind": "R03_IMPACT",
+      "contract_kind": "R03_IMPACT",
+      "actor": "AI",
+      "depends_on": [
+        "R02_CAUSE@a"
+      ],
+      "required": [
+        "impact_rows",
+        "source_inventory",
+        "unknowns"
+      ],
+      "block": "a",
+      "release_unit": "u1",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 0,
+      "source_refs": [
+        "a.json"
+      ],
+      "protected_refs": [],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "impact.inventory"
+      ],
+      "required_code_receipts": [
+        "impact.inventory"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "R04_PROPOSAL@a",
+      "stage_kind": "R04_PROPOSAL",
+      "contract_kind": "R04_PROPOSAL",
+      "actor": "AI",
+      "depends_on": [
+        "R03_IMPACT@a"
+      ],
+      "required": [
+        "before_after",
+        "protected_scope",
+        "patch_plan",
+        "verification_plan",
+        "proposal_hash"
+      ],
+      "block": "a",
+      "release_unit": "u1",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 0,
+      "source_refs": [
+        "a.json"
+      ],
+      "protected_refs": [],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "math.solve",
+        "math.verify",
+        "teaching.plan",
+        "step.plan",
+        "blank.plan",
+        "prose.compose",
+        "text.verify",
+        "figure.verify",
+        "ir.verify",
+        "source.audit",
+        "novice.audit"
+      ],
+      "required_code_receipts": [
+        "math.solve",
+        "math.verify",
+        "teaching.plan",
+        "step.plan",
+        "blank.plan",
+        "prose.compose",
+        "text.verify",
+        "figure.verify",
+        "ir.verify",
+        "source.audit",
+        "novice.audit"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "R05_APPROVAL@a",
+      "stage_kind": "R05_APPROVAL",
+      "contract_kind": "R05_APPROVAL",
+      "actor": "USER",
+      "depends_on": [
+        "R04_PROPOSAL@a",
+        "R04_PROPOSAL@b"
+      ],
+      "required": [],
+      "block": "a",
+      "release_unit": "u1",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 0,
+      "source_refs": [
+        "a.json"
+      ],
+      "protected_refs": [],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [],
+      "required_code_receipts": [],
+      "required_ai_receipts": [],
+      "status": "PASSED"
+    },
+    {
+      "id": "R06_PATCH@a",
+      "stage_kind": "R06_PATCH",
+      "contract_kind": "R06_PATCH",
+      "actor": "TOOL",
+      "depends_on": [
+        "R05_APPROVAL@a"
+      ],
+      "required": [],
+      "block": "a",
+      "release_unit": "u1",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 0,
+      "source_refs": [
+        "a.json"
+      ],
+      "protected_refs": [],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "ir.compile"
+      ],
+      "required_code_receipts": [
+        "ir.compile"
+      ],
+      "required_ai_receipts": [],
+      "status": "PASSED"
+    },
+    {
+      "id": "R07_VERIFY@a",
+      "stage_kind": "R07_VERIFY",
+      "contract_kind": "R07_VERIFY",
+      "actor": "TOOL",
+      "depends_on": [
+        "R06_PATCH@a"
+      ],
+      "required": [],
+      "block": "a",
+      "release_unit": "u1",
+      "watch": "integration",
+      "phase": "post-implementation",
+      "priority": 0,
+      "source_refs": [
+        "a.json"
+      ],
+      "protected_refs": [],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "math.verify",
+        "ir.verify",
+        "browser.verify",
+        "protected.verify"
+      ],
+      "required_code_receipts": [
+        "math.verify",
+        "ir.verify",
+        "browser.verify",
+        "protected.verify"
+      ],
+      "required_ai_receipts": [],
+      "status": "PASSED"
+    },
+    {
+      "id": "R07_SEMANTIC@a",
+      "stage_kind": "R07_SEMANTIC",
+      "contract_kind": "R07_SEMANTIC",
+      "actor": "AI",
+      "depends_on": [
+        "R07_VERIFY@a"
+      ],
+      "required": [
+        "symptom_resolution",
+        "regression_review",
+        "protected_scope_review",
+        "unknowns"
+      ],
+      "block": "a",
+      "release_unit": "u1",
+      "watch": "integration",
+      "phase": "post-implementation",
+      "priority": 0,
+      "source_refs": [
+        "a.json"
+      ],
+      "protected_refs": [],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "source.audit",
+        "novice.audit"
+      ],
+      "required_code_receipts": [
+        "source.audit",
+        "novice.audit"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "R01_CAPTURE@b",
+      "stage_kind": "R01_CAPTURE",
+      "contract_kind": "R01_CAPTURE",
+      "actor": "AI",
+      "depends_on": [
+        "S01_ROUTE"
+      ],
+      "required": [
+        "complaint",
+        "before_evidence",
+        "reproduction",
+        "target_versions"
+      ],
+      "block": "b",
+      "release_unit": "u2",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 1,
+      "source_refs": [
+        "b.json"
+      ],
+      "protected_refs": [],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "source.fixed",
+        "feedback.capture"
+      ],
+      "required_code_receipts": [
+        "source.fixed",
+        "feedback.capture"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "R02_CAUSE@b",
+      "stage_kind": "R02_CAUSE",
+      "contract_kind": "R02_CAUSE",
+      "actor": "AI",
+      "depends_on": [
+        "R01_CAPTURE@b"
+      ],
+      "required": [
+        "symptoms",
+        "confirmed_causes",
+        "hypotheses",
+        "missing_learning_actions",
+        "root_cause_signatures"
+      ],
+      "block": "b",
+      "release_unit": "u2",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 1,
+      "source_refs": [
+        "b.json"
+      ],
+      "protected_refs": [],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "case.retrieve",
+        "knowledge.ledger",
+        "math.verify",
+        "ir.verify",
+        "source.audit",
+        "novice.audit"
+      ],
+      "required_code_receipts": [
+        "case.retrieve",
+        "knowledge.ledger",
+        "math.verify",
+        "ir.verify",
+        "source.audit",
+        "novice.audit"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "R03_IMPACT@b",
+      "stage_kind": "R03_IMPACT",
+      "contract_kind": "R03_IMPACT",
+      "actor": "AI",
+      "depends_on": [
+        "R02_CAUSE@b"
+      ],
+      "required": [
+        "impact_rows",
+        "source_inventory",
+        "unknowns"
+      ],
+      "block": "b",
+      "release_unit": "u2",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 1,
+      "source_refs": [
+        "b.json"
+      ],
+      "protected_refs": [],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "impact.inventory"
+      ],
+      "required_code_receipts": [
+        "impact.inventory"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "R04_PROPOSAL@b",
+      "stage_kind": "R04_PROPOSAL",
+      "contract_kind": "R04_PROPOSAL",
+      "actor": "AI",
+      "depends_on": [
+        "R03_IMPACT@b"
+      ],
+      "required": [
+        "before_after",
+        "protected_scope",
+        "patch_plan",
+        "verification_plan",
+        "proposal_hash"
+      ],
+      "block": "b",
+      "release_unit": "u2",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 1,
+      "source_refs": [
+        "b.json"
+      ],
+      "protected_refs": [],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "math.solve",
+        "math.verify",
+        "teaching.plan",
+        "step.plan",
+        "blank.plan",
+        "prose.compose",
+        "text.verify",
+        "figure.verify",
+        "ir.verify",
+        "source.audit",
+        "novice.audit"
+      ],
+      "required_code_receipts": [
+        "math.solve",
+        "math.verify",
+        "teaching.plan",
+        "step.plan",
+        "blank.plan",
+        "prose.compose",
+        "text.verify",
+        "figure.verify",
+        "ir.verify",
+        "source.audit",
+        "novice.audit"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "R05_APPROVAL@b",
+      "stage_kind": "R05_APPROVAL",
+      "contract_kind": "R05_APPROVAL",
+      "actor": "USER",
+      "depends_on": [
+        "R04_PROPOSAL@a",
+        "R04_PROPOSAL@b"
+      ],
+      "required": [],
+      "block": "b",
+      "release_unit": "u2",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 1,
+      "source_refs": [
+        "b.json"
+      ],
+      "protected_refs": [],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [],
+      "required_code_receipts": [],
+      "required_ai_receipts": [],
+      "status": "PASSED"
+    },
+    {
+      "id": "R06_PATCH@b",
+      "stage_kind": "R06_PATCH",
+      "contract_kind": "R06_PATCH",
+      "actor": "TOOL",
+      "depends_on": [
+        "R05_APPROVAL@b"
+      ],
+      "required": [],
+      "block": "b",
+      "release_unit": "u2",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 1,
+      "source_refs": [
+        "b.json"
+      ],
+      "protected_refs": [],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "ir.compile"
+      ],
+      "required_code_receipts": [
+        "ir.compile"
+      ],
+      "required_ai_receipts": [],
+      "status": "PASSED"
+    },
+    {
+      "id": "R07_VERIFY@b",
+      "stage_kind": "R07_VERIFY",
+      "contract_kind": "R07_VERIFY",
+      "actor": "TOOL",
+      "depends_on": [
+        "R06_PATCH@b"
+      ],
+      "required": [],
+      "block": "b",
+      "release_unit": "u2",
+      "watch": "integration",
+      "phase": "post-implementation",
+      "priority": 1,
+      "source_refs": [
+        "b.json"
+      ],
+      "protected_refs": [],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "math.verify",
+        "ir.verify",
+        "browser.verify",
+        "protected.verify"
+      ],
+      "required_code_receipts": [
+        "math.verify",
+        "ir.verify",
+        "browser.verify",
+        "protected.verify"
+      ],
+      "required_ai_receipts": [],
+      "status": "PASSED"
+    },
+    {
+      "id": "R07_SEMANTIC@b",
+      "stage_kind": "R07_SEMANTIC",
+      "contract_kind": "R07_SEMANTIC",
+      "actor": "AI",
+      "depends_on": [
+        "R07_VERIFY@b"
+      ],
+      "required": [
+        "symptom_resolution",
+        "regression_review",
+        "protected_scope_review",
+        "unknowns"
+      ],
+      "block": "b",
+      "release_unit": "u2",
+      "watch": "integration",
+      "phase": "post-implementation",
+      "priority": 1,
+      "source_refs": [
+        "b.json"
+      ],
+      "protected_refs": [],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "source.audit",
+        "novice.audit"
+      ],
+      "required_code_receipts": [
+        "source.audit",
+        "novice.audit"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "G2_AUDIT@u1",
+      "stage_kind": "G2_AUDIT",
+      "contract_kind": "G2_AUDIT",
+      "actor": "AI",
+      "depends_on": [
+        "R07_SEMANTIC@a"
+      ],
+      "required": [
+        "audit_rows",
+        "release_readiness",
+        "impact_sweep_completion",
+        "audit_method",
+        "unknowns"
+      ],
+      "block": null,
+      "release_unit": "u1",
+      "watch": "integration",
+      "phase": "pre-release",
+      "priority": 0,
+      "source_refs": [],
+      "protected_refs": [],
+      "capability_requests": [
+        "protected.verify",
+        "impact.inventory"
+      ],
+      "required_code_receipts": [
+        "protected.verify",
+        "impact.inventory"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "G3_HOST@u1",
+      "stage_kind": "G3_HOST",
+      "contract_kind": "G3_HOST",
+      "actor": "TOOL",
+      "depends_on": [
+        "G2_AUDIT@u1"
+      ],
+      "required": [],
+      "block": null,
+      "release_unit": "u1",
+      "watch": "integration",
+      "phase": "release",
+      "priority": 0,
+      "source_refs": [],
+      "protected_refs": [],
+      "capability_requests": [
+        "release.verify"
+      ],
+      "required_code_receipts": [
+        "release.verify"
+      ],
+      "required_ai_receipts": [],
+      "status": "PASSED"
+    },
+    {
+      "id": "G3_FINAL@u1",
+      "stage_kind": "G3_FINAL",
+      "contract_kind": "G3_FINAL",
+      "actor": "USER",
+      "depends_on": [
+        "G3_HOST@u1"
+      ],
+      "required": [],
+      "block": null,
+      "release_unit": "u1",
+      "watch": "integration",
+      "phase": "acceptance",
+      "priority": 0,
+      "source_refs": [],
+      "protected_refs": [],
+      "capability_requests": [],
+      "required_code_receipts": [],
+      "required_ai_receipts": [],
+      "status": "PASSED"
+    },
+    {
+      "id": "R03_IMPACT_SWEEP@u1",
+      "stage_kind": "R03_IMPACT_SWEEP",
+      "contract_kind": "R03_IMPACT_SWEEP",
+      "actor": "AI",
+      "depends_on": [
+        "G3_FINAL@u1",
+        "R03_IMPACT@a"
+      ],
+      "required": [
+        "impact_rows",
+        "source_inventory",
+        "unknowns"
+      ],
+      "block": null,
+      "release_unit": "u1",
+      "watch": "integration",
+      "phase": "post-fix",
+      "priority": 0,
+      "source_refs": [],
+      "protected_refs": [],
+      "capability_requests": [
+        "impact.inventory"
+      ],
+      "required_code_receipts": [
+        "impact.inventory"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "R08_CAPTURE_LEARNING@a",
+      "stage_kind": "R08_CAPTURE_LEARNING",
+      "contract_kind": "R08_CAPTURE_LEARNING",
+      "actor": "AI",
+      "depends_on": [
+        "R03_IMPACT_SWEEP@u1",
+        "R07_SEMANTIC@a"
+      ],
+      "required": [
+        "case_updates",
+        "rule_links",
+        "regression_links",
+        "unresolved"
+      ],
+      "block": "a",
+      "release_unit": "u1",
+      "watch": "integration",
+      "phase": "repair-finalization",
+      "priority": 0,
+      "source_refs": [
+        "a.json"
+      ],
+      "protected_refs": [],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "case.finalize"
+      ],
+      "required_code_receipts": [
+        "case.finalize"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "L01_LEARNING@u1",
+      "stage_kind": "L01_LEARNING",
+      "contract_kind": "L01_LEARNING",
+      "actor": "AI",
+      "depends_on": [
+        "R08_CAPTURE_LEARNING@a"
+      ],
+      "required": [
+        "case_updates",
+        "rule_links",
+        "regression_links",
+        "unresolved",
+        "deduplication",
+        "modelDisposition"
+      ],
+      "block": null,
+      "release_unit": "u1",
+      "watch": "integration",
+      "phase": "learning",
+      "priority": 0,
+      "source_refs": [],
+      "protected_refs": [],
+      "capability_requests": [
+        "case.finalize",
+        "ml.train"
+      ],
+      "required_code_receipts": [
+        "case.finalize",
+        "ml.train"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "G2_AUDIT@u2",
+      "stage_kind": "G2_AUDIT",
+      "contract_kind": "G2_AUDIT",
+      "actor": "AI",
+      "depends_on": [
+        "R07_SEMANTIC@b"
+      ],
+      "required": [
+        "audit_rows",
+        "release_readiness",
+        "impact_sweep_completion",
+        "audit_method",
+        "unknowns"
+      ],
+      "block": null,
+      "release_unit": "u2",
+      "watch": "integration",
+      "phase": "pre-release",
+      "priority": 1,
+      "source_refs": [],
+      "protected_refs": [],
+      "capability_requests": [
+        "protected.verify",
+        "impact.inventory"
+      ],
+      "required_code_receipts": [
+        "protected.verify",
+        "impact.inventory"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "G3_HOST@u2",
+      "stage_kind": "G3_HOST",
+      "contract_kind": "G3_HOST",
+      "actor": "TOOL",
+      "depends_on": [
+        "G2_AUDIT@u2"
+      ],
+      "required": [],
+      "block": null,
+      "release_unit": "u2",
+      "watch": "integration",
+      "phase": "release",
+      "priority": 1,
+      "source_refs": [],
+      "protected_refs": [],
+      "capability_requests": [
+        "release.verify"
+      ],
+      "required_code_receipts": [
+        "release.verify"
+      ],
+      "required_ai_receipts": [],
+      "status": "PASSED"
+    },
+    {
+      "id": "G3_FINAL@u2",
+      "stage_kind": "G3_FINAL",
+      "contract_kind": "G3_FINAL",
+      "actor": "USER",
+      "depends_on": [
+        "G3_HOST@u2"
+      ],
+      "required": [],
+      "block": null,
+      "release_unit": "u2",
+      "watch": "integration",
+      "phase": "acceptance",
+      "priority": 1,
+      "source_refs": [],
+      "protected_refs": [],
+      "capability_requests": [],
+      "required_code_receipts": [],
+      "required_ai_receipts": [],
+      "status": "PASSED"
+    },
+    {
+      "id": "R03_IMPACT_SWEEP@u2",
+      "stage_kind": "R03_IMPACT_SWEEP",
+      "contract_kind": "R03_IMPACT_SWEEP",
+      "actor": "AI",
+      "depends_on": [
+        "G3_FINAL@u2",
+        "R03_IMPACT@b"
+      ],
+      "required": [
+        "impact_rows",
+        "source_inventory",
+        "unknowns"
+      ],
+      "block": null,
+      "release_unit": "u2",
+      "watch": "integration",
+      "phase": "post-fix",
+      "priority": 1,
+      "source_refs": [],
+      "protected_refs": [],
+      "capability_requests": [
+        "impact.inventory"
+      ],
+      "required_code_receipts": [
+        "impact.inventory"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "R08_CAPTURE_LEARNING@b",
+      "stage_kind": "R08_CAPTURE_LEARNING",
+      "contract_kind": "R08_CAPTURE_LEARNING",
+      "actor": "AI",
+      "depends_on": [
+        "R03_IMPACT_SWEEP@u2",
+        "R07_SEMANTIC@b"
+      ],
+      "required": [
+        "case_updates",
+        "rule_links",
+        "regression_links",
+        "unresolved"
+      ],
+      "block": "b",
+      "release_unit": "u2",
+      "watch": "integration",
+      "phase": "repair-finalization",
+      "priority": 1,
+      "source_refs": [
+        "b.json"
+      ],
+      "protected_refs": [],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "case.finalize"
+      ],
+      "required_code_receipts": [
+        "case.finalize"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "L01_LEARNING@u2",
+      "stage_kind": "L01_LEARNING",
+      "contract_kind": "L01_LEARNING",
+      "actor": "AI",
+      "depends_on": [
+        "R08_CAPTURE_LEARNING@b"
+      ],
+      "required": [
+        "case_updates",
+        "rule_links",
+        "regression_links",
+        "unresolved",
+        "deduplication",
+        "modelDisposition"
+      ],
+      "block": null,
+      "release_unit": "u2",
+      "watch": "integration",
+      "phase": "learning",
+      "priority": 1,
+      "source_refs": [],
+      "protected_refs": [],
+      "capability_requests": [
+        "case.finalize",
+        "ml.train"
+      ],
+      "required_code_receipts": [
+        "case.finalize",
+        "ml.train"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "Z01_CLOSE",
+      "stage_kind": "Z01_CLOSE",
+      "contract_kind": "Z01_CLOSE",
+      "actor": "CODE",
+      "depends_on": [
+        "L01_LEARNING@u1",
+        "L01_LEARNING@u2"
+      ],
+      "required": [],
+      "block": null,
+      "release_unit": null,
+      "watch": "integration",
+      "phase": "closure",
+      "priority": -1,
+      "source_refs": [],
+      "protected_refs": [],
+      "capability_requests": [],
+      "required_code_receipts": [],
+      "required_ai_receipts": [],
+      "status": "PASSED"
+    }
+  ],
+  "pending_issues": [],
+  "application_accepted": true,
+  "correction_queue": [],
+  "child_works": [],
+  "capability_receipts": [
+    {
+      "input_hash": "63a867215405d255006791845461947bc41d8eed75fab139f37344e87659a702",
+      "node": "R01_CAPTURE@a",
+      "receipt": "a5a30fbf933f5888bff00f6a3b74ede50ca12724c4906ecc2c4e4de5abaeed74"
+    },
+    {
+      "input_hash": "63a867215405d255006791845461947bc41d8eed75fab139f37344e87659a702",
+      "node": "R01_CAPTURE@a",
+      "receipt": "f4ff8b14d2cd34b77999af8cae6e6d60751b007fc0a9a52c9d01f7d03d52ec1d"
+    },
+    {
+      "input_hash": "9b7add94c6ff8dd3be45a3f1c7de0067a19b9c0fe30076476ed8f58fe2a971a0",
+      "node": "R02_CAUSE@a",
+      "receipt": "72b2c1bad8128c358f07df4b05dbd5377b07d1f50e12ed1a966b1dfdb56e42c9"
+    },
+    {
+      "input_hash": "9b7add94c6ff8dd3be45a3f1c7de0067a19b9c0fe30076476ed8f58fe2a971a0",
+      "node": "R02_CAUSE@a",
+      "receipt": "929b1d0c20dc4894fec17ae54d13e16c9b7e3566459b91126c516c077848af02"
+    },
+    {
+      "input_hash": "9b7add94c6ff8dd3be45a3f1c7de0067a19b9c0fe30076476ed8f58fe2a971a0",
+      "node": "R02_CAUSE@a",
+      "receipt": "de8e58c484ac7602e995db33d7700edf7e776f9c7443c36c41d397bfa8881ac4"
+    },
+    {
+      "input_hash": "9b7add94c6ff8dd3be45a3f1c7de0067a19b9c0fe30076476ed8f58fe2a971a0",
+      "node": "R02_CAUSE@a",
+      "receipt": "3f93b854dc281c6b8ee97c497ad64d95a597947b2029691d286cad4194a5bddb"
+    },
+    {
+      "input_hash": "9b7add94c6ff8dd3be45a3f1c7de0067a19b9c0fe30076476ed8f58fe2a971a0",
+      "node": "R02_CAUSE@a",
+      "receipt": "7c33e35001d59d8036f52547e82cc4e0d9e30c3f21d3e07baf045db3207b48f1"
+    },
+    {
+      "input_hash": "9b7add94c6ff8dd3be45a3f1c7de0067a19b9c0fe30076476ed8f58fe2a971a0",
+      "node": "R02_CAUSE@a",
+      "receipt": "7558b64ac8e691ddc9b62ce32fd170d4b74260eaa04f5252dd5ecafb9351497c"
+    },
+    {
+      "input_hash": "1c1e50e33230e3c4ae057cceaee0f38cb4f98caf3442ce83df73882f69fb3caf",
+      "node": "R03_IMPACT@a",
+      "receipt": "4719e7ce994826fb57b0741b01c785e891c54d89fd5e79d8bd7463b5bc47b757"
+    },
+    {
+      "input_hash": "c823b8cf70c94d02f09a58737c2228d403e75544fead21dacb679afc3d984e88",
+      "node": "R04_PROPOSAL@a",
+      "receipt": "8c8eb4f653f3c6c02e87bce6555357a0889caa7a97829941b817c8271919d569"
+    },
+    {
+      "input_hash": "c823b8cf70c94d02f09a58737c2228d403e75544fead21dacb679afc3d984e88",
+      "node": "R04_PROPOSAL@a",
+      "receipt": "b4ae2e2656c5e76c1ad15e244d65a28d2172e52354339ae5bf0a10b1e34527d7"
+    },
+    {
+      "input_hash": "c823b8cf70c94d02f09a58737c2228d403e75544fead21dacb679afc3d984e88",
+      "node": "R04_PROPOSAL@a",
+      "receipt": "4cd780273d6b9488b7cb34963f82064e2cdcf49030a0ea44752698e9415b089e"
+    },
+    {
+      "input_hash": "c823b8cf70c94d02f09a58737c2228d403e75544fead21dacb679afc3d984e88",
+      "node": "R04_PROPOSAL@a",
+      "receipt": "c67ae8d817378e37f69f1306e64b4c77b9f0b328a383f2a8bb8d533e9487d46d"
+    },
+    {
+      "input_hash": "c823b8cf70c94d02f09a58737c2228d403e75544fead21dacb679afc3d984e88",
+      "node": "R04_PROPOSAL@a",
+      "receipt": "15fdaffb272e5c5636349bf775f11aaa2dccbb192b6c831f00943acb471a812f"
+    },
+    {
+      "input_hash": "c823b8cf70c94d02f09a58737c2228d403e75544fead21dacb679afc3d984e88",
+      "node": "R04_PROPOSAL@a",
+      "receipt": "933d1b85c033f3cfafbceafa3aaa0cfaa87b6c2bb85c33a09a5c4aff2ed04a49"
+    },
+    {
+      "input_hash": "c823b8cf70c94d02f09a58737c2228d403e75544fead21dacb679afc3d984e88",
+      "node": "R04_PROPOSAL@a",
+      "receipt": "dc7aa7d2efbc53f6c729cdea76e72f21c25ba47c0078bafbe0179e2a333f6e28"
+    },
+    {
+      "input_hash": "c823b8cf70c94d02f09a58737c2228d403e75544fead21dacb679afc3d984e88",
+      "node": "R04_PROPOSAL@a",
+      "receipt": "996fa95aa836d984c52acb9796c8cbcb0649b5296bf4d01109ea226f6a90035b"
+    },
+    {
+      "input_hash": "c823b8cf70c94d02f09a58737c2228d403e75544fead21dacb679afc3d984e88",
+      "node": "R04_PROPOSAL@a",
+      "receipt": "a7fde7e9d68a03c36dd5198ace2edeb9e1a6a2f0b08febff4a06a267f78b513d"
+    },
+    {
+      "input_hash": "c823b8cf70c94d02f09a58737c2228d403e75544fead21dacb679afc3d984e88",
+      "node": "R04_PROPOSAL@a",
+      "receipt": "6653e1b2da41468c5814ad54b21b804867cb910b29289763d7e876eb62db4cef"
+    },
+    {
+      "input_hash": "c823b8cf70c94d02f09a58737c2228d403e75544fead21dacb679afc3d984e88",
+      "node": "R04_PROPOSAL@a",
+      "receipt": "936caeee8b489f3193c3e9f9de5eae8c447b67ff42d37fe95b8922f7155bb1a8"
+    },
+    {
+      "input_hash": "989c82efc42cbfc346d5ff6ef4a3062766c7e3b1d4eb622f1b76af2bd345a1ed",
+      "node": "R01_CAPTURE@b",
+      "receipt": "ecc0063c29a4047c074ea97102ff7d8f0d3c92f52a2179ab0b8fef6d6371cf9c"
+    },
+    {
+      "input_hash": "989c82efc42cbfc346d5ff6ef4a3062766c7e3b1d4eb622f1b76af2bd345a1ed",
+      "node": "R01_CAPTURE@b",
+      "receipt": "a8fe13c03d2b6e9087503a3b64a3370b3949d11d021c6820d446316a6ca3f42a"
+    },
+    {
+      "input_hash": "c5e5877b2f0d397ece44e00eca0d7282c22ba34c19d4cb97d9e554824f0e675d",
+      "node": "R02_CAUSE@b",
+      "receipt": "9a8b1bcebdcbc3f2b32e0128d05d8b66c255d2ed7de042668449be1ed705522b"
+    },
+    {
+      "input_hash": "c5e5877b2f0d397ece44e00eca0d7282c22ba34c19d4cb97d9e554824f0e675d",
+      "node": "R02_CAUSE@b",
+      "receipt": "2d9b927f022c4000d26a75628e90430449f7dc4bb04943a8639b5a272e6336d6"
+    },
+    {
+      "input_hash": "c5e5877b2f0d397ece44e00eca0d7282c22ba34c19d4cb97d9e554824f0e675d",
+      "node": "R02_CAUSE@b",
+      "receipt": "20ecd2d25808960fc6c1fbbe13fb95ff1b5154939008734cbbf9468ddb1468e8"
+    },
+    {
+      "input_hash": "c5e5877b2f0d397ece44e00eca0d7282c22ba34c19d4cb97d9e554824f0e675d",
+      "node": "R02_CAUSE@b",
+      "receipt": "b2f1252425480fea999f2cd02d3cd50b56f0921cc945fbeb3b7b6324ac7baf1d"
+    },
+    {
+      "input_hash": "c5e5877b2f0d397ece44e00eca0d7282c22ba34c19d4cb97d9e554824f0e675d",
+      "node": "R02_CAUSE@b",
+      "receipt": "0d3479a049eb2a02258d53e2c84ca0cd316b32ebe3f3d16eb0be18b170188584"
+    },
+    {
+      "input_hash": "c5e5877b2f0d397ece44e00eca0d7282c22ba34c19d4cb97d9e554824f0e675d",
+      "node": "R02_CAUSE@b",
+      "receipt": "77b4f5c080a738522257a052b9fb2eed11f989a8c06e42c51406ec88dcd7d823"
+    },
+    {
+      "input_hash": "19dc715e58767299bc77d5df7f4cb59fb02e30c1981a8c0d3bd5a005a75c3dce",
+      "node": "R03_IMPACT@b",
+      "receipt": "f73a3b1bb4325dba353c80b33c60d62793351f19fa5d36cd982cad174592d4e0"
+    },
+    {
+      "input_hash": "0c560bb0ecd967956a863ecf3a01598ef7fc842c94fd193ebde3a003d6e0890e",
+      "node": "R04_PROPOSAL@b",
+      "receipt": "b34f65c46f04ca2fbcf4b529952f536321e12150c9010c2fb9e63315f83818af"
+    },
+    {
+      "input_hash": "0c560bb0ecd967956a863ecf3a01598ef7fc842c94fd193ebde3a003d6e0890e",
+      "node": "R04_PROPOSAL@b",
+      "receipt": "dfc7faab1244a7969d0b61bf8aaa63e4fbe47f29dcc59bc998ad9dc119ea06b7"
+    },
+    {
+      "input_hash": "0c560bb0ecd967956a863ecf3a01598ef7fc842c94fd193ebde3a003d6e0890e",
+      "node": "R04_PROPOSAL@b",
+      "receipt": "c5544984ddefaa799110fd21f1728145da1db4d210480f91ff9880bd40e0279f"
+    },
+    {
+      "input_hash": "0c560bb0ecd967956a863ecf3a01598ef7fc842c94fd193ebde3a003d6e0890e",
+      "node": "R04_PROPOSAL@b",
+      "receipt": "a7d15b875a413d8c993b8f54012d7cf2d1a49c3aa043818625cf9baf7d6ebd01"
+    },
+    {
+      "input_hash": "0c560bb0ecd967956a863ecf3a01598ef7fc842c94fd193ebde3a003d6e0890e",
+      "node": "R04_PROPOSAL@b",
+      "receipt": "851eb56eec36a3f4fa8cc5596d991aa7570e1fb3c4e48d5f0f0c9fb73084f568"
+    },
+    {
+      "input_hash": "0c560bb0ecd967956a863ecf3a01598ef7fc842c94fd193ebde3a003d6e0890e",
+      "node": "R04_PROPOSAL@b",
+      "receipt": "d89d8159c279dd40cd71485b6e1c99f7e9e99f7f57fec9e105c5e4ce598d2348"
+    },
+    {
+      "input_hash": "0c560bb0ecd967956a863ecf3a01598ef7fc842c94fd193ebde3a003d6e0890e",
+      "node": "R04_PROPOSAL@b",
+      "receipt": "072a6f11dac0c801097a2fb4a7e115194c1df4af2aa5b5493ca02016f1a1bd13"
+    },
+    {
+      "input_hash": "0c560bb0ecd967956a863ecf3a01598ef7fc842c94fd193ebde3a003d6e0890e",
+      "node": "R04_PROPOSAL@b",
+      "receipt": "77a128fa11fd5a1cc1f66e6812910b8b3312600d82ea0ffb5fab0bfea3c71fed"
+    },
+    {
+      "input_hash": "0c560bb0ecd967956a863ecf3a01598ef7fc842c94fd193ebde3a003d6e0890e",
+      "node": "R04_PROPOSAL@b",
+      "receipt": "55da5f7e7800c0164275404c2d1722bb92119f1d678e50a6b7a4fc32761c6e71"
+    },
+    {
+      "input_hash": "0c560bb0ecd967956a863ecf3a01598ef7fc842c94fd193ebde3a003d6e0890e",
+      "node": "R04_PROPOSAL@b",
+      "receipt": "12f497669f949a5b7a842aa4032b392a9a1339ec24873442dc9f403659c32c28"
+    },
+    {
+      "input_hash": "0c560bb0ecd967956a863ecf3a01598ef7fc842c94fd193ebde3a003d6e0890e",
+      "node": "R04_PROPOSAL@b",
+      "receipt": "79d61e1c8bc2dca20e48726a08cff06c0d03086cef5952e5561c59f2a33f1420"
+    },
+    {
+      "input_hash": "3f92f1948712f8868ef7c44293038162287eeb67aaa33de55796afe6be5e1b67",
+      "node": "R06_PATCH@a",
+      "receipt": "bbcd2051fe27f58e62fac900304e1ddee0aa7ad9317c3322bc01501a63c31eec"
+    },
+    {
+      "input_hash": "ac4eb275bd063434834650a40f9923694434bb063c1f1375869a616e352008ea",
+      "node": "R07_VERIFY@a",
+      "receipt": "e97d40b6524bdc56aa95ab7fd49b1f9bd946cb8cc1bb29c79ee85e1adc90fa49"
+    },
+    {
+      "input_hash": "ac4eb275bd063434834650a40f9923694434bb063c1f1375869a616e352008ea",
+      "node": "R07_VERIFY@a",
+      "receipt": "673dcdce62ec752079b97e6a7b6887144b1eaa7f8dc2eb6d8bf7de92f4c1a46b"
+    },
+    {
+      "input_hash": "ac4eb275bd063434834650a40f9923694434bb063c1f1375869a616e352008ea",
+      "node": "R07_VERIFY@a",
+      "receipt": "2c51926e1f762029469fc93e6be287e0f2b433810652c2fe51461c031ed6596c"
+    },
+    {
+      "input_hash": "ac4eb275bd063434834650a40f9923694434bb063c1f1375869a616e352008ea",
+      "node": "R07_VERIFY@a",
+      "receipt": "95889c6f7a36b3aaad76da9a9baa723b02815596677eec153694a89ef4084a84"
+    },
+    {
+      "input_hash": "cb91003c3b2648846e2a16494e6a31c4f1d18cb6ac1f649edfebc96e638976c5",
+      "node": "R07_SEMANTIC@a",
+      "receipt": "3d5602204ada816c2a806652c9022f54d399630cbd5052e38ddeb3e3a29e571f"
+    },
+    {
+      "input_hash": "cb91003c3b2648846e2a16494e6a31c4f1d18cb6ac1f649edfebc96e638976c5",
+      "node": "R07_SEMANTIC@a",
+      "receipt": "2175fc4dd563129c6afe5f0c2fe1c62044b023665f9cc019e51a0e6e4c806249"
+    },
+    {
+      "input_hash": "194c6c47a940044c03e7d3f1de6de95dc2ec82c5f53687f85bb9a014aefa9765",
+      "node": "G2_AUDIT@u1",
+      "receipt": "ad5bb1004ff74f6924e857fe2d3382b1a1ebd98ed90c764477ecb006e3402dbd"
+    },
+    {
+      "input_hash": "194c6c47a940044c03e7d3f1de6de95dc2ec82c5f53687f85bb9a014aefa9765",
+      "node": "G2_AUDIT@u1",
+      "receipt": "c55be81e01803ff0ef2175453efa47a438e20587152f4b5adf13a3579519f366"
+    },
+    {
+      "input_hash": "a5f420913bf6f3888d37aeb99e4a6785aad169c7a009476b7cfc61df3ddf436a",
+      "node": "G3_HOST@u1",
+      "receipt": "d9bcb24c95922fb72318a0b151c873ed179c0b0f967845f682372f4a27422665"
+    },
+    {
+      "input_hash": "aaeb450c571eb8bc4928e2e12ba696233d343971b300de6ba63de731d385ba75",
+      "node": "R03_IMPACT_SWEEP@u1",
+      "receipt": "f2ed53d48bc0d8982d990888c90e04c33bb0925e85de084983fb3a4290f9b572"
+    },
+    {
+      "input_hash": "23838a47e2c9ab79c0867a8b21412a004bfceae762ccec80ed73062475aa4e97",
+      "node": "R08_CAPTURE_LEARNING@a",
+      "receipt": "218208eb2313bce8d4016b36b99710d71e57f0916204f990771cbf9d431945b7"
+    },
+    {
+      "input_hash": "e557d6534394b4440de2f6a8e1211c81b68599211f49843aa883507a0d80e320",
+      "node": "L01_LEARNING@u1",
+      "receipt": "fd89fb2e574522bd3a64acc4a2c5fc4a0cd6fe0b9b1b93c995becf59a683ced8"
+    },
+    {
+      "input_hash": "e557d6534394b4440de2f6a8e1211c81b68599211f49843aa883507a0d80e320",
+      "node": "L01_LEARNING@u1",
+      "receipt": "d6f31722a46b87a4a9c201377d5a6ea370b6aaf6b2b9ceb3d53001d257f3c73d"
+    },
+    {
+      "input_hash": "a3363c4dc7158707909b8b7b06c0a2efec4b17ec10f970124dcfb794b09e9bea",
+      "node": "R06_PATCH@b",
+      "receipt": "caad5adb28aab4715228de5373e08b626ef3c5f9062045424f41291de81f1de0"
+    },
+    {
+      "input_hash": "c0fdb2bebe28f634572d6504518f232ea498fdcc5478bc907751bdc706bf9c5d",
+      "node": "R07_VERIFY@b",
+      "receipt": "9278cb444f81f177ca3f543dd57d828f202176bd162ee9af113a8b561b20c270"
+    },
+    {
+      "input_hash": "c0fdb2bebe28f634572d6504518f232ea498fdcc5478bc907751bdc706bf9c5d",
+      "node": "R07_VERIFY@b",
+      "receipt": "347b0d66347245e6a73af711264498c689b6086bb38da1f4888fa696802ddf5b"
+    },
+    {
+      "input_hash": "c0fdb2bebe28f634572d6504518f232ea498fdcc5478bc907751bdc706bf9c5d",
+      "node": "R07_VERIFY@b",
+      "receipt": "e7a4cd62350a3d3448decac65a8d3b685c986e01b4de33e66d589a6439f92c74"
+    },
+    {
+      "input_hash": "c0fdb2bebe28f634572d6504518f232ea498fdcc5478bc907751bdc706bf9c5d",
+      "node": "R07_VERIFY@b",
+      "receipt": "151c0e98607454f6a43a7494eb15084e6ae49e9c8422bcd875906532abd9f5fc"
+    },
+    {
+      "input_hash": "fd6b29bea74b6a5cd7e1d426a9f5a0a32dfe1c48e6e415831976a2cc395972a8",
+      "node": "R07_SEMANTIC@b",
+      "receipt": "7be253b490efed23de769626881f6520886faba148d2b702cca8c3c1ad390c50"
+    },
+    {
+      "input_hash": "fd6b29bea74b6a5cd7e1d426a9f5a0a32dfe1c48e6e415831976a2cc395972a8",
+      "node": "R07_SEMANTIC@b",
+      "receipt": "f7c2bff9595aa70c7cd47eb944097db2f21c1b01f59b8291e60bd527caacad34"
+    },
+    {
+      "input_hash": "ef3d47a6e18c07cde5c2951f0e1c767b3d9603a7ec5449353e0feb6e8a962df3",
+      "node": "G2_AUDIT@u2",
+      "receipt": "869b7c1779514b16d8309b1394e588caffdb2cfa72ae67720067abbd2e8db04c"
+    },
+    {
+      "input_hash": "ef3d47a6e18c07cde5c2951f0e1c767b3d9603a7ec5449353e0feb6e8a962df3",
+      "node": "G2_AUDIT@u2",
+      "receipt": "acd4e0ac1c7df441be748bf08c15c9142342475429cd387e7e11c47a230678fb"
+    },
+    {
+      "input_hash": "7a734be57a1234c052cc1cad2fd91d30f689c5c15e4b56f7d32858cb8b6acdbb",
+      "node": "G3_HOST@u2",
+      "receipt": "de37d4768cdfd3e6185bf582c5fdcf35d3bb4857dc67ad208a4a23ef0a3ab23a"
+    },
+    {
+      "input_hash": "71feddbba9199023999363dfd390b544b85090da6da55ca4a5a94afaf9746254",
+      "node": "R03_IMPACT_SWEEP@u2",
+      "receipt": "10ce79fd0a0977db0e7d5aff6851bdc80fc4d4ee04516ca35fdd13c7ca74da7f"
+    },
+    {
+      "input_hash": "a75c05a75fc4e494b3077b6e0850be62bfa8398c48e84a1f622b0731c48c763c",
+      "node": "R08_CAPTURE_LEARNING@b",
+      "receipt": "cfc75d88162ecd1e5179000e4c939610b742e97419235492bcf4a5d27627afb8"
+    },
+    {
+      "input_hash": "9f7bf4d5258dc11e02f95e2eb4d592f3bb5c79b613461d8671bbb3df7bbea2a4",
+      "node": "L01_LEARNING@u2",
+      "receipt": "6350cfd186a3b5a47de1a4542627a3b06083f095ad33e64de2db698bd36bf09b"
+    },
+    {
+      "input_hash": "9f7bf4d5258dc11e02f95e2eb4d592f3bb5c79b613461d8671bbb3df7bbea2a4",
+      "node": "L01_LEARNING@u2",
+      "receipt": "cf78cf53145033762abe8d6c50a661660c9fb78131d90480b72f102871c752e7"
+    }
+  ],
+  "release_acceptance": {
+    "u1": true,
+    "u2": true
+  }
+}

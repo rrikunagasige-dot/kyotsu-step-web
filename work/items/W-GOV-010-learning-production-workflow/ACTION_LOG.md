@@ -57,3 +57,8 @@ A38 — Final sourcebba4df75 passed CI40109892971 including four-width full exis
 A39 — Completed T24 canonical routing through five docs/pointer files on mainf75bfe73, pinned to verified codebba4df75 and CI40109892971. Existing deploy file was verified path-triggered and not touched. No app deployment or full feature merge. Feature documentation closes the tool implementation while preserving model data gates and OPEN N07 lesson feedback.
 
 A40 — Read current definitions/runtime/production/runner/contracts/views and canonical command/§12B rules. Read-only graph comparison confirmed correction and creation are identical underproduction/1 with block=None. At user's request, authored P-004 full integration design, all25 capability placements, C/R-specific artifacts/loops, dependency and release/approval rules, migration and tests. Document/mapping checks PASS. No code, definition, main or learner/public changes in this proposal turn.
+
+
+## P-004 — 2026-10-24 C/R統合実装
+
+承認: 「可以可以那就来做做看把」。独立branch work/workflow-cr-integration-p004-20261024。既存Runtime/Storeへproduction/2を追加し、I01–I07の工程配置・capability契約・queue・属性別再検査・単元公開・移行・三階層図を実装。詳細はintegration/IMPLEMENTATION_RESULTS.md。ローカル検査合格、固定SHAのGitHub CIとcanonical入口の更新を続行。教材の修正・公開は対象外。

@@ -8,12 +8,21 @@ from adapters import apply_patch,git_export,authoring,import_capture,probe_app,r
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--root',default='.');p.add_argument('--store',required=True)
-    p.add_argument('operation',choices=['open','next','status','claim','submit','user','evidence','accept','auto','tool-result','bind','revise','reconcile','issue','resolve','patch','render','export','external-intent','external-outcome','author','capture','recover-lock','probe-app','reconcile-patch','reopen','production-result','production-context','production-ai','production-diagram','migrate-definition','production-run'])
+    p.add_argument('operation',choices=['open','next','status','claim','submit','user','evidence','accept','auto','tool-result','bind','revise','reconcile','issue','resolve','patch','render','export','external-intent','external-outcome','author','capture','recover-lock','probe-app','reconcile-patch','reopen','production-result','production-context','production-ai','production-diagram','migrate-definition','production-run','block-context','request','resolve-request','migrate-workflow','adopt-correction'])
     p.add_argument('--work');p.add_argument('--json',help='JSONファイル。省略時は標準入力（next/status/autoには不要）');p.add_argument('--out');p.add_argument('--check',action='store_true')
     a=p.parse_args();rt=Runtime(a.store,a.root)
     noinput=a.operation in ('next','status','auto','render','recover-lock','production-ai','production-diagram')
     data={} if noinput else json.loads(open(a.json).read() if a.json else sys.stdin.read());op=a.operation;w=a.work
-    if op=='production-run':
+    if op=='adopt-correction':r=rt.adopt_correction(w,**data)
+    elif op=='block-context':r=rt.block_context(w,**data)
+    elif op=='request':
+        from requests import intake
+        r=intake(rt,w,data)
+    elif op=='resolve-request':r=rt.resolve_request(w,**data)
+    elif op=='migrate-workflow':
+        from migrations import migrate
+        r=migrate(rt,w,**data)
+    elif op=='production-run':
         from runner import run_code
         r=run_code(rt,w,data)
     elif op=='production-result':r=rt.production_result(w,**data)
@@ -54,8 +63,8 @@ def main():
         while True:
             r=rt.next(w)
             node=r.get('task',{}).get('node',{})
-            if node.get('actor')=='USER' and 'APPROVAL' in node.get('id','') and rt.approval(rt.state(w)):
-                rt.accept(w,node['id'],rt.approval(rt.state(w))['id']);continue
+            if node.get('actor')=='USER' and 'APPROVAL' in node.get('id','') and rt.approval(rt.state(w),node):
+                rt.accept(w,node['id'],rt.approval(rt.state(w),node)['id']);continue
             if r.get('status')!='READY' or node.get('actor')!='CODE':break
             rt.execute(w,node['id'])
     print(json.dumps(r,ensure_ascii=False,indent=2))

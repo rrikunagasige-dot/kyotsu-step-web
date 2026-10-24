@@ -24,6 +24,9 @@ TECHNICAL=[('T01_ANALYSIS','AI',['rule_mapping','design','protected_scope','unkn
            ('T02_APPROVAL','USER',[]),('T03_BUILD','TOOL',[]),('T04_VERIFY','TOOL',[])]
 
 def instantiate(plan):
+    if plan.get("workflow_version") == "production/2":
+        from graphs import instantiate as integration_nodes
+        return integration_nodes(plan)
     if plan.get("workflow_version"):
         from production import instantiate as production_nodes
         return production_nodes(plan)
@@ -55,4 +58,4 @@ def instantiate(plan):
     return nodes
 
 DEFINITION_HASH=digest({'version':VERSION,'creation':CREATE,'correction':CORRECT,'technical':TECHNICAL,
-                        'gates':['G1_VISUAL','G2_AUDIT','G3_HOST','G3_FINAL'],'learning':'L01_LEARNING','implementation':{name:hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest() for name in ('definitions.py','runtime.py','store.py','contracts.py','adapters.py','views.py','cli.py','production.py','runner.py')}})
+                        'gates':['G1_VISUAL','G2_AUDIT','G3_HOST','G3_FINAL'],'learning':'L01_LEARNING','implementation':{name:hashlib.sha256(Path(__file__).with_name(name).read_bytes()).hexdigest() for name in ('definitions.py','runtime.py','store.py','contracts.py','adapters.py','views.py','cli.py','production.py','runner.py','graphs.py','capabilities.py','integration.py','requests.py','impact.py','migrations.py','learning.py')}})

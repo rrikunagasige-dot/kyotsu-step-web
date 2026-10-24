@@ -61,6 +61,9 @@ def code_operation(rt,work,nid,inputs):
     raise ValueError('this stage requires a user decision or a registered handler')
 
 def run_code(rt,work,inputs):
+    if rt.state(work)['plan'].get('workflow_version') == 'production/2':
+        from capabilities import run_stage
+        return run_stage(rt,work,inputs)
     nxt=rt.next(work);need(nxt['status']=='READY','現在実行できる工程ではない')
     node=nxt['task']['node'];nid=node['id'];claim=rt.claim(work,nid,'production-runner')
     result=code_operation(rt,work,nid,inputs)

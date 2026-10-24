@@ -37,6 +37,9 @@ def plan_check(p):
     for name in p['rules']:relative(name)
     for name in p['scope']['paths']:relative(name.removesuffix('/'))
     need(p['proposal'].get('hash') and p['proposal'].get('id'),'具体的な提案版が必要')
+    if p.get('workflow_version') == 'production/2':
+        from graphs import instantiate
+        instantiate(p)
 
 def result_check(node,result):
     need(isinstance(result,dict),'結果はオブジェクト')

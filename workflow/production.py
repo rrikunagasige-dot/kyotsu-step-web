@@ -10,6 +10,9 @@ _DEPS={0:[],1:[0],2:[1],3:[2],4:[3],5:[3],6:[5],7:[6],8:[4,7],9:[8],10:[9],11:[1
 _RETURNS={7:['S06'],14:['S11','S12'],15:['S03','S12'],16:['S05','S08','S09','S10','S12'],19:['S18'],20:['S11'],23:['S11'],24:['S04']}
 
 def instantiate(plan):
+    if plan.get('workflow_version') == 'production/2':
+        from graphs import instantiate as cr_nodes
+        return cr_nodes(plan)
     need(plan.get('workflow_version')==VERSION,'未対応の制作工程版')
     return {f'S{i:02}':{'id':f'S{i:02}','name':name,'actor':'USER' if i in (17,22) else 'AI' if i in (15,16) else 'TOOL',
             'depends_on':[f'S{x:02}' for x in _DEPS[i]],'required':['checks','artifacts','unknowns'],
@@ -18,6 +21,9 @@ def instantiate(plan):
             'ml_advisory':i in (4,8,10,14,16,24)} for i,name in enumerate(_NAMES)}
 
 def check_result(rt,work,node,result):
+    if rt.state(work)['plan'].get('workflow_version') == 'production/2':
+        from integration import check_result as cr_check
+        return cr_check(rt,work,node,result)
     result_check(node,result)
     need(result.get('artifacts'),'成果物参照がない')
     artifacts=[rt.store.get(ref) for ref in result['artifacts']]
@@ -60,7 +66,7 @@ def check_result(rt,work,node,result):
 def ai_request(rt,work,node_id):
     task=rt.task(work,node_id);state=rt.state(work)
     dependencies={d:rt.store.get(v['artifact']) for d,v in task['previous_results'].items() if v}
-    return {'schemaVersion':VERSION,'task':task,'context':state.get('production_context',{}),'dependencies':dependencies,
+    return {'schemaVersion':state['plan'].get('workflow_version',VERSION),'adoptedCorrections':state.get('adopted_corrections',[]),'reusableHistory':state.get('migration',{}).get('artifact_mapping',[]),'task':task,'context':state.get('production_context',{}),'dependencies':dependencies,
             'constraints':['原資料・既習・可視状態だけを根拠にする','作成者の自己評価を監査根拠にしない','未解決は未解決と記録','承認を生成しない'],
             'requestHash':digest({'task':task,'dependencies':dependencies,'context':state.get('production_context',{})})}
 
@@ -76,6 +82,9 @@ def textbook_job(rt,work,node_id,command,args):
     return {'claimToken':task['claim_token'],'artifact':ref,'status':'NEEDS_REVIEW' if proc.returncode==0 else 'FAIL'}
 
 def diagram(rt,work):
+    if rt.state(work)['plan'].get('workflow_version') == 'production/2':
+        from views import integration_diagrams,snapshot
+        return integration_diagrams(snapshot(rt,work))['FIRE_DIAGRAM.md']
     state=rt.state(work);lines=['# 制作火柴図（台帳から生成）','','```mermaid','flowchart TD']
     for nid,n in instantiate(state['plan']).items():
         lines.append(f'  {nid}["{nid} {n["name"]} / {rt.node_status(state,n)}"]')

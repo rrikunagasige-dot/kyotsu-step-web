@@ -56,3 +56,8 @@ F43 CONFIRMED — Source/term/math/slot semantics, code producer/version receipt
 
 F44 ERROR-INTEGRATION — production/1 dispatch bypasses legacy C/R construction: command001 and002 generate identical25 nodes, all block=None, no correction-specific nodes. Existing S25 contract tests are insufficient evidence for complete integration into the two main commands. Old R03/R08 ID-bound contracts can be bypassed by S-stage naming. A new command-specific graph and contract_kind mapping are required; not implemented by this analysis.
 F45 PROPOSED — P-004 preserves C/R stage meanings and existing Runtime/Store, reuses capabilities inside those stages, adds explicit release-unit and approval-bundle dependencies, pre/post impact sweep, three-level state-derived diagrams and version migration. This is a detailed integration proposal, not a new user-facing command or permission to change N07.
+
+
+## P-004で検出・修正した実装上の問題
+
+旧production/1はC/Rが同じ25node、block=Noneで、R02原因・R03影響の契約を迂回していた。production/2ではcommand別の契約を合成した。初回検証でrender更新が共通復元nodeまで失効し、解法を再実行する問題を検出して属性依存を限定した。共有承認は全C05/R04を依存先とし、最初の承認で別blockの設計が詰まらないようにした。自Work issueを自分の子WorkのDONE待ちにする閉鎖循環も検証付き局所解決へ修正。旧完了修正は完了した版の根拠を保持し、後のツール更新だけで未完了queueへ戻さない。

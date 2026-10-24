@@ -1,3 +1,4 @@
+import { teachFirstSection } from './firstSectionTeaching'
 import { repairFirstTheme } from './firstThemeRepair'
 import { validateTextbookUnits } from '../../../../domain/textbookSchema'
 import { oneToOneSourceMap } from './reviewLessonHelpers'
@@ -71,4 +72,6 @@ const rawN05 = {
       {id:'n05-f02',src:'/assets/math/textbook/numbers/n05-f02.png',alt:'正しい組を選んだ後に確認する、原Wordの完成たすき掛け図。',caption:'ここまでの判断を完成図で検算する。',overlays:[]},
     ], readingFlow:content.readingFlow,items:content.items}],
 }
-export const mathNumbersN05Unit = validateTextbookUnits([repairFirstTheme(validateTextbookUnits([rawN05])[0])])[0]
+export const mathNumbersN05R3Unit = validateTextbookUnits([repairFirstTheme(validateTextbookUnits([rawN05])[0])])[0]
+
+export const mathNumbersN05Unit = validateTextbookUnits([teachFirstSection(mathNumbersN05R3Unit)])[0]

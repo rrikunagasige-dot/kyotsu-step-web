@@ -189,7 +189,7 @@ export function effectiveTextbookProgress(unit: TextbookUnit, progress: Textbook
   const firstThemeBase: Record<string, number> = { n01: 2, n02: 1, n03: 2, n04: 2, n05: 2, n06: 3, ne01: 1 }
   const base = firstThemeBase[unit.unitId.replace('math-numbers-expressions-', '')]
   const fromRevision = base && unit.revision > base ? unit.revision - 1 : base
-  if (unit.unitId.startsWith('math-numbers-expressions-') && base && [base + 1, base + 2, base + 3].includes(unit.revision)
+  if (unit.unitId.startsWith('math-numbers-expressions-') && base && [base + 1, base + 2, base + 3, base + 4].includes(unit.revision)
       && progress.unitId === unit.unitId && progress.unitRevision <= fromRevision) {
     const previous = progress.unitRevision === fromRevision ? progress : effectiveTextbookProgress({ ...unit, revision: fromRevision }, progress)
     if (!previous) return undefined

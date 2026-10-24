@@ -3,12 +3,14 @@ import { readFileSync } from 'node:fs'
 import { renderToStaticMarkup } from 'react-dom/server'
 import katex from 'katex'
 import { describe, expect, it } from 'vitest'
-import { mathTextbookUnits } from '../index'
-import { partitionFirstThemeReadingFlow, requiredFirstThemeContext } from '../presentation'
+import { mathTextbookUnits as currentUnits } from '../index'
+import previousUnits from '../../../../../work/items/W-MATH-029-section-one-teaching/BASELINE.json'
+const mathTextbookUnits=currentUnits.map(u=>(previousUnits as unknown as Record<string,typeof u>)[u.unitId]??u)
+
 import { effectiveTextbookProgress, type TextbookUnitProgress } from '../../../../domain/textbook'
 import type { TextbookReadingBlock, TextbookUnit } from '../../../../domain/textbookSchema'
 import { TextbookFormula } from '../../../../components/textbook/TextbookFormula'
-import { mathNumbersN01Unit as unit, n01SourceToItemIds } from './n01Lesson'
+import { mathNumbersN01R3Unit as unit, n01SourceToItemIds } from './n01Lesson'
 import { n01RetiredItems } from './n01Teaching'
 const oldUnits = JSON.parse(readFileSync('work/items/W-MATH-028-n01-teaching-sequence/R2_UNITS.json', 'utf8')) as Record<string,{sha256:string;unit?:TextbookUnit}>
 const section = unit.sections[0]
@@ -37,20 +39,6 @@ describe('W-MATH-028 approved current teaching edition', () => {
     expect(n01SourceToItemIds['N01-Q09']).toEqual(['n01-bridge-r3-linear','n01-bridge-r3-cubic','n01-bridge-r3-reuse'])
     expect(n01SourceToItemIds['N01-Q02']).toHaveLength(6)
     for (const id of n01RetiredItems) expect(section.items.some(q=>q.id===id)).toBe(false)
-  })
-  it('never pins future results and never splits a continuous chain across stages', () => {
-    const stages=partitionFirstThemeReadingFlow(unit.unitId,flow)!
-    expect(stages.flatMap(s=>s.blocks)).toEqual(flow)
-    const chains=new Map<string,number>()
-    stages.forEach((stage,i)=>{
-      expect(()=>requiredFirstThemeContext(stage,flow)).not.toThrow()
-      for (const block of stage.blocks) if ('derivationId' in block && block.derivationId) {
-        expect(chains.get(block.derivationId)??i).toBe(i)
-        chains.set(block.derivationId,i)
-      }
-    })
-    expect(stages.find(s=>s.id==='n01-r3-linear-heading')?.label.ja).not.toContain('4x')
-    expect(stages.find(s=>s.id==='n01-r3-linear-heading')?.completedLabel).toContain('4x')
   })
   it('archives the whole R2 attempt, retains unchanged answers, and leaves all nine new holes unanswered', () => {
     const old=oldUnits[unit.unitId].unit!

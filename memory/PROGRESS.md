@@ -54,3 +54,7 @@ Gate① initial eight and prior review blocks already accepted; latest R5 N06-Q1
 
 ## 2026-10-24 W-MATH-028 — approved N01 teaching correction
 User rejected R2 explanation/sequence despite technical PASS. P-001 accepted by「可以」after research and full concrete sample. Work: work/items/W-MATH-028-n01-teaching-sequence/. Current work: N01 Q09 linear→quadratic→cubic→constant→assembly, Q02 coefficient/degree separated, shared first-theme blank restored to sets-style controls. Other examples remain pending; no whole-theme pedagogical acceptance. Publication-before-review already authorized. New independent source branch work/n01-teaching-sequence-20261024; final source/run recorded in Work verification.
+
+
+## W-MATH-029 / first section whole-solution repair (2026-10-24)
+N01 sample2977a44a accepted by user「嗯这个就不错可以」. User narrowed full audit to chapter1 section1, accepted42-region findings with「可以那就来」. Implementing all N01–N06/NE01 corrections in work/section-one-teaching-20261024. Canonical authoring is firstSectionTeaching.json, reproduced by work/items/W-MATH-029-section-one-teaching/author-sequence.py from frozen baseline; no recursive insertion for the final teaching sequence. Accepted sample protected. Other chapters/themes/modes untouched. See Work/VERIFICATION for source/public SHA and actual checks. Full-section user acceptance pending; prior sample acceptance is preserved.

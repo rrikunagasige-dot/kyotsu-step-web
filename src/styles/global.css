@@ -1632,3 +1632,6 @@ button.math-theme-link {
 .first-theme-choice-chunk .katex { font-size: 1.08em; }
 .first-theme-choice-text { display: grid; gap: .55em; }
 .first-theme-choice-chunk--prose { white-space: normal; overflow-wrap: anywhere; max-width: 100%; }
+
+/* Keep first-section mathematical tables inside a narrow phone without shrinking type. */
+.textbook-reading-flow[data-first-theme] .reading-formula-line:has(.mtable) { padding-inline: .3rem; }

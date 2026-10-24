@@ -1,3 +1,4 @@
+import { teachFirstSection } from './firstSectionTeaching'
 import { repairFirstTheme } from './firstThemeRepair'
 import { teachN01 } from './n01Teaching'
 import { validateTextbookUnits } from '../../../../domain/textbookSchema'
@@ -241,4 +242,6 @@ const rawN01 = {
 
 // Explicit historical edition for preserved R2 audit contracts; never the learner export.
 export const mathNumbersN01R2Unit = validateTextbookUnits([repairFirstTheme(validateTextbookUnits([rawN01])[0])])[0]
-export const mathNumbersN01Unit = validateTextbookUnits([teachN01(mathNumbersN01R2Unit)])[0]
+export const mathNumbersN01R3Unit = validateTextbookUnits([teachN01(mathNumbersN01R2Unit)])[0]
+
+export const mathNumbersN01Unit = validateTextbookUnits([teachFirstSection(mathNumbersN01R3Unit)])[0]

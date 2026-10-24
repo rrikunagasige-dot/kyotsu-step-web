@@ -1,3 +1,4 @@
+import { firstSectionTeachingPlans } from './numbers/firstSectionTeaching'
 import type { TextbookReadingBlock } from '../../../domain/textbookSchema'
 
 // Math I+A, published "集合": presentation metadata ONLY.
@@ -165,7 +166,8 @@ export function isFirstThemeUnit(unitId: string): boolean {
 }
 export function partitionFirstThemeReadingFlow(unitId: string, blocks: readonly TextbookReadingBlock[]): MathSetRenderedStage[] | null {
   if (!isFirstThemeUnit(unitId)) return null
-  const definitions = firstThemeStages[unitId.replace('math-numbers-expressions-', '')]
+  const prefix = unitId.replace('math-numbers-expressions-', '')
+  const definitions = firstSectionTeachingPlans[prefix]?.stages ?? firstThemeStages[prefix]
   const starts = definitions.map(([anchor]) => blocks.findIndex(b => b.id === anchor))
   if (starts[0] !== 0 || starts.some((n,i) => n < 0 || (i > 0 && n <= starts[i-1]))) throw Error('Invalid first-theme stage anchor: ' + unitId)
   return definitions.map(([anchor,label],i) => ({id: anchor, startBlockId: anchor, label:{ja:label,zh:label}, completedLabel:firstThemeCompletedLabels[anchor], blocks:blocks.slice(starts[i],starts[i+1] ?? blocks.length)}))
@@ -205,7 +207,9 @@ const firstThemeReferences: Readonly<Record<string, readonly string[]>> = {
 }
 export function requiredFirstThemeContext(stage: MathSetRenderedStage, blocks: readonly TextbookReadingBlock[]): readonly string[] {
   const start = blocks.findIndex(b => b.id === stage.startBlockId)
-  return (firstThemeReferences[stage.startBlockId] ?? []).filter(id => {
+  const plan = Object.values(firstSectionTeachingPlans).find(p=>p.readingFlow[0].id===blocks[0]?.id)
+  const references = plan ? plan.contexts[stage.startBlockId] ?? [] : firstThemeReferences[stage.startBlockId] ?? []
+  return references.filter(id => {
     const index = blocks.findIndex(b => b.id === id)
     if (index < 0 || index >= start) throw Error('First-theme context is missing or from the future: ' + id)
     return true

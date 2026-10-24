@@ -561,7 +561,7 @@ export function TextbookReadingFlow({ unit, section, progress, onSummaryReached,
                         })}
                       </div>
                     )}
-                    {renderVisibleBlocks(visibleBlocksInGroup([...stage.blocks]).filter(block => !(stage.startBlockId.startsWith('n01-r3-') && block.id === stage.startBlockId && block.type === 'heading')))}
+                    {renderVisibleBlocks(visibleBlocksInGroup([...stage.blocks]).filter(block => !(isFirstThemeUnit(unit.unitId) && block.id === stage.startBlockId && block.type === 'heading')))}
                     {stageAnswered && index < compactStages.length - 1 && (
                       <div className="math-textbook-next-stage-panel">
                         <span>{text('ここまでの本文と図を確認したら、次へ進めます。', '读完本段正文和图后，可以继续下一段。')}</span>

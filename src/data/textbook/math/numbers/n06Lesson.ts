@@ -1,3 +1,4 @@
+import { teachFirstSection } from './firstSectionTeaching'
 import { repairFirstTheme } from './firstThemeRepair'
 import { validateTextbookUnits } from '../../../../domain/textbookSchema'
 import { oneToOneSourceMap } from './reviewLessonHelpers'
@@ -59,4 +60,6 @@ const rawN06 = {
     description:'置換・復元・文字の選択を通して因数分解する。',figures:[],
     readingFlow:content.readingFlow,items:content.items}],
 }
-export const mathNumbersN06Unit = validateTextbookUnits([repairFirstTheme(validateTextbookUnits([rawN06])[0])])[0]
+export const mathNumbersN06R3Unit = validateTextbookUnits([repairFirstTheme(validateTextbookUnits([rawN06])[0])])[0]
+
+export const mathNumbersN06Unit = validateTextbookUnits([teachFirstSection(mathNumbersN06R3Unit)])[0]

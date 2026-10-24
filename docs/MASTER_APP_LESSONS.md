@@ -1272,3 +1272,7 @@ For mobile-only learning, judge derivation density by whether the learner active
 3. **最後:** すべてのブロックと横断監査を閉じた後、exact release-candidate SHA に一致する**実際に動くアプリリンク**を渡す。ユーザーが最初から最後まで全対象をplayして、明示的に `総チェックOK` を出すまで `FINAL-APP-ACCEPTED` にしない。開くアプリが未準備なら `FINAL-REVIEW-NOT-READY`。
 
 Vercelを必須とせず、main統合・本番/GitHub Pages公開・新規公開環境・削除・費用発生は別承認。小ブロックの画面受入、技術 Work 完了、アプリ全体の受入は別の記録とする。テンプレートは `work/templates/BLOCK_REVIEW_SHEET.md`、`CROSS_BLOCK_AUDIT.md`、`FINAL_APP_WALKTHROUGH.md`。
+
+## 2026-10-24 approved mathematical teaching sequence
+
+User accepted N01's target→reason→local calculation→retained result→reuse→conclusion sample, then approved the complete first-section correction. Detailed evidence: W-MATH-028 and W-MATH-029. Before adding supporting equations, inspect the whole solution order: complete one independent problem/part before another; do not display a completed calculation and then ask for its earlier derivation; do not put a rule-selection answer in its heading; retain local results and explicitly return them to the original problem. The existing continuous-teaching, meaningful-hole and scope rules above still apply. Technical PASS does not replace user content acceptance.

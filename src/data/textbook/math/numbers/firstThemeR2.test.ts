@@ -1,10 +1,11 @@
+import previousUnits from '../../../../../work/items/W-MATH-029-section-one-teaching/BASELINE.json'
 import {describe,expect,it} from 'vitest'
 import {readFileSync} from 'node:fs'
 import {createHash} from 'node:crypto'
 import {mathTextbookUnits as currentUnits} from '../index'
 import {mathNumbersN01R2Unit} from './n01Lesson'
 // Historical R2 contract. Current R3 scope, migration and presentation are tested in n01Teaching.test.ts.
-const mathTextbookUnits=currentUnits.map(u=>u.unitId===mathNumbersN01R2Unit.unitId?mathNumbersN01R2Unit:u)
+const mathTextbookUnits=currentUnits.map(u=>u.unitId===mathNumbersN01R2Unit.unitId?mathNumbersN01R2Unit:(previousUnits as unknown as Record<string,typeof u>)[u.unitId]??u)
 import {isFirstThemeUnit} from '../presentation'
 const baseline=JSON.parse(readFileSync('work/items/W-MATH-027-first-theme-repair/R2_BASELINE.json','utf8')) as {units:Record<string,{unitHash:string;items:Record<string,string>}>}
 const hash=(value:unknown)=>createHash('sha256').update(JSON.stringify(value)).digest('hex')

@@ -1,3 +1,4 @@
+import { teachFirstSection } from './firstSectionTeaching'
 import { repairFirstTheme } from './firstThemeRepair'
 import { validateTextbookUnits } from '../../../../domain/textbookSchema'
 
@@ -993,4 +994,6 @@ const rawUnit = {
   ]
 } as const
 
-export const mathNumbersNE01Unit = validateTextbookUnits([repairFirstTheme(validateTextbookUnits([rawUnit])[0])])[0]
+export const mathNumbersNE01R3Unit = validateTextbookUnits([repairFirstTheme(validateTextbookUnits([rawUnit])[0])])[0]
+
+export const mathNumbersNE01Unit = validateTextbookUnits([teachFirstSection(mathNumbersNE01R3Unit)])[0]

@@ -9,6 +9,7 @@ const units = runtime.units.map(x=>x.unit).filter(u=>/^math-numbers-expressions-
 const browser = await chromium.launch({headless:true,...(process.env.CHROMIUM_PATH?{executablePath:process.env.CHROMIUM_PATH}:{})})
 for(let i=0;i<50;i++){try{await fetch(root);break}catch{await new Promise(r=>setTimeout(r,200))}}
 const results=[]
+const formulaGeometry=[]
 try {
  for (const width of [320,390,1440]) {
   const context=await browser.newContext({viewport:{width,height:900}})
@@ -36,7 +37,7 @@ try {
     await blank.click()
     let panel=page.getByTestId('inline-choice-panel-'+item.id)
     await panel.waitFor()
-    if(!wrongChecked || item.id.startsWith('n01-bridge-r3-')) {
+    if(!wrongChecked || item.id.startsWith('n01-bridge-r3-') || item.id.includes('-s4-')) {
      const wrong=panel.locator('button.reading-choice-option').filter({hasNot:page.locator('[data-never]')})
      let selected
      for(const option of await wrong.all()) if((await option.getAttribute('aria-label'))!==item.answer){selected=option;break}
@@ -49,12 +50,13 @@ try {
     let selected
     for(const option of await answer.all())if((await option.getAttribute('aria-label'))===item.answer){selected=option;break}
     assert(selected,'Missing correct option '+item.id)
-    if(['n01-06b','n01-bridge-r3-negative-degree','n01-bridge-r3-linear','n01-bridge-r3-cubic','n01-bridge-r3-reuse','n02-04'].includes(item.id)) {
+    if(['n01-s4-y-degree','n01-bridge-r3-linear','n02-bridge-detail-cube-coefficient','n02-bridge-minus-constant','n04-bridge-cross-coefficient','n04-s4-product-rule','n05-s4-linear-condition','n06-bridge-audit-constant-pair','ne01-bridge-detail-quadratic-coefficient','ne01-s4-sum-rule'].includes(item.id)) {
       await panel.scrollIntoViewIfNeeded();await page.screenshot({path:out+'/'+item.id+'-'+width+'.png',fullPage:true})
     }
     const layout=await panel.locator('button.reading-choice-option').evaluateAll(options=>options.map(option=>{const strong=option.querySelector('strong');const bounds=strong.getBoundingClientRect();return {left:option.getBoundingClientRect().left,font:parseFloat(getComputedStyle(strong).fontSize),over:Array.from(strong.querySelectorAll('.first-theme-choice-chunk')).some(c=>{const r=c.getBoundingClientRect();return r.left<bounds.left-2||r.right>bounds.right+2})}}))
     assert(layout.every(x=>x.font>=16&&!x.over),'Clipped or undersized option '+width+'/'+item.id+' '+JSON.stringify(layout))
     assert(layout.every(x=>Math.abs(x.left-layout[0].left)<2),'Options are crowded into columns '+item.id)
+    for(const entry of await page.locator('.math-textbook-stage--current .reading-formula-line').evaluateAll(rows=>rows.filter(row=>row.scrollWidth>row.clientWidth+2).map(row=>({id:row.dataset.testid,width:row.clientWidth,scrollWidth:row.scrollWidth})))) formulaGeometry.push({unit:unit.unitId,item:item.id,width,...entry});
     const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1)
     assert(!overflow,'Horizontal page overflow at '+width+'/'+item.id)
     assert.equal(await page.locator('.katex-error').count(),0,'Math parse error '+item.id)
@@ -66,6 +68,7 @@ try {
       assert(borders.every(x=>parseFloat(x)===0),'Individual formula cards split teaching chain');
     }
    }
+   for(const entry of await page.locator('.math-textbook-stage--current .reading-formula-line').evaluateAll(rows=>rows.filter(row=>row.scrollWidth>row.clientWidth+2).map(row=>({id:row.dataset.testid,width:row.clientWidth,scrollWidth:row.scrollWidth})))) formulaGeometry.push({unit:unit.unitId,item:'completed',width,...entry});
    assert.equal(await page.getByTestId('resolved-'+items.at(-1).id).count(),1)
    if(stages>0){const history=page.getByTestId('math-textbook-history-toggle');await history.click();assert(await page.getByTestId('math-textbook-expand-all').isVisible());await history.click()}
    await page.screenshot({path:out+'/'+unit.unitId+'-'+width+'.png',fullPage:true})
@@ -79,6 +82,8 @@ try {
   assert.deepEqual(errors,[])
   await context.close()
  }
+ fs.writeFileSync(out+'/formula-geometry.json',JSON.stringify(formulaGeometry,null,2))
  fs.writeFileSync(out+'/report.json',JSON.stringify({root,sourceSHA:process.env.CANDIDATE_SHA??'local-working-tree',results},null,2))
+ assert.equal(formulaGeometry.length,0,'Mathematical line requires horizontal scrolling: '+JSON.stringify(formulaGeometry.slice(0,5)))
  console.log(JSON.stringify({root,flows:results.length,answers:results.reduce((n,r)=>n+r.answers,0),passed:true}))
 }finally{await browser.close()}

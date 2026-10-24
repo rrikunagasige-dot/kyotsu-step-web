@@ -93,3 +93,7 @@ Latest main GitHub Pages at `537c3cb...` ≠ frozen R5 SHA; Draft PR #101 not me
 
 
 W-MATH-028/P-001: R2 user rejection → primary-source teaching research → concrete N01 proposal APPROVED → sample implementation → technical/visual verification → authorized public review → user feedback → remaining first-theme examples. See work/items/W-MATH-028-n01-teaching-sequence/WORK.md. Other themes not started.
+
+
+## W-MATH-029 / first section whole-solution repair (2026-10-24)
+N01 sample2977a44a accepted by user「嗯这个就不错可以」. User narrowed full audit to chapter1 section1, accepted42-region findings with「可以那就来」. Implementing all N01–N06/NE01 corrections in work/section-one-teaching-20261024. Canonical authoring is firstSectionTeaching.json, reproduced by work/items/W-MATH-029-section-one-teaching/author-sequence.py from frozen baseline; no recursive insertion for the final teaching sequence. Accepted sample protected. Other chapters/themes/modes untouched. See Work/VERIFICATION for source/public SHA and actual checks. Full-section user acceptance pending; prior sample acceptance is preserved.

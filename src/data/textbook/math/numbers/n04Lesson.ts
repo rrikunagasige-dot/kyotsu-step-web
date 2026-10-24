@@ -1,3 +1,4 @@
+import { teachFirstSection } from './firstSectionTeaching'
 import { repairFirstTheme } from './firstThemeRepair'
 import { validateTextbookUnits } from '../../../../domain/textbookSchema'
 import { n04BatchSupplement } from './n04BatchSupplement'
@@ -109,4 +110,6 @@ const rawN04 = {
   }],
 }
 
-export const mathNumbersN04Unit = validateTextbookUnits([repairFirstTheme(validateTextbookUnits([rawN04])[0])])[0]
+export const mathNumbersN04R3Unit = validateTextbookUnits([repairFirstTheme(validateTextbookUnits([rawN04])[0])])[0]
+
+export const mathNumbersN04Unit = validateTextbookUnits([teachFirstSection(mathNumbersN04R3Unit)])[0]

@@ -1,0 +1,175 @@
+{
+  "n01": {
+    "regions": [
+      "Q01",
+      "Q02",
+      "Q03-05",
+      "Q06-08",
+      "Q09-10 accepted"
+    ],
+    "retired": [
+      "n01-04",
+      "n01-05",
+      "n01-06b",
+      "n01-07",
+      "n01-08"
+    ],
+    "new": [
+      "n01-s4-y-coefficient",
+      "n01-s4-y-degree",
+      "n01-s4-axy-x",
+      "n01-s4-axy-y",
+      "n01-s4-like-degree",
+      "n01-s4-like-constant"
+    ],
+    "stages": 15
+  },
+  "n02": {
+    "regions": [
+      "Q01-02",
+      "Q03-04",
+      "Q05-06",
+      "Q07-08",
+      "Q09-10",
+      "Q11-12"
+    ],
+    "retired": [
+      "n02-03",
+      "n02-04",
+      "n02-06",
+      "n02-07",
+      "n02-08",
+      "n02-bridge-twice-square",
+      "n02-09",
+      "n02-10",
+      "n02-bridge-group-coefficients",
+      "n02-11",
+      "n02-bridge-reuse"
+    ],
+    "new": [
+      "n02-s4-reuse-linear"
+    ],
+    "stages": 9
+  },
+  "n03": {
+    "regions": [
+      "Q01-04",
+      "Q05-06",
+      "Q07-08",
+      "Q09-11",
+      "Q12-13"
+    ],
+    "retired": [],
+    "new": [
+      "n03-s4-product-exponent"
+    ],
+    "stages": 7
+  },
+  "n04": {
+    "regions": [
+      "Q01-03",
+      "Q04-05",
+      "Q06-08",
+      "Q09-10",
+      "Q11-13",
+      "Q14-16",
+      "Q17-19",
+      "Q20-22"
+    ],
+    "retired": [
+      "n04-09",
+      "n04-10",
+      "n04-13",
+      "n04-17"
+    ],
+    "new": [
+      "n04-s4-square-rule",
+      "n04-s4-product-rule",
+      "n04-s4-shared-part",
+      "n04-s4-opposite-part"
+    ],
+    "stages": 12
+  },
+  "n05": {
+    "regions": [
+      "Q01-03",
+      "Q04-05",
+      "Q06-08",
+      "Q09-11",
+      "Q12-15",
+      "Q16-18",
+      "Q19-20"
+    ],
+    "retired": [
+      "n05-04",
+      "n05-06",
+      "n05-10",
+      "n05-bridge-factor-sign",
+      "n05-13",
+      "n05-14",
+      "n05-16",
+      "n05-bridge-detail-substitute-r"
+    ],
+    "new": [
+      "n05-s4-factor-sum",
+      "n05-s4-factor-product",
+      "n05-s4-quadratic-condition",
+      "n05-s4-constant-condition",
+      "n05-s4-linear-condition",
+      "n05-s4-last-linear-condition",
+      "n05-s4-last-constant-condition",
+      "n05-s4-common-factor"
+    ],
+    "stages": 9
+  },
+  "n06": {
+    "regions": [
+      "Q01-04",
+      "Q05-07",
+      "Q08-12",
+      "Q13-16"
+    ],
+    "retired": [
+      "n06-01",
+      "n06-05",
+      "n06-08",
+      "n06-bridge-constant-cross",
+      "n06-15"
+    ],
+    "new": [
+      "n06-s4-substitution-part",
+      "n06-s4-fourth-substitution",
+      "n06-s4-x-degree",
+      "n06-s4-y-degree",
+      "n06-s4-choose-variable",
+      "n06-s4-sum-match"
+    ],
+    "stages": 10
+  },
+  "ne01": {
+    "regions": [
+      "Q01-02",
+      "Q03-05",
+      "Q06",
+      "Q07",
+      "Q08-10",
+      "Q11",
+      "Q12-13"
+    ],
+    "retired": [
+      "ne01-bridge-concrete-first",
+      "ne01-bridge-concrete-second",
+      "ne01-bridge-general-a",
+      "ne01-bridge-general-b",
+      "ne01-bridge-even-sign",
+      "ne01-bridge-odd-sign",
+      "ne01-12",
+      "ne01-13"
+    ],
+    "new": [
+      "ne01-s4-difference-rule",
+      "ne01-s4-sum-rule"
+    ],
+    "stages": 9
+  }
+}

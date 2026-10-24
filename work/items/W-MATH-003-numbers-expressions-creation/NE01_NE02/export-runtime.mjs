@@ -7,6 +7,7 @@ const manifest=Object.fromEntries(paths.map(path=>[path,execFileSync('git',['rev
 const server=await createServer({server:{middlewareMode:true},appType:'custom'})
 const units=[]
 const domain=await server.ssrLoadModule('/src/domain/textbook.ts')
+const {firstSectionTeachingPlans}=await server.ssrLoadModule('/src/data/textbook/math/numbers/firstSectionTeaching.ts')
 try {
  for(const suffix of [...Array.from({length:14},(_,i)=>'n'+String(i+1).padStart(2,'0')),'ne01','ne02']){
   const code=suffix.slice(1),path='/src/data/textbook/math/numbers/'+suffix+'Lesson.ts'
@@ -14,7 +15,12 @@ try {
   const unit=module['mathNumbers'+suffix.toUpperCase()+'Unit']
   if(!unit||unit.unitId!=='math-numbers-expressions-'+suffix)throw Error('Unit export mismatch '+path)
   const sourceMap=Object.entries(module).find(([name])=>/SourceToItemIds$/.test(name))?.[1]??null
-  units.push({code,sourceMap,unit,visibleChoices:unit.sections.flatMap(s=>s.items.map(item=>({id:item.id,choices:domain.getTextbookChoices(unit,item)})))})
+  // Original mother-document mapping is retained as provenance; retired decisions
+  // must not masquerade as live controls after a teaching-sequence revision.
+  const liveIds=new Set(unit.sections.flatMap(s=>s.items.map(q=>q.id)))
+  const coverage=firstSectionTeachingPlans[suffix]?.sourceCoverage
+  const activeSourceMap=coverage?Object.fromEntries(Object.entries(coverage).map(([key,row])=>[key,row.activeItemIds])):sourceMap?Object.fromEntries(Object.entries(sourceMap).map(([key,ids])=>[key,ids.filter(id=>liveIds.has(id))])):null
+  units.push({code,sourceMap:activeSourceMap,originalSourceMap:sourceMap,sourceCoverage:coverage??null,unit,visibleChoices:unit.sections.flatMap(s=>s.items.map(item=>({id:item.id,choices:domain.getTextbookChoices(unit,item)})))})
  }
 }finally{await server.close()}
 mkdirSync('e2e-evidence/chapter-runtime',{recursive:true})

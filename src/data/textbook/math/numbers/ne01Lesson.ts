@@ -1,3 +1,4 @@
+import { repairFirstTheme } from './firstThemeRepair'
 import { validateTextbookUnits } from '../../../../domain/textbookSchema'
 
 // W-MATH-003/P-005: exact 25-question batch approved by user「続けて」2026-10-23.
@@ -992,4 +993,4 @@ const rawUnit = {
   ]
 } as const
 
-export const mathNumbersNE01Unit = validateTextbookUnits([rawUnit])[0]
+export const mathNumbersNE01Unit = validateTextbookUnits([repairFirstTheme(validateTextbookUnits([rawUnit])[0])])[0]

@@ -1,3 +1,5 @@
+// Historical edition regression; current-theme coverage lives in firstThemeRepair.test.ts.
+import { firstThemeBaseline } from '../test/firstThemeBaseline'
 import { describe, expect, it } from 'vitest'
 import { builtInTextbookUnits } from '../data/textbookUnits'
 import {
@@ -15,8 +17,10 @@ import {
 
 import { mathNumbersN12Unit } from '../data/textbook/math/numbers/n12Lesson'
 import { mathNumbersN01Unit, n01SourceToItemIds } from '../data/textbook/math/numbers/n01Lesson'
-import { mathNumbersN03Unit, n03SourceToItemIds } from '../data/textbook/math/numbers/n03Lesson'
+import { mathNumbersN03Unit as current_mathNumbersN03Unit, n03SourceToItemIds } from '../data/textbook/math/numbers/n03Lesson'
 import { mathNumbersN09Unit } from '../data/textbook/math/numbers/n09Lesson'
+const mathNumbersN03Unit = firstThemeBaseline(current_mathNumbersN03Unit)
+
 
 const unit = builtInTextbookUnits[0]
 const firstItem = unit.sections[0].items[0]

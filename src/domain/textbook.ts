@@ -185,6 +185,26 @@ export function effectiveTextbookProgress(unit: TextbookUnit, progress: Textbook
   if (!progress) return undefined
   if (progress.unitRevision === unit.revision) return progress
 
+  // First-theme repair: additions reopen only new reasoning nodes. Preserve old attempts.
+  const firstThemeBase: Record<string, number> = { n02: 1, n03: 2, n04: 2, n05: 2, n06: 3, ne01: 1 }
+  const base = firstThemeBase[unit.unitId.replace('math-numbers-expressions-', '')]
+  if (unit.unitId.startsWith('math-numbers-expressions-') && base && unit.revision === base + 1
+      && progress.unitId === unit.unitId && progress.unitRevision <= base) {
+    const previous = progress.unitRevision === base ? progress : effectiveTextbookProgress({ ...unit, revision: base }, progress)
+    if (!previous) return undefined
+    const { archivedRevisions, ...archive } = previous
+    const known = new Set(unit.sections.flatMap(section => section.items.map(item => item.id)))
+    return {
+      unitId: unit.unitId, unitRevision: unit.revision,
+      startedAt: previous.startedAt, updatedAt: previous.updatedAt,
+      answers: Object.fromEntries(Object.entries(previous.answers).filter(([id]) => known.has(id))),
+      migratedFromRevision: previous.unitRevision,
+      archivedRevisions: { ...archivedRevisions, [String(previous.unitRevision)]: archive },
+      ...(previous.completedAt !== undefined ? { previousRevisionCompletedAt: previous.completedAt }
+        : previous.previousRevisionCompletedAt !== undefined ? { previousRevisionCompletedAt: previous.previousRevisionCompletedAt } : {}),
+    }
+  }
+
   // W-MATH-017/P-008: Q13's old full operation + completed equation
   // is replaced by local 6x coefficient; archive v9 and reopen only Q13.
   if (unit.unitId === 'math-numbers-expressions-n11' && unit.revision === 10

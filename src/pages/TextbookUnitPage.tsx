@@ -1,3 +1,4 @@
+import { formulaWrapChunks } from '../components/textbook/formulaWrap'
 import { developmentFeedback } from '../data/textbook/math/numbers/developmentFeedback'
 import { InlineMath } from 'react-katex'
 import { Check, LockKeyhole, RotateCcw, X } from 'lucide-react'
@@ -15,7 +16,7 @@ import { normalizeTextbookMath } from '../domain/textbookMath'
 import { textbookDisplayLines } from '../domain/textbookDisplayLines'
 import { chapter1ChunkForUnitCode, chapter1Localized, chapter1NextUnit } from '../data/textbook/ch01/chapter1Architecture'
 import { mathTextbookNextUnitId, mathTextbookTopicForUnit } from '../data/textbook/math'
-import { partitionMathSetReadingFlow, requiredMathSetContext } from '../data/textbook/math/presentation'
+import { partitionMathSetReadingFlow, requiredMathSetContext, partitionFirstThemeReadingFlow, requiredFirstThemeContext, isFirstThemeUnit } from '../data/textbook/math/presentation'
 
 function interactionPrompt(item: TextbookItem, text: (ja: string, zh: string) => string, subject: TextbookUnit['subject']) {
   switch (item.purpose) {
@@ -147,12 +148,12 @@ export function TextbookReadingFlow({ unit, section, progress, onSummaryReached,
   const visibleGroups = groups.slice(0, visibleGroupCount)
 
 
-  // The published math-sets lesson alone uses explicitly authored presentation stages.
-  // This changes no readingFlow text, answer key, source order, image or stored progress.
+  // Sets and the repaired first theme use authored semantic stages.
+  // Presentation never deletes source blocks or skips unresolved choices.
   const compactStages = useMemo(
     () => unit.subject === 'math-1a' && unit.unitId === 'math-sets' && unit.status === 'published' && section.id === 'lesson'
       ? partitionMathSetReadingFlow(section.readingFlow)
-      : null,
+      : section.id === 'lesson' ? partitionFirstThemeReadingFlow(unit.unitId, section.readingFlow) : null,
     [unit.subject, unit.unitId, unit.status, section.id, section.readingFlow],
   )
   const [compactCursor, setCompactCursor] = useState(0)
@@ -262,7 +263,7 @@ export function TextbookReadingFlow({ unit, section, progress, onSummaryReached,
     return (
       <div className="reading-inline-choice-panel" data-testid={`inline-choice-panel-${activeItem.id}`}>
         <div className="reading-inline-choice-panel__head">
-          <span>{interactionPrompt(activeItem, text, unit.subject)}</span>
+          <span>{(isFirstThemeUnit(unit.unitId) ? activeItem.prompt : interactionPrompt(activeItem, text, unit.subject))}</span>
         </div>
         {activeHint && (
           <div className="reading-choice-hint" data-testid={`textbook-hint-${activeItem.id}`}>
@@ -273,7 +274,7 @@ export function TextbookReadingFlow({ unit, section, progress, onSummaryReached,
         <div
           className={`reading-choice-options${wideMathChoices ? ' reading-choice-options--math-wide' : ''}`}
           role="group"
-          aria-label={interactionPrompt(activeItem, text, unit.subject)}
+          aria-label={(isFirstThemeUnit(unit.unitId) ? activeItem.prompt : interactionPrompt(activeItem, text, unit.subject))}
         >
           {activeChoices.map((choice, index) => {
             const isLastWrongChoice = unit.subject === 'math-1a'
@@ -295,7 +296,7 @@ export function TextbookReadingFlow({ unit, section, progress, onSummaryReached,
                 {activeItem.answerType === 'formula'
                   ? (
                     <span className="reading-choice-formula-lines">
-                      {textbookDisplayLines(activeItem.id, choice).flatMap(value => value.split('\\quad')).map((line, lineIndex) => (
+                      {textbookDisplayLines(activeItem.id, choice).flatMap(value => value.split('\\quad')).flatMap(value => isFirstThemeUnit(unit.unitId) && !value.includes('\\begin') ? formulaWrapChunks({ id: activeItem.id, type: 'formula', parts: [{type:'math',latex:value}] }) : [value]).map((line, lineIndex) => (
                         <span className="reading-choice-formula-line" key={lineIndex}>
                           <InlineMath math={normalizeTextbookMath(line.trim())} />
                         </span>
@@ -435,7 +436,7 @@ export function TextbookReadingFlow({ unit, section, progress, onSummaryReached,
   }
 
   return (
-    <article className="textbook-reading-flow" data-testid="textbook-reading-flow" tabIndex={unit.unitId === 'math-numbers-expressions-n12' ? -1 : undefined}>
+    <article className="textbook-reading-flow" data-testid="textbook-reading-flow" data-first-theme={isFirstThemeUnit(unit.unitId) || undefined} tabIndex={-1}>
       {compactStages ? (
         <div className="math-textbook-compact-flow" data-testid="math-textbook-compact-flow">
           {activeCompactIndex > 0 && (
@@ -476,7 +477,7 @@ export function TextbookReadingFlow({ unit, section, progress, onSummaryReached,
               const item = section.items.find(candidate => candidate.id === id)
               return !item || !isTextbookItemResolved(item, currentProgress?.answers[id])
             }) ?? null
-            const neededContextIds = completedBefore ? [] : requiredMathSetContext(currentQuestionId)
+            const neededContextIds = completedBefore ? [] : isFirstThemeUnit(unit.unitId) ? requiredFirstThemeContext(stage, section.readingFlow) : requiredMathSetContext(currentQuestionId)
             const stageAnswered = stageItemIds.every(id => {
               const item = section.items.find(candidate => candidate.id === id)
               return Boolean(item && isTextbookItemResolved(item, currentProgress?.answers[id]))
@@ -608,7 +609,7 @@ export function TextbookUnitPage() {
   const [selectedSectionIndex, setSelectedSectionIndex] = useState(0)
   const [visibleThroughIndex, setVisibleThroughIndex] = useState(0)
   const [mathSummaryReached, setMathSummaryReached] = useState(false)
-  const [n12RestartEpoch, setN12RestartEpoch] = useState(0)
+  const [restartEpoch, setRestartEpoch] = useState(0)
   const initializedUnitRef = useRef<string | null>(null)
   const savedProgress = useAppStore((state) => state.textbookProgress[unitId])
   const progress = useMemo(() => unit ? effectiveTextbookProgress(unit, savedProgress) : savedProgress, [unit, savedProgress])
@@ -667,14 +668,13 @@ export function TextbookUnitPage() {
     initializedUnitRef.current = null
     setSelectedSectionIndex(0)
     setVisibleThroughIndex(0)
-    if (unit.unitId === 'math-numbers-expressions-n12') {
-      setN12RestartEpoch(epoch => epoch + 1)
-      window.requestAnimationFrame(() => {
+    window.localStorage.removeItem('math-textbook-compact-v1:' + unit.unitId + ':r' + unit.revision)
+    setRestartEpoch(epoch => epoch + 1)
+    window.requestAnimationFrame(() => {
         const first = document.querySelector<HTMLElement>('[data-testid="textbook-reading-flow"]')
         first?.focus({ preventScroll: true })
         window.scrollTo({ top: 0, behavior: 'auto' })
-      })
-    }
+    })
   }
 
   const scrollToSection = (index: number) => {
@@ -791,7 +791,7 @@ export function TextbookUnitPage() {
               )}
 
               {section.readingFlow.length > 0
-                ? <TextbookReadingFlow key={unit.unitId === 'math-numbers-expressions-n12' ? `n12-restart-${n12RestartEpoch}` : section.id} unit={unit} section={section} progress={progress} onSummaryReached={setMathSummaryReached} />
+                ? <TextbookReadingFlow key={`${unit.unitId}-${section.id}-restart-${restartEpoch}`} unit={unit} section={section} progress={progress} onSummaryReached={setMathSummaryReached} />
                 : null}
 
               {!continuousLesson && sectionComplete && !unitComplete && isLastVisible && index < unit.sections.length - 1 && (
@@ -805,7 +805,7 @@ export function TextbookUnitPage() {
           )
         })}
 
-        {unitComplete && (unit.unitId !== 'math-sets' || mathSummaryReached) && (
+        {unitComplete && ((unit.unitId !== 'math-sets' && !isFirstThemeUnit(unit.unitId)) || mathSummaryReached) && (
           <div className="textbook-complete-panel" data-testid="textbook-unit-complete">
             <Check size={28} aria-hidden="true" />
             <div>

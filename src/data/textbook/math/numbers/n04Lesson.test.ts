@@ -1,8 +1,14 @@
+// Historical edition regression; current-theme coverage lives in firstThemeRepair.test.ts.
+import { firstThemeBaseline, firstThemeBaselineTargets } from '../../../../test/firstThemeBaseline'
 import { describe, expect, it } from 'vitest'
 import katex from 'katex'
 import { normalizeTextbookAnswer } from '../../../../domain/textbook'
-import { mathNumbersN04Unit, n04SourceToItemIds } from './n04Lesson'
-import { activeReviewMarkIds, extractReviewSection, reviewTargets } from '../../../../review/reviewTargets'
+import { mathNumbersN04Unit as current_mathNumbersN04Unit, n04SourceToItemIds } from './n04Lesson'
+import { activeReviewMarkIds, extractReviewSection, reviewTargets as current_reviewTargets } from '../../../../review/reviewTargets'
+const reviewTargets = firstThemeBaselineTargets(current_reviewTargets)
+
+const mathNumbersN04Unit = firstThemeBaseline(current_mathNumbersN04Unit)
+
 
 const section = mathNumbersN04Unit.sections[0]
 const answers = ['25x^2', '20xy', '20xy', '16y^2', '25x^2+20xy+20xy+16y^2']

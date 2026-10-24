@@ -27,8 +27,8 @@ export const mathTextbookTopics: readonly MathTextbookTopicCatalogEntry[] = [
     label: { ja: '式を整える', zh: '整理代数式' },
     flow: { ja: '同類項と式の整理 → 展開と乗法公式 → 因数分解', zh: '同类项与化简 → 展开公式 → 因式分解' },
     practiceLinks: [],
-    unitIds: ['math-numbers-expressions-n01', 'math-numbers-expressions-n02', 'math-numbers-expressions-n03', 'math-numbers-expressions-n04', 'math-numbers-expressions-n05', 'math-numbers-expressions-n06'],
-    learnerHeadings: ['多項式の基本','乗法公式と因数分解'],
+    unitIds: ['math-numbers-expressions-n01', 'math-numbers-expressions-n02', 'math-numbers-expressions-n03', 'math-numbers-expressions-n04', 'math-numbers-expressions-n05', 'math-numbers-expressions-n06', 'math-numbers-expressions-ne01'],
+    learnerHeadings: ['多項式の基本','乗法公式と因数分解','3次の展開と因数分解'],
   },
   {
     id: 'numbers-real',
@@ -36,8 +36,8 @@ export const mathTextbookTopics: readonly MathTextbookTopicCatalogEntry[] = [
     label: { ja: '実数を扱う', zh: '认识实数' },
     flow: { ja: '小数と有理数 → 絶対値の意味 → 根号と実数', zh: '平方根与符号 → 数轴 → 根式计算与有理化' },
     practiceLinks: [],
-    unitIds: ['math-numbers-expressions-n07', 'math-numbers-expressions-n08', 'math-numbers-expressions-n09', 'math-numbers-expressions-n10'],
-    learnerHeadings: ['小数と有理数','絶対値の意味','根号と実数'],
+    unitIds: ['math-numbers-expressions-n07', 'math-numbers-expressions-n08', 'math-numbers-expressions-n09', 'math-numbers-expressions-n10', 'math-numbers-expressions-ne02'],
+    learnerHeadings: ['小数と有理数','絶対値の意味','根号と実数','二重根号'],
   },
   {
     id: 'numbers-inequalities',
@@ -47,15 +47,6 @@ export const mathTextbookTopics: readonly MathTextbookTopicCatalogEntry[] = [
     practiceLinks: [],
     unitIds: ['math-numbers-expressions-n11', 'math-numbers-expressions-n12', 'math-numbers-expressions-n13', 'math-numbers-expressions-n14'],
     learnerHeadings: ['一次不等式','絶対値の方程式と不等式'],
-  },
-  {
-    id: 'numbers-development',
-    chapterId: 'math-ch01-numbers-expressions',
-    label: { ja: '参考・発展', zh: '参考与拓展' },
-    flow: { ja: '3次の展開と因数分解 → 二重根号', zh: '三次展开与因式分解 → 二重根式' },
-    practiceLinks: [],
-    unitIds: ['math-numbers-expressions-ne01', 'math-numbers-expressions-ne02'],
-    learnerHeadings: ['3次の展開と因数分解', '二重根号'],
   },
   {
     id: 'organize-sets',

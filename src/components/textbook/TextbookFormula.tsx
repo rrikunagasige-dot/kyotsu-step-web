@@ -1,3 +1,4 @@
+import { isFirstThemeUnit } from '../../data/textbook/math/presentation'
 import { InlineMath } from 'react-katex'
 import { auditedResolvedWrapBlocks, auditedWrapBlocks, formulaWrapChunks } from './formulaWrap'
 import type { TextbookUnitProgress } from '../../domain/textbook'
@@ -137,11 +138,12 @@ export function TextbookFormula({ block, section, progress, onOpen, unitId }: Pr
   const lowerLayout = n12Formula && block.id === 'formula-q13-lower' && block.parts.length === 2
     && first?.type === 'choice' && first.itemId === 'n12-p002-q13-lower'
     && n12Choice?.type === 'math' && n12Choice.latex === '\\le50x<3300-2650'
-  const auditedWrap = auditedWrapBlocks[unitId]?.includes(block.id) ?? false
+  const firstThemeWrap = isFirstThemeUnit(unitId) && !block.parts.some(p => p.type === 'math' && p.latex.includes('\\begin'))
+  const auditedWrap = firstThemeWrap || (auditedWrapBlocks[unitId]?.includes(block.id) ?? false)
   const wrapBlock = auditedWrap ? {
     ...block,
     parts: block.parts.map((part, index) => {
-      if (part.type !== 'choice' || !auditedResolvedWrapBlocks.includes(block.id)) return part
+      if (part.type !== 'choice' || (!firstThemeWrap && !auditedResolvedWrapBlocks.includes(block.id))) return part
       const item = section.items.find(q => q.id === part.itemId)
       const record = progress?.answers[part.itemId]
       return item && isTextbookItemResolved(item, record)

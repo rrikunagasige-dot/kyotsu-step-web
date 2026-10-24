@@ -1,3 +1,4 @@
+import { repairFirstTheme } from './firstThemeRepair'
 import { validateTextbookUnits } from '../../../../domain/textbookSchema'
 import { n04BatchSupplement } from './n04BatchSupplement'
 import { T, M, C, reviewItem as item, oneToOneSourceMap } from './reviewLessonHelpers'
@@ -108,4 +109,4 @@ const rawN04 = {
   }],
 }
 
-export const mathNumbersN04Unit = validateTextbookUnits([rawN04])[0]
+export const mathNumbersN04Unit = validateTextbookUnits([repairFirstTheme(validateTextbookUnits([rawN04])[0])])[0]

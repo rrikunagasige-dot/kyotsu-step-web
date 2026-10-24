@@ -1,17 +1,25 @@
-import { mathNumbersN04Unit } from '../data/textbook/math/numbers/n04Lesson'
+// Historical edition regression; current-theme coverage lives in firstThemeRepair.test.ts.
+import { firstThemeBaseline, firstThemeBaselineTargets } from '../test/firstThemeBaseline'
+import { mathNumbersN04Unit as current_mathNumbersN04Unit } from '../data/textbook/math/numbers/n04Lesson'
 import { mathNumbersN10Unit } from '../data/textbook/math/numbers/n10Lesson'
 import { mathNumbersN12Unit } from '../data/textbook/math/numbers/n12Lesson'
 import { describe, expect, it } from 'vitest'
 import { mathNumbersN01Unit } from '../data/textbook/math/numbers/n01Lesson'
-import { mathNumbersN03Unit } from '../data/textbook/math/numbers/n03Lesson'
+import { mathNumbersN03Unit as current_mathNumbersN03Unit } from '../data/textbook/math/numbers/n03Lesson'
 import { mathNumbersN11Unit } from '../data/textbook/math/numbers/n11Lesson'
 import { mathNumbersN14Unit } from '../data/textbook/math/numbers/n14Lesson'
 import { mathNumbersN13Unit } from '../data/textbook/math/numbers/n13Lesson'
-import { mathNumbersN05Unit } from '../data/textbook/math/numbers/n05Lesson'
-import { mathNumbersN06Unit } from '../data/textbook/math/numbers/n06Lesson'
+import { mathNumbersN05Unit as current_mathNumbersN05Unit } from '../data/textbook/math/numbers/n05Lesson'
+import { mathNumbersN06Unit as current_mathNumbersN06Unit } from '../data/textbook/math/numbers/n06Lesson'
 import { mathNumbersN07Unit } from '../data/textbook/math/numbers/n07Lesson'
 import { mathNumbersN08Unit } from '../data/textbook/math/numbers/n08Lesson'
-import { activeReviewMarkIds, extractReviewSection, reviewTargets } from './reviewTargets'
+import { activeReviewMarkIds, extractReviewSection, reviewTargets as current_reviewTargets } from './reviewTargets'
+const mathNumbersN04Unit = firstThemeBaseline(current_mathNumbersN04Unit)
+const mathNumbersN03Unit = firstThemeBaseline(current_mathNumbersN03Unit)
+const mathNumbersN05Unit = firstThemeBaseline(current_mathNumbersN05Unit)
+const mathNumbersN06Unit = firstThemeBaseline(current_mathNumbersN06Unit)
+const reviewTargets = firstThemeBaselineTargets(current_reviewTargets)
+
 
 describe('W-GOV-008/P-002 review marker boundaries', () => {
   it('W-MATH-017 P-006 marks only the new explanatory paragraphs in existing N11 revision8', () => {

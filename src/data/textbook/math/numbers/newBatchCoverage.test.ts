@@ -1,3 +1,5 @@
+// Historical edition regression; current-theme coverage lives in firstThemeRepair.test.ts.
+import { firstThemeBaseline } from '../../../../test/firstThemeBaseline'
 import './wMath017ProseIntegration.test'
 import './wMath018P001.test'
 import './wMath019P001.test'
@@ -10,7 +12,7 @@ import { describe, expect, it } from 'vitest'
 import katex from 'katex'
 import { effectiveTextbookProgress, type TextbookAnswerRecord, type TextbookUnitProgress } from '../../../../domain/textbook'
 import { textbookDisplayLines } from '../../../../domain/textbookDisplayLines'
-import { mathTextbookUnits } from '../index'
+import { mathTextbookUnits as current_mathTextbookUnits } from '../index'
 import { n04SourceToItemIds } from './n04Lesson'
 import { n05SourceToItemIds } from './n05Lesson'
 import { n06SourceToItemIds } from './n06Lesson'
@@ -19,6 +21,8 @@ import { n08SourceToItemIds } from './n08Lesson'
 import { n11SourceToItemIds } from './n11Lesson'
 import { n13SourceToItemIds } from './n13Lesson'
 import { n14SourceToItemIds } from './n14Lesson'
+const mathTextbookUnits = current_mathTextbookUnits.map(firstThemeBaseline)
+
 
 const specs = [
   ['04', 22, n04SourceToItemIds],

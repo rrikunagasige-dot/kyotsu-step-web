@@ -1,8 +1,12 @@
+// Historical edition regression; current-theme coverage lives in firstThemeRepair.test.ts.
+import { firstThemeBaseline } from '../../../test/firstThemeBaseline'
 import { describe, expect, it } from 'vitest'
 import { mathSetUnit } from './set/setLesson'
 import { mathNumbersReviewUnitIds, mathTextbookNextUnitId, mathTextbookTopicForUnit, mathTextbookTopicHasAllUnits, mathTextbookTopics } from './mathCatalog'
-import { mathTextbookUnits } from './index'
+import { mathTextbookUnits as current_mathTextbookUnits } from './index'
 import { textbookRepository } from '../../../repositories/textbookRepository'
+const mathTextbookUnits = current_mathTextbookUnits.map(firstThemeBaseline)
+
 
 describe('math textbook catalog', () => {
   it('aligns the set lesson with the overlapping practice curriculum without driving learner structure', () => {
@@ -23,7 +27,6 @@ describe('math textbook catalog', () => {
       'numbers-polynomials',
       'numbers-real',
       'numbers-inequalities',
-      'numbers-development',
       'organize-sets',
       'read-propositions',
       'prove-propositions',
@@ -164,11 +167,11 @@ describe('math textbook catalog', () => {
     expect(headings).toEqual(topic?.learnerHeadings)
   })
 
-  it('maps sixteen source-audited chapter-1 review lessons into three core topics and optional development', () => {
+  it('maps sixteen source-audited chapter-1 review lessons into exactly three topics including development', () => {
     const chapter1 = mathTextbookTopics.filter((topic) => topic.chapterId === 'math-ch01-numbers-expressions')
-    expect(chapter1.map((topic) => topic.label.ja)).toEqual(['式を整える', '実数を扱う', '不等式を使う', '参考・発展'])
+    expect(chapter1.map((topic) => topic.label.ja)).toEqual(['式を整える', '実数を扱う', '不等式を使う'])
     expect(chapter1.map((topic) => topic.unitIds.map((id) => id.replace('math-numbers-expressions-', '')))).toEqual([
-      ['n01', 'n02', 'n03', 'n04', 'n05', 'n06'], ['n07', 'n08', 'n09', 'n10'], ['n11', 'n12', 'n13', 'n14'], ['ne01', 'ne02'],
+      ['n01', 'n02', 'n03', 'n04', 'n05', 'n06', 'ne01'], ['n07', 'n08', 'n09', 'n10', 'ne02'], ['n11', 'n12', 'n13', 'n14'],
     ])
     expect(mathNumbersReviewUnitIds).toHaveLength(16)
     for (const id of mathNumbersReviewUnitIds) {

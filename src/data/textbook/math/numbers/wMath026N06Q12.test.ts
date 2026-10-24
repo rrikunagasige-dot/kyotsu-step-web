@@ -1,6 +1,10 @@
+// Historical edition regression; current-theme coverage lives in firstThemeRepair.test.ts.
+import { firstThemeBaseline } from '../../../../test/firstThemeBaseline'
 import { describe,expect,it } from 'vitest'
 import { answerTextbookItem,effectiveTextbookProgress,getTextbookChoices,isTextbookAnswerCorrect,isTextbookItemResolved } from '../../../../domain/textbook'
-import { mathNumbersN06Unit as unit } from './n06Lesson'
+import { mathNumbersN06Unit as current_mathNumbersN06Unit } from './n06Lesson'
+const unit = firstThemeBaseline(current_mathNumbersN06Unit)
+
 
 const item=unit.sections[0].items.find(candidate=>candidate.id==='n06-12')!
 const removed='(x+y)(x+1)(x-2)'

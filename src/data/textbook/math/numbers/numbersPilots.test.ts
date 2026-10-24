@@ -1,3 +1,5 @@
+// Historical edition regression; current-theme coverage lives in firstThemeRepair.test.ts.
+import { firstThemeBaseline } from '../../../../test/firstThemeBaseline'
 import { createHash } from 'node:crypto'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
@@ -6,9 +8,11 @@ import katex from 'katex'
 import { normalizeTextbookAnswer } from '../../../../domain/textbook'
 import type { TextbookUnit } from '../../../../domain/textbookSchema'
 import { mathNumbersN01Unit } from './n01Lesson'
-import { mathNumbersN03Unit, n03SourceToItemIds } from './n03Lesson'
+import { mathNumbersN03Unit as current_mathNumbersN03Unit, n03SourceToItemIds } from './n03Lesson'
 import { mathNumbersN10Unit, n10SourceToItemIds } from './n10Lesson'
 import { mathNumbersN12Unit, n12SourceToItemIds } from './n12Lesson'
+const mathNumbersN03Unit = firstThemeBaseline(current_mathNumbersN03Unit)
+
 
 const pilots = [
   { unit: mathNumbersN03Unit, prefix: 'N03', count: 13, pages: [6, 7], sourceMap: n03SourceToItemIds },

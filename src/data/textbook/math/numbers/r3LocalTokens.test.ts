@@ -1,11 +1,15 @@
+// Historical edition regression; current-theme coverage lives in firstThemeRepair.test.ts.
+import { firstThemeBaseline } from '../../../../test/firstThemeBaseline'
 import { describe, expect, it } from 'vitest'
 import katex from 'katex'
 import { getTextbookChoices, normalizeTextbookAnswer } from '../../../../domain/textbook'
 import type { TextbookUnit } from '../../../../domain/textbookSchema'
 import { mathNumbersN01Unit, n01SourceToItemIds } from './n01Lesson'
-import { mathNumbersN03Unit, n03SourceToItemIds } from './n03Lesson'
+import { mathNumbersN03Unit as current_mathNumbersN03Unit, n03SourceToItemIds } from './n03Lesson'
 import { mathNumbersN09Unit } from './n09Lesson'
 import { mathNumbersN12Unit } from './n12Lesson'
+const mathNumbersN03Unit = firstThemeBaseline(current_mathNumbersN03Unit)
+
 
 // W-MATH-005/P-002: small-block §52 preflight for N01-Q07 then N03-Q10.
 // Verify each new calculation, preceding visible evidence, unchanged source IDs,

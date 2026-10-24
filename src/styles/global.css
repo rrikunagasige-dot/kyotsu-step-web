@@ -1603,3 +1603,21 @@ button.math-theme-link {
   align-items: baseline;
   white-space: nowrap;
 }
+
+/* First-theme reading template: one authored goal, generous mathematical spacing,
+   and completed stages on demand. Full explanations are retained. */
+.textbook-reading-flow[data-first-theme] { max-width: 48rem; margin-inline: auto; color: #17212b; }
+.textbook-reading-flow[data-first-theme] .math-textbook-stage--current { padding: clamp(16px, 4vw, 32px); background: #fff; border: 1px solid #d9e0e5; border-radius: 12px; }
+.textbook-reading-flow[data-first-theme] .math-textbook-stage-active-title { padding-bottom: 16px; margin-bottom: 24px; border-bottom: 2px solid #273b49; line-height: 1.6; gap: 12px; }
+.textbook-reading-flow[data-first-theme] .reading-paragraph { line-height: 1.95; margin-block: 18px; overflow-wrap: anywhere; }
+.textbook-reading-flow[data-first-theme] .reading-block-with-choice { min-width: 0; margin-block: 16px; }
+.textbook-reading-flow[data-first-theme] .reading-derivation-chain { margin-block: 24px; padding-inline: 0; border-left: 0; }
+.textbook-reading-flow[data-first-theme] .reading-term { color: inherit; }
+.textbook-reading-flow[data-first-theme] .math-textbook-stage-references { margin-bottom: 24px; padding: 12px; background: #f4f6f7; border-radius: 6px; }
+@media (max-width: 420px) {
+  .textbook-reading-flow[data-first-theme] .math-textbook-stage--current { padding: 14px 10px; }
+  .textbook-reading-flow[data-first-theme] .math-textbook-stage-active-title { font-size: 1rem; }
+}
+.textbook-reading-flow[data-first-theme] .reading-choice-formula-lines { display: flex; flex-wrap: wrap; gap: 4px 2px; align-items: baseline; }
+.textbook-reading-flow[data-first-theme] .reading-choice-formula-line { display: inline-block; }
+.textbook-reading-flow[data-first-theme] .reading-subheading { margin-top: 22px; line-height: 1.7; }

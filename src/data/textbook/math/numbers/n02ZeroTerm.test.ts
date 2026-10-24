@@ -1,10 +1,15 @@
+// Historical edition regression; current-theme coverage lives in firstThemeRepair.test.ts.
+import { firstThemeBaseline } from '../../../../test/firstThemeBaseline'
 import { describe, expect, it } from 'vitest'
 import katex from 'katex'
 import { isTextbookAnswerCorrect } from '../../../../domain/textbook'
 import { normalizeTextbookMath } from '../../../../domain/textbookMath'
 import { mathNumbersN01Unit } from './n01Lesson'
-import { mathNumbersN02Unit, n02SourceToItemIds } from './n02Lesson'
-import { mathNumbersN03Unit } from './n03Lesson'
+import { mathNumbersN02Unit as current_mathNumbersN02Unit, n02SourceToItemIds } from './n02Lesson'
+import { mathNumbersN03Unit as current_mathNumbersN03Unit } from './n03Lesson'
+const mathNumbersN02Unit = firstThemeBaseline(current_mathNumbersN02Unit)
+const mathNumbersN03Unit = firstThemeBaseline(current_mathNumbersN03Unit)
+
 
 const section = mathNumbersN02Unit.sections[0]
 const blocks = section.readingFlow

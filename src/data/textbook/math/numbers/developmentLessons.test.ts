@@ -1,13 +1,20 @@
+// Historical edition regression; current-theme coverage lives in firstThemeRepair.test.ts.
+import { firstThemeBaseline, firstThemeBaselineTargets } from '../../../../test/firstThemeBaseline'
 import { normalizeTextbookMath } from '../../../../domain/textbookMath'
-import { mathTextbookUnits } from '../index'
+import { mathTextbookUnits as current_mathTextbookUnits } from '../index'
 import { describe, expect, it } from 'vitest'
 import katex from 'katex'
-import { mathNumbersNE01Unit, ne01SourceToItemIds } from './ne01Lesson'
+import { mathNumbersNE01Unit as current_mathNumbersNE01Unit, ne01SourceToItemIds } from './ne01Lesson'
 import { mathNumbersNE02Unit, ne02SourceToItemIds } from './ne02Lesson'
 import { developmentFeedback } from './developmentFeedback'
 import { getTextbookChoices, answerTextbookItem, type TextbookUnitProgress } from '../../../../domain/textbook'
 import { textbookDisplayLines } from '../../../../domain/textbookDisplayLines'
-import { extractReviewSection, reviewTargets } from '../../../../review/reviewTargets'
+import { extractReviewSection, reviewTargets as current_reviewTargets } from '../../../../review/reviewTargets'
+const reviewTargets = firstThemeBaselineTargets(current_reviewTargets)
+
+const mathTextbookUnits = current_mathTextbookUnits.map(firstThemeBaseline)
+const mathNumbersNE01Unit = firstThemeBaseline(current_mathNumbersNE01Unit)
+
 
 const cases = [
   { unit: mathNumbersNE01Unit, mapping: ne01SourceToItemIds, count: 13 },

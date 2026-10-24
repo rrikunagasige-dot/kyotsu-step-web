@@ -1,7 +1,11 @@
+// Historical edition regression; current-theme coverage lives in firstThemeRepair.test.ts.
+import { firstThemeBaseline } from '../../../../test/firstThemeBaseline'
 import { describe,expect,it } from 'vitest'
 import katex from 'katex'
-import { mathNumbersN05Unit,n05SourceToItemIds } from './n05Lesson'
+import { mathNumbersN05Unit as current_mathNumbersN05Unit,n05SourceToItemIds } from './n05Lesson'
 import { effectiveTextbookProgress,type TextbookUnitProgress } from '../../../../domain/textbook'
+const mathNumbersN05Unit = firstThemeBaseline(current_mathNumbersN05Unit)
+
 const unit=mathNumbersN05Unit,section=unit.sections[0],q=section.items.find(i=>i.id==='n05-11')!
 const newHint='積が負なので二数の符号は異なる。和が負になるには、絶対値の大きい方が負になる。積が−16、和が−6の両方に合うか確かめよう。'
 describe('W-MATH-025 P-001 N05 Q11 accepted hint-only change',()=>{

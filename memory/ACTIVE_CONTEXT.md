@@ -1,4 +1,9 @@
 # ACTIVE CONTEXT — target rriku
+
+## Current — P-003 production workflow implemented
+
+Approved workflow tools are pinned by `governance/PRODUCTION_WORKFLOW.json` to sourcebba4df75 on work/production-workflow-p003-20261024. Read that source’s `tools/textbook/PRODUCTION_README.md` and Work redesign/implementation/RESULT.md before new math-textbook creation/correction.25-node code＋AI＋ML framework; CI40109892971 PASS including four-width browser checks. Use production/1 rather than restoring old screenshot/publication-approval gates. One classifier head was actually fitted but remainsOFFLINE_ONLY; new lesson quality/acceptance is separate. Public learner source4fb7a98e and accepted first-title22bc43ba remain protected. Other mode adoption is not implied. Older entries below retain historical scope.
+
 Updated 2026-10-19
 Repository `rrikunagasige-dot/kyotsu-step-web`, ID 1391122224. App release PR #50 merged into main `6e398f923c45fe895e53bc1f0f055f038acc41b6`; [Pages run 38055876654](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38055876654) SUCCESS.
 Last completed Work: `W-GOV-005`, [governance PR #49](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/49), merged at `41a9ce05ed10ffc0ddcdc46a5de84086198ac4cf`; post-merge governance CI 38057462564 SUCCESS, closure PR #51. Work DONE.

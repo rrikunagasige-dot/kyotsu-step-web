@@ -1,4 +1,4 @@
-name: Publish approved N01 teaching sample for user review
+name: Publish approved first-section teaching sequence for review
 
 # 2026-10-24: user explicitly authorized one-theme repair -> compile -> public app -> hands-on review.
 # This updates only the hosting pointer; it does not merge the learner branch into main.
@@ -22,15 +22,15 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     env:
-      CANDIDATE_SHA: '2977a44a08dedce8d082f5192946ab916357f259'
-      VITE_PREVIEW_COMMIT: '2977a44a08dedce8d082f5192946ab916357f259'
+      CANDIDATE_SHA: '16fe82c7a67f83e1d6fde234b1217247777aeb7c'
+      VITE_PREVIEW_COMMIT: '16fe82c7a67f83e1d6fde234b1217247777aeb7c'
       VITE_REVIEW_PREVIEW: 'true'
       VITE_BASE_PATH: '/kyotsu-step-web/'
       VITE_STORAGE_NAMESPACE: 'kyotsu-step-gate3-math-20261023'
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: '2977a44a08dedce8d082f5192946ab916357f259'
+          ref: '16fe82c7a67f83e1d6fde234b1217247777aeb7c'
           fetch-depth: 0
           persist-credentials: false
       - uses: pnpm/action-setup@v4
@@ -51,7 +51,9 @@ jobs:
       - name: Export exact runtime source
         run: node work/items/W-MATH-003-numbers-expressions-creation/NE01_NE02/export-runtime.mjs
       - name: Independent calculation and distractor verification
-        run: node work/items/W-MATH-027-first-theme-repair/verify-math.mjs
+        run: |
+          node work/items/W-MATH-027-first-theme-repair/verify-math.mjs
+          node work/items/W-MATH-029-section-one-teaching/verify-current-math.mjs
       - run: pnpm run build
       - name: Attach exact-source release manifest
         run: |
@@ -90,9 +92,10 @@ jobs:
       - if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
-          name: n01-teaching-R3-2977a44a-verification
+          name: section-one-S4-16fe82c7-verification
           path: |
             e2e-evidence/theme-one/**
+            e2e-evidence/section-one/**
             e2e-evidence/theme-one-compiled/**
             e2e-evidence/theme-one-hosted/**
             e2e-evidence/gate3-hosted/**

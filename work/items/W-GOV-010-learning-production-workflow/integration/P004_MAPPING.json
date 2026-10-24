@@ -1,0 +1,230 @@
+{
+  "proposal": "P-004",
+  "status": "PROPOSED",
+  "implementationPerformed": false,
+  "baseCode": "bba4df752bf4f9ad8a4972f57ca303b3f304ea45",
+  "commands": {
+    "CMD-WORK-002": {
+      "C01_SOURCE": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "C02_CONCEPT": [
+        "S03",
+        "S05"
+      ],
+      "C03_PATTERN": [
+        "S04"
+      ],
+      "C04_SOLUTION": [
+        "S06",
+        "S07"
+      ],
+      "C05_DESIGN": [
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16"
+      ],
+      "C06_APPROVAL": [
+        "S17"
+      ],
+      "C07_BUILD": [
+        "S18"
+      ],
+      "C08_VERIFY": [
+        "S07",
+        "S14",
+        "S19",
+        "S20"
+      ],
+      "C09_SEMANTIC": [
+        "S15",
+        "S16"
+      ]
+    },
+    "CMD-WORK-001": {
+      "R01_CAPTURE": [
+        "S00",
+        "S01",
+        "S02",
+        "S22"
+      ],
+      "R02_CAUSE": [
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16"
+      ],
+      "R03_IMPACT": [
+        "S20"
+      ],
+      "R04_PROPOSAL": [
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17"
+      ],
+      "R05_APPROVAL": [
+        "S17"
+      ],
+      "R06_PATCH": [
+        "S18"
+      ],
+      "R07_VERIFY": [
+        "S07",
+        "S14",
+        "S19",
+        "S20"
+      ],
+      "R07_SEMANTIC": [
+        "S15",
+        "S16"
+      ],
+      "R08_CAPTURE_LEARNING": [
+        "S22",
+        "S23"
+      ]
+    }
+  },
+  "commonStages": {
+    "S00_RECOVER": [
+      "S00"
+    ],
+    "S01_ROUTE": [],
+    "G2_AUDIT": [
+      "S20"
+    ],
+    "G3_HOST": [
+      "S18",
+      "S21"
+    ],
+    "G3_FINAL": [
+      "S22"
+    ],
+    "L01_LEARNING": [
+      "S23",
+      "S24"
+    ],
+    "Z01_CLOSE": []
+  },
+  "supplementalNodes": {
+    "R03_IMPACT_SWEEP": {
+      "parentStage": "R03_IMPACT",
+      "phase": "post-fix",
+      "purpose": "mandatory sibling-impact verification before correction closure"
+    }
+  },
+  "graphPolicy": {
+    "newDefinition": "production/2",
+    "singleLedger": "existing Runtime/Store",
+    "perBlockNode": "<stage>@<block>",
+    "perReleaseNode": "<gate>@<release-unit>",
+    "preserveHistoricalVersions": true,
+    "staticExecutionDAGMustBeAcyclic": true,
+    "returnEdgesAreEventsOrChildWork": true,
+    "approvalBundleDependencies": "all relevant C05/R04 before C06/R05",
+    "noRepeatedScopedApproval": true,
+    "noScreenshotApprovalGate": true,
+    "releaseCompletedUnitBeforeNextUnitFinished": true
+  },
+  "capabilityPlacement": {
+    "source.import": "C01 or scoped R01/R02",
+    "math.solve": "C04 or scoped R02/R04",
+    "math.verify": "C04/C08 or R02/R07",
+    "teaching.plan": "C05 or scoped R04",
+    "blank.plan": "C05 or scoped R04",
+    "prose.compose": "C05 or scoped R04/R06",
+    "source.audit": "C05/C09 or scoped R04/R07_SEMANTIC",
+    "novice.audit": "C05/C09 or scoped R04/R07_SEMANTIC",
+    "feedback.capture": "event intake, G3_FINAL, R01",
+    "case.finalize": "R08/L01 without duplicate cases",
+    "ml.train": "L01 data-gated job"
+  },
+  "implementationSequence": [
+    {
+      "id": "I01",
+      "files": [
+        "workflow/definitions.py",
+        "workflow/graphs.py"
+      ],
+      "deliverable": "command-specific block/release graph"
+    },
+    {
+      "id": "I02",
+      "files": [
+        "workflow/production.py",
+        "workflow/capabilities.py",
+        "workflow/runner.py",
+        "workflow/contracts.py"
+      ],
+      "deliverable": "capability registry and composed contracts"
+    },
+    {
+      "id": "I03",
+      "files": [
+        "workflow/requests.py",
+        "workflow/impact.py",
+        "workflow/runtime.py"
+      ],
+      "deliverable": "correction queue, pre/post impact, child work and resumption"
+    },
+    {
+      "id": "I04",
+      "files": [
+        "workflow/runtime.py",
+        "tools/textbook/jobs.mjs"
+      ],
+      "deliverable": "scoped invalidation, artifact reuse and approval coverage"
+    },
+    {
+      "id": "I05",
+      "files": [
+        "workflow/contracts.py",
+        "workflow/adapters.py",
+        "workflow/runtime.py"
+      ],
+      "deliverable": "release, scoped acceptance and R08/L01/Z01 closure"
+    },
+    {
+      "id": "I06",
+      "files": [
+        "workflow/views.py",
+        "workflow/cli.py"
+      ],
+      "deliverable": "three-level diagrams from one snapshot"
+    },
+    {
+      "id": "I07",
+      "files": [
+        "workflow/runtime.py",
+        "governance/PRODUCTION_WORKFLOW.json",
+        "tools/textbook/PRODUCTION_README.md"
+      ],
+      "deliverable": "explicit version migration and canonical routing"
+    }
+  ]
+}

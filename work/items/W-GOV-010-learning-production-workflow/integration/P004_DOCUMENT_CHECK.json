@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "scope": "design consistency only",
+  "oldFunctionsMapped": 25,
+  "creationStageKinds": 9,
+  "correctionStageKinds": 9,
+  "runtimeChanged": false,
+  "applicationChanged": false,
+  "newDefinitionImplemented": false,
+  "testsRun": "document/mapping checks only",
+  "documentSHA256": "7c2ce6b1bf01896294cb2a8a53b6e3440be75fd1d8d929e93a89a6d49c253785",
+  "mappingSHA256": "d78d31458ad3118e3156c809c0d9f62d57a58d45e858ef5c4b3633214628d2e8",
+  "characters": 19101
+}

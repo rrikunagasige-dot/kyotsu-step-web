@@ -60,3 +60,7 @@ P-002 remains PROPOSED until reviewed and approved. No learner build/tests or pu
 ## P-003 implementation verified
 
 Exact codebba4df752bf4f9ad8a4972f57ca303b3f304ea45; CI40109892971 SUCCESS. Scoped620 learner,39 existing authoring,19 new Node,78 workflow,8 source/corpus/ML,27 legacy math tests plus type/build/changed lint and actual browser320/390/430/1440 PASS. Old unrelated2 failures remain excluded with provenance. Model weights/tokenizer/pooling hashes, actual fit, data masks, insufficient groups, SetFit gate and generation consumption are in redesign/implementation/. No new lesson or public app change.
+
+## P-004 design consistency
+
+Read-only instantiate comparison: correction graph==creation graph;25 nodes, all block=None, no R-prefixed node underproduction/1. P004_DOCUMENT_CHECK.json confirms all25 former capabilities mapped,9 C-stage kinds and9 R-stage kinds covered, balanced diagram fences, approval/release/contract/migration/implementation sections present. This verifies document consistency, not the proposed runtime behavior. No application/runtime tests or implementation performed in this design turn.

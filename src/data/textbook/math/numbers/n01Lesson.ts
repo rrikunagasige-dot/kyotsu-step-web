@@ -1,3 +1,4 @@
+import { repairFirstTheme } from './firstThemeRepair'
 import { validateTextbookUnits } from '../../../../domain/textbookSchema'
 
 // W-MATH-003 / approved P-001, reviewed N01 v2. Original source: N01 Q1–Q10,
@@ -231,4 +232,4 @@ const rawN01 = {
   }],
 }
 
-export const mathNumbersN01Unit = validateTextbookUnits([rawN01])[0]
+export const mathNumbersN01Unit = validateTextbookUnits([repairFirstTheme(validateTextbookUnits([rawN01])[0])])[0]

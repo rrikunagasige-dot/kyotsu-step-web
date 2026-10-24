@@ -112,7 +112,7 @@ export function TextbookFormula({ block, section, progress, onOpen, unitId }: Pr
         onClick={() => onOpen(item.id)}
         key={key}
       >
-        {wrong ? '×' : '選択'}
+        {isFirstThemeUnit(unitId) ? <span className="reading-fill-blank" aria-hidden="true">{wrong ? '× □' : '□'}</span> : wrong ? '×' : '選択'}
       </button>
     )
   })

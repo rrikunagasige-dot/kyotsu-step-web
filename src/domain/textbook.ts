@@ -186,11 +186,12 @@ export function effectiveTextbookProgress(unit: TextbookUnit, progress: Textbook
   if (progress.unitRevision === unit.revision) return progress
 
   // First-theme repair: additions reopen only new reasoning nodes. Preserve old attempts.
-  const firstThemeBase: Record<string, number> = { n02: 1, n03: 2, n04: 2, n05: 2, n06: 3, ne01: 1 }
+  const firstThemeBase: Record<string, number> = { n01: 2, n02: 1, n03: 2, n04: 2, n05: 2, n06: 3, ne01: 1 }
   const base = firstThemeBase[unit.unitId.replace('math-numbers-expressions-', '')]
-  if (unit.unitId.startsWith('math-numbers-expressions-') && base && unit.revision === base + 1
-      && progress.unitId === unit.unitId && progress.unitRevision <= base) {
-    const previous = progress.unitRevision === base ? progress : effectiveTextbookProgress({ ...unit, revision: base }, progress)
+  const fromRevision = base && unit.revision === base + 2 ? base + 1 : base
+  if (unit.unitId.startsWith('math-numbers-expressions-') && base && [base + 1, base + 2].includes(unit.revision)
+      && progress.unitId === unit.unitId && progress.unitRevision <= fromRevision) {
+    const previous = progress.unitRevision === fromRevision ? progress : effectiveTextbookProgress({ ...unit, revision: fromRevision }, progress)
     if (!previous) return undefined
     const { archivedRevisions, ...archive } = previous
     const known = new Set(unit.sections.flatMap(section => section.items.map(item => item.id)))

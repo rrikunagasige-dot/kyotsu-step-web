@@ -1,6 +1,10 @@
+// Historical171c contract; current edition is verified by firstThemeRepair.test.ts.
+import { firstThemeBaseline } from '../../../../test/firstThemeBaseline'
 import { describe, expect, it } from 'vitest'
 import { getTextbookChoices, normalizeTextbookAnswer } from '../../../../domain/textbook'
-import { mathNumbersN01Unit, n01SourceToItemIds } from './n01Lesson'
+import { mathNumbersN01Unit as current_mathNumbersN01Unit, n01SourceToItemIds } from './n01Lesson'
+const mathNumbersN01Unit = firstThemeBaseline(current_mathNumbersN01Unit)
+
 
 const section = mathNumbersN01Unit.sections[0]
 

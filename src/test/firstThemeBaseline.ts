@@ -3,7 +3,7 @@ import type { ReviewTarget } from '../review/reviewTargets'
 
 // Historical W-MATH regression contracts intentionally exercise the 171c edition.
 // The current edition is tested independently in firstThemeRepair.test.ts and E2E.
-const base: Record<string, [number, number]> = { n02:[1,12], n03:[2,17], n04:[2,26], n05:[2,20], n06:[3,16], ne01:[1,13] }
+const base: Record<string, [number, number]> = { n01:[2,18], n02:[1,12], n03:[2,17], n04:[2,26], n05:[2,20], n06:[3,16], ne01:[1,13] }
 export function firstThemeBaseline(unit: TextbookUnit): TextbookUnit {
   const revision = base[unit.unitId.replace('math-numbers-expressions-','')]?.[0]
   if (!revision) return unit

@@ -10,3 +10,7 @@
   with a numerically incorrect substitution, so rejection has a clear mathematical basis as well as the task instruction.
 - Local default browser download failed; an older headless Chromium downloaded successfully. Browser checks use the
   explicit executable path locally. CI uses its installed Chromium and exercises the compiled artifact and live site.
+
+R1: A count of added decisions is not an acceptance criterion. A whole-expression answer picker does not automatically
+become an equation-local fill-in blank. Inspect the actual unfinished equation and trace the purpose/use of each result.
+Positive layout feedback is bound to layout; content quality must be reviewed separately.

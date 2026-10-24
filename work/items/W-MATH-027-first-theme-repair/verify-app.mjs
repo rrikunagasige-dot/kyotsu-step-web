@@ -26,6 +26,7 @@ try {
      assert(await next.isVisible(),'Missing next stage before '+item.id)
      await next.click();stages++
     }
+    if(item.id.includes('-bridge-detail-')) assert((await blank.innerText()).includes('□'),'Missing visible inline blank '+item.id)
     await blank.click()
     let panel=page.getByTestId('inline-choice-panel-'+item.id)
     await panel.waitFor()
@@ -42,7 +43,7 @@ try {
     let selected
     for(const option of await answer.all())if((await option.getAttribute('aria-label'))===item.answer){selected=option;break}
     assert(selected,'Missing correct option '+item.id)
-    if(width===320 && ['n02-bridge-distribute','n04-bridge-restore-t','ne01-bridge-negative-substitute'].includes(item.id)) {
+    if(width===320 && ['n01-bridge-detail-coefficient-negative','n02-bridge-detail-signed-coefficient','n03-bridge-detail-first-product','n06-bridge-detail-restore-first','ne01-bridge-detail-even-coefficient'].includes(item.id)) {
       await panel.scrollIntoViewIfNeeded();await page.screenshot({path:out+'/'+item.id+'-'+width+'.png',fullPage:true})
     }
     const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1)

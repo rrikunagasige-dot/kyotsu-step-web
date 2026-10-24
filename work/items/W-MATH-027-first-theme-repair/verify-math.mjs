@@ -4,7 +4,7 @@ const data=JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/firstTheme
 // Independent arithmetic parser: only polynomials, integer powers and authored symbols.
 // No generated answer or production grading code is used as the mathematical oracle.
 function value(source,env){
- const clean=source.replace(/\\(?:cdot|times)/g,'*').replace(/[{}]/g,'').replace(/\s/g,'')
+ const clean=source.replace(/\^\{([^{}]*)\}/g,'^($1)').replace(/\\(?:cdot|times)/g,'*').replace(/[{}]/g,'').replace(/\s/g,'')
  const tokens=clean.match(/\d+|[A-Za-z]|[()+*^\-]/g)??[]
  assert.equal(tokens.join(''),clean,'Unsupported math syntax '+source)
  let p=0
@@ -17,17 +17,18 @@ function value(source,env){
 }
 const report=[]
 for(const [prefix,nodes]of Object.entries(data))for(const node of nodes){
- if(!node.stem.endsWith('=')||node.stem.includes('\\text')||node.stem.includes(','))continue
- const expressions=node.stem.slice(0,-1).split('=')
+ if(node.kind === 'text'||!node.stem.includes('=')||node.stem.includes('\\text')||node.stem.includes(',')||node.answer.includes(','))continue
+ const expressions=(node.stem+node.answer+(node.tail??'')).split('=')
  const wrongDifferent=node.wrong.map(()=>false)
  for(let k=-3;k<=4;k++){
-  const env={x:k,y:k+2,a:k+1,b:2*k-1,c:3-k,X:k,T:k}
+  const env={r:-1,x:k,y:k+2,a:k+1,b:2*k-1,c:3-k,X:k,T:k}
+  if(node.id.startsWith('n06-bridge-detail-restore-'))env.T=env.x**2
   if(node.id==='n04-bridge-restore-t')env.T=env.a+env.b
   env.A=2*env.x**3-3*env.x**2+env.x-1;env.B=-(env.x**3)+2*env.x**2+2
   const target=value(expressions[0],env)
   for(const expression of expressions.slice(1))assert(value(expression,env)===target,node.id+' intermediate')
-  assert(value(node.answer,env)===target,node.id+' answer')
-  node.wrong.forEach((choice,i)=>{if(value(choice,env)!==target)wrongDifferent[i]=true})
+
+  node.wrong.forEach((choice,i)=>{if(value(expressions.at(-1).replace(node.answer,choice),env)!==target)wrongDifferent[i]=true})
  }
  assert(wrongDifferent.every(Boolean),node.id+' contains equivalent distractor')
  report.push({id:node.id,samples:8,correct:true,distractorsDistinct:true})

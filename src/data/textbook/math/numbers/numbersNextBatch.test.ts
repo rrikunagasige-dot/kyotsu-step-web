@@ -7,12 +7,14 @@ import { describe, expect, it } from 'vitest'
 import katex from 'katex'
 import { normalizeTextbookAnswer } from '../../../../domain/textbook'
 import type { TextbookUnit } from '../../../../domain/textbookSchema'
-import { mathNumbersN01Unit } from './n01Lesson'
+import { mathNumbersN01Unit as current_mathNumbersN01Unit } from './n01Lesson'
 import { mathNumbersN02Unit as current_mathNumbersN02Unit, n02SourceToItemIds } from './n02Lesson'
 import { mathNumbersN03Unit as current_mathNumbersN03Unit } from './n03Lesson'
 import { mathNumbersN09Unit, n09SourceToItemIds } from './n09Lesson'
 import { mathNumbersN10Unit } from './n10Lesson'
 import { mathNumbersN12Unit } from './n12Lesson'
+const mathNumbersN01Unit = firstThemeBaseline(current_mathNumbersN01Unit)
+
 const mathNumbersN02Unit = firstThemeBaseline(current_mathNumbersN02Unit)
 const mathNumbersN03Unit = firstThemeBaseline(current_mathNumbersN03Unit)
 

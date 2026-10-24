@@ -14,3 +14,7 @@ Visual QA follow-up: split NE01's negative substitution from the sum derivation,
 Publication close: source15509ec1 published by workflow20177652; run40051308092 SUCCESS.
 Exact compiled and public first-theme21-flow suites passed; public release manifest independently matched.
 Recorded artifact12543576397 and pending user quality review. Future work starts with user feedback on this public theme.
+
+R1: user accepted neat layout but reported missing blanks and insufficient induction/derivation detail.
+Preserved layout, made □ visible, inserted24 equation-local decisions and authored transformation-purpose/result-use explanations.
+Added top restart and saved-answer guidance.426 tests and71 independent polynomial checks passed before publication.

@@ -59,7 +59,7 @@ const targets: Record<string, ReviewTarget> = {
   'n05-q06-hint': {
     id:'n05-q06-hint',unitId:'math-numbers-expressions-n05',title:'N05 Q06 ヒント',
     question:'誤答後に計算方法を案内し、求める数値を先に教えない',
-    revision:3,totalItems:33,
+    revision:4,totalItems:33,
     blockIds:['n05-lead-06','n05-formula-06','n05-after-06'],
     itemIds:['n05-06'],expectedAnswers:['(4x)^2,\\quad(3y)^2'],
     markBlockIds:['n05-formula-06'],reviewState:'accepted',
@@ -194,7 +194,7 @@ const targets: Record<string, ReviewTarget> = {
   'n05-q11': {
     id:'n05-q11',unitId:'math-numbers-expressions-n05',title:'N05 Q11',
     question:'整数組を先出しせず、積と和の条件を確かめる誤答ヒント',
-    revision:3,totalItems:33,
+    revision:4,totalItems:33,
     blockIds:['n05-lead-11','n05-formula-11','n05-after-11'],
     itemIds:['n05-11'],expectedAnswers:['(a-8)(a+2)'],
     markBlockIds:['n05-formula-11'],reviewState:'accepted', // user 「続けていいよ」 accepted Q11 visual on 2026-10-23
@@ -203,7 +203,7 @@ const targets: Record<string, ReviewTarget> = {
   'n06-q06': {
     id:'n06-q06',unitId:'math-numbers-expressions-n06',title:'N06 Q06',
     question:'完成した因数を教えず、符号と置換の復元を手掛かりにする誤答ヒント',
-    revision:4,totalItems:22,
+    revision:5,totalItems:22,
     blockIds:['n06-lead-06','n06-formula-06','n06-after-06'],
     itemIds:['n06-06'],expectedAnswers:['(x^2-1)(x^2-4)'],
     markBlockIds:['n06-formula-06'],reviewState:'accepted', // user Q06 hint visual acceptance; fixed evidence retained
@@ -212,7 +212,7 @@ const targets: Record<string, ReviewTarget> = {
   'n06-q12-choices': {
     id:'n06-q12-choices',unitId:'math-numbers-expressions-n06',title:'N06 Q12 選択肢',
     question:'数学的に異なる四つの選択肢と、保存済み旧誤答からの再回答',
-    revision:4,totalItems:22,
+    revision:5,totalItems:22,
     blockIds:['n06-lead-12','n06-formula-12','n06-after-12'],
     itemIds:['n06-12'],expectedAnswers:['(x+y)(x+2)(x-1)'],
     markBlockIds:['n06-formula-12'],reviewState:'accepted',
@@ -221,7 +221,7 @@ const targets: Record<string, ReviewTarget> = {
   'n06-q03': {
     id:'n06-q03',unitId:'math-numbers-expressions-n06',title:'N06 Q03',
     question:'整数組を先に教えず、符号と和・積から考え直す誤答ヒント',
-    revision:4,totalItems:22,
+    revision:5,totalItems:22,
     blockIds:['n06-lead-03','n06-formula-03','n06-after-03'],
     itemIds:['n06-03'],expectedAnswers:['(X-3)(X+2)'],
     markBlockIds:['n06-formula-03'],reviewState:'accepted', // hint-only visual accepted by 「ヒントならいいよじゃ続けて」
@@ -230,7 +230,7 @@ const targets: Record<string, ReviewTarget> = {
   'n06-q12': {
     id:'n06-q12',unitId:'math-numbers-expressions-n06',title:'N06 Q12',
     question:'二数の符号を手掛かりにし、先の因子も残す誤答ヒント',
-    revision:4,totalItems:22,
+    revision:5,totalItems:22,
     blockIds:['n06-lead-12','n06-formula-12','n06-after-12'],
     itemIds:['n06-12'],expectedAnswers:['(x+y)(x+2)(x-1)'],
     markBlockIds:['n06-formula-12'],reviewState:'accepted',
@@ -239,7 +239,7 @@ const targets: Record<string, ReviewTarget> = {
   'n05-q18': {
     id:'n05-q18',unitId:'math-numbers-expressions-n05',title:'N05 Q18',
     question:'二条件で正しい因数分解を選び、誤答ヒントが正解の係数を先出ししないか確かめる',
-    revision:3,totalItems:33,
+    revision:4,totalItems:33,
     blockIds:['n05-lead-18','n05-formula-18','n05-after-18'],
     itemIds:['n05-18'],
     expectedAnswers:['(x-1)(5x+3)'],
@@ -248,7 +248,7 @@ const targets: Record<string, ReviewTarget> = {
   },
   'n01-q07': {
     id: 'n01-q07', unitId: 'math-numbers-expressions-n01', title: 'N01 Q07', question: '同類項の係数',
-    revision: 2, totalItems: 18,
+    revision:3, totalItems: 18,
     blockIds: [
       'formula-like-original', 'paragraph-n01-07-intro',
       'formula-r3-q07-x2coef', 'formula-r3-q07-xcoef',
@@ -261,7 +261,7 @@ const targets: Record<string, ReviewTarget> = {
   },
   'n04-q01': {
     id: 'n04-q01', unitId: 'math-numbers-expressions-n04', title: 'N04 Q01', question: '四つの積',
-    revision:3, totalItems: 5,
+    revision:4, totalItems: 5,
     blockIds: [
       'paragraph-n04-intro', 'paragraph-n04-dialogue', 'paragraph-n04-four-products',
       'formula-n04-q01-p1', 'formula-n04-q01-p2',
@@ -275,7 +275,7 @@ const targets: Record<string, ReviewTarget> = {
   },
   'n03-q10': {
     id: 'n03-q10', unitId: 'math-numbers-expressions-n03', title: 'N03 Q10', question: '四つの積',
-    revision:3, totalItems:23,
+    revision:4, totalItems:23,
     blockIds: [
       'paragraph-two-brackets', 'figure-multiplication-grid', 'paragraph-grid-products',
       'formula-r3-q10-p1', 'formula-r3-q10-p2',
@@ -290,7 +290,7 @@ const targets: Record<string, ReviewTarget> = {
   'n04-q20-hint': {
     id:'n04-q20-hint',unitId:'math-numbers-expressions-n04',title:'N04 Q20 hint',
     question:'現在の答えを先出しせず、計算・判断の手順を案内する誤答ヒント',
-    revision:3,totalItems:36,
+    revision:4,totalItems:36,
     blockIds:["n04-lead-20","n04-formula-20","n04-after-20"],
     itemIds:["n04-20"],expectedAnswers:["(x^2+5x+4)(x^2+5x+6)"],
     markBlockIds:['n04-formula-20'],reviewState:'accepted',
@@ -335,7 +335,7 @@ const targets: Record<string, ReviewTarget> = {
   'n04-q22-hint': {
     id:'n04-q22-hint',unitId:'math-numbers-expressions-n04',title:'N04 Q22 hint',
     question:'現在の答えを先出しせず、計算・判断の手順を案内する誤答ヒント',
-    revision:3,totalItems:36,
+    revision:4,totalItems:36,
     blockIds:["n04-lead-22","n04-formula-22","n04-after-22"],
     itemIds:["n04-22"],expectedAnswers:["x^4+10x^3+35x^2+50x+24"],
     markBlockIds:['n04-formula-22'],reviewState:'accepted',

@@ -719,10 +719,14 @@ export function TextbookUnitPage() {
       </header>
 
       <ProgressBar label={text('単元の進み具合', '单元进度')} value={summary.completed} max={summary.total} />
-      {unit.unitId === 'math-numbers-expressions-n12' && (
-        <button type="button" className="n12-restart-top" data-testid="n12-restart-top" onClick={restartFromBeginning}>
+      {(unit.unitId === 'math-numbers-expressions-n12' || isFirstThemeUnit(unit.unitId)) && (
+        <button type="button" className="n12-restart-top" data-testid={unit.unitId === 'math-numbers-expressions-n12' ? 'n12-restart-top' : 'first-theme-restart-top'} onClick={restartFromBeginning}>
           <RotateCcw size={15} aria-hidden="true" /> {text('この単元を最初から', '本单元重新开始')}
         </button>
+      )}
+
+      {isFirstThemeUnit(unit.unitId) && (
+        <p className="first-theme-blank-guide">{text('式の□をタップして、そこに入る数・符号・式を選びます。解答済みの□には回答が表示されます。', '点击公式中的□，选择应填入的数、符号或式子。已完成的填空会显示答案。')}</p>
       )}
 
       {unit.unitId === 'math-numbers-expressions-n12' && unit.revision === 3 && progress?.migratedFromRevision !== undefined && (

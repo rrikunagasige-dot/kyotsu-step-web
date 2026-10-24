@@ -4,7 +4,7 @@ import { mathNumbersN04Unit as current_mathNumbersN04Unit } from '../data/textbo
 import { mathNumbersN10Unit } from '../data/textbook/math/numbers/n10Lesson'
 import { mathNumbersN12Unit } from '../data/textbook/math/numbers/n12Lesson'
 import { describe, expect, it } from 'vitest'
-import { mathNumbersN01Unit } from '../data/textbook/math/numbers/n01Lesson'
+import { mathNumbersN01Unit as current_mathNumbersN01Unit } from '../data/textbook/math/numbers/n01Lesson'
 import { mathNumbersN03Unit as current_mathNumbersN03Unit } from '../data/textbook/math/numbers/n03Lesson'
 import { mathNumbersN11Unit } from '../data/textbook/math/numbers/n11Lesson'
 import { mathNumbersN14Unit } from '../data/textbook/math/numbers/n14Lesson'
@@ -14,6 +14,8 @@ import { mathNumbersN06Unit as current_mathNumbersN06Unit } from '../data/textbo
 import { mathNumbersN07Unit } from '../data/textbook/math/numbers/n07Lesson'
 import { mathNumbersN08Unit } from '../data/textbook/math/numbers/n08Lesson'
 import { activeReviewMarkIds, extractReviewSection, reviewTargets as current_reviewTargets } from './reviewTargets'
+const mathNumbersN01Unit = firstThemeBaseline(current_mathNumbersN01Unit)
+
 const mathNumbersN04Unit = firstThemeBaseline(current_mathNumbersN04Unit)
 const mathNumbersN03Unit = firstThemeBaseline(current_mathNumbersN03Unit)
 const mathNumbersN05Unit = firstThemeBaseline(current_mathNumbersN05Unit)

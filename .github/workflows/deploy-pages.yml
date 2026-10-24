@@ -22,16 +22,16 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     env:
-      ONLY_UNIT: 'n06'
-      CANDIDATE_SHA: '3ccd573f176a29e94d4bd7d34c285e9e8583ea91'
-      VITE_PREVIEW_COMMIT: '3ccd573f176a29e94d4bd7d34c285e9e8583ea91'
+      ONLY_UNIT: ''
+      CANDIDATE_SHA: '22bc43ba53fa87bb85e82e18a25db13a5c8a485c'
+      VITE_PREVIEW_COMMIT: '22bc43ba53fa87bb85e82e18a25db13a5c8a485c'
       VITE_REVIEW_PREVIEW: 'true'
       VITE_BASE_PATH: '/kyotsu-step-web/'
       VITE_STORAGE_NAMESPACE: 'kyotsu-step-gate3-math-20261023'
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: '3ccd573f176a29e94d4bd7d34c285e9e8583ea91'
+          ref: '22bc43ba53fa87bb85e82e18a25db13a5c8a485c'
           fetch-depth: 0
           persist-credentials: false
       - uses: pnpm/action-setup@v4
@@ -82,7 +82,7 @@ jobs:
           preview_pid=$!
           trap 'kill "$preview_pid" 2>/dev/null || true' EXIT
           node work/items/W-MATH-030-section-one-results-and-blanks/verify-app.mjs
-      - name: Check mathematical rows, relation groups and labels at four widths
+      - name: Check all seven units and expanded history at four widths
         env:
           EVIDENCE_DIR: e2e-evidence/typesetting-compiled
         run: |
@@ -90,6 +90,7 @@ jobs:
           preview_pid=$!
           trap 'kill "$preview_pid" 2>/dev/null || true' EXIT
           node work/items/W-MATH-031-section-one-typesetting/verify-typography.mjs
+          node work/items/W-MATH-031-section-one-typesetting/verify-history.mjs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
@@ -106,15 +107,17 @@ jobs:
           APP_URL: ${{ steps.deployment.outputs.page_url }}
           EVIDENCE_DIR: e2e-evidence/theme-one-hosted
         run: node work/items/W-MATH-030-section-one-results-and-blanks/verify-app.mjs
-      - name: Check actual public mathematical rows, relation groups and labels
+      - name: Check all seven public units and fully expanded history
         env:
           APP_URL: ${{ steps.deployment.outputs.page_url }}
           EVIDENCE_DIR: e2e-evidence/typesetting-hosted
-        run: node work/items/W-MATH-031-section-one-typesetting/verify-typography.mjs
+        run: |
+          node work/items/W-MATH-031-section-one-typesetting/verify-typography.mjs
+          node work/items/W-MATH-031-section-one-typesetting/verify-history.mjs
       - if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
-          name: section-one-P005-n06-3ccd573f-verification
+          name: section-one-P005-ne01-22bc43ba-verification
           path: |
             e2e-evidence/theme-one/**
             e2e-evidence/section-one/**

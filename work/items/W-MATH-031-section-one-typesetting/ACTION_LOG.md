@@ -17,3 +17,5 @@ N02 publication started at sourceabfe11a9cacc83b20e1009cd7bb3b624176d3461, hosti
 N04 local candidate checkpoint:96 seeded views,636 formula groups,4 wrong/hint/correct interactions PASS at four widths. Actual390px final substitution/reconstruction screenshot inspected. Long polynomial continuations and factor groups remain inside the actual content width; no content/figure changes.
 
 N05 local candidate checkpoint:72 seeded views,436 formula groups,4 wrong/hint/correct interactions PASS at four widths. Original candidate tables and two factoring figures preserved. N02 remains in exact-source compiled/public verification; no next hosting change yet.
+
+N06 local candidate checkpoint:80 seeded views,468 formula groups,4 wrong/hint/correct interactions PASS at four widths. X/x source identities, substitution definitions, candidate condition pairs and full-factor continuations preserved. No renderer change since the first N01 implementation; activation/configuration only for later units.

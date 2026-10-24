@@ -22,16 +22,16 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     env:
-      ONLY_UNIT: 'n01'
-      CANDIDATE_SHA: '3c3a5648eadd20f57bf290c57eea4d44e8dab541'
-      VITE_PREVIEW_COMMIT: '3c3a5648eadd20f57bf290c57eea4d44e8dab541'
+      ONLY_UNIT: 'n02'
+      CANDIDATE_SHA: 'abfe11a9cacc83b20e1009cd7bb3b624176d3461'
+      VITE_PREVIEW_COMMIT: 'abfe11a9cacc83b20e1009cd7bb3b624176d3461'
       VITE_REVIEW_PREVIEW: 'true'
       VITE_BASE_PATH: '/kyotsu-step-web/'
       VITE_STORAGE_NAMESPACE: 'kyotsu-step-gate3-math-20261023'
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: '3c3a5648eadd20f57bf290c57eea4d44e8dab541'
+          ref: 'abfe11a9cacc83b20e1009cd7bb3b624176d3461'
           fetch-depth: 0
           persist-credentials: false
       - uses: pnpm/action-setup@v4
@@ -113,7 +113,7 @@ jobs:
       - if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
-          name: section-one-P005-n01-3c3a5648-verification
+          name: section-one-P005-n02-abfe11a9-verification
           path: |
             e2e-evidence/theme-one/**
             e2e-evidence/section-one/**

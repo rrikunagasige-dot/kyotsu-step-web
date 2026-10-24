@@ -37,7 +37,7 @@ export function N07ReadingFlow({ unit, section, progress, onSummaryReached, onRe
   const [cursor, setCursor] = useState(() => {
     const raw = window.localStorage.getItem(storageKey)
     const value = raw === null ? 0 : Number(raw)
-    return Number.isInteger(value) && value >= 0 ? value : 0
+    return Number.isInteger(value) && value >= 0 ? Math.min(value, maxStage) : 0
   })
   const activeStage = Math.min(cursor, maxStage)
   const [activeId, setActiveId] = useState<string | null>(null)

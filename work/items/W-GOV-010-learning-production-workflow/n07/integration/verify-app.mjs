@@ -66,7 +66,21 @@ for(const width of (process.env.WIDTHS??'320,390,1440').split(',').map(Number)){
  await page.getByRole('button',{name:'全文を開く',exact:true}).click();await geometry('expanded history');
  await page.screenshot({path:out+'/width-'+width+'-history.png',fullPage:true});
  await page.reload();await page.getByTestId('n07-complete').waitFor();
- results.push({width,answered,stages:14,allWrongChoices:true,reload:true,history:true,geometry:'PASS'});await context.close();
+ // Real persisted v3→v4 upgrade, including an unrelated unit in the same store.
+ const retained=Object.fromEntries(['n07-10','n07-14'].map(id=>{const item=data.unit.sections[0].items.find(item=>item.id===id);return[id,{itemId:id,value:item.answer,resolved:true,isFirstCorrect:true,attemptCount:2,firstAnsweredAt:1,lastAnsweredAt:2}]}));
+ await page.evaluate(({unitId,retained})=>{
+  const key=Object.keys(localStorage).find(k=>{try{return Boolean(JSON.parse(localStorage.getItem(k)).state?.textbookProgress)}catch{return false}});
+  const store=JSON.parse(localStorage.getItem(key));
+  store.state.textbookProgress[unitId]={unitId,unitRevision:3,startedAt:1,updatedAt:2,completedAt:2,answers:{...retained,'n07-01':{itemId:'n07-01',value:'old compound',resolved:true,isFirstCorrect:true,attemptCount:3,firstAnsweredAt:1,lastAnsweredAt:2}}};
+  store.state.textbookProgress['untouched-unit']={unitId:'untouched-unit',unitRevision:1,startedAt:10,updatedAt:11,answers:{}};
+  localStorage.setItem(key,JSON.stringify(store));
+ },{unitId:data.unit.unitId,retained});
+ await page.reload();const first=data.unit.sections[0].items[0];await page.getByTestId('textbook-item-'+first.id).click();
+ await page.getByTestId('inline-choice-panel-'+first.id).getByRole('button',{name:first.answer,exact:true}).click();
+ const saved=await page.evaluate(()=>Object.keys(localStorage).flatMap(key=>{try{const s=JSON.parse(localStorage.getItem(key));return s.state?.textbookProgress?[s.state.textbookProgress]:[]}catch{return[]}})[0]);
+ const migrated=saved[data.unit.unitId];assert.equal(migrated.unitRevision,4);assert.equal(migrated.completedAt,undefined);
+ assert.equal(Object.keys(migrated.answers).length,3);assert.deepEqual(migrated.answers['n07-10'],retained['n07-10']);assert.deepEqual(migrated.answers['n07-14'],retained['n07-14']);assert.equal(migrated.archivedRevisions['3'].answers['n07-01'].value,'old compound');assert.equal(saved['untouched-unit'].updatedAt,11);
+ results.push({width,answered,stages:14,allWrongChoices:true,reload:true,history:true,migration:true,geometry:'PASS'});await context.close();
 }
 assert.deepEqual(errors,[],'browser errors');fs.writeFileSync(out+'/REPORT.json',JSON.stringify({status:'PASS',root,results,errors},null,2));console.log(JSON.stringify({status:'PASS',results}));
 }finally{await browser.close();}

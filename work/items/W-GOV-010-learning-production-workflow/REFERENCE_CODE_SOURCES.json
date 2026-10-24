@@ -1,0 +1,258 @@
+{
+  "date": "2026-10-24",
+  "status": "RESEARCHED; adoption not implemented",
+  "scope": "W-GOV-010 reference-code research",
+  "repositories": [
+    {
+      "repo": "google/mathsteps",
+      "commit": "9d370c30f2d9c2b3650883e942f97c8abe6805f8",
+      "branch": "master",
+      "archived": true,
+      "repositoryLicenseMetadata": "Apache-2.0",
+      "files": [
+        {
+          "path": "package.json",
+          "url": "https://github.com/google/mathsteps/blob/9d370c30f2d9c2b3650883e942f97c8abe6805f8/package.json",
+          "inspection": "source read",
+          "characters": 797
+        },
+        {
+          "path": "lib/ChangeTypes.js",
+          "url": "https://github.com/google/mathsteps/blob/9d370c30f2d9c2b3650883e942f97c8abe6805f8/lib/ChangeTypes.js",
+          "inspection": "source read",
+          "characters": 6901
+        },
+        {
+          "path": "lib/node/Status.js",
+          "url": "https://github.com/google/mathsteps/blob/9d370c30f2d9c2b3650883e942f97c8abe6805f8/lib/node/Status.js",
+          "inspection": "source read",
+          "characters": 3962
+        },
+        {
+          "path": "lib/simplifyExpression/stepThrough.js",
+          "url": "https://github.com/google/mathsteps/blob/9d370c30f2d9c2b3650883e942f97c8abe6805f8/lib/simplifyExpression/stepThrough.js",
+          "inspection": "source read",
+          "characters": 4464
+        },
+        {
+          "path": "lib/simplifyExpression/collectAndCombineSearch/index.js",
+          "url": "https://github.com/google/mathsteps/blob/9d370c30f2d9c2b3650883e942f97c8abe6805f8/lib/simplifyExpression/collectAndCombineSearch/index.js",
+          "inspection": "source read",
+          "characters": 3621
+        },
+        {
+          "path": "test/simplifyExpression/collectAndCombineSearch/collectAndCombineSearch.test.js",
+          "url": "https://github.com/google/mathsteps/blob/9d370c30f2d9c2b3650883e942f97c8abe6805f8/test/simplifyExpression/collectAndCombineSearch/collectAndCombineSearch.test.js",
+          "inspection": "source read",
+          "characters": 4123
+        }
+      ]
+    },
+    {
+      "repo": "numbas/Numbas",
+      "commit": "65a4a143db4e1110ac26870ef3394e1ac350d059",
+      "branch": "master",
+      "archived": false,
+      "repositoryLicenseMetadata": "Apache-2.0",
+      "files": [
+        {
+          "path": "runtime/scripts/part.js",
+          "url": "https://github.com/numbas/Numbas/blob/65a4a143db4e1110ac26870ef3394e1ac350d059/runtime/scripts/part.js",
+          "inspection": "source read",
+          "characters": 89927
+        },
+        {
+          "path": "runtime/scripts/parts/gapfill.js",
+          "url": "https://github.com/numbas/Numbas/blob/65a4a143db4e1110ac26870ef3394e1ac350d059/runtime/scripts/parts/gapfill.js",
+          "inspection": "source read",
+          "characters": 8424
+        },
+        {
+          "path": "runtime/scripts/jme-rules.js",
+          "url": "https://github.com/numbas/Numbas/blob/65a4a143db4e1110ac26870ef3394e1ac350d059/runtime/scripts/jme-rules.js",
+          "inspection": "source read",
+          "characters": 88828
+        }
+      ]
+    },
+    {
+      "repo": "maths/moodle-qtype_stack",
+      "commit": "1b4e42d44930157a01f49ab35057e88b0883884d",
+      "branch": "master",
+      "archived": false,
+      "repositoryLicenseMetadata": "GPL-3.0",
+      "licenseNote": "inspected source header: GPL v3 or later",
+      "files": [
+        {
+          "path": "stack/answertest/controller.class.php",
+          "url": "https://github.com/maths/moodle-qtype_stack/blob/1b4e42d44930157a01f49ab35057e88b0883884d/stack/answertest/controller.class.php",
+          "inspection": "source read",
+          "characters": 15219
+        },
+        {
+          "path": "tests/answertest_general_fixtures_test.php",
+          "url": "https://github.com/maths/moodle-qtype_stack/blob/1b4e42d44930157a01f49ab35057e88b0883884d/tests/answertest_general_fixtures_test.php",
+          "inspection": "source read",
+          "characters": 2608
+        }
+      ]
+    },
+    {
+      "repo": "PreTeXtBook/pretext",
+      "commit": "da193419f0746242287b2358094a496029ca9671",
+      "branch": "master",
+      "archived": false,
+      "repositoryLicenseMetadata": "NOASSERTION",
+      "licenseNote": "COPYING inspected: GPL v2 or v3 (at your option)",
+      "files": [
+        {
+          "path": "schema/pretext.rnc",
+          "url": "https://github.com/PreTeXtBook/pretext/blob/da193419f0746242287b2358094a496029ca9671/schema/pretext.rnc",
+          "inspection": "source read",
+          "characters": 84620
+        },
+        {
+          "path": "examples/minimal/source/main.ptx",
+          "url": "https://github.com/PreTeXtBook/pretext/blob/da193419f0746242287b2358094a496029ca9671/examples/minimal/source/main.ptx",
+          "inspection": "source read",
+          "characters": 3734
+        },
+        {
+          "path": "COPYING",
+          "url": "https://github.com/PreTeXtBook/pretext/blob/da193419f0746242287b2358094a496029ca9671/COPYING",
+          "inspection": "source read",
+          "characters": 662
+        }
+      ]
+    },
+    {
+      "repo": "jgm/texmath",
+      "commit": "847ff05b569674a7565a795f4048de2209e5a51a",
+      "branch": "master",
+      "archived": false,
+      "repositoryLicenseMetadata": "GPL-2.0",
+      "licenseNote": "inspected source header: GPL v2 or above",
+      "files": [
+        {
+          "path": "src/Text/TeXMath/Readers/OMML.hs",
+          "url": "https://github.com/jgm/texmath/blob/847ff05b569674a7565a795f4048de2209e5a51a/src/Text/TeXMath/Readers/OMML.hs",
+          "inspection": "source read",
+          "characters": 20443
+        },
+        {
+          "path": "OMML-BUGS",
+          "url": "https://github.com/jgm/texmath/blob/847ff05b569674a7565a795f4048de2209e5a51a/OMML-BUGS",
+          "inspection": "source read",
+          "characters": 424
+        }
+      ]
+    },
+    {
+      "repo": "jgm/pandoc",
+      "commit": "a3dce9e471c44e81c5f3fa4ef4c6beeef7c9a090",
+      "branch": "main",
+      "archived": false,
+      "repositoryLicenseMetadata": "GPL-2.0",
+      "licenseNote": "inspected source header: GPL v2 or above",
+      "files": [
+        {
+          "path": "src/Text/Pandoc/Readers/Docx/Parse.hs",
+          "url": "https://github.com/jgm/pandoc/blob/a3dce9e471c44e81c5f3fa4ef4c6beeef7c9a090/src/Text/Pandoc/Readers/Docx/Parse.hs",
+          "inspection": "source read",
+          "characters": 65875
+        }
+      ]
+    },
+    {
+      "repo": "Doenet/DoenetML",
+      "commit": "533da992fcb9cebe45f728b0bede27d2c0731726",
+      "branch": "main",
+      "archived": false,
+      "repositoryLicenseMetadata": "AGPL-3.0",
+      "files": [
+        {
+          "path": "packages/doenetml-worker-javascript/src/components/Hint.js",
+          "url": "https://github.com/Doenet/DoenetML/blob/533da992fcb9cebe45f728b0bede27d2c0731726/packages/doenetml-worker-javascript/src/components/Hint.js",
+          "inspection": "source read",
+          "characters": 8524
+        },
+        {
+          "path": "packages/doenetml-worker-javascript/src/components/ConditionalContent.js",
+          "url": "https://github.com/Doenet/DoenetML/blob/533da992fcb9cebe45f728b0bede27d2c0731726/packages/doenetml-worker-javascript/src/components/ConditionalContent.js",
+          "inspection": "source read",
+          "characters": 14120
+        },
+        {
+          "path": "LICENSE",
+          "url": "https://github.com/Doenet/DoenetML/blob/533da992fcb9cebe45f728b0bede27d2c0731726/LICENSE",
+          "inspection": "source read",
+          "characters": 34523
+        }
+      ]
+    },
+    {
+      "repo": "josdejong/mathjs",
+      "commit": "8d214e050a0acb9f132405d55a96b683fa7b6324",
+      "branch": "develop",
+      "archived": false,
+      "repositoryLicenseMetadata": "Apache-2.0",
+      "files": [
+        {
+          "path": "src/type/fraction/Fraction.js",
+          "url": "https://github.com/josdejong/mathjs/blob/8d214e050a0acb9f132405d55a96b683fa7b6324/src/type/fraction/Fraction.js",
+          "inspection": "source read",
+          "characters": 1142
+        }
+      ]
+    },
+    {
+      "repo": "rawify/Fraction.js",
+      "commit": "9aa0f355e5d6c25d10bce7a7ab25a3a4bd074942",
+      "branch": "main",
+      "archived": false,
+      "repositoryLicenseMetadata": "MIT",
+      "files": [
+        {
+          "path": "package.json",
+          "url": "https://github.com/rawify/Fraction.js/blob/9aa0f355e5d6c25d10bce7a7ab25a3a4bd074942/package.json",
+          "inspection": "source read",
+          "characters": 1354
+        },
+        {
+          "path": "dist/fraction.mjs",
+          "url": "https://github.com/rawify/Fraction.js/blob/9aa0f355e5d6c25d10bce7a7ab25a3a4bd074942/dist/fraction.mjs",
+          "inspection": "source read",
+          "characters": 24376
+        },
+        {
+          "path": "tests/fraction.test.js",
+          "url": "https://github.com/rawify/Fraction.js/blob/9aa0f355e5d6c25d10bce7a7ab25a3a4bd074942/tests/fraction.test.js",
+          "inspection": "source read",
+          "characters": 32554
+        },
+        {
+          "path": "LICENSE",
+          "url": "https://github.com/rawify/Fraction.js/blob/9aa0f355e5d6c25d10bce7a7ab25a3a4bd074942/LICENSE",
+          "inspection": "source read",
+          "characters": 1070
+        }
+      ]
+    },
+    {
+      "repo": "dubzzz/fast-check",
+      "commit": "d36bc93e0b5914c7d116486a433e93845844650c",
+      "branch": "main",
+      "archived": false,
+      "repositoryLicenseMetadata": "MIT",
+      "files": [
+        {
+          "path": "packages/fast-check/src/check/model/ModelRunner.ts",
+          "url": "https://github.com/dubzzz/fast-check/blob/d36bc93e0b5914c7d116486a433e93845844650c/packages/fast-check/src/check/model/ModelRunner.ts",
+          "inspection": "source read",
+          "characters": 5038
+        }
+      ]
+    }
+  ],
+  "fractionProbeBlobSHA": "f6267c42c9f9bf6fef2a2415fb596178cd216589"
+}

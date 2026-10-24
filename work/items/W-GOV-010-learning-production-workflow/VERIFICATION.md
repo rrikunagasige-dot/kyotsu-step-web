@@ -23,3 +23,11 @@ The existing governance checker still reports4 pre-existing errors: W-MATH-027/0
 Current primary pages/PDFs were checked as recorded in SOURCE_REFERENCES.json. Keirinkan middle-school Q&A supports only search-text evidence; direct page open returned403. Old Tokyo Shoseki/Benesse/Yokozé references are historical records, not newly accessed originals. Reference principles do not establish effectiveness of the proposed automation.
 
 P-002 remains PROPOSED until reviewed and approved. No learner build/tests or publication were performed for this documentation-only revision; existing tests are not relabeled as new implementation evidence.
+
+## External reference-code research addendum
+
+-10 repositories /26 actual source-schema-test-package-license files pinned in REFERENCE_CODE_SOURCES.json; metadata, inspected source and the local executable version are distinguished.
+- Fraction.js12 isolated cases PASS; blob SHA f6267c42c9f9bf6fef2a2415fb596178cd216589 matches inspected official file. Node24.22.1 only; Node22/app integration not verified.
+- Pandoc3.1.3 source-conversion probe completed:397 Math /397 original oMath,14 image references, no empty Math/warnings, source unchanged. Semantic preservation NOT VERIFIED by counts.
+- P-002 appendix F07 numeric example corrected to6/15=2/5; previous commit retains provenance. P002_DOCUMENT_CHECK.json updated to the corrected appendix hash, retaining the superseded hash record.
+- References and probe outputs are research evidence; framework adoption, production code, generated N07 material, performance and deployment remain unimplemented/unverified.

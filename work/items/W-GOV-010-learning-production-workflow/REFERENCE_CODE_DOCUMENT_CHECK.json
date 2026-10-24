@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "scope": "reference research and numeric-documentation erratum only",
+  "repositories": 10,
+  "inspectedFiles": 26,
+  "fractionProbeCases": 12,
+  "fractionBlobIdentity": true,
+  "pandocMathNodes": 397,
+  "semanticFidelity": "UNVERIFIED",
+  "localLinks": true,
+  "p002MainAndP001ArchiveUnchanged": true,
+  "protectedTrackedPathsUnchanged": true,
+  "changedFiles": [
+    "memory/ACTIVE_CONTEXT.md",
+    "memory/PROGRESS.md",
+    "navigation/CURRENT_POSITION.md",
+    "navigation/MASTER_MATCH_GRAPH.md",
+    "work/items/W-GOV-010-learning-production-workflow/ACTION_LOG.md",
+    "work/items/W-GOV-010-learning-production-workflow/FINDINGS.md",
+    "work/items/W-GOV-010-learning-production-workflow/P002_DOCUMENT_CHECK.json",
+    "work/items/W-GOV-010-learning-production-workflow/TECHNICAL_DESIGN.md",
+    "work/items/W-GOV-010-learning-production-workflow/VERIFICATION.md",
+    "work/items/W-GOV-010-learning-production-workflow/WORK.md",
+    "work/items/W-GOV-010-learning-production-workflow/REFERENCE_CODE_RESEARCH.md",
+    "work/items/W-GOV-010-learning-production-workflow/REFERENCE_CODE_SOURCES.json",
+    "work/items/W-GOV-010-learning-production-workflow/evidence/reference-code/fraction-probe.json",
+    "work/items/W-GOV-010-learning-production-workflow/evidence/reference-code/pandoc-probe.json"
+  ]
+}

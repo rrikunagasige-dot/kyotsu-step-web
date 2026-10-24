@@ -1,0 +1,98 @@
+{
+  "sourceRepo": "rawify/Fraction.js",
+  "sourceCommit": "9aa0f355e5d6c25d10bce7a7ab25a3a4bd074942",
+  "version": "5.3.4",
+  "runtime": "v24.22.1",
+  "scope": "isolated function probe; not app integration or stepwise teaching",
+  "results": [
+    {
+      "id": "repeat8",
+      "input": "0.(8)",
+      "expected": "8/9",
+      "got": "8/9",
+      "pass": true,
+      "numeratorType": "bigint"
+    },
+    {
+      "id": "repeat69",
+      "input": "0.(69)",
+      "expected": "23/33",
+      "got": "23/33",
+      "pass": true,
+      "numeratorType": "bigint"
+    },
+    {
+      "id": "nonShortestRepeat",
+      "input": "0.(6969)",
+      "expected": "23/33",
+      "got": "23/33",
+      "pass": true,
+      "numeratorType": "bigint"
+    },
+    {
+      "id": "mixedRepeat",
+      "input": "0.1(6)",
+      "expected": "1/6",
+      "got": "1/6",
+      "pass": true,
+      "numeratorType": "bigint"
+    },
+    {
+      "id": "reduce",
+      "input": "6/15",
+      "expected": "2/5",
+      "got": "2/5",
+      "pass": true,
+      "numeratorType": "bigint"
+    },
+    {
+      "id": "negative",
+      "input": "-1/8",
+      "expected": "-1/8",
+      "got": "-1/8",
+      "pass": true,
+      "numeratorType": "bigint"
+    },
+    {
+      "id": "repeating9",
+      "input": "0.(9)",
+      "expected": "1",
+      "got": "1",
+      "pass": true,
+      "numeratorType": "bigint"
+    },
+    {
+      "id": "integer",
+      "input": "2",
+      "expected": "2",
+      "got": "2",
+      "pass": true,
+      "numeratorType": "bigint"
+    },
+    {
+      "id": "zero",
+      "input": "0",
+      "expected": "0",
+      "got": "0",
+      "pass": true,
+      "numeratorType": "bigint"
+    },
+    {
+      "id": "bigInteger",
+      "input": "9007199254740993/9007199254740992",
+      "expected": "9007199254740993/9007199254740992",
+      "got": "9007199254740993/9007199254740992",
+      "pass": true,
+      "numeratorType": "bigint"
+    },
+    {
+      "id": "zeroDenominator",
+      "pass": true
+    },
+    {
+      "id": "equivalence",
+      "pass": true
+    }
+  ],
+  "status": "PASS"
+}

@@ -1,6 +1,11 @@
 # CURRENT POSITION — 塾 / rriku target
 
 
+## Latest addendum — external reference-code research (2026-10-24)
+
+W-GOV-010: user identified missing reusable-code research. [Research](../work/items/W-GOV-010-learning-production-workflow/REFERENCE_CODE_RESEARCH.md) now pins10 repos/26 inspected files. Fraction.js12 isolated cases PASS; existing Pandoc3.1.3 converted teacher Word397 Math/397 oMath without warnings (semantic fidelity still unverified). P-002 appendix F07 numerical typo corrected to6/15=2/5. Recommend Fraction/Pandoc adapters and Mathsteps/Numbas/STACK/PreTeXt/DoenetML/fast-check design/test reuse before implementing an all-custom pipeline. Adoption/revised implementation plan is still proposed; P-002 is not approved. No learner/dependency/publication changes. First-title source22bc43ba and hosting main9b7dcd47 remain the accepted/live baseline. Older entries retain historical scope.
+
+
 ## Latest revision — W-GOV-010/P-002 detailed code+AI production proposal (2026-10-24)
 
 User requested a more complete, realizable design in which code also proposes solutions, teaching order, prose skeletons, blanks, distractors and figures, with AI contextual judgment and evidence-separated review. P-001 was insufficient in that division of responsibility; preserved verbatim as historical. Current proposal is **P-002 / PROPOSED**, not implementation approval.

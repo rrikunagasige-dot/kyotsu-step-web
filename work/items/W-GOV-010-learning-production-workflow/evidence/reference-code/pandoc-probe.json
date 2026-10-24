@@ -1,0 +1,14 @@
+{
+  "pandocVersion": "pandoc 3.1.3",
+  "sourceSHA256": "93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa",
+  "exitCode": 0,
+  "warnings": "",
+  "sourceUnchanged": true,
+  "sourceOMathCount": 397,
+  "pandocMathCount": 397,
+  "pandocImageCount": 14,
+  "fractionMathCount": 8,
+  "rootMathCount": 48,
+  "emptyMathCount": 0,
+  "meaningPreservation": "NOT VERIFIED; successful conversion/counts alone are not a semantic audit"
+}

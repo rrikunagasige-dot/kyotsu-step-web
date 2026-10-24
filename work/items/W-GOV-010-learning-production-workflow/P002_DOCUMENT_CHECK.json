@@ -16,11 +16,17 @@
     },
     "TECHNICAL_DESIGN.md": {
       "bytes": 27320,
-      "sha256": "8ad719d7c9a36e1ec424821806ef961ef9217a0b02dc2b7b15c59f83e7350354"
+      "sha256": "a0bbbe99e71cab3d4ad768d000bc185e0801f39e27aada2841142fdfd437522f"
     },
     "P-001_HISTORICAL.md": {
       "bytes": 37860,
       "sha256": "e722cc02ebf7e9f5ee9dc490f0125d431c6bf26f9e17932c5a7fcf8adf0ec422"
     }
+  },
+  "supersededAppendixHashBeforeArithmeticErratum": {
+    "bytes": 27320,
+    "sha256": "8ad719d7c9a36e1ec424821806ef961ef9217a0b02dc2b7b15c59f83e7350354",
+    "commit": "58fa96c6daee9e784eb8edea2e4f3037446736fa",
+    "correction": "F07:6/15=1/5 corrected to2/5"
   }
 }

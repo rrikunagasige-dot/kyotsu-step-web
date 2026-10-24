@@ -41,5 +41,48 @@
     "Word bytes match old canonical hash. Relevant paragraph text read; new exhaustive OMML/figure audit not claimed.",
     "a191 runtime projection used only after verifying lesson/domain data unchanged to22bc.",
     "Original source documents not copied into public repository; identifiers/hash references only."
+  ],
+  "proposalRevision": "P-002",
+  "externalReferences": [
+    {
+      "name": "MEXT learning process",
+      "url": "https://www.mext.go.jp/component/b_menu/shingi/toushin/__icsFiles/afieldfile/2017/01/10/1380902_3_2.pdf",
+      "verification": "current PDF text read"
+    },
+    {
+      "name": "Keirinkan elementary reasoning notes",
+      "url": "https://www.shinko-keirin.co.jp/keirinkan/tea/sho/jissen/sansu/201111_2/index.html",
+      "verification": "current page text read"
+    },
+    {
+      "name": "Keirinkan middle-school Q&A",
+      "url": "https://www.shinko-keirin.co.jp/keirinkan/chu/math/support/otoiawase/",
+      "verification": "search text only; direct open403"
+    },
+    {
+      "name": "JASSO 2021 mathematics",
+      "url": "https://www.jasso.go.jp/ryugaku/eju/examinee/pastpaper_sample/__icsFiles/afieldfile/2022/01/28/2021_1question_math.pdf",
+      "verification": "current PDF access; detailed example analysis inherited from earlier records"
+    },
+    {
+      "name": "SymPy assumptions",
+      "url": "https://docs.sympy.org/latest/guides/assumptions.html",
+      "verification": "current page and sqrt(x**2) section read"
+    },
+    {
+      "name": "PreTeXt mathematics",
+      "url": "https://pretextbook.org/doc/guide/html/topic-mathematics.html",
+      "verification": "current page and numbering/reference/alignment text read"
+    },
+    {
+      "name": "KaTeX options",
+      "url": "https://katex.org/docs/options.html",
+      "verification": "current page; must verify resolved application version separately"
+    },
+    {
+      "name": "MathJax line breaking",
+      "url": "https://docs.mathjax.org/en/latest/output/linebreaks.html",
+      "verification": "current page; design reference, not a migration proposal"
+    }
   ]
 }

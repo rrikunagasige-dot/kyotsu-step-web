@@ -1,5 +1,14 @@
 # ACTIVE CONTEXT — target rriku
 
+
+## Latest revision — W-GOV-010/P-002 detailed code+AI production proposal (2026-10-24)
+
+User requested a more complete, realizable design in which code also proposes solutions, teaching order, prose skeletons, blanks, distractors and figures, with AI contextual judgment and evidence-separated review. P-001 was insufficient in that division of responsibility; preserved verbatim as historical. Current proposal is **P-002 / PROPOSED**, not implementation approval.
+
+[Detailed proposal](../work/items/W-GOV-010-learning-production-workflow/PROPOSAL.md) and [technical design](../work/items/W-GOV-010-learning-production-workflow/TECHNICAL_DESIGN.md) define24 stages S00–S23, implementation tasks T00–T19, supported mathematical rules, teaching/prose/blank candidate algorithms, AI contracts, all14 N07 source-question pilot coverage, progress protection, actual-app QA, invalidation/cache/restart/release/feedback. M0–M3 tooling and full N07 design preparation follow exact approval; unseen N07 content is presented before learner edits.
+
+First-title source22bc43ba remains formally accepted; hosting main9b7dcd47 rechecked unchanged. Same existing public app is the user review channel. No src/public/deploy changes in this proposal revision; no screenshot-sheet or duplicate publication approval requirement is restored. Older entries below retain their historical scope.
+
 ## 2026-10-24 — first title ACCEPTED; W-GOV-010/P-001 workflow proposal
 
 User formally accepted first-title source22bc43ba53fa87bb85e82e18a25db13a5c8a485c:「这个版本可以。非常可以。我觉得可以正式通过了。」W-MATH-031 is DONE for N01–N06/NE01 only; [acceptance](../work/items/W-MATH-031-section-one-typesetting/USER_ACCEPTANCE_20261024.md). Public app/main remain22bc43ba/9b7dcd47; no learner change or new deployment in this task.

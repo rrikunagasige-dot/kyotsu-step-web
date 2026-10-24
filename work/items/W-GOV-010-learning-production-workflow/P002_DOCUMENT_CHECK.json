@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "scope": "proposal-documentation-only",
+  "sections": 31,
+  "technicalSections": 12,
+  "stages": 24,
+  "implementationTasks": 20,
+  "plannedFixtures": 24,
+  "archiveMatchesP001": true,
+  "localLinksExist": true,
+  "protectedTrackedPathsUnchanged": true,
+  "documents": {
+    "PROPOSAL.md": {
+      "bytes": 48344,
+      "sha256": "c0e7298948eea771cdbb4a99617f9a7417c341701329144129f10e370e520084"
+    },
+    "TECHNICAL_DESIGN.md": {
+      "bytes": 27320,
+      "sha256": "8ad719d7c9a36e1ec424821806ef961ef9217a0b02dc2b7b15c59f83e7350354"
+    },
+    "P-001_HISTORICAL.md": {
+      "bytes": 37860,
+      "sha256": "e722cc02ebf7e9f5ee9dc490f0125d431c6bf26f9e17932c5a7fcf8adf0ec422"
+    }
+  }
+}

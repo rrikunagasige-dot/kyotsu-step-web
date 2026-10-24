@@ -1,5 +1,14 @@
 # MASTER MATCH GRAPH — target rriku
 
+
+## Latest revision — W-GOV-010/P-002 detailed code+AI production proposal (2026-10-24)
+
+User requested a more complete, realizable design in which code also proposes solutions, teaching order, prose skeletons, blanks, distractors and figures, with AI contextual judgment and evidence-separated review. P-001 was insufficient in that division of responsibility; preserved verbatim as historical. Current proposal is **P-002 / PROPOSED**, not implementation approval.
+
+[Detailed proposal](../work/items/W-GOV-010-learning-production-workflow/PROPOSAL.md) and [technical design](../work/items/W-GOV-010-learning-production-workflow/TECHNICAL_DESIGN.md) define24 stages S00–S23, implementation tasks T00–T19, supported mathematical rules, teaching/prose/blank candidate algorithms, AI contracts, all14 N07 source-question pilot coverage, progress protection, actual-app QA, invalidation/cache/restart/release/feedback. M0–M3 tooling and full N07 design preparation follow exact approval; unseen N07 content is presented before learner edits.
+
+First-title source22bc43ba remains formally accepted; hosting main9b7dcd47 rechecked unchanged. Same existing public app is the user review channel. No src/public/deploy changes in this proposal revision; no screenshot-sheet or duplicate publication approval requirement is restored. Older entries below retain their historical scope.
+
 ## Latest — first title accepted; production workflow under review
 
 2026-10-24: user explicitly accepts22bc43ba first-title N01–N06/NE01; W031 DONE. W-GOV-010/P-001 proposes workflow/AI/code redesign and second-title N07–N10/NE02 trial. User review delivery is now completed builds in the same public app; old screenshot-sheet route is not the required forward path. Proposal only: no second-title learner code/public-source changes. [Work](../work/items/W-GOV-010-learning-production-workflow/WORK.md). Older graph states below are historical.

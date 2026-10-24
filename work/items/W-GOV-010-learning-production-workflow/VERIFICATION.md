@@ -2,14 +2,24 @@
 
 Status: PASS
 
-This status covers the investigation/proposal artifact, not implementation or second-title acceptance.
+This PASS covers only the investigation and reviewable P-002 documentation. It is not implementation, automated-generation effectiveness, learner-code QA, second-title content acceptance or deployment acceptance.
 
-- Proposal facts checked against actual current code, catalog, Work findings and original master references.
-- Source Word hash exactly matches existing source audit.
-- Current-data inventory and original-marker counts are distinguished; unknown redesign counts remain unknown.
-- Complete proposal defines reuse/limited modification/non-reuse, AI outputs and failure checks, proposed code paths, the direct-public-app review route, N07 trial and all five second-title roles.
-- First-title formal acceptance scope/source and old-review replacement instruction recorded explicitly.
-- No src/public or workflow deployment changes in this branch; published source remains22bc43ba and main9b7dcd47.
-- Unit content, code changes, live second-title UI quality and speedups are NOT VERIFIED by this proposal.
+## P-002 documentation checks
 
-Proposal P-001 remains PROPOSED until user approval. Its full file is the reviewable design; no screenshot-sheet confirmation is requested.
+-31 main sections and12 technical sections; S00–S23 are present exactly once in the pipeline table, T00–T19 in the implementation table and F01–F24 in the planned-fixture table.
+- All local document links resolve; code fences are balanced; git diff --check passes.
+- P-001_HISTORICAL.md is byte-identical to PROPOSAL.md at bc3d513e0bf1044d93391bf03132a38f4501bc39. No old approval or status was rewritten.
+- Concrete code/AI responsibility, contracts, rule/profile algorithms, prose/blank generation, AI import, source/semantic checks, progress/release/restart/invalidation and full14-question N07 pilot mapping are provided. Source and mathematics assumptions remain explicit.
+- Plan paths/commands/rules/fixtures are labeled as proposed. New exact N07 prose/blank counts, full OMML/figure audit, performance gains and API execution capabilities remain unverified.
+- No tracked changes to src/public/tools/governance/deploy workflows. First-title app source remains22bc43ba53fa87bb85e82e18a25db13a5c8a485c; authenticated target repo1391122224/live main9b7dcd470847ec7c16683c58f1f24c500c442489 rechecked. Live workflow pointer was directly inspected from that fetched commit; local historical workflow is not treated as live authority.
+- Detailed artifact hashes/size and structural checks: P002_DOCUMENT_CHECK.json.
+
+## Repository-wide governance result
+
+The existing governance checker still reports4 pre-existing errors: W-MATH-027/028/029/030 WORK.md lack its required exact Status line. Two pre-existing navigation-link warnings remain. No new error was introduced. This proposal does not claim whole-repository governance PASS or repair unrelated historical metadata. P-002 explicitly includes future updating of the checker that currently requires retired review-policy strings.
+
+## Public-reference limits
+
+Current primary pages/PDFs were checked as recorded in SOURCE_REFERENCES.json. Keirinkan middle-school Q&A supports only search-text evidence; direct page open returned403. Old Tokyo Shoseki/Benesse/Yokozé references are historical records, not newly accessed originals. Reference principles do not establish effectiveness of the proposed automation.
+
+P-002 remains PROPOSED until reviewed and approved. No learner build/tests or publication were performed for this documentation-only revision; existing tests are not relabeled as new implementation evidence.

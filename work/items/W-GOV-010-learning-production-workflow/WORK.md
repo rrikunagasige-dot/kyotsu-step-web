@@ -15,7 +15,7 @@ Completed pilot: M0 current review-policy consolidation with historical preserva
 
 Do Not Touch: existing src/public, first-title acceptance/content/IDs/figures/revisions/progress, other-mode materials, main hosting pointer, original source. New Fraction dependency is exact5.3.4 dev-only; existing locked package versions are retained. No learner data or deployment changed.
 
-Current: run exact-source authoring CI and close technical evidence. Scope-specific technical checks PASS locally; whole-repo governance retains4 old WORK Status-format errors and2 old navigation warnings. No false whole-repository PASS.
+Current: exact-source authoring CI PASS at f61b57e85a909d76ef0342aa37a1941439971311 (run40099358494); tooling technical verification complete and N07 design delivered for review. Scope-specific technical checks PASS locally; whole-repo governance retains4 old WORK Status-format errors and2 old navigation warnings. No false whole-repository PASS.
 Next: deliver n07/N07_DESIGN.md for the concrete content design review required by approved P-002. Following its approval, integrate this N07 plan with existing stage/result/number/layout components, implement the scoped progress migration, run actual app/mobile/public-source QA, compile/publish the completed approved N07 to the existing app and deliver its verified direct URL. No screenshot-sheet or duplicate publication approval gate.
 
 Not yet implemented: actual N07 learner registration, final React/result/table adapter, progress migration, mobile geometry and real hosted operation tests; later N08–NE02 rule generation. Those units currently have source inventories only. N07 design is not human accepted merely because machine checks pass.

@@ -18,7 +18,21 @@
   "sourceDataChanged": false,
   "publicSourceChanged": false,
   "wholeRepoGovernance": "4 pre-existing Status-format errors /2 pre-existing navigation warnings",
-  "ci": "PENDING",
+  "ci": {
+    "status": "PASS",
+    "sourceCommit": "f61b57e85a909d76ef0342aa37a1941439971311",
+    "runId": 40099358494,
+    "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40099358494",
+    "environment": "Node22 / pnpm11.9.0 / Python3.12",
+    "checks": [
+      "frozen install",
+      "35 native tests",
+      "4 actual-schema/KaTeX tests",
+      "typecheck",
+      "2 source adapter fixtures",
+      "23 independent arithmetic checks"
+    ]
+  },
   "next": "N07 concrete design review before learner integration",
   "protectedSourceTrees": {
     "src": "1f8d55b5d4388d90bb1f142d2722adb7849b4cd5",

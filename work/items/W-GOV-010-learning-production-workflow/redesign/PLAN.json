@@ -1,0 +1,394 @@
+{
+  "proposal": "P-003",
+  "status": "PROPOSED",
+  "implementationAuthorized": false,
+  "trainingPerformed": false,
+  "applicationChanged": false,
+  "stages": [
+    {
+      "id": "S00",
+      "name": "現在地復元",
+      "inputOutput": "repo/Work→run manifest",
+      "code": "owner/main/feature/live source、policy、未解決修正、前回claimを照合",
+      "aiOrML": "AIが依頼範囲を解釈",
+      "validationAndReturn": "source相違は停止。N07修正より基盤設計優先という今回の指示を保持"
+    },
+    {
+      "id": "S01",
+      "name": "正本固定",
+      "inputOutput": "Word/PDF/既存教材→source manifest",
+      "code": "SHA、ページ・段落・式・図の原位置、取得経路を固定",
+      "aiOrML": "AIが母本と補足資料の役割・条件を確認",
+      "validationAndReturn": "読めない箇所は欠落として列挙。推測補完で通さない"
+    },
+    {
+      "id": "S02",
+      "name": "完全抽出",
+      "inputOutput": "原本→source block index",
+      "code": "Pandoc/既存extractor、番号のない文・図注・表も採番",
+      "aiOrML": "AIが抽出順・数式・図との対応を照合",
+      "validationAndReturn": "目次と本文、図中文字、条件脱落を別チェック"
+    },
+    {
+      "id": "S03",
+      "name": "問題契約",
+      "inputOutput": "source index→problem contracts",
+      "code": "問題・概念・性質・例題・証明・図の対応と逆引き",
+      "aiOrML": "AIが何を学ぶ箇所か、元条件・答え形式を確定",
+      "validationAndReturn": "全blockに採用先又は除外理由。除外の意味はAI監査"
+    },
+    {
+      "id": "S04",
+      "name": "規則・事例取得",
+      "inputOutput": "mode/問題契約→evidence bundle",
+      "code": "scope/versionで絞る、hash・適用条件・失効を確認",
+      "aiOrML": "ML類似検索＋AIが今回の適否・反例を選ぶ",
+      "validationAndReturn": "類似度だけで既習・正解・承認を移植しない"
+    },
+    {
+      "id": "S05",
+      "name": "既習と表現",
+      "inputOutput": "problem contracts→knowledge ledger",
+      "code": "記号・用語・既習結果・単位・定義のIDと順を管理",
+      "aiOrML": "AIが初回説明の粒度と小中高の既習境界を定める",
+      "validationAndReturn": "未定義名・未学習定理で次へ進まない。新規例題は原問と区別"
+    },
+    {
+      "id": "S06",
+      "name": "完全解法",
+      "inputOutput": "problem→solution graph",
+      "code": "対応solverで式変形・値・条件・分岐・trace候補を作る",
+      "aiOrML": "AIが解法を補い、一般論証・条件・根拠を記述",
+      "validationAndReturn": "unsupportedをPASSにしない。手記述証明は別監査へ"
+    },
+    {
+      "id": "S07",
+      "name": "独立数理検証",
+      "inputOutput": "solution→math receipts",
+      "code": "正確演算、別経路検算、同値と答え形式を分離",
+      "aiOrML": "AIが論証の適用条件と網羅性を反証する",
+      "validationAndReturn": "計算に例が合うことを一般証明に代用しない。失敗→S06"
+    },
+    {
+      "id": "S08",
+      "name": "教える順候補",
+      "inputOutput": "solution＋既習→最大3案のteaching DAG",
+      "code": "topological順、局所→全体、再利用、初回/反復profileを列挙",
+      "aiOrML": "AIが目的・根拠・次の役割を言語化。MLは検証済み候補を順位付け",
+      "validationAndReturn": "最終値から逆戻りさせる漏洩・循環を拒否。候補ゼロ→S06/05"
+    },
+    {
+      "id": "S09",
+      "name": "小段階設計",
+      "inputOutput": "teaching DAG→node contracts",
+      "code": "一操作の対象・入力・出力・使用先を対応、必要文のslotを作る",
+      "aiOrML": "AIがスマホで自分で解ける粒度へ分ける／まとめる",
+      "validationAndReturn": "operation_count=1の数値だけで十分としない。分解後の全体式が必要"
+    },
+    {
+      "id": "S10",
+      "name": "穴・選択肢",
+      "inputOutput": "nodes→interaction plan",
+      "code": "判断/関係/式生成/計算/意味などの候補、誤操作、正解形式を生成",
+      "aiOrML": "AIが穴採否・負荷・初回重要性を選択。MLは過去失敗から警告",
+      "validationAndReturn": "正解1つ、誤答非同値、表示漏洩、単なる写しを検査。全node穴必須にしない"
+    },
+    {
+      "id": "S11",
+      "name": "表現設計",
+      "inputOutput": "nodes＋穴→typed prose/math/figure plan",
+      "code": "定義黒太字、math token、relation、番号・参照・再掲仕様を検査",
+      "aiOrML": "AIが文章として接続し、図表の必要性・位置・何を読むかを設計",
+      "validationAndReturn": "単語だけの操作、意味不明な数値、式列の分断を差戻し"
+    },
+    {
+      "id": "S12",
+      "name": "本文作成",
+      "inputOutput": "expression plan→完全教材IR",
+      "code": "文法slot、値・式・用語・参照の差込み、source mapを保持",
+      "aiOrML": "AIが全文の日本語、導入、理由、次への接続を整える",
+      "validationAndReturn": "本文後の自己解説だけで合格にしない。完成本文そのものを監査"
+    },
+    {
+      "id": "S13",
+      "name": "図表作成",
+      "inputOutput": "figure plan→図表artifact",
+      "code": "既存図・SVG・表を再利用、計算値と対応、ラベル可読性",
+      "aiOrML": "AIが図の意味と必要十分性を点検",
+      "validationAndReturn": "必要な図なし／不要な新図／答え先出しを検出。図不要なら理由を記録"
+    },
+    {
+      "id": "S14",
+      "name": "静的検査",
+      "inputOutput": "IR→構造/意味属性/描画予定receipt",
+      "code": "schema、条件、DAG、用語、式relation、穴、番号、token保存",
+      "aiOrML": "MLが疑わしいnodeを列挙。AIは曖昧な警告を解決",
+      "validationAndReturn": "ERRORは修正、WARNは根拠付き解決、UNSUPPORTEDは別経路へ"
+    },
+    {
+      "id": "S15",
+      "name": "原資料監査",
+      "inputOutput": "source＋IR→source audit",
+      "code": "対応表と差分を自動提示",
+      "aiOrML": "AIが無番号説明を含めて落ち・改変・不正な補足を探す",
+      "validationAndReturn": "作者のcoverage宣言ではなく原文位置から全件照合。失敗→S03/12"
+    },
+    {
+      "id": "S16",
+      "name": "初学者監査",
+      "inputOutput": "各時点の可視内容→novice audit",
+      "code": "学習済み情報だけのsnapshot、未解放内容の遮断",
+      "aiOrML": "AIが次の判断を実際に解き、足りない情報を特定",
+      "validationAndReturn": "監査者が未来の答えを見て補わない。失敗→S05/08/09/10/12"
+    },
+    {
+      "id": "S17",
+      "name": "案確定",
+      "inputOutput": "draft＋全監査→exact design bundle",
+      "code": "node別本文・穴・式・図・状態・試験と版を出力",
+      "aiOrML": "AIが解決状況・残件・変更範囲を説明",
+      "validationAndReturn": "未解決の必須項目を合格にしない。教材設計の既承認は再取得不要"
+    },
+    {
+      "id": "S18",
+      "name": "compile",
+      "inputOutput": "exact approved design→app JSON",
+      "code": "typedIRから既存部品へ変換、意味token対応receipt、安定ID",
+      "aiOrML": "AIは新内容をcompile時に付け足さない",
+      "validationAndReturn": "承認hashと実内容相違は戻す。新しいN07特例を積み増さない"
+    },
+    {
+      "id": "S19",
+      "name": "実UI検査",
+      "inputOutput": "compiled app→browser receipts",
+      "code": "幅320/390/430/1440、正誤・ヒント・前結果・履歴・再開・進捗移行",
+      "aiOrML": "AIが実画面と本文の違和感を点検",
+      "validationAndReturn": "描画エラー0＋意味token描画率、等号/番号/行の切れを検査"
+    },
+    {
+      "id": "S20",
+      "name": "影響監査",
+      "inputOutput": "diff＋protected baseline→regression report",
+      "code": "受入済み第一タイトル・他mode・ID・元図・stateの差分を限定",
+      "aiOrML": "AIが共通修正の意図しない教育影響を確認",
+      "validationAndReturn": "対象外の変更は別scope。既存失敗を新規PASSにしない"
+    },
+    {
+      "id": "S21",
+      "name": "既存公開先へ反映",
+      "inputOutput": "frozen source＋QA→release receipt",
+      "code": "既存release経路、intent/outcome、配信source/route/assetを照合",
+      "aiOrML": "AIは結果と直接URLを引渡す",
+      "validationAndReturn": "設計承認済み範囲の旧スクショ承認待ち・公開再許可を挟まない"
+    },
+    {
+      "id": "S22",
+      "name": "ユーザー評価",
+      "inputOutput": "app URL＋発言/画像→feedback events",
+      "code": "source/node/state/観点に結ぶ、原文保持、権限イベントと分離",
+      "aiOrML": "AIが対象・評価範囲・不確実性を解釈",
+      "validationAndReturn": "称賛がlayoutのみならsemanticを正例にしない"
+    },
+    {
+      "id": "S23",
+      "name": "失敗の定着防止",
+      "inputOutput": "feedback→case/regression/rule candidates",
+      "code": "最小fixture、旧版再現、影響先検索、negative-case消費receipt",
+      "aiOrML": "AIが原因・一般化条件・例外を監査",
+      "validationAndReturn": "保存だけで閉じない。回帰は未実装なら未実装と記録"
+    },
+    {
+      "id": "S24",
+      "name": "学習と知見統合",
+      "inputOutput": "curated corpus→model/rules/retrieval snapshot",
+      "code": "重複排除、group split、実学習・比較評価、registry、次runへの注入",
+      "aiOrML": "AIがラベル・適用scope・矛盾を監査",
+      "validationAndReturn": "データ不足ならそのheadのみ保留。新モデルはshadowから昇格"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T01",
+      "change": "`research/SOURCE_MANIFEST.json`を起点にsource reconciliation",
+      "artifacts": "main/feature/live→取り込み差分manifest",
+      "acceptance": "owner/ID/HEAD、旧ファイルblob、公開sourceと別であること",
+      "dependencies": "なし"
+    },
+    {
+      "id": "T02",
+      "change": "`workflow/`を限定移植、`definitions.py`等のpolicy v2 adapter",
+      "artifacts": "旧graph＋review policy→新definition version",
+      "acceptance": "旧イベントreplay、旧G1/G3再許可待ちを復活させない、ユーザー承認を偽造しない",
+      "dependencies": "T01"
+    },
+    {
+      "id": "T03",
+      "change": "`workflow/adapters.py`へtextbook job adapter、`jobs.mjs`へ親run参照",
+      "artifacts": "workflow task→既存CLI job＋receipt",
+      "acceptance": "中断・二重claim・hash変更・同一job再利用、工程正本が一つ",
+      "dependencies": "T02"
+    },
+    {
+      "id": "T04",
+      "change": "`tools/textbook/ir/`、`schema.mjs`、app schema adapter",
+      "artifacts": "既存plan→共通typedIR",
+      "acceptance": "rich token round-trip、relation/term/slot/source保存",
+      "dependencies": "T01"
+    },
+    {
+      "id": "T05",
+      "change": "`source/import-word.py`拡張、`source/coverage.mjs`新設",
+      "artifacts": "原本→全block対応＋未対応一覧",
+      "acceptance": "無番号・図注・表・目次・OMML例、逆coverage",
+      "dependencies": "T04"
+    },
+    {
+      "id": "T06",
+      "change": "`solver/legacy-polynomial.py`と`solver/n07.mjs`adapter",
+      "artifacts": "problem contract→solution graph",
+      "acceptance": "capability/domain、旧数式の独立検算、N07の既存39試験を保持",
+      "dependencies": "T03,T04"
+    },
+    {
+      "id": "T07",
+      "change": "`complete-solutions.mjs`を計算/論証receiptへ分離",
+      "artifacts": "solution→検証済/監査待ちの根拠",
+      "acceptance": "固定証明文を機械証明済みにしない、条件・一般性の反例",
+      "dependencies": "T06"
+    },
+    {
+      "id": "T08",
+      "change": "`planner/candidates.mjs`をprofileと候補比較へ拡張",
+      "artifacts": "graph＋既習→最大3候補",
+      "acceptance": "DAG、局所→全体、次数順の適否、初回/反復の使い分け",
+      "dependencies": "T07"
+    },
+    {
+      "id": "T09",
+      "change": "`interaction/`新設、旧bind_blanksのtarget contract改修",
+      "artifacts": "候補→判断/関係/式生成/計算等の穴",
+      "acceptance": "`.result`以外、typed path、形式・誤答・ヒント・漏洩、4→3ヒント対応",
+      "dependencies": "T08"
+    },
+    {
+      "id": "T10",
+      "change": "`prose/`・`context/`新設",
+      "artifacts": "candidate→全文token＋必要な前結果",
+      "acceptance": "複数記号scope、元問・表の必要範囲、操作の文接続",
+      "dependencies": "T09"
+    },
+    {
+      "id": "T11",
+      "change": "`compile-lesson.mjs`、`integrate-n07.mjs`汎用adapter化",
+      "artifacts": "approved IR→既存app schema",
+      "acceptance": "exact content hash、semantic receipt、非対象差分ゼロ",
+      "dependencies": "T04,T10"
+    },
+    {
+      "id": "T12",
+      "change": "共通inline renderer adapter、`N07ReadingFlow.tsx` opt-in",
+      "artifacts": "app tokens→本文/前結果/履歴",
+      "acceptance": "term黒太字・本文math・slot挿入・旧表示保持、共有部分の影響",
+      "dependencies": "T11"
+    },
+    {
+      "id": "T13",
+      "change": "`TypesetFormula.tsx`等にsemantic group adapter",
+      "artifacts": "relation group→既存組版",
+      "acceptance": "等号・番号・折返し・幅、独立式の非連結、受入済みlayout回帰",
+      "dependencies": "T11"
+    },
+    {
+      "id": "T14",
+      "change": "`verify.mjs`分割拡張、`ai/CONTRACTS.md`更新",
+      "artifacts": "IR/visible state→指摘・AIbundle",
+      "acceptance": "事実と自己評価を分離、原資料/初学者監査、根拠と差戻し先",
+      "dependencies": "T08–T13"
+    },
+    {
+      "id": "T15",
+      "change": "`corpus/collect.py`、`normalize.py`、`episodes.py`新設",
+      "artifacts": "旧36/Work/chat/画像→observation/episode/case",
+      "acceptance": "取得範囲、原文vs要約、版、重複、旧/新Workキー衝突",
+      "dependencies": "T01,T04"
+    },
+    {
+      "id": "T16",
+      "change": "`corpus/labels.py`、`split.py`、export schema",
+      "artifacts": "case→curated dataset＋group split",
+      "acceptance": "unknown mask、partial praise、修正前後分離禁止、撤回履歴",
+      "dependencies": "T15"
+    },
+    {
+      "id": "T17",
+      "change": "`ml/prefetch.py`、`encode.py`、環境lock",
+      "artifacts": "model candidate→hash固定済encoder＋特徴cache",
+      "acceptance": "license・safetensors・prefix・長文・CPU実測、model取得失敗fallback",
+      "dependencies": "T16"
+    },
+    {
+      "id": "T18",
+      "change": "`ml/train.py`、`evaluate.py`、`registry.py`",
+      "artifacts": "dataset→固定head/SetFit候補＋評価",
+      "acceptance": "実fit、単一class保留、group評価、既知例をholdout扱いしない",
+      "dependencies": "T17"
+    },
+    {
+      "id": "T19",
+      "change": "`ml/rank.py`、`predict.py`、`retrieve.py`",
+      "artifacts": "有効候補/文脈→順位/リスク/関連例",
+      "acceptance": "有効性gate、ABSTAIN、モデル失効・version、pair不足fallback",
+      "dependencies": "T18"
+    },
+    {
+      "id": "T20",
+      "change": "S04/08/12/14/16のCLI入力とAI exportを接続",
+      "artifacts": "corpus/model/rules→生成・監査bundle",
+      "acceptance": "consumed case IDs、hash、未使用理由。保存だけで終わらない",
+      "dependencies": "T14,T19"
+    },
+    {
+      "id": "T21",
+      "change": "authoring/browser CI、旧runtimeテストの統合",
+      "artifacts": "一巡のrun→source/数学/意味/描画/進捗証拠",
+      "acceptance": "六反例＋例外、全表示状態、320/390/430/1440、第一タイトル保護",
+      "dependencies": "T03,T12,T13,T20"
+    },
+    {
+      "id": "T22",
+      "change": "既存release adapter＋hand-off receipt",
+      "artifacts": "approved source＋QA→実配信照合・直接URL",
+      "acceptance": "screenshot承認待ちなし、URL queryと実source混同なし、中断再公開防止",
+      "dependencies": "T21"
+    },
+    {
+      "id": "T23",
+      "change": "feedback→regression→curation→retrain接続",
+      "artifacts": "実評価→次run入力",
+      "acceptance": "一件の評価が次回生成/監査で実消費された証拠、rollback",
+      "dependencies": "T20,T22"
+    },
+    {
+      "id": "T24",
+      "change": "既存memory/Workへの統合、運用ガイド",
+      "artifacts": "実測・残件→正式runbook",
+      "acceptance": "mode混同なし、旧記録を消さず現行入口を一本化、未実装を明示",
+      "dependencies": "T23"
+    }
+  ],
+  "modelPlan": {
+    "baseline": "intfloat/multilingual-e5-small + per-dimension LogisticRegression",
+    "transfer": "SetFit v1.1.3",
+    "challenger": "Qwen/Qwen3-Embedding-0.6B frozen embedding",
+    "productionUse": "advisory-only after grouped evaluation and shadow",
+    "missingLabel": "exclude from per-dimension loss, never fill zero"
+  },
+  "authority": {
+    "repository": "rrikunagasige-dot/kyotsu-step-web",
+    "repoId": 1391122224,
+    "main": "618e2be2a0a4dab9fd853288148829a11b3b0b70",
+    "featureBase": "1e8403d711bdc835e76a9fabdd7d1b03cd548824",
+    "protectedAcceptedSource": "22bc43ba53fa87bb85e82e18a25db13a5c8a485c",
+    "liveAppSource": "4fb7a98e7f864839ccc1374080473df4ba60ce88"
+  }
+}

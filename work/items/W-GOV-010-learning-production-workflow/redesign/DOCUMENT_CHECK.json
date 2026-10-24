@@ -1,0 +1,64 @@
+{
+  "status": "PASS",
+  "scope": "proposal/document consistency only",
+  "applicationTestsRun": false,
+  "workflowImplementationTestsRun": false,
+  "modelTrainingRun": false,
+  "checks": [
+    {
+      "check": "json_parse",
+      "file": "PLAN.json",
+      "status": "PASS"
+    },
+    {
+      "check": "json_parse",
+      "file": "RECOVERED_CASE_INDEX.json",
+      "status": "PASS"
+    },
+    {
+      "check": "json_parse",
+      "file": "DOCUMENT_CHECK.json",
+      "status": "PASS"
+    },
+    {
+      "check": "json_parse",
+      "file": "research/legacy-cases.json",
+      "status": "PASS"
+    },
+    {
+      "check": "json_parse",
+      "file": "research/SOURCE_MANIFEST.json",
+      "status": "PASS"
+    },
+    {
+      "check": "relative_markdown_links",
+      "status": "PASS"
+    },
+    {
+      "check": "stage_and_task_coverage",
+      "status": "PASS",
+      "stages": 25,
+      "tasks": 24
+    },
+    {
+      "check": "recovery_counts_unique_record_ids",
+      "status": "PASS",
+      "observations": 82,
+      "notUniqueTrainingExamples": true
+    },
+    {
+      "check": "legacy_labels_preserved",
+      "status": "PASS"
+    }
+  ],
+  "artifactSHA256": {
+    "DESIGN.md": "c627637b076bf5ad8d892b6f391bb05ad5afa46b650b8e9383930d53e987d897",
+    "IMPLEMENTATION.md": "d8c9be69c2ce6980f9b40c69170e2bf5f626efdc36b6bc20016617bf94945088",
+    "ML_AND_CORPUS.md": "d66af09e3069bcc450875a57e3f07d155f4b800eac553d02c193c8179ba53d89",
+    "CONTRACTS.md": "ae796bcbd01b098d7569a523edbf37f9c75c8bbf4e6d3efb6793a52f134e27ad",
+    "RESEARCH.md": "51770650db4a3745ef3d615bff95d6baac86dee0f9559a570b47d6fec1eb2f9a",
+    "PROPOSAL_FULL.md": "c363ac8198b1e83118f4f87047b93e2e5bc90daac63df891e2e005d0be722fe6",
+    "PLAN.json": "85535752644f36f6d2352e64b9f4ef18958bd3c05fad668c697124298c45ae02",
+    "RECOVERED_CASE_INDEX.json": "cc15beb0ded59382eab4a90e1a1132811030e713c37257f228e55d835a791d77"
+  }
+}

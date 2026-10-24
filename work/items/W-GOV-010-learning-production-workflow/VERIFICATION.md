@@ -52,3 +52,7 @@ P-002 remains PROPOSED until reviewed and approved. No learner build/tests or pu
 - Pandoc3.1.3 source-conversion probe completed:397 Math /397 original oMath,14 image references, no empty Math/warnings, source unchanged. Semantic preservation NOT VERIFIED by counts.
 - P-002 appendix F07 numeric example corrected to6/15=2/5; previous commit retains provenance. P002_DOCUMENT_CHECK.json updated to the corrected appendix hash, retaining the superseded hash record.
 - References and probe outputs are research evidence; framework adoption, production code, generated N07 material, performance and deployment remain unimplemented/unverified.
+
+## P-003 design verification (2026-10-24)
+
+`redesign/DOCUMENT_CHECK.json`: JSON parse, relative document links, contiguous25 stages/24 tasks,82 unique observation IDs (not unique case count), preserved legacy10/26 labels, and document hashes PASS. The full proposal is43,656 characters before any subsequent document revision. Reference source and model evidence are in RESEARCH.md and research/SOURCE_MANIFEST.json. No new runtime tests, model inference/training or app publication were performed. Existing619/39 results belong to the earlier implementation and are not evidence that P-003 works. Documents/research only; source/data/public/workflow runtime paths unchanged.

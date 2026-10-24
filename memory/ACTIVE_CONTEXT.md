@@ -111,3 +111,6 @@ W-MATH-029 latest checkpoint: all first-section repairs published for user revie
 
 
 FINAL W-MATH-029 sourcef2a184b34a55650ebb2a04792de46cc7059bbaab is publicly deployed via7e31f353ea682f7b4d1f2ef18eeede8248ad997a; final run40061423814 SUCCESS. One repeated N06 introduction removed after screenshot reading; same71 stages/256 decisions/106 source questions. Compiled and actual public21-flow suites,446 tests and396 current equations PASS. Full-section user review pending; previous N01 sample acceptance preserved. Current app link uses?v=f2a184b3. Do not start another theme without user steering.
+
+## 2026-10-24 current priority — workflow redesign P-003
+User requests a complete code＋AI＋actual ML workflow design before further N07 corrections. Read `work/items/W-GOV-010-learning-production-workflow/redesign/PROPOSAL_FULL.md` and PLAN.json.25 stages/24 implementation tasks;82 raw recovered observations include duplicates and unknowns, not82 training examples. Research/design complete; implementation NOT approved by the design request. No model trained or app changed. N07 six negatives remain OPEN; accepted first-title22bc43ba protected. Main618e2be2 still serves4fb7a98e. Preserve existing public-app direct-URL review policy, without restoring obsolete screenshot/publication reapproval gates.

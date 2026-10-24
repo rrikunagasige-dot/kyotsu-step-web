@@ -1,0 +1,996 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Design-time recovery index, not a ready training dataset",
+  "trainingRun": false,
+  "rawObservationCount": 82,
+  "countsBySource": {
+    "legacy_catalog": 36,
+    "versioned_user_feedback_registry": 6,
+    "user_message_in_current_context": 20,
+    "repository_record": 8,
+    "personal_context_summary": 12
+  },
+  "countsByLabelBeforeDeduplication": {
+    "UNKNOWN": 47,
+    "NEGATIVE": 32,
+    "POSITIVE": 3
+  },
+  "warning": "Counts include duplicate observations and scoped/summary candidates. Do not add counts as unique training samples. No dataset has been promoted.",
+  "records": [
+    {
+      "id": "legacy:P01",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P01",
+      "label": "UNKNOWN",
+      "dimension": "平均速度の式を別々の白枠に分断",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P02",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P02",
+      "label": "UNKNOWN",
+      "dimension": "平均速度の記号が二重に重なる",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P03",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P03",
+      "label": "UNKNOWN",
+      "dimension": "穴が最後の整理だけを要求する",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P04",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P04",
+      "label": "UNKNOWN",
+      "dimension": "図の参照時に図がない",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P05",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P05",
+      "label": "UNKNOWN",
+      "dimension": "元図を未承認の生成図で置換",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P06",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P06",
+      "label": "UNKNOWN",
+      "dimension": "概念と図の読み取りを一律に分離",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P07",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P07",
+      "label": "UNKNOWN",
+      "dimension": "図がぼやける・必要箇所が隠れる",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P08",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P08",
+      "label": "UNKNOWN",
+      "dimension": "合成速度の例題が関係式を使わせない",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P09",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P09",
+      "label": "UNKNOWN",
+      "dimension": "相対速度が用語当てになっている",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P10",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P10",
+      "label": "UNKNOWN",
+      "dimension": "水平投射の修正完了を早く宣言",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P11",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P11",
+      "label": "UNKNOWN",
+      "dimension": "七つの内部単元を大見出しとして露出",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P12",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P12",
+      "label": "UNKNOWN",
+      "dimension": "力と運動が題名だけ変わり本文が追随しない",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P13",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P13",
+      "label": "UNKNOWN",
+      "dimension": "平均速度の最初の例で関係と結果を別々に穴にする",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P14",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P14",
+      "label": "UNKNOWN",
+      "dimension": "合成・分解の公式を例題で実際に使う",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P15",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P15",
+      "label": "UNKNOWN",
+      "dimension": "雨と自転車の相対速度",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P16",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P16",
+      "label": "UNKNOWN",
+      "dimension": "加速度から運動公式を導く",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P17",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P17",
+      "label": "UNKNOWN",
+      "dimension": "水平投射で共通の時間を再利用",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P18",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P18",
+      "label": "UNKNOWN",
+      "dimension": "斜方投射の修正版",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P19",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P19",
+      "label": "UNKNOWN",
+      "dimension": "力と抵抗から終端速度へ",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:S01",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "S01",
+      "label": "UNKNOWN",
+      "dimension": "集合が概念説明書になっている",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:S02",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "S02",
+      "label": "UNKNOWN",
+      "dimension": "集合学習が単なる問題列になっている",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:S03",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "S03",
+      "label": "UNKNOWN",
+      "dimension": "集合previewへの強い肯定の候補",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:S04",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "S04",
+      "label": "UNKNOWN",
+      "dimension": "約数を集めてから集合を名付ける",
+      "artifactVersion": "e907bf5fc22025fbd74127b9b72176b90aaeb36e",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:S05",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "S05",
+      "label": "UNKNOWN",
+      "dimension": "ド・モルガンを図の一致から導く",
+      "artifactVersion": "e907bf5fc22025fbd74127b9b72176b90aaeb36e",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:R01",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "R01",
+      "label": "UNKNOWN",
+      "dimension": "現在の小問と必要な過去結果だけを示す",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:R02",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "R02",
+      "label": "UNKNOWN",
+      "dimension": "問題と解説・穴埋めを分ける",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:N01",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "N01",
+      "label": "NEGATIVE",
+      "dimension": "第四の大見出し",
+      "artifactVersion": "171c04781f32c1286a0762905891b582714834f9",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:N02",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "N02",
+      "label": "NEGATIVE",
+      "dimension": "2A−3Bの計算",
+      "artifactVersion": "171c04781f32c1286a0762905891b582714834f9",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:N03",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "N03",
+      "label": "NEGATIVE",
+      "dimension": "二項式と三項式の積",
+      "artifactVersion": "171c04781f32c1286a0762905891b582714834f9",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:N04",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "N04",
+      "label": "NEGATIVE",
+      "dimension": "掛算表の役割",
+      "artifactVersion": "171c04781f32c1286a0762905891b582714834f9",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:N05",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "N05",
+      "label": "NEGATIVE",
+      "dimension": "和と差の積",
+      "artifactVersion": "171c04781f32c1286a0762905891b582714834f9",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:N06",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "N06",
+      "label": "NEGATIVE",
+      "dimension": "公式と展開の選択",
+      "artifactVersion": "171c04781f32c1286a0762905891b582714834f9",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:N07",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "N07",
+      "label": "NEGATIVE",
+      "dimension": "複数行を束ねた選択肢",
+      "artifactVersion": "171c04781f32c1286a0762905891b582714834f9",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:N08",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "N08",
+      "label": "NEGATIVE",
+      "dimension": "置換後の展開",
+      "artifactVersion": "171c04781f32c1286a0762905891b582714834f9",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:N09",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "N09",
+      "label": "NEGATIVE",
+      "dimension": "文章として読めない",
+      "artifactVersion": "171c04781f32c1286a0762905891b582714834f9",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:N10",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "N10",
+      "label": "NEGATIVE",
+      "dimension": "四因子の組合せ",
+      "artifactVersion": "171c04781f32c1286a0762905891b582714834f9",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "N07-USER-F01",
+      "sourceType": "versioned_user_feedback_registry",
+      "sourcePath": "../n07/feedback/NEGATIVE_CASES.json",
+      "label": "NEGATIVE",
+      "dimension": "前の計算と今回の判断が結びつかない",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "nodes": [
+        "n07-q03-cycle"
+      ],
+      "eligibility": "KNOWN_REGRESSION_NOT_UNSEEN_TEST",
+      "evidence": {
+        "fileName": "0ee7fc343217e1117f5f8911368ea1fe.png",
+        "sha256": "6814bc8a1ab3e9fc6b57e33cc6fd00606c811ae0a8409541fba0d41186068e02"
+      },
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "N07-USER-F02",
+      "sourceType": "versioned_user_feedback_registry",
+      "sourcePath": "../n07/feedback/NEGATIVE_CASES.json",
+      "label": "NEGATIVE",
+      "dimension": "10だけを式番号付きで独立表示",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "nodes": [
+        "n07-q06-scale"
+      ],
+      "eligibility": "KNOWN_REGRESSION_NOT_UNSEEN_TEST",
+      "evidence": {
+        "fileName": "f859d006bed416f44af2f682862352e4.png",
+        "sha256": "2ed5eb49f280682c47052e3884da9210f66820bfc5298e23a4cc446abb1fd569"
+      },
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "N07-USER-F03",
+      "sourceType": "versioned_user_feedback_registry",
+      "sourcePath": "../n07/feedback/NEGATIVE_CASES.json",
+      "label": "NEGATIVE",
+      "dimension": "引くだけが本文から独立",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "nodes": [
+        "n07-q07-subtract"
+      ],
+      "eligibility": "KNOWN_REGRESSION_NOT_UNSEEN_TEST",
+      "evidence": {
+        "fileName": "83457a43084ff1fbbcbef9c523092cb5.png",
+        "sha256": "1f2a13bceb62bcfda98beea2693d1c667b9978ca919f5c2ca9052c050f564082"
+      },
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "N07-USER-F04",
+      "sourceType": "versioned_user_feedback_registry",
+      "sourcePath": "../n07/feedback/NEGATIVE_CASES.json",
+      "label": "NEGATIVE",
+      "dimension": "(28)の(10-1)xと(29)の9xが等号で結ばれない",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "nodes": [
+        "n07-q07-coefficient"
+      ],
+      "eligibility": "KNOWN_REGRESSION_NOT_UNSEEN_TEST",
+      "evidence": {
+        "fileName": "6becaa6c6f54a30d594c6c66d15e3201.png",
+        "sha256": "c6fca58d8fc8145df8abbcf54af97fb324c68cd7d5469d85682d59f5d59c9583"
+      },
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "N07-USER-F05",
+      "sourceType": "versioned_user_feedback_registry",
+      "sourcePath": "../n07/feedback/NEGATIVE_CASES.json",
+      "label": "NEGATIVE",
+      "dimension": "素数・素因数分解の初出定義語が通常文字",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "nodes": [
+        "n07-q11-factor-ten"
+      ],
+      "eligibility": "KNOWN_REGRESSION_NOT_UNSEEN_TEST",
+      "evidence": {
+        "fileName": "2b3d22138cb01961ee770f4f228f92e1.png",
+        "sha256": "08a194aebe3d23880b1a9ea1c6b82bc9c46c8763759db499218679fac811e0b6"
+      },
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "N07-USER-F06",
+      "sourceType": "versioned_user_feedback_registry",
+      "sourcePath": "../n07/feedback/NEGATIVE_CASES.json",
+      "label": "NEGATIVE",
+      "dimension": "p/(2^u5^v)、2^(h−u)等が本文の普通の文字のまま",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "nodes": [
+        "n07-q11-converse",
+        "n07-q07-coefficient"
+      ],
+      "eligibility": "KNOWN_REGRESSION_NOT_UNSEEN_TEST",
+      "evidence": {
+        "fileName": "13c777f56cc1cba7e52fdcf545e7744f.png",
+        "sha256": "2f13547d5da27e6aa3d98a059f5df95cc47631c2fc3479e6da68872d3c4bfb70"
+      },
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "chat-visible:01",
+      "sourceType": "user_message_in_current_context",
+      "quote": "内容可以不用再改了。就这俩问题",
+      "quoteIsExcerpt": true,
+      "label": "UNKNOWN",
+      "dimension": "scope_protection",
+      "artifactVersion": null,
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "chat-visible:02",
+      "sourceType": "user_message_in_current_context",
+      "quote": "比如说上一页的结论其实有地方记录的，你这个好像没有。",
+      "quoteIsExcerpt": true,
+      "label": "NEGATIVE",
+      "dimension": "prior_result_context",
+      "artifactVersion": null,
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "chat-visible:03",
+      "sourceType": "user_message_in_current_context",
+      "quote": "但是挖的空就是算的部分，推导部分挖的空再多一些。",
+      "quoteIsExcerpt": true,
+      "label": "NEGATIVE",
+      "dimension": "reasoning_blanks",
+      "artifactVersion": null,
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "chat-visible:04",
+      "sourceType": "user_message_in_current_context",
+      "quote": "推导的话式子尽量排整齐一些。",
+      "quoteIsExcerpt": true,
+      "label": "NEGATIVE",
+      "dimension": "equation_alignment",
+      "artifactVersion": null,
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "chat-visible:05",
+      "sourceType": "user_message_in_current_context",
+      "quote": "内容已经是很可疑了式子还是太左边了。",
+      "quoteIsExcerpt": true,
+      "label": "NEGATIVE",
+      "dimension": "equation_centering",
+      "artifactVersion": null,
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "chat-visible:06",
+      "sourceType": "user_message_in_current_context",
+      "quote": "式子还应该加编号",
+      "quoteIsExcerpt": true,
+      "label": "NEGATIVE",
+      "dimension": "equation_numbering",
+      "artifactVersion": null,
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "chat-visible:07",
+      "sourceType": "user_message_in_current_context",
+      "quote": "这个版本可以。非常可以。我觉得可以正式通过了。",
+      "quoteIsExcerpt": true,
+      "label": "POSITIVE",
+      "dimension": "first_title_scoped_acceptance",
+      "artifactVersion": "22bc43ba53fa87bb85e82e18a25db13a5c8a485c",
+      "scope": "first title only",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "chat-visible:08",
+      "sourceType": "user_message_in_current_context",
+      "quote": "重点表扬真的是重点表扬。做的非常非常好。特别是排版我的天哪太舒服了看着。",
+      "quoteIsExcerpt": true,
+      "label": "POSITIVE",
+      "dimension": "n07_layout_only",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "scope": "layout only",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "chat-visible:09",
+      "sourceType": "user_message_in_current_context",
+      "quote": "这个解释挺不错的，前面这个例题你搞了吗？",
+      "quoteIsExcerpt": true,
+      "label": "NEGATIVE",
+      "dimension": "example_context",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": [
+        "N07-USER-F01"
+      ]
+    },
+    {
+      "id": "chat-visible:10",
+      "sourceType": "user_message_in_current_context",
+      "quote": "这个10看着也太突兀了",
+      "quoteIsExcerpt": true,
+      "label": "NEGATIVE",
+      "dimension": "scalar_meaning",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": [
+        "N07-USER-F02"
+      ]
+    },
+    {
+      "id": "chat-visible:11",
+      "sourceType": "user_message_in_current_context",
+      "quote": "突然来个引く",
+      "quoteIsExcerpt": true,
+      "label": "NEGATIVE",
+      "dimension": "operation_in_sentence",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": [
+        "N07-USER-F03"
+      ]
+    },
+    {
+      "id": "chat-visible:12",
+      "sourceType": "user_message_in_current_context",
+      "quote": "28，29看着有点不舒服，我们这个是推公式这个要搞等式那种。",
+      "quoteIsExcerpt": true,
+      "label": "NEGATIVE",
+      "dimension": "derivation_relation",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": [
+        "N07-USER-F04"
+      ]
+    },
+    {
+      "id": "chat-visible:13",
+      "sourceType": "user_message_in_current_context",
+      "quote": "有些文本就不是放在公式里面的字体明显的不是latex看着很别扭。就是公式哦在文本里面的",
+      "quoteIsExcerpt": true,
+      "label": "NEGATIVE",
+      "dimension": "inline_math",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": [
+        "N07-USER-F06"
+      ]
+    },
+    {
+      "id": "chat-visible:14",
+      "sourceType": "user_message_in_current_context",
+      "quote": "对于概念素因数分解我们得黑子标出来阿对吧",
+      "quoteIsExcerpt": true,
+      "label": "NEGATIVE",
+      "dimension": "definition_term",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": [
+        "N07-USER-F05"
+      ]
+    },
+    {
+      "id": "chat-visible:15",
+      "sourceType": "user_message_in_current_context",
+      "quote": "完全的没有compile出来所以就看着不舒服，跟4一个样",
+      "quoteIsExcerpt": true,
+      "label": "NEGATIVE",
+      "dimension": "render_coverage",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": [
+        "N07-USER-F06"
+      ]
+    },
+    {
+      "id": "chat-visible:16",
+      "sourceType": "user_message_in_current_context",
+      "quote": "这个选项，挤在一起了",
+      "quoteIsExcerpt": true,
+      "label": "NEGATIVE",
+      "dimension": "choice_spacing",
+      "artifactVersion": null,
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "chat-visible:17",
+      "sourceType": "user_message_in_current_context",
+      "quote": "你这个是什么狗屎推导莫名其妙的突然来这个。我看不懂阿",
+      "quoteIsExcerpt": true,
+      "label": "NEGATIVE",
+      "dimension": "unmotivated_step",
+      "artifactVersion": null,
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "chat-visible:18",
+      "sourceType": "user_message_in_current_context",
+      "quote": "就是好像堆起来",
+      "quoteIsExcerpt": true,
+      "label": "NEGATIVE",
+      "dimension": "teaching_coherence",
+      "artifactVersion": null,
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "chat-visible:19",
+      "sourceType": "user_message_in_current_context",
+      "quote": "空就是填空没有",
+      "quoteIsExcerpt": true,
+      "label": "NEGATIVE",
+      "dimension": "missing_blanks",
+      "artifactVersion": null,
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "chat-visible:20",
+      "sourceType": "user_message_in_current_context",
+      "quote": "我们先合并1此项",
+      "quoteIsExcerpt": true,
+      "label": "UNKNOWN",
+      "dimension": "degree_order_example",
+      "artifactVersion": null,
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "work-recovered:01",
+      "sourceType": "repository_record",
+      "sourcePath": "work/items/W-MATH-031-section-one-typesetting/USER_ACCEPTANCE_20261024.md",
+      "sourceFileSHA256": "d776e17bfd26d00f2e34c797be48532c69cdb8fa3026122f88fae15005fab16c",
+      "recordSnapshot": "1e8403d711bdc835e76a9fabdd7d1b03cd548824",
+      "label": "POSITIVE",
+      "dimension": "scoped final acceptance",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": [
+        "chat-visible:07"
+      ]
+    },
+    {
+      "id": "work-recovered:02",
+      "sourceType": "repository_record",
+      "sourcePath": "work/items/W-MATH-025-factor-hint-leak-qa-proposals/FIVE_ITEM_ACCEPTANCE_20261023.md",
+      "sourceFileSHA256": "9c96eb8e5ebe9126d6e0b1046c83e4534b37d02eceab422940605862dee1701e",
+      "recordSnapshot": "1e8403d711bdc835e76a9fabdd7d1b03cd548824",
+      "label": "UNKNOWN",
+      "dimension": "extract scope and distinguish permission from quality",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "work-recovered:03",
+      "sourceType": "repository_record",
+      "sourcePath": "work/items/W-MATH-025-factor-hint-leak-qa-proposals/SEVEN_ITEM_ACCEPTANCE_20261023.md",
+      "sourceFileSHA256": "30e0d642f440a1179c9ac9339acb68e168519b650f83d94bf28cabbdc9ce4100",
+      "recordSnapshot": "1e8403d711bdc835e76a9fabdd7d1b03cd548824",
+      "label": "UNKNOWN",
+      "dimension": "extract scope and distinguish permission from quality",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "work-recovered:04",
+      "sourceType": "repository_record",
+      "sourcePath": "work/items/W-MATH-025-factor-hint-leak-qa-proposals/P016_VISUAL_ACCEPTANCE_20261023.md",
+      "sourceFileSHA256": "14ae9e399240214850b948fbd5fd29663e677304ae8ec4148bcf035c4eecda7d",
+      "recordSnapshot": "1e8403d711bdc835e76a9fabdd7d1b03cd548824",
+      "label": "UNKNOWN",
+      "dimension": "extract scope and distinguish permission from quality",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "work-recovered:05",
+      "sourceType": "repository_record",
+      "sourcePath": "work/items/W-MATH-017-n11-arithmetic-learner-operations/P006_GATE1_VISUAL_ACCEPTANCE.md",
+      "sourceFileSHA256": "1498248c98adb1b51e7621d905cd7fa6c163c625b7e4b7a1b345d4719d7d3fa1",
+      "recordSnapshot": "1e8403d711bdc835e76a9fabdd7d1b03cd548824",
+      "label": "UNKNOWN",
+      "dimension": "extract scope and distinguish permission from quality",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "work-recovered:06",
+      "sourceType": "repository_record",
+      "sourcePath": "work/items/W-MATH-028-n01-teaching-sequence/FINDINGS.md",
+      "sourceFileSHA256": "518d1615d3233eff80efccdcf00f03abfa91f5c296247cf03110b165dccd7d19",
+      "recordSnapshot": "1e8403d711bdc835e76a9fabdd7d1b03cd548824",
+      "label": "UNKNOWN",
+      "dimension": "extract scope and distinguish permission from quality",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "work-recovered:07",
+      "sourceType": "repository_record",
+      "sourcePath": "work/items/W-MATH-029-section-one-teaching/FINDINGS.md",
+      "sourceFileSHA256": "c28c77e5232e3525958705e3c5c437163204bec22875b64b8028e73230e697bc",
+      "recordSnapshot": "1e8403d711bdc835e76a9fabdd7d1b03cd548824",
+      "label": "UNKNOWN",
+      "dimension": "extract scope and distinguish permission from quality",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "work-recovered:08",
+      "sourceType": "repository_record",
+      "sourcePath": "work/items/W-MATH-030-section-one-results-and-blanks/FINDINGS.md",
+      "sourceFileSHA256": "7e64e1a19a66aa74c098d0efb2f83c3bfe59e134a6bd3bae03196d69bb4998f0",
+      "recordSnapshot": "1e8403d711bdc835e76a9fabdd7d1b03cd548824",
+      "label": "UNKNOWN",
+      "dimension": "extract scope and distinguish permission from quality",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "retrieval-candidate:01",
+      "sourceType": "personal_context_summary",
+      "reportedUserTime": "2026-10-03T05:09:23Z",
+      "summary": "集合87–97、前頁結論・後半同様に圧縮・思考ノード",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED",
+      "quoteVerified": false,
+      "artifactVersion": null,
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "retrieval-candidate:02",
+      "sourceType": "personal_context_summary",
+      "reportedUserTime": "2026-09-30T12:11:36Z",
+      "summary": "物理N01、関係式の穴二箇所だけ追加",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED",
+      "quoteVerified": false,
+      "artifactVersion": null,
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "retrieval-candidate:03",
+      "sourceType": "personal_context_summary",
+      "reportedUserTime": "2026-10-03T14:29:49Z",
+      "summary": "概念は黒字",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED",
+      "quoteVerified": false,
+      "artifactVersion": null,
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "retrieval-candidate:04",
+      "sourceType": "personal_context_summary",
+      "reportedUserTime": "2026-09-11T06:20:41Z",
+      "summary": "問題から結論まで連続する解答と重要な穴",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED",
+      "quoteVerified": false,
+      "artifactVersion": null,
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "retrieval-candidate:05",
+      "sourceType": "personal_context_summary",
+      "reportedUserTime": "2026-10-21T08:54:00Z",
+      "summary": "集合の文章中の穴、大きな白枠への否定",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED",
+      "quoteVerified": false,
+      "artifactVersion": null,
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "retrieval-candidate:06",
+      "sourceType": "personal_context_summary",
+      "reportedUserTime": "2026-10-21T10:37:24Z",
+      "summary": "N11Q05–06、四行の不等式内に穴",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED",
+      "quoteVerified": false,
+      "artifactVersion": null,
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "retrieval-candidate:07",
+      "sourceType": "personal_context_summary",
+      "reportedUserTime": "2026-10-04T05:42:35Z",
+      "summary": "集合完成版、概念導入と例題・証明の区別",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED",
+      "quoteVerified": false,
+      "artifactVersion": null,
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "retrieval-candidate:08",
+      "sourceType": "personal_context_summary",
+      "reportedUserTime": "2026-10-14T01:54:35Z",
+      "summary": "共通部分の二図のみ修正",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED",
+      "quoteVerified": false,
+      "artifactVersion": null,
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "retrieval-candidate:09",
+      "sourceType": "personal_context_summary",
+      "reportedUserTime": "2026-10-17T11:56:39Z",
+      "summary": "一節二〜三見出し",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED",
+      "quoteVerified": false,
+      "artifactVersion": null,
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "retrieval-candidate:10",
+      "sourceType": "personal_context_summary",
+      "reportedUserTime": "2026-10-24T00:54:06Z",
+      "summary": "代入・操作・計算の小段階化",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED",
+      "quoteVerified": false,
+      "artifactVersion": null,
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "retrieval-candidate:11",
+      "sourceType": "personal_context_summary",
+      "reportedUserTime": "2026-10-24T00:55:41Z",
+      "summary": "穴の役割と学生の思考",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED",
+      "quoteVerified": false,
+      "artifactVersion": null,
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "retrieval-candidate:12",
+      "sourceType": "personal_context_summary",
+      "reportedUserTime": "2026-10-10T12:47:36Z",
+      "summary": "移管後Section2・3の導きの確認",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED",
+      "quoteVerified": false,
+      "artifactVersion": null,
+      "possibleDuplicateOf": []
+    }
+  ]
+}

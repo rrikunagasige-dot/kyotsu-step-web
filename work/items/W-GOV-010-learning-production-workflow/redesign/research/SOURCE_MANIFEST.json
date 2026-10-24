@@ -1,0 +1,317 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-24",
+  "repository": "rrikunagasige-dot/kyotsu-step-web",
+  "main": "618e2be2a0a4dab9fd853288148829a11b3b0b70",
+  "feature": "1e8403d711bdc835e76a9fabdd7d1b03cd548824",
+  "publishedSource": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+  "legacyFiles": [
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/corpus/CASEBOOK.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e3a0e260dd7f9739f416aa6ae561bec2425a9e78",
+      "size": 27698,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/blobs/e3a0e260dd7f9739f416aa6ae561bec2425a9e78"
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/corpus/LABEL_POLICY.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "25b9f71a90eb4757fcae212a4095ae4bb0aabfbd",
+      "size": 6248,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/blobs/25b9f71a90eb4757fcae212a4095ae4bb0aabfbd"
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/corpus/REPORT.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4e75ba86f21c4bcb6ee535fd8ca821d2b140eeed",
+      "size": 4094,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/blobs/4e75ba86f21c4bcb6ee535fd8ca821d2b140eeed"
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/corpus/cases.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "74a725ddfdf00c653025ccac31ecfa1dff2398c8",
+      "size": 52959,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/blobs/74a725ddfdf00c653025ccac31ecfa1dff2398c8"
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/corpus/validate_corpus.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9ffbd5575f500e5a02fd43dd456808dcbaad6445",
+      "size": 2692,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/blobs/9ffbd5575f500e5a02fd43dd456808dcbaad6445"
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/corpus/validation.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9982b2ed3c0fb1854400f6362ec7acf2a1373085",
+      "size": 488,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/blobs/9982b2ed3c0fb1854400f6362ec7acf2a1373085"
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/engine/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "85f862443b76f1e39a4433064d8dc408e43a391a",
+      "size": 6789,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/blobs/85f862443b76f1e39a4433064d8dc408e43a391a"
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/engine/approved_plans.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "012730a9b0195629e4d9d478c9cf014ee3d5d980",
+      "size": 793,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/blobs/012730a9b0195629e4d9d478c9cf014ee3d5d980"
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/engine/browser_check.cjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c70383ed7d036915e395119b326f3c84c2cd7494",
+      "size": 4896,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/blobs/c70383ed7d036915e395119b326f3c84c2cd7494"
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/engine/build_catalog.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3e0d2feebfba945bddbcbf5525953108e7e2a6d0",
+      "size": 899,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/blobs/3e0d2feebfba945bddbcbf5525953108e7e2a6d0"
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/engine/catalog.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c79fec83f85d0fc9bf84d6b623ffea25d0e028f7",
+      "size": 14350,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/blobs/c79fec83f85d0fc9bf84d6b623ffea25d0e028f7"
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/engine/engine.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b6329726d5f3d1dbb60ce25b0b06580d0d48f09a",
+      "size": 20057,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/blobs/b6329726d5f3d1dbb60ce25b0b06580d0d48f09a"
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/engine/evaluate.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e82b31f1a75f62c3a5093cc993b5619333b8ae02",
+      "size": 5298,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/blobs/e82b31f1a75f62c3a5093cc993b5619333b8ae02"
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/engine/example_practice.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "abf1f2c44dd2295e2e3d941e56f81a88133ce5c7",
+      "size": 3172,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/blobs/abf1f2c44dd2295e2e3d941e56f81a88133ce5c7"
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/engine/example_textbook.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d2dc35f2ecf1d5eb6221393962900741543e7d7d",
+      "size": 7436,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/blobs/d2dc35f2ecf1d5eb6221393962900741543e7d7d"
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/engine/install_test_font.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8a101ecbf01019bfd6694bf8debbed4c2460732d",
+      "size": 1223,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/blobs/8a101ecbf01019bfd6694bf8debbed4c2460732d"
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/engine/make_examples.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9baabf6a3d9d8478b5a3017d917ea22b8a62b1f2",
+      "size": 4691,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/blobs/9baabf6a3d9d8478b5a3017d917ea22b8a62b1f2"
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/engine/math_core.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2d9a45659df4791bb9c6e055eb094838f0c64201",
+      "size": 4677,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/blobs/2d9a45659df4791bb9c6e055eb094838f0c64201"
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/engine/patterns.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0f9f0d6c214be6f04e06c120571b6fc345eb942f",
+      "size": 1315,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/blobs/0f9f0d6c214be6f04e06c120571b6fc345eb942f"
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/engine/templates.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0075743c98018fed4e5392b0dbc36d883ae13a64",
+      "size": 615,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/blobs/0075743c98018fed4e5392b0dbc36d883ae13a64"
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/engine/test_engine.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "655b1bdf1f08d3edd55979f90fe0873bbf3c8987",
+      "size": 5765,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/blobs/655b1bdf1f08d3edd55979f90fe0873bbf3c8987"
+    },
+    {
+      "path": "workflow/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ba8ca2c384d149d3225ac37ddde36edb00045e72",
+      "size": 7985,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/blobs/ba8ca2c384d149d3225ac37ddde36edb00045e72"
+    },
+    {
+      "path": "workflow/adapters.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9a3a56c075462f9763c5ad5ae33b399e89ea2136",
+      "size": 10059,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/blobs/9a3a56c075462f9763c5ad5ae33b399e89ea2136"
+    },
+    {
+      "path": "workflow/cli.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "487b341fec3fa6b5d47840c236b692c15b384ea5",
+      "size": 3093,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/blobs/487b341fec3fa6b5d47840c236b692c15b384ea5"
+    },
+    {
+      "path": "workflow/contracts.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b599d1e7676de29fed37c413167093a4f2916c0b",
+      "size": 5178,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/blobs/b599d1e7676de29fed37c413167093a4f2916c0b"
+    },
+    {
+      "path": "workflow/definitions.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4a54f8105774d7bd90d7261956fbe20b1a8f32f5",
+      "size": 3754,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/blobs/4a54f8105774d7bd90d7261956fbe20b1a8f32f5"
+    },
+    {
+      "path": "workflow/rules/mapping.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9b505e041c3889d4ecce072f0317b00ee78469b7",
+      "size": 6862,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/blobs/9b505e041c3889d4ecce072f0317b00ee78469b7"
+    },
+    {
+      "path": "workflow/runtime.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ee3bd536d32eadcf5001bc560b9f261cf5470015",
+      "size": 26754,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/blobs/ee3bd536d32eadcf5001bc560b9f261cf5470015"
+    },
+    {
+      "path": "workflow/scenarios.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5e2d15ff9b2c45d75e0f90bc898b6314c144807f",
+      "size": 1669,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/blobs/5e2d15ff9b2c45d75e0f90bc898b6314c144807f"
+    },
+    {
+      "path": "workflow/store.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8c4bddf21889a8f9ee5d162f4483e5d8fd5a7327",
+      "size": 3783,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/blobs/8c4bddf21889a8f9ee5d162f4483e5d8fd5a7327"
+    },
+    {
+      "path": "workflow/test_workflow.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3fe752ef10eb7a16510806460306fff0cde9d6db",
+      "size": 26272,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/blobs/3fe752ef10eb7a16510806460306fff0cde9d6db"
+    },
+    {
+      "path": "workflow/verify_all.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4648c02e39b186ac7f35429ec040d6f9ddf005e8",
+      "size": 2032,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/blobs/4648c02e39b186ac7f35429ec040d6f9ddf005e8"
+    },
+    {
+      "path": "workflow/views.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b74036276d605f1eae94937f4b6332ae390edd55",
+      "size": 3801,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/git/blobs/b74036276d605f1eae94937f4b6332ae390edd55"
+    }
+  ],
+  "inspectedExtra": [
+    "corpus/cases.json",
+    "corpus/LABEL_POLICY.md",
+    "engine/evaluate.py",
+    "workflow/store.py",
+    "workflow/adapters.py"
+  ],
+  "externalCode": [
+    {
+      "repo": "huggingface/setfit",
+      "revision": "fc2ff4df0eb409724b7caef2126e628a23a5e5ba",
+      "tag": "v1.1.3",
+      "files": [
+        "src/setfit/modeling.py",
+        "src/setfit/trainer.py",
+        "LICENSE"
+      ],
+      "license": "Apache-2.0",
+      "use": "planned-library-not-copied"
+    }
+  ],
+  "models": [
+    {
+      "id": "intfloat/multilingual-e5-small",
+      "proposedRevision": "fd1525a9fd15316a2d503bf26ab031a61d056e98",
+      "revisionEvidence": "HF commit page verified; pinned config/modules fetch unsuccessful; weight hashes not downloaded",
+      "license": "MIT",
+      "status": "selected-for-baseline-probe"
+    },
+    {
+      "id": "Qwen/Qwen3-Embedding-0.6B",
+      "proposedRevision": "97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+      "revisionEvidence": "HF model API",
+      "license": "Apache-2.0",
+      "status": "challenger-only"
+    }
+  ],
+  "notPerformed": [
+    "model-weight-download",
+    "model-training",
+    "application-modification",
+    "publication"
+  ]
+}

@@ -19,3 +19,9 @@ Current: M5 N07 integration complete at4fb7a98e7f864839ccc1374080473df4ba60ce88.
 
 Publication: release40101675993 PASS, hosting main618e2be2 points to exact source4fb7a98e. Compiled N07/first-title typography+history and hosted exact-source/N07/first-title typography checks all passed. See n07/integration/VERIFICATION.json. No unseen N08–NE02 content is promoted. Existing first-title acceptance remains22bc43ba.
 Next: user hands-on N07 feedback at https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=4fb7a98e#/learning/textbook/math-numbers-expressions-n07. Technical implementation/publication verification and memory close are complete. The approved N07 design is no longer awaiting design approval; user app acceptance is still distinct.
+
+## P-003 workflow redesign — current user priority, 2026-10-24
+
+Current scope: design/research/case recovery only, PROPOSED for implementation. User explicitly prioritizes rebuilding the workflow before N07 correction. Existing P-002 approval and its completed pilot remain historical facts; they do not approve the new ML/redesign implementation.
+
+The full concrete proposal is [redesign/PROPOSAL_FULL.md](redesign/PROPOSAL_FULL.md). It specifies25 stages,24 implementation tasks, reuse of both legacy and current code, semantic IR and checks, actual supervised/transfer training, grouped evaluation, shadow/fallback and feedback consumption.82 raw observations are indexed, including old36,6 N07 records,20 visible-chat excerpts,8 repository records and12 retrieval-summary candidates. Duplicates and unknown scope remain explicit; this is not82 unique training examples. No model training, N07 repair, runtime/app change or publication occurred. Main remains618e2be2 and app source4fb7a98e. N07's six negative cases remain OPEN.

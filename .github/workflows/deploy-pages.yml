@@ -22,15 +22,15 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     env:
-      CANDIDATE_SHA: 'f16275079d3b39758f2da9ceb6b4e156a48c4b9e'
-      VITE_PREVIEW_COMMIT: 'f16275079d3b39758f2da9ceb6b4e156a48c4b9e'
+      CANDIDATE_SHA: '204d901ec78c2fe8e214fd9b582f19cb3caeb2f4'
+      VITE_PREVIEW_COMMIT: '204d901ec78c2fe8e214fd9b582f19cb3caeb2f4'
       VITE_REVIEW_PREVIEW: 'true'
       VITE_BASE_PATH: '/kyotsu-step-web/'
       VITE_STORAGE_NAMESPACE: 'kyotsu-step-gate3-math-20261023'
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 'f16275079d3b39758f2da9ceb6b4e156a48c4b9e'
+          ref: '204d901ec78c2fe8e214fd9b582f19cb3caeb2f4'
           fetch-depth: 0
           persist-credentials: false
       - uses: pnpm/action-setup@v4
@@ -47,7 +47,7 @@ jobs:
           test "$(git rev-parse HEAD)" = "$CANDIDATE_SHA"
           node work/items/W-MATH-027-first-theme-repair/verify-scope.mjs
       - name: Lesson, history and shared formula regression
-        run: pnpm exec vitest run src/data/textbook/math src/domain/textbook.test.ts src/review/reviewTargets.test.ts src/components/textbook/TextbookFormula.test.tsx src/components/textbook/formulaWrap.test.tsx
+        run: pnpm exec vitest run src/data/textbook/math src/domain/textbook.test.ts src/review/reviewTargets.test.ts src/components/textbook/TextbookFormula.test.tsx src/components/textbook/formulaWrap.test.tsx src/components/textbook/firstThemeChoiceLayout.test.ts
       - name: Independent calculation and distractor verification
         run: node work/items/W-MATH-027-first-theme-repair/verify-math.mjs
       - name: Export exact runtime source
@@ -90,7 +90,7 @@ jobs:
       - if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
-          name: first-theme-f1627507-verification
+          name: first-theme-R2-204d901e-verification
           path: |
             e2e-evidence/theme-one/**
             e2e-evidence/theme-one-compiled/**

@@ -154,10 +154,10 @@ const firstThemeStages: Readonly<Record<string, readonly [string, string][]>> = 
   n01: [['heading-factors','因数・係数・次数'],['heading-variable','注目する文字'],['marker-variable-check','文字を変えて確かめる'],['heading-like-terms','同類項を集める'],['marker-degree-check','整理後の次数を調べる']],
   n02: [['heading-variable','注目する文字と項'],['marker-variable-check','係数を文字式で表す'],['heading-add','同じ次数をそろえる'],['heading-minus','引く式の符号'],['marker-multiply-check','式全体の係数倍'],['paragraph-multiple-collect','次数ごとに集める'],['heading-structure','まとまりを整理して再利用']],
   n03: [['heading-indices','指数の意味と法則'],['marker-powers-check','負の係数と累乗'],['heading-distribute','一つの項を全項へ掛ける'],['paragraph-two-brackets','表で四つの積を数える'],['marker-final-check','三項の括弧へ広げる']],
-  n04: [['heading-four-products','四つの積を作る'],['n04-heading-1','平方の公式を導く'],['n04-lead-06','差の平方と和差の積'],['n04-heading-2','公式への対応と代入'],['n04-lead-11','一般の一次式の積'],['n04-lead-14','三項の平方へつなぐ'],['n04-heading-3','共通するまとまりを探す'],['n04-lead-20','四つの因数を組み直す']],
+  n04: [['heading-four-products','四つの積を作る'],['n04-heading-1','平方の公式を導く'],['n04-lead-06','差の平方と和差の積'],['n04-heading-2','公式への対応と代入'],['n04-lead-11','一般の一次式の積'],['n04-lead-14','三項の平方へつなぐ'],['n04-heading-3','共通するまとまりを探す'],['n04-lead-20','四つの因数を組み直す'],['n04-lead-21','共通部分をTで置き換える'],['n04-lead-22','Tを戻して次数ごとに集める']],
   n05: [['n05-heading-1','共通因数と置換からの復元'],['n05-lead-04','符号をそろえてくくる'],['n05-heading-2','平方の公式を逆に使う'],['n05-lead-09','和と積から二数を探す'],['n05-heading-3','たすき掛けの根拠'],['n05-lead-14','候補の交差積を比べる'],['n05-heading-4','自分で条件を立てる'],['n05-lead-19','共通因数の後も分解する']],
   n06: [['n06-heading-1','置換して展開する'],['n06-lead-03','因数分解して元へ戻す'],['n06-heading-2','四次式を二次式へ変える'],['n06-heading-3','低い次数の文字を選ぶ'],['n06-lead-11','共通因数をまとめる'],['n06-heading-4','文字式の係数を照合する']],
-  ne01: [['ne01-heading-01','具体例から3乗を展開する'],['ne01-heading-03','和と差の3乗を導く'],['ne01-heading-07','代入して係数を計算する'],['ne01-heading-08','3乗の和を積へ戻す'],['ne01-heading-12','3乗の形を見抜いて使う']],
+  ne01: [['ne01-heading-01','具体例から3乗を展開する'],['ne01-heading-03','和の3乗を導く'],['ne01-lead-06','負の式を代入して差の3乗へ'],['ne01-heading-07','代入して係数を計算する'],['ne01-heading-08','3乗の和を積へ戻す'],['ne01-heading-12','3乗の形を見抜いて使う']],
 }
 export function isFirstThemeUnit(unitId: string): boolean {
   return Object.hasOwn(firstThemeStages, unitId.replace('math-numbers-expressions-', '')) && unitId.startsWith('math-numbers-expressions-')
@@ -178,9 +178,12 @@ const firstThemeReferences: Readonly<Record<string, readonly string[]>> = {
   'heading-structure': ['formula-ab-definition','formula-n02-10'],
   'n04-lead-06': ['n04-formula-05'],
   'n04-lead-14': ['n04-formula-05'],
+  'n04-lead-21': ['n04-formula-20'],
+  'n04-lead-22': ['n04-lead-21', 'n04-formula-21'],
   'n05-lead-14': ['n05-formula-13', 'n05-show-n05-f01'],
   'n06-lead-03': ['n06-formula-01','n06-formula-02'],
   'n06-lead-11': ['n06-formula-09','n06-formula-10'],
+  'ne01-lead-06': ['ne01-formula-05'],
   'ne01-heading-07': ['ne01-formula-06'],
   'ne01-heading-12': ['ne01-formula-10','ne01-formula-11'],
 }

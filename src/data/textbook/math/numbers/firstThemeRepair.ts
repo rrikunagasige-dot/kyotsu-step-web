@@ -14,7 +14,10 @@ export function repairFirstTheme(unit: TextbookUnit): TextbookUnit {
       const readingFlow: TextbookReadingBlock[] = []
       const items = [...section.items]
       const inserted = new Set<string>()
-      for (const block of section.readingFlow) {
+      for (const sourceBlock of section.readingFlow) {
+        const block = prefix === 'ne01' && /^ne01-(lead|formula|after)-06$/.test(sourceBlock.id)
+          && (sourceBlock.type === 'paragraph' || sourceBlock.type === 'formula')
+          ? { ...sourceBlock, derivationId: 'ne01-chain-06' } : sourceBlock
         const targets = block.type === 'formula' || block.type === 'paragraph'
           ? block.parts.filter(p => p.type === 'choice').map(p => p.itemId) : []
         for (const node of nodes.filter(node => targets.includes(node.target))) {

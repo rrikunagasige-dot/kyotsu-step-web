@@ -8,3 +8,5 @@ Integrated three headings; preserved remaining lessons, source images and origin
 Implemented archived progress migration and restart behavior.
 Ran data/component/migration tests, independent polynomial checks, build and browser learning/retry/reset passes.
 Release uses the tested immutable candidate and same public storage namespace; CI/live artifacts provide exact-source evidence.
+
+Visual QA follow-up: split NE01's negative substitution from the sum derivation, and split N04 pairing / T expansion / restoration. Pin prior results; preserve the mathematical dependency.

@@ -8,7 +8,7 @@ export function firstThemeBaseline(unit: TextbookUnit): TextbookUnit {
   const revision = base[unit.unitId.replace('math-numbers-expressions-','')]?.[0]
   if (!revision) return unit
   return { ...unit, revision, sections: unit.sections.map(s => ({...s,
-    readingFlow: s.readingFlow.filter(b => !b.id.includes('-bridge-')),
+    readingFlow: s.readingFlow.filter(b => !b.id.includes('-bridge-')).map(b => (b.type === 'paragraph' || b.type === 'formula') && b.derivationId === 'ne01-chain-06' ? {...b,derivationId:'ne01-chain-03'} : b),
     items: s.items.filter(q => !q.id.includes('-bridge-')),
   })) }
 }

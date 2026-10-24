@@ -10,3 +10,7 @@ Ran data/component/migration tests, independent polynomial checks, build and bro
 Release uses the tested immutable candidate and same public storage namespace; CI/live artifacts provide exact-source evidence.
 
 Visual QA follow-up: split NE01's negative substitution from the sum derivation, and split N04 pairing / T expansion / restoration. Pin prior results; preserve the mathematical dependency.
+
+Publication close: source15509ec1 published by workflow20177652; run40051308092 SUCCESS.
+Exact compiled and public first-theme21-flow suites passed; public release manifest independently matched.
+Recorded artifact12543576397 and pending user quality review. Future work starts with user feedback on this public theme.

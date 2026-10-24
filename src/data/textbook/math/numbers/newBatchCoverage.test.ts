@@ -16,12 +16,13 @@ import { mathTextbookUnits as current_mathTextbookUnits } from '../index'
 import { n04SourceToItemIds } from './n04Lesson'
 import { n05SourceToItemIds } from './n05Lesson'
 import { n06SourceToItemIds } from './n06Lesson'
-import { n07SourceToItemIds } from './n07Lesson'
+// Historical N07 v3 contracts remain tested verbatim; v4 has its own integration tests.
+import { n07SourceToItemIds, mathNumbersN07Unit as n07LegacyUnit } from './n07LegacyLesson'
 import { n08SourceToItemIds } from './n08Lesson'
 import { n11SourceToItemIds } from './n11Lesson'
 import { n13SourceToItemIds } from './n13Lesson'
 import { n14SourceToItemIds } from './n14Lesson'
-const mathTextbookUnits = current_mathTextbookUnits.map(firstThemeBaseline)
+const mathTextbookUnits = current_mathTextbookUnits.map(unit => firstThemeBaseline(unit.unitId === n07LegacyUnit.unitId ? n07LegacyUnit : unit))
 
 
 const specs = [

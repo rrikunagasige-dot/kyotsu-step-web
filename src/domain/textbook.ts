@@ -185,6 +185,22 @@ export function effectiveTextbookProgress(unit: TextbookUnit, progress: Textbook
   if (!progress) return undefined
   if (progress.unitRevision === unit.revision) return progress
 
+  // N07 approved v4: retain only unchanged contracts; keep the full old record recoverable.
+  if (unit.unitId === 'math-numbers-expressions-n07' && unit.revision === 4
+      && progress.unitId === unit.unitId && [1, 2, 3].includes(progress.unitRevision)) {
+    const { archivedRevisions, ...archive } = progress
+    const retained = new Set(['n07-10', 'n07-14'])
+    return {
+      unitId: unit.unitId, unitRevision: 4,
+      startedAt: progress.startedAt, updatedAt: progress.updatedAt,
+      answers: Object.fromEntries(Object.entries(progress.answers).filter(([id]) => retained.has(id))),
+      migratedFromRevision: progress.unitRevision,
+      archivedRevisions: { ...archivedRevisions, [String(progress.unitRevision)]: archive },
+      ...(progress.completedAt !== undefined ? { previousRevisionCompletedAt: progress.completedAt }
+        : progress.previousRevisionCompletedAt !== undefined ? { previousRevisionCompletedAt: progress.previousRevisionCompletedAt } : {}),
+    }
+  }
+
   // First-theme repair: additions reopen only new reasoning nodes. Preserve old attempts.
   const firstThemeBase: Record<string, number> = { n01: 2, n02: 1, n03: 2, n04: 2, n05: 2, n06: 3, ne01: 1 }
   const base = firstThemeBase[unit.unitId.replace('math-numbers-expressions-', '')]

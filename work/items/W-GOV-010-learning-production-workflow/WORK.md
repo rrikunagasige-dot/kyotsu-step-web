@@ -1,6 +1,6 @@
 # W-GOV-010 — コード＋AIの教材制作パイロット
 
-Status: VERIFYING
+Status: IMPLEMENTING
 Proposal: P-002＋REFERENCE_CODE_RESEARCH（承認記録APPROVAL_20261024.md）
 Date: 2026-10-24 Asia/Tokyo
 Branch: work/textbook-code-ai-pilot-20261024
@@ -15,7 +15,7 @@ Completed pilot: M0 current review-policy consolidation with historical preserva
 
 Do Not Touch: existing src/public, first-title acceptance/content/IDs/figures/revisions/progress, other-mode materials, main hosting pointer, original source. New Fraction dependency is exact5.3.4 dev-only; existing locked package versions are retained. No learner data or deployment changed.
 
-Current: exact-source authoring CI PASS at f61b57e85a909d76ef0342aa37a1941439971311 (run40099358494); tooling technical verification complete and N07 design delivered for review. Scope-specific technical checks PASS locally; whole-repo governance retains4 old WORK Status-format errors and2 old navigation warnings. No false whole-repository PASS.
+Current: N07 content design APPROVED by user「いいよ。まず作成してみよう！」; M5 learner integration in progress. Previous exact-source authoring CI PASS at f61b57e85a909d76ef0342aa37a1941439971311 (run40099358494); tooling technical verification complete and N07 design delivered for review. Scope-specific technical checks PASS locally; whole-repo governance retains4 old WORK Status-format errors and2 old navigation warnings. No false whole-repository PASS.
 Next: deliver n07/N07_DESIGN.md for the concrete content design review required by approved P-002. Following its approval, integrate this N07 plan with existing stage/result/number/layout components, implement the scoped progress migration, run actual app/mobile/public-source QA, compile/publish the completed approved N07 to the existing app and deliver its verified direct URL. No screenshot-sheet or duplicate publication approval gate.
 
 Not yet implemented: actual N07 learner registration, final React/result/table adapter, progress migration, mobile geometry and real hosted operation tests; later N08–NE02 rule generation. Those units currently have source inventories only. N07 design is not human accepted merely because machine checks pass.

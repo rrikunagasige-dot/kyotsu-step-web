@@ -1,0 +1,53 @@
+name: N07 approved learner integration
+on:
+  push:
+    branches: ['work/textbook-code-ai-pilot-20261024']
+    paths: ['src/**', 'tools/textbook/integrate-n07.mjs', 'work/items/W-GOV-010-learning-production-workflow/n07/integration/**', '.github/workflows/n07-integration-ci.yml']
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
+      VITE_BASE_PATH: /kyotsu-step-web/
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - run: node tools/textbook/integrate-n07.mjs --check
+      - run: pnpm run typecheck
+      - run: pnpm exec eslint src/components/textbook/N07ReadingFlow.tsx src/components/textbook/TextbookFormula.tsx src/pages/TextbookUnitPage.tsx src/data/textbook/math/numbers/n07Lesson.ts src/data/textbook/math/numbers/n07Integration.test.ts src/domain/textbook.ts
+      - run: pnpm run test:textbook-authoring
+      - name: All learner regressions
+        run: pnpm exec vitest run
+      - run: pnpm run build
+      - run: pnpm exec playwright install --with-deps chromium
+      - name: Play all36 decisions, wrong choices, history and reload at320/390/1440px
+        env:
+          EVIDENCE_DIR: /tmp/n07-browser
+        run: |
+          pnpm exec vite preview --host 127.0.0.1 --port 4173 > /tmp/n07-preview.log 2>&1 &
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:4173/kyotsu-step-web/ >/dev/null && break || sleep 1; done
+          node work/items/W-GOV-010-learning-production-workflow/n07/integration/verify-app.mjs
+      - name: Visual review image
+        if: always()
+        run: |
+          python -m pip install Pillow --quiet
+          python work/items/W-GOV-010-learning-production-workflow/n07/integration/visual-review.py
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: n07-integration-evidence
+          path: /tmp/n07-browser
+          if-no-files-found: warn

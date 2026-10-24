@@ -1,3 +1,4 @@
+import { N07ReadingFlow } from '../components/textbook/N07ReadingFlow'
 import { typesettingEnabled } from '../data/textbook/math/typesetting'
 import { TypesetInlineMath } from '../components/textbook/TypesetFormula'
 import { FirstThemeChoiceFormula } from '../components/textbook/FirstThemeChoiceFormula'
@@ -123,7 +124,7 @@ function renderPart(
   return renderActiveChoice(item, Boolean(record), onOpen, text)
 }
 
-export function TextbookReadingFlow({ unit, section, progress, onSummaryReached, onReviewAnswer, reviewMarks }: {
+type ReadingFlowProps = {
   unit: TextbookUnit
   section: TextbookSection
   progress: TextbookUnitProgress | undefined
@@ -132,7 +133,14 @@ export function TextbookReadingFlow({ unit, section, progress, onSummaryReached,
   onReviewAnswer?: (item: TextbookItem, choice: string) => void
   /** Never passed by the ordinary learner route; visual annotations only. */
   reviewMarks?: Readonly<Record<string, number>>
-}) {
+}
+
+export function TextbookReadingFlow(props: ReadingFlowProps) {
+  return props.unit.unitId === 'math-numbers-expressions-n07' && props.unit.revision === 4
+    ? <N07ReadingFlow {...props} /> : <LegacyTextbookReadingFlow {...props} />
+}
+
+function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, onReviewAnswer, reviewMarks }: ReadingFlowProps) {
   const { text, language } = useI18n()
   const answerTextbook = useAppStore((state) => state.answerTextbook)
   const [activeItemId, setActiveItemId] = useState<string | null>(null)

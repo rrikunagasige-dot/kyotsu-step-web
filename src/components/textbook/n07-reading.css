@@ -1,0 +1,22 @@
+/* Scope all additions to the newly approved N07; preserve accepted earlier units. */
+.n07-reading { color: #182b38; min-width: 0; }
+.n07-reading .n07-thinking-step { margin: 1.5rem 0 2rem; min-width: 0; }
+.n07-step-caption { display: flex; align-items: baseline; gap: .65rem; flex-wrap: wrap; margin-bottom: .7rem; }
+.n07-step-caption > span { font-size: .8rem; padding: .15rem .45rem; border: 1px solid #b7c4cc; border-radius: .15rem; white-space: nowrap; }
+.n07-step-caption > strong { font-size: 1rem; font-weight: 600; }
+.n07-reading .reading-paragraph { color: inherit; overflow-wrap: anywhere; }
+.n07-reading .reading-formula-line { margin-block: .65rem; }
+.n07-reading .n07-choice-options { display: grid; grid-template-columns: minmax(0, 1fr); gap: .75rem; }
+.n07-reading .reading-choice-option { min-width: 0; text-align: left; padding: .85rem; align-items: center; }
+.n07-reading .reading-choice-option > strong { min-width: 0; overflow-wrap: anywhere; width: 100%; }
+.n07-reading .reading-choice-option .reading-formula-line { font-size: 1em; margin: 0; }
+.n07-reading .n07-result { min-width: 0; margin-top: .5rem; }
+.n07-reading .n07-result .reading-paragraph { font-size: .95em; }
+.n07-table-wrap { max-width: 100%; overflow-x: auto; margin: 1rem 0; }
+.n07-reading table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; font-size: .9rem; }
+.n07-reading caption { text-align: left; margin-bottom: .5rem; font-weight: 600; }
+.n07-reading th, .n07-reading td { padding: .5rem .4rem; border: 1px solid #bac5cc; text-align: center; }
+.n07-reading details > summary { cursor: pointer; margin-block: .75rem; }
+.n07-reading .n07-history > section { margin-block: 1rem; }
+.n07-reading .numbered-equation { margin-block: .8rem; }
+.n07-reading .math-textbook-stage-references { margin-bottom: 1.25rem; }

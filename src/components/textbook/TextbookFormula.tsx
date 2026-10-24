@@ -14,6 +14,7 @@ type FormulaBlock = Extract<TextbookReadingBlock, { type: 'formula' }>
 
 type Props = {
   unitId: string
+  equationNumber?: number
   block: FormulaBlock
   section: TextbookSection
   progress: TextbookUnitProgress | undefined
@@ -40,7 +41,7 @@ function isSolvedUnitCoefficientBeforeX(
 }
 
 export function TextbookFormula(props: Props) {
-  const number = firstThemeEquationNumber(props.unitId, props.block.id)
+  const number = props.equationNumber ?? firstThemeEquationNumber(props.unitId, props.block.id)
   const body = <TextbookFormulaContent {...props} />
   return number === undefined ? body : <NumberedEquation number={number} logical={typesettingEnabled(props.unitId)}>{body}</NumberedEquation>
 }

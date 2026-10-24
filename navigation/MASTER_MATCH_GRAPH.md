@@ -1,5 +1,9 @@
 # MASTER MATCH GRAPH — target rriku
 
+## Latest — first title accepted; production workflow under review
+
+2026-10-24: user explicitly accepts22bc43ba first-title N01–N06/NE01; W031 DONE. W-GOV-010/P-001 proposes workflow/AI/code redesign and second-title N07–N10/NE02 trial. User review delivery is now completed builds in the same public app; old screenshot-sheet route is not the required forward path. Proposal only: no second-title learner code/public-source changes. [Work](../work/items/W-GOV-010-learning-production-workflow/WORK.md). Older graph states below are historical.
+
 ## Latest first-section typesetting node — 2026-10-24
 
 W-MATH-031/P-005-R2: all7 units published in sequence and final full verification SUCCESS. App source22bc43ba, hosting9b7dcd47, [run40080522489](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40080522489).71 stages/291 decisions/485 formula blocks; content/figures/progress protected. [App](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=22bc43ba#/learning/textbook/math-numbers-expressions-n01); [evidence](../work/items/W-MATH-031-section-one-typesetting/VERIFICATION.md). Work VERIFYING / user final acceptance PENDING. Older graph/status entries remain history.

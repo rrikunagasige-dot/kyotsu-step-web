@@ -2,7 +2,7 @@
 
 Status: PASS
 
-This is technical verification. User final visual/pedagogical acceptance remains PENDING; Work stays VERIFYING / PUBLISHED_FOR_USER_REVIEW.
+Technical verification PASS. User formally accepted the same first-title version on2026-10-24:「这个版本可以。非常可以。我觉得可以正式通过了。」See USER_ACCEPTANCE_20261024.md; Work is DONE for this agreed scope. Other titles/modes are not accepted by this statement.
 
 Frozen source `22bc43ba53fa87bb85e82e18a25db13a5c8a485c`; hosting `9b7dcd470847ec7c16683c58f1f24c500c442489`; [run40080522489](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40080522489) SUCCESS. [Public app](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=22bc43ba#/learning/textbook/math-numbers-expressions-n01). Documentation-only closure may have a later branch HEAD; it does not change learner code or the published source.
 

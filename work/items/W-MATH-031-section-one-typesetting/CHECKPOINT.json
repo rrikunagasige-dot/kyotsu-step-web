@@ -443,8 +443,14 @@
       "passed": true
     }
   },
-  "humanAcceptance": "PENDING",
-  "status": "PUBLISHED_FOR_USER_REVIEW",
+  "humanAcceptance": {
+    "status": "ACCEPTED",
+    "date": "2026-10-24 Asia/Tokyo",
+    "quote": "这个版本可以。非常可以。我觉得可以正式通过了。",
+    "source": "22bc43ba53fa87bb85e82e18a25db13a5c8a485c",
+    "scope": "first title N01–N06/NE01 only"
+  },
+  "status": "FINAL-APP-ACCEPTED",
   "frozenAppSource": "22bc43ba53fa87bb85e82e18a25db13a5c8a485c",
   "hosting": "9b7dcd470847ec7c16683c58f1f24c500c442489",
   "finalRun": 40080522489

@@ -1,6 +1,14 @@
 # PROGRESS — rriku（2026-10-19 追記）
 
-## 2026-10-24 — W-MATH-031 / P-005-R2 typesetting (latest)
+## 2026-10-24 — first title ACCEPTED; W-GOV-010/P-001 workflow proposal
+
+User formally accepted first-title source22bc43ba53fa87bb85e82e18a25db13a5c8a485c:「这个版本可以。非常可以。我觉得可以正式通过了。」W-MATH-031 is DONE for N01–N06/NE01 only; [acceptance](../work/items/W-MATH-031-section-one-typesetting/USER_ACCEPTANCE_20261024.md). Public app/main remain22bc43ba/9b7dcd47; no learner change or new deployment in this task.
+
+New request: rethink workflow, AI design/review and automation using the actual manual corrections; try second title「実数を扱う」N07/N08/N09/N10/NE02; retire screenshot-centered user confirmation and compile completed units directly to the same public app. [Direct user review decision](../memory/DECISIONS/PUBLIC_APP_REVIEW_20261024.md). Preserve internal quality checks and proposal scope, not old screenshot permission waits.
+
+Current Work W-GOV-010/P-001 is PROPOSED, branch work/workflow-rebuild-proposal-20261024. [Detailed proposal](../work/items/W-GOV-010-learning-production-workflow/PROPOSAL.md). Confirmed73 Word markers/77 current operations, teacher Word hash93827322 matches original, actual master references recovered, code/history failure audit completed. Next: user reviews the workflow/AI/code proposal; then bounded common-tooling work and complete N07 design, before unseen learner content edits. Other titles/modes/first-title acceptance remain protected.
+
+## 2026-10-24 — W-MATH-031 technical release (historical checkpoint before formal acceptance)
 
 Exact revised proposal approved by user「那你来做」and implemented N01→N02→N03→N04→N05→N06→NE01, with each unit compiled and publicly verified before the next hosting update. Frozen app source `22bc43ba53fa87bb85e82e18a25db13a5c8a485c`; hosting-pointer main `9b7dcd470847ec7c16683c58f1f24c500c442489`; [final all-seven run40080522489](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40080522489) SUCCESS. [Latest app](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=22bc43ba#/learning/textbook/math-numbers-expressions-n01). No whole learner-branch merge.
 

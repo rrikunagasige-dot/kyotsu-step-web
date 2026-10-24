@@ -17,7 +17,7 @@ export function formulaWrapChunks(block: FormulaBlock): string[] {
       if (!braces && !parentheses && !absolute) {
         if (/^\\(?:Longrightarrow|longrightarrow)$/.test(command)) {
           push(i); push(i + command.length)
-        } else if ((command === '\\qquad' || (block.id === 'formula-n03-01' && /^\\(?:times|cdot)$/.test(command)) || /^\\(?:le|ge|lt|gt)$/.test(command)) && i > start) push(i)
+        } else if ((command === '\\qquad' || ((block.id === 'formula-n03-01' || block.id === 'first-theme-choice') && /^\\(?:times|cdot)$/.test(command)) || /^\\(?:le|ge|lt|gt)$/.test(command)) && i > start) push(i)
       }
       i += command.length - 1
       continue
@@ -28,7 +28,7 @@ export function formulaWrapChunks(block: FormulaBlock): string[] {
     if (char === '(') parentheses++
     if (char === ')') parentheses--
     if (char === '|') absolute = !absolute
-    if (!parentheses && !absolute && (char === '=' || ((char === '+' || char === '-') && i > start))) push(i)
+    if ((!parentheses || (block.id === 'first-theme-choice' && parentheses === 1)) && !absolute && (char === '=' || ((char === '+' || char === '-') && i > start))) push(i)
     // A tuple or case label may continue after its comma; keep each entry intact.
     if (char === ',' && parentheses <= 1 && !absolute) push(i + 1)
   }

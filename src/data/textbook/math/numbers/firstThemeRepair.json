@@ -255,6 +255,278 @@
       "hint": "2倍するのはxの指数ではなく、この項全体である。",
       "after": "三次項でも、係数の掛け算と文字の部分を分けて扱える。",
       "kind": "formula"
+    },
+    {
+      "target": "n02-01",
+      "id": "n02-bridge-audit-like-b",
+      "lead": "同じbxを残し、二つの係数を足す。",
+      "stem": "2bx+bx=(2+1)bx=",
+      "tail": "bx",
+      "answer": "3",
+      "wrong": [
+        "2",
+        "1",
+        "4"
+      ],
+      "hint": "bxは1bxとして読む。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n02-03",
+      "id": "n02-bridge-audit-constant-part",
+      "lead": "xを一つも含まない項を、元の式から符号ごと集める。",
+      "stem": "\\text{xを含まない部分}=",
+      "tail": "",
+      "answer": "y^2-3y+2",
+      "wrong": [
+        "y^2+3y+2",
+        "y^2-3y-2",
+        "2"
+      ],
+      "hint": "yの有無ではなく、xを含むかで分類する。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n02-06",
+      "id": "n02-bridge-audit-sum-cube",
+      "lead": "三次項の係数だけを計算し、その文字の部分は残す。",
+      "stem": "(2+(-1))x^3=(",
+      "tail": ")x^3",
+      "answer": "1",
+      "wrong": [
+        "3",
+        "-1",
+        "2"
+      ],
+      "hint": "同じ次数の係数だけを集めて足す。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n02-06",
+      "id": "n02-bridge-audit-sum-square",
+      "lead": "二次項の係数だけを計算し、その文字の部分は残す。",
+      "stem": "(-3+2)x^2=(",
+      "tail": ")x^2",
+      "answer": "-1",
+      "wrong": [
+        "1",
+        "-5",
+        "5"
+      ],
+      "hint": "同じ次数の係数だけを集めて足す。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n02-06",
+      "id": "n02-bridge-audit-sum-linear",
+      "lead": "一次項の係数だけを計算し、その文字の部分は残す。",
+      "stem": "(1+0)x=(",
+      "tail": ")x",
+      "answer": "1",
+      "wrong": [
+        "0",
+        "2",
+        "-1"
+      ],
+      "hint": "同じ次数の係数だけを集めて足す。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n02-06",
+      "id": "n02-bridge-audit-sum-constant",
+      "lead": "定数項の係数だけを計算し、その文字の部分は残す。",
+      "stem": "-1+2=(",
+      "tail": ")",
+      "answer": "1",
+      "wrong": [
+        "-1",
+        "3",
+        "-3"
+      ],
+      "hint": "同じ次数の係数だけを集めて足す。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n02-08",
+      "id": "n02-bridge-audit-diff-cube",
+      "lead": "三次項の係数だけを計算し、その文字の部分は残す。",
+      "stem": "(2+1)x^3=(",
+      "tail": ")x^3",
+      "answer": "3",
+      "wrong": [
+        "1",
+        "-1",
+        "2"
+      ],
+      "hint": "同じ次数の係数だけを集めて足す。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n02-08",
+      "id": "n02-bridge-audit-diff-square",
+      "lead": "二次項の係数だけを計算し、その文字の部分は残す。",
+      "stem": "(-3+(-2))x^2=(",
+      "tail": ")x^2",
+      "answer": "-5",
+      "wrong": [
+        "-1",
+        "5",
+        "1"
+      ],
+      "hint": "同じ次数の係数だけを集めて足す。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n02-08",
+      "id": "n02-bridge-audit-diff-linear",
+      "lead": "一次項の係数だけを計算し、その文字の部分は残す。",
+      "stem": "(1+0)x=(",
+      "tail": ")x",
+      "answer": "1",
+      "wrong": [
+        "0",
+        "2",
+        "-1"
+      ],
+      "hint": "同じ次数の係数だけを集めて足す。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n02-08",
+      "id": "n02-bridge-audit-diff-constant",
+      "lead": "定数項の係数だけを計算し、その文字の部分は残す。",
+      "stem": "-1+(-2)=(",
+      "tail": ")",
+      "answer": "-3",
+      "wrong": [
+        "1",
+        "3",
+        "-1"
+      ],
+      "hint": "同じ次数の係数だけを集めて足す。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n02-07",
+      "id": "n02-bridge-audit-minus-cube-sign",
+      "lead": "−1をBの三次項へ掛ける。二つの負号を含めて数の部分を計算する。",
+      "stem": "(-1)(-x^3)=((-1)(-1))x^3=",
+      "tail": "\\cdot x^3",
+      "answer": "1",
+      "wrong": [
+        "-1",
+        "2",
+        "-2"
+      ],
+      "hint": "括弧の前の−1は全項に掛かる。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n02-07",
+      "id": "n02-bridge-audit-minus-square-sign",
+      "lead": "次は二次項へも同じ−1を掛ける。",
+      "stem": "(-1)(2x^2)=((-1)2)x^2=(",
+      "tail": ")x^2",
+      "answer": "-2",
+      "wrong": [
+        "2",
+        "-1",
+        "1"
+      ],
+      "hint": "括弧の前の−1は全項に掛かる。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n02-07",
+      "id": "n02-bridge-audit-minus-constant-sign",
+      "lead": "最後の定数項も−1倍する。",
+      "stem": "(-1)\\cdot2=",
+      "tail": "",
+      "answer": "-2",
+      "wrong": [
+        "2",
+        "-1",
+        "1"
+      ],
+      "hint": "括弧の前の−1は全項に掛かる。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n02-09",
+      "id": "n02-bridge-audit-twice-linear",
+      "lead": "2Aの一次項では2を1xへ掛ける。",
+      "stem": "2\\cdot x=(2\\cdot1)x=",
+      "tail": "x",
+      "answer": "2",
+      "wrong": [
+        "1",
+        "0",
+        "4"
+      ],
+      "hint": "係数を掛け、xは一つ残す。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n02-09",
+      "id": "n02-bridge-audit-twice-constant",
+      "lead": "2Aの定数項−1にも2を掛ける。",
+      "stem": "2(-1)=",
+      "tail": "",
+      "answer": "-2",
+      "wrong": [
+        "2",
+        "1",
+        "-1"
+      ],
+      "hint": "負号を含む定数を2倍する。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n02-11",
+      "id": "n02-bridge-audit-a-coefficient",
+      "lead": "Aの項だけをまとめた係数を計算する。",
+      "stem": "3A-A=(3-1)A=",
+      "tail": "A",
+      "answer": "2",
+      "wrong": [
+        "4",
+        "-2",
+        "3"
+      ],
+      "hint": "Aを1Aとして読む。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n02-11",
+      "id": "n02-bridge-audit-b-coefficient",
+      "lead": "Bの係数は−4と+1である。負号を係数に含めて足す。",
+      "stem": "-4B+B=(-4+1)B=(",
+      "tail": ")B",
+      "answer": "-3",
+      "wrong": [
+        "-5",
+        "3",
+        "5"
+      ],
+      "hint": "Bを1Bとして読む。",
+      "after": "",
+      "kind": "formula"
     }
   ],
   "n03": [
@@ -433,6 +705,102 @@
       "hint": "3と5を掛ける操作であり、足す操作ではない。",
       "after": "三つの積を、元の項に対応する順序で一行に並べれば、3xを配った結果になる。",
       "kind": "formula"
+    },
+    {
+      "target": "n03-01",
+      "id": "n03-bridge-audit-count-a",
+      "lead": "aの個数を、二つの組から合計する。係数4は個数へ入れない。",
+      "stem": "\\text{aの個数}=3+5=",
+      "tail": "",
+      "answer": "8",
+      "wrong": [
+        "15",
+        "2",
+        "4"
+      ],
+      "hint": "同じ底の積では因子を続けて数える。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n03-08",
+      "id": "n03-bridge-audit-product-fourth",
+      "lead": "分配した三つの積を、一つずつ計算する。",
+      "stem": "x^2x^2=",
+      "tail": "",
+      "answer": "x^4",
+      "wrong": [
+        "x^2",
+        "x^3",
+        "2x^2"
+      ],
+      "hint": "数の係数と、同じ文字の指数を別々に扱う。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n03-08",
+      "id": "n03-bridge-audit-product-negative",
+      "lead": "分配した三つの積を、一つずつ計算する。",
+      "stem": "x^2(-3x)=",
+      "tail": "",
+      "answer": "-3x^3",
+      "wrong": [
+        "3x^3",
+        "-3x^2",
+        "-x^3"
+      ],
+      "hint": "数の係数と、同じ文字の指数を別々に扱う。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n03-08",
+      "id": "n03-bridge-audit-product-last",
+      "lead": "分配した三つの積を、一つずつ計算する。",
+      "stem": "x^2\\cdot4=",
+      "tail": "",
+      "answer": "4x^2",
+      "wrong": [
+        "4x^3",
+        "x^2",
+        "4x"
+      ],
+      "hint": "数の係数と、同じ文字の指数を別々に扱う。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n03-11",
+      "id": "n03-bridge-audit-grid-collect",
+      "lead": "四つの積のうち、一次項二つだけをまとめる。",
+      "stem": "8x+3x=(8+3)x=",
+      "tail": "x",
+      "answer": "11",
+      "wrong": [
+        "5",
+        "24",
+        "8"
+      ],
+      "hint": "x²の項と定数はこの足し算に入れない。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n03-bridge-second-row",
+      "id": "n03-bridge-audit-minus-minus",
+      "lead": "中央の項−xには、さらに−1が掛かる。",
+      "stem": "(-1)(-x)=((-1)(-1))x=",
+      "tail": "\\cdot x",
+      "answer": "1",
+      "wrong": [
+        "-1",
+        "2",
+        "-2"
+      ],
+      "hint": "負同士の積の符号を判断する。",
+      "after": "",
+      "kind": "formula"
     }
   ],
   "n04": [
@@ -456,7 +824,7 @@
       "target": "n04-10",
       "id": "n04-bridge-cross-coefficient",
       "lead": "中央の項の係数だけを計算する。",
-      "stem": "-2\\cdot2\\cdot5=",
+      "stem": "-2\\cdot2\\cdot5=(-4)\\cdot5=",
       "answer": "-20",
       "wrong": [
         "-10",
@@ -627,6 +995,246 @@
       "hint": "5x²と(5x)²では、5を掛ける回数が異なる。",
       "after": "先頭の平方、二つの交差積、最後の平方がそろったので、次の一行を完成できる。",
       "kind": "formula"
+    },
+    {
+      "target": "n04-05",
+      "id": "n04-bridge-audit-square-cross-count",
+      "lead": "ba=abなので、中央に同じabが二つある。",
+      "stem": "ab+ba=(1+1)ab=",
+      "tail": "ab",
+      "answer": "2",
+      "wrong": [
+        "1",
+        "3",
+        "0"
+      ],
+      "hint": "文字の部分abを変えず、係数を足す。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n04-06",
+      "id": "n04-bridge-audit-negative-cross-sign",
+      "lead": "差の平方では、一つ目の交差積に−bを掛ける。",
+      "stem": "a(-b)=(",
+      "tail": ")ab",
+      "answer": "-1",
+      "wrong": [
+        "1",
+        "2",
+        "-2"
+      ],
+      "hint": "負号を数の部分−1へ戻す。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n04-06",
+      "id": "n04-bridge-audit-negative-square-sign",
+      "lead": "最後の積は−bと−bなので、二つの負号が掛かる。",
+      "stem": "(-b)(-b)=",
+      "tail": "\\cdot b^2",
+      "answer": "1",
+      "wrong": [
+        "-1",
+        "2",
+        "-2"
+      ],
+      "hint": "交差積と最後の平方の符号を区別する。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n04-07",
+      "id": "n04-bridge-audit-negative-cross-sum",
+      "lead": "二つの負の交差項を、係数の和へ直す。",
+      "stem": "-ab-ba=(-1-1)ab=(",
+      "tail": ")ab",
+      "answer": "-2",
+      "wrong": [
+        "0",
+        "2",
+        "-1"
+      ],
+      "hint": "baをabと同じ文字の部分へそろえる。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n04-08",
+      "id": "n04-bridge-audit-opposite-cancel",
+      "lead": "交差項だけを集め、その係数を計算する。",
+      "stem": "-ab+ab=(-1+1)ab=",
+      "tail": "ab",
+      "answer": "0",
+      "wrong": [
+        "2",
+        "-2",
+        "1"
+      ],
+      "hint": "同じ大きさで符号が反対の項を足す。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n04-10",
+      "id": "n04-bridge-audit-square-2a",
+      "lead": "代入した2a全体を二乗する。",
+      "stem": "(2a)^2=(2\\cdot2)a^2=",
+      "tail": "a^2",
+      "answer": "4",
+      "wrong": [
+        "2",
+        "8",
+        "6"
+      ],
+      "hint": "2a²と(2a)²は、2を掛ける回数が異なる。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n04-10",
+      "id": "n04-bridge-audit-square-3x",
+      "lead": "二つ目の式では3xの平方を計算する。",
+      "stem": "(3x)^2=(3\\cdot3)x^2=",
+      "tail": "x^2",
+      "answer": "9",
+      "wrong": [
+        "6",
+        "3",
+        "12"
+      ],
+      "hint": "数の部分3も二回掛かる。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n04-12",
+      "id": "n04-bridge-audit-general-linear",
+      "lead": "一次項のxを外へ出し、残る二つの係数を足す。",
+      "stem": "adx+bcx=(",
+      "tail": ")x",
+      "answer": "ad+bc",
+      "wrong": [
+        "adbc",
+        "ab+cd",
+        "ad-bc"
+      ],
+      "hint": "同じxが掛かる二項を集める。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n04-13",
+      "id": "n04-bridge-audit-concrete-cross",
+      "lead": "交差する最初の積では、3と2を掛ける。",
+      "stem": "3x\\cdot2=(3\\cdot2)x=",
+      "tail": "x",
+      "answer": "6",
+      "wrong": [
+        "3",
+        "5",
+        "2"
+      ],
+      "hint": "xの指数は変えず、係数を掛ける。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n04-13",
+      "id": "n04-bridge-audit-concrete-linear",
+      "lead": "もう一方の交差積1xを足し、一次係数を決める。",
+      "stem": "6x+x=(6+1)x=",
+      "tail": "x",
+      "answer": "7",
+      "wrong": [
+        "6",
+        "5",
+        "8"
+      ],
+      "hint": "xを1xとして読む。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n04-16",
+      "id": "n04-bridge-audit-minus-ac",
+      "lead": "aと−cの交差積の係数を計算する。",
+      "stem": "2a(-c)=(2(-1))ac=(",
+      "tail": ")ac",
+      "answer": "-2",
+      "wrong": [
+        "2",
+        "-1",
+        "1"
+      ],
+      "hint": "cを一回だけ含む項は、負号も一回だけ掛かる。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n04-16",
+      "id": "n04-bridge-audit-minus-bc",
+      "lead": "bと−cの交差積も同じ符号の計算を使う。",
+      "stem": "2b(-c)=(2(-1))bc=(",
+      "tail": ")bc",
+      "answer": "-2",
+      "wrong": [
+        "2",
+        "-1",
+        "1"
+      ],
+      "hint": "二乗の項と交差項の符号を混ぜない。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n04-19",
+      "id": "n04-bridge-audit-remaining-square",
+      "lead": "同じx²の二項だけをまとめる。",
+      "stem": "2x^2-x^2=(2-1)x^2=",
+      "tail": "\\cdot x^2",
+      "answer": "1",
+      "wrong": [
+        "2",
+        "3",
+        "-1"
+      ],
+      "hint": "最後の−x²も係数の計算へ含める。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n04-21",
+      "id": "n04-bridge-audit-t-linear",
+      "lead": "Tの一次係数を計算する。",
+      "stem": "6T+4T=(6+4)T=",
+      "tail": "T",
+      "answer": "10",
+      "wrong": [
+        "24",
+        "2",
+        "6"
+      ],
+      "hint": "4と6の積は定数項、和は一次係数である。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n04-bridge-restore-ten",
+      "id": "n04-bridge-audit-ten-linear",
+      "lead": "10を二項へ配り、一次項の係数を計算する。",
+      "stem": "10(5x)=(10\\cdot5)x=",
+      "tail": "x",
+      "answer": "50",
+      "wrong": [
+        "15",
+        "5",
+        "10"
+      ],
+      "hint": "掛け算の10×5を、足し算にしない。",
+      "after": "",
+      "kind": "formula"
     }
   ],
   "n05": [
@@ -762,7 +1370,7 @@
       "target": "n05-18",
       "id": "n05-bridge-search-rs-1",
       "lead": "積rs=−3を満たす候補(r,s)=(1,−3)で、s+5rを計算しよう。",
-      "stem": "-3+5\\cdot1=",
+      "stem": "-3+5\\cdot1=-3+5=",
       "answer": "2",
       "wrong": [
         "-2",
@@ -778,7 +1386,7 @@
       "target": "n05-18",
       "id": "n05-bridge-search-rs-2",
       "lead": "積rs=−3を満たす候補(r,s)=(−1,3)で、s+5rを計算しよう。",
-      "stem": "3+5(-1)=",
+      "stem": "3+5(-1)=3-5=",
       "answer": "-2",
       "wrong": [
         "2",
@@ -794,7 +1402,7 @@
       "target": "n05-18",
       "id": "n05-bridge-search-rs-3",
       "lead": "積rs=−3を満たす候補(r,s)=(3,−1)で、s+5rを計算しよう。",
-      "stem": "-1+5\\cdot3=",
+      "stem": "-1+5\\cdot3=-1+15=",
       "answer": "14",
       "wrong": [
         "16",
@@ -810,7 +1418,7 @@
       "target": "n05-18",
       "id": "n05-bridge-search-rs-4",
       "lead": "積rs=−3を満たす候補(r,s)=(−3,1)で、s+5rを計算しよう。",
-      "stem": "1+5(-3)=",
+      "stem": "1+5(-3)=1-15=",
       "answer": "-14",
       "wrong": [
         "14",
@@ -868,6 +1476,102 @@
       ],
       "hint": "rとsを入れる位置を入れ替えないようにする。",
       "after": "最初の因数はこの係数で決まる。次は二番目の因数へsを入れ、二つを掛ける形にする。",
+      "kind": "formula"
+    },
+    {
+      "target": "n05-03",
+      "id": "n05-bridge-audit-reverse-constant",
+      "lead": "四組のうち、最後の定数の積を計算する。",
+      "stem": "(-3)5=",
+      "tail": "",
+      "answer": "-15",
+      "wrong": [
+        "15",
+        "-8",
+        "8"
+      ],
+      "hint": "負×正の符号を決めてから絶対値を掛ける。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n05-06",
+      "id": "n05-bridge-audit-positive-root-16",
+      "lead": "16x²を平方として読むため、まず正の数で16になる平方の底を選ぶ。",
+      "stem": "(",
+      "tail": ")^2=16",
+      "answer": "4",
+      "wrong": [
+        "8",
+        "16",
+        "2"
+      ],
+      "hint": "選んだ数を二回掛けて16になるか確認する。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n05-06",
+      "id": "n05-bridge-audit-positive-root-9",
+      "lead": "最後の9y²も、数の平方と文字の平方に分ける。正の底を選ぼう。",
+      "stem": "(",
+      "tail": ")^2=9",
+      "answer": "3",
+      "wrong": [
+        "9",
+        "6",
+        "1"
+      ],
+      "hint": "選んだ数の平方を計算して9と比べる。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n05-11",
+      "id": "n05-bridge-audit-factor-pair-select",
+      "lead": "各候補の和を比べた結果から、和−6・積−16の両方を満たす組を選ぶ。",
+      "stem": "(r,s)=",
+      "tail": "",
+      "answer": "(-8,2)",
+      "wrong": [
+        "(-4,4)",
+        "(8,-2)",
+        "(-8,-2)"
+      ],
+      "hint": "和の条件を満たすことと、積の条件を満たすことを別々に確かめる。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n05-19",
+      "id": "n05-bridge-audit-common-negative-four",
+      "lead": "−12b³の中へ3bを一つ作り、残る係数を計算する。",
+      "stem": "-12b^3=(3b)(",
+      "tail": ")b^2",
+      "answer": "-4",
+      "wrong": [
+        "4",
+        "-12",
+        "-3"
+      ],
+      "hint": "3に掛けて−12になる数を使い、残る文字はb²とする。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n05-20",
+      "id": "n05-bridge-audit-square-root-four",
+      "lead": "残る4b²を、正の係数を使った一つの式の平方へ戻す。",
+      "stem": "(",
+      "tail": "b)^2=4b^2",
+      "answer": "2",
+      "wrong": [
+        "4",
+        "1",
+        "3"
+      ],
+      "hint": "正の数で、二乗すると4になる係数を使う。",
+      "after": "",
       "kind": "formula"
     }
   ],
@@ -956,7 +1660,7 @@
       "target": "n06-14",
       "id": "n06-bridge-constant-cross",
       "lead": "候補(2y+1)(y−2)を展開して中央を検査しよう。",
-      "stem": "2y(-2)+1\\cdot y=",
+      "stem": "2y(-2)+1\\cdot y=-4y+y=",
       "answer": "-3y",
       "wrong": [
         "3y",
@@ -1030,6 +1734,150 @@
       ],
       "hint": "最後の定数4をそのまま括弧に入れず、何の平方かを先に読む。",
       "after": "最初の因数から二つ、次の因数から二つの因子を得た。四つを掛けた形へまとめる。",
+      "kind": "formula"
+    },
+    {
+      "target": "n06-02",
+      "id": "n06-bridge-audit-x-linear-sum",
+      "lead": "一次項−2XとXをまとめる。",
+      "stem": "-2X+X=(-2+1)X=(",
+      "tail": ")X",
+      "answer": "-1",
+      "wrong": [
+        "1",
+        "-3",
+        "3"
+      ],
+      "hint": "Xは1Xとして読む。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n06-02",
+      "id": "n06-bridge-audit-x-constant-sum",
+      "lead": "括弧から出た−2と、外にあった−4をまとめる。",
+      "stem": "-2-4=",
+      "tail": "",
+      "answer": "-6",
+      "wrong": [
+        "2",
+        "6",
+        "-2"
+      ],
+      "hint": "外の定数も忘れずに加える。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n06-04",
+      "id": "n06-bridge-audit-restore-x-first",
+      "lead": "最初の因数のXを、定義したx+2yへ戻す。",
+      "stem": "X-3=",
+      "tail": "",
+      "answer": "x+2y-3",
+      "wrong": [
+        "x-2y-3",
+        "x+2y+3",
+        "x+y-3"
+      ],
+      "hint": "Xが表す式全体を代入し、後ろの−3はそのまま残す。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n06-04",
+      "id": "n06-bridge-audit-restore-x-second",
+      "lead": "二番目の因数にも同じ定義を使う。",
+      "stem": "X+2=",
+      "tail": "",
+      "answer": "x+2y+2",
+      "wrong": [
+        "x-2y+2",
+        "x+2y-2",
+        "x+y+2"
+      ],
+      "hint": "二つのXは同じ式の名前である。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n06-09",
+      "id": "n06-bridge-audit-y-coefficient",
+      "lead": "前半に共通するyを一つ外へ出す。残る式を括弧に入れよう。",
+      "stem": "x^2y+xy-2y=y(",
+      "tail": ")",
+      "answer": "x^2+x-2",
+      "wrong": [
+        "x^2+x+2",
+        "x^2-x-2",
+        "x^2+x"
+      ],
+      "hint": "yを一つ取り除いた各項を、符号を変えずに並べる。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n06-13",
+      "id": "n06-bridge-audit-x-coefficient",
+      "lead": "3xy−xの共通するxを外へ出す。",
+      "stem": "3xy-x=(",
+      "tail": ")x",
+      "answer": "3y-1",
+      "wrong": [
+        "3y+1",
+        "3y",
+        "2y-1"
+      ],
+      "hint": "−xの係数−1も括弧内に残す。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n06-14",
+      "id": "n06-bridge-audit-constant-pair",
+      "lead": "積が−2の候補から、2s+r=−3も満たす組を選ぶ。",
+      "stem": "(r,s)=",
+      "tail": "",
+      "answer": "(1,-2)",
+      "wrong": [
+        "(-1,2)",
+        "(2,-1)",
+        "(-2,1)"
+      ],
+      "hint": "一次係数はr+sではなく2s+rで比べる。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n06-15",
+      "id": "n06-bridge-audit-sum-y-coefficient",
+      "lead": "二つの因子を足すとき、yの係数だけを先に計算する。",
+      "stem": "2y+y=(2+1)y=",
+      "tail": "y",
+      "answer": "3",
+      "wrong": [
+        "2",
+        "1",
+        "4"
+      ],
+      "hint": "文字yを一つ残して係数を足す。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n06-15",
+      "id": "n06-bridge-audit-sum-y-constant",
+      "lead": "定数の1と−2も別に足す。",
+      "stem": "1-2=",
+      "tail": "",
+      "answer": "-1",
+      "wrong": [
+        "1",
+        "-3",
+        "3"
+      ],
+      "hint": "文字の項と定数の項を混ぜない。",
+      "after": "",
       "kind": "formula"
     }
   ],
@@ -1289,6 +2137,166 @@
       "hint": "三乗は2を三回掛ける操作である。",
       "after": "二次項、一次項、定数項の計算結果を元の位置へ戻すと、展開した四項がそろう。",
       "kind": "formula"
+    },
+    {
+      "target": "ne01-02",
+      "id": "ne01-bridge-audit-collect-square",
+      "lead": "二つの行にある二次項の係数を足す。",
+      "stem": "6x^2+3x^2=(6+3)x^2=",
+      "tail": "x^2",
+      "answer": "9",
+      "wrong": [
+        "3",
+        "18",
+        "6"
+      ],
+      "hint": "二次項だけを集め、指数2は変えない。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "ne01-02",
+      "id": "ne01-bridge-audit-collect-linear",
+      "lead": "次に一次項の係数を足す。",
+      "stem": "9x+18x=(9+18)x=",
+      "tail": "x",
+      "answer": "27",
+      "wrong": [
+        "9",
+        "18",
+        "162"
+      ],
+      "hint": "二つの積から生まれた一次項を両方残す。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "ne01-05",
+      "id": "ne01-bridge-audit-general-first-middle",
+      "lead": "a²bの二項だけを集め、係数を足す。",
+      "stem": "2a^2b+a^2b=(2+1)a^2b=",
+      "tail": "a^2b",
+      "answer": "3",
+      "wrong": [
+        "2",
+        "1",
+        "4"
+      ],
+      "hint": "二つの行に分かれていた同類項をまとめる。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "ne01-05",
+      "id": "ne01-bridge-audit-general-second-middle",
+      "lead": "ab²の二項にも同じ計算を行う。",
+      "stem": "ab^2+2ab^2=(1+2)ab^2=",
+      "tail": "ab^2",
+      "answer": "3",
+      "wrong": [
+        "1",
+        "2",
+        "4"
+      ],
+      "hint": "a²bの項とは、文字の指数が違うので混ぜない。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "ne01-10",
+      "id": "ne01-bridge-audit-cube-factor-middle",
+      "lead": "中央の同類項の係数を計算する。",
+      "stem": "2ab-3ab=(2-3)ab=(",
+      "tail": ")ab",
+      "answer": "-1",
+      "wrong": [
+        "1",
+        "5",
+        "-5"
+      ],
+      "hint": "括弧の外のa+bは変えず、中の同類項だけをまとめる。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "ne01-12",
+      "id": "ne01-bridge-audit-cube-root-eight",
+      "lead": "8x³を一つの式の三乗へ戻す。正の係数で、三回掛けて8になる数を使う。",
+      "stem": "(",
+      "tail": "x)^3=8x^3",
+      "answer": "2",
+      "wrong": [
+        "8",
+        "4",
+        "3"
+      ],
+      "hint": "係数も文字と一緒に三乗の中へ入れる。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "ne01-12",
+      "id": "ne01-bridge-audit-cube-root-twentyseven",
+      "lead": "27y³も同じ方法で三乗へ戻す。正の係数を選ぼう。",
+      "stem": "(",
+      "tail": "y)^3=27y^3",
+      "answer": "3",
+      "wrong": [
+        "9",
+        "27",
+        "2"
+      ],
+      "hint": "三回掛けた数が27になるか確かめる。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "ne01-13",
+      "id": "ne01-bridge-audit-cube-factor-square-a",
+      "lead": "代入した2x全体の平方を計算する。",
+      "stem": "(2x)^2=(2\\cdot2)x^2=",
+      "tail": "x^2",
+      "answer": "4",
+      "wrong": [
+        "2",
+        "8",
+        "6"
+      ],
+      "hint": "公式へ入れた式全体に、平方または積の操作を行う。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "ne01-13",
+      "id": "ne01-bridge-audit-cube-factor-product",
+      "lead": "二次因子の中央の積では、2と3を掛ける。",
+      "stem": "(2x)(3y)=(2\\cdot3)xy=",
+      "tail": "xy",
+      "answer": "6",
+      "wrong": [
+        "5",
+        "3",
+        "9"
+      ],
+      "hint": "公式へ入れた式全体に、平方または積の操作を行う。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "ne01-13",
+      "id": "ne01-bridge-audit-cube-factor-square-b",
+      "lead": "最後は3y全体を二乗する。",
+      "stem": "(3y)^2=(3\\cdot3)y^2=",
+      "tail": "y^2",
+      "answer": "9",
+      "wrong": [
+        "6",
+        "3",
+        "12"
+      ],
+      "hint": "公式へ入れた式全体に、平方または積の操作を行う。",
+      "after": "",
+      "kind": "formula"
     }
   ],
   "n01": [
@@ -1354,6 +2362,38 @@
       ],
       "hint": "指数の積ではなく、掛かっている文字の個数の合計を求める。",
       "after": "係数の−1は文字の個数に含めない。この総数と係数を、次の組の回答へ戻す。",
+      "kind": "formula"
+    },
+    {
+      "target": "n01-09b",
+      "id": "n01-bridge-audit-cancel-cube",
+      "lead": "前の例題と同じように、まず三次項の係数だけを計算する。",
+      "stem": "(1-1)x^3=",
+      "tail": "x^3",
+      "answer": "0",
+      "wrong": [
+        "2",
+        "1",
+        "-1"
+      ],
+      "hint": "同じ大きさの正と負を足す。",
+      "after": "",
+      "kind": "formula"
+    },
+    {
+      "target": "n01-09b",
+      "id": "n01-bridge-audit-cancel-linear",
+      "lead": "次に一次項の係数を計算する。二次項−2x²と定数−1はそのまま残す。",
+      "stem": "(1+3)x=",
+      "tail": "x",
+      "answer": "4",
+      "wrong": [
+        "2",
+        "3",
+        "-4"
+      ],
+      "hint": "三次項の計算結果を一次項へ混ぜない。",
+      "after": "",
       "kind": "formula"
     }
   ]

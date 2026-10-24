@@ -17,23 +17,41 @@ function value(source,env){
 }
 const report=[]
 for(const [prefix,nodes]of Object.entries(data))for(const node of nodes){
- if(node.kind === 'text'||!node.stem.includes('=')||node.stem.includes('\\text')||node.stem.includes(',')||node.answer.includes(','))continue
+ if(node.kind === 'text'||!(node.stem+(node.tail??'')).includes('=')||node.stem.includes('\\text')||node.stem.includes(',')||node.answer.includes(','))continue
  const expressions=(node.stem+node.answer+(node.tail??'')).split('=')
  const wrongDifferent=node.wrong.map(()=>false)
  for(let k=-3;k<=4;k++){
-  const env={r:-1,x:k,y:k+2,a:k+1,b:2*k-1,c:3-k,X:k,T:k}
+  const env={d:k-2,D:k+4,r:-1,x:k,y:k+2,a:k+1,b:2*k-1,c:3-k,X:k,T:k}
+  if(node.id.startsWith('n06-bridge-audit-restore-x-'))env.X=env.x+2*env.y
   if(node.id.startsWith('n06-bridge-detail-restore-'))env.T=env.x**2
   if(node.id==='n04-bridge-restore-t')env.T=env.a+env.b
   env.A=2*env.x**3-3*env.x**2+env.x-1;env.B=-(env.x**3)+2*env.x**2+2
   const target=value(expressions[0],env)
   for(const expression of expressions.slice(1))assert(value(expression,env)===target,node.id+' intermediate')
 
-  node.wrong.forEach((choice,i)=>{if(value(expressions.at(-1).replace(node.answer,choice),env)!==target)wrongDifferent[i]=true})
+  node.wrong.forEach((choice,i)=>{const bad=(node.stem+choice+(node.tail??'')).split('=');const start=value(bad[0],env);if(bad.slice(1).some(expr=>value(expr,env)!==start))wrongDifferent[i]=true})
  }
  assert(wrongDifferent.every(Boolean),node.id+' contains equivalent distractor')
  report.push({id:node.id,samples:8,correct:true,distractorsDistinct:true})
 }
 assert(report.length>=40)
+const chains=JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/firstThemeDerivations.json','utf8'))
+const written=[]
+for(const [prefix,targets] of Object.entries(chains))for(const [target,phases] of Object.entries(targets))for(const rows of Object.values(phases))for(const row of rows)for(const math of row.math.split('\\quad;\\quad')){
+ if(!math.includes('=')||/\\(?:underbrace|text)|,/.test(math))continue
+ const expressions=math.split('=')
+ for(let k=-3;k<=4;k++){
+  const env={x:k,y:k+2,a:k+1,b:2*k-1,c:3-k,d:k-2,D:k+4,p:k+2,q:k-1,r:-1,s:k+3,X:k,T:k,m:2,n:3}
+  env.A=2*env.x**3-3*env.x**2+env.x-1;env.B=-(env.x**3)+2*env.x**2+2
+  if(prefix==='n05'&&target==='n05-bridge-detail-substitute-r')env.s=3
+  if(prefix==='n06'&&target==='n06-01')env.X=env.x+2*env.y
+  if(prefix==='n06'&&target==='n06-05')env.T=env.x**2
+  if(prefix==='n06'&&target==='n06-14'){env.r=1;env.s=-2}
+  const first=value(expressions[0],env)
+  for(const expression of expressions.slice(1))assert(value(expression,env)===first,prefix+'/'+target+' '+math)
+ }
+ written.push({prefix,target,math,samples:8})
+}
 fs.mkdirSync('e2e-evidence/theme-one',{recursive:true})
-fs.writeFileSync('e2e-evidence/theme-one/math.json',JSON.stringify({independentPolynomialChecks:report.length,report},null,2))
-console.log(JSON.stringify({independentPolynomialChecks:report.length,samples:8,passed:true}))
+fs.writeFileSync('e2e-evidence/theme-one/math.json',JSON.stringify({independentPolynomialChecks:report.length,writtenEquationChecks:written.length,report,written},null,2))
+console.log(JSON.stringify({independentPolynomialChecks:report.length,writtenEquationChecks:written.length,samples:8,passed:true}))

@@ -1,4 +1,4 @@
-import { formulaWrapChunks } from '../components/textbook/formulaWrap'
+import { FirstThemeChoiceFormula } from '../components/textbook/FirstThemeChoiceFormula'
 import { developmentFeedback } from '../data/textbook/math/numbers/developmentFeedback'
 import { InlineMath } from 'react-katex'
 import { Check, LockKeyhole, RotateCcw, X } from 'lucide-react'
@@ -294,16 +294,16 @@ export function TextbookReadingFlow({ unit, section, progress, onSummaryReached,
               <span>{index + 1}</span>
               <strong>
                 {activeItem.answerType === 'formula'
-                  ? (
+                  ? (isFirstThemeUnit(unit.unitId) ? <FirstThemeChoiceFormula itemId={activeItem.id} value={choice} /> :
                     <span className="reading-choice-formula-lines">
-                      {textbookDisplayLines(activeItem.id, choice).flatMap(value => value.split('\\quad')).flatMap(value => isFirstThemeUnit(unit.unitId) && !value.includes('\\begin') ? formulaWrapChunks({ id: activeItem.id, type: 'formula', parts: [{type:'math',latex:value}] }) : [value]).map((line, lineIndex) => (
+                      {textbookDisplayLines(activeItem.id, choice).flatMap(value => value.split('\\quad')).map((line, lineIndex) => (
                         <span className="reading-choice-formula-line" key={lineIndex}>
                           <InlineMath math={normalizeTextbookMath(line.trim())} />
                         </span>
                       ))}
                     </span>
                   )
-                  : choice}
+                  : isFirstThemeUnit(unit.unitId) ? <span className="first-theme-choice-text">{choice.split('／').map((part,i)=><span key={i}>{part}</span>)}</span> : choice}
               </strong>
               {activeItem.unit && <small>{activeItem.unit}</small>}
             </button>

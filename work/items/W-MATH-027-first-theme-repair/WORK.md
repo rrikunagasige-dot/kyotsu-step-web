@@ -41,3 +41,7 @@ No automatic whole-repository merge. Public deployment pins this branch's tested
 Latest content revision: see REVISION_R1.md. User approved the neat layout but requested visible fill-in blanks and fuller
 induction/derivation. Sourcef1627507 is now publicly deployed and technically verified by run40052655846 SUCCESS.
 Next action is user review of this same first theme; do not infer acceptance of R1 content or start the second theme.
+
+Latest feedback revision: REVISION_R2.md and R2_AUDIT.json. User requested all similar first-theme omissions and cramped options repaired.
+All206 previous first-theme decisions were reviewed; all399 prior graded chapter decisions remain protected.
+R2 adds actual written equations and local decisions, and tests option-internal geometry. No other theme's lesson content was edited.

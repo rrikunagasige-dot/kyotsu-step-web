@@ -143,11 +143,12 @@ export function TextbookFormula({ block, section, progress, onOpen, unitId }: Pr
   const wrapBlock = auditedWrap ? {
     ...block,
     parts: block.parts.map((part, index) => {
+      if(firstThemeWrap && part.type === 'math')return {...part,latex:part.latex.replace(/\)\(/g,')\\cdot(')}
       if (part.type !== 'choice' || (!firstThemeWrap && !auditedResolvedWrapBlocks.includes(block.id))) return part
       const item = section.items.find(q => q.id === part.itemId)
       const record = progress?.answers[part.itemId]
       return item && isTextbookItemResolved(item, record)
-        ? { type: 'math' as const, latex: `§a${index}§${normalizeTextbookMath(record?.value ?? item.answer)}§z${index}§` }
+        ? { type: 'math' as const, latex: `§a${index}§${(firstThemeWrap ? normalizeTextbookMath(record?.value ?? item.answer).replace(/\)\(/g,')\\cdot(') : normalizeTextbookMath(record?.value ?? item.answer))}§z${index}§` }
         : part
     }),
   } : block
@@ -191,7 +192,7 @@ export function TextbookFormula({ block, section, progress, onOpen, unitId }: Pr
             </span>
             <span className="reading-formula-math reading-formula-p017-continuation" data-testid="p017-continuation"><InlineMath math="<3300-2650" /></span>
           </>
-        ) : auditedWrap ? formulaWrapChunks(wrapBlock).map((chunk, groupIndex) => (
+        ) : auditedWrap ? formulaWrapChunks(firstThemeWrap ? {...wrapBlock,id:'first-theme-choice'} : wrapBlock).map((chunk, groupIndex) => (
           <span className="reading-formula-wrap-group" key={`${block.id}-wrap-${groupIndex}`}>
             {chunk.split(/(§(?:\d+|a\d+|z\d+)§)/).filter(Boolean).map((part, partIndex) => {
               const begin = part.match(/^§a(\d+)§$/)
@@ -202,7 +203,7 @@ export function TextbookFormula({ block, section, progress, onOpen, unitId }: Pr
               const answerId = answerPart?.type === 'choice' && !markedAnswers.has(wrappedAnswer!) ? answerPart.itemId : undefined
               if (answerId) markedAnswers.add(wrappedAnswer!)
               return choice ? renderedParts[Number(choice[1])]
-                : <span className="reading-formula-math" data-testid={answerId ? `resolved-${answerId}` : undefined} key={`${block.id}-wrap-${groupIndex}-${partIndex}`}><InlineMath math={part} /></span>
+                : <span className="reading-formula-math" data-testid={answerId ? `resolved-${answerId}` : undefined} key={`${block.id}-wrap-${groupIndex}-${partIndex}`}><InlineMath math={firstThemeWrap && /^[+=-]/.test(part) ? '{}'+part : part} /></span>
             })}
           </span>
         )) : renderedParts}

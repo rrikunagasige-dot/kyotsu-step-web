@@ -1,0 +1,2563 @@
+{
+  "baseline": "f16275079d3b39758f2da9ceb6b4e156a48c4b9e",
+  "scope": "first theme N01-N06 + NE01",
+  "auditKind": "author self-audit; independent Gate2 not claimed",
+  "counts": {
+    "n01": 22,
+    "n02": 28,
+    "n03": 28,
+    "n04": 38,
+    "n05": 35,
+    "n06": 26,
+    "ne01": 29
+  },
+  "reviewedExistingDecisions": 206,
+  "newLocalDecisions": 65,
+  "writtenEquationRows": 106,
+  "rows": [
+    {
+      "unit": "n01",
+      "itemId": "n01-01",
+      "sourceRoot": "n01-01",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n01",
+      "itemId": "n01-bridge-detail-coefficient-negative",
+      "sourceRoot": "n01-02a",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n01",
+      "itemId": "n01-bridge-detail-degree-linear",
+      "sourceRoot": "n01-02a",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n01",
+      "itemId": "n01-02a",
+      "sourceRoot": "n01-02a",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n01",
+      "itemId": "n01-bridge-detail-coefficient-one",
+      "sourceRoot": "n01-02b",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n01",
+      "itemId": "n01-02b",
+      "sourceRoot": "n01-02b",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n01",
+      "itemId": "n01-bridge-detail-degree-total",
+      "sourceRoot": "n01-02c",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n01",
+      "itemId": "n01-02c",
+      "sourceRoot": "n01-02c",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n01",
+      "itemId": "n01-03",
+      "sourceRoot": "n01-03",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n01",
+      "itemId": "n01-04",
+      "sourceRoot": "n01-04",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n01-04"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n01",
+      "itemId": "n01-05",
+      "sourceRoot": "n01-05",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n01",
+      "itemId": "n01-06a",
+      "sourceRoot": "n01-06a",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n01",
+      "itemId": "n01-06b",
+      "sourceRoot": "n01-06b",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n01",
+      "itemId": "n01-r3-q07-x2coef",
+      "sourceRoot": "n01-r3-q07-x2coef",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n01-r3-q07-x2coef"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n01",
+      "itemId": "n01-r3-q07-xcoef",
+      "sourceRoot": "n01-r3-q07-xcoef",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n01-r3-q07-xcoef"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n01",
+      "itemId": "n01-r3-q07-const",
+      "sourceRoot": "n01-r3-q07-const",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n01",
+      "itemId": "n01-07",
+      "sourceRoot": "n01-07",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n01",
+      "itemId": "n01-08",
+      "sourceRoot": "n01-08",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n01",
+      "itemId": "n01-09a",
+      "sourceRoot": "n01-09a",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n01-09a"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n01",
+      "itemId": "n01-09b",
+      "sourceRoot": "n01-09b",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n01-bridge-audit-cancel-cube",
+        "n01-09b"
+      ],
+      "newLocalSteps": [
+        "n01-bridge-audit-cancel-cube",
+        "n01-bridge-audit-cancel-linear"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n01",
+      "itemId": "n01-10a",
+      "sourceRoot": "n01-10a",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n01",
+      "itemId": "n01-10b",
+      "sourceRoot": "n01-10b",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n02",
+      "itemId": "n02-01",
+      "sourceRoot": "n02-01",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [],
+      "newLocalSteps": [
+        "n02-bridge-audit-like-b"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n02",
+      "itemId": "n02-02",
+      "sourceRoot": "n02-02",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n02",
+      "itemId": "n02-bridge-detail-linear-coefficient",
+      "sourceRoot": "n02-03",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [],
+      "newLocalSteps": [
+        "n02-bridge-audit-constant-part"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n02",
+      "itemId": "n02-03",
+      "sourceRoot": "n02-03",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [],
+      "newLocalSteps": [
+        "n02-bridge-audit-constant-part"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n02",
+      "itemId": "n02-04",
+      "sourceRoot": "n02-04",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n02-04"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n02",
+      "itemId": "n02-05",
+      "sourceRoot": "n02-05",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n02",
+      "itemId": "n02-06",
+      "sourceRoot": "n02-06",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [],
+      "newLocalSteps": [
+        "n02-bridge-audit-sum-cube",
+        "n02-bridge-audit-sum-square",
+        "n02-bridge-audit-sum-linear",
+        "n02-bridge-audit-sum-constant"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n02",
+      "itemId": "n02-07",
+      "sourceRoot": "n02-07",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [],
+      "newLocalSteps": [
+        "n02-bridge-audit-minus-cube-sign",
+        "n02-bridge-audit-minus-square-sign",
+        "n02-bridge-audit-minus-constant-sign"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n02",
+      "itemId": "n02-08",
+      "sourceRoot": "n02-08",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [],
+      "newLocalSteps": [
+        "n02-bridge-audit-diff-cube",
+        "n02-bridge-audit-diff-square",
+        "n02-bridge-audit-diff-linear",
+        "n02-bridge-audit-diff-constant"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n02",
+      "itemId": "n02-bridge-detail-cube-coefficient",
+      "sourceRoot": "n02-09",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [],
+      "newLocalSteps": [
+        "n02-bridge-audit-twice-linear",
+        "n02-bridge-audit-twice-constant"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n02",
+      "itemId": "n02-bridge-distribute",
+      "sourceRoot": "n02-09",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [],
+      "newLocalSteps": [
+        "n02-bridge-audit-twice-linear",
+        "n02-bridge-audit-twice-constant"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n02",
+      "itemId": "n02-bridge-detail-signed-coefficient",
+      "sourceRoot": "n02-09",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [],
+      "newLocalSteps": [
+        "n02-bridge-audit-twice-linear",
+        "n02-bridge-audit-twice-constant"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n02",
+      "itemId": "n02-bridge-twice-square",
+      "sourceRoot": "n02-09",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [],
+      "newLocalSteps": [
+        "n02-bridge-audit-twice-linear",
+        "n02-bridge-audit-twice-constant"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n02",
+      "itemId": "n02-bridge-minus-multiplier",
+      "sourceRoot": "n02-09",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [],
+      "newLocalSteps": [
+        "n02-bridge-audit-twice-linear",
+        "n02-bridge-audit-twice-constant"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n02",
+      "itemId": "n02-bridge-minus-cube",
+      "sourceRoot": "n02-09",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [],
+      "newLocalSteps": [
+        "n02-bridge-audit-twice-linear",
+        "n02-bridge-audit-twice-constant"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n02",
+      "itemId": "n02-bridge-minus-square",
+      "sourceRoot": "n02-09",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [],
+      "newLocalSteps": [
+        "n02-bridge-audit-twice-linear",
+        "n02-bridge-audit-twice-constant"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n02",
+      "itemId": "n02-bridge-minus-constant",
+      "sourceRoot": "n02-09",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [],
+      "newLocalSteps": [
+        "n02-bridge-audit-twice-linear",
+        "n02-bridge-audit-twice-constant"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n02",
+      "itemId": "n02-09",
+      "sourceRoot": "n02-09",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [],
+      "newLocalSteps": [
+        "n02-bridge-audit-twice-linear",
+        "n02-bridge-audit-twice-constant"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n02",
+      "itemId": "n02-bridge-like-square",
+      "sourceRoot": "n02-10",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n02-10"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n02",
+      "itemId": "n02-bridge-square-sum",
+      "sourceRoot": "n02-10",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n02-10"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n02",
+      "itemId": "n02-bridge-cube-sum",
+      "sourceRoot": "n02-10",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n02-10"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n02",
+      "itemId": "n02-bridge-constant-sum",
+      "sourceRoot": "n02-10",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n02-10"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n02",
+      "itemId": "n02-10",
+      "sourceRoot": "n02-10",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n02-10"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n02",
+      "itemId": "n02-bridge-outer-minus",
+      "sourceRoot": "n02-11",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n02-bridge-group-coefficients"
+      ],
+      "newLocalSteps": [
+        "n02-bridge-audit-a-coefficient",
+        "n02-bridge-audit-b-coefficient"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n02",
+      "itemId": "n02-bridge-group-coefficients",
+      "sourceRoot": "n02-11",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n02-bridge-group-coefficients"
+      ],
+      "newLocalSteps": [
+        "n02-bridge-audit-a-coefficient",
+        "n02-bridge-audit-b-coefficient"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n02",
+      "itemId": "n02-11",
+      "sourceRoot": "n02-11",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n02-bridge-group-coefficients"
+      ],
+      "newLocalSteps": [
+        "n02-bridge-audit-a-coefficient",
+        "n02-bridge-audit-b-coefficient"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n02",
+      "itemId": "n02-bridge-reuse",
+      "sourceRoot": "n02-12",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n02",
+      "itemId": "n02-12",
+      "sourceRoot": "n02-12",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n03",
+      "itemId": "n03-01",
+      "sourceRoot": "n03-01",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [],
+      "newLocalSteps": [
+        "n03-bridge-audit-count-a"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n03",
+      "itemId": "n03-02",
+      "sourceRoot": "n03-02",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n03",
+      "itemId": "n03-03",
+      "sourceRoot": "n03-03",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n03-03"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n03",
+      "itemId": "n03-04",
+      "sourceRoot": "n03-04",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n03-04"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n03",
+      "itemId": "n03-05",
+      "sourceRoot": "n03-05",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n03-05"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n03",
+      "itemId": "n03-bridge-detail-negative-pair",
+      "sourceRoot": "n03-06",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n03-bridge-negative-cube",
+        "n03-bridge-x-power"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n03",
+      "itemId": "n03-bridge-negative-cube",
+      "sourceRoot": "n03-06",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n03-bridge-negative-cube",
+        "n03-bridge-x-power"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n03",
+      "itemId": "n03-bridge-x-power",
+      "sourceRoot": "n03-06",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n03-bridge-negative-cube",
+        "n03-bridge-x-power"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n03",
+      "itemId": "n03-bridge-detail-y-power",
+      "sourceRoot": "n03-06",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n03-bridge-negative-cube",
+        "n03-bridge-x-power"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n03",
+      "itemId": "n03-06",
+      "sourceRoot": "n03-06",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n03-bridge-negative-cube",
+        "n03-bridge-x-power"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n03",
+      "itemId": "n03-07",
+      "sourceRoot": "n03-07",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n03",
+      "itemId": "n03-08",
+      "sourceRoot": "n03-08",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [],
+      "newLocalSteps": [
+        "n03-bridge-audit-product-fourth",
+        "n03-bridge-audit-product-negative",
+        "n03-bridge-audit-product-last"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n03",
+      "itemId": "n03-09",
+      "sourceRoot": "n03-09",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n03",
+      "itemId": "n03-r3-q10-p1",
+      "sourceRoot": "n03-r3-q10-p1",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n03",
+      "itemId": "n03-r3-q10-p2",
+      "sourceRoot": "n03-r3-q10-p2",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n03",
+      "itemId": "n03-r3-q10-p3",
+      "sourceRoot": "n03-r3-q10-p3",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n03",
+      "itemId": "n03-r3-q10-p4",
+      "sourceRoot": "n03-r3-q10-p4",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n03",
+      "itemId": "n03-10",
+      "sourceRoot": "n03-10",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n03",
+      "itemId": "n03-11",
+      "sourceRoot": "n03-11",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [],
+      "newLocalSteps": [
+        "n03-bridge-audit-grid-collect"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n03",
+      "itemId": "n03-12",
+      "sourceRoot": "n03-12",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n03-12"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n03",
+      "itemId": "n03-bridge-detail-first-product",
+      "sourceRoot": "n03-13",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n03-bridge-second-row"
+      ],
+      "newLocalSteps": [
+        "n03-bridge-audit-minus-minus"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n03",
+      "itemId": "n03-bridge-detail-second-product",
+      "sourceRoot": "n03-13",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n03-bridge-second-row"
+      ],
+      "newLocalSteps": [
+        "n03-bridge-audit-minus-minus"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n03",
+      "itemId": "n03-bridge-detail-third-product",
+      "sourceRoot": "n03-13",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n03-bridge-second-row"
+      ],
+      "newLocalSteps": [
+        "n03-bridge-audit-minus-minus"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n03",
+      "itemId": "n03-bridge-first-row",
+      "sourceRoot": "n03-13",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n03-bridge-second-row"
+      ],
+      "newLocalSteps": [
+        "n03-bridge-audit-minus-minus"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n03",
+      "itemId": "n03-bridge-second-row",
+      "sourceRoot": "n03-13",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n03-bridge-second-row"
+      ],
+      "newLocalSteps": [
+        "n03-bridge-audit-minus-minus"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n03",
+      "itemId": "n03-bridge-collect-square",
+      "sourceRoot": "n03-13",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n03-bridge-second-row"
+      ],
+      "newLocalSteps": [
+        "n03-bridge-audit-minus-minus"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n03",
+      "itemId": "n03-bridge-collect-linear",
+      "sourceRoot": "n03-13",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n03-bridge-second-row"
+      ],
+      "newLocalSteps": [
+        "n03-bridge-audit-minus-minus"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n03",
+      "itemId": "n03-13",
+      "sourceRoot": "n03-13",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n03-bridge-second-row"
+      ],
+      "newLocalSteps": [
+        "n03-bridge-audit-minus-minus"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-q01-p1",
+      "sourceRoot": "n04-q01-p1",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n04-q01-p1"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-q01-p2",
+      "sourceRoot": "n04-q01-p2",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n04-q01-p2"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-q01-p3",
+      "sourceRoot": "n04-q01-p3",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n04-q01-p3"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-q01-p4",
+      "sourceRoot": "n04-q01-p4",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n04-q01-p4"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-01",
+      "sourceRoot": "n04-01",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-02",
+      "sourceRoot": "n04-02",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n04-02"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-03",
+      "sourceRoot": "n04-03",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-04",
+      "sourceRoot": "n04-04",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n04-04"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-05",
+      "sourceRoot": "n04-05",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [],
+      "newLocalSteps": [
+        "n04-bridge-audit-square-cross-count"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-06",
+      "sourceRoot": "n04-06",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n04-06"
+      ],
+      "newLocalSteps": [
+        "n04-bridge-audit-negative-cross-sign",
+        "n04-bridge-audit-negative-square-sign"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-07",
+      "sourceRoot": "n04-07",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [],
+      "newLocalSteps": [
+        "n04-bridge-audit-negative-cross-sum"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-08",
+      "sourceRoot": "n04-08",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n04-08",
+        "n04-bridge-audit-opposite-cancel"
+      ],
+      "newLocalSteps": [
+        "n04-bridge-audit-opposite-cancel"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-09",
+      "sourceRoot": "n04-09",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-bridge-formula-substitute",
+      "sourceRoot": "n04-10",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n04-10"
+      ],
+      "newLocalSteps": [
+        "n04-bridge-audit-square-2a",
+        "n04-bridge-audit-square-3x"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-bridge-cross-coefficient",
+      "sourceRoot": "n04-10",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n04-10"
+      ],
+      "newLocalSteps": [
+        "n04-bridge-audit-square-2a",
+        "n04-bridge-audit-square-3x"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-10",
+      "sourceRoot": "n04-10",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n04-10"
+      ],
+      "newLocalSteps": [
+        "n04-bridge-audit-square-2a",
+        "n04-bridge-audit-square-3x"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-11",
+      "sourceRoot": "n04-11",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n04-11"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-12",
+      "sourceRoot": "n04-12",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [],
+      "newLocalSteps": [
+        "n04-bridge-audit-general-linear"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-13",
+      "sourceRoot": "n04-13",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n04-13"
+      ],
+      "newLocalSteps": [
+        "n04-bridge-audit-concrete-cross",
+        "n04-bridge-audit-concrete-linear"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-14",
+      "sourceRoot": "n04-14",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n04-14"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-bridge-restore-t",
+      "sourceRoot": "n04-15",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n04-bridge-expand-restored"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-bridge-expand-restored",
+      "sourceRoot": "n04-15",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n04-bridge-expand-restored"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-15",
+      "sourceRoot": "n04-15",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n04-bridge-expand-restored"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-16",
+      "sourceRoot": "n04-16",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n04-16"
+      ],
+      "newLocalSteps": [
+        "n04-bridge-audit-minus-ac",
+        "n04-bridge-audit-minus-bc"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-17",
+      "sourceRoot": "n04-17",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n04-17"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-18",
+      "sourceRoot": "n04-18",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n04-18"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-19",
+      "sourceRoot": "n04-19",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n04-19"
+      ],
+      "newLocalSteps": [
+        "n04-bridge-audit-remaining-square"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-bridge-pairing",
+      "sourceRoot": "n04-20",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n04-bridge-pairing",
+        "n04-bridge-pair-first",
+        "n04-bridge-pair-second"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-bridge-pair-first",
+      "sourceRoot": "n04-20",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n04-bridge-pairing",
+        "n04-bridge-pair-first",
+        "n04-bridge-pair-second"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-bridge-pair-second",
+      "sourceRoot": "n04-20",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n04-bridge-pairing",
+        "n04-bridge-pair-first",
+        "n04-bridge-pair-second"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-20",
+      "sourceRoot": "n04-20",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n04-bridge-pairing",
+        "n04-bridge-pair-first",
+        "n04-bridge-pair-second"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-21",
+      "sourceRoot": "n04-21",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n04-21"
+      ],
+      "newLocalSteps": [
+        "n04-bridge-audit-t-linear"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-bridge-detail-square-cross",
+      "sourceRoot": "n04-22",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n04-bridge-restore-square",
+        "n04-bridge-restore-ten",
+        "n04-22"
+      ],
+      "newLocalSteps": [
+        "n04-bridge-audit-ten-linear"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-bridge-detail-square-last",
+      "sourceRoot": "n04-22",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n04-bridge-restore-square",
+        "n04-bridge-restore-ten",
+        "n04-22"
+      ],
+      "newLocalSteps": [
+        "n04-bridge-audit-ten-linear"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-bridge-restore-square",
+      "sourceRoot": "n04-22",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n04-bridge-restore-square",
+        "n04-bridge-restore-ten",
+        "n04-22"
+      ],
+      "newLocalSteps": [
+        "n04-bridge-audit-ten-linear"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-bridge-restore-ten",
+      "sourceRoot": "n04-22",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n04-bridge-restore-square",
+        "n04-bridge-restore-ten",
+        "n04-22"
+      ],
+      "newLocalSteps": [
+        "n04-bridge-audit-ten-linear"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-bridge-restore-collect",
+      "sourceRoot": "n04-22",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n04-bridge-restore-square",
+        "n04-bridge-restore-ten",
+        "n04-22"
+      ],
+      "newLocalSteps": [
+        "n04-bridge-audit-ten-linear"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n04",
+      "itemId": "n04-22",
+      "sourceRoot": "n04-22",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n04-bridge-restore-square",
+        "n04-bridge-restore-ten",
+        "n04-22"
+      ],
+      "newLocalSteps": [
+        "n04-bridge-audit-ten-linear"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-01",
+      "sourceRoot": "n05-01",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-bridge-detail-coefficient-factor",
+      "sourceRoot": "n05-02",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-bridge-factor-t",
+      "sourceRoot": "n05-02",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-02",
+      "sourceRoot": "n05-02",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-03",
+      "sourceRoot": "n05-03",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n05-03"
+      ],
+      "newLocalSteps": [
+        "n05-bridge-audit-reverse-constant"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-04",
+      "sourceRoot": "n05-04",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n05-04"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-05",
+      "sourceRoot": "n05-05",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n05-05"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-06",
+      "sourceRoot": "n05-06",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n05-06"
+      ],
+      "newLocalSteps": [
+        "n05-bridge-audit-positive-root-16",
+        "n05-bridge-audit-positive-root-9"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-07",
+      "sourceRoot": "n05-07",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n05-07"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-08",
+      "sourceRoot": "n05-08",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-09",
+      "sourceRoot": "n05-09",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n05-09"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-10",
+      "sourceRoot": "n05-10",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-bridge-factor-sign",
+      "sourceRoot": "n05-11",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n05-bridge-audit-factor-pair-select"
+      ],
+      "newLocalSteps": [
+        "n05-bridge-audit-factor-pair-select"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-bridge-factor-candidates-1",
+      "sourceRoot": "n05-11",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n05-bridge-audit-factor-pair-select"
+      ],
+      "newLocalSteps": [
+        "n05-bridge-audit-factor-pair-select"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-bridge-factor-candidates-2",
+      "sourceRoot": "n05-11",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n05-bridge-audit-factor-pair-select"
+      ],
+      "newLocalSteps": [
+        "n05-bridge-audit-factor-pair-select"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-bridge-factor-candidates-3",
+      "sourceRoot": "n05-11",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n05-bridge-audit-factor-pair-select"
+      ],
+      "newLocalSteps": [
+        "n05-bridge-audit-factor-pair-select"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-11",
+      "sourceRoot": "n05-11",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n05-bridge-audit-factor-pair-select"
+      ],
+      "newLocalSteps": [
+        "n05-bridge-audit-factor-pair-select"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-12",
+      "sourceRoot": "n05-12",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n05-12"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-13",
+      "sourceRoot": "n05-13",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-bridge-cross-a",
+      "sourceRoot": "n05-14",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-bridge-cross-b",
+      "sourceRoot": "n05-14",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-bridge-cross-c",
+      "sourceRoot": "n05-14",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-14",
+      "sourceRoot": "n05-14",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-15",
+      "sourceRoot": "n05-15",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-16",
+      "sourceRoot": "n05-16",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n05-16"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-17",
+      "sourceRoot": "n05-17",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-bridge-search-rs-1",
+      "sourceRoot": "n05-18",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n05-bridge-detail-substitute-r"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-bridge-search-rs-2",
+      "sourceRoot": "n05-18",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n05-bridge-detail-substitute-r"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-bridge-search-rs-3",
+      "sourceRoot": "n05-18",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n05-bridge-detail-substitute-r"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-bridge-search-rs-4",
+      "sourceRoot": "n05-18",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n05-bridge-detail-substitute-r"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-bridge-select-rs",
+      "sourceRoot": "n05-18",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n05-bridge-detail-substitute-r"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-bridge-detail-substitute-r",
+      "sourceRoot": "n05-18",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n05-bridge-detail-substitute-r"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-18",
+      "sourceRoot": "n05-18",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n05-bridge-detail-substitute-r"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-19",
+      "sourceRoot": "n05-19",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n05-19"
+      ],
+      "newLocalSteps": [
+        "n05-bridge-audit-common-negative-four"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n05",
+      "itemId": "n05-20",
+      "sourceRoot": "n05-20",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n05-bridge-audit-square-root-four"
+      ],
+      "newLocalSteps": [
+        "n05-bridge-audit-square-root-four"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n06",
+      "itemId": "n06-01",
+      "sourceRoot": "n06-01",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n06-01"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n06",
+      "itemId": "n06-bridge-x-expand",
+      "sourceRoot": "n06-02",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n06-bridge-x-expand"
+      ],
+      "newLocalSteps": [
+        "n06-bridge-audit-x-linear-sum",
+        "n06-bridge-audit-x-constant-sum"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n06",
+      "itemId": "n06-02",
+      "sourceRoot": "n06-02",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n06-bridge-x-expand"
+      ],
+      "newLocalSteps": [
+        "n06-bridge-audit-x-linear-sum",
+        "n06-bridge-audit-x-constant-sum"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n06",
+      "itemId": "n06-bridge-x-pair",
+      "sourceRoot": "n06-03",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n06-bridge-x-pair"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n06",
+      "itemId": "n06-03",
+      "sourceRoot": "n06-03",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n06-bridge-x-pair"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n06",
+      "itemId": "n06-04",
+      "sourceRoot": "n06-04",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [],
+      "newLocalSteps": [
+        "n06-bridge-audit-restore-x-first",
+        "n06-bridge-audit-restore-x-second"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n06",
+      "itemId": "n06-05",
+      "sourceRoot": "n06-05",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n06-05"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n06",
+      "itemId": "n06-bridge-t-pair",
+      "sourceRoot": "n06-06",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n06-bridge-t-pair"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n06",
+      "itemId": "n06-bridge-t-factor",
+      "sourceRoot": "n06-06",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n06-bridge-t-pair"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n06",
+      "itemId": "n06-bridge-detail-restore-first",
+      "sourceRoot": "n06-06",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n06-bridge-t-pair"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n06",
+      "itemId": "n06-bridge-detail-restore-second",
+      "sourceRoot": "n06-06",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n06-bridge-t-pair"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n06",
+      "itemId": "n06-06",
+      "sourceRoot": "n06-06",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n06-bridge-t-pair"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n06",
+      "itemId": "n06-bridge-detail-difference-first",
+      "sourceRoot": "n06-07",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n06",
+      "itemId": "n06-bridge-detail-difference-second",
+      "sourceRoot": "n06-07",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n06",
+      "itemId": "n06-07",
+      "sourceRoot": "n06-07",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n06",
+      "itemId": "n06-08",
+      "sourceRoot": "n06-08",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n06",
+      "itemId": "n06-09",
+      "sourceRoot": "n06-09",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n06-09"
+      ],
+      "newLocalSteps": [
+        "n06-bridge-audit-y-coefficient"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n06",
+      "itemId": "n06-10",
+      "sourceRoot": "n06-10",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n06-10"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n06",
+      "itemId": "n06-11",
+      "sourceRoot": "n06-11",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n06-11"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n06",
+      "itemId": "n06-bridge-last-pair",
+      "sourceRoot": "n06-12",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n06-bridge-last-pair"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n06",
+      "itemId": "n06-12",
+      "sourceRoot": "n06-12",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n06-bridge-last-pair"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n06",
+      "itemId": "n06-13",
+      "sourceRoot": "n06-13",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n06-13"
+      ],
+      "newLocalSteps": [
+        "n06-bridge-audit-x-coefficient"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n06",
+      "itemId": "n06-bridge-constant-cross",
+      "sourceRoot": "n06-14",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n06-14",
+        "n06-bridge-audit-constant-pair"
+      ],
+      "newLocalSteps": [
+        "n06-bridge-audit-constant-pair"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n06",
+      "itemId": "n06-14",
+      "sourceRoot": "n06-14",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n06-14",
+        "n06-bridge-audit-constant-pair"
+      ],
+      "newLocalSteps": [
+        "n06-bridge-audit-constant-pair"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n06",
+      "itemId": "n06-15",
+      "sourceRoot": "n06-15",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n06-15"
+      ],
+      "newLocalSteps": [
+        "n06-bridge-audit-sum-y-coefficient",
+        "n06-bridge-audit-sum-y-constant"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "n06",
+      "itemId": "n06-16",
+      "sourceRoot": "n06-16",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "n06-16"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "ne01",
+      "itemId": "ne01-01",
+      "sourceRoot": "ne01-01",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "ne01-01"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "ne01",
+      "itemId": "ne01-bridge-concrete-first",
+      "sourceRoot": "ne01-02",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "ne01-bridge-concrete-first",
+        "ne01-bridge-concrete-second",
+        "ne01-02"
+      ],
+      "newLocalSteps": [
+        "ne01-bridge-audit-collect-square",
+        "ne01-bridge-audit-collect-linear"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "ne01",
+      "itemId": "ne01-bridge-concrete-second",
+      "sourceRoot": "ne01-02",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "ne01-bridge-concrete-first",
+        "ne01-bridge-concrete-second",
+        "ne01-02"
+      ],
+      "newLocalSteps": [
+        "ne01-bridge-audit-collect-square",
+        "ne01-bridge-audit-collect-linear"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "ne01",
+      "itemId": "ne01-02",
+      "sourceRoot": "ne01-02",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "ne01-bridge-concrete-first",
+        "ne01-bridge-concrete-second",
+        "ne01-02"
+      ],
+      "newLocalSteps": [
+        "ne01-bridge-audit-collect-square",
+        "ne01-bridge-audit-collect-linear"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "ne01",
+      "itemId": "ne01-03",
+      "sourceRoot": "ne01-03",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "ne01-03"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "ne01",
+      "itemId": "ne01-bridge-general-a",
+      "sourceRoot": "ne01-04",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "ne01-bridge-general-a",
+        "ne01-bridge-general-b"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "ne01",
+      "itemId": "ne01-bridge-general-b",
+      "sourceRoot": "ne01-04",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "ne01-bridge-general-a",
+        "ne01-bridge-general-b"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "ne01",
+      "itemId": "ne01-04",
+      "sourceRoot": "ne01-04",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "ne01-bridge-general-a",
+        "ne01-bridge-general-b"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "ne01",
+      "itemId": "ne01-05",
+      "sourceRoot": "ne01-05",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [],
+      "newLocalSteps": [
+        "ne01-bridge-audit-general-first-middle",
+        "ne01-bridge-audit-general-second-middle"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "ne01",
+      "itemId": "ne01-bridge-negative-substitute",
+      "sourceRoot": "ne01-06",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "ne01-06"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "ne01",
+      "itemId": "ne01-bridge-detail-even-coefficient",
+      "sourceRoot": "ne01-06",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "ne01-06"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "ne01",
+      "itemId": "ne01-bridge-even-sign",
+      "sourceRoot": "ne01-06",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "ne01-06"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "ne01",
+      "itemId": "ne01-bridge-detail-odd-coefficient",
+      "sourceRoot": "ne01-06",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "ne01-06"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "ne01",
+      "itemId": "ne01-bridge-odd-sign",
+      "sourceRoot": "ne01-06",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "ne01-06"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "ne01",
+      "itemId": "ne01-06",
+      "sourceRoot": "ne01-06",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "ne01-06"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "ne01",
+      "itemId": "ne01-bridge-concrete-substitute",
+      "sourceRoot": "ne01-07",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "ne01",
+      "itemId": "ne01-bridge-linear-number",
+      "sourceRoot": "ne01-07",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "ne01",
+      "itemId": "ne01-bridge-detail-quadratic-coefficient",
+      "sourceRoot": "ne01-07",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "ne01",
+      "itemId": "ne01-bridge-detail-constant-power",
+      "sourceRoot": "ne01-07",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "ne01",
+      "itemId": "ne01-07",
+      "sourceRoot": "ne01-07",
+      "selfAudit": "REVIEWED",
+      "repair": "PRESERVE_LOCAL_JUDGMENT_OR_PRIOR_RESULT_ASSEMBLY",
+      "writtenTargets": [],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "ne01",
+      "itemId": "ne01-08",
+      "sourceRoot": "ne01-08",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "ne01-08"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "ne01",
+      "itemId": "ne01-09",
+      "sourceRoot": "ne01-09",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "ne01-09"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "ne01",
+      "itemId": "ne01-10",
+      "sourceRoot": "ne01-10",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "ne01-10"
+      ],
+      "newLocalSteps": [
+        "ne01-bridge-audit-cube-factor-middle"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "ne01",
+      "itemId": "ne01-bridge-difference-substitute",
+      "sourceRoot": "ne01-11",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "ne01-11"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "ne01",
+      "itemId": "ne01-11",
+      "sourceRoot": "ne01-11",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "ne01-11"
+      ],
+      "newLocalSteps": [],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "ne01",
+      "itemId": "ne01-12",
+      "sourceRoot": "ne01-12",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [
+        "ne01-bridge-audit-cube-root-eight",
+        "ne01-bridge-audit-cube-root-twentyseven"
+      ],
+      "newLocalSteps": [
+        "ne01-bridge-audit-cube-root-eight",
+        "ne01-bridge-audit-cube-root-twentyseven"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "ne01",
+      "itemId": "ne01-bridge-factor-difference",
+      "sourceRoot": "ne01-13",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [],
+      "newLocalSteps": [
+        "ne01-bridge-audit-cube-factor-square-a",
+        "ne01-bridge-audit-cube-factor-product",
+        "ne01-bridge-audit-cube-factor-square-b"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "ne01",
+      "itemId": "ne01-bridge-factor-sum-substitute",
+      "sourceRoot": "ne01-13",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [],
+      "newLocalSteps": [
+        "ne01-bridge-audit-cube-factor-square-a",
+        "ne01-bridge-audit-cube-factor-product",
+        "ne01-bridge-audit-cube-factor-square-b"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    },
+    {
+      "unit": "ne01",
+      "itemId": "ne01-13",
+      "sourceRoot": "ne01-13",
+      "selfAudit": "REVIEWED",
+      "repair": "WRITTEN_STEPS",
+      "writtenTargets": [],
+      "newLocalSteps": [
+        "ne01-bridge-audit-cube-factor-square-a",
+        "ne01-bridge-audit-cube-factor-product",
+        "ne01-bridge-audit-cube-factor-square-b"
+      ],
+      "layout": "single-column semantic rows; geometry/font checked in browser"
+    }
+  ]
+}

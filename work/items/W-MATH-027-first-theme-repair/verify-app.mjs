@@ -26,7 +26,7 @@ try {
      assert(await next.isVisible(),'Missing next stage before '+item.id)
      await next.click();stages++
     }
-    if(item.id.includes('-bridge-detail-')) assert((await blank.innerText()).includes('□'),'Missing visible inline blank '+item.id)
+    if(item.id.includes('-bridge-detail-')||item.id.includes('-bridge-audit-')) assert((await blank.innerText()).includes('□'),'Missing visible inline blank '+item.id)
     await blank.click()
     let panel=page.getByTestId('inline-choice-panel-'+item.id)
     await panel.waitFor()
@@ -43,9 +43,12 @@ try {
     let selected
     for(const option of await answer.all())if((await option.getAttribute('aria-label'))===item.answer){selected=option;break}
     assert(selected,'Missing correct option '+item.id)
-    if(width===320 && ['n01-bridge-detail-coefficient-negative','n02-bridge-detail-signed-coefficient','n03-bridge-detail-first-product','n06-bridge-detail-restore-first','ne01-bridge-detail-even-coefficient'].includes(item.id)) {
+    if(['n01-06b','n01-09a','n01-09b','n02-04'].includes(item.id)) {
       await panel.scrollIntoViewIfNeeded();await page.screenshot({path:out+'/'+item.id+'-'+width+'.png',fullPage:true})
     }
+    const layout=await panel.locator('button.reading-choice-option').evaluateAll(options=>options.map(option=>{const strong=option.querySelector('strong');const bounds=strong.getBoundingClientRect();return {left:option.getBoundingClientRect().left,font:parseFloat(getComputedStyle(strong).fontSize),over:Array.from(strong.querySelectorAll('.first-theme-choice-chunk')).some(c=>{const r=c.getBoundingClientRect();return r.left<bounds.left-2||r.right>bounds.right+2})}}))
+    assert(layout.every(x=>x.font>=16&&!x.over),'Clipped or undersized option '+width+'/'+item.id+' '+JSON.stringify(layout))
+    assert(layout.every(x=>Math.abs(x.left-layout[0].left)<2),'Options are crowded into columns '+item.id)
     const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1)
     assert(!overflow,'Horizontal page overflow at '+width+'/'+item.id)
     assert.equal(await page.locator('.katex-error').count(),0,'Math parse error '+item.id)

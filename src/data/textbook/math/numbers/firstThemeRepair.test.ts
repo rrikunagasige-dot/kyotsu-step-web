@@ -32,7 +32,7 @@ describe('2026-10-24 current first-theme edition', () => {
     expect(new Set(ids).size).toBe(ids.length)
   })
   it.each(units)('$unitId preserves answers from the previous public edition and opens new inline blanks', unit => {
-    const oldItems = unit.sections[0].items.filter(q => !q.id.includes('-bridge-detail-'))
+    const oldItems = unit.sections[0].items.filter(q => !q.id.includes('-bridge-audit-'))
     const old: TextbookUnitProgress = { unitId:unit.unitId,unitRevision:unit.revision-1,startedAt:1,updatedAt:2,completedAt:3,answers:Object.fromEntries(oldItems.map(q=>[q.id,{itemId:q.id,value:q.answer,resolved:true,isFirstCorrect:true,attemptCount:2,firstAnsweredAt:1,lastAnsweredAt:2}])) }
     const current = effectiveTextbookProgress(unit,old)!
     expect(current.answers).toEqual(old.answers)

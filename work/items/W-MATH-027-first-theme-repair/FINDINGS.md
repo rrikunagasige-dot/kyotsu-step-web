@@ -14,3 +14,8 @@
 R1: A count of added decisions is not an acceptance criterion. A whole-expression answer picker does not automatically
 become an equation-local fill-in blank. Inspect the actual unfinished equation and trace the purpose/use of each result.
 Positive layout feedback is bound to layout; content quality must be reviewed separately.
+
+R2: Page-level overflow and successful completion missed clipping inside individual option cards.
+Removing quad and splitting one math expression into independent KaTeX chunks also lost semantic separation and operator spacing.
+Check option-internal geometry, readable font, semantic group separators, and the actual equation chain in later examples.
+A count of new blanks or explanatory paragraphs cannot replace writing the complete mathematical transformation.

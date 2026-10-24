@@ -1,11 +1,17 @@
 {
   "baseline": "171c04781f32c1286a0762905891b582714834f9",
   "allowedSourcePaths": [
+    "src/components/textbook/FirstThemeChoiceFormula.tsx",
     "src/components/textbook/TextbookFormula.tsx",
+    "src/components/textbook/firstThemeChoiceLayout.test.ts",
+    "src/components/textbook/firstThemeChoiceLayout.ts",
+    "src/components/textbook/formulaWrap.ts",
     "src/data/textbook/math/mathCatalog.test.ts",
     "src/data/textbook/math/mathCatalog.ts",
     "src/data/textbook/math/numbers/developmentLessons.test.ts",
     "src/data/textbook/math/numbers/firstThemeDeepening.json",
+    "src/data/textbook/math/numbers/firstThemeDerivations.json",
+    "src/data/textbook/math/numbers/firstThemeR2.test.ts",
     "src/data/textbook/math/numbers/firstThemeRepair.json",
     "src/data/textbook/math/numbers/firstThemeRepair.test.ts",
     "src/data/textbook/math/numbers/firstThemeRepair.ts",

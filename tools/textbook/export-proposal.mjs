@@ -17,7 +17,7 @@ export function proposalMarkdown(plan){
    if(n.knownRefs.length)out+='使える前結果：'+n.knownRefs.join(', ')+'。このIDの確定した式・結論だけを参照欄へ表示。\n\n';
    if(n.interaction){const a=n.interaction;out+='**本人が担う操作**：'+a.classification+'。'+a.reason+'\n\n';out+='問い：'+a.prompt+'\n\n';out+='回答形式：'+a.answerType+'。式内の配置：`'+(a.prefixLatex||'')+'〔実回答欄〕'+(a.suffixLatex||'')+'`。\n\n';
     out+='| 選択肢 | 採点・根拠 |\n|---|---|\n';for(const c of a.choices)out+='| '+c.replaceAll('|','\\|')+' | '+(c===a.answer?'正答':a.distractorReasons[c])+' |\n';
-    out+='\nヒント：'+a.hints.join('／')+'。\n\n支援：'+a.scaffoldLevel+'。理由：'+a.supportReason+'\n\n';
+    out+='\nヒント：'+a.hints.join('／')+'\n\n支援：'+a.scaffoldLevel+'。理由：'+a.supportReason+'\n\n';
    }else out+='未知の定義・性質は説明する段階。名称を当てる穴は置かない。\n\n';
    out+='**正答後／説明後**\n\n'+n.after+'\n\n';if(n.outputLatex)out+='$$'+n.outputLatex+'$$\n\n';
    if(n.table){out+='表示時点：この段階の正答後。\n\n';out+='| '+n.table[0].join(' | ')+' |\n|'+n.table[0].map(()=> '---').join('|')+'|\n';for(const row of n.table.slice(1))out+='| '+row.join(' | ')+' |\n';out+='\n';}

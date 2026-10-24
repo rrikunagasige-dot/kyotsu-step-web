@@ -47,3 +47,15 @@ Additional screenshot captures reproduce the three reported positions. The final
 The source and artifact SHA, public release manifest, live21-flow result and pending user review are recorded at publication close.
 
 A temporary local exec transport disconnection interrupted verification. The filesystem recovered intact; no partially checked learner version was published.
+
+## Exact-source public delivery
+
+Learner source:204d901ec78c2fe8e214fd9b582f19cb3caeb2f4.
+Hosting workflow:88264e3c74ed5017156e0124c01ff537a9b4da6e.
+[Run40055604651](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40055604651) completed SUCCESS.
+433 tests,132 independent polynomial checks,141 written-equation checks, compiled21 flows and public21 flows passed.
+Each full-flow suite covered813 correct interactions, wrong/retry, history and restart at320/390/1440px.
+Option-internal geometry, one-column layout and readable font were checked on every displayed choice.
+Public16 routes/reload/history isolation passed; release manifest matched204d901e, three themes,16 units,464 decisions.
+All399 previous graded decisions and nine out-of-scope lesson editions were protected by hashes.
+State: PUBLISHED_FOR_USER_REVIEW. R2 pedagogical acceptance and independent Gate2 remain unclaimed.

@@ -20,3 +20,9 @@ Preserved layout, made □ visible, inserted24 equation-local decisions and auth
 Added top restart and saved-answer guidance.426 tests and71 independent polynomial checks passed before publication.
 R1 publication close: sourcef1627507 / hosting383caa80 / run40052655846 SUCCESS; public release independently matched.
 Full compiled and public21-flow checks passed,618 correct answers each. User content review remains pending.
+
+R2: reviewed all206 existing first-theme decisions against screenshot feedback. Repaired semantic separators/operator spacing,
+long parentheses/prose wrapping and desktop two-column crowding. Added explicit equations and local operations across seven units.
+Local transport recovered without losing source. Exact-source run40055604651 SUCCESS;204d901e publicly deployed.
+433 tests,132 polynomial checks,141 written-equation checks and compiled/public21-flow suites passed.
+User content acceptance remains pending. Continue from the actual public204d901e source when feedback arrives.

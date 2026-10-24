@@ -28,3 +28,12 @@ User pedagogical acceptance: PENDING. Next two themes: NOT modified by this Work
 State: PUBLISHED_FOR_USER_REVIEW.
 Gate①/Gate③ user quality acceptance remains PENDING; independent Gate② acceptance is not manufactured from this agent's tests.
 No second-theme lesson repair started. The hosting workflow remains pinned to15509ec1; this evidence-only record does not change learner source.
+
+## R2 — superseding public edition
+
+204d901ec78c2fe8e214fd9b582f19cb3caeb2f4 is now public via88264e3c74ed5017156e0124c01ff537a9b4da6e.
+Run40055604651 SUCCESS:433 tests;132 polynomial decision checks;141 written equations;
+compiled and public21-flow suites,813 correct interactions each, plus wrong/retry, history and restart.
+Checks now measure option-internal clipping, font size and one-column geometry, not only whole-page overflow.
+See REVISION_R2.md, R2_AUDIT.json and R2_BASELINE.json for all206 prior first-theme decisions and399 protected graded decisions.
+User content acceptance remains pending; no other theme's lesson content was repaired in this revision.

@@ -7,3 +7,5 @@
 N01 source3c3a5648 / hostinga502e468: exact-source publish run40078179749 started. While it runs, authorized independent work is N02 local activation/audit only; no subsequent hosting pointer change until N01 hosted verification finishes. Return step: inspect run40078179749 and public source manifest.
 
 N02 candidate: activated approved groups/rows; local72 seeded views,362 formula groups,4 wrong/hint/correct interactions PASS at320/360/390/1440px. Inspected actual390px example: transformations stay together, equation4 fits its final row. Extended playthrough option bounds checks to include new renderer glyphs (avoids vacuous legacy chunk selector). No pedagogical edits.
+
+N03 local candidate checkpoint:56 seeded views,282 formula groups,4 wrong/hint/correct interactions PASS at four widths. Exponent-law groups keep underbrace products intact and the laws table becomes stacked readable rows on phones. N01 compiled play and layout passed; deployment completed; hosted exact-source/routes checks in progress. N03 activation remains local and is not represented as public.

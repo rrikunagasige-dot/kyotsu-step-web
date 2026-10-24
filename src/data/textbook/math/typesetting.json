@@ -2,7 +2,8 @@
   "version": 1,
   "enabledUnits": [
     "n01",
-    "n02"
+    "n02",
+    "n03"
   ],
   "groups": {
     "n01": [

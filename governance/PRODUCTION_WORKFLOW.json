@@ -1,21 +1,31 @@
 {
   "schemaVersion": 1,
   "status": "ACTIVE_BOUNDED",
-  "proposal": "W-GOV-010/P-003",
+  "proposal": "W-GOV-010/P-004",
   "subject": "math",
   "mode": "textbook",
-  "workflowVersion": "production/1",
+  "workflowVersion": "production/2",
   "implementation": {
     "repository": "rrikunagasige-dot/kyotsu-step-web",
     "repoId": 1391122224,
-    "sourceSHA": "bba4df752bf4f9ad8a4972f57ca303b3f304ea45",
-    "branch": "work/production-workflow-p003-20261024",
-    "entry": "tools/textbook/PRODUCTION_README.md",
-    "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/bba4df752bf4f9ad8a4972f57ca303b3f304ea45/tools/textbook/PRODUCTION_README.md"
+    "sourceSHA": "190941bc9d65fb3ed2fa6b52ba90196addf19e33",
+    "branch": "work/workflow-cr-integration-p004-20261024",
+    "entry": "workflow/INTEGRATION_RUNBOOK.md",
+    "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/190941bc9d65fb3ed2fa6b52ba90196addf19e33/workflow/INTEGRATION_RUNBOOK.md"
   },
   "verification": {
-    "runId": 40109892971,
-    "conclusion": "success"
+    "runId": 40116299835,
+    "sourceSHA": "190941bc9d65fb3ed2fa6b52ba90196addf19e33",
+    "conclusion": "success",
+    "workflowTests": 120,
+    "newIntegrationTests": 42,
+    "learnerTests": 620,
+    "browserWidths": [
+      320,
+      390,
+      430,
+      1440
+    ]
   },
   "reviewSurface": "existing-public-app",
   "screenshotApprovalRequired": false,
@@ -24,5 +34,9 @@
   "modelStatus": "OFFLINE_ONLY",
   "newLessonAccepted": false,
   "protectedAppSource": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
-  "adoption": "Pinned workflow tools reference; no whole-branch merge or hosting change"
+  "adoption": "Pinned workflow tools reference; no whole-branch merge or hosting change",
+  "legacyVersions": [
+    "production/1",
+    "legacy/1"
+  ]
 }

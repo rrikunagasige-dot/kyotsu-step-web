@@ -1,4 +1,4 @@
-name: Publish approved first-section results and derivation refinement
+name: Publish centered first-section equations and stable equation numbers
 
 # 2026-10-24: user explicitly authorized one-theme repair -> compile -> public app -> hands-on review.
 # This updates only the hosting pointer; it does not merge the learner branch into main.
@@ -22,15 +22,15 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     env:
-      CANDIDATE_SHA: 'dfa332facab4c206fc33ad54de4f0a92116169e9'
-      VITE_PREVIEW_COMMIT: 'dfa332facab4c206fc33ad54de4f0a92116169e9'
+      CANDIDATE_SHA: '53216a828116dcf8126e4f36fb3b4fdfc1340fe1'
+      VITE_PREVIEW_COMMIT: '53216a828116dcf8126e4f36fb3b4fdfc1340fe1'
       VITE_REVIEW_PREVIEW: 'true'
       VITE_BASE_PATH: '/kyotsu-step-web/'
       VITE_STORAGE_NAMESPACE: 'kyotsu-step-gate3-math-20261023'
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 'dfa332facab4c206fc33ad54de4f0a92116169e9'
+          ref: '53216a828116dcf8126e4f36fb3b4fdfc1340fe1'
           fetch-depth: 0
           persist-credentials: false
       - uses: pnpm/action-setup@v4
@@ -79,6 +79,14 @@ jobs:
           preview_pid=$!
           trap 'kill "$preview_pid" 2>/dev/null || true' EXIT
           node work/items/W-MATH-030-section-one-results-and-blanks/verify-app.mjs
+      - name: Check equation centering and number placement at all three widths
+        env:
+          EVIDENCE_DIR: e2e-evidence/formula-centering-compiled
+        run: |
+          pnpm exec vite preview --host 127.0.0.1 --port 4173 > /tmp/centering-preview.log 2>&1 &
+          preview_pid=$!
+          trap 'kill "$preview_pid" 2>/dev/null || true' EXIT
+          node work/items/W-MATH-030-section-one-results-and-blanks/verify-centering.mjs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
@@ -95,16 +103,23 @@ jobs:
           APP_URL: ${{ steps.deployment.outputs.page_url }}
           EVIDENCE_DIR: e2e-evidence/theme-one-hosted
         run: node work/items/W-MATH-030-section-one-results-and-blanks/verify-app.mjs
+      - name: Check actual public equation numbers and centered layout
+        env:
+          APP_URL: ${{ steps.deployment.outputs.page_url }}
+          EVIDENCE_DIR: e2e-evidence/formula-centering-hosted
+        run: node work/items/W-MATH-030-section-one-results-and-blanks/verify-centering.mjs
       - if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
-          name: section-one-S5-dfa332fa-verification
+          name: section-one-P004-53216a82-verification
           path: |
             e2e-evidence/theme-one/**
             e2e-evidence/section-one/**
             e2e-evidence/theme-one-compiled/**
             e2e-evidence/theme-one-hosted/**
             e2e-evidence/gate3-hosted/**
+            e2e-evidence/formula-centering-compiled/**
+            e2e-evidence/formula-centering-hosted/**
             dist/release.json
           if-no-files-found: warn
           retention-days: 30

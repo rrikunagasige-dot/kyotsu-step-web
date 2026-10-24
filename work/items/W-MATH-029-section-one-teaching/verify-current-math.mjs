@@ -17,6 +17,7 @@ for(const {unit} of runtime.units){
   if(prefix==='n05'&&block.id==='n05-lead-12')phase=1;
   if(prefix==='n05'&&block.id==='n05-lead-16')phase=2;
   if(prefix==='n04'&&block.id==='n04-lead-20')phase=1;
+  if(prefix==='ne01'&&block.id==='ne01-s4-second-factor-map')phase=1;
   if(block.type!=='formula')continue;
   const formula=block.parts.map(p=>p.type==='math'?p.latex:p.type==='choice'?items.get(p.itemId).answer:'').join('');
   const clean=s=>s.replace(/\\(?:quad|qquad|bigl|bigr|left|right)/g,'').replace(/\\[,; ]/g,'');
@@ -30,8 +31,19 @@ for(const {unit} of runtime.units){
    if(prefix==='n05'&&phase===0){env.r=-8;env.s=2}
    if(prefix==='n05'&&phase===2){env.r=-1;env.s=3}
    if(prefix==='n06'){env.X=env.x+2*env.y;env.T=env.x**2;env.r=1;env.s=-2}
+   if(prefix==='ne01'&&phase===1){env.a=2*env.x;env.b=3*env.y}
    const first=value(expressions[0],env);for(const expression of expressions.slice(1))assert(value(expression,env)===first,prefix+'/'+block.id+' '+formula);
    for(const wrong of wrongs){const bad=clean(block.parts.map(p=>p.type==='math'?p.latex:p.type==='choice'?(p.itemId===wrong.item?wrong.choice:items.get(p.itemId).answer):'').join('')).split('=');if(bad.slice(1).some(x=>value(x,env)!==value(bad[0],env)))wrong.different=true}
+  }
+  // A coefficient-expression question compares symbolic expressions before the
+  // special coefficient constraints. pr+qs happens to equal7 for p=q=1,r=4,s=3,
+  // but is not the coefficient ps+qr. Verify the distinction as an identity.
+  for(const w of wrongs) if(!w.different&&w.item==='n05-s5-linear-condition-map') {
+    for(let j=-3;j<=4;j++) {
+      const env={p:j,q:j+1,r:2*j-1,s:3-j};
+      if(value(w.choice,env)!==value(items.get(w.item).answer,env))w.different=true;
+    }
+    assert(w.different,'Coefficient expression must differ as a polynomial '+w.item);
   }
   for(const w of wrongs) if(!w.different){representationChecks.push({...w,block:block.id});assert(representationOnly.has(w.item+'|'+w.choice),'Unexplained equivalent distractor '+block.id)}
   report.push({unit:prefix,id:block.id,formula,samples:10});distractors.push(...wrongs);

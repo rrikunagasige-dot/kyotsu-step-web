@@ -1,0 +1,1375 @@
+{
+  "n01": {
+    "stages": 15,
+    "records": {
+      "heading-factors": [
+        "n01-r3-negative-coefficient-formula",
+        "n01-r3-negative-degree-formula",
+        "n01-r3-square-coefficient-formula",
+        "n01-r3-square-degree-formula",
+        "n01-r3-product-coefficient-formula",
+        "n01-r3-product-degree-formula"
+      ],
+      "heading-variable": [
+        "formula-n01-03",
+        "n01-s4-y-result"
+      ],
+      "marker-variable-check": [
+        "n01-s4-axy-x-formula",
+        "n01-s4-axy-y-formula"
+      ],
+      "heading-like-terms": [
+        "formula-like-original"
+      ],
+      "n01-s4-like-square": [
+        "n01-s4-square-result"
+      ],
+      "n01-s4-like-linear": [
+        "n01-s4-linear-result"
+      ],
+      "n01-s4-like-constant": [
+        "n01-s4-constant-result"
+      ],
+      "n01-s4-like-assembly": [
+        "formula-n01-07"
+      ],
+      "marker-degree-check": [
+        "formula-cancellation-original"
+      ],
+      "n01-r3-linear-heading": [
+        "n01-r3-linear-result"
+      ],
+      "n01-r3-quadratic-heading": [
+        "n01-r3-quadratic-result"
+      ],
+      "n01-r3-cubic-heading": [
+        "n01-r3-cubic-result"
+      ],
+      "n01-r3-constant-heading": [
+        "n01-r3-constant-result"
+      ],
+      "n01-r3-assembly-heading": [
+        "n01-r3-final-equation"
+      ],
+      "n01-r3-interpret-heading": [
+        "paragraph-n01-10a",
+        "paragraph-n01-10b"
+      ]
+    },
+    "contexts": {
+      "n01-01": [],
+      "n01-bridge-r3-negative-coefficient": [],
+      "n01-bridge-r3-negative-degree": [],
+      "n01-bridge-r3-square-coefficient": [],
+      "n01-bridge-r3-square-degree": [],
+      "n01-bridge-r3-product-coefficient": [],
+      "n01-bridge-r3-product-degree": [],
+      "n01-03": [],
+      "n01-s4-y-coefficient": [],
+      "n01-s4-y-degree": [],
+      "n01-s4-axy-x": [],
+      "n01-s4-axy-y": [],
+      "n01-06a": [
+        "formula-like-original"
+      ],
+      "n01-s5-square-regroup": [
+        "formula-like-original"
+      ],
+      "n01-r3-q07-x2coef": [
+        "formula-like-original"
+      ],
+      "n01-s5-linear-regroup": [
+        "formula-like-original"
+      ],
+      "n01-r3-q07-xcoef": [
+        "formula-like-original"
+      ],
+      "n01-r3-q07-const": [
+        "formula-like-original"
+      ],
+      "n01-s4-like-degree": [
+        "n01-s4-square-result",
+        "n01-s4-linear-result",
+        "n01-s4-constant-result"
+      ],
+      "n01-s4-like-constant": [
+        "n01-s4-square-result",
+        "n01-s4-linear-result",
+        "n01-s4-constant-result"
+      ],
+      "n01-s5-example-linear-regroup": [
+        "formula-cancellation-original"
+      ],
+      "n01-bridge-r3-linear": [
+        "formula-cancellation-original"
+      ],
+      "n01-s5-example-cubic-regroup": [
+        "formula-cancellation-original"
+      ],
+      "n01-bridge-r3-cubic": [
+        "formula-cancellation-original"
+      ],
+      "n01-bridge-r3-reuse": [
+        "n01-r3-cubic-result",
+        "n01-r3-quadratic-result",
+        "n01-r3-linear-result",
+        "n01-r3-constant-result"
+      ],
+      "n01-10a": [
+        "n01-r3-final-equation"
+      ],
+      "n01-10b": [
+        "n01-r3-final-equation"
+      ]
+    },
+    "motherQuestions": 10,
+    "activeDecisions": 27,
+    "changes": [
+      {
+        "unit": "n01",
+        "design": "D01",
+        "itemId": "n01-s4-y-coefficient",
+        "blockId": "n01-s4-y-reorder",
+        "replaces": "n01-s4-y-coefficient"
+      },
+      {
+        "unit": "n01",
+        "design": "D02",
+        "itemId": "n01-s5-square-regroup",
+        "blockId": "n01-s4-square-factor",
+        "replaces": null
+      },
+      {
+        "unit": "n01",
+        "design": "D03",
+        "itemId": "n01-s5-linear-regroup",
+        "blockId": "n01-s4-linear-factor",
+        "replaces": null
+      },
+      {
+        "unit": "n01",
+        "design": "D04",
+        "itemId": "n01-s5-example-linear-regroup",
+        "blockId": "n01-r3-linear-factor",
+        "replaces": null
+      },
+      {
+        "unit": "n01",
+        "design": "D05",
+        "itemId": "n01-s5-example-cubic-regroup",
+        "blockId": "n01-r3-cubic-factor",
+        "replaces": null
+      }
+    ]
+  },
+  "n02": {
+    "stages": 9,
+    "records": {
+      "heading-variable": [
+        "formula-n02-02"
+      ],
+      "marker-variable-check": [
+        "formula-n02-03",
+        "formula-n02-04"
+      ],
+      "heading-add": [
+        "formula-n02-06"
+      ],
+      "heading-minus": [
+        "formula-n02-07"
+      ],
+      "paragraph-minus-add": [
+        "formula-n02-08"
+      ],
+      "marker-multiply-check": [
+        "n02-s4-twice-result"
+      ],
+      "n02-s4-minus-three-goal": [
+        "formula-n02-09"
+      ],
+      "paragraph-multiple-collect": [
+        "formula-n02-10"
+      ],
+      "heading-structure": [
+        "formula-n02-11",
+        "formula-n02-12"
+      ]
+    },
+    "contexts": {
+      "n02-bridge-audit-like-b": [],
+      "n02-01": [],
+      "n02-02": [],
+      "n02-s5-classify-linear": [],
+      "n02-bridge-detail-linear-coefficient": [],
+      "n02-bridge-audit-constant-part": [],
+      "n02-s4-reuse-linear": [
+        "formula-n02-03"
+      ],
+      "n02-05": [
+        "formula-ab-definition"
+      ],
+      "n02-bridge-audit-sum-cube": [
+        "formula-ab-definition"
+      ],
+      "n02-s5-sum-square-regroup": [
+        "formula-ab-definition"
+      ],
+      "n02-bridge-audit-sum-square": [
+        "formula-ab-definition"
+      ],
+      "n02-bridge-audit-sum-linear": [
+        "formula-ab-definition"
+      ],
+      "n02-bridge-audit-sum-constant": [
+        "formula-ab-definition"
+      ],
+      "n02-s5-minus-distribute": [
+        "formula-ab-definition#1"
+      ],
+      "n02-bridge-audit-minus-cube-sign": [
+        "formula-ab-definition#1"
+      ],
+      "n02-bridge-audit-minus-square-sign": [
+        "formula-ab-definition#1"
+      ],
+      "n02-bridge-audit-minus-constant-sign": [
+        "formula-ab-definition#1"
+      ],
+      "n02-bridge-audit-diff-cube": [
+        "formula-ab-definition#0",
+        "formula-n02-07"
+      ],
+      "n02-bridge-audit-diff-square": [
+        "formula-ab-definition#0",
+        "formula-n02-07"
+      ],
+      "n02-bridge-audit-diff-linear": [
+        "formula-ab-definition#0",
+        "formula-n02-07"
+      ],
+      "n02-bridge-audit-diff-constant": [
+        "formula-ab-definition#0",
+        "formula-n02-07"
+      ],
+      "n02-bridge-distribute": [
+        "formula-ab-definition#0"
+      ],
+      "n02-bridge-detail-cube-coefficient": [
+        "formula-ab-definition#0"
+      ],
+      "n02-bridge-detail-signed-coefficient": [
+        "formula-ab-definition#0"
+      ],
+      "n02-bridge-audit-twice-linear": [
+        "formula-ab-definition#0"
+      ],
+      "n02-bridge-audit-twice-constant": [
+        "formula-ab-definition#0"
+      ],
+      "n02-bridge-minus-multiplier": [
+        "formula-ab-definition#1"
+      ],
+      "n02-bridge-minus-cube": [
+        "formula-ab-definition#1"
+      ],
+      "n02-s5-minus-three-square-distribute": [
+        "formula-ab-definition#1"
+      ],
+      "n02-bridge-minus-square": [
+        "formula-ab-definition#1"
+      ],
+      "n02-bridge-minus-constant": [
+        "formula-ab-definition#1"
+      ],
+      "n02-bridge-cube-sum": [
+        "n02-s4-twice-result",
+        "formula-n02-09"
+      ],
+      "n02-bridge-like-square": [
+        "n02-s4-twice-result",
+        "formula-n02-09"
+      ],
+      "n02-bridge-square-sum": [
+        "n02-s4-twice-result",
+        "formula-n02-09"
+      ],
+      "n02-bridge-constant-sum": [
+        "n02-s4-twice-result",
+        "formula-n02-09"
+      ],
+      "n02-bridge-outer-minus": [],
+      "n02-s5-group-a-coefficients": [],
+      "n02-bridge-audit-a-coefficient": [],
+      "n02-bridge-audit-b-coefficient": [],
+      "n02-12": [
+        "formula-n02-10",
+        "formula-n02-11"
+      ]
+    },
+    "motherQuestions": 12,
+    "activeDecisions": 40,
+    "changes": [
+      {
+        "unit": "n02",
+        "design": "D01",
+        "itemId": "n02-s5-classify-linear",
+        "blockId": "n02-bridge-worked-n02-04-before-0-equation-0",
+        "replaces": null
+      },
+      {
+        "unit": "n02",
+        "design": "D02",
+        "itemId": "n02-s5-sum-square-regroup",
+        "blockId": "n02-s5-sum-square-regroup-formula",
+        "replaces": null
+      },
+      {
+        "unit": "n02",
+        "design": "D03",
+        "itemId": "n02-s5-minus-distribute",
+        "blockId": "n02-s5-minus-distribute-formula",
+        "replaces": null
+      },
+      {
+        "unit": "n02",
+        "design": "D04",
+        "itemId": "n02-s5-minus-three-square-distribute",
+        "blockId": "n02-s5-minus-three-square-distribute-formula",
+        "replaces": null
+      },
+      {
+        "unit": "n02",
+        "design": "D05",
+        "itemId": "n02-bridge-like-square",
+        "blockId": "n02-bridge-like-square-formula",
+        "replaces": "n02-bridge-like-square"
+      },
+      {
+        "unit": "n02",
+        "design": "D06",
+        "itemId": "n02-s5-group-a-coefficients",
+        "blockId": "n02-s5-group-a-coefficients-formula",
+        "replaces": null
+      }
+    ]
+  },
+  "n03": {
+    "stages": 7,
+    "records": {
+      "heading-indices": [
+        "n03-s4-rules-summary"
+      ],
+      "marker-powers-check": [
+        "formula-n03-06"
+      ],
+      "heading-distribute": [
+        "formula-n03-08"
+      ],
+      "paragraph-two-brackets": [
+        "formula-n03-11"
+      ],
+      "marker-final-check": [
+        "formula-n03-12"
+      ],
+      "n03-bridge-explain-n03-13-before": [
+        "n03-bridge-first-row-formula"
+      ],
+      "n03-bridge-second-row-lead": [
+        "n03-bridge-second-row-formula",
+        "formula-n03-13"
+      ]
+    },
+    "contexts": {
+      "n03-bridge-audit-count-a": [],
+      "n03-01": [],
+      "n03-02": [],
+      "n03-03": [],
+      "n03-04": [],
+      "n03-05": [
+        "n03-s4-rules-summary#2"
+      ],
+      "n03-bridge-detail-negative-pair": [],
+      "n03-bridge-negative-cube": [],
+      "n03-s5-cube-x-count": [
+        "n03-s4-rules-summary#1"
+      ],
+      "n03-bridge-x-power": [
+        "n03-s4-rules-summary#1"
+      ],
+      "n03-bridge-detail-y-power": [
+        "n03-s4-rules-summary#1"
+      ],
+      "n03-06": [],
+      "n03-07": [],
+      "n03-bridge-audit-product-fourth": [
+        "n03-s4-rules-summary#0"
+      ],
+      "n03-s4-product-exponent": [
+        "n03-s4-rules-summary#0"
+      ],
+      "n03-bridge-audit-product-negative": [
+        "n03-s4-rules-summary#0"
+      ],
+      "n03-bridge-audit-product-last": [],
+      "n03-08": [],
+      "n03-09": [],
+      "n03-r3-q10-p1": [],
+      "n03-r3-q10-p2": [],
+      "n03-r3-q10-p3": [],
+      "n03-r3-q10-p4": [],
+      "n03-10": [],
+      "n03-bridge-audit-grid-collect": [],
+      "n03-11": [],
+      "n03-12": [],
+      "n03-bridge-detail-first-product": [
+        "formula-n03-12"
+      ],
+      "n03-bridge-detail-second-product": [
+        "formula-n03-12"
+      ],
+      "n03-bridge-detail-third-product": [
+        "formula-n03-12"
+      ],
+      "n03-bridge-first-row": [
+        "formula-n03-12"
+      ],
+      "n03-s5-minus-row-distribute": [
+        "formula-n03-12"
+      ],
+      "n03-bridge-audit-minus-minus": [
+        "formula-n03-12"
+      ],
+      "n03-bridge-second-row": [
+        "formula-n03-12"
+      ],
+      "n03-s5-collect-square-terms": [
+        "n03-bridge-first-row-formula",
+        "n03-bridge-second-row-formula"
+      ],
+      "n03-bridge-collect-square": [
+        "n03-bridge-first-row-formula",
+        "n03-bridge-second-row-formula"
+      ],
+      "n03-s5-collect-linear-terms": [
+        "n03-bridge-first-row-formula",
+        "n03-bridge-second-row-formula"
+      ],
+      "n03-bridge-collect-linear": [
+        "n03-bridge-first-row-formula",
+        "n03-bridge-second-row-formula"
+      ],
+      "n03-13": [
+        "n03-bridge-first-row-formula",
+        "n03-bridge-second-row-formula"
+      ]
+    },
+    "motherQuestions": 13,
+    "activeDecisions": 39,
+    "changes": [
+      {
+        "unit": "n03",
+        "design": "D01",
+        "itemId": "n03-s5-cube-x-count",
+        "blockId": "n03-s5-cube-x-count-formula",
+        "replaces": null
+      },
+      {
+        "unit": "n03",
+        "design": "D02",
+        "itemId": "n03-12",
+        "blockId": "formula-n03-12",
+        "replaces": "n03-12"
+      },
+      {
+        "unit": "n03",
+        "design": "D03",
+        "itemId": "n03-s5-minus-row-distribute",
+        "blockId": "n03-s5-minus-row-distribute-formula",
+        "replaces": null
+      },
+      {
+        "unit": "n03",
+        "design": "D04",
+        "itemId": "n03-s5-collect-square-terms",
+        "blockId": "n03-s5-collect-square-terms-formula",
+        "replaces": null
+      },
+      {
+        "unit": "n03",
+        "design": "D05",
+        "itemId": "n03-s5-collect-linear-terms",
+        "blockId": "n03-s5-collect-linear-terms-formula",
+        "replaces": null
+      }
+    ]
+  },
+  "n04": {
+    "stages": 12,
+    "records": {
+      "heading-four-products": [
+        "formula-n04-q01-complete"
+      ],
+      "n04-heading-1": [
+        "n04-formula-03",
+        "n04-formula-05"
+      ],
+      "n04-lead-06": [
+        "n04-formula-07"
+      ],
+      "n04-lead-08": [
+        "n04-formula-08"
+      ],
+      "n04-heading-2": [
+        "n04-s4-square-result"
+      ],
+      "n04-s4-product-heading": [
+        "n04-s4-product-result"
+      ],
+      "n04-lead-11": [
+        "n04-formula-12",
+        "n04-formula-13"
+      ],
+      "n04-s4-three-goal": [
+        "n04-formula-15",
+        "n04-formula-16"
+      ],
+      "n04-heading-3": [
+        "n04-formula-19"
+      ],
+      "n04-lead-20": [
+        "n04-bridge-pair-first-formula",
+        "n04-bridge-pair-second-formula"
+      ],
+      "n04-s5-four-definition": [
+        "n04-s5-four-definition",
+        "n04-formula-21"
+      ],
+      "n04-s5-four-restore-square-formula": [
+        "n04-s4-four-result"
+      ]
+    },
+    "contexts": {
+      "n04-q01-p1": [],
+      "n04-q01-p2": [],
+      "n04-q01-p3": [],
+      "n04-q01-p4": [],
+      "n04-01": [],
+      "n04-s5-cross-regroup": [
+        "formula-n04-q01-complete"
+      ],
+      "n04-02": [
+        "formula-n04-q01-complete"
+      ],
+      "n04-03": [
+        "formula-n04-q01-complete"
+      ],
+      "n04-04": [
+        "formula-n04-q01-complete"
+      ],
+      "n04-bridge-audit-square-cross-count": [
+        "formula-n04-q01-complete"
+      ],
+      "n04-05": [
+        "formula-n04-q01-complete"
+      ],
+      "n04-bridge-audit-negative-cross-sign": [
+        "n04-formula-05"
+      ],
+      "n04-bridge-audit-negative-square-sign": [
+        "n04-formula-05"
+      ],
+      "n04-06": [
+        "n04-formula-05"
+      ],
+      "n04-bridge-audit-negative-cross-sum": [
+        "n04-formula-05"
+      ],
+      "n04-07": [
+        "n04-formula-05"
+      ],
+      "n04-bridge-audit-opposite-cancel": [
+        "n04-formula-05"
+      ],
+      "n04-08": [
+        "n04-formula-05"
+      ],
+      "n04-s4-square-rule": [
+        "n04-formula-07"
+      ],
+      "n04-bridge-formula-substitute": [
+        "n04-formula-07"
+      ],
+      "n04-bridge-audit-square-2a": [
+        "n04-formula-07"
+      ],
+      "n04-bridge-cross-coefficient": [
+        "n04-formula-07"
+      ],
+      "n04-s4-product-rule": [
+        "n04-formula-08"
+      ],
+      "n04-s5-product-substitute": [
+        "n04-formula-08"
+      ],
+      "n04-bridge-audit-square-3x": [
+        "n04-formula-08"
+      ],
+      "n04-11": [],
+      "n04-bridge-audit-general-linear": [],
+      "n04-12": [],
+      "n04-bridge-audit-concrete-cross": [],
+      "n04-bridge-audit-concrete-linear": [],
+      "n04-s5-three-substitute": [
+        "n04-formula-05"
+      ],
+      "n04-14": [
+        "n04-formula-05"
+      ],
+      "n04-bridge-restore-t": [
+        "n04-s4-three-source",
+        "n04-formula-14"
+      ],
+      "n04-bridge-expand-restored": [
+        "n04-s4-three-source",
+        "n04-formula-05"
+      ],
+      "n04-15": [
+        "n04-s4-three-source",
+        "n04-formula-05"
+      ],
+      "n04-s5-negative-c-substitute": [
+        "n04-formula-15"
+      ],
+      "n04-bridge-audit-minus-ac": [
+        "n04-formula-15"
+      ],
+      "n04-bridge-audit-minus-bc": [
+        "n04-formula-15"
+      ],
+      "n04-16": [
+        "n04-formula-15"
+      ],
+      "n04-s4-shared-part": [],
+      "n04-s4-opposite-part": [],
+      "n04-18": [
+        "n04-formula-17",
+        "n04-formula-08"
+      ],
+      "n04-bridge-audit-remaining-square": [
+        "n04-formula-18"
+      ],
+      "n04-19": [
+        "n04-formula-18"
+      ],
+      "n04-bridge-pairing": [],
+      "n04-bridge-pair-first": [],
+      "n04-bridge-pair-second": [],
+      "n04-20": [],
+      "n04-s5-four-substitute": [
+        "n04-formula-20"
+      ],
+      "n04-bridge-audit-t-linear": [
+        "n04-formula-20"
+      ],
+      "n04-21": [
+        "n04-formula-20"
+      ],
+      "n04-s5-four-restore-square": [
+        "n04-s5-four-definition",
+        "n04-formula-21"
+      ],
+      "n04-bridge-detail-square-cross": [
+        "n04-s5-four-definition",
+        "n04-formula-21"
+      ],
+      "n04-bridge-detail-square-last": [
+        "n04-s5-four-definition",
+        "n04-formula-21"
+      ],
+      "n04-bridge-restore-square": [
+        "n04-s5-four-definition",
+        "n04-formula-21"
+      ],
+      "n04-bridge-audit-ten-linear": [
+        "n04-s5-four-definition",
+        "n04-formula-21"
+      ],
+      "n04-bridge-restore-ten": [
+        "n04-s5-four-definition",
+        "n04-formula-21"
+      ],
+      "n04-bridge-restore-collect": [
+        "n04-s5-four-definition",
+        "n04-formula-21"
+      ],
+      "n04-22": [
+        "n04-s5-four-definition",
+        "n04-formula-21"
+      ]
+    },
+    "motherQuestions": 22,
+    "activeDecisions": 59,
+    "changes": [
+      {
+        "unit": "n04",
+        "design": "D01",
+        "itemId": "n04-s5-cross-regroup",
+        "blockId": "n04-bridge-worked-n04-02-before-0-equation-0",
+        "replaces": null
+      },
+      {
+        "unit": "n04",
+        "design": "D02",
+        "itemId": "n04-s5-product-substitute",
+        "blockId": "n04-s4-product-substitute",
+        "replaces": null
+      },
+      {
+        "unit": "n04",
+        "design": "D03",
+        "itemId": "n04-s5-three-substitute",
+        "blockId": "n04-s5-three-substitute-formula",
+        "replaces": null
+      },
+      {
+        "unit": "n04",
+        "design": "D04",
+        "itemId": "n04-s5-negative-c-substitute",
+        "blockId": "n04-bridge-worked-n04-16-before-0-equation-0",
+        "replaces": null
+      },
+      {
+        "unit": "n04",
+        "design": "D05",
+        "itemId": "n04-s4-shared-part",
+        "blockId": "n04-s4-shared-part-formula",
+        "replaces": "n04-s4-shared-part"
+      },
+      {
+        "unit": "n04",
+        "design": "D06",
+        "itemId": "n04-s5-four-substitute",
+        "blockId": "n04-s5-four-substitute-formula",
+        "replaces": null
+      },
+      {
+        "unit": "n04",
+        "design": "D07",
+        "itemId": "n04-s5-four-restore-square",
+        "blockId": "n04-s5-four-restore-square-formula",
+        "replaces": null
+      }
+    ]
+  },
+  "n05": {
+    "stages": 9,
+    "records": {
+      "n05-heading-1": [
+        "n05-formula-02",
+        "n05-formula-03"
+      ],
+      "n05-lead-04": [
+        "n05-formula-04",
+        "n05-formula-05"
+      ],
+      "n05-heading-2": [
+        "n05-formula-08"
+      ],
+      "n05-lead-09": [
+        "n05-formula-10",
+        "n05-formula-11"
+      ],
+      "n05-heading-3": [
+        "n05-formula-12",
+        "n05-formula-13"
+      ],
+      "n05-s4-candidate-heading": [
+        "n05-formula-14",
+        "n05-formula-15"
+      ],
+      "n05-heading-4": [
+        "n05-formula-16",
+        "n05-formula-17"
+      ],
+      "n05-lead-18": [
+        "n05-formula-18"
+      ],
+      "n05-lead-19": [
+        "n05-s4-final-source"
+      ]
+    },
+    "contexts": {
+      "n05-01": [],
+      "n05-bridge-detail-coefficient-factor": [],
+      "n05-bridge-factor-t": [],
+      "n05-02": [],
+      "n05-bridge-audit-reverse-constant": [],
+      "n05-03": [],
+      "n05-s5-reverse-difference": [],
+      "n05-05": [
+        "n05-formula-04"
+      ],
+      "n05-bridge-audit-positive-root-16": [],
+      "n05-bridge-audit-positive-root-9": [],
+      "n05-07": [],
+      "n05-08": [],
+      "n05-09": [],
+      "n05-s5-sum-condition-map": [
+        "n05-formula-09"
+      ],
+      "n05-s4-factor-product": [
+        "n05-formula-09"
+      ],
+      "n05-bridge-factor-candidates-1": [
+        "n05-formula-10"
+      ],
+      "n05-bridge-factor-candidates-2": [
+        "n05-formula-10"
+      ],
+      "n05-bridge-factor-candidates-3": [
+        "n05-formula-10"
+      ],
+      "n05-bridge-audit-factor-pair-select": [
+        "n05-formula-10"
+      ],
+      "n05-11": [
+        "n05-formula-10"
+      ],
+      "n05-s5-general-cross-regroup": [],
+      "n05-12": [],
+      "n05-s4-quadratic-condition": [
+        "n05-formula-12"
+      ],
+      "n05-s4-constant-condition": [
+        "n05-formula-12"
+      ],
+      "n05-s5-linear-condition-map": [
+        "n05-formula-12"
+      ],
+      "n05-bridge-cross-a": [
+        "n05-formula-13"
+      ],
+      "n05-bridge-cross-b": [
+        "n05-formula-13"
+      ],
+      "n05-bridge-cross-c": [
+        "n05-formula-13"
+      ],
+      "n05-15": [
+        "n05-formula-13"
+      ],
+      "n05-s5-last-linear-regroup": [],
+      "n05-s5-last-condition-map": [
+        "n05-bridge-worked-n05-16-before-2-equation-0"
+      ],
+      "n05-s4-last-constant-condition": [
+        "n05-bridge-worked-n05-16-before-2-equation-0"
+      ],
+      "n05-17": [],
+      "n05-bridge-search-rs-1": [
+        "n05-formula-16"
+      ],
+      "n05-bridge-search-rs-2": [
+        "n05-formula-16"
+      ],
+      "n05-bridge-search-rs-3": [
+        "n05-formula-16"
+      ],
+      "n05-bridge-search-rs-4": [
+        "n05-formula-16"
+      ],
+      "n05-bridge-select-rs": [
+        "n05-formula-16"
+      ],
+      "n05-18": [
+        "n05-formula-16"
+      ],
+      "n05-s4-common-factor": [],
+      "n05-bridge-audit-common-negative-four": [],
+      "n05-19": [],
+      "n05-bridge-audit-square-root-four": [],
+      "n05-s5-square-difference-rewrite": [],
+      "n05-20": []
+    },
+    "motherQuestions": 20,
+    "activeDecisions": 45,
+    "changes": [
+      {
+        "unit": "n05",
+        "design": "D01",
+        "itemId": "n05-s5-reverse-difference",
+        "blockId": "n05-formula-04",
+        "replaces": null
+      },
+      {
+        "unit": "n05",
+        "design": "D02",
+        "itemId": "n05-s5-sum-condition-map",
+        "blockId": "n05-s4-factor-sum-formula",
+        "replaces": "n05-s4-factor-sum"
+      },
+      {
+        "unit": "n05",
+        "design": "D03",
+        "itemId": "n05-s5-general-cross-regroup",
+        "blockId": "n05-bridge-worked-n05-12-before-1-equation-1",
+        "replaces": null
+      },
+      {
+        "unit": "n05",
+        "design": "D04",
+        "itemId": "n05-s5-linear-condition-map",
+        "blockId": "n05-s4-linear-condition-formula",
+        "replaces": "n05-s4-linear-condition"
+      },
+      {
+        "unit": "n05",
+        "design": "D05",
+        "itemId": "n05-s5-last-linear-regroup",
+        "blockId": "n05-bridge-worked-n05-16-before-1-equation-0",
+        "replaces": null
+      },
+      {
+        "unit": "n05",
+        "design": "D06",
+        "itemId": "n05-s5-last-condition-map",
+        "blockId": "n05-s4-last-linear-condition-formula",
+        "replaces": "n05-s4-last-linear-condition"
+      },
+      {
+        "unit": "n05",
+        "design": "D07",
+        "itemId": "n05-s5-square-difference-rewrite",
+        "blockId": "n05-bridge-worked-n05-bridge-audit-square-root-four-after-0-equation-0",
+        "replaces": null
+      }
+    ]
+  },
+  "n06": {
+    "stages": 10,
+    "records": {
+      "n06-heading-1": [
+        "n06-formula-01",
+        "n06-formula-02"
+      ],
+      "n06-s4-pair-method": [
+        "n06-formula-03",
+        "n06-formula-04"
+      ],
+      "n06-heading-2": [
+        "n06-formula-05",
+        "n06-formula-06"
+      ],
+      "n06-lead-07": [
+        "n06-formula-07"
+      ],
+      "n06-heading-3": [
+        "n06-formula-08"
+      ],
+      "n06-lead-09": [
+        "n06-formula-09",
+        "n06-formula-10"
+      ],
+      "n06-lead-11": [
+        "n06-formula-11",
+        "n06-formula-12"
+      ],
+      "n06-heading-4": [
+        "n06-formula-13"
+      ],
+      "n06-lead-14": [
+        "n06-formula-14"
+      ],
+      "n06-lead-15": [
+        "n06-formula-15",
+        "n06-s4-final-source"
+      ]
+    },
+    "contexts": {
+      "n06-s4-substitution-part": [],
+      "n06-s5-substitute-whole": [],
+      "n06-bridge-x-expand": [],
+      "n06-bridge-audit-x-linear-sum": [],
+      "n06-bridge-audit-x-constant-sum": [],
+      "n06-02": [],
+      "n06-bridge-x-pair": [
+        "n06-formula-02"
+      ],
+      "n06-03": [
+        "n06-formula-02"
+      ],
+      "n06-bridge-audit-restore-x-first": [
+        "n06-formula-01",
+        "n06-formula-03"
+      ],
+      "n06-bridge-audit-restore-x-second": [
+        "n06-formula-01",
+        "n06-formula-03"
+      ],
+      "n06-04": [
+        "n06-formula-01",
+        "n06-formula-03"
+      ],
+      "n06-s4-fourth-substitution": [],
+      "n06-bridge-t-pair": [],
+      "n06-bridge-t-factor": [],
+      "n06-bridge-detail-restore-first": [
+        "n06-formula-05",
+        "n06-bridge-t-factor-formula"
+      ],
+      "n06-bridge-detail-restore-second": [
+        "n06-formula-05",
+        "n06-bridge-t-factor-formula"
+      ],
+      "n06-06": [
+        "n06-formula-05",
+        "n06-bridge-t-factor-formula"
+      ],
+      "n06-bridge-detail-difference-first": [
+        "n06-formula-06"
+      ],
+      "n06-bridge-detail-difference-second": [
+        "n06-formula-06"
+      ],
+      "n06-07": [
+        "n06-formula-06"
+      ],
+      "n06-s4-x-degree": [],
+      "n06-s4-y-degree": [],
+      "n06-s4-choose-variable": [],
+      "n06-s5-classify-y": [
+        "n06-lead-08"
+      ],
+      "n06-bridge-audit-y-coefficient": [
+        "n06-lead-08"
+      ],
+      "n06-09": [
+        "n06-lead-08"
+      ],
+      "n06-10": [
+        "n06-lead-08"
+      ],
+      "n06-11": [
+        "n06-formula-09",
+        "n06-formula-10"
+      ],
+      "n06-bridge-last-pair": [
+        "n06-formula-09",
+        "n06-formula-10"
+      ],
+      "n06-12": [
+        "n06-formula-09",
+        "n06-formula-10"
+      ],
+      "n06-s5-classify-x": [],
+      "n06-bridge-audit-x-coefficient": [],
+      "n06-13": [],
+      "n06-s5-constant-linear-condition": [
+        "n06-formula-13"
+      ],
+      "n06-bridge-audit-constant-pair": [
+        "n06-bridge-worked-n06-14-before-1-equation-0",
+        "n06-bridge-worked-n06-14-before-1-equation-1"
+      ],
+      "n06-14": [
+        "n06-formula-13"
+      ],
+      "n06-bridge-audit-sum-y-coefficient": [
+        "n06-formula-14"
+      ],
+      "n06-bridge-audit-sum-y-constant": [
+        "n06-formula-14"
+      ],
+      "n06-s5-factor-sum-target": [
+        "n06-s4-factor-sum",
+        "n06-formula-13",
+        "n06-s4-factor-rule"
+      ],
+      "n06-s5-restore-coefficient-sum": [
+        "n06-formula-14",
+        "n06-formula-15",
+        "n06-s4-factor-rule"
+      ],
+      "n06-16": [
+        "n06-formula-14",
+        "n06-formula-15",
+        "n06-s4-factor-rule"
+      ]
+    },
+    "motherQuestions": 16,
+    "activeDecisions": 41,
+    "changes": [
+      {
+        "unit": "n06",
+        "design": "D01",
+        "itemId": "n06-s5-substitute-whole",
+        "blockId": "n06-s5-substitute-whole-formula",
+        "replaces": null
+      },
+      {
+        "unit": "n06",
+        "design": "D02",
+        "itemId": "n06-s5-classify-y",
+        "blockId": "n06-bridge-worked-n06-09-before-0-equation-0",
+        "replaces": null
+      },
+      {
+        "unit": "n06",
+        "design": "D03",
+        "itemId": "n06-11",
+        "blockId": "n06-formula-11",
+        "replaces": "n06-11"
+      },
+      {
+        "unit": "n06",
+        "design": "D04",
+        "itemId": "n06-s5-classify-x",
+        "blockId": "n06-bridge-worked-n06-13-before-0-equation-0",
+        "replaces": null
+      },
+      {
+        "unit": "n06",
+        "design": "D05",
+        "itemId": "n06-s5-constant-linear-condition",
+        "blockId": "n06-bridge-worked-n06-14-before-1-equation-0",
+        "replaces": null
+      },
+      {
+        "unit": "n06",
+        "design": "D06",
+        "itemId": "n06-s5-factor-sum-target",
+        "blockId": "n06-s4-sum-match-formula",
+        "replaces": "n06-s4-sum-match"
+      },
+      {
+        "unit": "n06",
+        "design": "D07",
+        "itemId": "n06-s5-restore-coefficient-sum",
+        "blockId": "n06-bridge-worked-n06-16-before-0-equation-0",
+        "replaces": null
+      }
+    ]
+  },
+  "ne01": {
+    "stages": 9,
+    "records": {
+      "ne01-heading-01": [
+        "ne01-bridge-worked-ne01-01-before-1-equation-0",
+        "ne01-formula-01"
+      ],
+      "ne01-lead-02": [
+        "ne01-bridge-concrete-first-formula",
+        "ne01-bridge-concrete-second-formula",
+        "ne01-formula-02"
+      ],
+      "ne01-heading-03": [
+        "ne01-formula-05"
+      ],
+      "ne01-lead-06": [
+        "ne01-formula-06"
+      ],
+      "ne01-heading-07": [
+        "ne01-formula-07"
+      ],
+      "ne01-heading-08": [
+        "ne01-formula-10"
+      ],
+      "ne01-lead-11": [
+        "ne01-formula-11"
+      ],
+      "ne01-heading-12": [
+        "ne01-bridge-factor-difference-formula"
+      ],
+      "ne01-s4-second-factor-heading": [
+        "ne01-s4-second-factor-result"
+      ]
+    },
+    "contexts": {
+      "ne01-s5-cube-as-square": [],
+      "ne01-01": [],
+      "ne01-s5-concrete-second-distribute": [
+        "ne01-formula-01"
+      ],
+      "ne01-s5-concrete-square-terms": [
+        "ne01-bridge-concrete-first-formula",
+        "ne01-bridge-concrete-second-formula"
+      ],
+      "ne01-bridge-audit-collect-square": [
+        "ne01-bridge-concrete-first-formula",
+        "ne01-bridge-concrete-second-formula"
+      ],
+      "ne01-bridge-audit-collect-linear": [
+        "ne01-bridge-concrete-first-formula",
+        "ne01-bridge-concrete-second-formula"
+      ],
+      "ne01-02": [
+        "ne01-bridge-concrete-first-formula",
+        "ne01-bridge-concrete-second-formula"
+      ],
+      "ne01-03": [],
+      "ne01-04": [],
+      "ne01-s5-general-a2b-terms": [
+        "ne01-formula-04"
+      ],
+      "ne01-bridge-audit-general-first-middle": [
+        "ne01-formula-04"
+      ],
+      "ne01-s5-general-ab2-terms": [
+        "ne01-formula-04"
+      ],
+      "ne01-bridge-audit-general-second-middle": [
+        "ne01-formula-04"
+      ],
+      "ne01-05": [
+        "ne01-formula-04"
+      ],
+      "ne01-bridge-negative-substitute": [
+        "ne01-formula-05"
+      ],
+      "ne01-bridge-detail-even-coefficient": [
+        "ne01-formula-05"
+      ],
+      "ne01-bridge-detail-odd-coefficient": [
+        "ne01-formula-05"
+      ],
+      "ne01-06": [
+        "ne01-formula-05"
+      ],
+      "ne01-bridge-concrete-substitute": [
+        "ne01-formula-06"
+      ],
+      "ne01-bridge-detail-quadratic-coefficient": [
+        "ne01-formula-06"
+      ],
+      "ne01-bridge-linear-number": [
+        "ne01-formula-06"
+      ],
+      "ne01-bridge-detail-constant-power": [
+        "ne01-formula-06"
+      ],
+      "ne01-07": [
+        "ne01-formula-06"
+      ],
+      "ne01-08": [
+        "ne01-formula-05"
+      ],
+      "ne01-s5-factor-common-remainder": [
+        "ne01-bridge-worked-ne01-09-before-1-equation-0"
+      ],
+      "ne01-bridge-audit-cube-factor-middle": [
+        "ne01-formula-09"
+      ],
+      "ne01-10": [
+        "ne01-formula-09"
+      ],
+      "ne01-bridge-difference-substitute": [
+        "ne01-formula-10"
+      ],
+      "ne01-11": [
+        "ne01-formula-10"
+      ],
+      "ne01-s4-difference-rule": [
+        "ne01-formula-11"
+      ],
+      "ne01-s5-difference-substitute": [
+        "ne01-formula-11"
+      ],
+      "ne01-bridge-factor-difference": [
+        "ne01-formula-11"
+      ],
+      "ne01-bridge-audit-cube-root-eight": [],
+      "ne01-bridge-audit-cube-root-twentyseven": [],
+      "ne01-s4-sum-rule": [
+        "ne01-formula-10",
+        "ne01-s4-second-factor-rewrite"
+      ],
+      "ne01-s5-sum-linear-factor": [
+        "ne01-formula-10",
+        "ne01-s4-second-factor-rewrite"
+      ],
+      "ne01-s5-sum-quadratic-substitute": [
+        "ne01-formula-10",
+        "ne01-s4-second-factor-rewrite"
+      ],
+      "ne01-bridge-audit-cube-factor-square-a": [
+        "ne01-formula-10",
+        "ne01-s4-second-factor-rewrite"
+      ],
+      "ne01-bridge-audit-cube-factor-product": [
+        "ne01-formula-10",
+        "ne01-s4-second-factor-rewrite"
+      ],
+      "ne01-bridge-audit-cube-factor-square-b": [
+        "ne01-formula-10",
+        "ne01-s4-second-factor-rewrite"
+      ]
+    },
+    "motherQuestions": 13,
+    "activeDecisions": 40,
+    "changes": [
+      {
+        "unit": "ne01",
+        "design": "D01",
+        "itemId": "ne01-s5-cube-as-square",
+        "blockId": "ne01-bridge-worked-ne01-01-before-0-equation-0",
+        "replaces": null
+      },
+      {
+        "unit": "ne01",
+        "design": "D02",
+        "itemId": "ne01-s5-concrete-second-distribute",
+        "blockId": "ne01-before-02-1",
+        "replaces": null
+      },
+      {
+        "unit": "ne01",
+        "design": "D03",
+        "itemId": "ne01-s5-concrete-square-terms",
+        "blockId": "ne01-s5-concrete-square-terms-formula",
+        "replaces": null
+      },
+      {
+        "unit": "ne01",
+        "design": "D04",
+        "itemId": "ne01-s5-general-a2b-terms",
+        "blockId": "ne01-s5-general-a2b-terms-formula",
+        "replaces": null
+      },
+      {
+        "unit": "ne01",
+        "design": "D05",
+        "itemId": "ne01-s5-general-ab2-terms",
+        "blockId": "ne01-s5-general-ab2-terms-formula",
+        "replaces": null
+      },
+      {
+        "unit": "ne01",
+        "design": "D06",
+        "itemId": "ne01-s5-factor-common-remainder",
+        "blockId": "ne01-formula-09",
+        "replaces": "ne01-09"
+      },
+      {
+        "unit": "ne01",
+        "design": "D07",
+        "itemId": "ne01-s5-difference-substitute",
+        "blockId": "ne01-s4-first-factor-insert",
+        "replaces": null
+      },
+      {
+        "unit": "ne01",
+        "design": "D08a",
+        "itemId": "ne01-s5-sum-linear-factor",
+        "blockId": "ne01-s5-sum-linear-factor-formula",
+        "replaces": null
+      },
+      {
+        "unit": "ne01",
+        "design": "D08b",
+        "itemId": "ne01-s5-sum-quadratic-substitute",
+        "blockId": "ne01-bridge-factor-sum-substitute-formula",
+        "replaces": "ne01-bridge-factor-sum-substitute"
+      }
+    ]
+  }
+}

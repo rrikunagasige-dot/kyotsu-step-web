@@ -358,6 +358,9 @@ for key,plan in plans.items():
  plan['sourceCoverage']=coverage
 
 (root/'COVERAGE.json').write_text(json.dumps({k:{'regions':v['auditedRegions'],'retired':v['retiredItems'],'new':[q['id'] for q in v['newItems']],'stages':len(v['stages'])} for k,v in plans.items()},ensure_ascii=False,indent=2))
+# W-MATH-030/P-003: the next approved edition refines these authored sequences.
+import runpy
+runpy.run_path('work/items/W-MATH-030-section-one-results-and-blanks/author-refinements.py')['refine'](plans)
 out=pathlib.Path('src/data/textbook/math/numbers/firstSectionTeaching.json')
 out.write_text(json.dumps(plans,ensure_ascii=False,indent=2)+'\n')
 print(json.dumps({k:{'blocks':len(v['readingFlow']),'retired':len(v['retiredItems']),'new':len(v['newItems']),'regions':len(v['auditedRegions'])} for k,v in plans.items()}))

@@ -11,6 +11,11 @@ export type SectionTeachingPlan = {
   contexts: Record<string, string[]>
   auditedRegions: string[]
   sourceCoverage: Record<string, { originalItemIds: string[]; activeItemIds: string[]; workedBlockIds: string[] }>
+  editionIncrement?: number
+  resultBlockIdsByStage?: Record<string, string[]>
+  contextBlockIdsByItem?: Record<string, string[]>
+  alignedFormulaBlockIds?: string[]
+  formulaLayouts?: Record<string, { mobileBreaks?: { row: number; chunk: number }[]; continueOuterFactor?: boolean }>
 }
 export const firstSectionTeachingPlans = authored as unknown as Record<string, SectionTeachingPlan>
 
@@ -31,5 +36,5 @@ export function teachFirstSection(unit: TextbookUnit): TextbookUnit {
     return plan.itemPrompts[id] && plan.itemPrompts[id] !== item.prompt
       ? { ...item, prompt: plan.itemPrompts[id] } : item
   })
-  return { ...unit, revision: unit.revision + 1, sections: [{ ...original, readingFlow: plan.readingFlow, items: currentItems }] }
+  return { ...unit, revision: unit.revision + (plan.editionIncrement ?? 1), sections: [{ ...original, readingFlow: plan.readingFlow, items: currentItems }] }
 }

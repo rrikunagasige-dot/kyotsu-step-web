@@ -10,20 +10,27 @@ const baseline = JSON.parse(readFileSync('work/items/W-MATH-029-section-one-teac
 const units = mathTextbookUnits.filter(u=>isFirstThemeUnit(u.unitId))
 const itemIds = (blocks:readonly TextbookReadingBlock[]) => blocks.flatMap(b=>b.type==='paragraph'||b.type==='formula'?b.parts.flatMap(p=>p.type==='choice'?[p.itemId]:[]):[])
 describe('W-MATH-029 current complete section teaching edition',()=>{
-  it('covers all42 audited regions, preserves the accepted sample exactly, and protects the other nine numbers units',()=>{
+  it('covers all42 audited regions, preserves sample explanation and solved equations, and protects the other nine numbers units',()=>{
     expect(units).toHaveLength(7)
     expect(Object.values(firstSectionTeachingPlans).reduce((n,p)=>n+p.auditedRegions.length,0)).toBe(42)
     for(const current of mathTextbookUnits) if(baseline[current.unitId]&&!isFirstThemeUnit(current.unitId)) expect(current,current.unitId).toEqual(baseline[current.unitId])
     const unit=units.find(u=>u.unitId.endsWith('-n01'))!
     const sample=(u:TextbookUnit)=>{const flow=u.sections[0].readingFlow;return flow.slice(flow.findIndex(b=>b.id==='marker-degree-check'))}
-    expect(sample(unit)).toEqual(sample(baseline[unit.unitId]))
+    const solved=(u:TextbookUnit,b:TextbookReadingBlock)=>b.type==='formula'||b.type==='paragraph'
+      ? b.parts.map(p=>p.type==='math'?p.latex:p.type==='choice'?u.sections[0].items.find(q=>q.id===p.itemId)!.answer:p.text).join('')
+      : 'text' in b?b.text:JSON.stringify(b)
+    for(const old of sample(baseline[unit.unitId])) {
+      const current=sample(unit).find(b=>b.id===old.id)!
+      expect(current,old.id).toBeDefined()
+      expect(solved(unit,current),old.id).toEqual(solved(baseline[unit.unitId],old))
+    }
   })
   it.each(units)('$unitId preserves surviving mathematical contracts, archives retired IDs, and has a complete continuous partition',unit=>{
     const plan=firstSectionTeachingPlans[unit.unitId.split('-').at(-1)!]
     const section=unit.sections[0],old=baseline[unit.unitId]
     expect(Object.values(plan.sourceCoverage).flatMap(q=>q.activeItemIds).sort()).toEqual(section.items.map(q=>q.id).sort())
     for(const source of Object.values(plan.sourceCoverage)){expect(source.activeItemIds.length+source.workedBlockIds.length).toBeGreaterThan(0);for(const id of source.workedBlockIds)expect(section.readingFlow.some(b=>b.id===id)).toBe(true)}
-    expect(unit.revision).toBe(old.revision+1)
+    expect(unit.revision).toBe(old.revision+(plan.editionIncrement??1))
     expect(unit.sections[0].figures).toEqual(old.sections[0].figures)
     expect(unit.source).toEqual(old.source)
     const order=itemIds(section.readingFlow)

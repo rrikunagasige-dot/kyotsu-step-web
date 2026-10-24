@@ -17,7 +17,7 @@ export function formulaWrapChunks(block: FormulaBlock): string[] {
       if (!braces && !parentheses && !absolute) {
         if (/^\\(?:Longrightarrow|longrightarrow)$/.test(command)) {
           push(i); push(i + command.length)
-        } else if ((command === '\\qquad' || ((block.id === 'formula-n03-01' || block.id === 'first-theme-choice') && /^\\(?:times|cdot)$/.test(command)) || /^\\(?:le|ge|lt|gt)$/.test(command)) && i > start) push(i)
+        } else if ((command === '\\qquad' || ((block.id === 'formula-n03-01' || block.id === 'first-theme-choice' || block.id === 'first-theme-aligned') && /^\\(?:times|cdot)$/.test(command)) || /^\\(?:le|ge|lt|gt)$/.test(command)) && i > start) push(i)
       }
       i += command.length - 1
       continue
@@ -34,6 +34,36 @@ export function formulaWrapChunks(block: FormulaBlock): string[] {
   }
   push(source.length)
   return chunks.filter(chunk => chunk.trim())
+}
+
+// Authored first-section formulae opt in. Split the relation into its own column;
+// wrapping within a right side occurs only between complete mathematical terms.
+export function firstThemeFormulaRows(block: FormulaBlock, layout?: { continueOuterFactor?: boolean }): { relation: string; chunks: string[] }[] {
+  const source = block.parts.map((part, index) => part.type === 'math' ? part.latex
+    : part.type === 'choice' ? `§${index}§` : '').join('')
+  const rows: { relation: string; source: string }[] = []
+  let start = 0, braces = 0, parentheses = 0, relation = ''
+  for (let i = 0; i < source.length; i++) {
+    const char = source[i]
+    if (!braces && !parentheses && source.startsWith('\\qquad', i)) {
+      if (i > start) rows.push({ relation, source: source.slice(start, i) })
+      relation = ''; start = i + '\\qquad'.length; i = start - 1; continue
+    }
+    if (char === '{') braces++
+    if (char === '}') braces--
+    if (braces) continue
+    if (char === '(') parentheses++
+    if (char === ')') parentheses--
+    if (char === '=' && parentheses === 0) {
+      if (i > start) rows.push({ relation, source: source.slice(start, i) })
+      relation = '='; start = i + 1
+    }
+  }
+  if (start < source.length) rows.push({ relation, source: source.slice(start) })
+  return rows.map(row => ({ relation: row.relation, chunks: formulaWrapChunks({ ...block, id: 'first-theme-aligned', parts: [{ type: 'math', latex: row.source }] }).flatMap(chunk =>
+    layout?.continueOuterFactor && chunk.startsWith('\\cdot(')
+      ? formulaWrapChunks({ ...block, id: 'first-theme-choice', parts: [{ type: 'math', latex: chunk }] })
+      : [chunk]) }))
 }
 
 export const auditedWrapBlocks: Readonly<Record<string, readonly string[]>> = {

@@ -29,7 +29,7 @@ describe('chapter overflow mathematical boundaries', () => {
         for (const value of [undefined, progress]) {
           const html = renderToStaticMarkup(<TextbookFormula unitId={unitId} block={block} section={section} progress={value} onOpen={() => {}} />)
           expect(html).not.toContain('katex-error')
-          expect(html).toContain('reading-formula-expression--chapter-wrap')
+          expect(html).toMatch(/reading-formula-expression--chapter-wrap|first-theme-formula-rows/)
           for (const p of block.parts) if (p.type === 'choice') expect(html).toContain(`data-testid="${value ? 'resolved-' : 'textbook-item-'}${p.itemId}"`)
         }
       })

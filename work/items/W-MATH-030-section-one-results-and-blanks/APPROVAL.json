@@ -1,0 +1,16 @@
+{
+  "proposal": "P-003",
+  "userApproval": "那就按这个设计",
+  "files": {
+    "PROPOSAL.md": "02b6feb238e857f2fef4b6e3a32ebf9204288e1d4151ba41d48271aeb5e089b1",
+    "PROPOSAL_FULL.md": "0c9cfaa8ef31a8bb7c1f51329b9dbed1b47f0be10a7da3944f0444473dad15f4",
+    "ITEM_ID_DESIGN.md": "a0c74efa288d765e0801bf5da8e5ef73b3e94eb78f2837c3a51ca7b638d57c1e",
+    "N01_DESIGN.md": "9e88a82f5b6ce691c362e1c64a46a3f04ed9803c1a87871412b074a53387f010",
+    "N02_DESIGN.md": "902f80edbe0a3e22a5755c0738d4a7eb417e72962b1cdb06991ecbd5e0d3906c",
+    "N03_DESIGN.md": "63a336cc6bb83be4ed6190bc9a6cf562d0043ec608200fc4a9be744e64ab9efc",
+    "N04_DESIGN.md": "cb1fd1e7a916e6267258515cfc19c5d1f569b640d104dbf2732eabe1c22b5f30",
+    "N05_DESIGN.md": "a304a8b111b64c09a68c34a08957011489f16fd1fbb569fa04c5d1f446738f46",
+    "N06_DESIGN.md": "631fbe96ec944c41bef8904e20f3f96d10521bb32900e1cd837b1381f465330d",
+    "NE01_DESIGN.md": "f7abca2f9ab44b91e2cded6c5873507bbb6e19a9e3922ed1d21e4be0e0c6e238"
+  }
+}

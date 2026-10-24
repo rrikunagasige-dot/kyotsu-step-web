@@ -16,7 +16,7 @@ import { normalizeTextbookMath } from '../domain/textbookMath'
 import { textbookDisplayLines } from '../domain/textbookDisplayLines'
 import { chapter1ChunkForUnitCode, chapter1Localized, chapter1NextUnit } from '../data/textbook/ch01/chapter1Architecture'
 import { mathTextbookNextUnitId, mathTextbookTopicForUnit } from '../data/textbook/math'
-import { partitionMathSetReadingFlow, requiredMathSetContext, partitionFirstThemeReadingFlow, requiredFirstThemeContext, isFirstThemeUnit } from '../data/textbook/math/presentation'
+import { partitionMathSetReadingFlow, requiredMathSetContext, partitionFirstThemeReadingFlow, requiredFirstThemeContext, firstThemeRecordedResults, firstThemeSourceView, isFirstThemeUnit } from '../data/textbook/math/presentation'
 
 function interactionPrompt(item: TextbookItem, text: (ja: string, zh: string) => string, subject: TextbookUnit['subject']) {
   switch (item.purpose) {
@@ -435,6 +435,29 @@ export function TextbookReadingFlow({ unit, section, progress, onSummaryReached,
     return rendered
   }
 
+  // Read-only source views contain neither answer buttons nor duplicate answer IDs.
+  // Never substitute an unresolved item with its answer, including old progress.
+  const recordedBlock = (ref: string): TextbookReadingBlock | undefined => {
+    const source = firstThemeSourceView(ref, section.readingFlow)
+    if (!source) return undefined
+    if (readingGroupItemIds([source], section).some(id => {
+      const item = section.items.find(q => q.id === id)
+      return !item || !isTextbookItemResolved(item, currentProgress?.answers[id])
+    })) return undefined
+    if (source.type !== 'formula' && source.type !== 'paragraph') return source
+    return { ...source, id: 's5-record-' + ref, parts: source.parts.map(part => {
+      if (part.type !== 'choice') return part
+      const item = section.items.find(q => q.id === part.itemId)!
+      const value = currentProgress!.answers[item.id].value
+      return item.answerType === 'formula' ? { type: 'math' as const, latex: value } : { type: 'text' as const, text: value }
+    }) }
+  }
+
+  const renderRecordedResults = (refs: readonly string[]) => refs.map(ref => {
+    const block = recordedBlock(ref)
+    return block ? <div key={ref} data-result-source={ref}>{renderBlock(block)}</div> : null
+  })
+
   return (
     <article className="textbook-reading-flow" data-testid="textbook-reading-flow" data-first-theme={isFirstThemeUnit(unit.unitId) || undefined} tabIndex={-1}>
       {compactStages ? (
@@ -477,7 +500,8 @@ export function TextbookReadingFlow({ unit, section, progress, onSummaryReached,
               const item = section.items.find(candidate => candidate.id === id)
               return !item || !isTextbookItemResolved(item, currentProgress?.answers[id])
             }) ?? null
-            const neededContextIds = completedBefore ? [] : isFirstThemeUnit(unit.unitId) ? requiredFirstThemeContext(stage, section.readingFlow) : requiredMathSetContext(currentQuestionId)
+            const neededContextIds = completedBefore ? [] : isFirstThemeUnit(unit.unitId) ? requiredFirstThemeContext(stage, section.readingFlow, currentQuestionId) : requiredMathSetContext(currentQuestionId)
+            const resultIds = isFirstThemeUnit(unit.unitId) ? firstThemeRecordedResults(stage, section.readingFlow) : []
             const stageAnswered = stageItemIds.every(id => {
               const item = section.items.find(candidate => candidate.id === id)
               return Boolean(item && isTextbookItemResolved(item, currentProgress?.answers[id]))
@@ -494,7 +518,7 @@ export function TextbookReadingFlow({ unit, section, progress, onSummaryReached,
                     <div className="math-textbook-stage-summary">
                       <span className="math-textbook-stage-summary__name">
                         <Check size={16} aria-hidden="true" />
-                        {stage.completedLabel ?? stage.label[language]}
+                        {resultIds.length ? stage.label[language] : stage.completedLabel ?? stage.label[language]}
                       </span>
                       <button
                         type="button"
@@ -509,6 +533,11 @@ export function TextbookReadingFlow({ unit, section, progress, onSummaryReached,
                         {expanded ? text('閉じる', '收起') : text('全文を見る', '查看全文')}
                       </button>
                     </div>
+                    {resultIds.length > 0 && (
+                      <div className="first-theme-recorded-results" data-testid={'recorded-results-' + stage.id}>
+                        {renderRecordedResults(resultIds)}
+                      </div>
+                    )}
                     {expanded && (
                       <div className="math-textbook-stage-detail" id={'math-textbook-stage-detail-' + stage.id}>
                         {renderVisibleBlocks([...stage.blocks])}
@@ -523,9 +552,9 @@ export function TextbookReadingFlow({ unit, section, progress, onSummaryReached,
                     </header>
                     {neededContextIds.length > 0 && (
                       <div className="math-textbook-stage-references" data-testid="math-textbook-stage-references" data-for-item={currentQuestionId ?? undefined}>
-                        <strong className="math-textbook-stage-references__title">{text('この問題で使う条件', '本题需要的条件')}</strong>
+                        <strong className="math-textbook-stage-references__title">{isFirstThemeUnit(unit.unitId) ? text('使う条件・前の結果', '需要的条件与之前的结果') : text('この問題で使う条件', '本题需要的条件')}</strong>
                         {neededContextIds.map(blockId => {
-                          const source = section.readingFlow.find(block => block.id === blockId)
+                          const source = isFirstThemeUnit(unit.unitId) ? recordedBlock(blockId) : section.readingFlow.find(block => block.id === blockId)
                           if (!source) return null
                           const isFigure = source.type === 'figure'
                           const open = expandedReference === blockId
@@ -562,6 +591,12 @@ export function TextbookReadingFlow({ unit, section, progress, onSummaryReached,
                       </div>
                     )}
                     {renderVisibleBlocks(visibleBlocksInGroup([...stage.blocks]).filter(block => !(isFirstThemeUnit(unit.unitId) && block.id === stage.startBlockId && block.type === 'heading')))}
+                    {stageAnswered && resultIds.length > 0 && (
+                      <aside className="first-theme-recorded-results first-theme-recorded-results--current" data-testid={'recorded-results-' + stage.id}>
+                        <strong>{text('この段階で確かめたこと', '本阶段确认的内容')}</strong>
+                        {renderRecordedResults(resultIds)}
+                      </aside>
+                    )}
                     {stageAnswered && index < compactStages.length - 1 && (
                       <div className="math-textbook-next-stage-panel">
                         <span>{text('ここまでの本文と図を確認したら、次へ進めます。', '读完本段正文和图后，可以继续下一段。')}</span>

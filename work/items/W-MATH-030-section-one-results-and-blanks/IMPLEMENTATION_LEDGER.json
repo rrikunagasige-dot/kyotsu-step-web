@@ -1,0 +1,324 @@
+[
+  {
+    "unit": "n01",
+    "design": "D01",
+    "itemId": "n01-s4-y-coefficient",
+    "blockId": "n01-s4-y-reorder",
+    "replaces": "n01-s4-y-coefficient"
+  },
+  {
+    "unit": "n01",
+    "design": "D02",
+    "itemId": "n01-s5-square-regroup",
+    "blockId": "n01-s4-square-factor",
+    "replaces": null
+  },
+  {
+    "unit": "n01",
+    "design": "D03",
+    "itemId": "n01-s5-linear-regroup",
+    "blockId": "n01-s4-linear-factor",
+    "replaces": null
+  },
+  {
+    "unit": "n01",
+    "design": "D04",
+    "itemId": "n01-s5-example-linear-regroup",
+    "blockId": "n01-r3-linear-factor",
+    "replaces": null
+  },
+  {
+    "unit": "n01",
+    "design": "D05",
+    "itemId": "n01-s5-example-cubic-regroup",
+    "blockId": "n01-r3-cubic-factor",
+    "replaces": null
+  },
+  {
+    "unit": "n02",
+    "design": "D01",
+    "itemId": "n02-s5-classify-linear",
+    "blockId": "n02-bridge-worked-n02-04-before-0-equation-0",
+    "replaces": null
+  },
+  {
+    "unit": "n02",
+    "design": "D02",
+    "itemId": "n02-s5-sum-square-regroup",
+    "blockId": "n02-s5-sum-square-regroup-formula",
+    "replaces": null
+  },
+  {
+    "unit": "n02",
+    "design": "D03",
+    "itemId": "n02-s5-minus-distribute",
+    "blockId": "n02-s5-minus-distribute-formula",
+    "replaces": null
+  },
+  {
+    "unit": "n02",
+    "design": "D04",
+    "itemId": "n02-s5-minus-three-square-distribute",
+    "blockId": "n02-s5-minus-three-square-distribute-formula",
+    "replaces": null
+  },
+  {
+    "unit": "n02",
+    "design": "D05",
+    "itemId": "n02-bridge-like-square",
+    "blockId": "n02-bridge-like-square-formula",
+    "replaces": "n02-bridge-like-square"
+  },
+  {
+    "unit": "n02",
+    "design": "D06",
+    "itemId": "n02-s5-group-a-coefficients",
+    "blockId": "n02-s5-group-a-coefficients-formula",
+    "replaces": null
+  },
+  {
+    "unit": "n03",
+    "design": "D01",
+    "itemId": "n03-s5-cube-x-count",
+    "blockId": "n03-s5-cube-x-count-formula",
+    "replaces": null
+  },
+  {
+    "unit": "n03",
+    "design": "D02",
+    "itemId": "n03-12",
+    "blockId": "formula-n03-12",
+    "replaces": "n03-12"
+  },
+  {
+    "unit": "n03",
+    "design": "D03",
+    "itemId": "n03-s5-minus-row-distribute",
+    "blockId": "n03-s5-minus-row-distribute-formula",
+    "replaces": null
+  },
+  {
+    "unit": "n03",
+    "design": "D04",
+    "itemId": "n03-s5-collect-square-terms",
+    "blockId": "n03-s5-collect-square-terms-formula",
+    "replaces": null
+  },
+  {
+    "unit": "n03",
+    "design": "D05",
+    "itemId": "n03-s5-collect-linear-terms",
+    "blockId": "n03-s5-collect-linear-terms-formula",
+    "replaces": null
+  },
+  {
+    "unit": "n04",
+    "design": "D01",
+    "itemId": "n04-s5-cross-regroup",
+    "blockId": "n04-bridge-worked-n04-02-before-0-equation-0",
+    "replaces": null
+  },
+  {
+    "unit": "n04",
+    "design": "D02",
+    "itemId": "n04-s5-product-substitute",
+    "blockId": "n04-s4-product-substitute",
+    "replaces": null
+  },
+  {
+    "unit": "n04",
+    "design": "D03",
+    "itemId": "n04-s5-three-substitute",
+    "blockId": "n04-s5-three-substitute-formula",
+    "replaces": null
+  },
+  {
+    "unit": "n04",
+    "design": "D04",
+    "itemId": "n04-s5-negative-c-substitute",
+    "blockId": "n04-bridge-worked-n04-16-before-0-equation-0",
+    "replaces": null
+  },
+  {
+    "unit": "n04",
+    "design": "D05",
+    "itemId": "n04-s4-shared-part",
+    "blockId": "n04-s4-shared-part-formula",
+    "replaces": "n04-s4-shared-part"
+  },
+  {
+    "unit": "n04",
+    "design": "D06",
+    "itemId": "n04-s5-four-substitute",
+    "blockId": "n04-s5-four-substitute-formula",
+    "replaces": null
+  },
+  {
+    "unit": "n04",
+    "design": "D07",
+    "itemId": "n04-s5-four-restore-square",
+    "blockId": "n04-s5-four-restore-square-formula",
+    "replaces": null
+  },
+  {
+    "unit": "n05",
+    "design": "D01",
+    "itemId": "n05-s5-reverse-difference",
+    "blockId": "n05-formula-04",
+    "replaces": null
+  },
+  {
+    "unit": "n05",
+    "design": "D02",
+    "itemId": "n05-s5-sum-condition-map",
+    "blockId": "n05-s4-factor-sum-formula",
+    "replaces": "n05-s4-factor-sum"
+  },
+  {
+    "unit": "n05",
+    "design": "D03",
+    "itemId": "n05-s5-general-cross-regroup",
+    "blockId": "n05-bridge-worked-n05-12-before-1-equation-1",
+    "replaces": null
+  },
+  {
+    "unit": "n05",
+    "design": "D04",
+    "itemId": "n05-s5-linear-condition-map",
+    "blockId": "n05-s4-linear-condition-formula",
+    "replaces": "n05-s4-linear-condition"
+  },
+  {
+    "unit": "n05",
+    "design": "D05",
+    "itemId": "n05-s5-last-linear-regroup",
+    "blockId": "n05-bridge-worked-n05-16-before-1-equation-0",
+    "replaces": null
+  },
+  {
+    "unit": "n05",
+    "design": "D06",
+    "itemId": "n05-s5-last-condition-map",
+    "blockId": "n05-s4-last-linear-condition-formula",
+    "replaces": "n05-s4-last-linear-condition"
+  },
+  {
+    "unit": "n05",
+    "design": "D07",
+    "itemId": "n05-s5-square-difference-rewrite",
+    "blockId": "n05-bridge-worked-n05-bridge-audit-square-root-four-after-0-equation-0",
+    "replaces": null
+  },
+  {
+    "unit": "n06",
+    "design": "D01",
+    "itemId": "n06-s5-substitute-whole",
+    "blockId": "n06-s5-substitute-whole-formula",
+    "replaces": null
+  },
+  {
+    "unit": "n06",
+    "design": "D02",
+    "itemId": "n06-s5-classify-y",
+    "blockId": "n06-bridge-worked-n06-09-before-0-equation-0",
+    "replaces": null
+  },
+  {
+    "unit": "n06",
+    "design": "D03",
+    "itemId": "n06-11",
+    "blockId": "n06-formula-11",
+    "replaces": "n06-11"
+  },
+  {
+    "unit": "n06",
+    "design": "D04",
+    "itemId": "n06-s5-classify-x",
+    "blockId": "n06-bridge-worked-n06-13-before-0-equation-0",
+    "replaces": null
+  },
+  {
+    "unit": "n06",
+    "design": "D05",
+    "itemId": "n06-s5-constant-linear-condition",
+    "blockId": "n06-bridge-worked-n06-14-before-1-equation-0",
+    "replaces": null
+  },
+  {
+    "unit": "n06",
+    "design": "D06",
+    "itemId": "n06-s5-factor-sum-target",
+    "blockId": "n06-s4-sum-match-formula",
+    "replaces": "n06-s4-sum-match"
+  },
+  {
+    "unit": "n06",
+    "design": "D07",
+    "itemId": "n06-s5-restore-coefficient-sum",
+    "blockId": "n06-bridge-worked-n06-16-before-0-equation-0",
+    "replaces": null
+  },
+  {
+    "unit": "ne01",
+    "design": "D01",
+    "itemId": "ne01-s5-cube-as-square",
+    "blockId": "ne01-bridge-worked-ne01-01-before-0-equation-0",
+    "replaces": null
+  },
+  {
+    "unit": "ne01",
+    "design": "D02",
+    "itemId": "ne01-s5-concrete-second-distribute",
+    "blockId": "ne01-before-02-1",
+    "replaces": null
+  },
+  {
+    "unit": "ne01",
+    "design": "D03",
+    "itemId": "ne01-s5-concrete-square-terms",
+    "blockId": "ne01-s5-concrete-square-terms-formula",
+    "replaces": null
+  },
+  {
+    "unit": "ne01",
+    "design": "D04",
+    "itemId": "ne01-s5-general-a2b-terms",
+    "blockId": "ne01-s5-general-a2b-terms-formula",
+    "replaces": null
+  },
+  {
+    "unit": "ne01",
+    "design": "D05",
+    "itemId": "ne01-s5-general-ab2-terms",
+    "blockId": "ne01-s5-general-ab2-terms-formula",
+    "replaces": null
+  },
+  {
+    "unit": "ne01",
+    "design": "D06",
+    "itemId": "ne01-s5-factor-common-remainder",
+    "blockId": "ne01-formula-09",
+    "replaces": "ne01-09"
+  },
+  {
+    "unit": "ne01",
+    "design": "D07",
+    "itemId": "ne01-s5-difference-substitute",
+    "blockId": "ne01-s4-first-factor-insert",
+    "replaces": null
+  },
+  {
+    "unit": "ne01",
+    "design": "D08a",
+    "itemId": "ne01-s5-sum-linear-factor",
+    "blockId": "ne01-s5-sum-linear-factor-formula",
+    "replaces": null
+  },
+  {
+    "unit": "ne01",
+    "design": "D08b",
+    "itemId": "ne01-s5-sum-quadratic-substitute",
+    "blockId": "ne01-bridge-factor-sum-substitute-formula",
+    "replaces": "ne01-bridge-factor-sum-substitute"
+  }
+]

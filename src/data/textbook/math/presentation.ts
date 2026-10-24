@@ -205,13 +205,46 @@ const firstThemeReferences: Readonly<Record<string, readonly string[]>> = {
   'ne01-heading-07': ['ne01-formula-06'],
   'ne01-heading-12': ['ne01-formula-10','ne01-formula-11'],
 }
-export function requiredFirstThemeContext(stage: MathSetRenderedStage, blocks: readonly TextbookReadingBlock[]): readonly string[] {
+export function requiredFirstThemeContext(stage: MathSetRenderedStage, blocks: readonly TextbookReadingBlock[], itemId?: string | null): readonly string[] {
   const start = blocks.findIndex(b => b.id === stage.startBlockId)
   const plan = Object.values(firstSectionTeachingPlans).find(p=>p.readingFlow[0].id===blocks[0]?.id)
+  if (itemId !== undefined && plan?.contextBlockIdsByItem) return itemId ? plan.contextBlockIdsByItem[itemId] ?? [] : []
   const references = plan ? plan.contexts[stage.startBlockId] ?? [] : firstThemeReferences[stage.startBlockId] ?? []
   return references.filter(id => {
     const index = blocks.findIndex(b => b.id === id)
     if (index < 0 || index >= start) throw Error('First-theme context is missing or from the future: ' + id)
     return true
   })
+}
+
+export function firstThemeRecordedResults(stage: MathSetRenderedStage, blocks: readonly TextbookReadingBlock[]): readonly string[] {
+  return Object.values(firstSectionTeachingPlans).find(p => p.readingFlow[0].id === blocks[0]?.id)?.resultBlockIdsByStage?.[stage.startBlockId] ?? []
+}
+
+export function firstThemeUsesAlignedFormula(unitId: string, blockId: string): boolean {
+  const id = blockId.replace(/^s5-record-/, '')
+  const plan = firstSectionTeachingPlans[unitId.replace('math-numbers-expressions-', '')]
+  if (id.includes('#')) return Boolean(plan && plan.readingFlow.some(b => b.id === id.split('#')[0]))
+  return plan?.alignedFormulaBlockIds?.includes(id) ?? false
+}
+
+export function firstThemeFormulaLayout(unitId: string, blockId: string) {
+  return firstSectionTeachingPlans[unitId.replace('math-numbers-expressions-', '')]?.formulaLayouts?.[blockId.replace(/^s5-record-/, '')]
+}
+
+// A reference is a view of its canonical source, never a second answer string.
+// #row selects one already-authored aligned/array row (A or B, or one index law).
+export function firstThemeSourceView(ref: string, blocks: readonly TextbookReadingBlock[]): TextbookReadingBlock | undefined {
+  const [id, row] = ref.split('#')
+  const source = blocks.find(b => b.id === id)
+  if (!source) return undefined
+  if (row === undefined) return source
+  if (source.type !== 'formula') throw Error('A mathematical source row requires a formula: ' + ref)
+  const math = source.parts.find(p => p.type === 'math')
+  if (!math || math.type !== 'math') throw Error('Missing source math: ' + ref)
+  const body = math.latex.replace(/\\begin\{aligned\}|\\end\{aligned\}|\\begin\{array\}\{[^}]+\}|\\end\{array\}/g, '')
+  const line = body.split('\\\\')[Number(row)]
+  if (line === undefined) throw Error('Missing source row: ' + ref)
+  const latex = math.latex.includes('\\begin{array}') ? line.slice(line.indexOf('&') + 1) : line.replaceAll('&', '')
+  return { ...source, id: ref, parts: [{ type: 'math', latex }] }
 }

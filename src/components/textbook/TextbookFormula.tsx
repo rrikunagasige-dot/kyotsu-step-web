@@ -1,6 +1,6 @@
-import { isFirstThemeUnit } from '../../data/textbook/math/presentation'
+import { isFirstThemeUnit, firstThemeUsesAlignedFormula, firstThemeFormulaLayout } from '../../data/textbook/math/presentation'
 import { InlineMath } from 'react-katex'
-import { auditedResolvedWrapBlocks, auditedWrapBlocks, formulaWrapChunks } from './formulaWrap'
+import { auditedResolvedWrapBlocks, auditedWrapBlocks, formulaWrapChunks, firstThemeFormulaRows } from './formulaWrap'
 import type { TextbookUnitProgress } from '../../domain/textbook'
 import { isTextbookItemResolved } from '../../domain/textbook'
 import { normalizeTextbookMath } from '../../domain/textbookMath'
@@ -155,6 +155,40 @@ export function TextbookFormula({ block, section, progress, onOpen, unitId }: Pr
   let wrappedAnswer: number | undefined
   const markedAnswers = new Set<number>()
   const grouped = q06Layout || q12Layout || transformLayout || puddingLayout
+  if (firstThemeUsesAlignedFormula(unitId, block.id)) {
+    const layout = firstThemeFormulaLayout(unitId, block.id)
+    const rows = firstThemeFormulaRows(wrapBlock, layout)
+    return (
+      <div className="reading-formula-line reading-formula-line--aligned" data-testid={`textbook-formula-${block.id}`} data-latex-status="ok">
+        <div className="first-theme-formula-rows">
+          {rows.map((row, rowIndex) => (
+            <div className="first-theme-formula-row" key={rowIndex}>
+              <span className="first-theme-formula-relation">{row.relation && <InlineMath math={row.relation} />}</span>
+              <span className="first-theme-formula-terms">
+                {row.chunks.flatMap((chunk, chunkIndex) => [
+                  layout?.mobileBreaks?.some(point => point.row === rowIndex && point.chunk === chunkIndex)
+                    ? <span className="first-theme-mobile-break" key={'break-' + chunkIndex} aria-hidden="true" /> : null,
+                  <span className="reading-formula-wrap-group" key={chunkIndex}>
+                    {chunk.split(/(§(?:\d+|a\d+|z\d+)§)/).filter(Boolean).map((part, partIndex) => {
+                      const begin = part.match(/^§a(\d+)§$/)
+                      if (begin) { wrappedAnswer = Number(begin[1]); return null }
+                      if (/^§z\d+§$/.test(part)) { wrappedAnswer = undefined; return null }
+                      const choice = part.match(/^§(\d+)§$/)
+                      if (choice) return renderedParts[Number(choice[1])]
+                      const answerPart = wrappedAnswer === undefined ? undefined : block.parts[wrappedAnswer]
+                      const answerId = answerPart?.type === 'choice' && !markedAnswers.has(wrappedAnswer!) ? answerPart.itemId : undefined
+                      if (answerId) markedAnswers.add(wrappedAnswer!)
+                      return <span className="reading-formula-math" data-testid={answerId ? `resolved-${answerId}` : undefined} key={partIndex}><InlineMath math={/^[+\-=]/.test(part) ? '{}' + part : part} /></span>
+                    })}
+                  </span>
+                ])}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  }
   return (
     <div
       className={`reading-formula-line${n12Formula ? ' reading-formula-line--n12' : ''}`}

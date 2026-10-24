@@ -11,3 +11,5 @@ These are implementation facts under P-005-R2, not new pedagogical rules.
 7. Audit actual glyph/button bounds as well as scrollWidth. Audit cross-block alignment in the same visible scope, answered/unanswered variants, references/history and real wrong-hint-correct/reset/reload. A seeded layout audit is distinct from learner playthrough and user acceptance.
 
 Local runner note: each command runs in an isolated network namespace. A local server and its browser verification must run in the same command invocation. Starting them in separate sessions causes connection refusal unrelated to the app.
+
+Git source-materialization note: after creating a remote tree/commit from generated entries, `git reset --mixed` updates HEAD/index only. It does not materialize changed remote file contents. Verify `git diff -- src public` and the enabled-unit configuration before labeling a local build with that SHA; copy only the exact known generated files from the committed source when necessary. Source-pinned CI must check a clean source tree independently.

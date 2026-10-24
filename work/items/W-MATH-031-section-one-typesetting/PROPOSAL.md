@@ -1,5 +1,7 @@
 # P-005-R2 — approved section-one typesetting
 
+Status: APPROVED
+
 User approved the exact corrected HTML proposal with「那你来做」. Exact artifact identity/hash is recorded in APPROVAL.json; the full artifact remains in the saved proposal. This record transcribes its per-stage designs, not a new proposal.
 
 Source rules: AMS §§3.3–3.8/3.10/3.11; PreTeXt Mathematics §§4.9.1/4.9.2/4.9.7/4.9.8; KaTeX display-mode options and aligned/split; MathJax v4 width/break/indent controls. Application choices: first equality stays together when it fits; continuation differs from transformation; measured wrapping at intact terms/factors; authored alignment groups; right numbers at row/group anchors; single parent spacing; existing controls and gating unchanged.

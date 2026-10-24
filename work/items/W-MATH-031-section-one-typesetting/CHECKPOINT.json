@@ -2,7 +2,7 @@
   "work": "W-MATH-031",
   "proposal": "P-005-R2",
   "sourceBranch": "work/section-one-typesetting-20261024",
-  "branchHead": "0ca7aae6be9e355efe1d0e57c0d8746f25f41dd8",
+  "branchHead": "22bc43ba53fa87bb85e82e18a25db13a5c8a485c",
   "sourceCandidates": [
     {
       "unit": "n01",
@@ -36,8 +36,8 @@
     },
     {
       "unit": "ne01",
-      "source": "0ca7aae6be9e355efe1d0e57c0d8746f25f41dd8",
-      "tree": "0aade08222dac1c4c05415e2e9bf0948daf12b81"
+      "source": "22bc43ba53fa87bb85e82e18a25db13a5c8a485c",
+      "tree": "6f0ed78e5f0cfb480a5a4390bc656ee0ac16f047"
     }
   ],
   "releases": [
@@ -278,14 +278,139 @@
           "head_sha": "59794ba8906029c4954bafc2892566f38ec60897"
         }
       }
+    },
+    {
+      "unit": "n06",
+      "source": "3ccd573f176a29e94d4bd7d34c285e9e8583ea91",
+      "hosting": "124309527bb6aee172af860373422e508e30d4df",
+      "run": 40080117455,
+      "job": 120831736845,
+      "status": "success",
+      "reports": [
+        {
+          "root": "http://127.0.0.1:4173/kyotsu-step-web/",
+          "flows": 3,
+          "answers": 123,
+          "passed": true
+        },
+        {
+          "seededLayoutViews": 80,
+          "formulaGroups": 468,
+          "interactions": 4,
+          "maxCenterDelta": 0.0078125,
+          "passed": true
+        },
+        {
+          "root": "https://rrikunagasige-dot.github.io/kyotsu-step-web/",
+          "flows": 3,
+          "answers": 123,
+          "passed": true
+        },
+        {
+          "seededLayoutViews": 80,
+          "formulaGroups": 468,
+          "interactions": 4,
+          "maxCenterDelta": 0.0078125,
+          "passed": true
+        }
+      ],
+      "routes": "all16 twice",
+      "artifact": {
+        "id": 12554273574,
+        "name": "section-one-P005-n06-3ccd573f-verification",
+        "size_in_bytes": 13605056,
+        "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/actions/artifacts/12554273574",
+        "archive_download_url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/actions/artifacts/12554273574/zip",
+        "expired": false,
+        "created_at": "2026-10-24T09:03:05Z",
+        "expires_at": "2026-11-23T09:03:04Z",
+        "updated_at": "2026-10-24T09:03:05Z",
+        "digest": "sha256:f09088a54c3aec54e4c2c5ca044c92b8b0f15479ea0addb697468094cd7f9cea",
+        "workflow_run": {
+          "id": 40080117455,
+          "repository_id": 1391122224,
+          "head_repository_id": 1391122224,
+          "head_branch": "main",
+          "head_sha": "124309527bb6aee172af860373422e508e30d4df"
+        }
+      }
+    },
+    {
+      "unit": "ne01/all7",
+      "source": "22bc43ba53fa87bb85e82e18a25db13a5c8a485c",
+      "hosting": "9b7dcd470847ec7c16683c58f1f24c500c442489",
+      "run": 40080522489,
+      "job": 120832923291,
+      "status": "success",
+      "reports": [
+        {
+          "root": "http://127.0.0.1:4173/kyotsu-step-web/",
+          "flows": 21,
+          "answers": 873,
+          "passed": true
+        },
+        {
+          "seededLayoutViews": 552,
+          "formulaGroups": 3002,
+          "interactions": 28,
+          "maxCenterDelta": 0.0078125,
+          "passed": true
+        },
+        {
+          "sourceSHA": "22bc43ba53fa87bb85e82e18a25db13a5c8a485c",
+          "root": "http://127.0.0.1:4173/kyotsu-step-web/",
+          "expandedViews": 28,
+          "expandedStages": 256,
+          "formulaGroups": 2355,
+          "equationLabels": 2304,
+          "passed": true
+        },
+        {
+          "root": "https://rrikunagasige-dot.github.io/kyotsu-step-web/",
+          "flows": 21,
+          "answers": 873,
+          "passed": true
+        },
+        {
+          "seededLayoutViews": 552,
+          "formulaGroups": 3002,
+          "interactions": 28,
+          "maxCenterDelta": 0.0078125,
+          "passed": true
+        },
+        {
+          "sourceSHA": "22bc43ba53fa87bb85e82e18a25db13a5c8a485c",
+          "root": "https://rrikunagasige-dot.github.io/kyotsu-step-web/",
+          "expandedViews": 28,
+          "expandedStages": 256,
+          "formulaGroups": 2355,
+          "equationLabels": 2304,
+          "passed": true
+        }
+      ],
+      "routes": "all16 twice",
+      "artifact": {
+        "id": 12555701239,
+        "name": "section-one-P005-ne01-22bc43ba-verification",
+        "size_in_bytes": 91105382,
+        "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/actions/artifacts/12555701239",
+        "archive_download_url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/actions/artifacts/12555701239/zip",
+        "expired": false,
+        "created_at": "2026-10-24T09:21:52Z",
+        "expires_at": "2026-11-23T09:21:49Z",
+        "updated_at": "2026-10-24T09:21:52Z",
+        "digest": "sha256:03bac0bd31ea9bdd8eb57a19efb8813f53a5eb6db9322bf7cda2def6c054b623",
+        "workflow_run": {
+          "id": 40080522489,
+          "repository_id": 1391122224,
+          "head_repository_id": 1391122224,
+          "head_branch": "main",
+          "head_sha": "9b7dcd470847ec7c16683c58f1f24c500c442489"
+        }
+      }
     }
   ],
-  "inProgress": {
-    "unit": "n06",
-    "source": "3ccd573f176a29e94d4bd7d34c285e9e8583ea91",
-    "hosting": "124309527bb6aee172af860373422e508e30d4df",
-    "run": 40080117455
-  },
+  "inProgress": null,
   "failedRuns": [
     {
       "run": 40078718347,
@@ -318,5 +443,9 @@
       "passed": true
     }
   },
-  "humanAcceptance": "PENDING"
+  "humanAcceptance": "PENDING",
+  "status": "PUBLISHED_FOR_USER_REVIEW",
+  "frozenAppSource": "22bc43ba53fa87bb85e82e18a25db13a5c8a485c",
+  "hosting": "9b7dcd470847ec7c16683c58f1f24c500c442489",
+  "finalRun": 40080522489
 }

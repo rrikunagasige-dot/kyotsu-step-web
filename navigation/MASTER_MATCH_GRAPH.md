@@ -1,4 +1,9 @@
 # MASTER MATCH GRAPH — target rriku
+
+## Latest first-section typesetting node — 2026-10-24
+
+W-MATH-031/P-005-R2: all7 units published in sequence and final full verification SUCCESS. App source22bc43ba, hosting9b7dcd47, [run40080522489](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40080522489).71 stages/291 decisions/485 formula blocks; content/figures/progress protected. [App](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=22bc43ba#/learning/textbook/math-numbers-expressions-n01); [evidence](../work/items/W-MATH-031-section-one-typesetting/VERIFICATION.md). Work VERIFYING / user final acceptance PENDING. Older graph/status entries remain history.
+
 Status: ACTIVE — governance transfer nodes T00–T06 verified and complete
 Updated: 2026-10-10
 

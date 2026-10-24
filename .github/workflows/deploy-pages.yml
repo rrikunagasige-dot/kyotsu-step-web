@@ -1,4 +1,4 @@
-name: Publish approved first-section teaching sequence for review
+name: Publish approved first-section results and derivation refinement
 
 # 2026-10-24: user explicitly authorized one-theme repair -> compile -> public app -> hands-on review.
 # This updates only the hosting pointer; it does not merge the learner branch into main.
@@ -17,20 +17,20 @@ concurrency:
 jobs:
   review:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 35
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     env:
-      CANDIDATE_SHA: 'f2a184b34a55650ebb2a04792de46cc7059bbaab'
-      VITE_PREVIEW_COMMIT: 'f2a184b34a55650ebb2a04792de46cc7059bbaab'
+      CANDIDATE_SHA: 'c468070d1dc27cc714226fd0fc3f8bcbef157085'
+      VITE_PREVIEW_COMMIT: 'c468070d1dc27cc714226fd0fc3f8bcbef157085'
       VITE_REVIEW_PREVIEW: 'true'
       VITE_BASE_PATH: '/kyotsu-step-web/'
       VITE_STORAGE_NAMESPACE: 'kyotsu-step-gate3-math-20261023'
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 'f2a184b34a55650ebb2a04792de46cc7059bbaab'
+          ref: 'c468070d1dc27cc714226fd0fc3f8bcbef157085'
           fetch-depth: 0
           persist-credentials: false
       - uses: pnpm/action-setup@v4
@@ -48,6 +48,12 @@ jobs:
           node work/items/W-MATH-027-first-theme-repair/verify-scope.mjs
       - name: Lesson, history and shared formula regression
         run: pnpm exec vitest run src/data/textbook/math src/domain/textbook.test.ts src/review/reviewTargets.test.ts src/components/textbook/TextbookFormula.test.tsx src/components/textbook/formulaWrap.test.tsx src/components/textbook/firstThemeChoiceLayout.test.ts
+      - name: Verify authored generation is reproducible
+        run: |
+          python work/items/W-MATH-029-section-one-teaching/author-sequence.py
+          git diff --exit-code -- src/data/textbook/math/numbers/firstSectionTeaching.json work/items/W-MATH-030-section-one-results-and-blanks/IMPLEMENTATION_LEDGER.json
+      - name: Protected math practice and physics/domain data
+        run: pnpm exec vitest run src/data/textbookUnits.test.ts src/data/textbookFigureAssets.test.ts src/data/textbookPracticeQuestions.test.ts src/domain/textbookSchema.test.ts src/domain/textbookMath.test.ts src/domain/textbookFormula.test.ts src/components/textbook/TextbookFigure.test.tsx src/data/mathPractice
       - name: Export exact runtime source
         run: node work/items/W-MATH-003-numbers-expressions-creation/NE01_NE02/export-runtime.mjs
       - name: Independent calculation and distractor verification
@@ -72,7 +78,7 @@ jobs:
           pnpm exec vite preview --host 127.0.0.1 --port 4173 > /tmp/theme-preview.log 2>&1 &
           preview_pid=$!
           trap 'kill "$preview_pid" 2>/dev/null || true' EXIT
-          node work/items/W-MATH-027-first-theme-repair/verify-app.mjs
+          node work/items/W-MATH-030-section-one-results-and-blanks/verify-app.mjs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
@@ -88,11 +94,11 @@ jobs:
         env:
           APP_URL: ${{ steps.deployment.outputs.page_url }}
           EVIDENCE_DIR: e2e-evidence/theme-one-hosted
-        run: node work/items/W-MATH-027-first-theme-repair/verify-app.mjs
+        run: node work/items/W-MATH-030-section-one-results-and-blanks/verify-app.mjs
       - if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
-          name: section-one-S4-f2a184b3-verification
+          name: section-one-S5-c468070d-verification
           path: |
             e2e-evidence/theme-one/**
             e2e-evidence/section-one/**

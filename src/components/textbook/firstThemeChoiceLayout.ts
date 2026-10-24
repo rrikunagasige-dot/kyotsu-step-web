@@ -39,12 +39,12 @@ export function firstThemeChoiceRows(itemId:string,value:string):string[]{
   const names=labels[itemId]
   return rows.filter(Boolean).map((row,i)=>names?.[i]?'\\text{'+names[i]+'}\\;'+row.trim():row.trim())
 }
-export function firstThemeChoiceChunks(value:string):string[]{
+export function firstThemeChoiceChunks(value:string,preserveFactors=false):string[]{
   // Explicit multiplication keeps separate factors readable after wrapping.
   const labelled=/^(\\text\{[^}]+\}\\;)(.*)$/.exec(value)
-  if(labelled) return [labelled[1],...firstThemeChoiceChunks(labelled[2])]
+  if(labelled) return [labelled[1],...firstThemeChoiceChunks(labelled[2],preserveFactors)]
   const source=value.replace(/\)\(/g,')\\cdot(')
-  return formulaWrapChunks({id:'first-theme-choice',type:'formula',parts:[{type:'math',latex:source}]})
+  return formulaWrapChunks({id:preserveFactors?'first-theme-aligned':'first-theme-choice',type:'formula',parts:[{type:'math',latex:source}]})
     // A leading + or - needs its preceding empty atom to retain binary spacing.
     .map(chunk=>/^[+=-]/.test(chunk.trim())?'{}'+chunk:chunk)
 }

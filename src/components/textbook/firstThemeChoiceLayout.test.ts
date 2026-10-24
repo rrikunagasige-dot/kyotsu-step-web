@@ -22,10 +22,14 @@ describe('first-theme mathematical choice readability and written derivations',(
  it('renders every correct and wrong option in the seven real units at semantic breakpoints',()=>{
   for(const unit of mathTextbookUnits.filter(u=>isFirstThemeUnit(u.unitId)))for(const item of unit.sections[0].items){
    if(item.answerType!=='formula')continue
-   for(const choice of item.choices??[])for(const row of firstThemeChoiceRows(item.id,choice))for(const chunk of firstThemeChoiceChunks(row)){
+   for(const choice of item.choices??[])for(const row of firstThemeChoiceRows(item.id,choice))for(const chunk of firstThemeChoiceChunks(row,item.id.includes('-s5-'))){
     expect(()=>katex.renderToString(normalizeTextbookMath(chunk),{throwOnError:true,strict:'ignore'}),item.id+' '+chunk).not.toThrow()
    }
   }
+ })
+ it('keeps the new derivation alternatives in whole small parentheses',()=>{
+  expect(firstThemeChoiceChunks('(2y+1)+(y-2)',true)).toEqual(['(2y+1)','{}+(y-2)'])
+  expect(firstThemeChoiceChunks('(2y+1)(y-2)',true)).toEqual(['(2y+1)','\\cdot(y-2)'])
  })
  it('renders all written intermediate equations, including each row of a comparison',()=>{
   let count=0

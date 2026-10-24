@@ -58,3 +58,6 @@ User rejected R2 explanation/sequence despite technical PASS. P-001 accepted by�
 
 ## W-MATH-029 / first section whole-solution repair (2026-10-24)
 N01 sample2977a44a accepted by user「嗯这个就不错可以」. User narrowed full audit to chapter1 section1, accepted42-region findings with「可以那就来」. Implementing all N01–N06/NE01 corrections in work/section-one-teaching-20261024. Canonical authoring is firstSectionTeaching.json, reproduced by work/items/W-MATH-029-section-one-teaching/author-sequence.py from frozen baseline; no recursive insertion for the final teaching sequence. Accepted sample protected. Other chapters/themes/modes untouched. See Work/VERIFICATION for source/public SHA and actual checks. Full-section user acceptance pending; prior sample acceptance is preserved.
+
+
+W-MATH-029 latest checkpoint: all first-section repairs published for user review from16fe82c7a67f83e1d6fde234b1217247777aeb7c via hosting28c7fdfe4842d461b7247638601e8c0c5423b019; run40060852723 SUCCESS.42 regions/106 source questions,256 active decisions; compiled and actual public21-flow suites PASS,446 tests and396 current equations PASS. Accepted N01 sample preserved. Full-section pedagogical acceptance PENDING. Next: user review of this same section; do not begin another theme without steering. Evidence/artifact hashes in W-MATH-029/VERIFICATION.md.

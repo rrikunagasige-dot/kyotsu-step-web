@@ -13926,17 +13926,6 @@
         "derivationId": "n06-s4-chain-9"
       },
       {
-        "id": "n06-bridge-worked-n06-14-before-0-lead",
-        "type": "paragraph",
-        "parts": [
-          {
-            "type": "text",
-            "text": "候補を(2y+r)(y+s)と書く。r,sはこれから求める定数であり、展開して条件を作る。"
-          }
-        ],
-        "derivationId": "n06-s4-chain-9"
-      },
-      {
         "id": "n06-bridge-worked-n06-14-before-0-equation-0",
         "type": "formula",
         "parts": [
@@ -14848,7 +14837,6 @@
         ],
         "workedBlockIds": [
           "n06-bridge-explain-n06-14-before",
-          "n06-bridge-worked-n06-14-before-0-lead",
           "n06-bridge-worked-n06-14-before-0-equation-0",
           "n06-bridge-worked-n06-14-before-1-lead",
           "n06-bridge-worked-n06-14-before-1-equation-0",

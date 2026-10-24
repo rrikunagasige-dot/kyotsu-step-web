@@ -251,6 +251,7 @@ e.before('n06-lead-13',[e.p('n06-s4-last-goal','x²+3xy+2y²−x−3y−2を因�
  e.p('n06-s4-rule-definition','U,Vはxを含まない式を表す仮の名前です。yを含んでいても、xについては定数として扱えます。前に学んだ関係を、この場合にも使います。'),
  e.m('n06-s4-factor-rule','(x+U)(x+V)=x^2+(U+V)x+UV')])
 e.text('n06-bridge-explain-n06-14-before','定数部分2y²−3y−2を因数分解します。候補の形を(2y+r)(y+s)と置き、展開から条件を作ります。r,sはここで決める整数です。候補を決めるのは、二条件を比べた後です。')
+e.drop('n06-bridge-worked-n06-14-before-0-lead')
 e.move(e.cluster('n06-bridge-constant-cross'),'n06-formula-14')
 e.text('n06-bridge-constant-cross-lead','選んだr=1、s=−2を(2y+r)(y+s)へ戻すと、候補は(2y+1)(y−2)です。この実際の積の交差項でも、元の−3yへ戻ることを検算します。')
 e.worked('n06-bridge-constant-cross')

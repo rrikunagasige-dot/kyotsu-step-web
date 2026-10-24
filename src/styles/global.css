@@ -1657,3 +1657,51 @@ button.math-theme-link {
 .first-theme-recorded-results--current { margin-top: 24px; }
 .textbook-reading-flow[data-first-theme] .first-theme-recorded-results .reading-block-with-choice { margin-block: 8px; }
 .textbook-reading-flow[data-first-theme] .first-theme-recorded-results .reading-paragraph { margin-block: 8px; }
+
+/* W-MATH-031 / P-005-R2: opt-in only, one authored unit at a time. */
+.textbook-reading-flow[data-typeset-theme] .reading-block-with-choice { margin-block: 0; }
+.textbook-reading-flow[data-typeset-theme] .reading-derivation-chain { display: flex; flex-direction: column; gap: 10px; margin-block: 20px; }
+.textbook-reading-flow[data-typeset-theme] .reading-paragraph { margin: 0; line-height: 1.8; }
+.textbook-reading-flow[data-typeset-theme] .reading-subheading { margin-block: 20px 12px; }
+.textbook-reading-flow[data-typeset-theme] .reading-formula-line--typeset { display: block; width: 100%; max-width: 100%; min-width: 0; padding: 0; margin: 0; overflow: visible; white-space: normal; border: 0; background: transparent; container-type: inline-size; }
+.reading-formula-line--typeset > .typeset-formula-body { display: block; width: var(--typeset-body, fit-content); max-width: 100%; margin-inline: auto; }
+.typeset-line { display: block; min-width: 0; white-space: nowrap; font-size: 18px; line-height: 1.4; text-align: left; }
+.typeset-line + .typeset-line { margin-top: 4px; }
+.typeset-line--equation { display: grid; grid-template-columns: var(--typeset-left, max-content) max-content var(--typeset-right, max-content); column-gap: 4px; align-items: baseline; }
+.typeset-left { text-align: right; }
+.typeset-relation, .typeset-right { text-align: left; }
+.typeset-cell-content { display: inline-flex; flex-wrap: nowrap; align-items: baseline; gap: 0; white-space: nowrap; width: max-content; }
+.reading-formula-line--typeset .reading-formula-math { font-size: 18px; }
+.reading-formula-line--typeset .katex { font-size: 1em; }
+.typeset-line--continuation { position: relative; padding-left: 18px; }
+.typeset-product-continuation { position: absolute; left: 2px; top: 0; }
+.reading-formula-line--typeset > .typeset-probe { position: fixed; top: 0; left: -100000px; visibility: hidden; display: inline-flex; width: max-content; pointer-events: none; }
+.typeset-probe .reading-formula-choice { font-size: 16px; }
+.typeset-table { display: grid; grid-template-columns: repeat(var(--typeset-columns), max-content); width: fit-content; max-width: 100%; margin-inline: auto; font-size: 18px; line-height: 1.6; }
+.typeset-table-row { display: grid; grid-column: 1 / -1; grid-template-columns: subgrid; gap: 0; margin: 0 !important; }
+.typeset-table-cell { padding: 4px 8px; border-bottom: 1px solid #cbd5da; }
+.typeset-table--polynomial .typeset-table-cell { border: 0; padding: 2px 3px; text-align: right; }
+.typeset-inline-math { font-size: 1em; }
+.typeset-inline-math > .katex { font-size: 1em; }
+.typeset-inline-math--display { display: block; width: 100%; margin-block: 10px; }
+.typeset-inline-probe { position: fixed; left: -100000px; top: 0; visibility: hidden; display: inline-block; white-space: nowrap; }
+.typeset-inline-probe > .katex { font-size: 1em; }
+.first-theme-choice-math .reading-formula-line--typeset { display: block; width: 100%; min-width: 0; padding: 0; border: 0; background: transparent; }
+@container (max-width: 400px) {
+  .typeset-table--laws { display: block; width: 100%; }
+  .typeset-table--laws .typeset-table-row { display: grid; grid-template-columns: 1fr; gap: 2px; margin-bottom: 8px !important; }
+  .typeset-table--laws .typeset-table-cell { padding: 2px 0; border: 0; }
+}
+.reading-formula-line--typeset > .typeset-table { display: grid; }
+@container (max-width: 400px) { .reading-formula-line--typeset > .typeset-table--laws { display: block; } }
+/* One spacing owner: stage gap, then the inner derivation gap. */
+.textbook-reading-flow[data-typeset-theme] .math-textbook-stage--current { gap: 12px; }
+.textbook-reading-flow[data-typeset-theme] .math-textbook-stage-active-title { margin-bottom: 0; padding-bottom: 12px; }
+.textbook-reading-flow[data-typeset-theme] .reading-role-marker { margin: 0; }
+.textbook-reading-flow[data-typeset-theme] .reading-derivation-chain { margin-block: 0; }
+.textbook-reading-flow[data-typeset-theme] .reading-subheading { margin-block: 8px 0; }
+.textbook-reading-flow[data-typeset-theme] .math-textbook-stage-references { margin-bottom: 4px; }
+.textbook-reading-flow[data-typeset-theme] .first-theme-recorded-results { display: flex; flex-direction: column; gap: 8px; margin-block: 0; }
+.textbook-reading-flow[data-typeset-theme] .first-theme-recorded-results .reading-block-with-choice { margin-block: 0; }
+.textbook-reading-flow[data-typeset-theme] .math-textbook-stage-detail { display: flex; flex-direction: column; gap: 12px; }
+.reading-formula-line--typeset .reading-formula-choice { font-size: 16px; }

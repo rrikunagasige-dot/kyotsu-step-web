@@ -1,0 +1,22 @@
+{
+  "proposal": "P-005-R2",
+  "status": "APPROVED",
+  "userInstruction": "那你来做",
+  "date": "2026-10-24",
+  "artifactLibraryId": "libfile_4fe67dcfbdec819197731ed5f67fd5b3",
+  "artifactVersion": 1,
+  "artifactSHA256": "98cbf56b9738790dfc47c812344ec78bcbc95177fb9fe2f3bd1ab4b004a1f718",
+  "source": "53216a828116dcf8126e4f36fb3b4fdfc1340fe1",
+  "hostingMain": "9eb0135750a34664898fad68f74707f24d50ad83",
+  "scope": [
+    "n01",
+    "n02",
+    "n03",
+    "n04",
+    "n05",
+    "n06",
+    "ne01"
+  ],
+  "publication": "User continuing one-unit repair/compile/publish instruction remains authorized; no new approval requested.",
+  "protected": "All lesson plans, items, choices, answers, stages, revisions, progress and four figures; other nine units and modes."
+}

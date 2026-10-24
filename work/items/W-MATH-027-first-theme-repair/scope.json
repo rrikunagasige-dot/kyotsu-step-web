@@ -48,6 +48,11 @@
     "src/styles/global.css",
     "src/test/firstThemeBaseline.ts",
     "src/data/textbook/math/numbers/firstSectionRefinements.test.tsx",
-    "src/components/textbook/NumberedEquation.tsx"
+    "src/components/textbook/NumberedEquation.tsx",
+    "src/components/textbook/TypesetFormula.tsx",
+    "src/components/textbook/typesetRows.ts",
+    "src/components/textbook/typesetRows.test.ts",
+    "src/data/textbook/math/typesetting.ts",
+    "src/data/textbook/math/typesetting.json"
   ]
 }

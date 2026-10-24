@@ -1,5 +1,7 @@
 import { isFirstThemeUnit, firstThemeUsesAlignedFormula, firstThemeFormulaLayout, firstThemeEquationNumber } from '../../data/textbook/math/presentation'
 import { NumberedEquation } from './NumberedEquation'
+import { TypesetFormula } from './TypesetFormula'
+import { typesettingEnabled } from '../../data/textbook/math/typesetting'
 import { InlineMath } from 'react-katex'
 import { auditedResolvedWrapBlocks, auditedWrapBlocks, formulaWrapChunks, firstThemeFormulaRows } from './formulaWrap'
 import type { TextbookUnitProgress } from '../../domain/textbook'
@@ -40,7 +42,7 @@ function isSolvedUnitCoefficientBeforeX(
 export function TextbookFormula(props: Props) {
   const number = firstThemeEquationNumber(props.unitId, props.block.id)
   const body = <TextbookFormulaContent {...props} />
-  return number === undefined ? body : <NumberedEquation number={number}>{body}</NumberedEquation>
+  return number === undefined ? body : <NumberedEquation number={number} logical={typesettingEnabled(props.unitId)}>{body}</NumberedEquation>
 }
 
 function TextbookFormulaContent({ block, section, progress, onOpen, unitId }: Props) {
@@ -123,6 +125,19 @@ function TextbookFormulaContent({ block, section, progress, onOpen, unitId }: Pr
       </button>
     )
   })
+  if (typesettingEnabled(unitId)) {
+    const itemIds = Object.fromEntries(block.parts.flatMap((part, index) => part.type === 'choice' ? [[index, part.itemId]] : []))
+    const source = block.parts.map((part, index) => {
+      if (part.type === 'math') return part.latex
+      if (part.type === 'text' || part.type === 'term') return '\\text{' + part.text + '}'
+      const item = section.items.find(q => q.id === part.itemId)
+      const record = progress?.answers[part.itemId]
+      if (!item || !isTextbookItemResolved(item, record)) return '§' + index + '§'
+      const value = record?.value ?? item.answer
+      return '§a' + index + '§' + (item.answerType === 'formula' ? normalizeTextbookMath(value) : '\\text{' + value + '}') + '§z' + index + '§'
+    }).join('')
+    return <TypesetFormula source={source} sourceId={block.id} unitId={unitId} parts={renderedParts} itemIds={itemIds} />
+  }
   const first = block.parts[0]
   const n12Choice = block.parts[1]
   const suffix = block.parts[2]

@@ -5,7 +5,7 @@ const root = process.env.APP_URL ?? 'http://127.0.0.1:4173/kyotsu-step-web/'
 const out = process.env.EVIDENCE_DIR ?? 'e2e-evidence/theme-one'
 fs.mkdirSync(out,{recursive:true})
 const runtime = JSON.parse(fs.readFileSync('e2e-evidence/chapter-runtime/runtime-units.json','utf8'))
-const units = runtime.units.map(x=>x.unit).filter(u=>/^math-numbers-expressions-(n0[1-6]|ne01)$/.test(u.unitId))
+const units = runtime.units.map(x=>x.unit).filter(u=>/^math-numbers-expressions-(n0[1-6]|ne01)$/.test(u.unitId) && (!process.env.ONLY_UNIT || u.unitId.endsWith('-'+process.env.ONLY_UNIT)))
 const browser = await chromium.launch({headless:true,...(process.env.CHROMIUM_PATH?{executablePath:process.env.CHROMIUM_PATH}:{})})
 for(let i=0;i<50;i++){try{await fetch(root);break}catch{await new Promise(r=>setTimeout(r,200))}}
 const plans=JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/firstSectionTeaching.json','utf8'));

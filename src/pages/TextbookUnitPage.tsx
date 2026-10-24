@@ -1,3 +1,5 @@
+import { typesettingEnabled } from '../data/textbook/math/typesetting'
+import { TypesetInlineMath } from '../components/textbook/TypesetFormula'
 import { FirstThemeChoiceFormula } from '../components/textbook/FirstThemeChoiceFormula'
 import { developmentFeedback } from '../data/textbook/math/numbers/developmentFeedback'
 import { InlineMath } from 'react-katex'
@@ -364,7 +366,7 @@ export function TextbookReadingFlow({ unit, section, progress, onSummaryReached,
 
     const content = block.parts.map((part, index) => (
       <span key={`${block.id}-part-${index}`}>
-        {renderPart(part, section, currentProgress, setActiveItemId, text)}
+        {part.type === 'math' && typesettingEnabled(unit.unitId) ? <TypesetInlineMath latex={part.latex} sourceId={'inline-' + block.id + '-' + index} unitId={unit.unitId} /> : renderPart(part, section, currentProgress, setActiveItemId, text)}
       </span>
     ))
 
@@ -459,7 +461,7 @@ export function TextbookReadingFlow({ unit, section, progress, onSummaryReached,
   })
 
   return (
-    <article className="textbook-reading-flow" data-testid="textbook-reading-flow" data-first-theme={isFirstThemeUnit(unit.unitId) || undefined} tabIndex={-1}>
+    <article className="textbook-reading-flow" data-testid="textbook-reading-flow" data-first-theme={isFirstThemeUnit(unit.unitId) || undefined} data-typeset-theme={typesettingEnabled(unit.unitId) || undefined} tabIndex={-1}>
       {compactStages ? (
         <div className="math-textbook-compact-flow" data-testid="math-textbook-compact-flow">
           {activeCompactIndex > 0 && (

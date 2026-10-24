@@ -57,7 +57,7 @@ try {
             assert(!entry.overlap, 'Equation number covers mathematics ' + JSON.stringify({ unit: key, width, anchor, ...entry }))
           }
           const measures = await stage.locator('.reading-formula-line--aligned').evaluateAll(lines => lines.flatMap(line => {
-            const block = line.querySelector('.first-theme-formula-rows')
+            const block = line.querySelector('.first-theme-formula-rows, .typeset-table')
             const box = line.getBoundingClientRect(), bounds = block.getBoundingClientRect(), css = getComputedStyle(line)
             if (bounds.width < 1) return []
             const expected = (box.left + parseFloat(css.paddingLeft) + box.right - parseFloat(css.paddingRight)) / 2
@@ -88,7 +88,7 @@ try {
             await wrong.click()
             assert(await blank.isVisible(), 'Wrong answer unexpectedly completed item')
             const deltas = await stage.locator('.reading-formula-line--aligned').evaluateAll(lines => lines.flatMap(line => {
-              const a = line.getBoundingClientRect(), b = line.querySelector('.first-theme-formula-rows').getBoundingClientRect()
+              const a = line.getBoundingClientRect(), b = line.querySelector('.first-theme-formula-rows, .typeset-table').getBoundingClientRect()
               return b.width ? [Math.abs((a.left + a.right - b.left - b.right) / 2)] : []
             }))
             assert(deltas.every(d => d <= 2), 'Wrong-state formula moved off-center')

@@ -47,6 +47,7 @@
     "src/review/reviewTargets.ts",
     "src/styles/global.css",
     "src/test/firstThemeBaseline.ts",
-    "src/data/textbook/math/numbers/firstSectionRefinements.test.tsx"
+    "src/data/textbook/math/numbers/firstSectionRefinements.test.tsx",
+    "src/components/textbook/NumberedEquation.tsx"
   ]
 }

@@ -1640,7 +1640,12 @@ button.math-theme-link {
 .textbook-reading-flow[data-first-theme] .reading-formula-line--aligned {
   text-align: left; padding: 6px 0; overflow: visible;
 }
-.first-theme-formula-rows { display: grid; gap: 10px; width: 100%; min-width: 0; }
+.first-theme-formula-rows { display: grid; gap: 10px; width: fit-content; max-width: 100%; min-width: 0; margin-inline: auto; }
+.numbered-equation { position: relative; min-width: 0; }
+.numbered-equation-body { display: flow-root; min-width: 0; }
+.numbered-equation-label { position: absolute; right: .125rem; bottom: 6px; font-size: .85rem; line-height: 1.4; white-space: nowrap; color: #44515c; }
+.numbered-equation--below { padding-bottom: 1.5rem; }
+.numbered-equation--below > .numbered-equation-label { bottom: 0; }
 .first-theme-formula-row { display: grid; grid-template-columns: 1.15em minmax(0, 1fr); gap: .2em; align-items: baseline; }
 .first-theme-formula-relation { text-align: center; }
 .first-theme-formula-terms { display: flex; flex-wrap: wrap; justify-content: flex-start; align-items: baseline; gap: .4em .1em; min-width: 0; }

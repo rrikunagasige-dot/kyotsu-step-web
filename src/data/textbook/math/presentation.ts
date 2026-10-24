@@ -232,6 +232,12 @@ export function firstThemeFormulaLayout(unitId: string, blockId: string) {
   return firstSectionTeachingPlans[unitId.replace('math-numbers-expressions-', '')]?.formulaLayouts?.[blockId.replace(/^s5-record-/, '')]
 }
 
+export function firstThemeEquationNumber(unitId: string, blockId: string): number | undefined {
+  const numbers = firstSectionTeachingPlans[unitId.replace('math-numbers-expressions-', '')]?.equationNumbers
+  const id = blockId.replace(/^s5-record-/, '')
+  return numbers?.[id] ?? numbers?.[id.split('#')[0]]
+}
+
 // A reference is a view of its canonical source, never a second answer string.
 // #row selects one already-authored aligned/array row (A or B, or one index law).
 export function firstThemeSourceView(ref: string, blocks: readonly TextbookReadingBlock[]): TextbookReadingBlock | undefined {

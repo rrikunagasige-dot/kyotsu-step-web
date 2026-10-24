@@ -213,6 +213,15 @@ def refine(plans):
     for key,p in plans.items():
         p['formulaLayouts']={id:{'mobileBreaks':[{'row':0,'chunk':chunk}]} for id,chunk in compact.get(key,{}).items()}
     plans['ne01']['formulaLayouts']['ne01-bridge-factor-sum-substitute-formula']={'continueOuterFactor':True}
+    # P-004 user addition: unit-local, source-ID-backed equation labels. A
+    # multi-line equality receives one label; ordinary tables are not equations.
+    for key,p in plans.items():
+        formulas=[b for b in p['readingFlow'] if b['type']=='formula'
+                  and any(part['type'] in ['math','choice'] for part in b['parts'])
+                  and not any('\\begin{array}' in part.get('latex','') for part in b['parts'])]
+        p['equationNumbers']={b['id']:i+1 for i,b in enumerate(formulas)}
+    for row,source in enumerate(['formula-n03-02','formula-n03-03','formula-n03-04']):
+        plans['n03']['equationNumbers']['n03-s4-rules-summary#'+str(row)]=plans['n03']['equationNumbers'][source]
 
 
 def presentation(plans):

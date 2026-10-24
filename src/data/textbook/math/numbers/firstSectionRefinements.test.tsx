@@ -5,7 +5,7 @@ import { renderToStaticMarkup } from 'react-dom/server'
 import { TextbookFormula } from '../../../../components/textbook/TextbookFormula'
 import { mathTextbookUnits } from '../index'
 import { firstSectionTeachingPlans, type SectionTeachingPlan } from './firstSectionTeaching'
-import { firstThemeSourceView, firstThemeRecordedResults, partitionFirstThemeReadingFlow, requiredFirstThemeContext } from '../presentation'
+import { firstThemeSourceView, firstThemeRecordedResults, partitionFirstThemeReadingFlow, requiredFirstThemeContext, firstThemeEquationNumber } from '../presentation'
 import { answerTextbookItem, effectiveTextbookProgress, isTextbookItemResolved, type TextbookUnitProgress } from '../../../../domain/textbook'
 import type { TextbookReadingBlock, TextbookUnit } from '../../../../domain/textbookSchema'
 import { firstThemeFormulaRows } from '../../../../components/textbook/formulaWrap'
@@ -91,6 +91,16 @@ describe('P-003 first section: active derivation and retained results', () => {
     expect(rows[1].chunks).toContain('+(y^2-3y+2)')
     expect(rows.flatMap(r => r.chunks)).not.toContain('+2)')
     expect(firstThemeFormulaRows({ ...block, parts: [{ type: 'math', latex: 'T=a+b\\qquad X=x+2y' }] }).map(r => r.relation)).toEqual(['', '=', '', '='])
+  })
+
+  it('keeps source equation numbers in histories and prerequisite row views', () => {
+    for (const [key, plan] of Object.entries(firstSectionTeachingPlans)) {
+      const ids = Object.keys(plan.equationNumbers!).filter(id => !id.includes('#'))
+      expect(ids.map(id => plan.equationNumbers![id])).toEqual(ids.map((_, i) => i + 1))
+      for (const id of ids) expect(firstThemeEquationNumber('math-numbers-expressions-' + key, 's5-record-' + id)).toBe(plan.equationNumbers![id])
+    }
+    expect(firstThemeEquationNumber('math-numbers-expressions-n03', 's5-record-n03-s4-rules-summary#1')).toBe(firstThemeEquationNumber('math-numbers-expressions-n03', 'formula-n03-03'))
+    expect(firstThemeEquationNumber('math-sets', 'formula-set-a')).toBeUndefined()
   })
 
   it('renders every current formula before and after answers without breaking mathematical tokens', () => {

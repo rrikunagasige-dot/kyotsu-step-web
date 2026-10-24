@@ -16,6 +16,7 @@ export type SectionTeachingPlan = {
   contextBlockIdsByItem?: Record<string, string[]>
   alignedFormulaBlockIds?: string[]
   formulaLayouts?: Record<string, { mobileBreaks?: { row: number; chunk: number }[]; continueOuterFactor?: boolean }>
+  equationNumbers?: Record<string, number>
 }
 export const firstSectionTeachingPlans = authored as unknown as Record<string, SectionTeachingPlan>
 

@@ -1,4 +1,5 @@
-import { isFirstThemeUnit, firstThemeUsesAlignedFormula, firstThemeFormulaLayout } from '../../data/textbook/math/presentation'
+import { isFirstThemeUnit, firstThemeUsesAlignedFormula, firstThemeFormulaLayout, firstThemeEquationNumber } from '../../data/textbook/math/presentation'
+import { NumberedEquation } from './NumberedEquation'
 import { InlineMath } from 'react-katex'
 import { auditedResolvedWrapBlocks, auditedWrapBlocks, formulaWrapChunks, firstThemeFormulaRows } from './formulaWrap'
 import type { TextbookUnitProgress } from '../../domain/textbook'
@@ -36,7 +37,13 @@ function isSolvedUnitCoefficientBeforeX(
   return isTextbookItemResolved(item, record) && (record?.value ?? item.answer) === '1'
 }
 
-export function TextbookFormula({ block, section, progress, onOpen, unitId }: Props) {
+export function TextbookFormula(props: Props) {
+  const number = firstThemeEquationNumber(props.unitId, props.block.id)
+  const body = <TextbookFormulaContent {...props} />
+  return number === undefined ? body : <NumberedEquation number={number}>{body}</NumberedEquation>
+}
+
+function TextbookFormulaContent({ block, section, progress, onOpen, unitId }: Props) {
   const n12Formula = unitId === 'math-numbers-expressions-n12'
   const renderedParts = block.parts.map((part, index) => {
     const key = `${block.id}-part-${index}`

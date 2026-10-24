@@ -1,0 +1,55 @@
+name: Production workflow P003
+on:
+  push:
+    branches: ['work/production-workflow-p003-20261024']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
+      VITE_BASE_PATH: /kyotsu-step-web/
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - run: python -m pip install lxml==6.1.1 numpy==2.3.5 scikit-learn==1.8.0
+      - run: sudo apt-get update -qq && sudo apt-get install -y pandoc
+      - run: pnpm run test:production-workflow
+      - run: python -m unittest discover -s work/items/W-GOV-010-coded-authoring/engine -p 'test_*.py' -q
+      - run: pnpm run test:textbook-authoring
+      - name: Learner regressions (documented baseline failures excluded)
+        run: pnpm exec vitest run --exclude src/data/physicsTaxonomy.test.ts --exclude src/domain/questionSchema.test.ts
+      - run: pnpm exec eslint src/components/textbook/SemanticReading.tsx src/components/textbook/SemanticReading.test.tsx src/domain/textbookSchema.ts --max-warnings=0
+      - run: node tools/textbook/integrate-n07.mjs --check
+      - run: pnpm run build
+      - run: pnpm exec playwright install --with-deps chromium
+      - name: Protected learner UI at four widths
+        env:
+          WIDTHS: 320,390,430,1440
+          EVIDENCE_DIR: /tmp/production-browser
+        run: |
+          pnpm exec vite preview --host 127.0.0.1 --port 4173 > /tmp/production-preview.log 2>&1 &
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:4173/kyotsu-step-web/ >/dev/null && break || sleep 1; done
+          node work/items/W-GOV-010-learning-production-workflow/n07/integration/verify-app.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: production-workflow-evidence
+          path: /tmp/production-browser
+          if-no-files-found: warn

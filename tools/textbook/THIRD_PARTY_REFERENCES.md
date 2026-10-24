@@ -12,3 +12,5 @@ Status: ACTIVE
 | fast-check | 調査のみ。今回のテストはNode標準・既存Vitest | 新依存追加なし |
 
 原資料本体や第三者の教材本文はここへコピーしない。コード・ドキュメント・教材のlicenseは別に扱う。追加の採用は対象ファイルと使用方法を確認して記録する。
+
+P-003制作側ML（学習アプリには同梱しない）: multilingual-e5-small/MIT、SetFit1.1.3/Apache-2.0、SentenceTransformers3.4.1/Apache-2.0、Transformers4.48.3/Apache-2.0、scikit-learn1.8.0/BSD-3-Clause、PyTorch2.6.0+cpu/BSD-style。モデルrevision・tokenizer/pooling/weights SHA256はredesign/implementation/ENCODER_MANIFEST.json、実環境の版はtools/textbook/ml/requirements.lock。既存ライブラリを利用し、sourceのvendorコピーは行わない。Qwen候補は調査段階で未取得・未採用。

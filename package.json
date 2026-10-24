@@ -16,7 +16,9 @@
     "check": "pnpm run typecheck && pnpm run lint && pnpm run test && pnpm run build",
     "check:all": "pnpm run check && pnpm run test:e2e",
     "textbook:author": "node tools/textbook/cli.mjs",
-    "test:textbook-authoring": "node --test tools/textbook/tests/pipeline.test.mjs && vitest run --config tools/textbook/vitest.config.mjs"
+    "test:textbook-authoring": "node --test tools/textbook/tests/pipeline.test.mjs && vitest run --config tools/textbook/vitest.config.mjs",
+    "test:production-workflow": "node --test tools/textbook/tests/production.test.mjs && python -m unittest discover -s workflow -p \"test_*.py\" -q && python -m unittest discover -s tools/textbook/tests -p \"*_test.py\" -q",
+    "production": "node tools/textbook/cli.mjs production"
   },
   "dependencies": {
     "katex": "^0.16.22",

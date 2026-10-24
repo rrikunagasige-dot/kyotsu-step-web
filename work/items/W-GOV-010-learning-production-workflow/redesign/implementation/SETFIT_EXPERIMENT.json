@@ -1,0 +1,7 @@
+{
+  "status": "NOT_TRAINABLE",
+  "reason": "complete-context labels insufficient; no truncation allowed",
+  "eligible": 1,
+  "excluded": 2,
+  "trainingRun": false
+}

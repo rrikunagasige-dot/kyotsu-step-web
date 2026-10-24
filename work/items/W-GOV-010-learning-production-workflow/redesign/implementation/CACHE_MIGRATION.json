@@ -1,0 +1,7 @@
+{
+  "reason": "bind identical verified model bytes to encoder hash",
+  "sameModelFiles": true,
+  "featuresMigrated": 18,
+  "from": "84393f5fa6453c213f0d33f8131fe9a85d77fab58f76049fac8118072055f666",
+  "to": "1d0c6699c483167583c6ba00905876ddb7764a1571c359e3030515644dd3b1b9"
+}

@@ -1,0 +1,22 @@
+{
+  "distribute_binomials": {
+    "version": 1,
+    "domain": "整数係数の一次式どうしの積、四係数は全て非零、係数は±100以内",
+    "prerequisites": ["分配法則", "符号付きの掛算", "同類項"],
+    "required_steps": ["product0", "product1", "product2", "product3", "collect"],
+    "learning_actions": ["積の計算", "同類項の整理"],
+    "figure_role": "行の項と列の項から四つの積を作る。結果は先出ししない",
+    "known_sources": ["W-GOV-010 corpus N02,N03,N04,N05,N07", "物理P13は適用と結果再利用の条件付き参照"],
+    "non_applicability": ["三項式を含む積", "四因子の組合せ", "根号", "変数を含む分母", "多変数"]
+  },
+  "linear_combination": {
+    "version": 1,
+    "domain": "m(ax+b)+n(cx+d)、全係数は非零整数、±100以内",
+    "prerequisites": ["分配法則", "符号付きの掛算", "同類項"],
+    "required_steps": ["product0", "product1", "product2", "product3", "collect_x", "collect_const"],
+    "learning_actions": ["分配後の計算", "同類項の整理", "定数項の整理"],
+    "figure_role": "標準では図を要求しない",
+    "known_sources": ["W-GOV-010 corpus N02"],
+    "non_applicability": ["二次以上の式A/B", "根号", "多変数", "証明"]
+  }
+}

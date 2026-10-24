@@ -1,0 +1,23 @@
+{
+  "proposal": "P-003",
+  "status": "APPROVED",
+  "userQuote": "嗯可以。那你按照现在的所有设计书，做吧！！",
+  "source": "current-conversation:user-after-total-fire-diagram",
+  "approvedDocuments": {
+    "DESIGN.md": "c627637b076bf5ad8d892b6f391bb05ad5afa46b650b8e9383930d53e987d897",
+    "IMPLEMENTATION.md": "d8c9be69c2ce6980f9b40c69170e2bf5f626efdc36b6bc20016617bf94945088",
+    "ML_AND_CORPUS.md": "d66af09e3069bcc450875a57e3f07d155f4b800eac553d02c193c8179ba53d89",
+    "CONTRACTS.md": "ae796bcbd01b098d7569a523edbf37f9c75c8bbf4e6d3efb6793a52f134e27ad",
+    "RESEARCH.md": "51770650db4a3745ef3d615bff95d6baac86dee0f9559a570b47d6fec1eb2f9a",
+    "PLAN.json": "85535752644f36f6d2352e64b9f4ef18958bd3c05fad668c697124298c45ae02"
+  },
+  "branch": "work/production-workflow-p003-20261024",
+  "legacyDefinitionHash": "ecef82d71d59a6ea5a9e7f085bf4983f593eadd9da6fe2941b0851004bc43546",
+  "protected": [
+    "accepted-first-title",
+    "learner-source-and-progress",
+    "original-Word",
+    "other-modes"
+  ],
+  "scope": "implement P-003 workflow/code/AI/ML; no unseen N07 lesson rewrite"
+}

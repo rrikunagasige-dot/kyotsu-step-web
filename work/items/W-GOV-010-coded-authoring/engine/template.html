@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>教材制作パイプライン・試作教材</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f6f7f9;color:#111;font:17px/1.85 system-ui,sans-serif}main{max-width:850px;margin:auto;padding:20px 14px 60px}h1{font-size:26px;line-height:1.5}h2{font-size:22px}button,select{font:inherit}button{cursor:pointer;border:1px solid #a9b2c5;background:#fff;border-radius:9px;padding:10px 13px;color:#152340}button:focus-visible,select:focus-visible{outline:3px solid #4274ef}button[disabled]{cursor:default;opacity:.65}.themes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.theme{font-size:14px;padding:9px;overflow-wrap:anywhere;background:#e9edf5;border-radius:8px}.theme small{display:block;color:#526078}.problem{padding:15px;background:white;border-left:4px solid #6a7895;border-radius:7px}.derivation{background:#fff;border:1px solid #cbd3e1;border-radius:12px;padding:16px;margin:22px 0}.step{border:0;padding:12px 0}.reason{font-size:16px;margin:8px 0}.equation{font-size:21px;line-height:1.8;overflow-wrap:anywhere;white-space:pre-wrap}.hole{display:inline-block;border:2px solid #456ed6;color:#294dc0;border-radius:6px;min-width:65px;text-align:center;padding:0 8px}.options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:12px 0}.options button{overflow-wrap:anywhere;min-width:0}.feedback{min-height:1.8em;color:#9a3412}.hint{background:#f0f3fa;padding:9px;border-radius:6px;font-size:15px}.status{font-size:14px;color:#536178}select{max-width:100%;padding:8px;border:1px solid #adb7c8;background:white;border-radius:6px}figure{margin:20px 0}svg{width:100%;height:auto;display:block;max-width:500px;margin:auto}svg text{font:14px system-ui;fill:#111}figcaption{font-size:15px}#closing{padding:14px;background:#eaf3ed;border-radius:7px}#error{color:#9a3412}p,figcaption{overflow-wrap:anywhere}.compact{font-size:14px;color:#536178}footer{margin-top:30px}body[data-mode=practice] .concept{display:none}
+@media(max-width:360px){main{padding:14px 10px 40px}.derivation{padding:12px}.equation{font-size:19px}.themes{gap:5px}.theme{padding:7px;font-size:13px}}
+</style>
+<main><p class="compact">教材制作パイプラインの試作教材</p><h1>式の計算を一段ずつたどる</h1><nav class="themes" aria-label="教材のテーマ"></nav>
+<p class="compact">今回は式の計算を試す範囲です。他のテーマの教材は含めていません。</p>
+<label for="lesson">教材を選ぶ</label> <select id="lesson"></select><div id="article"></div><p id="error" role="alert"></p>
+<footer><button id="reset">この試作の学習記録を消す</button><p class="compact">この画面の確認は、本番アプリの総チェックとは別です。</p></footer></main>
+<script>
+'use strict';
+const DATA=__PAYLOAD__, FIGURES=__FIGURES__;
+const key='kyotsu-coded-prototype-'+DATA.design_hash;
+const article=document.querySelector('#article'), select=document.querySelector('#lesson');
+let saved={};try{saved=JSON.parse(localStorage.getItem(key)||'{}');if(!saved||typeof saved!=='object'||Array.isArray(saved))saved={};}catch{saved={};}
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const math=s=>String(s).replace(/x\*\*([0-8])/g,(_,n)=>'x'+'⁰¹²³⁴⁵⁶⁷⁸'[Number(n)]).replace(/\*/g,' × ');
+function save(){try{localStorage.setItem(key,JSON.stringify(saved));}catch{document.querySelector('#error').textContent='記録を保存できません。この画面では続けて学習できます。';}}
+function lesson(){return DATA.lessons.find(x=>x.id===select.value)||DATA.lessons[0];}
+function state(l){let x=saved[l.id];if(!x||typeof x!=='object'||!Array.isArray(x.done))x={done:[],hints:{}};const prefix=[];for(const s of l.solution.steps){if(!x.done.includes(s.id))break;prefix.push(s.id);}x.done=prefix;if(!x.hints||typeof x.hints!=='object')x.hints={};saved[l.id]=x;return x;}
+for(const t of DATA.themes){const e=document.createElement('div');e.className='theme';e.textContent=t.title;const n=document.createElement('small');n.textContent=t.units.length?'試作 '+t.units.length+'教材':'今回の試作対象外';e.append(n);document.querySelector('.themes').append(e);}
+for(const l of DATA.lessons){const o=document.createElement('option');o.value=l.id;o.textContent=l.title;select.append(o);}
+document.body.dataset.mode=DATA.mode;
+function render(){
+ const l=lesson(), st=state(l);let activeFound=false;
+ const steps=l.solution.steps.map((s,index)=>{
+   if(activeFound)return '';
+   const options=l.choices[s.id], done=st.done.includes(s.id);
+   const result=options?options.find(o=>o.correct).text:math(s.right);
+   if(!options||done){if(!options&&!done)st.done.push(s.id);return `<div class="step" data-step="${esc(s.id)}"><p class="reason">${esc(s.reason)}</p><div class="equation">${esc(s.left_display||math(s.left))} = <span class="result">${esc(result)}</span></div></div>`;}
+   activeFound=true;
+   return `<div class="step active" data-step="${esc(s.id)}"><p class="reason">${esc(s.reason)}</p><div class="equation">${esc(s.left_display||math(s.left))} = <span class="hole" aria-label="計算結果の穴">□</span></div><div class="options">${options.map(o=>`<button type="button" data-choice="${esc(o.id)}">${esc(o.text)}</button>`).join('')}</div><p class="feedback" role="status" aria-live="polite"></p><button type="button" class="show-hint">ヒントを見る</button><p class="hint" hidden></p></div>`;
+ }).join('');
+ const fig=l.figure?`<figure>${FIGURES[l.id]}<figcaption>${esc(l.figure.how_to_read)} ${esc(l.figure.purpose)}</figcaption></figure>`:'';
+ article.innerHTML=`<h2>${esc(l.title)}</h2><p class="status">${DATA.mode==='textbook'?'教科書モード':'練習モード'}</p><div class="problem"><strong>${DATA.mode==='textbook'?'例題':'問題'}</strong><p>${esc(l.original_problem)}</p><div class="equation">${esc(l.solution.source_display)}</div></div>${DATA.mode==='textbook'?`<p>${esc(l.prose.lead)}</p><p class="concept">${esc(l.prose.concept)}</p>`:''}<p>${esc(l.prose.goal)}</p>${fig}<section class="derivation" aria-label="一続きの計算"><p>分配法則で、それぞれの項の積を作る。</p><div class="equation distribution">${esc(l.solution.distribution)}</div>${steps}${!activeFound?`<p>計算した項を合わせると、元の式は次のようになる。</p><div class="equation final-result">${esc(l.solution.source_display)} = ${esc(l.final_display)}</div>`:''}</section>${!activeFound?`<p id="closing">${esc(l.prose.closing)}</p>`:'<p class="status">いまの計算を完成させると、続きが表示されます。</p>'}`;
+ const current=article.querySelector('.active');if(!current)return;
+ const s=l.solution.steps.find(x=>x.id===current.dataset.step);
+ current.querySelectorAll('[data-choice]').forEach(button=>button.addEventListener('click',()=>{
+   const selected=l.choices[s.id].find(o=>o.id===button.dataset.choice);
+   if(!selected.correct){current.querySelector('.feedback').textContent='まだ一致していません。式の符号と、どの項を計算しているかを見直そう。';return;}
+   st.done.push(s.id);save();render();
+ }));
+ current.querySelector('.show-hint').addEventListener('click',()=>{
+   const hints=s.hints;
+   const n=Math.min(Number(st.hints[s.id])||0,3);const p=current.querySelector('.hint');p.hidden=false;p.textContent=hints[n];st.hints[s.id]=n+1;save();
+ });
+}
+select.addEventListener('change',render);
+document.querySelector('#reset').addEventListener('click',()=>{saved={};try{localStorage.removeItem(key);}catch{}render();});
+render();
+</script></html>

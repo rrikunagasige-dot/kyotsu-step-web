@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "hits": [
+    {
+      "caseId": "N07-USER-F03",
+      "score": 0.8566104977708411,
+      "dimension": "unmotivated_operation",
+      "quality": "NEGATIVE",
+      "evidenceRef": "1f2a13bceb62bcfda98beea2693d1c667b9978ca919f5c2ca9052c050f564082",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "scope": "n07-q07-subtract"
+    },
+    {
+      "caseId": "N07-USER-F04",
+      "score": 0.8511514873185533,
+      "dimension": "broken_derivation",
+      "quality": "NEGATIVE",
+      "evidenceRef": "c6fca58d8fc8145df8abbcf54af97fb324c68cd7d5469d85682d59f5d59c9583",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "scope": "n07-q07-coefficient"
+    }
+  ],
+  "encoderHash": "1d0c6699c483167583c6ba00905876ddb7764a1571c359e3030515644dd3b1b9",
+  "corpusHash": "ac8c04dd7c169af1ee98ff60f9223240f34b2f609cd034baec3f0e9aedb86c1e",
+  "receipt": {
+    "inputTokens": 24,
+    "processedTokens": 24,
+    "chunks": 1,
+    "truncated": false,
+    "aggregation": "token-weighted-mean",
+    "encoderHash": "1d0c6699c483167583c6ba00905876ddb7764a1571c359e3030515644dd3b1b9"
+  },
+  "trainingRun": false
+}

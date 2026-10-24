@@ -1,0 +1,123 @@
+{
+  "format": "example-index/1",
+  "regenerate": "examples(curated_corpus)",
+  "examples": [
+    {
+      "id": "N07-USER-F01",
+      "inputHash": "df2e0f18cd136f7526794fd749c1f8f5138a28af637b00c08ca02db13a6a73c9",
+      "dimension": "prerequisite_missing",
+      "label": 1,
+      "familyId": "n07-decimals",
+      "episodeId": "n07-review-20261024",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "evidenceTier": "USER_GOLD",
+      "caseId": "N07-USER-F01",
+      "seen": true,
+      "scope": "n07-q03-cycle"
+    },
+    {
+      "id": "N07-USER-F02",
+      "inputHash": "98c451d8d904c00bd4dc742929bd6beec493460576baa73c9e43cfb75ce9665d",
+      "dimension": "orphan_output",
+      "label": 1,
+      "familyId": "n07-decimals",
+      "episodeId": "n07-review-20261024",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "evidenceTier": "USER_GOLD",
+      "caseId": "N07-USER-F02",
+      "seen": true,
+      "scope": "n07-q06-scale"
+    },
+    {
+      "id": "N07-USER-F03",
+      "inputHash": "eb8e3b9810a6cf677c13cc4c31a3be96461b88dcdf7038bd2a9419c6753e4762",
+      "dimension": "unmotivated_operation",
+      "label": 1,
+      "familyId": "n07-decimals",
+      "episodeId": "n07-review-20261024",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "evidenceTier": "USER_GOLD",
+      "caseId": "N07-USER-F03",
+      "seen": true,
+      "scope": "n07-q07-subtract"
+    },
+    {
+      "id": "N07-USER-F04",
+      "inputHash": "0a5336a2ca846ff473ac1b6e198101ba8b52d869e6f34a9eeda51490788d3c14",
+      "dimension": "broken_derivation",
+      "label": 1,
+      "familyId": "n07-decimals",
+      "episodeId": "n07-review-20261024",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "evidenceTier": "USER_GOLD",
+      "caseId": "N07-USER-F04",
+      "seen": true,
+      "scope": "n07-q07-coefficient"
+    },
+    {
+      "id": "N07-USER-F05",
+      "inputHash": "ceb18c7767407e801a3e0dd8f65ccd802ee6459aab3e0fc3fcd8260a29e09a49",
+      "dimension": "term_semantics_missing",
+      "label": 1,
+      "familyId": "n07-decimals",
+      "episodeId": "n07-review-20261024",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "evidenceTier": "USER_GOLD",
+      "caseId": "N07-USER-F05",
+      "seen": true,
+      "scope": "n07-q11-factor-ten"
+    },
+    {
+      "id": "N07-USER-F06",
+      "inputHash": "71d8f85b16a3d33c3a8bdb74231dc90353ed3523463f386737752df5cb18d6e0",
+      "dimension": "math_render_omission",
+      "label": 1,
+      "familyId": "n07-decimals",
+      "episodeId": "n07-review-20261024",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "evidenceTier": "USER_GOLD",
+      "caseId": "N07-USER-F06",
+      "seen": true,
+      "scope": "n07-q11-converse,n07-q07-coefficient"
+    },
+    {
+      "id": "n07-layout-relation",
+      "inputHash": "0a5336a2ca846ff473ac1b6e198101ba8b52d869e6f34a9eeda51490788d3c14",
+      "dimension": "layout_discomfort",
+      "label": 1,
+      "familyId": "n07-decimals",
+      "episodeId": "n07-review-20261024",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "evidenceTier": "USER_GOLD",
+      "caseId": "n07-layout-relation",
+      "seen": true,
+      "scope": "n07-q07-coefficient"
+    },
+    {
+      "id": "n07-layout-positive",
+      "inputHash": "9cf7f315123213d163e83444c13e600bd8299bc89b8880669bcb5c09397f5565",
+      "dimension": "layout_discomfort",
+      "label": 0,
+      "familyId": "n07-decimals",
+      "episodeId": "n07-review-20261024",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "evidenceTier": "USER_GOLD",
+      "caseId": "n07-layout-positive",
+      "seen": true,
+      "scope": "N07 overall layout only"
+    },
+    {
+      "id": "first-title-layout-positive",
+      "inputHash": "af08dfe923ef6adef508ee81ef37331f73a9e8a807025ce6530292e3fd1eee7d",
+      "dimension": "layout_discomfort",
+      "label": 0,
+      "familyId": "first-title",
+      "episodeId": "first-title-acceptance-20261024",
+      "artifactVersion": "22bc43ba53fa87bb85e82e18a25db13a5c8a485c",
+      "evidenceTier": "REPO_ATTESTED",
+      "caseId": "first-title-layout-positive",
+      "seen": true,
+      "scope": "first title overall accepted layout"
+    }
+  ]
+}

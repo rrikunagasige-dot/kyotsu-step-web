@@ -6,3 +6,5 @@ test-results/
 *.local
 coverage/
 
+__pycache__/
+*.pyc

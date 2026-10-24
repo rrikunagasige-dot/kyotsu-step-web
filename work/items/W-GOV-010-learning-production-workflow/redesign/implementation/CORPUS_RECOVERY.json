@@ -1,0 +1,1803 @@
+{
+  "schemaVersion": 1,
+  "observations": [
+    {
+      "id": "legacy:P01",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P01",
+      "label": "UNKNOWN",
+      "dimension": "平均速度の式を別々の白枠に分断",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P02",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P02",
+      "label": "UNKNOWN",
+      "dimension": "平均速度の記号が二重に重なる",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P03",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P03",
+      "label": "UNKNOWN",
+      "dimension": "穴が最後の整理だけを要求する",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P04",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P04",
+      "label": "UNKNOWN",
+      "dimension": "図の参照時に図がない",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P05",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P05",
+      "label": "UNKNOWN",
+      "dimension": "元図を未承認の生成図で置換",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P06",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P06",
+      "label": "UNKNOWN",
+      "dimension": "概念と図の読み取りを一律に分離",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P07",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P07",
+      "label": "UNKNOWN",
+      "dimension": "図がぼやける・必要箇所が隠れる",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P08",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P08",
+      "label": "UNKNOWN",
+      "dimension": "合成速度の例題が関係式を使わせない",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P09",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P09",
+      "label": "UNKNOWN",
+      "dimension": "相対速度が用語当てになっている",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P10",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P10",
+      "label": "UNKNOWN",
+      "dimension": "水平投射の修正完了を早く宣言",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P11",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P11",
+      "label": "UNKNOWN",
+      "dimension": "七つの内部単元を大見出しとして露出",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P12",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P12",
+      "label": "UNKNOWN",
+      "dimension": "力と運動が題名だけ変わり本文が追随しない",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P13",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P13",
+      "label": "UNKNOWN",
+      "dimension": "平均速度の最初の例で関係と結果を別々に穴にする",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P14",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P14",
+      "label": "UNKNOWN",
+      "dimension": "合成・分解の公式を例題で実際に使う",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P15",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P15",
+      "label": "UNKNOWN",
+      "dimension": "雨と自転車の相対速度",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P16",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P16",
+      "label": "UNKNOWN",
+      "dimension": "加速度から運動公式を導く",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P17",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P17",
+      "label": "UNKNOWN",
+      "dimension": "水平投射で共通の時間を再利用",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P18",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P18",
+      "label": "UNKNOWN",
+      "dimension": "斜方投射の修正版",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:P19",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "P19",
+      "label": "UNKNOWN",
+      "dimension": "力と抵抗から終端速度へ",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:S01",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "S01",
+      "label": "UNKNOWN",
+      "dimension": "集合が概念説明書になっている",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:S02",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "S02",
+      "label": "UNKNOWN",
+      "dimension": "集合学習が単なる問題列になっている",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:S03",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "S03",
+      "label": "UNKNOWN",
+      "dimension": "集合previewへの強い肯定の候補",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:S04",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "S04",
+      "label": "UNKNOWN",
+      "dimension": "約数を集めてから集合を名付ける",
+      "artifactVersion": "e907bf5fc22025fbd74127b9b72176b90aaeb36e",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:S05",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "S05",
+      "label": "UNKNOWN",
+      "dimension": "ド・モルガンを図の一致から導く",
+      "artifactVersion": "e907bf5fc22025fbd74127b9b72176b90aaeb36e",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:R01",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "R01",
+      "label": "UNKNOWN",
+      "dimension": "現在の小問と必要な過去結果だけを示す",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:R02",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "R02",
+      "label": "UNKNOWN",
+      "dimension": "問題と解説・穴埋めを分ける",
+      "artifactVersion": null,
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:N01",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "N01",
+      "label": "NEGATIVE",
+      "dimension": "第四の大見出し",
+      "artifactVersion": "171c04781f32c1286a0762905891b582714834f9",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:N02",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "N02",
+      "label": "NEGATIVE",
+      "dimension": "2A−3Bの計算",
+      "artifactVersion": "171c04781f32c1286a0762905891b582714834f9",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:N03",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "N03",
+      "label": "NEGATIVE",
+      "dimension": "二項式と三項式の積",
+      "artifactVersion": "171c04781f32c1286a0762905891b582714834f9",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:N04",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "N04",
+      "label": "NEGATIVE",
+      "dimension": "掛算表の役割",
+      "artifactVersion": "171c04781f32c1286a0762905891b582714834f9",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:N05",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "N05",
+      "label": "NEGATIVE",
+      "dimension": "和と差の積",
+      "artifactVersion": "171c04781f32c1286a0762905891b582714834f9",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:N06",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "N06",
+      "label": "NEGATIVE",
+      "dimension": "公式と展開の選択",
+      "artifactVersion": "171c04781f32c1286a0762905891b582714834f9",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:N07",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "N07",
+      "label": "NEGATIVE",
+      "dimension": "複数行を束ねた選択肢",
+      "artifactVersion": "171c04781f32c1286a0762905891b582714834f9",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:N08",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "N08",
+      "label": "NEGATIVE",
+      "dimension": "置換後の展開",
+      "artifactVersion": "171c04781f32c1286a0762905891b582714834f9",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:N09",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "N09",
+      "label": "NEGATIVE",
+      "dimension": "文章として読めない",
+      "artifactVersion": "171c04781f32c1286a0762905891b582714834f9",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "legacy:N10",
+      "sourceType": "legacy_catalog",
+      "sourcePath": "research/legacy-cases.json",
+      "originalId": "N10",
+      "label": "NEGATIVE",
+      "dimension": "四因子の組合せ",
+      "artifactVersion": "171c04781f32c1286a0762905891b582714834f9",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "N07-USER-F01",
+      "sourceType": "versioned_user_feedback_registry",
+      "sourcePath": "../n07/feedback/NEGATIVE_CASES.json",
+      "label": "NEGATIVE",
+      "dimension": "前の計算と今回の判断が結びつかない",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "nodes": [
+        "n07-q03-cycle"
+      ],
+      "eligibility": "KNOWN_REGRESSION_NOT_UNSEEN_TEST",
+      "evidence": {
+        "fileName": "0ee7fc343217e1117f5f8911368ea1fe.png",
+        "sha256": "6814bc8a1ab3e9fc6b57e33cc6fd00606c811ae0a8409541fba0d41186068e02"
+      },
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "N07-USER-F02",
+      "sourceType": "versioned_user_feedback_registry",
+      "sourcePath": "../n07/feedback/NEGATIVE_CASES.json",
+      "label": "NEGATIVE",
+      "dimension": "10だけを式番号付きで独立表示",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "nodes": [
+        "n07-q06-scale"
+      ],
+      "eligibility": "KNOWN_REGRESSION_NOT_UNSEEN_TEST",
+      "evidence": {
+        "fileName": "f859d006bed416f44af2f682862352e4.png",
+        "sha256": "2ed5eb49f280682c47052e3884da9210f66820bfc5298e23a4cc446abb1fd569"
+      },
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "N07-USER-F03",
+      "sourceType": "versioned_user_feedback_registry",
+      "sourcePath": "../n07/feedback/NEGATIVE_CASES.json",
+      "label": "NEGATIVE",
+      "dimension": "引くだけが本文から独立",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "nodes": [
+        "n07-q07-subtract"
+      ],
+      "eligibility": "KNOWN_REGRESSION_NOT_UNSEEN_TEST",
+      "evidence": {
+        "fileName": "83457a43084ff1fbbcbef9c523092cb5.png",
+        "sha256": "1f2a13bceb62bcfda98beea2693d1c667b9978ca919f5c2ca9052c050f564082"
+      },
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "N07-USER-F04",
+      "sourceType": "versioned_user_feedback_registry",
+      "sourcePath": "../n07/feedback/NEGATIVE_CASES.json",
+      "label": "NEGATIVE",
+      "dimension": "(28)の(10-1)xと(29)の9xが等号で結ばれない",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "nodes": [
+        "n07-q07-coefficient"
+      ],
+      "eligibility": "KNOWN_REGRESSION_NOT_UNSEEN_TEST",
+      "evidence": {
+        "fileName": "6becaa6c6f54a30d594c6c66d15e3201.png",
+        "sha256": "c6fca58d8fc8145df8abbcf54af97fb324c68cd7d5469d85682d59f5d59c9583"
+      },
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "N07-USER-F05",
+      "sourceType": "versioned_user_feedback_registry",
+      "sourcePath": "../n07/feedback/NEGATIVE_CASES.json",
+      "label": "NEGATIVE",
+      "dimension": "素数・素因数分解の初出定義語が通常文字",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "nodes": [
+        "n07-q11-factor-ten"
+      ],
+      "eligibility": "KNOWN_REGRESSION_NOT_UNSEEN_TEST",
+      "evidence": {
+        "fileName": "2b3d22138cb01961ee770f4f228f92e1.png",
+        "sha256": "08a194aebe3d23880b1a9ea1c6b82bc9c46c8763759db499218679fac811e0b6"
+      },
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "N07-USER-F06",
+      "sourceType": "versioned_user_feedback_registry",
+      "sourcePath": "../n07/feedback/NEGATIVE_CASES.json",
+      "label": "NEGATIVE",
+      "dimension": "p/(2^u5^v)、2^(h−u)等が本文の普通の文字のまま",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "nodes": [
+        "n07-q11-converse",
+        "n07-q07-coefficient"
+      ],
+      "eligibility": "KNOWN_REGRESSION_NOT_UNSEEN_TEST",
+      "evidence": {
+        "fileName": "13c777f56cc1cba7e52fdcf545e7744f.png",
+        "sha256": "2f13547d5da27e6aa3d98a059f5df95cc47631c2fc3479e6da68872d3c4bfb70"
+      },
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "chat-visible:01",
+      "sourceType": "user_message_in_current_context",
+      "quote": "内容可以不用再改了。就这俩问题",
+      "quoteIsExcerpt": true,
+      "label": "UNKNOWN",
+      "dimension": "scope_protection",
+      "artifactVersion": null,
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "chat-visible:02",
+      "sourceType": "user_message_in_current_context",
+      "quote": "比如说上一页的结论其实有地方记录的，你这个好像没有。",
+      "quoteIsExcerpt": true,
+      "label": "NEGATIVE",
+      "dimension": "prior_result_context",
+      "artifactVersion": null,
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "chat-visible:03",
+      "sourceType": "user_message_in_current_context",
+      "quote": "但是挖的空就是算的部分，推导部分挖的空再多一些。",
+      "quoteIsExcerpt": true,
+      "label": "NEGATIVE",
+      "dimension": "reasoning_blanks",
+      "artifactVersion": null,
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "chat-visible:04",
+      "sourceType": "user_message_in_current_context",
+      "quote": "推导的话式子尽量排整齐一些。",
+      "quoteIsExcerpt": true,
+      "label": "NEGATIVE",
+      "dimension": "equation_alignment",
+      "artifactVersion": null,
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "chat-visible:05",
+      "sourceType": "user_message_in_current_context",
+      "quote": "内容已经是很可疑了式子还是太左边了。",
+      "quoteIsExcerpt": true,
+      "label": "NEGATIVE",
+      "dimension": "equation_centering",
+      "artifactVersion": null,
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "chat-visible:06",
+      "sourceType": "user_message_in_current_context",
+      "quote": "式子还应该加编号",
+      "quoteIsExcerpt": true,
+      "label": "NEGATIVE",
+      "dimension": "equation_numbering",
+      "artifactVersion": null,
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "chat-visible:07",
+      "sourceType": "user_message_in_current_context",
+      "quote": "这个版本可以。非常可以。我觉得可以正式通过了。",
+      "quoteIsExcerpt": true,
+      "label": "POSITIVE",
+      "dimension": "first_title_scoped_acceptance",
+      "artifactVersion": "22bc43ba53fa87bb85e82e18a25db13a5c8a485c",
+      "scope": "first title only",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "chat-visible:08",
+      "sourceType": "user_message_in_current_context",
+      "quote": "重点表扬真的是重点表扬。做的非常非常好。特别是排版我的天哪太舒服了看着。",
+      "quoteIsExcerpt": true,
+      "label": "POSITIVE",
+      "dimension": "n07_layout_only",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "scope": "layout only",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "chat-visible:09",
+      "sourceType": "user_message_in_current_context",
+      "quote": "这个解释挺不错的，前面这个例题你搞了吗？",
+      "quoteIsExcerpt": true,
+      "label": "NEGATIVE",
+      "dimension": "example_context",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": [
+        "N07-USER-F01"
+      ]
+    },
+    {
+      "id": "chat-visible:10",
+      "sourceType": "user_message_in_current_context",
+      "quote": "这个10看着也太突兀了",
+      "quoteIsExcerpt": true,
+      "label": "NEGATIVE",
+      "dimension": "scalar_meaning",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": [
+        "N07-USER-F02"
+      ]
+    },
+    {
+      "id": "chat-visible:11",
+      "sourceType": "user_message_in_current_context",
+      "quote": "突然来个引く",
+      "quoteIsExcerpt": true,
+      "label": "NEGATIVE",
+      "dimension": "operation_in_sentence",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": [
+        "N07-USER-F03"
+      ]
+    },
+    {
+      "id": "chat-visible:12",
+      "sourceType": "user_message_in_current_context",
+      "quote": "28，29看着有点不舒服，我们这个是推公式这个要搞等式那种。",
+      "quoteIsExcerpt": true,
+      "label": "NEGATIVE",
+      "dimension": "derivation_relation",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": [
+        "N07-USER-F04"
+      ]
+    },
+    {
+      "id": "chat-visible:13",
+      "sourceType": "user_message_in_current_context",
+      "quote": "有些文本就不是放在公式里面的字体明显的不是latex看着很别扭。就是公式哦在文本里面的",
+      "quoteIsExcerpt": true,
+      "label": "NEGATIVE",
+      "dimension": "inline_math",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": [
+        "N07-USER-F06"
+      ]
+    },
+    {
+      "id": "chat-visible:14",
+      "sourceType": "user_message_in_current_context",
+      "quote": "对于概念素因数分解我们得黑子标出来阿对吧",
+      "quoteIsExcerpt": true,
+      "label": "NEGATIVE",
+      "dimension": "definition_term",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": [
+        "N07-USER-F05"
+      ]
+    },
+    {
+      "id": "chat-visible:15",
+      "sourceType": "user_message_in_current_context",
+      "quote": "完全的没有compile出来所以就看着不舒服，跟4一个样",
+      "quoteIsExcerpt": true,
+      "label": "NEGATIVE",
+      "dimension": "render_coverage",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": [
+        "N07-USER-F06"
+      ]
+    },
+    {
+      "id": "chat-visible:16",
+      "sourceType": "user_message_in_current_context",
+      "quote": "这个选项，挤在一起了",
+      "quoteIsExcerpt": true,
+      "label": "NEGATIVE",
+      "dimension": "choice_spacing",
+      "artifactVersion": null,
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "chat-visible:17",
+      "sourceType": "user_message_in_current_context",
+      "quote": "你这个是什么狗屎推导莫名其妙的突然来这个。我看不懂阿",
+      "quoteIsExcerpt": true,
+      "label": "NEGATIVE",
+      "dimension": "unmotivated_step",
+      "artifactVersion": null,
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "chat-visible:18",
+      "sourceType": "user_message_in_current_context",
+      "quote": "就是好像堆起来",
+      "quoteIsExcerpt": true,
+      "label": "NEGATIVE",
+      "dimension": "teaching_coherence",
+      "artifactVersion": null,
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "chat-visible:19",
+      "sourceType": "user_message_in_current_context",
+      "quote": "空就是填空没有",
+      "quoteIsExcerpt": true,
+      "label": "NEGATIVE",
+      "dimension": "missing_blanks",
+      "artifactVersion": null,
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "chat-visible:20",
+      "sourceType": "user_message_in_current_context",
+      "quote": "我们先合并1此项",
+      "quoteIsExcerpt": true,
+      "label": "UNKNOWN",
+      "dimension": "degree_order_example",
+      "artifactVersion": null,
+      "scope": "requires episode reconstruction",
+      "eligibility": "EXTRACT_ARTIFACT_AND_RECONCILE_SCOPE",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "work-recovered:01",
+      "sourceType": "repository_record",
+      "sourcePath": "work/items/W-MATH-031-section-one-typesetting/USER_ACCEPTANCE_20261024.md",
+      "sourceFileSHA256": "d776e17bfd26d00f2e34c797be48532c69cdb8fa3026122f88fae15005fab16c",
+      "recordSnapshot": "1e8403d711bdc835e76a9fabdd7d1b03cd548824",
+      "label": "POSITIVE",
+      "dimension": "scoped final acceptance",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": [
+        "chat-visible:07"
+      ]
+    },
+    {
+      "id": "work-recovered:02",
+      "sourceType": "repository_record",
+      "sourcePath": "work/items/W-MATH-025-factor-hint-leak-qa-proposals/FIVE_ITEM_ACCEPTANCE_20261023.md",
+      "sourceFileSHA256": "9c96eb8e5ebe9126d6e0b1046c83e4534b37d02eceab422940605862dee1701e",
+      "recordSnapshot": "1e8403d711bdc835e76a9fabdd7d1b03cd548824",
+      "label": "UNKNOWN",
+      "dimension": "extract scope and distinguish permission from quality",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "work-recovered:03",
+      "sourceType": "repository_record",
+      "sourcePath": "work/items/W-MATH-025-factor-hint-leak-qa-proposals/SEVEN_ITEM_ACCEPTANCE_20261023.md",
+      "sourceFileSHA256": "30e0d642f440a1179c9ac9339acb68e168519b650f83d94bf28cabbdc9ce4100",
+      "recordSnapshot": "1e8403d711bdc835e76a9fabdd7d1b03cd548824",
+      "label": "UNKNOWN",
+      "dimension": "extract scope and distinguish permission from quality",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "work-recovered:04",
+      "sourceType": "repository_record",
+      "sourcePath": "work/items/W-MATH-025-factor-hint-leak-qa-proposals/P016_VISUAL_ACCEPTANCE_20261023.md",
+      "sourceFileSHA256": "14ae9e399240214850b948fbd5fd29663e677304ae8ec4148bcf035c4eecda7d",
+      "recordSnapshot": "1e8403d711bdc835e76a9fabdd7d1b03cd548824",
+      "label": "UNKNOWN",
+      "dimension": "extract scope and distinguish permission from quality",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "work-recovered:05",
+      "sourceType": "repository_record",
+      "sourcePath": "work/items/W-MATH-017-n11-arithmetic-learner-operations/P006_GATE1_VISUAL_ACCEPTANCE.md",
+      "sourceFileSHA256": "1498248c98adb1b51e7621d905cd7fa6c163c625b7e4b7a1b345d4719d7d3fa1",
+      "recordSnapshot": "1e8403d711bdc835e76a9fabdd7d1b03cd548824",
+      "label": "UNKNOWN",
+      "dimension": "extract scope and distinguish permission from quality",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "work-recovered:06",
+      "sourceType": "repository_record",
+      "sourcePath": "work/items/W-MATH-028-n01-teaching-sequence/FINDINGS.md",
+      "sourceFileSHA256": "518d1615d3233eff80efccdcf00f03abfa91f5c296247cf03110b165dccd7d19",
+      "recordSnapshot": "1e8403d711bdc835e76a9fabdd7d1b03cd548824",
+      "label": "UNKNOWN",
+      "dimension": "extract scope and distinguish permission from quality",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "work-recovered:07",
+      "sourceType": "repository_record",
+      "sourcePath": "work/items/W-MATH-029-section-one-teaching/FINDINGS.md",
+      "sourceFileSHA256": "c28c77e5232e3525958705e3c5c437163204bec22875b64b8028e73230e697bc",
+      "recordSnapshot": "1e8403d711bdc835e76a9fabdd7d1b03cd548824",
+      "label": "UNKNOWN",
+      "dimension": "extract scope and distinguish permission from quality",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "work-recovered:08",
+      "sourceType": "repository_record",
+      "sourcePath": "work/items/W-MATH-030-section-one-results-and-blanks/FINDINGS.md",
+      "sourceFileSHA256": "7e64e1a19a66aa74c098d0efb2f83c3bfe59e134a6bd3bae03196d69bb4998f0",
+      "recordSnapshot": "1e8403d711bdc835e76a9fabdd7d1b03cd548824",
+      "label": "UNKNOWN",
+      "dimension": "extract scope and distinguish permission from quality",
+      "eligibility": "RECONCILE_AND_EXTRACT_ARTIFACT",
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "retrieval-candidate:01",
+      "sourceType": "personal_context_summary",
+      "reportedUserTime": "2026-10-03T05:09:23Z",
+      "summary": "集合87–97、前頁結論・後半同様に圧縮・思考ノード",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED",
+      "quoteVerified": false,
+      "artifactVersion": null,
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "retrieval-candidate:02",
+      "sourceType": "personal_context_summary",
+      "reportedUserTime": "2026-09-30T12:11:36Z",
+      "summary": "物理N01、関係式の穴二箇所だけ追加",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED",
+      "quoteVerified": false,
+      "artifactVersion": null,
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "retrieval-candidate:03",
+      "sourceType": "personal_context_summary",
+      "reportedUserTime": "2026-10-03T14:29:49Z",
+      "summary": "概念は黒字",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED",
+      "quoteVerified": false,
+      "artifactVersion": null,
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "retrieval-candidate:04",
+      "sourceType": "personal_context_summary",
+      "reportedUserTime": "2026-09-11T06:20:41Z",
+      "summary": "問題から結論まで連続する解答と重要な穴",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED",
+      "quoteVerified": false,
+      "artifactVersion": null,
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "retrieval-candidate:05",
+      "sourceType": "personal_context_summary",
+      "reportedUserTime": "2026-10-21T08:54:00Z",
+      "summary": "集合の文章中の穴、大きな白枠への否定",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED",
+      "quoteVerified": false,
+      "artifactVersion": null,
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "retrieval-candidate:06",
+      "sourceType": "personal_context_summary",
+      "reportedUserTime": "2026-10-21T10:37:24Z",
+      "summary": "N11Q05–06、四行の不等式内に穴",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED",
+      "quoteVerified": false,
+      "artifactVersion": null,
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "retrieval-candidate:07",
+      "sourceType": "personal_context_summary",
+      "reportedUserTime": "2026-10-04T05:42:35Z",
+      "summary": "集合完成版、概念導入と例題・証明の区別",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED",
+      "quoteVerified": false,
+      "artifactVersion": null,
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "retrieval-candidate:08",
+      "sourceType": "personal_context_summary",
+      "reportedUserTime": "2026-10-14T01:54:35Z",
+      "summary": "共通部分の二図のみ修正",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED",
+      "quoteVerified": false,
+      "artifactVersion": null,
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "retrieval-candidate:09",
+      "sourceType": "personal_context_summary",
+      "reportedUserTime": "2026-10-17T11:56:39Z",
+      "summary": "一節二〜三見出し",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED",
+      "quoteVerified": false,
+      "artifactVersion": null,
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "retrieval-candidate:10",
+      "sourceType": "personal_context_summary",
+      "reportedUserTime": "2026-10-24T00:54:06Z",
+      "summary": "代入・操作・計算の小段階化",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED",
+      "quoteVerified": false,
+      "artifactVersion": null,
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "retrieval-candidate:11",
+      "sourceType": "personal_context_summary",
+      "reportedUserTime": "2026-10-24T00:55:41Z",
+      "summary": "穴の役割と学生の思考",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED",
+      "quoteVerified": false,
+      "artifactVersion": null,
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "retrieval-candidate:12",
+      "sourceType": "personal_context_summary",
+      "reportedUserTime": "2026-10-10T12:47:36Z",
+      "summary": "移管後Section2・3の導きの確認",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED",
+      "quoteVerified": false,
+      "artifactVersion": null,
+      "possibleDuplicateOf": []
+    },
+    {
+      "id": "repo:52b42595f0c7bf2d01d2",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-GOV-005-repository-os-port/FINDINGS.md",
+      "sourceFileSHA256": "a745937b6c9c0781291f8b29b2241676bc2c739f0a3967f72ec2a89be4155ad6",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:d7a5f172df221e955c47",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-GOV-006-creation-command/FINDINGS.md",
+      "sourceFileSHA256": "740f0a88bb4a389fae74eda3f03b78855702dfd55dd6f8dc8a5a5b3649fc2bf4",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:1cffd8eca83ac6e7dbad",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-GOV-007-correction-first-creation-loop/FINDINGS.md",
+      "sourceFileSHA256": "e59d9310a206fa9b611060116242ce2b66068c223c47a317fcb82015230c197a",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:ef082d17dc48f25ac962",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-GOV-008-P002-marked-review/FINDINGS.md",
+      "sourceFileSHA256": "856a1fd15900accd0cb69240ab101ef70e129ab396c6f1e792c13479f9368368",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:eb82a1ede0cbe668007a",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-GOV-008-P003-cross-block-audit/FINDINGS.md",
+      "sourceFileSHA256": "dc95599768c6a4f2b1143fe4c8033216c1d753f2e71c33e749febed428085902",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:e554e777b88ded051ef8",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-GOV-008-P003-three-gate-review/FINDINGS.md",
+      "sourceFileSHA256": "b0d65e54dddbc4599360cdf130051331e09a9699a90fd1a18ff27f5492fbf2fd",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:c8413567ff2d8649c78a",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-GOV-008-P003-visual-pilot/ACCEPTANCE_LOG.md",
+      "sourceFileSHA256": "84ef59f380a3461de699a847dd778db53bf9a68e78fd4e464d5a0e2771181806",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:2dfdddff61ea58c67ea9",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-GOV-008-P003-visual-pilot/FINDINGS.md",
+      "sourceFileSHA256": "bd887f03864a54520417b66a1eb7762ca1fed96b72d3d7951c208ee260e5fa57",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:4863941b57c10fa7c6c5",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-GOV-009-ci-wait-work-scheduling/FINDINGS.md",
+      "sourceFileSHA256": "b680997e5a7e082b7b2111fcee43ee4984b39ab284313953727cb0997571677a",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:e0b6a9a169e065507491",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-GOV-010-learning-production-workflow/FINDINGS.md",
+      "sourceFileSHA256": "f27e18f60c6036259af0f07eddc57841657027e871b88db7069717a3d91f678b",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:1baa29c4f44eed5a25a0",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-002-textbook-ui-compression/FINDINGS.md",
+      "sourceFileSHA256": "8a6c8d516345c2f2523d2068e5ae4b055a24bdd65f0d8e022c748afe4edd52ee",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:6856aa4ec99d92ac8557",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-003-numbers-expressions-creation/FINDINGS.md",
+      "sourceFileSHA256": "730a27155dc1d95945515d28ac70b31f4c956b25cef161131660dcfa94ccce08",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:58d6d1c784ef27aa86ca",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-004-inequality-derivation-correction/FINDINGS.md",
+      "sourceFileSHA256": "bf755569aebf356356ead22d5f30f716f124762309c2e2bffce9f7da5e573a55",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:c7d93e8fe97e6c554507",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-005-cross-unit-local-token-correction/FINDINGS.md",
+      "sourceFileSHA256": "2b12084d78cb3e19d3289e706902f9298e33ceb3126eddd7e6ca9840adaff1ba",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:b87fc674a362e1f5ba72",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-006-inline-hole-visual-consistency/FINDINGS.md",
+      "sourceFileSHA256": "e0d18b2fa07c74841b8945f69b6b97243d845ddd023366edf1cffd7df96e4389",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:80f41c714f3ecf244120",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-007-coefficient-one-display/FINDINGS.md",
+      "sourceFileSHA256": "4eeb99109b5ec93708f95ce6db1abb7d0d74903f4de8643b514f2acc640ab88c",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:bffc70d32244f5c57a94",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-008-n12-cost-model-and-restart/FINDINGS.md",
+      "sourceFileSHA256": "8819f2a5edf2f1756516e531d16c4333d150a0ee4f183f773d4cc9f12d5ad29c",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:b9c0836bc78a74eece95",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-009-n09-square-atomicity/FINDINGS.md",
+      "sourceFileSHA256": "0427c0fe45d0da487b873163b5e0e0c4c584e6508dd634e3b216d8fc0e930e64",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:2a75b1494f3832f64e2c",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-010-n02-zero-term-prompt/FINDINGS.md",
+      "sourceFileSHA256": "791b72ab43a9db58d9b92700ba1d9a3a2064f3ebb6d93452eb3522a759c6e0b4",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:9e55758fab708e0a222c",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-011-n11-inequality-derivation-correction/FINDINGS.md",
+      "sourceFileSHA256": "f10ba9da95fcc579ec5ae18b36832c17448c1d8b07100f2faf3d5b03a326d406",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:fb3cc6c93c2869474dd2",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-011-n11-inequality-derivation-correction/GATE1_N11_Q01_Q04_REVIEW_SHEET.md",
+      "sourceFileSHA256": "6ede89e0789d4bde01d388ff210986951b1e089b2d486a44b2dc2393054b98bc",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:2cd135c00853287db7ce",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-012-n11-q11-derivation-correction/FINDINGS.md",
+      "sourceFileSHA256": "d86015db27b665683275b56e2ff0b941200fc90c22ee1aa63c46a36e946a205a",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:ba54744d902b9c157b92",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-012-n11-q11-derivation-correction/GATE1_N11_Q11_REVIEW_SHEET.md",
+      "sourceFileSHA256": "50ba7fc27f96cb454ee7052975b64fe748ab61ccbc384e65c02c7ddf30d9094c",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:edca26ad8e6574eea9a5",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-013-n11-q14-derivation-correction/FINDINGS.md",
+      "sourceFileSHA256": "ae5c908c6142d3067712da4259f9c1c8dd60b48c26a5bf2a1431bb4d142bf631",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:d1efecbf60c0381f5404",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-013-n11-q14-derivation-correction/GATE1_N11_Q14_REVIEW_SHEET.md",
+      "sourceFileSHA256": "2642225caca4c42ea714613f47fc07a7ea097cc84b7fe2b2376322404f8e345b",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:a137264659706884ac39",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-014-n14-q07-general-proof-correction/FINDINGS.md",
+      "sourceFileSHA256": "653356f981da6be3cb23dd02ccb367026320c8477cc054279c4ec2c090a6c621",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:b4438ebdcbad2fdeede7",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-014-n14-q07-general-proof-correction/GATE1_N14_Q07_REVIEW_SHEET.md",
+      "sourceFileSHA256": "f8e2d7f35385b7a9ae5796a5ea354ceaadf77a8ce5f3f07070d1fcb932c0244c",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:69a286f9a9b6c7c4bdd6",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-015-n14-q08-outside-proof-correction/FINDINGS.md",
+      "sourceFileSHA256": "18bef5e566fd349fc01f80f9ca26672a94680a42e9eaa4aca1f1309f3dd4c5e3",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:5e4d4e5e84ac40219932",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-015-n14-q08-outside-proof-correction/GATE1_N14_Q08_REVIEW_SHEET.md",
+      "sourceFileSHA256": "943e7b81999e7da5146bb7bb4897a7c2522ec92ed1cbcb4964f73a188842059d",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:8c0bc63d0b3bf2aba3f8",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-016-n14-q12-two-branch-correction/FINDINGS.md",
+      "sourceFileSHA256": "a23ebf85f69f8ab59089d6436a6a09dab2652b05132bdd102642d87d6730ffb5",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:25b62e4740edab569670",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-016-n14-q12-two-branch-correction/GATE1_N14_Q12_REVIEW_SHEET.md",
+      "sourceFileSHA256": "7451bc241a45b39c88aff8fe35de9e3ee46667dc5aa0d9a0a24e85106131a2a6",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:81e7299a69f8b94ce737",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-017-n11-arithmetic-learner-operations/FINDINGS.md",
+      "sourceFileSHA256": "635905fd021d827dd1daaf9b2ca98efc765f6636cf9658dd3d3aa420aa36d2cd",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:6673a806f874bb153cbe",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-017-n11-arithmetic-learner-operations/P006_GATE1_VISUAL_ACCEPTANCE.md",
+      "sourceFileSHA256": "1498248c98adb1b51e7621d905cd7fa6c163c625b7e4b7a1b345d4719d7d3fa1",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:367552bbf1c91ca690b8",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-017-n11-arithmetic-learner-operations/P007_GATE1_REVIEW_SHEET.md",
+      "sourceFileSHA256": "471116efc80059a27f4c4571a17212a1a7e53bad62586bf5e9201a9b7e36b3af",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:d1c7b788b770933ccaf9",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-017-n11-arithmetic-learner-operations/P008_GATE1_REVIEW_SHEET.md",
+      "sourceFileSHA256": "3b11104497414747278a9478819a121f2d0cd531aa76fd450ec778d037ebec71",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:48f096dc572f46ee43e7",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-018-n14-q10-three-sided-inequality/FINDINGS.md",
+      "sourceFileSHA256": "5863c1ac267461efae65647abe42d4841cd256814fef8e2b1070af6464e058e3",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:706d1e6d20277757e26d",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-018-n14-q10-three-sided-inequality/GATE1_P004_N14_Q10_REVIEW_SHEET.md",
+      "sourceFileSHA256": "3bd56500754872898121f09d0812078ffa48fda8ac0c734919a7ad28cacac053",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:4b2f6561a121ccbf6484",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-019-n14-q14-three-sided-addition/FINDINGS.md",
+      "sourceFileSHA256": "3ad6df6590c045f5e7d89198a0408667c7a3fdcc55838c933ae7f5bbff8c2d72",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:635918ebafd6493c3827",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-020-n14-q15-three-sided-division/FINDINGS.md",
+      "sourceFileSHA256": "a9b8bbf5e82338bd613a5f67f71b08bfc9761ba5e8abb970a245927510bfe983",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:c009e2832a1be7887f59",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-021-n14-q15-middle-hint/FINDINGS.md",
+      "sourceFileSHA256": "575b1cdb36d2f98aa30a94f69faeafae1b8df3002e8ca64b229f9a051c404c9a",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:930cd8106b28a406f689",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-022-n14-q16-endpoint-verification/FINDINGS.md",
+      "sourceFileSHA256": "1c7fe57bcf929368d3fcb6480e40595ab555e942e809cd88444fda339a88c125",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:e3e7c2d317e829215c7b",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-022-n14-q16-endpoint-verification/GATE1_N14_Q16_REVIEW_SHEET.md",
+      "sourceFileSHA256": "95cd88a64ff1150c2ab19cb6982a6bc9f41e587c53cb29af2c57e5198691cbfa",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:87a6cac5ec6d6f7571f6",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-023-n13-q05-q08-sibling/FINDINGS.md",
+      "sourceFileSHA256": "b14ed7746ef2124c810eee182ad46b3e7fba905ea3aaa97804034bb2eb7d57f7",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:0763721528226d41a8c3",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-023-n13-q05-q08-sibling/GATE1_N13_Q05_REVIEW_SHEET.md",
+      "sourceFileSHA256": "ce3043a7971fb43a06bb1557ae80e60eca806366b4b5ddc56f7fd06b7016c301",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:7619a989511b6fcdfeb0",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-023-n13-q05-q08-sibling/GATE1_N13_Q08_REVIEW_SHEET.md",
+      "sourceFileSHA256": "9ba496c205e801a381aa066932ea615584fa7f1f1fe31ecd0310a0ff092ca5cc",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:8d7d62dbf99eccf853d6",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-024-n05-q18-hint-leak/FINDINGS.md",
+      "sourceFileSHA256": "9d3b79492c04aedd5fc158a44d192b10bd5f9b788975f2b5e08d93a8b858e21a",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:45d14d888fefb2c2ff4a",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-024-n05-q18-hint-leak/GATE1_N05_Q18_REVIEW_SHEET.md",
+      "sourceFileSHA256": "770610354016f802c9ad2d8a681ccb629c5ab125137b9446a4d53d749cea9189",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:98487393ab13845e05df",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-025-factor-hint-leak-qa-proposals/FINDINGS.md",
+      "sourceFileSHA256": "4ebaadfebb6a2b8b4345d5dc4aa3151a252c359defa40afa004367abdddf7cac",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:0474c07a3e965d7db5ec",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-025-factor-hint-leak-qa-proposals/FIVE_ITEM_ACCEPTANCE_20261023.md",
+      "sourceFileSHA256": "9c96eb8e5ebe9126d6e0b1046c83e4534b37d02eceab422940605862dee1701e",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:ff9d222ffa397fc87501",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-025-factor-hint-leak-qa-proposals/GATE1_N05_Q11_REVIEW_SHEET.md",
+      "sourceFileSHA256": "c71beb28301a5ab3703cb3e66a689dc62b3fb9eb3486137086daa94e0cb93fce",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:8c5ee634deda36afe9e7",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-025-factor-hint-leak-qa-proposals/GATE1_N06_Q03_REVIEW_SHEET.md",
+      "sourceFileSHA256": "0e19d6ab1eed65746bcb69593bbab10a4410d889984bb7153e7f1c3038b1c17b",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:6832b3ecfd65b42ba918",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-025-factor-hint-leak-qa-proposals/GATE1_N06_Q06_REVIEW_SHEET.md",
+      "sourceFileSHA256": "73957855083c952065deb9c01e26b40f146d3b8c654974893b8930d0c057d72e",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:18d1cc599d02563b31d6",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-025-factor-hint-leak-qa-proposals/GATE1_N06_Q12_REVIEW_SHEET.md",
+      "sourceFileSHA256": "4770528a0cbfa072f3bd8925127c48283b718c7dd5ca7301424a5ed10958d99f",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:73ad30c548d28e3b899b",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-025-factor-hint-leak-qa-proposals/P016_VISUAL_ACCEPTANCE_20261023.md",
+      "sourceFileSHA256": "14ae9e399240214850b948fbd5fd29663e677304ae8ec4148bcf035c4eecda7d",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:e9eed09a5e6124011324",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-025-factor-hint-leak-qa-proposals/SEVEN_ITEM_ACCEPTANCE_20261023.md",
+      "sourceFileSHA256": "30e0d642f440a1179c9ac9339acb68e168519b650f83d94bf28cabbdc9ce4100",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:3e093b2ca11c267aad2d",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-026-n06-q12-distinct-distractor/FINDINGS.md",
+      "sourceFileSHA256": "f2d8cdfd4ff0d25443a7ff819de3b8e4c40aac1f85af7d34a71c299d363cbce4",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:1e4216c5609101d908f1",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-026-n06-q12-distinct-distractor/GATE1_N06_Q12_CHOICES_REVIEW_SHEET.md",
+      "sourceFileSHA256": "6f0133c47c3c411afb1773ba864deafe6ade6d062fbee65534e418ea5d4f75c7",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:fd17586684d1954593ed",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-027-first-theme-repair/FINDINGS.md",
+      "sourceFileSHA256": "f0870524b6029502c7aefac17736e127e4c65c5491d78564f2cdafc40923e995",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:afaf63d81ada10665077",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-028-n01-teaching-sequence/FINDINGS.md",
+      "sourceFileSHA256": "518d1615d3233eff80efccdcf00f03abfa91f5c296247cf03110b165dccd7d19",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:36a59b0d6b281d0a8bda",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-029-section-one-teaching/FINDINGS.md",
+      "sourceFileSHA256": "c28c77e5232e3525958705e3c5c437163204bec22875b64b8028e73230e697bc",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:f463ea542dafb1cf6b52",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-030-section-one-results-and-blanks/FINDINGS.md",
+      "sourceFileSHA256": "7e64e1a19a66aa74c098d0efb2f83c3bfe59e134a6bd3bae03196d69bb4998f0",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:aef0db092aa445ea86a0",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-031-section-one-typesetting/FINDINGS.md",
+      "sourceFileSHA256": "2db95015caee8f8cb9f65e17c54b9f17038d280c1ec172014b79b0fa346bd94a",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    },
+    {
+      "id": "repo:2feb187f46cb13c08ef9",
+      "sourceType": "repository_candidate",
+      "sourcePath": "work/items/W-MATH-031-section-one-typesetting/USER_ACCEPTANCE_20261024.md",
+      "sourceFileSHA256": "d776e17bfd26d00f2e34c797be48532c69cdb8fa3026122f88fae15005fab16c",
+      "label": "UNKNOWN",
+      "eligibility": "ORIGINAL_MESSAGE_AND_TARGET_REQUIRED"
+    }
+  ],
+  "inventory": [
+    {
+      "path": "work/items/W-GOV-005-repository-os-port/FINDINGS.md",
+      "sha256": "a745937b6c9c0781291f8b29b2241676bc2c739f0a3967f72ec2a89be4155ad6",
+      "characters": 2986
+    },
+    {
+      "path": "work/items/W-GOV-006-creation-command/FINDINGS.md",
+      "sha256": "740f0a88bb4a389fae74eda3f03b78855702dfd55dd6f8dc8a5a5b3649fc2bf4",
+      "characters": 1954
+    },
+    {
+      "path": "work/items/W-GOV-007-correction-first-creation-loop/FINDINGS.md",
+      "sha256": "e59d9310a206fa9b611060116242ce2b66068c223c47a317fcb82015230c197a",
+      "characters": 1524
+    },
+    {
+      "path": "work/items/W-GOV-008-P002-marked-review/FINDINGS.md",
+      "sha256": "856a1fd15900accd0cb69240ab101ef70e129ab396c6f1e792c13479f9368368",
+      "characters": 777
+    },
+    {
+      "path": "work/items/W-GOV-008-P003-cross-block-audit/FINDINGS.md",
+      "sha256": "dc95599768c6a4f2b1143fe4c8033216c1d753f2e71c33e749febed428085902",
+      "characters": 8145
+    },
+    {
+      "path": "work/items/W-GOV-008-P003-three-gate-review/FINDINGS.md",
+      "sha256": "b0d65e54dddbc4599360cdf130051331e09a9699a90fd1a18ff27f5492fbf2fd",
+      "characters": 1946
+    },
+    {
+      "path": "work/items/W-GOV-008-P003-visual-pilot/ACCEPTANCE_LOG.md",
+      "sha256": "84ef59f380a3461de699a847dd778db53bf9a68e78fd4e464d5a0e2771181806",
+      "characters": 1598
+    },
+    {
+      "path": "work/items/W-GOV-008-P003-visual-pilot/FINDINGS.md",
+      "sha256": "bd887f03864a54520417b66a1eb7762ca1fed96b72d3d7951c208ee260e5fa57",
+      "characters": 1981
+    },
+    {
+      "path": "work/items/W-GOV-009-ci-wait-work-scheduling/FINDINGS.md",
+      "sha256": "b680997e5a7e082b7b2111fcee43ee4984b39ab284313953727cb0997571677a",
+      "characters": 3225
+    },
+    {
+      "path": "work/items/W-GOV-010-learning-production-workflow/FINDINGS.md",
+      "sha256": "f27e18f60c6036259af0f07eddc57841657027e871b88db7069717a3d91f678b",
+      "characters": 12140
+    },
+    {
+      "path": "work/items/W-MATH-002-textbook-ui-compression/FINDINGS.md",
+      "sha256": "8a6c8d516345c2f2523d2068e5ae4b055a24bdd65f0d8e022c748afe4edd52ee",
+      "characters": 12413
+    },
+    {
+      "path": "work/items/W-MATH-003-numbers-expressions-creation/FINDINGS.md",
+      "sha256": "730a27155dc1d95945515d28ac70b31f4c956b25cef161131660dcfa94ccce08",
+      "characters": 29906
+    },
+    {
+      "path": "work/items/W-MATH-004-inequality-derivation-correction/FINDINGS.md",
+      "sha256": "bf755569aebf356356ead22d5f30f716f124762309c2e2bffce9f7da5e573a55",
+      "characters": 6708
+    },
+    {
+      "path": "work/items/W-MATH-005-cross-unit-local-token-correction/FINDINGS.md",
+      "sha256": "2b12084d78cb3e19d3289e706902f9298e33ceb3126eddd7e6ca9840adaff1ba",
+      "characters": 6712
+    },
+    {
+      "path": "work/items/W-MATH-006-inline-hole-visual-consistency/FINDINGS.md",
+      "sha256": "e0d18b2fa07c74841b8945f69b6b97243d845ddd023366edf1cffd7df96e4389",
+      "characters": 1138
+    },
+    {
+      "path": "work/items/W-MATH-007-coefficient-one-display/FINDINGS.md",
+      "sha256": "4eeb99109b5ec93708f95ce6db1abb7d0d74903f4de8643b514f2acc640ab88c",
+      "characters": 2502
+    },
+    {
+      "path": "work/items/W-MATH-008-n12-cost-model-and-restart/FINDINGS.md",
+      "sha256": "8819f2a5edf2f1756516e531d16c4333d150a0ee4f183f773d4cc9f12d5ad29c",
+      "characters": 1918
+    },
+    {
+      "path": "work/items/W-MATH-009-n09-square-atomicity/FINDINGS.md",
+      "sha256": "0427c0fe45d0da487b873163b5e0e0c4c584e6508dd634e3b216d8fc0e930e64",
+      "characters": 955
+    },
+    {
+      "path": "work/items/W-MATH-010-n02-zero-term-prompt/FINDINGS.md",
+      "sha256": "791b72ab43a9db58d9b92700ba1d9a3a2064f3ebb6d93452eb3522a759c6e0b4",
+      "characters": 912
+    },
+    {
+      "path": "work/items/W-MATH-011-n11-inequality-derivation-correction/FINDINGS.md",
+      "sha256": "f10ba9da95fcc579ec5ae18b36832c17448c1d8b07100f2faf3d5b03a326d406",
+      "characters": 2554
+    },
+    {
+      "path": "work/items/W-MATH-011-n11-inequality-derivation-correction/GATE1_N11_Q01_Q04_REVIEW_SHEET.md",
+      "sha256": "6ede89e0789d4bde01d388ff210986951b1e089b2d486a44b2dc2393054b98bc",
+      "characters": 4855
+    },
+    {
+      "path": "work/items/W-MATH-012-n11-q11-derivation-correction/FINDINGS.md",
+      "sha256": "d86015db27b665683275b56e2ff0b941200fc90c22ee1aa63c46a36e946a205a",
+      "characters": 518
+    },
+    {
+      "path": "work/items/W-MATH-012-n11-q11-derivation-correction/GATE1_N11_Q11_REVIEW_SHEET.md",
+      "sha256": "50ba7fc27f96cb454ee7052975b64fe748ab61ccbc384e65c02c7ddf30d9094c",
+      "characters": 4115
+    },
+    {
+      "path": "work/items/W-MATH-013-n11-q14-derivation-correction/FINDINGS.md",
+      "sha256": "ae5c908c6142d3067712da4259f9c1c8dd60b48c26a5bf2a1431bb4d142bf631",
+      "characters": 2038
+    },
+    {
+      "path": "work/items/W-MATH-013-n11-q14-derivation-correction/GATE1_N11_Q14_REVIEW_SHEET.md",
+      "sha256": "2642225caca4c42ea714613f47fc07a7ea097cc84b7fe2b2376322404f8e345b",
+      "characters": 5321
+    },
+    {
+      "path": "work/items/W-MATH-014-n14-q07-general-proof-correction/FINDINGS.md",
+      "sha256": "653356f981da6be3cb23dd02ccb367026320c8477cc054279c4ec2c090a6c621",
+      "characters": 3134
+    },
+    {
+      "path": "work/items/W-MATH-014-n14-q07-general-proof-correction/GATE1_N14_Q07_REVIEW_SHEET.md",
+      "sha256": "f8e2d7f35385b7a9ae5796a5ea354ceaadf77a8ce5f3f07070d1fcb932c0244c",
+      "characters": 5047
+    },
+    {
+      "path": "work/items/W-MATH-015-n14-q08-outside-proof-correction/FINDINGS.md",
+      "sha256": "18bef5e566fd349fc01f80f9ca26672a94680a42e9eaa4aca1f1309f3dd4c5e3",
+      "characters": 3595
+    },
+    {
+      "path": "work/items/W-MATH-015-n14-q08-outside-proof-correction/GATE1_N14_Q08_REVIEW_SHEET.md",
+      "sha256": "943e7b81999e7da5146bb7bb4897a7c2522ec92ed1cbcb4964f73a188842059d",
+      "characters": 5748
+    },
+    {
+      "path": "work/items/W-MATH-016-n14-q12-two-branch-correction/FINDINGS.md",
+      "sha256": "a23ebf85f69f8ab59089d6436a6a09dab2652b05132bdd102642d87d6730ffb5",
+      "characters": 2722
+    },
+    {
+      "path": "work/items/W-MATH-016-n14-q12-two-branch-correction/GATE1_N14_Q12_REVIEW_SHEET.md",
+      "sha256": "7451bc241a45b39c88aff8fe35de9e3ee46667dc5aa0d9a0a24e85106131a2a6",
+      "characters": 5520
+    },
+    {
+      "path": "work/items/W-MATH-017-n11-arithmetic-learner-operations/FINDINGS.md",
+      "sha256": "635905fd021d827dd1daaf9b2ca98efc765f6636cf9658dd3d3aa420aa36d2cd",
+      "characters": 10684
+    },
+    {
+      "path": "work/items/W-MATH-017-n11-arithmetic-learner-operations/P006_GATE1_VISUAL_ACCEPTANCE.md",
+      "sha256": "1498248c98adb1b51e7621d905cd7fa6c163c625b7e4b7a1b345d4719d7d3fa1",
+      "characters": 2857
+    },
+    {
+      "path": "work/items/W-MATH-017-n11-arithmetic-learner-operations/P007_GATE1_REVIEW_SHEET.md",
+      "sha256": "471116efc80059a27f4c4571a17212a1a7e53bad62586bf5e9201a9b7e36b3af",
+      "characters": 3261
+    },
+    {
+      "path": "work/items/W-MATH-017-n11-arithmetic-learner-operations/P008_GATE1_REVIEW_SHEET.md",
+      "sha256": "3b11104497414747278a9478819a121f2d0cd531aa76fd450ec778d037ebec71",
+      "characters": 4191
+    },
+    {
+      "path": "work/items/W-MATH-018-n14-q10-three-sided-inequality/FINDINGS.md",
+      "sha256": "5863c1ac267461efae65647abe42d4841cd256814fef8e2b1070af6464e058e3",
+      "characters": 7076
+    },
+    {
+      "path": "work/items/W-MATH-018-n14-q10-three-sided-inequality/GATE1_P004_N14_Q10_REVIEW_SHEET.md",
+      "sha256": "3bd56500754872898121f09d0812078ffa48fda8ac0c734919a7ad28cacac053",
+      "characters": 5100
+    },
+    {
+      "path": "work/items/W-MATH-019-n14-q14-three-sided-addition/FINDINGS.md",
+      "sha256": "3ad6df6590c045f5e7d89198a0408667c7a3fdcc55838c933ae7f5bbff8c2d72",
+      "characters": 3334
+    },
+    {
+      "path": "work/items/W-MATH-020-n14-q15-three-sided-division/FINDINGS.md",
+      "sha256": "a9b8bbf5e82338bd613a5f67f71b08bfc9761ba5e8abb970a245927510bfe983",
+      "characters": 2880
+    },
+    {
+      "path": "work/items/W-MATH-021-n14-q15-middle-hint/FINDINGS.md",
+      "sha256": "575b1cdb36d2f98aa30a94f69faeafae1b8df3002e8ca64b229f9a051c404c9a",
+      "characters": 3071
+    },
+    {
+      "path": "work/items/W-MATH-022-n14-q16-endpoint-verification/FINDINGS.md",
+      "sha256": "1c7fe57bcf929368d3fcb6480e40595ab555e942e809cd88444fda339a88c125",
+      "characters": 4238
+    },
+    {
+      "path": "work/items/W-MATH-022-n14-q16-endpoint-verification/GATE1_N14_Q16_REVIEW_SHEET.md",
+      "sha256": "95cd88a64ff1150c2ab19cb6982a6bc9f41e587c53cb29af2c57e5198691cbfa",
+      "characters": 4476
+    },
+    {
+      "path": "work/items/W-MATH-023-n13-q05-q08-sibling/FINDINGS.md",
+      "sha256": "b14ed7746ef2124c810eee182ad46b3e7fba905ea3aaa97804034bb2eb7d57f7",
+      "characters": 4492
+    },
+    {
+      "path": "work/items/W-MATH-023-n13-q05-q08-sibling/GATE1_N13_Q05_REVIEW_SHEET.md",
+      "sha256": "ce3043a7971fb43a06bb1557ae80e60eca806366b4b5ddc56f7fd06b7016c301",
+      "characters": 3394
+    },
+    {
+      "path": "work/items/W-MATH-023-n13-q05-q08-sibling/GATE1_N13_Q08_REVIEW_SHEET.md",
+      "sha256": "9ba496c205e801a381aa066932ea615584fa7f1f1fe31ecd0310a0ff092ca5cc",
+      "characters": 4259
+    },
+    {
+      "path": "work/items/W-MATH-024-n05-q18-hint-leak/FINDINGS.md",
+      "sha256": "9d3b79492c04aedd5fc158a44d192b10bd5f9b788975f2b5e08d93a8b858e21a",
+      "characters": 1886
+    },
+    {
+      "path": "work/items/W-MATH-024-n05-q18-hint-leak/GATE1_N05_Q18_REVIEW_SHEET.md",
+      "sha256": "770610354016f802c9ad2d8a681ccb629c5ab125137b9446a4d53d749cea9189",
+      "characters": 4041
+    },
+    {
+      "path": "work/items/W-MATH-025-factor-hint-leak-qa-proposals/FINDINGS.md",
+      "sha256": "4ebaadfebb6a2b8b4345d5dc4aa3151a252c359defa40afa004367abdddf7cac",
+      "characters": 36555
+    },
+    {
+      "path": "work/items/W-MATH-025-factor-hint-leak-qa-proposals/FIVE_ITEM_ACCEPTANCE_20261023.md",
+      "sha256": "9c96eb8e5ebe9126d6e0b1046c83e4534b37d02eceab422940605862dee1701e",
+      "characters": 3617
+    },
+    {
+      "path": "work/items/W-MATH-025-factor-hint-leak-qa-proposals/GATE1_N05_Q11_REVIEW_SHEET.md",
+      "sha256": "c71beb28301a5ab3703cb3e66a689dc62b3fb9eb3486137086daa94e0cb93fce",
+      "characters": 5690
+    },
+    {
+      "path": "work/items/W-MATH-025-factor-hint-leak-qa-proposals/GATE1_N06_Q03_REVIEW_SHEET.md",
+      "sha256": "0e19d6ab1eed65746bcb69593bbab10a4410d889984bb7153e7f1c3038b1c17b",
+      "characters": 3868
+    },
+    {
+      "path": "work/items/W-MATH-025-factor-hint-leak-qa-proposals/GATE1_N06_Q06_REVIEW_SHEET.md",
+      "sha256": "73957855083c952065deb9c01e26b40f146d3b8c654974893b8930d0c057d72e",
+      "characters": 4241
+    },
+    {
+      "path": "work/items/W-MATH-025-factor-hint-leak-qa-proposals/GATE1_N06_Q12_REVIEW_SHEET.md",
+      "sha256": "4770528a0cbfa072f3bd8925127c48283b718c7dd5ca7301424a5ed10958d99f",
+      "characters": 3476
+    },
+    {
+      "path": "work/items/W-MATH-025-factor-hint-leak-qa-proposals/P016_VISUAL_ACCEPTANCE_20261023.md",
+      "sha256": "14ae9e399240214850b948fbd5fd29663e677304ae8ec4148bcf035c4eecda7d",
+      "characters": 924
+    },
+    {
+      "path": "work/items/W-MATH-025-factor-hint-leak-qa-proposals/SEVEN_ITEM_ACCEPTANCE_20261023.md",
+      "sha256": "30e0d642f440a1179c9ac9339acb68e168519b650f83d94bf28cabbdc9ce4100",
+      "characters": 1618
+    },
+    {
+      "path": "work/items/W-MATH-026-n06-q12-distinct-distractor/FINDINGS.md",
+      "sha256": "f2d8cdfd4ff0d25443a7ff819de3b8e4c40aac1f85af7d34a71c299d363cbce4",
+      "characters": 2930
+    },
+    {
+      "path": "work/items/W-MATH-026-n06-q12-distinct-distractor/GATE1_N06_Q12_CHOICES_REVIEW_SHEET.md",
+      "sha256": "6f0133c47c3c411afb1773ba864deafe6ade6d062fbee65534e418ea5d4f75c7",
+      "characters": 2431
+    },
+    {
+      "path": "work/items/W-MATH-027-first-theme-repair/FINDINGS.md",
+      "sha256": "f0870524b6029502c7aefac17736e127e4c65c5491d78564f2cdafc40923e995",
+      "characters": 1939
+    },
+    {
+      "path": "work/items/W-MATH-028-n01-teaching-sequence/FINDINGS.md",
+      "sha256": "518d1615d3233eff80efccdcf00f03abfa91f5c296247cf03110b165dccd7d19",
+      "characters": 733
+    },
+    {
+      "path": "work/items/W-MATH-029-section-one-teaching/FINDINGS.md",
+      "sha256": "c28c77e5232e3525958705e3c5c437163204bec22875b64b8028e73230e697bc",
+      "characters": 673
+    },
+    {
+      "path": "work/items/W-MATH-030-section-one-results-and-blanks/FINDINGS.md",
+      "sha256": "7e64e1a19a66aa74c098d0efb2f83c3bfe59e134a6bd3bae03196d69bb4998f0",
+      "characters": 402
+    },
+    {
+      "path": "work/items/W-MATH-031-section-one-typesetting/FINDINGS.md",
+      "sha256": "2db95015caee8f8cb9f65e17c54b9f17038d280c1ec172014b79b0fa346bd94a",
+      "characters": 2014
+    },
+    {
+      "path": "work/items/W-MATH-031-section-one-typesetting/USER_ACCEPTANCE_20261024.md",
+      "sha256": "d776e17bfd26d00f2e34c797be48532c69cdb8fa3026122f88fae15005fab16c",
+      "characters": 916
+    }
+  ],
+  "trainingRun": false,
+  "hash": "be4675bcf70d38685cf8cdad7e4778887fc04719767524f46f3e9fb84b7c25d2"
+}

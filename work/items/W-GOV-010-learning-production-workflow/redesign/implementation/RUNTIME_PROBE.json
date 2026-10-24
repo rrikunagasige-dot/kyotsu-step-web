@@ -1,0 +1,72 @@
+{
+  "simulation": false,
+  "completed": [
+    "S00",
+    "S01"
+  ],
+  "next": {
+    "status": "READY",
+    "task": {
+      "work_id": "W-GOV-010-P003-runtime-probe",
+      "node": {
+        "id": "S02",
+        "name": "完全抽出",
+        "actor": "TOOL",
+        "depends_on": [
+          "S01"
+        ],
+        "required": [
+          "checks",
+          "artifacts",
+          "unknowns"
+        ],
+        "block": null,
+        "watch": "production",
+        "returns_to": [],
+        "ai_required": true,
+        "ml_advisory": false
+      },
+      "task_id": "8a2a1d098fad658f0e797b0b6baf737fe60f1fa278e307d814186eac2a03796e",
+      "input_hash": "dcf8343e553f7c57dfcd95ebf6fb8f72ad4da1d4a39c7af2b29068945af6ae9a",
+      "source_sha": "2e767cc4917e785fb70a4598ba060272d3f37763",
+      "candidate_sha": "2e767cc4917e785fb70a4598ba060272d3f37763",
+      "rules": {
+        "governance/REVIEW_POLICY.json": "a71148f007a79b124385c7645e6bc01564bfa02b12152174883543f31f6ce72d"
+      },
+      "proposal": {
+        "hash": "a34ba373979b6e612c565db8ecd142d8208ac96d1591b7e4776d3cd26a569a8e",
+        "id": "P-003"
+      },
+      "scope": {
+        "paths": [
+          "tools/textbook/",
+          "workflow/"
+        ],
+        "preserve": [
+          "src/data/textbook/",
+          "public/"
+        ]
+      },
+      "source_manifest": {
+        "tools/textbook/fixtures/n07-source-index.json": "62a1ad951166eabc9672eca0a81a997aa6a362fe01aed045705caecd77a2982b",
+        "work/items/W-GOV-010-learning-production-workflow/redesign/DESIGN.md": "c627637b076bf5ad8d892b6f391bb05ad5afa46b650b8e9383930d53e987d897"
+      },
+      "previous_results": {
+        "S01": {
+          "actor": "production-runner",
+          "artifact": "d5329177c7bd7938c628f3e45462eefa02b7e45801af7306bd9d6ffe3550d519",
+          "input_hash": "703b44d84d1e8749451337f2fa2c052ef56f6e2f26da2e7b6ce0101c254560dd",
+          "node": "S01",
+          "verdict": "PASS"
+        }
+      },
+      "do_not_touch": [
+        "src/data/textbook/",
+        "public/"
+      ],
+      "completion_is_not_semantic_proof": true
+    }
+  },
+  "scope": "infrastructure recovery only; not a full lesson run",
+  "ledgerHead": "57be15d4c014230b9f71a0a4672f7474c78f23dad39793fc0d6aee00c0f31133"
+}

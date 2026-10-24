@@ -1,5 +1,9 @@
 # MASTER MATCH GRAPH — target rriku
 
+## N07 M5 implementation and release — 2026-10-24
+
+Content design APPROVED by「いいよ。まず作成してみよう！」→ exact plan0e2eea06 → registered source4fb7a98e → CI40101499771 PASS (619 applicable tests,39 authoring,3-width real-browser36 responses/wrong choices/history/reload/migration) → existing Pages release40101675993 PASS → hosted exact-source and app checks PASS → user hands-on feedback. First title22bc43ba and all other data protected; no N08–NE02 generation approval is inferred. See W-GOV-010/n07/integration/VERIFICATION.json for release status. Older N07 design-pending entries are historical.
+
 
 ## Latest — W-GOV-010 approved code+AI pilot implemented; N07 design ready (2026-10-24)
 

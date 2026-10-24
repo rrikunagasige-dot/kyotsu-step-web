@@ -1,0 +1,37 @@
+{
+  "sourceSHA": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+  "runId": 40101499771,
+  "status": "PASS",
+  "results": [
+    {
+      "width": 320,
+      "answered": 36,
+      "stages": 14,
+      "allWrongChoices": true,
+      "reload": true,
+      "history": true,
+      "migration": true,
+      "geometry": "PASS"
+    },
+    {
+      "width": 390,
+      "answered": 36,
+      "stages": 14,
+      "allWrongChoices": true,
+      "reload": true,
+      "history": true,
+      "migration": true,
+      "geometry": "PASS"
+    },
+    {
+      "width": 1440,
+      "answered": 36,
+      "stages": 14,
+      "allWrongChoices": true,
+      "reload": true,
+      "history": true,
+      "migration": true,
+      "geometry": "PASS"
+    }
+  ]
+}

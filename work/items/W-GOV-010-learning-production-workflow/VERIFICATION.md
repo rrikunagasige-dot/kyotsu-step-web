@@ -2,6 +2,16 @@
 
 Status: PASS
 
+## N07 learner integration — exact scope
+
+User「いいよ。まず作成してみよう！」approved the concrete content design. n07/integration/VERIFICATION.json is the current M5 verification record. Exact source4fb7a98e passed CI40101499771:619 applicable learner tests,39 authoring tests, full build, changed-code lint, all36 actual responses and every wrong choice at320/390/1440px, table, result gates, numbering/overflow, reload, complete history and persisted v3→v4 migration. Screenshots were visually inspected. Both unrelated physics catalog/count failures reproduce in untouched99b57ba and are preserved in BASELINE_FAILURES.log. Do not claim whole-repo tests/governance pass.
+
+Only N07 is integrated. Original N07 v3 source is preserved exactly; unchanged n07-10/n07-14 records migrate and all old records are archived. First-title canonical source/figures and all other-mode data are byte protected. Existing Pages release40101675993 PASS: compiled N07 play, accepted first-title typography+history, hosted exact source/storage key, public N07 all operations/history/reload/migration and public first-title typography. App source4fb7a98e, hosting workflow618e2be2. Human hands-on acceptance is separate.
+
+## Historical tooling-stage verification
+
+The following M0–M4 statements record the earlier tooling-only state; they do not mean that the approved M5 work is still awaiting design approval.
+
 ## Current implementation verification — bounded M0–M4 pilot
 
 P-002＋external-code adoption was approved by the current user. IMPLEMENTATION_CHECKPOINT.json and evidence/pilot contain the current technical results. Source/contract/candidate/compiler/state/job tooling is implemented and the N07 full design is ready.35 native tests +4 actual-schema/KaTeX/retained-ID/duplicate-formula tests +2 source tests PASS; independent Python arithmetic23 checks and existing math/domain351 tests, typecheck/build PASS. Exact-source CI PASS at f61b57e85a909d76ef0342aa37a1941439971311, run40099358494: declared pnpm11.9.0/Node22, frozen install,35+4 tests, typecheck,2 source fixtures and23 independent arithmetic checks. This closing documentation commit changes no tested implementation bytes. No src/public/hosting-pointer changes. New real UI, progress migration and publication are not implemented or verified by these results.

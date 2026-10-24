@@ -33,12 +33,20 @@
       "23 independent arithmetic checks"
     ]
   },
-  "next": "N07 concrete design review before learner integration",
+  "next": "N07 public app hands-on feedback; content design is already approved",
   "protectedSourceTrees": {
     "src": "1f8d55b5d4388d90bb1f142d2722adb7849b4cd5",
     "public": "f6369a54f998012513d969f83989026cfb78c729"
   },
   "planSHA256": "0e2eea0619181b8d1e5eaef0a27c83c27d0690f7b87b66e3f8e690f0daab4b81",
   "protectedBaseline": "22bc43ba53fa87bb85e82e18a25db13a5c8a485c",
-  "proposalPunctuationCheck": "PASS: only doubled full stops removed;36 hints/14 questions/41 nodes preserved"
+  "proposalPunctuationCheck": "PASS: only doubled full stops removed;36 hints/14 questions/41 nodes preserved",
+  "integration": {
+    "status": "PASS",
+    "sourceCommit": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+    "verification": "n07/integration/VERIFICATION.json",
+    "publicURL": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=4fb7a98e#/learning/textbook/math-numbers-expressions-n07",
+    "userAppAcceptance": "NOT_YET"
+  },
+  "recordScope": "M0-M4 fields preserved as historical; current M5 is the integration object"
 }

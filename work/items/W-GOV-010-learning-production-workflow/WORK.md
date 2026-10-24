@@ -1,6 +1,6 @@
 # W-GOV-010 — コード＋AIの教材制作パイロット
 
-Status: IMPLEMENTING
+Status: VERIFYING
 Proposal: P-002＋REFERENCE_CODE_RESEARCH（承認記録APPROVAL_20261024.md）
 Date: 2026-10-24 Asia/Tokyo
 Branch: work/textbook-code-ai-pilot-20261024
@@ -13,9 +13,9 @@ Authority: current user approval > Constitution > exact P-002＋reference-code a
 
 Completed pilot: M0 current review-policy consolidation with historical preservation; M1 source identities/schema/compiler adapter; M2 Fraction/Pandoc-based N07 mathematics; M3 candidate/prose/blank/choice generation, source/novice audit, compiler, result/render metadata, state model, job/cache/resume and bounded CLI; M4 all14 N07 questions plus unnumbered content drafted. Concrete41-node/36-interaction design is n07/N07_DESIGN.md and N07_DESIGN_PLAN.json, status PROPOSED. This is a usable bounded pilot, not a universal all-subject generator or an integrated new learner UI.
 
-Do Not Touch: existing src/public, first-title acceptance/content/IDs/figures/revisions/progress, other-mode materials, main hosting pointer, original source. New Fraction dependency is exact5.3.4 dev-only; existing locked package versions are retained. No learner data or deployment changed.
+Protected: accepted first-title content/IDs/figures/revisions/progress, all non-N07 units and other modes, original Word and existing storage namespace. The current explicit N07 approval authorizes only its new learner source, isolated renderer/shared opt-ins, scoped v1–v3 migration and existing-Pages publication. See n07/CONTENT_APPROVAL.json.
 
-Current: N07 content design APPROVED by user「いいよ。まず作成してみよう！」; M5 learner integration in progress. Previous exact-source authoring CI PASS at f61b57e85a909d76ef0342aa37a1941439971311 (run40099358494); tooling technical verification complete and N07 design delivered for review. Scope-specific technical checks PASS locally; whole-repo governance retains4 old WORK Status-format errors and2 old navigation warnings. No false whole-repository PASS.
-Next: deliver n07/N07_DESIGN.md for the concrete content design review required by approved P-002. Following its approval, integrate this N07 plan with existing stage/result/number/layout components, implement the scoped progress migration, run actual app/mobile/public-source QA, compile/publish the completed approved N07 to the existing app and deliver its verified direct URL. No screenshot-sheet or duplicate publication approval gate.
+Current: M5 N07 integration complete at4fb7a98e7f864839ccc1374080473df4ba60ce88. Exact-source CI40101499771 PASS:619 applicable learner tests,39 authoring tests, build, changed-code lint, actual browser all36 responses and every wrong choice at320/390/1440px, reload/full history and persisted v3→v4 migration. Separate untouched checkout99b57ba reproduces two unrelated physics catalog/count test failures; these are not counted as PASS. Whole-repo governance also retains its old4 metadata errors/2 warnings.
 
-Not yet implemented: actual N07 learner registration, final React/result/table adapter, progress migration, mobile geometry and real hosted operation tests; later N08–NE02 rule generation. Those units currently have source inventories only. N07 design is not human accepted merely because machine checks pass.
+Publication: release40101675993 PASS, hosting main618e2be2 points to exact source4fb7a98e. Compiled N07/first-title typography+history and hosted exact-source/N07/first-title typography checks all passed. See n07/integration/VERIFICATION.json. No unseen N08–NE02 content is promoted. Existing first-title acceptance remains22bc43ba.
+Next: user hands-on N07 feedback at https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=4fb7a98e#/learning/textbook/math-numbers-expressions-n07. Technical implementation/publication verification and memory close are complete. The approved N07 design is no longer awaiting design approval; user app acceptance is still distinct.

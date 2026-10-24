@@ -1,0 +1,65 @@
+✓ Lockfile passes supply-chain policies (verified 55m ago)
+Lockfile is up to date, resolution step is skipped
+Already up to date
+
+Done in 793ms using pnpm v11.25.0
+
+ RUN  v3.2.7 /tmp/ks-n07-before
+
+ ❯ src/data/physicsTaxonomy.test.ts (2 tests | 1 failed) 10ms
+   ✓ physics taxonomy > keeps the approved 5-domain / 23-topic structure short and unique 3ms
+   × physics taxonomy > classifies the current published physics catalog without leftovers 6ms
+     → expected [ …(3) ] to have a length of 17 but got 3
+ ❯ src/domain/questionSchema.test.ts (4 tests | 1 failed) 154ms
+   × question catalog schema > accepts the full built-in versioned question catalog 12ms
+     → expected [ …(39) ] to have a length of 19 but got 39
+   ✓ question catalog schema > requires common-test questions to keep the final choice outside the guide flow 50ms
+   ✓ question catalog schema > reports a precise path for a missing correct option 44ms
+   ✓ question catalog schema > rejects missing image and related question references 47ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/data/physicsTaxonomy.test.ts > physics taxonomy > classifies the current published physics catalog without leftovers
+AssertionError: expected [ …(3) ] to have a length of 17 but got 3
+
+- Expected
++ Received
+
+- 17
++ 3
+
+ ❯ src/data/physicsTaxonomy.test.ts:21:21
+     19|   it('classifies the current published physics catalog without leftove…
+     20|     const physics = builtInQuestions.filter((question) => question.sub…
+     21|     expect(physics).toHaveLength(17)
+       |                     ^
+     22|     expect(physics.filter((question) => physicsTopicForQuestion(questi…
+     23| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  src/domain/questionSchema.test.ts > question catalog schema > accepts the full built-in versioned question catalog
+AssertionError: expected [ …(39) ] to have a length of 19 but got 39
+
+- Expected
++ Received
+
+- 19
++ 39
+
+ ❯ src/domain/questionSchema.test.ts:8:30
+      6| describe('question catalog schema', () => {
+      7|   it('accepts the full built-in versioned question catalog', () => {
+      8|     expect(builtInQuestions).toHaveLength(19)
+       |                              ^
+      9|     expect(new Set(builtInQuestions.map((question) => question.questio…
+     10|   })
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  2 failed (2)
+      Tests  2 failed | 4 passed (6)
+   Start at  07:09:19
+   Duration  1.50s (transform 746ms, setup 0ms, collect 2.13s, tests 164ms, environment 0ms, prepare 151ms)
+

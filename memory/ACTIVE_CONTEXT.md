@@ -1,3 +1,7 @@
+## N07 integration approved and verified — 2026-10-24
+
+User「いいよ。まず作成してみよう！」approved exact N07 design (CONTENT_APPROVAL.json). Source4fb7a98e,619 applicable learner +39 authoring tests and320/390/1440px real-browser36-response/wrong-choice/history/reload/migration checks PASS. Two unrelated physics baseline test failures are recorded separately. N07 rev4 integrates14 source questions/41 nodes/36 operations, with only n07-10/n07-14 progress retained and all old records archived. First title and all other data remain protected. Existing-app release40101675993 PASS (hosting618e2be2, source4fb7a98e), including public N07 and accepted-first-title checks; current source/hosted verification is in W-GOV-010/n07/integration/VERIFICATION.json. Do not ask for the already-approved content design/publication again. Prior “N07 design pending” entries below are historical.
+
 # ACTIVE CONTEXT — target rriku
 
 

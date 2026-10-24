@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "sourceCommit": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+  "runId": 40101499771,
+  "runURL": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40101499771",
+  "planSHA256": "0e2eea0619181b8d1e5eaef0a27c83c27d0690f7b87b66e3f8e690f0daab4b81",
+  "contentApproval": "../CONTENT_APPROVAL.json",
+  "applicableLearnerTests": 619,
+  "authoringTests": 39,
+  "build": "PASS",
+  "lintChangedCode": "PASS",
+  "browserWidths": [
+    320,
+    390,
+    1440
+  ],
+  "browserChecks": [
+    "all36 real responses",
+    "every authored wrong choice",
+    "result gating",
+    "no math/number overlap or overflow",
+    "remainder table",
+    "reload",
+    "full history expansion",
+    "persisted v3-to-v4 migration",
+    "retained answer details",
+    "other-unit progress unchanged"
+  ],
+  "sourceScope": "PASS: accepted first title and other data unchanged",
+  "baselineFailures": [
+    "src/data/physicsTaxonomy.test.ts count17 vs3",
+    "src/domain/questionSchema.test.ts count19 vs39"
+  ],
+  "baselineFailuresReproducedAt": "99b57baccd3ac6cb3d70fe5367c9ab6a10562876",
+  "publication": "PASS",
+  "humanAppAcceptance": "NOT_YET",
+  "publicationWorkflowSHA": "618e2be2a0a4dab9fd853288148829a11b3b0b70",
+  "publicationRunId": 40101675993,
+  "publicationRunURL": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40101675993",
+  "publicURL": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=4fb7a98e#/learning/textbook/math-numbers-expressions-n07",
+  "hostedExactSource": "PASS",
+  "hostedN07": "PASS: all36, all wrong choices, history/reload/migration at320/390/1440px",
+  "acceptedFirstTitle": "PASS: compiled typography/history and hosted typography at320/360/390/1440px",
+  "storageNamespace": "kyotsu-step-gate3-math-20261023"
+}

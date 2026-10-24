@@ -19,3 +19,12 @@ All required technical checks completed below. User full-section acceptance rema
 - Evidence artifact12547735630, section-one-S4-16fe82c7-verification,20466376 bytes, SHA256 a911735fcf4843913e453c19533780ee9437078858d7ab89bd10d8809e172f44. Contains actual compiled/hosted screenshots, line geometry, route/history and arithmetic reports.
 - Review URL: https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=16fe82c7#/learning/textbook/math-numbers-expressions-n01
 - Technical verification is not pedagogical acceptance. Prior N01 sample acceptance retained; new full-section user review PENDING. No independent-agent audit claimed.
+
+## FINAL successor verification — SUCCESS
+- Exact final sourcef2a184b34a55650ebb2a04792de46cc7059bbaab; hosting main7e31f353ea682f7b4d1f2ef18eeede8248ad997a.
+- Run40061423814/job120775562560 completed SUCCESS. All446 tests, both math gates including396 current equations/611 distractors, build, compiled21-flow check, public16-route/reload/history check and actual public21-flow check repeated and PASS.
+- Each21-flow suite768 correct interactions at320/390/1440 plus wrong/retry, history/reset, no malformed math and zero inner mathematical-line overflow. One duplicated N06 explanatory paragraph was removed; no controls/answers or accepted N01 sample data changed from16fe82c7.
+- Public manifest independently fetched and matched both final SHAs;16 units/449 decisions, first section256, three themes, same storage namespace.
+- Final evidence artifact12547562789: section-one-S4-f2a184b3-verification,20400913 bytes, SHA256 063acf5e127d56254bd45155dc302cda2f7d8a75f7b394393f3e00358268fc4f. Contains actual compiled and public screenshots/reports. Previous16fe artifact remains historical.
+- Final user review URL: https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=f2a184b3#/learning/textbook/math-numbers-expressions-n01
+- Full-section user acceptance PENDING; no independent-agent audit or final-app acceptance is fabricated.

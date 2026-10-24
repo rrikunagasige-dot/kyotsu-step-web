@@ -11,3 +11,7 @@ PUBLISHED_FOR_USER_REVIEW. Source16fe82c7a67f83e1d6fde234b1217247777aeb7c; hosti
 All42 regions and106 original questions covered; first section256 decisions across71 semantic stages. Chapter remains three themes/16 units/449 decisions; existing storage namespace retained. Full-section user content acceptance remains PENDING. No next-theme work started.
 
 Final review polish: one duplicated N06 candidate-introduction paragraph was removed after screenshot reading. Source16fe82c7 delivery above remains a verified historical checkpoint; a successor frozen source/pointer and its full CI will be recorded before final handoff.
+
+## FINAL CURRENT DELIVERY
+Sourcef2a184b34a55650ebb2a04792de46cc7059bbaab is the final first-section edition. Hosting main7e31f353ea682f7b4d1f2ef18eeede8248ad997a; run40061423814 SUCCESS. This supersedes16fe82c7 only by removing one duplicated N06 candidate-introduction paragraph. Same71 stages/256 decisions and revisions, original106-question coverage and accepted N01 sample. PUBLISHED_FOR_USER_REVIEW; full-section pedagogical acceptance PENDING.
+Authoring truth is author-sequence.py plus its frozen BASELINE/ORIGINAL_SOURCE_MAPS inputs; firstSectionTeaching.json and COVERAGE.json are generated runtime/audit outputs. Make teaching edits in the authoring script and regenerate, rather than manually diverging the JSON.

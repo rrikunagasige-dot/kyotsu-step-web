@@ -100,3 +100,6 @@ N01 sample2977a44a accepted by user「嗯这个就不错可以」. User narrowed
 
 
 W-MATH-029 latest checkpoint: all first-section repairs published for user review from16fe82c7a67f83e1d6fde234b1217247777aeb7c via hosting28c7fdfe4842d461b7247638601e8c0c5423b019; run40060852723 SUCCESS.42 regions/106 source questions,256 active decisions; compiled and actual public21-flow suites PASS,446 tests and396 current equations PASS. Accepted N01 sample preserved. Full-section pedagogical acceptance PENDING. Next: user review of this same section; do not begin another theme without steering. Evidence/artifact hashes in W-MATH-029/VERIFICATION.md.
+
+
+FINAL W-MATH-029 sourcef2a184b34a55650ebb2a04792de46cc7059bbaab is publicly deployed via7e31f353ea682f7b4d1f2ef18eeede8248ad997a; final run40061423814 SUCCESS. One repeated N06 introduction removed after screenshot reading; same71 stages/256 decisions/106 source questions. Compiled and actual public21-flow suites,446 tests and396 current equations PASS. Full-section user review pending; previous N01 sample acceptance preserved. Current app link uses?v=f2a184b3. Do not start another theme without user steering.

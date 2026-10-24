@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "status": "ACTIVE_BOUNDED",
+  "proposal": "W-GOV-010/P-003",
+  "subject": "math",
+  "mode": "textbook",
+  "workflowVersion": "production/1",
+  "implementation": {
+    "repository": "rrikunagasige-dot/kyotsu-step-web",
+    "repoId": 1391122224,
+    "sourceSHA": "bba4df752bf4f9ad8a4972f57ca303b3f304ea45",
+    "branch": "work/production-workflow-p003-20261024",
+    "entry": "tools/textbook/PRODUCTION_README.md",
+    "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/bba4df752bf4f9ad8a4972f57ca303b3f304ea45/tools/textbook/PRODUCTION_README.md"
+  },
+  "verification": {
+    "runId": 40109892971,
+    "conclusion": "success"
+  },
+  "reviewSurface": "existing-public-app",
+  "screenshotApprovalRequired": false,
+  "repeatPublicationApproval": false,
+  "contentDesignApprovalRequired": true,
+  "modelStatus": "OFFLINE_ONLY",
+  "newLessonAccepted": false,
+  "protectedAppSource": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+  "adoption": "Pinned workflow tools reference; no whole-branch merge or hosting change"
+}

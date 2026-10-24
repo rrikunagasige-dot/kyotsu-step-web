@@ -1,5 +1,6 @@
 {
   "simulation": false,
+  "codeSHA": "bba4df752bf4f9ad8a4972f57ca303b3f304ea45",
   "completed": [
     "S00",
     "S01"
@@ -26,8 +27,8 @@
         "ai_required": true,
         "ml_advisory": false
       },
-      "task_id": "5d0d61ad3fd92d948fa99b0b8f1de8cf78bfdd29db720168b1ef1b6bd7130c85",
-      "input_hash": "5479cc69b796dbd5df4711ea8ef2bd00d8e2ba239f6f7998ed27c30393f6713a",
+      "task_id": "50722bef4c2200b45f1050a4a0d19fbe69f711cd78f30d22deb95bbb3030fb02",
+      "input_hash": "54f464c522dd168d15ca8fc1361d91e28e9ce301af1ef0d79744f69b365a1e11",
       "source_sha": "2e767cc4917e785fb70a4598ba060272d3f37763",
       "candidate_sha": "2e767cc4917e785fb70a4598ba060272d3f37763",
       "rules": {
@@ -54,8 +55,8 @@
       "previous_results": {
         "S01": {
           "actor": "production-runner",
-          "artifact": "5ab497bab6a702e7d3fe49ef971b3e4d766a3a02cebc7186ba911081e9eb512f",
-          "input_hash": "b585a0e72d9a6d8c3abe36d5cc1948b379e9004415abe9389dd04402dc018c6d",
+          "artifact": "6a39de6394aa2f4731077e00baa26c75013b7c59f915aa378713f873232808cf",
+          "input_hash": "e750d6fa43c4c6cc1118539e5ae0e7851aecb8158c4a89846d124aa48bd1d8ef",
           "node": "S01",
           "verdict": "PASS"
         }
@@ -67,7 +68,7 @@
       "completion_is_not_semantic_proof": true
     }
   },
-  "scope": "bounded infrastructure recovery only; not a complete lesson production",
-  "ledgerHead": "ee4456dadbd5b9a92ef553b36200a6e3dfb8b35f8eae2beed9a6d462333aa394",
+  "scope": "bounded infrastructure recovery; not a complete lesson production",
+  "ledgerHead": "999126b1e16b4c3eefce7872ee6e8ad48bfe822ba3dde66169c5ae59935659cb",
   "definitionMigrationAndProducerInvalidationVerified": true
 }

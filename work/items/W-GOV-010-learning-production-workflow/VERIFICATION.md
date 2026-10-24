@@ -56,3 +56,7 @@ P-002 remains PROPOSED until reviewed and approved. No learner build/tests or pu
 ## P-003 design verification (2026-10-24)
 
 `redesign/DOCUMENT_CHECK.json`: JSON parse, relative document links, contiguous25 stages/24 tasks,82 unique observation IDs (not unique case count), preserved legacy10/26 labels, and document hashes PASS. The full proposal is43,656 characters before any subsequent document revision. Reference source and model evidence are in RESEARCH.md and research/SOURCE_MANIFEST.json. No new runtime tests, model inference/training or app publication were performed. Existing619/39 results belong to the earlier implementation and are not evidence that P-003 works. Documents/research only; source/data/public/workflow runtime paths unchanged.
+
+## P-003 implementation verified
+
+Exact codebba4df752bf4f9ad8a4972f57ca303b3f304ea45; CI40109892971 SUCCESS. Scoped620 learner,39 existing authoring,19 new Node,78 workflow,8 source/corpus/ML,27 legacy math tests plus type/build/changed lint and actual browser320/390/430/1440 PASS. Old unrelated2 failures remain excluded with provenance. Model weights/tokenizer/pooling hashes, actual fit, data masks, insufficient groups, SetFit gate and generation consumption are in redesign/implementation/. No new lesson or public app change.

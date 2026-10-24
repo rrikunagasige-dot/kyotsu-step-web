@@ -1,0 +1,52 @@
+{
+  "status": "PASS",
+  "codeSHA": "bba4df752bf4f9ad8a4972f57ca303b3f304ea45",
+  "ci": {
+    "id": 40109892971,
+    "conclusion": "success",
+    "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40109892971"
+  },
+  "checks": {
+    "learnerTests": 620,
+    "existingAuthoringTests": 39,
+    "newNodeTests": 19,
+    "workflowTests": 78,
+    "sourceCorpusMLTests": 8,
+    "legacyMathTests": 27,
+    "typeBuildChangedLint": "PASS",
+    "approvedN07Regeneration": "PASS",
+    "browserWidths": [
+      320,
+      390,
+      430,
+      1440
+    ],
+    "browserAllAnswersWrongChoicesHistoryReloadMigration": "PASS"
+  },
+  "knownBaselineFailures": [
+    "src/data/physicsTaxonomy.test.ts",
+    "src/domain/questionSchema.test.ts"
+  ],
+  "learnerDataChanged": false,
+  "newLessonPublished": false,
+  "model": {
+    "trainingRun": true,
+    "heads": [
+      "layout_discomfort"
+    ],
+    "status": "OFFLINE_ONLY",
+    "omittedHeads": 7,
+    "setfit": "NOT_TRAINABLE",
+    "qwen": "NOT_RUN",
+    "unseenAccuracyMeasured": false
+  },
+  "boundedRealRuntime": [
+    "S00",
+    "S01"
+  ],
+  "full25StageContractFixture": "PASS",
+  "actualFullNewLessonProduction": "NOT_RUN",
+  "canonicalMainPointer": "f75bfe73e31d3506aa8c7358fecf9513737c730b",
+  "publicAppSource": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+  "canonicalAdoption": "five documentation/pointer files only; no app/hosting changes"
+}

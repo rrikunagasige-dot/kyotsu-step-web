@@ -1,0 +1,210 @@
+{
+  "legacySource": "618e2be2a0a4dab9fd853288148829a11b3b0b70",
+  "method": "selected files, no full-repository merge",
+  "files": [
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/corpus/CASEBOOK.md",
+      "originalSHA256": "e8bd804ccd968fdc39becb96b1221b8fb235bd1461c4e0cb7646ed626d15f491",
+      "currentSHA256": "e8bd804ccd968fdc39becb96b1221b8fb235bd1461c4e0cb7646ed626d15f491",
+      "modifiedByP003": false
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/corpus/LABEL_POLICY.md",
+      "originalSHA256": "1ed189bd80dc1fe20ea7c35298188e278910ebc67b757f0baaed3bbe264d3134",
+      "currentSHA256": "1ed189bd80dc1fe20ea7c35298188e278910ebc67b757f0baaed3bbe264d3134",
+      "modifiedByP003": false
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/corpus/REPORT.md",
+      "originalSHA256": "f037dc595194630baf4f2cad6da5cfae17b0103836c962b0ff2b6a4de7a19f59",
+      "currentSHA256": "f037dc595194630baf4f2cad6da5cfae17b0103836c962b0ff2b6a4de7a19f59",
+      "modifiedByP003": false
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/corpus/cases.json",
+      "originalSHA256": "9c639e8e2c6f0827e1f55462ca74fc8fa42bbb3be160b844cb025b6815224b06",
+      "currentSHA256": "9c639e8e2c6f0827e1f55462ca74fc8fa42bbb3be160b844cb025b6815224b06",
+      "modifiedByP003": false
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/corpus/validate_corpus.py",
+      "originalSHA256": "36f9b00fac74bf110bcc60a8f0d6ad2981b3525b7ebb2a3c320c744883a999db",
+      "currentSHA256": "36f9b00fac74bf110bcc60a8f0d6ad2981b3525b7ebb2a3c320c744883a999db",
+      "modifiedByP003": false
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/corpus/validation.json",
+      "originalSHA256": "a1e30c54d4e4e59286147788efb5b99614b1254392483ca2c2003f00b12b5221",
+      "currentSHA256": "a1e30c54d4e4e59286147788efb5b99614b1254392483ca2c2003f00b12b5221",
+      "modifiedByP003": false
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/engine/README.md",
+      "originalSHA256": "ff32344e409c09060e404440a55c230c10d3d006b5fab32c758f163e4bb326ba",
+      "currentSHA256": "ff32344e409c09060e404440a55c230c10d3d006b5fab32c758f163e4bb326ba",
+      "modifiedByP003": false
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/engine/approved_plans.json",
+      "originalSHA256": "bce2bb875c44aa6d4bd02217747ba7e6b18fa4e7fb93ef7ebc49841dfef8e02b",
+      "currentSHA256": "bce2bb875c44aa6d4bd02217747ba7e6b18fa4e7fb93ef7ebc49841dfef8e02b",
+      "modifiedByP003": false
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/engine/browser_check.cjs",
+      "originalSHA256": "988c48a512fefdbfff9fe8bafedb07b0e6795b83de0950adaa7d5eb067da4fac",
+      "currentSHA256": "988c48a512fefdbfff9fe8bafedb07b0e6795b83de0950adaa7d5eb067da4fac",
+      "modifiedByP003": false
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/engine/build_catalog.py",
+      "originalSHA256": "165171a8258d6d2b74fc8e3e6af5d9788c48ebefac9ced5755ca2fef3b8de247",
+      "currentSHA256": "165171a8258d6d2b74fc8e3e6af5d9788c48ebefac9ced5755ca2fef3b8de247",
+      "modifiedByP003": false
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/engine/catalog.json",
+      "originalSHA256": "fea34b9859b86619811c81e91a8977857d62c245a34579ec157127a66edb29be",
+      "currentSHA256": "fea34b9859b86619811c81e91a8977857d62c245a34579ec157127a66edb29be",
+      "modifiedByP003": false
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/engine/engine.py",
+      "originalSHA256": "03305c9cc58a07fc5303c2112433b56ea6233b09928c8a6dcdce89e41257bb70",
+      "currentSHA256": "03305c9cc58a07fc5303c2112433b56ea6233b09928c8a6dcdce89e41257bb70",
+      "modifiedByP003": false
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/engine/evaluate.py",
+      "originalSHA256": "5b9b28d512cccddfbb6735954b10a21b603c0473963e583f514ba5a3eaa345af",
+      "currentSHA256": "5b9b28d512cccddfbb6735954b10a21b603c0473963e583f514ba5a3eaa345af",
+      "modifiedByP003": false
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/engine/example_practice.json",
+      "originalSHA256": "d5084607b2b030c43536028ad3f998d8ec737044aa4deb7e7762411a597ed83d",
+      "currentSHA256": "d5084607b2b030c43536028ad3f998d8ec737044aa4deb7e7762411a597ed83d",
+      "modifiedByP003": false
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/engine/example_textbook.json",
+      "originalSHA256": "35083be7035ffe6c202605e9778f034e04b12825321b90eeb8f512502935e085",
+      "currentSHA256": "35083be7035ffe6c202605e9778f034e04b12825321b90eeb8f512502935e085",
+      "modifiedByP003": false
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/engine/install_test_font.py",
+      "originalSHA256": "8703fa54e9d06c4bc189071072753db7f7f85b8fb66b52f8b1fc931c6ab120bd",
+      "currentSHA256": "8703fa54e9d06c4bc189071072753db7f7f85b8fb66b52f8b1fc931c6ab120bd",
+      "modifiedByP003": false
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/engine/make_examples.py",
+      "originalSHA256": "7077377d9945cef5efaab51fb20aa77fbad43121122d1ac8cc5dd1f6d1b93d95",
+      "currentSHA256": "7077377d9945cef5efaab51fb20aa77fbad43121122d1ac8cc5dd1f6d1b93d95",
+      "modifiedByP003": false
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/engine/math_core.py",
+      "originalSHA256": "5a112b2824234beadfe6fd00f3f8a066bd8a646c0b6f69624e5490ed6f0ae53d",
+      "currentSHA256": "5a112b2824234beadfe6fd00f3f8a066bd8a646c0b6f69624e5490ed6f0ae53d",
+      "modifiedByP003": false
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/engine/patterns.json",
+      "originalSHA256": "9ed6fbe18c20b51bd739538ccb8c1f16b402d7ba50a0366cfa8cc8f57119a2ef",
+      "currentSHA256": "9ed6fbe18c20b51bd739538ccb8c1f16b402d7ba50a0366cfa8cc8f57119a2ef",
+      "modifiedByP003": false
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/engine/template.html",
+      "originalSHA256": "2ac492603ed6a003ab31206675aa594649bfe590c472b9dad64fc40cb1b2397d",
+      "currentSHA256": "2ac492603ed6a003ab31206675aa594649bfe590c472b9dad64fc40cb1b2397d",
+      "modifiedByP003": false
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/engine/templates.json",
+      "originalSHA256": "24853ab01295136dcd07918a0b392e74013b55a2ee06ddbe0721df917ef6887c",
+      "currentSHA256": "24853ab01295136dcd07918a0b392e74013b55a2ee06ddbe0721df917ef6887c",
+      "modifiedByP003": false
+    },
+    {
+      "path": "work/items/W-GOV-010-coded-authoring/engine/test_engine.py",
+      "originalSHA256": "e3541f4923698fbd973aaa2ea23cca73e29571cefec82470e0efa9a4c24b44e6",
+      "currentSHA256": "e3541f4923698fbd973aaa2ea23cca73e29571cefec82470e0efa9a4c24b44e6",
+      "modifiedByP003": false
+    },
+    {
+      "path": "workflow/README.md",
+      "originalSHA256": "b95f83d17c12f0ab8758a594c4e8085ca99051afc302147edf3bd53ef3f62f31",
+      "currentSHA256": "b95f83d17c12f0ab8758a594c4e8085ca99051afc302147edf3bd53ef3f62f31",
+      "modifiedByP003": false
+    },
+    {
+      "path": "workflow/adapters.py",
+      "originalSHA256": "09ee7288d192e344bd153254e467c97d4ca061a0dc4e3a52b4281a40320d1751",
+      "currentSHA256": "09ee7288d192e344bd153254e467c97d4ca061a0dc4e3a52b4281a40320d1751",
+      "modifiedByP003": false
+    },
+    {
+      "path": "workflow/cli.py",
+      "originalSHA256": "13981543a20a65a1e72fb4684be0477baea1d46ef0350e0cc5a1821b107ad7be",
+      "currentSHA256": "ff5553948071e2ec0b883f8afda6c9c4cc404738f8e1b6c68e2d84ca4d411a30",
+      "modifiedByP003": true
+    },
+    {
+      "path": "workflow/contracts.py",
+      "originalSHA256": "b6aa4b25893640f842e5ffc7a11996a99905585dc885b3d472f6502b99f46575",
+      "currentSHA256": "b6aa4b25893640f842e5ffc7a11996a99905585dc885b3d472f6502b99f46575",
+      "modifiedByP003": false
+    },
+    {
+      "path": "workflow/definitions.py",
+      "originalSHA256": "82e7ddc5775b3896893f2157523e0458e457efb94aee24349dde4766ae6c657d",
+      "currentSHA256": "3c7c64e01e707bd3443146d7ec9558b559321fb1b92fe5ecea8dcee5bcd74418",
+      "modifiedByP003": true
+    },
+    {
+      "path": "workflow/rules/mapping.json",
+      "originalSHA256": "2c41cd47c0294e63e90355c766cc0e0763d3afc2c0289c4e355d29962bed4822",
+      "currentSHA256": "2c41cd47c0294e63e90355c766cc0e0763d3afc2c0289c4e355d29962bed4822",
+      "modifiedByP003": false
+    },
+    {
+      "path": "workflow/runtime.py",
+      "originalSHA256": "b925dd2dec79b1fddb8c0e0a385d0b80938f7a0df5e95bf3dd7141eb6068ed4f",
+      "currentSHA256": "dabcc492f4b6fd8cb58e00bf28f4b5d638c0b2a9138535a7a3331b82ff400223",
+      "modifiedByP003": true
+    },
+    {
+      "path": "workflow/scenarios.py",
+      "originalSHA256": "42e42f18fec8693570788a9d30a1f2bbcd95ce1232a3510393845b999f834195",
+      "currentSHA256": "42e42f18fec8693570788a9d30a1f2bbcd95ce1232a3510393845b999f834195",
+      "modifiedByP003": false
+    },
+    {
+      "path": "workflow/store.py",
+      "originalSHA256": "acd29664d0f7c7f61d3f6db87d04862d61b9815ee9642951050a5924a4cd1944",
+      "currentSHA256": "acd29664d0f7c7f61d3f6db87d04862d61b9815ee9642951050a5924a4cd1944",
+      "modifiedByP003": false
+    },
+    {
+      "path": "workflow/test_workflow.py",
+      "originalSHA256": "7740fc4de2d06acf10b1bdd9f6c84d20f0af4a9d22fa81a0c74c43676a771bb5",
+      "currentSHA256": "7740fc4de2d06acf10b1bdd9f6c84d20f0af4a9d22fa81a0c74c43676a771bb5",
+      "modifiedByP003": false
+    },
+    {
+      "path": "workflow/verify_all.py",
+      "originalSHA256": "3d8fa47c628b6962e95b42fc5a69ca2b257ce303b2e93596a7c26abd30aa0865",
+      "currentSHA256": "3d8fa47c628b6962e95b42fc5a69ca2b257ce303b2e93596a7c26abd30aa0865",
+      "modifiedByP003": false
+    },
+    {
+      "path": "workflow/views.py",
+      "originalSHA256": "dea282f3b97bef159e7571636a58f14573350eb4284e2bbc5fefddbe90019ce2",
+      "currentSHA256": "7351a310e59f84a5e71e1ad5fb2e21f61d092afd28557f7a9b856239bc66b84a",
+      "modifiedByP003": true
+    }
+  ]
+}

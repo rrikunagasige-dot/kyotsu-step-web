@@ -1,5 +1,10 @@
 # MASTER MATCH GRAPH — target rriku
 
+## Current — P-003 production workflow implemented
+
+Approved workflow tools are pinned by `governance/PRODUCTION_WORKFLOW.json` to sourcebba4df75 on work/production-workflow-p003-20261024. Read that source’s `tools/textbook/PRODUCTION_README.md` and Work redesign/implementation/RESULT.md before new math-textbook creation/correction.25-node code＋AI＋ML framework; CI40109892971 PASS including four-width browser checks. Use production/1 rather than restoring old screenshot/publication-approval gates. One classifier head was actually fitted but remainsOFFLINE_ONLY; new lesson quality/acceptance is separate. Public learner source4fb7a98e and accepted first-title22bc43ba remain protected. Other mode adoption is not implied. Older entries below retain historical scope.
+
+
 ## N07 M5 implementation and release — 2026-10-24
 
 Content design APPROVED by「いいよ。まず作成してみよう！」→ exact plan0e2eea06 → registered source4fb7a98e → CI40101499771 PASS (619 applicable tests,39 authoring,3-width real-browser36 responses/wrong choices/history/reload/migration) → existing Pages release40101675993 PASS → hosted exact-source and app checks PASS → user hands-on feedback. First title22bc43ba and all other data protected; no N08–NE02 generation approval is inferred. See W-GOV-010/n07/integration/VERIFICATION.json for release status. Older N07 design-pending entries are historical.

@@ -1,0 +1,151 @@
+{
+  "proposal": "P-003",
+  "codeSHA": "bba4df752bf4f9ad8a4972f57ca303b3f304ea45",
+  "tasks": [
+    {
+      "id": "T01",
+      "scope": "`research/SOURCE_MANIFEST.json`を起点にsource reconciliation",
+      "status": "IMPLEMENTED_BOUNDED",
+      "note": "Code/contract verification; new lesson application remains separate."
+    },
+    {
+      "id": "T02",
+      "scope": "`workflow/`を限定移植、`definitions.py`等のpolicy v2 adapter",
+      "status": "IMPLEMENTED_BOUNDED",
+      "note": "Code/contract verification; new lesson application remains separate."
+    },
+    {
+      "id": "T03",
+      "scope": "`workflow/adapters.py`へtextbook job adapter、`jobs.mjs`へ親run参照",
+      "status": "IMPLEMENTED_BOUNDED",
+      "note": "Code/contract verification; new lesson application remains separate."
+    },
+    {
+      "id": "T04",
+      "scope": "`tools/textbook/ir/`、`schema.mjs`、app schema adapter",
+      "status": "IMPLEMENTED_BOUNDED",
+      "note": "Code/contract verification; new lesson application remains separate."
+    },
+    {
+      "id": "T05",
+      "scope": "`source/import-word.py`拡張、`source/coverage.mjs`新設",
+      "status": "IMPLEMENTED_BOUNDED",
+      "note": "Code/contract verification; new lesson application remains separate."
+    },
+    {
+      "id": "T06",
+      "scope": "`solver/legacy-polynomial.py`と`solver/n07.mjs`adapter",
+      "status": "IMPLEMENTED_BOUNDED",
+      "note": "Code/contract verification; new lesson application remains separate."
+    },
+    {
+      "id": "T07",
+      "scope": "`complete-solutions.mjs`を計算/論証receiptへ分離",
+      "status": "IMPLEMENTED_BOUNDED",
+      "note": "Code/contract verification; new lesson application remains separate."
+    },
+    {
+      "id": "T08",
+      "scope": "`planner/candidates.mjs`をprofileと候補比較へ拡張",
+      "status": "IMPLEMENTED_BOUNDED",
+      "note": "Code/contract verification; new lesson application remains separate."
+    },
+    {
+      "id": "T09",
+      "scope": "`interaction/`新設、旧bind_blanksのtarget contract改修",
+      "status": "IMPLEMENTED_BOUNDED",
+      "note": "Code/contract verification; new lesson application remains separate."
+    },
+    {
+      "id": "T10",
+      "scope": "`prose/`・`context/`新設",
+      "status": "IMPLEMENTED_BOUNDED",
+      "note": "Code/contract verification; new lesson application remains separate."
+    },
+    {
+      "id": "T11",
+      "scope": "`compile-lesson.mjs`、`integrate-n07.mjs`汎用adapter化",
+      "status": "IMPLEMENTED_BOUNDED",
+      "note": "Code/contract verification; new lesson application remains separate."
+    },
+    {
+      "id": "T12",
+      "scope": "共通inline renderer adapter、`N07ReadingFlow.tsx` opt-in",
+      "status": "IMPLEMENTED_BOUNDED",
+      "note": "Code/contract verification; new lesson application remains separate."
+    },
+    {
+      "id": "T13",
+      "scope": "`TypesetFormula.tsx`等にsemantic group adapter",
+      "status": "IMPLEMENTED_BOUNDED",
+      "note": "Code/contract verification; new lesson application remains separate."
+    },
+    {
+      "id": "T14",
+      "scope": "`verify.mjs`分割拡張、`ai/CONTRACTS.md`更新",
+      "status": "IMPLEMENTED_BOUNDED",
+      "note": "Code/contract verification; new lesson application remains separate."
+    },
+    {
+      "id": "T15",
+      "scope": "`corpus/collect.py`、`normalize.py`、`episodes.py`新設",
+      "status": "IMPLEMENTED_BOUNDED",
+      "note": "Code/contract verification; new lesson application remains separate."
+    },
+    {
+      "id": "T16",
+      "scope": "`corpus/labels.py`、`split.py`、export schema",
+      "status": "IMPLEMENTED_BOUNDED",
+      "note": "Code/contract verification; new lesson application remains separate."
+    },
+    {
+      "id": "T17",
+      "scope": "`ml/prefetch.py`、`encode.py`、環境lock",
+      "status": "IMPLEMENTED_BOUNDED",
+      "note": "Code/contract verification; new lesson application remains separate."
+    },
+    {
+      "id": "T18",
+      "scope": "`ml/train.py`、`evaluate.py`、`registry.py`",
+      "status": "IMPLEMENTED_DATA_GATED",
+      "note": "One offline classifier fitted; other heads, SetFit, Qwen comparison and matched-pair ranking require eligible data/evaluation."
+    },
+    {
+      "id": "T19",
+      "scope": "`ml/rank.py`、`predict.py`、`retrieve.py`",
+      "status": "IMPLEMENTED_DATA_GATED",
+      "note": "One offline classifier fitted; other heads, SetFit, Qwen comparison and matched-pair ranking require eligible data/evaluation."
+    },
+    {
+      "id": "T20",
+      "scope": "S04/08/12/14/16のCLI入力とAI exportを接続",
+      "status": "IMPLEMENTED_BOUNDED",
+      "note": "Code/contract verification; new lesson application remains separate."
+    },
+    {
+      "id": "T21",
+      "scope": "authoring/browser CI、旧runtimeテストの統合",
+      "status": "IMPLEMENTED_BOUNDED",
+      "note": "Code/contract verification; new lesson application remains separate."
+    },
+    {
+      "id": "T22",
+      "scope": "既存release adapter＋hand-off receipt",
+      "status": "IMPLEMENTED_BOUNDED",
+      "note": "Existing release policy/receipt adapter implemented; no new lesson deployed."
+    },
+    {
+      "id": "T23",
+      "scope": "feedback→regression→curation→retrain接続",
+      "status": "IMPLEMENTED_BOUNDED",
+      "note": "Code/contract verification; new lesson application remains separate."
+    },
+    {
+      "id": "T24",
+      "scope": "既存memory/Workへの統合、運用ガイド",
+      "status": "IMPLEMENTED_BOUNDED",
+      "note": "Code/contract verification; new lesson application remains separate."
+    }
+  ],
+  "runtimeRunIsNotImplementationProgress": true
+}

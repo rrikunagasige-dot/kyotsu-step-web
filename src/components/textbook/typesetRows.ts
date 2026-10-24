@@ -5,6 +5,8 @@ export type TypesetPlan = { rows: TypesetRow[]; independent: boolean; table?: st
 export type MathMeasure = (source: string) => number
 export const mathWithoutMarkers = (s: string) => s.replace(/§(?:a|z)\d+§/g, '')
 
+const endsFactor = (source: string) => /(?:\)|\^(?:\{[^{}]*\}|[A-Za-z0-9]))$/.test(mathWithoutMarkers(source).trim())
+
 function split(source: string, kind: 'equals' | 'terms', inner = false): string[] {
   const parts: string[] = []
   let start = 0, braces = 0, parentheses = 0
@@ -21,7 +23,7 @@ function split(source: string, kind: 'equals' | 'terms', inner = false): string[
     if (c === '{') braces++
     if (c === '}') braces--
     if (braces) continue
-    if (kind === 'terms' && !parentheses && c === '(' && source[i - 1] === ')' && i > start) { parts.push(source.slice(start, i)); start = i }
+    if (kind === 'terms' && !parentheses && c === '(' && endsFactor(source.slice(start, i)) && i > start) { parts.push(source.slice(start, i)); start = i }
     if (c === '(') parentheses++
     if (c === ')') parentheses--
     if (kind === 'equals' && c === '=' && !parentheses) { parts.push(source.slice(start, i)); start = i + 1 }
@@ -88,6 +90,6 @@ export function typesetRows(source: string, width: number, measure: MathMeasure)
     rows.splice(first, 0, ...wrap(lhs, width - 18, measure).map((latex, i): TypesetRow => ({ latex, group: 0, kind: i ? 'continuation' : 'expression' })))
     eq[0].lhs = ''; eq[0].latex = '=' + eq[0].rhs
   }
-  rows.forEach((r, i) => { if (r.kind === 'continuation' && /^\(/.test(mathWithoutMarkers(r.latex).trim()) && /\)$/.test(mathWithoutMarkers(rows[i - 1]?.latex ?? '').trim())) r.product = true })
+  rows.forEach((r, i) => { if (r.kind === 'continuation' && /^\(/.test(mathWithoutMarkers(r.latex).trim()) && endsFactor(rows[i - 1]?.latex ?? '')) r.product = true })
   return { rows, independent: groups.length > 1 }
 }

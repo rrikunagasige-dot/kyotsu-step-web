@@ -43,6 +43,7 @@ try {
     await blank.click()
     let panel=page.getByTestId('inline-choice-panel-'+item.id)
     await panel.waitFor()
+    await page.evaluate(async()=>{await document.fonts.ready;await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))})
     if(!wrongChecked || item.id.startsWith('n01-bridge-r3-') || item.id.includes('-s4-') || item.id.includes('-s5-')) {
      const wrong=panel.locator('button.reading-choice-option').filter({hasNot:page.locator('[data-never]')})
      let selected

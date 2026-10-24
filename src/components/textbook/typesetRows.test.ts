@@ -26,6 +26,13 @@ describe('approved logical mathematical rows', () => {
     expect(rows.some(r => r.latex.includes('\\underbrace{a\\times a\\times a}_{3\\text{個}}'))).toBe(true)
     expect(rows.some(r => r.latex.includes('(§1§)'))).toBe(true)
   })
+  it('wraps only between complete powered factors and marks product continuation', () => {
+    const source = '(-2)^3(x^3)^3(y^2)^3'
+    const plan = typesetRows(source, 90, measure)
+    expect(plan.rows.map(row => row.latex)).toEqual(['(-2)^3', '(x^3)^3', '(y^2)^3'])
+    expect(plan.rows.slice(1).every(row => row.product)).toBe(true)
+    expect(plan.rows.map(row => row.latex).join('')).toBe(source)
+  })
   it('retains the columns and order of a source table', () => {
     const p = typesetRows('\\begin{array}{c|r}種類&結果\\\\\\hline 二次&-2x^2\\end{array}', 280, measure)
     expect(p.table).toEqual([['種類', '結果'], [' 二次', '-2x^2']])

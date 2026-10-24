@@ -1,45 +1,37 @@
-name: Deploy authorized math chapter review to GitHub Pages
+name: Publish first math theme for immediate user review
 
-# User explicitly approved replacing the existing Pages site on 2026-10-23.
-# Publication only: learner main is not merged. Restore the former deployment
-# workflow from main 15ae503455bc6ae75b080caa1c4919cafb250027 after this review.
+# 2026-10-24: user explicitly authorized one-theme repair -> compile -> public app -> hands-on review.
+# This updates only the hosting pointer; it does not merge the learner branch into main.
 on:
   push:
     branches: ['main']
     paths: ['.github/workflows/deploy-pages.yml']
   workflow_dispatch:
-
 permissions:
   contents: read
   pages: write
   id-token: write
-
 concurrency:
   group: pages
   cancel-in-progress: true
-
 jobs:
   review:
     runs-on: ubuntu-latest
+    timeout-minutes: 25
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     env:
-      CANDIDATE_SHA: '171c04781f32c1286a0762905891b582714834f9'
-      VITE_PREVIEW_COMMIT: '171c04781f32c1286a0762905891b582714834f9'
+      CANDIDATE_SHA: '6f589d1292e63858a1d8b310a74ba9be82aec471'
+      VITE_PREVIEW_COMMIT: '6f589d1292e63858a1d8b310a74ba9be82aec471'
       VITE_REVIEW_PREVIEW: 'true'
       VITE_BASE_PATH: '/kyotsu-step-web/'
       VITE_STORAGE_NAMESPACE: 'kyotsu-step-gate3-math-20261023'
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: '171c04781f32c1286a0762905891b582714834f9'
+          ref: '6f589d1292e63858a1d8b310a74ba9be82aec471'
           fetch-depth: 0
-          persist-credentials: false
-      - uses: actions/checkout@v4
-        with:
-          ref: 'cf64754827b93dad017b6cbd609e4036e220a573'
-          path: hosting-harness
           persist-credentials: false
       - uses: pnpm/action-setup@v4
         with:
@@ -50,15 +42,16 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - name: Verify the frozen candidate and unchanged reviewed learner content
+      - name: Verify exact source and protected scope
         run: |
           test "$(git rev-parse HEAD)" = "$CANDIDATE_SHA"
-          git diff --exit-code 3055ed71b25057b80b85d46b1d219f1005d0a35d HEAD -- src ':!src/stores/useAppStore.ts'
-          git diff --exit-code -- src public
-      - run: pnpm run typecheck
-      - name: Existing math component and lesson regression
-        run: pnpm exec vitest run src/data/textbook/math/numbers/developmentLessons.test.ts src/data/textbook/math/mathCatalog.test.ts src/data/textbook/math/mathReviewIntegrity.test.ts src/components/textbook/TextbookFormula.test.tsx src/components/textbook/formulaWrap.test.tsx src/review/reviewTargets.test.ts
-      - run: node work/items/W-MATH-003-numbers-expressions-creation/NE01_NE02/export-runtime.mjs
+          node work/items/W-MATH-027-first-theme-repair/verify-scope.mjs
+      - name: Lesson, history and shared formula regression
+        run: pnpm exec vitest run src/data/textbook/math src/domain/textbook.test.ts src/review/reviewTargets.test.ts src/components/textbook/TextbookFormula.test.tsx src/components/textbook/formulaWrap.test.tsx
+      - name: Independent calculation and distractor verification
+        run: node work/items/W-MATH-027-first-theme-repair/verify-math.mjs
+      - name: Export exact runtime source
+        run: node work/items/W-MATH-003-numbers-expressions-creation/NE01_NE02/export-runtime.mjs
       - run: pnpm run build
       - name: Attach exact-source release manifest
         run: |
@@ -66,28 +59,42 @@ jobs:
           import fs from 'node:fs'
           const runtime=JSON.parse(fs.readFileSync('e2e-evidence/chapter-runtime/runtime-units.json','utf8'))
           if(runtime.metadata.sourceSHA!==process.env.CANDIDATE_SHA||runtime.units.length!==16)throw Error('source mismatch')
-          const manifest={sourceSHA:process.env.CANDIDATE_SHA,lessonBaseline:'3055ed71b25057b80b85d46b1d219f1005d0a35d',workflowSHA:process.env.GITHUB_SHA,storageKey:process.env.VITE_STORAGE_NAMESPACE,units:runtime.units.map(x=>({id:x.unit.unitId,items:x.unit.sections.flatMap(s=>s.items.map(q=>q.id))}))}
+          const manifest={sourceSHA:process.env.CANDIDATE_SHA,lessonBaseline:'171c04781f32c1286a0762905891b582714834f9',workflowSHA:process.env.GITHUB_SHA,storageKey:process.env.VITE_STORAGE_NAMESPACE,themes:3,repairedTheme:'numbers-polynomials',units:runtime.units.map(x=>({id:x.unit.unitId,revision:x.unit.revision,items:x.unit.sections.flatMap(s=>s.items.map(q=>q.id))}))}
           fs.writeFileSync('dist/release.json',JSON.stringify(manifest,null,2))
           NODE
+      - run: pnpm exec playwright install --with-deps chromium
+      - name: Play compiled first theme at 320,390,1440px before publication
+        env:
+          EVIDENCE_DIR: e2e-evidence/theme-one-compiled
+        run: |
+          pnpm exec vite preview --host 127.0.0.1 --port 4173 > /tmp/theme-preview.log 2>&1 &
+          preview_pid=$!
+          trap 'kill "$preview_pid" 2>/dev/null || true' EXIT
+          node work/items/W-MATH-027-first-theme-repair/verify-app.mjs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
-      - name: Publish the authorized frozen candidate
+      - name: Publish the authorized first-theme repair
         id: deployment
         uses: actions/deploy-pages@v4
-      - run: pnpm exec playwright install --with-deps chromium
-      - name: Verify the live app, all16 unit routes and isolated learning history
+      - name: Verify public SHA, all16 routes, reload and isolated history
         env:
           LIVE_APP_URL: ${{ steps.deployment.outputs.page_url }}
-        run: |
-          cp hosting-harness/work/items/W-MATH-003-numbers-expressions-creation/NE01_NE02/verify-hosted-gate3.mjs ./verify-hosted-gate3.mjs
-          node ./verify-hosted-gate3.mjs
+        run: node work/items/W-MATH-027-first-theme-repair/verify-hosted.mjs
+      - name: Play the actual public first theme at all three widths
+        env:
+          APP_URL: ${{ steps.deployment.outputs.page_url }}
+          EVIDENCE_DIR: e2e-evidence/theme-one-hosted
+        run: node work/items/W-MATH-027-first-theme-repair/verify-app.mjs
       - if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
-          name: authorized-gate3-hosted-171c0478
+          name: first-theme-6f589d12-verification
           path: |
+            e2e-evidence/theme-one/**
+            e2e-evidence/theme-one-compiled/**
+            e2e-evidence/theme-one-hosted/**
             e2e-evidence/gate3-hosted/**
             dist/release.json
           if-no-files-found: warn

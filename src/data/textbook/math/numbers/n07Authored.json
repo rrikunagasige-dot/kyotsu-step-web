@@ -4081,8 +4081,8 @@
     }
   },
   "planHash": "0e2eea0619181b8d1e5eaef0a27c83c27d0690f7b87b66e3f8e690f0daab4b81",
-  "publishable": false,
-  "integrationStatus": "NOT_REGISTERED",
+  "publishable": true,
+  "integrationStatus": "REGISTERED",
   "nodes": [
     {
       "id": "n07-q01-tenths",

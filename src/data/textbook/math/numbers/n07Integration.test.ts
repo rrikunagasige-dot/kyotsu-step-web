@@ -12,6 +12,8 @@ describe('approved N07 code-to-app integration', () => {
     expect(createHash('sha256').update(raw).digest('hex')).toBe(n07Presentation.contentApproval)
     execFileSync(process.execPath, ['tools/textbook/integrate-n07.mjs', '--check'])
     expect(unit.revision).toBe(4)
+    expect(n07Presentation.publishable).toBe(true)
+    expect(n07Presentation.integrationStatus).toBe('REGISTERED')
     expect(n07Presentation.nodes).toHaveLength(41)
     expect(n07Presentation.stages).toHaveLength(14)
     expect(unit.sections[0].items).toHaveLength(36)

@@ -62,3 +62,6 @@ A40 — Read current definitions/runtime/production/runner/contracts/views and c
 ## P-004 — 2026-10-24 C/R統合実装
 
 承認: 「可以可以那就来做做看把」。独立branch work/workflow-cr-integration-p004-20261024。既存Runtime/Storeへproduction/2を追加し、I01–I07の工程配置・capability契約・queue・属性別再検査・単元公開・移行・三階層図を実装。詳細はintegration/IMPLEMENTATION_RESULTS.md。ローカル検査合格、固定SHAのGitHub CIとcanonical入口の更新を続行。教材の修正・公開は対象外。
+
+
+P-004最終照合: 初回固定SHA78986acf/CI40114657817 SUCCESS後、原資料再取込・ML失敗時のREJECTED・unit route照合を追加。local workflow119件（新規41件）、Node19件、source/corpus/ML8件PASS。モデル再fitと教材編集は行わない。最終固定SHAのCIを再実行してからcanonical入口を更新する。

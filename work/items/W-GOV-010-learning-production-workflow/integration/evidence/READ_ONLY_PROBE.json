@@ -3,15 +3,15 @@
   "isolatedCapabilityProbe": true,
   "flowSubmitted": false,
   "lessonAccepted": false,
-  "sourceSHA": "2e88d598f34fcc224bc11ac3b9669bfca9fe1fa3",
-  "ledgerHead": "9e7fd9ee010a19c672e7aa08d1fab10d8d0a99a35192ff3fd2bb9692b8377520",
+  "sourceSHA": "78986acf513f7b68424a9805babbd802ec97f40b",
+  "ledgerHead": "4d7bd6487d3b2ba3c0247f68a08c4344cdccf3fc43b4441e42737c6b1fe612ec",
   "events": [
     {
-      "id": "46ecc6e8-a5b0-4721-a524-a5ae2684e014",
+      "id": "b8b81c6e-99e2-4b69-a049-31c48d3a60ee",
       "kind": "opened",
       "payload": {
-        "definition_hash": "af3a32105f89ae95050034e9d8d34d82fa14fa02644689b394534d6636fbb76a",
-        "original_snapshot": "2f2c13a3efe590a50249bbca0a7f0386571e9f396f6a9080cb13c8ae487227bb",
+        "definition_hash": "f58f156c8f99757f3247094a921a50abf3fd932f4161b4b8d3fecc9eeee5ed49",
+        "original_snapshot": "3f53711e91a856a614f79f42762cfb56e3b9e8b48cde766734b0c41bdfdc5f95",
         "plan": {
           "approval_bundles": [
             {
@@ -68,7 +68,7 @@
           "source_manifest": {
             "tools/textbook/fixtures/n07-source-index.json": "62a1ad951166eabc9672eca0a81a997aa6a362fe01aed045705caecd77a2982b"
           },
-          "source_sha": "2e88d598f34fcc224bc11ac3b9669bfca9fe1fa3",
+          "source_sha": "78986acf513f7b68424a9805babbd802ec97f40b",
           "subject": "math",
           "work_id": "P004-READ-ONLY-PROBE",
           "workflow_version": "production/2"
@@ -76,135 +76,135 @@
       },
       "previous": "0000000000000000000000000000000000000000000000000000000000000000",
       "seq": 1,
-      "time": 1792861550.428461,
+      "time": 1792862255.3998356,
       "work": "P004-READ-ONLY-PROBE",
-      "hash": "a67044bcdcfbc9186031fa59a9ebe3f1af096a65183bea01a1c1f2a793bd142a"
+      "hash": "88f9e9792e0f0f93715a2823be44beb7843d40e83b0a377181c030d483c67fe4"
     },
     {
-      "id": "bd5000f7-5ef9-4ef3-8573-140d673d78ba",
+      "id": "53fa604a-6fb8-4259-9b3f-acff42786e61",
       "kind": "capability_result",
       "payload": {
-        "cache_key": "851612ab53baf397d16efd4f8d370ca14819e69c413d8bc6ec4d17872b79859a",
+        "cache_key": "d66cbeb4bd9eb73f2fef0ad7691115141901d1c6341506f5205152ccf353e5de",
         "capability": "source.fixed",
         "output": "c4b95150f70a0c9e190ab5da45873bf34d3d9836b8445f5749abff8f4ceefd24",
         "phase": "pre-design"
       },
-      "previous": "a67044bcdcfbc9186031fa59a9ebe3f1af096a65183bea01a1c1f2a793bd142a",
+      "previous": "88f9e9792e0f0f93715a2823be44beb7843d40e83b0a377181c030d483c67fe4",
       "seq": 2,
-      "time": 1792861550.4380322,
+      "time": 1792862255.4070754,
       "work": "P004-READ-ONLY-PROBE",
-      "hash": "11e8782b59df30f2aa020a2eddf8869a4818df9b014d2cd78d661f367a95aaa2"
+      "hash": "5ea3842defebd1b85e219ae415ca1ef555b03569e5cdf89de63df1d4da4e91b2"
     },
     {
-      "id": "26fee6fd-5857-4be6-b5f7-d9b0f3b0f4c3",
+      "id": "47fae6e2-d8b4-4a78-8944-7eb8d68380aa",
       "kind": "capability_bound",
       "payload": {
-        "input_hash": "0a86d7657a6cf42f33fd3ca862447c830ae00352925d6aa8c55c0ae1d91a1c0f",
+        "input_hash": "8d6e2fdfe1059746d269ece9da0868ec7b4ee4af8cb72dbb7b57a4f8341c755e",
         "node": "R01_CAPTURE@metadata",
-        "receipt": "aa5f800eb9d293e524230c187e00aaaa2e9b6578322ad22a7ae176f5d874b820"
+        "receipt": "aac2faa654efe9892b4dd06c199a1341c031d0c68384d2cad691a1197685d9f8"
       },
-      "previous": "11e8782b59df30f2aa020a2eddf8869a4818df9b014d2cd78d661f367a95aaa2",
+      "previous": "5ea3842defebd1b85e219ae415ca1ef555b03569e5cdf89de63df1d4da4e91b2",
       "seq": 3,
-      "time": 1792861550.446726,
+      "time": 1792862255.4135783,
       "work": "P004-READ-ONLY-PROBE",
-      "hash": "c56d81c3838f1b7e2cad5052742ca7af75083f3799a4c4bd6c9c9f13b81349f7"
+      "hash": "f28789abe880468a78cf97ae90a994a7486fe368ab438b70b4b7c14c6b00153c"
     },
     {
-      "id": "be4d48f6-329e-4306-95d3-658a8351cbd1",
+      "id": "8aeeccbc-7722-46c1-9953-e28547697565",
       "kind": "capability_result",
       "payload": {
-        "cache_key": "835e1f1583fe434b7c104a18675b276090fe0ca1c09ea557fb7eb12d79246ebc",
+        "cache_key": "e511510ce99a886bf0f08aa5550ab8d13dd16f0e85db35ad04f4202d75e6781d",
         "capability": "math.verify",
         "output": "e7c13ef4b1fe90b6620fd75c8973e90b3a3023aa815ae9669f4b5d0361973ff3",
         "phase": "pre-design"
       },
-      "previous": "c56d81c3838f1b7e2cad5052742ca7af75083f3799a4c4bd6c9c9f13b81349f7",
+      "previous": "f28789abe880468a78cf97ae90a994a7486fe368ab438b70b4b7c14c6b00153c",
       "seq": 4,
-      "time": 1792861550.4807394,
+      "time": 1792862255.4474208,
       "work": "P004-READ-ONLY-PROBE",
-      "hash": "dbdefdcb4e55e991a4ef88898301529f7a538cc1cc8b26592cb98b53a52d6baf"
+      "hash": "9991a6d690b794d9106dddd9ae1ff4dbe19782d745b7dd9be3ca4ac788b12dd5"
     },
     {
-      "id": "65bc5858-1a0b-4c84-853f-a77ad225a277",
+      "id": "495af372-d1a9-484b-9ca2-970f89a2cf05",
       "kind": "capability_bound",
       "payload": {
-        "input_hash": "bfffef26a639d2734fd8cae36b555d35f9776ad47743c914b6d369997b7bc593",
+        "input_hash": "cc740a7dca030320a226da08d64eedff6f5912ed805deb9b46788de2b68abdbc",
         "node": "R02_CAUSE@metadata",
-        "receipt": "f34cdf6f6a1d6a6afe1a5462f318458da6f9b7e1241e4da8b8584bd0d392e634"
+        "receipt": "2c9e983cdf2f58e4634bc959c3a41400c55c8d88709675a4ef1f4e1cb75676a8"
       },
-      "previous": "dbdefdcb4e55e991a4ef88898301529f7a538cc1cc8b26592cb98b53a52d6baf",
+      "previous": "9991a6d690b794d9106dddd9ae1ff4dbe19782d745b7dd9be3ca4ac788b12dd5",
       "seq": 5,
-      "time": 1792861550.487875,
+      "time": 1792862255.4536247,
       "work": "P004-READ-ONLY-PROBE",
-      "hash": "e4c8ba923c0b81e0b6a5863a27ee45a1e6a5ae641e6892c996fd86c797e4dd04"
+      "hash": "86c10b07506e828421f4c979a851604be63bd5adc9a62342243c068f4b28bafb"
     },
     {
-      "id": "9c815973-0d00-470c-9498-1052b327fd37",
+      "id": "98ffbc92-4844-4f73-a4b7-3a4fce1a7ea1",
       "kind": "capability_result",
       "payload": {
-        "cache_key": "a07218159d1151ed3550ad20f5576b3136a6d0fbaded1f7d9f1f8bcdf0db5025",
+        "cache_key": "1acb27f774bf1bea76c5d73aa31102a6a96af9ac207f1904ca5d091e11fb4239",
         "capability": "math.verify",
         "output": "88a9431b24732fbfaf0393739216ee4e34abd354e946cc3e0b6186937d410681",
         "phase": "pre-design"
       },
-      "previous": "e4c8ba923c0b81e0b6a5863a27ee45a1e6a5ae641e6892c996fd86c797e4dd04",
+      "previous": "86c10b07506e828421f4c979a851604be63bd5adc9a62342243c068f4b28bafb",
       "seq": 6,
-      "time": 1792861550.5226674,
+      "time": 1792862255.4872272,
       "work": "P004-READ-ONLY-PROBE",
-      "hash": "e16498602966b8077de3052aa732865d07f2cfdd82a0cf83779c3c2630047d10"
+      "hash": "b97b84ef45623e8188ae6a77389c17876e12edb81f459967da30cb72b15739e6"
     },
     {
-      "id": "7cfcd8ee-018b-4c75-9988-b845ca88d72e",
+      "id": "96940981-7d3e-4e9f-bf84-966cf1b80173",
       "kind": "capability_bound",
       "payload": {
-        "input_hash": "bfffef26a639d2734fd8cae36b555d35f9776ad47743c914b6d369997b7bc593",
+        "input_hash": "cc740a7dca030320a226da08d64eedff6f5912ed805deb9b46788de2b68abdbc",
         "node": "R02_CAUSE@metadata",
-        "receipt": "a876e560015f656df5173255316f6f850b367344361c467fca1b69adab72addf"
+        "receipt": "1877765b71449f18cb7d1a03aa6ff084c825e229f7a72b6d119926baa6ca24e2"
       },
-      "previous": "e16498602966b8077de3052aa732865d07f2cfdd82a0cf83779c3c2630047d10",
+      "previous": "b97b84ef45623e8188ae6a77389c17876e12edb81f459967da30cb72b15739e6",
       "seq": 7,
-      "time": 1792861550.5285933,
+      "time": 1792862255.4935093,
       "work": "P004-READ-ONLY-PROBE",
-      "hash": "bd17bba9996d655a79e44d49899e55fd8a2a62ae6772de190ac56f2a346ba000"
+      "hash": "d2e321a4cabdb87f232a8e3bdfa7c6fa356f37d5faeb7ff5de413821ed696214"
     },
     {
-      "id": "b12ba4f0-cb89-4449-966a-00ec3a470039",
+      "id": "d6c119ee-0f77-40de-a732-c62e18ab1dc8",
       "kind": "capability_result",
       "payload": {
-        "cache_key": "0f4cf8372472da148b3a7b0695f01b2467647515da628890e02b4638d262832b",
+        "cache_key": "35f3b3bb58aa48fa4a1158c35db3b40dfac0ec742f164bcb5d67049284ba4e3f",
         "capability": "ir.compile",
         "output": "2c41ed38a6ced9412b036daf0fd8bf29280e856957e6278c64fca7e79a654a63",
         "phase": "pre-design"
       },
-      "previous": "bd17bba9996d655a79e44d49899e55fd8a2a62ae6772de190ac56f2a346ba000",
+      "previous": "d2e321a4cabdb87f232a8e3bdfa7c6fa356f37d5faeb7ff5de413821ed696214",
       "seq": 8,
-      "time": 1792861550.7164528,
+      "time": 1792862255.6681514,
       "work": "P004-READ-ONLY-PROBE",
-      "hash": "376166a28696cdf0851dfa85937be8eeaf92714e747c4d0ef4cbe78e216ecddc"
+      "hash": "10752d472ac79b33e0c61fe09ed3f826a6d33b879b09cf9a13d65f9675fed0eb"
     },
     {
-      "id": "e051075d-92a8-4397-9920-e6779f075e47",
+      "id": "072e6556-c7ec-489f-8dd5-752725c083d0",
       "kind": "capability_bound",
       "payload": {
-        "input_hash": "7aa1159435ec1ebe3b04ec513be34b5c91c9922ef7b68c7c896bddd2fe18a4b4",
+        "input_hash": "5441a19cf6b10d249c8124ec1dbfc3441b6f54bd07968d70a5f10b6007d3deae",
         "node": "R06_PATCH@metadata",
-        "receipt": "3a1add896c87a6251b30801f74581224cf25ba71614aa488e62f2e4a8a290be4"
+        "receipt": "4fb6017930481ba45934450f527644bbf6ae40792183be8d0b77c81f74414e7d"
       },
-      "previous": "376166a28696cdf0851dfa85937be8eeaf92714e747c4d0ef4cbe78e216ecddc",
+      "previous": "10752d472ac79b33e0c61fe09ed3f826a6d33b879b09cf9a13d65f9675fed0eb",
       "seq": 9,
-      "time": 1792861550.7237382,
+      "time": 1792862255.6748865,
       "work": "P004-READ-ONLY-PROBE",
-      "hash": "9e7fd9ee010a19c672e7aa08d1fab10d8d0a99a35192ff3fd2bb9692b8377520"
+      "hash": "4d7bd6487d3b2ba3c0247f68a08c4344cdccf3fc43b4441e42737c6b1fe612ec"
     }
   ],
   "receipts": {
     "source": {
-      "cache_key": "851612ab53baf397d16efd4f8d370ca14819e69c413d8bc6ec4d17872b79859a",
+      "cache_key": "d66cbeb4bd9eb73f2fef0ad7691115141901d1c6341506f5205152ccf353e5de",
       "capability": "source.fixed",
       "consumed_artifacts": [],
       "consumed_case_ids": [],
-      "implementation_hash": "a2fbfcc6d314cc280974f36c6c98b4ba1ce1ad30a88964ee3f8b4315e7026178",
-      "input_hash": "0a86d7657a6cf42f33fd3ca862447c830ae00352925d6aa8c55c0ae1d91a1c0f",
+      "implementation_hash": "bae9140cb738ce6cd94f39a52f75466359723e14c87a14f5e1c31072b1e83abb",
+      "input_hash": "8d6e2fdfe1059746d269ece9da0868ec7b4ee4af8cb72dbb7b57a4f8341c755e",
       "model_ref": null,
       "node": "R01_CAPTURE@metadata",
       "output": "c4b95150f70a0c9e190ab5da45873bf34d3d9836b8445f5749abff8f4ceefd24",
@@ -213,12 +213,12 @@
       "status": "PASS"
     },
     "identity": {
-      "cache_key": "835e1f1583fe434b7c104a18675b276090fe0ca1c09ea557fb7eb12d79246ebc",
+      "cache_key": "e511510ce99a886bf0f08aa5550ab8d13dd16f0e85db35ad04f4202d75e6781d",
       "capability": "math.verify",
       "consumed_artifacts": [],
       "consumed_case_ids": [],
-      "implementation_hash": "a2fbfcc6d314cc280974f36c6c98b4ba1ce1ad30a88964ee3f8b4315e7026178",
-      "input_hash": "bfffef26a639d2734fd8cae36b555d35f9776ad47743c914b6d369997b7bc593",
+      "implementation_hash": "bae9140cb738ce6cd94f39a52f75466359723e14c87a14f5e1c31072b1e83abb",
+      "input_hash": "cc740a7dca030320a226da08d64eedff6f5912ed805deb9b46788de2b68abdbc",
       "model_ref": null,
       "node": "R02_CAUSE@metadata",
       "output": "e7c13ef4b1fe90b6620fd75c8973e90b3a3023aa815ae9669f4b5d0361973ff3",
@@ -227,12 +227,12 @@
       "status": "PASS"
     },
     "wrong_identity": {
-      "cache_key": "a07218159d1151ed3550ad20f5576b3136a6d0fbaded1f7d9f1f8bcdf0db5025",
+      "cache_key": "1acb27f774bf1bea76c5d73aa31102a6a96af9ac207f1904ca5d091e11fb4239",
       "capability": "math.verify",
       "consumed_artifacts": [],
       "consumed_case_ids": [],
-      "implementation_hash": "a2fbfcc6d314cc280974f36c6c98b4ba1ce1ad30a88964ee3f8b4315e7026178",
-      "input_hash": "bfffef26a639d2734fd8cae36b555d35f9776ad47743c914b6d369997b7bc593",
+      "implementation_hash": "bae9140cb738ce6cd94f39a52f75466359723e14c87a14f5e1c31072b1e83abb",
+      "input_hash": "cc740a7dca030320a226da08d64eedff6f5912ed805deb9b46788de2b68abdbc",
       "model_ref": null,
       "node": "R02_CAUSE@metadata",
       "output": "88a9431b24732fbfaf0393739216ee4e34abd354e946cc3e0b6186937d410681",
@@ -241,12 +241,12 @@
       "status": "FAIL"
     },
     "compile": {
-      "cache_key": "0f4cf8372472da148b3a7b0695f01b2467647515da628890e02b4638d262832b",
+      "cache_key": "35f3b3bb58aa48fa4a1158c35db3b40dfac0ec742f164bcb5d67049284ba4e3f",
       "capability": "ir.compile",
       "consumed_artifacts": [],
       "consumed_case_ids": [],
-      "implementation_hash": "a2fbfcc6d314cc280974f36c6c98b4ba1ce1ad30a88964ee3f8b4315e7026178",
-      "input_hash": "7aa1159435ec1ebe3b04ec513be34b5c91c9922ef7b68c7c896bddd2fe18a4b4",
+      "implementation_hash": "bae9140cb738ce6cd94f39a52f75466359723e14c87a14f5e1c31072b1e83abb",
+      "input_hash": "5441a19cf6b10d249c8124ec1dbfc3441b6f54bd07968d70a5f10b6007d3deae",
       "model_ref": null,
       "node": "R06_PATCH@metadata",
       "output": "2c41ed38a6ced9412b036daf0fd8bf29280e856957e6278c64fca7e79a654a63",

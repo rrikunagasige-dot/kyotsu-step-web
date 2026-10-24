@@ -1,0 +1,6 @@
+{
+  "sourceSHA": "78986acf513f7b68424a9805babbd802ec97f40b",
+  "runId": 40114657817,
+  "conclusion": "success",
+  "disposition": "superseded by final source-import, ML-failure and route-binding guards; final CI still required"
+}

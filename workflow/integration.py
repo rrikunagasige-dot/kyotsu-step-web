@@ -109,6 +109,7 @@ def check_result(rt, work, node, result):
                     cs = rt.state(child); need(cs['plan']['command'] == 'CMD-WORK-001' and cs['plan'].get('parent_work') == work, '関連修正Workの対応が違う')
         need(result['verdict'] != 'PASS' or result['release_readiness'] == 'READY' and result['impact_sweep_completion'] != 'BLOCKED', '公開準備が未完了')
     if node['stage_kind'] == 'G3_HOST':
+        if not s['plan'].get('simulation'):need(next(u.get('review_route') for u in s['plan']['release_units'] if u['id']==node['release_unit']),'公開unitの実物確認routeを固定する')
         need(not any(not op.get('outcome') for op in s['external'].values()),'公開操作の成否が未記録')
         need(s['release_versions'].get(node['release_unit'])==s['candidate_sha'],'先に対象unitの候補SHAを固定する')
         need(result.get('sourceSHA') == s['candidate_sha'], '配信source SHAが違う')
@@ -128,6 +129,7 @@ def check_result(rt, work, node, result):
             need(result['modelDisposition'] in ('NOT_TRAINABLE', 'SHADOW', 'ADVISORY', 'REJECTED'), 'modelの採否が未記録')
             models = [rt.store.get(r['output']) for r in receipts if r['capability'] == 'ml.train']
             need(models and result['modelDisposition'] == models[0]['modelDisposition'], '実際の学習記録と報告が違う')
+            if 'trainingRun' in result:need(result['trainingRun']==models[0].get('trainingRun'),'実際の学習実行記録と違う')
     # Case retrieval must be consumed, not merely attached to a request.
     retrieved = []
     case_receipts=list(receipts)

@@ -288,4 +288,25 @@ class Integration(unittest.TestCase):
         from learning import finalize
         with self.assertRaises(Rejected):finalize(self.rt,self.work,{'caseUpdates':[],'curation':{'observations':[{'id':'invented'}],'decisions':[{'id':'invented','observationId':'invented','quality':'POSITIVE','evidenceTier':'USER_GOLD'}]}})
 
+
+    def test_source_correction_reimports_and_rechecks_source_coverage(self):
+        p=self.make_plan('CMD-WORK-001');p['blocks'][0]['change_facets']=['source'];nodes=instantiate(p)
+        self.assertIn('source.import',nodes['R01_CAPTURE@a']['capability_requests']);self.assertIn('source.coverage',nodes['R01_CAPTURE@a']['capability_requests'])
+        self.assertNotIn('math.solve',nodes['R02_CAUSE@a']['capability_requests'])
+    def test_ml_failure_is_rejected_model_with_preserved_failure_not_fake_successful_fit(self):
+        n=instantiate(self.plan)['L01_LEARNING@u1']
+        with patch('learning.training_inputs',side_effect=lambda rt,x:x),patch('runner.code_operation',return_value={'status':'FAIL','reason':'fixture unavailable model cache'}):
+            ref=run_capability(self.rt,self.work,n,'ml.train',{'request':{'cache':'simulation-only'}})
+        out=self.rt.store.get(self.rt.store.get(ref)['output']);self.assertEqual(out['modelDisposition'],'REJECTED');self.assertFalse(out['advisoryEligible']);self.assertEqual(out['trainingFailure']['status'],'FAIL');self.assertIsNone(out['trainingRun'])
+
+
+    def test_import_cannot_switch_to_another_blocks_source(self):
+        n=instantiate(self.plan)['C01_SOURCE@a']
+        with self.assertRaises(Rejected):run_capability(self.rt,self.work,n,'source.import',{'sourcePath':'b.json'})
+
+
+    def test_app_url_cannot_show_another_route_under_correct_unit_tag(self):
+        p=self.make_plan(work='routes');p['release_units']=[{'id':'u1','block_ids':['a'],'review_route':'/learning/textbook/unit-a'},{'id':'u2','block_ids':['b'],'review_route':'/learning/textbook/unit-b'}];self.rt.open(p)
+        with self.assertRaises(Rejected):self.rt.evidence('routes','app',{'url':'https://example.invalid/#/learning/textbook/unit-b','release_unit':'u1','source_sha':'a'*40,'manifest_sha':'a'*40,'reachable':True,'auth_wall':False,'mobile':True,'desktop':True,'progress_isolated':True},source_ref='simulation:wrong-route',verification_level='simulation')
+
 if __name__=='__main__':unittest.main()

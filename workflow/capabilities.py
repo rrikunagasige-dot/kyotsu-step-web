@@ -33,6 +33,8 @@ def requests_for(plan, node):
     caps = list(PLACEMENT.get(node['stage_kind'], []))
     if node['block'] and plan['command'] == 'CMD-WORK-001':
         b = next(b for b in plan['blocks'] if b['id'] == node['block']); facets = set(b['change_facets'])
+        if node['stage_kind']=='R01_CAPTURE' and 'source' in facets:caps += ['source.import','source.coverage']
+        if node['stage_kind']=='R02_CAUSE' and 'math' in facets:caps += ['math.solve']
         if 'math' not in facets: caps = [c for c in caps if c not in ('math.solve', 'math.verify', 'knowledge.ledger')]
         if not facets.intersection({'math', 'design'}): caps = [c for c in caps if c not in ('teaching.plan', 'step.plan', 'blank.plan')]
     return caps
@@ -47,6 +49,8 @@ def implementation_hash(rt):
 def run_capability(rt, work, node, capability, inputs):
     from runner import code_operation
     s = rt.state(work); need(capability in node['capability_requests'], '工程に未接続の機能')
+    if capability=='source.import' and inputs.get('sourcePath'):
+        need(inputs['sourcePath'] in (node['source_refs'] or s['plan']['source_manifest']),'宣言されたblock原資料の外を取り込まない')
     impl = implementation_hash(rt)
     context_keys = ('corpusHash', 'modelHash', 'rulesHash', 'featureSchema') if capability in ('case.retrieve', 'ml.train') else ()
     context = {k: s.get('production_context', {}).get(k) for k in context_keys}
@@ -62,7 +66,9 @@ def run_capability(rt, work, node, capability, inputs):
     if paths:bindings['files']=manifest(rt.root,paths)
     key = digest({'bindings':bindings,'capability': capability, 'inputs': inputs, 'implementation': impl, 'rules': s['plan']['rules'], 'phase': node['phase'], 'context': context})
     cached = next((e for e in reversed(rt.store.events()) if e['work'] == work and e['kind'] == 'capability_result' and e['payload']['cache_key'] == key), None)
-    if cached and rt.store.get(cached['payload']['output']).get('status') not in ('PASS','NEEDS_AI_REVIEW'):cached=None
+    if cached:
+        previous=rt.store.get(cached['payload']['output'])
+        if previous.get('status') not in ('PASS','NEEDS_AI_REVIEW') or previous.get('trainingStatus')=='FAIL':cached=None
     output = rt.store.get(cached['payload']['output']) if cached else None
     if output is None:
         if capability == 'source.import' and not inputs.get('sourcePath'):
@@ -88,6 +94,8 @@ def run_capability(rt, work, node, capability, inputs):
         elif capability == 'ml.train':
             from learning import training_inputs
             output=code_operation(rt,work,'S24',training_inputs(rt,inputs))
+            if output.get('status')!='PASS':
+                output={'status':'PASS','trainingStatus':'FAIL','trainingAttempted':True,'trainingRun':None,'modelDisposition':'REJECTED','advisoryEligible':False,'trainingFailure':output}
         elif capability == 'protected.verify':
             expected=s['plan'].get('protected_manifest',{})
             output=code_operation(rt,work,'S20',{'protectedManifest':expected})

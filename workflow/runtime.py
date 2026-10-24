@@ -194,7 +194,12 @@ class Runtime:
             need(ci.get('kind')=='ci' and ci['data']['head_sha']==data.get('source_sha'),'画像とCIのSHA対応がない')
             need(data.get('artifact_sha256') and data.get('files'),'画像成果物の対応表がない')
         elif kind=='app':
-            if s['plan'].get('workflow_version')=='production/2':need(data.get('release_unit') in {u['id'] for u in s['plan']['release_units']},'app証拠にrelease unitが必要')
+            if s['plan'].get('workflow_version')=='production/2':
+                need(data.get('release_unit') in {u['id'] for u in s['plan']['release_units']},'app証拠にrelease unitが必要')
+                route=next(u.get('review_route') for u in s['plan']['release_units'] if u['id']==data['release_unit'])
+                if route:
+                    from urllib.parse import urlsplit
+                    need(urlsplit(data.get('url','')).fragment==route.removeprefix('#'),'実物確認URLが対象unitのrouteと違う')
             need(data.get('source_sha')==s['candidate_sha'] and data.get('manifest_sha')==s['candidate_sha'],'アプリと対象SHAが異なる')
             need(data.get('url','').startswith('https://') and data.get('reachable') and data.get('auth_wall') is False,'実働URL・到達性・認証壁が未確認')
             need(data.get('mobile') and data.get('desktop') and data.get('progress_isolated'),'端末・履歴分離の証拠が不足')

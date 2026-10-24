@@ -69,3 +69,6 @@ Read-only instantiate comparison: correction graph==creation graph;25 nodes, all
 ## P-004 local verification — 2026-10-24
 
 詳細とログ: integration/IMPLEMENTATION_RESULTS.md、integration/evidence/checks/。新規C/R統合の試験、旧78 workflow試験、既存Node/源資料/ML検査、39 authoring、620 learner、27 legacy solver、buildを実行。既存のphysicsTaxonomy/questionSchemaの二つのbaseline失敗は前回同様にlearner集合から除外し、修正・合格とは報告しない。実source/正負等式/IR compileのprobeと、模擬フロー・実app受入を分離。次に保存した実装SHAのCIで同じ検査と四幅320/390/430/1440の既存UIを確認する。
+
+
+P-004最終照合: 初回固定SHA78986acf/CI40114657817 SUCCESS後、原資料再取込・ML失敗時のREJECTED・unit route照合を追加。local workflow119件（新規41件）、Node19件、source/corpus/ML8件PASS。モデル再fitと教材編集は行わない。最終固定SHAのCIを再実行してからcanonical入口を更新する。

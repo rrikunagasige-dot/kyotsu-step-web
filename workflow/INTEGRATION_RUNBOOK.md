@@ -73,7 +73,7 @@ python workflow/cli.py --root . --store WORK/runtime render --work WORK_ID --out
 
 G2の`audit_rows`は、対象unitの全source、または明示した`audit_inventory`をartifact/block/版/証拠付きで覆う。方法と担当を記録し、同じAIを独立モデルの監査とは呼ばない。
 
-`external-intent DEPLOY`には`release_unit`も必要。QA完了・現行の範囲承認・既存公開先ポリシーが揃えば、公開の再許可は要求しない。未確定の外部操作は照合してから進める。app証拠はunit・source SHA・配信manifest・到達性・スマホ/PC操作・履歴分離に対応する。URLの`?v=`だけで版を確認しない。
+`external-intent DEPLOY`には`release_unit`も必要。QA完了・現行の範囲承認・既存公開先ポリシーが揃えば、公開の再許可は要求しない。未確定の外部操作は照合してから進める。実公開するunitは`review_route`へ`/learning/textbook/…`のhash routeを固定する。app証拠はそのroute・unit・source SHA・配信manifest・到達性・スマホ/PC操作・履歴分離に対応する。URLの`?v=`だけで版を確認しない。
 
 G3_FINALは`accept_app`の発言と、確認したunit・SHA・app証拠を照合する。quality_positiveは受入として扱わない。受入待ちを、新しい単元の未承認実装を進める許可にしない。
 

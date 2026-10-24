@@ -1,10 +1,10 @@
 # 機能火柴図（GENERATED）
 
-台帳HEAD: `e750d80eee558c704aed21af45ddda228e37b0e365eb223a491c9df0877c5837`
+台帳HEAD: `e9a3b6bcf1281e1177fb05ea4659bed0da3b433742609171eae763a5805900d1`
 
 # R01_CAPTURE@a（GENERATED）
 
-台帳HEAD: `e750d80eee558c704aed21af45ddda228e37b0e365eb223a491c9df0877c5837`
+台帳HEAD: `e9a3b6bcf1281e1177fb05ea4659bed0da3b433742609171eae763a5805900d1`
 
 ```mermaid
 flowchart TD
@@ -19,7 +19,7 @@ flowchart TD
 
 # R02_CAUSE@a（GENERATED）
 
-台帳HEAD: `e750d80eee558c704aed21af45ddda228e37b0e365eb223a491c9df0877c5837`
+台帳HEAD: `e9a3b6bcf1281e1177fb05ea4659bed0da3b433742609171eae763a5805900d1`
 
 ```mermaid
 flowchart TD
@@ -38,13 +38,15 @@ flowchart TD
 
 # R02_CAUSE@a（GENERATED）
 
-台帳HEAD: `e750d80eee558c704aed21af45ddda228e37b0e365eb223a491c9df0877c5837`
+台帳HEAD: `e9a3b6bcf1281e1177fb05ea4659bed0da3b433742609171eae763a5805900d1`
 
 ```mermaid
 flowchart TD
   N0["R02_CAUSE@a / pre-design / PASSED"]
   N1["source.audit"]
   N2["novice.audit"]
+  N3["math.solve"]
+  N0 --> N3
   N0 --> N2
   N0 --> N1
 ```
@@ -53,7 +55,7 @@ flowchart TD
 
 # R03_IMPACT@a（GENERATED）
 
-台帳HEAD: `e750d80eee558c704aed21af45ddda228e37b0e365eb223a491c9df0877c5837`
+台帳HEAD: `e9a3b6bcf1281e1177fb05ea4659bed0da3b433742609171eae763a5805900d1`
 
 ```mermaid
 flowchart TD
@@ -66,7 +68,7 @@ flowchart TD
 
 # R04_PROPOSAL@a（GENERATED）
 
-台帳HEAD: `e750d80eee558c704aed21af45ddda228e37b0e365eb223a491c9df0877c5837`
+台帳HEAD: `e9a3b6bcf1281e1177fb05ea4659bed0da3b433742609171eae763a5805900d1`
 
 ```mermaid
 flowchart TD
@@ -85,7 +87,7 @@ flowchart TD
 
 # R04_PROPOSAL@a（GENERATED）
 
-台帳HEAD: `e750d80eee558c704aed21af45ddda228e37b0e365eb223a491c9df0877c5837`
+台帳HEAD: `e9a3b6bcf1281e1177fb05ea4659bed0da3b433742609171eae763a5805900d1`
 
 ```mermaid
 flowchart TD
@@ -104,7 +106,7 @@ flowchart TD
 
 # R04_PROPOSAL@a（GENERATED）
 
-台帳HEAD: `e750d80eee558c704aed21af45ddda228e37b0e365eb223a491c9df0877c5837`
+台帳HEAD: `e9a3b6bcf1281e1177fb05ea4659bed0da3b433742609171eae763a5805900d1`
 
 ```mermaid
 flowchart TD
@@ -121,7 +123,7 @@ flowchart TD
 
 # R06_PATCH@a（GENERATED）
 
-台帳HEAD: `e750d80eee558c704aed21af45ddda228e37b0e365eb223a491c9df0877c5837`
+台帳HEAD: `e9a3b6bcf1281e1177fb05ea4659bed0da3b433742609171eae763a5805900d1`
 
 ```mermaid
 flowchart TD
@@ -134,7 +136,7 @@ flowchart TD
 
 # R07_VERIFY@a（GENERATED）
 
-台帳HEAD: `e750d80eee558c704aed21af45ddda228e37b0e365eb223a491c9df0877c5837`
+台帳HEAD: `e9a3b6bcf1281e1177fb05ea4659bed0da3b433742609171eae763a5805900d1`
 
 ```mermaid
 flowchart TD
@@ -153,7 +155,7 @@ flowchart TD
 
 # R07_SEMANTIC@a（GENERATED）
 
-台帳HEAD: `e750d80eee558c704aed21af45ddda228e37b0e365eb223a491c9df0877c5837`
+台帳HEAD: `e9a3b6bcf1281e1177fb05ea4659bed0da3b433742609171eae763a5805900d1`
 
 ```mermaid
 flowchart TD
@@ -168,7 +170,7 @@ flowchart TD
 
 # R01_CAPTURE@b（GENERATED）
 
-台帳HEAD: `e750d80eee558c704aed21af45ddda228e37b0e365eb223a491c9df0877c5837`
+台帳HEAD: `e9a3b6bcf1281e1177fb05ea4659bed0da3b433742609171eae763a5805900d1`
 
 ```mermaid
 flowchart TD
@@ -183,7 +185,7 @@ flowchart TD
 
 # R02_CAUSE@b（GENERATED）
 
-台帳HEAD: `e750d80eee558c704aed21af45ddda228e37b0e365eb223a491c9df0877c5837`
+台帳HEAD: `e9a3b6bcf1281e1177fb05ea4659bed0da3b433742609171eae763a5805900d1`
 
 ```mermaid
 flowchart TD
@@ -202,13 +204,15 @@ flowchart TD
 
 # R02_CAUSE@b（GENERATED）
 
-台帳HEAD: `e750d80eee558c704aed21af45ddda228e37b0e365eb223a491c9df0877c5837`
+台帳HEAD: `e9a3b6bcf1281e1177fb05ea4659bed0da3b433742609171eae763a5805900d1`
 
 ```mermaid
 flowchart TD
   N0["R02_CAUSE@b / pre-design / PASSED"]
   N1["source.audit"]
   N2["novice.audit"]
+  N3["math.solve"]
+  N0 --> N3
   N0 --> N2
   N0 --> N1
 ```
@@ -217,7 +221,7 @@ flowchart TD
 
 # R03_IMPACT@b（GENERATED）
 
-台帳HEAD: `e750d80eee558c704aed21af45ddda228e37b0e365eb223a491c9df0877c5837`
+台帳HEAD: `e9a3b6bcf1281e1177fb05ea4659bed0da3b433742609171eae763a5805900d1`
 
 ```mermaid
 flowchart TD
@@ -230,7 +234,7 @@ flowchart TD
 
 # R04_PROPOSAL@b（GENERATED）
 
-台帳HEAD: `e750d80eee558c704aed21af45ddda228e37b0e365eb223a491c9df0877c5837`
+台帳HEAD: `e9a3b6bcf1281e1177fb05ea4659bed0da3b433742609171eae763a5805900d1`
 
 ```mermaid
 flowchart TD
@@ -249,7 +253,7 @@ flowchart TD
 
 # R04_PROPOSAL@b（GENERATED）
 
-台帳HEAD: `e750d80eee558c704aed21af45ddda228e37b0e365eb223a491c9df0877c5837`
+台帳HEAD: `e9a3b6bcf1281e1177fb05ea4659bed0da3b433742609171eae763a5805900d1`
 
 ```mermaid
 flowchart TD
@@ -268,7 +272,7 @@ flowchart TD
 
 # R04_PROPOSAL@b（GENERATED）
 
-台帳HEAD: `e750d80eee558c704aed21af45ddda228e37b0e365eb223a491c9df0877c5837`
+台帳HEAD: `e9a3b6bcf1281e1177fb05ea4659bed0da3b433742609171eae763a5805900d1`
 
 ```mermaid
 flowchart TD
@@ -285,7 +289,7 @@ flowchart TD
 
 # R06_PATCH@b（GENERATED）
 
-台帳HEAD: `e750d80eee558c704aed21af45ddda228e37b0e365eb223a491c9df0877c5837`
+台帳HEAD: `e9a3b6bcf1281e1177fb05ea4659bed0da3b433742609171eae763a5805900d1`
 
 ```mermaid
 flowchart TD
@@ -298,7 +302,7 @@ flowchart TD
 
 # R07_VERIFY@b（GENERATED）
 
-台帳HEAD: `e750d80eee558c704aed21af45ddda228e37b0e365eb223a491c9df0877c5837`
+台帳HEAD: `e9a3b6bcf1281e1177fb05ea4659bed0da3b433742609171eae763a5805900d1`
 
 ```mermaid
 flowchart TD
@@ -317,7 +321,7 @@ flowchart TD
 
 # R07_SEMANTIC@b（GENERATED）
 
-台帳HEAD: `e750d80eee558c704aed21af45ddda228e37b0e365eb223a491c9df0877c5837`
+台帳HEAD: `e9a3b6bcf1281e1177fb05ea4659bed0da3b433742609171eae763a5805900d1`
 
 ```mermaid
 flowchart TD
@@ -332,7 +336,7 @@ flowchart TD
 
 # G2_AUDIT@u1（GENERATED）
 
-台帳HEAD: `e750d80eee558c704aed21af45ddda228e37b0e365eb223a491c9df0877c5837`
+台帳HEAD: `e9a3b6bcf1281e1177fb05ea4659bed0da3b433742609171eae763a5805900d1`
 
 ```mermaid
 flowchart TD
@@ -347,7 +351,7 @@ flowchart TD
 
 # G3_HOST@u1（GENERATED）
 
-台帳HEAD: `e750d80eee558c704aed21af45ddda228e37b0e365eb223a491c9df0877c5837`
+台帳HEAD: `e9a3b6bcf1281e1177fb05ea4659bed0da3b433742609171eae763a5805900d1`
 
 ```mermaid
 flowchart TD
@@ -360,7 +364,7 @@ flowchart TD
 
 # R03_IMPACT_SWEEP@u1（GENERATED）
 
-台帳HEAD: `e750d80eee558c704aed21af45ddda228e37b0e365eb223a491c9df0877c5837`
+台帳HEAD: `e9a3b6bcf1281e1177fb05ea4659bed0da3b433742609171eae763a5805900d1`
 
 ```mermaid
 flowchart TD
@@ -373,7 +377,7 @@ flowchart TD
 
 # R08_CAPTURE_LEARNING@a（GENERATED）
 
-台帳HEAD: `e750d80eee558c704aed21af45ddda228e37b0e365eb223a491c9df0877c5837`
+台帳HEAD: `e9a3b6bcf1281e1177fb05ea4659bed0da3b433742609171eae763a5805900d1`
 
 ```mermaid
 flowchart TD
@@ -386,7 +390,7 @@ flowchart TD
 
 # L01_LEARNING@u1（GENERATED）
 
-台帳HEAD: `e750d80eee558c704aed21af45ddda228e37b0e365eb223a491c9df0877c5837`
+台帳HEAD: `e9a3b6bcf1281e1177fb05ea4659bed0da3b433742609171eae763a5805900d1`
 
 ```mermaid
 flowchart TD
@@ -401,7 +405,7 @@ flowchart TD
 
 # G2_AUDIT@u2（GENERATED）
 
-台帳HEAD: `e750d80eee558c704aed21af45ddda228e37b0e365eb223a491c9df0877c5837`
+台帳HEAD: `e9a3b6bcf1281e1177fb05ea4659bed0da3b433742609171eae763a5805900d1`
 
 ```mermaid
 flowchart TD
@@ -416,7 +420,7 @@ flowchart TD
 
 # G3_HOST@u2（GENERATED）
 
-台帳HEAD: `e750d80eee558c704aed21af45ddda228e37b0e365eb223a491c9df0877c5837`
+台帳HEAD: `e9a3b6bcf1281e1177fb05ea4659bed0da3b433742609171eae763a5805900d1`
 
 ```mermaid
 flowchart TD
@@ -429,7 +433,7 @@ flowchart TD
 
 # R03_IMPACT_SWEEP@u2（GENERATED）
 
-台帳HEAD: `e750d80eee558c704aed21af45ddda228e37b0e365eb223a491c9df0877c5837`
+台帳HEAD: `e9a3b6bcf1281e1177fb05ea4659bed0da3b433742609171eae763a5805900d1`
 
 ```mermaid
 flowchart TD
@@ -442,7 +446,7 @@ flowchart TD
 
 # R08_CAPTURE_LEARNING@b（GENERATED）
 
-台帳HEAD: `e750d80eee558c704aed21af45ddda228e37b0e365eb223a491c9df0877c5837`
+台帳HEAD: `e9a3b6bcf1281e1177fb05ea4659bed0da3b433742609171eae763a5805900d1`
 
 ```mermaid
 flowchart TD
@@ -455,7 +459,7 @@ flowchart TD
 
 # L01_LEARNING@u2（GENERATED）
 
-台帳HEAD: `e750d80eee558c704aed21af45ddda228e37b0e365eb223a491c9df0877c5837`
+台帳HEAD: `e9a3b6bcf1281e1177fb05ea4659bed0da3b433742609171eae763a5805900d1`
 
 ```mermaid
 flowchart TD

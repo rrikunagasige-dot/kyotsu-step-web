@@ -22,15 +22,15 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     env:
-      CANDIDATE_SHA: '6f589d1292e63858a1d8b310a74ba9be82aec471'
-      VITE_PREVIEW_COMMIT: '6f589d1292e63858a1d8b310a74ba9be82aec471'
+      CANDIDATE_SHA: '15509ec12c24cfbf74efba82306bd093a94bd28e'
+      VITE_PREVIEW_COMMIT: '15509ec12c24cfbf74efba82306bd093a94bd28e'
       VITE_REVIEW_PREVIEW: 'true'
       VITE_BASE_PATH: '/kyotsu-step-web/'
       VITE_STORAGE_NAMESPACE: 'kyotsu-step-gate3-math-20261023'
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: '6f589d1292e63858a1d8b310a74ba9be82aec471'
+          ref: '15509ec12c24cfbf74efba82306bd093a94bd28e'
           fetch-depth: 0
           persist-credentials: false
       - uses: pnpm/action-setup@v4
@@ -90,7 +90,7 @@ jobs:
       - if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
-          name: first-theme-6f589d12-verification
+          name: first-theme-15509ec1-verification
           path: |
             e2e-evidence/theme-one/**
             e2e-evidence/theme-one-compiled/**

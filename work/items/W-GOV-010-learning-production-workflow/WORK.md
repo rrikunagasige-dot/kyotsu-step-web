@@ -42,3 +42,8 @@ Canonical routing: main f75bfe73 now contains only the five documentation/pointe
 ## P-004 C/R integration design — PROPOSED
 
 User requests an implementation-ready plan for embedding P-003 capabilities into the two existing commands. Current sourcebba4df75 creates the same25-node graph for both commands and leaves all node.block unset. The code/AI capability baseline is verified, but command-specific integration is not complete. See integration/P004_INTEGRATION_DESIGN.md and P004_MAPPING.json: C01–C09 and R01–R08 placement, common gates/learning/closure, block/release/approval-bundle dependencies, correction queue and pre/post impact, scoped reuse, three-level fire diagrams, migration and seven implementation steps. This turn changes documentation only; production/2 is not implemented or approved by the design request. P-003 source, main routing and public app are unchanged.
+
+
+## Current — P-004 C/R統合 / final CI running
+
+ユーザー「可以可以那就来做做看把」でP-004を承認。作成と修正へ既存code/AI/MLを組み込み、I01–I07を実装。最終実装source f98a36e6b5930f34d924ae2bd7b391984234673a、CI40115554244を待機。local workflow119件（新規41）・production Node19・source/corpus/ML8・authoring39・legacy27・learner620・build PASS。初回78986acf/CI40114657817も成功しているが、最終版の代用にしない。待機中は資料と根拠の照合だけを行い、完了後はmainの5つの入口/pointerを限定更新する。N07の六指摘、第一タイトル、公開4fb7a98e、他モード・進捗は保持。

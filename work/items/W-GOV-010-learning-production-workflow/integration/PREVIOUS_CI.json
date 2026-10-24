@@ -1,0 +1,14 @@
+{
+  "sourceSHA": "f98a36e6b5930f34d924ae2bd7b391984234673a",
+  "runId": 40115554244,
+  "conclusion": "success",
+  "browserWidths": [
+    320,
+    390,
+    430,
+    1440
+  ],
+  "artifactId": 12568391373,
+  "artifactDigest": "sha256:d63f505d4cb24db3123cc449d3e4af9b6e5add1e2e52ce6848c67d1f2570aa34",
+  "disposition": "follow-up explicitly connects AI complete solutions outside solver domain; require CI on that final source"
+}

@@ -83,7 +83,7 @@ def check_result(rt, work, node, result):
         from impact import check
         check(rt, work, node, result)
     for r in receipts:
-        if r['capability']=='math.verify' and rt.store.get(r['output']).get('status')=='NEEDS_AI_REVIEW' and result['verdict']=='PASS':
+        if r['capability'] in ('math.solve','math.verify') and rt.store.get(r['output']).get('status')=='NEEDS_AI_REVIEW' and result['verdict']=='PASS':
             need(result.get('proofStatus')=='AI_ARGUMENT_REVIEWED' and result.get('formalProof') is False, '意味監査と機械証明を区別する')
     if node['stage_kind'] in ('C07_BUILD', 'R06_PATCH'):
         need(approval(rt, s, node), 'このblockの具体案を覆う承認がない')

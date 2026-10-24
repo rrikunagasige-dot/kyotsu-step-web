@@ -1,7 +1,7 @@
 {
   "work": "fixture",
   "engine_version": "1.0.0",
-  "ledger_head": "3fdc6769d007a84b9cdc26871be8879b6d30a0bc77e3b7ccde865b0d39e2806a",
+  "ledger_head": "0b716422fb3734bb0d9c45438c12135a5f8a3bde54afb6d91762a9997fad9ff6",
   "work_status": "DONE",
   "profile": "material",
   "simulation": true,
@@ -966,294 +966,294 @@
   "child_works": [],
   "capability_receipts": [
     {
-      "input_hash": "94e4e2ae5e0a13efabc48e96988238aba49f18eb9b17372d6f390992451d777b",
+      "input_hash": "ed0dcf372677d90294e2f5aa312d27bdbbff6d19b9b651d97ca418cf0a2f3e40",
       "node": "C01_SOURCE@a",
-      "receipt": "ee75e0e45decb4426f964037033884fa23d782ce46cd6dc520b11617bc2e06e7"
+      "receipt": "a5b9dfd22cc3e3428f39e1272b835dc57fb96fee9dc82628f157d59074e538fc"
     },
     {
-      "input_hash": "94e4e2ae5e0a13efabc48e96988238aba49f18eb9b17372d6f390992451d777b",
+      "input_hash": "ed0dcf372677d90294e2f5aa312d27bdbbff6d19b9b651d97ca418cf0a2f3e40",
       "node": "C01_SOURCE@a",
-      "receipt": "27c947506bb9eb937daf55d5726359a8600f9632bcac4783e755d23e811f9b61"
+      "receipt": "a3496709b68fb13373f0174f43d2efe52d4d5d5dbfddc535be7091dfcdaa03b8"
     },
     {
-      "input_hash": "94e4e2ae5e0a13efabc48e96988238aba49f18eb9b17372d6f390992451d777b",
+      "input_hash": "ed0dcf372677d90294e2f5aa312d27bdbbff6d19b9b651d97ca418cf0a2f3e40",
       "node": "C01_SOURCE@a",
-      "receipt": "42e78736cc47a1149a7d800559fc12fffa734d4ea9205946078192e7537006e4"
+      "receipt": "de03826438adae66f284363ddf6502be80a44a1db4e25191a8253f7fda14f2bf"
     },
     {
-      "input_hash": "4e59fdf875f626ed8a343edba151e8b0e3400bd3cfb4d42858caa7555442e751",
+      "input_hash": "42bac0edb2106238d942d227369d090fcc36a4692f04c72d32eaed90b907e707",
       "node": "C02_CONCEPT@a",
-      "receipt": "156333d733a63ace292ef268567c751c4f979e39b544f620347f52ae78a4598a"
+      "receipt": "6353f9cb482e25606f8c9626fb54ab2835921036f723ea51175e3faa6880b152"
     },
     {
-      "input_hash": "4e59fdf875f626ed8a343edba151e8b0e3400bd3cfb4d42858caa7555442e751",
+      "input_hash": "42bac0edb2106238d942d227369d090fcc36a4692f04c72d32eaed90b907e707",
       "node": "C02_CONCEPT@a",
-      "receipt": "f11fa2e90323f33d505b3603b7c1ce99ac130afd6bd2cad5245052463eff963d"
+      "receipt": "aafbf8dcbf714bcd27022a7aadc2c59493f1dac31f03a5a33d19fae58e492298"
     },
     {
-      "input_hash": "7100829b534001831cc61447028293dfc6a5ab5e67bff13b8916dc6d638c4f76",
+      "input_hash": "cfe2d91f6c5ab598ef5dc97f44b7a806ed8c2348c611052840b6ed1ff45b03e9",
       "node": "C03_PATTERN@a",
-      "receipt": "f813938de155457828239a33514e893a4d58cf68c4e3b6318f225b6e6083e2e5"
+      "receipt": "26851b3cdd4c920d1671b59927ef55b444b9edeb59a2dfeb6f4aca32dac634e4"
     },
     {
-      "input_hash": "301af8daa287838e8027cf7423282b87e4370ab66d65eb5eec8c51ace8e051c1",
+      "input_hash": "666a719a0e6962d5bc9c4490f31eb3b07c256d6d2cbef34d7258063ea6b157fe",
       "node": "C04_SOLUTION@a",
-      "receipt": "214bdeab5b89027884657c3b4928a50ecdc652aab042a18024b3b516362f71b7"
+      "receipt": "ab3bf3572f0ca534592e21b49dd8b9ac911d59116e43226789ef1d5b3d3a119b"
     },
     {
-      "input_hash": "301af8daa287838e8027cf7423282b87e4370ab66d65eb5eec8c51ace8e051c1",
+      "input_hash": "666a719a0e6962d5bc9c4490f31eb3b07c256d6d2cbef34d7258063ea6b157fe",
       "node": "C04_SOLUTION@a",
-      "receipt": "059fc1dba0f9c5d62206d41ca975c26f490f48bb423e02e64901ffada68097be"
+      "receipt": "ed2859049ed215f2cad0c15836d7134e60842c6fd24e805acdbc4ef1cafe9a8d"
     },
     {
-      "input_hash": "ef8449a37e4fd7e459da092ab5fa059f12b2ff7a536ae5dc70c4838fda86a829",
+      "input_hash": "f707783423924318d0c754c212740afccb66484918b4b46186d3b735040fffd0",
       "node": "C05_DESIGN@a",
-      "receipt": "68410d67aca3f6faa16b2028e381d0b5cb43dc5037fdf72679fc5268aa722479"
+      "receipt": "81dab495157cc9be6017e0845f109868743e89edeae0ad067e745a3459614340"
     },
     {
-      "input_hash": "ef8449a37e4fd7e459da092ab5fa059f12b2ff7a536ae5dc70c4838fda86a829",
+      "input_hash": "f707783423924318d0c754c212740afccb66484918b4b46186d3b735040fffd0",
       "node": "C05_DESIGN@a",
-      "receipt": "0d5f080fc975f2c299e52882a5f8f210c6eff51e86cbbf564eeec65e4f4d0719"
+      "receipt": "0bd419d75c39ddeccca6cf396adfdb1ac4f853d80ef123db39c1ca6017c87b1a"
     },
     {
-      "input_hash": "ef8449a37e4fd7e459da092ab5fa059f12b2ff7a536ae5dc70c4838fda86a829",
+      "input_hash": "f707783423924318d0c754c212740afccb66484918b4b46186d3b735040fffd0",
       "node": "C05_DESIGN@a",
-      "receipt": "1bd8a0f8b8ae5ac0f4a1fe8a18605a4d1650b171525c555c20af09c5ff1ca090"
+      "receipt": "3b94e4910f174a1c59ca2eb99451b8c70e78e216f722658a676230bbc67a9834"
     },
     {
-      "input_hash": "ef8449a37e4fd7e459da092ab5fa059f12b2ff7a536ae5dc70c4838fda86a829",
+      "input_hash": "f707783423924318d0c754c212740afccb66484918b4b46186d3b735040fffd0",
       "node": "C05_DESIGN@a",
-      "receipt": "bf813b99f701ccc509d8c9870cae602affa35508c62a8b595458c5b47a1d3448"
+      "receipt": "0b40aa1ec6bd6b572e8d2c68537851780e6a7a43fc2bd8cf90cb6ac00e42ae3f"
     },
     {
-      "input_hash": "ef8449a37e4fd7e459da092ab5fa059f12b2ff7a536ae5dc70c4838fda86a829",
+      "input_hash": "f707783423924318d0c754c212740afccb66484918b4b46186d3b735040fffd0",
       "node": "C05_DESIGN@a",
-      "receipt": "5850a4d2e84eb03858802f798683e3ef96ad48d390eee3993ae549128040b57e"
+      "receipt": "53833e3da9ca5cf783ec52dc2502b2524019d80c96b5f41a938328388c500ebf"
     },
     {
-      "input_hash": "ef8449a37e4fd7e459da092ab5fa059f12b2ff7a536ae5dc70c4838fda86a829",
+      "input_hash": "f707783423924318d0c754c212740afccb66484918b4b46186d3b735040fffd0",
       "node": "C05_DESIGN@a",
-      "receipt": "8bfc0254f918643938e55cf3273a2daafe50b8da3b38cca4d20240aae04f8aaf"
+      "receipt": "0c1294eecaa024fb87651091d06a9284e6d298ec83e1fcb04c90f0b9aba009af"
     },
     {
-      "input_hash": "ef8449a37e4fd7e459da092ab5fa059f12b2ff7a536ae5dc70c4838fda86a829",
+      "input_hash": "f707783423924318d0c754c212740afccb66484918b4b46186d3b735040fffd0",
       "node": "C05_DESIGN@a",
-      "receipt": "142d4fe4cf49dd01bd95358ed585b464357cd572bc80edc94d22e0d9299e5e81"
+      "receipt": "ab0a9a883108a8c1a402c7019178f9609d4b71e2e1c9aad979612e0408486a12"
     },
     {
-      "input_hash": "ef8449a37e4fd7e459da092ab5fa059f12b2ff7a536ae5dc70c4838fda86a829",
+      "input_hash": "f707783423924318d0c754c212740afccb66484918b4b46186d3b735040fffd0",
       "node": "C05_DESIGN@a",
-      "receipt": "3f1f7250b4fe2225c133826bca4234fbe879908a8022f07903a1a71333168135"
+      "receipt": "54acebcbcd1585d74a83fc271163f5d0eddce3ed72bbeae565ff0de37a1f7b30"
     },
     {
-      "input_hash": "ef8449a37e4fd7e459da092ab5fa059f12b2ff7a536ae5dc70c4838fda86a829",
+      "input_hash": "f707783423924318d0c754c212740afccb66484918b4b46186d3b735040fffd0",
       "node": "C05_DESIGN@a",
-      "receipt": "dfa67f9722cfb74396b522d63643594ba1e993e0fc6de26c572a24540fbbcd28"
+      "receipt": "a990892cae582c4601663ff43ba4cf20fd35b62cd92e5c9945638824fcf33153"
     },
     {
-      "input_hash": "288ca106098042605d55c203c8b86eb69e7aaafc7afc7cb45a25622d161ac7ee",
+      "input_hash": "2df5186c6df3a1ed82802248fecada0016714b654f15c01b20664364ea6d4655",
       "node": "C01_SOURCE@b",
-      "receipt": "7611383d61864b2c726b795c5682e6c9095a99a69bccb434993f8f4647fb1b67"
+      "receipt": "f564d241e0b5876e6ed10edbb86b8c6d58b6ebf2bf1c339fd788d92103bed119"
     },
     {
-      "input_hash": "288ca106098042605d55c203c8b86eb69e7aaafc7afc7cb45a25622d161ac7ee",
+      "input_hash": "2df5186c6df3a1ed82802248fecada0016714b654f15c01b20664364ea6d4655",
       "node": "C01_SOURCE@b",
-      "receipt": "d8ba32e85017ec13bc4d0a9d9b8f60815540b217a62294a61f75b0fa64ddfe2a"
+      "receipt": "92520b9660fbdaabc0c2c9aef7ef195af9afc1b93cb988e0071eb035e92d2e1a"
     },
     {
-      "input_hash": "288ca106098042605d55c203c8b86eb69e7aaafc7afc7cb45a25622d161ac7ee",
+      "input_hash": "2df5186c6df3a1ed82802248fecada0016714b654f15c01b20664364ea6d4655",
       "node": "C01_SOURCE@b",
-      "receipt": "ce38315792b554f597899ff3bf9ca714a963f3156b7aff4087acbed7d26f31a6"
+      "receipt": "7e50d864423a1c3a50dc6e922e39019794f36acc3ebca9a929ddefd1aad11556"
     },
     {
-      "input_hash": "5846b3193f673184e68a7106038a52c3259eca8515c534eb2a4f42031a599fec",
+      "input_hash": "792d64347e8cfe37c10b0453bbd63abdde7d6698dd99d5a26e174ffb598c9dcc",
       "node": "C02_CONCEPT@b",
-      "receipt": "63c42cc16d61613a2d7511b6b71a1e10db41fb0342e737b66c55b303908001da"
+      "receipt": "8844641cddb87fecca39e24027d12e67ae3a32ad40037f2b2b2bd2f134941847"
     },
     {
-      "input_hash": "5846b3193f673184e68a7106038a52c3259eca8515c534eb2a4f42031a599fec",
+      "input_hash": "792d64347e8cfe37c10b0453bbd63abdde7d6698dd99d5a26e174ffb598c9dcc",
       "node": "C02_CONCEPT@b",
-      "receipt": "831a2584dc99313176f53f3f5308718edb4f5fdb508da7a5e9e8a6832d3c8a30"
+      "receipt": "1ae36ee57660072faa56691993a248b1c28b7d96aedc07b3a8148f6a7499b63b"
     },
     {
-      "input_hash": "cb6f238f15590d331f38a7fb279e3dd49894b7ecf8d66bd5cd05e09dbc40456c",
+      "input_hash": "f67d6439de3abfb3ce2ff0fe42a398c0434e20bfb262df069648eadfa6b45e51",
       "node": "C03_PATTERN@b",
-      "receipt": "c66783f4bf6438a9296465dc42f3d7bb629cabd668450da221c53be969238974"
+      "receipt": "eadcf6b26a29afb48fa0451186ad6755d97eefaa65341721f7d1324891fc6bb7"
     },
     {
-      "input_hash": "1c5efba05d1eb50dfea05611d324128446812ec5cebd70e08676cd454c36b346",
+      "input_hash": "557c9c6b4a2fce5468d258ecbef1b52a43f758271d38847e04bdcf66bf6499c2",
       "node": "C04_SOLUTION@b",
-      "receipt": "60ae81ae6176c22b644fdeb31ad03e96ac2fa4ee4dab19172c16545577446d86"
+      "receipt": "f924f2e54c5e1e7a24b48a3847dfc3135577f7c834394fc5f7c2b7e8933509c9"
     },
     {
-      "input_hash": "1c5efba05d1eb50dfea05611d324128446812ec5cebd70e08676cd454c36b346",
+      "input_hash": "557c9c6b4a2fce5468d258ecbef1b52a43f758271d38847e04bdcf66bf6499c2",
       "node": "C04_SOLUTION@b",
-      "receipt": "94f8b873c39764f7aa92221ee8845cc0f3ad8383a9babf020a8f61cc6f0a7ad5"
+      "receipt": "14656bb1a38cb3fbb49b75df98531ddad0700d1206019932d4e5bee99b347d9c"
     },
     {
-      "input_hash": "c373b15a33c7c5fc89eb8f6df7ae9d5f7cfd63970290722662107e71ec4f476e",
+      "input_hash": "daa62d924b158b537e827e2908f63ae10b7b2a36e17bd149f0a0e3fc73e926ed",
       "node": "C05_DESIGN@b",
-      "receipt": "db4e56d03ece736d4761b7127852b072760da3b50f0eec0b3703c888681fd661"
+      "receipt": "47930f0957981db378e7336f3a1cdb0c852a0e95b17e20a050b344d44ccd878d"
     },
     {
-      "input_hash": "c373b15a33c7c5fc89eb8f6df7ae9d5f7cfd63970290722662107e71ec4f476e",
+      "input_hash": "daa62d924b158b537e827e2908f63ae10b7b2a36e17bd149f0a0e3fc73e926ed",
       "node": "C05_DESIGN@b",
-      "receipt": "c775d9a6426950c939117982c293caba687353765d3d7a95eeed04441d69b162"
+      "receipt": "500632ea246f0f49f525f80e3c4c27a9f701f701d383915b43c9231833cad85f"
     },
     {
-      "input_hash": "c373b15a33c7c5fc89eb8f6df7ae9d5f7cfd63970290722662107e71ec4f476e",
+      "input_hash": "daa62d924b158b537e827e2908f63ae10b7b2a36e17bd149f0a0e3fc73e926ed",
       "node": "C05_DESIGN@b",
-      "receipt": "13e790b4674f1c6e19a59b709cb6419387dcf7bedf01487c308ded3d6f8cfc28"
+      "receipt": "8223ef889d636ac9ca6d6439dbbccd5519f871d1788a1e69391135c18b47c9a4"
     },
     {
-      "input_hash": "c373b15a33c7c5fc89eb8f6df7ae9d5f7cfd63970290722662107e71ec4f476e",
+      "input_hash": "daa62d924b158b537e827e2908f63ae10b7b2a36e17bd149f0a0e3fc73e926ed",
       "node": "C05_DESIGN@b",
-      "receipt": "f675878bf3fc18ecd216d506609c550bcefbb102699ed8c085bc869926ee60dc"
+      "receipt": "ef646d615f712a29d233051874157938c8dd6d26322a5d547b0a1a2879e4aeb5"
     },
     {
-      "input_hash": "c373b15a33c7c5fc89eb8f6df7ae9d5f7cfd63970290722662107e71ec4f476e",
+      "input_hash": "daa62d924b158b537e827e2908f63ae10b7b2a36e17bd149f0a0e3fc73e926ed",
       "node": "C05_DESIGN@b",
-      "receipt": "e866bc65db020320d6dd1660c1f55396e7a5f15c5a7521a726cb3ade117b85a6"
+      "receipt": "9066ce56770de20f5d1af66a48733eda6c76679a6299fc467f82c0541ed9f36a"
     },
     {
-      "input_hash": "c373b15a33c7c5fc89eb8f6df7ae9d5f7cfd63970290722662107e71ec4f476e",
+      "input_hash": "daa62d924b158b537e827e2908f63ae10b7b2a36e17bd149f0a0e3fc73e926ed",
       "node": "C05_DESIGN@b",
-      "receipt": "09f999ad849a1be4a2695fe3515392421aae26ef589dd73b42bcad8bd6365200"
+      "receipt": "333018348ee5e47d70e1ab56829d56549d44a1eff15d165c985e406ce985d1ca"
     },
     {
-      "input_hash": "c373b15a33c7c5fc89eb8f6df7ae9d5f7cfd63970290722662107e71ec4f476e",
+      "input_hash": "daa62d924b158b537e827e2908f63ae10b7b2a36e17bd149f0a0e3fc73e926ed",
       "node": "C05_DESIGN@b",
-      "receipt": "195d34dfc845b9a39e50311898a6215415105820310cddeeed8f563fd7f13d3a"
+      "receipt": "fcf00136a5de1d5c88b7d5ef146902067e5e184adff7ecf8655951903ad822a7"
     },
     {
-      "input_hash": "c373b15a33c7c5fc89eb8f6df7ae9d5f7cfd63970290722662107e71ec4f476e",
+      "input_hash": "daa62d924b158b537e827e2908f63ae10b7b2a36e17bd149f0a0e3fc73e926ed",
       "node": "C05_DESIGN@b",
-      "receipt": "be01e84d2d2177da84c1f4e05d77f4a0dbb012d21f68a5380f67e21ab79bab1f"
+      "receipt": "2fb63b4e6f4635d4cf48320fede479ffdd071435a25f000203c6cd95ec4d282a"
     },
     {
-      "input_hash": "c373b15a33c7c5fc89eb8f6df7ae9d5f7cfd63970290722662107e71ec4f476e",
+      "input_hash": "daa62d924b158b537e827e2908f63ae10b7b2a36e17bd149f0a0e3fc73e926ed",
       "node": "C05_DESIGN@b",
-      "receipt": "f7facf1e25a0b3bf67736f89b7354d92466355f0fe8b2a22f721c85e6447fc6e"
+      "receipt": "97f0db381c0300b95b1b04b6e8fc616caee4ec4009ba2519dcfdd7e30724fc2b"
     },
     {
-      "input_hash": "7f68362684c18db85e2f3a1cb3ef1a20094cb6569cc3abb0e8b40410b8f5bba0",
+      "input_hash": "702a117970f5bbe82e0b0c0c3332ac1c8c38a897decfed8738369ffcfa0dd156",
       "node": "C07_BUILD@a",
-      "receipt": "5b9e8522f32acfb08b00dc058cb18d2f62f3a46a641ec464a30f5f67af9c1af0"
+      "receipt": "52a442461143ad857db9b76b67bfbe0689141717264c805c50253d12c14ff1be"
     },
     {
-      "input_hash": "15376e8808376adaefc16e3ffc59046dc71073b65c6474501b226d9406d3aea6",
+      "input_hash": "2176616091fb80ed4d142b01a5e2724858409328b470c4869f2c8f6ae8526c33",
       "node": "C08_VERIFY@a",
-      "receipt": "9cec3c165139d816938f788ff5a9750535389d894d6332511c536cf83aad7883"
+      "receipt": "94a6b0ffa6d4d8b0f5ac3ec3fca5cda039b40738ee5fb2b2ddc16f496b50c17a"
     },
     {
-      "input_hash": "15376e8808376adaefc16e3ffc59046dc71073b65c6474501b226d9406d3aea6",
+      "input_hash": "2176616091fb80ed4d142b01a5e2724858409328b470c4869f2c8f6ae8526c33",
       "node": "C08_VERIFY@a",
-      "receipt": "f69518c940c81e5db6252f4d4558c97eed06dedddba2d5f9a618c5751bf5bfad"
+      "receipt": "7e1c0f7243940146dd96ef633aad70ca6f0f36a24432bc46e10c4a86e8f68a1c"
     },
     {
-      "input_hash": "15376e8808376adaefc16e3ffc59046dc71073b65c6474501b226d9406d3aea6",
+      "input_hash": "2176616091fb80ed4d142b01a5e2724858409328b470c4869f2c8f6ae8526c33",
       "node": "C08_VERIFY@a",
-      "receipt": "3a8b148ae331c8275104dbb1e122e4b052dee5188cc9a9b9c5a99e3078241a13"
+      "receipt": "e1d2f7952f79da6022eaacea882aacfb5fc601bd4f33435c7858ba8d3b326cc7"
     },
     {
-      "input_hash": "15376e8808376adaefc16e3ffc59046dc71073b65c6474501b226d9406d3aea6",
+      "input_hash": "2176616091fb80ed4d142b01a5e2724858409328b470c4869f2c8f6ae8526c33",
       "node": "C08_VERIFY@a",
-      "receipt": "c0df4463fa270ed2381b549d11abe4d0c5910496fd440073ad99bbdf3d636c4b"
+      "receipt": "d28b95a51016a2f6df7ea38ee28b94c4e5330b07308368e4932cb488524604ac"
     },
     {
-      "input_hash": "f4f64699ada3b713addd2352b5ac5cfd066c0e2b9fb0fbf4fafbfe3672c98b79",
+      "input_hash": "9b95de6428c656e9b8fc1fe5bbb0af1d5d831ff6eb891aa33720afb6995c69ce",
       "node": "C09_SEMANTIC@a",
-      "receipt": "f6ebe711b76d0dfdda0e29a2d1ac8b867c2de534d3abd2cd758dd0585211fcc0"
+      "receipt": "e3a96b43e24cf48c03e96a3f8f255bcf194e1e332ced3940f1580dfcba4e5465"
     },
     {
-      "input_hash": "f4f64699ada3b713addd2352b5ac5cfd066c0e2b9fb0fbf4fafbfe3672c98b79",
+      "input_hash": "9b95de6428c656e9b8fc1fe5bbb0af1d5d831ff6eb891aa33720afb6995c69ce",
       "node": "C09_SEMANTIC@a",
-      "receipt": "89444195924fb2784ab3cb1fdb7dc4cd24d9207177a994c0ff575f4d6b3c1345"
+      "receipt": "1fc8afa1e0e1166ffd817c29842ee75599d13139fec9fcb8050bf18bb6f56deb"
     },
     {
-      "input_hash": "1f49e85e0781d64e7a4d69c77342eda4df86db82d6316b940376fda61d237952",
+      "input_hash": "9f77678608dfdd1dba1c00b441e899707413dc1fc47a3ab6c2ce00764a1dbef6",
       "node": "G2_AUDIT@u1",
-      "receipt": "2a1d06314a99e210929afd3a4349ec081dcdf80ed2b105355b7c6b2702814abd"
+      "receipt": "7a0d53ba10317c2e22910ca68a3e5115e4032ed8b58958ae25055c8f07bd9db4"
     },
     {
-      "input_hash": "1f49e85e0781d64e7a4d69c77342eda4df86db82d6316b940376fda61d237952",
+      "input_hash": "9f77678608dfdd1dba1c00b441e899707413dc1fc47a3ab6c2ce00764a1dbef6",
       "node": "G2_AUDIT@u1",
-      "receipt": "9b98e34b66f265073910b7a6facc3abc697d5d0b3342cdb8d257b5f018b7af5a"
+      "receipt": "94081247339e2b8dc23cdf8c5b94f49371dad8ecf25abe0654698c7b4a8df780"
     },
     {
-      "input_hash": "a70e87578943e4d9df5416063b559a3b0682dfe415a08fa0a35eda9fca609bc7",
+      "input_hash": "a978fa79f3ad96aaeb6c779513d4b0fbdd03d9993165f9c6fa3aae31a77638dc",
       "node": "G3_HOST@u1",
-      "receipt": "0072d6e3d79d8574b4f83e3017bc5ba27b895ae5143b0531d9c33ef53b380ef5"
+      "receipt": "3957e97069932649fc04d5f4faff5c6fb878a53aa9c9b000b26fe182be7ce3e9"
     },
     {
-      "input_hash": "3111dea924720a7c9928b76f2d135e66184b75b271267f0692da6e80a10a1b28",
+      "input_hash": "35b422af09b9dab580af63eb90ff190eaf4be527ff13057cd47f94ee95266208",
       "node": "L01_LEARNING@u1",
-      "receipt": "c355bc475e920dd1a35d6478124601d71126dd1e6047e52f2f124132cdd04b8d"
+      "receipt": "c94a6855777ade2b613b364d9cbc7f4ee00384bd492a84bae70217df30452e49"
     },
     {
-      "input_hash": "3111dea924720a7c9928b76f2d135e66184b75b271267f0692da6e80a10a1b28",
+      "input_hash": "35b422af09b9dab580af63eb90ff190eaf4be527ff13057cd47f94ee95266208",
       "node": "L01_LEARNING@u1",
-      "receipt": "307303f62fa91ab5ef5ac592c9dc4cc7e336e0d120e5c81d61cce52b3a301844"
+      "receipt": "06a8f35cceb88935825a147d95607588916bdc0363aade7dbd4ca34e88c47b95"
     },
     {
-      "input_hash": "cb9d264a818e00938859c775e6418a5bf2844da1a937feb7fbff21aa07da08c6",
+      "input_hash": "8e11cfde5c342643f05fe7bd9c121a81ef2cdb8468268119b33d44cd113a7123",
       "node": "C07_BUILD@b",
-      "receipt": "81f83a4416d344822bf776ea1c88bb2068c0579886ba3bc2a215e902edd3345b"
+      "receipt": "57832b0e5516da5fdb3b914e7a001c8a9c1aaf54f32bcfbb47eb0bb44efc5926"
     },
     {
-      "input_hash": "e6b5f47d057b579301a2fcc8e59c1af46f561a296eb8e4ec15c1b98a300cb659",
+      "input_hash": "aa86b8cae3651fb7cb9c27611f2a26d19f3c427caad7cc8ddd7d2aad3f3dbce9",
       "node": "C08_VERIFY@b",
-      "receipt": "ca08b23634ae570d477f388add0fe3f53a7d7296a81b5bb438ad2e0ea37f6418"
+      "receipt": "d520c14764d6d01254d612754d149e391f3580f5dac641bb37acc1ee400fda86"
     },
     {
-      "input_hash": "e6b5f47d057b579301a2fcc8e59c1af46f561a296eb8e4ec15c1b98a300cb659",
+      "input_hash": "aa86b8cae3651fb7cb9c27611f2a26d19f3c427caad7cc8ddd7d2aad3f3dbce9",
       "node": "C08_VERIFY@b",
-      "receipt": "e345ce7730514e5b55d256512fa11fda7bdf0276facb3f3650961de50966bf0b"
+      "receipt": "6457ece673eefc453cd5a9185d33f910346331fa8d7dfd14fe583d0fb6c029c2"
     },
     {
-      "input_hash": "e6b5f47d057b579301a2fcc8e59c1af46f561a296eb8e4ec15c1b98a300cb659",
+      "input_hash": "aa86b8cae3651fb7cb9c27611f2a26d19f3c427caad7cc8ddd7d2aad3f3dbce9",
       "node": "C08_VERIFY@b",
-      "receipt": "28053e8e2aab06da27d5e5fe2b13abf9ba11730d434c17386c7739bac4710c67"
+      "receipt": "d3af7961e243a0208f67aae1ea5811ac84a029d6fd4dbe6d55568edbb238d435"
     },
     {
-      "input_hash": "e6b5f47d057b579301a2fcc8e59c1af46f561a296eb8e4ec15c1b98a300cb659",
+      "input_hash": "aa86b8cae3651fb7cb9c27611f2a26d19f3c427caad7cc8ddd7d2aad3f3dbce9",
       "node": "C08_VERIFY@b",
-      "receipt": "787aa6b0499a261b47bf48ae82f86ed04f2b04f9fa328b26efcb0009b435dced"
+      "receipt": "2c7ef654d1af514315d870eb7af31e439d0047db0655e18ae34dd8b8199ef06f"
     },
     {
-      "input_hash": "2d807cdf4a34f1476fea88d619598ce42aaf53d2dfc36db64628344685863144",
+      "input_hash": "5b8b8cc899439ad5ba82ed22bcb43610aa84badad445cd61744b0d6ee6d8a60e",
       "node": "C09_SEMANTIC@b",
-      "receipt": "a725f409f41a7f6c4e8fdf8ec2b78186badcfd8c8cb9927a97d5deb571779737"
+      "receipt": "37192a2635f83059c0ad860ec659cfe11768eee131d52c8d48fa17fd7519d524"
     },
     {
-      "input_hash": "2d807cdf4a34f1476fea88d619598ce42aaf53d2dfc36db64628344685863144",
+      "input_hash": "5b8b8cc899439ad5ba82ed22bcb43610aa84badad445cd61744b0d6ee6d8a60e",
       "node": "C09_SEMANTIC@b",
-      "receipt": "bca2dfbb1a4fdabaf25e3b3af3f62ef274d3336f49450a0df266e50d2956332e"
+      "receipt": "efbed739f686ba98b96d61329d00215b91993365c709f1f07e6f7b32923010ef"
     },
     {
-      "input_hash": "49ee58c127d053fde8a87168828c6ad62498bc3cb15d4e6eb3c9566e01926f34",
+      "input_hash": "5d82a3210b6f4c27d9b4fff756c63ecff2ccb953b618af1270da333f751bd419",
       "node": "G2_AUDIT@u2",
-      "receipt": "ad9572fbca7c4ff57a43664af5665979b5c53bc4e3019313ed2fb86dc7a864ac"
+      "receipt": "72f8cef0987c877385840e0b9d8247d99389a08f3596afafdf7dc461b13a5cd6"
     },
     {
-      "input_hash": "49ee58c127d053fde8a87168828c6ad62498bc3cb15d4e6eb3c9566e01926f34",
+      "input_hash": "5d82a3210b6f4c27d9b4fff756c63ecff2ccb953b618af1270da333f751bd419",
       "node": "G2_AUDIT@u2",
-      "receipt": "f3d875683d159455dff004600692f90621eb38e9b983fe3ab343aa6726723f94"
+      "receipt": "02f70382b9e38383bdccaa9e53b817ed45b0c53e4b9c454a19f1738b2cf14d48"
     },
     {
-      "input_hash": "88d70bd778d977ee83d56800e87859bcbcbec8a28e05dc8262783d4dcdf75780",
+      "input_hash": "78112c5bcdf8f075963b36ec15bd5cdb5b70fcd13df7d8080dcbadea045d2ff3",
       "node": "G3_HOST@u2",
-      "receipt": "05c756b50f75231ac9d3a27c8287323a96c8f3db2256d75169cf066452f47754"
+      "receipt": "87ced16a9175b76e79dc6ef91827ebaf89c8ba72d38b31b0ad52300efb92c3c1"
     },
     {
-      "input_hash": "dd1e6ad22ffeb695e996beb5d8e567ed8d79c42b8d32b4139c6012d505fe5cc0",
+      "input_hash": "abfe309af642e3dbb89afead7680542f120674ab4b8adbf2cc0e684180fdaf63",
       "node": "L01_LEARNING@u2",
-      "receipt": "43155580ae8ac55717045b70a61a0c791035d992a64bc313d43f396c967d0226"
+      "receipt": "4a65ad2d82c20798ffdb3512b7c5185a7fcfb7e89e97199aabb3ba29272b4092"
     },
     {
-      "input_hash": "dd1e6ad22ffeb695e996beb5d8e567ed8d79c42b8d32b4139c6012d505fe5cc0",
+      "input_hash": "abfe309af642e3dbb89afead7680542f120674ab4b8adbf2cc0e684180fdaf63",
       "node": "L01_LEARNING@u2",
-      "receipt": "060093c2ee17fbd649ad866da4cdc0e6b798ec06ecf4a7890ec0c618fc53c10b"
+      "receipt": "d7e2df7626920d1e5c96ea0a5a7751a9e39b6af5ab97555ddca23b70e98e5c49"
     }
   ],
   "release_acceptance": {

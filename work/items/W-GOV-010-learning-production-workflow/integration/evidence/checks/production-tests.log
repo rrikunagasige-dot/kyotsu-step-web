@@ -1,23 +1,23 @@
 $ node --test tools/textbook/tests/production.test.mjs && python -m unittest discover -s workflow -p "test_*.py" -q && python -m unittest discover -s tools/textbook/tests -p "*_test.py" -q
-✔ meaning survives paragraph/equation/term/slot compilation and rendered-ID verification (15.551113ms)
-✔ negative regression: lost equality (2.15055ms)
-✔ negative regression: future fact (3.380048ms)
-✔ negative regression: future context (0.994312ms)
-✔ negative regression: wrong scope (2.921094ms)
-✔ negative regression: unmapped explanation (0.54891ms)
-✔ negative regression: missing slot (0.418452ms)
-✔ negative regression: operation without direction (0.47611ms)
-✔ negative regression: output not reused (0.705225ms)
-✔ negative regression: answer shown first (1.041624ms)
-✔ independent expressions stay independent; plain-math warning cannot prove rendering (0.792497ms)
-✔ visible snapshot never includes future answer, even if caller supplies future solved IDs (0.805187ms)
-✔ typed target supports judgments and refuses prototype paths; same-value distractors rejected (0.265742ms)
-✔ teaching graph rejects unavailable premises and disconnected return to whole solution (0.33085ms)
-✔ operation answers stay in sentences and quantities require meaning (0.201074ms)
-✔ source mapping is bidirectional, context requires solved facts (0.344511ms)
-✔ feedback enters actual author/AI bundle, dispositions mandatory, corpus changes invalidate jobs (50.563996ms)
-✔ isolated quantity and missing concept emphasis are actual validation failures (0.803164ms)
-✔ math-looking plain text cannot silently compile; reviewed prose exceptions remain possible (1.728883ms)
+✔ meaning survives paragraph/equation/term/slot compilation and rendered-ID verification (12.787568ms)
+✔ negative regression: lost equality (1.703004ms)
+✔ negative regression: future fact (0.987332ms)
+✔ negative regression: future context (1.37592ms)
+✔ negative regression: wrong scope (1.040984ms)
+✔ negative regression: unmapped explanation (0.751616ms)
+✔ negative regression: missing slot (0.530853ms)
+✔ negative regression: operation without direction (0.501769ms)
+✔ negative regression: output not reused (0.589301ms)
+✔ negative regression: answer shown first (0.669742ms)
+✔ independent expressions stay independent; plain-math warning cannot prove rendering (0.832037ms)
+✔ visible snapshot never includes future answer, even if caller supplies future solved IDs (0.890876ms)
+✔ typed target supports judgments and refuses prototype paths; same-value distractors rejected (0.203668ms)
+✔ teaching graph rejects unavailable premises and disconnected return to whole solution (0.324972ms)
+✔ operation answers stay in sentences and quantities require meaning (0.214634ms)
+✔ source mapping is bidirectional, context requires solved facts (0.427185ms)
+✔ feedback enters actual author/AI bundle, dispositions mandatory, corpus changes invalidate jobs (57.614452ms)
+✔ isolated quantity and missing concept emphasis are actual validation failures (1.047193ms)
+✔ math-looking plain text cannot silently compile; reviewed prose exceptions remain possible (1.254345ms)
 ℹ tests 19
 ℹ suites 0
 ℹ pass 19
@@ -25,12 +25,12 @@ $ node --test tools/textbook/tests/production.test.mjs && python -m unittest dis
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 234.608799
+ℹ duration_ms 248.07384
 ----------------------------------------------------------------------
-Ran 119 tests in 43.840s
+Ran 120 tests in 46.388s
 
 OK
 ----------------------------------------------------------------------
-Ran 8 tests in 0.067s
+Ran 8 tests in 0.076s
 
 OK

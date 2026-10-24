@@ -65,3 +65,6 @@ A40 — Read current definitions/runtime/production/runner/contracts/views and c
 
 
 P-004最終照合: 初回固定SHA78986acf/CI40114657817 SUCCESS後、原資料再取込・ML失敗時のREJECTED・unit route照合を追加。local workflow119件（新規41件）、Node19件、source/corpus/ML8件PASS。モデル再fitと教材編集は行わない。最終固定SHAのCIを再実行してからcanonical入口を更新する。
+
+
+CI40115554244/sourcef98a36e6もSUCCESS（四幅UI含む）。対応外数理の明示的なAI argument経路を最後に接続し、120 workflow試験（追加42）を通した。実装と手順書のこの一致まで含めた固定SHAで再度CIし、成功後に限定pointer更新する。

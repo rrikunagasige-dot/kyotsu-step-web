@@ -309,4 +309,10 @@ class Integration(unittest.TestCase):
         p=self.make_plan(work='routes');p['release_units']=[{'id':'u1','block_ids':['a'],'review_route':'/learning/textbook/unit-a'},{'id':'u2','block_ids':['b'],'review_route':'/learning/textbook/unit-b'}];self.rt.open(p)
         with self.assertRaises(Rejected):self.rt.evidence('routes','app',{'url':'https://example.invalid/#/learning/textbook/unit-b','release_unit':'u1','source_sha':'a'*40,'manifest_sha':'a'*40,'reachable':True,'auth_wall':False,'mobile':True,'desktop':True,'progress_isolated':True},source_ref='simulation:wrong-route',verification_level='simulation')
 
+
+    def test_unsupported_solver_domain_has_explicit_ai_argument_route_without_claiming_machine_proof(self):
+        n=instantiate(self.plan)['C04_SOLUTION@a'];argument={'kind':'argument','claim':'fixture theorem','assumptions':[],'sourceRefs':['fixture-source'],'steps':[{'statement':'fixture intermediate fact','basisRefs':['fixture-definition'],'dependsOn':[]}]}
+        ref=run_capability(self.rt,self.work,n,'math.solve',argument);out=self.rt.store.get(self.rt.store.get(ref)['output'])
+        self.assertEqual(out['status'],'NEEDS_AI_REVIEW');self.assertEqual(out['solutionOrigin'],'AI_ARGUMENT');self.assertIs(out['formalProof'],False)
+
 if __name__=='__main__':unittest.main()

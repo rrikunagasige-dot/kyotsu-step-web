@@ -53,7 +53,7 @@ python workflow/cli.py --root . --store WORK/runtime render --work WORK_ID --out
 
 `production-run`の入力は`{capability名:その機能の入力,...}`。現在nodeの`capability_requests`すべてを渡す。例えばC04なら`math.solve`と`math.verify`。既存Node/Pythonサービスの入力schemaを使う。成果物、phase、実装版、入力版、消費事例、再利用元は同じStoreへ保存される。code receiptを作るだけで工程は完了しない。
 
-戻り値のclaim tokenと`receipts`を使い、主工程の`required`項目・`verdict`・`evidence_refs`・`capability_receipts`・AI requestに対応する`aiReview`を提出する。AI工程は`submit`、TOOL工程は`production-result`。根拠のないPASS、codeのFAIL/UNSUPPORTED、別phase・別node・古いhashのreceiptは拒否する。対応外の数理は、構造付きargumentとAI監査へ明示的に渡し、機械証明とは呼ばない。
+戻り値のclaim tokenと`receipts`を使い、主工程の`required`項目・`verdict`・`evidence_refs`・`capability_receipts`・AI requestに対応する`aiReview`を提出する。AI工程は`submit`、TOOL工程は`production-result`。根拠のないPASS、codeのFAIL/UNSUPPORTED、別phase・別node・古いhashのreceiptは拒否する。対応外の数理は、`math.solve`と`math.verify`へ`kind:"argument"`、`claim/assumptions/sourceRefs/steps[{statement,basisRefs,dependsOn}]`を渡す。コードは解答構造を検査してNEEDS_AI_REVIEWとし、AIの完全解法・根拠監査へ明示的に接続する。`proofStatus:AI_ARGUMENT_REVIEWED`と`formalProof:false`が必要で、機械証明とは呼ばない。未登録のsolverへ渡した結果のUNSUPPORTEDをPASSにはしない。
 
 `user approve_proposal`は具体案のhashへ対応させる。`bundle_ids`を省略すると全bundleを明示対象にする。限定承認なら対象だけ指定する。`auto`は既承認範囲の照合とCODE処理だけを進め、AIやユーザーの判断を生成しない。
 

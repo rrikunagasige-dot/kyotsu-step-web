@@ -1,11 +1,11 @@
 {
   "work": "P004-QUEUE-PROBE",
   "engine_version": "1.0.0",
-  "ledger_head": "741856ad951dd9a7db691d15086ebc18045dbcc5b0ff404a767c7f4c76b50fcb",
+  "ledger_head": "75245fd69589675e358a40c4c9b36e8781e75401908d039b0b271e808e2fbba7",
   "work_status": "PROPOSED",
   "profile": "material",
   "simulation": false,
-  "candidate_sha": "78986acf513f7b68424a9805babbd802ec97f40b",
+  "candidate_sha": "f98a36e6b5930f34d924ae2bd7b391984234673a",
   "next": {
     "status": "BLOCKED",
     "reason": "CORRECTION_FIRST",

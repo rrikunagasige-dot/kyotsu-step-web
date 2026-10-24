@@ -1,10 +1,10 @@
 {
   "proposal": "P-004",
   "status": "LOCAL_VERIFIED",
-  "definitionHash": "f58f156c8f99757f3247094a921a50abf3fd932f4161b4b8d3fecc9eeee5ed49",
+  "definitionHash": "b2d132947e20ae8f318340318d59417466e674d5c388f0e3a036850537816c0c",
   "tests": {
-    "workflow": 119,
-    "newIntegration": 41,
+    "workflow": 120,
+    "newIntegration": 42,
     "productionNode": 19,
     "sourceCorpusML": 8,
     "authoringNode": 35,

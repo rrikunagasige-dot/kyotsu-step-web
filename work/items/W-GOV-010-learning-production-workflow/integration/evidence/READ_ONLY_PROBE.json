@@ -3,15 +3,15 @@
   "isolatedCapabilityProbe": true,
   "flowSubmitted": false,
   "lessonAccepted": false,
-  "sourceSHA": "78986acf513f7b68424a9805babbd802ec97f40b",
-  "ledgerHead": "4d7bd6487d3b2ba3c0247f68a08c4344cdccf3fc43b4441e42737c6b1fe612ec",
+  "sourceSHA": "f98a36e6b5930f34d924ae2bd7b391984234673a",
+  "ledgerHead": "22e7bcb790f8f146c46b7db558d7652e4acf3ecb954a23cfbc162cc1d8f120bc",
   "events": [
     {
-      "id": "b8b81c6e-99e2-4b69-a049-31c48d3a60ee",
+      "id": "c6d31a83-2c21-45da-8370-7b474bc54839",
       "kind": "opened",
       "payload": {
-        "definition_hash": "f58f156c8f99757f3247094a921a50abf3fd932f4161b4b8d3fecc9eeee5ed49",
-        "original_snapshot": "3f53711e91a856a614f79f42762cfb56e3b9e8b48cde766734b0c41bdfdc5f95",
+        "definition_hash": "b2d132947e20ae8f318340318d59417466e674d5c388f0e3a036850537816c0c",
+        "original_snapshot": "698676457dea1df1ef9548477e0121ce7df9408d456f5145e2691214211879f9",
         "plan": {
           "approval_bundles": [
             {
@@ -68,7 +68,7 @@
           "source_manifest": {
             "tools/textbook/fixtures/n07-source-index.json": "62a1ad951166eabc9672eca0a81a997aa6a362fe01aed045705caecd77a2982b"
           },
-          "source_sha": "78986acf513f7b68424a9805babbd802ec97f40b",
+          "source_sha": "f98a36e6b5930f34d924ae2bd7b391984234673a",
           "subject": "math",
           "work_id": "P004-READ-ONLY-PROBE",
           "workflow_version": "production/2"
@@ -76,135 +76,135 @@
       },
       "previous": "0000000000000000000000000000000000000000000000000000000000000000",
       "seq": 1,
-      "time": 1792862255.3998356,
+      "time": 1792862837.5576735,
       "work": "P004-READ-ONLY-PROBE",
-      "hash": "88f9e9792e0f0f93715a2823be44beb7843d40e83b0a377181c030d483c67fe4"
+      "hash": "fa5c3b7ab8e52dc5b05f5dbc1b124392440e01b00115c48b1c079de46e4ab338"
     },
     {
-      "id": "53fa604a-6fb8-4259-9b3f-acff42786e61",
+      "id": "8a72779f-c397-4ab1-881c-a0294fb5d59b",
       "kind": "capability_result",
       "payload": {
-        "cache_key": "d66cbeb4bd9eb73f2fef0ad7691115141901d1c6341506f5205152ccf353e5de",
+        "cache_key": "49811ca57c3a5aaff649754767c3e40c65b1a7199e99bf3219f3f83ba6ce466d",
         "capability": "source.fixed",
         "output": "c4b95150f70a0c9e190ab5da45873bf34d3d9836b8445f5749abff8f4ceefd24",
         "phase": "pre-design"
       },
-      "previous": "88f9e9792e0f0f93715a2823be44beb7843d40e83b0a377181c030d483c67fe4",
+      "previous": "fa5c3b7ab8e52dc5b05f5dbc1b124392440e01b00115c48b1c079de46e4ab338",
       "seq": 2,
-      "time": 1792862255.4070754,
+      "time": 1792862837.566827,
       "work": "P004-READ-ONLY-PROBE",
-      "hash": "5ea3842defebd1b85e219ae415ca1ef555b03569e5cdf89de63df1d4da4e91b2"
+      "hash": "29535564e8375df3c45c2b3299947868cbaafbd4d5f7ded5103f0690ae971e1b"
     },
     {
-      "id": "47fae6e2-d8b4-4a78-8944-7eb8d68380aa",
+      "id": "85f7379a-84e4-4abb-808b-04f6d8affbeb",
       "kind": "capability_bound",
       "payload": {
-        "input_hash": "8d6e2fdfe1059746d269ece9da0868ec7b4ee4af8cb72dbb7b57a4f8341c755e",
+        "input_hash": "5750821b02a709dc7930c357cb2d4d46c25352f14a28426d45056cd3befb4964",
         "node": "R01_CAPTURE@metadata",
-        "receipt": "aac2faa654efe9892b4dd06c199a1341c031d0c68384d2cad691a1197685d9f8"
+        "receipt": "04ccf1f32822f076c0492f5ecc08c6c3817098767a8d52eb1f673506378f02ed"
       },
-      "previous": "5ea3842defebd1b85e219ae415ca1ef555b03569e5cdf89de63df1d4da4e91b2",
+      "previous": "29535564e8375df3c45c2b3299947868cbaafbd4d5f7ded5103f0690ae971e1b",
       "seq": 3,
-      "time": 1792862255.4135783,
+      "time": 1792862837.5752676,
       "work": "P004-READ-ONLY-PROBE",
-      "hash": "f28789abe880468a78cf97ae90a994a7486fe368ab438b70b4b7c14c6b00153c"
+      "hash": "2df278689ac76d5f1bb06d5a05683c918cea58645fa9e3370281c896420097af"
     },
     {
-      "id": "8aeeccbc-7722-46c1-9953-e28547697565",
+      "id": "4b07fbd6-3257-4959-bc60-6ef5a6776457",
       "kind": "capability_result",
       "payload": {
-        "cache_key": "e511510ce99a886bf0f08aa5550ab8d13dd16f0e85db35ad04f4202d75e6781d",
+        "cache_key": "0fb25ecdda12db37fa440acb5e0716353de7d72850b31aec0ed06005238a2398",
         "capability": "math.verify",
         "output": "e7c13ef4b1fe90b6620fd75c8973e90b3a3023aa815ae9669f4b5d0361973ff3",
         "phase": "pre-design"
       },
-      "previous": "f28789abe880468a78cf97ae90a994a7486fe368ab438b70b4b7c14c6b00153c",
+      "previous": "2df278689ac76d5f1bb06d5a05683c918cea58645fa9e3370281c896420097af",
       "seq": 4,
-      "time": 1792862255.4474208,
+      "time": 1792862837.616381,
       "work": "P004-READ-ONLY-PROBE",
-      "hash": "9991a6d690b794d9106dddd9ae1ff4dbe19782d745b7dd9be3ca4ac788b12dd5"
+      "hash": "8cf2d30e4fb7e59f8dff758380994a32072eb9513c0c98020d6fdde8460fa05f"
     },
     {
-      "id": "495af372-d1a9-484b-9ca2-970f89a2cf05",
+      "id": "1979f43e-a07c-46e6-8354-8ddfd0fd0dd5",
       "kind": "capability_bound",
       "payload": {
-        "input_hash": "cc740a7dca030320a226da08d64eedff6f5912ed805deb9b46788de2b68abdbc",
+        "input_hash": "0d325788f7ff35bc659096a21cf28bc02b850cef36cd9f8b5cd7f787f811fd5b",
         "node": "R02_CAUSE@metadata",
-        "receipt": "2c9e983cdf2f58e4634bc959c3a41400c55c8d88709675a4ef1f4e1cb75676a8"
+        "receipt": "b317340171663a15a6a43013479cc1bcff6887d54cb196fb97377a2c0ebb5cf2"
       },
-      "previous": "9991a6d690b794d9106dddd9ae1ff4dbe19782d745b7dd9be3ca4ac788b12dd5",
+      "previous": "8cf2d30e4fb7e59f8dff758380994a32072eb9513c0c98020d6fdde8460fa05f",
       "seq": 5,
-      "time": 1792862255.4536247,
+      "time": 1792862837.6252737,
       "work": "P004-READ-ONLY-PROBE",
-      "hash": "86c10b07506e828421f4c979a851604be63bd5adc9a62342243c068f4b28bafb"
+      "hash": "a9d5528a27ffc10ae7b4ad96371d7360049b957ad7fa383b16b669828510d9d1"
     },
     {
-      "id": "98ffbc92-4844-4f73-a4b7-3a4fce1a7ea1",
+      "id": "4f3017fc-047e-4362-8bcc-498bde1c0f3c",
       "kind": "capability_result",
       "payload": {
-        "cache_key": "1acb27f774bf1bea76c5d73aa31102a6a96af9ac207f1904ca5d091e11fb4239",
+        "cache_key": "cc567a0164f8ec78405ed3f4e22fe85598915c910d56ab418d2e106911a42411",
         "capability": "math.verify",
         "output": "88a9431b24732fbfaf0393739216ee4e34abd354e946cc3e0b6186937d410681",
         "phase": "pre-design"
       },
-      "previous": "86c10b07506e828421f4c979a851604be63bd5adc9a62342243c068f4b28bafb",
+      "previous": "a9d5528a27ffc10ae7b4ad96371d7360049b957ad7fa383b16b669828510d9d1",
       "seq": 6,
-      "time": 1792862255.4872272,
+      "time": 1792862837.6632388,
       "work": "P004-READ-ONLY-PROBE",
-      "hash": "b97b84ef45623e8188ae6a77389c17876e12edb81f459967da30cb72b15739e6"
+      "hash": "5943e27e8323a608cbdcd6b32b97d889599ebe0cf9e4de08b70c505d676858f5"
     },
     {
-      "id": "96940981-7d3e-4e9f-bf84-966cf1b80173",
+      "id": "bdc1af89-27d5-4939-925e-213a9eb95819",
       "kind": "capability_bound",
       "payload": {
-        "input_hash": "cc740a7dca030320a226da08d64eedff6f5912ed805deb9b46788de2b68abdbc",
+        "input_hash": "0d325788f7ff35bc659096a21cf28bc02b850cef36cd9f8b5cd7f787f811fd5b",
         "node": "R02_CAUSE@metadata",
-        "receipt": "1877765b71449f18cb7d1a03aa6ff084c825e229f7a72b6d119926baa6ca24e2"
+        "receipt": "b6738e5098d36558407dcfde09ff4df3b7d7a77de45c7adfdebfbd6eb8f050ed"
       },
-      "previous": "b97b84ef45623e8188ae6a77389c17876e12edb81f459967da30cb72b15739e6",
+      "previous": "5943e27e8323a608cbdcd6b32b97d889599ebe0cf9e4de08b70c505d676858f5",
       "seq": 7,
-      "time": 1792862255.4935093,
+      "time": 1792862837.671944,
       "work": "P004-READ-ONLY-PROBE",
-      "hash": "d2e321a4cabdb87f232a8e3bdfa7c6fa356f37d5faeb7ff5de413821ed696214"
+      "hash": "0b9a9e4f1b21ab5477e3c72c78199d3522d9c980ba4300fbb7fd8501eb7450e5"
     },
     {
-      "id": "d6c119ee-0f77-40de-a732-c62e18ab1dc8",
+      "id": "79d97a81-b3a8-468f-96f7-a4090b63d71b",
       "kind": "capability_result",
       "payload": {
-        "cache_key": "35f3b3bb58aa48fa4a1158c35db3b40dfac0ec742f164bcb5d67049284ba4e3f",
+        "cache_key": "d145534b5c95ab12d3a7f1924ca00040cc8c8df0260cc08ce4cc8cfa959840da",
         "capability": "ir.compile",
         "output": "2c41ed38a6ced9412b036daf0fd8bf29280e856957e6278c64fca7e79a654a63",
         "phase": "pre-design"
       },
-      "previous": "d2e321a4cabdb87f232a8e3bdfa7c6fa356f37d5faeb7ff5de413821ed696214",
+      "previous": "0b9a9e4f1b21ab5477e3c72c78199d3522d9c980ba4300fbb7fd8501eb7450e5",
       "seq": 8,
-      "time": 1792862255.6681514,
+      "time": 1792862837.861462,
       "work": "P004-READ-ONLY-PROBE",
-      "hash": "10752d472ac79b33e0c61fe09ed3f826a6d33b879b09cf9a13d65f9675fed0eb"
+      "hash": "3aba713330b2b3bcfe247bc93a793630621a6cdaeb176175b28eab127c844ffa"
     },
     {
-      "id": "072e6556-c7ec-489f-8dd5-752725c083d0",
+      "id": "e5386792-2087-45de-bfb8-fbd085f3a99c",
       "kind": "capability_bound",
       "payload": {
-        "input_hash": "5441a19cf6b10d249c8124ec1dbfc3441b6f54bd07968d70a5f10b6007d3deae",
+        "input_hash": "b8c67368b7624ad930d6b2a34c9fa59d250adee5489e9167832544d5fa0093b3",
         "node": "R06_PATCH@metadata",
-        "receipt": "4fb6017930481ba45934450f527644bbf6ae40792183be8d0b77c81f74414e7d"
+        "receipt": "3d1a0e0c57009ef42995ac69f9f6959802792147ad694f70bdc51305cd0c0f63"
       },
-      "previous": "10752d472ac79b33e0c61fe09ed3f826a6d33b879b09cf9a13d65f9675fed0eb",
+      "previous": "3aba713330b2b3bcfe247bc93a793630621a6cdaeb176175b28eab127c844ffa",
       "seq": 9,
-      "time": 1792862255.6748865,
+      "time": 1792862837.8701758,
       "work": "P004-READ-ONLY-PROBE",
-      "hash": "4d7bd6487d3b2ba3c0247f68a08c4344cdccf3fc43b4441e42737c6b1fe612ec"
+      "hash": "22e7bcb790f8f146c46b7db558d7652e4acf3ecb954a23cfbc162cc1d8f120bc"
     }
   ],
   "receipts": {
     "source": {
-      "cache_key": "d66cbeb4bd9eb73f2fef0ad7691115141901d1c6341506f5205152ccf353e5de",
+      "cache_key": "49811ca57c3a5aaff649754767c3e40c65b1a7199e99bf3219f3f83ba6ce466d",
       "capability": "source.fixed",
       "consumed_artifacts": [],
       "consumed_case_ids": [],
-      "implementation_hash": "bae9140cb738ce6cd94f39a52f75466359723e14c87a14f5e1c31072b1e83abb",
-      "input_hash": "8d6e2fdfe1059746d269ece9da0868ec7b4ee4af8cb72dbb7b57a4f8341c755e",
+      "implementation_hash": "9a7fc5d605e3bf9474ac3fb7074c853a68c5d3dd2be0a5e876029878df318888",
+      "input_hash": "5750821b02a709dc7930c357cb2d4d46c25352f14a28426d45056cd3befb4964",
       "model_ref": null,
       "node": "R01_CAPTURE@metadata",
       "output": "c4b95150f70a0c9e190ab5da45873bf34d3d9836b8445f5749abff8f4ceefd24",
@@ -213,12 +213,12 @@
       "status": "PASS"
     },
     "identity": {
-      "cache_key": "e511510ce99a886bf0f08aa5550ab8d13dd16f0e85db35ad04f4202d75e6781d",
+      "cache_key": "0fb25ecdda12db37fa440acb5e0716353de7d72850b31aec0ed06005238a2398",
       "capability": "math.verify",
       "consumed_artifacts": [],
       "consumed_case_ids": [],
-      "implementation_hash": "bae9140cb738ce6cd94f39a52f75466359723e14c87a14f5e1c31072b1e83abb",
-      "input_hash": "cc740a7dca030320a226da08d64eedff6f5912ed805deb9b46788de2b68abdbc",
+      "implementation_hash": "9a7fc5d605e3bf9474ac3fb7074c853a68c5d3dd2be0a5e876029878df318888",
+      "input_hash": "0d325788f7ff35bc659096a21cf28bc02b850cef36cd9f8b5cd7f787f811fd5b",
       "model_ref": null,
       "node": "R02_CAUSE@metadata",
       "output": "e7c13ef4b1fe90b6620fd75c8973e90b3a3023aa815ae9669f4b5d0361973ff3",
@@ -227,12 +227,12 @@
       "status": "PASS"
     },
     "wrong_identity": {
-      "cache_key": "1acb27f774bf1bea76c5d73aa31102a6a96af9ac207f1904ca5d091e11fb4239",
+      "cache_key": "cc567a0164f8ec78405ed3f4e22fe85598915c910d56ab418d2e106911a42411",
       "capability": "math.verify",
       "consumed_artifacts": [],
       "consumed_case_ids": [],
-      "implementation_hash": "bae9140cb738ce6cd94f39a52f75466359723e14c87a14f5e1c31072b1e83abb",
-      "input_hash": "cc740a7dca030320a226da08d64eedff6f5912ed805deb9b46788de2b68abdbc",
+      "implementation_hash": "9a7fc5d605e3bf9474ac3fb7074c853a68c5d3dd2be0a5e876029878df318888",
+      "input_hash": "0d325788f7ff35bc659096a21cf28bc02b850cef36cd9f8b5cd7f787f811fd5b",
       "model_ref": null,
       "node": "R02_CAUSE@metadata",
       "output": "88a9431b24732fbfaf0393739216ee4e34abd354e946cc3e0b6186937d410681",
@@ -241,12 +241,12 @@
       "status": "FAIL"
     },
     "compile": {
-      "cache_key": "35f3b3bb58aa48fa4a1158c35db3b40dfac0ec742f164bcb5d67049284ba4e3f",
+      "cache_key": "d145534b5c95ab12d3a7f1924ca00040cc8c8df0260cc08ce4cc8cfa959840da",
       "capability": "ir.compile",
       "consumed_artifacts": [],
       "consumed_case_ids": [],
-      "implementation_hash": "bae9140cb738ce6cd94f39a52f75466359723e14c87a14f5e1c31072b1e83abb",
-      "input_hash": "5441a19cf6b10d249c8124ec1dbfc3441b6f54bd07968d70a5f10b6007d3deae",
+      "implementation_hash": "9a7fc5d605e3bf9474ac3fb7074c853a68c5d3dd2be0a5e876029878df318888",
+      "input_hash": "b8c67368b7624ad930d6b2a34c9fa59d250adee5489e9167832544d5fa0093b3",
       "model_ref": null,
       "node": "R06_PATCH@metadata",
       "output": "2c41ed38a6ced9412b036daf0fd8bf29280e856957e6278c64fca7e79a654a63",

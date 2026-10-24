@@ -83,6 +83,9 @@ def run_capability(rt, work, node, capability, inputs):
         elif capability == 'impact.inventory':
             from impact import inventory
             output = {'status': 'NEEDS_AI_REVIEW', 'inventory': inventory(s, node), 'phase': node['phase'], 'sourceSHA': s['candidate_sha']}
+        elif capability=='math.solve' and inputs.get('kind')=='argument':
+            output=code_operation(rt,work,'S07',inputs)
+            output.update(solutionOrigin='AI_ARGUMENT',formalProof=False)
         elif capability == 'source.audit':
             complete = all(inputs.get(k) is not None for k in ('coverage', 'sourceBlocks', 'candidate'))
             output = code_operation(rt, work, 'S15', inputs) if complete else {'status': 'FAIL', 'reason': 'source audit requires coverage, sourceBlocks and candidate'}

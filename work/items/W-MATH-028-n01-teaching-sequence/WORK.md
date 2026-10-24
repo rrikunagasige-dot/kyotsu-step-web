@@ -7,3 +7,6 @@ Implement N01 worked cancellation example as linear→quadratic→cubic→consta
 Publication before hands-on review is already explicitly authorized in W-MATH-027. Do not call publication or technical PASS pedagogical acceptance.
 First implement/publish this sample; remaining examples require application of the accepted method after user feedback. No full-theme completion claim.
 Existing Work OS used; no fabricated workflow CLI or independent-agent audit. No agents used.
+
+## Delivery checkpoint
+PUBLISHED_FOR_USER_REVIEW. Source2977a44a08dedce8d082f5192946ab916357f259; hosting main7b04ea73456c7a072765d0d8de4724816b1a3ced; run40058122541 SUCCESS. N01 revision5,22 decisions; full chapter16 units/462 decisions. Existing storage namespace unchanged. This is the approved teaching sample and early scalar choices, not completion of remaining first-theme prose. Next: user pedagogical review of the sample; preserve remaining correction queue. Gate①/③ acceptance and independent Gate② not claimed.

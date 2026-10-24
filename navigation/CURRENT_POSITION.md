@@ -1,6 +1,11 @@
 # CURRENT POSITION — 塾 / rriku target
+
+## 2026-10-24 — W-MATH-030 P-003 final public delivery
+
+User approved detailed N01–N06/NE01 design via「那就按这个设计」. Source `dfa332facab4c206fc33ad54de4f0a92116169e9`; hosting-pointer main `a0a50c7df3b7e89699dd4e02dc4821a01200ecbf`; [run40065534607](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40065534607) SUCCESS. PUBLISHED_FOR_USER_REVIEW. All71 stages/291 decisions,45 designed changes/46 response positions; explanation and problem order retained, source-backed prior results per active question, history conclusions, aligned formulae and whole-parenthesis S5 alternatives.465 targeted+120 protected tests, compiled21/873, public16x2 route/reload/history, actual public21/873 PASS; release.json independently matches final source. Artifact12549545887 SHA256 `5b3893471ee83453cf4864fb98217883c2638a4b7be9a60bbb4a7c8b7cb0db61`. Other9 numbers units, figures and other modes protected; no whole-branch main merge. Prior c468070d full-success run40065043751 archived; dfa332fa supersedes it only by choice-grouping polish. Authoring: W029/author-sequence.py invokes W030/author-refinements.py, not manual generated-JSON edits. [Work](../work/items/W-MATH-030-section-one-results-and-blanks/WORK.md). [App](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=dfa332fa#/learning/textbook/math-numbers-expressions-n01). Next is user review of this same section; final pedagogical acceptance PENDING. Do not begin another theme without user direction.
+
 Status: ACTIVE
-Updated: 2026-10-19
+Updated: 2026-10-24
 Repository: `rrikunagasige-dot/kyotsu-step-web` (ID `1391122224`)
 Verified main at checkpoint: `6e398f923c45fe895e53bc1f0f055f038acc41b6` — app release PR #50, [Pages SUCCESS](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/38055876654).
 NOTE: This HEAD is a dated checkpoint, not a substitute for reading live main on every new task.

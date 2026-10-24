@@ -1,0 +1,11 @@
+{
+  "status": "PUBLISHED_FOR_USER_REVIEW",
+  "sourceSHA": "dfa332facab4c206fc33ad54de4f0a92116169e9",
+  "hostingSHA": "a0a50c7df3b7e89699dd4e02dc4821a01200ecbf",
+  "runId": 40065534607,
+  "jobId": 120787873795,
+  "runURL": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40065534607",
+  "next": "User reviews the same first section in the public app. Technical delivery complete; final user pedagogical acceptance pending. Do not begin another theme without user direction.",
+  "previousRunId": 40065043751,
+  "previousSource": "c468070d1dc27cc714226fd0fc3f8bcbef157085"
+}

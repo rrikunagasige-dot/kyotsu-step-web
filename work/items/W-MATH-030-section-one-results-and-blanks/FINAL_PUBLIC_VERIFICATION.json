@@ -1,0 +1,56 @@
+{
+  "sourceSHA": "dfa332facab4c206fc33ad54de4f0a92116169e9",
+  "hostingSHA": "a0a50c7df3b7e89699dd4e02dc4821a01200ecbf",
+  "runId": 40065534607,
+  "jobId": 120787873795,
+  "conclusion": "success",
+  "artifacts": [
+    {
+      "id": 12549545887,
+      "name": "section-one-S5-dfa332fa-verification",
+      "size_in_bytes": 79503195,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/actions/artifacts/12549545887",
+      "archive_download_url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/actions/artifacts/12549545887/zip",
+      "expired": false,
+      "created_at": "2026-10-24T05:22:28Z",
+      "expires_at": "2026-11-23T05:22:24Z",
+      "updated_at": "2026-10-24T05:22:28Z",
+      "digest": "sha256:5b3893471ee83453cf4864fb98217883c2638a4b7be9a60bbb4a7c8b7cb0db61",
+      "workflow_run": {
+        "id": 40065534607,
+        "repository_id": 1391122224,
+        "head_repository_id": 1391122224,
+        "head_branch": "main",
+        "head_sha": "a0a50c7df3b7e89699dd4e02dc4821a01200ecbf"
+      }
+    },
+    {
+      "id": 12549242803,
+      "name": "github-pages",
+      "size_in_bytes": 2353576,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/actions/artifacts/12549242803",
+      "archive_download_url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/actions/artifacts/12549242803/zip",
+      "expired": false,
+      "created_at": "2026-10-24T05:19:29Z",
+      "expires_at": "2026-10-25T05:19:29Z",
+      "updated_at": "2026-10-24T05:19:29Z",
+      "digest": "sha256:c2eab42c170c5303cfc71b72f11620de2c89a57dcd3e9ca791e873bc5c6f3d47",
+      "workflow_run": {
+        "id": 40065534607,
+        "repository_id": 1391122224,
+        "head_repository_id": 1391122224,
+        "head_branch": "main",
+        "head_sha": "a0a50c7df3b7e89699dd4e02dc4821a01200ecbf"
+      }
+    }
+  ],
+  "reports": [
+    "2026-10-24T05:15:58.8898320Z  Test Files  42 passed (42)",
+    "2026-10-24T05:15:58.8899609Z       Tests  465 passed (465)",
+    "2026-10-24T05:16:03.7005573Z  Test Files  11 passed (11)",
+    "2026-10-24T05:16:03.7010067Z       Tests  120 passed (120)",
+    "2026-10-24T05:19:28.5326269Z {\"root\":\"http://127.0.0.1:4173/kyotsu-step-web/\",\"flows\":21,\"answers\":873,\"passed\":true}",
+    "2026-10-24T05:19:50.4162228Z Hosted candidate: all16 units x2 widths, wrong/hint/correct/reload and production-history isolation PASS",
+    "2026-10-24T05:22:24.5092130Z {\"root\":\"https://rrikunagasige-dot.github.io/kyotsu-step-web/\",\"flows\":21,\"answers\":873,\"passed\":true}"
+  ]
+}

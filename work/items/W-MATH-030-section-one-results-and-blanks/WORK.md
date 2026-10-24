@@ -1,6 +1,6 @@
 # W-MATH-030 — 第1節：結果の引継ぎ・推導空欄
 
-Status: VERIFYING
+Status: PUBLISHED_FOR_USER_REVIEW
 
 ユーザー依頼：この第1節だけを分析し、二点の提案書を作る。前ページの結論の記録・参照を集合と比較し、推導部分の空欄を増やす。現行本文の説明と順序は維持する。
 
@@ -11,3 +11,11 @@ P-002はアーカイブ。PROPOSAL_FULL.mdに全7設計を結合。STAGE_SOURCE_
 ## P-003 implementation authorization
 
 User explicitly approved: 「那就按这个设计」. Scope is the complete seven-unit detailed P-003, including immediate compilation/publication under the continuing user instruction. No new publication permission is needed. Branch: work/section-one-results-blanks-20261024; parent a1375f568b19187f470c6bbcea628954230bcfd6. Connected account332552275 / canonical repository1391122224 / live main7e31f353ea682f7b4d1f2ef18eeede8248ad997a verified before GitHub operations.
+
+## Final delivery
+
+Learner source dfa332facab4c206fc33ad54de4f0a92116169e9; hosting-pointer-only main a0a50c7df3b7e89699dd4e02dc4821a01200ecbf. [Final run40065534607](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40065534607) SUCCESS. Exact source465 targeted tests +120 protected tests; authored regeneration and math checks PASS; compiled21 flows/873 answers; public16x2 route/reload/history checks; actual public21 flows/873 answers PASS. All71 stages and291 first-section decisions retained. Public release.json independently confirmed matching source, hosting SHA, storage namespace,3 themes and16 units.
+
+The final choice-grouping polish supersedes c468070d only in three choice presentation/test files; no lesson text, answer, stage or reference changed. Final artifact and SHA256 in FINAL_PUBLIC_VERIFICATION.json. Prior c468070d full successful run/artifacts in FIRST_PUBLIC_VERIFICATION.json. Original P-003 approval hashes preserved. No whole learner-branch merge into main. No changes to other lessons or figures. Final documentation-only branch close must leave src/public identical to the tested source above.
+
+[Public app](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=dfa332fa#/learning/textbook/math-numbers-expressions-n01). Next: user review; final app acceptance remains PENDING.

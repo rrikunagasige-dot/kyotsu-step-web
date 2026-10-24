@@ -1,0 +1,61 @@
+{
+  "sourceSHA": "c468070d1dc27cc714226fd0fc3f8bcbef157085",
+  "hostingSHA": "a0d2551a2202b1e0c85a01806799176b1673abe4",
+  "runId": 40065043751,
+  "jobId": 120786396417,
+  "conclusion": "success",
+  "artifacts": [
+    {
+      "id": 12549171922,
+      "name": "github-pages",
+      "size_in_bytes": 2357762,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/actions/artifacts/12549171922",
+      "archive_download_url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/actions/artifacts/12549171922/zip",
+      "expired": false,
+      "created_at": "2026-10-24T05:10:41Z",
+      "expires_at": "2026-10-25T05:10:40Z",
+      "updated_at": "2026-10-24T05:10:41Z",
+      "digest": "sha256:870a073162d6b536b780030fa01a300c0291dbe9aeee465a3c11981e11a3ae55",
+      "workflow_run": {
+        "id": 40065043751,
+        "repository_id": 1391122224,
+        "head_repository_id": 1391122224,
+        "head_branch": "main",
+        "head_sha": "a0d2551a2202b1e0c85a01806799176b1673abe4"
+      }
+    },
+    {
+      "id": 12548903251,
+      "name": "section-one-S5-c468070d-verification",
+      "size_in_bytes": 79485249,
+      "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/actions/artifacts/12548903251",
+      "archive_download_url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/actions/artifacts/12548903251/zip",
+      "expired": false,
+      "created_at": "2026-10-24T05:12:59Z",
+      "expires_at": "2026-11-23T05:12:56Z",
+      "updated_at": "2026-10-24T05:12:59Z",
+      "digest": "sha256:933424653bc6000a32357c07ecbd7a298b42f7b847bf1d3c66bc893f53bf9cc5",
+      "workflow_run": {
+        "id": 40065043751,
+        "repository_id": 1391122224,
+        "head_repository_id": 1391122224,
+        "head_branch": "main",
+        "head_sha": "a0d2551a2202b1e0c85a01806799176b1673abe4"
+      }
+    }
+  ],
+  "compiled": {
+    "flows": 21,
+    "answers": 873
+  },
+  "publicRoutes": {
+    "units": 16,
+    "widths": 2,
+    "wrongHintCorrectReload": true
+  },
+  "actualPublic": {
+    "flows": 21,
+    "answers": 873
+  },
+  "supersededBy": "dfa332facab4c206fc33ad54de4f0a92116169e9"
+}

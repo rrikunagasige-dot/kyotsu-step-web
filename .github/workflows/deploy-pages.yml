@@ -1,4 +1,4 @@
-name: Publish first math theme for immediate user review
+name: Publish approved N01 teaching sample for user review
 
 # 2026-10-24: user explicitly authorized one-theme repair -> compile -> public app -> hands-on review.
 # This updates only the hosting pointer; it does not merge the learner branch into main.
@@ -22,15 +22,15 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     env:
-      CANDIDATE_SHA: '204d901ec78c2fe8e214fd9b582f19cb3caeb2f4'
-      VITE_PREVIEW_COMMIT: '204d901ec78c2fe8e214fd9b582f19cb3caeb2f4'
+      CANDIDATE_SHA: '2977a44a08dedce8d082f5192946ab916357f259'
+      VITE_PREVIEW_COMMIT: '2977a44a08dedce8d082f5192946ab916357f259'
       VITE_REVIEW_PREVIEW: 'true'
       VITE_BASE_PATH: '/kyotsu-step-web/'
       VITE_STORAGE_NAMESPACE: 'kyotsu-step-gate3-math-20261023'
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: '204d901ec78c2fe8e214fd9b582f19cb3caeb2f4'
+          ref: '2977a44a08dedce8d082f5192946ab916357f259'
           fetch-depth: 0
           persist-credentials: false
       - uses: pnpm/action-setup@v4
@@ -48,10 +48,10 @@ jobs:
           node work/items/W-MATH-027-first-theme-repair/verify-scope.mjs
       - name: Lesson, history and shared formula regression
         run: pnpm exec vitest run src/data/textbook/math src/domain/textbook.test.ts src/review/reviewTargets.test.ts src/components/textbook/TextbookFormula.test.tsx src/components/textbook/formulaWrap.test.tsx src/components/textbook/firstThemeChoiceLayout.test.ts
-      - name: Independent calculation and distractor verification
-        run: node work/items/W-MATH-027-first-theme-repair/verify-math.mjs
       - name: Export exact runtime source
         run: node work/items/W-MATH-003-numbers-expressions-creation/NE01_NE02/export-runtime.mjs
+      - name: Independent calculation and distractor verification
+        run: node work/items/W-MATH-027-first-theme-repair/verify-math.mjs
       - run: pnpm run build
       - name: Attach exact-source release manifest
         run: |
@@ -90,7 +90,7 @@ jobs:
       - if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
-          name: first-theme-R2-204d901e-verification
+          name: n01-teaching-R3-2977a44a-verification
           path: |
             e2e-evidence/theme-one/**
             e2e-evidence/theme-one-compiled/**

@@ -1,0 +1,37 @@
+{
+  "n01": {
+    "unchangedLessonAndPriorMetadata": true,
+    "equationBlocks": 41,
+    "lessonHash": "5a126650ba118b39748dbc5ea26d53a0e56993f8777620cdcc7536654f64a562"
+  },
+  "n02": {
+    "unchangedLessonAndPriorMetadata": true,
+    "equationBlocks": 59,
+    "lessonHash": "630c86d94f130739efbc53cd5af7f696e7bf1bcaa66a5f03a5a1761c30045edb"
+  },
+  "n03": {
+    "unchangedLessonAndPriorMetadata": true,
+    "equationBlocks": 50,
+    "lessonHash": "57471e118004dde0015561de4f366f0108868ee623e813e1ade4e229ab3b4674"
+  },
+  "n04": {
+    "unchangedLessonAndPriorMetadata": true,
+    "equationBlocks": 105,
+    "lessonHash": "f71fc41430058085a28ea4e012fb4061cbc237f4da5d9ee4eab4b73003de6afc"
+  },
+  "n05": {
+    "unchangedLessonAndPriorMetadata": true,
+    "equationBlocks": 73,
+    "lessonHash": "e8fcc80b1126e3c56fc86504fc23b4a39e0d897c56e762936361f60ee2aa8752"
+  },
+  "n06": {
+    "unchangedLessonAndPriorMetadata": true,
+    "equationBlocks": 73,
+    "lessonHash": "37c022d2a1472f1f33d51e504d9aaa897367db6ff5ed9d55dbc8b420292aa7ed"
+  },
+  "ne01": {
+    "unchangedLessonAndPriorMetadata": true,
+    "equationBlocks": 80,
+    "lessonHash": "4f70274d08c5c4f2cae982b107040c668202a463cb1e2bda95edc253e5e59bc5"
+  }
+}

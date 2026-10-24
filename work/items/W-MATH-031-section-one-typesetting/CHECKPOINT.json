@@ -1,0 +1,322 @@
+{
+  "work": "W-MATH-031",
+  "proposal": "P-005-R2",
+  "sourceBranch": "work/section-one-typesetting-20261024",
+  "branchHead": "0ca7aae6be9e355efe1d0e57c0d8746f25f41dd8",
+  "sourceCandidates": [
+    {
+      "unit": "n01",
+      "source": "3c3a5648eadd20f57bf290c57eea4d44e8dab541",
+      "tree": "3c3e18659d1b123e28da8374107ebf81645ade5d"
+    },
+    {
+      "unit": "n02",
+      "source": "abfe11a9cacc83b20e1009cd7bb3b624176d3461",
+      "tree": "9c293fc2890e7c4c8c991e08e9d5aa7565015a89"
+    },
+    {
+      "unit": "n03",
+      "source": "f784bb526e192a0904881e64eca63889a0aa1e8d",
+      "tree": "d9284a2a30a948297a03ae2f642d148ba9f017ec"
+    },
+    {
+      "unit": "n04",
+      "source": "2a2191990b33a440cdbaae05b3645841f2cc2f62",
+      "tree": "5661ad7fba750251390af649eff8c3fa35ae9e42"
+    },
+    {
+      "unit": "n05",
+      "source": "3bc76a0e4e483bad4f9773581505d84bda20ddd3",
+      "tree": "82eb9da86431f46b3c2881b2ef8ee8b2977e9dc8"
+    },
+    {
+      "unit": "n06",
+      "source": "3ccd573f176a29e94d4bd7d34c285e9e8583ea91",
+      "tree": "990b3c07660fe3387cfc55e7459d8c79195d98da"
+    },
+    {
+      "unit": "ne01",
+      "source": "0ca7aae6be9e355efe1d0e57c0d8746f25f41dd8",
+      "tree": "0aade08222dac1c4c05415e2e9bf0948daf12b81"
+    }
+  ],
+  "releases": [
+    {
+      "unit": "n01",
+      "source": "3c3a5648eadd20f57bf290c57eea4d44e8dab541",
+      "hosting": "a502e4681efb8672f0e0ea94ab7f29fdfb1a2cf7",
+      "run": 40078179749,
+      "job": 120825972781,
+      "status": "success",
+      "compiled": {
+        "flows": 3,
+        "answers": 81,
+        "views": 104,
+        "groups": 360,
+        "interactions": 4
+      },
+      "hosted": {
+        "flows": 3,
+        "answers": 81,
+        "views": 104,
+        "groups": 360,
+        "interactions": 4
+      },
+      "routes": "all16 twice",
+      "artifact": {
+        "id": 12553842641,
+        "name": "section-one-P005-n01-3c3a5648-verification",
+        "size_in_bytes": 10073703,
+        "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/actions/artifacts/12553842641",
+        "archive_download_url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/actions/artifacts/12553842641/zip",
+        "expired": false,
+        "created_at": "2026-10-24T08:31:48Z",
+        "expires_at": "2026-11-23T08:31:46Z",
+        "updated_at": "2026-10-24T08:31:48Z",
+        "digest": "sha256:0a893d77571aa50af8e2177edb74c94a5e6b7ca1107832009a8c7315a3de3e96",
+        "workflow_run": {
+          "id": 40078179749,
+          "repository_id": 1391122224,
+          "head_repository_id": 1391122224,
+          "head_branch": "main",
+          "head_sha": "a502e4681efb8672f0e0ea94ab7f29fdfb1a2cf7"
+        }
+      }
+    },
+    {
+      "unit": "n02",
+      "source": "abfe11a9cacc83b20e1009cd7bb3b624176d3461",
+      "hosting": "1bc326e6b7cae81482230431cb04505469c5acbb",
+      "run": 40078425589,
+      "job": 120826690454,
+      "status": "success",
+      "compiled": {
+        "flows": 3,
+        "answers": 120,
+        "views": 72,
+        "groups": 362,
+        "interactions": 4
+      },
+      "hosted": {
+        "flows": 3,
+        "answers": 120,
+        "views": 72,
+        "groups": 362,
+        "interactions": 4
+      },
+      "routes": "all16 twice",
+      "artifact": {
+        "id": 12554615304,
+        "name": "section-one-P005-n02-abfe11a9-verification",
+        "size_in_bytes": 13278327,
+        "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/actions/artifacts/12554615304",
+        "archive_download_url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/actions/artifacts/12554615304/zip",
+        "expired": false,
+        "created_at": "2026-10-24T08:36:00Z",
+        "expires_at": "2026-11-23T08:35:59Z",
+        "updated_at": "2026-10-24T08:36:00Z",
+        "digest": "sha256:daf9a8ae56e61b2267fce17dce039c8a983cbe45f71aa0df895a244254b67d3d",
+        "workflow_run": {
+          "id": 40078425589,
+          "repository_id": 1391122224,
+          "head_repository_id": 1391122224,
+          "head_branch": "main",
+          "head_sha": "1bc326e6b7cae81482230431cb04505469c5acbb"
+        }
+      }
+    },
+    {
+      "unit": "n03",
+      "source": "f784bb526e192a0904881e64eca63889a0aa1e8d",
+      "hosting": "4751a20dfbbb606ae17befbbaafa72c79a586ff9",
+      "run": 40079246048,
+      "job": 120829145796,
+      "status": "success",
+      "compiled": {
+        "flows": 3,
+        "answers": 117,
+        "views": 56,
+        "groups": 280,
+        "interactions": 4
+      },
+      "hosted": {
+        "flows": 3,
+        "answers": 117,
+        "views": 56,
+        "groups": 280,
+        "interactions": 4
+      },
+      "routes": "all16 twice",
+      "artifact": {
+        "id": 12554696194,
+        "name": "section-one-P005-n03-f784bb52-verification",
+        "size_in_bytes": 9826910,
+        "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/actions/artifacts/12554696194",
+        "archive_download_url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/actions/artifacts/12554696194/zip",
+        "expired": false,
+        "created_at": "2026-10-24T08:48:22Z",
+        "expires_at": "2026-11-23T08:48:20Z",
+        "updated_at": "2026-10-24T08:48:22Z",
+        "digest": "sha256:4d13c51190236da05cd77f9b11370cd08b62f9a7cb1f49e88ca0d79b61cbbceb",
+        "workflow_run": {
+          "id": 40079246048,
+          "repository_id": 1391122224,
+          "head_repository_id": 1391122224,
+          "head_branch": "main",
+          "head_sha": "4751a20dfbbb606ae17befbbaafa72c79a586ff9"
+        }
+      }
+    },
+    {
+      "unit": "n04",
+      "source": "2a2191990b33a440cdbaae05b3645841f2cc2f62",
+      "hosting": "89279ba3685bdb477fb6be59c7d61a773b341773",
+      "run": 40079528150,
+      "job": 120829978231,
+      "status": "success",
+      "reports": [
+        {
+          "root": "http://127.0.0.1:4173/kyotsu-step-web/",
+          "flows": 3,
+          "answers": 177,
+          "passed": true
+        },
+        {
+          "seededLayoutViews": 96,
+          "formulaGroups": 636,
+          "interactions": 4,
+          "maxCenterDelta": 0.0078125,
+          "passed": true
+        },
+        {
+          "root": "https://rrikunagasige-dot.github.io/kyotsu-step-web/",
+          "flows": 3,
+          "answers": 177,
+          "passed": true
+        },
+        {
+          "seededLayoutViews": 96,
+          "formulaGroups": 636,
+          "interactions": 4,
+          "maxCenterDelta": 0.0078125,
+          "passed": true
+        }
+      ],
+      "routes": "all16 twice",
+      "artifact": {
+        "id": 12554269268,
+        "name": "section-one-P005-n04-2a219199-verification",
+        "size_in_bytes": 15666743,
+        "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/actions/artifacts/12554269268",
+        "archive_download_url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/actions/artifacts/12554269268/zip",
+        "expired": false,
+        "created_at": "2026-10-24T08:53:28Z",
+        "expires_at": "2026-11-23T08:53:26Z",
+        "updated_at": "2026-10-24T08:53:28Z",
+        "digest": "sha256:0c305982a999ba91dc7b82004f64a3604c83e5c32c65f4a939cbbaff36ef68b3",
+        "workflow_run": {
+          "id": 40079528150,
+          "repository_id": 1391122224,
+          "head_repository_id": 1391122224,
+          "head_branch": "main",
+          "head_sha": "89279ba3685bdb477fb6be59c7d61a773b341773"
+        }
+      }
+    },
+    {
+      "unit": "n05",
+      "source": "3bc76a0e4e483bad4f9773581505d84bda20ddd3",
+      "hosting": "59794ba8906029c4954bafc2892566f38ec60897",
+      "run": 40079838008,
+      "job": 120830896035,
+      "status": "success",
+      "reports": [
+        {
+          "root": "http://127.0.0.1:4173/kyotsu-step-web/",
+          "flows": 3,
+          "answers": 135,
+          "passed": true
+        },
+        {
+          "seededLayoutViews": 72,
+          "formulaGroups": 436,
+          "interactions": 4,
+          "maxCenterDelta": 0.0078125,
+          "passed": true
+        },
+        {
+          "root": "https://rrikunagasige-dot.github.io/kyotsu-step-web/",
+          "flows": 3,
+          "answers": 135,
+          "passed": true
+        },
+        {
+          "seededLayoutViews": 72,
+          "formulaGroups": 436,
+          "interactions": 4,
+          "maxCenterDelta": 0.0078125,
+          "passed": true
+        }
+      ],
+      "routes": "all16 twice",
+      "artifact": {
+        "id": 12554871472,
+        "name": "section-one-P005-n05-3bc76a0e-verification",
+        "size_in_bytes": 12930691,
+        "url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/actions/artifacts/12554871472",
+        "archive_download_url": "https://api.github.com/repos/rrikunagasige-dot/kyotsu-step-web/actions/artifacts/12554871472/zip",
+        "expired": false,
+        "created_at": "2026-10-24T08:58:24Z",
+        "expires_at": "2026-11-23T08:58:23Z",
+        "updated_at": "2026-10-24T08:58:24Z",
+        "digest": "sha256:bf8b9a11b7662a5a6f0e8b7617af1d59ceeb95167dba852bfb28b12c8f56277f",
+        "workflow_run": {
+          "id": 40079838008,
+          "repository_id": 1391122224,
+          "head_repository_id": 1391122224,
+          "head_branch": "main",
+          "head_sha": "59794ba8906029c4954bafc2892566f38ec60897"
+        }
+      }
+    }
+  ],
+  "inProgress": {
+    "unit": "n06",
+    "source": "3ccd573f176a29e94d4bd7d34c285e9e8583ea91",
+    "hosting": "124309527bb6aee172af860373422e508e30d4df",
+    "run": 40080117455
+  },
+  "failedRuns": [
+    {
+      "run": 40078718347,
+      "hosting": "0076a1550ce6f0dd89d3b2066a7dc231f7842c9e",
+      "reason": "n03-05 powered-factor option overflows at320; before deploy; corrected and superseded"
+    }
+  ],
+  "local": {
+    "geometryViews": 552,
+    "formulaGroups": 3004,
+    "interactions": 28,
+    "passed": true,
+    "appCode": "08b6e47cc4edd9b1a5319857b554022a720f7dc3",
+    "tokenBlocks": 485,
+    "tokenPlans": 3880,
+    "targetedTests": 472,
+    "protectedTests": 120,
+    "finalAggregatePlay": {
+      "source": "0ca7aae6be9e355efe1d0e57c0d8746f25f41dd8",
+      "flows": 21,
+      "answers": 873,
+      "passed": true
+    },
+    "expandedHistory": {
+      "source": "0ca7aae6be9e355efe1d0e57c0d8746f25f41dd8",
+      "views": 28,
+      "expandedStages": 256,
+      "formulaGroups": 2355,
+      "equationLabels": 2304,
+      "passed": true
+    }
+  },
+  "humanAcceptance": "PENDING"
+}

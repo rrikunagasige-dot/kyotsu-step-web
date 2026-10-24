@@ -1,0 +1,114 @@
+{
+  "version": 1,
+  "status": "REVIEW_FEEDBACK",
+  "sourceSHA": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+  "date": "2026-10-24",
+  "positiveFeedback": "ユーザーは全体の配置・読みやすさとcodeを用いる方針を明確に高評価。全単元の受入承認とは区別する。",
+  "protected": "現在の全体レイアウト、スマホ幅対応、穴の操作部品、既存第一タイトル",
+  "integrationStatus": "RECORDED_ONLY_NOT_CONSUMED_BY_GENERATOR",
+  "cases": [
+    {
+      "id": "N07-USER-F01",
+      "nodeIds": [
+        "n07-q03-cycle"
+      ],
+      "state": "before-answer",
+      "rejected": "前の計算と今回の判断が結びつかない",
+      "proposedAcceptance": "Q02の23÷11・商と余りの計算は存在する。Q03で必要な元問題と周期の記録を再提示する範囲が不十分。例題ラベルと小目標も区別する。",
+      "codeResponsibility": "参照先の存在・学習済み・問題スコープ・参照表示を検査",
+      "aiResponsibility": "どの前提・表の範囲が判断に必要かを確認",
+      "evidence": {
+        "fileName": "0ee7fc343217e1117f5f8911368ea1fe.png",
+        "sha256": "6814bc8a1ab3e9fc6b57e33cc6fd00606c811ae0a8409541fba0d41186068e02"
+      },
+      "status": "OPEN",
+      "executableRegression": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "N07-USER-F02",
+      "nodeIds": [
+        "n07-q06-scale"
+      ],
+      "state": "after-correct",
+      "rejected": "10だけを式番号付きで独立表示",
+      "proposedAcceptance": "倍率という意味と単位を残した表示にする。数値を単独表示してよいかは用途で区別する。",
+      "codeResponsibility": "回答の意味型・単位・出力形式の適合、重複出力を検査",
+      "aiResponsibility": "説明から数値の用途が自然に分かるかを確認",
+      "evidence": {
+        "fileName": "f859d006bed416f44af2f682862352e4.png",
+        "sha256": "2ed5eb49f280682c47052e3884da9210f66820bfc5298e23a4cc446abb1fd569"
+      },
+      "status": "OPEN",
+      "executableRegression": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "N07-USER-F03",
+      "nodeIds": [
+        "n07-q07-subtract"
+      ],
+      "state": "after-correct",
+      "rejected": "引くだけが本文から独立",
+      "proposedAcceptance": "操作の選択を文章の文法へ接続し、対象となる二式と引く向きを示す。",
+      "codeResponsibility": "操作回答の前後に接続文・対象参照があるかを検査",
+      "aiResponsibility": "なぜ引くか、どちらからどちらを引くかが読めるかを確認",
+      "evidence": {
+        "fileName": "83457a43084ff1fbbcbef9c523092cb5.png",
+        "sha256": "1f2a13bceb62bcfda98beea2693d1c667b9978ca919f5c2ca9052c050f564082"
+      },
+      "status": "OPEN",
+      "executableRegression": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "N07-USER-F04",
+      "nodeIds": [
+        "n07-q07-coefficient"
+      ],
+      "state": "before-and-after-correct",
+      "rejected": "(28)の(10-1)xと(29)の9xが等号で結ばれない",
+      "proposedAcceptance": "変形の入力・操作・出力を等式としてつなぐ。例：(10-1)x=9x。全表示式へ等号を強制せず、同じ式の変形である箇所に適用する。",
+      "codeResponsibility": "変形の関係種別、操作前後・等号・穴の配置と数式保存を検査",
+      "aiResponsibility": "細かい計算に分けても推導が分断されていないかを確認",
+      "evidence": {
+        "fileName": "6becaa6c6f54a30d594c6c66d15e3201.png",
+        "sha256": "c6fca58d8fc8145df8abbcf54af97fb324c68cd7d5469d85682d59f5d59c9583"
+      },
+      "status": "OPEN",
+      "executableRegression": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "N07-USER-F05",
+      "nodeIds": [
+        "n07-q11-factor-ten"
+      ],
+      "state": "before-answer",
+      "rejected": "素数・素因数分解の初出定義語が通常文字",
+      "proposedAcceptance": "初出の定義語にterm属性を持たせ、黒字の太字で表示する。",
+      "codeResponsibility": "定義語の意味属性、strongへの描画、後工程で属性が落ちないことを検査",
+      "aiResponsibility": "どの用語が初出で何を定義しているかを確認",
+      "evidence": {
+        "fileName": "2b3d22138cb01961ee770f4f228f92e1.png",
+        "sha256": "08a194aebe3d23880b1a9ea1c6b82bc9c46c8763759db499218679fac811e0b6"
+      },
+      "status": "OPEN",
+      "executableRegression": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "N07-USER-F06",
+      "nodeIds": [
+        "n07-q11-converse",
+        "n07-q07-coefficient"
+      ],
+      "state": "all-prose-and-references",
+      "rejected": "p/(2^u5^v)、2^(h−u)等が本文の普通の文字のまま",
+      "proposedAcceptance": "本文のmath partsを明示しInlineMath等へ渡す。通常文まで数式化せず、長い式は表示式へ分ける。",
+      "codeResponsibility": "本文・説明・ヒント・前結果・履歴のmath属性/描画、数学らしい生文字残留を検査",
+      "aiResponsibility": "数式区間と日本語区間の境界、分数と指数の意味を確認",
+      "evidence": {
+        "fileName": "13c777f56cc1cba7e52fdcf545e7744f.png",
+        "sha256": "2f13547d5da27e6aa3d98a059f5df95cc47631c2fc3479e6da68872d3c4bfb70"
+      },
+      "status": "OPEN",
+      "executableRegression": "NOT_IMPLEMENTED"
+    }
+  ]
+}

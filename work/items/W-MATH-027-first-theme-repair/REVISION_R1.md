@@ -29,3 +29,13 @@ Recursive insertion respects explicit target dependencies and rejects cycles/mis
 
 The user's meaning of “no blanks” is not assumed to establish a browser-state bug. Both verified contributors
 (the 選択 label and whole-expression selection) are addressed; saved-answer behavior is made explicit.
+
+## Public delivery verified
+
+- Learner source `f16275079d3b39758f2da9ceb6b4e156a48c4b9e`.
+- Hosting commit `383caa806b4154b23dbbf99a7062082cc16329b4`.
+- [Run40052655846](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40052655846) completed SUCCESS.
+-426 tests,71 independent polynomial checks, compiled21 flows and public21 flows passed.
+-Each full-flow suite exercised618 correct answers, wrong/retry, history expansion and restart across320/390/1440px.
+-Public16 routes/reload/history isolation passed. Direct HTTP release manifest matched f1627507, three themes,16 units,399 decisions.
+-State: PUBLISHED_FOR_USER_REVIEW. Layout's prior positive feedback is preserved; R1 content acceptance remains PENDING.

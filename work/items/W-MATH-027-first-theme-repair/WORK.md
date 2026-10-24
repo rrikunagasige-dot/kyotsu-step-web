@@ -37,3 +37,7 @@ The candidate snapshot does not include main's workflow/ CLI. Its current contra
 This Work follows the existing WORK/PROPOSAL/ACTION_LOG/FINDINGS/VERIFICATION process and does not
 fabricate CLI claims/submissions or completed gates. Extending the workflow engine is separate work.
 No automatic whole-repository merge. Public deployment pins this branch's tested commit.
+
+Latest content revision: see REVISION_R1.md. User approved the neat layout but requested visible fill-in blanks and fuller
+induction/derivation. Sourcef1627507 is now publicly deployed and technically verified by run40052655846 SUCCESS.
+Next action is user review of this same first theme; do not infer acceptance of R1 content or start the second theme.

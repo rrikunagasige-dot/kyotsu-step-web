@@ -18,3 +18,5 @@ Recorded artifact12543576397 and pending user quality review. Future work starts
 R1: user accepted neat layout but reported missing blanks and insufficient induction/derivation detail.
 Preserved layout, made □ visible, inserted24 equation-local decisions and authored transformation-purpose/result-use explanations.
 Added top restart and saved-answer guidance.426 tests and71 independent polynomial checks passed before publication.
+R1 publication close: sourcef1627507 / hosting383caa80 / run40052655846 SUCCESS; public release independently matched.
+Full compiled and public21-flow checks passed,618 correct answers each. User content review remains pending.

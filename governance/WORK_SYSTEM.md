@@ -1,8 +1,8 @@
 # Work Operating System
 
 Status: CANONICAL
-Version: 1.6.0
-Updated: 2026-10-21
+Version: 1.7.0
+Updated: 2026-10-24
 
 ## 1. Purpose
 
@@ -298,37 +298,22 @@ MEMORY CLOSE
 DONE
 ```
 
-## 12A. W-GOV-008/P-003 — GitHub小ブロック確認 → 横断監査 → 最終アプリ総チェック
+## 12A. 完成単位を既存公開アプリで確認する — W-GOV-010
 
-Approved: 2026-10-19 JST; CMD-WORK-001「修正」; W-GOV-008/P-003. **P-003 expressly revises P-001/P-002's mandatory per-block live-app gate.** The preceding P-001 version remains historical in its original Work/PR; this section is the forward-looking rule **now effective on target main** under the user's separate 2026-10-19 integration approval. Constitution, instruction matching, proposal approval, correction-first §12B, Work states and release authorization do not change.
+Status: CANONICAL
+Authority: 2026-10-24の直接指示とW-GOV-010承認。機械契約はgovernance/REVIEW_POLICY.json。
 
-**Three distinct evidence gates (no automatic equivalence):**
+具体設計承認→承認範囲の実装→制作者側の数学・内容・露出・実操作・画面・回帰検査→compile→既存Pages公開→実配信sourceと対象routeの照合→直接アプリURL→ユーザーの範囲付き受入・修正、の順。
 
-| Gate | Reviewer / proof | Status and scope |
-| --- | --- | --- |
-| ① Small-block GitHub visual sheet | User sees an authentic screenshot/render, numbered `確認①`, stable block ID, target exact SHA, 2–4 concrete points; responds `細部OK` or `要修正` in ChatGPT | `BLOCK-CHECK-PENDING` → `BLOCK-VISUAL-OK` (layout/content visual acceptance **only**) |
-| ② Cross-block audit | Agent tests source, math/physics, answers, hint leaks, transitions, progress and regression across affected units | `CROSS-VERIFIED` only with recorded evidence; new confirmed defects return to §12B |
-| ③ Entire-app user playthrough | **Verified live app link** for a frozen release-candidate SHA; user actually plays the whole agreed app scope from the beginning to the end | `FINAL-REVIEW-NOT-READY` → `FINAL-REVIEW-READY` → explicit `FINAL-APP-ACCEPTED` |
+- 完成単位は原則N一つ。各穴の画像票承認待ちは挟まない。スクリーンショットは内部の真正なQA証拠として利用する。
+- 今回の既存アプリへの公開は承認済み範囲に含まれる。同じ公開許可を取り直さない。別のサービス・新環境・対象拡大はこの承認に含まれない。
+- 未提示の教材内容や解法の重要変更は具体設計を示す。進捗・原本・既承認単元を守る。
+- source SHA、build成果物、hosting SHA、実配信manifest、対象操作を対応させる。URLの?v=はcache対策で、旧版固定ではない。
+- 適用される内部検査がFAIL/UNVERIFIEDなら完成公開しない。公開後の重大な破損は証拠を残して修正・復旧する。
+- ユーザーの自然な明示受入を対象版・範囲へ記録し、特定の合言葉を要求しない。技術PASSとFINAL-APP-ACCEPTEDは区別する。
+- 受入済み22bc43baの第一タイトルN01–N06/NE01を再び未受入へ戻さない。
 
-These are *review labels*, not extra Work statuses. Preserve Work's `PROPOSED / APPROVED / IMPLEMENTING / VERIFYING / DONE / BLOCKED / REVISE-PROPOSAL / FAILED-VERIFICATION` machine. A narrow technical Work may be `DONE` when its own specified gates pass, **without claiming the app has passed final overall review**. Do not call an app-wide release accepted before `FINAL-APP-ACCEPTED`.
-
-### Gate ① — one small block, GitHub-centered
-1. For both `CMD-WORK-001 修正` and `CMD-WORK-002 作成`, define one bounded concept/question/decision, read §12B's correction queue and the applicable MASTER, mode SPEC, original-source and approved Work lessons *before* touching each block. Record the stable block ID, Work/Proposal, source revision, preview head SHA, changed/unchanged boundaries and expected learner decision. No unauthorized broad batch change.
-2. Produce a **plain-language review sheet viewable in GitHub**, using `work/templates/BLOCK_REVIEW_SHEET.md`. Include a **real app-derived screenshot** attached/embedded at a verified GitHub location, `確認①` etc. precisely where changes occurred, the target complete commit SHA, check-point names, and 2–4 short actual visual checks. Never fabricate screenshots or claim an image is actual if it was not produced from the referenced commit. Raw PR/code/ZIP links are optional engineer evidence, **not the user's only review task**. A missing authentic image or mismatched SHA is `BLOCK-CHECK-PENDING`, not an acceptance request.
-3. The user checks just the visibly marked places and responds `細部OK` or `要修正` in ChatGPT; agent logs the exact response, Work/Proposal, stable block IDs, SHA, date and image reference. **`細部OK` means visual/design acceptance only, not interactive app functionality.** Treat it neither as proposal approval nor as main/production publication permission. Do not infer consent from viewing a sheet or completing a textbook question.
-4. After a recorded `BLOCK-VISUAL-OK`, hide that block's marker in the **next review output** but retain append-only acceptance history, SHA, underlying block ID and pending final playthrough. Do not erase prior evidence, change learner answers/IDs, or silently expand the accepted scope. P-002 app-side markers are an optional implementation; the P-002 pilot's independent-branch history is preserved, while the N01/N03 learner release subsequently reached main through PR #98.
-5. On `要修正`, stop the next creation block, log the observed defect, root-cause signature and impact, follow `CMD-WORK-001` full-proposal permission and §12B correction-first sweep. Recheck the corrected screenshot against the *new* SHA, and invalidate the affected prior visual acceptance as appropriate; no mass changes merely because an audit found related concerns.
-
-### Gate ② — cross-block audit, not user labor
-6. Before the final candidate, audit links/dependencies across blocks and modes: source fidelity, math and physics reasoning, exact answer keys and choice types, figure/value consistency, premature hint/answer revelation, wrong/correct gates, navigation, shared UI, small-phone and desktop rendering, persistence/reset, previous corrections, and unaffected accepted units. The impact ledger must say `PASS / FAIL / UNVERIFIED` per surface, linked evidence/SHA and why a surface is out of scope. Use `work/templates/CROSS_BLOCK_AUDIT.md`; absence of evidence is UNVERIFIED, not PASS.
-7. New confirmed defects re-enter §12B with linked scope-specific Work and exact approval; finish correction, repeat the affected checks and ensure no confirmed defect remains. `CROSS-VERIFIED` cannot be granted while a required audit cell is FAIL/UNVERIFIED.
-
-### Gate ③ — one final entire-app user check
-8. Only after Gate ① acceptance/closure and Gate ② QA, freeze a **release-candidate full commit SHA** and exact in-scope content manifest. Supply a real, reachable and *tested* one-tap **app URL**, not just a GitHub code page, linking to a start point. Verify the hosted build matches SHA, has no auth wall, works on phone and desktop, and does not pollute production learner progress. Vercel is optional; an already authorized free alternative may be used. A GitHub repository/Markdown screenshot **cannot itself serve as a playable app**. If no authorized accessible build exists, show `FINAL-REVIEW-NOT-READY` and request separate deployment/publication permission if needed; never invent a URL or use old main Pages as the new candidate.
-9. The user starts at the beginning and plays the **entire agreed app scope**, each subject/mode/chapter/question, correct/wrong choices, transitions, hints/figures, refresh/reset and phone/desktop. Provide `work/templates/FINAL_APP_WALKTHROUGH.md` with actual URL, SHA, scope, route coverage and checkboxes. Sampling cannot replace the entire-app check unless the user separately approves a scoped exception.
-10. Explicit user `総チェックOK` on the tested SHA/scope creates `FINAL-APP-ACCEPTED`; `要修正` records the failure and reopens CMD-WORK-001, affected cross audits and the relevant/full playthrough before another acceptance. No final acceptance is inferred from individual `細部OK` or engineering CI success.
-
-**Authorization guard:** The user separately approved this governance-only main integration on 2026-10-19 JST. This does **not** authorize future learner-data edits, other feature merges, further production/Pages deployments, new public staging, Vercel deletion, bank/card entry, cost-bearing services, unauthorized account connections, or changing source lessons/previous approvals. Future actions still require their own applicable permission. Never imply Vercel is required. Prefer GitHub evidence for Gate ① and a playable app link only for Gate ③. The engineering helper workflow is evidence-only; it does not publish or make acceptance decisions.
+旧W-GOV-008/P-003の画像票方式は履歴保存のみ。原文はwork/items/W-GOV-010-learning-production-workflow/HISTORICAL_REVIEW_POLICY.mdと元commitに残す。§12B修正優先、§12C待機中の独立作業、Work状態機械は維持する。
 
 ## 12B. Correction-first gate and approved-creation impact sweep (CMD-WORK-001 ↔ CMD-WORK-002)
 

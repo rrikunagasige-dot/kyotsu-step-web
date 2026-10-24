@@ -1,0 +1,19 @@
+{
+  "status": "APPROVED",
+  "user": "今の感じでいいと思うじゃ作りましょうか！",
+  "artifacts": {
+    "PROPOSAL.md": {
+      "commit": "f2a3ef837fccf584914b4e4caee8edf058a82cab",
+      "sha256": "c0e7298948eea771cdbb4a99617f9a7417c341701329144129f10e370e520084"
+    },
+    "TECHNICAL_DESIGN.md": {
+      "commit": "f2a3ef837fccf584914b4e4caee8edf058a82cab",
+      "sha256": "a0bbbe99e71cab3d4ad768d000bc185e0801f39e27aada2841142fdfd437522f"
+    },
+    "REFERENCE_CODE_RESEARCH.md": {
+      "commit": "f2a3ef837fccf584914b4e4caee8edf058a82cab",
+      "sha256": "0c56aac39d036cb37e0ff7a8f2508e17242405a51482d1fbefcf6650241a3111"
+    }
+  },
+  "scope": "bounded code+AI pilot and complete N07 design; not unseen learner rewrite"
+}

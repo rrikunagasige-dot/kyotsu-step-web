@@ -2,6 +2,17 @@
 
 Status: PASS
 
+## Current implementation verification — bounded M0–M4 pilot
+
+P-002＋external-code adoption was approved by the current user. IMPLEMENTATION_CHECKPOINT.json and evidence/pilot contain the current technical results. Source/contract/candidate/compiler/state/job tooling is implemented and the N07 full design is ready.35 native tests +4 actual-schema/KaTeX/retained-ID/duplicate-formula tests +2 source tests PASS; independent Python arithmetic23 checks and existing math/domain351 tests, typecheck/build PASS. CI is tracked separately. No src/public/hosting-pointer changes. New real UI, progress migration and publication are not implemented or verified by these results.
+
+The next user-visible deliverable is n07/N07_DESIGN.md. Its state is PROPOSED; tooling approval does not automatically accept unseen N07 prose and blanks. Existing first-title acceptance remains intact.
+
+## Historical proposal-stage verification (earlier records)
+
+The following paragraphs describe the earlier proposal-only stage and must not override the current implementation checkpoint.
+
+
 This PASS covers only the investigation and reviewable P-002 documentation. It is not implementation, automated-generation effectiveness, learner-code QA, second-title content acceptance or deployment acceptance.
 
 ## P-002 documentation checks

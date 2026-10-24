@@ -10,4 +10,4 @@ Applies to current project creation/correction handoff: complete the approved ta
 
 Retain source/proposal boundaries, internal math/content/UI/regression checks, stable progress and recorded explicit user acceptance. Natural scoped explicit approval such as「正式通过」is acceptance evidence; no magic wording is required. Historical images/approvals remain provenance. This does not authorize unseen lesson rewrites or other-mode changes.
 
-Consolidation of conflicting active rule text and the AI/code production design is proposed in W-GOV-010/P-001. The direct user instruction governs this work already; the new detailed implementation proposal is not yet approved.
+Rule consolidation and the code+AI pilot were approved by「今の感じでいいと思うじゃ作りましょうか！」. Implementation evidence is in W-GOV-010/APPROVAL_20261024.md. Current machine policy is governance/REVIEW_POLICY.json. Unseen N07 learner content still requires its concrete design handoff.

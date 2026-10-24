@@ -1,4 +1,6 @@
-# 横断チェック記録 — W-GOV-008/P-003
+# 横断チェック記録 — W-GOV-010
+
+Policy: governance/REVIEW_POLICY.json
 
 Status: NOT-RUN | IN-PROGRESS | CROSS-VERIFIED | BLOCKED  
 Work / approved Proposals:  
@@ -40,7 +42,7 @@ Lesson dedup vs existing MASTER / specialized rule:
 - [ ] All required rows PASS (or fully justified not applicable), none FAIL/UNVERIFIED
 - [ ] Source and target refs are exact SHA, screenshots/tests are authentic
 - [ ] No additional unauthorized edits; all confirmed correction work approved and retested
-- [ ] Every `BLOCK-VISUAL-OK` is logged but **not** treated as app-wide acceptance
-- [ ] Final candidate scope/manifest prepared separately, still `FINAL-REVIEW-NOT-READY` until live app link verified
+- [ ] Previous accepted scope is preserved; technical checks do not grant human acceptance
+- [ ] Completed-unit scope/manifest and actual public source/route/operation verification recorded
 
 Only then declare `CROSS-VERIFIED`. Keep failed/unknown evidence instead of relabeling it PASS.

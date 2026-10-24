@@ -1,0 +1,615 @@
+{
+  "schemaVersion": 1,
+  "documentHash": "93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa",
+  "unit": "N07",
+  "pandocVersion": "pandoc 3.1.3",
+  "warnings": "",
+  "unassignedMath": [],
+  "blocks": [
+    {
+      "id": "word-p-000297",
+      "locator": "word/document.xml:p[297]",
+      "markers": [],
+      "mathStructures": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "heading"
+    },
+    {
+      "id": "word-p-000298",
+      "locator": "word/document.xml:p[298]",
+      "markers": [],
+      "mathStructures": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000299",
+      "locator": "word/document.xml:p[299]",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "26bea6102f48f662a728da3a2224c81170068a16893259a82b6b930956443cf7",
+          "fractions": 1,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "a00ed6e04862ac202f9d81f12529ade2368fbc4914647b57fc1c5382a115a888",
+          "fractions": 1,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000300",
+      "locator": "word/document.xml:p[300]",
+      "markers": [
+        1
+      ],
+      "mathStructures": [
+        {
+          "sha256": "26bea6102f48f662a728da3a2224c81170068a16893259a82b6b930956443cf7",
+          "fractions": 1,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000301",
+      "locator": "word/document.xml:p[301]",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "d6c82b667f4f4b03a6694771f920eb743cd64d65c66ae7bb7a60433657e191f1",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000302",
+      "locator": "word/document.xml:p[302]",
+      "markers": [],
+      "mathStructures": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000303",
+      "locator": "word/document.xml:p[303]",
+      "markers": [
+        2
+      ],
+      "mathStructures": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000304",
+      "locator": "word/document.xml:p[304]",
+      "markers": [
+        3
+      ],
+      "mathStructures": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000305",
+      "locator": "word/document.xml:p[305]",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "2d0feeb94ad3b33065200dac07ad6d65fd0a625d69c33b894fcd3624af26886f",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "5c32a0da0690b283e35287c31c31efe8eb9bd9d6bea2891dc5c15ad6586d6a48",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "b01971fc90ceacfa58865dc5423055a4a4b83eaa3cdb706231674ec468affaa5",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000306",
+      "locator": "word/document.xml:p[306]",
+      "markers": [
+        4
+      ],
+      "mathStructures": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000307",
+      "locator": "word/document.xml:p[307]",
+      "markers": [],
+      "mathStructures": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000308",
+      "locator": "word/document.xml:p[308]",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "42e0794c0461e193b30a3771e56938972185c9db6d8cc8369025db3fe5c1a6fa",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "0eccb87318062dfecc034b10555949892a9b6b7788d2e8145a7b59512318adb9",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000309",
+      "locator": "word/document.xml:p[309]",
+      "markers": [
+        5
+      ],
+      "mathStructures": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000310",
+      "locator": "word/document.xml:p[310]",
+      "markers": [],
+      "mathStructures": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000311",
+      "locator": "word/document.xml:p[311]",
+      "markers": [],
+      "mathStructures": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000312",
+      "locator": "word/document.xml:p[312]",
+      "markers": [],
+      "mathStructures": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000313",
+      "locator": "word/document.xml:p[313]",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "8981525569b36db072f88e5a85ab7a38271dacba35dcdcfa40f1e08fe3f39eaa",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "d023ab3f8f34dcaf612983208e1592cee53c18e47d325e535c2c7ec3d2a7c3bf",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000314",
+      "locator": "word/document.xml:p[314]",
+      "markers": [],
+      "mathStructures": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000315",
+      "locator": "word/document.xml:p[315]",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "d023ab3f8f34dcaf612983208e1592cee53c18e47d325e535c2c7ec3d2a7c3bf",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000316",
+      "locator": "word/document.xml:p[316]",
+      "markers": [
+        6
+      ],
+      "mathStructures": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000317",
+      "locator": "word/document.xml:p[317]",
+      "markers": [
+        7
+      ],
+      "mathStructures": [
+        {
+          "sha256": "1f1585b63f9d607c6cef583c18b02a36596b8629b5d3d8661e49b89f84ab3872",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000318",
+      "locator": "word/document.xml:p[318]",
+      "markers": [
+        8
+      ],
+      "mathStructures": [
+        {
+          "sha256": "d023ab3f8f34dcaf612983208e1592cee53c18e47d325e535c2c7ec3d2a7c3bf",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000319",
+      "locator": "word/document.xml:p[319]",
+      "markers": [],
+      "mathStructures": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000320",
+      "locator": "word/document.xml:p[320]",
+      "markers": [],
+      "mathStructures": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000321",
+      "locator": "word/document.xml:p[321]",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "740be1c68e2a98aed1ad41354eacd40910590399b58a08af771c3a0c8406bbc3",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000322",
+      "locator": "word/document.xml:p[322]",
+      "markers": [
+        9
+      ],
+      "mathStructures": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000323",
+      "locator": "word/document.xml:p[323]",
+      "markers": [
+        10
+      ],
+      "mathStructures": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000324",
+      "locator": "word/document.xml:p[324]",
+      "markers": [],
+      "mathStructures": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000325",
+      "locator": "word/document.xml:p[325]",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "287441e1faa687e5e31526eb86a272b453ec1e55aa1cbd48cdfdbeb3c4efc0fd",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "89e04a498d8b2173767892dfa63ec53a89e3dd4fdf1fa9021ed7cc43b72e8d64",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000326",
+      "locator": "word/document.xml:p[326]",
+      "markers": [],
+      "mathStructures": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000327",
+      "locator": "word/document.xml:p[327]",
+      "markers": [
+        11
+      ],
+      "mathStructures": [
+        {
+          "sha256": "eac37044cefeb1c718cff82e681ce207e07ec5c19ccba8ee7d83293478b6cff4",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 1
+        },
+        {
+          "sha256": "fec1e0073cd0b3a0ae4212017dc79094830d397866ea5272eead3297d3972ac0",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000328",
+      "locator": "word/document.xml:p[328]",
+      "markers": [],
+      "mathStructures": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000329",
+      "locator": "word/document.xml:p[329]",
+      "markers": [
+        12
+      ],
+      "mathStructures": [
+        {
+          "sha256": "364941594121a897488760e582538feb83247fb618deffe0a6bba001f5f92637",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000330",
+      "locator": "word/document.xml:p[330]",
+      "markers": [],
+      "mathStructures": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000331",
+      "locator": "word/document.xml:p[331]",
+      "markers": [],
+      "mathStructures": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000332",
+      "locator": "word/document.xml:p[332]",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "fb30c9a7a60ba28116aa81da48be604d2f46b3dfcff82844352a1187ca744874",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "1e81587b87916447189534291391650eae5552fe6eadcff3542cb48cdf6cd872",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000333",
+      "locator": "word/document.xml:p[333]",
+      "markers": [
+        13
+      ],
+      "mathStructures": [
+        {
+          "sha256": "172ef146f7cd79d073f55d61dfd83b0a1696f3e40497b390e5384b232c280d1a",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "d858453a3d6a85973e2ea6b221cf0ca230ade2489043c5c7e81bd065bc8de841",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000334",
+      "locator": "word/document.xml:p[334]",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "f568d408718c0ae1608a1f168da8d92e3555a1865e05c4a3afccb175752b297e",
+          "fractions": 0,
+          "radicals": 1,
+          "superscripts": 0
+        },
+        {
+          "sha256": "f374b6735b9a2e7ab10f4cee39204853c83d157d6f00eb74c335f3f17ca543d5",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000335",
+      "locator": "word/document.xml:p[335]",
+      "markers": [],
+      "mathStructures": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000336",
+      "locator": "word/document.xml:p[336]",
+      "markers": [
+        14
+      ],
+      "mathStructures": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000337",
+      "locator": "word/document.xml:p[337]",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "f568d408718c0ae1608a1f168da8d92e3555a1865e05c4a3afccb175752b297e",
+          "fractions": 0,
+          "radicals": 1,
+          "superscripts": 0
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000338",
+      "locator": "word/document.xml:p[338]",
+      "markers": [],
+      "mathStructures": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000339",
+      "locator": "word/document.xml:p[339]",
+      "markers": [],
+      "mathStructures": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000340",
+      "locator": "word/document.xml:p[340]",
+      "markers": [],
+      "mathStructures": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    }
+  ],
+  "status": "PASS",
+  "semanticFidelity": "REQUIRES_SOURCE_REVIEW"
+}

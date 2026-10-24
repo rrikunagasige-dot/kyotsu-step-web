@@ -1,0 +1,136 @@
+{
+  "planSHA256": "0e2eea0619181b8d1e5eaef0a27c83c27d0690f7b87b66e3f8e690f0daab4b81",
+  "status": "PASS",
+  "engine": "Python standard-library fractions.Fraction / integer arithmetic",
+  "checks": [
+    {
+      "node": "n07-q01-tenths",
+      "expected": "7",
+      "actual": "7",
+      "pass": true
+    },
+    {
+      "node": "n07-q01-hundredths",
+      "expected": "5",
+      "actual": "5",
+      "pass": true
+    },
+    {
+      "node": "n07-q02-integer",
+      "expected": "1",
+      "actual": "1",
+      "pass": true
+    },
+    {
+      "node": "n07-q02-digit-0",
+      "expected": "0",
+      "actual": "0",
+      "pass": true
+    },
+    {
+      "node": "n07-q02-remainder-0",
+      "expected": "10",
+      "actual": "10",
+      "pass": true
+    },
+    {
+      "node": "n07-q02-digit-1",
+      "expected": "9",
+      "actual": "9",
+      "pass": true
+    },
+    {
+      "node": "n07-q02-remainder-1",
+      "expected": "1",
+      "actual": "1",
+      "pass": true
+    },
+    {
+      "node": "n07-q06-scale",
+      "expected": "10",
+      "actual": "10",
+      "pass": true
+    },
+    {
+      "node": "n07-q07-coefficient",
+      "expected": "9",
+      "actual": "9",
+      "pass": true
+    },
+    {
+      "node": "n07-q07-right-difference",
+      "expected": "8",
+      "actual": "8",
+      "pass": true
+    },
+    {
+      "node": "n07-q08-divide",
+      "expected": "8/9",
+      "actual": "8/9",
+      "pass": true
+    },
+    {
+      "node": "n07-q09-scale",
+      "expected": "100",
+      "actual": "100",
+      "pass": true
+    },
+    {
+      "node": "n07-q09-coefficient",
+      "expected": "99",
+      "actual": "99",
+      "pass": true
+    },
+    {
+      "node": "n07-q09-right-difference",
+      "expected": "69",
+      "actual": "69",
+      "pass": true
+    },
+    {
+      "node": "n07-q10-divide",
+      "expected": "23/33",
+      "actual": "23/33",
+      "pass": true
+    },
+    {
+      "node": "n07-q10-reduce",
+      "expected": "23/33",
+      "actual": "23/33",
+      "pass": true
+    },
+    {
+      "node": "n07-q12-include-five",
+      "expected": "2",
+      "actual": "2",
+      "pass": true
+    },
+    {
+      "node": "n07-q13-difference",
+      "expected": "-1",
+      "actual": "-1",
+      "pass": true
+    },
+    {
+      "condition": "n07-q06 scale10^1",
+      "pass": true
+    },
+    {
+      "condition": "n07-q09 scale10^1",
+      "pass": true
+    },
+    {
+      "condition": "n07-q09 scale10^2",
+      "pass": true
+    },
+    {
+      "condition": "all19 denominators",
+      "pass": true
+    },
+    {
+      "condition": "6/15 erratum regression",
+      "pass": true
+    }
+  ],
+  "limits": "General proofs and categorical explanations were reviewed separately; this is not app or pedagogy acceptance."
+}

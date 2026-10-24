@@ -1,6 +1,6 @@
 # W-GOV-008 / P-002 — App-side review marks
 
-Status: **HISTORICAL P-002 protocol.** Its seven named marks were accepted on 2026-10-19; the N01/N03 learner release was subsequently merged and published via PR #98 and accepted in the final app Gate ③. The P-003 addendum below is the forward-looking review rule.
+Status: **HISTORICAL P-002 protocol.** Its seven named marks were accepted on 2026-10-19; the N01/N03 learner release was subsequently merged and published via PR #98 and accepted in the final app Gate ③. All P-002/P-003 material below is historical. Current policy: governance/REVIEW_POLICY.json and WORK_SYSTEM §12A (W-GOV-010). Screenshot marks are optional internal evidence, not a required user approval gate.
 
 ## Purpose and boundaries
 

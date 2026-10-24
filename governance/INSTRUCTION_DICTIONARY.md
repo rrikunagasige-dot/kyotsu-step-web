@@ -1,8 +1,8 @@
 # 指示辞書 / Instruction Dictionary
 
 Status: CANONICAL
-Version: 1.7.1
-Updated: 2026-10-21
+Version: 1.8.0
+Updated: 2026-10-24
 
 ## Purpose
 
@@ -227,9 +227,9 @@ approved correction proposal exists?
 
 CI待機中は `governance/WORK_SYSTEM.md` §12C に従い、実run・tested SHA・復帰地点を記録し、承認済みの独立作業だけを選ぶ。CI待機は無承認修正の許可ではない。
 
-### User review handoff (W-GOV-008/P-003 — updated)
+### User review handoff — W-GOV-010
 
-`governance/WORK_SYSTEM.md` §12A is the canonical three-gate flow. For this correction's **small visual block**, provide an authentic **GitHub-viewable** review sheet with an actual image, exact SHA, numbered `確認` marker, stable IDs and 2–4 short points; ask only `細部OK` / `要修正`. Individual `細部OK` is **visual approval only**, not live app hands-on approval, revised proposal authorization, or release permission. Hide accepted marks only in the subsequent review output; preserve Work logs and final pending status. The §12B correction-first impact audit still applies; no confirmed defect may silently propagate. After cross-block QA, a **verified playable whole-app URL for the exact frozen candidate SHA** is mandatory at the final `総チェック` gate; absent an authorized host/app link, record `FINAL-REVIEW-NOT-READY`. PR/ZIP/old-main Pages are not that final app. Host/publication/main/cost permissions remain separate.
+正本はgovernance/REVIEW_POLICY.jsonとWORK_SYSTEM §12A。具体設計が承認された完成単位を内部検査・compile・既存公開アプリへ反映し、実配信source/routeを照合した直接URLを渡す。旧画像票の受入待ちと、承認範囲内の公開の再許可を挟まない。ユーザーの自然な範囲付き受入を記録する。内容設計・修正優先・原本・進捗・他モード保護は維持。旧P-003の規則はW-GOV-010のHISTORICAL_REVIEW_POLICY.mdに保存。
 
 ### Cross-creation impact audit before correction closure
 
@@ -342,15 +342,9 @@ Canonical Phrase: **作成**
 - source fidelity、Stable ID、学習進捗、他subject/mode、原資料、既存acceptanceを守る。承認範囲外の生成/変更は別Proposal。
 - `main`のmerge/Pages公開は実装承認と区別し、既存release rulesと当該Workの権限に従う。
 
-### Completion / review handoff — W-GOV-008/P-003
+### Completion / review handoff — W-GOV-010
 
-作成中のCI待機も `governance/WORK_SYSTEM.md` §12C の選択・復帰規則を参照する。§12B修正優先、exact Proposal承認、§12Aの既存Gateは変わらない。
-
-小ブロックは §12A の GitHub確認票・実スクリーンショット・`確認①` マーカー・SHAで `細部OK / 要修正` を受け取る。小ブロックの `細部OK` は**表示内容だけ**の受入で、実アプリを操作した証拠ではない。承認済みマークを次回非表示にしても履歴と最終総チェック待ちは保持する。
-
-作成Workの技術的 `DONE` は各Work自身の検証・承認条件の充足を意味するが、**アプリ全体の受入・公開可能性を意味しない**。全小ブロックの記録と横断監査を完了し、release-candidate SHAを固定して初めて、実際に起動するアプリリンクでユーザーが最初から最後まで `総チェック` する。`総チェックOK` まで `FINAL-APP-ACCEPTED` と呼ばない。アプリへの直行リンクをまだ用意できない場合は `FINAL-REVIEW-NOT-READY` と明記し、勝手に新規公開しない。
-
-不合格は `FINDINGS.md` と §12B 修正優先・他の作成成果物の影響監査へ戻す。提案そのものへの承認（`REVIEW-FEEDBACK ≠ APPROVAL`）、モード正本、原資料、学習進捗、main/Pages公開の個別承認も維持する。
+正本はgovernance/REVIEW_POLICY.jsonとWORK_SYSTEM §12A。具体設計が承認された完成単位を内部検査・compile・既存公開アプリへ反映し、実配信source/routeを照合した直接URLを渡す。旧画像票の受入待ちと、承認範囲内の公開の再許可を挟まない。ユーザーの自然な範囲付き受入を記録する。内容設計・修正優先・原本・進捗・他モード保護は維持。旧P-003の規則はW-GOV-010のHISTORICAL_REVIEW_POLICY.mdに保存。
 
 ### Work records
 

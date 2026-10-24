@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "layer": "structural",
+  "pedagogicalReview": "reviewed",
+  "nodes": 41,
+  "items": 36,
+  "sourceBlocks": 44,
+  "findings": [],
+  "limits": [
+    "Natural-language coherence and semantic answer leakage require the separate AI audit.",
+    "This report does not verify app integration, UI or publication."
+  ]
+}

@@ -1,6 +1,17 @@
 # CURRENT POSITION — 塾 / rriku target
 
 
+## Latest — W-GOV-010 approved code+AI pilot implemented; N07 design ready (2026-10-24)
+
+User「今の感じでいいと思うじゃ作りましょうか！」approved P-002 plus the presented external-code adoption direction. [Approval](../work/items/W-GOV-010-learning-production-workflow/APPROVAL_20261024.md). Branch work/textbook-code-ai-pilot-20261024. Current machine review policy: governance/REVIEW_POLICY.json; old screenshot-gate text preserved historically. Do not re-request this tooling or already-authorized completed-unit publication permission.
+
+Bounded N07 tooling now exists under tools/textbook: located Pandoc source adapter, Fraction.js5.3.4 dev-only, rules/candidate/prose/blank/choice generation, contracts/compiler, source/novice review, result/render metadata, state model and hash-bound job resume. Local35 native+4 actual-schema/KaTeX+2 source tests, independent23 arithmetic conditions, existing351 math/domain tests, typecheck/build PASS. Whole-repo governance still has4 historical Work metadata errors/2 navigation warnings. CI outcome is recorded in Work.
+
+[N07 complete design](../work/items/W-GOV-010-learning-production-workflow/n07/N07_DESIGN.md):14 source questions,44 located paragraphs,41 nodes/36 decisions, full prose/choices/reasons/hints/results/table/number anchors and scoped migration proposal. Design remains PROPOSED; statuscandidate is not human approval. N08/N09/N10/NE02 have source inventories only.
+
+Next: review this complete N07 content design, then integrate approved N07 into existing app components/progress and verify real mobile/public operation before direct existing-Pages URL delivery. Existing learner src/public, first-title accepted22bc43ba and hosting main9b7dcd47 are unchanged. No new N07 app deployment yet. Earlier proposal-only/review statuses below are historical.
+
+
 ## Latest addendum — external reference-code research (2026-10-24)
 
 W-GOV-010: user identified missing reusable-code research. [Research](../work/items/W-GOV-010-learning-production-workflow/REFERENCE_CODE_RESEARCH.md) now pins10 repos/26 inspected files. Fraction.js12 isolated cases PASS; existing Pandoc3.1.3 converted teacher Word397 Math/397 oMath without warnings (semantic fidelity still unverified). P-002 appendix F07 numerical typo corrected to6/15=2/5. Recommend Fraction/Pandoc adapters and Mathsteps/Numbas/STACK/PreTeXt/DoenetML/fast-check design/test reuse before implementing an all-custom pipeline. Adoption/revised implementation plan is still proposed; P-002 is not approved. No learner/dependency/publication changes. First-title source22bc43ba and hosting main9b7dcd47 remain the accepted/live baseline. Older entries retain historical scope.

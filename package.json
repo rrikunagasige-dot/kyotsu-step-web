@@ -14,7 +14,9 @@
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "check": "pnpm run typecheck && pnpm run lint && pnpm run test && pnpm run build",
-    "check:all": "pnpm run check && pnpm run test:e2e"
+    "check:all": "pnpm run check && pnpm run test:e2e",
+    "textbook:author": "node tools/textbook/cli.mjs",
+    "test:textbook-authoring": "node --test tools/textbook/tests/pipeline.test.mjs && vitest run --config tools/textbook/vitest.config.mjs"
   },
   "dependencies": {
     "katex": "^0.16.22",
@@ -39,6 +41,7 @@
     "eslint": "^9.32.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
+    "fraction.js": "5.3.4",
     "globals": "^16.3.0",
     "jsdom": "^26.1.0",
     "typescript": "~5.8.3",

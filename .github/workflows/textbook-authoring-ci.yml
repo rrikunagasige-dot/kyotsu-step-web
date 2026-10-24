@@ -1,0 +1,50 @@
+name: Textbook code and AI authoring pilot
+on:
+  push:
+    paths:
+      - 'tools/textbook/**'
+      - 'tools/review-policy.mjs'
+      - 'governance/REVIEW_POLICY.json'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - '.github/workflows/textbook-authoring-ci.yml'
+  pull_request:
+    paths:
+      - 'tools/textbook/**'
+      - 'tools/review-policy.mjs'
+      - 'governance/REVIEW_POLICY.json'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - '.github/workflows/textbook-authoring-ci.yml'
+permissions:
+  contents: read
+jobs:
+  authoring:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - run: pnpm run test:textbook-authoring
+      - run: pnpm run typecheck
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Source adapter fixtures (not raw teacher source)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y pandoc
+          python -m pip install lxml==6.1.1
+          python -m unittest discover -s tools/textbook/tests -p '*_test.py' -v
+      - name: Independent exact arithmetic
+        run: |
+          node tools/textbook/cli.mjs author --source tools/textbook/fixtures/n07-source-index.json --out /tmp/n07-plan.json
+          python tools/textbook/tests/n07_independent.py /tmp/n07-plan.json

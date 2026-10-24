@@ -1,8 +1,8 @@
 # Command Word — 「憲法から」
 
 Status: CANONICAL
-Version: 1.3.0
-Updated: 2026-10-18
+Version: 1.4.0
+Updated: 2026-10-24
 
 ## Definition
 
@@ -204,3 +204,7 @@ Recovery / Reconstructionまで行い、変更しない。
 新しいCommandは現行の `CMD-ROOT-001` / `CMD-WORK-001` を上書きせず、追加するもの。Modeの切り分け、必読教訓、承認/QA/レビュー、除外事項の詳細は指示辞書の `CMD-WORK-002` が正本。
 
 「似ている指示」の同一視やAliasの独断登録は禁止。辞書のEXACT/SIMILAR/UNKNOWNルールに従う。
+
+## 現役の確認方式 — W-GOV-010
+
+正本はgovernance/REVIEW_POLICY.jsonとWORK_SYSTEM §12A。承認済み完成単位を内部QA・compile・既存公開アプリへ反映し、実配信確認済みの直接URLを渡す。旧画像票承認待ちと同じ公開再許可を挟まない。内容設計・原本・進捗・範囲付き受入は維持する。

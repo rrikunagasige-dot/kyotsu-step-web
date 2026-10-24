@@ -1,0 +1,43 @@
+✔ exact long division 3/4 (1.633659ms)
+✔ exact long division 23/11 (0.173022ms)
+✔ exact long division 1/6 (0.196196ms)
+✔ exact long division -1/8 (0.135234ms)
+✔ exact long division 2/1 (0.149857ms)
+✔ zero divisor is rejected (0.457111ms)
+✔ cycle value and minimum scale 8 (0.382808ms)
+✔ cycle value and minimum scale 69 (0.187323ms)
+✔ cycle value and minimum scale 6969 (0.255736ms)
+✔ cycle value and minimum scale 09 (0.213423ms)
+✔ 0/9 repeating profiles do not manufacture a teaching trace (0.152691ms)
+✔ finite decimal checks reduced denominator (0.189155ms)
+✔ all19 range candidates are checked (0.777115ms)
+✔ equivalence and required form differ (0.323179ms)
+✔ complete N07 design validates and compiles deterministically (30.400577ms)
+✔ fault injection: future reference (5.599212ms)
+✔ fault injection: unintroduced definition (5.826105ms)
+✔ fault injection: answer shown early (5.214582ms)
+✔ fault injection: wrong problem scope (3.523285ms)
+✔ fault injection: missing unnumbered source (4.008669ms)
+✔ fault injection: duplicate item (3.327639ms)
+✔ fault injection: equivalent distractor (2.961116ms)
+✔ fault injection: source reverse correspondence (3.132154ms)
+✔ fault injection: original question mismatch (3.607653ms)
+✔ fault injection: missing order node (2.735385ms)
+✔ empty selected unit cannot PASS (1.889846ms)
+✔ past known result reuse is permitted when designed (3.073415ms)
+✔ raw source stays out of public repo and production writes are refused (0.309208ms)
+✔ source revision mismatch stops authoring (0.105579ms)
+✔ job reuse fingerprints inputs, implementation and stored output; failure is resumable (2.073444ms)
+✔ current review policy rejects retired approval requirements (0.269798ms)
+✔ verification FAIL never becomes a cached successful job (0.376519ms)
+✔ exact arithmetic refuses already-rounded numeric input (0.12568ms)
+✔ all designed interactions require correct answers; wrong answers never reveal future results (2.510625ms)
+✔ unmapped source explanations cannot be automatically treated as headings (0.996075ms)
+ℹ tests 35
+ℹ suites 0
+ℹ pass 35
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 231.481963

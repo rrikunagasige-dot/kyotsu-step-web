@@ -1,0 +1,16 @@
+{
+  "planSHA256": "0e2eea0619181b8d1e5eaef0a27c83c27d0690f7b87b66e3f8e690f0daab4b81",
+  "candidateState": "candidate",
+  "schemaVersion": "1.1",
+  "stages": 14,
+  "equations": 62,
+  "renderGroups": 62,
+  "resultReferences": 41,
+  "tables": 1,
+  "integrationStatus": "NOT_REGISTERED",
+  "publishable": false,
+  "retainedAnswerIDs": [
+    "n07-10",
+    "n07-14"
+  ]
+}

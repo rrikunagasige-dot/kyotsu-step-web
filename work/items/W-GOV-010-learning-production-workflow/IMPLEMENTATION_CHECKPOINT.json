@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "scope": "bounded N07 authoring pilot; not learner integration or publication",
+  "sourceHash": "93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa",
+  "sourceParagraphs": 44,
+  "originalQuestions": 14,
+  "nodes": 41,
+  "interactions": 36,
+  "nativeTests": 35,
+  "actualSchemaKatexTests": 4,
+  "pythonSourceTests": 2,
+  "independentArithmeticChecks": 23,
+  "existingMathDomainRegressionTests": 351,
+  "typecheck": "PASS",
+  "build": "PASS",
+  "lintChangedTypeScript": "PASS",
+  "jobResume": "FAIL->repair->PASS with failure retained",
+  "sourceDataChanged": false,
+  "publicSourceChanged": false,
+  "wholeRepoGovernance": "4 pre-existing Status-format errors /2 pre-existing navigation warnings",
+  "ci": "PENDING",
+  "next": "N07 concrete design review before learner integration",
+  "protectedSourceTrees": {
+    "src": "1f8d55b5d4388d90bb1f142d2722adb7849b4cd5",
+    "public": "f6369a54f998012513d969f83989026cfb78c729"
+  },
+  "planSHA256": "0e2eea0619181b8d1e5eaef0a27c83c27d0690f7b87b66e3f8e690f0daab4b81",
+  "protectedBaseline": "22bc43ba53fa87bb85e82e18a25db13a5c8a485c"
+}

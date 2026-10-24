@@ -1,8 +1,10 @@
 # P-002 技術設計付録 — 何をどう実装するか
 
-Status: PROPOSED
+Status: APPROVED
 Work: W-GOV-010
 Parent: [PROPOSAL.md](PROPOSAL.md)
+
+Approval update: ユーザー「今の感じでいいと思うじゃ作りましょうか！」によりP-002＋外部コード調査の採用方針を承認。承認時の正確な版はAPPROVED_SCOPE.json。以下の提案時の状況記述は履歴として読み、実装状況はWORK.mdとIMPLEMENTATION_CHECKPOINT.jsonを正本とする。
 
 この付録の型・コマンド・ファイルは実装仕様案。コード断片は契約とアルゴリズムを示す擬似コードで、実行可能な実装・試験完了の主張ではない。既存資産は実パスを記載し、新設予定と区別する。
 

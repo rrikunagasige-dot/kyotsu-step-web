@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "authority": "W-GOV-010 / APPROVAL_20261024.md",
+  "reviewSurface": "existing-public-app",
+  "existingApp": "https://rrikunagasige-dot.github.io/kyotsu-step-web/",
+  "screenshotApprovalRequired": false,
+  "repeatPublicationApproval": false,
+  "contentDesignApprovalRequired": true,
+  "exactSourceRequired": true,
+  "internalQARequired": true,
+  "preserveAcceptedScope": true,
+  "acceptance": "explicit-scoped-natural-language",
+  "historicalPolicy": "work/items/W-GOV-010-learning-production-workflow/HISTORICAL_REVIEW_POLICY.md"
+}

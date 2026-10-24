@@ -1,9 +1,11 @@
 # P-002 — コードとAIで設計・制作・検証する数学教材の実現計画
 
-Status: PROPOSED
+Status: APPROVED
 Date: 2026-10-24 Asia/Tokyo
 Work: W-GOV-010
 Revision: P-001への追加意見を受けた全面再設計。P-001原文はP-001_HISTORICAL.mdへ保存。
+
+Approval update: ユーザー「今の感じでいいと思うじゃ作りましょうか！」によりP-002＋外部コード調査の採用方針を承認。承認時の正確な版はAPPROVED_SCOPE.json。以下の提案時の状況記述は履歴として読み、実装状況はWORK.mdとIMPLEMENTATION_CHECKPOINT.jsonを正本とする。
 
 本書は実装前の提案。既存と明記したもの以外の規則・schema・コマンド・検査は予定仕様であり、作成・動作済みとは主張しない。[技術設計付録](TECHNICAL_DESIGN.md)と一組で読む。
 

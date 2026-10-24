@@ -1,24 +1,21 @@
-# W-GOV-010 — 教材制作・自動化・公開確認の再設計
+# W-GOV-010 — コード＋AIの教材制作パイロット
 
-Status: PROPOSED
-Proposal: P-002
+Status: VERIFYING
+Proposal: P-002＋REFERENCE_CODE_RESEARCH（承認記録APPROVAL_20261024.md）
 Date: 2026-10-24 Asia/Tokyo
-Branch: work/workflow-rebuild-proposal-20261024
-P-001 recorded at: bc3d513e0bf1044d93391bf03132a38f4501bc39
-Accepted app source: 22bc43ba53fa87bb85e82e18a25db13a5c8a485c
-Live hosting main rechecked: 9b7dcd470847ec7c16683c58f1f24c500c442489
+Branch: work/textbook-code-ai-pilot-20261024
+Implementation base: f2a3ef837fccf584914b4e4caee8edf058a82cab
+Accepted app source:22bc43ba53fa87bb85e82e18a25db13a5c8a485c
+Live main verified at entry:9b7dcd470847ec7c16683c58f1f24c500c442489
 
-Objective: Rebuild mathematics textbook production so code generates appropriate solution/teaching/prose/interaction/figure candidates as well as compiling and checking them, with AI contextual judgment and evidence-separated verification. Deliver completed approved units in the existing public app.
+Objective: Make the approved external-code-based production pipeline concrete and demonstrate it on all N07 source content before learner edits.
+Authority: current user approval > Constitution > exact P-002＋reference-code adoption scope > source and accepted rules. Approval survives chats; do not ask for the same tooling/publication permission again.
 
-Authority: direct current user instructions > Constitution > Work/command rules > applicable teacher source and accepted rules. First title is formally accepted. The direct-public-app review policy is settled; the expanded implementation design remains proposed.
+Completed pilot: M0 current review-policy consolidation with historical preservation; M1 source identities/schema/compiler adapter; M2 Fraction/Pandoc-based N07 mathematics; M3 candidate/prose/blank/choice generation, source/novice audit, compiler, result/render metadata, state model, job/cache/resume and bounded CLI; M4 all14 N07 questions plus unnumbered content drafted. Concrete41-node/36-interaction design is n07/N07_DESIGN.md and N07_DESIGN_PLAN.json, status PROPOSED. This is a usable bounded pilot, not a universal all-subject generator or an integrated new learner UI.
 
-Scope now: revise the detailed proposal, retain P-001 verbatim, document 24 stages with inputs/outputs/roles/rework, executable rule/candidate design, AI contracts, implementation tasks, QA/progress/release/restart/feedback and the full N07 pilot inventory.
+Do Not Touch: existing src/public, first-title acceptance/content/IDs/figures/revisions/progress, other-mode materials, main hosting pointer, original source. New Fraction dependency is exact5.3.4 dev-only; existing locked package versions are retained. No learner data or deployment changed.
 
-Do Not Touch: accepted N01–N06/NE01 content/answers/choices/figures/IDs/revisions/progress; other modes and third title; public app source/pointer; original source documents and archives; historical approvals. No learner/code/workflow deployment changes in this proposal revision.
+Current: run exact-source authoring CI and close technical evidence. Scope-specific technical checks PASS locally; whole-repo governance retains4 old WORK Status-format errors and2 old navigation warnings. No false whole-repository PASS.
+Next: deliver n07/N07_DESIGN.md for the concrete content design review required by approved P-002. Following its approval, integrate this N07 plan with existing stage/result/number/layout components, implement the scoped progress migration, run actual app/mobile/public-source QA, compile/publish the completed approved N07 to the existing app and deliver its verified direct URL. No screenshot-sheet or duplicate publication approval gate.
 
-Current: P-002 PROPOSED, supplemented by REFERENCE_CODE_RESEARCH.md / REFERENCE_CODE_SOURCES.json. External-code adoption remains proposed. The new research request is completed as research, not implementation approval. P-002 appendix F07 arithmetic example corrected from6/15=1/5 to2/5.
-
-Historical proposal handoff: P-002 PROPOSED. User agreed with combining code and AI and requested a detailed realizable plan; this is authorization to prepare the proposal, not approval of its previously unseen implementation. P-001 preserved in P-001_HISTORICAL.md without rewriting its old status.
-
-Canonical proposal: PROPOSAL.md together with TECHNICAL_DESIGN.md.
-Next: integrate the external-code findings into a concrete revised adoption proposal before implementing P-002 wholesale. Prefer tested Fraction.js/Pandoc adapters and established trace/schema/test patterns over assuming all planned modules must be built from scratch. Following approval of the revised scope, proceed with bounded tooling and complete N07 design preparation. Present all N07 source content, complete solutions, prose, holes, choices, figures, states and migration before unseen learner edits. Upon approval of that concrete design, implement/check/compile/publish through the existing app and deliver the verified direct N07 URL without screenshot-sheet or duplicate release approval waits.
+Not yet implemented: actual N07 learner registration, final React/result/table adapter, progress migration, mobile geometry and real hosted operation tests; later N08–NE02 rule generation. Those units currently have source inventories only. N07 design is not human accepted merely because machine checks pass.

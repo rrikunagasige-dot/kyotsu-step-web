@@ -1260,18 +1260,9 @@ For mobile-only learning, judge derivation density by whether the learner active
 穴の総数を一律に増やす命令ではない。**一つの穴で複数の別の推論を飛ばしていないか／問いと採点する解答の型が一致しているか**を小ブロックごとに判定する。
 
 
-## 54. GitHub小ブロック・横断監査・総チェック（W-GOV-008/P-003）
+## 54. 完成単位を既存公開アプリで確認する — W-GOV-010
 
-### §54 改定 — W-GOV-008/P-003（2026-10-19 現行mainへの反映承認）
-
-
-過去の **P-001版「全小ブロックを実アプリリンクで確認」** は当時の承認履歴として保持する。ただし今後の正本運用は `governance/WORK_SYSTEM.md` §12A の **三段階** が優先し、P-001版のリンク義務を小ブロックにそのまま適用しない。
-
-1. **細部:** 作成・修正とも概念/問題ごとに既存教訓を確認し、実アプリから採取した画面画像と番号付き `確認` マーカーを載せたGitHub確認票で、ユーザーに `細部OK` / `要修正` を尋ねる。PRのコードを読ませない。承認済みマークは次回画面で外すが Work 履歴・SHA・未完の総チェックを残す。画像なし/対象SHA不明なら `BLOCK-CHECK-PENDING`。
-2. **横断:** 算数/数学・物理・原典・正答/選択肢・ヒント漏洩・図・UI・遷移・保存/初期化・スマホ/PC・既承認修正の回帰をエージェントが証拠付きで監査。新規不具合は §51/§12B に戻り、未承認の一括修正は禁止。
-3. **最後:** すべてのブロックと横断監査を閉じた後、exact release-candidate SHA に一致する**実際に動くアプリリンク**を渡す。ユーザーが最初から最後まで全対象をplayして、明示的に `総チェックOK` を出すまで `FINAL-APP-ACCEPTED` にしない。開くアプリが未準備なら `FINAL-REVIEW-NOT-READY`。
-
-Vercelを必須とせず、main統合・本番/GitHub Pages公開・新規公開環境・削除・費用発生は別承認。小ブロックの画面受入、技術 Work 完了、アプリ全体の受入は別の記録とする。テンプレートは `work/templates/BLOCK_REVIEW_SHEET.md`、`CROSS_BLOCK_AUDIT.md`、`FINAL_APP_WALKTHROUGH.md`。
+正本はgovernance/REVIEW_POLICY.json、WORK_SYSTEM §12A。完成した承認範囲を内部QA・compile・既存公開アプリへ反映し、実配信source・対象route・操作が一致する直接URLを渡す。画像票承認待ちや同じ公開再許可を要求しない。自然な範囲付き受入を記録し、既承認単元・原本・進捗を保護する。内容設計と内部の横断検査は維持。旧W-GOV-008/P-003本文はHISTORICAL_REVIEW_POLICY.mdへ保存。
 
 ## 2026-10-24 approved mathematical teaching sequence
 

@@ -73,7 +73,7 @@ export function N07ReadingFlow({ unit, section, progress, onSummaryReached, onRe
   }
   function choicePanel(item: TextbookItem) {
     if (activeId !== item.id) return null
-    const reasons: Record<string, string> = activeNode?.interaction?.distractorReasons ?? {}
+    const reasons: Record<string, string | undefined> = activeNode?.interaction?.distractorReasons ?? {}
     return <div key={item.id} className="reading-inline-choice-panel" data-testid={'inline-choice-panel-' + item.id}>
       <p>{item.prompt}</p>
       {wrong && <aside className="reading-choice-hint" data-testid={'textbook-hint-' + item.id}>

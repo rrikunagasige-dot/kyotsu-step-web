@@ -2,7 +2,7 @@
 import { firstThemeBaseline } from '../../../../test/firstThemeBaseline'
 import { describe, expect, it } from 'vitest'
 import { getTextbookChoices, normalizeTextbookAnswer } from '../../../../domain/textbook'
-import { mathNumbersN01Unit as current_mathNumbersN01Unit, n01SourceToItemIds } from './n01Lesson'
+import { mathNumbersN01Unit as current_mathNumbersN01Unit, n01R2SourceMap as n01SourceToItemIds } from './n01Lesson'
 const mathNumbersN01Unit = firstThemeBaseline(current_mathNumbersN01Unit)
 
 

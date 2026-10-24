@@ -1,3 +1,4 @@
+import { mathNumbersN01R2Unit } from '../data/textbook/math/numbers/n01Lesson'
 import type { TextbookUnit } from '../domain/textbookSchema'
 import type { ReviewTarget } from '../review/reviewTargets'
 
@@ -5,6 +6,7 @@ import type { ReviewTarget } from '../review/reviewTargets'
 // The current edition is tested independently in firstThemeRepair.test.ts and E2E.
 const base: Record<string, [number, number]> = { n01:[2,18], n02:[1,12], n03:[2,17], n04:[2,26], n05:[2,20], n06:[3,16], ne01:[1,13] }
 export function firstThemeBaseline(unit: TextbookUnit): TextbookUnit {
+  if (unit.unitId === 'math-numbers-expressions-n01') unit = mathNumbersN01R2Unit
   const revision = base[unit.unitId.replace('math-numbers-expressions-','')]?.[0]
   if (!revision) return unit
   return { ...unit, revision, sections: unit.sections.map(s => ({...s,

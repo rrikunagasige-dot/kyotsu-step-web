@@ -90,3 +90,6 @@ N04–N14 (8 units, 123 Word Q, 127 choices)
        FINAL-APP-ACCEPTED (NOT YET)
 ```
 Latest main GitHub Pages at `537c3cb...` ≠ frozen R5 SHA; Draft PR #101 not merged; GitHub screenshot/PR links are not app URLs. [Cross audit](../work/items/W-MATH-003-numbers-expressions-creation/CROSS_BLOCK_AUDIT_FINAL_R5_20261020.md) / [Gate3 prep](../work/items/W-MATH-003-numbers-expressions-creation/FINAL_APP_WALKTHROUGH_PREP_R5_20261020.md). Do not modify main/hosting/billing without separate explicit permission.
+
+
+W-MATH-028/P-001: R2 user rejection → primary-source teaching research → concrete N01 proposal APPROVED → sample implementation → technical/visual verification → authorized public review → user feedback → remaining first-theme examples. See work/items/W-MATH-028-n01-teaching-sequence/WORK.md. Other themes not started.

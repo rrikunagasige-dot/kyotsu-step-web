@@ -1,4 +1,5 @@
 import { repairFirstTheme } from './firstThemeRepair'
+import { teachN01 } from './n01Teaching'
 import { validateTextbookUnits } from '../../../../domain/textbookSchema'
 
 // W-MATH-003 / approved P-001, reviewed N01 v2. Original source: N01 Q1–Q10,
@@ -21,7 +22,7 @@ function item(
 }
 
 // Source-to-interaction correspondence is authoring metadata, NEVER learner copy.
-export const n01SourceToItemIds = {
+export const n01R2SourceMap = {
   'N01-Q01': ['n01-01'],
   'N01-Q02': ['n01-02a', 'n01-02b', 'n01-02c'],
   'N01-Q03': ['n01-03'],
@@ -32,6 +33,12 @@ export const n01SourceToItemIds = {
   'N01-Q08': ['n01-08'],
   'N01-Q09': ['n01-09a', 'n01-09b'],
   'N01-Q10': ['n01-10a', 'n01-10b'],
+} as const
+
+export const n01SourceToItemIds = {
+  ...n01R2SourceMap,
+  'N01-Q02': ['n01-bridge-r3-negative-coefficient', 'n01-bridge-r3-negative-degree', 'n01-bridge-r3-square-coefficient', 'n01-bridge-r3-square-degree', 'n01-bridge-r3-product-coefficient', 'n01-bridge-r3-product-degree'],
+  'N01-Q09': ['n01-bridge-r3-linear', 'n01-bridge-r3-cubic', 'n01-bridge-r3-reuse'],
 } as const
 
 const rawN01 = {
@@ -232,4 +239,6 @@ const rawN01 = {
   }],
 }
 
-export const mathNumbersN01Unit = validateTextbookUnits([repairFirstTheme(validateTextbookUnits([rawN01])[0])])[0]
+// Explicit historical edition for preserved R2 audit contracts; never the learner export.
+export const mathNumbersN01R2Unit = validateTextbookUnits([repairFirstTheme(validateTextbookUnits([rawN01])[0])])[0]
+export const mathNumbersN01Unit = validateTextbookUnits([teachN01(mathNumbersN01R2Unit)])[0]

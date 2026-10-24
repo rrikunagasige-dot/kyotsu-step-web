@@ -26,11 +26,17 @@ try {
      assert(await next.isVisible(),'Missing next stage before '+item.id)
      await next.click();stages++
     }
-    if(item.id.includes('-bridge-detail-')||item.id.includes('-bridge-audit-')) assert((await blank.innerText()).includes('□'),'Missing visible inline blank '+item.id)
+    if(item.id.includes('-bridge-detail-')||item.id.includes('-bridge-audit-')) assert((await blank.innerText()).includes('選択'),'Missing sets-style inline blank '+item.id)
+    if(item.id==='n01-bridge-r3-linear') {
+      assert.equal(await page.getByTestId('textbook-formula-n01-r3-linear-result').count(),0,'Linear answer leaked');
+      assert.equal(await page.getByTestId('textbook-formula-n01-r3-cubic-zero').count(),0,'Future cubic result leaked');
+    }
+    if(item.id==='n01-bridge-r3-cubic') assert.equal(await page.getByTestId('textbook-formula-n01-r3-cubic-zero').count(),0,'Cubic answer leaked');
+    assert(!(await blank.innerText()).includes('□'),'Nested square returned '+item.id);
     await blank.click()
     let panel=page.getByTestId('inline-choice-panel-'+item.id)
     await panel.waitFor()
-    if(!wrongChecked) {
+    if(!wrongChecked || item.id.startsWith('n01-bridge-r3-')) {
      const wrong=panel.locator('button.reading-choice-option').filter({hasNot:page.locator('[data-never]')})
      let selected
      for(const option of await wrong.all()) if((await option.getAttribute('aria-label'))!==item.answer){selected=option;break}
@@ -43,7 +49,7 @@ try {
     let selected
     for(const option of await answer.all())if((await option.getAttribute('aria-label'))===item.answer){selected=option;break}
     assert(selected,'Missing correct option '+item.id)
-    if(['n01-06b','n01-09a','n01-09b','n02-04'].includes(item.id)) {
+    if(['n01-06b','n01-bridge-r3-negative-degree','n01-bridge-r3-linear','n01-bridge-r3-cubic','n01-bridge-r3-reuse','n02-04'].includes(item.id)) {
       await panel.scrollIntoViewIfNeeded();await page.screenshot({path:out+'/'+item.id+'-'+width+'.png',fullPage:true})
     }
     const layout=await panel.locator('button.reading-choice-option').evaluateAll(options=>options.map(option=>{const strong=option.querySelector('strong');const bounds=strong.getBoundingClientRect();return {left:option.getBoundingClientRect().left,font:parseFloat(getComputedStyle(strong).fontSize),over:Array.from(strong.querySelectorAll('.first-theme-choice-chunk')).some(c=>{const r=c.getBoundingClientRect();return r.left<bounds.left-2||r.right>bounds.right+2})}}))
@@ -53,6 +59,12 @@ try {
     assert(!overflow,'Horizontal page overflow at '+width+'/'+item.id)
     assert.equal(await page.locator('.katex-error').count(),0,'Math parse error '+item.id)
     await selected.click()
+    if(['n01-bridge-r3-linear','n01-bridge-r3-cubic','n01-bridge-r3-reuse'].includes(item.id)) {
+      const result={'n01-bridge-r3-linear':'n01-r3-linear-result','n01-bridge-r3-cubic':'n01-r3-cubic-zero','n01-bridge-r3-reuse':'n01-r3-final-equation'}[item.id];
+      assert(await page.getByTestId('textbook-formula-'+result).isVisible(),'Missing calculation/result connection '+item.id);
+      const borders=await page.locator('[data-derivation-id^="n01-r3-"] .reading-formula-line').evaluateAll(rows=>rows.map(row=>getComputedStyle(row).borderTopWidth));
+      assert(borders.every(x=>parseFloat(x)===0),'Individual formula cards split teaching chain');
+    }
    }
    assert.equal(await page.getByTestId('resolved-'+items.at(-1).id).count(),1)
    if(stages>0){const history=page.getByTestId('math-textbook-history-toggle');await history.click();assert(await page.getByTestId('math-textbook-expand-all').isVisible());await history.click()}

@@ -1621,11 +1621,7 @@ button.math-theme-link {
 .textbook-reading-flow[data-first-theme] .reading-choice-formula-lines { display: flex; flex-wrap: wrap; gap: 4px 2px; align-items: baseline; }
 .textbook-reading-flow[data-first-theme] .reading-choice-formula-line { display: inline-block; }
 .textbook-reading-flow[data-first-theme] .reading-subheading { margin-top: 22px; line-height: 1.7; }
-.textbook-reading-flow[data-first-theme] .reading-fill-blank { display: inline-block; font-family: serif; font-size: 1.3em; line-height: 1; min-width: 1.6em; color: #17212b; }
-.textbook-reading-flow[data-first-theme] .reading-formula-choice { background: #fff; border: 1.5px solid #294761; min-width: 48px; min-height: 40px; padding: 4px 8px; }
 .first-theme-blank-guide { font-size: .85rem; line-height: 1.8; margin-block: 0 16px; color: #17212b; }
-.textbook-reading-flow[data-first-theme] .reading-inline-blank:not(.reading-inline-blank--wrong) strong { font-size: 0; }
-.textbook-reading-flow[data-first-theme] .reading-inline-blank:not(.reading-inline-blank--wrong) strong::after { content: '□'; font: 1.3rem/1 serif; color: #17212b; }
 /* A formula option is one readable answer card, at every viewport width. */
 .textbook-reading-flow[data-first-theme] .reading-choice-options { grid-template-columns: minmax(0,1fr); gap: 12px; }
 .textbook-reading-flow[data-first-theme] .reading-choice-option { padding: 12px; min-height: 64px; column-gap: 12px; align-items: start; }

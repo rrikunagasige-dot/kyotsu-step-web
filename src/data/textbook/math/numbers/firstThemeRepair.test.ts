@@ -7,6 +7,7 @@ import { isFirstThemeUnit, partitionFirstThemeReadingFlow, requiredFirstThemeCon
 import { answerTextbookItem, effectiveTextbookProgress, textbookUnitProgress, type TextbookUnitProgress } from '../../../../domain/textbook'
 import { normalizeTextbookMath } from '../../../../domain/textbookMath'
 import repairs from './firstThemeRepair.json'
+import { n01RetiredItems } from './n01Teaching'
 const baseline = JSON.parse(readFileSync('work/items/W-MATH-027-first-theme-repair/baseline.json','utf8')) as Record<string,{unitHash:string;revision:number;itemHashes:Record<string,string>}>
 const hash = (value:unknown) => createHash('sha256').update(JSON.stringify(value)).digest('hex')
 const units = mathTextbookUnits.filter(u => isFirstThemeUnit(u.unitId))
@@ -32,7 +33,7 @@ describe('2026-10-24 current first-theme edition', () => {
     expect(new Set(ids).size).toBe(ids.length)
   })
   it.each(units)('$unitId preserves answers from the previous public edition and opens new inline blanks', unit => {
-    const oldItems = unit.sections[0].items.filter(q => !q.id.includes('-bridge-audit-'))
+    const oldItems = unit.sections[0].items.filter(q => !q.id.includes('-bridge-audit-') && !q.id.includes('-bridge-r3-'))
     const old: TextbookUnitProgress = { unitId:unit.unitId,unitRevision:unit.revision-1,startedAt:1,updatedAt:2,completedAt:3,answers:Object.fromEntries(oldItems.map(q=>[q.id,{itemId:q.id,value:q.answer,resolved:true,isFirstCorrect:true,attemptCount:2,firstAnsweredAt:1,lastAnsweredAt:2}])) }
     const current = effectiveTextbookProgress(unit,old)!
     expect(current.answers).toEqual(old.answers)
@@ -44,6 +45,7 @@ describe('2026-10-24 current first-theme edition', () => {
     for (const [prefix,nodes] of Object.entries(repairs)) {
       const unit = units.find(u => u.unitId.endsWith('-'+prefix))!
       for (const node of nodes) {
+        if (n01RetiredItems.some(id=>id===node.id)) continue
         const item = unit.sections[0].items.find(q => q.id === node.id)!
         expect(item.hints.length).toBeGreaterThan(0)
         expect(new Set(item.choices).size).toBe(4)

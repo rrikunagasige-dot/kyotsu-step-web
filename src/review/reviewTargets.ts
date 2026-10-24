@@ -248,7 +248,7 @@ const targets: Record<string, ReviewTarget> = {
   },
   'n01-q07': {
     id: 'n01-q07', unitId: 'math-numbers-expressions-n01', title: 'N01 Q07', question: '同類項の係数',
-    revision:4, totalItems: 18,
+    revision:5, totalItems: 18,
     blockIds: [
       'formula-like-original', 'paragraph-n01-07-intro',
       'formula-r3-q07-x2coef', 'formula-r3-q07-xcoef',

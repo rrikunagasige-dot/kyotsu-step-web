@@ -1,3 +1,4 @@
+import { mathNumbersN01R2Unit } from '../../data/textbook/math/numbers/n01Lesson'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { describe, expect, it } from 'vitest'
 import { mathTextbookUnits } from '../../data/textbook/math'
@@ -8,7 +9,8 @@ import { auditedWrapBlocks, formulaWrapChunks } from './formulaWrap'
 describe('chapter overflow mathematical boundaries', () => {
   let count = 0
   for (const [unitId, ids] of Object.entries(auditedWrapBlocks)) {
-    const unit = mathTextbookUnits.find(u => u.unitId === unitId)!
+    // Retired tuple blocks retain their historical wrapping contract; current R3 blocks have separate coverage.
+        const unit = unitId === 'math-numbers-expressions-n01' ? mathNumbersN01R2Unit : mathTextbookUnits.find(u => u.unitId === unitId)!
     for (const id of ids) {
       count++
       it(`${unitId}/${id} preserves the complete source and actual controls`, () => {

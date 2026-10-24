@@ -1,5 +1,17 @@
 // Item-specific feedback, without changing the shared item schema or old hints.
 const feedback: Readonly<Record<string, Readonly<Record<string, string>>>> = {
+  'n01-bridge-r3-linear': {
+    '3':'xの係数は省略された1です。3xの係数3に、その1を足します。',
+    '4x':'係数の計算はできています。空欄の外にxがあるので、空欄には4だけを入れます。',
+  },
+  'n01-bridge-r3-cubic': {
+    '1':'今回は係数1をそのまま残すのではなく、1−1を計算します。',
+    '2':'1+1ではなく1−1です。元の二つ目の三次の項には負号があります。',
+  },
+  'n01-bridge-r3-reuse': {
+    '4x^2':'戻すのは①で求めた一次の項です。文字の部分はxで、x²ではありません。',
+    '4':'ここでは一次の項全体を戻します。係数4だけでなく、文字xも含めます。',
+  },
   "ne01-01": {
     "(x+3)(x^2+9)": "平方を作るときの二つの交差項が抜けている。",
     "(x+3)(x^2+3x+9)": "交差項は一つではなく二つできる。"

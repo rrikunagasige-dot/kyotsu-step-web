@@ -7,6 +7,7 @@ export type MathSetReadingStage = {
   id: string
   label: { ja: string; zh: string }
   startBlockId: string
+  completedLabel?: string
 }
 
 export type MathSetRenderedStage = MathSetReadingStage & {
@@ -151,7 +152,7 @@ export function partitionMathSetReadingFlow(blocks: readonly TextbookReadingBloc
 
 // Semantic boundaries are authored, never inferred from screen length.
 const firstThemeStages: Readonly<Record<string, readonly [string, string][]>> = {
-  n01: [['heading-factors','因数・係数・次数'],['heading-variable','注目する文字'],['marker-variable-check','文字を変えて確かめる'],['heading-like-terms','同類項を集める'],['marker-degree-check','整理後の次数を調べる']],
+  n01: [['heading-factors','因数・係数・次数'],['heading-variable','注目する文字'],['marker-variable-check','文字を変えて確かめる'],['heading-like-terms','同類項を集める'],['marker-degree-check','例題と解き方の見通し'],['n01-r3-linear-heading','① 一次の項をまとめる'],['n01-r3-quadratic-heading','② 二次の項を確かめる'],['n01-r3-cubic-heading','③ 三次の項をまとめる'],['n01-r3-constant-heading','④ 定数項を確かめる'],['n01-r3-assembly-heading','⑤ 式全体をまとめる'],['n01-r3-interpret-heading','整理後の次数を読む']],
   n02: [['heading-variable','注目する文字と項'],['marker-variable-check','係数を文字式で表す'],['heading-add','同じ次数をそろえる'],['heading-minus','引く式の符号'],['paragraph-minus-add','符号を直した式を加える'],['marker-multiply-check','式全体の係数倍'],['paragraph-multiple-collect','次数ごとに集める'],['heading-structure','まとまりを整理して再利用']],
   n03: [['heading-indices','指数の意味と法則'],['marker-powers-check','負の係数と累乗'],['heading-distribute','一つの項を全項へ掛ける'],['paragraph-two-brackets','表で四つの積を数える'],['marker-final-check','三項の括弧へ広げる']],
   n04: [['heading-four-products','四つの積を作る'],['n04-heading-1','平方の公式を導く'],['n04-lead-06','差の平方と和差の積'],['n04-heading-2','公式への対応と代入'],['n04-lead-11','一般の一次式の積'],['n04-lead-14','三項の平方へつなぐ'],['n04-heading-3','共通するまとまりを探す'],['n04-lead-20','四つの因数を組み直す'],['n04-lead-21','共通部分をTで置き換える'],['n04-lead-22','Tを戻して次数ごとに集める']],
@@ -167,11 +168,23 @@ export function partitionFirstThemeReadingFlow(unitId: string, blocks: readonly 
   const definitions = firstThemeStages[unitId.replace('math-numbers-expressions-', '')]
   const starts = definitions.map(([anchor]) => blocks.findIndex(b => b.id === anchor))
   if (starts[0] !== 0 || starts.some((n,i) => n < 0 || (i > 0 && n <= starts[i-1]))) throw Error('Invalid first-theme stage anchor: ' + unitId)
-  return definitions.map(([anchor,label],i) => ({id: anchor, startBlockId: anchor, label:{ja:label,zh:label},blocks:blocks.slice(starts[i],starts[i+1] ?? blocks.length)}))
+  return definitions.map(([anchor,label],i) => ({id: anchor, startBlockId: anchor, label:{ja:label,zh:label}, completedLabel:firstThemeCompletedLabels[anchor], blocks:blocks.slice(starts[i],starts[i+1] ?? blocks.length)}))
+}
+
+const firstThemeCompletedLabels: Readonly<Record<string,string>> = {
+  'n01-r3-linear-heading':'① 一次の項：4x',
+  'n01-r3-quadratic-heading':'② 二次の項：−2x²',
+  'n01-r3-cubic-heading':'③ 三次の項：0',
+  'n01-r3-constant-heading':'④ 定数項：−1',
 }
 
 // Only already available premise/result blocks are pinned. No future answers.
 const firstThemeReferences: Readonly<Record<string, readonly string[]>> = {
+  'n01-r3-linear-heading':['formula-cancellation-original'],
+  'n01-r3-quadratic-heading':['formula-cancellation-original'],
+  'n01-r3-cubic-heading':['formula-cancellation-original'],
+  'n01-r3-constant-heading':['formula-cancellation-original'],
+  'n01-r3-interpret-heading':['n01-r3-final-equation'],
   'heading-minus': ['formula-ab-definition'],
   'paragraph-minus-add': ['formula-ab-definition','formula-n02-07'],
   'marker-multiply-check': ['formula-ab-definition'],

@@ -494,7 +494,7 @@ export function TextbookReadingFlow({ unit, section, progress, onSummaryReached,
                     <div className="math-textbook-stage-summary">
                       <span className="math-textbook-stage-summary__name">
                         <Check size={16} aria-hidden="true" />
-                        {stage.label[language]}
+                        {stage.completedLabel ?? stage.label[language]}
                       </span>
                       <button
                         type="button"
@@ -561,7 +561,7 @@ export function TextbookReadingFlow({ unit, section, progress, onSummaryReached,
                         })}
                       </div>
                     )}
-                    {renderVisibleBlocks(visibleBlocksInGroup([...stage.blocks]))}
+                    {renderVisibleBlocks(visibleBlocksInGroup([...stage.blocks]).filter(block => !(stage.startBlockId.startsWith('n01-r3-') && block.id === stage.startBlockId && block.type === 'heading')))}
                     {stageAnswered && index < compactStages.length - 1 && (
                       <div className="math-textbook-next-stage-panel">
                         <span>{text('ここまでの本文と図を確認したら、次へ進めます。', '读完本段正文和图后，可以继续下一段。')}</span>
@@ -726,7 +726,7 @@ export function TextbookUnitPage() {
       )}
 
       {isFirstThemeUnit(unit.unitId) && (
-        <p className="first-theme-blank-guide">{text('式の□をタップして、そこに入る数・符号・式を選びます。解答済みの□には回答が表示されます。', '点击公式中的□，选择应填入的数、符号或式子。已完成的填空会显示答案。')}</p>
+        <p className="first-theme-blank-guide">{text('式や文章の「選択」をタップして、空欄に入る数・符号・式を選びます。回答すると、その場所に答えが入ります。', '点击公式或文字中的“选择”，选出填入空白处的内容。回答后会在原处显示答案。')}</p>
       )}
 
       {unit.unitId === 'math-numbers-expressions-n12' && unit.revision === 3 && progress?.migratedFromRevision !== undefined && (

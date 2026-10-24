@@ -55,3 +55,29 @@ for(const [prefix,targets] of Object.entries(chains))for(const [target,phases] o
 fs.mkdirSync('e2e-evidence/theme-one',{recursive:true})
 fs.writeFileSync('e2e-evidence/theme-one/math.json',JSON.stringify({independentPolynomialChecks:report.length,writtenEquationChecks:written.length,report,written},null,2))
 console.log(JSON.stringify({independentPolynomialChecks:report.length,writtenEquationChecks:written.length,samples:8,passed:true}))
+
+// R3 current teaching equations, exported from the current source. R2 archived
+// equations above remain audited separately, never substituted for current QA.
+if(fs.existsSync('e2e-evidence/chapter-runtime/runtime-units.json')) {
+ const runtime=JSON.parse(fs.readFileSync('e2e-evidence/chapter-runtime/runtime-units.json','utf8'))
+ const unit=runtime.units.find(x=>x.unit.unitId==='math-numbers-expressions-n01').unit
+ if(unit.revision>=5){
+  const section=unit.sections[0],checked=[]
+  for(const block of section.readingFlow){
+   if(block.type!=='formula'||!block.id.startsWith('n01-r3-'))continue
+   const math=block.parts.map(p=>p.type==='math'?p.latex:p.type==='choice'?section.items.find(q=>q.id===p.itemId).answer:'').join('')
+   if(!math.includes('=')||math.includes('\\text')||math.includes('\\underbrace')||math.includes('\\begin'))continue
+   const expressions=math.split('=')
+   for(let x=-5;x<=5;x++)for(let y=-2;y<=2;y++){
+    const first=value(expressions[0],{x,y})
+    for(const expression of expressions.slice(1))assert(value(expression,{x,y})===first,block.id)
+   }
+   checked.push(block.id)
+  }
+  assert(checked.includes('n01-r3-final-equation'))
+  assert(checked.includes('n01-r3-linear-calculate'))
+  assert(checked.includes('n01-r3-cubic-calculate'))
+  fs.writeFileSync('e2e-evidence/theme-one/r3-math.json',JSON.stringify({currentRevision:unit.revision,checked,samplesPerEquation:55},null,2))
+  console.log(JSON.stringify({currentN01Equations:checked.length,samplesPerEquation:55,passed:true}))
+ }
+}

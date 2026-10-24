@@ -42,6 +42,12 @@ class Runtime:
         need(s is not None,'Workが存在しない');return s
     def open(self,plan):
         self._head=self.store.head;plan_check(plan)
+        policy_path=self.root/'governance/REVIEW_POLICY.json'
+        if not plan.get('simulation') and plan['profile']=='material' and plan['subject'] in ('math','math-1a') and plan['mode']=='textbook' and policy_path.exists():
+            import json
+            policy=json.loads(policy_path.read_text())
+            if policy.get('screenshotApprovalRequired') is False:
+                need(plan.get('workflow_version')=='production/1','新規数学教材Workは現行production/1を指定する。旧Gateへ戻さない')
         need(not any(e['work']==plan['work_id'] for e in self.store.events()),'Work IDが既に存在')
         need(manifest(self.root,plan['source_manifest'])==plan['source_manifest'],'元資料の固定版と不一致')
         need(manifest(self.root,plan['rules'])==plan['rules'],'規則の固定版と不一致')

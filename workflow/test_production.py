@@ -63,3 +63,7 @@ class Production(unittest.TestCase):
         from runner import code_operation
         r=code_operation(self.rt,self.work,'S07',{'receipts':[{'status':'PASS','domain':'all math','method':'AI says so'}]})
         self.assertEqual(r['status'],'UNSUPPORTED')
+    def test_new_material_work_cannot_silently_use_retired_gate_graph(self):
+        p=copy.deepcopy(self.plan);p['work_id']='old-gate-entry';p['simulation']=False;p.pop('workflow_version')
+        (self.root/'governance').mkdir();(self.root/'governance/REVIEW_POLICY.json').write_text(json.dumps({'screenshotApprovalRequired':False}))
+        with self.assertRaises(Rejected):self.rt.open(p)

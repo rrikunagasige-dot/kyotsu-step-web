@@ -20,9 +20,9 @@
   "wholeRepoGovernance": "4 pre-existing Status-format errors /2 pre-existing navigation warnings",
   "ci": {
     "status": "PASS",
-    "sourceCommit": "f61b57e85a909d76ef0342aa37a1941439971311",
-    "runId": 40099358494,
-    "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40099358494",
+    "sourceCommit": "55c8b217d1dca25428adb82cb2a8c20695fecd1d",
+    "runId": 40100311065,
+    "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40100311065",
     "environment": "Node22 / pnpm11.9.0 / Python3.12",
     "checks": [
       "frozen install",
@@ -39,5 +39,6 @@
     "public": "f6369a54f998012513d969f83989026cfb78c729"
   },
   "planSHA256": "0e2eea0619181b8d1e5eaef0a27c83c27d0690f7b87b66e3f8e690f0daab4b81",
-  "protectedBaseline": "22bc43ba53fa87bb85e82e18a25db13a5c8a485c"
+  "protectedBaseline": "22bc43ba53fa87bb85e82e18a25db13a5c8a485c",
+  "proposalPunctuationCheck": "PASS: only doubled full stops removed;36 hints/14 questions/41 nodes preserved"
 }

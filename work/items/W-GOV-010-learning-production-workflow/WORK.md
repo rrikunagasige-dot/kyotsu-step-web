@@ -1,3 +1,23 @@
+# W-GOV-010 — 作成・修正のcode/AI/ML統合
+
+Status: DONE
+Proposal: P-004（integration/APPROVAL.json）
+Date: 2026-10-24
+Branch: work/workflow-cr-integration-p004-20261024
+Implementation source:190941bc9d65fb3ed2fa6b52ba90196addf19e33
+Final CI:40116299835 SUCCESS
+Canonical main adoption:b737ea42ff8527bfefd19f6ffd427dd13749084b
+
+Closure scope: P-004の制作基盤統合。I01–I07、code/AI契約、queue、属性別再検査、承認と単元公開、旧版移行、三階層火柴図、通常入口の切替とmemory closeまで完了。120 workflow試験（追加42）・620 learner・39 authoring・19 production Node・8 source/corpus/ML・27 legacy・build・四幅UIがPASS。
+
+Open downstream: N07の六指摘はOPEN。新しい修正案・教材修正・実教材受入は、このP-004閉鎖の対象ではない。モデルはOFFLINE_ONLY、再fit・本番昇格なし。公開app4fb7a98eと第一タイトル受入22bc43ba、他モードと保存進捗を保持。
+
+実行はworkflow/INTEGRATION_RUNBOOK.md、結果はintegration/IMPLEMENTATION_RESULTS.md、根拠はintegration/FINAL_CI_VERIFICATION.jsonとCANONICAL_ADOPTION.json。
+
+以下は旧proposalと作業途中の履歴。上記P-004の現在地を優先する。
+
+---
+
 # W-GOV-010 — コード＋AIの教材制作パイロット
 
 Status: VERIFYING

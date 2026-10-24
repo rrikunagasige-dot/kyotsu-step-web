@@ -1,6 +1,8 @@
 # P-004 作成・修正への統合結果
 
-Status: LOCAL_VERIFIED / 初回CI40114657817は成功。追加の原資料再取込・ML失敗処理・route照合を含む最終固定SHAのCI待ち。
+Status: VERIFIED / ACTIVE_BOUNDED — canonical入口へ反映済み。
+
+実装code: `190941bc9d65fb3ed2fa6b52ba90196addf19e33`。最終CI: [40116299835 SUCCESS](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40116299835)。mainの限定adoption: `b737ea42ff8527bfefd19f6ffd427dd13749084b`。
 
 ユーザーの「可以可以那就来做做看把」を、P-004具体設計への実装承認として記録した。P-003の既存機能を、作成・修正のそれぞれの工程へ組み込んだ。
 
@@ -14,7 +16,7 @@ Status: LOCAL_VERIFIED / 初回CI40114657817は成功。追加の原資料再取
 | I04 | 表示属性だけの変更で解法・意味の設計・承認を保持。数学変更はfact依存先へ。共有bundleでも設計が詰まらず、承認を再利用 | Runtime、integration。既存Node jobsを保持し、主工程をまたぐ再利用は同じStoreのcapability cacheで管理 |
 | I05 | unit別QA・既存公開先・exact SHAの実物受入、一次公開可否と関連修正完了を分離。親承認＋検証済み子差分の合成。自Work内issueの検証付き閉鎖 | Runtime、adapters、integration |
 | I06 | 全体・block・機能の三階層火柴図を同じsnapshot/台帳HEADから生成 | views、CLI |
-| I07 | 明示移行、旧成果物を再利用候補として提示、完全一致する旧承認の引継ぎ。旧S工程PASSをR02/R03へ転用しない | migrations、runbook、canonical pointerはCI成功後に更新 |
+| I07 | 明示移行、旧成果物を再利用候補として提示、完全一致する旧承認の引継ぎ。旧S工程PASSをR02/R03へ転用しない | migrations、runbook、canonical pointerもCI成功後に更新済み |
 
 実行入口とJSON属性・受入・再開の手順は [INTEGRATION_RUNBOOK.md](../../../../workflow/INTEGRATION_RUNBOOK.md)。
 
@@ -52,3 +54,7 @@ Status: LOCAL_VERIFIED / 初回CI40114657817は成功。追加の原資料再取
 最終照合で、source属性の修正時のR01再取込・coverage、R02で必要な完全解法、宣言外sourceの拒否、ML失敗モデルの棄却と再試行、unitの確認routeとURLの一致を補い、回帰試験へ追加した。
 
 N07 solverの範囲外で主工程が止まらないよう、math.solveの明示的なargument経路を既存S07の構造検査へ接続した。AIの完全解法と根拠監査へ渡すが、formalProof:falseを必須にして機械証明とは区別する。未登録solverのUNSUPPORTED自体は合格にしない。local workflow120件（追加42件）PASS。
+
+## 完了
+
+作成/修正の実行入口をproduction/2へ正式に切替済み。CIの実job logでworkflow120・learner620・authoring39・production Node19・source/corpus/ML8・legacy27とbuildを確認した。四幅すべてで全36回答、全誤答選択肢、再読込、履歴、移行、geometryがPASS。FINAL_CI_VERIFICATION.jsonに記録した。mainへ反映したのは5つの入口・現在地文書のみで、hosting workflowは元版と同一。CANONICAL_ADOPTION.jsonに限定差分を保存した。

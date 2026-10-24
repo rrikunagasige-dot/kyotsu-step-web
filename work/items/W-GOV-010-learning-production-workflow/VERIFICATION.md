@@ -72,3 +72,8 @@ Read-only instantiate comparison: correction graph==creation graph;25 nodes, all
 
 
 P-004最終照合: 初回固定SHA78986acf/CI40114657817 SUCCESS後、原資料再取込・ML失敗時のREJECTED・unit route照合を追加。local workflow119件（新規41件）、Node19件、source/corpus/ML8件PASS。モデル再fitと教材編集は行わない。最終固定SHAのCIを再実行してからcanonical入口を更新する。
+
+
+## P-004 closure — 2026-10-24
+
+実装source190941bc9d65fb3ed2fa6b52ba90196addf19e33、最終CI40116299835 SUCCESS。workflow120（追加42）・learner620・authoring39・production Node19・source/corpus/ML8・legacy27・build・320/390/430/1440 UIを実logで照合。main b737ea42ff8527bfefd19f6ffd427dd13749084bへ5つの入口/pointer文書だけをCAS反映し、各byteとhosting workflow不変を再確認した。通常入口はproduction/2。検証とmemory close完了によりP-004基盤scopeをDONEとする。N07の六指摘はOPEN、教材受入・モデル昇格とは区別する。

@@ -1,46 +1,26 @@
+## CURRENT — P-004 作成・修正への統合（2026-10-24）
+
+実行入口は既存の作成/CMD-WORK-002と修正/CMD-WORK-001。新規数学教材Workはproduction/2。canonicalな実行codeは `190941bc9d65fb3ed2fa6b52ba90196addf19e33`。CI [40116299835](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40116299835) SUCCESS。
+
+[実行手順](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/190941bc9d65fb3ed2fa6b52ba90196addf19e33/workflow/INTEGRATION_RUNBOOK.md) / [作成の火柴図](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/190941bc9d65fb3ed2fa6b52ba90196addf19e33/work/items/W-GOV-010-learning-production-workflow/integration/evidence/creation/FIRE_DIAGRAM.md) / [修正の火柴図](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/190941bc9d65fb3ed2fa6b52ba90196addf19e33/work/items/W-GOV-010-learning-production-workflow/integration/evidence/correction/FIRE_DIAGRAM.md)。図の模擬受入を実教材の受入と混同しない。
+
+C/R別・block別の主工程から、既存のsource/solver/教える順/穴/本文/図/IR/compiler/原資料監査/初学者監査/事例/MLを呼ぶ。approval bundleとrelease unitを分け、同じ承認を聞き直さず、完成単元を先に公開・実物確認する。表示変更は解法を保持し、数学変更はfact依存先へ再検査する。Store外の六指摘も修正優先queueへ入る。検証済み子修正は親の不変承認と差分承認を合成して取り込む。旧台帳は明示移行し、旧S工程PASSをR02原因/R03影響へ読み替えない。
+
+workflow120（追加42）・既存learner620・authoring39・production Node19・source/corpus/ML8・legacy27・build・四幅320/390/430/1440のUIを検証。明示的な学習根拠を版付きcatalogへ集め、学習例をそこから生成する。モデルはOFFLINE_ONLY、P-004で再fitや本番昇格をしていない。
+
+P-004は基盤統合の完了。N07の六指摘はOPENで、次に扱う場合もR01/R02→R03→R04の具体案へ進む。教材修正の包括承認へ転用しない。公開app source4fb7a98e、第一タイトル受入22bc43ba、他モード・保存進捗を保持。mainへは実行codeのpinと現在地の5文書だけを反映し、全branch mergeと公開変更は行わない。
+
+tool pinは実行実装の版。教材の最新版はモード正本と実配信sourceから別に固定し、source_sha/source_manifestで対応させる。古いtool checkoutの教材で最新版を置換しない。
+
+以下は過去の記録。現在の制作入口はこのP-004 pinとgovernance/PRODUCTION_WORKFLOW.jsonを参照する。
+
+---
+
 # MASTER MATCH GRAPH — target rriku
 
 ## Current — P-003 production workflow implemented
 
 Approved workflow tools are pinned by `governance/PRODUCTION_WORKFLOW.json` to sourcebba4df75 on work/production-workflow-p003-20261024. Read that source’s `tools/textbook/PRODUCTION_README.md` and Work redesign/implementation/RESULT.md before new math-textbook creation/correction.25-node code＋AI＋ML framework; CI40109892971 PASS including four-width browser checks. Use production/1 rather than restoring old screenshot/publication-approval gates. One classifier head was actually fitted but remainsOFFLINE_ONLY; new lesson quality/acceptance is separate. Public learner source4fb7a98e and accepted first-title22bc43ba remain protected. Other mode adoption is not implied. Older entries below retain historical scope.
-
-
-## N07 M5 implementation and release — 2026-10-24
-
-Content design APPROVED by「いいよ。まず作成してみよう！」→ exact plan0e2eea06 → registered source4fb7a98e → CI40101499771 PASS (619 applicable tests,39 authoring,3-width real-browser36 responses/wrong choices/history/reload/migration) → existing Pages release40101675993 PASS → hosted exact-source and app checks PASS → user hands-on feedback. First title22bc43ba and all other data protected; no N08–NE02 generation approval is inferred. See W-GOV-010/n07/integration/VERIFICATION.json for release status. Older N07 design-pending entries are historical.
-
-
-## Latest — W-GOV-010 approved code+AI pilot implemented; N07 design ready (2026-10-24)
-
-User「今の感じでいいと思うじゃ作りましょうか！」approved P-002 plus the presented external-code adoption direction. [Approval](../work/items/W-GOV-010-learning-production-workflow/APPROVAL_20261024.md). Branch work/textbook-code-ai-pilot-20261024. Current machine review policy: governance/REVIEW_POLICY.json; old screenshot-gate text preserved historically. Do not re-request this tooling or already-authorized completed-unit publication permission.
-
-Bounded N07 tooling now exists under tools/textbook: located Pandoc source adapter, Fraction.js5.3.4 dev-only, rules/candidate/prose/blank/choice generation, contracts/compiler, source/novice review, result/render metadata, state model and hash-bound job resume. Local35 native+4 actual-schema/KaTeX+2 source tests, independent23 arithmetic conditions, existing351 math/domain tests, typecheck/build PASS. Whole-repo governance still has4 historical Work metadata errors/2 navigation warnings. CI outcome is recorded in Work.
-
-[N07 complete design](../work/items/W-GOV-010-learning-production-workflow/n07/N07_DESIGN.md):14 source questions,44 located paragraphs,41 nodes/36 decisions, full prose/choices/reasons/hints/results/table/number anchors and scoped migration proposal. Design remains PROPOSED; statuscandidate is not human approval. N08/N09/N10/NE02 have source inventories only.
-
-Next: review this complete N07 content design, then integrate approved N07 into existing app components/progress and verify real mobile/public operation before direct existing-Pages URL delivery. Existing learner src/public, first-title accepted22bc43ba and hosting main9b7dcd47 are unchanged. No new N07 app deployment yet. Earlier proposal-only/review statuses below are historical.
-
-
-## Latest addendum — external reference-code research (2026-10-24)
-
-W-GOV-010: user identified missing reusable-code research. [Research](../work/items/W-GOV-010-learning-production-workflow/REFERENCE_CODE_RESEARCH.md) now pins10 repos/26 inspected files. Fraction.js12 isolated cases PASS; existing Pandoc3.1.3 converted teacher Word397 Math/397 oMath without warnings (semantic fidelity still unverified). P-002 appendix F07 numerical typo corrected to6/15=2/5. Recommend Fraction/Pandoc adapters and Mathsteps/Numbas/STACK/PreTeXt/DoenetML/fast-check design/test reuse before implementing an all-custom pipeline. Adoption/revised implementation plan is still proposed; P-002 is not approved. No learner/dependency/publication changes. First-title source22bc43ba and hosting main9b7dcd47 remain the accepted/live baseline. Older entries retain historical scope.
-
-
-## Latest revision — W-GOV-010/P-002 detailed code+AI production proposal (2026-10-24)
-
-User requested a more complete, realizable design in which code also proposes solutions, teaching order, prose skeletons, blanks, distractors and figures, with AI contextual judgment and evidence-separated review. P-001 was insufficient in that division of responsibility; preserved verbatim as historical. Current proposal is **P-002 / PROPOSED**, not implementation approval.
-
-[Detailed proposal](../work/items/W-GOV-010-learning-production-workflow/PROPOSAL.md) and [technical design](../work/items/W-GOV-010-learning-production-workflow/TECHNICAL_DESIGN.md) define24 stages S00–S23, implementation tasks T00–T19, supported mathematical rules, teaching/prose/blank candidate algorithms, AI contracts, all14 N07 source-question pilot coverage, progress protection, actual-app QA, invalidation/cache/restart/release/feedback. M0–M3 tooling and full N07 design preparation follow exact approval; unseen N07 content is presented before learner edits.
-
-First-title source22bc43ba remains formally accepted; hosting main9b7dcd47 rechecked unchanged. Same existing public app is the user review channel. No src/public/deploy changes in this proposal revision; no screenshot-sheet or duplicate publication approval requirement is restored. Older entries below retain their historical scope.
-
-## Latest — first title accepted; production workflow under review
-
-2026-10-24: user explicitly accepts22bc43ba first-title N01–N06/NE01; W031 DONE. W-GOV-010/P-001 proposes workflow/AI/code redesign and second-title N07–N10/NE02 trial. User review delivery is now completed builds in the same public app; old screenshot-sheet route is not the required forward path. Proposal only: no second-title learner code/public-source changes. [Work](../work/items/W-GOV-010-learning-production-workflow/WORK.md). Older graph states below are historical.
-
-## Latest first-section typesetting node — 2026-10-24
-
-W-MATH-031/P-005-R2: all7 units published in sequence and final full verification SUCCESS. App source22bc43ba, hosting9b7dcd47, [run40080522489](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40080522489).71 stages/291 decisions/485 formula blocks; content/figures/progress protected. [App](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=22bc43ba#/learning/textbook/math-numbers-expressions-n01); [evidence](../work/items/W-MATH-031-section-one-typesetting/VERIFICATION.md). Work VERIFYING / user final acceptance PENDING. Older graph/status entries remain history.
 
 Status: ACTIVE — governance transfer nodes T00–T06 verified and complete
 Updated: 2026-10-10
@@ -133,16 +113,3 @@ N04–N14 (8 units, 123 Word Q, 127 choices)
        FINAL-APP-ACCEPTED (NOT YET)
 ```
 Latest main GitHub Pages at `537c3cb...` ≠ frozen R5 SHA; Draft PR #101 not merged; GitHub screenshot/PR links are not app URLs. [Cross audit](../work/items/W-MATH-003-numbers-expressions-creation/CROSS_BLOCK_AUDIT_FINAL_R5_20261020.md) / [Gate3 prep](../work/items/W-MATH-003-numbers-expressions-creation/FINAL_APP_WALKTHROUGH_PREP_R5_20261020.md). Do not modify main/hosting/billing without separate explicit permission.
-
-
-W-MATH-028/P-001: R2 user rejection → primary-source teaching research → concrete N01 proposal APPROVED → sample implementation → technical/visual verification → authorized public review → user feedback → remaining first-theme examples. See work/items/W-MATH-028-n01-teaching-sequence/WORK.md. Other themes not started.
-
-
-## W-MATH-029 / first section whole-solution repair (2026-10-24)
-N01 sample2977a44a accepted by user「嗯这个就不错可以」. User narrowed full audit to chapter1 section1, accepted42-region findings with「可以那就来」. Implementing all N01–N06/NE01 corrections in work/section-one-teaching-20261024. Canonical authoring is firstSectionTeaching.json, reproduced by work/items/W-MATH-029-section-one-teaching/author-sequence.py from frozen baseline; no recursive insertion for the final teaching sequence. Accepted sample protected. Other chapters/themes/modes untouched. See Work/VERIFICATION for source/public SHA and actual checks. Full-section user acceptance pending; prior sample acceptance is preserved.
-
-
-W-MATH-029 latest checkpoint: all first-section repairs published for user review from16fe82c7a67f83e1d6fde234b1217247777aeb7c via hosting28c7fdfe4842d461b7247638601e8c0c5423b019; run40060852723 SUCCESS.42 regions/106 source questions,256 active decisions; compiled and actual public21-flow suites PASS,446 tests and396 current equations PASS. Accepted N01 sample preserved. Full-section pedagogical acceptance PENDING. Next: user review of this same section; do not begin another theme without steering. Evidence/artifact hashes in W-MATH-029/VERIFICATION.md.
-
-
-FINAL W-MATH-029 sourcef2a184b34a55650ebb2a04792de46cc7059bbaab is publicly deployed via7e31f353ea682f7b4d1f2ef18eeede8248ad997a; final run40061423814 SUCCESS. One repeated N06 introduction removed after screenshot reading; same71 stages/256 decisions/106 source questions. Compiled and actual public21-flow suites,446 tests and396 current equations PASS. Full-section user review pending; previous N01 sample acceptance preserved. Current app link uses?v=f2a184b3. Do not start another theme without user steering.

@@ -68,3 +68,8 @@ P-004最終照合: 初回固定SHA78986acf/CI40114657817 SUCCESS後、原資料�
 
 
 CI40115554244/sourcef98a36e6もSUCCESS（四幅UI含む）。対応外数理の明示的なAI argument経路を最後に接続し、120 workflow試験（追加42）を通した。実装と手順書のこの一致まで含めた固定SHAで再度CIし、成功後に限定pointer更新する。
+
+
+## P-004 closure — 2026-10-24
+
+実装source190941bc9d65fb3ed2fa6b52ba90196addf19e33、最終CI40116299835 SUCCESS。workflow120（追加42）・learner620・authoring39・production Node19・source/corpus/ML8・legacy27・build・320/390/430/1440 UIを実logで照合。main b737ea42ff8527bfefd19f6ffd427dd13749084bへ5つの入口/pointer文書だけをCAS反映し、各byteとhosting workflow不変を再確認した。通常入口はproduction/2。検証とmemory close完了によりP-004基盤scopeをDONEとする。N07の六指摘はOPEN、教材受入・モデル昇格とは区別する。

@@ -1,0 +1,17 @@
+{
+  "status": "ADOPTED",
+  "mainBefore": "f75bfe73e31d3506aa8c7358fecf9513737c730b",
+  "mainAfter": "b737ea42ff8527bfefd19f6ffd427dd13749084b",
+  "workflowSource": "190941bc9d65fb3ed2fa6b52ba90196addf19e33",
+  "ciRun": 40116299835,
+  "changedPaths": [
+    "governance/PRODUCTION_WORKFLOW.json",
+    "memory/ACTIVE_CONTEXT.md",
+    "memory/PROGRESS.md",
+    "navigation/CURRENT_POSITION.md",
+    "navigation/MASTER_MATCH_GRAPH.md"
+  ],
+  "hostingWorkflowUnchanged": true,
+  "appSource": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+  "wholeBranchMerged": false
+}

@@ -61,3 +61,8 @@ F45 PROPOSED — P-004 preserves C/R stage meanings and existing Runtime/Store, 
 ## P-004で検出・修正した実装上の問題
 
 旧production/1はC/Rが同じ25node、block=Noneで、R02原因・R03影響の契約を迂回していた。production/2ではcommand別の契約を合成した。初回検証でrender更新が共通復元nodeまで失効し、解法を再実行する問題を検出して属性依存を限定した。共有承認は全C05/R04を依存先とし、最初の承認で別blockの設計が詰まらないようにした。自Work issueを自分の子WorkのDONE待ちにする閉鎖循環も検証付き局所解決へ修正。旧完了修正は完了した版の根拠を保持し、後のツール更新だけで未完了queueへ戻さない。
+
+
+## P-004 closure — 2026-10-24
+
+実装source190941bc9d65fb3ed2fa6b52ba90196addf19e33、最終CI40116299835 SUCCESS。workflow120（追加42）・learner620・authoring39・production Node19・source/corpus/ML8・legacy27・build・320/390/430/1440 UIを実logで照合。main b737ea42ff8527bfefd19f6ffd427dd13749084bへ5つの入口/pointer文書だけをCAS反映し、各byteとhosting workflow不変を再確認した。通常入口はproduction/2。検証とmemory close完了によりP-004基盤scopeをDONEとする。N07の六指摘はOPEN、教材受入・モデル昇格とは区別する。

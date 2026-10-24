@@ -1,9 +1,11 @@
 {
-  "status": "CI_RUNNING",
-  "testedSourceSHA": "f98a36e6b5930f34d924ae2bd7b391984234673a",
-  "runId": 40115554244,
-  "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40115554244",
+  "status": "RESOLVED",
+  "testedSourceSHA": "190941bc9d65fb3ed2fa6b52ba90196addf19e33",
+  "runId": 40116299835,
+  "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40116299835",
   "returnStep": "verify CI conclusion and four-width evidence, then update five canonical docs/pointer only",
   "permittedIndependentWork": "documentation and evidence reconciliation only",
-  "noLearnerDeployment": true
+  "noLearnerDeployment": true,
+  "conclusion": "success",
+  "returnedTo": "canonical adoption completed at b737ea42ff8527bfefd19f6ffd427dd13749084b"
 }

@@ -15,3 +15,5 @@ N01 PUBLIC VERIFIED: source3c3a5648eadd20f57bf290c57eea4d44e8dab541, hostinga502
 N02 publication started at sourceabfe11a9cacc83b20e1009cd7bb3b624176d3461, hosting1bc326e6b7cae81482230431cb04505469c5acbb. Return to this exact run before another hosting update. Next-unit local layout work is the same approved P-005-R2 primary Work, no shared-renderer changes; CI source SHA remains frozen.
 
 N04 local candidate checkpoint:96 seeded views,636 formula groups,4 wrong/hint/correct interactions PASS at four widths. Actual390px final substitution/reconstruction screenshot inspected. Long polynomial continuations and factor groups remain inside the actual content width; no content/figure changes.
+
+N05 local candidate checkpoint:72 seeded views,436 formula groups,4 wrong/hint/correct interactions PASS at four widths. Original candidate tables and two factoring figures preserved. N02 remains in exact-source compiled/public verification; no next hosting change yet.

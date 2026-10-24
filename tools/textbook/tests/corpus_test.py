@@ -14,3 +14,9 @@ class Corpus(unittest.TestCase):
     def test_group_union_covers_versions_and_duplicate_input(self):
         a={'id':'a','familyId':'f1','episodeId':'e1','inputHash':'x'};b={'id':'b','familyId':'f2','episodeId':'e1','inputHash':'y'};c={'id':'c','familyId':'f2','episodeId':'e3','inputHash':'z'}
         s=split_groups([a,b,c]);self.assertEqual(s['groupCount'],1);self.assertEqual(s['status'],'INSUFFICIENT_GROUPS')
+    def test_real_partial_praise_does_not_zero_specific_derivation_defect(self):
+        from tools.textbook.corpus.core import user_seed,learner_text
+        root=Path(__file__).resolve().parents[3];_,decisions=user_seed(root)
+        praise=next(x for x in decisions if x['id']=='n07-layout-positive');criticism=next(x for x in decisions if x['id']=='n07-layout-relation')
+        self.assertNotEqual(praise['dimension'],criticism['dimension'])
+        self.assertNotIn('APPROVED',learner_text({'status':'APPROVED','provenance':'accepted','parts':[{'type':'text','text':'生徒向けの本文'}]}))

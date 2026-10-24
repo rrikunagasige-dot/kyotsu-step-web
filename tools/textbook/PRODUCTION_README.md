@@ -58,7 +58,7 @@ python tools/textbook/production_cli.py predict < prediction-request.json > pred
 
 `seed-request` は `{root:repoRoot}`。`training-request` は `{cache:cacheDirectory,examples:examples(curatedCorpus)}`。examplesはcaseの明示labelがある観点だけを抽出する。`TRAINING_EXAMPLES.json` は重複保存を減らす索引であり、textはCURATED_CASESから再生成する。
 
-現実験は9観点別case、実フィットしたheadはlayout_discomfortのみ。6観点は片側labelしかなく保留。family/episodeを結ぶと評価groupが不足するため、学習済みheadもOFFLINE_ONLYで、本番predictはABSTAINになる。追加学習と本採用は別である。SetFitは全文が最大長に収まり両classを持つデータが不足するため実験を保留し、Qwen比較も未実施。未評価を正例にして補わない。
+現実験は9観点別case、実フィットしたheadはlayout_discomfortのみ。7観点は片側labelしかなく保留。family/episodeを結ぶと評価groupが不足するため、学習済みheadもOFFLINE_ONLYで、本番predictはABSTAINになる。追加学習と本採用は別である。SetFitは全文が最大長に収まり両classを持つデータが不足するため実験を保留し、Qwen比較も未実施。未評価を正例にして補わない。
 
 ## 公開と次の制作
 

@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "compared": [
+    "src/data",
+    "public"
+  ],
+  "objects": 164,
+  "identicalGitTreeEntries": true,
+  "base": "2e767cc4917e785fb70a4598ba060272d3f37763",
+  "code": "a66c1add1ef740290e4e7bb400b32384c0ae7c26",
+  "deploymentChanged": false
+}

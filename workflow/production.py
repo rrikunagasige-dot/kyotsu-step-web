@@ -20,7 +20,20 @@ def instantiate(plan):
 def check_result(rt,work,node,result):
     result_check(node,result)
     need(result.get('artifacts'),'成果物参照がない')
-    for ref in result['artifacts']: rt.store.get(ref)
+    artifacts=[rt.store.get(ref) for ref in result['artifacts']]
+    simulation=rt.state(work)['plan'].get('simulation',False)
+    if not simulation:
+        code=[a for a in artifacts if a.get('producer',{}).get('kind')=='code']
+        need(code,'コード実行の成果物がない')
+        for a in code:
+            producer=a['producer']
+            need(producer.get('stageId')==node['id'] and producer.get('inputHash')==rt.task(work,node['id'])['input_hash'],'別工程・古い入力のコード結果')
+            need(producer.get('implementationHash')==digest(implementation_manifest(rt.root)),'コード実装の版が違う')
+            need(result['verdict']!='PASS' or a.get('status') in ('PASS','NEEDS_AI_REVIEW'),'コードの失敗・未対応をAIで合格にしない')
+        if node['id']=='S07' and code[0].get('status')=='NEEDS_AI_REVIEW':need(result.get('proofStatus')=='AI_ARGUMENT_REVIEWED' and result.get('formalProof') is False,'意味監査と機械証明を区別する')
+        if node['id']=='S24':need(result.get('trainingRun')==code[0].get('trainingRun'),'学習の実行記録と報告が違う')
+        if node['id']=='S19':need(any(rt.state(work)['evidence'].get(ref,{}).get('kind') in ('ci','check') for ref in result['evidence_refs']),'実UI検証の証拠がない')
+        if node['id']=='S21':need(any(rt.state(work)['evidence'].get(ref,{}).get('kind')=='app' for ref in result['evidence_refs']),'実配信アプリの証拠がない')
     need(isinstance(result.get('checks'),list) and all(isinstance(x,dict) and x.get('status') in ('PASS','FAIL','UNVERIFIED','OUT_OF_SCOPE') and x.get('id') and x.get('evidence') for x in result['checks']),'項目ごとの検査根拠が必要')
     need(result['verdict']!='PASS' or all(x['status'] in ('PASS','OUT_OF_SCOPE') for x in result['checks']),'未完検査を合格にしない')
     if node['ai_required']:
@@ -37,6 +50,10 @@ def check_result(rt,work,node,result):
     if node['id']=='S21':
         receipt=result.get('release',{})
         need(receipt.get('verified') is True and receipt.get('sourceSHA')==result['sourceSHA'] and receipt.get('url','').startswith('https://'),'配信版未確認')
+    if node['id']=='S23':
+        state=rt.state(work);quality={k for k,v in state['users'].items() if v['intent'] in ('quality_positive','quality_negative','reject_block','reject_app','accept_app')}
+        covered={c.get('evaluationEvent') for c in result.get('caseUpdates',[])}
+        need(quality<=covered,'未取込のユーザー評価がある')
     if node['id']=='S24':
         need('trainingRun' in result and result.get('modelDisposition') in ('SHADOW','ADVISORY','NOT_TRAINABLE','REJECTED'),'学習実態・採否を明記する')
 

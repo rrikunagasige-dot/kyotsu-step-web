@@ -98,7 +98,7 @@ def user_seed(root):
     # A typography criticism of the two separate equations; label does not extend to other nodes.
     f4=next(c for c in decisions if c['id']=='N07-USER-F04')
     decisions.append({**f4,'id':'n07-layout-relation','dimension':'layout_discomfort'})
-    decisions.append({'id':'n07-layout-positive','observationId':'chat-visible:08','quality':'POSITIVE','dimension':'layout_discomfort','artifactVersion':sha,'scope':'N07 overall layout only','evidenceTier':'USER_GOLD','evidenceRef':'current-conversation:layout-praise',
+    decisions.append({'id':'n07-layout-positive','observationId':'chat-visible:08','quality':'POSITIVE','dimension':'layout_style_rejection','artifactVersion':sha,'scope':'N07 overall layout only','evidenceTier':'USER_GOLD','evidenceRef':'current-conversation:layout-praise',
         'inputSnapshot':{'kind':'learner_artifact','text':learner_text(n07['unit'])},'familyId':'n07-decimals','episodeId':'n07-review-20261024','seen':True})
     first='22bc43ba53fa87bb85e82e18a25db13a5c8a485c'
     raw=git_snapshot(root,first,'src/data/textbook/math/numbers/firstSectionTeaching.json')

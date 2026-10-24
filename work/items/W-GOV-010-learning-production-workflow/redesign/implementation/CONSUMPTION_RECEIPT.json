@@ -1,0 +1,25 @@
+{
+  "status": "NEEDS_AI_REVIEW",
+  "inputHash": "09a202973b18079c3136d34c43865bbcfe5fe4c519d7c1528fdf1a2925f149ae",
+  "corpusHash": "a6fb2deacb1e3bb9c2194214c12f44454e4aa58888925043ac7d03cea26eeae6",
+  "activeLearnedModel": null,
+  "encoderHash": "1d0c6699c483167583c6ba00905876ddb7764a1571c359e3030515644dd3b1b9",
+  "caseIds": [
+    "N07-USER-F03",
+    "N07-USER-F04"
+  ],
+  "requiredAudit": [
+    {
+      "caseId": "N07-USER-F03",
+      "dimension": "unmotivated_operation",
+      "task": "inspect actual candidate, report applicability and evidence; do not assume repaired"
+    },
+    {
+      "caseId": "N07-USER-F04",
+      "dimension": "broken_derivation",
+      "task": "inspect actual candidate, report applicability and evidence; do not assume repaired"
+    }
+  ],
+  "lessonModified": false,
+  "aiResponseImported": false
+}

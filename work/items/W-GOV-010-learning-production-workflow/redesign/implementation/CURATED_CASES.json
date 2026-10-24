@@ -152,7 +152,7 @@
       "id": "n07-layout-positive",
       "observationId": "chat-visible:08",
       "quality": "POSITIVE",
-      "dimension": "layout_discomfort",
+      "dimension": "layout_style_rejection",
       "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
       "scope": "N07 overall layout only",
       "evidenceTier": "USER_GOLD",
@@ -191,6 +191,6 @@
       ]
     }
   ],
-  "hash": "ac8c04dd7c169af1ee98ff60f9223240f34b2f609cd034baec3f0e9aedb86c1e",
+  "hash": "a6fb2deacb1e3bb9c2194214c12f44454e4aa58888925043ac7d03cea26eeae6",
   "trainingRun": false
 }

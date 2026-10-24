@@ -2,7 +2,8 @@
 import json,subprocess,sys
 from pathlib import Path
 from contracts import need,manifest,file,sha
-from production import ai_request
+from production import ai_request,implementation_manifest
+from store import digest
 
 OPERATIONS={'S03':'coverage','S06':'solve','S08':'teaching-candidates','S09':'teaching-candidates','S10':'blank-candidates','S11':'verify-ir','S12':'verify-ir','S13':'figures','S14':'verify-ir','S16':'visible-snapshots','S18':'compile-ir'}
 
@@ -36,8 +37,14 @@ def code_operation(rt,work,nid,inputs):
         if inputs.get('kind')=='polynomial':
             proc=subprocess.run([sys.executable,str(rt.root/'tools/textbook/solver/legacy-polynomial.py')],input=json.dumps(inputs),capture_output=True,text=True,cwd=rt.root)
             return json.loads(proc.stdout) if proc.returncode==0 else {'status':'FAIL','stderr':proc.stderr}
-        receipts=inputs.get('receipts',[])
-        return {'status':'PASS' if receipts and all(r.get('status')=='PASS' and r.get('domain') and r.get('method') for r in receipts) else 'UNSUPPORTED','receipts':receipts,'proofAuditRequired':True}
+        if inputs.get('kind')=='n07':
+            proc=subprocess.run(['node',str(rt.root/'tools/textbook/operations.mjs'),'solve'],input=json.dumps(inputs['problem']),capture_output=True,text=True,cwd=rt.root)
+            return json.loads(proc.stdout) if proc.returncode==0 else {'status':'FAIL','stderr':proc.stderr}
+        if inputs.get('kind')=='argument':
+            steps=inputs.get('steps',[])
+            complete=inputs.get('claim') and inputs.get('assumptions') is not None and inputs.get('sourceRefs') and steps and all(s.get('statement') and s.get('basisRefs') and 'dependsOn' in s for s in steps)
+            return {'status':'NEEDS_AI_REVIEW' if complete else 'FAIL','proofStatus':'UNVERIFIED','argument':inputs,'formalProof':False}
+        return {'status':'UNSUPPORTED','reason':'no registered verifier for this domain','proofAuditRequired':True}
     if nid=='S15':
         return {'status':'NEEDS_AI_REVIEW','originalSourceRefs':state['plan']['source_manifest'],'coverage':inputs.get('coverage'),'sourceBlocks':inputs.get('sourceBlocks'),'candidate':inputs.get('candidate')}
     if nid=='S19':
@@ -57,5 +64,6 @@ def run_code(rt,work,inputs):
     nxt=rt.next(work);need(nxt['status']=='READY','現在実行できる工程ではない')
     node=nxt['task']['node'];nid=node['id'];claim=rt.claim(work,nid,'production-runner')
     result=code_operation(rt,work,nid,inputs)
+    result['producer']={'kind':'code','stageId':nid,'inputHash':claim['input_hash'],'implementationHash':digest(implementation_manifest(rt.root))}
     ref=rt.store.put(result)
     return {'status':'NEEDS_AI_REVIEW' if node['ai_required'] else 'NEEDS_VERIFIED_SUBMISSION','node':nid,'claimToken':claim['claim_token'],'inputHash':claim['input_hash'],'codeArtifact':ref,'codeResult':result,'aiRequest':ai_request(rt,work,nid),'automaticAcceptance':False}

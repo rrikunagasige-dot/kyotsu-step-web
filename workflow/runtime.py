@@ -78,6 +78,9 @@ class Runtime:
         if watch=='production':
             from production import implementation_manifest
             base['producer_implementation']=implementation_manifest(self.root)
+            if node['id'] in ('S22','S23','S24'):
+                base['quality_events']={k:v for k,v in s['users'].items() if v['intent'] in ('quality_positive','quality_negative','reject_block','reject_app','accept_app')}
+                base['issues']=s['issues']
         if watch=='production':base.update(context=s.get('production_context',{}),candidate_sha=s['candidate_sha'],candidate_manifest=s['candidate_manifest'],proposal=p['proposal'],scope=p['scope'])
         return digest(base)
     def node_status(self,s,node):

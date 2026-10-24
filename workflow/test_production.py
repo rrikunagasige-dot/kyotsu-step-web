@@ -15,7 +15,7 @@ class Production(unittest.TestCase):
         req=ai_request(self.rt,self.work,nid);a=self.rt.store.put({'id':nid,'fixture':True,'compiled':{'irHash':self.plan['proposal']['contentDesignHash']}})
         return {'verdict':'PASS','evidence_refs':[self.evidence],'checks':[{'id':'fixture-check','status':'PASS','evidence':'simulation'}],'artifacts':[a],'unknowns':[],
             'aiReview':{'requestHash':req['requestHash'],'inputHash':req['task']['input_hash'],'reviewer':'fixture-pass','evidence':'simulation only'},'sourceSHA':'a'*40,
-            'release':{'verified':True,'sourceSHA':'a'*40,'url':'https://example.invalid'},'trainingRun':False,'modelDisposition':'NOT_TRAINABLE'}
+            'release':{'verified':True,'sourceSHA':'a'*40,'url':'https://example.invalid'},'trainingRun':False,'modelDisposition':'NOT_TRAINABLE','caseUpdates':[{'evaluationEvent':k} for k,v in self.rt.state(self.work)['users'].items() if v['intent'] in ('quality_positive','quality_negative','reject_block','reject_app','accept_app')]}
     def step(self):
         nxt=self.rt.next(self.work);nid=nxt['task']['node']['id'];actor=nxt['task']['node']['actor']
         if actor=='USER':
@@ -59,3 +59,7 @@ class Production(unittest.TestCase):
         self.rt.open(p);self.rt.user('policy-test','approve_proposal','fixture permission',p['proposal']['hash'],'test-only:approval')
         self.rt.external_intent('policy-test','DEPLOY',p['proposal']['hash'],'fixture-deploy-intent')
         with self.assertRaises(Rejected):self.rt.external_intent('policy-test','COST',p['proposal']['hash'],'fixture-no-cost')
+    def test_unsupported_verifier_cannot_accept_caller_pass_booleans(self):
+        from runner import code_operation
+        r=code_operation(self.rt,self.work,'S07',{'receipts':[{'status':'PASS','domain':'all math','method':'AI says so'}]})
+        self.assertEqual(r['status'],'UNSUPPORTED')

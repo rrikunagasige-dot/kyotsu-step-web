@@ -33,16 +33,19 @@ path=R/'src/domain/textbook.ts';text=path.read_text();needle='  // N07 approved 
 migration='''  // W-MATH-033: keep original N08 answer records; new intermediate IDs remain unanswered.
   if (unit.unitId === 'math-numbers-expressions-n08' && unit.revision === 4
       && progress.unitId === unit.unitId && [1, 2, 3].includes(progress.unitRevision)) {
-    const { archivedRevisions, ...archive } = progress
+    const fromV3 = progress.unitRevision === 3 ? progress
+      : effectiveTextbookProgress({ ...unit, revision: 3 }, progress)
+    if (!fromV3 || fromV3.unitRevision !== 3) return undefined
+    const { archivedRevisions, ...archive } = fromV3
     const anchors = new Set(Array.from({ length: 12 }, (_, i) => 'n08-' + String(i + 1).padStart(2, '0')))
     return {
       unitId: unit.unitId, unitRevision: 4,
-      startedAt: progress.startedAt, updatedAt: progress.updatedAt,
-      answers: Object.fromEntries(Object.entries(progress.answers).filter(([id]) => anchors.has(id))),
-      archivedRevisions: { ...archivedRevisions, [String(progress.unitRevision)]: archive },
-      migratedFromRevision: progress.unitRevision,
-      ...(progress.completedAt !== undefined ? { previousRevisionCompletedAt: progress.completedAt }
-        : progress.previousRevisionCompletedAt !== undefined ? { previousRevisionCompletedAt: progress.previousRevisionCompletedAt } : {}),
+      startedAt: fromV3.startedAt, updatedAt: fromV3.updatedAt,
+      answers: Object.fromEntries(Object.entries(fromV3.answers).filter(([id]) => anchors.has(id))),
+      archivedRevisions: { ...archivedRevisions, '3': archive },
+      migratedFromRevision: 3,
+      ...(fromV3.completedAt !== undefined ? { previousRevisionCompletedAt: fromV3.completedAt }
+        : fromV3.previousRevisionCompletedAt !== undefined ? { previousRevisionCompletedAt: fromV3.previousRevisionCompletedAt } : {}),
     }
   }
 

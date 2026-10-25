@@ -1,0 +1,10 @@
+{
+  "sourceSHA": "d134c300e5e377ae9a3853fc70ae847f147fec29",
+  "workflowSHA": "c5e855c79e7d00a45a1f2da2f3b6e0a37ae565e9",
+  "approvedProposalEvent": "W033-N08-P001-APPROVED-20261025",
+  "internalCI": 40161055738,
+  "target": "existing Pages app",
+  "storageNamespace": "kyotsu-step-gate3-math-20261023",
+  "operation": "W033-N08-existing-pages-publication",
+  "status": "REQUESTED"
+}

@@ -24,13 +24,18 @@ describe('approved N08 materialization and saved work',()=>{
   it.each([1,2,3])('archives v%i with attempts, first values and completed time; invents no intermediate answers',revision=>{
     let old: TextbookUnitProgress | undefined
     for(const i of oldUnit.sections[0].items){old=answerTextbookItem(old,oldUnit,i,i.choices!.find(x=>x!==i.answer)!,100);old=answerTextbookItem(old,oldUnit,i,i.answer,200)}
-    old={...old!,unitRevision:revision};const snapshot=structuredClone(old)
+    old={...old!,unitRevision:revision}
+    if(revision<3)old.answers['n08-10']={...old.answers['n08-10'],value:'a=0',firstValue:'a=0',isFirstCorrect:true,attemptCount:1}
+    if(revision===1)old.answers['n08-05']={...old.answers['n08-05'],value:'\\sqrt5<3',firstValue:'\\sqrt5<3',isFirstCorrect:true,attemptCount:1}
+    const snapshot=structuredClone(old)
     const next=effectiveTextbookProgress(unit,old)!
-    expect(next.answers).toEqual(old.answers)
+    const retired=new Set(revision===1?['n08-05','n08-10']:revision===2?['n08-10']:[])
+    expect(next.answers).toEqual(Object.fromEntries(Object.entries(old.answers).filter(([id])=>!retired.has(id))))
+    for(const id of retired)expect(next.answers[id]).toBeUndefined()
     expect(next.archivedRevisions?.[String(revision)].answers).toEqual(old.answers)
     expect(next.previousRevisionCompletedAt).toBe(200)
     expect(next.completedAt).toBeUndefined()
-    expect(textbookUnitProgress(unit,next).completed).toBe(12)
+    expect(textbookUnitProgress(unit,next).completed).toBe(12-retired.size)
     expect(effectiveTextbookProgress(unit,next)).toBe(next)
     const before=html(next,11)
     expect(before).toContain('math-textbook-stage-n08-stage-01')

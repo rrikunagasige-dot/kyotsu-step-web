@@ -110,7 +110,21 @@ for(const width of (process.env.WIDTHS??'320,390,430,1440').split(',').map(Numbe
  const migrated=saved[data.unit.unitId];assert.equal(migrated.unitRevision,4);assert.equal(migrated.completedAt,undefined);assert.equal(migrated.previousRevisionCompletedAt,2);
  assert.deepEqual(migrated.archivedRevisions['3'].answers,anchors);for(const [id,record]of Object.entries(anchors))assert.deepEqual(migrated.answers[id],record);
  assert.equal(Object.keys(migrated.answers).length,13);assert.equal(saved['untouched-unit'].updatedAt,11);
- results.push({width,answered,wrongCount,stages:12,history:true,reload:true,migration:true,geometry:'PASS'});await context.close();
+ for(const revision of [1,2]){
+  const older=structuredClone(anchors);older['n08-10']={...older['n08-10'],value:'a=0',firstValue:'a=0',isFirstCorrect:true,attemptCount:1};
+  if(revision===1)older['n08-05']={...older['n08-05'],value:'\\sqrt5<3',firstValue:'\\sqrt5<3',isFirstCorrect:true,attemptCount:1};
+  await page.evaluate(({unitId,older,revision})=>{
+   const key=Object.keys(localStorage).find(k=>{try{return Boolean(JSON.parse(localStorage.getItem(k)).state?.textbookProgress)}catch{return false}});
+   const saved=JSON.parse(localStorage.getItem(key));saved.state.textbookProgress[unitId]={unitId,unitRevision:revision,startedAt:1,updatedAt:2,completedAt:2,answers:older};localStorage.setItem(key,JSON.stringify(saved));
+  },{unitId:data.unit.unitId,older,revision});
+  await page.reload();await page.getByTestId('textbook-item-'+first.id).click();
+  await page.getByTestId('inline-choice-panel-'+first.id).getByRole('button',{name:first.answer,exact:true}).click();
+  const stores=await page.evaluate(()=>Object.keys(localStorage).flatMap(key=>{try{const s=JSON.parse(localStorage.getItem(key));return s.state?.textbookProgress?[s.state.textbookProgress]:[]}catch{return[]}})[0]);
+  const value=stores[data.unit.unitId];assert.deepEqual(value.archivedRevisions[String(revision)].answers,older);
+  assert.equal(value.answers['n08-10'],undefined);if(revision===1)assert.equal(value.answers['n08-05'],undefined);
+  assert.equal(value.unitRevision,4);assert.equal(value.completedAt,undefined);assert.equal(stores['untouched-unit'].updatedAt,11);
+ }
+ results.push({width,answered,wrongCount,stages:12,history:true,reload:true,migration:true,legacyMigrationRevisions:[1,2,3],geometry:'PASS'});await context.close();
 }
 assert.deepEqual(errors,[]);fs.writeFileSync(out+'/REPORT.json',JSON.stringify({status:'PASS',sourceSHA:process.env.GITHUB_SHA??null,root,results,errors},null,2));console.log(JSON.stringify({status:'PASS',results}));
 }finally{await browser.close();}

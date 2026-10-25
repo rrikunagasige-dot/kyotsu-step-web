@@ -19,15 +19,15 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     env:
-      CANDIDATE_SHA: 'd5d418e830099bb39086ae1cb466dc3466668984'
-      VITE_PREVIEW_COMMIT: 'd5d418e830099bb39086ae1cb466dc3466668984'
+      CANDIDATE_SHA: 'd134c300e5e377ae9a3853fc70ae847f147fec29'
+      VITE_PREVIEW_COMMIT: 'd134c300e5e377ae9a3853fc70ae847f147fec29'
       VITE_REVIEW_PREVIEW: 'true'
       VITE_BASE_PATH: '/kyotsu-step-web/'
       VITE_STORAGE_NAMESPACE: 'kyotsu-step-gate3-math-20261023'
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 'd5d418e830099bb39086ae1cb466dc3466668984'
+          ref: 'd134c300e5e377ae9a3853fc70ae847f147fec29'
           fetch-depth: 0
           persist-credentials: false
       - uses: pnpm/action-setup@v4
@@ -49,7 +49,7 @@ jobs:
           const changed=execFileSync('git',['diff','--name-only','46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6','HEAD','--','src','public'],{encoding:'utf8'}).trim().split('\n').filter(Boolean)
           const allowed=new Set(["src/components/textbook/N08ReadingFlow.tsx","src/components/textbook/n08-reading.css","src/data/textbook/math/numbers/n08Authored.json","src/data/textbook/math/numbers/n08Lesson.ts","src/pages/TextbookUnitPage.tsx","src/domain/textbook.ts","src/test/n08Legacy.ts","src/data/textbook/math/numbers/newBatchCoverage.test.ts","src/data/textbook/math/numbers/firstSectionTeaching.test.tsx","src/review/reviewTargets.test.ts"])
           if(changed.some(path=>!allowed.has(path)))throw Error('Unapproved learner change: '+changed.join(','))
-          execFileSync('git',['diff','--exit-code','4fb7a98e7f864839ccc1374080473df4ba60ce88','HEAD','--','src/data/textbook/math/numbers/n07Authored.json','src/components/textbook/N07ReadingFlow.tsx','src/components/textbook/n07-reading.css','src/data/textbook/math/numbers/firstSectionTeaching.json','src/data/textbook/math/typesetting.json','src/data/mathPractice','src/data/textbook/ch01','public'])
+          execFileSync('git',['diff','--exit-code','46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6','HEAD','--','src/data/textbook/math/numbers/n07Authored.json','src/components/textbook/N07ReadingFlow.tsx','src/components/textbook/n07-reading.css','src/data/textbook/math/numbers/firstSectionTeaching.json','src/data/textbook/math/typesetting.json','src/data/mathPractice','src/data/textbook/ch01','public'])
           console.log(JSON.stringify({status:'PASS',changed,acceptedFirstTitlePreserved:true}))
           NODE
       - name: Learner regressions (confirmed pre-existing physics catalog failures excluded)

@@ -1,0 +1,7 @@
+{
+  "runId": 40161528814,
+  "status": "completed",
+  "conclusion": "cancelled",
+  "holdCommit": "ca69fd42a57859f92c12c661b4a4996931b7a03c",
+  "reason": "Older v1/v2 save contracts require original migration rules before v3->v4. No new content or answer changes."
+}

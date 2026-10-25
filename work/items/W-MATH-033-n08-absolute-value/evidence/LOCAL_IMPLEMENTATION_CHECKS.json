@@ -1,7 +1,7 @@
 {
   "learnerTests": 620,
-  "workTests": 5,
-  "build": "PASS",
+  "workTests": 6,
+  "build": "PASS_CI_40161055738",
   "scopedLint": "PASS",
   "protectedFiles": {
     "src/data/textbook/math/numbers/firstSectionTeaching.json": "012a17753605a42c51428f6075eb5d59a5724af0c762e0e9b598c82ad7cb871b",
@@ -13,5 +13,7 @@
   },
   "candidateIRHash": "32f20c559bd407c777910c9ef8fb30989c31bf0ee822b5a5242f0cd7f71d318b",
   "browser": "PENDING_CI",
-  "userN08Acceptance": false
+  "userN08Acceptance": false,
+  "sourceSHA": "d134c300e5e377ae9a3853fc70ae847f147fec29",
+  "typecheck": "PASS"
 }

@@ -7,7 +7,7 @@ from adapters import in_scope
 from store import digest
 rt=Runtime(R/'work/items/W-MATH-032-n07-semantic-repair/runtime',R);w='W-MATH-033';s=rt.state(w)
 assert not rt.integrity(s) and rt.approval(s)
-files={'src/data/textbook/math/numbers/n08Authored.json':B/'MATERIALIZED_APP.json','src/components/textbook/N08ReadingFlow.tsx':B/'candidate/N08ReadingFlow.tsx','src/components/textbook/n08-reading.css':B/'candidate/n08-reading.css'}
+files={'src/data/textbook/math/numbers/n08Authored.json':B/'MATERIALIZED_APP.json','src/components/textbook/N08ReadingFlow.tsx':B/'candidate/N08ReadingFlow.tsx','src/components/textbook/n08-reading.css':B/'candidate/n08-reading.css','src/domain/textbook.ts':B/'candidate/textbook.ts'}
 changed={p:v.read_bytes() for p,v in files.items() if (R/p).read_bytes()!=v.read_bytes()}
 if not changed:print('No changed candidate bytes');sys.exit(0)
 before={p:(R/p).read_bytes() for p in changed};h=lambda b:hashlib.sha256(b).hexdigest()

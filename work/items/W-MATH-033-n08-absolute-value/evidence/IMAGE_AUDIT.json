@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "sourceSHA": "d134c300e5e377ae9a3853fc70ae847f147fec29",
+  "actualImagesReviewed": {
+    "width-320-stage-7.png": "9cdab994b3b0de38d5bf930e69f81733c3ca0625318bacc2d2d3a7a8601f5847",
+    "width-320-stage-10.png": "c111e7f2499c82c75884ebc95c132e64d0c2bd13d4e5bbfb9cacf6702c103730",
+    "width-390-stage-4.png": "91475619b6f629d028f1d2db4d9cffeac766d94a403aaa0554acd37d837900e6"
+  },
+  "findings": [
+    "Q07の規則表、途中操作と4式連鎖が一回ずつ表示される。",
+    "Q10の条件を独立に置き、含意と同値を縦の論理矢印で結ぶ。",
+    "Q04の代入、二重負号の計算、条件付き場合分け表を保持。",
+    "4幅の全31正答/全74誤答・実persist移行・全履歴のgeometryはCIで確認。"
+  ],
+  "limits": [
+    "同じassistantの実画像監査。独立した別AI監査・ユーザー受入ではない。",
+    "長いsectionのelementスクリーンショットには、撮影時の固定ナビゲーションが途中に写る。本文の欠落とは区別する。"
+  ],
+  "independent": false
+}

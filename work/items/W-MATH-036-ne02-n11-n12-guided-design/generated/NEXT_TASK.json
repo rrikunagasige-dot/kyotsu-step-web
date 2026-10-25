@@ -1,18 +1,18 @@
 {
   "work_id": "W-MATH-036",
   "node": {
-    "id": "R06_PATCH@ne02",
-    "stage_kind": "R06_PATCH",
-    "contract_kind": "R06_PATCH",
+    "id": "R07_VERIFY@ne02",
+    "stage_kind": "R07_VERIFY",
+    "contract_kind": "R07_VERIFY",
     "actor": "TOOL",
     "depends_on": [
-      "R05_APPROVAL@ne02"
+      "R06_PATCH@ne02"
     ],
     "required": [],
     "block": "ne02",
     "release_unit": "ne02",
     "watch": "integration",
-    "phase": "pre-design",
+    "phase": "post-implementation",
     "priority": 0,
     "source_refs": [
       "src/data/textbook/math/numbers/ne02Lesson.ts",
@@ -41,17 +41,23 @@
     ],
     "approval_scope_ref": "proposal",
     "capability_requests": [
-      "ir.compile"
+      "math.verify",
+      "ir.verify",
+      "browser.verify",
+      "protected.verify"
     ],
     "required_code_receipts": [
-      "ir.compile"
+      "math.verify",
+      "ir.verify",
+      "browser.verify",
+      "protected.verify"
     ],
     "required_ai_receipts": []
   },
-  "task_id": "baf2e7fd829f3343f1d431dbbfebf63519147ba4663511ac25a790fa4bfbcddc",
-  "input_hash": "396b1b9cb05b65b7b2c9131aacbc4d6e143138fbbfad0001a823e9b116c451b7",
+  "task_id": "aec918f46d25742a3b5920c2dea93aef3ebbf92268637cf54f53da90fa855868",
+  "input_hash": "2e0127fdba46d055a5bf1ce5f0be34f950ce852e0f89be8d794c8ed1b7d27499",
   "source_sha": "fa0eff271a97940fad08d83960ae50faeabc81b9",
-  "candidate_sha": "fa0eff271a97940fad08d83960ae50faeabc81b9",
+  "candidate_sha": "7cc5022f287139d45351a136522a41306849d51e",
   "rules": {
     "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
     "governance/REVIEW_POLICY.json": "a71148f007a79b124385c7645e6bc01564bfa02b12152174883543f31f6ce72d",
@@ -117,11 +123,11 @@
     "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/NE02_SOURCE_INDEX.json": "7f939a849439b299f20416bc1798b1e56a7ccf9e1ad7fced17fee566abad5a81"
   },
   "previous_results": {
-    "R05_APPROVAL@ne02": {
-      "actor": "user-record/conversation_transcribed",
-      "artifact": "93ca9667de9480be66f8d6c8db7e05e3b9295d465a304a9734658a25704d080d",
-      "input_hash": "9147a0a4234a5eb04d871a8361219f76fd12491d37b7c4aa969922c2234e5b0e",
-      "node": "R05_APPROVAL@ne02",
+    "R06_PATCH@ne02": {
+      "actor": "W035-serial-ready-dispatch",
+      "artifact": "eaa227f4df4371d7a6e0badcfea43b70d7d3b1f6ed62580c90facd49c5dad221",
+      "input_hash": "396b1b9cb05b65b7b2c9131aacbc4d6e143138fbbfad0001a823e9b116c451b7",
+      "node": "R06_PATCH@ne02",
       "verdict": "PASS"
     }
   },

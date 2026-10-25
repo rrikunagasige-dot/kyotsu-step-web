@@ -1,28 +1,28 @@
 {
   "work": "W-MATH-036",
   "engine_version": "1.0.0",
-  "ledger_head": "082368ed1147e8a2b1e6d14d00f1c5b6d181a4d67b1549125ee91ce9f820b95a",
-  "work_status": "APPROVED",
+  "ledger_head": "d5f61447a68048293425464e5c7460291d84922c880da39b2744b98e260609f0",
+  "work_status": "IMPLEMENTING",
   "profile": "material",
   "simulation": false,
-  "candidate_sha": "fa0eff271a97940fad08d83960ae50faeabc81b9",
+  "candidate_sha": "7cc5022f287139d45351a136522a41306849d51e",
   "next": {
     "status": "READY",
     "task": {
       "work_id": "W-MATH-036",
       "node": {
-        "id": "R06_PATCH@ne02",
-        "stage_kind": "R06_PATCH",
-        "contract_kind": "R06_PATCH",
+        "id": "R07_VERIFY@ne02",
+        "stage_kind": "R07_VERIFY",
+        "contract_kind": "R07_VERIFY",
         "actor": "TOOL",
         "depends_on": [
-          "R05_APPROVAL@ne02"
+          "R06_PATCH@ne02"
         ],
         "required": [],
         "block": "ne02",
         "release_unit": "ne02",
         "watch": "integration",
-        "phase": "pre-design",
+        "phase": "post-implementation",
         "priority": 0,
         "source_refs": [
           "src/data/textbook/math/numbers/ne02Lesson.ts",
@@ -51,17 +51,23 @@
         ],
         "approval_scope_ref": "proposal",
         "capability_requests": [
-          "ir.compile"
+          "math.verify",
+          "ir.verify",
+          "browser.verify",
+          "protected.verify"
         ],
         "required_code_receipts": [
-          "ir.compile"
+          "math.verify",
+          "ir.verify",
+          "browser.verify",
+          "protected.verify"
         ],
         "required_ai_receipts": []
       },
-      "task_id": "baf2e7fd829f3343f1d431dbbfebf63519147ba4663511ac25a790fa4bfbcddc",
-      "input_hash": "396b1b9cb05b65b7b2c9131aacbc4d6e143138fbbfad0001a823e9b116c451b7",
+      "task_id": "aec918f46d25742a3b5920c2dea93aef3ebbf92268637cf54f53da90fa855868",
+      "input_hash": "2e0127fdba46d055a5bf1ce5f0be34f950ce852e0f89be8d794c8ed1b7d27499",
       "source_sha": "fa0eff271a97940fad08d83960ae50faeabc81b9",
-      "candidate_sha": "fa0eff271a97940fad08d83960ae50faeabc81b9",
+      "candidate_sha": "7cc5022f287139d45351a136522a41306849d51e",
       "rules": {
         "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
         "governance/REVIEW_POLICY.json": "a71148f007a79b124385c7645e6bc01564bfa02b12152174883543f31f6ce72d",
@@ -127,11 +133,11 @@
         "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/NE02_SOURCE_INDEX.json": "7f939a849439b299f20416bc1798b1e56a7ccf9e1ad7fced17fee566abad5a81"
       },
       "previous_results": {
-        "R05_APPROVAL@ne02": {
-          "actor": "user-record/conversation_transcribed",
-          "artifact": "93ca9667de9480be66f8d6c8db7e05e3b9295d465a304a9734658a25704d080d",
-          "input_hash": "9147a0a4234a5eb04d871a8361219f76fd12491d37b7c4aa969922c2234e5b0e",
-          "node": "R05_APPROVAL@ne02",
+        "R06_PATCH@ne02": {
+          "actor": "W035-serial-ready-dispatch",
+          "artifact": "eaa227f4df4371d7a6e0badcfea43b70d7d3b1f6ed62580c90facd49c5dad221",
+          "input_hash": "396b1b9cb05b65b7b2c9131aacbc4d6e143138fbbfad0001a823e9b116c451b7",
+          "node": "R06_PATCH@ne02",
           "verdict": "PASS"
         }
       },
@@ -584,7 +590,7 @@
         "ir.compile"
       ],
       "required_ai_receipts": [],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "R07_VERIFY@ne02",
@@ -2634,7 +2640,7 @@
     {
       "id": "W-MATH-036",
       "work": "W-MATH-036",
-      "version": "fa0eff271a97940fad08d83960ae50faeabc81b9",
+      "version": "7cc5022f287139d45351a136522a41306849d51e",
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
     }
@@ -3240,6 +3246,11 @@
       "input_hash": "e281c03353ad020ef963718797ddcfdc163d2496e74a5e02726ec679dc10149f",
       "node": "R04_PROPOSAL@n12",
       "receipt": "2d940ae449be2d8870cfc683c6c71b98af537461ba6f940076b3fb184dc5bcef"
+    },
+    {
+      "input_hash": "396b1b9cb05b65b7b2c9131aacbc4d6e143138fbbfad0001a823e9b116c451b7",
+      "node": "R06_PATCH@ne02",
+      "receipt": "a653be5ae4f12b4b1619c8bcce71f1c46aba996072b0f0667019722ef194e386"
     }
   ],
   "release_acceptance": {

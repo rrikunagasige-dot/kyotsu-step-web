@@ -93,13 +93,13 @@ export function GuidedMathReadingFlow({ presentation, unit, section, progress, o
     </span>
   }
   function formula(source: string, id: string, parts: readonly ReactNode[] = [], itemIds: Record<number, string> = {}) {
-    const nested = /\\sqrt\{§(\d+)§\}/.exec(source)
+    const nested = data.choiceDisplay === 'semantic' ? /\{§(\d+)§\}/.exec(source) : /\\sqrt\{§(\d+)§\}/.exec(source)
     if (nested) {
       const itemId = itemIds[Number(nested[1])]
       const item = items.find(i => i.id === itemId)!
       const node = data.nodes.find(n => n.interaction === itemId)!
       const retry = Boolean(current?.answers[itemId])
-      // KaTeX receives the complete balanced radical. One native button owns
+      // KaTeX receives the complete balanced radical or fraction. One native button owns
       // the visible boxed slot; no mathematical command is split at the control.
       const math = source.replace(/§\d+§/g, retry ? '\\boxed{\\text{もう一度}}' : '\\boxed{\\text{選択}}')
       return <button type="button" className="guided-formula-slot" data-testid={'textbook-item-' + itemId} data-semantic-id={node.id + '-slot'} aria-label={item.prompt} onClick={() => setActiveId(itemId)}>

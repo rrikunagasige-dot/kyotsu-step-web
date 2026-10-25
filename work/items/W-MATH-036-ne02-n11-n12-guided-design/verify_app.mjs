@@ -1,10 +1,10 @@
 import fs from 'node:fs';import assert from 'node:assert/strict';import {chromium} from '@playwright/test';
 const root=process.env.APP_URL??'http://127.0.0.1:4173/kyotsu-step-web/',out=process.env.EVIDENCE_DIR??'/tmp/w36-browser',base='work/items/W-MATH-036-ne02-n11-n12-guided-design/';fs.mkdirSync(out,{recursive:true});
-const browser=await chromium.launch({headless:true}),results=[],errors=[];
+const browser=await chromium.launch({headless:true}),results=[],errors=[];let activePage;
 try{for(const code of (process.env.CODES??'ne02').split(',')){
  const data=JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/'+code+'Authored.json'));const old=JSON.parse(fs.readFileSync(base+'evidence/'+code.toUpperCase()+'_CURRENT.json')).unit;
  for(const width of (process.env.WIDTHS??'320,390,430,1440').split(',').map(Number)){
-  const context=await browser.newContext({viewport:{width,height:1000}}),page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});await page.goto(root+'#/learning/textbook/'+data.unit.unitId);let answered=0,wrongCount=0;const seenFigures=new Set();
+  const context=await browser.newContext({viewport:{width,height:1000}}),page=await context.newPage();activePage=page;page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});await page.goto(root+'#/learning/textbook/'+data.unit.unitId);let answered=0,wrongCount=0;const seenFigures=new Set();
   async function geometry(label){
    await page.evaluate(async()=>{await document.fonts.ready;await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)))});
    const problems=await page.locator('.guided-reading').evaluate(el=>{
@@ -54,4 +54,4 @@ try{for(const code of (process.env.CODES??'ne02').split(',')){
   }
   results.push({code,width,answered,wrongCount,stages:data.stages.length,figures:[...seenFigures],history:true,reload:true,resize:true,migration:true,legacyMigrationRevisions:migrations,geometry:'PASS'});await context.close();
  }
-}assert.deepEqual(errors,[]);fs.writeFileSync(out+'/REPORT.json',JSON.stringify({status:'PASS',sourceSHA:process.env.CANDIDATE_SHA??process.env.GITHUB_SHA??null,root,results,errors},null,2));console.log(JSON.stringify({status:'PASS',results}));}finally{await browser.close();}
+}assert.deepEqual(errors,[]);fs.writeFileSync(out+'/REPORT.json',JSON.stringify({status:'PASS',sourceSHA:process.env.CANDIDATE_SHA??process.env.GITHUB_SHA??null,root,results,errors},null,2));console.log(JSON.stringify({status:'PASS',results}));}catch(e){fs.writeFileSync(out+'/ERROR.json',JSON.stringify({error:e.message,errors,url:activePage?.url()},null,2));if(activePage)await activePage.screenshot({path:out+'/ERROR.png',fullPage:true});throw e;}finally{await browser.close();}

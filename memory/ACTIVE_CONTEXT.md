@@ -1,3 +1,19 @@
+## CURRENT — N08受入・実学習完了 / N09・N10具体案（2026-10-25）
+
+ユーザー「我觉得可以.然后机械学习。那下面直接N09，N10。」を、公開N08 source `ea47dd97f7d323267281915e8d9a7bb92a8e7c03` の範囲付き受入と学習依頼として記録。W-MATH-033は同じ共有RuntimeでG3_FINAL→fresh事後sweep→R08→L01実fit→Z01を完了して **DONE**。N08全体肯定1件だけを追加し、個別修正の肯定を捏造していない。
+
+学習は評価済み11件（否定7/肯定4）、3family、固定multilingual-e5-small encoder。全11例の特徴入力hashと全token処理を確認し、既存layout_discomfort headを2例で再fit。overall_material_acceptanceは肯定2/否定0のため作成保留。未知holdoutなし、精度推定不可。モデルは **OFFLINE_ONLY / advisoryEligible=false**。catalog/model/feature receiptは [W033](https://github.com/rrikunagasige-dot/kyotsu-step-web/tree/a442cbe966c074f122907bb7366b1ceb6634ca95/work/items/W-MATH-033-n08-absolute-value)。tool pin058c4eaは変更なし。
+
+次Work **W-MATH-034 / CMD-WORK-001 / PROPOSED / R05_APPROVAL@n09**。[共通P-001](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/a442cbe966c074f122907bb7366b1ceb6634ca95/work/items/W-MATH-034-n09-n10-guided-design/PROPOSAL.md)、[N09全node](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/a442cbe966c074f122907bb7366b1ceb6634ca95/work/items/W-MATH-034-n09-n10-guided-design/N09_NODE_DESIGN.md)、[N10全node](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/a442cbe966c074f122907bb7366b1ceb6634ca95/work/items/W-MATH-034-n09-n10-guided-design/N10_NODE_DESIGN.md)。N09は41node/36回答/11段階、N10は45node/45回答/12段階。既存39採点ID・正答とN09 Q08の4既存途中回答を保持し、42途中回答を追加する具体案。原96block・62数式、19恒等式、coverage/IR/compile、元図byteを確認。共有production/2で両blockのR01–R04を実行した。
+
+N09は条件表→正負の根号→近似→負の整数部分を導き、原図はQ10後。N10は証明前の公式を循環利用せず、平方と符号/非零→公式→有理化の因子→分母→分子を分ける。前結果の本文に条件を残す。N09 v1→v2の既存全退避を先に適用する移行設計。N09/N10用の共通readerを新設し、受入済みreaderを保護する案。
+
+**次はこの新しい具体案への判断。** 今回のN09/N10着手依頼やN08受入を、まだ示していないP-001の承認へ変換しない。具体承認後、限定実装・4幅・全正誤答/移行/保護検査を通した単元から既存公開appへ直接配信。同じ公開許可や画像票の再承認は要求しない。今回learner source/中央tools/workflow/公開版は未変更。公開N08は [こちら](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=ea47dd97#/learning/textbook/math-numbers-expressions-n08)。N07受入46ea59be・第一タイトル22bc43baも保持。
+
+同じassistantの意味・反証監査であり、独立した別AI監査ではない。全repo旧Markdownメタデータ検査の完全PASSは主張しない。以下のN08未受入/学習未実施、N09/N10未着手の旧記録は履歴。
+
+---
+
 ## CURRENT — W-MATH-033 / N08公開・実物確認待ち（2026-10-25）
 
 P-001はユーザー「可以可以按照这个做吧」で承認済み。凍結設計83ea55bcの36node・31回答・12段階を実装し、公開sourceは `ea47dd97f7d323267281915e8d9a7bb92a8e7c03`。内部CI [40162373237](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40162373237)、既存Pages公開run [40162687421](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40162687421) SUCCESS。公開workflow commit493b62a866873febc6c46572a29c1b0654f12abb。実HTTPSのrelease.json、source/IR/namespaceと公開後操作を照合した。

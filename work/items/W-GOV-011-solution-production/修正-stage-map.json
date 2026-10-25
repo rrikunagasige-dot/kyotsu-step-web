@@ -1,0 +1,214 @@
+{
+  "kind": "DESIGN_NOT_EXECUTION",
+  "command": "CMD-WORK-001",
+  "projection": "current workflow.definitions.instantiate",
+  "stages": [
+    {
+      "id": "S00_RECOVER",
+      "actor": "CODE",
+      "phase": "analysis",
+      "dependsOn": [],
+      "codeCapabilities": []
+    },
+    {
+      "id": "S01_ROUTE",
+      "actor": "CODE",
+      "phase": "analysis",
+      "dependsOn": [
+        "S00_RECOVER"
+      ],
+      "codeCapabilities": []
+    },
+    {
+      "id": "R01_CAPTURE@infrastructure",
+      "actor": "AI",
+      "phase": "pre-design",
+      "dependsOn": [
+        "S01_ROUTE"
+      ],
+      "codeCapabilities": [
+        "source.fixed",
+        "feedback.capture"
+      ]
+    },
+    {
+      "id": "R02_CAUSE@infrastructure",
+      "actor": "AI",
+      "phase": "pre-design",
+      "dependsOn": [
+        "R01_CAPTURE@infrastructure"
+      ],
+      "codeCapabilities": [
+        "case.retrieve",
+        "knowledge.ledger",
+        "math.verify",
+        "ir.verify",
+        "source.audit",
+        "novice.audit",
+        "math.solve",
+        "solution.validate"
+      ]
+    },
+    {
+      "id": "R03_IMPACT@infrastructure",
+      "actor": "AI",
+      "phase": "pre-design",
+      "dependsOn": [
+        "R02_CAUSE@infrastructure"
+      ],
+      "codeCapabilities": [
+        "impact.inventory"
+      ]
+    },
+    {
+      "id": "R04_PROPOSAL@infrastructure",
+      "actor": "AI",
+      "phase": "pre-design",
+      "dependsOn": [
+        "R03_IMPACT@infrastructure"
+      ],
+      "codeCapabilities": [
+        "math.solve",
+        "math.verify",
+        "teaching.plan",
+        "step.plan",
+        "blank.plan",
+        "prose.compose",
+        "text.verify",
+        "figure.verify",
+        "ir.verify",
+        "source.audit",
+        "novice.audit",
+        "solution.validate",
+        "interaction.plan",
+        "solution.review"
+      ]
+    },
+    {
+      "id": "R05_APPROVAL@infrastructure",
+      "actor": "USER",
+      "phase": "pre-design",
+      "dependsOn": [
+        "R04_PROPOSAL@infrastructure"
+      ],
+      "codeCapabilities": []
+    },
+    {
+      "id": "R06_PATCH@infrastructure",
+      "actor": "TOOL",
+      "phase": "pre-design",
+      "dependsOn": [
+        "R05_APPROVAL@infrastructure"
+      ],
+      "codeCapabilities": [
+        "ir.compile",
+        "render.solution"
+      ]
+    },
+    {
+      "id": "R07_VERIFY@infrastructure",
+      "actor": "TOOL",
+      "phase": "post-implementation",
+      "dependsOn": [
+        "R06_PATCH@infrastructure"
+      ],
+      "codeCapabilities": [
+        "math.verify",
+        "ir.verify",
+        "browser.verify",
+        "protected.verify",
+        "solution.validate"
+      ]
+    },
+    {
+      "id": "R07_SEMANTIC@infrastructure",
+      "actor": "AI",
+      "phase": "post-implementation",
+      "dependsOn": [
+        "R07_VERIFY@infrastructure"
+      ],
+      "codeCapabilities": [
+        "source.audit",
+        "novice.audit",
+        "solution.review"
+      ]
+    },
+    {
+      "id": "G2_AUDIT@unit",
+      "actor": "AI",
+      "phase": "pre-release",
+      "dependsOn": [
+        "R07_SEMANTIC@infrastructure"
+      ],
+      "codeCapabilities": [
+        "protected.verify",
+        "impact.inventory"
+      ]
+    },
+    {
+      "id": "G3_HOST@unit",
+      "actor": "TOOL",
+      "phase": "release",
+      "dependsOn": [
+        "G2_AUDIT@unit"
+      ],
+      "codeCapabilities": [
+        "release.verify"
+      ]
+    },
+    {
+      "id": "G3_FINAL@unit",
+      "actor": "USER",
+      "phase": "acceptance",
+      "dependsOn": [
+        "G3_HOST@unit"
+      ],
+      "codeCapabilities": []
+    },
+    {
+      "id": "R03_IMPACT_SWEEP@unit",
+      "actor": "AI",
+      "phase": "post-fix",
+      "dependsOn": [
+        "G3_FINAL@unit",
+        "R03_IMPACT@infrastructure"
+      ],
+      "codeCapabilities": [
+        "impact.inventory"
+      ]
+    },
+    {
+      "id": "R08_CAPTURE_LEARNING@infrastructure",
+      "actor": "AI",
+      "phase": "repair-finalization",
+      "dependsOn": [
+        "R03_IMPACT_SWEEP@unit",
+        "R07_SEMANTIC@infrastructure"
+      ],
+      "codeCapabilities": [
+        "case.finalize"
+      ]
+    },
+    {
+      "id": "L01_LEARNING@unit",
+      "actor": "AI",
+      "phase": "learning",
+      "dependsOn": [
+        "R08_CAPTURE_LEARNING@infrastructure"
+      ],
+      "codeCapabilities": [
+        "case.finalize",
+        "ml.train"
+      ]
+    },
+    {
+      "id": "Z01_CLOSE",
+      "actor": "CODE",
+      "phase": "closure",
+      "dependsOn": [
+        "L01_LEARNING@unit"
+      ],
+      "codeCapabilities": []
+    }
+  ]
+}

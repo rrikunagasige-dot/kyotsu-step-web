@@ -1,6 +1,6 @@
 # W-GOV-011 解法を中心にした制作基盤
 
-Status: IMPLEMENTED_BOUNDED_RELEASE / technical checkpoint pending
+Status: IMPLEMENTED_BOUNDED_RELEASE / native technical checkpoint DONE; material acceptance false
 Command: CMD-WORK-002 / technical profile
 Proposal: P001 PROPOSAL.md (24-page approved proposal transcription)
 Approval: APPROVAL.json, user 「いいよじゃ作成よろしく」

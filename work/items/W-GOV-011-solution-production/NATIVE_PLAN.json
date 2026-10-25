@@ -1,0 +1,47 @@
+{
+  "work_id": "W-GOV-011",
+  "profile": "technical",
+  "command": "CMD-WORK-002",
+  "subject": "math",
+  "mode": "textbook",
+  "source_sha": "c4eff5a295c88b28c4147a72648f877c65a05da1",
+  "rules": {
+    "AGENTS.md": "7c3b2907b45824fdbfeb6419515c2fa3baef028a114c39d0cd0978d5bcca1235",
+    "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
+    "governance/COMMAND_WORDS.md": "df12ca870ceefe169ad22960467b7f1b2c176f252abe5e5a965bf4a5634b7e1c",
+    "governance/REVIEW_POLICY.json": "a71148f007a79b124385c7645e6bc01564bfa02b12152174883543f31f6ce72d"
+  },
+  "proposal": {
+    "id": "P001",
+    "hash": "8f5db9263ba9162a9f3a64997ecbbc9f4117d76658d39ce4fd0a7a83ba6a80f1"
+  },
+  "source_manifest": {
+    "work/items/W-GOV-011-solution-production/PROPOSAL.md": "8f5db9263ba9162a9f3a64997ecbbc9f4117d76658d39ce4fd0a7a83ba6a80f1",
+    "tools/textbook/fixtures/solution-generated/linear-ir.json": "dfdaf4bb516e95d7d9ebd6af55f33db16a3e17e4385b9095635c139ea2637006"
+  },
+  "scope": {
+    "paths": [
+      "tools/textbook/",
+      "workflow/",
+      "src/components/textbook/",
+      "src/domain/solutionReading.ts",
+      "work/items/W-GOV-011-solution-production/",
+      "memory/ACTIVE_CONTEXT.md",
+      "navigation/CURRENT_POSITION.md"
+    ],
+    "preserve": [
+      "src/data/",
+      "public/"
+    ]
+  },
+  "blocks": [
+    {
+      "id": "infrastructure",
+      "sources": [
+        "work/items/W-GOV-011-solution-production/PROPOSAL.md"
+      ]
+    }
+  ],
+  "simulation": false,
+  "checkpointKind": "POST_IMPLEMENTATION_RECOVERY; actual technical evidence, no retroactive orchestration claim"
+}

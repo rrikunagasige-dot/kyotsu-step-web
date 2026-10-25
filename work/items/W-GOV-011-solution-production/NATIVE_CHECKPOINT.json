@@ -1,0 +1,11 @@
+{
+  "next": {
+    "status": "DONE",
+    "reason": "全工程の有効な証拠を照合"
+  },
+  "ledgerHead": "d8ea12e8c6563435da5e8bb71d72b11b27b39c116a0ae82a2cc7cf1ae29bdcd8",
+  "candidateSHA": "c4eff5a295c88b28c4147a72648f877c65a05da1",
+  "applicationAccepted": false,
+  "technicalOnly": true,
+  "recordKind": "post-implementation recovery"
+}

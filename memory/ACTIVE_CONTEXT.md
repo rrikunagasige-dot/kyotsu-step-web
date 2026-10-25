@@ -1,6 +1,6 @@
 ## CURRENT — W-GOV-011 solution/1 制作基盤（2026-10-25）
 
-本人「いいよじゃ作成よろしく」で承認された24頁案を実装。既存production/2のC/Rへresearch・solution graph・厳密検算・穴設計・IR v2・可視先行AI監査・累積reader・学習文脈をopt-in接続。詳細はwork/items/W-GOV-011-solution-production/IMPLEMENTATION_REPORT.md、tools/textbook/SOLUTION_PIPELINE.md。三つの自作fixture・四幅12操作シナリオ、解法23・workflow134・Python17・既存reader372・旧authoring35＋adapter4・旧production19 PASS。変更TS lint/build PASS、全repo lintは既存25エラーを残す。一般分岐/文字係数極値/根号一般変形はUNSUPPORTED。Doclingの精度比較・新headのfitは未実施で、採用・学習済みとは呼ばない。src/data/public/既存進捗は不変。新教材公開・NE02/N11/N12受入はこの技術Workに含めない。共有Runtimeへ実成果物を復旧登録する（編集前からnative実行した履歴の捏造なし）。
+本人「いいよじゃ作成よろしく」で承認された24頁案を実装。既存production/2のC/Rへresearch・solution graph・厳密検算・穴設計・IR v2・可視先行AI監査・累積reader・学習文脈をopt-in接続。詳細はwork/items/W-GOV-011-solution-production/IMPLEMENTATION_REPORT.md、tools/textbook/SOLUTION_PIPELINE.md。三つの自作fixture・四幅12操作シナリオ、解法23・workflow134・Python17・既存reader372・旧authoring35＋adapter4・旧production19 PASS。変更TS lint/build PASS、全repo lintは既存25エラーを残す。一般分岐/文字係数極値/根号一般変形はUNSUPPORTED。Doclingの精度比較・新headのfitは未実施で、採用・学習済みとは呼ばない。src/data/public/既存進捗は不変。新教材公開・NE02/N11/N12受入はこの技術Workに含めない。共有Runtimeへ実成果物を復旧登録済み。W-GOV-011はtechnical DONE、applicationAccepted=false（編集前からnative実行した履歴の捏造なし）。
 
 ## CURRENT — NE02・N11・N12を公開、実物評価待ち（2026-10-25）
 

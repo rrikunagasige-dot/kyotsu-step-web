@@ -23,3 +23,7 @@ Candidate code:46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6. R01–R05 completed wit
 - Grading,36 item IDs,14 stage IDs,revision4 and storage namespace unchanged.
 - Local browser unavailable: invalid Chromium ZIP. GitHub run40154122715 performs actual four-width operation/geometry checks.
 - Public app and user acceptance are still pending.
+
+## Final actual publication verification
+
+Publication40154568134 SUCCESS at workflowa99031f7, pinned learner source46ea59be. Compiled and actual hosted N07 four-width full-play plus protected first-title typography/history checks passed. Actual anonymous HTTPS release.json and root200 verified; sourceSHA/IR hash/storageKey/acceptedFirstTitle matched. See PUBLICATION_CHECKPOINT.json, evidence/PUBLICATION_RUN.json, HOSTED_MANIFEST.json and HOSTED_HTTP.json. G3_HOST passed. User acceptance is PENDING; post-acceptance impact sweep and R08/L01 remain pending. Whole-repository metadata governance is not claimed PASS; see FINDINGS.md.

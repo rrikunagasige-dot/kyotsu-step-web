@@ -33,5 +33,10 @@
     "reason": "Chromium download invalid/truncated ZIP"
   },
   "CI": 40154122715,
-  "publication": false
+  "publication": {
+    "status": "PASS",
+    "run": 40154568134,
+    "sourceVerified": true
+  },
+  "userAccepted": false
 }

@@ -4,8 +4,9 @@
   "internalCIConclusion": "success",
   "workflowCommit": "a99031f7d970fe4059ca4425c87f3a6d509f56ad",
   "publicationRun": 40154568134,
-  "publicationStatus": "IN_PROGRESS",
-  "publicSourceVerified": false,
+  "publicationStatus": "SUCCESS",
+  "publicSourceVerified": true,
   "userAccepted": false,
-  "route": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=46ea59be#/learning/textbook/math-numbers-expressions-n07"
+  "route": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=46ea59be#/learning/textbook/math-numbers-expressions-n07",
+  "next": "G3_FINAL@n07: user scoped natural-language acceptance; then post-fix sweep/R08/L01"
 }

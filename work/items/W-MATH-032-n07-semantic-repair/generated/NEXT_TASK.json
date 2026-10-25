@@ -1,43 +1,29 @@
 {
   "work_id": "W-MATH-032",
   "node": {
-    "id": "R07_VERIFY@n07",
-    "stage_kind": "R07_VERIFY",
-    "contract_kind": "R07_VERIFY",
-    "actor": "TOOL",
+    "id": "G3_FINAL@n07",
+    "stage_kind": "G3_FINAL",
+    "contract_kind": "G3_FINAL",
+    "actor": "USER",
     "depends_on": [
-      "R06_PATCH@n07"
+      "G3_HOST@n07"
     ],
     "required": [],
-    "block": "n07",
+    "block": null,
     "release_unit": "n07",
     "watch": "integration",
-    "phase": "post-implementation",
+    "phase": "acceptance",
     "priority": 0,
-    "source_refs": [
-      "src/data/textbook/math/numbers/n07Authored.json",
-      "src/components/textbook/N07ReadingFlow.tsx",
-      "src/components/textbook/n07-reading.css",
-      "tools/textbook/fixtures/n07-source-index.json"
-    ],
+    "source_refs": [],
     "protected_refs": [
       "src/data/textbook/math/numbers/firstSectionTeaching.json"
     ],
-    "approval_scope_ref": "proposal",
-    "capability_requests": [
-      "ir.verify",
-      "browser.verify",
-      "protected.verify"
-    ],
-    "required_code_receipts": [
-      "ir.verify",
-      "browser.verify",
-      "protected.verify"
-    ],
+    "capability_requests": [],
+    "required_code_receipts": [],
     "required_ai_receipts": []
   },
-  "task_id": "43e1aedb96e3b1f17a84b22edf8cbec1ccc61d8c75600d5c3b54b1196c8136bf",
-  "input_hash": "eaeb3153ee28cc617e1e64005f88b2e75f07bf00265a26f4b23d5ddcc12f3b54",
+  "task_id": "091c3ed3a0e159a6a181da0602f6700f7ac8efb417b1640c36b32948a7f5adb8",
+  "input_hash": "a653bc5437ca1dd2b0d085decc25b566556612e20e20bd602fef59bf12cb82fe",
   "source_sha": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
   "candidate_sha": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
   "rules": {
@@ -74,11 +60,11 @@
     "tools/textbook/fixtures/n07-source-index.json": "62a1ad951166eabc9672eca0a81a997aa6a362fe01aed045705caecd77a2982b"
   },
   "previous_results": {
-    "R06_PATCH@n07": {
+    "G3_HOST@n07": {
       "actor": "capability-runner",
-      "artifact": "b56aca62f9310ec4692a285efee497afefe3da438cbef1d9c6da6284d1d21b18",
-      "input_hash": "1be01221ac8f8846ebbb5f7ec8a0ed8844307907faa763ba62c38b8e572d26a2",
-      "node": "R06_PATCH@n07",
+      "artifact": "f3dc7298c5c8a2763187cbd57cdfba252a1e864d7e02bd4bbe0e99f01596d88f",
+      "input_hash": "5ab0ae768ae4d9ac494858409ac69b2a4eba3380dfccb267ac58b249842d9dab",
+      "node": "G3_HOST@n07",
       "verdict": "PASS"
     }
   },

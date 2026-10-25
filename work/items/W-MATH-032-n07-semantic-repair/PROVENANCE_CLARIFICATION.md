@@ -1,0 +1,12 @@
+# 実装版と原資料版
+
+- 調査した公開教材の原版:4fb7a98e7f864839ccc1374080473df4ba60ce88。
+- 作業開始時の正式な実行器pin:190941bc9d65fb3ed2fa6b52ba90196addf19e33。
+- 技術前提の中間checkpoint:de341c747556b46721059ba4f5fe88cfba58423e。
+- 全修正を含む最終検証対象・公開教材source:46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6。
+
+R01等の作業中メモにあるde341というtools表記は技術前提の中間版を指す。最終実行版の判定には、各capability receiptのimplementation_hash、最終commit46ea59beとCI40154122715を使う。後の修正を中間commitへ含めたことにはしない。
+
+公開workflowのcommit a99031f7はcheckoutする教材source46ea59beと別。公開runのGitHub head_shaを教材sourceへ書き換えず、release.jsonのsourceSHA/workflowSHAと実HTTPSの対応で照合する。
+
+ユーザー承認の原版P-001と添付NODE_DESIGNはe6fc1017に固定。APPROVAL.jsonと元のuser eventの同一承認を保持し、実装結果や技術試験から新たなユーザー承認・肯定評価を作らない。

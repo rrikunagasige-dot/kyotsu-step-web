@@ -1,0 +1,20 @@
+{
+  "receipts": [
+    {
+      "url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/release.json?verified=46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+      "resolved_url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/release.json?verified=46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+      "status": 200,
+      "sha256": "9d3af9a543c3ecd2fe26c1511d9469eeea47dddb88c46107120f7a94c2259498"
+    },
+    {
+      "url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?verified=46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+      "resolved_url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?verified=46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+      "status": 200,
+      "sha256": "9f725fdfafa268926b1017cd43eb393f2285417f4332733d3eb9b5546c31cfea"
+    }
+  ],
+  "sourceSHA": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+  "route": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=46ea59be#/learning/textbook/math-numbers-expressions-n07",
+  "actualHostedPlay": "Four-width hosted all-correct/all-wrong, history/migration; publication CI succeeded.",
+  "userAcceptance": false
+}

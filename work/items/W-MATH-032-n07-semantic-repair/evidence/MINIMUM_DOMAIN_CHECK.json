@@ -1,0 +1,40 @@
+[
+  {
+    "period": "8",
+    "domain": "10^k, k positive integer",
+    "tested": [
+      {
+        "multiplier": 10,
+        "fractionalPartAligned": true
+      },
+      {
+        "multiplier": 100,
+        "fractionalPartAligned": true
+      },
+      {
+        "multiplier": 1000,
+        "fractionalPartAligned": true
+      }
+    ],
+    "minimum": 10
+  },
+  {
+    "period": "69",
+    "domain": "10^k, k positive integer",
+    "tested": [
+      {
+        "multiplier": 10,
+        "fractionalPartAligned": false
+      },
+      {
+        "multiplier": 100,
+        "fractionalPartAligned": true
+      },
+      {
+        "multiplier": 1000,
+        "fractionalPartAligned": false
+      }
+    ],
+    "minimum": 100
+  }
+]

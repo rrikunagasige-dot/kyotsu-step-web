@@ -1,0 +1,46 @@
+[
+  {
+    "left": "(10-1)x",
+    "right": "9x",
+    "result": {
+      "status": "PASS",
+      "equivalent": true,
+      "independent": true,
+      "domain": "rational univariate polynomial, legacy degree bounds",
+      "proofStatus": "SYMBOLIC_VERIFIED"
+    }
+  },
+  {
+    "left": "(10-1)x",
+    "right": "10x",
+    "result": {
+      "status": "FAIL",
+      "equivalent": false,
+      "independent": false,
+      "domain": "rational univariate polynomial, legacy degree bounds",
+      "proofStatus": "SYMBOLIC_VERIFIED"
+    }
+  },
+  {
+    "left": "(100-1)x",
+    "right": "99x",
+    "result": {
+      "status": "PASS",
+      "equivalent": true,
+      "independent": true,
+      "domain": "rational univariate polynomial, legacy degree bounds",
+      "proofStatus": "SYMBOLIC_VERIFIED"
+    }
+  },
+  {
+    "left": "(100-1)x",
+    "right": "100x",
+    "result": {
+      "status": "FAIL",
+      "equivalent": false,
+      "independent": false,
+      "domain": "rational univariate polynomial, legacy degree bounds",
+      "proofStatus": "SYMBOLIC_VERIFIED"
+    }
+  }
+]

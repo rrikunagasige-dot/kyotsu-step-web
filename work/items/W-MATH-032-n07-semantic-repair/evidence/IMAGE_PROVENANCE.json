@@ -1,0 +1,44 @@
+[
+  {
+    "caseId": "N07-USER-F01",
+    "file": "0ee7fc343217e1117f5f8911368ea1fe.png",
+    "sha256": "6814bc8a1ab3e9fc6b57e33cc6fd00606c811ae0a8409541fba0d41186068e02",
+    "visualInspection": "INSPECTED",
+    "copiedToRepository": false
+  },
+  {
+    "caseId": "N07-USER-F02",
+    "file": "f859d006bed416f44af2f682862352e4.png",
+    "sha256": "2ed5eb49f280682c47052e3884da9210f66820bfc5298e23a4cc446abb1fd569",
+    "visualInspection": "INSPECTED",
+    "copiedToRepository": false
+  },
+  {
+    "caseId": "N07-USER-F03",
+    "file": "83457a43084ff1fbbcbef9c523092cb5.png",
+    "sha256": "1f2a13bceb62bcfda98beea2693d1c667b9978ca919f5c2ca9052c050f564082",
+    "visualInspection": "INSPECTED",
+    "copiedToRepository": false
+  },
+  {
+    "caseId": "N07-USER-F04",
+    "file": "6becaa6c6f54a30d594c6c66d15e3201.png",
+    "sha256": "c6fca58d8fc8145df8abbcf54af97fb324c68cd7d5469d85682d59f5d59c9583",
+    "visualInspection": "INSPECTED",
+    "copiedToRepository": false
+  },
+  {
+    "caseId": "N07-USER-F05",
+    "file": "2b3d22138cb01961ee770f4f228f92e1.png",
+    "sha256": "08a194aebe3d23880b1a9ea1c6b82bc9c46c8763759db499218679fac811e0b6",
+    "visualInspection": "INSPECTED",
+    "copiedToRepository": false
+  },
+  {
+    "caseId": "N07-USER-F06",
+    "file": "13c777f56cc1cba7e52fdcf545e7744f.png",
+    "sha256": "2f13547d5da27e6aa3d98a059f5df95cc47631c2fc3479e6da68872d3c4bfb70",
+    "visualInspection": "INSPECTED",
+    "copiedToRepository": false
+  }
+]

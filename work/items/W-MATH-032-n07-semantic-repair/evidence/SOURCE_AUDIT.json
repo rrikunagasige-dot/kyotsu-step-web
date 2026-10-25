@@ -1,0 +1,893 @@
+{
+  "status": "DIAGNOSED_NOT_FIXED",
+  "sourceSHA": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+  "authoredSHA256": "f534b84c116ce200f0ac405eec0f130137186bd2a74854443113c716fe40c712",
+  "nodeCount": 41,
+  "itemCount": 36,
+  "stageCount": 14,
+  "equationCount": 62,
+  "compiledTermCount": 0,
+  "groups": {
+    "F01_REFERENCE_TABLE_AND_PROBLEM_MISSING": [
+      "n07-q03-cycle"
+    ],
+    "F02_ORPHAN_SCALAR_OUTPUT": [
+      "n07-q06-scale",
+      "n07-q09-scale"
+    ],
+    "F03_OPERATION_WITHOUT_SENTENCE": [
+      "n07-q07-subtract",
+      "n07-q09-subtract"
+    ],
+    "F04_UNCONNECTED_TRANSFORM": [
+      "n07-q07-coefficient",
+      "n07-q09-coefficient"
+    ],
+    "F05_DEFINITION_TERM_MARKUP": [
+      "n07-q04-definitions",
+      "n07-q11-factor-ten",
+      "n07-q13-difference",
+      "n07-q14-real-definition"
+    ],
+    "F06_MATH_MARKUP_REVIEW": [
+      "n07-q01-end",
+      "n07-q04-definitions",
+      "n07-q04-finite",
+      "n07-q04-rational",
+      "n07-q05-remainders",
+      "n07-q07-left-form",
+      "n07-q07-coefficient",
+      "n07-q07-right-difference",
+      "n07-q08-divide",
+      "n07-q09-left-form",
+      "n07-q09-coefficient",
+      "n07-q09-right-difference",
+      "n07-q10-divide",
+      "n07-q10-reduce",
+      "n07-q11-factor-ten",
+      "n07-q11-power",
+      "n07-q11-converse",
+      "n07-q12-powers-two",
+      "n07-q12-include-five",
+      "n07-q13-difference",
+      "n07-q13-quotient",
+      "n07-q14-real-definition",
+      "n07-q14-closing"
+    ],
+    "SAME_ROOT_BARE_FORMULA_ANSWER": [
+      "n07-q02-remainder-0",
+      "n07-q02-remainder-1",
+      "n07-q12-include-five"
+    ],
+    "SAME_ROOT_REDUCTION_RESULT_WITHOUT_RELATION": [
+      "n07-q10-reduce"
+    ],
+    "SOURCE_MINIMUM_DOMAIN_OMITTED": [
+      "n07-q06-scale"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "n07-q01-tenths",
+      "problemId": "N07-Q01",
+      "role": "example",
+      "goal": "小数第1位の商を決める",
+      "itemId": "n07-q01-tenths-answer",
+      "issues": [],
+      "mathFieldCandidates": [],
+      "sourceRefs": [
+        "word-p-000299",
+        "word-p-000300"
+      ],
+      "currentInput": "3\\div4",
+      "currentOutput": "30=4\\times7+2",
+      "knownRefs": []
+    },
+    {
+      "id": "n07-q01-hundredths",
+      "problemId": "N07-Q01",
+      "role": "example",
+      "goal": "小数第2位を求める",
+      "itemId": "n07-q01-hundredths-answer",
+      "issues": [],
+      "mathFieldCandidates": [],
+      "sourceRefs": [
+        "word-p-000300"
+      ],
+      "currentInput": "",
+      "currentOutput": "\\frac34=0.75",
+      "knownRefs": [
+        "n07-q01-tenths-result"
+      ]
+    },
+    {
+      "id": "n07-q01-end",
+      "problemId": "N07-Q01",
+      "role": "example",
+      "goal": "割り算が止まる理由を読む",
+      "itemId": "n07-q01-end-answer",
+      "issues": [
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "mathFieldCandidates": [
+        "after"
+      ],
+      "sourceRefs": [
+        "word-p-000300"
+      ],
+      "currentInput": "",
+      "currentOutput": "\\frac34=0.75",
+      "knownRefs": [
+        "n07-q01-hundredths-result"
+      ]
+    },
+    {
+      "id": "n07-q02-integer",
+      "problemId": "N07-Q02",
+      "role": "example",
+      "goal": "整数部分の後の余りを求める",
+      "itemId": "n07-q02-integer-answer",
+      "issues": [],
+      "mathFieldCandidates": [],
+      "sourceRefs": [
+        "word-p-000301",
+        "word-p-000302",
+        "word-p-000303"
+      ],
+      "currentInput": "",
+      "currentOutput": "23=11\\times2+1",
+      "knownRefs": []
+    },
+    {
+      "id": "n07-q02-digit-0",
+      "problemId": "N07-Q02",
+      "role": "example",
+      "goal": "小数第1位の商を決める",
+      "itemId": "n07-q02-digit-0-answer",
+      "issues": [],
+      "mathFieldCandidates": [],
+      "sourceRefs": [
+        "word-p-000303"
+      ],
+      "currentInput": "10\\div11",
+      "currentOutput": "\\text{小数第1位の商}=0",
+      "knownRefs": [
+        "n07-q02-integer-result"
+      ]
+    },
+    {
+      "id": "n07-q02-remainder-0",
+      "problemId": "N07-Q02",
+      "role": "example",
+      "goal": "次の位へ送る余りを求める",
+      "itemId": "n07-q02-remainder-0-answer",
+      "issues": [
+        "SAME_ROOT_BARE_FORMULA_ANSWER"
+      ],
+      "mathFieldCandidates": [],
+      "sourceRefs": [
+        "word-p-000303"
+      ],
+      "currentInput": "10-11\\times0",
+      "currentOutput": "10=11\\times0+10",
+      "knownRefs": [
+        "n07-q02-digit-0-result"
+      ]
+    },
+    {
+      "id": "n07-q02-digit-1",
+      "problemId": "N07-Q02",
+      "role": "example",
+      "goal": "小数第2位の商を決める",
+      "itemId": "n07-q02-digit-1-answer",
+      "issues": [],
+      "mathFieldCandidates": [],
+      "sourceRefs": [
+        "word-p-000303"
+      ],
+      "currentInput": "100\\div11",
+      "currentOutput": "\\text{小数第2位の商}=9",
+      "knownRefs": [
+        "n07-q02-remainder-0-result"
+      ]
+    },
+    {
+      "id": "n07-q02-remainder-1",
+      "problemId": "N07-Q02",
+      "role": "example",
+      "goal": "次の位へ送る余りを求める",
+      "itemId": "n07-q02-remainder-1-answer",
+      "issues": [
+        "SAME_ROOT_BARE_FORMULA_ANSWER"
+      ],
+      "mathFieldCandidates": [],
+      "sourceRefs": [
+        "word-p-000303"
+      ],
+      "currentInput": "100-11\\times9",
+      "currentOutput": "100=11\\times9+1",
+      "knownRefs": [
+        "n07-q02-digit-1-result"
+      ]
+    },
+    {
+      "id": "n07-q03-cycle",
+      "problemId": "N07-Q03",
+      "role": "example",
+      "goal": "余りが戻った後の数字を予測する",
+      "itemId": "n07-q03-cycle-answer",
+      "issues": [
+        "F01_REFERENCE_TABLE_AND_PROBLEM_MISSING"
+      ],
+      "mathFieldCandidates": [],
+      "sourceRefs": [
+        "word-p-000304"
+      ],
+      "currentInput": "",
+      "currentOutput": "\\frac{23}{11}=2.\\overline{09}",
+      "knownRefs": [
+        "n07-q02-remainder-1-result"
+      ]
+    },
+    {
+      "id": "n07-q04-definitions",
+      "problemId": "N07-Q04",
+      "role": "definition",
+      "goal": "小数と分数の分類を知る",
+      "itemId": null,
+      "issues": [
+        "F06_MATH_MARKUP_REVIEW",
+        "F05_DEFINITION_TERM_MARKUP"
+      ],
+      "mathFieldCandidates": [
+        "before"
+      ],
+      "sourceRefs": [
+        "word-p-000305"
+      ],
+      "currentInput": "",
+      "currentOutput": "",
+      "knownRefs": []
+    },
+    {
+      "id": "n07-q04-finite",
+      "problemId": "N07-Q04",
+      "role": "example",
+      "goal": "0.75の小数分類を決める",
+      "itemId": "n07-q04-finite-answer",
+      "issues": [
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "mathFieldCandidates": [
+        "after"
+      ],
+      "sourceRefs": [
+        "word-p-000306"
+      ],
+      "currentInput": "",
+      "currentOutput": "0.75=\\frac34",
+      "knownRefs": []
+    },
+    {
+      "id": "n07-q04-rational",
+      "problemId": "N07-Q04",
+      "role": "example",
+      "goal": "循環する小数が有理数である根拠を選ぶ",
+      "itemId": "n07-q04-rational-answer",
+      "issues": [
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "mathFieldCandidates": [
+        "after"
+      ],
+      "sourceRefs": [
+        "word-p-000306"
+      ],
+      "currentInput": "",
+      "currentOutput": "",
+      "knownRefs": [
+        "n07-q03-cycle-result"
+      ]
+    },
+    {
+      "id": "n07-q05-remainders",
+      "problemId": "N07-Q05",
+      "role": "proof",
+      "goal": "同じ余りが必ず現れる理由を導く",
+      "itemId": "n07-q05-remainders-answer",
+      "issues": [
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "mathFieldCandidates": [
+        "before"
+      ],
+      "sourceRefs": [
+        "word-p-000307",
+        "word-p-000308",
+        "word-p-000309"
+      ],
+      "currentInput": "1,2,\\ldots,n-1",
+      "currentOutput": "",
+      "knownRefs": []
+    },
+    {
+      "id": "n07-q05-property",
+      "problemId": "N07-Q05",
+      "role": "property",
+      "goal": "有理数の小数表示をまとめる",
+      "itemId": null,
+      "issues": [],
+      "mathFieldCandidates": [],
+      "sourceRefs": [
+        "word-p-000310"
+      ],
+      "currentInput": "",
+      "currentOutput": "",
+      "knownRefs": []
+    },
+    {
+      "id": "n07-q06-scale",
+      "problemId": "N07-Q06",
+      "role": "example",
+      "goal": "小数部分をそろえる",
+      "itemId": "n07-q06-scale-answer",
+      "issues": [
+        "F02_ORPHAN_SCALAR_OUTPUT",
+        "SOURCE_MINIMUM_DOMAIN_OMITTED"
+      ],
+      "mathFieldCandidates": [],
+      "sourceRefs": [
+        "word-p-000311",
+        "word-p-000312",
+        "word-p-000313",
+        "word-p-000314",
+        "word-p-000315",
+        "word-p-000316"
+      ],
+      "currentInput": "x=0.\\overline{8}",
+      "currentOutput": "10",
+      "knownRefs": []
+    },
+    {
+      "id": "n07-q06-scaled",
+      "problemId": "N07-Q06",
+      "role": "example",
+      "goal": "倍率後の式を作る",
+      "itemId": "n07-q06-scaled-answer",
+      "issues": [],
+      "mathFieldCandidates": [],
+      "sourceRefs": [
+        "word-p-000311",
+        "word-p-000312",
+        "word-p-000313",
+        "word-p-000314",
+        "word-p-000315",
+        "word-p-000316"
+      ],
+      "currentInput": "x=0.\\overline{8}",
+      "currentOutput": "10x=8.\\overline{8}",
+      "knownRefs": [
+        "n07-q06-scale-result"
+      ]
+    },
+    {
+      "id": "n07-q07-subtract",
+      "problemId": "N07-Q07",
+      "role": "example",
+      "goal": "同じ部分を消す操作を選ぶ",
+      "itemId": "n07-q07-subtract-answer",
+      "issues": [
+        "F03_OPERATION_WITHOUT_SENTENCE"
+      ],
+      "mathFieldCandidates": [],
+      "sourceRefs": [
+        "word-p-000317"
+      ],
+      "currentInput": "\\begin{aligned}10x&=8.\\overline{8}\\\\x&=0.\\overline{8}\\end{aligned}",
+      "currentOutput": "10x-x=8.\\overline{8}-0.\\overline{8}",
+      "knownRefs": [
+        "n07-q06-scaled-result"
+      ]
+    },
+    {
+      "id": "n07-q07-left-form",
+      "problemId": "N07-Q07",
+      "role": "example",
+      "goal": "左辺を係数の差として作る",
+      "itemId": "n07-q07-left-form-answer",
+      "issues": [
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "mathFieldCandidates": [
+        "after"
+      ],
+      "sourceRefs": [
+        "word-p-000317"
+      ],
+      "currentInput": "10x-x",
+      "currentOutput": "10x-x=(10-1)x",
+      "knownRefs": [
+        "n07-q07-subtract-result"
+      ]
+    },
+    {
+      "id": "n07-q07-coefficient",
+      "problemId": "N07-Q07",
+      "role": "example",
+      "goal": "左辺の係数をまとめる",
+      "itemId": "n07-q07-coefficient-answer",
+      "issues": [
+        "F04_UNCONNECTED_TRANSFORM",
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "mathFieldCandidates": [
+        "after"
+      ],
+      "sourceRefs": [
+        "word-p-000317"
+      ],
+      "currentInput": "(10-1)x",
+      "currentOutput": "9x",
+      "knownRefs": [
+        "n07-q07-left-form-result"
+      ]
+    },
+    {
+      "id": "n07-q07-right-difference",
+      "problemId": "N07-Q07",
+      "role": "example",
+      "goal": "右辺の小数部分を消す",
+      "itemId": "n07-q07-right-difference-answer",
+      "issues": [
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "mathFieldCandidates": [
+        "after"
+      ],
+      "sourceRefs": [
+        "word-p-000317"
+      ],
+      "currentInput": "8.\\overline{8}-0.\\overline{8}",
+      "currentOutput": "9x=8",
+      "knownRefs": [
+        "n07-q07-coefficient-result"
+      ]
+    },
+    {
+      "id": "n07-q08-divide",
+      "problemId": "N07-Q08",
+      "role": "example",
+      "goal": "x一つの値を求める",
+      "itemId": "n07-q08-divide-answer",
+      "issues": [
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "mathFieldCandidates": [
+        "after"
+      ],
+      "sourceRefs": [
+        "word-p-000318"
+      ],
+      "currentInput": "9x=8",
+      "currentOutput": "x=\\frac{8}{9}",
+      "knownRefs": [
+        "n07-q07-right-difference-result"
+      ]
+    },
+    {
+      "id": "n07-q08-meaning",
+      "problemId": "N07-Q08",
+      "role": "interpretation",
+      "goal": "有限の等式へ直せた理由を確かめる",
+      "itemId": "n07-q08-meaning-answer",
+      "issues": [],
+      "mathFieldCandidates": [],
+      "sourceRefs": [
+        "word-p-000319"
+      ],
+      "currentInput": "",
+      "currentOutput": "",
+      "knownRefs": [
+        "n07-q08-divide-result"
+      ]
+    },
+    {
+      "id": "n07-q09-scale",
+      "problemId": "N07-Q09",
+      "role": "example",
+      "goal": "小数部分をそろえる",
+      "itemId": "n07-q09-scale-answer",
+      "issues": [
+        "F02_ORPHAN_SCALAR_OUTPUT"
+      ],
+      "mathFieldCandidates": [],
+      "sourceRefs": [
+        "word-p-000320",
+        "word-p-000321",
+        "word-p-000322"
+      ],
+      "currentInput": "x=0.\\overline{69}",
+      "currentOutput": "100",
+      "knownRefs": []
+    },
+    {
+      "id": "n07-q09-scaled",
+      "problemId": "N07-Q09",
+      "role": "example",
+      "goal": "倍率後の式を作る",
+      "itemId": "n07-q09-scaled-answer",
+      "issues": [],
+      "mathFieldCandidates": [],
+      "sourceRefs": [
+        "word-p-000320",
+        "word-p-000321",
+        "word-p-000322"
+      ],
+      "currentInput": "x=0.\\overline{69}",
+      "currentOutput": "100x=69.\\overline{69}",
+      "knownRefs": [
+        "n07-q09-scale-result"
+      ]
+    },
+    {
+      "id": "n07-q09-subtract",
+      "problemId": "N07-Q09",
+      "role": "example",
+      "goal": "同じ部分を消す操作を選ぶ",
+      "itemId": "n07-q09-subtract-answer",
+      "issues": [
+        "F03_OPERATION_WITHOUT_SENTENCE"
+      ],
+      "mathFieldCandidates": [],
+      "sourceRefs": [
+        "word-p-000320",
+        "word-p-000321",
+        "word-p-000322"
+      ],
+      "currentInput": "\\begin{aligned}100x&=69.\\overline{69}\\\\x&=0.\\overline{69}\\end{aligned}",
+      "currentOutput": "100x-x=69.\\overline{69}-0.\\overline{69}",
+      "knownRefs": [
+        "n07-q09-scaled-result"
+      ]
+    },
+    {
+      "id": "n07-q09-left-form",
+      "problemId": "N07-Q09",
+      "role": "example",
+      "goal": "左辺を係数の差として作る",
+      "itemId": "n07-q09-left-form-answer",
+      "issues": [
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "mathFieldCandidates": [
+        "after"
+      ],
+      "sourceRefs": [
+        "word-p-000320",
+        "word-p-000321",
+        "word-p-000322"
+      ],
+      "currentInput": "100x-x",
+      "currentOutput": "100x-x=(100-1)x",
+      "knownRefs": [
+        "n07-q09-subtract-result"
+      ]
+    },
+    {
+      "id": "n07-q09-coefficient",
+      "problemId": "N07-Q09",
+      "role": "example",
+      "goal": "左辺の係数をまとめる",
+      "itemId": "n07-q09-coefficient-answer",
+      "issues": [
+        "F04_UNCONNECTED_TRANSFORM",
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "mathFieldCandidates": [
+        "after"
+      ],
+      "sourceRefs": [
+        "word-p-000320",
+        "word-p-000321",
+        "word-p-000322"
+      ],
+      "currentInput": "(100-1)x",
+      "currentOutput": "99x",
+      "knownRefs": [
+        "n07-q09-left-form-result"
+      ]
+    },
+    {
+      "id": "n07-q09-right-difference",
+      "problemId": "N07-Q09",
+      "role": "example",
+      "goal": "右辺の小数部分を消す",
+      "itemId": "n07-q09-right-difference-answer",
+      "issues": [
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "mathFieldCandidates": [
+        "after"
+      ],
+      "sourceRefs": [
+        "word-p-000320",
+        "word-p-000321",
+        "word-p-000322"
+      ],
+      "currentInput": "69.\\overline{69}-0.\\overline{69}",
+      "currentOutput": "99x=69",
+      "knownRefs": [
+        "n07-q09-coefficient-result"
+      ]
+    },
+    {
+      "id": "n07-q10-divide",
+      "problemId": "N07-Q10",
+      "role": "example",
+      "goal": "x一つの値を求める",
+      "itemId": "n07-q10-divide-answer",
+      "issues": [
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "mathFieldCandidates": [
+        "after"
+      ],
+      "sourceRefs": [
+        "word-p-000323"
+      ],
+      "currentInput": "99x=69",
+      "currentOutput": "x=\\frac{69}{99}",
+      "knownRefs": [
+        "n07-q09-right-difference-result"
+      ]
+    },
+    {
+      "id": "n07-q10-reduce",
+      "problemId": "N07-Q10",
+      "role": "example",
+      "goal": "分数を整える",
+      "itemId": "n07-10",
+      "issues": [
+        "F06_MATH_MARKUP_REVIEW",
+        "SAME_ROOT_REDUCTION_RESULT_WITHOUT_RELATION"
+      ],
+      "mathFieldCandidates": [
+        "after"
+      ],
+      "sourceRefs": [
+        "word-p-000323"
+      ],
+      "currentInput": "\\frac{69}{99}",
+      "currentOutput": "\\frac{23}{33}",
+      "knownRefs": [
+        "n07-q10-divide-result"
+      ]
+    },
+    {
+      "id": "n07-q11-factor-ten",
+      "problemId": "N07-Q11",
+      "role": "example",
+      "goal": "分母10の素因数を読む",
+      "itemId": "n07-q11-factor-ten-answer",
+      "issues": [
+        "F06_MATH_MARKUP_REVIEW",
+        "F05_DEFINITION_TERM_MARKUP"
+      ],
+      "mathFieldCandidates": [
+        "before"
+      ],
+      "sourceRefs": [
+        "word-p-000324",
+        "word-p-000325",
+        "word-p-000326",
+        "word-p-000327"
+      ],
+      "currentInput": "",
+      "currentOutput": "10=2\\times5",
+      "knownRefs": []
+    },
+    {
+      "id": "n07-q11-power",
+      "problemId": "N07-Q11",
+      "role": "example",
+      "goal": "10のk乗を素因数の積で作る",
+      "itemId": "n07-q11-power-answer",
+      "issues": [
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "mathFieldCandidates": [
+        "after"
+      ],
+      "sourceRefs": [
+        "word-p-000327"
+      ],
+      "currentInput": "",
+      "currentOutput": "10^k=2^k\\cdot5^k",
+      "knownRefs": []
+    },
+    {
+      "id": "n07-q11-converse",
+      "problemId": "N07-Q11",
+      "role": "proof",
+      "goal": "条件の逆向きも確認する",
+      "itemId": null,
+      "issues": [
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "mathFieldCandidates": [
+        "before"
+      ],
+      "sourceRefs": [
+        "word-p-000328"
+      ],
+      "currentInput": "",
+      "currentOutput": "\\begin{aligned}\\frac{p}{2^u5^v}&=\\frac{p\\cdot2^{h-u}5^{h-v}}{2^h5^h}\\\\&=\\frac{p\\cdot2^{h-u}5^{h-v}}{10^h}\\end{aligned}",
+      "knownRefs": [
+        "n07-q11-power-result"
+      ]
+    },
+    {
+      "id": "n07-q12-powers-two",
+      "problemId": "N07-Q12",
+      "role": "example",
+      "goal": "範囲内の2の累乗を集める",
+      "itemId": "n07-q12-powers-two-answer",
+      "issues": [
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "mathFieldCandidates": [
+        "before"
+      ],
+      "sourceRefs": [
+        "word-p-000329"
+      ],
+      "currentInput": "",
+      "currentOutput": "",
+      "knownRefs": []
+    },
+    {
+      "id": "n07-q12-include-five",
+      "problemId": "N07-Q12",
+      "role": "example",
+      "goal": "5に掛けられる2の個数の上限を決める",
+      "itemId": "n07-q12-include-five-answer",
+      "issues": [
+        "SAME_ROOT_BARE_FORMULA_ANSWER",
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "mathFieldCandidates": [
+        "before",
+        "after"
+      ],
+      "sourceRefs": [
+        "word-p-000329"
+      ],
+      "currentInput": "5\\times2^r\\le20",
+      "currentOutput": "",
+      "knownRefs": []
+    },
+    {
+      "id": "n07-q12-assemble",
+      "problemId": "N07-Q12",
+      "role": "example",
+      "goal": "候補の除外理由を条件から判断する",
+      "itemId": "n07-q12-assemble-answer",
+      "issues": [],
+      "mathFieldCandidates": [],
+      "sourceRefs": [
+        "word-p-000329"
+      ],
+      "currentInput": "12=2^2\\times3",
+      "currentOutput": "a=2,4,5,8,10,16,20",
+      "knownRefs": []
+    },
+    {
+      "id": "n07-q13-difference",
+      "problemId": "N07-Q13",
+      "role": "example",
+      "goal": "差を求め自然数の範囲と比べる",
+      "itemId": "n07-q13-difference-answer",
+      "issues": [
+        "F06_MATH_MARKUP_REVIEW",
+        "F05_DEFINITION_TERM_MARKUP"
+      ],
+      "mathFieldCandidates": [
+        "before",
+        "after"
+      ],
+      "sourceRefs": [
+        "word-p-000330",
+        "word-p-000331",
+        "word-p-000332",
+        "word-p-000333"
+      ],
+      "currentInput": "a-b=2-3",
+      "currentOutput": "a-b=-1",
+      "knownRefs": []
+    },
+    {
+      "id": "n07-q13-quotient",
+      "problemId": "N07-Q13",
+      "role": "example",
+      "goal": "求めた商が自然数か判断する",
+      "itemId": "n07-q13-quotient-answer",
+      "issues": [
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "mathFieldCandidates": [
+        "before",
+        "after"
+      ],
+      "sourceRefs": [
+        "word-p-000333"
+      ],
+      "currentInput": "\\frac ab=\\frac23",
+      "currentOutput": "\\frac ab=\\frac23",
+      "knownRefs": []
+    },
+    {
+      "id": "n07-q14-real-definition",
+      "problemId": "N07-Q14",
+      "role": "definition",
+      "goal": "数の範囲と実数の分類を知る",
+      "itemId": null,
+      "issues": [
+        "F06_MATH_MARKUP_REVIEW",
+        "F05_DEFINITION_TERM_MARKUP"
+      ],
+      "mathFieldCandidates": [
+        "before"
+      ],
+      "sourceRefs": [
+        "word-p-000334",
+        "word-p-000335"
+      ],
+      "currentInput": "",
+      "currentOutput": "",
+      "knownRefs": []
+    },
+    {
+      "id": "n07-q14-reuse",
+      "problemId": "N07-Q14",
+      "role": "example",
+      "goal": "前の分数を使い分類の理由を述べる",
+      "itemId": "n07-14",
+      "issues": [],
+      "mathFieldCandidates": [],
+      "sourceRefs": [
+        "word-p-000336"
+      ],
+      "currentInput": "",
+      "currentOutput": "0.\\overline{69}=\\frac{23}{33}",
+      "knownRefs": [
+        "n07-q10-reduce-result"
+      ]
+    },
+    {
+      "id": "n07-q14-closing",
+      "problemId": "N07-Q14",
+      "role": "bridge",
+      "goal": "分類を整理し、数直線へつなぐ",
+      "itemId": null,
+      "issues": [
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "mathFieldCandidates": [
+        "before"
+      ],
+      "sourceRefs": [
+        "word-p-000337",
+        "word-p-000338",
+        "word-p-000339"
+      ],
+      "currentInput": "",
+      "currentOutput": "",
+      "knownRefs": []
+    }
+  ],
+  "limits": [
+    "This is a source/model audit, not browser observation.",
+    "Regex math candidates require the explicit human/AI span decisions in NODE_DESIGN.json.",
+    "A standalone expression is not universally wrong; only its declared role determines the needed relation or caption."
+  ]
+}

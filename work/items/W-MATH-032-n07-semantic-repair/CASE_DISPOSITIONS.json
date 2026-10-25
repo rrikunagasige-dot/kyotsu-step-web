@@ -1,0 +1,89 @@
+{
+  "corpusHash": "a6fb2deacb1e3bb9c2194214c12f44454e4aa58888925043ac7d03cea26eeae6",
+  "retrievalMode": "DIRECT_VERSIONED_CATALOG_REVIEW",
+  "modelRan": false,
+  "trainingRun": false,
+  "cases": [
+    {
+      "caseId": "N07-USER-F01",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "dimension": "prerequisite_missing",
+      "quality": "NEGATIVE",
+      "scope": "n07-q03-cycle",
+      "disposition": "APPLY",
+      "reason": "対応する原因・node/semantic contractへ結び、旧表示を回帰の負例にする。"
+    },
+    {
+      "caseId": "N07-USER-F02",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "dimension": "orphan_output",
+      "quality": "NEGATIVE",
+      "scope": "n07-q06-scale",
+      "disposition": "APPLY",
+      "reason": "対応する原因・node/semantic contractへ結び、旧表示を回帰の負例にする。"
+    },
+    {
+      "caseId": "N07-USER-F03",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "dimension": "unmotivated_operation",
+      "quality": "NEGATIVE",
+      "scope": "n07-q07-subtract",
+      "disposition": "APPLY",
+      "reason": "対応する原因・node/semantic contractへ結び、旧表示を回帰の負例にする。"
+    },
+    {
+      "caseId": "N07-USER-F04",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "dimension": "broken_derivation",
+      "quality": "NEGATIVE",
+      "scope": "n07-q07-coefficient",
+      "disposition": "APPLY",
+      "reason": "対応する原因・node/semantic contractへ結び、旧表示を回帰の負例にする。"
+    },
+    {
+      "caseId": "N07-USER-F05",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "dimension": "term_semantics_missing",
+      "quality": "NEGATIVE",
+      "scope": "n07-q11-factor-ten",
+      "disposition": "APPLY",
+      "reason": "対応する原因・node/semantic contractへ結び、旧表示を回帰の負例にする。"
+    },
+    {
+      "caseId": "N07-USER-F06",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "dimension": "math_render_omission",
+      "quality": "NEGATIVE",
+      "scope": "n07-q11-converse,n07-q07-coefficient",
+      "disposition": "APPLY",
+      "reason": "対応する原因・node/semantic contractへ結び、旧表示を回帰の負例にする。"
+    },
+    {
+      "caseId": "n07-layout-relation",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "dimension": "layout_discomfort",
+      "quality": "NEGATIVE",
+      "scope": "n07-q07-coefficient",
+      "disposition": "APPLY",
+      "reason": "対応する原因・node/semantic contractへ結び、旧表示を回帰の負例にする。"
+    },
+    {
+      "caseId": "n07-layout-positive",
+      "artifactVersion": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "dimension": "layout_style_rejection",
+      "quality": "POSITIVE",
+      "scope": "N07 overall layout only",
+      "disposition": "PROTECT_SCOPED_LAYOUT",
+      "reason": "肯定された配置だけを保護。全本文・全推導の合格には拡張しない。"
+    },
+    {
+      "caseId": "first-title-layout-positive",
+      "artifactVersion": "22bc43ba53fa87bb85e82e18a25db13a5c8a485c",
+      "dimension": "layout_discomfort",
+      "quality": "POSITIVE",
+      "scope": "first title overall accepted layout",
+      "disposition": "PROTECT_SCOPED_LAYOUT",
+      "reason": "肯定された配置だけを保護。全本文・全推導の合格には拡張しない。"
+    }
+  ]
+}

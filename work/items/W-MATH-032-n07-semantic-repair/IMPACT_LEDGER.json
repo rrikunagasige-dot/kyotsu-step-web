@@ -1,0 +1,857 @@
+{
+  "status": "PRE_DESIGN_DOCUMENT_NOT_RUNTIME_PASS",
+  "rows": [
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q01-tenths",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "NOT-AFFECTED",
+      "reason": "この六つの個別欠陥は未検出。共通source-preserving semantic adapterの回帰対象。",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q01-hundredths",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "NOT-AFFECTED",
+      "reason": "この六つの個別欠陥は未検出。共通source-preserving semantic adapterの回帰対象。",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q01-end",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "AFFECTED",
+      "reason": "明示partsと個別修正を適用",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q02-integer",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "NOT-AFFECTED",
+      "reason": "この六つの個別欠陥は未検出。共通source-preserving semantic adapterの回帰対象。",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q02-digit-0",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "NOT-AFFECTED",
+      "reason": "この六つの個別欠陥は未検出。共通source-preserving semantic adapterの回帰対象。",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [
+        "SAME_ROOT_BARE_FORMULA_ANSWER"
+      ],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q02-remainder-0",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "AFFECTED",
+      "reason": "明示partsと個別修正を適用",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q02-digit-1",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "NOT-AFFECTED",
+      "reason": "この六つの個別欠陥は未検出。共通source-preserving semantic adapterの回帰対象。",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [
+        "SAME_ROOT_BARE_FORMULA_ANSWER"
+      ],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q02-remainder-1",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "AFFECTED",
+      "reason": "明示partsと個別修正を適用",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [
+        "F01_REFERENCE_TABLE_AND_PROBLEM_MISSING"
+      ],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q03-cycle",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "AFFECTED",
+      "reason": "明示partsと個別修正を適用",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [
+        "F06_MATH_MARKUP_REVIEW",
+        "F05_DEFINITION_TERM_MARKUP"
+      ],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q04-definitions",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "AFFECTED",
+      "reason": "明示partsと個別修正を適用",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q04-finite",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "AFFECTED",
+      "reason": "明示partsと個別修正を適用",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q04-rational",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "AFFECTED",
+      "reason": "明示partsと個別修正を適用",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q05-remainders",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "AFFECTED",
+      "reason": "明示partsと個別修正を適用",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q05-property",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "NOT-AFFECTED",
+      "reason": "この六つの個別欠陥は未検出。共通source-preserving semantic adapterの回帰対象。",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [
+        "F02_ORPHAN_SCALAR_OUTPUT",
+        "SOURCE_MINIMUM_DOMAIN_OMITTED"
+      ],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q06-scale",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "AFFECTED",
+      "reason": "明示partsと個別修正を適用",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q06-scaled",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "NOT-AFFECTED",
+      "reason": "この六つの個別欠陥は未検出。共通source-preserving semantic adapterの回帰対象。",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [
+        "F03_OPERATION_WITHOUT_SENTENCE"
+      ],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q07-subtract",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "AFFECTED",
+      "reason": "明示partsと個別修正を適用",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q07-left-form",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "AFFECTED",
+      "reason": "明示partsと個別修正を適用",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [
+        "F04_UNCONNECTED_TRANSFORM",
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q07-coefficient",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "AFFECTED",
+      "reason": "明示partsと個別修正を適用",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q07-right-difference",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "AFFECTED",
+      "reason": "明示partsと個別修正を適用",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q08-divide",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "AFFECTED",
+      "reason": "明示partsと個別修正を適用",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q08-meaning",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "NOT-AFFECTED",
+      "reason": "この六つの個別欠陥は未検出。共通source-preserving semantic adapterの回帰対象。",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [
+        "F02_ORPHAN_SCALAR_OUTPUT"
+      ],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q09-scale",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "AFFECTED",
+      "reason": "明示partsと個別修正を適用",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q09-scaled",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "NOT-AFFECTED",
+      "reason": "この六つの個別欠陥は未検出。共通source-preserving semantic adapterの回帰対象。",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [
+        "F03_OPERATION_WITHOUT_SENTENCE"
+      ],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q09-subtract",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "AFFECTED",
+      "reason": "明示partsと個別修正を適用",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q09-left-form",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "AFFECTED",
+      "reason": "明示partsと個別修正を適用",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [
+        "F04_UNCONNECTED_TRANSFORM",
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q09-coefficient",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "AFFECTED",
+      "reason": "明示partsと個別修正を適用",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q09-right-difference",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "AFFECTED",
+      "reason": "明示partsと個別修正を適用",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q10-divide",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "AFFECTED",
+      "reason": "明示partsと個別修正を適用",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [
+        "F06_MATH_MARKUP_REVIEW",
+        "SAME_ROOT_REDUCTION_RESULT_WITHOUT_RELATION"
+      ],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q10-reduce",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "AFFECTED",
+      "reason": "明示partsと個別修正を適用",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [
+        "F06_MATH_MARKUP_REVIEW",
+        "F05_DEFINITION_TERM_MARKUP"
+      ],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q11-factor-ten",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "AFFECTED",
+      "reason": "明示partsと個別修正を適用",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q11-power",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "AFFECTED",
+      "reason": "明示partsと個別修正を適用",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q11-converse",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "AFFECTED",
+      "reason": "明示partsと個別修正を適用",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q12-powers-two",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "AFFECTED",
+      "reason": "明示partsと個別修正を適用",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [
+        "SAME_ROOT_BARE_FORMULA_ANSWER",
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q12-include-five",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "AFFECTED",
+      "reason": "明示partsと個別修正を適用",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q12-assemble",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "NOT-AFFECTED",
+      "reason": "この六つの個別欠陥は未検出。共通source-preserving semantic adapterの回帰対象。",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [
+        "F06_MATH_MARKUP_REVIEW",
+        "F05_DEFINITION_TERM_MARKUP"
+      ],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q13-difference",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "AFFECTED",
+      "reason": "明示partsと個別修正を適用",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q13-quotient",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "AFFECTED",
+      "reason": "明示partsと個別修正を適用",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [
+        "F06_MATH_MARKUP_REVIEW",
+        "F05_DEFINITION_TERM_MARKUP"
+      ],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q14-real-definition",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "AFFECTED",
+      "reason": "明示partsと個別修正を適用",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q14-reuse",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "NOT-AFFECTED",
+      "reason": "この六つの個別欠陥は未検出。共通source-preserving semantic adapterの回帰対象。",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [
+        "F06_MATH_MARKUP_REVIEW"
+      ],
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "W-GOV-010/N07 CONTENT_APPROVAL",
+      "block_id": "n07-q14-closing",
+      "evidence": [
+        "evidence/SOURCE_AUDIT.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "AFFECTED",
+      "reason": "明示partsと個別修正を適用",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06 / first real workflow trial",
+      "rootCauseSignatures": [
+        "shared-producer-or-reader"
+      ],
+      "artifact": "src/components/textbook/N07ReadingFlow.tsx",
+      "version": "190941bc9d65fb3ed2fa6b52ba90196addf19e33",
+      "approvedCreationWork": "W-GOV-010/P-004",
+      "block_id": "shared",
+      "evidence": [
+        "evidence/RUNTIME_TRIAL.json",
+        "PROPOSAL.md"
+      ],
+      "status": "AFFECTED",
+      "reason": "唯一のN07専用consumer。本文、result、履歴を同じsemantic blocksへ。",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032/P-001 technical prerequisite"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06 / first real workflow trial",
+      "rootCauseSignatures": [
+        "shared-producer-or-reader"
+      ],
+      "artifact": "tools/textbook/compile-lesson.mjs",
+      "version": "190941bc9d65fb3ed2fa6b52ba90196addf19e33",
+      "approvedCreationWork": "W-GOV-010/P-004",
+      "block_id": "shared",
+      "evidence": [
+        "evidence/RUNTIME_TRIAL.json",
+        "PROPOSAL.md"
+      ],
+      "status": "AFFECTED",
+      "reason": "N07 generator/export/CLIで使う旧compiler。plain textと全式番号付与が根因。",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032/P-001 technical prerequisite"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06 / first real workflow trial",
+      "rootCauseSignatures": [
+        "shared-producer-or-reader"
+      ],
+      "artifact": "src/components/textbook/SemanticReading.tsx",
+      "version": "190941bc9d65fb3ed2fa6b52ba90196addf19e33",
+      "approvedCreationWork": "W-GOV-010/P-004",
+      "block_id": "shared",
+      "evidence": [
+        "evidence/RUNTIME_TRIAL.json",
+        "PROPOSAL.md"
+      ],
+      "status": "AFFECTED",
+      "reason": "現在N07から未使用。正式接続が必要。",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032/P-001 technical prerequisite"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06 / first real workflow trial",
+      "rootCauseSignatures": [
+        "shared-producer-or-reader"
+      ],
+      "artifact": "workflow/capabilities.py",
+      "version": "190941bc9d65fb3ed2fa6b52ba90196addf19e33",
+      "approvedCreationWork": "W-GOV-010/P-004",
+      "block_id": "shared",
+      "evidence": [
+        "evidence/RUNTIME_TRIAL.json",
+        "PROPOSAL.md"
+      ],
+      "status": "AFFECTED",
+      "reason": "legacy診断とモデル不在時のcatalog参照を補完。",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032/P-001 technical prerequisite"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06 / first real workflow trial",
+      "rootCauseSignatures": [
+        "shared-producer-or-reader"
+      ],
+      "artifact": "workflow/views.py",
+      "version": "190941bc9d65fb3ed2fa6b52ba90196addf19e33",
+      "approvedCreationWork": "W-GOV-010/P-004",
+      "block_id": "shared",
+      "evidence": [
+        "evidence/RUNTIME_TRIAL.json",
+        "PROPOSAL.md"
+      ],
+      "status": "AFFECTED",
+      "reason": "R01結果だけで実装中とする状態表示を補完。",
+      "phase": "pre-design",
+      "linkedCorrection": "W-MATH-032/P-001 technical prerequisite"
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [
+        "N07-specific-connection"
+      ],
+      "artifact": "first title N01-N06/NE01",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "existing accepted work",
+      "block_id": "protected",
+      "evidence": [
+        "src/pages/TextbookUnitPage.tsx: N07-only branch",
+        "PROPOSAL.md"
+      ],
+      "status": "NOT-AFFECTED",
+      "reason": "N07専用reader/compilerのconsumerではない。受入22bc43baを保持、変更せず回帰。",
+      "phase": "pre-design",
+      "linkedCorrection": null
+    },
+    {
+      "originFinding": "N07-USER-F01..F06",
+      "rootCauseSignatures": [
+        "N07-specific-connection"
+      ],
+      "artifact": "math-sets and other units/modes",
+      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "approvedCreationWork": "existing accepted work",
+      "block_id": "protected",
+      "evidence": [
+        "src/pages/TextbookUnitPage.tsx: N07-only branch",
+        "PROPOSAL.md"
+      ],
+      "status": "NOT-AFFECTED",
+      "reason": "このN07専用経路の修正対象に加えない。全体に同じ欠陥がないとは主張しない。",
+      "phase": "pre-design",
+      "linkedCorrection": null
+    }
+  ],
+  "postFixSweep": "NOT_RUN"
+}

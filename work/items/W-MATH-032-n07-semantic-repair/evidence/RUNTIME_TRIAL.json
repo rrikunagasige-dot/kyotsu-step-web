@@ -1,0 +1,44 @@
+{
+  "simulation": false,
+  "sourceSHA": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+  "R01": "PASSED",
+  "R02": "UNVERIFIED",
+  "next": {
+    "status": "BLOCKED",
+    "reason": "修正・追加証拠・提案改訂が必要",
+    "node": "R02_CAUSE@n07"
+  },
+  "codeResults": [
+    {
+      "capability": "case.retrieve",
+      "status": "FAIL",
+      "receipt": "6373d067b899105cef6df17dd32688eee9eab53f19942c732ad99ec061cc8668",
+      "output": "f6a794d0ef05ab9f9e06d30b469958a3e646570c7c0623e18615c3c669218941",
+      "reason": "Traceback (most recent call last):\n  File \"/workspace/scratch/f79c5816761e/theme-one-repair/tools/textbook/production_cli.py\", line 35, in <module>\n    try:main()\n        ^^^^^^\n  File \"/workspace/scratch/f79c5816761e/theme-one-repair/tools/textbook/production_cli.py\", line 16, in main\n    e=Encoder(data['cache'],**data.get('encoder',{}))\n      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/f79c5816761e/theme-one-repair/tools/textbook/ml/encode.py\", line 14, in __init__\n    import torch\nModuleNotFoundError: No module named 'torch'\n"
+    },
+    {
+      "capability": "ir.verify",
+      "status": "FAIL",
+      "receipt": "a75505d70bdd5ba53fe6dfdbd21025e5888701810f816bb8ea3f6a82347f86eb",
+      "output": "26fc4858e94c5aa7389b8b3dd96b0797ec02f689c858479e7f0bf43cccb085f0",
+      "reason": ""
+    },
+    {
+      "capability": "source.audit",
+      "status": "NEEDS_AI_REVIEW",
+      "receipt": "4ab04886d6a25ab9b1a4c70ed5e62103e47493362525d98d66ba84200179d169",
+      "output": "5f513ec3dbffd679f3d8625e30d6ed5eace5eb73d6563c2e6d3529fa3dc81ee1",
+      "reason": ""
+    },
+    {
+      "capability": "novice.audit",
+      "status": "FAIL",
+      "receipt": "9d9152c30199fa2f0f274813e2195152e3d1f97d1b20d5f7c4f6c5af20f257de",
+      "output": "4463f70684a5c51c23192bc8b2e85ad08d9ead4e32ac7d526d5758817ec5bafd",
+      "reason": "ir.initialFacts is not iterable"
+    }
+  ],
+  "MLTrainingRun": false,
+  "lessonFixed": false,
+  "R03_R04_documents": "proposal drafts, not engine PASS receipts"
+}

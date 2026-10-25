@@ -1,0 +1,316 @@
+{
+  "documentHash": "93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa",
+  "library_file_id": "libfile_882581c670bc819188b9485a8975c54c",
+  "paragraphIndex": "all descendant w:p, identical to import-word.py; not direct body children",
+  "paragraphs": [
+    {
+      "id": "word-p-000297",
+      "locator": "word/document.xml:p[297]",
+      "ordinaryText": "N07　分数と小数で、同じ数を表す",
+      "omml": []
+    },
+    {
+      "id": "word-p-000298",
+      "locator": "word/document.xml:p[298]",
+      "ordinaryText": "例題",
+      "omml": []
+    },
+    {
+      "id": "word-p-000299",
+      "locator": "word/document.xml:p[299]",
+      "ordinaryText": " と  を小数で表し、割り算の続き方を比べよう。",
+      "omml": [
+        "<ns0:oMath xmlns:ns0=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:ns1=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:f><ns0:fPr><ns0:type ns0:val=\"bar\" /></ns0:fPr><ns0:num><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>3</ns0:t></ns0:r></ns0:num><ns0:den><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>4</ns0:t></ns0:r></ns0:den></ns0:f></ns0:oMath>",
+        "<ns0:oMath xmlns:ns0=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:ns1=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:f><ns0:fPr><ns0:type ns0:val=\"bar\" /></ns0:fPr><ns0:num><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>23</ns0:t></ns0:r></ns0:num><ns0:den><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>11</ns0:t></ns0:r></ns0:den></ns0:f></ns0:oMath>"
+      ]
+    },
+    {
+      "id": "word-p-000300",
+      "locator": "word/document.xml:p[300]",
+      "ordinaryText": "【1】  を小数で表そう。割り算はどこで止まるか。［　　　　　　　　　　　　　　　　］",
+      "omml": [
+        "<ns0:oMath xmlns:ns0=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:ns1=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:f><ns0:fPr><ns0:type ns0:val=\"bar\" /></ns0:fPr><ns0:num><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>3</ns0:t></ns0:r></ns0:num><ns0:den><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>4</ns0:t></ns0:r></ns0:den></ns0:f></ns0:oMath>"
+      ]
+    },
+    {
+      "id": "word-p-000301",
+      "locator": "word/document.xml:p[301]",
+      "ordinaryText": " では、整数部分を求めると余りは1になる。次の小数の位では、その余りを10倍して割る。",
+      "omml": [
+        "<ns0:oMath xmlns:ns0=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:ns1=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>23</ns0:t></ns0:r><ns0:r><ns0:rPr><ns0:sty ns0:val=\"p\" /></ns0:rPr><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>÷</ns0:t></ns0:r><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>11</ns0:t></ns0:r></ns0:oMath>"
+      ]
+    },
+    {
+      "id": "word-p-000302",
+      "locator": "word/document.xml:p[302]",
+      "ordinaryText": "先生　「小数の数字だけでなく、各段階の余りも見てください。同じ余りへ戻ったら、その先の計算はどうなるでしょう。」",
+      "omml": []
+    },
+    {
+      "id": "word-p-000303",
+      "locator": "word/document.xml:p[303]",
+      "ordinaryText": "【2】 余り1から始め、次の二つの小数の位の「商の数字、余り」を順に求めよう。［　　　　　　　　　　　　　　　　］",
+      "omml": []
+    },
+    {
+      "id": "word-p-000304",
+      "locator": "word/document.xml:p[304]",
+      "ordinaryText": "【3】 この先の数字はどのように続くか。小数の形で書こう。［　　　　　　　　　　　　　　　　］",
+      "omml": []
+    },
+    {
+      "id": "word-p-000305",
+      "locator": "word/document.xml:p[305]",
+      "ordinaryText": "整数  を用いて （）と表せる数を有理数という。整数も分母を1にすれば、この形になる。小数部分が途中で終わるものを有限小数、終わらないものを無限小数という。無限小数のうち、ある所から同じ数字の並びを繰り返すものを循環小数という。",
+      "omml": [
+        "<ns0:oMath xmlns:ns0=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:ns1=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>m</ns0:t></ns0:r><ns0:r><ns0:rPr><ns0:sty ns0:val=\"p\" /></ns0:rPr><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>,</ns0:t></ns0:r><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>n</ns0:t></ns0:r></ns0:oMath>",
+        "<ns0:oMath xmlns:ns0=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:ns1=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>m</ns0:t></ns0:r><ns0:r><ns0:rPr><ns0:sty ns0:val=\"p\" /></ns0:rPr><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>/</ns0:t></ns0:r><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>n</ns0:t></ns0:r></ns0:oMath>",
+        "<ns0:oMath xmlns:ns0=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:ns1=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>n</ns0:t></ns0:r><ns0:r><ns0:rPr><ns0:sty ns0:val=\"p\" /></ns0:rPr><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>≠</ns0:t></ns0:r><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>0</ns0:t></ns0:r></ns0:oMath>"
+      ]
+    },
+    {
+      "id": "word-p-000306",
+      "locator": "word/document.xml:p[306]",
+      "ordinaryText": "【4】 最初の二つの小数を、今の分類に当てはめよう。［　　　　　　　　　　　　　　　　］",
+      "omml": []
+    },
+    {
+      "id": "word-p-000307",
+      "locator": "word/document.xml:p[307]",
+      "ordinaryText": "性質",
+      "omml": []
+    },
+    {
+      "id": "word-p-000308",
+      "locator": "word/document.xml:p[308]",
+      "ordinaryText": "分母が正の整数  の分数では、筆算の余りは  のいずれかである。",
+      "omml": [
+        "<ns0:oMath xmlns:ns0=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:ns1=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>n</ns0:t></ns0:r></ns0:oMath>",
+        "<ns0:oMath xmlns:ns0=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:ns1=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>0</ns0:t></ns0:r><ns0:r><ns0:rPr><ns0:sty ns0:val=\"p\" /></ns0:rPr><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>,</ns0:t></ns0:r><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>1</ns0:t></ns0:r><ns0:r><ns0:rPr><ns0:sty ns0:val=\"p\" /></ns0:rPr><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>,</ns0:t></ns0:r><ns0:r><ns0:rPr><ns0:sty ns0:val=\"p\" /></ns0:rPr><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>…</ns0:t></ns0:r><ns0:r><ns0:rPr><ns0:sty ns0:val=\"p\" /></ns0:rPr><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>,</ns0:t></ns0:r><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>n</ns0:t></ns0:r><ns0:r><ns0:rPr><ns0:sty ns0:val=\"p\" /></ns0:rPr><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>−</ns0:t></ns0:r><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>1</ns0:t></ns0:r></ns0:oMath>"
+      ]
+    },
+    {
+      "id": "word-p-000309",
+      "locator": "word/document.xml:p[309]",
+      "ordinaryText": "【5】 余りが0にならずに計算が続いたら、なぜ同じ余りが再び現れるのだろう。［　　　　　　　　　　　　　　　　］",
+      "omml": []
+    },
+    {
+      "id": "word-p-000310",
+      "locator": "word/document.xml:p[310]",
+      "ordinaryText": "同じ余りに戻ると、次の位を求める計算も同じになる。そのため、有理数の小数表示は有限小数か循環小数になる。終わらない小数でも、有理数であるものがある。",
+      "omml": []
+    },
+    {
+      "id": "word-p-000311",
+      "locator": "word/document.xml:p[311]",
+      "ordinaryText": "繰り返す部分をそろえて消す",
+      "omml": []
+    },
+    {
+      "id": "word-p-000312",
+      "locator": "word/document.xml:p[312]",
+      "ordinaryText": "例題",
+      "omml": []
+    },
+    {
+      "id": "word-p-000313",
+      "locator": "word/document.xml:p[313]",
+      "ordinaryText": " を分数で表そう。この数を  と置く。8は小数第1位から無限に繰り返すものとする。",
+      "omml": [
+        "<ns0:oMath xmlns:ns0=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:ns1=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>0.8888</ns0:t></ns0:r><ns0:r><ns0:rPr><ns0:sty ns0:val=\"p\" /></ns0:rPr><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>…</ns0:t></ns0:r></ns0:oMath>",
+        "<ns0:oMath xmlns:ns0=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:ns1=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>x</ns0:t></ns0:r></ns0:oMath>"
+      ]
+    },
+    {
+      "id": "word-p-000314",
+      "locator": "word/document.xml:p[314]",
+      "ordinaryText": "花子　「小数はいつまでも続くけれど、同じ並びなら、そろえて引くことはできそう。」",
+      "omml": []
+    },
+    {
+      "id": "word-p-000315",
+      "locator": "word/document.xml:p[315]",
+      "ordinaryText": "先生　「 を10、100、1000、…倍した形を比べます。小数部分が元と同じ並びになる、いちばん小さい倍率を探しましょう。」",
+      "omml": [
+        "<ns0:oMath xmlns:ns0=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:ns1=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>x</ns0:t></ns0:r></ns0:oMath>"
+      ]
+    },
+    {
+      "id": "word-p-000316",
+      "locator": "word/document.xml:p[316]",
+      "ordinaryText": "【6】 その倍率と、掛けた後の小数を書こう。［　　　　　　　　　　　　　　　　］",
+      "omml": []
+    },
+    {
+      "id": "word-p-000317",
+      "locator": "word/document.xml:p[317]",
+      "ordinaryText": "【7】 作った等式から  を引き、残る等式を書こう。［　　　　　　　　　　　　　　　　］",
+      "omml": [
+        "<ns0:oMath xmlns:ns0=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:ns1=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>x</ns0:t></ns0:r><ns0:r><ns0:rPr><ns0:sty ns0:val=\"p\" /></ns0:rPr><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>=</ns0:t></ns0:r><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>0.8888</ns0:t></ns0:r><ns0:r><ns0:rPr><ns0:sty ns0:val=\"p\" /></ns0:rPr><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>…</ns0:t></ns0:r></ns0:oMath>"
+      ]
+    },
+    {
+      "id": "word-p-000318",
+      "locator": "word/document.xml:p[318]",
+      "ordinaryText": "【8】  を求め、元の循環小数を分数で表そう。［　　　　　　　　　　　　　　　　］",
+      "omml": [
+        "<ns0:oMath xmlns:ns0=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:ns1=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>x</ns0:t></ns0:r></ns0:oMath>"
+      ]
+    },
+    {
+      "id": "word-p-000319",
+      "locator": "word/document.xml:p[319]",
+      "ordinaryText": "無限に続く数字を最後まで計算したのではない。同じ小数部分をそろえて消し、有限の等式に直したのである。",
+      "omml": []
+    },
+    {
+      "id": "word-p-000320",
+      "locator": "word/document.xml:p[320]",
+      "ordinaryText": "確認",
+      "omml": []
+    },
+    {
+      "id": "word-p-000321",
+      "locator": "word/document.xml:p[321]",
+      "ordinaryText": "同じ方法で、 を分数にしよう。69が小数第1位から繰り返す。",
+      "omml": [
+        "<ns0:oMath xmlns:ns0=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:ns1=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>0.696969</ns0:t></ns0:r><ns0:r><ns0:rPr><ns0:sty ns0:val=\"p\" /></ns0:rPr><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>…</ns0:t></ns0:r></ns0:oMath>"
+      ]
+    },
+    {
+      "id": "word-p-000322",
+      "locator": "word/document.xml:p[322]",
+      "ordinaryText": "【9】 小数部分をそろえる最小の倍率を選び、元の数を引いて得る等式まで書こう。［　　　　　　　　　　　　　　　　］",
+      "omml": []
+    },
+    {
+      "id": "word-p-000323",
+      "locator": "word/document.xml:p[323]",
+      "ordinaryText": "【10】 既約分数で答えよう。［　　　　　　　　　　　　　　　　］",
+      "omml": []
+    },
+    {
+      "id": "word-p-000324",
+      "locator": "word/document.xml:p[324]",
+      "ordinaryText": "例題",
+      "omml": []
+    },
+    {
+      "id": "word-p-000325",
+      "locator": "word/document.xml:p[325]",
+      "ordinaryText": " の整数のうち、 が有限小数になるものをすべて求める。",
+      "omml": [
+        "<ns0:oMath xmlns:ns0=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:ns1=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>2</ns0:t></ns0:r><ns0:r><ns0:rPr><ns0:sty ns0:val=\"p\" /></ns0:rPr><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>≤</ns0:t></ns0:r><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>a</ns0:t></ns0:r><ns0:r><ns0:rPr><ns0:sty ns0:val=\"p\" /></ns0:rPr><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>≤</ns0:t></ns0:r><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>20</ns0:t></ns0:r></ns0:oMath>",
+        "<ns0:oMath xmlns:ns0=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:ns1=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>1</ns0:t></ns0:r><ns0:r><ns0:rPr><ns0:sty ns0:val=\"p\" /></ns0:rPr><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>/</ns0:t></ns0:r><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>a</ns0:t></ns0:r></ns0:oMath>"
+      ]
+    },
+    {
+      "id": "word-p-000326",
+      "locator": "word/document.xml:p[326]",
+      "ordinaryText": "先生　「一つずつ小数に直す前に、有限小数を分数へ戻すときの分母を見てみましょう。」",
+      "omml": []
+    },
+    {
+      "id": "word-p-000327",
+      "locator": "word/document.xml:p[327]",
+      "ordinaryText": "【11】 有限小数の分母になる  を素因数の積で表そう。 は正の整数とする。［　　　　　　　　　　　　　　　　］",
+      "omml": [
+        "<ns0:oMath xmlns:ns0=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:ns1=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:sSup><ns0:e><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>10</ns0:t></ns0:r></ns0:e><ns0:sup><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>k</ns0:t></ns0:r></ns0:sup></ns0:sSup></ns0:oMath>",
+        "<ns0:oMath xmlns:ns0=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:ns1=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>k</ns0:t></ns0:r></ns0:oMath>"
+      ]
+    },
+    {
+      "id": "word-p-000328",
+      "locator": "word/document.xml:p[328]",
+      "ordinaryText": "約分しても、新しい種類の素因数が分母へ現れることはない。反対に、分母の素因数がこの二種類だけなら、足りない因数を補って10の累乗にできる。",
+      "omml": []
+    },
+    {
+      "id": "word-p-000329",
+      "locator": "word/document.xml:p[329]",
+      "ordinaryText": "【12】 この条件を満たす  を、範囲内で漏れなく選ぼう。［　　　　　　　　　　　　　　　　］",
+      "omml": [
+        "<ns0:oMath xmlns:ns0=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:ns1=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>a</ns0:t></ns0:r></ns0:oMath>"
+      ]
+    },
+    {
+      "id": "word-p-000330",
+      "locator": "word/document.xml:p[330]",
+      "ordinaryText": "数の範囲を広げる",
+      "omml": []
+    },
+    {
+      "id": "word-p-000331",
+      "locator": "word/document.xml:p[331]",
+      "ordinaryText": "例題",
+      "omml": []
+    },
+    {
+      "id": "word-p-000332",
+      "locator": "word/document.xml:p[332]",
+      "ordinaryText": "自然数  の差や商は、いつも自然数だろうか。 の場合を考える。ここでは自然数を正の整数とする。",
+      "omml": [
+        "<ns0:oMath xmlns:ns0=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:ns1=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>a</ns0:t></ns0:r><ns0:r><ns0:rPr><ns0:sty ns0:val=\"p\" /></ns0:rPr><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>,</ns0:t></ns0:r><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>b</ns0:t></ns0:r></ns0:oMath>",
+        "<ns0:oMath xmlns:ns0=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:ns1=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>a</ns0:t></ns0:r><ns0:r><ns0:rPr><ns0:sty ns0:val=\"p\" /></ns0:rPr><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>=</ns0:t></ns0:r><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>2</ns0:t></ns0:r><ns0:r><ns0:rPr><ns0:sty ns0:val=\"p\" /></ns0:rPr><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>,</ns0:t></ns0:r><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>b</ns0:t></ns0:r><ns0:r><ns0:rPr><ns0:sty ns0:val=\"p\" /></ns0:rPr><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>=</ns0:t></ns0:r><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>3</ns0:t></ns0:r></ns0:oMath>"
+      ]
+    },
+    {
+      "id": "word-p-000333",
+      "locator": "word/document.xml:p[333]",
+      "ordinaryText": "【13】  と  を求め、どちらも自然数になるか判断しよう。［　　　　　　　　　　　　　　　　］",
+      "omml": [
+        "<ns0:oMath xmlns:ns0=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:ns1=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>a</ns0:t></ns0:r><ns0:r><ns0:rPr><ns0:sty ns0:val=\"p\" /></ns0:rPr><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>−</ns0:t></ns0:r><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>b</ns0:t></ns0:r></ns0:oMath>",
+        "<ns0:oMath xmlns:ns0=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:ns1=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>a</ns0:t></ns0:r><ns0:r><ns0:rPr><ns0:sty ns0:val=\"p\" /></ns0:rPr><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>/</ns0:t></ns0:r><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>b</ns0:t></ns0:r></ns0:oMath>"
+      ]
+    },
+    {
+      "id": "word-p-000334",
+      "locator": "word/document.xml:p[334]",
+      "ordinaryText": "数の範囲を整数へ広げると差を、有理数へ広げると0でない数による商も扱える。さらに、 や円周率  のように、有理数ではない数を無理数という。有理数と無理数を合わせた数全体を実数という。",
+      "omml": [
+        "<ns0:oMath xmlns:ns0=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:ns1=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:rad><ns0:radPr><ns0:degHide ns0:val=\"on\" /></ns0:radPr><ns0:deg /><ns0:e><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>2</ns0:t></ns0:r></ns0:e></ns0:rad></ns0:oMath>",
+        "<ns0:oMath xmlns:ns0=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:ns1=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>π</ns0:t></ns0:r></ns0:oMath>"
+      ]
+    },
+    {
+      "id": "word-p-000335",
+      "locator": "word/document.xml:p[335]",
+      "ordinaryText": "花子　「小数が終わるかどうかと、分数で表せるかどうかは、同じ区別ではないんだね。」",
+      "omml": []
+    },
+    {
+      "id": "word-p-000336",
+      "locator": "word/document.xml:p[336]",
+      "ordinaryText": "【14】 先ほど分数に直した0.696969…は、有理数と無理数のどちらか。理由も添えよう。［　　　　　　　　　　　　　　　　］",
+      "omml": []
+    },
+    {
+      "id": "word-p-000337",
+      "locator": "word/document.xml:p[337]",
+      "ordinaryText": "無理数は循環しない無限小数で表される。 が有理数ではないことの証明は、「命題と証明」で扱う。ここでは数の分類と表し方を整理する。",
+      "omml": [
+        "<ns0:oMath xmlns:ns0=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:ns1=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:rad><ns0:radPr><ns0:degHide ns0:val=\"on\" /></ns0:radPr><ns0:deg /><ns0:e><ns0:r><ns1:rPr><ns1:rFonts ns1:ascii=\"STIX Math\" ns1:hAnsi=\"STIX Math\" /></ns1:rPr><ns0:t>2</ns0:t></ns0:r></ns0:e></ns0:rad></ns0:oMath>"
+      ]
+    },
+    {
+      "id": "word-p-000338",
+      "locator": "word/document.xml:p[338]",
+      "ordinaryText": "実数でも交換法則、結合法則、分配法則が成り立つ。これまでの文字式の変形は、文字に実数を入れた場合にも使える。ただし、0で割ることはできない。",
+      "omml": []
+    },
+    {
+      "id": "word-p-000339",
+      "locator": "word/document.xml:p[339]",
+      "ordinaryText": "次は実数を数直線上の点として見て、符号とは別に「原点からの距離」を表す方法を考える。",
+      "omml": []
+    },
+    {
+      "id": "word-p-000340",
+      "locator": "word/document.xml:p[340]",
+      "ordinaryText": "第2節　実数",
+      "omml": []
+    }
+  ],
+  "mathTextWarning": "Do not flatten OMML fractions/radicals into concatenated digits."
+}

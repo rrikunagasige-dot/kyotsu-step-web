@@ -1,0 +1,127 @@
+{
+  "approval_bundles": [
+    {
+      "block_ids": [
+        "n07"
+      ],
+      "content_hash": "11897c9e5c68408e6ea661193a8b449d331f3acfbd59652b7fadfeaf9a3646de",
+      "id": "proposal",
+      "proposal_hash": "11897c9e5c68408e6ea661193a8b449d331f3acfbd59652b7fadfeaf9a3646de"
+    }
+  ],
+  "blocks": [
+    {
+      "change_facets": [
+        "design",
+        "render"
+      ],
+      "depends_on_blocks": [],
+      "fact_dependencies": [],
+      "id": "n07",
+      "node_refs": [
+        "n07-q01-tenths",
+        "n07-q01-hundredths",
+        "n07-q01-end",
+        "n07-q02-integer",
+        "n07-q02-digit-0",
+        "n07-q02-remainder-0",
+        "n07-q02-digit-1",
+        "n07-q02-remainder-1",
+        "n07-q03-cycle",
+        "n07-q04-definitions",
+        "n07-q04-finite",
+        "n07-q04-rational",
+        "n07-q05-remainders",
+        "n07-q05-property",
+        "n07-q06-scale",
+        "n07-q06-scaled",
+        "n07-q07-subtract",
+        "n07-q07-left-form",
+        "n07-q07-coefficient",
+        "n07-q07-right-difference",
+        "n07-q08-divide",
+        "n07-q08-meaning",
+        "n07-q09-scale",
+        "n07-q09-scaled",
+        "n07-q09-subtract",
+        "n07-q09-left-form",
+        "n07-q09-coefficient",
+        "n07-q09-right-difference",
+        "n07-q10-divide",
+        "n07-q10-reduce",
+        "n07-q11-factor-ten",
+        "n07-q11-power",
+        "n07-q11-converse",
+        "n07-q12-powers-two",
+        "n07-q12-include-five",
+        "n07-q12-assemble",
+        "n07-q13-difference",
+        "n07-q13-quotient",
+        "n07-q14-real-definition",
+        "n07-q14-reuse",
+        "n07-q14-closing"
+      ],
+      "release_unit": "n07",
+      "sources": [
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css",
+        "tools/textbook/fixtures/n07-source-index.json"
+      ]
+    }
+  ],
+  "command": "CMD-WORK-001",
+  "correction_queue_refs": [
+    "work/items/W-GOV-010-learning-production-workflow/n07/feedback/NEGATIVE_CASES.json"
+  ],
+  "mode": "textbook",
+  "profile": "material",
+  "proposal": {
+    "hash": "ecfe20080c79ac8d8490630dafee2da92613709eae64a1ca47e626b0d7278c4a",
+    "id": "W-MATH-032/P-001"
+  },
+  "protected_manifest": {
+    "src/data/textbook/math/numbers/firstSectionTeaching.json": "012a17753605a42c51428f6075eb5d59a5724af0c762e0e9b598c82ad7cb871b"
+  },
+  "release_units": [
+    {
+      "block_ids": [
+        "n07"
+      ],
+      "id": "n07",
+      "review_route": "/learning/textbook/math-numbers-expressions-n07"
+    }
+  ],
+  "rules": {
+    "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
+    "governance/REVIEW_POLICY.json": "a71148f007a79b124385c7645e6bc01564bfa02b12152174883543f31f6ce72d",
+    "governance/WORK_SYSTEM.md": "37b0b0e0fecc79d7c067e17ec8dbeb53d53863f04369171d65ef652a176eb093",
+    "memory/LESSONS/MATH_TYPESETTING_GROUPS.md": "8047831b13d22ffb773f68e23ab788a3490e4b69ebbf5d5d357f9f786ed53d0a",
+    "subjects/mathematics/textbook/SPEC.md": "a36959ae6f951e855c3e60d280d02a0f20c6e23185d9eb90b17ffbc889c63277"
+  },
+  "scope": {
+    "paths": [
+      "src/components/textbook/N07ReadingFlow.tsx",
+      "src/components/textbook/SemanticReading.tsx",
+      "src/components/textbook/n07-reading.css",
+      "src/data/textbook/math/numbers/n07Authored.json",
+      "tools/textbook/",
+      "workflow/",
+      "work/items/W-MATH-032-n07-semantic-repair/"
+    ],
+    "preserve": [
+      "src/data/textbook/math/numbers/firstSectionTeaching.json"
+    ]
+  },
+  "simulation": false,
+  "source_manifest": {
+    "src/components/textbook/N07ReadingFlow.tsx": "b35615baac0c2715930c5d6d0cbdb41d729508259a251780f05f07bfbe4e508f",
+    "src/components/textbook/n07-reading.css": "8e3a4e20749a3a0048165864af2408118c6903676db8cb4c4242a54d78c3e163",
+    "src/data/textbook/math/numbers/n07Authored.json": "f534b84c116ce200f0ac405eec0f130137186bd2a74854443113c716fe40c712",
+    "tools/textbook/fixtures/n07-source-index.json": "62a1ad951166eabc9672eca0a81a997aa6a362fe01aed045705caecd77a2982b"
+  },
+  "source_sha": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+  "subject": "math",
+  "work_id": "W-MATH-032",
+  "workflow_version": "production/2"
+}

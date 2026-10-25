@@ -8,16 +8,16 @@
   "implementation": {
     "repository": "rrikunagasige-dot/kyotsu-step-web",
     "repoId": 1391122224,
-    "sourceSHA": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+    "sourceSHA": "058c4ea32474b563487292b583f7a01df4f9c4f1",
     "branch": "work/n07-semantic-repair-proposal-20261025",
     "entry": "workflow/INTEGRATION_RUNBOOK.md",
-    "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6/workflow/INTEGRATION_RUNBOOK.md"
+    "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/058c4ea32474b563487292b583f7a01df4f9c4f1/workflow/INTEGRATION_RUNBOOK.md"
   },
   "verification": {
-    "runId": 40154122715,
-    "sourceSHA": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+    "runId": 40157340081,
+    "sourceSHA": "058c4ea32474b563487292b583f7a01df4f9c4f1",
     "conclusion": "success",
-    "workflowTests": 129,
+    "workflowTests": 131,
     "newIntegrationTests": 42,
     "learnerTests": 620,
     "browserWidths": [
@@ -28,14 +28,16 @@
     ],
     "additionalRepairWorkflowTests": 9,
     "authoringChecks": 39,
-    "repairNodeTests": 6
+    "repairNodeTests": 6,
+    "corpusMLSourceTests": 11,
+    "diagramPanels": 5
   },
   "reviewSurface": "existing-public-app",
   "screenshotApprovalRequired": false,
   "repeatPublicationApproval": false,
   "contentDesignApprovalRequired": true,
   "modelStatus": "OFFLINE_ONLY",
-  "newLessonAccepted": false,
+  "newLessonAccepted": true,
   "protectedAppSource": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
   "adoption": "Pinned verified C/R tools and exact published N07 source; no whole-branch merge",
   "legacyVersions": [
@@ -51,7 +53,30 @@
     "sourceSHA": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
     "status": "success",
     "sourceVerified": true,
-    "userAccepted": false
+    "userAccepted": true
   },
-  "metadataGovernanceScope": "Whole-repository Markdown metadata checker is not claimed PASS; actual immutable approval and remaining legacy metadata limitations are in W-MATH-032/FINDINGS.md."
+  "metadataGovernanceScope": "Whole-repository Markdown metadata checker is not claimed PASS; actual immutable approval and remaining legacy metadata limitations are in W-MATH-032/FINDINGS.md.",
+  "acceptance": {
+    "event": "W032-N07-APP-ACCEPTED-20261025",
+    "work": "W-MATH-032",
+    "status": "DONE",
+    "sourceSHA": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6"
+  },
+  "learning": {
+    "trainingRun": true,
+    "evaluatedCases": 10,
+    "positive": 3,
+    "negative": 7,
+    "newPositive": 1,
+    "trainedHeads": {
+      "layout_discomfort": 2
+    },
+    "newOverallHead": "NOT_TRAINABLE_SINGLE_CLASS",
+    "advisoryEligible": false,
+    "unseenHoldout": false,
+    "modelHash": "144ba2ed582420eacacb68212905032fa6fd32c37077a9b278e23676c5c1ac91",
+    "catalog": "work/items/W-MATH-032-n07-semantic-repair/LEARNING_CORPUS.json",
+    "model": "work/items/W-MATH-032-n07-semantic-repair/MODEL_RESULT.json"
+  },
+  "sharedRuntimeStore": "work/items/W-MATH-032-n07-semantic-repair/runtime"
 }

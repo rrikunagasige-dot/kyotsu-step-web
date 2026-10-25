@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "codeSourceSHA": "058c4ea32474b563487292b583f7a01df4f9c4f1",
+  "ciRun": 40157340081,
+  "visualReview": [
+    "overview",
+    "correction"
+  ],
+  "browserPanels": {
+    "status": "PASS",
+    "sourceSHA": "058c4ea32474b563487292b583f7a01df4f9c4f1",
+    "panels": [
+      {
+        "panel": "overview",
+        "width": 1280,
+        "height": 3030,
+        "texts": 110,
+        "bad": []
+      },
+      {
+        "panel": "common",
+        "width": 1280,
+        "height": 2044,
+        "texts": 94,
+        "bad": []
+      },
+      {
+        "panel": "creation",
+        "width": 1280,
+        "height": 2044,
+        "texts": 93,
+        "bad": []
+      },
+      {
+        "panel": "correction",
+        "width": 1280,
+        "height": 1848,
+        "texts": 82,
+        "bad": []
+      },
+      {
+        "panel": "learning",
+        "width": 1280,
+        "height": 1456,
+        "texts": 61,
+        "bad": []
+      }
+    ],
+    "errors": []
+  },
+  "previews": {
+    "correction.png": "d0cd231b17f01048b2d7982c12bc719d14d802ae2b59c7a22450c9bad51e08ef",
+    "learning.png": "54f922a2cba381970dc7ccd108db7064e9082adabce4dce10adf088f5c8bc8ce",
+    "overview.png": "d23a95e27c30032246d5356f730e79be564d496ff65bec10cc0be46898454b81",
+    "common.png": "6c9fb08b7a47edba2012c0dfeb0d92f18279d86c290f86378547dd9210fadf0b",
+    "creation.png": "61f18e64e152d9a8c3dc1a2242e7a3c8bb17f1abd52f93f1f4819364486bdaca"
+  }
+}

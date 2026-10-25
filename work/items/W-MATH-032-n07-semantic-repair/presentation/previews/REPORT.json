@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "sourceSHA": "058c4ea32474b563487292b583f7a01df4f9c4f1",
+  "panels": [
+    {
+      "panel": "overview",
+      "width": 1280,
+      "height": 3030,
+      "texts": 110,
+      "bad": []
+    },
+    {
+      "panel": "common",
+      "width": 1280,
+      "height": 2044,
+      "texts": 94,
+      "bad": []
+    },
+    {
+      "panel": "creation",
+      "width": 1280,
+      "height": 2044,
+      "texts": 93,
+      "bad": []
+    },
+    {
+      "panel": "correction",
+      "width": 1280,
+      "height": 1848,
+      "texts": 82,
+      "bad": []
+    },
+    {
+      "panel": "learning",
+      "width": 1280,
+      "height": 1456,
+      "texts": 61,
+      "bad": []
+    }
+  ],
+  "errors": []
+}

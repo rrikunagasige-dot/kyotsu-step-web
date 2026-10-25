@@ -14,3 +14,5 @@ Status: ACTIVE / proposal-only
 - N08で追加した肯定はoverall_material_acceptance一件。排版単独の肯定や各修正のGoldへ分割しない。11件3familyになっても未知holdoutはなく、一般化精度は推定不可。モデルはOFFLINE_ONLY。
 
 同じassistantによる原資料/初学者/反証の再読であり、別AIの独立監査ではない。現行dataのsource-level監査で、実DOM監査は実装後。候補compileを実アプリの完成と呼ばない。全repo旧Markdownメタデータ検査の完全PASSも主張しない。
+
+実画面CI40166774249: 全620回帰・5専用・buildとprotected UIはPASS。N09 Q08の4選択肢が320pxでformula overflow。既存のtextbookDisplayLines(n09-08)による3短行を共通readerの選択肢と完成式へ接続した。採点文字列と凍結IRは不変。全4選択肢の3行projectionを実React操作で検査し、専用6件PASS。失敗CIと実画像artifactをevidence/INITIAL_UI_FAILURE.jsonへ保持。失敗runをsuccess-only CI証拠へ登録しようとした拒否とrender facetへ文字列を渡した拒否も台帳に残し、実失敗ファイル証拠/Store artifact hashという既存契約で再開。

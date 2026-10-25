@@ -1,0 +1,30 @@
+{
+  "runId": 40166774249,
+  "sourceSHA": "8efe6b55175650a423e2317d1881507cb597fe9a",
+  "conclusion": "failure",
+  "artifactId": 12587909155,
+  "artifactSHA256": "c9051b602ba6478502b9e009ebfc6ef5e425da63f2d4da86932350267a794db5",
+  "actualFailure": {
+    "label": "n09-08 options",
+    "failures": [
+      "formula overflow guided-option-n09-08-0",
+      "formula overflow guided-option-n09-08-1",
+      "formula overflow guided-option-n09-08-2",
+      "formula overflow guided-option-n09-08-3"
+    ],
+    "overflow": [
+      {
+        "tag": "path",
+        "class": {},
+        "text": "",
+        "right": 7974.949905395508
+      },
+      {
+        "tag": "path",
+        "class": {},
+        "text": "",
+        "right": 6400.145149230957
+      }
+    ]
+  }
+}

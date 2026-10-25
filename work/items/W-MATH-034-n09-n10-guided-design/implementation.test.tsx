@@ -1,4 +1,5 @@
 import {describe,it,expect} from 'vitest'
+import {render,fireEvent,cleanup} from '@testing-library/react'
 import {renderToStaticMarkup} from 'react-dom/server'
 import {execFileSync} from 'node:child_process'
 import {GuidedMathReadingFlow} from '../../../src/components/textbook/GuidedMathReadingFlow'
@@ -43,4 +44,16 @@ describe('W034 N09 approved reader and old saves',()=>{
   for(const id of ['n09-11-result','n09-12-result','n09-13-result'])expect(refs.querySelector('[data-result-source="'+id+'"]')).not.toBeNull()
   const table=doc.querySelector('[data-testid="n09-14-table"]')!;expect(table.querySelectorAll('tbody tr')).toHaveLength(2);expect(table.textContent).toContain('小数部分')
  })
+ it('uses the accepted three short rows for every Q08 option',()=>{
+  let progress:TextbookUnitProgress|undefined
+  for(const item of unit.sections[0].items){if(item.id==='n09-08')break;progress=answerTextbookItem(progress,unit,item,item.answer,20)}
+  localStorage.setItem(key,'5')
+  const view=render(<GuidedMathReadingFlow presentation={data} unit={unit} section={unit.sections[0]} progress={progress} />)
+  fireEvent.click(view.getByTestId('textbook-item-n09-08'))
+  const options=view.getByTestId('inline-choice-panel-n09-08').querySelectorAll('.reading-choice-option')
+  expect(options).toHaveLength(4)
+  for(const option of options)expect(option.querySelectorAll('.guided-independent-lines .reading-formula-line')).toHaveLength(3)
+  cleanup()
+ })
+
 })

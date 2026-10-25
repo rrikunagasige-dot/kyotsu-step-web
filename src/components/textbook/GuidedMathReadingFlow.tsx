@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { InlineMath } from 'react-katex'
+import { textbookDisplayLines } from '../../domain/textbookDisplayLines'
 import { SemanticReading } from './SemanticReading'
 import { TypesetFormula, TypesetInlineMath } from './TypesetFormula'
 import { NumberedEquation } from './NumberedEquation'
@@ -63,6 +64,12 @@ export function GuidedMathReadingFlow({ presentation, unit, section, progress, o
       <TypesetFormula source={right} sourceId={id + '-right'} unitId={unit.unitId} parts={parts} itemIds={itemIds} />
     </span>
   }
+  function formula(source: string, id: string, parts: readonly ReactNode[] = [], itemIds: Record<number, string> = {}) {
+    const rows = (id.startsWith('n09-08-') || id.includes('option-n09-08-')) && !source.includes('§')
+      ? textbookDisplayLines('n09-08', source) : [source]
+    if (rows.length === 1) return <TypesetFormula source={source} sourceId={id} unitId={unit.unitId} parts={parts} itemIds={itemIds} />
+    return <span className="guided-independent-lines" data-typeset-source={id}>{rows.map((row, i) => <TypesetFormula key={i} source={row} sourceId={id + '-row-' + i} unitId={unit.unitId} />)}</span>
+  }
   function semantic(parts: readonly unknown[] = []) {
     return (parts as TextbookReadingPart[]).map((p, i) => p.type === 'math'
       ? <span key={p.semanticId ?? i} data-semantic-id={p.semanticId}>{logical(p.latex, p.semanticId ?? 'guided-inline-' + i) ?? <TypesetInlineMath latex={p.latex.replace(/\\\s+$/, '')} sourceId={p.semanticId ?? 'guided-inline-' + i} unitId={unit.unitId} />}</span>
@@ -99,7 +106,7 @@ export function GuidedMathReadingFlow({ presentation, unit, section, progress, o
               else answer(unit, id, choice)
               if (choice === item.answer || item.acceptedAnswers.includes(choice)) setActiveId(null)
             }}><span>{index + 1}</span><strong>{item.answerType === 'formula' && !choice.includes('\\text{')
-              ? <TypesetFormula source={choice} sourceId={'guided-option-' + id + '-' + index} unitId={unit.unitId} />
+              ? formula(choice, 'guided-option-' + id + '-' + index)
               : semantic(displays[node.id].choices[choice])}</strong></button>)}
       </div>
     </div>
@@ -117,7 +124,7 @@ export function GuidedMathReadingFlow({ presentation, unit, section, progress, o
     const source = block.parts.map((p, i) => p.type === 'math' ? p.latex : p.type === 'choice' ? '§' + i + '§' : '\\text{' + p.text + '}').join('')
     const itemIds = Object.fromEntries(block.parts.flatMap((p, i) => p.type === 'choice' ? [[i, p.itemId]] : []))
     return <div key={block.id} data-block-id={block.id} data-formula-semantic-parts={JSON.stringify(block.parts)}>
-      <NumberedEquation number={formulaNumbers[block.id]} logical>{logical(source, block.id, mathParts, itemIds) ?? <TypesetFormula source={source} sourceId={block.id} unitId={unit.unitId} parts={mathParts} itemIds={itemIds} />}</NumberedEquation>
+      <NumberedEquation number={formulaNumbers[block.id]} logical>{logical(source, block.id, mathParts, itemIds) ?? formula(source, block.id, mathParts, itemIds)}</NumberedEquation>
       {choices.map(panel)}
     </div>
   }

@@ -29,3 +29,5 @@
 
 .guided-reading .guided-logical-chain { display: grid; grid-template-columns: minmax(0, 1fr); width: 100%; margin-block: .5rem; gap: .25rem; text-align: center; }
 .guided-reading .guided-logical-arrow { display: block; line-height: 1.2; }
+
+.guided-reading .guided-independent-lines { display: grid; gap: .3rem; width: 100%; min-width: 0; }

@@ -1,0 +1,11 @@
+{
+  "sourceSHA": "8efe6b55175650a423e2317d1881507cb597fe9a",
+  "learnerTests": 620,
+  "n09Tests": 5,
+  "typecheck": "PASS",
+  "build": "PASS_LOCAL; pending exact-source CI",
+  "lint": "PASS",
+  "approvedInputsFrozen": true,
+  "n10": "WORK_CANDIDATE_ONLY",
+  "nativeScheduler": "N09 R07; N10 waits behind actual N09 G3_FINAL; same bundle approval already present"
+}

@@ -435,28 +435,16 @@
             "derivationId": "ne02-02-interaction"
           },
           {
-            "id": "ne02-02-equation-0",
+            "id": "ne02-02-equation",
             "type": "formula",
+            "derivationId": "ne02-02-equation",
             "parts": [
               {
                 "type": "math",
-                "latex": "a+b=5",
-                "semanticId": "w36-p-46"
+                "latex": "\\begin{aligned}a+b&=5\\\\ab&=6\\end{aligned}",
+                "semanticId": "ne02-02-aligned-result"
               }
-            ],
-            "derivationId": "ne02-02-equation"
-          },
-          {
-            "id": "ne02-02-equation-1",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "ab=6",
-                "semanticId": "w36-p-47"
-              }
-            ],
-            "derivationId": "ne02-02-equation"
+            ]
           },
           {
             "id": "ne02-02-after",
@@ -533,28 +521,16 @@
             "derivationId": "ne02-q03-pairs-interaction"
           },
           {
-            "id": "ne02-q03-pairs-equation-0",
+            "id": "ne02-q03-pairs-equation",
             "type": "formula",
+            "derivationId": "ne02-q03-pairs-equation",
             "parts": [
               {
                 "type": "math",
-                "latex": "1+6=7",
-                "semanticId": "w36-p-58"
+                "latex": "\\begin{aligned}1+6&=7\\\\2+3&=5\\end{aligned}",
+                "semanticId": "ne02-q03-pairs-aligned-result"
               }
-            ],
-            "derivationId": "ne02-q03-pairs-equation"
-          },
-          {
-            "id": "ne02-q03-pairs-equation-1",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "2+3=5",
-                "semanticId": "w36-p-59"
-              }
-            ],
-            "derivationId": "ne02-q03-pairs-equation"
+            ]
           },
           {
             "id": "ne02-q03-pairs-after",
@@ -621,28 +597,16 @@
             "derivationId": "ne02-03-interaction"
           },
           {
-            "id": "ne02-03-equation-0",
+            "id": "ne02-03-equation",
             "type": "formula",
+            "derivationId": "ne02-03-equation",
             "parts": [
               {
                 "type": "math",
-                "latex": "a=2",
-                "semanticId": "w36-p-68"
+                "latex": "\\begin{aligned}a&=2\\\\b&=3\\quad(\\text{順不同})\\end{aligned}",
+                "semanticId": "ne02-03-aligned-result"
               }
-            ],
-            "derivationId": "ne02-03-equation"
-          },
-          {
-            "id": "ne02-03-equation-1",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "b=3\\quad(\\text{順不同})",
-                "semanticId": "w36-p-69"
-              }
-            ],
-            "derivationId": "ne02-03-equation"
+            ]
           },
           {
             "id": "ne02-03-after",
@@ -829,28 +793,16 @@
             "derivationId": "ne02-04-interaction"
           },
           {
-            "id": "ne02-04-equation-0",
+            "id": "ne02-04-equation",
             "type": "formula",
+            "derivationId": "ne02-04-equation",
             "parts": [
               {
                 "type": "math",
-                "latex": "\\sqrt2+\\sqrt3>0",
-                "semanticId": "w36-p-88"
+                "latex": "\\begin{aligned}\\sqrt2+\\sqrt3&>0\\\\\\sqrt{5+2\\sqrt6}&=\\sqrt2+\\sqrt3\\end{aligned}",
+                "semanticId": "ne02-04-aligned-result"
               }
-            ],
-            "derivationId": "ne02-04-equation"
-          },
-          {
-            "id": "ne02-04-equation-1",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "\\sqrt{5+2\\sqrt6}=\\sqrt2+\\sqrt3",
-                "semanticId": "w36-p-89"
-              }
-            ],
-            "derivationId": "ne02-04-equation"
+            ]
           },
           {
             "id": "ne02-04-after",
@@ -1274,28 +1226,16 @@
             "derivationId": "ne02-06-interaction"
           },
           {
-            "id": "ne02-06-equation-0",
+            "id": "ne02-06-equation",
             "type": "formula",
+            "derivationId": "ne02-06-equation",
             "parts": [
               {
                 "type": "math",
-                "latex": "a+b=9",
-                "semanticId": "w36-p-139"
+                "latex": "\\begin{aligned}a+b&=9\\\\ab&=20\\end{aligned}",
+                "semanticId": "ne02-06-aligned-result"
               }
-            ],
-            "derivationId": "ne02-06-equation"
-          },
-          {
-            "id": "ne02-06-equation-1",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "ab=20",
-                "semanticId": "w36-p-140"
-              }
-            ],
-            "derivationId": "ne02-06-equation"
+            ]
           },
           {
             "id": "ne02-06-after",
@@ -1539,40 +1479,16 @@
             "derivationId": "ne02-q08-squares-interaction"
           },
           {
-            "id": "ne02-q08-squares-equation-0",
+            "id": "ne02-q08-squares-equation",
             "type": "formula",
+            "derivationId": "ne02-q08-squares-equation",
             "parts": [
               {
                 "type": "math",
-                "latex": "(\\sqrt5)^2=5",
-                "semanticId": "w36-p-170"
+                "latex": "\\begin{aligned}(\\sqrt5)^2&=5\\\\2^2&=4\\\\5&>4\\end{aligned}",
+                "semanticId": "ne02-q08-squares-aligned-result"
               }
-            ],
-            "derivationId": "ne02-q08-squares-equation"
-          },
-          {
-            "id": "ne02-q08-squares-equation-1",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "2^2=4",
-                "semanticId": "w36-p-171"
-              }
-            ],
-            "derivationId": "ne02-q08-squares-equation"
-          },
-          {
-            "id": "ne02-q08-squares-equation-2",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "5>4",
-                "semanticId": "w36-p-172"
-              }
-            ],
-            "derivationId": "ne02-q08-squares-equation"
+            ]
           },
           {
             "id": "ne02-q08-squares-after",
@@ -1690,28 +1606,16 @@
             "derivationId": "ne02-08-interaction"
           },
           {
-            "id": "ne02-08-equation-0",
+            "id": "ne02-08-equation",
             "type": "formula",
+            "derivationId": "ne02-08-equation",
             "parts": [
               {
                 "type": "math",
-                "latex": "\\sqrt5>2",
-                "semanticId": "w36-p-185"
+                "latex": "\\begin{aligned}\\sqrt5&>2\\\\\\sqrt{9-4\\sqrt5}&=\\sqrt5-2\\end{aligned}",
+                "semanticId": "ne02-08-aligned-result"
               }
-            ],
-            "derivationId": "ne02-08-equation"
-          },
-          {
-            "id": "ne02-08-equation-1",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "\\sqrt{9-4\\sqrt5}=\\sqrt5-2",
-                "semanticId": "w36-p-186"
-              }
-            ],
-            "derivationId": "ne02-08-equation"
+            ]
           },
           {
             "id": "ne02-08-after",
@@ -2055,28 +1959,16 @@
             "derivationId": "ne02-q11-conditions-interaction"
           },
           {
-            "id": "ne02-q11-conditions-equation-0",
+            "id": "ne02-q11-conditions-equation",
             "type": "formula",
+            "derivationId": "ne02-q11-conditions-equation",
             "parts": [
               {
                 "type": "math",
-                "latex": "a+b=6",
-                "semanticId": "w36-p-225"
+                "latex": "\\begin{aligned}a+b&=6\\\\ab&=5\\end{aligned}",
+                "semanticId": "ne02-q11-conditions-aligned-result"
               }
-            ],
-            "derivationId": "ne02-q11-conditions-equation"
-          },
-          {
-            "id": "ne02-q11-conditions-equation-1",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "ab=5",
-                "semanticId": "w36-p-226"
-              }
-            ],
-            "derivationId": "ne02-q11-conditions-equation"
+            ]
           },
           {
             "id": "ne02-q11-conditions-after",
@@ -2209,40 +2101,16 @@
             "derivationId": "ne02-11-interaction"
           },
           {
-            "id": "ne02-11-equation-0",
+            "id": "ne02-11-equation",
             "type": "formula",
+            "derivationId": "ne02-11-equation",
             "parts": [
               {
                 "type": "math",
-                "latex": "a+b=6,\\ ab=5",
-                "semanticId": "w36-p-244"
+                "latex": "\\begin{aligned}a+b&=6,\\ ab=5\\\\\\{a,b\\}&=\\{5,1\\}\\\\\\sqrt{6+2\\sqrt5}&=\\sqrt5+1\\end{aligned}",
+                "semanticId": "ne02-11-aligned-result"
               }
-            ],
-            "derivationId": "ne02-11-equation"
-          },
-          {
-            "id": "ne02-11-equation-1",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "\\{a,b\\}=\\{5,1\\}",
-                "semanticId": "w36-p-245"
-              }
-            ],
-            "derivationId": "ne02-11-equation"
-          },
-          {
-            "id": "ne02-11-equation-2",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "\\sqrt{6+2\\sqrt5}=\\sqrt5+1",
-                "semanticId": "w36-p-246"
-              }
-            ],
-            "derivationId": "ne02-11-equation"
+            ]
           },
           {
             "id": "ne02-11-after",
@@ -4391,28 +4259,16 @@
         ],
         "after": [
           {
-            "id": "ne02-02-equation-0",
+            "id": "ne02-02-equation",
             "type": "formula",
+            "derivationId": "ne02-02-equation",
             "parts": [
               {
                 "type": "math",
-                "latex": "a+b=5",
-                "semanticId": "w36-p-46"
+                "latex": "\\begin{aligned}a+b&=5\\\\ab&=6\\end{aligned}",
+                "semanticId": "ne02-02-aligned-result"
               }
-            ],
-            "derivationId": "ne02-02-equation"
-          },
-          {
-            "id": "ne02-02-equation-1",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "ab=6",
-                "semanticId": "w36-p-47"
-              }
-            ],
-            "derivationId": "ne02-02-equation"
+            ]
           },
           {
             "id": "ne02-02-after",
@@ -4537,28 +4393,16 @@
         ],
         "after": [
           {
-            "id": "ne02-q03-pairs-equation-0",
+            "id": "ne02-q03-pairs-equation",
             "type": "formula",
+            "derivationId": "ne02-q03-pairs-equation",
             "parts": [
               {
                 "type": "math",
-                "latex": "1+6=7",
-                "semanticId": "w36-p-58"
+                "latex": "\\begin{aligned}1+6&=7\\\\2+3&=5\\end{aligned}",
+                "semanticId": "ne02-q03-pairs-aligned-result"
               }
-            ],
-            "derivationId": "ne02-q03-pairs-equation"
-          },
-          {
-            "id": "ne02-q03-pairs-equation-1",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "2+3=5",
-                "semanticId": "w36-p-59"
-              }
-            ],
-            "derivationId": "ne02-q03-pairs-equation"
+            ]
           },
           {
             "id": "ne02-q03-pairs-after",
@@ -4682,28 +4526,16 @@
         ],
         "after": [
           {
-            "id": "ne02-03-equation-0",
+            "id": "ne02-03-equation",
             "type": "formula",
+            "derivationId": "ne02-03-equation",
             "parts": [
               {
                 "type": "math",
-                "latex": "a=2",
-                "semanticId": "w36-p-68"
+                "latex": "\\begin{aligned}a&=2\\\\b&=3\\quad(\\text{順不同})\\end{aligned}",
+                "semanticId": "ne02-03-aligned-result"
               }
-            ],
-            "derivationId": "ne02-03-equation"
-          },
-          {
-            "id": "ne02-03-equation-1",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "b=3\\quad(\\text{順不同})",
-                "semanticId": "w36-p-69"
-              }
-            ],
-            "derivationId": "ne02-03-equation"
+            ]
           },
           {
             "id": "ne02-03-after",
@@ -5043,28 +4875,16 @@
         ],
         "after": [
           {
-            "id": "ne02-04-equation-0",
+            "id": "ne02-04-equation",
             "type": "formula",
+            "derivationId": "ne02-04-equation",
             "parts": [
               {
                 "type": "math",
-                "latex": "\\sqrt2+\\sqrt3>0",
-                "semanticId": "w36-p-88"
+                "latex": "\\begin{aligned}\\sqrt2+\\sqrt3&>0\\\\\\sqrt{5+2\\sqrt6}&=\\sqrt2+\\sqrt3\\end{aligned}",
+                "semanticId": "ne02-04-aligned-result"
               }
-            ],
-            "derivationId": "ne02-04-equation"
-          },
-          {
-            "id": "ne02-04-equation-1",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "\\sqrt{5+2\\sqrt6}=\\sqrt2+\\sqrt3",
-                "semanticId": "w36-p-89"
-              }
-            ],
-            "derivationId": "ne02-04-equation"
+            ]
           },
           {
             "id": "ne02-04-after",
@@ -5754,28 +5574,16 @@
         ],
         "after": [
           {
-            "id": "ne02-06-equation-0",
+            "id": "ne02-06-equation",
             "type": "formula",
+            "derivationId": "ne02-06-equation",
             "parts": [
               {
                 "type": "math",
-                "latex": "a+b=9",
-                "semanticId": "w36-p-139"
+                "latex": "\\begin{aligned}a+b&=9\\\\ab&=20\\end{aligned}",
+                "semanticId": "ne02-06-aligned-result"
               }
-            ],
-            "derivationId": "ne02-06-equation"
-          },
-          {
-            "id": "ne02-06-equation-1",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "ab=20",
-                "semanticId": "w36-p-140"
-              }
-            ],
-            "derivationId": "ne02-06-equation"
+            ]
           },
           {
             "id": "ne02-06-after",
@@ -6172,40 +5980,16 @@
         ],
         "after": [
           {
-            "id": "ne02-q08-squares-equation-0",
+            "id": "ne02-q08-squares-equation",
             "type": "formula",
+            "derivationId": "ne02-q08-squares-equation",
             "parts": [
               {
                 "type": "math",
-                "latex": "(\\sqrt5)^2=5",
-                "semanticId": "w36-p-170"
+                "latex": "\\begin{aligned}(\\sqrt5)^2&=5\\\\2^2&=4\\\\5&>4\\end{aligned}",
+                "semanticId": "ne02-q08-squares-aligned-result"
               }
-            ],
-            "derivationId": "ne02-q08-squares-equation"
-          },
-          {
-            "id": "ne02-q08-squares-equation-1",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "2^2=4",
-                "semanticId": "w36-p-171"
-              }
-            ],
-            "derivationId": "ne02-q08-squares-equation"
-          },
-          {
-            "id": "ne02-q08-squares-equation-2",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "5>4",
-                "semanticId": "w36-p-172"
-              }
-            ],
-            "derivationId": "ne02-q08-squares-equation"
+            ]
           },
           {
             "id": "ne02-q08-squares-after",
@@ -6428,28 +6212,16 @@
         ],
         "after": [
           {
-            "id": "ne02-08-equation-0",
+            "id": "ne02-08-equation",
             "type": "formula",
+            "derivationId": "ne02-08-equation",
             "parts": [
               {
                 "type": "math",
-                "latex": "\\sqrt5>2",
-                "semanticId": "w36-p-185"
+                "latex": "\\begin{aligned}\\sqrt5&>2\\\\\\sqrt{9-4\\sqrt5}&=\\sqrt5-2\\end{aligned}",
+                "semanticId": "ne02-08-aligned-result"
               }
-            ],
-            "derivationId": "ne02-08-equation"
-          },
-          {
-            "id": "ne02-08-equation-1",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "\\sqrt{9-4\\sqrt5}=\\sqrt5-2",
-                "semanticId": "w36-p-186"
-              }
-            ],
-            "derivationId": "ne02-08-equation"
+            ]
           },
           {
             "id": "ne02-08-after",
@@ -7013,28 +6785,16 @@
         ],
         "after": [
           {
-            "id": "ne02-q11-conditions-equation-0",
+            "id": "ne02-q11-conditions-equation",
             "type": "formula",
+            "derivationId": "ne02-q11-conditions-equation",
             "parts": [
               {
                 "type": "math",
-                "latex": "a+b=6",
-                "semanticId": "w36-p-225"
+                "latex": "\\begin{aligned}a+b&=6\\\\ab&=5\\end{aligned}",
+                "semanticId": "ne02-q11-conditions-aligned-result"
               }
-            ],
-            "derivationId": "ne02-q11-conditions-equation"
-          },
-          {
-            "id": "ne02-q11-conditions-equation-1",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "ab=5",
-                "semanticId": "w36-p-226"
-              }
-            ],
-            "derivationId": "ne02-q11-conditions-equation"
+            ]
           },
           {
             "id": "ne02-q11-conditions-after",
@@ -7274,40 +7034,16 @@
         ],
         "after": [
           {
-            "id": "ne02-11-equation-0",
+            "id": "ne02-11-equation",
             "type": "formula",
+            "derivationId": "ne02-11-equation",
             "parts": [
               {
                 "type": "math",
-                "latex": "a+b=6,\\ ab=5",
-                "semanticId": "w36-p-244"
+                "latex": "\\begin{aligned}a+b&=6,\\ ab=5\\\\\\{a,b\\}&=\\{5,1\\}\\\\\\sqrt{6+2\\sqrt5}&=\\sqrt5+1\\end{aligned}",
+                "semanticId": "ne02-11-aligned-result"
               }
-            ],
-            "derivationId": "ne02-11-equation"
-          },
-          {
-            "id": "ne02-11-equation-1",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "\\{a,b\\}=\\{5,1\\}",
-                "semanticId": "w36-p-245"
-              }
-            ],
-            "derivationId": "ne02-11-equation"
-          },
-          {
-            "id": "ne02-11-equation-2",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "\\sqrt{6+2\\sqrt5}=\\sqrt5+1",
-                "semanticId": "w36-p-246"
-              }
-            ],
-            "derivationId": "ne02-11-equation"
+            ]
           },
           {
             "id": "ne02-11-after",
@@ -11492,21 +11228,17 @@
     "ne02-q02-product-interaction-0": 4,
     "ne02-q02-product-equation": 4,
     "ne02-02-interaction-0": 5,
-    "ne02-02-equation-0": 5,
-    "ne02-02-equation-1": 5,
+    "ne02-02-equation": 5,
     "ne02-q03-pairs-interaction-0": 6,
-    "ne02-q03-pairs-equation-0": 6,
-    "ne02-q03-pairs-equation-1": 6,
+    "ne02-q03-pairs-equation": 6,
     "ne02-03-interaction-0": 7,
-    "ne02-03-equation-0": 7,
-    "ne02-03-equation-1": 7,
+    "ne02-03-equation": 7,
     "ne02-q04-square-interaction-0": 8,
     "ne02-q04-square-equation": 8,
     "ne02-q04-sign-interaction-0": 9,
     "ne02-q04-sign-equation": 9,
     "ne02-04-interaction-0": 10,
-    "ne02-04-equation-0": 10,
-    "ne02-04-equation-1": 10,
+    "ne02-04-equation": 10,
     "ne02-q05-expand-interaction-0": 11,
     "ne02-q05-expand-equation": 11,
     "ne02-05-interaction-0": 12,
@@ -11516,21 +11248,17 @@
     "ne02-q06-radical-interaction-0": 14,
     "ne02-q06-radical-equation": 14,
     "ne02-06-interaction-0": 15,
-    "ne02-06-equation-0": 15,
-    "ne02-06-equation-1": 15,
+    "ne02-06-equation": 15,
     "ne02-q07-pairs-interaction-0": 16,
     "ne02-q07-pairs-equation": 16,
     "ne02-07-interaction-0": 17,
     "ne02-07-equation": 17,
     "ne02-q08-squares-interaction-0": 18,
-    "ne02-q08-squares-equation-0": 18,
-    "ne02-q08-squares-equation-1": 18,
-    "ne02-q08-squares-equation-2": 18,
+    "ne02-q08-squares-equation": 18,
     "ne02-q08-nonnegative-interaction-0": 19,
     "ne02-q08-nonnegative-equation-0": 19,
     "ne02-08-interaction-0": 20,
-    "ne02-08-equation-0": 20,
-    "ne02-08-equation-1": 20,
+    "ne02-08-equation": 20,
     "ne02-q09-double-interaction-0": 21,
     "ne02-q09-double-equation": 21,
     "ne02-09-interaction-0": 22,
@@ -11538,14 +11266,11 @@
     "ne02-10-interaction-0": 23,
     "ne02-10-equation": 23,
     "ne02-q11-conditions-interaction-0": 24,
-    "ne02-q11-conditions-equation-0": 24,
-    "ne02-q11-conditions-equation-1": 24,
+    "ne02-q11-conditions-equation": 24,
     "ne02-q11-candidate-interaction-0": 25,
     "ne02-q11-candidate-equation-0": 25,
     "ne02-11-interaction-0": 26,
-    "ne02-11-equation-0": 26,
-    "ne02-11-equation-1": 26,
-    "ne02-11-equation-2": 26,
+    "ne02-11-equation": 26,
     "ne02-q12-factor-interaction-0": 27,
     "ne02-q12-factor-equation": 27,
     "ne02-q12-denominator-interaction-0": 28,

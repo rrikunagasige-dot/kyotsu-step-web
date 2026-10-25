@@ -17,6 +17,12 @@ for(const code of ['ne02','n11','n12']){
    const aligned=rows.map(s=>{const r=splitRelation(s);return r?r[0]+'&'+r[1]+r[2]:'&'+s;});return [{type:'math',latex:'\\begin{aligned}'+aligned.join('\\\\')+'\\end{aligned}',semanticId:code+'-option-'+(++serial)}];}
   return c.rows.flatMap(r=>r.parts.map(p=>p.kind==='math'?{type:'math',latex:p.latex,semanticId:code+'-option-'+(++serial)}:{type:'text',text:p.text,semanticId:code+'-option-'+(++serial)}));
  }
+ // Several independent statements are one displayed result group with one end number.
+ for(const node of compiled.nodes){const formulas=node.after.filter(b=>b.type==='formula');if(formulas.length>1&&formulas.every(b=>b.derivationId===formulas[0].derivationId)){
+  const sources=formulas.map(b=>b.parts.map(p=>p.type==='math'?p.latex:'').join(''));const rows=sources.map(t=>{const r=splitRelation(t);return r?r[0]+'&'+r[1]+r[2]:'&'+t;});
+  const merged={id:formulas[0].derivationId,type:'formula',derivationId:formulas[0].derivationId,parts:[{type:'math',latex:'\\begin{aligned}'+rows.join('\\\\')+'\\end{aligned}',semanticId:node.id+'-aligned-result'}]};
+  const first=node.after.indexOf(formulas[0]);node.after=node.after.filter(b=>!formulas.includes(b));node.after.splice(first,0,merged);
+ }}
  const semanticDisplay={},old=read('evidence/'+code.toUpperCase()+'_CURRENT.json').unit;const olditems=new Map(old.sections[0].items.map(i=>[i.id,i]));
  const items=ds.filter(n=>n.itemId).map((n,i)=>{const q=ir.nodes.find(x=>x.id===n.id).interaction,cfg=spec.unitChoices[code].find(x=>x.itemId===q.id);semanticDisplay[n.id]={hintParts:q.hints.map(prose),choices:Object.fromEntries(cfg.choices.map(c=>[c.canonicalKey,choiceParts(c)])),feedback:Object.fromEntries(q.choices.map(c=>[c.content,prose(c.feedback)]))};return {...(olditems.get(q.id)||{}),id:q.id,label:q.id.toUpperCase(),prompt:n.goal,answer:q.expected.value,acceptedAnswers:olditems.get(q.id)?.acceptedAnswers||[],answerType:q.expected.form==='text'?'text':'formula',choices:q.choices.map(c=>c.content),purpose:'causal-reasoning',scaffoldLevel:i<3?'strong':i<25?'medium':'light',hints:q.hints};});
  const gates={n11:{'n11-intro':'n11-f01','n11-10':'n11-f02'},n12:{'n12-02':'n12-f01','n12-06':'n12-f02','n12-15':'n12-f03'}};

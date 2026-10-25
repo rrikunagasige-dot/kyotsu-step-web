@@ -512,28 +512,16 @@
             "derivationId": "n11-wm011-q02-compare-interaction"
           },
           {
-            "id": "n11-wm011-q02-compare-equation-0",
+            "id": "n11-wm011-q02-compare-equation",
             "type": "formula",
+            "derivationId": "n11-wm011-q02-compare-equation",
             "parts": [
               {
                 "type": "math",
-                "latex": "a+c<b+c",
-                "semanticId": "w36-p-336"
+                "latex": "\\begin{aligned}a+c&<b+c\\\\&\\text{差は正のまま}\\end{aligned}",
+                "semanticId": "n11-wm011-q02-compare-aligned-result"
               }
-            ],
-            "derivationId": "n11-wm011-q02-compare-equation"
-          },
-          {
-            "id": "n11-wm011-q02-compare-equation-1",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "\\text{差は正のまま}",
-                "semanticId": "w36-p-337"
-              }
-            ],
-            "derivationId": "n11-wm011-q02-compare-equation"
+            ]
           },
           {
             "id": "n11-wm011-q02-compare-after",
@@ -685,28 +673,16 @@
             "derivationId": "n11-wm011-q03-positive-interaction"
           },
           {
-            "id": "n11-wm011-q03-positive-equation-0",
+            "id": "n11-wm011-q03-positive-equation",
             "type": "formula",
+            "derivationId": "n11-wm011-q03-positive-equation",
             "parts": [
               {
                 "type": "math",
-                "latex": "ac<bc",
-                "semanticId": "w36-p-356"
+                "latex": "\\begin{aligned}ac&<bc\\\\bc-ac&>0\\end{aligned}",
+                "semanticId": "n11-wm011-q03-positive-aligned-result"
               }
-            ],
-            "derivationId": "n11-wm011-q03-positive-equation"
-          },
-          {
-            "id": "n11-wm011-q03-positive-equation-1",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "bc-ac>0",
-                "semanticId": "w36-p-357"
-              }
-            ],
-            "derivationId": "n11-wm011-q03-positive-equation"
+            ]
           },
           {
             "id": "n11-wm011-q03-positive-after",
@@ -773,28 +749,16 @@
             "derivationId": "n11-03-interaction"
           },
           {
-            "id": "n11-03-equation-0",
+            "id": "n11-03-equation",
             "type": "formula",
+            "derivationId": "n11-03-equation",
             "parts": [
               {
                 "type": "math",
-                "latex": "ac>bc",
-                "semanticId": "w36-p-366"
+                "latex": "\\begin{aligned}ac&>bc\\\\bc-ac&<0\\end{aligned}",
+                "semanticId": "n11-03-aligned-result"
               }
-            ],
-            "derivationId": "n11-03-equation"
-          },
-          {
-            "id": "n11-03-equation-1",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "bc-ac<0",
-                "semanticId": "w36-p-367"
-              }
-            ],
-            "derivationId": "n11-03-equation"
+            ]
           },
           {
             "id": "n11-03-after",
@@ -841,28 +805,16 @@
             "derivationId": "n11-wm011-q03-zero-interaction"
           },
           {
-            "id": "n11-wm011-q03-zero-equation-0",
+            "id": "n11-wm011-q03-zero-equation",
             "type": "formula",
+            "derivationId": "n11-wm011-q03-zero-equation",
             "parts": [
               {
                 "type": "math",
-                "latex": "ac=bc=0",
-                "semanticId": "w36-p-372"
+                "latex": "\\begin{aligned}ac&=bc=0\\\\&\\text{元の厳密な大小は失われる}\\end{aligned}",
+                "semanticId": "n11-wm011-q03-zero-aligned-result"
               }
-            ],
-            "derivationId": "n11-wm011-q03-zero-equation"
-          },
-          {
-            "id": "n11-wm011-q03-zero-equation-1",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "\\text{元の厳密な大小は失われる}",
-                "semanticId": "w36-p-373"
-              }
-            ],
-            "derivationId": "n11-wm011-q03-zero-equation"
+            ]
           },
           {
             "id": "n11-wm011-q03-zero-after",
@@ -966,28 +918,16 @@
             "derivationId": "n11-wm011-q04-fraction-interaction"
           },
           {
-            "id": "n11-wm011-q04-fraction-equation-0",
+            "id": "n11-wm011-q04-fraction-equation",
             "type": "formula",
+            "derivationId": "n11-wm011-q04-fraction-equation",
             "parts": [
               {
                 "type": "math",
-                "latex": "-\\frac a5>-\\frac b5",
-                "semanticId": "w36-p-387"
+                "latex": "\\begin{aligned}-\\frac a5&>-\\frac b5\\\\&\\text{負数倍なので反転}\\end{aligned}",
+                "semanticId": "n11-wm011-q04-fraction-aligned-result"
               }
-            ],
-            "derivationId": "n11-wm011-q04-fraction-equation"
-          },
-          {
-            "id": "n11-wm011-q04-fraction-equation-1",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "\\text{負数倍なので反転}",
-                "semanticId": "w36-p-388"
-              }
-            ],
-            "derivationId": "n11-wm011-q04-fraction-equation"
+            ]
           },
           {
             "id": "n11-wm011-q04-fraction-after",
@@ -2512,28 +2452,16 @@
             "derivationId": "n11-wm012-q11-xcoef-interaction"
           },
           {
-            "id": "n11-wm012-q11-xcoef-equation-0",
+            "id": "n11-wm012-q11-xcoef-equation",
             "type": "formula",
+            "derivationId": "n11-wm012-q11-xcoef-equation",
             "parts": [
               {
                 "type": "math",
-                "latex": "(6-10)x+9\\ge-17",
-                "semanticId": "w36-p-562"
+                "latex": "\\begin{aligned}(6-10)x+9&\\ge-17\\\\6-10&=-4\\end{aligned}",
+                "semanticId": "n11-wm012-q11-xcoef-aligned-result"
               }
-            ],
-            "derivationId": "n11-wm012-q11-xcoef-equation"
-          },
-          {
-            "id": "n11-wm012-q11-xcoef-equation-1",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "6-10=-4",
-                "semanticId": "w36-p-563"
-              }
-            ],
-            "derivationId": "n11-wm012-q11-xcoef-equation"
+            ]
           },
           {
             "id": "n11-wm012-q11-xcoef-after",
@@ -5767,28 +5695,16 @@
         ],
         "after": [
           {
-            "id": "n11-wm011-q02-compare-equation-0",
+            "id": "n11-wm011-q02-compare-equation",
             "type": "formula",
+            "derivationId": "n11-wm011-q02-compare-equation",
             "parts": [
               {
                 "type": "math",
-                "latex": "a+c<b+c",
-                "semanticId": "w36-p-336"
+                "latex": "\\begin{aligned}a+c&<b+c\\\\&\\text{差は正のまま}\\end{aligned}",
+                "semanticId": "n11-wm011-q02-compare-aligned-result"
               }
-            ],
-            "derivationId": "n11-wm011-q02-compare-equation"
-          },
-          {
-            "id": "n11-wm011-q02-compare-equation-1",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "\\text{差は正のまま}",
-                "semanticId": "w36-p-337"
-              }
-            ],
-            "derivationId": "n11-wm011-q02-compare-equation"
+            ]
           },
           {
             "id": "n11-wm011-q02-compare-after",
@@ -6057,28 +5973,16 @@
         ],
         "after": [
           {
-            "id": "n11-wm011-q03-positive-equation-0",
+            "id": "n11-wm011-q03-positive-equation",
             "type": "formula",
+            "derivationId": "n11-wm011-q03-positive-equation",
             "parts": [
               {
                 "type": "math",
-                "latex": "ac<bc",
-                "semanticId": "w36-p-356"
+                "latex": "\\begin{aligned}ac&<bc\\\\bc-ac&>0\\end{aligned}",
+                "semanticId": "n11-wm011-q03-positive-aligned-result"
               }
-            ],
-            "derivationId": "n11-wm011-q03-positive-equation"
-          },
-          {
-            "id": "n11-wm011-q03-positive-equation-1",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "bc-ac>0",
-                "semanticId": "w36-p-357"
-              }
-            ],
-            "derivationId": "n11-wm011-q03-positive-equation"
+            ]
           },
           {
             "id": "n11-wm011-q03-positive-after",
@@ -6199,28 +6103,16 @@
         ],
         "after": [
           {
-            "id": "n11-03-equation-0",
+            "id": "n11-03-equation",
             "type": "formula",
+            "derivationId": "n11-03-equation",
             "parts": [
               {
                 "type": "math",
-                "latex": "ac>bc",
-                "semanticId": "w36-p-366"
+                "latex": "\\begin{aligned}ac&>bc\\\\bc-ac&<0\\end{aligned}",
+                "semanticId": "n11-03-aligned-result"
               }
-            ],
-            "derivationId": "n11-03-equation"
-          },
-          {
-            "id": "n11-03-equation-1",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "bc-ac<0",
-                "semanticId": "w36-p-367"
-              }
-            ],
-            "derivationId": "n11-03-equation"
+            ]
           },
           {
             "id": "n11-03-after",
@@ -6321,28 +6213,16 @@
         ],
         "after": [
           {
-            "id": "n11-wm011-q03-zero-equation-0",
+            "id": "n11-wm011-q03-zero-equation",
             "type": "formula",
+            "derivationId": "n11-wm011-q03-zero-equation",
             "parts": [
               {
                 "type": "math",
-                "latex": "ac=bc=0",
-                "semanticId": "w36-p-372"
+                "latex": "\\begin{aligned}ac&=bc=0\\\\&\\text{元の厳密な大小は失われる}\\end{aligned}",
+                "semanticId": "n11-wm011-q03-zero-aligned-result"
               }
-            ],
-            "derivationId": "n11-wm011-q03-zero-equation"
-          },
-          {
-            "id": "n11-wm011-q03-zero-equation-1",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "\\text{元の厳密な大小は失われる}",
-                "semanticId": "w36-p-373"
-              }
-            ],
-            "derivationId": "n11-wm011-q03-zero-equation"
+            ]
           },
           {
             "id": "n11-wm011-q03-zero-after",
@@ -6508,28 +6388,16 @@
         ],
         "after": [
           {
-            "id": "n11-wm011-q04-fraction-equation-0",
+            "id": "n11-wm011-q04-fraction-equation",
             "type": "formula",
+            "derivationId": "n11-wm011-q04-fraction-equation",
             "parts": [
               {
                 "type": "math",
-                "latex": "-\\frac a5>-\\frac b5",
-                "semanticId": "w36-p-387"
+                "latex": "\\begin{aligned}-\\frac a5&>-\\frac b5\\\\&\\text{負数倍なので反転}\\end{aligned}",
+                "semanticId": "n11-wm011-q04-fraction-aligned-result"
               }
-            ],
-            "derivationId": "n11-wm011-q04-fraction-equation"
-          },
-          {
-            "id": "n11-wm011-q04-fraction-equation-1",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "\\text{負数倍なので反転}",
-                "semanticId": "w36-p-388"
-              }
-            ],
-            "derivationId": "n11-wm011-q04-fraction-equation"
+            ]
           },
           {
             "id": "n11-wm011-q04-fraction-after",
@@ -9106,28 +8974,16 @@
         ],
         "after": [
           {
-            "id": "n11-wm012-q11-xcoef-equation-0",
+            "id": "n11-wm012-q11-xcoef-equation",
             "type": "formula",
+            "derivationId": "n11-wm012-q11-xcoef-equation",
             "parts": [
               {
                 "type": "math",
-                "latex": "(6-10)x+9\\ge-17",
-                "semanticId": "w36-p-562"
+                "latex": "\\begin{aligned}(6-10)x+9&\\ge-17\\\\6-10&=-4\\end{aligned}",
+                "semanticId": "n11-wm012-q11-xcoef-aligned-result"
               }
-            ],
-            "derivationId": "n11-wm012-q11-xcoef-equation"
-          },
-          {
-            "id": "n11-wm012-q11-xcoef-equation-1",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "6-10=-4",
-                "semanticId": "w36-p-563"
-              }
-            ],
-            "derivationId": "n11-wm012-q11-xcoef-equation"
+            ]
           },
           {
             "id": "n11-wm012-q11-xcoef-after",
@@ -16019,22 +15875,17 @@
     "n11-02-interaction-0": 3,
     "n11-02-equation": 3,
     "n11-wm011-q02-compare-interaction-0": 4,
-    "n11-wm011-q02-compare-equation-0": 4,
-    "n11-wm011-q02-compare-equation-1": 4,
+    "n11-wm011-q02-compare-equation": 4,
     "n11-wm011-q03-factor-interaction-0": 5,
     "n11-wm011-q03-factor-equation": 5,
     "n11-wm011-q03-positive-interaction-0": 6,
-    "n11-wm011-q03-positive-equation-0": 6,
-    "n11-wm011-q03-positive-equation-1": 6,
+    "n11-wm011-q03-positive-equation": 6,
     "n11-03-interaction-0": 7,
-    "n11-03-equation-0": 7,
-    "n11-03-equation-1": 7,
+    "n11-03-equation": 7,
     "n11-wm011-q03-zero-interaction-0": 8,
-    "n11-wm011-q03-zero-equation-0": 8,
-    "n11-wm011-q03-zero-equation-1": 8,
+    "n11-wm011-q03-zero-equation": 8,
     "n11-wm011-q04-fraction-interaction-0": 9,
-    "n11-wm011-q04-fraction-equation-0": 9,
-    "n11-wm011-q04-fraction-equation-1": 9,
+    "n11-wm011-q04-fraction-equation": 9,
     "n11-q04-negate-interaction-0": 10,
     "n11-q04-negate-equation": 10,
     "n11-04-interaction-0": 11,
@@ -16066,8 +15917,7 @@
     "n11-wm012-q11-expand-interaction-0": 24,
     "n11-wm012-q11-expand-equation": 24,
     "n11-wm012-q11-xcoef-interaction-0": 25,
-    "n11-wm012-q11-xcoef-equation-0": 25,
-    "n11-wm012-q11-xcoef-equation-1": 25,
+    "n11-wm012-q11-xcoef-equation": 25,
     "n11-q11-constant-interaction-0": 26,
     "n11-q11-constant-equation": 26,
     "n11-11-interaction-0": 27,

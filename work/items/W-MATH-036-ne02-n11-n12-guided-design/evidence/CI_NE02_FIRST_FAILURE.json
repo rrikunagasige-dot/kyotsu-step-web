@@ -1,0 +1,12 @@
+{
+  "sourceSHA": "7cc5022f287139d45351a136522a41306849d51e",
+  "runId": 40177194974,
+  "jobId": 121120342108,
+  "conclusion": "failure",
+  "failedStep": "Complete four-width new and accepted learner plays",
+  "symptom": "guided-reading disappeared during a later step, then geometry timed out",
+  "artifact": 12593056937,
+  "artifactDigest": "79f8aa21b5adf7c4ed61bffa1f1c9edd18681844304f884cc7939d051758a099",
+  "repair": "keep a denominator slot in one balanced formula; add regression mount test and failure capture; separately ensure one equation number per independent result group",
+  "userGold": false
+}

@@ -34,7 +34,10 @@ try{for(const code of (process.env.CODES??'ne02').split(',')){
      if(width===390&&['ne02-q08-squares','ne02-07','n11-wm011-q03-positive','n12-06','n12-15'].includes(node.id))await panel.screenshot({path:out+'/'+node.id+'-options.png'});
      await panel.getByRole('button',{name:item.answer,exact:true}).click();answered++;assert.equal(await visible.locator('[data-block-id^="'+node.id+'-interaction"]').count(),0,'replace unanswered formula once');
     }
-    await geometry(node.id+' complete');
+    await geometry(node.id+' complete');assert.ok(await visible.locator('.numbered-equation-label').count()<=1,'one number per result group');
+    const compiled=data.semantic.nodes.find(n=>n.id===node.id);const shown=[...compiled.before.filter(b=>!node.interaction||!b.id.startsWith(node.id+'-interaction')),...compiled.after];
+    for(const b of shown){if(b.type==='paragraph')for(const part of b.parts.filter(p=>p.type==='math'||p.type==='term')){const actual=visible.locator('[data-semantic-id="'+part.semanticId+'"]');assert.equal(await actual.count(),1,'visible semantic token '+part.semanticId);if(part.type==='term')assert.ok(await actual.evaluate(el=>Number(getComputedStyle(el).fontWeight)>=600));}
+     if(b.type==='formula'){const actual=visible.locator('[data-typeset-source="'+b.id+'"]');assert.equal(await actual.count(),1,'formula rendered '+b.id);assert.ok(await actual.locator('annotation[encoding="application/x-tex"]').count()>0,'actual rendered math '+b.id);}}
     for(const f of data.nodes.filter(n=>n.extra.figure)){
      const expected=data.nodes.indexOf(f)<=data.nodes.indexOf(node);const count=await current.locator('[data-figure-id="'+f.extra.figure.id+'"]').count();if(!expected)assert.equal(count,0,'future figure including caption hidden');if(f.id===node.id){assert.equal(count,1,'figure revealed at its declared gate');seenFigures.add(f.extra.figure.id);assert.ok(await current.locator('[data-figure-id="'+f.extra.figure.id+'"] img').evaluate(im=>im.complete&&im.naturalWidth>0));}
     }

@@ -1541,28 +1541,16 @@
             "derivationId": "n12-06-interaction"
           },
           {
-            "id": "n12-06-equation-0",
+            "id": "n12-06-equation",
             "type": "formula",
+            "derivationId": "n12-06-equation",
             "parts": [
               {
                 "type": "math",
-                "latex": "x\\le2",
-                "semanticId": "w36-p-827"
+                "latex": "\\begin{aligned}x&\\le2\\\\x&\\le\\frac53\\end{aligned}",
+                "semanticId": "n12-06-aligned-result"
               }
-            ],
-            "derivationId": "n12-06-equation"
-          },
-          {
-            "id": "n12-06-equation-1",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "x\\le\\frac53",
-                "semanticId": "w36-p-828"
-              }
-            ],
-            "derivationId": "n12-06-equation"
+            ]
           },
           {
             "id": "n12-06-after",
@@ -7919,28 +7907,16 @@
         ],
         "after": [
           {
-            "id": "n12-06-equation-0",
+            "id": "n12-06-equation",
             "type": "formula",
+            "derivationId": "n12-06-equation",
             "parts": [
               {
                 "type": "math",
-                "latex": "x\\le2",
-                "semanticId": "w36-p-827"
+                "latex": "\\begin{aligned}x&\\le2\\\\x&\\le\\frac53\\end{aligned}",
+                "semanticId": "n12-06-aligned-result"
               }
-            ],
-            "derivationId": "n12-06-equation"
-          },
-          {
-            "id": "n12-06-equation-1",
-            "type": "formula",
-            "parts": [
-              {
-                "type": "math",
-                "latex": "x\\le\\frac53",
-                "semanticId": "w36-p-828"
-              }
-            ],
-            "derivationId": "n12-06-equation"
+            ]
           },
           {
             "id": "n12-06-after",
@@ -17373,8 +17349,7 @@
     "n12-p002-q06-right-const-interaction-0": 15,
     "n12-p002-q06-right-const-equation": 15,
     "n12-06-interaction-0": 16,
-    "n12-06-equation-0": 16,
-    "n12-06-equation-1": 16,
+    "n12-06-equation": 16,
     "n12-07-interaction-0": 17,
     "n12-07-equation": 17,
     "n12-08-interaction-0": 18,

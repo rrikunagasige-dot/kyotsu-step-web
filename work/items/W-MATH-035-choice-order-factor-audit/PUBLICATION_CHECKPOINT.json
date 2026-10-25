@@ -1,0 +1,16 @@
+{
+  "sourceSHA": "fa0eff271a97940fad08d83960ae50faeabc81b9",
+  "workflowCommit": "3630df565c0f30f770af2238fa34841ca0528df6",
+  "publicationRun": 40172534338,
+  "publicationStatus": "SUCCESS",
+  "publicSourceVerified": true,
+  "userAccepted": {
+    "n09": false,
+    "n10": false
+  },
+  "urls": {
+    "n09": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=fa0eff27#/learning/textbook/math-numbers-expressions-n09",
+    "n10": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=fa0eff27#/learning/textbook/math-numbers-expressions-n10"
+  },
+  "next": "G3_FINAL@n09 and G3_FINAL@n10: actual scoped user evaluation; then fresh sweeps/R08/L01"
+}

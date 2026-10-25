@@ -1,0 +1,19 @@
+{
+  "sourceSHA": "fa0eff271a97940fad08d83960ae50faeabc81b9",
+  "receipts": [
+    {
+      "url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/release.json?verified=fa0eff271a97940fad08d83960ae50faeabc81b9",
+      "resolved_url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/release.json?verified=fa0eff271a97940fad08d83960ae50faeabc81b9",
+      "status": 200,
+      "sha256": "cf30eb48c41e96e6e7c3a04fb0c989d74fd2d5321b30eddfaf0e15624e0b9587"
+    },
+    {
+      "url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?verified=fa0eff271a97940fad08d83960ae50faeabc81b9",
+      "resolved_url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?verified=fa0eff271a97940fad08d83960ae50faeabc81b9",
+      "status": 200,
+      "sha256": "1c139e0ff2294221c66178a5c83f970848dc279515ef3a100e3c2193cee043da"
+    }
+  ],
+  "actualHostedPlay": "Publication CI completed both full four-width plays and protected units",
+  "userAcceptance": false
+}

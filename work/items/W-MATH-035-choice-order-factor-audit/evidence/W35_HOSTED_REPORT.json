@@ -1,0 +1,88 @@
+{
+  "status": "PASS",
+  "sourceSHA": "fa0eff271a97940fad08d83960ae50faeabc81b9",
+  "root": "https://rrikunagasige-dot.github.io/kyotsu-step-web/",
+  "results": [
+    {
+      "width": 320,
+      "unit": "n09",
+      "choices": "PASS",
+      "order": "PASS",
+      "factorScope": "PASS",
+      "history": true,
+      "reload": true,
+      "resize": true
+    },
+    {
+      "width": 320,
+      "unit": "n10",
+      "choices": "PASS",
+      "order": "PASS",
+      "factorScope": "PASS",
+      "history": true,
+      "reload": true,
+      "resize": true
+    },
+    {
+      "width": 390,
+      "unit": "n09",
+      "choices": "PASS",
+      "order": "PASS",
+      "factorScope": "PASS",
+      "history": true,
+      "reload": true,
+      "resize": true
+    },
+    {
+      "width": 390,
+      "unit": "n10",
+      "choices": "PASS",
+      "order": "PASS",
+      "factorScope": "PASS",
+      "history": true,
+      "reload": true,
+      "resize": true
+    },
+    {
+      "width": 430,
+      "unit": "n09",
+      "choices": "PASS",
+      "order": "PASS",
+      "factorScope": "PASS",
+      "history": true,
+      "reload": true,
+      "resize": true
+    },
+    {
+      "width": 430,
+      "unit": "n10",
+      "choices": "PASS",
+      "order": "PASS",
+      "factorScope": "PASS",
+      "history": true,
+      "reload": true,
+      "resize": true
+    },
+    {
+      "width": 1440,
+      "unit": "n09",
+      "choices": "PASS",
+      "order": "PASS",
+      "factorScope": "PASS",
+      "history": true,
+      "reload": true,
+      "resize": true
+    },
+    {
+      "width": 1440,
+      "unit": "n10",
+      "choices": "PASS",
+      "order": "PASS",
+      "factorScope": "PASS",
+      "history": true,
+      "reload": true,
+      "resize": true
+    }
+  ],
+  "errors": []
+}

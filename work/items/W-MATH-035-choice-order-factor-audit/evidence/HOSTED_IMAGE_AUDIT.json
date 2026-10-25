@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "sourceSHA": "fa0eff271a97940fad08d83960ae50faeabc81b9",
+  "reviewer": "same assistant",
+  "independent": false,
+  "images": [
+    {
+      "artifactPath": "tmp/w35-hosted/390-n09-08-options.png",
+      "sha256": "ef1ce1d3b09dc124f1022fc93ebe75b18442c7103a6dd8158646dc7715b5ae18"
+    },
+    {
+      "artifactPath": "tmp/w35-hosted/390-n10-q20-factor-completed.png",
+      "sha256": "0eaf80b97088db61189dcb94cf8a4c300e28810f87d2feaa97e98e4b4e686c06"
+    }
+  ]
+}

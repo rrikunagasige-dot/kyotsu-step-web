@@ -11,3 +11,5 @@ Status: ACTIVE
 - Shared RuntimeでW035両R01–R04を実行、R05具体案判断待ち。W034の本人否定2件・依頼と親子関係を保存。実装・配信・新fitのreceiptは作っていない。
 
 - CI40172128752 sourcefa0eff27 SUCCESS。専用8、learner620、authoring39、build/lintと4幅の対象表示・全81回答/201誤答・履歴/reload/resize/旧保存移行を検証。実画像7点も同じassistantが確認。両R07/G2を完了し、既存Pages workflow3630df56で配信を開始。公開後検査と本人の品質受入はまだ未確定。
+
+- 実公開run40172534338 SUCCESS。sourcefa0eff27、workflow3630df56、両IRと既存namespace/受入済みsourceを実HTTPS照合。公開後の4幅対象表示・全回答/誤答/履歴/再開もPASS。両native DEPLOY outcome/G3_HOSTを記録。本人の受入と学習fitは未実施。

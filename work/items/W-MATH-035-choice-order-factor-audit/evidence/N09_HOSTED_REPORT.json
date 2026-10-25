@@ -1,0 +1,64 @@
+{
+  "status": "PASS",
+  "sourceSHA": "3630df565c0f30f770af2238fa34841ca0528df6",
+  "root": "https://rrikunagasige-dot.github.io/kyotsu-step-web/",
+  "results": [
+    {
+      "width": 320,
+      "answered": 36,
+      "wrongCount": 90,
+      "stages": 11,
+      "history": true,
+      "reload": true,
+      "migration": true,
+      "legacyMigrationRevisions": [
+        1,
+        2
+      ],
+      "geometry": "PASS"
+    },
+    {
+      "width": 390,
+      "answered": 36,
+      "wrongCount": 90,
+      "stages": 11,
+      "history": true,
+      "reload": true,
+      "migration": true,
+      "legacyMigrationRevisions": [
+        1,
+        2
+      ],
+      "geometry": "PASS"
+    },
+    {
+      "width": 430,
+      "answered": 36,
+      "wrongCount": 90,
+      "stages": 11,
+      "history": true,
+      "reload": true,
+      "migration": true,
+      "legacyMigrationRevisions": [
+        1,
+        2
+      ],
+      "geometry": "PASS"
+    },
+    {
+      "width": 1440,
+      "answered": 36,
+      "wrongCount": 90,
+      "stages": 11,
+      "history": true,
+      "reload": true,
+      "migration": true,
+      "legacyMigrationRevisions": [
+        1,
+        2
+      ],
+      "geometry": "PASS"
+    }
+  ],
+  "errors": []
+}

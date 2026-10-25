@@ -17,3 +17,5 @@ Status: ACTIVE
 - 実検査用の限定CI wrapperを追加し、旧W034凍結materializerの合格を新しい修正JSONへ偽装しない。CI40172128752、sourcefa0eff27。中央tools/workflowのpinは不変。
 
 - CI40172128752 sourcefa0eff27 SUCCESS。専用8、learner620、authoring39、build/lintと4幅の対象表示・全81回答/201誤答・履歴/reload/resize/旧保存移行を検証。実画像7点も同じassistantが確認。両R07/G2を完了し、既存Pages workflow3630df56で配信を開始。公開後検査と本人の品質受入はまだ未確定。
+
+- 実公開run40172534338 SUCCESS。sourcefa0eff27、workflow3630df56、両IRと既存namespace/受入済みsourceを実HTTPS照合。公開後の4幅対象表示・全回答/誤答/履歴/再開もPASS。両native DEPLOY outcome/G3_HOSTを記録。本人の受入と学習fitは未実施。

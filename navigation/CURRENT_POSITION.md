@@ -1,3 +1,17 @@
+## CURRENT — N09/N10の7項目を修正・公開、実物評価待ち（2026-10-25）
+
+W-MATH-035/P-001は「おけこれでいいよ。じゃ続けてよろしく」で承認済み。公開source `fa0eff271a97940fad08d83960ae50faeabc81b9`。N09-08は左平方→右平方→比較、N10-07/15/20は候補の表示段階を統一、q17/q20-factorは穴の前後・完成・前結果・履歴で因子全体を括弧へ、N09-14の表に隠れたafter数式も修正した。元の81正答・282choiceキーとrevision、保存履歴は維持。
+
+内部CI [40172128752](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40172128752)、既存Pages公開run [40172534338](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40172534338) SUCCESS。workflow `3630df565c0f30f770af2238fa34841ca0528df6`。専用8・learner620・authoring39、build/lint、320/390/430/1440pxで表示順・括弧・全81正答/各幅201誤答・前結果/履歴・reload/resize・旧保存移行を検査。実画像7点を同じassistantが確認。公開後も対象表示と両単元の全操作を実行し、release.jsonの2 IR/既存namespace/受入済み単元をHTTPS照合した。全repo旧メタデータ検査の完全PASSとは混同しない。
+
+[N09](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=fa0eff27#/learning/textbook/math-numbers-expressions-n09) ／ [N10](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=fa0eff27#/learning/textbook/math-numbers-expressions-n10)。同じ共有Runtimeで両R05/R06/R07/G2/G3_HOSTを実行。最初のR06で両単元のbundleをatomicにemitし、各R06は自単元のnative compileと照合を実行。**現在 VERIFYING / USER G3_FINAL@n09・G3_FINAL@n10**。技術合格や配信成功を本人の受入・Gold肯定にしない。次はこの公開版への本人評価、対象修正またはfresh事後sweep/R08/L01。
+
+N08/N07/最初のタイトルの既承認・元図・storageを保護。W034凍結5入力とその承認は保持。W034に記録した2つの否定はcb7d30bfの順序/因子範囲に限定し、今回の修正証拠に接続する。W034の旧版を受入済みとせず、W035が現行評価対象。AI追加発見5件を本人の否定へ水増ししない。学習catalog11（否定7/肯定4）、モデルe9dcf354・OFFLINE_ONLY、中央tool pin058c4eaは不変。今回の新fitなし。
+
+詳細 [W035](https://github.com/rrikunagasige-dot/kyotsu-step-web/tree/work/n0910-choice-order-factor-audit-20261025/work/items/W-MATH-035-choice-order-factor-audit)。以下のP001未承認・実装未着手は履歴。
+
+---
+
 ## CURRENT — N09/N10の選択肢順序・因子範囲、全件監査後の修正案（2026-10-25）
 
 公開cb7d30bfへの本人指摘を受け、**W-MATH-035 / CMD-WORK-001 / P-001 / PROPOSED / R05_APPROVAL@n09**。①は単なる整列ではなく「左平方→右平方→比較」の順序、②は和/差全体を掛ける括弧。本人は先に全ミスを調べ、最後に提案書と指示。実装・公開は未変更。

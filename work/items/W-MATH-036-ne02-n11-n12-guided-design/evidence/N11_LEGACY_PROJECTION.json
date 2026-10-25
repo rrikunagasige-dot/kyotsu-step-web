@@ -1,0 +1,3655 @@
+{
+  "schemaVersion": "production-ir/1",
+  "unitId": "math-numbers-expressions-n11",
+  "subject": "math",
+  "mode": "textbook",
+  "sourceHash": "93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa",
+  "sourceBlocks": [
+    {
+      "id": "word-p-000472",
+      "kind": "heading"
+    },
+    {
+      "id": "word-p-000473",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000474",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000475",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000476",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000477",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000478",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000479",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000480",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000481",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000482",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000483",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000484",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000485",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000486",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000487",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000488",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000489",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000490",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000491",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000492",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000493",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000494",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000495",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000496",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000497",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000498",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000499",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000500",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000501",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000502",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000503",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000504",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000505",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000506",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000507",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000508",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000509",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000510",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000511",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000512",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000513",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000514",
+      "kind": "explanation"
+    }
+  ],
+  "coverage": [
+    {
+      "sourceId": "word-p-000472",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000473",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000474",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000475",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000476",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000477",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000478",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000479",
+      "nodeIds": [
+        "n11-01"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000480",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000481",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000482",
+      "nodeIds": [
+        "n11-02",
+        "n11-wm011-q02-compare"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000483",
+      "nodeIds": [
+        "n11-wm011-q03-factor"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000484",
+      "nodeIds": [
+        "n11-wm011-q03-positive",
+        "n11-03",
+        "n11-wm011-q03-zero"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000485",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000486",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000487",
+      "nodeIds": [
+        "n11-wm011-q04-fraction",
+        "n11-04"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000488",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000489",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000490",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000491",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000492",
+      "nodeIds": [
+        "n11-wm017-q05-operation",
+        "n11-wm017-q05-balance",
+        "n11-05"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000493",
+      "nodeIds": [
+        "n11-06"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000494",
+      "nodeIds": [
+        "n11-07"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000495",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000496",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000497",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000498",
+      "nodeIds": [
+        "n11-p007-q08-subtract-left",
+        "n11-p007-q08-subtract-right",
+        "n11-08"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000499",
+      "nodeIds": [
+        "n11-p007-q09-direction"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000500",
+      "nodeIds": [
+        "n11-09"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000501",
+      "nodeIds": [
+        "n11-10"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000502",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000503",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000504",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000505",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000506",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000507",
+      "nodeIds": [
+        "n11-wm012-q11-expand",
+        "n11-wm012-q11-xcoef",
+        "n11-11"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000508",
+      "nodeIds": [
+        "n11-12"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000509",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000510",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000511",
+      "nodeIds": [
+        "n11-p008-q13-mul-left",
+        "n11-p008-q13-mul-right",
+        "n11-13",
+        "n11-p008-q13-constant"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000512",
+      "nodeIds": [
+        "n11-wm013-q14-xcoef",
+        "n11-wm013-q14-const",
+        "n11-14"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000513",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000514",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    }
+  ],
+  "initialFacts": [
+    "real-arithmetic",
+    "square-identities",
+    "accepted-n08-absolute-value",
+    "accepted-n09-root-definition",
+    "accepted-n10-root-product-quotient"
+  ],
+  "nodes": [
+    {
+      "id": "n11-01",
+      "problemId": "n11",
+      "sourceRefs": [
+        "word-p-000479"
+      ],
+      "requires": [],
+      "produces": [
+        "n11-01-legacy-result"
+      ],
+      "role": "check",
+      "goal": "数直線の−2と−5を比べ、不等号を選ぼう。",
+      "purpose": "concept-formation",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000479"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n11-01-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-01-old-text",
+              "kind": "text",
+              "text": "数直線の−2と−5を比べ、不等号を選ぼう。"
+            },
+            {
+              "id": "n11-01-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n11-01",
+              "semanticRef": "n11-01"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n11-01-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-01-old-hint",
+              "kind": "text",
+              "text": "数直線では右にある数のほうが大きい。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n11-01",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "数直線の−2と−5を比べ、不等号を選ぼう。",
+        "prerequisiteIds": [],
+        "expected": {
+          "value": ">",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n11-01-choice-0",
+            "content": ">",
+            "feedback": "数直線では右にある数のほうが大きい。"
+          },
+          {
+            "id": "n11-01-choice-1",
+            "content": "<",
+            "feedback": "数直線では右にある数のほうが大きい。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-01-choice-2",
+            "content": "=",
+            "feedback": "数直線では右にある数のほうが大きい。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-01-choice-3",
+            "content": "\\le",
+            "feedback": "数直線では右にある数のほうが大きい。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "数直線では右にある数のほうが大きい。"
+        ],
+        "answerInsertion": {
+          "blockId": "n11-01-old",
+          "slotId": "n11-01-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n11-02",
+      "problemId": "n11",
+      "sourceRefs": [
+        "word-p-000482"
+      ],
+      "requires": [
+        "n11-01-legacy-result"
+      ],
+      "produces": [
+        "n11-02-legacy-result"
+      ],
+      "role": "check",
+      "goal": "両辺に同じcを加えたあとの差を計算しよう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000482"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n11-02-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-02-old-text",
+              "kind": "text",
+              "text": "両辺に同じcを加えたあとの差を計算しよう。"
+            },
+            {
+              "id": "n11-02-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n11-02",
+              "semanticRef": "n11-02"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n11-02-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-02-old-hint",
+              "kind": "text",
+              "text": "+cと−cを整理しよう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n11-02",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "両辺に同じcを加えたあとの差を計算しよう。",
+        "prerequisiteIds": [
+          "n11-01-legacy-result"
+        ],
+        "expected": {
+          "value": "b-a",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n11-02-choice-0",
+            "content": "b-a",
+            "feedback": "+cと−cを整理しよう。"
+          },
+          {
+            "id": "n11-02-choice-1",
+            "content": "b-a+2c",
+            "feedback": "+cと−cを整理しよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-02-choice-2",
+            "content": "b-a-c",
+            "feedback": "+cと−cを整理しよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-02-choice-3",
+            "content": "a-b",
+            "feedback": "+cと−cを整理しよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "+cと−cを整理しよう。"
+        ],
+        "answerInsertion": {
+          "blockId": "n11-02-old",
+          "slotId": "n11-02-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n11-wm011-q02-compare",
+      "problemId": "n11",
+      "sourceRefs": [
+        "word-p-000482"
+      ],
+      "requires": [
+        "n11-02-legacy-result"
+      ],
+      "produces": [
+        "n11-wm011-q02-compare-legacy-result"
+      ],
+      "role": "check",
+      "goal": "差の符号を根拠に、加えたあとの大小関係を選ぼう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000482"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n11-wm011-q02-compare-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-wm011-q02-compare-old-text",
+              "kind": "text",
+              "text": "差の符号を根拠に、加えたあとの大小関係を選ぼう。"
+            },
+            {
+              "id": "n11-wm011-q02-compare-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n11-wm011-q02-compare",
+              "semanticRef": "n11-wm011-q02-compare"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n11-wm011-q02-compare-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-wm011-q02-compare-old-hint",
+              "kind": "text",
+              "text": "右−左の差が正なら、どちらが大きいだろう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n11-wm011-q02-compare",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "差の符号を根拠に、加えたあとの大小関係を選ぼう。",
+        "prerequisiteIds": [
+          "n11-02-legacy-result"
+        ],
+        "expected": {
+          "value": "a+c<b+c,\\quad\\text{差は正のまま}",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n11-wm011-q02-compare-choice-0",
+            "content": "a+c<b+c,\\quad\\text{差は正のまま}",
+            "feedback": "右−左の差が正なら、どちらが大きいだろう。"
+          },
+          {
+            "id": "n11-wm011-q02-compare-choice-1",
+            "content": "a+c>b+c,\\quad\\text{差は負になる}",
+            "feedback": "右−左の差が正なら、どちらが大きいだろう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-wm011-q02-compare-choice-2",
+            "content": "a+c=b+c,\\quad\\text{差は0}",
+            "feedback": "右−左の差が正なら、どちらが大きいだろう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-wm011-q02-compare-choice-3",
+            "content": "a+c>b+c,\\quad\\text{差は正のまま}",
+            "feedback": "右−左の差が正なら、どちらが大きいだろう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "右−左の差が正なら、どちらが大きいだろう。"
+        ],
+        "answerInsertion": {
+          "blockId": "n11-wm011-q02-compare-old",
+          "slotId": "n11-wm011-q02-compare-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n11-wm011-q03-factor",
+      "problemId": "n11",
+      "sourceRefs": [
+        "word-p-000483"
+      ],
+      "requires": [
+        "n11-wm011-q02-compare-legacy-result"
+      ],
+      "produces": [
+        "n11-wm011-q03-factor-legacy-result"
+      ],
+      "role": "check",
+      "goal": "共通の(b−a)を残して、括り出す係数を選ぼう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000483"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n11-wm011-q03-factor-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-wm011-q03-factor-old-text",
+              "kind": "text",
+              "text": "共通の(b−a)を残して、括り出す係数を選ぼう。"
+            },
+            {
+              "id": "n11-wm011-q03-factor-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n11-wm011-q03-factor",
+              "semanticRef": "n11-wm011-q03-factor"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n11-wm011-q03-factor-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-wm011-q03-factor-old-hint",
+              "kind": "text",
+              "text": "bc−acを分配法則の逆向きで見よう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n11-wm011-q03-factor",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "共通の(b−a)を残して、括り出す係数を選ぼう。",
+        "prerequisiteIds": [
+          "n11-wm011-q02-compare-legacy-result"
+        ],
+        "expected": {
+          "value": "c",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n11-wm011-q03-factor-choice-0",
+            "content": "c",
+            "feedback": "bc−acを分配法則の逆向きで見よう。"
+          },
+          {
+            "id": "n11-wm011-q03-factor-choice-1",
+            "content": "-c",
+            "feedback": "bc−acを分配法則の逆向きで見よう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-wm011-q03-factor-choice-2",
+            "content": "c^2",
+            "feedback": "bc−acを分配法則の逆向きで見よう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-wm011-q03-factor-choice-3",
+            "content": "1",
+            "feedback": "bc−acを分配法則の逆向きで見よう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "bc−acを分配法則の逆向きで見よう。"
+        ],
+        "answerInsertion": {
+          "blockId": "n11-wm011-q03-factor-old",
+          "slotId": "n11-wm011-q03-factor-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n11-wm011-q03-positive",
+      "problemId": "n11",
+      "sourceRefs": [
+        "word-p-000484"
+      ],
+      "requires": [
+        "n11-wm011-q03-factor-legacy-result"
+      ],
+      "produces": [
+        "n11-wm011-q03-positive-legacy-result"
+      ],
+      "role": "check",
+      "goal": "c>0のとき、差の符号と大小関係を判断しよう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000484"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n11-wm011-q03-positive-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-wm011-q03-positive-old-text",
+              "kind": "text",
+              "text": "c>0のとき、差の符号と大小関係を判断しよう。"
+            },
+            {
+              "id": "n11-wm011-q03-positive-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n11-wm011-q03-positive",
+              "semanticRef": "n11-wm011-q03-positive"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n11-wm011-q03-positive-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-wm011-q03-positive-old-hint",
+              "kind": "text",
+              "text": "正の数と正の数の積は正。右−左が正なら左が小さい。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n11-wm011-q03-positive",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "c>0のとき、差の符号と大小関係を判断しよう。",
+        "prerequisiteIds": [
+          "n11-wm011-q03-factor-legacy-result"
+        ],
+        "expected": {
+          "value": "ac<bc,\\quad bc-ac>0",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n11-wm011-q03-positive-choice-0",
+            "content": "ac<bc,\\quad bc-ac>0",
+            "feedback": "正の数と正の数の積は正。右−左が正なら左が小さい。"
+          },
+          {
+            "id": "n11-wm011-q03-positive-choice-1",
+            "content": "ac>bc,\\quad bc-ac<0",
+            "feedback": "正の数と正の数の積は正。右−左が正なら左が小さい。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-wm011-q03-positive-choice-2",
+            "content": "ac=bc,\\quad bc-ac=0",
+            "feedback": "正の数と正の数の積は正。右−左が正なら左が小さい。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-wm011-q03-positive-choice-3",
+            "content": "ac<bc,\\quad bc-ac<0",
+            "feedback": "正の数と正の数の積は正。右−左が正なら左が小さい。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "正の数と正の数の積は正。右−左が正なら左が小さい。"
+        ],
+        "answerInsertion": {
+          "blockId": "n11-wm011-q03-positive-old",
+          "slotId": "n11-wm011-q03-positive-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n11-03",
+      "problemId": "n11",
+      "sourceRefs": [
+        "word-p-000484"
+      ],
+      "requires": [
+        "n11-wm011-q03-positive-legacy-result"
+      ],
+      "produces": [
+        "n11-03-legacy-result"
+      ],
+      "role": "check",
+      "goal": "c<0のとき、差の符号と大小関係を判断しよう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000484"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n11-03-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-03-old-text",
+              "kind": "text",
+              "text": "c<0のとき、差の符号と大小関係を判断しよう。"
+            },
+            {
+              "id": "n11-03-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n11-03",
+              "semanticRef": "n11-03"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n11-03-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-03-old-hint",
+              "kind": "text",
+              "text": "負の数×正の数は負。右−左が負なら左が大きい。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n11-03",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "c<0のとき、差の符号と大小関係を判断しよう。",
+        "prerequisiteIds": [
+          "n11-wm011-q03-positive-legacy-result"
+        ],
+        "expected": {
+          "value": "ac>bc,\\quad bc-ac<0",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n11-03-choice-0",
+            "content": "ac>bc,\\quad bc-ac<0",
+            "feedback": "負の数×正の数は負。右−左が負なら左が大きい。"
+          },
+          {
+            "id": "n11-03-choice-1",
+            "content": "ac<bc,\\quad bc-ac>0",
+            "feedback": "負の数×正の数は負。右−左が負なら左が大きい。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-03-choice-2",
+            "content": "ac=bc,\\quad bc-ac=0",
+            "feedback": "負の数×正の数は負。右−左が負なら左が大きい。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-03-choice-3",
+            "content": "ac>bc,\\quad bc-ac>0",
+            "feedback": "負の数×正の数は負。右−左が負なら左が大きい。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "負の数×正の数は負。右−左が負なら左が大きい。"
+        ],
+        "answerInsertion": {
+          "blockId": "n11-03-old",
+          "slotId": "n11-03-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n11-wm011-q03-zero",
+      "problemId": "n11",
+      "sourceRefs": [
+        "word-p-000484"
+      ],
+      "requires": [
+        "n11-03-legacy-result"
+      ],
+      "produces": [
+        "n11-wm011-q03-zero-legacy-result"
+      ],
+      "role": "check",
+      "goal": "c=0のとき、両辺と厳密な不等号はどうなるだろう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000484"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n11-wm011-q03-zero-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-wm011-q03-zero-old-text",
+              "kind": "text",
+              "text": "c=0のとき、両辺と厳密な不等号はどうなるだろう。"
+            },
+            {
+              "id": "n11-wm011-q03-zero-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n11-wm011-q03-zero",
+              "semanticRef": "n11-wm011-q03-zero"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n11-wm011-q03-zero-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-wm011-q03-zero-old-hint",
+              "kind": "text",
+              "text": "左右とも0。等号になると元の「<」は成り立たない。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n11-wm011-q03-zero",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "c=0のとき、両辺と厳密な不等号はどうなるだろう。",
+        "prerequisiteIds": [
+          "n11-03-legacy-result"
+        ],
+        "expected": {
+          "value": "ac=bc=0,\\quad\\text{元の厳密な大小は失われる}",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n11-wm011-q03-zero-choice-0",
+            "content": "ac=bc=0,\\quad\\text{元の厳密な大小は失われる}",
+            "feedback": "左右とも0。等号になると元の「<」は成り立たない。"
+          },
+          {
+            "id": "n11-wm011-q03-zero-choice-1",
+            "content": "ac<bc,\\quad\\text{そのまま保つ}",
+            "feedback": "左右とも0。等号になると元の「<」は成り立たない。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-wm011-q03-zero-choice-2",
+            "content": "ac>bc,\\quad\\text{逆転する}",
+            "feedback": "左右とも0。等号になると元の「<」は成り立たない。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-wm011-q03-zero-choice-3",
+            "content": "ac=bc=0,\\quad\\text{元の不等号を保つ}",
+            "feedback": "左右とも0。等号になると元の「<」は成り立たない。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "左右とも0。等号になると元の「<」は成り立たない。"
+        ],
+        "answerInsertion": {
+          "blockId": "n11-wm011-q03-zero-old",
+          "slotId": "n11-wm011-q03-zero-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n11-wm011-q04-fraction",
+      "problemId": "n11",
+      "sourceRefs": [
+        "word-p-000487"
+      ],
+      "requires": [
+        "n11-wm011-q03-zero-legacy-result"
+      ],
+      "produces": [
+        "n11-wm011-q04-fraction-legacy-result"
+      ],
+      "role": "check",
+      "goal": "a<bの両辺に負の1/5を掛けるとどうなるだろう。",
+      "purpose": "transfer",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000487"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n11-wm011-q04-fraction-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-wm011-q04-fraction-old-text",
+              "kind": "text",
+              "text": "a<bの両辺に負の1/5を掛けるとどうなるだろう。"
+            },
+            {
+              "id": "n11-wm011-q04-fraction-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n11-wm011-q04-fraction",
+              "semanticRef": "n11-wm011-q04-fraction"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n11-wm011-q04-fraction-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-wm011-q04-fraction-old-hint",
+              "kind": "text",
+              "text": "倍率−1/5は負。先ほど確かめた差の符号を使おう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n11-wm011-q04-fraction",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "a<bの両辺に負の1/5を掛けるとどうなるだろう。",
+        "prerequisiteIds": [
+          "n11-wm011-q03-zero-legacy-result"
+        ],
+        "expected": {
+          "value": "-\\frac a5>-\\frac b5,\\quad\\text{負数倍なので反転}",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n11-wm011-q04-fraction-choice-0",
+            "content": "-\\frac a5>-\\frac b5,\\quad\\text{負数倍なので反転}",
+            "feedback": "倍率−1/5は負。先ほど確かめた差の符号を使おう。"
+          },
+          {
+            "id": "n11-wm011-q04-fraction-choice-1",
+            "content": "-\\frac a5<-\\frac b5,\\quad\\text{向きを保つ}",
+            "feedback": "倍率−1/5は負。先ほど確かめた差の符号を使おう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-wm011-q04-fraction-choice-2",
+            "content": "-\\frac a5=-\\frac b5,\\quad\\text{等号になる}",
+            "feedback": "倍率−1/5は負。先ほど確かめた差の符号を使おう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-wm011-q04-fraction-choice-3",
+            "content": "-\\frac a5>-\\frac b5,\\quad\\text{正数倍なので反転}",
+            "feedback": "倍率−1/5は負。先ほど確かめた差の符号を使おう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "倍率−1/5は負。先ほど確かめた差の符号を使おう。"
+        ],
+        "answerInsertion": {
+          "blockId": "n11-wm011-q04-fraction-old",
+          "slotId": "n11-wm011-q04-fraction-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n11-04",
+      "problemId": "n11",
+      "sourceRefs": [
+        "word-p-000487"
+      ],
+      "requires": [
+        "n11-wm011-q04-fraction-legacy-result"
+      ],
+      "produces": [
+        "n11-04-legacy-result"
+      ],
+      "role": "check",
+      "goal": "a<bから−1倍と+3を順に行った大小関係を選ぼう。",
+      "purpose": "transfer",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000487"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n11-04-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-04-old-text",
+              "kind": "text",
+              "text": "a<bから−1倍と+3を順に行った大小関係を選ぼう。"
+            },
+            {
+              "id": "n11-04-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n11-04",
+              "semanticRef": "n11-04"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n11-04-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-04-old-hint",
+              "kind": "text",
+              "text": "独立した変形として−a>−bから両辺に3を足す。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n11-04",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "a<bから−1倍と+3を順に行った大小関係を選ぼう。",
+        "prerequisiteIds": [
+          "n11-wm011-q04-fraction-legacy-result"
+        ],
+        "expected": {
+          "value": "3-a>3-b",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n11-04-choice-0",
+            "content": "3-a>3-b",
+            "feedback": "独立した変形として−a>−bから両辺に3を足す。"
+          },
+          {
+            "id": "n11-04-choice-1",
+            "content": "3-a<3-b",
+            "feedback": "独立した変形として−a>−bから両辺に3を足す。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-04-choice-2",
+            "content": "3-a=3-b",
+            "feedback": "独立した変形として−a>−bから両辺に3を足す。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-04-choice-3",
+            "content": "3+a>3+b",
+            "feedback": "独立した変形として−a>−bから両辺に3を足す。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "独立した変形として−a>−bから両辺に3を足す。"
+        ],
+        "answerInsertion": {
+          "blockId": "n11-04-old",
+          "slotId": "n11-04-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n11-wm017-q05-operation",
+      "problemId": "n11",
+      "sourceRefs": [
+        "word-p-000492"
+      ],
+      "requires": [
+        "n11-04-legacy-result"
+      ],
+      "produces": [
+        "n11-wm017-q05-operation-legacy-result"
+      ],
+      "role": "check",
+      "goal": "左辺の−2を消すため、左辺に加える数を考えよう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000492"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n11-wm017-q05-operation-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-wm017-q05-operation-old-text",
+              "kind": "text",
+              "text": "左辺の−2を消すため、左辺に加える数を考えよう。"
+            },
+            {
+              "id": "n11-wm017-q05-operation-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n11-wm017-q05-operation",
+              "semanticRef": "n11-wm017-q05-operation"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n11-wm017-q05-operation-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-wm017-q05-operation-old-hint",
+              "kind": "text",
+              "text": "−2と足して0になる数は何だろう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n11-wm017-q05-operation",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "左辺の−2を消すため、左辺に加える数を考えよう。",
+        "prerequisiteIds": [
+          "n11-04-legacy-result"
+        ],
+        "expected": {
+          "value": "2",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n11-wm017-q05-operation-choice-0",
+            "content": "2",
+            "feedback": "−2と足して0になる数は何だろう。"
+          },
+          {
+            "id": "n11-wm017-q05-operation-choice-1",
+            "content": "-2",
+            "feedback": "−2と足して0になる数は何だろう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-wm017-q05-operation-choice-2",
+            "content": "3",
+            "feedback": "−2と足して0になる数は何だろう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-wm017-q05-operation-choice-3",
+            "content": "0",
+            "feedback": "−2と足して0になる数は何だろう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "−2と足して0になる数は何だろう。"
+        ],
+        "answerInsertion": {
+          "blockId": "n11-wm017-q05-operation-old",
+          "slotId": "n11-wm017-q05-operation-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n11-wm017-q05-balance",
+      "problemId": "n11",
+      "sourceRefs": [
+        "word-p-000492"
+      ],
+      "requires": [
+        "n11-wm017-q05-operation-legacy-result"
+      ],
+      "produces": [
+        "n11-wm017-q05-balance-legacy-result"
+      ],
+      "role": "check",
+      "goal": "不等号の向きを保つために、右辺にも加える同じ数を選ぼう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000492"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n11-wm017-q05-balance-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-wm017-q05-balance-old-text",
+              "kind": "text",
+              "text": "不等号の向きを保つために、右辺にも加える同じ数を選ぼう。"
+            },
+            {
+              "id": "n11-wm017-q05-balance-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n11-wm017-q05-balance",
+              "semanticRef": "n11-wm017-q05-balance"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n11-wm017-q05-balance-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-wm017-q05-balance-old-hint",
+              "kind": "text",
+              "text": "左辺だけでなく右辺にも同じ操作をする。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n11-wm017-q05-balance",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "不等号の向きを保つために、右辺にも加える同じ数を選ぼう。",
+        "prerequisiteIds": [
+          "n11-wm017-q05-operation-legacy-result"
+        ],
+        "expected": {
+          "value": "2",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n11-wm017-q05-balance-choice-0",
+            "content": "2",
+            "feedback": "左辺だけでなく右辺にも同じ操作をする。"
+          },
+          {
+            "id": "n11-wm017-q05-balance-choice-1",
+            "content": "-2",
+            "feedback": "左辺だけでなく右辺にも同じ操作をする。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-wm017-q05-balance-choice-2",
+            "content": "5",
+            "feedback": "左辺だけでなく右辺にも同じ操作をする。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-wm017-q05-balance-choice-3",
+            "content": "0",
+            "feedback": "左辺だけでなく右辺にも同じ操作をする。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "左辺だけでなく右辺にも同じ操作をする。"
+        ],
+        "answerInsertion": {
+          "blockId": "n11-wm017-q05-balance-old",
+          "slotId": "n11-wm017-q05-balance-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n11-05",
+      "problemId": "n11",
+      "sourceRefs": [
+        "word-p-000492"
+      ],
+      "requires": [
+        "n11-wm017-q05-balance-legacy-result"
+      ],
+      "produces": [
+        "n11-05-legacy-result"
+      ],
+      "role": "check",
+      "goal": "左辺の定数を打ち消したあと、右辺の5+2を計算しよう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000492"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n11-05-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-05-old-text",
+              "kind": "text",
+              "text": "左辺の定数を打ち消したあと、右辺の5+2を計算しよう。"
+            },
+            {
+              "id": "n11-05-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n11-05",
+              "semanticRef": "n11-05"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n11-05-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-05-old-hint",
+              "kind": "text",
+              "text": "5+2を計算して、3xの右側に置こう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n11-05",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "左辺の定数を打ち消したあと、右辺の5+2を計算しよう。",
+        "prerequisiteIds": [
+          "n11-wm017-q05-balance-legacy-result"
+        ],
+        "expected": {
+          "value": "7",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n11-05-choice-0",
+            "content": "7",
+            "feedback": "5+2を計算して、3xの右側に置こう。"
+          },
+          {
+            "id": "n11-05-choice-1",
+            "content": "3",
+            "feedback": "5+2を計算して、3xの右側に置こう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-05-choice-2",
+            "content": "5",
+            "feedback": "5+2を計算して、3xの右側に置こう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-05-choice-3",
+            "content": "9",
+            "feedback": "5+2を計算して、3xの右側に置こう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "5+2を計算して、3xの右側に置こう。"
+        ],
+        "answerInsertion": {
+          "blockId": "n11-05-old",
+          "slotId": "n11-05-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n11-06",
+      "problemId": "n11",
+      "sourceRefs": [
+        "word-p-000493"
+      ],
+      "requires": [
+        "n11-05-legacy-result"
+      ],
+      "produces": [
+        "n11-06-legacy-result"
+      ],
+      "role": "check",
+      "goal": "3x<7の両辺を正の3で割ったときの右辺を計算しよう。",
+      "purpose": "transfer",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000493"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n11-06-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-06-old-text",
+              "kind": "text",
+              "text": "3x<7の両辺を正の3で割ったときの右辺を計算しよう。"
+            },
+            {
+              "id": "n11-06-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n11-06",
+              "semanticRef": "n11-06"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n11-06-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-06-old-hint",
+              "kind": "text",
+              "text": "正の3で割るので、<の向きは変わらない。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n11-06",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "3x<7の両辺を正の3で割ったときの右辺を計算しよう。",
+        "prerequisiteIds": [
+          "n11-05-legacy-result"
+        ],
+        "expected": {
+          "value": "\\frac73",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n11-06-choice-0",
+            "content": "\\frac73",
+            "feedback": "正の3で割るので、<の向きは変わらない。"
+          },
+          {
+            "id": "n11-06-choice-1",
+            "content": "\\frac37",
+            "feedback": "正の3で割るので、<の向きは変わらない。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-06-choice-2",
+            "content": "-\\frac73",
+            "feedback": "正の3で割るので、<の向きは変わらない。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-06-choice-3",
+            "content": "7",
+            "feedback": "正の3で割るので、<の向きは変わらない。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "正の3で割るので、<の向きは変わらない。"
+        ],
+        "answerInsertion": {
+          "blockId": "n11-06-old",
+          "slotId": "n11-06-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n11-07",
+      "problemId": "n11",
+      "sourceRefs": [
+        "word-p-000494"
+      ],
+      "requires": [
+        "n11-06-legacy-result"
+      ],
+      "produces": [
+        "n11-07-legacy-result"
+      ],
+      "role": "check",
+      "goal": "境界の値が含まれるかを選ぼう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000494"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n11-07-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-07-old-text",
+              "kind": "text",
+              "text": "境界の値が含まれるかを選ぼう。"
+            },
+            {
+              "id": "n11-07-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n11-07",
+              "semanticRef": "n11-07"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n11-07-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-07-old-hint",
+              "kind": "text",
+              "text": "元の記号は「<」で、等号は許されていない。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n11-07",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "境界の値が含まれるかを選ぼう。",
+        "prerequisiteIds": [
+          "n11-06-legacy-result"
+        ],
+        "expected": {
+          "value": "含まれない（等号となり<を満たさない）",
+          "form": "text",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n11-07-choice-0",
+            "content": "含まれない（等号となり<を満たさない）",
+            "feedback": "元の記号は「<」で、等号は許されていない。"
+          },
+          {
+            "id": "n11-07-choice-1",
+            "content": "含まれる（左右が等しくなるから）",
+            "feedback": "元の記号は「<」で、等号は許されていない。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-07-choice-2",
+            "content": "含まれる（3は正だから）",
+            "feedback": "元の記号は「<」で、等号は許されていない。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-07-choice-3",
+            "content": "判断できない（分数だから）",
+            "feedback": "元の記号は「<」で、等号は許されていない。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "元の記号は「<」で、等号は許されていない。"
+        ],
+        "answerInsertion": {
+          "blockId": "n11-07-old",
+          "slotId": "n11-07-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n11-p007-q08-subtract-left",
+      "problemId": "n11",
+      "sourceRefs": [
+        "word-p-000498"
+      ],
+      "requires": [
+        "n11-07-legacy-result"
+      ],
+      "produces": [
+        "n11-p007-q08-subtract-left-legacy-result"
+      ],
+      "role": "check",
+      "goal": "左辺の＋3を打ち消すため、引く数を選ぼう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000498"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n11-p007-q08-subtract-left-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-p007-q08-subtract-left-old-text",
+              "kind": "text",
+              "text": "左辺の＋3を打ち消すため、引く数を選ぼう。"
+            },
+            {
+              "id": "n11-p007-q08-subtract-left-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n11-p007-q08-subtract-left",
+              "semanticRef": "n11-p007-q08-subtract-left"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n11-p007-q08-subtract-left-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-p007-q08-subtract-left-old-hint",
+              "kind": "text",
+              "text": "＋3と打ち消し合うのは、何を引くときだろう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n11-p007-q08-subtract-left",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "左辺の＋3を打ち消すため、引く数を選ぼう。",
+        "prerequisiteIds": [
+          "n11-07-legacy-result"
+        ],
+        "expected": {
+          "value": "3",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n11-p007-q08-subtract-left-choice-0",
+            "content": "3",
+            "feedback": "＋3と打ち消し合うのは、何を引くときだろう。"
+          },
+          {
+            "id": "n11-p007-q08-subtract-left-choice-1",
+            "content": "-3",
+            "feedback": "＋3と打ち消し合うのは、何を引くときだろう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-p007-q08-subtract-left-choice-2",
+            "content": "2",
+            "feedback": "＋3と打ち消し合うのは、何を引くときだろう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-p007-q08-subtract-left-choice-3",
+            "content": "5",
+            "feedback": "＋3と打ち消し合うのは、何を引くときだろう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "＋3と打ち消し合うのは、何を引くときだろう。"
+        ],
+        "answerInsertion": {
+          "blockId": "n11-p007-q08-subtract-left-old",
+          "slotId": "n11-p007-q08-subtract-left-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n11-p007-q08-subtract-right",
+      "problemId": "n11",
+      "sourceRefs": [
+        "word-p-000498"
+      ],
+      "requires": [
+        "n11-p007-q08-subtract-left-legacy-result"
+      ],
+      "produces": [
+        "n11-p007-q08-subtract-right-legacy-result"
+      ],
+      "role": "check",
+      "goal": "同じ操作を右辺にも行う。右辺から引く数を選ぼう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000498"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n11-p007-q08-subtract-right-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-p007-q08-subtract-right-old-text",
+              "kind": "text",
+              "text": "同じ操作を右辺にも行う。右辺から引く数を選ぼう。"
+            },
+            {
+              "id": "n11-p007-q08-subtract-right-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n11-p007-q08-subtract-right",
+              "semanticRef": "n11-p007-q08-subtract-right"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n11-p007-q08-subtract-right-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-p007-q08-subtract-right-old-hint",
+              "kind": "text",
+              "text": "左右に同じ操作をすると不等号の関係を保てる。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n11-p007-q08-subtract-right",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "同じ操作を右辺にも行う。右辺から引く数を選ぼう。",
+        "prerequisiteIds": [
+          "n11-p007-q08-subtract-left-legacy-result"
+        ],
+        "expected": {
+          "value": "3",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n11-p007-q08-subtract-right-choice-0",
+            "content": "3",
+            "feedback": "左右に同じ操作をすると不等号の関係を保てる。"
+          },
+          {
+            "id": "n11-p007-q08-subtract-right-choice-1",
+            "content": "-3",
+            "feedback": "左右に同じ操作をすると不等号の関係を保てる。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-p007-q08-subtract-right-choice-2",
+            "content": "5",
+            "feedback": "左右に同じ操作をすると不等号の関係を保てる。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-p007-q08-subtract-right-choice-3",
+            "content": "2",
+            "feedback": "左右に同じ操作をすると不等号の関係を保てる。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "左右に同じ操作をすると不等号の関係を保てる。"
+        ],
+        "answerInsertion": {
+          "blockId": "n11-p007-q08-subtract-right-old",
+          "slotId": "n11-p007-q08-subtract-right-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n11-08",
+      "problemId": "n11",
+      "sourceRefs": [
+        "word-p-000498"
+      ],
+      "requires": [
+        "n11-p007-q08-subtract-right-legacy-result"
+      ],
+      "produces": [
+        "n11-08-legacy-result"
+      ],
+      "role": "check",
+      "goal": "左辺を整理したあとの右辺、5−3を計算しよう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000498"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n11-08-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-08-old-text",
+              "kind": "text",
+              "text": "左辺を整理したあとの右辺、5−3を計算しよう。"
+            },
+            {
+              "id": "n11-08-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n11-08",
+              "semanticRef": "n11-08"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n11-08-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-08-old-hint",
+              "kind": "text",
+              "text": "右辺の引き算を行ってから、−2xの右側に置こう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n11-08",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "左辺を整理したあとの右辺、5−3を計算しよう。",
+        "prerequisiteIds": [
+          "n11-p007-q08-subtract-right-legacy-result"
+        ],
+        "expected": {
+          "value": "2",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n11-08-choice-0",
+            "content": "2",
+            "feedback": "右辺の引き算を行ってから、−2xの右側に置こう。"
+          },
+          {
+            "id": "n11-08-choice-1",
+            "content": "8",
+            "feedback": "右辺の引き算を行ってから、−2xの右側に置こう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-08-choice-2",
+            "content": "-2",
+            "feedback": "右辺の引き算を行ってから、−2xの右側に置こう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-08-choice-3",
+            "content": "5",
+            "feedback": "右辺の引き算を行ってから、−2xの右側に置こう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "右辺の引き算を行ってから、−2xの右側に置こう。"
+        ],
+        "answerInsertion": {
+          "blockId": "n11-08-old",
+          "slotId": "n11-08-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n11-p007-q09-direction",
+      "problemId": "n11",
+      "sourceRefs": [
+        "word-p-000499"
+      ],
+      "requires": [
+        "n11-08-legacy-result"
+      ],
+      "produces": [
+        "n11-p007-q09-direction-legacy-result"
+      ],
+      "role": "check",
+      "goal": "負の係数で割った後の不等号を選ぼう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000499"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n11-p007-q09-direction-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-p007-q09-direction-old-text",
+              "kind": "text",
+              "text": "負の係数で割った後の不等号を選ぼう。"
+            },
+            {
+              "id": "n11-p007-q09-direction-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n11-p007-q09-direction",
+              "semanticRef": "n11-p007-q09-direction"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n11-p007-q09-direction-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-p007-q09-direction-old-hint",
+              "kind": "text",
+              "text": "係数は負。向きと等号の有無をそれぞれ確かめよう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n11-p007-q09-direction",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "負の係数で割った後の不等号を選ぼう。",
+        "prerequisiteIds": [
+          "n11-08-legacy-result"
+        ],
+        "expected": {
+          "value": "\\ge",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n11-p007-q09-direction-choice-0",
+            "content": "\\ge",
+            "feedback": "係数は負。向きと等号の有無をそれぞれ確かめよう。"
+          },
+          {
+            "id": "n11-p007-q09-direction-choice-1",
+            "content": "\\le",
+            "feedback": "係数は負。向きと等号の有無をそれぞれ確かめよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-p007-q09-direction-choice-2",
+            "content": ">",
+            "feedback": "係数は負。向きと等号の有無をそれぞれ確かめよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-p007-q09-direction-choice-3",
+            "content": "<",
+            "feedback": "係数は負。向きと等号の有無をそれぞれ確かめよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "係数は負。向きと等号の有無をそれぞれ確かめよう。"
+        ],
+        "answerInsertion": {
+          "blockId": "n11-p007-q09-direction-old",
+          "slotId": "n11-p007-q09-direction-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n11-09",
+      "problemId": "n11",
+      "sourceRefs": [
+        "word-p-000500"
+      ],
+      "requires": [
+        "n11-p007-q09-direction-legacy-result"
+      ],
+      "produces": [
+        "n11-09-legacy-result"
+      ],
+      "role": "check",
+      "goal": "負の2で割った右辺、2÷(−2)を計算しよう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000500"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n11-09-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-09-old-text",
+              "kind": "text",
+              "text": "負の2で割った右辺、2÷(−2)を計算しよう。"
+            },
+            {
+              "id": "n11-09-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n11-09",
+              "semanticRef": "n11-09"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n11-09-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-09-old-hint",
+              "kind": "text",
+              "text": "正の数を負の数で割ると結果の符号はどうなるだろう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n11-09",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "負の2で割った右辺、2÷(−2)を計算しよう。",
+        "prerequisiteIds": [
+          "n11-p007-q09-direction-legacy-result"
+        ],
+        "expected": {
+          "value": "-1",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n11-09-choice-0",
+            "content": "-1",
+            "feedback": "正の数を負の数で割ると結果の符号はどうなるだろう。"
+          },
+          {
+            "id": "n11-09-choice-1",
+            "content": "1",
+            "feedback": "正の数を負の数で割ると結果の符号はどうなるだろう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-09-choice-2",
+            "content": "-2",
+            "feedback": "正の数を負の数で割ると結果の符号はどうなるだろう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-09-choice-3",
+            "content": "2",
+            "feedback": "正の数を負の数で割ると結果の符号はどうなるだろう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "正の数を負の数で割ると結果の符号はどうなるだろう。"
+        ],
+        "answerInsertion": {
+          "blockId": "n11-09-old",
+          "slotId": "n11-09-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n11-10",
+      "problemId": "n11",
+      "sourceRefs": [
+        "word-p-000501"
+      ],
+      "requires": [
+        "n11-09-legacy-result"
+      ],
+      "produces": [
+        "n11-10-legacy-result"
+      ],
+      "role": "check",
+      "goal": "境界を含むかどうか、根拠とともに選ぼう。",
+      "purpose": "transfer",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000501"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n11-10-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-10-old-text",
+              "kind": "text",
+              "text": "境界を含むかどうか、根拠とともに選ぼう。"
+            },
+            {
+              "id": "n11-10-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n11-10",
+              "semanticRef": "n11-10"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n11-10-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-10-old-hint",
+              "kind": "text",
+              "text": "元の≤は等号を許し、境界を代入すると左右が一致する。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n11-10",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "境界を含むかどうか、根拠とともに選ぼう。",
+        "prerequisiteIds": [
+          "n11-09-legacy-result"
+        ],
+        "expected": {
+          "value": "含む（代入すると5≤5）",
+          "form": "text",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n11-10-choice-0",
+            "content": "含む（代入すると5≤5）",
+            "feedback": "元の≤は等号を許し、境界を代入すると左右が一致する。"
+          },
+          {
+            "id": "n11-10-choice-1",
+            "content": "含まない（負の数だから）",
+            "feedback": "元の≤は等号を許し、境界を代入すると左右が一致する。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-10-choice-2",
+            "content": "含まない（代入すると5<5）",
+            "feedback": "元の≤は等号を許し、境界を代入すると左右が一致する。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-10-choice-3",
+            "content": "含む（不等号を逆にしないから）",
+            "feedback": "元の≤は等号を許し、境界を代入すると左右が一致する。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "元の≤は等号を許し、境界を代入すると左右が一致する。"
+        ],
+        "answerInsertion": {
+          "blockId": "n11-10-old",
+          "slotId": "n11-10-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n11-wm012-q11-expand",
+      "problemId": "n11",
+      "sourceRefs": [
+        "word-p-000507"
+      ],
+      "requires": [
+        "n11-10-legacy-result"
+      ],
+      "produces": [
+        "n11-wm012-q11-expand-legacy-result"
+      ],
+      "role": "check",
+      "goal": "括弧の両方の項に3を掛けて、展開した左辺を選ぼう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000507"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n11-wm012-q11-expand-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-wm012-q11-expand-old-text",
+              "kind": "text",
+              "text": "括弧の両方の項に3を掛けて、展開した左辺を選ぼう。"
+            },
+            {
+              "id": "n11-wm012-q11-expand-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n11-wm012-q11-expand",
+              "semanticRef": "n11-wm012-q11-expand"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n11-wm012-q11-expand-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-wm012-q11-expand-old-hint",
+              "kind": "text",
+              "text": "3を2xと3のそれぞれに掛けよう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n11-wm012-q11-expand",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "括弧の両方の項に3を掛けて、展開した左辺を選ぼう。",
+        "prerequisiteIds": [
+          "n11-10-legacy-result"
+        ],
+        "expected": {
+          "value": "6x+9",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n11-wm012-q11-expand-choice-0",
+            "content": "6x+9",
+            "feedback": "3を2xと3のそれぞれに掛けよう。"
+          },
+          {
+            "id": "n11-wm012-q11-expand-choice-1",
+            "content": "6x+3",
+            "feedback": "3を2xと3のそれぞれに掛けよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-wm012-q11-expand-choice-2",
+            "content": "2x+9",
+            "feedback": "3を2xと3のそれぞれに掛けよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-wm012-q11-expand-choice-3",
+            "content": "6x+6",
+            "feedback": "3を2xと3のそれぞれに掛けよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "3を2xと3のそれぞれに掛けよう。"
+        ],
+        "answerInsertion": {
+          "blockId": "n11-wm012-q11-expand-old",
+          "slotId": "n11-wm012-q11-expand-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n11-wm012-q11-xcoef",
+      "problemId": "n11",
+      "sourceRefs": [
+        "word-p-000507"
+      ],
+      "requires": [
+        "n11-wm012-q11-expand-legacy-result"
+      ],
+      "produces": [
+        "n11-wm012-q11-xcoef-legacy-result"
+      ],
+      "role": "check",
+      "goal": "両辺から10xを引いたあとの、左辺のxの係数を選ぼう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000507"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n11-wm012-q11-xcoef-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-wm012-q11-xcoef-old-text",
+              "kind": "text",
+              "text": "両辺から10xを引いたあとの、左辺のxの係数を選ぼう。"
+            },
+            {
+              "id": "n11-wm012-q11-xcoef-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n11-wm012-q11-xcoef",
+              "semanticRef": "n11-wm012-q11-xcoef"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n11-wm012-q11-xcoef-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-wm012-q11-xcoef-old-hint",
+              "kind": "text",
+              "text": "6x−10xの係数を計算しよう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n11-wm012-q11-xcoef",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "両辺から10xを引いたあとの、左辺のxの係数を選ぼう。",
+        "prerequisiteIds": [
+          "n11-wm012-q11-expand-legacy-result"
+        ],
+        "expected": {
+          "value": "-4",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n11-wm012-q11-xcoef-choice-0",
+            "content": "-4",
+            "feedback": "6x−10xの係数を計算しよう。"
+          },
+          {
+            "id": "n11-wm012-q11-xcoef-choice-1",
+            "content": "4",
+            "feedback": "6x−10xの係数を計算しよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-wm012-q11-xcoef-choice-2",
+            "content": "-10",
+            "feedback": "6x−10xの係数を計算しよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-wm012-q11-xcoef-choice-3",
+            "content": "16",
+            "feedback": "6x−10xの係数を計算しよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "6x−10xの係数を計算しよう。"
+        ],
+        "answerInsertion": {
+          "blockId": "n11-wm012-q11-xcoef-old",
+          "slotId": "n11-wm012-q11-xcoef-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n11-11",
+      "problemId": "n11",
+      "sourceRefs": [
+        "word-p-000507"
+      ],
+      "requires": [
+        "n11-wm012-q11-xcoef-legacy-result"
+      ],
+      "produces": [
+        "n11-11-legacy-result"
+      ],
+      "role": "check",
+      "goal": "整理した不等式を選ぼう。",
+      "purpose": "transfer",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000507"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n11-11-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-11-old-text",
+              "kind": "text",
+              "text": "整理した不等式を選ぼう。"
+            },
+            {
+              "id": "n11-11-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n11-11",
+              "semanticRef": "n11-11"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n11-11-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-11-old-hint",
+              "kind": "text",
+              "text": "左は6x+9。両辺から10xと9を引く。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n11-11",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "整理した不等式を選ぼう。",
+        "prerequisiteIds": [
+          "n11-wm012-q11-xcoef-legacy-result"
+        ],
+        "expected": {
+          "value": "-4x\\ge-26",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n11-11-choice-0",
+            "content": "-4x\\ge-26",
+            "feedback": "左は6x+9。両辺から10xと9を引く。"
+          },
+          {
+            "id": "n11-11-choice-1",
+            "content": "-4x\\le-26",
+            "feedback": "左は6x+9。両辺から10xと9を引く。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-11-choice-2",
+            "content": "4x\\ge-26",
+            "feedback": "左は6x+9。両辺から10xと9を引く。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-11-choice-3",
+            "content": "-4x\\ge26",
+            "feedback": "左は6x+9。両辺から10xと9を引く。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "左は6x+9。両辺から10xと9を引く。"
+        ],
+        "answerInsertion": {
+          "blockId": "n11-11-old",
+          "slotId": "n11-11-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n11-12",
+      "problemId": "n11",
+      "sourceRefs": [
+        "word-p-000508"
+      ],
+      "requires": [
+        "n11-11-legacy-result"
+      ],
+      "produces": [
+        "n11-12-legacy-result"
+      ],
+      "role": "check",
+      "goal": "解の範囲を選ぼう。",
+      "purpose": "transfer",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000508"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n11-12-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-12-old-text",
+              "kind": "text",
+              "text": "解の範囲を選ぼう。"
+            },
+            {
+              "id": "n11-12-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n11-12",
+              "semanticRef": "n11-12"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n11-12-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-12-old-hint",
+              "kind": "text",
+              "text": "負の数で割るので≥は≤になり、負÷負は正。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n11-12",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "解の範囲を選ぼう。",
+        "prerequisiteIds": [
+          "n11-11-legacy-result"
+        ],
+        "expected": {
+          "value": "x\\le\\frac{13}{2}",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n11-12-choice-0",
+            "content": "x\\le\\frac{13}{2}",
+            "feedback": "負の数で割るので≥は≤になり、負÷負は正。"
+          },
+          {
+            "id": "n11-12-choice-1",
+            "content": "x\\ge\\frac{13}{2}",
+            "feedback": "負の数で割るので≥は≤になり、負÷負は正。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-12-choice-2",
+            "content": "x\\le-\\frac{13}{2}",
+            "feedback": "負の数で割るので≥は≤になり、負÷負は正。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-12-choice-3",
+            "content": "x<\\frac{13}{2}",
+            "feedback": "負の数で割るので≥は≤になり、負÷負は正。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "負の数で割るので≥は≤になり、負÷負は正。"
+        ],
+        "answerInsertion": {
+          "blockId": "n11-12-old",
+          "slotId": "n11-12-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n11-p008-q13-mul-left",
+      "problemId": "n11",
+      "sourceRefs": [
+        "word-p-000511"
+      ],
+      "requires": [
+        "n11-12-legacy-result"
+      ],
+      "produces": [
+        "n11-p008-q13-mul-left-legacy-result"
+      ],
+      "role": "check",
+      "goal": "左辺の分母3を消すために掛ける数を選ぼう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000511"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n11-p008-q13-mul-left-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-p008-q13-mul-left-old-text",
+              "kind": "text",
+              "text": "左辺の分母3を消すために掛ける数を選ぼう。"
+            },
+            {
+              "id": "n11-p008-q13-mul-left-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n11-p008-q13-mul-left",
+              "semanticRef": "n11-p008-q13-mul-left"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n11-p008-q13-mul-left-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-p008-q13-mul-left-old-hint",
+              "kind": "text",
+              "text": "分母を消すには、分母と同じ大きさの正の数を掛ける。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n11-p008-q13-mul-left",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "左辺の分母3を消すために掛ける数を選ぼう。",
+        "prerequisiteIds": [
+          "n11-12-legacy-result"
+        ],
+        "expected": {
+          "value": "3",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n11-p008-q13-mul-left-choice-0",
+            "content": "3",
+            "feedback": "分母を消すには、分母と同じ大きさの正の数を掛ける。"
+          },
+          {
+            "id": "n11-p008-q13-mul-left-choice-1",
+            "content": "-3",
+            "feedback": "分母を消すには、分母と同じ大きさの正の数を掛ける。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-p008-q13-mul-left-choice-2",
+            "content": "1",
+            "feedback": "分母を消すには、分母と同じ大きさの正の数を掛ける。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-p008-q13-mul-left-choice-3",
+            "content": "6",
+            "feedback": "分母を消すには、分母と同じ大きさの正の数を掛ける。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "分母を消すには、分母と同じ大きさの正の数を掛ける。"
+        ],
+        "answerInsertion": {
+          "blockId": "n11-p008-q13-mul-left-old",
+          "slotId": "n11-p008-q13-mul-left-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n11-p008-q13-mul-right",
+      "problemId": "n11",
+      "sourceRefs": [
+        "word-p-000511"
+      ],
+      "requires": [
+        "n11-p008-q13-mul-left-legacy-result"
+      ],
+      "produces": [
+        "n11-p008-q13-mul-right-legacy-result"
+      ],
+      "role": "check",
+      "goal": "右辺にも同じ数を掛けよう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000511"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n11-p008-q13-mul-right-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-p008-q13-mul-right-old-text",
+              "kind": "text",
+              "text": "右辺にも同じ数を掛けよう。"
+            },
+            {
+              "id": "n11-p008-q13-mul-right-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n11-p008-q13-mul-right",
+              "semanticRef": "n11-p008-q13-mul-right"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n11-p008-q13-mul-right-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-p008-q13-mul-right-old-hint",
+              "kind": "text",
+              "text": "左辺に選んだ倍率と同じ数を右辺にも掛ける。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n11-p008-q13-mul-right",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "右辺にも同じ数を掛けよう。",
+        "prerequisiteIds": [
+          "n11-p008-q13-mul-left-legacy-result"
+        ],
+        "expected": {
+          "value": "3",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n11-p008-q13-mul-right-choice-0",
+            "content": "3",
+            "feedback": "左辺に選んだ倍率と同じ数を右辺にも掛ける。"
+          },
+          {
+            "id": "n11-p008-q13-mul-right-choice-1",
+            "content": "1",
+            "feedback": "左辺に選んだ倍率と同じ数を右辺にも掛ける。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-p008-q13-mul-right-choice-2",
+            "content": "-3",
+            "feedback": "左辺に選んだ倍率と同じ数を右辺にも掛ける。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-p008-q13-mul-right-choice-3",
+            "content": "6",
+            "feedback": "左辺に選んだ倍率と同じ数を右辺にも掛ける。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "左辺に選んだ倍率と同じ数を右辺にも掛ける。"
+        ],
+        "answerInsertion": {
+          "blockId": "n11-p008-q13-mul-right-old",
+          "slotId": "n11-p008-q13-mul-right-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n11-13",
+      "problemId": "n11",
+      "sourceRefs": [
+        "word-p-000511"
+      ],
+      "requires": [
+        "n11-p008-q13-mul-right-legacy-result"
+      ],
+      "produces": [
+        "n11-13-legacy-result"
+      ],
+      "role": "check",
+      "goal": "右辺3(2x+1)を展開したxの係数を選ぼう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000511"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n11-13-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-13-old-text",
+              "kind": "text",
+              "text": "右辺3(2x+1)を展開したxの係数を選ぼう。"
+            },
+            {
+              "id": "n11-13-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n11-13",
+              "semanticRef": "n11-13"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n11-13-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-13-old-hint",
+              "kind": "text",
+              "text": "3を2xに掛けた係数を計算しよう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n11-13",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "右辺3(2x+1)を展開したxの係数を選ぼう。",
+        "prerequisiteIds": [
+          "n11-p008-q13-mul-right-legacy-result"
+        ],
+        "expected": {
+          "value": "6",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n11-13-choice-0",
+            "content": "6",
+            "feedback": "3を2xに掛けた係数を計算しよう。"
+          },
+          {
+            "id": "n11-13-choice-1",
+            "content": "2",
+            "feedback": "3を2xに掛けた係数を計算しよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-13-choice-2",
+            "content": "3",
+            "feedback": "3を2xに掛けた係数を計算しよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-13-choice-3",
+            "content": "9",
+            "feedback": "3を2xに掛けた係数を計算しよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "3を2xに掛けた係数を計算しよう。"
+        ],
+        "answerInsertion": {
+          "blockId": "n11-13-old",
+          "slotId": "n11-13-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n11-p008-q13-constant",
+      "problemId": "n11",
+      "sourceRefs": [
+        "word-p-000511"
+      ],
+      "requires": [
+        "n11-13-legacy-result"
+      ],
+      "produces": [
+        "n11-p008-q13-constant-legacy-result"
+      ],
+      "role": "check",
+      "goal": "3(2x+1) の定数項を計算しよう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000511"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n11-p008-q13-constant-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-p008-q13-constant-old-text",
+              "kind": "text",
+              "text": "3(2x+1) の定数項を計算しよう。"
+            },
+            {
+              "id": "n11-p008-q13-constant-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n11-p008-q13-constant",
+              "semanticRef": "n11-p008-q13-constant"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n11-p008-q13-constant-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-p008-q13-constant-old-hint",
+              "kind": "text",
+              "text": "かっこの中の定数項にも外側の数を掛ける。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n11-p008-q13-constant",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "3(2x+1) の定数項を計算しよう。",
+        "prerequisiteIds": [
+          "n11-13-legacy-result"
+        ],
+        "expected": {
+          "value": "3",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n11-p008-q13-constant-choice-0",
+            "content": "3",
+            "feedback": "かっこの中の定数項にも外側の数を掛ける。"
+          },
+          {
+            "id": "n11-p008-q13-constant-choice-1",
+            "content": "1",
+            "feedback": "かっこの中の定数項にも外側の数を掛ける。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-p008-q13-constant-choice-2",
+            "content": "-3",
+            "feedback": "かっこの中の定数項にも外側の数を掛ける。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-p008-q13-constant-choice-3",
+            "content": "6",
+            "feedback": "かっこの中の定数項にも外側の数を掛ける。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "かっこの中の定数項にも外側の数を掛ける。"
+        ],
+        "answerInsertion": {
+          "blockId": "n11-p008-q13-constant-old",
+          "slotId": "n11-p008-q13-constant-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n11-wm013-q14-xcoef",
+      "problemId": "n11",
+      "sourceRefs": [
+        "word-p-000512"
+      ],
+      "requires": [
+        "n11-p008-q13-constant-legacy-result"
+      ],
+      "produces": [
+        "n11-wm013-q14-xcoef-legacy-result"
+      ],
+      "role": "check",
+      "goal": "両辺からxを引いて右辺のxの係数を選ぼう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000512"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n11-wm013-q14-xcoef-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-wm013-q14-xcoef-old-text",
+              "kind": "text",
+              "text": "両辺からxを引いて右辺のxの係数を選ぼう。"
+            },
+            {
+              "id": "n11-wm013-q14-xcoef-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n11-wm013-q14-xcoef",
+              "semanticRef": "n11-wm013-q14-xcoef"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n11-wm013-q14-xcoef-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-wm013-q14-xcoef-old-hint",
+              "kind": "text",
+              "text": "6xからxを引くので、係数6から1を引く。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n11-wm013-q14-xcoef",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "両辺からxを引いて右辺のxの係数を選ぼう。",
+        "prerequisiteIds": [
+          "n11-p008-q13-constant-legacy-result"
+        ],
+        "expected": {
+          "value": "5",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n11-wm013-q14-xcoef-choice-0",
+            "content": "5",
+            "feedback": "6xからxを引くので、係数6から1を引く。"
+          },
+          {
+            "id": "n11-wm013-q14-xcoef-choice-1",
+            "content": "6",
+            "feedback": "6xからxを引くので、係数6から1を引く。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-wm013-q14-xcoef-choice-2",
+            "content": "7",
+            "feedback": "6xからxを引くので、係数6から1を引く。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-wm013-q14-xcoef-choice-3",
+            "content": "-5",
+            "feedback": "6xからxを引くので、係数6から1を引く。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "6xからxを引くので、係数6から1を引く。"
+        ],
+        "answerInsertion": {
+          "blockId": "n11-wm013-q14-xcoef-old",
+          "slotId": "n11-wm013-q14-xcoef-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n11-wm013-q14-const",
+      "problemId": "n11",
+      "sourceRefs": [
+        "word-p-000512"
+      ],
+      "requires": [
+        "n11-wm013-q14-xcoef-legacy-result"
+      ],
+      "produces": [
+        "n11-wm013-q14-const-legacy-result"
+      ],
+      "role": "check",
+      "goal": "両辺から3を引いて左辺の定数を選ぼう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000512"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n11-wm013-q14-const-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-wm013-q14-const-old-text",
+              "kind": "text",
+              "text": "両辺から3を引いて左辺の定数を選ぼう。"
+            },
+            {
+              "id": "n11-wm013-q14-const-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n11-wm013-q14-const",
+              "semanticRef": "n11-wm013-q14-const"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n11-wm013-q14-const-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-wm013-q14-const-old-hint",
+              "kind": "text",
+              "text": "左辺の−2からさらに3を引く。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n11-wm013-q14-const",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "両辺から3を引いて左辺の定数を選ぼう。",
+        "prerequisiteIds": [
+          "n11-wm013-q14-xcoef-legacy-result"
+        ],
+        "expected": {
+          "value": "-5",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n11-wm013-q14-const-choice-0",
+            "content": "-5",
+            "feedback": "左辺の−2からさらに3を引く。"
+          },
+          {
+            "id": "n11-wm013-q14-const-choice-1",
+            "content": "1",
+            "feedback": "左辺の−2からさらに3を引く。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-wm013-q14-const-choice-2",
+            "content": "-2",
+            "feedback": "左辺の−2からさらに3を引く。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-wm013-q14-const-choice-3",
+            "content": "5",
+            "feedback": "左辺の−2からさらに3を引く。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "左辺の−2からさらに3を引く。"
+        ],
+        "answerInsertion": {
+          "blockId": "n11-wm013-q14-const-old",
+          "slotId": "n11-wm013-q14-const-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n11-14",
+      "problemId": "n11",
+      "sourceRefs": [
+        "word-p-000512"
+      ],
+      "requires": [
+        "n11-wm013-q14-const-legacy-result"
+      ],
+      "produces": [
+        "n11-14-legacy-result"
+      ],
+      "role": "check",
+      "goal": "最終的な解の範囲を選ぼう。",
+      "purpose": "transfer",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000512"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n11-14-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-14-old-text",
+              "kind": "text",
+              "text": "最終的な解の範囲を選ぼう。"
+            },
+            {
+              "id": "n11-14-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n11-14",
+              "semanticRef": "n11-14"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n11-14-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n11-14-old-hint",
+              "kind": "text",
+              "text": "−5≤5xとなり、正の5で割る。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n11-14",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "最終的な解の範囲を選ぼう。",
+        "prerequisiteIds": [
+          "n11-wm013-q14-const-legacy-result"
+        ],
+        "expected": {
+          "value": "x\\ge-1",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n11-14-choice-0",
+            "content": "x\\ge-1",
+            "feedback": "−5≤5xとなり、正の5で割る。"
+          },
+          {
+            "id": "n11-14-choice-1",
+            "content": "x\\le-1",
+            "feedback": "−5≤5xとなり、正の5で割る。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-14-choice-2",
+            "content": "x\\ge1",
+            "feedback": "−5≤5xとなり、正の5で割る。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n11-14-choice-3",
+            "content": "x>-1",
+            "feedback": "−5≤5xとなり、正の5で割る。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "−5≤5xとなり、正の5で割る。"
+        ],
+        "answerInsertion": {
+          "blockId": "n11-14-old",
+          "slotId": "n11-14-old-slot"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+[
+  {
+    "aggregation": "token-weighted-mean",
+    "chunks": 1,
+    "encoderHash": "1d0c6699c483167583c6ba00905876ddb7764a1571c359e3030515644dd3b1b9",
+    "inputTokens": 54,
+    "processedTokens": 54,
+    "rowId": "N07-USER-F01",
+    "truncated": false
+  },
+  {
+    "aggregation": "token-weighted-mean",
+    "chunks": 1,
+    "encoderHash": "1d0c6699c483167583c6ba00905876ddb7764a1571c359e3030515644dd3b1b9",
+    "inputTokens": 191,
+    "processedTokens": 191,
+    "rowId": "N07-USER-F02",
+    "truncated": false
+  },
+  {
+    "aggregation": "token-weighted-mean",
+    "chunks": 1,
+    "encoderHash": "1d0c6699c483167583c6ba00905876ddb7764a1571c359e3030515644dd3b1b9",
+    "inputTokens": 227,
+    "processedTokens": 227,
+    "rowId": "N07-USER-F03",
+    "truncated": false
+  },
+  {
+    "aggregation": "token-weighted-mean",
+    "chunks": 1,
+    "encoderHash": "1d0c6699c483167583c6ba00905876ddb7764a1571c359e3030515644dd3b1b9",
+    "inputTokens": 163,
+    "processedTokens": 163,
+    "rowId": "N07-USER-F04",
+    "truncated": false
+  },
+  {
+    "aggregation": "token-weighted-mean",
+    "chunks": 1,
+    "encoderHash": "1d0c6699c483167583c6ba00905876ddb7764a1571c359e3030515644dd3b1b9",
+    "inputTokens": 114,
+    "processedTokens": 114,
+    "rowId": "N07-USER-F05",
+    "truncated": false
+  },
+  {
+    "aggregation": "token-weighted-mean",
+    "chunks": 1,
+    "encoderHash": "1d0c6699c483167583c6ba00905876ddb7764a1571c359e3030515644dd3b1b9",
+    "inputTokens": 444,
+    "processedTokens": 444,
+    "rowId": "N07-USER-F06",
+    "truncated": false
+  },
+  {
+    "aggregation": "token-weighted-mean",
+    "chunks": 1,
+    "encoderHash": "1d0c6699c483167583c6ba00905876ddb7764a1571c359e3030515644dd3b1b9",
+    "inputTokens": 163,
+    "processedTokens": 163,
+    "rowId": "n07-layout-relation",
+    "truncated": false
+  },
+  {
+    "aggregation": "token-weighted-mean",
+    "chunks": 25,
+    "encoderHash": "1d0c6699c483167583c6ba00905876ddb7764a1571c359e3030515644dd3b1b9",
+    "inputTokens": 12204,
+    "processedTokens": 12204,
+    "rowId": "n07-layout-positive",
+    "truncated": false
+  },
+  {
+    "aggregation": "token-weighted-mean",
+    "chunks": 151,
+    "encoderHash": "1d0c6699c483167583c6ba00905876ddb7764a1571c359e3030515644dd3b1b9",
+    "inputTokens": 75063,
+    "processedTokens": 75063,
+    "rowId": "first-title-layout-positive",
+    "truncated": false
+  },
+  {
+    "aggregation": "token-weighted-mean",
+    "chunks": 30,
+    "encoderHash": "1d0c6699c483167583c6ba00905876ddb7764a1571c359e3030515644dd3b1b9",
+    "inputTokens": 14614,
+    "processedTokens": 14614,
+    "rowId": "N07-ACCEPTED-20261025",
+    "truncated": false
+  },
+  {
+    "aggregation": "token-weighted-mean",
+    "chunks": 74,
+    "encoderHash": "1d0c6699c483167583c6ba00905876ddb7764a1571c359e3030515644dd3b1b9",
+    "inputTokens": 36599,
+    "processedTokens": 36599,
+    "rowId": "N08-ACCEPTED-20261025",
+    "truncated": false
+  },
+  {
+    "aggregation": "token-weighted-mean",
+    "chunks": 2,
+    "encoderHash": "1d0c6699c483167583c6ba00905876ddb7764a1571c359e3030515644dd3b1b9",
+    "inputTokens": 536,
+    "processedTokens": 536,
+    "rowId": "N09-REJECTED-20261025",
+    "truncated": false
+  },
+  {
+    "aggregation": "token-weighted-mean",
+    "chunks": 1,
+    "encoderHash": "1d0c6699c483167583c6ba00905876ddb7764a1571c359e3030515644dd3b1b9",
+    "inputTokens": 443,
+    "processedTokens": 443,
+    "rowId": "N10-REJECTED-20261025",
+    "truncated": false
+  },
+  {
+    "aggregation": "token-weighted-mean",
+    "chunks": 88,
+    "encoderHash": "1d0c6699c483167583c6ba00905876ddb7764a1571c359e3030515644dd3b1b9",
+    "inputTokens": 43650,
+    "processedTokens": 43650,
+    "rowId": "N09-ACCEPTED-20261025",
+    "truncated": false
+  },
+  {
+    "aggregation": "token-weighted-mean",
+    "chunks": 100,
+    "encoderHash": "1d0c6699c483167583c6ba00905876ddb7764a1571c359e3030515644dd3b1b9",
+    "inputTokens": 49781,
+    "processedTokens": 49781,
+    "rowId": "N10-ACCEPTED-20261025",
+    "truncated": false
+  }
+]

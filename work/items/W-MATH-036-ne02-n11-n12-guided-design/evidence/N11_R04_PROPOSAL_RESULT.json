@@ -1,0 +1,31 @@
+{
+  "node": "R04_PROPOSAL@n11",
+  "status": "PASS_BOUNDED",
+  "outputs": {
+    "math.solve": "NEEDS_AI_REVIEW",
+    "math.verify": "NEEDS_AI_REVIEW",
+    "teaching.plan": "PASS",
+    "step.plan": "PASS",
+    "blank.plan": "PASS",
+    "prose.compose": "PASS",
+    "text.verify": "PASS",
+    "figure.verify": "PASS",
+    "ir.verify": "PASS",
+    "source.audit": "NEEDS_AI_REVIEW",
+    "novice.audit": "PASS"
+  },
+  "review": "All129 node copies,115 cognitive blanks and option mappings reviewed. Code found literal answer exposure and unbalanced template fragment checks during proposal preparation; corrected copy and composed-template verification without weakening central validators. Every independent calculation stays separate; every operation has a purpose and object; prior conditions are explicit.",
+  "receiptArtifacts": [
+    "0393aa460ba0820dd16805d71b55db0f80db24ecfbd6aa6f095257cdb5558c1e",
+    "7bcad18b6c81dbb1f83f697f8f02912e118770c74d8829756eb3d7ba99934c16",
+    "fa7271d4d015cfa67d82c3043d411f67cae489e5c20dd06d7d6ce756d08b41b1",
+    "74d7524466277641bffa1982110bd65fc595c5745588d64cc351c713728b7796",
+    "f3c3aad8123d40642a50d449b6e37eff7dc27d08f6fdbda26149d03bd7b8895c",
+    "92139c0b4cc6ca0ec0ce81b712c5f7789a641c319d934d39ebc0205599054013",
+    "d9f1a208e9601676eb4926617524ef6dcd0f795d830eaccdd295f57b670f69b1",
+    "9a28f9c0e7e66e242ad7e94498ca456efb1842b3a07ab36b1aa8f614da3069a5",
+    "eeee116f61dab1357b22e2e371bceb1f25220ae836fef30f773b35c863d91d9e",
+    "14f20ad1da1bfb5a8d2ed194ed4c6e6e340768c5cfb83491b4d96820cc0d891c",
+    "d92c53fe829d586e52a2a20418d971e5dc0df46cd8778d4f75957981aca6932b"
+  ]
+}

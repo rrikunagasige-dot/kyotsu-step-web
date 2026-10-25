@@ -1,0 +1,15 @@
+# Verification
+
+設計段階の実行結果：
+
+- 原Word SHA一致・Pandoc3.1.3、108block/50数式の抽出PASS。
+- NE02 33node/30回答、N11 47/39、N12 49/46。各IR schema/依存/漏洩、coverage、compile PASS。
+- 原78ID・正答・300のcanonical choice keyを保存。
+- 16恒等式・6不等式の解集合をSymPyで厳密検算。個数0〜20の整数を金額条件へ照合し11/12を確認。
+- balancedな式templateと全選択肢spanのKaTeX strict parse：1016件・0エラー。
+- 元図5点のファイルhashを表示契約へ固定。実ブラウザでの表示時点と幾何は実装後に検査する。
+- native workflow到達点はgenerated/CURRENT_POSITION.mdとevidence/RUNTIME_CHECKPOINT.json。
+
+未実施：教材src変更、revision移行の実働、スマホ/PC browser play、公開、今回3単元の本人評価。compileは制作IRのcompileであり、公開appのbuildではない。
+
+再現：`python design.py` → 既存ML venvのpythonで`verify.py` → `python display_spec.py` → `node verify_math_render.mjs`。いずれもこのWorkをcwdにせずrepo rootからWorkの相対pathで実行する。承認後はDESIGN_INPUTS.jsonの固定hashを確認し、再生成物が承認版と一致する場合だけ採用する。

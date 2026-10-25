@@ -1,0 +1,127 @@
+{
+  "sourceSHA": "fa0eff271a97940fad08d83960ae50faeabc81b9",
+  "humanAccepted": [
+    "n09",
+    "n10"
+  ],
+  "newPositiveCases": 2,
+  "newNegativeCases": 2,
+  "aiFindingsGoldLabels": 0,
+  "evaluatedCases": 15,
+  "negativeCases": 9,
+  "positiveCases": 6,
+  "trainingRun": true,
+  "trainedHeads": {
+    "layout_discomfort": 2
+  },
+  "omittedHeads": [
+    {
+      "dimension": "broken_derivation",
+      "reason": "NOT_TRAINABLE_SINGLE_CLASS",
+      "rows": 1
+    },
+    {
+      "dimension": "factor_grouping",
+      "reason": "NOT_TRAINABLE_SINGLE_CLASS",
+      "rows": 1
+    },
+    {
+      "dimension": "layout_style_rejection",
+      "reason": "NOT_TRAINABLE_SINGLE_CLASS",
+      "rows": 1
+    },
+    {
+      "dimension": "math_render_omission",
+      "reason": "NOT_TRAINABLE_SINGLE_CLASS",
+      "rows": 1
+    },
+    {
+      "dimension": "operation_order",
+      "reason": "NOT_TRAINABLE_SINGLE_CLASS",
+      "rows": 1
+    },
+    {
+      "dimension": "orphan_output",
+      "reason": "NOT_TRAINABLE_SINGLE_CLASS",
+      "rows": 1
+    },
+    {
+      "dimension": "overall_material_acceptance",
+      "reason": "NOT_TRAINABLE_SINGLE_CLASS",
+      "rows": 4
+    },
+    {
+      "dimension": "prerequisite_missing",
+      "reason": "NOT_TRAINABLE_SINGLE_CLASS",
+      "rows": 1
+    },
+    {
+      "dimension": "term_semantics_missing",
+      "reason": "NOT_TRAINABLE_SINGLE_CLASS",
+      "rows": 1
+    },
+    {
+      "dimension": "unmotivated_operation",
+      "reason": "NOT_TRAINABLE_SINGLE_CLASS",
+      "rows": 1
+    }
+  ],
+  "modelStatus": "OFFLINE_ONLY",
+  "advisoryEligible": false,
+  "split": {
+    "groups": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "8",
+      "0",
+      "10",
+      "11",
+      "11",
+      "11",
+      "11"
+    ],
+    "groupCount": 4,
+    "rowIds": [
+      "N07-USER-F01",
+      "N07-USER-F02",
+      "N07-USER-F03",
+      "N07-USER-F04",
+      "N07-USER-F05",
+      "N07-USER-F06",
+      "n07-layout-relation",
+      "n07-layout-positive",
+      "first-title-layout-positive",
+      "N07-ACCEPTED-20261025",
+      "N08-ACCEPTED-20261025",
+      "N09-REJECTED-20261025",
+      "N10-REJECTED-20261025",
+      "N09-ACCEPTED-20261025",
+      "N10-ACCEPTED-20261025"
+    ],
+    "status": "READY",
+    "hash": "8dd168ec14171c0341a7e75782b0941590a58757721c43dca44a7877d5dd8d42"
+  },
+  "unseenHoldout": false,
+  "evaluation": "NOT_ESTIMABLE",
+  "encoder": {
+    "artifactFilesHash": "0bd7fa022addc3a4cfef92eed67c310c946ba5c350693d341ea5744237b70759",
+    "device": "cpu",
+    "dimension": 384,
+    "featureSchema": "learner-context-chunk-mean/1",
+    "maxLength": 512,
+    "model": "intfloat/multilingual-e5-small",
+    "pooling": "Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})",
+    "prefixClassification": "query: ",
+    "prefixPassage": "passage: ",
+    "revision": "fd1525a9fd15316a2d503bf26ab031a61d056e98"
+  },
+  "modelHash": "5ce745657964110893535f9ef7ceab08939769222b012513d0c7165c5124c53b",
+  "catalogHash": "3bd49ec201bfefd1d270cc2f5431999e0b1053540040c7e83e14774e5131e3f4",
+  "parentHistoricalWork": "W034 old-source gates not fabricated or accepted; child request resolved using W035 actual close"
+}

@@ -1,0 +1,627 @@
+{
+  "schemaVersion": 1,
+  "documentHash": "93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa",
+  "unit": "N12",
+  "pandocVersion": "pandoc 3.1.3",
+  "warnings": "",
+  "unassignedMath": [],
+  "blocks": [
+    {
+      "id": "word-p-000515",
+      "locator": "word/document.xml:p[515]",
+      "text": "N12　二つの条件を同時に満たす範囲を残す",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "heading"
+    },
+    {
+      "id": "word-p-000516",
+      "locator": "word/document.xml:p[516]",
+      "text": "例題",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000517",
+      "locator": "word/document.xml:p[517]",
+      "text": " と  を、同時に満たす実数  を求めよう。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "fc90aceb86248c10f1bee146f8ac7df056c4e2ec27b0c4f1a74499e58cd1f8af",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "57c894bf1af6cd4ea82fa95c3229aa6bc789a9b9df6bee99d692131a173608d2",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "d023ab3f8f34dcaf612983208e1592cee53c18e47d325e535c2c7ec3d2a7c3bf",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "x - 2 < 3x + 5"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "x + 4 \\leq 5 - x"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "x"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000518",
+      "locator": "word/document.xml:p[518]",
+      "text": "【1】 まず一つ目の不等式を解こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        1
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000519",
+      "locator": "word/document.xml:p[519]",
+      "text": "【2】 二つ目の不等式を解こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        2
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000520",
+      "locator": "word/document.xml:p[520]",
+      "text": "二つの結果を、上下の数直線に分けて表す。○は端点を含まず、●は端点を含む。横方向の縮尺は上下で共通にしている。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000521",
+      "locator": "word/document.xml:p[521]",
+      "text": "",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [
+        "media/image9.png"
+      ],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000522",
+      "locator": "word/document.xml:p[522]",
+      "text": "N12-F01　それぞれの条件の範囲。二つを合わせた答えはまだ示していない。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000523",
+      "locator": "word/document.xml:p[523]",
+      "text": "花子　「それぞれ解けたけれど、どちらか一方に入る数を全部残せばいいのかな。」",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000524",
+      "locator": "word/document.xml:p[524]",
+      "text": "先生　「元の問題は「同時に」と言っています。たとえば  は、一つ目だけでなく二つ目の条件も満たすでしょうか。」",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "8305b75a6fdeca3a4696e7075d9c21f90d6af38488e8554e5b47e768005ce31f",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "x = 1"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000525",
+      "locator": "word/document.xml:p[525]",
+      "text": "【3】  は、今回の答えに入るか。どの条件を確かめたかも答えよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        3
+      ],
+      "mathStructures": [
+        {
+          "sha256": "8305b75a6fdeca3a4696e7075d9c21f90d6af38488e8554e5b47e768005ce31f",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "x = 1"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000526",
+      "locator": "word/document.xml:p[526]",
+      "text": "【4】 二本の範囲からどこを残すか判断し、端点の扱いも含めて一つの不等式にしよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        4
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000527",
+      "locator": "word/document.xml:p[527]",
+      "text": "二つ以上の不等式を組にしたものを連立不等式という。その解は、すべての条件を同時に満たす数である。別々に解いた後、共通して入る範囲を求める。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000528",
+      "locator": "word/document.xml:p[528]",
+      "text": "三つの式が並んだ不等式を読み解く",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000529",
+      "locator": "word/document.xml:p[529]",
+      "text": "確認",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000530",
+      "locator": "word/document.xml:p[530]",
+      "text": " を解こう。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "09ab90f092e0c66598eac9b5bc842339ae98150c4f435a46803f672a351df166",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "3x + 2 \\leq 2x + 4 \\leq 9 - x"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000531",
+      "locator": "word/document.xml:p[531]",
+      "text": "【5】 この条件を、同時に満たす二つの不等式へ分けよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        5
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000532",
+      "locator": "word/document.xml:p[532]",
+      "text": "【6】 二つの不等式をそれぞれ解こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        6
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000533",
+      "locator": "word/document.xml:p[533]",
+      "text": "二つの範囲をそろえた図を見る。右端が近いので、分数の位置にも注意しよう。目盛りは一つの縮尺で置いている。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000534",
+      "locator": "word/document.xml:p[534]",
+      "text": "",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [
+        "media/image10.png"
+      ],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000535",
+      "locator": "word/document.xml:p[535]",
+      "text": "N12-F02　二つの上限を比べる。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000536",
+      "locator": "word/document.xml:p[536]",
+      "text": "【7】  は二つを同時に満たすかを確認し、最終的な解を書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        7
+      ],
+      "mathStructures": [
+        {
+          "sha256": "4641806207c65255d964b4b1bbc2926d9f982b69be37df5e1f2c2d3a0ebe8b9b",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "x = 2"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000537",
+      "locator": "word/document.xml:p[537]",
+      "text": "左端と右端の式だけを直接比べるのではなく、中央の式との二つの比較を残す必要がある。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000538",
+      "locator": "word/document.xml:p[538]",
+      "text": "例題",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000539",
+      "locator": "word/document.xml:p[539]",
+      "text": "50円の箱に、1個180円のシュークリームと1個130円のプリンを合わせて20個入れ、全体の金額を3200円以上3300円未満にしたい。シュークリームは何個入れられるだろう。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000540",
+      "locator": "word/document.xml:p[540]",
+      "text": "シュークリームの個数を  とする。まず、計算に入る前の個数の条件を整理しよう。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "d023ab3f8f34dcaf612983208e1592cee53c18e47d325e535c2c7ec3d2a7c3bf",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "x"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000541",
+      "locator": "word/document.xml:p[541]",
+      "text": "【8】 プリンの個数を  で表そう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        8
+      ],
+      "mathStructures": [
+        {
+          "sha256": "d023ab3f8f34dcaf612983208e1592cee53c18e47d325e535c2c7ec3d2a7c3bf",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "x"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000542",
+      "locator": "word/document.xml:p[542]",
+      "text": "【9】  が取り得る範囲と、数の種類を書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        9
+      ],
+      "mathStructures": [
+        {
+          "sha256": "d023ab3f8f34dcaf612983208e1592cee53c18e47d325e535c2c7ec3d2a7c3bf",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "x"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000543",
+      "locator": "word/document.xml:p[543]",
+      "text": "【10】 二種類の菓子代と箱代を合わせた金額を、式で表そう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        10
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000544",
+      "locator": "word/document.xml:p[544]",
+      "text": "【11】 「3200円以上3300円未満」の条件を、今の式を使った不等式にしよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        11
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000545",
+      "locator": "word/document.xml:p[545]",
+      "text": "計算で得た範囲を、個数へ戻す",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000546",
+      "locator": "word/document.xml:p[546]",
+      "text": "ここまでに作った金額の不等式を解く。ここで得る実数の範囲が、そのまま個数の答えになるとは限らない。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000547",
+      "locator": "word/document.xml:p[547]",
+      "text": "【12】 金額の式を整理し、不等式を書き直そう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        12
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000548",
+      "locator": "word/document.xml:p[548]",
+      "text": "【13】  だけが中央に残る形へ変形しよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        13
+      ],
+      "mathStructures": [
+        {
+          "sha256": "d023ab3f8f34dcaf612983208e1592cee53c18e47d325e535c2c7ec3d2a7c3bf",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "x"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000549",
+      "locator": "word/document.xml:p[549]",
+      "text": "花子　「この範囲にある数でも、お菓子の個数として選べるものだけを残す必要があるね。」",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000550",
+      "locator": "word/document.xml:p[550]",
+      "text": "【14】 最初の整数条件へ戻り、シュークリームの個数を答えよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        14
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000551",
+      "locator": "word/document.xml:p[551]",
+      "text": "【15】 選んだ個数それぞれの全体の金額を確かめよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        15
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000552",
+      "locator": "word/document.xml:p[552]",
+      "text": "",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [
+        "media/image11.png"
+      ],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000553",
+      "locator": "word/document.xml:p[553]",
+      "text": "N12-F03　線は不等式の範囲、印を付けた整数は個数として残す値である。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000554",
+      "locator": "word/document.xml:p[554]",
+      "text": "文章題では、計算しやすい式へ直した後も、最初の量の意味が残る。次は、絶対値が表す距離を方程式や不等式へ戻して考える。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000555",
+      "locator": "word/document.xml:p[555]",
+      "text": "第3節　1次不等式",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    }
+  ],
+  "status": "PASS",
+  "semanticFidelity": "REQUIRES_SOURCE_REVIEW"
+}

@@ -1,0 +1,4048 @@
+{
+  "schemaVersion": "production-ir/1",
+  "unitId": "math-numbers-expressions-n12",
+  "subject": "math",
+  "mode": "textbook",
+  "sourceHash": "93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa",
+  "sourceBlocks": [
+    {
+      "id": "word-p-000515",
+      "kind": "heading"
+    },
+    {
+      "id": "word-p-000516",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000517",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000518",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000519",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000520",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000521",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000522",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000523",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000524",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000525",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000526",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000527",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000528",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000529",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000530",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000531",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000532",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000533",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000534",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000535",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000536",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000537",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000538",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000539",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000540",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000541",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000542",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000543",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000544",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000545",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000546",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000547",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000548",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000549",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000550",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000551",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000552",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000553",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000554",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000555",
+      "kind": "explanation"
+    }
+  ],
+  "coverage": [
+    {
+      "sourceId": "word-p-000515",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000516",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000517",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000518",
+      "nodeIds": [
+        "n12-p002-q01-coef",
+        "n12-p002-q01-const",
+        "n12-01"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000519",
+      "nodeIds": [
+        "n12-p002-q02-coef",
+        "n12-p002-q02-const",
+        "n12-02"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000520",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000521",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000522",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000523",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000524",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000525",
+      "nodeIds": [
+        "n12-03"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000526",
+      "nodeIds": [
+        "n12-04"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000527",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000528",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000529",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000530",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000531",
+      "nodeIds": [
+        "n12-05"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000532",
+      "nodeIds": [
+        "n12-p002-q06-left-coef",
+        "n12-p002-q06-left-const",
+        "n12-p002-q06-right-coef",
+        "n12-p002-q06-right-const",
+        "n12-06"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000533",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000534",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000535",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000536",
+      "nodeIds": [
+        "n12-07"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000537",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000538",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000539",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000540",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000541",
+      "nodeIds": [
+        "n12-08"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000542",
+      "nodeIds": [
+        "n12-09"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000543",
+      "nodeIds": [
+        "n12-p003-q10-meaning",
+        "n12-p003-q10-cream-coef",
+        "n12-p003-q10-pudding-coef",
+        "n12-p003-q10-box-fee",
+        "n12-10"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000544",
+      "nodeIds": [
+        "n12-p003-q11-lower-sign",
+        "n12-p003-q11-upper-sign",
+        "n12-11"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000545",
+      "nodeIds": [
+        "n12-12"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000546",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000547",
+      "nodeIds": [
+        "n12-p003-q12-product-constant",
+        "n12-p002-q12-signed-coef",
+        "n12-p003-q12-total-constant",
+        "n12-p003-q12-x-coef"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000548",
+      "nodeIds": [
+        "n12-p002-q13-lower",
+        "n12-p002-q13-upper",
+        "n12-13"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000549",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000550",
+      "nodeIds": [
+        "n12-14"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000551",
+      "nodeIds": [
+        "n12-15"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000552",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000553",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000554",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000555",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    }
+  ],
+  "initialFacts": [
+    "real-arithmetic",
+    "square-identities",
+    "accepted-n08-absolute-value",
+    "accepted-n09-root-definition",
+    "accepted-n10-root-product-quotient",
+    "accepted-n11-order-rules"
+  ],
+  "nodes": [
+    {
+      "id": "n12-p002-q01-coef",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000518"
+      ],
+      "requires": [],
+      "produces": [
+        "n12-p002-q01-coef-legacy-result"
+      ],
+      "role": "check",
+      "goal": "xを右へ移した後、xの係数はいくつ？",
+      "purpose": "representation-link",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000518"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-p002-q01-coef-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p002-q01-coef-old-text",
+              "kind": "text",
+              "text": "xを右へ移した後、xの係数はいくつ？"
+            },
+            {
+              "id": "n12-p002-q01-coef-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-p002-q01-coef",
+              "semanticRef": "n12-p002-q01-coef"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-p002-q01-coef-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p002-q01-coef-old-hint",
+              "kind": "text",
+              "text": "両辺からxを引く。3x−xを計算しよう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-p002-q01-coef",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "xを右へ移した後、xの係数はいくつ？",
+        "prerequisiteIds": [],
+        "expected": {
+          "value": "2",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-p002-q01-coef-choice-0",
+            "content": "2",
+            "feedback": "両辺からxを引く。3x−xを計算しよう。"
+          },
+          {
+            "id": "n12-p002-q01-coef-choice-1",
+            "content": "-2",
+            "feedback": "両辺からxを引く。3x−xを計算しよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p002-q01-coef-choice-2",
+            "content": "3",
+            "feedback": "両辺からxを引く。3x−xを計算しよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p002-q01-coef-choice-3",
+            "content": "4",
+            "feedback": "両辺からxを引く。3x−xを計算しよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "両辺からxを引く。3x−xを計算しよう。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-p002-q01-coef-old",
+          "slotId": "n12-p002-q01-coef-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-p002-q01-const",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000518"
+      ],
+      "requires": [
+        "n12-p002-q01-coef-legacy-result"
+      ],
+      "produces": [
+        "n12-p002-q01-const-legacy-result"
+      ],
+      "role": "check",
+      "goal": "両辺から5を引くと左辺の定数はいくつ？",
+      "purpose": "representation-link",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000518"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-p002-q01-const-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p002-q01-const-old-text",
+              "kind": "text",
+              "text": "両辺から5を引くと左辺の定数はいくつ？"
+            },
+            {
+              "id": "n12-p002-q01-const-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-p002-q01-const",
+              "semanticRef": "n12-p002-q01-const"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-p002-q01-const-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p002-q01-const-old-hint",
+              "kind": "text",
+              "text": "−2−5を計算しよう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-p002-q01-const",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "両辺から5を引くと左辺の定数はいくつ？",
+        "prerequisiteIds": [
+          "n12-p002-q01-coef-legacy-result"
+        ],
+        "expected": {
+          "value": "-7",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-p002-q01-const-choice-0",
+            "content": "-7",
+            "feedback": "−2−5を計算しよう。"
+          },
+          {
+            "id": "n12-p002-q01-const-choice-1",
+            "content": "7",
+            "feedback": "−2−5を計算しよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p002-q01-const-choice-2",
+            "content": "-3",
+            "feedback": "−2−5を計算しよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p002-q01-const-choice-3",
+            "content": "3",
+            "feedback": "−2−5を計算しよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "−2−5を計算しよう。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-p002-q01-const-old",
+          "slotId": "n12-p002-q01-const-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-01",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000518"
+      ],
+      "requires": [
+        "n12-p002-q01-const-legacy-result"
+      ],
+      "produces": [
+        "n12-01-legacy-result"
+      ],
+      "role": "check",
+      "goal": "最初の不等式をxについて解こう。",
+      "purpose": "representation-link",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000518"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-01-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-01-old-text",
+              "kind": "text",
+              "text": "最初の不等式をxについて解こう。"
+            },
+            {
+              "id": "n12-01-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-01",
+              "semanticRef": "n12-01"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-01-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-01-old-hint",
+              "kind": "text",
+              "text": "−7<2xになったら、正の2で割る。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-01",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "最初の不等式をxについて解こう。",
+        "prerequisiteIds": [
+          "n12-p002-q01-const-legacy-result"
+        ],
+        "expected": {
+          "value": "x>-\\frac72",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-01-choice-0",
+            "content": "x>-\\frac72",
+            "feedback": "−7<2xになったら、正の2で割る。"
+          },
+          {
+            "id": "n12-01-choice-1",
+            "content": "x< -\\frac72",
+            "feedback": "−7<2xになったら、正の2で割る。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-01-choice-2",
+            "content": "x>\\frac72",
+            "feedback": "−7<2xになったら、正の2で割る。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-01-choice-3",
+            "content": "x\\ge-\\frac72",
+            "feedback": "−7<2xになったら、正の2で割る。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "−7<2xになったら、正の2で割る。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-01-old",
+          "slotId": "n12-01-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-p002-q02-coef",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000519"
+      ],
+      "requires": [
+        "n12-01-legacy-result"
+      ],
+      "produces": [
+        "n12-p002-q02-coef-legacy-result"
+      ],
+      "role": "check",
+      "goal": "−xを左辺に移すとxの係数はいくつ？",
+      "purpose": "representation-link",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000519"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-p002-q02-coef-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p002-q02-coef-old-text",
+              "kind": "text",
+              "text": "−xを左辺に移すとxの係数はいくつ？"
+            },
+            {
+              "id": "n12-p002-q02-coef-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-p002-q02-coef",
+              "semanticRef": "n12-p002-q02-coef"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-p002-q02-coef-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p002-q02-coef-old-hint",
+              "kind": "text",
+              "text": "両辺にxを足す。x+xを考えよう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-p002-q02-coef",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "−xを左辺に移すとxの係数はいくつ？",
+        "prerequisiteIds": [
+          "n12-01-legacy-result"
+        ],
+        "expected": {
+          "value": "2",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-p002-q02-coef-choice-0",
+            "content": "2",
+            "feedback": "両辺にxを足す。x+xを考えよう。"
+          },
+          {
+            "id": "n12-p002-q02-coef-choice-1",
+            "content": "0",
+            "feedback": "両辺にxを足す。x+xを考えよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p002-q02-coef-choice-2",
+            "content": "-2",
+            "feedback": "両辺にxを足す。x+xを考えよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p002-q02-coef-choice-3",
+            "content": "1",
+            "feedback": "両辺にxを足す。x+xを考えよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "両辺にxを足す。x+xを考えよう。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-p002-q02-coef-old",
+          "slotId": "n12-p002-q02-coef-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-p002-q02-const",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000519"
+      ],
+      "requires": [
+        "n12-p002-q02-coef-legacy-result"
+      ],
+      "produces": [
+        "n12-p002-q02-const-legacy-result"
+      ],
+      "role": "check",
+      "goal": "両辺から4を引くと右辺の定数はいくつ？",
+      "purpose": "representation-link",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000519"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-p002-q02-const-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p002-q02-const-old-text",
+              "kind": "text",
+              "text": "両辺から4を引くと右辺の定数はいくつ？"
+            },
+            {
+              "id": "n12-p002-q02-const-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-p002-q02-const",
+              "semanticRef": "n12-p002-q02-const"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-p002-q02-const-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p002-q02-const-old-hint",
+              "kind": "text",
+              "text": "5−4を計算しよう。等号は残る。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-p002-q02-const",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "両辺から4を引くと右辺の定数はいくつ？",
+        "prerequisiteIds": [
+          "n12-p002-q02-coef-legacy-result"
+        ],
+        "expected": {
+          "value": "1",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-p002-q02-const-choice-0",
+            "content": "1",
+            "feedback": "5−4を計算しよう。等号は残る。"
+          },
+          {
+            "id": "n12-p002-q02-const-choice-1",
+            "content": "9",
+            "feedback": "5−4を計算しよう。等号は残る。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p002-q02-const-choice-2",
+            "content": "-1",
+            "feedback": "5−4を計算しよう。等号は残る。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p002-q02-const-choice-3",
+            "content": "4",
+            "feedback": "5−4を計算しよう。等号は残る。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "5−4を計算しよう。等号は残る。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-p002-q02-const-old",
+          "slotId": "n12-p002-q02-const-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-02",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000519"
+      ],
+      "requires": [
+        "n12-p002-q02-const-legacy-result"
+      ],
+      "produces": [
+        "n12-02-legacy-result"
+      ],
+      "role": "check",
+      "goal": "二つ目の不等式をxについて解こう。",
+      "purpose": "representation-link",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000519"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-02-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-02-old-text",
+              "kind": "text",
+              "text": "二つ目の不等式をxについて解こう。"
+            },
+            {
+              "id": "n12-02-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-02",
+              "semanticRef": "n12-02"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-02-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-02-old-hint",
+              "kind": "text",
+              "text": "最後の等号は問題の条件に残っている。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-02",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "二つ目の不等式をxについて解こう。",
+        "prerequisiteIds": [
+          "n12-p002-q02-const-legacy-result"
+        ],
+        "expected": {
+          "value": "x\\le\\frac12",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-02-choice-0",
+            "content": "x\\le\\frac12",
+            "feedback": "最後の等号は問題の条件に残っている。"
+          },
+          {
+            "id": "n12-02-choice-1",
+            "content": "x<\\frac12",
+            "feedback": "最後の等号は問題の条件に残っている。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-02-choice-2",
+            "content": "x\\ge\\frac12",
+            "feedback": "最後の等号は問題の条件に残っている。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-02-choice-3",
+            "content": "x\\le-\\frac12",
+            "feedback": "最後の等号は問題の条件に残っている。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "最後の等号は問題の条件に残っている。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-02-old",
+          "slotId": "n12-02-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-03",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000525"
+      ],
+      "requires": [
+        "n12-02-legacy-result"
+      ],
+      "produces": [
+        "n12-03-legacy-result"
+      ],
+      "role": "check",
+      "goal": "x=1は二つとも満たす？",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000525"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-03-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-03-old-text",
+              "kind": "text",
+              "text": "x=1は二つとも満たす？"
+            },
+            {
+              "id": "n12-03-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-03",
+              "semanticRef": "n12-03"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-03-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-03-old-hint",
+              "kind": "text",
+              "text": "「同時に」は片方だけでは足りない。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-03",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "x=1は二つとも満たす？",
+        "prerequisiteIds": [
+          "n12-02-legacy-result"
+        ],
+        "expected": {
+          "value": "二つ目に反するので不適",
+          "form": "text",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-03-choice-0",
+            "content": "二つ目に反するので不適",
+            "feedback": "「同時に」は片方だけでは足りない。"
+          },
+          {
+            "id": "n12-03-choice-1",
+            "content": "一つ目を満たすから適する",
+            "feedback": "「同時に」は片方だけでは足りない。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-03-choice-2",
+            "content": "二つとも満たす",
+            "feedback": "「同時に」は片方だけでは足りない。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-03-choice-3",
+            "content": "どちらも満たさない",
+            "feedback": "「同時に」は片方だけでは足りない。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "「同時に」は片方だけでは足りない。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-03-old",
+          "slotId": "n12-03-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-04",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000526"
+      ],
+      "requires": [
+        "n12-03-legacy-result"
+      ],
+      "produces": [
+        "n12-04-legacy-result"
+      ],
+      "role": "check",
+      "goal": "二つの範囲の共通部分を選ぼう。",
+      "purpose": "representation-link",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000526"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-04-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-04-old-text",
+              "kind": "text",
+              "text": "二つの範囲の共通部分を選ぼう。"
+            },
+            {
+              "id": "n12-04-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-04",
+              "semanticRef": "n12-04"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-04-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-04-old-hint",
+              "kind": "text",
+              "text": "白丸は含まず黒丸は含む。両方の条件を満たす範囲を探す。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-04",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "二つの範囲の共通部分を選ぼう。",
+        "prerequisiteIds": [
+          "n12-03-legacy-result"
+        ],
+        "expected": {
+          "value": "-\\frac72<x\\le\\frac12",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-04-choice-0",
+            "content": "-\\frac72<x\\le\\frac12",
+            "feedback": "白丸は含まず黒丸は含む。両方の条件を満たす範囲を探す。"
+          },
+          {
+            "id": "n12-04-choice-1",
+            "content": "-\\frac72\\le x\\le\\frac12",
+            "feedback": "白丸は含まず黒丸は含む。両方の条件を満たす範囲を探す。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-04-choice-2",
+            "content": "-\\frac72<x<\\frac12",
+            "feedback": "白丸は含まず黒丸は含む。両方の条件を満たす範囲を探す。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-04-choice-3",
+            "content": "x>-\\frac72\\ \\text{または}\\ x\\le\\frac12",
+            "feedback": "白丸は含まず黒丸は含む。両方の条件を満たす範囲を探す。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "白丸は含まず黒丸は含む。両方の条件を満たす範囲を探す。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-04-old",
+          "slotId": "n12-04-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-05",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000531"
+      ],
+      "requires": [
+        "n12-04-legacy-result"
+      ],
+      "produces": [
+        "n12-05-legacy-result"
+      ],
+      "role": "check",
+      "goal": "三連不等式を二つの条件に分けよう。",
+      "purpose": "representation-link",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000531"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-05-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-05-old-text",
+              "kind": "text",
+              "text": "三連不等式を二つの条件に分けよう。"
+            },
+            {
+              "id": "n12-05-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-05",
+              "semanticRef": "n12-05"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-05-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-05-old-hint",
+              "kind": "text",
+              "text": "中央の式と両隣をそれぞれ比較する。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-05",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "三連不等式を二つの条件に分けよう。",
+        "prerequisiteIds": [
+          "n12-04-legacy-result"
+        ],
+        "expected": {
+          "value": "3x+2\\le2x+4\\ \\text{かつ}\\ 2x+4\\le9-x",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-05-choice-0",
+            "content": "3x+2\\le2x+4\\ \\text{かつ}\\ 2x+4\\le9-x",
+            "feedback": "中央の式と両隣をそれぞれ比較する。"
+          },
+          {
+            "id": "n12-05-choice-1",
+            "content": "3x+2\\le9-x",
+            "feedback": "中央の式と両隣をそれぞれ比較する。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-05-choice-2",
+            "content": "3x+2\\le2x+4\\ \\text{または}\\ 2x+4\\le9-x",
+            "feedback": "中央の式と両隣をそれぞれ比較する。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-05-choice-3",
+            "content": "3x+2\\ge2x+4\\ \\text{かつ}\\ 2x+4\\le9-x",
+            "feedback": "中央の式と両隣をそれぞれ比較する。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "中央の式と両隣をそれぞれ比較する。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-05-old",
+          "slotId": "n12-05-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-p002-q06-left-coef",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000532"
+      ],
+      "requires": [
+        "n12-05-legacy-result"
+      ],
+      "produces": [
+        "n12-p002-q06-left-coef-legacy-result"
+      ],
+      "role": "check",
+      "goal": "3x−2xの係数を埋めよう。",
+      "purpose": "representation-link",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000532"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-p002-q06-left-coef-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p002-q06-left-coef-old-text",
+              "kind": "text",
+              "text": "3x−2xの係数を埋めよう。"
+            },
+            {
+              "id": "n12-p002-q06-left-coef-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-p002-q06-left-coef",
+              "semanticRef": "n12-p002-q06-left-coef"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-p002-q06-left-coef-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p002-q06-left-coef-old-hint",
+              "kind": "text",
+              "text": "両辺から同じ文字の項を引くと、係数どうしの引き算になる。文字xを残したまま、係数だけを計算しよう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-p002-q06-left-coef",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "3x−2xの係数を埋めよう。",
+        "prerequisiteIds": [
+          "n12-05-legacy-result"
+        ],
+        "expected": {
+          "value": "1",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-p002-q06-left-coef-choice-0",
+            "content": "1",
+            "feedback": "両辺から同じ文字の項を引くと、係数どうしの引き算になる。文字xを残したまま、係数だけを計算しよう。"
+          },
+          {
+            "id": "n12-p002-q06-left-coef-choice-1",
+            "content": "2",
+            "feedback": "両辺から同じ文字の項を引くと、係数どうしの引き算になる。文字xを残したまま、係数だけを計算しよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p002-q06-left-coef-choice-2",
+            "content": "-1",
+            "feedback": "両辺から同じ文字の項を引くと、係数どうしの引き算になる。文字xを残したまま、係数だけを計算しよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p002-q06-left-coef-choice-3",
+            "content": "5",
+            "feedback": "両辺から同じ文字の項を引くと、係数どうしの引き算になる。文字xを残したまま、係数だけを計算しよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "両辺から同じ文字の項を引くと、係数どうしの引き算になる。文字xを残したまま、係数だけを計算しよう。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-p002-q06-left-coef-old",
+          "slotId": "n12-p002-q06-left-coef-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-p002-q06-left-const",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000532"
+      ],
+      "requires": [
+        "n12-p002-q06-left-coef-legacy-result"
+      ],
+      "produces": [
+        "n12-p002-q06-left-const-legacy-result"
+      ],
+      "role": "check",
+      "goal": "x+2≤4 の右辺の定数を求めよう。",
+      "purpose": "representation-link",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000532"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-p002-q06-left-const-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p002-q06-left-const-old-text",
+              "kind": "text",
+              "text": "x+2≤4 の右辺の定数を求めよう。"
+            },
+            {
+              "id": "n12-p002-q06-left-const-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-p002-q06-left-const",
+              "semanticRef": "n12-p002-q06-left-const"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-p002-q06-left-const-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p002-q06-left-const-old-hint",
+              "kind": "text",
+              "text": "4−2を計算する。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-p002-q06-left-const",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "x+2≤4 の右辺の定数を求めよう。",
+        "prerequisiteIds": [
+          "n12-p002-q06-left-coef-legacy-result"
+        ],
+        "expected": {
+          "value": "2",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-p002-q06-left-const-choice-0",
+            "content": "2",
+            "feedback": "4−2を計算する。"
+          },
+          {
+            "id": "n12-p002-q06-left-const-choice-1",
+            "content": "6",
+            "feedback": "4−2を計算する。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p002-q06-left-const-choice-2",
+            "content": "-2",
+            "feedback": "4−2を計算する。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p002-q06-left-const-choice-3",
+            "content": "4",
+            "feedback": "4−2を計算する。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "4−2を計算する。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-p002-q06-left-const-old",
+          "slotId": "n12-p002-q06-left-const-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-p002-q06-right-coef",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000532"
+      ],
+      "requires": [
+        "n12-p002-q06-left-const-legacy-result"
+      ],
+      "produces": [
+        "n12-p002-q06-right-coef-legacy-result"
+      ],
+      "role": "check",
+      "goal": "−xを左辺に移した後のxの係数を求めよう。",
+      "purpose": "representation-link",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000532"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-p002-q06-right-coef-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p002-q06-right-coef-old-text",
+              "kind": "text",
+              "text": "−xを左辺に移した後のxの係数を求めよう。"
+            },
+            {
+              "id": "n12-p002-q06-right-coef-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-p002-q06-right-coef",
+              "semanticRef": "n12-p002-q06-right-coef"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-p002-q06-right-coef-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p002-q06-right-coef-old-hint",
+              "kind": "text",
+              "text": "2x+xの係数を計算する。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-p002-q06-right-coef",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "−xを左辺に移した後のxの係数を求めよう。",
+        "prerequisiteIds": [
+          "n12-p002-q06-left-const-legacy-result"
+        ],
+        "expected": {
+          "value": "3",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-p002-q06-right-coef-choice-0",
+            "content": "3",
+            "feedback": "2x+xの係数を計算する。"
+          },
+          {
+            "id": "n12-p002-q06-right-coef-choice-1",
+            "content": "1",
+            "feedback": "2x+xの係数を計算する。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p002-q06-right-coef-choice-2",
+            "content": "-3",
+            "feedback": "2x+xの係数を計算する。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p002-q06-right-coef-choice-3",
+            "content": "2",
+            "feedback": "2x+xの係数を計算する。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "2x+xの係数を計算する。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-p002-q06-right-coef-old",
+          "slotId": "n12-p002-q06-right-coef-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-p002-q06-right-const",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000532"
+      ],
+      "requires": [
+        "n12-p002-q06-right-coef-legacy-result"
+      ],
+      "produces": [
+        "n12-p002-q06-right-const-legacy-result"
+      ],
+      "role": "check",
+      "goal": "3x+4≤9 の右辺の定数を求めよう。",
+      "purpose": "representation-link",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000532"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-p002-q06-right-const-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p002-q06-right-const-old-text",
+              "kind": "text",
+              "text": "3x+4≤9 の右辺の定数を求めよう。"
+            },
+            {
+              "id": "n12-p002-q06-right-const-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-p002-q06-right-const",
+              "semanticRef": "n12-p002-q06-right-const"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-p002-q06-right-const-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p002-q06-right-const-old-hint",
+              "kind": "text",
+              "text": "9−4を計算する。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-p002-q06-right-const",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "3x+4≤9 の右辺の定数を求めよう。",
+        "prerequisiteIds": [
+          "n12-p002-q06-right-coef-legacy-result"
+        ],
+        "expected": {
+          "value": "5",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-p002-q06-right-const-choice-0",
+            "content": "5",
+            "feedback": "9−4を計算する。"
+          },
+          {
+            "id": "n12-p002-q06-right-const-choice-1",
+            "content": "13",
+            "feedback": "9−4を計算する。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p002-q06-right-const-choice-2",
+            "content": "-5",
+            "feedback": "9−4を計算する。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p002-q06-right-const-choice-3",
+            "content": "9",
+            "feedback": "9−4を計算する。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "9−4を計算する。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-p002-q06-right-const-old",
+          "slotId": "n12-p002-q06-right-const-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-06",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000532"
+      ],
+      "requires": [
+        "n12-p002-q06-right-const-legacy-result"
+      ],
+      "produces": [
+        "n12-06-legacy-result"
+      ],
+      "role": "check",
+      "goal": "二つの不等式の解をそれぞれ選ぼう。",
+      "purpose": "transfer",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000532"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-06-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-06-old-text",
+              "kind": "text",
+              "text": "二つの不等式の解をそれぞれ選ぼう。"
+            },
+            {
+              "id": "n12-06-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-06",
+              "semanticRef": "n12-06"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-06-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-06-old-hint",
+              "kind": "text",
+              "text": "一方の計算では3x≤5になる。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-06",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "二つの不等式の解をそれぞれ選ぼう。",
+        "prerequisiteIds": [
+          "n12-p002-q06-right-const-legacy-result"
+        ],
+        "expected": {
+          "value": "x\\le2,\\quad x\\le\\frac53",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-06-choice-0",
+            "content": "x\\le2,\\quad x\\le\\frac53",
+            "feedback": "一方の計算では3x≤5になる。"
+          },
+          {
+            "id": "n12-06-choice-1",
+            "content": "x\\le2,\\quad x\\ge\\frac53",
+            "feedback": "一方の計算では3x≤5になる。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-06-choice-2",
+            "content": "x\\ge2,\\quad x\\le\\frac53",
+            "feedback": "一方の計算では3x≤5になる。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-06-choice-3",
+            "content": "x\\le2,\\quad x\\le\\frac35",
+            "feedback": "一方の計算では3x≤5になる。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "一方の計算では3x≤5になる。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-06-old",
+          "slotId": "n12-06-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-07",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000536"
+      ],
+      "requires": [
+        "n12-06-legacy-result"
+      ],
+      "produces": [
+        "n12-07-legacy-result"
+      ],
+      "role": "check",
+      "goal": "二つの上限のうち、共通に残る範囲は？",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000536"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-07-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-07-old-text",
+              "kind": "text",
+              "text": "二つの上限のうち、共通に残る範囲は？"
+            },
+            {
+              "id": "n12-07-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-07",
+              "semanticRef": "n12-07"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-07-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-07-old-hint",
+              "kind": "text",
+              "text": "より小さい方の上限も超えてはいけない。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-07",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "二つの上限のうち、共通に残る範囲は？",
+        "prerequisiteIds": [
+          "n12-06-legacy-result"
+        ],
+        "expected": {
+          "value": "x\\le\\frac53",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-07-choice-0",
+            "content": "x\\le\\frac53",
+            "feedback": "より小さい方の上限も超えてはいけない。"
+          },
+          {
+            "id": "n12-07-choice-1",
+            "content": "x\\le2",
+            "feedback": "より小さい方の上限も超えてはいけない。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-07-choice-2",
+            "content": "x\\ge\\frac53",
+            "feedback": "より小さい方の上限も超えてはいけない。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-07-choice-3",
+            "content": "\\frac53\\le x\\le2",
+            "feedback": "より小さい方の上限も超えてはいけない。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "より小さい方の上限も超えてはいけない。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-07-old",
+          "slotId": "n12-07-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-08",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000541"
+      ],
+      "requires": [
+        "n12-07-legacy-result"
+      ],
+      "produces": [
+        "n12-08-legacy-result"
+      ],
+      "role": "check",
+      "goal": "プリンの個数をxで表そう。",
+      "purpose": "concept-formation",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000541"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-08-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-08-old-text",
+              "kind": "text",
+              "text": "プリンの個数をxで表そう。"
+            },
+            {
+              "id": "n12-08-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-08",
+              "semanticRef": "n12-08"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-08-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-08-old-hint",
+              "kind": "text",
+              "text": "合わせて20個という条件を使う。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-08",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "プリンの個数をxで表そう。",
+        "prerequisiteIds": [
+          "n12-07-legacy-result"
+        ],
+        "expected": {
+          "value": "20-x",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-08-choice-0",
+            "content": "20-x",
+            "feedback": "合わせて20個という条件を使う。"
+          },
+          {
+            "id": "n12-08-choice-1",
+            "content": "20+x",
+            "feedback": "合わせて20個という条件を使う。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-08-choice-2",
+            "content": "x-20",
+            "feedback": "合わせて20個という条件を使う。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-08-choice-3",
+            "content": "20",
+            "feedback": "合わせて20個という条件を使う。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "合わせて20個という条件を使う。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-08-old",
+          "slotId": "n12-08-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-09",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000542"
+      ],
+      "requires": [
+        "n12-08-legacy-result"
+      ],
+      "produces": [
+        "n12-09-legacy-result"
+      ],
+      "role": "check",
+      "goal": "xの取りうる数の種類と範囲を選ぼう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000542"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-09-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-09-old-text",
+              "kind": "text",
+              "text": "xの取りうる数の種類と範囲を選ぼう。"
+            },
+            {
+              "id": "n12-09-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-09",
+              "semanticRef": "n12-09"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-09-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-09-old-hint",
+              "kind": "text",
+              "text": "個数なので小数にはできない。全部同じ種類でもよい。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-09",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "xの取りうる数の種類と範囲を選ぼう。",
+        "prerequisiteIds": [
+          "n12-08-legacy-result"
+        ],
+        "expected": {
+          "value": "x\\in\\mathbb Z,\\ 0\\le x\\le20",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-09-choice-0",
+            "content": "x\\in\\mathbb Z,\\ 0\\le x\\le20",
+            "feedback": "個数なので小数にはできない。全部同じ種類でもよい。"
+          },
+          {
+            "id": "n12-09-choice-1",
+            "content": "x\\in\\mathbb R,\\ 0\\le x\\le20",
+            "feedback": "個数なので小数にはできない。全部同じ種類でもよい。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-09-choice-2",
+            "content": "x\\in\\mathbb Z,\\ x\\ge0",
+            "feedback": "個数なので小数にはできない。全部同じ種類でもよい。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-09-choice-3",
+            "content": "x\\in\\mathbb Z,\\ 0<x<20",
+            "feedback": "個数なので小数にはできない。全部同じ種類でもよい。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "個数なので小数にはできない。全部同じ種類でもよい。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-09-old",
+          "slotId": "n12-09-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-p003-q10-meaning",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000543"
+      ],
+      "requires": [
+        "n12-09-legacy-result"
+      ],
+      "produces": [
+        "n12-p003-q10-meaning-legacy-result"
+      ],
+      "role": "check",
+      "goal": "T(x) は何の金額を表す？",
+      "purpose": "concept-formation",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000543"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-p003-q10-meaning-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p003-q10-meaning-old-text",
+              "kind": "text",
+              "text": "T(x) は何の金額を表す？"
+            },
+            {
+              "id": "n12-p003-q10-meaning-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-p003-q10-meaning",
+              "semanticRef": "n12-p003-q10-meaning"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-p003-q10-meaning-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p003-q10-meaning-old-hint",
+              "kind": "text",
+              "text": "xを決めたとき、箱と20個の菓子を買うための全体の金額だ。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-p003-q10-meaning",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "T(x) は何の金額を表す？",
+        "prerequisiteIds": [
+          "n12-09-legacy-result"
+        ],
+        "expected": {
+          "value": "箱と20個の菓子の合計金額",
+          "form": "text",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-p003-q10-meaning-choice-0",
+            "content": "箱と20個の菓子の合計金額",
+            "feedback": "xを決めたとき、箱と20個の菓子を買うための全体の金額だ。"
+          },
+          {
+            "id": "n12-p003-q10-meaning-choice-1",
+            "content": "箱だけの代金",
+            "feedback": "xを決めたとき、箱と20個の菓子を買うための全体の金額だ。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p003-q10-meaning-choice-2",
+            "content": "シュークリームの個数",
+            "feedback": "xを決めたとき、箱と20個の菓子を買うための全体の金額だ。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p003-q10-meaning-choice-3",
+            "content": "プリン1個の代金",
+            "feedback": "xを決めたとき、箱と20個の菓子を買うための全体の金額だ。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "xを決めたとき、箱と20個の菓子を買うための全体の金額だ。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-p003-q10-meaning-old",
+          "slotId": "n12-p003-q10-meaning-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-p003-q10-cream-coef",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000543"
+      ],
+      "requires": [
+        "n12-p003-q10-meaning-legacy-result"
+      ],
+      "produces": [
+        "n12-p003-q10-cream-coef-legacy-result"
+      ],
+      "role": "check",
+      "goal": "シュークリームの単価をxの係数へ入れよう。",
+      "purpose": "representation-link",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000543"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-p003-q10-cream-coef-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p003-q10-cream-coef-old-text",
+              "kind": "text",
+              "text": "シュークリームの単価をxの係数へ入れよう。"
+            },
+            {
+              "id": "n12-p003-q10-cream-coef-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-p003-q10-cream-coef",
+              "semanticRef": "n12-p003-q10-cream-coef"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-p003-q10-cream-coef-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p003-q10-cream-coef-old-hint",
+              "kind": "text",
+              "text": "1個の値段×個数を式で書く。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-p003-q10-cream-coef",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "シュークリームの単価をxの係数へ入れよう。",
+        "prerequisiteIds": [
+          "n12-p003-q10-meaning-legacy-result"
+        ],
+        "expected": {
+          "value": "180",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-p003-q10-cream-coef-choice-0",
+            "content": "180",
+            "feedback": "1個の値段×個数を式で書く。"
+          },
+          {
+            "id": "n12-p003-q10-cream-coef-choice-1",
+            "content": "130",
+            "feedback": "1個の値段×個数を式で書く。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p003-q10-cream-coef-choice-2",
+            "content": "50",
+            "feedback": "1個の値段×個数を式で書く。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p003-q10-cream-coef-choice-3",
+            "content": "20",
+            "feedback": "1個の値段×個数を式で書く。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "1個の値段×個数を式で書く。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-p003-q10-cream-coef-old",
+          "slotId": "n12-p003-q10-cream-coef-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-p003-q10-pudding-coef",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000543"
+      ],
+      "requires": [
+        "n12-p003-q10-cream-coef-legacy-result"
+      ],
+      "produces": [
+        "n12-p003-q10-pudding-coef-legacy-result"
+      ],
+      "role": "check",
+      "goal": "プリンの単価を括弧の係数へ入れよう。",
+      "purpose": "representation-link",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000543"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-p003-q10-pudding-coef-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p003-q10-pudding-coef-old-text",
+              "kind": "text",
+              "text": "プリンの単価を括弧の係数へ入れよう。"
+            },
+            {
+              "id": "n12-p003-q10-pudding-coef-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-p003-q10-pudding-coef",
+              "semanticRef": "n12-p003-q10-pudding-coef"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-p003-q10-pudding-coef-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p003-q10-pudding-coef-old-hint",
+              "kind": "text",
+              "text": "20−x個に掛ける単価を選ぶ。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-p003-q10-pudding-coef",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "プリンの単価を括弧の係数へ入れよう。",
+        "prerequisiteIds": [
+          "n12-p003-q10-cream-coef-legacy-result"
+        ],
+        "expected": {
+          "value": "130",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-p003-q10-pudding-coef-choice-0",
+            "content": "130",
+            "feedback": "20−x個に掛ける単価を選ぶ。"
+          },
+          {
+            "id": "n12-p003-q10-pudding-coef-choice-1",
+            "content": "180",
+            "feedback": "20−x個に掛ける単価を選ぶ。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p003-q10-pudding-coef-choice-2",
+            "content": "50",
+            "feedback": "20−x個に掛ける単価を選ぶ。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p003-q10-pudding-coef-choice-3",
+            "content": "20",
+            "feedback": "20−x個に掛ける単価を選ぶ。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "20−x個に掛ける単価を選ぶ。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-p003-q10-pudding-coef-old",
+          "slotId": "n12-p003-q10-pudding-coef-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-p003-q10-box-fee",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000543"
+      ],
+      "requires": [
+        "n12-p003-q10-pudding-coef-legacy-result"
+      ],
+      "produces": [
+        "n12-p003-q10-box-fee-legacy-result"
+      ],
+      "role": "check",
+      "goal": "固定の箱代はいくら？",
+      "purpose": "representation-link",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000543"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-p003-q10-box-fee-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p003-q10-box-fee-old-text",
+              "kind": "text",
+              "text": "固定の箱代はいくら？"
+            },
+            {
+              "id": "n12-p003-q10-box-fee-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-p003-q10-box-fee",
+              "semanticRef": "n12-p003-q10-box-fee"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-p003-q10-box-fee-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p003-q10-box-fee-old-hint",
+              "kind": "text",
+              "text": "菓子の個数に関係なく払う金額に注目する。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-p003-q10-box-fee",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "固定の箱代はいくら？",
+        "prerequisiteIds": [
+          "n12-p003-q10-pudding-coef-legacy-result"
+        ],
+        "expected": {
+          "value": "50",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-p003-q10-box-fee-choice-0",
+            "content": "50",
+            "feedback": "菓子の個数に関係なく払う金額に注目する。"
+          },
+          {
+            "id": "n12-p003-q10-box-fee-choice-1",
+            "content": "130",
+            "feedback": "菓子の個数に関係なく払う金額に注目する。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p003-q10-box-fee-choice-2",
+            "content": "180",
+            "feedback": "菓子の個数に関係なく払う金額に注目する。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p003-q10-box-fee-choice-3",
+            "content": "20",
+            "feedback": "菓子の個数に関係なく払う金額に注目する。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "菓子の個数に関係なく払う金額に注目する。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-p003-q10-box-fee-old",
+          "slotId": "n12-p003-q10-box-fee-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-10",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000543"
+      ],
+      "requires": [
+        "n12-p003-q10-box-fee-legacy-result"
+      ],
+      "produces": [
+        "n12-10-legacy-result"
+      ],
+      "role": "check",
+      "goal": "箱代と二種類の菓子代を合わせよう。",
+      "purpose": "representation-link",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000543"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-10-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-10-old-text",
+              "kind": "text",
+              "text": "箱代と二種類の菓子代を合わせよう。"
+            },
+            {
+              "id": "n12-10-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-10",
+              "semanticRef": "n12-10"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-10-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-10-old-hint",
+              "kind": "text",
+              "text": "箱の固定代金も加える。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-10",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "箱代と二種類の菓子代を合わせよう。",
+        "prerequisiteIds": [
+          "n12-p003-q10-box-fee-legacy-result"
+        ],
+        "expected": {
+          "value": "50+180x+130(20-x)",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-10-choice-0",
+            "content": "50+180x+130(20-x)",
+            "feedback": "箱の固定代金も加える。"
+          },
+          {
+            "id": "n12-10-choice-1",
+            "content": "180x+130(20-x)",
+            "feedback": "箱の固定代金も加える。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-10-choice-2",
+            "content": "50+180x+130x",
+            "feedback": "箱の固定代金も加える。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-10-choice-3",
+            "content": "50+180x+130(20+x)",
+            "feedback": "箱の固定代金も加える。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "箱の固定代金も加える。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-10-old",
+          "slotId": "n12-10-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-p003-q11-lower-sign",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000544"
+      ],
+      "requires": [
+        "n12-10-legacy-result"
+      ],
+      "produces": [
+        "n12-p003-q11-lower-sign-legacy-result"
+      ],
+      "role": "check",
+      "goal": "3200円以上を表す不等号を選ぼう。",
+      "purpose": "representation-link",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000544"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-p003-q11-lower-sign-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p003-q11-lower-sign-old-text",
+              "kind": "text",
+              "text": "3200円以上を表す不等号を選ぼう。"
+            },
+            {
+              "id": "n12-p003-q11-lower-sign-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-p003-q11-lower-sign",
+              "semanticRef": "n12-p003-q11-lower-sign"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-p003-q11-lower-sign-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p003-q11-lower-sign-old-hint",
+              "kind": "text",
+              "text": "ちょうど3200円の場合も許す。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-p003-q11-lower-sign",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "3200円以上を表す不等号を選ぼう。",
+        "prerequisiteIds": [
+          "n12-10-legacy-result"
+        ],
+        "expected": {
+          "value": "\\le",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-p003-q11-lower-sign-choice-0",
+            "content": "\\le",
+            "feedback": "ちょうど3200円の場合も許す。"
+          },
+          {
+            "id": "n12-p003-q11-lower-sign-choice-1",
+            "content": "<",
+            "feedback": "ちょうど3200円の場合も許す。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p003-q11-lower-sign-choice-2",
+            "content": "\\ge",
+            "feedback": "ちょうど3200円の場合も許す。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p003-q11-lower-sign-choice-3",
+            "content": ">",
+            "feedback": "ちょうど3200円の場合も許す。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "ちょうど3200円の場合も許す。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-p003-q11-lower-sign-old",
+          "slotId": "n12-p003-q11-lower-sign-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-p003-q11-upper-sign",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000544"
+      ],
+      "requires": [
+        "n12-p003-q11-lower-sign-legacy-result"
+      ],
+      "produces": [
+        "n12-p003-q11-upper-sign-legacy-result"
+      ],
+      "role": "check",
+      "goal": "3300円未満を表す不等号を選ぼう。",
+      "purpose": "representation-link",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000544"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-p003-q11-upper-sign-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p003-q11-upper-sign-old-text",
+              "kind": "text",
+              "text": "3300円未満を表す不等号を選ぼう。"
+            },
+            {
+              "id": "n12-p003-q11-upper-sign-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-p003-q11-upper-sign",
+              "semanticRef": "n12-p003-q11-upper-sign"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-p003-q11-upper-sign-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p003-q11-upper-sign-old-hint",
+              "kind": "text",
+              "text": "3300円ちょうどは含めない。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-p003-q11-upper-sign",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "3300円未満を表す不等号を選ぼう。",
+        "prerequisiteIds": [
+          "n12-p003-q11-lower-sign-legacy-result"
+        ],
+        "expected": {
+          "value": "<",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-p003-q11-upper-sign-choice-0",
+            "content": "<",
+            "feedback": "3300円ちょうどは含めない。"
+          },
+          {
+            "id": "n12-p003-q11-upper-sign-choice-1",
+            "content": "\\le",
+            "feedback": "3300円ちょうどは含めない。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p003-q11-upper-sign-choice-2",
+            "content": ">",
+            "feedback": "3300円ちょうどは含めない。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p003-q11-upper-sign-choice-3",
+            "content": "\\ge",
+            "feedback": "3300円ちょうどは含めない。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "3300円ちょうどは含めない。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-p003-q11-upper-sign-old",
+          "slotId": "n12-p003-q11-upper-sign-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-11",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000544"
+      ],
+      "requires": [
+        "n12-p003-q11-upper-sign-legacy-result"
+      ],
+      "produces": [
+        "n12-11-legacy-result"
+      ],
+      "role": "check",
+      "goal": "金額の「以上・未満」を式にしよう。",
+      "purpose": "representation-link",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000544"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-11-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-11-old-text",
+              "kind": "text",
+              "text": "金額の「以上・未満」を式にしよう。"
+            },
+            {
+              "id": "n12-11-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-11",
+              "semanticRef": "n12-11"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-11-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-11-old-hint",
+              "kind": "text",
+              "text": "以上には等号があり、未満には等号がない。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-11",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "金額の「以上・未満」を式にしよう。",
+        "prerequisiteIds": [
+          "n12-p003-q11-upper-sign-legacy-result"
+        ],
+        "expected": {
+          "value": "3200\\le50+180x+130(20-x)<3300",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-11-choice-0",
+            "content": "3200\\le50+180x+130(20-x)<3300",
+            "feedback": "以上には等号があり、未満には等号がない。"
+          },
+          {
+            "id": "n12-11-choice-1",
+            "content": "3200<50+180x+130(20-x)\\le3300",
+            "feedback": "以上には等号があり、未満には等号がない。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-11-choice-2",
+            "content": "3200\\le50+180x+130(20-x)\\le3300",
+            "feedback": "以上には等号があり、未満には等号がない。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-11-choice-3",
+            "content": "3200\\ge50+180x+130(20-x)<3300",
+            "feedback": "以上には等号があり、未満には等号がない。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "以上には等号があり、未満には等号がない。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-11-old",
+          "slotId": "n12-11-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-p003-q12-product-constant",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000547"
+      ],
+      "requires": [
+        "n12-11-legacy-result"
+      ],
+      "produces": [
+        "n12-p003-q12-product-constant-legacy-result"
+      ],
+      "role": "check",
+      "goal": "130×20を計算して定数項を作ろう。",
+      "purpose": "representation-link",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000547"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-p003-q12-product-constant-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p003-q12-product-constant-old-text",
+              "kind": "text",
+              "text": "130×20を計算して定数項を作ろう。"
+            },
+            {
+              "id": "n12-p003-q12-product-constant-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-p003-q12-product-constant",
+              "semanticRef": "n12-p003-q12-product-constant"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-p003-q12-product-constant-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p003-q12-product-constant-old-hint",
+              "kind": "text",
+              "text": "130を20回足した金額に等しい。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-p003-q12-product-constant",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "130×20を計算して定数項を作ろう。",
+        "prerequisiteIds": [
+          "n12-11-legacy-result"
+        ],
+        "expected": {
+          "value": "2600",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-p003-q12-product-constant-choice-0",
+            "content": "2600",
+            "feedback": "130を20回足した金額に等しい。"
+          },
+          {
+            "id": "n12-p003-q12-product-constant-choice-1",
+            "content": "260",
+            "feedback": "130を20回足した金額に等しい。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p003-q12-product-constant-choice-2",
+            "content": "2500",
+            "feedback": "130を20回足した金額に等しい。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p003-q12-product-constant-choice-3",
+            "content": "1300",
+            "feedback": "130を20回足した金額に等しい。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "130を20回足した金額に等しい。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-p003-q12-product-constant-old",
+          "slotId": "n12-p003-q12-product-constant-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-p002-q12-signed-coef",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000547"
+      ],
+      "requires": [
+        "n12-p003-q12-product-constant-legacy-result"
+      ],
+      "produces": [
+        "n12-p002-q12-signed-coef-legacy-result"
+      ],
+      "role": "check",
+      "goal": "130を−xに分配した符号付き係数はいくつ？",
+      "purpose": "representation-link",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000547"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-p002-q12-signed-coef-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p002-q12-signed-coef-old-text",
+              "kind": "text",
+              "text": "130を−xに分配した符号付き係数はいくつ？"
+            },
+            {
+              "id": "n12-p002-q12-signed-coef-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-p002-q12-signed-coef",
+              "semanticRef": "n12-p002-q12-signed-coef"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-p002-q12-signed-coef-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p002-q12-signed-coef-old-hint",
+              "kind": "text",
+              "text": "括弧の外の正の数を、括弧内の負の項にも掛けよう。係数の大きさと符号を別々に確かめ、文字xを除いた数を選ぼう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-p002-q12-signed-coef",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "130を−xに分配した符号付き係数はいくつ？",
+        "prerequisiteIds": [
+          "n12-p003-q12-product-constant-legacy-result"
+        ],
+        "expected": {
+          "value": "-130",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-p002-q12-signed-coef-choice-0",
+            "content": "-130",
+            "feedback": "括弧の外の正の数を、括弧内の負の項にも掛けよう。係数の大きさと符号を別々に確かめ、文字xを除いた数を選ぼう。"
+          },
+          {
+            "id": "n12-p002-q12-signed-coef-choice-1",
+            "content": "130",
+            "feedback": "括弧の外の正の数を、括弧内の負の項にも掛けよう。係数の大きさと符号を別々に確かめ、文字xを除いた数を選ぼう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p002-q12-signed-coef-choice-2",
+            "content": "-20",
+            "feedback": "括弧の外の正の数を、括弧内の負の項にも掛けよう。係数の大きさと符号を別々に確かめ、文字xを除いた数を選ぼう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p002-q12-signed-coef-choice-3",
+            "content": "2600",
+            "feedback": "括弧の外の正の数を、括弧内の負の項にも掛けよう。係数の大きさと符号を別々に確かめ、文字xを除いた数を選ぼう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "括弧の外の正の数を、括弧内の負の項にも掛けよう。係数の大きさと符号を別々に確かめ、文字xを除いた数を選ぼう。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-p002-q12-signed-coef-old",
+          "slotId": "n12-p002-q12-signed-coef-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-p003-q12-total-constant",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000547"
+      ],
+      "requires": [
+        "n12-p002-q12-signed-coef-legacy-result"
+      ],
+      "produces": [
+        "n12-p003-q12-total-constant-legacy-result"
+      ],
+      "role": "check",
+      "goal": "箱代とプリン20個分の定数項を足そう。",
+      "purpose": "representation-link",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000547"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-p003-q12-total-constant-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p003-q12-total-constant-old-text",
+              "kind": "text",
+              "text": "箱代とプリン20個分の定数項を足そう。"
+            },
+            {
+              "id": "n12-p003-q12-total-constant-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-p003-q12-total-constant",
+              "semanticRef": "n12-p003-q12-total-constant"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-p003-q12-total-constant-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p003-q12-total-constant-old-hint",
+              "kind": "text",
+              "text": "50+2600を計算する。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-p003-q12-total-constant",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "箱代とプリン20個分の定数項を足そう。",
+        "prerequisiteIds": [
+          "n12-p002-q12-signed-coef-legacy-result"
+        ],
+        "expected": {
+          "value": "2650",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-p003-q12-total-constant-choice-0",
+            "content": "2650",
+            "feedback": "50+2600を計算する。"
+          },
+          {
+            "id": "n12-p003-q12-total-constant-choice-1",
+            "content": "2600",
+            "feedback": "50+2600を計算する。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p003-q12-total-constant-choice-2",
+            "content": "2550",
+            "feedback": "50+2600を計算する。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p003-q12-total-constant-choice-3",
+            "content": "3100",
+            "feedback": "50+2600を計算する。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "50+2600を計算する。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-p003-q12-total-constant-old",
+          "slotId": "n12-p003-q12-total-constant-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-p003-q12-x-coef",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000547"
+      ],
+      "requires": [
+        "n12-p003-q12-total-constant-legacy-result"
+      ],
+      "produces": [
+        "n12-p003-q12-x-coef-legacy-result"
+      ],
+      "role": "check",
+      "goal": "xの項の係数をまとめよう。",
+      "purpose": "representation-link",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000547"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-p003-q12-x-coef-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p003-q12-x-coef-old-text",
+              "kind": "text",
+              "text": "xの項の係数をまとめよう。"
+            },
+            {
+              "id": "n12-p003-q12-x-coef-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-p003-q12-x-coef",
+              "semanticRef": "n12-p003-q12-x-coef"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-p003-q12-x-coef-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p003-q12-x-coef-old-hint",
+              "kind": "text",
+              "text": "180−130でxの係数を求める。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-p003-q12-x-coef",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "xの項の係数をまとめよう。",
+        "prerequisiteIds": [
+          "n12-p003-q12-total-constant-legacy-result"
+        ],
+        "expected": {
+          "value": "50",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-p003-q12-x-coef-choice-0",
+            "content": "50",
+            "feedback": "180−130でxの係数を求める。"
+          },
+          {
+            "id": "n12-p003-q12-x-coef-choice-1",
+            "content": "310",
+            "feedback": "180−130でxの係数を求める。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p003-q12-x-coef-choice-2",
+            "content": "-50",
+            "feedback": "180−130でxの係数を求める。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p003-q12-x-coef-choice-3",
+            "content": "130",
+            "feedback": "180−130でxの係数を求める。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "180−130でxの係数を求める。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-p003-q12-x-coef-old",
+          "slotId": "n12-p003-q12-x-coef-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-12",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000545"
+      ],
+      "requires": [
+        "n12-p003-q12-x-coef-legacy-result"
+      ],
+      "produces": [
+        "n12-12-legacy-result"
+      ],
+      "role": "check",
+      "goal": "同類項をまとめて金額を整理しよう。",
+      "purpose": "transfer",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000545"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-12-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-12-old-text",
+              "kind": "text",
+              "text": "同類項をまとめて金額を整理しよう。"
+            },
+            {
+              "id": "n12-12-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-12",
+              "semanticRef": "n12-12"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-12-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-12-old-hint",
+              "kind": "text",
+              "text": "箱代とプリン20個分を定数項にする。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-12",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "同類項をまとめて金額を整理しよう。",
+        "prerequisiteIds": [
+          "n12-p003-q12-x-coef-legacy-result"
+        ],
+        "expected": {
+          "value": "3200\\le2650+50x<3300",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-12-choice-0",
+            "content": "3200\\le2650+50x<3300",
+            "feedback": "箱代とプリン20個分を定数項にする。"
+          },
+          {
+            "id": "n12-12-choice-1",
+            "content": "3200\\le2600+50x<3300",
+            "feedback": "箱代とプリン20個分を定数項にする。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-12-choice-2",
+            "content": "3200\\le2650+310x<3300",
+            "feedback": "箱代とプリン20個分を定数項にする。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-12-choice-3",
+            "content": "3200\\le2650-50x<3300",
+            "feedback": "箱代とプリン20個分を定数項にする。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "箱代とプリン20個分を定数項にする。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-12-old",
+          "slotId": "n12-12-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-p002-q13-lower",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000548"
+      ],
+      "requires": [
+        "n12-12-legacy-result"
+      ],
+      "produces": [
+        "n12-p002-q13-lower-legacy-result"
+      ],
+      "role": "check",
+      "goal": "3200−2650を計算して下端を埋めよう。",
+      "purpose": "representation-link",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000548"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-p002-q13-lower-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p002-q13-lower-old-text",
+              "kind": "text",
+              "text": "3200−2650を計算して下端を埋めよう。"
+            },
+            {
+              "id": "n12-p002-q13-lower-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-p002-q13-lower",
+              "semanticRef": "n12-p002-q13-lower"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-p002-q13-lower-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p002-q13-lower-old-hint",
+              "kind": "text",
+              "text": "下端から同じ2650を引く。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-p002-q13-lower",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "3200−2650を計算して下端を埋めよう。",
+        "prerequisiteIds": [
+          "n12-12-legacy-result"
+        ],
+        "expected": {
+          "value": "550",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-p002-q13-lower-choice-0",
+            "content": "550",
+            "feedback": "下端から同じ2650を引く。"
+          },
+          {
+            "id": "n12-p002-q13-lower-choice-1",
+            "content": "650",
+            "feedback": "下端から同じ2650を引く。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p002-q13-lower-choice-2",
+            "content": "-550",
+            "feedback": "下端から同じ2650を引く。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p002-q13-lower-choice-3",
+            "content": "3200",
+            "feedback": "下端から同じ2650を引く。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "下端から同じ2650を引く。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-p002-q13-lower-old",
+          "slotId": "n12-p002-q13-lower-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-p002-q13-upper",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000548"
+      ],
+      "requires": [
+        "n12-p002-q13-lower-legacy-result"
+      ],
+      "produces": [
+        "n12-p002-q13-upper-legacy-result"
+      ],
+      "role": "check",
+      "goal": "3300−2650を計算して上端を埋めよう。",
+      "purpose": "representation-link",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000548"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-p002-q13-upper-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p002-q13-upper-old-text",
+              "kind": "text",
+              "text": "3300−2650を計算して上端を埋めよう。"
+            },
+            {
+              "id": "n12-p002-q13-upper-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-p002-q13-upper",
+              "semanticRef": "n12-p002-q13-upper"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-p002-q13-upper-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-p002-q13-upper-old-hint",
+              "kind": "text",
+              "text": "上端も同じ2650を引く。未満の向きは変わらない。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-p002-q13-upper",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "3300−2650を計算して上端を埋めよう。",
+        "prerequisiteIds": [
+          "n12-p002-q13-lower-legacy-result"
+        ],
+        "expected": {
+          "value": "650",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-p002-q13-upper-choice-0",
+            "content": "650",
+            "feedback": "上端も同じ2650を引く。未満の向きは変わらない。"
+          },
+          {
+            "id": "n12-p002-q13-upper-choice-1",
+            "content": "550",
+            "feedback": "上端も同じ2650を引く。未満の向きは変わらない。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p002-q13-upper-choice-2",
+            "content": "-650",
+            "feedback": "上端も同じ2650を引く。未満の向きは変わらない。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-p002-q13-upper-choice-3",
+            "content": "3300",
+            "feedback": "上端も同じ2650を引く。未満の向きは変わらない。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "上端も同じ2650を引く。未満の向きは変わらない。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-p002-q13-upper-old",
+          "slotId": "n12-p002-q13-upper-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-13",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000548"
+      ],
+      "requires": [
+        "n12-p002-q13-upper-legacy-result"
+      ],
+      "produces": [
+        "n12-13-legacy-result"
+      ],
+      "role": "check",
+      "goal": "実数としてのxの範囲を解こう。",
+      "purpose": "transfer",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000548"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-13-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-13-old-text",
+              "kind": "text",
+              "text": "実数としてのxの範囲を解こう。"
+            },
+            {
+              "id": "n12-13-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-13",
+              "semanticRef": "n12-13"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-13-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-13-old-hint",
+              "kind": "text",
+              "text": "各辺から2650を引き、正の50で割る。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-13",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "実数としてのxの範囲を解こう。",
+        "prerequisiteIds": [
+          "n12-p002-q13-upper-legacy-result"
+        ],
+        "expected": {
+          "value": "11\\le x<13",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-13-choice-0",
+            "content": "11\\le x<13",
+            "feedback": "各辺から2650を引き、正の50で割る。"
+          },
+          {
+            "id": "n12-13-choice-1",
+            "content": "11<x\\le13",
+            "feedback": "各辺から2650を引き、正の50で割る。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-13-choice-2",
+            "content": "11\\le x\\le13",
+            "feedback": "各辺から2650を引き、正の50で割る。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-13-choice-3",
+            "content": "x\\le11\\ \\text{または}\\ x>13",
+            "feedback": "各辺から2650を引き、正の50で割る。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "各辺から2650を引き、正の50で割る。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-13-old",
+          "slotId": "n12-13-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-14",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000550"
+      ],
+      "requires": [
+        "n12-13-legacy-result"
+      ],
+      "produces": [
+        "n12-14-legacy-result"
+      ],
+      "role": "check",
+      "goal": "整数条件に戻って可能な個数を選ぼう。",
+      "purpose": "transfer",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000550"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-14-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-14-old-text",
+              "kind": "text",
+              "text": "整数条件に戻って可能な個数を選ぼう。"
+            },
+            {
+              "id": "n12-14-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-14",
+              "semanticRef": "n12-14"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-14-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-14-old-hint",
+              "kind": "text",
+              "text": "実数の区間と整数の集合の共通部分を考える。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-14",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "整数条件に戻って可能な個数を選ぼう。",
+        "prerequisiteIds": [
+          "n12-13-legacy-result"
+        ],
+        "expected": {
+          "value": "x=11\\ \\text{または}\\ 12",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-14-choice-0",
+            "content": "x=11\\ \\text{または}\\ 12",
+            "feedback": "実数の区間と整数の集合の共通部分を考える。"
+          },
+          {
+            "id": "n12-14-choice-1",
+            "content": "11\\le x\\le13",
+            "feedback": "実数の区間と整数の集合の共通部分を考える。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-14-choice-2",
+            "content": "x=12\\ \\text{または}\\ 13",
+            "feedback": "実数の区間と整数の集合の共通部分を考える。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-14-choice-3",
+            "content": "x=11\\ \\text{のみ}",
+            "feedback": "実数の区間と整数の集合の共通部分を考える。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "実数の区間と整数の集合の共通部分を考える。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-14-old",
+          "slotId": "n12-14-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n12-15",
+      "problemId": "n12",
+      "sourceRefs": [
+        "word-p-000551"
+      ],
+      "requires": [
+        "n12-14-legacy-result"
+      ],
+      "produces": [
+        "n12-15-legacy-result"
+      ],
+      "role": "check",
+      "goal": "箱代を含め、候補二つの合計金額を確かめよう。",
+      "purpose": "transfer",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000551"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n12-15-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-15-old-text",
+              "kind": "text",
+              "text": "箱代を含め、候補二つの合計金額を確かめよう。"
+            },
+            {
+              "id": "n12-15-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n12-15",
+              "semanticRef": "n12-15"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n12-15-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n12-15-old-hint",
+              "kind": "text",
+              "text": "整理したT(x)へ二つの整数を順に代入する。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n12-15",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "箱代を含め、候補二つの合計金額を確かめよう。",
+        "prerequisiteIds": [
+          "n12-14-legacy-result"
+        ],
+        "expected": {
+          "value": "T(11)=3200\\text{円},\\ T(12)=3250\\text{円}",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n12-15-choice-0",
+            "content": "T(11)=3200\\text{円},\\ T(12)=3250\\text{円}",
+            "feedback": "整理したT(x)へ二つの整数を順に代入する。"
+          },
+          {
+            "id": "n12-15-choice-1",
+            "content": "T(11)=3150\\text{円},\\ T(12)=3200\\text{円}",
+            "feedback": "整理したT(x)へ二つの整数を順に代入する。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-15-choice-2",
+            "content": "T(11)=3200\\text{円},\\ T(12)=3300\\text{円}",
+            "feedback": "整理したT(x)へ二つの整数を順に代入する。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "n12-15-choice-3",
+            "content": "T(11)=3250\\text{円},\\ T(12)=3200\\text{円}",
+            "feedback": "整理したT(x)へ二つの整数を順に代入する。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "整理したT(x)へ二つの整数を順に代入する。"
+        ],
+        "answerInsertion": {
+          "blockId": "n12-15-old",
+          "slotId": "n12-15-old-slot"
+        }
+      }
+    }
+  ]
+}

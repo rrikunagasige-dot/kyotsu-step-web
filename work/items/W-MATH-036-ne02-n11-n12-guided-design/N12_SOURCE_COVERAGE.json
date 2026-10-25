@@ -1,0 +1,357 @@
+[
+  {
+    "sourceId": "word-p-000515",
+    "nodeIds": [],
+    "disposition": "structural",
+    "reason": "役割ラベルまたは構造見出しとして段階へ統合"
+  },
+  {
+    "sourceId": "word-p-000516",
+    "nodeIds": [
+      "n12-intro"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000517",
+    "nodeIds": [
+      "n12-intro"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000518",
+    "nodeIds": [
+      "n12-q01-subtract-x",
+      "n12-p002-q01-coef",
+      "n12-p002-q01-const",
+      "n12-01"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000519",
+    "nodeIds": [
+      "n12-p002-q02-coef",
+      "n12-p002-q02-const",
+      "n12-02"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000520",
+    "nodeIds": [
+      "n12-02"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000521",
+    "nodeIds": [
+      "n12-02"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000522",
+    "nodeIds": [
+      "n12-02"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000523",
+    "nodeIds": [
+      "n12-q03-first"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000524",
+    "nodeIds": [
+      "n12-q03-first"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000525",
+    "nodeIds": [
+      "n12-q03-first",
+      "n12-q03-second",
+      "n12-03"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000526",
+    "nodeIds": [
+      "n12-q04-left-end",
+      "n12-04"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000527",
+    "nodeIds": [
+      "n12-04"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000528",
+    "nodeIds": [
+      "n12-triple-problem"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000529",
+    "nodeIds": [
+      "n12-triple-problem"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000530",
+    "nodeIds": [
+      "n12-triple-problem"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000531",
+    "nodeIds": [
+      "n12-05"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000532",
+    "nodeIds": [
+      "n12-p002-q06-left-coef",
+      "n12-p002-q06-left-const",
+      "n12-p002-q06-right-coef",
+      "n12-p002-q06-right-const",
+      "n12-06"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000533",
+    "nodeIds": [
+      "n12-06"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000534",
+    "nodeIds": [
+      "n12-06"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000535",
+    "nodeIds": [
+      "n12-06"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000536",
+    "nodeIds": [
+      "n12-q07-boundary",
+      "n12-07"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000537",
+    "nodeIds": [
+      "n12-07"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000538",
+    "nodeIds": [
+      "n12-count-problem"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000539",
+    "nodeIds": [
+      "n12-count-problem"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000540",
+    "nodeIds": [
+      "n12-count-problem"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000541",
+    "nodeIds": [
+      "n12-08"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000542",
+    "nodeIds": [
+      "n12-09"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000543",
+    "nodeIds": [
+      "n12-p003-q10-meaning",
+      "n12-p003-q10-cream-coef",
+      "n12-p003-q10-pudding-coef",
+      "n12-p003-q10-box-fee",
+      "n12-10"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000544",
+    "nodeIds": [
+      "n12-p003-q11-lower-sign",
+      "n12-p003-q11-upper-sign",
+      "n12-11"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000545",
+    "nodeIds": [
+      "n12-12"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000546",
+    "nodeIds": [
+      "n12-12"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000547",
+    "nodeIds": [
+      "n12-p003-q12-product-constant",
+      "n12-p002-q12-signed-coef",
+      "n12-p003-q12-total-constant",
+      "n12-p003-q12-x-coef",
+      "n12-12"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000548",
+    "nodeIds": [
+      "n12-q13-operation",
+      "n12-p002-q13-lower",
+      "n12-p002-q13-upper",
+      "n12-q13-lower-divide",
+      "n12-q13-upper-divide",
+      "n12-13"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000549",
+    "nodeIds": [
+      "n12-q14-integer"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000550",
+    "nodeIds": [
+      "n12-q14-integer",
+      "n12-14"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000551",
+    "nodeIds": [
+      "n12-q15-eleven",
+      "n12-q15-twelve",
+      "n12-15"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000552",
+    "nodeIds": [
+      "n12-15"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000553",
+    "nodeIds": [
+      "n12-15"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000554",
+    "nodeIds": [
+      "n12-15"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000555",
+    "nodeIds": [],
+    "disposition": "structural",
+    "reason": "役割ラベルまたは構造見出しとして段階へ統合"
+  }
+]

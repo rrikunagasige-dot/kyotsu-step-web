@@ -5,12 +5,14 @@
   "publicationStatus": "SUCCESS",
   "publicSourceVerified": true,
   "userAccepted": {
-    "n09": false,
-    "n10": false
+    "n09": true,
+    "n10": true
   },
   "urls": {
     "n09": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=fa0eff27#/learning/textbook/math-numbers-expressions-n09",
     "n10": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=fa0eff27#/learning/textbook/math-numbers-expressions-n10"
   },
-  "next": "G3_FINAL@n09 and G3_FINAL@n10: actual scoped user evaluation; then fresh sweeps/R08/L01"
+  "next": "W036 NE02/N11/N12 concrete design approval",
+  "acceptanceRecord": "USER_ACCEPTANCE.json",
+  "closure": "W035 DONE after post-fix sweep/R08/L01"
 }

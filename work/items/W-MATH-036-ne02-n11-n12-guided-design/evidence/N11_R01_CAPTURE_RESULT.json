@@ -1,0 +1,13 @@
+{
+  "node": "R01_CAPTURE@n11",
+  "status": "PASS_BOUNDED",
+  "outputs": {
+    "source.fixed": "PASS",
+    "feedback.capture": "PASS"
+  },
+  "review": "Original source and all current teaching blocks inspected; no user-negative label fabricated.",
+  "receiptArtifacts": [
+    "2e22d63c04894801eee7b2576e6e3b9dfeda99386f420b2a86512cf38fc4ce74",
+    "a201cd7d96302bb075744ae9bf14098e8a3abaad349f50e24d3fabd71997b09e"
+  ]
+}

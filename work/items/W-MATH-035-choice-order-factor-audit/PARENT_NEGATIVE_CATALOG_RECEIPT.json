@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "caseUpdates": [
+    {
+      "caseId": "feedback-9b5979cc84bb04392fde",
+      "regressionRef": "work/items/W-MATH-035-choice-order-factor-audit/implementation.test.tsx",
+      "ruleDisposition": "preserve original negative; approved child repaired exact pattern",
+      "datasetDisposition": "two original negatives only; no AI finding labels"
+    },
+    {
+      "caseId": "feedback-119f6845d3806b632bc6",
+      "regressionRef": "work/items/W-MATH-035-choice-order-factor-audit/implementation.test.tsx",
+      "ruleDisposition": "preserve original negative; approved child repaired exact pattern",
+      "datasetDisposition": "two original negatives only; no AI finding labels"
+    },
+    {
+      "caseId": "9edbc81e2181722b430e",
+      "regressionRef": "work/items/W-MATH-035-choice-order-factor-audit/implementation.test.tsx",
+      "ruleDisposition": "preserve original negative; approved child repaired exact pattern",
+      "datasetDisposition": "two original negatives only; no AI finding labels"
+    },
+    {
+      "caseId": "ff234332d7d5ec0beaf3",
+      "regressionRef": "work/items/W-MATH-035-choice-order-factor-audit/implementation.test.tsx",
+      "ruleDisposition": "preserve original negative; approved child repaired exact pattern",
+      "datasetDisposition": "two original negatives only; no AI finding labels"
+    }
+  ],
+  "catalogArtifact": "aa1842bf698b8e685f6a97c4cdbdf669f7a530812a3b0d9afdf33a775b841f2e",
+  "curatedCorpusHash": "58a991c5148b91a18c253e20dd58f1feee81bbf4918a244058b5d22640f00349",
+  "trainingRun": false,
+  "scope": "catalog validation only, not parent stage completion or old-source acceptance"
+}

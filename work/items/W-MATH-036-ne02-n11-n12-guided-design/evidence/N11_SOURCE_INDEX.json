@@ -1,0 +1,837 @@
+{
+  "schemaVersion": 1,
+  "documentHash": "93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa",
+  "unit": "N11",
+  "pandocVersion": "pandoc 3.1.3",
+  "warnings": "",
+  "unassignedMath": [],
+  "blocks": [
+    {
+      "id": "word-p-000472",
+      "locator": "word/document.xml:p[472]",
+      "text": "N11　大小関係を保つ変形を選ぶ",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "heading"
+    },
+    {
+      "id": "word-p-000473",
+      "locator": "word/document.xml:p[473]",
+      "text": "例題",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000474",
+      "locator": "word/document.xml:p[474]",
+      "text": " の両辺に同じ数を加えたり掛けたりすると、大小関係はどう変わるだろう。両辺から2を引けば 、4倍すれば  となる。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "3b8e72a6977eb511c04ebbfa1fa8bc5de8e21b614961f5818328537134c545cf",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "5e26095194191926fd41b396b1c8d0a899fcc339d60ce766dbbfba9d57f02511",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "e7c9fa753f69657bb07c4ac5cd26aa784c9b2f5d53cc57b0bbd5d859c75b46f6",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "2 < 5"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "0 < 3"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "8 < 20"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000475",
+      "locator": "word/document.xml:p[475]",
+      "text": "次の図で、二つの点の位置を、原点について反対側へ移した場合を見よう。数軸の縮尺は上下で同じである。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000476",
+      "locator": "word/document.xml:p[476]",
+      "text": "",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [
+        "media/image7.png"
+      ],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000477",
+      "locator": "word/document.xml:p[477]",
+      "text": "N11-F01　2と5、および符号を反対にした二つの数の位置。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000478",
+      "locator": "word/document.xml:p[478]",
+      "text": "花子　「同じことを両方にしているのに、マイナスを掛けた場合は左右の並びも同じなのかな。」",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000479",
+      "locator": "word/document.xml:p[479]",
+      "text": "【1】 2と5をそれぞれ  倍した数を、不等号で結ぼう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        1
+      ],
+      "mathStructures": [
+        {
+          "sha256": "b12e4a9efb9508f5e28fac281aa0dbc331f922655f5ed4edc1b268edb01b5187",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "- 1"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000480",
+      "locator": "word/document.xml:p[480]",
+      "text": "導出",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000481",
+      "locator": "word/document.xml:p[481]",
+      "text": "具体例だけでなく、一般の  でも確かめる。これは差  が正であるということでもある。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "af2d807d745055d721f62f1bcd4bae2d28bb26802273c28a8d6f0bbe8575f6ef",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "1e64d73657bef2a58a19147cae2129f2d38c5022b90ff8fcdcea9991e59de631",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "a < b"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "b - a"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000482",
+      "locator": "word/document.xml:p[482]",
+      "text": "【2】 両辺に  を加えた後の差  を計算し、元の差と比べよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        2
+      ],
+      "mathStructures": [
+        {
+          "sha256": "c91f425adb9fb36c9cba05984aa639a39e4fdfcd03d03c7ff042a394b373dbfb",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "63a5ed42820529a57c16fb7189deaba371c1fc9c83a242c306181a892ebe9822",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "c"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "(b + c) - (a + c)"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000483",
+      "locator": "word/document.xml:p[483]",
+      "text": "掛け算では、二つの数  の差は  になる。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "e46fe6cefa43a60ee3188eb4ce386c34d2f51260bafc832524e5d95e8291a9ca",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "1177df8594856d851a38d3fc72bb0482280c9f18a5ec0b56e1a74e4500f0e7eb",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "ac,bc"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "bc - ac = c(b - a)"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000484",
+      "locator": "word/document.xml:p[484]",
+      "text": "【3】  の場合と  の場合で、この差の符号を判断し、 と  の関係を書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        3
+      ],
+      "mathStructures": [
+        {
+          "sha256": "14bafdf8dc93fc4380afce043afebfe6aba009b2968f3304e2d1ab5e6c3522a1",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "a426499f6bd1dd4d806e6d56f29b1d3887990d21df7647420aa914e3895b6540",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "766a1bda1b57501eeda6de6b2c105f2e10fd54cf60f8f26fd2a29557d462978c",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "3a3249ca2e6ad0c14e09a3d2531f05d4b2790a8ba3fa50d8589519b8c6bc4eb4",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "c > 0"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "c < 0"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "ac"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "bc"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000485",
+      "locator": "word/document.xml:p[485]",
+      "text": "したがって、同じ数を加減しても大小関係は保たれ、正の数で乗除しても向きは変わらない。負の数で乗除すると、不等号の向きが逆になる。 0を掛けると両辺が等しくなり、元の大小関係は失われる。0で割ることはできない。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000486",
+      "locator": "word/document.xml:p[486]",
+      "text": "確認",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000487",
+      "locator": "word/document.xml:p[487]",
+      "text": "【4】  のとき、 と 、および  と  を、それぞれ不等号で結ぼう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        4
+      ],
+      "mathStructures": [
+        {
+          "sha256": "af2d807d745055d721f62f1bcd4bae2d28bb26802273c28a8d6f0bbe8575f6ef",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "ec3c30af30754b4777d4a6fbe17a2165188f0ad63c7f955f7f78a8cfd1b37382",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "6066de140c6f997eed7c9b757b02751ad1a14314cca32384f5ff1873c05853da",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "c65ba1134acd6b1380636eb45597debe0e8c23949bcc6775bd04cef23165e031",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "3893261bae3c11c94149d61e59751495ed2ae5d05a2ffb6d2ead96fa831e4683",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "a < b"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "- a/5"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "- b/5"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "3 - a"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "3 - b"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000488",
+      "locator": "word/document.xml:p[488]",
+      "text": "一つの値ではなく、条件を満たす数全体を求める",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000489",
+      "locator": "word/document.xml:p[489]",
+      "text": "例題",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000490",
+      "locator": "word/document.xml:p[490]",
+      "text": " を満たす実数  をすべて求めよう。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "2a8c455dc6fc40061b42821af7a413f3e468c7dd80bfa12221d188146462177b",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "d023ab3f8f34dcaf612983208e1592cee53c18e47d325e535c2c7ec3d2a7c3bf",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "3x - 2 < 5"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "x"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000491",
+      "locator": "word/document.xml:p[491]",
+      "text": "先生　「左辺の定数項をなくすには、両辺にどんな操作をすればよいでしょう。その操作をした後の不等式を書いてください。」",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000492",
+      "locator": "word/document.xml:p[492]",
+      "text": "【5】 最初の変形後の不等式を書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        5
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000493",
+      "locator": "word/document.xml:p[493]",
+      "text": "【6】  の係数を1にする変形を選び、不等号の向きも含めて結果を書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        6
+      ],
+      "mathStructures": [
+        {
+          "sha256": "d023ab3f8f34dcaf612983208e1592cee53c18e47d325e535c2c7ec3d2a7c3bf",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "x"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000494",
+      "locator": "word/document.xml:p[494]",
+      "text": "不等式を満たす数をその解といい、解をすべて求めることを不等式を解くという。今求めたのは一つの数ではなく、不等式で表される範囲の実数全体である。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000495",
+      "locator": "word/document.xml:p[495]",
+      "text": "【7】 境界の値そのものは解に入るか。元の不等式に代入したときの関係を根拠に答えよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        7
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000496",
+      "locator": "word/document.xml:p[496]",
+      "text": "例題",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000497",
+      "locator": "word/document.xml:p[497]",
+      "text": "次に  を解こう。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "d7ad11a858994d2477397297e45e5b481e8efa696251914d63384a4b1e992cd8",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "- 2x + 3 \\leq 5"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000498",
+      "locator": "word/document.xml:p[498]",
+      "text": "【8】 まず左辺の定数項をなくそう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        8
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000499",
+      "locator": "word/document.xml:p[499]",
+      "text": "花子　「今度は  の前の数が負だね。前と同じ向きのまま割ってよいか、確かめたい。」",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "d023ab3f8f34dcaf612983208e1592cee53c18e47d325e535c2c7ec3d2a7c3bf",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "x"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000500",
+      "locator": "word/document.xml:p[500]",
+      "text": "【9】 係数を1にする操作と、不等号の向きを考えて解を書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        9
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000501",
+      "locator": "word/document.xml:p[501]",
+      "text": "【10】 境界を含むか、含まないかを判断し、理由を書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        10
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000502",
+      "locator": "word/document.xml:p[502]",
+      "text": "",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [
+        "media/image8.png"
+      ],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000503",
+      "locator": "word/document.xml:p[503]",
+      "text": "N11-F02　ここまでに解いた二つの不等式。○は端点を含まず、●は含む。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000504",
+      "locator": "word/document.xml:p[504]",
+      "text": "すべての項を左辺へ移したとき、左辺が （）になる不等式を1次不等式という。移項は、両辺へ同じ数や式を加減する操作をまとめたものである。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "54341e279eaf22a693139372b6033d4b6bc7177177334ee104ae761ed8f80fe0",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "5de664f13800f5005d82750c23cab21a9b710733b7fd32ed6206a70652a38430",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "ax + b"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "a \\neq 0"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000505",
+      "locator": "word/document.xml:p[505]",
+      "text": "確認",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000506",
+      "locator": "word/document.xml:p[506]",
+      "text": " を解こう。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "42f62e26cfb36178a2702aa9d6ddb5f4e29cf941d0c7571199b273055ec96cf9",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "3(2x + 3) \\geq 10x - 17"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000507",
+      "locator": "word/document.xml:p[507]",
+      "text": "【11】 括弧を外して同類項を移し、 の項だけを左辺に残そう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        11
+      ],
+      "mathStructures": [
+        {
+          "sha256": "d023ab3f8f34dcaf612983208e1592cee53c18e47d325e535c2c7ec3d2a7c3bf",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "x"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000508",
+      "locator": "word/document.xml:p[508]",
+      "text": "【12】 最後の乗除の符号に注意して解を書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        12
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000509",
+      "locator": "word/document.xml:p[509]",
+      "text": "確認",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000510",
+      "locator": "word/document.xml:p[510]",
+      "text": " を解こう。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "a7deac22a49f6f4fa04b36e7910b34bab0d9fba5773e64c3ceff36363aa8a0ad",
+          "fractions": 1,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\frac{x - 2}{3} \\leq 2x + 1"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000511",
+      "locator": "word/document.xml:p[511]",
+      "text": "【13】 分母をなくすための操作を選び、直後の不等式を書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        13
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000512",
+      "locator": "word/document.xml:p[512]",
+      "text": "【14】 同類項を整理して解こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        14
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000513",
+      "locator": "word/document.xml:p[513]",
+      "text": "不等式を一つずつ解く方法ができた。次は、二つの条件を同時に満たす数を、どう残すか考える。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000514",
+      "locator": "word/document.xml:p[514]",
+      "text": "第3節　1次不等式",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    }
+  ],
+  "status": "PASS",
+  "semanticFidelity": "REQUIRES_SOURCE_REVIEW"
+}

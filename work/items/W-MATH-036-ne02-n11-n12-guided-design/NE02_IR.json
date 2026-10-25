@@ -1,0 +1,6151 @@
+{
+  "schemaVersion": "production-ir/1",
+  "unitId": "math-numbers-expressions-ne02",
+  "subject": "math",
+  "mode": "textbook",
+  "sourceHash": "93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa",
+  "sourceBlocks": [
+    {
+      "id": "word-p-000662",
+      "kind": "heading"
+    },
+    {
+      "id": "word-p-000663",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000664",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000665",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000666",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000667",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000668",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000669",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000670",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000671",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000672",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000673",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000674",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000675",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000676",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000677",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000678",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000679",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000680",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000681",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000682",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000683",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000684",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000685",
+      "kind": "explanation"
+    }
+  ],
+  "coverage": [
+    {
+      "sourceId": "word-p-000662",
+      "nodeIds": [],
+      "disposition": "structural",
+      "reason": "役割ラベルまたは構造見出しとして段階へ統合"
+    },
+    {
+      "sourceId": "word-p-000663",
+      "nodeIds": [],
+      "disposition": "structural",
+      "reason": "役割ラベルまたは構造見出しとして段階へ統合"
+    },
+    {
+      "sourceId": "word-p-000664",
+      "nodeIds": [
+        "ne02-intro"
+      ],
+      "disposition": "taught",
+      "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+    },
+    {
+      "sourceId": "word-p-000665",
+      "nodeIds": [
+        "ne02-intro"
+      ],
+      "disposition": "taught",
+      "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+    },
+    {
+      "sourceId": "word-p-000666",
+      "nodeIds": [
+        "ne02-q01-expand",
+        "ne02-01"
+      ],
+      "disposition": "taught",
+      "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+    },
+    {
+      "sourceId": "word-p-000667",
+      "nodeIds": [
+        "ne02-q02-sum",
+        "ne02-q02-product",
+        "ne02-02"
+      ],
+      "disposition": "taught",
+      "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+    },
+    {
+      "sourceId": "word-p-000668",
+      "nodeIds": [
+        "ne02-q03-pairs",
+        "ne02-03"
+      ],
+      "disposition": "taught",
+      "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+    },
+    {
+      "sourceId": "word-p-000669",
+      "nodeIds": [
+        "ne02-q04-square",
+        "ne02-q04-sign",
+        "ne02-04"
+      ],
+      "disposition": "taught",
+      "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+    },
+    {
+      "sourceId": "word-p-000670",
+      "nodeIds": [
+        "ne02-difference-problem"
+      ],
+      "disposition": "taught",
+      "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+    },
+    {
+      "sourceId": "word-p-000671",
+      "nodeIds": [
+        "ne02-difference-problem"
+      ],
+      "disposition": "taught",
+      "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+    },
+    {
+      "sourceId": "word-p-000672",
+      "nodeIds": [
+        "ne02-q05-expand",
+        "ne02-05"
+      ],
+      "disposition": "taught",
+      "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+    },
+    {
+      "sourceId": "word-p-000673",
+      "nodeIds": [
+        "ne02-q06-coefficient",
+        "ne02-q06-radical",
+        "ne02-06"
+      ],
+      "disposition": "taught",
+      "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+    },
+    {
+      "sourceId": "word-p-000674",
+      "nodeIds": [
+        "ne02-q07-pairs",
+        "ne02-07"
+      ],
+      "disposition": "taught",
+      "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+    },
+    {
+      "sourceId": "word-p-000675",
+      "nodeIds": [
+        "ne02-q08-squares"
+      ],
+      "disposition": "taught",
+      "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+    },
+    {
+      "sourceId": "word-p-000676",
+      "nodeIds": [
+        "ne02-q08-squares",
+        "ne02-q08-nonnegative",
+        "ne02-08"
+      ],
+      "disposition": "taught",
+      "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+    },
+    {
+      "sourceId": "word-p-000677",
+      "nodeIds": [
+        "ne02-08"
+      ],
+      "disposition": "taught",
+      "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+    },
+    {
+      "sourceId": "word-p-000678",
+      "nodeIds": [
+        "ne02-third-problem"
+      ],
+      "disposition": "taught",
+      "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+    },
+    {
+      "sourceId": "word-p-000679",
+      "nodeIds": [
+        "ne02-third-problem"
+      ],
+      "disposition": "taught",
+      "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+    },
+    {
+      "sourceId": "word-p-000680",
+      "nodeIds": [
+        "ne02-third-problem"
+      ],
+      "disposition": "taught",
+      "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+    },
+    {
+      "sourceId": "word-p-000681",
+      "nodeIds": [
+        "ne02-q09-double",
+        "ne02-09"
+      ],
+      "disposition": "taught",
+      "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+    },
+    {
+      "sourceId": "word-p-000682",
+      "nodeIds": [
+        "ne02-10"
+      ],
+      "disposition": "taught",
+      "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+    },
+    {
+      "sourceId": "word-p-000683",
+      "nodeIds": [
+        "ne02-q11-conditions",
+        "ne02-q11-candidate",
+        "ne02-11"
+      ],
+      "disposition": "taught",
+      "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+    },
+    {
+      "sourceId": "word-p-000684",
+      "nodeIds": [
+        "ne02-q12-factor",
+        "ne02-q12-denominator",
+        "ne02-q12-numerator",
+        "ne02-12"
+      ],
+      "disposition": "taught",
+      "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+    },
+    {
+      "sourceId": "word-p-000685",
+      "nodeIds": [
+        "ne02-12"
+      ],
+      "disposition": "taught",
+      "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+    }
+  ],
+  "initialFacts": [
+    "real-arithmetic",
+    "square-identities",
+    "accepted-n08-absolute-value",
+    "accepted-n09-root-definition",
+    "accepted-n10-root-product-quotient"
+  ],
+  "nodes": [
+    {
+      "id": "ne02-intro",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000664",
+        "word-p-000665"
+      ],
+      "requires": [],
+      "produces": [
+        "ne02-intro-result"
+      ],
+      "role": "example",
+      "goal": "問題と方針を先に置く",
+      "purpose": "問題と方針を先に置く",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000664",
+          "word-p-000665"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-intro-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-1",
+              "kind": "text",
+              "text": "例題は "
+            },
+            {
+              "id": "w36-p-2",
+              "kind": "math",
+              "latex": "\\sqrt{5+2\\sqrt6}",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-2"
+            },
+            {
+              "id": "w36-p-3",
+              "kind": "text",
+              "text": " を簡単にすることです。根号の中にさらに根号がある形を "
+            },
+            {
+              "id": "w36-p-4",
+              "kind": "term",
+              "text": "二重根号",
+              "termId": "w36-p-4",
+              "usage": "first_definition"
+            },
+            {
+              "id": "w36-p-5",
+              "kind": "text",
+              "text": " といいます。外側の根号を外すには、平方が "
+            },
+            {
+              "id": "w36-p-6",
+              "kind": "math",
+              "latex": "5+2\\sqrt6",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-6"
+            },
+            {
+              "id": "w36-p-7",
+              "kind": "text",
+              "text": " と一致し、しかも非負である候補を作ります。N10で扱った平方根の定義と積の公式を使います。"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-intro-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-8",
+              "kind": "text",
+              "text": "この内容を、次の判断や変形の根拠に使います。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "noBlankReason": "問題の条件・未知の定義・操作の根拠を教え、直後の適用で判断させる。"
+    },
+    {
+      "id": "ne02-q01-expand",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000666"
+      ],
+      "requires": [
+        "ne02-intro-result"
+      ],
+      "produces": [
+        "ne02-q01-expand-result"
+      ],
+      "role": "substep",
+      "goal": "二乗を積へ戻し四項を作る",
+      "purpose": "二乗を積へ戻し四項を作る",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000666"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-q01-expand-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-9",
+              "kind": "math",
+              "latex": "a,b",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-9"
+            },
+            {
+              "id": "w36-p-10",
+              "kind": "text",
+              "text": " は正の実数とします。候補の和全体を二乗するので、同じ括弧を二つ掛けます。分配法則で、左の各項を右の各項へ掛けます。"
+            }
+          ]
+        },
+        {
+          "id": "ne02-q01-expand-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-q01-expand-interaction-expr",
+              "parts": [
+                {
+                  "id": "w36-p-16",
+                  "kind": "math",
+                  "latex": "(\\sqrt a+\\sqrt b)^2=",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-16"
+                },
+                {
+                  "id": "ne02-q01-expand-slot",
+                  "kind": "answerSlot",
+                  "interactionId": "ne02-q01-expand",
+                  "semanticRef": "ne02-q01-expand"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-q01-expand",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "ne02-q01-expand-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-q01-expand-equation",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "ne02-q01-expand-result-expr-0",
+              "parts": [
+                {
+                  "id": "w36-p-17",
+                  "kind": "math",
+                  "latex": "(\\sqrt a+\\sqrt b)^2",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-17"
+                }
+              ]
+            },
+            {
+              "id": "ne02-q01-expand-result-expr-1",
+              "parts": [
+                {
+                  "id": "w36-p-18",
+                  "kind": "math",
+                  "latex": "(\\sqrt a)^2+\\sqrt a\\sqrt b+\\sqrt b\\sqrt a+(\\sqrt b)^2",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-18"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "="
+          ],
+          "transformRef": "ne02-q01-expand",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "ne02-q01-expand-interaction",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "ne02-q01-expand-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-11",
+              "kind": "text",
+              "text": "平方の項は "
+            },
+            {
+              "id": "w36-p-12",
+              "kind": "math",
+              "latex": "a,b",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-12"
+            },
+            {
+              "id": "w36-p-13",
+              "kind": "text",
+              "text": "、交差する二項はどちらも "
+            },
+            {
+              "id": "w36-p-14",
+              "kind": "math",
+              "latex": "\\sqrt{ab}",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-14"
+            },
+            {
+              "id": "w36-p-15",
+              "kind": "text",
+              "text": " です。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "ne02-q01-expand",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "expression",
+        "whyHere": "二乗を積へ戻し四項を作る",
+        "prerequisiteIds": [
+          "ne02-intro-result"
+        ],
+        "expected": {
+          "value": "(\\sqrt a)^2+\\sqrt a\\sqrt b+\\sqrt b\\sqrt a+(\\sqrt b)^2",
+          "form": "formula",
+          "semanticType": "expression"
+        },
+        "choices": [
+          {
+            "id": "ne02-q01-expand-correct",
+            "content": "(\\sqrt a)^2+\\sqrt a\\sqrt b+\\sqrt b\\sqrt a+(\\sqrt b)^2",
+            "feedback": "平方の項は $a,b$、交差する二項はどちらも $\\sqrt{ab}$ です。"
+          },
+          {
+            "id": "ne02-q01-expand-wrong-0",
+            "content": "a+b",
+            "misconception": "交差して掛ける二項が抜けています。",
+            "feedback": "交差して掛ける二項が抜けています。"
+          },
+          {
+            "id": "ne02-q01-expand-wrong-1",
+            "content": "a+2\\sqrt{a+b}+b",
+            "misconception": "積の根号を和の根号に変えてはいけません。",
+            "feedback": "積の根号を和の根号に変えてはいけません。"
+          }
+        ],
+        "hints": [
+          "いま使う条件と、式のどの部分を変える操作かを先に確かめます。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-q01-expand-interaction",
+          "slotId": "ne02-q01-expand-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-01",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000666"
+      ],
+      "requires": [
+        "ne02-q01-expand-result"
+      ],
+      "produces": [
+        "ne02-01-result"
+      ],
+      "role": "substep",
+      "goal": "a,bを正の実数とする。平方根の和を二乗し、平方の項と二つの交差項を分けて書く。",
+      "purpose": "a,bを正の実数とする。平方根の和を二乗し、平方の項と二つの交差項を分けて書く。",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000666"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-01-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-19",
+              "kind": "text",
+              "text": "四つの項のうち、同じ "
+            },
+            {
+              "id": "w36-p-20",
+              "kind": "math",
+              "latex": "\\sqrt{ab}",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-20"
+            },
+            {
+              "id": "w36-p-21",
+              "kind": "text",
+              "text": " を二つまとめます。平方の項は両端にあるので、和と交差項が見える形にします。"
+            }
+          ]
+        },
+        {
+          "id": "ne02-01-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-01-interaction-expr",
+              "parts": [
+                {
+                  "id": "w36-p-23",
+                  "kind": "math",
+                  "latex": "(\\sqrt a+\\sqrt b)^2=",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-23"
+                },
+                {
+                  "id": "ne02-01-slot",
+                  "kind": "answerSlot",
+                  "interactionId": "ne02-01",
+                  "semanticRef": "ne02-01"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-01",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "ne02-01-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-01-equation",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "ne02-01-result-expr-0",
+              "parts": [
+                {
+                  "id": "w36-p-24",
+                  "kind": "math",
+                  "latex": "(\\sqrt a+\\sqrt b)^2",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-24"
+                }
+              ]
+            },
+            {
+              "id": "ne02-01-result-expr-1",
+              "parts": [
+                {
+                  "id": "w36-p-25",
+                  "kind": "math",
+                  "latex": "a+b+2\\sqrt{ab}",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-25"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "="
+          ],
+          "transformRef": "ne02-01",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "ne02-01-interaction",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "ne02-01-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-22",
+              "kind": "text",
+              "text": "ここから、定数部分と交差項を別々に合わせる方針を立てます。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "ne02-01",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "expression",
+        "whyHere": "a,bを正の実数とする。平方根の和を二乗し、平方の項と二つの交差項を分けて書く。",
+        "prerequisiteIds": [
+          "ne02-q01-expand-result"
+        ],
+        "expected": {
+          "value": "a+b+2\\sqrt{ab}",
+          "form": "formula",
+          "semanticType": "expression"
+        },
+        "choices": [
+          {
+            "id": "ne02-01-correct",
+            "content": "a+b+2\\sqrt{ab}",
+            "feedback": "ここから、定数部分と交差項を別々に合わせる方針を立てます。"
+          },
+          {
+            "id": "ne02-01-wrong-0",
+            "content": "a+b+\\sqrt{ab}",
+            "misconception": "計算対象・条件・符号を直前の式と照合します。和の平方の交差項に√aと√bを代入する。",
+            "feedback": "計算対象・条件・符号を直前の式と照合します。和の平方の交差項に√aと√bを代入する。"
+          },
+          {
+            "id": "ne02-01-wrong-1",
+            "content": "a+b+2ab",
+            "misconception": "計算対象・条件・符号を直前の式と照合します。和の平方の交差項に√aと√bを代入する。",
+            "feedback": "計算対象・条件・符号を直前の式と照合します。和の平方の交差項に√aと√bを代入する。"
+          }
+        ],
+        "hints": [
+          "いま使う条件と、式のどの部分を変える操作かを先に確かめます。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-01-interaction",
+          "slotId": "ne02-01-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-q02-sum",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000667"
+      ],
+      "requires": [
+        "ne02-01-result"
+      ],
+      "produces": [
+        "ne02-q02-sum-result"
+      ],
+      "role": "substep",
+      "goal": "外側の和の条件を作る",
+      "purpose": "外側の和の条件を作る",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000667"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-q02-sum-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-26",
+              "kind": "text",
+              "text": "元の "
+            },
+            {
+              "id": "w36-p-27",
+              "kind": "math",
+              "latex": "5+2\\sqrt6",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-27"
+            },
+            {
+              "id": "w36-p-28",
+              "kind": "text",
+              "text": " に合わせるため、展開した "
+            },
+            {
+              "id": "w36-p-29",
+              "kind": "math",
+              "latex": "a+b+2\\sqrt{ab}",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-29"
+            },
+            {
+              "id": "w36-p-30",
+              "kind": "text",
+              "text": " のうち、根号の外の和を対応させます。これは同じ平方を作るための十分な条件を選ぶ操作です。"
+            }
+          ]
+        },
+        {
+          "id": "ne02-q02-sum-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-q02-sum-interaction-expr",
+              "parts": [
+                {
+                  "id": "w36-p-32",
+                  "kind": "math",
+                  "latex": "a+b=",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-32"
+                },
+                {
+                  "id": "ne02-q02-sum-slot",
+                  "kind": "answerSlot",
+                  "interactionId": "ne02-q02-sum",
+                  "semanticRef": "ne02-q02-sum"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-q02-sum",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "ne02-q02-sum-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-q02-sum-equation",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "ne02-q02-sum-result-expr-0",
+              "parts": [
+                {
+                  "id": "w36-p-33",
+                  "kind": "math",
+                  "latex": "a+b",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-33"
+                }
+              ]
+            },
+            {
+              "id": "ne02-q02-sum-result-expr-1",
+              "parts": [
+                {
+                  "id": "w36-p-34",
+                  "kind": "math",
+                  "latex": "5",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-34"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "="
+          ],
+          "transformRef": "ne02-q02-sum",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "ne02-q02-sum-interaction",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "ne02-q02-sum-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-31",
+              "kind": "text",
+              "text": "確定した結果を記録し、次の操作に使います。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [
+        {
+          "id": "ne02-q02-sum-context",
+          "problemId": "ne02",
+          "factIds": [
+            "ne02-01-result"
+          ],
+          "reason": "別のページでも、いま使う条件付き結論だけを呼び戻す。"
+        }
+      ],
+      "interaction": {
+        "id": "ne02-q02-sum",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "expression",
+        "whyHere": "外側の和の条件を作る",
+        "prerequisiteIds": [
+          "ne02-01-result"
+        ],
+        "expected": {
+          "value": "5",
+          "form": "formula",
+          "semanticType": "expression"
+        },
+        "choices": [
+          {
+            "id": "ne02-q02-sum-correct",
+            "content": "5",
+            "feedback": "確定した結果を記録し、次の操作に使います。"
+          },
+          {
+            "id": "ne02-q02-sum-wrong-0",
+            "content": "6",
+            "misconception": "根号の中の値と、根号の外の和を区別します。",
+            "feedback": "根号の中の値と、根号の外の和を区別します。"
+          },
+          {
+            "id": "ne02-q02-sum-wrong-1",
+            "content": "11",
+            "misconception": "別々の部分をまとめて足しません。",
+            "feedback": "別々の部分をまとめて足しません。"
+          }
+        ],
+        "hints": [
+          "いま使う条件と、式のどの部分を変える操作かを先に確かめます。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-q02-sum-interaction",
+          "slotId": "ne02-q02-sum-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-q02-product",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000667"
+      ],
+      "requires": [
+        "ne02-q02-sum-result"
+      ],
+      "produces": [
+        "ne02-q02-product-result"
+      ],
+      "role": "substep",
+      "goal": "交差項の中身の条件を作る",
+      "purpose": "交差項の中身の条件を作る",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000667"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-q02-product-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-35",
+              "kind": "text",
+              "text": "残る交差項を合わせます。"
+            },
+            {
+              "id": "w36-p-36",
+              "kind": "math",
+              "latex": "2\\sqrt{ab}",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-36"
+            },
+            {
+              "id": "w36-p-37",
+              "kind": "text",
+              "text": " を "
+            },
+            {
+              "id": "w36-p-38",
+              "kind": "math",
+              "latex": "2\\sqrt6",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-38"
+            },
+            {
+              "id": "w36-p-39",
+              "kind": "text",
+              "text": " と同じにするには、二つの非負の根号の中身を合わせればよいので、積の条件を作ります。"
+            }
+          ]
+        },
+        {
+          "id": "ne02-q02-product-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-q02-product-interaction-expr",
+              "parts": [
+                {
+                  "id": "w36-p-41",
+                  "kind": "math",
+                  "latex": "ab=",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-41"
+                },
+                {
+                  "id": "ne02-q02-product-slot",
+                  "kind": "answerSlot",
+                  "interactionId": "ne02-q02-product",
+                  "semanticRef": "ne02-q02-product"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-q02-product",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "ne02-q02-product-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-q02-product-equation",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "ne02-q02-product-result-expr-0",
+              "parts": [
+                {
+                  "id": "w36-p-42",
+                  "kind": "math",
+                  "latex": "ab",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-42"
+                }
+              ]
+            },
+            {
+              "id": "ne02-q02-product-result-expr-1",
+              "parts": [
+                {
+                  "id": "w36-p-43",
+                  "kind": "math",
+                  "latex": "6",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-43"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "="
+          ],
+          "transformRef": "ne02-q02-product",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "ne02-q02-product-interaction",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "ne02-q02-product-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-40",
+              "kind": "text",
+              "text": "確定した結果を記録し、次の操作に使います。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "ne02-q02-product",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "expression",
+        "whyHere": "交差項の中身の条件を作る",
+        "prerequisiteIds": [
+          "ne02-q02-sum-result"
+        ],
+        "expected": {
+          "value": "6",
+          "form": "formula",
+          "semanticType": "expression"
+        },
+        "choices": [
+          {
+            "id": "ne02-q02-product-correct",
+            "content": "6",
+            "feedback": "確定した結果を記録し、次の操作に使います。"
+          },
+          {
+            "id": "ne02-q02-product-wrong-0",
+            "content": "3",
+            "misconception": "係数2は両方にあるので中身を2で割りません。",
+            "feedback": "係数2は両方にあるので中身を2で割りません。"
+          },
+          {
+            "id": "ne02-q02-product-wrong-1",
+            "content": "5",
+            "misconception": "和の条件と積の条件を入れ替えません。",
+            "feedback": "和の条件と積の条件を入れ替えません。"
+          }
+        ],
+        "hints": [
+          "いま使う条件と、式のどの部分を変える操作かを先に確かめます。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-q02-product-interaction",
+          "slotId": "ne02-q02-product-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-02",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000667"
+      ],
+      "requires": [
+        "ne02-q02-product-result"
+      ],
+      "produces": [
+        "ne02-02-result"
+      ],
+      "role": "substep",
+      "goal": "前の平方の展開を5+2√6と比べる。根号の外の部分と、交差項の根号の中を対応させる。",
+      "purpose": "前の平方の展開を5+2√6と比べる。根号の外の部分と、交差項の根号の中を対応させる。",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000667"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-02-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-44",
+              "kind": "text",
+              "text": "いま作った和の条件と積の条件を、両方満たす候補を探せるように一組にします。"
+            }
+          ]
+        },
+        {
+          "id": "ne02-02-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-02-interaction-expr",
+              "parts": [
+                {
+                  "id": "ne02-02-slot",
+                  "kind": "answerSlot",
+                  "interactionId": "ne02-02",
+                  "semanticRef": "ne02-02"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-02",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "ne02-02-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-02-equation",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-02-result-expr-0",
+              "parts": [
+                {
+                  "id": "w36-p-46",
+                  "kind": "math",
+                  "latex": "a+b=5",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-46"
+                }
+              ]
+            },
+            {
+              "id": "ne02-02-result-expr-1",
+              "parts": [
+                {
+                  "id": "w36-p-47",
+                  "kind": "math",
+                  "latex": "ab=6",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-47"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-02",
+          "layoutProfile": "independent",
+          "numbering": {
+            "stableId": "ne02-02-interaction",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "ne02-02-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-45",
+              "kind": "text",
+              "text": "この二条件を満たす候補が一組見つかれば、平方と符号を検算して答えを確定できます。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "ne02-02",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "expression",
+        "whyHere": "前の平方の展開を5+2√6と比べる。根号の外の部分と、交差項の根号の中を対応させる。",
+        "prerequisiteIds": [
+          "ne02-q02-product-result"
+        ],
+        "expected": {
+          "value": "a+b=5,\\quad ab=6",
+          "form": "formula",
+          "semanticType": "expression"
+        },
+        "choices": [
+          {
+            "id": "ne02-02-correct",
+            "content": "a+b=5,\\quad ab=6",
+            "feedback": "この二条件を満たす候補が一組見つかれば、平方と符号を検算して答えを確定できます。"
+          },
+          {
+            "id": "ne02-02-wrong-0",
+            "content": "a+b=5,\\quad ab=3",
+            "misconception": "計算対象・条件・符号を直前の式と照合します。中央の係数2をそろえたまま、根号内を比べよう。",
+            "feedback": "計算対象・条件・符号を直前の式と照合します。中央の係数2をそろえたまま、根号内を比べよう。"
+          },
+          {
+            "id": "ne02-02-wrong-1",
+            "content": "a+b=5,\\quad ab=12",
+            "misconception": "計算対象・条件・符号を直前の式と照合します。中央の係数2をそろえたまま、根号内を比べよう。",
+            "feedback": "計算対象・条件・符号を直前の式と照合します。中央の係数2をそろえたまま、根号内を比べよう。"
+          }
+        ],
+        "hints": [
+          "いま使う条件と、式のどの部分を変える操作かを先に確かめます。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-02-interaction",
+          "slotId": "ne02-02-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-q03-pairs",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000668"
+      ],
+      "requires": [
+        "ne02-02-result"
+      ],
+      "produces": [
+        "ne02-q03-pairs-result"
+      ],
+      "role": "substep",
+      "goal": "積6の自然数候補から和を選ぶ",
+      "purpose": "積6の自然数候補から和を選ぶ",
+      "operation": {
+        "kind": "calculation",
+        "targets": [
+          "word-p-000668"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-q03-pairs-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-48",
+              "kind": "text",
+              "text": "簡単な候補として正の整数の組を探します。積が "
+            },
+            {
+              "id": "w36-p-49",
+              "kind": "math",
+              "latex": "6",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-49"
+            },
+            {
+              "id": "w36-p-50",
+              "kind": "text",
+              "text": " になる組は、順番を区別しなければ "
+            },
+            {
+              "id": "w36-p-51",
+              "kind": "math",
+              "latex": "(1,6)",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-51"
+            },
+            {
+              "id": "w36-p-52",
+              "kind": "text",
+              "text": " と "
+            },
+            {
+              "id": "w36-p-53",
+              "kind": "math",
+              "latex": "(2,3)",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-53"
+            },
+            {
+              "id": "w36-p-54",
+              "kind": "text",
+              "text": " です。実数の候補をすべて列挙する必要はありません。二組の和を計算して、和が "
+            },
+            {
+              "id": "w36-p-55",
+              "kind": "math",
+              "latex": "5",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-55"
+            },
+            {
+              "id": "w36-p-56",
+              "kind": "text",
+              "text": " の組を選びます。"
+            }
+          ]
+        },
+        {
+          "id": "ne02-q03-pairs-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-q03-pairs-interaction-expr",
+              "parts": [
+                {
+                  "id": "ne02-q03-pairs-slot",
+                  "kind": "answerSlot",
+                  "interactionId": "ne02-q03-pairs",
+                  "semanticRef": "ne02-q03-pairs"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-q03-pairs",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "ne02-q03-pairs-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-q03-pairs-equation",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-q03-pairs-result-expr-0",
+              "parts": [
+                {
+                  "id": "w36-p-58",
+                  "kind": "math",
+                  "latex": "1+6=7",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-58"
+                }
+              ]
+            },
+            {
+              "id": "ne02-q03-pairs-result-expr-1",
+              "parts": [
+                {
+                  "id": "w36-p-59",
+                  "kind": "math",
+                  "latex": "2+3=5",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-59"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-q03-pairs",
+          "layoutProfile": "independent",
+          "numbering": {
+            "stableId": "ne02-q03-pairs-interaction",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "ne02-q03-pairs-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-57",
+              "kind": "text",
+              "text": "和と積の条件を同時に満たす組を使います。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [
+        {
+          "id": "ne02-q03-pairs-context",
+          "problemId": "ne02",
+          "factIds": [
+            "ne02-02-result"
+          ],
+          "reason": "別のページでも、いま使う条件付き結論だけを呼び戻す。"
+        }
+      ],
+      "interaction": {
+        "id": "ne02-q03-pairs",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "calculation",
+        "whyHere": "積6の自然数候補から和を選ぶ",
+        "prerequisiteIds": [
+          "ne02-02-result"
+        ],
+        "expected": {
+          "value": "1+6=7,\\quad2+3=5",
+          "form": "formula",
+          "semanticType": "calculation"
+        },
+        "choices": [
+          {
+            "id": "ne02-q03-pairs-correct",
+            "content": "1+6=7,\\quad2+3=5",
+            "feedback": "和と積の条件を同時に満たす組を使います。"
+          },
+          {
+            "id": "ne02-q03-pairs-wrong-0",
+            "content": "1+6=5,\\quad2+3=7",
+            "misconception": "それぞれの和を別々に計算します。",
+            "feedback": "それぞれの和を別々に計算します。"
+          },
+          {
+            "id": "ne02-q03-pairs-wrong-1",
+            "content": "1+6=6,\\quad2+3=6",
+            "misconception": "和の計算と積の条件を混同しています。",
+            "feedback": "和の計算と積の条件を混同しています。"
+          }
+        ],
+        "hints": [
+          "いま使う条件と、式のどの部分を変える操作かを先に確かめます。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-q03-pairs-interaction",
+          "slotId": "ne02-q03-pairs-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-03",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000668"
+      ],
+      "requires": [
+        "ne02-q03-pairs-result"
+      ],
+      "produces": [
+        "ne02-03-result"
+      ],
+      "role": "substep",
+      "goal": "和と積の二条件を同時に満たす正の二数を探す。順番はどちらでもよい。",
+      "purpose": "和と積の二条件を同時に満たす正の二数を探す。順番はどちらでもよい。",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000668"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-03-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-60",
+              "kind": "text",
+              "text": "和が "
+            },
+            {
+              "id": "w36-p-61",
+              "kind": "math",
+              "latex": "5",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-61"
+            },
+            {
+              "id": "w36-p-62",
+              "kind": "text",
+              "text": " で積が "
+            },
+            {
+              "id": "w36-p-63",
+              "kind": "math",
+              "latex": "6",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-63"
+            },
+            {
+              "id": "w36-p-64",
+              "kind": "text",
+              "text": " だった組を、"
+            },
+            {
+              "id": "w36-p-65",
+              "kind": "math",
+              "latex": "a,b",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-65"
+            },
+            {
+              "id": "w36-p-66",
+              "kind": "text",
+              "text": " の値として記録します。和は順序を交換しても同じです。"
+            }
+          ]
+        },
+        {
+          "id": "ne02-03-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-03-interaction-expr",
+              "parts": [
+                {
+                  "id": "ne02-03-slot",
+                  "kind": "answerSlot",
+                  "interactionId": "ne02-03",
+                  "semanticRef": "ne02-03"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-03",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "ne02-03-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-03-equation",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-03-result-expr-0",
+              "parts": [
+                {
+                  "id": "w36-p-68",
+                  "kind": "math",
+                  "latex": "a=2",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-68"
+                }
+              ]
+            },
+            {
+              "id": "ne02-03-result-expr-1",
+              "parts": [
+                {
+                  "id": "w36-p-69",
+                  "kind": "math",
+                  "latex": "b=3\\quad(\\text{順不同})",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-69"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-03",
+          "layoutProfile": "independent",
+          "numbering": {
+            "stableId": "ne02-03-interaction",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "ne02-03-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-67",
+              "kind": "text",
+              "text": "この値を、最初に置いた平方根の和へ代入します。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "ne02-03",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "expression",
+        "whyHere": "和と積の二条件を同時に満たす正の二数を探す。順番はどちらでもよい。",
+        "prerequisiteIds": [
+          "ne02-q03-pairs-result"
+        ],
+        "expected": {
+          "value": "a=2,\\quad b=3\\quad(\\text{順不同})",
+          "form": "formula",
+          "semanticType": "expression"
+        },
+        "choices": [
+          {
+            "id": "ne02-03-correct",
+            "content": "a=2,\\quad b=3\\quad(\\text{順不同})",
+            "feedback": "この値を、最初に置いた平方根の和へ代入します。"
+          },
+          {
+            "id": "ne02-03-wrong-0",
+            "content": "a=1,\\quad b=4",
+            "misconception": "計算対象・条件・符号を直前の式と照合します。一方の条件だけで決めず、もう一方も代入して確かめよう。",
+            "feedback": "計算対象・条件・符号を直前の式と照合します。一方の条件だけで決めず、もう一方も代入して確かめよう。"
+          },
+          {
+            "id": "ne02-03-wrong-1",
+            "content": "a=1,\\quad b=6",
+            "misconception": "計算対象・条件・符号を直前の式と照合します。一方の条件だけで決めず、もう一方も代入して確かめよう。",
+            "feedback": "計算対象・条件・符号を直前の式と照合します。一方の条件だけで決めず、もう一方も代入して確かめよう。"
+          }
+        ],
+        "hints": [
+          "いま使う条件と、式のどの部分を変える操作かを先に確かめます。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-03-interaction",
+          "slotId": "ne02-03-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-q04-square",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000669"
+      ],
+      "requires": [
+        "ne02-03-result"
+      ],
+      "produces": [
+        "ne02-q04-square-result"
+      ],
+      "role": "substep",
+      "goal": "候補を平方して元へ戻る",
+      "purpose": "候補を平方して元へ戻る",
+      "operation": {
+        "kind": "calculation",
+        "targets": [
+          "word-p-000669"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-q04-square-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-70",
+              "kind": "text",
+              "text": "候補は "
+            },
+            {
+              "id": "w36-p-71",
+              "kind": "math",
+              "latex": "\\sqrt2+\\sqrt3",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-71"
+            },
+            {
+              "id": "w36-p-72",
+              "kind": "text",
+              "text": " です。先ほど作った平方の式に代入し、元の根号内に戻るかを確かめます。"
+            }
+          ]
+        },
+        {
+          "id": "ne02-q04-square-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-q04-square-interaction-expr",
+              "parts": [
+                {
+                  "id": "w36-p-74",
+                  "kind": "math",
+                  "latex": "(\\sqrt2+\\sqrt3)^2=",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-74"
+                },
+                {
+                  "id": "ne02-q04-square-slot",
+                  "kind": "answerSlot",
+                  "interactionId": "ne02-q04-square",
+                  "semanticRef": "ne02-q04-square"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-q04-square",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "ne02-q04-square-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-q04-square-equation",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "ne02-q04-square-result-expr-0",
+              "parts": [
+                {
+                  "id": "w36-p-75",
+                  "kind": "math",
+                  "latex": "(\\sqrt2+\\sqrt3)^2",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-75"
+                }
+              ]
+            },
+            {
+              "id": "ne02-q04-square-result-expr-1",
+              "parts": [
+                {
+                  "id": "w36-p-76",
+                  "kind": "math",
+                  "latex": "5+2\\sqrt6",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-76"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "="
+          ],
+          "transformRef": "ne02-q04-square",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "ne02-q04-square-interaction",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "ne02-q04-square-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-73",
+              "kind": "text",
+              "text": "平方の値は一致しました。次に候補の符号を確認します。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [
+        {
+          "id": "ne02-q04-square-context",
+          "problemId": "ne02",
+          "factIds": [
+            "ne02-03-result"
+          ],
+          "reason": "別のページでも、いま使う条件付き結論だけを呼び戻す。"
+        }
+      ],
+      "interaction": {
+        "id": "ne02-q04-square",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "calculation",
+        "whyHere": "候補を平方して元へ戻る",
+        "prerequisiteIds": [
+          "ne02-03-result"
+        ],
+        "expected": {
+          "value": "5+2\\sqrt6",
+          "form": "formula",
+          "semanticType": "calculation"
+        },
+        "choices": [
+          {
+            "id": "ne02-q04-square-correct",
+            "content": "5+2\\sqrt6",
+            "feedback": "平方の値は一致しました。次に候補の符号を確認します。"
+          },
+          {
+            "id": "ne02-q04-square-wrong-0",
+            "content": "5+\\sqrt6",
+            "misconception": "交差項は二つです。",
+            "feedback": "交差項は二つです。"
+          },
+          {
+            "id": "ne02-q04-square-wrong-1",
+            "content": "5+2\\sqrt5",
+            "misconception": "交差項の根号内は積です。",
+            "feedback": "交差項の根号内は積です。"
+          }
+        ],
+        "hints": [
+          "いま使う条件と、式のどの部分を変える操作かを先に確かめます。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-q04-square-interaction",
+          "slotId": "ne02-q04-square-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-q04-sign",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000669"
+      ],
+      "requires": [
+        "ne02-q04-square-result"
+      ],
+      "produces": [
+        "ne02-q04-sign-result"
+      ],
+      "role": "substep",
+      "goal": "平方根の符号条件を確認する",
+      "purpose": "平方根の符号条件を確認する",
+      "operation": {
+        "kind": "judgment",
+        "targets": [
+          "word-p-000669"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-q04-sign-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-77",
+              "kind": "math",
+              "latex": "\\sqrt2",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-77"
+            },
+            {
+              "id": "w36-p-78",
+              "kind": "text",
+              "text": " と "
+            },
+            {
+              "id": "w36-p-79",
+              "kind": "math",
+              "latex": "\\sqrt3",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-79"
+            },
+            {
+              "id": "w36-p-80",
+              "kind": "text",
+              "text": " はどちらも正です。候補の和全体の符号を選びます。"
+            }
+          ]
+        },
+        {
+          "id": "ne02-q04-sign-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-q04-sign-interaction-expr",
+              "parts": [
+                {
+                  "id": "w36-p-82",
+                  "kind": "math",
+                  "latex": "\\sqrt2+\\sqrt3\\ ",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-82"
+                },
+                {
+                  "id": "ne02-q04-sign-slot",
+                  "kind": "answerSlot",
+                  "interactionId": "ne02-q04-sign",
+                  "semanticRef": "ne02-q04-sign"
+                },
+                {
+                  "id": "w36-p-83",
+                  "kind": "math",
+                  "latex": "\\ 0",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-83"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-q04-sign",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "ne02-q04-sign-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-q04-sign-equation",
+          "kind": "relationChain",
+          "relation": "inequality",
+          "expressions": [
+            {
+              "id": "ne02-q04-sign-result-expr-0",
+              "parts": [
+                {
+                  "id": "w36-p-84",
+                  "kind": "math",
+                  "latex": "\\sqrt2+\\sqrt3\\ ",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-84"
+                }
+              ]
+            },
+            {
+              "id": "ne02-q04-sign-result-expr-1",
+              "parts": [
+                {
+                  "id": "w36-p-85",
+                  "kind": "math",
+                  "latex": "\\ 0",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-85"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            ">"
+          ],
+          "transformRef": "ne02-q04-sign",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "ne02-q04-sign-interaction",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "ne02-q04-sign-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-81",
+              "kind": "text",
+              "text": "非負で平方が同じ数は一つなので、この候補が元の根号の値です。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "ne02-q04-sign",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "judgment",
+        "whyHere": "平方根の符号条件を確認する",
+        "prerequisiteIds": [
+          "ne02-q04-square-result"
+        ],
+        "expected": {
+          "value": ">",
+          "form": "formula",
+          "semanticType": "judgment"
+        },
+        "choices": [
+          {
+            "id": "ne02-q04-sign-correct",
+            "content": ">",
+            "feedback": "非負で平方が同じ数は一つなので、この候補が元の根号の値です。"
+          },
+          {
+            "id": "ne02-q04-sign-wrong-0",
+            "content": "<",
+            "misconception": "正の数二つの和です。",
+            "feedback": "正の数二つの和です。"
+          },
+          {
+            "id": "ne02-q04-sign-wrong-1",
+            "content": "=",
+            "misconception": "どちらの項も0ではありません。",
+            "feedback": "どちらの項も0ではありません。"
+          }
+        ],
+        "hints": [
+          "いま使う条件と、式のどの部分を変える操作かを先に確かめます。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-q04-sign-interaction",
+          "slotId": "ne02-q04-sign-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-04",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000669"
+      ],
+      "requires": [
+        "ne02-q04-sign-result"
+      ],
+      "produces": [
+        "ne02-04-result"
+      ],
+      "role": "substep",
+      "goal": "平方が一致しただけでは符号が決まらない。候補が非負であることも確かめ、元の根号の値を選ぶ。",
+      "purpose": "平方が一致しただけでは符号が決まらない。候補が非負であることも確かめ、元の根号の値を選ぶ。",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000669"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-04-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-86",
+              "kind": "text",
+              "text": "候補の平方が元の根号内に一致し、候補が正であることを確かめました。二つの確認と元の根号の値をまとめます。"
+            }
+          ]
+        },
+        {
+          "id": "ne02-04-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-04-interaction-expr",
+              "parts": [
+                {
+                  "id": "ne02-04-slot",
+                  "kind": "answerSlot",
+                  "interactionId": "ne02-04",
+                  "semanticRef": "ne02-04"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-04",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "ne02-04-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-04-equation",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-04-result-expr-0",
+              "parts": [
+                {
+                  "id": "w36-p-88",
+                  "kind": "math",
+                  "latex": "\\sqrt2+\\sqrt3>0",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-88"
+                }
+              ]
+            },
+            {
+              "id": "ne02-04-result-expr-1",
+              "parts": [
+                {
+                  "id": "w36-p-89",
+                  "kind": "math",
+                  "latex": "\\sqrt{5+2\\sqrt6}=\\sqrt2+\\sqrt3",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-89"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-04",
+          "layoutProfile": "independent",
+          "numbering": {
+            "stableId": "ne02-04-interaction",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "ne02-04-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-87",
+              "kind": "text",
+              "text": "平方の一致だけでなく、根号が表す非負性まで確認して結論にしました。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "ne02-04",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "expression",
+        "whyHere": "平方が一致しただけでは符号が決まらない。候補が非負であることも確かめ、元の根号の値を選ぶ。",
+        "prerequisiteIds": [
+          "ne02-q04-sign-result"
+        ],
+        "expected": {
+          "value": "\\sqrt2+\\sqrt3>0,\\quad\\sqrt{5+2\\sqrt6}=\\sqrt2+\\sqrt3",
+          "form": "formula",
+          "semanticType": "expression"
+        },
+        "choices": [
+          {
+            "id": "ne02-04-correct",
+            "content": "\\sqrt2+\\sqrt3>0,\\quad\\sqrt{5+2\\sqrt6}=\\sqrt2+\\sqrt3",
+            "feedback": "平方の一致だけでなく、根号が表す非負性まで確認して結論にしました。"
+          },
+          {
+            "id": "ne02-04-wrong-0",
+            "content": "\\sqrt{5+2\\sqrt6}=-\\sqrt2-\\sqrt3",
+            "misconception": "計算対象・条件・符号を直前の式と照合します。√の記号が表す値の符号も条件に入れよう。",
+            "feedback": "計算対象・条件・符号を直前の式と照合します。√の記号が表す値の符号も条件に入れよう。"
+          },
+          {
+            "id": "ne02-04-wrong-1",
+            "content": "\\sqrt{5+2\\sqrt6}=\\sqrt5+\\sqrt{2\\sqrt6}",
+            "misconception": "計算対象・条件・符号を直前の式と照合します。√の記号が表す値の符号も条件に入れよう。",
+            "feedback": "計算対象・条件・符号を直前の式と照合します。√の記号が表す値の符号も条件に入れよう。"
+          }
+        ],
+        "hints": [
+          "いま使う条件と、式のどの部分を変える操作かを先に確かめます。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-04-interaction",
+          "slotId": "ne02-04-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-difference-problem",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000670",
+        "word-p-000671"
+      ],
+      "requires": [
+        "ne02-04-result"
+      ],
+      "produces": [
+        "ne02-difference-problem-result"
+      ],
+      "role": "example",
+      "goal": "二つ目の問題と差を選ぶ理由",
+      "purpose": "二つ目の問題と差を選ぶ理由",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000670",
+          "word-p-000671"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-difference-problem-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-90",
+              "kind": "text",
+              "text": "次の例題は "
+            },
+            {
+              "id": "w36-p-91",
+              "kind": "math",
+              "latex": "\\sqrt{9-4\\sqrt5}",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-91"
+            },
+            {
+              "id": "w36-p-92",
+              "kind": "text",
+              "text": " です。根号を含む項が引かれているので、候補を平方根の差にして、負の交差項を作ります。"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-difference-problem-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-93",
+              "kind": "text",
+              "text": "この内容を、次の判断や変形の根拠に使います。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [
+        {
+          "id": "ne02-difference-problem-context",
+          "problemId": "ne02",
+          "factIds": [
+            "ne02-04-result"
+          ],
+          "reason": "別のページでも、いま使う条件付き結論だけを呼び戻す。"
+        }
+      ],
+      "noBlankReason": "問題の条件・未知の定義・操作の根拠を教え、直後の適用で判断させる。"
+    },
+    {
+      "id": "ne02-q05-expand",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000672"
+      ],
+      "requires": [
+        "ne02-difference-problem-result"
+      ],
+      "produces": [
+        "ne02-q05-expand-result"
+      ],
+      "role": "substep",
+      "goal": "負号を含む四つの積を作る",
+      "purpose": "負号を含む四つの積を作る",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000672"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-q05-expand-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-94",
+              "kind": "math",
+              "latex": "(\\sqrt a-\\sqrt b)^2",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-94"
+            },
+            {
+              "id": "w36-p-95",
+              "kind": "text",
+              "text": " は、同じ差の括弧を二つ掛けることです。交差項では一方の因子だけに負号があるので、両方とも負になります。"
+            }
+          ]
+        },
+        {
+          "id": "ne02-q05-expand-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-q05-expand-interaction-expr",
+              "parts": [
+                {
+                  "id": "w36-p-97",
+                  "kind": "math",
+                  "latex": "(\\sqrt a-\\sqrt b)^2=",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-97"
+                },
+                {
+                  "id": "ne02-q05-expand-slot",
+                  "kind": "answerSlot",
+                  "interactionId": "ne02-q05-expand",
+                  "semanticRef": "ne02-q05-expand"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-q05-expand",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "ne02-q05-expand-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-q05-expand-equation",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "ne02-q05-expand-result-expr-0",
+              "parts": [
+                {
+                  "id": "w36-p-98",
+                  "kind": "math",
+                  "latex": "(\\sqrt a-\\sqrt b)^2",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-98"
+                }
+              ]
+            },
+            {
+              "id": "ne02-q05-expand-result-expr-1",
+              "parts": [
+                {
+                  "id": "w36-p-99",
+                  "kind": "math",
+                  "latex": "a-\\sqrt{ab}-\\sqrt{ab}+b",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-99"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "="
+          ],
+          "transformRef": "ne02-q05-expand",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "ne02-q05-expand-interaction",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "ne02-q05-expand-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-96",
+              "kind": "text",
+              "text": "確定した結果を記録し、次の操作に使います。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "ne02-q05-expand",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "expression",
+        "whyHere": "負号を含む四つの積を作る",
+        "prerequisiteIds": [
+          "ne02-difference-problem-result"
+        ],
+        "expected": {
+          "value": "a-\\sqrt{ab}-\\sqrt{ab}+b",
+          "form": "formula",
+          "semanticType": "expression"
+        },
+        "choices": [
+          {
+            "id": "ne02-q05-expand-correct",
+            "content": "a-\\sqrt{ab}-\\sqrt{ab}+b",
+            "feedback": "確定した結果を記録し、次の操作に使います。"
+          },
+          {
+            "id": "ne02-q05-expand-wrong-0",
+            "content": "a+\\sqrt{ab}+\\sqrt{ab}+b",
+            "misconception": "差の交差項の負号を落としています。",
+            "feedback": "差の交差項の負号を落としています。"
+          },
+          {
+            "id": "ne02-q05-expand-wrong-1",
+            "content": "a-\\sqrt{ab}-\\sqrt{ab}-b",
+            "misconception": "負と負の積でできる最後の項は正です。",
+            "feedback": "負と負の積でできる最後の項は正です。"
+          }
+        ],
+        "hints": [
+          "いま使う条件と、式のどの部分を変える操作かを先に確かめます。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-q05-expand-interaction",
+          "slotId": "ne02-q05-expand-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-05",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000672"
+      ],
+      "requires": [
+        "ne02-q05-expand-result"
+      ],
+      "produces": [
+        "ne02-05-result"
+      ],
+      "role": "substep",
+      "goal": "次は中央項が負の9−4√5を考える。平方根の差の平方を展開し、対応させる形を作る。",
+      "purpose": "次は中央項が負の9−4√5を考える。平方根の差の平方を展開し、対応させる形を作る。",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000672"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-05-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-100",
+              "kind": "text",
+              "text": "同じ "
+            },
+            {
+              "id": "w36-p-101",
+              "kind": "math",
+              "latex": "-\\sqrt{ab}",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-101"
+            },
+            {
+              "id": "w36-p-102",
+              "kind": "text",
+              "text": " の二項をまとめます。和の平方と比べて、交差項の符号だけが違う形になります。"
+            }
+          ]
+        },
+        {
+          "id": "ne02-05-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-05-interaction-expr",
+              "parts": [
+                {
+                  "id": "w36-p-104",
+                  "kind": "math",
+                  "latex": "(\\sqrt a-\\sqrt b)^2=",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-104"
+                },
+                {
+                  "id": "ne02-05-slot",
+                  "kind": "answerSlot",
+                  "interactionId": "ne02-05",
+                  "semanticRef": "ne02-05"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-05",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "ne02-05-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-05-equation",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "ne02-05-result-expr-0",
+              "parts": [
+                {
+                  "id": "w36-p-105",
+                  "kind": "math",
+                  "latex": "(\\sqrt a-\\sqrt b)^2",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-105"
+                }
+              ]
+            },
+            {
+              "id": "ne02-05-result-expr-1",
+              "parts": [
+                {
+                  "id": "w36-p-106",
+                  "kind": "math",
+                  "latex": "a+b-2\\sqrt{ab}",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-106"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "="
+          ],
+          "transformRef": "ne02-05",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "ne02-05-interaction",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "ne02-05-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-103",
+              "kind": "text",
+              "text": "次は、元の係数4を、いまの展開の係数2にそろえます。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "ne02-05",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "expression",
+        "whyHere": "次は中央項が負の9−4√5を考える。平方根の差の平方を展開し、対応させる形を作る。",
+        "prerequisiteIds": [
+          "ne02-q05-expand-result"
+        ],
+        "expected": {
+          "value": "a+b-2\\sqrt{ab}",
+          "form": "formula",
+          "semanticType": "expression"
+        },
+        "choices": [
+          {
+            "id": "ne02-05-correct",
+            "content": "a+b-2\\sqrt{ab}",
+            "feedback": "次は、元の係数4を、いまの展開の係数2にそろえます。"
+          },
+          {
+            "id": "ne02-05-wrong-0",
+            "content": "a+b+2\\sqrt{ab}",
+            "misconception": "計算対象・条件・符号を直前の式と照合します。差の平方では中央項の符号だけでなく、最後の平方の符号も確かめよう。",
+            "feedback": "計算対象・条件・符号を直前の式と照合します。差の平方では中央項の符号だけでなく、最後の平方の符号も確かめよう。"
+          },
+          {
+            "id": "ne02-05-wrong-1",
+            "content": "a-b-2\\sqrt{ab}",
+            "misconception": "計算対象・条件・符号を直前の式と照合します。差の平方では中央項の符号だけでなく、最後の平方の符号も確かめよう。",
+            "feedback": "計算対象・条件・符号を直前の式と照合します。差の平方では中央項の符号だけでなく、最後の平方の符号も確かめよう。"
+          }
+        ],
+        "hints": [
+          "いま使う条件と、式のどの部分を変える操作かを先に確かめます。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-05-interaction",
+          "slotId": "ne02-05-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-q06-coefficient",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000673"
+      ],
+      "requires": [
+        "ne02-05-result"
+      ],
+      "produces": [
+        "ne02-q06-coefficient-result"
+      ],
+      "role": "substep",
+      "goal": "係数4を2と2へ分ける",
+      "purpose": "係数4を2と2へ分ける",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000673"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-q06-coefficient-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-107",
+              "kind": "text",
+              "text": "交差項を "
+            },
+            {
+              "id": "w36-p-108",
+              "kind": "math",
+              "latex": "2\\sqrt{ab}",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-108"
+            },
+            {
+              "id": "w36-p-109",
+              "kind": "text",
+              "text": " と比べられるよう、"
+            },
+            {
+              "id": "w36-p-110",
+              "kind": "math",
+              "latex": "4\\sqrt5",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-110"
+            },
+            {
+              "id": "w36-p-111",
+              "kind": "text",
+              "text": " の係数 "
+            },
+            {
+              "id": "w36-p-112",
+              "kind": "math",
+              "latex": "4",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-112"
+            },
+            {
+              "id": "w36-p-113",
+              "kind": "text",
+              "text": " を "
+            },
+            {
+              "id": "w36-p-114",
+              "kind": "math",
+              "latex": "2\\times2",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-114"
+            },
+            {
+              "id": "w36-p-115",
+              "kind": "text",
+              "text": " に分けます。"
+            }
+          ]
+        },
+        {
+          "id": "ne02-q06-coefficient-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-q06-coefficient-interaction-expr",
+              "parts": [
+                {
+                  "id": "w36-p-117",
+                  "kind": "math",
+                  "latex": "4\\sqrt5=2(",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-117"
+                },
+                {
+                  "id": "ne02-q06-coefficient-slot",
+                  "kind": "answerSlot",
+                  "interactionId": "ne02-q06-coefficient",
+                  "semanticRef": "ne02-q06-coefficient"
+                },
+                {
+                  "id": "w36-p-118",
+                  "kind": "math",
+                  "latex": ")",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-118"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-q06-coefficient",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "ne02-q06-coefficient-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-q06-coefficient-equation",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "ne02-q06-coefficient-result-expr-0",
+              "parts": [
+                {
+                  "id": "w36-p-119",
+                  "kind": "math",
+                  "latex": "4\\sqrt5",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-119"
+                }
+              ]
+            },
+            {
+              "id": "ne02-q06-coefficient-result-expr-1",
+              "parts": [
+                {
+                  "id": "w36-p-120",
+                  "kind": "math",
+                  "latex": "2(2\\sqrt5)",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-120"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "="
+          ],
+          "transformRef": "ne02-q06-coefficient",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "ne02-q06-coefficient-interaction",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "ne02-q06-coefficient-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-116",
+              "kind": "text",
+              "text": "確定した結果を記録し、次の操作に使います。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [
+        {
+          "id": "ne02-q06-coefficient-context",
+          "problemId": "ne02",
+          "factIds": [
+            "ne02-05-result"
+          ],
+          "reason": "別のページでも、いま使う条件付き結論だけを呼び戻す。"
+        }
+      ],
+      "interaction": {
+        "id": "ne02-q06-coefficient",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "expression",
+        "whyHere": "係数4を2と2へ分ける",
+        "prerequisiteIds": [
+          "ne02-05-result"
+        ],
+        "expected": {
+          "value": "2\\sqrt5",
+          "form": "formula",
+          "semanticType": "expression"
+        },
+        "choices": [
+          {
+            "id": "ne02-q06-coefficient-correct",
+            "content": "2\\sqrt5",
+            "feedback": "確定した結果を記録し、次の操作に使います。"
+          },
+          {
+            "id": "ne02-q06-coefficient-wrong-0",
+            "content": "4\\sqrt5",
+            "misconception": "外へ出した2の分まで重複します。",
+            "feedback": "外へ出した2の分まで重複します。"
+          },
+          {
+            "id": "ne02-q06-coefficient-wrong-1",
+            "content": "\\sqrt5",
+            "misconception": "係数の残りの2が抜けています。",
+            "feedback": "係数の残りの2が抜けています。"
+          }
+        ],
+        "hints": [
+          "いま使う条件と、式のどの部分を変える操作かを先に確かめます。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-q06-coefficient-interaction",
+          "slotId": "ne02-q06-coefficient-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-q06-radical",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000673"
+      ],
+      "requires": [
+        "ne02-q06-coefficient-result"
+      ],
+      "produces": [
+        "ne02-q06-radical-result"
+      ],
+      "role": "substep",
+      "goal": "残る2を根号の中へ入れる",
+      "purpose": "残る2を根号の中へ入れる",
+      "operation": {
+        "kind": "calculation",
+        "targets": [
+          "word-p-000673"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-q06-radical-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-121",
+              "kind": "text",
+              "text": "括弧内の "
+            },
+            {
+              "id": "w36-p-122",
+              "kind": "math",
+              "latex": "2\\sqrt5",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-122"
+            },
+            {
+              "id": "w36-p-123",
+              "kind": "text",
+              "text": " は正です。"
+            },
+            {
+              "id": "w36-p-124",
+              "kind": "math",
+              "latex": "2=\\sqrt4",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-124"
+            },
+            {
+              "id": "w36-p-125",
+              "kind": "text",
+              "text": " として根号の積の公式を使うと、外の係数2を残したまま一つの根号にできます。"
+            }
+          ]
+        },
+        {
+          "id": "ne02-q06-radical-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-q06-radical-interaction-expr",
+              "parts": [
+                {
+                  "id": "w36-p-129",
+                  "kind": "math",
+                  "latex": "4\\sqrt5=2\\sqrt{",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-129"
+                },
+                {
+                  "id": "ne02-q06-radical-slot",
+                  "kind": "answerSlot",
+                  "interactionId": "ne02-q06-radical",
+                  "semanticRef": "ne02-q06-radical"
+                },
+                {
+                  "id": "w36-p-130",
+                  "kind": "math",
+                  "latex": "}",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-130"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-q06-radical",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "ne02-q06-radical-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-q06-radical-equation",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "ne02-q06-radical-result-expr-0",
+              "parts": [
+                {
+                  "id": "w36-p-131",
+                  "kind": "math",
+                  "latex": "4\\sqrt5",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-131"
+                }
+              ]
+            },
+            {
+              "id": "ne02-q06-radical-result-expr-1",
+              "parts": [
+                {
+                  "id": "w36-p-132",
+                  "kind": "math",
+                  "latex": "2\\sqrt{20}",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-132"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "="
+          ],
+          "transformRef": "ne02-q06-radical",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "ne02-q06-radical-interaction",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "ne02-q06-radical-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-126",
+              "kind": "text",
+              "text": "元の式は "
+            },
+            {
+              "id": "w36-p-127",
+              "kind": "math",
+              "latex": "9-2\\sqrt{20}",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-127"
+            },
+            {
+              "id": "w36-p-128",
+              "kind": "text",
+              "text": " と同じです。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "ne02-q06-radical",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "calculation",
+        "whyHere": "残る2を根号の中へ入れる",
+        "prerequisiteIds": [
+          "ne02-q06-coefficient-result"
+        ],
+        "expected": {
+          "value": "20",
+          "form": "formula",
+          "semanticType": "calculation"
+        },
+        "choices": [
+          {
+            "id": "ne02-q06-radical-correct",
+            "content": "20",
+            "feedback": "元の式は $9-2\\sqrt{20}$ と同じです。"
+          },
+          {
+            "id": "ne02-q06-radical-wrong-0",
+            "content": "10",
+            "misconception": "根号の中へ入る2は平方して4になります。",
+            "feedback": "根号の中へ入る2は平方して4になります。"
+          },
+          {
+            "id": "ne02-q06-radical-wrong-1",
+            "content": "5",
+            "misconception": "括弧内の係数2を残していません。",
+            "feedback": "括弧内の係数2を残していません。"
+          }
+        ],
+        "hints": [
+          "いま使う条件と、式のどの部分を変える操作かを先に確かめます。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-q06-radical-interaction",
+          "slotId": "ne02-q06-radical-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-06",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000673"
+      ],
+      "requires": [
+        "ne02-q06-radical-result"
+      ],
+      "produces": [
+        "ne02-06-result"
+      ],
+      "role": "substep",
+      "goal": "交差項の係数をそろえて比べられるよう、4√5を係数2と一つの根号の積へ直す。和と積を別々の条件にする。",
+      "purpose": "交差項の係数をそろえて比べられるよう、4√5を係数2と一つの根号の積へ直す。和と積を別々の条件にする。",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000673"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-06-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-133",
+              "kind": "text",
+              "text": "元の式を "
+            },
+            {
+              "id": "w36-p-134",
+              "kind": "math",
+              "latex": "9-2\\sqrt{20}",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-134"
+            },
+            {
+              "id": "w36-p-135",
+              "kind": "text",
+              "text": " とそろえました。"
+            },
+            {
+              "id": "w36-p-136",
+              "kind": "math",
+              "latex": "a+b-2\\sqrt{ab}",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-136"
+            },
+            {
+              "id": "w36-p-137",
+              "kind": "text",
+              "text": " の和と積を、それぞれ同じ部分に対応させます。"
+            }
+          ]
+        },
+        {
+          "id": "ne02-06-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-06-interaction-expr",
+              "parts": [
+                {
+                  "id": "ne02-06-slot",
+                  "kind": "answerSlot",
+                  "interactionId": "ne02-06",
+                  "semanticRef": "ne02-06"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-06",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "ne02-06-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-06-equation",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-06-result-expr-0",
+              "parts": [
+                {
+                  "id": "w36-p-139",
+                  "kind": "math",
+                  "latex": "a+b=9",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-139"
+                }
+              ]
+            },
+            {
+              "id": "ne02-06-result-expr-1",
+              "parts": [
+                {
+                  "id": "w36-p-140",
+                  "kind": "math",
+                  "latex": "ab=20",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-140"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-06",
+          "layoutProfile": "independent",
+          "numbering": {
+            "stableId": "ne02-06-interaction",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "ne02-06-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-138",
+              "kind": "text",
+              "text": "和は9、積は20となる候補を探します。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "ne02-06",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "expression",
+        "whyHere": "交差項の係数をそろえて比べられるよう、4√5を係数2と一つの根号の積へ直す。和と積を別々の条件にする。",
+        "prerequisiteIds": [
+          "ne02-q06-radical-result"
+        ],
+        "expected": {
+          "value": "a+b=9,\\quad ab=20",
+          "form": "formula",
+          "semanticType": "expression"
+        },
+        "choices": [
+          {
+            "id": "ne02-06-correct",
+            "content": "a+b=9,\\quad ab=20",
+            "feedback": "和は9、積は20となる候補を探します。"
+          },
+          {
+            "id": "ne02-06-wrong-0",
+            "content": "a+b=9,\\quad ab=5",
+            "misconception": "計算対象・条件・符号を直前の式と照合します。4√5を2でくくった残りを、一つの根号へ入れよう。",
+            "feedback": "計算対象・条件・符号を直前の式と照合します。4√5を2でくくった残りを、一つの根号へ入れよう。"
+          },
+          {
+            "id": "ne02-06-wrong-1",
+            "content": "a+b=9,\\quad ab=10",
+            "misconception": "計算対象・条件・符号を直前の式と照合します。4√5を2でくくった残りを、一つの根号へ入れよう。",
+            "feedback": "計算対象・条件・符号を直前の式と照合します。4√5を2でくくった残りを、一つの根号へ入れよう。"
+          }
+        ],
+        "hints": [
+          "いま使う条件と、式のどの部分を変える操作かを先に確かめます。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-06-interaction",
+          "slotId": "ne02-06-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-q07-pairs",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000674"
+      ],
+      "requires": [
+        "ne02-06-result"
+      ],
+      "produces": [
+        "ne02-q07-pairs-result"
+      ],
+      "role": "substep",
+      "goal": "積20の組と和を照合する",
+      "purpose": "積20の組と和を照合する",
+      "operation": {
+        "kind": "judgment",
+        "targets": [
+          "word-p-000674"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-q07-pairs-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-141",
+              "kind": "text",
+              "text": "正の整数の候補で積 "
+            },
+            {
+              "id": "w36-p-142",
+              "kind": "math",
+              "latex": "20",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-142"
+            },
+            {
+              "id": "w36-p-143",
+              "kind": "text",
+              "text": " を作る組は、順不同なら "
+            },
+            {
+              "id": "w36-p-144",
+              "kind": "math",
+              "latex": "(1,20),(2,10),(4,5)",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-144"
+            },
+            {
+              "id": "w36-p-145",
+              "kind": "text",
+              "text": " です。和を順に計算すると "
+            },
+            {
+              "id": "w36-p-146",
+              "kind": "math",
+              "latex": "21,12,9",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-146"
+            },
+            {
+              "id": "w36-p-147",
+              "kind": "text",
+              "text": " になります。条件の和が "
+            },
+            {
+              "id": "w36-p-148",
+              "kind": "math",
+              "latex": "9",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-148"
+            },
+            {
+              "id": "w36-p-149",
+              "kind": "text",
+              "text": " となる組を選びます。"
+            }
+          ]
+        },
+        {
+          "id": "ne02-q07-pairs-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-q07-pairs-interaction-expr",
+              "parts": [
+                {
+                  "id": "w36-p-151",
+                  "kind": "math",
+                  "latex": "\\{a,b\\}=",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-151"
+                },
+                {
+                  "id": "ne02-q07-pairs-slot",
+                  "kind": "answerSlot",
+                  "interactionId": "ne02-q07-pairs",
+                  "semanticRef": "ne02-q07-pairs"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-q07-pairs",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "ne02-q07-pairs-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-q07-pairs-equation",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "ne02-q07-pairs-result-expr-0",
+              "parts": [
+                {
+                  "id": "w36-p-152",
+                  "kind": "math",
+                  "latex": "\\{a,b\\}",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-152"
+                }
+              ]
+            },
+            {
+              "id": "ne02-q07-pairs-result-expr-1",
+              "parts": [
+                {
+                  "id": "w36-p-153",
+                  "kind": "math",
+                  "latex": "\\{4,5\\}",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-153"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "="
+          ],
+          "transformRef": "ne02-q07-pairs",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "ne02-q07-pairs-interaction",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "ne02-q07-pairs-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-150",
+              "kind": "text",
+              "text": "差では順番を変えると符号が反対になるので、両方の差を残します。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [
+        {
+          "id": "ne02-q07-pairs-context",
+          "problemId": "ne02",
+          "factIds": [
+            "ne02-06-result"
+          ],
+          "reason": "別のページでも、いま使う条件付き結論だけを呼び戻す。"
+        }
+      ],
+      "interaction": {
+        "id": "ne02-q07-pairs",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "judgment",
+        "whyHere": "積20の組と和を照合する",
+        "prerequisiteIds": [
+          "ne02-06-result"
+        ],
+        "expected": {
+          "value": "\\{4,5\\}",
+          "form": "formula",
+          "semanticType": "judgment"
+        },
+        "choices": [
+          {
+            "id": "ne02-q07-pairs-correct",
+            "content": "\\{4,5\\}",
+            "feedback": "差では順番を変えると符号が反対になるので、両方の差を残します。"
+          },
+          {
+            "id": "ne02-q07-pairs-wrong-0",
+            "content": "\\{2,10\\}",
+            "misconception": "積は合っていても和が違います。",
+            "feedback": "積は合っていても和が違います。"
+          },
+          {
+            "id": "ne02-q07-pairs-wrong-1",
+            "content": "\\{1,20\\}",
+            "misconception": "和の条件も同時に使います。",
+            "feedback": "和の条件も同時に使います。"
+          }
+        ],
+        "hints": [
+          "いま使う条件と、式のどの部分を変える操作かを先に確かめます。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-q07-pairs-interaction",
+          "slotId": "ne02-q07-pairs-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-07",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000674"
+      ],
+      "requires": [
+        "ne02-q07-pairs-result"
+      ],
+      "produces": [
+        "ne02-07-result"
+      ],
+      "role": "substep",
+      "goal": "和と積を満たす二数を求め、平方根の差へ戻す。この段階では二つの順序を候補として残す。",
+      "purpose": "和と積を満たす二数を求め、平方根の差へ戻す。この段階では二つの順序を候補として残す。",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000674"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-07-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-154",
+              "kind": "text",
+              "text": "選んだ二数を平方根の差へ戻します。"
+            },
+            {
+              "id": "w36-p-155",
+              "kind": "math",
+              "latex": "\\sqrt4=2",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-155"
+            },
+            {
+              "id": "w36-p-156",
+              "kind": "text",
+              "text": " なので、二通りの順序でできる候補を並べます。この段階では符号で一つに絞りません。"
+            }
+          ]
+        },
+        {
+          "id": "ne02-07-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-07-interaction-expr",
+              "parts": [
+                {
+                  "id": "ne02-07-slot",
+                  "kind": "answerSlot",
+                  "interactionId": "ne02-07",
+                  "semanticRef": "ne02-07"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-07",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "ne02-07-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-07-equation",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "ne02-07-result-expr-0",
+              "parts": [
+                {
+                  "id": "w36-p-158",
+                  "kind": "math",
+                  "latex": "a",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-158"
+                }
+              ]
+            },
+            {
+              "id": "ne02-07-result-expr-1",
+              "parts": [
+                {
+                  "id": "w36-p-159",
+                  "kind": "math",
+                  "latex": "5,\\ b",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-159"
+                }
+              ]
+            },
+            {
+              "id": "ne02-07-result-expr-2",
+              "parts": [
+                {
+                  "id": "w36-p-160",
+                  "kind": "math",
+                  "latex": "4:\\ \\sqrt5-2\\quad\\text{または}\\quad a",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-160"
+                }
+              ]
+            },
+            {
+              "id": "ne02-07-result-expr-3",
+              "parts": [
+                {
+                  "id": "w36-p-161",
+                  "kind": "math",
+                  "latex": "4,\\ b",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-161"
+                }
+              ]
+            },
+            {
+              "id": "ne02-07-result-expr-4",
+              "parts": [
+                {
+                  "id": "w36-p-162",
+                  "kind": "math",
+                  "latex": "5:\\ 2-\\sqrt5",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-162"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "=",
+            "=",
+            "=",
+            "="
+          ],
+          "transformRef": "ne02-07",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "ne02-07-interaction",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "ne02-07-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-157",
+              "kind": "text",
+              "text": "二つは符号が反対で平方が同じです。根号の値を決めるために大小を調べます。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "ne02-07",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "expression",
+        "whyHere": "和と積を満たす二数を求め、平方根の差へ戻す。この段階では二つの順序を候補として残す。",
+        "prerequisiteIds": [
+          "ne02-q07-pairs-result"
+        ],
+        "expected": {
+          "value": "a=5,\\ b=4:\\ \\sqrt5-2\\quad\\text{または}\\quad a=4,\\ b=5:\\ 2-\\sqrt5",
+          "form": "formula",
+          "semanticType": "expression"
+        },
+        "choices": [
+          {
+            "id": "ne02-07-correct",
+            "content": "a=5,\\ b=4:\\ \\sqrt5-2\\quad\\text{または}\\quad a=4,\\ b=5:\\ 2-\\sqrt5",
+            "feedback": "二つは符号が反対で平方が同じです。根号の値を決めるために大小を調べます。"
+          },
+          {
+            "id": "ne02-07-wrong-0",
+            "content": "a=8,\\ b=1:\\ \\sqrt8-1",
+            "misconception": "計算対象・条件・符号を直前の式と照合します。二数の順序を入れ替えると、差の符号がどうなるかも書こう。",
+            "feedback": "計算対象・条件・符号を直前の式と照合します。二数の順序を入れ替えると、差の符号がどうなるかも書こう。"
+          },
+          {
+            "id": "ne02-07-wrong-1",
+            "content": "a=5,\\ b=4:\\ \\sqrt{5-4}",
+            "misconception": "計算対象・条件・符号を直前の式と照合します。二数の順序を入れ替えると、差の符号がどうなるかも書こう。",
+            "feedback": "計算対象・条件・符号を直前の式と照合します。二数の順序を入れ替えると、差の符号がどうなるかも書こう。"
+          }
+        ],
+        "hints": [
+          "いま使う条件と、式のどの部分を変える操作かを先に確かめます。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-07-interaction",
+          "slotId": "ne02-07-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-q08-squares",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000676",
+        "word-p-000675"
+      ],
+      "requires": [
+        "ne02-07-result"
+      ],
+      "produces": [
+        "ne02-q08-squares-result"
+      ],
+      "role": "substep",
+      "goal": "正の二数を二乗して比べる",
+      "purpose": "正の二数を二乗して比べる",
+      "operation": {
+        "kind": "judgment",
+        "targets": [
+          "word-p-000676",
+          "word-p-000675"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-q08-squares-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-163",
+              "kind": "math",
+              "latex": "\\sqrt5",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-163"
+            },
+            {
+              "id": "w36-p-164",
+              "kind": "text",
+              "text": " と "
+            },
+            {
+              "id": "w36-p-165",
+              "kind": "math",
+              "latex": "2",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-165"
+            },
+            {
+              "id": "w36-p-166",
+              "kind": "text",
+              "text": " は正なので、二乗した大小と元の大小が一致します。まず左の平方、次に右の平方を計算してから比較します。"
+            }
+          ]
+        },
+        {
+          "id": "ne02-q08-squares-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-q08-squares-interaction-expr",
+              "parts": [
+                {
+                  "id": "ne02-q08-squares-slot",
+                  "kind": "answerSlot",
+                  "interactionId": "ne02-q08-squares",
+                  "semanticRef": "ne02-q08-squares"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-q08-squares",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "ne02-q08-squares-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-q08-squares-equation",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-q08-squares-result-expr-0",
+              "parts": [
+                {
+                  "id": "w36-p-170",
+                  "kind": "math",
+                  "latex": "(\\sqrt5)^2=5",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-170"
+                }
+              ]
+            },
+            {
+              "id": "ne02-q08-squares-result-expr-1",
+              "parts": [
+                {
+                  "id": "w36-p-171",
+                  "kind": "math",
+                  "latex": "2^2=4",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-171"
+                }
+              ]
+            },
+            {
+              "id": "ne02-q08-squares-result-expr-2",
+              "parts": [
+                {
+                  "id": "w36-p-172",
+                  "kind": "math",
+                  "latex": "5>4",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-172"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-q08-squares",
+          "layoutProfile": "independent",
+          "numbering": {
+            "stableId": "ne02-q08-squares-interaction",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "ne02-q08-squares-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-167",
+              "kind": "text",
+              "text": "したがって "
+            },
+            {
+              "id": "w36-p-168",
+              "kind": "math",
+              "latex": "\\sqrt5>2",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-168"
+            },
+            {
+              "id": "w36-p-169",
+              "kind": "text",
+              "text": " です。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [
+        {
+          "id": "ne02-q08-squares-context",
+          "problemId": "ne02",
+          "factIds": [
+            "ne02-07-result"
+          ],
+          "reason": "別のページでも、いま使う条件付き結論だけを呼び戻す。"
+        }
+      ],
+      "interaction": {
+        "id": "ne02-q08-squares",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "judgment",
+        "whyHere": "正の二数を二乗して比べる",
+        "prerequisiteIds": [
+          "ne02-07-result"
+        ],
+        "expected": {
+          "value": "(\\sqrt5)^2=5,\\quad2^2=4,\\quad5>4",
+          "form": "formula",
+          "semanticType": "judgment"
+        },
+        "choices": [
+          {
+            "id": "ne02-q08-squares-correct",
+            "content": "(\\sqrt5)^2=5,\\quad2^2=4,\\quad5>4",
+            "feedback": "したがって $\\sqrt5>2$ です。"
+          },
+          {
+            "id": "ne02-q08-squares-wrong-0",
+            "content": "(\\sqrt5)^2=5,\\quad2^2=4,\\quad5<4",
+            "misconception": "最後の比較を確かめます。",
+            "feedback": "最後の比較を確かめます。"
+          },
+          {
+            "id": "ne02-q08-squares-wrong-1",
+            "content": "(\\sqrt5)^2=25,\\quad2^2=4,\\quad25>4",
+            "misconception": "根号を二乗すると中身に戻ります。",
+            "feedback": "根号を二乗すると中身に戻ります。"
+          }
+        ],
+        "hints": [
+          "いま使う条件と、式のどの部分を変える操作かを先に確かめます。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-q08-squares-interaction",
+          "slotId": "ne02-q08-squares-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-q08-nonnegative",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000676"
+      ],
+      "requires": [
+        "ne02-q08-squares-result"
+      ],
+      "produces": [
+        "ne02-q08-nonnegative-result"
+      ],
+      "role": "substep",
+      "goal": "非負の差を選ぶ",
+      "purpose": "非負の差を選ぶ",
+      "operation": {
+        "kind": "judgment",
+        "targets": [
+          "word-p-000676"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-q08-nonnegative-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-173",
+              "kind": "math",
+              "latex": "\\sqrt5>2",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-173"
+            },
+            {
+              "id": "w36-p-174",
+              "kind": "text",
+              "text": " の両辺から "
+            },
+            {
+              "id": "w36-p-175",
+              "kind": "math",
+              "latex": "2",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-175"
+            },
+            {
+              "id": "w36-p-176",
+              "kind": "text",
+              "text": " を引くと、"
+            },
+            {
+              "id": "w36-p-177",
+              "kind": "math",
+              "latex": "\\sqrt5-2>0",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-177"
+            },
+            {
+              "id": "w36-p-178",
+              "kind": "text",
+              "text": " です。もう一方の差はこれと符号が反対です。非負となる候補を選びます。"
+            }
+          ]
+        },
+        {
+          "id": "ne02-q08-nonnegative-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-q08-nonnegative-interaction-expr",
+              "parts": [
+                {
+                  "id": "ne02-q08-nonnegative-slot",
+                  "kind": "answerSlot",
+                  "interactionId": "ne02-q08-nonnegative",
+                  "semanticRef": "ne02-q08-nonnegative"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-q08-nonnegative",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "ne02-q08-nonnegative-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-q08-nonnegative-equation",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-q08-nonnegative-result-expr-0",
+              "parts": [
+                {
+                  "id": "w36-p-180",
+                  "kind": "math",
+                  "latex": "\\sqrt5-2",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-180"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-q08-nonnegative",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "ne02-q08-nonnegative-interaction",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "ne02-q08-nonnegative-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-179",
+              "kind": "text",
+              "text": "確定した結果を記録し、次の操作に使います。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "ne02-q08-nonnegative",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "judgment",
+        "whyHere": "非負の差を選ぶ",
+        "prerequisiteIds": [
+          "ne02-q08-squares-result"
+        ],
+        "expected": {
+          "value": "\\sqrt5-2",
+          "form": "formula",
+          "semanticType": "judgment"
+        },
+        "choices": [
+          {
+            "id": "ne02-q08-nonnegative-correct",
+            "content": "\\sqrt5-2",
+            "feedback": "確定した結果を記録し、次の操作に使います。"
+          },
+          {
+            "id": "ne02-q08-nonnegative-wrong-0",
+            "content": "2-\\sqrt5",
+            "misconception": "大きい数を小さい数から引いています。",
+            "feedback": "大きい数を小さい数から引いています。"
+          },
+          {
+            "id": "ne02-q08-nonnegative-wrong-1",
+            "content": "-\\sqrt5-2",
+            "misconception": "二つの候補のどちらでもありません。",
+            "feedback": "二つの候補のどちらでもありません。"
+          }
+        ],
+        "hints": [
+          "いま使う条件と、式のどの部分を変える操作かを先に確かめます。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-q08-nonnegative-interaction",
+          "slotId": "ne02-q08-nonnegative-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-08",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000676",
+        "word-p-000677"
+      ],
+      "requires": [
+        "ne02-q08-nonnegative-result"
+      ],
+      "produces": [
+        "ne02-08-result"
+      ],
+      "role": "substep",
+      "goal": "二つの候補の大小を平方で比較する。根号そのものを表す非負の方を一つ選ぶ。",
+      "purpose": "二つの候補の大小を平方で比較する。根号そのものを表す非負の方を一つ選ぶ。",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000676",
+          "word-p-000677"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-08-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-181",
+              "kind": "text",
+              "text": "いま確かめた大小関係と非負の候補を使い、元の根号の値をまとめます。"
+            }
+          ]
+        },
+        {
+          "id": "ne02-08-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-08-interaction-expr",
+              "parts": [
+                {
+                  "id": "ne02-08-slot",
+                  "kind": "answerSlot",
+                  "interactionId": "ne02-08",
+                  "semanticRef": "ne02-08"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-08",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "ne02-08-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-08-equation",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-08-result-expr-0",
+              "parts": [
+                {
+                  "id": "w36-p-185",
+                  "kind": "math",
+                  "latex": "\\sqrt5>2",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-185"
+                }
+              ]
+            },
+            {
+              "id": "ne02-08-result-expr-1",
+              "parts": [
+                {
+                  "id": "w36-p-186",
+                  "kind": "math",
+                  "latex": "\\sqrt{9-4\\sqrt5}=\\sqrt5-2",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-186"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-08",
+          "layoutProfile": "independent",
+          "numbering": {
+            "stableId": "ne02-08-interaction",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "ne02-08-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-182",
+              "kind": "text",
+              "text": "差の二乗を根号から戻す一般形は "
+            },
+            {
+              "id": "w36-p-183",
+              "kind": "math",
+              "latex": "\\sqrt{(\\sqrt a-\\sqrt b)^2}=|\\sqrt a-\\sqrt b|",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-183"
+            },
+            {
+              "id": "w36-p-184",
+              "kind": "text",
+              "text": " です。絶対値が必要なのは、差の符号が順序によって変わるためです。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "ne02-08",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "expression",
+        "whyHere": "二つの候補の大小を平方で比較する。根号そのものを表す非負の方を一つ選ぶ。",
+        "prerequisiteIds": [
+          "ne02-q08-nonnegative-result"
+        ],
+        "expected": {
+          "value": "\\sqrt5>2,\\quad\\sqrt{9-4\\sqrt5}=\\sqrt5-2",
+          "form": "formula",
+          "semanticType": "expression"
+        },
+        "choices": [
+          {
+            "id": "ne02-08-correct",
+            "content": "\\sqrt5>2,\\quad\\sqrt{9-4\\sqrt5}=\\sqrt5-2",
+            "feedback": "差の二乗を根号から戻す一般形は $\\sqrt{(\\sqrt a-\\sqrt b)^2}=|\\sqrt a-\\sqrt b|$ です。絶対値が必要なのは、差の符号が順序によって変わるためです。"
+          },
+          {
+            "id": "ne02-08-wrong-0",
+            "content": "\\sqrt{9-4\\sqrt5}=2-\\sqrt5",
+            "misconception": "計算対象・条件・符号を直前の式と照合します。正の数同士なので、平方した値の大小を比べられる。",
+            "feedback": "計算対象・条件・符号を直前の式と照合します。正の数同士なので、平方した値の大小を比べられる。"
+          },
+          {
+            "id": "ne02-08-wrong-1",
+            "content": "\\sqrt{9-4\\sqrt5}=\\pm(\\sqrt5-2)",
+            "misconception": "計算対象・条件・符号を直前の式と照合します。正の数同士なので、平方した値の大小を比べられる。",
+            "feedback": "計算対象・条件・符号を直前の式と照合します。正の数同士なので、平方した値の大小を比べられる。"
+          }
+        ],
+        "hints": [
+          "いま使う条件と、式のどの部分を変える操作かを先に確かめます。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-08-interaction",
+          "slotId": "ne02-08-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-third-problem",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000678",
+        "word-p-000679",
+        "word-p-000680"
+      ],
+      "requires": [
+        "ne02-08-result"
+      ],
+      "produces": [
+        "ne02-third-problem-result"
+      ],
+      "role": "check",
+      "goal": "三つ目の問題と係数をそろえる理由",
+      "purpose": "三つ目の問題と係数をそろえる理由",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000678",
+          "word-p-000679",
+          "word-p-000680"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-third-problem-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-187",
+              "kind": "text",
+              "text": "確認問題は "
+            },
+            {
+              "id": "w36-p-188",
+              "kind": "math",
+              "latex": "\\sqrt{3+\\sqrt5}",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-188"
+            },
+            {
+              "id": "w36-p-189",
+              "kind": "text",
+              "text": " です。これまでの "
+            },
+            {
+              "id": "w36-p-190",
+              "kind": "math",
+              "latex": "2\\sqrt{ab}",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-190"
+            },
+            {
+              "id": "w36-p-191",
+              "kind": "text",
+              "text": " と係数を合わせるため、根号内全体を分母2の分数に直します。一部の項だけを2倍すると元の値が変わってしまいます。"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-third-problem-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-192",
+              "kind": "text",
+              "text": "この内容を、次の判断や変形の根拠に使います。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [
+        {
+          "id": "ne02-third-problem-context",
+          "problemId": "ne02",
+          "factIds": [
+            "ne02-08-result"
+          ],
+          "reason": "別のページでも、いま使う条件付き結論だけを呼び戻す。"
+        }
+      ],
+      "noBlankReason": "問題の条件・未知の定義・操作の根拠を教え、直後の適用で判断させる。"
+    },
+    {
+      "id": "ne02-q09-double",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000681"
+      ],
+      "requires": [
+        "ne02-third-problem-result"
+      ],
+      "produces": [
+        "ne02-q09-double-result"
+      ],
+      "role": "substep",
+      "goal": "根号内全体を2倍した分子を作る",
+      "purpose": "根号内全体を2倍した分子を作る",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000681"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-q09-double-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-193",
+              "kind": "math",
+              "latex": "3+\\sqrt5",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-193"
+            },
+            {
+              "id": "w36-p-194",
+              "kind": "text",
+              "text": " の値を変えずに分母を "
+            },
+            {
+              "id": "w36-p-195",
+              "kind": "math",
+              "latex": "2",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-195"
+            },
+            {
+              "id": "w36-p-196",
+              "kind": "text",
+              "text": " にするには、和全体を分子で "
+            },
+            {
+              "id": "w36-p-197",
+              "kind": "math",
+              "latex": "2",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-197"
+            },
+            {
+              "id": "w36-p-198",
+              "kind": "text",
+              "text": " 倍します。分配法則で分子を展開します。"
+            }
+          ]
+        },
+        {
+          "id": "ne02-q09-double-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-q09-double-interaction-expr",
+              "parts": [
+                {
+                  "id": "w36-p-200",
+                  "kind": "math",
+                  "latex": "2(3+\\sqrt5)=",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-200"
+                },
+                {
+                  "id": "ne02-q09-double-slot",
+                  "kind": "answerSlot",
+                  "interactionId": "ne02-q09-double",
+                  "semanticRef": "ne02-q09-double"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-q09-double",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "ne02-q09-double-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-q09-double-equation",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "ne02-q09-double-result-expr-0",
+              "parts": [
+                {
+                  "id": "w36-p-201",
+                  "kind": "math",
+                  "latex": "2(3+\\sqrt5)",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-201"
+                }
+              ]
+            },
+            {
+              "id": "ne02-q09-double-result-expr-1",
+              "parts": [
+                {
+                  "id": "w36-p-202",
+                  "kind": "math",
+                  "latex": "6+2\\sqrt5",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-202"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "="
+          ],
+          "transformRef": "ne02-q09-double",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "ne02-q09-double-interaction",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "ne02-q09-double-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-199",
+              "kind": "text",
+              "text": "確定した結果を記録し、次の操作に使います。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "ne02-q09-double",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "expression",
+        "whyHere": "根号内全体を2倍した分子を作る",
+        "prerequisiteIds": [
+          "ne02-third-problem-result"
+        ],
+        "expected": {
+          "value": "6+2\\sqrt5",
+          "form": "formula",
+          "semanticType": "expression"
+        },
+        "choices": [
+          {
+            "id": "ne02-q09-double-correct",
+            "content": "6+2\\sqrt5",
+            "feedback": "確定した結果を記録し、次の操作に使います。"
+          },
+          {
+            "id": "ne02-q09-double-wrong-0",
+            "content": "6+\\sqrt5",
+            "misconception": "根号の項にも2を掛けます。",
+            "feedback": "根号の項にも2を掛けます。"
+          },
+          {
+            "id": "ne02-q09-double-wrong-1",
+            "content": "3+2\\sqrt5",
+            "misconception": "定数項にも2を掛けます。",
+            "feedback": "定数項にも2を掛けます。"
+          }
+        ],
+        "hints": [
+          "いま使う条件と、式のどの部分を変える操作かを先に確かめます。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-q09-double-interaction",
+          "slotId": "ne02-q09-double-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-09",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000681"
+      ],
+      "requires": [
+        "ne02-q09-double-result"
+      ],
+      "produces": [
+        "ne02-09-result"
+      ],
+      "role": "substep",
+      "goal": "最後は√(3+√5)に取り組む。根号の中全体を分母2へ通分し、分子の中央の係数を前とそろえる。",
+      "purpose": "最後は√(3+√5)に取り組む。根号の中全体を分母2へ通分し、分子の中央の係数を前とそろえる。",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000681"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-09-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-203",
+              "kind": "text",
+              "text": "いま作った分子を分母2の上へ置きます。分子と分母を同じ2倍にしているので元の値と等しい分数です。"
+            }
+          ]
+        },
+        {
+          "id": "ne02-09-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-09-interaction-expr",
+              "parts": [
+                {
+                  "id": "w36-p-205",
+                  "kind": "math",
+                  "latex": "3+\\sqrt5=",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-205"
+                },
+                {
+                  "id": "ne02-09-slot",
+                  "kind": "answerSlot",
+                  "interactionId": "ne02-09",
+                  "semanticRef": "ne02-09"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-09",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "ne02-09-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-09-equation",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "ne02-09-result-expr-0",
+              "parts": [
+                {
+                  "id": "w36-p-206",
+                  "kind": "math",
+                  "latex": "3+\\sqrt5",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-206"
+                }
+              ]
+            },
+            {
+              "id": "ne02-09-result-expr-1",
+              "parts": [
+                {
+                  "id": "w36-p-207",
+                  "kind": "math",
+                  "latex": "\\frac{6+2\\sqrt5}{2}",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-207"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "="
+          ],
+          "transformRef": "ne02-09",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "ne02-09-interaction",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "ne02-09-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-204",
+              "kind": "text",
+              "text": "分子は正、分母2も正です。この条件で平方根の商の公式を使えます。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "ne02-09",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "expression",
+        "whyHere": "最後は√(3+√5)に取り組む。根号の中全体を分母2へ通分し、分子の中央の係数を前とそろえる。",
+        "prerequisiteIds": [
+          "ne02-q09-double-result"
+        ],
+        "expected": {
+          "value": "\\frac{6+2\\sqrt5}{2}",
+          "form": "formula",
+          "semanticType": "expression"
+        },
+        "choices": [
+          {
+            "id": "ne02-09-correct",
+            "content": "\\frac{6+2\\sqrt5}{2}",
+            "feedback": "分子は正、分母2も正です。この条件で平方根の商の公式を使えます。"
+          },
+          {
+            "id": "ne02-09-wrong-0",
+            "content": "\\frac{3+2\\sqrt5}{2}",
+            "misconception": "計算対象・条件・符号を直前の式と照合します。根号の中の式全体に2/2を掛けよう。",
+            "feedback": "計算対象・条件・符号を直前の式と照合します。根号の中の式全体に2/2を掛けよう。"
+          },
+          {
+            "id": "ne02-09-wrong-1",
+            "content": "\\frac{6+\\sqrt5}{2}",
+            "misconception": "計算対象・条件・符号を直前の式と照合します。根号の中の式全体に2/2を掛けよう。",
+            "feedback": "計算対象・条件・符号を直前の式と照合します。根号の中の式全体に2/2を掛けよう。"
+          }
+        ],
+        "hints": [
+          "いま使う条件と、式のどの部分を変える操作かを先に確かめます。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-09-interaction",
+          "slotId": "ne02-09-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-10",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000682"
+      ],
+      "requires": [
+        "ne02-09-result",
+        "ne02-01-result"
+      ],
+      "produces": [
+        "ne02-10-result"
+      ],
+      "role": "substep",
+      "goal": "分子が正、分母が正であることを確かめ、平方根の商の関係を使う。分子の和は一つの根号に保つ。",
+      "purpose": "分子が正、分母が正であることを確かめ、平方根の商の関係を使う。分子の和は一つの根号に保つ。",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000682"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-10-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-208",
+              "kind": "text",
+              "text": "商の平方根の公式 "
+            },
+            {
+              "id": "w36-p-209",
+              "kind": "math",
+              "latex": "\\sqrt{A/B}=\\sqrt A/\\sqrt B",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-209"
+            },
+            {
+              "id": "w36-p-210",
+              "kind": "text",
+              "text": " は、"
+            },
+            {
+              "id": "w36-p-211",
+              "kind": "math",
+              "latex": "A\\ge0,B>0",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-211"
+            },
+            {
+              "id": "w36-p-212",
+              "kind": "text",
+              "text": " のとき使えます。ここでは "
+            },
+            {
+              "id": "w36-p-213",
+              "kind": "math",
+              "latex": "A=6+2\\sqrt5>0",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-213"
+            },
+            {
+              "id": "w36-p-214",
+              "kind": "text",
+              "text": "、"
+            },
+            {
+              "id": "w36-p-215",
+              "kind": "math",
+              "latex": "B=2>0",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-215"
+            },
+            {
+              "id": "w36-p-216",
+              "kind": "text",
+              "text": " です。分子の和全体を一つの根号に入れたまま分けます。"
+            }
+          ]
+        },
+        {
+          "id": "ne02-10-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-10-interaction-expr",
+              "parts": [
+                {
+                  "id": "w36-p-218",
+                  "kind": "math",
+                  "latex": "\\sqrt{3+\\sqrt5}=",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-218"
+                },
+                {
+                  "id": "ne02-10-slot",
+                  "kind": "answerSlot",
+                  "interactionId": "ne02-10",
+                  "semanticRef": "ne02-10"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-10",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "ne02-10-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-10-equation",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "ne02-10-result-expr-0",
+              "parts": [
+                {
+                  "id": "w36-p-219",
+                  "kind": "math",
+                  "latex": "\\sqrt{3+\\sqrt5}",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-219"
+                }
+              ]
+            },
+            {
+              "id": "ne02-10-result-expr-1",
+              "parts": [
+                {
+                  "id": "w36-p-220",
+                  "kind": "math",
+                  "latex": "\\frac{\\sqrt{6+2\\sqrt5}}{\\sqrt2}",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-220"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "="
+          ],
+          "transformRef": "ne02-10",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "ne02-10-interaction",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "ne02-10-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-217",
+              "kind": "text",
+              "text": "分子だけに、最初の例題の方法を使います。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [
+        {
+          "id": "ne02-10-context",
+          "problemId": "ne02",
+          "factIds": [
+            "ne02-01-result",
+            "ne02-09-result"
+          ],
+          "reason": "別のページでも、いま使う条件付き結論だけを呼び戻す。"
+        }
+      ],
+      "interaction": {
+        "id": "ne02-10",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "expression",
+        "whyHere": "分子が正、分母が正であることを確かめ、平方根の商の関係を使う。分子の和は一つの根号に保つ。",
+        "prerequisiteIds": [
+          "ne02-09-result",
+          "ne02-01-result"
+        ],
+        "expected": {
+          "value": "\\frac{\\sqrt{6+2\\sqrt5}}{\\sqrt2}",
+          "form": "formula",
+          "semanticType": "expression"
+        },
+        "choices": [
+          {
+            "id": "ne02-10-correct",
+            "content": "\\frac{\\sqrt{6+2\\sqrt5}}{\\sqrt2}",
+            "feedback": "分子だけに、最初の例題の方法を使います。"
+          },
+          {
+            "id": "ne02-10-wrong-0",
+            "content": "\\frac{\\sqrt{6+2\\sqrt5}}{2}",
+            "misconception": "計算対象・条件・符号を直前の式と照合します。商全体の平方根では、分母にも平方根を付ける。",
+            "feedback": "計算対象・条件・符号を直前の式と照合します。商全体の平方根では、分母にも平方根を付ける。"
+          },
+          {
+            "id": "ne02-10-wrong-1",
+            "content": "\\frac{\\sqrt6+\\sqrt{2\\sqrt5}}{\\sqrt2}",
+            "misconception": "計算対象・条件・符号を直前の式と照合します。商全体の平方根では、分母にも平方根を付ける。",
+            "feedback": "計算対象・条件・符号を直前の式と照合します。商全体の平方根では、分母にも平方根を付ける。"
+          }
+        ],
+        "hints": [
+          "いま使う条件と、式のどの部分を変える操作かを先に確かめます。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-10-interaction",
+          "slotId": "ne02-10-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-q11-conditions",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000683"
+      ],
+      "requires": [
+        "ne02-10-result",
+        "ne02-01-result"
+      ],
+      "produces": [
+        "ne02-q11-conditions-result"
+      ],
+      "role": "substep",
+      "goal": "分子の和と積の条件を作る",
+      "purpose": "分子の和と積の条件を作る",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000683"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-q11-conditions-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-221",
+              "kind": "text",
+              "text": "分子は "
+            },
+            {
+              "id": "w36-p-222",
+              "kind": "math",
+              "latex": "\\sqrt{6+2\\sqrt5}",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-222"
+            },
+            {
+              "id": "w36-p-223",
+              "kind": "text",
+              "text": " です。平方根の和の平方を対応させるため、和と積の条件を作ります。"
+            }
+          ]
+        },
+        {
+          "id": "ne02-q11-conditions-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-q11-conditions-interaction-expr",
+              "parts": [
+                {
+                  "id": "ne02-q11-conditions-slot",
+                  "kind": "answerSlot",
+                  "interactionId": "ne02-q11-conditions",
+                  "semanticRef": "ne02-q11-conditions"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-q11-conditions",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "ne02-q11-conditions-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-q11-conditions-equation",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-q11-conditions-result-expr-0",
+              "parts": [
+                {
+                  "id": "w36-p-225",
+                  "kind": "math",
+                  "latex": "a+b=6",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-225"
+                }
+              ]
+            },
+            {
+              "id": "ne02-q11-conditions-result-expr-1",
+              "parts": [
+                {
+                  "id": "w36-p-226",
+                  "kind": "math",
+                  "latex": "ab=5",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-226"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-q11-conditions",
+          "layoutProfile": "independent",
+          "numbering": {
+            "stableId": "ne02-q11-conditions-interaction",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "ne02-q11-conditions-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-224",
+              "kind": "text",
+              "text": "確定した結果を記録し、次の操作に使います。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [
+        {
+          "id": "ne02-q11-conditions-context",
+          "problemId": "ne02",
+          "factIds": [
+            "ne02-01-result",
+            "ne02-10-result"
+          ],
+          "reason": "別のページでも、いま使う条件付き結論だけを呼び戻す。"
+        }
+      ],
+      "interaction": {
+        "id": "ne02-q11-conditions",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "expression",
+        "whyHere": "分子の和と積の条件を作る",
+        "prerequisiteIds": [
+          "ne02-10-result",
+          "ne02-01-result"
+        ],
+        "expected": {
+          "value": "a+b=6,\\quad ab=5",
+          "form": "formula",
+          "semanticType": "expression"
+        },
+        "choices": [
+          {
+            "id": "ne02-q11-conditions-correct",
+            "content": "a+b=6,\\quad ab=5",
+            "feedback": "確定した結果を記録し、次の操作に使います。"
+          },
+          {
+            "id": "ne02-q11-conditions-wrong-0",
+            "content": "a+b=5,\\quad ab=6",
+            "misconception": "和と積の対応を入れ替えています。",
+            "feedback": "和と積の対応を入れ替えています。"
+          },
+          {
+            "id": "ne02-q11-conditions-wrong-1",
+            "content": "a+b=6,\\quad ab=10",
+            "misconception": "中央の係数2は根号の外に共通です。",
+            "feedback": "中央の係数2は根号の外に共通です。"
+          }
+        ],
+        "hints": [
+          "いま使う条件と、式のどの部分を変える操作かを先に確かめます。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-q11-conditions-interaction",
+          "slotId": "ne02-q11-conditions-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-q11-candidate",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000683"
+      ],
+      "requires": [
+        "ne02-q11-conditions-result"
+      ],
+      "produces": [
+        "ne02-q11-candidate-result"
+      ],
+      "role": "substep",
+      "goal": "条件を満たす候補へ戻す",
+      "purpose": "条件を満たす候補へ戻す",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000683"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-q11-candidate-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-227",
+              "kind": "text",
+              "text": "積 "
+            },
+            {
+              "id": "w36-p-228",
+              "kind": "math",
+              "latex": "5",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-228"
+            },
+            {
+              "id": "w36-p-229",
+              "kind": "text",
+              "text": " の正の整数の組 "
+            },
+            {
+              "id": "w36-p-230",
+              "kind": "math",
+              "latex": "(1,5)",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-230"
+            },
+            {
+              "id": "w36-p-231",
+              "kind": "text",
+              "text": " は、和も "
+            },
+            {
+              "id": "w36-p-232",
+              "kind": "math",
+              "latex": "6",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-232"
+            },
+            {
+              "id": "w36-p-233",
+              "kind": "text",
+              "text": " です。したがって平方根の和として作る候補を、"
+            },
+            {
+              "id": "w36-p-234",
+              "kind": "math",
+              "latex": "\\sqrt1=1",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-234"
+            },
+            {
+              "id": "w36-p-235",
+              "kind": "text",
+              "text": " を使って書きます。"
+            }
+          ]
+        },
+        {
+          "id": "ne02-q11-candidate-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-q11-candidate-interaction-expr",
+              "parts": [
+                {
+                  "id": "ne02-q11-candidate-slot",
+                  "kind": "answerSlot",
+                  "interactionId": "ne02-q11-candidate",
+                  "semanticRef": "ne02-q11-candidate"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-q11-candidate",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "ne02-q11-candidate-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-q11-candidate-equation",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-q11-candidate-result-expr-0",
+              "parts": [
+                {
+                  "id": "w36-p-239",
+                  "kind": "math",
+                  "latex": "\\sqrt5+1",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-239"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-q11-candidate",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "ne02-q11-candidate-interaction",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "ne02-q11-candidate-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-236",
+              "kind": "text",
+              "text": "候補は正で、平方すると "
+            },
+            {
+              "id": "w36-p-237",
+              "kind": "math",
+              "latex": "6+2\\sqrt5",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-237"
+            },
+            {
+              "id": "w36-p-238",
+              "kind": "text",
+              "text": " になるので、分子の値として使えます。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "ne02-q11-candidate",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "expression",
+        "whyHere": "条件を満たす候補へ戻す",
+        "prerequisiteIds": [
+          "ne02-q11-conditions-result"
+        ],
+        "expected": {
+          "value": "\\sqrt5+1",
+          "form": "formula",
+          "semanticType": "expression"
+        },
+        "choices": [
+          {
+            "id": "ne02-q11-candidate-correct",
+            "content": "\\sqrt5+1",
+            "feedback": "候補は正で、平方すると $6+2\\sqrt5$ になるので、分子の値として使えます。"
+          },
+          {
+            "id": "ne02-q11-candidate-wrong-0",
+            "content": "\\sqrt6",
+            "misconception": "和の平方根と平方根の和は異なります。",
+            "feedback": "和の平方根と平方根の和は異なります。"
+          },
+          {
+            "id": "ne02-q11-candidate-wrong-1",
+            "content": "\\sqrt5-1",
+            "misconception": "交差項の符号は正です。",
+            "feedback": "交差項の符号は正です。"
+          }
+        ],
+        "hints": [
+          "いま使う条件と、式のどの部分を変える操作かを先に確かめます。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-q11-candidate-interaction",
+          "slotId": "ne02-q11-candidate-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-11",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000683"
+      ],
+      "requires": [
+        "ne02-q11-candidate-result"
+      ],
+      "produces": [
+        "ne02-11-result"
+      ],
+      "role": "substep",
+      "goal": "分子へ、最初の例題で作った和と積の方法を使う。条件、二数、非負の平方根の和までを一つの対応として選ぶ。",
+      "purpose": "分子へ、最初の例題で作った和と積の方法を使う。条件、二数、非負の平方根の和までを一つの対応として選ぶ。",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000683"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-11-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-240",
+              "kind": "text",
+              "text": "和と積の条件、選んだ二数、平方と非負性を確かめた分子の結果を一組にして記録します。"
+            }
+          ]
+        },
+        {
+          "id": "ne02-11-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-11-interaction-expr",
+              "parts": [
+                {
+                  "id": "ne02-11-slot",
+                  "kind": "answerSlot",
+                  "interactionId": "ne02-11",
+                  "semanticRef": "ne02-11"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-11",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "ne02-11-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-11-equation",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-11-result-expr-0",
+              "parts": [
+                {
+                  "id": "w36-p-244",
+                  "kind": "math",
+                  "latex": "a+b=6,\\ ab=5",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-244"
+                }
+              ]
+            },
+            {
+              "id": "ne02-11-result-expr-1",
+              "parts": [
+                {
+                  "id": "w36-p-245",
+                  "kind": "math",
+                  "latex": "\\{a,b\\}=\\{5,1\\}",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-245"
+                }
+              ]
+            },
+            {
+              "id": "ne02-11-result-expr-2",
+              "parts": [
+                {
+                  "id": "w36-p-246",
+                  "kind": "math",
+                  "latex": "\\sqrt{6+2\\sqrt5}=\\sqrt5+1",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-246"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-11",
+          "layoutProfile": "independent",
+          "numbering": {
+            "stableId": "ne02-11-interaction",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "ne02-11-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-241",
+              "kind": "text",
+              "text": "分母は前に残した "
+            },
+            {
+              "id": "w36-p-242",
+              "kind": "math",
+              "latex": "\\sqrt2",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-242"
+            },
+            {
+              "id": "w36-p-243",
+              "kind": "text",
+              "text": " のままです。次は分子の結果を商の全体へ戻します。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "ne02-11",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "expression",
+        "whyHere": "分子へ、最初の例題で作った和と積の方法を使う。条件、二数、非負の平方根の和までを一つの対応として選ぶ。",
+        "prerequisiteIds": [
+          "ne02-q11-candidate-result"
+        ],
+        "expected": {
+          "value": "a+b=6,\\ ab=5;\\ \\{a,b\\}=\\{5,1\\};\\ \\sqrt{6+2\\sqrt5}=\\sqrt5+1",
+          "form": "formula",
+          "semanticType": "expression"
+        },
+        "choices": [
+          {
+            "id": "ne02-11-correct",
+            "content": "a+b=6,\\ ab=5;\\ \\{a,b\\}=\\{5,1\\};\\ \\sqrt{6+2\\sqrt5}=\\sqrt5+1",
+            "feedback": "分母は前に残した $\\sqrt2$ のままです。次は分子の結果を商の全体へ戻します。"
+          },
+          {
+            "id": "ne02-11-wrong-0",
+            "content": "a+b=6,\\ ab=5;\\ \\{a,b\\}=\\{3,3\\};\\ \\sqrt{6+2\\sqrt5}=2\\sqrt3",
+            "misconception": "計算対象・条件・符号を直前の式と照合します。分子の定数部分と中央項から、二つの条件を作り直そう。",
+            "feedback": "計算対象・条件・符号を直前の式と照合します。分子の定数部分と中央項から、二つの条件を作り直そう。"
+          },
+          {
+            "id": "ne02-11-wrong-1",
+            "content": "a+b=6,\\ ab=5;\\ \\{a,b\\}=\\{5,1\\};\\ \\sqrt{6+2\\sqrt5}=\\sqrt5-1",
+            "misconception": "計算対象・条件・符号を直前の式と照合します。分子の定数部分と中央項から、二つの条件を作り直そう。",
+            "feedback": "計算対象・条件・符号を直前の式と照合します。分子の定数部分と中央項から、二つの条件を作り直そう。"
+          }
+        ],
+        "hints": [
+          "いま使う条件と、式のどの部分を変える操作かを先に確かめます。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-11-interaction",
+          "slotId": "ne02-11-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-q12-factor",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000684"
+      ],
+      "requires": [
+        "ne02-11-result"
+      ],
+      "produces": [
+        "ne02-q12-factor-result"
+      ],
+      "role": "substep",
+      "goal": "有理化の因子を選ぶ",
+      "purpose": "有理化の因子を選ぶ",
+      "operation": {
+        "kind": "judgment",
+        "targets": [
+          "word-p-000684"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-q12-factor-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-247",
+              "kind": "text",
+              "text": "全体は "
+            },
+            {
+              "id": "w36-p-248",
+              "kind": "math",
+              "latex": "(\\sqrt5+1)/\\sqrt2",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-248"
+            },
+            {
+              "id": "w36-p-249",
+              "kind": "text",
+              "text": " です。元の分母と掛けて平方を作る非零の因子を "
+            },
+            {
+              "id": "w36-p-250",
+              "kind": "math",
+              "latex": "c",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-250"
+            },
+            {
+              "id": "w36-p-251",
+              "kind": "text",
+              "text": " とします。まず因子を選び、その後に分子と分母の両方へ掛けます。"
+            }
+          ]
+        },
+        {
+          "id": "ne02-q12-factor-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-q12-factor-interaction-expr",
+              "parts": [
+                {
+                  "id": "w36-p-253",
+                  "kind": "math",
+                  "latex": "c=",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-253"
+                },
+                {
+                  "id": "ne02-q12-factor-slot",
+                  "kind": "answerSlot",
+                  "interactionId": "ne02-q12-factor",
+                  "semanticRef": "ne02-q12-factor"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-q12-factor",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "ne02-q12-factor-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-q12-factor-equation",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "ne02-q12-factor-result-expr-0",
+              "parts": [
+                {
+                  "id": "w36-p-254",
+                  "kind": "math",
+                  "latex": "c",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-254"
+                }
+              ]
+            },
+            {
+              "id": "ne02-q12-factor-result-expr-1",
+              "parts": [
+                {
+                  "id": "w36-p-255",
+                  "kind": "math",
+                  "latex": "\\sqrt2",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-255"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "="
+          ],
+          "transformRef": "ne02-q12-factor",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "ne02-q12-factor-interaction",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "ne02-q12-factor-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-252",
+              "kind": "text",
+              "text": "選んだ因子は正なので0ではありません。この因子を分子と分母の両方へ掛けても値は変わりません。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [
+        {
+          "id": "ne02-q12-factor-context",
+          "problemId": "ne02",
+          "factIds": [
+            "ne02-11-result"
+          ],
+          "reason": "別のページでも、いま使う条件付き結論だけを呼び戻す。"
+        }
+      ],
+      "interaction": {
+        "id": "ne02-q12-factor",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "judgment",
+        "whyHere": "有理化の因子を選ぶ",
+        "prerequisiteIds": [
+          "ne02-11-result"
+        ],
+        "expected": {
+          "value": "\\sqrt2",
+          "form": "formula",
+          "semanticType": "judgment"
+        },
+        "choices": [
+          {
+            "id": "ne02-q12-factor-correct",
+            "content": "\\sqrt2",
+            "feedback": "選んだ因子は正なので0ではありません。この因子を分子と分母の両方へ掛けても値は変わりません。"
+          },
+          {
+            "id": "ne02-q12-factor-wrong-0",
+            "content": "2",
+            "misconception": "分子と分母に同じ因子を掛けます。",
+            "feedback": "分子と分母に同じ因子を掛けます。"
+          },
+          {
+            "id": "ne02-q12-factor-wrong-1",
+            "content": "\\sqrt5",
+            "misconception": "分母の根号と同じ因子を使います。",
+            "feedback": "分母の根号と同じ因子を使います。"
+          }
+        ],
+        "hints": [
+          "いま使う条件と、式のどの部分を変える操作かを先に確かめます。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-q12-factor-interaction",
+          "slotId": "ne02-q12-factor-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-q12-denominator",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000684"
+      ],
+      "requires": [
+        "ne02-q12-factor-result"
+      ],
+      "produces": [
+        "ne02-q12-denominator-result"
+      ],
+      "role": "substep",
+      "goal": "分母の積を計算する",
+      "purpose": "分母の積を計算する",
+      "operation": {
+        "kind": "calculation",
+        "targets": [
+          "word-p-000684"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-q12-denominator-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-256",
+              "kind": "text",
+              "text": "分母は同じ根号を二つ掛けた平方になります。分子の和全体の括弧は残します。"
+            }
+          ]
+        },
+        {
+          "id": "ne02-q12-denominator-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-q12-denominator-interaction-expr",
+              "parts": [
+                {
+                  "id": "w36-p-258",
+                  "kind": "math",
+                  "latex": "\\frac{(\\sqrt5+1)\\sqrt2}{\\sqrt2\\sqrt2}=\\frac{(\\sqrt5+1)\\sqrt2}{",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-258"
+                },
+                {
+                  "id": "ne02-q12-denominator-slot",
+                  "kind": "answerSlot",
+                  "interactionId": "ne02-q12-denominator",
+                  "semanticRef": "ne02-q12-denominator"
+                },
+                {
+                  "id": "w36-p-259",
+                  "kind": "math",
+                  "latex": "}",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-259"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-q12-denominator",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "ne02-q12-denominator-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-q12-denominator-equation",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "ne02-q12-denominator-result-expr-0",
+              "parts": [
+                {
+                  "id": "w36-p-260",
+                  "kind": "math",
+                  "latex": "\\frac{(\\sqrt5+1)\\sqrt2}{\\sqrt2\\sqrt2}",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-260"
+                }
+              ]
+            },
+            {
+              "id": "ne02-q12-denominator-result-expr-1",
+              "parts": [
+                {
+                  "id": "w36-p-261",
+                  "kind": "math",
+                  "latex": "\\frac{(\\sqrt5+1)\\sqrt2}{2}",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-261"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "="
+          ],
+          "transformRef": "ne02-q12-denominator",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "ne02-q12-denominator-interaction",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "ne02-q12-denominator-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-257",
+              "kind": "text",
+              "text": "確定した結果を記録し、次の操作に使います。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "ne02-q12-denominator",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "calculation",
+        "whyHere": "分母の積を計算する",
+        "prerequisiteIds": [
+          "ne02-q12-factor-result"
+        ],
+        "expected": {
+          "value": "2",
+          "form": "formula",
+          "semanticType": "calculation"
+        },
+        "choices": [
+          {
+            "id": "ne02-q12-denominator-correct",
+            "content": "2",
+            "feedback": "確定した結果を記録し、次の操作に使います。"
+          },
+          {
+            "id": "ne02-q12-denominator-wrong-0",
+            "content": "4",
+            "misconception": "根号を二乗した値です。",
+            "feedback": "根号を二乗した値です。"
+          },
+          {
+            "id": "ne02-q12-denominator-wrong-1",
+            "content": "2\\sqrt2",
+            "misconception": "積を和として扱っていませんか。",
+            "feedback": "積を和として扱っていませんか。"
+          }
+        ],
+        "hints": [
+          "いま使う条件と、式のどの部分を変える操作かを先に確かめます。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-q12-denominator-interaction",
+          "slotId": "ne02-q12-denominator-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-q12-numerator",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000684"
+      ],
+      "requires": [
+        "ne02-q12-denominator-result"
+      ],
+      "produces": [
+        "ne02-q12-numerator-result"
+      ],
+      "role": "substep",
+      "goal": "分子の和の両項へ分配する",
+      "purpose": "分子の和の両項へ分配する",
+      "operation": {
+        "kind": "calculation",
+        "targets": [
+          "word-p-000684"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-q12-numerator-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-262",
+              "kind": "text",
+              "text": "分母は求まりました。分子では "
+            },
+            {
+              "id": "w36-p-263",
+              "kind": "math",
+              "latex": "\\sqrt2",
+              "mathRole": "expression",
+              "semanticRef": "w36-p-263"
+            },
+            {
+              "id": "w36-p-264",
+              "kind": "text",
+              "text": " を括弧内の両項へ掛け、根号の積を一つにまとめます。"
+            }
+          ]
+        },
+        {
+          "id": "ne02-q12-numerator-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-q12-numerator-interaction-expr",
+              "parts": [
+                {
+                  "id": "w36-p-266",
+                  "kind": "math",
+                  "latex": "(\\sqrt5+1)\\sqrt2=",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-266"
+                },
+                {
+                  "id": "ne02-q12-numerator-slot",
+                  "kind": "answerSlot",
+                  "interactionId": "ne02-q12-numerator",
+                  "semanticRef": "ne02-q12-numerator"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-q12-numerator",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "ne02-q12-numerator-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-q12-numerator-equation",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "ne02-q12-numerator-result-expr-0",
+              "parts": [
+                {
+                  "id": "w36-p-267",
+                  "kind": "math",
+                  "latex": "(\\sqrt5+1)\\sqrt2",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-267"
+                }
+              ]
+            },
+            {
+              "id": "ne02-q12-numerator-result-expr-1",
+              "parts": [
+                {
+                  "id": "w36-p-268",
+                  "kind": "math",
+                  "latex": "\\sqrt{10}+\\sqrt2",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-268"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "="
+          ],
+          "transformRef": "ne02-q12-numerator",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "ne02-q12-numerator-interaction",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "ne02-q12-numerator-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-265",
+              "kind": "text",
+              "text": "確定した結果を記録し、次の操作に使います。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "ne02-q12-numerator",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "calculation",
+        "whyHere": "分子の和の両項へ分配する",
+        "prerequisiteIds": [
+          "ne02-q12-denominator-result"
+        ],
+        "expected": {
+          "value": "\\sqrt{10}+\\sqrt2",
+          "form": "formula",
+          "semanticType": "calculation"
+        },
+        "choices": [
+          {
+            "id": "ne02-q12-numerator-correct",
+            "content": "\\sqrt{10}+\\sqrt2",
+            "feedback": "確定した結果を記録し、次の操作に使います。"
+          },
+          {
+            "id": "ne02-q12-numerator-wrong-0",
+            "content": "\\sqrt{10}+1",
+            "misconception": "1の項にも根号を掛けます。",
+            "feedback": "1の項にも根号を掛けます。"
+          },
+          {
+            "id": "ne02-q12-numerator-wrong-1",
+            "content": "\\sqrt{12}",
+            "misconception": "和を一つの根号にまとめる公式はありません。",
+            "feedback": "和を一つの根号にまとめる公式はありません。"
+          }
+        ],
+        "hints": [
+          "いま使う条件と、式のどの部分を変える操作かを先に確かめます。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-q12-numerator-interaction",
+          "slotId": "ne02-q12-numerator-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-12",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000684",
+        "word-p-000685"
+      ],
+      "requires": [
+        "ne02-q12-numerator-result"
+      ],
+      "produces": [
+        "ne02-12-result"
+      ],
+      "role": "substep",
+      "goal": "分子の結果を前の商へ戻す。分母と分子に同じ平方根を掛け、有理化して答えをまとめる。",
+      "purpose": "分子の結果を前の商へ戻す。分母と分子に同じ平方根を掛け、有理化して答えをまとめる。",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000684",
+          "word-p-000685"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-12-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-269",
+              "kind": "text",
+              "text": "分子と分母を元の商へ戻し、初めの根号の値を一つの式で結論にします。"
+            }
+          ]
+        },
+        {
+          "id": "ne02-12-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "ne02-12-interaction-expr",
+              "parts": [
+                {
+                  "id": "w36-p-271",
+                  "kind": "math",
+                  "latex": "\\sqrt{3+\\sqrt5}=",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-271"
+                },
+                {
+                  "id": "ne02-12-slot",
+                  "kind": "answerSlot",
+                  "interactionId": "ne02-12",
+                  "semanticRef": "ne02-12"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "ne02-12",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "ne02-12-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-12-equation",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "ne02-12-result-expr-0",
+              "parts": [
+                {
+                  "id": "w36-p-272",
+                  "kind": "math",
+                  "latex": "\\sqrt{3+\\sqrt5}",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-272"
+                }
+              ]
+            },
+            {
+              "id": "ne02-12-result-expr-1",
+              "parts": [
+                {
+                  "id": "w36-p-273",
+                  "kind": "math",
+                  "latex": "\\frac{\\sqrt{10}+\\sqrt2}{2}",
+                  "mathRole": "expression",
+                  "semanticRef": "w36-p-273"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "="
+          ],
+          "transformRef": "ne02-12",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "ne02-12-interaction",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "ne02-12-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "w36-p-270",
+              "kind": "text",
+              "text": "根号内を平方の形へ合わせ、候補を作り、符号まで確かめました。ここで扱った方法がすべての二重根号に機械的に使えるわけではありません。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "ne02-12",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "expression",
+        "whyHere": "分子の結果を前の商へ戻す。分母と分子に同じ平方根を掛け、有理化して答えをまとめる。",
+        "prerequisiteIds": [
+          "ne02-q12-numerator-result"
+        ],
+        "expected": {
+          "value": "\\frac{\\sqrt{10}+\\sqrt2}{2}",
+          "form": "formula",
+          "semanticType": "expression"
+        },
+        "choices": [
+          {
+            "id": "ne02-12-correct",
+            "content": "\\frac{\\sqrt{10}+\\sqrt2}{2}",
+            "feedback": "根号内を平方の形へ合わせ、候補を作り、符号まで確かめました。ここで扱った方法がすべての二重根号に機械的に使えるわけではありません。"
+          },
+          {
+            "id": "ne02-12-wrong-0",
+            "content": "\\frac{\\sqrt{10}+1}{2}",
+            "misconception": "計算対象・条件・符号を直前の式と照合します。(√5+1)/√2の分子全体にも√2を掛けよう。",
+            "feedback": "計算対象・条件・符号を直前の式と照合します。(√5+1)/√2の分子全体にも√2を掛けよう。"
+          },
+          {
+            "id": "ne02-12-wrong-1",
+            "content": "\\sqrt{10}+\\sqrt2",
+            "misconception": "計算対象・条件・符号を直前の式と照合します。(√5+1)/√2の分子全体にも√2を掛けよう。",
+            "feedback": "計算対象・条件・符号を直前の式と照合します。(√5+1)/√2の分子全体にも√2を掛けよう。"
+          }
+        ],
+        "hints": [
+          "いま使う条件と、式のどの部分を変える操作かを先に確かめます。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-12-interaction",
+          "slotId": "ne02-12-slot"
+        }
+      }
+    }
+  ]
+}

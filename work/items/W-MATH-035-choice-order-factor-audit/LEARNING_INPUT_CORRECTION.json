@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "sourceSnapshots": [
+    {
+      "caseId": "N09-REJECTED-20261025",
+      "sourceSHA": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+      "semanticNode": "n09-08",
+      "inputCharacters": 849,
+      "containsActualVisibleMath": true,
+      "oldInput": "[] metadata projection rejected",
+      "currentInputSHA256": "891d5f0c8116295fc285ad4d229f2c03e243c42380576fa32ead6aa92ff4ac65"
+    },
+    {
+      "caseId": "N10-REJECTED-20261025",
+      "sourceSHA": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+      "semanticNode": "n10-q17-factor",
+      "inputCharacters": 703,
+      "containsActualVisibleMath": true,
+      "oldInput": "[] metadata projection rejected",
+      "currentInputSHA256": "39ac714e069b04ed95e77e52922c97a24f7b06aa69466c2e50d728eeb4b52cb9"
+    }
+  ],
+  "exampleCountBefore": 15,
+  "exampleCountAfter": 15,
+  "newLabels": 0,
+  "supplementalCodeReceipts": [
+    "c402b63c0f6673f2c4e5e2e16cf5e6c3b29d92fafbae495dd75e4ce7643c18c9",
+    "a2e98117936471b2236067f9cded1fd381375b818b4d1c1db797c1473fb1d2aa"
+  ],
+  "catalogHash": "b1e33add46660c201a2d1fc4431f228edc5eaa831baf2a5f9e666da19f088b76",
+  "modelHash": "0fdba96ef01eca3c857145b755d6f48519ce94addc4fbf8554c4b409438692a5",
+  "allVisibleInputsNonempty": true,
+  "allTokensProcessed": true,
+  "supervisedFit": true,
+  "workflow": "same case.finalize -> ml.train services, supplemental real receipts after native closure; no fabricated second approval or second stage completion",
+  "historicalResultsPreserved": true
+}

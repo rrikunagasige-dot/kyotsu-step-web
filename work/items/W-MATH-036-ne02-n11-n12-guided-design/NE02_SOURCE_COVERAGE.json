@@ -1,0 +1,208 @@
+[
+  {
+    "sourceId": "word-p-000662",
+    "nodeIds": [],
+    "disposition": "structural",
+    "reason": "役割ラベルまたは構造見出しとして段階へ統合"
+  },
+  {
+    "sourceId": "word-p-000663",
+    "nodeIds": [],
+    "disposition": "structural",
+    "reason": "役割ラベルまたは構造見出しとして段階へ統合"
+  },
+  {
+    "sourceId": "word-p-000664",
+    "nodeIds": [
+      "ne02-intro"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000665",
+    "nodeIds": [
+      "ne02-intro"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000666",
+    "nodeIds": [
+      "ne02-q01-expand",
+      "ne02-01"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000667",
+    "nodeIds": [
+      "ne02-q02-sum",
+      "ne02-q02-product",
+      "ne02-02"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000668",
+    "nodeIds": [
+      "ne02-q03-pairs",
+      "ne02-03"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000669",
+    "nodeIds": [
+      "ne02-q04-square",
+      "ne02-q04-sign",
+      "ne02-04"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000670",
+    "nodeIds": [
+      "ne02-difference-problem"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000671",
+    "nodeIds": [
+      "ne02-difference-problem"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000672",
+    "nodeIds": [
+      "ne02-q05-expand",
+      "ne02-05"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000673",
+    "nodeIds": [
+      "ne02-q06-coefficient",
+      "ne02-q06-radical",
+      "ne02-06"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000674",
+    "nodeIds": [
+      "ne02-q07-pairs",
+      "ne02-07"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000675",
+    "nodeIds": [
+      "ne02-q08-squares"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000676",
+    "nodeIds": [
+      "ne02-q08-squares",
+      "ne02-q08-nonnegative",
+      "ne02-08"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000677",
+    "nodeIds": [
+      "ne02-08"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000678",
+    "nodeIds": [
+      "ne02-third-problem"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000679",
+    "nodeIds": [
+      "ne02-third-problem"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000680",
+    "nodeIds": [
+      "ne02-third-problem"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000681",
+    "nodeIds": [
+      "ne02-q09-double",
+      "ne02-09"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000682",
+    "nodeIds": [
+      "ne02-10"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000683",
+    "nodeIds": [
+      "ne02-q11-conditions",
+      "ne02-q11-candidate",
+      "ne02-11"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000684",
+    "nodeIds": [
+      "ne02-q12-factor",
+      "ne02-q12-denominator",
+      "ne02-q12-numerator",
+      "ne02-12"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  },
+  {
+    "sourceId": "word-p-000685",
+    "nodeIds": [
+      "ne02-12"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明・元図の役割を該当ノードへ保持"
+  }
+]

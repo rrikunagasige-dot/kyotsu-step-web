@@ -1,0 +1,6 @@
+{
+  "status": "PASS",
+  "count": 1016,
+  "errors": [],
+  "scope": "Strict composed math templates and explicit option spans, not browser geometry"
+}

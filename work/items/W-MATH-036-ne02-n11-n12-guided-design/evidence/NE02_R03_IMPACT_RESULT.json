@@ -1,0 +1,11 @@
+{
+  "node": "R03_IMPACT@ne02",
+  "status": "PASS_BOUNDED",
+  "outputs": {
+    "impact.inventory": "NEEDS_AI_REVIEW"
+  },
+  "review": "All3 units and shared consumer/migration included; accepted first-title/N07/N08/N09/N10 and original5 image hashes protected.",
+  "receiptArtifacts": [
+    "f02814b3258f4854492584134a10f7eca06df7125083424127c94f921abc91b2"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "lock": {
+    "pid": 2,
+    "time": 1792915613.032159
+  },
+  "ledgerHead": "f05ddd9ab9830ead7a8747004279838359c752e712a917735bb8c428cf850890",
+  "eventCount": 1428,
+  "reason": "Originating exec session71136 explicitly exited1 during S01; subsequent read-only state has no claims. Container PID2 is namespace-local and not a globally unique owner. No workflow writer remains in process inventory. Preserve exact stale lock; do not edit Store implementation.",
+  "recoveredAt": 1792915666.4321692
+}

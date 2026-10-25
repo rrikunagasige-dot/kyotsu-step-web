@@ -1,0 +1,98 @@
+{
+  "corpusHash": "b1e33add46660c201a2d1fc4431f228edc5eaa831baf2a5f9e666da19f088b76",
+  "modelHash": "0fdba96ef01eca3c857145b755d6f48519ce94addc4fbf8554c4b409438692a5",
+  "modelStatus": "OFFLINE_ONLY",
+  "classifierInferenceUsed": false,
+  "cases": [
+    {
+      "id": "N07-USER-F01",
+      "dimension": "prerequisite_missing",
+      "disposition": "APPLY",
+      "reason": "本文の目的・既習の出所・条件付き前結果・意味付きの式・黒字概念・math/text区分を全nodeへ適用し、元事例の固有数値は転記しない。"
+    },
+    {
+      "id": "N07-USER-F02",
+      "dimension": "orphan_output",
+      "disposition": "APPLY",
+      "reason": "本文の目的・既習の出所・条件付き前結果・意味付きの式・黒字概念・math/text区分を全nodeへ適用し、元事例の固有数値は転記しない。"
+    },
+    {
+      "id": "N07-USER-F03",
+      "dimension": "unmotivated_operation",
+      "disposition": "APPLY",
+      "reason": "本文の目的・既習の出所・条件付き前結果・意味付きの式・黒字概念・math/text区分を全nodeへ適用し、元事例の固有数値は転記しない。"
+    },
+    {
+      "id": "N07-USER-F04",
+      "dimension": "broken_derivation",
+      "disposition": "APPLY",
+      "reason": "本文の目的・既習の出所・条件付き前結果・意味付きの式・黒字概念・math/text区分を全nodeへ適用し、元事例の固有数値は転記しない。"
+    },
+    {
+      "id": "N07-USER-F05",
+      "dimension": "term_semantics_missing",
+      "disposition": "APPLY",
+      "reason": "本文の目的・既習の出所・条件付き前結果・意味付きの式・黒字概念・math/text区分を全nodeへ適用し、元事例の固有数値は転記しない。"
+    },
+    {
+      "id": "N07-USER-F06",
+      "dimension": "math_render_omission",
+      "disposition": "APPLY",
+      "reason": "本文の目的・既習の出所・条件付き前結果・意味付きの式・黒字概念・math/text区分を全nodeへ適用し、元事例の固有数値は転記しない。"
+    },
+    {
+      "id": "n07-layout-relation",
+      "dimension": "layout_discomfort",
+      "disposition": "APPLY",
+      "reason": "本文の目的・既習の出所・条件付き前結果・意味付きの式・黒字概念・math/text区分を全nodeへ適用し、元事例の固有数値は転記しない。"
+    },
+    {
+      "id": "n07-layout-positive",
+      "dimension": "layout_style_rejection",
+      "disposition": "APPLY",
+      "reason": "本文の目的・既習の出所・条件付き前結果・意味付きの式・黒字概念・math/text区分を全nodeへ適用し、元事例の固有数値は転記しない。"
+    },
+    {
+      "id": "first-title-layout-positive",
+      "dimension": "layout_discomfort",
+      "disposition": "APPLY",
+      "reason": "本文の目的・既習の出所・条件付き前結果・意味付きの式・黒字概念・math/text区分を全nodeへ適用し、元事例の固有数値は転記しない。"
+    },
+    {
+      "id": "N07-ACCEPTED-20261025",
+      "dimension": "overall_material_acceptance",
+      "disposition": "APPLY",
+      "reason": "他単元の全体受入をこの3単元や個別観点の合格labelへ流用しない。"
+    },
+    {
+      "id": "N08-ACCEPTED-20261025",
+      "dimension": "overall_material_acceptance",
+      "disposition": "APPLY",
+      "reason": "他単元の全体受入をこの3単元や個別観点の合格labelへ流用しない。"
+    },
+    {
+      "id": "N09-REJECTED-20261025",
+      "dimension": "operation_order",
+      "disposition": "APPLY",
+      "reason": "NE02-q08-squaresとN12検算は左計算→右計算→比較、別の代入は別行へ。"
+    },
+    {
+      "id": "N10-REJECTED-20261025",
+      "dimension": "factor_grouping",
+      "disposition": "APPLY",
+      "reason": "NE02の平方・分子の和・N11の分数の分子/右辺全体・N12の20-xを完全な操作対象として括弧へ。"
+    },
+    {
+      "id": "N09-ACCEPTED-20261025",
+      "dimension": "overall_material_acceptance",
+      "disposition": "APPLY",
+      "reason": "他単元の全体受入をこの3単元や個別観点の合格labelへ流用しない。"
+    },
+    {
+      "id": "N10-ACCEPTED-20261025",
+      "dimension": "overall_material_acceptance",
+      "disposition": "APPLY",
+      "reason": "他単元の全体受入をこの3単元や個別観点の合格labelへ流用しない。"
+    }
+  ]
+}

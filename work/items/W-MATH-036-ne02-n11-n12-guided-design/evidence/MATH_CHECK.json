@@ -1,0 +1,142 @@
+{
+  "status": "PASS",
+  "symbolic": [
+    {
+      "id": "sum-square",
+      "left": "(sqrt(p) + sqrt(q))**2",
+      "right": "2*sqrt(p)*sqrt(q) + p + q",
+      "residual": "0"
+    },
+    {
+      "id": "difference-square",
+      "left": "(sqrt(p) - sqrt(q))**2",
+      "right": "-2*sqrt(p)*sqrt(q) + p + q",
+      "residual": "0"
+    },
+    {
+      "id": "first-candidate",
+      "left": "(sqrt(2) + sqrt(3))**2",
+      "right": "2*sqrt(6) + 5",
+      "residual": "0"
+    },
+    {
+      "id": "coef-four",
+      "left": "4*sqrt(5)",
+      "right": "4*sqrt(5)",
+      "residual": "0"
+    },
+    {
+      "id": "difference-candidate",
+      "left": "(-2 + sqrt(5))**2",
+      "right": "9 - 4*sqrt(5)",
+      "residual": "0"
+    },
+    {
+      "id": "opposite-candidate",
+      "left": "(2 - sqrt(5))**2",
+      "right": "9 - 4*sqrt(5)",
+      "residual": "0"
+    },
+    {
+      "id": "whole-fraction",
+      "left": "sqrt(5) + 3",
+      "right": "sqrt(5) + 3",
+      "residual": "0"
+    },
+    {
+      "id": "numerator-candidate",
+      "left": "(1 + sqrt(5))**2",
+      "right": "2*sqrt(5) + 6",
+      "residual": "0"
+    },
+    {
+      "id": "rationalization",
+      "left": "sqrt(2)*(1 + sqrt(5))/2",
+      "right": "sqrt(2)/2 + sqrt(10)/2",
+      "residual": "0"
+    },
+    {
+      "id": "add-difference",
+      "left": "-a + b",
+      "right": "-a + b",
+      "residual": "0"
+    },
+    {
+      "id": "multiply-difference",
+      "left": "-a*c + b*c",
+      "right": "c*(-a + b)",
+      "residual": "0"
+    },
+    {
+      "id": "n11-bracket",
+      "left": "6*x + 9",
+      "right": "6*x + 9",
+      "residual": "0"
+    },
+    {
+      "id": "n11-fraction",
+      "left": "x - 2",
+      "right": "x - 2",
+      "residual": "0"
+    },
+    {
+      "id": "n12-cost",
+      "left": "50*x + 2650",
+      "right": "50*x + 2650",
+      "residual": "0"
+    },
+    {
+      "id": "eleven",
+      "left": "3200",
+      "right": "3200",
+      "residual": "0"
+    },
+    {
+      "id": "twelve",
+      "left": "3250",
+      "right": "3250",
+      "residual": "0"
+    },
+    {
+      "id": "n11-positive",
+      "left": "3*x - 2 < 5",
+      "solution": "x < 7/3",
+      "status": "PASS"
+    },
+    {
+      "id": "n11-negative",
+      "left": "3 - 2*x <= 5",
+      "solution": "x >= -1",
+      "status": "PASS"
+    },
+    {
+      "id": "n11-expand",
+      "left": "6*x + 9 >= 10*x - 17",
+      "solution": "x <= 13/2",
+      "status": "PASS"
+    },
+    {
+      "id": "n11-denominator",
+      "left": "x/3 - 2/3 <= 2*x + 1",
+      "solution": "x >= -1",
+      "status": "PASS"
+    },
+    {
+      "id": "n12-first",
+      "left": "x - 2 < 3*x + 5",
+      "solution": "x > -7/2",
+      "status": "PASS"
+    },
+    {
+      "id": "n12-second",
+      "left": "x + 4 <= 5 - x",
+      "solution": "x <= 1/2",
+      "status": "PASS"
+    }
+  ],
+  "integerEnumeration": [
+    11,
+    12
+  ],
+  "limits": "数式の厳密検算と、条件・初学者への説明の同じassistantによる監査。未知の精度や機械証明は主張しない。"
+}

@@ -1,0 +1,1693 @@
+{
+  "sourceSHA": "fa0eff271a97940fad08d83960ae50faeabc81b9",
+  "unit": {
+    "schemaVersion": "1.1",
+    "unitId": "math-numbers-expressions-n11",
+    "revision": 10,
+    "status": "review",
+    "subject": "math-1a",
+    "chapter": {
+      "chapterId": "math-ch01-numbers-expressions",
+      "chapterNumber": "1",
+      "chapterTitle": "数と式",
+      "unitCode": "1NUM",
+      "orderInChapter": 11,
+      "sourcePages": [
+        27,
+        28,
+        29
+      ]
+    },
+    "title": "大小関係を保つ変形を選ぶ",
+    "subtitle": "不等号が変わる根拠を、差の符号と数直線で確かめる。",
+    "source": {
+      "type": "reference",
+      "label": "ユーザー提供「数と式」教科書モード対話段階導入版 v2 / N11",
+      "rightsNote": "教師編集Word N11原問14件と元数直線2点を使用。独立解答、公式別冊未提供、レビュー限定。"
+    },
+    "objectives": [
+      "正負の倍率で不等号がどう変わるか証明する",
+      "一次不等式を一段ずつ解く",
+      "開いた端点と閉じた端点を元の式で確かめる"
+    ],
+    "sections": [
+      {
+        "id": "lesson",
+        "number": "11",
+        "title": "本文",
+        "description": "不等号の根拠から実数の解の範囲へ進む。",
+        "role": "concept",
+        "figures": [
+          {
+            "id": "n11-f01",
+            "src": "/assets/math/textbook/numbers/n11-f01.png",
+            "alt": "元Wordの数直線。2と5、符号を変えた−2と−5の位置関係を上下に示す。",
+            "caption": "両辺の符号を変えると、位置関係はどうなるだろう。",
+            "overlays": []
+          },
+          {
+            "id": "n11-f02",
+            "src": "/assets/math/textbook/numbers/n11-f02.png",
+            "alt": "二つの不等式の解の範囲を、白丸・黒丸を区別した元の完成数直線。",
+            "caption": "境界の含有を解いた後で数直線でも確認する。",
+            "overlays": []
+          }
+        ],
+        "readingFlow": [
+          {
+            "id": "n11-heading-1",
+            "type": "heading",
+            "text": "不等号の向きが変わる理由"
+          },
+          {
+            "id": "n11-marker-1",
+            "type": "marker",
+            "kind": "proof",
+            "text": "導出"
+          },
+          {
+            "id": "n11-group-1",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "2<5の両辺に同じ数を加えたり引いたりすると、どうなるだろう。たとえば2を引くと0<3、正の4を掛けると8<20となる。では負の数を掛けたときは、数直線上の位置で確かめよう。"
+              }
+            ]
+          },
+          {
+            "id": "n11-show-n11-f01",
+            "type": "figure",
+            "figureId": "n11-f01"
+          },
+          {
+            "id": "n11-lead-01",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "元の2と5の位置、符号を変えた−2と−5の位置を見比べよう。"
+              },
+              {
+                "type": "math",
+                "latex": "2<5"
+              }
+            ]
+          },
+          {
+            "id": "n11-formula-01",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "符号を変えた二つの数を比べると、"
+              },
+              {
+                "type": "math",
+                "latex": "(-2)"
+              },
+              {
+                "type": "text",
+                "text": " "
+              },
+              {
+                "type": "choice",
+                "itemId": "n11-01"
+              },
+              {
+                "type": "text",
+                "text": " "
+              },
+              {
+                "type": "math",
+                "latex": "(-5)"
+              },
+              {
+                "type": "text",
+                "text": " となる。"
+              }
+            ]
+          },
+          {
+            "id": "n11-after-01",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "−2は−5より数直線の右側にある。具体例で並び方の変化が見えた。次は一般の文字で、差の符号から理由を確かめる。"
+              }
+            ]
+          },
+          {
+            "id": "n11-lead-02",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "a<bならば右から左を引いた差b−aは正になる。aとbに同じcを足したときの差を、先に計算しよう。"
+              },
+              {
+                "type": "math",
+                "latex": "(b+c)-(a+c)"
+              }
+            ]
+          },
+          {
+            "id": "n11-formula-02",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "(b+c)-(a+c)="
+              },
+              {
+                "type": "choice",
+                "itemId": "n11-02"
+              }
+            ]
+          },
+          {
+            "id": "n11-after-02",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "展開するとb+c−a−c。cと−cが打ち消し合うので、差は元のb−aのままだ。ここから大小を決めよう。"
+              }
+            ]
+          },
+          {
+            "id": "n11-lead-wm011-q02-compare",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "元の差b−aは正で、足したあとの右−左の差も同じ正の値である。"
+              }
+            ]
+          },
+          {
+            "id": "n11-formula-wm011-q02-compare",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "choice",
+                "itemId": "n11-wm011-q02-compare"
+              }
+            ]
+          },
+          {
+            "id": "n11-after-wm011-q02-compare",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "両方に同じ数を足しても差の符号は変わらない。したがって不等号の向きは保たれる。引き算は負の数を足すことなので同じ理由で成り立つ。"
+              }
+            ]
+          },
+          {
+            "id": "n11-lead-wm011-q03-factor",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "掛け算の場合も、右−左の差を調べる。bとaに同じcを掛けると差はbc−ac。分配法則の逆を使い、共通の係数を括り出そう。"
+              }
+            ]
+          },
+          {
+            "id": "n11-formula-wm011-q03-factor",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "bc-ac="
+              },
+              {
+                "type": "choice",
+                "itemId": "n11-wm011-q03-factor"
+              },
+              {
+                "type": "math",
+                "latex": "(b-a)"
+              }
+            ]
+          },
+          {
+            "id": "n11-after-wm011-q03-factor",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "よってbc−ac=c(b−a)。b−aは正だから、この積の符号はcの符号によって決まる。"
+              }
+            ]
+          },
+          {
+            "id": "n11-lead-wm011-q03-positive",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "まずc>0を考える。正の数同士を掛けたc(b−a)はどの符号になるだろう。"
+              },
+              {
+                "type": "math",
+                "latex": "c>0,\\quad b-a>0"
+              }
+            ]
+          },
+          {
+            "id": "n11-formula-wm011-q03-positive",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "choice",
+                "itemId": "n11-wm011-q03-positive"
+              }
+            ]
+          },
+          {
+            "id": "n11-after-wm011-q03-positive",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "右−左の差が正だから、cが正のときはac<bcであり、不等号はそのままになる。"
+              }
+            ]
+          },
+          {
+            "id": "n11-lead-03",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "ではc<0にする。負の数と正の数の積から右−左の差を判断しよう。"
+              },
+              {
+                "type": "math",
+                "latex": "c<0,\\quad b-a>0"
+              }
+            ]
+          },
+          {
+            "id": "n11-formula-03",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "choice",
+                "itemId": "n11-03"
+              }
+            ]
+          },
+          {
+            "id": "n11-after-03",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "右−左の差が負なら、右の数bcのほうが小さい。したがって負数を掛けたときはac>bcとなる。"
+              }
+            ]
+          },
+          {
+            "id": "n11-lead-wm011-q03-zero",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "最後にc=0を考える。両辺はどの数になるだろう。"
+              },
+              {
+                "type": "math",
+                "latex": "c=0"
+              }
+            ]
+          },
+          {
+            "id": "n11-formula-wm011-q03-zero",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "choice",
+                "itemId": "n11-wm011-q03-zero"
+              }
+            ]
+          },
+          {
+            "id": "n11-after-wm011-q03-zero",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "整理すると、正の数を両辺に掛けると不等号を保ち、負の数では向きが逆になり、0倍では等号になる。0で割ることはできない。"
+              }
+            ]
+          },
+          {
+            "id": "n11-lead-wm011-q04-fraction",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "証明した規則を二つの別々の式で確かめる。一つ目はa<bの両辺に負の1/5を掛ける場合だ。"
+              },
+              {
+                "type": "math",
+                "latex": "a<b"
+              }
+            ]
+          },
+          {
+            "id": "n11-formula-wm011-q04-fraction",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "choice",
+                "itemId": "n11-wm011-q04-fraction"
+              }
+            ]
+          },
+          {
+            "id": "n11-after-wm011-q04-fraction",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "負の1/5倍では大小が反転する。これは次の式と独立した変形である。"
+              }
+            ]
+          },
+          {
+            "id": "n11-lead-04",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "二つ目は元のa<bに戻って、両辺に−1を掛けてから3を足す。先ほどの−1/5倍の式に3を足すわけではない。"
+              },
+              {
+                "type": "math",
+                "latex": "a<b\\quad\\Longrightarrow\\quad-a>-b"
+              }
+            ]
+          },
+          {
+            "id": "n11-formula-04",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "choice",
+                "itemId": "n11-04"
+              }
+            ]
+          },
+          {
+            "id": "n11-after-04",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "−1倍したあとに同じ3を足すので3−a>3−bとなる。−1/5倍の式に3を足すなら3−a/5>3−b/5であり、二つの操作は区別する。"
+              }
+            ]
+          },
+          {
+            "id": "n11-heading-2",
+            "type": "heading",
+            "text": "変形して解の範囲を残す"
+          },
+          {
+            "id": "n11-group-2",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "不等式を解くとは、成り立つすべての実数の範囲を求めること。まず次の式を順に変形しよう。"
+              }
+            ]
+          },
+          {
+            "id": "n11-lead-05",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "3x-2<5"
+              }
+            ],
+            "derivationId": "n11-q05-q06-chain"
+          },
+          {
+            "id": "n11-formula-05",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "3x-2+"
+              },
+              {
+                "type": "choice",
+                "itemId": "n11-wm017-q05-operation"
+              },
+              {
+                "type": "math",
+                "latex": "<5+"
+              },
+              {
+                "type": "choice",
+                "itemId": "n11-wm017-q05-balance"
+              }
+            ],
+            "derivationId": "n11-q05-q06-chain"
+          },
+          {
+            "id": "n11-p006-q05-cancel-explain",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "両辺に同じ数を足しても、不等号の向きは変わらない。左辺では−2と＋2が打ち消し合う。"
+              }
+            ],
+            "derivationId": "n11-q05-q06-chain"
+          },
+          {
+            "id": "n11-after-05",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "3x<"
+              },
+              {
+                "type": "choice",
+                "itemId": "n11-05"
+              }
+            ],
+            "derivationId": "n11-q05-q06-chain"
+          },
+          {
+            "id": "n11-p006-q06-positive-explain",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "xの係数は正の3なので、両辺を3で割っても不等号の向きは変わらない。"
+              }
+            ],
+            "derivationId": "n11-q05-q06-chain"
+          },
+          {
+            "id": "n11-formula-06",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "x<"
+              },
+              {
+                "type": "choice",
+                "itemId": "n11-06"
+              }
+            ],
+            "derivationId": "n11-q05-q06-chain"
+          },
+          {
+            "id": "n11-after-06",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "求めたのは一つの値ではなく、不等式を満たす実数の範囲である。境界の値を元の式に代入して、含まれるか確かめよう。"
+              }
+            ]
+          },
+          {
+            "id": "n11-lead-07",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "境界x=7/3を元の不等式に代入すると、左右は同じ値になる。"
+              },
+              {
+                "type": "math",
+                "latex": "3\\left(\\frac73\\right)-2<5"
+              }
+            ]
+          },
+          {
+            "id": "n11-formula-07",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "考えて選ぶ："
+              },
+              {
+                "type": "choice",
+                "itemId": "n11-07"
+              }
+            ]
+          },
+          {
+            "id": "n11-after-07",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "厳密不等号の境界は数直線では白丸で表す。"
+              }
+            ]
+          },
+          {
+            "id": "n11-lead-08",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "-2x+3\\le5"
+              }
+            ],
+            "derivationId": "n11-q08-q09-chain"
+          },
+          {
+            "id": "n11-formula-08",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "-2x+3-"
+              },
+              {
+                "type": "choice",
+                "itemId": "n11-p007-q08-subtract-left"
+              },
+              {
+                "type": "math",
+                "latex": "\\le5-"
+              },
+              {
+                "type": "choice",
+                "itemId": "n11-p007-q08-subtract-right"
+              }
+            ],
+            "derivationId": "n11-q08-q09-chain"
+          },
+          {
+            "id": "n11-p007-q08-explain",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "両辺から同じ数を引いても、不等号の向きは変わらない。左辺の＋3と−3を打ち消す。"
+              }
+            ],
+            "derivationId": "n11-q08-q09-chain"
+          },
+          {
+            "id": "n11-after-08",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "-2x\\le"
+              },
+              {
+                "type": "choice",
+                "itemId": "n11-08"
+              }
+            ],
+            "derivationId": "n11-q08-q09-chain"
+          },
+          {
+            "id": "n11-p007-q09-explain",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "xの係数は負の数。両辺をその係数で割ると、不等号の向きが逆になる。"
+              }
+            ],
+            "derivationId": "n11-q08-q09-chain"
+          },
+          {
+            "id": "n11-formula-09",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "x"
+              },
+              {
+                "type": "choice",
+                "itemId": "n11-p007-q09-direction"
+              },
+              {
+                "type": "choice",
+                "itemId": "n11-09"
+              }
+            ],
+            "derivationId": "n11-q08-q09-chain"
+          },
+          {
+            "id": "n11-after-09",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "負数除算は符号だけでなく、不等号の向きもセットで扱う。"
+              }
+            ]
+          },
+          {
+            "id": "n11-lead-10",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "x=−1を元の−2x+3≤5に戻して、境界に等号を含めてよいか調べる。"
+              },
+              {
+                "type": "math",
+                "latex": "-2(-1)+3\\le5"
+              }
+            ]
+          },
+          {
+            "id": "n11-formula-10",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "考えて選ぶ："
+              },
+              {
+                "type": "choice",
+                "itemId": "n11-10"
+              }
+            ]
+          },
+          {
+            "id": "n11-after-10",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "境界の黒丸と白丸の違いは、不等号に等号があるかどうかから決まる。"
+              }
+            ]
+          },
+          {
+            "id": "n11-show-n11-f02",
+            "type": "figure",
+            "figureId": "n11-f02"
+          },
+          {
+            "id": "n11-heading-3",
+            "type": "heading",
+            "text": "括弧・分数があっても同じ規則"
+          },
+          {
+            "id": "n11-marker-3",
+            "type": "marker",
+            "kind": "check",
+            "text": "確認"
+          },
+          {
+            "id": "n11-group-3",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "長い不等式では、まず展開と移項をしてから係数の符号を確かめる。移項とは左右に同じ式を加減すること。"
+              }
+            ]
+          },
+          {
+            "id": "n11-lead-wm012-q11-expand",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "まず括弧を展開する。括弧内の二つの項に3を掛け、左辺がどんな式になるか考えよう。"
+              },
+              {
+                "type": "math",
+                "latex": "3(2x+3)\\ge10x-17"
+              }
+            ]
+          },
+          {
+            "id": "n11-formula-wm012-q11-expand",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "3(2x+3)="
+              },
+              {
+                "type": "choice",
+                "itemId": "n11-wm012-q11-expand"
+              }
+            ]
+          },
+          {
+            "id": "n11-after-wm012-q11-expand",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "3×2x=6x、3×3=9。したがって6x+9≥10x−17となる。次はxの項を左に集める。"
+              }
+            ]
+          },
+          {
+            "id": "n11-lead-wm012-q11-xcoef",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "両辺から同じ10xを引くと右辺の10xが消える。左辺のxの係数は6−10で決まる。"
+              },
+              {
+                "type": "math",
+                "latex": "6x+9\\ge10x-17"
+              }
+            ]
+          },
+          {
+            "id": "n11-formula-wm012-q11-xcoef",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "choice",
+                "itemId": "n11-wm012-q11-xcoef"
+              },
+              {
+                "type": "math",
+                "latex": "x+9\\ge-17"
+              }
+            ]
+          },
+          {
+            "id": "n11-after-wm012-q11-xcoef",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "移項後は−4x+9≥−17となる。次は左辺の定数9を消す操作を考えよう。"
+              }
+            ]
+          },
+          {
+            "id": "n11-lead-11",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "−4x+9≥−17の両辺から同じ9を引いて、xの項だけを残そう。"
+              },
+              {
+                "type": "math",
+                "latex": "-4x+9\\ge-17"
+              }
+            ]
+          },
+          {
+            "id": "n11-formula-11",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "choice",
+                "itemId": "n11-11"
+              }
+            ]
+          },
+          {
+            "id": "n11-after-wm012-q11-const",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "右辺の定数は−17−9=−26。係数が負の−4のままなので、−4x≥−26となる。"
+              }
+            ]
+          },
+          {
+            "id": "n11-after-11",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "係数が負の−4になったことが次の変形の要点である。"
+              }
+            ]
+          },
+          {
+            "id": "n11-lead-12",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "−4x≥−26を負の−4で割る。不等号の反転と分数の符号の両方を確認しよう。"
+              },
+              {
+                "type": "math",
+                "latex": "-4x\\ge-26"
+              }
+            ]
+          },
+          {
+            "id": "n11-formula-12",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "choice",
+                "itemId": "n11-12"
+              }
+            ]
+          },
+          {
+            "id": "n11-after-12",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "境界で等号が成立するので、その値も解に含む。"
+              }
+            ]
+          },
+          {
+            "id": "n11-lead-13",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "\\frac{x-2}{3}\\le2x+1"
+              }
+            ],
+            "derivationId": "n11-q13-chain"
+          },
+          {
+            "id": "n11-formula-13",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "choice",
+                "itemId": "n11-p008-q13-mul-left"
+              },
+              {
+                "type": "math",
+                "latex": "\\cdot\\frac{x-2}{3}\\le"
+              },
+              {
+                "type": "choice",
+                "itemId": "n11-p008-q13-mul-right"
+              },
+              {
+                "type": "math",
+                "latex": "(2x+1)"
+              }
+            ],
+            "derivationId": "n11-q13-chain"
+          },
+          {
+            "id": "n11-p008-q13-positive-explain",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "3は正の数なので、不等号の向きは変わらない。左辺は分母の3と掛けた3が打ち消し合う。"
+              }
+            ],
+            "derivationId": "n11-q13-chain"
+          },
+          {
+            "id": "n11-p008-q13-cancel",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "x-2\\le3(2x+1)"
+              }
+            ],
+            "derivationId": "n11-q13-chain"
+          },
+          {
+            "id": "n11-p008-q13-distribute-explain",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "右辺では、かっこの中の二つの項それぞれに外側の3を掛けてから整理する。"
+              }
+            ],
+            "derivationId": "n11-q13-chain"
+          },
+          {
+            "id": "n11-p008-q13-result",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "x-2\\le"
+              },
+              {
+                "type": "choice",
+                "itemId": "n11-13"
+              },
+              {
+                "type": "math",
+                "latex": "x+"
+              },
+              {
+                "type": "choice",
+                "itemId": "n11-p008-q13-constant"
+              }
+            ],
+            "derivationId": "n11-q13-chain"
+          },
+          {
+            "id": "n11-after-13",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "分母を払った後は通常の一次不等式として移項できる。"
+              }
+            ]
+          },
+          {
+            "id": "n11-lead-wm013-q14-xcoef",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "最後は同類項を整理する。両辺からxを引き、右辺にxの項を集めよう。"
+              },
+              {
+                "type": "math",
+                "latex": "x-2\\le6x+3"
+              }
+            ]
+          },
+          {
+            "id": "n11-formula-wm013-q14-xcoef",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "-2\\le"
+              },
+              {
+                "type": "choice",
+                "itemId": "n11-wm013-q14-xcoef"
+              },
+              {
+                "type": "math",
+                "latex": "x+3"
+              }
+            ]
+          },
+          {
+            "id": "n11-after-wm013-q14-xcoef",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "6x−x=5xだから、−2≤5x+3となる。次は定数の項を左に集める。"
+              }
+            ]
+          },
+          {
+            "id": "n11-lead-wm013-q14-const",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "−2≤5x+3の両辺から同じ3を引く。左辺の数を考えよう。"
+              },
+              {
+                "type": "math",
+                "latex": "-2\\le5x+3"
+              }
+            ]
+          },
+          {
+            "id": "n11-formula-wm013-q14-const",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "choice",
+                "itemId": "n11-wm013-q14-const"
+              },
+              {
+                "type": "math",
+                "latex": "\\le5x"
+              }
+            ]
+          },
+          {
+            "id": "n11-after-wm013-q14-const",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "−2−3=−5だから、−5≤5xとなる。最後は正の数で割る。"
+              }
+            ]
+          },
+          {
+            "id": "n11-lead-14",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "−5≤5xの両辺を正の5で割ろう。不等号の向きに注意して解の範囲を選ぶ。"
+              },
+              {
+                "type": "math",
+                "latex": "-5\\le5x"
+              }
+            ]
+          },
+          {
+            "id": "n11-formula-14",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "choice",
+                "itemId": "n11-14"
+              }
+            ]
+          },
+          {
+            "id": "n11-after-14",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "括弧や分数の有無に関係なく、各変形で同じ条件を保てているか確かめる。"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "n11-01",
+            "label": "N11-01",
+            "prompt": "数直線の−2と−5を比べ、不等号を選ぼう。",
+            "answer": ">",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              ">",
+              "<",
+              "=",
+              "\\le"
+            ],
+            "purpose": "concept-formation",
+            "scaffoldLevel": "strong",
+            "hints": [
+              "数直線では右にある数のほうが大きい。"
+            ]
+          },
+          {
+            "id": "n11-02",
+            "label": "N11-02",
+            "prompt": "両辺に同じcを加えたあとの差を計算しよう。",
+            "answer": "b-a",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "b-a",
+              "b-a+2c",
+              "b-a-c",
+              "a-b"
+            ],
+            "purpose": "causal-reasoning",
+            "scaffoldLevel": "strong",
+            "hints": [
+              "+cと−cを整理しよう。"
+            ]
+          },
+          {
+            "id": "n11-wm011-q02-compare",
+            "label": "N11-WM011-Q02-COMPARE",
+            "prompt": "差の符号を根拠に、加えたあとの大小関係を選ぼう。",
+            "answer": "a+c<b+c,\\quad\\text{差は正のまま}",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "a+c<b+c,\\quad\\text{差は正のまま}",
+              "a+c>b+c,\\quad\\text{差は負になる}",
+              "a+c=b+c,\\quad\\text{差は0}",
+              "a+c>b+c,\\quad\\text{差は正のまま}"
+            ],
+            "purpose": "causal-reasoning",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "右−左の差が正なら、どちらが大きいだろう。"
+            ]
+          },
+          {
+            "id": "n11-wm011-q03-factor",
+            "label": "N11-WM011-Q03-FACTOR",
+            "prompt": "共通の(b−a)を残して、括り出す係数を選ぼう。",
+            "answer": "c",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "c",
+              "-c",
+              "c^2",
+              "1"
+            ],
+            "purpose": "causal-reasoning",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "bc−acを分配法則の逆向きで見よう。"
+            ]
+          },
+          {
+            "id": "n11-wm011-q03-positive",
+            "label": "N11-WM011-Q03-POSITIVE",
+            "prompt": "c>0のとき、差の符号と大小関係を判断しよう。",
+            "answer": "ac<bc,\\quad bc-ac>0",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "ac<bc,\\quad bc-ac>0",
+              "ac>bc,\\quad bc-ac<0",
+              "ac=bc,\\quad bc-ac=0",
+              "ac<bc,\\quad bc-ac<0"
+            ],
+            "purpose": "causal-reasoning",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "正の数と正の数の積は正。右−左が正なら左が小さい。"
+            ]
+          },
+          {
+            "id": "n11-03",
+            "label": "N11-03",
+            "prompt": "c<0のとき、差の符号と大小関係を判断しよう。",
+            "answer": "ac>bc,\\quad bc-ac<0",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "ac>bc,\\quad bc-ac<0",
+              "ac<bc,\\quad bc-ac>0",
+              "ac=bc,\\quad bc-ac=0",
+              "ac>bc,\\quad bc-ac>0"
+            ],
+            "purpose": "causal-reasoning",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "負の数×正の数は負。右−左が負なら左が大きい。"
+            ]
+          },
+          {
+            "id": "n11-wm011-q03-zero",
+            "label": "N11-WM011-Q03-ZERO",
+            "prompt": "c=0のとき、両辺と厳密な不等号はどうなるだろう。",
+            "answer": "ac=bc=0,\\quad\\text{元の厳密な大小は失われる}",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "ac=bc=0,\\quad\\text{元の厳密な大小は失われる}",
+              "ac<bc,\\quad\\text{そのまま保つ}",
+              "ac>bc,\\quad\\text{逆転する}",
+              "ac=bc=0,\\quad\\text{元の不等号を保つ}"
+            ],
+            "purpose": "causal-reasoning",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "左右とも0。等号になると元の「<」は成り立たない。"
+            ]
+          },
+          {
+            "id": "n11-wm011-q04-fraction",
+            "label": "N11-WM011-Q04-FRACTION",
+            "prompt": "a<bの両辺に負の1/5を掛けるとどうなるだろう。",
+            "answer": "-\\frac a5>-\\frac b5,\\quad\\text{負数倍なので反転}",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "-\\frac a5>-\\frac b5,\\quad\\text{負数倍なので反転}",
+              "-\\frac a5<-\\frac b5,\\quad\\text{向きを保つ}",
+              "-\\frac a5=-\\frac b5,\\quad\\text{等号になる}",
+              "-\\frac a5>-\\frac b5,\\quad\\text{正数倍なので反転}"
+            ],
+            "purpose": "transfer",
+            "scaffoldLevel": "light",
+            "hints": [
+              "倍率−1/5は負。先ほど確かめた差の符号を使おう。"
+            ]
+          },
+          {
+            "id": "n11-04",
+            "label": "N11-04",
+            "prompt": "a<bから−1倍と+3を順に行った大小関係を選ぼう。",
+            "answer": "3-a>3-b",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "3-a>3-b",
+              "3-a<3-b",
+              "3-a=3-b",
+              "3+a>3+b"
+            ],
+            "purpose": "transfer",
+            "scaffoldLevel": "light",
+            "hints": [
+              "独立した変形として−a>−bから両辺に3を足す。"
+            ]
+          },
+          {
+            "id": "n11-wm017-q05-operation",
+            "label": "N11-WM017-Q05-OPERATION",
+            "prompt": "左辺の−2を消すため、左辺に加える数を考えよう。",
+            "answer": "2",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "2",
+              "-2",
+              "3",
+              "0"
+            ],
+            "purpose": "causal-reasoning",
+            "scaffoldLevel": "light",
+            "hints": [
+              "−2と足して0になる数は何だろう。"
+            ]
+          },
+          {
+            "id": "n11-wm017-q05-balance",
+            "label": "N11-WM017-Q05-BALANCE",
+            "prompt": "不等号の向きを保つために、右辺にも加える同じ数を選ぼう。",
+            "answer": "2",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "2",
+              "-2",
+              "5",
+              "0"
+            ],
+            "purpose": "causal-reasoning",
+            "scaffoldLevel": "light",
+            "hints": [
+              "左辺だけでなく右辺にも同じ操作をする。"
+            ]
+          },
+          {
+            "id": "n11-05",
+            "label": "N11-05",
+            "prompt": "左辺の定数を打ち消したあと、右辺の5+2を計算しよう。",
+            "answer": "7",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "7",
+              "3",
+              "5",
+              "9"
+            ],
+            "purpose": "causal-reasoning",
+            "scaffoldLevel": "light",
+            "hints": [
+              "5+2を計算して、3xの右側に置こう。"
+            ]
+          },
+          {
+            "id": "n11-06",
+            "label": "N11-06",
+            "prompt": "3x<7の両辺を正の3で割ったときの右辺を計算しよう。",
+            "answer": "\\frac73",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "\\frac73",
+              "\\frac37",
+              "-\\frac73",
+              "7"
+            ],
+            "purpose": "transfer",
+            "scaffoldLevel": "light",
+            "hints": [
+              "正の3で割るので、<の向きは変わらない。"
+            ]
+          },
+          {
+            "id": "n11-07",
+            "label": "N11-07",
+            "prompt": "境界の値が含まれるかを選ぼう。",
+            "answer": "含まれない（等号となり<を満たさない）",
+            "acceptedAnswers": [],
+            "answerType": "text",
+            "choices": [
+              "含まれない（等号となり<を満たさない）",
+              "含まれる（左右が等しくなるから）",
+              "含まれる（3は正だから）",
+              "判断できない（分数だから）"
+            ],
+            "purpose": "causal-reasoning",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "元の記号は「<」で、等号は許されていない。"
+            ]
+          },
+          {
+            "id": "n11-p007-q08-subtract-left",
+            "label": "N11-P007-Q08-SUBTRACT-LEFT",
+            "prompt": "左辺の＋3を打ち消すため、引く数を選ぼう。",
+            "answer": "3",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "3",
+              "-3",
+              "2",
+              "5"
+            ],
+            "purpose": "causal-reasoning",
+            "scaffoldLevel": "light",
+            "hints": [
+              "＋3と打ち消し合うのは、何を引くときだろう。"
+            ]
+          },
+          {
+            "id": "n11-p007-q08-subtract-right",
+            "label": "N11-P007-Q08-SUBTRACT-RIGHT",
+            "prompt": "同じ操作を右辺にも行う。右辺から引く数を選ぼう。",
+            "answer": "3",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "3",
+              "-3",
+              "5",
+              "2"
+            ],
+            "purpose": "causal-reasoning",
+            "scaffoldLevel": "light",
+            "hints": [
+              "左右に同じ操作をすると不等号の関係を保てる。"
+            ]
+          },
+          {
+            "id": "n11-08",
+            "label": "N11-08",
+            "prompt": "左辺を整理したあとの右辺、5−3を計算しよう。",
+            "answer": "2",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "2",
+              "8",
+              "-2",
+              "5"
+            ],
+            "purpose": "causal-reasoning",
+            "scaffoldLevel": "light",
+            "hints": [
+              "右辺の引き算を行ってから、−2xの右側に置こう。"
+            ]
+          },
+          {
+            "id": "n11-p007-q09-direction",
+            "label": "N11-P007-Q09-DIRECTION",
+            "prompt": "負の係数で割った後の不等号を選ぼう。",
+            "answer": "\\ge",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "\\ge",
+              "\\le",
+              ">",
+              "<"
+            ],
+            "purpose": "causal-reasoning",
+            "scaffoldLevel": "light",
+            "hints": [
+              "係数は負。向きと等号の有無をそれぞれ確かめよう。"
+            ]
+          },
+          {
+            "id": "n11-09",
+            "label": "N11-09",
+            "prompt": "負の2で割った右辺、2÷(−2)を計算しよう。",
+            "answer": "-1",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "-1",
+              "1",
+              "-2",
+              "2"
+            ],
+            "purpose": "causal-reasoning",
+            "scaffoldLevel": "light",
+            "hints": [
+              "正の数を負の数で割ると結果の符号はどうなるだろう。"
+            ]
+          },
+          {
+            "id": "n11-10",
+            "label": "N11-10",
+            "prompt": "境界を含むかどうか、根拠とともに選ぼう。",
+            "answer": "含む（代入すると5≤5）",
+            "acceptedAnswers": [],
+            "answerType": "text",
+            "choices": [
+              "含む（代入すると5≤5）",
+              "含まない（負の数だから）",
+              "含まない（代入すると5<5）",
+              "含む（不等号を逆にしないから）"
+            ],
+            "purpose": "transfer",
+            "scaffoldLevel": "light",
+            "hints": [
+              "元の≤は等号を許し、境界を代入すると左右が一致する。"
+            ]
+          },
+          {
+            "id": "n11-wm012-q11-expand",
+            "label": "N11-WM012-Q11-EXPAND",
+            "prompt": "括弧の両方の項に3を掛けて、展開した左辺を選ぼう。",
+            "answer": "6x+9",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "6x+9",
+              "6x+3",
+              "2x+9",
+              "6x+6"
+            ],
+            "purpose": "causal-reasoning",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "3を2xと3のそれぞれに掛けよう。"
+            ]
+          },
+          {
+            "id": "n11-wm012-q11-xcoef",
+            "label": "N11-WM012-Q11-XCOEF",
+            "prompt": "両辺から10xを引いたあとの、左辺のxの係数を選ぼう。",
+            "answer": "-4",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "-4",
+              "4",
+              "-10",
+              "16"
+            ],
+            "purpose": "causal-reasoning",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "6x−10xの係数を計算しよう。"
+            ]
+          },
+          {
+            "id": "n11-11",
+            "label": "N11-11",
+            "prompt": "整理した不等式を選ぼう。",
+            "answer": "-4x\\ge-26",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "-4x\\ge-26",
+              "-4x\\le-26",
+              "4x\\ge-26",
+              "-4x\\ge26"
+            ],
+            "purpose": "transfer",
+            "scaffoldLevel": "light",
+            "hints": [
+              "左は6x+9。両辺から10xと9を引く。"
+            ]
+          },
+          {
+            "id": "n11-12",
+            "label": "N11-12",
+            "prompt": "解の範囲を選ぼう。",
+            "answer": "x\\le\\frac{13}{2}",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "x\\le\\frac{13}{2}",
+              "x\\ge\\frac{13}{2}",
+              "x\\le-\\frac{13}{2}",
+              "x<\\frac{13}{2}"
+            ],
+            "purpose": "transfer",
+            "scaffoldLevel": "light",
+            "hints": [
+              "負の数で割るので≥は≤になり、負÷負は正。"
+            ]
+          },
+          {
+            "id": "n11-p008-q13-mul-left",
+            "label": "N11-P008-Q13-MUL-LEFT",
+            "prompt": "左辺の分母3を消すために掛ける数を選ぼう。",
+            "answer": "3",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "3",
+              "-3",
+              "1",
+              "6"
+            ],
+            "purpose": "causal-reasoning",
+            "scaffoldLevel": "light",
+            "hints": [
+              "分母を消すには、分母と同じ大きさの正の数を掛ける。"
+            ]
+          },
+          {
+            "id": "n11-p008-q13-mul-right",
+            "label": "N11-P008-Q13-MUL-RIGHT",
+            "prompt": "右辺にも同じ数を掛けよう。",
+            "answer": "3",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "3",
+              "1",
+              "-3",
+              "6"
+            ],
+            "purpose": "causal-reasoning",
+            "scaffoldLevel": "light",
+            "hints": [
+              "左辺に選んだ倍率と同じ数を右辺にも掛ける。"
+            ]
+          },
+          {
+            "id": "n11-13",
+            "label": "N11-13",
+            "prompt": "右辺3(2x+1)を展開したxの係数を選ぼう。",
+            "answer": "6",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "6",
+              "2",
+              "3",
+              "9"
+            ],
+            "purpose": "causal-reasoning",
+            "scaffoldLevel": "light",
+            "hints": [
+              "3を2xに掛けた係数を計算しよう。"
+            ]
+          },
+          {
+            "id": "n11-p008-q13-constant",
+            "label": "N11-P008-Q13-CONSTANT",
+            "prompt": "3(2x+1) の定数項を計算しよう。",
+            "answer": "3",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "3",
+              "1",
+              "-3",
+              "6"
+            ],
+            "purpose": "causal-reasoning",
+            "scaffoldLevel": "light",
+            "hints": [
+              "かっこの中の定数項にも外側の数を掛ける。"
+            ]
+          },
+          {
+            "id": "n11-wm013-q14-xcoef",
+            "label": "N11-WM013-Q14-XCOEF",
+            "prompt": "両辺からxを引いて右辺のxの係数を選ぼう。",
+            "answer": "5",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "5",
+              "6",
+              "7",
+              "-5"
+            ],
+            "purpose": "causal-reasoning",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "6xからxを引くので、係数6から1を引く。"
+            ]
+          },
+          {
+            "id": "n11-wm013-q14-const",
+            "label": "N11-WM013-Q14-CONST",
+            "prompt": "両辺から3を引いて左辺の定数を選ぼう。",
+            "answer": "-5",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "-5",
+              "1",
+              "-2",
+              "5"
+            ],
+            "purpose": "causal-reasoning",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "左辺の−2からさらに3を引く。"
+            ]
+          },
+          {
+            "id": "n11-14",
+            "label": "N11-14",
+            "prompt": "最終的な解の範囲を選ぼう。",
+            "answer": "x\\ge-1",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "x\\ge-1",
+              "x\\le-1",
+              "x\\ge1",
+              "x>-1"
+            ],
+            "purpose": "transfer",
+            "scaffoldLevel": "light",
+            "hints": [
+              "−5≤5xとなり、正の5で割る。"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

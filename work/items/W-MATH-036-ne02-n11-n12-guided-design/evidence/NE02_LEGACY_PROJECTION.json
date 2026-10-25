@@ -1,0 +1,1432 @@
+{
+  "schemaVersion": "production-ir/1",
+  "unitId": "math-numbers-expressions-ne02",
+  "subject": "math",
+  "mode": "textbook",
+  "sourceHash": "93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa",
+  "sourceBlocks": [
+    {
+      "id": "word-p-000662",
+      "kind": "heading"
+    },
+    {
+      "id": "word-p-000663",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000664",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000665",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000666",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000667",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000668",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000669",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000670",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000671",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000672",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000673",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000674",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000675",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000676",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000677",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000678",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000679",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000680",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000681",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000682",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000683",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000684",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000685",
+      "kind": "explanation"
+    }
+  ],
+  "coverage": [
+    {
+      "sourceId": "word-p-000662",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000663",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000664",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000665",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000666",
+      "nodeIds": [
+        "ne02-01"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000667",
+      "nodeIds": [
+        "ne02-02"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000668",
+      "nodeIds": [
+        "ne02-03"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000669",
+      "nodeIds": [
+        "ne02-04"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000670",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000671",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000672",
+      "nodeIds": [
+        "ne02-05"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000673",
+      "nodeIds": [
+        "ne02-06"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000674",
+      "nodeIds": [
+        "ne02-07"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000675",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000676",
+      "nodeIds": [
+        "ne02-08"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000677",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000678",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000679",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000680",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000681",
+      "nodeIds": [
+        "ne02-09"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000682",
+      "nodeIds": [
+        "ne02-10"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000683",
+      "nodeIds": [
+        "ne02-11"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000684",
+      "nodeIds": [
+        "ne02-12"
+      ],
+      "disposition": "taught",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    },
+    {
+      "sourceId": "word-p-000685",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧prompt/採点キーだけの診断投影。無番号本文の合格を主張しない。"
+    }
+  ],
+  "initialFacts": [
+    "real-arithmetic",
+    "square-identities",
+    "accepted-n08-absolute-value",
+    "accepted-n09-root-definition",
+    "accepted-n10-root-product-quotient"
+  ],
+  "nodes": [
+    {
+      "id": "ne02-01",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000666"
+      ],
+      "requires": [],
+      "produces": [
+        "ne02-01-legacy-result"
+      ],
+      "role": "check",
+      "goal": "a,bを正の実数とする。平方根の和を二乗し、平方の項と二つの交差項を分けて書く。",
+      "purpose": "concept-formation",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000666"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-01-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "ne02-01-old-text",
+              "kind": "text",
+              "text": "a,bを正の実数とする。平方根の和を二乗し、平方の項と二つの交差項を分けて書く。"
+            },
+            {
+              "id": "ne02-01-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "ne02-01",
+              "semanticRef": "ne02-01"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-01-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "ne02-01-old-hint",
+              "kind": "text",
+              "text": "和の平方の交差項に√aと√bを代入する。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "ne02-01",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "a,bを正の実数とする。平方根の和を二乗し、平方の項と二つの交差項を分けて書く。",
+        "prerequisiteIds": [],
+        "expected": {
+          "value": "a+b+2\\sqrt{ab}",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "ne02-01-choice-0",
+            "content": "a+b+2\\sqrt{ab}",
+            "feedback": "和の平方の交差項に√aと√bを代入する。"
+          },
+          {
+            "id": "ne02-01-choice-1",
+            "content": "a+b+\\sqrt{ab}",
+            "feedback": "和の平方の交差項に√aと√bを代入する。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "ne02-01-choice-2",
+            "content": "a+b+2ab",
+            "feedback": "和の平方の交差項に√aと√bを代入する。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "和の平方の交差項に√aと√bを代入する。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-01-old",
+          "slotId": "ne02-01-old-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-02",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000667"
+      ],
+      "requires": [
+        "ne02-01-legacy-result"
+      ],
+      "produces": [
+        "ne02-02-legacy-result"
+      ],
+      "role": "check",
+      "goal": "前の平方の展開を5+2√6と比べる。根号の外の部分と、交差項の根号の中を対応させる。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000667"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-02-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "ne02-02-old-text",
+              "kind": "text",
+              "text": "前の平方の展開を5+2√6と比べる。根号の外の部分と、交差項の根号の中を対応させる。"
+            },
+            {
+              "id": "ne02-02-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "ne02-02",
+              "semanticRef": "ne02-02"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-02-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "ne02-02-old-hint",
+              "kind": "text",
+              "text": "中央の係数2をそろえたまま、根号内を比べよう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "ne02-02",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "前の平方の展開を5+2√6と比べる。根号の外の部分と、交差項の根号の中を対応させる。",
+        "prerequisiteIds": [
+          "ne02-01-legacy-result"
+        ],
+        "expected": {
+          "value": "a+b=5,\\quad ab=6",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "ne02-02-choice-0",
+            "content": "a+b=5,\\quad ab=6",
+            "feedback": "中央の係数2をそろえたまま、根号内を比べよう。"
+          },
+          {
+            "id": "ne02-02-choice-1",
+            "content": "a+b=5,\\quad ab=3",
+            "feedback": "中央の係数2をそろえたまま、根号内を比べよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "ne02-02-choice-2",
+            "content": "a+b=5,\\quad ab=12",
+            "feedback": "中央の係数2をそろえたまま、根号内を比べよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "中央の係数2をそろえたまま、根号内を比べよう。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-02-old",
+          "slotId": "ne02-02-old-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-03",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000668"
+      ],
+      "requires": [
+        "ne02-02-legacy-result"
+      ],
+      "produces": [
+        "ne02-03-legacy-result"
+      ],
+      "role": "check",
+      "goal": "和と積の二条件を同時に満たす正の二数を探す。順番はどちらでもよい。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000668"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-03-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "ne02-03-old-text",
+              "kind": "text",
+              "text": "和と積の二条件を同時に満たす正の二数を探す。順番はどちらでもよい。"
+            },
+            {
+              "id": "ne02-03-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "ne02-03",
+              "semanticRef": "ne02-03"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-03-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "ne02-03-old-hint",
+              "kind": "text",
+              "text": "一方の条件だけで決めず、もう一方も代入して確かめよう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "ne02-03",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "和と積の二条件を同時に満たす正の二数を探す。順番はどちらでもよい。",
+        "prerequisiteIds": [
+          "ne02-02-legacy-result"
+        ],
+        "expected": {
+          "value": "a=2,\\quad b=3\\quad(\\text{順不同})",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "ne02-03-choice-0",
+            "content": "a=2,\\quad b=3\\quad(\\text{順不同})",
+            "feedback": "一方の条件だけで決めず、もう一方も代入して確かめよう。"
+          },
+          {
+            "id": "ne02-03-choice-1",
+            "content": "a=1,\\quad b=4",
+            "feedback": "一方の条件だけで決めず、もう一方も代入して確かめよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "ne02-03-choice-2",
+            "content": "a=1,\\quad b=6",
+            "feedback": "一方の条件だけで決めず、もう一方も代入して確かめよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "一方の条件だけで決めず、もう一方も代入して確かめよう。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-03-old",
+          "slotId": "ne02-03-old-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-04",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000669"
+      ],
+      "requires": [
+        "ne02-03-legacy-result"
+      ],
+      "produces": [
+        "ne02-04-legacy-result"
+      ],
+      "role": "check",
+      "goal": "平方が一致しただけでは符号が決まらない。候補が非負であることも確かめ、元の根号の値を選ぶ。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000669"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-04-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "ne02-04-old-text",
+              "kind": "text",
+              "text": "平方が一致しただけでは符号が決まらない。候補が非負であることも確かめ、元の根号の値を選ぶ。"
+            },
+            {
+              "id": "ne02-04-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "ne02-04",
+              "semanticRef": "ne02-04"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-04-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "ne02-04-old-hint",
+              "kind": "text",
+              "text": "√の記号が表す値の符号も条件に入れよう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "ne02-04",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "平方が一致しただけでは符号が決まらない。候補が非負であることも確かめ、元の根号の値を選ぶ。",
+        "prerequisiteIds": [
+          "ne02-03-legacy-result"
+        ],
+        "expected": {
+          "value": "\\sqrt2+\\sqrt3>0,\\quad\\sqrt{5+2\\sqrt6}=\\sqrt2+\\sqrt3",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "ne02-04-choice-0",
+            "content": "\\sqrt2+\\sqrt3>0,\\quad\\sqrt{5+2\\sqrt6}=\\sqrt2+\\sqrt3",
+            "feedback": "√の記号が表す値の符号も条件に入れよう。"
+          },
+          {
+            "id": "ne02-04-choice-1",
+            "content": "\\sqrt{5+2\\sqrt6}=-\\sqrt2-\\sqrt3",
+            "feedback": "√の記号が表す値の符号も条件に入れよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "ne02-04-choice-2",
+            "content": "\\sqrt{5+2\\sqrt6}=\\sqrt5+\\sqrt{2\\sqrt6}",
+            "feedback": "√の記号が表す値の符号も条件に入れよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "√の記号が表す値の符号も条件に入れよう。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-04-old",
+          "slotId": "ne02-04-old-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-05",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000672"
+      ],
+      "requires": [
+        "ne02-04-legacy-result"
+      ],
+      "produces": [
+        "ne02-05-legacy-result"
+      ],
+      "role": "check",
+      "goal": "次は中央項が負の9−4√5を考える。平方根の差の平方を展開し、対応させる形を作る。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000672"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-05-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "ne02-05-old-text",
+              "kind": "text",
+              "text": "次は中央項が負の9−4√5を考える。平方根の差の平方を展開し、対応させる形を作る。"
+            },
+            {
+              "id": "ne02-05-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "ne02-05",
+              "semanticRef": "ne02-05"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-05-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "ne02-05-old-hint",
+              "kind": "text",
+              "text": "差の平方では中央項の符号だけでなく、最後の平方の符号も確かめよう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "ne02-05",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "次は中央項が負の9−4√5を考える。平方根の差の平方を展開し、対応させる形を作る。",
+        "prerequisiteIds": [
+          "ne02-04-legacy-result"
+        ],
+        "expected": {
+          "value": "a+b-2\\sqrt{ab}",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "ne02-05-choice-0",
+            "content": "a+b-2\\sqrt{ab}",
+            "feedback": "差の平方では中央項の符号だけでなく、最後の平方の符号も確かめよう。"
+          },
+          {
+            "id": "ne02-05-choice-1",
+            "content": "a+b+2\\sqrt{ab}",
+            "feedback": "差の平方では中央項の符号だけでなく、最後の平方の符号も確かめよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "ne02-05-choice-2",
+            "content": "a-b-2\\sqrt{ab}",
+            "feedback": "差の平方では中央項の符号だけでなく、最後の平方の符号も確かめよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "差の平方では中央項の符号だけでなく、最後の平方の符号も確かめよう。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-05-old",
+          "slotId": "ne02-05-old-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-06",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000673"
+      ],
+      "requires": [
+        "ne02-05-legacy-result"
+      ],
+      "produces": [
+        "ne02-06-legacy-result"
+      ],
+      "role": "check",
+      "goal": "交差項の係数をそろえて比べられるよう、4√5を係数2と一つの根号の積へ直す。和と積を別々の条件にする。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000673"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-06-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "ne02-06-old-text",
+              "kind": "text",
+              "text": "交差項の係数をそろえて比べられるよう、4√5を係数2と一つの根号の積へ直す。和と積を別々の条件にする。"
+            },
+            {
+              "id": "ne02-06-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "ne02-06",
+              "semanticRef": "ne02-06"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-06-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "ne02-06-old-hint",
+              "kind": "text",
+              "text": "4√5を2でくくった残りを、一つの根号へ入れよう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "ne02-06",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "交差項の係数をそろえて比べられるよう、4√5を係数2と一つの根号の積へ直す。和と積を別々の条件にする。",
+        "prerequisiteIds": [
+          "ne02-05-legacy-result"
+        ],
+        "expected": {
+          "value": "a+b=9,\\quad ab=20",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "ne02-06-choice-0",
+            "content": "a+b=9,\\quad ab=20",
+            "feedback": "4√5を2でくくった残りを、一つの根号へ入れよう。"
+          },
+          {
+            "id": "ne02-06-choice-1",
+            "content": "a+b=9,\\quad ab=5",
+            "feedback": "4√5を2でくくった残りを、一つの根号へ入れよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "ne02-06-choice-2",
+            "content": "a+b=9,\\quad ab=10",
+            "feedback": "4√5を2でくくった残りを、一つの根号へ入れよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "4√5を2でくくった残りを、一つの根号へ入れよう。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-06-old",
+          "slotId": "ne02-06-old-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-07",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000674"
+      ],
+      "requires": [
+        "ne02-06-legacy-result"
+      ],
+      "produces": [
+        "ne02-07-legacy-result"
+      ],
+      "role": "check",
+      "goal": "和と積を満たす二数を求め、平方根の差へ戻す。この段階では二つの順序を候補として残す。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000674"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-07-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "ne02-07-old-text",
+              "kind": "text",
+              "text": "和と積を満たす二数を求め、平方根の差へ戻す。この段階では二つの順序を候補として残す。"
+            },
+            {
+              "id": "ne02-07-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "ne02-07",
+              "semanticRef": "ne02-07"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-07-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "ne02-07-old-hint",
+              "kind": "text",
+              "text": "二数の順序を入れ替えると、差の符号がどうなるかも書こう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "ne02-07",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "和と積を満たす二数を求め、平方根の差へ戻す。この段階では二つの順序を候補として残す。",
+        "prerequisiteIds": [
+          "ne02-06-legacy-result"
+        ],
+        "expected": {
+          "value": "a=5,\\ b=4:\\ \\sqrt5-2\\quad\\text{または}\\quad a=4,\\ b=5:\\ 2-\\sqrt5",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "ne02-07-choice-0",
+            "content": "a=5,\\ b=4:\\ \\sqrt5-2\\quad\\text{または}\\quad a=4,\\ b=5:\\ 2-\\sqrt5",
+            "feedback": "二数の順序を入れ替えると、差の符号がどうなるかも書こう。"
+          },
+          {
+            "id": "ne02-07-choice-1",
+            "content": "a=8,\\ b=1:\\ \\sqrt8-1",
+            "feedback": "二数の順序を入れ替えると、差の符号がどうなるかも書こう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "ne02-07-choice-2",
+            "content": "a=5,\\ b=4:\\ \\sqrt{5-4}",
+            "feedback": "二数の順序を入れ替えると、差の符号がどうなるかも書こう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "二数の順序を入れ替えると、差の符号がどうなるかも書こう。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-07-old",
+          "slotId": "ne02-07-old-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-08",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000676"
+      ],
+      "requires": [
+        "ne02-07-legacy-result"
+      ],
+      "produces": [
+        "ne02-08-legacy-result"
+      ],
+      "role": "check",
+      "goal": "二つの候補の大小を平方で比較する。根号そのものを表す非負の方を一つ選ぶ。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000676"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-08-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "ne02-08-old-text",
+              "kind": "text",
+              "text": "二つの候補の大小を平方で比較する。根号そのものを表す非負の方を一つ選ぶ。"
+            },
+            {
+              "id": "ne02-08-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "ne02-08",
+              "semanticRef": "ne02-08"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-08-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "ne02-08-old-hint",
+              "kind": "text",
+              "text": "正の数同士なので、平方した値の大小を比べられる。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "ne02-08",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "二つの候補の大小を平方で比較する。根号そのものを表す非負の方を一つ選ぶ。",
+        "prerequisiteIds": [
+          "ne02-07-legacy-result"
+        ],
+        "expected": {
+          "value": "\\sqrt5>2,\\quad\\sqrt{9-4\\sqrt5}=\\sqrt5-2",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "ne02-08-choice-0",
+            "content": "\\sqrt5>2,\\quad\\sqrt{9-4\\sqrt5}=\\sqrt5-2",
+            "feedback": "正の数同士なので、平方した値の大小を比べられる。"
+          },
+          {
+            "id": "ne02-08-choice-1",
+            "content": "\\sqrt{9-4\\sqrt5}=2-\\sqrt5",
+            "feedback": "正の数同士なので、平方した値の大小を比べられる。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "ne02-08-choice-2",
+            "content": "\\sqrt{9-4\\sqrt5}=\\pm(\\sqrt5-2)",
+            "feedback": "正の数同士なので、平方した値の大小を比べられる。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "正の数同士なので、平方した値の大小を比べられる。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-08-old",
+          "slotId": "ne02-08-old-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-09",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000681"
+      ],
+      "requires": [
+        "ne02-08-legacy-result"
+      ],
+      "produces": [
+        "ne02-09-legacy-result"
+      ],
+      "role": "check",
+      "goal": "最後は√(3+√5)に取り組む。根号の中全体を分母2へ通分し、分子の中央の係数を前とそろえる。",
+      "purpose": "transfer",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000681"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-09-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "ne02-09-old-text",
+              "kind": "text",
+              "text": "最後は√(3+√5)に取り組む。根号の中全体を分母2へ通分し、分子の中央の係数を前とそろえる。"
+            },
+            {
+              "id": "ne02-09-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "ne02-09",
+              "semanticRef": "ne02-09"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-09-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "ne02-09-old-hint",
+              "kind": "text",
+              "text": "根号の中の式全体に2/2を掛けよう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "ne02-09",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "最後は√(3+√5)に取り組む。根号の中全体を分母2へ通分し、分子の中央の係数を前とそろえる。",
+        "prerequisiteIds": [
+          "ne02-08-legacy-result"
+        ],
+        "expected": {
+          "value": "\\frac{6+2\\sqrt5}{2}",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "ne02-09-choice-0",
+            "content": "\\frac{6+2\\sqrt5}{2}",
+            "feedback": "根号の中の式全体に2/2を掛けよう。"
+          },
+          {
+            "id": "ne02-09-choice-1",
+            "content": "\\frac{3+2\\sqrt5}{2}",
+            "feedback": "根号の中の式全体に2/2を掛けよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "ne02-09-choice-2",
+            "content": "\\frac{6+\\sqrt5}{2}",
+            "feedback": "根号の中の式全体に2/2を掛けよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "根号の中の式全体に2/2を掛けよう。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-09-old",
+          "slotId": "ne02-09-old-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-10",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000682"
+      ],
+      "requires": [
+        "ne02-09-legacy-result"
+      ],
+      "produces": [
+        "ne02-10-legacy-result"
+      ],
+      "role": "check",
+      "goal": "分子が正、分母が正であることを確かめ、平方根の商の関係を使う。分子の和は一つの根号に保つ。",
+      "purpose": "transfer",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000682"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-10-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "ne02-10-old-text",
+              "kind": "text",
+              "text": "分子が正、分母が正であることを確かめ、平方根の商の関係を使う。分子の和は一つの根号に保つ。"
+            },
+            {
+              "id": "ne02-10-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "ne02-10",
+              "semanticRef": "ne02-10"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-10-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "ne02-10-old-hint",
+              "kind": "text",
+              "text": "商全体の平方根では、分母にも平方根を付ける。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "ne02-10",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "分子が正、分母が正であることを確かめ、平方根の商の関係を使う。分子の和は一つの根号に保つ。",
+        "prerequisiteIds": [
+          "ne02-09-legacy-result"
+        ],
+        "expected": {
+          "value": "\\frac{\\sqrt{6+2\\sqrt5}}{\\sqrt2}",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "ne02-10-choice-0",
+            "content": "\\frac{\\sqrt{6+2\\sqrt5}}{\\sqrt2}",
+            "feedback": "商全体の平方根では、分母にも平方根を付ける。"
+          },
+          {
+            "id": "ne02-10-choice-1",
+            "content": "\\frac{\\sqrt{6+2\\sqrt5}}{2}",
+            "feedback": "商全体の平方根では、分母にも平方根を付ける。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "ne02-10-choice-2",
+            "content": "\\frac{\\sqrt6+\\sqrt{2\\sqrt5}}{\\sqrt2}",
+            "feedback": "商全体の平方根では、分母にも平方根を付ける。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "商全体の平方根では、分母にも平方根を付ける。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-10-old",
+          "slotId": "ne02-10-old-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-11",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000683"
+      ],
+      "requires": [
+        "ne02-10-legacy-result"
+      ],
+      "produces": [
+        "ne02-11-legacy-result"
+      ],
+      "role": "check",
+      "goal": "分子へ、最初の例題で作った和と積の方法を使う。条件、二数、非負の平方根の和までを一つの対応として選ぶ。",
+      "purpose": "transfer",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000683"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-11-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "ne02-11-old-text",
+              "kind": "text",
+              "text": "分子へ、最初の例題で作った和と積の方法を使う。条件、二数、非負の平方根の和までを一つの対応として選ぶ。"
+            },
+            {
+              "id": "ne02-11-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "ne02-11",
+              "semanticRef": "ne02-11"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-11-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "ne02-11-old-hint",
+              "kind": "text",
+              "text": "分子の定数部分と中央項から、二つの条件を作り直そう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "ne02-11",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "分子へ、最初の例題で作った和と積の方法を使う。条件、二数、非負の平方根の和までを一つの対応として選ぶ。",
+        "prerequisiteIds": [
+          "ne02-10-legacy-result"
+        ],
+        "expected": {
+          "value": "a+b=6,\\ ab=5;\\ \\{a,b\\}=\\{5,1\\};\\ \\sqrt{6+2\\sqrt5}=\\sqrt5+1",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "ne02-11-choice-0",
+            "content": "a+b=6,\\ ab=5;\\ \\{a,b\\}=\\{5,1\\};\\ \\sqrt{6+2\\sqrt5}=\\sqrt5+1",
+            "feedback": "分子の定数部分と中央項から、二つの条件を作り直そう。"
+          },
+          {
+            "id": "ne02-11-choice-1",
+            "content": "a+b=6,\\ ab=5;\\ \\{a,b\\}=\\{3,3\\};\\ \\sqrt{6+2\\sqrt5}=2\\sqrt3",
+            "feedback": "分子の定数部分と中央項から、二つの条件を作り直そう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "ne02-11-choice-2",
+            "content": "a+b=6,\\ ab=5;\\ \\{a,b\\}=\\{5,1\\};\\ \\sqrt{6+2\\sqrt5}=\\sqrt5-1",
+            "feedback": "分子の定数部分と中央項から、二つの条件を作り直そう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "分子の定数部分と中央項から、二つの条件を作り直そう。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-11-old",
+          "slotId": "ne02-11-old-slot"
+        }
+      }
+    },
+    {
+      "id": "ne02-12",
+      "problemId": "ne02",
+      "sourceRefs": [
+        "word-p-000684"
+      ],
+      "requires": [
+        "ne02-11-legacy-result"
+      ],
+      "produces": [
+        "ne02-12-legacy-result"
+      ],
+      "role": "check",
+      "goal": "分子の結果を前の商へ戻す。分母と分子に同じ平方根を掛け、有理化して答えをまとめる。",
+      "purpose": "transfer",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000684"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "ne02-12-old",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "ne02-12-old-text",
+              "kind": "text",
+              "text": "分子の結果を前の商へ戻す。分母と分子に同じ平方根を掛け、有理化して答えをまとめる。"
+            },
+            {
+              "id": "ne02-12-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "ne02-12",
+              "semanticRef": "ne02-12"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "ne02-12-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "ne02-12-old-hint",
+              "kind": "text",
+              "text": "(√5+1)/√2の分子全体にも√2を掛けよう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "ne02-12",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "分子の結果を前の商へ戻す。分母と分子に同じ平方根を掛け、有理化して答えをまとめる。",
+        "prerequisiteIds": [
+          "ne02-11-legacy-result"
+        ],
+        "expected": {
+          "value": "\\frac{\\sqrt{10}+\\sqrt2}{2}",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "ne02-12-choice-0",
+            "content": "\\frac{\\sqrt{10}+\\sqrt2}{2}",
+            "feedback": "(√5+1)/√2の分子全体にも√2を掛けよう。"
+          },
+          {
+            "id": "ne02-12-choice-1",
+            "content": "\\frac{\\sqrt{10}+1}{2}",
+            "feedback": "(√5+1)/√2の分子全体にも√2を掛けよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          },
+          {
+            "id": "ne02-12-choice-2",
+            "content": "\\sqrt{10}+\\sqrt2",
+            "feedback": "(√5+1)/√2の分子全体にも√2を掛けよう。",
+            "misconception": "元の誤答を保存。新設計で表示と判断根拠を個別に確認。"
+          }
+        ],
+        "hints": [
+          "(√5+1)/√2の分子全体にも√2を掛けよう。"
+        ],
+        "answerInsertion": {
+          "blockId": "ne02-12-old",
+          "slotId": "ne02-12-old-slot"
+        }
+      }
+    }
+  ]
+}

@@ -16,7 +16,7 @@
   },
   "encoderHash": "1d0c6699c483167583c6ba00905876ddb7764a1571c359e3030515644dd3b1b9",
   "featureSchema": "learner-context-chunk-mean/1",
-  "datasetHash": "e00491975e2cfff1bedf4dabf4999cbe18a2303461b4ad90a97693a397148107",
+  "datasetHash": "9191d513107a5f1261dc18626cc583e3a1f514f48cf6d7335a314583e466005f",
   "splitManifest": {
     "layout_discomfort": {
       "groups": [
@@ -438,12 +438,22 @@
       "rows": 1
     },
     {
+      "dimension": "factor_grouping",
+      "reason": "NOT_TRAINABLE_SINGLE_CLASS",
+      "rows": 1
+    },
+    {
       "dimension": "layout_style_rejection",
       "reason": "NOT_TRAINABLE_SINGLE_CLASS",
       "rows": 1
     },
     {
       "dimension": "math_render_omission",
+      "reason": "NOT_TRAINABLE_SINGLE_CLASS",
+      "rows": 1
+    },
+    {
+      "dimension": "operation_order",
       "reason": "NOT_TRAINABLE_SINGLE_CLASS",
       "rows": 1
     },
@@ -455,7 +465,7 @@
     {
       "dimension": "overall_material_acceptance",
       "reason": "NOT_TRAINABLE_SINGLE_CLASS",
-      "rows": 2
+      "rows": 4
     },
     {
       "dimension": "prerequisite_missing",
@@ -496,7 +506,7 @@
   },
   "status": "OFFLINE_ONLY",
   "advisoryEligible": false,
-  "durationSeconds": 22.699054647000594,
+  "durationSeconds": 2.320650031000696,
   "featureReceipts": [
     {
       "rowId": "N07-USER-F01",
@@ -596,8 +606,44 @@
       "truncated": false,
       "aggregation": "token-weighted-mean",
       "encoderHash": "1d0c6699c483167583c6ba00905876ddb7764a1571c359e3030515644dd3b1b9"
+    },
+    {
+      "rowId": "N09-REJECTED-20261025",
+      "inputTokens": 536,
+      "processedTokens": 536,
+      "chunks": 2,
+      "truncated": false,
+      "aggregation": "token-weighted-mean",
+      "encoderHash": "1d0c6699c483167583c6ba00905876ddb7764a1571c359e3030515644dd3b1b9"
+    },
+    {
+      "rowId": "N10-REJECTED-20261025",
+      "inputTokens": 443,
+      "processedTokens": 443,
+      "chunks": 1,
+      "truncated": false,
+      "aggregation": "token-weighted-mean",
+      "encoderHash": "1d0c6699c483167583c6ba00905876ddb7764a1571c359e3030515644dd3b1b9"
+    },
+    {
+      "rowId": "N09-ACCEPTED-20261025",
+      "inputTokens": 43650,
+      "processedTokens": 43650,
+      "chunks": 88,
+      "truncated": false,
+      "aggregation": "token-weighted-mean",
+      "encoderHash": "1d0c6699c483167583c6ba00905876ddb7764a1571c359e3030515644dd3b1b9"
+    },
+    {
+      "rowId": "N10-ACCEPTED-20261025",
+      "inputTokens": 49781,
+      "processedTokens": 49781,
+      "chunks": 100,
+      "truncated": false,
+      "aggregation": "token-weighted-mean",
+      "encoderHash": "1d0c6699c483167583c6ba00905876ddb7764a1571c359e3030515644dd3b1b9"
     }
   ],
   "warning": "No unseen holdout; this run demonstrates learning, not production quality.",
-  "modelHash": "e9dcf3543404f99c3756daf5dfe76f69a987aac1aab326374432068400a43d92"
+  "modelHash": "0fdba96ef01eca3c857145b755d6f48519ce94addc4fbf8554c4b409438692a5"
 }

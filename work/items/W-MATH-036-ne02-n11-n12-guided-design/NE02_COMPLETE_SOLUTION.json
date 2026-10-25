@@ -1,0 +1,341 @@
+{
+  "kind": "argument",
+  "claim": "NE02の原問と追加途中段階が、明記した条件から成立する。",
+  "assumptions": [
+    "実数の四則・分配法則・順序",
+    "N08絶対値とN09非負の平方根の定義",
+    "N10根号の積商と平方公式"
+  ],
+  "sourceRefs": [
+    "word-p-000662",
+    "word-p-000663",
+    "word-p-000664",
+    "word-p-000665",
+    "word-p-000666",
+    "word-p-000667",
+    "word-p-000668",
+    "word-p-000669",
+    "word-p-000670",
+    "word-p-000671",
+    "word-p-000672",
+    "word-p-000673",
+    "word-p-000674",
+    "word-p-000675",
+    "word-p-000676",
+    "word-p-000677",
+    "word-p-000678",
+    "word-p-000679",
+    "word-p-000680",
+    "word-p-000681",
+    "word-p-000682",
+    "word-p-000683",
+    "word-p-000684",
+    "word-p-000685"
+  ],
+  "steps": [
+    {
+      "statement": "例題は $\\sqrt{5+2\\sqrt6}$ を簡単にすることです。根号の中にさらに根号がある形を **二重根号** といいます。外側の根号を外すには、平方が $5+2\\sqrt6$ と一致し、しかも非負である候補を作ります。N10で扱った平方根の定義と積の公式を使います。  この内容を、次の判断や変形の根拠に使います。",
+      "basisRefs": [
+        "word-p-000664",
+        "word-p-000665"
+      ],
+      "dependsOn": []
+    },
+    {
+      "statement": "$a,b$ は正の実数とします。候補の和全体を二乗するので、同じ括弧を二つ掛けます。分配法則で、左の各項を右の各項へ掛けます。 (\\sqrt a+\\sqrt b)^2=(\\sqrt a)^2+\\sqrt a\\sqrt b+\\sqrt b\\sqrt a+(\\sqrt b)^2 平方の項は $a,b$、交差する二項はどちらも $\\sqrt{ab}$ です。",
+      "basisRefs": [
+        "word-p-000666"
+      ],
+      "dependsOn": [
+        "ne02-intro-result"
+      ]
+    },
+    {
+      "statement": "四つの項のうち、同じ $\\sqrt{ab}$ を二つまとめます。平方の項は両端にあるので、和と交差項が見える形にします。 (\\sqrt a+\\sqrt b)^2=a+b+2\\sqrt{ab} ここから、定数部分と交差項を別々に合わせる方針を立てます。",
+      "basisRefs": [
+        "word-p-000666"
+      ],
+      "dependsOn": [
+        "ne02-q01-expand-result"
+      ]
+    },
+    {
+      "statement": "元の $5+2\\sqrt6$ に合わせるため、展開した $a+b+2\\sqrt{ab}$ のうち、根号の外の和を対応させます。これは同じ平方を作るための十分な条件を選ぶ操作です。 a+b=5 確定した結果を記録し、次の操作に使います。",
+      "basisRefs": [
+        "word-p-000667"
+      ],
+      "dependsOn": [
+        "ne02-01-result"
+      ]
+    },
+    {
+      "statement": "残る交差項を合わせます。$2\\sqrt{ab}$ を $2\\sqrt6$ と同じにするには、二つの非負の根号の中身を合わせればよいので、積の条件を作ります。 ab=6 確定した結果を記録し、次の操作に使います。",
+      "basisRefs": [
+        "word-p-000667"
+      ],
+      "dependsOn": [
+        "ne02-q02-sum-result"
+      ]
+    },
+    {
+      "statement": "いま作った和の条件と積の条件を、両方満たす候補を探せるように一組にします。 a+b=5,\\quad ab=6 この二条件を満たす候補が一組見つかれば、平方と符号を検算して答えを確定できます。",
+      "basisRefs": [
+        "word-p-000667"
+      ],
+      "dependsOn": [
+        "ne02-q02-product-result"
+      ]
+    },
+    {
+      "statement": "簡単な候補として正の整数の組を探します。積が $6$ になる組は、順番を区別しなければ $(1,6)$ と $(2,3)$ です。実数の候補をすべて列挙する必要はありません。二組の和を計算して、和が $5$ の組を選びます。 1+6=7,\\quad2+3=5 和と積の条件を同時に満たす組を使います。",
+      "basisRefs": [
+        "word-p-000668"
+      ],
+      "dependsOn": [
+        "ne02-02-result"
+      ]
+    },
+    {
+      "statement": "和が $5$ で積が $6$ だった組を、$a,b$ の値として記録します。和は順序を交換しても同じです。 a=2,\\quad b=3\\quad(\\text{順不同}) この値を、最初に置いた平方根の和へ代入します。",
+      "basisRefs": [
+        "word-p-000668"
+      ],
+      "dependsOn": [
+        "ne02-q03-pairs-result"
+      ]
+    },
+    {
+      "statement": "候補は $\\sqrt2+\\sqrt3$ です。先ほど作った平方の式に代入し、元の根号内に戻るかを確かめます。 (\\sqrt2+\\sqrt3)^2=5+2\\sqrt6 平方の値は一致しました。次に候補の符号を確認します。",
+      "basisRefs": [
+        "word-p-000669"
+      ],
+      "dependsOn": [
+        "ne02-03-result"
+      ]
+    },
+    {
+      "statement": "$\\sqrt2$ と $\\sqrt3$ はどちらも正です。候補の和全体の符号を選びます。 \\sqrt2+\\sqrt3\\ >\\ 0 非負で平方が同じ数は一つなので、この候補が元の根号の値です。",
+      "basisRefs": [
+        "word-p-000669"
+      ],
+      "dependsOn": [
+        "ne02-q04-square-result"
+      ]
+    },
+    {
+      "statement": "候補の平方が元の根号内に一致し、候補が正であることを確かめました。二つの確認と元の根号の値をまとめます。 \\sqrt2+\\sqrt3>0,\\quad\\sqrt{5+2\\sqrt6}=\\sqrt2+\\sqrt3 平方の一致だけでなく、根号が表す非負性まで確認して結論にしました。",
+      "basisRefs": [
+        "word-p-000669"
+      ],
+      "dependsOn": [
+        "ne02-q04-sign-result"
+      ]
+    },
+    {
+      "statement": "次の例題は $\\sqrt{9-4\\sqrt5}$ です。根号を含む項が引かれているので、候補を平方根の差にして、負の交差項を作ります。  この内容を、次の判断や変形の根拠に使います。",
+      "basisRefs": [
+        "word-p-000670",
+        "word-p-000671"
+      ],
+      "dependsOn": [
+        "ne02-04-result"
+      ]
+    },
+    {
+      "statement": "$(\\sqrt a-\\sqrt b)^2$ は、同じ差の括弧を二つ掛けることです。交差項では一方の因子だけに負号があるので、両方とも負になります。 (\\sqrt a-\\sqrt b)^2=a-\\sqrt{ab}-\\sqrt{ab}+b 確定した結果を記録し、次の操作に使います。",
+      "basisRefs": [
+        "word-p-000672"
+      ],
+      "dependsOn": [
+        "ne02-difference-problem-result"
+      ]
+    },
+    {
+      "statement": "同じ $-\\sqrt{ab}$ の二項をまとめます。和の平方と比べて、交差項の符号だけが違う形になります。 (\\sqrt a-\\sqrt b)^2=a+b-2\\sqrt{ab} 次は、元の係数4を、いまの展開の係数2にそろえます。",
+      "basisRefs": [
+        "word-p-000672"
+      ],
+      "dependsOn": [
+        "ne02-q05-expand-result"
+      ]
+    },
+    {
+      "statement": "交差項を $2\\sqrt{ab}$ と比べられるよう、$4\\sqrt5$ の係数 $4$ を $2\\times2$ に分けます。 4\\sqrt5=2(2\\sqrt5) 確定した結果を記録し、次の操作に使います。",
+      "basisRefs": [
+        "word-p-000673"
+      ],
+      "dependsOn": [
+        "ne02-05-result"
+      ]
+    },
+    {
+      "statement": "括弧内の $2\\sqrt5$ は正です。$2=\\sqrt4$ として根号の積の公式を使うと、外の係数2を残したまま一つの根号にできます。 4\\sqrt5=2\\sqrt{20} 元の式は $9-2\\sqrt{20}$ と同じです。",
+      "basisRefs": [
+        "word-p-000673"
+      ],
+      "dependsOn": [
+        "ne02-q06-coefficient-result"
+      ]
+    },
+    {
+      "statement": "元の式を $9-2\\sqrt{20}$ とそろえました。$a+b-2\\sqrt{ab}$ の和と積を、それぞれ同じ部分に対応させます。 a+b=9,\\quad ab=20 和は9、積は20となる候補を探します。",
+      "basisRefs": [
+        "word-p-000673"
+      ],
+      "dependsOn": [
+        "ne02-q06-radical-result"
+      ]
+    },
+    {
+      "statement": "正の整数の候補で積 $20$ を作る組は、順不同なら $(1,20),(2,10),(4,5)$ です。和を順に計算すると $21,12,9$ になります。条件の和が $9$ となる組を選びます。 \\{a,b\\}=\\{4,5\\} 差では順番を変えると符号が反対になるので、両方の差を残します。",
+      "basisRefs": [
+        "word-p-000674"
+      ],
+      "dependsOn": [
+        "ne02-06-result"
+      ]
+    },
+    {
+      "statement": "選んだ二数を平方根の差へ戻します。$\\sqrt4=2$ なので、二通りの順序でできる候補を並べます。この段階では符号で一つに絞りません。 a=5,\\ b=4:\\ \\sqrt5-2\\quad\\text{または}\\quad a=4,\\ b=5:\\ 2-\\sqrt5 二つは符号が反対で平方が同じです。根号の値を決めるために大小を調べます。",
+      "basisRefs": [
+        "word-p-000674"
+      ],
+      "dependsOn": [
+        "ne02-q07-pairs-result"
+      ]
+    },
+    {
+      "statement": "$\\sqrt5$ と $2$ は正なので、二乗した大小と元の大小が一致します。まず左の平方、次に右の平方を計算してから比較します。 (\\sqrt5)^2=5,\\quad2^2=4,\\quad5>4 したがって $\\sqrt5>2$ です。",
+      "basisRefs": [
+        "word-p-000676",
+        "word-p-000675"
+      ],
+      "dependsOn": [
+        "ne02-07-result"
+      ]
+    },
+    {
+      "statement": "$\\sqrt5>2$ の両辺から $2$ を引くと、$\\sqrt5-2>0$ です。もう一方の差はこれと符号が反対です。非負となる候補を選びます。 \\sqrt5-2 確定した結果を記録し、次の操作に使います。",
+      "basisRefs": [
+        "word-p-000676"
+      ],
+      "dependsOn": [
+        "ne02-q08-squares-result"
+      ]
+    },
+    {
+      "statement": "いま確かめた大小関係と非負の候補を使い、元の根号の値をまとめます。 \\sqrt5>2,\\quad\\sqrt{9-4\\sqrt5}=\\sqrt5-2 差の二乗を根号から戻す一般形は $\\sqrt{(\\sqrt a-\\sqrt b)^2}=|\\sqrt a-\\sqrt b|$ です。絶対値が必要なのは、差の符号が順序によって変わるためです。",
+      "basisRefs": [
+        "word-p-000676",
+        "word-p-000677"
+      ],
+      "dependsOn": [
+        "ne02-q08-nonnegative-result"
+      ]
+    },
+    {
+      "statement": "確認問題は $\\sqrt{3+\\sqrt5}$ です。これまでの $2\\sqrt{ab}$ と係数を合わせるため、根号内全体を分母2の分数に直します。一部の項だけを2倍すると元の値が変わってしまいます。  この内容を、次の判断や変形の根拠に使います。",
+      "basisRefs": [
+        "word-p-000678",
+        "word-p-000679",
+        "word-p-000680"
+      ],
+      "dependsOn": [
+        "ne02-08-result"
+      ]
+    },
+    {
+      "statement": "$3+\\sqrt5$ の値を変えずに分母を $2$ にするには、和全体を分子で $2$ 倍します。分配法則で分子を展開します。 2(3+\\sqrt5)=6+2\\sqrt5 確定した結果を記録し、次の操作に使います。",
+      "basisRefs": [
+        "word-p-000681"
+      ],
+      "dependsOn": [
+        "ne02-third-problem-result"
+      ]
+    },
+    {
+      "statement": "いま作った分子を分母2の上へ置きます。分子と分母を同じ2倍にしているので元の値と等しい分数です。 3+\\sqrt5=\\frac{6+2\\sqrt5}{2} 分子は正、分母2も正です。この条件で平方根の商の公式を使えます。",
+      "basisRefs": [
+        "word-p-000681"
+      ],
+      "dependsOn": [
+        "ne02-q09-double-result"
+      ]
+    },
+    {
+      "statement": "商の平方根の公式 $\\sqrt{A/B}=\\sqrt A/\\sqrt B$ は、$A\\ge0,B>0$ のとき使えます。ここでは $A=6+2\\sqrt5>0$、$B=2>0$ です。分子の和全体を一つの根号に入れたまま分けます。 \\sqrt{3+\\sqrt5}=\\frac{\\sqrt{6+2\\sqrt5}}{\\sqrt2} 分子だけに、最初の例題の方法を使います。",
+      "basisRefs": [
+        "word-p-000682"
+      ],
+      "dependsOn": [
+        "ne02-09-result",
+        "ne02-01-result"
+      ]
+    },
+    {
+      "statement": "分子は $\\sqrt{6+2\\sqrt5}$ です。平方根の和の平方を対応させるため、和と積の条件を作ります。 a+b=6,\\quad ab=5 確定した結果を記録し、次の操作に使います。",
+      "basisRefs": [
+        "word-p-000683"
+      ],
+      "dependsOn": [
+        "ne02-10-result",
+        "ne02-01-result"
+      ]
+    },
+    {
+      "statement": "積 $5$ の正の整数の組 $(1,5)$ は、和も $6$ です。したがって平方根の和として作る候補を、$\\sqrt1=1$ を使って書きます。 \\sqrt5+1 候補は正で、平方すると $6+2\\sqrt5$ になるので、分子の値として使えます。",
+      "basisRefs": [
+        "word-p-000683"
+      ],
+      "dependsOn": [
+        "ne02-q11-conditions-result"
+      ]
+    },
+    {
+      "statement": "和と積の条件、選んだ二数、平方と非負性を確かめた分子の結果を一組にして記録します。 a+b=6,\\ ab=5;\\ \\{a,b\\}=\\{5,1\\};\\ \\sqrt{6+2\\sqrt5}=\\sqrt5+1 分母は前に残した $\\sqrt2$ のままです。次は分子の結果を商の全体へ戻します。",
+      "basisRefs": [
+        "word-p-000683"
+      ],
+      "dependsOn": [
+        "ne02-q11-candidate-result"
+      ]
+    },
+    {
+      "statement": "全体は $(\\sqrt5+1)/\\sqrt2$ です。元の分母と掛けて平方を作る非零の因子を $c$ とします。まず因子を選び、その後に分子と分母の両方へ掛けます。 c=\\sqrt2 選んだ因子は正なので0ではありません。この因子を分子と分母の両方へ掛けても値は変わりません。",
+      "basisRefs": [
+        "word-p-000684"
+      ],
+      "dependsOn": [
+        "ne02-11-result"
+      ]
+    },
+    {
+      "statement": "分母は同じ根号を二つ掛けた平方になります。分子の和全体の括弧は残します。 \\frac{(\\sqrt5+1)\\sqrt2}{\\sqrt2\\sqrt2}=\\frac{(\\sqrt5+1)\\sqrt2}{2} 確定した結果を記録し、次の操作に使います。",
+      "basisRefs": [
+        "word-p-000684"
+      ],
+      "dependsOn": [
+        "ne02-q12-factor-result"
+      ]
+    },
+    {
+      "statement": "分母は求まりました。分子では $\\sqrt2$ を括弧内の両項へ掛け、根号の積を一つにまとめます。 (\\sqrt5+1)\\sqrt2=\\sqrt{10}+\\sqrt2 確定した結果を記録し、次の操作に使います。",
+      "basisRefs": [
+        "word-p-000684"
+      ],
+      "dependsOn": [
+        "ne02-q12-denominator-result"
+      ]
+    },
+    {
+      "statement": "分子と分母を元の商へ戻し、初めの根号の値を一つの式で結論にします。 \\sqrt{3+\\sqrt5}=\\frac{\\sqrt{10}+\\sqrt2}{2} 根号内を平方の形へ合わせ、候補を作り、符号まで確かめました。ここで扱った方法がすべての二重根号に機械的に使えるわけではありません。",
+      "basisRefs": [
+        "word-p-000684",
+        "word-p-000685"
+      ],
+      "dependsOn": [
+        "ne02-q12-numerator-result"
+      ]
+    }
+  ]
+}

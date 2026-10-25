@@ -1,0 +1,1966 @@
+{
+  "status": "PROPOSED",
+  "nodes": [
+    {
+      "id": "n12-intro",
+      "unit": "n12",
+      "q": 1,
+      "stageId": "n12-stage-01",
+      "goal": "連立の原問題を先に置く",
+      "before": "例題は $x-2<3x+5$ と $x+4\\le5-x$ を同時に満たす実数 $x$ を求めることです。まず一つずつ解き、その後で両方に共通する範囲を選びます。二つの条件は別々に記録します。",
+      "formula": null,
+      "answer": null,
+      "wrong": [],
+      "after": "この内容を、次の判断や変形の根拠に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000516",
+        "word-p-000517"
+      ],
+      "action": "expression",
+      "role": "example",
+      "itemId": null,
+      "anchor": false,
+      "known": [],
+      "resultId": "n12-intro-result",
+      "requires": [],
+      "knownRefs": []
+    },
+    {
+      "id": "n12-q01-subtract-x",
+      "unit": "n12",
+      "q": 1,
+      "stageId": "n12-stage-01",
+      "goal": "移項を両辺の同じ操作に戻す",
+      "before": "一つ目の $x-2<3x+5$ で、文字の項を右へまとめます。左の文字の項を打ち消すため、まず両辺から同じ式を引きます。",
+      "formula": "x-2-\\square<3x+5-x",
+      "answer": "x",
+      "wrong": [
+        [
+          "2",
+          "打ち消す対象は左のxです。"
+        ],
+        [
+          "-x",
+          "引くと逆にxが増えます。"
+        ]
+      ],
+      "after": "確定した結果を記録し、次の操作に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000518"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n12-q01-subtract-x",
+      "anchor": false,
+      "known": [],
+      "resultId": "n12-q01-subtract-x-result",
+      "requires": [
+        "n12-intro-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "x-2-x<3x+5-x"
+    },
+    {
+      "id": "n12-p002-q01-coef",
+      "unit": "n12",
+      "q": 1,
+      "stageId": "n12-stage-01",
+      "goal": "xを右へ移した後、xの係数はいくつ？",
+      "before": "左辺の $x-x=0$ を消し、右辺の $3x-x$ をまとめます。",
+      "formula": "-2<(\\square)x+5",
+      "answer": "2",
+      "wrong": [
+        [
+          "-2",
+          "計算対象・条件・符号を直前の式と照合します。両辺からxを引く。3x−xを計算しよう。"
+        ],
+        [
+          "3",
+          "計算対象・条件・符号を直前の式と照合します。両辺からxを引く。3x−xを計算しよう。"
+        ],
+        [
+          "4",
+          "計算対象・条件・符号を直前の式と照合します。両辺からxを引く。3x−xを計算しよう。"
+        ]
+      ],
+      "after": "確定した結果を記録し、次の操作に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000518"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n12-p002-q01-coef",
+      "anchor": true,
+      "known": [],
+      "resultId": "n12-p002-q01-coef-result",
+      "requires": [
+        "n12-q01-subtract-x-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "-2<(2)x+5"
+    },
+    {
+      "id": "n12-p002-q01-const",
+      "unit": "n12",
+      "q": 1,
+      "stageId": "n12-stage-01",
+      "goal": "両辺から5を引くと左辺の定数はいくつ？",
+      "before": "$-2<2x+5$ の両辺から5を引き、左辺を計算します。",
+      "formula": "\\square<2x",
+      "answer": "-7",
+      "wrong": [
+        [
+          "7",
+          "計算対象・条件・符号を直前の式と照合します。−2−5を計算しよう。"
+        ],
+        [
+          "-3",
+          "計算対象・条件・符号を直前の式と照合します。−2−5を計算しよう。"
+        ],
+        [
+          "3",
+          "計算対象・条件・符号を直前の式と照合します。−2−5を計算しよう。"
+        ]
+      ],
+      "after": "確定した結果を記録し、次の操作に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000518"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n12-p002-q01-const",
+      "anchor": true,
+      "known": [],
+      "resultId": "n12-p002-q01-const-result",
+      "requires": [
+        "n12-p002-q01-coef-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "-7<2x"
+    },
+    {
+      "id": "n12-01",
+      "unit": "n12",
+      "q": 1,
+      "stageId": "n12-stage-01",
+      "goal": "最初の不等式をxについて解こう。",
+      "before": "$-7<2x$ の両辺を正の2で割ると $-7/2<x$ です。同じ範囲を $x$ から書き、第一の条件として記録します。",
+      "formula": "\\square",
+      "answer": "x>-\\frac72",
+      "wrong": [
+        [
+          "x< -\\frac72",
+          "計算対象・条件・符号を直前の式と照合します。−7<2xになったら、正の2で割る。"
+        ],
+        [
+          "x>\\frac72",
+          "計算対象・条件・符号を直前の式と照合します。−7<2xになったら、正の2で割る。"
+        ],
+        [
+          "x\\ge-\\frac72",
+          "計算対象・条件・符号を直前の式と照合します。−7<2xになったら、正の2で割る。"
+        ]
+      ],
+      "after": "この結果は後で二つ目の条件と合わせるまで保持します。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000518"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n12-01",
+      "anchor": true,
+      "known": [],
+      "resultId": "n12-01-result",
+      "requires": [
+        "n12-p002-q01-const-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "x>-\\frac72"
+    },
+    {
+      "id": "n12-p002-q02-coef",
+      "unit": "n12",
+      "q": 2,
+      "stageId": "n12-stage-02",
+      "goal": "−xを左辺に移すとxの係数はいくつ？",
+      "before": "二つ目の条件 $x+4\\le5-x$ へ戻ります。両辺に $x$ を足し、左辺の $x+x$ の係数を求めます。",
+      "formula": "(\\square)x+4\\le5",
+      "answer": "2",
+      "wrong": [
+        [
+          "0",
+          "計算対象・条件・符号を直前の式と照合します。両辺にxを足す。x+xを考えよう。"
+        ],
+        [
+          "-2",
+          "計算対象・条件・符号を直前の式と照合します。両辺にxを足す。x+xを考えよう。"
+        ],
+        [
+          "1",
+          "計算対象・条件・符号を直前の式と照合します。両辺にxを足す。x+xを考えよう。"
+        ]
+      ],
+      "after": "確定した結果を記録し、次の操作に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000519"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n12-p002-q02-coef",
+      "anchor": true,
+      "known": [],
+      "resultId": "n12-p002-q02-coef-result",
+      "requires": [
+        "n12-01-result"
+      ],
+      "knownRefs": [
+        "n12-01-result"
+      ],
+      "resolvedFormula": "(2)x+4\\le5"
+    },
+    {
+      "id": "n12-p002-q02-const",
+      "unit": "n12",
+      "q": 2,
+      "stageId": "n12-stage-02",
+      "goal": "両辺から4を引くと右辺の定数はいくつ？",
+      "before": "$2x+4\\le5$ の両辺から4を引き、右辺を計算します。元の等号を含む不等号はそのまま残します。",
+      "formula": "2x\\le\\square",
+      "answer": "1",
+      "wrong": [
+        [
+          "9",
+          "計算対象・条件・符号を直前の式と照合します。5−4を計算しよう。等号は残る。"
+        ],
+        [
+          "-1",
+          "計算対象・条件・符号を直前の式と照合します。5−4を計算しよう。等号は残る。"
+        ],
+        [
+          "4",
+          "計算対象・条件・符号を直前の式と照合します。5−4を計算しよう。等号は残る。"
+        ]
+      ],
+      "after": "確定した結果を記録し、次の操作に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000519"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n12-p002-q02-const",
+      "anchor": true,
+      "known": [],
+      "resultId": "n12-p002-q02-const-result",
+      "requires": [
+        "n12-p002-q02-coef-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "2x\\le1"
+    },
+    {
+      "id": "n12-02",
+      "unit": "n12",
+      "q": 2,
+      "stageId": "n12-stage-02",
+      "goal": "二つ目の不等式をxについて解こう。",
+      "before": "$2x\\le1$ の両辺を正の2で割り、第二の条件を記録します。第一の条件は上書きせず、二つを並べて残します。",
+      "formula": "\\square",
+      "answer": "x\\le\\frac12",
+      "wrong": [
+        [
+          "x<\\frac12",
+          "計算対象・条件・符号を直前の式と照合します。最後の等号は問題の条件に残っている。"
+        ],
+        [
+          "x\\ge\\frac12",
+          "計算対象・条件・符号を直前の式と照合します。最後の等号は問題の条件に残っている。"
+        ],
+        [
+          "x\\le-\\frac12",
+          "計算対象・条件・符号を直前の式と照合します。最後の等号は問題の条件に残っている。"
+        ]
+      ],
+      "after": "元図の二段の数直線も、この二条件をそれぞれ表します。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000519",
+        "word-p-000520",
+        "word-p-000521",
+        "word-p-000522"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n12-02",
+      "anchor": true,
+      "known": [],
+      "resultId": "n12-02-result",
+      "requires": [
+        "n12-p002-q02-const-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "x\\le\\frac12"
+    },
+    {
+      "id": "n12-q03-first",
+      "unit": "n12",
+      "q": 3,
+      "stageId": "n12-stage-03",
+      "goal": "試す数が第一条件を満たすか調べる",
+      "before": "「同時に」の意味を、$x=1$ で確かめます。まず元の一つ目へ代入すると、左辺は $1-2=-1$、右辺は $3\\times1+5=8$ です。大小を選びます。",
+      "formula": "-1\\ \\square\\ 8",
+      "answer": "<",
+      "wrong": [
+        [
+          ">",
+          "二つの計算結果を比べます。"
+        ],
+        [
+          "=",
+          "異なる数を等号で結びません。"
+        ]
+      ],
+      "after": "一つ目は満たします。次に、同じxを二つ目にも代入します。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000523",
+        "word-p-000524",
+        "word-p-000525"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n12-q03-first",
+      "anchor": false,
+      "known": [],
+      "resultId": "n12-q03-first-result",
+      "requires": [
+        "n12-02-result"
+      ],
+      "knownRefs": [
+        "n12-02-result"
+      ],
+      "resolvedFormula": "-1\\ <\\ 8"
+    },
+    {
+      "id": "n12-q03-second",
+      "unit": "n12",
+      "q": 3,
+      "stageId": "n12-stage-03",
+      "goal": "同じ数を第二条件へ代入する",
+      "before": "元の二つ目 $x+4\\le5-x$ にも $x=1$ を代入します。左辺は $5$、右辺は $4$ になります。$5\\le4$ が成り立つかを判断します。",
+      "formula": "\\square",
+      "answer": "成り立たない",
+      "wrong": [
+        [
+          "成り立つ",
+          "5は4以下ではありません。"
+        ],
+        [
+          "一つ目を満たせばよい",
+          "元の問題は同時に両方を満たす条件です。"
+        ]
+      ],
+      "after": "確定した結果を記録し、次の操作に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000525"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n12-q03-second",
+      "anchor": false,
+      "known": [],
+      "resultId": "n12-q03-second-result",
+      "requires": [
+        "n12-q03-first-result"
+      ],
+      "knownRefs": []
+    },
+    {
+      "id": "n12-03",
+      "unit": "n12",
+      "q": 3,
+      "stageId": "n12-stage-03",
+      "goal": "x=1は二つとも満たす？",
+      "before": "同じ $x=1$ を両方へ代入した結果、一つ目は満たし、二つ目は満たしませんでした。この数を今回の解へ入れてよいか、根拠とまとめます。",
+      "formula": "\\square",
+      "answer": "二つ目に反するので不適",
+      "wrong": [
+        [
+          "一つ目を満たすから適する",
+          "計算対象・条件・符号を直前の式と照合します。「同時に」は片方だけでは足りない。"
+        ],
+        [
+          "二つとも満たす",
+          "計算対象・条件・符号を直前の式と照合します。「同時に」は片方だけでは足りない。"
+        ],
+        [
+          "どちらも満たさない",
+          "計算対象・条件・符号を直前の式と照合します。「同時に」は片方だけでは足りない。"
+        ]
+      ],
+      "after": "片方だけでは不十分です。両方へ入る共通部分を探します。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000525"
+      ],
+      "action": "meaning",
+      "role": "substep",
+      "itemId": "n12-03",
+      "anchor": true,
+      "known": [],
+      "resultId": "n12-03-result",
+      "requires": [
+        "n12-q03-second-result"
+      ],
+      "knownRefs": []
+    },
+    {
+      "id": "n12-q04-left-end",
+      "unit": "n12",
+      "q": 4,
+      "stageId": "n12-stage-04",
+      "goal": "左端を含むか条件で判断する",
+      "before": "記録した二条件は $x>-7/2$ と $x\\le1/2$ です。左端 $-7/2$ は第一の条件で等号になり、厳密な不等号を満たしません。左端側の記号を選びます。",
+      "formula": "-\\frac72\\ \\square\\ x",
+      "answer": "<",
+      "wrong": [
+        [
+          "\\le",
+          "左端は第一の厳密な条件に入りません。"
+        ],
+        [
+          ">",
+          "残すのは左端より右側です。"
+        ]
+      ],
+      "after": "確定した結果を記録し、次の操作に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000526"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n12-q04-left-end",
+      "anchor": false,
+      "known": [
+        "n12-01-result",
+        "n12-02-result"
+      ],
+      "resultId": "n12-q04-left-end-result",
+      "requires": [
+        "n12-03-result",
+        "n12-01-result",
+        "n12-02-result"
+      ],
+      "knownRefs": [
+        "n12-01-result",
+        "n12-02-result",
+        "n12-03-result"
+      ],
+      "resolvedFormula": "-\\frac72\\ <\\ x"
+    },
+    {
+      "id": "n12-04",
+      "unit": "n12",
+      "q": 4,
+      "stageId": "n12-stage-04",
+      "goal": "二つの範囲の共通部分を選ぼう。",
+      "before": "二本の数直線の重なる範囲を残します。左端は含まず、右端 $1/2$ は第二の条件に含まれ、第一の条件も満たします。端点の扱いを残して一つにまとめます。",
+      "formula": "\\square",
+      "answer": "-\\frac72<x\\le\\frac12",
+      "wrong": [
+        [
+          "-\\frac72\\le x\\le\\frac12",
+          "計算対象・条件・符号を直前の式と照合します。白丸は含まず黒丸は含む。両方の条件を満たす範囲を探す。"
+        ],
+        [
+          "-\\frac72<x<\\frac12",
+          "計算対象・条件・符号を直前の式と照合します。白丸は含まず黒丸は含む。両方の条件を満たす範囲を探す。"
+        ],
+        [
+          "x>-\\frac72\\ \\text{または}\\ x\\le\\frac12",
+          "計算対象・条件・符号を直前の式と照合します。白丸は含まず黒丸は含む。両方の条件を満たす範囲を探す。"
+        ]
+      ],
+      "after": "二つ以上の不等式を組にしたものを **連立不等式** といい、その解はすべての条件を同時に満たす数です。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000526",
+        "word-p-000527"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n12-04",
+      "anchor": true,
+      "known": [
+        "n12-01-result",
+        "n12-02-result"
+      ],
+      "resultId": "n12-04-result",
+      "requires": [
+        "n12-q04-left-end-result",
+        "n12-01-result",
+        "n12-02-result"
+      ],
+      "knownRefs": [
+        "n12-01-result",
+        "n12-02-result"
+      ],
+      "resolvedFormula": "-\\frac72<x\\le\\frac12"
+    },
+    {
+      "id": "n12-triple-problem",
+      "unit": "n12",
+      "q": 5,
+      "stageId": "n12-stage-05",
+      "goal": "三連不等式の確認問題を提示",
+      "before": "確認問題は $3x+2\\le2x+4\\le9-x$ です。中央の式が二つの比較に共通しています。左端と右端だけの比較へ置き換えず、左と中央、中央と右の二条件を残します。",
+      "formula": null,
+      "answer": null,
+      "wrong": [],
+      "after": "この内容を、次の判断や変形の根拠に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000528",
+        "word-p-000529",
+        "word-p-000530"
+      ],
+      "action": "expression",
+      "role": "check",
+      "itemId": null,
+      "anchor": false,
+      "known": [],
+      "resultId": "n12-triple-problem-result",
+      "requires": [
+        "n12-04-result"
+      ],
+      "knownRefs": [
+        "n12-04-result"
+      ]
+    },
+    {
+      "id": "n12-05",
+      "unit": "n12",
+      "q": 5,
+      "stageId": "n12-stage-05",
+      "goal": "三連不等式を二つの条件に分けよう。",
+      "before": "中央の $2x+4$ をそれぞれに残した、同時に満たす二つの不等式を選びます。",
+      "formula": "\\square",
+      "answer": "3x+2\\le2x+4\\ \\text{かつ}\\ 2x+4\\le9-x",
+      "wrong": [
+        [
+          "3x+2\\le9-x",
+          "計算対象・条件・符号を直前の式と照合します。中央の式と両隣をそれぞれ比較する。"
+        ],
+        [
+          "3x+2\\le2x+4\\ \\text{または}\\ 2x+4\\le9-x",
+          "計算対象・条件・符号を直前の式と照合します。中央の式と両隣をそれぞれ比較する。"
+        ],
+        [
+          "3x+2\\ge2x+4\\ \\text{かつ}\\ 2x+4\\le9-x",
+          "計算対象・条件・符号を直前の式と照合します。中央の式と両隣をそれぞれ比較する。"
+        ]
+      ],
+      "after": "分けた条件を、一つずつ解きます。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000531"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n12-05",
+      "anchor": true,
+      "known": [],
+      "resultId": "n12-05-result",
+      "requires": [
+        "n12-triple-problem-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "3x+2\\le2x+4\\ \\text{かつ}\\ 2x+4\\le9-x"
+    },
+    {
+      "id": "n12-p002-q06-left-coef",
+      "unit": "n12",
+      "q": 6,
+      "stageId": "n12-stage-06",
+      "goal": "3x−2xの係数を埋めよう。",
+      "before": "左側の $3x+2\\le2x+4$ の両辺から $2x$ を引きます。$3x-2x$ の係数をまとめます。",
+      "formula": "(\\square)x+2\\le4",
+      "answer": "1",
+      "wrong": [
+        [
+          "2",
+          "計算対象・条件・符号を直前の式と照合します。両辺から同じ文字の項を引くと、係数どうしの引き算になる。文字xを残したまま、係数だけを計算しよう。"
+        ],
+        [
+          "-1",
+          "計算対象・条件・符号を直前の式と照合します。両辺から同じ文字の項を引くと、係数どうしの引き算になる。文字xを残したまま、係数だけを計算しよう。"
+        ],
+        [
+          "5",
+          "計算対象・条件・符号を直前の式と照合します。両辺から同じ文字の項を引くと、係数どうしの引き算になる。文字xを残したまま、係数だけを計算しよう。"
+        ]
+      ],
+      "after": "確定した結果を記録し、次の操作に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000532"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n12-p002-q06-left-coef",
+      "anchor": true,
+      "known": [],
+      "resultId": "n12-p002-q06-left-coef-result",
+      "requires": [
+        "n12-05-result"
+      ],
+      "knownRefs": [
+        "n12-05-result"
+      ],
+      "resolvedFormula": "(1)x+2\\le4"
+    },
+    {
+      "id": "n12-p002-q06-left-const",
+      "unit": "n12",
+      "q": 6,
+      "stageId": "n12-stage-06",
+      "goal": "x+2≤4 の右辺の定数を求めよう。",
+      "before": "係数1は普通省いて $x$ と書きます。$x+2\\le4$ の両辺から2を引き、右辺を計算します。",
+      "formula": "x\\le\\square",
+      "answer": "2",
+      "wrong": [
+        [
+          "6",
+          "計算対象・条件・符号を直前の式と照合します。4−2を計算する。"
+        ],
+        [
+          "-2",
+          "計算対象・条件・符号を直前の式と照合します。4−2を計算する。"
+        ],
+        [
+          "4",
+          "計算対象・条件・符号を直前の式と照合します。4−2を計算する。"
+        ]
+      ],
+      "after": "確定した結果を記録し、次の操作に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000532"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n12-p002-q06-left-const",
+      "anchor": true,
+      "known": [],
+      "resultId": "n12-p002-q06-left-const-result",
+      "requires": [
+        "n12-p002-q06-left-coef-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "x\\le2"
+    },
+    {
+      "id": "n12-p002-q06-right-coef",
+      "unit": "n12",
+      "q": 6,
+      "stageId": "n12-stage-06",
+      "goal": "−xを左辺に移した後のxの係数を求めよう。",
+      "before": "次は右側の $2x+4\\le9-x$ です。両辺に $x$ を足し、左辺の係数をまとめます。",
+      "formula": "(\\square)x+4\\le9",
+      "answer": "3",
+      "wrong": [
+        [
+          "1",
+          "計算対象・条件・符号を直前の式と照合します。2x+xの係数を計算する。"
+        ],
+        [
+          "-3",
+          "計算対象・条件・符号を直前の式と照合します。2x+xの係数を計算する。"
+        ],
+        [
+          "2",
+          "計算対象・条件・符号を直前の式と照合します。2x+xの係数を計算する。"
+        ]
+      ],
+      "after": "確定した結果を記録し、次の操作に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000532"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n12-p002-q06-right-coef",
+      "anchor": true,
+      "known": [],
+      "resultId": "n12-p002-q06-right-coef-result",
+      "requires": [
+        "n12-p002-q06-left-const-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "(3)x+4\\le9"
+    },
+    {
+      "id": "n12-p002-q06-right-const",
+      "unit": "n12",
+      "q": 6,
+      "stageId": "n12-stage-06",
+      "goal": "3x+4≤9 の右辺の定数を求めよう。",
+      "before": "$3x+4\\le9$ の両辺から4を引いて、右辺の定数を計算します。",
+      "formula": "3x\\le\\square",
+      "answer": "5",
+      "wrong": [
+        [
+          "13",
+          "計算対象・条件・符号を直前の式と照合します。9−4を計算する。"
+        ],
+        [
+          "-5",
+          "計算対象・条件・符号を直前の式と照合します。9−4を計算する。"
+        ],
+        [
+          "9",
+          "計算対象・条件・符号を直前の式と照合します。9−4を計算する。"
+        ]
+      ],
+      "after": "確定した結果を記録し、次の操作に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000532"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n12-p002-q06-right-const",
+      "anchor": true,
+      "known": [],
+      "resultId": "n12-p002-q06-right-const-result",
+      "requires": [
+        "n12-p002-q06-right-coef-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "3x\\le5"
+    },
+    {
+      "id": "n12-06",
+      "unit": "n12",
+      "q": 6,
+      "stageId": "n12-stage-06",
+      "goal": "二つの不等式の解をそれぞれ選ぼう。",
+      "before": "左側は $x\\le2$ でした。右側は $3x\\le5$ を正の3で割ります。二つの結果は別の条件なので、等号でつながず二行で記録します。",
+      "formula": "\\square",
+      "answer": "x\\le2,\\quad x\\le\\frac53",
+      "wrong": [
+        [
+          "x\\le2,\\quad x\\ge\\frac53",
+          "計算対象・条件・符号を直前の式と照合します。一方の計算では3x≤5になる。"
+        ],
+        [
+          "x\\ge2,\\quad x\\le\\frac53",
+          "計算対象・条件・符号を直前の式と照合します。一方の計算では3x≤5になる。"
+        ],
+        [
+          "x\\le2,\\quad x\\le\\frac35",
+          "計算対象・条件・符号を直前の式と照合します。一方の計算では3x≤5になる。"
+        ]
+      ],
+      "after": "元図の共通縮尺で、二つの上限を比較します。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000532",
+        "word-p-000533",
+        "word-p-000534",
+        "word-p-000535"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n12-06",
+      "anchor": true,
+      "known": [],
+      "resultId": "n12-06-result",
+      "requires": [
+        "n12-p002-q06-right-const-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "x\\le2,\\quad x\\le\\frac53"
+    },
+    {
+      "id": "n12-q07-boundary",
+      "unit": "n12",
+      "q": 7,
+      "stageId": "n12-stage-07",
+      "goal": "大きい方の上限を実際に試す",
+      "before": "$x=2$ を元の三連不等式へ代入すると、三つの式は順に $8,8,7$ になります。左の $8\\le8$ は成り立ちます。右の $8\\le7$ が成り立つかを選びます。",
+      "formula": "\\square",
+      "answer": "成り立たない",
+      "wrong": [
+        [
+          "成り立つ",
+          "8は7以下ではありません。"
+        ],
+        [
+          "左だけで決まる",
+          "二つの比較を同時に満たす必要があります。"
+        ]
+      ],
+      "after": "$x=2$ は解へ入れられません。小さい方の上限までに絞ります。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000536"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n12-q07-boundary",
+      "anchor": false,
+      "known": [],
+      "resultId": "n12-q07-boundary-result",
+      "requires": [
+        "n12-06-result"
+      ],
+      "knownRefs": [
+        "n12-06-result"
+      ]
+    },
+    {
+      "id": "n12-07",
+      "unit": "n12",
+      "q": 7,
+      "stageId": "n12-stage-07",
+      "goal": "二つの上限のうち、共通に残る範囲は？",
+      "before": "$5/3<2$ なので、$x\\le5/3$ に入る数は $x\\le2$ も満たします。両方の条件を残す範囲を選びます。",
+      "formula": "\\square",
+      "answer": "x\\le\\frac53",
+      "wrong": [
+        [
+          "x\\le2",
+          "計算対象・条件・符号を直前の式と照合します。より小さい方の上限も超えてはいけない。"
+        ],
+        [
+          "x\\ge\\frac53",
+          "計算対象・条件・符号を直前の式と照合します。より小さい方の上限も超えてはいけない。"
+        ],
+        [
+          "\\frac53\\le x\\le2",
+          "計算対象・条件・符号を直前の式と照合します。より小さい方の上限も超えてはいけない。"
+        ]
+      ],
+      "after": "元の中央の式を使う二つの比較が必要であり、両端の比較だけでは不十分です。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000536",
+        "word-p-000537"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n12-07",
+      "anchor": true,
+      "known": [
+        "n12-06-result"
+      ],
+      "resultId": "n12-07-result",
+      "requires": [
+        "n12-q07-boundary-result",
+        "n12-06-result"
+      ],
+      "knownRefs": [
+        "n12-06-result"
+      ],
+      "resolvedFormula": "x\\le\\frac53"
+    },
+    {
+      "id": "n12-count-problem",
+      "unit": "n12",
+      "q": 8,
+      "stageId": "n12-stage-08",
+      "goal": "文章題の条件を先に全部示す",
+      "before": "例題です。50円の箱に、1個180円のシュークリームと1個130円のプリンを合わせて20個入れます。箱を含む合計を3200円以上3300円未満にします。シュークリームの個数を $x$ とし、何個入れられるかを求めます。",
+      "formula": null,
+      "answer": null,
+      "wrong": [],
+      "after": "この内容を、次の判断や変形の根拠に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000538",
+        "word-p-000539",
+        "word-p-000540"
+      ],
+      "action": "expression",
+      "role": "example",
+      "itemId": null,
+      "anchor": false,
+      "known": [],
+      "resultId": "n12-count-problem-result",
+      "requires": [
+        "n12-07-result"
+      ],
+      "knownRefs": [
+        "n12-07-result"
+      ]
+    },
+    {
+      "id": "n12-08",
+      "unit": "n12",
+      "q": 8,
+      "stageId": "n12-stage-08",
+      "goal": "プリンの個数をxで表そう。",
+      "before": "全部で20個で、シュークリームが $x$ 個です。残りをすべてプリンにするので、全体からシュークリームの個数を引いて表します。",
+      "formula": "\\text{プリンの個数}=\\square",
+      "answer": "20-x",
+      "wrong": [
+        [
+          "20+x",
+          "計算対象・条件・符号を直前の式と照合します。合わせて20個という条件を使う。"
+        ],
+        [
+          "x-20",
+          "計算対象・条件・符号を直前の式と照合します。合わせて20個という条件を使う。"
+        ],
+        [
+          "20",
+          "計算対象・条件・符号を直前の式と照合します。合わせて20個という条件を使う。"
+        ]
+      ],
+      "after": "次に、計算前に個数として許されるxの条件を記録します。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000541"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n12-08",
+      "anchor": true,
+      "known": [],
+      "resultId": "n12-08-result",
+      "requires": [
+        "n12-count-problem-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "\\text{プリンの個数}=20-x"
+    },
+    {
+      "id": "n12-09",
+      "unit": "n12",
+      "q": 9,
+      "stageId": "n12-stage-09",
+      "goal": "xの取りうる数の種類と範囲を選ぼう。",
+      "before": "個数は整数で、0個より少なくできず、全体20個より多くできません。$x$ の数の種類と範囲を一緒に記録します。",
+      "formula": "\\square",
+      "answer": "x\\in\\mathbb Z,\\ 0\\le x\\le20",
+      "wrong": [
+        [
+          "x\\in\\mathbb R,\\ 0\\le x\\le20",
+          "計算対象・条件・符号を直前の式と照合します。個数なので小数にはできない。全部同じ種類でもよい。"
+        ],
+        [
+          "x\\in\\mathbb Z,\\ x\\ge0",
+          "計算対象・条件・符号を直前の式と照合します。個数なので小数にはできない。全部同じ種類でもよい。"
+        ],
+        [
+          "x\\in\\mathbb Z,\\ 0<x<20",
+          "計算対象・条件・符号を直前の式と照合します。個数なので小数にはできない。全部同じ種類でもよい。"
+        ]
+      ],
+      "after": "この整数条件は、実数の不等式を解いている間も保存します。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000542"
+      ],
+      "action": "meaning",
+      "role": "substep",
+      "itemId": "n12-09",
+      "anchor": true,
+      "known": [],
+      "resultId": "n12-09-result",
+      "requires": [
+        "n12-08-result"
+      ],
+      "knownRefs": [
+        "n12-08-result"
+      ],
+      "resolvedFormula": "x\\in\\mathbb Z,\\ 0\\le x\\le20"
+    },
+    {
+      "id": "n12-p003-q10-meaning",
+      "unit": "n12",
+      "q": 10,
+      "stageId": "n12-stage-10",
+      "goal": "T(x) は何の金額を表す？",
+      "before": "$T(x)$ を、いまから作る合計金額の記号として導入します。箱代も含めて、何の金額を表す記号なのかを確認します。",
+      "formula": "\\square",
+      "answer": "箱と20個の菓子の合計金額",
+      "wrong": [
+        [
+          "箱だけの代金",
+          "計算対象・条件・符号を直前の式と照合します。xを決めたとき、箱と20個の菓子を買うための全体の金額だ。"
+        ],
+        [
+          "シュークリームの個数",
+          "計算対象・条件・符号を直前の式と照合します。xを決めたとき、箱と20個の菓子を買うための全体の金額だ。"
+        ],
+        [
+          "プリン1個の代金",
+          "計算対象・条件・符号を直前の式と照合します。xを決めたとき、箱と20個の菓子を買うための全体の金額だ。"
+        ]
+      ],
+      "after": "金額の単位は円です。以後、式T(x)の値を円単位で扱います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000543"
+      ],
+      "action": "meaning",
+      "role": "substep",
+      "itemId": "n12-p003-q10-meaning",
+      "anchor": true,
+      "known": [],
+      "resultId": "n12-p003-q10-meaning-result",
+      "requires": [
+        "n12-09-result"
+      ],
+      "knownRefs": [
+        "n12-09-result"
+      ]
+    },
+    {
+      "id": "n12-p003-q10-cream-coef",
+      "unit": "n12",
+      "q": 10,
+      "stageId": "n12-stage-10",
+      "goal": "シュークリームの単価をxの係数へ入れよう。",
+      "before": "シュークリームの代金は、単価180円に個数 $x$ を掛けます。式の係数へ単価を対応させます。",
+      "formula": "\\text{シュークリーム代}=(\\square)x",
+      "answer": "180",
+      "wrong": [
+        [
+          "130",
+          "計算対象・条件・符号を直前の式と照合します。1個の値段×個数を式で書く。"
+        ],
+        [
+          "50",
+          "計算対象・条件・符号を直前の式と照合します。1個の値段×個数を式で書く。"
+        ],
+        [
+          "20",
+          "計算対象・条件・符号を直前の式と照合します。1個の値段×個数を式で書く。"
+        ]
+      ],
+      "after": "確定した結果を記録し、次の操作に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000543"
+      ],
+      "action": "meaning",
+      "role": "substep",
+      "itemId": "n12-p003-q10-cream-coef",
+      "anchor": true,
+      "known": [],
+      "resultId": "n12-p003-q10-cream-coef-result",
+      "requires": [
+        "n12-p003-q10-meaning-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "\\text{シュークリーム代}=(180)x"
+    },
+    {
+      "id": "n12-p003-q10-pudding-coef",
+      "unit": "n12",
+      "q": 10,
+      "stageId": "n12-stage-10",
+      "goal": "プリンの単価を括弧の係数へ入れよう。",
+      "before": "プリンの個数は、すでに求めた $20-x$ です。単価130円を、その差全体に掛けます。",
+      "formula": "\\text{プリン代}=(\\square)(20-x)",
+      "answer": "130",
+      "wrong": [
+        [
+          "180",
+          "計算対象・条件・符号を直前の式と照合します。20−x個に掛ける単価を選ぶ。"
+        ],
+        [
+          "50",
+          "計算対象・条件・符号を直前の式と照合します。20−x個に掛ける単価を選ぶ。"
+        ],
+        [
+          "20",
+          "計算対象・条件・符号を直前の式と照合します。20−x個に掛ける単価を選ぶ。"
+        ]
+      ],
+      "after": "確定した結果を記録し、次の操作に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000543"
+      ],
+      "action": "meaning",
+      "role": "substep",
+      "itemId": "n12-p003-q10-pudding-coef",
+      "anchor": true,
+      "known": [
+        "n12-08-result"
+      ],
+      "resultId": "n12-p003-q10-pudding-coef-result",
+      "requires": [
+        "n12-p003-q10-cream-coef-result",
+        "n12-08-result"
+      ],
+      "knownRefs": [
+        "n12-08-result"
+      ],
+      "resolvedFormula": "\\text{プリン代}=(130)(20-x)"
+    },
+    {
+      "id": "n12-p003-q10-box-fee",
+      "unit": "n12",
+      "q": 10,
+      "stageId": "n12-stage-10",
+      "goal": "固定の箱代はいくら？",
+      "before": "箱の代金は菓子の内訳に関係なく一箱分です。問題文の箱代を固定の代金として対応させます。",
+      "formula": "\\text{箱代}=\\square\\ \\text{円}",
+      "answer": "50",
+      "wrong": [
+        [
+          "130",
+          "計算対象・条件・符号を直前の式と照合します。菓子の個数に関係なく払う金額に注目する。"
+        ],
+        [
+          "180",
+          "計算対象・条件・符号を直前の式と照合します。菓子の個数に関係なく払う金額に注目する。"
+        ],
+        [
+          "20",
+          "計算対象・条件・符号を直前の式と照合します。菓子の個数に関係なく払う金額に注目する。"
+        ]
+      ],
+      "after": "確定した結果を記録し、次の操作に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000543"
+      ],
+      "action": "meaning",
+      "role": "substep",
+      "itemId": "n12-p003-q10-box-fee",
+      "anchor": true,
+      "known": [],
+      "resultId": "n12-p003-q10-box-fee-result",
+      "requires": [
+        "n12-p003-q10-pudding-coef-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "\\text{箱代}=50\\ \\text{円}"
+    },
+    {
+      "id": "n12-10",
+      "unit": "n12",
+      "q": 10,
+      "stageId": "n12-stage-10",
+      "goal": "箱代と二種類の菓子代を合わせよう。",
+      "before": "箱代、シュークリーム代、プリン代を足して合計を作ります。プリンの個数の括弧を残し、全体を一つの金額の式へまとめます。",
+      "formula": "T(x)=\\square",
+      "answer": "50+180x+130(20-x)",
+      "wrong": [
+        [
+          "180x+130(20-x)",
+          "計算対象・条件・符号を直前の式と照合します。箱の固定代金も加える。"
+        ],
+        [
+          "50+180x+130x",
+          "計算対象・条件・符号を直前の式と照合します。箱の固定代金も加える。"
+        ],
+        [
+          "50+180x+130(20+x)",
+          "計算対象・条件・符号を直前の式と照合します。箱の固定代金も加える。"
+        ]
+      ],
+      "after": "次は合計金額に課された下限と上限を式にします。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000543"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n12-10",
+      "anchor": true,
+      "known": [],
+      "resultId": "n12-10-result",
+      "requires": [
+        "n12-p003-q10-box-fee-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "T(x)=50+180x+130(20-x)"
+    },
+    {
+      "id": "n12-p003-q11-lower-sign",
+      "unit": "n12",
+      "q": 11,
+      "stageId": "n12-stage-11",
+      "goal": "3200円以上を表す不等号を選ぼう。",
+      "before": "3200円以上には3200円と等しい場合も入ります。下限の数、合計金額の順に並べた記号を選びます。",
+      "formula": "3200\\ \\square\\ T(x)",
+      "answer": "\\le",
+      "wrong": [
+        [
+          "<",
+          "計算対象・条件・符号を直前の式と照合します。ちょうど3200円の場合も許す。"
+        ],
+        [
+          "\\ge",
+          "計算対象・条件・符号を直前の式と照合します。ちょうど3200円の場合も許す。"
+        ],
+        [
+          ">",
+          "計算対象・条件・符号を直前の式と照合します。ちょうど3200円の場合も許す。"
+        ]
+      ],
+      "after": "確定した結果を記録し、次の操作に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000544"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n12-p003-q11-lower-sign",
+      "anchor": true,
+      "known": [],
+      "resultId": "n12-p003-q11-lower-sign-result",
+      "requires": [
+        "n12-10-result"
+      ],
+      "knownRefs": [
+        "n12-10-result"
+      ],
+      "resolvedFormula": "3200\\ \\le\\ T(x)"
+    },
+    {
+      "id": "n12-p003-q11-upper-sign",
+      "unit": "n12",
+      "q": 11,
+      "stageId": "n12-stage-11",
+      "goal": "3300円未満を表す不等号を選ぼう。",
+      "before": "3300円未満には3300円と等しい場合は入りません。合計金額、上限の順に並べた記号を選びます。",
+      "formula": "T(x)\\ \\square\\ 3300",
+      "answer": "<",
+      "wrong": [
+        [
+          "\\le",
+          "計算対象・条件・符号を直前の式と照合します。3300円ちょうどは含めない。"
+        ],
+        [
+          ">",
+          "計算対象・条件・符号を直前の式と照合します。3300円ちょうどは含めない。"
+        ],
+        [
+          "\\ge",
+          "計算対象・条件・符号を直前の式と照合します。3300円ちょうどは含めない。"
+        ]
+      ],
+      "after": "確定した結果を記録し、次の操作に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000544"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n12-p003-q11-upper-sign",
+      "anchor": true,
+      "known": [],
+      "resultId": "n12-p003-q11-upper-sign-result",
+      "requires": [
+        "n12-p003-q11-lower-sign-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "T(x)\\ <\\ 3300"
+    },
+    {
+      "id": "n12-11",
+      "unit": "n12",
+      "q": 11,
+      "stageId": "n12-stage-11",
+      "goal": "金額の「以上・未満」を式にしよう。",
+      "before": "二つの金額条件を同時に満たすように並べ、中央の $T(x)$ を先ほど作った合計金額の式に置き換えます。",
+      "formula": "\\square",
+      "answer": "3200\\le50+180x+130(20-x)<3300",
+      "wrong": [
+        [
+          "3200<50+180x+130(20-x)\\le3300",
+          "計算対象・条件・符号を直前の式と照合します。以上には等号があり、未満には等号がない。"
+        ],
+        [
+          "3200\\le50+180x+130(20-x)\\le3300",
+          "計算対象・条件・符号を直前の式と照合します。以上には等号があり、未満には等号がない。"
+        ],
+        [
+          "3200\\ge50+180x+130(20-x)<3300",
+          "計算対象・条件・符号を直前の式と照合します。以上には等号があり、未満には等号がない。"
+        ]
+      ],
+      "after": "金額条件を式へ移せました。次は括弧を展開します。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000544"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n12-11",
+      "anchor": true,
+      "known": [
+        "n12-10-result"
+      ],
+      "resultId": "n12-11-result",
+      "requires": [
+        "n12-p003-q11-upper-sign-result",
+        "n12-10-result"
+      ],
+      "knownRefs": [
+        "n12-10-result"
+      ],
+      "resolvedFormula": "3200\\le50+180x+130(20-x)<3300"
+    },
+    {
+      "id": "n12-p003-q12-product-constant",
+      "unit": "n12",
+      "q": 12,
+      "stageId": "n12-stage-12",
+      "goal": "130×20を計算して定数項を作ろう。",
+      "before": "プリン代の括弧へ130を分配します。まず定数20へ掛け、プリン20個分の金額を計算します。",
+      "formula": "130\\times20=\\square",
+      "answer": "2600",
+      "wrong": [
+        [
+          "260",
+          "計算対象・条件・符号を直前の式と照合します。130を20回足した金額に等しい。"
+        ],
+        [
+          "2500",
+          "計算対象・条件・符号を直前の式と照合します。130を20回足した金額に等しい。"
+        ],
+        [
+          "1300",
+          "計算対象・条件・符号を直前の式と照合します。130を20回足した金額に等しい。"
+        ]
+      ],
+      "after": "確定した結果を記録し、次の操作に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000547"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n12-p003-q12-product-constant",
+      "anchor": true,
+      "known": [],
+      "resultId": "n12-p003-q12-product-constant-result",
+      "requires": [
+        "n12-11-result"
+      ],
+      "knownRefs": [
+        "n12-11-result"
+      ],
+      "resolvedFormula": "130\\times20=2600"
+    },
+    {
+      "id": "n12-p002-q12-signed-coef",
+      "unit": "n12",
+      "q": 12,
+      "stageId": "n12-stage-12",
+      "goal": "130を−xに分配した符号付き係数はいくつ？",
+      "before": "残る $-x$ の項にも130を掛けます。符号を含めた係数を入れ、先に求めた定数項を残します。",
+      "formula": "130(20-x)=2600+(\\square)x",
+      "answer": "-130",
+      "wrong": [
+        [
+          "130",
+          "計算対象・条件・符号を直前の式と照合します。括弧の外の正の数を、括弧内の負の項にも掛けよう。係数の大きさと符号を別々に確かめ、文字xを除いた数を選ぼう。"
+        ],
+        [
+          "-20",
+          "計算対象・条件・符号を直前の式と照合します。括弧の外の正の数を、括弧内の負の項にも掛けよう。係数の大きさと符号を別々に確かめ、文字xを除いた数を選ぼう。"
+        ],
+        [
+          "2600",
+          "計算対象・条件・符号を直前の式と照合します。括弧の外の正の数を、括弧内の負の項にも掛けよう。係数の大きさと符号を別々に確かめ、文字xを除いた数を選ぼう。"
+        ]
+      ],
+      "after": "確定した結果を記録し、次の操作に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000547"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n12-p002-q12-signed-coef",
+      "anchor": true,
+      "known": [],
+      "resultId": "n12-p002-q12-signed-coef-result",
+      "requires": [
+        "n12-p003-q12-product-constant-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "130(20-x)=2600+(-130)x"
+    },
+    {
+      "id": "n12-p003-q12-total-constant",
+      "unit": "n12",
+      "q": 12,
+      "stageId": "n12-stage-12",
+      "goal": "箱代とプリン20個分の定数項を足そう。",
+      "before": "合計金額へ戻ると、定数項は箱代50と2600です。この二項だけを先にまとめます。",
+      "formula": "50+2600=\\square",
+      "answer": "2650",
+      "wrong": [
+        [
+          "2600",
+          "計算対象・条件・符号を直前の式と照合します。50+2600を計算する。"
+        ],
+        [
+          "2550",
+          "計算対象・条件・符号を直前の式と照合します。50+2600を計算する。"
+        ],
+        [
+          "3100",
+          "計算対象・条件・符号を直前の式と照合します。50+2600を計算する。"
+        ]
+      ],
+      "after": "確定した結果を記録し、次の操作に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000547"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n12-p003-q12-total-constant",
+      "anchor": true,
+      "known": [],
+      "resultId": "n12-p003-q12-total-constant-result",
+      "requires": [
+        "n12-p002-q12-signed-coef-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "50+2600=2650"
+    },
+    {
+      "id": "n12-p003-q12-x-coef",
+      "unit": "n12",
+      "q": 12,
+      "stageId": "n12-stage-12",
+      "goal": "xの項の係数をまとめよう。",
+      "before": "次に $x$ の項だけをまとめます。シュークリーム代の $180x$ とプリン代の $-130x$ に共通する $x$ を残し、係数を計算します。",
+      "formula": "180x-130x=(\\square)x",
+      "answer": "50",
+      "wrong": [
+        [
+          "310",
+          "計算対象・条件・符号を直前の式と照合します。180−130でxの係数を求める。"
+        ],
+        [
+          "-50",
+          "計算対象・条件・符号を直前の式と照合します。180−130でxの係数を求める。"
+        ],
+        [
+          "130",
+          "計算対象・条件・符号を直前の式と照合します。180−130でxの係数を求める。"
+        ]
+      ],
+      "after": "定数の結果と係数の結果を別々に得たので、全体へ戻します。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000547"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n12-p003-q12-x-coef",
+      "anchor": true,
+      "known": [],
+      "resultId": "n12-p003-q12-x-coef-result",
+      "requires": [
+        "n12-p003-q12-total-constant-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "180x-130x=(50)x"
+    },
+    {
+      "id": "n12-12",
+      "unit": "n12",
+      "q": 12,
+      "stageId": "n12-stage-12",
+      "goal": "同類項をまとめて金額を整理しよう。",
+      "before": "$T(x)=2650+50x$ となりました。この短い式を、元の3200円以上3300円未満という条件の中央へ戻します。",
+      "formula": "\\square",
+      "answer": "3200\\le2650+50x<3300",
+      "wrong": [
+        [
+          "3200\\le2600+50x<3300",
+          "計算対象・条件・符号を直前の式と照合します。箱代とプリン20個分を定数項にする。"
+        ],
+        [
+          "3200\\le2650+310x<3300",
+          "計算対象・条件・符号を直前の式と照合します。箱代とプリン20個分を定数項にする。"
+        ],
+        [
+          "3200\\le2650-50x<3300",
+          "計算対象・条件・符号を直前の式と照合します。箱代とプリン20個分を定数項にする。"
+        ]
+      ],
+      "after": "次は中央を50xだけにするため、三つの辺へ同じ操作をします。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000547",
+        "word-p-000545",
+        "word-p-000546"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n12-12",
+      "anchor": true,
+      "known": [],
+      "resultId": "n12-12-result",
+      "requires": [
+        "n12-p003-q12-x-coef-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "3200\\le2650+50x<3300"
+    },
+    {
+      "id": "n12-q13-operation",
+      "unit": "n12",
+      "q": 13,
+      "stageId": "n12-stage-13",
+      "goal": "三辺へ行う操作を選ぶ",
+      "before": "$3200\\le2650+50x<3300$ の中央の定数を打ち消します。左右の端にも同じ数を引き、二つの大小関係を保ちます。",
+      "formula": "2650-\\square=0",
+      "answer": "2650",
+      "wrong": [
+        [
+          "50",
+          "消したいのは中央の定数です。"
+        ],
+        [
+          "3200",
+          "下限を消す操作ではありません。"
+        ]
+      ],
+      "after": "三辺から2650を引くと $3200-2650\\le50x<3300-2650$ です。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000548"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n12-q13-operation",
+      "anchor": false,
+      "known": [],
+      "resultId": "n12-q13-operation-result",
+      "requires": [
+        "n12-12-result"
+      ],
+      "knownRefs": [
+        "n12-12-result"
+      ],
+      "resolvedFormula": "2650-2650=0"
+    },
+    {
+      "id": "n12-p002-q13-lower",
+      "unit": "n12",
+      "q": 13,
+      "stageId": "n12-stage-13",
+      "goal": "3200−2650を計算して下端を埋めよう。",
+      "before": "三辺から同じ2650を引いた式の、左端の差を先に計算します。右端の差は次の段階で計算します。",
+      "formula": "\\square\\le50x<3300-2650",
+      "answer": "550",
+      "wrong": [
+        [
+          "650",
+          "計算対象・条件・符号を直前の式と照合します。下端から同じ2650を引く。"
+        ],
+        [
+          "-550",
+          "計算対象・条件・符号を直前の式と照合します。下端から同じ2650を引く。"
+        ],
+        [
+          "3200",
+          "計算対象・条件・符号を直前の式と照合します。下端から同じ2650を引く。"
+        ]
+      ],
+      "after": "確定した結果を記録し、次の操作に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000548"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n12-p002-q13-lower",
+      "anchor": true,
+      "known": [],
+      "resultId": "n12-p002-q13-lower-result",
+      "requires": [
+        "n12-q13-operation-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "550\\le50x<3300-2650"
+    },
+    {
+      "id": "n12-p002-q13-upper",
+      "unit": "n12",
+      "q": 13,
+      "stageId": "n12-stage-13",
+      "goal": "3300−2650を計算して上端を埋めよう。",
+      "before": "左端の計算結果を残し、右端の $3300-2650$ を計算します。",
+      "formula": "550\\le50x<\\square",
+      "answer": "650",
+      "wrong": [
+        [
+          "550",
+          "計算対象・条件・符号を直前の式と照合します。上端も同じ2650を引く。未満の向きは変わらない。"
+        ],
+        [
+          "-650",
+          "計算対象・条件・符号を直前の式と照合します。上端も同じ2650を引く。未満の向きは変わらない。"
+        ],
+        [
+          "3300",
+          "計算対象・条件・符号を直前の式と照合します。上端も同じ2650を引く。未満の向きは変わらない。"
+        ]
+      ],
+      "after": "確定した結果を記録し、次の操作に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000548"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n12-p002-q13-upper",
+      "anchor": true,
+      "known": [],
+      "resultId": "n12-p002-q13-upper-result",
+      "requires": [
+        "n12-p002-q13-lower-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "550\\le50x<650"
+    },
+    {
+      "id": "n12-q13-lower-divide",
+      "unit": "n12",
+      "q": 13,
+      "stageId": "n12-stage-13",
+      "goal": "下限を50で割る",
+      "before": "三辺を正の50で割るので、二つの不等号の向きはそのままです。中央は $x$ になり、左端の商を先に計算します。",
+      "formula": "\\frac{550}{50}=\\square",
+      "answer": "11",
+      "wrong": [
+        [
+          "10",
+          "550を50で割ります。"
+        ],
+        [
+          "13",
+          "上限の商と入れ替えません。"
+        ]
+      ],
+      "after": "確定した結果を記録し、次の操作に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000548"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n12-q13-lower-divide",
+      "anchor": false,
+      "known": [],
+      "resultId": "n12-q13-lower-divide-result",
+      "requires": [
+        "n12-p002-q13-upper-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "\\frac{550}{50}=11"
+    },
+    {
+      "id": "n12-q13-upper-divide",
+      "unit": "n12",
+      "q": 13,
+      "stageId": "n12-stage-13",
+      "goal": "上限を50で割る",
+      "before": "同じ操作で右端の商を計算します。3300円未満の厳密な不等号はそのまま残ります。",
+      "formula": "\\frac{650}{50}=\\square",
+      "answer": "13",
+      "wrong": [
+        [
+          "12",
+          "650を50で割ります。"
+        ],
+        [
+          "11",
+          "下限と上限を入れ替えません。"
+        ]
+      ],
+      "after": "確定した結果を記録し、次の操作に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000548"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n12-q13-upper-divide",
+      "anchor": false,
+      "known": [],
+      "resultId": "n12-q13-upper-divide-result",
+      "requires": [
+        "n12-q13-lower-divide-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "\\frac{650}{50}=13"
+    },
+    {
+      "id": "n12-13",
+      "unit": "n12",
+      "q": 13,
+      "stageId": "n12-stage-13",
+      "goal": "実数としてのxの範囲を解こう。",
+      "before": "求めた二つの商を、中央 $x$ の左右へ戻します。左は等号を含み、右は含まない範囲としてまとめます。",
+      "formula": "\\square",
+      "answer": "11\\le x<13",
+      "wrong": [
+        [
+          "11<x\\le13",
+          "計算対象・条件・符号を直前の式と照合します。各辺から2650を引き、正の50で割る。"
+        ],
+        [
+          "11\\le x\\le13",
+          "計算対象・条件・符号を直前の式と照合します。各辺から2650を引き、正の50で割る。"
+        ],
+        [
+          "x\\le11\\ \\text{または}\\ x>13",
+          "計算対象・条件・符号を直前の式と照合します。各辺から2650を引き、正の50で割る。"
+        ]
+      ],
+      "after": "これは実数としての範囲です。まだ菓子の個数としての答えではありません。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000548"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n12-13",
+      "anchor": true,
+      "known": [],
+      "resultId": "n12-13-result",
+      "requires": [
+        "n12-q13-upper-divide-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "11\\le x<13"
+    },
+    {
+      "id": "n12-q14-integer",
+      "unit": "n12",
+      "q": 14,
+      "stageId": "n12-stage-14",
+      "goal": "範囲に入る整数を選ぶ",
+      "before": "保存した条件は $x\\in\\mathbb Z,0\\le x\\le20$ です。$11\\le x<13$ に入る整数を残します。上端13は含まれません。",
+      "formula": "\\square",
+      "answer": "11,\\ 12",
+      "wrong": [
+        [
+          "11,\\ 12,\\ 13",
+          "上端の不等号は厳密です。"
+        ],
+        [
+          "12",
+          "左端は等号を含みます。"
+        ]
+      ],
+      "after": "二つとも最初の0以上20以下の条件も満たします。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000550",
+        "word-p-000549"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n12-q14-integer",
+      "anchor": false,
+      "known": [
+        "n12-09-result",
+        "n12-13-result"
+      ],
+      "resultId": "n12-q14-integer-result",
+      "requires": [
+        "n12-13-result",
+        "n12-09-result"
+      ],
+      "knownRefs": [
+        "n12-09-result",
+        "n12-13-result"
+      ],
+      "resolvedFormula": "11,\\ 12"
+    },
+    {
+      "id": "n12-14",
+      "unit": "n12",
+      "q": 14,
+      "stageId": "n12-stage-14",
+      "goal": "整数条件に戻って可能な個数を選ぼう。",
+      "before": "整数条件と計算した範囲を合わせて、シュークリームの個数を答えます。「または」は二つの可能な内訳を表します。",
+      "formula": "\\square",
+      "answer": "x=11\\ \\text{または}\\ 12",
+      "wrong": [
+        [
+          "11\\le x\\le13",
+          "計算対象・条件・符号を直前の式と照合します。実数の区間と整数の集合の共通部分を考える。"
+        ],
+        [
+          "x=12\\ \\text{または}\\ 13",
+          "計算対象・条件・符号を直前の式と照合します。実数の区間と整数の集合の共通部分を考える。"
+        ],
+        [
+          "x=11\\ \\text{のみ}",
+          "計算対象・条件・符号を直前の式と照合します。実数の区間と整数の集合の共通部分を考える。"
+        ]
+      ],
+      "after": "最後にそれぞれを元の金額へ戻して検算します。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000550"
+      ],
+      "action": "meaning",
+      "role": "substep",
+      "itemId": "n12-14",
+      "anchor": true,
+      "known": [],
+      "resultId": "n12-14-result",
+      "requires": [
+        "n12-q14-integer-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "x=11\\ \\text{または}\\ 12"
+    },
+    {
+      "id": "n12-q15-eleven",
+      "unit": "n12",
+      "q": 15,
+      "stageId": "n12-stage-15",
+      "goal": "11個の内訳で元の金額を検算する",
+      "before": "$x=11$ ならプリンは $20-11=9$ 個です。箱代と二種類の菓子代を、最初に作った式で計算します。",
+      "formula": "T(11)=50+180\\times11+130\\times9=\\square",
+      "answer": "3200",
+      "wrong": [
+        [
+          "3150",
+          "箱代50も含めます。"
+        ],
+        [
+          "3250",
+          "12個の場合と区別します。"
+        ]
+      ],
+      "after": "3200以上の下限を等号で満たし、3300未満にも入ります。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000551"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n12-q15-eleven",
+      "anchor": false,
+      "known": [
+        "n12-10-result"
+      ],
+      "resultId": "n12-q15-eleven-result",
+      "requires": [
+        "n12-14-result",
+        "n12-10-result"
+      ],
+      "knownRefs": [
+        "n12-10-result",
+        "n12-14-result"
+      ],
+      "resolvedFormula": "T(11)=50+180\\times11+130\\times9=3200"
+    },
+    {
+      "id": "n12-q15-twelve",
+      "unit": "n12",
+      "q": 15,
+      "stageId": "n12-stage-15",
+      "goal": "12個の内訳も別に検算する",
+      "before": "$x=12$ ならプリンは8個です。前の検算と別の一行で、同じ合計金額の式へ代入します。",
+      "formula": "T(12)=50+180\\times12+130\\times8=\\square",
+      "answer": "3250",
+      "wrong": [
+        [
+          "3200",
+          "11個の場合と区別します。"
+        ],
+        [
+          "3300",
+          "上端そのものにはなりません。"
+        ]
+      ],
+      "after": "こちらも3200以上3300未満です。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000551"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n12-q15-twelve",
+      "anchor": false,
+      "known": [
+        "n12-10-result"
+      ],
+      "resultId": "n12-q15-twelve-result",
+      "requires": [
+        "n12-q15-eleven-result",
+        "n12-10-result"
+      ],
+      "knownRefs": [
+        "n12-10-result"
+      ],
+      "resolvedFormula": "T(12)=50+180\\times12+130\\times8=3250"
+    },
+    {
+      "id": "n12-15",
+      "unit": "n12",
+      "q": 15,
+      "stageId": "n12-stage-15",
+      "goal": "箱代を含め、候補二つの合計金額を確かめよう。",
+      "before": "二つの検算は別の内訳なので、一つの等式の連鎖にはしません。各金額をそれぞれの個数に対応させ、二行で結果をまとめます。",
+      "formula": "\\square",
+      "answer": "T(11)=3200\\text{円},\\ T(12)=3250\\text{円}",
+      "wrong": [
+        [
+          "T(11)=3150\\text{円},\\ T(12)=3200\\text{円}",
+          "計算対象・条件・符号を直前の式と照合します。整理したT(x)へ二つの整数を順に代入する。"
+        ],
+        [
+          "T(11)=3200\\text{円},\\ T(12)=3300\\text{円}",
+          "計算対象・条件・符号を直前の式と照合します。整理したT(x)へ二つの整数を順に代入する。"
+        ],
+        [
+          "T(11)=3250\\text{円},\\ T(12)=3200\\text{円}",
+          "計算対象・条件・符号を直前の式と照合します。整理したT(x)へ二つの整数を順に代入する。"
+        ]
+      ],
+      "after": "元のまとめの図は、この検算が終わってから表示します。式を解いた後も、最初の量の意味と整数条件へ戻ることが必要です。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000551",
+        "word-p-000552",
+        "word-p-000553",
+        "word-p-000554"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n12-15",
+      "anchor": true,
+      "known": [],
+      "resultId": "n12-15-result",
+      "requires": [
+        "n12-q15-twelve-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "T(11)=3200\\text{円},\\ T(12)=3250\\text{円}"
+    }
+  ]
+}

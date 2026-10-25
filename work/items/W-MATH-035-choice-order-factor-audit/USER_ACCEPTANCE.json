@@ -1,0 +1,11 @@
+{
+  "quote": "ごめんね。私が言っているのはN09,N10承認の意味。そして残っているNの作業また何かあるのか",
+  "learningRequest": "よし。まずN09,N10の機械学習そして次はNE02,N11,N12でよろしく",
+  "sourceSHA": "fa0eff271a97940fad08d83960ae50faeabc81b9",
+  "units": [
+    "n09",
+    "n10"
+  ],
+  "scope": "one overall material acceptance per unit",
+  "individualDimensionLabelsInferred": false
+}

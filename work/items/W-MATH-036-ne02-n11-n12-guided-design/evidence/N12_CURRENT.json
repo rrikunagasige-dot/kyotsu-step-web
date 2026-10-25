@@ -1,0 +1,1955 @@
+{
+  "sourceSHA": "fa0eff271a97940fad08d83960ae50faeabc81b9",
+  "unit": {
+    "schemaVersion": "1.1",
+    "unitId": "math-numbers-expressions-n12",
+    "revision": 3,
+    "status": "review",
+    "subject": "math-1a",
+    "chapter": {
+      "chapterId": "math-ch01-numbers-expressions",
+      "chapterNumber": "1",
+      "chapterTitle": "数と式",
+      "unitCode": "1NUM",
+      "orderInChapter": 12,
+      "sourcePages": [
+        30,
+        31,
+        32
+      ]
+    },
+    "title": "連立不等式と整数条件",
+    "subtitle": "条件の共通部分を確かめ、現実の個数に戻して考える。",
+    "source": {
+      "type": "reference",
+      "label": "ユーザー提供「数と式」教科書モード対話段階導入版 v2 / N12",
+      "rightsNote": "教師編集WordのN12原問15件と元図3点を対応させたレビュー用新規学習本文。元の別冊解答は未提供・独立数学監査。出版社素材の独立再配布許諾を主張しない。"
+    },
+    "objectives": [
+      "複数の不等式の解の共通部分を端点も含めて読む",
+      "三連不等式を二つの条件に分けて解く",
+      "代金の条件と整数の個数条件を組み合わせて確かめる"
+    ],
+    "sections": [
+      {
+        "id": "lesson",
+        "number": "12",
+        "title": "本文",
+        "description": "数直線で共通部分を考え、整数の個数へ戻る。",
+        "role": "concept",
+        "figures": [
+          {
+            "id": "n12-f01",
+            "src": "/assets/math/textbook/numbers/n12-f01.png",
+            "alt": "二つの不等式を別々の段に表した元の数直線。左端は白丸、右端は黒丸。",
+            "caption": "二つの条件の範囲を上下で比べよう。共通部分はまだ選ばない。",
+            "overlays": []
+          },
+          {
+            "id": "n12-f02",
+            "src": "/assets/math/textbook/numbers/n12-f02.png",
+            "alt": "上限が2と5/3で異なる二つの範囲を示した元の二段の数直線。",
+            "caption": "上下のどちらの上限まで残るかを考えよう。",
+            "overlays": []
+          },
+          {
+            "id": "n12-f03",
+            "src": "/assets/math/textbook/numbers/n12-f03.png",
+            "alt": "最後の検算まで終えた後のまとめの数直線。整数の解を示している。",
+            "caption": "整数条件と金額の検算を終えた後のまとめ。",
+            "overlays": []
+          }
+        ],
+        "readingFlow": [
+          {
+            "id": "heading-system",
+            "type": "heading",
+            "text": "二つの条件の共通部分を探す"
+          },
+          {
+            "id": "marker-system-example",
+            "type": "marker",
+            "kind": "example",
+            "text": "例題"
+          },
+          {
+            "id": "paragraph-system-intro",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "次の二つの不等式を"
+              },
+              {
+                "type": "term",
+                "text": "同時に"
+              },
+              {
+                "type": "text",
+                "text": "満たす実数 "
+              },
+              {
+                "type": "math",
+                "latex": "x"
+              },
+              {
+                "type": "text",
+                "text": " を求めよう。"
+              }
+            ]
+          },
+          {
+            "id": "formula-system",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "\\begin{cases}x-2<3x+5\\\\x+4\\le5-x\\end{cases}"
+              }
+            ]
+          },
+          {
+            "id": "paragraph-system-first",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "まず別々に解く。一つ目では、"
+              },
+              {
+                "type": "math",
+                "latex": "x"
+              },
+              {
+                "type": "text",
+                "text": " の項を右にまとめて、"
+              }
+            ]
+          },
+          {
+            "id": "formula-q01-coef",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "x-2<3x+5\\quad\\Longrightarrow\\quad-2<"
+              },
+              {
+                "type": "choice",
+                "itemId": "n12-p002-q01-coef"
+              },
+              {
+                "type": "math",
+                "latex": "x+5"
+              }
+            ],
+            "derivationId": "solve-first"
+          },
+          {
+            "id": "paragraph-q01-const",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "ここまでで x の係数を求めた。続いて両辺から5を引いて、左側の定数を計算しよう。"
+              }
+            ],
+            "derivationId": "solve-first"
+          },
+          {
+            "id": "formula-q01-const",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "-2<2x+5\\quad\\Longrightarrow\\quad"
+              },
+              {
+                "type": "choice",
+                "itemId": "n12-p002-q01-const"
+              },
+              {
+                "type": "math",
+                "latex": "<2x"
+              }
+            ],
+            "derivationId": "solve-first"
+          },
+          {
+            "id": "paragraph-system-first-after",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "両辺から同じ数を引いても不等号の向きは変わらない。最後は正の2で割ろう。"
+              }
+            ],
+            "derivationId": "solve-first"
+          },
+          {
+            "id": "formula-n12-01",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "-7<2x\\quad\\Longrightarrow\\quad"
+              },
+              {
+                "type": "choice",
+                "itemId": "n12-01"
+              }
+            ],
+            "derivationId": "solve-first"
+          },
+          {
+            "id": "paragraph-system-second",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "二つ目でも、"
+              },
+              {
+                "type": "math",
+                "latex": "x"
+              },
+              {
+                "type": "text",
+                "text": " を片方に集める。"
+              }
+            ]
+          },
+          {
+            "id": "formula-q02-coef",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "x+4\\le5-x\\quad\\Longrightarrow\\quad"
+              },
+              {
+                "type": "choice",
+                "itemId": "n12-p002-q02-coef"
+              },
+              {
+                "type": "math",
+                "latex": "x+4\\le5"
+              }
+            ],
+            "derivationId": "solve-second"
+          },
+          {
+            "id": "paragraph-q02-const",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "両辺から4を引く。等号を含む不等号はそのまま残そう。"
+              }
+            ],
+            "derivationId": "solve-second"
+          },
+          {
+            "id": "formula-q02-const",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "2x+4\\le5\\quad\\Longrightarrow\\quad2x\\le"
+              },
+              {
+                "type": "choice",
+                "itemId": "n12-p002-q02-const"
+              }
+            ],
+            "derivationId": "solve-second"
+          },
+          {
+            "id": "paragraph-system-second-after",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "残った係数2は正なので、割っても不等号の向きはそのまま。"
+              }
+            ],
+            "derivationId": "solve-second"
+          },
+          {
+            "id": "formula-n12-02",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "2x\\le1\\quad\\Longrightarrow\\quad"
+              },
+              {
+                "type": "choice",
+                "itemId": "n12-02"
+              }
+            ],
+            "derivationId": "solve-second"
+          },
+          {
+            "id": "figure-first-lines",
+            "type": "figure",
+            "figureId": "n12-f01"
+          },
+          {
+            "id": "paragraph-system-figure",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "数直線の○はその端点を含まず、●は含むという意味である。上下どちらか片方に入ればよいのだろうか。"
+              }
+            ]
+          },
+          {
+            "id": "paragraph-n12-03",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "例えば "
+              },
+              {
+                "type": "math",
+                "latex": "x=1"
+              },
+              {
+                "type": "text",
+                "text": " を試そう。一つ目を満たすだけでなく、二つ目も満たすかを確かめると、"
+              },
+              {
+                "type": "math",
+                "latex": "x=1"
+              },
+              {
+                "type": "text",
+                "text": " は "
+              },
+              {
+                "type": "choice",
+                "itemId": "n12-03"
+              },
+              {
+                "type": "text",
+                "text": "。"
+              }
+            ]
+          },
+          {
+            "id": "paragraph-system-overlap",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "「同時に満たす」とは、どちらの範囲にも入っているということである。二本の図の"
+              },
+              {
+                "type": "term",
+                "text": "共通部分"
+              },
+              {
+                "type": "text",
+                "text": "を端点の違いも含めて書くと、"
+              }
+            ]
+          },
+          {
+            "id": "formula-n12-04",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "choice",
+                "itemId": "n12-04"
+              }
+            ]
+          },
+          {
+            "id": "paragraph-system-term",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "このように二つ以上の不等式を組にしたものを"
+              },
+              {
+                "type": "term",
+                "text": "連立不等式"
+              },
+              {
+                "type": "text",
+                "text": "という。答えは各不等式の解の共通部分であって、どちらか一方の解全部ではない。"
+              }
+            ]
+          },
+          {
+            "id": "marker-system-check",
+            "type": "marker",
+            "kind": "check",
+            "text": "確認"
+          },
+          {
+            "id": "paragraph-triple-intro",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "今度は、"
+              },
+              {
+                "type": "math",
+                "latex": "3x+2\\le2x+4\\le9-x"
+              },
+              {
+                "type": "text",
+                "text": " を考えよう。三つの式が並ぶときも、中央の式を使って二つの条件に分ける。まず必要な二つの不等式は "
+              },
+              {
+                "type": "choice",
+                "itemId": "n12-05"
+              },
+              {
+                "type": "text",
+                "text": "。"
+              }
+            ]
+          },
+          {
+            "id": "paragraph-triple-solve",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "二つを一度に片づけず、まず左側の不等式から。"
+              }
+            ]
+          },
+          {
+            "id": "formula-q06-left-coef",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "3x+2\\le2x+4\\quad\\Longrightarrow\\quad"
+              },
+              {
+                "type": "choice",
+                "itemId": "n12-p002-q06-left-coef"
+              },
+              {
+                "type": "math",
+                "latex": "x+2\\le4"
+              }
+            ],
+            "derivationId": "triple-solve"
+          },
+          {
+            "id": "paragraph-q06-left-const",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "係数1はふつう書かず、1x=x と表す。次は両辺から2を引こう。"
+              }
+            ],
+            "derivationId": "triple-solve"
+          },
+          {
+            "id": "formula-q06-left-const",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "x+2\\le4\\quad\\Longrightarrow\\quad x\\le"
+              },
+              {
+                "type": "choice",
+                "itemId": "n12-p002-q06-left-const"
+              }
+            ],
+            "derivationId": "triple-solve"
+          },
+          {
+            "id": "paragraph-triple-right",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "続いて右側。"
+              },
+              {
+                "type": "math",
+                "latex": "-x"
+              },
+              {
+                "type": "text",
+                "text": " を左に移した後、定数項を整理しよう。"
+              }
+            ],
+            "derivationId": "triple-solve"
+          },
+          {
+            "id": "formula-q06-right-coef",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "2x+4\\le9-x\\quad\\Longrightarrow\\quad"
+              },
+              {
+                "type": "choice",
+                "itemId": "n12-p002-q06-right-coef"
+              },
+              {
+                "type": "math",
+                "latex": "x+4\\le9"
+              }
+            ],
+            "derivationId": "triple-solve"
+          },
+          {
+            "id": "paragraph-q06-right-const",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "左側へ移した x の係数を確かめたら、両辺から4を引こう。"
+              }
+            ],
+            "derivationId": "triple-solve"
+          },
+          {
+            "id": "formula-q06-right-const",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "3x+4\\le9\\quad\\Longrightarrow\\quad3x\\le"
+              },
+              {
+                "type": "choice",
+                "itemId": "n12-p002-q06-right-const"
+              }
+            ],
+            "derivationId": "triple-solve"
+          },
+          {
+            "id": "paragraph-triple-compare",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "それぞれの結果を比べる。右側の不等式は正の3で割る。"
+              }
+            ],
+            "derivationId": "triple-solve"
+          },
+          {
+            "id": "formula-n12-06",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "\\begin{cases}x\\le2\\\\3x\\le5\\end{cases}\\quad\\Longrightarrow\\quad"
+              },
+              {
+                "type": "choice",
+                "itemId": "n12-06"
+              }
+            ],
+            "derivationId": "triple-solve"
+          },
+          {
+            "id": "figure-triple-lines",
+            "type": "figure",
+            "figureId": "n12-f02"
+          },
+          {
+            "id": "paragraph-triple-limit",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "両方の条件を満たすには、"
+              },
+              {
+                "type": "math",
+                "latex": "x=2"
+              },
+              {
+                "type": "text",
+                "text": " まで残してよいだろうか。"
+              },
+              {
+                "type": "text",
+                "text": "二つの上限のうち、実際に残せる範囲を選ぶと、"
+              }
+            ]
+          },
+          {
+            "id": "formula-n12-07",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "choice",
+                "itemId": "n12-07"
+              }
+            ]
+          },
+          {
+            "id": "paragraph-triple-after",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "元の三連不等式では、左端と右端だけを比べても不十分である。中央の式との二つの比較が、両方必要になる。"
+              }
+            ]
+          },
+          {
+            "id": "heading-integer",
+            "type": "heading",
+            "text": "数値の範囲を、実際の個数に戻す"
+          },
+          {
+            "id": "marker-integer-example",
+            "type": "marker",
+            "kind": "example",
+            "text": "例題"
+          },
+          {
+            "id": "paragraph-count-intro",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "50円の箱に、1個180円のシュークリームと1個130円のプリンを合わせて20個入れる。全体の金額を3200円以上3300円未満にしたい。シュークリームを何個にできるだろう。"
+              }
+            ]
+          },
+          {
+            "id": "paragraph-n12-08",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "シュークリームの個数を "
+              },
+              {
+                "type": "math",
+                "latex": "x"
+              },
+              {
+                "type": "text",
+                "text": " とする。残りはすべてプリンだから、プリンの個数は "
+              },
+              {
+                "type": "choice",
+                "itemId": "n12-08"
+              },
+              {
+                "type": "text",
+                "text": "。"
+              }
+            ]
+          },
+          {
+            "id": "paragraph-n12-09",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "どちらも個数であり、20個の内訳である。"
+              },
+              {
+                "type": "math",
+                "latex": "x"
+              },
+              {
+                "type": "text",
+                "text": " の"
+              },
+              {
+                "type": "term",
+                "text": "範囲と数の種類"
+              },
+              {
+                "type": "text",
+                "text": "は "
+              },
+              {
+                "type": "choice",
+                "itemId": "n12-09"
+              },
+              {
+                "type": "text",
+                "text": "。ここで整数条件を保存しておこう。後で不等式を解いても、この条件は消えない。"
+              }
+            ]
+          },
+          {
+            "id": "paragraph-cost-intro",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "ここからは、個数を使って合計金額を作る。"
+              },
+              {
+                "type": "math",
+                "latex": "T(x)"
+              },
+              {
+                "type": "text",
+                "text": " が表すのは "
+              },
+              {
+                "type": "choice",
+                "itemId": "n12-p003-q10-meaning"
+              },
+              {
+                "type": "text",
+                "text": " である。"
+              }
+            ],
+            "derivationId": "cost-range"
+          },
+          {
+            "id": "paragraph-cost-cream",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "まずシュークリーム。1個180円を"
+              },
+              {
+                "type": "math",
+                "latex": "x"
+              },
+              {
+                "type": "text",
+                "text": " 個買う。単価と個数を掛けた式を作ろう。"
+              }
+            ],
+            "derivationId": "cost-range"
+          },
+          {
+            "id": "formula-cost-cream",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "180\\times x="
+              },
+              {
+                "type": "choice",
+                "itemId": "n12-p003-q10-cream-coef"
+              },
+              {
+                "type": "math",
+                "latex": "x"
+              }
+            ],
+            "derivationId": "cost-range"
+          },
+          {
+            "id": "paragraph-cost-pudding",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "次はプリン。個数はさっき求めた"
+              },
+              {
+                "type": "math",
+                "latex": "20-x"
+              },
+              {
+                "type": "text",
+                "text": " 個で、1個130円。"
+              }
+            ],
+            "derivationId": "cost-range"
+          },
+          {
+            "id": "formula-cost-pudding",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "130\\times(20-x)="
+              },
+              {
+                "type": "choice",
+                "itemId": "n12-p003-q10-pudding-coef"
+              },
+              {
+                "type": "math",
+                "latex": "(20-x)"
+              }
+            ],
+            "derivationId": "cost-range"
+          },
+          {
+            "id": "paragraph-cost-box-fee",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "お菓子代だけではなく、箱そのものの代金も必要だ。箱の固定代金は "
+              },
+              {
+                "type": "choice",
+                "itemId": "n12-p003-q10-box-fee"
+              },
+              {
+                "type": "text",
+                "text": " 円。"
+              }
+            ],
+            "derivationId": "cost-range"
+          },
+          {
+            "id": "paragraph-cost-assemble",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "今求めた三つの代金を足し、"
+              },
+              {
+                "type": "math",
+                "latex": "T(x)"
+              },
+              {
+                "type": "text",
+                "text": " を一つの式にまとめよう。"
+              }
+            ],
+            "derivationId": "cost-range"
+          },
+          {
+            "id": "formula-n12-10",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "T(x)="
+              },
+              {
+                "type": "choice",
+                "itemId": "n12-10"
+              }
+            ],
+            "derivationId": "cost-range"
+          },
+          {
+            "id": "paragraph-cost-bound",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "目標の金額は3200円"
+              },
+              {
+                "type": "term",
+                "text": "以上"
+              },
+              {
+                "type": "text",
+                "text": "、3300円"
+              },
+              {
+                "type": "term",
+                "text": "未満"
+              },
+              {
+                "type": "text",
+                "text": "。まずそれぞれの不等号を決めよう。"
+              }
+            ],
+            "derivationId": "cost-range"
+          },
+          {
+            "id": "formula-cost-lower-bound",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "3200"
+              },
+              {
+                "type": "choice",
+                "itemId": "n12-p003-q11-lower-sign"
+              },
+              {
+                "type": "math",
+                "latex": "T(x)"
+              }
+            ],
+            "derivationId": "cost-range"
+          },
+          {
+            "id": "formula-cost-upper-bound",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "T(x)"
+              },
+              {
+                "type": "choice",
+                "itemId": "n12-p003-q11-upper-sign"
+              },
+              {
+                "type": "math",
+                "latex": "3300"
+              }
+            ],
+            "derivationId": "cost-range"
+          },
+          {
+            "id": "paragraph-cost-bound-assemble",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "両方の条件を満たすように、さっきの合計金額の式を代入する。"
+              }
+            ],
+            "derivationId": "cost-range"
+          },
+          {
+            "id": "formula-n12-11",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "choice",
+                "itemId": "n12-11"
+              }
+            ],
+            "derivationId": "cost-range"
+          },
+          {
+            "id": "paragraph-cost-simplify",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "次は括弧を展開する。まずプリン20個分に当たる定数を計算しよう。"
+              }
+            ],
+            "derivationId": "cost-range"
+          },
+          {
+            "id": "formula-cost-product-constant",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "130\\times20="
+              },
+              {
+                "type": "choice",
+                "itemId": "n12-p003-q12-product-constant"
+              }
+            ],
+            "derivationId": "cost-range"
+          },
+          {
+            "id": "paragraph-cost-negative",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "もう一方の"
+              },
+              {
+                "type": "math",
+                "latex": "-x"
+              },
+              {
+                "type": "text",
+                "text": " にも130を掛ける。負号を忘れずに式内へ入れよう。"
+              }
+            ],
+            "derivationId": "cost-range"
+          },
+          {
+            "id": "formula-q12-signed-coef",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "130(20-x)=2600+("
+              },
+              {
+                "type": "choice",
+                "itemId": "n12-p002-q12-signed-coef"
+              },
+              {
+                "type": "math",
+                "latex": ")x"
+              }
+            ],
+            "derivationId": "cost-range"
+          },
+          {
+            "id": "paragraph-cost-collect",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "箱代と定数項をまとめ、次に"
+              },
+              {
+                "type": "math",
+                "latex": "x"
+              },
+              {
+                "type": "text",
+                "text": " の係数をまとめよう。"
+              }
+            ],
+            "derivationId": "cost-range"
+          },
+          {
+            "id": "formula-cost-total-constant",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "50+2600="
+              },
+              {
+                "type": "choice",
+                "itemId": "n12-p003-q12-total-constant"
+              }
+            ],
+            "derivationId": "cost-range"
+          },
+          {
+            "id": "formula-cost-x-coef",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "180-130="
+              },
+              {
+                "type": "choice",
+                "itemId": "n12-p003-q12-x-coef"
+              }
+            ],
+            "derivationId": "cost-range"
+          },
+          {
+            "id": "paragraph-cost-collect-result",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "だから、合計金額は次の短い式でも表せる。"
+              }
+            ],
+            "derivationId": "cost-range"
+          },
+          {
+            "id": "formula-cost-collected-total",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "T(x)=2650+50x"
+              }
+            ],
+            "derivationId": "cost-range"
+          },
+          {
+            "id": "paragraph-cost-collect-bound",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "この式を3200円以上、3300円未満という条件に戻すと、"
+              }
+            ],
+            "derivationId": "cost-range"
+          },
+          {
+            "id": "formula-n12-12",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "choice",
+                "itemId": "n12-12"
+              }
+            ],
+            "derivationId": "cost-range"
+          },
+          {
+            "id": "paragraph-cost-solve",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "金額の三つの辺から、同じ"
+              },
+              {
+                "type": "math",
+                "latex": "2650"
+              },
+              {
+                "type": "text",
+                "text": "を引いて整理しよう。"
+              }
+            ],
+            "derivationId": "cost-range"
+          },
+          {
+            "id": "formula-cost-subtract",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "3200-2650\\le50x<3300-2650"
+              }
+            ],
+            "derivationId": "cost-range"
+          },
+          {
+            "id": "formula-q13-lower",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "choice",
+                "itemId": "n12-p002-q13-lower"
+              },
+              {
+                "type": "math",
+                "latex": "\\le50x<3300-2650"
+              }
+            ],
+            "derivationId": "cost-range"
+          },
+          {
+            "id": "formula-q13-upper",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "550\\le50x<"
+              },
+              {
+                "type": "choice",
+                "itemId": "n12-p002-q13-upper"
+              }
+            ],
+            "derivationId": "cost-range"
+          },
+          {
+            "id": "paragraph-cost-positive",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "次はすべての辺を正の"
+              },
+              {
+                "type": "math",
+                "latex": "50"
+              },
+              {
+                "type": "text",
+                "text": "で割る。正の数で割るときは不等号の向きが変わらない。"
+              }
+            ],
+            "derivationId": "cost-range"
+          },
+          {
+            "id": "formula-n12-13",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "550\\le50x<650\\quad\\Longrightarrow\\quad"
+              },
+              {
+                "type": "choice",
+                "itemId": "n12-13"
+              }
+            ],
+            "derivationId": "cost-range"
+          },
+          {
+            "id": "paragraph-n12-14",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "ここで得たのは実数としての範囲である。問題は「お菓子を何個にするか」だった。最初に保存した整数条件 "
+              },
+              {
+                "type": "math",
+                "latex": "x\\in\\mathbb Z,\\ 0\\le x\\le20"
+              },
+              {
+                "type": "text",
+                "text": " と比べると、実際に選べる "
+              },
+              {
+                "type": "math",
+                "latex": "x"
+              },
+              {
+                "type": "text",
+                "text": " は "
+              },
+              {
+                "type": "choice",
+                "itemId": "n12-14"
+              },
+              {
+                "type": "text",
+                "text": "。"
+              }
+            ]
+          },
+          {
+            "id": "paragraph-verify-substitution",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "最後に整数11個と12個を、整理した金額の式へ代入して確かめよう。"
+              }
+            ]
+          },
+          {
+            "id": "formula-verify-eleven",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "T(11)=2650+50\\times11"
+              }
+            ]
+          },
+          {
+            "id": "formula-verify-twelve",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "T(12)=2650+50\\times12"
+              }
+            ]
+          },
+          {
+            "id": "paragraph-n12-15",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "二つの合計金額を計算すると "
+              },
+              {
+                "type": "choice",
+                "itemId": "n12-15"
+              },
+              {
+                "type": "text",
+                "text": "。"
+              }
+            ]
+          },
+          {
+            "id": "figure-after-verification",
+            "type": "figure",
+            "figureId": "n12-f03"
+          },
+          {
+            "id": "paragraph-integer-final",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "文章題では、式を解く前に「どんな数が許されるか」を決める。そして計算後にその条件へ戻る。次は絶対値を数直線上の距離として解釈する。"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "n12-p002-q01-coef",
+            "label": "N12-P002-Q01-COEF",
+            "prompt": "xを右へ移した後、xの係数はいくつ？",
+            "answer": "2",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "2",
+              "-2",
+              "3",
+              "4"
+            ],
+            "purpose": "representation-link",
+            "scaffoldLevel": "strong",
+            "hints": [
+              "両辺からxを引く。3x−xを計算しよう。"
+            ]
+          },
+          {
+            "id": "n12-p002-q01-const",
+            "label": "N12-P002-Q01-CONST",
+            "prompt": "両辺から5を引くと左辺の定数はいくつ？",
+            "answer": "-7",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "-7",
+              "7",
+              "-3",
+              "3"
+            ],
+            "purpose": "representation-link",
+            "scaffoldLevel": "strong",
+            "hints": [
+              "−2−5を計算しよう。"
+            ]
+          },
+          {
+            "id": "n12-01",
+            "label": "N12-01",
+            "prompt": "最初の不等式をxについて解こう。",
+            "answer": "x>-\\frac72",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "x>-\\frac72",
+              "x< -\\frac72",
+              "x>\\frac72",
+              "x\\ge-\\frac72"
+            ],
+            "purpose": "representation-link",
+            "scaffoldLevel": "strong",
+            "hints": [
+              "−7<2xになったら、正の2で割る。"
+            ]
+          },
+          {
+            "id": "n12-p002-q02-coef",
+            "label": "N12-P002-Q02-COEF",
+            "prompt": "−xを左辺に移すとxの係数はいくつ？",
+            "answer": "2",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "2",
+              "0",
+              "-2",
+              "1"
+            ],
+            "purpose": "representation-link",
+            "scaffoldLevel": "strong",
+            "hints": [
+              "両辺にxを足す。x+xを考えよう。"
+            ]
+          },
+          {
+            "id": "n12-p002-q02-const",
+            "label": "N12-P002-Q02-CONST",
+            "prompt": "両辺から4を引くと右辺の定数はいくつ？",
+            "answer": "1",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "1",
+              "9",
+              "-1",
+              "4"
+            ],
+            "purpose": "representation-link",
+            "scaffoldLevel": "strong",
+            "hints": [
+              "5−4を計算しよう。等号は残る。"
+            ]
+          },
+          {
+            "id": "n12-02",
+            "label": "N12-02",
+            "prompt": "二つ目の不等式をxについて解こう。",
+            "answer": "x\\le\\frac12",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "x\\le\\frac12",
+              "x<\\frac12",
+              "x\\ge\\frac12",
+              "x\\le-\\frac12"
+            ],
+            "purpose": "representation-link",
+            "scaffoldLevel": "strong",
+            "hints": [
+              "最後の等号は問題の条件に残っている。"
+            ]
+          },
+          {
+            "id": "n12-03",
+            "label": "N12-03",
+            "prompt": "x=1は二つとも満たす？",
+            "answer": "二つ目に反するので不適",
+            "acceptedAnswers": [],
+            "answerType": "text",
+            "choices": [
+              "二つ目に反するので不適",
+              "一つ目を満たすから適する",
+              "二つとも満たす",
+              "どちらも満たさない"
+            ],
+            "purpose": "causal-reasoning",
+            "scaffoldLevel": "strong",
+            "hints": [
+              "「同時に」は片方だけでは足りない。"
+            ]
+          },
+          {
+            "id": "n12-04",
+            "label": "N12-04",
+            "prompt": "二つの範囲の共通部分を選ぼう。",
+            "answer": "-\\frac72<x\\le\\frac12",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "-\\frac72<x\\le\\frac12",
+              "-\\frac72\\le x\\le\\frac12",
+              "-\\frac72<x<\\frac12",
+              "x>-\\frac72\\ \\text{または}\\ x\\le\\frac12"
+            ],
+            "purpose": "representation-link",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "白丸は含まず黒丸は含む。両方の条件を満たす範囲を探す。"
+            ]
+          },
+          {
+            "id": "n12-05",
+            "label": "N12-05",
+            "prompt": "三連不等式を二つの条件に分けよう。",
+            "answer": "3x+2\\le2x+4\\ \\text{かつ}\\ 2x+4\\le9-x",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "3x+2\\le2x+4\\ \\text{かつ}\\ 2x+4\\le9-x",
+              "3x+2\\le9-x",
+              "3x+2\\le2x+4\\ \\text{または}\\ 2x+4\\le9-x",
+              "3x+2\\ge2x+4\\ \\text{かつ}\\ 2x+4\\le9-x"
+            ],
+            "purpose": "representation-link",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "中央の式と両隣をそれぞれ比較する。"
+            ]
+          },
+          {
+            "id": "n12-p002-q06-left-coef",
+            "label": "N12-P002-Q06-LEFT-COEF",
+            "prompt": "3x−2xの係数を埋めよう。",
+            "answer": "1",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "1",
+              "2",
+              "-1",
+              "5"
+            ],
+            "purpose": "representation-link",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "両辺から同じ文字の項を引くと、係数どうしの引き算になる。文字xを残したまま、係数だけを計算しよう。"
+            ]
+          },
+          {
+            "id": "n12-p002-q06-left-const",
+            "label": "N12-P002-Q06-LEFT-CONST",
+            "prompt": "x+2≤4 の右辺の定数を求めよう。",
+            "answer": "2",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "2",
+              "6",
+              "-2",
+              "4"
+            ],
+            "purpose": "representation-link",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "4−2を計算する。"
+            ]
+          },
+          {
+            "id": "n12-p002-q06-right-coef",
+            "label": "N12-P002-Q06-RIGHT-COEF",
+            "prompt": "−xを左辺に移した後のxの係数を求めよう。",
+            "answer": "3",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "3",
+              "1",
+              "-3",
+              "2"
+            ],
+            "purpose": "representation-link",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "2x+xの係数を計算する。"
+            ]
+          },
+          {
+            "id": "n12-p002-q06-right-const",
+            "label": "N12-P002-Q06-RIGHT-CONST",
+            "prompt": "3x+4≤9 の右辺の定数を求めよう。",
+            "answer": "5",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "5",
+              "13",
+              "-5",
+              "9"
+            ],
+            "purpose": "representation-link",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "9−4を計算する。"
+            ]
+          },
+          {
+            "id": "n12-06",
+            "label": "N12-06",
+            "prompt": "二つの不等式の解をそれぞれ選ぼう。",
+            "answer": "x\\le2,\\quad x\\le\\frac53",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "x\\le2,\\quad x\\le\\frac53",
+              "x\\le2,\\quad x\\ge\\frac53",
+              "x\\ge2,\\quad x\\le\\frac53",
+              "x\\le2,\\quad x\\le\\frac35"
+            ],
+            "purpose": "transfer",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "一方の計算では3x≤5になる。"
+            ]
+          },
+          {
+            "id": "n12-07",
+            "label": "N12-07",
+            "prompt": "二つの上限のうち、共通に残る範囲は？",
+            "answer": "x\\le\\frac53",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "x\\le\\frac53",
+              "x\\le2",
+              "x\\ge\\frac53",
+              "\\frac53\\le x\\le2"
+            ],
+            "purpose": "causal-reasoning",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "より小さい方の上限も超えてはいけない。"
+            ]
+          },
+          {
+            "id": "n12-08",
+            "label": "N12-08",
+            "prompt": "プリンの個数をxで表そう。",
+            "answer": "20-x",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "20-x",
+              "20+x",
+              "x-20",
+              "20"
+            ],
+            "purpose": "concept-formation",
+            "scaffoldLevel": "strong",
+            "hints": [
+              "合わせて20個という条件を使う。"
+            ]
+          },
+          {
+            "id": "n12-09",
+            "label": "N12-09",
+            "prompt": "xの取りうる数の種類と範囲を選ぼう。",
+            "answer": "x\\in\\mathbb Z,\\ 0\\le x\\le20",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "x\\in\\mathbb Z,\\ 0\\le x\\le20",
+              "x\\in\\mathbb R,\\ 0\\le x\\le20",
+              "x\\in\\mathbb Z,\\ x\\ge0",
+              "x\\in\\mathbb Z,\\ 0<x<20"
+            ],
+            "purpose": "causal-reasoning",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "個数なので小数にはできない。全部同じ種類でもよい。"
+            ]
+          },
+          {
+            "id": "n12-p003-q10-meaning",
+            "label": "N12-P003-Q10-MEANING",
+            "prompt": "T(x) は何の金額を表す？",
+            "answer": "箱と20個の菓子の合計金額",
+            "acceptedAnswers": [],
+            "answerType": "text",
+            "choices": [
+              "箱と20個の菓子の合計金額",
+              "箱だけの代金",
+              "シュークリームの個数",
+              "プリン1個の代金"
+            ],
+            "purpose": "concept-formation",
+            "scaffoldLevel": "strong",
+            "hints": [
+              "xを決めたとき、箱と20個の菓子を買うための全体の金額だ。"
+            ]
+          },
+          {
+            "id": "n12-p003-q10-cream-coef",
+            "label": "N12-P003-Q10-CREAM-COEF",
+            "prompt": "シュークリームの単価をxの係数へ入れよう。",
+            "answer": "180",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "180",
+              "130",
+              "50",
+              "20"
+            ],
+            "purpose": "representation-link",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "1個の値段×個数を式で書く。"
+            ]
+          },
+          {
+            "id": "n12-p003-q10-pudding-coef",
+            "label": "N12-P003-Q10-PUDDING-COEF",
+            "prompt": "プリンの単価を括弧の係数へ入れよう。",
+            "answer": "130",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "130",
+              "180",
+              "50",
+              "20"
+            ],
+            "purpose": "representation-link",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "20−x個に掛ける単価を選ぶ。"
+            ]
+          },
+          {
+            "id": "n12-p003-q10-box-fee",
+            "label": "N12-P003-Q10-BOX-FEE",
+            "prompt": "固定の箱代はいくら？",
+            "answer": "50",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "50",
+              "130",
+              "180",
+              "20"
+            ],
+            "purpose": "representation-link",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "菓子の個数に関係なく払う金額に注目する。"
+            ]
+          },
+          {
+            "id": "n12-10",
+            "label": "N12-10",
+            "prompt": "箱代と二種類の菓子代を合わせよう。",
+            "answer": "50+180x+130(20-x)",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "50+180x+130(20-x)",
+              "180x+130(20-x)",
+              "50+180x+130x",
+              "50+180x+130(20+x)"
+            ],
+            "purpose": "representation-link",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "箱の固定代金も加える。"
+            ]
+          },
+          {
+            "id": "n12-p003-q11-lower-sign",
+            "label": "N12-P003-Q11-LOWER-SIGN",
+            "prompt": "3200円以上を表す不等号を選ぼう。",
+            "answer": "\\le",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "\\le",
+              "<",
+              "\\ge",
+              ">"
+            ],
+            "purpose": "representation-link",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "ちょうど3200円の場合も許す。"
+            ]
+          },
+          {
+            "id": "n12-p003-q11-upper-sign",
+            "label": "N12-P003-Q11-UPPER-SIGN",
+            "prompt": "3300円未満を表す不等号を選ぼう。",
+            "answer": "<",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "<",
+              "\\le",
+              ">",
+              "\\ge"
+            ],
+            "purpose": "representation-link",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "3300円ちょうどは含めない。"
+            ]
+          },
+          {
+            "id": "n12-11",
+            "label": "N12-11",
+            "prompt": "金額の「以上・未満」を式にしよう。",
+            "answer": "3200\\le50+180x+130(20-x)<3300",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "3200\\le50+180x+130(20-x)<3300",
+              "3200<50+180x+130(20-x)\\le3300",
+              "3200\\le50+180x+130(20-x)\\le3300",
+              "3200\\ge50+180x+130(20-x)<3300"
+            ],
+            "purpose": "representation-link",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "以上には等号があり、未満には等号がない。"
+            ]
+          },
+          {
+            "id": "n12-p003-q12-product-constant",
+            "label": "N12-P003-Q12-PRODUCT-CONSTANT",
+            "prompt": "130×20を計算して定数項を作ろう。",
+            "answer": "2600",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "2600",
+              "260",
+              "2500",
+              "1300"
+            ],
+            "purpose": "representation-link",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "130を20回足した金額に等しい。"
+            ]
+          },
+          {
+            "id": "n12-p002-q12-signed-coef",
+            "label": "N12-P002-Q12-SIGNED-COEF",
+            "prompt": "130を−xに分配した符号付き係数はいくつ？",
+            "answer": "-130",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "-130",
+              "130",
+              "-20",
+              "2600"
+            ],
+            "purpose": "representation-link",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "括弧の外の正の数を、括弧内の負の項にも掛けよう。係数の大きさと符号を別々に確かめ、文字xを除いた数を選ぼう。"
+            ]
+          },
+          {
+            "id": "n12-p003-q12-total-constant",
+            "label": "N12-P003-Q12-TOTAL-CONSTANT",
+            "prompt": "箱代とプリン20個分の定数項を足そう。",
+            "answer": "2650",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "2650",
+              "2600",
+              "2550",
+              "3100"
+            ],
+            "purpose": "representation-link",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "50+2600を計算する。"
+            ]
+          },
+          {
+            "id": "n12-p003-q12-x-coef",
+            "label": "N12-P003-Q12-X-COEF",
+            "prompt": "xの項の係数をまとめよう。",
+            "answer": "50",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "50",
+              "310",
+              "-50",
+              "130"
+            ],
+            "purpose": "representation-link",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "180−130でxの係数を求める。"
+            ]
+          },
+          {
+            "id": "n12-12",
+            "label": "N12-12",
+            "prompt": "同類項をまとめて金額を整理しよう。",
+            "answer": "3200\\le2650+50x<3300",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "3200\\le2650+50x<3300",
+              "3200\\le2600+50x<3300",
+              "3200\\le2650+310x<3300",
+              "3200\\le2650-50x<3300"
+            ],
+            "purpose": "transfer",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "箱代とプリン20個分を定数項にする。"
+            ]
+          },
+          {
+            "id": "n12-p002-q13-lower",
+            "label": "N12-P002-Q13-LOWER",
+            "prompt": "3200−2650を計算して下端を埋めよう。",
+            "answer": "550",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "550",
+              "650",
+              "-550",
+              "3200"
+            ],
+            "purpose": "representation-link",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "下端から同じ2650を引く。"
+            ]
+          },
+          {
+            "id": "n12-p002-q13-upper",
+            "label": "N12-P002-Q13-UPPER",
+            "prompt": "3300−2650を計算して上端を埋めよう。",
+            "answer": "650",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "650",
+              "550",
+              "-650",
+              "3300"
+            ],
+            "purpose": "representation-link",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "上端も同じ2650を引く。未満の向きは変わらない。"
+            ]
+          },
+          {
+            "id": "n12-13",
+            "label": "N12-13",
+            "prompt": "実数としてのxの範囲を解こう。",
+            "answer": "11\\le x<13",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "11\\le x<13",
+              "11<x\\le13",
+              "11\\le x\\le13",
+              "x\\le11\\ \\text{または}\\ x>13"
+            ],
+            "purpose": "transfer",
+            "scaffoldLevel": "light",
+            "hints": [
+              "各辺から2650を引き、正の50で割る。"
+            ]
+          },
+          {
+            "id": "n12-14",
+            "label": "N12-14",
+            "prompt": "整数条件に戻って可能な個数を選ぼう。",
+            "answer": "x=11\\ \\text{または}\\ 12",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "x=11\\ \\text{または}\\ 12",
+              "11\\le x\\le13",
+              "x=12\\ \\text{または}\\ 13",
+              "x=11\\ \\text{のみ}"
+            ],
+            "purpose": "transfer",
+            "scaffoldLevel": "light",
+            "hints": [
+              "実数の区間と整数の集合の共通部分を考える。"
+            ]
+          },
+          {
+            "id": "n12-15",
+            "label": "N12-15",
+            "prompt": "箱代を含め、候補二つの合計金額を確かめよう。",
+            "answer": "T(11)=3200\\text{円},\\ T(12)=3250\\text{円}",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "T(11)=3200\\text{円},\\ T(12)=3250\\text{円}",
+              "T(11)=3150\\text{円},\\ T(12)=3200\\text{円}",
+              "T(11)=3200\\text{円},\\ T(12)=3300\\text{円}",
+              "T(11)=3250\\text{円},\\ T(12)=3200\\text{円}"
+            ],
+            "purpose": "transfer",
+            "scaffoldLevel": "light",
+            "hints": [
+              "整理したT(x)へ二つの整数を順に代入する。"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,1780 @@
+{
+  "status": "PROPOSED",
+  "nodes": [
+    {
+      "id": "n11-intro",
+      "unit": "n11",
+      "q": 1,
+      "stageId": "n11-stage-01",
+      "goal": "元の問題を例題として置く",
+      "before": "例題は $2<5$ の両辺へ同じ操作をしたとき、大小がどう変わるかを調べることです。両辺から2を引くと $0<3$、正の4を掛けると $8<20$ です。次は $-1$ 倍を、元の数直線で確かめます。",
+      "formula": null,
+      "answer": null,
+      "wrong": [],
+      "after": "この内容を、次の判断や変形の根拠に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000474",
+        "word-p-000475",
+        "word-p-000476",
+        "word-p-000477",
+        "word-p-000478"
+      ],
+      "action": "expression",
+      "role": "example",
+      "itemId": null,
+      "anchor": false,
+      "known": [],
+      "resultId": "n11-intro-result",
+      "requires": [],
+      "knownRefs": []
+    },
+    {
+      "id": "n11-01",
+      "unit": "n11",
+      "q": 1,
+      "stageId": "n11-stage-01",
+      "goal": "数直線の−2と−5を比べ、不等号を選ぼう。",
+      "before": "$2$ を $-1$ 倍した数は $-2$、$5$ を $-1$ 倍した数は $-5$ です。元図で右側にある点の数が大きいことを使い、二数の大小を選びます。",
+      "formula": "(-2)\\ \\square\\ (-5)",
+      "answer": ">",
+      "wrong": [
+        [
+          "<",
+          "計算対象・条件・符号を直前の式と照合します。数直線では右にある数のほうが大きい。"
+        ],
+        [
+          "=",
+          "計算対象・条件・符号を直前の式と照合します。数直線では右にある数のほうが大きい。"
+        ],
+        [
+          "\\le",
+          "計算対象・条件・符号を直前の式と照合します。数直線では右にある数のほうが大きい。"
+        ]
+      ],
+      "after": "具体例では不等号の向きが変わりました。次に一般の文字で理由を調べます。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000479"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n11-01",
+      "anchor": true,
+      "known": [],
+      "resultId": "n11-01-result",
+      "requires": [
+        "n11-intro-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "(-2)\\ >\\ (-5)"
+    },
+    {
+      "id": "n11-difference-basis",
+      "unit": "n11",
+      "q": 2,
+      "stageId": "n11-stage-02",
+      "goal": "差の符号を使う根拠",
+      "before": "ここからは導出です。$a<b$ とします。小さい $a$ から大きい $b$ までの差は正なので、$b-a>0$ です。操作した後も「右の式−左の式」の符号を調べれば、大小を判断できます。",
+      "formula": null,
+      "answer": null,
+      "wrong": [],
+      "after": "この内容を、次の判断や変形の根拠に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000480",
+        "word-p-000481"
+      ],
+      "action": "expression",
+      "role": "proof",
+      "itemId": null,
+      "anchor": false,
+      "known": [],
+      "resultId": "n11-difference-basis-result",
+      "requires": [
+        "n11-01-result"
+      ],
+      "knownRefs": [
+        "n11-01-result"
+      ]
+    },
+    {
+      "id": "n11-q02-open",
+      "unit": "n11",
+      "q": 2,
+      "stageId": "n11-stage-02",
+      "goal": "引く括弧の符号を配る",
+      "before": "同じ $c$ を足した後の差は $(b+c)-(a+c)$ です。二つ目の括弧全体を引くため、中の二項の符号を両方変えて括弧を外します。",
+      "formula": "(b+c)-(a+c)=\\square",
+      "answer": "b+c-a-c",
+      "wrong": [
+        [
+          "b+c-a+c",
+          "引く括弧のcにも負号が付きます。"
+        ],
+        [
+          "b+c+a+c",
+          "二つ目の括弧は引きます。"
+        ]
+      ],
+      "after": "次は同じcの項を打ち消します。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000482"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n11-q02-open",
+      "anchor": false,
+      "known": [],
+      "resultId": "n11-q02-open-result",
+      "requires": [
+        "n11-difference-basis-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "(b+c)-(a+c)=b+c-a-c"
+    },
+    {
+      "id": "n11-02",
+      "unit": "n11",
+      "q": 2,
+      "stageId": "n11-stage-02",
+      "goal": "両辺に同じcを加えたあとの差を計算しよう。",
+      "before": "展開した差は $b+c-a-c$ でした。$c$ と $-c$ が打ち消し合った後の差を記録します。",
+      "formula": "(b+c)-(a+c)=\\square",
+      "answer": "b-a",
+      "wrong": [
+        [
+          "b-a+2c",
+          "計算対象・条件・符号を直前の式と照合します。+cと−cを整理しよう。"
+        ],
+        [
+          "b-a-c",
+          "計算対象・条件・符号を直前の式と照合します。+cと−cを整理しよう。"
+        ],
+        [
+          "a-b",
+          "計算対象・条件・符号を直前の式と照合します。+cと−cを整理しよう。"
+        ]
+      ],
+      "after": "元の差と同じ値になりました。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000482"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n11-02",
+      "anchor": true,
+      "known": [],
+      "resultId": "n11-02-result",
+      "requires": [
+        "n11-q02-open-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "(b+c)-(a+c)=b-a"
+    },
+    {
+      "id": "n11-wm011-q02-compare",
+      "unit": "n11",
+      "q": 2,
+      "stageId": "n11-stage-02",
+      "goal": "差の符号を根拠に、加えたあとの大小関係を選ぼう。",
+      "before": "$a<b$ より $b-a>0$ です。足した後の「右−左」の差が同じ正の数なので、どちらが大きいかを判断します。",
+      "formula": "\\square",
+      "answer": "a+c<b+c,\\quad\\text{差は正のまま}",
+      "wrong": [
+        [
+          "a+c>b+c,\\quad\\text{差は負になる}",
+          "計算対象・条件・符号を直前の式と照合します。右−左の差が正なら、どちらが大きいだろう。"
+        ],
+        [
+          "a+c=b+c,\\quad\\text{差は0}",
+          "計算対象・条件・符号を直前の式と照合します。右−左の差が正なら、どちらが大きいだろう。"
+        ],
+        [
+          "a+c>b+c,\\quad\\text{差は正のまま}",
+          "計算対象・条件・符号を直前の式と照合します。右−左の差が正なら、どちらが大きいだろう。"
+        ]
+      ],
+      "after": "同じ数を引くことも、反対の数を足す操作なので同じ規則を使えます。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000482"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n11-wm011-q02-compare",
+      "anchor": true,
+      "known": [],
+      "resultId": "n11-wm011-q02-compare-result",
+      "requires": [
+        "n11-02-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "a+c<b+c,\\quad\\text{差は正のまま}"
+    },
+    {
+      "id": "n11-wm011-q03-factor",
+      "unit": "n11",
+      "q": 3,
+      "stageId": "n11-stage-03",
+      "goal": "共通の(b−a)を残して、括り出す係数を選ぼう。",
+      "before": "両辺に同じ数を掛けた後の差は $bc-ac$ です。二つの項に共通する因子を外へ出し、残る差を括弧にまとめます。",
+      "formula": "bc-ac=\\square(b-a)",
+      "answer": "c",
+      "wrong": [
+        [
+          "-c",
+          "計算対象・条件・符号を直前の式と照合します。bc−acを分配法則の逆向きで見よう。"
+        ],
+        [
+          "c^2",
+          "計算対象・条件・符号を直前の式と照合します。bc−acを分配法則の逆向きで見よう。"
+        ],
+        [
+          "1",
+          "計算対象・条件・符号を直前の式と照合します。bc−acを分配法則の逆向きで見よう。"
+        ]
+      ],
+      "after": "元の差 $b-a$ は正なので、掛けるcの符号を分けて調べます。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000484",
+        "word-p-000483"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n11-wm011-q03-factor",
+      "anchor": true,
+      "known": [],
+      "resultId": "n11-wm011-q03-factor-result",
+      "requires": [
+        "n11-wm011-q02-compare-result"
+      ],
+      "knownRefs": [
+        "n11-wm011-q02-compare-result"
+      ],
+      "resolvedFormula": "bc-ac=c(b-a)"
+    },
+    {
+      "id": "n11-wm011-q03-positive",
+      "unit": "n11",
+      "q": 3,
+      "stageId": "n11-stage-03",
+      "goal": "c>0のとき、差の符号と大小関係を判断しよう。",
+      "before": "まず $c>0$ の場合です。$b-a>0$ なので、$c(b-a)$ は正と正の積です。右から左を引いた差の符号と、両辺の大小を選びます。",
+      "formula": "\\square",
+      "answer": "ac<bc,\\quad bc-ac>0",
+      "wrong": [
+        [
+          "ac>bc,\\quad bc-ac<0",
+          "計算対象・条件・符号を直前の式と照合します。正の数と正の数の積は正。右−左が正なら左が小さい。"
+        ],
+        [
+          "ac=bc,\\quad bc-ac=0",
+          "計算対象・条件・符号を直前の式と照合します。正の数と正の数の積は正。右−左が正なら左が小さい。"
+        ],
+        [
+          "ac<bc,\\quad bc-ac<0",
+          "計算対象・条件・符号を直前の式と照合します。正の数と正の数の積は正。右−左が正なら左が小さい。"
+        ]
+      ],
+      "after": "正の数を掛ける場合、不等号の向きは変わりません。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000484"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n11-wm011-q03-positive",
+      "anchor": true,
+      "known": [],
+      "resultId": "n11-wm011-q03-positive-result",
+      "requires": [
+        "n11-wm011-q03-factor-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "ac<bc,\\quad bc-ac>0"
+    },
+    {
+      "id": "n11-03",
+      "unit": "n11",
+      "q": 3,
+      "stageId": "n11-stage-03",
+      "goal": "c<0のとき、差の符号と大小関係を判断しよう。",
+      "before": "次は $c<0$ の場合です。$b-a>0$ と掛け合わせた差 $c(b-a)$ は負になります。「右−左」が負という意味から、右と左の大小を選びます。",
+      "formula": "\\square",
+      "answer": "ac>bc,\\quad bc-ac<0",
+      "wrong": [
+        [
+          "ac<bc,\\quad bc-ac>0",
+          "計算対象・条件・符号を直前の式と照合します。負の数×正の数は負。右−左が負なら左が大きい。"
+        ],
+        [
+          "ac=bc,\\quad bc-ac=0",
+          "計算対象・条件・符号を直前の式と照合します。負の数×正の数は負。右−左が負なら左が大きい。"
+        ],
+        [
+          "ac>bc,\\quad bc-ac>0",
+          "計算対象・条件・符号を直前の式と照合します。負の数×正の数は負。右−左が負なら左が大きい。"
+        ]
+      ],
+      "after": "負の数を掛ける場合、不等号の向きが逆になります。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000484"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n11-03",
+      "anchor": true,
+      "known": [],
+      "resultId": "n11-03-result",
+      "requires": [
+        "n11-wm011-q03-positive-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "ac>bc,\\quad bc-ac<0"
+    },
+    {
+      "id": "n11-wm011-q03-zero",
+      "unit": "n11",
+      "q": 3,
+      "stageId": "n11-stage-03",
+      "goal": "c=0のとき、両辺と厳密な不等号はどうなるだろう。",
+      "before": "最後に $c=0$ の場合です。元の二数の大小に関係なく、両辺を0倍した結果を考えます。",
+      "formula": "\\square",
+      "answer": "ac=bc=0,\\quad\\text{元の厳密な大小は失われる}",
+      "wrong": [
+        [
+          "ac<bc,\\quad\\text{そのまま保つ}",
+          "計算対象・条件・符号を直前の式と照合します。左右とも0。等号になると元の「<」は成り立たない。"
+        ],
+        [
+          "ac>bc,\\quad\\text{逆転する}",
+          "計算対象・条件・符号を直前の式と照合します。左右とも0。等号になると元の「<」は成り立たない。"
+        ],
+        [
+          "ac=bc=0,\\quad\\text{元の不等号を保つ}",
+          "計算対象・条件・符号を直前の式と照合します。左右とも0。等号になると元の「<」は成り立たない。"
+        ]
+      ],
+      "after": "0倍では元の厳密な大小は残りません。0で割る操作は定義されていません。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000484"
+      ],
+      "action": "meaning",
+      "role": "substep",
+      "itemId": "n11-wm011-q03-zero",
+      "anchor": true,
+      "known": [],
+      "resultId": "n11-wm011-q03-zero-result",
+      "requires": [
+        "n11-03-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "ac=bc=0,\\quad\\text{元の厳密な大小は失われる}"
+    },
+    {
+      "id": "n11-division-basis",
+      "unit": "n11",
+      "q": 3,
+      "stageId": "n11-stage-03",
+      "goal": "割り算の規則も接続する",
+      "before": "$c\\ne0$ で割ることは、逆数 $1/c$ を掛けることです。逆数の符号は $c$ と同じなので、正の数で割れば向きはそのまま、負の数で割れば向きが逆になります。",
+      "formula": null,
+      "answer": null,
+      "wrong": [],
+      "after": "この内容を、次の判断や変形の根拠に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000485"
+      ],
+      "action": "expression",
+      "role": "property",
+      "itemId": null,
+      "anchor": false,
+      "known": [],
+      "resultId": "n11-division-basis-result",
+      "requires": [
+        "n11-wm011-q03-zero-result"
+      ],
+      "knownRefs": []
+    },
+    {
+      "id": "n11-wm011-q04-fraction",
+      "unit": "n11",
+      "q": 4,
+      "stageId": "n11-stage-04",
+      "goal": "a<bの両辺に負の1/5を掛けるとどうなるだろう。",
+      "before": "確認です。元の $a<b$ の両辺に $-1/5$ を掛けます。掛ける数が負であることを根拠に、不等号の向きと式を選びます。",
+      "formula": "\\square",
+      "answer": "-\\frac a5>-\\frac b5,\\quad\\text{負数倍なので反転}",
+      "wrong": [
+        [
+          "-\\frac a5<-\\frac b5,\\quad\\text{向きを保つ}",
+          "計算対象・条件・符号を直前の式と照合します。倍率−1/5は負。先ほど確かめた差の符号を使おう。"
+        ],
+        [
+          "-\\frac a5=-\\frac b5,\\quad\\text{等号になる}",
+          "計算対象・条件・符号を直前の式と照合します。倍率−1/5は負。先ほど確かめた差の符号を使おう。"
+        ],
+        [
+          "-\\frac a5>-\\frac b5,\\quad\\text{正数倍なので反転}",
+          "計算対象・条件・符号を直前の式と照合します。倍率−1/5は負。先ほど確かめた差の符号を使おう。"
+        ]
+      ],
+      "after": "この変形は、次の変形とは別の問題です。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000487"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n11-wm011-q04-fraction",
+      "anchor": true,
+      "known": [],
+      "resultId": "n11-wm011-q04-fraction-result",
+      "requires": [
+        "n11-division-basis-result"
+      ],
+      "knownRefs": [
+        "n11-division-basis-result"
+      ],
+      "resolvedFormula": "-\\frac a5>-\\frac b5,\\quad\\text{負数倍なので反転}"
+    },
+    {
+      "id": "n11-q04-negate",
+      "unit": "n11",
+      "q": 4,
+      "stageId": "n11-stage-04",
+      "goal": "元の大小へ戻り負の1倍をする",
+      "before": "二つ目の確認では元の $a<b$ へ戻ります。まず両辺を $-1$ 倍し、次に3を足す二段階を順に行います。最初の段階の大小を選びます。",
+      "formula": "\\square",
+      "answer": "-a>-b",
+      "wrong": [
+        [
+          "-a<-b",
+          "負の数倍では向きが逆です。"
+        ],
+        [
+          "-a=-b",
+          "元は厳密な大小です。"
+        ]
+      ],
+      "after": "確定した結果を記録し、次の操作に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000487"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n11-q04-negate",
+      "anchor": false,
+      "known": [],
+      "resultId": "n11-q04-negate-result",
+      "requires": [
+        "n11-wm011-q04-fraction-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "-a>-b"
+    },
+    {
+      "id": "n11-04",
+      "unit": "n11",
+      "q": 4,
+      "stageId": "n11-stage-04",
+      "goal": "a<bから−1倍と+3を順に行った大小関係を選ぼう。",
+      "before": "いまの $-a>-b$ の両辺へ同じ $3$ を足します。加法では向きはそのままで、定数を前へ書いた形にします。",
+      "formula": "\\square",
+      "answer": "3-a>3-b",
+      "wrong": [
+        [
+          "3-a<3-b",
+          "計算対象・条件・符号を直前の式と照合します。独立した変形として−a>−bから両辺に3を足す。"
+        ],
+        [
+          "3-a=3-b",
+          "計算対象・条件・符号を直前の式と照合します。独立した変形として−a>−bから両辺に3を足す。"
+        ],
+        [
+          "3+a>3+b",
+          "計算対象・条件・符号を直前の式と照合します。独立した変形として−a>−bから両辺に3を足す。"
+        ]
+      ],
+      "after": "先ほどの $-1/5$ 倍の式へ3を足したのではなく、元の不等式から別に作った結果です。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000487"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n11-04",
+      "anchor": true,
+      "known": [],
+      "resultId": "n11-04-result",
+      "requires": [
+        "n11-q04-negate-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "3-a>3-b"
+    },
+    {
+      "id": "n11-solve-problem",
+      "unit": "n11",
+      "q": 5,
+      "stageId": "n11-stage-05",
+      "goal": "一つ目の一次不等式を提示",
+      "before": "次の例題は $3x-2<5$ を満たすすべての実数 $x$ を求めることです。一つの値だけでなく、条件を満たす範囲全体を残します。まず左辺の定数 $-2$ を打ち消します。",
+      "formula": null,
+      "answer": null,
+      "wrong": [],
+      "after": "この内容を、次の判断や変形の根拠に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000488",
+        "word-p-000489",
+        "word-p-000490",
+        "word-p-000491"
+      ],
+      "action": "expression",
+      "role": "example",
+      "itemId": null,
+      "anchor": false,
+      "known": [],
+      "resultId": "n11-solve-problem-result",
+      "requires": [
+        "n11-04-result"
+      ],
+      "knownRefs": [
+        "n11-04-result"
+      ]
+    },
+    {
+      "id": "n11-wm017-q05-operation",
+      "unit": "n11",
+      "q": 5,
+      "stageId": "n11-stage-05",
+      "goal": "左辺の−2を消すため、左辺に加える数を考えよう。",
+      "before": "$-2$ を打ち消して0にする数を、まず左辺で決めます。",
+      "formula": "-2+\\square=0",
+      "answer": "2",
+      "wrong": [
+        [
+          "-2",
+          "計算対象・条件・符号を直前の式と照合します。−2と足して0になる数は何だろう。"
+        ],
+        [
+          "3",
+          "計算対象・条件・符号を直前の式と照合します。−2と足して0になる数は何だろう。"
+        ],
+        [
+          "0",
+          "計算対象・条件・符号を直前の式と照合します。−2と足して0になる数は何だろう。"
+        ]
+      ],
+      "after": "この操作を右辺にも行います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000492"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n11-wm017-q05-operation",
+      "anchor": true,
+      "known": [],
+      "resultId": "n11-wm017-q05-operation-result",
+      "requires": [
+        "n11-solve-problem-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "-2+2=0"
+    },
+    {
+      "id": "n11-wm017-q05-balance",
+      "unit": "n11",
+      "q": 5,
+      "stageId": "n11-stage-05",
+      "goal": "不等号の向きを保つために、右辺にも加える同じ数を選ぼう。",
+      "before": "同じ数を両辺へ足せば大小は保たれます。左辺で選んだ操作と同じ数を右辺にも足します。",
+      "formula": "3x-2+2<5+\\square",
+      "answer": "2",
+      "wrong": [
+        [
+          "-2",
+          "計算対象・条件・符号を直前の式と照合します。左辺だけでなく右辺にも同じ操作をする。"
+        ],
+        [
+          "5",
+          "計算対象・条件・符号を直前の式と照合します。左辺だけでなく右辺にも同じ操作をする。"
+        ],
+        [
+          "0",
+          "計算対象・条件・符号を直前の式と照合します。左辺だけでなく右辺にも同じ操作をする。"
+        ]
+      ],
+      "after": "左辺の定数が0になり、右辺に足し算が残りました。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000492"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n11-wm017-q05-balance",
+      "anchor": true,
+      "known": [],
+      "resultId": "n11-wm017-q05-balance-result",
+      "requires": [
+        "n11-wm017-q05-operation-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "3x-2+2<5+2"
+    },
+    {
+      "id": "n11-05",
+      "unit": "n11",
+      "q": 5,
+      "stageId": "n11-stage-05",
+      "goal": "左辺の定数を打ち消したあと、右辺の5+2を計算しよう。",
+      "before": "左辺では $-2+2=0$ です。右辺の $5+2$ を計算して、次に係数を1へ変えられる形にします。",
+      "formula": "3x<\\square",
+      "answer": "7",
+      "wrong": [
+        [
+          "3",
+          "計算対象・条件・符号を直前の式と照合します。5+2を計算して、3xの右側に置こう。"
+        ],
+        [
+          "5",
+          "計算対象・条件・符号を直前の式と照合します。5+2を計算して、3xの右側に置こう。"
+        ],
+        [
+          "9",
+          "計算対象・条件・符号を直前の式と照合します。5+2を計算して、3xの右側に置こう。"
+        ]
+      ],
+      "after": "次は両辺を正の3で割ります。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000492"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n11-05",
+      "anchor": true,
+      "known": [],
+      "resultId": "n11-05-result",
+      "requires": [
+        "n11-wm017-q05-balance-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "3x<7"
+    },
+    {
+      "id": "n11-q06-operation",
+      "unit": "n11",
+      "q": 6,
+      "stageId": "n11-stage-06",
+      "goal": "係数を1にする除数を選ぶ",
+      "before": "$3x$ を $x$ にするには、係数3を割って1にします。両辺に同じ操作を行うため、割る数を選びます。",
+      "formula": "3\\div\\square=1",
+      "answer": "3",
+      "wrong": [
+        [
+          "1",
+          "3を1で割っても係数は変わりません。"
+        ],
+        [
+          "-3",
+          "係数が負の1になります。"
+        ]
+      ],
+      "after": "正の3で割るので、不等号の向きは変わりません。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000493"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n11-q06-operation",
+      "anchor": false,
+      "known": [],
+      "resultId": "n11-q06-operation-result",
+      "requires": [
+        "n11-05-result"
+      ],
+      "knownRefs": [
+        "n11-05-result"
+      ],
+      "resolvedFormula": "3\\div3=1"
+    },
+    {
+      "id": "n11-06",
+      "unit": "n11",
+      "q": 6,
+      "stageId": "n11-stage-06",
+      "goal": "3x<7の両辺を正の3で割ったときの右辺を計算しよう。",
+      "before": "$3x<7$ の両辺を正の $3$ で割ります。$3x/3=x$ なので、右辺の商を入れて範囲を表します。",
+      "formula": "x<\\square",
+      "answer": "\\frac73",
+      "wrong": [
+        [
+          "\\frac37",
+          "計算対象・条件・符号を直前の式と照合します。正の3で割るので、<の向きは変わらない。"
+        ],
+        [
+          "-\\frac73",
+          "計算対象・条件・符号を直前の式と照合します。正の3で割るので、<の向きは変わらない。"
+        ],
+        [
+          "7",
+          "計算対象・条件・符号を直前の式と照合します。正の3で割るので、<の向きは変わらない。"
+        ]
+      ],
+      "after": "この不等式で表される実数全体が解です。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000493"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n11-06",
+      "anchor": true,
+      "known": [],
+      "resultId": "n11-06-result",
+      "requires": [
+        "n11-q06-operation-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "x<\\frac73"
+    },
+    {
+      "id": "n11-q07-substitution",
+      "unit": "n11",
+      "q": 7,
+      "stageId": "n11-stage-07",
+      "goal": "境界を元の式へ代入する",
+      "before": "境界 $x=7/3$ が入るかは、元の $3x-2<5$ へ代入して確かめます。先に左辺の値を計算します。",
+      "formula": "3\\times\\frac73-2=\\square",
+      "answer": "5",
+      "wrong": [
+        [
+          "7",
+          "最後の−2まで計算します。"
+        ],
+        [
+          "3",
+          "先に3倍してから2を引きます。"
+        ]
+      ],
+      "after": "境界では元の式が $5<5$ になります。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000495"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n11-q07-substitution",
+      "anchor": false,
+      "known": [],
+      "resultId": "n11-q07-substitution-result",
+      "requires": [
+        "n11-06-result"
+      ],
+      "knownRefs": [
+        "n11-06-result"
+      ],
+      "resolvedFormula": "3\\times\\frac73-2=5"
+    },
+    {
+      "id": "n11-07",
+      "unit": "n11",
+      "q": 7,
+      "stageId": "n11-stage-07",
+      "goal": "境界の値が含まれるかを選ぼう。",
+      "before": "境界を代入した $5<5$ は成り立ちません。元の不等号に等号が含まれていないことと照合して、境界の扱いを選びます。",
+      "formula": "\\square",
+      "answer": "含まれない（等号となり<を満たさない）",
+      "wrong": [
+        [
+          "含まれる（左右が等しくなるから）",
+          "計算対象・条件・符号を直前の式と照合します。元の記号は「<」で、等号は許されていない。"
+        ],
+        [
+          "含まれる（3は正だから）",
+          "計算対象・条件・符号を直前の式と照合します。元の記号は「<」で、等号は許されていない。"
+        ],
+        [
+          "判断できない（分数だから）",
+          "計算対象・条件・符号を直前の式と照合します。元の記号は「<」で、等号は許されていない。"
+        ]
+      ],
+      "after": "解は $x<7/3$ で、境界は含みません。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000494",
+        "word-p-000495"
+      ],
+      "action": "meaning",
+      "role": "substep",
+      "itemId": "n11-07",
+      "anchor": true,
+      "known": [],
+      "resultId": "n11-07-result",
+      "requires": [
+        "n11-q07-substitution-result"
+      ],
+      "knownRefs": []
+    },
+    {
+      "id": "n11-negative-problem",
+      "unit": "n11",
+      "q": 8,
+      "stageId": "n11-stage-08",
+      "goal": "負の係数の例題を提示",
+      "before": "次の例題は $-2x+3\\le5$ です。最初は正の係数の例題と同じように、左辺の定数項からなくします。",
+      "formula": null,
+      "answer": null,
+      "wrong": [],
+      "after": "この内容を、次の判断や変形の根拠に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000496",
+        "word-p-000497"
+      ],
+      "action": "expression",
+      "role": "example",
+      "itemId": null,
+      "anchor": false,
+      "known": [],
+      "resultId": "n11-negative-problem-result",
+      "requires": [
+        "n11-07-result"
+      ],
+      "knownRefs": [
+        "n11-07-result"
+      ]
+    },
+    {
+      "id": "n11-p007-q08-subtract-left",
+      "unit": "n11",
+      "q": 8,
+      "stageId": "n11-stage-08",
+      "goal": "左辺の＋3を打ち消すため、引く数を選ぼう。",
+      "before": "左辺の $+3$ を打ち消すため、左辺から引く数を決めます。",
+      "formula": "3-\\square=0",
+      "answer": "3",
+      "wrong": [
+        [
+          "-3",
+          "計算対象・条件・符号を直前の式と照合します。＋3と打ち消し合うのは、何を引くときだろう。"
+        ],
+        [
+          "2",
+          "計算対象・条件・符号を直前の式と照合します。＋3と打ち消し合うのは、何を引くときだろう。"
+        ],
+        [
+          "5",
+          "計算対象・条件・符号を直前の式と照合します。＋3と打ち消し合うのは、何を引くときだろう。"
+        ]
+      ],
+      "after": "確定した結果を記録し、次の操作に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000498"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n11-p007-q08-subtract-left",
+      "anchor": true,
+      "known": [],
+      "resultId": "n11-p007-q08-subtract-left-result",
+      "requires": [
+        "n11-negative-problem-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "3-3=0"
+    },
+    {
+      "id": "n11-p007-q08-subtract-right",
+      "unit": "n11",
+      "q": 8,
+      "stageId": "n11-stage-08",
+      "goal": "同じ操作を右辺にも行う。右辺から引く数を選ぼう。",
+      "before": "左辺から引いた数を、右辺からも同じように引きます。加減では不等号の向きを保ちます。",
+      "formula": "-2x+3-3\\le5-\\square",
+      "answer": "3",
+      "wrong": [
+        [
+          "-3",
+          "計算対象・条件・符号を直前の式と照合します。左右に同じ操作をすると不等号の関係を保てる。"
+        ],
+        [
+          "5",
+          "計算対象・条件・符号を直前の式と照合します。左右に同じ操作をすると不等号の関係を保てる。"
+        ],
+        [
+          "2",
+          "計算対象・条件・符号を直前の式と照合します。左右に同じ操作をすると不等号の関係を保てる。"
+        ]
+      ],
+      "after": "確定した結果を記録し、次の操作に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000498"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n11-p007-q08-subtract-right",
+      "anchor": true,
+      "known": [],
+      "resultId": "n11-p007-q08-subtract-right-result",
+      "requires": [
+        "n11-p007-q08-subtract-left-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "-2x+3-3\\le5-3"
+    },
+    {
+      "id": "n11-08",
+      "unit": "n11",
+      "q": 8,
+      "stageId": "n11-stage-08",
+      "goal": "左辺を整理したあとの右辺、5−3を計算しよう。",
+      "before": "左辺の定数を打ち消しました。右辺の $5-3$ を計算して、$x$ の係数だけを残します。",
+      "formula": "-2x\\le\\square",
+      "answer": "2",
+      "wrong": [
+        [
+          "8",
+          "計算対象・条件・符号を直前の式と照合します。右辺の引き算を行ってから、−2xの右側に置こう。"
+        ],
+        [
+          "-2",
+          "計算対象・条件・符号を直前の式と照合します。右辺の引き算を行ってから、−2xの右側に置こう。"
+        ],
+        [
+          "5",
+          "計算対象・条件・符号を直前の式と照合します。右辺の引き算を行ってから、−2xの右側に置こう。"
+        ]
+      ],
+      "after": "係数は負なので、割るときの向きを判断します。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000498"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n11-08",
+      "anchor": true,
+      "known": [],
+      "resultId": "n11-08-result",
+      "requires": [
+        "n11-p007-q08-subtract-right-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "-2x\\le2"
+    },
+    {
+      "id": "n11-p007-q09-direction",
+      "unit": "n11",
+      "q": 9,
+      "stageId": "n11-stage-09",
+      "goal": "負の係数で割った後の不等号を選ぼう。",
+      "before": "$-2x\\le2$ の両辺を負の $-2$ で割ります。向きの変化を先に決め、右辺の計算とは分けて答えます。",
+      "formula": "\\frac{-2x}{-2}\\ \\square\\ \\frac2{-2}",
+      "answer": "\\ge",
+      "wrong": [
+        [
+          "\\le",
+          "計算対象・条件・符号を直前の式と照合します。係数は負。向きと等号の有無をそれぞれ確かめよう。"
+        ],
+        [
+          ">",
+          "計算対象・条件・符号を直前の式と照合します。係数は負。向きと等号の有無をそれぞれ確かめよう。"
+        ],
+        [
+          "<",
+          "計算対象・条件・符号を直前の式と照合します。係数は負。向きと等号の有無をそれぞれ確かめよう。"
+        ]
+      ],
+      "after": "次に右辺の値を計算します。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000499",
+        "word-p-000500"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n11-p007-q09-direction",
+      "anchor": true,
+      "known": [],
+      "resultId": "n11-p007-q09-direction-result",
+      "requires": [
+        "n11-08-result"
+      ],
+      "knownRefs": [
+        "n11-08-result"
+      ],
+      "resolvedFormula": "\\frac{-2x}{-2}\\ \\ge\\ \\frac2{-2}"
+    },
+    {
+      "id": "n11-09",
+      "unit": "n11",
+      "q": 9,
+      "stageId": "n11-stage-09",
+      "goal": "負の2で割った右辺、2÷(−2)を計算しよう。",
+      "before": "左辺の係数は1になりました。右辺の $2\\div(-2)$ を計算して範囲を記録します。",
+      "formula": "x\\ge\\square",
+      "answer": "-1",
+      "wrong": [
+        [
+          "1",
+          "計算対象・条件・符号を直前の式と照合します。正の数を負の数で割ると結果の符号はどうなるだろう。"
+        ],
+        [
+          "-2",
+          "計算対象・条件・符号を直前の式と照合します。正の数を負の数で割ると結果の符号はどうなるだろう。"
+        ],
+        [
+          "2",
+          "計算対象・条件・符号を直前の式と照合します。正の数を負の数で割ると結果の符号はどうなるだろう。"
+        ]
+      ],
+      "after": "不等号の向きと右辺の符号を別々に確認できました。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000500"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n11-09",
+      "anchor": true,
+      "known": [],
+      "resultId": "n11-09-result",
+      "requires": [
+        "n11-p007-q09-direction-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "x\\ge-1"
+    },
+    {
+      "id": "n11-q10-substitution",
+      "unit": "n11",
+      "q": 10,
+      "stageId": "n11-stage-10",
+      "goal": "境界を代入した左辺を求める",
+      "before": "境界 $x=-1$ を、元の式へ括弧付きで代入します。負と負の積を先に計算してから3を足します。",
+      "formula": "-2(-1)+3=\\square",
+      "answer": "5",
+      "wrong": [
+        [
+          "1",
+          "負と負の積は正です。"
+        ],
+        [
+          "-5",
+          "積の符号と最後の加法を分けます。"
+        ]
+      ],
+      "after": "境界では $5\\le5$ となります。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000501"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n11-q10-substitution",
+      "anchor": false,
+      "known": [],
+      "resultId": "n11-q10-substitution-result",
+      "requires": [
+        "n11-09-result"
+      ],
+      "knownRefs": [
+        "n11-09-result"
+      ],
+      "resolvedFormula": "-2(-1)+3=5"
+    },
+    {
+      "id": "n11-10",
+      "unit": "n11",
+      "q": 10,
+      "stageId": "n11-stage-10",
+      "goal": "境界を含むかどうか、根拠とともに選ぼう。",
+      "before": "$5\\le5$ は等号の場合なので成り立ちます。元の条件と端点を照合し、境界を含むかを選びます。",
+      "formula": "\\square",
+      "answer": "含む（代入すると5≤5）",
+      "wrong": [
+        [
+          "含まない（負の数だから）",
+          "計算対象・条件・符号を直前の式と照合します。元の≤は等号を許し、境界を代入すると左右が一致する。"
+        ],
+        [
+          "含まない（代入すると5<5）",
+          "計算対象・条件・符号を直前の式と照合します。元の≤は等号を許し、境界を代入すると左右が一致する。"
+        ],
+        [
+          "含む（不等号を逆にしないから）",
+          "計算対象・条件・符号を直前の式と照合します。元の≤は等号を許し、境界を代入すると左右が一致する。"
+        ]
+      ],
+      "after": "ここまでの二例を元図で比べます。○は端点を含まず、●は含みます。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000501",
+        "word-p-000502",
+        "word-p-000503"
+      ],
+      "action": "meaning",
+      "role": "substep",
+      "itemId": "n11-10",
+      "anchor": true,
+      "known": [],
+      "resultId": "n11-10-result",
+      "requires": [
+        "n11-q10-substitution-result"
+      ],
+      "knownRefs": []
+    },
+    {
+      "id": "n11-linear-definition",
+      "unit": "n11",
+      "q": 11,
+      "stageId": "n11-stage-11",
+      "goal": "一次不等式と移項を定義する",
+      "before": "すべての項を左へ集めた左辺が $ax+b$（$a\\ne0$）になる不等式を **一次不等式** といいます。**移項** は両辺に同じ数や式を加減する操作をまとめた書き方です。理由なしに符号だけを変える規則ではありません。",
+      "formula": null,
+      "answer": null,
+      "wrong": [],
+      "after": "この内容を、次の判断や変形の根拠に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000504"
+      ],
+      "action": "expression",
+      "role": "definition",
+      "itemId": null,
+      "anchor": false,
+      "known": [],
+      "resultId": "n11-linear-definition-result",
+      "requires": [
+        "n11-10-result"
+      ],
+      "knownRefs": [
+        "n11-10-result"
+      ]
+    },
+    {
+      "id": "n11-bracket-problem",
+      "unit": "n11",
+      "q": 11,
+      "stageId": "n11-stage-11",
+      "goal": "括弧のある確認問題を提示",
+      "before": "確認問題は $3(2x+3)\\ge10x-17$ です。まず分配法則で括弧を外し、それから $x$ の項、定数項の順にまとめます。",
+      "formula": null,
+      "answer": null,
+      "wrong": [],
+      "after": "この内容を、次の判断や変形の根拠に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000505",
+        "word-p-000506"
+      ],
+      "action": "expression",
+      "role": "check",
+      "itemId": null,
+      "anchor": false,
+      "known": [],
+      "resultId": "n11-bracket-problem-result",
+      "requires": [
+        "n11-linear-definition-result"
+      ],
+      "knownRefs": []
+    },
+    {
+      "id": "n11-wm012-q11-expand",
+      "unit": "n11",
+      "q": 11,
+      "stageId": "n11-stage-11",
+      "goal": "括弧の両方の項に3を掛けて、展開した左辺を選ぼう。",
+      "before": "左辺の3を、括弧内の $2x$ と $3$ の両方へ掛けます。",
+      "formula": "3(2x+3)=\\square",
+      "answer": "6x+9",
+      "wrong": [
+        [
+          "6x+3",
+          "計算対象・条件・符号を直前の式と照合します。3を2xと3のそれぞれに掛けよう。"
+        ],
+        [
+          "2x+9",
+          "計算対象・条件・符号を直前の式と照合します。3を2xと3のそれぞれに掛けよう。"
+        ],
+        [
+          "6x+6",
+          "計算対象・条件・符号を直前の式と照合します。3を2xと3のそれぞれに掛けよう。"
+        ]
+      ],
+      "after": "この展開結果を元の不等式の左辺へ戻します。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000507"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n11-wm012-q11-expand",
+      "anchor": true,
+      "known": [],
+      "resultId": "n11-wm012-q11-expand-result",
+      "requires": [
+        "n11-bracket-problem-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "3(2x+3)=6x+9"
+    },
+    {
+      "id": "n11-wm012-q11-xcoef",
+      "unit": "n11",
+      "q": 11,
+      "stageId": "n11-stage-11",
+      "goal": "両辺から10xを引いたあとの、左辺のxの係数を選ぼう。",
+      "before": "元の不等式は $6x+9\\ge10x-17$ になりました。両辺から $10x$ を引き、左辺の $6x-10x$ をまとめます。",
+      "formula": "(6-10)x+9\\ge-17,\\quad6-10=\\square",
+      "answer": "-4",
+      "wrong": [
+        [
+          "4",
+          "計算対象・条件・符号を直前の式と照合します。6x−10xの係数を計算しよう。"
+        ],
+        [
+          "-10",
+          "計算対象・条件・符号を直前の式と照合します。6x−10xの係数を計算しよう。"
+        ],
+        [
+          "16",
+          "計算対象・条件・符号を直前の式と照合します。6x−10xの係数を計算しよう。"
+        ]
+      ],
+      "after": "左辺のxの係数が求まりました。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000507"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n11-wm012-q11-xcoef",
+      "anchor": true,
+      "known": [],
+      "resultId": "n11-wm012-q11-xcoef-result",
+      "requires": [
+        "n11-wm012-q11-expand-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "(6-10)x+9\\ge-17,\\quad6-10=-4"
+    },
+    {
+      "id": "n11-q11-constant",
+      "unit": "n11",
+      "q": 11,
+      "stageId": "n11-stage-11",
+      "goal": "定数を同じ操作でまとめる",
+      "before": "いまの式は $-4x+9\\ge-17$ です。左辺の9を打ち消すため両辺から9を引き、右辺を計算します。",
+      "formula": "-4x\\ge-17-9=\\square",
+      "answer": "-26",
+      "wrong": [
+        [
+          "-8",
+          "負の数から正の9を引きます。"
+        ],
+        [
+          "26",
+          "右辺の符号を残します。"
+        ]
+      ],
+      "after": "確定した結果を記録し、次の操作に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000507"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n11-q11-constant",
+      "anchor": false,
+      "known": [],
+      "resultId": "n11-q11-constant-result",
+      "requires": [
+        "n11-wm012-q11-xcoef-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "-4x\\ge-17-9=-26"
+    },
+    {
+      "id": "n11-11",
+      "unit": "n11",
+      "q": 11,
+      "stageId": "n11-stage-11",
+      "goal": "整理した不等式を選ぼう。",
+      "before": "係数の計算と定数の計算の結果を元の不等式へ戻して、$x$ の項だけを左に残した形をまとめます。",
+      "formula": "\\square",
+      "answer": "-4x\\ge-26",
+      "wrong": [
+        [
+          "-4x\\le-26",
+          "計算対象・条件・符号を直前の式と照合します。左は6x+9。両辺から10xと9を引く。"
+        ],
+        [
+          "4x\\ge-26",
+          "計算対象・条件・符号を直前の式と照合します。左は6x+9。両辺から10xと9を引く。"
+        ],
+        [
+          "-4x\\ge26",
+          "計算対象・条件・符号を直前の式と照合します。左は6x+9。両辺から10xと9を引く。"
+        ]
+      ],
+      "after": "次は負の係数を1にする段階です。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000507"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n11-11",
+      "anchor": true,
+      "known": [],
+      "resultId": "n11-11-result",
+      "requires": [
+        "n11-q11-constant-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "-4x\\ge-26"
+    },
+    {
+      "id": "n11-q12-sign",
+      "unit": "n11",
+      "q": 12,
+      "stageId": "n11-stage-12",
+      "goal": "負数で割る向きを判断する",
+      "before": "$-4x\\ge-26$ を負の $-4$ で割ります。右辺を簡単にする前に、不等号の向きを選びます。",
+      "formula": "x\\ \\square\\ \\frac{-26}{-4}",
+      "answer": "\\le",
+      "wrong": [
+        [
+          "\\ge",
+          "負の数で割ると向きは逆です。"
+        ],
+        [
+          "<",
+          "元は等号を含みます。"
+        ]
+      ],
+      "after": "確定した結果を記録し、次の操作に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000508"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n11-q12-sign",
+      "anchor": false,
+      "known": [],
+      "resultId": "n11-q12-sign-result",
+      "requires": [
+        "n11-11-result"
+      ],
+      "knownRefs": [
+        "n11-11-result"
+      ],
+      "resolvedFormula": "x\\ \\le\\ \\frac{-26}{-4}"
+    },
+    {
+      "id": "n11-12",
+      "unit": "n11",
+      "q": 12,
+      "stageId": "n11-stage-12",
+      "goal": "解の範囲を選ぼう。",
+      "before": "右辺 $(-26)/(-4)=26/4=13/2$ と約分し、いま選んだ向きのまま最終的な範囲をまとめます。",
+      "formula": "\\square",
+      "answer": "x\\le\\frac{13}{2}",
+      "wrong": [
+        [
+          "x\\ge\\frac{13}{2}",
+          "計算対象・条件・符号を直前の式と照合します。負の数で割るので≥は≤になり、負÷負は正。"
+        ],
+        [
+          "x\\le-\\frac{13}{2}",
+          "計算対象・条件・符号を直前の式と照合します。負の数で割るので≥は≤になり、負÷負は正。"
+        ],
+        [
+          "x<\\frac{13}{2}",
+          "計算対象・条件・符号を直前の式と照合します。負の数で割るので≥は≤になり、負÷負は正。"
+        ]
+      ],
+      "after": "式を解く過程の同値な条件は等号ではなく、段階ごとの不等式として並べます。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000508"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n11-12",
+      "anchor": true,
+      "known": [],
+      "resultId": "n11-12-result",
+      "requires": [
+        "n11-q12-sign-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "x\\le\\frac{13}{2}"
+    },
+    {
+      "id": "n11-fraction-problem",
+      "unit": "n11",
+      "q": 13,
+      "stageId": "n11-stage-13",
+      "goal": "分数の確認問題を提示",
+      "before": "次は $(x-2)/3\\le2x+1$ です。分母の3は正なので、両辺を3倍しても不等号の向きは変わりません。分子の差全体と右辺の和全体を、それぞれ一つの対象として扱います。",
+      "formula": null,
+      "answer": null,
+      "wrong": [],
+      "after": "この内容を、次の判断や変形の根拠に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000509",
+        "word-p-000510"
+      ],
+      "action": "expression",
+      "role": "check",
+      "itemId": null,
+      "anchor": false,
+      "known": [],
+      "resultId": "n11-fraction-problem-result",
+      "requires": [
+        "n11-12-result"
+      ],
+      "knownRefs": [
+        "n11-12-result"
+      ]
+    },
+    {
+      "id": "n11-p008-q13-mul-left",
+      "unit": "n11",
+      "q": 13,
+      "stageId": "n11-stage-13",
+      "goal": "左辺の分母3を消すために掛ける数を選ぼう。",
+      "before": "分母の3を打ち消す数を左辺で選びます。",
+      "formula": "\\frac{x-2}{3}\\times\\square=x-2",
+      "answer": "3",
+      "wrong": [
+        [
+          "-3",
+          "計算対象・条件・符号を直前の式と照合します。分母を消すには、分母と同じ大きさの正の数を掛ける。"
+        ],
+        [
+          "1",
+          "計算対象・条件・符号を直前の式と照合します。分母を消すには、分母と同じ大きさの正の数を掛ける。"
+        ],
+        [
+          "6",
+          "計算対象・条件・符号を直前の式と照合します。分母を消すには、分母と同じ大きさの正の数を掛ける。"
+        ]
+      ],
+      "after": "確定した結果を記録し、次の操作に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000511"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n11-p008-q13-mul-left",
+      "anchor": true,
+      "known": [],
+      "resultId": "n11-p008-q13-mul-left-result",
+      "requires": [
+        "n11-fraction-problem-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "\\frac{x-2}{3}\\times3=x-2"
+    },
+    {
+      "id": "n11-p008-q13-mul-right",
+      "unit": "n11",
+      "q": 13,
+      "stageId": "n11-stage-13",
+      "goal": "右辺にも同じ数を掛けよう。",
+      "before": "左辺を3倍したので、右辺の和全体にも同じ数を掛けます。",
+      "formula": "x-2\\le\\square(2x+1)",
+      "answer": "3",
+      "wrong": [
+        [
+          "1",
+          "計算対象・条件・符号を直前の式と照合します。左辺に選んだ倍率と同じ数を右辺にも掛ける。"
+        ],
+        [
+          "-3",
+          "計算対象・条件・符号を直前の式と照合します。左辺に選んだ倍率と同じ数を右辺にも掛ける。"
+        ],
+        [
+          "6",
+          "計算対象・条件・符号を直前の式と照合します。左辺に選んだ倍率と同じ数を右辺にも掛ける。"
+        ]
+      ],
+      "after": "右辺の括弧を外します。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000511"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n11-p008-q13-mul-right",
+      "anchor": true,
+      "known": [],
+      "resultId": "n11-p008-q13-mul-right-result",
+      "requires": [
+        "n11-p008-q13-mul-left-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "x-2\\le3(2x+1)"
+    },
+    {
+      "id": "n11-13",
+      "unit": "n11",
+      "q": 13,
+      "stageId": "n11-stage-13",
+      "goal": "右辺3(2x+1)を展開したxの係数を選ぼう。",
+      "before": "右辺では3を $2x$ と $1$ の両方へ掛けます。まず $x$ の項の係数を計算します。",
+      "formula": "3(2x+1)=(\\square)x+3\\times1",
+      "answer": "6",
+      "wrong": [
+        [
+          "2",
+          "計算対象・条件・符号を直前の式と照合します。3を2xに掛けた係数を計算しよう。"
+        ],
+        [
+          "3",
+          "計算対象・条件・符号を直前の式と照合します。3を2xに掛けた係数を計算しよう。"
+        ],
+        [
+          "9",
+          "計算対象・条件・符号を直前の式と照合します。3を2xに掛けた係数を計算しよう。"
+        ]
+      ],
+      "after": "確定した結果を記録し、次の操作に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000511"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n11-13",
+      "anchor": true,
+      "known": [],
+      "resultId": "n11-13-result",
+      "requires": [
+        "n11-p008-q13-mul-right-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "3(2x+1)=(6)x+3\\times1"
+    },
+    {
+      "id": "n11-p008-q13-constant",
+      "unit": "n11",
+      "q": 13,
+      "stageId": "n11-stage-13",
+      "goal": "3(2x+1) の定数項を計算しよう。",
+      "before": "同じ分配法則の残る項 $3\\times1$ を計算します。",
+      "formula": "x-2\\le6x+\\square",
+      "answer": "3",
+      "wrong": [
+        [
+          "1",
+          "計算対象・条件・符号を直前の式と照合します。かっこの中の定数項にも外側の数を掛ける。"
+        ],
+        [
+          "-3",
+          "計算対象・条件・符号を直前の式と照合します。かっこの中の定数項にも外側の数を掛ける。"
+        ],
+        [
+          "6",
+          "計算対象・条件・符号を直前の式と照合します。かっこの中の定数項にも外側の数を掛ける。"
+        ]
+      ],
+      "after": "両辺からxを引き、次に両辺から定数を引きます。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000511"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n11-p008-q13-constant",
+      "anchor": true,
+      "known": [],
+      "resultId": "n11-p008-q13-constant-result",
+      "requires": [
+        "n11-13-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "x-2\\le6x+3"
+    },
+    {
+      "id": "n11-wm013-q14-xcoef",
+      "unit": "n11",
+      "q": 14,
+      "stageId": "n11-stage-14",
+      "goal": "両辺からxを引いて右辺のxの係数を選ぼう。",
+      "before": "$x-2\\le6x+3$ の両辺から $x$ を引きます。右辺の $6x-x$ の係数をまとめます。",
+      "formula": "-2\\le(\\square)x+3",
+      "answer": "5",
+      "wrong": [
+        [
+          "6",
+          "計算対象・条件・符号を直前の式と照合します。6xからxを引くので、係数6から1を引く。"
+        ],
+        [
+          "7",
+          "計算対象・条件・符号を直前の式と照合します。6xからxを引くので、係数6から1を引く。"
+        ],
+        [
+          "-5",
+          "計算対象・条件・符号を直前の式と照合します。6xからxを引くので、係数6から1を引く。"
+        ]
+      ],
+      "after": "確定した結果を記録し、次の操作に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000512"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n11-wm013-q14-xcoef",
+      "anchor": true,
+      "known": [],
+      "resultId": "n11-wm013-q14-xcoef-result",
+      "requires": [
+        "n11-p008-q13-constant-result"
+      ],
+      "knownRefs": [
+        "n11-p008-q13-constant-result"
+      ],
+      "resolvedFormula": "-2\\le(5)x+3"
+    },
+    {
+      "id": "n11-wm013-q14-const",
+      "unit": "n11",
+      "q": 14,
+      "stageId": "n11-stage-14",
+      "goal": "両辺から3を引いて左辺の定数を選ぼう。",
+      "before": "いまの式は $-2\\le5x+3$ です。両辺から3を引き、左辺の定数を計算します。",
+      "formula": "\\square\\le5x",
+      "answer": "-5",
+      "wrong": [
+        [
+          "1",
+          "計算対象・条件・符号を直前の式と照合します。左辺の−2からさらに3を引く。"
+        ],
+        [
+          "-2",
+          "計算対象・条件・符号を直前の式と照合します。左辺の−2からさらに3を引く。"
+        ],
+        [
+          "5",
+          "計算対象・条件・符号を直前の式と照合します。左辺の−2からさらに3を引く。"
+        ]
+      ],
+      "after": "確定した結果を記録し、次の操作に使います。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000512"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n11-wm013-q14-const",
+      "anchor": true,
+      "known": [],
+      "resultId": "n11-wm013-q14-const-result",
+      "requires": [
+        "n11-wm013-q14-xcoef-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "-5\\le5x"
+    },
+    {
+      "id": "n11-q14-divide",
+      "unit": "n11",
+      "q": 14,
+      "stageId": "n11-stage-14",
+      "goal": "正の係数で割り向きを読む",
+      "before": "$-5\\le5x$ の両辺を正の5で割ります。大小を保ち、まず左に定数を置いた形で書きます。",
+      "formula": "\\square",
+      "answer": "-1\\le x",
+      "wrong": [
+        [
+          "-1\\ge x",
+          "正の数で割ると向きは変わりません。"
+        ],
+        [
+          "1\\le x",
+          "左辺の−5の負号を残します。"
+        ]
+      ],
+      "after": "同じ関係をxから読むと、xは−1以上です。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000512"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n11-q14-divide",
+      "anchor": false,
+      "known": [],
+      "resultId": "n11-q14-divide-result",
+      "requires": [
+        "n11-wm013-q14-const-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "-1\\le x"
+    },
+    {
+      "id": "n11-14",
+      "unit": "n11",
+      "q": 14,
+      "stageId": "n11-stage-14",
+      "goal": "最終的な解の範囲を選ぼう。",
+      "before": "$-1\\le x$ と同じ範囲を、$x$ を先に書いた形で表します。辺を入れ替えると、不等号が指す大小も合わせて書き替えます。",
+      "formula": "\\square",
+      "answer": "x\\ge-1",
+      "wrong": [
+        [
+          "x\\le-1",
+          "計算対象・条件・符号を直前の式と照合します。−5≤5xとなり、正の5で割る。"
+        ],
+        [
+          "x\\ge1",
+          "計算対象・条件・符号を直前の式と照合します。−5≤5xとなり、正の5で割る。"
+        ],
+        [
+          "x>-1",
+          "計算対象・条件・符号を直前の式と照合します。−5≤5xとなり、正の5で割る。"
+        ]
+      ],
+      "after": "一つずつの不等式を解く方法ができました。次は複数の条件を同時に満たす範囲を残します。",
+      "hint": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
+      "sourceRefs": [
+        "word-p-000512",
+        "word-p-000513"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n11-14",
+      "anchor": true,
+      "known": [],
+      "resultId": "n11-14-result",
+      "requires": [
+        "n11-q14-divide-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "x\\ge-1"
+    }
+  ]
+}

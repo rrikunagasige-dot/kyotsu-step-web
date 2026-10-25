@@ -1,0 +1,55 @@
+{
+  "status": "PASS_BOUNDED",
+  "units": {
+    "NE02": {
+      "nodes": 33,
+      "answers": 30,
+      "stages": 12,
+      "originalItems": 12,
+      "originalChoiceKeys": 36,
+      "originalContractsPreserved": true,
+      "sourceBlocks": 24,
+      "mathBlocks": 10,
+      "candidateIR": "PASS",
+      "compile": "PASS",
+      "sourceCoverage": "PASS",
+      "browser": "NOT_RUN",
+      "approval": "PENDING"
+    },
+    "N11": {
+      "nodes": 47,
+      "answers": 39,
+      "stages": 14,
+      "originalItems": 31,
+      "originalChoiceKeys": 124,
+      "originalContractsPreserved": true,
+      "sourceBlocks": 43,
+      "mathBlocks": 29,
+      "candidateIR": "PASS",
+      "compile": "PASS",
+      "sourceCoverage": "PASS",
+      "browser": "NOT_RUN",
+      "approval": "PENDING"
+    },
+    "N12": {
+      "nodes": 49,
+      "answers": 46,
+      "stages": 15,
+      "originalItems": 35,
+      "originalChoiceKeys": 140,
+      "originalContractsPreserved": true,
+      "sourceBlocks": 41,
+      "mathBlocks": 11,
+      "candidateIR": "PASS",
+      "compile": "PASS",
+      "sourceCoverage": "PASS",
+      "browser": "NOT_RUN",
+      "approval": "PENDING"
+    }
+  },
+  "strictIdentities": 16,
+  "inequalityChecks": 6,
+  "learnerImplementation": false,
+  "browserVerified": false,
+  "publicDeployment": false
+}

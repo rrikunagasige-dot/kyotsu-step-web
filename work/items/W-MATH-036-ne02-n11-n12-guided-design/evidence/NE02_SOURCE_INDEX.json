@@ -1,0 +1,414 @@
+{
+  "schemaVersion": 1,
+  "documentHash": "93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa",
+  "unit": "NE02",
+  "pandocVersion": "pandoc 3.1.3",
+  "warnings": "",
+  "unassignedMath": [],
+  "blocks": [
+    {
+      "id": "word-p-000662",
+      "locator": "word/document.xml:p[662]",
+      "text": "NE02　二重根号を、平方の形から外す",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "heading"
+    },
+    {
+      "id": "word-p-000663",
+      "locator": "word/document.xml:p[663]",
+      "text": "例題",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000664",
+      "locator": "word/document.xml:p[664]",
+      "text": " を簡単にしよう。根号の中にさらに根号があるため、2重根号という。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "354d10adfe29fa8b7f33ffffc5510889d426c0f7fb13085da824f5df295947a8",
+          "fractions": 0,
+          "radicals": 2,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\sqrt{5 + 2\\sqrt{6}}"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000665",
+      "locator": "word/document.xml:p[665]",
+      "text": "先生　「平方したら根号の中と同じになる、非負の式を探します。平方根を含む二項の和を2乗したとき、どんな形になりましたか。」",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000666",
+      "locator": "word/document.xml:p[666]",
+      "text": "【1】  として、 を展開しよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        1
+      ],
+      "mathStructures": [
+        {
+          "sha256": "bb8abffed91ca9a141e6f7a1543665e643ec10fa9c37ed58081e5d78a7d6196a",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "79d22b987e98cf79d0fba524eb42fa55885eead5c6e6495d55770043c25d982f",
+          "fractions": 0,
+          "radicals": 2,
+          "superscripts": 1
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "a > 0,b > 0"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "\\left( \\sqrt{a} + \\sqrt{b} \\right)^{2}"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000667",
+      "locator": "word/document.xml:p[667]",
+      "text": "【2】 根号内の  と比べ、 が満たす和と積の条件を書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        2
+      ],
+      "mathStructures": [
+        {
+          "sha256": "36404dfd5a70759aff4adb3e592a75537a7084483ce7035f0761b683b316b2e7",
+          "fractions": 0,
+          "radicals": 1,
+          "superscripts": 0
+        },
+        {
+          "sha256": "fb30c9a7a60ba28116aa81da48be604d2f46b3dfcff82844352a1187ca744874",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "5 + 2\\sqrt{6}"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "a,b"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000668",
+      "locator": "word/document.xml:p[668]",
+      "text": "【3】 条件を満たす正の二数を探そう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        3
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000669",
+      "locator": "word/document.xml:p[669]",
+      "text": "【4】 候補が非負であることも確認し、元の根号の値を答えよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        4
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000670",
+      "locator": "word/document.xml:p[670]",
+      "text": "例題",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000671",
+      "locator": "word/document.xml:p[671]",
+      "text": " を簡単にしよう。今度は中央の項が負なので、平方根の差の平方を考える。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "28b9e73daf796d4ddcbc6cfd0eabd5999d82f72767c457e855bc0e128ce81bec",
+          "fractions": 0,
+          "radicals": 2,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\sqrt{9 - 4\\sqrt{5}}"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000672",
+      "locator": "word/document.xml:p[672]",
+      "text": "【5】  を展開しよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        5
+      ],
+      "mathStructures": [
+        {
+          "sha256": "43ff1b5dcf77131c7cb48d59e4caf87663b5b28bd23ca39971ae7b2245a7ecfb",
+          "fractions": 0,
+          "radicals": 2,
+          "superscripts": 1
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\left( \\sqrt{a} - \\sqrt{b} \\right)^{2}"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000673",
+      "locator": "word/document.xml:p[673]",
+      "text": "【6】  を  と対応させ、和と積の条件を書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        6
+      ],
+      "mathStructures": [
+        {
+          "sha256": "533ec15ac822eb857242d8c3f2efd537153c6cbc5c57af360cd74a06724b4f7c",
+          "fractions": 0,
+          "radicals": 1,
+          "superscripts": 0
+        },
+        {
+          "sha256": "b04b3dd0d2291dbad09ed9929f0917ee17f113d7ce4aa4a560e65860a687d83d",
+          "fractions": 0,
+          "radicals": 1,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "4\\sqrt{5}"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "2\\sqrt{ab}"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000674",
+      "locator": "word/document.xml:p[674]",
+      "text": "【7】 正の二数を求め、候補となる平方根の差を書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        7
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000675",
+      "locator": "word/document.xml:p[675]",
+      "text": "花子　「平方が合う候補が二つあっても、根号そのものは非負の方を表すんだったね。」",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000676",
+      "locator": "word/document.xml:p[676]",
+      "text": "【8】 符号を比較し、元の根号の値を選ぼう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        8
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000677",
+      "locator": "word/document.xml:p[677]",
+      "text": "差の形では、平方だけでなく大小を確かめて非負の方を選ぶ。一般には、差の絶対値として表せる。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000678",
+      "locator": "word/document.xml:p[678]",
+      "text": "中央の係数が2でない形をそろえる",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000679",
+      "locator": "word/document.xml:p[679]",
+      "text": "確認",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000680",
+      "locator": "word/document.xml:p[680]",
+      "text": " を簡単にしよう。根号内を分母2の一つの分数に直すと、前と同じ中央の係数を作れる。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "cce31c9b929847878460e0dfb8df1d8ea69aaeb06b359bc6827a2bbd574ffe4f",
+          "fractions": 0,
+          "radicals": 2,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\sqrt{3 + \\sqrt{5}}"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000681",
+      "locator": "word/document.xml:p[681]",
+      "text": "【9】 根号内を、分母が2の分数で書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        9
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000682",
+      "locator": "word/document.xml:p[682]",
+      "text": "【10】 平方根の商の関係を使い、分子と分母を分けよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        10
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000683",
+      "locator": "word/document.xml:p[683]",
+      "text": "【11】 分子について和と積の条件を作り、二重根号を外そう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        11
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000684",
+      "locator": "word/document.xml:p[684]",
+      "text": "【12】 全体の分母を有理化し、答えをまとめよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        12
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000685",
+      "locator": "word/document.xml:p[685]",
+      "text": "ここで扱ったのは、根号内を平方の展開と対応させられる場合である。手順は、和と積の条件を作ること、候補を見つけること、最後に符号まで確かめることである。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    }
+  ],
+  "status": "PASS",
+  "semanticFidelity": "REQUIRES_SOURCE_REVIEW"
+}

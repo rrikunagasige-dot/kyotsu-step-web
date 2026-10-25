@@ -1,0 +1,23 @@
+{
+  "node": "R02_CAUSE@n11",
+  "status": "PASS_BOUNDED",
+  "outputs": {
+    "case.retrieve": "PASS",
+    "knowledge.ledger": "PASS",
+    "math.verify": "NEEDS_AI_REVIEW",
+    "ir.verify": "PASS",
+    "source.audit": "NEEDS_AI_REVIEW",
+    "novice.audit": "PASS",
+    "math.solve": "NEEDS_AI_REVIEW"
+  },
+  "review": "Legacy projection is prompt/grading only; full original prose reviewed directly. Matching sum/product is a sufficient construction, not uniqueness of all real candidate pairs. Inequality transformations never use false equality.",
+  "receiptArtifacts": [
+    "db3bf20563c018d1dbfeefc21d471cbceb791ceddbd535b1bd5c3af0c277bcea",
+    "70b143655482ccc2a4e09b52708e70d0bd580864ce63d63d01abe61240a20d8f",
+    "7fd6043742d24a7596d3a336f41db0731bb9df4981b75df48f004594993b59b8",
+    "3905224ad13da6bfe1ba457c122d0df16d2efd3f7cbfdde942f98b1144449b02",
+    "b3ba94d256d5d7de70905b1e0d7ad2a8f3b32d99bebef347d04a94f2e52bda10",
+    "ad87624ba2af05f84e33c941572343005d9dfbe1d58fcffb0465e12bf4b465da",
+    "6d25d1c84f6bd50ab7e7a33b946f7dbf13da5e6c517386b373b34542ff09b5f4"
+  ]
+}

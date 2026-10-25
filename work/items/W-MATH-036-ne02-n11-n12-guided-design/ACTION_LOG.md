@@ -12,3 +12,10 @@
 - 最終入力監査でW035の否定2件のmetadata-only投影を検出し、元semantic本文・数式・選択肢で訂正。訂正catalog/modelをproduction_contextへ反映し、既存の依存hashによって失効したR02〜R04を再実行。古い検索結果を訂正版の監査として再利用していない。
 
 - 訂正15事例のcatalog/modelで全3unitのR02〜R04を再実行し、R05_APPROVAL@ne02へ到達。frozen11入力・candidate/protected hashを最終照合。src/public/workflow/toolsへの差分0。
+
+## Approved implementation and in-progress exact-source verification
+- User「いいぞ」captured as W036-THREE-UNITS-P001-APPROVED-20261025 for all three frozen designs. All R05 gates and each native R06 completed. No new empty Runtime or central tool change.
+- NE02 source f860dc04 CI40178677693 and existing Pages run40179268540 passed. HTTPS exact manifest and hosted four-width full plays passed. Prior6689 image audit was superseded after actual alternative-row finding; no publication at that source.
+- N11 first browser run40179387131 correctly failed Japanese explanation inside KaTeX. Added optional explicit prose row rendering and preserved all canonical keys. Accepted N09/N10 full plays re-enabled.
+- N12 historical test alias and serial-dispatch failure were recorded and repaired; no published partial failure. All19 current-unit and620 applicable learner tests,39 authoring,lint/build pass locally.
+- Final learner source459a61312e4a050be8c5a39f7d5012e3ab372671 / CI40179800038 pending. Return from CI to real image audit, native R07/G2, exact-source existing Pages release and hosted plays; G3_FINAL remains USER.

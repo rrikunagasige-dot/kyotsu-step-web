@@ -24,3 +24,6 @@ N12 R06 dispatch was refused while the N11 R06 claim remained active. A followin
 
 ## N11 real browser failure b04e46bb / CI40179387131
 320px rejected n11-wm011-q03-zero: standalone Japanese explanation was inside a KaTeX aligned row and could not wrap. Preserve frozen DISPLAY_SPEC and canonical keys; materializer interprets pure text rows as ordinary text with explicit optional row metadata. Shared reader honors this metadata, absent for accepted units. Full protected N09/N10 plays enabled again because shared reader changed. Historical N12 test import initially duplicated an existing `as n12` alias; fixed the projection helper to preserve aliases and be idempotent. No assertion removed.
+
+## Full play459a6131 / CI40179800038
+All four NE02 plays and the complete N11 320px play finished; migration test then timed out while N11 reopened an already-complete first page (real ERROR.png shows correct old answer and enabled Next). Saved cursor is intentionally allowed before the pending frontier. Fix the browser harness to follow the actual Next controls, bounded by stage count, until the reopened unanswered item. Keep all archive/attempt/other-unit assertions. No learner change or gate weakening. Artifact12593926919 SHA2566ee8d51c9aa367cf4a3471a2a02f9f244c358e689704d2772be75803be617aaf retained.

@@ -13,3 +13,6 @@
 未実施：教材src変更、revision移行の実働、スマホ/PC browser play、公開、今回3単元の本人評価。compileは制作IRのcompileであり、公開appのbuildではない。
 
 再現：`python design.py` → 既存ML venvのpythonで`verify.py` → `python display_spec.py` → `node verify_math_render.mjs`。いずれもこのWorkをcwdにせずrepo rootからWorkの相対pathで実行する。承認後はDESIGN_INPUTS.jsonの固定hashを確認し、再生成物が承認版と一致する場合だけ採用する。
+
+## Implementation checkpoint — supersedes design-only unperformed status above
+P001 approved by「いいぞ」. All three learner units now match frozen IR and original78 answers/300choice keys. Dedicated19 and applicable learner620 tests,authoring39,lint/build pass locally. NE02 f860 publication run40179268540 and hosted four-width complete plays passed; N11 first browser overflow caught in run40179387131 and repaired. Final three-unit source459a6131 / CI40179800038 remains pending; no final QA or user material acceptance claimed here. Historical proof and failures are immutable, not overwritten.

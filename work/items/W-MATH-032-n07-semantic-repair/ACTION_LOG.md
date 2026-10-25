@@ -9,3 +9,5 @@
 - 全41nodeの設計JSON・本文設計・受入条件を作成。教材実装、公開、学習モデルの再fitは行っていない。
 
 2026-10-25: User approved P-001「いいよ続けて」. Foundation fixed and actual R01-R05 replayed, R06 applied. Captured legacy diagnostics / unranked fallback / deterministic design materialization. Found and corrected key-order-dependent IR hashes and original compiler check connection. Existing two unrelated catalog test failures are baseline;620 applicable learner checks pass. Local browser download failed; pending GitHub CI real UI. No publication or learner acceptance claimed.
+
+2026-10-25: Actual CI40154122715 SUCCESS at46ea59be. Four-width original integration plus all-node semantic suite passed. ZIP SHA05fa4c33 verified, selected captures inspected. R07 and G2 recorded with same-assistant/code audit (no claim of independent second AI). Existing Pages deployment intent recorded; main publisher pin advanced only to tested source at a99031f7, run40154568134 IN_PROGRESS. Publication and user acceptance remain pending until actual response is checked.

@@ -1,0 +1,130 @@
+{
+  "run": 40154122715,
+  "artifact": 12584480673,
+  "sourceSHA": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+  "artifactSHA256": "05fa4c33804403d4f100b78f124807892576329fe79204992a5a5f957d70b11b",
+  "files": [
+    {
+      "name": "q07-before.png",
+      "sha256": "78cd34b81371c6395ccab21180808a08837f1caff30fdcfd05a4ea826ec4062f"
+    },
+    {
+      "name": "width-1440-history.png",
+      "sha256": "c142dbe10612eaf5599f78921c74efabcb8ce603023dbfd0cfe3e6154d4d1404"
+    },
+    {
+      "name": "width-1440-stage-11.png",
+      "sha256": "a6b5c291be5349122fad958fdd497438701946a9a5ca541675b7d647c9888296"
+    },
+    {
+      "name": "width-1440-stage-2.png",
+      "sha256": "a61a214a9cb706dde1640b1d3d37586b75e7ad1dfa1d49791ed000a515855197"
+    },
+    {
+      "name": "width-1440-stage-3.png",
+      "sha256": "9c4e9ec24955a05bc5f80d510636a4c60b61d9ba8a7bd93ff24bbcb64d0b575d"
+    },
+    {
+      "name": "width-1440-stage-6.png",
+      "sha256": "f101f96cae468863f9978b37a73aa31bd114d372a4a4bf766d1da774527acb50"
+    },
+    {
+      "name": "width-1440-stage-7.png",
+      "sha256": "dcd6504d7ae88ccc27b9dec209fea566e197f1f01c2ca90ce6d9a6418f671281"
+    },
+    {
+      "name": "width-1440-stage-9.png",
+      "sha256": "f54c0affb51da26745fc2e6611f9082c2d0e1a6b83cbd463e3b22dd2f44ebde6"
+    },
+    {
+      "name": "width-320-history.png",
+      "sha256": "d45d238d4f28db759d8d11b72bc8aa8266c403e446e82e85447e39314c4acc10"
+    },
+    {
+      "name": "width-320-stage-11.png",
+      "sha256": "1af16be4c9b8c89666b3d1e3429e74d7d5ccca67ec536067d4c7a0bc88d432c0"
+    },
+    {
+      "name": "width-320-stage-2.png",
+      "sha256": "787959372edd34b7b48a713d659e2ae5a4e718011067a7bd5aee2008c48a680d"
+    },
+    {
+      "name": "width-320-stage-3.png",
+      "sha256": "3971e14b4ff38e66ca228548d06b67720439db4349c58fea242aaf3a09c8550d"
+    },
+    {
+      "name": "width-320-stage-6.png",
+      "sha256": "99ae0e230c5d1799219e8beb66f15b18e47c58f382bc3475a8632456a508bee0"
+    },
+    {
+      "name": "width-320-stage-7.png",
+      "sha256": "3d37ad8afd5f2eafde0e0e2c2c7faba340336a2f0cf54e449ec46849c2059796"
+    },
+    {
+      "name": "width-320-stage-9.png",
+      "sha256": "0a08d2a9f2be7493eba606f648a217f5a6cbc438cafcc76e90c2578455034e9d"
+    },
+    {
+      "name": "width-390-history.png",
+      "sha256": "4d6d65ec25157630b5b124a7c6237d91f12dd61a5fd4c0a42ee03823d5f72aa0"
+    },
+    {
+      "name": "width-390-stage-11.png",
+      "sha256": "6e2daa1d2c979906e739896d5ca8ee07edef7ee93899f282b819094b7c6c6be5"
+    },
+    {
+      "name": "width-390-stage-2.png",
+      "sha256": "7df0c05790a27739969a3023e4ee0c2fe0cb53a134b74406f686a4f65a6909d5"
+    },
+    {
+      "name": "width-390-stage-3.png",
+      "sha256": "b2271340abdfd88bccd62c297073dce42b4002adf168a10be08a181b0c5ef740"
+    },
+    {
+      "name": "width-390-stage-6.png",
+      "sha256": "24284ae4ddfe62d108be010768e913deb7d95a559ee716b651c731c961ca0eb9"
+    },
+    {
+      "name": "width-390-stage-7.png",
+      "sha256": "db0a461146f50cfe8c124034c843188023ac67e1ea0cd592cab4c4030c1a6330"
+    },
+    {
+      "name": "width-390-stage-9.png",
+      "sha256": "ec97d5c21c8ab8e517fd1aa8f25055ba9ecb46b23334d4aaf545199e3b08fe3f"
+    },
+    {
+      "name": "width-430-history.png",
+      "sha256": "d1fb980facee3f03d19f3c090f34901beb0a09c803553f8837b33bd6bfd0663e"
+    },
+    {
+      "name": "width-430-stage-11.png",
+      "sha256": "fa8d9fb7748eb359c58b3af28755e6f0aefc0ec932b52378ddbc3ca13e1cc5f3"
+    },
+    {
+      "name": "width-430-stage-2.png",
+      "sha256": "2be929c6e90930a95a40eac45287af9916321b5afb109fd796c4ae339a336429"
+    },
+    {
+      "name": "width-430-stage-3.png",
+      "sha256": "8b19a6dac2852cb7cf13fb2a47525f6130228551ed06a7e77d25395ba6c3e321"
+    },
+    {
+      "name": "width-430-stage-6.png",
+      "sha256": "988cbbdd949d42fbffb211708ae072ea2ba3b24511527ca2191e47e86e3d4763"
+    },
+    {
+      "name": "width-430-stage-7.png",
+      "sha256": "08c01a530b9aa2c60229fdab93cd03b808172a877e3fc254f1a0f257c4e1d1a1"
+    },
+    {
+      "name": "width-430-stage-9.png",
+      "sha256": "26d383a4c10f579f1bab39883a1546d9add72ce47667f73cf4066503b8bc1e0b"
+    }
+  ],
+  "visuallyInspected": [
+    "width-320-stage-7.png",
+    "width-390-stage-11.png",
+    "width-320-stage-3.png"
+  ],
+  "visualFindings": "Connected coefficient equations, typed proof, source division and complete two-row table verified. Sticky header placement inside long element captures is a capture artifact, not a new math layout rule."
+}

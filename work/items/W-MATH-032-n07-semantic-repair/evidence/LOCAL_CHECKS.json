@@ -1,4 +1,9 @@
 {
+  "sourceSHA": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+  "workflow": {
+    "status": "PASS",
+    "count": 129
+  },
   "learner": {
     "status": "PASS",
     "count": 620,
@@ -15,9 +20,18 @@
     "status": "PASS",
     "count": 6
   },
-  "browser": {
-    "status": "UNVERIFIED",
-    "reason": "Chromium download returned invalid/truncated ZIP; CI required"
+  "actualReaderSSR": {
+    "status": "PASS",
+    "nodes": 41,
+    "states": "before and after answer"
   },
+  "build": {
+    "status": "PASS"
+  },
+  "localBrowser": {
+    "status": "UNVERIFIED",
+    "reason": "Chromium download invalid/truncated ZIP"
+  },
+  "CI": 40154122715,
   "publication": false
 }

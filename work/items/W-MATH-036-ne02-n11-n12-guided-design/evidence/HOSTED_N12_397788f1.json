@@ -1,0 +1,272 @@
+{
+  "status": "PASS",
+  "sourceSHA": "397788f1715b96459032a6647d6fbe772004a7b3",
+  "root": "https://rrikunagasige-dot.github.io/kyotsu-step-web/",
+  "results": [
+    {
+      "code": "ne02",
+      "width": 320,
+      "answered": 30,
+      "wrongCount": 60,
+      "stages": 12,
+      "figures": [],
+      "history": true,
+      "reload": true,
+      "resize": true,
+      "migration": true,
+      "legacyMigrationRevisions": [
+        1
+      ],
+      "geometry": "PASS"
+    },
+    {
+      "code": "ne02",
+      "width": 390,
+      "answered": 30,
+      "wrongCount": 60,
+      "stages": 12,
+      "figures": [],
+      "history": true,
+      "reload": true,
+      "resize": true,
+      "migration": true,
+      "legacyMigrationRevisions": [
+        1
+      ],
+      "geometry": "PASS"
+    },
+    {
+      "code": "ne02",
+      "width": 430,
+      "answered": 30,
+      "wrongCount": 60,
+      "stages": 12,
+      "figures": [],
+      "history": true,
+      "reload": true,
+      "resize": true,
+      "migration": true,
+      "legacyMigrationRevisions": [
+        1
+      ],
+      "geometry": "PASS"
+    },
+    {
+      "code": "ne02",
+      "width": 1440,
+      "answered": 30,
+      "wrongCount": 60,
+      "stages": 12,
+      "figures": [],
+      "history": true,
+      "reload": true,
+      "resize": true,
+      "migration": true,
+      "legacyMigrationRevisions": [
+        1
+      ],
+      "geometry": "PASS"
+    },
+    {
+      "code": "n11",
+      "width": 320,
+      "answered": 39,
+      "wrongCount": 109,
+      "stages": 14,
+      "figures": [
+        "n11-f01",
+        "n11-f02"
+      ],
+      "history": true,
+      "reload": true,
+      "resize": true,
+      "migration": true,
+      "legacyMigrationRevisions": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "geometry": "PASS"
+    },
+    {
+      "code": "n11",
+      "width": 390,
+      "answered": 39,
+      "wrongCount": 109,
+      "stages": 14,
+      "figures": [
+        "n11-f01",
+        "n11-f02"
+      ],
+      "history": true,
+      "reload": true,
+      "resize": true,
+      "migration": true,
+      "legacyMigrationRevisions": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "geometry": "PASS"
+    },
+    {
+      "code": "n11",
+      "width": 430,
+      "answered": 39,
+      "wrongCount": 109,
+      "stages": 14,
+      "figures": [
+        "n11-f01",
+        "n11-f02"
+      ],
+      "history": true,
+      "reload": true,
+      "resize": true,
+      "migration": true,
+      "legacyMigrationRevisions": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "geometry": "PASS"
+    },
+    {
+      "code": "n11",
+      "width": 1440,
+      "answered": 39,
+      "wrongCount": 109,
+      "stages": 14,
+      "figures": [
+        "n11-f01",
+        "n11-f02"
+      ],
+      "history": true,
+      "reload": true,
+      "resize": true,
+      "migration": true,
+      "legacyMigrationRevisions": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "geometry": "PASS"
+    },
+    {
+      "code": "n12",
+      "width": 320,
+      "answered": 46,
+      "wrongCount": 127,
+      "stages": 15,
+      "figures": [
+        "n12-f01",
+        "n12-f02",
+        "n12-f03"
+      ],
+      "history": true,
+      "reload": true,
+      "resize": true,
+      "migration": true,
+      "legacyMigrationRevisions": [
+        1,
+        2,
+        3
+      ],
+      "geometry": "PASS"
+    },
+    {
+      "code": "n12",
+      "width": 390,
+      "answered": 46,
+      "wrongCount": 127,
+      "stages": 15,
+      "figures": [
+        "n12-f01",
+        "n12-f02",
+        "n12-f03"
+      ],
+      "history": true,
+      "reload": true,
+      "resize": true,
+      "migration": true,
+      "legacyMigrationRevisions": [
+        1,
+        2,
+        3
+      ],
+      "geometry": "PASS"
+    },
+    {
+      "code": "n12",
+      "width": 430,
+      "answered": 46,
+      "wrongCount": 127,
+      "stages": 15,
+      "figures": [
+        "n12-f01",
+        "n12-f02",
+        "n12-f03"
+      ],
+      "history": true,
+      "reload": true,
+      "resize": true,
+      "migration": true,
+      "legacyMigrationRevisions": [
+        1,
+        2,
+        3
+      ],
+      "geometry": "PASS"
+    },
+    {
+      "code": "n12",
+      "width": 1440,
+      "answered": 46,
+      "wrongCount": 127,
+      "stages": 15,
+      "figures": [
+        "n12-f01",
+        "n12-f02",
+        "n12-f03"
+      ],
+      "history": true,
+      "reload": true,
+      "resize": true,
+      "migration": true,
+      "legacyMigrationRevisions": [
+        1,
+        2,
+        3
+      ],
+      "geometry": "PASS"
+    }
+  ],
+  "errors": []
+}

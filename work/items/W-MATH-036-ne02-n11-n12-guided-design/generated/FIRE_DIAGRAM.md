@@ -1,6 +1,6 @@
 # 全体火柴図（GENERATED）
 
-台帳HEAD: `f54f7f2151252c4a1f1a773e1abef5514f60664b4e32125d191dcadb4fb9d3d0`
+台帳HEAD: `452ec3e08098724eba6cb6e5130dce6c527927ecd1f10563b13798e7a3bca046`
 
 ```mermaid
 flowchart TD
@@ -8,11 +8,11 @@ flowchart TD
   N1["S01_ROUTE 1/1"]
   N2["ne02:design 5/5"]
   N3["APPROVAL:proposal 3/3"]
-  N4["ne02:release 3/5"]
+  N4["ne02:release 4/5"]
   N5["n11:design 5/5"]
-  N6["n11:release 3/5"]
+  N6["n11:release 4/5"]
   N7["n12:design 5/5"]
-  N8["n12:release 3/5"]
+  N8["n12:release 4/5"]
   N9["ne02:learning 0/3"]
   N10["n11:learning 0/3"]
   N11["n12:learning 0/3"]
@@ -43,7 +43,7 @@ flowchart TD
   N4 --> N9
 ```
 
-現在: — / BLOCKED
+現在: G3_FINAL@ne02 / WAITING
 保留・修正queue: 4
 関連修正Work: —
 差戻しは再分析・失効・子Workの台帳イベントで記録し、実行依存へ循環を入れない。

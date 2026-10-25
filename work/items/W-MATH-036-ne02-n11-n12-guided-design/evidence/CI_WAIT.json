@@ -1,8 +1,9 @@
 {
   "sourceSHA": "397788f1715b96459032a6647d6fbe772004a7b3",
-  "runId": 40180994131,
-  "status": "success",
-  "phase": "R07_VERIFY/R07_SEMANTIC/G2 all three PASS; existing Pages publication in progress",
-  "publicationWorkflowSHA": "79ba8c418170cb447a69a900cfeace8c0c451902",
-  "returnStep": "verify successful Pages run, download hosted full learner reports, HTTPS source and storage manifest; record external outcomes then G3_HOST; leave G3_FINAL to actual user"
+  "ciRun": 40180994131,
+  "publicationRun": 40181570315,
+  "status": "SUCCESS",
+  "native": "all R07/G2/G3_HOST PASS",
+  "next": "USER G3_FINAL for ne02,n11,n12",
+  "userAccepted": false
 }

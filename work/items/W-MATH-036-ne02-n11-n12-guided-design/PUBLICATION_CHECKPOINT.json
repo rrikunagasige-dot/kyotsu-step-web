@@ -1,0 +1,21 @@
+{
+  "sourceSHA": "397788f1715b96459032a6647d6fbe772004a7b3",
+  "publicationRun": 40181570315,
+  "workflowSHA": "79ba8c418170cb447a69a900cfeace8c0c451902",
+  "codes": [
+    "ne02",
+    "n11",
+    "n12"
+  ],
+  "urls": {
+    "ne02": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=397788f1#/learning/textbook/math-numbers-expressions-ne02",
+    "n11": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=397788f1#/learning/textbook/math-numbers-expressions-n11",
+    "n12": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=397788f1#/learning/textbook/math-numbers-expressions-n12"
+  },
+  "userAccepted": {
+    "ne02": false,
+    "n11": false,
+    "n12": false
+  },
+  "next": "actual scoped user material evaluation; other approved leaves remain work until implemented"
+}

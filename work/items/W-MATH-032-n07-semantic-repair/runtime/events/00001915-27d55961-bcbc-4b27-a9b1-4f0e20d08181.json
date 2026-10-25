@@ -1,0 +1,1 @@
+{"hash":"16b8b7fb35f2ecf8ae4a8237be55e9ebc99df746073d293ec01698c3dcffdef7","id":"27d55961-bcbc-4b27-a9b1-4f0e20d08181","kind":"work_ready_dispatch","payload":{"kind":"dependency-ready-code","node":"G3_HOST@ne02","prerequisites":["G2_AUDIT@ne02"]},"previous":"b383fd964768dfcb5d73f11c8422cacd59c874e126186e7cd79743d9e60ca49e","seq":1915,"time":1792921591.2845523,"work":"W-MATH-036"}

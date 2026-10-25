@@ -1,0 +1,10 @@
+{
+  "id": 40181570315,
+  "head_sha": "79ba8c418170cb447a69a900cfeace8c0c451902",
+  "sourceSHA": "397788f1715b96459032a6647d6fbe772004a7b3",
+  "status": "completed",
+  "conclusion": "success",
+  "artifactId": 12594581032,
+  "artifactSHA256": "3e960c049dad2ebe3b13cbbae5ce6fd67a87d0fcbc874f70ad58628d54f0b0cd",
+  "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40181570315"
+}

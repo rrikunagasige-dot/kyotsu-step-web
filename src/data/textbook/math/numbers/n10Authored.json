@@ -1,9 +1,9 @@
 {
   "schemaVersion": "guided-math-presentation/1",
   "code": "n10",
-  "approvedCommit": "a442cbe966c074f122907bb7366b1ceb6634ca95",
-  "proposalHash": "401f890d670089604d056a3843d577e9d4bf264cd08f91821c8e1397c3375109",
-  "irHash": "714f4b57793ab939687ecec9f6fa44c09bfc31d9340e61a27a1801f3bd8b883f",
+  "approvedCommit": "b6ece06a0a36b68638c17f8c1a5ddc6a77d2ae61",
+  "proposalHash": "7a198414ee317d5fb94b30634207c663931b32d80ff238e2a9aea067cc6dd06e",
+  "irHash": "9a11645df4ce5033994415641d85851e53509a4bb6add262efeac2bbb457a524",
   "unit": {
     "schemaVersion": "1.1",
     "unitId": "math-numbers-expressions-n10",
@@ -2624,13 +2624,18 @@
             "parts": [
               {
                 "type": "math",
-                "latex": "(\\sqrt3+\\sqrt2)\\times",
+                "latex": "(\\sqrt3+\\sqrt2)\\times(",
                 "semanticId": "n0910-part-00690"
               },
               {
                 "type": "choice",
                 "itemId": "n10-q17-factor",
                 "semanticId": "n10-q17-factor-slot"
+              },
+              {
+                "type": "math",
+                "latex": ")",
+                "semanticId": "n10-q17-factor-factor-close"
               }
             ],
             "derivationId": "n10-q17-factor-interaction"
@@ -2641,7 +2646,7 @@
             "parts": [
               {
                 "type": "math",
-                "latex": "(\\sqrt3+\\sqrt2)\\times\\sqrt3-\\sqrt2",
+                "latex": "(\\sqrt3+\\sqrt2)\\times(\\sqrt3-\\sqrt2)",
                 "semanticId": "n0910-part-00691"
               }
             ],
@@ -3060,13 +3065,18 @@
             "parts": [
               {
                 "type": "math",
-                "latex": "(2+\\sqrt3)\\times",
+                "latex": "(2+\\sqrt3)\\times(",
                 "semanticId": "n0910-part-00739"
               },
               {
                 "type": "choice",
                 "itemId": "n10-q20-factor",
                 "semanticId": "n10-q20-factor-slot"
+              },
+              {
+                "type": "math",
+                "latex": ")",
+                "semanticId": "n10-q20-factor-factor-close"
               }
             ],
             "derivationId": "n10-q20-factor-interaction"
@@ -3077,7 +3087,7 @@
             "parts": [
               {
                 "type": "math",
-                "latex": "(2+\\sqrt3)\\times2-\\sqrt3",
+                "latex": "(2+\\sqrt3)\\times(2-\\sqrt3)",
                 "semanticId": "n0910-part-00740"
               }
             ],
@@ -5094,7 +5104,7 @@
   ],
   "semantic": {
     "schemaVersion": "production-compiled/1",
-    "irHash": "714f4b57793ab939687ecec9f6fa44c09bfc31d9340e61a27a1801f3bd8b883f",
+    "irHash": "9a11645df4ce5033994415641d85851e53509a4bb6add262efeac2bbb457a524",
     "nodes": [
       {
         "id": "n10-q01-square",
@@ -9539,13 +9549,18 @@
             "parts": [
               {
                 "type": "math",
-                "latex": "(\\sqrt3+\\sqrt2)\\times",
+                "latex": "(\\sqrt3+\\sqrt2)\\times(",
                 "semanticId": "n0910-part-00690"
               },
               {
                 "type": "choice",
                 "itemId": "n10-q17-factor",
                 "semanticId": "n10-q17-factor-slot"
+              },
+              {
+                "type": "math",
+                "latex": ")",
+                "semanticId": "n10-q17-factor-factor-close"
               }
             ],
             "derivationId": "n10-q17-factor-interaction"
@@ -9558,7 +9573,7 @@
             "parts": [
               {
                 "type": "math",
-                "latex": "(\\sqrt3+\\sqrt2)\\times\\sqrt3-\\sqrt2",
+                "latex": "(\\sqrt3+\\sqrt2)\\times(\\sqrt3-\\sqrt2)",
                 "semanticId": "n0910-part-00691"
               }
             ],
@@ -10347,13 +10362,18 @@
             "parts": [
               {
                 "type": "math",
-                "latex": "(2+\\sqrt3)\\times",
+                "latex": "(2+\\sqrt3)\\times(",
                 "semanticId": "n0910-part-00739"
               },
               {
                 "type": "choice",
                 "itemId": "n10-q20-factor",
                 "semanticId": "n10-q20-factor-slot"
+              },
+              {
+                "type": "math",
+                "latex": ")",
+                "semanticId": "n10-q20-factor-factor-close"
               }
             ],
             "derivationId": "n10-q20-factor-interaction"
@@ -10366,7 +10386,7 @@
             "parts": [
               {
                 "type": "math",
-                "latex": "(2+\\sqrt3)\\times2-\\sqrt3",
+                "latex": "(2+\\sqrt3)\\times(2-\\sqrt3)",
                 "semanticId": "n0910-part-00740"
               }
             ],
@@ -12392,6 +12412,10 @@
         "kind": "answerSlot",
         "semanticRef": "n10-q17-factor"
       },
+      "n10-q17-factor-factor-close": {
+        "kind": "math",
+        "semanticRef": "n10-q17-factor-factor-close"
+      },
       "n0910-part-00691": {
         "kind": "math",
         "semanticRef": "n0910-part-00691"
@@ -12599,6 +12623,10 @@
       "n10-q20-factor-slot": {
         "kind": "answerSlot",
         "semanticRef": "n10-q20-factor"
+      },
+      "n10-q20-factor-factor-close": {
+        "kind": "math",
+        "semanticRef": "n10-q20-factor-factor-close"
       },
       "n0910-part-00740": {
         "kind": "math",
@@ -13646,6 +13674,7 @@
       "n0910-part-00687",
       "n0910-part-00690",
       "n10-q17-factor-slot",
+      "n10-q17-factor-factor-close",
       "n0910-part-00691",
       "n0910-part-00692",
       "n0910-part-00694",
@@ -13678,6 +13707,7 @@
       "n0910-part-00733",
       "n0910-part-00739",
       "n10-q20-factor-slot",
+      "n10-q20-factor-factor-close",
       "n0910-part-00740",
       "n0910-part-00735",
       "n0910-part-00737",
@@ -16780,5 +16810,10 @@
     "n10-q21-constants-equation": 43,
     "n10-21-interaction-0": 44,
     "n10-21-equation": 44
+  },
+  "parentApproval": {
+    "work": "W-MATH-034",
+    "sourceSHA": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+    "irHash": "714f4b57793ab939687ecec9f6fa44c09bfc31d9340e61a27a1801f3bd8b883f"
   }
 }

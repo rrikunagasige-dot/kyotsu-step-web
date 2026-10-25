@@ -37,3 +37,10 @@
 
 .guided-reading .guided-number-below .numbered-equation { padding-bottom: 0; }
 .guided-reading .guided-number-below .numbered-equation-label { position: static; display: block; text-align: right; margin-top: .3rem; }
+
+/* W035: the order belongs to the mathematical steps, not visual wrapping. */
+.guided-reading .guided-step-sequence { display: block; width: 100%; min-width: 0; }
+.guided-reading .guided-step-sequence .typeset-table-cell { border: 0; padding: .12rem .18rem; }
+.guided-reading .guided-step-sequence .typeset-table-cell:nth-child(3n+1) { text-align: right; }
+.guided-reading .guided-step-sequence .typeset-table-cell:nth-child(3n+2) { text-align: center; }
+.guided-reading .guided-step-sequence .typeset-table-cell:nth-child(3n) { text-align: left; }

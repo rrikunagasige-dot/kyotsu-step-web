@@ -1,9 +1,9 @@
 {
   "schemaVersion": "guided-math-presentation/1",
   "code": "n09",
-  "approvedCommit": "a442cbe966c074f122907bb7366b1ceb6634ca95",
-  "proposalHash": "401f890d670089604d056a3843d577e9d4bf264cd08f91821c8e1397c3375109",
-  "irHash": "648119a288bb08cc8050a182dcd161a84dd45ae9921dadb590cec7beb3522130",
+  "approvedCommit": "b6ece06a0a36b68638c17f8c1a5ddc6a77d2ae61",
+  "proposalHash": "7a198414ee317d5fb94b30634207c663931b32d80ff238e2a9aea067cc6dd06e",
+  "irHash": "5200563950eed785a8e109d43b14520c41505c5475745abfa00cc5edce226c19",
   "unit": {
     "schemaVersion": "1.1",
     "unitId": "math-numbers-expressions-n09",
@@ -3424,7 +3424,7 @@
             "parts": [
               {
                 "type": "math",
-                "latex": "\\begin{aligned}\\sqrt{10}&:(3,\\sqrt{10}-3)\\-\\sqrt{10}&:(-4,4-\\sqrt{10})\\end{aligned}",
+                "latex": "\\begin{aligned}\\sqrt{10}&:(3,\\sqrt{10}-3)\\\\-\\sqrt{10}&:(-4,4-\\sqrt{10})\\end{aligned}",
                 "semanticId": "n0910-part-00407"
               }
             ],
@@ -4862,7 +4862,7 @@
   ],
   "semantic": {
     "schemaVersion": "production-compiled/1",
-    "irHash": "648119a288bb08cc8050a182dcd161a84dd45ae9921dadb590cec7beb3522130",
+    "irHash": "5200563950eed785a8e109d43b14520c41505c5475745abfa00cc5edce226c19",
     "nodes": [
       {
         "id": "n09-q01-positive",
@@ -10285,7 +10285,7 @@
             "parts": [
               {
                 "type": "math",
-                "latex": "\\begin{aligned}\\sqrt{10}&:(3,\\sqrt{10}-3)\\-\\sqrt{10}&:(-4,4-\\sqrt{10})\\end{aligned}",
+                "latex": "\\begin{aligned}\\sqrt{10}&:(3,\\sqrt{10}-3)\\\\-\\sqrt{10}&:(-4,4-\\sqrt{10})\\end{aligned}",
                 "semanticId": "n0910-part-00407"
               }
             ],
@@ -15516,5 +15516,10 @@
     "n09-q14-negative-remainder-equation": 35,
     "n09-14-interaction-0": 36,
     "n09-14-equation-0": 36
+  },
+  "parentApproval": {
+    "work": "W-MATH-034",
+    "sourceSHA": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+    "irHash": "648119a288bb08cc8050a182dcd161a84dd45ae9921dadb590cec7beb3522130"
   }
 }

@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 import { InlineMath } from 'react-katex'
-import { textbookDisplayLines } from '../../domain/textbookDisplayLines'
+import { guidedMathDisplaySteps } from './guidedMathDisplayPolicy'
 import { SemanticReading } from './SemanticReading'
 import { TypesetFormula, TypesetInlineMath } from './TypesetFormula'
 import { NumberedEquation } from './NumberedEquation'
@@ -106,11 +106,19 @@ export function GuidedMathReadingFlow({ presentation, unit, section, progress, o
         <TypesetFormula source={math} sourceId={id} unitId={unit.unitId} />
       </button>
     }
-    const rows = (id.startsWith('n09-08-') || id.includes('option-n09-08-')) && !source.includes('§')
-      ? textbookDisplayLines('n09-08', source) : [source]
-    if (rows.length === 1) return <TypesetFormula source={source} sourceId={id} unitId={unit.unitId} parts={parts} itemIds={itemIds} />
-    return <span className="guided-independent-lines" data-typeset-source={id}>{rows.map((row, i) => <TypesetFormula key={i} source={row} sourceId={id + '-row-' + i} unitId={unit.unitId} />)}</span>
+    const option = /^guided-option-(n09-08|n10-07|n10-15|n10-20)-/.exec(id)
+    const itemId = option?.[1] ?? (id.startsWith('n09-08-') ? 'n09-08' : '')
+    const steps = !source.includes('§') ? guidedMathDisplaySteps(itemId, source, option ? 'option' : 'completed') : undefined
+    if (!steps) return <TypesetFormula source={source} sourceId={id} unitId={unit.unitId} parts={parts} itemIds={itemIds} />
+    const independent = itemId === 'n09-08'
+    const math = independent
+      ? '\\begin{array}{rcl}' + steps.map(s => s.math.replace(/([=<>])/, '&$1&')).join('\\\\') + '\\end{array}'
+      : '\\begin{aligned}' + steps.map(s => s.math).join('\\\\') + '\\end{aligned}'
+    return <span className={'guided-step-sequence' + (independent ? ' guided-independent-lines' : '')} data-typeset-source={id} data-display-item={itemId} data-display-order={steps.map(s => s.role).join(',')}>
+      <TypesetFormula source={math} sourceId={id + '-steps'} unitId={unit.unitId} />
+    </span>
   }
+
   function semantic(parts: readonly unknown[] = []) {
     return (parts as TextbookReadingPart[]).map((p, i) => p.type === 'math'
       ? <span key={p.semanticId ?? i} data-semantic-id={p.semanticId}>{logical(p.latex, p.semanticId ?? 'guided-inline-' + i) ?? <TypesetInlineMath latex={p.latex.replace(/\\\s+$/, '')} sourceId={p.semanticId ?? 'guided-inline-' + i} unitId={unit.unitId} />}</span>

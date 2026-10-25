@@ -1,0 +1,50 @@
+name: N09 N10 approved order and factor repair
+on:
+  push:
+    branches: ['work/n0910-choice-order-factor-audit-20261025']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
+      VITE_BASE_PATH: /kyotsu-step-web/
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - run: node work/items/W-MATH-035-choice-order-factor-audit/materialize.mjs --check
+      - run: pnpm exec vitest run --config work/items/W-MATH-035-choice-order-factor-audit/vitest.config.mjs
+      - run: pnpm exec vitest run --exclude src/data/physicsTaxonomy.test.ts --exclude src/domain/questionSchema.test.ts
+      - run: pnpm run test:textbook-authoring
+      - run: pnpm exec eslint src/components/textbook/GuidedMathReadingFlow.tsx src/components/textbook/guidedMathDisplayPolicy.ts --max-warnings=0
+      - run: pnpm run build
+      - run: pnpm exec playwright install --with-deps chromium
+      - name: Four-width displays and complete learner flows
+        run: |
+          pnpm exec vite preview --host 127.0.0.1 --port 4173 > /tmp/w35-preview.log 2>&1 &
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:4173/kyotsu-step-web/ >/dev/null && break || sleep 1; done
+          EVIDENCE_DIR=/tmp/w35-display node work/items/W-MATH-035-choice-order-factor-audit/verify_display.mjs
+          EVIDENCE_DIR=/tmp/n09-browser WIDTHS=320,390,430,1440 node work/items/W-MATH-034-n09-n10-guided-design/verify_app.mjs
+          EVIDENCE_DIR=/tmp/n10-browser WIDTHS=320,390,430,1440 node work/items/W-MATH-034-n09-n10-guided-design/verify_n10_app.mjs
+          EVIDENCE_DIR=/tmp/protected WIDTHS=320,390,430,1440 node work/items/W-GOV-010-learning-production-workflow/n07/integration/verify-app.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: w35-browser-evidence
+          path: |
+            /tmp/w35-display
+            /tmp/n09-browser
+            /tmp/n10-browser
+            /tmp/protected

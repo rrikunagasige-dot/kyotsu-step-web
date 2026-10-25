@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "sourceDocumentHash": "93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa",
+  "imageHash": "24dd29dcaacd371ddfab4c8fefbccd84933fd0f1a27ed5f167372f74ca4a9cfd",
+  "originalMediaMatches": [
+    "word/media/image6.png"
+  ],
+  "visualInspection": "actual image opened: -4,-3,-2,-1; point -2.1; labels reveal -3 before Q10",
+  "visibility": "only after n09-10 resolved; alt/caption same gate",
+  "n10NoFigureReason": "平方・符号・等価な分数操作は対応する式列と条件表で教える。追加図は不要。"
+}

@@ -1,0 +1,99 @@
+{
+  "sourceSHA": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
+  "rows": [
+    {
+      "originFinding": "N08 compressed steps / rendering / revision migration",
+      "rootCauseSignature": "n08-guided-semantic-flow",
+      "artifact": "public/assets/math/textbook/numbers/n08-f01.png",
+      "version": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
+      "approvedCreationWork": "W-MATH-033/P-001",
+      "block_id": "n08",
+      "evidence_refs": [
+        "04c9d7f0-6dd2-4905-bcd6-a48593cffea8",
+        "f8362f8a-f617-4e56-916f-3b865a63ded3"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "post-fix",
+      "resolution": "N08 repaired and tested; protected or unchanged source retained"
+    },
+    {
+      "originFinding": "N08 compressed steps / rendering / revision migration",
+      "rootCauseSignature": "n08-guided-semantic-flow",
+      "artifact": "src/data/textbook/math/numbers/n08Lesson.ts",
+      "version": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
+      "approvedCreationWork": "W-MATH-033/P-001",
+      "block_id": "n08",
+      "evidence_refs": [
+        "04c9d7f0-6dd2-4905-bcd6-a48593cffea8",
+        "f8362f8a-f617-4e56-916f-3b865a63ded3"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "post-fix",
+      "resolution": "N08 repaired and tested; protected or unchanged source retained"
+    },
+    {
+      "originFinding": "N08 compressed steps / rendering / revision migration",
+      "rootCauseSignature": "n08-guided-semantic-flow",
+      "artifact": "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+      "version": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
+      "approvedCreationWork": "W-MATH-033/P-001",
+      "block_id": "n08",
+      "evidence_refs": [
+        "04c9d7f0-6dd2-4905-bcd6-a48593cffea8",
+        "f8362f8a-f617-4e56-916f-3b865a63ded3"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "post-fix",
+      "resolution": "N08 repaired and tested; protected or unchanged source retained"
+    },
+    {
+      "originFinding": "N08 compressed steps / rendering / revision migration",
+      "rootCauseSignature": "n08-guided-semantic-flow",
+      "artifact": "src/domain/textbook.ts",
+      "version": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
+      "approvedCreationWork": "W-MATH-033/P-001",
+      "block_id": "n08",
+      "evidence_refs": [
+        "04c9d7f0-6dd2-4905-bcd6-a48593cffea8",
+        "f8362f8a-f617-4e56-916f-3b865a63ded3"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "post-fix",
+      "resolution": "N08 repaired and tested; protected or unchanged source retained"
+    },
+    {
+      "originFinding": "N08 compressed steps / rendering / revision migration",
+      "rootCauseSignature": "n08-guided-semantic-flow",
+      "artifact": "src/pages/TextbookUnitPage.tsx",
+      "version": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
+      "approvedCreationWork": "W-MATH-033/P-001",
+      "block_id": "n08",
+      "evidence_refs": [
+        "04c9d7f0-6dd2-4905-bcd6-a48593cffea8",
+        "f8362f8a-f617-4e56-916f-3b865a63ded3"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "post-fix",
+      "resolution": "N08 repaired and tested; protected or unchanged source retained"
+    },
+    {
+      "originFinding": "N08 compressed steps / rendering / revision migration",
+      "rootCauseSignature": "n08-guided-semantic-flow",
+      "artifact": "work/items/W-MATH-033-n08-absolute-value/evidence/SOURCE_INDEX.json",
+      "version": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
+      "approvedCreationWork": "W-MATH-033/P-001",
+      "block_id": "n08",
+      "evidence_refs": [
+        "04c9d7f0-6dd2-4905-bcd6-a48593cffea8",
+        "f8362f8a-f617-4e56-916f-3b865a63ded3"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "post-fix",
+      "resolution": "N08 repaired and tested; protected or unchanged source retained"
+    }
+  ],
+  "ciRun": 40162373237,
+  "publicationRun": 40162687421,
+  "protectedLearnerSource": "N07/first title preserved",
+  "newLearnerSourceChanges": false
+}

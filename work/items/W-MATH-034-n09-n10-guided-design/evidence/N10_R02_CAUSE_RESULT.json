@@ -1,0 +1,23 @@
+{
+  "node": "R02_CAUSE@n10",
+  "status": "PASS_BOUNDED",
+  "outputs": {
+    "case.retrieve": "PASS",
+    "knowledge.ledger": "PASS",
+    "math.verify": "NEEDS_AI_REVIEW",
+    "ir.verify": "PASS",
+    "source.audit": "NEEDS_AI_REVIEW",
+    "novice.audit": "PASS",
+    "math.solve": "NEEDS_AI_REVIEW"
+  },
+  "review": "Legacy prompt/grading projection is deliberately partial and does not certify legacy prose. Full CURRENT/source files reviewed directly; new complete solution uses elementary arithmetic before radical product proof and preserves all conditions.",
+  "receiptArtifacts": [
+    "5bc8899fc66447ba233543d34634d3af988f694d44dc4c0ca8c420a175a861ea",
+    "ff1b668742d7b79d72dba3765235447a2ba234b1a1194cc2ed0e8b6aed040775",
+    "55319e6e1e85836ffeff99c8abe73750f01d5930728425553c9f0c11d3c86399",
+    "ff8fce4d4484823f9ffe31305fddd3c45120ef65f68a6aa7a5b31deb4be4aa7e",
+    "3961a92b09aab3c8aac0362c976d301b2985f1f8dbf993154b52803bcaa076bf",
+    "bcf5751b3c06fdbbf833f669dd027b2d54637839810134d8b1ea9e5380721e20",
+    "c13a65b73fe52b84aed685ce814c41748057c564b39458997147d4a9544b0d4a"
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "sourceSHA": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
+  "humanAccepted": true,
+  "newPositiveCases": 1,
+  "evaluatedCases": 11,
+  "negativeCases": 7,
+  "positiveCases": 4,
+  "trainingRun": true,
+  "trainedHeads": {
+    "layout_discomfort": 2
+  },
+  "omittedHeads": [
+    {
+      "dimension": "broken_derivation",
+      "reason": "NOT_TRAINABLE_SINGLE_CLASS",
+      "rows": 1
+    },
+    {
+      "dimension": "layout_style_rejection",
+      "reason": "NOT_TRAINABLE_SINGLE_CLASS",
+      "rows": 1
+    },
+    {
+      "dimension": "math_render_omission",
+      "reason": "NOT_TRAINABLE_SINGLE_CLASS",
+      "rows": 1
+    },
+    {
+      "dimension": "orphan_output",
+      "reason": "NOT_TRAINABLE_SINGLE_CLASS",
+      "rows": 1
+    },
+    {
+      "dimension": "overall_material_acceptance",
+      "reason": "NOT_TRAINABLE_SINGLE_CLASS",
+      "rows": 2
+    },
+    {
+      "dimension": "prerequisite_missing",
+      "reason": "NOT_TRAINABLE_SINGLE_CLASS",
+      "rows": 1
+    },
+    {
+      "dimension": "term_semantics_missing",
+      "reason": "NOT_TRAINABLE_SINGLE_CLASS",
+      "rows": 1
+    },
+    {
+      "dimension": "unmotivated_operation",
+      "reason": "NOT_TRAINABLE_SINGLE_CLASS",
+      "rows": 1
+    }
+  ],
+  "modelStatus": "OFFLINE_ONLY",
+  "advisoryEligible": false,
+  "split": {
+    "groups": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "8",
+      "0",
+      "10"
+    ],
+    "groupCount": 3,
+    "rowIds": [
+      "N07-USER-F01",
+      "N07-USER-F02",
+      "N07-USER-F03",
+      "N07-USER-F04",
+      "N07-USER-F05",
+      "N07-USER-F06",
+      "n07-layout-relation",
+      "n07-layout-positive",
+      "first-title-layout-positive",
+      "N07-ACCEPTED-20261025",
+      "N08-ACCEPTED-20261025"
+    ],
+    "status": "READY",
+    "hash": "a8416acce1a160fb6a96a89f727c20592d28be900d188c2772fa1accae814f8a"
+  },
+  "unseenHoldout": false,
+  "evaluation": "NOT_ESTIMABLE",
+  "encoder": {
+    "artifactFilesHash": "0bd7fa022addc3a4cfef92eed67c310c946ba5c350693d341ea5744237b70759",
+    "device": "cpu",
+    "dimension": 384,
+    "featureSchema": "learner-context-chunk-mean/1",
+    "maxLength": 512,
+    "model": "intfloat/multilingual-e5-small",
+    "pooling": "Pooling({'word_embedding_dimension': 384, 'pooling_mode_cls_token': False, 'pooling_mode_mean_tokens': True, 'pooling_mode_max_tokens': False, 'pooling_mode_mean_sqrt_len_tokens': False, 'pooling_mode_weightedmean_tokens': False, 'pooling_mode_lasttoken': False, 'include_prompt': True})",
+    "prefixClassification": "query: ",
+    "prefixPassage": "passage: ",
+    "revision": "fd1525a9fd15316a2d503bf26ab031a61d056e98"
+  },
+  "encoderHash": "1d0c6699c483167583c6ba00905876ddb7764a1571c359e3030515644dd3b1b9",
+  "modelHash": "e9dcf3543404f99c3756daf5dfe76f69a987aac1aab326374432068400a43d92",
+  "catalogHash": "d9b0bd564c72ec4f6838ddd6e0ba7848adc7ae9821cf275b6bde7fde4c903afe"
+}

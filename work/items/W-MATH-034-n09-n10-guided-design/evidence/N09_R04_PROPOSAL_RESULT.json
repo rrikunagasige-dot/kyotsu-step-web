@@ -1,0 +1,31 @@
+{
+  "node": "R04_PROPOSAL@n09",
+  "status": "PASS_BOUNDED",
+  "outputs": {
+    "math.solve": "NEEDS_AI_REVIEW",
+    "math.verify": "NEEDS_AI_REVIEW",
+    "teaching.plan": "PASS",
+    "step.plan": "PASS",
+    "blank.plan": "PASS",
+    "prose.compose": "PASS",
+    "text.verify": "PASS",
+    "figure.verify": "PASS",
+    "ir.verify": "PASS",
+    "source.audit": "NEEDS_AI_REVIEW",
+    "novice.audit": "PASS"
+  },
+  "review": "All86 node texts, holes, distractor explanations, hints and downstream uses reviewed. Real validator found answer leakage and a local relation-tokenizer boundary error; corrected before proposal approval. Mixed comparison chains use inequality; equivalent steps use equality. N09 cases and positive/negative parts get explicit tables. Compile is design verification only.",
+  "receiptArtifacts": [
+    "27f9a8f3920815e70dd5f33a7578e3003f9d392f1f164e040b09fc0f210963af",
+    "571e077297264a86f910db41e58892aa7e094fed9937500de422994288b5834a",
+    "0804e9b0fe998dc4eaa03b4ca76e8cec54b7ea23e58f525941531fa6a46886c7",
+    "cefce5c17175ab6ec2de2e1020d171fcb0293daaa7cac47ffe939cf7b4c8221d",
+    "592a5cb18f050fa24a02e61e02e538dbfbcb47dacd6902835d1bc6ab7e9e283d",
+    "9f81a16771b10f2c4748afdcc7e5777eac22ddc03c41495a079b4667905c2480",
+    "a2170830cc2531cd047a82d59908fb10d7e61b6b1fb1ea62b26bd2a277ef24fc",
+    "e820b4dd85dd0952a3040984a92c44418b7287e39c6763c14f9e286992338600",
+    "75f72f7f3ea3d0d3b3dc60a4b774a8ad54c423687c36fffd61226a8149e4e37b",
+    "310f194d90b68a20d8aa08159585bf2ab8f9623cbbbad5a2e3ee3977eadce5ff",
+    "19b31e3eb528f1467a1fd8df4084c56ea40361d7824546f5c78bfda59e2029c9"
+  ]
+}

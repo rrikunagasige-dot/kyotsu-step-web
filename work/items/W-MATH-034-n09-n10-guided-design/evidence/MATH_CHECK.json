@@ -1,0 +1,122 @@
+{
+  "status": "PASS",
+  "identities": [
+    {
+      "id": "square-negative",
+      "left": "16",
+      "right": "16",
+      "residual": "0"
+    },
+    {
+      "id": "root-square",
+      "left": "Abs(a)",
+      "right": "Abs(a)",
+      "residual": "0"
+    },
+    {
+      "id": "negative-root-square",
+      "left": "5",
+      "right": "5",
+      "residual": "0"
+    },
+    {
+      "id": "n09-sign-root",
+      "left": "-2 + sqrt(5)",
+      "right": "-2 + sqrt(5)",
+      "residual": "0"
+    },
+    {
+      "id": "n09-left-decimal",
+      "left": "19881/10000",
+      "right": "19881/10000",
+      "residual": "0"
+    },
+    {
+      "id": "n09-right-decimal",
+      "left": "5041/2500",
+      "right": "5041/2500",
+      "residual": "0"
+    },
+    {
+      "id": "negative-decomposition",
+      "left": "-21/10",
+      "right": "-21/10",
+      "residual": "0"
+    },
+    {
+      "id": "positive-part",
+      "left": "sqrt(10)",
+      "right": "sqrt(10)",
+      "residual": "0"
+    },
+    {
+      "id": "negative-part",
+      "left": "-sqrt(10)",
+      "right": "-sqrt(10)",
+      "residual": "0"
+    },
+    {
+      "id": "candidate125",
+      "left": "125",
+      "right": "125",
+      "residual": "0"
+    },
+    {
+      "id": "product-proof",
+      "left": "p*q",
+      "right": "p*q",
+      "residual": "0"
+    },
+    {
+      "id": "quotient-proof",
+      "left": "p/q",
+      "right": "p/q",
+      "residual": "0"
+    },
+    {
+      "id": "root-product",
+      "left": "4*sqrt(3)",
+      "right": "4*sqrt(3)",
+      "residual": "0"
+    },
+    {
+      "id": "root-sum",
+      "left": "7*sqrt(2)",
+      "right": "7*sqrt(2)",
+      "residual": "0"
+    },
+    {
+      "id": "square-formula",
+      "left": "(-sqrt(3) + sqrt(2))**2",
+      "right": "5 - 2*sqrt(6)",
+      "residual": "0"
+    },
+    {
+      "id": "difference-product",
+      "left": "(-sqrt(2) + sqrt(7))*(sqrt(2) + sqrt(7))",
+      "right": "5",
+      "residual": "0"
+    },
+    {
+      "id": "simple-rationalize",
+      "left": "sqrt(3)/6",
+      "right": "sqrt(3)/6",
+      "residual": "0"
+    },
+    {
+      "id": "conjugate-rationalize",
+      "left": "sqrt(3)/(sqrt(2) + sqrt(3))",
+      "right": "3 - sqrt(6)",
+      "residual": "0"
+    },
+    {
+      "id": "transfer-rationalize",
+      "left": "(2 - sqrt(3))/(sqrt(3) + 2)",
+      "right": "7 - 4*sqrt(3)",
+      "residual": "0"
+    }
+  ],
+  "exactDecimalAndFloorChecks": true,
+  "conditionAudit": "a>0,b>0 kept for N10; sqrt(a²)=|a| for all real a; c!=0 required before multiplying c/c; inequalities never joined by equality.",
+  "formalProof": false
+}

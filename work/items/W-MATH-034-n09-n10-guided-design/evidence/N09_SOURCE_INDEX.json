@@ -1,0 +1,901 @@
+{
+  "schemaVersion": 1,
+  "documentHash": "93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa",
+  "unit": "N09",
+  "pandocVersion": "pandoc 3.1.3",
+  "warnings": "",
+  "unassignedMath": [],
+  "blocks": [
+    {
+      "id": "word-p-000376",
+      "locator": "word/document.xml:p[376]",
+      "text": "N09　平方根の符号と、数直線上の位置を確かめる",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "heading"
+    },
+    {
+      "id": "word-p-000377",
+      "locator": "word/document.xml:p[377]",
+      "text": "例題",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000378",
+      "locator": "word/document.xml:p[378]",
+      "text": "2乗すると16になる実数を、すべて挙げよう。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000379",
+      "locator": "word/document.xml:p[379]",
+      "text": "先生　「正の数を一つ見つけたら、符号を反対にした数も2乗して確かめましょう。」",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000380",
+      "locator": "word/document.xml:p[380]",
+      "text": "【1】 該当する数をすべて書き、それぞれの平方を確かめよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        1
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000381",
+      "locator": "word/document.xml:p[381]",
+      "text": "2乗して  になる数を、 の平方根という。 には正負二つの平方根があり、正の方を 、負の方を  と書く。 は、二つをまとめた記号ではない。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "364941594121a897488760e582538feb83247fb618deffe0a6bba001f5f92637",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "364941594121a897488760e582538feb83247fb618deffe0a6bba001f5f92637",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "cbcb095965d5f5c1c06c7265b34bbdc51b7f990c5effa58930fb5e3b7615657b",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "fdbf2480e0f91f6531650c41bb233897dc79af28804a7788e640ba09076921f8",
+          "fractions": 0,
+          "radicals": 1,
+          "superscripts": 0
+        },
+        {
+          "sha256": "6ac65e8cfc963bdb30d983e205fea15e745637406c4d732db47664611da4ab6f",
+          "fractions": 0,
+          "radicals": 1,
+          "superscripts": 0
+        },
+        {
+          "sha256": "fdbf2480e0f91f6531650c41bb233897dc79af28804a7788e640ba09076921f8",
+          "fractions": 0,
+          "radicals": 1,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "a"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "a"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "a > 0"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "\\sqrt{a}"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "- \\sqrt{a}"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "\\sqrt{a}"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000382",
+      "locator": "word/document.xml:p[382]",
+      "text": "花子　「「平方根を全部」と聞かれたときと、 の値を聞かれたときでは、答え方が違うんだね。」",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "a8c85c11a1a6785d421e848fb2378ec538f95fa27bb13dd3c6228315961447d6",
+          "fractions": 0,
+          "radicals": 1,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\sqrt{16}"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000383",
+      "locator": "word/document.xml:p[383]",
+      "text": "【2】  の値と、 の値を順に書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        2
+      ],
+      "mathStructures": [
+        {
+          "sha256": "a8c85c11a1a6785d421e848fb2378ec538f95fa27bb13dd3c6228315961447d6",
+          "fractions": 0,
+          "radicals": 1,
+          "superscripts": 0
+        },
+        {
+          "sha256": "2c43785a76af2e1d819066c69d42917e1e5c1e6ee6f8f22af007c75f7f293fbc",
+          "fractions": 0,
+          "radicals": 1,
+          "superscripts": 1
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\sqrt{16}"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "\\left( - \\sqrt{5} \\right)^{2}"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000384",
+      "locator": "word/document.xml:p[384]",
+      "text": "0の平方根は0一つであり、 である。負の数の平方根は、この章で扱う実数の範囲にはない。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "48726af618f4ef7c9842577657143de4f25668df9117f716170abc1fe814a6ff",
+          "fractions": 0,
+          "radicals": 1,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\sqrt{0} = 0"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000385",
+      "locator": "word/document.xml:p[385]",
+      "text": "例題",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000386",
+      "locator": "word/document.xml:p[386]",
+      "text": " を計算しよう。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "c908f281f062f9863c8f25c194c1dc9f5f81bccd20eff03b6c04a4d7e28c7b23",
+          "fractions": 0,
+          "radicals": 1,
+          "superscripts": 1
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\sqrt{( - 4)^{2}}"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000387",
+      "locator": "word/document.xml:p[387]",
+      "text": "【3】 内側の平方を先に計算した場合の値を求めよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        3
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000388",
+      "locator": "word/document.xml:p[388]",
+      "text": "この結果は、内側の  をそのまま出す操作とは違う。同じことを一般の実数  で調べる。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "16bd40174c70ddd21b5e739811ad5f94d842c7feeef9ece010da03dfef5411d7",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "364941594121a897488760e582538feb83247fb618deffe0a6bba001f5f92637",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "- 4"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "a"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000389",
+      "locator": "word/document.xml:p[389]",
+      "text": "導出",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000390",
+      "locator": "word/document.xml:p[390]",
+      "text": "【4】  と  のそれぞれで、 と  のうち非負になる方を書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        4
+      ],
+      "mathStructures": [
+        {
+          "sha256": "43520f2a9f93d519b92d11013994c4929270cba81b9fea7e399c17231967d5b7",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "b4f798706af7dd49e227761d72d2c8341c28be7684a0a51e0add7c65bdd5be59",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "364941594121a897488760e582538feb83247fb618deffe0a6bba001f5f92637",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "501ded0e6ece6d6164416a92eedbdd766b03f283be49c0440854bb9096670def",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "a \\geq 0"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "a < 0"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "a"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "- a"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000391",
+      "locator": "word/document.xml:p[391]",
+      "text": "【5】 二つの場合を一つの記号でまとめ、 を表そう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        5
+      ],
+      "mathStructures": [
+        {
+          "sha256": "1911baf0c69741a76fb705183ebd1042790c4be05d597978ccfad67b1a98a1bf",
+          "fractions": 0,
+          "radicals": 1,
+          "superscripts": 1
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\sqrt{a^{2}}"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000392",
+      "locator": "word/document.xml:p[392]",
+      "text": "",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "96d4223d5fd1ff11f7cd788ec99c6e1e40b7dadbc2327e0d0af151acfdc6f0f1",
+          "fractions": 0,
+          "radicals": 1,
+          "superscripts": 1
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\sqrt{a^{2}} = \\text{|}a\\text{|}"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000393",
+      "locator": "word/document.xml:p[393]",
+      "text": "確認",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000394",
+      "locator": "word/document.xml:p[394]",
+      "text": " を簡単にしよう。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "312ace694ea0f663479f3eb3508398e5dcc777aea9dce0d5be8bdc3e928ff39d",
+          "fractions": 0,
+          "radicals": 2,
+          "superscripts": 1
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\sqrt{\\left( 2 - \\sqrt{5} \\right)^{2}}"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000395",
+      "locator": "word/document.xml:p[395]",
+      "text": "【6】 根号を外す前に、 の正負を平方の比較から判断しよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        6
+      ],
+      "mathStructures": [
+        {
+          "sha256": "e8df576132ba23af52c2dc0b602db7f067a1f5b877ecd870eebd6d64263b16e5",
+          "fractions": 0,
+          "radicals": 1,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "2 - \\sqrt{5}"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000396",
+      "locator": "word/document.xml:p[396]",
+      "text": "【7】 非負の値になるように根号を外そう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        7
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000397",
+      "locator": "word/document.xml:p[397]",
+      "text": "近似値と整数部分を、大小関係から決める",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000398",
+      "locator": "word/document.xml:p[398]",
+      "text": "例題",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000399",
+      "locator": "word/document.xml:p[399]",
+      "text": " であることを確かめよう。小数の近似値を覚えているだけではなく、両側から挟む。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "c5ed17a308e8cdc142c7a6b37bb4327d639ab8ef267b84ab71b402e295facfba",
+          "fractions": 0,
+          "radicals": 1,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "1.41 < \\sqrt{2} < 1.42"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000400",
+      "locator": "word/document.xml:p[400]",
+      "text": "【8】  と  を計算し、2を挟む不等式を書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        8
+      ],
+      "mathStructures": [
+        {
+          "sha256": "b04143b024515a3596ad439b21b9344dd6ed398cb69df048cb8cf22c5965ff56",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 1
+        },
+        {
+          "sha256": "98e0a5f4d2e501ce467bf029ad9bd424865cae40dd45350b6779ca4640d8c12d",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 1
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "{1.41}^{2}"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "{1.42}^{2}"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000401",
+      "locator": "word/document.xml:p[401]",
+      "text": "【9】 両端が正であることを使い、もとの数の大小関係を結論づけよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        9
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000402",
+      "locator": "word/document.xml:p[402]",
+      "text": "例題",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000403",
+      "locator": "word/document.xml:p[403]",
+      "text": " を「整数＋0以上1未満の数」の形に分けよう。図で隣り合う整数の位置を確かめる。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "7a133840483dcb635b6b4424fa19a0e4063762a0ea6d01e9ea42b3ed6ad312d6",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "- 2.1"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000404",
+      "locator": "word/document.xml:p[404]",
+      "text": "",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [
+        "media/image6.png"
+      ],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000405",
+      "locator": "word/document.xml:p[405]",
+      "text": "N09-F01　負の小数の位置。区間の端を選ぶ前の数直線。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000406",
+      "locator": "word/document.xml:p[406]",
+      "text": "花子　「見た目の整数の部分を  にすると、残りが負になりそう。今回は残りを0以上にするんだよね。」",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "996c2c790525de489ecfb8ad856b127e32d0987fc19375e88f9eed140cf62507",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "- 2"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000407",
+      "locator": "word/document.xml:p[407]",
+      "text": "【10】  を  に挟む整数  を選ぼう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        10
+      ],
+      "mathStructures": [
+        {
+          "sha256": "7a133840483dcb635b6b4424fa19a0e4063762a0ea6d01e9ea42b3ed6ad312d6",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "ddf1c11b334268dc76a2ddd681bf4ecc14c102887778e5ade1d604277ed0c1ec",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "42e0794c0461e193b30a3771e56938972185c9db6d8cc8369025db3fe5c1a6fa",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "- 2.1"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "n \\leq - 2.1 < n + 1"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "n"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000408",
+      "locator": "word/document.xml:p[408]",
+      "text": "【11】 選んだ整数と残りの数に分けた等式を書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        11
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000409",
+      "locator": "word/document.xml:p[409]",
+      "text": "実数  に対し、 となる整数  を  の整数部分、残りの  を小数部分という。この意味の小数部分は、必ず0以上1未満である。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "d023ab3f8f34dcaf612983208e1592cee53c18e47d325e535c2c7ec3d2a7c3bf",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "0cfd609f0b6e39c706bbddfe121267f7d6f9f8f00e9af265d66dccff950e8d17",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "42e0794c0461e193b30a3771e56938972185c9db6d8cc8369025db3fe5c1a6fa",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "d023ab3f8f34dcaf612983208e1592cee53c18e47d325e535c2c7ec3d2a7c3bf",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "c650b822137e8f644ed0771798a8233e2fc650cb86f39e1eaae5e0d0fa1255d4",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "x"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "n \\leq x < n + 1"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "n"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "x"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "x - n"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000410",
+      "locator": "word/document.xml:p[410]",
+      "text": "確認",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000411",
+      "locator": "word/document.xml:p[411]",
+      "text": " と  の整数部分と小数部分を求めよう。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "2597e9e412e74abb4a29d058ed190d921daaa66bae6d6443a13fc6693f80b0dd",
+          "fractions": 0,
+          "radicals": 1,
+          "superscripts": 0
+        },
+        {
+          "sha256": "e49367778a24ee5bec59024fdfac895ba71b878137e8312960910902d55f30aa",
+          "fractions": 0,
+          "radicals": 1,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\sqrt{10}"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "- \\sqrt{10}"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000412",
+      "locator": "word/document.xml:p[412]",
+      "text": "【12】  を挟む隣り合う整数を、平方の比較から求めよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        12
+      ],
+      "mathStructures": [
+        {
+          "sha256": "2597e9e412e74abb4a29d058ed190d921daaa66bae6d6443a13fc6693f80b0dd",
+          "fractions": 0,
+          "radicals": 1,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\sqrt{10}"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000413",
+      "locator": "word/document.xml:p[413]",
+      "text": "【13】 符号を反対にした場合の大小関係も書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        13
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000414",
+      "locator": "word/document.xml:p[414]",
+      "text": "【14】 二つの数の「整数部分、小数部分」をそれぞれ書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        14
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000415",
+      "locator": "word/document.xml:p[415]",
+      "text": "平方根の値を確かめるには、平方すると何になるかだけでなく、その値の符号も見る。この二つの確認を、根号を含む計算の性質に使う。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000416",
+      "locator": "word/document.xml:p[416]",
+      "text": "第2節　実数",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    }
+  ],
+  "status": "PASS",
+  "semanticFidelity": "REQUIRES_SOURCE_REVIEW"
+}

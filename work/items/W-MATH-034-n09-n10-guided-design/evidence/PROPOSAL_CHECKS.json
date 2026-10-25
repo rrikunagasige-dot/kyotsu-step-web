@@ -1,0 +1,37 @@
+{
+  "status": "PASS_BOUNDED",
+  "units": {
+    "N09": {
+      "nodes": 41,
+      "answers": 36,
+      "stages": 11,
+      "originalItems": 18,
+      "originalContractsPreserved": true,
+      "sourceBlocks": 41,
+      "mathBlocks": 37,
+      "candidateIR": "PASS",
+      "compile": "PASS",
+      "sourceCoverage": "PASS",
+      "browser": "NOT_RUN",
+      "approval": "NOT_REQUESTED_YET"
+    },
+    "N10": {
+      "nodes": 45,
+      "answers": 45,
+      "stages": 12,
+      "originalItems": 21,
+      "originalContractsPreserved": true,
+      "sourceBlocks": 55,
+      "mathBlocks": 25,
+      "candidateIR": "PASS",
+      "compile": "PASS",
+      "sourceCoverage": "PASS",
+      "browser": "NOT_RUN",
+      "approval": "NOT_REQUESTED_YET"
+    }
+  },
+  "symbolicIdentities": 19,
+  "learnerImplementation": false,
+  "publicDeployment": false,
+  "userQualityLabelCreated": false
+}

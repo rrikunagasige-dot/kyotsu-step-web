@@ -4,7 +4,9 @@
   "publicationRun": 40162687421,
   "publicationStatus": "SUCCESS",
   "publicSourceVerified": true,
-  "userAccepted": false,
+  "userAccepted": true,
   "route": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=ea47dd97#/learning/textbook/math-numbers-expressions-n08",
-  "next": "G3_FINAL@n08: actual scoped user evaluation; then fresh post-fix sweep/R08/L01"
+  "next": "W-MATH-034: N09/N10 concrete proposal",
+  "acceptanceEvent": "W033-N08-APP-ACCEPTED-20261025",
+  "learning": "DONE"
 }

@@ -1,0 +1,1649 @@
+{
+  "status": "PROPOSED",
+  "nodes": [
+    {
+      "id": "n09-q01-positive",
+      "unit": "n09",
+      "stageId": "n09-stage-01",
+      "goal": "正の候補の平方",
+      "before": "例題は、2乗すると $16$ になる実数をすべて求めることです。正の候補は $4$ で、$4^2=4\\times4=16$ と確かめられます。これは計算方法を示す手本です。",
+      "formula": null,
+      "answer": null,
+      "wrong": [],
+      "after": "正の候補の手本を見たので、次は符号が反対の候補を自分で確かめます。",
+      "hint": "同じ数どうしの積を計算します。",
+      "sourceRefs": [
+        "word-p-000378",
+        "word-p-000379",
+        "word-p-000380"
+      ],
+      "action": "calculation",
+      "role": "example",
+      "itemId": null,
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-q01-positive-result",
+      "requires": [],
+      "knownRefs": []
+    },
+    {
+      "id": "n09-q01-negative",
+      "unit": "n09",
+      "stageId": "n09-stage-01",
+      "goal": "負の候補も確かめる",
+      "before": "負の数どうしの積は正です。候補 $-4$ に括弧を付けて2乗します。",
+      "formula": "(-4)^2=(-4)\\times(-4)=\\square",
+      "answer": "16",
+      "wrong": [
+        [
+          "-16",
+          "負と負の積の符号を確かめます。"
+        ],
+        [
+          "-8",
+          "2乗は2倍ではありません。"
+        ]
+      ],
+      "after": "正と負の候補が、どちらも同じ平方になりました。",
+      "hint": "符号と数の大きさを分けて掛けます。",
+      "sourceRefs": [
+        "word-p-000379",
+        "word-p-000380"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n09-q01-negative",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-q01-negative-result",
+      "requires": [
+        "n09-q01-positive-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "(-4)^2=(-4)\\times(-4)=16"
+    },
+    {
+      "id": "n09-01",
+      "unit": "n09",
+      "stageId": "n09-stage-01",
+      "goal": "すべての解を答える",
+      "before": "二つの候補を確かめました。これ以外の実数がないことは、$x^2-16=(x-4)(x+4)=0$ から確認できます。実数の積が0なら少なくとも一方が0です。条件を満たす実数をまとめます。",
+      "formula": "\\square",
+      "answer": "x=4,\\ -4",
+      "wrong": [
+        [
+          "x=4",
+          "正の解だけでは「すべて」になりません。"
+        ],
+        [
+          "x=-4",
+          "負の解だけでは「すべて」になりません。"
+        ],
+        [
+          "x=16,\\ -16",
+          "16を2乗しても16にはなりません。"
+        ]
+      ],
+      "after": "平方が同じでも、元の数の符号は二通りあります。",
+      "hint": "二つの平方計算の結果を合わせます。",
+      "sourceRefs": [
+        "word-p-000380"
+      ],
+      "action": "expression",
+      "role": "example",
+      "itemId": "n09-01",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-01-result",
+      "requires": [
+        "n09-q01-negative-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "x=4,\\ -4"
+    },
+    {
+      "id": "n09-definition",
+      "unit": "n09",
+      "stageId": "n09-stage-02",
+      "goal": "平方根と根号を区別する",
+      "before": "2乗して $a$ になる数を $a$ の **平方根** といいます。$a>0$ のとき二つあり、正の方を $\\sqrt a$、負の方を $-\\sqrt a$ と書きます。**根号** $\\sqrt a$ 自体は非負の一つの数を表します。",
+      "formula": null,
+      "answer": null,
+      "wrong": [],
+      "after": "「平方根をすべて」と「根号の値」では、求める対象が違います。",
+      "hint": "",
+      "sourceRefs": [
+        "word-p-000381",
+        "word-p-000382"
+      ],
+      "action": "expression",
+      "role": "definition",
+      "itemId": null,
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-definition-result",
+      "requires": [
+        "n09-01-result"
+      ],
+      "knownRefs": [
+        "n09-01-result"
+      ]
+    },
+    {
+      "id": "n09-q02-root",
+      "unit": "n09",
+      "stageId": "n09-stage-02",
+      "goal": "根号は非負の方を取る",
+      "before": "$\\sqrt{16}$ は、2乗すると $16$ になる数のうち、非負の方を表します。",
+      "formula": "\\sqrt{16}=\\square",
+      "answer": "4",
+      "wrong": [
+        [
+          "-4",
+          "根号で表す値は非負です。"
+        ],
+        [
+          "\\pm4",
+          "根号は二つの平方根をまとめた記号ではありません。"
+        ]
+      ],
+      "after": "もう一方の式では、外側の負号ごと2乗します。",
+      "hint": "根号の定義で、値の符号を確かめます。",
+      "sourceRefs": [
+        "word-p-000381",
+        "word-p-000383"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n09-q02-root",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-q02-root-result",
+      "requires": [
+        "n09-definition-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "\\sqrt{16}=4"
+    },
+    {
+      "id": "n09-q02-negative-square",
+      "unit": "n09",
+      "stageId": "n09-stage-02",
+      "goal": "負号を含めて二乗する",
+      "before": "$(-\\sqrt5)^2$ は、$-\\sqrt5$ 全体を2回掛ける式です。負と負の積の符号を先に見ます。",
+      "formula": "(-\\sqrt5)^2=(-1)^2(\\sqrt5)^2=\\square",
+      "answer": "5",
+      "wrong": [
+        [
+          "-5",
+          "括弧内の負号も2乗されます。"
+        ],
+        [
+          "25",
+          "根号を2乗すると中の数に戻ります。"
+        ]
+      ],
+      "after": "根号の値と、負の数を2乗した結果を区別できました。",
+      "hint": "負号は括弧の内側です。",
+      "sourceRefs": [
+        "word-p-000383"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n09-q02-negative-square",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-q02-negative-square-result",
+      "requires": [
+        "n09-q02-root-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "(-\\sqrt5)^2=(-1)^2(\\sqrt5)^2=5"
+    },
+    {
+      "id": "n09-02",
+      "unit": "n09",
+      "stageId": "n09-stage-02",
+      "goal": "二つの値を元の順序でまとめる",
+      "before": "最初が $\\sqrt{16}$、次が $(-\\sqrt5)^2$ です。求めた値をこの順序の組にします。",
+      "formula": "\\square",
+      "answer": "(4,\\ 5)",
+      "wrong": [
+        [
+          "(\\pm4,\\ 5)",
+          "根号の値を二つまとめた記号にしていませんか。"
+        ],
+        [
+          "(-4,\\ 5)",
+          "最初の根号は非負の値です。"
+        ],
+        [
+          "(4,\\ -5)",
+          "2番目は負号ごと2乗した結果です。"
+        ]
+      ],
+      "after": "根号の選ぶ符号と、二乗の結果は別々に判断します。",
+      "hint": "直前に確定した二つの値を順に置きます。",
+      "sourceRefs": [
+        "word-p-000383"
+      ],
+      "action": "meaning",
+      "role": "substep",
+      "itemId": "n09-02",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-02-result",
+      "requires": [
+        "n09-q02-negative-square-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "(4,\\ 5)"
+    },
+    {
+      "id": "n09-boundary",
+      "unit": "n09",
+      "stageId": "n09-stage-02",
+      "goal": "0と負の数の境界",
+      "before": "$0^2=0$ なので、$0$ の平方根は $0$ 一つです。$\\sqrt0=0$ と書きます。実数の平方は非負なので、負の数の平方根は、この章で扱う実数の範囲にはありません。",
+      "formula": null,
+      "answer": null,
+      "wrong": [],
+      "after": "以下では、根号の中が非負であることと、根号の値が非負であることを確認して使います。",
+      "hint": "",
+      "sourceRefs": [
+        "word-p-000384"
+      ],
+      "action": "expression",
+      "role": "property",
+      "itemId": null,
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-boundary-result",
+      "requires": [
+        "n09-02-result"
+      ],
+      "knownRefs": []
+    },
+    {
+      "id": "n09-q03-inside",
+      "unit": "n09",
+      "stageId": "n09-stage-03",
+      "goal": "内側の平方を先に求める",
+      "before": "例題 $\\sqrt{(-4)^2}$ では、根号を外す前に、括弧内の数を2乗します。",
+      "formula": "(-4)^2=\\square",
+      "answer": "16",
+      "wrong": [
+        [
+          "-16",
+          "負と負の積です。"
+        ],
+        [
+          "4",
+          "2乗の計算をまだしていません。"
+        ]
+      ],
+      "after": "根号の内側が求まりました。次に非負の平方根を選びます。",
+      "hint": "負号も括弧の内側にあります。",
+      "sourceRefs": [
+        "word-p-000386",
+        "word-p-000387"
+      ],
+      "action": "calculation",
+      "role": "example",
+      "itemId": "n09-q03-inside",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-q03-inside-result",
+      "requires": [
+        "n09-boundary-result"
+      ],
+      "knownRefs": [
+        "n09-boundary-result"
+      ],
+      "resolvedFormula": "(-4)^2=16"
+    },
+    {
+      "id": "n09-03",
+      "unit": "n09",
+      "stageId": "n09-stage-03",
+      "goal": "根号の非負の値を選ぶ",
+      "before": "内側の値を戻すと $\\sqrt{(-4)^2}=\\sqrt{16}$ です。根号の定義に従って値を決めます。",
+      "formula": "\\sqrt{(-4)^2}=\\sqrt{16}=\\square",
+      "answer": "4",
+      "wrong": [
+        [
+          "-4",
+          "内側の負号をそのまま外へ出していませんか。"
+        ],
+        [
+          "\\pm4",
+          "根号の表す値は一つです。"
+        ],
+        [
+          "16",
+          "16は根号の内側の値です。"
+        ]
+      ],
+      "after": "元の $-4$ をそのまま取り出す操作にはなりません。",
+      "hint": "根号で指定される値の符号を確認します。",
+      "sourceRefs": [
+        "word-p-000387",
+        "word-p-000388"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n09-03",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-03-result",
+      "requires": [
+        "n09-q03-inside-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "\\sqrt{(-4)^2}=\\sqrt{16}=4"
+    },
+    {
+      "id": "n09-q04-nonnegative",
+      "unit": "n09",
+      "stageId": "n09-stage-04",
+      "goal": "0以上の場合",
+      "before": "一般の実数 $a$ を調べます。$a\\ge0$ のとき、候補 $a$ と $-a$ のうち、この場合全体で非負の値を表す式を選びます。$a=0$ で二つが同じになることも含めて考えます。",
+      "formula": "\\square",
+      "answer": "\\sqrt{a^2}=a",
+      "wrong": [
+        [
+          "\\sqrt{a^2}=-a",
+          "aが正の場合にも非負になる式を選びます。"
+        ],
+        [
+          "\\sqrt{a^2}=a^2",
+          "平方の値ではなく平方根の値を表します。"
+        ]
+      ],
+      "after": "$a\\ge0$ の場合は $\\sqrt{a^2}=a$ です。境界 $a=0$ では両候補とも0ですが、この式で場合全体を表せます。次は負の場合です。",
+      "hint": "この場合をまとめて表せる式を選びます。",
+      "sourceRefs": [
+        "word-p-000390"
+      ],
+      "action": "judgment",
+      "role": "proof",
+      "itemId": "n09-q04-nonnegative",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-q04-nonnegative-result",
+      "requires": [
+        "n09-03-result"
+      ],
+      "knownRefs": [
+        "n09-03-result"
+      ],
+      "resolvedFormula": "\\sqrt{a^2}=a"
+    },
+    {
+      "id": "n09-q04-negative",
+      "unit": "n09",
+      "stageId": "n09-stage-04",
+      "goal": "負の場合",
+      "before": "$a<0$ なら、$a$ 自体は負です。符号を反対にした数を選ぶと非負になります。その数を2乗しても $a^2$ です。",
+      "formula": "\\sqrt{a^2}=\\square",
+      "answer": "-a",
+      "wrong": [
+        [
+          "a",
+          "この場合のaは負です。"
+        ],
+        [
+          "0",
+          "aは0より小さく、0ではありません。"
+        ]
+      ],
+      "after": "条件を変えると、根号の非負の値を表す式も変わります。",
+      "hint": "aの符号と、符号を反対にした数を比較します。",
+      "sourceRefs": [
+        "word-p-000390"
+      ],
+      "action": "judgment",
+      "role": "proof",
+      "itemId": "n09-q04-negative",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-q04-negative-result",
+      "requires": [
+        "n09-q04-nonnegative-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "\\sqrt{a^2}=-a"
+    },
+    {
+      "id": "n09-04",
+      "unit": "n09",
+      "stageId": "n09-stage-04",
+      "goal": "条件と結果の対応を保持する",
+      "before": "順序は $a\\ge0$ の場合、次に $a<0$ の場合です。この順序で、非負になる方の式をまとめます。",
+      "formula": "\\square",
+      "answer": "(a,\\ -a)",
+      "wrong": [
+        [
+          "(a,\\ a)",
+          "二つの場合に対応する式を逆にしています。"
+        ],
+        [
+          "(-a,\\ -a)",
+          "負の場合にaをそのまま使うと負になります。"
+        ],
+        [
+          "(-a,\\ a)",
+          "0以上の場合に負の式を選んでいます。"
+        ]
+      ],
+      "after": "この対応を、N08で得た絶対値の規則と照らし合わせます。",
+      "hint": "条件と結果を同じ順序で並べます。",
+      "sourceRefs": [
+        "word-p-000390"
+      ],
+      "action": "expression",
+      "role": "proof",
+      "itemId": "n09-04",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-04-result",
+      "requires": [
+        "n09-q04-negative-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "(a,\\ -a)"
+    },
+    {
+      "id": "n09-05",
+      "unit": "n09",
+      "stageId": "n09-stage-04",
+      "goal": "二つの場合を絶対値へ統合する",
+      "before": "N08で得た規則は、$a\\ge0$ なら $|a|=a$、$a<0$ なら $|a|=-a$ でした。いまの二つの場合と一致する記号でまとめます。",
+      "formula": "\\sqrt{a^2}=\\square",
+      "answer": "|a|",
+      "wrong": [
+        [
+          "a",
+          "aが負の場合に式が非負になるか調べます。"
+        ],
+        [
+          "-a",
+          "aが正の場合に式が非負になるか調べます。"
+        ],
+        [
+          "a^2",
+          "平方の値と平方根の値を区別します。"
+        ]
+      ],
+      "after": "すべての実数 $a$ で $\\sqrt{a^2}=|a|$ です。記録する二つの場合は、$a\\ge0$ なら $\\sqrt{a^2}=a$、$a<0$ なら $\\sqrt{a^2}=-a$。N08の絶対値の二場合と同じ対応です。",
+      "hint": "直前の二場合と、N08の定義を対応させます。",
+      "sourceRefs": [
+        "word-p-000391",
+        "word-p-000392"
+      ],
+      "action": "expression",
+      "role": "property",
+      "itemId": "n09-05",
+      "anchor": true,
+      "extra": {
+        "table": {
+          "caption": "根号の非負の値を選ぶ場合分け",
+          "headers": [
+            "条件",
+            "結果"
+          ],
+          "rows": [
+            [
+              "a\\ge0",
+              "\\sqrt{a^2}=a"
+            ],
+            [
+              "a<0",
+              "\\sqrt{a^2}=-a"
+            ]
+          ]
+        }
+      },
+      "known": [],
+      "resultId": "n09-05-result",
+      "requires": [
+        "n09-04-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "\\sqrt{a^2}=|a|"
+    },
+    {
+      "id": "n09-q06-squares",
+      "unit": "n09",
+      "stageId": "n09-stage-05",
+      "goal": "非負の二数を平方で比較する",
+      "before": "例題は $\\sqrt{(2-\\sqrt5)^2}$ です。根号の内側にある $2-\\sqrt5$ の符号を先に決めます。$2$ と $\\sqrt5$ は非負なので、平方の大小で比較できます。",
+      "formula": "2^2=\\square",
+      "answer": "4",
+      "wrong": [
+        [
+          "2",
+          "同じ数を2回掛けます。"
+        ],
+        [
+          "5",
+          "平方根側の平方と取り違えています。"
+        ]
+      ],
+      "after": "$(\\sqrt5)^2=5$ と、この結果を比べます。",
+      "hint": "整数側の平方を求めます。",
+      "sourceRefs": [
+        "word-p-000394",
+        "word-p-000395"
+      ],
+      "action": "calculation",
+      "role": "example",
+      "itemId": "n09-q06-squares",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-q06-squares-result",
+      "requires": [
+        "n09-05-result"
+      ],
+      "knownRefs": [
+        "n09-05-result"
+      ],
+      "resolvedFormula": "2^2=4"
+    },
+    {
+      "id": "n09-q06-order",
+      "unit": "n09",
+      "stageId": "n09-stage-05",
+      "goal": "平方の比較を元の数へ戻す",
+      "before": "平方した値は $4<5$ です。非負の範囲では、元の二数にも同じ向きの大小関係が成り立ちます。",
+      "formula": "2\\ \\square\\ \\sqrt5",
+      "answer": "<",
+      "wrong": [
+        [
+          ">",
+          "非負の二数では平方の大小と同じ向きです。"
+        ],
+        [
+          "=",
+          "二つの平方は等しくありません。"
+        ]
+      ],
+      "after": "元の数の大小が分かりました。差が0より小さいことへつなぎます。",
+      "hint": "比較した左右の順を保ちます。",
+      "sourceRefs": [
+        "word-p-000395"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n09-q06-order",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-q06-order-result",
+      "requires": [
+        "n09-q06-squares-result",
+        "n09-05-result"
+      ],
+      "knownRefs": [
+        "n09-05-result"
+      ],
+      "resolvedFormula": "2\\ <\\ \\sqrt5"
+    },
+    {
+      "id": "n09-06",
+      "unit": "n09",
+      "stageId": "n09-stage-05",
+      "goal": "差の符号へつなぐ",
+      "before": "$2<\\sqrt5$ の両辺から $\\sqrt5$ を引きます。同じ数を引いても不等号の向きは変わりません。",
+      "formula": "\\square",
+      "answer": "2-\\sqrt5<0",
+      "wrong": [
+        [
+          "2-\\sqrt5>0",
+          "非負の二数を平方で比較した向きを確認します。"
+        ],
+        [
+          "2-\\sqrt5=0",
+          "平方が違うので元の数は等しくありません。"
+        ],
+        [
+          "2-\\sqrt5\\ge0",
+          "符号を決めるため、0との大小を読み取ります。"
+        ]
+      ],
+      "after": "根号を外すときに使う、中身の符号が確定しました。",
+      "hint": "右辺で同じ数を引いた結果を考えます。",
+      "sourceRefs": [
+        "word-p-000395"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n09-06",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-06-result",
+      "requires": [
+        "n09-q06-order-result",
+        "n09-05-result"
+      ],
+      "knownRefs": [
+        "n09-05-result"
+      ],
+      "resolvedFormula": "2-\\sqrt5<0"
+    },
+    {
+      "id": "n09-q07-negation",
+      "unit": "n09",
+      "stageId": "n09-stage-05",
+      "goal": "負の式全体に負号を付ける",
+      "before": "$\\sqrt{u^2}=|u|$ に $u=2-\\sqrt5$ を入れます。中身が負なので、N08の負の場合の規則を使い、式全体を括弧で囲みます。",
+      "formula": "|2-\\sqrt5|=\\square",
+      "answer": "-(2-\\sqrt5)",
+      "wrong": [
+        [
+          "2-\\sqrt5",
+          "負の場合の絶対値の規則を使います。"
+        ],
+        [
+          "-2-\\sqrt5",
+          "元の式全体を括弧で囲み、まだ展開しません。"
+        ]
+      ],
+      "after": "次に、外側の負号を括弧内の両項に作用させます。",
+      "hint": "式の一項だけでなく全体を対象にします。",
+      "sourceRefs": [
+        "word-p-000396"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n09-q07-negation",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-q07-negation-result",
+      "requires": [
+        "n09-06-result",
+        "n09-05-result"
+      ],
+      "knownRefs": [
+        "n09-05-result"
+      ],
+      "resolvedFormula": "|2-\\sqrt5|=-(2-\\sqrt5)"
+    },
+    {
+      "id": "n09-07",
+      "unit": "n09",
+      "stageId": "n09-stage-05",
+      "goal": "両項の符号を変えて答える",
+      "before": "$-(2-\\sqrt5)=-2+\\sqrt5$ です。加法の交換法則で正の項を先に置き、元の例題の答えにします。",
+      "formula": "\\sqrt{(2-\\sqrt5)^2}=\\square",
+      "answer": "\\sqrt5-2",
+      "wrong": [
+        [
+          "2-\\sqrt5",
+          "負の中身をそのまま取り出しています。"
+        ],
+        [
+          "\\sqrt5+2",
+          "外側の負号は両項に掛かります。"
+        ],
+        [
+          "-(2+\\sqrt5)",
+          "絶対値の中身の符号を確認した結果に戻ります。"
+        ]
+      ],
+      "after": "記録には、大小→差の符号→絶対値→括弧の計算の連鎖を一回だけ残します。",
+      "hint": "直前の展開で得た二項を並べ直します。",
+      "sourceRefs": [
+        "word-p-000396"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n09-07",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-07-result",
+      "requires": [
+        "n09-q07-negation-result",
+        "n09-05-result"
+      ],
+      "knownRefs": [
+        "n09-05-result"
+      ],
+      "resolvedFormula": "\\sqrt{(2-\\sqrt5)^2}=\\sqrt5-2"
+    },
+    {
+      "id": "n09-decimal-method",
+      "unit": "n09",
+      "stageId": "n09-stage-06",
+      "goal": "小数の平方の計算方法を示す",
+      "before": "例題は $1.41<\\sqrt2<1.42$ の確認です。端の数を分数にすると、$1.41=141/100$、$1.42=142/100$ です。整数の筆算結果 $141^2=19881$、$142^2=20164$ を使います。分母の $100^2=10000$ で割れば、小数の平方に戻せます。",
+      "formula": null,
+      "answer": null,
+      "wrong": [],
+      "after": "携帯で筆算を別に行う必要がないよう、整数計算の内訳は補助欄にも残します。次の穴では小数への変換を行います。",
+      "hint": "",
+      "sourceRefs": [
+        "word-p-000399",
+        "word-p-000400"
+      ],
+      "action": "expression",
+      "role": "example",
+      "itemId": null,
+      "anchor": false,
+      "extra": {
+        "calculationSupport": "141^2=141(100+40+1)=14100+5640+141=19881;\\quad142^2=14200+5680+284=20164"
+      },
+      "known": [],
+      "resultId": "n09-decimal-method-result",
+      "requires": [
+        "n09-07-result"
+      ],
+      "knownRefs": [
+        "n09-07-result"
+      ]
+    },
+    {
+      "id": "n09-p001-q08-left-square",
+      "unit": "n09",
+      "stageId": "n09-stage-06",
+      "goal": "左側の平方を小数へ戻す",
+      "before": "$1.41^2=19881/10000$ です。小数点を4桁分動かして値を表します。",
+      "formula": "1.41^2=\\square",
+      "answer": "1.9881",
+      "wrong": [
+        [
+          "1.9981",
+          "10000で割る位取りを確認します。"
+        ],
+        [
+          "1.9811",
+          "二乗する前の値ではありません。"
+        ],
+        [
+          "1.9918",
+          "割る数に合わせて小数点の位置を調べます。"
+        ]
+      ],
+      "after": "左側の平方が求まりました。次に右側を同じ方法で計算します。",
+      "hint": "分母は100の二乗です。",
+      "sourceRefs": [
+        "word-p-000400"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n09-p001-q08-left-square",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-p001-q08-left-square-result",
+      "requires": [
+        "n09-decimal-method-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "1.41^2=1.9881"
+    },
+    {
+      "id": "n09-p001-q08-right-square",
+      "unit": "n09",
+      "stageId": "n09-stage-06",
+      "goal": "右側の平方を小数へ戻す",
+      "before": "$1.42^2=20164/10000$ を小数で表します。",
+      "formula": "1.42^2=\\square",
+      "answer": "2.0164",
+      "wrong": [
+        [
+          "2.0104",
+          "整数平方を10000で割ります。"
+        ],
+        [
+          "2.0264",
+          "二乗と2倍を区別します。"
+        ],
+        [
+          "2.1064",
+          "小数点の移動桁数を確認します。"
+        ]
+      ],
+      "after": "両端の平方がそろいました。2との大小を別々に判断します。",
+      "hint": "左側で使った位取りを同じように適用します。",
+      "sourceRefs": [
+        "word-p-000400"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n09-p001-q08-right-square",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-p001-q08-right-square-result",
+      "requires": [
+        "n09-p001-q08-left-square-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "1.42^2=2.0164"
+    },
+    {
+      "id": "n09-p001-q08-lower-sign",
+      "unit": "n09",
+      "stageId": "n09-stage-06",
+      "goal": "左の平方と2を比べる",
+      "before": "左側の平方と $2$ を比較します。小数点より左側の数を先に見ると大小を判断できます。",
+      "formula": "1.9881\\ \\square\\ 2",
+      "answer": "<",
+      "wrong": [
+        [
+          ">",
+          "1点台と2の大小を比較します。"
+        ],
+        [
+          "=",
+          "二つは同じ数ではありません。"
+        ],
+        [
+          "\\ge",
+          "等しくなる場合を含めず、今回の二数の厳密な大小を選びます。"
+        ]
+      ],
+      "after": "次に、右側の平方との比較を加えます。",
+      "hint": "小数の整数部分を見ます。",
+      "sourceRefs": [
+        "word-p-000400"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n09-p001-q08-lower-sign",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-p001-q08-lower-sign-result",
+      "requires": [
+        "n09-p001-q08-right-square-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "1.9881\\ <\\ 2"
+    },
+    {
+      "id": "n09-p001-q08-upper-sign",
+      "unit": "n09",
+      "stageId": "n09-stage-06",
+      "goal": "2と右の平方を比べる",
+      "before": "$2$ と $2.0164$ は小数点より左側の数が同じです。小数部分を比べます。",
+      "formula": "2\\ \\square\\ 2.0164",
+      "answer": "<",
+      "wrong": [
+        [
+          ">",
+          "小数部分が正であることを確かめます。"
+        ],
+        [
+          "=",
+          "小数部分に違いがあります。"
+        ],
+        [
+          "\\ge",
+          "等しくなる場合を含めず、今回の二数の厳密な大小を選びます。"
+        ]
+      ],
+      "after": "二つの比較を同じ順序で接続します。",
+      "hint": "2を2.0000として比べます。",
+      "sourceRefs": [
+        "word-p-000400"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n09-p001-q08-upper-sign",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-p001-q08-upper-sign-result",
+      "requires": [
+        "n09-p001-q08-lower-sign-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "2\\ <\\ 2.0164"
+    },
+    {
+      "id": "n09-08",
+      "unit": "n09",
+      "stageId": "n09-stage-06",
+      "goal": "計算と比較を一つに記録する",
+      "before": "両端の平方と、2を挟む二つの不等号が求まりました。左の平方から右の平方へ、対応を保って並べます。",
+      "formula": "\\square",
+      "answer": "1.41^2=1.9881<2<2.0164=1.42^2",
+      "wrong": [
+        [
+          "1.41^2=1.9981<2<2.0164=1.42^2",
+          "両端の平方計算と比較の向きを個別に確認します。"
+        ],
+        [
+          "1.41^2=1.9881<2<2.0104=1.42^2",
+          "左端と右端を入れ替えていませんか。"
+        ],
+        [
+          "1.41^2=1.9881<2>2.0164=1.42^2",
+          "2の位置を二つの平方の間に置きます。"
+        ]
+      ],
+      "after": "平方した値の挟みが完成しました。次は非負性を確認して元へ戻します。",
+      "hint": "四つの直前の結果を同じ順序で使います。",
+      "sourceRefs": [
+        "word-p-000400"
+      ],
+      "action": "meaning",
+      "role": "substep",
+      "itemId": "n09-08",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-08-result",
+      "requires": [
+        "n09-p001-q08-upper-sign-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "1.41^2=1.9881<2<2.0164=1.42^2"
+    },
+    {
+      "id": "n09-09",
+      "unit": "n09",
+      "stageId": "n09-stage-06",
+      "goal": "非負性を使って根号を挟む",
+      "before": "両端 $1.41,1.42$ と $\\sqrt2$ は正です。非負の範囲で平方の大小と元の大小が対応するので、いまの挟みを元の数の挟みに戻します。",
+      "formula": "\\square",
+      "answer": "1.41<\\sqrt2<1.42",
+      "wrong": [
+        [
+          "1.42<\\sqrt2<1.41",
+          "両端と根号の値を対応する順で戻します。"
+        ],
+        [
+          "1.41>\\sqrt2>1.42",
+          "二乗した値をそのまま元の数の端点にしていませんか。"
+        ],
+        [
+          "1.41=\\sqrt2",
+          "根号と整数2を取り違えていませんか。"
+        ]
+      ],
+      "after": "近似の暗記ではなく、厳密な小数平方と非負性から確認できました。",
+      "hint": "左の平方は左端の数、右の平方は右端の数に対応します。",
+      "sourceRefs": [
+        "word-p-000401"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n09-09",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-09-result",
+      "requires": [
+        "n09-08-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "1.41<\\sqrt2<1.42"
+    },
+    {
+      "id": "n09-parts-target",
+      "unit": "n09",
+      "stageId": "n09-stage-07",
+      "goal": "残りに課す条件を先に示す",
+      "before": "例題は $-2.1$ を「整数＋0以上1未満の数」に分けることです。実数 $x$ を $x=n+r$ と書き、$n$ は整数、残り $r$ は $0\\le r<1$ にそろえます。この条件は $n\\le x<n+1$ と同じです。まず整数を選ぶ準備をします。",
+      "formula": null,
+      "answer": null,
+      "wrong": [],
+      "after": "分け方は $x=n+r$、$n$ は整数、$0\\le r<1$。したがって $n\\le x<n+1$、$r=x-n$ を使います。見た目の整数の桁だけを取り出す操作とは違います。",
+      "hint": "",
+      "sourceRefs": [
+        "word-p-000403",
+        "word-p-000406",
+        "word-p-000407",
+        "word-p-000409"
+      ],
+      "action": "expression",
+      "role": "example",
+      "itemId": null,
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-parts-target-result",
+      "requires": [
+        "n09-09-result"
+      ],
+      "knownRefs": [
+        "n09-09-result"
+      ]
+    },
+    {
+      "id": "n09-q10-reject-truncation",
+      "unit": "n09",
+      "stageId": "n09-stage-07",
+      "goal": "候補-2の残りを調べる",
+      "before": "整数を $-2$ とした候補を調べます。残りは、元の数からその整数を引いて求めます。",
+      "formula": "-2.1-(-2)=\\square",
+      "answer": "-0.1",
+      "wrong": [
+        [
+          "0.1",
+          "負の数を引いた後の符号を確認します。"
+        ],
+        [
+          "-4.1",
+          "負の数を引く計算と、負の数を足す計算を区別します。"
+        ]
+      ],
+      "after": "この候補では残りが負になり、今回の条件を満たしません。",
+      "hint": "括弧の前の減号は、括弧内の数の符号を反対にします。",
+      "sourceRefs": [
+        "word-p-000406",
+        "word-p-000407"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n09-q10-reject-truncation",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-q10-reject-truncation-result",
+      "requires": [
+        "n09-parts-target-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "-2.1-(-2)=-0.1"
+    },
+    {
+      "id": "n09-10",
+      "unit": "n09",
+      "stageId": "n09-stage-07",
+      "goal": "区間の左端の整数を選ぶ",
+      "before": "$n\\le-2.1<n+1$ を満たす整数を選びます。先ほどの候補より左側にある隣の整数から始めると、残りが非負になるか確かめられます。",
+      "formula": "n=\\square",
+      "answer": "-3",
+      "wrong": [
+        [
+          "-2",
+          "-2を左端にすると左の不等式が成り立ちません。"
+        ],
+        [
+          "-1",
+          "隣り合う整数の幅は1です。"
+        ],
+        [
+          "-4",
+          "選んだ整数の次の整数までの区間に入るかを確認します。"
+        ]
+      ],
+      "after": "選んだ整数と次の整数の間に、$-2.1$ が入りました。ここで初めて元の数直線を表示します。",
+      "hint": "数直線では、負でも右側ほど大きい数です。",
+      "sourceRefs": [
+        "word-p-000407",
+        "word-p-000404",
+        "word-p-000405"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n09-10",
+      "anchor": true,
+      "extra": {
+        "figure": {
+          "id": "n09-f01",
+          "visibleAfter": "n09-10",
+          "sourcePath": "public/assets/math/textbook/numbers/n09-f01.png",
+          "reason": "元図の-3/-2ラベルは原Q10の答えを先出しするため、alt/captionも回答後までDOMに出さない。"
+        }
+      },
+      "known": [],
+      "resultId": "n09-10-result",
+      "requires": [
+        "n09-q10-reject-truncation-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "n=-3"
+    },
+    {
+      "id": "n09-q11-remainder",
+      "unit": "n09",
+      "stageId": "n09-stage-08",
+      "goal": "選んだ整数からの差を計算する",
+      "before": "残りは $x-n$ です。元の数 $-2.1$ と、選んだ整数 $-3$ を括弧付きで代入します。",
+      "formula": "r=-2.1-(-3)=\\square",
+      "answer": "0.9",
+      "wrong": [
+        [
+          "-0.9",
+          "負の数を引く計算の符号を確かめます。"
+        ],
+        [
+          "-5.1",
+          "引き算を足し算と取り違えています。"
+        ]
+      ],
+      "after": "残りは0以上1未満です。元の数へ足して戻ることも確認します。",
+      "hint": "-3を引くことは3を足すことです。",
+      "sourceRefs": [
+        "word-p-000408"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n09-q11-remainder",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-q11-remainder-result",
+      "requires": [
+        "n09-10-result",
+        "n09-parts-target-result"
+      ],
+      "knownRefs": [
+        "n09-parts-target-result",
+        "n09-10-result"
+      ],
+      "resolvedFormula": "r=-2.1-(-3)=0.9"
+    },
+    {
+      "id": "n09-11",
+      "unit": "n09",
+      "stageId": "n09-stage-08",
+      "goal": "元の数を整数と残りへ分ける",
+      "before": "整数と残りを「整数＋残り」の順に並べます。足した結果が元の $-2.1$ になり、残りが条件を満たす形を選びます。",
+      "formula": "-2.1=\\square",
+      "answer": "-3+0.9",
+      "wrong": [
+        [
+          "-2-0.1",
+          "残りが負なので今回の条件を満たしません。"
+        ],
+        [
+          "-2+0.1",
+          "足し戻すと元の数になるか確認します。"
+        ],
+        [
+          "-3-0.9",
+          "残りの符号と足し戻した値を確認します。"
+        ]
+      ],
+      "after": "この整数を **整数部分**、残りを **小数部分** といいます。$n\\le x<n+1$、$r=x-n$、$0\\le r<1$ を組にして記録します。",
+      "hint": "直前に求めた整数と残りを使います。",
+      "sourceRefs": [
+        "word-p-000408",
+        "word-p-000409"
+      ],
+      "action": "meaning",
+      "role": "substep",
+      "itemId": "n09-11",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-11-result",
+      "requires": [
+        "n09-q11-remainder-result",
+        "n09-parts-target-result",
+        "n09-10-result"
+      ],
+      "knownRefs": [
+        "n09-parts-target-result",
+        "n09-10-result"
+      ],
+      "resolvedFormula": "-2.1=-3+0.9"
+    },
+    {
+      "id": "n09-q12-lower",
+      "unit": "n09",
+      "stageId": "n09-stage-09",
+      "goal": "左側の整数の平方",
+      "before": "次の例題は $\\sqrt{10}$ と $-\\sqrt{10}$ の整数部分・小数部分です。まず正の根号を挟みます。候補の整数 $3$ の平方を求めます。",
+      "formula": "3^2=\\square",
+      "answer": "9",
+      "wrong": [
+        [
+          "6",
+          "二乗は2倍ではありません。"
+        ],
+        [
+          "3",
+          "同じ数を2回掛けます。"
+        ]
+      ],
+      "after": "もう一方の端になる整数も調べます。",
+      "hint": "3を2回掛けます。",
+      "sourceRefs": [
+        "word-p-000411",
+        "word-p-000412"
+      ],
+      "action": "calculation",
+      "role": "example",
+      "itemId": "n09-q12-lower",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-q12-lower-result",
+      "requires": [
+        "n09-11-result"
+      ],
+      "knownRefs": [
+        "n09-11-result"
+      ],
+      "resolvedFormula": "3^2=9"
+    },
+    {
+      "id": "n09-q12-upper",
+      "unit": "n09",
+      "stageId": "n09-stage-09",
+      "goal": "右側の整数の平方",
+      "before": "隣の整数 $4$ の平方を求めます。",
+      "formula": "4^2=\\square",
+      "answer": "16",
+      "wrong": [
+        [
+          "8",
+          "二乗は2倍ではありません。"
+        ],
+        [
+          "4",
+          "掛ける数は4自身です。"
+        ]
+      ],
+      "after": "$9<10<16$ なので、非負性を使って元の数の区間を決められます。",
+      "hint": "左端と同じ方法を使います。",
+      "sourceRefs": [
+        "word-p-000412"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n09-q12-upper",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-q12-upper-result",
+      "requires": [
+        "n09-q12-lower-result",
+        "n09-11-result"
+      ],
+      "knownRefs": [
+        "n09-11-result"
+      ],
+      "resolvedFormula": "4^2=16"
+    },
+    {
+      "id": "n09-12",
+      "unit": "n09",
+      "stageId": "n09-stage-09",
+      "goal": "正の根号を隣接整数で挟む",
+      "before": "$3,\\sqrt{10},4$ は非負です。平方の挟みを、この三つの数の大小へ戻します。",
+      "formula": "\\square",
+      "answer": "3<\\sqrt{10}<4",
+      "wrong": [
+        [
+          "2<\\sqrt{10}<3",
+          "10を挟む平方数と、その平方根を対応させます。"
+        ],
+        [
+          "3<\\sqrt{10}<3",
+          "端点どうしは異なる整数です。"
+        ],
+        [
+          "4<\\sqrt{10}<5",
+          "4の平方より10は小さいことを使います。"
+        ]
+      ],
+      "after": "整数部分は左端の整数から決められます。負の根号の区間も先に調べます。",
+      "hint": "3と4の平方に戻って確認します。",
+      "sourceRefs": [
+        "word-p-000412"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n09-12",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-12-result",
+      "requires": [
+        "n09-q12-upper-result",
+        "n09-11-result"
+      ],
+      "knownRefs": [
+        "n09-11-result"
+      ],
+      "resolvedFormula": "3<\\sqrt{10}<4"
+    },
+    {
+      "id": "n09-q13-reverse",
+      "unit": "n09",
+      "stageId": "n09-stage-10",
+      "goal": "負を掛けたときの不等号",
+      "before": "$3<\\sqrt{10}<4$ の各辺に $-1$ を掛けます。負の数を掛けると不等号の向きが逆になります。",
+      "formula": "-3\\ \\square\\ -\\sqrt{10}>-4",
+      "answer": ">",
+      "wrong": [
+        [
+          "<",
+          "負の数を掛けたので向きを反対にします。"
+        ],
+        [
+          "=",
+          "元の三つの数は等しくありません。"
+        ]
+      ],
+      "after": "この並びは大きい順です。次に左右を入れ替えて小さい順に読みます。",
+      "hint": "全ての辺に同じ負の数を掛けています。",
+      "sourceRefs": [
+        "word-p-000413"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n09-q13-reverse",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-q13-reverse-result",
+      "requires": [
+        "n09-12-result"
+      ],
+      "knownRefs": [
+        "n09-12-result"
+      ],
+      "resolvedFormula": "-3\\ >\\ -\\sqrt{10}>-4"
+    },
+    {
+      "id": "n09-13",
+      "unit": "n09",
+      "stageId": "n09-stage-10",
+      "goal": "小さい順に区間を書く",
+      "before": "得られた $-3>-\\sqrt{10}>-4$ を右から左に読み、小さい順に並べ直します。",
+      "formula": "\\square",
+      "answer": "-4<-\\sqrt{10}<-3",
+      "wrong": [
+        [
+          "-3<-\\sqrt{10}<-4",
+          "左右を逆にしたら不等号も読み直します。"
+        ],
+        [
+          "-5<-\\sqrt{10}<-4",
+          "端点の符号は平方根を反対にした結果と対応させます。"
+        ],
+        [
+          "-3<-\\sqrt{10}<-2",
+          "元の正の根号の区間を反転させます。"
+        ]
+      ],
+      "after": "負の根号の左端は、正の根号の整数部分に負号を付けただけの数とは異なります。",
+      "hint": "右端にあった最小の数を先に置きます。",
+      "sourceRefs": [
+        "word-p-000413"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n09-13",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-13-result",
+      "requires": [
+        "n09-q13-reverse-result",
+        "n09-12-result"
+      ],
+      "knownRefs": [
+        "n09-12-result"
+      ],
+      "resolvedFormula": "-4<-\\sqrt{10}<-3"
+    },
+    {
+      "id": "n09-q14-positive-integer",
+      "unit": "n09",
+      "stageId": "n09-stage-11",
+      "goal": "正の根号の整数部分",
+      "before": "$3<\\sqrt{10}<4$ を $n\\le x<n+1$ と比べます。左端の整数を選びます。",
+      "formula": "\\sqrt{10}\\text{ の整数部分}=\\square",
+      "answer": "3",
+      "wrong": [
+        [
+          "4",
+          "右端は元の数より大きい数です。"
+        ],
+        [
+          "10",
+          "根号の中の数ではなく、その値の位置を使います。"
+        ]
+      ],
+      "after": "残りは、元の数からこの整数を引いて作ります。",
+      "hint": "区間の左端に注目します。",
+      "sourceRefs": [
+        "word-p-000414"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n09-q14-positive-integer",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-q14-positive-integer-result",
+      "requires": [
+        "n09-13-result",
+        "n09-11-result",
+        "n09-12-result"
+      ],
+      "knownRefs": [
+        "n09-11-result",
+        "n09-12-result",
+        "n09-13-result"
+      ],
+      "resolvedFormula": "\\sqrt{10}\\text{ の整数部分}=3"
+    },
+    {
+      "id": "n09-q14-positive-remainder",
+      "unit": "n09",
+      "stageId": "n09-stage-11",
+      "goal": "正の根号の小数部分",
+      "before": "小数部分の定義 $r=x-n$ に、元の数といまの整数部分を代入します。",
+      "formula": "r=\\square",
+      "answer": "\\sqrt{10}-3",
+      "wrong": [
+        [
+          "4-\\sqrt{10}",
+          "右端からの距離ではなく、元の数から整数部分を引きます。"
+        ],
+        [
+          "\\sqrt{10}",
+          "整数部分を引く操作が残っています。"
+        ]
+      ],
+      "after": "元の区間の各辺から3を引けば、$0<\\sqrt{10}-3<1$ と確認できます。",
+      "hint": "定義のxとnの場所を順に置き換えます。",
+      "sourceRefs": [
+        "word-p-000414"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n09-q14-positive-remainder",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-q14-positive-remainder-result",
+      "requires": [
+        "n09-q14-positive-integer-result",
+        "n09-11-result",
+        "n09-12-result",
+        "n09-13-result"
+      ],
+      "knownRefs": [
+        "n09-11-result",
+        "n09-12-result",
+        "n09-13-result"
+      ],
+      "resolvedFormula": "r=\\sqrt{10}-3"
+    },
+    {
+      "id": "n09-q14-negative-integer",
+      "unit": "n09",
+      "stageId": "n09-stage-11",
+      "goal": "負の根号の整数部分",
+      "before": "$-4<-\\sqrt{10}<-3$ の左端を、同じ整数部分の定義で読みます。",
+      "formula": "-\\sqrt{10}\\text{ の整数部分}=\\square",
+      "answer": "-4",
+      "wrong": [
+        [
+          "-3",
+          "右端を選ぶと元の数から引いた残りが負になります。"
+        ],
+        [
+          "3",
+          "元の数は負の区間にあります。"
+        ]
+      ],
+      "after": "正の数の場合と同じく、次は元の数からこの整数を引きます。",
+      "hint": "負数でも左端の整数を選びます。",
+      "sourceRefs": [
+        "word-p-000414"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n09-q14-negative-integer",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-q14-negative-integer-result",
+      "requires": [
+        "n09-q14-positive-remainder-result",
+        "n09-11-result",
+        "n09-12-result",
+        "n09-13-result"
+      ],
+      "knownRefs": [
+        "n09-11-result",
+        "n09-12-result",
+        "n09-13-result"
+      ],
+      "resolvedFormula": "-\\sqrt{10}\\text{ の整数部分}=-4"
+    },
+    {
+      "id": "n09-q14-negative-remainder",
+      "unit": "n09",
+      "stageId": "n09-stage-11",
+      "goal": "負の根号でも同じ定義を使う",
+      "before": "$x=-\\sqrt{10}$、$n=-4$ を代入すると、$r=-\\sqrt{10}-(-4)$ です。引き算を整理します。",
+      "formula": "r=\\square",
+      "answer": "4-\\sqrt{10}",
+      "wrong": [
+        [
+          "\\sqrt{10}-4",
+          "引く順序は元の数から整数部分です。"
+        ],
+        [
+          "3-\\sqrt{10}",
+          "整数部分は直前に選んだ値を使います。"
+        ]
+      ],
+      "after": "負の区間に4を足すと、$0<4-\\sqrt{10}<1$ です。二つとも小数部分の条件を満たしました。",
+      "hint": "負の整数を引くので、符号を反対にして足します。",
+      "sourceRefs": [
+        "word-p-000414"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n09-q14-negative-remainder",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n09-q14-negative-remainder-result",
+      "requires": [
+        "n09-q14-negative-integer-result",
+        "n09-11-result",
+        "n09-12-result",
+        "n09-13-result"
+      ],
+      "knownRefs": [
+        "n09-11-result",
+        "n09-12-result",
+        "n09-13-result"
+      ],
+      "resolvedFormula": "r=4-\\sqrt{10}"
+    },
+    {
+      "id": "n09-14",
+      "unit": "n09",
+      "stageId": "n09-stage-11",
+      "goal": "正負の組をまとめて検算する",
+      "before": "順序は $\\sqrt{10}$、次に $-\\sqrt{10}$。各組は「整数部分、小数部分」です。いま求めた四つの結果を対応する場所に置きます。",
+      "formula": "\\square",
+      "answer": "\\begin{aligned}\\sqrt{10}&:(3,\\sqrt{10}-3)\\\\-\\sqrt{10}&:(-4,4-\\sqrt{10})\\end{aligned}",
+      "wrong": [
+        [
+          "\\begin{aligned}\\sqrt{10}&:(3,\\sqrt{10}-3)\\\\-\\sqrt{10}&:(-3,3-\\sqrt{10})\\end{aligned}",
+          "負数でも区間の左端の整数を選びます。"
+        ],
+        [
+          "\\begin{aligned}\\sqrt{10}&:(3,\\sqrt{10}-3)\\\\-\\sqrt{10}&:(-3,\\sqrt{10}-3)\\end{aligned}",
+          "小数部分は元の数からその整数部分を引きます。"
+        ],
+        [
+          "\\begin{aligned}\\sqrt{10}&:(4,\\sqrt{10}-4)\\\\-\\sqrt{10}&:(-4,4-\\sqrt{10})\\end{aligned}",
+          "正の根号の左端は3です。"
+        ]
+      ],
+      "after": "両方とも、整数部分と小数部分を足して元へ戻り、小数部分は0以上1未満です。N10では、根号の非負性と平方の値を組にした確認を、積・商の証明へ使います。",
+      "hint": "四つの結果を、元の数と組の順序に合わせます。",
+      "sourceRefs": [
+        "word-p-000414",
+        "word-p-000415"
+      ],
+      "action": "meaning",
+      "role": "substep",
+      "itemId": "n09-14",
+      "anchor": true,
+      "extra": {
+        "table": {
+          "caption": "正負の根号の整数部分と小数部分",
+          "headers": [
+            "元の数",
+            "整数部分",
+            "小数部分"
+          ],
+          "rows": [
+            [
+              "\\sqrt{10}",
+              "3",
+              "\\sqrt{10}-3"
+            ],
+            [
+              "-\\sqrt{10}",
+              "-4",
+              "4-\\sqrt{10}"
+            ]
+          ],
+          "visibleAfter": "n09-14"
+        }
+      },
+      "known": [],
+      "resultId": "n09-14-result",
+      "requires": [
+        "n09-q14-negative-remainder-result",
+        "n09-11-result",
+        "n09-12-result",
+        "n09-13-result"
+      ],
+      "knownRefs": [
+        "n09-11-result",
+        "n09-12-result",
+        "n09-13-result"
+      ],
+      "resolvedFormula": "\\begin{aligned}\\sqrt{10}&:(3,\\sqrt{10}-3)\\-\\sqrt{10}&:(-4,4-\\sqrt{10})\\end{aligned}"
+    }
+  ]
+}

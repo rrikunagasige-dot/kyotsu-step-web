@@ -1,0 +1,74 @@
+{
+  "corpusHash": "d9b0bd564c72ec4f6838ddd6e0ba7848adc7ae9821cf275b6bde7fde4c903afe",
+  "modelHash": "e9dcf3543404f99c3756daf5dfe76f69a987aac1aab326374432068400a43d92",
+  "modelStatus": "OFFLINE_ONLY",
+  "classifierInferenceUsed": false,
+  "cases": [
+    {
+      "id": "N07-USER-F01",
+      "dimension": "prerequisite_missing",
+      "disposition": "APPLY",
+      "reason": "この評価観点を、根号の意味、公式の根拠、因子の判断、等式接続、黒字用語、文中数式、前結果/履歴の各surfaceに照合する。N07の固有数値は転記しない。"
+    },
+    {
+      "id": "N07-USER-F02",
+      "dimension": "orphan_output",
+      "disposition": "APPLY",
+      "reason": "この評価観点を、根号の意味、公式の根拠、因子の判断、等式接続、黒字用語、文中数式、前結果/履歴の各surfaceに照合する。N07の固有数値は転記しない。"
+    },
+    {
+      "id": "N07-USER-F03",
+      "dimension": "unmotivated_operation",
+      "disposition": "APPLY",
+      "reason": "この評価観点を、根号の意味、公式の根拠、因子の判断、等式接続、黒字用語、文中数式、前結果/履歴の各surfaceに照合する。N07の固有数値は転記しない。"
+    },
+    {
+      "id": "N07-USER-F04",
+      "dimension": "broken_derivation",
+      "disposition": "APPLY",
+      "reason": "この評価観点を、根号の意味、公式の根拠、因子の判断、等式接続、黒字用語、文中数式、前結果/履歴の各surfaceに照合する。N07の固有数値は転記しない。"
+    },
+    {
+      "id": "N07-USER-F05",
+      "dimension": "term_semantics_missing",
+      "disposition": "APPLY",
+      "reason": "この評価観点を、根号の意味、公式の根拠、因子の判断、等式接続、黒字用語、文中数式、前結果/履歴の各surfaceに照合する。N07の固有数値は転記しない。"
+    },
+    {
+      "id": "N07-USER-F06",
+      "dimension": "math_render_omission",
+      "disposition": "APPLY",
+      "reason": "この評価観点を、根号の意味、公式の根拠、因子の判断、等式接続、黒字用語、文中数式、前結果/履歴の各surfaceに照合する。N07の固有数値は転記しない。"
+    },
+    {
+      "id": "n07-layout-relation",
+      "dimension": "layout_discomfort",
+      "disposition": "APPLY",
+      "reason": "この評価観点を、根号の意味、公式の根拠、因子の判断、等式接続、黒字用語、文中数式、前結果/履歴の各surfaceに照合する。N07の固有数値は転記しない。"
+    },
+    {
+      "id": "n07-layout-positive",
+      "dimension": "layout_style_rejection",
+      "disposition": "APPLY",
+      "reason": "この評価観点を、根号の意味、公式の根拠、因子の判断、等式接続、黒字用語、文中数式、前結果/履歴の各surfaceに照合する。N07の固有数値は転記しない。"
+    },
+    {
+      "id": "first-title-layout-positive",
+      "dimension": "layout_discomfort",
+      "disposition": "APPLY",
+      "reason": "この評価観点を、根号の意味、公式の根拠、因子の判断、等式接続、黒字用語、文中数式、前結果/履歴の各surfaceに照合する。N07の固有数値は転記しない。"
+    },
+    {
+      "id": "N07-ACCEPTED-20261025",
+      "dimension": "overall_material_acceptance",
+      "disposition": "APPLY",
+      "reason": "範囲付き全体受入を他単元や個別観点の品質ラベルへ流用せず、前結果・誘導・公開を保護する。"
+    },
+    {
+      "id": "N08-ACCEPTED-20261025",
+      "dimension": "overall_material_acceptance",
+      "disposition": "APPLY",
+      "reason": "範囲付き全体受入を他単元や個別観点の品質ラベルへ流用せず、前結果・誘導・公開を保護する。"
+    }
+  ]
+}

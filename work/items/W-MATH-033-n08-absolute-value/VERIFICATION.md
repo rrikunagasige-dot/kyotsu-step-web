@@ -1,6 +1,8 @@
+2026-10-25 current: N08本人受入済み。USER_ACCEPTANCE.json、POST_ACCEPTANCE_SWEEP.json、LEARNING_RESULT.json、FEATURE_RECEIPTS.jsonとgenerated閉鎖記録を追加。以下の受入前の記載は履歴。
+
 # N08 実装の検証 — 現在
 
-Status: PASS_BOUNDED / PUBLISHED_USER_REVIEW_PENDING
+Status: PASS_BOUNDED / DONE_ACCEPTED_AND_LEARNED
 
 承認済みP-001（83ea55bc）から生成したsource `ea47dd97f7d323267281915e8d9a7bb92a8e7c03` をCI40162373237で検証した。原12問のID/正答と原図を保持し、36node・31回答・12段階を実装。
 

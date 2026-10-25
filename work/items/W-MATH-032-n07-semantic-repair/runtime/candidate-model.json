@@ -16,7 +16,7 @@
   },
   "encoderHash": "1d0c6699c483167583c6ba00905876ddb7764a1571c359e3030515644dd3b1b9",
   "featureSchema": "learner-context-chunk-mean/1",
-  "datasetHash": "c40fa4e6556e7cb67fefee1ae8f5e713083863949ed4de735460b8ddbb608aa0",
+  "datasetHash": "e00491975e2cfff1bedf4dabf4999cbe18a2303461b4ad90a97693a397148107",
   "splitManifest": {
     "layout_discomfort": {
       "groups": [
@@ -455,7 +455,7 @@
     {
       "dimension": "overall_material_acceptance",
       "reason": "NOT_TRAINABLE_SINGLE_CLASS",
-      "rows": 1
+      "rows": 2
     },
     {
       "dimension": "prerequisite_missing",
@@ -496,7 +496,7 @@
   },
   "status": "OFFLINE_ONLY",
   "advisoryEligible": false,
-  "durationSeconds": 0.42483563399946433,
+  "durationSeconds": 22.699054647000594,
   "featureReceipts": [
     {
       "rowId": "N07-USER-F01",
@@ -587,8 +587,17 @@
       "truncated": false,
       "aggregation": "token-weighted-mean",
       "encoderHash": "1d0c6699c483167583c6ba00905876ddb7764a1571c359e3030515644dd3b1b9"
+    },
+    {
+      "rowId": "N08-ACCEPTED-20261025",
+      "inputTokens": 36599,
+      "processedTokens": 36599,
+      "chunks": 74,
+      "truncated": false,
+      "aggregation": "token-weighted-mean",
+      "encoderHash": "1d0c6699c483167583c6ba00905876ddb7764a1571c359e3030515644dd3b1b9"
     }
   ],
   "warning": "No unseen holdout; this run demonstrates learning, not production quality.",
-  "modelHash": "144ba2ed582420eacacb68212905032fa6fd32c37077a9b278e23676c5c1ac91"
+  "modelHash": "e9dcf3543404f99c3756daf5dfe76f69a987aac1aab326374432068400a43d92"
 }

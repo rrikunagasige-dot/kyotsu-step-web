@@ -1,0 +1,441 @@
+[
+  {
+    "sourceId": "word-p-000417",
+    "nodeIds": [],
+    "disposition": "structural",
+    "reason": "見出し・役割表示・次節見出し・画像位置は段階構造へ保持"
+  },
+  {
+    "sourceId": "word-p-000418",
+    "nodeIds": [],
+    "disposition": "structural",
+    "reason": "見出し・役割表示・次節見出し・画像位置は段階構造へ保持"
+  },
+  {
+    "sourceId": "word-p-000419",
+    "nodeIds": [
+      "n10-q01-square"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000420",
+    "nodeIds": [
+      "n10-q01-square"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000421",
+    "nodeIds": [
+      "n10-q01-square",
+      "n10-01"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000422",
+    "nodeIds": [
+      "n10-q02-sign",
+      "n10-02"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000423",
+    "nodeIds": [
+      "n10-02"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000424",
+    "nodeIds": [
+      "n10-q03-expand"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000425",
+    "nodeIds": [
+      "n10-q03-expand"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000426",
+    "nodeIds": [
+      "n10-q03-expand",
+      "n10-03"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000427",
+    "nodeIds": [
+      "n10-q04-sign",
+      "n10-04"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000428",
+    "nodeIds": [
+      "n10-q05-denominator"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000429",
+    "nodeIds": [
+      "n10-q05-square",
+      "n10-05"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000430",
+    "nodeIds": [
+      "n10-q06-sign",
+      "n10-06"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000431",
+    "nodeIds": [
+      "n10-06"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000432",
+    "nodeIds": [
+      "n10-06"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000433",
+    "nodeIds": [],
+    "disposition": "structural",
+    "reason": "見出し・役割表示・次節見出し・画像位置は段階構造へ保持"
+  },
+  {
+    "sourceId": "word-p-000434",
+    "nodeIds": [],
+    "disposition": "structural",
+    "reason": "見出し・役割表示・次節見出し・画像位置は段階構造へ保持"
+  },
+  {
+    "sourceId": "word-p-000435",
+    "nodeIds": [
+      "n10-q07-product"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000436",
+    "nodeIds": [
+      "n10-q07-product",
+      "n10-07"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000437",
+    "nodeIds": [
+      "n10-q08-factor",
+      "n10-08"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000438",
+    "nodeIds": [],
+    "disposition": "structural",
+    "reason": "見出し・役割表示・次節見出し・画像位置は段階構造へ保持"
+  },
+  {
+    "sourceId": "word-p-000439",
+    "nodeIds": [
+      "n10-q09-left"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000440",
+    "nodeIds": [
+      "n10-q09-left"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000441",
+    "nodeIds": [
+      "n10-q09-left",
+      "n10-q09-right",
+      "n10-09"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000442",
+    "nodeIds": [
+      "n10-q10-coefficients",
+      "n10-10"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000443",
+    "nodeIds": [],
+    "disposition": "structural",
+    "reason": "見出し・役割表示・次節見出し・画像位置は段階構造へ保持"
+  },
+  {
+    "sourceId": "word-p-000444",
+    "nodeIds": [
+      "n10-q11-formula"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000445",
+    "nodeIds": [
+      "n10-q11-formula",
+      "n10-11"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000446",
+    "nodeIds": [
+      "n10-q12-product",
+      "n10-12"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000447",
+    "nodeIds": [],
+    "disposition": "structural",
+    "reason": "見出し・役割表示・次節見出し・画像位置は段階構造へ保持"
+  },
+  {
+    "sourceId": "word-p-000448",
+    "nodeIds": [
+      "n10-q13-identity"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000449",
+    "nodeIds": [
+      "n10-q13-identity",
+      "n10-13"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000450",
+    "nodeIds": [
+      "n10-13"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000451",
+    "nodeIds": [],
+    "disposition": "structural",
+    "reason": "見出し・役割表示・次節見出し・画像位置は段階構造へ保持"
+  },
+  {
+    "sourceId": "word-p-000452",
+    "nodeIds": [],
+    "disposition": "structural",
+    "reason": "見出し・役割表示・次節見出し・画像位置は段階構造へ保持"
+  },
+  {
+    "sourceId": "word-p-000453",
+    "nodeIds": [
+      "n10-14"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000454",
+    "nodeIds": [
+      "n10-14"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000455",
+    "nodeIds": [
+      "n10-14"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000456",
+    "nodeIds": [
+      "n10-q15-factor"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000457",
+    "nodeIds": [
+      "n10-q15-factor",
+      "n10-15"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000458",
+    "nodeIds": [
+      "n10-q16-denominator",
+      "n10-16"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000459",
+    "nodeIds": [
+      "n10-16"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000460",
+    "nodeIds": [],
+    "disposition": "structural",
+    "reason": "見出し・役割表示・次節見出し・画像位置は段階構造へ保持"
+  },
+  {
+    "sourceId": "word-p-000461",
+    "nodeIds": [
+      "n10-q17-factor"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000462",
+    "nodeIds": [
+      "n10-q17-factor"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000463",
+    "nodeIds": [
+      "n10-q17-factor",
+      "n10-q17-nonzero",
+      "n10-17"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000464",
+    "nodeIds": [
+      "n10-18"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000465",
+    "nodeIds": [
+      "n10-q19-distribute",
+      "n10-19"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000466",
+    "nodeIds": [],
+    "disposition": "structural",
+    "reason": "見出し・役割表示・次節見出し・画像位置は段階構造へ保持"
+  },
+  {
+    "sourceId": "word-p-000467",
+    "nodeIds": [
+      "n10-q20-factor"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000468",
+    "nodeIds": [
+      "n10-q20-factor",
+      "n10-20"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000469",
+    "nodeIds": [
+      "n10-q21-denominator",
+      "n10-q21-expand",
+      "n10-q21-constants",
+      "n10-21"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000470",
+    "nodeIds": [
+      "n10-21"
+    ],
+    "disposition": "taught",
+    "reason": "原問・条件・無番号説明を該当nodeへ統合"
+  },
+  {
+    "sourceId": "word-p-000471",
+    "nodeIds": [],
+    "disposition": "structural",
+    "reason": "見出し・役割表示・次節見出し・画像位置は段階構造へ保持"
+  }
+]

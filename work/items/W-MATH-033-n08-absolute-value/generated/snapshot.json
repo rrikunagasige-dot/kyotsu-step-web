@@ -1,99 +1,14 @@
 {
   "work": "W-MATH-033",
   "engine_version": "1.0.0",
-  "ledger_head": "187dcf8ce6500b68403781a31fb86820836f454c72c6472b5157f11455ae5035",
-  "work_status": "VERIFYING",
+  "ledger_head": "63440b7933a942927209a5f930b8644307d2b6b1dfd1c2bc312726d5a1f5d424",
+  "work_status": "DONE",
   "profile": "material",
   "simulation": false,
   "candidate_sha": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
   "next": {
-    "status": "WAITING",
-    "reason": "USER_DECISION",
-    "task": {
-      "work_id": "W-MATH-033",
-      "node": {
-        "id": "G3_FINAL@n08",
-        "stage_kind": "G3_FINAL",
-        "contract_kind": "G3_FINAL",
-        "actor": "USER",
-        "depends_on": [
-          "G3_HOST@n08"
-        ],
-        "required": [],
-        "block": null,
-        "release_unit": "n08",
-        "watch": "integration",
-        "phase": "acceptance",
-        "priority": 0,
-        "source_refs": [],
-        "protected_refs": [
-          "src/data/textbook/math/numbers/firstSectionTeaching.json",
-          "src/data/textbook/math/numbers/n07Authored.json",
-          "src/components/textbook/N07ReadingFlow.tsx",
-          "src/components/textbook/n07-reading.css"
-        ],
-        "capability_requests": [],
-        "required_code_receipts": [],
-        "required_ai_receipts": []
-      },
-      "task_id": "f8b2fbdf523862bd5ecff6a29e1399a2102c0f35bbcc9864dbfe0ac020749d82",
-      "input_hash": "60108229534fb05c9190b9d94986768846c35f02159d4bfb9f7a7686d99d6742",
-      "source_sha": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
-      "candidate_sha": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
-      "rules": {
-        "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
-        "governance/REVIEW_POLICY.json": "a71148f007a79b124385c7645e6bc01564bfa02b12152174883543f31f6ce72d",
-        "governance/WORK_SYSTEM.md": "37b0b0e0fecc79d7c067e17ec8dbeb53d53863f04369171d65ef652a176eb093",
-        "memory/LESSONS/MATH_TYPESETTING_GROUPS.md": "8047831b13d22ffb773f68e23ab788a3490e4b69ebbf5d5d357f9f786ed53d0a",
-        "subjects/mathematics/textbook/SPEC.md": "a36959ae6f951e855c3e60d280d02a0f20c6e23185d9eb90b17ffbc889c63277"
-      },
-      "proposal": {
-        "contentDesignHash": "32f20c559bd407c777910c9ef8fb30989c31bf0ee822b5a5242f0cd7f71d318b",
-        "hash": "6a109d2c893b221900f8e09ae060cf8d05e2c2652810ff7303445cd8ff574637",
-        "id": "W-MATH-033/P-001"
-      },
-      "scope": {
-        "paths": [
-          "src/data/textbook/math/numbers/n08Lesson.ts",
-          "src/data/textbook/math/numbers/n08Authored.json",
-          "src/components/textbook/N08ReadingFlow.tsx",
-          "src/components/textbook/n08-reading.css",
-          "src/pages/TextbookUnitPage.tsx",
-          "src/domain/textbook.ts",
-          "work/items/W-MATH-033-n08-absolute-value/"
-        ],
-        "preserve": [
-          "src/data/textbook/math/numbers/firstSectionTeaching.json",
-          "src/data/textbook/math/numbers/n07Authored.json",
-          "src/components/textbook/N07ReadingFlow.tsx",
-          "src/components/textbook/n07-reading.css"
-        ]
-      },
-      "source_manifest": {
-        "public/assets/math/textbook/numbers/n08-f01.png": "817ab6ad3afb71b009cc95796e267d0818a104ecf19864c55c2ba0afbf29da73",
-        "src/data/textbook/math/numbers/n08Lesson.ts": "9cc25fb6e4c3ef3889780dea323bd98657e5dbb924bc730975375bc9adba96f9",
-        "src/data/textbook/math/numbers/newBatchGuidedSteps.ts": "501efef29948458d78c7665695c59d707ca67291daab372fa16efb5d8f15ef72",
-        "src/domain/textbook.ts": "91e354d7df28591ec95b842fc4013798c1fbd5595a095871cb0827a8d00eb466",
-        "src/pages/TextbookUnitPage.tsx": "79c2aa91ddedb0f904343852d807256c34def0f575cab72c1491332601cdf741",
-        "work/items/W-MATH-033-n08-absolute-value/evidence/SOURCE_INDEX.json": "31e49387d8fa565a45ab06f2452e052f42c6a53296449816750886ef03d5369c"
-      },
-      "previous_results": {
-        "G3_HOST@n08": {
-          "actor": "capability-runner",
-          "artifact": "c17ddaf01089347808ac0ac883192d4bdbb1655a2db7689ae7c97458a55fc49e",
-          "input_hash": "68c06af2797afc5f1f9ada53c2f0f01fac270fdc1e6618fb16ad617363531235",
-          "node": "G3_HOST@n08",
-          "verdict": "PASS"
-        }
-      },
-      "do_not_touch": [
-        "src/data/textbook/math/numbers/firstSectionTeaching.json",
-        "src/data/textbook/math/numbers/n07Authored.json",
-        "src/components/textbook/N07ReadingFlow.tsx",
-        "src/components/textbook/n07-reading.css"
-      ],
-      "completion_is_not_semantic_proof": true
-    }
+    "status": "DONE",
+    "reason": "全工程の有効な証拠を照合"
   },
   "nodes": [
     {
@@ -618,7 +533,7 @@
       "capability_requests": [],
       "required_code_receipts": [],
       "required_ai_receipts": [],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "R03_IMPACT_SWEEP@n08",
@@ -655,7 +570,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "R08_CAPTURE_LEARNING@n08",
@@ -701,7 +616,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "L01_LEARNING@n08",
@@ -742,7 +657,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "Z01_CLOSE",
@@ -768,20 +683,12 @@
       "capability_requests": [],
       "required_code_receipts": [],
       "required_ai_receipts": [],
-      "status": "PENDING"
+      "status": "PASSED"
     }
   ],
   "pending_issues": [],
-  "application_accepted": false,
-  "correction_queue": [
-    {
-      "id": "W-MATH-033",
-      "work": "W-MATH-033",
-      "version": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
-      "origin": "unfinished-correction",
-      "description": "未完了の修正Work"
-    }
-  ],
+  "application_accepted": true,
+  "correction_queue": [],
   "child_works": [],
   "capability_receipts": [
     {
@@ -1063,9 +970,29 @@
       "input_hash": "68c06af2797afc5f1f9ada53c2f0f01fac270fdc1e6618fb16ad617363531235",
       "node": "G3_HOST@n08",
       "receipt": "93bd67e3e81a98f76dbe3ad5e89a3ff74dea79a727ef5522e552eaddb0fe85ea"
+    },
+    {
+      "input_hash": "d6310ada38f84557e97bc48732b1e1569dcb05acc8831693c8fab0fc1830f54d",
+      "node": "R03_IMPACT_SWEEP@n08",
+      "receipt": "de008f720e73ce3c7e57cd1e6d76eaf075103351ff5b9872a77393d26de09f2c"
+    },
+    {
+      "input_hash": "179153510e27dc7a26e6599a33cce8eff8b3f9e08e1f3e4c8d52c355412af42a",
+      "node": "R08_CAPTURE_LEARNING@n08",
+      "receipt": "6fb746324d9604fe8fcd4e61c1ea01d2958f4ead17de13dd3dcddee05a31f04e"
+    },
+    {
+      "input_hash": "91fda439de575662cb86a99f490ceaad682fbdfcb19eb39ad5ff8ba3dd7e08e9",
+      "node": "L01_LEARNING@n08",
+      "receipt": "c8d14eb927073a34643680717fcb78ef5ee1779d81eda3490da3338f33cec035"
+    },
+    {
+      "input_hash": "91fda439de575662cb86a99f490ceaad682fbdfcb19eb39ad5ff8ba3dd7e08e9",
+      "node": "L01_LEARNING@n08",
+      "receipt": "b08714b5e794f9c393576b2f8fdc5fa62de9be3b5d9a84799d2a9d1d711330a1"
     }
   ],
   "release_acceptance": {
-    "n08": false
+    "n08": true
   }
 }

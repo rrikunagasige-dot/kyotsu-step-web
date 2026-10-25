@@ -1,0 +1,529 @@
+{
+  "kind": "argument",
+  "claim": "N10の原問と追加導出が定義・条件から成立する。",
+  "assumptions": [
+    "実数の四則と平方公式",
+    "非負の数の平方は大小を保つ",
+    "N08の条件付き絶対値規則"
+  ],
+  "sourceRefs": [
+    "word-p-000417",
+    "word-p-000418",
+    "word-p-000419",
+    "word-p-000420",
+    "word-p-000421",
+    "word-p-000422",
+    "word-p-000423",
+    "word-p-000424",
+    "word-p-000425",
+    "word-p-000426",
+    "word-p-000427",
+    "word-p-000428",
+    "word-p-000429",
+    "word-p-000430",
+    "word-p-000431",
+    "word-p-000432",
+    "word-p-000433",
+    "word-p-000434",
+    "word-p-000435",
+    "word-p-000436",
+    "word-p-000437",
+    "word-p-000438",
+    "word-p-000439",
+    "word-p-000440",
+    "word-p-000441",
+    "word-p-000442",
+    "word-p-000443",
+    "word-p-000444",
+    "word-p-000445",
+    "word-p-000446",
+    "word-p-000447",
+    "word-p-000448",
+    "word-p-000449",
+    "word-p-000450",
+    "word-p-000451",
+    "word-p-000452",
+    "word-p-000453",
+    "word-p-000454",
+    "word-p-000455",
+    "word-p-000456",
+    "word-p-000457",
+    "word-p-000458",
+    "word-p-000459",
+    "word-p-000460",
+    "word-p-000461",
+    "word-p-000462",
+    "word-p-000463",
+    "word-p-000464",
+    "word-p-000465",
+    "word-p-000466",
+    "word-p-000467",
+    "word-p-000468",
+    "word-p-000469",
+    "word-p-000470",
+    "word-p-000471"
+  ],
+  "steps": [
+    {
+      "statement": "根号は非負の値を表し、2乗すると中の数に戻ることを使います。例題は $\\sqrt{125}$ を、根号の中の数が小さい形に表すことです。$125=25\\cdot5$ なので、$t>0$ として候補 $t\\sqrt5$ を調べます。積の平方は各因子の平方の積です。ここではまだ根号の積の公式を使いません。 (t\\sqrt5)^2=t^2(\\sqrt5)^2=5t^2 元の正の平方根と等しいために、候補の平方は125である必要があります。",
+      "basisRefs": [
+        "word-p-000419",
+        "word-p-000420",
+        "word-p-000421"
+      ],
+      "dependsOn": []
+    },
+    {
+      "statement": "$5t^2=125$ の両辺を5で割ります。左の係数を1にして、右辺も同じ操作で計算します。 t^2=25 tの平方が求まりました。次は最初に置いた正の条件を使います。",
+      "basisRefs": [
+        "word-p-000421"
+      ],
+      "dependsOn": [
+        "n10-q01-square-result"
+      ]
+    },
+    {
+      "statement": "$t^2=25$ では符号が反対の二つの実数が候補になります。最初の条件 $t>0$ も満たす方を選びます。 t=5 このtを候補の式へ戻します。",
+      "basisRefs": [
+        "word-p-000422"
+      ],
+      "dependsOn": [
+        "n10-01-result"
+      ]
+    },
+    {
+      "statement": "候補は $t\\sqrt5$ でした。求めた正のtを代入します。候補は正で、平方すると125なので、125の正の平方根と等しいと確定できます。 \\sqrt{125}=5\\sqrt5 平方の値と正の符号を確認した、この手順を一般の積・商へ広げます。",
+      "basisRefs": [
+        "word-p-000422",
+        "word-p-000423"
+      ],
+      "dependsOn": [
+        "n10-q02-sign-result"
+      ]
+    },
+    {
+      "statement": "ここからは **証明** です。条件は $a>0,b>0$。$(\\sqrt a\\sqrt b)^2$ を同じ積の2回の掛け算と読み、実数の積の交換・結合で同じ因子をまとめます。 (\\sqrt a\\sqrt b)^2=(\\sqrt a)^2(\\sqrt b)^2 各因子の平方には平方根の定義を使えます。",
+      "basisRefs": [
+        "word-p-000424",
+        "word-p-000425",
+        "word-p-000426"
+      ],
+      "dependsOn": [
+        "n10-02-result"
+      ]
+    },
+    {
+      "statement": "$(\\sqrt a)^2=a$、$(\\sqrt b)^2=b$ を、いまの積へそれぞれ戻します。 (\\sqrt a\\sqrt b)^2=ab 積の平方がabであることが分かりました。符号の確認がまだ必要です。",
+      "basisRefs": [
+        "word-p-000426"
+      ],
+      "dependsOn": [
+        "n10-q03-expand-result"
+      ]
+    },
+    {
+      "statement": "$a>0,b>0$ なので、$\\sqrt a>0,\\sqrt b>0$ です。正の数どうしの積の符号を判断します。 \\sqrt a\\sqrt b\\ >\\ 0 平方の値に加え、候補が正であることも確認できました。",
+      "basisRefs": [
+        "word-p-000427"
+      ],
+      "dependsOn": [
+        "n10-03-result"
+      ]
+    },
+    {
+      "statement": "候補は正で、平方はabです。abも正なので、この二条件から正の平方根として表します。 \\sqrt a\\sqrt b=\\sqrt{ab} 条件 $a>0,b>0$ とともに積の性質を記録します。次は同じ二確認を商で行います。",
+      "basisRefs": [
+        "word-p-000427"
+      ],
+      "dependsOn": [
+        "n10-q04-sign-result"
+      ]
+    },
+    {
+      "statement": "商 $\\sqrt a/\\sqrt b$ を調べます。条件 $b>0$ から、分母の平方根は正です。割り算ができることを確認します。 \\sqrt b\\ \\ne\\ 0 分母が0でないので、商を定義して計算できます。",
+      "basisRefs": [
+        "word-p-000428"
+      ],
+      "dependsOn": [
+        "n10-04-result"
+      ]
+    },
+    {
+      "statement": "分母が0でないと確認したので、商を2回掛け、分子と分母をそれぞれ平方にまとめます。 \\left(\\frac{\\sqrt a}{\\sqrt b}\\right)^2=\\frac{(\\sqrt a)^2}{(\\sqrt b)^2} 積の証明と同じように、各平方へ定義を代入します。",
+      "basisRefs": [
+        "word-p-000429"
+      ],
+      "dependsOn": [
+        "n10-q05-denominator-result"
+      ]
+    },
+    {
+      "statement": "分子は $(\\sqrt a)^2=a$、分母は $(\\sqrt b)^2=b$ です。分子と分母の対応を保って戻します。 \\left(\\frac{\\sqrt a}{\\sqrt b}\\right)^2=\\frac ab 商の平方が求まりました。次に元の商の符号を見ます。",
+      "basisRefs": [
+        "word-p-000429"
+      ],
+      "dependsOn": [
+        "n10-q05-square-result"
+      ]
+    },
+    {
+      "statement": "$\\sqrt a,\\sqrt b$ はどちらも正です。正の数を正の数で割った商の符号を判断します。 \\frac{\\sqrt a}{\\sqrt b}\\ >\\ 0 商も正であり、平方した値と合わせて一つに決められます。",
+      "basisRefs": [
+        "word-p-000430"
+      ],
+      "dependsOn": [
+        "n10-05-result"
+      ]
+    },
+    {
+      "statement": "商は正で、平方は $a/b$ です。正の平方根の定義で根号一つにまとめます。 \\frac{\\sqrt a}{\\sqrt b}=\\sqrt{\\frac ab} 積と商の証明が終わりました。条件 $a>0,b>0$、分母が0でないこと、各候補の正の符号を、公式と一緒に記録します。",
+      "basisRefs": [
+        "word-p-000430",
+        "word-p-000431",
+        "word-p-000432"
+      ],
+      "dependsOn": [
+        "n10-q06-sign-result"
+      ]
+    },
+    {
+      "statement": "例題は $\\sqrt6\\sqrt8$ です。6と8が正なので、証明済みの積の性質を使い、根号の中の二数を掛けます。 \\sqrt6\\sqrt8=\\sqrt{48} 根号の中に、平方数の因子を探します。",
+      "basisRefs": [
+        "word-p-000435",
+        "word-p-000436"
+      ],
+      "dependsOn": [
+        "n10-06-result",
+        "n10-04-result"
+      ]
+    },
+    {
+      "statement": "$48=16\\cdot3$、$16=4^2$ を使います。元の積から、一つの根号にまとめた式と因数分解を等号でつなぎます。 \\sqrt{48}=\\sqrt{16\\cdot3} 中の平方数は、次の段階でその平方根を外へ出すために使います。",
+      "basisRefs": [
+        "word-p-000436"
+      ],
+      "dependsOn": [
+        "n10-q07-product-result",
+        "n10-04-result"
+      ]
+    },
+    {
+      "statement": "積の公式を逆に使うと $\\sqrt{16\\cdot3}=\\sqrt{16}\\sqrt3$ です。非負の平方根 $\\sqrt{16}$ を求めます。 \\sqrt{16}=4 残りの因子は根号の中に残します。",
+      "basisRefs": [
+        "word-p-000437"
+      ],
+      "dependsOn": [
+        "n10-07-result",
+        "n10-04-result"
+      ]
+    },
+    {
+      "statement": "外へ出す数と、残った $\\sqrt3$ を掛けた式で答えます。 \\sqrt6\\sqrt8=4\\sqrt3 計算記録は、積→一つの根号→平方因子→外へ出した形の連鎖です。",
+      "basisRefs": [
+        "word-p-000437"
+      ],
+      "dependsOn": [
+        "n10-q08-factor-result",
+        "n10-04-result"
+      ]
+    },
+    {
+      "statement": "例題は $\\sqrt8+\\sqrt{50}$。今回は **和** なので、積の公式で一つの根号にはできません。まず $8=4\\cdot2$ として左の項を変形します。 \\sqrt8=\\sqrt4\\sqrt2=2\\sqrt2 足し算を残したまま、右の項も変形します。",
+      "basisRefs": [
+        "word-p-000439",
+        "word-p-000440",
+        "word-p-000441"
+      ],
+      "dependsOn": [
+        "n10-08-result",
+        "n10-04-result"
+      ]
+    },
+    {
+      "statement": "$50=25\\cdot2$ を使い、平方数25の非負の平方根を外へ出します。 \\sqrt{50}=\\sqrt{25}\\sqrt2=5\\sqrt2 左右の項が、同じ根号の部分をもつ形になりました。",
+      "basisRefs": [
+        "word-p-000441"
+      ],
+      "dependsOn": [
+        "n10-q09-left-result",
+        "n10-04-result"
+      ]
+    },
+    {
+      "statement": "各項の変形を、元の足し算の位置に戻します。この段階では、まだ二項を足し合わせません。 \\sqrt8+\\sqrt{50}=2\\sqrt2+5\\sqrt2 次は共通する根号の部分を一つのまとまりとして、係数を集めます。",
+      "basisRefs": [
+        "word-p-000441"
+      ],
+      "dependsOn": [
+        "n10-q09-right-result",
+        "n10-04-result"
+      ]
+    },
+    {
+      "statement": "共通する $\\sqrt2$ を分配法則でくくると、$2\\sqrt2+5\\sqrt2=(2+5)\\sqrt2$ です。括弧の中だけを計算します。 (2+5)\\sqrt2=7\\sqrt2 根号の部分は変えずに、係数だけをまとめました。",
+      "basisRefs": [
+        "word-p-000442"
+      ],
+      "dependsOn": [
+        "n10-09-result",
+        "n10-04-result"
+      ]
+    },
+    {
+      "statement": "求めた係数と、共通していた根号の部分を合わせて元の式の答えにします。 \\sqrt8+\\sqrt{50}=7\\sqrt2 積の性質は各項の変形に使い、足し算の処理には分配法則を使いました。",
+      "basisRefs": [
+        "word-p-000442"
+      ],
+      "dependsOn": [
+        "n10-q10-coefficients-result",
+        "n10-04-result"
+      ]
+    },
+    {
+      "statement": "例題は $(\\sqrt2-\\sqrt3)^2$。既習の公式で $A=\\sqrt2,B=\\sqrt3$ と対応させます。使う公式を選びます。 (A-B)^2=A^2-2AB+B^2 選んだ公式のAとBへ、二つの根号を代入します。",
+      "basisRefs": [
+        "word-p-000444",
+        "word-p-000445"
+      ],
+      "dependsOn": [
+        "n10-10-result",
+        "n10-04-result"
+      ]
+    },
+    {
+      "statement": "$(\\sqrt2)^2=2$、$(\\sqrt3)^2=3$ です。中項の係数と符号を残し、根号の積は次の段階へ残します。 (\\sqrt2-\\sqrt3)^2=2-2\\sqrt2\\sqrt3+3 次は根号の積と、普通の数の和を別々に計算します。",
+      "basisRefs": [
+        "word-p-000445"
+      ],
+      "dependsOn": [
+        "n10-q11-formula-result",
+        "n10-04-result"
+      ]
+    },
+    {
+      "statement": "証明済みの積の性質を、中項の $\\sqrt2\\sqrt3$ に使います。外の係数 $-2$ はそのまま残します。 \\sqrt2\\sqrt3=\\sqrt6 残った普通の数は $2+3=5$ です。係数と合わせて元の式をまとめます。",
+      "basisRefs": [
+        "word-p-000446"
+      ],
+      "dependsOn": [
+        "n10-11-result",
+        "n10-04-result"
+      ]
+    },
+    {
+      "statement": "定数の和と、整理した中項を合わせます。中項の $-2$ は元の公式から残っている係数です。 (\\sqrt2-\\sqrt3)^2=5-2\\sqrt6 公式の選択→代入→根号の積→同類項の順で進めました。",
+      "basisRefs": [
+        "word-p-000446"
+      ],
+      "dependsOn": [
+        "n10-q12-product-result",
+        "n10-04-result"
+      ]
+    },
+    {
+      "statement": "例題は $(\\sqrt7+\\sqrt2)(\\sqrt7-\\sqrt2)$。$A=\\sqrt7,B=\\sqrt2$ と対応する和と差の積です。使う公式を選びます。 (A+B)(A-B)=A^2-B^2 公式へ代入すると、根号の平方だけが残ります。",
+      "basisRefs": [
+        "word-p-000448",
+        "word-p-000449"
+      ],
+      "dependsOn": [
+        "n10-12-result",
+        "n10-04-result"
+      ]
+    },
+    {
+      "statement": "$(\\sqrt7)^2-(\\sqrt2)^2$ の二つの平方を定義で置き換え、差を計算します。 (\\sqrt7+\\sqrt2)(\\sqrt7-\\sqrt2)=7-2=5 記録する道具は $(A+B)(A-B)=A^2-B^2$ です。今回の根号の和に、対応する差を掛けると根号がなくなりました。この仕組みを分母へ使います。",
+      "basisRefs": [
+        "word-p-000449",
+        "word-p-000450"
+      ],
+      "dependsOn": [
+        "n10-q13-identity-result",
+        "n10-04-result"
+      ]
+    },
+    {
+      "statement": "例題は $1/(2\\sqrt3)$ の分母の根号をなくすことです。分母だけを変えると値が変わります。$c\\ne0$ なら $c/c=1$ なので、この1を掛ける方法を文章で選びます。  $c\\ne0$ のとき $c/c=1$。分子と分母の両方へ同じ0でない数を掛けるので、元の分数と等しいまま変形できます。",
+      "basisRefs": [
+        "word-p-000453",
+        "word-p-000454",
+        "word-p-000455"
+      ],
+      "dependsOn": [
+        "n10-13-result"
+      ]
+    },
+    {
+      "statement": "分母の $\\sqrt3$ と掛けて平方を作る因子を $c$ とします。どの因子を掛けるか、$c$ の式を選びます。分母が0になる操作はできません。 c=\\sqrt3 $c=\\sqrt3$ なら、$\\sqrt3\\times\\sqrt3=(\\sqrt3)^2$ になります。また $\\sqrt3>0$ なので $c$ は0ではありません。同じ因子を分子にも分母にも掛けます。",
+      "basisRefs": [
+        "word-p-000456",
+        "word-p-000457"
+      ],
+      "dependsOn": [
+        "n10-14-result"
+      ]
+    },
+    {
+      "statement": "元の分数へ、選んだ数の「同じ数÷同じ数」を掛けます。分子と分母をそれぞれまとめ、分母では根号の二乗を残します。 \\frac1{2\\sqrt3}\\cdot\\frac{\\sqrt3}{\\sqrt3}=\\frac{\\sqrt3}{2(\\sqrt3)^2} 元の分数と等しいことを示したまま、分母の平方を計算できる形になりました。",
+      "basisRefs": [
+        "word-p-000457"
+      ],
+      "dependsOn": [
+        "n10-q15-factor-result"
+      ]
+    },
+    {
+      "statement": "分母は $2(\\sqrt3)^2$ です。根号の平方を先に計算し、元からあった係数2を掛けます。 2(\\sqrt3)^2=6 分子は変えず、求めた分母の値を戻します。",
+      "basisRefs": [
+        "word-p-000458"
+      ],
+      "dependsOn": [
+        "n10-15-result"
+      ]
+    },
+    {
+      "statement": "直前の分数で、分母だけを計算結果に置き換えます。分子にも同じ因子を掛けたことを確認します。 \\frac1{2\\sqrt3}=\\frac{\\sqrt3}{6} このように値を変えず、分母に根号のない形に直すことを **分母を有理化する** といいます。操作の根拠と名前を組にして記録します。",
+      "basisRefs": [
+        "word-p-000458",
+        "word-p-000459"
+      ],
+      "dependsOn": [
+        "n10-q16-denominator-result"
+      ]
+    },
+    {
+      "statement": "例題は $\\sqrt3/(\\sqrt3+\\sqrt2)$。分母全体を $A+B$ と見て、直前に確認した和と差の積を作る因子を選びます。 (\\sqrt3+\\sqrt2)\\times\\sqrt3-\\sqrt2 選んだ差を分子にも分母にも掛けます。その前に0でないことを確認します。",
+      "basisRefs": [
+        "word-p-000461",
+        "word-p-000462",
+        "word-p-000463"
+      ],
+      "dependsOn": [
+        "n10-16-result",
+        "n10-13-result",
+        "n10-14-result"
+      ]
+    },
+    {
+      "statement": "$3>2$ で、二つの根号は正です。非負の平方の比較から $\\sqrt3>\\sqrt2$。両辺から $\\sqrt2$ を引いて差の符号を判断します。 \\sqrt3-\\sqrt2\\ >\\ 0 この差は0でないので、同じ差を分子と分母に掛けて値を保てます。",
+      "basisRefs": [
+        "word-p-000463"
+      ],
+      "dependsOn": [
+        "n10-q17-factor-result",
+        "n10-13-result",
+        "n10-14-result"
+      ]
+    },
+    {
+      "statement": "元の分数へ、いま選んだ差を分子・分母の両方に置いた「1」を掛けます。まだ展開は行いません。 \\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt3-\\sqrt2}{\\sqrt3-\\sqrt2} 次に分母、続いて分子と、計算対象を分けて進めます。",
+      "basisRefs": [
+        "word-p-000463"
+      ],
+      "dependsOn": [
+        "n10-q17-nonzero-result",
+        "n10-13-result",
+        "n10-14-result"
+      ]
+    },
+    {
+      "statement": "分母は $(\\sqrt3+\\sqrt2)(\\sqrt3-\\sqrt2)$ です。和と差の積を平方差にしてから数の差を求めます。 (\\sqrt3+\\sqrt2)(\\sqrt3-\\sqrt2)=3-2=1 分母の値が求まりました。次は分子だけを展開します。",
+      "basisRefs": [
+        "word-p-000464"
+      ],
+      "dependsOn": [
+        "n10-17-result"
+      ]
+    },
+    {
+      "statement": "分子は $\\sqrt3(\\sqrt3-\\sqrt2)$。外の因子を、括弧内の両項へ掛けます。 \\sqrt3(\\sqrt3-\\sqrt2)=\\sqrt3\\sqrt3-\\sqrt3\\sqrt2 平方と根号の積をそれぞれ計算し、分母の結果と合わせます。",
+      "basisRefs": [
+        "word-p-000465"
+      ],
+      "dependsOn": [
+        "n10-18-result",
+        "n10-17-result"
+      ]
+    },
+    {
+      "statement": "分子の最初の積は $3$、二つ目の積は $\\sqrt6$ です。分母は直前に求めた $1$ なので、分子の差がそのまま全体の値になります。 \\frac{\\sqrt3}{\\sqrt3+\\sqrt2}=3-\\sqrt6 元の分数→1を掛ける→分母と分子の計算→最終形を、同じ等式記録として残します。",
+      "basisRefs": [
+        "word-p-000465"
+      ],
+      "dependsOn": [
+        "n10-q19-distribute-result",
+        "n10-17-result"
+      ]
+    },
+    {
+      "statement": "例題は $(2-\\sqrt3)/(2+\\sqrt3)$ の有理化です。分母全体が和なので、平方差を作る因子を自分で選びます。 (2+\\sqrt3)\\times2-\\sqrt3 $2^2=4>3$ と $2,\\sqrt3>0$ から、選んだ差は正で0ではありません。分子・分母へ同じ差を掛けられます。",
+      "basisRefs": [
+        "word-p-000467",
+        "word-p-000468"
+      ],
+      "dependsOn": [
+        "n10-19-result",
+        "n10-13-result",
+        "n10-14-result"
+      ]
+    },
+    {
+      "statement": "分子は同じ差どうしの積になり、分母は和と差の積になります。分母を平方差へ移した段階まで書きます。 \\frac{(2-\\sqrt3)^2}{(2+\\sqrt3)(2-\\sqrt3)}=\\frac{(2-\\sqrt3)^2}{4-3} 次は、分母と分子を別々に計算します。",
+      "basisRefs": [
+        "word-p-000468"
+      ],
+      "dependsOn": [
+        "n10-q20-factor-result",
+        "n10-13-result",
+        "n10-14-result"
+      ]
+    },
+    {
+      "statement": "直前の分母 $4-3$ を計算します。分子の平方は次の段階に残します。 4-3=1 分母が1なので、分子を計算すれば全体の値が決まります。",
+      "basisRefs": [
+        "word-p-000469"
+      ],
+      "dependsOn": [
+        "n10-20-result",
+        "n10-13-result",
+        "n10-14-result"
+      ]
+    },
+    {
+      "statement": "分子は $(2-\\sqrt3)^2$。先ほど使った差の平方の公式へ $A=2,B=\\sqrt3$ を入れます。 (2-\\sqrt3)^2=4-4\\sqrt3+3 根号を含む項を残し、普通の数どうしを集めます。",
+      "basisRefs": [
+        "word-p-000469"
+      ],
+      "dependsOn": [
+        "n10-q21-denominator-result",
+        "n10-20-result",
+        "n10-q11-formula-result"
+      ]
+    },
+    {
+      "statement": "$4-4\\sqrt3+3$ の普通の数は $4$ と $3$。加法の交換・結合でまとめます。 (4+3)-4\\sqrt3=7-4\\sqrt3 分母1と合わせて、元の有理化の答えをまとめます。",
+      "basisRefs": [
+        "word-p-000469"
+      ],
+      "dependsOn": [
+        "n10-q21-expand-result",
+        "n10-20-result",
+        "n10-q21-denominator-result",
+        "n10-q11-formula-result"
+      ]
+    },
+    {
+      "statement": "分母が1で、分子の計算も終わりました。元の分数に等しい最終形を選びます。 \\frac{2-\\sqrt3}{2+\\sqrt3}=7-4\\sqrt3 掛ける因子の判断、0でない条件、分母の処理、分子の展開を順に進めました。次の不等式では、変形で保つ対象を等しさから大小へ広げます。",
+      "basisRefs": [
+        "word-p-000469",
+        "word-p-000470"
+      ],
+      "dependsOn": [
+        "n10-q21-constants-result",
+        "n10-20-result",
+        "n10-q21-denominator-result",
+        "n10-q11-formula-result"
+      ]
+    }
+  ]
+}

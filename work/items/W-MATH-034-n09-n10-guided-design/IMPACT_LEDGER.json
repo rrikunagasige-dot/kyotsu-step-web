@@ -1,0 +1,195 @@
+{
+  "phase": "pre-design",
+  "rows": [
+    {
+      "originFinding": "N09/N10 compressed source operations and persistent state",
+      "rootCauseSignature": "guided-root-equivalence-and-conditions",
+      "artifact": "src/data/textbook/math/numbers/n09Lesson.ts",
+      "version": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
+      "approvedCreationWork": "W-MATH-003 and W-MATH-009 original scope retained",
+      "block_id": "n09",
+      "evidence_refs": [
+        "e9908cf1-6d77-483f-961b-00a0ea554e76",
+        "9a01a70c-6307-4d7e-8c42-48577ff3d1fc",
+        "51785582-2285-4c47-9816-014dbb777f6c",
+        "efc1292c-7596-42d3-b00c-7d62dce4c2a3",
+        "8900c02e-cc0c-4fb4-864d-bb04508a23dc",
+        "36577a5c-d5d9-476b-b540-41892ba50983",
+        "f168a962-2686-467a-9564-45ee12893fe4",
+        "147110e4-6ce0-4f36-b1ce-1d5a5d904c83"
+      ],
+      "status": "AFFECTED",
+      "phase": "pre-design",
+      "resolution": "Own two lesson repairs are in this proposal; shared adapters need bounded integration, source image retained"
+    },
+    {
+      "originFinding": "N09/N10 compressed source operations and persistent state",
+      "rootCauseSignature": "guided-root-equivalence-and-conditions",
+      "artifact": "src/domain/textbook.ts",
+      "version": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
+      "approvedCreationWork": "W-MATH-003 and W-MATH-009 original scope retained",
+      "block_id": "n09",
+      "evidence_refs": [
+        "e9908cf1-6d77-483f-961b-00a0ea554e76",
+        "9a01a70c-6307-4d7e-8c42-48577ff3d1fc",
+        "51785582-2285-4c47-9816-014dbb777f6c",
+        "efc1292c-7596-42d3-b00c-7d62dce4c2a3",
+        "8900c02e-cc0c-4fb4-864d-bb04508a23dc",
+        "36577a5c-d5d9-476b-b540-41892ba50983",
+        "f168a962-2686-467a-9564-45ee12893fe4",
+        "147110e4-6ce0-4f36-b1ce-1d5a5d904c83"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "pre-design",
+      "resolution": "Own two lesson repairs are in this proposal; shared adapters need bounded integration, source image retained"
+    },
+    {
+      "originFinding": "N09/N10 compressed source operations and persistent state",
+      "rootCauseSignature": "guided-root-equivalence-and-conditions",
+      "artifact": "src/pages/TextbookUnitPage.tsx",
+      "version": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
+      "approvedCreationWork": "W-MATH-003 and W-MATH-009 original scope retained",
+      "block_id": "n09",
+      "evidence_refs": [
+        "e9908cf1-6d77-483f-961b-00a0ea554e76",
+        "9a01a70c-6307-4d7e-8c42-48577ff3d1fc",
+        "51785582-2285-4c47-9816-014dbb777f6c",
+        "efc1292c-7596-42d3-b00c-7d62dce4c2a3",
+        "8900c02e-cc0c-4fb4-864d-bb04508a23dc",
+        "36577a5c-d5d9-476b-b540-41892ba50983",
+        "f168a962-2686-467a-9564-45ee12893fe4",
+        "147110e4-6ce0-4f36-b1ce-1d5a5d904c83"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "pre-design",
+      "resolution": "Own two lesson repairs are in this proposal; shared adapters need bounded integration, source image retained"
+    },
+    {
+      "originFinding": "N09/N10 compressed source operations and persistent state",
+      "rootCauseSignature": "guided-root-equivalence-and-conditions",
+      "artifact": "work/items/W-MATH-034-n09-n10-guided-design/evidence/N09_SOURCE_INDEX.json",
+      "version": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
+      "approvedCreationWork": "W-MATH-003 and W-MATH-009 original scope retained",
+      "block_id": "n09",
+      "evidence_refs": [
+        "e9908cf1-6d77-483f-961b-00a0ea554e76",
+        "9a01a70c-6307-4d7e-8c42-48577ff3d1fc",
+        "51785582-2285-4c47-9816-014dbb777f6c",
+        "efc1292c-7596-42d3-b00c-7d62dce4c2a3",
+        "8900c02e-cc0c-4fb4-864d-bb04508a23dc",
+        "36577a5c-d5d9-476b-b540-41892ba50983",
+        "f168a962-2686-467a-9564-45ee12893fe4",
+        "147110e4-6ce0-4f36-b1ce-1d5a5d904c83"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "pre-design",
+      "resolution": "Own two lesson repairs are in this proposal; shared adapters need bounded integration, source image retained"
+    },
+    {
+      "originFinding": "N09/N10 compressed source operations and persistent state",
+      "rootCauseSignature": "guided-root-equivalence-and-conditions",
+      "artifact": "public/assets/math/textbook/numbers/n09-f01.png",
+      "version": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
+      "approvedCreationWork": "W-MATH-003 and W-MATH-009 original scope retained",
+      "block_id": "n09",
+      "evidence_refs": [
+        "e9908cf1-6d77-483f-961b-00a0ea554e76",
+        "9a01a70c-6307-4d7e-8c42-48577ff3d1fc",
+        "51785582-2285-4c47-9816-014dbb777f6c",
+        "efc1292c-7596-42d3-b00c-7d62dce4c2a3",
+        "8900c02e-cc0c-4fb4-864d-bb04508a23dc",
+        "36577a5c-d5d9-476b-b540-41892ba50983",
+        "f168a962-2686-467a-9564-45ee12893fe4",
+        "147110e4-6ce0-4f36-b1ce-1d5a5d904c83"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "pre-design",
+      "resolution": "Own two lesson repairs are in this proposal; shared adapters need bounded integration, source image retained"
+    },
+    {
+      "originFinding": "N09/N10 compressed source operations and persistent state",
+      "rootCauseSignature": "guided-root-equivalence-and-conditions",
+      "artifact": "src/data/textbook/math/numbers/n10Lesson.ts",
+      "version": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
+      "approvedCreationWork": "W-MATH-003 and W-MATH-009 original scope retained",
+      "block_id": "n10",
+      "evidence_refs": [
+        "e9908cf1-6d77-483f-961b-00a0ea554e76",
+        "9a01a70c-6307-4d7e-8c42-48577ff3d1fc",
+        "51785582-2285-4c47-9816-014dbb777f6c",
+        "efc1292c-7596-42d3-b00c-7d62dce4c2a3",
+        "8900c02e-cc0c-4fb4-864d-bb04508a23dc",
+        "36577a5c-d5d9-476b-b540-41892ba50983",
+        "f168a962-2686-467a-9564-45ee12893fe4",
+        "147110e4-6ce0-4f36-b1ce-1d5a5d904c83"
+      ],
+      "status": "AFFECTED",
+      "phase": "pre-design",
+      "resolution": "Own two lesson repairs are in this proposal; shared adapters need bounded integration, source image retained"
+    },
+    {
+      "originFinding": "N09/N10 compressed source operations and persistent state",
+      "rootCauseSignature": "guided-root-equivalence-and-conditions",
+      "artifact": "src/domain/textbook.ts",
+      "version": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
+      "approvedCreationWork": "W-MATH-003 and W-MATH-009 original scope retained",
+      "block_id": "n10",
+      "evidence_refs": [
+        "e9908cf1-6d77-483f-961b-00a0ea554e76",
+        "9a01a70c-6307-4d7e-8c42-48577ff3d1fc",
+        "51785582-2285-4c47-9816-014dbb777f6c",
+        "efc1292c-7596-42d3-b00c-7d62dce4c2a3",
+        "8900c02e-cc0c-4fb4-864d-bb04508a23dc",
+        "36577a5c-d5d9-476b-b540-41892ba50983",
+        "f168a962-2686-467a-9564-45ee12893fe4",
+        "147110e4-6ce0-4f36-b1ce-1d5a5d904c83"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "pre-design",
+      "resolution": "Own two lesson repairs are in this proposal; shared adapters need bounded integration, source image retained"
+    },
+    {
+      "originFinding": "N09/N10 compressed source operations and persistent state",
+      "rootCauseSignature": "guided-root-equivalence-and-conditions",
+      "artifact": "src/pages/TextbookUnitPage.tsx",
+      "version": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
+      "approvedCreationWork": "W-MATH-003 and W-MATH-009 original scope retained",
+      "block_id": "n10",
+      "evidence_refs": [
+        "e9908cf1-6d77-483f-961b-00a0ea554e76",
+        "9a01a70c-6307-4d7e-8c42-48577ff3d1fc",
+        "51785582-2285-4c47-9816-014dbb777f6c",
+        "efc1292c-7596-42d3-b00c-7d62dce4c2a3",
+        "8900c02e-cc0c-4fb4-864d-bb04508a23dc",
+        "36577a5c-d5d9-476b-b540-41892ba50983",
+        "f168a962-2686-467a-9564-45ee12893fe4",
+        "147110e4-6ce0-4f36-b1ce-1d5a5d904c83"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "pre-design",
+      "resolution": "Own two lesson repairs are in this proposal; shared adapters need bounded integration, source image retained"
+    },
+    {
+      "originFinding": "N09/N10 compressed source operations and persistent state",
+      "rootCauseSignature": "guided-root-equivalence-and-conditions",
+      "artifact": "work/items/W-MATH-034-n09-n10-guided-design/evidence/N10_SOURCE_INDEX.json",
+      "version": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
+      "approvedCreationWork": "W-MATH-003 and W-MATH-009 original scope retained",
+      "block_id": "n10",
+      "evidence_refs": [
+        "e9908cf1-6d77-483f-961b-00a0ea554e76",
+        "9a01a70c-6307-4d7e-8c42-48577ff3d1fc",
+        "51785582-2285-4c47-9816-014dbb777f6c",
+        "efc1292c-7596-42d3-b00c-7d62dce4c2a3",
+        "8900c02e-cc0c-4fb4-864d-bb04508a23dc",
+        "36577a5c-d5d9-476b-b540-41892ba50983",
+        "f168a962-2686-467a-9564-45ee12893fe4",
+        "147110e4-6ce0-4f36-b1ce-1d5a5d904c83"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "pre-design",
+      "resolution": "Own two lesson repairs are in this proposal; shared adapters need bounded integration, source image retained"
+    }
+  ],
+  "unresolved": []
+}

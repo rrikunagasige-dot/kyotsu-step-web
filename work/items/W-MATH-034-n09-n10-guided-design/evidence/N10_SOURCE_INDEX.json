@@ -1,0 +1,943 @@
+{
+  "schemaVersion": 1,
+  "documentHash": "93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa",
+  "unit": "N10",
+  "pandocVersion": "pandoc 3.1.3",
+  "warnings": "",
+  "unassignedMath": [],
+  "blocks": [
+    {
+      "id": "word-p-000417",
+      "locator": "word/document.xml:p[417]",
+      "text": "N10　平方根の計算を、定義と既習の公式につなぐ",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "heading"
+    },
+    {
+      "id": "word-p-000418",
+      "locator": "word/document.xml:p[418]",
+      "text": "例題",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000419",
+      "locator": "word/document.xml:p[419]",
+      "text": " を、根号の中の数を小さくして表そう。 であることを使う。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "0cca0c23665d9d985d40ac705b64c8d6a6471332a91773840f0b964ec52c824e",
+          "fractions": 0,
+          "radicals": 1,
+          "superscripts": 0
+        },
+        {
+          "sha256": "7cb7181b71f275b7259589b5343cd0b7a74efca93f46bb8c270f84718a8bd193",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\sqrt{125}"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "125 = 25 \\cdot 5"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000420",
+      "locator": "word/document.xml:p[420]",
+      "text": "先生　「答えを （）の形で探してみます。この候補が本当に  なら、2乗した値はどうなるはずですか。」",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "f66ea8e331ec83af819a0ee68c55d1943af50c6f5b97353b66fd0cfce11ca5f3",
+          "fractions": 0,
+          "radicals": 1,
+          "superscripts": 0
+        },
+        {
+          "sha256": "de737c9a3ef8d137c94c3f454b745f1db01cd7563dfc0e7643606cd68a51fe64",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "0cca0c23665d9d985d40ac705b64c8d6a6471332a91773840f0b964ec52c824e",
+          "fractions": 0,
+          "radicals": 1,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "t\\sqrt{5}"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "t > 0"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "\\sqrt{125}"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000421",
+      "locator": "word/document.xml:p[421]",
+      "text": "【1】  を計算し、 が満たす等式を書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        1
+      ],
+      "mathStructures": [
+        {
+          "sha256": "71465fbb13c77a8073be22e7b36131d9702e2544220050041ab3988a53a02476",
+          "fractions": 0,
+          "radicals": 1,
+          "superscripts": 1
+        },
+        {
+          "sha256": "ec2a8e6e4c552fb9841caff8f9c964b1e053e6e26067ad5e6531613ee1f50b43",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\left( t\\sqrt{5} \\right)^{2}"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "t"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000422",
+      "locator": "word/document.xml:p[422]",
+      "text": "【2】  の条件も使って  を決め、 を表そう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        2
+      ],
+      "mathStructures": [
+        {
+          "sha256": "de737c9a3ef8d137c94c3f454b745f1db01cd7563dfc0e7643606cd68a51fe64",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "ec2a8e6e4c552fb9841caff8f9c964b1e053e6e26067ad5e6531613ee1f50b43",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "0cca0c23665d9d985d40ac705b64c8d6a6471332a91773840f0b964ec52c824e",
+          "fractions": 0,
+          "radicals": 1,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "t > 0"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "t"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "\\sqrt{125}"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000423",
+      "locator": "word/document.xml:p[423]",
+      "text": "平方すると125になり、しかも正である。この二つを確かめたので、125の正の平方根と等しいと言える。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000424",
+      "locator": "word/document.xml:p[424]",
+      "text": "証明",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000425",
+      "locator": "word/document.xml:p[425]",
+      "text": " として、 の性質を調べる。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "bb8abffed91ca9a141e6f7a1543665e643ec10fa9c37ed58081e5d78a7d6196a",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        },
+        {
+          "sha256": "e9ec4cf2f29e7460487141bbb3a088b1d6be85d6e5e34b2526daf5645f90378d",
+          "fractions": 0,
+          "radicals": 2,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "a > 0,b > 0"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "\\sqrt{a}\\sqrt{b}"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000426",
+      "locator": "word/document.xml:p[426]",
+      "text": "【3】  を、平方根の定義と積の計算法則だけで計算しよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        3
+      ],
+      "mathStructures": [
+        {
+          "sha256": "f297d4b19df15afd6fb43cd1104dad765552de9708c04ff0e9db09e0433a4c54",
+          "fractions": 0,
+          "radicals": 2,
+          "superscripts": 1
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\left( \\sqrt{a}\\sqrt{b} \\right)^{2}"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000427",
+      "locator": "word/document.xml:p[427]",
+      "text": "【4】  の符号を確認し、どの平方根と等しいか式で書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        4
+      ],
+      "mathStructures": [
+        {
+          "sha256": "e9ec4cf2f29e7460487141bbb3a088b1d6be85d6e5e34b2526daf5645f90378d",
+          "fractions": 0,
+          "radicals": 2,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\sqrt{a}\\sqrt{b}"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000428",
+      "locator": "word/document.xml:p[428]",
+      "text": "商  についても、同じ二つの確認を行う。 だから分母は0ではない。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "139bd5b947f50199babad913f646e646b645de1444548b65a0ebf31d50177220",
+          "fractions": 0,
+          "radicals": 2,
+          "superscripts": 0
+        },
+        {
+          "sha256": "8c166d6e9f68fae960e6e9a92c5fb12c1e2fd40e4368971a8ac1f9ad7b286939",
+          "fractions": 0,
+          "radicals": 0,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\sqrt{a}/\\sqrt{b}"
+        },
+        {
+          "display": "InlineMath",
+          "latex": "b > 0"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000429",
+      "locator": "word/document.xml:p[429]",
+      "text": "【5】 商の平方を計算しよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        5
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000430",
+      "locator": "word/document.xml:p[430]",
+      "text": "【6】 商の符号を使って、根号一つの式で表そう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        6
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000431",
+      "locator": "word/document.xml:p[431]",
+      "text": "",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "e7f6a56df766af03128552e7018baf5fc03daeeec27a116ba6b107c3fa2aa060",
+          "fractions": 2,
+          "radicals": 6,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\sqrt{a}\\sqrt{b} = \\sqrt{ab},\\quad\\quad\\frac{\\sqrt{a}}{\\sqrt{b}} = \\sqrt{\\frac{a}{b}}\\quad(a > 0,\\ b > 0)"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000432",
+      "locator": "word/document.xml:p[432]",
+      "text": "積と商の関係は、平方根の定義から確かめられた。次はこれを使って、根号の中の平方数を外へ出す。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000433",
+      "locator": "word/document.xml:p[433]",
+      "text": "足し算に、そのまま積の法則を使ってよいか",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000434",
+      "locator": "word/document.xml:p[434]",
+      "text": "確認",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000435",
+      "locator": "word/document.xml:p[435]",
+      "text": " を簡単にしよう。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "2aab2d4b40f8bd38a193e5385e67de5c2a39775c7e0dbab3284c68b342ead91c",
+          "fractions": 0,
+          "radicals": 2,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\sqrt{6}\\sqrt{8}"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000436",
+      "locator": "word/document.xml:p[436]",
+      "text": "【7】 積の関係を使って根号一つにし、中を平方数と残りの積に分けよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        7
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000437",
+      "locator": "word/document.xml:p[437]",
+      "text": "【8】 根号の中を小さくした形で答えよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        8
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000438",
+      "locator": "word/document.xml:p[438]",
+      "text": "例題",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000439",
+      "locator": "word/document.xml:p[439]",
+      "text": " を簡単にしよう。前の題では根号同士を掛けたが、今回は足している。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "70d468d9d3ad196b7180146b0b2bf3462d8ae73ca1ee021b096b4bd4de7ec8ba",
+          "fractions": 0,
+          "radicals": 2,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\sqrt{8} + \\sqrt{50}"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000440",
+      "locator": "word/document.xml:p[440]",
+      "text": "花子　「積を一つの根号にまとめられても、足し算まで同じにしてよいとは限らないね。」",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000441",
+      "locator": "word/document.xml:p[441]",
+      "text": "【9】 二つの項をそれぞれ簡単にし、足し算はまだ残して書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        9
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000442",
+      "locator": "word/document.xml:p[442]",
+      "text": "【10】 同じまとまりをもつ項を集め、結果を書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        10
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000443",
+      "locator": "word/document.xml:p[443]",
+      "text": "確認",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000444",
+      "locator": "word/document.xml:p[444]",
+      "text": " を計算しよう。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "8f780398cb7cf77a184328e658aed1bfc74e7ecf3492329aa69eabcd4ae924b7",
+          "fractions": 0,
+          "radicals": 2,
+          "superscripts": 1
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\left( \\sqrt{2} - \\sqrt{3} \\right)^{2}"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000445",
+      "locator": "word/document.xml:p[445]",
+      "text": "【11】 使う乗法公式の形を思い出し、根号の積を整理する前まで展開しよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        11
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000446",
+      "locator": "word/document.xml:p[446]",
+      "text": "【12】 平方根の積と同類項を整理して答えよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        12
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000447",
+      "locator": "word/document.xml:p[447]",
+      "text": "確認",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000448",
+      "locator": "word/document.xml:p[448]",
+      "text": " を計算しよう。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "2da4974bf09a4092453f70ec87f2a987d1b83e82745d8fa5f42152d446175fcf",
+          "fractions": 0,
+          "radicals": 4,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\left( \\sqrt{7} + \\sqrt{2} \\right)\\left( \\sqrt{7} - \\sqrt{2} \\right)"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000449",
+      "locator": "word/document.xml:p[449]",
+      "text": "【13】 和と差の積を使い、根号がなくなるところまで計算しよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        13
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000450",
+      "locator": "word/document.xml:p[450]",
+      "text": "根号を含む数でも、実数の計算法則は同じである。今のように根号がなくなる積は、分数の表し方を整えるときにも使える。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000451",
+      "locator": "word/document.xml:p[451]",
+      "text": "分数の値を変えずに、分母の根号をなくす",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000452",
+      "locator": "word/document.xml:p[452]",
+      "text": "例題",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000453",
+      "locator": "word/document.xml:p[453]",
+      "text": " の分母から根号をなくしたい。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "c442a161e3ba176738d17bf8666215bbea5c5c2afd351a697220f351a039fd8c",
+          "fractions": 1,
+          "radicals": 1,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\frac{1}{2\\sqrt{3}}"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000454",
+      "locator": "word/document.xml:p[454]",
+      "text": "花子　「分母だけを変えたら、分数の値も変わってしまうよね。」",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000455",
+      "locator": "word/document.xml:p[455]",
+      "text": "【14】 同じ0でない数を掛けて値を保つには、分子と分母をどう扱うか答えよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        14
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000456",
+      "locator": "word/document.xml:p[456]",
+      "text": "先生　「分母の  を平方にできる因子を選び、その因子を分子にも掛けてください。」",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "1cc50bb0b31f829e43b76998fa3d4f29f1f8ce6865a68597cc5fb1f9dcd2467f",
+          "fractions": 0,
+          "radicals": 1,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\sqrt{3}"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000457",
+      "locator": "word/document.xml:p[457]",
+      "text": "【15】 掛ける因子を選び、掛けた直後の分数を書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        15
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000458",
+      "locator": "word/document.xml:p[458]",
+      "text": "【16】 分母を計算し、分数を簡単にしよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        16
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000459",
+      "locator": "word/document.xml:p[459]",
+      "text": "このように、分数の値を変えずに分母に根号がない形へ直すことを、分母を有理化するという。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000460",
+      "locator": "word/document.xml:p[460]",
+      "text": "例題",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000461",
+      "locator": "word/document.xml:p[461]",
+      "text": "次に  を有理化しよう。分母に和がある。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "eb093740a5df48c74216a140deeb4e72279abe2813fb5ba7953a8a71a51e951a",
+          "fractions": 1,
+          "radicals": 3,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\frac{\\sqrt{3}}{\\sqrt{3} + \\sqrt{2}}"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000462",
+      "locator": "word/document.xml:p[462]",
+      "text": "先生　「先ほど、二つの平方根の和にどのような式を掛けると、平方の差になりましたか。分母全体を一つの積として考えます。」",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000463",
+      "locator": "word/document.xml:p[463]",
+      "text": "【17】 分子・分母に掛ける因子を選び、その因子を含む分数を書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        17
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000464",
+      "locator": "word/document.xml:p[464]",
+      "text": "【18】 まず分母だけを計算しよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        18
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000465",
+      "locator": "word/document.xml:p[465]",
+      "text": "【19】 次に分子を展開し、分数全体の答えを書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        19
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000466",
+      "locator": "word/document.xml:p[466]",
+      "text": "確認",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000467",
+      "locator": "word/document.xml:p[467]",
+      "text": " を有理化する。",
+      "markers": [],
+      "mathStructures": [
+        {
+          "sha256": "0144963e0c1cf801e857bf0ebebe52e6c3a71faf61dae80291e245345ed6c6fc",
+          "fractions": 1,
+          "radicals": 2,
+          "superscripts": 0
+        }
+      ],
+      "math": [
+        {
+          "display": "InlineMath",
+          "latex": "\\frac{2 - \\sqrt{3}}{2 + \\sqrt{3}}"
+        }
+      ],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000468",
+      "locator": "word/document.xml:p[468]",
+      "text": "【20】 掛ける因子を自分で選び、掛けた直後の分数を書こう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        20
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000469",
+      "locator": "word/document.xml:p[469]",
+      "text": "【21】 分母と分子をそれぞれ計算し、答えを完成させよう。［　　　　　　　　　　　　　　　　］",
+      "markers": [
+        21
+      ],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000470",
+      "locator": "word/document.xml:p[470]",
+      "text": "有理化でも、掛ける因子を選ぶ判断、分母の処理、分子の計算を分けて進めた。次は等式ではなく大小関係を扱い、変形によって何が保たれるかを調べる。",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000471",
+      "locator": "word/document.xml:p[471]",
+      "text": "第3節　1次不等式",
+      "markers": [],
+      "mathStructures": [],
+      "math": [],
+      "images": [],
+      "extractionStatus": "PASS",
+      "kind": "explanation"
+    }
+  ],
+  "status": "PASS",
+  "semanticFidelity": "REQUIRES_SOURCE_REVIEW"
+}

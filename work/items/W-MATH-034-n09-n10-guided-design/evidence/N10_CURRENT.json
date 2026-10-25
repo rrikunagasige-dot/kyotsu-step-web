@@ -1,0 +1,1241 @@
+{
+  "sourceSHA": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
+  "unit": {
+    "schemaVersion": "1.1",
+    "unitId": "math-numbers-expressions-n10",
+    "revision": 1,
+    "status": "review",
+    "subject": "math-1a",
+    "chapter": {
+      "chapterId": "math-ch01-numbers-expressions",
+      "chapterNumber": "1",
+      "chapterTitle": "数と式",
+      "unitCode": "1NUM",
+      "orderInChapter": 10,
+      "sourcePages": [
+        24,
+        25,
+        26
+      ]
+    },
+    "title": "平方根の証明と有理化",
+    "subtitle": "二乗と符号を確かめ、分数の値を保ったまま根号を扱う。",
+    "source": {
+      "type": "reference",
+      "label": "ユーザー提供「数と式」教科書モード対話段階導入版 v2 / N10",
+      "rightsNote": "教師編集WordのN10原問21件を照合したレビュー用新規学習本文。元の解答別冊未提供・独立数学監査。出版社ガイドの再配布許諾は確認されていない。"
+    },
+    "objectives": [
+      "平方根の積・商の性質を、二乗と符号の両方から確かめる",
+      "根号の積と和を区別して式を計算する",
+      "等価な分数操作と共役を使って分母を有理化する"
+    ],
+    "sections": [
+      {
+        "id": "lesson",
+        "number": "10",
+        "title": "本文",
+        "description": "根号を変形する根拠を証明し、有理化へ応用する。",
+        "role": "concept",
+        "figures": [],
+        "readingFlow": [
+          {
+            "id": "heading-roots",
+            "type": "heading",
+            "text": "根号を簡単にするとき、何を確かめるか"
+          },
+          {
+            "id": "marker-root-example",
+            "type": "marker",
+            "kind": "example",
+            "text": "例題"
+          },
+          {
+            "id": "paragraph-root-example",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "\\sqrt{125}"
+              },
+              {
+                "type": "text",
+                "text": " を根号の中の数が小さくなる形に直そう。"
+              },
+              {
+                "type": "math",
+                "latex": "125=25\\cdot5"
+              },
+              {
+                "type": "text",
+                "text": " である。"
+              },
+              {
+                "type": "math",
+                "latex": "t>0"
+              },
+              {
+                "type": "text",
+                "text": " として、"
+              },
+              {
+                "type": "math",
+                "latex": "t\\sqrt5"
+              },
+              {
+                "type": "text",
+                "text": " という形を考える。もし "
+              },
+              {
+                "type": "math",
+                "latex": "\\sqrt{125}=t\\sqrt5"
+              },
+              {
+                "type": "text",
+                "text": " なら、両辺を2乗した値は一致するはずだ。"
+              }
+            ]
+          },
+          {
+            "id": "formula-n10-01",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "(t\\sqrt5)^2=5t^2=125\\quad\\Longrightarrow\\quad"
+              },
+              {
+                "type": "choice",
+                "itemId": "n10-01"
+              }
+            ]
+          },
+          {
+            "id": "paragraph-root-sign",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "この等式から "
+              },
+              {
+                "type": "math",
+                "latex": "t"
+              },
+              {
+                "type": "text",
+                "text": " を一つに決めるには、"
+              },
+              {
+                "type": "math",
+                "latex": "t>0"
+              },
+              {
+                "type": "text",
+                "text": " の条件も使う。すると、"
+              }
+            ]
+          },
+          {
+            "id": "formula-n10-02",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "\\sqrt{125}="
+              },
+              {
+                "type": "choice",
+                "itemId": "n10-02"
+              }
+            ]
+          },
+          {
+            "id": "paragraph-root-after",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "「2乗すると125になる」だけでなく、「正である」ことも確かめた。正の数の平方根を一つに決めるために、この二つの条件が必要になる。"
+              }
+            ]
+          },
+          {
+            "id": "marker-root-proof",
+            "type": "marker",
+            "kind": "proof",
+            "text": "証明"
+          },
+          {
+            "id": "paragraph-proof-product",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "a>0,\\ b>0"
+              },
+              {
+                "type": "text",
+                "text": " とする。"
+              },
+              {
+                "type": "math",
+                "latex": "\\sqrt a\\sqrt b"
+              },
+              {
+                "type": "text",
+                "text": " と "
+              },
+              {
+                "type": "math",
+                "latex": "\\sqrt{ab}"
+              },
+              {
+                "type": "text",
+                "text": " の関係を、平方根の意味から調べよう。まず積の2乗は、"
+              }
+            ]
+          },
+          {
+            "id": "formula-n10-03",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "(\\sqrt a\\sqrt b)^2=(\\sqrt a)^2(\\sqrt b)^2="
+              },
+              {
+                "type": "choice",
+                "itemId": "n10-03"
+              }
+            ]
+          },
+          {
+            "id": "paragraph-proof-product-sign",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "しかし2乗の値が同じだけでは、正負どちらかを区別できない。"
+              },
+              {
+                "type": "math",
+                "latex": "\\sqrt a"
+              },
+              {
+                "type": "text",
+                "text": " と "
+              },
+              {
+                "type": "math",
+                "latex": "\\sqrt b"
+              },
+              {
+                "type": "text",
+                "text": " はそれぞれ正なので、その積も正である。これで"
+              }
+            ]
+          },
+          {
+            "id": "formula-n10-04",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "\\sqrt a\\sqrt b="
+              },
+              {
+                "type": "choice",
+                "itemId": "n10-04"
+              }
+            ]
+          },
+          {
+            "id": "paragraph-proof-quotient",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "続いて、商 "
+              },
+              {
+                "type": "math",
+                "latex": "\\frac{\\sqrt a}{\\sqrt b}"
+              },
+              {
+                "type": "text",
+                "text": " を調べよう。"
+              },
+              {
+                "type": "math",
+                "latex": "b>0"
+              },
+              {
+                "type": "text",
+                "text": " だから "
+              },
+              {
+                "type": "math",
+                "latex": "\\sqrt b\\ne0"
+              },
+              {
+                "type": "text",
+                "text": " であり、商が定義できる。2乗して、"
+              }
+            ]
+          },
+          {
+            "id": "formula-n10-05",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "\\left(\\frac{\\sqrt a}{\\sqrt b}\\right)^2=\\frac{(\\sqrt a)^2}{(\\sqrt b)^2}="
+              },
+              {
+                "type": "choice",
+                "itemId": "n10-05"
+              }
+            ]
+          },
+          {
+            "id": "paragraph-proof-quotient-sign",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "商も正であることを合わせると、"
+              }
+            ]
+          },
+          {
+            "id": "formula-n10-06",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "\\frac{\\sqrt a}{\\sqrt b}="
+              },
+              {
+                "type": "choice",
+                "itemId": "n10-06"
+              },
+              {
+                "type": "math",
+                "latex": "\\qquad(a>0,\\ b>0)"
+              }
+            ]
+          },
+          {
+            "id": "paragraph-proof-after",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "ここまでが"
+              },
+              {
+                "type": "term",
+                "text": "証明"
+              },
+              {
+                "type": "text",
+                "text": "である。どちらも「候補の2乗」と「候補の符号」を確認してから結論を出した。次の例題ではこの関係を道具として使う。"
+              }
+            ]
+          },
+          {
+            "id": "marker-root-check",
+            "type": "marker",
+            "kind": "check",
+            "text": "確認"
+          },
+          {
+            "id": "paragraph-product-check",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "\\sqrt6\\sqrt8"
+              },
+              {
+                "type": "text",
+                "text": " を簡単にしよう。まず一つの根号にして、根号の内側から平方数を見つけると、"
+              }
+            ]
+          },
+          {
+            "id": "formula-n10-07",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "\\sqrt6\\sqrt8="
+              },
+              {
+                "type": "choice",
+                "itemId": "n10-07"
+              }
+            ],
+            "derivationId": "root-product"
+          },
+          {
+            "id": "formula-n10-08",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "="
+              },
+              {
+                "type": "choice",
+                "itemId": "n10-08"
+              }
+            ],
+            "derivationId": "root-product"
+          },
+          {
+            "id": "marker-sum-example",
+            "type": "marker",
+            "kind": "example",
+            "text": "例題"
+          },
+          {
+            "id": "paragraph-sum-intro",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "\\sqrt8+\\sqrt{50}"
+              },
+              {
+                "type": "text",
+                "text": " を考えよう。いま扱っているのは積ではなく"
+              },
+              {
+                "type": "term",
+                "text": "和"
+              },
+              {
+                "type": "text",
+                "text": "である。積の法則をそのまま足し算へ移さず、それぞれの項を簡単にしてみよう。"
+              }
+            ]
+          },
+          {
+            "id": "formula-n10-09",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "\\sqrt8+\\sqrt{50}="
+              },
+              {
+                "type": "choice",
+                "itemId": "n10-09"
+              }
+            ],
+            "derivationId": "root-sum"
+          },
+          {
+            "id": "formula-n10-10",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "="
+              },
+              {
+                "type": "choice",
+                "itemId": "n10-10"
+              }
+            ],
+            "derivationId": "root-sum"
+          },
+          {
+            "id": "paragraph-sum-after",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "同じ根号の部分が残れば、以前に学んだ同類項のように数の係数を足せる。"
+              }
+            ]
+          },
+          {
+            "id": "marker-formula-check",
+            "type": "marker",
+            "kind": "check",
+            "text": "確認"
+          },
+          {
+            "id": "paragraph-square-intro",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "乗法公式も、根号を含む数に使える。"
+              },
+              {
+                "type": "math",
+                "latex": "(\\sqrt2-\\sqrt3)^2"
+              },
+              {
+                "type": "text",
+                "text": " をまず平方の公式で展開すると、"
+              }
+            ]
+          },
+          {
+            "id": "formula-n10-11",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "(\\sqrt2-\\sqrt3)^2="
+              },
+              {
+                "type": "choice",
+                "itemId": "n10-11"
+              }
+            ],
+            "derivationId": "root-square"
+          },
+          {
+            "id": "formula-n10-12",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "="
+              },
+              {
+                "type": "choice",
+                "itemId": "n10-12"
+              }
+            ],
+            "derivationId": "root-square"
+          },
+          {
+            "id": "paragraph-difference-squares",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "さらに "
+              },
+              {
+                "type": "math",
+                "latex": "(\\sqrt7+\\sqrt2)(\\sqrt7-\\sqrt2)"
+              },
+              {
+                "type": "text",
+                "text": " では、和と差の積に注目しよう。"
+              }
+            ]
+          },
+          {
+            "id": "formula-n10-13",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "(\\sqrt7+\\sqrt2)(\\sqrt7-\\sqrt2)="
+              },
+              {
+                "type": "choice",
+                "itemId": "n10-13"
+              }
+            ]
+          },
+          {
+            "id": "paragraph-difference-after",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "二つの数の和と差を掛け合わせると、真ん中の交差する項が打ち消し合う。この仕組みを次の分数に利用する。"
+              }
+            ]
+          },
+          {
+            "id": "heading-rationalize",
+            "type": "heading",
+            "text": "分数の値を保って、分母の根号をなくす"
+          },
+          {
+            "id": "marker-rationalize-example",
+            "type": "marker",
+            "kind": "example",
+            "text": "例題"
+          },
+          {
+            "id": "paragraph-rationalize-intro",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "\\dfrac1{2\\sqrt3}"
+              },
+              {
+                "type": "text",
+                "text": " の分母から根号をなくしたい。ただし分母だけを書き換えると元の分数とは異なる値になってしまう。"
+              },
+              {
+                "type": "text",
+                "text": "分母を変える前に、分子と分母の比を保つ操作を確認しよう。それは "
+              },
+              {
+                "type": "choice",
+                "itemId": "n10-14"
+              },
+              {
+                "type": "text",
+                "text": "。"
+              }
+            ]
+          },
+          {
+            "id": "paragraph-rationalize-multiplier",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "分母の "
+              },
+              {
+                "type": "math",
+                "latex": "\\sqrt3"
+              },
+              {
+                "type": "text",
+                "text": " と掛けて平方数を作る因子を選ぼう。"
+              }
+            ]
+          },
+          {
+            "id": "formula-n10-15",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "\\frac1{2\\sqrt3}="
+              },
+              {
+                "type": "choice",
+                "itemId": "n10-15"
+              }
+            ],
+            "derivationId": "root-rationalize-one"
+          },
+          {
+            "id": "formula-n10-16",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "="
+              },
+              {
+                "type": "choice",
+                "itemId": "n10-16"
+              }
+            ],
+            "derivationId": "root-rationalize-one"
+          },
+          {
+            "id": "paragraph-rationalize-concept",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "このように分数の値を変えずに分母の根号をなくすことを、"
+              },
+              {
+                "type": "term",
+                "text": "分母を有理化する"
+              },
+              {
+                "type": "text",
+                "text": "という。"
+              }
+            ]
+          },
+          {
+            "id": "marker-conjugate-example",
+            "type": "marker",
+            "kind": "example",
+            "text": "例題"
+          },
+          {
+            "id": "paragraph-conjugate-intro",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "次は "
+              },
+              {
+                "type": "math",
+                "latex": "\\dfrac{\\sqrt3}{\\sqrt3+\\sqrt2}"
+              },
+              {
+                "type": "text",
+                "text": " である。分母が和の形なので、ただ "
+              },
+              {
+                "type": "math",
+                "latex": "\\sqrt3"
+              },
+              {
+                "type": "text",
+                "text": " を掛けても根号が一つ残る。直前の「和と差の積」の性質を思い出そう。"
+              }
+            ]
+          },
+          {
+            "id": "formula-n10-17",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}="
+              },
+              {
+                "type": "choice",
+                "itemId": "n10-17"
+              }
+            ]
+          },
+          {
+            "id": "paragraph-conjugate-denominator",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "分母は"
+              }
+            ]
+          },
+          {
+            "id": "formula-n10-18",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "(\\sqrt3+\\sqrt2)(\\sqrt3-\\sqrt2)="
+              },
+              {
+                "type": "choice",
+                "itemId": "n10-18"
+              }
+            ]
+          },
+          {
+            "id": "paragraph-conjugate-result",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "分子も展開して分数全体を完成させると、"
+              }
+            ]
+          },
+          {
+            "id": "formula-n10-19",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "="
+              },
+              {
+                "type": "choice",
+                "itemId": "n10-19"
+              }
+            ]
+          },
+          {
+            "id": "paragraph-conjugate-after",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "ここでも掛けた "
+              },
+              {
+                "type": "math",
+                "latex": "\\sqrt3-\\sqrt2"
+              },
+              {
+                "type": "text",
+                "text": " は0でないので、分数の値は確かに保たれている。"
+              }
+            ]
+          },
+          {
+            "id": "marker-rationalize-check",
+            "type": "marker",
+            "kind": "check",
+            "text": "確認"
+          },
+          {
+            "id": "paragraph-rationalize-transfer",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "\\dfrac{2-\\sqrt3}{2+\\sqrt3}"
+              },
+              {
+                "type": "text",
+                "text": " は自分で有理化しよう。使う因子を選び、掛けた直後の式を作る。"
+              }
+            ]
+          },
+          {
+            "id": "formula-n10-20",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "\\frac{2-\\sqrt3}{2+\\sqrt3}="
+              },
+              {
+                "type": "choice",
+                "itemId": "n10-20"
+              }
+            ],
+            "derivationId": "root-rationalize-transfer"
+          },
+          {
+            "id": "formula-n10-21",
+            "type": "formula",
+            "parts": [
+              {
+                "type": "math",
+                "latex": "="
+              },
+              {
+                "type": "choice",
+                "itemId": "n10-21"
+              }
+            ],
+            "derivationId": "root-rationalize-transfer"
+          },
+          {
+            "id": "paragraph-rationalize-final",
+            "type": "paragraph",
+            "parts": [
+              {
+                "type": "text",
+                "text": "同じ操作でも、今度は分子の平方を最後まで計算する必要がある。根号の計算も、これまでの積・商、乗法公式、正負条件を組み合わせて成り立っている。"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "n10-01",
+            "label": "N10-01",
+            "prompt": "2乗後の等式をtについて整理しよう。",
+            "answer": "t^2=25",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "t^2=25",
+              "t=25",
+              "t^2=125",
+              "t^2=5"
+            ],
+            "purpose": "causal-reasoning",
+            "scaffoldLevel": "strong",
+            "hints": [
+              "5t²=125の両辺を5で割る。"
+            ]
+          },
+          {
+            "id": "n10-02",
+            "label": "N10-02",
+            "prompt": "tの正の条件も使って√125を表そう。",
+            "answer": "5\\sqrt5",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "5\\sqrt5",
+              "-5\\sqrt5",
+              "25\\sqrt5",
+              "5\\sqrt{25}"
+            ],
+            "purpose": "concept-formation",
+            "scaffoldLevel": "strong",
+            "hints": [
+              "t²の値だけでは正負が決まらない。"
+            ]
+          },
+          {
+            "id": "n10-03",
+            "label": "N10-03",
+            "prompt": "積の2乗を計算しよう。",
+            "answer": "ab",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "ab",
+              "a+b",
+              "\\sqrt{ab}",
+              "a^2b^2"
+            ],
+            "purpose": "representation-link",
+            "scaffoldLevel": "strong",
+            "hints": [
+              "それぞれの正の平方根を2乗する。"
+            ]
+          },
+          {
+            "id": "n10-04",
+            "label": "N10-04",
+            "prompt": "2乗と正であることの両方から積を特定しよう。",
+            "answer": "\\sqrt{ab}",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "\\sqrt{ab}",
+              "-\\sqrt{ab}",
+              "ab",
+              "\\sqrt a+\\sqrt b"
+            ],
+            "purpose": "causal-reasoning",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "2乗の値に加え、元の積の符号も確かめる。"
+            ]
+          },
+          {
+            "id": "n10-05",
+            "label": "N10-05",
+            "prompt": "分母が0でないことを確かめ、商を2乗しよう。",
+            "answer": "\\frac ab",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "\\frac ab",
+              "\\frac ba",
+              "\\sqrt{\\frac ab}",
+              "ab"
+            ],
+            "purpose": "representation-link",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "各根号を2乗し、分子と分母を分けて計算する。"
+            ]
+          },
+          {
+            "id": "n10-06",
+            "label": "N10-06",
+            "prompt": "正の商に対応する平方根を選ぼう。",
+            "answer": "\\sqrt{\\frac ab}",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "\\sqrt{\\frac ab}",
+              "-\\sqrt{\\frac ab}",
+              "\\frac ab",
+              "\\sqrt a\\sqrt b"
+            ],
+            "purpose": "causal-reasoning",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "分子も分母も正の数の平方根である。"
+            ]
+          },
+          {
+            "id": "n10-07",
+            "label": "N10-07",
+            "prompt": "一つの根号にまとめ、平方数を探そう。",
+            "answer": "\\sqrt{48}=\\sqrt{16\\cdot3}",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "\\sqrt{48}=\\sqrt{16\\cdot3}",
+              "\\sqrt{14}",
+              "\\sqrt{48}=\\sqrt{8\\cdot8}",
+              "\\sqrt{48}=\\sqrt{16\\cdot2}"
+            ],
+            "purpose": "representation-link",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "まず根号の中の数どうしを掛けよう。得られた数を、できるだけ大きい平方数と残りの因子の積に分けよう。"
+            ]
+          },
+          {
+            "id": "n10-08",
+            "label": "N10-08",
+            "prompt": "根号の外に平方数の根を出そう。",
+            "answer": "4\\sqrt3",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "4\\sqrt3",
+              "16\\sqrt3",
+              "4\\sqrt{12}",
+              "8\\sqrt3"
+            ],
+            "purpose": "transfer",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "前の式で見つけた平方数が、何を二乗した数か確かめよう。その平方根を根号の外へ出し、残りの因子は根号の中に残そう。"
+            ]
+          },
+          {
+            "id": "n10-09",
+            "label": "N10-09",
+            "prompt": "和の各項を別々に簡単にしよう。",
+            "answer": "2\\sqrt2+5\\sqrt2",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "2\\sqrt2+5\\sqrt2",
+              "\\sqrt{58}",
+              "2\\sqrt2+25\\sqrt2",
+              "2\\sqrt2+5\\sqrt{10}"
+            ],
+            "purpose": "representation-link",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "積の法則を和にそのまま適用してはいけない。"
+            ]
+          },
+          {
+            "id": "n10-10",
+            "label": "N10-10",
+            "prompt": "同じ√2の係数をまとめよう。",
+            "answer": "7\\sqrt2",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "7\\sqrt2",
+              "7\\sqrt4",
+              "7\\sqrt{2+2}",
+              "3\\sqrt2"
+            ],
+            "purpose": "transfer",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "同じ根号が残るとき、係数だけを足す。"
+            ]
+          },
+          {
+            "id": "n10-11",
+            "label": "N10-11",
+            "prompt": "平方公式の中項まで全て展開しよう。",
+            "answer": "2-2\\sqrt2\\sqrt3+3",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "2-2\\sqrt2\\sqrt3+3",
+              "2+2\\sqrt2\\sqrt3+3",
+              "2-\\sqrt2\\sqrt3+3",
+              "2-2\\sqrt2\\sqrt3+9"
+            ],
+            "purpose": "representation-link",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "(A−B)²の中項は−2ABとなる。"
+            ]
+          },
+          {
+            "id": "n10-12",
+            "label": "N10-12",
+            "prompt": "根号を掛け、定数を整理しよう。",
+            "answer": "5-2\\sqrt6",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "5-2\\sqrt6",
+              "5+2\\sqrt6",
+              "5-\\sqrt6",
+              "6-2\\sqrt6"
+            ],
+            "purpose": "transfer",
+            "scaffoldLevel": "light",
+            "hints": [
+              "2と3の和、√2と√3の積を別々に処理する。"
+            ]
+          },
+          {
+            "id": "n10-13",
+            "label": "N10-13",
+            "prompt": "和と差の積を計算しよう。",
+            "answer": "7-2=5",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "7-2=5",
+              "7+2=9",
+              "7-\\sqrt{14}",
+              "7-4=3"
+            ],
+            "purpose": "transfer",
+            "scaffoldLevel": "light",
+            "hints": [
+              "(A+B)(A−B)では交差する項が消える。"
+            ]
+          },
+          {
+            "id": "n10-14",
+            "label": "N10-14",
+            "prompt": "分数の値を保つ操作を選ぼう。",
+            "answer": "0でない同じ数を分子・分母の両方に掛ける",
+            "acceptedAnswers": [],
+            "answerType": "text",
+            "choices": [
+              "0でない同じ数を分子・分母の両方に掛ける",
+              "分母だけに同じ数を掛ける",
+              "分子だけに平方根を足す",
+              "分母から根号をそのまま消す"
+            ],
+            "purpose": "concept-formation",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "分子・分母の比が変わらない操作を考える。"
+            ]
+          },
+          {
+            "id": "n10-15",
+            "label": "N10-15",
+            "prompt": "√3を使って値を変えずに有理化しよう。",
+            "answer": "\\frac1{2\\sqrt3}\\cdot\\frac{\\sqrt3}{\\sqrt3}=\\frac{\\sqrt3}{2(\\sqrt3)^2}",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "\\frac1{2\\sqrt3}\\cdot\\frac{\\sqrt3}{\\sqrt3}=\\frac{\\sqrt3}{2(\\sqrt3)^2}",
+              "\\frac1{2\\sqrt3}\\cdot\\sqrt3",
+              "\\frac1{2\\sqrt3}\\cdot\\frac3{\\sqrt3}",
+              "\\frac1{2\\sqrt3}\\cdot\\frac{\\sqrt2}{\\sqrt2}"
+            ],
+            "purpose": "representation-link",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "分母の√3と掛けて整数になる同じ因子を両方へ掛ける。"
+            ]
+          },
+          {
+            "id": "n10-16",
+            "label": "N10-16",
+            "prompt": "分母の(√3)²を数に直そう。",
+            "answer": "\\frac{\\sqrt3}{6}",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "\\frac{\\sqrt3}{6}",
+              "\\frac{\\sqrt3}{2}",
+              "\\frac3{6}",
+              "\\frac1{6\\sqrt3}"
+            ],
+            "purpose": "transfer",
+            "scaffoldLevel": "medium",
+            "hints": [
+              "(√3)²は3なので分母全体はどうなる？"
+            ]
+          },
+          {
+            "id": "n10-17",
+            "label": "N10-17",
+            "prompt": "和の分母を和差の積にする因子を選ぼう。",
+            "answer": "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt3-\\sqrt2}{\\sqrt3-\\sqrt2}",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt3-\\sqrt2}{\\sqrt3-\\sqrt2}",
+              "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt3+\\sqrt2}{\\sqrt3+\\sqrt2}",
+              "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt3}{\\sqrt3}",
+              "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt2}{\\sqrt2}"
+            ],
+            "purpose": "representation-link",
+            "scaffoldLevel": "light",
+            "hints": [
+              "分母が(A+B)なら(A−B)を掛けると平方差になる。"
+            ]
+          },
+          {
+            "id": "n10-18",
+            "label": "N10-18",
+            "prompt": "共役を掛けた分母の値を選ぼう。",
+            "answer": "3-2=1",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "3-2=1",
+              "3+2=5",
+              "3-\\sqrt6",
+              "\\sqrt3-\\sqrt2"
+            ],
+            "purpose": "transfer",
+            "scaffoldLevel": "light",
+            "hints": [
+              "積の中項は消え、二つの平方だけが残る。"
+            ]
+          },
+          {
+            "id": "n10-19",
+            "label": "N10-19",
+            "prompt": "分子にも因子を掛け、最後まで整理しよう。",
+            "answer": "3-\\sqrt6",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "3-\\sqrt6",
+              "3+\\sqrt6",
+              "1-\\sqrt6",
+              "3-2\\sqrt6"
+            ],
+            "purpose": "transfer",
+            "scaffoldLevel": "light",
+            "hints": [
+              "分子の√3を括弧内の両項に掛ける。"
+            ]
+          },
+          {
+            "id": "n10-20",
+            "label": "N10-20",
+            "prompt": "共役因子を選び、掛けた直後の分数を作ろう。",
+            "answer": "\\frac{(2-\\sqrt3)^2}{(2+\\sqrt3)(2-\\sqrt3)}=\\frac{(2-\\sqrt3)^2}{4-3}",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "\\frac{(2-\\sqrt3)^2}{(2+\\sqrt3)(2-\\sqrt3)}=\\frac{(2-\\sqrt3)^2}{4-3}",
+              "\\frac{(2-\\sqrt3)^2}{(2+\\sqrt3)^2}",
+              "\\frac{2-\\sqrt3}{2+\\sqrt3}\\cdot\\frac{2+\\sqrt3}{2+\\sqrt3}",
+              "\\frac{(2-\\sqrt3)^2}{4+3}"
+            ],
+            "purpose": "transfer",
+            "scaffoldLevel": "light",
+            "hints": [
+              "分母の和に対して差を掛け、分子にも同じ差を掛ける。"
+            ]
+          },
+          {
+            "id": "n10-21",
+            "label": "N10-21",
+            "prompt": "分子の平方を計算して最終結果を選ぼう。",
+            "answer": "7-4\\sqrt3",
+            "acceptedAnswers": [],
+            "answerType": "formula",
+            "choices": [
+              "7-4\\sqrt3",
+              "7+4\\sqrt3",
+              "7-2\\sqrt3",
+              "1-4\\sqrt3"
+            ],
+            "purpose": "transfer",
+            "scaffoldLevel": "light",
+            "hints": [
+              "平方公式の中項−2ABも忘れず計算する。"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

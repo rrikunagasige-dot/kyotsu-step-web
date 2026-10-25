@@ -1,0 +1,2749 @@
+{
+  "schemaVersion": "production-ir/1",
+  "unitId": "math-numbers-expressions-n10",
+  "subject": "math",
+  "mode": "textbook",
+  "sourceHash": "93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa",
+  "sourceBlocks": [
+    {
+      "id": "word-p-000417",
+      "kind": "heading"
+    },
+    {
+      "id": "word-p-000418",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000419",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000420",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000421",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000422",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000423",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000424",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000425",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000426",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000427",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000428",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000429",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000430",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000431",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000432",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000433",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000434",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000435",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000436",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000437",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000438",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000439",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000440",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000441",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000442",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000443",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000444",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000445",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000446",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000447",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000448",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000449",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000450",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000451",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000452",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000453",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000454",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000455",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000456",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000457",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000458",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000459",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000460",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000461",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000462",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000463",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000464",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000465",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000466",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000467",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000468",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000469",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000470",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000471",
+      "kind": "explanation"
+    }
+  ],
+  "coverage": [
+    {
+      "sourceId": "word-p-000417",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000418",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000419",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000420",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000421",
+      "nodeIds": [
+        "n10-01"
+      ],
+      "disposition": "taught",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000422",
+      "nodeIds": [
+        "n10-02"
+      ],
+      "disposition": "taught",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000423",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000424",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000425",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000426",
+      "nodeIds": [
+        "n10-03"
+      ],
+      "disposition": "taught",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000427",
+      "nodeIds": [
+        "n10-04"
+      ],
+      "disposition": "taught",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000428",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000429",
+      "nodeIds": [
+        "n10-05"
+      ],
+      "disposition": "taught",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000430",
+      "nodeIds": [
+        "n10-06"
+      ],
+      "disposition": "taught",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000431",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000432",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000433",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000434",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000435",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000436",
+      "nodeIds": [
+        "n10-07"
+      ],
+      "disposition": "taught",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000437",
+      "nodeIds": [
+        "n10-08"
+      ],
+      "disposition": "taught",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000438",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000439",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000440",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000441",
+      "nodeIds": [
+        "n10-09"
+      ],
+      "disposition": "taught",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000442",
+      "nodeIds": [
+        "n10-10"
+      ],
+      "disposition": "taught",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000443",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000444",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000445",
+      "nodeIds": [
+        "n10-11"
+      ],
+      "disposition": "taught",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000446",
+      "nodeIds": [
+        "n10-12"
+      ],
+      "disposition": "taught",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000447",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000448",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000449",
+      "nodeIds": [
+        "n10-13"
+      ],
+      "disposition": "taught",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000450",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000451",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000452",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000453",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000454",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000455",
+      "nodeIds": [
+        "n10-14"
+      ],
+      "disposition": "taught",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000456",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000457",
+      "nodeIds": [
+        "n10-15"
+      ],
+      "disposition": "taught",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000458",
+      "nodeIds": [
+        "n10-16"
+      ],
+      "disposition": "taught",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000459",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000460",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000461",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000462",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000463",
+      "nodeIds": [
+        "n10-17"
+      ],
+      "disposition": "taught",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000464",
+      "nodeIds": [
+        "n10-18"
+      ],
+      "disposition": "taught",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000465",
+      "nodeIds": [
+        "n10-19"
+      ],
+      "disposition": "taught",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000466",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000467",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000468",
+      "nodeIds": [
+        "n10-20"
+      ],
+      "disposition": "taught",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000469",
+      "nodeIds": [
+        "n10-21"
+      ],
+      "disposition": "taught",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000470",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    },
+    {
+      "sourceId": "word-p-000471",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧採点prompt/choicesの診断投影のみ。無番号説明の本文監査はCURRENT.jsonと原Wordで別に行う。"
+    }
+  ],
+  "initialFacts": [
+    "real-arithmetic",
+    "square-identities",
+    "n08-absolute-value-cases",
+    "nonnegative-square-order"
+  ],
+  "nodes": [
+    {
+      "id": "n10-01",
+      "problemId": "n10",
+      "sourceRefs": [
+        "word-p-000421"
+      ],
+      "requires": [],
+      "produces": [
+        "n10-01-old-result"
+      ],
+      "role": "check",
+      "goal": "2乗後の等式をtについて整理しよう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000421"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n10-01-old-prompt",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-01-old-text",
+              "kind": "text",
+              "text": "2乗後の等式をtについて整理しよう。"
+            },
+            {
+              "id": "n10-01-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n10-01",
+              "semanticRef": "n10-01"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n10-01-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-01-old-hint",
+              "kind": "text",
+              "text": "5t²=125の両辺を5で割る。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n10-01",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "2乗後の等式をtについて整理しよう。",
+        "prerequisiteIds": [],
+        "expected": {
+          "value": "t^2=25",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n10-01-choice-0",
+            "content": "t^2=25",
+            "feedback": "5t²=125の両辺を5で割る。"
+          },
+          {
+            "id": "n10-01-choice-1",
+            "content": "t=25",
+            "feedback": "5t²=125の両辺を5で割る。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-01-choice-2",
+            "content": "t^2=125",
+            "feedback": "5t²=125の両辺を5で割る。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-01-choice-3",
+            "content": "t^2=5",
+            "feedback": "5t²=125の両辺を5で割る。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          }
+        ],
+        "hints": [
+          "5t²=125の両辺を5で割る。"
+        ],
+        "answerInsertion": {
+          "blockId": "n10-01-old-prompt",
+          "slotId": "n10-01-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n10-02",
+      "problemId": "n10",
+      "sourceRefs": [
+        "word-p-000422"
+      ],
+      "requires": [
+        "n10-01-old-result"
+      ],
+      "produces": [
+        "n10-02-old-result"
+      ],
+      "role": "check",
+      "goal": "tの正の条件も使って√125を表そう。",
+      "purpose": "concept-formation",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000422"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n10-02-old-prompt",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-02-old-text",
+              "kind": "text",
+              "text": "tの正の条件も使って√125を表そう。"
+            },
+            {
+              "id": "n10-02-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n10-02",
+              "semanticRef": "n10-02"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n10-02-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-02-old-hint",
+              "kind": "text",
+              "text": "t²の値だけでは正負が決まらない。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n10-02",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "tの正の条件も使って√125を表そう。",
+        "prerequisiteIds": [
+          "n10-01-old-result"
+        ],
+        "expected": {
+          "value": "5\\sqrt5",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n10-02-choice-0",
+            "content": "5\\sqrt5",
+            "feedback": "t²の値だけでは正負が決まらない。"
+          },
+          {
+            "id": "n10-02-choice-1",
+            "content": "-5\\sqrt5",
+            "feedback": "t²の値だけでは正負が決まらない。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-02-choice-2",
+            "content": "25\\sqrt5",
+            "feedback": "t²の値だけでは正負が決まらない。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-02-choice-3",
+            "content": "5\\sqrt{25}",
+            "feedback": "t²の値だけでは正負が決まらない。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          }
+        ],
+        "hints": [
+          "t²の値だけでは正負が決まらない。"
+        ],
+        "answerInsertion": {
+          "blockId": "n10-02-old-prompt",
+          "slotId": "n10-02-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n10-03",
+      "problemId": "n10",
+      "sourceRefs": [
+        "word-p-000426"
+      ],
+      "requires": [
+        "n10-02-old-result"
+      ],
+      "produces": [
+        "n10-03-old-result"
+      ],
+      "role": "check",
+      "goal": "積の2乗を計算しよう。",
+      "purpose": "representation-link",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000426"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n10-03-old-prompt",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-03-old-text",
+              "kind": "text",
+              "text": "積の2乗を計算しよう。"
+            },
+            {
+              "id": "n10-03-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n10-03",
+              "semanticRef": "n10-03"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n10-03-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-03-old-hint",
+              "kind": "text",
+              "text": "それぞれの正の平方根を2乗する。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n10-03",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "積の2乗を計算しよう。",
+        "prerequisiteIds": [
+          "n10-02-old-result"
+        ],
+        "expected": {
+          "value": "ab",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n10-03-choice-0",
+            "content": "ab",
+            "feedback": "それぞれの正の平方根を2乗する。"
+          },
+          {
+            "id": "n10-03-choice-1",
+            "content": "a+b",
+            "feedback": "それぞれの正の平方根を2乗する。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-03-choice-2",
+            "content": "\\sqrt{ab}",
+            "feedback": "それぞれの正の平方根を2乗する。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-03-choice-3",
+            "content": "a^2b^2",
+            "feedback": "それぞれの正の平方根を2乗する。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          }
+        ],
+        "hints": [
+          "それぞれの正の平方根を2乗する。"
+        ],
+        "answerInsertion": {
+          "blockId": "n10-03-old-prompt",
+          "slotId": "n10-03-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n10-04",
+      "problemId": "n10",
+      "sourceRefs": [
+        "word-p-000427"
+      ],
+      "requires": [
+        "n10-03-old-result"
+      ],
+      "produces": [
+        "n10-04-old-result"
+      ],
+      "role": "check",
+      "goal": "2乗と正であることの両方から積を特定しよう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000427"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n10-04-old-prompt",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-04-old-text",
+              "kind": "text",
+              "text": "2乗と正であることの両方から積を特定しよう。"
+            },
+            {
+              "id": "n10-04-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n10-04",
+              "semanticRef": "n10-04"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n10-04-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-04-old-hint",
+              "kind": "text",
+              "text": "2乗の値に加え、元の積の符号も確かめる。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n10-04",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "2乗と正であることの両方から積を特定しよう。",
+        "prerequisiteIds": [
+          "n10-03-old-result"
+        ],
+        "expected": {
+          "value": "\\sqrt{ab}",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n10-04-choice-0",
+            "content": "\\sqrt{ab}",
+            "feedback": "2乗の値に加え、元の積の符号も確かめる。"
+          },
+          {
+            "id": "n10-04-choice-1",
+            "content": "-\\sqrt{ab}",
+            "feedback": "2乗の値に加え、元の積の符号も確かめる。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-04-choice-2",
+            "content": "ab",
+            "feedback": "2乗の値に加え、元の積の符号も確かめる。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-04-choice-3",
+            "content": "\\sqrt a+\\sqrt b",
+            "feedback": "2乗の値に加え、元の積の符号も確かめる。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          }
+        ],
+        "hints": [
+          "2乗の値に加え、元の積の符号も確かめる。"
+        ],
+        "answerInsertion": {
+          "blockId": "n10-04-old-prompt",
+          "slotId": "n10-04-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n10-05",
+      "problemId": "n10",
+      "sourceRefs": [
+        "word-p-000429"
+      ],
+      "requires": [
+        "n10-04-old-result"
+      ],
+      "produces": [
+        "n10-05-old-result"
+      ],
+      "role": "check",
+      "goal": "分母が0でないことを確かめ、商を2乗しよう。",
+      "purpose": "representation-link",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000429"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n10-05-old-prompt",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-05-old-text",
+              "kind": "text",
+              "text": "分母が0でないことを確かめ、商を2乗しよう。"
+            },
+            {
+              "id": "n10-05-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n10-05",
+              "semanticRef": "n10-05"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n10-05-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-05-old-hint",
+              "kind": "text",
+              "text": "各根号を2乗し、分子と分母を分けて計算する。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n10-05",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "分母が0でないことを確かめ、商を2乗しよう。",
+        "prerequisiteIds": [
+          "n10-04-old-result"
+        ],
+        "expected": {
+          "value": "\\frac ab",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n10-05-choice-0",
+            "content": "\\frac ab",
+            "feedback": "各根号を2乗し、分子と分母を分けて計算する。"
+          },
+          {
+            "id": "n10-05-choice-1",
+            "content": "\\frac ba",
+            "feedback": "各根号を2乗し、分子と分母を分けて計算する。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-05-choice-2",
+            "content": "\\sqrt{\\frac ab}",
+            "feedback": "各根号を2乗し、分子と分母を分けて計算する。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-05-choice-3",
+            "content": "ab",
+            "feedback": "各根号を2乗し、分子と分母を分けて計算する。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          }
+        ],
+        "hints": [
+          "各根号を2乗し、分子と分母を分けて計算する。"
+        ],
+        "answerInsertion": {
+          "blockId": "n10-05-old-prompt",
+          "slotId": "n10-05-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n10-06",
+      "problemId": "n10",
+      "sourceRefs": [
+        "word-p-000430"
+      ],
+      "requires": [
+        "n10-05-old-result"
+      ],
+      "produces": [
+        "n10-06-old-result"
+      ],
+      "role": "check",
+      "goal": "正の商に対応する平方根を選ぼう。",
+      "purpose": "causal-reasoning",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000430"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n10-06-old-prompt",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-06-old-text",
+              "kind": "text",
+              "text": "正の商に対応する平方根を選ぼう。"
+            },
+            {
+              "id": "n10-06-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n10-06",
+              "semanticRef": "n10-06"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n10-06-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-06-old-hint",
+              "kind": "text",
+              "text": "分子も分母も正の数の平方根である。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n10-06",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "正の商に対応する平方根を選ぼう。",
+        "prerequisiteIds": [
+          "n10-05-old-result"
+        ],
+        "expected": {
+          "value": "\\sqrt{\\frac ab}",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n10-06-choice-0",
+            "content": "\\sqrt{\\frac ab}",
+            "feedback": "分子も分母も正の数の平方根である。"
+          },
+          {
+            "id": "n10-06-choice-1",
+            "content": "-\\sqrt{\\frac ab}",
+            "feedback": "分子も分母も正の数の平方根である。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-06-choice-2",
+            "content": "\\frac ab",
+            "feedback": "分子も分母も正の数の平方根である。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-06-choice-3",
+            "content": "\\sqrt a\\sqrt b",
+            "feedback": "分子も分母も正の数の平方根である。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          }
+        ],
+        "hints": [
+          "分子も分母も正の数の平方根である。"
+        ],
+        "answerInsertion": {
+          "blockId": "n10-06-old-prompt",
+          "slotId": "n10-06-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n10-07",
+      "problemId": "n10",
+      "sourceRefs": [
+        "word-p-000436"
+      ],
+      "requires": [
+        "n10-06-old-result"
+      ],
+      "produces": [
+        "n10-07-old-result"
+      ],
+      "role": "check",
+      "goal": "一つの根号にまとめ、平方数を探そう。",
+      "purpose": "representation-link",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000436"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n10-07-old-prompt",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-07-old-text",
+              "kind": "text",
+              "text": "一つの根号にまとめ、平方数を探そう。"
+            },
+            {
+              "id": "n10-07-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n10-07",
+              "semanticRef": "n10-07"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n10-07-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-07-old-hint",
+              "kind": "text",
+              "text": "まず根号の中の数どうしを掛けよう。得られた数を、できるだけ大きい平方数と残りの因子の積に分けよう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n10-07",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "一つの根号にまとめ、平方数を探そう。",
+        "prerequisiteIds": [
+          "n10-06-old-result"
+        ],
+        "expected": {
+          "value": "\\sqrt{48}=\\sqrt{16\\cdot3}",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n10-07-choice-0",
+            "content": "\\sqrt{48}=\\sqrt{16\\cdot3}",
+            "feedback": "まず根号の中の数どうしを掛けよう。得られた数を、できるだけ大きい平方数と残りの因子の積に分けよう。"
+          },
+          {
+            "id": "n10-07-choice-1",
+            "content": "\\sqrt{14}",
+            "feedback": "まず根号の中の数どうしを掛けよう。得られた数を、できるだけ大きい平方数と残りの因子の積に分けよう。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-07-choice-2",
+            "content": "\\sqrt{48}=\\sqrt{8\\cdot8}",
+            "feedback": "まず根号の中の数どうしを掛けよう。得られた数を、できるだけ大きい平方数と残りの因子の積に分けよう。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-07-choice-3",
+            "content": "\\sqrt{48}=\\sqrt{16\\cdot2}",
+            "feedback": "まず根号の中の数どうしを掛けよう。得られた数を、できるだけ大きい平方数と残りの因子の積に分けよう。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          }
+        ],
+        "hints": [
+          "まず根号の中の数どうしを掛けよう。得られた数を、できるだけ大きい平方数と残りの因子の積に分けよう。"
+        ],
+        "answerInsertion": {
+          "blockId": "n10-07-old-prompt",
+          "slotId": "n10-07-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n10-08",
+      "problemId": "n10",
+      "sourceRefs": [
+        "word-p-000437"
+      ],
+      "requires": [
+        "n10-07-old-result"
+      ],
+      "produces": [
+        "n10-08-old-result"
+      ],
+      "role": "check",
+      "goal": "根号の外に平方数の根を出そう。",
+      "purpose": "transfer",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000437"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n10-08-old-prompt",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-08-old-text",
+              "kind": "text",
+              "text": "根号の外に平方数の根を出そう。"
+            },
+            {
+              "id": "n10-08-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n10-08",
+              "semanticRef": "n10-08"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n10-08-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-08-old-hint",
+              "kind": "text",
+              "text": "前の式で見つけた平方数が、何を二乗した数か確かめよう。その平方根を根号の外へ出し、残りの因子は根号の中に残そう。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n10-08",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "根号の外に平方数の根を出そう。",
+        "prerequisiteIds": [
+          "n10-07-old-result"
+        ],
+        "expected": {
+          "value": "4\\sqrt3",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n10-08-choice-0",
+            "content": "4\\sqrt3",
+            "feedback": "前の式で見つけた平方数が、何を二乗した数か確かめよう。その平方根を根号の外へ出し、残りの因子は根号の中に残そう。"
+          },
+          {
+            "id": "n10-08-choice-1",
+            "content": "16\\sqrt3",
+            "feedback": "前の式で見つけた平方数が、何を二乗した数か確かめよう。その平方根を根号の外へ出し、残りの因子は根号の中に残そう。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-08-choice-2",
+            "content": "4\\sqrt{12}",
+            "feedback": "前の式で見つけた平方数が、何を二乗した数か確かめよう。その平方根を根号の外へ出し、残りの因子は根号の中に残そう。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-08-choice-3",
+            "content": "8\\sqrt3",
+            "feedback": "前の式で見つけた平方数が、何を二乗した数か確かめよう。その平方根を根号の外へ出し、残りの因子は根号の中に残そう。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          }
+        ],
+        "hints": [
+          "前の式で見つけた平方数が、何を二乗した数か確かめよう。その平方根を根号の外へ出し、残りの因子は根号の中に残そう。"
+        ],
+        "answerInsertion": {
+          "blockId": "n10-08-old-prompt",
+          "slotId": "n10-08-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n10-09",
+      "problemId": "n10",
+      "sourceRefs": [
+        "word-p-000441"
+      ],
+      "requires": [
+        "n10-08-old-result"
+      ],
+      "produces": [
+        "n10-09-old-result"
+      ],
+      "role": "check",
+      "goal": "和の各項を別々に簡単にしよう。",
+      "purpose": "representation-link",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000441"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n10-09-old-prompt",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-09-old-text",
+              "kind": "text",
+              "text": "和の各項を別々に簡単にしよう。"
+            },
+            {
+              "id": "n10-09-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n10-09",
+              "semanticRef": "n10-09"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n10-09-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-09-old-hint",
+              "kind": "text",
+              "text": "積の法則を和にそのまま適用してはいけない。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n10-09",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "和の各項を別々に簡単にしよう。",
+        "prerequisiteIds": [
+          "n10-08-old-result"
+        ],
+        "expected": {
+          "value": "2\\sqrt2+5\\sqrt2",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n10-09-choice-0",
+            "content": "2\\sqrt2+5\\sqrt2",
+            "feedback": "積の法則を和にそのまま適用してはいけない。"
+          },
+          {
+            "id": "n10-09-choice-1",
+            "content": "\\sqrt{58}",
+            "feedback": "積の法則を和にそのまま適用してはいけない。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-09-choice-2",
+            "content": "2\\sqrt2+25\\sqrt2",
+            "feedback": "積の法則を和にそのまま適用してはいけない。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-09-choice-3",
+            "content": "2\\sqrt2+5\\sqrt{10}",
+            "feedback": "積の法則を和にそのまま適用してはいけない。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          }
+        ],
+        "hints": [
+          "積の法則を和にそのまま適用してはいけない。"
+        ],
+        "answerInsertion": {
+          "blockId": "n10-09-old-prompt",
+          "slotId": "n10-09-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n10-10",
+      "problemId": "n10",
+      "sourceRefs": [
+        "word-p-000442"
+      ],
+      "requires": [
+        "n10-09-old-result"
+      ],
+      "produces": [
+        "n10-10-old-result"
+      ],
+      "role": "check",
+      "goal": "同じ√2の係数をまとめよう。",
+      "purpose": "transfer",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000442"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n10-10-old-prompt",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-10-old-text",
+              "kind": "text",
+              "text": "同じ√2の係数をまとめよう。"
+            },
+            {
+              "id": "n10-10-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n10-10",
+              "semanticRef": "n10-10"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n10-10-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-10-old-hint",
+              "kind": "text",
+              "text": "同じ根号が残るとき、係数だけを足す。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n10-10",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "同じ√2の係数をまとめよう。",
+        "prerequisiteIds": [
+          "n10-09-old-result"
+        ],
+        "expected": {
+          "value": "7\\sqrt2",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n10-10-choice-0",
+            "content": "7\\sqrt2",
+            "feedback": "同じ根号が残るとき、係数だけを足す。"
+          },
+          {
+            "id": "n10-10-choice-1",
+            "content": "7\\sqrt4",
+            "feedback": "同じ根号が残るとき、係数だけを足す。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-10-choice-2",
+            "content": "7\\sqrt{2+2}",
+            "feedback": "同じ根号が残るとき、係数だけを足す。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-10-choice-3",
+            "content": "3\\sqrt2",
+            "feedback": "同じ根号が残るとき、係数だけを足す。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          }
+        ],
+        "hints": [
+          "同じ根号が残るとき、係数だけを足す。"
+        ],
+        "answerInsertion": {
+          "blockId": "n10-10-old-prompt",
+          "slotId": "n10-10-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n10-11",
+      "problemId": "n10",
+      "sourceRefs": [
+        "word-p-000445"
+      ],
+      "requires": [
+        "n10-10-old-result"
+      ],
+      "produces": [
+        "n10-11-old-result"
+      ],
+      "role": "check",
+      "goal": "平方公式の中項まで全て展開しよう。",
+      "purpose": "representation-link",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000445"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n10-11-old-prompt",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-11-old-text",
+              "kind": "text",
+              "text": "平方公式の中項まで全て展開しよう。"
+            },
+            {
+              "id": "n10-11-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n10-11",
+              "semanticRef": "n10-11"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n10-11-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-11-old-hint",
+              "kind": "text",
+              "text": "(A−B)²の中項は−2ABとなる。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n10-11",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "平方公式の中項まで全て展開しよう。",
+        "prerequisiteIds": [
+          "n10-10-old-result"
+        ],
+        "expected": {
+          "value": "2-2\\sqrt2\\sqrt3+3",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n10-11-choice-0",
+            "content": "2-2\\sqrt2\\sqrt3+3",
+            "feedback": "(A−B)²の中項は−2ABとなる。"
+          },
+          {
+            "id": "n10-11-choice-1",
+            "content": "2+2\\sqrt2\\sqrt3+3",
+            "feedback": "(A−B)²の中項は−2ABとなる。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-11-choice-2",
+            "content": "2-\\sqrt2\\sqrt3+3",
+            "feedback": "(A−B)²の中項は−2ABとなる。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-11-choice-3",
+            "content": "2-2\\sqrt2\\sqrt3+9",
+            "feedback": "(A−B)²の中項は−2ABとなる。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          }
+        ],
+        "hints": [
+          "(A−B)²の中項は−2ABとなる。"
+        ],
+        "answerInsertion": {
+          "blockId": "n10-11-old-prompt",
+          "slotId": "n10-11-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n10-12",
+      "problemId": "n10",
+      "sourceRefs": [
+        "word-p-000446"
+      ],
+      "requires": [
+        "n10-11-old-result"
+      ],
+      "produces": [
+        "n10-12-old-result"
+      ],
+      "role": "check",
+      "goal": "根号を掛け、定数を整理しよう。",
+      "purpose": "transfer",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000446"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n10-12-old-prompt",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-12-old-text",
+              "kind": "text",
+              "text": "根号を掛け、定数を整理しよう。"
+            },
+            {
+              "id": "n10-12-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n10-12",
+              "semanticRef": "n10-12"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n10-12-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-12-old-hint",
+              "kind": "text",
+              "text": "2と3の和、√2と√3の積を別々に処理する。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n10-12",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "根号を掛け、定数を整理しよう。",
+        "prerequisiteIds": [
+          "n10-11-old-result"
+        ],
+        "expected": {
+          "value": "5-2\\sqrt6",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n10-12-choice-0",
+            "content": "5-2\\sqrt6",
+            "feedback": "2と3の和、√2と√3の積を別々に処理する。"
+          },
+          {
+            "id": "n10-12-choice-1",
+            "content": "5+2\\sqrt6",
+            "feedback": "2と3の和、√2と√3の積を別々に処理する。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-12-choice-2",
+            "content": "5-\\sqrt6",
+            "feedback": "2と3の和、√2と√3の積を別々に処理する。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-12-choice-3",
+            "content": "6-2\\sqrt6",
+            "feedback": "2と3の和、√2と√3の積を別々に処理する。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          }
+        ],
+        "hints": [
+          "2と3の和、√2と√3の積を別々に処理する。"
+        ],
+        "answerInsertion": {
+          "blockId": "n10-12-old-prompt",
+          "slotId": "n10-12-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n10-13",
+      "problemId": "n10",
+      "sourceRefs": [
+        "word-p-000449"
+      ],
+      "requires": [
+        "n10-12-old-result"
+      ],
+      "produces": [
+        "n10-13-old-result"
+      ],
+      "role": "check",
+      "goal": "和と差の積を計算しよう。",
+      "purpose": "transfer",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000449"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n10-13-old-prompt",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-13-old-text",
+              "kind": "text",
+              "text": "和と差の積を計算しよう。"
+            },
+            {
+              "id": "n10-13-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n10-13",
+              "semanticRef": "n10-13"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n10-13-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-13-old-hint",
+              "kind": "text",
+              "text": "(A+B)(A−B)では交差する項が消える。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n10-13",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "和と差の積を計算しよう。",
+        "prerequisiteIds": [
+          "n10-12-old-result"
+        ],
+        "expected": {
+          "value": "7-2=5",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n10-13-choice-0",
+            "content": "7-2=5",
+            "feedback": "(A+B)(A−B)では交差する項が消える。"
+          },
+          {
+            "id": "n10-13-choice-1",
+            "content": "7+2=9",
+            "feedback": "(A+B)(A−B)では交差する項が消える。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-13-choice-2",
+            "content": "7-\\sqrt{14}",
+            "feedback": "(A+B)(A−B)では交差する項が消える。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-13-choice-3",
+            "content": "7-4=3",
+            "feedback": "(A+B)(A−B)では交差する項が消える。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          }
+        ],
+        "hints": [
+          "(A+B)(A−B)では交差する項が消える。"
+        ],
+        "answerInsertion": {
+          "blockId": "n10-13-old-prompt",
+          "slotId": "n10-13-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n10-14",
+      "problemId": "n10",
+      "sourceRefs": [
+        "word-p-000455"
+      ],
+      "requires": [
+        "n10-13-old-result"
+      ],
+      "produces": [
+        "n10-14-old-result"
+      ],
+      "role": "check",
+      "goal": "分数の値を保つ操作を選ぼう。",
+      "purpose": "concept-formation",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000455"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n10-14-old-prompt",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-14-old-text",
+              "kind": "text",
+              "text": "分数の値を保つ操作を選ぼう。"
+            },
+            {
+              "id": "n10-14-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n10-14",
+              "semanticRef": "n10-14"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n10-14-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-14-old-hint",
+              "kind": "text",
+              "text": "分子・分母の比が変わらない操作を考える。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n10-14",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "分数の値を保つ操作を選ぼう。",
+        "prerequisiteIds": [
+          "n10-13-old-result"
+        ],
+        "expected": {
+          "value": "0でない同じ数を分子・分母の両方に掛ける",
+          "form": "text",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n10-14-choice-0",
+            "content": "0でない同じ数を分子・分母の両方に掛ける",
+            "feedback": "分子・分母の比が変わらない操作を考える。"
+          },
+          {
+            "id": "n10-14-choice-1",
+            "content": "分母だけに同じ数を掛ける",
+            "feedback": "分子・分母の比が変わらない操作を考える。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-14-choice-2",
+            "content": "分子だけに平方根を足す",
+            "feedback": "分子・分母の比が変わらない操作を考える。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-14-choice-3",
+            "content": "分母から根号をそのまま消す",
+            "feedback": "分子・分母の比が変わらない操作を考える。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          }
+        ],
+        "hints": [
+          "分子・分母の比が変わらない操作を考える。"
+        ],
+        "answerInsertion": {
+          "blockId": "n10-14-old-prompt",
+          "slotId": "n10-14-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n10-15",
+      "problemId": "n10",
+      "sourceRefs": [
+        "word-p-000457"
+      ],
+      "requires": [
+        "n10-14-old-result"
+      ],
+      "produces": [
+        "n10-15-old-result"
+      ],
+      "role": "check",
+      "goal": "√3を使って値を変えずに有理化しよう。",
+      "purpose": "representation-link",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000457"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n10-15-old-prompt",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-15-old-text",
+              "kind": "text",
+              "text": "√3を使って値を変えずに有理化しよう。"
+            },
+            {
+              "id": "n10-15-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n10-15",
+              "semanticRef": "n10-15"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n10-15-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-15-old-hint",
+              "kind": "text",
+              "text": "分母の√3と掛けて整数になる同じ因子を両方へ掛ける。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n10-15",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "√3を使って値を変えずに有理化しよう。",
+        "prerequisiteIds": [
+          "n10-14-old-result"
+        ],
+        "expected": {
+          "value": "\\frac1{2\\sqrt3}\\cdot\\frac{\\sqrt3}{\\sqrt3}=\\frac{\\sqrt3}{2(\\sqrt3)^2}",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n10-15-choice-0",
+            "content": "\\frac1{2\\sqrt3}\\cdot\\frac{\\sqrt3}{\\sqrt3}=\\frac{\\sqrt3}{2(\\sqrt3)^2}",
+            "feedback": "分母の√3と掛けて整数になる同じ因子を両方へ掛ける。"
+          },
+          {
+            "id": "n10-15-choice-1",
+            "content": "\\frac1{2\\sqrt3}\\cdot\\sqrt3",
+            "feedback": "分母の√3と掛けて整数になる同じ因子を両方へ掛ける。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-15-choice-2",
+            "content": "\\frac1{2\\sqrt3}\\cdot\\frac3{\\sqrt3}",
+            "feedback": "分母の√3と掛けて整数になる同じ因子を両方へ掛ける。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-15-choice-3",
+            "content": "\\frac1{2\\sqrt3}\\cdot\\frac{\\sqrt2}{\\sqrt2}",
+            "feedback": "分母の√3と掛けて整数になる同じ因子を両方へ掛ける。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          }
+        ],
+        "hints": [
+          "分母の√3と掛けて整数になる同じ因子を両方へ掛ける。"
+        ],
+        "answerInsertion": {
+          "blockId": "n10-15-old-prompt",
+          "slotId": "n10-15-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n10-16",
+      "problemId": "n10",
+      "sourceRefs": [
+        "word-p-000458"
+      ],
+      "requires": [
+        "n10-15-old-result"
+      ],
+      "produces": [
+        "n10-16-old-result"
+      ],
+      "role": "check",
+      "goal": "分母の(√3)²を数に直そう。",
+      "purpose": "transfer",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000458"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n10-16-old-prompt",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-16-old-text",
+              "kind": "text",
+              "text": "分母の(√3)²を数に直そう。"
+            },
+            {
+              "id": "n10-16-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n10-16",
+              "semanticRef": "n10-16"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n10-16-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-16-old-hint",
+              "kind": "text",
+              "text": "(√3)²は3なので分母全体はどうなる？"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n10-16",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "分母の(√3)²を数に直そう。",
+        "prerequisiteIds": [
+          "n10-15-old-result"
+        ],
+        "expected": {
+          "value": "\\frac{\\sqrt3}{6}",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n10-16-choice-0",
+            "content": "\\frac{\\sqrt3}{6}",
+            "feedback": "(√3)²は3なので分母全体はどうなる？"
+          },
+          {
+            "id": "n10-16-choice-1",
+            "content": "\\frac{\\sqrt3}{2}",
+            "feedback": "(√3)²は3なので分母全体はどうなる？",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-16-choice-2",
+            "content": "\\frac3{6}",
+            "feedback": "(√3)²は3なので分母全体はどうなる？",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-16-choice-3",
+            "content": "\\frac1{6\\sqrt3}",
+            "feedback": "(√3)²は3なので分母全体はどうなる？",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          }
+        ],
+        "hints": [
+          "(√3)²は3なので分母全体はどうなる？"
+        ],
+        "answerInsertion": {
+          "blockId": "n10-16-old-prompt",
+          "slotId": "n10-16-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n10-17",
+      "problemId": "n10",
+      "sourceRefs": [
+        "word-p-000463"
+      ],
+      "requires": [
+        "n10-16-old-result"
+      ],
+      "produces": [
+        "n10-17-old-result"
+      ],
+      "role": "check",
+      "goal": "和の分母を和差の積にする因子を選ぼう。",
+      "purpose": "representation-link",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000463"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n10-17-old-prompt",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-17-old-text",
+              "kind": "text",
+              "text": "和の分母を和差の積にする因子を選ぼう。"
+            },
+            {
+              "id": "n10-17-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n10-17",
+              "semanticRef": "n10-17"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n10-17-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-17-old-hint",
+              "kind": "text",
+              "text": "分母が(A+B)なら(A−B)を掛けると平方差になる。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n10-17",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "和の分母を和差の積にする因子を選ぼう。",
+        "prerequisiteIds": [
+          "n10-16-old-result"
+        ],
+        "expected": {
+          "value": "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt3-\\sqrt2}{\\sqrt3-\\sqrt2}",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n10-17-choice-0",
+            "content": "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt3-\\sqrt2}{\\sqrt3-\\sqrt2}",
+            "feedback": "分母が(A+B)なら(A−B)を掛けると平方差になる。"
+          },
+          {
+            "id": "n10-17-choice-1",
+            "content": "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt3+\\sqrt2}{\\sqrt3+\\sqrt2}",
+            "feedback": "分母が(A+B)なら(A−B)を掛けると平方差になる。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-17-choice-2",
+            "content": "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt3}{\\sqrt3}",
+            "feedback": "分母が(A+B)なら(A−B)を掛けると平方差になる。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-17-choice-3",
+            "content": "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt2}{\\sqrt2}",
+            "feedback": "分母が(A+B)なら(A−B)を掛けると平方差になる。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          }
+        ],
+        "hints": [
+          "分母が(A+B)なら(A−B)を掛けると平方差になる。"
+        ],
+        "answerInsertion": {
+          "blockId": "n10-17-old-prompt",
+          "slotId": "n10-17-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n10-18",
+      "problemId": "n10",
+      "sourceRefs": [
+        "word-p-000464"
+      ],
+      "requires": [
+        "n10-17-old-result"
+      ],
+      "produces": [
+        "n10-18-old-result"
+      ],
+      "role": "check",
+      "goal": "共役を掛けた分母の値を選ぼう。",
+      "purpose": "transfer",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000464"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n10-18-old-prompt",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-18-old-text",
+              "kind": "text",
+              "text": "共役を掛けた分母の値を選ぼう。"
+            },
+            {
+              "id": "n10-18-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n10-18",
+              "semanticRef": "n10-18"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n10-18-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-18-old-hint",
+              "kind": "text",
+              "text": "積の中項は消え、二つの平方だけが残る。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n10-18",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "共役を掛けた分母の値を選ぼう。",
+        "prerequisiteIds": [
+          "n10-17-old-result"
+        ],
+        "expected": {
+          "value": "3-2=1",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n10-18-choice-0",
+            "content": "3-2=1",
+            "feedback": "積の中項は消え、二つの平方だけが残る。"
+          },
+          {
+            "id": "n10-18-choice-1",
+            "content": "3+2=5",
+            "feedback": "積の中項は消え、二つの平方だけが残る。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-18-choice-2",
+            "content": "3-\\sqrt6",
+            "feedback": "積の中項は消え、二つの平方だけが残る。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-18-choice-3",
+            "content": "\\sqrt3-\\sqrt2",
+            "feedback": "積の中項は消え、二つの平方だけが残る。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          }
+        ],
+        "hints": [
+          "積の中項は消え、二つの平方だけが残る。"
+        ],
+        "answerInsertion": {
+          "blockId": "n10-18-old-prompt",
+          "slotId": "n10-18-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n10-19",
+      "problemId": "n10",
+      "sourceRefs": [
+        "word-p-000465"
+      ],
+      "requires": [
+        "n10-18-old-result"
+      ],
+      "produces": [
+        "n10-19-old-result"
+      ],
+      "role": "check",
+      "goal": "分子にも因子を掛け、最後まで整理しよう。",
+      "purpose": "transfer",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000465"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n10-19-old-prompt",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-19-old-text",
+              "kind": "text",
+              "text": "分子にも因子を掛け、最後まで整理しよう。"
+            },
+            {
+              "id": "n10-19-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n10-19",
+              "semanticRef": "n10-19"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n10-19-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-19-old-hint",
+              "kind": "text",
+              "text": "分子の√3を括弧内の両項に掛ける。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n10-19",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "分子にも因子を掛け、最後まで整理しよう。",
+        "prerequisiteIds": [
+          "n10-18-old-result"
+        ],
+        "expected": {
+          "value": "3-\\sqrt6",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n10-19-choice-0",
+            "content": "3-\\sqrt6",
+            "feedback": "分子の√3を括弧内の両項に掛ける。"
+          },
+          {
+            "id": "n10-19-choice-1",
+            "content": "3+\\sqrt6",
+            "feedback": "分子の√3を括弧内の両項に掛ける。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-19-choice-2",
+            "content": "1-\\sqrt6",
+            "feedback": "分子の√3を括弧内の両項に掛ける。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-19-choice-3",
+            "content": "3-2\\sqrt6",
+            "feedback": "分子の√3を括弧内の両項に掛ける。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          }
+        ],
+        "hints": [
+          "分子の√3を括弧内の両項に掛ける。"
+        ],
+        "answerInsertion": {
+          "blockId": "n10-19-old-prompt",
+          "slotId": "n10-19-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n10-20",
+      "problemId": "n10",
+      "sourceRefs": [
+        "word-p-000468"
+      ],
+      "requires": [
+        "n10-19-old-result"
+      ],
+      "produces": [
+        "n10-20-old-result"
+      ],
+      "role": "check",
+      "goal": "共役因子を選び、掛けた直後の分数を作ろう。",
+      "purpose": "transfer",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000468"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n10-20-old-prompt",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-20-old-text",
+              "kind": "text",
+              "text": "共役因子を選び、掛けた直後の分数を作ろう。"
+            },
+            {
+              "id": "n10-20-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n10-20",
+              "semanticRef": "n10-20"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n10-20-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-20-old-hint",
+              "kind": "text",
+              "text": "分母の和に対して差を掛け、分子にも同じ差を掛ける。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n10-20",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "共役因子を選び、掛けた直後の分数を作ろう。",
+        "prerequisiteIds": [
+          "n10-19-old-result"
+        ],
+        "expected": {
+          "value": "\\frac{(2-\\sqrt3)^2}{(2+\\sqrt3)(2-\\sqrt3)}=\\frac{(2-\\sqrt3)^2}{4-3}",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n10-20-choice-0",
+            "content": "\\frac{(2-\\sqrt3)^2}{(2+\\sqrt3)(2-\\sqrt3)}=\\frac{(2-\\sqrt3)^2}{4-3}",
+            "feedback": "分母の和に対して差を掛け、分子にも同じ差を掛ける。"
+          },
+          {
+            "id": "n10-20-choice-1",
+            "content": "\\frac{(2-\\sqrt3)^2}{(2+\\sqrt3)^2}",
+            "feedback": "分母の和に対して差を掛け、分子にも同じ差を掛ける。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-20-choice-2",
+            "content": "\\frac{2-\\sqrt3}{2+\\sqrt3}\\cdot\\frac{2+\\sqrt3}{2+\\sqrt3}",
+            "feedback": "分母の和に対して差を掛け、分子にも同じ差を掛ける。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-20-choice-3",
+            "content": "\\frac{(2-\\sqrt3)^2}{4+3}",
+            "feedback": "分母の和に対して差を掛け、分子にも同じ差を掛ける。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          }
+        ],
+        "hints": [
+          "分母の和に対して差を掛け、分子にも同じ差を掛ける。"
+        ],
+        "answerInsertion": {
+          "blockId": "n10-20-old-prompt",
+          "slotId": "n10-20-old-slot"
+        }
+      }
+    },
+    {
+      "id": "n10-21",
+      "problemId": "n10",
+      "sourceRefs": [
+        "word-p-000469"
+      ],
+      "requires": [
+        "n10-20-old-result"
+      ],
+      "produces": [
+        "n10-21-old-result"
+      ],
+      "role": "check",
+      "goal": "分子の平方を計算して最終結果を選ぼう。",
+      "purpose": "transfer",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000469"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n10-21-old-prompt",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-21-old-text",
+              "kind": "text",
+              "text": "分子の平方を計算して最終結果を選ぼう。"
+            },
+            {
+              "id": "n10-21-old-slot",
+              "kind": "answerSlot",
+              "interactionId": "n10-21",
+              "semanticRef": "n10-21"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n10-21-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n10-21-old-hint",
+              "kind": "text",
+              "text": "平方公式の中項−2ABも忘れず計算する。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n10-21",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "分子の平方を計算して最終結果を選ぼう。",
+        "prerequisiteIds": [
+          "n10-20-old-result"
+        ],
+        "expected": {
+          "value": "7-4\\sqrt3",
+          "form": "formula",
+          "semanticType": "legacy-contract"
+        },
+        "choices": [
+          {
+            "id": "n10-21-choice-0",
+            "content": "7-4\\sqrt3",
+            "feedback": "平方公式の中項−2ABも忘れず計算する。"
+          },
+          {
+            "id": "n10-21-choice-1",
+            "content": "7+4\\sqrt3",
+            "feedback": "平方公式の中項−2ABも忘れず計算する。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-21-choice-2",
+            "content": "7-2\\sqrt3",
+            "feedback": "平方公式の中項−2ABも忘れず計算する。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          },
+          {
+            "id": "n10-21-choice-3",
+            "content": "1-4\\sqrt3",
+            "feedback": "平方公式の中項−2ABも忘れず計算する。",
+            "misconception": "旧版の誤答を忠実に投影。個別の原因は現行sourceとAIで監査する。"
+          }
+        ],
+        "hints": [
+          "平方公式の中項−2ABも忘れず計算する。"
+        ],
+        "answerInsertion": {
+          "blockId": "n10-21-old-prompt",
+          "slotId": "n10-21-old-slot"
+        }
+      }
+    }
+  ]
+}

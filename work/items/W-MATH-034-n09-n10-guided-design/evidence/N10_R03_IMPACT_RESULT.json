@@ -1,0 +1,11 @@
+{
+  "node": "R03_IMPACT@n10",
+  "status": "PASS_BOUNDED",
+  "outputs": {
+    "impact.inventory": "NEEDS_AI_REVIEW"
+  },
+  "review": "Both lesson sources, two shared consumers, source indices and unchanged original image inventoried with source hashes. Repairs remain within the two proposal blocks; accepted N08/N07/first-title hashes protected.",
+  "receiptArtifacts": [
+    "a668a87aa52ebe3da81e1c39a57eda5a63afe8ea441d8ed4dd31bd40a1772b81"
+  ]
+}

@@ -1,0 +1,1842 @@
+{
+  "status": "PROPOSED",
+  "nodes": [
+    {
+      "id": "n10-q01-square",
+      "unit": "n10",
+      "stageId": "n10-stage-01",
+      "goal": "候補の平方を計算する",
+      "before": "根号は非負の値を表し、2乗すると中の数に戻ることを使います。例題は $\\sqrt{125}$ を、根号の中の数が小さい形に表すことです。$125=25\\cdot5$ なので、$t>0$ として候補 $t\\sqrt5$ を調べます。積の平方は各因子の平方の積です。ここではまだ根号の積の公式を使いません。",
+      "formula": "(t\\sqrt5)^2=t^2(\\sqrt5)^2=\\square",
+      "answer": "5t^2",
+      "wrong": [
+        [
+          "5t",
+          "tも2乗されます。"
+        ],
+        [
+          "25t^2",
+          "根号を2乗した値を確認します。"
+        ]
+      ],
+      "after": "元の正の平方根と等しいために、候補の平方は125である必要があります。",
+      "hint": "平方根の定義から(√5)²を求めます。",
+      "sourceRefs": [
+        "word-p-000419",
+        "word-p-000420",
+        "word-p-000421"
+      ],
+      "action": "expression",
+      "role": "example",
+      "itemId": "n10-q01-square",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-q01-square-result",
+      "requires": [],
+      "knownRefs": [],
+      "resolvedFormula": "(t\\sqrt5)^2=t^2(\\sqrt5)^2=5t^2"
+    },
+    {
+      "id": "n10-01",
+      "unit": "n10",
+      "stageId": "n10-stage-01",
+      "goal": "同じ数で割ってtの平方を取り出す",
+      "before": "$5t^2=125$ の両辺を5で割ります。左の係数を1にして、右辺も同じ操作で計算します。",
+      "formula": "\\square",
+      "answer": "t^2=25",
+      "wrong": [
+        [
+          "t=25",
+          "2乗されているtを、そのままtに変えません。"
+        ],
+        [
+          "t^2=125",
+          "左辺を5で割ったら右辺も5で割ります。"
+        ],
+        [
+          "t^2=5",
+          "125を5で割る計算を確かめます。"
+        ]
+      ],
+      "after": "tの平方が求まりました。次は最初に置いた正の条件を使います。",
+      "hint": "左の係数を1にする操作を両辺に行います。",
+      "sourceRefs": [
+        "word-p-000421"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n10-01",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-01-result",
+      "requires": [
+        "n10-q01-square-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "t^2=25"
+    },
+    {
+      "id": "n10-q02-sign",
+      "unit": "n10",
+      "stageId": "n10-stage-01",
+      "goal": "正の条件で候補を一つに絞る",
+      "before": "$t^2=25$ では符号が反対の二つの実数が候補になります。最初の条件 $t>0$ も満たす方を選びます。",
+      "formula": "t=\\square",
+      "answer": "5",
+      "wrong": [
+        [
+          "-5",
+          "最初の正の条件に戻ります。"
+        ],
+        [
+          "\\pm5",
+          "正の条件を使うと一つに決まります。"
+        ]
+      ],
+      "after": "このtを候補の式へ戻します。",
+      "hint": "平方の条件と符号の条件を両方使います。",
+      "sourceRefs": [
+        "word-p-000422"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n10-q02-sign",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-q02-sign-result",
+      "requires": [
+        "n10-01-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "t=5"
+    },
+    {
+      "id": "n10-02",
+      "unit": "n10",
+      "stageId": "n10-stage-01",
+      "goal": "候補へ代入して平方根を確定する",
+      "before": "候補は $t\\sqrt5$ でした。求めた正のtを代入します。候補は正で、平方すると125なので、125の正の平方根と等しいと確定できます。",
+      "formula": "\\sqrt{125}=\\square",
+      "answer": "5\\sqrt5",
+      "wrong": [
+        [
+          "-5\\sqrt5",
+          "正の平方根を表す符号を選びます。"
+        ],
+        [
+          "25\\sqrt5",
+          "tの平方ではなくt自身を代入します。"
+        ],
+        [
+          "5\\sqrt{25}",
+          "候補で残した根号の中身は5です。"
+        ]
+      ],
+      "after": "平方の値と正の符号を確認した、この手順を一般の積・商へ広げます。",
+      "hint": "候補の文字tの位置だけを置き換えます。",
+      "sourceRefs": [
+        "word-p-000422",
+        "word-p-000423"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n10-02",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-02-result",
+      "requires": [
+        "n10-q02-sign-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "\\sqrt{125}=5\\sqrt5"
+    },
+    {
+      "id": "n10-q03-expand",
+      "unit": "n10",
+      "stageId": "n10-stage-02",
+      "goal": "積を平方して因子をまとめる",
+      "before": "ここからは **証明** です。条件は $a>0,b>0$。$(\\sqrt a\\sqrt b)^2$ を同じ積の2回の掛け算と読み、実数の積の交換・結合で同じ因子をまとめます。",
+      "formula": "(\\sqrt a\\sqrt b)^2=\\square",
+      "answer": "(\\sqrt a)^2(\\sqrt b)^2",
+      "wrong": [
+        [
+          "(\\sqrt a)^2+(\\sqrt b)^2",
+          "元は和ではなく積です。"
+        ],
+        [
+          "\\sqrt a(\\sqrt b)^2",
+          "どちらの因子も2回ずつ現れます。"
+        ]
+      ],
+      "after": "各因子の平方には平方根の定義を使えます。",
+      "hint": "同じ因子を二つずつ集めます。",
+      "sourceRefs": [
+        "word-p-000424",
+        "word-p-000425",
+        "word-p-000426"
+      ],
+      "action": "expression",
+      "role": "proof",
+      "itemId": "n10-q03-expand",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-q03-expand-result",
+      "requires": [
+        "n10-02-result"
+      ],
+      "knownRefs": [
+        "n10-02-result"
+      ],
+      "resolvedFormula": "(\\sqrt a\\sqrt b)^2=(\\sqrt a)^2(\\sqrt b)^2"
+    },
+    {
+      "id": "n10-03",
+      "unit": "n10",
+      "stageId": "n10-stage-02",
+      "goal": "定義から積の平方を求める",
+      "before": "$(\\sqrt a)^2=a$、$(\\sqrt b)^2=b$ を、いまの積へそれぞれ戻します。",
+      "formula": "(\\sqrt a\\sqrt b)^2=\\square",
+      "answer": "ab",
+      "wrong": [
+        [
+          "a+b",
+          "定義を代入しても、因子どうしの積は残ります。"
+        ],
+        [
+          "\\sqrt{ab}",
+          "平方した後の値と元の根号を区別します。"
+        ],
+        [
+          "a^2b^2",
+          "平方根の平方は中身に戻ります。"
+        ]
+      ],
+      "after": "積の平方がabであることが分かりました。符号の確認がまだ必要です。",
+      "hint": "二つの因子を、それぞれ定義どおり置き換えます。",
+      "sourceRefs": [
+        "word-p-000426"
+      ],
+      "action": "expression",
+      "role": "proof",
+      "itemId": "n10-03",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-03-result",
+      "requires": [
+        "n10-q03-expand-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "(\\sqrt a\\sqrt b)^2=ab"
+    },
+    {
+      "id": "n10-q04-sign",
+      "unit": "n10",
+      "stageId": "n10-stage-02",
+      "goal": "積の符号を確かめる",
+      "before": "$a>0,b>0$ なので、$\\sqrt a>0,\\sqrt b>0$ です。正の数どうしの積の符号を判断します。",
+      "formula": "\\sqrt a\\sqrt b\\ \\square\\ 0",
+      "answer": ">",
+      "wrong": [
+        [
+          "<",
+          "二つの因子はどちらも正です。"
+        ],
+        [
+          "=",
+          "二つとも0より大きいので積は0ではありません。"
+        ]
+      ],
+      "after": "平方の値に加え、候補が正であることも確認できました。",
+      "hint": "元の条件から各因子の符号を確認します。",
+      "sourceRefs": [
+        "word-p-000427"
+      ],
+      "action": "judgment",
+      "role": "proof",
+      "itemId": "n10-q04-sign",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-q04-sign-result",
+      "requires": [
+        "n10-03-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "\\sqrt a\\sqrt b\\ >\\ 0"
+    },
+    {
+      "id": "n10-04",
+      "unit": "n10",
+      "stageId": "n10-stage-02",
+      "goal": "正の平方根として積を確定する",
+      "before": "候補は正で、平方はabです。abも正なので、この二条件から正の平方根として表します。",
+      "formula": "\\sqrt a\\sqrt b=\\square",
+      "answer": "\\sqrt{ab}",
+      "wrong": [
+        [
+          "-\\sqrt{ab}",
+          "候補は正であることを使います。"
+        ],
+        [
+          "ab",
+          "abは平方した後の値です。"
+        ],
+        [
+          "\\sqrt a+\\sqrt b",
+          "平方根の積と和は区別します。"
+        ]
+      ],
+      "after": "条件 $a>0,b>0$ とともに積の性質を記録します。次は同じ二確認を商で行います。",
+      "hint": "正で、2乗するとabになる数を根号で表します。",
+      "sourceRefs": [
+        "word-p-000427"
+      ],
+      "action": "expression",
+      "role": "proof",
+      "itemId": "n10-04",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-04-result",
+      "requires": [
+        "n10-q04-sign-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "\\sqrt a\\sqrt b=\\sqrt{ab}"
+    },
+    {
+      "id": "n10-q05-denominator",
+      "unit": "n10",
+      "stageId": "n10-stage-03",
+      "goal": "割る前に0でないことを確かめる",
+      "before": "商 $\\sqrt a/\\sqrt b$ を調べます。条件 $b>0$ から、分母の平方根は正です。割り算ができることを確認します。",
+      "formula": "\\sqrt b\\ \\square\\ 0",
+      "answer": "\\ne",
+      "wrong": [
+        [
+          "=",
+          "bは0ではなく正です。"
+        ],
+        [
+          "<",
+          "根号の値は非負です。"
+        ]
+      ],
+      "after": "分母が0でないので、商を定義して計算できます。",
+      "hint": "正の数は0と等しいかを確認します。",
+      "sourceRefs": [
+        "word-p-000428"
+      ],
+      "action": "judgment",
+      "role": "proof",
+      "itemId": "n10-q05-denominator",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-q05-denominator-result",
+      "requires": [
+        "n10-04-result"
+      ],
+      "knownRefs": [
+        "n10-04-result"
+      ],
+      "resolvedFormula": "\\sqrt b\\ \\ne\\ 0"
+    },
+    {
+      "id": "n10-q05-square",
+      "unit": "n10",
+      "stageId": "n10-stage-03",
+      "goal": "商の平方を分子分母へ分ける",
+      "before": "分母が0でないと確認したので、商を2回掛け、分子と分母をそれぞれ平方にまとめます。",
+      "formula": "\\left(\\frac{\\sqrt a}{\\sqrt b}\\right)^2=\\square",
+      "answer": "\\frac{(\\sqrt a)^2}{(\\sqrt b)^2}",
+      "wrong": [
+        [
+          "\\frac{\\sqrt a}{(\\sqrt b)^2}",
+          "分子も2回掛けられます。"
+        ],
+        [
+          "\\frac{(\\sqrt b)^2}{(\\sqrt a)^2}",
+          "分子と分母の順を保ちます。"
+        ]
+      ],
+      "after": "積の証明と同じように、各平方へ定義を代入します。",
+      "hint": "二つの同じ分数の積を書いてみます。",
+      "sourceRefs": [
+        "word-p-000429"
+      ],
+      "action": "expression",
+      "role": "proof",
+      "itemId": "n10-q05-square",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-q05-square-result",
+      "requires": [
+        "n10-q05-denominator-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "\\left(\\frac{\\sqrt a}{\\sqrt b}\\right)^2=\\frac{(\\sqrt a)^2}{(\\sqrt b)^2}"
+    },
+    {
+      "id": "n10-05",
+      "unit": "n10",
+      "stageId": "n10-stage-03",
+      "goal": "商の平方を定義で計算する",
+      "before": "分子は $(\\sqrt a)^2=a$、分母は $(\\sqrt b)^2=b$ です。分子と分母の対応を保って戻します。",
+      "formula": "\\left(\\frac{\\sqrt a}{\\sqrt b}\\right)^2=\\square",
+      "answer": "\\frac ab",
+      "wrong": [
+        [
+          "\\frac ba",
+          "分子と分母の順が逆です。"
+        ],
+        [
+          "\\sqrt{\\frac ab}",
+          "平方した後の値を根号のままにしません。"
+        ],
+        [
+          "ab",
+          "元の操作は積でなく商です。"
+        ]
+      ],
+      "after": "商の平方が求まりました。次に元の商の符号を見ます。",
+      "hint": "分子へa、分母へbを対応させます。",
+      "sourceRefs": [
+        "word-p-000429"
+      ],
+      "action": "expression",
+      "role": "proof",
+      "itemId": "n10-05",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-05-result",
+      "requires": [
+        "n10-q05-square-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "\\left(\\frac{\\sqrt a}{\\sqrt b}\\right)^2=\\frac ab"
+    },
+    {
+      "id": "n10-q06-sign",
+      "unit": "n10",
+      "stageId": "n10-stage-03",
+      "goal": "商の符号を確かめる",
+      "before": "$\\sqrt a,\\sqrt b$ はどちらも正です。正の数を正の数で割った商の符号を判断します。",
+      "formula": "\\frac{\\sqrt a}{\\sqrt b}\\ \\square\\ 0",
+      "answer": ">",
+      "wrong": [
+        [
+          "<",
+          "分子と分母の符号は同じです。"
+        ],
+        [
+          "=",
+          "分子は0ではありません。"
+        ]
+      ],
+      "after": "商も正であり、平方した値と合わせて一つに決められます。",
+      "hint": "分子・分母の両方の符号を使います。",
+      "sourceRefs": [
+        "word-p-000430"
+      ],
+      "action": "judgment",
+      "role": "proof",
+      "itemId": "n10-q06-sign",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-q06-sign-result",
+      "requires": [
+        "n10-05-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "\\frac{\\sqrt a}{\\sqrt b}\\ >\\ 0"
+    },
+    {
+      "id": "n10-06",
+      "unit": "n10",
+      "stageId": "n10-stage-03",
+      "goal": "商を正の平方根として表す",
+      "before": "商は正で、平方は $a/b$ です。正の平方根の定義で根号一つにまとめます。",
+      "formula": "\\frac{\\sqrt a}{\\sqrt b}=\\square",
+      "answer": "\\sqrt{\\frac ab}",
+      "wrong": [
+        [
+          "-\\sqrt{\\frac ab}",
+          "正の商を表す符号を選びます。"
+        ],
+        [
+          "\\frac ab",
+          "a/bは平方した後の値です。"
+        ],
+        [
+          "\\sqrt a\\sqrt b",
+          "商を積に変えません。"
+        ]
+      ],
+      "after": "積と商の証明が終わりました。条件 $a>0,b>0$、分母が0でないこと、各候補の正の符号を、公式と一緒に記録します。",
+      "hint": "2乗した値と、元の商が正であることを合わせます。",
+      "sourceRefs": [
+        "word-p-000430",
+        "word-p-000431",
+        "word-p-000432"
+      ],
+      "action": "expression",
+      "role": "property",
+      "itemId": "n10-06",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-06-result",
+      "requires": [
+        "n10-q06-sign-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "\\frac{\\sqrt a}{\\sqrt b}=\\sqrt{\\frac ab}"
+    },
+    {
+      "id": "n10-q07-product",
+      "unit": "n10",
+      "stageId": "n10-stage-04",
+      "goal": "積の性質を具体的な数に使う",
+      "before": "例題は $\\sqrt6\\sqrt8$ です。6と8が正なので、証明済みの積の性質を使い、根号の中の二数を掛けます。",
+      "formula": "\\sqrt6\\sqrt8=\\sqrt{\\square}",
+      "answer": "48",
+      "wrong": [
+        [
+          "14",
+          "元の演算は足し算ではありません。"
+        ],
+        [
+          "68",
+          "数を並べるのではなく掛けます。"
+        ]
+      ],
+      "after": "根号の中に、平方数の因子を探します。",
+      "hint": "6と8の積を計算します。",
+      "sourceRefs": [
+        "word-p-000435",
+        "word-p-000436"
+      ],
+      "action": "calculation",
+      "role": "example",
+      "itemId": "n10-q07-product",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-q07-product-result",
+      "requires": [
+        "n10-06-result",
+        "n10-04-result"
+      ],
+      "knownRefs": [
+        "n10-04-result",
+        "n10-06-result"
+      ],
+      "resolvedFormula": "\\sqrt6\\sqrt8=\\sqrt{48}"
+    },
+    {
+      "id": "n10-07",
+      "unit": "n10",
+      "stageId": "n10-stage-04",
+      "goal": "平方数と残りの積に分ける",
+      "before": "$48=16\\cdot3$、$16=4^2$ を使います。元の積から、一つの根号にまとめた式と因数分解を等号でつなぎます。",
+      "formula": "\\square",
+      "answer": "\\sqrt{48}=\\sqrt{16\\cdot3}",
+      "wrong": [
+        [
+          "\\sqrt{14}",
+          "積を和に置き換えていませんか。"
+        ],
+        [
+          "\\sqrt{48}=\\sqrt{8\\cdot8}",
+          "示した二因子を掛けて元の数になるか確認します。"
+        ],
+        [
+          "\\sqrt{48}=\\sqrt{16\\cdot2}",
+          "残りの因子を取り違えていませんか。"
+        ]
+      ],
+      "after": "中の平方数は、次の段階でその平方根を外へ出すために使います。",
+      "hint": "分けた二因子の積が直前の値になるか確認します。",
+      "sourceRefs": [
+        "word-p-000436"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n10-07",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-07-result",
+      "requires": [
+        "n10-q07-product-result",
+        "n10-04-result"
+      ],
+      "knownRefs": [
+        "n10-04-result"
+      ],
+      "resolvedFormula": "\\sqrt{48}=\\sqrt{16\\cdot3}"
+    },
+    {
+      "id": "n10-q08-factor",
+      "unit": "n10",
+      "stageId": "n10-stage-04",
+      "goal": "平方数の平方根を外へ出す",
+      "before": "積の公式を逆に使うと $\\sqrt{16\\cdot3}=\\sqrt{16}\\sqrt3$ です。非負の平方根 $\\sqrt{16}$ を求めます。",
+      "formula": "\\sqrt{16}=\\square",
+      "answer": "4",
+      "wrong": [
+        [
+          "16",
+          "根号を残したままの中の数です。"
+        ],
+        [
+          "\\pm4",
+          "根号の値は一つです。"
+        ]
+      ],
+      "after": "残りの因子は根号の中に残します。",
+      "hint": "2乗すると16になる非負の数を選びます。",
+      "sourceRefs": [
+        "word-p-000437"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n10-q08-factor",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-q08-factor-result",
+      "requires": [
+        "n10-07-result",
+        "n10-04-result"
+      ],
+      "knownRefs": [
+        "n10-04-result"
+      ],
+      "resolvedFormula": "\\sqrt{16}=4"
+    },
+    {
+      "id": "n10-08",
+      "unit": "n10",
+      "stageId": "n10-stage-04",
+      "goal": "元の積の答えへ戻す",
+      "before": "外へ出す数と、残った $\\sqrt3$ を掛けた式で答えます。",
+      "formula": "\\sqrt6\\sqrt8=\\square",
+      "answer": "4\\sqrt3",
+      "wrong": [
+        [
+          "16\\sqrt3",
+          "平方数そのものを係数にしません。"
+        ],
+        [
+          "4\\sqrt{12}",
+          "残りの因子は3です。"
+        ],
+        [
+          "8\\sqrt3",
+          "外へ出す数は16の非負の平方根です。"
+        ]
+      ],
+      "after": "計算記録は、積→一つの根号→平方因子→外へ出した形の連鎖です。",
+      "hint": "いま求めた係数と残った根号を掛けます。",
+      "sourceRefs": [
+        "word-p-000437"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n10-08",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-08-result",
+      "requires": [
+        "n10-q08-factor-result",
+        "n10-04-result"
+      ],
+      "knownRefs": [
+        "n10-04-result"
+      ],
+      "resolvedFormula": "\\sqrt6\\sqrt8=4\\sqrt3"
+    },
+    {
+      "id": "n10-q09-left",
+      "unit": "n10",
+      "stageId": "n10-stage-05",
+      "goal": "和は各項を別々に変形する",
+      "before": "例題は $\\sqrt8+\\sqrt{50}$。今回は **和** なので、積の公式で一つの根号にはできません。まず $8=4\\cdot2$ として左の項を変形します。",
+      "formula": "\\sqrt8=\\sqrt4\\sqrt2=\\square",
+      "answer": "2\\sqrt2",
+      "wrong": [
+        [
+          "4\\sqrt2",
+          "平方数そのものではなく、その平方根を出します。"
+        ],
+        [
+          "2\\sqrt4",
+          "残す因子は2です。"
+        ]
+      ],
+      "after": "足し算を残したまま、右の項も変形します。",
+      "hint": "中の平方数4は、何を二乗した数か確認します。",
+      "sourceRefs": [
+        "word-p-000439",
+        "word-p-000440",
+        "word-p-000441"
+      ],
+      "action": "expression",
+      "role": "example",
+      "itemId": "n10-q09-left",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-q09-left-result",
+      "requires": [
+        "n10-08-result",
+        "n10-04-result"
+      ],
+      "knownRefs": [
+        "n10-04-result",
+        "n10-08-result"
+      ],
+      "resolvedFormula": "\\sqrt8=\\sqrt4\\sqrt2=2\\sqrt2"
+    },
+    {
+      "id": "n10-q09-right",
+      "unit": "n10",
+      "stageId": "n10-stage-05",
+      "goal": "右の項も同じ方法で変形する",
+      "before": "$50=25\\cdot2$ を使い、平方数25の非負の平方根を外へ出します。",
+      "formula": "\\sqrt{50}=\\sqrt{25}\\sqrt2=\\square",
+      "answer": "5\\sqrt2",
+      "wrong": [
+        [
+          "25\\sqrt2",
+          "外へ出すのは平方根です。"
+        ],
+        [
+          "5\\sqrt{10}",
+          "残す因子は2です。"
+        ]
+      ],
+      "after": "左右の項が、同じ根号の部分をもつ形になりました。",
+      "hint": "25の非負の平方根を求めます。",
+      "sourceRefs": [
+        "word-p-000441"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n10-q09-right",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-q09-right-result",
+      "requires": [
+        "n10-q09-left-result",
+        "n10-04-result"
+      ],
+      "knownRefs": [
+        "n10-04-result"
+      ],
+      "resolvedFormula": "\\sqrt{50}=\\sqrt{25}\\sqrt2=5\\sqrt2"
+    },
+    {
+      "id": "n10-09",
+      "unit": "n10",
+      "stageId": "n10-stage-05",
+      "goal": "足し算を保って元の式へ戻す",
+      "before": "各項の変形を、元の足し算の位置に戻します。この段階では、まだ二項を足し合わせません。",
+      "formula": "\\sqrt8+\\sqrt{50}=\\square",
+      "answer": "2\\sqrt2+5\\sqrt2",
+      "wrong": [
+        [
+          "\\sqrt{58}",
+          "根号の和を一つの根号へまとめる公式は使っていません。"
+        ],
+        [
+          "2\\sqrt2+25\\sqrt2",
+          "右の平方数の平方根を係数にします。"
+        ],
+        [
+          "2\\sqrt2+5\\sqrt{10}",
+          "二つの項の残りの根号を確認します。"
+        ]
+      ],
+      "after": "次は共通する根号の部分を一つのまとまりとして、係数を集めます。",
+      "hint": "左の項と右の項を、それぞれ直前の結果へ置き換えます。",
+      "sourceRefs": [
+        "word-p-000441"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n10-09",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-09-result",
+      "requires": [
+        "n10-q09-right-result",
+        "n10-04-result"
+      ],
+      "knownRefs": [
+        "n10-04-result"
+      ],
+      "resolvedFormula": "\\sqrt8+\\sqrt{50}=2\\sqrt2+5\\sqrt2"
+    },
+    {
+      "id": "n10-q10-coefficients",
+      "unit": "n10",
+      "stageId": "n10-stage-05",
+      "goal": "同じまとまりの係数を足す",
+      "before": "共通する $\\sqrt2$ を分配法則でくくると、$2\\sqrt2+5\\sqrt2=(2+5)\\sqrt2$ です。括弧の中だけを計算します。",
+      "formula": "(2+5)\\sqrt2=\\square\\sqrt2",
+      "answer": "7",
+      "wrong": [
+        [
+          "10",
+          "足し算と掛け算を区別します。"
+        ],
+        [
+          "3",
+          "元の式は差ではなく和です。"
+        ]
+      ],
+      "after": "根号の部分は変えずに、係数だけをまとめました。",
+      "hint": "同じまとまりが何個あるかを数えます。",
+      "sourceRefs": [
+        "word-p-000442"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n10-q10-coefficients",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-q10-coefficients-result",
+      "requires": [
+        "n10-09-result",
+        "n10-04-result"
+      ],
+      "knownRefs": [
+        "n10-04-result"
+      ],
+      "resolvedFormula": "(2+5)\\sqrt2=7\\sqrt2"
+    },
+    {
+      "id": "n10-10",
+      "unit": "n10",
+      "stageId": "n10-stage-05",
+      "goal": "和の最終結果を答える",
+      "before": "求めた係数と、共通していた根号の部分を合わせて元の式の答えにします。",
+      "formula": "\\sqrt8+\\sqrt{50}=\\square",
+      "answer": "7\\sqrt2",
+      "wrong": [
+        [
+          "7\\sqrt4",
+          "根号の中身は足し合わせていません。"
+        ],
+        [
+          "7\\sqrt{2+2}",
+          "足したのは数の係数です。"
+        ],
+        [
+          "3\\sqrt2",
+          "係数の足し算を確認します。"
+        ]
+      ],
+      "after": "積の性質は各項の変形に使い、足し算の処理には分配法則を使いました。",
+      "hint": "直前に求めた係数をそのまま使います。",
+      "sourceRefs": [
+        "word-p-000442"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n10-10",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-10-result",
+      "requires": [
+        "n10-q10-coefficients-result",
+        "n10-04-result"
+      ],
+      "knownRefs": [
+        "n10-04-result"
+      ],
+      "resolvedFormula": "\\sqrt8+\\sqrt{50}=7\\sqrt2"
+    },
+    {
+      "id": "n10-q11-formula",
+      "unit": "n10",
+      "stageId": "n10-stage-06",
+      "goal": "平方の公式を対象に対応させる",
+      "before": "例題は $(\\sqrt2-\\sqrt3)^2$。既習の公式で $A=\\sqrt2,B=\\sqrt3$ と対応させます。使う公式を選びます。",
+      "formula": "\\square",
+      "answer": "(A-B)^2=A^2-2AB+B^2",
+      "wrong": [
+        [
+          "(A-B)^2=A^2-B^2",
+          "平方には二つの交差項があります。"
+        ],
+        [
+          "(A-B)^2=A^2+2AB+B^2",
+          "元の式は和ではなく差です。"
+        ]
+      ],
+      "after": "選んだ公式のAとBへ、二つの根号を代入します。",
+      "hint": "同じ差を2回掛けたときの四つの項を思い出します。",
+      "sourceRefs": [
+        "word-p-000444",
+        "word-p-000445"
+      ],
+      "action": "judgment",
+      "role": "example",
+      "itemId": "n10-q11-formula",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-q11-formula-result",
+      "requires": [
+        "n10-10-result",
+        "n10-04-result"
+      ],
+      "knownRefs": [
+        "n10-04-result",
+        "n10-10-result"
+      ],
+      "resolvedFormula": "(A-B)^2=A^2-2AB+B^2"
+    },
+    {
+      "id": "n10-11",
+      "unit": "n10",
+      "stageId": "n10-stage-06",
+      "goal": "公式へ代入して展開する",
+      "before": "$(\\sqrt2)^2=2$、$(\\sqrt3)^2=3$ です。中項の係数と符号を残し、根号の積は次の段階へ残します。",
+      "formula": "(\\sqrt2-\\sqrt3)^2=\\square",
+      "answer": "2-2\\sqrt2\\sqrt3+3",
+      "wrong": [
+        [
+          "2+2\\sqrt2\\sqrt3+3",
+          "差の平方なので中項の符号を確認します。"
+        ],
+        [
+          "2-\\sqrt2\\sqrt3+3",
+          "中項には二つの交差項の係数があります。"
+        ],
+        [
+          "2-2\\sqrt2\\sqrt3+9",
+          "最後の項は√3の平方です。"
+        ]
+      ],
+      "after": "次は根号の積と、普通の数の和を別々に計算します。",
+      "hint": "公式の三項と、A/Bの対応を保ちます。",
+      "sourceRefs": [
+        "word-p-000445"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n10-11",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-11-result",
+      "requires": [
+        "n10-q11-formula-result",
+        "n10-04-result"
+      ],
+      "knownRefs": [
+        "n10-04-result"
+      ],
+      "resolvedFormula": "(\\sqrt2-\\sqrt3)^2=2-2\\sqrt2\\sqrt3+3"
+    },
+    {
+      "id": "n10-q12-product",
+      "unit": "n10",
+      "stageId": "n10-stage-06",
+      "goal": "中項の根号の積を整理する",
+      "before": "証明済みの積の性質を、中項の $\\sqrt2\\sqrt3$ に使います。外の係数 $-2$ はそのまま残します。",
+      "formula": "\\sqrt2\\sqrt3=\\square",
+      "answer": "\\sqrt6",
+      "wrong": [
+        [
+          "\\sqrt5",
+          "元の演算は積です。"
+        ],
+        [
+          "6",
+          "根号の積を一つの根号にする段階です。"
+        ]
+      ],
+      "after": "残った普通の数は $2+3=5$ です。係数と合わせて元の式をまとめます。",
+      "hint": "根号の中の数どうしを掛けます。",
+      "sourceRefs": [
+        "word-p-000446"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n10-q12-product",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-q12-product-result",
+      "requires": [
+        "n10-11-result",
+        "n10-04-result"
+      ],
+      "knownRefs": [
+        "n10-04-result"
+      ],
+      "resolvedFormula": "\\sqrt2\\sqrt3=\\sqrt6"
+    },
+    {
+      "id": "n10-12",
+      "unit": "n10",
+      "stageId": "n10-stage-06",
+      "goal": "定数と中項をまとめる",
+      "before": "定数の和と、整理した中項を合わせます。中項の $-2$ は元の公式から残っている係数です。",
+      "formula": "(\\sqrt2-\\sqrt3)^2=\\square",
+      "answer": "5-2\\sqrt6",
+      "wrong": [
+        [
+          "5+2\\sqrt6",
+          "中項は負です。"
+        ],
+        [
+          "5-\\sqrt6",
+          "中項の係数を落とさないようにします。"
+        ],
+        [
+          "6-2\\sqrt6",
+          "普通の数の和を確認します。"
+        ]
+      ],
+      "after": "公式の選択→代入→根号の積→同類項の順で進めました。",
+      "hint": "直前の二種類の計算結果を合わせます。",
+      "sourceRefs": [
+        "word-p-000446"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n10-12",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-12-result",
+      "requires": [
+        "n10-q12-product-result",
+        "n10-04-result"
+      ],
+      "knownRefs": [
+        "n10-04-result"
+      ],
+      "resolvedFormula": "(\\sqrt2-\\sqrt3)^2=5-2\\sqrt6"
+    },
+    {
+      "id": "n10-q13-identity",
+      "unit": "n10",
+      "stageId": "n10-stage-07",
+      "goal": "和と差の積の構造を見つける",
+      "before": "例題は $(\\sqrt7+\\sqrt2)(\\sqrt7-\\sqrt2)$。$A=\\sqrt7,B=\\sqrt2$ と対応する和と差の積です。使う公式を選びます。",
+      "formula": "\\square",
+      "answer": "(A+B)(A-B)=A^2-B^2",
+      "wrong": [
+        [
+          "(A+B)(A-B)=A^2+B^2",
+          "交差項は消え、B²の符号は負です。"
+        ],
+        [
+          "(A+B)(A-B)=(A-B)^2",
+          "二つの括弧は同じではありません。"
+        ]
+      ],
+      "after": "公式へ代入すると、根号の平方だけが残ります。",
+      "hint": "展開すると+ABと-ABが打ち消し合います。",
+      "sourceRefs": [
+        "word-p-000448",
+        "word-p-000449"
+      ],
+      "action": "judgment",
+      "role": "example",
+      "itemId": "n10-q13-identity",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-q13-identity-result",
+      "requires": [
+        "n10-12-result",
+        "n10-04-result"
+      ],
+      "knownRefs": [
+        "n10-04-result",
+        "n10-12-result"
+      ],
+      "resolvedFormula": "(A+B)(A-B)=A^2-B^2"
+    },
+    {
+      "id": "n10-13",
+      "unit": "n10",
+      "stageId": "n10-stage-07",
+      "goal": "平方差を計算する",
+      "before": "$(\\sqrt7)^2-(\\sqrt2)^2$ の二つの平方を定義で置き換え、差を計算します。",
+      "formula": "(\\sqrt7+\\sqrt2)(\\sqrt7-\\sqrt2)=\\square",
+      "answer": "7-2=5",
+      "wrong": [
+        [
+          "7+2=9",
+          "平方差なので最後は引き算です。"
+        ],
+        [
+          "7-\\sqrt{14}",
+          "打ち消し合う交差項を残していませんか。"
+        ],
+        [
+          "7-4=3",
+          "√2の平方は中の数に戻ります。"
+        ]
+      ],
+      "after": "記録する道具は $(A+B)(A-B)=A^2-B^2$ です。今回の根号の和に、対応する差を掛けると根号がなくなりました。この仕組みを分母へ使います。",
+      "hint": "平方の定義を両方の項へ適用します。",
+      "sourceRefs": [
+        "word-p-000449",
+        "word-p-000450"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n10-13",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-13-result",
+      "requires": [
+        "n10-q13-identity-result",
+        "n10-04-result"
+      ],
+      "knownRefs": [
+        "n10-04-result"
+      ],
+      "resolvedFormula": "(\\sqrt7+\\sqrt2)(\\sqrt7-\\sqrt2)=7-2=5"
+    },
+    {
+      "id": "n10-14",
+      "unit": "n10",
+      "stageId": "n10-stage-08",
+      "goal": "分数の値を保つ操作を確認する",
+      "before": "例題は $1/(2\\sqrt3)$ の分母の根号をなくすことです。分母だけを変えると値が変わります。$c\\ne0$ なら $c/c=1$ なので、この1を掛ける方法を文章で選びます。",
+      "formula": null,
+      "answer": "0でない同じ数を分子・分母の両方に掛ける",
+      "wrong": [
+        [
+          "分母だけに同じ数を掛ける",
+          "分母だけを掛けると分子との比が変わります。"
+        ],
+        [
+          "分子だけに平方根を足す",
+          "分子へ足す操作では比が保たれません。"
+        ],
+        [
+          "分母から根号をそのまま消す",
+          "根号は理由なく消せません。"
+        ]
+      ],
+      "after": "$c\\ne0$ のとき $c/c=1$。分子と分母の両方へ同じ0でない数を掛けるので、元の分数と等しいまま変形できます。",
+      "hint": "分数全体へ1を掛けることと同じになる操作を考えます。",
+      "sourceRefs": [
+        "word-p-000453",
+        "word-p-000454",
+        "word-p-000455"
+      ],
+      "action": "meaning",
+      "role": "example",
+      "itemId": "n10-14",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-14-result",
+      "requires": [
+        "n10-13-result"
+      ],
+      "knownRefs": [
+        "n10-13-result"
+      ]
+    },
+    {
+      "id": "n10-q15-factor",
+      "unit": "n10",
+      "stageId": "n10-stage-08",
+      "goal": "分母の根号を平方にする因子",
+      "before": "分母の $\\sqrt3$ と掛けて平方を作る因子を $c$ とします。どの因子を掛けるか、$c$ の式を選びます。分母が0になる操作はできません。",
+      "formula": "\\square",
+      "answer": "c=\\sqrt3",
+      "wrong": [
+        [
+          "c=3",
+          "同じ根号の二つの積を平方としてまとめます。"
+        ],
+        [
+          "c=\\sqrt2",
+          "同じ数を二つ掛ける形にします。"
+        ]
+      ],
+      "after": "$c=\\sqrt3$ なら、$\\sqrt3\\times\\sqrt3=(\\sqrt3)^2$ になります。また $\\sqrt3>0$ なので $c$ は0ではありません。同じ因子を分子にも分母にも掛けます。",
+      "hint": "二乗は同じ数を二つ掛ける形です。",
+      "sourceRefs": [
+        "word-p-000456",
+        "word-p-000457"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n10-q15-factor",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-q15-factor-result",
+      "requires": [
+        "n10-14-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "c=\\sqrt3"
+    },
+    {
+      "id": "n10-15",
+      "unit": "n10",
+      "stageId": "n10-stage-08",
+      "goal": "掛けた直後の等価な分数を作る",
+      "before": "元の分数へ、選んだ数の「同じ数÷同じ数」を掛けます。分子と分母をそれぞれまとめ、分母では根号の二乗を残します。",
+      "formula": "\\square",
+      "answer": "\\frac1{2\\sqrt3}\\cdot\\frac{\\sqrt3}{\\sqrt3}=\\frac{\\sqrt3}{2(\\sqrt3)^2}",
+      "wrong": [
+        [
+          "\\frac1{2\\sqrt3}\\cdot\\sqrt3",
+          "因子を分母にも掛ける必要があります。"
+        ],
+        [
+          "\\frac1{2\\sqrt3}\\cdot\\frac3{\\sqrt3}",
+          "掛ける分数が1に等しいか確認します。"
+        ],
+        [
+          "\\frac1{2\\sqrt3}\\cdot\\frac{\\sqrt2}{\\sqrt2}",
+          "分母の根号を平方にできる同じ因子を使います。"
+        ]
+      ],
+      "after": "元の分数と等しいことを示したまま、分母の平方を計算できる形になりました。",
+      "hint": "分子と分母の双方へ同じ因子があるか確かめます。",
+      "sourceRefs": [
+        "word-p-000457"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n10-15",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-15-result",
+      "requires": [
+        "n10-q15-factor-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "\\frac1{2\\sqrt3}\\cdot\\frac{\\sqrt3}{\\sqrt3}=\\frac{\\sqrt3}{2(\\sqrt3)^2}"
+    },
+    {
+      "id": "n10-q16-denominator",
+      "unit": "n10",
+      "stageId": "n10-stage-08",
+      "goal": "分母全体の値を計算する",
+      "before": "分母は $2(\\sqrt3)^2$ です。根号の平方を先に計算し、元からあった係数2を掛けます。",
+      "formula": "2(\\sqrt3)^2=\\square",
+      "answer": "6",
+      "wrong": [
+        [
+          "3",
+          "元からあった係数2も残します。"
+        ],
+        [
+          "2",
+          "平方の値を掛ける操作が残っています。"
+        ]
+      ],
+      "after": "分子は変えず、求めた分母の値を戻します。",
+      "hint": "根号の平方と、その外の係数を別々に扱います。",
+      "sourceRefs": [
+        "word-p-000458"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n10-q16-denominator",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-q16-denominator-result",
+      "requires": [
+        "n10-15-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "2(\\sqrt3)^2=6"
+    },
+    {
+      "id": "n10-16",
+      "unit": "n10",
+      "stageId": "n10-stage-08",
+      "goal": "分母の根号のない形を得る",
+      "before": "直前の分数で、分母だけを計算結果に置き換えます。分子にも同じ因子を掛けたことを確認します。",
+      "formula": "\\frac1{2\\sqrt3}=\\square",
+      "answer": "\\frac{\\sqrt3}{6}",
+      "wrong": [
+        [
+          "\\frac{\\sqrt3}{2}",
+          "元の係数2を分母に含めます。"
+        ],
+        [
+          "\\frac3{6}",
+          "分子は掛けた因子がそのまま残っています。"
+        ],
+        [
+          "\\frac1{6\\sqrt3}",
+          "元の分数と同じ形のままでは根号がなくなっていません。"
+        ]
+      ],
+      "after": "このように値を変えず、分母に根号のない形に直すことを **分母を有理化する** といいます。操作の根拠と名前を組にして記録します。",
+      "hint": "分子と分母の現在の値をそのまま使います。",
+      "sourceRefs": [
+        "word-p-000458",
+        "word-p-000459"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n10-16",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-16-result",
+      "requires": [
+        "n10-q16-denominator-result"
+      ],
+      "knownRefs": [],
+      "resolvedFormula": "\\frac1{2\\sqrt3}=\\frac{\\sqrt3}{6}"
+    },
+    {
+      "id": "n10-q17-factor",
+      "unit": "n10",
+      "stageId": "n10-stage-09",
+      "goal": "和の分母へ対応する差を選ぶ",
+      "before": "例題は $\\sqrt3/(\\sqrt3+\\sqrt2)$。分母全体を $A+B$ と見て、直前に確認した和と差の積を作る因子を選びます。",
+      "formula": "(\\sqrt3+\\sqrt2)\\times\\square",
+      "answer": "\\sqrt3-\\sqrt2",
+      "wrong": [
+        [
+          "\\sqrt3+\\sqrt2",
+          "和どうしの積だと交差項が残ります。"
+        ],
+        [
+          "\\sqrt3",
+          "分母全体の和に対応する因子を選びます。"
+        ]
+      ],
+      "after": "選んだ差を分子にも分母にも掛けます。その前に0でないことを確認します。",
+      "hint": "AとBの位置を変えずに、間の符号を差にします。",
+      "sourceRefs": [
+        "word-p-000461",
+        "word-p-000462",
+        "word-p-000463"
+      ],
+      "action": "judgment",
+      "role": "example",
+      "itemId": "n10-q17-factor",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-q17-factor-result",
+      "requires": [
+        "n10-16-result",
+        "n10-13-result",
+        "n10-14-result"
+      ],
+      "knownRefs": [
+        "n10-13-result",
+        "n10-14-result",
+        "n10-16-result"
+      ],
+      "resolvedFormula": "(\\sqrt3+\\sqrt2)\\times\\sqrt3-\\sqrt2"
+    },
+    {
+      "id": "n10-q17-nonzero",
+      "unit": "n10",
+      "stageId": "n10-stage-09",
+      "goal": "掛ける差が0でない根拠",
+      "before": "$3>2$ で、二つの根号は正です。非負の平方の比較から $\\sqrt3>\\sqrt2$。両辺から $\\sqrt2$ を引いて差の符号を判断します。",
+      "formula": "\\sqrt3-\\sqrt2\\ \\square\\ 0",
+      "answer": ">",
+      "wrong": [
+        [
+          "=",
+          "平方の異なる非負の二数は等しくありません。"
+        ],
+        [
+          "<",
+          "直前の大小から同じ数を引きます。"
+        ]
+      ],
+      "after": "この差は0でないので、同じ差を分子と分母に掛けて値を保てます。",
+      "hint": "右辺で同じ数どうしを引いた結果を使います。",
+      "sourceRefs": [
+        "word-p-000463"
+      ],
+      "action": "judgment",
+      "role": "substep",
+      "itemId": "n10-q17-nonzero",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-q17-nonzero-result",
+      "requires": [
+        "n10-q17-factor-result",
+        "n10-13-result",
+        "n10-14-result"
+      ],
+      "knownRefs": [
+        "n10-13-result",
+        "n10-14-result"
+      ],
+      "resolvedFormula": "\\sqrt3-\\sqrt2\\ >\\ 0"
+    },
+    {
+      "id": "n10-17",
+      "unit": "n10",
+      "stageId": "n10-stage-09",
+      "goal": "選んだ因子で等価な分数を作る",
+      "before": "元の分数へ、いま選んだ差を分子・分母の両方に置いた「1」を掛けます。まだ展開は行いません。",
+      "formula": "\\square",
+      "answer": "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt3-\\sqrt2}{\\sqrt3-\\sqrt2}",
+      "wrong": [
+        [
+          "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt3+\\sqrt2}{\\sqrt3+\\sqrt2}",
+          "和に和を掛けても平方差にはなりません。"
+        ],
+        [
+          "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt3}{\\sqrt3}",
+          "和全体に対応する差を使います。"
+        ],
+        [
+          "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt2}{\\sqrt2}",
+          "分母全体に対応する差を使います。"
+        ]
+      ],
+      "after": "次に分母、続いて分子と、計算対象を分けて進めます。",
+      "hint": "掛ける因子が分子と分母で同じか確認します。",
+      "sourceRefs": [
+        "word-p-000463"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n10-17",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-17-result",
+      "requires": [
+        "n10-q17-nonzero-result",
+        "n10-13-result",
+        "n10-14-result"
+      ],
+      "knownRefs": [
+        "n10-13-result",
+        "n10-14-result"
+      ],
+      "resolvedFormula": "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt3-\\sqrt2}{\\sqrt3-\\sqrt2}"
+    },
+    {
+      "id": "n10-18",
+      "unit": "n10",
+      "stageId": "n10-stage-10",
+      "goal": "分母を平方差で計算する",
+      "before": "分母は $(\\sqrt3+\\sqrt2)(\\sqrt3-\\sqrt2)$ です。和と差の積を平方差にしてから数の差を求めます。",
+      "formula": "(\\sqrt3+\\sqrt2)(\\sqrt3-\\sqrt2)=\\square",
+      "answer": "3-2=1",
+      "wrong": [
+        [
+          "3+2=5",
+          "平方差なので二つの平方を引きます。"
+        ],
+        [
+          "3-\\sqrt6",
+          "交差する項は打ち消し合います。"
+        ],
+        [
+          "\\sqrt3-\\sqrt2",
+          "平方根を2乗して中の数へ戻します。"
+        ]
+      ],
+      "after": "分母の値が求まりました。次は分子だけを展開します。",
+      "hint": "A²-B²の二つの平方に対応させます。",
+      "sourceRefs": [
+        "word-p-000464"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n10-18",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-18-result",
+      "requires": [
+        "n10-17-result"
+      ],
+      "knownRefs": [
+        "n10-17-result"
+      ],
+      "resolvedFormula": "(\\sqrt3+\\sqrt2)(\\sqrt3-\\sqrt2)=3-2=1"
+    },
+    {
+      "id": "n10-q19-distribute",
+      "unit": "n10",
+      "stageId": "n10-stage-10",
+      "goal": "分子へ分配法則を適用する",
+      "before": "分子は $\\sqrt3(\\sqrt3-\\sqrt2)$。外の因子を、括弧内の両項へ掛けます。",
+      "formula": "\\sqrt3(\\sqrt3-\\sqrt2)=\\square",
+      "answer": "\\sqrt3\\sqrt3-\\sqrt3\\sqrt2",
+      "wrong": [
+        [
+          "\\sqrt3\\sqrt3-\\sqrt2",
+          "外の因子は二項目にも掛かります。"
+        ],
+        [
+          "\\sqrt3\\sqrt3+\\sqrt3\\sqrt2",
+          "元の差の符号を残します。"
+        ]
+      ],
+      "after": "平方と根号の積をそれぞれ計算し、分母の結果と合わせます。",
+      "hint": "二つの項の両方に同じ因子を掛けます。",
+      "sourceRefs": [
+        "word-p-000465"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n10-q19-distribute",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-q19-distribute-result",
+      "requires": [
+        "n10-18-result",
+        "n10-17-result"
+      ],
+      "knownRefs": [
+        "n10-17-result"
+      ],
+      "resolvedFormula": "\\sqrt3(\\sqrt3-\\sqrt2)=\\sqrt3\\sqrt3-\\sqrt3\\sqrt2"
+    },
+    {
+      "id": "n10-19",
+      "unit": "n10",
+      "stageId": "n10-stage-10",
+      "goal": "分数全体を最後まで整理する",
+      "before": "分子の最初の積は $3$、二つ目の積は $\\sqrt6$ です。分母は直前に求めた $1$ なので、分子の差がそのまま全体の値になります。",
+      "formula": "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}=\\square",
+      "answer": "3-\\sqrt6",
+      "wrong": [
+        [
+          "3+\\sqrt6",
+          "元の括弧の差の符号を保ちます。"
+        ],
+        [
+          "1-\\sqrt6",
+          "分子の最初の積は√3の平方です。"
+        ],
+        [
+          "3-2\\sqrt6",
+          "二つ目の積に余分な係数を付けません。"
+        ]
+      ],
+      "after": "元の分数→1を掛ける→分母と分子の計算→最終形を、同じ等式記録として残します。",
+      "hint": "分子の二項と、分母1を合わせます。",
+      "sourceRefs": [
+        "word-p-000465"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n10-19",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-19-result",
+      "requires": [
+        "n10-q19-distribute-result",
+        "n10-17-result"
+      ],
+      "knownRefs": [
+        "n10-17-result"
+      ],
+      "resolvedFormula": "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}=3-\\sqrt6"
+    },
+    {
+      "id": "n10-q20-factor",
+      "unit": "n10",
+      "stageId": "n10-stage-11",
+      "goal": "支援を減らして因子を選ぶ",
+      "before": "例題は $(2-\\sqrt3)/(2+\\sqrt3)$ の有理化です。分母全体が和なので、平方差を作る因子を自分で選びます。",
+      "formula": "(2+\\sqrt3)\\times\\square",
+      "answer": "2-\\sqrt3",
+      "wrong": [
+        [
+          "2+\\sqrt3",
+          "分母の和に対応する差を使います。"
+        ],
+        [
+          "\\sqrt3",
+          "和全体を平方差へ変える因子を選びます。"
+        ]
+      ],
+      "after": "$2^2=4>3$ と $2,\\sqrt3>0$ から、選んだ差は正で0ではありません。分子・分母へ同じ差を掛けられます。",
+      "hint": "直前の例題のA+Bに、今回の二項を対応させます。",
+      "sourceRefs": [
+        "word-p-000467",
+        "word-p-000468"
+      ],
+      "action": "judgment",
+      "role": "example",
+      "itemId": "n10-q20-factor",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-q20-factor-result",
+      "requires": [
+        "n10-19-result",
+        "n10-13-result",
+        "n10-14-result"
+      ],
+      "knownRefs": [
+        "n10-13-result",
+        "n10-14-result",
+        "n10-19-result"
+      ],
+      "resolvedFormula": "(2+\\sqrt3)\\times2-\\sqrt3"
+    },
+    {
+      "id": "n10-20",
+      "unit": "n10",
+      "stageId": "n10-stage-11",
+      "goal": "掛けた直後の分数を作る",
+      "before": "分子は同じ差どうしの積になり、分母は和と差の積になります。分母を平方差へ移した段階まで書きます。",
+      "formula": "\\square",
+      "answer": "\\frac{(2-\\sqrt3)^2}{(2+\\sqrt3)(2-\\sqrt3)}=\\frac{(2-\\sqrt3)^2}{4-3}",
+      "wrong": [
+        [
+          "\\frac{(2-\\sqrt3)^2}{(2+\\sqrt3)^2}",
+          "分母は和と差の積であり、和の平方ではありません。"
+        ],
+        [
+          "\\frac{2-\\sqrt3}{2+\\sqrt3}\\cdot\\frac{2+\\sqrt3}{2+\\sqrt3}",
+          "使う因子は差です。"
+        ],
+        [
+          "\\frac{(2-\\sqrt3)^2}{4+3}",
+          "平方差の符号を確認します。"
+        ]
+      ],
+      "after": "次は、分母と分子を別々に計算します。",
+      "hint": "分子・分母それぞれに掛けた因子を確かめます。",
+      "sourceRefs": [
+        "word-p-000468"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n10-20",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-20-result",
+      "requires": [
+        "n10-q20-factor-result",
+        "n10-13-result",
+        "n10-14-result"
+      ],
+      "knownRefs": [
+        "n10-13-result",
+        "n10-14-result"
+      ],
+      "resolvedFormula": "\\frac{(2-\\sqrt3)^2}{(2+\\sqrt3)(2-\\sqrt3)}=\\frac{(2-\\sqrt3)^2}{4-3}"
+    },
+    {
+      "id": "n10-q21-denominator",
+      "unit": "n10",
+      "stageId": "n10-stage-11",
+      "goal": "分母の平方差を計算する",
+      "before": "直前の分母 $4-3$ を計算します。分子の平方は次の段階に残します。",
+      "formula": "4-3=\\square",
+      "answer": "1",
+      "wrong": [
+        [
+          "7",
+          "平方差は引き算です。"
+        ],
+        [
+          "-1",
+          "左の数から右の数を引きます。"
+        ]
+      ],
+      "after": "分母が1なので、分子を計算すれば全体の値が決まります。",
+      "hint": "元の式の差の順序を保ちます。",
+      "sourceRefs": [
+        "word-p-000469"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n10-q21-denominator",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-q21-denominator-result",
+      "requires": [
+        "n10-20-result",
+        "n10-13-result",
+        "n10-14-result"
+      ],
+      "knownRefs": [
+        "n10-13-result",
+        "n10-14-result"
+      ],
+      "resolvedFormula": "4-3=1"
+    },
+    {
+      "id": "n10-q21-expand",
+      "unit": "n10",
+      "stageId": "n10-stage-12",
+      "goal": "分子の平方を三項へ展開する",
+      "before": "分子は $(2-\\sqrt3)^2$。先ほど使った差の平方の公式へ $A=2,B=\\sqrt3$ を入れます。",
+      "formula": "(2-\\sqrt3)^2=\\square",
+      "answer": "4-4\\sqrt3+3",
+      "wrong": [
+        [
+          "4+4\\sqrt3+3",
+          "差の平方の中項は負です。"
+        ],
+        [
+          "4-2\\sqrt3+3",
+          "中項の係数は-2ABです。"
+        ]
+      ],
+      "after": "根号を含む項を残し、普通の数どうしを集めます。",
+      "hint": "公式の中項-2ABへ二つの数を代入します。",
+      "sourceRefs": [
+        "word-p-000469"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n10-q21-expand",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-q21-expand-result",
+      "requires": [
+        "n10-q21-denominator-result",
+        "n10-20-result",
+        "n10-q11-formula-result"
+      ],
+      "knownRefs": [
+        "n10-20-result",
+        "n10-q21-denominator-result",
+        "n10-q11-formula-result"
+      ],
+      "resolvedFormula": "(2-\\sqrt3)^2=4-4\\sqrt3+3"
+    },
+    {
+      "id": "n10-q21-constants",
+      "unit": "n10",
+      "stageId": "n10-stage-12",
+      "goal": "普通の数だけを合計する",
+      "before": "$4-4\\sqrt3+3$ の普通の数は $4$ と $3$。加法の交換・結合でまとめます。",
+      "formula": "(4+3)-4\\sqrt3=\\square-4\\sqrt3",
+      "answer": "7",
+      "wrong": [
+        [
+          "1",
+          "普通の数は差ではなく和です。"
+        ],
+        [
+          "12",
+          "二つの数は掛けるのではなく足します。"
+        ]
+      ],
+      "after": "分母1と合わせて、元の有理化の答えをまとめます。",
+      "hint": "根号を含まない二項を足します。",
+      "sourceRefs": [
+        "word-p-000469"
+      ],
+      "action": "calculation",
+      "role": "substep",
+      "itemId": "n10-q21-constants",
+      "anchor": false,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-q21-constants-result",
+      "requires": [
+        "n10-q21-expand-result",
+        "n10-20-result",
+        "n10-q21-denominator-result",
+        "n10-q11-formula-result"
+      ],
+      "knownRefs": [
+        "n10-20-result",
+        "n10-q21-denominator-result",
+        "n10-q11-formula-result"
+      ],
+      "resolvedFormula": "(4+3)-4\\sqrt3=7-4\\sqrt3"
+    },
+    {
+      "id": "n10-21",
+      "unit": "n10",
+      "stageId": "n10-stage-12",
+      "goal": "有理化の最終結果を完成させる",
+      "before": "分母が1で、分子の計算も終わりました。元の分数に等しい最終形を選びます。",
+      "formula": "\\frac{2-\\sqrt3}{2+\\sqrt3}=\\square",
+      "answer": "7-4\\sqrt3",
+      "wrong": [
+        [
+          "7+4\\sqrt3",
+          "差の平方の中項の符号を保ちます。"
+        ],
+        [
+          "7-2\\sqrt3",
+          "中項の係数を確認します。"
+        ],
+        [
+          "1-4\\sqrt3",
+          "普通の数の和を確認します。"
+        ]
+      ],
+      "after": "掛ける因子の判断、0でない条件、分母の処理、分子の展開を順に進めました。次の不等式では、変形で保つ対象を等しさから大小へ広げます。",
+      "hint": "直前に確定した分子と分母をそのまま使います。",
+      "sourceRefs": [
+        "word-p-000469",
+        "word-p-000470"
+      ],
+      "action": "expression",
+      "role": "substep",
+      "itemId": "n10-21",
+      "anchor": true,
+      "extra": {},
+      "known": [],
+      "resultId": "n10-21-result",
+      "requires": [
+        "n10-q21-constants-result",
+        "n10-20-result",
+        "n10-q21-denominator-result",
+        "n10-q11-formula-result"
+      ],
+      "knownRefs": [
+        "n10-20-result",
+        "n10-q21-denominator-result",
+        "n10-q11-formula-result"
+      ],
+      "resolvedFormula": "\\frac{2-\\sqrt3}{2+\\sqrt3}=7-4\\sqrt3"
+    }
+  ]
+}

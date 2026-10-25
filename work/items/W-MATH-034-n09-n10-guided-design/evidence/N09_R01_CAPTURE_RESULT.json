@@ -1,0 +1,13 @@
+{
+  "node": "R01_CAPTURE@n09",
+  "status": "PASS_BOUNDED",
+  "outputs": {
+    "source.fixed": "PASS",
+    "feedback.capture": "PASS"
+  },
+  "review": "Original source and current complete lesson inspected. N09 existing four Q08 prerequisites and original image reveal timing preserved; N10 proof assumptions and earlier repaired hints retained.",
+  "receiptArtifacts": [
+    "848b7b8134d9f5f87006647e6f090814ae6aed92b17af9d7b463ec8da6cc2415",
+    "a7a7346d7a38b740f168c95031c9f34f132fba2443295e09aaa5a50336c2ba2c"
+  ]
+}

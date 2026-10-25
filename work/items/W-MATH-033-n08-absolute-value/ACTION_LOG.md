@@ -18,3 +18,5 @@
 最終内部QA: source ea47dd97 / CI40162373237 SUCCESS。620 learner・7専用・39 authoring・buildと、4幅の全31正答/74誤答・全履歴・v1/v2/v3移行・廃止誤答再開を確認。実画像監査とR07/G2を同じsourceへ結び、publication-v2 intentを記録。mainの公開holdを493b62a8の厳密source pinへ置換し、既存Pagesへの配信を開始。配信成功はまだ未記録。
 
 公開完了: run40162687421 SUCCESS。公開N08の31回答/74誤答/履歴/3版移行/廃止誤答再開の四幅検査、既存N07と第一タイトルのcompile/公開保護検査を完了。実HTTPSでsource ea47dd97、workflow493b62a8、IR hash、既存namespace、N07/第一タイトルの保持を照合。G3_HOSTを実台帳へ記録しG3_FINAL@n08へ進めた。N08受入や品質正例、学習fitを捏造していない。
+
+受入・学習: ユーザー原文「我觉得可以.然后机械学习。那下面直接N09，N10。」をN08 source ea47dd97の範囲付き受入と全体肯定1件に結んだ。fresh事後影響sweep、R08、L01実fit、Z01まで完了。11事例（否定7/肯定4）、3family、全体受入headは肯定だけのため作成保留。既存排版headを実fit、11例のencoder入力hashと全token処理を検証。モデルはOFFLINE_ONLY。N09/N10の承認・品質ラベルへ転用していない。

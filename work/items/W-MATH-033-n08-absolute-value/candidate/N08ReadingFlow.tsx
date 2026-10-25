@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { InlineMath } from 'react-katex'
 import { SemanticReading } from './SemanticReading'
-import { TypesetFormula } from './TypesetFormula'
+import { TypesetFormula, TypesetInlineMath } from './TypesetFormula'
 import { NumberedEquation } from './NumberedEquation'
 import { n08Presentation as data } from '../../data/textbook/math/numbers/n08Lesson'
 import { effectiveTextbookProgress, getTextbookChoices, isTextbookItemResolved, type TextbookUnitProgress } from '../../domain/textbook'
@@ -53,7 +53,9 @@ export function N08ReadingFlow({ unit, section, progress, onSummaryReached, onRe
   useEffect(() => { onSummaryReached?.(first < 0 && stageIndex === data.stages.length - 1) }, [first, stageIndex, onSummaryReached])
 
   function semantic(parts: readonly unknown[]) {
-    return <SemanticReading parts={parts as TextbookReadingPart[]} renderChoice={blank} />
+    return (parts as TextbookReadingPart[]).map((p, i) => p.type === 'math'
+      ? <span key={p.semanticId ?? i} data-semantic-id={p.semanticId}><TypesetInlineMath latex={p.latex.replace(/\\\s+$/, '')} sourceId={p.semanticId ?? 'n08-inline-' + i} unitId={unit.unitId} /></span>
+      : <SemanticReading key={p.semanticId ?? i} parts={[p]} renderChoice={blank} />)
   }
   function blank(id: string) {
     const item = items.find(i => i.id === id)!
@@ -129,7 +131,7 @@ export function N08ReadingFlow({ unit, section, progress, onSummaryReached, onRe
     const compiled = data.semantic.nodes.find(x => x.id === n.id)!
     const done = past || resolved(n)
     // Replace the unanswered equation with the completed relation group, once.
-    const before = done && n.interaction ? compiled.before.filter(b => b.id !== n.id + '-interaction') : compiled.before
+    const before = done && n.interaction ? compiled.before.filter(b => !b.id.startsWith(n.id + '-interaction')) : compiled.before
     return <div className="n08-thinking-step" data-node-id={n.id} key={n.id}>
       <div className="n08-step-caption"><span>{roles[n.role]}</span><strong>{n.goal}</strong></div>
       {before.map(renderBlock)}{done && after(n)}

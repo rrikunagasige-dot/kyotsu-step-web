@@ -11571,23 +11571,23 @@
       "choices": {
         "<": [
           {
-            "type": "text",
-            "text": "<",
-            "semanticId": "n08-display-00097"
+            "type": "math",
+            "latex": "<",
+            "semanticId": "n08-choice-display-97"
           }
         ],
         ">": [
           {
-            "type": "text",
-            "text": ">",
-            "semanticId": "n08-display-00098"
+            "type": "math",
+            "latex": ">",
+            "semanticId": "n08-choice-display-98"
           }
         ],
         "=": [
           {
-            "type": "text",
-            "text": "=",
-            "semanticId": "n08-display-00099"
+            "type": "math",
+            "latex": "=",
+            "semanticId": "n08-choice-display-99"
           }
         ]
       },
@@ -11761,9 +11761,9 @@
       "choices": {
         "0": [
           {
-            "type": "text",
-            "text": "0",
-            "semanticId": "n08-display-00123"
+            "type": "math",
+            "latex": "0",
+            "semanticId": "n08-choice-display-123"
           }
         ],
         "負": [
@@ -12074,23 +12074,23 @@
       "choices": {
         "<": [
           {
-            "type": "text",
-            "text": "<",
-            "semanticId": "n08-display-00160"
+            "type": "math",
+            "latex": "<",
+            "semanticId": "n08-choice-display-160"
           }
         ],
         ">": [
           {
-            "type": "text",
-            "text": ">",
-            "semanticId": "n08-display-00161"
+            "type": "math",
+            "latex": ">",
+            "semanticId": "n08-choice-display-161"
           }
         ],
         "=": [
           {
-            "type": "text",
-            "text": "=",
-            "semanticId": "n08-display-00162"
+            "type": "math",
+            "latex": "=",
+            "semanticId": "n08-choice-display-162"
           }
         ]
       },
@@ -12131,23 +12131,23 @@
       "choices": {
         "<": [
           {
-            "type": "text",
-            "text": "<",
-            "semanticId": "n08-display-00167"
+            "type": "math",
+            "latex": "<",
+            "semanticId": "n08-choice-display-167"
           }
         ],
         ">": [
           {
-            "type": "text",
-            "text": ">",
-            "semanticId": "n08-display-00168"
+            "type": "math",
+            "latex": ">",
+            "semanticId": "n08-choice-display-168"
           }
         ],
         "=": [
           {
-            "type": "text",
-            "text": "=",
-            "semanticId": "n08-display-00169"
+            "type": "math",
+            "latex": "=",
+            "semanticId": "n08-choice-display-169"
           }
         ]
       },

@@ -1,29 +1,28 @@
 {
   "work": "W-MATH-033",
   "engine_version": "1.0.0",
-  "ledger_head": "f7bf17383fec7cc5c285edc1c199a1ae08318076177502c8c0a45492f95263ca",
-  "work_status": "PROPOSED",
+  "ledger_head": "056689f0bd8e7d3ae7b46400ecc8214088fc3fca4047d860096171ebc6416227",
+  "work_status": "IMPLEMENTING",
   "profile": "material",
   "simulation": false,
-  "candidate_sha": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+  "candidate_sha": "d5d418e830099bb39086ae1cb466dc3466668984",
   "next": {
-    "status": "WAITING",
-    "reason": "USER_DECISION",
+    "status": "READY",
     "task": {
       "work_id": "W-MATH-033",
       "node": {
-        "id": "R05_APPROVAL@n08",
-        "stage_kind": "R05_APPROVAL",
-        "contract_kind": "R05_APPROVAL",
-        "actor": "USER",
+        "id": "R07_VERIFY@n08",
+        "stage_kind": "R07_VERIFY",
+        "contract_kind": "R07_VERIFY",
+        "actor": "TOOL",
         "depends_on": [
-          "R04_PROPOSAL@n08"
+          "R06_PATCH@n08"
         ],
         "required": [],
         "block": "n08",
         "release_unit": "n08",
         "watch": "integration",
-        "phase": "pre-design",
+        "phase": "post-implementation",
         "priority": 0,
         "source_refs": [
           "src/data/textbook/math/numbers/n08Lesson.ts",
@@ -40,14 +39,24 @@
           "src/components/textbook/n07-reading.css"
         ],
         "approval_scope_ref": "proposal",
-        "capability_requests": [],
-        "required_code_receipts": [],
+        "capability_requests": [
+          "math.verify",
+          "ir.verify",
+          "browser.verify",
+          "protected.verify"
+        ],
+        "required_code_receipts": [
+          "math.verify",
+          "ir.verify",
+          "browser.verify",
+          "protected.verify"
+        ],
         "required_ai_receipts": []
       },
-      "task_id": "717f2ef9e140da8c8b1b2390b660cef9bed017523123520421954831fc39b124",
-      "input_hash": "cef9e37dadaf72ad6cffb7ab37e04eb02e1ad712b4e0741d935ccfee2411457d",
+      "task_id": "18a72f0b9fa40cf6a75cadc83e6d75a504836bd716a09cacafc21fb424706aea",
+      "input_hash": "d90e026b436c1934eace27f780026862510cfb89bc91f52e224fd0c1fa708c87",
       "source_sha": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
-      "candidate_sha": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+      "candidate_sha": "d5d418e830099bb39086ae1cb466dc3466668984",
       "rules": {
         "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
         "governance/REVIEW_POLICY.json": "a71148f007a79b124385c7645e6bc01564bfa02b12152174883543f31f6ce72d",
@@ -86,11 +95,11 @@
         "work/items/W-MATH-033-n08-absolute-value/evidence/SOURCE_INDEX.json": "31e49387d8fa565a45ab06f2452e052f42c6a53296449816750886ef03d5369c"
       },
       "previous_results": {
-        "R04_PROPOSAL@n08": {
+        "R06_PATCH@n08": {
           "actor": "capability-runner",
-          "artifact": "fb857fc6809ee25eaf6fda038b9bf5ee9cf72b3a44ecb023ab7f91337cbf8ae9",
-          "input_hash": "04e5c284f05ad18adcabe4b8f35fb71d10fc7ea0a82c500269628d4833395b4b",
-          "node": "R04_PROPOSAL@n08",
+          "artifact": "276dc54f7acf41ab2658640852e5f14cb73e428155b919ae67de97af364e99e5",
+          "input_hash": "c0a7f3258e6c2e93d416da7ee64aa4ef83990d6465913ed690b247a4b678bb58",
+          "node": "R06_PATCH@n08",
           "verdict": "PASS"
         }
       },
@@ -401,7 +410,7 @@
       "capability_requests": [],
       "required_code_receipts": [],
       "required_ai_receipts": [],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "R06_PATCH@n08",
@@ -439,7 +448,7 @@
         "ir.compile"
       ],
       "required_ai_receipts": [],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "R07_VERIFY@n08",
@@ -785,7 +794,7 @@
     {
       "id": "W-MATH-033",
       "work": "W-MATH-033",
-      "version": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+      "version": "d5d418e830099bb39086ae1cb466dc3466668984",
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
     }
@@ -961,6 +970,11 @@
       "input_hash": "04e5c284f05ad18adcabe4b8f35fb71d10fc7ea0a82c500269628d4833395b4b",
       "node": "R04_PROPOSAL@n08",
       "receipt": "0e27a0c9199c3fca2268901b543c98023c1faf37efac5f3881bf994e242ef48f"
+    },
+    {
+      "input_hash": "c0a7f3258e6c2e93d416da7ee64aa4ef83990d6465913ed690b247a4b678bb58",
+      "node": "R06_PATCH@n08",
+      "receipt": "f2cf7f3a0fe9e12d9e8ba74c4a27ab71231b0ec22da34b8b2f2820c58a8dee11"
     }
   ],
   "release_acceptance": {

@@ -24,6 +24,7 @@ const stages=Array.from({length:12},(_,i)=>({id:'n08-stage-'+String(i+1).padStar
  sourceQuestionParts:[...prose(questionText[i]),{type:'math',latex:questionLatex[i],semanticId:'n08-question-'+(i+1)}]}));
 // Mixed original grading strings keep their old contract; render their prose and math separately.
 function choiceParts(s,isText){
+ if(/^[<>=0]$/.test(s))return [{type:'math',latex:s,semanticId:'n08-choice-display-'+String(++seq)}];
  if(s.includes('\\text{')){
   const [math,rest]=s.split(/,\\quad\\text\{/);
   return [...prose('$'+math+'$'),...prose('、'+rest.slice(0,-1))];

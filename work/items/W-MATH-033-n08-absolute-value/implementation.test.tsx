@@ -58,7 +58,7 @@ describe('approved N08 materialization and saved work',()=>{
       }
       const after=html(progress,stage)
       expect(after).not.toContain('katex-error')
-      if(n.interaction) expect(after).not.toContain('data-block-id="'+n.id+'-interaction"')
+      if(n.interaction) expect(after).not.toContain('data-block-id="'+n.id+'-interaction')
     }
     expect(html(progress,11)).toContain('data-testid="n08-complete"')
     expect(html(progress,6)).toContain('n08-cases-table')

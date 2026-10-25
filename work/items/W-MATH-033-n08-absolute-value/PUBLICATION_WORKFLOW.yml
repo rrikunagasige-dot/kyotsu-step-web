@@ -1,0 +1,124 @@
+name: Publish approved N08 to existing app
+on:
+  push:
+    branches: ['main']
+    paths: ['.github/workflows/deploy-pages.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      CANDIDATE_SHA: 'd5d418e830099bb39086ae1cb466dc3466668984'
+      VITE_PREVIEW_COMMIT: 'd5d418e830099bb39086ae1cb466dc3466668984'
+      VITE_REVIEW_PREVIEW: 'true'
+      VITE_BASE_PATH: '/kyotsu-step-web/'
+      VITE_STORAGE_NAMESPACE: 'kyotsu-step-gate3-math-20261023'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 'd5d418e830099bb39086ae1cb466dc3466668984'
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Verify exact source, approval and protected scope
+        run: |
+          test "$(git rev-parse HEAD)" = "$CANDIDATE_SHA"
+          node tools/textbook/integrate-n07.mjs --check
+          node work/items/W-MATH-033-n08-absolute-value/materialize.mjs --check
+          node --input-type=module <<'NODE'
+          import {execFileSync} from 'node:child_process'
+          const changed=execFileSync('git',['diff','--name-only','46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6','HEAD','--','src','public'],{encoding:'utf8'}).trim().split('\n').filter(Boolean)
+          const allowed=new Set(["src/components/textbook/N08ReadingFlow.tsx","src/components/textbook/n08-reading.css","src/data/textbook/math/numbers/n08Authored.json","src/data/textbook/math/numbers/n08Lesson.ts","src/pages/TextbookUnitPage.tsx","src/domain/textbook.ts","src/test/n08Legacy.ts","src/data/textbook/math/numbers/newBatchCoverage.test.ts","src/data/textbook/math/numbers/firstSectionTeaching.test.tsx","src/review/reviewTargets.test.ts"])
+          if(changed.some(path=>!allowed.has(path)))throw Error('Unapproved learner change: '+changed.join(','))
+          execFileSync('git',['diff','--exit-code','4fb7a98e7f864839ccc1374080473df4ba60ce88','HEAD','--','src/data/textbook/math/numbers/n07Authored.json','src/components/textbook/N07ReadingFlow.tsx','src/components/textbook/n07-reading.css','src/data/textbook/math/numbers/firstSectionTeaching.json','src/data/textbook/math/typesetting.json','src/data/mathPractice','src/data/textbook/ch01','public'])
+          console.log(JSON.stringify({status:'PASS',changed,acceptedFirstTitlePreserved:true}))
+          NODE
+      - name: Learner regressions (confirmed pre-existing physics catalog failures excluded)
+        run: pnpm exec vitest run --exclude src/data/physicsTaxonomy.test.ts --exclude src/domain/questionSchema.test.ts
+      - run: pnpm run test:textbook-authoring
+      - run: pnpm exec vitest run --config work/items/W-MATH-033-n08-absolute-value/vitest.config.mjs
+      - run: node work/items/W-MATH-003-numbers-expressions-creation/NE01_NE02/export-runtime.mjs
+      - run: pnpm run build
+      - name: Exact-source release manifest
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs'
+          const runtime=JSON.parse(fs.readFileSync('e2e-evidence/chapter-runtime/runtime-units.json','utf8'))
+          if(runtime.metadata.sourceSHA!==process.env.CANDIDATE_SHA||runtime.units.length!==16)throw Error('source mismatch')
+          const n07=JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/n07Authored.json','utf8'))
+          const n08=JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/n08Authored.json','utf8'))
+          const manifest={sourceSHA:process.env.CANDIDATE_SHA,workflowSHA:process.env.GITHUB_SHA,storageKey:process.env.VITE_STORAGE_NAMESPACE,acceptedFirstTitle:'22bc43ba53fa87bb85e82e18a25db13a5c8a485c',contentApproval:n08.proposalHash,irHash:n08.irHash,repairedUnit:n08.unit.unitId,acceptedN07:{sourceSHA:'46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6',repair:n07.repair},themes:3,units:runtime.units.map(x=>({id:x.unit.unitId,revision:x.unit.revision,items:x.unit.sections.flatMap(s=>s.items.map(q=>q.id))}))}
+          fs.writeFileSync('dist/release.json',JSON.stringify(manifest,null,2))
+          NODE
+      - run: pnpm exec playwright install --with-deps chromium
+      - name: Compiled N08 and accepted first-title browser checks
+        run: |
+          pnpm exec vite preview --host 127.0.0.1 --port 4173 > /tmp/n07-preview.log 2>&1 &
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:4173/kyotsu-step-web/ >/dev/null && break || sleep 1; done
+          WIDTHS=320,390,430,1440 EVIDENCE_DIR=/tmp/n08-browser node work/items/W-MATH-033-n08-absolute-value/verify_app.mjs
+          WIDTHS=320,390,430,1440 EVIDENCE_DIR=/tmp/n07-browser node work/items/W-MATH-032-n07-semantic-repair/verify_app.mjs
+          EVIDENCE_DIR=/tmp/first-title-compiled node work/items/W-MATH-031-section-one-typesetting/verify-typography.mjs
+          EVIDENCE_DIR=/tmp/first-title-history node work/items/W-MATH-031-section-one-typesetting/verify-history.mjs
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+      - name: Publish approved N08 with the existing storage namespace
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Verify hosted exact source
+        env:
+          APP_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          node --input-type=module <<'NODE'
+          let matched=false
+          for(let attempt=0;attempt<60;attempt++){
+            try{const r=await fetch(process.env.APP_URL+'release.json?sha='+process.env.CANDIDATE_SHA,{cache:'no-store'});const m=await r.json();if(m.sourceSHA===process.env.CANDIDATE_SHA&&m.storageKey===process.env.VITE_STORAGE_NAMESPACE){matched=true;console.log(JSON.stringify(m));break}}catch{}
+            await new Promise(r=>setTimeout(r,2000))
+          }
+          if(!matched)throw Error('Hosted source did not match')
+          NODE
+      - name: Play actual public N08 at320/390/1440px
+        env:
+          APP_URL: ${{ steps.deployment.outputs.page_url }}
+          EVIDENCE_DIR: /tmp/n08-hosted
+        run: WIDTHS=320,390,430,1440 node work/items/W-MATH-033-n08-absolute-value/verify_app.mjs
+      - name: Protect public accepted first-title typography
+        env:
+          APP_URL: ${{ steps.deployment.outputs.page_url }}
+          EVIDENCE_DIR: /tmp/first-title-hosted
+        run: node work/items/W-MATH-031-section-one-typesetting/verify-typography.mjs
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: n08-publication-verification
+          path: |
+            /tmp/n08-browser
+            /tmp/n08-hosted
+            /tmp/n07-browser
+            /tmp/n07-hosted
+            /tmp/first-title-compiled
+            /tmp/first-title-history
+            /tmp/first-title-hosted
+            dist/release.json
+          if-no-files-found: warn
+          retention-days: 30

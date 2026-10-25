@@ -1,0 +1,17 @@
+{
+  "learnerTests": 620,
+  "workTests": 5,
+  "build": "PASS",
+  "scopedLint": "PASS",
+  "protectedFiles": {
+    "src/data/textbook/math/numbers/firstSectionTeaching.json": "012a17753605a42c51428f6075eb5d59a5724af0c762e0e9b598c82ad7cb871b",
+    "src/data/textbook/math/numbers/n07Authored.json": "8a8338889abc9df39d19283075c149ee0c4dc6308cb708d0e86fbef47f76b007",
+    "src/components/textbook/N07ReadingFlow.tsx": "11ce5539a104648d7b21cf2e783db700587186ea5b4c2643bb05ba7b92aed974",
+    "src/components/textbook/n07-reading.css": "b77d532abb5a2f14ba3be9c366c9d85351d1a6d2f800d7bf77a5f144277a01ad",
+    "src/data/textbook/math/typesetting.json": "88365d0c9148c3e4c4ac5628f5126c20c60a1584d035bbdd54156f1b4ca12067",
+    "public/assets/math/textbook/numbers/n08-f01.png": "817ab6ad3afb71b009cc95796e267d0818a104ecf19864c55c2ba0afbf29da73"
+  },
+  "candidateIRHash": "32f20c559bd407c777910c9ef8fb30989c31bf0ee822b5a5242f0cd7f71d318b",
+  "browser": "PENDING_CI",
+  "userN08Acceptance": false
+}

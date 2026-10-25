@@ -1,0 +1,1 @@
+N08 display audit: render relation-symbol choices and zero as math spans, even when their grading category is text. Frozen approved IR and answer strings remain unchanged. This is a render-only metadata correction.

@@ -12,3 +12,5 @@
 生成物: PROPOSAL.md、NODE_DESIGN.md/json、CANDIDATE_IR/COMPILED、COMPLETE_SOLUTION、SOURCE_COVERAGE、IMPACT_LEDGER、CASE_DISPOSITIONS、生成火柴図とcheckpoint。
 
 最終意味監査: Q10逆向きの回答前本文に完成式の先出しを発見。提案・IRを改訂し、Runtime.reviseで承認対象hashを更新した。R01–R03の有効な既存結果を保持し、R04を実際に再検査してR05へ戻した。機械検査だけでは足りなかった事実もFINDINGSへ保存。
+
+承認後: N08の凍結設計への直接承認を記録。新規3ファイルと既存3ファイルの限定実装は、Work専用のmaterialization adapterで原不在・backup・出力hashを共有Runtimeへ記録。汎用adapterの置換専用制約を、新しい承認を捏造したり中央codeを書き換えたりして回避していない。旧版専用テストは凍結N08 v3 fixtureへ結び、現行N08を別の5検査で確認。過去版・他単元の検査を削除していない。

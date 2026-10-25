@@ -1,6 +1,6 @@
 # W-MATH-033 — N08 絶対値の段階的な導出
 
-Status: PROPOSED
+Status: IMPLEMENTING
 Command: CMD-WORK-001
 Proposal: P-001 / PROPOSAL.md
 Branch: work/n08-absolute-value-design-20261025
@@ -15,3 +15,5 @@ Current: R05_APPROVAL@n08。未承認の具体設計を実装・配信へ進め�
 Next: このP-001とNODE_DESIGNへのユーザー承認→N08限定実装→四幅と移行・回帰検査→既存公開アプリURL。画像票・同じ公開許可の再要求へ戻らない。
 
 共有StoreはW-MATH-032/runtimeを保持。新しい空台帳へ原否定例の閉鎖フラグだけを移していない。N07専用のmaterialization関数をN08へ偽装して呼び出さず、承認済みIRを通常compilerへ渡すWork内スクリプトを使う予定。
+
+2026-10-25 implementation checkpoint: ユーザー「可以可以按照这个做吧」でP001承認。APPROVAL.jsonへ原文・元commit・proposal/IR hashを固定。36node/31回答/12段階を限定実装し、旧12回答履歴を保つ移行を追加。620既存回帰・5専用検査・build・scoped lintがPASS。R06→R07へ接続した後、選択肢の不等号・0をmath spanへするrender-only改善を同じ承認で再検査中。実UIと配信はまだ未完了。上記の未承認記録は履歴。

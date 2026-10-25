@@ -1,3 +1,15 @@
+## CURRENT — N09/N10の選択肢順序・因子範囲、全件監査後の修正案（2026-10-25）
+
+公開cb7d30bfへの本人指摘を受け、**W-MATH-035 / CMD-WORK-001 / P-001 / PROPOSED / R05_APPROVAL@n09**。①は単なる整列ではなく「左平方→右平方→比較」の順序、②は和/差全体を掛ける括弧。本人は先に全ミスを調べ、最後に提案書と指示。実装・公開は未変更。
+
+N09/N10の全86node・81回答・282選択肢をsourceと描画経路で監査。確定7群：n09-08の順序、n10-07/15/20の候補の表示段階、n10-q17-factor/q20-factorの括弧、表に隠れたn09-14 afterの不正改行。全node判定と、全4候補の具体表示を含む[修正案](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/work/n0910-choice-order-factor-audit-20261025/work/items/W-MATH-035-choice-order-factor-audit/PROPOSAL.md)、[監査表](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/work/n0910-choice-order-factor-audit-20261025/work/items/W-MATH-035-choice-order-factor-audit/NODE_AUDIT.md)。他14単元は限定同型検索のみで全教育内容の合格とはしない。
+
+提案はID/正答81とchoiceキー282、既存保存を維持。提案IRの構文0エラー、現行潜在エラー1、表示変形8組と括弧2反例を実検算。R01–R04を同じ共有Storeで実行し、USER設計判断待ち。Work内監査コードの必須math.solve入力・影響inventory全block・既存claim再開を修正した履歴を保存し、中央のvalidatorを弱めていない。
+
+W034に版付きの本人否定2件と今回の修正依頼を記録し、W035へ親子接続。W034のG3実物受入は未取得のまま。AI発見5件を本人Gold否定へ水増ししない。学習catalog11件とOFFLINE_ONLYモデルe9dcf354・tool pin058c4eaは不変、今回fitなし。次はこの具体案への判断→限定実装・全経路/四幅/保存/保護検査→同じ公開appへ直接配信。以下の旧「実物評価待ちだけ」は今回の修正提案より前の履歴。
+
+---
+
 ## CURRENT — N09・N10実装・公開、実物評価待ち（2026-10-25）
 
 ユーザー「ok。いいよ」で凍結P-001（a442cbe9）の両単元設計を承認。N09 **41node・36回答・11段階**、N10 **45node・45回答・12段階**を実装した。共通readerの条件付き前結果、段階的な穴、等式記録・番号、数式の文中描画、履歴と旧保存移行を含む。承認済み5入力はbyte不変。

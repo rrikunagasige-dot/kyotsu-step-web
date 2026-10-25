@@ -1,0 +1,16 @@
+{
+  "code": "ne02",
+  "unitTests": 5,
+  "learnerRegressions": 620,
+  "authoringTests": 39,
+  "protectedBehaviorTests": 7,
+  "build": "PASS",
+  "lint": "PASS",
+  "browser": "PENDING_GITHUB_CI",
+  "scopeNotes": [
+    "Shared figure selection generalized by declared figure ID; accepted N09 unchanged",
+    "Preserve legacy revision1 review target constructor by legacy import",
+    "Historical tests retain exact original assertions; new current lesson has separate tests",
+    "Old W035 whole-reader frozen-byte check is historical after optional reader branch; seven behavior checks retained"
+  ]
+}

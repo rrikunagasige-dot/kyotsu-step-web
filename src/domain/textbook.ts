@@ -185,6 +185,54 @@ export function effectiveTextbookProgress(unit: TextbookUnit, progress: Textbook
   if (!progress) return undefined
   if (progress.unitRevision === unit.revision) return progress
 
+  // W-MATH-036: apply all prior migrations first, retain current keys, reopen only added nodes.
+  if (unit.unitId === 'math-numbers-expressions-ne02' && unit.revision === 2
+      && progress.unitId === unit.unitId && progress.unitRevision <= 1) {
+    const previous = progress.unitRevision === 1 ? progress : effectiveTextbookProgress({ ...unit, revision: 1 }, progress)
+    if (!previous) return undefined
+    const { archivedRevisions, ...archive } = previous
+    const anchors = new Set(["ne02-01", "ne02-02", "ne02-03", "ne02-04", "ne02-05", "ne02-06", "ne02-07", "ne02-08", "ne02-09", "ne02-10", "ne02-11", "ne02-12"])
+    return {
+      unitId: unit.unitId, unitRevision: 2, startedAt: previous.startedAt, updatedAt: previous.updatedAt,
+      answers: Object.fromEntries(Object.entries(previous.answers).filter(([id]) => anchors.has(id))),
+      archivedRevisions: { ...archivedRevisions, '1': archive }, migratedFromRevision: 1,
+      ...(previous.completedAt !== undefined ? { previousRevisionCompletedAt: previous.completedAt }
+        : previous.previousRevisionCompletedAt !== undefined ? { previousRevisionCompletedAt: previous.previousRevisionCompletedAt } : {}),
+    }
+  }
+
+  // W-MATH-036: inactive until the approved new leaf revision is emitted.
+  if (unit.unitId === 'math-numbers-expressions-n11' && unit.revision === 11
+      && progress.unitId === unit.unitId && progress.unitRevision <= 10) {
+    const previous = progress.unitRevision === 10 ? progress : effectiveTextbookProgress({ ...unit, revision: 10 }, progress)
+    if (!previous) return undefined
+    const { archivedRevisions, ...archive } = previous
+    const anchors = new Set(["n11-01", "n11-02", "n11-wm011-q02-compare", "n11-wm011-q03-factor", "n11-wm011-q03-positive", "n11-03", "n11-wm011-q03-zero", "n11-wm011-q04-fraction", "n11-04", "n11-wm017-q05-operation", "n11-wm017-q05-balance", "n11-05", "n11-06", "n11-07", "n11-p007-q08-subtract-left", "n11-p007-q08-subtract-right", "n11-08", "n11-p007-q09-direction", "n11-09", "n11-10", "n11-wm012-q11-expand", "n11-wm012-q11-xcoef", "n11-11", "n11-12", "n11-p008-q13-mul-left", "n11-p008-q13-mul-right", "n11-13", "n11-p008-q13-constant", "n11-wm013-q14-xcoef", "n11-wm013-q14-const", "n11-14"])
+    return {
+      unitId: unit.unitId, unitRevision: 11, startedAt: previous.startedAt, updatedAt: previous.updatedAt,
+      answers: Object.fromEntries(Object.entries(previous.answers).filter(([id]) => anchors.has(id))),
+      archivedRevisions: { ...archivedRevisions, '10': archive }, migratedFromRevision: 10,
+      ...(previous.completedAt !== undefined ? { previousRevisionCompletedAt: previous.completedAt }
+        : previous.previousRevisionCompletedAt !== undefined ? { previousRevisionCompletedAt: previous.previousRevisionCompletedAt } : {}),
+    }
+  }
+
+  // W-MATH-036: inactive until the approved new leaf revision is emitted.
+  if (unit.unitId === 'math-numbers-expressions-n12' && unit.revision === 4
+      && progress.unitId === unit.unitId && progress.unitRevision <= 3) {
+    const previous = progress.unitRevision === 3 ? progress : effectiveTextbookProgress({ ...unit, revision: 3 }, progress)
+    if (!previous) return undefined
+    const { archivedRevisions, ...archive } = previous
+    const anchors = new Set(["n12-p002-q01-coef", "n12-p002-q01-const", "n12-01", "n12-p002-q02-coef", "n12-p002-q02-const", "n12-02", "n12-03", "n12-04", "n12-05", "n12-p002-q06-left-coef", "n12-p002-q06-left-const", "n12-p002-q06-right-coef", "n12-p002-q06-right-const", "n12-06", "n12-07", "n12-08", "n12-09", "n12-p003-q10-meaning", "n12-p003-q10-cream-coef", "n12-p003-q10-pudding-coef", "n12-p003-q10-box-fee", "n12-10", "n12-p003-q11-lower-sign", "n12-p003-q11-upper-sign", "n12-11", "n12-p003-q12-product-constant", "n12-p002-q12-signed-coef", "n12-p003-q12-total-constant", "n12-p003-q12-x-coef", "n12-12", "n12-p002-q13-lower", "n12-p002-q13-upper", "n12-13", "n12-14", "n12-15"])
+    return {
+      unitId: unit.unitId, unitRevision: 4, startedAt: previous.startedAt, updatedAt: previous.updatedAt,
+      answers: Object.fromEntries(Object.entries(previous.answers).filter(([id]) => anchors.has(id))),
+      archivedRevisions: { ...archivedRevisions, '3': archive }, migratedFromRevision: 3,
+      ...(previous.completedAt !== undefined ? { previousRevisionCompletedAt: previous.completedAt }
+        : previous.previousRevisionCompletedAt !== undefined ? { previousRevisionCompletedAt: previous.previousRevisionCompletedAt } : {}),
+    }
+  }
+
   // W-MATH-034: keep all21 original N10 histories;24 new derivations are unanswered.
   if (unit.unitId === 'math-numbers-expressions-n10' && unit.revision === 2
       && progress.unitId === unit.unitId && progress.unitRevision === 1) {

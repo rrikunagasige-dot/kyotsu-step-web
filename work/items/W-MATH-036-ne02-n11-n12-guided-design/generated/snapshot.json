@@ -1,25 +1,22 @@
 {
   "work": "W-MATH-036",
   "engine_version": "1.0.0",
-  "ledger_head": "a56ab35d09195d5d3374ff4b80cbe0542442f8d50932136cd1ae05ccf496254b",
-  "work_status": "PROPOSED",
+  "ledger_head": "082368ed1147e8a2b1e6d14d00f1c5b6d181a4d67b1549125ee91ce9f820b95a",
+  "work_status": "APPROVED",
   "profile": "material",
   "simulation": false,
   "candidate_sha": "fa0eff271a97940fad08d83960ae50faeabc81b9",
   "next": {
-    "status": "WAITING",
-    "reason": "USER_DECISION",
+    "status": "READY",
     "task": {
       "work_id": "W-MATH-036",
       "node": {
-        "id": "R05_APPROVAL@ne02",
-        "stage_kind": "R05_APPROVAL",
-        "contract_kind": "R05_APPROVAL",
-        "actor": "USER",
+        "id": "R06_PATCH@ne02",
+        "stage_kind": "R06_PATCH",
+        "contract_kind": "R06_PATCH",
+        "actor": "TOOL",
         "depends_on": [
-          "R04_PROPOSAL@ne02",
-          "R04_PROPOSAL@n11",
-          "R04_PROPOSAL@n12"
+          "R05_APPROVAL@ne02"
         ],
         "required": [],
         "block": "ne02",
@@ -53,12 +50,16 @@
           "public/assets/math/textbook/numbers/n12-f03.png"
         ],
         "approval_scope_ref": "proposal",
-        "capability_requests": [],
-        "required_code_receipts": [],
+        "capability_requests": [
+          "ir.compile"
+        ],
+        "required_code_receipts": [
+          "ir.compile"
+        ],
         "required_ai_receipts": []
       },
-      "task_id": "61ab3afdb3956994eff17a8d3963bf7ac0e5c16f8afbdb0edc7851f624cb2413",
-      "input_hash": "9147a0a4234a5eb04d871a8361219f76fd12491d37b7c4aa969922c2234e5b0e",
+      "task_id": "baf2e7fd829f3343f1d431dbbfebf63519147ba4663511ac25a790fa4bfbcddc",
+      "input_hash": "396b1b9cb05b65b7b2c9131aacbc4d6e143138fbbfad0001a823e9b116c451b7",
       "source_sha": "fa0eff271a97940fad08d83960ae50faeabc81b9",
       "candidate_sha": "fa0eff271a97940fad08d83960ae50faeabc81b9",
       "rules": {
@@ -126,25 +127,11 @@
         "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/NE02_SOURCE_INDEX.json": "7f939a849439b299f20416bc1798b1e56a7ccf9e1ad7fced17fee566abad5a81"
       },
       "previous_results": {
-        "R04_PROPOSAL@ne02": {
-          "actor": "capability-runner",
-          "artifact": "a72763f8bcdacd197da57f5f3847f480d7ceb2c1bbab83ac86abe26d5c0c5d48",
-          "input_hash": "fc972e8ed9f5e7a8f867af67139a9679f9f0e35be04cee6da72d8f5d1adc279c",
-          "node": "R04_PROPOSAL@ne02",
-          "verdict": "PASS"
-        },
-        "R04_PROPOSAL@n11": {
-          "actor": "capability-runner",
-          "artifact": "60ee5ffb4d9542e2ebc42119d2d8173b8d39ca0d4d2bb5dce5df4a392fcf8fa4",
-          "input_hash": "9052ffd5e37248634bff3c4db7110be5274229dffb5a38cf27f449d03351af2b",
-          "node": "R04_PROPOSAL@n11",
-          "verdict": "PASS"
-        },
-        "R04_PROPOSAL@n12": {
-          "actor": "capability-runner",
-          "artifact": "1942dcbf99ffea5e2367452f2c48914eb35dfebce65c564656dc76f833297f0c",
-          "input_hash": "e281c03353ad020ef963718797ddcfdc163d2496e74a5e02726ec679dc10149f",
-          "node": "R04_PROPOSAL@n12",
+        "R05_APPROVAL@ne02": {
+          "actor": "user-record/conversation_transcribed",
+          "artifact": "93ca9667de9480be66f8d6c8db7e05e3b9295d465a304a9734658a25704d080d",
+          "input_hash": "9147a0a4234a5eb04d871a8361219f76fd12491d37b7c4aa969922c2234e5b0e",
+          "node": "R05_APPROVAL@ne02",
           "verdict": "PASS"
         }
       },
@@ -548,7 +535,7 @@
       "capability_requests": [],
       "required_code_receipts": [],
       "required_ai_receipts": [],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "R06_PATCH@ne02",
@@ -1027,7 +1014,7 @@
       "capability_requests": [],
       "required_code_receipts": [],
       "required_ai_receipts": [],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "R06_PATCH@n11",
@@ -1518,7 +1505,7 @@
       "capability_requests": [],
       "required_code_receipts": [],
       "required_ai_receipts": [],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "R06_PATCH@n12",

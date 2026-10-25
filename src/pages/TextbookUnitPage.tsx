@@ -1,3 +1,6 @@
+import * as n12LessonModule from '../data/textbook/math/numbers/n12Lesson'
+import * as n11LessonModule from '../data/textbook/math/numbers/n11Lesson'
+import { ne02Presentation } from '../data/textbook/math/numbers/ne02Lesson'
 import { n10Presentation } from '../data/textbook/math/numbers/n10Lesson'
 import { GuidedMathReadingFlow } from '../components/textbook/GuidedMathReadingFlow'
 import { n09Presentation } from '../data/textbook/math/numbers/n09Lesson'
@@ -24,6 +27,10 @@ import { textbookDisplayLines } from '../domain/textbookDisplayLines'
 import { chapter1ChunkForUnitCode, chapter1Localized, chapter1NextUnit } from '../data/textbook/ch01/chapter1Architecture'
 import { mathTextbookNextUnitId, mathTextbookTopicForUnit } from '../data/textbook/math'
 import { partitionMathSetReadingFlow, requiredMathSetContext, partitionFirstThemeReadingFlow, requiredFirstThemeContext, firstThemeRecordedResults, firstThemeSourceView, isFirstThemeUnit } from '../data/textbook/math/presentation'
+
+const n11GuidedPresentation = (n11LessonModule as unknown as { n11Presentation?: unknown }).n11Presentation
+
+const n12GuidedPresentation = (n12LessonModule as unknown as { n12Presentation?: unknown }).n12Presentation
 
 function interactionPrompt(item: TextbookItem, text: (ja: string, zh: string) => string, subject: TextbookUnit['subject']) {
   switch (item.purpose) {
@@ -147,7 +154,10 @@ export function TextbookReadingFlow(props: ReadingFlowProps) {
       : props.unit.unitId === 'math-numbers-expressions-n09' && props.unit.revision === 3
         ? <GuidedMathReadingFlow key={props.unit.unitId} {...props} presentation={n09Presentation} />
         : props.unit.unitId === 'math-numbers-expressions-n10' && props.unit.revision === 2
-          ? <GuidedMathReadingFlow key={props.unit.unitId} {...props} presentation={n10Presentation} /> : <LegacyTextbookReadingFlow {...props} />
+          ? <GuidedMathReadingFlow key={props.unit.unitId} {...props} presentation={n10Presentation} /> : props.unit.unitId === 'math-numbers-expressions-ne02' && props.unit.revision === 2
+            ? <GuidedMathReadingFlow key={props.unit.unitId} {...props} presentation={ne02Presentation} /> : props.unit.unitId === 'math-numbers-expressions-n11' && props.unit.revision === 11 && n11GuidedPresentation
+              ? <GuidedMathReadingFlow key={props.unit.unitId} {...props} presentation={n11GuidedPresentation} /> : props.unit.unitId === 'math-numbers-expressions-n12' && props.unit.revision === 4 && n12GuidedPresentation
+              ? <GuidedMathReadingFlow key={props.unit.unitId} {...props} presentation={n12GuidedPresentation} /> : <LegacyTextbookReadingFlow {...props} />
 }
 
 function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, onReviewAnswer, reviewMarks }: ReadingFlowProps) {

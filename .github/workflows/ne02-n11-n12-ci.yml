@@ -1,0 +1,51 @@
+name: Approved NE02 N11 N12 guided lessons
+on:
+  push:
+    branches: ['work/ne02-n11-n12-guided-design-20261025']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      CODES: ne02
+      VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
+      VITE_BASE_PATH: /kyotsu-step-web/
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - run: pnpm exec vitest run --config work/items/W-MATH-036-ne02-n11-n12-guided-design/vitest.config.mjs
+      - run: pnpm exec vitest run --config work/items/W-MATH-035-choice-order-factor-audit/vitest.config.mjs -t '^(?!.*deterministically overlays)'
+      - run: pnpm exec vitest run --exclude src/data/physicsTaxonomy.test.ts --exclude src/domain/questionSchema.test.ts
+      - run: pnpm run test:textbook-authoring
+      - run: pnpm exec eslint src/components/textbook/GuidedMathReadingFlow.tsx src/domain/textbook.ts src/pages/TextbookUnitPage.tsx --max-warnings=0
+      - run: pnpm run build
+      - run: pnpm exec playwright install --with-deps chromium
+      - name: Complete four-width new and accepted learner plays
+        run: |
+          pnpm exec vite preview --host 127.0.0.1 --port 4173 > /tmp/w36-preview.log 2>&1 &
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:4173/kyotsu-step-web/ >/dev/null && break || sleep 1; done
+          EVIDENCE_DIR=/tmp/w36-browser node work/items/W-MATH-036-ne02-n11-n12-guided-design/verify_app.mjs
+          EVIDENCE_DIR=/tmp/w36-protected-display node work/items/W-MATH-035-choice-order-factor-audit/verify_display.mjs
+          EVIDENCE_DIR=/tmp/w36-protected-n09 node work/items/W-MATH-034-n09-n10-guided-design/verify_app.mjs
+          EVIDENCE_DIR=/tmp/w36-protected-n10 node work/items/W-MATH-034-n09-n10-guided-design/verify_n10_app.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: w36-browser-evidence
+          path: |
+            /tmp/w36-browser
+            /tmp/w36-protected-display
+            /tmp/w36-protected-n09
+            /tmp/w36-protected-n10

@@ -17,7 +17,7 @@ type Props = {
 }
 type Node = { id: string; stageId: string; goal: string; role: string; knownRefs: string[]; resultId: string; interaction: string | null; extra: { table?: { caption: string; headers: string[]; rows: string[][] }; figure?: { id: string }; calculationSupport?: string } }
 type Display = { hintParts: TextbookReadingPart[][]; choices: Record<string, TextbookReadingPart[]>; feedback: Record<string, TextbookReadingPart[]> }
-type Presentation = { code: string; nodes: Node[]; stages: { id: string; title: string; sourceQuestionParts: TextbookReadingPart[] }[]; semanticDisplay: Record<string, Display>; equationNumbers: Record<string, number>; semantic: { nodes: { id: string; before: TextbookReadingBlock[]; after: TextbookReadingBlock[] }[] } }
+type Presentation = { choiceDisplay?: 'semantic'; code: string; nodes: Node[]; stages: { id: string; title: string; sourceQuestionParts: TextbookReadingPart[] }[]; semanticDisplay: Record<string, Display>; equationNumbers: Record<string, number>; semantic: { nodes: { id: string; before: TextbookReadingBlock[]; after: TextbookReadingBlock[] }[] } }
 const roles: Record<string, string> = { example: '例題', definition: '定義', proof: '性質の導出', substep: '導出', check: '学んだことを使う', property: '性質', summary: 'まとめ' }
 
 function GuidedNumberedEquation({ number, children, logical = false }: { number: number; children: ReactNode; logical?: boolean }) {
@@ -154,7 +154,7 @@ export function GuidedMathReadingFlow({ presentation, unit, section, progress, o
               if (onReviewAnswer) onReviewAnswer(item, choice)
               else answer(unit, id, choice)
               if (choice === item.answer || item.acceptedAnswers.includes(choice)) setActiveId(null)
-            }}><span>{index + 1}</span><strong>{item.answerType === 'formula' && !choice.includes('\\text{')
+            }}><span>{index + 1}</span><strong>{data.choiceDisplay === 'semantic' ? semantic(displays[node.id].choices[choice]) : item.answerType === 'formula' && !choice.includes('\\text{')
               ? formula(choice, 'guided-option-' + id + '-' + index)
               : semantic(displays[node.id].choices[choice])}</strong></button>)}
       </div>
@@ -204,13 +204,13 @@ export function GuidedMathReadingFlow({ presentation, unit, section, progress, o
       <div className="guided-step-caption"><span>{roles[n.role]}</span><strong>{n.goal}</strong></div>
       {before.map(renderBlock)}
       {n.extra.calculationSupport && <details data-testid={n.id + '-calculation-support'}><summary>整数の筆算の内訳を見る</summary>{n.extra.calculationSupport.split(';').map((source, i) => <TypesetFormula key={i} source={source} sourceId={n.id + '-support-' + i} unitId={unit.unitId} />)}</details>}
-      {done && after(n)}{done && n.extra.figure && originalFigure()}
+      {done && after(n)}{done && n.extra.figure && originalFigure(n)}
     </div>
   }
-  const figure = section.figures[0]
-  function originalFigure() {
-    if (!figure || !resolved(data.nodes.find(n => n.extra.figure)!) ) return null
-    return <figure className="guided-figure" data-testid="guided-original-figure"><img src={import.meta.env.BASE_URL + figure.src.replace(/^\//, '')} alt={figure.alt} />
+  function originalFigure(node: Node) {
+    const figure = section.figures.find(f => f.id === node.extra.figure?.id)
+    if (!figure || !resolved(node)) return null
+    return <figure className="guided-figure" data-testid="guided-original-figure" data-figure-id={figure.id}><img src={import.meta.env.BASE_URL + figure.src.replace(/^\//, '')} alt={figure.alt} />
       <figcaption>{figure.caption}</figcaption></figure>
   }
   return <div ref={flow} className="textbook-reading-flow guided-reading" data-typeset-theme="true" data-testid="textbook-reading-flow" tabIndex={-1}>

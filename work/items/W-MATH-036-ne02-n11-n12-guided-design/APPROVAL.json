@@ -1,0 +1,61 @@
+{
+  "event": "W036-THREE-UNITS-P001-APPROVED-20261025",
+  "quote": "いいぞ",
+  "approvedCommit": "3d0310b8889c03244b8ec9e09f4d2251c5b15ffb",
+  "proposalHash": "db7460ff94b1c493e2c26f3d6e2d3450d7ae5d9e936d57b0b1237e280702f6b9",
+  "contentDesignHash": "81f944bd220f883b92e14c0aeb8a1b2bdf0515dc2a647fa30061e8796b3e03f2",
+  "blockHashes": {
+    "ne02": "c422775b15d6962d917c44e68718b906c0d307eac3e22cc36dff1159ed585390",
+    "n11": "ffd861f5de3ebfc846efd4fedf4571b41b7fbe64c89e6b6f460469fc66df604b",
+    "n12": "87016e7e1c24258c210b1eaae7515cc68d12ae08f78356494a5f2cfef69204dd"
+  },
+  "designInputs": {
+    "PROPOSAL.md": "db7460ff94b1c493e2c26f3d6e2d3450d7ae5d9e936d57b0b1237e280702f6b9",
+    "DISPLAY_SPEC.json": "f78a6d508ad207022398f09b28ff2bf2755d1c761b816a0d276b88765a3f2029",
+    "NE02_IR.json": "595ea5716f3704240e3830e47b2aed00fe753d1d9b215a8c9ec5bddd88c39aab",
+    "NE02_NODE_DESIGN.md": "772496e895655518f47d97805d0c67db1eff6cc1d0c9ff7a67ff0743ae128f9c",
+    "NE02_NODE_DESIGN.json": "890f6b1352d6c0ea7de4de23cd61943c12fc0b2eba7c4533a76625ba09ba3c46",
+    "N11_IR.json": "5aa1ebfa7712bbe62fde091c8b87b9aabf30e1e6ff3a73c638be7a7e61f38abf",
+    "N11_NODE_DESIGN.md": "26ffc3f304f9242eb9c4be42fc0b9ebe39cc7963a6dcd4e0c08e24a6df523de4",
+    "N11_NODE_DESIGN.json": "447ab4518cea167cb513892e2d6789f39141812e494990891a05a5ec6a772280",
+    "N12_IR.json": "25c23cfe7b3bd1f953f8abc47991f1ec5cd8c03338904b398f7a43f7f5aa8d00",
+    "N12_NODE_DESIGN.md": "ca6bb87437b9c579e62c3591360c218e3dfe3df26d3a24dc7fe5f4115e069763",
+    "N12_NODE_DESIGN.json": "b9e6ea69767f223a7ec86749cebbe4ae383ac27b786ff3826bdc0e44f5da8f6e"
+  },
+  "scope": {
+    "paths": [
+      "src/data/textbook/math/numbers/ne02Lesson.ts",
+      "src/data/textbook/math/numbers/ne02Authored.json",
+      "src/data/textbook/math/numbers/n11Lesson.ts",
+      "src/data/textbook/math/numbers/n11Authored.json",
+      "src/data/textbook/math/numbers/n12Lesson.ts",
+      "src/data/textbook/math/numbers/n12Authored.json",
+      "src/pages/TextbookUnitPage.tsx",
+      "src/components/textbook/GuidedMathReadingFlow.tsx",
+      "src/domain/textbook.ts",
+      "src/data/textbook/math/numbers/newBatchCoverage.test.ts",
+      "src/data/textbook/math/numbers/numbersNextBatch.test.ts",
+      "src/data/textbook/math/numbers/firstSectionTeaching.test.tsx",
+      "src/review/reviewTargets.test.ts",
+      "work/items/W-MATH-036-ne02-n11-n12-guided-design/"
+    ],
+    "preserve": [
+      "src/data/textbook/math/numbers/firstSectionTeaching.json",
+      "src/data/textbook/math/typesetting.json",
+      "src/data/textbook/math/numbers/n07Authored.json",
+      "src/data/textbook/math/numbers/n08Authored.json",
+      "src/data/textbook/math/numbers/n09Authored.json",
+      "src/data/textbook/math/numbers/n10Authored.json",
+      "src/components/textbook/N07ReadingFlow.tsx",
+      "src/components/textbook/N08ReadingFlow.tsx",
+      "src/components/textbook/guidedMathDisplayPolicy.ts",
+      "src/components/textbook/guided-math-reading.css",
+      "src/domain/textbookDisplayLines.ts",
+      "public/assets/math/textbook/numbers/n11-f01.png",
+      "public/assets/math/textbook/numbers/n11-f02.png",
+      "public/assets/math/textbook/numbers/n12-f01.png",
+      "public/assets/math/textbook/numbers/n12-f02.png",
+      "public/assets/math/textbook/numbers/n12-f03.png"
+    ]
+  }
+}

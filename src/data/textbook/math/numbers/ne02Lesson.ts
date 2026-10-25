@@ -1,7 +1,8 @@
+import authored from './ne02Authored.json'
 import { validateTextbookUnits } from '../../../../domain/textbookSchema'
 
 // W-MATH-003/P-005: exact 25-question batch approved by user「続けて」2026-10-23.
-export const ne02SourceToItemIds = {
+export const ne02LegacySourceToItemIds = {
   "NE02-Q01": [
     "ne02-01"
   ],
@@ -882,4 +883,8 @@ const rawUnit = {
   ]
 } as const
 
-export const mathNumbersNE02Unit = validateTextbookUnits([rawUnit])[0]
+export const mathNumbersNE02LegacyUnit = validateTextbookUnits([rawUnit])[0]
+
+export const mathNumbersNE02Unit = validateTextbookUnits([authored.unit])[0]
+export const ne02Presentation = authored
+export const ne02SourceToItemIds: Record<string, string[]> = Object.fromEntries(Array.from({length:12},(_,i)=>['NE02-Q'+String(i+1).padStart(2,'0'), authored.nodes.filter(n=>n.q===i+1).flatMap(n=>n.interaction?[n.interaction]:[])]))

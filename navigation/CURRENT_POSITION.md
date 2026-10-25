@@ -1,3 +1,15 @@
+## CURRENT — W-MATH-033 / N08公開・実物確認待ち（2026-10-25）
+
+P-001はユーザー「可以可以按照这个做吧」で承認済み。凍結設計83ea55bcの36node・31回答・12段階を実装し、公開sourceは `ea47dd97f7d323267281915e8d9a7bb92a8e7c03`。内部CI [40162373237](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40162373237)、既存Pages公開run [40162687421](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40162687421) SUCCESS。公開workflow commit493b62a866873febc6c46572a29c1b0654f12abb。実HTTPSのrelease.json、source/IR/namespaceと公開後操作を照合した。
+
+[N08を開く](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=ea47dd97#/learning/textbook/math-numbers-expressions-n08)。320/390/430/1440pxの全31正答・全74誤答・条件付き前結果・履歴・再読込・v1/v2/v3移行・廃止誤答からの再開を実ブラウザで確認。620 applicable learner回帰、N08専用7、authoring39とbuildがPASS。旧版の回答契約変更を先に適用し、元履歴はarchiveへ保存、新しい途中回答を未回答に保つ。初回表示/移行検査の不足と実失敗はFINDINGSと台帳へ残した。
+
+共有Store `work/items/W-MATH-032-n07-semantic-repair/runtime` のR06/R07/G2/G3_HOSTを実行。Workは **VERIFYING / G3_FINAL@n08**。次はユーザーによる公開N08の実物評価。その後、必要な修正または事後影響sweep/R08/L01へ進む。今回の設計承認・内部PASS・公開成功を教材受入や学習の肯定例に変換していない。同じ公開許可・画像票は要求しない。
+
+受入済みN07 source46ea59beと第一タイトル22bc43baの内容・既存storage namespace・他モードを保持。tool pin058c4eaは変更なし。モデルは **OFFLINE_ONLY**、既存の評価済み10件（否定7/肯定3）とfit結果を保持し、N08の新fit/昇格なし。意味/画像監査は同じassistantであり独立した別AI監査とは呼ばない。全repo旧Markdownメタデータ検査の完全PASSは主張しない。以下の旧「未承認/未実装/未配信」は履歴。
+
+---
+
 ## CURRENT — W-MATH-033 / N08具体設計（2026-10-25）
 
 ユーザー「行那你继续做N08」を受け、CMD-WORK-001・production/2でN08の修正を開始。[具体案P-001](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/work/n08-absolute-value-design-20261025/work/items/W-MATH-033-n08-absolute-value/PROPOSAL.md) と [全36node](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/work/n08-absolute-value-design-20261025/work/items/W-MATH-033-n08-absolute-value/NODE_DESIGN.md) を作成した。原Word35block/30数式/12問/原図1点を照合し、36思考node・31穴・12段階へ設計。原12採点IDと正答は保持、19新中間回答を追加する案。

@@ -37,25 +37,25 @@
   "repeatPublicationApproval": false,
   "contentDesignApprovalRequired": true,
   "modelStatus": "OFFLINE_ONLY",
-  "newLessonAccepted": true,
-  "protectedAppSource": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
-  "adoption": "Pinned verified C/R tools and exact published N07 source; no whole-branch merge",
+  "newLessonAccepted": false,
+  "protectedAppSource": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
+  "adoption": "Pinned verified C/R tools and exact published N08 source; N08 user acceptance pending; accepted N07 and first title retained; no whole-branch merge",
   "legacyVersions": [
     "production/1",
     "legacy/1"
   ],
-  "repairProposal": "W-MATH-032/P-001",
-  "previousPublishedAppSource": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+  "repairProposal": "W-MATH-033/P-001",
+  "previousPublishedAppSource": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
   "acceptedFirstTitle": "22bc43ba53fa87bb85e82e18a25db13a5c8a485c",
   "publication": {
-    "runId": 40154568134,
-    "workflowSHA": "a99031f7d970fe4059ca4425c87f3a6d509f56ad",
-    "sourceSHA": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+    "runId": 40162687421,
+    "workflowSHA": "493b62a866873febc6c46572a29c1b0654f12abb",
+    "sourceSHA": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
     "status": "success",
     "sourceVerified": true,
-    "userAccepted": true
+    "userAccepted": false
   },
-  "metadataGovernanceScope": "Whole-repository Markdown metadata checker is not claimed PASS; actual immutable approval and remaining legacy metadata limitations are in W-MATH-032/FINDINGS.md.",
+  "metadataGovernanceScope": "Whole-repository Markdown metadata checker is not claimed PASS; immutable approved N08 design and legacy metadata limits are recorded in W-MATH-033/FINDINGS.md. N07 acceptance remains scoped to W-MATH-032.",
   "acceptance": {
     "event": "W032-N07-APP-ACCEPTED-20261025",
     "work": "W-MATH-032",
@@ -78,5 +78,48 @@
     "catalog": "work/items/W-MATH-032-n07-semantic-repair/LEARNING_CORPUS.json",
     "model": "work/items/W-MATH-032-n07-semantic-repair/MODEL_RESULT.json"
   },
-  "sharedRuntimeStore": "work/items/W-MATH-032-n07-semantic-repair/runtime"
+  "sharedRuntimeStore": "work/items/W-MATH-032-n07-semantic-repair/runtime",
+  "publishedAppSource": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
+  "acceptedUnits": {
+    "n07": {
+      "sourceSHA": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+      "userAccepted": true,
+      "event": "W032-N07-APP-ACCEPTED-20261025"
+    },
+    "firstTitle": {
+      "sourceSHA": "22bc43ba53fa87bb85e82e18a25db13a5c8a485c",
+      "userAccepted": true
+    }
+  },
+  "currentWork": {
+    "id": "W-MATH-033",
+    "proposal": "P-001",
+    "status": "VERIFYING",
+    "node": "G3_FINAL@n08",
+    "branch": "work/n08-absolute-value-design-20261025",
+    "sourceSHA": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
+    "userAccepted": false
+  },
+  "currentLearnerVerification": {
+    "sourceSHA": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
+    "runId": 40162373237,
+    "conclusion": "success",
+    "learnerTests": 620,
+    "n08Tests": 7,
+    "authoringChecks": 39,
+    "browserWidths": [
+      320,
+      390,
+      430,
+      1440
+    ],
+    "answers": 31,
+    "wrongChoicesPerWidth": 74,
+    "legacyMigrations": [
+      1,
+      2,
+      3
+    ],
+    "retiredChoiceRecovery": true
+  }
 }

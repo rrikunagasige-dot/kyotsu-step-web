@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { renderToStaticMarkup } from 'react-dom/server'
+import { render, fireEvent, screen, cleanup } from '@testing-library/react'
 import { readFileSync } from 'node:fs'
 import { execFileSync } from 'node:child_process'
 import { N08ReadingFlow } from '../../../src/components/textbook/N08ReadingFlow'
@@ -80,5 +81,25 @@ describe('approved N08 materialization and saved work',()=>{
     expect(latex(conditions[0])).toBe('|a|=0')
     expect(latex(conditions[1])).toBe('a=0')
     expect(latex(equivalence.querySelector('.n08-logical-arrow')!)).toBe('\\Updownarrow')
+  })
+  it('opens a saved retired wrong option without losing its original attempts or crashing feedback',()=>{
+    localStorage.setItem(key,'0')
+    const item=unit.sections[0].items.find(i=>i.id==='n08-01')!
+    const retired='2.3,\\quad-5.0'
+    const record={itemId:item.id,value:retired,firstValue:retired,isFirstCorrect:false,resolved:false,attemptCount:1,firstAnsweredAt:1,lastAnsweredAt:2}
+    const old:TextbookUnitProgress={unitId:unit.unitId,unitRevision:3,startedAt:1,updatedAt:2,answers:{[item.id]:record}}
+    let next=effectiveTextbookProgress(unit,old)!
+    const first=unit.sections[0].items[0]
+    next=answerTextbookItem(next,unit,first,first.answer,3)
+    try{
+      render(<N08ReadingFlow unit={unit} section={unit.sections[0]} progress={next} />)
+      fireEvent.click(screen.getByTestId('textbook-item-'+item.id))
+      expect(screen.getByTestId('textbook-hint-'+item.id).textContent).toContain(item.hints[0])
+      expect(screen.getByTestId('inline-choice-panel-'+item.id).querySelectorAll('button')).toHaveLength(4)
+    }finally{cleanup()}
+    const done=answerTextbookItem(next,unit,item,item.answer,4)
+    expect(done.answers[item.id].firstValue).toBe(retired)
+    expect(done.answers[item.id].attemptCount).toBe(2)
+    expect(done.archivedRevisions?.['3'].answers[item.id]).toEqual(record)
   })
 })

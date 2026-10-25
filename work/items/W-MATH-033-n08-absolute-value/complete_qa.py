@@ -13,6 +13,7 @@ s=rt.state(w);sha=s['candidate_sha'];assert ci['sourceSHA']==sha and ci['conclus
 assert report['sourceSHA']==sha and report['status']=='PASS' and {r['width'] for r in report['results']}=={320,390,430,1440}
 assert all(r['answered']==31 and r['migration'] and r['history'] and r['geometry']=='PASS' for r in report['results'])
 assert all(r.get('legacyMigrationRevisions')==[1,2,3] for r in report['results'])
+assert all(r.get('retiredChoiceRecovered') for r in report['results'])
 assert audit['sourceSHA']==sha and audit['status']=='PASS' and audit['actualImagesReviewed']
 ev=[rt.evidence(w,'ci',{'id':ci['runId'],'head_sha':sha,'status':'completed','conclusion':'success','html_url':'https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/'+str(ci['runId'])},source_ref='GitHub connector run and artifact matched to exact source',verification_level='tool_result_transcribed')]
 for name in ['evidence/UI_REPORT.json','evidence/CI_RESULT.json','evidence/IMAGE_AUDIT.json','evidence/LOCAL_IMPLEMENTATION_CHECKS.json']:

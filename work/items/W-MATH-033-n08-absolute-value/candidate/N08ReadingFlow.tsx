@@ -62,7 +62,7 @@ export function N08ReadingFlow({ unit, section, progress, onSummaryReached, onRe
       <TypesetFormula source={right} sourceId={id + '-right'} unitId={unit.unitId} parts={parts} itemIds={itemIds} />
     </span>
   }
-  function semantic(parts: readonly unknown[]) {
+  function semantic(parts: readonly unknown[] = []) {
     return (parts as TextbookReadingPart[]).map((p, i) => p.type === 'math'
       ? <span key={p.semanticId ?? i} data-semantic-id={p.semanticId}>{logical(p.latex, p.semanticId ?? 'n08-inline-' + i) ?? <TypesetInlineMath latex={p.latex.replace(/\\\s+$/, '')} sourceId={p.semanticId ?? 'n08-inline-' + i} unitId={unit.unitId} />}</span>
       : <SemanticReading key={p.semanticId ?? i} parts={[p]} renderChoice={blank} />)

@@ -1,5 +1,5 @@
 {
-  "sourceSHA": "d134c300e5e377ae9a3853fc70ae847f147fec29",
+  "sourceSHA": "c2ea91a4445ff3704f60a54c3aa7ee48204dbce8",
   "next": {
     "status": "READY",
     "task": {
@@ -47,10 +47,10 @@
         ],
         "required_ai_receipts": []
       },
-      "task_id": "3487c23d1c08fb0ccc0d6be726ce1ce35dfe24768e13c894fe417938772566ff",
-      "input_hash": "54469490130445b60e0d46ecf6f9ed5527451f1d9947270c98459e02d9063dd2",
+      "task_id": "ad4860261a57a917e90d9fad188c25eecbf47fe73163e28bbc5a9676fc0f3a9a",
+      "input_hash": "7b002aaa29dc38f2c1db1c7fd8a03ae9998f0f89bf83194f601cd51c43c52c14",
       "source_sha": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
-      "candidate_sha": "d134c300e5e377ae9a3853fc70ae847f147fec29",
+      "candidate_sha": "c2ea91a4445ff3704f60a54c3aa7ee48204dbce8",
       "rules": {
         "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
         "governance/REVIEW_POLICY.json": "a71148f007a79b124385c7645e6bc01564bfa02b12152174883543f31f6ce72d",
@@ -91,8 +91,8 @@
       "previous_results": {
         "R06_PATCH@n08": {
           "actor": "capability-runner",
-          "artifact": "ffb8f8716affe254488e5b98d6ca631da67541ffc9d69c7090dcaf89cfc8c77f",
-          "input_hash": "b6b410fc107a55d118bb094b35e44dc5919de3508e0b474a2e71df675c46ef90",
+          "artifact": "7faebede33a7c7a4e6dd365f156c0b1ec416f5fca40411ff827a61f6be3e4a6c",
+          "input_hash": "1a31a44e2be6f79570d14b049c63e97678c6f29bafd613a7e6cdbcc8f88d3661",
           "node": "R06_PATCH@n08",
           "verdict": "PASS"
         }

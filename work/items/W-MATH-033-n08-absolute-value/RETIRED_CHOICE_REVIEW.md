@@ -1,0 +1,1 @@
+N08 legacy partial-save audit: Q01 previously offered 2.3,-5.0, which the approved design replaced with an order-reversal distractor. A saved wrong answer must retain its history and display the authored common hint even if the old value has no current per-choice feedback entry. Guard absent display parts; do not invent feedback or discard the old record.

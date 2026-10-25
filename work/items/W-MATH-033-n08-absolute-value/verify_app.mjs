@@ -124,7 +124,19 @@ for(const width of (process.env.WIDTHS??'320,390,430,1440').split(',').map(Numbe
   assert.equal(value.answers['n08-10'],undefined);if(revision===1)assert.equal(value.answers['n08-05'],undefined);
   assert.equal(value.unitRevision,4);assert.equal(value.completedAt,undefined);assert.equal(stores['untouched-unit'].updatedAt,11);
  }
- results.push({width,answered,wrongCount,stages:12,history:true,reload:true,migration:true,legacyMigrationRevisions:[1,2,3],geometry:'PASS'});await context.close();
+ const compound=data.unit.sections[0].items.find(i=>i.id==='n08-01'),retired='2.3,\\quad-5.0';
+ await page.evaluate(({unitId,retired})=>{
+  const key=Object.keys(localStorage).find(k=>{try{return Boolean(JSON.parse(localStorage.getItem(k)).state?.textbookProgress)}catch{return false}});
+  const saved=JSON.parse(localStorage.getItem(key));saved.state.textbookProgress[unitId]={unitId,unitRevision:3,startedAt:1,updatedAt:2,answers:{'n08-01':{itemId:'n08-01',value:retired,firstValue:retired,resolved:false,isFirstCorrect:false,attemptCount:1,firstAnsweredAt:1,lastAnsweredAt:2}}};localStorage.setItem(key,JSON.stringify(saved));
+ },{unitId:data.unit.unitId,retired});
+ await page.reload();await page.getByTestId('textbook-item-'+first.id).click();
+ await page.getByTestId('inline-choice-panel-'+first.id).getByRole('button',{name:first.answer,exact:true}).click();
+ await page.getByTestId('textbook-item-'+compound.id).click();await page.getByTestId('textbook-hint-'+compound.id).waitFor();
+ await page.getByTestId('inline-choice-panel-'+compound.id).getByRole('button',{name:compound.answer,exact:true}).click();
+ const recoveredStores=await page.evaluate(()=>Object.keys(localStorage).flatMap(key=>{try{const s=JSON.parse(localStorage.getItem(key));return s.state?.textbookProgress?[s.state.textbookProgress]:[]}catch{return[]}})[0]);
+ const recovered=recoveredStores[data.unit.unitId];
+ assert.equal(recovered.answers['n08-01'].firstValue,retired);assert.equal(recovered.answers['n08-01'].attemptCount,2);assert.equal(recovered.archivedRevisions['3'].answers['n08-01'].value,retired);
+ results.push({width,answered,wrongCount,stages:12,history:true,reload:true,migration:true,legacyMigrationRevisions:[1,2,3],retiredChoiceRecovered:true,geometry:'PASS'});await context.close();
 }
 assert.deepEqual(errors,[]);fs.writeFileSync(out+'/REPORT.json',JSON.stringify({status:'PASS',sourceSHA:process.env.GITHUB_SHA??null,root,results,errors},null,2));console.log(JSON.stringify({status:'PASS',results}));
 }finally{await browser.close();}

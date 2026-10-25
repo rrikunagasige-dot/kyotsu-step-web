@@ -8,16 +8,16 @@
   "implementation": {
     "repository": "rrikunagasige-dot/kyotsu-step-web",
     "repoId": 1391122224,
-    "sourceSHA": "190941bc9d65fb3ed2fa6b52ba90196addf19e33",
-    "branch": "work/workflow-cr-integration-p004-20261024",
+    "sourceSHA": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+    "branch": "work/n07-semantic-repair-proposal-20261025",
     "entry": "workflow/INTEGRATION_RUNBOOK.md",
-    "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/190941bc9d65fb3ed2fa6b52ba90196addf19e33/workflow/INTEGRATION_RUNBOOK.md"
+    "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6/workflow/INTEGRATION_RUNBOOK.md"
   },
   "verification": {
-    "runId": 40116299835,
-    "sourceSHA": "190941bc9d65fb3ed2fa6b52ba90196addf19e33",
+    "runId": 40154122715,
+    "sourceSHA": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
     "conclusion": "success",
-    "workflowTests": 120,
+    "workflowTests": 129,
     "newIntegrationTests": 42,
     "learnerTests": 620,
     "browserWidths": [
@@ -25,7 +25,10 @@
       390,
       430,
       1440
-    ]
+    ],
+    "additionalRepairWorkflowTests": 9,
+    "authoringChecks": 39,
+    "repairNodeTests": 6
   },
   "reviewSurface": "existing-public-app",
   "screenshotApprovalRequired": false,
@@ -33,10 +36,22 @@
   "contentDesignApprovalRequired": true,
   "modelStatus": "OFFLINE_ONLY",
   "newLessonAccepted": false,
-  "protectedAppSource": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
-  "adoption": "Pinned workflow tools reference; no whole-branch merge or hosting change",
+  "protectedAppSource": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+  "adoption": "Pinned verified C/R tools and exact published N07 source; no whole-branch merge",
   "legacyVersions": [
     "production/1",
     "legacy/1"
-  ]
+  ],
+  "repairProposal": "W-MATH-032/P-001",
+  "previousPublishedAppSource": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+  "acceptedFirstTitle": "22bc43ba53fa87bb85e82e18a25db13a5c8a485c",
+  "publication": {
+    "runId": 40154568134,
+    "workflowSHA": "a99031f7d970fe4059ca4425c87f3a6d509f56ad",
+    "sourceSHA": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+    "status": "success",
+    "sourceVerified": true,
+    "userAccepted": false
+  },
+  "metadataGovernanceScope": "Whole-repository Markdown metadata checker is not claimed PASS; actual immutable approval and remaining legacy metadata limitations are in W-MATH-032/FINDINGS.md."
 }

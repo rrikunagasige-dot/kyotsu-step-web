@@ -1,3 +1,19 @@
+## CURRENT — W-MATH-032 / N07修正（2026-10-25）
+
+P-001はユーザー「いいよ続けて」で承認済み。旧N07の六指摘と同型箇所を全41nodeで修正し、本文・選択肢・ヒント・前結果・履歴へ意味属性を接続した。36回答・14段階・revision4・既存storage namespace・第一タイトル受入22bc43baと他モードを保持。
+
+コード正本は `46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6`。CI [40154122715](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40154122715) SUCCESS：129 workflow、620 applicable learner、39 authoring、6 repair Node、320/390/430/1440pxの全回答・全誤答・前結果・履歴・再開/移行・描画を検証。二件の既知のカタログ不整合は別記録。コード＋同じAIによる実画像監査であり、独立した別AI監査とは呼ばない。
+
+旧形式の診断、モデル不在時の版付きcatalog参照、工程状態、承認された添付設計からIRへの結び付け、JSONキー順に依存しないIR hashを改善。入口は既存の修正/CMD-WORK-001・作成/CMD-WORK-002、production/2。モデルはOFFLINE_ONLY、今回fit・昇格なし。設計承認や内部QAを人間の肯定例へ変換しない。
+
+[Work記録](https://github.com/rrikunagasige-dot/kyotsu-step-web/tree/work/n07-semantic-repair-proposal-20261025/work/items/W-MATH-032-n07-semantic-repair) / [工程ごとのcode・AIの配置](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/work/n07-semantic-repair-proposal-20261025/work/items/W-MATH-032-n07-semantic-repair/WORKFLOW_INTEGRATION_RESULT.md)。
+
+公開は [N07の直接URL](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=46ea59be#/learning/textbook/math-numbers-expressions-n07)。既存Pagesの公開run [40154568134](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40154568134) SUCCESS。配信source46ea59be、IR hash、保存namespace、第一タイトルを実HTTPSと公開後操作で照合済み。WorkはVERIFYING、次はG3_FINAL@n07の範囲付きユーザー受入。その後に事後影響sweep/R08/L01を行う。設計承認を教材受入へ転用せず、旧画像票・総チェックの定型句・同じ公開許可の再要求へ戻らない。
+
+以下の旧CURRENT・旧公開承認/画像票手順は、履歴として保持する。現在の具体的な受入・公開方針は上記とWORK_SYSTEM §12Aを優先。
+
+---
+
 ## CURRENT — P-004 作成・修正への統合（2026-10-24）
 
 実行入口は既存の作成/CMD-WORK-002と修正/CMD-WORK-001。新規数学教材Workはproduction/2。canonicalな実行codeは `190941bc9d65fb3ed2fa6b52ba90196addf19e33`。CI [40116299835](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40116299835) SUCCESS。

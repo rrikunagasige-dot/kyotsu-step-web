@@ -1,3 +1,19 @@
+## CURRENT — N07受入完了・担当付き火柴図・実学習（2026-10-25）
+
+ユーザーの「我觉得这部分做的很好了。可以」を、公開済みN07 source `46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6` の範囲付き受入として記録。W-MATH-032 runtimeは事後R03・R08・L01・Z01まで実行済みで **DONE**。六つの元否定例は、同じ公開source・実修正証拠・閉鎖Workに結び付けてVERIFIED_FIXED。再受入・再公開許可を要求しない。
+
+実行tool pinは `058c4ea32474b563487292b583f7a01df4f9c4f1`。CI [40157340081](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40157340081) SUCCESS：workflow131、corpus/ML等11、既存learner620 applicable、authoring39、build、四幅検証、担当図5画面のタブ・文字切れ検査。肯定評価は修正R01を再開せずL01へ流し、学習特徴から内部ID・証跡文字列を除去。全repo旧Markdownメタデータ検査の完全PASSは引き続き主張しない。
+
+学習データは評価済み10件（否定7・肯定3）。今回追加はN07全体に対する真正な肯定 **1件**。六観点それぞれの肯定を捏造しない。固定済みmultilingual-e5-small encoderとLogisticRegressionを使い、既存layout_discomfort headを2例で実fit。新overall_material_acceptanceは肯定1/否定0のためhead作成保留。2独立family、未知holdoutなし、精度推定不可。モデルは **OFFLINE_ONLY**・advisoryEligible=false、本番昇格なし。legacy modelDisposition=NOT_TRAINABLEは非advisoryを示す旧adapter値であり、trainingRun=true・実fit結果とは分けて読む。
+
+入口は従来の「修正」「作成」。次のWorkでも `work/items/W-MATH-032-n07-semantic-repair/runtime` の共有Storeと履歴を保持して閉鎖根拠を参照する。空台帳へ置換してregistryの閉鎖フラグだけで未処理判定しない。catalog `W-MATH-032/LEARNING_CORPUS.json`、model `W-MATH-032/MODEL_RESULT.json` は上記tool pinに存在。
+
+紹介用の全体・共通・作成・修正・学習の5図は、[presentation](https://github.com/rrikunagasige-dot/kyotsu-step-web/tree/work/n07-semantic-repair-proposal-20261025/work/items/W-MATH-032-n07-semantic-repair/presentation) にHTML/SVG/PNG/Mermaid/担当表として保存。全C/R18工程でAI・CODE・USERの役割と成果物を明示。AIのコード執筆と既存CODEの実行を区別し、同じAIの監査を独立別AI監査と呼ばない。
+
+公開appは上記46ea59beのまま、公開run40154568134 SUCCESS。第一タイトル受入22bc43ba、他モード・保存進捗も保持。今回の作業は学習・担当図・実行基盤の改善であり教材の再配信は行っていない。以下は履歴であり、旧「受入待ち」「fitなし」は現在状態を示さない。
+
+---
+
 ## CURRENT — W-MATH-032 / N07修正（2026-10-25）
 
 P-001はユーザー「いいよ続けて」で承認済み。旧N07の六指摘と同型箇所を全41nodeで修正し、本文・選択肢・ヒント・前結果・履歴へ意味属性を接続した。36回答・14段階・revision4・既存storage namespace・第一タイトル受入22bc43baと他モードを保持。

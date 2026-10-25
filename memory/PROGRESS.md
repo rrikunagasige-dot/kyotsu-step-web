@@ -1,3 +1,17 @@
+## CURRENT — N09/N10受入・訂正済み実学習完了、NE02/N11/N12の具体設計（2026-10-25）
+
+本人の「私が言っているのはN09,N10承認の意味」を公開fa0eff27の両単元受入として記録。W035はG3_FINAL両unit→fresh事後sweep→R08/L01実fit→Z01を完了。W034の依頼は子修正完了でresolveし、旧cb7版の受入は捏造しない。
+
+学習は15例（否定9/肯定6）。否定2件の初回metadata-only snapshotを最終監査で検出し、元のsemantic本文/数式/選択肢へ訂正。初回fitは履歴として退避し、同じcase.finalize→ml.trainサービスで実再fitしたsupplemental receiptsを保存した。現役はW035/MODEL_RESULT_CORRECTED.json、model0fdba96e・catalogb1e33add。15入力すべて空でなく全token処理、5family group。実fit可能なのはlayout_discomfort2件のみ。新しい順序/因子観点は否定だけなので分類器未学習、事例検索とルール適用で利用。OFFLINE_ONLY/advisoryEligible=false・未知holdoutなし。tool pin058c4ea不変。
+
+次の依頼「まずN09,N10の機械学習そして次はNE02,N11,N12」を受け、W-MATH-036 / CMD-WORK-001 / production/2 / P-001 / PROPOSED。原108block・50数式、既存78回答/300choiceキーを保持した129node・115回答・41段階の全文設計。全411選択肢の具体表示、前結果/履歴、元図5点のgate、旧版移行を指定。3IR/coverage/compile、16恒等式/6不等式、KaTeX1016件がPASS。実ブラウザ・教材src変更・今回3単元の公開はまだ行っていない。
+
+訂正catalog/modelを同じ共有Runtimeのproduction_contextへ反映し、失効したR02–R04を全3unitで再実行。現在はR05_APPROVAL@ne02（3unit bundleの具体設計承認）。本人の着手依頼をこの新P001の実装承認と同一視しない。次は具体設計への判断→NE02、N11、N12の順に完成単位ごと既存appへ直接compile/公開。N13/N14は範囲外。
+
+提案書と全node: [W036](https://github.com/rrikunagasige-dot/kyotsu-step-web/tree/work/ne02-n11-n12-guided-design-20261025/work/items/W-MATH-036-ne02-n11-n12-guided-design)。学習の訂正経緯・実証拠: [W035](https://github.com/rrikunagasige-dot/kyotsu-step-web/tree/work/ne02-n11-n12-guided-design-20261025/work/items/W-MATH-035-choice-order-factor-audit)。以下は過去のcheckpoint。
+
+---
+
 ## CURRENT — N09/N10の7項目を修正・公開、実物評価待ち（2026-10-25）
 
 W-MATH-035/P-001は「おけこれでいいよ。じゃ続けてよろしく」で承認済み。公開source `fa0eff271a97940fad08d83960ae50faeabc81b9`。N09-08は左平方→右平方→比較、N10-07/15/20は候補の表示段階を統一、q17/q20-factorは穴の前後・完成・前結果・履歴で因子全体を括弧へ、N09-14の表に隠れたafter数式も修正した。元の81正答・282choiceキーとrevision、保存履歴は維持。

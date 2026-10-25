@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { mathNumbersN11Unit, n11SourceToItemIds } from './n11Lesson'
+import { mathNumbersN11LegacyUnit as mathNumbersN11Unit, n11LegacySourceToItemIds as n11SourceToItemIds } from './n11Lesson'
 import { effectiveTextbookProgress, type TextbookAnswerRecord, type TextbookUnitProgress } from '../../../../domain/textbook'
 
 const unit = mathNumbersN11Unit

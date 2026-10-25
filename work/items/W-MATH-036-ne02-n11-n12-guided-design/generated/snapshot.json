@@ -1,11 +1,11 @@
 {
   "work": "W-MATH-036",
   "engine_version": "1.0.0",
-  "ledger_head": "54556b9d7c8b8dc5719cc12f6a67887f86943cb605befbc56aaa452069f3da23",
+  "ledger_head": "16304f611d4bb6da9ef562430ccb929e6f8b80614938f75a738bd20dd1bc1b08",
   "work_status": "BLOCKED",
   "profile": "material",
   "simulation": false,
-  "candidate_sha": "66890034113a28cc7ffb476990ce7ef90e536b30",
+  "candidate_sha": "f860dc04a773c3f5b2d5b608ea4f4bb24e6fb35a",
   "next": {
     "status": "BLOCKED",
     "reason": "外部操作の成否が未記録。実状態の照合が必要"
@@ -2479,16 +2479,16 @@
       "work": "W-MATH-034"
     },
     {
-      "id": "W-MATH-034",
-      "work": "W-MATH-034",
-      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+      "id": "W-MATH-036",
+      "work": "W-MATH-036",
+      "version": "f860dc04a773c3f5b2d5b608ea4f4bb24e6fb35a",
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
     },
     {
-      "id": "W-MATH-036",
-      "work": "W-MATH-036",
-      "version": "66890034113a28cc7ffb476990ce7ef90e536b30",
+      "id": "W-MATH-034",
+      "work": "W-MATH-034",
+      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
     }
@@ -3139,6 +3139,46 @@
       "input_hash": "81fa887cfb51fe1cd711ed41f508cb33fe8ffad78dab79b12725fa966671d55e",
       "node": "G2_AUDIT@ne02",
       "receipt": "4bbe17a283544576ec794dfa395655a2342dbfd188e01c7995202c56b98ec85b"
+    },
+    {
+      "input_hash": "6e8d43c2712698ffae2e7e08e945e9a47e27c3604872445df65aa68bd45d904e",
+      "node": "R07_VERIFY@ne02",
+      "receipt": "cec495b9e8911e4403bc22329445c270119358d8ffcf05ea9c7a367c87297950"
+    },
+    {
+      "input_hash": "6e8d43c2712698ffae2e7e08e945e9a47e27c3604872445df65aa68bd45d904e",
+      "node": "R07_VERIFY@ne02",
+      "receipt": "125a59c644cff8f6011c52063198a38b5a8d69fa37fb4cc3ffd4a7ad7a9972ca"
+    },
+    {
+      "input_hash": "6e8d43c2712698ffae2e7e08e945e9a47e27c3604872445df65aa68bd45d904e",
+      "node": "R07_VERIFY@ne02",
+      "receipt": "f4fdfffd37d89cc0b321e01bca896a61db4b92b0dcd53fdcb0e70966b79fc195"
+    },
+    {
+      "input_hash": "6e8d43c2712698ffae2e7e08e945e9a47e27c3604872445df65aa68bd45d904e",
+      "node": "R07_VERIFY@ne02",
+      "receipt": "c69528440a872b6365fbc513afe160263f7761c58769b755a01b44bc2e008543"
+    },
+    {
+      "input_hash": "b632d2443a859d4b70859cfc729d8bed39c3a09dd493293f37e42b19b80d7fd8",
+      "node": "R07_SEMANTIC@ne02",
+      "receipt": "6c0031e8eac7cc2f817f08cd78dc955e0fed8a20235f72b783b4746acc2e82f1"
+    },
+    {
+      "input_hash": "b632d2443a859d4b70859cfc729d8bed39c3a09dd493293f37e42b19b80d7fd8",
+      "node": "R07_SEMANTIC@ne02",
+      "receipt": "11d06157febc7dfa7e86cdb48b5c24ada2f02b9360979c0c5d4a8f13224aefda"
+    },
+    {
+      "input_hash": "9f99b7b7924ab03d8c8769342ba01d1dfa79eb56385bea358a4514212d6ae3f1",
+      "node": "G2_AUDIT@ne02",
+      "receipt": "f461f2cc5d1b416ff5147c75c9db5d13521cadd01c1763d5c906908567b9ba49"
+    },
+    {
+      "input_hash": "9f99b7b7924ab03d8c8769342ba01d1dfa79eb56385bea358a4514212d6ae3f1",
+      "node": "G2_AUDIT@ne02",
+      "receipt": "d51ea5e862a4777fd9ad08d85b5f643ece1519f05996d6bfa61495153262421a"
     }
   ],
   "release_acceptance": {

@@ -1,0 +1,13 @@
+{
+  "code": "n11",
+  "unitTests": 13,
+  "learnerRegressions": 620,
+  "authoringTests": 39,
+  "build": "PASS",
+  "lint": "PASS",
+  "browser": "PENDING_GITHUB_CI",
+  "scopeNotes": [
+    "N11 leaf and historical regression projections; prepared shared routes and migrations already present",
+    "Frozen design and original31 answers preserved;39 current answers"
+  ]
+}

@@ -7,7 +7,7 @@ from production import ai_request
 from contracts import manifest
 from views import render
 r=Runtime(R/'work/items/W-MATH-032-n07-semantic-repair/runtime',R);w='W-MATH-036';code=sys.argv[1];sha=sys.argv[2];s=r.state(w);job=json.loads((B/('PATCH_JOB_'+code.upper()+'.json')).read_text())['job'];nid=job['node']
-r.bind_candidate(w,sha,release_units=None if code=='ne02' else [code]);ev=[]
+r.bind_candidate(w,sha);ev=[]
 for name in ['APPROVAL.json','evidence/IMPLEMENTATION_'+code.upper()+'_LOCAL.json']:
  p=str((B/name).relative_to(R));ev.append(r.evidence(w,'file',dict(path=p,sha256=manifest(R,[p])[p]),source_ref='exact approved design and local verification',verification_level='local_execution'))
 claim=r.state(w)['claims'].get(nid)

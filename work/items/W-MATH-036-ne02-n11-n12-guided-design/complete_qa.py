@@ -7,11 +7,11 @@ from production import ai_request
 from contracts import manifest
 from views import render
 from definitions import instantiate
-r=Runtime(R/'work/items/W-MATH-032-n07-semantic-repair/runtime',R);w='W-MATH-036';code=sys.argv[1];U=code.upper();ci=json.loads((B/('evidence/CI_'+U+'.json')).read_text());report=json.loads((B/('evidence/UI_'+U+'.json')).read_text());audit=json.loads((B/('evidence/IMAGE_'+U+'.json')).read_text());sha=r.state(w)['candidate_sha']
+r=Runtime(R/'work/items/W-MATH-032-n07-semantic-repair/runtime',R);w='W-MATH-036';code=sys.argv[1];U=code.upper();sha=r.state(w)['candidate_sha'];suffix=U+'_'+sha[:8];ci=json.loads((B/('evidence/CI_'+suffix+'.json')).read_text());report=json.loads((B/('evidence/UI_'+suffix+'.json')).read_text());audit=json.loads((B/('evidence/IMAGE_'+suffix+'.json')).read_text())
 assert ci['sourceSHA']==sha and ci['conclusion']=='success' and report['sourceSHA']==sha and report['status']=='PASS' and audit['sourceSHA']==sha and audit['status']=='PASS'
 rows=[x for x in report['results'] if x['code']==code];assert {x['width'] for x in rows}=={320,390,430,1440};count={'ne02':30,'n11':39,'n12':46}[code];assert all(x['answered']==count and x['geometry']=='PASS' and x['history'] and x['migration'] for x in rows)
 ev=[r.evidence(w,'ci',dict(id=ci['runId'],html_url=ci['url'],head_sha=sha,status='completed',conclusion='success'),source_ref='actual exact-source GitHub CI',verification_level='tool_result_transcribed')]
-for name in ['CI_'+U+'.json','UI_'+U+'.json','IMAGE_'+U+'.json']:
+for name in ['CI_'+suffix+'.json','UI_'+suffix+'.json','IMAGE_'+suffix+'.json']:
  p=str((B/'evidence'/name).relative_to(R));ev.append(r.evidence(w,'file',dict(path=p,sha256=manifest(R,[p])[p]),source_ref='actual code and same-assistant real-image audit',verification_level='local_execution'))
 def submit(stage,inputs,fields):
  nid=stage+'@'+code;s=r.state(w)

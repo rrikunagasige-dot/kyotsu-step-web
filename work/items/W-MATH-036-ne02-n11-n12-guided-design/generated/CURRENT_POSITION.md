@@ -2,8 +2,8 @@
 
 状態: BLOCKED / 内部: BLOCKED / 次: —
 
-台帳HEAD: `54556b9d7c8b8dc5719cc12f6a67887f86943cb605befbc56aaa452069f3da23`
-候補SHA: `66890034113a28cc7ffb476990ce7ef90e536b30`
+台帳HEAD: `16304f611d4bb6da9ef562430ccb929e6f8b80614938f75a738bd20dd1bc1b08`
+候補SHA: `f860dc04a773c3f5b2d5b608ea4f4bb24e6fb35a`
 
 模擬実行: False。アプリ受入: False。技術試験合格だけで教材の品質は確定しない。
 

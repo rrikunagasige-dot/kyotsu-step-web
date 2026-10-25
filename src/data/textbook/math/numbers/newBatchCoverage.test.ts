@@ -21,7 +21,7 @@ import { n06SourceToItemIds } from './n06Lesson'
 // Historical N07 v3 contracts remain tested verbatim; v4 has its own integration tests.
 import { n07SourceToItemIds, mathNumbersN07Unit as n07LegacyUnit } from './n07LegacyLesson'
 import { n08SourceToItemIds, mathNumbersN08Unit as n08LegacyUnit } from '../../../../test/n08Legacy'
-import { n11SourceToItemIds } from './n11Lesson'
+import { n11LegacySourceToItemIds as n11SourceToItemIds } from './n11Lesson'
 import { n13SourceToItemIds } from './n13Lesson'
 import { n14SourceToItemIds } from './n14Lesson'
 const mathTextbookUnits = current_mathTextbookUnits.map(unit => firstThemeBaseline(unit.unitId === n10LegacyUnit.unitId ? n10LegacyUnit : unit.unitId === n09LegacyUnit.unitId ? n09LegacyUnit : unit.unitId === n07LegacyUnit.unitId ? n07LegacyUnit : unit.unitId === n08LegacyUnit.unitId ? n08LegacyUnit : unit))

@@ -6,7 +6,7 @@ from ready_dispatch import run
 from contracts import manifest
 from definitions import instantiate
 from views import render
-r=Runtime(R/'work/items/W-MATH-032-n07-semantic-repair/runtime',R);w='W-MATH-036';codes=sys.argv[1].split(',');s=r.state(w);sha=s['candidate_sha'];release=json.loads((B/'evidence/PUBLICATION_RUN.json').read_text());assert release['status']=='completed' and release['conclusion']=='success'
+r=Runtime(R/'work/items/W-MATH-032-n07-semantic-repair/runtime',R);w='W-MATH-036';codes=sys.argv[1].split(',');s=r.state(w);sha=s['candidate_sha'];suffix=sha[:8];release=json.loads((B/('evidence/PUBLICATION_RUN_'+suffix+'.json')).read_text());assert release['status']=='completed' and release['conclusion']=='success'
 root='https://rrikunagasige-dot.github.io/kyotsu-step-web/';receipts=[]
 for url in [root+'release.json?verified='+sha,root+'?verified='+sha]:
  with urllib.request.urlopen(url,timeout=30) as resp:
@@ -16,10 +16,10 @@ assert m['sourceSHA']==sha and m['workflowSHA']==release['head_sha'] and m['stor
 assert m['acceptedFirstTitle']=='22bc43ba53fa87bb85e82e18a25db13a5c8a485c' and m['acceptedN09N10']['sourceSHA']=='fa0eff271a97940fad08d83960ae50faeabc81b9'
 for code in codes:
  ir=json.loads((B/(code.upper()+'_IR.json')).read_text());assert m['unitDesignHashes'][code]==next(b['content_design_hash'] for b in s['plan']['blocks'] if b['id']==code)
- report=json.loads((B/('evidence/HOSTED_'+code.upper()+'.json')).read_text());assert report['sourceSHA']==sha and report['status']=='PASS';assert len([x for x in report['results'] if x['code']==code])==4
-(B/'evidence/HOSTED_MANIFEST.json').write_text(json.dumps(m,ensure_ascii=False,indent=2)+'\n');(B/'evidence/HOSTED_HTTP.json').write_text(json.dumps(dict(sourceSHA=sha,receipts=receipts),indent=2)+'\n')
+ report=json.loads((B/('evidence/HOSTED_'+code.upper()+'_'+suffix+'.json')).read_text());assert report['sourceSHA']==sha and report['status']=='PASS';assert len([x for x in report['results'] if x['code']==code])==4
+(B/('evidence/HOSTED_MANIFEST_'+suffix+'.json')).write_text(json.dumps(m,ensure_ascii=False,indent=2)+'\n');(B/('evidence/HOSTED_HTTP_'+suffix+'.json')).write_text(json.dumps(dict(sourceSHA=sha,receipts=receipts),indent=2)+'\n')
 ev=[]
-for name in ['PUBLICATION_RUN.json','HOSTED_MANIFEST.json','HOSTED_HTTP.json']:
+for name in ['PUBLICATION_RUN_'+suffix+'.json','HOSTED_MANIFEST_'+suffix+'.json','HOSTED_HTTP_'+suffix+'.json']:
  p=str((B/'evidence'/name).relative_to(R));ev.append(r.evidence(w,'file',dict(path=p,sha256=manifest(R,[p])[p]),source_ref='actual existing Pages run and HTTPS verification',verification_level='local_execution'))
 for code in codes:
  op='W036-'+code+'-pages-'+sha[:8]

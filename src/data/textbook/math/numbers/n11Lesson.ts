@@ -1,9 +1,10 @@
+import authored from './n11Authored.json'
 import { validateTextbookUnits } from '../../../../domain/textbookSchema'
 import { C, M, T, oneToOneSourceMap, reviewItem } from './reviewLessonHelpers'
 import type { TextbookItem, TextbookReadingBlock } from '../../../../domain/textbookSchema'
 import { makeReviewSteps } from './newBatchGuidedSteps'
 
-export const n11SourceToItemIds = {
+export const n11LegacySourceToItemIds = {
   ...oneToOneSourceMap('N11', 14),
   'N11-Q02': ['n11-02', 'n11-wm011-q02-compare'],
   'N11-Q03': ['n11-wm011-q03-factor', 'n11-wm011-q03-positive', 'n11-03', 'n11-wm011-q03-zero'],
@@ -460,4 +461,8 @@ const rawN11={
       {id:'n11-f02',src:'/assets/math/textbook/numbers/n11-f02.png',alt:'二つの不等式の解の範囲を、白丸・黒丸を区別した元の完成数直線。',caption:'境界の含有を解いた後で数直線でも確認する。',overlays:[]},
     ],readingFlow:content.readingFlow,items:content.items}],
 }
-export const mathNumbersN11Unit=validateTextbookUnits([rawN11])[0]
+export const mathNumbersN11LegacyUnit=validateTextbookUnits([rawN11])[0]
+
+export const mathNumbersN11Unit = validateTextbookUnits([authored.unit])[0]
+export const n11Presentation = authored
+export const n11SourceToItemIds: Record<string, string[]> = Object.fromEntries(Array.from({length:14},(_,i)=>['N11-Q'+String(i+1).padStart(2,'0'), authored.nodes.filter(n=>n.q===i+1).flatMap(n=>n.interaction?[n.interaction]:[])]))

@@ -44,8 +44,9 @@ def examples(corpus):
         raw=inp['text']
         try:structured=json.loads(raw)
         except (ValueError,TypeError):structured=None
-        clean=learner_text(structured) if isinstance(structured,(dict,list)) else raw
-        out.append({'id':c['id'],'text':clean,'inputHash':digest({'kind':'learner_artifact','text':clean}),'sourceInputHash':digest(inp),'featureInputSchema':'learner-visible-json/2','dimension':c['dimension'],'label':c['label'],'familyId':c['familyId'],'episodeId':c['episodeId'],'artifactVersion':c['artifactVersion'],'evidenceTier':c['evidenceTier'],'caseId':c['id'],'seen':c.get('seen',True),'scope':c['scope']})
+        solution=inp.get('contextSchema')=='solution-visible/1'
+        clean=learner_text(structured,solution=solution) if isinstance(structured,(dict,list)) else raw
+        out.append({'id':c['id'],'text':clean,'inputHash':digest({'kind':'learner_artifact','text':clean}),'sourceInputHash':digest(inp),'featureInputSchema':'solution-visible-json/1' if solution else 'learner-visible-json/2','dimension':c['dimension'],'label':c['label'],'familyId':c['familyId'],'episodeId':c['episodeId'],'artifactVersion':c['artifactVersion'],'evidenceTier':c['evidenceTier'],'caseId':c['id'],'seen':c.get('seen',True),'scope':c['scope']})
     return out
 
 def split_groups(rows):
@@ -68,9 +69,10 @@ def git_snapshot(root,sha,path):
     if p.is_absolute() or '..' in p.parts:raise ValueError('path')
     return subprocess.check_output(['git','show',sha+':'+path],cwd=root,text=True)
 
-def learner_text(value):
+def learner_text(value,solution=False):
     """Keep learner-visible structure; exclude approval, provenance, version and IDs."""
     visible={'text','latex','prompt','choices','hints','before','after','inputLatex','outputLatex','table','title','readingFlow','items','parts','type'}
+    if solution:visible.update({'conditions','initial','current','completed','purpose','afterText','promptParts','rows','masked','detail','value'})
     def walk(v,visible_scalar=False):
         if isinstance(v,list):return [x for item in v if (x:=walk(item,visible_scalar)) not in ({},[],None)]
         if isinstance(v,dict):

@@ -11,6 +11,8 @@ REGISTRY = {
     'ir.compile': 'S18', 'browser.verify': 'S19', 'protected.verify': 'S20',
     'release.verify': 'S21', 'case.finalize': 'S23', 'ml.train': 'S24',
     'feedback.capture': None, 'impact.inventory': None,
+    'research.extract': 'U00', 'research.ingest':'U01', 'research.analyze':'U02',
+    'research.patterns':'U03', 'solution.validate':'U04', 'interaction.plan':'U05', 'render.solution':'U06', 'solution.review':'U07',
 }
 DESIGN = ['teaching.plan', 'step.plan', 'blank.plan', 'prose.compose', 'text.verify', 'figure.verify', 'ir.verify', 'source.audit', 'novice.audit']
 PLACEMENT = {
@@ -37,6 +39,26 @@ def requests_for(plan, node):
         if node['stage_kind']=='R02_CAUSE' and 'math' in facets:caps += ['math.solve']
         if 'math' not in facets: caps = [c for c in caps if c not in ('math.solve', 'math.verify', 'knowledge.ledger')]
         if not facets.intersection({'math', 'design'}): caps = [c for c in caps if c not in ('teaching.plan', 'step.plan', 'blank.plan')]
+    if plan.get('solution_pipeline')=='solution/1':
+        extra={
+            'C01_SOURCE':['research.ingest','research.analyze'],
+            'C03_PATTERN':['research.patterns'], 'C04_SOLUTION':['solution.validate'],
+            'C05_DESIGN':['interaction.plan','solution.review'], 'C07_BUILD':['render.solution'],
+            'C08_VERIFY':['solution.validate'], 'R02_CAUSE':['solution.validate'],
+            'R04_PROPOSAL':['solution.validate','interaction.plan','solution.review'], 'R06_PATCH':['render.solution'],
+            'R07_VERIFY':['solution.validate'],
+            'C09_SEMANTIC':['solution.review'], 'R07_SEMANTIC':['solution.review'],
+        }.get(node['stage_kind'],[])
+        if plan.get('research_extract') and node['stage_kind']=='C01_SOURCE':extra+=['research.extract']
+        if node['stage_kind']=='R01_CAPTURE' and node['block']:
+            facets=set(next(b for b in plan['blocks'] if b['id']==node['block'])['change_facets'])
+            if 'source' in facets:
+                extra+=['research.ingest','research.analyze']
+                if plan.get('research_extract'):extra+=['research.extract']
+        if plan['command']=='CMD-WORK-001' and node['block']:
+            facets=set(next(b for b in plan['blocks'] if b['id']==node['block'])['change_facets'])
+            if not facets.intersection({'math','design'}):extra=[c for c in extra if c!='solution.validate' and c!='interaction.plan']
+        caps+=extra
     return caps
 
 
@@ -45,11 +67,20 @@ def implementation_hash(rt):
     from definitions import DEFINITION_HASH
     return digest({'workflow': DEFINITION_HASH, 'services': implementation_manifest(rt.root)})
 
+def solution_environment():
+    """An engine upgrade must invalidate cached solution receipts as well as code changes."""
+    import os,subprocess,sys,json
+    python=os.environ.get('KYOTSU_MATH_PYTHON',os.environ.get('KYOTSU_ML_PYTHON',sys.executable))
+    try:
+        p=subprocess.run([python,'-c','import json,sys,importlib.metadata as m;print(json.dumps({"python":sys.version,"sympy":m.version("sympy")}))'],capture_output=True,text=True,timeout=10)
+        return {'executable':python,'versions':json.loads(p.stdout)} if p.returncode==0 else {'executable':python,'status':'DEPENDENCY_MISSING'}
+    except (OSError,ValueError,subprocess.TimeoutExpired):return {'executable':python,'status':'UNAVAILABLE'}
+
 
 def run_capability(rt, work, node, capability, inputs):
     from runner import code_operation
     s = rt.state(work); need(capability in node['capability_requests'], '工程に未接続の機能')
-    if capability=='source.import' and inputs.get('sourcePath'):
+    if capability in ('source.import','research.extract') and inputs.get('sourcePath'):
         need(inputs['sourcePath'] in (node['source_refs'] or s['plan']['source_manifest']),'宣言されたblock原資料の外を取り込まない')
     if capability=='case.retrieve' and not s['plan'].get('simulation'):
         request=dict(inputs.get('request',{}))
@@ -61,6 +92,7 @@ def run_capability(rt, work, node, capability, inputs):
     impl = implementation_hash(rt)
     context_keys = ('corpusHash', 'modelHash', 'rulesHash', 'featureSchema') if capability in ('case.retrieve', 'ml.train') else ()
     context = {k: s.get('production_context', {}).get(k) for k in context_keys}
+    if s['plan'].get('solution_pipeline')=='solution/1':context['solutionEnvironment']=solution_environment()
     # Scoped across nodes/blocks: stage ID is a binding, not the service cache key.
     from integration import STAGE_FACETS
     relevant=STAGE_FACETS.get(node['stage_kind'],set())

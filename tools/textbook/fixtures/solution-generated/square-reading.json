@@ -1,0 +1,319 @@
+{
+  "schemaVersion": "solution-reading/1",
+  "unitId": "fixture-square",
+  "sourceHash": "59fba59bdec97cea269d49aac153913a6ac7ee1af69fd72eb081b63045b8f27f",
+  "irHash": "5b9dcd5c441336dca7578a076c04a99b8274f9d4acd3039911fc478f824ccd4d",
+  "problems": [
+    {
+      "id": "fixture-square-problem",
+      "title": "平方完成する",
+      "prompt": [
+        {
+          "type": "text",
+          "id": "fixture-square-prompt",
+          "text": "次の問題を、一つの式の流れとして解こう。"
+        }
+      ],
+      "conditions": [],
+      "goal": "平方完成する",
+      "layout": "calculation",
+      "initial": {
+        "id": "fixture-square-s0",
+        "latex": "x^{2}+6x+5"
+      },
+      "steps": [
+        {
+          "id": "fixture-square-step0",
+          "beforeId": "fixture-square-s0",
+          "afterId": "fixture-square-s1",
+          "purpose": [
+            {
+              "type": "text",
+              "id": "fixture-square-step0-purpose",
+              "text": "二乗の形を作るため、必要な定数を足し、同じ定数を引く。"
+            }
+          ],
+          "reason": [
+            {
+              "type": "text",
+              "id": "fixture-square-step0-reason",
+              "text": "同じ数を足して引くので、式の値は変わらない。"
+            }
+          ],
+          "afterText": [
+            {
+              "type": "text",
+              "id": "fixture-square-step0-after",
+              "text": "平方の公式で、最初の三つの項をまとめる。"
+            }
+          ],
+          "promptParts": [],
+          "detail": [],
+          "formula": {
+            "id": "fixture-square-step0-equation",
+            "number": 1,
+            "masked": "x^{2}+6x+\\boxed{\\mathrm{A}}-\\boxed{\\mathrm{A}}+5",
+            "completed": "x^{2}+6x+9-9+5"
+          },
+          "binding": {
+            "interactionId": "fixture-square-answer0",
+            "slotIds": [
+              "fixture-square-step0-slot0",
+              "fixture-square-step0-slot1"
+            ]
+          },
+          "interaction": {
+            "id": "fixture-square-answer0",
+            "action": "二乗の形を作るため、必要な定数を足し、同じ定数を引く。",
+            "correctValue": "9",
+            "hints": [
+              [
+                {
+                  "type": "text",
+                  "id": "fixture-square-answer0-hint0",
+                  "text": "今の目的と、直前の式をもう一度確かめよう。"
+                }
+              ]
+            ],
+            "choices": [
+              {
+                "id": "fixture-square-answer0-c0",
+                "value": "9",
+                "isMath": true,
+                "rows": [],
+                "feedback": [
+                  {
+                    "type": "text",
+                    "id": "fixture-square-answer0-feedback0",
+                    "text": "同じ数を足して引くので、式の値は変わらない。"
+                  }
+                ]
+              },
+              {
+                "id": "fixture-square-answer0-c1",
+                "value": "3",
+                "isMath": true,
+                "rows": [],
+                "feedback": [
+                  {
+                    "type": "text",
+                    "id": "fixture-square-answer0-feedback1",
+                    "text": "操作する対象と、直前の式を確かめよう。"
+                  }
+                ]
+              },
+              {
+                "id": "fixture-square-answer0-c2",
+                "value": "6",
+                "isMath": true,
+                "rows": [],
+                "feedback": [
+                  {
+                    "type": "text",
+                    "id": "fixture-square-answer0-feedback2",
+                    "text": "操作する対象と、直前の式を確かめよう。"
+                  }
+                ]
+              }
+            ],
+            "support": {
+              "level": "strong",
+              "nextProblemAction": "類題では操作から自分で組み立てる"
+            }
+          }
+        },
+        {
+          "id": "fixture-square-step1",
+          "beforeId": "fixture-square-s1",
+          "afterId": "fixture-square-s2",
+          "purpose": [
+            {
+              "type": "text",
+              "id": "fixture-square-step1-purpose",
+              "text": "平方の公式を使って、二乗の形にまとめる。"
+            }
+          ],
+          "reason": [
+            {
+              "type": "text",
+              "id": "fixture-square-step1-reason",
+              "text": "一次の項の係数から、括弧の中の定数が決まる。"
+            }
+          ],
+          "afterText": [
+            {
+              "type": "text",
+              "id": "fixture-square-step1-after",
+              "text": "残った定数項を計算する。"
+            }
+          ],
+          "promptParts": [],
+          "detail": [],
+          "formula": {
+            "id": "fixture-square-step1-equation",
+            "number": 2,
+            "masked": "\\left(x+3\\right)^{2}-9+5",
+            "completed": "\\left(x+3\\right)^{2}-9+5"
+          },
+          "binding": null,
+          "interaction": null
+        },
+        {
+          "id": "fixture-square-step2",
+          "beforeId": "fixture-square-s2",
+          "afterId": "fixture-square-s3",
+          "purpose": [
+            {
+              "type": "text",
+              "id": "fixture-square-step2-purpose",
+              "text": "定数項をまとめ、平方完成した式を得る。"
+            }
+          ],
+          "reason": [
+            {
+              "type": "text",
+              "id": "fixture-square-step2-reason",
+              "text": "二乗の部分はそのままにして定数項を整理する。"
+            }
+          ],
+          "afterText": [
+            {
+              "type": "text",
+              "id": "fixture-square-step2-after",
+              "text": "この形から軸と頂点を読み取れる。"
+            }
+          ],
+          "promptParts": [],
+          "detail": [],
+          "formula": {
+            "id": "fixture-square-step2-equation",
+            "number": 3,
+            "masked": "\\left(x+3\\right)^{2}+\\boxed{\\mathrm{C}}",
+            "completed": "\\left(x+3\\right)^{2}-4"
+          },
+          "binding": {
+            "interactionId": "fixture-square-answer2",
+            "slotIds": [
+              "fixture-square-step2-slot0"
+            ]
+          },
+          "interaction": {
+            "id": "fixture-square-answer2",
+            "action": "定数項をまとめ、平方完成した式を得る。",
+            "correctValue": "-4",
+            "hints": [
+              [
+                {
+                  "type": "text",
+                  "id": "fixture-square-answer2-hint0",
+                  "text": "今の目的と、直前の式をもう一度確かめよう。"
+                }
+              ]
+            ],
+            "choices": [
+              {
+                "id": "fixture-square-answer2-c0",
+                "value": "-4",
+                "isMath": true,
+                "rows": [],
+                "feedback": [
+                  {
+                    "type": "text",
+                    "id": "fixture-square-answer2-feedback0",
+                    "text": "二乗の部分はそのままにして定数項を整理する。"
+                  }
+                ]
+              },
+              {
+                "id": "fixture-square-answer2-c1",
+                "value": "4",
+                "isMath": true,
+                "rows": [],
+                "feedback": [
+                  {
+                    "type": "text",
+                    "id": "fixture-square-answer2-feedback1",
+                    "text": "操作する対象と、直前の式を確かめよう。"
+                  }
+                ]
+              },
+              {
+                "id": "fixture-square-answer2-c2",
+                "value": "-14",
+                "isMath": true,
+                "rows": [],
+                "feedback": [
+                  {
+                    "type": "text",
+                    "id": "fixture-square-answer2-feedback2",
+                    "text": "操作する対象と、直前の式を確かめよう。"
+                  }
+                ]
+              }
+            ],
+            "support": {
+              "level": "strong",
+              "nextProblemAction": "類題では操作から自分で組み立てる"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "mathReceipts": [
+    {
+      "id": "fixture-square-problem",
+      "status": "PASS",
+      "checks": [
+        {
+          "transitionId": "fixture-square-e0",
+          "status": "PASS",
+          "ruleId": "rewrite",
+          "checks": [
+            "identity"
+          ],
+          "mathStatus": "PASS"
+        },
+        {
+          "transitionId": "fixture-square-e1",
+          "status": "PASS",
+          "ruleId": "rewrite",
+          "checks": [
+            "identity"
+          ],
+          "mathStatus": "PASS"
+        },
+        {
+          "transitionId": "fixture-square-e2",
+          "status": "PASS",
+          "ruleId": "rewrite",
+          "checks": [
+            "identity"
+          ],
+          "mathStatus": "PASS"
+        }
+      ],
+      "engineVersion": "1.14.0",
+      "formalProof": false,
+      "proofStatus": "EXACT_SYMBOLIC_CHECKS",
+      "domain": "closed AST polynomial identities / constant linear operations / one-variable relation solution sets / numeric quadratic extrema"
+    },
+    {
+      "id": "fixture-square-answer0",
+      "status": "PASS",
+      "matches": [
+        0
+      ],
+      "duplicates": []
+    },
+    {
+      "id": "fixture-square-answer2",
+      "status": "PASS",
+      "matches": [
+        0
+      ],
+      "duplicates": []
+    }
+  ],
+  "meaningAuditRequired": true
+}

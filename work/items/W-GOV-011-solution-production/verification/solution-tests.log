@@ -1,0 +1,31 @@
+✔ minimum display includes domain and attainment; an infimum is not called a minimum (3.647086ms)
+✔ redeclaring an initial fact or a given as a future result is rejected (14.412611ms)
+✔ blank availability comes from its own state; supplied future facts cannot bypass it (2.253712ms)
+✔ unopened choices and hints are absent; opening each state exposes only its contents (593.939101ms)
+✔ deep adversarial IR cannot overflow the recursive parser (0.680671ms)
+✔ successive calculations in a choice retain full equalities as separate rows (630.901438ms)
+✔ three authored families compile through the public v1/v2 entry with exact checks (4050.557073ms)
+✔ one decision binds both sides without becoming two questions (380.413231ms)
+✔ incorrect arithmetic and negative division direction are detected (1634.968872ms)
+✔ numerically matching a few points does not replace identity checks (360.82247ms)
+✔ vertex outside domain and open-domain non-attainment are handled exactly (1263.600929ms)
+✔ case partitions reject gaps, overlaps and missing endpoints (941.833125ms)
+✔ a mathematically equivalent answer can fail the requested form separately (648.663037ms)
+✔ unjustified substitutions and unknown signs cannot silently pass (836.827328ms)
+✔ equivalent distractors and broken factor grouping are rejected (844.469356ms)
+✔ graph cycles, orphan states and future prerequisites fail structurally (2.131507ms)
+✔ semantic target tampering and local calculations not rejoined are detected (823.503236ms)
+✔ visible review excludes rationale, answers, unopened hints and future rows (805.567272ms)
+✔ support variants share checked math rather than drifting copies (326.259335ms)
+✔ blank roles require available facts and an explicit adoption decision (2.400325ms)
+✔ meaning reviews are bound to visible inputs, phase, sources and case consumption (390.421938ms)
+✔ research analysis keeps source positions, observation and inference separate (1.964426ms)
+✔ figure is generated from original function and is gated after the answer (1374.79521ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14980.466785

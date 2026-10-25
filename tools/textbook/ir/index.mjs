@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { hash,invariant } from '../util.mjs';
 import {resolveTarget,validateChoices} from '../interaction/index.mjs';
+import {validateIRV2,compileIRV2,visibleSnapshotV2} from './v2.mjs';
 const id=z.string().min(1);
 const text=z.string().min(1);
 export const partSchema=z.discriminatedUnion('kind',[
@@ -33,11 +34,13 @@ export const irSchema=z.object({schemaVersion:z.literal('production-ir/1'),unitI
 export function partsOf(block){return block.kind==='paragraph'?block.parts:block.expressions.flatMap(e=>e.parts);}
 export function tokens(ir){return ir.nodes.flatMap(n=>['before','after'].flatMap(state=>n[state].flatMap(b=>partsOf(b).map(p=>({...p,nodeId:n.id,state,blockId:b.id})))));}
 export function visibleSnapshot(ir,nodeId,solvedIds=[]){
+ if(ir.schemaVersion==='production-ir/2')return visibleSnapshotV2(ir,nodeId,solvedIds);
  const target=ir.nodes.findIndex(n=>n.id===nodeId);invariant(target>=0,'unknown node');const solved=new Set(solvedIds);
  return {nodeId,nodes:ir.nodes.slice(0,target+1).map((n,i)=>({id:n.id,problemId:n.problemId,before:n.before,...(solved.has(n.id)&&i<=target?{after:n.after}:{}),...(i===target?{interaction:n.interaction}: {})})),knownFacts:[...ir.initialFacts,...ir.nodes.slice(0,target).filter(n=>solved.has(n.id)||!n.interaction).flatMap(n=>n.produces)]};
 }
 function finding(rule,node,state,detail,severity='ERROR'){return {id:hash({rule,node,state,detail}),ruleId:rule,nodeId:node,state,detail,severity};}
 export function validateIR(input){
+ if(input.schemaVersion==='production-ir/2')return validateIRV2(input);
  const parsed=irSchema.safeParse(input);if(!parsed.success)return {status:'FAIL',findings:[finding('SCHEMA',null,null,parsed.error.message)]};
  const ir=parsed.data,findings=[],ids=new Set(),facts=new Set(ir.initialFacts),producers=new Map();
  const add=(rule,n,s,d,sev)=>findings.push(finding(rule,n.id,s,d,sev));
@@ -83,6 +86,7 @@ export function validateIR(input){
  return {status:findings.some(f=>f.severity==='ERROR')?'FAIL':'PASS',findings,irHash:hash(ir),expectedSemanticIds:tokens(ir).filter(t=>t.kind!=='text').map(t=>t.id)};
 }
 export function compileIR(ir,{warningResolutions=[]}={}){
+ if(ir.schemaVersion==='production-ir/2')return compileIRV2(ir);
  ir=irSchema.parse(ir);
  const check=validateIR(ir);invariant(check.status==='PASS',JSON.stringify(check.findings));
  const warnings=check.findings.filter(f=>f.severity==='WARN');invariant(warnings.every(f=>warningResolutions.some(r=>r.findingId===f.id&&r.evidence)),'unresolved semantic warning');

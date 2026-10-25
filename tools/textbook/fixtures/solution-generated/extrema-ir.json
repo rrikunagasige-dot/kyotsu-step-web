@@ -1,0 +1,492 @@
+{
+  "schemaVersion": "production-ir/2",
+  "unitId": "fixture-extrema",
+  "sourceHash": "6b760dac1412664a6c736e2bb84c1876c014922f0e122ef9612d9d32b8fb6992",
+  "sourceBlocks": [
+    {
+      "id": "fixture-extrema-source",
+      "kind": "authored-fixture"
+    }
+  ],
+  "coverage": [
+    {
+      "sourceId": "fixture-extrema-source",
+      "stepIds": [
+        "fixture-extrema-step0",
+        "fixture-extrema-step1"
+      ],
+      "disposition": "taught",
+      "reason": "全変形を実装試験で追跡する"
+    }
+  ],
+  "problems": [
+    {
+      "id": "fixture-extrema-problem",
+      "title": "定義域の中で最小値を求める",
+      "prompt": [
+        {
+          "type": "text",
+          "id": "fixture-extrema-prompt",
+          "text": "次の問題を、一つの式の流れとして解こう。"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "text",
+          "id": "fixture-extrema-domain-intro",
+          "text": "定義域は次の二つの条件を満たす範囲とする。"
+        },
+        {
+          "type": "math",
+          "id": "fixture-extrema-domain-left",
+          "statement": {
+            "kind": "relation",
+            "left": {
+              "kind": "rational",
+              "n": "0",
+              "d": "1"
+            },
+            "operator": "<=",
+            "right": {
+              "kind": "symbol",
+              "name": "x"
+            }
+          }
+        },
+        {
+          "type": "math",
+          "id": "fixture-extrema-domain-right",
+          "statement": {
+            "kind": "relation",
+            "left": {
+              "kind": "symbol",
+              "name": "x"
+            },
+            "operator": "<=",
+            "right": {
+              "kind": "rational",
+              "n": "2",
+              "d": "1"
+            }
+          }
+        }
+      ],
+      "goal": "定義域の中で最小値を求める",
+      "layout": "calculation",
+      "graph": {
+        "schemaVersion": "solution-graph/1",
+        "id": "fixture-extrema-graph",
+        "variable": "x",
+        "parameters": [],
+        "initialFacts": [
+          "arithmetic",
+          "order-addition",
+          "positive-division",
+          "square-nonnegative"
+        ],
+        "givens": [
+          {
+            "id": "fixture-extrema-given",
+            "statement": {
+              "kind": "expression",
+              "expression": {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "power",
+                    "base": {
+                      "kind": "symbol",
+                      "name": "x"
+                    },
+                    "exponent": 2
+                  },
+                  {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "-6",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "symbol",
+                        "name": "x"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "rational",
+                    "n": "10",
+                    "d": "1"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "rootStateId": "fixture-extrema-s0",
+        "goalStateIds": [
+          "fixture-extrema-s2"
+        ],
+        "states": [
+          {
+            "id": "fixture-extrema-s0",
+            "statement": {
+              "kind": "expression",
+              "expression": {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "power",
+                    "base": {
+                      "kind": "symbol",
+                      "name": "x"
+                    },
+                    "exponent": 2
+                  },
+                  {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "-6",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "symbol",
+                        "name": "x"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "rational",
+                    "n": "10",
+                    "d": "1"
+                  }
+                ]
+              }
+            },
+            "activeVariable": "x",
+            "fixedParameters": [],
+            "facts": []
+          },
+          {
+            "id": "fixture-extrema-s1",
+            "statement": {
+              "kind": "expression",
+              "expression": {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "power",
+                    "base": {
+                      "kind": "add",
+                      "args": [
+                        {
+                          "kind": "symbol",
+                          "name": "x"
+                        },
+                        {
+                          "kind": "rational",
+                          "n": "-3",
+                          "d": "1"
+                        }
+                      ]
+                    },
+                    "exponent": 2
+                  },
+                  {
+                    "kind": "rational",
+                    "n": "1",
+                    "d": "1"
+                  }
+                ]
+              }
+            },
+            "activeVariable": "x",
+            "fixedParameters": [],
+            "facts": [
+              "fixture-extrema-fact1"
+            ]
+          },
+          {
+            "id": "fixture-extrema-s2",
+            "statement": {
+              "kind": "extrema",
+              "function": {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "power",
+                    "base": {
+                      "kind": "symbol",
+                      "name": "x"
+                    },
+                    "exponent": 2
+                  },
+                  {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "-6",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "symbol",
+                        "name": "x"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "rational",
+                    "n": "10",
+                    "d": "1"
+                  }
+                ]
+              },
+              "variable": "x",
+              "domain": {
+                "lower": {
+                  "kind": "rational",
+                  "n": "0",
+                  "d": "1"
+                },
+                "upper": {
+                  "kind": "rational",
+                  "n": "2",
+                  "d": "1"
+                },
+                "lowerOpen": false,
+                "upperOpen": false
+              },
+              "extremum": "minimum",
+              "value": {
+                "kind": "rational",
+                "n": "2",
+                "d": "1"
+              },
+              "at": [
+                {
+                  "kind": "rational",
+                  "n": "2",
+                  "d": "1"
+                }
+              ],
+              "attained": true
+            },
+            "activeVariable": "x",
+            "fixedParameters": [],
+            "facts": [
+              "fixture-extrema-fact2"
+            ]
+          }
+        ],
+        "transitions": [
+          {
+            "id": "fixture-extrema-e0",
+            "from": "fixture-extrema-s0",
+            "to": "fixture-extrema-s1",
+            "requires": [],
+            "produces": [
+              "fixture-extrema-fact1"
+            ],
+            "basisRefs": [
+              "arithmetic"
+            ],
+            "ruleId": "rewrite"
+          },
+          {
+            "id": "fixture-extrema-e1",
+            "from": "fixture-extrema-s1",
+            "to": "fixture-extrema-s2",
+            "requires": [
+              "fixture-extrema-fact1"
+            ],
+            "produces": [
+              "fixture-extrema-fact2"
+            ],
+            "basisRefs": [
+              "arithmetic"
+            ],
+            "ruleId": "extrema"
+          }
+        ]
+      },
+      "steps": [
+        {
+          "id": "fixture-extrema-step0",
+          "transitionId": "fixture-extrema-e0",
+          "sourceRefs": [
+            "fixture-extrema-source"
+          ],
+          "purpose": [
+            {
+              "type": "text",
+              "id": "fixture-extrema-step0-purpose",
+              "text": "平方完成して軸と頂点の位置を読み取れる形にする。"
+            }
+          ],
+          "reason": [
+            {
+              "type": "text",
+              "id": "fixture-extrema-step0-reason",
+              "text": "二乗の値が零になる位置が軸である。"
+            }
+          ],
+          "afterText": [
+            {
+              "type": "text",
+              "id": "fixture-extrema-step0-after",
+              "text": "頂点が定義域の中にあるかを確かめる。"
+            }
+          ],
+          "promptParts": [],
+          "detail": [],
+          "numberId": "fixture-extrema-step0-equation",
+          "slotTargets": [],
+          "noBlankReason": "この段階は新しい形と根拠を説明する完成例として提示する"
+        },
+        {
+          "id": "fixture-extrema-step1",
+          "transitionId": "fixture-extrema-e1",
+          "sourceRefs": [
+            "fixture-extrema-source"
+          ],
+          "purpose": [
+            {
+              "type": "text",
+              "id": "fixture-extrema-step1-purpose",
+              "text": "頂点は範囲外なので、定義域の中で値が最も小さくなる位置を調べる。"
+            }
+          ],
+          "reason": [
+            {
+              "type": "text",
+              "id": "fixture-extrema-step1-reason",
+              "text": "この範囲では軸へ近づくほど値が小さくなる。右端での値を計算する。"
+            }
+          ],
+          "afterText": [
+            {
+              "type": "text",
+              "id": "fixture-extrema-step1-after",
+              "text": "定義域の条件と、最小値を取る位置を合わせて結論を読む。"
+            }
+          ],
+          "promptParts": [],
+          "detail": [],
+          "numberId": "fixture-extrema-step1-equation",
+          "slotTargets": [
+            {
+              "id": "fixture-extrema-step1-slot0",
+              "interactionId": "fixture-extrema-answer1",
+              "label": "B",
+              "path": "value"
+            }
+          ],
+          "interaction": {
+            "id": "fixture-extrema-answer1",
+            "learningAction": "calculation",
+            "learnerDecision": "頂点は範囲外なので、定義域の中で値が最も小さくなる位置を調べる。",
+            "availableFacts": [
+              "arithmetic",
+              "order-addition",
+              "positive-division",
+              "square-nonnegative"
+            ],
+            "withheldKnowledge": "次の式を成立させる値",
+            "nextUse": "定義域の条件と、最小値を取る位置を合わせて結論を読む。",
+            "expected": {
+              "kind": "rational",
+              "n": "2",
+              "d": "1"
+            },
+            "choices": [
+              {
+                "id": "fixture-extrema-answer1-c0",
+                "value": {
+                  "kind": "rational",
+                  "n": "2",
+                  "d": "1"
+                },
+                "feedback": [
+                  {
+                    "type": "text",
+                    "id": "fixture-extrema-answer1-feedback0",
+                    "text": "この範囲では軸へ近づくほど値が小さくなる。右端での値を計算する。"
+                  }
+                ]
+              },
+              {
+                "id": "fixture-extrema-answer1-c1",
+                "value": {
+                  "kind": "rational",
+                  "n": "1",
+                  "d": "1"
+                },
+                "feedback": [
+                  {
+                    "type": "text",
+                    "id": "fixture-extrema-answer1-feedback1",
+                    "text": "操作する対象と、直前の式を確かめよう。"
+                  }
+                ],
+                "misconception": "対象の符号または計算の取り違え"
+              },
+              {
+                "id": "fixture-extrema-answer1-c2",
+                "value": {
+                  "kind": "rational",
+                  "n": "10",
+                  "d": "1"
+                },
+                "feedback": [
+                  {
+                    "type": "text",
+                    "id": "fixture-extrema-answer1-feedback2",
+                    "text": "操作する対象と、直前の式を確かめよう。"
+                  }
+                ],
+                "misconception": "対象の符号または計算の取り違え"
+              }
+            ],
+            "hints": [
+              [
+                {
+                  "type": "text",
+                  "id": "fixture-extrema-answer1-hint0",
+                  "text": "今の目的と、直前の式をもう一度確かめよう。"
+                }
+              ]
+            ],
+            "supportPolicy": {
+              "level": "strong",
+              "nextProblemAction": "類題では操作から自分で組み立てる"
+            }
+          }
+        }
+      ],
+      "plot": {
+        "id": "fixture-extrema-plot",
+        "sourceStateId": "fixture-extrema-s0",
+        "visibleAfterStateId": "fixture-extrema-s2",
+        "domain": {
+          "lower": {
+            "kind": "rational",
+            "n": "0",
+            "d": "1"
+          },
+          "upper": {
+            "kind": "rational",
+            "n": "2",
+            "d": "1"
+          },
+          "lowerOpen": false,
+          "upperOpen": false
+        },
+        "alt": "元の二次関数と定義域。太線が定義域の範囲、点線が軸を表す。"
+      }
+    }
+  ]
+}

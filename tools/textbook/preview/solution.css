@@ -1,0 +1,4 @@
+body { margin: 0; background: #f8f8f4; font: 16px/1.8 system-ui, sans-serif; }
+main { max-width: 760px; margin: auto; padding: 16px; background: white; }
+aside { margin-bottom: 20px; color: #52616c; font-size: 12px; }
+button { font: inherit; }

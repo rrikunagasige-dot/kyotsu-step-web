@@ -7,6 +7,8 @@ import { NumberedEquation } from './NumberedEquation'
 import { effectiveTextbookProgress, getTextbookChoices, isTextbookItemResolved, type TextbookUnitProgress } from '../../domain/textbook'
 import type { TextbookItem, TextbookReadingBlock, TextbookReadingPart, TextbookSection, TextbookUnit } from '../../domain/textbookSchema'
 import { useAppStore } from '../../stores/useAppStore'
+import { SolutionReadingFlow } from './SolutionReadingFlow'
+import { SolutionReadingSchema } from '../../domain/solutionReading'
 import { useI18n } from '../../i18n/runtime'
 import './guided-math-reading.css'
 
@@ -48,7 +50,32 @@ function GuidedNumberedEquation({ number, children, logical = false }: { number:
   return <div ref={ref} className={below ? 'guided-number-below' : undefined}><NumberedEquation number={number} logical={logical}>{children}</NumberedEquation></div>
 }
 
-export function GuidedMathReadingFlow({ presentation, unit, section, progress, onSummaryReached, onReviewAnswer }: Props) {
+export function GuidedMathReadingFlow(props: Props) {
+  if (props.presentation && typeof props.presentation === 'object' && 'schemaVersion' in props.presentation && props.presentation.schemaVersion === 'solution-reading/1') {
+    return <SolutionTextbookAdapter {...props} />
+  }
+  return <LegacyGuidedMathReadingFlow {...props} />
+}
+
+function SolutionTextbookAdapter({ presentation, unit, section, progress, onSummaryReached, onReviewAnswer }: Props) {
+  const answer = useAppStore(state => state.answerTextbook)
+  const current = effectiveTextbookProgress(unit, progress)
+  const parsed = SolutionReadingSchema.safeParse(presentation)
+  if (!parsed.success || parsed.data.unitId !== unit.unitId) return <p role="alert">教材と回答データの対応を確認してください。</p>
+  const items = new Map(section.items.map(item => [item.id, item]))
+  const questions = parsed.data.problems.flatMap(p => p.steps.flatMap(s => s.interaction ? [s.interaction] : []))
+  if (questions.some(q => items.get(q.id)?.answer !== q.correctValue || q.choices.some(c => ![items.get(q.id)?.answer, ...(items.get(q.id)?.choices ?? [])].includes(c.value)))) {
+    return <p role="alert">教材と選択肢の対応を確認してください。</p>
+  }
+  const display = { ...parsed.data, problems: parsed.data.problems.map(p => ({ ...p, steps: p.steps.map(s => s.interaction ? { ...s, interaction: { ...s.interaction, choices: getTextbookChoices(unit, items.get(s.interaction.id)!).flatMap(value => s.interaction!.choices.filter(c => c.value === value)) } } : s) })) }
+  return <SolutionReadingFlow presentation={display} answers={current?.answers ?? {}} onComplete={onSummaryReached} onAnswer={(id, value) => {
+    const item = items.get(id)!
+    if (onReviewAnswer) onReviewAnswer(item, value)
+    else answer(unit, id, value)
+  }} />
+}
+
+function LegacyGuidedMathReadingFlow({ presentation, unit, section, progress, onSummaryReached, onReviewAnswer }: Props) {
   const data = presentation as Presentation
   const displays = data.semanticDisplay
   const formulaNumbers = data.equationNumbers

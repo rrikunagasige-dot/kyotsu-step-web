@@ -1,0 +1,318 @@
+{
+  "schemaVersion": "research-manifest/1",
+  "topic": "solution/1参考先の採用境界",
+  "requirements": [
+    {
+      "id": "reference-boundary",
+      "description": "原典・採用範囲・未確認箇所を区別し、固定した原本の位置を照合する"
+    }
+  ],
+  "sources": [
+    {
+      "id": "R02-0",
+      "url": "https://github.com/docling-project/docling",
+      "version": "proposal research 2026-10-25; external revisions not pinned",
+      "kind": "code",
+      "uses": [
+        "analyze"
+      ],
+      "rights": "Design analysis only. No copied third-party content, training permission or runtime reuse inferred. See THIRD_PARTY_REFERENCES.md.",
+      "locations": [],
+      "requirementIds": [
+        "reference-boundary"
+      ],
+      "state": "DISCOVERED",
+      "reusePermission": false,
+      "trainingPermission": false
+    },
+    {
+      "id": "R02-1",
+      "url": "https://docling-project.github.io/docling/usage/enrichments/",
+      "version": "proposal research 2026-10-25; external revisions not pinned",
+      "kind": "reference",
+      "uses": [
+        "analyze"
+      ],
+      "rights": "Design analysis only. No copied third-party content, training permission or runtime reuse inferred. See THIRD_PARTY_REFERENCES.md.",
+      "locations": [],
+      "requirementIds": [
+        "reference-boundary"
+      ],
+      "state": "DISCOVERED",
+      "reusePermission": false,
+      "trainingPermission": false
+    },
+    {
+      "id": "R03-0",
+      "url": "https://github.com/CAHLR/OATutor",
+      "version": "proposal research 2026-10-25; external revisions not pinned",
+      "kind": "code",
+      "uses": [
+        "analyze"
+      ],
+      "rights": "Design analysis only. No copied third-party content, training permission or runtime reuse inferred. See THIRD_PARTY_REFERENCES.md.",
+      "locations": [],
+      "requirementIds": [
+        "reference-boundary"
+      ],
+      "state": "DISCOVERED",
+      "reusePermission": false,
+      "trainingPermission": false
+    },
+    {
+      "id": "R03-1",
+      "url": "https://github.com/CAHLR/OATutor/tree/main/src/components/problem-layout",
+      "version": "proposal research 2026-10-25; external revisions not pinned",
+      "kind": "code",
+      "uses": [
+        "analyze"
+      ],
+      "rights": "Design analysis only. No copied third-party content, training permission or runtime reuse inferred. See THIRD_PARTY_REFERENCES.md.",
+      "locations": [],
+      "requirementIds": [
+        "reference-boundary"
+      ],
+      "state": "DISCOVERED",
+      "reusePermission": false,
+      "trainingPermission": false
+    },
+    {
+      "id": "R04-0",
+      "url": "https://github.com/CAHLR/OATutor-Tooling",
+      "version": "proposal research 2026-10-25; external revisions not pinned",
+      "kind": "code",
+      "uses": [
+        "analyze"
+      ],
+      "rights": "Design analysis only. No copied third-party content, training permission or runtime reuse inferred. See THIRD_PARTY_REFERENCES.md.",
+      "locations": [],
+      "requirementIds": [
+        "reference-boundary"
+      ],
+      "state": "DISCOVERED",
+      "reusePermission": false,
+      "trainingPermission": false
+    },
+    {
+      "id": "R05-0",
+      "url": "https://tat.pact.cs.cmu.edu/CMUCTAT/CTAT/docs/tutorial-example-tracing.html",
+      "version": "proposal research 2026-10-25; external revisions not pinned",
+      "kind": "reference",
+      "uses": [
+        "analyze"
+      ],
+      "rights": "Design analysis only. No copied third-party content, training permission or runtime reuse inferred. See THIRD_PARTY_REFERENCES.md.",
+      "locations": [],
+      "requirementIds": [
+        "reference-boundary"
+      ],
+      "state": "DISCOVERED",
+      "reusePermission": false,
+      "trainingPermission": false
+    },
+    {
+      "id": "R05-1",
+      "url": "https://github.com/CMUCTAT/CTAT/blob/master/LICENSE.md",
+      "version": "proposal research 2026-10-25; external revisions not pinned",
+      "kind": "code",
+      "uses": [
+        "analyze"
+      ],
+      "rights": "Design analysis only. No copied third-party content, training permission or runtime reuse inferred. See THIRD_PARTY_REFERENCES.md.",
+      "locations": [],
+      "requirementIds": [
+        "reference-boundary"
+      ],
+      "state": "DISCOVERED",
+      "reusePermission": false,
+      "trainingPermission": false
+    },
+    {
+      "id": "R06-0",
+      "url": "https://github.com/google/mathsteps",
+      "version": "proposal research 2026-10-25; external revisions not pinned",
+      "kind": "code",
+      "uses": [
+        "analyze"
+      ],
+      "rights": "Design analysis only. No copied third-party content, training permission or runtime reuse inferred. See THIRD_PARTY_REFERENCES.md.",
+      "locations": [],
+      "requirementIds": [
+        "reference-boundary"
+      ],
+      "state": "DISCOVERED",
+      "reusePermission": false,
+      "trainingPermission": false
+    },
+    {
+      "id": "R07-0",
+      "url": "https://docs.sympy.org/latest/modules/solvers/inequalities.html",
+      "version": "proposal research 2026-10-25; external revisions not pinned",
+      "kind": "reference",
+      "uses": [
+        "analyze"
+      ],
+      "rights": "Design analysis only. No copied third-party content, training permission or runtime reuse inferred. See THIRD_PARTY_REFERENCES.md.",
+      "locations": [],
+      "requirementIds": [
+        "reference-boundary"
+      ],
+      "state": "DISCOVERED",
+      "reusePermission": false,
+      "trainingPermission": false
+    },
+    {
+      "id": "R07-1",
+      "url": "https://docs.sympy.org/latest/modules/calculus/index.html",
+      "version": "proposal research 2026-10-25; external revisions not pinned",
+      "kind": "reference",
+      "uses": [
+        "analyze"
+      ],
+      "rights": "Design analysis only. No copied third-party content, training permission or runtime reuse inferred. See THIRD_PARTY_REFERENCES.md.",
+      "locations": [],
+      "requirementIds": [
+        "reference-boundary"
+      ],
+      "state": "DISCOVERED",
+      "reusePermission": false,
+      "trainingPermission": false
+    },
+    {
+      "id": "R08-0",
+      "url": "https://docs.stack-assessment.org/en/Authoring/Answer_Tests/Equivalence/",
+      "version": "proposal research 2026-10-25; external revisions not pinned",
+      "kind": "reference",
+      "uses": [
+        "analyze"
+      ],
+      "rights": "Design analysis only. No copied third-party content, training permission or runtime reuse inferred. See THIRD_PARTY_REFERENCES.md.",
+      "locations": [],
+      "requirementIds": [
+        "reference-boundary"
+      ],
+      "state": "DISCOVERED",
+      "reusePermission": false,
+      "trainingPermission": false
+    },
+    {
+      "id": "R09-0",
+      "url": "https://github.com/CAHLR/pyBKT",
+      "version": "proposal research 2026-10-25; external revisions not pinned",
+      "kind": "code",
+      "uses": [
+        "analyze"
+      ],
+      "rights": "Design analysis only. No copied third-party content, training permission or runtime reuse inferred. See THIRD_PARTY_REFERENCES.md.",
+      "locations": [],
+      "requirementIds": [
+        "reference-boundary"
+      ],
+      "state": "DISCOVERED",
+      "reusePermission": false,
+      "trainingPermission": false
+    },
+    {
+      "id": "R11-0",
+      "url": "https://www.jasso.go.jp/ryugaku/eju/examinee/syllabus/mathematics.html",
+      "version": "proposal research 2026-10-25; external revisions not pinned",
+      "kind": "reference",
+      "uses": [
+        "analyze"
+      ],
+      "rights": "Design analysis only. No copied third-party content, training permission or runtime reuse inferred. See THIRD_PARTY_REFERENCES.md.",
+      "locations": [],
+      "requirementIds": [
+        "reference-boundary"
+      ],
+      "state": "DISCOVERED",
+      "reusePermission": false,
+      "trainingPermission": false
+    },
+    {
+      "id": "R11-1",
+      "url": "https://www.jasso.go.jp/ryugaku/eju/examinee/pastpaper_sample/index.html",
+      "version": "proposal research 2026-10-25; external revisions not pinned",
+      "kind": "reference",
+      "uses": [
+        "analyze"
+      ],
+      "rights": "Design analysis only. No copied third-party content, training permission or runtime reuse inferred. See THIRD_PARTY_REFERENCES.md.",
+      "locations": [],
+      "requirementIds": [
+        "reference-boundary"
+      ],
+      "state": "DISCOVERED",
+      "reusePermission": false,
+      "trainingPermission": false
+    },
+    {
+      "id": "R12-0",
+      "url": "https://opencourse.doshisha.ac.jp/opc/bj01/math-intro/PC/quad_f1.html",
+      "version": "proposal research 2026-10-25; external revisions not pinned",
+      "kind": "reference",
+      "uses": [
+        "analyze"
+      ],
+      "rights": "Design analysis only. No copied third-party content, training permission or runtime reuse inferred. See THIRD_PARTY_REFERENCES.md.",
+      "locations": [],
+      "requirementIds": [
+        "reference-boundary"
+      ],
+      "state": "DISCOVERED",
+      "reusePermission": false,
+      "trainingPermission": false
+    },
+    {
+      "id": "R13-0",
+      "url": "https://openstax.org/books/algebra-and-trigonometry-2e/pages/5-1-quadratic-functions",
+      "version": "proposal research 2026-10-25; external revisions not pinned",
+      "kind": "reference",
+      "uses": [
+        "analyze"
+      ],
+      "rights": "Design analysis only. No copied third-party content, training permission or runtime reuse inferred. See THIRD_PARTY_REFERENCES.md.",
+      "locations": [],
+      "requirementIds": [
+        "reference-boundary"
+      ],
+      "state": "DISCOVERED",
+      "reusePermission": false,
+      "trainingPermission": false
+    },
+    {
+      "id": "R14-0",
+      "url": "https://www.jstage.jst.go.jp/article/jart/15/1/15_149/_article/-char/ja",
+      "version": "proposal research 2026-10-25; external revisions not pinned",
+      "kind": "reference",
+      "uses": [
+        "analyze"
+      ],
+      "rights": "Design analysis only. No copied third-party content, training permission or runtime reuse inferred. See THIRD_PARTY_REFERENCES.md.",
+      "locations": [],
+      "requirementIds": [
+        "reference-boundary"
+      ],
+      "state": "DISCOVERED",
+      "reusePermission": false,
+      "trainingPermission": false
+    },
+    {
+      "id": "R15-0",
+      "url": "https://doi.org/10.1037/0022-0663.95.4.774",
+      "version": "proposal research 2026-10-25; external revisions not pinned",
+      "kind": "reference",
+      "uses": [
+        "analyze"
+      ],
+      "rights": "Design analysis only. No copied third-party content, training permission or runtime reuse inferred. See THIRD_PARTY_REFERENCES.md.",
+      "locations": [],
+      "requirementIds": [
+        "reference-boundary"
+      ],
+      "state": "DISCOVERED",
+      "reusePermission": false,
+      "trainingPermission": false
+    }
+  ]
+}

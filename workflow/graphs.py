@@ -11,6 +11,8 @@ def normalized(plan):
     p = deepcopy(plan)
     need(p.get('workflow_version') == VERSION and p['profile'] == 'material', 'production/2は教材の作成・修正用')
     need(p['command'] in ('CMD-WORK-001', 'CMD-WORK-002'), 'C/R以外の入口')
+    need(p.get('solution_pipeline') in (None,'solution/1'), '未対応のsolution pipeline')
+    need(not p.get('research_extract') or p.get('solution_pipeline')=='solution/1', '資料抽出はsolution/1を明示する')
     blocks = {b['id']: b for b in p['blocks']}
     p.setdefault('protected_manifest',{path:h for path,h in p['source_manifest'].items() if any(path==x or x.endswith('/') and path.startswith(x) for x in p['scope'].get('preserve',[]))})
     for path in p['scope'].get('preserve',[]):

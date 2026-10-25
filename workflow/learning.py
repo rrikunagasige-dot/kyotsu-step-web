@@ -5,6 +5,7 @@ from store import digest
 
 
 def finalize(rt,work,inputs):
+    if str(rt.root) not in sys.path:sys.path.insert(0,str(rt.root))
     s=rt.state(work);rows=inputs.get('caseUpdates',[])
     need(len({r.get('caseId') for r in rows})==len(rows),'同じ事例の重複確定')
     valid=all(r.get('caseId') and r.get('regressionRef') and r.get('ruleDisposition') and r.get('datasetDisposition') for r in rows)
@@ -13,6 +14,13 @@ def finalize(rt,work,inputs):
     catalog={'schemaVersion':1,'caseUpdates':rows,'inputHash':digest(rows),'trainingRun':False}
     corpus=inputs.get('curation')
     if corpus:
+        if s['plan'].get('solution_pipeline')=='solution/1':
+            # Reconstruct every new solution snapshot from visible inputs, never from rationale/answers.
+            from tools.textbook.corpus.solution_context import snapshot
+            contexts={r['observationId']:snapshot(r['visible']) for r in inputs.get('solutionContexts',[])}
+            for d in corpus['decisions']:
+                if d.get('inputSnapshot',{}).get('contextSchema')=='solution-visible/1':
+                    need(d['observationId'] in contexts and d['inputSnapshot']==contexts[d['observationId']],'solution学習入力を可視状態から再生成できない')
         # Incoming USER_GOLD must match a real explicit evaluation. Existing corpus cases retain their provenance.
         prior=rt.store.get(inputs['baseCatalogArtifact']).get('curatedCorpus',{}).get('cases',[]) if inputs.get('baseCatalogArtifact') else []
         previous={c['id']:c for c in prior}
@@ -28,6 +36,9 @@ def finalize(rt,work,inputs):
         proc=subprocess.run([sys.executable,str(rt.root/'tools/textbook/production_cli.py'),'curate'],input=json.dumps(corpus),cwd=rt.root,capture_output=True,text=True,timeout=60)
         if proc.returncode:return {'status':'FAIL','stderr':proc.stderr,'stdout':proc.stdout}
         curated=json.loads(proc.stdout);catalog['curatedCorpus']=curated
+        if s['plan'].get('solution_pipeline')=='solution/1':
+            from tools.textbook.corpus.solution_context import evaluability
+            catalog['solutionEvaluability']=evaluability(curated)
     ref=rt.store.put(catalog)
     return {'status':'PASS','caseUpdates':rows,'catalogArtifact':ref,'curatedCorpusHash':catalog.get('curatedCorpus',{}).get('hash'),'trainingRun':False}
 

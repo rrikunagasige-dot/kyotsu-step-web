@@ -95,3 +95,10 @@ python workflow/verify_integration.py --root . --out /tmp/p004-verification
 ```
 
 fixtureの模擬承認・模擬app受入と、実行した読取専用adapter検査を分離する。工程試験は説明の教育効果を証明しない。AIは原資料・論理・文章・学習者の可視情報を引き続き審査する。
+
+## solution/1 opt-in（W-GOV-011）
+
+既存planへ `solution_pipeline:"solution/1"` を指定する。一問のgraph、複数slot、IR v2、可視先行監査をC/Rの既存capabilityへ追加する。新入口・新しい画像承認は設けない。機能配置、入力例、環境、未対応範囲と四幅fixtureは `tools/textbook/SOLUTION_PIPELINE.md`。
+research_extractを指定するとC01のresearch.extractが必須になる。修正でsource facetを持つR01にもresearch.ingest/analyze（指定時extract）を必須にする。renderだけの修正へ数学の新規設計を要求しない。
+
+旧plan・旧IRは自動でv2へ変換しない。旧WorkのdefinitionHashと現在の実装が違う場合、既存migrationを使って範囲と失効を記録する。既に未受入の教材を新実行器の試験合格で受入済みに変更しない。

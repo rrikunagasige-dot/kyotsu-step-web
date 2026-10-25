@@ -6,8 +6,13 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[2]))
 from tools.textbook.corpus.core import collect,curate,examples,user_seed
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('operation',choices=['collect','curate','seed','train','prefetch','predict','retrieve','finetune']);p.add_argument('--out');a=p.parse_args();data=json.load(sys.stdin)
-    if a.operation=='collect':result=collect(data['root'],data['index'])
+    p=argparse.ArgumentParser();p.add_argument('operation',choices=['collect','curate','seed','train','prefetch','predict','retrieve','finetune','solution-context','solution-observation','solution-evaluability']);p.add_argument('--out');a=p.parse_args();data=json.load(sys.stdin)
+    if a.operation.startswith('solution-'):
+        from tools.textbook.corpus.solution_context import snapshot,observation,evaluability
+        if a.operation=='solution-context':result=snapshot(data['visible'])
+        elif a.operation=='solution-observation':result=observation(data['quote'],data['sourceRef'],data['artifactVersion'],data.get('scope'))
+        else:result=evaluability(data['corpus'])
+    elif a.operation=='collect':result=collect(data['root'],data['index'])
     elif a.operation=='curate':result=curate(data['observations'],data['decisions'])
     elif a.operation=='seed':
         obs,decisions=user_seed(data['root']);c=curate(obs,decisions);result={'corpus':c,'examples':examples(c)}

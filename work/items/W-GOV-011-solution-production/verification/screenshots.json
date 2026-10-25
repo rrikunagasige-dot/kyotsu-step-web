@@ -1,0 +1,22 @@
+{
+  "format": "base64(gzip(tar(PNG)))",
+  "archive": "screenshots.tar.gz.base64",
+  "sha256": "5b9dd39f79002294521226102df65cdb6e7066f5ffcaeaf7c0196f78c3d0d04d",
+  "files": {
+    "extrema-1440.png": "d52cccc81c6bfc7857e6d67b5681d087934fd2e76f4d508fea0b7d60521cb638",
+    "extrema-320.png": "aac5d581a7a73760f5ccf3750c26f0326e130672cd055a37f019ad8b5485a66b",
+    "extrema-390.png": "558360f6db3575bde78cac90c361dcd2fa4608b2bbf2c4cc5910445d61d3dc5a",
+    "extrema-430.png": "da23a261c7c3d97212309e760c2a1f5297d20b68b08f6fd00a18331490f63356",
+    "linear-1440.png": "03772d1e29bd1207a8bd6f42b9f802307b837e6acc3bdc7153ff56fc8ab08b07",
+    "linear-320.png": "b33fb021e233e90f13324a80cfc089392639cc0c49f5c3c4881a65b4cda2b6ab",
+    "linear-390.png": "c3136097aacd6073a53b2d17adbbd00629c828d2fda1729b9e82e1705b8a5e2a",
+    "linear-430.png": "3f4d7a22579d1a517327514aa13ffedeeb3726279cdbe9993b16f9832483a069",
+    "square-1440.png": "c8c8ff4d373afbb5138e6eef6c59cf73e67678780099485e39dcb656c5a8b9bd",
+    "square-320.png": "b282db3ea8f7d6e72d1d1a89d0150a29f7d664cd2fa6359c7d766d0e636b6dbe",
+    "square-390.png": "36908501c490fc48a1dea66a99bd07fd90499eb08126078072f864e811465c03",
+    "square-430.png": "d9ac87aa102a240c9b33dc4aeed8c73a2f68ff03ac3d342c882816bcc8fe684c"
+  },
+  "browser": "Chromium 138.0.7204.0; Playwright 1.62.1",
+  "review": "linear-390/extrema-320 visually inspected; all 12 DOM/interaction checks in browser-tests.log",
+  "purpose": "authored implementation fixtures, not material acceptance"
+}

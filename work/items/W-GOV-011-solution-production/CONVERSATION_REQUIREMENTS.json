@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "observations": [
+    {
+      "id": "conversation-requirement-flow",
+      "sourceType": "current_conversation",
+      "quote": "小さく教えながら、一問を解く流れを保つこと",
+      "sourceRef": "current-conversation:user-requirement",
+      "artifactVersion": null,
+      "scope": null,
+      "quality": "UNKNOWN",
+      "dimensionCandidate": "solution_flow_broken",
+      "eligibleForTraining": false,
+      "reason": "対象教材版・当該可視状態への確定対応がない。要件として保持しGoldへ推測変換しない。"
+    },
+    {
+      "id": "conversation-requirement-calculation",
+      "sourceType": "current_conversation",
+      "quote": "3x-4<= 2\n3x<=6\nx<=2\n这样子下去对吧",
+      "sourceRef": "current-conversation:user-requirement",
+      "artifactVersion": null,
+      "scope": null,
+      "quality": "UNKNOWN",
+      "dimensionCandidate": "local_calculation_not_rejoined",
+      "eligibleForTraining": false,
+      "reason": "対象教材版・当該可視状態への確定対応がない。要件として保持しGoldへ推測変換しない。"
+    },
+    {
+      "id": "conversation-requirement-blank",
+      "sourceType": "current_conversation",
+      "quote": "主要是我们现在想设计的这个情况为准",
+      "sourceRef": "current-conversation:user-requirement",
+      "artifactVersion": null,
+      "scope": null,
+      "quality": "UNKNOWN",
+      "dimensionCandidate": "answer_decision_leaked",
+      "eligibleForTraining": false,
+      "reason": "対象教材版・当該可視状態への確定対応がない。要件として保持しGoldへ推測変換しない。"
+    },
+    {
+      "id": "conversation-requirement-ownership",
+      "sourceType": "requirement_summary",
+      "quote": "判断の標準は主観能動性較強的交給ai，較弱的交給code",
+      "sourceRef": "current-conversation:user-requirement",
+      "artifactVersion": null,
+      "scope": null,
+      "quality": "UNKNOWN",
+      "dimensionCandidate": "workflow_responsibility",
+      "eligibleForTraining": false,
+      "reason": "要件要約。原文・対象版・可視状態の対応前にはGold不可。"
+    }
+  ],
+  "trainingRun": false,
+  "automaticLabeling": false
+}

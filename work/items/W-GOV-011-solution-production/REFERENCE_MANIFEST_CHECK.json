@@ -1,0 +1,13 @@
+{
+  "status": "NEEDS_AI_REVIEW",
+  "findings": [],
+  "coverage": [
+    {
+      "id": "reference-boundary",
+      "reviewedSources": []
+    }
+  ],
+  "manifestHash": "2faf619d95105daddfa2cdeb40ac73b73112f4f431b89c8ed08bd9438f4f24c2",
+  "duplicates": [],
+  "automaticPedagogyApproval": false
+}

@@ -1,0 +1,30 @@
+.solution-reading { --solution-gap: 1rem; color: var(--ink, #172b3a); width: 100%; min-width: 0; line-height: 1.8; }
+.solution-reading *, .solution-reading *::before, .solution-reading *::after { box-sizing: border-box; }
+.solution-reading header { margin-bottom: 1.5rem; }
+.solution-reading h3 { margin: .35rem 0 .8rem; font-size: 1.2rem; }
+.solution-reading p { margin: .7rem 0; overflow-wrap: anywhere; }
+.solution-role { font-weight: 700; font-size: .88rem; }
+.solution-goal { font-weight: 600; }
+.solution-term { color: #000; }
+.solution-plot { max-width: 30rem; margin: 1rem auto; }
+.solution-plot svg { width: 100%; height: auto; }
+.solution-plot figcaption { font-size: .85rem; line-height: 1.6; }
+.solution-conditions { border-bottom: 1px solid #ccd3d7; padding-bottom: .75rem; margin-bottom: 1rem; }
+.solution-conditions p > span { margin-right: .35rem; }
+.solution-work { margin-top: 1rem; }
+.solution-step { padding: .6rem 0 1rem; }
+.solution-step[data-state="current"] { border-top: 1px solid #ccd3d7; }
+.solution-equation { display: grid; grid-template-columns: minmax(0, 1fr) max-content; align-items: center; gap: .5rem; margin: 1rem 0; min-width: 0; }
+.solution-math { min-width: 0; max-width: 100%; overflow-x: auto; text-align: center; padding: .35rem .1rem; font-size: 1.05rem; }
+.solution-number { font-size: .85rem; color: #52616c; white-space: nowrap; align-self: center; }
+.solution-math-button { color: inherit; border: 1px solid #9baab5; background: #fff; border-radius: .25rem; cursor: pointer; width: 100%; }
+.solution-math-button:focus-visible, .solution-choice-panel button:focus-visible { outline: 3px solid #2776a1; outline-offset: 2px; }
+.solution-choice-panel { display: grid; gap: .65rem; margin: .9rem 0; }
+.solution-choice-panel > button { width: 100%; min-width: 0; min-height: 44px; padding: .75rem; color: inherit; background: #fff; border: 1px solid #aebcc6; border-radius: .3rem; overflow-wrap: anywhere; }
+.solution-option-row { display: block; padding: .25rem; text-align: center; }
+.solution-feedback { padding-left: .8rem; border-left: 3px solid #4386a6; }
+.solution-reading details { margin: 1rem 0; }
+.solution-reading summary { cursor: pointer; min-height: 44px; padding: .5rem 0; }
+.solution-reading nav { display: flex; justify-content: space-between; gap: .75rem; }
+.solution-reading nav button { min-height: 44px; padding: .5rem 1rem; }
+@media (max-width: 390px) { .solution-equation { gap: .25rem; } .solution-math { font-size: .95rem; } }

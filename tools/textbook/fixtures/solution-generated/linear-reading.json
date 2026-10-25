@@ -1,0 +1,505 @@
+{
+  "schemaVersion": "solution-reading/1",
+  "unitId": "fixture-linear",
+  "sourceHash": "1257c2565e74a81a52a407930cec76b8291fd1c08da52e1e93151c54e2a3580a",
+  "irHash": "a17d4cb22b4cd98ac6e2aad73b4bddb797c600f961af8751143da6125454e815",
+  "problems": [
+    {
+      "id": "fixture-linear-problem",
+      "title": "一次不等式を解く",
+      "prompt": [
+        {
+          "type": "text",
+          "id": "fixture-linear-prompt",
+          "text": "次の問題を、一つの式の流れとして解こう。"
+        }
+      ],
+      "conditions": [],
+      "goal": "一次不等式を解く",
+      "layout": "calculation",
+      "initial": {
+        "id": "fixture-linear-s0",
+        "latex": "3x-4 \\le 2"
+      },
+      "steps": [
+        {
+          "id": "fixture-linear-step0",
+          "beforeId": "fixture-linear-s0",
+          "afterId": "fixture-linear-s1",
+          "purpose": [
+            {
+              "type": "text",
+              "id": "fixture-linear-step0-purpose",
+              "text": "左辺の定数項をなくすため、両辺に同じ数を足す。"
+            }
+          ],
+          "reason": [
+            {
+              "type": "text",
+              "id": "fixture-linear-step0-reason",
+              "text": "同じ数を足しても不等号の向きは変わらない。"
+            }
+          ],
+          "afterText": [
+            {
+              "type": "text",
+              "id": "fixture-linear-step0-after",
+              "text": "定数項をなくしたので、両辺を計算して整理する。"
+            }
+          ],
+          "promptParts": [],
+          "detail": [],
+          "formula": {
+            "id": "fixture-linear-step0-equation",
+            "number": 1,
+            "masked": "3x-4+\\boxed{\\mathrm{A}} \\le 2+\\boxed{\\mathrm{A}}",
+            "completed": "3x-4+4 \\le 2+4"
+          },
+          "binding": {
+            "interactionId": "fixture-linear-answer0",
+            "slotIds": [
+              "fixture-linear-step0-slot0",
+              "fixture-linear-step0-slot1"
+            ]
+          },
+          "interaction": {
+            "id": "fixture-linear-answer0",
+            "action": "左辺の定数項をなくすため、両辺に同じ数を足す。",
+            "correctValue": "4",
+            "hints": [
+              [
+                {
+                  "type": "text",
+                  "id": "fixture-linear-answer0-hint0",
+                  "text": "今の目的と、直前の式をもう一度確かめよう。"
+                }
+              ]
+            ],
+            "choices": [
+              {
+                "id": "fixture-linear-answer0-c0",
+                "value": "4",
+                "isMath": true,
+                "rows": [],
+                "feedback": [
+                  {
+                    "type": "text",
+                    "id": "fixture-linear-answer0-feedback0",
+                    "text": "同じ数を足しても不等号の向きは変わらない。"
+                  }
+                ]
+              },
+              {
+                "id": "fixture-linear-answer0-c1",
+                "value": "-4",
+                "isMath": true,
+                "rows": [],
+                "feedback": [
+                  {
+                    "type": "text",
+                    "id": "fixture-linear-answer0-feedback1",
+                    "text": "操作する対象と、直前の式を確かめよう。"
+                  }
+                ]
+              },
+              {
+                "id": "fixture-linear-answer0-c2",
+                "value": "2",
+                "isMath": true,
+                "rows": [],
+                "feedback": [
+                  {
+                    "type": "text",
+                    "id": "fixture-linear-answer0-feedback2",
+                    "text": "操作する対象と、直前の式を確かめよう。"
+                  }
+                ]
+              }
+            ],
+            "support": {
+              "level": "strong",
+              "nextProblemAction": "類題では操作から自分で組み立てる"
+            }
+          }
+        },
+        {
+          "id": "fixture-linear-step1",
+          "beforeId": "fixture-linear-s1",
+          "afterId": "fixture-linear-s2",
+          "purpose": [
+            {
+              "type": "text",
+              "id": "fixture-linear-step1-purpose",
+              "text": "両辺の計算をまとめ、文字の項だけを左辺に残す。"
+            }
+          ],
+          "reason": [
+            {
+              "type": "text",
+              "id": "fixture-linear-step1-reason",
+              "text": "左辺では定数項どうしが打ち消し合う。"
+            }
+          ],
+          "afterText": [
+            {
+              "type": "text",
+              "id": "fixture-linear-step1-after",
+              "text": "次に文字の係数を一にする。"
+            }
+          ],
+          "promptParts": [],
+          "detail": [],
+          "formula": {
+            "id": "fixture-linear-step1-equation",
+            "number": 2,
+            "masked": "3x \\le \\boxed{\\mathrm{B}}",
+            "completed": "3x \\le 6"
+          },
+          "binding": {
+            "interactionId": "fixture-linear-answer1",
+            "slotIds": [
+              "fixture-linear-step1-slot0"
+            ]
+          },
+          "interaction": {
+            "id": "fixture-linear-answer1",
+            "action": "両辺の計算をまとめ、文字の項だけを左辺に残す。",
+            "correctValue": "6",
+            "hints": [
+              [
+                {
+                  "type": "text",
+                  "id": "fixture-linear-answer1-hint0",
+                  "text": "今の目的と、直前の式をもう一度確かめよう。"
+                }
+              ]
+            ],
+            "choices": [
+              {
+                "id": "fixture-linear-answer1-c0",
+                "value": "6",
+                "isMath": true,
+                "rows": [],
+                "feedback": [
+                  {
+                    "type": "text",
+                    "id": "fixture-linear-answer1-feedback0",
+                    "text": "左辺では定数項どうしが打ち消し合う。"
+                  }
+                ]
+              },
+              {
+                "id": "fixture-linear-answer1-c1",
+                "value": "-2",
+                "isMath": true,
+                "rows": [],
+                "feedback": [
+                  {
+                    "type": "text",
+                    "id": "fixture-linear-answer1-feedback1",
+                    "text": "操作する対象と、直前の式を確かめよう。"
+                  }
+                ]
+              },
+              {
+                "id": "fixture-linear-answer1-c2",
+                "value": "8",
+                "isMath": true,
+                "rows": [],
+                "feedback": [
+                  {
+                    "type": "text",
+                    "id": "fixture-linear-answer1-feedback2",
+                    "text": "操作する対象と、直前の式を確かめよう。"
+                  }
+                ]
+              }
+            ],
+            "support": {
+              "level": "strong",
+              "nextProblemAction": "類題では操作から自分で組み立てる"
+            }
+          }
+        },
+        {
+          "id": "fixture-linear-step2",
+          "beforeId": "fixture-linear-s2",
+          "afterId": "fixture-linear-s3",
+          "purpose": [
+            {
+              "type": "text",
+              "id": "fixture-linear-step2-purpose",
+              "text": "文字の係数を一にするため、両辺を同じ正の数で割る。"
+            }
+          ],
+          "reason": [
+            {
+              "type": "text",
+              "id": "fixture-linear-step2-reason",
+              "text": "正の数で割るので不等号の向きは変わらない。"
+            }
+          ],
+          "afterText": [
+            {
+              "type": "text",
+              "id": "fixture-linear-step2-after",
+              "text": "商を計算すれば、解の範囲が得られる。"
+            }
+          ],
+          "promptParts": [],
+          "detail": [],
+          "formula": {
+            "id": "fixture-linear-step2-equation",
+            "number": 3,
+            "masked": "\\frac{3x}{\\boxed{\\mathrm{C}}} \\le \\frac{6}{\\boxed{\\mathrm{C}}}",
+            "completed": "\\frac{3x}{3} \\le \\frac{6}{3}"
+          },
+          "binding": {
+            "interactionId": "fixture-linear-answer2",
+            "slotIds": [
+              "fixture-linear-step2-slot0",
+              "fixture-linear-step2-slot1"
+            ]
+          },
+          "interaction": {
+            "id": "fixture-linear-answer2",
+            "action": "文字の係数を一にするため、両辺を同じ正の数で割る。",
+            "correctValue": "3",
+            "hints": [
+              [
+                {
+                  "type": "text",
+                  "id": "fixture-linear-answer2-hint0",
+                  "text": "今の目的と、直前の式をもう一度確かめよう。"
+                }
+              ]
+            ],
+            "choices": [
+              {
+                "id": "fixture-linear-answer2-c0",
+                "value": "3",
+                "isMath": true,
+                "rows": [],
+                "feedback": [
+                  {
+                    "type": "text",
+                    "id": "fixture-linear-answer2-feedback0",
+                    "text": "正の数で割るので不等号の向きは変わらない。"
+                  }
+                ]
+              },
+              {
+                "id": "fixture-linear-answer2-c1",
+                "value": "-3",
+                "isMath": true,
+                "rows": [],
+                "feedback": [
+                  {
+                    "type": "text",
+                    "id": "fixture-linear-answer2-feedback1",
+                    "text": "操作する対象と、直前の式を確かめよう。"
+                  }
+                ]
+              },
+              {
+                "id": "fixture-linear-answer2-c2",
+                "value": "6",
+                "isMath": true,
+                "rows": [],
+                "feedback": [
+                  {
+                    "type": "text",
+                    "id": "fixture-linear-answer2-feedback2",
+                    "text": "操作する対象と、直前の式を確かめよう。"
+                  }
+                ]
+              }
+            ],
+            "support": {
+              "level": "strong",
+              "nextProblemAction": "類題では操作から自分で組み立てる"
+            }
+          }
+        },
+        {
+          "id": "fixture-linear-step3",
+          "beforeId": "fixture-linear-s3",
+          "afterId": "fixture-linear-s4",
+          "purpose": [
+            {
+              "type": "text",
+              "id": "fixture-linear-step3-purpose",
+              "text": "商を計算し、元の問題の解を表す。"
+            }
+          ],
+          "reason": [
+            {
+              "type": "text",
+              "id": "fixture-linear-step3-reason",
+              "text": "文字の係数が一になった。"
+            }
+          ],
+          "afterText": [
+            {
+              "type": "text",
+              "id": "fixture-linear-step3-after",
+              "text": "最初の不等式から最後までの解法を読み直そう。"
+            }
+          ],
+          "promptParts": [],
+          "detail": [],
+          "formula": {
+            "id": "fixture-linear-step3-equation",
+            "number": 4,
+            "masked": "x \\le \\boxed{\\mathrm{D}}",
+            "completed": "x \\le 2"
+          },
+          "binding": {
+            "interactionId": "fixture-linear-answer3",
+            "slotIds": [
+              "fixture-linear-step3-slot0"
+            ]
+          },
+          "interaction": {
+            "id": "fixture-linear-answer3",
+            "action": "商を計算し、元の問題の解を表す。",
+            "correctValue": "2",
+            "hints": [
+              [
+                {
+                  "type": "text",
+                  "id": "fixture-linear-answer3-hint0",
+                  "text": "今の目的と、直前の式をもう一度確かめよう。"
+                }
+              ]
+            ],
+            "choices": [
+              {
+                "id": "fixture-linear-answer3-c0",
+                "value": "2",
+                "isMath": true,
+                "rows": [],
+                "feedback": [
+                  {
+                    "type": "text",
+                    "id": "fixture-linear-answer3-feedback0",
+                    "text": "文字の係数が一になった。"
+                  }
+                ]
+              },
+              {
+                "id": "fixture-linear-answer3-c1",
+                "value": "3",
+                "isMath": true,
+                "rows": [],
+                "feedback": [
+                  {
+                    "type": "text",
+                    "id": "fixture-linear-answer3-feedback1",
+                    "text": "操作する対象と、直前の式を確かめよう。"
+                  }
+                ]
+              },
+              {
+                "id": "fixture-linear-answer3-c2",
+                "value": "6",
+                "isMath": true,
+                "rows": [],
+                "feedback": [
+                  {
+                    "type": "text",
+                    "id": "fixture-linear-answer3-feedback2",
+                    "text": "操作する対象と、直前の式を確かめよう。"
+                  }
+                ]
+              }
+            ],
+            "support": {
+              "level": "strong",
+              "nextProblemAction": "類題では操作から自分で組み立てる"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "mathReceipts": [
+    {
+      "id": "fixture-linear-problem",
+      "status": "PASS",
+      "checks": [
+        {
+          "transitionId": "fixture-linear-e0",
+          "status": "PASS",
+          "ruleId": "add-both-sides",
+          "checks": [
+            "same-operation-both-sides",
+            "relation-direction",
+            "exact-result"
+          ],
+          "mathStatus": "PASS"
+        },
+        {
+          "transitionId": "fixture-linear-e1",
+          "status": "PASS",
+          "ruleId": "rewrite",
+          "mathStatus": "PASS"
+        },
+        {
+          "transitionId": "fixture-linear-e2",
+          "status": "PASS",
+          "ruleId": "divide-both-sides",
+          "checks": [
+            "same-operation-both-sides",
+            "relation-direction",
+            "exact-result"
+          ],
+          "mathStatus": "PASS"
+        },
+        {
+          "transitionId": "fixture-linear-e3",
+          "status": "PASS",
+          "ruleId": "rewrite",
+          "mathStatus": "PASS"
+        }
+      ],
+      "engineVersion": "1.14.0",
+      "formalProof": false,
+      "proofStatus": "EXACT_SYMBOLIC_CHECKS",
+      "domain": "closed AST polynomial identities / constant linear operations / one-variable relation solution sets / numeric quadratic extrema"
+    },
+    {
+      "id": "fixture-linear-answer0",
+      "status": "PASS",
+      "matches": [
+        0
+      ],
+      "duplicates": []
+    },
+    {
+      "id": "fixture-linear-answer1",
+      "status": "PASS",
+      "matches": [
+        0
+      ],
+      "duplicates": []
+    },
+    {
+      "id": "fixture-linear-answer2",
+      "status": "PASS",
+      "matches": [
+        0
+      ],
+      "duplicates": []
+    },
+    {
+      "id": "fixture-linear-answer3",
+      "status": "PASS",
+      "matches": [
+        0
+      ],
+      "duplicates": []
+    }
+  ],
+  "meaningAuditRequired": true
+}

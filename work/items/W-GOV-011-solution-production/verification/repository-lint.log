@@ -1,0 +1,45 @@
+$ eslint . --max-warnings=0
+
+/workspace/scratch/f79c5816761e/kyotsu-step-web/e2e/math-practice-pilot.spec.ts
+  382:9  error  'currentTarget' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/workspace/scratch/f79c5816761e/kyotsu-step-web/src/data/mathPractice/setsBatchA.zh.ts
+  337:7  error  'next' is never reassigned. Use 'const' instead  prefer-const
+
+/workspace/scratch/f79c5816761e/kyotsu-step-web/src/data/textbook/ch01/chapter1Continuous.ts
+   65:64  error  Irregular whitespace not allowed  no-irregular-whitespace
+  123:44  error  Irregular whitespace not allowed  no-irregular-whitespace
+  123:82  error  Irregular whitespace not allowed  no-irregular-whitespace
+  194:42  error  Irregular whitespace not allowed  no-irregular-whitespace
+  196:32  error  Irregular whitespace not allowed  no-irregular-whitespace
+
+/workspace/scratch/f79c5816761e/kyotsu-step-web/src/data/textbook/math/proposition/propositionReadingLesson.ts
+   82:48  error  Unnecessary escape character: \ .  no-useless-escape
+   82:75  error  Unnecessary escape character: \ .  no-useless-escape
+  160:48  error  Unnecessary escape character: \ .  no-useless-escape
+  160:64  error  Unnecessary escape character: \ .  no-useless-escape
+  276:48  error  Unnecessary escape character: \ .  no-useless-escape
+  276:77  error  Unnecessary escape character: \ .  no-useless-escape
+  346:48  error  Unnecessary escape character: \ .  no-useless-escape
+  346:66  error  Unnecessary escape character: \ .  no-useless-escape
+  374:48  error  Unnecessary escape character: \ .  no-useless-escape
+  374:64  error  Unnecessary escape character: \ .  no-useless-escape
+
+/workspace/scratch/f79c5816761e/kyotsu-step-web/src/data/textbookUnits.test.ts
+  50:93  error  Irregular whitespace not allowed  no-irregular-whitespace
+
+/workspace/scratch/f79c5816761e/kyotsu-step-web/src/domain/textbookMath.ts
+   50:66   error  Unexpected combined character in character class  no-misleading-character-class
+   70:28   error  Unnecessary escape character: \-                  no-useless-escape
+  127:19   error  Unexpected combined character in character class  no-misleading-character-class
+  149:105  error  Unexpected combined character in character class  no-misleading-character-class
+  149:178  error  Unexpected combined character in character class  no-misleading-character-class
+  149:244  error  Unexpected combined character in character class  no-misleading-character-class
+
+/workspace/scratch/f79c5816761e/kyotsu-step-web/work/items/W-MATH-035-choice-order-factor-audit/implementation.test.tsx
+  3:9  error  'renderToStaticMarkup' is defined but never used  @typescript-eslint/no-unused-vars
+
+✖ 25 problems (25 errors, 0 warnings)
+  1 error and 0 warnings potentially fixable with the `--fix` option.
+
+[ELIFECYCLE] Command failed with exit code 1.

@@ -1,0 +1,54 @@
+$ node --test tools/textbook/tests/pipeline.test.mjs && vitest run --config tools/textbook/vitest.config.mjs
+✔ exact long division 3/4 (1.970673ms)
+✔ exact long division 23/11 (0.151922ms)
+✔ exact long division 1/6 (0.089546ms)
+✔ exact long division -1/8 (0.112491ms)
+✔ exact long division 2/1 (0.220506ms)
+✔ zero divisor is rejected (0.403835ms)
+✔ cycle value and minimum scale 8 (0.438519ms)
+✔ cycle value and minimum scale 69 (0.361421ms)
+✔ cycle value and minimum scale 6969 (0.226926ms)
+✔ cycle value and minimum scale 09 (0.266265ms)
+✔ 0/9 repeating profiles do not manufacture a teaching trace (0.255619ms)
+✔ finite decimal checks reduced denominator (0.204562ms)
+✔ all19 range candidates are checked (0.907012ms)
+✔ equivalence and required form differ (0.294999ms)
+✔ complete N07 design validates and compiles deterministically (42.227439ms)
+✔ fault injection: future reference (7.887428ms)
+✔ fault injection: unintroduced definition (5.65144ms)
+✔ fault injection: answer shown early (4.818151ms)
+✔ fault injection: wrong problem scope (3.805999ms)
+✔ fault injection: missing unnumbered source (4.369738ms)
+✔ fault injection: duplicate item (3.582008ms)
+✔ fault injection: equivalent distractor (3.688901ms)
+✔ fault injection: source reverse correspondence (5.422962ms)
+✔ fault injection: original question mismatch (3.54476ms)
+✔ fault injection: missing order node (4.95497ms)
+✔ empty selected unit cannot PASS (2.377933ms)
+✔ past known result reuse is permitted when designed (3.277844ms)
+✔ raw source stays out of public repo and production writes are refused (0.38047ms)
+✔ source revision mismatch stops authoring (0.185112ms)
+✔ job reuse fingerprints inputs, implementation and stored output; failure is resumable (2.841068ms)
+✔ current review policy rejects retired approval requirements (0.268379ms)
+✔ verification FAIL never becomes a cached successful job (0.563268ms)
+✔ exact arithmetic refuses already-rounded numeric input (0.227867ms)
+✔ all designed interactions require correct answers; wrong answers never reveal future results (3.415654ms)
+✔ unmapped source explanations cannot be automatically treated as headings (1.448747ms)
+ℹ tests 35
+ℹ suites 0
+ℹ pass 35
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 347.14555
+
+ RUN  v3.2.7 /workspace/scratch/f79c5816761e/kyotsu-step-web
+
+ ✓ tools/textbook/tests/runtime-adapter.test.ts (4 tests) 151ms
+
+ Test Files  1 passed (1)
+      Tests  4 passed (4)
+   Start at  11:28:05
+   Duration  744ms (transform 149ms, setup 0ms, collect 252ms, tests 151ms, environment 0ms, prepare 118ms)
+

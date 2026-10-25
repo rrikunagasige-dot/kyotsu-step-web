@@ -1,0 +1,724 @@
+{
+  "schemaVersion": "solution-reading/1",
+  "unitId": "fixture-extrema",
+  "sourceHash": "6b760dac1412664a6c736e2bb84c1876c014922f0e122ef9612d9d32b8fb6992",
+  "irHash": "366732c2208818d1b5a2746edcbaec9742094af30c8bce36a4dbaf3d020dc1cd",
+  "problems": [
+    {
+      "id": "fixture-extrema-problem",
+      "title": "定義域の中で最小値を求める",
+      "prompt": [
+        {
+          "type": "text",
+          "id": "fixture-extrema-prompt",
+          "text": "次の問題を、一つの式の流れとして解こう。"
+        }
+      ],
+      "conditions": [
+        {
+          "type": "text",
+          "id": "fixture-extrema-domain-intro",
+          "text": "定義域は次の二つの条件を満たす範囲とする。"
+        },
+        {
+          "type": "math",
+          "id": "fixture-extrema-domain-left",
+          "latex": "0 \\le x"
+        },
+        {
+          "type": "math",
+          "id": "fixture-extrema-domain-right",
+          "latex": "x \\le 2"
+        }
+      ],
+      "goal": "定義域の中で最小値を求める",
+      "layout": "calculation",
+      "plot": {
+        "id": "fixture-extrema-plot",
+        "visibleAfterStateId": "fixture-extrema-s2",
+        "alt": "元の二次関数と定義域。太線が定義域の範囲、点線が軸を表す。",
+        "points": [
+          [
+            -1,
+            17
+          ],
+          [
+            -0.9375,
+            16.50390625
+          ],
+          [
+            -0.875,
+            16.015625
+          ],
+          [
+            -0.8125,
+            15.53515625
+          ],
+          [
+            -0.75,
+            15.0625
+          ],
+          [
+            -0.6875,
+            14.59765625
+          ],
+          [
+            -0.625,
+            14.140625
+          ],
+          [
+            -0.5625,
+            13.69140625
+          ],
+          [
+            -0.5,
+            13.25
+          ],
+          [
+            -0.4375,
+            12.81640625
+          ],
+          [
+            -0.375,
+            12.390625
+          ],
+          [
+            -0.3125,
+            11.97265625
+          ],
+          [
+            -0.25,
+            11.5625
+          ],
+          [
+            -0.1875,
+            11.16015625
+          ],
+          [
+            -0.125,
+            10.765625
+          ],
+          [
+            -0.0625,
+            10.37890625
+          ],
+          [
+            0,
+            10
+          ],
+          [
+            0.0625,
+            9.62890625
+          ],
+          [
+            0.125,
+            9.265625
+          ],
+          [
+            0.1875,
+            8.91015625
+          ],
+          [
+            0.25,
+            8.5625
+          ],
+          [
+            0.3125,
+            8.22265625
+          ],
+          [
+            0.375,
+            7.890625
+          ],
+          [
+            0.4375,
+            7.56640625
+          ],
+          [
+            0.5,
+            7.25
+          ],
+          [
+            0.5625,
+            6.94140625
+          ],
+          [
+            0.625,
+            6.640625
+          ],
+          [
+            0.6875,
+            6.34765625
+          ],
+          [
+            0.75,
+            6.0625
+          ],
+          [
+            0.8125,
+            5.78515625
+          ],
+          [
+            0.875,
+            5.515625
+          ],
+          [
+            0.9375,
+            5.25390625
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            1.0625,
+            4.75390625
+          ],
+          [
+            1.125,
+            4.515625
+          ],
+          [
+            1.1875,
+            4.28515625
+          ],
+          [
+            1.25,
+            4.0625
+          ],
+          [
+            1.3125,
+            3.84765625
+          ],
+          [
+            1.375,
+            3.640625
+          ],
+          [
+            1.4375,
+            3.44140625
+          ],
+          [
+            1.5,
+            3.25
+          ],
+          [
+            1.5625,
+            3.06640625
+          ],
+          [
+            1.625,
+            2.890625
+          ],
+          [
+            1.6875,
+            2.72265625
+          ],
+          [
+            1.75,
+            2.5625
+          ],
+          [
+            1.8125,
+            2.41015625
+          ],
+          [
+            1.875,
+            2.265625
+          ],
+          [
+            1.9375,
+            2.12890625
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2.0625,
+            1.87890625
+          ],
+          [
+            2.125,
+            1.765625
+          ],
+          [
+            2.1875,
+            1.66015625
+          ],
+          [
+            2.25,
+            1.5625
+          ],
+          [
+            2.3125,
+            1.47265625
+          ],
+          [
+            2.375,
+            1.390625
+          ],
+          [
+            2.4375,
+            1.31640625
+          ],
+          [
+            2.5,
+            1.25
+          ],
+          [
+            2.5625,
+            1.19140625
+          ],
+          [
+            2.625,
+            1.140625
+          ],
+          [
+            2.6875,
+            1.09765625
+          ],
+          [
+            2.75,
+            1.0625
+          ],
+          [
+            2.8125,
+            1.03515625
+          ],
+          [
+            2.875,
+            1.015625
+          ],
+          [
+            2.9375,
+            1.00390625
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            3.0625,
+            1.00390625
+          ],
+          [
+            3.125,
+            1.015625
+          ],
+          [
+            3.1875,
+            1.03515625
+          ],
+          [
+            3.25,
+            1.0625
+          ],
+          [
+            3.3125,
+            1.09765625
+          ],
+          [
+            3.375,
+            1.140625
+          ],
+          [
+            3.4375,
+            1.19140625
+          ],
+          [
+            3.5,
+            1.25
+          ],
+          [
+            3.5625,
+            1.31640625
+          ],
+          [
+            3.625,
+            1.390625
+          ],
+          [
+            3.6875,
+            1.47265625
+          ],
+          [
+            3.75,
+            1.5625
+          ],
+          [
+            3.8125,
+            1.66015625
+          ],
+          [
+            3.875,
+            1.765625
+          ],
+          [
+            3.9375,
+            1.87890625
+          ],
+          [
+            4,
+            2
+          ]
+        ],
+        "domainPoints": [
+          [
+            0,
+            10
+          ],
+          [
+            0.05,
+            9.7025
+          ],
+          [
+            0.1,
+            9.41
+          ],
+          [
+            0.15,
+            9.1225
+          ],
+          [
+            0.2,
+            8.84
+          ],
+          [
+            0.25,
+            8.5625
+          ],
+          [
+            0.3,
+            8.29
+          ],
+          [
+            0.35,
+            8.0225
+          ],
+          [
+            0.4,
+            7.76
+          ],
+          [
+            0.45,
+            7.5025
+          ],
+          [
+            0.5,
+            7.25
+          ],
+          [
+            0.55,
+            7.0025
+          ],
+          [
+            0.6,
+            6.76
+          ],
+          [
+            0.65,
+            6.5225
+          ],
+          [
+            0.7,
+            6.29
+          ],
+          [
+            0.75,
+            6.0625
+          ],
+          [
+            0.8,
+            5.84
+          ],
+          [
+            0.85,
+            5.6225
+          ],
+          [
+            0.9,
+            5.41
+          ],
+          [
+            0.95,
+            5.2025
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            1.05,
+            4.8025
+          ],
+          [
+            1.1,
+            4.61
+          ],
+          [
+            1.15,
+            4.4225
+          ],
+          [
+            1.2,
+            4.24
+          ],
+          [
+            1.25,
+            4.0625
+          ],
+          [
+            1.3,
+            3.89
+          ],
+          [
+            1.35,
+            3.7225
+          ],
+          [
+            1.4,
+            3.56
+          ],
+          [
+            1.45,
+            3.4025
+          ],
+          [
+            1.5,
+            3.25
+          ],
+          [
+            1.55,
+            3.1025
+          ],
+          [
+            1.6,
+            2.96
+          ],
+          [
+            1.65,
+            2.8225
+          ],
+          [
+            1.7,
+            2.69
+          ],
+          [
+            1.75,
+            2.5625
+          ],
+          [
+            1.8,
+            2.44
+          ],
+          [
+            1.85,
+            2.3225
+          ],
+          [
+            1.9,
+            2.21
+          ],
+          [
+            1.95,
+            2.1025
+          ],
+          [
+            2,
+            2
+          ]
+        ],
+        "vertex": [
+          3,
+          1
+        ],
+        "lowerOpen": false,
+        "upperOpen": false,
+        "sourceFunctionHash": "6d77cd544a62e9866a538ebdbd63548fd3a2bdc3f01cd57e172848f45c4ac609"
+      },
+      "initial": {
+        "id": "fixture-extrema-s0",
+        "latex": "x^{2}-6x+10"
+      },
+      "steps": [
+        {
+          "id": "fixture-extrema-step0",
+          "beforeId": "fixture-extrema-s0",
+          "afterId": "fixture-extrema-s1",
+          "purpose": [
+            {
+              "type": "text",
+              "id": "fixture-extrema-step0-purpose",
+              "text": "平方完成して軸と頂点の位置を読み取れる形にする。"
+            }
+          ],
+          "reason": [
+            {
+              "type": "text",
+              "id": "fixture-extrema-step0-reason",
+              "text": "二乗の値が零になる位置が軸である。"
+            }
+          ],
+          "afterText": [
+            {
+              "type": "text",
+              "id": "fixture-extrema-step0-after",
+              "text": "頂点が定義域の中にあるかを確かめる。"
+            }
+          ],
+          "promptParts": [],
+          "detail": [],
+          "formula": {
+            "id": "fixture-extrema-step0-equation",
+            "number": 1,
+            "masked": "\\left(x-3\\right)^{2}+1",
+            "completed": "\\left(x-3\\right)^{2}+1"
+          },
+          "binding": null,
+          "interaction": null
+        },
+        {
+          "id": "fixture-extrema-step1",
+          "beforeId": "fixture-extrema-s1",
+          "afterId": "fixture-extrema-s2",
+          "purpose": [
+            {
+              "type": "text",
+              "id": "fixture-extrema-step1-purpose",
+              "text": "頂点は範囲外なので、定義域の中で値が最も小さくなる位置を調べる。"
+            }
+          ],
+          "reason": [
+            {
+              "type": "text",
+              "id": "fixture-extrema-step1-reason",
+              "text": "この範囲では軸へ近づくほど値が小さくなる。右端での値を計算する。"
+            }
+          ],
+          "afterText": [
+            {
+              "type": "text",
+              "id": "fixture-extrema-step1-after",
+              "text": "定義域の条件と、最小値を取る位置を合わせて結論を読む。"
+            }
+          ],
+          "promptParts": [],
+          "detail": [],
+          "formula": {
+            "id": "fixture-extrema-step1-equation",
+            "number": 2,
+            "masked": "\\begin{gathered}\\min_{x\\in [0,2]}\\left(x^{2}-6x+10\\right) = \\boxed{\\mathrm{B}}\\\\ x=2\\end{gathered}",
+            "completed": "\\begin{gathered}\\min_{x\\in [0,2]}\\left(x^{2}-6x+10\\right) = 2\\\\ x=2\\end{gathered}"
+          },
+          "binding": {
+            "interactionId": "fixture-extrema-answer1",
+            "slotIds": [
+              "fixture-extrema-step1-slot0"
+            ]
+          },
+          "interaction": {
+            "id": "fixture-extrema-answer1",
+            "action": "頂点は範囲外なので、定義域の中で値が最も小さくなる位置を調べる。",
+            "correctValue": "2",
+            "hints": [
+              [
+                {
+                  "type": "text",
+                  "id": "fixture-extrema-answer1-hint0",
+                  "text": "今の目的と、直前の式をもう一度確かめよう。"
+                }
+              ]
+            ],
+            "choices": [
+              {
+                "id": "fixture-extrema-answer1-c0",
+                "value": "2",
+                "isMath": true,
+                "rows": [],
+                "feedback": [
+                  {
+                    "type": "text",
+                    "id": "fixture-extrema-answer1-feedback0",
+                    "text": "この範囲では軸へ近づくほど値が小さくなる。右端での値を計算する。"
+                  }
+                ]
+              },
+              {
+                "id": "fixture-extrema-answer1-c1",
+                "value": "1",
+                "isMath": true,
+                "rows": [],
+                "feedback": [
+                  {
+                    "type": "text",
+                    "id": "fixture-extrema-answer1-feedback1",
+                    "text": "操作する対象と、直前の式を確かめよう。"
+                  }
+                ]
+              },
+              {
+                "id": "fixture-extrema-answer1-c2",
+                "value": "10",
+                "isMath": true,
+                "rows": [],
+                "feedback": [
+                  {
+                    "type": "text",
+                    "id": "fixture-extrema-answer1-feedback2",
+                    "text": "操作する対象と、直前の式を確かめよう。"
+                  }
+                ]
+              }
+            ],
+            "support": {
+              "level": "strong",
+              "nextProblemAction": "類題では操作から自分で組み立てる"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "mathReceipts": [
+    {
+      "id": "fixture-extrema-problem",
+      "status": "PASS",
+      "checks": [
+        {
+          "transitionId": "fixture-extrema-e0",
+          "status": "PASS",
+          "ruleId": "rewrite",
+          "checks": [
+            "identity"
+          ],
+          "mathStatus": "PASS"
+        },
+        {
+          "transitionId": "fixture-extrema-e1",
+          "status": "PASS",
+          "ruleId": "extrema",
+          "computed": {
+            "value": "2",
+            "at": "{2}",
+            "attained": true
+          },
+          "mathStatus": "PASS"
+        }
+      ],
+      "engineVersion": "1.14.0",
+      "formalProof": false,
+      "proofStatus": "EXACT_SYMBOLIC_CHECKS",
+      "domain": "closed AST polynomial identities / constant linear operations / one-variable relation solution sets / numeric quadratic extrema"
+    },
+    {
+      "id": "fixture-extrema-answer1",
+      "status": "PASS",
+      "matches": [
+        0
+      ],
+      "duplicates": []
+    }
+  ],
+  "meaningAuditRequired": true
+}

@@ -7,16 +7,52 @@ import {solve,solutionReceipts} from './solver/n07.mjs';
 import {teachingCandidates,rankValid} from './planner/graph.mjs';
 import {blankCandidates,validateChoices} from './interaction/index.mjs';
 import {hash} from './util.mjs';
+import {inspectResearch,prepareResearchAnalysis} from './research/manifest.mjs';
+import {importResearchAnalysis,retrievePatterns} from './research/patterns.mjs';
+import {verifySolution} from './solution/verify.mjs';
+import {planBlanks,verifyBlankDecisions} from './interaction/plan.mjs';
+import {prepareSolutionReview,importSolutionReview} from './ai/solution-review.mjs';
+import {visibleFromCompiledV2} from './ir/v2.mjs';
 export function operate(operation,input){
- if(operation==='coverage')return sourceCoverage(input.blocks,input.coverage,input.nodes);
- if(operation==='solve')return solve(input);
+ if(operation==='research-manifest')return inspectResearch(input.manifest??input);
+ if(operation==='research-analysis')return input.response?importResearchAnalysis(input.request,input.response):prepareResearchAnalysis(input.manifest,input.extraction);
+ if(operation==='research-patterns')return retrievePatterns(input.patterns,input.query);
+ if(operation==='solution-validate')return verifySolution(input.graph??input);
+ if(operation==='interaction-plan')return input.decisions?verifyBlankDecisions(input.plan,input.decisions):planBlanks(input);
+ if(operation==='render-solution')return {status:'PASS',compiled:compileIR(input.ir??input)};
+ if(operation==='solution-review')return input.response?importSolutionReview(input.request,input.response):prepareSolutionReview(input.visible,input.context);
+ if(operation==='coverage'){
+  const ir=input.ir??input;
+  if(ir.schemaVersion==='production-ir/2')return sourceCoverage(ir.sourceBlocks,ir.coverage.map(c=>({...c,nodeIds:c.stepIds})),ir.problems.flatMap(p=>p.steps));
+  return sourceCoverage(input.blocks,input.coverage,input.nodes);
+ }
+ if(operation==='solve')return input.kind==='solution'||input.schemaVersion==='solution-graph/1'?verifySolution(input.graph??input):solve(input);
  if(operation==='solution-receipts')return {status:'PASS',receipts:solutionReceipts(),meaningAuditRequired:true};
- if(operation==='teaching-candidates')return {status:'PASS',candidates:teachingCandidates(input.solution,input.knowledge,input.options)};
- if(operation==='blank-candidates')return {status:'PASS',candidates:input.nodes.flatMap(n=>blankCandidates(n).map(c=>({...c,nodeId:n.id})))};
+ if(operation==='teaching-candidates'){
+  if(input.graph?.schemaVersion==='solution-graph/1'){
+   const checked=verifySolution(input.graph);if(checked.status!=='PASS')return checked;
+   const solution=input.graph.transitions.map(t=>({id:t.id,inputFacts:t.requires,outputFacts:t.produces,goal:input.graph.states.find(s=>s.id===t.to).statement,operation:{kind:t.ruleId,targets:[t.to]},basisRefs:t.basisRefs}));
+   return {status:'NEEDS_AI_REVIEW',graphHash:checked.graphHash,candidates:teachingCandidates(solution,input.graph.initialFacts.concat(input.graph.givens.map(g=>g.id)),input.options),meaningAuditRequired:true};
+  }
+  return {status:'PASS',candidates:teachingCandidates(input.solution,input.knowledge,input.options)};
+ }
+ if(operation==='blank-candidates'){
+  if(input.graph?.schemaVersion==='solution-graph/1')return planBlanks(input);
+  return {status:'PASS',candidates:input.nodes.flatMap(n=>blankCandidates(n).map(c=>({...c,nodeId:n.id})))};
+ }
  if(operation==='choices')return validateChoices(input.choices,input.answer,input.options);
  if(operation==='verify-ir')return validateIR(input);
  if(operation==='compile-ir')return {status:'PASS',compiled:compileIR(input)};
- if(operation==='visible-snapshots')return {status:'PASS',snapshots:input.ir.nodes.map((n,i)=>visibleSnapshot(input.ir,n.id,input.ir.nodes.slice(0,i).map(n=>n.id)))};
+ if(operation==='visible-snapshots'){
+  if(input.ir.schemaVersion==='production-ir/2'){
+   const compiled=compileIR(input.ir);
+   return {status:'NEEDS_AI_REVIEW',snapshots:compiled.problems.flatMap(p=>p.steps.flatMap((s,i)=>{
+    const solved=p.steps.slice(0,i).map(a=>a.id),views=[{choicesOpen:false},{choicesOpen:true},...(s.interaction?.hints.map((_,h)=>({choicesOpen:true,hintCount:h+1}))??[]),...(s.detail.length?[{choicesOpen:true,detailOpen:true}]:[])];
+    return views.map(view=>({view,...visibleFromCompiledV2(compiled,s.id,solved,view)}));
+   })),meaningAuditRequired:true};
+  }
+  return {status:'PASS',snapshots:input.ir.nodes.map((n,i)=>visibleSnapshot(input.ir,n.id,input.ir.nodes.slice(0,i).map(n=>n.id)))};
+ }
  if(operation==='rank-valid')return {status:'PASS',ranked:rankValid(input.candidates)};
  if(operation==='figures'){
   const findings=[];for(const f of input.figures){if(!f.id||!f.purpose||!f.howToRead||!f.sourceRef||!f.visibleWhen)findings.push({id:f.id,rule:'FIGURE_MEANING'});if(f.sourcePath){const bytes=readFileSync(f.sourcePath);if(hash(bytes.toString('base64'))!==f.contentHash)findings.push({id:f.id,rule:'FIGURE_HASH'});}}

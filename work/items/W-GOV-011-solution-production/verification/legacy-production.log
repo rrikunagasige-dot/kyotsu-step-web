@@ -1,0 +1,27 @@
+✔ meaning survives paragraph/equation/term/slot compilation and rendered-ID verification (14.313398ms)
+✔ negative regression: lost equality (2.228826ms)
+✔ negative regression: future fact (1.716886ms)
+✔ negative regression: future context (2.110676ms)
+✔ negative regression: wrong scope (1.179928ms)
+✔ negative regression: unmapped explanation (1.030611ms)
+✔ negative regression: missing slot (0.884718ms)
+✔ negative regression: operation without direction (0.8207ms)
+✔ negative regression: output not reused (0.915365ms)
+✔ negative regression: answer shown first (0.959742ms)
+✔ independent expressions stay independent; plain-math warning cannot prove rendering (1.435748ms)
+✔ visible snapshot never includes future answer, even if caller supplies future solved IDs (1.149261ms)
+✔ typed target supports judgments and refuses prototype paths; same-value distractors rejected (0.350985ms)
+✔ teaching graph rejects unavailable premises and disconnected return to whole solution (0.538741ms)
+✔ operation answers stay in sentences and quantities require meaning (0.358957ms)
+✔ source mapping is bidirectional, context requires solved facts (0.514954ms)
+✔ feedback enters actual author/AI bundle, dispositions mandatory, corpus changes invalidate jobs (82.302578ms)
+✔ isolated quantity and missing concept emphasis are actual validation failures (1.128589ms)
+✔ math-looking plain text cannot silently compile; reviewed prose exceptions remain possible (1.74552ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 628.686894

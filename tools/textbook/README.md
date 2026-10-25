@@ -37,3 +37,7 @@ python -m unittest discover -s tools/textbook/tests -p '*_test.py'
 ## 外部資産
 
 Fraction.jsの版・著作者・MITライセンスはnode_modules/fraction.js/LICENSEとlockfileで追跡。Pandoc/texmathは制作時の外部CLIで、アプリbundleへコピーしない。調査commit・license表示・参考ファイルはWorkのREFERENCE_CODE_SOURCES.json、採用境界はTHIRD_PARTY_REFERENCES.md参照。
+
+## 一問の解法・新形式の入口
+
+`solution/1` / `production-ir/2` の opt-in、C/Rへの配置、SymPy環境、可視先行監査、学習文脈、四幅操作試験は [SOLUTION_PIPELINE.md](SOLUTION_PIPELINE.md)。旧N07等のIR/readerは従来の経路を使う。

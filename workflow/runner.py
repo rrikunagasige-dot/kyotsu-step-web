@@ -6,6 +6,7 @@ from production import ai_request,implementation_manifest
 from store import digest
 
 OPERATIONS={'S03':'coverage','S06':'solve','S08':'teaching-candidates','S09':'teaching-candidates','S10':'blank-candidates','S11':'verify-ir','S12':'verify-ir','S13':'figures','S14':'verify-ir','S16':'visible-snapshots','S18':'compile-ir'}
+OPERATIONS.update({'U01':'research-manifest','U02':'research-analysis','U03':'research-patterns','U04':'solution-validate','U05':'interaction-plan','U06':'render-solution','U07':'solution-review'})
 
 def code_operation(rt,work,nid,inputs):
     state=rt.state(work)
@@ -21,6 +22,11 @@ def code_operation(rt,work,nid,inputs):
         p=file(rt.root,inputs['sourcePath']);out=rt.store.root/'source-import.json'
         proc=subprocess.run([sys.executable,str(rt.root/'tools/textbook/source/import-word.py'),str(p),'--out',str(out),*(['--unit',inputs['unit']] if inputs.get('unit') else [])],cwd=rt.root,capture_output=True,text=True)
         return {'status':'PASS' if proc.returncode==0 else 'FAIL','sourceIndex':json.loads(out.read_text()) if proc.returncode==0 else None,'stderr':proc.stderr}
+    if nid=='U00':
+        p=file(rt.root,inputs['sourcePath'])
+        proc=subprocess.run([sys.executable,str(rt.root/'tools/textbook/research/extract.py')],input=json.dumps({'path':str(p),'sourceId':inputs['sourceId'],'engine':inputs.get('engine','native')}),cwd=rt.root,capture_output=True,text=True,timeout=120)
+        try:return json.loads(proc.stdout)
+        except ValueError:return {'status':'FAIL','reason':'RESEARCH_EXTRACT_OUTPUT','stderr':proc.stderr}
     if nid in OPERATIONS:
         proc=subprocess.run(['node',str(rt.root/'tools/textbook/operations.mjs'),OPERATIONS[nid]],input=json.dumps(inputs),cwd=rt.root,capture_output=True,text=True)
         try:result=json.loads(proc.stdout)
@@ -39,6 +45,10 @@ def code_operation(rt,work,nid,inputs):
         symbols=inputs['symbols'];ids=[s['id'] for s in symbols]
         return {'status':'PASS' if len(ids)==len(set(ids)) and all(s.get('definitionRef') and s.get('scope') for s in symbols) else 'FAIL','knowledgeLedger':symbols}
     if nid=='S07':
+        if inputs.get('kind')=='solution':
+            proc=subprocess.run(['node',str(rt.root/'tools/textbook/operations.mjs'),'solution-validate'],input=json.dumps(inputs),capture_output=True,text=True,cwd=rt.root,timeout=30)
+            try:return json.loads(proc.stdout)
+            except ValueError:return {'status':'FAIL','reason':'SOLUTION_ADAPTER_OUTPUT','stderr':proc.stderr}
         if inputs.get('kind')=='polynomial':
             proc=subprocess.run([sys.executable,str(rt.root/'tools/textbook/solver/legacy-polynomial.py')],input=json.dumps(inputs),capture_output=True,text=True,cwd=rt.root)
             return json.loads(proc.stdout) if proc.returncode==0 else {'status':'FAIL','stderr':proc.stderr}

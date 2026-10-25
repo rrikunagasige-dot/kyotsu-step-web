@@ -1,0 +1,10 @@
+{
+  "proposal": "P001",
+  "proposalDocxSHA256": "4c2a9ba9fcbd3cec441cc60dd9146f4370af519b9600d0a8e98011bc6382a63c",
+  "proposalTextSHA256": "8f5db9263ba9162a9f3a64997ecbbc9f4117d76658d39ce4fd0a7a83ba6a80f1",
+  "quote": "いいよじゃ作成よろしく",
+  "source_ref": "current-conversation:approval-after-24-page-proposal",
+  "verification_level": "conversation_transcribed",
+  "scope": "workflow infrastructure T01-T10; representative fixtures; no new material acceptance",
+  "qualityLabel": null
+}

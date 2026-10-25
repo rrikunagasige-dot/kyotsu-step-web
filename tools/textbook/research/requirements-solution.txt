@@ -1,0 +1,2 @@
+sympy==1.14.0
+# Optional native positioned PDF import: PyMuPDF. Docling remains a separately evaluated adapter.

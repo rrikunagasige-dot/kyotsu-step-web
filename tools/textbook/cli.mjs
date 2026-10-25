@@ -12,6 +12,7 @@ import { runStage } from './jobs.mjs';
 import { prepareProduction,importProductionResponse,python as productionPython } from './production.mjs';
 import { validateIR,compileIR } from './ir/index.mjs';
 import { implementationFingerprint } from './fingerprint.mjs';
+import {operate} from './operations.mjs';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'../..');
 const fingerprint=()=>implementationFingerprint(resolve(root,'tools/textbook'));
 export function options(args){const [command,...rest]=args;const opts={};for(let i=0;i<rest.length;i++){invariant(rest[i].startsWith('--'),'named options required');const key=rest[i].slice(2);invariant(!Object.hasOwn(opts,key),'duplicate option');opts[key]=rest[i+1]&&!rest[i+1].startsWith('--')?rest[++i]:true;}return {command,opts};}
@@ -25,9 +26,12 @@ function main(){
   else if(operation==='import-ai')result=importProductionResponse(readJSON(opts.request),readJSON(opts.response));
   else if(operation==='verify')result=validateIR(readJSON(opts.input));
   else if(operation==='compile')result=compileIR(readJSON(opts.input));
+  else if(['research-manifest','research-analysis','research-patterns','solution-validate','interaction-plan','render-solution','solution-review'].includes(operation))result=operate(operation,readJSON(opts.input));
   else result=productionPython(operation,readJSON(opts.input),{out:opts.out?safeOutput(opts.out):undefined});
   if(opts.out&&operation!=='finetune')writeJSON(safeOutput(opts.out),result);
-  console.log(JSON.stringify({command,operation,status:result.status??'PASS',inputHash:result.inputHash}));return;
+  console.log(JSON.stringify({command,operation,status:result.status??'PASS',inputHash:result.inputHash}));
+  if(['FAIL','UNSUPPORTED'].includes(result.status))process.exitCode=1;
+  return;
  }
  else if(command==='resume'){const job=readJSON(opts.job);const item=job.stages[job.lastStage];invariant(item,'no stage to resume');if(item.status==='FAIL'){invariant(item.commandArgs&&item.commandArgs[0]!=='resume','resume command missing');const r=spawnSync(process.execPath,[fileURLToPath(import.meta.url),...item.commandArgs],{stdio:'inherit'});process.exitCode=r.status??1;return;}result={status:'PASS',resumeStage:job.lastStage,stageStatus:item.status};}
  else if(command==='inspect'){const out=safeOutput(opts.out,{source:true});invariant(typeof opts.source==='string','--source required');const r=spawnSync('python',[resolve(root,'tools/textbook/source/import-word.py'),opts.source,'--unit','N07','--out',out],{encoding:'utf8'});invariant(r.status===0,r.stderr||'source importer failed');result=readJSON(out);}

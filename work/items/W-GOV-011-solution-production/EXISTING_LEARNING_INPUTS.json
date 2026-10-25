@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "inputs": [
+    {
+      "path": "work/items/W-MATH-035-choice-order-factor-audit/MODEL_RESULT_CORRECTED.json",
+      "sha256": "95e3dc71deba66a5aec2a18ac229ba00b3600bcc51c49a74183c62097b0f4a39"
+    }
+  ],
+  "disposition": "REUSE_WITH_EXISTING_PROVENANCE",
+  "newTrainingRun": false,
+  "newDimensions": "OFFLINE_ONLY; insufficient scoped two-class data",
+  "source": "W-MATH-035 WORK.md and corrected model result; no new quality labels"
+}

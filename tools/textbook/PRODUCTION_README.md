@@ -67,3 +67,7 @@ python tools/textbook/production_cli.py predict < prediction-request.json > pred
 具体教材の設計承認→内部QA→既存release経路→実配信source確認→直接URL。旧画像票の承認待ち・公開再許可は復活させない。公開操作が未実施ならNEEDS_EXTERNAL_OPERATIONとして止まり、URL queryだけで配信版を判定しない。
 
 P-004の統合実装は教材本文・元図・ID・進捗を変更せず、N07の六指摘もOPEN。次の教材制作では、この基盤から具体設計・実修正・実UI検査・公開へ進む。
+
+## solution/1 の追加
+
+作成・修正の入口は変えず、新形式をplanでopt-inする。具体的なCODE/AI/USER分担、工程配置、実行契約、厳密計算の範囲、任意抽出器、学習と棄権、fixture検査は [SOLUTION_PIPELINE.md](SOLUTION_PIPELINE.md)。旧IR・教材データ・受入状態は自動変換しない。

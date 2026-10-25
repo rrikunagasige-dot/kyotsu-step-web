@@ -1,0 +1,608 @@
+{
+  "schemaVersion": "production-ir/2",
+  "unitId": "fixture-square",
+  "sourceHash": "59fba59bdec97cea269d49aac153913a6ac7ee1af69fd72eb081b63045b8f27f",
+  "sourceBlocks": [
+    {
+      "id": "fixture-square-source",
+      "kind": "authored-fixture"
+    }
+  ],
+  "coverage": [
+    {
+      "sourceId": "fixture-square-source",
+      "stepIds": [
+        "fixture-square-step0",
+        "fixture-square-step1",
+        "fixture-square-step2"
+      ],
+      "disposition": "taught",
+      "reason": "全変形を実装試験で追跡する"
+    }
+  ],
+  "problems": [
+    {
+      "id": "fixture-square-problem",
+      "title": "平方完成する",
+      "prompt": [
+        {
+          "type": "text",
+          "id": "fixture-square-prompt",
+          "text": "次の問題を、一つの式の流れとして解こう。"
+        }
+      ],
+      "conditions": [],
+      "goal": "平方完成する",
+      "layout": "calculation",
+      "graph": {
+        "schemaVersion": "solution-graph/1",
+        "id": "fixture-square-graph",
+        "variable": "x",
+        "parameters": [],
+        "initialFacts": [
+          "arithmetic",
+          "order-addition",
+          "positive-division",
+          "square-nonnegative"
+        ],
+        "givens": [
+          {
+            "id": "fixture-square-given",
+            "statement": {
+              "kind": "expression",
+              "expression": {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "power",
+                    "base": {
+                      "kind": "symbol",
+                      "name": "x"
+                    },
+                    "exponent": 2
+                  },
+                  {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "6",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "symbol",
+                        "name": "x"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "rational",
+                    "n": "5",
+                    "d": "1"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "rootStateId": "fixture-square-s0",
+        "goalStateIds": [
+          "fixture-square-s3"
+        ],
+        "states": [
+          {
+            "id": "fixture-square-s0",
+            "statement": {
+              "kind": "expression",
+              "expression": {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "power",
+                    "base": {
+                      "kind": "symbol",
+                      "name": "x"
+                    },
+                    "exponent": 2
+                  },
+                  {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "6",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "symbol",
+                        "name": "x"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "rational",
+                    "n": "5",
+                    "d": "1"
+                  }
+                ]
+              }
+            },
+            "activeVariable": "x",
+            "fixedParameters": [],
+            "facts": []
+          },
+          {
+            "id": "fixture-square-s1",
+            "statement": {
+              "kind": "expression",
+              "expression": {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "power",
+                    "base": {
+                      "kind": "symbol",
+                      "name": "x"
+                    },
+                    "exponent": 2
+                  },
+                  {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "6",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "symbol",
+                        "name": "x"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "rational",
+                    "n": "9",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "-1",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "rational",
+                        "n": "9",
+                        "d": "1"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "rational",
+                    "n": "5",
+                    "d": "1"
+                  }
+                ]
+              }
+            },
+            "activeVariable": "x",
+            "fixedParameters": [],
+            "facts": [
+              "fixture-square-fact1"
+            ]
+          },
+          {
+            "id": "fixture-square-s2",
+            "statement": {
+              "kind": "expression",
+              "expression": {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "power",
+                    "base": {
+                      "kind": "add",
+                      "args": [
+                        {
+                          "kind": "symbol",
+                          "name": "x"
+                        },
+                        {
+                          "kind": "rational",
+                          "n": "3",
+                          "d": "1"
+                        }
+                      ]
+                    },
+                    "exponent": 2
+                  },
+                  {
+                    "kind": "rational",
+                    "n": "-9",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "n": "5",
+                    "d": "1"
+                  }
+                ]
+              }
+            },
+            "activeVariable": "x",
+            "fixedParameters": [],
+            "facts": [
+              "fixture-square-fact2"
+            ]
+          },
+          {
+            "id": "fixture-square-s3",
+            "statement": {
+              "kind": "expression",
+              "expression": {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "power",
+                    "base": {
+                      "kind": "add",
+                      "args": [
+                        {
+                          "kind": "symbol",
+                          "name": "x"
+                        },
+                        {
+                          "kind": "rational",
+                          "n": "3",
+                          "d": "1"
+                        }
+                      ]
+                    },
+                    "exponent": 2
+                  },
+                  {
+                    "kind": "rational",
+                    "n": "-4",
+                    "d": "1"
+                  }
+                ]
+              }
+            },
+            "activeVariable": "x",
+            "fixedParameters": [],
+            "facts": [
+              "fixture-square-fact3"
+            ]
+          }
+        ],
+        "transitions": [
+          {
+            "id": "fixture-square-e0",
+            "from": "fixture-square-s0",
+            "to": "fixture-square-s1",
+            "requires": [],
+            "produces": [
+              "fixture-square-fact1"
+            ],
+            "basisRefs": [
+              "arithmetic"
+            ],
+            "ruleId": "rewrite"
+          },
+          {
+            "id": "fixture-square-e1",
+            "from": "fixture-square-s1",
+            "to": "fixture-square-s2",
+            "requires": [
+              "fixture-square-fact1"
+            ],
+            "produces": [
+              "fixture-square-fact2"
+            ],
+            "basisRefs": [
+              "arithmetic"
+            ],
+            "ruleId": "rewrite"
+          },
+          {
+            "id": "fixture-square-e2",
+            "from": "fixture-square-s2",
+            "to": "fixture-square-s3",
+            "requires": [
+              "fixture-square-fact2"
+            ],
+            "produces": [
+              "fixture-square-fact3"
+            ],
+            "basisRefs": [
+              "arithmetic"
+            ],
+            "ruleId": "rewrite"
+          }
+        ]
+      },
+      "steps": [
+        {
+          "id": "fixture-square-step0",
+          "transitionId": "fixture-square-e0",
+          "sourceRefs": [
+            "fixture-square-source"
+          ],
+          "purpose": [
+            {
+              "type": "text",
+              "id": "fixture-square-step0-purpose",
+              "text": "二乗の形を作るため、必要な定数を足し、同じ定数を引く。"
+            }
+          ],
+          "reason": [
+            {
+              "type": "text",
+              "id": "fixture-square-step0-reason",
+              "text": "同じ数を足して引くので、式の値は変わらない。"
+            }
+          ],
+          "afterText": [
+            {
+              "type": "text",
+              "id": "fixture-square-step0-after",
+              "text": "平方の公式で、最初の三つの項をまとめる。"
+            }
+          ],
+          "promptParts": [],
+          "detail": [],
+          "numberId": "fixture-square-step0-equation",
+          "slotTargets": [
+            {
+              "id": "fixture-square-step0-slot0",
+              "interactionId": "fixture-square-answer0",
+              "label": "A",
+              "path": "expression.args.2"
+            },
+            {
+              "id": "fixture-square-step0-slot1",
+              "interactionId": "fixture-square-answer0",
+              "label": "A",
+              "path": "expression.args.3.args.1"
+            }
+          ],
+          "interaction": {
+            "id": "fixture-square-answer0",
+            "learningAction": "calculation",
+            "learnerDecision": "二乗の形を作るため、必要な定数を足し、同じ定数を引く。",
+            "availableFacts": [
+              "arithmetic",
+              "order-addition",
+              "positive-division",
+              "square-nonnegative"
+            ],
+            "withheldKnowledge": "次の式を成立させる値",
+            "nextUse": "平方の公式で、最初の三つの項をまとめる。",
+            "expected": {
+              "kind": "rational",
+              "n": "9",
+              "d": "1"
+            },
+            "choices": [
+              {
+                "id": "fixture-square-answer0-c0",
+                "value": {
+                  "kind": "rational",
+                  "n": "9",
+                  "d": "1"
+                },
+                "feedback": [
+                  {
+                    "type": "text",
+                    "id": "fixture-square-answer0-feedback0",
+                    "text": "同じ数を足して引くので、式の値は変わらない。"
+                  }
+                ]
+              },
+              {
+                "id": "fixture-square-answer0-c1",
+                "value": {
+                  "kind": "rational",
+                  "n": "3",
+                  "d": "1"
+                },
+                "feedback": [
+                  {
+                    "type": "text",
+                    "id": "fixture-square-answer0-feedback1",
+                    "text": "操作する対象と、直前の式を確かめよう。"
+                  }
+                ],
+                "misconception": "対象の符号または計算の取り違え"
+              },
+              {
+                "id": "fixture-square-answer0-c2",
+                "value": {
+                  "kind": "rational",
+                  "n": "6",
+                  "d": "1"
+                },
+                "feedback": [
+                  {
+                    "type": "text",
+                    "id": "fixture-square-answer0-feedback2",
+                    "text": "操作する対象と、直前の式を確かめよう。"
+                  }
+                ],
+                "misconception": "対象の符号または計算の取り違え"
+              }
+            ],
+            "hints": [
+              [
+                {
+                  "type": "text",
+                  "id": "fixture-square-answer0-hint0",
+                  "text": "今の目的と、直前の式をもう一度確かめよう。"
+                }
+              ]
+            ],
+            "supportPolicy": {
+              "level": "strong",
+              "nextProblemAction": "類題では操作から自分で組み立てる"
+            }
+          }
+        },
+        {
+          "id": "fixture-square-step1",
+          "transitionId": "fixture-square-e1",
+          "sourceRefs": [
+            "fixture-square-source"
+          ],
+          "purpose": [
+            {
+              "type": "text",
+              "id": "fixture-square-step1-purpose",
+              "text": "平方の公式を使って、二乗の形にまとめる。"
+            }
+          ],
+          "reason": [
+            {
+              "type": "text",
+              "id": "fixture-square-step1-reason",
+              "text": "一次の項の係数から、括弧の中の定数が決まる。"
+            }
+          ],
+          "afterText": [
+            {
+              "type": "text",
+              "id": "fixture-square-step1-after",
+              "text": "残った定数項を計算する。"
+            }
+          ],
+          "promptParts": [],
+          "detail": [],
+          "numberId": "fixture-square-step1-equation",
+          "slotTargets": [],
+          "noBlankReason": "この段階は新しい形と根拠を説明する完成例として提示する"
+        },
+        {
+          "id": "fixture-square-step2",
+          "transitionId": "fixture-square-e2",
+          "sourceRefs": [
+            "fixture-square-source"
+          ],
+          "purpose": [
+            {
+              "type": "text",
+              "id": "fixture-square-step2-purpose",
+              "text": "定数項をまとめ、平方完成した式を得る。"
+            }
+          ],
+          "reason": [
+            {
+              "type": "text",
+              "id": "fixture-square-step2-reason",
+              "text": "二乗の部分はそのままにして定数項を整理する。"
+            }
+          ],
+          "afterText": [
+            {
+              "type": "text",
+              "id": "fixture-square-step2-after",
+              "text": "この形から軸と頂点を読み取れる。"
+            }
+          ],
+          "promptParts": [],
+          "detail": [],
+          "numberId": "fixture-square-step2-equation",
+          "slotTargets": [
+            {
+              "id": "fixture-square-step2-slot0",
+              "interactionId": "fixture-square-answer2",
+              "label": "C",
+              "path": "expression.args.1"
+            }
+          ],
+          "interaction": {
+            "id": "fixture-square-answer2",
+            "learningAction": "calculation",
+            "learnerDecision": "定数項をまとめ、平方完成した式を得る。",
+            "availableFacts": [
+              "arithmetic",
+              "order-addition",
+              "positive-division",
+              "square-nonnegative"
+            ],
+            "withheldKnowledge": "次の式を成立させる値",
+            "nextUse": "この形から軸と頂点を読み取れる。",
+            "expected": {
+              "kind": "rational",
+              "n": "-4",
+              "d": "1"
+            },
+            "choices": [
+              {
+                "id": "fixture-square-answer2-c0",
+                "value": {
+                  "kind": "rational",
+                  "n": "-4",
+                  "d": "1"
+                },
+                "feedback": [
+                  {
+                    "type": "text",
+                    "id": "fixture-square-answer2-feedback0",
+                    "text": "二乗の部分はそのままにして定数項を整理する。"
+                  }
+                ]
+              },
+              {
+                "id": "fixture-square-answer2-c1",
+                "value": {
+                  "kind": "rational",
+                  "n": "4",
+                  "d": "1"
+                },
+                "feedback": [
+                  {
+                    "type": "text",
+                    "id": "fixture-square-answer2-feedback1",
+                    "text": "操作する対象と、直前の式を確かめよう。"
+                  }
+                ],
+                "misconception": "対象の符号または計算の取り違え"
+              },
+              {
+                "id": "fixture-square-answer2-c2",
+                "value": {
+                  "kind": "rational",
+                  "n": "-14",
+                  "d": "1"
+                },
+                "feedback": [
+                  {
+                    "type": "text",
+                    "id": "fixture-square-answer2-feedback2",
+                    "text": "操作する対象と、直前の式を確かめよう。"
+                  }
+                ],
+                "misconception": "対象の符号または計算の取り違え"
+              }
+            ],
+            "hints": [
+              [
+                {
+                  "type": "text",
+                  "id": "fixture-square-answer2-hint0",
+                  "text": "今の目的と、直前の式をもう一度確かめよう。"
+                }
+              ]
+            ],
+            "supportPolicy": {
+              "level": "strong",
+              "nextProblemAction": "類題では操作から自分で組み立てる"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

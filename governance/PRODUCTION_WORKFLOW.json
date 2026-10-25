@@ -38,19 +38,19 @@
   "contentDesignApprovalRequired": true,
   "modelStatus": "OFFLINE_ONLY",
   "newLessonAccepted": false,
-  "protectedAppSource": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
-  "adoption": "N09/N10 public source retained; user feedback captured and full bounded audit produced W035 proposal. No learner implementation/publication/model fit in this audit.",
+  "protectedAppSource": "fa0eff271a97940fad08d83960ae50faeabc81b9",
+  "adoption": "Approved seven-point N09/N10 repair publicly verified; scoped app acceptance remains pending.",
   "legacyVersions": [
     "production/1",
     "legacy/1"
   ],
   "repairProposal": "W-MATH-035/P-001",
-  "previousPublishedAppSource": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
+  "previousPublishedAppSource": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
   "acceptedFirstTitle": "22bc43ba53fa87bb85e82e18a25db13a5c8a485c",
   "publication": {
-    "runId": 40168673785,
-    "workflowSHA": "c422776a3db277ea5bb3e5166ec290df191fa6b8",
-    "sourceSHA": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+    "runId": 40172534338,
+    "workflowSHA": "3630df565c0f30f770af2238fa34841ca0528df6",
+    "sourceSHA": "fa0eff271a97940fad08d83960ae50faeabc81b9",
     "status": "success",
     "sourceVerified": true,
     "userAccepted": false,
@@ -59,8 +59,8 @@
       "n10"
     ],
     "urls": {
-      "n09": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=cb7d30bf#/learning/textbook/math-numbers-expressions-n09",
-      "n10": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=cb7d30bf#/learning/textbook/math-numbers-expressions-n10"
+      "n09": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=fa0eff27#/learning/textbook/math-numbers-expressions-n09",
+      "n10": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=fa0eff27#/learning/textbook/math-numbers-expressions-n10"
     }
   },
   "metadataGovernanceScope": "Whole-repository Markdown metadata checker is not claimed PASS; immutable approved N08 design and legacy metadata limits are recorded in W-MATH-033/FINDINGS.md. N07 acceptance remains scoped to W-MATH-032.",
@@ -90,7 +90,7 @@
     "branch": "work/n09-n10-guided-design-20261025"
   },
   "sharedRuntimeStore": "work/items/W-MATH-032-n07-semantic-repair/runtime",
-  "publishedAppSource": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+  "publishedAppSource": "fa0eff271a97940fad08d83960ae50faeabc81b9",
   "acceptedUnits": {
     "n07": {
       "sourceSHA": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
@@ -110,25 +110,30 @@
   "currentWork": {
     "id": "W-MATH-035",
     "proposal": "P-001",
-    "status": "PROPOSED",
-    "node": "R05_APPROVAL@n09",
+    "status": "VERIFYING",
+    "node": "G3_FINAL@n09",
     "blocks": [
       "n09",
       "n10"
     ],
     "branch": "work/n0910-choice-order-factor-audit-20261025",
-    "learnerSourceSHA": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+    "learnerSourceSHA": "fa0eff271a97940fad08d83960ae50faeabc81b9",
     "parent": "W-MATH-034",
     "userAccepted": false,
-    "concreteDesignApproved": false
+    "concreteDesignApproved": true,
+    "nodes": [
+      "G3_FINAL@n09",
+      "G3_FINAL@n10"
+    ],
+    "approvalEvent": "W035-P001-APPROVED-20261025"
   },
   "currentLearnerVerification": {
-    "sourceSHA": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
-    "runId": 40168250606,
-    "publicationRunId": 40168673785,
+    "sourceSHA": "fa0eff271a97940fad08d83960ae50faeabc81b9",
+    "runId": 40172128752,
+    "publicationRunId": 40172534338,
     "conclusion": "success",
     "learnerTests": 620,
-    "n09n10Tests": 9,
+    "n09n10Tests": 8,
     "authoringChecks": 39,
     "browserWidths": [
       320,
@@ -138,6 +143,8 @@
     ],
     "answers": 81,
     "wrongChoicesPerWidth": 201,
+    "targetedDisplayReport": true,
+    "resize": true,
     "legacyMigrations": {
       "n09": [
         1,
@@ -188,6 +195,9 @@
     ],
     "sourceSHA": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
     "additionalAIFindings": 5,
-    "trained": false
+    "trained": false,
+    "repairWork": "W-MATH-035",
+    "repairSourceSHA": "fa0eff271a97940fad08d83960ae50faeabc81b9",
+    "internalRepairStatus": "VERIFIED_AWAITING_SCOPED_APP_EVALUATION"
   }
 }

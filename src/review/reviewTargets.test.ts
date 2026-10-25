@@ -13,7 +13,7 @@ import { mathNumbersN05Unit as current_mathNumbersN05Unit } from '../data/textbo
 import { mathNumbersN06Unit as current_mathNumbersN06Unit } from '../data/textbook/math/numbers/n06Lesson'
 // Legacy review slices retain their original v3 source; current N07 is independently tested.
 import { mathNumbersN07Unit } from '../data/textbook/math/numbers/n07LegacyLesson'
-import { mathNumbersN08Unit } from '../data/textbook/math/numbers/n08Lesson'
+import { mathNumbersN08Unit } from '../test/n08Legacy'
 import { activeReviewMarkIds, extractReviewSection, reviewTargets as current_reviewTargets } from './reviewTargets'
 const mathNumbersN01Unit = firstThemeBaseline(current_mathNumbersN01Unit)
 

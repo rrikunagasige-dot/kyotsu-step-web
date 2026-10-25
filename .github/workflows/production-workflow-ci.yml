@@ -1,7 +1,7 @@
 name: Production workflow C/R integration P004
 on:
   push:
-    branches: ['work/production-workflow-p003-20261024', 'work/workflow-cr-integration-p004-20261024', 'work/n07-semantic-repair-proposal-20261025']
+    branches: ['work/production-workflow-p003-20261024', 'work/workflow-cr-integration-p004-20261024', 'work/n07-semantic-repair-proposal-20261025', 'work/n08-absolute-value-design-20261025']
   workflow_dispatch:
 permissions:
   contents: read
@@ -39,6 +39,9 @@ jobs:
         run: pnpm exec vitest run --exclude src/data/physicsTaxonomy.test.ts --exclude src/domain/questionSchema.test.ts
       - run: pnpm exec eslint src/components/textbook/SemanticReading.tsx src/components/textbook/SemanticReading.test.tsx src/domain/textbookSchema.ts --max-warnings=0
       - run: node tools/textbook/integrate-n07.mjs --check
+      - name: N08 approved materialization, migration and reader checks
+        if: contains(github.ref, 'n08-absolute-value')
+        run: pnpm exec vitest run --config work/items/W-MATH-033-n08-absolute-value/vitest.config.mjs
       - run: pnpm run build
       - run: pnpm exec playwright install --with-deps chromium
       - name: Protected learner UI at four widths
@@ -58,6 +61,15 @@ jobs:
       - name: Presentation role diagram tabs and text bounds
         if: contains(github.ref, 'n07-semantic-repair')
         run: node work/items/W-MATH-032-n07-semantic-repair/presentation/verify_presentation.mjs
+      - name: N08 full learner flow at four widths
+        if: contains(github.ref, 'n08-absolute-value')
+        run: node work/items/W-MATH-033-n08-absolute-value/verify_app.mjs
+      - uses: actions/upload-artifact@v4
+        if: always() && contains(github.ref, 'n08-absolute-value')
+        with:
+          name: n08-learner-evidence
+          path: /tmp/n08-browser
+          if-no-files-found: warn
       - uses: actions/upload-artifact@v4
         if: always()
         with:

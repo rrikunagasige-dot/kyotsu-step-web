@@ -1,0 +1,181 @@
+{
+  "job": {
+    "status": "NEEDS_REVIEW",
+    "node": "R06_PATCH@n08",
+    "claimToken": "5440e8cffab143dba85ff78e128a6fa8",
+    "receipts": [
+      "f2cf7f3a0fe9e12d9e8ba74c4a27ab71231b0ec22da34b8b2f2820c58a8dee11"
+    ],
+    "aiRequest": {
+      "schemaVersion": "production/2",
+      "adoptedCorrections": [],
+      "reusableHistory": [],
+      "task": {
+        "work_id": "W-MATH-033",
+        "node": {
+          "id": "R06_PATCH@n08",
+          "stage_kind": "R06_PATCH",
+          "contract_kind": "R06_PATCH",
+          "actor": "TOOL",
+          "depends_on": [
+            "R05_APPROVAL@n08"
+          ],
+          "required": [],
+          "block": "n08",
+          "release_unit": "n08",
+          "watch": "integration",
+          "phase": "pre-design",
+          "priority": 0,
+          "source_refs": [
+            "src/data/textbook/math/numbers/n08Lesson.ts",
+            "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+            "src/pages/TextbookUnitPage.tsx",
+            "src/domain/textbook.ts",
+            "public/assets/math/textbook/numbers/n08-f01.png",
+            "work/items/W-MATH-033-n08-absolute-value/evidence/SOURCE_INDEX.json"
+          ],
+          "protected_refs": [
+            "src/data/textbook/math/numbers/firstSectionTeaching.json",
+            "src/data/textbook/math/numbers/n07Authored.json",
+            "src/components/textbook/N07ReadingFlow.tsx",
+            "src/components/textbook/n07-reading.css"
+          ],
+          "approval_scope_ref": "proposal",
+          "capability_requests": [
+            "ir.compile"
+          ],
+          "required_code_receipts": [
+            "ir.compile"
+          ],
+          "required_ai_receipts": []
+        },
+        "task_id": "c55680cf1bb363b021191e0569c874ad09ec0874ff44696ba6bdf6527bd32e2d",
+        "input_hash": "c0a7f3258e6c2e93d416da7ee64aa4ef83990d6465913ed690b247a4b678bb58",
+        "source_sha": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+        "candidate_sha": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+        "rules": {
+          "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
+          "governance/REVIEW_POLICY.json": "a71148f007a79b124385c7645e6bc01564bfa02b12152174883543f31f6ce72d",
+          "governance/WORK_SYSTEM.md": "37b0b0e0fecc79d7c067e17ec8dbeb53d53863f04369171d65ef652a176eb093",
+          "memory/LESSONS/MATH_TYPESETTING_GROUPS.md": "8047831b13d22ffb773f68e23ab788a3490e4b69ebbf5d5d357f9f786ed53d0a",
+          "subjects/mathematics/textbook/SPEC.md": "a36959ae6f951e855c3e60d280d02a0f20c6e23185d9eb90b17ffbc889c63277"
+        },
+        "proposal": {
+          "contentDesignHash": "32f20c559bd407c777910c9ef8fb30989c31bf0ee822b5a5242f0cd7f71d318b",
+          "hash": "6a109d2c893b221900f8e09ae060cf8d05e2c2652810ff7303445cd8ff574637",
+          "id": "W-MATH-033/P-001"
+        },
+        "scope": {
+          "paths": [
+            "src/data/textbook/math/numbers/n08Lesson.ts",
+            "src/data/textbook/math/numbers/n08Authored.json",
+            "src/components/textbook/N08ReadingFlow.tsx",
+            "src/components/textbook/n08-reading.css",
+            "src/pages/TextbookUnitPage.tsx",
+            "src/domain/textbook.ts",
+            "work/items/W-MATH-033-n08-absolute-value/"
+          ],
+          "preserve": [
+            "src/data/textbook/math/numbers/firstSectionTeaching.json",
+            "src/data/textbook/math/numbers/n07Authored.json",
+            "src/components/textbook/N07ReadingFlow.tsx",
+            "src/components/textbook/n07-reading.css"
+          ]
+        },
+        "source_manifest": {
+          "public/assets/math/textbook/numbers/n08-f01.png": "817ab6ad3afb71b009cc95796e267d0818a104ecf19864c55c2ba0afbf29da73",
+          "src/data/textbook/math/numbers/n08Lesson.ts": "9cc25fb6e4c3ef3889780dea323bd98657e5dbb924bc730975375bc9adba96f9",
+          "src/data/textbook/math/numbers/newBatchGuidedSteps.ts": "501efef29948458d78c7665695c59d707ca67291daab372fa16efb5d8f15ef72",
+          "src/domain/textbook.ts": "91e354d7df28591ec95b842fc4013798c1fbd5595a095871cb0827a8d00eb466",
+          "src/pages/TextbookUnitPage.tsx": "79c2aa91ddedb0f904343852d807256c34def0f575cab72c1491332601cdf741",
+          "work/items/W-MATH-033-n08-absolute-value/evidence/SOURCE_INDEX.json": "31e49387d8fa565a45ab06f2452e052f42c6a53296449816750886ef03d5369c"
+        },
+        "previous_results": {
+          "R05_APPROVAL@n08": {
+            "actor": "user-record/conversation_transcribed",
+            "artifact": "8e740b9bca757ada0bad49b93b4ea013885244df6951d70a680d657a4e9c97f4",
+            "input_hash": "cef9e37dadaf72ad6cffb7ab37e04eb02e1ad712b4e0741d935ccfee2411457d",
+            "node": "R05_APPROVAL@n08",
+            "verdict": "PASS"
+          }
+        },
+        "do_not_touch": [
+          "src/data/textbook/math/numbers/firstSectionTeaching.json",
+          "src/data/textbook/math/numbers/n07Authored.json",
+          "src/components/textbook/N07ReadingFlow.tsx",
+          "src/components/textbook/n07-reading.css"
+        ],
+        "completion_is_not_semantic_proof": true
+      },
+      "context": {
+        "corpusHash": "32ebc4d28733a4601bf2555bb099aed40ed6ba73e4fae26bf14875c656eacf2b",
+        "featureSchema": "learner-visible-json/2",
+        "modelHash": null,
+        "rulesHash": "eaf2a2be47e890a4858225c05d996f35ab815b58a0d5786a27c2b9090c08c46b"
+      },
+      "dependencies": {
+        "R05_APPROVAL@n08": {
+          "evidence_refs": [],
+          "user_event": "W033-N08-P001-APPROVED-20261025",
+          "verdict": "PASS"
+        }
+      },
+      "constraints": [
+        "原資料・既習・可視状態だけを根拠にする",
+        "作成者の自己評価を監査根拠にしない",
+        "未解決は未解決と記録",
+        "承認を生成しない"
+      ],
+      "requestHash": "553107bcaab49704e74b6c65be5d730ab0727d9d1ca282c86b3f5027f1f4b4b2"
+    },
+    "automaticAcceptance": false
+  },
+  "proof": "05ce23f983196d4a5661625dbf9ed254fa69e494d523ae0b8c2e28b679b3fc7d",
+  "evidence_refs": [
+    "2e0dff1d-5ea6-4f08-befa-742a320f9e16",
+    "fb312d93-d651-4f71-b77d-a2ad740d12f2",
+    "310eed57-646c-4fe1-b5d2-ef569d2145e9",
+    "db6b769d-8549-4b7b-8b4b-dcbb8be99b29",
+    "43133c09-dadd-482b-9387-372c563f3cac",
+    "a7cada18-2f62-4d06-b7ab-89443a30bd63"
+  ],
+  "files": [
+    {
+      "path": "src/data/textbook/math/numbers/n08Authored.json",
+      "before_sha256": null,
+      "after_sha256": "ec760fedcf06b613ff6d32ac9eae78c1024476650e3a25d7287141e2147d4ada",
+      "operation": "create"
+    },
+    {
+      "path": "src/data/textbook/math/numbers/n08Lesson.ts",
+      "before_sha256": "9cc25fb6e4c3ef3889780dea323bd98657e5dbb924bc730975375bc9adba96f9",
+      "after_sha256": "b3c663ad696e4a0386e527f98748ffde363e6922cbd28f52e4cf17372af5e8d6",
+      "operation": "replace"
+    },
+    {
+      "path": "src/components/textbook/N08ReadingFlow.tsx",
+      "before_sha256": null,
+      "after_sha256": "8fdd31ea5053844a88f1fcdbc7d6229d38251bc96e8d69435ced790ce55bff8b",
+      "operation": "create"
+    },
+    {
+      "path": "src/components/textbook/n08-reading.css",
+      "before_sha256": null,
+      "after_sha256": "294443569fc3afafe2876b5dc55995ea12ca3d9e3dc08d738f539378f8b26680",
+      "operation": "create"
+    },
+    {
+      "path": "src/pages/TextbookUnitPage.tsx",
+      "before_sha256": "79c2aa91ddedb0f904343852d807256c34def0f575cab72c1491332601cdf741",
+      "after_sha256": "8e26901274abf7b4f0942364072e99a47fceb0f56be8e8828e0b817ddc8565f5",
+      "operation": "replace"
+    },
+    {
+      "path": "src/domain/textbook.ts",
+      "before_sha256": "91e354d7df28591ec95b842fc4013798c1fbd5595a095871cb0827a8d00eb466",
+      "after_sha256": "c1cc5a1d2e58482412895e9935ac2eaae0c0bbbf3f432f0cfee077ae9574c154",
+      "operation": "replace"
+    }
+  ],
+  "adapter": "N08 exact approved file creation/replacement; shared Runtime journal"
+}

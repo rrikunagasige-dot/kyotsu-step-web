@@ -1,3 +1,4 @@
+import { N08ReadingFlow } from '../components/textbook/N08ReadingFlow'
 import { N07ReadingFlow } from '../components/textbook/N07ReadingFlow'
 import { typesettingEnabled } from '../data/textbook/math/typesetting'
 import { TypesetInlineMath } from '../components/textbook/TypesetFormula'
@@ -137,7 +138,9 @@ type ReadingFlowProps = {
 
 export function TextbookReadingFlow(props: ReadingFlowProps) {
   return props.unit.unitId === 'math-numbers-expressions-n07' && props.unit.revision === 4
-    ? <N07ReadingFlow {...props} /> : <LegacyTextbookReadingFlow {...props} />
+    ? <N07ReadingFlow {...props} />
+    : props.unit.unitId === 'math-numbers-expressions-n08' && props.unit.revision === 4
+      ? <N08ReadingFlow {...props} /> : <LegacyTextbookReadingFlow {...props} />
 }
 
 function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, onReviewAnswer, reviewMarks }: ReadingFlowProps) {

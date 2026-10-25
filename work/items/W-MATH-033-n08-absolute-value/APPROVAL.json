@@ -1,0 +1,24 @@
+{
+  "event": "W033-N08-P001-APPROVED-20261025",
+  "quote": "可以可以按照这个做吧",
+  "approvedCommit": "83ea55bc7633ad076d002f667d3409f0d4ab4711",
+  "proposalHash": "6a109d2c893b221900f8e09ae060cf8d05e2c2652810ff7303445cd8ff574637",
+  "contentDesignHash": "32f20c559bd407c777910c9ef8fb30989c31bf0ee822b5a5242f0cd7f71d318b",
+  "scope": {
+    "paths": [
+      "src/data/textbook/math/numbers/n08Lesson.ts",
+      "src/data/textbook/math/numbers/n08Authored.json",
+      "src/components/textbook/N08ReadingFlow.tsx",
+      "src/components/textbook/n08-reading.css",
+      "src/pages/TextbookUnitPage.tsx",
+      "src/domain/textbook.ts",
+      "work/items/W-MATH-033-n08-absolute-value/"
+    ],
+    "preserve": [
+      "src/data/textbook/math/numbers/firstSectionTeaching.json",
+      "src/data/textbook/math/numbers/n07Authored.json",
+      "src/components/textbook/N07ReadingFlow.tsx",
+      "src/components/textbook/n07-reading.css"
+    ]
+  }
+}

@@ -185,6 +185,22 @@ export function effectiveTextbookProgress(unit: TextbookUnit, progress: Textbook
   if (!progress) return undefined
   if (progress.unitRevision === unit.revision) return progress
 
+  // W-MATH-033: keep original N08 answer records; new intermediate IDs remain unanswered.
+  if (unit.unitId === 'math-numbers-expressions-n08' && unit.revision === 4
+      && progress.unitId === unit.unitId && [1, 2, 3].includes(progress.unitRevision)) {
+    const { archivedRevisions, ...archive } = progress
+    const anchors = new Set(Array.from({ length: 12 }, (_, i) => 'n08-' + String(i + 1).padStart(2, '0')))
+    return {
+      unitId: unit.unitId, unitRevision: 4,
+      startedAt: progress.startedAt, updatedAt: progress.updatedAt,
+      answers: Object.fromEntries(Object.entries(progress.answers).filter(([id]) => anchors.has(id))),
+      archivedRevisions: { ...archivedRevisions, [String(progress.unitRevision)]: archive },
+      migratedFromRevision: progress.unitRevision,
+      ...(progress.completedAt !== undefined ? { previousRevisionCompletedAt: progress.completedAt }
+        : progress.previousRevisionCompletedAt !== undefined ? { previousRevisionCompletedAt: progress.previousRevisionCompletedAt } : {}),
+    }
+  }
+
   // N07 approved v4: retain only unchanged contracts; keep the full old record recoverable.
   if (unit.unitId === 'math-numbers-expressions-n07' && unit.revision === 4
       && progress.unitId === unit.unitId && [1, 2, 3].includes(progress.unitRevision)) {

@@ -10,10 +10,10 @@ const baseline = JSON.parse(readFileSync('work/items/W-MATH-029-section-one-teac
 const units = mathTextbookUnits.filter(u=>isFirstThemeUnit(u.unitId))
 const itemIds = (blocks:readonly TextbookReadingBlock[]) => blocks.flatMap(b=>b.type==='paragraph'||b.type==='formula'?b.parts.flatMap(p=>p.type==='choice'?[p.itemId]:[]):[])
 describe('W-MATH-029 current complete section teaching edition',()=>{
-  it('covers all42 audited regions, preserves sample explanation and solved equations, and protects the remaining units outside the separately approved N07 revision',()=>{
+  it('covers all42 audited regions, preserves sample explanation and solved equations, and protects the remaining units outside the separately approved N07/N08 revisions',()=>{
     expect(units).toHaveLength(7)
     expect(Object.values(firstSectionTeachingPlans).reduce((n,p)=>n+p.auditedRegions.length,0)).toBe(42)
-    for(const current of mathTextbookUnits) if(baseline[current.unitId]&&!isFirstThemeUnit(current.unitId)&&current.unitId!=='math-numbers-expressions-n07') expect(current,current.unitId).toEqual(baseline[current.unitId])
+    for(const current of mathTextbookUnits) if(baseline[current.unitId]&&!isFirstThemeUnit(current.unitId)&&!['math-numbers-expressions-n07','math-numbers-expressions-n08'].includes(current.unitId)) expect(current,current.unitId).toEqual(baseline[current.unitId])
     const unit=units.find(u=>u.unitId.endsWith('-n01'))!
     const sample=(u:TextbookUnit)=>{const flow=u.sections[0].readingFlow;return flow.slice(flow.findIndex(b=>b.id==='marker-degree-check'))}
     const solved=(u:TextbookUnit,b:TextbookReadingBlock)=>b.type==='formula'||b.type==='paragraph'

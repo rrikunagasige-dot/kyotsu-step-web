@@ -25,6 +25,8 @@ jobs:
       VITE_BASE_PATH: '/kyotsu-step-web/'
       VITE_STORAGE_NAMESPACE: 'kyotsu-step-gate3-math-20261023'
     steps:
+      - name: Hold publication until older-revision migration is verified
+        run: exit 1
       - uses: actions/checkout@v4
         with:
           ref: 'd134c300e5e377ae9a3853fc70ae847f147fec29'

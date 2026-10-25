@@ -1,0 +1,20 @@
+{
+  "event": "W-MATH-032-P001-USER-APPROVAL",
+  "quote": "いいよ続けて",
+  "proposalHash": "ecfe20080c79ac8d8490630dafee2da92613709eae64a1ca47e626b0d7278c4a",
+  "scope": {
+    "paths": [
+      "src/components/textbook/N07ReadingFlow.tsx",
+      "src/components/textbook/SemanticReading.tsx",
+      "src/components/textbook/n07-reading.css",
+      "src/data/textbook/math/numbers/n07Authored.json",
+      "tools/textbook/",
+      "workflow/",
+      "work/items/W-MATH-032-n07-semantic-repair/"
+    ],
+    "preserve": [
+      "src/data/textbook/math/numbers/firstSectionTeaching.json"
+    ]
+  },
+  "meaning": "Design approval, not learner acceptance"
+}

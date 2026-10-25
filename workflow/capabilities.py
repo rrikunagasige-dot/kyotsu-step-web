@@ -51,6 +51,13 @@ def run_capability(rt, work, node, capability, inputs):
     s = rt.state(work); need(capability in node['capability_requests'], '工程に未接続の機能')
     if capability=='source.import' and inputs.get('sourcePath'):
         need(inputs['sourcePath'] in (node['source_refs'] or s['plan']['source_manifest']),'宣言されたblock原資料の外を取り込まない')
+    if capability=='case.retrieve' and not s['plan'].get('simulation'):
+        request=dict(inputs.get('request',{}))
+        expected=s.get('production_context',{}).get('corpusHash')
+        need(expected and (not request.get('corpusHash') or request['corpusHash']==expected),'事例catalogの版が制作contextと違う')
+        request['corpusHash']=expected
+        request['mandatoryInputs']=s['plan'].get('correction_queue_refs',[])
+        inputs={**inputs,'request':request}
     impl = implementation_hash(rt)
     context_keys = ('corpusHash', 'modelHash', 'rulesHash', 'featureSchema') if capability in ('case.retrieve', 'ml.train') else ()
     context = {k: s.get('production_context', {}).get(k) for k in context_keys}
@@ -86,6 +93,11 @@ def run_capability(rt, work, node, capability, inputs):
         elif capability=='math.solve' and inputs.get('kind')=='argument':
             output=code_operation(rt,work,'S07',inputs)
             output.update(solutionOrigin='AI_ARGUMENT',formalProof=False)
+        elif capability in ('ir.verify','novice.audit') and node['stage_kind']=='R02_CAUSE':
+            from legacy_diagnostics import inspect
+            candidate=inputs.get('ir',inputs) if capability=='novice.audit' else inputs
+            output=inspect(rt,work,candidate,visible=capability=='novice.audit')
+            if output is None:output=code_operation(rt,work,REGISTRY[capability],inputs)
         elif capability == 'source.audit':
             complete = all(inputs.get(k) is not None for k in ('coverage', 'sourceBlocks', 'candidate'))
             output = code_operation(rt, work, 'S15', inputs) if complete else {'status': 'FAIL', 'reason': 'source audit requires coverage, sourceBlocks and candidate'}

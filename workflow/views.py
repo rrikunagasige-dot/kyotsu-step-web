@@ -15,7 +15,12 @@ def production_accepted(rt,s):
 
 def snapshot(rt,work):
     s=rt.state(work);nxt=rt.next(work);nodes=instantiate(s['plan'])
-    status='DONE' if nxt['status']=='DONE' else 'VERIFYING' if any('VERIFY' in x for x in s['results']) else 'IMPLEMENTING' if s['results'] else 'APPROVED' if rt.approval(s) else 'PROPOSED'
+    started=[n for n in nodes.values() if n['id'] in s['results'] or n['id'] in s.get('claims',{})]
+    kinds={n.get('stage_kind',n['id']) for n in started}
+    status=('DONE' if nxt['status']=='DONE' else 'BLOCKED' if nxt['status']=='BLOCKED'
+            else 'VERIFYING' if kinds.intersection({'R07_VERIFY','C08_VERIFY','T04_VERIFY'})
+            else 'IMPLEMENTING' if kinds.intersection({'R06_PATCH','C07_BUILD','T03_BUILD'})
+            else 'APPROVED' if rt.approval(s) else 'PROPOSED')
     result = {'work':work,'engine_version':VERSION,'ledger_head':rt.store.head,'work_status':status,'profile':s['plan']['profile'],'simulation':s['plan'].get('simulation',False),'candidate_sha':s['candidate_sha'],'next':nxt,'nodes':[{**n,'status':rt.node_status(s,n)} for n in nodes.values()],'pending_issues':[i for i in s['issues'].values() if not i.get('resolved_by')],'application_accepted':production_accepted(rt,s) if s['plan'].get('workflow_version') else s['plan']['profile']=='material' and rt.node_status(s,nodes['G3_FINAL'])=='PASSED'}
 
     if s['plan'].get('workflow_version') == 'production/2':

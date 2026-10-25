@@ -12,8 +12,19 @@ def main():
     elif a.operation=='seed':
         obs,decisions=user_seed(data['root']);c=curate(obs,decisions);result={'corpus':c,'examples':examples(c)}
     else:
-        from tools.textbook.ml.encode import Encoder
-        e=Encoder(data['cache'],**data.get('encoder',{}))
+        try:
+            from tools.textbook.ml.encode import Encoder
+            e=Encoder(data['cache'],**data.get('encoder',{}))
+        except (ModuleNotFoundError,FileNotFoundError) as exc:
+            if a.operation!='retrieve':raise
+            from tools.textbook.corpus.scoped_catalog import scoped_catalog
+            print(json.dumps(scoped_catalog(data,str(exc)),ensure_ascii=False));return
+        except OSError as exc:
+            # Only an explicitly local encoder with absent weights permits fallback.
+            cache=Path(data['cache'])/'hub'
+            if a.operation!='retrieve' or not data.get('encoder',{}).get('local_only') or any(cache.rglob('*.safetensors')):raise
+            from tools.textbook.corpus.scoped_catalog import scoped_catalog
+            print(json.dumps(scoped_catalog(data,str(exc)),ensure_ascii=False));return
         if a.operation=='prefetch':result=e.file_manifest()
         elif a.operation=='train':
             from tools.textbook.ml.train import train

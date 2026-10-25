@@ -44,6 +44,7 @@ class Runtime:
                 elif k=='migration_verified':
                     s['plan']=p['plan'];s['definition_hash']=p['definition_hash'];s['claims']={};s['results']={}
                     s['migration']=p
+                elif k=='materialization_bound':s['plan']=p['plan'];s['materialization']=p
                 elif k=='revised':s['plan']=p['plan'];s['revised']=True
                 elif k=='claim_reconciled':s['claims'].pop(p['node'],None)
                 elif k=='external_intent':s['external'][p['id']]=p

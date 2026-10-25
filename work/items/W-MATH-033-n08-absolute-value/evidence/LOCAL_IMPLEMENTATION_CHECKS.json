@@ -1,7 +1,7 @@
 {
   "learnerTests": 620,
-  "workTests": 6,
-  "build": "PASS_CI_40161055738",
+  "workTests": 7,
+  "build": "PASS_CI_40162373237",
   "scopedLint": "PASS",
   "protectedFiles": {
     "src/data/textbook/math/numbers/firstSectionTeaching.json": "012a17753605a42c51428f6075eb5d59a5724af0c762e0e9b598c82ad7cb871b",
@@ -12,8 +12,8 @@
     "public/assets/math/textbook/numbers/n08-f01.png": "817ab6ad3afb71b009cc95796e267d0818a104ecf19864c55c2ba0afbf29da73"
   },
   "candidateIRHash": "32f20c559bd407c777910c9ef8fb30989c31bf0ee822b5a5242f0cd7f71d318b",
-  "browser": "PENDING_CI",
+  "browser": "PASS_FOUR_WIDTHS_CI_40162373237",
   "userN08Acceptance": false,
-  "sourceSHA": "d134c300e5e377ae9a3853fc70ae847f147fec29",
+  "sourceSHA": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
   "typecheck": "PASS"
 }

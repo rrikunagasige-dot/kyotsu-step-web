@@ -19,15 +19,15 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     env:
-      CANDIDATE_SHA: 'd134c300e5e377ae9a3853fc70ae847f147fec29'
-      VITE_PREVIEW_COMMIT: 'd134c300e5e377ae9a3853fc70ae847f147fec29'
+      CANDIDATE_SHA: 'ea47dd97f7d323267281915e8d9a7bb92a8e7c03'
+      VITE_PREVIEW_COMMIT: 'ea47dd97f7d323267281915e8d9a7bb92a8e7c03'
       VITE_REVIEW_PREVIEW: 'true'
       VITE_BASE_PATH: '/kyotsu-step-web/'
       VITE_STORAGE_NAMESPACE: 'kyotsu-step-gate3-math-20261023'
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 'd134c300e5e377ae9a3853fc70ae847f147fec29'
+          ref: 'ea47dd97f7d323267281915e8d9a7bb92a8e7c03'
           fetch-depth: 0
           persist-credentials: false
       - uses: pnpm/action-setup@v4
@@ -97,7 +97,7 @@ jobs:
           }
           if(!matched)throw Error('Hosted source did not match')
           NODE
-      - name: Play actual public N08 at320/390/1440px
+      - name: Play actual public N08 at four widths
         env:
           APP_URL: ${{ steps.deployment.outputs.page_url }}
           EVIDENCE_DIR: /tmp/n08-hosted

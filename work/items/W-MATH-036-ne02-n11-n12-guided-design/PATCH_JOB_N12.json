@@ -1,0 +1,10 @@
+{
+  "job": {
+    "node": "R06_PATCH@n12",
+    "claimToken": "b5629f67106f4053a394a6ce6bf6187d",
+    "receipts": [
+      "95acc466563173700bdd5724dfb2bd447881459a0b49b2eb4528f9a08129ef6f"
+    ]
+  },
+  "proof": "5871275cca453c3047f9581f0094047e4639fac3e3151f3927275e2d6bf6d532"
+}

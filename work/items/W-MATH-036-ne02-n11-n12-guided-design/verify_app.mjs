@@ -31,7 +31,7 @@ try{for(const code of (process.env.CODES??'ne02').split(',')){
      for(const wrong of item.choices.filter(x=>x!==item.answer)){
       await panel.getByRole('button',{name:wrong,exact:true}).click();wrongCount++;await page.getByTestId('textbook-hint-'+item.id).waitFor();assert.equal(await page.getByTestId('textbook-item-'+item.id).count(),1);const next=data.nodes[data.nodes.indexOf(node)+1];if(next?.stageId===stage.id)assert.equal(await current.locator('[data-node-id="'+next.id+'"]').count(),0,'wrong must not unlock future');
      }
-     if(width===390&&['ne02-q08-squares','ne02-07','n11-wm011-q03-positive','n12-06','n12-15'].includes(node.id))await panel.screenshot({path:out+'/'+node.id+'-options.png'});
+     if(width===390&&['ne02-q08-squares','ne02-07','n11-wm011-q03-positive','n11-wm011-q03-zero','n12-06','n12-15'].includes(node.id))await panel.screenshot({path:out+'/'+node.id+'-options.png'});
      await panel.getByRole('button',{name:item.answer,exact:true}).click();answered++;assert.equal(await visible.locator('[data-block-id^="'+node.id+'-interaction"]').count(),0,'replace unanswered formula once');
     }
     await geometry(node.id+' complete');assert.ok(await visible.locator('.numbered-equation-label').count()<=1,'one number per result group');

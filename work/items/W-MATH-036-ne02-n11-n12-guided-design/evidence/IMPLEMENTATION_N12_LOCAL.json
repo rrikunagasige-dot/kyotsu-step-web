@@ -1,0 +1,15 @@
+{
+  "code": "n12",
+  "unitTests": 19,
+  "learnerRegressions": 620,
+  "authoringTests": 39,
+  "build": "PASS",
+  "lint": "PASS",
+  "browser": "PENDING_GITHUB_CI",
+  "scopeNotes": [
+    "All three current units match frozen IR; original78 answers/300 choice keys preserved",
+    "N12 46 answers; old revisions1-3 retained by existing migration chain",
+    "N11 standalone prose option rows wrap outside KaTeX; optional shared reader flag only",
+    "Complete protected plays enabled after shared renderer change"
+  ]
+}

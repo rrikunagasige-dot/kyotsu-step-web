@@ -4681,27 +4681,27 @@
         {
           "type": "text",
           "text": "例題：",
-          "semanticId": "n11-d-354"
+          "semanticId": "n11-d-366"
         },
         {
           "type": "math",
           "latex": "2<5",
-          "semanticId": "n11-d-355"
+          "semanticId": "n11-d-367"
         },
         {
           "type": "text",
           "text": " の両辺を ",
-          "semanticId": "n11-d-356"
+          "semanticId": "n11-d-368"
         },
         {
           "type": "math",
           "latex": "-1",
-          "semanticId": "n11-d-357"
+          "semanticId": "n11-d-369"
         },
         {
           "type": "text",
           "text": " 倍した数を、数直線で比べる。",
-          "semanticId": "n11-d-358"
+          "semanticId": "n11-d-370"
         }
       ]
     },
@@ -4713,17 +4713,17 @@
         {
           "type": "text",
           "text": "条件は ",
-          "semanticId": "n11-d-359"
+          "semanticId": "n11-d-371"
         },
         {
           "type": "math",
           "latex": "a<b",
-          "semanticId": "n11-d-360"
+          "semanticId": "n11-d-372"
         },
         {
           "type": "text",
           "text": "、文字は実数。差の符号を根拠に、同じ加減と正・負・0の乗法を調べる。",
-          "semanticId": "n11-d-361"
+          "semanticId": "n11-d-373"
         }
       ]
     },
@@ -4735,17 +4735,17 @@
         {
           "type": "text",
           "text": "条件は ",
-          "semanticId": "n11-d-362"
+          "semanticId": "n11-d-374"
         },
         {
           "type": "math",
           "latex": "a<b",
-          "semanticId": "n11-d-363"
+          "semanticId": "n11-d-375"
         },
         {
           "type": "text",
           "text": "、文字は実数。差の符号を根拠に、同じ加減と正・負・0の乗法を調べる。",
-          "semanticId": "n11-d-364"
+          "semanticId": "n11-d-376"
         }
       ]
     },
@@ -4757,17 +4757,17 @@
         {
           "type": "text",
           "text": "条件は ",
-          "semanticId": "n11-d-365"
+          "semanticId": "n11-d-377"
         },
         {
           "type": "math",
           "latex": "a<b",
-          "semanticId": "n11-d-366"
+          "semanticId": "n11-d-378"
         },
         {
           "type": "text",
           "text": "、文字は実数。差の符号を根拠に、同じ加減と正・負・0の乗法を調べる。",
-          "semanticId": "n11-d-367"
+          "semanticId": "n11-d-379"
         }
       ]
     },
@@ -4779,27 +4779,27 @@
         {
           "type": "text",
           "text": "例題：",
-          "semanticId": "n11-d-368"
+          "semanticId": "n11-d-380"
         },
         {
           "type": "math",
           "latex": "3x-2<5",
-          "semanticId": "n11-d-369"
+          "semanticId": "n11-d-381"
         },
         {
           "type": "text",
           "text": " を満たすすべての実数 ",
-          "semanticId": "n11-d-370"
+          "semanticId": "n11-d-382"
         },
         {
           "type": "math",
           "latex": "x",
-          "semanticId": "n11-d-371"
+          "semanticId": "n11-d-383"
         },
         {
           "type": "text",
           "text": " を求める。",
-          "semanticId": "n11-d-372"
+          "semanticId": "n11-d-384"
         }
       ]
     },
@@ -4811,27 +4811,27 @@
         {
           "type": "text",
           "text": "例題：",
-          "semanticId": "n11-d-373"
+          "semanticId": "n11-d-385"
         },
         {
           "type": "math",
           "latex": "3x-2<5",
-          "semanticId": "n11-d-374"
+          "semanticId": "n11-d-386"
         },
         {
           "type": "text",
           "text": " を満たすすべての実数 ",
-          "semanticId": "n11-d-375"
+          "semanticId": "n11-d-387"
         },
         {
           "type": "math",
           "latex": "x",
-          "semanticId": "n11-d-376"
+          "semanticId": "n11-d-388"
         },
         {
           "type": "text",
           "text": " を求める。",
-          "semanticId": "n11-d-377"
+          "semanticId": "n11-d-389"
         }
       ]
     },
@@ -4843,27 +4843,27 @@
         {
           "type": "text",
           "text": "例題：",
-          "semanticId": "n11-d-378"
+          "semanticId": "n11-d-390"
         },
         {
           "type": "math",
           "latex": "3x-2<5",
-          "semanticId": "n11-d-379"
+          "semanticId": "n11-d-391"
         },
         {
           "type": "text",
           "text": " を満たすすべての実数 ",
-          "semanticId": "n11-d-380"
+          "semanticId": "n11-d-392"
         },
         {
           "type": "math",
           "latex": "x",
-          "semanticId": "n11-d-381"
+          "semanticId": "n11-d-393"
         },
         {
           "type": "text",
           "text": " を求める。",
-          "semanticId": "n11-d-382"
+          "semanticId": "n11-d-394"
         }
       ]
     },
@@ -4875,27 +4875,27 @@
         {
           "type": "text",
           "text": "例題：",
-          "semanticId": "n11-d-383"
+          "semanticId": "n11-d-395"
         },
         {
           "type": "math",
           "latex": "-2x+3\\le5",
-          "semanticId": "n11-d-384"
+          "semanticId": "n11-d-396"
         },
         {
           "type": "text",
           "text": " を満たすすべての実数 ",
-          "semanticId": "n11-d-385"
+          "semanticId": "n11-d-397"
         },
         {
           "type": "math",
           "latex": "x",
-          "semanticId": "n11-d-386"
+          "semanticId": "n11-d-398"
         },
         {
           "type": "text",
           "text": " を求める。",
-          "semanticId": "n11-d-387"
+          "semanticId": "n11-d-399"
         }
       ]
     },
@@ -4907,27 +4907,27 @@
         {
           "type": "text",
           "text": "例題：",
-          "semanticId": "n11-d-388"
+          "semanticId": "n11-d-400"
         },
         {
           "type": "math",
           "latex": "-2x+3\\le5",
-          "semanticId": "n11-d-389"
+          "semanticId": "n11-d-401"
         },
         {
           "type": "text",
           "text": " を満たすすべての実数 ",
-          "semanticId": "n11-d-390"
+          "semanticId": "n11-d-402"
         },
         {
           "type": "math",
           "latex": "x",
-          "semanticId": "n11-d-391"
+          "semanticId": "n11-d-403"
         },
         {
           "type": "text",
           "text": " を求める。",
-          "semanticId": "n11-d-392"
+          "semanticId": "n11-d-404"
         }
       ]
     },
@@ -4939,27 +4939,27 @@
         {
           "type": "text",
           "text": "例題：",
-          "semanticId": "n11-d-393"
+          "semanticId": "n11-d-405"
         },
         {
           "type": "math",
           "latex": "-2x+3\\le5",
-          "semanticId": "n11-d-394"
+          "semanticId": "n11-d-406"
         },
         {
           "type": "text",
           "text": " を満たすすべての実数 ",
-          "semanticId": "n11-d-395"
+          "semanticId": "n11-d-407"
         },
         {
           "type": "math",
           "latex": "x",
-          "semanticId": "n11-d-396"
+          "semanticId": "n11-d-408"
         },
         {
           "type": "text",
           "text": " を求める。",
-          "semanticId": "n11-d-397"
+          "semanticId": "n11-d-409"
         }
       ]
     },
@@ -4971,17 +4971,17 @@
         {
           "type": "text",
           "text": "確認：",
-          "semanticId": "n11-d-398"
+          "semanticId": "n11-d-410"
         },
         {
           "type": "math",
           "latex": "3(2x+3)\\ge10x-17",
-          "semanticId": "n11-d-399"
+          "semanticId": "n11-d-411"
         },
         {
           "type": "text",
           "text": " を解く。",
-          "semanticId": "n11-d-400"
+          "semanticId": "n11-d-412"
         }
       ]
     },
@@ -4993,17 +4993,17 @@
         {
           "type": "text",
           "text": "確認：",
-          "semanticId": "n11-d-401"
+          "semanticId": "n11-d-413"
         },
         {
           "type": "math",
           "latex": "3(2x+3)\\ge10x-17",
-          "semanticId": "n11-d-402"
+          "semanticId": "n11-d-414"
         },
         {
           "type": "text",
           "text": " を解く。",
-          "semanticId": "n11-d-403"
+          "semanticId": "n11-d-415"
         }
       ]
     },
@@ -5015,17 +5015,17 @@
         {
           "type": "text",
           "text": "確認：",
-          "semanticId": "n11-d-404"
+          "semanticId": "n11-d-416"
         },
         {
           "type": "math",
           "latex": "\\frac{x-2}{3}\\le2x+1",
-          "semanticId": "n11-d-405"
+          "semanticId": "n11-d-417"
         },
         {
           "type": "text",
           "text": " を解く。",
-          "semanticId": "n11-d-406"
+          "semanticId": "n11-d-418"
         }
       ]
     },
@@ -5037,17 +5037,17 @@
         {
           "type": "text",
           "text": "確認：",
-          "semanticId": "n11-d-407"
+          "semanticId": "n11-d-419"
         },
         {
           "type": "math",
           "latex": "\\frac{x-2}{3}\\le2x+1",
-          "semanticId": "n11-d-408"
+          "semanticId": "n11-d-420"
         },
         {
           "type": "text",
           "text": " を解く。",
-          "semanticId": "n11-d-409"
+          "semanticId": "n11-d-421"
         }
       ]
     }
@@ -13332,29 +13332,57 @@
         "a+c<b+c,\\quad\\text{差は正のまま}": [
           {
             "type": "math",
-            "latex": "\\begin{aligned}a+c&<b+c\\\\&\\text{差は正のまま}\\end{aligned}",
+            "latex": "a+c<b+c",
+            "optionRow": true,
             "semanticId": "n11-option-27"
+          },
+          {
+            "type": "text",
+            "text": "差は正のまま",
+            "optionRow": true,
+            "semanticId": "n11-option-28"
           }
         ],
         "a+c>b+c,\\quad\\text{差は負になる}": [
           {
             "type": "math",
-            "latex": "\\begin{aligned}a+c&>b+c\\\\&\\text{差は負になる}\\end{aligned}",
-            "semanticId": "n11-option-28"
+            "latex": "a+c>b+c",
+            "optionRow": true,
+            "semanticId": "n11-option-29"
+          },
+          {
+            "type": "text",
+            "text": "差は負になる",
+            "optionRow": true,
+            "semanticId": "n11-option-30"
           }
         ],
         "a+c=b+c,\\quad\\text{差は0}": [
           {
             "type": "math",
-            "latex": "\\begin{aligned}a+c&=b+c\\\\&\\text{差は0}\\end{aligned}",
-            "semanticId": "n11-option-29"
+            "latex": "a+c=b+c",
+            "optionRow": true,
+            "semanticId": "n11-option-31"
+          },
+          {
+            "type": "text",
+            "text": "差は0",
+            "optionRow": true,
+            "semanticId": "n11-option-32"
           }
         ],
         "a+c>b+c,\\quad\\text{差は正のまま}": [
           {
             "type": "math",
-            "latex": "\\begin{aligned}a+c&>b+c\\\\&\\text{差は正のまま}\\end{aligned}",
-            "semanticId": "n11-option-30"
+            "latex": "a+c>b+c",
+            "optionRow": true,
+            "semanticId": "n11-option-33"
+          },
+          {
+            "type": "text",
+            "text": "差は正のまま",
+            "optionRow": true,
+            "semanticId": "n11-option-34"
           }
         ]
       },
@@ -13363,28 +13391,28 @@
           {
             "type": "text",
             "text": "同じ数を引くことも、反対の数を足す操作なので同じ規則を使えます。",
-            "semanticId": "n11-d-31"
+            "semanticId": "n11-d-35"
           }
         ],
         "a+c>b+c,\\quad\\text{差は負になる}": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。右−左の差が正なら、どちらが大きいだろう。",
-            "semanticId": "n11-d-32"
+            "semanticId": "n11-d-36"
           }
         ],
         "a+c=b+c,\\quad\\text{差は0}": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。右−左の差が正なら、どちらが大きいだろう。",
-            "semanticId": "n11-d-33"
+            "semanticId": "n11-d-37"
           }
         ],
         "a+c>b+c,\\quad\\text{差は正のまま}": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。右−左の差が正なら、どちらが大きいだろう。",
-            "semanticId": "n11-d-34"
+            "semanticId": "n11-d-38"
           }
         ]
       }
@@ -13395,7 +13423,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-35"
+            "semanticId": "n11-d-39"
           }
         ]
       ],
@@ -13404,28 +13432,28 @@
           {
             "type": "math",
             "latex": "1",
-            "semanticId": "n11-option-39"
+            "semanticId": "n11-option-43"
           }
         ],
         "c": [
           {
             "type": "math",
             "latex": "c",
-            "semanticId": "n11-option-36"
+            "semanticId": "n11-option-40"
           }
         ],
         "-c": [
           {
             "type": "math",
             "latex": "-c",
-            "semanticId": "n11-option-37"
+            "semanticId": "n11-option-41"
           }
         ],
         "c^2": [
           {
             "type": "math",
             "latex": "c^2",
-            "semanticId": "n11-option-38"
+            "semanticId": "n11-option-42"
           }
         ]
       },
@@ -13434,38 +13462,38 @@
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。bc−acを分配法則の逆向きで見よう。",
-            "semanticId": "n11-d-45"
+            "semanticId": "n11-d-49"
           }
         ],
         "c": [
           {
             "type": "text",
             "text": "元の差 ",
-            "semanticId": "n11-d-40"
+            "semanticId": "n11-d-44"
           },
           {
             "type": "math",
             "latex": "b-a",
-            "semanticId": "n11-d-41"
+            "semanticId": "n11-d-45"
           },
           {
             "type": "text",
             "text": " は正なので、掛けるcの符号を分けて調べます。",
-            "semanticId": "n11-d-42"
+            "semanticId": "n11-d-46"
           }
         ],
         "-c": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。bc−acを分配法則の逆向きで見よう。",
-            "semanticId": "n11-d-43"
+            "semanticId": "n11-d-47"
           }
         ],
         "c^2": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。bc−acを分配法則の逆向きで見よう。",
-            "semanticId": "n11-d-44"
+            "semanticId": "n11-d-48"
           }
         ]
       }
@@ -13476,7 +13504,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-46"
+            "semanticId": "n11-d-50"
           }
         ]
       ],
@@ -13485,28 +13513,28 @@
           {
             "type": "math",
             "latex": "\\begin{aligned}ac&<bc\\\\bc-ac&>0\\end{aligned}",
-            "semanticId": "n11-option-47"
+            "semanticId": "n11-option-51"
           }
         ],
         "ac>bc,\\quad bc-ac<0": [
           {
             "type": "math",
             "latex": "\\begin{aligned}ac&>bc\\\\bc-ac&<0\\end{aligned}",
-            "semanticId": "n11-option-48"
+            "semanticId": "n11-option-52"
           }
         ],
         "ac=bc,\\quad bc-ac=0": [
           {
             "type": "math",
             "latex": "\\begin{aligned}ac&=bc\\\\bc-ac&=0\\end{aligned}",
-            "semanticId": "n11-option-49"
+            "semanticId": "n11-option-53"
           }
         ],
         "ac<bc,\\quad bc-ac<0": [
           {
             "type": "math",
             "latex": "\\begin{aligned}ac&<bc\\\\bc-ac&<0\\end{aligned}",
-            "semanticId": "n11-option-50"
+            "semanticId": "n11-option-54"
           }
         ]
       },
@@ -13515,28 +13543,28 @@
           {
             "type": "text",
             "text": "正の数を掛ける場合、不等号の向きは変わりません。",
-            "semanticId": "n11-d-51"
+            "semanticId": "n11-d-55"
           }
         ],
         "ac>bc,\\quad bc-ac<0": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。正の数と正の数の積は正。右−左が正なら左が小さい。",
-            "semanticId": "n11-d-52"
+            "semanticId": "n11-d-56"
           }
         ],
         "ac=bc,\\quad bc-ac=0": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。正の数と正の数の積は正。右−左が正なら左が小さい。",
-            "semanticId": "n11-d-53"
+            "semanticId": "n11-d-57"
           }
         ],
         "ac<bc,\\quad bc-ac<0": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。正の数と正の数の積は正。右−左が正なら左が小さい。",
-            "semanticId": "n11-d-54"
+            "semanticId": "n11-d-58"
           }
         ]
       }
@@ -13547,7 +13575,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-55"
+            "semanticId": "n11-d-59"
           }
         ]
       ],
@@ -13556,28 +13584,28 @@
           {
             "type": "math",
             "latex": "\\begin{aligned}ac&>bc\\\\bc-ac&<0\\end{aligned}",
-            "semanticId": "n11-option-56"
+            "semanticId": "n11-option-60"
           }
         ],
         "ac<bc,\\quad bc-ac>0": [
           {
             "type": "math",
             "latex": "\\begin{aligned}ac&<bc\\\\bc-ac&>0\\end{aligned}",
-            "semanticId": "n11-option-57"
+            "semanticId": "n11-option-61"
           }
         ],
         "ac=bc,\\quad bc-ac=0": [
           {
             "type": "math",
             "latex": "\\begin{aligned}ac&=bc\\\\bc-ac&=0\\end{aligned}",
-            "semanticId": "n11-option-58"
+            "semanticId": "n11-option-62"
           }
         ],
         "ac>bc,\\quad bc-ac>0": [
           {
             "type": "math",
             "latex": "\\begin{aligned}ac&>bc\\\\bc-ac&>0\\end{aligned}",
-            "semanticId": "n11-option-59"
+            "semanticId": "n11-option-63"
           }
         ]
       },
@@ -13586,28 +13614,28 @@
           {
             "type": "text",
             "text": "負の数を掛ける場合、不等号の向きが逆になります。",
-            "semanticId": "n11-d-60"
+            "semanticId": "n11-d-64"
           }
         ],
         "ac<bc,\\quad bc-ac>0": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。負の数×正の数は負。右−左が負なら左が大きい。",
-            "semanticId": "n11-d-61"
+            "semanticId": "n11-d-65"
           }
         ],
         "ac=bc,\\quad bc-ac=0": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。負の数×正の数は負。右−左が負なら左が大きい。",
-            "semanticId": "n11-d-62"
+            "semanticId": "n11-d-66"
           }
         ],
         "ac>bc,\\quad bc-ac>0": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。負の数×正の数は負。右−左が負なら左が大きい。",
-            "semanticId": "n11-d-63"
+            "semanticId": "n11-d-67"
           }
         ]
       }
@@ -13618,7 +13646,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-64"
+            "semanticId": "n11-d-68"
           }
         ]
       ],
@@ -13626,29 +13654,57 @@
         "ac=bc=0,\\quad\\text{元の厳密な大小は失われる}": [
           {
             "type": "math",
-            "latex": "\\begin{aligned}ac&=bc=0\\\\&\\text{元の厳密な大小は失われる}\\end{aligned}",
-            "semanticId": "n11-option-65"
+            "latex": "ac=bc=0",
+            "optionRow": true,
+            "semanticId": "n11-option-69"
+          },
+          {
+            "type": "text",
+            "text": "元の厳密な大小は失われる",
+            "optionRow": true,
+            "semanticId": "n11-option-70"
           }
         ],
         "ac<bc,\\quad\\text{そのまま保つ}": [
           {
             "type": "math",
-            "latex": "\\begin{aligned}ac&<bc\\\\&\\text{そのまま保つ}\\end{aligned}",
-            "semanticId": "n11-option-66"
+            "latex": "ac<bc",
+            "optionRow": true,
+            "semanticId": "n11-option-71"
+          },
+          {
+            "type": "text",
+            "text": "そのまま保つ",
+            "optionRow": true,
+            "semanticId": "n11-option-72"
           }
         ],
         "ac>bc,\\quad\\text{逆転する}": [
           {
             "type": "math",
-            "latex": "\\begin{aligned}ac&>bc\\\\&\\text{逆転する}\\end{aligned}",
-            "semanticId": "n11-option-67"
+            "latex": "ac>bc",
+            "optionRow": true,
+            "semanticId": "n11-option-73"
+          },
+          {
+            "type": "text",
+            "text": "逆転する",
+            "optionRow": true,
+            "semanticId": "n11-option-74"
           }
         ],
         "ac=bc=0,\\quad\\text{元の不等号を保つ}": [
           {
             "type": "math",
-            "latex": "\\begin{aligned}ac&=bc=0\\\\&\\text{元の不等号を保つ}\\end{aligned}",
-            "semanticId": "n11-option-68"
+            "latex": "ac=bc=0",
+            "optionRow": true,
+            "semanticId": "n11-option-75"
+          },
+          {
+            "type": "text",
+            "text": "元の不等号を保つ",
+            "optionRow": true,
+            "semanticId": "n11-option-76"
           }
         ]
       },
@@ -13657,28 +13713,28 @@
           {
             "type": "text",
             "text": "0倍では元の厳密な大小は残りません。0で割る操作は定義されていません。",
-            "semanticId": "n11-d-69"
+            "semanticId": "n11-d-77"
           }
         ],
         "ac<bc,\\quad\\text{そのまま保つ}": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。左右とも0。等号になると元の「<」は成り立たない。",
-            "semanticId": "n11-d-70"
+            "semanticId": "n11-d-78"
           }
         ],
         "ac>bc,\\quad\\text{逆転する}": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。左右とも0。等号になると元の「<」は成り立たない。",
-            "semanticId": "n11-d-71"
+            "semanticId": "n11-d-79"
           }
         ],
         "ac=bc=0,\\quad\\text{元の不等号を保つ}": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。左右とも0。等号になると元の「<」は成り立たない。",
-            "semanticId": "n11-d-72"
+            "semanticId": "n11-d-80"
           }
         ]
       }
@@ -13689,7 +13745,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-73"
+            "semanticId": "n11-d-81"
           }
         ]
       ],
@@ -13697,29 +13753,57 @@
         "-\\frac a5>-\\frac b5,\\quad\\text{負数倍なので反転}": [
           {
             "type": "math",
-            "latex": "\\begin{aligned}-\\frac a5&>-\\frac b5\\\\&\\text{負数倍なので反転}\\end{aligned}",
-            "semanticId": "n11-option-74"
+            "latex": "-\\frac a5>-\\frac b5",
+            "optionRow": true,
+            "semanticId": "n11-option-82"
+          },
+          {
+            "type": "text",
+            "text": "負数倍なので反転",
+            "optionRow": true,
+            "semanticId": "n11-option-83"
           }
         ],
         "-\\frac a5<-\\frac b5,\\quad\\text{向きを保つ}": [
           {
             "type": "math",
-            "latex": "\\begin{aligned}-\\frac a5&<-\\frac b5\\\\&\\text{向きを保つ}\\end{aligned}",
-            "semanticId": "n11-option-75"
+            "latex": "-\\frac a5<-\\frac b5",
+            "optionRow": true,
+            "semanticId": "n11-option-84"
+          },
+          {
+            "type": "text",
+            "text": "向きを保つ",
+            "optionRow": true,
+            "semanticId": "n11-option-85"
           }
         ],
         "-\\frac a5=-\\frac b5,\\quad\\text{等号になる}": [
           {
             "type": "math",
-            "latex": "\\begin{aligned}-\\frac a5&=-\\frac b5\\\\&\\text{等号になる}\\end{aligned}",
-            "semanticId": "n11-option-76"
+            "latex": "-\\frac a5=-\\frac b5",
+            "optionRow": true,
+            "semanticId": "n11-option-86"
+          },
+          {
+            "type": "text",
+            "text": "等号になる",
+            "optionRow": true,
+            "semanticId": "n11-option-87"
           }
         ],
         "-\\frac a5>-\\frac b5,\\quad\\text{正数倍なので反転}": [
           {
             "type": "math",
-            "latex": "\\begin{aligned}-\\frac a5&>-\\frac b5\\\\&\\text{正数倍なので反転}\\end{aligned}",
-            "semanticId": "n11-option-77"
+            "latex": "-\\frac a5>-\\frac b5",
+            "optionRow": true,
+            "semanticId": "n11-option-88"
+          },
+          {
+            "type": "text",
+            "text": "正数倍なので反転",
+            "optionRow": true,
+            "semanticId": "n11-option-89"
           }
         ]
       },
@@ -13728,28 +13812,28 @@
           {
             "type": "text",
             "text": "この変形は、次の変形とは別の問題です。",
-            "semanticId": "n11-d-78"
+            "semanticId": "n11-d-90"
           }
         ],
         "-\\frac a5<-\\frac b5,\\quad\\text{向きを保つ}": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。倍率−1/5は負。先ほど確かめた差の符号を使おう。",
-            "semanticId": "n11-d-79"
+            "semanticId": "n11-d-91"
           }
         ],
         "-\\frac a5=-\\frac b5,\\quad\\text{等号になる}": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。倍率−1/5は負。先ほど確かめた差の符号を使おう。",
-            "semanticId": "n11-d-80"
+            "semanticId": "n11-d-92"
           }
         ],
         "-\\frac a5>-\\frac b5,\\quad\\text{正数倍なので反転}": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。倍率−1/5は負。先ほど確かめた差の符号を使おう。",
-            "semanticId": "n11-d-81"
+            "semanticId": "n11-d-93"
           }
         ]
       }
@@ -13760,7 +13844,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-82"
+            "semanticId": "n11-d-94"
           }
         ]
       ],
@@ -13769,21 +13853,21 @@
           {
             "type": "math",
             "latex": "-a>-b",
-            "semanticId": "n11-option-83"
+            "semanticId": "n11-option-95"
           }
         ],
         "-a<-b": [
           {
             "type": "math",
             "latex": "-a<-b",
-            "semanticId": "n11-option-84"
+            "semanticId": "n11-option-96"
           }
         ],
         "-a=-b": [
           {
             "type": "math",
             "latex": "-a=-b",
-            "semanticId": "n11-option-85"
+            "semanticId": "n11-option-97"
           }
         ]
       },
@@ -13792,21 +13876,21 @@
           {
             "type": "text",
             "text": "確定した結果を記録し、次の操作に使います。",
-            "semanticId": "n11-d-86"
+            "semanticId": "n11-d-98"
           }
         ],
         "-a<-b": [
           {
             "type": "text",
             "text": "負の数倍では向きが逆です。",
-            "semanticId": "n11-d-87"
+            "semanticId": "n11-d-99"
           }
         ],
         "-a=-b": [
           {
             "type": "text",
             "text": "元は厳密な大小です。",
-            "semanticId": "n11-d-88"
+            "semanticId": "n11-d-100"
           }
         ]
       }
@@ -13817,7 +13901,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-89"
+            "semanticId": "n11-d-101"
           }
         ]
       ],
@@ -13826,28 +13910,28 @@
           {
             "type": "math",
             "latex": "3-a>3-b",
-            "semanticId": "n11-option-90"
+            "semanticId": "n11-option-102"
           }
         ],
         "3-a<3-b": [
           {
             "type": "math",
             "latex": "3-a<3-b",
-            "semanticId": "n11-option-91"
+            "semanticId": "n11-option-103"
           }
         ],
         "3-a=3-b": [
           {
             "type": "math",
             "latex": "3-a=3-b",
-            "semanticId": "n11-option-92"
+            "semanticId": "n11-option-104"
           }
         ],
         "3+a>3+b": [
           {
             "type": "math",
             "latex": "3+a>3+b",
-            "semanticId": "n11-option-93"
+            "semanticId": "n11-option-105"
           }
         ]
       },
@@ -13856,38 +13940,38 @@
           {
             "type": "text",
             "text": "先ほどの ",
-            "semanticId": "n11-d-94"
+            "semanticId": "n11-d-106"
           },
           {
             "type": "math",
             "latex": "-1/5",
-            "semanticId": "n11-d-95"
+            "semanticId": "n11-d-107"
           },
           {
             "type": "text",
             "text": " 倍の式へ3を足したのではなく、元の不等式から別に作った結果です。",
-            "semanticId": "n11-d-96"
+            "semanticId": "n11-d-108"
           }
         ],
         "3-a<3-b": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。独立した変形として−a>−bから両辺に3を足す。",
-            "semanticId": "n11-d-97"
+            "semanticId": "n11-d-109"
           }
         ],
         "3-a=3-b": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。独立した変形として−a>−bから両辺に3を足す。",
-            "semanticId": "n11-d-98"
+            "semanticId": "n11-d-110"
           }
         ],
         "3+a>3+b": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。独立した変形として−a>−bから両辺に3を足す。",
-            "semanticId": "n11-d-99"
+            "semanticId": "n11-d-111"
           }
         ]
       }
@@ -13898,7 +13982,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-100"
+            "semanticId": "n11-d-112"
           }
         ]
       ],
@@ -13907,28 +13991,28 @@
           {
             "type": "math",
             "latex": "0",
-            "semanticId": "n11-option-104"
+            "semanticId": "n11-option-116"
           }
         ],
         "2": [
           {
             "type": "math",
             "latex": "2",
-            "semanticId": "n11-option-101"
+            "semanticId": "n11-option-113"
           }
         ],
         "3": [
           {
             "type": "math",
             "latex": "3",
-            "semanticId": "n11-option-103"
+            "semanticId": "n11-option-115"
           }
         ],
         "-2": [
           {
             "type": "math",
             "latex": "-2",
-            "semanticId": "n11-option-102"
+            "semanticId": "n11-option-114"
           }
         ]
       },
@@ -13937,28 +14021,28 @@
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。−2と足して0になる数は何だろう。",
-            "semanticId": "n11-d-108"
+            "semanticId": "n11-d-120"
           }
         ],
         "2": [
           {
             "type": "text",
             "text": "この操作を右辺にも行います。",
-            "semanticId": "n11-d-105"
+            "semanticId": "n11-d-117"
           }
         ],
         "3": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。−2と足して0になる数は何だろう。",
-            "semanticId": "n11-d-107"
+            "semanticId": "n11-d-119"
           }
         ],
         "-2": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。−2と足して0になる数は何だろう。",
-            "semanticId": "n11-d-106"
+            "semanticId": "n11-d-118"
           }
         ]
       }
@@ -13969,7 +14053,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-109"
+            "semanticId": "n11-d-121"
           }
         ]
       ],
@@ -13978,28 +14062,28 @@
           {
             "type": "math",
             "latex": "0",
-            "semanticId": "n11-option-113"
+            "semanticId": "n11-option-125"
           }
         ],
         "2": [
           {
             "type": "math",
             "latex": "2",
-            "semanticId": "n11-option-110"
+            "semanticId": "n11-option-122"
           }
         ],
         "5": [
           {
             "type": "math",
             "latex": "5",
-            "semanticId": "n11-option-112"
+            "semanticId": "n11-option-124"
           }
         ],
         "-2": [
           {
             "type": "math",
             "latex": "-2",
-            "semanticId": "n11-option-111"
+            "semanticId": "n11-option-123"
           }
         ]
       },
@@ -14008,28 +14092,28 @@
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。左辺だけでなく右辺にも同じ操作をする。",
-            "semanticId": "n11-d-117"
+            "semanticId": "n11-d-129"
           }
         ],
         "2": [
           {
             "type": "text",
             "text": "左辺の定数が0になり、右辺に足し算が残りました。",
-            "semanticId": "n11-d-114"
+            "semanticId": "n11-d-126"
           }
         ],
         "5": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。左辺だけでなく右辺にも同じ操作をする。",
-            "semanticId": "n11-d-116"
+            "semanticId": "n11-d-128"
           }
         ],
         "-2": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。左辺だけでなく右辺にも同じ操作をする。",
-            "semanticId": "n11-d-115"
+            "semanticId": "n11-d-127"
           }
         ]
       }
@@ -14040,7 +14124,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-118"
+            "semanticId": "n11-d-130"
           }
         ]
       ],
@@ -14049,28 +14133,28 @@
           {
             "type": "math",
             "latex": "3",
-            "semanticId": "n11-option-120"
+            "semanticId": "n11-option-132"
           }
         ],
         "5": [
           {
             "type": "math",
             "latex": "5",
-            "semanticId": "n11-option-121"
+            "semanticId": "n11-option-133"
           }
         ],
         "7": [
           {
             "type": "math",
             "latex": "7",
-            "semanticId": "n11-option-119"
+            "semanticId": "n11-option-131"
           }
         ],
         "9": [
           {
             "type": "math",
             "latex": "9",
-            "semanticId": "n11-option-122"
+            "semanticId": "n11-option-134"
           }
         ]
       },
@@ -14079,28 +14163,28 @@
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。5+2を計算して、3xの右側に置こう。",
-            "semanticId": "n11-d-124"
+            "semanticId": "n11-d-136"
           }
         ],
         "5": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。5+2を計算して、3xの右側に置こう。",
-            "semanticId": "n11-d-125"
+            "semanticId": "n11-d-137"
           }
         ],
         "7": [
           {
             "type": "text",
             "text": "次は両辺を正の3で割ります。",
-            "semanticId": "n11-d-123"
+            "semanticId": "n11-d-135"
           }
         ],
         "9": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。5+2を計算して、3xの右側に置こう。",
-            "semanticId": "n11-d-126"
+            "semanticId": "n11-d-138"
           }
         ]
       }
@@ -14111,7 +14195,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-127"
+            "semanticId": "n11-d-139"
           }
         ]
       ],
@@ -14120,21 +14204,21 @@
           {
             "type": "math",
             "latex": "1",
-            "semanticId": "n11-option-129"
+            "semanticId": "n11-option-141"
           }
         ],
         "3": [
           {
             "type": "math",
             "latex": "3",
-            "semanticId": "n11-option-128"
+            "semanticId": "n11-option-140"
           }
         ],
         "-3": [
           {
             "type": "math",
             "latex": "-3",
-            "semanticId": "n11-option-130"
+            "semanticId": "n11-option-142"
           }
         ]
       },
@@ -14143,21 +14227,21 @@
           {
             "type": "text",
             "text": "3を1で割っても係数は変わりません。",
-            "semanticId": "n11-d-132"
+            "semanticId": "n11-d-144"
           }
         ],
         "3": [
           {
             "type": "text",
             "text": "正の3で割るので、不等号の向きは変わりません。",
-            "semanticId": "n11-d-131"
+            "semanticId": "n11-d-143"
           }
         ],
         "-3": [
           {
             "type": "text",
             "text": "係数が負の1になります。",
-            "semanticId": "n11-d-133"
+            "semanticId": "n11-d-145"
           }
         ]
       }
@@ -14168,7 +14252,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-134"
+            "semanticId": "n11-d-146"
           }
         ]
       ],
@@ -14177,28 +14261,28 @@
           {
             "type": "math",
             "latex": "7",
-            "semanticId": "n11-option-138"
+            "semanticId": "n11-option-150"
           }
         ],
         "\\frac73": [
           {
             "type": "math",
             "latex": "\\frac73",
-            "semanticId": "n11-option-135"
+            "semanticId": "n11-option-147"
           }
         ],
         "\\frac37": [
           {
             "type": "math",
             "latex": "\\frac37",
-            "semanticId": "n11-option-136"
+            "semanticId": "n11-option-148"
           }
         ],
         "-\\frac73": [
           {
             "type": "math",
             "latex": "-\\frac73",
-            "semanticId": "n11-option-137"
+            "semanticId": "n11-option-149"
           }
         ]
       },
@@ -14207,28 +14291,28 @@
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。正の3で割るので、<の向きは変わらない。",
-            "semanticId": "n11-d-142"
+            "semanticId": "n11-d-154"
           }
         ],
         "\\frac73": [
           {
             "type": "text",
             "text": "この不等式で表される実数全体が解です。",
-            "semanticId": "n11-d-139"
+            "semanticId": "n11-d-151"
           }
         ],
         "\\frac37": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。正の3で割るので、<の向きは変わらない。",
-            "semanticId": "n11-d-140"
+            "semanticId": "n11-d-152"
           }
         ],
         "-\\frac73": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。正の3で割るので、<の向きは変わらない。",
-            "semanticId": "n11-d-141"
+            "semanticId": "n11-d-153"
           }
         ]
       }
@@ -14239,7 +14323,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-143"
+            "semanticId": "n11-d-155"
           }
         ]
       ],
@@ -14248,21 +14332,21 @@
           {
             "type": "math",
             "latex": "3",
-            "semanticId": "n11-option-146"
+            "semanticId": "n11-option-158"
           }
         ],
         "5": [
           {
             "type": "math",
             "latex": "5",
-            "semanticId": "n11-option-144"
+            "semanticId": "n11-option-156"
           }
         ],
         "7": [
           {
             "type": "math",
             "latex": "7",
-            "semanticId": "n11-option-145"
+            "semanticId": "n11-option-157"
           }
         ]
       },
@@ -14271,31 +14355,31 @@
           {
             "type": "text",
             "text": "先に3倍してから2を引きます。",
-            "semanticId": "n11-d-151"
+            "semanticId": "n11-d-163"
           }
         ],
         "5": [
           {
             "type": "text",
             "text": "境界では元の式が ",
-            "semanticId": "n11-d-147"
+            "semanticId": "n11-d-159"
           },
           {
             "type": "math",
             "latex": "5<5",
-            "semanticId": "n11-d-148"
+            "semanticId": "n11-d-160"
           },
           {
             "type": "text",
             "text": " になります。",
-            "semanticId": "n11-d-149"
+            "semanticId": "n11-d-161"
           }
         ],
         "7": [
           {
             "type": "text",
             "text": "最後の−2まで計算します。",
-            "semanticId": "n11-d-150"
+            "semanticId": "n11-d-162"
           }
         ]
       }
@@ -14306,7 +14390,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-152"
+            "semanticId": "n11-d-164"
           }
         ]
       ],
@@ -14315,48 +14399,48 @@
           {
             "type": "text",
             "text": "含まれない（等号となり",
-            "semanticId": "n11-option-153"
+            "semanticId": "n11-option-165"
           },
           {
             "type": "math",
             "latex": "<",
-            "semanticId": "n11-option-154"
+            "semanticId": "n11-option-166"
           },
           {
             "type": "text",
             "text": "を満たさない）",
-            "semanticId": "n11-option-155"
+            "semanticId": "n11-option-167"
           }
         ],
         "含まれる（左右が等しくなるから）": [
           {
             "type": "text",
             "text": "含まれる（左右が等しくなるから）",
-            "semanticId": "n11-option-156"
+            "semanticId": "n11-option-168"
           }
         ],
         "含まれる（3は正だから）": [
           {
             "type": "text",
             "text": "含まれる（",
-            "semanticId": "n11-option-157"
+            "semanticId": "n11-option-169"
           },
           {
             "type": "math",
             "latex": "3",
-            "semanticId": "n11-option-158"
+            "semanticId": "n11-option-170"
           },
           {
             "type": "text",
             "text": "は正だから）",
-            "semanticId": "n11-option-159"
+            "semanticId": "n11-option-171"
           }
         ],
         "判断できない（分数だから）": [
           {
             "type": "text",
             "text": "判断できない（分数だから）",
-            "semanticId": "n11-option-160"
+            "semanticId": "n11-option-172"
           }
         ]
       },
@@ -14365,38 +14449,38 @@
           {
             "type": "text",
             "text": "解は ",
-            "semanticId": "n11-d-161"
+            "semanticId": "n11-d-173"
           },
           {
             "type": "math",
             "latex": "x<7/3",
-            "semanticId": "n11-d-162"
+            "semanticId": "n11-d-174"
           },
           {
             "type": "text",
             "text": " で、境界は含みません。",
-            "semanticId": "n11-d-163"
+            "semanticId": "n11-d-175"
           }
         ],
         "含まれる（左右が等しくなるから）": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。元の記号は「<」で、等号は許されていない。",
-            "semanticId": "n11-d-164"
+            "semanticId": "n11-d-176"
           }
         ],
         "含まれる（3は正だから）": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。元の記号は「<」で、等号は許されていない。",
-            "semanticId": "n11-d-165"
+            "semanticId": "n11-d-177"
           }
         ],
         "判断できない（分数だから）": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。元の記号は「<」で、等号は許されていない。",
-            "semanticId": "n11-d-166"
+            "semanticId": "n11-d-178"
           }
         ]
       }
@@ -14407,7 +14491,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-167"
+            "semanticId": "n11-d-179"
           }
         ]
       ],
@@ -14416,28 +14500,28 @@
           {
             "type": "math",
             "latex": "2",
-            "semanticId": "n11-option-170"
+            "semanticId": "n11-option-182"
           }
         ],
         "3": [
           {
             "type": "math",
             "latex": "3",
-            "semanticId": "n11-option-168"
+            "semanticId": "n11-option-180"
           }
         ],
         "5": [
           {
             "type": "math",
             "latex": "5",
-            "semanticId": "n11-option-171"
+            "semanticId": "n11-option-183"
           }
         ],
         "-3": [
           {
             "type": "math",
             "latex": "-3",
-            "semanticId": "n11-option-169"
+            "semanticId": "n11-option-181"
           }
         ]
       },
@@ -14446,28 +14530,28 @@
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。＋3と打ち消し合うのは、何を引くときだろう。",
-            "semanticId": "n11-d-174"
+            "semanticId": "n11-d-186"
           }
         ],
         "3": [
           {
             "type": "text",
             "text": "確定した結果を記録し、次の操作に使います。",
-            "semanticId": "n11-d-172"
+            "semanticId": "n11-d-184"
           }
         ],
         "5": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。＋3と打ち消し合うのは、何を引くときだろう。",
-            "semanticId": "n11-d-175"
+            "semanticId": "n11-d-187"
           }
         ],
         "-3": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。＋3と打ち消し合うのは、何を引くときだろう。",
-            "semanticId": "n11-d-173"
+            "semanticId": "n11-d-185"
           }
         ]
       }
@@ -14478,7 +14562,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-176"
+            "semanticId": "n11-d-188"
           }
         ]
       ],
@@ -14487,28 +14571,28 @@
           {
             "type": "math",
             "latex": "2",
-            "semanticId": "n11-option-180"
+            "semanticId": "n11-option-192"
           }
         ],
         "3": [
           {
             "type": "math",
             "latex": "3",
-            "semanticId": "n11-option-177"
+            "semanticId": "n11-option-189"
           }
         ],
         "5": [
           {
             "type": "math",
             "latex": "5",
-            "semanticId": "n11-option-179"
+            "semanticId": "n11-option-191"
           }
         ],
         "-3": [
           {
             "type": "math",
             "latex": "-3",
-            "semanticId": "n11-option-178"
+            "semanticId": "n11-option-190"
           }
         ]
       },
@@ -14517,28 +14601,28 @@
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。左右に同じ操作をすると不等号の関係を保てる。",
-            "semanticId": "n11-d-184"
+            "semanticId": "n11-d-196"
           }
         ],
         "3": [
           {
             "type": "text",
             "text": "確定した結果を記録し、次の操作に使います。",
-            "semanticId": "n11-d-181"
+            "semanticId": "n11-d-193"
           }
         ],
         "5": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。左右に同じ操作をすると不等号の関係を保てる。",
-            "semanticId": "n11-d-183"
+            "semanticId": "n11-d-195"
           }
         ],
         "-3": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。左右に同じ操作をすると不等号の関係を保てる。",
-            "semanticId": "n11-d-182"
+            "semanticId": "n11-d-194"
           }
         ]
       }
@@ -14549,7 +14633,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-185"
+            "semanticId": "n11-d-197"
           }
         ]
       ],
@@ -14558,28 +14642,28 @@
           {
             "type": "math",
             "latex": "2",
-            "semanticId": "n11-option-186"
+            "semanticId": "n11-option-198"
           }
         ],
         "5": [
           {
             "type": "math",
             "latex": "5",
-            "semanticId": "n11-option-189"
+            "semanticId": "n11-option-201"
           }
         ],
         "8": [
           {
             "type": "math",
             "latex": "8",
-            "semanticId": "n11-option-187"
+            "semanticId": "n11-option-199"
           }
         ],
         "-2": [
           {
             "type": "math",
             "latex": "-2",
-            "semanticId": "n11-option-188"
+            "semanticId": "n11-option-200"
           }
         ]
       },
@@ -14588,28 +14672,28 @@
           {
             "type": "text",
             "text": "係数は負なので、割るときの向きを判断します。",
-            "semanticId": "n11-d-190"
+            "semanticId": "n11-d-202"
           }
         ],
         "5": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。右辺の引き算を行ってから、−2xの右側に置こう。",
-            "semanticId": "n11-d-193"
+            "semanticId": "n11-d-205"
           }
         ],
         "8": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。右辺の引き算を行ってから、−2xの右側に置こう。",
-            "semanticId": "n11-d-191"
+            "semanticId": "n11-d-203"
           }
         ],
         "-2": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。右辺の引き算を行ってから、−2xの右側に置こう。",
-            "semanticId": "n11-d-192"
+            "semanticId": "n11-d-204"
           }
         ]
       }
@@ -14620,7 +14704,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-194"
+            "semanticId": "n11-d-206"
           }
         ]
       ],
@@ -14629,28 +14713,28 @@
           {
             "type": "math",
             "latex": "\\ge",
-            "semanticId": "n11-option-195"
+            "semanticId": "n11-option-207"
           }
         ],
         "\\le": [
           {
             "type": "math",
             "latex": "\\le",
-            "semanticId": "n11-option-196"
+            "semanticId": "n11-option-208"
           }
         ],
         ">": [
           {
             "type": "math",
             "latex": ">",
-            "semanticId": "n11-option-197"
+            "semanticId": "n11-option-209"
           }
         ],
         "<": [
           {
             "type": "math",
             "latex": "<",
-            "semanticId": "n11-option-198"
+            "semanticId": "n11-option-210"
           }
         ]
       },
@@ -14659,28 +14743,28 @@
           {
             "type": "text",
             "text": "次に右辺の値を計算します。",
-            "semanticId": "n11-d-199"
+            "semanticId": "n11-d-211"
           }
         ],
         "\\le": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。係数は負。向きと等号の有無をそれぞれ確かめよう。",
-            "semanticId": "n11-d-200"
+            "semanticId": "n11-d-212"
           }
         ],
         ">": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。係数は負。向きと等号の有無をそれぞれ確かめよう。",
-            "semanticId": "n11-d-201"
+            "semanticId": "n11-d-213"
           }
         ],
         "<": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。係数は負。向きと等号の有無をそれぞれ確かめよう。",
-            "semanticId": "n11-d-202"
+            "semanticId": "n11-d-214"
           }
         ]
       }
@@ -14691,7 +14775,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-203"
+            "semanticId": "n11-d-215"
           }
         ]
       ],
@@ -14700,28 +14784,28 @@
           {
             "type": "math",
             "latex": "1",
-            "semanticId": "n11-option-205"
+            "semanticId": "n11-option-217"
           }
         ],
         "2": [
           {
             "type": "math",
             "latex": "2",
-            "semanticId": "n11-option-207"
+            "semanticId": "n11-option-219"
           }
         ],
         "-1": [
           {
             "type": "math",
             "latex": "-1",
-            "semanticId": "n11-option-204"
+            "semanticId": "n11-option-216"
           }
         ],
         "-2": [
           {
             "type": "math",
             "latex": "-2",
-            "semanticId": "n11-option-206"
+            "semanticId": "n11-option-218"
           }
         ]
       },
@@ -14730,28 +14814,28 @@
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。正の数を負の数で割ると結果の符号はどうなるだろう。",
-            "semanticId": "n11-d-209"
+            "semanticId": "n11-d-221"
           }
         ],
         "2": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。正の数を負の数で割ると結果の符号はどうなるだろう。",
-            "semanticId": "n11-d-211"
+            "semanticId": "n11-d-223"
           }
         ],
         "-1": [
           {
             "type": "text",
             "text": "不等号の向きと右辺の符号を別々に確認できました。",
-            "semanticId": "n11-d-208"
+            "semanticId": "n11-d-220"
           }
         ],
         "-2": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。正の数を負の数で割ると結果の符号はどうなるだろう。",
-            "semanticId": "n11-d-210"
+            "semanticId": "n11-d-222"
           }
         ]
       }
@@ -14762,7 +14846,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-212"
+            "semanticId": "n11-d-224"
           }
         ]
       ],
@@ -14771,21 +14855,21 @@
           {
             "type": "math",
             "latex": "1",
-            "semanticId": "n11-option-214"
+            "semanticId": "n11-option-226"
           }
         ],
         "5": [
           {
             "type": "math",
             "latex": "5",
-            "semanticId": "n11-option-213"
+            "semanticId": "n11-option-225"
           }
         ],
         "-5": [
           {
             "type": "math",
             "latex": "-5",
-            "semanticId": "n11-option-215"
+            "semanticId": "n11-option-227"
           }
         ]
       },
@@ -14794,31 +14878,31 @@
           {
             "type": "text",
             "text": "負と負の積は正です。",
-            "semanticId": "n11-d-219"
+            "semanticId": "n11-d-231"
           }
         ],
         "5": [
           {
             "type": "text",
             "text": "境界では ",
-            "semanticId": "n11-d-216"
+            "semanticId": "n11-d-228"
           },
           {
             "type": "math",
             "latex": "5\\le5",
-            "semanticId": "n11-d-217"
+            "semanticId": "n11-d-229"
           },
           {
             "type": "text",
             "text": " となります。",
-            "semanticId": "n11-d-218"
+            "semanticId": "n11-d-230"
           }
         ],
         "-5": [
           {
             "type": "text",
             "text": "積の符号と最後の加法を分けます。",
-            "semanticId": "n11-d-220"
+            "semanticId": "n11-d-232"
           }
         ]
       }
@@ -14829,7 +14913,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-221"
+            "semanticId": "n11-d-233"
           }
         ]
       ],
@@ -14838,48 +14922,48 @@
           {
             "type": "text",
             "text": "含む（代入すると",
-            "semanticId": "n11-option-222"
+            "semanticId": "n11-option-234"
           },
           {
             "type": "math",
             "latex": "5\\le5",
-            "semanticId": "n11-option-223"
+            "semanticId": "n11-option-235"
           },
           {
             "type": "text",
             "text": "）",
-            "semanticId": "n11-option-224"
+            "semanticId": "n11-option-236"
           }
         ],
         "含まない（負の数だから）": [
           {
             "type": "text",
             "text": "含まない（負の数だから）",
-            "semanticId": "n11-option-225"
+            "semanticId": "n11-option-237"
           }
         ],
         "含まない（代入すると5<5）": [
           {
             "type": "text",
             "text": "含まない（代入すると",
-            "semanticId": "n11-option-226"
+            "semanticId": "n11-option-238"
           },
           {
             "type": "math",
             "latex": "5<5",
-            "semanticId": "n11-option-227"
+            "semanticId": "n11-option-239"
           },
           {
             "type": "text",
             "text": "）",
-            "semanticId": "n11-option-228"
+            "semanticId": "n11-option-240"
           }
         ],
         "含む（不等号を逆にしないから）": [
           {
             "type": "text",
             "text": "含む（不等号を逆にしないから）",
-            "semanticId": "n11-option-229"
+            "semanticId": "n11-option-241"
           }
         ]
       },
@@ -14888,28 +14972,28 @@
           {
             "type": "text",
             "text": "ここまでの二例を元図で比べます。○は端点を含まず、●は含みます。",
-            "semanticId": "n11-d-230"
+            "semanticId": "n11-d-242"
           }
         ],
         "含まない（負の数だから）": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。元の≤は等号を許し、境界を代入すると左右が一致する。",
-            "semanticId": "n11-d-231"
+            "semanticId": "n11-d-243"
           }
         ],
         "含まない（代入すると5<5）": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。元の≤は等号を許し、境界を代入すると左右が一致する。",
-            "semanticId": "n11-d-232"
+            "semanticId": "n11-d-244"
           }
         ],
         "含む（不等号を逆にしないから）": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。元の≤は等号を許し、境界を代入すると左右が一致する。",
-            "semanticId": "n11-d-233"
+            "semanticId": "n11-d-245"
           }
         ]
       }
@@ -14920,7 +15004,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-234"
+            "semanticId": "n11-d-246"
           }
         ]
       ],
@@ -14929,28 +15013,28 @@
           {
             "type": "math",
             "latex": "6x+9",
-            "semanticId": "n11-option-235"
+            "semanticId": "n11-option-247"
           }
         ],
         "6x+3": [
           {
             "type": "math",
             "latex": "6x+3",
-            "semanticId": "n11-option-236"
+            "semanticId": "n11-option-248"
           }
         ],
         "2x+9": [
           {
             "type": "math",
             "latex": "2x+9",
-            "semanticId": "n11-option-237"
+            "semanticId": "n11-option-249"
           }
         ],
         "6x+6": [
           {
             "type": "math",
             "latex": "6x+6",
-            "semanticId": "n11-option-238"
+            "semanticId": "n11-option-250"
           }
         ]
       },
@@ -14959,28 +15043,28 @@
           {
             "type": "text",
             "text": "この展開結果を元の不等式の左辺へ戻します。",
-            "semanticId": "n11-d-239"
+            "semanticId": "n11-d-251"
           }
         ],
         "6x+3": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。3を2xと3のそれぞれに掛けよう。",
-            "semanticId": "n11-d-240"
+            "semanticId": "n11-d-252"
           }
         ],
         "2x+9": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。3を2xと3のそれぞれに掛けよう。",
-            "semanticId": "n11-d-241"
+            "semanticId": "n11-d-253"
           }
         ],
         "6x+6": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。3を2xと3のそれぞれに掛けよう。",
-            "semanticId": "n11-d-242"
+            "semanticId": "n11-d-254"
           }
         ]
       }
@@ -14991,7 +15075,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-243"
+            "semanticId": "n11-d-255"
           }
         ]
       ],
@@ -15000,28 +15084,28 @@
           {
             "type": "math",
             "latex": "4",
-            "semanticId": "n11-option-245"
+            "semanticId": "n11-option-257"
           }
         ],
         "16": [
           {
             "type": "math",
             "latex": "16",
-            "semanticId": "n11-option-247"
+            "semanticId": "n11-option-259"
           }
         ],
         "-4": [
           {
             "type": "math",
             "latex": "-4",
-            "semanticId": "n11-option-244"
+            "semanticId": "n11-option-256"
           }
         ],
         "-10": [
           {
             "type": "math",
             "latex": "-10",
-            "semanticId": "n11-option-246"
+            "semanticId": "n11-option-258"
           }
         ]
       },
@@ -15030,28 +15114,28 @@
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。6x−10xの係数を計算しよう。",
-            "semanticId": "n11-d-249"
+            "semanticId": "n11-d-261"
           }
         ],
         "16": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。6x−10xの係数を計算しよう。",
-            "semanticId": "n11-d-251"
+            "semanticId": "n11-d-263"
           }
         ],
         "-4": [
           {
             "type": "text",
             "text": "左辺のxの係数が求まりました。",
-            "semanticId": "n11-d-248"
+            "semanticId": "n11-d-260"
           }
         ],
         "-10": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。6x−10xの係数を計算しよう。",
-            "semanticId": "n11-d-250"
+            "semanticId": "n11-d-262"
           }
         ]
       }
@@ -15062,7 +15146,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-252"
+            "semanticId": "n11-d-264"
           }
         ]
       ],
@@ -15071,21 +15155,21 @@
           {
             "type": "math",
             "latex": "26",
-            "semanticId": "n11-option-255"
+            "semanticId": "n11-option-267"
           }
         ],
         "-26": [
           {
             "type": "math",
             "latex": "-26",
-            "semanticId": "n11-option-253"
+            "semanticId": "n11-option-265"
           }
         ],
         "-8": [
           {
             "type": "math",
             "latex": "-8",
-            "semanticId": "n11-option-254"
+            "semanticId": "n11-option-266"
           }
         ]
       },
@@ -15094,21 +15178,21 @@
           {
             "type": "text",
             "text": "右辺の符号を残します。",
-            "semanticId": "n11-d-258"
+            "semanticId": "n11-d-270"
           }
         ],
         "-26": [
           {
             "type": "text",
             "text": "確定した結果を記録し、次の操作に使います。",
-            "semanticId": "n11-d-256"
+            "semanticId": "n11-d-268"
           }
         ],
         "-8": [
           {
             "type": "text",
             "text": "負の数から正の9を引きます。",
-            "semanticId": "n11-d-257"
+            "semanticId": "n11-d-269"
           }
         ]
       }
@@ -15119,7 +15203,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-259"
+            "semanticId": "n11-d-271"
           }
         ]
       ],
@@ -15128,28 +15212,28 @@
           {
             "type": "math",
             "latex": "-4x\\ge-26",
-            "semanticId": "n11-option-260"
+            "semanticId": "n11-option-272"
           }
         ],
         "-4x\\le-26": [
           {
             "type": "math",
             "latex": "-4x\\le-26",
-            "semanticId": "n11-option-261"
+            "semanticId": "n11-option-273"
           }
         ],
         "4x\\ge-26": [
           {
             "type": "math",
             "latex": "4x\\ge-26",
-            "semanticId": "n11-option-262"
+            "semanticId": "n11-option-274"
           }
         ],
         "-4x\\ge26": [
           {
             "type": "math",
             "latex": "-4x\\ge26",
-            "semanticId": "n11-option-263"
+            "semanticId": "n11-option-275"
           }
         ]
       },
@@ -15158,28 +15242,28 @@
           {
             "type": "text",
             "text": "次は負の係数を1にする段階です。",
-            "semanticId": "n11-d-264"
+            "semanticId": "n11-d-276"
           }
         ],
         "-4x\\le-26": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。左は6x+9。両辺から10xと9を引く。",
-            "semanticId": "n11-d-265"
+            "semanticId": "n11-d-277"
           }
         ],
         "4x\\ge-26": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。左は6x+9。両辺から10xと9を引く。",
-            "semanticId": "n11-d-266"
+            "semanticId": "n11-d-278"
           }
         ],
         "-4x\\ge26": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。左は6x+9。両辺から10xと9を引く。",
-            "semanticId": "n11-d-267"
+            "semanticId": "n11-d-279"
           }
         ]
       }
@@ -15190,7 +15274,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-268"
+            "semanticId": "n11-d-280"
           }
         ]
       ],
@@ -15199,21 +15283,21 @@
           {
             "type": "math",
             "latex": "\\le",
-            "semanticId": "n11-option-269"
+            "semanticId": "n11-option-281"
           }
         ],
         "\\ge": [
           {
             "type": "math",
             "latex": "\\ge",
-            "semanticId": "n11-option-270"
+            "semanticId": "n11-option-282"
           }
         ],
         "<": [
           {
             "type": "math",
             "latex": "<",
-            "semanticId": "n11-option-271"
+            "semanticId": "n11-option-283"
           }
         ]
       },
@@ -15222,21 +15306,21 @@
           {
             "type": "text",
             "text": "確定した結果を記録し、次の操作に使います。",
-            "semanticId": "n11-d-272"
+            "semanticId": "n11-d-284"
           }
         ],
         "\\ge": [
           {
             "type": "text",
             "text": "負の数で割ると向きは逆です。",
-            "semanticId": "n11-d-273"
+            "semanticId": "n11-d-285"
           }
         ],
         "<": [
           {
             "type": "text",
             "text": "元は等号を含みます。",
-            "semanticId": "n11-d-274"
+            "semanticId": "n11-d-286"
           }
         ]
       }
@@ -15247,7 +15331,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-275"
+            "semanticId": "n11-d-287"
           }
         ]
       ],
@@ -15256,28 +15340,28 @@
           {
             "type": "math",
             "latex": "x\\le\\frac{13}{2}",
-            "semanticId": "n11-option-276"
+            "semanticId": "n11-option-288"
           }
         ],
         "x\\ge\\frac{13}{2}": [
           {
             "type": "math",
             "latex": "x\\ge\\frac{13}{2}",
-            "semanticId": "n11-option-277"
+            "semanticId": "n11-option-289"
           }
         ],
         "x\\le-\\frac{13}{2}": [
           {
             "type": "math",
             "latex": "x\\le-\\frac{13}{2}",
-            "semanticId": "n11-option-278"
+            "semanticId": "n11-option-290"
           }
         ],
         "x<\\frac{13}{2}": [
           {
             "type": "math",
             "latex": "x<\\frac{13}{2}",
-            "semanticId": "n11-option-279"
+            "semanticId": "n11-option-291"
           }
         ]
       },
@@ -15286,28 +15370,28 @@
           {
             "type": "text",
             "text": "式を解く過程の同値な条件は等号ではなく、段階ごとの不等式として並べます。",
-            "semanticId": "n11-d-280"
+            "semanticId": "n11-d-292"
           }
         ],
         "x\\ge\\frac{13}{2}": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。負の数で割るので≥は≤になり、負÷負は正。",
-            "semanticId": "n11-d-281"
+            "semanticId": "n11-d-293"
           }
         ],
         "x\\le-\\frac{13}{2}": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。負の数で割るので≥は≤になり、負÷負は正。",
-            "semanticId": "n11-d-282"
+            "semanticId": "n11-d-294"
           }
         ],
         "x<\\frac{13}{2}": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。負の数で割るので≥は≤になり、負÷負は正。",
-            "semanticId": "n11-d-283"
+            "semanticId": "n11-d-295"
           }
         ]
       }
@@ -15318,7 +15402,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-284"
+            "semanticId": "n11-d-296"
           }
         ]
       ],
@@ -15327,28 +15411,28 @@
           {
             "type": "math",
             "latex": "1",
-            "semanticId": "n11-option-287"
+            "semanticId": "n11-option-299"
           }
         ],
         "3": [
           {
             "type": "math",
             "latex": "3",
-            "semanticId": "n11-option-285"
+            "semanticId": "n11-option-297"
           }
         ],
         "6": [
           {
             "type": "math",
             "latex": "6",
-            "semanticId": "n11-option-288"
+            "semanticId": "n11-option-300"
           }
         ],
         "-3": [
           {
             "type": "math",
             "latex": "-3",
-            "semanticId": "n11-option-286"
+            "semanticId": "n11-option-298"
           }
         ]
       },
@@ -15357,28 +15441,28 @@
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。分母を消すには、分母と同じ大きさの正の数を掛ける。",
-            "semanticId": "n11-d-291"
+            "semanticId": "n11-d-303"
           }
         ],
         "3": [
           {
             "type": "text",
             "text": "確定した結果を記録し、次の操作に使います。",
-            "semanticId": "n11-d-289"
+            "semanticId": "n11-d-301"
           }
         ],
         "6": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。分母を消すには、分母と同じ大きさの正の数を掛ける。",
-            "semanticId": "n11-d-292"
+            "semanticId": "n11-d-304"
           }
         ],
         "-3": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。分母を消すには、分母と同じ大きさの正の数を掛ける。",
-            "semanticId": "n11-d-290"
+            "semanticId": "n11-d-302"
           }
         ]
       }
@@ -15389,7 +15473,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-293"
+            "semanticId": "n11-d-305"
           }
         ]
       ],
@@ -15398,28 +15482,28 @@
           {
             "type": "math",
             "latex": "1",
-            "semanticId": "n11-option-295"
+            "semanticId": "n11-option-307"
           }
         ],
         "3": [
           {
             "type": "math",
             "latex": "3",
-            "semanticId": "n11-option-294"
+            "semanticId": "n11-option-306"
           }
         ],
         "6": [
           {
             "type": "math",
             "latex": "6",
-            "semanticId": "n11-option-297"
+            "semanticId": "n11-option-309"
           }
         ],
         "-3": [
           {
             "type": "math",
             "latex": "-3",
-            "semanticId": "n11-option-296"
+            "semanticId": "n11-option-308"
           }
         ]
       },
@@ -15428,28 +15512,28 @@
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。左辺に選んだ倍率と同じ数を右辺にも掛ける。",
-            "semanticId": "n11-d-299"
+            "semanticId": "n11-d-311"
           }
         ],
         "3": [
           {
             "type": "text",
             "text": "右辺の括弧を外します。",
-            "semanticId": "n11-d-298"
+            "semanticId": "n11-d-310"
           }
         ],
         "6": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。左辺に選んだ倍率と同じ数を右辺にも掛ける。",
-            "semanticId": "n11-d-301"
+            "semanticId": "n11-d-313"
           }
         ],
         "-3": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。左辺に選んだ倍率と同じ数を右辺にも掛ける。",
-            "semanticId": "n11-d-300"
+            "semanticId": "n11-d-312"
           }
         ]
       }
@@ -15460,7 +15544,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-302"
+            "semanticId": "n11-d-314"
           }
         ]
       ],
@@ -15469,28 +15553,28 @@
           {
             "type": "math",
             "latex": "2",
-            "semanticId": "n11-option-304"
+            "semanticId": "n11-option-316"
           }
         ],
         "3": [
           {
             "type": "math",
             "latex": "3",
-            "semanticId": "n11-option-305"
+            "semanticId": "n11-option-317"
           }
         ],
         "6": [
           {
             "type": "math",
             "latex": "6",
-            "semanticId": "n11-option-303"
+            "semanticId": "n11-option-315"
           }
         ],
         "9": [
           {
             "type": "math",
             "latex": "9",
-            "semanticId": "n11-option-306"
+            "semanticId": "n11-option-318"
           }
         ]
       },
@@ -15499,28 +15583,28 @@
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。3を2xに掛けた係数を計算しよう。",
-            "semanticId": "n11-d-308"
+            "semanticId": "n11-d-320"
           }
         ],
         "3": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。3を2xに掛けた係数を計算しよう。",
-            "semanticId": "n11-d-309"
+            "semanticId": "n11-d-321"
           }
         ],
         "6": [
           {
             "type": "text",
             "text": "確定した結果を記録し、次の操作に使います。",
-            "semanticId": "n11-d-307"
+            "semanticId": "n11-d-319"
           }
         ],
         "9": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。3を2xに掛けた係数を計算しよう。",
-            "semanticId": "n11-d-310"
+            "semanticId": "n11-d-322"
           }
         ]
       }
@@ -15531,7 +15615,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-311"
+            "semanticId": "n11-d-323"
           }
         ]
       ],
@@ -15540,28 +15624,28 @@
           {
             "type": "math",
             "latex": "1",
-            "semanticId": "n11-option-313"
+            "semanticId": "n11-option-325"
           }
         ],
         "3": [
           {
             "type": "math",
             "latex": "3",
-            "semanticId": "n11-option-312"
+            "semanticId": "n11-option-324"
           }
         ],
         "6": [
           {
             "type": "math",
             "latex": "6",
-            "semanticId": "n11-option-315"
+            "semanticId": "n11-option-327"
           }
         ],
         "-3": [
           {
             "type": "math",
             "latex": "-3",
-            "semanticId": "n11-option-314"
+            "semanticId": "n11-option-326"
           }
         ]
       },
@@ -15570,28 +15654,28 @@
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。かっこの中の定数項にも外側の数を掛ける。",
-            "semanticId": "n11-d-317"
+            "semanticId": "n11-d-329"
           }
         ],
         "3": [
           {
             "type": "text",
             "text": "両辺からxを引き、次に両辺から定数を引きます。",
-            "semanticId": "n11-d-316"
+            "semanticId": "n11-d-328"
           }
         ],
         "6": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。かっこの中の定数項にも外側の数を掛ける。",
-            "semanticId": "n11-d-319"
+            "semanticId": "n11-d-331"
           }
         ],
         "-3": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。かっこの中の定数項にも外側の数を掛ける。",
-            "semanticId": "n11-d-318"
+            "semanticId": "n11-d-330"
           }
         ]
       }
@@ -15602,7 +15686,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-320"
+            "semanticId": "n11-d-332"
           }
         ]
       ],
@@ -15611,28 +15695,28 @@
           {
             "type": "math",
             "latex": "5",
-            "semanticId": "n11-option-321"
+            "semanticId": "n11-option-333"
           }
         ],
         "6": [
           {
             "type": "math",
             "latex": "6",
-            "semanticId": "n11-option-322"
+            "semanticId": "n11-option-334"
           }
         ],
         "7": [
           {
             "type": "math",
             "latex": "7",
-            "semanticId": "n11-option-323"
+            "semanticId": "n11-option-335"
           }
         ],
         "-5": [
           {
             "type": "math",
             "latex": "-5",
-            "semanticId": "n11-option-324"
+            "semanticId": "n11-option-336"
           }
         ]
       },
@@ -15641,28 +15725,28 @@
           {
             "type": "text",
             "text": "確定した結果を記録し、次の操作に使います。",
-            "semanticId": "n11-d-325"
+            "semanticId": "n11-d-337"
           }
         ],
         "6": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。6xからxを引くので、係数6から1を引く。",
-            "semanticId": "n11-d-326"
+            "semanticId": "n11-d-338"
           }
         ],
         "7": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。6xからxを引くので、係数6から1を引く。",
-            "semanticId": "n11-d-327"
+            "semanticId": "n11-d-339"
           }
         ],
         "-5": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。6xからxを引くので、係数6から1を引く。",
-            "semanticId": "n11-d-328"
+            "semanticId": "n11-d-340"
           }
         ]
       }
@@ -15673,7 +15757,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-329"
+            "semanticId": "n11-d-341"
           }
         ]
       ],
@@ -15682,28 +15766,28 @@
           {
             "type": "math",
             "latex": "1",
-            "semanticId": "n11-option-331"
+            "semanticId": "n11-option-343"
           }
         ],
         "5": [
           {
             "type": "math",
             "latex": "5",
-            "semanticId": "n11-option-333"
+            "semanticId": "n11-option-345"
           }
         ],
         "-5": [
           {
             "type": "math",
             "latex": "-5",
-            "semanticId": "n11-option-330"
+            "semanticId": "n11-option-342"
           }
         ],
         "-2": [
           {
             "type": "math",
             "latex": "-2",
-            "semanticId": "n11-option-332"
+            "semanticId": "n11-option-344"
           }
         ]
       },
@@ -15712,28 +15796,28 @@
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。左辺の−2からさらに3を引く。",
-            "semanticId": "n11-d-335"
+            "semanticId": "n11-d-347"
           }
         ],
         "5": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。左辺の−2からさらに3を引く。",
-            "semanticId": "n11-d-337"
+            "semanticId": "n11-d-349"
           }
         ],
         "-5": [
           {
             "type": "text",
             "text": "確定した結果を記録し、次の操作に使います。",
-            "semanticId": "n11-d-334"
+            "semanticId": "n11-d-346"
           }
         ],
         "-2": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。左辺の−2からさらに3を引く。",
-            "semanticId": "n11-d-336"
+            "semanticId": "n11-d-348"
           }
         ]
       }
@@ -15744,7 +15828,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-338"
+            "semanticId": "n11-d-350"
           }
         ]
       ],
@@ -15753,21 +15837,21 @@
           {
             "type": "math",
             "latex": "-1\\le x",
-            "semanticId": "n11-option-339"
+            "semanticId": "n11-option-351"
           }
         ],
         "-1\\ge x": [
           {
             "type": "math",
             "latex": "-1\\ge x",
-            "semanticId": "n11-option-340"
+            "semanticId": "n11-option-352"
           }
         ],
         "1\\le x": [
           {
             "type": "math",
             "latex": "1\\le x",
-            "semanticId": "n11-option-341"
+            "semanticId": "n11-option-353"
           }
         ]
       },
@@ -15776,21 +15860,21 @@
           {
             "type": "text",
             "text": "同じ関係をxから読むと、xは−1以上です。",
-            "semanticId": "n11-d-342"
+            "semanticId": "n11-d-354"
           }
         ],
         "-1\\ge x": [
           {
             "type": "text",
             "text": "正の数で割ると向きは変わりません。",
-            "semanticId": "n11-d-343"
+            "semanticId": "n11-d-355"
           }
         ],
         "1\\le x": [
           {
             "type": "text",
             "text": "左辺の−5の負号を残します。",
-            "semanticId": "n11-d-344"
+            "semanticId": "n11-d-356"
           }
         ]
       }
@@ -15801,7 +15885,7 @@
           {
             "type": "text",
             "text": "いま使う条件と、式のどの部分を変える操作かを先に確かめます。",
-            "semanticId": "n11-d-345"
+            "semanticId": "n11-d-357"
           }
         ]
       ],
@@ -15810,28 +15894,28 @@
           {
             "type": "math",
             "latex": "x\\ge-1",
-            "semanticId": "n11-option-346"
+            "semanticId": "n11-option-358"
           }
         ],
         "x\\le-1": [
           {
             "type": "math",
             "latex": "x\\le-1",
-            "semanticId": "n11-option-347"
+            "semanticId": "n11-option-359"
           }
         ],
         "x\\ge1": [
           {
             "type": "math",
             "latex": "x\\ge1",
-            "semanticId": "n11-option-348"
+            "semanticId": "n11-option-360"
           }
         ],
         "x>-1": [
           {
             "type": "math",
             "latex": "x>-1",
-            "semanticId": "n11-option-349"
+            "semanticId": "n11-option-361"
           }
         ]
       },
@@ -15840,28 +15924,28 @@
           {
             "type": "text",
             "text": "一つずつの不等式を解く方法ができました。次は複数の条件を同時に満たす範囲を残します。",
-            "semanticId": "n11-d-350"
+            "semanticId": "n11-d-362"
           }
         ],
         "x\\le-1": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。−5≤5xとなり、正の5で割る。",
-            "semanticId": "n11-d-351"
+            "semanticId": "n11-d-363"
           }
         ],
         "x\\ge1": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。−5≤5xとなり、正の5で割る。",
-            "semanticId": "n11-d-352"
+            "semanticId": "n11-d-364"
           }
         ],
         "x>-1": [
           {
             "type": "text",
             "text": "計算対象・条件・符号を直前の式と照合します。−5≤5xとなり、正の5で割る。",
-            "semanticId": "n11-d-353"
+            "semanticId": "n11-d-365"
           }
         ]
       }

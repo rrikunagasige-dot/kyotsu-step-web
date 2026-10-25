@@ -1,11 +1,11 @@
 {
   "work": "W-MATH-036",
   "engine_version": "1.0.0",
-  "ledger_head": "16304f611d4bb6da9ef562430ccb929e6f8b80614938f75a738bd20dd1bc1b08",
+  "ledger_head": "922e6099790070520b72960e2058854b0cbf55f64d74f5edeeb6a402f92bb1cd",
   "work_status": "BLOCKED",
   "profile": "material",
   "simulation": false,
-  "candidate_sha": "f860dc04a773c3f5b2d5b608ea4f4bb24e6fb35a",
+  "candidate_sha": "b04e46bbb7dffaef88ab19abd3fb3fa62960f796",
   "next": {
     "status": "BLOCKED",
     "reason": "外部操作の成否が未記録。実状態の照合が必要"
@@ -493,7 +493,7 @@
         "protected.verify"
       ],
       "required_ai_receipts": [],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "R07_SEMANTIC@ne02",
@@ -551,7 +551,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "R01_CAPTURE@n11",
@@ -919,7 +919,7 @@
         "ir.compile"
       ],
       "required_ai_receipts": [],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "R07_VERIFY@n11",
@@ -1582,7 +1582,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "G3_HOST@ne02",
@@ -2481,7 +2481,7 @@
     {
       "id": "W-MATH-036",
       "work": "W-MATH-036",
-      "version": "f860dc04a773c3f5b2d5b608ea4f4bb24e6fb35a",
+      "version": "b04e46bbb7dffaef88ab19abd3fb3fa62960f796",
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
     },
@@ -3179,6 +3179,11 @@
       "input_hash": "9f99b7b7924ab03d8c8769342ba01d1dfa79eb56385bea358a4514212d6ae3f1",
       "node": "G2_AUDIT@ne02",
       "receipt": "d51ea5e862a4777fd9ad08d85b5f643ece1519f05996d6bfa61495153262421a"
+    },
+    {
+      "input_hash": "feff4dfa17a74592845c579a100e1468f2269fe827c8b23feaf6fbbc8060fe46",
+      "node": "R06_PATCH@n11",
+      "receipt": "06397f7992532ef1d5a7555ceaabe73c3afe309aa20faf141284a033c224e92d"
     }
   ],
   "release_acceptance": {

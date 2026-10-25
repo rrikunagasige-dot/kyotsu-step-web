@@ -2,7 +2,7 @@
 import { firstThemeBaseline, firstThemeBaselineTargets } from '../test/firstThemeBaseline'
 import { mathNumbersN04Unit as current_mathNumbersN04Unit } from '../data/textbook/math/numbers/n04Lesson'
 import { mathNumbersN10Unit } from '../test/n10Legacy'
-import { mathNumbersN12Unit } from '../data/textbook/math/numbers/n12Lesson'
+import { mathNumbersN12LegacyUnit as mathNumbersN12Unit } from '../data/textbook/math/numbers/n12Lesson'
 import { describe, expect, it } from 'vitest'
 import { mathNumbersN01Unit as current_mathNumbersN01Unit } from '../data/textbook/math/numbers/n01Lesson'
 import { mathNumbersN03Unit as current_mathNumbersN03Unit } from '../data/textbook/math/numbers/n03Lesson'

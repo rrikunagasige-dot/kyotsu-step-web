@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { mathNumbersN12Unit, n12SourceToItemIds } from './n12Lesson'
+import { mathNumbersN12LegacyUnit as mathNumbersN12Unit, n12LegacySourceToItemIds as n12SourceToItemIds } from './n12Lesson'
 
 // P-002: fifteen original Word questions, eleven in-equation token decisions.
 const originalIds = Array.from({ length: 15 }, (_, i) => 'n12-' + String(i + 1).padStart(2, '0'))

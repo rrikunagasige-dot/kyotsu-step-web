@@ -12,7 +12,7 @@ import { mathNumbersN02Unit as current_mathNumbersN02Unit, n02SourceToItemIds } 
 import { mathNumbersN03Unit as current_mathNumbersN03Unit } from './n03Lesson'
 import { mathNumbersN09Unit, n09SourceToItemIds } from '../../../../test/n09Legacy'
 import { mathNumbersN10Unit } from '../../../../test/n10Legacy'
-import { mathNumbersN12Unit } from './n12Lesson'
+import { mathNumbersN12LegacyUnit as mathNumbersN12Unit } from './n12Lesson'
 const mathNumbersN01Unit = firstThemeBaseline(current_mathNumbersN01Unit)
 
 const mathNumbersN02Unit = firstThemeBaseline(current_mathNumbersN02Unit)

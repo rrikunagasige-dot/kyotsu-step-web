@@ -1,3 +1,4 @@
+import authored from './n12Authored.json'
 import { validateTextbookUnits } from '../../../../domain/textbookSchema'
 import { T, M, C, K, reviewItem as item, oneToOneSourceMap } from './reviewLessonHelpers'
 
@@ -5,7 +6,7 @@ import { T, M, C, K, reviewItem as item, oneToOneSourceMap } from './reviewLesso
 // 15 independently solved questions and exact original images 9,10,11.
 // F03 (shows the solution) MUST only appear after Q15 is answered.
 // Review only; separate original answer booklet was not provided.
-export const n12SourceToItemIds = oneToOneSourceMap('N12', 15)
+export const n12LegacySourceToItemIds = oneToOneSourceMap('N12', 15)
 
 const rawN12 = {
   schemaVersion: '1.1' as const,
@@ -373,4 +374,8 @@ const rawN12 = {
   }],
 }
 
-export const mathNumbersN12Unit = validateTextbookUnits([rawN12])[0]
+export const mathNumbersN12LegacyUnit = validateTextbookUnits([rawN12])[0]
+
+export const mathNumbersN12Unit = validateTextbookUnits([authored.unit])[0]
+export const n12Presentation = authored
+export const n12SourceToItemIds: Record<string, string[]> = Object.fromEntries(Array.from({length:15},(_,i)=>['N12-Q'+String(i+1).padStart(2,'0'), authored.nodes.filter(n=>n.q===i+1).flatMap(n=>n.interaction?[n.interaction]:[])]))

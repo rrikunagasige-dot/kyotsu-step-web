@@ -18,3 +18,9 @@ Status: AI_ANALYSIS。本人がこの3単元を否定したというGoldラベ�
 - SymPyの同じ不等式が左右反対の形で返るため、文字列・構文の一致でなく解集合の厳密一致を検査した。
 
 これらはAI/コードの制作中発見であり、ユーザーGold否定例に加えていない。
+
+## Implementation sequencing recovery
+N12 R06 dispatch was refused while the N11 R06 claim remained active. A following shell line nevertheless projected historical N12 test imports before the N12 authored file existed; the targeted test correctly failed ENOENT. No learner N12 source was applied by the rejected dispatch and nothing was published. N11 R06 was then completed, N12 R06 claimed and its approved authored file applied. The existing N12 test projection is retained once (not duplicated); repeat the current all-three tests/build before recording verification. Future dependent shell steps must stop on the first nonzero exit.
+
+## N11 real browser failure b04e46bb / CI40179387131
+320px rejected n11-wm011-q03-zero: standalone Japanese explanation was inside a KaTeX aligned row and could not wrap. Preserve frozen DISPLAY_SPEC and canonical keys; materializer interprets pure text rows as ordinary text with explicit optional row metadata. Shared reader honors this metadata, absent for accepted units. Full protected N09/N10 plays enabled again because shared reader changed. Historical N12 test import initially duplicated an existing `as n12` alias; fixed the projection helper to preserve aliases and be idempotent. No assertion removed.

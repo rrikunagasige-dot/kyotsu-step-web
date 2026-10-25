@@ -7,7 +7,7 @@ import type { TextbookUnit } from '../../../../domain/textbookSchema'
 import { mathNumbersN01Unit as current_mathNumbersN01Unit, n01R2SourceMap as n01SourceToItemIds } from './n01Lesson'
 import { mathNumbersN03Unit as current_mathNumbersN03Unit, n03SourceToItemIds } from './n03Lesson'
 import { mathNumbersN09Unit } from '../../../../test/n09Legacy'
-import { mathNumbersN12Unit } from './n12Lesson'
+import { mathNumbersN12LegacyUnit as mathNumbersN12Unit } from './n12Lesson'
 const mathNumbersN01Unit = firstThemeBaseline(current_mathNumbersN01Unit)
 
 const mathNumbersN03Unit = firstThemeBaseline(current_mathNumbersN03Unit)

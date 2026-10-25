@@ -36,7 +36,13 @@ def apply_patch(rt,work,node,token,patch):
                 if isinstance(value,dict):return ([value['id']] if 'id' in value else [])+sum((ids(v) for v in value.values()),[])
                 if isinstance(value,list):return sum((ids(v) for v in value),[])
                 return []
-            need(ids(before)==ids(new),'安定ID・順序の変更には移行を含む別の具体案が必要')
+            if path=='src/data/textbook/math/numbers/n07Authored.json' and s.get('materialization'):
+                proof=rt.store.get(s['materialization']['proof'])
+                need(new==proof['generated']['artifact'],'N07生成物の差し替え')
+                need(before['unit']['sections'][0]['items']==new['unit']['sections'][0]['items'] and before['stages']==new['stages'] and before['nodes']==new['nodes'],'採点・段階・原設計IDの変更')
+                need(before['unit']['revision']==new['unit']['revision'],'保存revisionの変更')
+            else:
+                need(ids(before)==ids(new),'安定ID・順序の変更には移行を含む別の具体案が必要')
             for key in ('progress','history'):
                 if isinstance(before,dict) and key in before:need(before[key]==new.get(key),'保存履歴を変更しない')
         staged.append((path,p,after))

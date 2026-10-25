@@ -32,3 +32,28 @@ def bind_n07(rt,work,approved_commit,evidence_refs):
     current=rt.state(work)
     rt.append('approval_coverage_migrated',work,{'user_event':approval['id'],'approved_bundles':{b['id']:bundle_fingerprint(current,b) for b in p['approval_bundles']},'evidence_refs':evidence_refs,'materialization_proof':proof})
     return generated
+
+def bind_patch(rt,work,patch,evidence_refs):
+    """Record implementation bytes after matching the exact approved design/compiler.
+    Display IDs are compiler output; grading and stage IDs remain protected.
+    """
+    from store import digest
+    from adapters import in_scope
+    s=rt.state(work);approval=rt.approval(s)
+    need(approval and s.get('materialization') and not s['claims'],'設計生成物・承認が不足又は実行中')
+    proof=rt.store.get(s['materialization']['proof']);generated=proof['generated']['artifact']
+    expected={'src/data/textbook/math/numbers/n07Authored.json','src/components/textbook/N07ReadingFlow.tsx','src/components/textbook/n07-reading.css'}
+    need({f['path'] for f in patch['files']}==expected and len(patch['files'])==3,'N07の登録された表示実装だけを結ぶ')
+    rt.fingerprint_refs(s,evidence_refs);need(evidence_refs,'実装と設計の照合根拠がない')
+    for change in patch['files']:
+        path=change['path'];need(in_scope(path,s['plan']['scope']) and path in s['candidate_manifest'],'承認範囲外')
+        need(hashlib.sha256(file(rt.root,path).read_bytes()).hexdigest()==change['before_sha256']==s['candidate_manifest'][path],'修正前の版が違う')
+        need(hashlib.sha256(change['after_text'].encode()).hexdigest()==change['after_sha256'],'修正後の版が違う')
+        if path.endswith('.json'):need(json.loads(change['after_text'])==generated,'生成IRの表示artifactと違う')
+    p=copy.deepcopy(s['plan']);p['proposal']['patch_hash']=digest(patch)
+    for b in p['blocks']:b['patch_hash']=digest(patch)
+    ref=rt.store.put({'patch':patch,'materializationProof':s['materialization']['proof'],'approvalEvent':approval['id'],'evidence_refs':evidence_refs})
+    rt.append('materialization_bound',work,{'plan':p,'proof':s['materialization']['proof'],'patchProof':ref})
+    current=rt.state(work)
+    rt.append('approval_coverage_migrated',work,{'user_event':approval['id'],'approved_bundles':{b['id']:bundle_fingerprint(current,b) for b in p['approval_bundles']},'evidence_refs':evidence_refs,'materialization_patch_proof':ref})
+    return ref

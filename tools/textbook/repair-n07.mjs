@@ -5,6 +5,15 @@ import { validateIR, compileIR } from './ir/index.mjs';
 import { hash, invariant } from './util.mjs';
 const scopes={1:'division',2:'division',3:'division',4:'division',5:'remainder-property',6:'repeat-eight',7:'repeat-eight',8:'repeat-eight',9:'repeat-sixty-nine',10:'repeat-sixty-nine',11:'denominator',12:'denominator',13:'natural-counterexample',14:'real-numbers'};
 const question={division:'割り算を続け、3/4と23/11の小数の表れ方を比べます。','remainder-property':'有理数を小数で表すと、有限小数か循環小数になる理由を考えます。','repeat-eight':'0.888…を整数どうしの比で表します。','repeat-sixty-nine':'0.696969…を既約分数で表します。',denominator:'2≤a≤20の整数aについて、1/aが有限小数になるものをすべて求めます。','natural-counterexample':'自然数a=2、b=3を使い、差と商が自然数になるか調べます。','real-numbers':'整数の比で表せる数と、表せない数を区別します。'};
+const questionParts={
+ division:[['text','割り算を続け、'],['math','\\frac34'],['text','と'],['math','\\frac{23}{11}'],['text','の小数の表れ方を比べます。']],
+ 'remainder-property':[['text',question['remainder-property']]],
+ 'repeat-eight':[['math','0.\\overline8'],['text','を整数どうしの比で表します。']],
+ 'repeat-sixty-nine':[['math','0.\\overline{69}'],['text','を既約分数で表します。']],
+ denominator:[['math','2\\le a\\le20'],['text','の整数'],['math','a'],['text','について、'],['math','\\frac1a'],['text','が有限小数になるものをすべて求めます。']],
+ 'natural-counterexample':[['text','自然数'],['math','a=2'],['text','、'],['math','b=3'],['text','を使い、差と商が自然数になるか調べます。']],
+ 'real-numbers':[['text',question['real-numbers']]],
+};
 export function repairN07(legacy, design, originalPlan, sourceIndex) {
  invariant(legacy.unit.unitId==='math-numbers-expressions-n07','N07 only');
  invariant(JSON.stringify(legacy.nodes.map(n=>n.id))===JSON.stringify(design.nodes.map(n=>n.id)),'node identity/order changed');
@@ -60,7 +69,7 @@ export function repairN07(legacy, design, originalPlan, sourceIndex) {
   const requires=[...new Set([...old.requires,...old.knownRefs])];
   const contextNeed=old.knownRefs.map((ref,i)=>({id:id+'-context-'+i,problemId:scope,factIds:[ref],reason:'前の確定結果を使って次の判断を行う',sourceQuestionRef:scope,...(id==='n07-q03-cycle'?{tableSelection:{tableId:'n07-q02-remainder-1',rows:[1,2],columns:[0,1,2,3]}}:{})}));
   nodes.push({id,problemId:scope,sourceRefs:old.sourceRefs,requires,produces:[...old.teachesBefore,...old.teachesAfter,old.resultId],role:['bridge','interpretation','reuse'].includes(old.role)?'summary':old.role,goal:old.goal,purpose:old.reason,operation:{kind:old.operation,targets:old.knownRefs,direction:old.operation.includes('subtract')?'upper-minus-original':undefined,nextUseIds:[]},before,after,...(q?{interaction:{id:q.id,targetPath:'interaction.expected.value',learningAction:q.answerType==='formula'?'calculation':'judgment',whyHere:q.reason,prerequisiteIds:requires,expected:{value:q.answer,form:q.answerType==='formula'?'formula':'text',semanticType:q.classification},choices:q.choices.map((c,i)=>({id:q.id+'-choice-'+i,content:c,...(c!==q.answer?{misconception:q.distractorReasons[c]}:{}),feedback:c===q.answer?'本文の結果へつなげます。':q.distractorReasons[c]})),hints:q.hints,answerInsertion:{blockId:response.id,slotId:slot.id}}}:{noBlankReason:'既存の定義・性質・証明・まとめを維持する。新しい穴は追加しない。'}),contextNeed});
-  sidecars[id]={beforeId:id+'-before',afterId:id+'-after',sourceScope:scope,sourceQuestion:question[scope],choiceDisplayParts:Object.fromEntries(Object.entries(d.choiceDisplayParts).map(([k,v])=>[k,clean(v)])),hintDisplayParts:d.hintDisplayParts.map(clean),distractorDisplayParts:Object.fromEntries(Object.entries(d.distractorDisplayParts).map(([k,v])=>[k,clean(v)])),taskDomain:d.taskDomain??null};
+  sidecars[id]={beforeId:id+'-before',afterId:id+'-after',sourceScope:scope,sourceQuestion:question[scope],sourceQuestionParts:questionParts[scope].map(([kind,value],i)=>kind==='math'?math(id+'-question-'+i,value):text(id+'-question-'+i,value)),choiceDisplayParts:Object.fromEntries(Object.entries(d.choiceDisplayParts).map(([k,v])=>[k,clean(v)])),hintDisplayParts:d.hintDisplayParts.map(clean),distractorDisplayParts:Object.fromEntries(Object.entries(d.distractorDisplayParts).map(([k,v])=>[k,clean(v)])),taskDomain:d.taskDomain??null};
  }
  const ir={schemaVersion:'production-ir/1',unitId:legacy.unit.unitId,subject:'math',mode:'textbook',sourceHash:originalPlan.sourceHash,sourceBlocks:sourceIndex.blocks.map(b=>({id:b.id,kind:b.kind})),coverage:originalPlan.coverage.map(c=>({...c,disposition:c.disposition==='next-unit-context'?'excluded':c.disposition})),initialFacts:originalPlan.initialConcepts,nodes};
  const check=validateIR(ir);invariant(check.status==='PASS',JSON.stringify(check.findings));

@@ -64,3 +64,18 @@ class MaterializationBinding(unittest.TestCase):
         from materialization import bind_n07
         self.rt.user(self.work,'approve_proposal','simulation only',self.plan['proposal']['hash'],'simulation:binding',verification_level='simulation')
         with self.assertRaises(Exception):bind_n07(self.rt,self.work,'4fb7a98e7f864839ccc1374080473df4ba60ce88',[self.ev])
+    def test_patch_binding_rejects_unregistered_paths_and_different_artifact(self):
+        from materialization import bind_n07,bind_patch
+        from contracts import Rejected
+        import hashlib
+        self.rt.user(self.work,'approve_proposal','simulation only',self.plan['proposal']['hash'],'simulation:binding',verification_level='simulation')
+        g=bind_n07(self.rt,self.work,'e6fc1017f3ce8f5cdce6102720b32afdc73f652b',[self.ev])
+        rows=[]
+        for path in [PATH,'src/components/textbook/N07ReadingFlow.tsx','src/components/textbook/n07-reading.css']:
+            value=json.dumps(g['artifact'],ensure_ascii=False,indent=2)+'\n' if path==PATH else (ROOT/path).read_text()
+            rows.append({'path':path,'before_sha256':manifest(ROOT,[path])[path],'after_text':value,'after_sha256':hashlib.sha256(value.encode()).hexdigest()})
+        delta={'files':rows};ref=bind_patch(self.rt,self.work,delta,[self.ev]);self.assertTrue(ref);self.assertTrue(self.rt.approval(self.rt.state(self.work)))
+        bad=copy.deepcopy(delta);bad['files'][0]['path']='other.json'
+        with self.assertRaises(Rejected):bind_patch(self.rt,self.work,bad,[self.ev])
+        bad=copy.deepcopy(delta);bad['files'][0]['after_text']='{}';bad['files'][0]['after_sha256']=hashlib.sha256(b'{}').hexdigest()
+        with self.assertRaises(Rejected):bind_patch(self.rt,self.work,bad,[self.ev])

@@ -1,0 +1,65 @@
+{
+  "status": "PASS_PROPOSED_PROJECTIONS_ONLY",
+  "candidateValuePreservation": [
+    {
+      "before": "sqrt(3)/6",
+      "after": "sqrt(3)/6",
+      "difference": "0",
+      "pass_": true
+    },
+    {
+      "before": "1/2",
+      "after": "1/2",
+      "difference": "0",
+      "pass_": true
+    },
+    {
+      "before": "1/2",
+      "after": "1/2",
+      "difference": "0",
+      "pass_": true
+    },
+    {
+      "before": "sqrt(3)/6",
+      "after": "sqrt(3)/6",
+      "difference": "0",
+      "pass_": true
+    },
+    {
+      "before": "(2 - sqrt(3))/(sqrt(3) + 2)",
+      "after": "(2 - sqrt(3))**2",
+      "difference": "0",
+      "pass_": true
+    },
+    {
+      "before": "(2 - sqrt(3))**2/(sqrt(3) + 2)**2",
+      "after": "(2 - sqrt(3))**2/(4*sqrt(3) + 7)",
+      "difference": "0",
+      "pass_": true
+    },
+    {
+      "before": "(2 - sqrt(3))/(sqrt(3) + 2)",
+      "after": "(sqrt(3) + 2)**(-2)",
+      "difference": "0",
+      "pass_": true
+    },
+    {
+      "before": "(2 - sqrt(3))**2/7",
+      "after": "(2 - sqrt(3))**2/7",
+      "difference": "0",
+      "pass_": true
+    }
+  ],
+  "groupingCounterexamples": [
+    {
+      "node": "n10-q17-factor",
+      "current": "-sqrt(2) + sqrt(6) + 3",
+      "proposed": "1"
+    },
+    {
+      "node": "n10-q20-factor",
+      "current": "sqrt(3) + 4",
+      "proposed": "1"
+    }
+  ]
+}

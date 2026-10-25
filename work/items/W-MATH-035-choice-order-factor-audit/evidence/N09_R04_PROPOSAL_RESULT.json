@@ -1,0 +1,30 @@
+{
+  "status": "PASS_ANALYSIS_OR_PROPOSAL_ONLY",
+  "node": "R04_PROPOSAL@n09",
+  "outputs": {
+    "math.solve": "NEEDS_AI_REVIEW",
+    "math.verify": "NEEDS_AI_REVIEW",
+    "teaching.plan": "PASS",
+    "step.plan": "PASS",
+    "blank.plan": "PASS",
+    "prose.compose": "PASS",
+    "text.verify": "PASS",
+    "figure.verify": "PASS",
+    "ir.verify": "PASS",
+    "source.audit": "NEEDS_AI_REVIEW",
+    "novice.audit": "PASS"
+  },
+  "receipts": [
+    "ae751cd7205c91d07f2a2ae8ac94f965a67215e390289e228c4b0462f880a56b",
+    "5ca1e464168bf5e769b8d7bf8c15fd3124de8146cb61ed805a72b922377a0d38",
+    "dafb1dede0af6772775e1fe61fd69534509921df96a905f00b2b91b70254e739",
+    "291291f1a311c3d36324657a410e3e38c3d457242c3997ce1d8124f7d7719334",
+    "6eb01c8bf9b887e14875ed646f6fa9e1379be7a02d9988f85136a3e7452de13e",
+    "97ca9e027b9d5179be4b7e363852999919518f6e1af37989bb6c6cda0c4fb09f",
+    "5cb4c8cf0b272f2c7b9ced5909fe6e0488a21ac769223b6b6e8a7e5bb689deb7",
+    "c7c714f29eb445cdb0d4a931f1b16d4786bbf4cb149a1995ef8362d1a5d3d6e3",
+    "9279bd0a6a540c626cce56fd6b50b317dec6cefd22cd1545e28da16260cc15a6",
+    "495f3c5da394001ec135ea34a73c44b77b97e80f92efac1330ea454f1b6b7558",
+    "3f1cd61dc9c91d79b1e89cf655a5bdd816c140d6025ce22baee7204cd97336b2"
+  ]
+}

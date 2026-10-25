@@ -1,20 +1,31 @@
 {
   "work_id": "W-MATH-034",
   "node": {
-    "id": "G3_FINAL@n09",
-    "stage_kind": "G3_FINAL",
-    "contract_kind": "G3_FINAL",
-    "actor": "USER",
+    "id": "R01_CAPTURE@n09",
+    "stage_kind": "R01_CAPTURE",
+    "contract_kind": "R01_CAPTURE",
+    "actor": "AI",
     "depends_on": [
-      "G3_HOST@n09"
+      "S01_ROUTE"
     ],
-    "required": [],
-    "block": null,
+    "required": [
+      "complaint",
+      "before_evidence",
+      "reproduction",
+      "target_versions"
+    ],
+    "block": "n09",
     "release_unit": "n09",
     "watch": "integration",
-    "phase": "acceptance",
+    "phase": "pre-design",
     "priority": 0,
-    "source_refs": [],
+    "source_refs": [
+      "src/data/textbook/math/numbers/n09Lesson.ts",
+      "src/domain/textbook.ts",
+      "src/pages/TextbookUnitPage.tsx",
+      "work/items/W-MATH-034-n09-n10-guided-design/evidence/N09_SOURCE_INDEX.json",
+      "public/assets/math/textbook/numbers/n09-f01.png"
+    ],
     "protected_refs": [
       "src/data/textbook/math/numbers/firstSectionTeaching.json",
       "src/data/textbook/math/typesetting.json",
@@ -27,12 +38,21 @@
       "src/components/textbook/n08-reading.css",
       "public/assets/math/textbook/numbers/n09-f01.png"
     ],
-    "capability_requests": [],
-    "required_code_receipts": [],
-    "required_ai_receipts": []
+    "approval_scope_ref": "proposal",
+    "capability_requests": [
+      "source.fixed",
+      "feedback.capture"
+    ],
+    "required_code_receipts": [
+      "source.fixed",
+      "feedback.capture"
+    ],
+    "required_ai_receipts": [
+      "meaning-review"
+    ]
   },
-  "task_id": "74688e53e9bdfd50a011c28aa61dde4bcde632e3a931a1984b838a0613b3b0ad",
-  "input_hash": "a29a7674a8a9aa8c00296cd0b539e438400a62214fdec49752c409740c17f1c9",
+  "task_id": "e01090446878cb85e527c675ab41e4cfacd881161958395a0f86ee9650f9bc27",
+  "input_hash": "61e121ad341f18524804e0fb1d4a5dc66d70e64a636f5ea032cd393f93781208",
   "source_sha": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
   "candidate_sha": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
   "rules": {
@@ -88,11 +108,11 @@
     "work/items/W-MATH-034-n09-n10-guided-design/evidence/N10_SOURCE_INDEX.json": "566d46e84e4e62040b696212f4cb87a64c21914a53d03d246b70210215140e48"
   },
   "previous_results": {
-    "G3_HOST@n09": {
-      "actor": "W034-serial-ready-dispatch",
-      "artifact": "e0c21b2a3dc34d2429fcc4897bcf68bb5b835579033f45295f5c4129ec11fbb8",
-      "input_hash": "5c9417c85f0ebedab170840d31d26f2e887a6a19003b277f80a5fa06ef79ae5c",
-      "node": "G3_HOST@n09",
+    "S01_ROUTE": {
+      "actor": "deterministic-code",
+      "artifact": "d4ccbbfc2abc9c8d2f87ac941b23f88e5064666e42197d1ad46f4e285b9a8484",
+      "input_hash": "a24ab54936e4303d12ed0d9e3537379471915b61d09f1e7e51dcc3f564945a10",
+      "node": "S01_ROUTE",
       "verdict": "PASS"
     }
   },

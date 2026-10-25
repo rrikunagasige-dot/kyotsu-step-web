@@ -1,0 +1,1858 @@
+{
+  "work": "W-MATH-035",
+  "engine_version": "1.0.0",
+  "ledger_head": "280e28e46a25a08d38384ba9ab708fec368e44230047dfd0724bce5c2dfe3dc8",
+  "work_status": "PROPOSED",
+  "profile": "material",
+  "simulation": false,
+  "candidate_sha": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+  "next": {
+    "status": "WAITING",
+    "reason": "USER_DECISION",
+    "task": {
+      "work_id": "W-MATH-035",
+      "node": {
+        "id": "R05_APPROVAL@n09",
+        "stage_kind": "R05_APPROVAL",
+        "contract_kind": "R05_APPROVAL",
+        "actor": "USER",
+        "depends_on": [
+          "R04_PROPOSAL@n09",
+          "R04_PROPOSAL@n10"
+        ],
+        "required": [],
+        "block": "n09",
+        "release_unit": "n09",
+        "watch": "integration",
+        "phase": "pre-design",
+        "priority": 0,
+        "source_refs": [
+          "src/data/textbook/math/numbers/n09Authored.json",
+          "src/components/textbook/GuidedMathReadingFlow.tsx",
+          "src/components/textbook/guided-math-reading.css",
+          "src/domain/textbookDisplayLines.ts"
+        ],
+        "protected_refs": [
+          "src/data/textbook/math/numbers/firstSectionTeaching.json",
+          "src/data/textbook/math/typesetting.json",
+          "src/data/textbook/math/numbers/n07Authored.json",
+          "src/components/textbook/N07ReadingFlow.tsx",
+          "src/components/textbook/n07-reading.css",
+          "src/data/textbook/math/numbers/n08Authored.json",
+          "src/data/textbook/math/numbers/n08Lesson.ts",
+          "src/components/textbook/N08ReadingFlow.tsx",
+          "src/components/textbook/n08-reading.css",
+          "public/assets/math/textbook/numbers/n09-f01.png",
+          "src/domain/textbookDisplayLines.ts"
+        ],
+        "approval_scope_ref": "proposal",
+        "capability_requests": [],
+        "required_code_receipts": [],
+        "required_ai_receipts": []
+      },
+      "task_id": "fbc77c98bde1886ba191cb335726864ebfb77f3bfe23ce69e0e0eefca7292b0f",
+      "input_hash": "578a991fe73ed0a86e9adc677b515562e81dd5e29690b9be3a98c944eb1aa091",
+      "source_sha": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+      "candidate_sha": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+      "rules": {
+        "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
+        "governance/REVIEW_POLICY.json": "a71148f007a79b124385c7645e6bc01564bfa02b12152174883543f31f6ce72d",
+        "governance/WORK_SYSTEM.md": "37b0b0e0fecc79d7c067e17ec8dbeb53d53863f04369171d65ef652a176eb093",
+        "memory/LESSONS/MATH_TYPESETTING_GROUPS.md": "8047831b13d22ffb773f68e23ab788a3490e4b69ebbf5d5d357f9f786ed53d0a",
+        "subjects/mathematics/textbook/SPEC.md": "a36959ae6f951e855c3e60d280d02a0f20c6e23185d9eb90b17ffbc889c63277"
+      },
+      "proposal": {
+        "contentDesignHash": "b161cddf66c46105b4babb765410c5b849320557acb0b1779883736d5099c402",
+        "hash": "7a198414ee317d5fb94b30634207c663931b32d80ff238e2a9aea067cc6dd06e",
+        "id": "W-MATH-035/P-001"
+      },
+      "scope": {
+        "paths": [
+          "src/data/textbook/math/numbers/n09Authored.json",
+          "src/components/textbook/GuidedMathReadingFlow.tsx",
+          "src/components/textbook/guided-math-reading.css",
+          "src/data/textbook/math/numbers/n10Authored.json",
+          "src/components/textbook/guidedMathDisplayPolicy.ts",
+          "work/items/W-MATH-035-choice-order-factor-audit/"
+        ],
+        "preserve": [
+          "src/data/textbook/math/numbers/firstSectionTeaching.json",
+          "src/data/textbook/math/typesetting.json",
+          "src/data/textbook/math/numbers/n07Authored.json",
+          "src/components/textbook/N07ReadingFlow.tsx",
+          "src/components/textbook/n07-reading.css",
+          "src/data/textbook/math/numbers/n08Authored.json",
+          "src/data/textbook/math/numbers/n08Lesson.ts",
+          "src/components/textbook/N08ReadingFlow.tsx",
+          "src/components/textbook/n08-reading.css",
+          "public/assets/math/textbook/numbers/n09-f01.png",
+          "src/domain/textbookDisplayLines.ts"
+        ]
+      },
+      "source_manifest": {
+        "src/components/textbook/GuidedMathReadingFlow.tsx": "f6c8eda73108fdad7bfbfd0e050d68164f662d36ab0f7b95c97fc5a2e634dd72",
+        "src/components/textbook/guided-math-reading.css": "33313012d7271cf9be7e28756d1acf341628a41b1c444f5e524f0ca55a5998c2",
+        "src/data/textbook/math/numbers/n09Authored.json": "7fdf66f5e27e9121e8f7403d69c01d3947cdad80b731f2db6dca70399275c95a",
+        "src/data/textbook/math/numbers/n10Authored.json": "53992d823ea7bf9ee1e85e799ee62fb3976a46acd4ac8b2e6c00c44c99d6be9c",
+        "src/domain/textbookDisplayLines.ts": "2b71182e1411b7297a2f0107c63df2ae224773165b70565c29ef7e1d7c5971df"
+      },
+      "previous_results": {
+        "R04_PROPOSAL@n09": {
+          "actor": "capability-runner",
+          "artifact": "d768e067656c410d92ad901e58ada96ee7309bd21d5ad9b9fb89f9c2c6772b99",
+          "input_hash": "4fd80785cebb4a9f480fbecc9fd1ce77a3d5d7bf84198e41937ed8d1f419d6f8",
+          "node": "R04_PROPOSAL@n09",
+          "verdict": "PASS"
+        },
+        "R04_PROPOSAL@n10": {
+          "actor": "capability-runner",
+          "artifact": "ff021240304484e1944a4e1e48da7302737401de8811f5f109d9fae053b74bca",
+          "input_hash": "1d26a453716090ed9b295049a666a8b89ac41e5640cbf1eb5b32a9830fd5c665",
+          "node": "R04_PROPOSAL@n10",
+          "verdict": "PASS"
+        }
+      },
+      "do_not_touch": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/typesetting.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "public/assets/math/textbook/numbers/n09-f01.png",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "completion_is_not_semantic_proof": true
+    }
+  },
+  "nodes": [
+    {
+      "id": "S00_RECOVER",
+      "stage_kind": "S00_RECOVER",
+      "contract_kind": "S00_RECOVER",
+      "actor": "CODE",
+      "depends_on": [],
+      "required": [],
+      "block": null,
+      "release_unit": null,
+      "watch": "integration",
+      "phase": "analysis",
+      "priority": -1,
+      "source_refs": [],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/typesetting.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "public/assets/math/textbook/numbers/n09-f01.png",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "capability_requests": [],
+      "required_code_receipts": [],
+      "required_ai_receipts": [],
+      "status": "PASSED"
+    },
+    {
+      "id": "S01_ROUTE",
+      "stage_kind": "S01_ROUTE",
+      "contract_kind": "S01_ROUTE",
+      "actor": "CODE",
+      "depends_on": [
+        "S00_RECOVER"
+      ],
+      "required": [],
+      "block": null,
+      "release_unit": null,
+      "watch": "integration",
+      "phase": "analysis",
+      "priority": -1,
+      "source_refs": [],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/typesetting.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "public/assets/math/textbook/numbers/n09-f01.png",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "capability_requests": [],
+      "required_code_receipts": [],
+      "required_ai_receipts": [],
+      "status": "PASSED"
+    },
+    {
+      "id": "R01_CAPTURE@n09",
+      "stage_kind": "R01_CAPTURE",
+      "contract_kind": "R01_CAPTURE",
+      "actor": "AI",
+      "depends_on": [
+        "S01_ROUTE"
+      ],
+      "required": [
+        "complaint",
+        "before_evidence",
+        "reproduction",
+        "target_versions"
+      ],
+      "block": "n09",
+      "release_unit": "n09",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 0,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n09Authored.json",
+        "src/components/textbook/GuidedMathReadingFlow.tsx",
+        "src/components/textbook/guided-math-reading.css",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/typesetting.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "public/assets/math/textbook/numbers/n09-f01.png",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "source.fixed",
+        "feedback.capture"
+      ],
+      "required_code_receipts": [
+        "source.fixed",
+        "feedback.capture"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "R02_CAUSE@n09",
+      "stage_kind": "R02_CAUSE",
+      "contract_kind": "R02_CAUSE",
+      "actor": "AI",
+      "depends_on": [
+        "R01_CAPTURE@n09"
+      ],
+      "required": [
+        "symptoms",
+        "confirmed_causes",
+        "hypotheses",
+        "missing_learning_actions",
+        "root_cause_signatures"
+      ],
+      "block": "n09",
+      "release_unit": "n09",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 0,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n09Authored.json",
+        "src/components/textbook/GuidedMathReadingFlow.tsx",
+        "src/components/textbook/guided-math-reading.css",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/typesetting.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "public/assets/math/textbook/numbers/n09-f01.png",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "case.retrieve",
+        "knowledge.ledger",
+        "math.verify",
+        "ir.verify",
+        "source.audit",
+        "novice.audit",
+        "math.solve"
+      ],
+      "required_code_receipts": [
+        "case.retrieve",
+        "knowledge.ledger",
+        "math.verify",
+        "ir.verify",
+        "source.audit",
+        "novice.audit",
+        "math.solve"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "R03_IMPACT@n09",
+      "stage_kind": "R03_IMPACT",
+      "contract_kind": "R03_IMPACT",
+      "actor": "AI",
+      "depends_on": [
+        "R02_CAUSE@n09"
+      ],
+      "required": [
+        "impact_rows",
+        "source_inventory",
+        "unknowns"
+      ],
+      "block": "n09",
+      "release_unit": "n09",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 0,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n09Authored.json",
+        "src/components/textbook/GuidedMathReadingFlow.tsx",
+        "src/components/textbook/guided-math-reading.css",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/typesetting.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "public/assets/math/textbook/numbers/n09-f01.png",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "impact.inventory"
+      ],
+      "required_code_receipts": [
+        "impact.inventory"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "R04_PROPOSAL@n09",
+      "stage_kind": "R04_PROPOSAL",
+      "contract_kind": "R04_PROPOSAL",
+      "actor": "AI",
+      "depends_on": [
+        "R03_IMPACT@n09"
+      ],
+      "required": [
+        "before_after",
+        "protected_scope",
+        "patch_plan",
+        "verification_plan",
+        "proposal_hash"
+      ],
+      "block": "n09",
+      "release_unit": "n09",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 0,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n09Authored.json",
+        "src/components/textbook/GuidedMathReadingFlow.tsx",
+        "src/components/textbook/guided-math-reading.css",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/typesetting.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "public/assets/math/textbook/numbers/n09-f01.png",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "math.solve",
+        "math.verify",
+        "teaching.plan",
+        "step.plan",
+        "blank.plan",
+        "prose.compose",
+        "text.verify",
+        "figure.verify",
+        "ir.verify",
+        "source.audit",
+        "novice.audit"
+      ],
+      "required_code_receipts": [
+        "math.solve",
+        "math.verify",
+        "teaching.plan",
+        "step.plan",
+        "blank.plan",
+        "prose.compose",
+        "text.verify",
+        "figure.verify",
+        "ir.verify",
+        "source.audit",
+        "novice.audit"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "R05_APPROVAL@n09",
+      "stage_kind": "R05_APPROVAL",
+      "contract_kind": "R05_APPROVAL",
+      "actor": "USER",
+      "depends_on": [
+        "R04_PROPOSAL@n09",
+        "R04_PROPOSAL@n10"
+      ],
+      "required": [],
+      "block": "n09",
+      "release_unit": "n09",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 0,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n09Authored.json",
+        "src/components/textbook/GuidedMathReadingFlow.tsx",
+        "src/components/textbook/guided-math-reading.css",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/typesetting.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "public/assets/math/textbook/numbers/n09-f01.png",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [],
+      "required_code_receipts": [],
+      "required_ai_receipts": [],
+      "status": "PENDING"
+    },
+    {
+      "id": "R06_PATCH@n09",
+      "stage_kind": "R06_PATCH",
+      "contract_kind": "R06_PATCH",
+      "actor": "TOOL",
+      "depends_on": [
+        "R05_APPROVAL@n09"
+      ],
+      "required": [],
+      "block": "n09",
+      "release_unit": "n09",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 0,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n09Authored.json",
+        "src/components/textbook/GuidedMathReadingFlow.tsx",
+        "src/components/textbook/guided-math-reading.css",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/typesetting.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "public/assets/math/textbook/numbers/n09-f01.png",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "ir.compile"
+      ],
+      "required_code_receipts": [
+        "ir.compile"
+      ],
+      "required_ai_receipts": [],
+      "status": "PENDING"
+    },
+    {
+      "id": "R07_VERIFY@n09",
+      "stage_kind": "R07_VERIFY",
+      "contract_kind": "R07_VERIFY",
+      "actor": "TOOL",
+      "depends_on": [
+        "R06_PATCH@n09"
+      ],
+      "required": [],
+      "block": "n09",
+      "release_unit": "n09",
+      "watch": "integration",
+      "phase": "post-implementation",
+      "priority": 0,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n09Authored.json",
+        "src/components/textbook/GuidedMathReadingFlow.tsx",
+        "src/components/textbook/guided-math-reading.css",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/typesetting.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "public/assets/math/textbook/numbers/n09-f01.png",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "math.verify",
+        "ir.verify",
+        "browser.verify",
+        "protected.verify"
+      ],
+      "required_code_receipts": [
+        "math.verify",
+        "ir.verify",
+        "browser.verify",
+        "protected.verify"
+      ],
+      "required_ai_receipts": [],
+      "status": "PENDING"
+    },
+    {
+      "id": "R07_SEMANTIC@n09",
+      "stage_kind": "R07_SEMANTIC",
+      "contract_kind": "R07_SEMANTIC",
+      "actor": "AI",
+      "depends_on": [
+        "R07_VERIFY@n09"
+      ],
+      "required": [
+        "symptom_resolution",
+        "regression_review",
+        "protected_scope_review",
+        "unknowns"
+      ],
+      "block": "n09",
+      "release_unit": "n09",
+      "watch": "integration",
+      "phase": "post-implementation",
+      "priority": 0,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n09Authored.json",
+        "src/components/textbook/GuidedMathReadingFlow.tsx",
+        "src/components/textbook/guided-math-reading.css",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/typesetting.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "public/assets/math/textbook/numbers/n09-f01.png",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "source.audit",
+        "novice.audit"
+      ],
+      "required_code_receipts": [
+        "source.audit",
+        "novice.audit"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "id": "R01_CAPTURE@n10",
+      "stage_kind": "R01_CAPTURE",
+      "contract_kind": "R01_CAPTURE",
+      "actor": "AI",
+      "depends_on": [
+        "S01_ROUTE"
+      ],
+      "required": [
+        "complaint",
+        "before_evidence",
+        "reproduction",
+        "target_versions"
+      ],
+      "block": "n10",
+      "release_unit": "n10",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 1,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n10Authored.json",
+        "src/components/textbook/GuidedMathReadingFlow.tsx",
+        "src/components/textbook/guided-math-reading.css",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/typesetting.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "public/assets/math/textbook/numbers/n09-f01.png",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "source.fixed",
+        "feedback.capture"
+      ],
+      "required_code_receipts": [
+        "source.fixed",
+        "feedback.capture"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "R02_CAUSE@n10",
+      "stage_kind": "R02_CAUSE",
+      "contract_kind": "R02_CAUSE",
+      "actor": "AI",
+      "depends_on": [
+        "R01_CAPTURE@n10"
+      ],
+      "required": [
+        "symptoms",
+        "confirmed_causes",
+        "hypotheses",
+        "missing_learning_actions",
+        "root_cause_signatures"
+      ],
+      "block": "n10",
+      "release_unit": "n10",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 1,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n10Authored.json",
+        "src/components/textbook/GuidedMathReadingFlow.tsx",
+        "src/components/textbook/guided-math-reading.css",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/typesetting.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "public/assets/math/textbook/numbers/n09-f01.png",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "case.retrieve",
+        "knowledge.ledger",
+        "math.verify",
+        "ir.verify",
+        "source.audit",
+        "novice.audit",
+        "math.solve"
+      ],
+      "required_code_receipts": [
+        "case.retrieve",
+        "knowledge.ledger",
+        "math.verify",
+        "ir.verify",
+        "source.audit",
+        "novice.audit",
+        "math.solve"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "R03_IMPACT@n10",
+      "stage_kind": "R03_IMPACT",
+      "contract_kind": "R03_IMPACT",
+      "actor": "AI",
+      "depends_on": [
+        "R02_CAUSE@n10"
+      ],
+      "required": [
+        "impact_rows",
+        "source_inventory",
+        "unknowns"
+      ],
+      "block": "n10",
+      "release_unit": "n10",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 1,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n10Authored.json",
+        "src/components/textbook/GuidedMathReadingFlow.tsx",
+        "src/components/textbook/guided-math-reading.css",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/typesetting.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "public/assets/math/textbook/numbers/n09-f01.png",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "impact.inventory"
+      ],
+      "required_code_receipts": [
+        "impact.inventory"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "R04_PROPOSAL@n10",
+      "stage_kind": "R04_PROPOSAL",
+      "contract_kind": "R04_PROPOSAL",
+      "actor": "AI",
+      "depends_on": [
+        "R03_IMPACT@n10",
+        "R04_PROPOSAL@n09"
+      ],
+      "required": [
+        "before_after",
+        "protected_scope",
+        "patch_plan",
+        "verification_plan",
+        "proposal_hash"
+      ],
+      "block": "n10",
+      "release_unit": "n10",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 1,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n10Authored.json",
+        "src/components/textbook/GuidedMathReadingFlow.tsx",
+        "src/components/textbook/guided-math-reading.css",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/typesetting.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "public/assets/math/textbook/numbers/n09-f01.png",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "math.solve",
+        "math.verify",
+        "teaching.plan",
+        "step.plan",
+        "blank.plan",
+        "prose.compose",
+        "text.verify",
+        "figure.verify",
+        "ir.verify",
+        "source.audit",
+        "novice.audit"
+      ],
+      "required_code_receipts": [
+        "math.solve",
+        "math.verify",
+        "teaching.plan",
+        "step.plan",
+        "blank.plan",
+        "prose.compose",
+        "text.verify",
+        "figure.verify",
+        "ir.verify",
+        "source.audit",
+        "novice.audit"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "R05_APPROVAL@n10",
+      "stage_kind": "R05_APPROVAL",
+      "contract_kind": "R05_APPROVAL",
+      "actor": "USER",
+      "depends_on": [
+        "R04_PROPOSAL@n09",
+        "R04_PROPOSAL@n10"
+      ],
+      "required": [],
+      "block": "n10",
+      "release_unit": "n10",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 1,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n10Authored.json",
+        "src/components/textbook/GuidedMathReadingFlow.tsx",
+        "src/components/textbook/guided-math-reading.css",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/typesetting.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "public/assets/math/textbook/numbers/n09-f01.png",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [],
+      "required_code_receipts": [],
+      "required_ai_receipts": [],
+      "status": "PENDING"
+    },
+    {
+      "id": "R06_PATCH@n10",
+      "stage_kind": "R06_PATCH",
+      "contract_kind": "R06_PATCH",
+      "actor": "TOOL",
+      "depends_on": [
+        "R05_APPROVAL@n10"
+      ],
+      "required": [],
+      "block": "n10",
+      "release_unit": "n10",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 1,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n10Authored.json",
+        "src/components/textbook/GuidedMathReadingFlow.tsx",
+        "src/components/textbook/guided-math-reading.css",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/typesetting.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "public/assets/math/textbook/numbers/n09-f01.png",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "ir.compile"
+      ],
+      "required_code_receipts": [
+        "ir.compile"
+      ],
+      "required_ai_receipts": [],
+      "status": "PENDING"
+    },
+    {
+      "id": "R07_VERIFY@n10",
+      "stage_kind": "R07_VERIFY",
+      "contract_kind": "R07_VERIFY",
+      "actor": "TOOL",
+      "depends_on": [
+        "R06_PATCH@n10"
+      ],
+      "required": [],
+      "block": "n10",
+      "release_unit": "n10",
+      "watch": "integration",
+      "phase": "post-implementation",
+      "priority": 1,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n10Authored.json",
+        "src/components/textbook/GuidedMathReadingFlow.tsx",
+        "src/components/textbook/guided-math-reading.css",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/typesetting.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "public/assets/math/textbook/numbers/n09-f01.png",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "math.verify",
+        "ir.verify",
+        "browser.verify",
+        "protected.verify"
+      ],
+      "required_code_receipts": [
+        "math.verify",
+        "ir.verify",
+        "browser.verify",
+        "protected.verify"
+      ],
+      "required_ai_receipts": [],
+      "status": "PENDING"
+    },
+    {
+      "id": "R07_SEMANTIC@n10",
+      "stage_kind": "R07_SEMANTIC",
+      "contract_kind": "R07_SEMANTIC",
+      "actor": "AI",
+      "depends_on": [
+        "R07_VERIFY@n10"
+      ],
+      "required": [
+        "symptom_resolution",
+        "regression_review",
+        "protected_scope_review",
+        "unknowns"
+      ],
+      "block": "n10",
+      "release_unit": "n10",
+      "watch": "integration",
+      "phase": "post-implementation",
+      "priority": 1,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n10Authored.json",
+        "src/components/textbook/GuidedMathReadingFlow.tsx",
+        "src/components/textbook/guided-math-reading.css",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/typesetting.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "public/assets/math/textbook/numbers/n09-f01.png",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "source.audit",
+        "novice.audit"
+      ],
+      "required_code_receipts": [
+        "source.audit",
+        "novice.audit"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "id": "G2_AUDIT@n09",
+      "stage_kind": "G2_AUDIT",
+      "contract_kind": "G2_AUDIT",
+      "actor": "AI",
+      "depends_on": [
+        "R07_SEMANTIC@n09"
+      ],
+      "required": [
+        "audit_rows",
+        "release_readiness",
+        "impact_sweep_completion",
+        "audit_method",
+        "unknowns"
+      ],
+      "block": null,
+      "release_unit": "n09",
+      "watch": "integration",
+      "phase": "pre-release",
+      "priority": 0,
+      "source_refs": [],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/typesetting.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "public/assets/math/textbook/numbers/n09-f01.png",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "capability_requests": [
+        "protected.verify",
+        "impact.inventory"
+      ],
+      "required_code_receipts": [
+        "protected.verify",
+        "impact.inventory"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "id": "G3_HOST@n09",
+      "stage_kind": "G3_HOST",
+      "contract_kind": "G3_HOST",
+      "actor": "TOOL",
+      "depends_on": [
+        "G2_AUDIT@n09"
+      ],
+      "required": [],
+      "block": null,
+      "release_unit": "n09",
+      "watch": "integration",
+      "phase": "release",
+      "priority": 0,
+      "source_refs": [],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/typesetting.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "public/assets/math/textbook/numbers/n09-f01.png",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "capability_requests": [
+        "release.verify"
+      ],
+      "required_code_receipts": [
+        "release.verify"
+      ],
+      "required_ai_receipts": [],
+      "status": "PENDING"
+    },
+    {
+      "id": "G3_FINAL@n09",
+      "stage_kind": "G3_FINAL",
+      "contract_kind": "G3_FINAL",
+      "actor": "USER",
+      "depends_on": [
+        "G3_HOST@n09"
+      ],
+      "required": [],
+      "block": null,
+      "release_unit": "n09",
+      "watch": "integration",
+      "phase": "acceptance",
+      "priority": 0,
+      "source_refs": [],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/typesetting.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "public/assets/math/textbook/numbers/n09-f01.png",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "capability_requests": [],
+      "required_code_receipts": [],
+      "required_ai_receipts": [],
+      "status": "PENDING"
+    },
+    {
+      "id": "R03_IMPACT_SWEEP@n09",
+      "stage_kind": "R03_IMPACT_SWEEP",
+      "contract_kind": "R03_IMPACT_SWEEP",
+      "actor": "AI",
+      "depends_on": [
+        "G3_FINAL@n09",
+        "R03_IMPACT@n09"
+      ],
+      "required": [
+        "impact_rows",
+        "source_inventory",
+        "unknowns"
+      ],
+      "block": null,
+      "release_unit": "n09",
+      "watch": "integration",
+      "phase": "post-fix",
+      "priority": 0,
+      "source_refs": [],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/typesetting.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "public/assets/math/textbook/numbers/n09-f01.png",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "capability_requests": [
+        "impact.inventory"
+      ],
+      "required_code_receipts": [
+        "impact.inventory"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "id": "R08_CAPTURE_LEARNING@n09",
+      "stage_kind": "R08_CAPTURE_LEARNING",
+      "contract_kind": "R08_CAPTURE_LEARNING",
+      "actor": "AI",
+      "depends_on": [
+        "R03_IMPACT_SWEEP@n09",
+        "R07_SEMANTIC@n09"
+      ],
+      "required": [
+        "case_updates",
+        "rule_links",
+        "regression_links",
+        "unresolved"
+      ],
+      "block": "n09",
+      "release_unit": "n09",
+      "watch": "integration",
+      "phase": "repair-finalization",
+      "priority": 0,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n09Authored.json",
+        "src/components/textbook/GuidedMathReadingFlow.tsx",
+        "src/components/textbook/guided-math-reading.css",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/typesetting.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "public/assets/math/textbook/numbers/n09-f01.png",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "case.finalize"
+      ],
+      "required_code_receipts": [
+        "case.finalize"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "id": "L01_LEARNING@n09",
+      "stage_kind": "L01_LEARNING",
+      "contract_kind": "L01_LEARNING",
+      "actor": "AI",
+      "depends_on": [
+        "R08_CAPTURE_LEARNING@n09"
+      ],
+      "required": [
+        "case_updates",
+        "rule_links",
+        "regression_links",
+        "unresolved",
+        "deduplication",
+        "modelDisposition"
+      ],
+      "block": null,
+      "release_unit": "n09",
+      "watch": "integration",
+      "phase": "learning",
+      "priority": 0,
+      "source_refs": [],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/typesetting.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "public/assets/math/textbook/numbers/n09-f01.png",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "capability_requests": [
+        "case.finalize",
+        "ml.train"
+      ],
+      "required_code_receipts": [
+        "case.finalize",
+        "ml.train"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "id": "G2_AUDIT@n10",
+      "stage_kind": "G2_AUDIT",
+      "contract_kind": "G2_AUDIT",
+      "actor": "AI",
+      "depends_on": [
+        "R07_SEMANTIC@n10"
+      ],
+      "required": [
+        "audit_rows",
+        "release_readiness",
+        "impact_sweep_completion",
+        "audit_method",
+        "unknowns"
+      ],
+      "block": null,
+      "release_unit": "n10",
+      "watch": "integration",
+      "phase": "pre-release",
+      "priority": 1,
+      "source_refs": [],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/typesetting.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "public/assets/math/textbook/numbers/n09-f01.png",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "capability_requests": [
+        "protected.verify",
+        "impact.inventory"
+      ],
+      "required_code_receipts": [
+        "protected.verify",
+        "impact.inventory"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "id": "G3_HOST@n10",
+      "stage_kind": "G3_HOST",
+      "contract_kind": "G3_HOST",
+      "actor": "TOOL",
+      "depends_on": [
+        "G2_AUDIT@n10"
+      ],
+      "required": [],
+      "block": null,
+      "release_unit": "n10",
+      "watch": "integration",
+      "phase": "release",
+      "priority": 1,
+      "source_refs": [],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/typesetting.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "public/assets/math/textbook/numbers/n09-f01.png",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "capability_requests": [
+        "release.verify"
+      ],
+      "required_code_receipts": [
+        "release.verify"
+      ],
+      "required_ai_receipts": [],
+      "status": "PENDING"
+    },
+    {
+      "id": "G3_FINAL@n10",
+      "stage_kind": "G3_FINAL",
+      "contract_kind": "G3_FINAL",
+      "actor": "USER",
+      "depends_on": [
+        "G3_HOST@n10"
+      ],
+      "required": [],
+      "block": null,
+      "release_unit": "n10",
+      "watch": "integration",
+      "phase": "acceptance",
+      "priority": 1,
+      "source_refs": [],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/typesetting.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "public/assets/math/textbook/numbers/n09-f01.png",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "capability_requests": [],
+      "required_code_receipts": [],
+      "required_ai_receipts": [],
+      "status": "PENDING"
+    },
+    {
+      "id": "R03_IMPACT_SWEEP@n10",
+      "stage_kind": "R03_IMPACT_SWEEP",
+      "contract_kind": "R03_IMPACT_SWEEP",
+      "actor": "AI",
+      "depends_on": [
+        "G3_FINAL@n10",
+        "R03_IMPACT@n10"
+      ],
+      "required": [
+        "impact_rows",
+        "source_inventory",
+        "unknowns"
+      ],
+      "block": null,
+      "release_unit": "n10",
+      "watch": "integration",
+      "phase": "post-fix",
+      "priority": 1,
+      "source_refs": [],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/typesetting.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "public/assets/math/textbook/numbers/n09-f01.png",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "capability_requests": [
+        "impact.inventory"
+      ],
+      "required_code_receipts": [
+        "impact.inventory"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "id": "R08_CAPTURE_LEARNING@n10",
+      "stage_kind": "R08_CAPTURE_LEARNING",
+      "contract_kind": "R08_CAPTURE_LEARNING",
+      "actor": "AI",
+      "depends_on": [
+        "R03_IMPACT_SWEEP@n10",
+        "R07_SEMANTIC@n10"
+      ],
+      "required": [
+        "case_updates",
+        "rule_links",
+        "regression_links",
+        "unresolved"
+      ],
+      "block": "n10",
+      "release_unit": "n10",
+      "watch": "integration",
+      "phase": "repair-finalization",
+      "priority": 1,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n10Authored.json",
+        "src/components/textbook/GuidedMathReadingFlow.tsx",
+        "src/components/textbook/guided-math-reading.css",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/typesetting.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "public/assets/math/textbook/numbers/n09-f01.png",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "case.finalize"
+      ],
+      "required_code_receipts": [
+        "case.finalize"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "id": "L01_LEARNING@n10",
+      "stage_kind": "L01_LEARNING",
+      "contract_kind": "L01_LEARNING",
+      "actor": "AI",
+      "depends_on": [
+        "R08_CAPTURE_LEARNING@n10"
+      ],
+      "required": [
+        "case_updates",
+        "rule_links",
+        "regression_links",
+        "unresolved",
+        "deduplication",
+        "modelDisposition"
+      ],
+      "block": null,
+      "release_unit": "n10",
+      "watch": "integration",
+      "phase": "learning",
+      "priority": 1,
+      "source_refs": [],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/typesetting.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "public/assets/math/textbook/numbers/n09-f01.png",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "capability_requests": [
+        "case.finalize",
+        "ml.train"
+      ],
+      "required_code_receipts": [
+        "case.finalize",
+        "ml.train"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "id": "Z01_CLOSE",
+      "stage_kind": "Z01_CLOSE",
+      "contract_kind": "Z01_CLOSE",
+      "actor": "CODE",
+      "depends_on": [
+        "L01_LEARNING@n09",
+        "L01_LEARNING@n10"
+      ],
+      "required": [],
+      "block": null,
+      "release_unit": null,
+      "watch": "integration",
+      "phase": "closure",
+      "priority": -1,
+      "source_refs": [],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/typesetting.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "public/assets/math/textbook/numbers/n09-f01.png",
+        "src/domain/textbookDisplayLines.ts"
+      ],
+      "capability_requests": [],
+      "required_code_receipts": [],
+      "required_ai_receipts": [],
+      "status": "PENDING"
+    }
+  ],
+  "pending_issues": [],
+  "application_accepted": false,
+  "correction_queue": [
+    {
+      "block": "n09",
+      "description": "1.この選択肢ちょっと整えていない\n違うだから\n1.41^2 =..\n1.42^2=..\n1.91 ...\nこっちの方がよくないかってことだよ",
+      "evidence_refs": [
+        "W034-N09-ORDER-NEGATIVE-20261025"
+      ],
+      "id": "9edbc81e2181722b430e",
+      "origin": "user",
+      "root_cause": "USER_REVIEW_PENDING_ANALYSIS",
+      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+      "work": "W-MATH-034"
+    },
+    {
+      "block": "n10",
+      "description": "2.カッコが忘れている(sqrt 3- sqrt 2)でしょう",
+      "evidence_refs": [
+        "W034-N10-FACTOR-NEGATIVE-20261025"
+      ],
+      "id": "ff234332d7d5ec0beaf3",
+      "origin": "user",
+      "root_cause": "USER_REVIEW_PENDING_ANALYSIS",
+      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+      "work": "W-MATH-034"
+    },
+    {
+      "id": "W-MATH-034",
+      "work": "W-MATH-034",
+      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+      "origin": "unfinished-correction",
+      "description": "未完了の修正Work"
+    },
+    {
+      "id": "W-MATH-035",
+      "work": "W-MATH-035",
+      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+      "origin": "unfinished-correction",
+      "description": "未完了の修正Work"
+    },
+    {
+      "id": "W034-N0910-ALL-MISTAKES-AUDIT-20261025",
+      "kind": "correction",
+      "quote": "そうそうそう。だからその選択肢のなかで似たようなことも起こっているじゃないかなと思った\n①と②\n\nだからまず全てのミスを見つけて、最後提案書ね修正の",
+      "source_ref": "current-conversation latest explicit audit-then-proposal request",
+      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+      "work": "W-MATH-034",
+      "origin": "request-intake"
+    }
+  ],
+  "child_works": [],
+  "capability_receipts": [
+    {
+      "input_hash": "36dfde1209be4a7dced34fc64b6c32f90c81a69855d889de4853edd18293d3d3",
+      "node": "R01_CAPTURE@n09",
+      "receipt": "0e5aad82b0460cc698e8caad4bab399f2ca0806865d2317f2cd16f230935d728"
+    },
+    {
+      "input_hash": "36dfde1209be4a7dced34fc64b6c32f90c81a69855d889de4853edd18293d3d3",
+      "node": "R01_CAPTURE@n09",
+      "receipt": "a181ba698aab960295d97b338437674f59155f35046f740c6600a81ffbfe6916"
+    },
+    {
+      "input_hash": "c28a1de123771833461cc1d77a33844cf67394a3cf09934ed8a0a052e1557a9e",
+      "node": "R02_CAUSE@n09",
+      "receipt": "648793ff0f16de830629b894837b58e6ba92f13bafd55272116997b84755b3ef"
+    },
+    {
+      "input_hash": "c28a1de123771833461cc1d77a33844cf67394a3cf09934ed8a0a052e1557a9e",
+      "node": "R02_CAUSE@n09",
+      "receipt": "d3ebef0f6520e92f20d1dd88c29503c1ed4254aec5be5db402c077d6311659f6"
+    },
+    {
+      "input_hash": "c28a1de123771833461cc1d77a33844cf67394a3cf09934ed8a0a052e1557a9e",
+      "node": "R02_CAUSE@n09",
+      "receipt": "83b496f69f3562fa197f0b1229f0f207bfcab63baa7fc94a0e839d67965247fa"
+    },
+    {
+      "input_hash": "c28a1de123771833461cc1d77a33844cf67394a3cf09934ed8a0a052e1557a9e",
+      "node": "R02_CAUSE@n09",
+      "receipt": "392a631637e51de3f7bcdd8a51abf482134c26a7714e148fb5955c148399933f"
+    },
+    {
+      "input_hash": "c28a1de123771833461cc1d77a33844cf67394a3cf09934ed8a0a052e1557a9e",
+      "node": "R02_CAUSE@n09",
+      "receipt": "406baaec125bbcc2008a156ae89143791f1aa9cc62685c34c04bef67d8f57239"
+    },
+    {
+      "input_hash": "c28a1de123771833461cc1d77a33844cf67394a3cf09934ed8a0a052e1557a9e",
+      "node": "R02_CAUSE@n09",
+      "receipt": "686795d1f381f63e4a41e9dc9fbef74bd197e43d30ff47fdfb08745d7bcf6460"
+    },
+    {
+      "input_hash": "c28a1de123771833461cc1d77a33844cf67394a3cf09934ed8a0a052e1557a9e",
+      "node": "R02_CAUSE@n09",
+      "receipt": "adb13fe2e7a865611b555ab379fc73951599623279888f6fe71427c8ef68334e"
+    },
+    {
+      "input_hash": "d2bbb24e7dfd0abd22b1bdcc14dfa79e1c31e4436548773854bf8953f8de5593",
+      "node": "R03_IMPACT@n09",
+      "receipt": "483213104836f73e104c242b27a625ceebcd2f375cdd431c24192edfa4ff7868"
+    },
+    {
+      "input_hash": "4fd80785cebb4a9f480fbecc9fd1ce77a3d5d7bf84198e41937ed8d1f419d6f8",
+      "node": "R04_PROPOSAL@n09",
+      "receipt": "ae751cd7205c91d07f2a2ae8ac94f965a67215e390289e228c4b0462f880a56b"
+    },
+    {
+      "input_hash": "4fd80785cebb4a9f480fbecc9fd1ce77a3d5d7bf84198e41937ed8d1f419d6f8",
+      "node": "R04_PROPOSAL@n09",
+      "receipt": "5ca1e464168bf5e769b8d7bf8c15fd3124de8146cb61ed805a72b922377a0d38"
+    },
+    {
+      "input_hash": "4fd80785cebb4a9f480fbecc9fd1ce77a3d5d7bf84198e41937ed8d1f419d6f8",
+      "node": "R04_PROPOSAL@n09",
+      "receipt": "dafb1dede0af6772775e1fe61fd69534509921df96a905f00b2b91b70254e739"
+    },
+    {
+      "input_hash": "4fd80785cebb4a9f480fbecc9fd1ce77a3d5d7bf84198e41937ed8d1f419d6f8",
+      "node": "R04_PROPOSAL@n09",
+      "receipt": "291291f1a311c3d36324657a410e3e38c3d457242c3997ce1d8124f7d7719334"
+    },
+    {
+      "input_hash": "4fd80785cebb4a9f480fbecc9fd1ce77a3d5d7bf84198e41937ed8d1f419d6f8",
+      "node": "R04_PROPOSAL@n09",
+      "receipt": "6eb01c8bf9b887e14875ed646f6fa9e1379be7a02d9988f85136a3e7452de13e"
+    },
+    {
+      "input_hash": "4fd80785cebb4a9f480fbecc9fd1ce77a3d5d7bf84198e41937ed8d1f419d6f8",
+      "node": "R04_PROPOSAL@n09",
+      "receipt": "97ca9e027b9d5179be4b7e363852999919518f6e1af37989bb6c6cda0c4fb09f"
+    },
+    {
+      "input_hash": "4fd80785cebb4a9f480fbecc9fd1ce77a3d5d7bf84198e41937ed8d1f419d6f8",
+      "node": "R04_PROPOSAL@n09",
+      "receipt": "5cb4c8cf0b272f2c7b9ced5909fe6e0488a21ac769223b6b6e8a7e5bb689deb7"
+    },
+    {
+      "input_hash": "4fd80785cebb4a9f480fbecc9fd1ce77a3d5d7bf84198e41937ed8d1f419d6f8",
+      "node": "R04_PROPOSAL@n09",
+      "receipt": "c7c714f29eb445cdb0d4a931f1b16d4786bbf4cb149a1995ef8362d1a5d3d6e3"
+    },
+    {
+      "input_hash": "4fd80785cebb4a9f480fbecc9fd1ce77a3d5d7bf84198e41937ed8d1f419d6f8",
+      "node": "R04_PROPOSAL@n09",
+      "receipt": "9279bd0a6a540c626cce56fd6b50b317dec6cefd22cd1545e28da16260cc15a6"
+    },
+    {
+      "input_hash": "4fd80785cebb4a9f480fbecc9fd1ce77a3d5d7bf84198e41937ed8d1f419d6f8",
+      "node": "R04_PROPOSAL@n09",
+      "receipt": "495f3c5da394001ec135ea34a73c44b77b97e80f92efac1330ea454f1b6b7558"
+    },
+    {
+      "input_hash": "4fd80785cebb4a9f480fbecc9fd1ce77a3d5d7bf84198e41937ed8d1f419d6f8",
+      "node": "R04_PROPOSAL@n09",
+      "receipt": "3f1cd61dc9c91d79b1e89cf655a5bdd816c140d6025ce22baee7204cd97336b2"
+    },
+    {
+      "input_hash": "393db8f07cdd9077476761075609596f9391f2241e9b5b16a18b98bc914ec6f1",
+      "node": "R01_CAPTURE@n10",
+      "receipt": "2d79b7c807fbc57da351a0099b48f77e9ce71fd3b00eeabd9d2bdf1e91a77aa1"
+    },
+    {
+      "input_hash": "393db8f07cdd9077476761075609596f9391f2241e9b5b16a18b98bc914ec6f1",
+      "node": "R01_CAPTURE@n10",
+      "receipt": "071493ef6f1eca3f94e6d4fe3e78b9dc2befdc71043ac798493946e877156c0b"
+    },
+    {
+      "input_hash": "9dde2021fe78c6f7f7f5ffa70ddd7079d0d661701d0cc9be09e8de3e199af428",
+      "node": "R02_CAUSE@n10",
+      "receipt": "90f1a40a4d68e74cfaf9acd4429061bd7d04fbedb02511497df22b8488eae79f"
+    },
+    {
+      "input_hash": "9dde2021fe78c6f7f7f5ffa70ddd7079d0d661701d0cc9be09e8de3e199af428",
+      "node": "R02_CAUSE@n10",
+      "receipt": "77a58828214dd2d486a488c02aa6620c8ecc81452e54ae1ad82bf954bcc3a420"
+    },
+    {
+      "input_hash": "9dde2021fe78c6f7f7f5ffa70ddd7079d0d661701d0cc9be09e8de3e199af428",
+      "node": "R02_CAUSE@n10",
+      "receipt": "65ed8b72e0e48491fedb64f5aef72156d765fd06638ce6b928af5a231ad4d489"
+    },
+    {
+      "input_hash": "9dde2021fe78c6f7f7f5ffa70ddd7079d0d661701d0cc9be09e8de3e199af428",
+      "node": "R02_CAUSE@n10",
+      "receipt": "48e177b1b7cd5d2b2be940e9969ad54c1bc905534ed033f4e0f0fd1f21177a39"
+    },
+    {
+      "input_hash": "9dde2021fe78c6f7f7f5ffa70ddd7079d0d661701d0cc9be09e8de3e199af428",
+      "node": "R02_CAUSE@n10",
+      "receipt": "147dd10122bd028772cd7f790d61f715d3af1a15bd9cb6b8aabd348b62b9ceb3"
+    },
+    {
+      "input_hash": "9dde2021fe78c6f7f7f5ffa70ddd7079d0d661701d0cc9be09e8de3e199af428",
+      "node": "R02_CAUSE@n10",
+      "receipt": "4a680fdcb46c36feadbec4dd57707550217297282f1e3bf77a52dcbf1be049cb"
+    },
+    {
+      "input_hash": "9dde2021fe78c6f7f7f5ffa70ddd7079d0d661701d0cc9be09e8de3e199af428",
+      "node": "R02_CAUSE@n10",
+      "receipt": "65144f388eb563e5af03f4e8f67320c63c3dad66178b35f97ab5090d3248fe78"
+    },
+    {
+      "input_hash": "ced62140a2c2714819e62a41943209995dde42a9aa26222f64c48d3e409f2cd6",
+      "node": "R03_IMPACT@n10",
+      "receipt": "61a703404a5e40d23876505352c11c0aa79b1b999fdafcd66779994fa9786108"
+    },
+    {
+      "input_hash": "1d26a453716090ed9b295049a666a8b89ac41e5640cbf1eb5b32a9830fd5c665",
+      "node": "R04_PROPOSAL@n10",
+      "receipt": "22dcc9935067c1f83fea2f7acee3a0375dfcdb6c5e36db23740da866886b81ea"
+    },
+    {
+      "input_hash": "1d26a453716090ed9b295049a666a8b89ac41e5640cbf1eb5b32a9830fd5c665",
+      "node": "R04_PROPOSAL@n10",
+      "receipt": "80078d4e91ce4c955f3dd8f0d8b2b188bb7727cee681a73ff7a30fded8162882"
+    },
+    {
+      "input_hash": "1d26a453716090ed9b295049a666a8b89ac41e5640cbf1eb5b32a9830fd5c665",
+      "node": "R04_PROPOSAL@n10",
+      "receipt": "ec78329f38eb4c1e03c894c4bd642d3d919909fbcfd1df38a26b7e0158b4681b"
+    },
+    {
+      "input_hash": "1d26a453716090ed9b295049a666a8b89ac41e5640cbf1eb5b32a9830fd5c665",
+      "node": "R04_PROPOSAL@n10",
+      "receipt": "52a40600eb45063c1c73370d975f96a270823bf1683577a1f97f1a5b4ab03b76"
+    },
+    {
+      "input_hash": "1d26a453716090ed9b295049a666a8b89ac41e5640cbf1eb5b32a9830fd5c665",
+      "node": "R04_PROPOSAL@n10",
+      "receipt": "b4b1a7efdebb632180b99cb125e9bb676470cc567dfdad8647ae529710db74e4"
+    },
+    {
+      "input_hash": "1d26a453716090ed9b295049a666a8b89ac41e5640cbf1eb5b32a9830fd5c665",
+      "node": "R04_PROPOSAL@n10",
+      "receipt": "b68f9ffdb79f295afb300863192b5473b40fe13c04f33d01fb05ebc2af828c90"
+    },
+    {
+      "input_hash": "1d26a453716090ed9b295049a666a8b89ac41e5640cbf1eb5b32a9830fd5c665",
+      "node": "R04_PROPOSAL@n10",
+      "receipt": "2a6d882a3c36b205c14874a281ad4ba2e7e421e9c9420ec35bda9046cc19c323"
+    },
+    {
+      "input_hash": "1d26a453716090ed9b295049a666a8b89ac41e5640cbf1eb5b32a9830fd5c665",
+      "node": "R04_PROPOSAL@n10",
+      "receipt": "5e381f65c3ecb17185cc5902b23f6a2dce7b26d86c148d6d66feec2d925c9b8f"
+    },
+    {
+      "input_hash": "1d26a453716090ed9b295049a666a8b89ac41e5640cbf1eb5b32a9830fd5c665",
+      "node": "R04_PROPOSAL@n10",
+      "receipt": "25544e380d1dfbbe198fe9f104ffd85276f9348a83612b27d2f4c251ca24c257"
+    },
+    {
+      "input_hash": "1d26a453716090ed9b295049a666a8b89ac41e5640cbf1eb5b32a9830fd5c665",
+      "node": "R04_PROPOSAL@n10",
+      "receipt": "43e54d367f893d23df4829290598e772af215a4873ec9f7779594efa30c42261"
+    },
+    {
+      "input_hash": "1d26a453716090ed9b295049a666a8b89ac41e5640cbf1eb5b32a9830fd5c665",
+      "node": "R04_PROPOSAL@n10",
+      "receipt": "5f86aaff89f648858f567fa927a94830c723c8ce989e6ecbc9cfdf42c614faac"
+    }
+  ],
+  "release_acceptance": {
+    "n09": false,
+    "n10": false
+  }
+}

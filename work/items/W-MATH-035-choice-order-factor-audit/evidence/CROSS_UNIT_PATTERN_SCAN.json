@@ -1,0 +1,26 @@
+{
+  "executedHead": "e74e351df4956a7fc420ad1f5ec7568b13ed6c33",
+  "publishedSource": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+  "scope": "16 units 567 items 2071 canonical choice keys; bounded pattern candidates outside N09/N10 only",
+  "notWholeMaterialApproval": true,
+  "candidates": [
+    {
+      "item": "n05-17",
+      "answer": "rとsは異符号（rs=-3<0だから）",
+      "disposition": "NO_SAME_ORDER_DEFECT",
+      "reason": "符号根拠→結論または同一文中の説明。二つの独立平方を比較の後へ置いた構造ではない。"
+    },
+    {
+      "item": "ne02-04",
+      "answer": "\\sqrt2+\\sqrt3>0,\\quad\\sqrt{5+2\\sqrt6}=\\sqrt2+\\sqrt3",
+      "disposition": "NO_SAME_ORDER_DEFECT",
+      "reason": "符号根拠→結論または同一文中の説明。二つの独立平方を比較の後へ置いた構造ではない。"
+    },
+    {
+      "item": "ne02-08",
+      "answer": "\\sqrt5>2,\\quad\\sqrt{9-4\\sqrt5}=\\sqrt5-2",
+      "disposition": "NO_SAME_ORDER_DEFECT",
+      "reason": "符号根拠→結論または同一文中の説明。二つの独立平方を比較の後へ置いた構造ではない。"
+    }
+  ]
+}

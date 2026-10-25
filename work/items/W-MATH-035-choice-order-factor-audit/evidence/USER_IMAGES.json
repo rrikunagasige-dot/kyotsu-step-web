@@ -1,0 +1,15 @@
+{
+  "sourceSHA": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+  "images": [
+    {
+      "name": "ee4d4a7699300b6165ad7a0216025d6e.png",
+      "libraryFileId": "libfile_31b508f128c881918b93ae8ded5bb8e5",
+      "sha256": "0d6ba665d6dd46d2f05627cabb4407983d77095bdc0c1ca08f987df1404a21fe"
+    },
+    {
+      "name": "fadcd306d0faf5af7a39096d716692db.png",
+      "libraryFileId": "libfile_594ee1ddbf84819182c7742e72bacaad",
+      "sha256": "58044f42cf09ad5cefecc77c2275e0611d0544a4c4f314b070dff7706d2af3b8"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "status": "PASS_ANALYSIS_OR_PROPOSAL_ONLY",
+  "node": "R03_IMPACT@n10",
+  "outputs": {
+    "impact.inventory": "NEEDS_AI_REVIEW"
+  },
+  "receipts": [
+    "61a703404a5e40d23876505352c11c0aa79b1b999fdafcd66779994fa9786108"
+  ]
+}

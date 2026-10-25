@@ -1,0 +1,41 @@
+{
+  "sourceSHA": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+  "implementationChanged": false,
+  "units": [
+    {
+      "unit": "n09",
+      "nodeCount": 41,
+      "items": 36,
+      "choices": 126,
+      "currentErrors": [
+        {
+          "node": "n09-14",
+          "side": "after",
+          "source": "\\begin{aligned}\\sqrt{10}&:(3,\\sqrt{10}-3)\\-\\sqrt{10}&:(-4,4-\\sqrt{10})\\end{aligned}",
+          "error": "KaTeX parse error: Undefined control sequence: \\- at position 42: …(3,\\sqrt{10}-3)\\̲-̲\\sqrt{10}&:(-4,…"
+        }
+      ],
+      "proposalErrors": [],
+      "proposalIRHash": "5200563950eed785a8e109d43b14520c41505c5475745abfa00cc5edce226c19",
+      "gradingKeysPreserved": true
+    },
+    {
+      "unit": "n10",
+      "nodeCount": 45,
+      "items": 45,
+      "choices": 156,
+      "currentErrors": [],
+      "proposalErrors": [],
+      "proposalIRHash": "9a11645df4ce5033994415641d85851e53509a4bb6add262efeac2bbb457a524",
+      "gradingKeysPreserved": true
+    }
+  ],
+  "displayProfiles": [
+    "n09-08",
+    "n10-07",
+    "n10-15",
+    "n10-20"
+  ],
+  "proposedRowsParsed": 32,
+  "status": "PROPOSAL_CHECKS_PASS_CURRENT_SOURCE_HAS_KNOWN_DEFECTS"
+}

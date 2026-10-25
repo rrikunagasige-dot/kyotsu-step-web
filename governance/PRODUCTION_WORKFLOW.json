@@ -39,12 +39,12 @@
   "modelStatus": "OFFLINE_ONLY",
   "newLessonAccepted": false,
   "protectedAppSource": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
-  "adoption": "Approved N09/N10 implemented and publicly verified; awaiting scoped app acceptance. Tool pin unchanged; no whole-branch merge.",
+  "adoption": "N09/N10 public source retained; user feedback captured and full bounded audit produced W035 proposal. No learner implementation/publication/model fit in this audit.",
   "legacyVersions": [
     "production/1",
     "legacy/1"
   ],
-  "repairProposal": "W-MATH-034/P-001",
+  "repairProposal": "W-MATH-035/P-001",
   "previousPublishedAppSource": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
   "acceptedFirstTitle": "22bc43ba53fa87bb85e82e18a25db13a5c8a485c",
   "publication": {
@@ -108,26 +108,19 @@
     }
   },
   "currentWork": {
-    "id": "W-MATH-034",
+    "id": "W-MATH-035",
     "proposal": "P-001",
-    "status": "VERIFYING",
-    "node": "G3_FINAL@n09",
+    "status": "PROPOSED",
+    "node": "R05_APPROVAL@n09",
     "blocks": [
       "n09",
       "n10"
     ],
-    "branch": "work/n09-n10-guided-design-20261025",
-    "proposalSourceSHA": "a442cbe966c074f122907bb7366b1ceb6634ca95",
+    "branch": "work/n0910-choice-order-factor-audit-20261025",
     "learnerSourceSHA": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+    "parent": "W-MATH-034",
     "userAccepted": false,
-    "concreteDesignApproved": true,
-    "nodes": [
-      "G3_FINAL@n09",
-      "G3_FINAL@n10"
-    ],
-    "approvalEvent": "W034-N09-N10-P001-APPROVED-20261025",
-    "approvalQuote": "ok。いいよ",
-    "readyDispatch": "work/items/W-MATH-034-n09-n10-guided-design/ready_dispatch.py"
+    "concreteDesignApproved": false
   },
   "currentLearnerVerification": {
     "sourceSHA": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
@@ -163,5 +156,38 @@
       "status": "DONE",
       "sourceSHA": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6"
     }
-  ]
+  ],
+  "previousCurrentWork": {
+    "id": "W-MATH-034",
+    "proposal": "P-001",
+    "status": "VERIFYING",
+    "node": "G3_FINAL@n09",
+    "blocks": [
+      "n09",
+      "n10"
+    ],
+    "branch": "work/n09-n10-guided-design-20261025",
+    "proposalSourceSHA": "a442cbe966c074f122907bb7366b1ceb6634ca95",
+    "learnerSourceSHA": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+    "userAccepted": false,
+    "concreteDesignApproved": true,
+    "nodes": [
+      "G3_FINAL@n09",
+      "G3_FINAL@n10"
+    ],
+    "approvalEvent": "W034-N09-N10-P001-APPROVED-20261025",
+    "approvalQuote": "ok。いいよ",
+    "readyDispatch": "work/items/W-MATH-034-n09-n10-guided-design/ready_dispatch.py"
+  },
+  "pendingFeedback": {
+    "work": "W-MATH-034",
+    "negative": 2,
+    "scope": [
+      "operation order",
+      "whole factor grouping"
+    ],
+    "sourceSHA": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+    "additionalAIFindings": 5,
+    "trained": false
+  }
 }

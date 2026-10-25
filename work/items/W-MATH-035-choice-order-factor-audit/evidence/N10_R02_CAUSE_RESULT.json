@@ -1,0 +1,22 @@
+{
+  "status": "PASS_ANALYSIS_OR_PROPOSAL_ONLY",
+  "node": "R02_CAUSE@n10",
+  "outputs": {
+    "case.retrieve": "PASS",
+    "knowledge.ledger": "PASS",
+    "math.verify": "NEEDS_AI_REVIEW",
+    "ir.verify": "PASS",
+    "source.audit": "NEEDS_AI_REVIEW",
+    "novice.audit": "PASS",
+    "math.solve": "NEEDS_AI_REVIEW"
+  },
+  "receipts": [
+    "90f1a40a4d68e74cfaf9acd4429061bd7d04fbedb02511497df22b8488eae79f",
+    "77a58828214dd2d486a488c02aa6620c8ecc81452e54ae1ad82bf954bcc3a420",
+    "65ed8b72e0e48491fedb64f5aef72156d765fd06638ce6b928af5a231ad4d489",
+    "48e177b1b7cd5d2b2be940e9969ad54c1bc905534ed033f4e0f0fd1f21177a39",
+    "147dd10122bd028772cd7f790d61f715d3af1a15bd9cb6b8aabd348b62b9ceb3",
+    "4a680fdcb46c36feadbec4dd57707550217297282f1e3bf77a52dcbf1be049cb",
+    "65144f388eb563e5af03f4e8f67320c63c3dad66178b35f97ab5090d3248fe78"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "status": "PASS_ANALYSIS_OR_PROPOSAL_ONLY",
+  "node": "R01_CAPTURE@n10",
+  "outputs": {
+    "source.fixed": "PASS",
+    "feedback.capture": "PASS"
+  },
+  "receipts": [
+    "2d79b7c807fbc57da351a0099b48f77e9ce71fd3b00eeabd9d2bdf1e91a77aa1",
+    "071493ef6f1eca3f94e6d4fe3e78b9dc2befdc71043ac798493946e877156c0b"
+  ]
+}

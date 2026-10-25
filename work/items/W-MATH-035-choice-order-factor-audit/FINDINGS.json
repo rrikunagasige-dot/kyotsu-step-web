@@ -1,0 +1,111 @@
+{
+  "sourceSHA": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+  "issues": [
+    {
+      "id": "F01",
+      "unit": "n09",
+      "nodes": [
+        "n09-08"
+      ],
+      "kind": "operation-order",
+      "title": "計算→計算→比較の順序になっていない",
+      "reason": "3行へ分けた順序が左平方→比較→右平方の逆向き。最終行の右平方も結果=元の式と逆向き。",
+      "surfaces": [
+        "all4options",
+        "completed",
+        "prior-result",
+        "collapsed-history",
+        "expanded-history"
+      ]
+    },
+    {
+      "id": "F02",
+      "unit": "n10",
+      "nodes": [
+        "n10-07"
+      ],
+      "kind": "option-granularity",
+      "title": "因数分解の選択肢1つだけ等式になっていない",
+      "reason": "正答と他2誤答はsqrt48=変形後、誤答sqrt14だけ単独値。演算結果でなく式の外形でも除外できる。",
+      "surfaces": [
+        "one-wrong-option"
+      ]
+    },
+    {
+      "id": "F03",
+      "unit": "n10",
+      "nodes": [
+        "n10-15"
+      ],
+      "kind": "operation-result-order",
+      "title": "掛ける操作と整理結果の表示段階が混在",
+      "reason": "正答だけ操作=整理結果、残る3誤答は掛ける操作まで。全4候補で操作→その候補を計算した結果を同じ表示構造にする。",
+      "surfaces": [
+        "all4options"
+      ]
+    },
+    {
+      "id": "F04",
+      "unit": "n10",
+      "nodes": [
+        "n10-20"
+      ],
+      "kind": "operation-result-order",
+      "title": "分数変形の選択肢が異なる段階で終わっている",
+      "reason": "正答は分母の平方差まで2段階。他は未整理の分母・掛ける操作・整理後の誤分母が混在。元の候補の値を変えず各候補の操作→整理結果へ揃える。",
+      "surfaces": [
+        "all4options"
+      ]
+    },
+    {
+      "id": "F05",
+      "unit": "n10",
+      "nodes": [
+        "n10-q17-factor"
+      ],
+      "kind": "factor-grouping",
+      "title": "差全体を掛ける括弧が欠落",
+      "reason": "beforeはtimes+slotの文字連結、afterも同じ欠落を持つ。sqrt3だけを掛けてsqrt2を引く別の式になる。",
+      "surfaces": [
+        "unanswered-slot-context",
+        "completed",
+        "prior-result",
+        "expanded-history"
+      ]
+    },
+    {
+      "id": "F06",
+      "unit": "n10",
+      "nodes": [
+        "n10-q20-factor"
+      ],
+      "kind": "factor-grouping",
+      "title": "支援を減らした次の例題でも同じ括弧欠落",
+      "reason": "(2+sqrt3)times2-sqrt3になっており、差全体が因子になっていない。",
+      "surfaces": [
+        "unanswered-slot-context",
+        "completed",
+        "prior-result",
+        "expanded-history"
+      ]
+    },
+    {
+      "id": "F07",
+      "unit": "n09",
+      "nodes": [
+        "n09-14"
+      ],
+      "kind": "latent-math-source-error",
+      "title": "表に置換する前の数式データの改行エスケープが不正",
+      "reason": "正答choiceは二重backslash、afterは単一backslash+minus。KaTeX throwOnErrorでUndefined control sequence。現行画面の表は正しいため現在の可視崩れとは区別する。",
+      "surfaces": [
+        "IR-after",
+        "compiled-after",
+        "readingFlow-source",
+        "table-projection-consistency"
+      ]
+    }
+  ],
+  "implementationChanged": false,
+  "scope": "Full N09/N10 for operation order, factor scope and option/result consistency; bounded pattern scan of other14units, not an exhaustive pedagogy audit of all16units"
+}

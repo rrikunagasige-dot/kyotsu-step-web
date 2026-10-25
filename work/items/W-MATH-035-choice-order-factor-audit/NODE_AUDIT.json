@@ -1,0 +1,1330 @@
+{
+  "sourceSHA": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+  "reviewer": "same assistant source review",
+  "independent": false,
+  "nodes": [
+    {
+      "unit": "n09",
+      "node": "n09-q01-positive",
+      "goal": "正の候補の平方",
+      "itemId": null,
+      "choiceCount": 0,
+      "choiceKeys": [],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-q01-negative",
+      "goal": "負の候補も確かめる",
+      "itemId": "n09-q01-negative",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "16",
+        "-16",
+        "-8"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-01",
+      "goal": "すべての解を答える",
+      "itemId": "n09-01",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "x=4,\\ -4",
+        "x=4",
+        "x=-4",
+        "x=16,\\ -16"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-definition",
+      "goal": "平方根と根号を区別する",
+      "itemId": null,
+      "choiceCount": 0,
+      "choiceKeys": [],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-q02-root",
+      "goal": "根号は非負の方を取る",
+      "itemId": "n09-q02-root",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "4",
+        "-4",
+        "\\pm4"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-q02-negative-square",
+      "goal": "負号を含めて二乗する",
+      "itemId": "n09-q02-negative-square",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "5",
+        "-5",
+        "25"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-02",
+      "goal": "二つの値を元の順序でまとめる",
+      "itemId": "n09-02",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "(4,\\ 5)",
+        "(\\pm4,\\ 5)",
+        "(-4,\\ 5)",
+        "(4,\\ -5)"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-boundary",
+      "goal": "0と負の数の境界",
+      "itemId": null,
+      "choiceCount": 0,
+      "choiceKeys": [],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-q03-inside",
+      "goal": "内側の平方を先に求める",
+      "itemId": "n09-q03-inside",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "16",
+        "-16",
+        "4"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-03",
+      "goal": "根号の非負の値を選ぶ",
+      "itemId": "n09-03",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "4",
+        "-4",
+        "\\pm4",
+        "16"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-q04-nonnegative",
+      "goal": "0以上の場合",
+      "itemId": "n09-q04-nonnegative",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "\\sqrt{a^2}=a",
+        "\\sqrt{a^2}=-a",
+        "\\sqrt{a^2}=a^2"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-q04-negative",
+      "goal": "負の場合",
+      "itemId": "n09-q04-negative",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "-a",
+        "a",
+        "0"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-04",
+      "goal": "条件と結果の対応を保持する",
+      "itemId": "n09-04",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "(a,\\ -a)",
+        "(a,\\ a)",
+        "(-a,\\ -a)",
+        "(-a,\\ a)"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-05",
+      "goal": "二つの場合を絶対値へ統合する",
+      "itemId": "n09-05",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "|a|",
+        "a",
+        "-a",
+        "a^2"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-q06-squares",
+      "goal": "非負の二数を平方で比較する",
+      "itemId": "n09-q06-squares",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "4",
+        "2",
+        "5"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-q06-order",
+      "goal": "平方の比較を元の数へ戻す",
+      "itemId": "n09-q06-order",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "<",
+        ">",
+        "="
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "関係記号そのものが穴。=選択肢を含むことは外形不整合の証拠ではない。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-06",
+      "goal": "差の符号へつなぐ",
+      "itemId": "n09-06",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "2-\\sqrt5<0",
+        "2-\\sqrt5>0",
+        "2-\\sqrt5=0",
+        "2-\\sqrt5\\ge0"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-q07-negation",
+      "goal": "負の式全体に負号を付ける",
+      "itemId": "n09-q07-negation",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "-(2-\\sqrt5)",
+        "2-\\sqrt5",
+        "-2-\\sqrt5"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "負号・差・商・平方の対象全体の括弧を確認。明示済み。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-07",
+      "goal": "両項の符号を変えて答える",
+      "itemId": "n09-07",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "\\sqrt5-2",
+        "2-\\sqrt5",
+        "\\sqrt5+2",
+        "-(2+\\sqrt5)"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-decimal-method",
+      "goal": "小数の平方の計算方法を示す",
+      "itemId": null,
+      "choiceCount": 0,
+      "choiceKeys": [],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-p001-q08-left-square",
+      "goal": "左側の平方を小数へ戻す",
+      "itemId": "n09-p001-q08-left-square",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "1.9881",
+        "1.9981",
+        "1.9811",
+        "1.9918"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-p001-q08-right-square",
+      "goal": "右側の平方を小数へ戻す",
+      "itemId": "n09-p001-q08-right-square",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "2.0164",
+        "2.0104",
+        "2.0264",
+        "2.1064"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-p001-q08-lower-sign",
+      "goal": "左の平方と2を比べる",
+      "itemId": "n09-p001-q08-lower-sign",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "<",
+        ">",
+        "=",
+        "\\ge"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "関係記号そのものが穴。=選択肢を含むことは外形不整合の証拠ではない。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-p001-q08-upper-sign",
+      "goal": "2と右の平方を比べる",
+      "itemId": "n09-p001-q08-upper-sign",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "<",
+        ">",
+        "=",
+        "\\ge"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "関係記号そのものが穴。=選択肢を含むことは外形不整合の証拠ではない。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-08",
+      "goal": "計算と比較を一つに記録する",
+      "itemId": "n09-08",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "1.41^2=1.9881<2<2.0164=1.42^2",
+        "1.41^2=1.9981<2<2.0164=1.42^2",
+        "1.41^2=1.9881<2<2.0104=1.42^2",
+        "1.41^2=1.9881<2>2.0164=1.42^2"
+      ],
+      "findings": [
+        "F01"
+      ],
+      "review": "CHANGE_PROPOSED",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-09",
+      "goal": "非負性を使って根号を挟む",
+      "itemId": "n09-09",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "1.41<\\sqrt2<1.42",
+        "1.42<\\sqrt2<1.41",
+        "1.41>\\sqrt2>1.42",
+        "1.41=\\sqrt2"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-parts-target",
+      "goal": "残りに課す条件を先に示す",
+      "itemId": null,
+      "choiceCount": 0,
+      "choiceKeys": [],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-q10-reject-truncation",
+      "goal": "候補-2の残りを調べる",
+      "itemId": "n09-q10-reject-truncation",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "-0.1",
+        "0.1",
+        "-4.1"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-10",
+      "goal": "区間の左端の整数を選ぶ",
+      "itemId": "n09-10",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "-3",
+        "-2",
+        "-1",
+        "-4"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-q11-remainder",
+      "goal": "選んだ整数からの差を計算する",
+      "itemId": "n09-q11-remainder",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "0.9",
+        "-0.9",
+        "-5.1"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "負号・差・商・平方の対象全体の括弧を確認。明示済み。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-11",
+      "goal": "元の数を整数と残りへ分ける",
+      "itemId": "n09-11",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "-3+0.9",
+        "-2-0.1",
+        "-2+0.1",
+        "-3-0.9"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-q12-lower",
+      "goal": "左側の整数の平方",
+      "itemId": "n09-q12-lower",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "9",
+        "6",
+        "3"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-q12-upper",
+      "goal": "右側の整数の平方",
+      "itemId": "n09-q12-upper",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "16",
+        "8",
+        "4"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-12",
+      "goal": "正の根号を隣接整数で挟む",
+      "itemId": "n09-12",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "3<\\sqrt{10}<4",
+        "2<\\sqrt{10}<3",
+        "3<\\sqrt{10}<3",
+        "4<\\sqrt{10}<5"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-q13-reverse",
+      "goal": "負を掛けたときの不等号",
+      "itemId": "n09-q13-reverse",
+      "choiceCount": 3,
+      "choiceKeys": [
+        ">",
+        "<",
+        "="
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "関係記号そのものが穴。=選択肢を含むことは外形不整合の証拠ではない。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-13",
+      "goal": "小さい順に区間を書く",
+      "itemId": "n09-13",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "-4<-\\sqrt{10}<-3",
+        "-3<-\\sqrt{10}<-4",
+        "-5<-\\sqrt{10}<-4",
+        "-3<-\\sqrt{10}<-2"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-q14-positive-integer",
+      "goal": "正の根号の整数部分",
+      "itemId": "n09-q14-positive-integer",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "3",
+        "4",
+        "10"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-q14-positive-remainder",
+      "goal": "正の根号の小数部分",
+      "itemId": "n09-q14-positive-remainder",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "\\sqrt{10}-3",
+        "4-\\sqrt{10}",
+        "\\sqrt{10}"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-q14-negative-integer",
+      "goal": "負の根号の整数部分",
+      "itemId": "n09-q14-negative-integer",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "-4",
+        "-3",
+        "3"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-q14-negative-remainder",
+      "goal": "負の根号でも同じ定義を使う",
+      "itemId": "n09-q14-negative-remainder",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "4-\\sqrt{10}",
+        "\\sqrt{10}-4",
+        "3-\\sqrt{10}"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "負号・差・商・平方の対象全体の括弧を確認。明示済み。"
+    },
+    {
+      "unit": "n09",
+      "node": "n09-14",
+      "goal": "正負の組をまとめて検算する",
+      "itemId": "n09-14",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "\\begin{aligned}\\sqrt{10}&:(3,\\sqrt{10}-3)\\\\-\\sqrt{10}&:(-4,4-\\sqrt{10})\\end{aligned}",
+        "\\begin{aligned}\\sqrt{10}&:(3,\\sqrt{10}-3)\\\\-\\sqrt{10}&:(-3,3-\\sqrt{10})\\end{aligned}",
+        "\\begin{aligned}\\sqrt{10}&:(3,\\sqrt{10}-3)\\\\-\\sqrt{10}&:(-3,\\sqrt{10}-3)\\end{aligned}",
+        "\\begin{aligned}\\sqrt{10}&:(4,\\sqrt{10}-4)\\\\-\\sqrt{10}&:(-4,4-\\sqrt{10})\\end{aligned}"
+      ],
+      "findings": [
+        "F07"
+      ],
+      "review": "CHANGE_PROPOSED",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-q01-square",
+      "goal": "候補の平方を計算する",
+      "itemId": "n10-q01-square",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "5t^2",
+        "5t",
+        "25t^2"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-01",
+      "goal": "同じ数で割ってtの平方を取り出す",
+      "itemId": "n10-01",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "t^2=25",
+        "t=25",
+        "t^2=125",
+        "t^2=5"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-q02-sign",
+      "goal": "正の条件で候補を一つに絞る",
+      "itemId": "n10-q02-sign",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "5",
+        "-5",
+        "\\pm5"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-02",
+      "goal": "候補へ代入して平方根を確定する",
+      "itemId": "n10-02",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "5\\sqrt5",
+        "-5\\sqrt5",
+        "25\\sqrt5",
+        "5\\sqrt{25}"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-q03-expand",
+      "goal": "積を平方して因子をまとめる",
+      "itemId": "n10-q03-expand",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "(\\sqrt a)^2(\\sqrt b)^2",
+        "(\\sqrt a)^2+(\\sqrt b)^2",
+        "\\sqrt a(\\sqrt b)^2"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "負号・差・商・平方の対象全体の括弧を確認。明示済み。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-03",
+      "goal": "定義から積の平方を求める",
+      "itemId": "n10-03",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "ab",
+        "a+b",
+        "\\sqrt{ab}",
+        "a^2b^2"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-q04-sign",
+      "goal": "積の符号を確かめる",
+      "itemId": "n10-q04-sign",
+      "choiceCount": 3,
+      "choiceKeys": [
+        ">",
+        "<",
+        "="
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "関係記号そのものが穴。=選択肢を含むことは外形不整合の証拠ではない。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-04",
+      "goal": "正の平方根として積を確定する",
+      "itemId": "n10-04",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "\\sqrt{ab}",
+        "-\\sqrt{ab}",
+        "ab",
+        "\\sqrt a+\\sqrt b"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-q05-denominator",
+      "goal": "割る前に0でないことを確かめる",
+      "itemId": "n10-q05-denominator",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "\\ne",
+        "=",
+        "<"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "関係記号そのものが穴。=選択肢を含むことは外形不整合の証拠ではない。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-q05-square",
+      "goal": "商の平方を分子分母へ分ける",
+      "itemId": "n10-q05-square",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "\\frac{(\\sqrt a)^2}{(\\sqrt b)^2}",
+        "\\frac{\\sqrt a}{(\\sqrt b)^2}",
+        "\\frac{(\\sqrt b)^2}{(\\sqrt a)^2}"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "負号・差・商・平方の対象全体の括弧を確認。明示済み。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-05",
+      "goal": "商の平方を定義で計算する",
+      "itemId": "n10-05",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "\\frac ab",
+        "\\frac ba",
+        "\\sqrt{\\frac ab}",
+        "ab"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-q06-sign",
+      "goal": "商の符号を確かめる",
+      "itemId": "n10-q06-sign",
+      "choiceCount": 3,
+      "choiceKeys": [
+        ">",
+        "<",
+        "="
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "関係記号そのものが穴。=選択肢を含むことは外形不整合の証拠ではない。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-06",
+      "goal": "商を正の平方根として表す",
+      "itemId": "n10-06",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "\\sqrt{\\frac ab}",
+        "-\\sqrt{\\frac ab}",
+        "\\frac ab",
+        "\\sqrt a\\sqrt b"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-q07-product",
+      "goal": "積の性質を具体的な数に使う",
+      "itemId": "n10-q07-product",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "48",
+        "14",
+        "68"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-07",
+      "goal": "平方数と残りの積に分ける",
+      "itemId": "n10-07",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "\\sqrt{48}=\\sqrt{16\\cdot3}",
+        "\\sqrt{14}",
+        "\\sqrt{48}=\\sqrt{8\\cdot8}",
+        "\\sqrt{48}=\\sqrt{16\\cdot2}"
+      ],
+      "findings": [
+        "F02"
+      ],
+      "review": "CHANGE_PROPOSED",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-q08-factor",
+      "goal": "平方数の平方根を外へ出す",
+      "itemId": "n10-q08-factor",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "4",
+        "16",
+        "\\pm4"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-08",
+      "goal": "元の積の答えへ戻す",
+      "itemId": "n10-08",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "4\\sqrt3",
+        "16\\sqrt3",
+        "4\\sqrt{12}",
+        "8\\sqrt3"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-q09-left",
+      "goal": "和は各項を別々に変形する",
+      "itemId": "n10-q09-left",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "2\\sqrt2",
+        "4\\sqrt2",
+        "2\\sqrt4"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-q09-right",
+      "goal": "右の項も同じ方法で変形する",
+      "itemId": "n10-q09-right",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "5\\sqrt2",
+        "25\\sqrt2",
+        "5\\sqrt{10}"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-09",
+      "goal": "足し算を保って元の式へ戻す",
+      "itemId": "n10-09",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "2\\sqrt2+5\\sqrt2",
+        "\\sqrt{58}",
+        "2\\sqrt2+25\\sqrt2",
+        "2\\sqrt2+5\\sqrt{10}"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-q10-coefficients",
+      "goal": "同じまとまりの係数を足す",
+      "itemId": "n10-q10-coefficients",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "7",
+        "10",
+        "3"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-10",
+      "goal": "和の最終結果を答える",
+      "itemId": "n10-10",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "7\\sqrt2",
+        "7\\sqrt4",
+        "7\\sqrt{2+2}",
+        "3\\sqrt2"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-q11-formula",
+      "goal": "平方の公式を対象に対応させる",
+      "itemId": "n10-q11-formula",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "(A-B)^2=A^2-2AB+B^2",
+        "(A-B)^2=A^2-B^2",
+        "(A-B)^2=A^2+2AB+B^2"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-11",
+      "goal": "公式へ代入して展開する",
+      "itemId": "n10-11",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "2-2\\sqrt2\\sqrt3+3",
+        "2+2\\sqrt2\\sqrt3+3",
+        "2-\\sqrt2\\sqrt3+3",
+        "2-2\\sqrt2\\sqrt3+9"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-q12-product",
+      "goal": "中項の根号の積を整理する",
+      "itemId": "n10-q12-product",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "\\sqrt6",
+        "\\sqrt5",
+        "6"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-12",
+      "goal": "定数と中項をまとめる",
+      "itemId": "n10-12",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "5-2\\sqrt6",
+        "5+2\\sqrt6",
+        "5-\\sqrt6",
+        "6-2\\sqrt6"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-q13-identity",
+      "goal": "和と差の積の構造を見つける",
+      "itemId": "n10-q13-identity",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "(A+B)(A-B)=A^2-B^2",
+        "(A+B)(A-B)=A^2+B^2",
+        "(A+B)(A-B)=(A-B)^2"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-13",
+      "goal": "平方差を計算する",
+      "itemId": "n10-13",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "7-2=5",
+        "7+2=9",
+        "7-\\sqrt{14}",
+        "7-4=3"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "7-2=5 / 3-2=1は一つの計算を左から右へ進める連続等式。短い誤答は中項・平方差の誤用を表し、独立した二つの計算を比較の後ろへ逆置きしたF01とは異なる。均等な行数のための恒等式は追加しない。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-14",
+      "goal": "分数の値を保つ操作を確認する",
+      "itemId": "n10-14",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "0でない同じ数を分子・分母の両方に掛ける",
+        "分母だけに同じ数を掛ける",
+        "分子だけに平方根を足す",
+        "分母から根号をそのまま消す"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-q15-factor",
+      "goal": "分母の根号を平方にする因子",
+      "itemId": "n10-q15-factor",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "c=\\sqrt3",
+        "c=3",
+        "c=\\sqrt2"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-15",
+      "goal": "掛けた直後の等価な分数を作る",
+      "itemId": "n10-15",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "\\frac1{2\\sqrt3}\\cdot\\frac{\\sqrt3}{\\sqrt3}=\\frac{\\sqrt3}{2(\\sqrt3)^2}",
+        "\\frac1{2\\sqrt3}\\cdot\\sqrt3",
+        "\\frac1{2\\sqrt3}\\cdot\\frac3{\\sqrt3}",
+        "\\frac1{2\\sqrt3}\\cdot\\frac{\\sqrt2}{\\sqrt2}"
+      ],
+      "findings": [
+        "F03"
+      ],
+      "review": "CHANGE_PROPOSED",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-q16-denominator",
+      "goal": "分母全体の値を計算する",
+      "itemId": "n10-q16-denominator",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "6",
+        "3",
+        "2"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-16",
+      "goal": "分母の根号のない形を得る",
+      "itemId": "n10-16",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "\\frac{\\sqrt3}{6}",
+        "\\frac{\\sqrt3}{2}",
+        "\\frac3{6}",
+        "\\frac1{6\\sqrt3}"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-q17-factor",
+      "goal": "和の分母へ対応する差を選ぶ",
+      "itemId": "n10-q17-factor",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "\\sqrt3-\\sqrt2",
+        "\\sqrt3+\\sqrt2",
+        "\\sqrt3"
+      ],
+      "findings": [
+        "F05"
+      ],
+      "review": "CHANGE_PROPOSED",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-q17-nonzero",
+      "goal": "掛ける差が0でない根拠",
+      "itemId": "n10-q17-nonzero",
+      "choiceCount": 3,
+      "choiceKeys": [
+        ">",
+        "=",
+        "<"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "関係記号そのものが穴。=選択肢を含むことは外形不整合の証拠ではない。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-17",
+      "goal": "選んだ因子で等価な分数を作る",
+      "itemId": "n10-17",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt3-\\sqrt2}{\\sqrt3-\\sqrt2}",
+        "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt3+\\sqrt2}{\\sqrt3+\\sqrt2}",
+        "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt3}{\\sqrt3}",
+        "\\frac{\\sqrt3}{\\sqrt3+\\sqrt2}\\cdot\\frac{\\sqrt2}{\\sqrt2}"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-18",
+      "goal": "分母を平方差で計算する",
+      "itemId": "n10-18",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "3-2=1",
+        "3+2=5",
+        "3-\\sqrt6",
+        "\\sqrt3-\\sqrt2"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "7-2=5 / 3-2=1は一つの計算を左から右へ進める連続等式。短い誤答は中項・平方差の誤用を表し、独立した二つの計算を比較の後ろへ逆置きしたF01とは異なる。均等な行数のための恒等式は追加しない。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-q19-distribute",
+      "goal": "分子へ分配法則を適用する",
+      "itemId": "n10-q19-distribute",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "\\sqrt3\\sqrt3-\\sqrt3\\sqrt2",
+        "\\sqrt3\\sqrt3-\\sqrt2",
+        "\\sqrt3\\sqrt3+\\sqrt3\\sqrt2"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "負号・差・商・平方の対象全体の括弧を確認。明示済み。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-19",
+      "goal": "分数全体を最後まで整理する",
+      "itemId": "n10-19",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "3-\\sqrt6",
+        "3+\\sqrt6",
+        "1-\\sqrt6",
+        "3-2\\sqrt6"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-q20-factor",
+      "goal": "支援を減らして因子を選ぶ",
+      "itemId": "n10-q20-factor",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "2-\\sqrt3",
+        "2+\\sqrt3",
+        "\\sqrt3"
+      ],
+      "findings": [
+        "F06"
+      ],
+      "review": "CHANGE_PROPOSED",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-20",
+      "goal": "掛けた直後の分数を作る",
+      "itemId": "n10-20",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "\\frac{(2-\\sqrt3)^2}{(2+\\sqrt3)(2-\\sqrt3)}=\\frac{(2-\\sqrt3)^2}{4-3}",
+        "\\frac{(2-\\sqrt3)^2}{(2+\\sqrt3)^2}",
+        "\\frac{2-\\sqrt3}{2+\\sqrt3}\\cdot\\frac{2+\\sqrt3}{2+\\sqrt3}",
+        "\\frac{(2-\\sqrt3)^2}{4+3}"
+      ],
+      "findings": [
+        "F04"
+      ],
+      "review": "CHANGE_PROPOSED",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-q21-denominator",
+      "goal": "分母の平方差を計算する",
+      "itemId": "n10-q21-denominator",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "1",
+        "7",
+        "-1"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-q21-expand",
+      "goal": "分子の平方を三項へ展開する",
+      "itemId": "n10-q21-expand",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "4-4\\sqrt3+3",
+        "4+4\\sqrt3+3",
+        "4-2\\sqrt3+3"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "負号・差・商・平方の対象全体の括弧を確認。明示済み。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-q21-constants",
+      "goal": "普通の数だけを合計する",
+      "itemId": "n10-q21-constants",
+      "choiceCount": 3,
+      "choiceKeys": [
+        "7",
+        "1",
+        "12"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    },
+    {
+      "unit": "n10",
+      "node": "n10-21",
+      "goal": "有理化の最終結果を完成させる",
+      "itemId": "n10-21",
+      "choiceCount": 4,
+      "choiceKeys": [
+        "7-4\\sqrt3",
+        "7+4\\sqrt3",
+        "7-2\\sqrt3",
+        "1-4\\sqrt3"
+      ],
+      "findings": [],
+      "review": "NO_ADDITIONAL_ISSUE_IN_THIS_SCOPE",
+      "reason": "数値/符号/公式/順序付き組の候補。穴の前後を結合しても今回の因子括弧・操作順の追加欠陥なし。"
+    }
+  ]
+}

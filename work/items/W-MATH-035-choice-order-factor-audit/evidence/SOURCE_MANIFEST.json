@@ -1,0 +1,12 @@
+{
+  "publishedSource": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+  "executedHead": "e74e351df4956a7fc420ad1f5ec7568b13ed6c33",
+  "files": {
+    "src/components/textbook/GuidedMathReadingFlow.tsx": "f6c8eda73108fdad7bfbfd0e050d68164f662d36ab0f7b95c97fc5a2e634dd72",
+    "src/components/textbook/guided-math-reading.css": "33313012d7271cf9be7e28756d1acf341628a41b1c444f5e524f0ca55a5998c2",
+    "src/domain/textbookDisplayLines.ts": "2b71182e1411b7297a2f0107c63df2ae224773165b70565c29ef7e1d7c5971df",
+    "src/data/textbook/math/numbers/n09Authored.json": "7fdf66f5e27e9121e8f7403d69c01d3947cdad80b731f2db6dca70399275c95a",
+    "src/data/textbook/math/numbers/n10Authored.json": "53992d823ea7bf9ee1e85e799ee62fb3976a46acd4ac8b2e6c00c44c99d6be9c"
+  },
+  "sourceDiff": ""
+}

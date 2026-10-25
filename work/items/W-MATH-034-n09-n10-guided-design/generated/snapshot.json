@@ -1,31 +1,41 @@
 {
   "work": "W-MATH-034",
   "engine_version": "1.0.0",
-  "ledger_head": "8e97767feb584e39604aff63bf75c9174f36cecf31cdc1d4b85ac1342af203d5",
+  "ledger_head": "280e28e46a25a08d38384ba9ab708fec368e44230047dfd0724bce5c2dfe3dc8",
   "work_status": "VERIFYING",
   "profile": "material",
   "simulation": false,
   "candidate_sha": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
   "next": {
-    "status": "WAITING",
-    "reason": "USER_DECISION",
+    "status": "READY",
     "task": {
       "work_id": "W-MATH-034",
       "node": {
-        "id": "G3_FINAL@n09",
-        "stage_kind": "G3_FINAL",
-        "contract_kind": "G3_FINAL",
-        "actor": "USER",
+        "id": "R01_CAPTURE@n09",
+        "stage_kind": "R01_CAPTURE",
+        "contract_kind": "R01_CAPTURE",
+        "actor": "AI",
         "depends_on": [
-          "G3_HOST@n09"
+          "S01_ROUTE"
         ],
-        "required": [],
-        "block": null,
+        "required": [
+          "complaint",
+          "before_evidence",
+          "reproduction",
+          "target_versions"
+        ],
+        "block": "n09",
         "release_unit": "n09",
         "watch": "integration",
-        "phase": "acceptance",
+        "phase": "pre-design",
         "priority": 0,
-        "source_refs": [],
+        "source_refs": [
+          "src/data/textbook/math/numbers/n09Lesson.ts",
+          "src/domain/textbook.ts",
+          "src/pages/TextbookUnitPage.tsx",
+          "work/items/W-MATH-034-n09-n10-guided-design/evidence/N09_SOURCE_INDEX.json",
+          "public/assets/math/textbook/numbers/n09-f01.png"
+        ],
         "protected_refs": [
           "src/data/textbook/math/numbers/firstSectionTeaching.json",
           "src/data/textbook/math/typesetting.json",
@@ -38,12 +48,21 @@
           "src/components/textbook/n08-reading.css",
           "public/assets/math/textbook/numbers/n09-f01.png"
         ],
-        "capability_requests": [],
-        "required_code_receipts": [],
-        "required_ai_receipts": []
+        "approval_scope_ref": "proposal",
+        "capability_requests": [
+          "source.fixed",
+          "feedback.capture"
+        ],
+        "required_code_receipts": [
+          "source.fixed",
+          "feedback.capture"
+        ],
+        "required_ai_receipts": [
+          "meaning-review"
+        ]
       },
-      "task_id": "74688e53e9bdfd50a011c28aa61dde4bcde632e3a931a1984b838a0613b3b0ad",
-      "input_hash": "a29a7674a8a9aa8c00296cd0b539e438400a62214fdec49752c409740c17f1c9",
+      "task_id": "e01090446878cb85e527c675ab41e4cfacd881161958395a0f86ee9650f9bc27",
+      "input_hash": "61e121ad341f18524804e0fb1d4a5dc66d70e64a636f5ea032cd393f93781208",
       "source_sha": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
       "candidate_sha": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
       "rules": {
@@ -99,11 +118,11 @@
         "work/items/W-MATH-034-n09-n10-guided-design/evidence/N10_SOURCE_INDEX.json": "566d46e84e4e62040b696212f4cb87a64c21914a53d03d246b70210215140e48"
       },
       "previous_results": {
-        "G3_HOST@n09": {
-          "actor": "W034-serial-ready-dispatch",
-          "artifact": "e0c21b2a3dc34d2429fcc4897bcf68bb5b835579033f45295f5c4129ec11fbb8",
-          "input_hash": "5c9417c85f0ebedab170840d31d26f2e887a6a19003b277f80a5fa06ef79ae5c",
-          "node": "G3_HOST@n09",
+        "S01_ROUTE": {
+          "actor": "deterministic-code",
+          "artifact": "d4ccbbfc2abc9c8d2f87ac941b23f88e5064666e42197d1ad46f4e285b9a8484",
+          "input_hash": "a24ab54936e4303d12ed0d9e3537379471915b61d09f1e7e51dcc3f564945a10",
+          "node": "S01_ROUTE",
           "verdict": "PASS"
         }
       },
@@ -235,7 +254,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "R02_CAUSE@n09",
@@ -298,7 +317,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "R03_IMPACT@n09",
@@ -347,7 +366,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "R04_PROPOSAL@n09",
@@ -418,7 +437,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "R05_APPROVAL@n09",
@@ -458,7 +477,7 @@
       "capability_requests": [],
       "required_code_receipts": [],
       "required_ai_receipts": [],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "R06_PATCH@n09",
@@ -501,7 +520,7 @@
         "ir.compile"
       ],
       "required_ai_receipts": [],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "R07_VERIFY@n09",
@@ -550,7 +569,7 @@
         "protected.verify"
       ],
       "required_ai_receipts": [],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "R07_SEMANTIC@n09",
@@ -602,7 +621,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "R01_CAPTURE@n10",
@@ -653,7 +672,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "R02_CAUSE@n10",
@@ -716,7 +735,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "R03_IMPACT@n10",
@@ -764,7 +783,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "R04_PROPOSAL@n10",
@@ -835,7 +854,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "R05_APPROVAL@n10",
@@ -874,7 +893,7 @@
       "capability_requests": [],
       "required_code_receipts": [],
       "required_ai_receipts": [],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "R06_PATCH@n10",
@@ -916,7 +935,7 @@
         "ir.compile"
       ],
       "required_ai_receipts": [],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "R07_VERIFY@n10",
@@ -964,7 +983,7 @@
         "protected.verify"
       ],
       "required_ai_receipts": [],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "R07_SEMANTIC@n10",
@@ -1015,7 +1034,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "G2_AUDIT@n09",
@@ -1061,7 +1080,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "G3_HOST@n09",
@@ -1097,7 +1116,7 @@
         "release.verify"
       ],
       "required_ai_receipts": [],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "G3_FINAL@n09",
@@ -1316,7 +1335,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "G3_HOST@n10",
@@ -1352,7 +1371,7 @@
         "release.verify"
       ],
       "required_ai_receipts": [],
-      "status": "PASSED"
+      "status": "INVALIDATED"
     },
     {
       "id": "G3_FINAL@n10",
@@ -1560,18 +1579,83 @@
       "status": "PENDING"
     }
   ],
-  "pending_issues": [],
+  "pending_issues": [
+    {
+      "block": "n09",
+      "description": "1.この選択肢ちょっと整えていない\n違うだから\n1.41^2 =..\n1.42^2=..\n1.91 ...\nこっちの方がよくないかってことだよ",
+      "evidence_refs": [
+        "W034-N09-ORDER-NEGATIVE-20261025"
+      ],
+      "id": "9edbc81e2181722b430e",
+      "origin": "user",
+      "root_cause": "USER_REVIEW_PENDING_ANALYSIS",
+      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674"
+    },
+    {
+      "block": "n10",
+      "description": "2.カッコが忘れている(sqrt 3- sqrt 2)でしょう",
+      "evidence_refs": [
+        "W034-N10-FACTOR-NEGATIVE-20261025"
+      ],
+      "id": "ff234332d7d5ec0beaf3",
+      "origin": "user",
+      "root_cause": "USER_REVIEW_PENDING_ANALYSIS",
+      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674"
+    }
+  ],
   "application_accepted": false,
   "correction_queue": [
+    {
+      "block": "n09",
+      "description": "1.この選択肢ちょっと整えていない\n違うだから\n1.41^2 =..\n1.42^2=..\n1.91 ...\nこっちの方がよくないかってことだよ",
+      "evidence_refs": [
+        "W034-N09-ORDER-NEGATIVE-20261025"
+      ],
+      "id": "9edbc81e2181722b430e",
+      "origin": "user",
+      "root_cause": "USER_REVIEW_PENDING_ANALYSIS",
+      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+      "work": "W-MATH-034"
+    },
+    {
+      "block": "n10",
+      "description": "2.カッコが忘れている(sqrt 3- sqrt 2)でしょう",
+      "evidence_refs": [
+        "W034-N10-FACTOR-NEGATIVE-20261025"
+      ],
+      "id": "ff234332d7d5ec0beaf3",
+      "origin": "user",
+      "root_cause": "USER_REVIEW_PENDING_ANALYSIS",
+      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+      "work": "W-MATH-034"
+    },
     {
       "id": "W-MATH-034",
       "work": "W-MATH-034",
       "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
+    },
+    {
+      "id": "W-MATH-035",
+      "work": "W-MATH-035",
+      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+      "origin": "unfinished-correction",
+      "description": "未完了の修正Work"
+    },
+    {
+      "id": "W034-N0910-ALL-MISTAKES-AUDIT-20261025",
+      "kind": "correction",
+      "quote": "そうそうそう。だからその選択肢のなかで似たようなことも起こっているじゃないかなと思った\n①と②\n\nだからまず全てのミスを見つけて、最後提案書ね修正の",
+      "source_ref": "current-conversation latest explicit audit-then-proposal request",
+      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+      "work": "W-MATH-034",
+      "origin": "request-intake"
     }
   ],
-  "child_works": [],
+  "child_works": [
+    "W-MATH-035"
+  ],
   "capability_receipts": [
     {
       "input_hash": "6acdf25a56e45bcd2633b74f04c79a475c2992cd1c0a5f20082e1778aaf3bc96",

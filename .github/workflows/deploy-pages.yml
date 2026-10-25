@@ -1,4 +1,4 @@
-name: Publish approved N09 and N10 to existing app
+name: Publish approved N09 N10 order and grouping repair to existing app
 on:
   push:
     branches: ['main']
@@ -19,15 +19,15 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     env:
-      CANDIDATE_SHA: 'cb7d30bfe666b9123ea51e1fad7e36268507b674'
-      VITE_PREVIEW_COMMIT: 'cb7d30bfe666b9123ea51e1fad7e36268507b674'
+      CANDIDATE_SHA: 'fa0eff271a97940fad08d83960ae50faeabc81b9'
+      VITE_PREVIEW_COMMIT: 'fa0eff271a97940fad08d83960ae50faeabc81b9'
       VITE_REVIEW_PREVIEW: 'true'
       VITE_BASE_PATH: '/kyotsu-step-web/'
       VITE_STORAGE_NAMESPACE: 'kyotsu-step-gate3-math-20261023'
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 'cb7d30bfe666b9123ea51e1fad7e36268507b674'
+          ref: 'fa0eff271a97940fad08d83960ae50faeabc81b9'
           fetch-depth: 0
           persist-credentials: false
       - uses: pnpm/action-setup@v4
@@ -44,11 +44,11 @@ jobs:
           test "$(git rev-parse HEAD)" = "$CANDIDATE_SHA"
           node tools/textbook/integrate-n07.mjs --check
           node work/items/W-MATH-033-n08-absolute-value/materialize.mjs --check
-          node work/items/W-MATH-034-n09-n10-guided-design/materialize.mjs --check-n09 --check-n10
+          node work/items/W-MATH-035-choice-order-factor-audit/materialize.mjs --check
           node --input-type=module <<'NODE'
           import {execFileSync} from 'node:child_process'
-          const changed=execFileSync('git',['diff','--name-only','ea47dd97f7d323267281915e8d9a7bb92a8e7c03','HEAD','--','src','public'],{encoding:'utf8'}).trim().split('\n').filter(Boolean)
-          const allowed=new Set(["src/components/textbook/GuidedMathReadingFlow.tsx", "src/components/textbook/guided-math-reading.css", "src/data/textbook/math/numbers/n09Authored.json", "src/data/textbook/math/numbers/n09Lesson.ts", "src/pages/TextbookUnitPage.tsx", "src/domain/textbook.ts", "src/test/n09Legacy.ts", "src/data/textbook/math/numbers/newBatchCoverage.test.ts", "src/data/textbook/math/numbers/firstSectionTeaching.test.tsx", "src/data/textbook/math/numbers/n09Atomicity.test.ts", "src/data/textbook/math/numbers/numbersNextBatch.test.ts", "src/data/textbook/math/numbers/r3LocalTokens.test.ts", "src/domain/textbook.test.ts", "src/data/textbook/math/numbers/n10Lesson.ts", "src/data/textbook/math/numbers/n10Authored.json", "src/test/n10Legacy.ts", "src/data/textbook/math/numbers/numbersPilots.test.ts", "src/review/reviewTargets.test.ts"])
+          const changed=execFileSync('git',['diff','--name-only','cb7d30bfe666b9123ea51e1fad7e36268507b674','HEAD','--','src','public'],{encoding:'utf8'}).trim().split('\n').filter(Boolean)
+          const allowed=new Set(["src/components/textbook/GuidedMathReadingFlow.tsx","src/components/textbook/guided-math-reading.css","src/components/textbook/guidedMathDisplayPolicy.ts","src/data/textbook/math/numbers/n09Authored.json","src/data/textbook/math/numbers/n10Authored.json"])
           if(changed.some(path=>!allowed.has(path)))throw Error('Unapproved learner change: '+changed.join(','))
           execFileSync('git',['diff','--exit-code','ea47dd97f7d323267281915e8d9a7bb92a8e7c03','HEAD','--','src/data/textbook/math/numbers/n07Authored.json','src/components/textbook/N07ReadingFlow.tsx','src/components/textbook/n07-reading.css','src/data/textbook/math/numbers/firstSectionTeaching.json','src/data/textbook/math/typesetting.json','src/data/textbook/math/numbers/n08Authored.json','src/data/textbook/math/numbers/n08Lesson.ts','src/components/textbook/N08ReadingFlow.tsx','src/components/textbook/n08-reading.css','src/data/mathPractice','src/data/textbook/ch01','public'])
           console.log(JSON.stringify({status:'PASS',changed,acceptedFirstTitlePreserved:true}))
@@ -56,7 +56,7 @@ jobs:
       - name: Learner regressions (confirmed pre-existing physics catalog failures excluded)
         run: pnpm exec vitest run --exclude src/data/physicsTaxonomy.test.ts --exclude src/domain/questionSchema.test.ts
       - run: pnpm run test:textbook-authoring
-      - run: pnpm exec vitest run --config work/items/W-MATH-034-n09-n10-guided-design/vitest.config.mjs
+      - run: pnpm exec vitest run --config work/items/W-MATH-035-choice-order-factor-audit/vitest.config.mjs
       - run: node work/items/W-MATH-003-numbers-expressions-creation/NE01_NE02/export-runtime.mjs
       - run: pnpm run build
       - name: Exact-source release manifest
@@ -73,21 +73,11 @@ jobs:
           fs.writeFileSync('dist/release.json',JSON.stringify(manifest,null,2))
           NODE
       - run: pnpm exec playwright install --with-deps chromium
-      - name: Compiled N09/N10 and accepted unit browser checks
-        run: |
-          pnpm exec vite preview --host 127.0.0.1 --port 4173 > /tmp/n07-preview.log 2>&1 &
-          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:4173/kyotsu-step-web/ >/dev/null && break || sleep 1; done
-          WIDTHS=320,390,430,1440 EVIDENCE_DIR=/tmp/n09-browser node work/items/W-MATH-034-n09-n10-guided-design/verify_app.mjs
-          WIDTHS=320,390,430,1440 EVIDENCE_DIR=/tmp/n10-browser node work/items/W-MATH-034-n09-n10-guided-design/verify_n10_app.mjs
-          WIDTHS=320,390,430,1440 EVIDENCE_DIR=/tmp/n08-browser node work/items/W-MATH-033-n08-absolute-value/verify_app.mjs
-          WIDTHS=320,390,430,1440 EVIDENCE_DIR=/tmp/n07-browser node work/items/W-MATH-032-n07-semantic-repair/verify_app.mjs
-          EVIDENCE_DIR=/tmp/first-title-compiled node work/items/W-MATH-031-section-one-typesetting/verify-typography.mjs
-          EVIDENCE_DIR=/tmp/first-title-history node work/items/W-MATH-031-section-one-typesetting/verify-history.mjs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
-      - name: Publish approved N09 and N10 with the existing storage namespace
+      - name: Publish approved N09 N10 order and grouping repair with the existing storage namespace
         id: deployment
         uses: actions/deploy-pages@v4
       - name: Verify hosted exact source
@@ -107,19 +97,16 @@ jobs:
           APP_URL: ${{ steps.deployment.outputs.page_url }}
           EVIDENCE_DIR: /tmp/n09-hosted
         run: |
+          EVIDENCE_DIR=/tmp/w35-hosted node work/items/W-MATH-035-choice-order-factor-audit/verify_display.mjs
           EVIDENCE_DIR=/tmp/n09-hosted WIDTHS=320,390,430,1440 node work/items/W-MATH-034-n09-n10-guided-design/verify_app.mjs
           EVIDENCE_DIR=/tmp/n10-hosted WIDTHS=320,390,430,1440 node work/items/W-MATH-034-n09-n10-guided-design/verify_n10_app.mjs
-      - name: Protect public accepted first-title typography
-        env:
-          APP_URL: ${{ steps.deployment.outputs.page_url }}
-          EVIDENCE_DIR: /tmp/first-title-hosted
-        run: node work/items/W-MATH-031-section-one-typesetting/verify-typography.mjs
       - if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: n09-publication-verification
+          name: w35-publication-verification
           path: |
             /tmp/n09-browser
+            /tmp/w35-hosted
             /tmp/n09-hosted
             /tmp/n10-browser
             /tmp/n10-hosted

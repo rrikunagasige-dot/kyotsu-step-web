@@ -1,6 +1,6 @@
 # W-MATH-032 — N07の意味と解法接続の修正
 
-Status: PROPOSED
+Status: IMPLEMENTING
 Command: CMD-WORK-001
 Proposal: P-001 / PROPOSAL.md
 Date: 2026-10-25（日本時間）
@@ -15,4 +15,6 @@ Current: 原Word、全六画像、公開版とのbyte一致、全41node/36item/1
 
 Protected: 第一タイトルの受入22bc43ba、他単元・他モード、原Word、既存のレイアウト、item/段階/進捗・storage namespace。現行learnerとproduction codeは未変更。
 
-Next: 原症状・原因・影響・具体案をユーザーへ提示。具体案の承認後に技術前提を先に固定し、N07実装・検査・既存公開appへ進む。
+Next: R06の候補commit固定と結果提出→四幅の実UI/全回答/誤答/履歴→R07/G2→既存Pages公開。P-001は「いいよ続けて」で承認済み。承認原文とhashはAPPROVAL.json、原版PROPOSAL.mdは改変しない。
+
+実装checkpoint: 全41nodeのsemantic IRをN07専用readerへ接続。36回答/14段階/revision4保持。620 learner回帰・39 authoring検査・6つの修正専用Node検査はPASS。ローカルChromiumのダウンロードが破損し、実画面検証はGitHub CIへ接続。公開・受入は未完。

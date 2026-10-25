@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import{execFileSync}from'node:child_process';
-import{repairN07}from'../repair-n07.mjs';import{validateIR}from'../ir/index.mjs';
+import{repairN07}from'../repair-n07.mjs';import{validateIR,compileIR}from'../ir/index.mjs';
 const read=p=>JSON.parse(fs.readFileSync(p));const base='work/items/W-MATH-032-n07-semantic-repair/';
 const legacy=JSON.parse(execFileSync('git',['show','4fb7a98e7f864839ccc1374080473df4ba60ce88:src/data/textbook/math/numbers/n07Authored.json']));
 const design=read(base+'NODE_DESIGN.json');const make=()=>repairN07(legacy,design,read('work/items/W-GOV-010-learning-production-workflow/n07/N07_DESIGN_PLAN.json'),read('tools/textbook/fixtures/n07-source-index.json'));
@@ -8,3 +8,5 @@ test('scale, operation and bound answers are inside sentences, no orphan outputs
 test('coefficient, reduction and proof groups connect expressions with equality',()=>{const r=make();for(const id of ['n07-q07-coefficient','n07-q09-coefficient','n07-q10-reduce','n07-q11-converse']){const n=r.ir.nodes.find(n=>n.id===id);const g=n.before.find(b=>b.relation==='equality');assert.ok(g);assert.equal(g.operators.length,g.expressions.length-1);assert.ok(g.operators.every(o=>o==='='))}});
 test('all formal term definitions survive compiler and invalid changes are rejected',()=>{const r=make();assert.equal(r.compiled.nodes.flatMap(n=>n.before).flatMap(b=>b.parts).filter(p=>p.type==='term'&&p.usage==='first_definition').length,9);const changed=structuredClone(design);changed.nodes[0].interaction.answer='100';assert.throws(()=>repairN07(legacy,changed,{},{}),/grading contract/)});
 test('legacy learner artifact fails new IR validation; no diagnostic exemption in candidate verification',()=>{assert.equal(validateIR(legacy).status,'FAIL');const r=make();const g=r.ir.nodes.find(n=>n.id==='n07-q07-coefficient').before.find(b=>b.relation==='equality');g.operators=[];assert.equal(validateIR(r.ir).status,'FAIL')});
+
+test('IR hash survives canonical event-store JSON key ordering',()=>{const r=make();const sort=v=>Array.isArray(v)?v.map(sort):v&&typeof v==='object'?Object.fromEntries(Object.keys(v).sort().map(k=>[k,sort(v[k])])):v;assert.equal(compileIR(sort(r.ir)).irHash,r.compiled.irHash)});

@@ -1,0 +1,23 @@
+{
+  "learner": {
+    "status": "PASS",
+    "count": 620,
+    "excludedBaseline": [
+      "src/data/physicsTaxonomy.test.ts",
+      "src/domain/questionSchema.test.ts"
+    ]
+  },
+  "authoring": {
+    "status": "PASS",
+    "count": 39
+  },
+  "repairNode": {
+    "status": "PASS",
+    "count": 6
+  },
+  "browser": {
+    "status": "UNVERIFIED",
+    "reason": "Chromium download returned invalid/truncated ZIP; CI required"
+  },
+  "publication": false
+}

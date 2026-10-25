@@ -11,7 +11,7 @@ ROOT=Path(__file__).resolve().parents[1]
 class LegacyDiagnostics(unittest.TestCase):
     def setUp(self):
         self.tmp=tempfile.TemporaryDirectory();self.root=Path(self.tmp.name)
-        self.data=json.loads((ROOT/PATH).read_text());p=self.root/PATH;p.parent.mkdir(parents=True);p.write_text(json.dumps(self.data))
+        self.data=json.loads(__import__('subprocess').check_output(['git','show',SOURCE+':'+PATH],cwd=ROOT));p=self.root/PATH;p.parent.mkdir(parents=True);p.write_text(json.dumps(self.data))
         self.plan={'command':'CMD-WORK-001','source_sha':SOURCE,'source_manifest':manifest(self.root,[PATH])}
         self.rt=SimpleNamespace(root=self.root,state=lambda _: {'plan':self.plan})
     def tearDown(self):self.tmp.cleanup()
@@ -47,7 +47,7 @@ class MaterializationBinding(unittest.TestCase):
     def setUp(self):
         from runtime import Runtime
         self.tmp=tempfile.TemporaryDirectory();self.rt=Runtime(Path(self.tmp.name)/'ledger',ROOT)
-        self.plan=json.loads((ROOT/'work/items/W-MATH-032-n07-semantic-repair/WORKFLOW_PLAN.json').read_text());self.plan['simulation']=True
+        self.plan=json.loads((ROOT/'work/items/W-MATH-032-n07-semantic-repair/WORKFLOW_PLAN.json').read_text());self.plan['simulation']=True;self.plan['source_manifest']=manifest(ROOT,self.plan['source_manifest'])
         self.rt.open(self.plan);self.work=self.plan['work_id']
         self.ev=self.rt.evidence(self.work,'file',{'path':PATH,'sha256':manifest(ROOT,[PATH])[PATH]},source_ref='simulation:binding-test',verification_level='simulation')
     def tearDown(self):self.tmp.cleanup()
@@ -59,6 +59,7 @@ class MaterializationBinding(unittest.TestCase):
         generated=bind_n07(self.rt,self.work,'e6fc1017f3ce8f5cdce6102720b32afdc73f652b',[self.ev])
         s=self.rt.state(self.work);self.assertEqual(self.rt.approval(s)['id'],ref)
         self.assertEqual(s['plan']['proposal']['hash'],self.plan['proposal']['hash'])
+        self.assertTrue(all(b['proposal_hash']==self.plan['proposal']['hash'] for b in s['plan']['approval_bundles']))
         self.assertEqual(s['plan']['proposal']['contentDesignHash'],generated['compiled']['irHash'])
     def test_wrong_approved_commit_rejected(self):
         from materialization import bind_n07

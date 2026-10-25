@@ -14,9 +14,17 @@ def inspect(rt, work, candidate, *, visible=False):
         return None
     if not isinstance(candidate,dict) or candidate.get('schemaVersion')!=1 or candidate.get('unit',{}).get('unitId')!=UNIT:
         return None
-    if manifest(rt.root,[PATH])[PATH]!=plan['source_manifest'][PATH]:
-        return {'status':'FAIL','reason':'legacy source manifest mismatch'}
-    if digest(json.loads(file(rt.root,PATH).read_text()))!=digest(candidate):
+    current=manifest(rt.root,[PATH])[PATH]
+    frozen=json.loads(file(rt.root,PATH).read_text())
+    if current!=plan['source_manifest'][PATH]:
+        if s.get('candidate_manifest',{}).get(PATH)!=current:
+            return {'status':'FAIL','reason':'legacy source manifest mismatch'}
+        import hashlib
+        opened=next(e for e in rt.store.events() if e['work']==work and e['kind']=='opened')
+        raw=bytes.fromhex(rt.store.get(opened['payload']['original_snapshot'])['files_hex'][PATH])
+        if hashlib.sha256(raw).hexdigest()!=plan['source_manifest'][PATH]:return {'status':'FAIL','reason':'legacy frozen snapshot mismatch'}
+        frozen=json.loads(raw)
+    if digest(frozen)!=digest(candidate):
         return {'status':'FAIL','reason':'diagnostic candidate differs from frozen legacy artifact'}
     nodes=candidate.get('nodes',[])
     if not nodes or any(not all(k in n for k in ('id','before','after','knownRefs','resultId','stageId','inputLatex','outputLatex')) for n in nodes):

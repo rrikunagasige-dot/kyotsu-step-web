@@ -26,7 +26,9 @@ def bind_n07(rt,work,approved_commit,evidence_refs):
     need(proc.returncode==0,'承認された設計の正式IR生成に失敗:'+proc.stderr[:200])
     generated=json.loads(proc.stdout);ir_hash=generated['compiled']['irHash']
     p=copy.deepcopy(s['plan']);p['proposal']['contentDesignHash']=ir_hash
-    for bundle in p['approval_bundles']:bundle['content_hash']=ir_hash
+    for bundle in p['approval_bundles']:
+        bundle['content_hash']=ir_hash
+        bundle['proposal_hash']=p['proposal']['hash']
     proof=rt.store.put({'approvedCommit':approved_commit,'approvalEvent':approval['id'],'proposalSHA256':hashlib.sha256(proposal).hexdigest(),'designSHA256':hashlib.sha256(design).hexdigest(),'irHash':ir_hash,'generated':generated,'evidence_refs':evidence_refs})
     rt.append('materialization_bound',work,{'plan':p,'proof':proof})
     current=rt.state(work)

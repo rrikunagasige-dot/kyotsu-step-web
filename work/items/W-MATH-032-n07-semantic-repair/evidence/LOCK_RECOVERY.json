@@ -1,0 +1,11 @@
+{
+  "orphanedLock": {
+    "pid": 16,
+    "time": 1792894592.5326178
+  },
+  "verifiedLedgerHead": "4c0aff2d75906079f0fcbd1065fc38b66ca95f0307489a1ecb2002ab6921ea2c",
+  "events": 301,
+  "temporaryEvents": 0,
+  "activeContinueProcess": false,
+  "reason": "Previous command ended; pgrep found no continue_approved writer. PID is local to an expired sandbox namespace."
+}

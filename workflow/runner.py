@@ -10,8 +10,13 @@ OPERATIONS={'S03':'coverage','S06':'solve','S08':'teaching-candidates','S09':'te
 def code_operation(rt,work,nid,inputs):
     state=rt.state(work)
     if nid in ('S00','S01'):
+        import hashlib
         expected=state['plan']['source_manifest'];current=manifest(rt.root,expected)
-        return {'status':'PASS' if current==expected else 'FAIL','sourceManifest':current,'expectedManifest':expected,'scope':state['plan']['scope']}
+        opened=next(e for e in rt.store.events() if e['work']==work and e['kind']=='opened')
+        original=rt.store.get(opened['payload']['original_snapshot'])
+        frozen={p:hashlib.sha256(bytes.fromhex(v)).hexdigest() for p,v in original['files_hex'].items()}
+        good=frozen==expected and current==state['candidate_manifest']
+        return {'status':'PASS' if good else 'FAIL','sourceManifest':frozen,'candidateManifest':current,'expectedManifest':expected,'scope':state['plan']['scope'],'sourceKind':'IMMUTABLE_OPEN_SNAPSHOT'}
     if nid=='S02':
         p=file(rt.root,inputs['sourcePath']);out=rt.store.root/'source-import.json'
         proc=subprocess.run([sys.executable,str(rt.root/'tools/textbook/source/import-word.py'),str(p),'--out',str(out),*(['--unit',inputs['unit']] if inputs.get('unit') else [])],cwd=rt.root,capture_output=True,text=True)

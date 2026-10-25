@@ -1,0 +1,132 @@
+{
+  "job": {
+    "status": "NEEDS_REVIEW",
+    "node": "R06_PATCH@n07",
+    "claimToken": "eeeb517774ab46279c952dcf4842d1d5",
+    "receipts": [
+      "5e4488f7b9a71f836c30a1e3cbbc925a1c462570d61d1ed3284314ff8e73b9b2"
+    ],
+    "aiRequest": {
+      "schemaVersion": "production/2",
+      "adoptedCorrections": [],
+      "reusableHistory": [],
+      "task": {
+        "work_id": "W-MATH-032",
+        "node": {
+          "id": "R06_PATCH@n07",
+          "stage_kind": "R06_PATCH",
+          "contract_kind": "R06_PATCH",
+          "actor": "TOOL",
+          "depends_on": [
+            "R05_APPROVAL@n07"
+          ],
+          "required": [],
+          "block": "n07",
+          "release_unit": "n07",
+          "watch": "integration",
+          "phase": "pre-design",
+          "priority": 0,
+          "source_refs": [
+            "src/data/textbook/math/numbers/n07Authored.json",
+            "src/components/textbook/N07ReadingFlow.tsx",
+            "src/components/textbook/n07-reading.css",
+            "tools/textbook/fixtures/n07-source-index.json"
+          ],
+          "protected_refs": [
+            "src/data/textbook/math/numbers/firstSectionTeaching.json"
+          ],
+          "approval_scope_ref": "proposal",
+          "capability_requests": [
+            "ir.compile"
+          ],
+          "required_code_receipts": [
+            "ir.compile"
+          ],
+          "required_ai_receipts": []
+        },
+        "task_id": "8d969511a93461da242af6eaa32b646ae69ab011ff47b3d943610cf4db1be774",
+        "input_hash": "1be01221ac8f8846ebbb5f7ec8a0ed8844307907faa763ba62c38b8e572d26a2",
+        "source_sha": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+        "candidate_sha": null,
+        "rules": {
+          "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
+          "governance/REVIEW_POLICY.json": "a71148f007a79b124385c7645e6bc01564bfa02b12152174883543f31f6ce72d",
+          "governance/WORK_SYSTEM.md": "37b0b0e0fecc79d7c067e17ec8dbeb53d53863f04369171d65ef652a176eb093",
+          "memory/LESSONS/MATH_TYPESETTING_GROUPS.md": "8047831b13d22ffb773f68e23ab788a3490e4b69ebbf5d5d357f9f786ed53d0a",
+          "subjects/mathematics/textbook/SPEC.md": "a36959ae6f951e855c3e60d280d02a0f20c6e23185d9eb90b17ffbc889c63277"
+        },
+        "proposal": {
+          "contentDesignHash": "8c510a9c7ca0d7c1e5527e8ce799ee80814da5a064cdb457c5fbc68844bd53fa",
+          "hash": "ecfe20080c79ac8d8490630dafee2da92613709eae64a1ca47e626b0d7278c4a",
+          "id": "W-MATH-032/P-001",
+          "patch_hash": "b0c75aed0428ab381fe4f7bb97c6028e2c76a2dc2cb93cbefaa7fd0b3b1ee142"
+        },
+        "scope": {
+          "paths": [
+            "src/components/textbook/N07ReadingFlow.tsx",
+            "src/components/textbook/SemanticReading.tsx",
+            "src/components/textbook/n07-reading.css",
+            "src/data/textbook/math/numbers/n07Authored.json",
+            "tools/textbook/",
+            "workflow/",
+            "work/items/W-MATH-032-n07-semantic-repair/"
+          ],
+          "preserve": [
+            "src/data/textbook/math/numbers/firstSectionTeaching.json"
+          ]
+        },
+        "source_manifest": {
+          "src/components/textbook/N07ReadingFlow.tsx": "b35615baac0c2715930c5d6d0cbdb41d729508259a251780f05f07bfbe4e508f",
+          "src/components/textbook/n07-reading.css": "8e3a4e20749a3a0048165864af2408118c6903676db8cb4c4242a54d78c3e163",
+          "src/data/textbook/math/numbers/n07Authored.json": "f534b84c116ce200f0ac405eec0f130137186bd2a74854443113c716fe40c712",
+          "tools/textbook/fixtures/n07-source-index.json": "62a1ad951166eabc9672eca0a81a997aa6a362fe01aed045705caecd77a2982b"
+        },
+        "previous_results": {
+          "R05_APPROVAL@n07": {
+            "actor": "user-record/conversation_transcribed",
+            "artifact": "7762ccb9903ceb921121647b401b884ef92805641d9169bb7f35a3dc1fbf9393",
+            "input_hash": "54416f93166df6e46572944059b40287c256d7d96ed6d38e3c2500a5017a1e10",
+            "node": "R05_APPROVAL@n07",
+            "verdict": "PASS"
+          }
+        },
+        "do_not_touch": [
+          "src/data/textbook/math/numbers/firstSectionTeaching.json"
+        ],
+        "completion_is_not_semantic_proof": true
+      },
+      "context": {
+        "corpusHash": "a6fb2deacb1e3bb9c2194214c12f44454e4aa58888925043ac7d03cea26eeae6",
+        "featureSchema": "learner-context-chunk-mean/1",
+        "modelHash": null,
+        "rulesHash": "eaf2a2be47e890a4858225c05d996f35ab815b58a0d5786a27c2b9090c08c46b"
+      },
+      "dependencies": {
+        "R05_APPROVAL@n07": {
+          "evidence_refs": [
+            "2cbc89df-9ba0-4460-a14e-307537c2d284",
+            "04918a51-e7ca-4afa-9d4c-4166ab0ae500",
+            "1054cd18-65d4-4e21-b746-6f80bfdb24d7",
+            "3bacd424-8d7b-43a4-b841-a6a0fca0ab97"
+          ],
+          "user_event": "W-MATH-032-P001-USER-APPROVAL",
+          "verdict": "PASS"
+        }
+      },
+      "constraints": [
+        "原資料・既習・可視状態だけを根拠にする",
+        "作成者の自己評価を監査根拠にしない",
+        "未解決は未解決と記録",
+        "承認を生成しない"
+      ],
+      "requestHash": "9dc1ef1881cd1a4fbd2fa9e10d634238d020f3c5c6cd09937c7433b30d03a7a3"
+    },
+    "automaticAcceptance": false
+  },
+  "patchEvidence": [
+    "fe3033a6-3859-4604-b653-607b952e5b22",
+    "58634946-7edb-48a0-a146-ca81728f76d5",
+    "371bd1b9-6e24-445c-892a-c7703cc7aceb"
+  ],
+  "approval": "W-MATH-032-P001-USER-APPROVAL"
+}

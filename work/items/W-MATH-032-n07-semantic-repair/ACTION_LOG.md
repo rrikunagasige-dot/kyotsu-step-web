@@ -7,3 +7,5 @@
 - Word p315の最小倍率の条件を画面が落としていることを確認。10/100/1000の整列と最小性を分けて検算。
 - 現行legacy artifactをproduction IRへ直接渡すとSCHEMA FAILになることを実確認。モデル一時環境の不在も記録し、診断経路の補完案へ反映。
 - 全41nodeの設計JSON・本文設計・受入条件を作成。教材実装、公開、学習モデルの再fitは行っていない。
+
+2026-10-25: User approved P-001「いいよ続けて」. Foundation fixed and actual R01-R05 replayed, R06 applied. Captured legacy diagnostics / unranked fallback / deterministic design materialization. Found and corrected key-order-dependent IR hashes and original compiler check connection. Existing two unrelated catalog test failures are baseline;620 applicable learner checks pass. Local browser download failed; pending GitHub CI real UI. No publication or learner acceptance claimed.

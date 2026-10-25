@@ -1,15 +1,15 @@
 {
   "work": "W-MATH-032",
   "engine_version": "1.0.0",
-  "ledger_head": "94a5ec052a938ba2de45c6e31c28cd06311991d820513f374dd79d06c8d21935",
+  "ledger_head": "4d5a8c72cb7101fb630382cd76cd19d47a398c079b1db57f00fd4605ffab9e17",
   "work_status": "IMPLEMENTING",
   "profile": "material",
   "simulation": false,
-  "candidate_sha": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+  "candidate_sha": null,
   "next": {
-    "status": "BLOCKED",
-    "reason": "修正・追加証拠・提案改訂が必要",
-    "node": "R02_CAUSE@n07"
+    "status": "WAITING",
+    "reason": "CLAIM_RECONCILIATION_OR_RESULT",
+    "node": "R06_PATCH@n07"
   },
   "nodes": [
     {
@@ -143,7 +143,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "BLOCKED"
+      "status": "PASSED"
     },
     {
       "id": "R03_IMPACT@n07",
@@ -182,7 +182,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "R04_PROPOSAL@n07",
@@ -239,7 +239,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "R05_APPROVAL@n07",
@@ -268,7 +268,7 @@
       "capability_requests": [],
       "required_code_receipts": [],
       "required_ai_receipts": [],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "R06_PATCH@n07",
@@ -301,7 +301,7 @@
         "ir.compile"
       ],
       "required_ai_receipts": [],
-      "status": "PENDING"
+      "status": "RUNNING"
     },
     {
       "id": "R07_VERIFY@n07",
@@ -612,7 +612,7 @@
     {
       "id": "W-MATH-032",
       "work": "W-MATH-032",
-      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "version": null,
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
     },
@@ -726,6 +726,426 @@
       "input_hash": "e2bf2e6a7ef959003841063382de144a78682bbbfdb25cfca705390813c8a632",
       "node": "R02_CAUSE@n07",
       "receipt": "9d9152c30199fa2f0f274813e2195152e3d1f97d1b20d5f7c4f6c5af20f257de"
+    },
+    {
+      "input_hash": "3781253088d653b04a02b68589b11e1f7058c54d488dea45c14a3c9b820d31d4",
+      "node": "R01_CAPTURE@n07",
+      "receipt": "06e19248f5920b9dc6993324c45bb5c61562e6d356da51d6106b8b8f2557a61f"
+    },
+    {
+      "input_hash": "3781253088d653b04a02b68589b11e1f7058c54d488dea45c14a3c9b820d31d4",
+      "node": "R01_CAPTURE@n07",
+      "receipt": "618715cad28a8eee97547d0e2b9fbd6fa382d68b4c1d95cde424045d227460f7"
+    },
+    {
+      "input_hash": "880215e59619612cd8c44033cf12587578bd44f7913fde314dace1eebc332fcd",
+      "node": "R02_CAUSE@n07",
+      "receipt": "469d713b2cfb7ea89e944b1bea9e717ae821eb11b97aa01a3f9e6a2aea2dce34"
+    },
+    {
+      "input_hash": "880215e59619612cd8c44033cf12587578bd44f7913fde314dace1eebc332fcd",
+      "node": "R02_CAUSE@n07",
+      "receipt": "1794bda944336800bff07f9bbc3f16a4c495ccdd4071770574d8ff3f7794c76c"
+    },
+    {
+      "input_hash": "880215e59619612cd8c44033cf12587578bd44f7913fde314dace1eebc332fcd",
+      "node": "R02_CAUSE@n07",
+      "receipt": "68f314dcdc26d7dff082bfb60b79a57f2bf4c746bb48ad79cb8758b9171a4465"
+    },
+    {
+      "input_hash": "880215e59619612cd8c44033cf12587578bd44f7913fde314dace1eebc332fcd",
+      "node": "R02_CAUSE@n07",
+      "receipt": "526a19e8bbdbd6b32772f93a40577d74ed4053c440f0043951816fc035df6014"
+    },
+    {
+      "input_hash": "4390c981681e6aafbafb1bd411ce43d19e28efd4efb1e0c56f8aa4a4d68e3dc6",
+      "node": "R03_IMPACT@n07",
+      "receipt": "9fdf931d71579d805684d342751d0a48629a3ba1395e5eed09b90aaf100128e9"
+    },
+    {
+      "input_hash": "896464be3bf59a38a2490b45e4be40a5117e9c2b1bd5b9c40a46ad8749bc7d56",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "4f9d5048108b8957935ac83a884f9eb0d2d13161278b19d47db6b574f91c9530"
+    },
+    {
+      "input_hash": "896464be3bf59a38a2490b45e4be40a5117e9c2b1bd5b9c40a46ad8749bc7d56",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "ad0daa3c68e799c685465dbbecbe637581849839dd34ebb2572c2fc6820f37c0"
+    },
+    {
+      "input_hash": "896464be3bf59a38a2490b45e4be40a5117e9c2b1bd5b9c40a46ad8749bc7d56",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "3e4197d0a46d937b9dc36cf1639746f270b1a973dacf5be716a462da770e58bf"
+    },
+    {
+      "input_hash": "896464be3bf59a38a2490b45e4be40a5117e9c2b1bd5b9c40a46ad8749bc7d56",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "a87eb99dd7d73011f76722f707e745197dd3dd851b2b5c9669d7d3a174a57df9"
+    },
+    {
+      "input_hash": "896464be3bf59a38a2490b45e4be40a5117e9c2b1bd5b9c40a46ad8749bc7d56",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "7ce45cdd8e51bebcc4a77c8a6bd3f8ea564d6d2456e3c164848a2bd9cfafeaf7"
+    },
+    {
+      "input_hash": "896464be3bf59a38a2490b45e4be40a5117e9c2b1bd5b9c40a46ad8749bc7d56",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "058909d123ef81f60e7bd84efff97579b1725bbc9f65cf2570d2ab7ca3afec5a"
+    },
+    {
+      "input_hash": "896464be3bf59a38a2490b45e4be40a5117e9c2b1bd5b9c40a46ad8749bc7d56",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "c2f7cfe0628b93e7e4cf195300181270d5a48b40153db4f902a2eddcd9ad8a33"
+    },
+    {
+      "input_hash": "896464be3bf59a38a2490b45e4be40a5117e9c2b1bd5b9c40a46ad8749bc7d56",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "bba2d4f8d109009b60024b015cfa80ee46711d49e0f7b5d2684c5019d16448e9"
+    },
+    {
+      "input_hash": "896464be3bf59a38a2490b45e4be40a5117e9c2b1bd5b9c40a46ad8749bc7d56",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "ad9fd0c670a8161c9957ca9847b121245837754de3c3548361ed4a4b044cd124"
+    },
+    {
+      "input_hash": "0dad628bb07fa3a7b205bf90d837ad8ec07862eb52cf80d3f9d4f8bc40a989db",
+      "node": "R01_CAPTURE@n07",
+      "receipt": "708be886bed6e8879cd02c43f532ad25b9d802dad29d5b0831ec23156126bbf1"
+    },
+    {
+      "input_hash": "0dad628bb07fa3a7b205bf90d837ad8ec07862eb52cf80d3f9d4f8bc40a989db",
+      "node": "R01_CAPTURE@n07",
+      "receipt": "5404905a9c6bb7173d2fbfbd0a07b4639e2c7bbffdfa99b71fb5fc68c5fda06b"
+    },
+    {
+      "input_hash": "aab8fe5ee8bdaf0346b650748a3482537ef71bf23ff34e8797a3d90f44dda7be",
+      "node": "R02_CAUSE@n07",
+      "receipt": "38de91680b6c07bd6722f5f2130f4c4dd34517c9bcdb339c2dc949e48593985f"
+    },
+    {
+      "input_hash": "aab8fe5ee8bdaf0346b650748a3482537ef71bf23ff34e8797a3d90f44dda7be",
+      "node": "R02_CAUSE@n07",
+      "receipt": "c9f70faa36db6c77e16744169f0a962b7694d9ee3787e238fddd7a919a113822"
+    },
+    {
+      "input_hash": "aab8fe5ee8bdaf0346b650748a3482537ef71bf23ff34e8797a3d90f44dda7be",
+      "node": "R02_CAUSE@n07",
+      "receipt": "1ae107d84a56e482f93348c27c067c73c8331560d05dc8f8b209f6b3f5613f3e"
+    },
+    {
+      "input_hash": "aab8fe5ee8bdaf0346b650748a3482537ef71bf23ff34e8797a3d90f44dda7be",
+      "node": "R02_CAUSE@n07",
+      "receipt": "72b5f1bbd154d40a3b3ca65e14a07475693ff59c38772cde097a21b665a83e1e"
+    },
+    {
+      "input_hash": "d264038ea7649ea63bcd7f515c7f4826880390cd68275a16393c18d8d6e46cc7",
+      "node": "R03_IMPACT@n07",
+      "receipt": "a464b5db193e0081f9116304e60e8b5b1c2eae3d2053fe91de9a634b614697a5"
+    },
+    {
+      "input_hash": "f6f79c9f771f944856b3b703e75d8b43127e05a6b23cb06a31f88ffbd3504f28",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "5d2b6ba8448f080a543cfaca3c6d7cd04925a50f36926c2e53e31d2d6bf0b2f1"
+    },
+    {
+      "input_hash": "f6f79c9f771f944856b3b703e75d8b43127e05a6b23cb06a31f88ffbd3504f28",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "661adf464eaef53982994b848e5295ed222cf2663768f9149f41170e69a6f1db"
+    },
+    {
+      "input_hash": "f6f79c9f771f944856b3b703e75d8b43127e05a6b23cb06a31f88ffbd3504f28",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "2421840e2a64460e622e6812bf886b6f2357e06958a809266d08f0351ce0cc9c"
+    },
+    {
+      "input_hash": "f6f79c9f771f944856b3b703e75d8b43127e05a6b23cb06a31f88ffbd3504f28",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "335b941072e0357c4e34b438857bd2d7ea874ecdea852cc7f128faf061396ab1"
+    },
+    {
+      "input_hash": "f6f79c9f771f944856b3b703e75d8b43127e05a6b23cb06a31f88ffbd3504f28",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "0833634836cd7341674dec4c9e777c488b632cf28ea6d480a4dee52dbf36d915"
+    },
+    {
+      "input_hash": "f6f79c9f771f944856b3b703e75d8b43127e05a6b23cb06a31f88ffbd3504f28",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "833e5a1b1e2d4ffd76dbf1f5e39bdd4ecaff066f2a1277e489af7ee922396bd9"
+    },
+    {
+      "input_hash": "f6f79c9f771f944856b3b703e75d8b43127e05a6b23cb06a31f88ffbd3504f28",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "0717b4c5869d4f86e126cb827782900efe84844399ca0acb811b02be951afadb"
+    },
+    {
+      "input_hash": "f6f79c9f771f944856b3b703e75d8b43127e05a6b23cb06a31f88ffbd3504f28",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "491ac45d5c2bc40439fedb9a1e7868c7bb317587e01c156a0674ad98526cffcd"
+    },
+    {
+      "input_hash": "f6f79c9f771f944856b3b703e75d8b43127e05a6b23cb06a31f88ffbd3504f28",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "8e0062f43fdd4122ebbe763647c5c9fc611e7c19bf7b492da451aaba5f50456b"
+    },
+    {
+      "input_hash": "0943b62201848639e9bcbe66ac87c1f5315318d9729f4fc8020d74cc9219f16a",
+      "node": "R06_PATCH@n07",
+      "receipt": "b4a076d9c1605ffe6ab029c434d1d702dbcba393ea05b381ff30724b633199fb"
+    },
+    {
+      "input_hash": "2daf457b7800b364ec5f104d5f92d2c6a8bbe6595aaabf6382b67f222248031a",
+      "node": "R01_CAPTURE@n07",
+      "receipt": "7528883725483464cae6601fc410525f506e080c2453cb9c85ab453b7a8874c4"
+    },
+    {
+      "input_hash": "2daf457b7800b364ec5f104d5f92d2c6a8bbe6595aaabf6382b67f222248031a",
+      "node": "R01_CAPTURE@n07",
+      "receipt": "9f1b2504fab90474e7e81f1f7533d22b0cc927e9ff36682ae3a4156146cfa52e"
+    },
+    {
+      "input_hash": "fa0f06c9eb1c994a1a2c11ac092eec44bcb8e1fb6c6f1f324aef2604f2d9c591",
+      "node": "R02_CAUSE@n07",
+      "receipt": "7a5edc4ba4d8fe8c0bfdb758cf10ddbd569c554a8c1dd552e3724468d7443494"
+    },
+    {
+      "input_hash": "fa0f06c9eb1c994a1a2c11ac092eec44bcb8e1fb6c6f1f324aef2604f2d9c591",
+      "node": "R02_CAUSE@n07",
+      "receipt": "3b2fdbf61f0fa55919d85317dd190115af17d59b02ccc4726d2e7ca310bfbdf6"
+    },
+    {
+      "input_hash": "fa0f06c9eb1c994a1a2c11ac092eec44bcb8e1fb6c6f1f324aef2604f2d9c591",
+      "node": "R02_CAUSE@n07",
+      "receipt": "ef0be3db486ce6b7551c0180322f673963a394b02c2c75400bf2c8a1535def8a"
+    },
+    {
+      "input_hash": "fa0f06c9eb1c994a1a2c11ac092eec44bcb8e1fb6c6f1f324aef2604f2d9c591",
+      "node": "R02_CAUSE@n07",
+      "receipt": "d23a12300c8741b917bbe441ba7bef92ce0e58edc0ff91fdeac0b3d37c619a19"
+    },
+    {
+      "input_hash": "52d7682e85095ea1b6eb1459119e532ee411c47978a02343f5ee79ebc3bc3933",
+      "node": "R03_IMPACT@n07",
+      "receipt": "be2937bcbf39508cfb5f34e227f2ae99c10b5db3428802466b18aaec38886d7d"
+    },
+    {
+      "input_hash": "88c9c812511b609dd06cbeefd8076b119b39be0e03acacd859bfd295a8ad38ba",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "e8c00b7d3f65fd4f325b25d918eaffa4e81d7e3c27620b0e98703f9f39a33d9e"
+    },
+    {
+      "input_hash": "88c9c812511b609dd06cbeefd8076b119b39be0e03acacd859bfd295a8ad38ba",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "ca2ab26b5fc5f1dc1f87945a90f9cae2596c5aefd289771d4749cc8e78800ff7"
+    },
+    {
+      "input_hash": "88c9c812511b609dd06cbeefd8076b119b39be0e03acacd859bfd295a8ad38ba",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "3b2c5f8867c220a316d559dc986f3f6f14db383aed19c1cdd8696425e4cd9bcf"
+    },
+    {
+      "input_hash": "88c9c812511b609dd06cbeefd8076b119b39be0e03acacd859bfd295a8ad38ba",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "6efdfdc5facf1d28841aa1ab0d246b7e2b369fc0c6f265f61c255ddf8827d100"
+    },
+    {
+      "input_hash": "88c9c812511b609dd06cbeefd8076b119b39be0e03acacd859bfd295a8ad38ba",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "219b5496a851b0e61862170432f396d5a2139d570ae3d66f0135254c244bb502"
+    },
+    {
+      "input_hash": "88c9c812511b609dd06cbeefd8076b119b39be0e03acacd859bfd295a8ad38ba",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "36112536105aa4b2b6a8b31bfcbe1fcb8383b19321428454179590fd1e1f8fdc"
+    },
+    {
+      "input_hash": "88c9c812511b609dd06cbeefd8076b119b39be0e03acacd859bfd295a8ad38ba",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "e0727084666753d96b66f233bcaaedfc12965a072bf36fe0e15b4f1a05c0bf4f"
+    },
+    {
+      "input_hash": "88c9c812511b609dd06cbeefd8076b119b39be0e03acacd859bfd295a8ad38ba",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "8984ddc1d3809cbf4ce14c3347c5d5d249864569f0dd34550214d2c7d05eaf1c"
+    },
+    {
+      "input_hash": "88c9c812511b609dd06cbeefd8076b119b39be0e03acacd859bfd295a8ad38ba",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "080b847bf47465c96eec3cf04287de3387aee52873a3f21256de3958ea0168ba"
+    },
+    {
+      "input_hash": "73b6259869a5f196588b2723a108b9ca3d4537e27de98340eec61ae0472962d9",
+      "node": "R06_PATCH@n07",
+      "receipt": "019dcea5e4440e66cba7e2b9039ba0834c7059952722aaac8b61c134d9a8f279"
+    },
+    {
+      "input_hash": "de6311bcd0294625eadaac702ecfce51d486c37b93153c54a28237d799faccad",
+      "node": "R01_CAPTURE@n07",
+      "receipt": "0d2b7efe0401dfbd2f8fd32b7d8092ed8146e467190c1e43f629140b22061eb5"
+    },
+    {
+      "input_hash": "de6311bcd0294625eadaac702ecfce51d486c37b93153c54a28237d799faccad",
+      "node": "R01_CAPTURE@n07",
+      "receipt": "23aaa9f25130484d31daa05ba0e8698458700aca65da5bba7ee73ca198ebf6ad"
+    },
+    {
+      "input_hash": "b042e3a938cd165e78849e6a505fd3e1b6835df81dd9d5f6517ea091a78f4a10",
+      "node": "R02_CAUSE@n07",
+      "receipt": "69b446081faaef0edc1f63d83c8b5d4390b0cbe2581ac99a7648564657beb88b"
+    },
+    {
+      "input_hash": "b042e3a938cd165e78849e6a505fd3e1b6835df81dd9d5f6517ea091a78f4a10",
+      "node": "R02_CAUSE@n07",
+      "receipt": "d1190190ad6cadd09ff51b12d93c64209ddc02b47931d91ad68ad96856a6180b"
+    },
+    {
+      "input_hash": "b042e3a938cd165e78849e6a505fd3e1b6835df81dd9d5f6517ea091a78f4a10",
+      "node": "R02_CAUSE@n07",
+      "receipt": "fbede070a187d9f43524cbe3e85db96f1151c8b4f443cdc72ab13f4dbb2a2fdd"
+    },
+    {
+      "input_hash": "b042e3a938cd165e78849e6a505fd3e1b6835df81dd9d5f6517ea091a78f4a10",
+      "node": "R02_CAUSE@n07",
+      "receipt": "08d366108fe3f9f10cea31dd31d33e0051552796ea00a8b3eb5f732784c9ad25"
+    },
+    {
+      "input_hash": "d5c53c9c72552640fd2c409d8d48655b8a1eb8ee3c8b27870ac8645c786c3723",
+      "node": "R03_IMPACT@n07",
+      "receipt": "ef808b65da8cae6d8055701f67c3a36f5ae6d9a96f0f1520b4fb0011e90f1150"
+    },
+    {
+      "input_hash": "ebf10f36bd77315109643224a14425663d1d8e5c176d1af1ac9777569a2f97f2",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "2699e41f1d9819a3ed011ae49ccd96cb7086193f4d80f15d8857897bb078746a"
+    },
+    {
+      "input_hash": "ebf10f36bd77315109643224a14425663d1d8e5c176d1af1ac9777569a2f97f2",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "5c5d64d8be440c04133d66d1b27b437b456dec7d38c67330d08b40630190f1fa"
+    },
+    {
+      "input_hash": "ebf10f36bd77315109643224a14425663d1d8e5c176d1af1ac9777569a2f97f2",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "bdb29ea46b755b54908745513cab4f3e3c8d9d46903cad8f333b148ff93248ed"
+    },
+    {
+      "input_hash": "ebf10f36bd77315109643224a14425663d1d8e5c176d1af1ac9777569a2f97f2",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "72f5be47e72c7fc8d5f55a8e84a28e46bd3a8d4bda4ee7e30cf29feb2cb612e2"
+    },
+    {
+      "input_hash": "ebf10f36bd77315109643224a14425663d1d8e5c176d1af1ac9777569a2f97f2",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "8cf23b14a806e04ffde3ecb450dc5d571db9d2482d31fff654afe569da088426"
+    },
+    {
+      "input_hash": "ebf10f36bd77315109643224a14425663d1d8e5c176d1af1ac9777569a2f97f2",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "c1f7f73e863eb02cc1f9fa2495ee02d7a2f0697ae3e3244e172ff2fcf1626b3a"
+    },
+    {
+      "input_hash": "ebf10f36bd77315109643224a14425663d1d8e5c176d1af1ac9777569a2f97f2",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "25f6429dde32d643acfa26c65bfa4e30f66c7ecd202435b3f4374cd0d3342a9d"
+    },
+    {
+      "input_hash": "ebf10f36bd77315109643224a14425663d1d8e5c176d1af1ac9777569a2f97f2",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "2538d7574afaea48afcd723e01bb68e972fba34036b49da2ab47a3b92d0d19ae"
+    },
+    {
+      "input_hash": "ebf10f36bd77315109643224a14425663d1d8e5c176d1af1ac9777569a2f97f2",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "cb7ca115d6873ed76d60367c07aee44b27363341e04cdd4fc4c4e617f07fcab0"
+    },
+    {
+      "input_hash": "472d2c81de3d59b23ac574102c139ac4245539dbc42b484b85217cfa848006c1",
+      "node": "R06_PATCH@n07",
+      "receipt": "364548c103d1c3a50f2ec879e5a1855a8f454c950c7c7982f1644d3b3bd14b6e"
+    },
+    {
+      "input_hash": "bfbe4b024d5b8b5f43392e5edc1b6a5f6292b1a91ac1a6201093cf89cac8d03c",
+      "node": "R01_CAPTURE@n07",
+      "receipt": "23f95988d43fe484de56851710f6b2a9acf276da607de3d8ba0c4e5a619710e2"
+    },
+    {
+      "input_hash": "bfbe4b024d5b8b5f43392e5edc1b6a5f6292b1a91ac1a6201093cf89cac8d03c",
+      "node": "R01_CAPTURE@n07",
+      "receipt": "09b6282f75e58cd2dea841dfa8bbb003dd65e469f1ace0d53705dec364209e20"
+    },
+    {
+      "input_hash": "3ddf684cde6305d7f338ff43d5e9fdc722ee3f4e2f0dbfc83af2797871c59a7d",
+      "node": "R02_CAUSE@n07",
+      "receipt": "5cd5a07a41b5111949d33c586568709bbb3a47f20e692c17515c0a0bd12375b0"
+    },
+    {
+      "input_hash": "3ddf684cde6305d7f338ff43d5e9fdc722ee3f4e2f0dbfc83af2797871c59a7d",
+      "node": "R02_CAUSE@n07",
+      "receipt": "7381265b8eea3efb6f6e7612983cf2cfc1de45989a07ae755df3e4e1bec40cbd"
+    },
+    {
+      "input_hash": "3ddf684cde6305d7f338ff43d5e9fdc722ee3f4e2f0dbfc83af2797871c59a7d",
+      "node": "R02_CAUSE@n07",
+      "receipt": "dfa1677a0416ad2a0e56ade9eeca99f029afc64b4c1e8d06ce34da8d3f83a594"
+    },
+    {
+      "input_hash": "3ddf684cde6305d7f338ff43d5e9fdc722ee3f4e2f0dbfc83af2797871c59a7d",
+      "node": "R02_CAUSE@n07",
+      "receipt": "c9ad293e85a04f6174ad8903ef0ee596ce800c604862cb6ac744cdcdf6362430"
+    },
+    {
+      "input_hash": "6197fd110e35ddd7ba3236315c05059d62ee1acbd962550fff56dbd8a4ea4ec8",
+      "node": "R03_IMPACT@n07",
+      "receipt": "1cabfbcae90dbfb93dace80cf53b6467bf844e1913c54d01e90bab41de106d3b"
+    },
+    {
+      "input_hash": "f7a4f75882a045e3c6190bf84f0f3ea730e74da184e1eb1ff557e3ef147c14ee",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "68dbd4d15fd9d0749ce48146e5ddab9e6c2dc583926469c7c8960722aff98bb6"
+    },
+    {
+      "input_hash": "f7a4f75882a045e3c6190bf84f0f3ea730e74da184e1eb1ff557e3ef147c14ee",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "6aebfadbee065fbbf1227bb256870621beb744ece20036947569fc2fe8b3fd3d"
+    },
+    {
+      "input_hash": "f7a4f75882a045e3c6190bf84f0f3ea730e74da184e1eb1ff557e3ef147c14ee",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "67ba054de5fdb4bb1f14fc392f098e1775e7edcd449ed5c049e8a3c8b88c9af7"
+    },
+    {
+      "input_hash": "f7a4f75882a045e3c6190bf84f0f3ea730e74da184e1eb1ff557e3ef147c14ee",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "75bce6199532829df9ce1e286857547bc441a81699c000e79a84f07558bcddeb"
+    },
+    {
+      "input_hash": "f7a4f75882a045e3c6190bf84f0f3ea730e74da184e1eb1ff557e3ef147c14ee",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "9d7f9547622b172df0da405c39771d26650bd7fe2bdf7465aeb18648a85512d7"
+    },
+    {
+      "input_hash": "f7a4f75882a045e3c6190bf84f0f3ea730e74da184e1eb1ff557e3ef147c14ee",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "bca2a636bdfaedae6ccb1837569067ea197b3991a2104f9f5fe23cf561c98cb7"
+    },
+    {
+      "input_hash": "f7a4f75882a045e3c6190bf84f0f3ea730e74da184e1eb1ff557e3ef147c14ee",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "32784a947afdd8b3f313504a3e5eaa389c51ac5c2847945c630a7a5895d2737d"
+    },
+    {
+      "input_hash": "f7a4f75882a045e3c6190bf84f0f3ea730e74da184e1eb1ff557e3ef147c14ee",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "c398c488f2f703644304baabe47552024593bd3ad0050c8af0f830d627a9962c"
+    },
+    {
+      "input_hash": "f7a4f75882a045e3c6190bf84f0f3ea730e74da184e1eb1ff557e3ef147c14ee",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "564f1c04be05472a5cf57b6ef4a0aee9d9f756fd21636d4c2a8d7b1ae9cd89e9"
+    },
+    {
+      "input_hash": "1be01221ac8f8846ebbb5f7ec8a0ed8844307907faa763ba62c38b8e572d26a2",
+      "node": "R06_PATCH@n07",
+      "receipt": "5e4488f7b9a71f836c30a1e3cbbc925a1c462570d61d1ed3284314ff8e73b9b2"
     }
   ],
   "release_acceptance": {

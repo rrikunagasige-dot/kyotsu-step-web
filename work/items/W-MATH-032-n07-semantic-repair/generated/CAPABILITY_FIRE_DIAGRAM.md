@@ -1,10 +1,10 @@
 # 機能火柴図（GENERATED）
 
-台帳HEAD: `94a5ec052a938ba2de45c6e31c28cd06311991d820513f374dd79d06c8d21935`
+台帳HEAD: `4d5a8c72cb7101fb630382cd76cd19d47a398c079b1db57f00fd4605ffab9e17`
 
 # R01_CAPTURE@n07（GENERATED）
 
-台帳HEAD: `94a5ec052a938ba2de45c6e31c28cd06311991d820513f374dd79d06c8d21935`
+台帳HEAD: `4d5a8c72cb7101fb630382cd76cd19d47a398c079b1db57f00fd4605ffab9e17`
 
 ```mermaid
 flowchart TD
@@ -15,15 +15,15 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R02_CAUSE@n07 / BLOCKED
+現在: R06_PATCH@n07 / WAITING
 
 # R02_CAUSE@n07（GENERATED）
 
-台帳HEAD: `94a5ec052a938ba2de45c6e31c28cd06311991d820513f374dd79d06c8d21935`
+台帳HEAD: `4d5a8c72cb7101fb630382cd76cd19d47a398c079b1db57f00fd4605ffab9e17`
 
 ```mermaid
 flowchart TD
-  N0["R02_CAUSE@n07 / pre-design / BLOCKED"]
+  N0["R02_CAUSE@n07 / pre-design / PASSED"]
   N1["case.retrieve"]
   N2["ir.verify"]
   N3["source.audit"]
@@ -34,28 +34,28 @@ flowchart TD
   N0 --> N3
 ```
 
-現在: R02_CAUSE@n07 / BLOCKED
+現在: R06_PATCH@n07 / WAITING
 
 # R03_IMPACT@n07（GENERATED）
 
-台帳HEAD: `94a5ec052a938ba2de45c6e31c28cd06311991d820513f374dd79d06c8d21935`
+台帳HEAD: `4d5a8c72cb7101fb630382cd76cd19d47a398c079b1db57f00fd4605ffab9e17`
 
 ```mermaid
 flowchart TD
-  N0["R03_IMPACT@n07 / pre-design / PENDING"]
+  N0["R03_IMPACT@n07 / pre-design / PASSED"]
   N1["impact.inventory"]
   N0 --> N1
 ```
 
-現在: R02_CAUSE@n07 / BLOCKED
+現在: R06_PATCH@n07 / WAITING
 
 # R04_PROPOSAL@n07（GENERATED）
 
-台帳HEAD: `94a5ec052a938ba2de45c6e31c28cd06311991d820513f374dd79d06c8d21935`
+台帳HEAD: `4d5a8c72cb7101fb630382cd76cd19d47a398c079b1db57f00fd4605ffab9e17`
 
 ```mermaid
 flowchart TD
-  N0["R04_PROPOSAL@n07 / pre-design / PENDING"]
+  N0["R04_PROPOSAL@n07 / pre-design / PASSED"]
   N1["teaching.plan"]
   N2["step.plan"]
   N3["blank.plan"]
@@ -66,15 +66,15 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R02_CAUSE@n07 / BLOCKED
+現在: R06_PATCH@n07 / WAITING
 
 # R04_PROPOSAL@n07（GENERATED）
 
-台帳HEAD: `94a5ec052a938ba2de45c6e31c28cd06311991d820513f374dd79d06c8d21935`
+台帳HEAD: `4d5a8c72cb7101fb630382cd76cd19d47a398c079b1db57f00fd4605ffab9e17`
 
 ```mermaid
 flowchart TD
-  N0["R04_PROPOSAL@n07 / pre-design / PENDING"]
+  N0["R04_PROPOSAL@n07 / pre-design / PASSED"]
   N1["text.verify"]
   N2["figure.verify"]
   N3["ir.verify"]
@@ -85,37 +85,37 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R02_CAUSE@n07 / BLOCKED
+現在: R06_PATCH@n07 / WAITING
 
 # R04_PROPOSAL@n07（GENERATED）
 
-台帳HEAD: `94a5ec052a938ba2de45c6e31c28cd06311991d820513f374dd79d06c8d21935`
+台帳HEAD: `4d5a8c72cb7101fb630382cd76cd19d47a398c079b1db57f00fd4605ffab9e17`
 
 ```mermaid
 flowchart TD
-  N0["R04_PROPOSAL@n07 / pre-design / PENDING"]
+  N0["R04_PROPOSAL@n07 / pre-design / PASSED"]
   N1["novice.audit"]
   N0 --> N1
 ```
 
-現在: R02_CAUSE@n07 / BLOCKED
+現在: R06_PATCH@n07 / WAITING
 
 # R06_PATCH@n07（GENERATED）
 
-台帳HEAD: `94a5ec052a938ba2de45c6e31c28cd06311991d820513f374dd79d06c8d21935`
+台帳HEAD: `4d5a8c72cb7101fb630382cd76cd19d47a398c079b1db57f00fd4605ffab9e17`
 
 ```mermaid
 flowchart TD
-  N0["R06_PATCH@n07 / pre-design / PENDING"]
+  N0["R06_PATCH@n07 / pre-design / RUNNING"]
   N1["ir.compile"]
   N0 --> N1
 ```
 
-現在: R02_CAUSE@n07 / BLOCKED
+現在: R06_PATCH@n07 / WAITING
 
 # R07_VERIFY@n07（GENERATED）
 
-台帳HEAD: `94a5ec052a938ba2de45c6e31c28cd06311991d820513f374dd79d06c8d21935`
+台帳HEAD: `4d5a8c72cb7101fb630382cd76cd19d47a398c079b1db57f00fd4605ffab9e17`
 
 ```mermaid
 flowchart TD
@@ -128,11 +128,11 @@ flowchart TD
   N0 --> N3
 ```
 
-現在: R02_CAUSE@n07 / BLOCKED
+現在: R06_PATCH@n07 / WAITING
 
 # R07_SEMANTIC@n07（GENERATED）
 
-台帳HEAD: `94a5ec052a938ba2de45c6e31c28cd06311991d820513f374dd79d06c8d21935`
+台帳HEAD: `4d5a8c72cb7101fb630382cd76cd19d47a398c079b1db57f00fd4605ffab9e17`
 
 ```mermaid
 flowchart TD
@@ -143,11 +143,11 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R02_CAUSE@n07 / BLOCKED
+現在: R06_PATCH@n07 / WAITING
 
 # G2_AUDIT@n07（GENERATED）
 
-台帳HEAD: `94a5ec052a938ba2de45c6e31c28cd06311991d820513f374dd79d06c8d21935`
+台帳HEAD: `4d5a8c72cb7101fb630382cd76cd19d47a398c079b1db57f00fd4605ffab9e17`
 
 ```mermaid
 flowchart TD
@@ -158,11 +158,11 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R02_CAUSE@n07 / BLOCKED
+現在: R06_PATCH@n07 / WAITING
 
 # G3_HOST@n07（GENERATED）
 
-台帳HEAD: `94a5ec052a938ba2de45c6e31c28cd06311991d820513f374dd79d06c8d21935`
+台帳HEAD: `4d5a8c72cb7101fb630382cd76cd19d47a398c079b1db57f00fd4605ffab9e17`
 
 ```mermaid
 flowchart TD
@@ -171,11 +171,11 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R02_CAUSE@n07 / BLOCKED
+現在: R06_PATCH@n07 / WAITING
 
 # R03_IMPACT_SWEEP@n07（GENERATED）
 
-台帳HEAD: `94a5ec052a938ba2de45c6e31c28cd06311991d820513f374dd79d06c8d21935`
+台帳HEAD: `4d5a8c72cb7101fb630382cd76cd19d47a398c079b1db57f00fd4605ffab9e17`
 
 ```mermaid
 flowchart TD
@@ -184,11 +184,11 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R02_CAUSE@n07 / BLOCKED
+現在: R06_PATCH@n07 / WAITING
 
 # R08_CAPTURE_LEARNING@n07（GENERATED）
 
-台帳HEAD: `94a5ec052a938ba2de45c6e31c28cd06311991d820513f374dd79d06c8d21935`
+台帳HEAD: `4d5a8c72cb7101fb630382cd76cd19d47a398c079b1db57f00fd4605ffab9e17`
 
 ```mermaid
 flowchart TD
@@ -197,11 +197,11 @@ flowchart TD
   N0 --> N1
 ```
 
-現在: R02_CAUSE@n07 / BLOCKED
+現在: R06_PATCH@n07 / WAITING
 
 # L01_LEARNING@n07（GENERATED）
 
-台帳HEAD: `94a5ec052a938ba2de45c6e31c28cd06311991d820513f374dd79d06c8d21935`
+台帳HEAD: `4d5a8c72cb7101fb630382cd76cd19d47a398c079b1db57f00fd4605ffab9e17`
 
 ```mermaid
 flowchart TD
@@ -212,6 +212,6 @@ flowchart TD
   N0 --> N2
 ```
 
-現在: R02_CAUSE@n07 / BLOCKED
+現在: R06_PATCH@n07 / WAITING
 
 code実行receiptはsnapshot.jsonのcapability_receiptsを参照。AIの意味審査は別記録。

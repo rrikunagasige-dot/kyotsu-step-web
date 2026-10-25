@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { InlineMath } from 'react-katex'
+import { SemanticReading } from './SemanticReading'
 import { n07Presentation } from '../../data/textbook/math/numbers/n07Lesson'
 import { getTextbookChoices, isTextbookItemResolved, type TextbookUnitProgress } from '../../domain/textbook'
 import type { TextbookItem, TextbookReadingBlock, TextbookSection, TextbookUnit } from '../../domain/textbookSchema'
@@ -16,6 +17,7 @@ type Props = {
   onSummaryReached?: (reached: boolean) => void
   onReviewAnswer?: (item: TextbookItem, choice: string) => void
 }
+type DisplayParts = { kind: string; id: string; text?: string; latex?: string; usage?: string }[]
 type Node = typeof n07Presentation.nodes[number]
 const roles: Record<string, string> = { example: '例題', proof: '性質の導出', definition: '定義', property: '性質', interpretation: '意味の確認', reuse: '学んだことを使う' }
 const numbers: Record<string, number> = n07Presentation.equationNumbers
@@ -65,10 +67,29 @@ export function N07ReadingFlow({ unit, section, progress, onSummaryReached, onRe
     return <TextbookFormula key={block.id} unitId={unit.unitId} block={block} section={section} progress={currentProgress}
       onOpen={setActiveId} equationNumber={numbers[block.id]} />
   }
+  function semanticParts(parts: { kind: string; id: string; text?: string; latex?: string; usage?: string }[]) {
+    return parts.map(part => part.kind === 'math'
+      ? { type: 'math' as const, latex: part.latex!, semanticId: part.id }
+      : part.kind === 'term' ? { type: 'term' as const, text: part.text!, semanticId: part.id, usage: part.usage as 'first_definition' }
+        : { type: 'text' as const, text: part.text!, semanticId: part.id })
+  }
+  function displayText(parts: { kind: string; id: string; text?: string; latex?: string; usage?: string }[] | undefined, fallback: string) {
+    return parts ? <SemanticReading parts={semanticParts(parts)} renderChoice={() => null} /> : fallback
+  }
+  function table(node: Node) {
+    return node.table && <div className="n07-table-wrap"><table data-testid="n07-remainder-table">
+      <caption>商と余りの記録</caption><thead><tr>{node.table[0].map(cell => <th key={cell} scope="col">{cell}</th>)}</tr></thead>
+      <tbody>{node.table.slice(1).map((row, index) => <tr key={index}>{row.map((cell, column) => <td key={column}>{cell}</td>)}</tr>)}</tbody>
+    </table></div>
+  }
   function result(node: Node) {
     return <div key={node.resultId} data-result-source={node.resultId} className="n07-result">
-      <p className="reading-paragraph">{node.after}</p>
-      {node.outputLatex && formula({ id: node.id + '-output', type: 'formula', parts: [{ type: 'math', latex: node.outputLatex }] })}
+      <p className="n07-source-question">{displayText(n07Presentation.semanticDisplay[node.id as keyof typeof n07Presentation.semanticDisplay].sourceQuestionParts, '')}</p>
+      {n07Presentation.semantic.nodes.find(candidate => candidate.id === node.id)?.before
+        .filter(block => block.id.endsWith('-interaction')).map(block => renderBlock(block as TextbookReadingBlock))}
+      {n07Presentation.semantic.nodes.find(candidate => candidate.id === node.id)?.after.map(block => renderBlock(block as TextbookReadingBlock))}
+      {node.id === 'n07-q02-remainder-1' && <p className="reading-paragraph"><InlineMath math="23\div11" /> の整数部分は2、最初の余りは1です。</p>}
+      {table(node)}
     </div>
   }
   function choicePanel(item: TextbookItem) {
@@ -76,9 +97,11 @@ export function N07ReadingFlow({ unit, section, progress, onSummaryReached, onRe
     const reasons: Record<string, string | undefined> = activeNode?.interaction?.distractorReasons ?? {}
     return <div key={item.id} className="reading-inline-choice-panel" data-testid={'inline-choice-panel-' + item.id}>
       <p>{item.prompt}</p>
+      {activeNode && n07Presentation.semanticDisplay[activeNode.id as keyof typeof n07Presentation.semanticDisplay].taskDomain &&
+        <p className="n07-task-domain">10、100、1000、…倍のうち、小数部分がそろう最小の倍率を選びます。</p>}
       {wrong && <aside className="reading-choice-hint" data-testid={'textbook-hint-' + item.id}>
         <strong>{text('もう一度考えよう', '再想一想')}</strong>
-        <span>{reasons[record.value]} {item.hints[0]}</span>
+        <span>{activeNode && displayText((n07Presentation.semanticDisplay[activeNode.id as keyof typeof n07Presentation.semanticDisplay].distractorDisplayParts as Record<string, DisplayParts>)[record.value], reasons[record.value] ?? '')} {activeNode && displayText(n07Presentation.semanticDisplay[activeNode.id as keyof typeof n07Presentation.semanticDisplay].hintDisplayParts[0], item.hints[0])}</span>
       </aside>}
       <div className="reading-choice-options n07-choice-options" role="group" aria-label={item.prompt}>
         {activeChoices.map((choice, index) => <button type="button" key={choice} aria-label={choice}
@@ -90,40 +113,32 @@ export function N07ReadingFlow({ unit, section, progress, onSummaryReached, onRe
             if (choice === item.answer || item.acceptedAnswers.includes(choice)) setActiveId(null)
           }}>
           <span>{index + 1}</span><strong>{item.answerType === 'formula'
-            ? <TypesetFormula source={choice} sourceId={'choice-' + item.id + '-' + index} unitId={unit.unitId} /> : choice}</strong>
+            ? <TypesetFormula source={choice} sourceId={'choice-' + item.id + '-' + index} unitId={unit.unitId} /> : displayText(activeNode ? (n07Presentation.semanticDisplay[activeNode.id as keyof typeof n07Presentation.semanticDisplay].choiceDisplayParts as Record<string, DisplayParts>)[choice] : undefined, choice)}</strong>
         </button>)}
       </div>
     </div>
   }
   function renderBlock(block: TextbookReadingBlock) {
-    if (block.type === 'formula') return <div key={block.id}>{formula(block)}{block.parts.flatMap(part => part.type === 'choice'
+    if (block.type === 'formula') return <div key={block.id} data-formula-semantic-parts={JSON.stringify(block.parts)}>{formula(block)}{block.parts.flatMap(part => part.type === 'choice'
       ? [choicePanel(section.items.find(item => item.id === part.itemId)!)] : [])}</div>
-    if (block.type === 'paragraph') return <div key={block.id}><p className="reading-paragraph">{block.parts.map((part, index) => {
-      if (part.type === 'math') return <InlineMath key={index} math={part.latex} />
-      if (part.type !== 'choice') return <span key={index}>{part.text}</span>
-      const item = section.items.find(item => item.id === part.itemId)!
+    if (block.type === 'paragraph') return <div key={block.id}><p className="reading-paragraph"><SemanticReading parts={block.parts} renderChoice={itemId => {
+      const item = section.items.find(item => item.id === itemId)!
       const answer = currentProgress?.answers[item.id]
       return isTextbookItemResolved(item, answer)
-        ? <span key={index} className="reading-inline-answer" data-testid={'resolved-' + item.id}>{answer!.value}</span>
-        : <button type="button" key={index} className={'reading-inline-blank' + (answer ? ' reading-inline-blank--wrong' : '')}
+        ? <span className="reading-inline-answer" data-testid={'resolved-' + item.id}>{item.answerType === 'formula'
+          ? <InlineMath math={answer!.value} /> : displayText((n07Presentation.semanticDisplay[nodes.find(candidate => candidate.interaction?.id === itemId)!.id as keyof typeof n07Presentation.semanticDisplay].choiceDisplayParts as Record<string, DisplayParts>)[answer!.value], answer!.value)}</span>
+        : <button type="button" className={'reading-inline-blank' + (answer ? ' reading-inline-blank--wrong' : '')}
           data-testid={'textbook-item-' + item.id} aria-label={item.prompt} onClick={() => setActiveId(item.id)}>{answer ? text('もう一度', '再选一次') : text('選択', '选择')}</button>
-    })}</p>{block.parts.flatMap(part => part.type === 'choice' ? [choicePanel(section.items.find(item => item.id === part.itemId)!)] : [])}</div>
+    }} /></p>{block.parts.flatMap(part => part.type === 'choice' ? [choicePanel(section.items.find(item => item.id === part.itemId)!)] : [])}</div>
     return null
   }
   function renderNode(node: Node, history = false) {
-    const first = section.readingFlow.findIndex(block => block.id === node.id + '-before')
-    const nextNode = nodes[nodes.indexOf(node) + 1]
-    const end = nextNode ? section.readingFlow.findIndex(block => block.id === nextNode.id + '-before') : section.readingFlow.length
-    const blocks = section.readingFlow.slice(first, end).filter(block => block.type !== 'heading' && block.type !== 'marker')
-    const after = blocks.findIndex(block => block.id === node.id + '-after')
-    const visible = history || resolved(node) ? blocks : blocks.slice(0, after)
+    const compiled = n07Presentation.semantic.nodes.find(candidate => candidate.id === node.id)!
+    const visible = history || resolved(node) ? [...compiled.before, ...compiled.after] : compiled.before
     return <div className="n07-thinking-step" key={node.id} data-node-id={node.id}>
-      <div className="n07-step-caption"><span>{roles[node.role] ?? '確認'}</span><strong>{node.goal}</strong></div>
-      {visible.map(renderBlock)}
-      {node.table && (history || resolved(node)) && <div className="n07-table-wrap"><table data-testid="n07-remainder-table">
-        <caption>商と余りの記録</caption><thead><tr>{node.table[0].map(cell => <th key={cell} scope="col">{cell}</th>)}</tr></thead>
-        <tbody>{node.table.slice(1).map((row, index) => <tr key={index}>{row.map((cell, column) => <td key={column}>{cell}</td>)}</tr>)}</tbody>
-      </table></div>}
+      <div className="n07-step-caption"><span>{node.role === 'example' ? '今すること' : roles[node.role] ?? '確認'}</span><strong>{node.goal}</strong></div>
+      {visible.map(block => renderBlock(block as TextbookReadingBlock))}
+      {(history || resolved(node)) && table(node)}
     </div>
   }
   return <div ref={flow} className="textbook-reading-flow n07-reading" data-typeset-theme="true" data-testid="textbook-reading-flow" tabIndex={-1}>
@@ -140,6 +155,7 @@ export function N07ReadingFlow({ unit, section, progress, onSummaryReached, onRe
       })}
     </div>}
     <section className="math-textbook-stage math-textbook-stage--current" data-testid={'math-textbook-stage-' + stage.id}>
+      <div className="n07-source-question" data-testid="n07-source-question"><strong>元の問題・考える対象</strong><p>{displayText(n07Presentation.semanticDisplay[stageNodes[0].id as keyof typeof n07Presentation.semanticDisplay].sourceQuestionParts, '')}</p></div>
       <header className="math-textbook-stage-active-title"><strong>{stageNodes[0].goal}</strong><small>{activeStage + 1} / {stages.length}</small></header>
       {knownNodes.length > 0 && <aside className="math-textbook-stage-references" data-testid="math-textbook-stage-references">
         <strong>{text('使う条件・前の結果', '需要的条件与之前的结果')}</strong>{knownNodes.map(node => result(node))}

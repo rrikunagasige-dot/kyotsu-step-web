@@ -85,5 +85,5 @@ export function repairN07(legacy, design, originalPlan, sourceIndex) {
  // This fingerprint excludes display-only prompt/hint annotations; the full items remain untouched.
  const grading=u=>hash(u.sections.flatMap(s=>s.items.map(({id,answer,acceptedAnswers,answerType,choices})=>({id,answer,acceptedAnswers,answerType,choices}))));
  invariant(grading(unit)===grading(legacy.unit),'grading fingerprint changed');
- return {ir,compiled,artifact:{...legacy,unit,equationNumbers,semantic:compiled,semanticDisplay:sidecars,equationAliases:aliases,repair:{work:'W-MATH-032',designHash:hash(design),irHash:hash(ir),gradingFingerprint:grading(unit)}}};
+ return {ir,compiled,artifact:{...legacy,unit,equationNumbers,semantic:compiled,semanticDisplay:sidecars,equationAliases:aliases,repair:{work:'W-MATH-032',designHash:hash(design),irHash:compiled.irHash,gradingFingerprint:grading(unit)}}};
 }

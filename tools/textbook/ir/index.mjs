@@ -83,6 +83,7 @@ export function validateIR(input){
  return {status:findings.some(f=>f.severity==='ERROR')?'FAIL':'PASS',findings,irHash:hash(ir),expectedSemanticIds:tokens(ir).filter(t=>t.kind!=='text').map(t=>t.id)};
 }
 export function compileIR(ir,{warningResolutions=[]}={}){
+ ir=irSchema.parse(ir);
  const check=validateIR(ir);invariant(check.status==='PASS',JSON.stringify(check.findings));
  const warnings=check.findings.filter(f=>f.severity==='WARN');invariant(warnings.every(f=>warningResolutions.some(r=>r.findingId===f.id&&r.evidence)),'unresolved semantic warning');
  const equationNumbers={};let number=0;for(const n of ir.nodes)for(const b of [...n.before,...n.after])if(b.kind==='relationChain'&&b.numbering.mode==='group-end'&&!Object.hasOwn(equationNumbers,b.numbering.stableId))equationNumbers[b.numbering.stableId]=++number;

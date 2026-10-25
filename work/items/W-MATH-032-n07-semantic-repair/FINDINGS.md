@@ -16,3 +16,5 @@ BOUNDARIES:
 - 事前影響の資料を修正後のsweep完了とは呼ばない。
 
 Legacy governance checker note: its Markdown-only rule reports W032 as unapproved because the original PROPOSAL.md deliberately retains its pre-approval bytes. Actual approval is in APPROVAL.json and the hash-chained user event, matched to the immutable e6fc attachment and current runtime bundle. Whole-repository checker currently reports10 earlier metadata errors plus this compatibility warning/error; it is not claimed PASS. No original proposal bytes or original approval were rewritten to satisfy that legacy display rule. Runtime and CI exact approval checks pass.
+
+Post-acceptance findings resolved in this request: positive feedback improperly invalidated R01; multi-case Work closure was not recognized by per-case registry linkage; historical learner_text allowed metadata strings through unknown containers. Regression tests now cover all three. New overall-acceptance positive has no negative counterpart; that classifier head is intentionally omitted. Existing legacy metadata-only governance limitation remains documented.

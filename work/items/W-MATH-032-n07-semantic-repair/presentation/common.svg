@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="2044" viewBox="0 0 1280 2044" role="img" aria-label="全体の接続と、公開・評価・学習"><style>text{font-family:"Noto Sans JP","Yu Gothic","Hiragino Kaku Gothic ProN",sans-serif}</style><rect width="1280" height="2044" fill="#f7f9fc"/>
+<text x="40" y="48" fill="#172b3a" font-size="27" font-weight="700">全体の接続と、公開・評価・学習</text>
+<text x="40" y="82" fill="#172b3a" font-size="17" font-weight="400">作成／修正の入口を保持。受入後の分岐までを示す。</text>
+<text x="40" y="129" fill="#172b3a" font-size="16" font-weight="700">工程 / 主担当</text>
+<rect x="270" y="105" width="310" height="42" rx="10" fill="#6d48ae"/>
+<text x="288" y="133" fill="white" font-size="19" font-weight="700">AI</text>
+<rect x="600" y="105" width="310" height="42" rx="10" fill="#175e93"/>
+<text x="618" y="133" fill="white" font-size="19" font-weight="700">CODE</text>
+<rect x="930" y="105" width="310" height="42" rx="10" fill="#9c5c0e"/>
+<text x="948" y="133" fill="white" font-size="19" font-weight="700">USER</text>
+<rect x="40" y="168" width="210" height="172" rx="12" fill="white" stroke="#d5dce6"/>
+<text x="54" y="197" fill="#172b3a" font-size="15" font-weight="700">S00_RECOVER</text>
+<text x="54" y="230" fill="#172b3a" font-size="19" font-weight="700">現在地・正本の復元</text>
+<text x="54" y="321" fill="#175e93" font-size="14" font-weight="700">主担当 CODE</text>
+<rect x="270" y="168" width="310" height="172" rx="12" fill="#f5f0ff" stroke="#e0e5ee"/>
+<text x="286" y="198" fill="#172b3a" font-size="17" font-weight="400">今回必要な資料・Work・既存の教訓を</text>
+<text x="286" y="223" fill="#172b3a" font-size="17" font-weight="400">確認する。</text>
+<rect x="600" y="168" width="310" height="172" rx="12" fill="#edf6ff" stroke="#e0e5ee"/>
+<text x="616" y="198" fill="#172b3a" font-size="17" font-weight="400">台帳、原資料snapshot、規則、候補、</text>
+<text x="616" y="223" fill="#172b3a" font-size="17" font-weight="400">承認のhashを照合する。</text>
+<rect x="930" y="168" width="310" height="172" rx="12" fill="#fff4e7" stroke="#e0e5ee"/>
+<text x="946" y="198" fill="#172b3a" font-size="17" font-weight="400">作成／修正の依頼をする。</text>
+<text x="286" y="325" fill="#46556b" font-size="14" font-weight="400">成果物：現在地と、次に進める工程</text>
+<path d="M145 341v17m-5-6 5 6 5-6" fill="none" stroke="#8794a6" stroke-width="2"/>
+<rect x="40" y="364" width="210" height="172" rx="12" fill="white" stroke="#d5dce6"/>
+<text x="54" y="393" fill="#172b3a" font-size="15" font-weight="700">S01_ROUTE</text>
+<text x="54" y="426" fill="#172b3a" font-size="19" font-weight="700">二つの入口と修正優先</text>
+<text x="54" y="517" fill="#175e93" font-size="14" font-weight="700">主担当 CODE</text>
+<rect x="270" y="364" width="310" height="172" rx="12" fill="#f5f0ff" stroke="#e0e5ee"/>
+<text x="286" y="394" fill="#172b3a" font-size="17" font-weight="400">依頼の意図を確認する。</text>
+<rect x="600" y="364" width="310" height="172" rx="12" fill="#edf6ff" stroke="#e0e5ee"/>
+<text x="616" y="394" fill="#172b3a" font-size="17" font-weight="400">未完の修正を優先し、作成／修正の既</text>
+<text x="616" y="419" fill="#172b3a" font-size="17" font-weight="400">存工程へ振り分ける。</text>
+<rect x="930" y="364" width="310" height="172" rx="12" fill="#fff4e7" stroke="#e0e5ee"/>
+<text x="946" y="394" fill="#172b3a" font-size="17" font-weight="400">範囲の変更が必要な場合に判断する。</text>
+<text x="286" y="521" fill="#46556b" font-size="14" font-weight="400">成果物：作成C01へ／修正R01へ</text>
+<path d="M145 537v17m-5-6 5 6 5-6" fill="none" stroke="#8794a6" stroke-width="2"/>
+<rect x="40" y="560" width="210" height="172" rx="12" fill="white" stroke="#d5dce6"/>
+<text x="54" y="589" fill="#172b3a" font-size="15" font-weight="700">G2_AUDIT</text>
+<text x="54" y="622" fill="#172b3a" font-size="19" font-weight="700">公開前の横断監査</text>
+<text x="54" y="713" fill="#6d48ae" font-size="14" font-weight="700">主担当 AI</text>
+<rect x="270" y="560" width="310" height="172" rx="12" fill="#f5f0ff" stroke="#e0e5ee"/>
+<text x="286" y="590" fill="#172b3a" font-size="17" font-weight="400">対象と関連範囲の意味・回帰・未解決</text>
+<text x="286" y="615" fill="#172b3a" font-size="17" font-weight="400">を審査する。</text>
+<rect x="600" y="560" width="310" height="172" rx="12" fill="#edf6ff" stroke="#e0e5ee"/>
+<text x="616" y="590" fill="#172b3a" font-size="17" font-weight="400">対象版・保護範囲・影響表・検査証拠</text>
+<text x="616" y="615" fill="#172b3a" font-size="17" font-weight="400">の不足を検出する。</text>
+<rect x="930" y="560" width="310" height="172" rx="12" fill="#fff4e7" stroke="#e0e5ee"/>
+<text x="946" y="590" fill="#172b3a" font-size="17" font-weight="400">この工程の個別承認は不要。</text>
+<text x="286" y="717" fill="#46556b" font-size="14" font-weight="400">成果物：公開可否と、残件の引継先</text>
+<path d="M145 733v17m-5-6 5 6 5-6" fill="none" stroke="#8794a6" stroke-width="2"/>
+<rect x="40" y="756" width="210" height="172" rx="12" fill="white" stroke="#d5dce6"/>
+<text x="54" y="785" fill="#172b3a" font-size="15" font-weight="700">G3_HOST</text>
+<text x="54" y="818" fill="#172b3a" font-size="19" font-weight="700">既存アプリへ反映</text>
+<text x="54" y="909" fill="#175e93" font-size="14" font-weight="700">主担当 CODE</text>
+<rect x="270" y="756" width="310" height="172" rx="12" fill="#f5f0ff" stroke="#e0e5ee"/>
+<text x="286" y="786" fill="#172b3a" font-size="17" font-weight="400">既存の公開手順を実行し、異常時に原</text>
+<text x="286" y="811" fill="#172b3a" font-size="17" font-weight="400">因を調べる。</text>
+<rect x="600" y="756" width="310" height="172" rx="12" fill="#edf6ff" stroke="#e0e5ee"/>
+<text x="616" y="786" fill="#172b3a" font-size="17" font-weight="400">検証済みsourceをcompile・公開。man</text>
+<text x="616" y="811" fill="#172b3a" font-size="17" font-weight="400">ifestと実配信・実操作を照合する。</text>
+<rect x="930" y="756" width="310" height="172" rx="12" fill="#fff4e7" stroke="#e0e5ee"/>
+<text x="946" y="786" fill="#172b3a" font-size="17" font-weight="400">承認範囲内の同じ公開許可を再要求し</text>
+<text x="946" y="811" fill="#172b3a" font-size="17" font-weight="400">ない。</text>
+<text x="286" y="913" fill="#46556b" font-size="14" font-weight="400">成果物：実配信の版を確認した直接アプリURL</text>
+<path d="M145 929v17m-5-6 5 6 5-6" fill="none" stroke="#8794a6" stroke-width="2"/>
+<rect x="40" y="952" width="210" height="172" rx="12" fill="white" stroke="#d5dce6"/>
+<text x="54" y="981" fill="#172b3a" font-size="15" font-weight="700">G3_FINAL</text>
+<text x="54" y="1014" fill="#172b3a" font-size="19" font-weight="700">実物の範囲付き評価</text>
+<text x="54" y="1105" fill="#9c5c0e" font-size="14" font-weight="700">主担当 USER</text>
+<rect x="270" y="952" width="310" height="172" rx="12" fill="#f5f0ff" stroke="#e0e5ee"/>
+<text x="286" y="982" fill="#172b3a" font-size="17" font-weight="400">どの箇所・観点への評価かを確認し、</text>
+<text x="286" y="1007" fill="#172b3a" font-size="17" font-weight="400">原文を記録する。</text>
+<rect x="600" y="952" width="310" height="172" rx="12" fill="#edf6ff" stroke="#e0e5ee"/>
+<text x="616" y="982" fill="#172b3a" font-size="17" font-weight="400">評価を実物の版・route・範囲へ結び</text>
+<text x="616" y="1007" fill="#172b3a" font-size="17" font-weight="400">付ける。</text>
+<rect x="930" y="952" width="310" height="172" rx="12" fill="#fff4e7" stroke="#e0e5ee"/>
+<text x="946" y="982" fill="#172b3a" font-size="17" font-weight="400">アプリを読み、受入または修正点を伝</text>
+<text x="946" y="1007" fill="#172b3a" font-size="17" font-weight="400">える。</text>
+<text x="286" y="1109" fill="#46556b" font-size="14" font-weight="400">成果物：受入→後処理／修正必要→R01へ</text>
+<path d="M145 1125v17m-5-6 5 6 5-6" fill="none" stroke="#8794a6" stroke-width="2"/>
+<rect x="40" y="1148" width="210" height="172" rx="12" fill="white" stroke="#d5dce6"/>
+<text x="54" y="1177" fill="#172b3a" font-size="15" font-weight="700">R03_IMPACT_SWEEP</text>
+<text x="54" y="1210" fill="#172b3a" font-size="19" font-weight="700">修正後の同型監査</text>
+<text x="54" y="1301" fill="#6d48ae" font-size="14" font-weight="700">主担当 AI</text>
+<rect x="270" y="1148" width="310" height="172" rx="12" fill="#f5f0ff" stroke="#e0e5ee"/>
+<text x="286" y="1178" fill="#172b3a" font-size="17" font-weight="400">実際の差分から同型不具合と関連修正</text>
+<text x="286" y="1203" fill="#172b3a" font-size="17" font-weight="400">の残件を調べる。</text>
+<rect x="600" y="1148" width="310" height="172" rx="12" fill="#edf6ff" stroke="#e0e5ee"/>
+<text x="616" y="1178" fill="#172b3a" font-size="17" font-weight="400">事前表の流用を防ぎ、対象・版・関連</text>
+<text x="616" y="1203" fill="#172b3a" font-size="17" font-weight="400">修正の完了を照合する。</text>
+<rect x="930" y="1148" width="310" height="172" rx="12" fill="#fff4e7" stroke="#e0e5ee"/>
+<text x="946" y="1178" fill="#172b3a" font-size="17" font-weight="400">新しい教材変更が必要なら、その具体</text>
+<text x="946" y="1203" fill="#172b3a" font-size="17" font-weight="400">案を承認する。</text>
+<text x="286" y="1305" fill="#46556b" font-size="14" font-weight="400">成果物：残件あり→関連修正／なし→R08</text>
+<path d="M145 1321v17m-5-6 5 6 5-6" fill="none" stroke="#8794a6" stroke-width="2"/>
+<rect x="40" y="1344" width="210" height="172" rx="12" fill="white" stroke="#d5dce6"/>
+<text x="54" y="1373" fill="#172b3a" font-size="15" font-weight="700">R08_CAPTURE_LEARNING</text>
+<text x="54" y="1406" fill="#172b3a" font-size="19" font-weight="700">修正Episodeの確定</text>
+<text x="54" y="1497" fill="#6d48ae" font-size="14" font-weight="700">主担当 AI</text>
+<rect x="270" y="1344" width="310" height="172" rx="12" fill="#f5f0ff" stroke="#e0e5ee"/>
+<text x="286" y="1374" fill="#172b3a" font-size="17" font-weight="400">原因・修正・評価・再発防止を整理す</text>
+<text x="286" y="1399" fill="#172b3a" font-size="17" font-weight="400">る。</text>
+<rect x="600" y="1344" width="310" height="172" rx="12" fill="#edf6ff" stroke="#e0e5ee"/>
+<text x="616" y="1374" fill="#172b3a" font-size="17" font-weight="400">元の否定例と修正版・受入・回帰テス</text>
+<text x="616" y="1399" fill="#172b3a" font-size="17" font-weight="400">トを結ぶ。重複・未収録を検出する。</text>
+<rect x="930" y="1344" width="310" height="172" rx="12" fill="#fff4e7" stroke="#e0e5ee"/>
+<text x="946" y="1374" fill="#172b3a" font-size="17" font-weight="400">追加の個別承認は不要。</text>
+<text x="286" y="1501" fill="#46556b" font-size="14" font-weight="400">成果物：修正Episodeと、元評価を保持した事例</text>
+<path d="M145 1517v17m-5-6 5 6 5-6" fill="none" stroke="#8794a6" stroke-width="2"/>
+<rect x="40" y="1540" width="210" height="172" rx="12" fill="white" stroke="#d5dce6"/>
+<text x="54" y="1569" fill="#172b3a" font-size="15" font-weight="700">L01_LEARNING</text>
+<text x="54" y="1602" fill="#172b3a" font-size="19" font-weight="700">教訓・事例・学習の統</text>
+<text x="54" y="1627" fill="#172b3a" font-size="19" font-weight="700">合</text>
+<text x="54" y="1693" fill="#6d48ae" font-size="14" font-weight="700">主担当 AI</text>
+<rect x="270" y="1540" width="310" height="172" rx="12" fill="#f5f0ff" stroke="#e0e5ee"/>
+<text x="286" y="1570" fill="#172b3a" font-size="17" font-weight="400">評価観点と適用範囲を審査。次回に残</text>
+<text x="286" y="1595" fill="#172b3a" font-size="17" font-weight="400">す規則を整理する。</text>
+<rect x="600" y="1540" width="310" height="172" rx="12" fill="#edf6ff" stroke="#e0e5ee"/>
+<text x="616" y="1570" fill="#172b3a" font-size="17" font-weight="400">版付きcatalog→漏洩のない例→group分</text>
+<text x="616" y="1595" fill="#172b3a" font-size="17" font-weight="400">割→fit・評価。少数例では採用を控え</text>
+<text x="616" y="1620" fill="#172b3a" font-size="17" font-weight="400">る。</text>
+<rect x="930" y="1540" width="310" height="172" rx="12" fill="#fff4e7" stroke="#e0e5ee"/>
+<text x="946" y="1570" fill="#172b3a" font-size="17" font-weight="400">実物の肯定・否定評価が学習の根拠に</text>
+<text x="946" y="1595" fill="#172b3a" font-size="17" font-weight="400">なる。</text>
+<text x="286" y="1697" fill="#46556b" font-size="14" font-weight="400">成果物：次回の規則・事例・学習結果。モデルは助言用</text>
+<path d="M145 1713v17m-5-6 5 6 5-6" fill="none" stroke="#8794a6" stroke-width="2"/>
+<rect x="40" y="1736" width="210" height="172" rx="12" fill="white" stroke="#d5dce6"/>
+<text x="54" y="1765" fill="#172b3a" font-size="15" font-weight="700">Z01_CLOSE</text>
+<text x="54" y="1798" fill="#172b3a" font-size="19" font-weight="700">終了・作成への復帰</text>
+<text x="54" y="1889" fill="#175e93" font-size="14" font-weight="700">主担当 CODE</text>
+<rect x="270" y="1736" width="310" height="172" rx="12" fill="#f5f0ff" stroke="#e0e5ee"/>
+<text x="286" y="1766" fill="#172b3a" font-size="17" font-weight="400">現在地・次の作業・必要な教訓を簡潔</text>
+<text x="286" y="1791" fill="#172b3a" font-size="17" font-weight="400">にまとめる。</text>
+<rect x="600" y="1736" width="310" height="172" rx="12" fill="#edf6ff" stroke="#e0e5ee"/>
+<text x="616" y="1766" fill="#172b3a" font-size="17" font-weight="400">必須残件・承認・証拠・重複を照合し</text>
+<text x="616" y="1791" fill="#172b3a" font-size="17" font-weight="400">て閉じる。修正残件なしで作成へ戻る</text>
+<text x="616" y="1816" fill="#172b3a" font-size="17" font-weight="400">。</text>
+<rect x="930" y="1736" width="310" height="172" rx="12" fill="#fff4e7" stroke="#e0e5ee"/>
+<text x="946" y="1766" fill="#172b3a" font-size="17" font-weight="400">次の依頼を行う。</text>
+<text x="286" y="1893" fill="#46556b" font-size="14" font-weight="400">成果物：完了記録と再開可能な現在地</text>
+<text x="40" y="2015" fill="#172b3a" font-size="14" font-weight="400">CODE＝既存プログラムの実行。AIがコードを書く仕事とは区別する。紹介用説明図であり、実行台帳の完了状態を表す図ではない。</text>
+</svg>

@@ -315,4 +315,23 @@ class Integration(unittest.TestCase):
         ref=run_capability(self.rt,self.work,n,'math.solve',argument);out=self.rt.store.get(self.rt.store.get(ref)['output'])
         self.assertEqual(out['status'],'NEEDS_AI_REVIEW');self.assertEqual(out['solutionOrigin'],'AI_ARGUMENT');self.assertIs(out['formalProof'],False)
 
+    def test_positive_acceptance_feedback_does_not_reopen_correction_capture(self):
+        p=self.make_plan('CMD-WORK-001','positive-route');self.rt.open(p)
+        node=instantiate(p)['R01_CAPTURE@a'];before=self.rt.input_hash(self.rt.state('positive-route'),node)
+        self.rt.user('positive-route','quality_positive','simulation positive','case','simulation:positive',verification_level='simulation',release_unit='u1')
+        self.assertEqual(before,self.rt.input_hash(self.rt.state('positive-route'),node))
+        self.rt.user('positive-route','quality_negative','simulation negative','case','simulation:negative',verification_level='simulation',release_unit='u1')
+        self.assertNotEqual(before,self.rt.input_hash(self.rt.state('positive-route'),node))
+
+    def test_multi_case_registry_closure_needs_matching_origin_and_actual_repair_evidence(self):
+        from requests import case_linked_to_closure
+        from types import SimpleNamespace
+        row={'id':'case-a','origin_version':'a'*40,'resolution':'VERIFIED_FIXED','repair_evidence_refs':['app']}
+        state={'plan':{},'candidate_sha':'b'*40,'results':{'R08_CAPTURE_LEARNING@a':{'artifact':'r'}},'evidence':{'app':{'kind':'app','data':{'source_sha':'b'*40}}}}
+        rt=SimpleNamespace(store=SimpleNamespace(get=lambda _: {'case_updates':[row]}))
+        self.assertTrue(case_linked_to_closure(rt,state,'case-a','a'*40))
+        self.assertFalse(case_linked_to_closure(rt,state,'case-a','c'*40))
+        self.assertFalse(case_linked_to_closure(rt,state,'case-b','a'*40))
+        row['repair_evidence_refs']=[];self.assertFalse(case_linked_to_closure(rt,state,'case-a','a'*40))
+
 if __name__=='__main__':unittest.main()

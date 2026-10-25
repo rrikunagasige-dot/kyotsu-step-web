@@ -1,6 +1,6 @@
 # W-MATH-032 — N07の意味と解法接続の修正
 
-Status: VERIFYING
+Status: DONE
 Command: CMD-WORK-001
 Proposal: P-001 / PROPOSAL.md
 Date: 2026-10-25（日本時間）
@@ -22,3 +22,5 @@ Next: R06の候補commit固定と結果提出→四幅の実UI/全回答/誤答/
 Latest: R06 completed at46ea59be、R07/G2 PASS。CI40154122715四幅実UI SUCCESS。既存Pages公開run40154568134実行中。コード＋同じAIによる実画像監査であり、独立した別AI監査とユーザー受入は未実施。
 
 FINAL CURRENT: 既存Pages公開run40154568134 SUCCESS。公開source46ea59be、IR/保存namespace/第一タイトル受入22bc43baを実HTTPSと公開四幅操作で照合済み。G3_HOST PASS、次はG3_FINAL@n07の範囲付きユーザー受入。受入後の事後sweep/R08/L01は未実施。旧公開中・R07待ちの記録は履歴。WorkはVERIFYINGであり、設計承認を教材受入へ変換しない。
+
+2026-10-25 latest: User accepted the published N07 and explicitly requested learning. G3_FINAL→fresh post-fix sweep→R08→L01 actual fit→Z01 complete. Original six negative cases linked to verified closure; one broad positive added. Learner source46ea unchanged. Presentation responsibility diagrams are a separate explanatory output of this request.

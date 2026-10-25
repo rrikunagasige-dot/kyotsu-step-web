@@ -1,0 +1,26 @@
+{
+  "sourceSHA": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+  "humanAccepted": true,
+  "newPositiveCases": 1,
+  "evaluatedCases": 10,
+  "negativeCases": 7,
+  "positiveCases": 3,
+  "trainingRun": true,
+  "trainedHeads": {
+    "layout_discomfort": 2
+  },
+  "newOverallAcceptanceHead": "NOT_TRAINABLE_SINGLE_CLASS (one positive, no negative)",
+  "modelStatus": "OFFLINE_ONLY",
+  "advisoryEligible": false,
+  "independentFamilies": 2,
+  "unseenHoldout": false,
+  "evaluation": "NOT_ESTIMABLE; no generalization-accuracy claim",
+  "encoder": "intfloat/multilingual-e5-small",
+  "encoderRevision": "fd1525a9fd15316a2d503bf26ab031a61d056e98",
+  "encoderHash": "1d0c6699c483167583c6ba00905876ddb7764a1571c359e3030515644dd3b1b9",
+  "modelHash": "144ba2ed582420eacacb68212905032fa6fd32c37077a9b278e23676c5c1ac91",
+  "featureInputSchema": "learner-visible-json/2",
+  "catalogHash": "32ebc4d28733a4601bf2555bb099aed40ed6ba73e4fae26bf14875c656eacf2b",
+  "legacyModelDisposition": "NOT_TRAINABLE",
+  "legacyDispositionExplanation": "Existing adapter uses NOT_TRAINABLE for a non-advisory model; actual fit is separately demonstrated by trainingRun/heads/coefficients. No new overall head was fitted."
+}

@@ -1,0 +1,28 @@
+flowchart TD
+  START["USER：作成／修正を依頼"]
+  RESTORE["CODE：正本・台帳・修正優先を照合"]
+  ROUTE{"作成か修正か"}
+  C1["C01–C04｜AI：原資料・概念・完全解法／CODE：抽出・検算"]
+  C5["C05｜AI：本文・式・穴・図を具体設計／CODE：IR・依存・可視状態検査"]
+  R1["R01–R03｜AI：症状・原因・同型判定／CODE：再現・版照合・全対象列挙"]
+  R4["R04｜AI：対象限定の修正案／CODE：IR・保護範囲検査"]
+  APPROVE["C06／R05｜USER：具体案の承認／CODE：版と範囲を固定"]
+  BUILD["C07／R06｜AI：承認範囲を実装／CODE：compile・採点・進捗保護"]
+  CHECK["C08–C09／R07・G2｜CODE：実検査／AI：原資料・実画像・教え方の監査"]
+  HOST["G3_HOST｜CODE：既存アプリへ反映・実配信照合／AI：公開手順の実行"]
+  EVAL{"G3_FINAL｜USER：実物を評価"}
+  TYPE{"修正Workか"}
+  SWEEP{"R03事後｜AI：同型・関連修正の判断／CODE：残件照合"}
+  R8["R08｜AI：修正Episode整理／CODE：元評価・修正・回帰を結ぶ"]
+  LEARN["L01｜AI：ラベル観点・教訓審査／CODE：catalog・分割・fit・評価"]
+  CLOSE["Z01｜CODE：必須残件と記録を照合／AI：再開位置を整理"]
+  START --> RESTORE --> ROUTE
+  ROUTE -->|作成| C1 --> C5 --> APPROVE
+  ROUTE -->|修正優先| R1 --> R4 --> APPROVE
+  APPROVE --> BUILD --> CHECK --> HOST --> EVAL
+  EVAL -->|修正が必要| R1
+  EVAL -->|受入| TYPE
+  TYPE -->|作成| LEARN
+  TYPE -->|修正| SWEEP
+  SWEEP -->|残件あり| R1
+  SWEEP -->|必須残件なし| R8 --> LEARN --> CLOSE

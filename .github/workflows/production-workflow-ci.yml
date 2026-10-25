@@ -55,6 +55,9 @@ jobs:
           WIDTHS: 320,390,430,1440
           EVIDENCE_DIR: /tmp/n07-semantic-browser
         run: node work/items/W-MATH-032-n07-semantic-repair/verify_app.mjs
+      - name: Presentation role diagram tabs and text bounds
+        if: contains(github.ref, 'n07-semantic-repair')
+        run: node work/items/W-MATH-032-n07-semantic-repair/presentation/verify_presentation.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -63,4 +66,5 @@ jobs:
             /tmp/production-browser
             /tmp/p004-integration
             /tmp/n07-semantic-browser
+            /tmp/workflow-role-diagrams
           if-no-files-found: warn

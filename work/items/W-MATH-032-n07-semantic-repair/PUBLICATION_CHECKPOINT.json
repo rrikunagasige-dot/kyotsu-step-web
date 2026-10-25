@@ -6,7 +6,8 @@
   "publicationRun": 40154568134,
   "publicationStatus": "SUCCESS",
   "publicSourceVerified": true,
-  "userAccepted": false,
+  "userAccepted": true,
   "route": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=46ea59be#/learning/textbook/math-numbers-expressions-n07",
-  "next": "G3_FINAL@n07: user scoped natural-language acceptance; then post-fix sweep/R08/L01"
+  "next": "N07 closed; role-diagram delivery and workflow-learning verification",
+  "acceptanceEvent": "W032-N07-APP-ACCEPTED-20261025"
 }

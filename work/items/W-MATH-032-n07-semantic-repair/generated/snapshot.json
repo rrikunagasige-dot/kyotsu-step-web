@@ -1,89 +1,14 @@
 {
   "work": "W-MATH-032",
   "engine_version": "1.0.0",
-  "ledger_head": "4950739b91cc7397f7deffbcd7119d8624c5585bc8b3390636a9282b14173ac1",
-  "work_status": "VERIFYING",
+  "ledger_head": "0d104d0b2bef18d1f51d65851951b1959bf25d8601dcb5d16ab6a08a5f66eadf",
+  "work_status": "DONE",
   "profile": "material",
   "simulation": false,
   "candidate_sha": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
   "next": {
-    "status": "WAITING",
-    "reason": "USER_DECISION",
-    "task": {
-      "work_id": "W-MATH-032",
-      "node": {
-        "id": "G3_FINAL@n07",
-        "stage_kind": "G3_FINAL",
-        "contract_kind": "G3_FINAL",
-        "actor": "USER",
-        "depends_on": [
-          "G3_HOST@n07"
-        ],
-        "required": [],
-        "block": null,
-        "release_unit": "n07",
-        "watch": "integration",
-        "phase": "acceptance",
-        "priority": 0,
-        "source_refs": [],
-        "protected_refs": [
-          "src/data/textbook/math/numbers/firstSectionTeaching.json"
-        ],
-        "capability_requests": [],
-        "required_code_receipts": [],
-        "required_ai_receipts": []
-      },
-      "task_id": "091c3ed3a0e159a6a181da0602f6700f7ac8efb417b1640c36b32948a7f5adb8",
-      "input_hash": "a653bc5437ca1dd2b0d085decc25b566556612e20e20bd602fef59bf12cb82fe",
-      "source_sha": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
-      "candidate_sha": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
-      "rules": {
-        "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
-        "governance/REVIEW_POLICY.json": "a71148f007a79b124385c7645e6bc01564bfa02b12152174883543f31f6ce72d",
-        "governance/WORK_SYSTEM.md": "37b0b0e0fecc79d7c067e17ec8dbeb53d53863f04369171d65ef652a176eb093",
-        "memory/LESSONS/MATH_TYPESETTING_GROUPS.md": "8047831b13d22ffb773f68e23ab788a3490e4b69ebbf5d5d357f9f786ed53d0a",
-        "subjects/mathematics/textbook/SPEC.md": "a36959ae6f951e855c3e60d280d02a0f20c6e23185d9eb90b17ffbc889c63277"
-      },
-      "proposal": {
-        "contentDesignHash": "8c510a9c7ca0d7c1e5527e8ce799ee80814da5a064cdb457c5fbc68844bd53fa",
-        "hash": "ecfe20080c79ac8d8490630dafee2da92613709eae64a1ca47e626b0d7278c4a",
-        "id": "W-MATH-032/P-001",
-        "patch_hash": "b0c75aed0428ab381fe4f7bb97c6028e2c76a2dc2cb93cbefaa7fd0b3b1ee142"
-      },
-      "scope": {
-        "paths": [
-          "src/components/textbook/N07ReadingFlow.tsx",
-          "src/components/textbook/SemanticReading.tsx",
-          "src/components/textbook/n07-reading.css",
-          "src/data/textbook/math/numbers/n07Authored.json",
-          "tools/textbook/",
-          "workflow/",
-          "work/items/W-MATH-032-n07-semantic-repair/"
-        ],
-        "preserve": [
-          "src/data/textbook/math/numbers/firstSectionTeaching.json"
-        ]
-      },
-      "source_manifest": {
-        "src/components/textbook/N07ReadingFlow.tsx": "b35615baac0c2715930c5d6d0cbdb41d729508259a251780f05f07bfbe4e508f",
-        "src/components/textbook/n07-reading.css": "8e3a4e20749a3a0048165864af2408118c6903676db8cb4c4242a54d78c3e163",
-        "src/data/textbook/math/numbers/n07Authored.json": "f534b84c116ce200f0ac405eec0f130137186bd2a74854443113c716fe40c712",
-        "tools/textbook/fixtures/n07-source-index.json": "62a1ad951166eabc9672eca0a81a997aa6a362fe01aed045705caecd77a2982b"
-      },
-      "previous_results": {
-        "G3_HOST@n07": {
-          "actor": "capability-runner",
-          "artifact": "f3dc7298c5c8a2763187cbd57cdfba252a1e864d7e02bd4bbe0e99f01596d88f",
-          "input_hash": "5ab0ae768ae4d9ac494858409ac69b2a4eba3380dfccb267ac58b249842d9dab",
-          "node": "G3_HOST@n07",
-          "verdict": "PASS"
-        }
-      },
-      "do_not_touch": [
-        "src/data/textbook/math/numbers/firstSectionTeaching.json"
-      ],
-      "completion_is_not_semantic_proof": true
-    }
+    "status": "DONE",
+    "reason": "全工程の有効な証拠を照合"
   },
   "nodes": [
     {
@@ -541,7 +466,7 @@
       "capability_requests": [],
       "required_code_receipts": [],
       "required_ai_receipts": [],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "R03_IMPACT_SWEEP@n07",
@@ -575,7 +500,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "R08_CAPTURE_LEARNING@n07",
@@ -616,7 +541,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "L01_LEARNING@n07",
@@ -654,7 +579,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "Z01_CLOSE",
@@ -677,98 +602,12 @@
       "capability_requests": [],
       "required_code_receipts": [],
       "required_ai_receipts": [],
-      "status": "PENDING"
+      "status": "PASSED"
     }
   ],
   "pending_issues": [],
-  "application_accepted": false,
-  "correction_queue": [
-    {
-      "id": "W-MATH-032",
-      "work": "W-MATH-032",
-      "version": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
-      "origin": "unfinished-correction",
-      "description": "未完了の修正Work"
-    },
-    {
-      "id": "N07-USER-F01",
-      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
-      "origin": "feedback-registry",
-      "registry": "work/items/W-GOV-010-learning-production-workflow/n07/feedback/NEGATIVE_CASES.json",
-      "registry_hash": "fa10197d2f5c03ad7dccd58ced591bac38f03abb5fe43fe92074044da769a0ed",
-      "description": "前の計算と今回の判断が結びつかない",
-      "evidence": {
-        "fileName": "0ee7fc343217e1117f5f8911368ea1fe.png",
-        "sha256": "6814bc8a1ab3e9fc6b57e33cc6fd00606c811ae0a8409541fba0d41186068e02"
-      },
-      "work": null
-    },
-    {
-      "id": "N07-USER-F02",
-      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
-      "origin": "feedback-registry",
-      "registry": "work/items/W-GOV-010-learning-production-workflow/n07/feedback/NEGATIVE_CASES.json",
-      "registry_hash": "fa10197d2f5c03ad7dccd58ced591bac38f03abb5fe43fe92074044da769a0ed",
-      "description": "10だけを式番号付きで独立表示",
-      "evidence": {
-        "fileName": "f859d006bed416f44af2f682862352e4.png",
-        "sha256": "2ed5eb49f280682c47052e3884da9210f66820bfc5298e23a4cc446abb1fd569"
-      },
-      "work": null
-    },
-    {
-      "id": "N07-USER-F03",
-      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
-      "origin": "feedback-registry",
-      "registry": "work/items/W-GOV-010-learning-production-workflow/n07/feedback/NEGATIVE_CASES.json",
-      "registry_hash": "fa10197d2f5c03ad7dccd58ced591bac38f03abb5fe43fe92074044da769a0ed",
-      "description": "引くだけが本文から独立",
-      "evidence": {
-        "fileName": "83457a43084ff1fbbcbef9c523092cb5.png",
-        "sha256": "1f2a13bceb62bcfda98beea2693d1c667b9978ca919f5c2ca9052c050f564082"
-      },
-      "work": null
-    },
-    {
-      "id": "N07-USER-F04",
-      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
-      "origin": "feedback-registry",
-      "registry": "work/items/W-GOV-010-learning-production-workflow/n07/feedback/NEGATIVE_CASES.json",
-      "registry_hash": "fa10197d2f5c03ad7dccd58ced591bac38f03abb5fe43fe92074044da769a0ed",
-      "description": "(28)の(10-1)xと(29)の9xが等号で結ばれない",
-      "evidence": {
-        "fileName": "6becaa6c6f54a30d594c6c66d15e3201.png",
-        "sha256": "c6fca58d8fc8145df8abbcf54af97fb324c68cd7d5469d85682d59f5d59c9583"
-      },
-      "work": null
-    },
-    {
-      "id": "N07-USER-F05",
-      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
-      "origin": "feedback-registry",
-      "registry": "work/items/W-GOV-010-learning-production-workflow/n07/feedback/NEGATIVE_CASES.json",
-      "registry_hash": "fa10197d2f5c03ad7dccd58ced591bac38f03abb5fe43fe92074044da769a0ed",
-      "description": "素数・素因数分解の初出定義語が通常文字",
-      "evidence": {
-        "fileName": "2b3d22138cb01961ee770f4f228f92e1.png",
-        "sha256": "08a194aebe3d23880b1a9ea1c6b82bc9c46c8763759db499218679fac811e0b6"
-      },
-      "work": null
-    },
-    {
-      "id": "N07-USER-F06",
-      "version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
-      "origin": "feedback-registry",
-      "registry": "work/items/W-GOV-010-learning-production-workflow/n07/feedback/NEGATIVE_CASES.json",
-      "registry_hash": "fa10197d2f5c03ad7dccd58ced591bac38f03abb5fe43fe92074044da769a0ed",
-      "description": "p/(2^u5^v)、2^(h−u)等が本文の普通の文字のまま",
-      "evidence": {
-        "fileName": "13c777f56cc1cba7e52fdcf545e7744f.png",
-        "sha256": "2f13547d5da27e6aa3d98a059f5df95cc47631c2fc3479e6da68872d3c4bfb70"
-      },
-      "work": null
-    }
-  ],
+  "application_accepted": true,
+  "correction_queue": [],
   "child_works": [],
   "capability_receipts": [
     {
@@ -1260,9 +1099,299 @@
       "input_hash": "5ab0ae768ae4d9ac494858409ac69b2a4eba3380dfccb267ac58b249842d9dab",
       "node": "G3_HOST@n07",
       "receipt": "2d2782dc6cdf54fa7c33a09c91c687b845c8341fe6ab01fe6c091f0fafa30a0b"
+    },
+    {
+      "input_hash": "ce4ad338d6d94705232293ff2e38b9bab909f7ca8f92b7ec23945ed19ed7a460",
+      "node": "R01_CAPTURE@n07",
+      "receipt": "2f061d0a2b59ed7c614393467a5dcec391042497343d713768dec84c5b3ffe18"
+    },
+    {
+      "input_hash": "ce4ad338d6d94705232293ff2e38b9bab909f7ca8f92b7ec23945ed19ed7a460",
+      "node": "R01_CAPTURE@n07",
+      "receipt": "85f7bbfeff9a680c95ec0a1b8c6c0b7b064288f19b1f192c6a71c6f1c0a2bff0"
+    },
+    {
+      "input_hash": "291d2d9ea0988b760dee6b5928e54d3f54ec4db2acb4908a935614bbf09c3b59",
+      "node": "R02_CAUSE@n07",
+      "receipt": "1081ce3fd75a6699b71380bad7d731b03f91f2c1cf19490bea527ad28f36406a"
+    },
+    {
+      "input_hash": "291d2d9ea0988b760dee6b5928e54d3f54ec4db2acb4908a935614bbf09c3b59",
+      "node": "R02_CAUSE@n07",
+      "receipt": "d46abc677b56356ab36d67179bc94c32188348bf82fad218d017c11f731bd945"
+    },
+    {
+      "input_hash": "291d2d9ea0988b760dee6b5928e54d3f54ec4db2acb4908a935614bbf09c3b59",
+      "node": "R02_CAUSE@n07",
+      "receipt": "4a775f074a0de6a46adf241c95b75a0ce595c8fc39a0aec6e2a51a0f8c84954d"
+    },
+    {
+      "input_hash": "291d2d9ea0988b760dee6b5928e54d3f54ec4db2acb4908a935614bbf09c3b59",
+      "node": "R02_CAUSE@n07",
+      "receipt": "ee2ab4f90aed18b3611684fdf400b9a33c05f91e06ce943c9af10812bb75febf"
+    },
+    {
+      "input_hash": "9d6e65d118c08c17f68f25a3e6a43417c393542c5e1c04e93b68d4f9a225a0bf",
+      "node": "R03_IMPACT@n07",
+      "receipt": "35a2fb5b6608f47665877e64607c3f68876210b35a2a3c36c07eab02676b102d"
+    },
+    {
+      "input_hash": "0bb656ce4ddaba9a2a6aded5998eb8facaac2567cce3cd7648d17884fcc305a7",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "8244ccf54cef3fb359bcaa584874f72b43d927d1cf12d4ff0561978eb5c3bddd"
+    },
+    {
+      "input_hash": "0bb656ce4ddaba9a2a6aded5998eb8facaac2567cce3cd7648d17884fcc305a7",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "970fc842ac988e691c7d27d457f1efd289d07a47cbfc1a4a0d46f7accd05165d"
+    },
+    {
+      "input_hash": "0bb656ce4ddaba9a2a6aded5998eb8facaac2567cce3cd7648d17884fcc305a7",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "68cee9b2f5864dc19168ccd71fb45de188a5848420ecdde874da6013de56e51c"
+    },
+    {
+      "input_hash": "0bb656ce4ddaba9a2a6aded5998eb8facaac2567cce3cd7648d17884fcc305a7",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "f963540aefad2dbc9b841e9e958b935e2371a7bc1e7782bab7a896afada7d925"
+    },
+    {
+      "input_hash": "0bb656ce4ddaba9a2a6aded5998eb8facaac2567cce3cd7648d17884fcc305a7",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "4e23ae250262447955867d84e167c88382c95330949b152268e3cc2b9c57ab82"
+    },
+    {
+      "input_hash": "0bb656ce4ddaba9a2a6aded5998eb8facaac2567cce3cd7648d17884fcc305a7",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "e35a5d8b23cf97fd14b804c2eab4db94b4d8be2fc8bea8314e5e7de2a3c4d0f5"
+    },
+    {
+      "input_hash": "0bb656ce4ddaba9a2a6aded5998eb8facaac2567cce3cd7648d17884fcc305a7",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "ada4a631bac2143e7ee8fb0f90c01107285846b265ce185886ff55731c20547f"
+    },
+    {
+      "input_hash": "0bb656ce4ddaba9a2a6aded5998eb8facaac2567cce3cd7648d17884fcc305a7",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "d4ca187fcf6c337ee6c16ce2bb1572e9a0a87de7191d75a914d070e4f68c3e12"
+    },
+    {
+      "input_hash": "0bb656ce4ddaba9a2a6aded5998eb8facaac2567cce3cd7648d17884fcc305a7",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "3c63cc20af681cd2cd1204270428eb49b65490855e7f141d8ee0d13fd43cd0d3"
+    },
+    {
+      "input_hash": "001028a07ce0c987259a5e0a8a5c47b74e334f208316e444b4a573e3ae3b883e",
+      "node": "R06_PATCH@n07",
+      "receipt": "79df363c966151a12a98e81b2cf04955ada044ee885a2c0679ba334594dbd2a8"
+    },
+    {
+      "input_hash": "e73bef3814b1ec98fbea6583f6f30f2a3e2b8e53ad776c98ae2e0b6e022a795b",
+      "node": "R07_VERIFY@n07",
+      "receipt": "eb08adb10ace3fd3ffecb567c7582fae98fd35904bd349d169fc160a52025dda"
+    },
+    {
+      "input_hash": "e73bef3814b1ec98fbea6583f6f30f2a3e2b8e53ad776c98ae2e0b6e022a795b",
+      "node": "R07_VERIFY@n07",
+      "receipt": "4ab75321b1b36bf2a37753ae537e5fd1f9c3e8ac7047247ee844bb456a8a7265"
+    },
+    {
+      "input_hash": "e73bef3814b1ec98fbea6583f6f30f2a3e2b8e53ad776c98ae2e0b6e022a795b",
+      "node": "R07_VERIFY@n07",
+      "receipt": "45615bff2eae9aa01bb36e3bf49fcaaea5e4d6407f20153a801e44b82223ee4d"
+    },
+    {
+      "input_hash": "470080d264290ccd370d7a2200e1ff169c62a2559ea630ed90924f99003747ec",
+      "node": "R07_SEMANTIC@n07",
+      "receipt": "af6b639ce4c8d44ea969312df6db8ac26340b121486fc88c05c703cb5f6981d8"
+    },
+    {
+      "input_hash": "470080d264290ccd370d7a2200e1ff169c62a2559ea630ed90924f99003747ec",
+      "node": "R07_SEMANTIC@n07",
+      "receipt": "ab86346c74ff2761fa2d300c90d87acdd0e00a19db881ee8e0c610d342cc9930"
+    },
+    {
+      "input_hash": "5aa7feb8d39bfc95ea185ad3b12244734ed6393619067ddbffabb36c843bebab",
+      "node": "G2_AUDIT@n07",
+      "receipt": "0da1cbc3382294adc6028b253aa3972fd258a4246c3dc44961be3a5a4fdbff17"
+    },
+    {
+      "input_hash": "5aa7feb8d39bfc95ea185ad3b12244734ed6393619067ddbffabb36c843bebab",
+      "node": "G2_AUDIT@n07",
+      "receipt": "2afc66d116dd52f2c8720bb04f7b97cc17eb6cb0abdda1e5450259510856e7fa"
+    },
+    {
+      "input_hash": "351239e9dad4293d5459b3f9e3b9d8fd99536a007aeeeb8ae9d569310c732f90",
+      "node": "G3_HOST@n07",
+      "receipt": "f6552850238d3e4d429447f6e754e6925a8398e99be780b7b775257499f122da"
+    },
+    {
+      "input_hash": "430cac341d44d76e5deda0704012982759733bcd8b60ac9691e0c9160e625130",
+      "node": "R03_IMPACT_SWEEP@n07",
+      "receipt": "b0072ccc8f5f817c07b9ee075befaa07882e1a170345975159abb80cd83bf2e1"
+    },
+    {
+      "input_hash": "ae884b418e980ae113930a0fd2c7c248c92874d4b9dd2d53aee2fba7eefa7bb5",
+      "node": "R08_CAPTURE_LEARNING@n07",
+      "receipt": "32e9ff09c4af6a1c5bbe9ba5d397a50fa975d49fe164a24fadf93c1036f15ea2"
+    },
+    {
+      "input_hash": "30a315d154ab3750130316bf0bf82d92abe89d22fcc7c58ed56b51d440f2d18a",
+      "node": "L01_LEARNING@n07",
+      "receipt": "56b9a6f706da7769684b09cb62ef901d178ef6ac0005184e1b0c64167e53eabc"
+    },
+    {
+      "input_hash": "30a315d154ab3750130316bf0bf82d92abe89d22fcc7c58ed56b51d440f2d18a",
+      "node": "L01_LEARNING@n07",
+      "receipt": "b0c9717a75dff4d058748113eaebc41effddfa38d1da0649a3db52ec5d6b0808"
+    },
+    {
+      "input_hash": "d6872a39223335af96753720977c39d74bc305620fcda6215e782120b4252f88",
+      "node": "R01_CAPTURE@n07",
+      "receipt": "0e8901c31080e4a1a4622e0f30ec430cff5bdec8030dc72a760214fd3179e69b"
+    },
+    {
+      "input_hash": "d6872a39223335af96753720977c39d74bc305620fcda6215e782120b4252f88",
+      "node": "R01_CAPTURE@n07",
+      "receipt": "ad0ff833a60777d580d316b15ee30090090a2a0957ffac8e92303316f9f9dff6"
+    },
+    {
+      "input_hash": "aac31802076bb09722a35d663a122cf5cba9ba2c4fd9dacddad33420502a6e9a",
+      "node": "R02_CAUSE@n07",
+      "receipt": "923b25732fbe4e3ff41290f8dd0dadf88eb8c7ff2cbd39a4b733951b8031985d"
+    },
+    {
+      "input_hash": "aac31802076bb09722a35d663a122cf5cba9ba2c4fd9dacddad33420502a6e9a",
+      "node": "R02_CAUSE@n07",
+      "receipt": "81bb1b5917a84f4226de89082b2d3faede02b6b6c76137f194462928584b5ddf"
+    },
+    {
+      "input_hash": "aac31802076bb09722a35d663a122cf5cba9ba2c4fd9dacddad33420502a6e9a",
+      "node": "R02_CAUSE@n07",
+      "receipt": "3651a1d4bcb94136dcf06500cf27e9177413305d1cfae3d3d562b817c3ecdd30"
+    },
+    {
+      "input_hash": "aac31802076bb09722a35d663a122cf5cba9ba2c4fd9dacddad33420502a6e9a",
+      "node": "R02_CAUSE@n07",
+      "receipt": "47f17685a45493abd3c9777e0a40c2347a701d184bbe438530ea10c6846e426f"
+    },
+    {
+      "input_hash": "c66131c41a0a56033e8f5729d25b7ec7b41bf475726f2c39a92510f95acb1a34",
+      "node": "R03_IMPACT@n07",
+      "receipt": "ab9917277f49ecb633e73716c8eb884ae182297e42e65631e7ee6638a3ec6c2c"
+    },
+    {
+      "input_hash": "d3a0548ca3d885d0675ab897ee0ec15e288166f38217e72cbb1dd8e24c07375d",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "1287148cfde3f6ef4202eca72940a033ef6cd3ef3e132d823102758b342abde7"
+    },
+    {
+      "input_hash": "d3a0548ca3d885d0675ab897ee0ec15e288166f38217e72cbb1dd8e24c07375d",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "592d338df60295c6fb8bbd307e33f58e366dc81d232cd507d51e308dc49f08f0"
+    },
+    {
+      "input_hash": "d3a0548ca3d885d0675ab897ee0ec15e288166f38217e72cbb1dd8e24c07375d",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "5c0c26deb9317b6731fbb055ff5edaa8c78ce6beb20b346924eace30e87d4c65"
+    },
+    {
+      "input_hash": "d3a0548ca3d885d0675ab897ee0ec15e288166f38217e72cbb1dd8e24c07375d",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "af5f01d1d56d7eb651567b4a7bd5a5c5ba6e6d0208224b7ecd13e746301023fe"
+    },
+    {
+      "input_hash": "d3a0548ca3d885d0675ab897ee0ec15e288166f38217e72cbb1dd8e24c07375d",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "fbaaddea3b5ab594bcb42d48b2203877621cf8954cb43f190075c1fa14f71e36"
+    },
+    {
+      "input_hash": "d3a0548ca3d885d0675ab897ee0ec15e288166f38217e72cbb1dd8e24c07375d",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "165b2b32a6944c9aacc347a732d07af1679860b21d3ca5b47a01de1b325c290d"
+    },
+    {
+      "input_hash": "d3a0548ca3d885d0675ab897ee0ec15e288166f38217e72cbb1dd8e24c07375d",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "0d76c49f5c9cf2644a7091f50e0e95001334f6beec3b24d1dbd99a55a8561d17"
+    },
+    {
+      "input_hash": "d3a0548ca3d885d0675ab897ee0ec15e288166f38217e72cbb1dd8e24c07375d",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "3fa2c6090b6f0b4143fe480ba2b28b2e5ddb6555cbeb602c1a944a4532c7804c"
+    },
+    {
+      "input_hash": "d3a0548ca3d885d0675ab897ee0ec15e288166f38217e72cbb1dd8e24c07375d",
+      "node": "R04_PROPOSAL@n07",
+      "receipt": "4376f088db901742c74d392e4259922c0fb04921feb0b4d0c5e1fc72a188f1a2"
+    },
+    {
+      "input_hash": "637723cb6f89578200c38905d88642a72dc343e439748a5f25c680a61f71dd7b",
+      "node": "R06_PATCH@n07",
+      "receipt": "aaba450aadb07100eab04e6dee8419e6ab3da7bfef6c604d62fcfec85135958f"
+    },
+    {
+      "input_hash": "bade796d389441cace9f68ffda1344fed60af552e59f8abfe773c194e8be3398",
+      "node": "R07_VERIFY@n07",
+      "receipt": "2e6cd39987b506da403c819e721c1b358a779d1ab6249f73fa35a28b69724419"
+    },
+    {
+      "input_hash": "bade796d389441cace9f68ffda1344fed60af552e59f8abfe773c194e8be3398",
+      "node": "R07_VERIFY@n07",
+      "receipt": "60e253466c73848b1c14585216ca2a1eb85f663069123f8d35741afe55fe1fc5"
+    },
+    {
+      "input_hash": "bade796d389441cace9f68ffda1344fed60af552e59f8abfe773c194e8be3398",
+      "node": "R07_VERIFY@n07",
+      "receipt": "8781216a67626c840c19812b894b2a8e9c88fe5ecfd8cc9dc1a100312f1d797b"
+    },
+    {
+      "input_hash": "86fff52c1caeee0e6c80e58c3aa1ed86268ba1ada4fbaf28ff43f7e2a617b94d",
+      "node": "R07_SEMANTIC@n07",
+      "receipt": "277936ee5b32c9b5632a0294a9cfb6adf9806a579693c8f9a6fce05f9de9f1be"
+    },
+    {
+      "input_hash": "86fff52c1caeee0e6c80e58c3aa1ed86268ba1ada4fbaf28ff43f7e2a617b94d",
+      "node": "R07_SEMANTIC@n07",
+      "receipt": "2c90716d6587d91615051994cb1adae2a1bfd380581d239fa9b6391f3df21c97"
+    },
+    {
+      "input_hash": "490a8a12a91ec49189e193a9aa4a08f09d9006a75fd2573569c3a7fa272e18bb",
+      "node": "G2_AUDIT@n07",
+      "receipt": "11e33f5d7f525e422ffe5004e3f608536c4d3b93d8c00cd41690ffb4b9bd90bf"
+    },
+    {
+      "input_hash": "490a8a12a91ec49189e193a9aa4a08f09d9006a75fd2573569c3a7fa272e18bb",
+      "node": "G2_AUDIT@n07",
+      "receipt": "b9a320477adc5422d2049ba3cb6f7706a49ea794d598634dd04cf137234e1154"
+    },
+    {
+      "input_hash": "aec4e8ba4fd35dae6e28080445a6078e55242af216cfca75c9ade9076923cc8a",
+      "node": "G3_HOST@n07",
+      "receipt": "4f59f94ebd5f62e5355a47b2d0b2dca3bf0be051941ec61cb82d2195b61b8f0f"
+    },
+    {
+      "input_hash": "6ab994bddfb378cc6fea47b37834e8c47c21ead7518bee6739847ec3a6f8909a",
+      "node": "R03_IMPACT_SWEEP@n07",
+      "receipt": "951b91e7d724a967f67a90042287a8346b54eb40f392b1d9e6e56cb4ed5e0b2c"
+    },
+    {
+      "input_hash": "5126be7852c23a3fd4cd4a730e39df85f0238b003b378c2d0860ce5e61fcf9e2",
+      "node": "R08_CAPTURE_LEARNING@n07",
+      "receipt": "9be2a7ef284e5ddf33459a350f29b362d0c64eff59b9fdc8c8ce1e4dfabe8e53"
+    },
+    {
+      "input_hash": "f9cd7c005b8a57260f4ca439e8d000212a15e6691cfff71fc8b339e534e5572f",
+      "node": "L01_LEARNING@n07",
+      "receipt": "4e2464934c30f6e2ec28ed4cb69b6117df4134be18b143e92af2e74b55c37651"
+    },
+    {
+      "input_hash": "f9cd7c005b8a57260f4ca439e8d000212a15e6691cfff71fc8b339e534e5572f",
+      "node": "L01_LEARNING@n07",
+      "receipt": "0727c0594c97716c2c647e2548566f44c1bcaad41ae821fc5fc118ae21f90b91"
     }
   ],
   "release_acceptance": {
-    "n07": false
+    "n07": true
   }
 }

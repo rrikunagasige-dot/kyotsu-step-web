@@ -1,0 +1,68 @@
+{
+  "sourceSHA": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+  "rows": [
+    {
+      "originFinding": "F01-F06",
+      "rootCauseSignature": "n07-semantic-projection",
+      "artifact": "src/components/textbook/N07ReadingFlow.tsx",
+      "version": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+      "approvedCreationWork": "W-GOV-010/N07",
+      "block_id": "n07",
+      "evidence_refs": [
+        "da537e04-9ddc-4483-8cbe-8d082d903dac",
+        "7813630e-1671-4bd4-bec3-78b2c31465b0"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "post-fix",
+      "resolution": "original symptoms repaired; protected bytes unchanged"
+    },
+    {
+      "originFinding": "F01-F06",
+      "rootCauseSignature": "n07-semantic-projection",
+      "artifact": "src/components/textbook/n07-reading.css",
+      "version": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+      "approvedCreationWork": "W-GOV-010/N07",
+      "block_id": "n07",
+      "evidence_refs": [
+        "da537e04-9ddc-4483-8cbe-8d082d903dac",
+        "7813630e-1671-4bd4-bec3-78b2c31465b0"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "post-fix",
+      "resolution": "original symptoms repaired; protected bytes unchanged"
+    },
+    {
+      "originFinding": "F01-F06",
+      "rootCauseSignature": "n07-semantic-projection",
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+      "approvedCreationWork": "W-GOV-010/N07",
+      "block_id": "n07",
+      "evidence_refs": [
+        "da537e04-9ddc-4483-8cbe-8d082d903dac",
+        "7813630e-1671-4bd4-bec3-78b2c31465b0"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "post-fix",
+      "resolution": "original symptoms repaired; protected bytes unchanged"
+    },
+    {
+      "originFinding": "F01-F06",
+      "rootCauseSignature": "n07-semantic-projection",
+      "artifact": "tools/textbook/fixtures/n07-source-index.json",
+      "version": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+      "approvedCreationWork": "W-GOV-010/N07",
+      "block_id": "n07",
+      "evidence_refs": [
+        "da537e04-9ddc-4483-8cbe-8d082d903dac",
+        "7813630e-1671-4bd4-bec3-78b2c31465b0"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "post-fix",
+      "resolution": "original symptoms repaired; protected bytes unchanged"
+    }
+  ],
+  "all41NodesCoveredBy": 40154122715,
+  "protectedSourceDelta": "Only three N07 learner files differ from190941; other mode and first-title data unchanged",
+  "originalNegativeExamplesPreserved": true
+}

@@ -7,3 +7,5 @@
 - モデル不在時の参照はSCOPED_CATALOG、ranked=false、modelRan=false。元六指摘は必須入力である。
 - 今回はfit・モデル昇格をしていない。OFFLINE_ONLYを維持する。
 - 実画面/公開検証後に元caseへrepair evidenceとregressionRefを追記する。ユーザー受入は別途、その対象・版・観点付きで記録する。
+
+2026-10-25 actual acceptance: 原発言に基づくN07全体の肯定1件を追加。R08/L01実行、評価済み10件（否定7・肯定3）。固定encoderで全入力を特徴化し、既存layout_discomfort headを2例で再fit。overall_material_acceptanceは正の1例のみのためheadを作らない。131 workflow/11 corpus tests。モデルOFFLINE_ONLY、未知教材評価なし。

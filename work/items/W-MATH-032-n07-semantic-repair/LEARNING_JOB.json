@@ -1,0 +1,253 @@
+{
+  "status": "NEEDS_REVIEW",
+  "node": "L01_LEARNING@n07",
+  "claimToken": "c5cdb6de2443488eb356f1cccf2c99ff",
+  "receipts": [
+    "4e2464934c30f6e2ec28ed4cb69b6117df4134be18b143e92af2e74b55c37651",
+    "0727c0594c97716c2c647e2548566f44c1bcaad41ae821fc5fc118ae21f90b91"
+  ],
+  "aiRequest": {
+    "schemaVersion": "production/2",
+    "adoptedCorrections": [],
+    "reusableHistory": [],
+    "task": {
+      "work_id": "W-MATH-032",
+      "node": {
+        "id": "L01_LEARNING@n07",
+        "stage_kind": "L01_LEARNING",
+        "contract_kind": "L01_LEARNING",
+        "actor": "AI",
+        "depends_on": [
+          "R08_CAPTURE_LEARNING@n07"
+        ],
+        "required": [
+          "case_updates",
+          "rule_links",
+          "regression_links",
+          "unresolved",
+          "deduplication",
+          "modelDisposition"
+        ],
+        "block": null,
+        "release_unit": "n07",
+        "watch": "integration",
+        "phase": "learning",
+        "priority": 0,
+        "source_refs": [],
+        "protected_refs": [
+          "src/data/textbook/math/numbers/firstSectionTeaching.json"
+        ],
+        "capability_requests": [
+          "case.finalize",
+          "ml.train"
+        ],
+        "required_code_receipts": [
+          "case.finalize",
+          "ml.train"
+        ],
+        "required_ai_receipts": [
+          "meaning-review"
+        ]
+      },
+      "task_id": "55ba645f3fa9e497be27bb34572c5baf308efc44cfd3d2f224730f3715d11947",
+      "input_hash": "f9cd7c005b8a57260f4ca439e8d000212a15e6691cfff71fc8b339e534e5572f",
+      "source_sha": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+      "candidate_sha": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+      "rules": {
+        "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
+        "governance/REVIEW_POLICY.json": "a71148f007a79b124385c7645e6bc01564bfa02b12152174883543f31f6ce72d",
+        "governance/WORK_SYSTEM.md": "37b0b0e0fecc79d7c067e17ec8dbeb53d53863f04369171d65ef652a176eb093",
+        "memory/LESSONS/MATH_TYPESETTING_GROUPS.md": "8047831b13d22ffb773f68e23ab788a3490e4b69ebbf5d5d357f9f786ed53d0a",
+        "subjects/mathematics/textbook/SPEC.md": "a36959ae6f951e855c3e60d280d02a0f20c6e23185d9eb90b17ffbc889c63277"
+      },
+      "proposal": {
+        "contentDesignHash": "8c510a9c7ca0d7c1e5527e8ce799ee80814da5a064cdb457c5fbc68844bd53fa",
+        "hash": "ecfe20080c79ac8d8490630dafee2da92613709eae64a1ca47e626b0d7278c4a",
+        "id": "W-MATH-032/P-001",
+        "patch_hash": "b0c75aed0428ab381fe4f7bb97c6028e2c76a2dc2cb93cbefaa7fd0b3b1ee142"
+      },
+      "scope": {
+        "paths": [
+          "src/components/textbook/N07ReadingFlow.tsx",
+          "src/components/textbook/SemanticReading.tsx",
+          "src/components/textbook/n07-reading.css",
+          "src/data/textbook/math/numbers/n07Authored.json",
+          "tools/textbook/",
+          "workflow/",
+          "work/items/W-MATH-032-n07-semantic-repair/"
+        ],
+        "preserve": [
+          "src/data/textbook/math/numbers/firstSectionTeaching.json"
+        ]
+      },
+      "source_manifest": {
+        "src/components/textbook/N07ReadingFlow.tsx": "b35615baac0c2715930c5d6d0cbdb41d729508259a251780f05f07bfbe4e508f",
+        "src/components/textbook/n07-reading.css": "8e3a4e20749a3a0048165864af2408118c6903676db8cb4c4242a54d78c3e163",
+        "src/data/textbook/math/numbers/n07Authored.json": "f534b84c116ce200f0ac405eec0f130137186bd2a74854443113c716fe40c712",
+        "tools/textbook/fixtures/n07-source-index.json": "62a1ad951166eabc9672eca0a81a997aa6a362fe01aed045705caecd77a2982b"
+      },
+      "previous_results": {
+        "R08_CAPTURE_LEARNING@n07": {
+          "actor": "capability-runner",
+          "artifact": "cb53ee8f5106946803e86c3454ae207c74ccb1b87a3c08f98df06625e87be571",
+          "input_hash": "5126be7852c23a3fd4cd4a730e39df85f0238b003b378c2d0860ce5e61fcf9e2",
+          "node": "R08_CAPTURE_LEARNING@n07",
+          "verdict": "PASS"
+        }
+      },
+      "do_not_touch": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json"
+      ],
+      "completion_is_not_semantic_proof": true
+    },
+    "context": {
+      "corpusHash": "a6fb2deacb1e3bb9c2194214c12f44454e4aa58888925043ac7d03cea26eeae6",
+      "featureSchema": "learner-context-chunk-mean/1",
+      "modelHash": null,
+      "rulesHash": "eaf2a2be47e890a4858225c05d996f35ab815b58a0d5786a27c2b9090c08c46b"
+    },
+    "dependencies": {
+      "R08_CAPTURE_LEARNING@n07": {
+        "aiReview": {
+          "evidence": "Positive feedback routing fixed and tested. Learner/IR bytes remain identical to46ea59be; prior actual all-state four-width CI and hosted run retained. Source/protected/current bytes and preserved scoped approval checked again; no republish or new acceptance fabricated.",
+          "inputHash": "5126be7852c23a3fd4cd4a730e39df85f0238b003b378c2d0860ce5e61fcf9e2",
+          "requestHash": "421166b250719b51df33f6d709048c3ead8656665df327518824a6bd1f39a215",
+          "reviewer": "current-assistant-evidence-review"
+        },
+        "capability_receipts": [
+          "9be2a7ef284e5ddf33459a350f29b362d0c64eff59b9fdc8c8ce1e4dfabe8e53"
+        ],
+        "case_updates": [
+          {
+            "disposition": "TEST",
+            "evaluation_event": "W032-N07-POSITIVE-20261025",
+            "id": "feedback-5cbf3e16e08c20b90da6",
+            "links": [
+              "da537e04-9ddc-4483-8cbe-8d082d903dac",
+              "7813630e-1671-4bd4-bec3-78b2c31465b0"
+            ],
+            "quality": "POSITIVE",
+            "repair_evidence_refs": [
+              "da537e04-9ddc-4483-8cbe-8d082d903dac",
+              "7813630e-1671-4bd4-bec3-78b2c31465b0"
+            ],
+            "resolution": "ACCEPTED_POSITIVE",
+            "target_version": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6"
+          },
+          {
+            "disposition": "TEST",
+            "id": "N07-USER-F01",
+            "links": [
+              "da537e04-9ddc-4483-8cbe-8d082d903dac",
+              "7813630e-1671-4bd4-bec3-78b2c31465b0"
+            ],
+            "origin_version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+            "quality": "UNKNOWN",
+            "repair_evidence_refs": [
+              "da537e04-9ddc-4483-8cbe-8d082d903dac",
+              "7813630e-1671-4bd4-bec3-78b2c31465b0"
+            ],
+            "resolution": "VERIFIED_FIXED"
+          },
+          {
+            "disposition": "TEST",
+            "id": "N07-USER-F02",
+            "links": [
+              "da537e04-9ddc-4483-8cbe-8d082d903dac",
+              "7813630e-1671-4bd4-bec3-78b2c31465b0"
+            ],
+            "origin_version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+            "quality": "UNKNOWN",
+            "repair_evidence_refs": [
+              "da537e04-9ddc-4483-8cbe-8d082d903dac",
+              "7813630e-1671-4bd4-bec3-78b2c31465b0"
+            ],
+            "resolution": "VERIFIED_FIXED"
+          },
+          {
+            "disposition": "TEST",
+            "id": "N07-USER-F03",
+            "links": [
+              "da537e04-9ddc-4483-8cbe-8d082d903dac",
+              "7813630e-1671-4bd4-bec3-78b2c31465b0"
+            ],
+            "origin_version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+            "quality": "UNKNOWN",
+            "repair_evidence_refs": [
+              "da537e04-9ddc-4483-8cbe-8d082d903dac",
+              "7813630e-1671-4bd4-bec3-78b2c31465b0"
+            ],
+            "resolution": "VERIFIED_FIXED"
+          },
+          {
+            "disposition": "TEST",
+            "id": "N07-USER-F04",
+            "links": [
+              "da537e04-9ddc-4483-8cbe-8d082d903dac",
+              "7813630e-1671-4bd4-bec3-78b2c31465b0"
+            ],
+            "origin_version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+            "quality": "UNKNOWN",
+            "repair_evidence_refs": [
+              "da537e04-9ddc-4483-8cbe-8d082d903dac",
+              "7813630e-1671-4bd4-bec3-78b2c31465b0"
+            ],
+            "resolution": "VERIFIED_FIXED"
+          },
+          {
+            "disposition": "TEST",
+            "id": "N07-USER-F05",
+            "links": [
+              "da537e04-9ddc-4483-8cbe-8d082d903dac",
+              "7813630e-1671-4bd4-bec3-78b2c31465b0"
+            ],
+            "origin_version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+            "quality": "UNKNOWN",
+            "repair_evidence_refs": [
+              "da537e04-9ddc-4483-8cbe-8d082d903dac",
+              "7813630e-1671-4bd4-bec3-78b2c31465b0"
+            ],
+            "resolution": "VERIFIED_FIXED"
+          },
+          {
+            "disposition": "TEST",
+            "id": "N07-USER-F06",
+            "links": [
+              "da537e04-9ddc-4483-8cbe-8d082d903dac",
+              "7813630e-1671-4bd4-bec3-78b2c31465b0"
+            ],
+            "origin_version": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
+            "quality": "UNKNOWN",
+            "repair_evidence_refs": [
+              "da537e04-9ddc-4483-8cbe-8d082d903dac",
+              "7813630e-1671-4bd4-bec3-78b2c31465b0"
+            ],
+            "resolution": "VERIFIED_FIXED"
+          }
+        ],
+        "evidence_refs": [
+          "da537e04-9ddc-4483-8cbe-8d082d903dac",
+          "7813630e-1671-4bd4-bec3-78b2c31465b0"
+        ],
+        "regression_links": [
+          "tools/textbook/tests/n07-repair.test.mjs",
+          "workflow/test_integration.py"
+        ],
+        "rule_links": [
+          "WORKFLOW_INTEGRATION_RESULT.md",
+          "presentation/RESPONSIBILITIES.md"
+        ],
+        "unresolved": [],
+        "verdict": "PASS"
+      }
+    },
+    "constraints": [
+      "原資料・既習・可視状態だけを根拠にする",
+      "作成者の自己評価を監査根拠にしない",
+      "未解決は未解決と記録",
+      "承認を生成しない"
+    ],
+    "requestHash": "108c610833cc4e3cca23b5ba582d18151845736f3779b636ae9a30887fea1dcd"
+  },
+  "automaticAcceptance": false
+}

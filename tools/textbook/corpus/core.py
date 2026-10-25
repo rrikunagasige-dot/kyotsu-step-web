@@ -41,7 +41,11 @@ def examples(corpus):
         inp=c['inputSnapshot']
         if not isinstance(inp,dict) or not inp.get('text') or inp.get('kind')!='learner_artifact':raise ValueError('actual learner input required')
         if any(k in inp for k in ('feedback','quality','label','evaluation')):raise ValueError('label leakage in input')
-        out.append({'id':c['id'],'text':inp['text'],'inputHash':digest(inp),'dimension':c['dimension'],'label':c['label'],'familyId':c['familyId'],'episodeId':c['episodeId'],'artifactVersion':c['artifactVersion'],'evidenceTier':c['evidenceTier'],'caseId':c['id'],'seen':c.get('seen',True),'scope':c['scope']})
+        raw=inp['text']
+        try:structured=json.loads(raw)
+        except (ValueError,TypeError):structured=None
+        clean=learner_text(structured) if isinstance(structured,(dict,list)) else raw
+        out.append({'id':c['id'],'text':clean,'inputHash':digest({'kind':'learner_artifact','text':clean}),'sourceInputHash':digest(inp),'featureInputSchema':'learner-visible-json/2','dimension':c['dimension'],'label':c['label'],'familyId':c['familyId'],'episodeId':c['episodeId'],'artifactVersion':c['artifactVersion'],'evidenceTier':c['evidenceTier'],'caseId':c['id'],'seen':c.get('seen',True),'scope':c['scope']})
     return out
 
 def split_groups(rows):
@@ -67,18 +71,18 @@ def git_snapshot(root,sha,path):
 def learner_text(value):
     """Keep learner-visible structure; exclude approval, provenance, version and IDs."""
     visible={'text','latex','prompt','choices','hints','before','after','inputLatex','outputLatex','table','title','readingFlow','items','parts','type'}
-    def walk(v):
-        if isinstance(v,list):return [x for item in v if (x:=walk(item)) not in ({},[],None)]
+    def walk(v,visible_scalar=False):
+        if isinstance(v,list):return [x for item in v if (x:=walk(item,visible_scalar)) not in ({},[],None)]
         if isinstance(v,dict):
             out={}
             for k,item in v.items():
                 if k in visible:
-                    out[k]=walk(item) if isinstance(item,(dict,list)) else item
+                    out[k]=walk(item,True) if isinstance(item,(dict,list)) else item
                 elif isinstance(item,(dict,list)):
-                    cleaned=walk(item)
+                    cleaned=walk(item,False)
                     if cleaned not in ({},[],None):out.setdefault('content',[]).append(cleaned)
             return out
-        return v
+        return v if visible_scalar else None
     return json.dumps(walk(value),ensure_ascii=False,separators=(',',':'))
 
 def user_seed(root):

@@ -21,8 +21,14 @@
         "fileName": "0ee7fc343217e1117f5f8911368ea1fe.png",
         "sha256": "6814bc8a1ab3e9fc6b57e33cc6fd00606c811ae0a8409541fba0d41186068e02"
       },
-      "status": "OPEN",
-      "executableRegression": "NOT_IMPLEMENTED"
+      "status": "VERIFIED_FIXED",
+      "executableRegression": "NOT_IMPLEMENTED",
+      "resolution": {
+        "work": "W-MATH-032",
+        "sourceSHA": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+        "acceptanceEvent": "W032-N07-APP-ACCEPTED-20261025",
+        "closure": "R08 origin_version + repair app evidence + closed Work proof"
+      }
     },
     {
       "id": "N07-USER-F02",
@@ -38,8 +44,14 @@
         "fileName": "f859d006bed416f44af2f682862352e4.png",
         "sha256": "2ed5eb49f280682c47052e3884da9210f66820bfc5298e23a4cc446abb1fd569"
       },
-      "status": "OPEN",
-      "executableRegression": "NOT_IMPLEMENTED"
+      "status": "VERIFIED_FIXED",
+      "executableRegression": "NOT_IMPLEMENTED",
+      "resolution": {
+        "work": "W-MATH-032",
+        "sourceSHA": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+        "acceptanceEvent": "W032-N07-APP-ACCEPTED-20261025",
+        "closure": "R08 origin_version + repair app evidence + closed Work proof"
+      }
     },
     {
       "id": "N07-USER-F03",
@@ -55,8 +67,14 @@
         "fileName": "83457a43084ff1fbbcbef9c523092cb5.png",
         "sha256": "1f2a13bceb62bcfda98beea2693d1c667b9978ca919f5c2ca9052c050f564082"
       },
-      "status": "OPEN",
-      "executableRegression": "NOT_IMPLEMENTED"
+      "status": "VERIFIED_FIXED",
+      "executableRegression": "NOT_IMPLEMENTED",
+      "resolution": {
+        "work": "W-MATH-032",
+        "sourceSHA": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+        "acceptanceEvent": "W032-N07-APP-ACCEPTED-20261025",
+        "closure": "R08 origin_version + repair app evidence + closed Work proof"
+      }
     },
     {
       "id": "N07-USER-F04",
@@ -72,8 +90,14 @@
         "fileName": "6becaa6c6f54a30d594c6c66d15e3201.png",
         "sha256": "c6fca58d8fc8145df8abbcf54af97fb324c68cd7d5469d85682d59f5d59c9583"
       },
-      "status": "OPEN",
-      "executableRegression": "NOT_IMPLEMENTED"
+      "status": "VERIFIED_FIXED",
+      "executableRegression": "NOT_IMPLEMENTED",
+      "resolution": {
+        "work": "W-MATH-032",
+        "sourceSHA": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+        "acceptanceEvent": "W032-N07-APP-ACCEPTED-20261025",
+        "closure": "R08 origin_version + repair app evidence + closed Work proof"
+      }
     },
     {
       "id": "N07-USER-F05",
@@ -89,8 +113,14 @@
         "fileName": "2b3d22138cb01961ee770f4f228f92e1.png",
         "sha256": "08a194aebe3d23880b1a9ea1c6b82bc9c46c8763759db499218679fac811e0b6"
       },
-      "status": "OPEN",
-      "executableRegression": "NOT_IMPLEMENTED"
+      "status": "VERIFIED_FIXED",
+      "executableRegression": "NOT_IMPLEMENTED",
+      "resolution": {
+        "work": "W-MATH-032",
+        "sourceSHA": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+        "acceptanceEvent": "W032-N07-APP-ACCEPTED-20261025",
+        "closure": "R08 origin_version + repair app evidence + closed Work proof"
+      }
     },
     {
       "id": "N07-USER-F06",
@@ -107,8 +137,14 @@
         "fileName": "13c777f56cc1cba7e52fdcf545e7744f.png",
         "sha256": "2f13547d5da27e6aa3d98a059f5df95cc47631c2fc3479e6da68872d3c4bfb70"
       },
-      "status": "OPEN",
-      "executableRegression": "NOT_IMPLEMENTED"
+      "status": "VERIFIED_FIXED",
+      "executableRegression": "NOT_IMPLEMENTED",
+      "resolution": {
+        "work": "W-MATH-032",
+        "sourceSHA": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+        "acceptanceEvent": "W032-N07-APP-ACCEPTED-20261025",
+        "closure": "R08 origin_version + repair app evidence + closed Work proof"
+      }
     }
   ]
 }

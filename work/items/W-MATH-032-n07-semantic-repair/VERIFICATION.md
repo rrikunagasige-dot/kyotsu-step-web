@@ -1,3 +1,8 @@
+# Current closure verification
+
+Status: PASS
+Scope: accepted N07 material, post-acceptance sweep and actual bounded learning. Whole-repository legacy metadata governance is not included in this PASS.
+
 # Verification
 
 Status: ANALYSIS_VERIFIED / learner correction unimplemented

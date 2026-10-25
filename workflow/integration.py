@@ -51,7 +51,7 @@ def input_hash(rt, s, node):
         base['candidate_sha'] = s.get('release_versions', {}).get(node['release_unit'], s['candidate_sha'])
     if facets.intersection({'cases', 'model'}): base['context'] = s.get('production_context', {})
     if node['stage_kind'] in ('R01_CAPTURE','L01_LEARNING', 'R08_CAPTURE_LEARNING', 'Z01_CLOSE'):
-        base['feedback'] = [e['payload'] for e in rt.store.events() if e['work'] == p['work_id'] and e['kind'] == 'feedback_captured']
+        base['feedback'] = [e['payload'] for e in rt.store.events() if e['work'] == p['work_id'] and e['kind'] == 'feedback_captured' and (node['stage_kind']!='R01_CAPTURE' or e['payload'].get('quality')=='NEGATIVE')]
         # Resolution is downstream bookkeeping; do not invalidate its own supporting proof.
         base['issues'] = {k: {a: b for a, b in v.items() if a != 'resolved_by'} for k, v in s['issues'].items()}
     if node['capability_requests']:

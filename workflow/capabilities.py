@@ -66,7 +66,7 @@ def run_capability(rt, work, node, capability, inputs):
     relevant=STAGE_FACETS.get(node['stage_kind'],set())
     bindings={'sources':{p:s['plan']['source_manifest'][p] for p in (node['source_refs'] or s['plan']['source_manifest'])}, 'facets':{k:v for k,v in s.get('block_contexts',{}).get(node['block'],{}).items() if k in relevant}}
     if capability in ('case.finalize','feedback.capture'):
-        bindings['feedback']=[e['payload'] for e in rt.store.events() if e['work']==work and e['kind'] in ('feedback_captured','issue')]
+        bindings['feedback']=[e['payload'] for e in rt.store.events() if e['work']==work and e['kind'] in ('feedback_captured','issue') and (capability!='feedback.capture' or e['kind']=='issue' or e['payload'].get('quality')=='NEGATIVE')]
     if capability in ('release.verify','browser.verify'):bindings['candidate_sha']=s['candidate_sha']
     if capability=='protected.verify':bindings['protected_manifest']=s['plan'].get('protected_manifest',{})
     paths=([inputs['sourcePath']] if inputs.get('sourcePath') else [])+[f['sourcePath'] for f in inputs.get('figures',[]) if f.get('sourcePath')]
@@ -86,7 +86,7 @@ def run_capability(rt, work, node, capability, inputs):
             output = {'status': 'PASS', 'sourceIndex': {p: json.loads(file(rt.root, p).read_text()) for p in paths}, 'sourceManifest': manifest(rt.root, paths)}
         elif capability == 'feedback.capture':
             from requests import pending
-            output = {'status': 'PASS', 'events': [e['payload'] for e in rt.store.events() if e['work'] == work and e['kind'] == 'feedback_captured'], 'issues': s['issues'], 'correction_queue':pending(rt,s)}
+            output = {'status': 'PASS', 'events': [e['payload'] for e in rt.store.events() if e['work'] == work and e['kind'] == 'feedback_captured' and e['payload'].get('quality')=='NEGATIVE'], 'issues': s['issues'], 'correction_queue':pending(rt,s)}
         elif capability == 'impact.inventory':
             from impact import inventory
             output = {'status': 'NEEDS_AI_REVIEW', 'inventory': inventory(s, node), 'phase': node['phase'], 'sourceSHA': s['candidate_sha']}

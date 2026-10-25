@@ -1,0 +1,404 @@
+{
+  "purpose": "presentation, not simulation or proof of work completion",
+  "source": "workflow/definitions.py + capabilities.py + graphs.py",
+  "stages": [
+    {
+      "stage": "S00_RECOVER",
+      "title": "現在地・正本の復元",
+      "primaryActor": "CODE",
+      "ai": "今回必要な資料・Work・既存の教訓を確認する。",
+      "code": "台帳、原資料snapshot、規則、候補、承認のhashを照合する。",
+      "user": "作成／修正の依頼をする。",
+      "output": "現在地と、次に進める工程",
+      "capabilities": []
+    },
+    {
+      "stage": "S01_ROUTE",
+      "title": "二つの入口と修正優先",
+      "primaryActor": "CODE",
+      "ai": "依頼の意図を確認する。",
+      "code": "未完の修正を優先し、作成／修正の既存工程へ振り分ける。",
+      "user": "範囲の変更が必要な場合に判断する。",
+      "output": "作成C01へ／修正R01へ",
+      "capabilities": []
+    },
+    {
+      "stage": "G2_AUDIT",
+      "title": "公開前の横断監査",
+      "primaryActor": "AI",
+      "ai": "対象と関連範囲の意味・回帰・未解決を審査する。",
+      "code": "対象版・保護範囲・影響表・検査証拠の不足を検出する。",
+      "user": "この工程の個別承認は不要。",
+      "output": "公開可否と、残件の引継先",
+      "capabilities": [
+        "protected.verify",
+        "impact.inventory"
+      ]
+    },
+    {
+      "stage": "G3_HOST",
+      "title": "既存アプリへ反映",
+      "primaryActor": "TOOL",
+      "ai": "既存の公開手順を実行し、異常時に原因を調べる。",
+      "code": "検証済みsourceをcompile・公開。manifestと実配信・実操作を照合する。",
+      "user": "承認範囲内の同じ公開許可を再要求しない。",
+      "output": "実配信の版を確認した直接アプリURL",
+      "capabilities": [
+        "release.verify"
+      ]
+    },
+    {
+      "stage": "G3_FINAL",
+      "title": "実物の範囲付き評価",
+      "primaryActor": "USER",
+      "ai": "どの箇所・観点への評価かを確認し、原文を記録する。",
+      "code": "評価を実物の版・route・範囲へ結び付ける。",
+      "user": "アプリを読み、受入または修正点を伝える。",
+      "output": "受入→後処理／修正必要→R01へ",
+      "capabilities": []
+    },
+    {
+      "stage": "R03_IMPACT_SWEEP",
+      "title": "修正後の同型監査",
+      "primaryActor": "AI",
+      "ai": "実際の差分から同型不具合と関連修正の残件を調べる。",
+      "code": "事前表の流用を防ぎ、対象・版・関連修正の完了を照合する。",
+      "user": "新しい教材変更が必要なら、その具体案を承認する。",
+      "output": "残件あり→関連修正／なし→R08",
+      "capabilities": [
+        "impact.inventory"
+      ]
+    },
+    {
+      "stage": "R08_CAPTURE_LEARNING",
+      "title": "修正Episodeの確定",
+      "primaryActor": "AI",
+      "ai": "原因・修正・評価・再発防止を整理する。",
+      "code": "元の否定例と修正版・受入・回帰テストを結ぶ。重複・未収録を検出する。",
+      "user": "追加の個別承認は不要。",
+      "output": "修正Episodeと、元評価を保持した事例",
+      "capabilities": [
+        "case.finalize"
+      ]
+    },
+    {
+      "stage": "L01_LEARNING",
+      "title": "教訓・事例・学習の統合",
+      "primaryActor": "AI",
+      "ai": "評価観点と適用範囲を審査。次回に残す規則を整理する。",
+      "code": "版付きcatalog→漏洩のない例→group分割→fit・評価。少数例では採用を控える。",
+      "user": "実物の肯定・否定評価が学習の根拠になる。",
+      "output": "次回の規則・事例・学習結果。モデルは助言用",
+      "capabilities": [
+        "case.finalize",
+        "ml.train"
+      ]
+    },
+    {
+      "stage": "Z01_CLOSE",
+      "title": "終了・作成への復帰",
+      "primaryActor": "CODE",
+      "ai": "現在地・次の作業・必要な教訓を簡潔にまとめる。",
+      "code": "必須残件・承認・証拠・重複を照合して閉じる。修正残件なしで作成へ戻る。",
+      "user": "次の依頼を行う。",
+      "output": "完了記録と再開可能な現在地",
+      "capabilities": []
+    },
+    {
+      "stage": "C01_SOURCE",
+      "title": "原資料の分析",
+      "primaryActor": "AI",
+      "ai": "問題・条件・無番号説明・図の意味を読み取る。",
+      "code": "原本hash、段落・数式・図の抽出、対応漏れを検査する。",
+      "user": "原資料と制作範囲を指定する。",
+      "output": "原資料と教材内容の対応表",
+      "capabilities": [
+        "source.fixed",
+        "source.import",
+        "source.coverage"
+      ]
+    },
+    {
+      "stage": "C02_CONCEPT",
+      "title": "概念・既習の整理",
+      "primaryActor": "AI",
+      "ai": "学習目標、概念の依存、説明する順序を設計する。",
+      "code": "未導入の記号、参照先、依存関係の構造を検査する。",
+      "user": "対象学年・学習目的など必要な条件を伝える。",
+      "output": "学習目標・既習台帳",
+      "capabilities": [
+        "source.coverage",
+        "knowledge.ledger"
+      ]
+    },
+    {
+      "stage": "C03_PATTERN",
+      "title": "規則・事例の参照",
+      "primaryActor": "AI",
+      "ai": "過去の成功・失敗例が今回に当てはまるか判断する。",
+      "code": "版・科目・modeで検索。モデル不在なら順位なしcatalogへ切り替える。",
+      "user": "この工程の個別承認は不要。",
+      "output": "適用／適用外の理由付き事例一覧",
+      "capabilities": [
+        "case.retrieve"
+      ]
+    },
+    {
+      "stage": "C04_SOLUTION",
+      "title": "省略のない完全解法",
+      "primaryActor": "AI",
+      "ai": "条件から結論までの数学操作と根拠を書く。",
+      "code": "登録済みsolverで検算。未対応の証明を機械証明済みとしない。",
+      "user": "この工程の個別承認は不要。",
+      "output": "完全解法・操作の根拠・未解決点",
+      "capabilities": [
+        "math.solve",
+        "math.verify"
+      ]
+    },
+    {
+      "stage": "C05_DESIGN",
+      "title": "ブロックごとの具体設計",
+      "primaryActor": "AI",
+      "ai": "小目標、誘導文、導出、穴、誤答、図表と本文を設計する。",
+      "code": "既習・依存・穴の位置・等式group・原資料coverage・可視状態を検査する。",
+      "user": "次の承認で確認できる具体案を受け取る。",
+      "output": "全ノードの本文・式・穴・参照を含む提案書",
+      "capabilities": [
+        "teaching.plan",
+        "step.plan",
+        "blank.plan",
+        "prose.compose",
+        "text.verify",
+        "figure.verify",
+        "ir.verify",
+        "source.audit",
+        "novice.audit"
+      ]
+    },
+    {
+      "stage": "C06_APPROVAL",
+      "title": "具体案の承認",
+      "primaryActor": "USER",
+      "ai": "変更点・範囲・残る不確実性を説明する。",
+      "code": "承認する案・添付設計・対象範囲のhashを固定する。",
+      "user": "具体案を承認、または修正を指示する。",
+      "output": "版と範囲が明確な承認記録",
+      "capabilities": []
+    },
+    {
+      "stage": "C07_BUILD",
+      "title": "承認範囲の実装",
+      "primaryActor": "TOOL",
+      "ai": "承認案に沿って実装・コード修正を行う。",
+      "code": "IRをcompileし、意味属性・安定ID・採点・進捗を照合する。",
+      "user": "承認済みの同じ内容を再承認しない。",
+      "output": "動く教材と生成・差分の記録",
+      "capabilities": [
+        "ir.compile"
+      ]
+    },
+    {
+      "stage": "C08_VERIFY",
+      "title": "コードによる実検査",
+      "primaryActor": "TOOL",
+      "ai": "失敗の原因を調べ、承認範囲内で修正する。",
+      "code": "数理・IR・全回答・誤答・四幅の描画・参照・履歴・保存を検査する。",
+      "user": "この工程の個別承認は不要。",
+      "output": "対象commitに結び付いた検査結果・実画像",
+      "capabilities": [
+        "math.verify",
+        "ir.verify",
+        "browser.verify",
+        "protected.verify"
+      ]
+    },
+    {
+      "stage": "C09_SEMANTIC",
+      "title": "意味・教え方の監査",
+      "primaryActor": "AI",
+      "ai": "原資料と実画面を照合し、飛躍・不自然な文章・穴の弱さを審査する。",
+      "code": "監査に使う版、前提、可視状態、検査結果を渡す。",
+      "user": "この工程の個別承認は不要。",
+      "output": "根拠付きの意味監査。未確認は未確認のまま",
+      "capabilities": [
+        "source.audit",
+        "novice.audit"
+      ]
+    },
+    {
+      "stage": "R01_CAPTURE",
+      "title": "症状の再現・登録",
+      "primaryActor": "AI",
+      "ai": "ユーザーが困った箇所と、画面上の症状を整理する。",
+      "code": "原版・画像・対象IDを照合。否定的な指摘を修正入力へ渡す。",
+      "user": "困った点や違和感を伝える。",
+      "output": "症状・対象版・再現手順",
+      "capabilities": [
+        "source.fixed",
+        "feedback.capture"
+      ]
+    },
+    {
+      "stage": "R02_CAUSE",
+      "title": "根本原因の分析",
+      "primaryActor": "AI",
+      "ai": "意味・文章・数学・教える順のどこが原因か判断する。",
+      "code": "旧形式を識別して診断。属性・接続・描画・参照・過去事例を照合する。",
+      "user": "必要な場合だけ、指摘の意味を補足する。",
+      "output": "根本原因と、根拠・未解決点",
+      "capabilities": [
+        "case.retrieve",
+        "knowledge.ledger",
+        "math.verify",
+        "ir.verify",
+        "source.audit",
+        "novice.audit"
+      ]
+    },
+    {
+      "stage": "R03_IMPACT",
+      "title": "同型不具合の事前監査",
+      "primaryActor": "AI",
+      "ai": "同じ原因か、別原因か、保護すべき箇所かを判断する。",
+      "code": "全ノードと共有関数のconsumerを列挙。影響表の欠落を検査する。",
+      "user": "この工程の個別承認は不要。",
+      "output": "影響あり／なし／未確認の対象一覧",
+      "capabilities": [
+        "impact.inventory"
+      ]
+    },
+    {
+      "stage": "R04_PROPOSAL",
+      "title": "対象限定の具体修正案",
+      "primaryActor": "AI",
+      "ai": "各ノードの本文・式・穴・参照を具体化し、修正理由を書く。",
+      "code": "原資料coverage、IR、既習、穴、等式、可視状態と保護範囲を検査する。",
+      "user": "実装前に具体案を見る。",
+      "output": "変更前後・保護対象・実装方法・検査方法",
+      "capabilities": [
+        "math.solve",
+        "math.verify",
+        "teaching.plan",
+        "step.plan",
+        "blank.plan",
+        "prose.compose",
+        "text.verify",
+        "figure.verify",
+        "ir.verify",
+        "source.audit",
+        "novice.audit"
+      ]
+    },
+    {
+      "stage": "R05_APPROVAL",
+      "title": "具体修正案の承認",
+      "primaryActor": "USER",
+      "ai": "承認する内容を説明し、追加変更を混ぜない。",
+      "code": "案・範囲・添付設計と、実装用IRの対応を固定する。",
+      "user": "具体案を承認、または修正を指示する。",
+      "output": "修正対象の版・範囲付き承認",
+      "capabilities": []
+    },
+    {
+      "stage": "R06_PATCH",
+      "title": "限定実装",
+      "primaryActor": "TOOL",
+      "ai": "承認された範囲の実装・コード修正を行う。",
+      "code": "承認hash、差分、生成IR、採点ID・段階・保存進捗を照合する。",
+      "user": "同じ公開許可・画像票承認を繰り返さない。",
+      "output": "限定された差分と候補commit",
+      "capabilities": [
+        "ir.compile"
+      ]
+    },
+    {
+      "stage": "R07_VERIFY",
+      "title": "コードによる修正検査",
+      "primaryActor": "TOOL",
+      "ai": "失敗原因を調べ、修正内容を確認する。",
+      "code": "元の症状、同型箇所、全正誤答、四幅描画、履歴・再開を実検査する。",
+      "user": "この工程の個別承認は不要。",
+      "output": "修正・回帰の証拠と実画像",
+      "capabilities": [
+        "math.verify",
+        "ir.verify",
+        "browser.verify",
+        "protected.verify"
+      ]
+    },
+    {
+      "stage": "R07_SEMANTIC",
+      "title": "意味・説明の再監査",
+      "primaryActor": "AI",
+      "ai": "本当に教える形になったか、元の指摘が解消したかを実物で審査する。",
+      "code": "原資料・対象版・可視状態・回帰結果を対応付ける。",
+      "user": "この後、公開された実物を評価する。",
+      "output": "症状の解消と、説明・保護範囲の監査",
+      "capabilities": [
+        "source.audit",
+        "novice.audit"
+      ]
+    },
+    {
+      "stage": "M1",
+      "title": "原評価の固定",
+      "primaryActor": "CODE",
+      "ai": "何を評価した発言かを読み取る。",
+      "code": "原文・対象版・範囲・出所を保存する。",
+      "user": "実物へ肯定／否定の評価を伝える。",
+      "output": "今回：公開版N07全体の肯定。個別六観点へ水増ししない",
+      "capabilities": []
+    },
+    {
+      "stage": "M2",
+      "title": "ラベル・観点の確認",
+      "primaryActor": "AI",
+      "ai": "品質ラベルと、評価対象の観点・範囲を審査する。",
+      "code": "不明をUNKNOWNにし、同じ発言の複製・矛盾を検出する。",
+      "user": "新しい発言がある場合だけ根拠が増える。",
+      "output": "設計承認・AIの自己評価は、人間の品質肯定にしない",
+      "capabilities": []
+    },
+    {
+      "stage": "M3",
+      "title": "学習入力の生成",
+      "primaryActor": "CODE",
+      "ai": "学生に見える実物が入力になっているか確認する。",
+      "code": "実物から本文・式・穴を抽出。評価文・ラベル・版IDを入力へ混ぜない。",
+      "user": "この工程の個別承認は不要。",
+      "output": "実物snapshotと、別管理の正解ラベル",
+      "capabilities": []
+    },
+    {
+      "stage": "M4",
+      "title": "事前学習モデルで特徴化",
+      "primaryActor": "CODE",
+      "ai": "モデルの利用目的と不足を確認する。",
+      "code": "固定版の多言語encoderで全tokenを処理。切り捨てを記録なく行わない。",
+      "user": "この工程の個別承認は不要。",
+      "output": "特徴vectorとモデル版・入力範囲の記録",
+      "capabilities": []
+    },
+    {
+      "stage": "M5",
+      "title": "分割・学習・評価",
+      "primaryActor": "CODE",
+      "ai": "評価結果の適用限界を説明する。",
+      "code": "同じ教材・修正前後を同じgroupにする。観点別にfitし、正負不足は除外する。",
+      "user": "この工程の個別承認は不要。",
+      "output": "学習したhead／不足したhead／評価不能を区別",
+      "capabilities": []
+    },
+    {
+      "stage": "M6",
+      "title": "次回の制作への利用",
+      "primaryActor": "AI",
+      "ai": "候補や事例を採るかを、原資料と数学・教育の根拠で判断する。",
+      "code": "類似事例や候補順位の助言。承認・数学検査・公開条件の代行はしない。",
+      "user": "教材の具体案と公開実物を評価する。",
+      "output": "少数例のモデルはOFFLINE_ONLY。本番採用と学習実行は別",
+      "capabilities": []
+    }
+  ]
+}

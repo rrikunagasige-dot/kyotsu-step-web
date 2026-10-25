@@ -1,29 +1,44 @@
 {
   "work_id": "W-MATH-032",
   "node": {
-    "id": "G3_FINAL@n07",
-    "stage_kind": "G3_FINAL",
-    "contract_kind": "G3_FINAL",
-    "actor": "USER",
+    "id": "L01_LEARNING@n07",
+    "stage_kind": "L01_LEARNING",
+    "contract_kind": "L01_LEARNING",
+    "actor": "AI",
     "depends_on": [
-      "G3_HOST@n07"
+      "R08_CAPTURE_LEARNING@n07"
     ],
-    "required": [],
+    "required": [
+      "case_updates",
+      "rule_links",
+      "regression_links",
+      "unresolved",
+      "deduplication",
+      "modelDisposition"
+    ],
     "block": null,
     "release_unit": "n07",
     "watch": "integration",
-    "phase": "acceptance",
+    "phase": "learning",
     "priority": 0,
     "source_refs": [],
     "protected_refs": [
       "src/data/textbook/math/numbers/firstSectionTeaching.json"
     ],
-    "capability_requests": [],
-    "required_code_receipts": [],
-    "required_ai_receipts": []
+    "capability_requests": [
+      "case.finalize",
+      "ml.train"
+    ],
+    "required_code_receipts": [
+      "case.finalize",
+      "ml.train"
+    ],
+    "required_ai_receipts": [
+      "meaning-review"
+    ]
   },
-  "task_id": "091c3ed3a0e159a6a181da0602f6700f7ac8efb417b1640c36b32948a7f5adb8",
-  "input_hash": "a653bc5437ca1dd2b0d085decc25b566556612e20e20bd602fef59bf12cb82fe",
+  "task_id": "55ba645f3fa9e497be27bb34572c5baf308efc44cfd3d2f224730f3715d11947",
+  "input_hash": "f9cd7c005b8a57260f4ca439e8d000212a15e6691cfff71fc8b339e534e5572f",
   "source_sha": "4fb7a98e7f864839ccc1374080473df4ba60ce88",
   "candidate_sha": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
   "rules": {
@@ -60,11 +75,11 @@
     "tools/textbook/fixtures/n07-source-index.json": "62a1ad951166eabc9672eca0a81a997aa6a362fe01aed045705caecd77a2982b"
   },
   "previous_results": {
-    "G3_HOST@n07": {
+    "R08_CAPTURE_LEARNING@n07": {
       "actor": "capability-runner",
-      "artifact": "f3dc7298c5c8a2763187cbd57cdfba252a1e864d7e02bd4bbe0e99f01596d88f",
-      "input_hash": "5ab0ae768ae4d9ac494858409ac69b2a4eba3380dfccb267ac58b249842d9dab",
-      "node": "G3_HOST@n07",
+      "artifact": "cb53ee8f5106946803e86c3454ae207c74ccb1b87a3c08f98df06625e87be571",
+      "input_hash": "5126be7852c23a3fd4cd4a730e39df85f0238b003b378c2d0860ce5e61fcf9e2",
+      "node": "R08_CAPTURE_LEARNING@n07",
       "verdict": "PASS"
     }
   },

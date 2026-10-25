@@ -37,23 +37,31 @@
   "repeatPublicationApproval": false,
   "contentDesignApprovalRequired": true,
   "modelStatus": "OFFLINE_ONLY",
-  "newLessonAccepted": true,
-  "protectedAppSource": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
-  "adoption": "Verified published N08 accepted; N09/N10 concrete proposal pending. Existing production/2 tool pin unchanged; no whole-branch merge.",
+  "newLessonAccepted": false,
+  "protectedAppSource": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+  "adoption": "Approved N09/N10 implemented and publicly verified; awaiting scoped app acceptance. Tool pin unchanged; no whole-branch merge.",
   "legacyVersions": [
     "production/1",
     "legacy/1"
   ],
   "repairProposal": "W-MATH-034/P-001",
-  "previousPublishedAppSource": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+  "previousPublishedAppSource": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
   "acceptedFirstTitle": "22bc43ba53fa87bb85e82e18a25db13a5c8a485c",
   "publication": {
-    "runId": 40162687421,
-    "workflowSHA": "493b62a866873febc6c46572a29c1b0654f12abb",
-    "sourceSHA": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
+    "runId": 40168673785,
+    "workflowSHA": "c422776a3db277ea5bb3e5166ec290df191fa6b8",
+    "sourceSHA": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
     "status": "success",
     "sourceVerified": true,
-    "userAccepted": true
+    "userAccepted": false,
+    "units": [
+      "n09",
+      "n10"
+    ],
+    "urls": {
+      "n09": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=cb7d30bf#/learning/textbook/math-numbers-expressions-n09",
+      "n10": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=cb7d30bf#/learning/textbook/math-numbers-expressions-n10"
+    }
   },
   "metadataGovernanceScope": "Whole-repository Markdown metadata checker is not claimed PASS; immutable approved N08 design and legacy metadata limits are recorded in W-MATH-033/FINDINGS.md. N07 acceptance remains scoped to W-MATH-032.",
   "acceptance": {
@@ -82,7 +90,7 @@
     "branch": "work/n09-n10-guided-design-20261025"
   },
   "sharedRuntimeStore": "work/items/W-MATH-032-n07-semantic-repair/runtime",
-  "publishedAppSource": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
+  "publishedAppSource": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
   "acceptedUnits": {
     "n07": {
       "sourceSHA": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
@@ -102,24 +110,32 @@
   "currentWork": {
     "id": "W-MATH-034",
     "proposal": "P-001",
-    "status": "PROPOSED",
-    "node": "R05_APPROVAL@n09",
+    "status": "VERIFYING",
+    "node": "G3_FINAL@n09",
     "blocks": [
       "n09",
       "n10"
     ],
     "branch": "work/n09-n10-guided-design-20261025",
     "proposalSourceSHA": "a442cbe966c074f122907bb7366b1ceb6634ca95",
-    "learnerSourceSHA": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
+    "learnerSourceSHA": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
     "userAccepted": false,
-    "concreteDesignApproved": false
+    "concreteDesignApproved": true,
+    "nodes": [
+      "G3_FINAL@n09",
+      "G3_FINAL@n10"
+    ],
+    "approvalEvent": "W034-N09-N10-P001-APPROVED-20261025",
+    "approvalQuote": "ok。いいよ",
+    "readyDispatch": "work/items/W-MATH-034-n09-n10-guided-design/ready_dispatch.py"
   },
   "currentLearnerVerification": {
-    "sourceSHA": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
-    "runId": 40162373237,
+    "sourceSHA": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+    "runId": 40168250606,
+    "publicationRunId": 40168673785,
     "conclusion": "success",
     "learnerTests": 620,
-    "n08Tests": 7,
+    "n09n10Tests": 9,
     "authoringChecks": 39,
     "browserWidths": [
       320,
@@ -127,14 +143,18 @@
       430,
       1440
     ],
-    "answers": 31,
-    "wrongChoicesPerWidth": 74,
-    "legacyMigrations": [
-      1,
-      2,
-      3
-    ],
-    "retiredChoiceRecovery": true
+    "answers": 81,
+    "wrongChoicesPerWidth": 201,
+    "legacyMigrations": {
+      "n09": [
+        1,
+        2
+      ],
+      "n10": [
+        1
+      ]
+    },
+    "auditIndependent": false
   },
   "previousAcceptances": [
     {

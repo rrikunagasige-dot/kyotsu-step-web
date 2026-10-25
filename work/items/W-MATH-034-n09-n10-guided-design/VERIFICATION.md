@@ -23,3 +23,7 @@ Status: PASS_BOUNDED / PROPOSED
 | N09/N10本人受入/学習 | NOT_RUN | 設計承認と品質評価を分離 |
 
 N08の今回の本人受入・実学習はW033/LEARNING_RESULT.jsonおよび同じRuntimeの閉鎖記録に保存。N09/N10の品質判定へ流用していない。
+
+
+## 2026-10-25 — actual public release verified
+Existing Pages run40168673785 SUCCESS, workflow c422776a, exact learner source cb7d30bf. Both predeploy and actual public N09/N10 complete four-width plays, accepted N08/N07 and first-title typography/history checks passed. Real HTTPS manifest verified both IR hashes, 36/45 items, original accepted sources and existing namespace. Both native DEPLOY outcomes and G3_HOST gates passed. Generated actor-labelled diagrams now wait at USER G3_FINAL for both units. No user acceptance or new quality label/model fit fabricated.

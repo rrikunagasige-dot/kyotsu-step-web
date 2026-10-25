@@ -20,3 +20,7 @@ N10は同じ承認からWork内データとadapterを生成したが、既存Run
 
 ## 2026-10-25 — both-unit final QA and publication
 Exact source cb7d30bf: CI40168250606 SUCCESS. Both four-width plays PASS: N09 36 answers/90 wrong choices, N10 45 answers/111 wrong choices, per width. Real image review is same-assistant, not independent. Native R07/G2 passed for both; retrieved 11 cases consumed through existing CASE_DISPOSITIONS. QA receipt adapter corrected missing CI html_url and case dispositions; no gate bypass. Existing Pages workflow c422776a started with both logical release intents. User quality acceptance remains pending; no new label or model fit.
+
+
+## 2026-10-25 — actual public release verified
+Existing Pages run40168673785 SUCCESS, workflow c422776a, exact learner source cb7d30bf. Both predeploy and actual public N09/N10 complete four-width plays, accepted N08/N07 and first-title typography/history checks passed. Real HTTPS manifest verified both IR hashes, 36/45 items, original accepted sources and existing namespace. Both native DEPLOY outcomes and G3_HOST gates passed. Generated actor-labelled diagrams now wait at USER G3_FINAL for both units. No user acceptance or new quality label/model fit fabricated.

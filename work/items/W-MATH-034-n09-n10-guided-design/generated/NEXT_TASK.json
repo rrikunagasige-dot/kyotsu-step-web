@@ -1,0 +1,112 @@
+{
+  "work_id": "W-MATH-034",
+  "node": {
+    "id": "G3_FINAL@n09",
+    "stage_kind": "G3_FINAL",
+    "contract_kind": "G3_FINAL",
+    "actor": "USER",
+    "depends_on": [
+      "G3_HOST@n09"
+    ],
+    "required": [],
+    "block": null,
+    "release_unit": "n09",
+    "watch": "integration",
+    "phase": "acceptance",
+    "priority": 0,
+    "source_refs": [],
+    "protected_refs": [
+      "src/data/textbook/math/numbers/firstSectionTeaching.json",
+      "src/data/textbook/math/typesetting.json",
+      "src/data/textbook/math/numbers/n07Authored.json",
+      "src/components/textbook/N07ReadingFlow.tsx",
+      "src/components/textbook/n07-reading.css",
+      "src/data/textbook/math/numbers/n08Authored.json",
+      "src/data/textbook/math/numbers/n08Lesson.ts",
+      "src/components/textbook/N08ReadingFlow.tsx",
+      "src/components/textbook/n08-reading.css",
+      "public/assets/math/textbook/numbers/n09-f01.png"
+    ],
+    "capability_requests": [],
+    "required_code_receipts": [],
+    "required_ai_receipts": []
+  },
+  "task_id": "74688e53e9bdfd50a011c28aa61dde4bcde632e3a931a1984b838a0613b3b0ad",
+  "input_hash": "a29a7674a8a9aa8c00296cd0b539e438400a62214fdec49752c409740c17f1c9",
+  "source_sha": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
+  "candidate_sha": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+  "rules": {
+    "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
+    "governance/REVIEW_POLICY.json": "a71148f007a79b124385c7645e6bc01564bfa02b12152174883543f31f6ce72d",
+    "governance/WORK_SYSTEM.md": "37b0b0e0fecc79d7c067e17ec8dbeb53d53863f04369171d65ef652a176eb093",
+    "memory/LESSONS/MATH_TYPESETTING_GROUPS.md": "8047831b13d22ffb773f68e23ab788a3490e4b69ebbf5d5d357f9f786ed53d0a",
+    "subjects/mathematics/textbook/SPEC.md": "a36959ae6f951e855c3e60d280d02a0f20c6e23185d9eb90b17ffbc889c63277"
+  },
+  "proposal": {
+    "contentDesignHash": "c205e5be111cca41a62509b651f52c20cc08a906725e8fd39d30126ee89b03bf",
+    "hash": "401f890d670089604d056a3843d577e9d4bf264cd08f91821c8e1397c3375109",
+    "id": "W-MATH-034/P-001"
+  },
+  "scope": {
+    "paths": [
+      "src/data/textbook/math/numbers/n09Lesson.ts",
+      "src/data/textbook/math/numbers/n10Lesson.ts",
+      "src/data/textbook/math/numbers/n09Authored.json",
+      "src/data/textbook/math/numbers/n10Authored.json",
+      "src/components/textbook/GuidedMathReadingFlow.tsx",
+      "src/components/textbook/guided-math-reading.css",
+      "src/pages/TextbookUnitPage.tsx",
+      "src/domain/textbook.ts",
+      "src/test/n09Legacy.ts",
+      "src/test/n10Legacy.ts",
+      "src/data/textbook/math/numbers/newBatchCoverage.test.ts",
+      "src/data/textbook/math/numbers/firstSectionTeaching.test.tsx",
+      "src/review/reviewTargets.test.ts",
+      "src/data/textbook/math/numbers/n09Atomicity.test.ts",
+      "work/items/W-MATH-034-n09-n10-guided-design/"
+    ],
+    "preserve": [
+      "src/data/textbook/math/numbers/firstSectionTeaching.json",
+      "src/data/textbook/math/typesetting.json",
+      "src/data/textbook/math/numbers/n07Authored.json",
+      "src/components/textbook/N07ReadingFlow.tsx",
+      "src/components/textbook/n07-reading.css",
+      "src/data/textbook/math/numbers/n08Authored.json",
+      "src/data/textbook/math/numbers/n08Lesson.ts",
+      "src/components/textbook/N08ReadingFlow.tsx",
+      "src/components/textbook/n08-reading.css",
+      "public/assets/math/textbook/numbers/n09-f01.png"
+    ]
+  },
+  "source_manifest": {
+    "public/assets/math/textbook/numbers/n09-f01.png": "24dd29dcaacd371ddfab4c8fefbccd84933fd0f1a27ed5f167372f74ca4a9cfd",
+    "src/data/textbook/math/numbers/n09Lesson.ts": "b8d950b2c727e9e44a46c7ad6c3e5d8056a31a0ff587b270aed43b71f38e0080",
+    "src/data/textbook/math/numbers/n10Lesson.ts": "a89401d8693ef4c25608c944023f4d2455b243967c27308e68a6f39d9f1349aa",
+    "src/domain/textbook.ts": "559f7837216a8c232ad276a6d0b16cc84efd1af65f830fd59859a44e6f041d3d",
+    "src/pages/TextbookUnitPage.tsx": "8e26901274abf7b4f0942364072e99a47fceb0f56be8e8828e0b817ddc8565f5",
+    "work/items/W-MATH-034-n09-n10-guided-design/evidence/N09_SOURCE_INDEX.json": "3ab5f05bdb29affbe3465f434fec5f83875ee968798aede091da8646acb99cb8",
+    "work/items/W-MATH-034-n09-n10-guided-design/evidence/N10_SOURCE_INDEX.json": "566d46e84e4e62040b696212f4cb87a64c21914a53d03d246b70210215140e48"
+  },
+  "previous_results": {
+    "G3_HOST@n09": {
+      "actor": "W034-serial-ready-dispatch",
+      "artifact": "e0c21b2a3dc34d2429fcc4897bcf68bb5b835579033f45295f5c4129ec11fbb8",
+      "input_hash": "5c9417c85f0ebedab170840d31d26f2e887a6a19003b277f80a5fa06ef79ae5c",
+      "node": "G3_HOST@n09",
+      "verdict": "PASS"
+    }
+  },
+  "do_not_touch": [
+    "src/data/textbook/math/numbers/firstSectionTeaching.json",
+    "src/data/textbook/math/typesetting.json",
+    "src/data/textbook/math/numbers/n07Authored.json",
+    "src/components/textbook/N07ReadingFlow.tsx",
+    "src/components/textbook/n07-reading.css",
+    "src/data/textbook/math/numbers/n08Authored.json",
+    "src/data/textbook/math/numbers/n08Lesson.ts",
+    "src/components/textbook/N08ReadingFlow.tsx",
+    "src/components/textbook/n08-reading.css",
+    "public/assets/math/textbook/numbers/n09-f01.png"
+  ],
+  "completion_is_not_semantic_proof": true
+}

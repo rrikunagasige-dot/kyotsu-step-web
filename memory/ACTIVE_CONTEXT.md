@@ -1,3 +1,19 @@
+## CURRENT — N09・N10実装・公開、実物評価待ち（2026-10-25）
+
+ユーザー「ok。いいよ」で凍結P-001（a442cbe9）の両単元設計を承認。N09 **41node・36回答・11段階**、N10 **45node・45回答・12段階**を実装した。共通readerの条件付き前結果、段階的な穴、等式記録・番号、数式の文中描画、履歴と旧保存移行を含む。承認済み5入力はbyte不変。
+
+公開source `cb7d30bfe666b9123ea51e1fad7e36268507b674`。内部CI [40168250606](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40168250606)、既存Pages公開run [40168673785](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40168673785) SUCCESS。workflow `c422776a3db277ea5bb3e5166ec290df191fa6b8`。公開release.jsonのsource/2 IR hash/16units/storage namespaceを実HTTPSで照合し、公開後も両単元を4幅で最後まで操作した。
+
+[N09を開く](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=cb7d30bf#/learning/textbook/math-numbers-expressions-n09) ／ [N10を開く](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=cb7d30bf#/learning/textbook/math-numbers-expressions-n10)。320/390/430/1440pxで全81回答と各幅201誤答、履歴・再読込・実保存移行がPASS。N09 v1→既存v2退避→v3、v2→v3、N10 v1→v2を検証。620 applicable learner、専用9、authoring39、build PASS。受入済みN08 ea47dd97・N07 46ea59be・第一タイトル22bc43baと原図を保護。全repo旧Markdownメタデータ検査の完全PASSは主張しない。
+
+共有Runtime W032内でW034両R05/R06/R07/G2/G3_HOSTを実行。優先順を依存関係と誤読した説明を訂正し、Work内直列ready dispatchがnative DAG・承認・receipt検査をそのまま使って両単元を進めた。中央workflow/toolsの変更や品質gateの代行なし。式番号の実glyph重なり、長い選択肢、根号slotの実失敗と修正証拠はW034に保存。画像・意味監査は同じassistantであり独立AI監査とは呼ばない。
+
+**現在 W-MATH-034 / VERIFYING / G3_FINAL@n09・G3_FINAL@n10。次は公開両単元への本人の実物評価。** 設計承認・CI成功・配信成功を教材受入やGold肯定に変換しない。両単元への再設計承認・公開許可・画像票は要求しない。品質評価後は対象単元の修正、またはfresh事後影響sweep/R08/L01へ進む。
+
+N08受入と実学習はW033 DONEのまま。学習は11例（否定7/肯定4）、model e9dcf354、固定encoder、OFFLINE_ONLY、advisoryEligible=false。今回N09/N10の肯定例追加・再fitなし。tool pin058c4eaは不変。詳細 [W034記録](https://github.com/rrikunagasige-dot/kyotsu-step-web/tree/work/n09-n10-guided-design-20261025/work/items/W-MATH-034-n09-n10-guided-design)。以下の「P001未承認・N09/N10未実装」は履歴。
+
+---
+
 ## CURRENT — N08受入・実学習完了 / N09・N10具体案（2026-10-25）
 
 ユーザー「我觉得可以.然后机械学习。那下面直接N09，N10。」を、公開N08 source `ea47dd97f7d323267281915e8d9a7bb92a8e7c03` の範囲付き受入と学習依頼として記録。W-MATH-033は同じ共有RuntimeでG3_FINAL→fresh事後sweep→R08→L01実fit→Z01を完了して **DONE**。N08全体肯定1件だけを追加し、個別修正の肯定を捏造していない。

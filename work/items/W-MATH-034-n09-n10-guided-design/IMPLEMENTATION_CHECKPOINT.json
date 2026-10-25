@@ -18,6 +18,9 @@
   "dedicatedTests": 9,
   "internalCI": 40168250606,
   "internalStatus": "SUCCESS",
-  "publication": false,
-  "userAcceptance": false
+  "publication": true,
+  "userAcceptance": false,
+  "publicationRun": 40168673785,
+  "publicationStatus": "SUCCESS",
+  "publicSourceVerified": true
 }

@@ -1,6 +1,6 @@
 # N08 実装の検証 — 現在
 
-Status: PASS_BOUNDED / PUBLICATION_RUNNING
+Status: PASS_BOUNDED / PUBLISHED_USER_REVIEW_PENDING
 
 承認済みP-001（83ea55bc）から生成したsource `ea47dd97f7d323267281915e8d9a7bb92a8e7c03` をCI40162373237で検証した。原12問のID/正答と原図を保持し、36node・31回答・12段階を実装。
 
@@ -12,7 +12,7 @@ Status: PASS_BOUNDED / PUBLICATION_RUNNING
 | 実ブラウザ | 320/390/430/1440各幅、31正答・74誤答・履歴・再読込・3版移行 PASS | evidence/UI_REPORT.json |
 | 実画像 | 320pxのQ07式連鎖・Q10論理条件を確認 | evidence/IMAGE_AUDIT.json |
 | 既存教材保護 | N07・第一タイトル・元図のhash一致、protected UI PASS | evidence/LOCAL_IMPLEMENTATION_CHECKS.json |
-| 公開 | run40162687421実行中 | PUBLICATION_INTENT.json |
+| 公開 | run40162687421 SUCCESS、実HTTPSと公開4幅操作・第一タイトル保護検査 PASS | evidence/PUBLICATION_RUN.json / evidence/HOSTED_MANIFEST.json / evidence/HOSTED_HTTP.json |
 | ユーザー受入 / 学習 | 未実施。設計承認を品質肯定に変換しない | 次はG3_FINAL@n08 |
 
 同じassistantによる意味・画像監査であり、別AIによる独立監査ではない。全repo旧Markdownメタデータ検査の完全PASSは主張しない。以下は提案時の履歴。現在の承認・実装・検証状態は上記を優先する。

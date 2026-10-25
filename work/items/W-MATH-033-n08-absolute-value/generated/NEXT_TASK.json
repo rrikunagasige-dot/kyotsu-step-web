@@ -1,50 +1,32 @@
 {
   "work_id": "W-MATH-033",
   "node": {
-    "id": "R07_VERIFY@n08",
-    "stage_kind": "R07_VERIFY",
-    "contract_kind": "R07_VERIFY",
-    "actor": "TOOL",
+    "id": "G3_FINAL@n08",
+    "stage_kind": "G3_FINAL",
+    "contract_kind": "G3_FINAL",
+    "actor": "USER",
     "depends_on": [
-      "R06_PATCH@n08"
+      "G3_HOST@n08"
     ],
     "required": [],
-    "block": "n08",
+    "block": null,
     "release_unit": "n08",
     "watch": "integration",
-    "phase": "post-implementation",
+    "phase": "acceptance",
     "priority": 0,
-    "source_refs": [
-      "src/data/textbook/math/numbers/n08Lesson.ts",
-      "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
-      "src/pages/TextbookUnitPage.tsx",
-      "src/domain/textbook.ts",
-      "public/assets/math/textbook/numbers/n08-f01.png",
-      "work/items/W-MATH-033-n08-absolute-value/evidence/SOURCE_INDEX.json"
-    ],
+    "source_refs": [],
     "protected_refs": [
       "src/data/textbook/math/numbers/firstSectionTeaching.json",
       "src/data/textbook/math/numbers/n07Authored.json",
       "src/components/textbook/N07ReadingFlow.tsx",
       "src/components/textbook/n07-reading.css"
     ],
-    "approval_scope_ref": "proposal",
-    "capability_requests": [
-      "math.verify",
-      "ir.verify",
-      "browser.verify",
-      "protected.verify"
-    ],
-    "required_code_receipts": [
-      "math.verify",
-      "ir.verify",
-      "browser.verify",
-      "protected.verify"
-    ],
+    "capability_requests": [],
+    "required_code_receipts": [],
     "required_ai_receipts": []
   },
-  "task_id": "fb063a696458694ea88ff3d3468b1a7ad62b486613cf73ee3bf677a93771cf6b",
-  "input_hash": "966fd7e6838e1e7c904d80185c3f6173043529b364ef1d9bc8aa177b82f273f5",
+  "task_id": "f8b2fbdf523862bd5ecff6a29e1399a2102c0f35bbcc9864dbfe0ac020749d82",
+  "input_hash": "60108229534fb05c9190b9d94986768846c35f02159d4bfb9f7a7686d99d6742",
   "source_sha": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
   "candidate_sha": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
   "rules": {
@@ -85,11 +67,11 @@
     "work/items/W-MATH-033-n08-absolute-value/evidence/SOURCE_INDEX.json": "31e49387d8fa565a45ab06f2452e052f42c6a53296449816750886ef03d5369c"
   },
   "previous_results": {
-    "R06_PATCH@n08": {
+    "G3_HOST@n08": {
       "actor": "capability-runner",
-      "artifact": "d24d097689a95c050dd28a29195a42e4b6cd33583365315d7fb99549d97f1e67",
-      "input_hash": "52ad344091c21ebb3c471f295199cc63e1277a23486bc04c2033fc5d7124549f",
-      "node": "R06_PATCH@n08",
+      "artifact": "c17ddaf01089347808ac0ac883192d4bdbb1655a2db7689ae7c97458a55fc49e",
+      "input_hash": "68c06af2797afc5f1f9ada53c2f0f01fac270fdc1e6618fb16ad617363531235",
+      "node": "G3_HOST@n08",
       "verdict": "PASS"
     }
   },

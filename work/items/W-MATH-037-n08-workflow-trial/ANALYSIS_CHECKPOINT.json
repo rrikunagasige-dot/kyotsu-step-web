@@ -1,0 +1,13 @@
+{
+  "next": {
+    "status": "BLOCKED",
+    "reason": "修正・追加証拠・提案改訂が必要",
+    "node": "R02_CAUSE@n08"
+  },
+  "proposalReady": true,
+  "nativeR04Passed": false,
+  "implementationApproved": false,
+  "learnerModified": false,
+  "learningLabelsAdded": 0,
+  "proposalHash": "71e6f67bb98d372a6146502cba0f69d13967f3047af9be59a8a86b1cb6a7eb6d"
+}

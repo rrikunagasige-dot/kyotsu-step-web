@@ -1,0 +1,109 @@
+{
+  "supported": [
+    {
+      "id": "distance-left",
+      "status": "PASS",
+      "checks": [
+        {
+          "transitionId": "distance-left-edge",
+          "status": "PASS",
+          "ruleId": "rewrite",
+          "checks": [
+            "identity"
+          ],
+          "mathStatus": "PASS"
+        }
+      ],
+      "engineVersion": "1.14.0",
+      "formalProof": false,
+      "proofStatus": "EXACT_SYMBOLIC_CHECKS",
+      "domain": "closed AST polynomial identities / constant linear operations / one-variable relation solution sets / numeric quadratic extrema",
+      "graphHash": "08ba968b356971eb01474e017e913c93d1a033f266af5dd0dd22cd63da746634"
+    },
+    {
+      "id": "negative-expression",
+      "status": "PASS",
+      "checks": [
+        {
+          "transitionId": "negative-expression-edge",
+          "status": "PASS",
+          "ruleId": "rewrite",
+          "checks": [
+            "identity"
+          ],
+          "mathStatus": "PASS"
+        }
+      ],
+      "engineVersion": "1.14.0",
+      "formalProof": false,
+      "proofStatus": "EXACT_SYMBOLIC_CHECKS",
+      "domain": "closed AST polynomial identities / constant linear operations / one-variable relation solution sets / numeric quadratic extrema",
+      "graphHash": "aebba51d72648497cc0b06c024721916e3f6937892ad237aeec2fde250be4701"
+    },
+    {
+      "id": "negative-square",
+      "status": "PASS",
+      "checks": [
+        {
+          "transitionId": "negative-square-edge",
+          "status": "PASS",
+          "ruleId": "rewrite",
+          "checks": [
+            "identity"
+          ],
+          "mathStatus": "PASS"
+        }
+      ],
+      "engineVersion": "1.14.0",
+      "formalProof": false,
+      "proofStatus": "EXACT_SYMBOLIC_CHECKS",
+      "domain": "closed AST polynomial identities / constant linear operations / one-variable relation solution sets / numeric quadratic extrema",
+      "graphHash": "3744eb0f937b58dd9dae35735a744e983b74562f32582ef52b1b904571cf538a"
+    }
+  ],
+  "notRepresentable": [
+    {
+      "id": "absolute-value",
+      "status": "UNSUPPORTED_IN_CURRENT_CONTRACT",
+      "raw": {
+        "status": "FAIL",
+        "findings": [
+          {
+            "ruleId": "GRAPH_SCHEMA",
+            "detail": "[\n  {\n    \"code\": \"invalid_union\",\n    \"errors\": [],\n    \"note\": \"No matching discriminator\",\n    \"discriminator\": \"kind\",\n    \"options\": [\n      \"rational\",\n      \"symbol\",\n      \"add\",\n      \"multiply\",\n      \"power\",\n      \"divide\"\n    ],\n    \"path\": [\n      \"givens\",\n      0,\n      \"statement\",\n      \"expression\",\n      \"kind\"\n    ],\n    \"message\": \"Invalid discriminator value. Expected 'rational' | 'symbol' | 'add' | 'multiply' | 'power' | 'divide'\"\n  },\n  {\n    \"code\": \"invalid_union\",\n    \"errors\": [],\n    \"note\": \"No matching discriminator\",\n    \"discriminator\": \"kind\",\n    \"options\": [\n      \"rational\",\n      \"symbol\",\n      \"add\",\n      \"multiply\",\n      \"power\",\n      \"divide\"\n    ],\n    \"path\": [\n      \"states\",\n      0,\n      \"statement\",\n      \"expression\",\n      \"kind\"\n    ],\n    \"message\": \"Invalid discriminator value. Expected 'rational' | 'symbol' | 'add' | 'multiply' | 'power' | 'divide'\"\n  },\n  {\n    \"code\": \"invalid_union\",\n    \"errors\": [],\n    \"note\": \"No matching discriminator\",\n    \"discriminator\": \"kind\",\n    \"options\": [\n      \"rational\",\n      \"symbol\",\n      \"add\",\n      \"multiply\",\n      \"power\",\n      \"divide\"\n    ],\n    \"path\": [\n      \"states\",\n      1,\n      \"statement\",\n      \"expression\",\n      \"kind\"\n    ],\n    \"message\": \"Invalid discriminator value. Expected 'rational' | 'symbol' | 'add' | 'multiply' | 'power' | 'divide'\"\n  }\n]"
+          }
+        ]
+      },
+      "notAClaimOfMathematicalError": true
+    },
+    {
+      "id": "radical",
+      "status": "UNSUPPORTED_IN_CURRENT_CONTRACT",
+      "raw": {
+        "status": "FAIL",
+        "findings": [
+          {
+            "ruleId": "GRAPH_SCHEMA",
+            "detail": "[\n  {\n    \"code\": \"invalid_union\",\n    \"errors\": [],\n    \"note\": \"No matching discriminator\",\n    \"discriminator\": \"kind\",\n    \"options\": [\n      \"rational\",\n      \"symbol\",\n      \"add\",\n      \"multiply\",\n      \"power\",\n      \"divide\"\n    ],\n    \"path\": [\n      \"givens\",\n      0,\n      \"statement\",\n      \"expression\",\n      \"kind\"\n    ],\n    \"message\": \"Invalid discriminator value. Expected 'rational' | 'symbol' | 'add' | 'multiply' | 'power' | 'divide'\"\n  },\n  {\n    \"code\": \"invalid_union\",\n    \"errors\": [],\n    \"note\": \"No matching discriminator\",\n    \"discriminator\": \"kind\",\n    \"options\": [\n      \"rational\",\n      \"symbol\",\n      \"add\",\n      \"multiply\",\n      \"power\",\n      \"divide\"\n    ],\n    \"path\": [\n      \"states\",\n      0,\n      \"statement\",\n      \"expression\",\n      \"kind\"\n    ],\n    \"message\": \"Invalid discriminator value. Expected 'rational' | 'symbol' | 'add' | 'multiply' | 'power' | 'divide'\"\n  },\n  {\n    \"code\": \"invalid_union\",\n    \"errors\": [],\n    \"note\": \"No matching discriminator\",\n    \"discriminator\": \"kind\",\n    \"options\": [\n      \"rational\",\n      \"symbol\",\n      \"add\",\n      \"multiply\",\n      \"power\",\n      \"divide\"\n    ],\n    \"path\": [\n      \"states\",\n      1,\n      \"statement\",\n      \"expression\",\n      \"kind\"\n    ],\n    \"message\": \"Invalid discriminator value. Expected 'rational' | 'symbol' | 'add' | 'multiply' | 'power' | 'divide'\"\n  }\n]"
+          }
+        ]
+      },
+      "notAClaimOfMathematicalError": true
+    },
+    {
+      "id": "pi-constant",
+      "status": "UNSUPPORTED_IN_CURRENT_CONTRACT",
+      "raw": {
+        "status": "FAIL",
+        "findings": [
+          {
+            "ruleId": "GRAPH_SCHEMA",
+            "detail": "[\n  {\n    \"code\": \"invalid_union\",\n    \"errors\": [],\n    \"note\": \"No matching discriminator\",\n    \"discriminator\": \"kind\",\n    \"options\": [\n      \"rational\",\n      \"symbol\",\n      \"add\",\n      \"multiply\",\n      \"power\",\n      \"divide\"\n    ],\n    \"path\": [\n      \"givens\",\n      0,\n      \"statement\",\n      \"expression\",\n      \"kind\"\n    ],\n    \"message\": \"Invalid discriminator value. Expected 'rational' | 'symbol' | 'add' | 'multiply' | 'power' | 'divide'\"\n  },\n  {\n    \"code\": \"invalid_union\",\n    \"errors\": [],\n    \"note\": \"No matching discriminator\",\n    \"discriminator\": \"kind\",\n    \"options\": [\n      \"rational\",\n      \"symbol\",\n      \"add\",\n      \"multiply\",\n      \"power\",\n      \"divide\"\n    ],\n    \"path\": [\n      \"states\",\n      0,\n      \"statement\",\n      \"expression\",\n      \"kind\"\n    ],\n    \"message\": \"Invalid discriminator value. Expected 'rational' | 'symbol' | 'add' | 'multiply' | 'power' | 'divide'\"\n  },\n  {\n    \"code\": \"invalid_union\",\n    \"errors\": [],\n    \"note\": \"No matching discriminator\",\n    \"discriminator\": \"kind\",\n    \"options\": [\n      \"rational\",\n      \"symbol\",\n      \"add\",\n      \"multiply\",\n      \"power\",\n      \"divide\"\n    ],\n    \"path\": [\n      \"states\",\n      1,\n      \"statement\",\n      \"expression\",\n      \"kind\"\n    ],\n    \"message\": \"Invalid discriminator value. Expected 'rational' | 'symbol' | 'add' | 'multiply' | 'power' | 'divide'\"\n  }\n]"
+          }
+        ]
+      },
+      "notAClaimOfMathematicalError": true
+    }
+  ],
+  "meaning": "Known legacy lesson is not declared wrong because the new AST lacks constructors. No unsupported result promoted."
+}

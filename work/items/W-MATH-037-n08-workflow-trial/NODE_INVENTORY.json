@@ -1,0 +1,1626 @@
+{
+  "source": "src/data/textbook/math/numbers/n08Authored.json",
+  "sourceSHA256": "80c917d3c2de34b9111e11f57fb02272d98ab02c0677a2fb30c5ae4dad60e142",
+  "revision": 4,
+  "nodes": [
+    {
+      "id": "n08-q01-right",
+      "stageId": "n08-stage-01",
+      "q": 1,
+      "goal": "右側の点から原点までの距離",
+      "role": "example",
+      "knownRefs": [],
+      "resultId": "n08-q01-right-result",
+      "interaction": null,
+      "before": [
+        {
+          "id": "n08-q01-right-before",
+          "text": "図の右側にある $2.3$ の点を見ます。原点の座標は $0$ です。右側の座標から左側の座標を引き、距離を求めます。"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q01-right-after",
+          "text": "$2.3-0=2.3$ です。右側の点は原点から $2.3$ 離れています。次は左側の点を同じ方法で見ます。"
+        }
+      ]
+    },
+    {
+      "id": "n08-q01-left",
+      "stageId": "n08-stage-01",
+      "q": 1,
+      "goal": "左側でも右の座標から左の座標を引く",
+      "role": "substep",
+      "knownRefs": [],
+      "resultId": "n08-q01-left-result",
+      "interaction": "n08-q01-left-answer",
+      "before": [
+        {
+          "id": "n08-q01-left-before",
+          "text": "$-5$ の点は原点の左側です。右側は $0$、左側は $-5$ なので、距離は $0-(-5)$ と表せます。"
+        },
+        {
+          "id": "n08-q01-left-interaction-0",
+          "text": "$0-(-5)=$[n08-q01-left-answer]"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q01-left-result",
+          "text": "$0-(-5)$$=$$5$"
+        },
+        {
+          "id": "n08-q01-left-after",
+          "text": "座標に負号が付いていても、原点からの距離は正です。"
+        }
+      ],
+      "question": "左側でも右の座標から左の座標を引く",
+      "answer": "5",
+      "choices": [
+        "5",
+        "-5",
+        "0"
+      ],
+      "hints": [
+        "負の数を引く計算を思い出します。"
+      ]
+    },
+    {
+      "id": "n08-01",
+      "stageId": "n08-stage-01",
+      "q": 1,
+      "goal": "元の順序で二つの距離をまとめる",
+      "role": "substep",
+      "knownRefs": [],
+      "resultId": "n08-01-result",
+      "interaction": "n08-01",
+      "before": [
+        {
+          "id": "n08-01-before",
+          "text": "問題の順序は $2.3$ の点、次に $-5$ の点です。求めた二つの距離を、この順序でまとめます。"
+        },
+        {
+          "id": "n08-01-interaction-0",
+          "text": "[n08-01]"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-01-result-0",
+          "text": "$2.3,\\quad5$"
+        },
+        {
+          "id": "n08-01-after",
+          "text": "どちらも向きではなく、原点との離れ具合を表しています。"
+        }
+      ],
+      "question": "元の順序で二つの距離をまとめる",
+      "answer": "2.3,\\quad5",
+      "choices": [
+        "2.3,\\quad5",
+        "2.3,\\quad-5",
+        "-2.3,\\quad5",
+        "5,\\quad2.3"
+      ],
+      "hints": [
+        "二つの計算結果を、図ではなく問題文の順に並べます。"
+      ]
+    },
+    {
+      "id": "n08-definition",
+      "stageId": "n08-stage-02",
+      "q": 2,
+      "goal": "この距離を絶対値と名付ける",
+      "role": "definition",
+      "knownRefs": [
+        "n08-01-result"
+      ],
+      "resultId": "n08-definition-result",
+      "interaction": null,
+      "before": [
+        {
+          "id": "n08-definition-before",
+          "text": "実数 $a$ を表す点と原点との距離を、絶対値といい、$|a|$ と書きます。縦の二本の線は、中にある式全体について距離を取る記号です。"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-definition-after",
+          "text": "未知の名前を当てさせず、ここで定義します。次に、座標の正負に応じてこの距離を式にします。"
+        }
+      ]
+    },
+    {
+      "id": "n08-02",
+      "stageId": "n08-stage-02",
+      "q": 2,
+      "goal": "原点か右側なら座標が距離になる",
+      "role": "substep",
+      "knownRefs": [],
+      "resultId": "n08-02-result",
+      "interaction": "n08-02",
+      "before": [
+        {
+          "id": "n08-02-before",
+          "text": "$a\\ge0$ の場合を考えます。点は原点か右側にあるので、右の座標 $a$ から左の座標 $0$ を引きます。$a-0=a$ を絶対値の記号でまとめます。"
+        },
+        {
+          "id": "n08-02-interaction-0",
+          "text": "[n08-02]"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-02-result",
+          "text": "$|a|$$=$$a$"
+        },
+        {
+          "id": "n08-02-after",
+          "text": "条件 $a\\ge0$ の場合の結論です。$a=0$ の場合も含みます。左側の場合も調べれば、すべての実数を扱えます。"
+        }
+      ],
+      "question": "原点か右側なら座標が距離になる",
+      "answer": "|a|=a",
+      "choices": [
+        "|a|=a",
+        "|a|=-a",
+        "|a|=0",
+        "|a|=a^2"
+      ],
+      "hints": [
+        "場合の条件と、左右の座標を確かめます。"
+      ]
+    },
+    {
+      "id": "n08-q03-order",
+      "stageId": "n08-stage-03",
+      "q": 3,
+      "goal": "左側の点の距離を引き算で作る",
+      "role": "substep",
+      "knownRefs": [
+        "n08-02-result"
+      ],
+      "resultId": "n08-q03-order-result",
+      "interaction": "n08-q03-order-answer",
+      "before": [
+        {
+          "id": "n08-q03-order-before",
+          "text": "$a<0$ なら、左に $a$、右に $0$ があります。距離の式は「右側の座標−左側の座標」の順に作ります。"
+        },
+        {
+          "id": "n08-q03-order-interaction-0",
+          "text": "$|a|=$[n08-q03-order-answer]"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q03-order-result",
+          "text": "$|a|$$=$$0-a$"
+        },
+        {
+          "id": "n08-q03-order-after",
+          "text": "条件 $a<0$ の場合の結論です。次は、この引き算を一つの項にします。"
+        }
+      ],
+      "question": "左側の点の距離を引き算で作る",
+      "answer": "0-a",
+      "choices": [
+        "0-a",
+        "a-0",
+        "0+a"
+      ],
+      "hints": [
+        "数直線で、二点の右と左を先に決めます。"
+      ]
+    },
+    {
+      "id": "n08-03",
+      "stageId": "n08-stage-03",
+      "q": 3,
+      "goal": "左側の距離を簡単にする",
+      "role": "substep",
+      "knownRefs": [],
+      "resultId": "n08-03-result",
+      "interaction": "n08-03",
+      "before": [
+        {
+          "id": "n08-03-before",
+          "text": "先ほど作った $0-a$ では、$0$ から $a$ を引いています。$a$ と符号が反対の数になるので、等式を完成させます。"
+        },
+        {
+          "id": "n08-03-interaction-0",
+          "text": "[n08-03]"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-03-result",
+          "text": "$0-a$$=$$-a$"
+        },
+        {
+          "id": "n08-03-after",
+          "text": "条件 $a<0$ の場合の結論です。$a<0$ のとき、$|a|=-a$ です。$-a$ という見た目だけで、値まで負と判断しないようにします。"
+        }
+      ],
+      "question": "左側の距離を簡単にする",
+      "answer": "0-a=-a",
+      "choices": [
+        "0-a=-a",
+        "0-a=a",
+        "a-0=a",
+        "0+a=a"
+      ],
+      "hints": [
+        "0から引いた数は、元の数と符号が反対です。"
+      ]
+    },
+    {
+      "id": "n08-q04-substitute",
+      "stageId": "n08-stage-04",
+      "q": 4,
+      "goal": "負の値は括弧を付けて代入する",
+      "role": "substep",
+      "knownRefs": [
+        "n08-03-result"
+      ],
+      "resultId": "n08-q04-substitute-result",
+      "interaction": "n08-q04-substitute-answer",
+      "before": [
+        {
+          "id": "n08-q04-substitute-before",
+          "text": "いまの式 $-a$ の $a$ へ $-5$ を入れます。元からある負号と代入する負の数を区別するため、代入する数を括弧で囲みます。"
+        },
+        {
+          "id": "n08-q04-substitute-interaction-0",
+          "text": "$-a=$[n08-q04-substitute-answer]$\\quad(a=-5)$"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q04-substitute-result",
+          "text": "$-a$$=$$-(-5)$"
+        },
+        {
+          "id": "n08-q04-substitute-after",
+          "text": "外側の負号は、括弧の中の数と符号が反対の数を作ります。"
+        }
+      ],
+      "question": "負の値は括弧を付けて代入する",
+      "answer": "-(-5)",
+      "choices": [
+        "-(-5)",
+        "-5",
+        "-a"
+      ],
+      "hints": [
+        "式に元からある負号を残して、文字の場所だけを置き換えます。"
+      ]
+    },
+    {
+      "id": "n08-04",
+      "stageId": "n08-stage-04",
+      "q": 4,
+      "goal": "代入した式の値を計算する",
+      "role": "substep",
+      "knownRefs": [],
+      "resultId": "n08-04-result",
+      "interaction": "n08-04",
+      "before": [
+        {
+          "id": "n08-04-before",
+          "text": "負の数 $-5$ と符号が反対の数を求めます。式と値を等号でつないで、左側の点の距離と照合します。"
+        },
+        {
+          "id": "n08-04-interaction-0",
+          "text": "[n08-04]"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-04-result",
+          "text": "$-(-5)$$=$$5$"
+        },
+        {
+          "id": "n08-04-after",
+          "text": "初めに図から求めた距離と一致しました。$-a$ は、$a$ が負の場合には正になります。"
+        }
+      ],
+      "question": "代入した式の値を計算する",
+      "answer": "-(-5)=5",
+      "choices": [
+        "-(-5)=5",
+        "-(-5)=-5",
+        "-5=5",
+        "-(-5)=0"
+      ],
+      "hints": [
+        "外側の負号は符号を反対にする指示です。"
+      ]
+    },
+    {
+      "id": "n08-cases",
+      "stageId": "n08-stage-04",
+      "q": 4,
+      "goal": "絶対値を外す規則を二つにまとめる",
+      "role": "property",
+      "knownRefs": [],
+      "resultId": "n08-cases-result",
+      "interaction": null,
+      "before": [
+        {
+          "id": "n08-cases-before",
+          "text": "ここまでの二つの場合を、条件と式が対応する表にまとめます。"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-cases-after",
+          "text": "$a\\ge0$ なら $|a|=a$、$a<0$ なら $|a|=-a$ です。絶対値を外す前に、中の式全体がどちらの条件に当てはまるかを調べます。減号があるという理由だけでは決まりません。"
+        }
+      ]
+    },
+    {
+      "id": "n08-q05-square",
+      "stageId": "n08-stage-05",
+      "q": 5,
+      "goal": "正の二数の大小を比べる準備",
+      "role": "example",
+      "knownRefs": [
+        "n08-cases-result"
+      ],
+      "resultId": "n08-q05-square-result",
+      "interaction": "n08-q05-square-answer",
+      "before": [
+        {
+          "id": "n08-q05-square-before",
+          "text": "例題は $|\\sqrt5-3|$ を絶対値記号なしで表すことです。ここでは $\\sqrt5$ は正で、二乗すると $5$ になる数だと使います。正の二数では二乗しても大小の向きが保たれます。まず $3$ の二乗を計算します。"
+        },
+        {
+          "id": "n08-q05-square-interaction-0",
+          "text": "$3^2=$[n08-q05-square-answer]"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q05-square-result",
+          "text": "$3^2$$=$$9$"
+        },
+        {
+          "id": "n08-q05-square-after",
+          "text": "$(\\sqrt5)^2=5$ と、いま求めた値を比較します。"
+        }
+      ],
+      "question": "正の二数の大小を比べる準備",
+      "answer": "9",
+      "choices": [
+        "9",
+        "6",
+        "3"
+      ],
+      "hints": [
+        "指数の2は、同じ数を二つ掛けることを表します。"
+      ]
+    },
+    {
+      "id": "n08-q05-compare",
+      "stageId": "n08-stage-05",
+      "q": 5,
+      "goal": "二乗した値の大小を決める",
+      "role": "substep",
+      "knownRefs": [],
+      "resultId": "n08-q05-compare-result",
+      "interaction": "n08-q05-compare-answer",
+      "before": [
+        {
+          "id": "n08-q05-compare-before",
+          "text": "両方とも正なので、二乗した値の比較を元の二数の比較に戻せます。まず $5$ と $9$ の間の不等号を選びます。"
+        },
+        {
+          "id": "n08-q05-compare-interaction",
+          "text": "$5\\ $[n08-q05-compare-answer]$\\ 9$"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q05-compare-result-0",
+          "text": "$5\\ <\\ 9$"
+        },
+        {
+          "id": "n08-q05-compare-after",
+          "text": "ここでは二乗した値の比較ができました。次に元の二数について結論を出します。"
+        }
+      ],
+      "question": "二乗した値の大小を決める",
+      "answer": "<",
+      "choices": [
+        "<",
+        ">",
+        "="
+      ],
+      "hints": [
+        "数直線で右にある数が大きい数です。"
+      ]
+    },
+    {
+      "id": "n08-05",
+      "stageId": "n08-stage-05",
+      "q": 5,
+      "goal": "根拠と元の数の大小関係を結ぶ",
+      "role": "substep",
+      "knownRefs": [],
+      "resultId": "n08-05-result",
+      "interaction": "n08-05",
+      "before": [
+        {
+          "id": "n08-05-before",
+          "text": "比較している二数はともに非負です。先ほどの二乗の比較から、元の二数にも同じ向きの大小関係が成り立ちます。"
+        },
+        {
+          "id": "n08-05-interaction-0",
+          "text": "[n08-05]"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-05-result-0",
+          "text": "$5<9,\\quad\\sqrt5<3$"
+        },
+        {
+          "id": "n08-05-after",
+          "text": "大小関係は、次の差の符号の根拠として記録します。"
+        }
+      ],
+      "question": "根拠と元の数の大小関係を結ぶ",
+      "answer": "5<9,\\quad\\sqrt5<3",
+      "choices": [
+        "5<9,\\quad\\sqrt5<3",
+        "5>9,\\quad\\sqrt5>3",
+        "5<9,\\quad\\sqrt5>3",
+        "5=9,\\quad\\sqrt5=3"
+      ],
+      "hints": [
+        "比較した値と元の数を、それぞれ同じ順序で対応させます。"
+      ]
+    },
+    {
+      "id": "n08-q06-subtract",
+      "stageId": "n08-stage-06",
+      "q": 6,
+      "goal": "両辺から同じ数を引いて差の符号へ",
+      "role": "substep",
+      "knownRefs": [
+        "n08-05-result"
+      ],
+      "resultId": "n08-q06-subtract-result",
+      "interaction": "n08-q06-subtract-answer",
+      "before": [
+        {
+          "id": "n08-q06-subtract-before",
+          "text": "記録した $\\sqrt5<3$ の両辺から $3$ を引きます。同じ数を引いても不等号の向きは変わりません。右辺の $3-3$ を計算して、差を0と比べます。"
+        },
+        {
+          "id": "n08-q06-subtract-interaction-0",
+          "text": "$\\sqrt5-3<$[n08-q06-subtract-answer]"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q06-subtract-result-0",
+          "text": "$\\sqrt5-3<0$"
+        },
+        {
+          "id": "n08-q06-subtract-after",
+          "text": "$\\sqrt5-3<0$ なので、差の符号が決められます。"
+        }
+      ],
+      "question": "両辺から同じ数を引いて差の符号へ",
+      "answer": "0",
+      "choices": [
+        "0",
+        "3",
+        "-3"
+      ],
+      "hints": [
+        "右辺で同じ数どうしを引きます。"
+      ]
+    },
+    {
+      "id": "n08-06",
+      "stageId": "n08-stage-06",
+      "q": 6,
+      "goal": "差が0より小さいことを言葉で読む",
+      "role": "substep",
+      "knownRefs": [],
+      "resultId": "n08-06-result",
+      "interaction": "n08-06",
+      "before": [
+        {
+          "id": "n08-06-before",
+          "text": "絶対値の中身を0と比較できました。この結果を、正・0・負という言葉で読み取ります。"
+        },
+        {
+          "id": "n08-06-interaction",
+          "text": "判断：[n08-06]"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-06-answer",
+          "text": "$\\sqrt5-3<0$、したがって負です。"
+        },
+        {
+          "id": "n08-06-after",
+          "text": "中身が負だと分かりました。ここで初めて、絶対値を外す場合を選べます。"
+        }
+      ],
+      "question": "差が0より小さいことを言葉で読む",
+      "answer": "負",
+      "choices": [
+        "負",
+        "正",
+        "0",
+        "符号は決まらない"
+      ],
+      "hints": [
+        "0との大小関係を符号の言葉に直します。"
+      ]
+    },
+    {
+      "id": "n08-q07-rule",
+      "stageId": "n08-stage-07",
+      "q": 7,
+      "goal": "負の場合に使う規則を選ぶ",
+      "role": "substep",
+      "knownRefs": [
+        "n08-06-result",
+        "n08-cases-result"
+      ],
+      "resultId": "n08-q07-rule-result",
+      "interaction": "n08-q07-rule-answer",
+      "before": [
+        {
+          "id": "n08-q07-rule-before",
+          "text": "使う規則では $u$ を絶対値の中にある式全体とします。今回は $u=\\sqrt5-3$ で、その値は負です。どちらの式を使うか選びます。"
+        },
+        {
+          "id": "n08-q07-rule-interaction-0",
+          "text": "[n08-q07-rule-answer]"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q07-rule-result",
+          "text": "$|u|$$=$$-u$"
+        },
+        {
+          "id": "n08-q07-rule-after",
+          "text": "式全体に負号を付けます。一つの項だけの符号を変えるのではありません。"
+        }
+      ],
+      "question": "負の場合に使う規則を選ぶ",
+      "answer": "|u|=-u",
+      "choices": [
+        "|u|=-u",
+        "|u|=u",
+        "|u|=0"
+      ],
+      "hints": [
+        "中身の符号と、場合分け表の条件を照合します。"
+      ]
+    },
+    {
+      "id": "n08-q07-bracket",
+      "stageId": "n08-stage-07",
+      "q": 7,
+      "goal": "中身全体を括弧で囲んで負号を付ける",
+      "role": "substep",
+      "knownRefs": [
+        "n08-cases-result"
+      ],
+      "resultId": "n08-q07-bracket-result",
+      "interaction": "n08-q07-bracket-answer",
+      "before": [
+        {
+          "id": "n08-q07-bracket-before",
+          "text": "規則の $u$ を $\\sqrt5-3$ に置き換えます。二つの項全体に負号が働くよう、括弧を付けます。"
+        },
+        {
+          "id": "n08-q07-bracket-interaction-0",
+          "text": "$|\\sqrt5-3|=$[n08-q07-bracket-answer]"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q07-bracket-result",
+          "text": "$|\\sqrt5-3|$$=$$-(\\sqrt5-3)$"
+        },
+        {
+          "id": "n08-q07-bracket-after",
+          "text": "絶対値を外す操作はここまでです。次は、できた括弧を外す計算をします。"
+        }
+      ],
+      "question": "中身全体を括弧で囲んで負号を付ける",
+      "answer": "-(\\sqrt5-3)",
+      "choices": [
+        "-(\\sqrt5-3)",
+        "-\\sqrt5-3",
+        "\\sqrt5-3"
+      ],
+      "hints": [
+        "括弧には中身をすべて入れ、その外に負号を置きます。"
+      ]
+    },
+    {
+      "id": "n08-q07-distribute",
+      "stageId": "n08-stage-07",
+      "q": 7,
+      "goal": "負号を括弧の二項へ掛ける",
+      "role": "substep",
+      "knownRefs": [
+        "n08-cases-result"
+      ],
+      "resultId": "n08-q07-distribute-result",
+      "interaction": "n08-q07-distribute-answer",
+      "before": [
+        {
+          "id": "n08-q07-distribute-before",
+          "text": "括弧の前の負号は $-1$ を掛けることです。$\\sqrt5$ と $-3$ の両方へ掛けます。"
+        },
+        {
+          "id": "n08-q07-distribute-interaction-0",
+          "text": "$-(\\sqrt5-3)=$[n08-q07-distribute-answer]"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q07-distribute-result",
+          "text": "$-(\\sqrt5-3)$$=$$-\\sqrt5+3$"
+        },
+        {
+          "id": "n08-q07-distribute-after",
+          "text": "括弧の中の二つの項の符号が、それぞれ反対になりました。"
+        }
+      ],
+      "question": "負号を括弧の二項へ掛ける",
+      "answer": "-\\sqrt5+3",
+      "choices": [
+        "-\\sqrt5+3",
+        "-\\sqrt5-3",
+        "\\sqrt5+3"
+      ],
+      "hints": [
+        "第2項は負の数なので、その項にさらに負号を掛けます。"
+      ]
+    },
+    {
+      "id": "n08-07",
+      "stageId": "n08-stage-07",
+      "q": 7,
+      "goal": "正の項を先に並べて元の問いへ答える",
+      "role": "substep",
+      "knownRefs": [
+        "n08-cases-result"
+      ],
+      "resultId": "n08-07-result",
+      "interaction": "n08-07",
+      "before": [
+        {
+          "id": "n08-07-before",
+          "text": "$-\\sqrt5+3$ は、加法の交換法則で項の順を変えられます。絶対値も括弧もない形を、元の問題の答えにします。"
+        },
+        {
+          "id": "n08-07-interaction-0",
+          "text": "$|\\sqrt5-3|=$[n08-07]"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-07-result",
+          "text": "$|\\sqrt5-3|$$=$$-(\\sqrt5-3)$$=$$-\\sqrt5+3$$=$$3-\\sqrt5$"
+        },
+        {
+          "id": "n08-07-after",
+          "text": "符号を判定する操作と、括弧を外す計算をつなげて答えられました。"
+        }
+      ],
+      "question": "正の項を先に並べて元の問いへ答える",
+      "answer": "3-\\sqrt5",
+      "choices": [
+        "3-\\sqrt5",
+        "\\sqrt5-3",
+        "-\\sqrt5-3",
+        "3+\\sqrt5"
+      ],
+      "hints": [
+        "値を変えず、正の項を先に書きます。"
+      ]
+    },
+    {
+      "id": "n08-q08-order",
+      "stageId": "n08-stage-08",
+      "q": 8,
+      "goal": "円周率と3を比べる",
+      "role": "check",
+      "knownRefs": [
+        "n08-07-result"
+      ],
+      "resultId": "n08-q08-order-result",
+      "interaction": "n08-q08-order-answer",
+      "before": [
+        {
+          "id": "n08-q08-order-before",
+          "text": "次は $|3-\\pi|$ です。与えられた $\\pi=3.14159\\ldots$ を使い、最初に $3$ と $\\pi$ を比べます。"
+        },
+        {
+          "id": "n08-q08-order-interaction",
+          "text": "$3\\ $[n08-q08-order-answer]$\\ \\pi$"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q08-order-result-0",
+          "text": "$3\\ <\\ \\pi$"
+        },
+        {
+          "id": "n08-q08-order-after",
+          "text": "数の大小を、差の符号へつなげます。"
+        }
+      ],
+      "question": "円周率と3を比べる",
+      "answer": "<",
+      "choices": [
+        "<",
+        ">",
+        "="
+      ],
+      "hints": [
+        "与えられた小数表示の小数部分を見ます。"
+      ]
+    },
+    {
+      "id": "n08-q08-difference",
+      "stageId": "n08-stage-08",
+      "q": 8,
+      "goal": "同じ数を引いて0との比較へ",
+      "role": "substep",
+      "knownRefs": [],
+      "resultId": "n08-q08-difference-result",
+      "interaction": "n08-q08-difference-answer",
+      "before": [
+        {
+          "id": "n08-q08-difference-before",
+          "text": "$3<\\pi$ の両辺から $\\pi$ を引きます。右辺は $\\pi-\\pi$ なので、0になります。"
+        },
+        {
+          "id": "n08-q08-difference-interaction",
+          "text": "$3-\\pi\\ $[n08-q08-difference-answer]$\\ 0$"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q08-difference-result-0",
+          "text": "$3-\\pi\\ <\\ 0$"
+        },
+        {
+          "id": "n08-q08-difference-after",
+          "text": "中身と0を比べられました。元の小数表示も、根拠として残します。"
+        }
+      ],
+      "question": "同じ数を引いて0との比較へ",
+      "answer": "<",
+      "choices": [
+        "<",
+        ">",
+        "="
+      ],
+      "hints": [
+        "不等式の両辺に同じ引き算をしています。"
+      ]
+    },
+    {
+      "id": "n08-08",
+      "stageId": "n08-stage-08",
+      "q": 8,
+      "goal": "差の符号を根拠と組にする",
+      "role": "substep",
+      "knownRefs": [],
+      "resultId": "n08-08-result",
+      "interaction": "n08-08",
+      "before": [
+        {
+          "id": "n08-08-before",
+          "text": "いまの不等式が表す符号を読み、最初の大小関係を理由に付けて判断をまとめます。"
+        },
+        {
+          "id": "n08-08-interaction",
+          "text": "符号・根拠：[n08-08]"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-08-answer",
+          "text": "$3-\\pi<0$ であり、$\\pi>3$ だから負です。"
+        },
+        {
+          "id": "n08-08-after",
+          "text": "中身が負であるという結論を使い、絶対値を外します。"
+        }
+      ],
+      "question": "差の符号を根拠と組にする",
+      "answer": "負（πは3より大きい）",
+      "choices": [
+        "負（πは3より大きい）",
+        "正（3はπより大きい）",
+        "0（πは3と等しい）",
+        "符号は決められない"
+      ],
+      "hints": [
+        "差の不等式と、比較に使った数の大小を組にします。"
+      ]
+    },
+    {
+      "id": "n08-q09-bracket",
+      "stageId": "n08-stage-09",
+      "q": 9,
+      "goal": "前の例と同じ負の規則を使う",
+      "role": "substep",
+      "knownRefs": [
+        "n08-08-result",
+        "n08-cases-result"
+      ],
+      "resultId": "n08-q09-bracket-result",
+      "interaction": "n08-q09-bracket-answer",
+      "before": [
+        {
+          "id": "n08-q09-bracket-before",
+          "text": "$3-\\pi<0$ なので、式全体に負号を付けます。先ほどと同じく、中身を括弧でまとめます。"
+        },
+        {
+          "id": "n08-q09-bracket-interaction-0",
+          "text": "$|3-\\pi|=$[n08-q09-bracket-answer]"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q09-bracket-result",
+          "text": "$|3-\\pi|$$=$$-(3-\\pi)$"
+        },
+        {
+          "id": "n08-q09-bracket-after",
+          "text": "次に括弧を外します。"
+        }
+      ],
+      "question": "前の例と同じ負の規則を使う",
+      "answer": "-(3-\\pi)",
+      "choices": [
+        "-(3-\\pi)",
+        "3-\\pi",
+        "-3-\\pi"
+      ],
+      "hints": [
+        "前例の数だけを写さず、規則を今回の式全体へ適用します。"
+      ]
+    },
+    {
+      "id": "n08-q09-distribute",
+      "stageId": "n08-stage-09",
+      "q": 9,
+      "goal": "負号を3と負の円周率へ掛ける",
+      "role": "substep",
+      "knownRefs": [
+        "n08-cases-result"
+      ],
+      "resultId": "n08-q09-distribute-result",
+      "interaction": "n08-q09-distribute-answer",
+      "before": [
+        {
+          "id": "n08-q09-distribute-before",
+          "text": "括弧の二項 $3$ と $-\\pi$ の両方に $-1$ を掛けます。"
+        },
+        {
+          "id": "n08-q09-distribute-interaction-0",
+          "text": "$-(3-\\pi)=$[n08-q09-distribute-answer]"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q09-distribute-result",
+          "text": "$-(3-\\pi)$$=$$-3+\\pi$"
+        },
+        {
+          "id": "n08-q09-distribute-after",
+          "text": "二項の符号がともに反転しました。"
+        }
+      ],
+      "question": "負号を3と負の円周率へ掛ける",
+      "answer": "-3+\\pi",
+      "choices": [
+        "-3+\\pi",
+        "-3-\\pi",
+        "3+\\pi"
+      ],
+      "hints": [
+        "括弧全体への掛け算を一項ずつ行います。"
+      ]
+    },
+    {
+      "id": "n08-09",
+      "stageId": "n08-stage-09",
+      "q": 9,
+      "goal": "元の問題の答えをまとめる",
+      "role": "substep",
+      "knownRefs": [
+        "n08-cases-result"
+      ],
+      "resultId": "n08-09-result",
+      "interaction": "n08-09",
+      "before": [
+        {
+          "id": "n08-09-before",
+          "text": "項の順序を整え、正の項を先に書きます。"
+        },
+        {
+          "id": "n08-09-interaction-0",
+          "text": "$|3-\\pi|=$[n08-09]"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-09-result",
+          "text": "$|3-\\pi|$$=$$-(3-\\pi)$$=$$-3+\\pi$$=$$\\pi-3$"
+        },
+        {
+          "id": "n08-09-after",
+          "text": "二つの例とも、大小→差の符号→場合の選択→括弧全体の反転という順序で処理しました。"
+        }
+      ],
+      "question": "元の問題の答えをまとめる",
+      "answer": "\\pi-3",
+      "choices": [
+        "\\pi-3",
+        "3-\\pi",
+        "-\\pi-3",
+        "3+\\pi"
+      ],
+      "hints": [
+        "順番を変えても、各項の符号はその項に付けたままです。"
+      ]
+    },
+    {
+      "id": "n08-q10-forward",
+      "stageId": "n08-stage-10",
+      "q": 10,
+      "goal": "距離が0なら点はどこにあるか",
+      "role": "proof",
+      "knownRefs": [
+        "n08-09-result"
+      ],
+      "resultId": "n08-q10-forward-result",
+      "interaction": "n08-q10-forward-answer",
+      "before": [
+        {
+          "id": "n08-q10-forward-before",
+          "text": "ここからは性質です。$|a|=0$ は、$a$ の点と原点との距離が0という意味です。離れていない二点は同じ位置にあります。"
+        },
+        {
+          "id": "n08-q10-forward-interaction-0",
+          "text": "$|a|=0\\ \\Rightarrow\\ a=$[n08-q10-forward-answer]"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q10-forward-result",
+          "text": "$|a|=0\\ $$\\Rightarrow$$\\ a=0$"
+        },
+        {
+          "id": "n08-q10-forward-after",
+          "text": "絶対値が0なら、元の数も0です。逆向きも確かめます。"
+        }
+      ],
+      "question": "距離が0なら点はどこにあるか",
+      "answer": "0",
+      "choices": [
+        "0",
+        "1",
+        "-1"
+      ],
+      "hints": [
+        "図の原点と重なる座標を読みます。"
+      ]
+    },
+    {
+      "id": "n08-q10-reverse",
+      "stageId": "n08-stage-10",
+      "q": 10,
+      "goal": "逆に元の数が0なら距離も0",
+      "role": "proof",
+      "knownRefs": [],
+      "resultId": "n08-q10-reverse-result",
+      "interaction": "n08-q10-reverse-answer",
+      "before": [
+        {
+          "id": "n08-q10-reverse-before",
+          "text": "$a=0$ なら、点は最初から原点と一致します。このときの距離を求めて、逆向きの関係も確かめます。"
+        },
+        {
+          "id": "n08-q10-reverse-interaction-0",
+          "text": "$a=0\\ \\Rightarrow\\ |a|=$[n08-q10-reverse-answer]"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q10-reverse-result",
+          "text": "$a=0\\ $$\\Rightarrow$$\\ |a|=0$"
+        },
+        {
+          "id": "n08-q10-reverse-after",
+          "text": "両方向が確かめられたので、$|a|=0$ と $a=0$ は同値です。"
+        }
+      ],
+      "question": "逆に元の数が0なら距離も0",
+      "answer": "0",
+      "choices": [
+        "0",
+        "a^2+1",
+        "1"
+      ],
+      "hints": [
+        "原点と原点の間の距離を考えます。"
+      ]
+    },
+    {
+      "id": "n08-10",
+      "stageId": "n08-stage-10",
+      "q": 10,
+      "goal": "元の性質を位置の意味と組にする",
+      "role": "property",
+      "knownRefs": [],
+      "resultId": "n08-10-result",
+      "interaction": "n08-10",
+      "before": [
+        {
+          "id": "n08-10-before",
+          "text": "二方向の結論を、数直線上の理由とともにまとめます。数の条件だけで終えず、距離が0になる意味を説明します。"
+        },
+        {
+          "id": "n08-10-interaction-0",
+          "text": "[n08-10]"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-10-answer",
+          "text": "$a=0$、原点と同じ位置にある。"
+        },
+        {
+          "id": "n08-10-after",
+          "text": "性質は $|a|=0\\Leftrightarrow a=0$ と記録します。"
+        }
+      ],
+      "question": "元の性質を位置の意味と組にする",
+      "answer": "a=0,\\quad\\text{原点と同じ位置にある}",
+      "choices": [
+        "a=0,\\quad\\text{原点と同じ位置にある}",
+        "a=0,\\quad\\text{原点から離れている}",
+        "a>0,\\quad\\text{原点と同じ位置にある}",
+        "a<0,\\quad\\text{原点と同じ位置にある}"
+      ],
+      "hints": [
+        "条件と、その条件に合う位置の意味を照合します。"
+      ]
+    },
+    {
+      "id": "n08-q11-positive",
+      "stageId": "n08-stage-11",
+      "q": 11,
+      "goal": "正の場合に二つの距離を比べる",
+      "role": "proof",
+      "knownRefs": [
+        "n08-10-result",
+        "n08-cases-result"
+      ],
+      "resultId": "n08-q11-positive-result",
+      "interaction": "n08-q11-positive-answer",
+      "before": [
+        {
+          "id": "n08-q11-positive-before",
+          "text": "$a>0$ なら $-a<0$ です。場合分けより $|a|=a$、$|-a|=-(-a)$ です。後者の負号を計算します。"
+        },
+        {
+          "id": "n08-q11-positive-interaction-0",
+          "text": "$|-a|=-(-a)=$[n08-q11-positive-answer]"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q11-positive-result",
+          "text": "$|-a|$$=$$-(-a)$$=$$a$"
+        },
+        {
+          "id": "n08-q11-positive-after",
+          "text": "条件 $a>0$ の場合の結論です。この場合、二つの絶対値は同じ値になりました。"
+        }
+      ],
+      "question": "正の場合に二つの距離を比べる",
+      "answer": "a",
+      "choices": [
+        "a",
+        "-a",
+        "0"
+      ],
+      "hints": [
+        "二重の負号を、前の具体例と同じように処理します。"
+      ]
+    },
+    {
+      "id": "n08-q11-negative",
+      "stageId": "n08-stage-11",
+      "q": 11,
+      "goal": "負の場合にも二つの距離を比べる",
+      "role": "proof",
+      "knownRefs": [
+        "n08-cases-result"
+      ],
+      "resultId": "n08-q11-negative-result",
+      "interaction": "n08-q11-negative-answer",
+      "before": [
+        {
+          "id": "n08-q11-negative-before",
+          "text": "$a<0$ なら $-a>0$ です。場合分けでは $|a|=-a$ となります。今度は反対の座標が正だという条件を使い、その点の距離を式にします。"
+        },
+        {
+          "id": "n08-q11-negative-interaction-0",
+          "text": "$|-a|=$[n08-q11-negative-answer]"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q11-negative-result",
+          "text": "$|-a|$$=$$-a$"
+        },
+        {
+          "id": "n08-q11-negative-after",
+          "text": "条件 $a<0$ の場合の結論です。この場合も $|a|$ と $|-a|$ は同じ値です。"
+        }
+      ],
+      "question": "負の場合にも二つの距離を比べる",
+      "answer": "-a",
+      "choices": [
+        "-a",
+        "a",
+        "0"
+      ],
+      "hints": [
+        "今、絶対値の中に入っている数は元の文字そのものではなく、その反対の数です。"
+      ]
+    },
+    {
+      "id": "n08-q11-zero",
+      "stageId": "n08-stage-11",
+      "q": 11,
+      "goal": "原点の場合も落とさない",
+      "role": "proof",
+      "knownRefs": [
+        "n08-cases-result"
+      ],
+      "resultId": "n08-q11-zero-result",
+      "interaction": null,
+      "before": [
+        {
+          "id": "n08-q11-zero-before",
+          "text": "$a=0$ の場合は $-a=0$ です。二点はともに原点なので、$|a|=|-a|=0$ です。"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q11-zero-after",
+          "text": "正・負・0の三つを確認できました。どの場合にも同じ関係が成り立ちます。"
+        }
+      ]
+    },
+    {
+      "id": "n08-11",
+      "stageId": "n08-stage-11",
+      "q": 11,
+      "goal": "すべての場合を一つの関係にまとめる",
+      "role": "property",
+      "knownRefs": [
+        "n08-cases-result"
+      ],
+      "resultId": "n08-11-result",
+      "interaction": "n08-11",
+      "before": [
+        {
+          "id": "n08-11-before",
+          "text": "場合分けの計算は、原点を中心に左右対称な二点の距離が同じであることを表しています。任意の実数で成り立つ関係を選びます。"
+        },
+        {
+          "id": "n08-11-interaction-0",
+          "text": "[n08-11]"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-11-result",
+          "text": "$|a|$$=$$|-a|$"
+        },
+        {
+          "id": "n08-11-after",
+          "text": "元の数の符号を変えても、原点からの距離は変わりません。"
+        }
+      ],
+      "question": "すべての場合を一つの関係にまとめる",
+      "answer": "|a|=|-a|",
+      "choices": [
+        "|a|=|-a|",
+        "|a|=-|-a|",
+        "|a|>|-a|",
+        "|a|+|-a|=0"
+      ],
+      "hints": [
+        "正・負・0で共通して成り立った関係を取り出します。"
+      ]
+    },
+    {
+      "id": "n08-q12-nonnegative",
+      "stageId": "n08-stage-12",
+      "q": 12,
+      "goal": "0以上の場合の絶対値を二乗する",
+      "role": "proof",
+      "knownRefs": [
+        "n08-11-result",
+        "n08-cases-result"
+      ],
+      "resultId": "n08-q12-nonnegative-result",
+      "interaction": "n08-q12-nonnegative-answer",
+      "before": [
+        {
+          "id": "n08-q12-nonnegative-before",
+          "text": "$a\\ge0$ なら $|a|=a$ です。両辺を二乗して、絶対値の二乗を求めます。"
+        },
+        {
+          "id": "n08-q12-nonnegative-interaction-0",
+          "text": "$|a|^2=$[n08-q12-nonnegative-answer]"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q12-nonnegative-result",
+          "text": "$|a|^2$$=$$a^2$"
+        },
+        {
+          "id": "n08-q12-nonnegative-after",
+          "text": "条件 $a\\ge0$ の場合の結論です。次に、負の場合でも同じ式になるか調べます。"
+        }
+      ],
+      "question": "0以上の場合の絶対値を二乗する",
+      "answer": "a^2",
+      "choices": [
+        "a^2",
+        "a",
+        "2a"
+      ],
+      "hints": [
+        "二乗を右辺にも同じように付けます。"
+      ]
+    },
+    {
+      "id": "n08-q12-negative",
+      "stageId": "n08-stage-12",
+      "q": 12,
+      "goal": "負の場合は括弧ごと二乗する",
+      "role": "proof",
+      "knownRefs": [
+        "n08-cases-result"
+      ],
+      "resultId": "n08-q12-negative-result",
+      "interaction": "n08-q12-negative-answer",
+      "before": [
+        {
+          "id": "n08-q12-negative-before",
+          "text": "$a<0$ なら $|a|=-a$ です。両辺を二乗すると $|a|^2=(-a)^2$ です。$(-a)(-a)$ では負号が二つ掛かります。"
+        },
+        {
+          "id": "n08-q12-negative-interaction-0",
+          "text": "$|a|^2=(-a)^2=$[n08-q12-negative-answer]"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q12-negative-result",
+          "text": "$|a|^2$$=$$(-a)^2$$=$$a^2$"
+        },
+        {
+          "id": "n08-q12-negative-after",
+          "text": "条件 $a<0$ の場合の結論です。0以上の場合と同じ式になりました。"
+        }
+      ],
+      "question": "負の場合は括弧ごと二乗する",
+      "answer": "a^2",
+      "choices": [
+        "a^2",
+        "-a^2",
+        "-2a"
+      ],
+      "hints": [
+        "同じ負の因子を二つ掛けると積の符号は正です。"
+      ]
+    },
+    {
+      "id": "n08-12",
+      "stageId": "n08-stage-12",
+      "q": 12,
+      "goal": "場合に関係なく成り立つ式を結論にする",
+      "role": "property",
+      "knownRefs": [
+        "n08-cases-result"
+      ],
+      "resultId": "n08-12-result",
+      "interaction": "n08-12",
+      "before": [
+        {
+          "id": "n08-12-before",
+          "text": "二つの場合とも二乗した値は一致しました。したがって任意の実数について、絶対値の二乗を次のように表せます。"
+        },
+        {
+          "id": "n08-12-interaction-0",
+          "text": "$|a|^2=$[n08-12]"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-12-result",
+          "text": "$|a|^2$$=$$a^2$"
+        },
+        {
+          "id": "n08-12-after",
+          "text": "絶対値を二乗すると、元の数を二乗した値と等しくなります。"
+        }
+      ],
+      "question": "場合に関係なく成り立つ式を結論にする",
+      "answer": "a^2",
+      "choices": [
+        "a^2",
+        "|a|",
+        "-a^2",
+        "2a"
+      ],
+      "hints": [
+        "二つの場合に共通して出た結果を記録します。"
+      ]
+    },
+    {
+      "id": "n08-closing",
+      "stageId": "n08-stage-12",
+      "q": 12,
+      "goal": "距離と符号の学習を次へつなぐ",
+      "role": "summary",
+      "knownRefs": [
+        "n08-cases-result"
+      ],
+      "resultId": "n08-closing-result",
+      "interaction": null,
+      "before": [
+        {
+          "id": "n08-closing-before",
+          "text": "絶対値は位置の向きを捨て、原点からの距離を残します。式に使うときも、まず中身の符号を調べます。"
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-closing-after",
+          "text": "次の平方根では、二乗が同じになる正負二つの数と、記号が表す非負の数を区別して学びます。ここではまだ次の単元の公式を答えとして提示しません。"
+        }
+      ]
+    }
+  ],
+  "stages": [
+    {
+      "id": "n08-stage-01",
+      "title": "原点からの距離",
+      "q": 1,
+      "sourceQuestionParts": [
+        {
+          "type": "text",
+          "text": "二点の距離を、与えられた順に求めよう。",
+          "semanticId": "n08-display-00001"
+        },
+        {
+          "type": "math",
+          "latex": "2.3,\\quad-5",
+          "semanticId": "n08-question-1"
+        }
+      ]
+    },
+    {
+      "id": "n08-stage-02",
+      "title": "絶対値の定義と右側の点",
+      "q": 2,
+      "sourceQuestionParts": [
+        {
+          "type": "text",
+          "text": "0以上の場合の絶対値を表そう。",
+          "semanticId": "n08-display-00002"
+        },
+        {
+          "type": "math",
+          "latex": "a\\ge0",
+          "semanticId": "n08-question-2"
+        }
+      ]
+    },
+    {
+      "id": "n08-stage-03",
+      "title": "左側の点の距離",
+      "q": 3,
+      "sourceQuestionParts": [
+        {
+          "type": "text",
+          "text": "負の場合の距離を式にしよう。",
+          "semanticId": "n08-display-00003"
+        },
+        {
+          "type": "math",
+          "latex": "a<0",
+          "semanticId": "n08-question-3"
+        }
+      ]
+    },
+    {
+      "id": "n08-stage-04",
+      "title": "代入と場合分け",
+      "q": 4,
+      "sourceQuestionParts": [
+        {
+          "type": "text",
+          "text": "負の値を代入して確かめよう。",
+          "semanticId": "n08-display-00004"
+        },
+        {
+          "type": "math",
+          "latex": "a=-5",
+          "semanticId": "n08-question-4"
+        }
+      ]
+    },
+    {
+      "id": "n08-stage-05",
+      "title": "二乗の比較から大小へ",
+      "q": 5,
+      "sourceQuestionParts": [
+        {
+          "type": "text",
+          "text": "二乗した数を比べ、中身の大小関係を求めよう。",
+          "semanticId": "n08-display-00005"
+        },
+        {
+          "type": "math",
+          "latex": "|\\sqrt5-3|",
+          "semanticId": "n08-question-5"
+        }
+      ]
+    },
+    {
+      "id": "n08-stage-06",
+      "title": "大小から差の符号へ",
+      "q": 6,
+      "sourceQuestionParts": [
+        {
+          "type": "text",
+          "text": "差の符号を判断しよう。",
+          "semanticId": "n08-display-00006"
+        },
+        {
+          "type": "math",
+          "latex": "\\sqrt5-3",
+          "semanticId": "n08-question-6"
+        }
+      ]
+    },
+    {
+      "id": "n08-stage-07",
+      "title": "負の式の絶対値を外す",
+      "q": 7,
+      "sourceQuestionParts": [
+        {
+          "type": "text",
+          "text": "絶対値を外し、括弧も外した式へつなげよう。",
+          "semanticId": "n08-display-00007"
+        },
+        {
+          "type": "math",
+          "latex": "|\\sqrt5-3|",
+          "semanticId": "n08-question-7"
+        }
+      ]
+    },
+    {
+      "id": "n08-stage-08",
+      "title": "円周率を含む差の符号",
+      "q": 8,
+      "sourceQuestionParts": [
+        {
+          "type": "text",
+          "text": "与えられた円周率の小数表示から、差の符号と根拠を求めよう。",
+          "semanticId": "n08-display-00008"
+        },
+        {
+          "type": "math",
+          "latex": "3-\\pi",
+          "semanticId": "n08-question-8"
+        }
+      ]
+    },
+    {
+      "id": "n08-stage-09",
+      "title": "同じ規則を別の式へ使う",
+      "q": 9,
+      "sourceQuestionParts": [
+        {
+          "type": "text",
+          "text": "絶対値記号のない式で表そう。",
+          "semanticId": "n08-display-00009"
+        },
+        {
+          "type": "math",
+          "latex": "|3-\\pi|",
+          "semanticId": "n08-question-9"
+        }
+      ]
+    },
+    {
+      "id": "n08-stage-10",
+      "title": "距離が0になる条件",
+      "q": 10,
+      "sourceQuestionParts": [
+        {
+          "type": "text",
+          "text": "距離が0になる条件を、位置の意味から説明しよう。",
+          "semanticId": "n08-display-00010"
+        },
+        {
+          "type": "math",
+          "latex": "|a|=0",
+          "semanticId": "n08-question-10"
+        }
+      ]
+    },
+    {
+      "id": "n08-stage-11",
+      "title": "反対の二数の距離",
+      "q": 11,
+      "sourceQuestionParts": [
+        {
+          "type": "text",
+          "text": "反対の二数の絶対値の関係を求めよう。",
+          "semanticId": "n08-display-00011"
+        },
+        {
+          "type": "math",
+          "latex": "|a|,\\quad|-a|",
+          "semanticId": "n08-question-11"
+        }
+      ]
+    },
+    {
+      "id": "n08-stage-12",
+      "title": "絶対値を二乗する",
+      "q": 12,
+      "sourceQuestionParts": [
+        {
+          "type": "text",
+          "text": "正負の場合を調べ、絶対値の二乗を表そう。",
+          "semanticId": "n08-display-00012"
+        },
+        {
+          "type": "math",
+          "latex": "|a|^2",
+          "semanticId": "n08-question-12"
+        }
+      ]
+    }
+  ],
+  "nodeCount": 36,
+  "interactionCount": 31,
+  "choiceCount": 105
+}

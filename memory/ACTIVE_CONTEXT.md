@@ -1,3 +1,7 @@
+## CURRENT — W-MATH-037 N08ワークフロー試行・具体案確認（2026-10-26）
+
+本人がN08「絶対値」を選択。新solution/1を既存修正入口で試行し、現行36node/31回答の分析とP-001具体案を作成。本人の新しい内容承認は未受領。提案は旧31回答・12stage・図を保持し、距離式a−0/両辺から引く3/πの3回答を追加（39node/34回答、slot計5）。元問をQ05〜07、Q08〜09で保持し、本文メタ文・参照・式列を改善する。現行2幅62正答、部分計算3、別SymPy17実験、提案92式の描画検査。新ASTのAbs/根号/π/条件付きcase未対応、HTML数式抽出とresearch importの属性欠落も実検出した。制作コード拡張も明記した提案はwork/items/W-MATH-037-n08-workflow-trial/PROPOSAL.md。共有RuntimeではR01 PASS、R02 UNVERIFIED（未対応をPASSへ昇格しない）。R04/R05/R06完了の偽記録なし。提案の既承認後、限定制作adapter拡張を先行し同じR02へ戻す。教材・共通code・公開版・進捗は未変更。新Gold/fitなし。
+
 ## CURRENT — W-GOV-011 solution/1 制作基盤（2026-10-25）
 
 本人「いいよじゃ作成よろしく」で承認された24頁案を実装。既存production/2のC/Rへresearch・solution graph・厳密検算・穴設計・IR v2・可視先行AI監査・累積reader・学習文脈をopt-in接続。詳細はwork/items/W-GOV-011-solution-production/IMPLEMENTATION_REPORT.md、tools/textbook/SOLUTION_PIPELINE.md。三つの自作fixture・四幅12操作シナリオ、解法23・workflow134・Python17・既存reader372・旧authoring35＋adapter4・旧production19 PASS。変更TS lint/build PASS、全repo lintは既存25エラーを残す。一般分岐/文字係数極値/根号一般変形はUNSUPPORTED。Doclingの精度比較・新headのfitは未実施で、採用・学習済みとは呼ばない。src/data/public/既存進捗は不変。新教材公開・NE02/N11/N12受入はこの技術Workに含めない。共有Runtimeへ実成果物を復旧登録済み。W-GOV-011はtechnical DONE、applicationAccepted=false（編集前からnative実行した履歴の捏造なし）。

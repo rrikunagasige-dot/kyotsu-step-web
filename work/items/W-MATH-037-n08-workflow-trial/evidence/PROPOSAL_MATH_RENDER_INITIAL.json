@@ -1,0 +1,14 @@
+{
+  "status": "FAIL",
+  "formulas": 97,
+  "errors": [
+    {
+      "latex": "負",
+      "error": "KaTeX parse error: LaTeX-incompatible input and strict mode is set to 'error': Unicode text character \"負\" used in math mode [unicodeTextInMathMode] at position 1: 負̲"
+    },
+    {
+      "latex": "負（πは3より大きい）",
+      "error": "KaTeX parse error: LaTeX-incompatible input and strict mode is set to 'error': Unicode text character \"負\" used in math mode [unicodeTextInMathMode] at position 1: 負̲（πは3より大きい）"
+    }
+  ]
+}

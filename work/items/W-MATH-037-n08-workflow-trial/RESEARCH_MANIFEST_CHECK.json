@@ -1,0 +1,13 @@
+{
+  "status": "NEEDS_AI_REVIEW",
+  "findings": [],
+  "coverage": [
+    {
+      "id": "distance-order",
+      "reviewedSources": []
+    }
+  ],
+  "manifestHash": "89220bf6202a5b75fef3044565eae8b3cbe5970e3c02015000bf319f5b32a732",
+  "duplicates": [],
+  "automaticPedagogyApproval": false
+}

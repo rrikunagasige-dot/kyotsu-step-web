@@ -270,3 +270,7 @@ Imported four-mode `subjects/**/SPEC.md` are CANONICAL-CANDIDATE summaries, subo
 ## 2026-10-25 W-GOV-011 技術実装
 
 承認されたsolution/1の初期対応範囲を実装。実ファイル・検査結果・対応外は `work/items/W-GOV-011-solution-production/IMPLEMENTATION_REPORT.md`。新しい教材の公開/受入は行っていない。現在の正確な教材待機はmemory/ACTIVE_CONTEXT.mdのNE02/N11/N12記録を保つ。
+
+## 2026-10-26 N08ワークフロー試行
+
+W-MATH-037はN08絶対値の具体案確認段階。全36nodeの設計と必要なcode拡張をPROPOSAL.mdへ固定。現行教材は保持。新検算の未対応によりR02はUNVERIFIEDのまま、案への内容承認は未受領。実装・公開は次の段階。

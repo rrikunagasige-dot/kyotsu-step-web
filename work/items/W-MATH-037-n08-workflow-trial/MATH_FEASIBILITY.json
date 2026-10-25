@@ -1,0 +1,93 @@
+{
+  "status": "PASS",
+  "engine": "SymPy 1.14.0",
+  "productionAdapterUpgraded": false,
+  "formalProof": false,
+  "checks": [
+    {
+      "id": "distance_right",
+      "status": "PASS",
+      "scope": "Q01 exact rational"
+    },
+    {
+      "id": "distance_left",
+      "status": "PASS",
+      "scope": "Q01 arithmetic"
+    },
+    {
+      "id": "nonnegative_definition",
+      "status": "PASS",
+      "scope": "Q02 conditional definition"
+    },
+    {
+      "id": "negative_definition",
+      "status": "PASS",
+      "scope": "Q03 conditional definition"
+    },
+    {
+      "id": "substitute_negative",
+      "status": "PASS",
+      "scope": "Q04 parentheses"
+    },
+    {
+      "id": "root_square",
+      "status": "PASS",
+      "scope": "Q05 exact squares"
+    },
+    {
+      "id": "root_order",
+      "status": "PASS",
+      "scope": "Q05 exact algebraic comparison, no decimal sampling"
+    },
+    {
+      "id": "root_difference",
+      "status": "PASS",
+      "scope": "Q06 exact sign"
+    },
+    {
+      "id": "root_abs",
+      "status": "PASS",
+      "scope": "Q07 exact identity after sign"
+    },
+    {
+      "id": "pi_order",
+      "status": "PASS",
+      "scope": "Q08 exact constant comparison; source decimal is the teaching basis"
+    },
+    {
+      "id": "pi_difference",
+      "status": "PASS",
+      "scope": "Q08 exact sign"
+    },
+    {
+      "id": "pi_abs",
+      "status": "PASS",
+      "scope": "Q09 exact expression"
+    },
+    {
+      "id": "zero_iff",
+      "status": "PASS",
+      "scope": "Q10 zero locus only, not a pedagogic proof"
+    },
+    {
+      "id": "opposite_distance",
+      "status": "PASS",
+      "scope": "Q11 real-symbol identity"
+    },
+    {
+      "id": "absolute_square",
+      "status": "PASS",
+      "scope": "Q12 real-symbol identity"
+    },
+    {
+      "id": "case_partition",
+      "status": "PASS",
+      "scope": "Q02/03 and Q12 complete disjoint coverage incl zero"
+    },
+    {
+      "id": "distractor_true_but_wrong_target",
+      "status": "PASS",
+      "scope": "Q03: true equalities, different input than 0-a; form/operation contract required"
+    }
+  ]
+}

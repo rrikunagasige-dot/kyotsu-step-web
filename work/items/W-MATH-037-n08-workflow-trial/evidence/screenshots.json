@@ -1,0 +1,20 @@
+{
+  "archive": "screenshots.tar.gz.base64",
+  "format": "base64(gzip(tar(PNG)))",
+  "archiveSHA256": "7bc64b8c77adfbf7d665d1114d09b64298e8f44c074781e8e02eb65ef9c70253",
+  "files": {
+    "after-n08-stage-07-320.png": "18029e8b6d75d9f8959f78cbc54c04b5462991948f3ac95d2c695f4784139ee4",
+    "after-n08-stage-07-390.png": "8bfedf4a7194d92952031016efde80bf2cefceeb3eb067ce4b2f5016186edf2d",
+    "after-n08-stage-09-320.png": "7281a817dd0eb0ca3ff398d00039d4b2f1641d725303452627c49837a8a1c21e",
+    "after-n08-stage-09-390.png": "d056a8ff62f0616918cccd3bf66672ce0f296e7035dca41a573cdf30b6685ab1",
+    "before-n08-stage-02-320.png": "f6c8edcf1bc61b3eb0d2e629127b4eb1a836d2eac0c56ce758f05429ff7df7cf",
+    "before-n08-stage-02-390.png": "4a8a0fa6e32c4f4a4d7ee9abfd37f475ba2d8162f20a5fbd6b62c03b7d49682d",
+    "before-n08-stage-05-320.png": "ce1b12971de4ddeb9f7bce053a77d0f97bd33810734150d641da269aacd07cbb",
+    "before-n08-stage-05-390.png": "f31494ec159a86607429b0bf4ff6ee3e238331f8ced13a8f396ca5b9fd783d5a",
+    "before-n08-stage-06-320.png": "ce3ae7d8f8470438bd4ffd36a90371a39d000cce80d5137dd7c9640b69d83b89",
+    "before-n08-stage-06-390.png": "45fc8129c62af22607fc9b4234dd234bf38d82a5f6846eb23b99019198b69373",
+    "before-n08-stage-08-320.png": "7939c010ededec55fc5c7a41fba9a35a0ac3c88299781a589cbba295daa26db1",
+    "before-n08-stage-08-390.png": "95b7162a0db6b25c6a346c70263b528be79717d438440388b160cf7050ee654f"
+  },
+  "purpose": "current lesson baseline only, not revised content"
+}

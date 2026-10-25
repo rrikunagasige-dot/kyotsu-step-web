@@ -1,0 +1,240 @@
+{
+  "node": "R02_CAUSE@n08",
+  "result": {
+    "verdict": "UNVERIFIED",
+    "evidence_refs": [
+      "a8bdbaf5-bda5-41f4-8575-4cc1fbda2f1f",
+      "e902d62f-fabd-45ca-a94e-b867bf042288",
+      "011bdf0f-d002-4dfd-a911-a70283e3d9e3",
+      "c07a3a1b-5b36-4d90-90fc-dba98dbe41a1",
+      "e396704b-0cc4-4792-8073-1f62928fb1c5",
+      "be01d228-666a-4367-9b65-c2936b60ce42",
+      "1edec007-1bc5-4935-9b6c-767cb376d426",
+      "c1a27879-8cae-4321-8662-dc6e1e527bd2",
+      "c1bafb51-8a21-4830-9b6a-7e71d2211a37",
+      "dafded6d-b050-4c6d-804f-cadc740402fc"
+    ],
+    "capability_receipts": [
+      "11240d4e1507785ed8d822bd5f373f212ad672d4e242b763691671b29d438de1",
+      "a5847918b2795999107142cca06bf72d486e53dfd92c22c130884c54492f9816",
+      "06a6e6bd3b742dcf422637d48e1689138c671fc76d1d7629c79a84eff9c2ef03",
+      "d11c696c3eebf0d4a76367ec2a1a1d631619fefd5276b5e1c65297332370e35e",
+      "f12db154682a585f6b5f70167d4abc9291ab0f873a4cbdacd2154181afbbe87f",
+      "fb39873d6dc205b8e5d54d126d494ccc0698d148aa50222efd2b95d3e3df4156",
+      "3b74cf0a9394a25bd740512b5c347881ecef61f3d349c7dfe54ff98069cec2a8",
+      "1cb639f93b6b8827cb1adf2a1c16b3e0087b8f2422c505ecd671d11e34aa75f5"
+    ],
+    "case_dispositions": [
+      {
+        "id": "N07-USER-F01",
+        "dimension": "prerequisite_missing",
+        "disposition": "APPLY",
+        "reason": "N08で必要な距離・実数の順序・正の平方根・与条件を明示する。N07の循環小数の内容はコピーしない。",
+        "evidenceRef": "6814bc8a1ab3e9fc6b57e33cc6fd00606c811ae0a8409541fba0d41186068e02",
+        "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+      },
+      {
+        "id": "N07-USER-F02",
+        "dimension": "orphan_output",
+        "disposition": "APPLY",
+        "reason": "局所の差の符号を元の絶対値の問題へ戻す。F01/F02とproblemGroupsで対応する。",
+        "evidenceRef": "2ed5eb49f280682c47052e3884da9210f66820bfc5298e23a4cc446abb1fd569",
+        "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+      },
+      {
+        "id": "N07-USER-F03",
+        "dimension": "unmotivated_operation",
+        "disposition": "APPLY",
+        "reason": "中身の符号を調べる必要性を先に置き、両辺操作の選択を追加する。",
+        "evidenceRef": "1f2a13bceb62bcfda98beea2693d1c667b9978ca919f5c2ca9052c050f564082",
+        "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+      },
+      {
+        "id": "N07-USER-F04",
+        "dimension": "broken_derivation",
+        "disposition": "APPLY",
+        "reason": "等号でつながる計算と、大小比較・場合別の論証を別の型へ分ける。",
+        "evidenceRef": "c6fca58d8fc8145df8abbcf54af97fb324c68cd7d5469d85682d59f5d59c9583",
+        "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+      },
+      {
+        "id": "N07-USER-F05",
+        "dimension": "term_semantics_missing",
+        "disposition": "ALREADY_SATISFIED",
+        "reason": "現行N08の絶対値の定義は黒字太字・math分割で実描画されている。制作メタ文だけ別途改善する。",
+        "evidenceRef": "08a194aebe3d23880b1a9ea1c6b82bc9c46c8763759db499218679fac811e0b6",
+        "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+      },
+      {
+        "id": "N07-USER-F06",
+        "dimension": "math_render_omission",
+        "disposition": "APPLY",
+        "reason": "現行N08のmath描画を保持し、今回見つかった参照HTMLの縦線欠落も別の抽出試験へ加える。",
+        "evidenceRef": "2f13547d5da27e6aa3d98a059f5df95cc47631c2fc3479e6da68872d3c4bfb70",
+        "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+      },
+      {
+        "id": "n07-layout-relation",
+        "dimension": "layout_discomfort",
+        "disposition": "APPLY",
+        "reason": "中央配置・番号・全候補の組版を新しい途中式でも確認する。元のN07の数値は使わない。",
+        "evidenceRef": "c6fca58d8fc8145df8abbcf54af97fb324c68cd7d5469d85682d59f5d59c9583",
+        "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+      },
+      {
+        "id": "n07-layout-positive",
+        "dimension": "layout_style_rejection",
+        "disposition": "ALREADY_SATISFIED",
+        "reason": "肯定された全体レイアウトを保ち、この評価を新しい穴の品質肯定へ変換しない。",
+        "evidenceRef": "current-conversation:layout-praise",
+        "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+      },
+      {
+        "id": "first-title-layout-positive",
+        "dimension": "layout_discomfort",
+        "disposition": "APPLY",
+        "reason": "受入済みの式group・番号・枠をN08でも再利用する。",
+        "evidenceRef": "work/items/W-MATH-031-section-one-typesetting/USER_ACCEPTANCE_20261024.md",
+        "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+      },
+      {
+        "id": "N07-ACCEPTED-20261025",
+        "dimension": "overall_material_acceptance",
+        "disposition": "OUT_OF_SCOPE",
+        "reason": "N07の全体受入は保護対象。N08修正版の個別観点や品質ラベルに使わない。",
+        "evidenceRef": "W032-N07-POSITIVE-20261025",
+        "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+      },
+      {
+        "id": "N08-ACCEPTED-20261025",
+        "dimension": "overall_material_acceptance",
+        "disposition": "ALREADY_SATISFIED",
+        "reason": "現行N08の受入を維持して既存の説明・31回答を保護する。新revisionの受入へ広げない。",
+        "evidenceRef": "W033-N08-POSITIVE-20261025",
+        "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+      },
+      {
+        "id": "N09-REJECTED-20261025",
+        "dimension": "operation_order",
+        "disposition": "APPLY",
+        "reason": "Q05の二乗の比較と元の比較、Q01の原問順を全選択肢でそろえる。",
+        "evidenceRef": "W034-N09-ORDER-NEGATIVE-20261025",
+        "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+      },
+      {
+        "id": "N10-REJECTED-20261025",
+        "dimension": "factor_grouping",
+        "disposition": "APPLY",
+        "reason": "Q07/Q09で中身全体の括弧と二項への負号、Q12で括弧ごとの冪を保つ。",
+        "evidenceRef": "W034-N10-FACTOR-NEGATIVE-20261025",
+        "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+      },
+      {
+        "id": "N09-ACCEPTED-20261025",
+        "dimension": "overall_material_acceptance",
+        "disposition": "OUT_OF_SCOPE",
+        "reason": "N09全体の受入をN08修正版の品質ラベルへ流用しない。N09本文は保護する。",
+        "evidenceRef": "W035-N09-POSITIVE-20261025",
+        "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+      },
+      {
+        "id": "N10-ACCEPTED-20261025",
+        "dimension": "overall_material_acceptance",
+        "disposition": "OUT_OF_SCOPE",
+        "reason": "N10全体の受入をN08修正版へ流用しない。N10本文は保護する。",
+        "evidenceRef": "W035-N10-POSITIVE-20261025",
+        "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+      }
+    ],
+    "symptoms": [
+      "元問欄が途中目標に置き換わる",
+      "制作メタ文が学習本文に出る",
+      "両辺操作の式生成がない",
+      "Abs等の新adapter未対応",
+      "参考資料取込の数式・役割の欠落"
+    ],
+    "confirmed_causes": [
+      "stage単位だけのproblem context",
+      "definition.afterの制作方針文",
+      "両辺操作と整理の圧縮",
+      "閉じたASTにAbs/sqrt/piとcaseJoinがない",
+      "HTML text投影とresearch import返却の属性欠落"
+    ],
+    "hypotheses": [],
+    "missing_learning_actions": [
+      "a−0の距離式生成",
+      "両辺に同じ操作を組み立てる",
+      "同じ原問への復帰"
+    ],
+    "root_cause_signatures": [
+      "stage-fragmented-whole-problem",
+      "authoring-meta-in-learner-prose",
+      "missing-operation-generation",
+      "unsupported-conditional-math-adapter",
+      "reference-semantic-loss"
+    ],
+    "unknowns": [
+      "新solution adapterではN08全体の厳密検算を実行できない。17の別実験を本番接続済みと呼ばない。"
+    ],
+    "proofStatus": "AI_ARGUMENT_REVIEWED",
+    "formalProof": false,
+    "lessonReadiness": "ACCEPTED_R4_PRESERVED; PROPOSED_R5_NOT_BUILT",
+    "aiReview": {
+      "requestHash": "64e0fc1a82a752a4f8f79fc66154027ba26b1552a3d81a0fcf2187eb54be4fbe",
+      "inputHash": "845af5d36979a4b59cd46e24ff827ee4d7ad050a0a6d47c3346ae99e4bda512a",
+      "reviewer": "current-assistant-source-visible-and-case-audit",
+      "evidence": "現行IRの再compileがsemanticと一致。現行の数学は既存argumentと別の17実験で照合した。新ASTの表現未対応を全体PASSへ昇格せず、R02をUNVERIFIEDとして保持。取得15事例は個別に目的と適用範囲を判断した。"
+    }
+  },
+  "codeOutputs": [
+    {
+      "receipt": "11240d4e1507785ed8d822bd5f373f212ad672d4e242b763691671b29d438de1",
+      "capability": "case.retrieve",
+      "outputArtifact": "fa028e43dee47554920c3c368fb93ef9316692964ec01d5842a7746b187fd0ff",
+      "status": "PASS"
+    },
+    {
+      "receipt": "a5847918b2795999107142cca06bf72d486e53dfd92c22c130884c54492f9816",
+      "capability": "knowledge.ledger",
+      "outputArtifact": "7fc7c26ea136be6a1b65185e4be41dc52ab0e5bbc28ee85dc50b7e1feb640858",
+      "status": "PASS"
+    },
+    {
+      "receipt": "06a6e6bd3b742dcf422637d48e1689138c671fc76d1d7629c79a84eff9c2ef03",
+      "capability": "math.verify",
+      "outputArtifact": "00debbc20c11c0e157bcce010ee2ca0921b95369559feff70dab1f9572ef0658",
+      "status": "NEEDS_AI_REVIEW"
+    },
+    {
+      "receipt": "d11c696c3eebf0d4a76367ec2a1a1d631619fefd5276b5e1c65297332370e35e",
+      "capability": "ir.verify",
+      "outputArtifact": "837f8017707d4c364237186b373242e23317bb15a4fcc1539fee5c69192fa480",
+      "status": "PASS"
+    },
+    {
+      "receipt": "f12db154682a585f6b5f70167d4abc9291ab0f873a4cbdacd2154181afbbe87f",
+      "capability": "source.audit",
+      "outputArtifact": "f6e9cb0b2a4ad2acecdb54793c18f436e685449306855e01e49effe9d39dc940",
+      "status": "NEEDS_AI_REVIEW"
+    },
+    {
+      "receipt": "fb39873d6dc205b8e5d54d126d494ccc0698d148aa50222efd2b95d3e3df4156",
+      "capability": "novice.audit",
+      "outputArtifact": "4a511a32676e82c47186caa56e8daa98956710ef4002ae1afad08db7b99eca87",
+      "status": "PASS"
+    },
+    {
+      "receipt": "3b74cf0a9394a25bd740512b5c347881ecef61f3d349c7dfe54ff98069cec2a8",
+      "capability": "math.solve",
+      "outputArtifact": "d54f222f24808db18bf420ca4db34a0935aa60264dc51d7c234c28a3971ec8e3",
+      "status": "NEEDS_AI_REVIEW"
+    },
+    {
+      "receipt": "1cb639f93b6b8827cb1adf2a1c16b3e0087b8f2422c505ecd671d11e34aa75f5",
+      "capability": "solution.validate",
+      "outputArtifact": "30d0dfc19a811c10d52aa42423ab91a909df816f911672885ea79922ddd0fbd1",
+      "status": "FAIL"
+    }
+  ],
+  "fullOutputLocation": "Existing shared Runtime content-addressed artifacts. No raw result omitted from that Store."
+}

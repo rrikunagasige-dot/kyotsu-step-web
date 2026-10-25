@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "solution-graph/1",
+  "id": "absolute-probe",
+  "variable": "a",
+  "parameters": [],
+  "initialFacts": [
+    "arithmetic"
+  ],
+  "givens": [
+    {
+      "id": "absolute-probe-given",
+      "statement": {
+        "kind": "expression",
+        "expression": {
+          "kind": "absolute",
+          "argument": {
+            "kind": "symbol",
+            "name": "a"
+          }
+        }
+      }
+    }
+  ],
+  "rootStateId": "absolute-probe-s0",
+  "goalStateIds": [
+    "absolute-probe-s1"
+  ],
+  "states": [
+    {
+      "id": "absolute-probe-s0",
+      "statement": {
+        "kind": "expression",
+        "expression": {
+          "kind": "absolute",
+          "argument": {
+            "kind": "symbol",
+            "name": "a"
+          }
+        }
+      },
+      "activeVariable": "a",
+      "fixedParameters": [],
+      "facts": []
+    },
+    {
+      "id": "absolute-probe-s1",
+      "statement": {
+        "kind": "expression",
+        "expression": {
+          "kind": "absolute",
+          "argument": {
+            "kind": "symbol",
+            "name": "a"
+          }
+        }
+      },
+      "activeVariable": "a",
+      "fixedParameters": [],
+      "facts": []
+    }
+  ],
+  "transitions": [
+    {
+      "id": "absolute-probe-edge",
+      "from": "absolute-probe-s0",
+      "to": "absolute-probe-s1",
+      "ruleId": "rewrite",
+      "requires": [],
+      "produces": [],
+      "basisRefs": [
+        "arithmetic"
+      ]
+    }
+  ]
+}

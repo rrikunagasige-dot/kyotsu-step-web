@@ -1,0 +1,22 @@
+[
+  {
+    "id": "tochigi",
+    "url": "https://www.tochigi-edu.ed.jp/center/cyosa/cyosakenkyu/kyokasido_h22/pdf/sugaku_01.pdf",
+    "status": "UNAVAILABLE",
+    "error": "HTTP Error 502: Bad Gateway"
+  },
+  {
+    "id": "sympy-refine",
+    "url": "https://docs.sympy.org/latest/modules/assumptions/refine.html",
+    "sha256": "205a1b38207090db3fb54850629374de599b56044ef010152fad000e59a3526d",
+    "bytes": 115480,
+    "status": "FETCHED"
+  },
+  {
+    "id": "ftext",
+    "url": "https://ftext.org/mathI/01-%E6%95%B0%E3%81%A8%E5%BC%8F/01-%E3%81%84%E3%82%8D%E3%81%84%E3%82%8D%E3%81%AA%E6%95%B0",
+    "sha256": "a08b813937d628d46dd97e2877748a3fa2df4b2d27657a7c72d8f784e7270798",
+    "bytes": 592603,
+    "status": "FETCHED"
+  }
+]

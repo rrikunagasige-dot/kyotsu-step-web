@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "candidates": [
+    {
+      "pattern": {
+        "id": "abs-distance-sign-rule",
+        "family": "absolute-value-evaluation",
+        "goal": "原問を保持して中身の符号から定義へ進む",
+        "prerequisites": [
+          "real-number-order",
+          "distance-from-zero"
+        ],
+        "steps": [
+          "中身の符号の根拠",
+          "条件に合う定義",
+          "式全体の括弧",
+          "計算と原問への復帰"
+        ],
+        "applicability": "一つの実数値の絶対値を外す問題",
+        "exclusions": "複数の絶対値を含む方程式の全域解法をこの型だけで処理しない",
+        "sourceBlockIds": [
+          "ftext-b148",
+          "ftext-b155",
+          "ftext-b162"
+        ],
+        "sourceId": "ftext",
+        "sourceHash": "a08b813937d628d46dd97e2877748a3fa2df4b2d27657a7c72d8f784e7270798",
+        "origin": "AI_ANALYZED_REFERENCE",
+        "reviewer": "current-assistant-primary-source-analysis",
+        "requestHash": "bec9bbb0fa89ce76bf992eb5fa468fb8a7bd6e791b74487da1fbb706da9a43af"
+      },
+      "missingPrerequisites": [],
+      "decision": "NEEDS_AI_SELECTION"
+    }
+  ]
+}

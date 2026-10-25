@@ -1,0 +1,58 @@
+{
+  "status": "NEEDS_AI_REVIEW",
+  "patterns": [
+    {
+      "id": "abs-distance-sign-rule",
+      "family": "absolute-value-evaluation",
+      "goal": "原問を保持して中身の符号から定義へ進む",
+      "prerequisites": [
+        "real-number-order",
+        "distance-from-zero"
+      ],
+      "steps": [
+        "中身の符号の根拠",
+        "条件に合う定義",
+        "式全体の括弧",
+        "計算と原問への復帰"
+      ],
+      "applicability": "一つの実数値の絶対値を外す問題",
+      "exclusions": "複数の絶対値を含む方程式の全域解法をこの型だけで処理しない",
+      "sourceBlockIds": [
+        "ftext-b148",
+        "ftext-b155",
+        "ftext-b162"
+      ],
+      "sourceId": "ftext",
+      "sourceHash": "a08b813937d628d46dd97e2877748a3fa2df4b2d27657a7c72d8f784e7270798",
+      "origin": "AI_ANALYZED_REFERENCE",
+      "reviewer": "current-assistant-primary-source-analysis",
+      "requestHash": "bec9bbb0fa89ce76bf992eb5fa468fb8a7bd6e791b74487da1fbb706da9a43af"
+    }
+  ],
+  "observedSteps": [
+    {
+      "description": "距離の意味から条件別の外し方を示す。",
+      "blockIds": [
+        "ftext-b148",
+        "ftext-b155"
+      ]
+    },
+    {
+      "description": "性質の確認では中身の条件を分ける。",
+      "blockIds": [
+        "ftext-b162"
+      ]
+    }
+  ],
+  "inferredMissingSteps": [
+    {
+      "description": "N08では二乗の比較から差の符号へ移る際の両辺操作を独立した式で補う。これは参照先の転載ではなく今回の設計。",
+      "basis": "N08 stage05-07 actual contents"
+    }
+  ],
+  "uncertainties": [
+    "HTMLの通常テキストが絶対値の縦線を失う箇所がある。式は元TeXと照合する。",
+    "数学的な順序の参照は確認したが、N08での教育効果を測定したわけではない。"
+  ],
+  "automaticPedagogyApproval": false
+}

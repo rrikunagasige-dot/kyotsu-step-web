@@ -1,0 +1,16 @@
+{
+  "sourceURL": "https://ftext.org/mathI/01-%E6%95%B0%E3%81%A8%E5%BC%8F/01-%E3%81%84%E3%82%8D%E3%81%84%E3%82%8D%E3%81%AA%E6%95%B0",
+  "sourceSHA256": "a08b813937d628d46dd97e2877748a3fa2df4b2d27657a7c72d8f784e7270798",
+  "status": "CONFIRMED_LOSS_IN_TEXT_PROJECTION",
+  "samples": [
+    {
+      "containerLabel": "a²=a²",
+      "line": 394,
+      "rootLatex": "\\vert a\\vert^2=a^2"
+    }
+  ],
+  "currentExtractedBlock": "ftext-b160",
+  "currentTextFragment": "a²=a²",
+  "teachingUse": "Do not import this as a complete equation. Prefer the root TeX and cross-check visual math.",
+  "productionExtractorChanged": false
+}

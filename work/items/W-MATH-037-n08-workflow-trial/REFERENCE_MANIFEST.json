@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "research-manifest/1",
+  "topic": "N08 distance sign definition calculation",
+  "requirements": [
+    {
+      "id": "distance-order",
+      "description": "距離の意味と符号から絶対値を外す順序を照合する"
+    }
+  ],
+  "sources": [
+    {
+      "id": "ftext",
+      "url": "https://ftext.org/mathI/01-%E6%95%B0%E3%81%A8%E5%BC%8F/01-%E3%81%84%E3%82%8D%E3%81%84%E3%82%8D%E3%81%AA%E6%95%B0",
+      "version": "fetched 2026-10-26 JST; content hash pinned",
+      "kind": "reference",
+      "uses": [
+        "analyze"
+      ],
+      "rights": "Analysis reference only; no copied content or training permission inferred",
+      "contentHash": "a08b813937d628d46dd97e2877748a3fa2df4b2d27657a7c72d8f784e7270798",
+      "locations": [
+        "ftext-b148",
+        "ftext-b155",
+        "ftext-b162"
+      ],
+      "requirementIds": [
+        "distance-order"
+      ],
+      "state": "EXTRACTED",
+      "reusePermission": false,
+      "trainingPermission": false
+    }
+  ]
+}

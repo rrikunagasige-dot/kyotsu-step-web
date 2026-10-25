@@ -1,0 +1,7 @@
+{
+  "responseHasBlankRoles": true,
+  "responseHasFigureTiming": true,
+  "importHasBlankRoles": false,
+  "importHasFigureTiming": false,
+  "interpretation": "Current import validates these fields but omits them in its returned artifact. Preserve raw review and repair this loss before relying on downstream pattern reuse."
+}

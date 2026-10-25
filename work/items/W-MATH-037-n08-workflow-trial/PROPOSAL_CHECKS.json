@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "oldNodesCovered": 36,
+  "oldInteractionsPreserved": 31,
+  "plannedNodes": 39,
+  "plannedInteractions": 34,
+  "newSlots": 5,
+  "baselineWidths": [
+    320,
+    390
+  ],
+  "baselineCorrectOperations": 62,
+  "images": 12,
+  "productionChanged": false,
+  "sourceHash": "80c917d3c2de34b9111e11f57fb02272d98ab02c0677a2fb30c5ae4dad60e142",
+  "proposalHash": "71e6f67bb98d372a6146502cba0f69d13967f3047af9be59a8a86b1cb6a7eb6d"
+}

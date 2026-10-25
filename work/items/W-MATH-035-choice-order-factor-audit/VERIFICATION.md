@@ -9,3 +9,5 @@ Status: ACTIVE
 - 16単元限定パターン検索は最新export、N09/N10全文はsame-assistant source review。新実装・新UI・独立AI・新配信・新fitの成功は主張しない。
 
 - Shared RuntimeでW035両R01–R04を実行、R05具体案判断待ち。W034の本人否定2件・依頼と親子関係を保存。実装・配信・新fitのreceiptは作っていない。
+
+- CI40172128752 sourcefa0eff27 SUCCESS。専用8、learner620、authoring39、build/lintと4幅の対象表示・全81回答/201誤答・履歴/reload/resize/旧保存移行を検証。実画像7点も同じassistantが確認。両R07/G2を完了し、既存Pages workflow3630df56で配信を開始。公開後検査と本人の品質受入はまだ未確定。

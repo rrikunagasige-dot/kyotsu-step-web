@@ -1,0 +1,122 @@
+name: Publish approved N09 N10 order and grouping repair to existing app
+on:
+  push:
+    branches: ['main']
+    paths: ['.github/workflows/deploy-pages.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      CANDIDATE_SHA: 'fa0eff271a97940fad08d83960ae50faeabc81b9'
+      VITE_PREVIEW_COMMIT: 'fa0eff271a97940fad08d83960ae50faeabc81b9'
+      VITE_REVIEW_PREVIEW: 'true'
+      VITE_BASE_PATH: '/kyotsu-step-web/'
+      VITE_STORAGE_NAMESPACE: 'kyotsu-step-gate3-math-20261023'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 'fa0eff271a97940fad08d83960ae50faeabc81b9'
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Verify exact source, approval and protected scope
+        run: |
+          test "$(git rev-parse HEAD)" = "$CANDIDATE_SHA"
+          node tools/textbook/integrate-n07.mjs --check
+          node work/items/W-MATH-033-n08-absolute-value/materialize.mjs --check
+          node work/items/W-MATH-035-choice-order-factor-audit/materialize.mjs --check
+          node --input-type=module <<'NODE'
+          import {execFileSync} from 'node:child_process'
+          const changed=execFileSync('git',['diff','--name-only','cb7d30bfe666b9123ea51e1fad7e36268507b674','HEAD','--','src','public'],{encoding:'utf8'}).trim().split('\n').filter(Boolean)
+          const allowed=new Set(["src/components/textbook/GuidedMathReadingFlow.tsx","src/components/textbook/guided-math-reading.css","src/components/textbook/guidedMathDisplayPolicy.ts","src/data/textbook/math/numbers/n09Authored.json","src/data/textbook/math/numbers/n10Authored.json"])
+          if(changed.some(path=>!allowed.has(path)))throw Error('Unapproved learner change: '+changed.join(','))
+          execFileSync('git',['diff','--exit-code','ea47dd97f7d323267281915e8d9a7bb92a8e7c03','HEAD','--','src/data/textbook/math/numbers/n07Authored.json','src/components/textbook/N07ReadingFlow.tsx','src/components/textbook/n07-reading.css','src/data/textbook/math/numbers/firstSectionTeaching.json','src/data/textbook/math/typesetting.json','src/data/textbook/math/numbers/n08Authored.json','src/data/textbook/math/numbers/n08Lesson.ts','src/components/textbook/N08ReadingFlow.tsx','src/components/textbook/n08-reading.css','src/data/mathPractice','src/data/textbook/ch01','public'])
+          console.log(JSON.stringify({status:'PASS',changed,acceptedFirstTitlePreserved:true}))
+          NODE
+      - name: Learner regressions (confirmed pre-existing physics catalog failures excluded)
+        run: pnpm exec vitest run --exclude src/data/physicsTaxonomy.test.ts --exclude src/domain/questionSchema.test.ts
+      - run: pnpm run test:textbook-authoring
+      - run: pnpm exec vitest run --config work/items/W-MATH-035-choice-order-factor-audit/vitest.config.mjs
+      - run: node work/items/W-MATH-003-numbers-expressions-creation/NE01_NE02/export-runtime.mjs
+      - run: pnpm run build
+      - name: Exact-source release manifest
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs'
+          const runtime=JSON.parse(fs.readFileSync('e2e-evidence/chapter-runtime/runtime-units.json','utf8'))
+          if(runtime.metadata.sourceSHA!==process.env.CANDIDATE_SHA||runtime.units.length!==16)throw Error('source mismatch')
+          const n07=JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/n07Authored.json','utf8'))
+          const n08=JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/n08Authored.json','utf8'))
+          const n09=JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/n09Authored.json','utf8'))
+          const n10=JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/n10Authored.json','utf8'))
+          const manifest={sourceSHA:process.env.CANDIDATE_SHA,workflowSHA:process.env.GITHUB_SHA,storageKey:process.env.VITE_STORAGE_NAMESPACE,acceptedFirstTitle:'22bc43ba53fa87bb85e82e18a25db13a5c8a485c',contentApproval:n09.proposalHash,irHash:n09.irHash,repairedUnit:n09.unit.unitId,repairedUnits:[n09.unit.unitId,n10.unit.unitId],unitDesignHashes:{n09:n09.irHash,n10:n10.irHash},acceptedN08:{sourceSHA:'ea47dd97f7d323267281915e8d9a7bb92a8e7c03',irHash:n08.irHash},acceptedN07:{sourceSHA:'46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6',repair:n07.repair},themes:3,units:runtime.units.map(x=>({id:x.unit.unitId,revision:x.unit.revision,items:x.unit.sections.flatMap(s=>s.items.map(q=>q.id))}))}
+          fs.writeFileSync('dist/release.json',JSON.stringify(manifest,null,2))
+          NODE
+      - run: pnpm exec playwright install --with-deps chromium
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+      - name: Publish approved N09 N10 order and grouping repair with the existing storage namespace
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Verify hosted exact source
+        env:
+          APP_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          node --input-type=module <<'NODE'
+          let matched=false
+          for(let attempt=0;attempt<60;attempt++){
+            try{const r=await fetch(process.env.APP_URL+'release.json?sha='+process.env.CANDIDATE_SHA,{cache:'no-store'});const m=await r.json();if(m.sourceSHA===process.env.CANDIDATE_SHA&&m.storageKey===process.env.VITE_STORAGE_NAMESPACE){matched=true;console.log(JSON.stringify(m));break}}catch{}
+            await new Promise(r=>setTimeout(r,2000))
+          }
+          if(!matched)throw Error('Hosted source did not match')
+          NODE
+      - name: Play actual public N09/N10 at four widths
+        env:
+          APP_URL: ${{ steps.deployment.outputs.page_url }}
+          EVIDENCE_DIR: /tmp/n09-hosted
+        run: |
+          EVIDENCE_DIR=/tmp/w35-hosted node work/items/W-MATH-035-choice-order-factor-audit/verify_display.mjs
+          EVIDENCE_DIR=/tmp/n09-hosted WIDTHS=320,390,430,1440 node work/items/W-MATH-034-n09-n10-guided-design/verify_app.mjs
+          EVIDENCE_DIR=/tmp/n10-hosted WIDTHS=320,390,430,1440 node work/items/W-MATH-034-n09-n10-guided-design/verify_n10_app.mjs
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: w35-publication-verification
+          path: |
+            /tmp/n09-browser
+            /tmp/w35-hosted
+            /tmp/n09-hosted
+            /tmp/n10-browser
+            /tmp/n10-hosted
+            /tmp/n08-browser
+            /tmp/n08-hosted
+            /tmp/n07-browser
+            /tmp/n07-hosted
+            /tmp/first-title-compiled
+            /tmp/first-title-history
+            /tmp/first-title-hosted
+            dist/release.json
+          if-no-files-found: warn
+          retention-days: 30

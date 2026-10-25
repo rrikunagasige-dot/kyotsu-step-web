@@ -1,0 +1,41 @@
+{
+  "sourceSHA": "fa0eff271a97940fad08d83960ae50faeabc81b9",
+  "status": "PASS",
+  "independent": false,
+  "reviewer": "same assistant actual image review",
+  "images": [
+    {
+      "artifactPath": "w35-display/390-n09-08-options.png",
+      "sha256": "ef1ce1d3b09dc124f1022fc93ebe75b18442c7103a6dd8158646dc7715b5ae18"
+    },
+    {
+      "artifactPath": "w35-display/320-n09-08-result.png",
+      "sha256": "9e0dcc9d8b8ef95263f6c8f577d80c1a52d6505b0bc5c0058d3d2a0165042caa"
+    },
+    {
+      "artifactPath": "w35-display/320-n10-07-options.png",
+      "sha256": "0050b53aca4aadbd6b5b0d3c832452711244047e4250d5a5a95a5df13cec6093"
+    },
+    {
+      "artifactPath": "w35-display/320-n10-15-options.png",
+      "sha256": "e4c41c21f4dc5f8ea9ce74b6a973aeacf95c9bdf82cd45673f94152323e3f5e3"
+    },
+    {
+      "artifactPath": "w35-display/320-n10-20-options.png",
+      "sha256": "7ed3b4b063da3c79a7008982c1b1d40e23f18e887826a2da6091181e3ff150a4"
+    },
+    {
+      "artifactPath": "w35-display/390-n10-q17-factor-completed.png",
+      "sha256": "8ce5f49b01e495219b8017e7dc845b890395cfe4eb31a32483fe8b2a141a1a96"
+    },
+    {
+      "artifactPath": "w35-display/320-n10-q20-factor-completed.png",
+      "sha256": "480d64dca6c46ddaca6a85fdb94f8ff5170e366ffb82d98f289b537519f617d4"
+    }
+  ],
+  "findings": [
+    "Calculations precede comparison, all wrong numbers/signs retained",
+    "All target option bodies have intended step order",
+    "Both completed factors grouped; numbering and spacing readable at mobile widths"
+  ]
+}

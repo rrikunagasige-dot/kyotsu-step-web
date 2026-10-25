@@ -1,0 +1,11 @@
+{
+  "sourceSHA": "fa0eff271a97940fad08d83960ae50faeabc81b9",
+  "workflowSHA": "3630df565c0f30f770af2238fa34841ca0528df6",
+  "internalCI": 40172128752,
+  "approvalEvent": "W035-P001-APPROVED-20261025",
+  "operations": [
+    "W035-n09-existing-pages-publication",
+    "W035-n10-existing-pages-publication"
+  ],
+  "userAccepted": false
+}

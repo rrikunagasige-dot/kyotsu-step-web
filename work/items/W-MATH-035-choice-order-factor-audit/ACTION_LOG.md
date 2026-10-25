@@ -12,3 +12,8 @@ Status: ACTIVE
 - 既存W034の凍結承認資料、公開ワークフロー、モデル・中央tools/workflowは変更しない。
 
 - Native R01–R04を両blockで完了。途中の必須math.solve不足、全block影響inventory不足を既存validatorが拒否。Work内入力を補い、既存claim/receiptを再開して完了。中央tools/workflowのvalidatorは変更していない。現在R05_APPROVAL@n09で停止。
+
+- P001を本人の明示承認で固定。両R05を記録、最初のR06で両単元をatomicにemitし、各R06でIRをcompile・照合。専用8、learner620、build/type/lint PASS。テストの履歴seed位置とattemptCount名を修正。表示コードのエスケープに問題があると一時疑ったが、実データ・構文検査で正しいと確認し不要変更をしていない。
+- 実検査用の限定CI wrapperを追加し、旧W034凍結materializerの合格を新しい修正JSONへ偽装しない。CI40172128752、sourcefa0eff27。中央tools/workflowのpinは不変。
+
+- CI40172128752 sourcefa0eff27 SUCCESS。専用8、learner620、authoring39、build/lintと4幅の対象表示・全81回答/201誤答・履歴/reload/resize/旧保存移行を検証。実画像7点も同じassistantが確認。両R07/G2を完了し、既存Pages workflow3630df56で配信を開始。公開後検査と本人の品質受入はまだ未確定。

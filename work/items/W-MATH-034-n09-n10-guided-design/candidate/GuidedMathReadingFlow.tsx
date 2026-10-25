@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 import { InlineMath } from 'react-katex'
 import { textbookDisplayLines } from '../../domain/textbookDisplayLines'
 import { SemanticReading } from './SemanticReading'
@@ -19,6 +19,34 @@ type Node = { id: string; stageId: string; goal: string; role: string; knownRefs
 type Display = { hintParts: TextbookReadingPart[][]; choices: Record<string, TextbookReadingPart[]>; feedback: Record<string, TextbookReadingPart[]> }
 type Presentation = { code: string; nodes: Node[]; stages: { id: string; title: string; sourceQuestionParts: TextbookReadingPart[] }[]; semanticDisplay: Record<string, Display>; equationNumbers: Record<string, number>; semantic: { nodes: { id: string; before: TextbookReadingBlock[]; after: TextbookReadingBlock[] }[] } }
 const roles: Record<string, string> = { example: '例題', definition: '定義', proof: '性質の導出', substep: '導出', check: '学んだことを使う', property: '性質', summary: 'まとめ' }
+
+function GuidedNumberedEquation({ number, children, logical = false }: { number: number; children: ReactNode; logical?: boolean }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [below, setBelow] = useState(false)
+  useLayoutEffect(() => {
+    const root = ref.current
+    if (!root) return
+    let active = true
+    const check = () => {
+      if (!active) return
+      const label = root.querySelector<HTMLElement>('.numbered-equation-label')
+      if (!label) return
+      const tag = label.getBoundingClientRect()
+      const overlap = [...root.querySelectorAll<HTMLElement>('.katex, .reading-inline-blank')].some(el => {
+        const r = el.getBoundingClientRect()
+        return r.width > 0 && r.right > tag.left - 2 && r.left < tag.right + 2 && r.bottom > tag.top - 2 && r.top < tag.bottom + 2
+      })
+      if (overlap) setBelow(true)
+    }
+    const frame = typeof requestAnimationFrame === 'function' ? requestAnimationFrame(check) : undefined
+    check()
+    const observer = typeof ResizeObserver === 'undefined' ? undefined : new ResizeObserver(check)
+    observer?.observe(root)
+    void document.fonts?.ready.then(check)
+    return () => { active = false; if (frame !== undefined) cancelAnimationFrame(frame); observer?.disconnect() }
+  }, [children])
+  return <div ref={ref} className={below ? 'guided-number-below' : undefined}><NumberedEquation number={number} logical={logical}>{children}</NumberedEquation></div>
+}
 
 export function GuidedMathReadingFlow({ presentation, unit, section, progress, onSummaryReached, onReviewAnswer }: Props) {
   const data = presentation as Presentation
@@ -137,7 +165,7 @@ export function GuidedMathReadingFlow({ presentation, unit, section, progress, o
     const source = block.parts.map((p, i) => p.type === 'math' ? p.latex : p.type === 'choice' ? '§' + i + '§' : '\\text{' + p.text + '}').join('')
     const itemIds = Object.fromEntries(block.parts.flatMap((p, i) => p.type === 'choice' ? [[i, p.itemId]] : []))
     return <div key={block.id} className={/n09-q14-(positive|negative)-integer/.test(block.id) ? "guided-number-below" : undefined} data-block-id={block.id} data-formula-semantic-parts={JSON.stringify(block.parts)}>
-      <NumberedEquation number={formulaNumbers[block.id]} logical>{logical(source, block.id, mathParts, itemIds) ?? formula(source, block.id, mathParts, itemIds)}</NumberedEquation>
+      <GuidedNumberedEquation number={formulaNumbers[block.id]} logical>{logical(source, block.id, mathParts, itemIds) ?? formula(source, block.id, mathParts, itemIds)}</GuidedNumberedEquation>
       {choices.map(panel)}
     </div>
   }
@@ -151,7 +179,7 @@ export function GuidedMathReadingFlow({ presentation, unit, section, progress, o
     if (n.id !== 'n09-14') return <>{compiled.after.map(renderBlock)}{tableView}</>
     const equation = compiled.after.find(b => b.type === 'formula')!
     return <><div className="guided-number-below" data-typeset-source={equation.id} data-table-projection="equivalent-answer" data-formula-semantic-parts={JSON.stringify(equation.parts)}>
-      <NumberedEquation number={formulaNumbers[equation.id]} logical>{tableView}</NumberedEquation>
+      <GuidedNumberedEquation number={formulaNumbers[equation.id]} logical>{tableView}</GuidedNumberedEquation>
     </div>{compiled.after.filter(b => b !== equation).map(renderBlock)}</>
   }
   function result(n: Node) {

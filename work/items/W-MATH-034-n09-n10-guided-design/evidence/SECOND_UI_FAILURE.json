@@ -1,0 +1,9 @@
+{
+  "runId": 40167666122,
+  "sourceSHA": "dc64310e934043e3b7132d1ce72e030f12b34acd",
+  "conclusion": "failure",
+  "n09": "PASS: full four widths",
+  "n10": "number collision28 after q13 identity at320px",
+  "artifactId": 12589390683,
+  "artifactSHA256": "72e73f0763b0089b311464da579cfd0ed03ba2d9b593e8610f4afd684d264136"
+}

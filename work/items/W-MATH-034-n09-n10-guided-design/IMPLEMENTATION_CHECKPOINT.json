@@ -1,0 +1,23 @@
+{
+  "sourceSHA": "dc64310e934043e3b7132d1ce72e030f12b34acd",
+  "approvedCommit": "a442cbe966c074f122907bb7366b1ceb6634ca95",
+  "approvalEvent": "W034-N09-N10-P001-APPROVED-20261025",
+  "units": {
+    "n09": {
+      "nodes": 41,
+      "answers": 36,
+      "stages": 11
+    },
+    "n10": {
+      "nodes": 45,
+      "answers": 45,
+      "stages": 12
+    }
+  },
+  "learnerTests": 620,
+  "dedicatedTests": 9,
+  "internalCI": 40167666122,
+  "internalStatus": "RUNNING",
+  "publication": false,
+  "userAcceptance": false
+}

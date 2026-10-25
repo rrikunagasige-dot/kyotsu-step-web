@@ -2,9 +2,9 @@
   "job": {
     "status": "NEEDS_REVIEW",
     "node": "R06_PATCH@n09",
-    "claimToken": "e3d6d287bc944646b181ba33fbbb65f5",
+    "claimToken": "778e00f7875949098df0b2bb69177cd3",
     "receipts": [
-      "b801b6a0d2a90fb692f831b3f92cf593705fd29cb7a762e6c2801dab8987108c"
+      "6abea0cb1653af95c9f54e0ee4d273fff6e96eb783552c1db1aeb185b669e949"
     ],
     "aiRequest": {
       "schemaVersion": "production/2",
@@ -54,10 +54,10 @@
           ],
           "required_ai_receipts": []
         },
-        "task_id": "89e84468f0eff1d7e559a6ede2a0bae1ee8c3a3b4246b9de2ac24bdf11f1a864",
-        "input_hash": "297f68218a0fb7a5568c1412acf905cb4f14ac928f871dc6e9c8d17bac293afa",
+        "task_id": "aafc5d961c5f4a778add62aab5324d1ee893027d14d24912b61cb232ca097b6b",
+        "input_hash": "9a0f20bb402b3d57aa6298fa4f951a86f4253752fcf4729081cd3cb999bc33d0",
         "source_sha": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
-        "candidate_sha": "8efe6b55175650a423e2317d1881507cb597fe9a",
+        "candidate_sha": "dc64310e934043e3b7132d1ce72e030f12b34acd",
         "rules": {
           "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
           "governance/REVIEW_POLICY.json": "a71148f007a79b124385c7645e6bc01564bfa02b12152174883543f31f6ce72d",
@@ -152,7 +152,7 @@
         "\u672a\u89e3\u6c7a\u306f\u672a\u89e3\u6c7a\u3068\u8a18\u9332",
         "\u627f\u8a8d\u3092\u751f\u6210\u3057\u306a\u3044"
       ],
-      "requestHash": "8878a1c64c76c043b9e9b64fb8512dba487c543fccc7d6b80eae0777fa286f4c"
+      "requestHash": "0427ee227cf8e0f9dc2a4511e5cad266e6c0c14c45223407a95d71d67eab00bf"
     },
     "automaticAcceptance": false
   },

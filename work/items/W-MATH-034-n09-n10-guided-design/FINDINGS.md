@@ -16,3 +16,5 @@ Status: ACTIVE / proposal-only
 同じassistantによる原資料/初学者/反証の再読であり、別AIの独立監査ではない。現行dataのsource-level監査で、実DOM監査は実装後。候補compileを実アプリの完成と呼ばない。全repo旧Markdownメタデータ検査の完全PASSも主張しない。
 
 実画面CI40166774249: 全620回帰・5専用・buildとprotected UIはPASS。N09 Q08の4選択肢が320pxでformula overflow。既存のtextbookDisplayLines(n09-08)による3短行を共通readerの選択肢と完成式へ接続した。採点文字列と凍結IRは不変。全4選択肢の3行projectionを実React操作で検査し、専用6件PASS。失敗CIと実画像artifactをevidence/INITIAL_UI_FAILURE.jsonへ保持。失敗runをsuccess-only CI証拠へ登録しようとした拒否とrender facetへ文字列を渡した拒否も台帳に残し、実失敗ファイル証拠/Store artifact hashという既存契約で再開。
+
+CI40167666122/source dc64310e: N09の全36回答/全誤答・履歴・2版移行は4幅でPASS。N10のQ13の次の式で式番号28の重なりを320pxで検出。受入済み共有NumberedEquationは改変せず、この2単元専用wrapperで最終DOMの番号/glyph交差を計測し、実際に重なる場合だけ番号を通常フローの下段へ移す。全9reader/移行検査・型検査・lintで再検証。両blockのrender facetを更新し、両方の厳密source browserを再実行する。

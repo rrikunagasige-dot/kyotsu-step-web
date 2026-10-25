@@ -1,15 +1,15 @@
 # 全体火柴図（GENERATED）
 
-台帳HEAD: `67c17624bcfea05bdaa2b842ce74f61b5765fc774b980d233c5442b37096b108`
+台帳HEAD: `4d5b6db89353800c46199909cadee0e4af55062a9d15c5845319219b0f8c06b4`
 
 ```mermaid
 flowchart TD
   N0["S00_RECOVER 1/1"]
   N1["S01_ROUTE 1/1"]
   N2["n09:design 5/5"]
-  N3["APPROVAL:proposal 1/2"]
+  N3["APPROVAL:proposal 2/2"]
   N4["n09:release 0/5"]
-  N5["n10:design 4/5"]
+  N5["n10:design 5/5"]
   N6["n10:release 0/5"]
   N7["n09:learning 0/3"]
   N8["n10:learning 0/3"]

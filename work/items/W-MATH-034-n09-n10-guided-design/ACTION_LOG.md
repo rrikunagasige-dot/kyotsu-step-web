@@ -14,3 +14,5 @@
 
 実装承認: 「ok。いいよ」をP-001両blockの承認eventへ固定。R05@n09を完了しR06@n09で6ファイルの追加/置換をbefore/backup/after付きでjournal。N09の620回帰と5専用検査、build/typecheck/scoped lintがPASS。旧版固定試験のfixture接続は承認案のtest boundary移行に従い、候補一覧に加えてnumbersNextBatch/r3LocalTokens/domain textbookの3試験もimportだけを凍結N09へ切替。学習者の意味や採点条件は変えず、旧試験を削除していない。
 N10は同じ承認からWork内データとadapterを生成したが、既存RuntimeはN09のG3_FINAL前にN10のR05/R06を選ばない。中央codeを変更・受入を偽装して迂回せず、まずN09を公開・実物評価へ進める。
+
+実行順の見直し: 前記「N10はN09 G3_FINAL待ち」はnext()の優先順をDAGの依存と誤読した。実DAGのR05@n10は両R04のみ、R06@n10はR05@n10のみが前提。Work内ready_dispatchは全native依存・現行bundle承認・idle/integrityを検査し、既存integration.accept/capabilities/production_resultを使って直列実行。G3_FINAL等の品質/受入userノードはdispatchしない。中央workflowは変更せず、同じ明示承認でN10も実装。根号内slotのLaTeX分断を9件目の実render試験で検出し、完全な式を既存TypesetFormulaへ渡すnative button表示へ修正。

@@ -185,6 +185,20 @@ export function effectiveTextbookProgress(unit: TextbookUnit, progress: Textbook
   if (!progress) return undefined
   if (progress.unitRevision === unit.revision) return progress
 
+  // W-MATH-034: keep all21 original N10 histories;24 new derivations are unanswered.
+  if (unit.unitId === 'math-numbers-expressions-n10' && unit.revision === 2
+      && progress.unitId === unit.unitId && progress.unitRevision === 1) {
+    const { archivedRevisions, ...archive } = progress
+    const anchors = new Set(["n10-01", "n10-02", "n10-03", "n10-04", "n10-05", "n10-06", "n10-07", "n10-08", "n10-09", "n10-10", "n10-11", "n10-12", "n10-13", "n10-14", "n10-15", "n10-16", "n10-17", "n10-18", "n10-19", "n10-20", "n10-21"])
+    return {
+      unitId: unit.unitId, unitRevision: 2, startedAt: progress.startedAt, updatedAt: progress.updatedAt,
+      answers: Object.fromEntries(Object.entries(progress.answers).filter(([id]) => anchors.has(id))),
+      archivedRevisions: { ...archivedRevisions, '1': archive }, migratedFromRevision: 1,
+      ...(progress.completedAt !== undefined ? { previousRevisionCompletedAt: progress.completedAt }
+        : progress.previousRevisionCompletedAt !== undefined ? { previousRevisionCompletedAt: progress.previousRevisionCompletedAt } : {}),
+    }
+  }
+
   // W-MATH-034: apply the accepted v1->v2 reset before adding new N09 decisions.
   if (unit.unitId === 'math-numbers-expressions-n09' && unit.revision === 3
       && progress.unitId === unit.unitId && [1, 2].includes(progress.unitRevision)) {

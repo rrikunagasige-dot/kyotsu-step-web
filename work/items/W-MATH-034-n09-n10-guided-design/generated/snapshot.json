@@ -1,11 +1,11 @@
 {
   "work": "W-MATH-034",
   "engine_version": "1.0.0",
-  "ledger_head": "4653b60aa57d6bd4d841b0765b94dc4ccecfacb4980bc6981ef9b036d465cc1d",
+  "ledger_head": "67c17624bcfea05bdaa2b842ce74f61b5765fc774b980d233c5442b37096b108",
   "work_status": "IMPLEMENTING",
   "profile": "material",
   "simulation": false,
-  "candidate_sha": "8efe6b55175650a423e2317d1881507cb597fe9a",
+  "candidate_sha": "e2a911104e04ca23fad8ffbd1493a98cd949a4e7",
   "next": {
     "status": "READY",
     "task": {
@@ -58,10 +58,10 @@
         ],
         "required_ai_receipts": []
       },
-      "task_id": "2d65ccb0bb7d5b6a6df9b749f68b12216040bb553a2d89a6531ab5c5ae88eebd",
-      "input_hash": "9a9d960f2c7c587bcbb0dc3210858f28744f5e68a33498f439e4cbf21b341e12",
+      "task_id": "a73969a7eed6677ff011a1f254055ad98b27de3f0b112e1e4ee9dceea96b941e",
+      "input_hash": "0a1b5e2342148d820dbeff62eed702fa10f00b4b5e7e6251ab138fbe97bdefa7",
       "source_sha": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
-      "candidate_sha": "8efe6b55175650a423e2317d1881507cb597fe9a",
+      "candidate_sha": "e2a911104e04ca23fad8ffbd1493a98cd949a4e7",
       "rules": {
         "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
         "governance/REVIEW_POLICY.json": "a71148f007a79b124385c7645e6bc01564bfa02b12152174883543f31f6ce72d",
@@ -117,8 +117,8 @@
       "previous_results": {
         "R06_PATCH@n09": {
           "actor": "capability-runner",
-          "artifact": "fe95d8bc0ffc95fe3fdbdc853d7664024033993062b8819062a7d8fa6090140b",
-          "input_hash": "e1dfbe0b426a58d07dc2c960e1caf92b476ea6f093cebf52b4d1c7d14843dede",
+          "artifact": "5096404aa21b4b82c5d56387b1f879635af9a35fe9469851eb0dda75b5fd3716",
+          "input_hash": "297f68218a0fb7a5568c1412acf905cb4f14ac928f871dc6e9c8d17bac293afa",
           "node": "R06_PATCH@n09",
           "verdict": "PASS"
         }
@@ -1582,7 +1582,7 @@
     {
       "id": "W-MATH-034",
       "work": "W-MATH-034",
-      "version": "8efe6b55175650a423e2317d1881507cb597fe9a",
+      "version": "e2a911104e04ca23fad8ffbd1493a98cd949a4e7",
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
     }
@@ -1803,6 +1803,11 @@
       "input_hash": "e1dfbe0b426a58d07dc2c960e1caf92b476ea6f093cebf52b4d1c7d14843dede",
       "node": "R06_PATCH@n09",
       "receipt": "7553d7334f0d39c6484cfcf71357319a6bf6e85852feb9c24c1f8454b794f83b"
+    },
+    {
+      "input_hash": "297f68218a0fb7a5568c1412acf905cb4f14ac928f871dc6e9c8d17bac293afa",
+      "node": "R06_PATCH@n09",
+      "receipt": "b801b6a0d2a90fb692f831b3f92cf593705fd29cb7a762e6c2801dab8987108c"
     }
   ],
   "release_acceptance": {

@@ -69,12 +69,16 @@ jobs:
         run: node work/items/W-MATH-033-n08-absolute-value/verify_app.mjs
       - name: N09 complete learner flow at four widths
         if: contains(github.ref, 'n09-n10-guided')
-        run: node work/items/W-MATH-034-n09-n10-guided-design/verify_app.mjs
+        run: |
+          node work/items/W-MATH-034-n09-n10-guided-design/verify_app.mjs
+          node work/items/W-MATH-034-n09-n10-guided-design/verify_n10_app.mjs
       - uses: actions/upload-artifact@v4
         if: always() && contains(github.ref, 'n09-n10-guided')
         with:
           name: n09-learner-evidence
-          path: /tmp/n09-browser
+          path: |
+            /tmp/n09-browser
+            /tmp/n10-browser
           if-no-files-found: warn
       - uses: actions/upload-artifact@v4
         if: always() && contains(github.ref, 'n08-absolute-value')

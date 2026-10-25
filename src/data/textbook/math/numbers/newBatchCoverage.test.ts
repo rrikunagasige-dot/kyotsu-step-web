@@ -1,3 +1,4 @@
+import { mathNumbersN10Unit as n10LegacyUnit } from '../../../../test/n10Legacy'
 import { mathNumbersN09Unit as n09LegacyUnit } from '../../../../test/n09Legacy'
 // Historical edition regression; current-theme coverage lives in firstThemeRepair.test.ts.
 import { firstThemeBaseline } from '../../../../test/firstThemeBaseline'
@@ -23,7 +24,7 @@ import { n08SourceToItemIds, mathNumbersN08Unit as n08LegacyUnit } from '../../.
 import { n11SourceToItemIds } from './n11Lesson'
 import { n13SourceToItemIds } from './n13Lesson'
 import { n14SourceToItemIds } from './n14Lesson'
-const mathTextbookUnits = current_mathTextbookUnits.map(unit => firstThemeBaseline(unit.unitId === n09LegacyUnit.unitId ? n09LegacyUnit : unit.unitId === n07LegacyUnit.unitId ? n07LegacyUnit : unit.unitId === n08LegacyUnit.unitId ? n08LegacyUnit : unit))
+const mathTextbookUnits = current_mathTextbookUnits.map(unit => firstThemeBaseline(unit.unitId === n10LegacyUnit.unitId ? n10LegacyUnit : unit.unitId === n09LegacyUnit.unitId ? n09LegacyUnit : unit.unitId === n07LegacyUnit.unitId ? n07LegacyUnit : unit.unitId === n08LegacyUnit.unitId ? n08LegacyUnit : unit))
 
 
 const specs = [

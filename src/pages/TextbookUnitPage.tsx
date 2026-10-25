@@ -1,3 +1,4 @@
+import { n10Presentation } from '../data/textbook/math/numbers/n10Lesson'
 import { GuidedMathReadingFlow } from '../components/textbook/GuidedMathReadingFlow'
 import { n09Presentation } from '../data/textbook/math/numbers/n09Lesson'
 import { N08ReadingFlow } from '../components/textbook/N08ReadingFlow'
@@ -144,7 +145,9 @@ export function TextbookReadingFlow(props: ReadingFlowProps) {
     : props.unit.unitId === 'math-numbers-expressions-n08' && props.unit.revision === 4
       ? <N08ReadingFlow {...props} />
       : props.unit.unitId === 'math-numbers-expressions-n09' && props.unit.revision === 3
-        ? <GuidedMathReadingFlow {...props} presentation={n09Presentation} /> : <LegacyTextbookReadingFlow {...props} />
+        ? <GuidedMathReadingFlow key={props.unit.unitId} {...props} presentation={n09Presentation} />
+        : props.unit.unitId === 'math-numbers-expressions-n10' && props.unit.revision === 2
+          ? <GuidedMathReadingFlow key={props.unit.unitId} {...props} presentation={n10Presentation} /> : <LegacyTextbookReadingFlow {...props} />
 }
 
 function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, onReviewAnswer, reviewMarks }: ReadingFlowProps) {

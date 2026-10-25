@@ -57,3 +57,22 @@ describe('W034 N09 approved reader and old saves',()=>{
  })
 
 })
+
+import {mathNumbersN10Unit as unit10,n10Presentation as data10} from '../../../src/data/textbook/math/numbers/n10Lesson'
+import {mathNumbersN10Unit as old10} from '../../../src/test/n10Legacy'
+function html10(progress:TextbookUnitProgress|undefined,stage:number){localStorage.setItem('math-textbook-compact-v1:'+unit10.unitId+':r2',String(stage));return renderToStaticMarkup(<GuidedMathReadingFlow presentation={data10} unit={unit10} section={unit10.sections[0]} progress={progress} />)}
+describe('W034 N10 approved proof and rationalization',()=>{
+ it('keeps all21 contracts within45 active derivation decisions',()=>{
+  expect(unit10.sections[0].items).toHaveLength(45);expect(data10.nodes).toHaveLength(45);expect(data10.stages).toHaveLength(12)
+  for(const item of old10.sections[0].items)expect(unit10.sections[0].items.find(i=>i.id===item.id)?.answer).toBe(item.answer)
+ })
+ it('renders every before/after state including nested radical and long fractions',()=>{
+  let progress:TextbookUnitProgress|undefined
+  for(const node of data10.nodes){const stage=data10.stages.findIndex(s=>s.id===node.stageId);const before=html10(progress,stage);expect(before,node.id).not.toContain('katex-error');expect(before).toContain('textbook-item-'+node.interaction);const item=unit10.sections[0].items.find(i=>i.id===node.interaction)!;progress=answerTextbookItem(progress,unit10,item,item.answer,20);expect(html10(progress,stage),node.id).not.toContain('katex-error')}
+  expect(html10(progress,11)).toContain('n10-complete')
+ })
+ it('archives original records and reopens only the new intermediate decisions',()=>{
+  let p:TextbookUnitProgress|undefined;for(const item of old10.sections[0].items){p=answerTextbookItem(p,old10,item,item.choices!.find(x=>x!==item.answer)!,10);p=answerTextbookItem(p,old10,item,item.answer,20)}
+  const next=effectiveTextbookProgress(unit10,p)!;expect(next.unitRevision).toBe(2);expect(next.answers).toEqual(p!.answers);expect(next.archivedRevisions?.['1'].answers).toEqual(p!.answers);expect(next.completedAt).toBeUndefined();expect(next.previousRevisionCompletedAt).toBe(20);expect(html10(next,11)).toContain('textbook-item-n10-q01-square')
+ })
+})

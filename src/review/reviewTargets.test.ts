@@ -1,7 +1,7 @@
 // Historical edition regression; current-theme coverage lives in firstThemeRepair.test.ts.
 import { firstThemeBaseline, firstThemeBaselineTargets } from '../test/firstThemeBaseline'
 import { mathNumbersN04Unit as current_mathNumbersN04Unit } from '../data/textbook/math/numbers/n04Lesson'
-import { mathNumbersN10Unit } from '../data/textbook/math/numbers/n10Lesson'
+import { mathNumbersN10Unit } from '../test/n10Legacy'
 import { mathNumbersN12Unit } from '../data/textbook/math/numbers/n12Lesson'
 import { describe, expect, it } from 'vitest'
 import { mathNumbersN01Unit as current_mathNumbersN01Unit } from '../data/textbook/math/numbers/n01Lesson'

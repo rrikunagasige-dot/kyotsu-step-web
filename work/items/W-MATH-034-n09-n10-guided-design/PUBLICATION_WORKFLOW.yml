@@ -19,15 +19,15 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     env:
-      CANDIDATE_SHA: '8efe6b55175650a423e2317d1881507cb597fe9a'
-      VITE_PREVIEW_COMMIT: '8efe6b55175650a423e2317d1881507cb597fe9a'
+      CANDIDATE_SHA: 'e2a911104e04ca23fad8ffbd1493a98cd949a4e7'
+      VITE_PREVIEW_COMMIT: 'e2a911104e04ca23fad8ffbd1493a98cd949a4e7'
       VITE_REVIEW_PREVIEW: 'true'
       VITE_BASE_PATH: '/kyotsu-step-web/'
       VITE_STORAGE_NAMESPACE: 'kyotsu-step-gate3-math-20261023'
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: '8efe6b55175650a423e2317d1881507cb597fe9a'
+          ref: 'e2a911104e04ca23fad8ffbd1493a98cd949a4e7'
           fetch-depth: 0
           persist-credentials: false
       - uses: pnpm/action-setup@v4

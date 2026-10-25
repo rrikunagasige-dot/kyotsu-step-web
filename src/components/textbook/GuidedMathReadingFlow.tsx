@@ -65,6 +65,19 @@ export function GuidedMathReadingFlow({ presentation, unit, section, progress, o
     </span>
   }
   function formula(source: string, id: string, parts: readonly ReactNode[] = [], itemIds: Record<number, string> = {}) {
+    const nested = /\\sqrt\{§(\d+)§\}/.exec(source)
+    if (nested) {
+      const itemId = itemIds[Number(nested[1])]
+      const item = items.find(i => i.id === itemId)!
+      const node = data.nodes.find(n => n.interaction === itemId)!
+      const retry = Boolean(current?.answers[itemId])
+      // KaTeX receives the complete balanced radical. One native button owns
+      // the visible boxed slot; no mathematical command is split at the control.
+      const math = source.replace(/§\d+§/g, retry ? '\\boxed{\\text{もう一度}}' : '\\boxed{\\text{選択}}')
+      return <button type="button" className="guided-formula-slot" data-testid={'textbook-item-' + itemId} data-semantic-id={node.id + '-slot'} aria-label={item.prompt} onClick={() => setActiveId(itemId)}>
+        <TypesetFormula source={math} sourceId={id} unitId={unit.unitId} />
+      </button>
+    }
     const rows = (id.startsWith('n09-08-') || id.includes('option-n09-08-')) && !source.includes('§')
       ? textbookDisplayLines('n09-08', source) : [source]
     if (rows.length === 1) return <TypesetFormula source={source} sourceId={id} unitId={unit.unitId} parts={parts} itemIds={itemIds} />
@@ -123,7 +136,7 @@ export function GuidedMathReadingFlow({ presentation, unit, section, progress, o
     </span>)
     const source = block.parts.map((p, i) => p.type === 'math' ? p.latex : p.type === 'choice' ? '§' + i + '§' : '\\text{' + p.text + '}').join('')
     const itemIds = Object.fromEntries(block.parts.flatMap((p, i) => p.type === 'choice' ? [[i, p.itemId]] : []))
-    return <div key={block.id} data-block-id={block.id} data-formula-semantic-parts={JSON.stringify(block.parts)}>
+    return <div key={block.id} className={/n09-q14-(positive|negative)-integer/.test(block.id) ? "guided-number-below" : undefined} data-block-id={block.id} data-formula-semantic-parts={JSON.stringify(block.parts)}>
       <NumberedEquation number={formulaNumbers[block.id]} logical>{logical(source, block.id, mathParts, itemIds) ?? formula(source, block.id, mathParts, itemIds)}</NumberedEquation>
       {choices.map(panel)}
     </div>
@@ -137,7 +150,7 @@ export function GuidedMathReadingFlow({ presentation, unit, section, progress, o
       <tbody>{table.rows.map((row, i) => <tr key={i}>{row.map((cell, j) => <td key={j}><TypesetInlineMath latex={cell} sourceId={n.id + '-cell-' + i + '-' + j} unitId={unit.unitId} /></td>)}</tr>)}</tbody></table>
     if (n.id !== 'n09-14') return <>{compiled.after.map(renderBlock)}{tableView}</>
     const equation = compiled.after.find(b => b.type === 'formula')!
-    return <><div data-typeset-source={equation.id} data-table-projection="equivalent-answer" data-formula-semantic-parts={JSON.stringify(equation.parts)}>
+    return <><div className="guided-number-below" data-typeset-source={equation.id} data-table-projection="equivalent-answer" data-formula-semantic-parts={JSON.stringify(equation.parts)}>
       <NumberedEquation number={formulaNumbers[equation.id]} logical>{tableView}</NumberedEquation>
     </div>{compiled.after.filter(b => b !== equation).map(renderBlock)}</>
   }

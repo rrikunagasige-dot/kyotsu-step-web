@@ -12,7 +12,7 @@ def code_operation(rt,work,nid,inputs):
     state=rt.state(work)
     if nid in ('S00','S01'):
         import hashlib
-        expected=state['plan']['source_manifest'];current=manifest(rt.root,expected)
+        expected=state['plan']['source_manifest'];current=manifest(rt.root,state['candidate_manifest'])
         opened=next(e for e in rt.store.events() if e['work']==work and e['kind']=='opened')
         original=rt.store.get(opened['payload']['original_snapshot'])
         frozen={p:hashlib.sha256(bytes.fromhex(v)).hexdigest() for p,v in original['files_hex'].items()}
@@ -45,7 +45,7 @@ def code_operation(rt,work,nid,inputs):
         symbols=inputs['symbols'];ids=[s['id'] for s in symbols]
         return {'status':'PASS' if len(ids)==len(set(ids)) and all(s.get('definitionRef') and s.get('scope') for s in symbols) else 'FAIL','knowledgeLedger':symbols}
     if nid=='S07':
-        if inputs.get('kind')=='solution':
+        if inputs.get('kind')=='solution' or inputs.get('schemaVersion')=='solution-bundle/1':
             proc=subprocess.run(['node',str(rt.root/'tools/textbook/operations.mjs'),'solution-validate'],input=json.dumps(inputs),capture_output=True,text=True,cwd=rt.root,timeout=30)
             try:return json.loads(proc.stdout)
             except ValueError:return {'status':'FAIL','reason':'SOLUTION_ADAPTER_OUTPUT','stderr':proc.stderr}

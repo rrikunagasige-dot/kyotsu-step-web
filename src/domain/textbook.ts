@@ -265,6 +265,28 @@ export function effectiveTextbookProgress(unit: TextbookUnit, progress: Textbook
     }
   }
 
+  // W-MATH-037: reversible r4/r5 migration; old answers override their archived copies.
+  if (unit.unitId === 'math-numbers-expressions-n08' && progress.unitId === unit.unitId
+      && [4, 5].includes(unit.revision) && (progress.unitRevision === 4 || progress.unitRevision === 5 || (unit.revision === 5 && progress.unitRevision < 4))) {
+    const previous = progress.unitRevision < 4
+      ? effectiveTextbookProgress({ ...unit, revision: 4 }, progress) : progress
+    if (!previous) return undefined
+    const { archivedRevisions, ...archive } = previous
+    const targetArchive = archivedRevisions?.[String(unit.revision)]
+    const ids = new Set(unit.sections.flatMap(section => section.items.map(item => item.id)))
+    const answers = Object.fromEntries(Object.entries({ ...targetArchive?.answers, ...previous.answers }).filter(([id]) => ids.has(id)))
+    const restoredCompletion = targetArchive?.completedAt
+    return {
+      unitId: unit.unitId, unitRevision: unit.revision,
+      startedAt: previous.startedAt, updatedAt: previous.updatedAt, answers,
+      archivedRevisions: { ...archivedRevisions, [String(previous.unitRevision)]: archive },
+      migratedFromRevision: previous.unitRevision,
+      ...(restoredCompletion !== undefined ? { completedAt: restoredCompletion } : {}),
+      ...(previous.completedAt !== undefined ? { previousRevisionCompletedAt: previous.completedAt }
+        : previous.previousRevisionCompletedAt !== undefined ? { previousRevisionCompletedAt: previous.previousRevisionCompletedAt } : {}),
+    }
+  }
+
   // W-MATH-033: keep original N08 answer records; new intermediate IDs remain unanswered.
   if (unit.unitId === 'math-numbers-expressions-n08' && unit.revision === 4
       && progress.unitId === unit.unitId && [1, 2, 3].includes(progress.unitRevision)) {

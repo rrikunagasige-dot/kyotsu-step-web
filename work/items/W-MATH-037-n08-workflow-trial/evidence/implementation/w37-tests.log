@@ -1,0 +1,81 @@
+
+ RUN  v3.2.7 /workspace/scratch/f79c5816761e/kyotsu-step-web
+
+ ✓ src/data/textbook/math/numbers/n07Integration.test.ts (3 tests) 540ms
+   ✓ approved N07 code-to-app integration > binds the registered v4 unit to the exact approved plan and reproducible output  507ms
+ ✓ src/data/textbook/math/mathReviewIntegrity.test.ts (5 tests) 71ms
+ ✓ src/data/textbook/math/numbers/firstThemeRepair.test.ts (16 tests) 502ms
+   ✓ 2026-10-24 current first-theme edition > renders every inserted expression and all distractors without malformed math  383ms
+ ✓ src/data/textbook/math/numbers/firstSectionTeaching.test.tsx (16 tests) 665ms
+ ✓ src/components/textbook/firstThemeChoiceLayout.test.ts (5 tests) 810ms
+   ✓ first-theme mathematical choice readability and written derivations > renders every correct and wrong option in the seven real units at semantic breakpoints  732ms
+ ✓ src/domain/textbookFormula.test.ts (4 tests) 908ms
+   ✓ textbook formula renderer > renders every Chapter 1 formula with unresolved holes without KaTeX errors or HTML-extension commands  650ms
+ ✓ src/data/textbook/math/numbers/newBatchCoverage.test.ts (48 tests) 390ms
+ ✓ src/data/textbook/math/numbers/numbersPilots.test.ts (11 tests) 197ms
+ ✓ src/data/textbook/math/numbers/firstSectionRefinements.test.tsx (19 tests) 1510ms
+   ✓ P-003 first section: active derivation and retained results > renders every current formula before and after answers without breaking mathematical tokens  1085ms
+ ✓ src/components/textbook/formulaWrap.test.tsx (85 tests) 396ms
+ ✓ src/data/textbook/math/numbers/numbersNextBatch.test.ts (9 tests) 144ms
+ ✓ src/components/textbook/SemanticReading.test.tsx (1 test) 20ms
+ ✓ src/components/textbook/TextbookFormula.test.tsx (10 tests) 102ms
+ ✓ src/data/textbook/math/numbers/developmentLessons.test.ts (5 tests) 171ms
+ ✓ src/data/textbook/math/numbers/n04Lesson.test.ts (5 tests) 75ms
+ ✓ src/data/textbook/math/numbers/n09Atomicity.test.ts (5 tests) 50ms
+ ✓ src/data/textbook/math/numbers/r3LocalTokens.test.ts (4 tests) 59ms
+ ✓ src/data/textbook/math/numbers/n01Teaching.test.tsx (4 tests) 77ms
+ ✓ src/data/textbookUnits.test.ts (15 tests) 67ms
+ ✓ src/data/textbook/math/numbers/wMath022P001.test.ts (5 tests) 45ms
+ ✓ src/data/textbook/math/numbers/n12DerivationIntegrity.test.ts (6 tests) 26ms
+ ✓ src/data/mathPractice/adapter.test.ts (37 tests) 71ms
+ ✓ src/data/textbook/math/numbers/firstThemeR2.test.ts (3 tests) 33ms
+ ✓ src/data/textbook/math/set/setLesson.test.ts (21 tests) 28ms
+ ✓ src/data/questionCatalog.zh.test.ts (3 tests) 57ms
+ ✓ src/data/textbook/math/numbers/wMath023StageB.test.ts (4 tests) 32ms
+ ✓ src/data/textbook/math/numbers/wMath024N05Q18.test.ts (4 tests) 18ms
+ ✓ src/data/textbook/math/presentation.test.ts (8 tests) 18ms
+ ✓ src/data/textbook/math/numbers/wMath017P007.test.ts (4 tests) 10ms
+ ✓ src/data/textbook/math/numbers/n02ZeroTerm.test.ts (4 tests) 16ms
+ ✓ src/domain/textbook.test.ts (16 tests) 28ms
+ ✓ src/components/textbook/TextbookFigure.test.tsx (2 tests) 14ms
+ ✓ src/review/reviewTargets.test.ts (21 tests) 27ms
+ ✓ src/data/textbook/math/numbers/wMath020P001.test.ts (5 tests) 29ms
+ ✓ src/domain/analytics.test.ts (2 tests) 29ms
+ ✓ src/data/textbook/math/numbers/wMath017ProseIntegration.test.ts (4 tests) 10ms
+ ✓ src/data/textbookFigureAssets.test.ts (3 tests) 17ms
+ ✓ src/data/textbook/math/numbers/wMath026N06Q12.test.ts (3 tests) 24ms
+ ✓ src/components/textbook/typesetRows.test.ts (6 tests) 9ms
+ ✓ src/data/textbook/math/numbers/wMath025N05Q11.test.ts (4 tests) 15ms
+ ✓ src/data/textbook/math/mathCatalog.test.ts (12 tests) 15ms
+ ✓ src/data/textbook/math/numbers/wMath023StageA.test.ts (5 tests) 30ms
+ ✓ src/data/mathPractice/presentation.test.ts (18 tests) 15ms
+ ✓ src/domain/textbookSchema.test.ts (6 tests) 22ms
+ ✓ src/data/textbook/math/numbers/wMath018P001.test.ts (4 tests) 22ms
+ ✓ src/data/questionCatalog.test.ts (4 tests) 21ms
+ ✓ src/data/textbook/math/numbers/n01Lesson.test.ts (8 tests) 25ms
+ ✓ src/data/textbook/math/numbers/wMath019P001.test.ts (4 tests) 14ms
+ ✓ src/data/textbook/math/proposition/propositionProofLesson.test.ts (18 tests) 17ms
+ ✓ src/domain/textbookMath.test.ts (17 tests) 13ms
+ ✓ src/data/textbook/math/proposition/propositionReadingLesson.test.ts (21 tests) 23ms
+ ✓ src/data/textbook/math/numbers/wMath017P008.test.ts (4 tests) 17ms
+ ✓ src/data/textbook/math/proposition/quantifierLesson.test.ts (15 tests) 20ms
+ ✓ src/data/mathPractice/figures.test.ts (9 tests) 7ms
+ ✓ src/data/textbook/math/function/functionConditionsLesson.test.ts (8 tests) 9ms
+ ✓ src/data/textbook/math/mathFigureAssets.test.ts (3 tests) 8ms
+ ✓ src/data/textbook/ch01/chapter1Architecture.test.ts (2 tests) 6ms
+ ✓ src/data/textbook/chapterCatalog.test.ts (3 tests) 5ms
+ ✓ src/app/App.test.ts (1 test) 3ms
+ ✓ src/domain/scoring.test.ts (3 tests) 5ms
+ ✓ src/domain/recommendation.test.ts (1 test) 14ms
+ ✓ src/domain/ranking.test.ts (1 test) 5ms
+ ✓ src/data/mathPracticeTaxonomy.test.ts (7 tests) 7ms
+ ✓ src/domain/learning.test.ts (3 tests) 4ms
+ ✓ src/data/textbook/math/mathFrontmatterLeak.test.ts (5 tests) 4ms
+ ✓ src/data/textbookPracticeQuestions.test.ts (2 tests) 2ms
+ ✓ src/app/ErrorBoundary.test.tsx (1 test) 107ms
+
+ Test Files  67 passed (67)
+      Tests  620 passed (620)
+   Start at  12:41:20
+   Duration  11.13s (transform 5.87s, setup 0ms, collect 33.54s, tests 7.75s, environment 429ms, prepare 6.31s)
+

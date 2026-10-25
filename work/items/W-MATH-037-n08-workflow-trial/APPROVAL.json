@@ -1,0 +1,14 @@
+{
+  "quote": "えっとね。やっていいよ。\n\nしかし前のN08も残して、もし不満だったらまた戻れるし",
+  "proposalHash": "71e6f67bb98d372a6146502cba0f69d13967f3047af9be59a8a86b1cb6a7eb6d",
+  "designHash": "e47bcf98385721926c427328b7701f2bb05fb613c161559750f894958ab475a3",
+  "approvedCommit": "f927ebdbb518806a846ae9bba9290ed39dd75e06",
+  "sourceRef": "current-conversation:N08-specific-approval-and-preserve-old-version",
+  "scope": [
+    "bounded production adapter upgrades in P001",
+    "N08 r5 39 nodes/34 interactions",
+    "r4 preservation and reversible selection",
+    "existing public app after internal QA"
+  ],
+  "qualityLabel": null
+}

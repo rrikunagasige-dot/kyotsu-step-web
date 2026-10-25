@@ -5,19 +5,43 @@ from html.parser import HTMLParser
 from xml.etree import ElementTree as ET
 
 class HTMLBlocks(HTMLParser):
-    def __init__(self):super().__init__(convert_charrefs=True);self.blocks=[];self.buffer=[];self.skip=0;self.pos=None
+    VOID={'br','img','hr','meta','link','input','wbr','source','area','embed','param','track','col'}
+    def __init__(self):
+        super().__init__(convert_charrefs=True);self.blocks=[];self.buffer=[];self.skip=0;self.pos=None;self.math=None;self.depth=0;self.annotation=False
     def handle_starttag(self,tag,attrs):
+        a=dict(attrs)
+        if self.math is not None:
+            if tag not in self.VOID:self.depth+=1
+            self.math['markup'].append(self.get_starttag_text())
+            if a.get('data-mml-node')=='math' and a.get('data-latex') and not self.math.get('latex'):self.math['latex']=a['data-latex'];self.math['method']='mathjax-root-data-latex'
+            if tag=='annotation' and a.get('encoding','').lower() in ('application/x-tex','application/x-latex'):self.annotation=True;self.math['annotation']=[]
+            return
         if tag in ('script','style'):self.skip+=1
-        if tag in ('p','h1','h2','h3','li','math','figure','table'):
+        if self.skip:return
+        if tag in ('mjx-container','math') or 'katex' in a.get('class','').split():
+            self.flush();self.depth=1;self.math={'markup':[self.get_starttag_text()],'plain':[],'location':{'line':self.getpos()[0],'column':self.getpos()[1],'tag':tag},'label':a.get('aria-label')};return
+        if tag in ('p','h1','h2','h3','h4','li','figure','table'):
             self.flush();self.pos={'line':self.getpos()[0],'column':self.getpos()[1],'tag':tag}
         if tag=='img':
-            self.flush();a=dict(attrs)
-            self.blocks.append({'kind':'figure','text':a.get('alt',''),'imageRef':a.get('src',''),'location':{'line':self.getpos()[0],'column':self.getpos()[1],'tag':tag},'review':'NEEDS_SOURCE_REVIEW'})
+            self.flush();self.blocks.append({'kind':'figure','text':a.get('alt',''),'imageRef':a.get('src',''),'location':{'line':self.getpos()[0],'column':self.getpos()[1],'tag':tag},'review':'NEEDS_SOURCE_REVIEW'})
     def handle_endtag(self,tag):
+        if self.math is not None:
+            self.math['markup'].append('</'+tag+'>')
+            if tag=='annotation':self.annotation=False
+            self.depth-=1
+            if self.depth==0:
+                m=self.math;latex=''.join(m.get('annotation',[])).strip() or m.get('latex');plain=' '.join(''.join(m['plain']).split())
+                self.blocks.append({'kind':'math','text':latex or plain,'latex':latex,'originalMathMarkup':''.join(m['markup']),'extractionMethod':'tex-annotation' if m.get('annotation') else m.get('method','mathml-needs-review'),'accessibleLabel':m.get('label'),'location':m['location'],'review':'NEEDS_SOURCE_REVIEW'})
+                self.math=None
+            return
         if tag in ('script','style'):self.skip=max(0,self.skip-1)
-        if tag in ('p','h1','h2','h3','li','math','figure','table'):self.flush()
+        if tag in ('p','h1','h2','h3','h4','li','figure','table'):self.flush()
     def handle_data(self,data):
-        if not self.skip:self.buffer.append(data)
+        if self.math is not None:
+            from html import escape
+            self.math['markup'].append(escape(data));self.math['plain'].append(data)
+            if self.annotation:self.math['annotation'].append(data)
+        elif not self.skip:self.buffer.append(data)
     def flush(self):
         text=' '.join(''.join(self.buffer).split());self.buffer=[]
         if text:self.blocks.append({'kind':'text','text':text,'location':self.pos or {'line':1,'column':0,'tag':'body'},'review':'NEEDS_SOURCE_REVIEW'})
@@ -38,7 +62,9 @@ def extract(path,source_id,engine='native'):
                 blocks.append({'kind':'text','text':text,'location':{'provenance':provenance},'review':'NEEDS_SOURCE_REVIEW'})
         version=importlib.metadata.version('docling')
     elif p.suffix.lower() in ('.html','.htm'):
-        parser=HTMLBlocks();parser.feed(data.decode('utf8'));parser.flush();blocks=parser.blocks;version='stdlib-html/1'
+        parser=HTMLBlocks();parser.feed(data.decode('utf8'));parser.close()
+        if parser.math is not None:raise ValueError('UNCLOSED_MATH_REQUIRES_SOURCE_REVIEW')
+        parser.flush();blocks=parser.blocks;version='stdlib-html/2'
     elif p.suffix.lower()=='.docx':
         ns={'w':'http://schemas.openxmlformats.org/wordprocessingml/2006/main','m':'http://schemas.openxmlformats.org/officeDocument/2006/math'}
         with zipfile.ZipFile(p) as z:

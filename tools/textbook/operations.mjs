@@ -10,6 +10,7 @@ import {hash} from './util.mjs';
 import {inspectResearch,prepareResearchAnalysis} from './research/manifest.mjs';
 import {importResearchAnalysis,retrievePatterns} from './research/patterns.mjs';
 import {verifySolution} from './solution/verify.mjs';
+import {verifyBundle} from './solution/bundle.mjs';
 import {planBlanks,verifyBlankDecisions} from './interaction/plan.mjs';
 import {prepareSolutionReview,importSolutionReview} from './ai/solution-review.mjs';
 import {visibleFromCompiledV2} from './ir/v2.mjs';
@@ -17,15 +18,21 @@ export function operate(operation,input){
  if(operation==='research-manifest')return inspectResearch(input.manifest??input);
  if(operation==='research-analysis')return input.response?importResearchAnalysis(input.request,input.response):prepareResearchAnalysis(input.manifest,input.extraction);
  if(operation==='research-patterns')return retrievePatterns(input.patterns,input.query);
- if(operation==='solution-validate')return verifySolution(input.graph??input);
+ if(operation==='solution-validate')return input.schemaVersion==='solution-bundle/1'?verifyBundle(input):verifySolution(input.graph??input);
  if(operation==='interaction-plan')return input.decisions?verifyBlankDecisions(input.plan,input.decisions):planBlanks(input);
  if(operation==='render-solution')return {status:'PASS',compiled:compileIR(input.ir??input)};
+ if(operation==='solution-review'&&input.reviews){
+  if(!Array.isArray(input.reviews)||!input.reviews.length||input.reviews.length>200||new Set(input.reviews.map(r=>r.id)).size!==input.reviews.length)return {status:'FAIL',reason:'REVIEW_BATCH_COVERAGE'};
+  const reviews=input.reviews.map(r=>({id:r.id,...(r.response?importSolutionReview(r.request,r.response):prepareSolutionReview(r.visible,r.context))}));
+  return {status:reviews.some(r=>r.status==='FAIL')?'FAIL':reviews.some(r=>r.status==='NEEDS_AI_REVIEW')?'NEEDS_AI_REVIEW':'PASS',reviews,automaticAcceptance:false};
+ }
  if(operation==='solution-review')return input.response?importSolutionReview(input.request,input.response):prepareSolutionReview(input.visible,input.context);
  if(operation==='coverage'){
   const ir=input.ir??input;
   if(ir.schemaVersion==='production-ir/2')return sourceCoverage(ir.sourceBlocks,ir.coverage.map(c=>({...c,nodeIds:c.stepIds})),ir.problems.flatMap(p=>p.steps));
   return sourceCoverage(input.blocks,input.coverage,input.nodes);
  }
+ if(operation==='solve'&&input.schemaVersion==='solution-bundle/1')return verifyBundle(input);
  if(operation==='solve')return input.kind==='solution'||input.schemaVersion==='solution-graph/1'?verifySolution(input.graph??input):solve(input);
  if(operation==='solution-receipts')return {status:'PASS',receipts:solutionReceipts(),meaningAuditRequired:true};
  if(operation==='teaching-candidates'){

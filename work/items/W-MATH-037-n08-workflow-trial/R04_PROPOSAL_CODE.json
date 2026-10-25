@@ -1,0 +1,72 @@
+{
+  "math.solve": {
+    "status": "PASS",
+    "outputArtifact": "070672710250c84857626145b58c1fc2bc8f5a6f0dec7bc8be74301e1bb3b699",
+    "receiptArtifact": "9967cd71b3a95b40813b29edadec918b07b2bd5217c7344f3e9b277532988785"
+  },
+  "math.verify": {
+    "status": "PASS",
+    "outputArtifact": "070672710250c84857626145b58c1fc2bc8f5a6f0dec7bc8be74301e1bb3b699",
+    "receiptArtifact": "c0c6fbfa2a04022838ae3f177043e86bcc3ebc718554293e5ade890e5180ac0d"
+  },
+  "teaching.plan": {
+    "status": "PASS",
+    "outputArtifact": "cf732f603e7a272d0ff4265cb9323684b23365872ab623923f441c80d5553ee0",
+    "receiptArtifact": "e1bb3227838fc1ebb25dd8648c2ca6f248c866978aa57a24d988bcaa9120d989"
+  },
+  "step.plan": {
+    "status": "PASS",
+    "outputArtifact": "cf732f603e7a272d0ff4265cb9323684b23365872ab623923f441c80d5553ee0",
+    "receiptArtifact": "b7d2a79a96d1d90ea9e45dc3770c8dc43821c45656e5f3b097a21de1f066319d"
+  },
+  "blank.plan": {
+    "status": "PASS",
+    "outputArtifact": "4276befb5c8a4c90e0f3db21da646769c95e31548aae47530ca3e84e85464ee4",
+    "receiptArtifact": "541e833f1c472e797b6253fc5492707c79769c5de7042e584f98b5fbfd5a3fe6"
+  },
+  "prose.compose": {
+    "status": "PASS",
+    "outputArtifact": "d6a613680d5c37662ad0f35ef8077e9be06bc75830d8b7568821b2659e77ece0",
+    "receiptArtifact": "f1d01e7e7e17c200ba4e29dcc4677e1e11afc408c72f22d743abe0e2a00c3596"
+  },
+  "text.verify": {
+    "status": "PASS",
+    "outputArtifact": "d6a613680d5c37662ad0f35ef8077e9be06bc75830d8b7568821b2659e77ece0",
+    "receiptArtifact": "93b518c338610ffac8049b3a374fbae09e056af2eba648c8effeb685e5835224"
+  },
+  "figure.verify": {
+    "status": "PASS",
+    "outputArtifact": "7001df781dc6189665d6cc245a8f3a0b28606767664bdbf0c4b0644aac4adc7d",
+    "receiptArtifact": "c4884e367f021f62dc84305bc4ee8bb074caa30fb981f1ab1af9017009049370"
+  },
+  "ir.verify": {
+    "status": "PASS",
+    "outputArtifact": "d6a613680d5c37662ad0f35ef8077e9be06bc75830d8b7568821b2659e77ece0",
+    "receiptArtifact": "000acb9005c0e31491f2537ab973ce62be22b148ce2f4ca3bbb6b27fc5804c0a"
+  },
+  "source.audit": {
+    "status": "NEEDS_AI_REVIEW",
+    "outputArtifact": "7d4e74f51a6462b457c622548193420f6e9a628a821f82eb966001b5c072f315",
+    "receiptArtifact": "4e6caf4ff26a441e28a8b66f72b2d2544cab7b9c136b573e74446e463f2b931c"
+  },
+  "novice.audit": {
+    "status": "PASS",
+    "outputArtifact": "46d1e3f47ec7da9f65fc8de6d6481eb1ee9a78ba6a3d6cba362ae2ab038cf292",
+    "receiptArtifact": "b2e21b0fdd154a221dd27ba7422833c9af64b98a2959adf8be9a6530e5035105"
+  },
+  "solution.validate": {
+    "status": "PASS",
+    "outputArtifact": "070672710250c84857626145b58c1fc2bc8f5a6f0dec7bc8be74301e1bb3b699",
+    "receiptArtifact": "255902bd9902064c6d5e0faec185efb01c079ae9356e0a32d953fa4710836181"
+  },
+  "interaction.plan": {
+    "status": "PASS",
+    "outputArtifact": "0756378f4d93acfd39d08279d06183a7dc64d9c9737f18b588d7dc91a9465447",
+    "receiptArtifact": "73f19305b4dc6bb188c72b6d8d6d7fcefaeff8e0377a856df657460d2c736727"
+  },
+  "solution.review": {
+    "status": "PASS",
+    "outputArtifact": "a2b4fdb6a61a273e0fa774103431333cb5fd29c868b1bd213e78bb4de62d9567",
+    "receiptArtifact": "3d8ac2e753c6cc95409965a8a98ee1d279f9fa490ec584cfa18639ed73d97bbf"
+  }
+}

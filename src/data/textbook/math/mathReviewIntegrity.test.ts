@@ -37,7 +37,7 @@ describe('math textbook review integrity', () => {
     }
   })
 
-  it('uses each inline choice item only once in the continuous reading flow', () => {
+  it('uses one answer per decision, including explicitly shared operation slots', () => {
     for (const unit of mathTextbookUnits) {
       for (const section of unit.sections) {
         const counts = new Map<string, number>()
@@ -54,13 +54,17 @@ describe('math textbook review integrity', () => {
           expect(
             counts.get(item.id) ?? 0,
             `${unit.unitId}/${item.id}: inline item should appear once`,
-          ).toBe(1)
+          ).toBe(unit.unitId === 'math-numbers-expressions-n08' && unit.revision === 5
+            && ['n08-r5-q06-operation-answer', 'n08-r5-q08-operation-answer'].includes(item.id) ? 2 : 1)
+          if ((counts.get(item.id) ?? 0) > 1) {
+            const owners = section.readingFlow.filter(block => (block.type === 'formula' || block.type === 'paragraph') && block.parts.some(part => part.type === 'choice' && part.itemId === item.id))
+            expect(owners).toHaveLength(1)
+            expect(owners[0].type).toBe('formula')
+          }
         }
       }
     }
   })
-
-
 
   it('does not print a text answer verbatim inside staged hints', () => {
     for (const unit of mathTextbookUnits.filter((candidate) => candidate.status === 'review')) {

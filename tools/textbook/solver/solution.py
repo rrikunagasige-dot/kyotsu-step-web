@@ -14,6 +14,15 @@ def ast(v,depth=0):
         import re
         if not re.fullmatch(r'[a-zA-Z][a-zA-Z0-9_]{0,15}',v['name']):raise ValueError('symbol')
         return sp.Symbol(v['name'],real=True)
+    if k=='constant':
+        if v['name']!='pi':raise Unsupported('constant')
+        return sp.pi
+    if k=='sqrt':
+        if v['argument'].get('kind')!='rational':raise Unsupported('only nonnegative rational square roots')
+        value=ast(v['argument'],depth+1)
+        if value<0:raise ValueError('negative real square root')
+        return sp.sqrt(value)
+    if k=='absolute':return sp.Abs(ast(v['argument'],depth+1))
     if k in ('add','multiply'):
         if not 2<=len(v['args'])<=12:raise ValueError('arity')
         args=[ast(a,depth+1) for a in v['args']]
@@ -37,10 +46,12 @@ def interval(d):
     if lo.free_symbols or hi.free_symbols:raise Unsupported('parameter interval boundaries')
     if lo>hi:raise ValueError('empty reversed interval')
     return sp.Interval(lo,hi,left_open=d['lowerOpen'],right_open=d['upperOpen'])
-def equal(a,b):return sp.expand(a-b)==0
+def equal(a,b):return sp.simplify(sp.expand(a-b))==0
 def polynomial(e):
     if len(e.free_symbols)>3:raise Unsupported('at most three real symbols')
-    if e.free_symbols and sp.Poly(e,*sorted(e.free_symbols,key=str)).total_degree()>4:raise Unsupported('degree exceeds four')
+    try:
+        if e.free_symbols and sp.Poly(e,*sorted(e.free_symbols,key=str)).total_degree()>4:raise Unsupported('degree exceeds four')
+    except sp.PolynomialError:raise Unsupported('nonpolynomial symbolic expressions require the bounded solution bundle')
 def required_form(statement,form):
     if statement['kind']!='expression':raise Unsupported('required form applies to expressions')
     e=statement['expression']
@@ -123,6 +134,9 @@ def transition(before,after,e):
     raise Unsupported('operation')
 
 def verify(payload):
+    if payload.get('schemaVersion')=='solution-bundle/1':
+        from bundle import verify_bundle
+        return verify_bundle(payload)
     if payload.get('kind')=='quadratic-plot':
         x=sp.Symbol(payload['variable'],real=True);f=ast(payload['function']);p=sp.Poly(f,x)
         if f.free_symbols-{x} or p.degree()!=2:raise Unsupported('numeric quadratic plot only')

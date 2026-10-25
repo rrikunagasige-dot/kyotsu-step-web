@@ -1,0 +1,709 @@
+{
+  "plan": {
+    "status": "PASS",
+    "bundleHash": "abb243ca964128be9112cf621080fbe6b2920510a019d90e89204cec39104a78",
+    "candidates": [
+      {
+        "id": "n08-q01-left-answer",
+        "nodeId": "n08-q01-left",
+        "segmentId": "distance-left",
+        "learnerDecision": "左側でも右の座標から左の座標を引く",
+        "nextUse": "左側でも右の座標から左の座標を引く",
+        "target": "interaction.expected.value",
+        "availableFacts": [
+          "distance-right-fact"
+        ],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n08-01",
+        "nodeId": "n08-01",
+        "segmentId": "distance-left",
+        "learnerDecision": "元の順序で二つの距離をまとめる",
+        "nextUse": "元の順序で二つの距離をまとめる",
+        "target": "interaction.expected.value",
+        "availableFacts": [
+          "distance-right-fact"
+        ],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n08-r5-q02-distance-answer",
+        "nodeId": "n08-r5-q02-distance",
+        "segmentId": "positive-distance-form",
+        "learnerDecision": "右側の点と原点の距離の式を作る",
+        "nextUse": "右側の点と原点の距離の式を作る",
+        "target": "interaction.expected.value",
+        "availableFacts": [],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n08-02",
+        "nodeId": "n08-02",
+        "segmentId": "definition-nonnegative",
+        "learnerDecision": "原点か右側なら座標が距離になる",
+        "nextUse": "原点か右側なら座標が距離になる",
+        "target": "interaction.expected.value",
+        "availableFacts": [
+          "positive-distance-form-fact"
+        ],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n08-q03-order-answer",
+        "nodeId": "n08-q03-order",
+        "segmentId": "definition-negative-distance",
+        "learnerDecision": "左側の点の距離を引き算で作る",
+        "nextUse": "左側の点の距離を引き算で作る",
+        "target": "interaction.expected.value",
+        "availableFacts": [],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n08-03",
+        "nodeId": "n08-03",
+        "segmentId": "definition-negative-simple",
+        "learnerDecision": "左側の距離を簡単にする",
+        "nextUse": "左側の距離を簡単にする",
+        "target": "interaction.expected.value",
+        "availableFacts": [
+          "definition-negative-distance-fact"
+        ],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n08-q04-substitute-answer",
+        "nodeId": "n08-q04-substitute",
+        "segmentId": "negative-substitution",
+        "learnerDecision": "負の値は括弧を付けて代入する",
+        "nextUse": "負の値は括弧を付けて代入する",
+        "target": "interaction.expected.value",
+        "availableFacts": [],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n08-04",
+        "nodeId": "n08-04",
+        "segmentId": "negative-number-result",
+        "learnerDecision": "代入した式の値を計算する",
+        "nextUse": "代入した式の値を計算する",
+        "target": "interaction.expected.value",
+        "availableFacts": [],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n08-q05-square-answer",
+        "nodeId": "n08-q05-square",
+        "segmentId": "root-square",
+        "learnerDecision": "正の二数の大小を比べる準備",
+        "nextUse": "正の二数の大小を比べる準備",
+        "target": "interaction.expected.value",
+        "availableFacts": [],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n08-q05-compare-answer",
+        "nodeId": "n08-q05-compare",
+        "segmentId": "squares-compare",
+        "learnerDecision": "二乗した値の大小を決める",
+        "nextUse": "二乗した値の大小を決める",
+        "target": "interaction.expected.value",
+        "availableFacts": [
+          "root-square-fact",
+          "three-square-fact"
+        ],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n08-05",
+        "nodeId": "n08-05",
+        "segmentId": "positive-root-order",
+        "learnerDecision": "根拠と元の数の大小関係を結ぶ",
+        "nextUse": "根拠と元の数の大小関係を結ぶ",
+        "target": "interaction.expected.value",
+        "availableFacts": [
+          "root-square-fact",
+          "three-square-fact",
+          "squares-compare-fact"
+        ],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n08-r5-q06-operation-answer",
+        "nodeId": "n08-r5-q06-operation",
+        "segmentId": "root-both-sides",
+        "learnerDecision": "前の大小関係から中身の符号へつなぐ",
+        "nextUse": "前の大小関係から中身の符号へつなぐ",
+        "target": "interaction.expected.value",
+        "availableFacts": [
+          "positive-root-order-fact"
+        ],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n08-q06-subtract-answer",
+        "nodeId": "n08-q06-subtract",
+        "segmentId": "root-negative",
+        "learnerDecision": "両辺から同じ数を引いて差の符号へ",
+        "nextUse": "両辺から同じ数を引いて差の符号へ",
+        "target": "interaction.expected.value",
+        "availableFacts": [
+          "root-both-sides-fact"
+        ],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n08-06",
+        "nodeId": "n08-06",
+        "segmentId": "root-negative",
+        "learnerDecision": "差が0より小さいことを言葉で読む",
+        "nextUse": "差が0より小さいことを言葉で読む",
+        "target": "interaction.expected.value",
+        "availableFacts": [
+          "root-both-sides-fact"
+        ],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n08-q07-rule-answer",
+        "nodeId": "n08-q07-rule",
+        "segmentId": "root-negative-rule",
+        "learnerDecision": "負の場合に使う規則を選ぶ",
+        "nextUse": "負の場合に使う規則を選ぶ",
+        "target": "interaction.expected.value",
+        "availableFacts": [
+          "root-negative-fact"
+        ],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n08-q07-bracket-answer",
+        "nodeId": "n08-q07-bracket",
+        "segmentId": "root-brackets",
+        "learnerDecision": "中身全体を括弧で囲んで負号を付ける",
+        "nextUse": "中身全体を括弧で囲んで負号を付ける",
+        "target": "interaction.expected.value",
+        "availableFacts": [
+          "root-negative-rule-fact"
+        ],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n08-q07-distribute-answer",
+        "nodeId": "n08-q07-distribute",
+        "segmentId": "root-distribute",
+        "learnerDecision": "負号を括弧の二項へ掛ける",
+        "nextUse": "負号を括弧の二項へ掛ける",
+        "target": "interaction.expected.value",
+        "availableFacts": [
+          "root-brackets-fact"
+        ],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n08-07",
+        "nodeId": "n08-07",
+        "segmentId": "root-final",
+        "learnerDecision": "正の項を先に並べて元の問いへ答える",
+        "nextUse": "正の項を先に並べて元の問いへ答える",
+        "target": "interaction.expected.value",
+        "availableFacts": [
+          "root-distribute-fact"
+        ],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n08-q08-order-answer",
+        "nodeId": "n08-q08-order",
+        "segmentId": "pi-order",
+        "learnerDecision": "円周率と3を比べる",
+        "nextUse": "円周率と3を比べる",
+        "target": "interaction.expected.value",
+        "availableFacts": [],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n08-r5-q08-operation-answer",
+        "nodeId": "n08-r5-q08-operation",
+        "segmentId": "pi-both-sides",
+        "learnerDecision": "別の例で同じ両辺操作を組み立てる",
+        "nextUse": "別の例で同じ両辺操作を組み立てる",
+        "target": "interaction.expected.value",
+        "availableFacts": [
+          "pi-order-fact"
+        ],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n08-q08-difference-answer",
+        "nodeId": "n08-q08-difference",
+        "segmentId": "pi-negative",
+        "learnerDecision": "同じ数を引いて0との比較へ",
+        "nextUse": "同じ数を引いて0との比較へ",
+        "target": "interaction.expected.value",
+        "availableFacts": [
+          "pi-both-sides-fact"
+        ],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n08-08",
+        "nodeId": "n08-08",
+        "segmentId": "pi-negative",
+        "learnerDecision": "差の符号を根拠と組にする",
+        "nextUse": "差の符号を根拠と組にする",
+        "target": "interaction.expected.value",
+        "availableFacts": [
+          "pi-both-sides-fact"
+        ],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n08-q09-bracket-answer",
+        "nodeId": "n08-q09-bracket",
+        "segmentId": "pi-brackets",
+        "learnerDecision": "前の例と同じ負の規則を使う",
+        "nextUse": "前の例と同じ負の規則を使う",
+        "target": "interaction.expected.value",
+        "availableFacts": [
+          "pi-negative-fact"
+        ],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n08-q09-distribute-answer",
+        "nodeId": "n08-q09-distribute",
+        "segmentId": "pi-distribute",
+        "learnerDecision": "負号を3と負の円周率へ掛ける",
+        "nextUse": "負号を3と負の円周率へ掛ける",
+        "target": "interaction.expected.value",
+        "availableFacts": [
+          "pi-brackets-fact"
+        ],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n08-09",
+        "nodeId": "n08-09",
+        "segmentId": "pi-final",
+        "learnerDecision": "元の問題の答えをまとめる",
+        "nextUse": "元の問題の答えをまとめる",
+        "target": "interaction.expected.value",
+        "availableFacts": [
+          "pi-distribute-fact"
+        ],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n08-q10-forward-answer",
+        "nodeId": "n08-q10-forward",
+        "segmentId": "zero-forward",
+        "learnerDecision": "距離が0なら点はどこにあるか",
+        "nextUse": "距離が0なら点はどこにあるか",
+        "target": "interaction.expected.value",
+        "availableFacts": [],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n08-q10-reverse-answer",
+        "nodeId": "n08-q10-reverse",
+        "segmentId": "zero-reverse",
+        "learnerDecision": "逆に元の数が0なら距離も0",
+        "nextUse": "逆に元の数が0なら距離も0",
+        "target": "interaction.expected.value",
+        "availableFacts": [],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n08-10",
+        "nodeId": "n08-10",
+        "segmentId": "zero-iff",
+        "learnerDecision": "元の性質を位置の意味と組にする",
+        "nextUse": "元の性質を位置の意味と組にする",
+        "target": "interaction.expected.value",
+        "availableFacts": [
+          "zero-forward-fact",
+          "zero-reverse-fact"
+        ],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n08-q11-positive-answer",
+        "nodeId": "n08-q11-positive",
+        "segmentId": "opposite-positive",
+        "learnerDecision": "正の場合に二つの距離を比べる",
+        "nextUse": "正の場合に二つの距離を比べる",
+        "target": "interaction.expected.value",
+        "availableFacts": [],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n08-q11-negative-answer",
+        "nodeId": "n08-q11-negative",
+        "segmentId": "opposite-negative",
+        "learnerDecision": "負の場合にも二つの距離を比べる",
+        "nextUse": "負の場合にも二つの距離を比べる",
+        "target": "interaction.expected.value",
+        "availableFacts": [],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n08-11",
+        "nodeId": "n08-11",
+        "segmentId": "opposite-all",
+        "learnerDecision": "すべての場合を一つの関係にまとめる",
+        "nextUse": "すべての場合を一つの関係にまとめる",
+        "target": "interaction.expected.value",
+        "availableFacts": [
+          "opposite-positive-fact",
+          "opposite-negative-fact",
+          "opposite-zero-fact"
+        ],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n08-q12-nonnegative-answer",
+        "nodeId": "n08-q12-nonnegative",
+        "segmentId": "square-nonnegative",
+        "learnerDecision": "0以上の場合の絶対値を二乗する",
+        "nextUse": "0以上の場合の絶対値を二乗する",
+        "target": "interaction.expected.value",
+        "availableFacts": [],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n08-q12-negative-answer",
+        "nodeId": "n08-q12-negative",
+        "segmentId": "square-negative-product",
+        "learnerDecision": "負の場合は括弧ごと二乗する",
+        "nextUse": "負の場合は括弧ごと二乗する",
+        "target": "interaction.expected.value",
+        "availableFacts": [],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      },
+      {
+        "id": "n08-12",
+        "nodeId": "n08-12",
+        "segmentId": "square-all",
+        "learnerDecision": "場合に関係なく成り立つ式を結論にする",
+        "nextUse": "場合に関係なく成り立つ式を結論にする",
+        "target": "interaction.expected.value",
+        "availableFacts": [
+          "square-nonnegative-fact",
+          "square-negative-fact"
+        ],
+        "eligibility": "ELIGIBLE",
+        "reasons": [],
+        "missingFacts": [],
+        "adoption": "NEEDS_AI_SELECTION"
+      }
+    ],
+    "planHash": "4f53fabb25e96af20636577c1f7e6197053ccd4fdb1b2c44c2448f966ceb7f4c",
+    "meaningAuditRequired": true
+  },
+  "decisions": [
+    {
+      "candidateId": "n08-q01-left-answer",
+      "decision": "ADOPT",
+      "reason": "既存の計算穴5を保つ。",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-q01-left"
+    },
+    {
+      "candidateId": "n08-01",
+      "decision": "ADOPT",
+      "reason": "既存回答を保持。選択肢の二値を同じ順序の二行で表示する。",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-01"
+    },
+    {
+      "candidateId": "n08-r5-q02-distance-answer",
+      "decision": "ADOPT",
+      "reason": "右側の点と原点の距離の式を作る",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-r5-q02-distance"
+    },
+    {
+      "candidateId": "n08-02",
+      "decision": "ADOPT",
+      "reason": "直前に距離の式a−0を作る新穴を追加。既存の|a|=aはまとめとして残す。",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-02"
+    },
+    {
+      "candidateId": "n08-q03-order-answer",
+      "decision": "ADOPT",
+      "reason": "既存0-aを選ぶ式生成の穴を保つ。",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-q03-order"
+    },
+    {
+      "candidateId": "n08-03",
+      "decision": "ADOPT",
+      "reason": "真の等式でも開始式が異なる選択肢を区別。既存採点キーは変えない。",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-03"
+    },
+    {
+      "candidateId": "n08-q04-substitute-answer",
+      "decision": "ADOPT",
+      "reason": "既存-(-5)の式生成穴を保つ。",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-q04-substitute"
+    },
+    {
+      "candidateId": "n08-04",
+      "decision": "ADOPT",
+      "reason": "既存回答-(-5)=5を保つ。",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-04"
+    },
+    {
+      "candidateId": "n08-q05-square-answer",
+      "decision": "ADOPT",
+      "reason": "√5の二乗を教え、次の行で3の二乗9を計算させる。",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-q05-square"
+    },
+    {
+      "candidateId": "n08-q05-compare-answer",
+      "decision": "ADOPT",
+      "reason": "不等号<を選ぶ判断穴を保つ。",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-q05-compare"
+    },
+    {
+      "candidateId": "n08-05",
+      "decision": "ADOPT",
+      "reason": "全選択肢で「二乗した値」→「元の数」の二行順にする。",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-05"
+    },
+    {
+      "candidateId": "n08-r5-q06-operation-answer",
+      "decision": "ADOPT",
+      "reason": "前の大小関係から中身の符号へつなぐ",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-r5-q06-operation"
+    },
+    {
+      "candidateId": "n08-q06-subtract-answer",
+      "decision": "ADOPT",
+      "reason": "直前に両辺から引く数3の共有穴を追加。既存の右辺0の計算穴も保つ。",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-q06-subtract"
+    },
+    {
+      "candidateId": "n08-06",
+      "decision": "ADOPT",
+      "reason": "既存の符号穴を保つ。これは数値計算とは別の読み取り。",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-06"
+    },
+    {
+      "candidateId": "n08-q07-rule-answer",
+      "decision": "ADOPT",
+      "reason": "既存|u|=-uを選ぶ判断穴を保つ。",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-q07-rule"
+    },
+    {
+      "candidateId": "n08-q07-bracket-answer",
+      "decision": "ADOPT",
+      "reason": "既存−(√5−3)の式生成穴を保つ。",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-q07-bracket"
+    },
+    {
+      "candidateId": "n08-q07-distribute-answer",
+      "decision": "ADOPT",
+      "reason": "既存の和−√5+3の計算穴を保つ。分配した未計算式を前に置く。",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-q07-distribute"
+    },
+    {
+      "candidateId": "n08-07",
+      "decision": "ADOPT",
+      "reason": "既存3−√5を保つ。",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-07"
+    },
+    {
+      "candidateId": "n08-q08-order-answer",
+      "decision": "ADOPT",
+      "reason": "既存<の判断穴。前の例の具体的な答えは前提欄へ出さない。",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-q08-order"
+    },
+    {
+      "candidateId": "n08-r5-q08-operation-answer",
+      "decision": "ADOPT",
+      "reason": "別の例で同じ両辺操作を組み立てる",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-r5-q08-operation"
+    },
+    {
+      "candidateId": "n08-q08-difference-answer",
+      "decision": "ADOPT",
+      "reason": "直前に両辺から引く数πの共有穴を追加。既存の不等号の穴は方向確認。",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-q08-difference"
+    },
+    {
+      "candidateId": "n08-08",
+      "decision": "ADOPT",
+      "reason": "既存の意味・理由を選ぶ穴を保つ。",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-08"
+    },
+    {
+      "candidateId": "n08-q09-bracket-answer",
+      "decision": "ADOPT",
+      "reason": "先に「負号を付けます」と答えを言わず、既存−(3−π)を選ばせる。",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-q09-bracket"
+    },
+    {
+      "candidateId": "n08-q09-distribute-answer",
+      "decision": "ADOPT",
+      "reason": "既存−3+πの穴を保つ。",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-q09-distribute"
+    },
+    {
+      "candidateId": "n08-09",
+      "decision": "ADOPT",
+      "reason": "既存の最終回答を保つ。",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-09"
+    },
+    {
+      "candidateId": "n08-q10-forward-answer",
+      "decision": "ADOPT",
+      "reason": "既存0の穴。距離の意味を考える役割を明記する。",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-q10-forward"
+    },
+    {
+      "candidateId": "n08-q10-reverse-answer",
+      "decision": "ADOPT",
+      "reason": "既存0の穴を保つ。前向きの式と等号で連結しない。",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-q10-reverse"
+    },
+    {
+      "candidateId": "n08-10",
+      "decision": "ADOPT",
+      "reason": "既存の数式＋理由の回答契約を保ち、math/textを別描画する。",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-10"
+    },
+    {
+      "candidateId": "n08-q11-positive-answer",
+      "decision": "ADOPT",
+      "reason": "既存aの計算穴を保つ。",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-q11-positive"
+    },
+    {
+      "candidateId": "n08-q11-negative-answer",
+      "decision": "ADOPT",
+      "reason": "既存−aの穴を保つ。",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-q11-negative"
+    },
+    {
+      "candidateId": "n08-11",
+      "decision": "ADOPT",
+      "reason": "既存|a|=|-a|の性質を選ぶ穴を保つ。",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-11"
+    },
+    {
+      "candidateId": "n08-q12-nonnegative-answer",
+      "decision": "ADOPT",
+      "reason": "既存a²の穴を保つ。",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-q12-nonnegative"
+    },
+    {
+      "candidateId": "n08-q12-negative-answer",
+      "decision": "ADOPT",
+      "reason": "既存a²の穴を保つ。括弧ごとの二乗を描画検査する。",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-q12-negative"
+    },
+    {
+      "candidateId": "n08-12",
+      "decision": "ADOPT",
+      "reason": "既存の最終a²を保ち、独立した新計算と数えない。",
+      "evidence": "Frozen NODE_DESIGN.json and visible state n08-12"
+    }
+  ]
+}

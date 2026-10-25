@@ -9,7 +9,7 @@ export function importResearchAnalysis(request,response){
  if(!observations.length||observations.some(o=>!o.description||!o.blockIds?.length||o.blockIds.some(b=>!ids.has(b))))return {status:'FAIL',reason:'OBSERVATION_LOCATION'};
  const patterns=response.applicablePatterns;
  if(patterns.some(p=>!p.id||!p.goal||!p.prerequisites||!p.steps?.length||!p.applicability||!p.exclusions||!p.sourceBlockIds?.length||p.sourceBlockIds.some(id=>!ids.has(id))))return {status:'FAIL',reason:'PATTERN_CONTRACT'};
- return {status:response.uncertainties.length?'NEEDS_AI_REVIEW':'PASS',patterns:patterns.map(p=>({...p,sourceId:request.sourceId,sourceHash:request.sourceHash,origin:'AI_ANALYZED_REFERENCE',reviewer:response.reviewer,requestHash})),observedSteps:observations,inferredMissingSteps:response.inferredMissingSteps,uncertainties:response.uncertainties,automaticPedagogyApproval:false};
+ return {status:response.uncertainties.length?'NEEDS_AI_REVIEW':'PASS',patterns:patterns.map(p=>({...p,sourceId:request.sourceId,sourceHash:request.sourceHash,origin:'AI_ANALYZED_REFERENCE',reviewer:response.reviewer,requestHash})),observedSteps:observations,inferredMissingSteps:response.inferredMissingSteps,blankRoles:response.blankRoles,figureTiming:response.figureTiming,uncertainties:response.uncertainties,automaticPedagogyApproval:false};
 }
 export function retrievePatterns(patterns,{family,prerequisites=[]}){
  const known=new Set(prerequisites);

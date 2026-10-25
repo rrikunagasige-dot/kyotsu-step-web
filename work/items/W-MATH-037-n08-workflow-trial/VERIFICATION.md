@@ -1,17 +1,28 @@
-# 今回の分析・提案の検証
+# N08 P001 実装と検証
 
-- 原本：N08 revision4、36node/31回答/12stage/元図1点。NODE_INVENTORYのSHA256へ固定。
-- 旧IRを現行compilerで再生成し、配信由来のauthored.semanticと完全一致。既存教材の内容を今回の試験で誤って別版へ置き換えていない。
-- 既存の新solution検算：表現できる部分計算3件PASS、Abs/根号/πの表現canary3件は未対応。数学的に偽の式を検査して未対応と呼んだわけではなく、同じ式から同じ式への恒等変形でも新ASTが受理できないことを確認した。
-- 独立したSymPy試行：17件PASS。これは接続実装や教材受入の完了を表さない。
-- 現行実画面：320/390pxの各12stage、全31正答＝62操作。制作者向け文と原問保持の問題を実DOM/画像で確認した。
-- 提案：全36nodeを重複なく設計。旧31回答IDと正答の一致、3新回答/5slot、12stageの被覆、39node/34回答をCODEで照合。
-- 提案書中の92数式をKaTeX strictで描画検査しPASS。最初に本文の回答二つをmathへ入れた検査は失敗し、text/mathを分離して再生成した。初回の失敗もevidenceへ残した。
-- referenceサービス：原本hashと位置、観察と補完の区別を用いて実際にpattern候補を生成。数式抽出とimport返却属性の欠落を検出。未解決の参考範囲をPASSへ偽装していない。
-- native：既存共有Runtimeで修正入口を使用。R01 PASS。R02は未対応solution.validateのreceiptを含めUNVERIFIED。R04/R05/R06の完了・承認・実装は記録していない。
-- corpus：既存15件を取得し、各事例へAPPLY/ALREADY_SATISFIED/OUT_OF_SCOPEと理由を記録。未学習モデルを品質判定へ使わず、本人の新しいGold labelを作っていない。
-- src/tools/workflow/publicの実装差分なし。新教材のcompile・公開・修正版QAは未実施。
+現在の本人の許可に基づく実装。教材の品質受入・機械学習ラベルは未取得。
+P001/NODE_DESIGNは承認コミットf927ebdbから不変。追加の「旧N08を残す」はIMPLEMENTATION_PLANのファイル実現へ反映。
 
-全12画像はevidence/screenshots.tar.gz.base64へ可逆保存、同jsonにhash。元の画像は保存・展開後に照合可能。
+- 旧n08Authored.json、N08ReadingFlow.tsx、n08-reading.css、元図をbyte単位で保護。rollback/revision4とROLLBACK_MANIFESTも保存。
+- 新版は別JSON・別reader。activeVersionを4へ戻して再公開できる。アプリの?version=4は旧readerを使い、試し解答で通常の保存記録を書き換えない。
+- 12stage IDと既存31採点契約を保持、39node/34回答。二つの両辺操作は二枠一回答。
+- 元の問題・小目標・同じ問題で得た途中式を保持。選択肢の二値と二段比較を全候補で同じ行構成にする。
+- 絶対値・有理数の非負平方根・πの閉じたAST、条件付きの38数理segment、場合分けの完全性・二方向の含意・目的に合う距離式を個別に検査。数理検算を教育の機械証明と呼ばない。
+- 参考HTMLのMathJax root/TeX annotationを保持。aria-labelや視覚用重複文字から数式を認定しない。穴の役割・図のタイミングを分析の返却から落とさない。
+- 検索事例15件は個別判断。モデルはOFFLINE_ONLYのまま。続行許可を肯定ラベルに変換しない。
 
-再現：このWorkのanalyze.mjs、probe_math.py、verify_analysis.py。browserはaudit-browser.mjs。research-analysis.mjsは取得したHTML抽出cacheを必要とする。nativeのrecord_analysis.pyは一度だけの登録用であり、既存Workへ再実行しない。R02の初回提出では事例消化表が不足して拒否され、resume_analysis.pyで同じ実claimを完了した。失敗を避けるための別台帳・模擬承認は使っていない。
+確認済み：数理とsolution回帰36件、抽出等Python21件、既存workflowと候補追加135件、アプリ620件、移行と保存7件、対象TSX/TSのlint、build。後の正確なSHAと実行証拠はpublication/各CHECKPOINT参照。
+初回のworkflow試験はSymPy環境指定不足で失敗し、指定後134件成功、追加試験を含め135件成功。初回の移行試験は旧v1/v2で既に承認されている回答再開処理を誤って期待したため、従来のv4移行との等価性と旧記録archiveへ修正。nativeのbaseline復帰中に同じ移行試験を重複起動した失敗も、実適用後に再試験した。
+4幅320/390/430/1440で34正答・80誤答ずつ、12段階、全候補、番号衝突、履歴・reload・resize・旧版保存分離を実操作。現在の最終画像/正確なSHAのreceiptを別保存。
+
+## AIの別passで見直した点
+
+定義のa>=0とa<0は結果の直後にも条件を残す。Q05は平方根の二乗が5である前提をまず説明してから提示する。二乗の二数の比較と元の大小は独立した式で、絶対値の変形へ等号で直結しない。Q06は左辺へ元の中身を作る目的で3を選ぶ。Q08は同じ目的でπを選ぶため、先の答え3を機械的に再選択させない。Q09の規則選択前には負号を付ける答えを文で渡さない。Q07/Q09の分配は括弧の各項に-1を掛ける一行を経由する。Q10は両方向を別に確かめ、Q11/Q12は0の所属を明確にして場合を合流する。
+
+実画面で見つかった「番号なし式に空の()」「sqrt二乗の説明と提示の順序」「同じ問題の記録に与えた平方根の二乗が欠ける」を修正。これは同じassistantの別passであり独立した別AIの監査ではない。
+
+## 切り戻し
+
+src/data/textbook/math/numbers/n08ActiveVersion.json のrevisionだけを4へ変更し、既存Pagesの同じnamespaceへ再build・公開する。r5ファイルを消さない。保存履歴はr4/r5の双方をarchivedRevisionsへ退避し、再度5へ戻したとき追加3回答も復元する。旧版の単なる閲覧は通常保存を変更しない。旧ページと新版を同時にグローバル切替するUIではなく、本人の指示で公開の既定版を戻す。
+
+追加の反証で、真の前提への接続がない変形列を拒否する検査を追加した。これに伴いR01〜R06を現行service hashで再検証。新ファイル追加後のsource.fixedが元資料のパス集合だけで候補を照合していた実装不備も否定試験付きで修正した。原資料snapshotと候補manifestを分離して、追加ファイルの改変も検出する。旧失敗receiptは履歴に保持。

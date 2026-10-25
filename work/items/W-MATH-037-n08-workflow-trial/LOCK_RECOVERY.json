@@ -1,0 +1,14 @@
+{
+  "kind": "orphan-lock-recovery",
+  "toolSession": 94230,
+  "exitCode": 1,
+  "hostPythonWriters": 0,
+  "lock": {
+    "pid": 7,
+    "time": 1792946643.3799355
+  },
+  "verifiedLedgerHead": "432fc7a330820da11fd7b145c7b1187bd6e13f3f9c923c46305205966fed8c1d",
+  "events": 2016,
+  "eventChainVerified": true,
+  "reason": "Owner sandbox terminated; namespace-local PID can be reused by a new sandbox. No live writer; preserve bytes and verify chain before unlink."
+}

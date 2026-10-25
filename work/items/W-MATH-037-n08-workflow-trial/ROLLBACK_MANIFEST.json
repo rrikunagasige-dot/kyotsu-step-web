@@ -1,0 +1,15 @@
+{
+  "sourceSHA": "f927ebdbb518806a846ae9bba9290ed39dd75e06",
+  "revision": 4,
+  "files": {
+    "src/data/textbook/math/numbers/n08Authored.json": "80c917d3c2de34b9111e11f57fb02272d98ab02c0677a2fb30c5ae4dad60e142",
+    "src/data/textbook/math/numbers/n08Lesson.ts": "b3c663ad696e4a0386e527f98748ffde363e6922cbd28f52e4cf17372af5e8d6",
+    "src/components/textbook/N08ReadingFlow.tsx": "56f9d2b75b8b34a28b8e4b53c6df5ac922fb2da6c57005b6f709db5abcf56cc6",
+    "src/components/textbook/n08-reading.css": "c2c252e5467690b6b0897b5dcd99ddf18ae588cdb011b5d3c66e780a1175f949",
+    "src/domain/textbook.ts": "b89d0ed869be94325938c97403f81e29807761b709f0a0a91021b966975cef15",
+    "src/pages/TextbookUnitPage.tsx": "eff391e2747af203658cc63e8f89d14cfd20abb4485219fe2bb936388889d1af",
+    "public/assets/math/textbook/numbers/n08-f01.png": "817ab6ad3afb71b009cc95796e267d0818a104ecf19864c55c2ba0afbf29da73"
+  },
+  "userRequest": "しかし前のN08も残して、もし不満だったらまた戻れるし",
+  "restoreMethod": "Preserve original r4 authored/reader; switch active version configuration and republish. Preserve r5 progress in its revision archive."
+}

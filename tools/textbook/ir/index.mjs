@@ -22,7 +22,7 @@ export const blockSchema=z.discriminatedUnion('kind',[
 export const interactionSchema=z.object({id,targetPath:text,learningAction:z.enum(['judgment','relation','expression','calculation','meaning','selection']),
  whyHere:text,prerequisiteIds:z.array(id),expected:z.object({value:text,form:z.enum(['text','number','formula','reduced','minimum']),semanticType:text}),
  choices:z.array(z.object({id,content:text,misconception:text.optional(),feedback:text})).min(2),hints:z.array(text).max(3),
- answerInsertion:z.object({blockId:id,slotId:id})}).strict();
+ answerInsertion:z.object({blockId:id,slotId:id,slotIds:z.array(id).min(1).optional()})}).strict();
 export const irSchema=z.object({schemaVersion:z.literal('production-ir/1'),unitId:id,subject:text,mode:z.enum(['textbook','practice']),sourceHash:text,
  sourceBlocks:z.array(z.object({id,kind:text})),coverage:z.array(z.object({sourceId:id,nodeIds:z.array(id),disposition:z.enum(['taught','structural','excluded']),reason:text})),
  initialFacts:z.array(id),nodes:z.array(z.object({id,problemId:id,sourceRefs:z.array(id).min(1),requires:z.array(id),produces:z.array(id),
@@ -67,7 +67,8 @@ export function validateIR(input){
   if(n.role==='definition'&&![...n.before,...n.after].flatMap(partsOf).some(p=>p.kind==='term'&&p.usage==='first_definition'))add('DEFINITION_TERM_MISSING',n,'before',n.id);
   if(n.interaction){
    const q=n.interaction,slots=n.before.flatMap(partsOf).filter(p=>p.kind==='answerSlot'&&p.interactionId===q.id);
-   if(slots.length!==1||slots[0].id!==q.answerInsertion.slotId||!n.before.some(b=>b.id===q.answerInsertion.blockId&&partsOf(b).some(p=>p.id===q.answerInsertion.slotId)))add('SLOT_INSERTION',n,'before',q.id);
+   const bound=q.answerInsertion.slotIds??[q.answerInsertion.slotId];
+   if(slots.length!==bound.length||new Set(bound).size!==bound.length||slots.some(s=>!bound.includes(s.id))||!bound.includes(q.answerInsertion.slotId)||!n.before.some(b=>b.id===q.answerInsertion.blockId&&partsOf(b).some(p=>p.id===q.answerInsertion.slotId)))add('SLOT_INSERTION',n,'before',q.id);
    try{resolveTarget(n,q.targetPath);}catch{add('TARGET_PATH',n,'before',q.targetPath);}
    const choiceCheck=validateChoices(q.choices,q.expected.value,{form:q.expected.form});for(const rule of choiceCheck.errors)add(rule,n,'before',q.id);
    if(new Set(q.choices.map(c=>c.content)).size!==q.choices.length)add('DUPLICATE_CHOICE',n,'before',q.id);

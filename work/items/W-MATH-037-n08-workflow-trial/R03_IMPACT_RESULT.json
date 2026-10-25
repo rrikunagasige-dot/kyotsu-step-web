@@ -1,0 +1,308 @@
+{
+  "verdict": "PASS",
+  "evidence_refs": [
+    "4d234d28-4ccc-497c-9002-b15eeeb6b7f0",
+    "60cf583c-c011-45e0-9c7f-a6005e8475bb",
+    "36dacb62-1429-4cef-b758-52f8ab601477",
+    "6a17cd69-229e-4677-a48c-33f31255df09",
+    "8254e8fa-8ca8-4656-87d0-c7b0d1abc44c",
+    "e845db59-3656-4d99-be78-b30c5e58d49f",
+    "b0fb0ff3-d314-440c-af23-782d38207221",
+    "33f0dc5a-a7a6-44dd-82ee-0b0fc80bd2de"
+  ],
+  "capability_receipts": [
+    "7af3bec8d39d4199f2cdeea7fc6079977495c5df873d953b048fd900814ace34"
+  ],
+  "case_dispositions": [
+    {
+      "id": "N07-USER-F01",
+      "dimension": "prerequisite_missing",
+      "disposition": "APPLY",
+      "reason": "N08で必要な距離・実数の順序・正の平方根・与条件を明示する。N07の循環小数の内容はコピーしない。",
+      "evidenceRef": "6814bc8a1ab3e9fc6b57e33cc6fd00606c811ae0a8409541fba0d41186068e02",
+      "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+    },
+    {
+      "id": "N07-USER-F02",
+      "dimension": "orphan_output",
+      "disposition": "APPLY",
+      "reason": "局所の差の符号を元の絶対値の問題へ戻す。F01/F02とproblemGroupsで対応する。",
+      "evidenceRef": "2ed5eb49f280682c47052e3884da9210f66820bfc5298e23a4cc446abb1fd569",
+      "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+    },
+    {
+      "id": "N07-USER-F03",
+      "dimension": "unmotivated_operation",
+      "disposition": "APPLY",
+      "reason": "中身の符号を調べる必要性を先に置き、両辺操作の選択を追加する。",
+      "evidenceRef": "1f2a13bceb62bcfda98beea2693d1c667b9978ca919f5c2ca9052c050f564082",
+      "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+    },
+    {
+      "id": "N07-USER-F04",
+      "dimension": "broken_derivation",
+      "disposition": "APPLY",
+      "reason": "等号でつながる計算と、大小比較・場合別の論証を別の型へ分ける。",
+      "evidenceRef": "c6fca58d8fc8145df8abbcf54af97fb324c68cd7d5469d85682d59f5d59c9583",
+      "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+    },
+    {
+      "id": "N07-USER-F05",
+      "dimension": "term_semantics_missing",
+      "disposition": "ALREADY_SATISFIED",
+      "reason": "現行N08の絶対値の定義は黒字太字・math分割で実描画されている。制作メタ文だけ別途改善する。",
+      "evidenceRef": "08a194aebe3d23880b1a9ea1c6b82bc9c46c8763759db499218679fac811e0b6",
+      "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+    },
+    {
+      "id": "N07-USER-F06",
+      "dimension": "math_render_omission",
+      "disposition": "APPLY",
+      "reason": "現行N08のmath描画を保持し、今回見つかった参照HTMLの縦線欠落も別の抽出試験へ加える。",
+      "evidenceRef": "2f13547d5da27e6aa3d98a059f5df95cc47631c2fc3479e6da68872d3c4bfb70",
+      "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+    },
+    {
+      "id": "n07-layout-relation",
+      "dimension": "layout_discomfort",
+      "disposition": "APPLY",
+      "reason": "中央配置・番号・全候補の組版を新しい途中式でも確認する。元のN07の数値は使わない。",
+      "evidenceRef": "c6fca58d8fc8145df8abbcf54af97fb324c68cd7d5469d85682d59f5d59c9583",
+      "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+    },
+    {
+      "id": "n07-layout-positive",
+      "dimension": "layout_style_rejection",
+      "disposition": "ALREADY_SATISFIED",
+      "reason": "肯定された全体レイアウトを保ち、この評価を新しい穴の品質肯定へ変換しない。",
+      "evidenceRef": "current-conversation:layout-praise",
+      "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+    },
+    {
+      "id": "first-title-layout-positive",
+      "dimension": "layout_discomfort",
+      "disposition": "APPLY",
+      "reason": "受入済みの式group・番号・枠をN08でも再利用する。",
+      "evidenceRef": "work/items/W-MATH-031-section-one-typesetting/USER_ACCEPTANCE_20261024.md",
+      "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+    },
+    {
+      "id": "N07-ACCEPTED-20261025",
+      "dimension": "overall_material_acceptance",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "N07の全体受入は保護対象。N08修正版の個別観点や品質ラベルに使わない。",
+      "evidenceRef": "W032-N07-POSITIVE-20261025",
+      "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+    },
+    {
+      "id": "N08-ACCEPTED-20261025",
+      "dimension": "overall_material_acceptance",
+      "disposition": "ALREADY_SATISFIED",
+      "reason": "現行N08の受入を維持して既存の説明・31回答を保護する。新revisionの受入へ広げない。",
+      "evidenceRef": "W033-N08-POSITIVE-20261025",
+      "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+    },
+    {
+      "id": "N09-REJECTED-20261025",
+      "dimension": "operation_order",
+      "disposition": "APPLY",
+      "reason": "Q05の二乗の比較と元の比較、Q01の原問順を全選択肢でそろえる。",
+      "evidenceRef": "W034-N09-ORDER-NEGATIVE-20261025",
+      "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+    },
+    {
+      "id": "N10-REJECTED-20261025",
+      "dimension": "factor_grouping",
+      "disposition": "APPLY",
+      "reason": "Q07/Q09で中身全体の括弧と二項への負号、Q12で括弧ごとの冪を保つ。",
+      "evidenceRef": "W034-N10-FACTOR-NEGATIVE-20261025",
+      "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+    },
+    {
+      "id": "N09-ACCEPTED-20261025",
+      "dimension": "overall_material_acceptance",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "N09全体の受入をN08修正版の品質ラベルへ流用しない。N09本文は保護する。",
+      "evidenceRef": "W035-N09-POSITIVE-20261025",
+      "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+    },
+    {
+      "id": "N10-ACCEPTED-20261025",
+      "dimension": "overall_material_acceptance",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "N10全体の受入をN08修正版へ流用しない。N10本文は保護する。",
+      "evidenceRef": "W035-N10-POSITIVE-20261025",
+      "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+    }
+  ],
+  "aiReview": {
+    "requestHash": "e40a549437fa65e646e1a6047431725797febfeafad7d9414ccf819555ac9f85",
+    "inputHash": "df00dc9e64c47936758476dd09f01de96801facefe2757e44945b9c57cfc8135",
+    "reviewer": "current-assistant-source-and-visible-state-pass; not independent AI",
+    "evidence": "All original inventory and new leaf/reader/archive consumers inspected. Existing sources remain fixed and the preservation amendment uses the current user instruction."
+  },
+  "impact_rows": [
+    {
+      "originFinding": "P001 whole-problem and reversible trial requirements",
+      "rootCauseSignature": "n08-conditional-whole-problem",
+      "artifact": "src/data/textbook/math/numbers/n08Authored.json",
+      "version": "69014b5b149f730c5f738129c9febbd19a96214a",
+      "approvedCreationWork": "W-MATH-033",
+      "block_id": "n08",
+      "evidence_refs": [
+        "4d234d28-4ccc-497c-9002-b15eeeb6b7f0",
+        "60cf583c-c011-45e0-9c7f-a6005e8475bb",
+        "36dacb62-1429-4cef-b758-52f8ab601477",
+        "6a17cd69-229e-4677-a48c-33f31255df09",
+        "8254e8fa-8ca8-4656-87d0-c7b0d1abc44c",
+        "e845db59-3656-4d99-be78-b30c5e58d49f",
+        "b0fb0ff3-d314-440c-af23-782d38207221",
+        "33f0dc5a-a7a6-44dd-82ee-0b0fc80bd2de"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "pre-design",
+      "resolution": "Preserve r4, original figure and other accepted units; modify only selection, r5 route and reversible migration"
+    },
+    {
+      "originFinding": "P001 whole-problem and reversible trial requirements",
+      "rootCauseSignature": "n08-conditional-whole-problem",
+      "artifact": "src/data/textbook/math/numbers/n08Lesson.ts",
+      "version": "69014b5b149f730c5f738129c9febbd19a96214a",
+      "approvedCreationWork": "W-MATH-033",
+      "block_id": "n08",
+      "evidence_refs": [
+        "4d234d28-4ccc-497c-9002-b15eeeb6b7f0",
+        "60cf583c-c011-45e0-9c7f-a6005e8475bb",
+        "36dacb62-1429-4cef-b758-52f8ab601477",
+        "6a17cd69-229e-4677-a48c-33f31255df09",
+        "8254e8fa-8ca8-4656-87d0-c7b0d1abc44c",
+        "e845db59-3656-4d99-be78-b30c5e58d49f",
+        "b0fb0ff3-d314-440c-af23-782d38207221",
+        "33f0dc5a-a7a6-44dd-82ee-0b0fc80bd2de"
+      ],
+      "status": "AFFECTED",
+      "phase": "pre-design",
+      "resolution": "Preserve r4, original figure and other accepted units; modify only selection, r5 route and reversible migration"
+    },
+    {
+      "originFinding": "P001 whole-problem and reversible trial requirements",
+      "rootCauseSignature": "n08-conditional-whole-problem",
+      "artifact": "src/components/textbook/N08ReadingFlow.tsx",
+      "version": "69014b5b149f730c5f738129c9febbd19a96214a",
+      "approvedCreationWork": "W-MATH-033",
+      "block_id": "n08",
+      "evidence_refs": [
+        "4d234d28-4ccc-497c-9002-b15eeeb6b7f0",
+        "60cf583c-c011-45e0-9c7f-a6005e8475bb",
+        "36dacb62-1429-4cef-b758-52f8ab601477",
+        "6a17cd69-229e-4677-a48c-33f31255df09",
+        "8254e8fa-8ca8-4656-87d0-c7b0d1abc44c",
+        "e845db59-3656-4d99-be78-b30c5e58d49f",
+        "b0fb0ff3-d314-440c-af23-782d38207221",
+        "33f0dc5a-a7a6-44dd-82ee-0b0fc80bd2de"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "pre-design",
+      "resolution": "Preserve r4, original figure and other accepted units; modify only selection, r5 route and reversible migration"
+    },
+    {
+      "originFinding": "P001 whole-problem and reversible trial requirements",
+      "rootCauseSignature": "n08-conditional-whole-problem",
+      "artifact": "src/components/textbook/n08-reading.css",
+      "version": "69014b5b149f730c5f738129c9febbd19a96214a",
+      "approvedCreationWork": "W-MATH-033",
+      "block_id": "n08",
+      "evidence_refs": [
+        "4d234d28-4ccc-497c-9002-b15eeeb6b7f0",
+        "60cf583c-c011-45e0-9c7f-a6005e8475bb",
+        "36dacb62-1429-4cef-b758-52f8ab601477",
+        "6a17cd69-229e-4677-a48c-33f31255df09",
+        "8254e8fa-8ca8-4656-87d0-c7b0d1abc44c",
+        "e845db59-3656-4d99-be78-b30c5e58d49f",
+        "b0fb0ff3-d314-440c-af23-782d38207221",
+        "33f0dc5a-a7a6-44dd-82ee-0b0fc80bd2de"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "pre-design",
+      "resolution": "Preserve r4, original figure and other accepted units; modify only selection, r5 route and reversible migration"
+    },
+    {
+      "originFinding": "P001 whole-problem and reversible trial requirements",
+      "rootCauseSignature": "n08-conditional-whole-problem",
+      "artifact": "src/pages/TextbookUnitPage.tsx",
+      "version": "69014b5b149f730c5f738129c9febbd19a96214a",
+      "approvedCreationWork": "W-MATH-033",
+      "block_id": "n08",
+      "evidence_refs": [
+        "4d234d28-4ccc-497c-9002-b15eeeb6b7f0",
+        "60cf583c-c011-45e0-9c7f-a6005e8475bb",
+        "36dacb62-1429-4cef-b758-52f8ab601477",
+        "6a17cd69-229e-4677-a48c-33f31255df09",
+        "8254e8fa-8ca8-4656-87d0-c7b0d1abc44c",
+        "e845db59-3656-4d99-be78-b30c5e58d49f",
+        "b0fb0ff3-d314-440c-af23-782d38207221",
+        "33f0dc5a-a7a6-44dd-82ee-0b0fc80bd2de"
+      ],
+      "status": "AFFECTED",
+      "phase": "pre-design",
+      "resolution": "Preserve r4, original figure and other accepted units; modify only selection, r5 route and reversible migration"
+    },
+    {
+      "originFinding": "P001 whole-problem and reversible trial requirements",
+      "rootCauseSignature": "n08-conditional-whole-problem",
+      "artifact": "src/domain/textbook.ts",
+      "version": "69014b5b149f730c5f738129c9febbd19a96214a",
+      "approvedCreationWork": "W-MATH-033",
+      "block_id": "n08",
+      "evidence_refs": [
+        "4d234d28-4ccc-497c-9002-b15eeeb6b7f0",
+        "60cf583c-c011-45e0-9c7f-a6005e8475bb",
+        "36dacb62-1429-4cef-b758-52f8ab601477",
+        "6a17cd69-229e-4677-a48c-33f31255df09",
+        "8254e8fa-8ca8-4656-87d0-c7b0d1abc44c",
+        "e845db59-3656-4d99-be78-b30c5e58d49f",
+        "b0fb0ff3-d314-440c-af23-782d38207221",
+        "33f0dc5a-a7a6-44dd-82ee-0b0fc80bd2de"
+      ],
+      "status": "AFFECTED",
+      "phase": "pre-design",
+      "resolution": "Preserve r4, original figure and other accepted units; modify only selection, r5 route and reversible migration"
+    },
+    {
+      "originFinding": "P001 whole-problem and reversible trial requirements",
+      "rootCauseSignature": "n08-conditional-whole-problem",
+      "artifact": "public/assets/math/textbook/numbers/n08-f01.png",
+      "version": "69014b5b149f730c5f738129c9febbd19a96214a",
+      "approvedCreationWork": "W-MATH-033",
+      "block_id": "n08",
+      "evidence_refs": [
+        "4d234d28-4ccc-497c-9002-b15eeeb6b7f0",
+        "60cf583c-c011-45e0-9c7f-a6005e8475bb",
+        "36dacb62-1429-4cef-b758-52f8ab601477",
+        "6a17cd69-229e-4677-a48c-33f31255df09",
+        "8254e8fa-8ca8-4656-87d0-c7b0d1abc44c",
+        "e845db59-3656-4d99-be78-b30c5e58d49f",
+        "b0fb0ff3-d314-440c-af23-782d38207221",
+        "33f0dc5a-a7a6-44dd-82ee-0b0fc80bd2de"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "pre-design",
+      "resolution": "Preserve r4, original figure and other accepted units; modify only selection, r5 route and reversible migration"
+    }
+  ],
+  "source_inventory": [
+    "src/data/textbook/math/numbers/n08Authored.json",
+    "src/data/textbook/math/numbers/n08Lesson.ts",
+    "src/components/textbook/N08ReadingFlow.tsx",
+    "src/components/textbook/n08-reading.css",
+    "src/pages/TextbookUnitPage.tsx",
+    "src/domain/textbook.ts",
+    "public/assets/math/textbook/numbers/n08-f01.png",
+    "src/data/textbook/math/numbers/n08Revision5.json",
+    "src/data/textbook/math/numbers/n08ActiveVersion.json",
+    "src/components/textbook/N08SolutionReadingFlow.tsx",
+    "src/components/textbook/n08-solution-reading.css",
+    "src/pages/N08ArchivePage.tsx"
+  ],
+  "unknowns": []
+}

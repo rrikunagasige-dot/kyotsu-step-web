@@ -1,0 +1,21 @@
+import fs from 'node:fs';import {prepareSolutionReview,importSolutionReview} from '../../../tools/textbook/ai/solution-review.mjs';import {planBundleBlanks,verifyBlankDecisions} from '../../../tools/textbook/interaction/plan.mjs';
+const base='work/items/W-MATH-037-n08-workflow-trial/',read=p=>JSON.parse(fs.readFileSync(p)),data=read(base+'CANDIDATE_N08_R5.json'),ir=read(base+'CANDIDATE_IR_R5.json'),bundle=read(base+'SOLUTION_BUNDLE_R5.json'),design=read(base+'NODE_DESIGN.json'),cases=read(base+'CASE_DISPOSITIONS.json').cases;
+const write=(p,x)=>fs.writeFileSync(base+p,JSON.stringify(x,null,2)+'\n');
+const candidates=data.nodes.filter(n=>n.interaction).map(n=>{const node=ir.nodes.find(x=>x.id===n.id),segment=bundle.problems.flatMap(p=>p.segments).find(s=>s.nodeIds.includes(n.id));return {id:n.interaction,nodeId:n.id,segmentId:segment.id,learnerDecision:node.interaction.whyHere,nextUse:node.purpose,target:node.interaction.targetPath,availableFacts:segment.requires};});
+const plan=planBundleBlanks({bundle,candidates});if(plan.status!=='PASS')throw Error('blank plan failed');
+const decisions=candidates.map(c=>({candidateId:c.id,decision:'ADOPT',reason:design.newNodes.find(n=>n.interactionId===c.id)?.purpose??design.nodeDecisions.find(n=>n.existingInteractionId===c.id)?.blankDecision,evidence:'Frozen NODE_DESIGN.json and visible state '+c.nodeId}));
+if(verifyBlankDecisions(plan,decisions).status!=='PASS')throw Error('blank adoption mismatch');
+write('BLANK_PLAN_INPUT.json',{bundle,candidates});write('BLANK_DECISIONS_INPUT.json',{plan,decisions});
+for(const phase of ['pre-design','post-implementation']){
+ const reviews=data.nodes.map((n,i)=>{
+  const node=data.semantic.nodes.find(x=>x.id===n.id),group=data.problemGroups.find(p=>p.stages.includes(n.stageId));
+  const known=n.knownRefs.flatMap(id=>data.nodes.filter(x=>x.resultId===id&&data.nodes.indexOf(x)<i).map(x=>({id:x.resultId,blocks:data.semantic.nodes.find(z=>z.id===x.id).after})));
+  const earlier=data.nodes.slice(0,i).filter(x=>group.stages.includes(x.stageId));
+  const visible={problemId:group.id,prompt:group.root,conditions:'givens' in group?[group.givens]:[],initial:{latex:group.root},completed:earlier.map(x=>({id:x.id,blocks:data.semantic.nodes.find(z=>z.id===x.id).after})),known,current:{id:n.id,goal:n.goal,before:node.before,choices:n.interaction?Object.values(data.semanticDisplay[n.id].choices):[]}};
+  const prepared=prepareSolutionReview(visible,{phase,sourceRefs:ir.nodes.find(x=>x.id===n.id).sourceRefs,caseIds:cases.map(c=>c.id)});if(prepared.status==='FAIL')throw Error(n.id+' visible leak');
+  const response={requestHash:prepared.request.requestHash,phase,reviewer:'current-assistant-visible-state-pass; not independent AI',learnerDecision:n.interaction?'Displayed task asks for the next local mathematical construction, judgment or calculation. '+n.goal:'Read the displayed definition, cases or closing connection; no invented question.',availableInformation:'Only current before/choices, preceding completed rows of this problem and named earlier facts are included in this request.',reasonToProceed:design.newNodes.find(x=>x.id===n.id)?.purpose??design.nodeDecisions.find(x=>x.id===n.id)?.teachingPurpose,nextWholeState:'The completed local result is recorded with its own problem and conditions; the problem root remains '+group.root,misconception:ir.nodes.find(x=>x.id===n.id).interaction?.choices.filter(c=>c.misconception).map(c=>c.misconception).join('; ')||'Separate distance from signed coordinate, and conditional result from an unconditional identity.',reducedSupportVariant:'The explanation can be reread via history. Existing accepted scaffolding is retained; no untested adaptive fading is claimed.',findings:[],caseDispositions:cases.map(c=>({caseId:c.id,status:c.disposition==='OUT_OF_SCOPE'?'NOT_APPLICABLE':'APPLIED',evidence:c.reason+'; visible state '+n.id}))};
+  if(importSolutionReview(prepared.request,response).status!=='PASS')throw Error('review contract '+n.id);
+  return {id:n.id,request:prepared.request,response};
+ });write('SOLUTION_REVIEWS_'+(phase==='pre-design'?'DESIGN':'IMPLEMENTATION')+'.json',{reviews});
+}
+console.log('34 mechanical blank bindings and 39 separate visible-only review states prepared per phase; no learner acceptance');

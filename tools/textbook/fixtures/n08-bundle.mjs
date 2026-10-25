@@ -1,0 +1,60 @@
+/** N08's elementary math, linked to the frozen 39 teaching nodes. No learner answers here. */
+import {rat as r,sym,add,mul,pow,relation as rel,realLine} from '../solution/expression.mjs';
+const a=sym('a'),zero=r(0),neg=v=>mul(r(-1),v),sub=(x,y)=>add(x,neg(y)),abs=argument=>({kind:'absolute',argument}),sqrt=argument=>({kind:'sqrt',argument}),pi={kind:'constant',name:'pi'},root=sqrt(r(5));
+const interval=(lower,upper,lowerOpen=false,upperOpen=false)=>({lower,upper,lowerOpen,upperOpen});
+const nonnegative=interval(zero,null,false,true),negative=interval(null,zero,true,true),positive=interval(zero,null,true,true),origin=interval(zero,zero);
+export function n08Bundle(design){
+ const problems=[],mapped=new Map();
+ function problem(id){const p={id,variable:'a',sourceRefs:['N08-'+id],domain:realLine,initialFacts:['real-arithmetic','distance-definition'],segments:[],conclusions:[]};problems.push(p);return p;}
+ function segment(p,id,nodeIds,check,requires=[],domain){const produces=id+'-fact';p.segments.push({id,nodeIds,requires,produces,check,...(domain?{domain}:{})});for(const n of nodeIds)mapped.set(n,[...(mapped.get(n)??[]),produces]);return produces;}
+ const claim=(p,id,nodes,left,right,op='=',requires=[],domain)=>segment(p,id,nodes,{kind:'claim',statement:rel(left,op,right)},requires,domain);
+ const identity=(p,id,nodes,left,right,requires=[],domain)=>segment(p,id,nodes,{kind:'identity',left,right},requires,domain);
+ const join=(p,id,node,statement,branches)=>segment(p,id,[node],{kind:'case-join',statement,branches},branches.map(b=>b.proofId));
+ let p=problem('distance');
+ const d1=identity(p,'distance-right',['n08-q01-right'],sub(r(23,10),zero),r(23,10));
+ const d2=identity(p,'distance-left',['n08-q01-left','n08-01'],sub(zero,r(-5)),r(5),[d1]);p.conclusions=[d2];
+ p=problem('definition');
+ const form=segment(p,'positive-distance-form',['n08-r5-q02-distance'],{kind:'answer-form',expected:sub(a,zero),choices:[{id:'right-minus-left',value:sub(a,zero)},{id:'left-minus-right',value:sub(zero,a)},{id:'sum-of-coordinates',value:add(zero,a)}],pattern:'right-coordinate-minus-left',rightCoordinate:a,leftCoordinate:zero},[],nonnegative);
+ const cp=claim(p,'definition-nonnegative',['n08-02'],abs(a),a,'=',[form],nonnegative);
+ const cn1=claim(p,'definition-negative-distance',['n08-q03-order'],abs(a),sub(zero,a),'=',[],negative);
+ claim(p,'definition-negative-simple',['n08-03'],sub(zero,a),neg(a),'=',[cn1],negative);
+ claim(p,'negative-substitution',['n08-q04-substitute'],neg(a),neg(r(-5)),'=',[],interval(r(-5),r(-5)));
+ const num=identity(p,'negative-number-result',['n08-04'],neg(r(-5)),r(5));
+ const cp0=claim(p,'absolute-nonnegative-case',['n08-cases'],abs(a),zero,'>=',[cp],nonnegative);
+ const cn0=claim(p,'absolute-negative-case',['n08-cases'],abs(a),zero,'>=',[cn1],negative);
+ const definition=join(p,'definition-all-reals','n08-cases',rel(abs(a),'>=',zero),[{domain:nonnegative,proofId:cp0},{domain:negative,proofId:cn0}]);p.conclusions=[definition,num];
+ p=problem('root-example');
+ const s1=identity(p,'root-square',['n08-q05-square'],pow(root,2),r(5));
+ const s2=identity(p,'three-square',['n08-q05-square'],pow(r(3),2),r(9),[s1]);
+ const cmp=claim(p,'squares-compare',['n08-q05-compare'],r(5),r(9),'<',[s1,s2]);
+ const order=segment(p,'positive-root-order',['n08-05'],{kind:'square-order',left:root,right:r(3),operator:'<'},[s1,s2,cmp]);
+ const op=segment(p,'root-both-sides',['n08-r5-q06-operation'],{kind:'transformation',before:rel(root,'<',r(3)),after:rel(sub(root,r(3)),'<',sub(r(3),r(3))),ruleId:'add-both-sides',operand:r(-3)},[order]);
+ const sign=claim(p,'root-negative',['n08-q06-subtract','n08-06'],sub(root,r(3)),zero,'<',[op]);
+ const rule=claim(p,'root-negative-rule',['n08-q07-rule'],abs(sub(root,r(3))),neg(sub(root,r(3))),'=',[sign]);
+ const bracket=identity(p,'root-brackets',['n08-q07-bracket'],abs(sub(root,r(3))),neg(sub(root,r(3))),[rule]);
+ const distributed=identity(p,'root-distribute',['n08-q07-distribute'],neg(sub(root,r(3))),add(neg(root),r(3)),[bracket]);
+ const final=identity(p,'root-final',['n08-07'],abs(sub(root,r(3))),sub(r(3),root),[distributed]);p.conclusions=[final];
+ p=problem('pi-example');
+ const piOrder=claim(p,'pi-order',['n08-q08-order'],r(3),pi,'<');
+ const piOp=segment(p,'pi-both-sides',['n08-r5-q08-operation'],{kind:'transformation',before:rel(r(3),'<',pi),after:rel(sub(r(3),pi),'<',sub(pi,pi)),ruleId:'add-both-sides',operand:neg(pi)},[piOrder]);
+ const piSign=claim(p,'pi-negative',['n08-q08-difference','n08-08'],sub(r(3),pi),zero,'<',[piOp]);
+ const piBracket=identity(p,'pi-brackets',['n08-q09-bracket'],abs(sub(r(3),pi)),neg(sub(r(3),pi)),[piSign]);
+ const piDistribute=identity(p,'pi-distribute',['n08-q09-distribute'],neg(sub(r(3),pi)),add(r(-3),pi),[piBracket]);
+ const piFinal=identity(p,'pi-final',['n08-09'],abs(sub(r(3),pi)),sub(pi,r(3)),[piDistribute]);p.conclusions=[piFinal];
+ p=problem('zero');
+ const fwd=claim(p,'zero-forward',['n08-q10-forward'],a,zero,'=',[],origin);
+ const rev=claim(p,'zero-reverse',['n08-q10-reverse'],abs(a),zero,'=',[],origin);
+ const iff=segment(p,'zero-iff',['n08-10'],{kind:'equivalence',left:rel(abs(a),'=',zero),right:rel(a,'=',zero),forwardProof:fwd,reverseProof:rev},[fwd,rev]);p.conclusions=[iff];
+ p=problem('opposite');const same=rel(abs(a),'=',abs(neg(a)));
+ const pos=claim(p,'opposite-positive',['n08-q11-positive'],same.left,same.right,'=',[],positive);
+ const negCase=claim(p,'opposite-negative',['n08-q11-negative'],same.left,same.right,'=',[],negative);
+ const zer=claim(p,'opposite-zero',['n08-q11-zero'],same.left,same.right,'=',[],origin);
+ p.conclusions=[join(p,'opposite-all','n08-11',same,[{domain:positive,proofId:pos},{domain:negative,proofId:negCase},{domain:origin,proofId:zer}])];
+ p=problem('square');const squareClaim=rel(pow(abs(a),2),'=',pow(a,2));
+ const sqPos=claim(p,'square-nonnegative',['n08-q12-nonnegative'],squareClaim.left,squareClaim.right,'=',[],nonnegative);
+ const sqProd=identity(p,'square-negative-product',['n08-q12-negative'],pow(neg(a),2),mul(neg(a),neg(a)),[],negative);
+ const sqNeg=claim(p,'square-negative',['n08-q12-negative'],squareClaim.left,squareClaim.right,'=',[sqProd],negative);
+ const sqFinal=join(p,'square-all','n08-12',squareClaim,[{domain:nonnegative,proofId:sqPos},{domain:negative,proofId:sqNeg}]);p.conclusions=[sqFinal];
+ const nodeIds=[...design.nodeDecisions.map(n=>n.id),...design.newNodes.map(n=>n.id)];
+ return {schemaVersion:'solution-bundle/1',id:'n08-r5-bundle',sourceHash:design.sourceHash,nodeIds,problems,nodeCoverage:nodeIds.map(nodeId=>({nodeId,factRefs:mapped.get(nodeId)??[],meaningReason:mapped.has(nodeId)?'Corresponding exact mathematical segment; pedagogical order separately audited':'Definition introduction or closing prose: source and meaning review, not numeric certification'}))};
+}

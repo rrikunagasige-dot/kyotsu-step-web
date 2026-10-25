@@ -1,0 +1,31 @@
+/* N08 only; use the accepted shared formula/numbering primitives. */
+.n08-reading { color: var(--ink, #182b38); min-width: 0; }
+.n08-reading .n08-thinking-step { margin: 1.3rem 0 1.6rem; min-width: 0; }
+.n08-reading .n08-step-caption { display: flex; align-items: baseline; gap: .65rem; flex-wrap: wrap; margin-bottom: .7rem; }
+.n08-reading .n08-step-caption > span { font-size: .8rem; padding: .15rem .45rem; border: 1px solid #b7c4cc; border-radius: .15rem; white-space: nowrap; }
+.n08-reading .n08-step-caption > strong { font-size: 1rem; font-weight: 600; }
+.n08-reading .reading-paragraph { color: inherit; overflow-wrap: anywhere; }
+.n08-reading .reading-formula-line { margin-block: .65rem; }
+.n08-reading .n08-choice-options { display: grid; grid-template-columns: minmax(0, 1fr); gap: .75rem; }
+.n08-reading .reading-choice-option { min-width: 0; text-align: left; padding: .85rem; align-items: center; }
+.n08-reading .reading-choice-option > strong { min-width: 0; overflow-wrap: anywhere; width: 100%; }
+.n08-reading .reading-choice-option .reading-formula-line { font-size: 1em; margin: 0; }
+.n08-reading .n08-result { min-width: 0; margin-top: .6rem; }
+.n08-reading .n08-result > strong { font-size: .85rem; }
+.n08-reading .n08-result .reading-paragraph { font-size: .95em; }
+.n08-reading .n08-cases-table { width: 100%; border-collapse: collapse; margin-block: .8rem; font-size: .95em; }
+.n08-reading .n08-cases-table caption { text-align: left; margin-bottom: .5rem; font-weight: 600; }
+.n08-reading .n08-cases-table th, .n08-reading .n08-cases-table td { padding: .6rem .35rem; border: 1px solid #bac5cc; text-align: center; }
+.n08-reading details > summary { cursor: pointer; margin-block: .75rem; }
+.n08-reading .n08-history > section { margin-block: 1rem; }
+.n08-reading .numbered-equation { margin-block: .8rem; }
+.n08-reading .math-textbook-stage-references { margin-bottom: 1.25rem; }
+.n08-reading .n08-source-question { margin-bottom: 1rem; }
+.n08-reading .n08-source-question > strong { font-size: .85rem; }
+.n08-reading .n08-source-question p { margin-top: .4rem; line-height: 1.8; }
+.n08-reading .n08-figure { margin: 1rem 0; }
+.n08-reading .n08-figure img { display: block; max-width: 100%; height: auto; margin-inline: auto; }
+.n08-reading .n08-figure figcaption { font-size: .85rem; line-height: 1.7; margin-top: .5rem; }
+
+.n08-reading .n08-logical-chain { display: grid; grid-template-columns: minmax(0, 1fr); width: 100%; margin-block: .5rem; gap: .25rem; text-align: center; }
+.n08-reading .n08-logical-arrow { display: block; line-height: 1.2; }

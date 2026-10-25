@@ -4,6 +4,8 @@ import { ne02Presentation } from '../data/textbook/math/numbers/ne02Lesson'
 import { n10Presentation } from '../data/textbook/math/numbers/n10Lesson'
 import { GuidedMathReadingFlow } from '../components/textbook/GuidedMathReadingFlow'
 import { n09Presentation } from '../data/textbook/math/numbers/n09Lesson'
+import { N08SolutionReadingFlow } from '../components/textbook/N08SolutionReadingFlow'
+import { N08ArchivePage } from './N08ArchivePage'
 import { N08ReadingFlow } from '../components/textbook/N08ReadingFlow'
 import { N07ReadingFlow } from '../components/textbook/N07ReadingFlow'
 import { typesettingEnabled } from '../data/textbook/math/typesetting'
@@ -13,7 +15,7 @@ import { developmentFeedback } from '../data/textbook/math/numbers/developmentFe
 import { InlineMath } from 'react-katex'
 import { Check, LockKeyhole, RotateCcw, X } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
 import { TextbookFigure } from '../components/textbook/TextbookFigure'
 import { TextbookFormula } from '../components/textbook/TextbookFormula'
 import { ErrorState, ProgressBar, RaisedButton, StatusBadge } from '../components/ui/Primitives'
@@ -149,6 +151,8 @@ type ReadingFlowProps = {
 export function TextbookReadingFlow(props: ReadingFlowProps) {
   return props.unit.unitId === 'math-numbers-expressions-n07' && props.unit.revision === 4
     ? <N07ReadingFlow {...props} />
+    : props.unit.unitId === 'math-numbers-expressions-n08' && props.unit.revision === 5
+      ? <N08SolutionReadingFlow {...props} />
     : props.unit.unitId === 'math-numbers-expressions-n08' && props.unit.revision === 4
       ? <N08ReadingFlow {...props} />
       : props.unit.unitId === 'math-numbers-expressions-n09' && props.unit.revision === 3
@@ -669,6 +673,13 @@ function LegacyTextbookReadingFlow({ unit, section, progress, onSummaryReached, 
 }
 
 export function TextbookUnitPage() {
+  const { unitId } = useParams()
+  const location = useLocation()
+  return unitId === 'math-numbers-expressions-n08' && new URLSearchParams(location.search).get('version') === '4'
+    ? <N08ArchivePage /> : <ActiveTextbookUnitPage />
+}
+
+function ActiveTextbookUnitPage() {
   const { unitId = '' } = useParams()
   const [unit, setUnit] = useState<TextbookUnit | null | undefined>(undefined)
   const [selectedSectionIndex, setSelectedSectionIndex] = useState(0)

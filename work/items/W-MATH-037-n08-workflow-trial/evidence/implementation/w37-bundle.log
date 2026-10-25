@@ -1,0 +1,21 @@
+✔ all N08 elementary segments are checked, without certifying prose (895.403228ms)
+✔ Abs(a)=a without its sign restriction fails (571.438031ms)
+✔ conditional results cannot escape their domain (770.817587ms)
+✔ case joins detect a missing zero and overlapping branches (1231.708947ms)
+✔ squared order is not used with negative original numbers (528.017014ms)
+✔ false pi/root signs and distribution are rejected exactly (1689.082676ms)
+✔ equivalence needs both correctly scoped implications (1182.770301ms)
+✔ future or another problem facts cannot be referenced (4.071311ms)
+✔ case proof must establish the declared claim (527.965802ms)
+✔ unknown AST and arbitrary radical arguments stay outside supported scope (5.235136ms)
+✔ blank candidates cannot acquire a future or other problem fact (4.922446ms)
+✔ batched meaning review keeps each visible state separate and rejects answer leakage (0.860414ms)
+✔ a transformation must start from an established, true premise (1091.66229ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8851.744103

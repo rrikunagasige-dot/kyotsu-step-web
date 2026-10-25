@@ -1,0 +1,42 @@
+{
+  "case.retrieve": {
+    "status": "PASS",
+    "outputArtifact": "fa028e43dee47554920c3c368fb93ef9316692964ec01d5842a7746b187fd0ff",
+    "receiptArtifact": "6a13bdcb5078260cec8cd8ef7a4e2ce347b204821307ef44ffa86cdb52a6d3af"
+  },
+  "knowledge.ledger": {
+    "status": "PASS",
+    "outputArtifact": "f51684815a5ee29bbcef359facf61faca4d8be911d21714e8cd5bc2dd005a45d",
+    "receiptArtifact": "8cf5a6375ff1b9b0774f0ab900969c6edae263c6d771864cad326d16661fe44f"
+  },
+  "math.verify": {
+    "status": "PASS",
+    "outputArtifact": "070672710250c84857626145b58c1fc2bc8f5a6f0dec7bc8be74301e1bb3b699",
+    "receiptArtifact": "f5a97e832e5ba360beb7367bfdaf4b958ad6d0728dbefead3a3cb5b57a76b379"
+  },
+  "ir.verify": {
+    "status": "PASS",
+    "outputArtifact": "837f8017707d4c364237186b373242e23317bb15a4fcc1539fee5c69192fa480",
+    "receiptArtifact": "98367c120823ec8d08fa22ace0f1f58be3c6f22c808e62415fccb2db34ddd704"
+  },
+  "source.audit": {
+    "status": "NEEDS_AI_REVIEW",
+    "outputArtifact": "f6e9cb0b2a4ad2acecdb54793c18f436e685449306855e01e49effe9d39dc940",
+    "receiptArtifact": "6b73306ed9923f87bf1f74268e2b5175508e72a67d5d288928932e0cdc6fb19e"
+  },
+  "novice.audit": {
+    "status": "PASS",
+    "outputArtifact": "4a511a32676e82c47186caa56e8daa98956710ef4002ae1afad08db7b99eca87",
+    "receiptArtifact": "3456911aa6a535b314194e2e1d2b9c301698f17cc5408b0500384c9ac47c8683"
+  },
+  "math.solve": {
+    "status": "PASS",
+    "outputArtifact": "070672710250c84857626145b58c1fc2bc8f5a6f0dec7bc8be74301e1bb3b699",
+    "receiptArtifact": "3f59f82272acc78c8a97c6e104917cdf0cb6512f0c110da6948dfddf012451a6"
+  },
+  "solution.validate": {
+    "status": "PASS",
+    "outputArtifact": "070672710250c84857626145b58c1fc2bc8f5a6f0dec7bc8be74301e1bb3b699",
+    "receiptArtifact": "ae042ec689a12177b3e9f143950114b25e9ba25b89b61968e82b7d7e25eb967c"
+  }
+}

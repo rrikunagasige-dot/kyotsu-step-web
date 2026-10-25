@@ -1,0 +1,12 @@
+{
+  "source.fixed": {
+    "status": "PASS",
+    "outputArtifact": "3854e4924c436c0ab698931e8a7f0d38a392b7431a44084a12a0c6bb51e5faed",
+    "receiptArtifact": "28e13a0d27a68a2463beca2ef0b6dfe95919032bf62831877cb7d5e4408348f1"
+  },
+  "feedback.capture": {
+    "status": "PASS",
+    "outputArtifact": "a26da8129ead6c6c9584127b28e5055d40b08503d270ae78ccaf3f4b00213db9",
+    "receiptArtifact": "ae401022a1a3db183a933dbb0c9c0d9e7872347250d8e9e06c624fdb16980ec3"
+  }
+}

@@ -1,0 +1,237 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "problemId": "distance",
+      "segmentId": "distance-right",
+      "status": "PASS"
+    },
+    {
+      "problemId": "distance",
+      "segmentId": "distance-left",
+      "status": "PASS"
+    },
+    {
+      "problemId": "definition",
+      "segmentId": "positive-distance-form",
+      "status": "PASS",
+      "choices": [
+        {
+          "id": "right-minus-left",
+          "mathStatus": "PASS",
+          "formStatus": "PASS"
+        },
+        {
+          "id": "left-minus-right",
+          "mathStatus": "FAIL",
+          "formStatus": "FAIL"
+        },
+        {
+          "id": "sum-of-coordinates",
+          "mathStatus": "PASS",
+          "formStatus": "FAIL"
+        }
+      ]
+    },
+    {
+      "problemId": "definition",
+      "segmentId": "definition-nonnegative",
+      "status": "PASS"
+    },
+    {
+      "problemId": "definition",
+      "segmentId": "definition-negative-distance",
+      "status": "PASS"
+    },
+    {
+      "problemId": "definition",
+      "segmentId": "definition-negative-simple",
+      "status": "PASS"
+    },
+    {
+      "problemId": "definition",
+      "segmentId": "negative-substitution",
+      "status": "PASS"
+    },
+    {
+      "problemId": "definition",
+      "segmentId": "negative-number-result",
+      "status": "PASS"
+    },
+    {
+      "problemId": "definition",
+      "segmentId": "absolute-nonnegative-case",
+      "status": "PASS"
+    },
+    {
+      "problemId": "definition",
+      "segmentId": "absolute-negative-case",
+      "status": "PASS"
+    },
+    {
+      "problemId": "definition",
+      "segmentId": "definition-all-reals",
+      "status": "PASS",
+      "coverage": true,
+      "overlap": false
+    },
+    {
+      "problemId": "root-example",
+      "segmentId": "root-square",
+      "status": "PASS"
+    },
+    {
+      "problemId": "root-example",
+      "segmentId": "three-square",
+      "status": "PASS"
+    },
+    {
+      "problemId": "root-example",
+      "segmentId": "squares-compare",
+      "status": "PASS"
+    },
+    {
+      "problemId": "root-example",
+      "segmentId": "positive-root-order",
+      "status": "PASS",
+      "nonnegativeVerified": true
+    },
+    {
+      "problemId": "root-example",
+      "segmentId": "root-both-sides",
+      "status": "PASS",
+      "ruleId": "add-both-sides",
+      "checks": [
+        "same-operation-both-sides",
+        "relation-direction",
+        "exact-result"
+      ]
+    },
+    {
+      "problemId": "root-example",
+      "segmentId": "root-negative",
+      "status": "PASS"
+    },
+    {
+      "problemId": "root-example",
+      "segmentId": "root-negative-rule",
+      "status": "PASS"
+    },
+    {
+      "problemId": "root-example",
+      "segmentId": "root-brackets",
+      "status": "PASS"
+    },
+    {
+      "problemId": "root-example",
+      "segmentId": "root-distribute",
+      "status": "PASS"
+    },
+    {
+      "problemId": "root-example",
+      "segmentId": "root-final",
+      "status": "PASS"
+    },
+    {
+      "problemId": "pi-example",
+      "segmentId": "pi-order",
+      "status": "PASS"
+    },
+    {
+      "problemId": "pi-example",
+      "segmentId": "pi-both-sides",
+      "status": "PASS",
+      "ruleId": "add-both-sides",
+      "checks": [
+        "same-operation-both-sides",
+        "relation-direction",
+        "exact-result"
+      ]
+    },
+    {
+      "problemId": "pi-example",
+      "segmentId": "pi-negative",
+      "status": "PASS"
+    },
+    {
+      "problemId": "pi-example",
+      "segmentId": "pi-brackets",
+      "status": "PASS"
+    },
+    {
+      "problemId": "pi-example",
+      "segmentId": "pi-distribute",
+      "status": "PASS"
+    },
+    {
+      "problemId": "pi-example",
+      "segmentId": "pi-final",
+      "status": "PASS"
+    },
+    {
+      "problemId": "zero",
+      "segmentId": "zero-forward",
+      "status": "PASS"
+    },
+    {
+      "problemId": "zero",
+      "segmentId": "zero-reverse",
+      "status": "PASS"
+    },
+    {
+      "problemId": "zero",
+      "segmentId": "zero-iff",
+      "status": "PASS",
+      "reason": "EXACT_IMPLICATION_SCOPES_AND_EQUAL_SOLUTION_SETS"
+    },
+    {
+      "problemId": "opposite",
+      "segmentId": "opposite-positive",
+      "status": "PASS"
+    },
+    {
+      "problemId": "opposite",
+      "segmentId": "opposite-negative",
+      "status": "PASS"
+    },
+    {
+      "problemId": "opposite",
+      "segmentId": "opposite-zero",
+      "status": "PASS"
+    },
+    {
+      "problemId": "opposite",
+      "segmentId": "opposite-all",
+      "status": "PASS",
+      "coverage": true,
+      "overlap": false
+    },
+    {
+      "problemId": "square",
+      "segmentId": "square-nonnegative",
+      "status": "PASS"
+    },
+    {
+      "problemId": "square",
+      "segmentId": "square-negative-product",
+      "status": "PASS"
+    },
+    {
+      "problemId": "square",
+      "segmentId": "square-negative",
+      "status": "PASS"
+    },
+    {
+      "problemId": "square",
+      "segmentId": "square-all",
+      "status": "PASS",
+      "coverage": true,
+      "overlap": false
+    }
+  ],
+  "engineVersion": "1.14.0",
+  "formalProof": false,
+  "scope": "MATH_SEGMENTS_ONLY",
+  "bundleHash": "47e8edba987e631955633e40e470253f148d3bd6ae996fdedec0b1b3f9d1506b",
+  "meaningAuditRequired": true
+}

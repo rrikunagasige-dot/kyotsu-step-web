@@ -1,15 +1,149 @@
 {
   "work": "W-MATH-037",
   "engine_version": "1.0.0",
-  "ledger_head": "b1dba165fbe77288335da055ef4915f364a37477c4941f426cdd6d5119948ac6",
-  "work_status": "BLOCKED",
+  "ledger_head": "0188dbd617a3329d2c586629c334964049de84fa6c94b9ad7e5ca72ad80036c8",
+  "work_status": "IMPLEMENTING",
   "profile": "material",
   "simulation": false,
-  "candidate_sha": "69014b5b149f730c5f738129c9febbd19a96214a",
+  "candidate_sha": null,
   "next": {
-    "status": "BLOCKED",
-    "reason": "修正・追加証拠・提案改訂が必要",
-    "node": "R02_CAUSE@n08"
+    "status": "READY",
+    "task": {
+      "work_id": "W-MATH-037",
+      "node": {
+        "id": "R07_VERIFY@n08",
+        "stage_kind": "R07_VERIFY",
+        "contract_kind": "R07_VERIFY",
+        "actor": "TOOL",
+        "depends_on": [
+          "R06_PATCH@n08"
+        ],
+        "required": [],
+        "block": "n08",
+        "release_unit": "n08",
+        "watch": "integration",
+        "phase": "post-implementation",
+        "priority": 0,
+        "source_refs": [
+          "src/data/textbook/math/numbers/n08Authored.json",
+          "src/data/textbook/math/numbers/n08Lesson.ts",
+          "src/components/textbook/N08ReadingFlow.tsx",
+          "src/components/textbook/n08-reading.css",
+          "src/pages/TextbookUnitPage.tsx",
+          "src/domain/textbook.ts",
+          "public/assets/math/textbook/numbers/n08-f01.png"
+        ],
+        "protected_refs": [
+          "src/data/textbook/math/numbers/n07Authored.json",
+          "src/data/textbook/math/numbers/n09Authored.json",
+          "src/data/textbook/math/numbers/n10Authored.json",
+          "src/data/textbook/math/numbers/n11Authored.json",
+          "src/data/textbook/math/numbers/n12Authored.json",
+          "public/",
+          "src/data/textbook/math/numbers/n08Authored.json",
+          "src/components/textbook/N08ReadingFlow.tsx",
+          "src/components/textbook/n08-reading.css"
+        ],
+        "approval_scope_ref": "proposal",
+        "capability_requests": [
+          "math.verify",
+          "ir.verify",
+          "browser.verify",
+          "protected.verify",
+          "solution.validate"
+        ],
+        "required_code_receipts": [
+          "math.verify",
+          "ir.verify",
+          "browser.verify",
+          "protected.verify",
+          "solution.validate"
+        ],
+        "required_ai_receipts": []
+      },
+      "task_id": "de873676b10360d80468f8088fea7886f1c261a3d390351427f9515e79d38399",
+      "input_hash": "29baf7c3caff8d358660f940f83f5421fb5992355b893ad6c1af06bcbd9d4a46",
+      "source_sha": "69014b5b149f730c5f738129c9febbd19a96214a",
+      "candidate_sha": null,
+      "rules": {
+        "AGENTS.md": "7c3b2907b45824fdbfeb6419515c2fa3baef028a114c39d0cd0978d5bcca1235",
+        "governance/COMMAND_WORDS.md": "df12ca870ceefe169ad22960467b7f1b2c176f252abe5e5a965bf4a5634b7e1c",
+        "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
+        "governance/REVIEW_POLICY.json": "a71148f007a79b124385c7645e6bc01564bfa02b12152174883543f31f6ce72d",
+        "tools/textbook/SOLUTION_PIPELINE.md": "b6bde132eba1caf6363a6019297a4f4114ec48e021174703b4037524fdb8402e"
+      },
+      "proposal": {
+        "contentDesignHash": "2fb9229dcfdffff967df6022d8d0ceabf7f4f3918015641e59e1cd24edc9d5cb",
+        "hash": "71e6f67bb98d372a6146502cba0f69d13967f3047af9be59a8a86b1cb6a7eb6d",
+        "id": "P-001",
+        "patch_hash": "9f26db2f4f32543b224575e036e2a9bee2de2222d91e6b25849f9f87deb2ce65"
+      },
+      "scope": {
+        "paths": [
+          "src/data/textbook/math/numbers/n08Authored.json",
+          "src/components/textbook/N08ReadingFlow.tsx",
+          "src/components/textbook/n08-reading.css",
+          "src/pages/TextbookUnitPage.tsx",
+          "src/domain/textbook.ts",
+          "src/domain/solutionReading.ts",
+          "tools/textbook/",
+          "work/items/W-MATH-037-n08-workflow-trial/",
+          "src/data/textbook/math/numbers/n08Lesson.ts",
+          "src/data/textbook/math/numbers/n08Revision5.json",
+          "src/data/textbook/math/numbers/n08ActiveVersion.json",
+          "src/components/textbook/N08SolutionReadingFlow.tsx",
+          "src/components/textbook/n08-solution-reading.css",
+          "src/pages/N08ArchivePage.tsx",
+          "src/data/textbook/math/mathReviewIntegrity.test.ts"
+        ],
+        "preserve": [
+          "src/data/textbook/math/numbers/n07Authored.json",
+          "src/data/textbook/math/numbers/n09Authored.json",
+          "src/data/textbook/math/numbers/n10Authored.json",
+          "src/data/textbook/math/numbers/n11Authored.json",
+          "src/data/textbook/math/numbers/n12Authored.json",
+          "public/",
+          "src/data/textbook/math/numbers/n08Authored.json",
+          "src/components/textbook/N08ReadingFlow.tsx",
+          "src/components/textbook/n08-reading.css"
+        ]
+      },
+      "source_manifest": {
+        "public/assets/math/textbook/numbers/n08-f01.png": "817ab6ad3afb71b009cc95796e267d0818a104ecf19864c55c2ba0afbf29da73",
+        "src/components/textbook/N08ReadingFlow.tsx": "56f9d2b75b8b34a28b8e4b53c6df5ac922fb2da6c57005b6f709db5abcf56cc6",
+        "src/components/textbook/n08-reading.css": "c2c252e5467690b6b0897b5dcd99ddf18ae588cdb011b5d3c66e780a1175f949",
+        "src/data/textbook/math/numbers/n07Authored.json": "8a8338889abc9df39d19283075c149ee0c4dc6308cb708d0e86fbef47f76b007",
+        "src/data/textbook/math/numbers/n08Authored.json": "80c917d3c2de34b9111e11f57fb02272d98ab02c0677a2fb30c5ae4dad60e142",
+        "src/data/textbook/math/numbers/n08Lesson.ts": "b3c663ad696e4a0386e527f98748ffde363e6922cbd28f52e4cf17372af5e8d6",
+        "src/data/textbook/math/numbers/n09Authored.json": "86733957a6b748b9e2d2609a0b95e1a3c765a8d82397dfbf27837d834539ad95",
+        "src/data/textbook/math/numbers/n10Authored.json": "819cc0b981419e19381f7c8ab14b1501760a830be0d433ce8f1fe6cb3c619e62",
+        "src/data/textbook/math/numbers/n11Authored.json": "ae3823163ac23bb334ac02a6c868bbd1273b8b6f1f65c77cde6f751773900a74",
+        "src/data/textbook/math/numbers/n12Authored.json": "bd7e9942376589e822bc3028954867997167bf4f44e3cb5fc9b7aea90b8af97a",
+        "src/domain/textbook.ts": "b89d0ed869be94325938c97403f81e29807761b709f0a0a91021b966975cef15",
+        "src/pages/TextbookUnitPage.tsx": "eff391e2747af203658cc63e8f89d14cfd20abb4485219fe2bb936388889d1af"
+      },
+      "previous_results": {
+        "R06_PATCH@n08": {
+          "actor": "capability-runner",
+          "artifact": "a6dcd9a25a35c041fb786851b35d12285d0156aaa2f666624ea8b1a299b617ae",
+          "input_hash": "2c0fb783912df7c4b783b88995b0a57d7a8cbe527a6cde2926e2f5518c9ee5a5",
+          "node": "R06_PATCH@n08",
+          "verdict": "PASS"
+        }
+      },
+      "do_not_touch": [
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/data/textbook/math/numbers/n09Authored.json",
+        "src/data/textbook/math/numbers/n10Authored.json",
+        "src/data/textbook/math/numbers/n11Authored.json",
+        "src/data/textbook/math/numbers/n12Authored.json",
+        "public/",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css"
+      ],
+      "completion_is_not_semantic_proof": true
+    }
   },
   "nodes": [
     {
@@ -31,7 +165,10 @@
         "src/data/textbook/math/numbers/n10Authored.json",
         "src/data/textbook/math/numbers/n11Authored.json",
         "src/data/textbook/math/numbers/n12Authored.json",
-        "public/"
+        "public/",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css"
       ],
       "capability_requests": [],
       "required_code_receipts": [],
@@ -59,7 +196,10 @@
         "src/data/textbook/math/numbers/n10Authored.json",
         "src/data/textbook/math/numbers/n11Authored.json",
         "src/data/textbook/math/numbers/n12Authored.json",
-        "public/"
+        "public/",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css"
       ],
       "capability_requests": [],
       "required_code_receipts": [],
@@ -100,7 +240,10 @@
         "src/data/textbook/math/numbers/n10Authored.json",
         "src/data/textbook/math/numbers/n11Authored.json",
         "src/data/textbook/math/numbers/n12Authored.json",
-        "public/"
+        "public/",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css"
       ],
       "approval_scope_ref": "proposal",
       "capability_requests": [
@@ -151,7 +294,10 @@
         "src/data/textbook/math/numbers/n10Authored.json",
         "src/data/textbook/math/numbers/n11Authored.json",
         "src/data/textbook/math/numbers/n12Authored.json",
-        "public/"
+        "public/",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css"
       ],
       "approval_scope_ref": "proposal",
       "capability_requests": [
@@ -177,7 +323,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "BLOCKED"
+      "status": "PASSED"
     },
     {
       "id": "R03_IMPACT@n08",
@@ -212,7 +358,10 @@
         "src/data/textbook/math/numbers/n10Authored.json",
         "src/data/textbook/math/numbers/n11Authored.json",
         "src/data/textbook/math/numbers/n12Authored.json",
-        "public/"
+        "public/",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css"
       ],
       "approval_scope_ref": "proposal",
       "capability_requests": [
@@ -224,7 +373,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "R04_PROPOSAL@n08",
@@ -261,7 +410,10 @@
         "src/data/textbook/math/numbers/n10Authored.json",
         "src/data/textbook/math/numbers/n11Authored.json",
         "src/data/textbook/math/numbers/n12Authored.json",
-        "public/"
+        "public/",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css"
       ],
       "approval_scope_ref": "proposal",
       "capability_requests": [
@@ -299,7 +451,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "R05_APPROVAL@n08",
@@ -330,13 +482,16 @@
         "src/data/textbook/math/numbers/n10Authored.json",
         "src/data/textbook/math/numbers/n11Authored.json",
         "src/data/textbook/math/numbers/n12Authored.json",
-        "public/"
+        "public/",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css"
       ],
       "approval_scope_ref": "proposal",
       "capability_requests": [],
       "required_code_receipts": [],
       "required_ai_receipts": [],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "R06_PATCH@n08",
@@ -367,7 +522,10 @@
         "src/data/textbook/math/numbers/n10Authored.json",
         "src/data/textbook/math/numbers/n11Authored.json",
         "src/data/textbook/math/numbers/n12Authored.json",
-        "public/"
+        "public/",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css"
       ],
       "approval_scope_ref": "proposal",
       "capability_requests": [
@@ -379,7 +537,7 @@
         "render.solution"
       ],
       "required_ai_receipts": [],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "R07_VERIFY@n08",
@@ -410,7 +568,10 @@
         "src/data/textbook/math/numbers/n10Authored.json",
         "src/data/textbook/math/numbers/n11Authored.json",
         "src/data/textbook/math/numbers/n12Authored.json",
-        "public/"
+        "public/",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css"
       ],
       "approval_scope_ref": "proposal",
       "capability_requests": [
@@ -464,7 +625,10 @@
         "src/data/textbook/math/numbers/n10Authored.json",
         "src/data/textbook/math/numbers/n11Authored.json",
         "src/data/textbook/math/numbers/n12Authored.json",
-        "public/"
+        "public/",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css"
       ],
       "approval_scope_ref": "proposal",
       "capability_requests": [
@@ -509,7 +673,10 @@
         "src/data/textbook/math/numbers/n10Authored.json",
         "src/data/textbook/math/numbers/n11Authored.json",
         "src/data/textbook/math/numbers/n12Authored.json",
-        "public/"
+        "public/",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css"
       ],
       "capability_requests": [
         "protected.verify",
@@ -545,7 +712,10 @@
         "src/data/textbook/math/numbers/n10Authored.json",
         "src/data/textbook/math/numbers/n11Authored.json",
         "src/data/textbook/math/numbers/n12Authored.json",
-        "public/"
+        "public/",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css"
       ],
       "capability_requests": [
         "release.verify"
@@ -577,7 +747,10 @@
         "src/data/textbook/math/numbers/n10Authored.json",
         "src/data/textbook/math/numbers/n11Authored.json",
         "src/data/textbook/math/numbers/n12Authored.json",
-        "public/"
+        "public/",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css"
       ],
       "capability_requests": [],
       "required_code_receipts": [],
@@ -610,7 +783,10 @@
         "src/data/textbook/math/numbers/n10Authored.json",
         "src/data/textbook/math/numbers/n11Authored.json",
         "src/data/textbook/math/numbers/n12Authored.json",
-        "public/"
+        "public/",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css"
       ],
       "capability_requests": [
         "impact.inventory"
@@ -658,7 +834,10 @@
         "src/data/textbook/math/numbers/n10Authored.json",
         "src/data/textbook/math/numbers/n11Authored.json",
         "src/data/textbook/math/numbers/n12Authored.json",
-        "public/"
+        "public/",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css"
       ],
       "approval_scope_ref": "proposal",
       "capability_requests": [
@@ -700,7 +879,10 @@
         "src/data/textbook/math/numbers/n10Authored.json",
         "src/data/textbook/math/numbers/n11Authored.json",
         "src/data/textbook/math/numbers/n12Authored.json",
-        "public/"
+        "public/",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css"
       ],
       "capability_requests": [
         "case.finalize",
@@ -736,7 +918,10 @@
         "src/data/textbook/math/numbers/n10Authored.json",
         "src/data/textbook/math/numbers/n11Authored.json",
         "src/data/textbook/math/numbers/n12Authored.json",
-        "public/"
+        "public/",
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css"
       ],
       "capability_requests": [],
       "required_code_receipts": [],
@@ -772,13 +957,6 @@
       "work": "W-MATH-034"
     },
     {
-      "id": "W-MATH-036",
-      "work": "W-MATH-036",
-      "version": "397788f1715b96459032a6647d6fbe772004a7b3",
-      "origin": "unfinished-correction",
-      "description": "未完了の修正Work"
-    },
-    {
       "id": "W-MATH-034",
       "work": "W-MATH-034",
       "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
@@ -788,7 +966,14 @@
     {
       "id": "W-MATH-037",
       "work": "W-MATH-037",
-      "version": "69014b5b149f730c5f738129c9febbd19a96214a",
+      "version": null,
+      "origin": "unfinished-correction",
+      "description": "未完了の修正Work"
+    },
+    {
+      "id": "W-MATH-036",
+      "work": "W-MATH-036",
+      "version": "397788f1715b96459032a6647d6fbe772004a7b3",
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
     },
@@ -853,6 +1038,286 @@
       "input_hash": "845af5d36979a4b59cd46e24ff827ee4d7ad050a0a6d47c3346ae99e4bda512a",
       "node": "R02_CAUSE@n08",
       "receipt": "1cb639f93b6b8827cb1adf2a1c16b3e0087b8f2422c505ecd671d11e34aa75f5"
+    },
+    {
+      "input_hash": "61bbbccc469ff848716ed0b01b83a00354ba3bd4a138246daf93405b3c042404",
+      "node": "R01_CAPTURE@n08",
+      "receipt": "474978f7273f0d0bd2d162292f960611c1ef058ee03dfa1af5eaa713d488fc4d"
+    },
+    {
+      "input_hash": "61bbbccc469ff848716ed0b01b83a00354ba3bd4a138246daf93405b3c042404",
+      "node": "R01_CAPTURE@n08",
+      "receipt": "8b0504d9a423c5a8319a8c5b8577d78766aa75ce91054ec7258062b154eb2284"
+    },
+    {
+      "input_hash": "48fb9808781b0c8d1e3d1600d411d49c5e0a3a347b18882037c8480347281b38",
+      "node": "R02_CAUSE@n08",
+      "receipt": "d74a1a888fd4dc9db47b369a2d733c6a4ac52ef33574868c9c28a7bd60b66775"
+    },
+    {
+      "input_hash": "48fb9808781b0c8d1e3d1600d411d49c5e0a3a347b18882037c8480347281b38",
+      "node": "R02_CAUSE@n08",
+      "receipt": "b2abfeac2caebf8917d67868cd564e1ffae2a8cbdf0732f856eae12d0d559395"
+    },
+    {
+      "input_hash": "48fb9808781b0c8d1e3d1600d411d49c5e0a3a347b18882037c8480347281b38",
+      "node": "R02_CAUSE@n08",
+      "receipt": "b0ea9b42e689923a2dd12974e6f6f3515575c8e22b6153225afd2affc47ea40c"
+    },
+    {
+      "input_hash": "48fb9808781b0c8d1e3d1600d411d49c5e0a3a347b18882037c8480347281b38",
+      "node": "R02_CAUSE@n08",
+      "receipt": "11225cc1929e34ed209e2eb83ed62120c9aeb354527b1e4b9f7a992aca37d5b3"
+    },
+    {
+      "input_hash": "48fb9808781b0c8d1e3d1600d411d49c5e0a3a347b18882037c8480347281b38",
+      "node": "R02_CAUSE@n08",
+      "receipt": "7d013ada885d051eae4911cdaee80e9ee90bfba8eab18f914dd67839b2d319e0"
+    },
+    {
+      "input_hash": "48fb9808781b0c8d1e3d1600d411d49c5e0a3a347b18882037c8480347281b38",
+      "node": "R02_CAUSE@n08",
+      "receipt": "277f9c0599145f85a546ed9c69c3d4db03c1eea87b30ef89a4c60af25af90f73"
+    },
+    {
+      "input_hash": "48fb9808781b0c8d1e3d1600d411d49c5e0a3a347b18882037c8480347281b38",
+      "node": "R02_CAUSE@n08",
+      "receipt": "ed621d59bfac229a65a95e574435e82e77c67e888c809395c382b5f5226490d0"
+    },
+    {
+      "input_hash": "48fb9808781b0c8d1e3d1600d411d49c5e0a3a347b18882037c8480347281b38",
+      "node": "R02_CAUSE@n08",
+      "receipt": "0843c67cab42f2568df017cfc08e2f76b38ce1b850044731c127193de0415ff2"
+    },
+    {
+      "input_hash": "1cdc653023e282dfd00fee43d637c86c1f5dc4f98637cc7c1b46030e8ab909a2",
+      "node": "R03_IMPACT@n08",
+      "receipt": "cd5f2728fbcdaf99df46e2ad6b8bdc91ef44454d1452402188b203c8f8416f9c"
+    },
+    {
+      "input_hash": "096916b66e3696ce0b18643741c429c64daebbf033f53696e022184fb854bb81",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "051e6dd29c3dd6f082ab47601eef6dc942fe3b09723cf3b09c73340458543db6"
+    },
+    {
+      "input_hash": "096916b66e3696ce0b18643741c429c64daebbf033f53696e022184fb854bb81",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "a9fc089d86f7758b2ad0b3e3578354acfd9245e46fda0f2807a6faf4efbdaa3f"
+    },
+    {
+      "input_hash": "096916b66e3696ce0b18643741c429c64daebbf033f53696e022184fb854bb81",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "94cbe24443cbcf6db0693b98c6f213379d530ad6ddc977cd82b1ad8b0100fbfb"
+    },
+    {
+      "input_hash": "096916b66e3696ce0b18643741c429c64daebbf033f53696e022184fb854bb81",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "75e9b5b4e610d23934ee8b52d3bd92c9fb0ea95c87c10ac142ea538f4e6d8368"
+    },
+    {
+      "input_hash": "096916b66e3696ce0b18643741c429c64daebbf033f53696e022184fb854bb81",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "0478583e894c758e04205b2553ce506218536ba302c3162ce6a8b82280958f0a"
+    },
+    {
+      "input_hash": "096916b66e3696ce0b18643741c429c64daebbf033f53696e022184fb854bb81",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "730a416a90852f81692481fcf4cfbdb25e5a0cf42ebc3d6129a1efddbd30fd55"
+    },
+    {
+      "input_hash": "096916b66e3696ce0b18643741c429c64daebbf033f53696e022184fb854bb81",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "7945c8095eb111e0d699324918a6b48077a2dcc4e39d73cb5b8ca3edeb93368e"
+    },
+    {
+      "input_hash": "096916b66e3696ce0b18643741c429c64daebbf033f53696e022184fb854bb81",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "cee0747c83512d6942f08e7f81c3a2ad70c24b01bfb8b1186c0116c9d26fbad3"
+    },
+    {
+      "input_hash": "096916b66e3696ce0b18643741c429c64daebbf033f53696e022184fb854bb81",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "7928720e1edd4586c3c1da484d9422d665a0a09eb8d0b510e010389f1d491f96"
+    },
+    {
+      "input_hash": "096916b66e3696ce0b18643741c429c64daebbf033f53696e022184fb854bb81",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "c203aa0be8a8f4596ed30b6a541f85277feb876ccdb3edbbcebe1407e465c460"
+    },
+    {
+      "input_hash": "096916b66e3696ce0b18643741c429c64daebbf033f53696e022184fb854bb81",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "7f2cc4a195da0b02559e7783a1b465eab49348290e2e3327955a363b702d6d6e"
+    },
+    {
+      "input_hash": "096916b66e3696ce0b18643741c429c64daebbf033f53696e022184fb854bb81",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "34931c9adb80990daa982d221f674fb4c7092aaa608046cef956d90ac6cc6dfc"
+    },
+    {
+      "input_hash": "096916b66e3696ce0b18643741c429c64daebbf033f53696e022184fb854bb81",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "fc78e25e66e3c4c336aec162dda02b3e1adabd0c2cf36ef29bc44eee994effbc"
+    },
+    {
+      "input_hash": "096916b66e3696ce0b18643741c429c64daebbf033f53696e022184fb854bb81",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "fe3ada7b26c972b7a39229853cbe2258210aba1e08f09d8c2a9567b76f831a41"
+    },
+    {
+      "input_hash": "02be7b354b5b555411a86eca1e5b6ff7e89816c9616fe54479accf904ced3f6e",
+      "node": "R06_PATCH@n08",
+      "receipt": "5834e60f05262099eadca95bcaf0f6238dc1570687ab6dace326a1f7e2fde1ec"
+    },
+    {
+      "input_hash": "02be7b354b5b555411a86eca1e5b6ff7e89816c9616fe54479accf904ced3f6e",
+      "node": "R06_PATCH@n08",
+      "receipt": "1cf1cc7bacf08a23766e1c04b409e4c4074cc20c446988a66096166c99b5bbe8"
+    },
+    {
+      "input_hash": "ac3e78008ad7d431fd8c423356d16e9c321302e0d4af84c91df7afb9815afe70",
+      "node": "R01_CAPTURE@n08",
+      "receipt": "23d4f4acadc8725bcf0fdcd6b8651de5f23d43e8a4059e13965556b30c488d76"
+    },
+    {
+      "input_hash": "ac3e78008ad7d431fd8c423356d16e9c321302e0d4af84c91df7afb9815afe70",
+      "node": "R01_CAPTURE@n08",
+      "receipt": "2f479384f4081579d111208f548d1db7cc7f8e5ae0e895b9ebae9aa54ddb7838"
+    },
+    {
+      "input_hash": "59f2da83a64c94738296b1b803629c75c4eca13fe43ad1a9043cc3b9831c37f9",
+      "node": "R01_CAPTURE@n08",
+      "receipt": "28e13a0d27a68a2463beca2ef0b6dfe95919032bf62831877cb7d5e4408348f1"
+    },
+    {
+      "input_hash": "59f2da83a64c94738296b1b803629c75c4eca13fe43ad1a9043cc3b9831c37f9",
+      "node": "R01_CAPTURE@n08",
+      "receipt": "ae401022a1a3db183a933dbb0c9c0d9e7872347250d8e9e06c624fdb16980ec3"
+    },
+    {
+      "input_hash": "45ab8b3ed16831e534fac07535d6a5eec0d1e0905a09eac0a249104ce6fea865",
+      "node": "R02_CAUSE@n08",
+      "receipt": "6a13bdcb5078260cec8cd8ef7a4e2ce347b204821307ef44ffa86cdb52a6d3af"
+    },
+    {
+      "input_hash": "45ab8b3ed16831e534fac07535d6a5eec0d1e0905a09eac0a249104ce6fea865",
+      "node": "R02_CAUSE@n08",
+      "receipt": "8cf5a6375ff1b9b0774f0ab900969c6edae263c6d771864cad326d16661fe44f"
+    },
+    {
+      "input_hash": "45ab8b3ed16831e534fac07535d6a5eec0d1e0905a09eac0a249104ce6fea865",
+      "node": "R02_CAUSE@n08",
+      "receipt": "f5a97e832e5ba360beb7367bfdaf4b958ad6d0728dbefead3a3cb5b57a76b379"
+    },
+    {
+      "input_hash": "45ab8b3ed16831e534fac07535d6a5eec0d1e0905a09eac0a249104ce6fea865",
+      "node": "R02_CAUSE@n08",
+      "receipt": "98367c120823ec8d08fa22ace0f1f58be3c6f22c808e62415fccb2db34ddd704"
+    },
+    {
+      "input_hash": "45ab8b3ed16831e534fac07535d6a5eec0d1e0905a09eac0a249104ce6fea865",
+      "node": "R02_CAUSE@n08",
+      "receipt": "6b73306ed9923f87bf1f74268e2b5175508e72a67d5d288928932e0cdc6fb19e"
+    },
+    {
+      "input_hash": "45ab8b3ed16831e534fac07535d6a5eec0d1e0905a09eac0a249104ce6fea865",
+      "node": "R02_CAUSE@n08",
+      "receipt": "3456911aa6a535b314194e2e1d2b9c301698f17cc5408b0500384c9ac47c8683"
+    },
+    {
+      "input_hash": "45ab8b3ed16831e534fac07535d6a5eec0d1e0905a09eac0a249104ce6fea865",
+      "node": "R02_CAUSE@n08",
+      "receipt": "3f59f82272acc78c8a97c6e104917cdf0cb6512f0c110da6948dfddf012451a6"
+    },
+    {
+      "input_hash": "45ab8b3ed16831e534fac07535d6a5eec0d1e0905a09eac0a249104ce6fea865",
+      "node": "R02_CAUSE@n08",
+      "receipt": "ae042ec689a12177b3e9f143950114b25e9ba25b89b61968e82b7d7e25eb967c"
+    },
+    {
+      "input_hash": "df00dc9e64c47936758476dd09f01de96801facefe2757e44945b9c57cfc8135",
+      "node": "R03_IMPACT@n08",
+      "receipt": "7af3bec8d39d4199f2cdeea7fc6079977495c5df873d953b048fd900814ace34"
+    },
+    {
+      "input_hash": "633025024fee68dd182f782f0654c6b5155fafc15cb7e117eb682294f223a625",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "9967cd71b3a95b40813b29edadec918b07b2bd5217c7344f3e9b277532988785"
+    },
+    {
+      "input_hash": "633025024fee68dd182f782f0654c6b5155fafc15cb7e117eb682294f223a625",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "c0c6fbfa2a04022838ae3f177043e86bcc3ebc718554293e5ade890e5180ac0d"
+    },
+    {
+      "input_hash": "633025024fee68dd182f782f0654c6b5155fafc15cb7e117eb682294f223a625",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "e1bb3227838fc1ebb25dd8648c2ca6f248c866978aa57a24d988bcaa9120d989"
+    },
+    {
+      "input_hash": "633025024fee68dd182f782f0654c6b5155fafc15cb7e117eb682294f223a625",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "b7d2a79a96d1d90ea9e45dc3770c8dc43821c45656e5f3b097a21de1f066319d"
+    },
+    {
+      "input_hash": "633025024fee68dd182f782f0654c6b5155fafc15cb7e117eb682294f223a625",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "541e833f1c472e797b6253fc5492707c79769c5de7042e584f98b5fbfd5a3fe6"
+    },
+    {
+      "input_hash": "633025024fee68dd182f782f0654c6b5155fafc15cb7e117eb682294f223a625",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "f1d01e7e7e17c200ba4e29dcc4677e1e11afc408c72f22d743abe0e2a00c3596"
+    },
+    {
+      "input_hash": "633025024fee68dd182f782f0654c6b5155fafc15cb7e117eb682294f223a625",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "93b518c338610ffac8049b3a374fbae09e056af2eba648c8effeb685e5835224"
+    },
+    {
+      "input_hash": "633025024fee68dd182f782f0654c6b5155fafc15cb7e117eb682294f223a625",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "c4884e367f021f62dc84305bc4ee8bb074caa30fb981f1ab1af9017009049370"
+    },
+    {
+      "input_hash": "633025024fee68dd182f782f0654c6b5155fafc15cb7e117eb682294f223a625",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "000acb9005c0e31491f2537ab973ce62be22b148ce2f4ca3bbb6b27fc5804c0a"
+    },
+    {
+      "input_hash": "633025024fee68dd182f782f0654c6b5155fafc15cb7e117eb682294f223a625",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "4e6caf4ff26a441e28a8b66f72b2d2544cab7b9c136b573e74446e463f2b931c"
+    },
+    {
+      "input_hash": "633025024fee68dd182f782f0654c6b5155fafc15cb7e117eb682294f223a625",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "b2e21b0fdd154a221dd27ba7422833c9af64b98a2959adf8be9a6530e5035105"
+    },
+    {
+      "input_hash": "633025024fee68dd182f782f0654c6b5155fafc15cb7e117eb682294f223a625",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "255902bd9902064c6d5e0faec185efb01c079ae9356e0a32d953fa4710836181"
+    },
+    {
+      "input_hash": "633025024fee68dd182f782f0654c6b5155fafc15cb7e117eb682294f223a625",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "73f19305b4dc6bb188c72b6d8d6d7fcefaeff8e0377a856df657460d2c736727"
+    },
+    {
+      "input_hash": "633025024fee68dd182f782f0654c6b5155fafc15cb7e117eb682294f223a625",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "3d8ac2e753c6cc95409965a8a98ee1d279f9fa490ec584cfa18639ed73d97bbf"
+    },
+    {
+      "input_hash": "2c0fb783912df7c4b783b88995b0a57d7a8cbe527a6cde2926e2f5518c9ee5a5",
+      "node": "R06_PATCH@n08",
+      "receipt": "4da31691abe286c5ff422eb6c25f640a583d4b7bf5e9b061ca4063db370cfcd3"
+    },
+    {
+      "input_hash": "2c0fb783912df7c4b783b88995b0a57d7a8cbe527a6cde2926e2f5518c9ee5a5",
+      "node": "R06_PATCH@n08",
+      "receipt": "0bc56fcf6162774b8e2661b8fb43591bfef6cb73a2a15ac9043b3eec88f1183a"
     }
   ],
   "release_acceptance": {

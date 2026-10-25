@@ -4,6 +4,9 @@ const integer = z.string().regex(/^-?\d{1,30}$/);
 export const expressionSchema = z.lazy(() => z.discriminatedUnion('kind', [
   z.object({kind:z.literal('rational'),n:integer,d:integer.refine(x=>BigInt(x)>0n)}).strict(),
   z.object({kind:z.literal('symbol'),name:z.string().regex(/^[a-zA-Z][a-zA-Z0-9_]{0,15}$/)}).strict(),
+  z.object({kind:z.literal('absolute'),argument:expressionSchema}).strict(),
+  z.object({kind:z.literal('sqrt'),argument:z.object({kind:z.literal('rational'),n:integer.refine(x=>BigInt(x)>=0n),d:integer.refine(x=>BigInt(x)>0n)}).strict()}).strict(),
+  z.object({kind:z.literal('constant'),name:z.literal('pi')}).strict(),
   z.object({kind:z.literal('add'),args:z.array(expressionSchema).min(2).max(12)}).strict(),
   z.object({kind:z.literal('multiply'),args:z.array(expressionSchema).min(2).max(12)}).strict(),
   z.object({kind:z.literal('power'),base:expressionSchema,exponent:z.number().int().min(0).max(4)}).strict(),
@@ -31,6 +34,9 @@ export function symbols(value){
 }
 export function expressionLatex(e){
   if(e.kind==='slot')return `\\boxed{\\mathrm{${e.label}}}`;
+  if(e.kind==='absolute')return `\\left|${expressionLatex(e.argument)}\\right|`;
+  if(e.kind==='sqrt')return `\\sqrt{${expressionLatex(e.argument)}}`;
+  if(e.kind==='constant')return '\\pi';
   if(e.kind==='rational')return e.d==='1'?e.n:`\\frac{${e.n}}{${e.d}}`;
   if(e.kind==='symbol')return e.name.includes('_')?e.name.replace('_','_{')+'}':e.name;
   if(e.kind==='add')return e.args.map(expressionLatex).join('+').replace(/\+-/g,'-');

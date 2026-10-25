@@ -1,0 +1,2987 @@
+{
+  "bundle": {
+    "schemaVersion": "solution-bundle/1",
+    "id": "n08-r5-bundle",
+    "sourceHash": "80c917d3c2de34b9111e11f57fb02272d98ab02c0677a2fb30c5ae4dad60e142",
+    "nodeIds": [
+      "n08-q01-right",
+      "n08-q01-left",
+      "n08-01",
+      "n08-definition",
+      "n08-02",
+      "n08-q03-order",
+      "n08-03",
+      "n08-q04-substitute",
+      "n08-04",
+      "n08-cases",
+      "n08-q05-square",
+      "n08-q05-compare",
+      "n08-05",
+      "n08-q06-subtract",
+      "n08-06",
+      "n08-q07-rule",
+      "n08-q07-bracket",
+      "n08-q07-distribute",
+      "n08-07",
+      "n08-q08-order",
+      "n08-q08-difference",
+      "n08-08",
+      "n08-q09-bracket",
+      "n08-q09-distribute",
+      "n08-09",
+      "n08-q10-forward",
+      "n08-q10-reverse",
+      "n08-10",
+      "n08-q11-positive",
+      "n08-q11-negative",
+      "n08-q11-zero",
+      "n08-11",
+      "n08-q12-nonnegative",
+      "n08-q12-negative",
+      "n08-12",
+      "n08-closing",
+      "n08-r5-q02-distance",
+      "n08-r5-q06-operation",
+      "n08-r5-q08-operation"
+    ],
+    "problems": [
+      {
+        "id": "distance",
+        "variable": "a",
+        "sourceRefs": [
+          "word-p-000343",
+          "word-p-000344",
+          "word-p-000345",
+          "word-p-000347",
+          "word-p-000346"
+        ],
+        "domain": {
+          "lower": null,
+          "upper": null,
+          "lowerOpen": true,
+          "upperOpen": true
+        },
+        "initialFacts": [
+          "real-arithmetic",
+          "distance-definition"
+        ],
+        "segments": [
+          {
+            "id": "distance-right",
+            "nodeIds": [
+              "n08-q01-right"
+            ],
+            "requires": [],
+            "produces": "distance-right-fact",
+            "check": {
+              "kind": "identity",
+              "left": {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "23",
+                    "d": "10"
+                  },
+                  {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "-1",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "rational",
+                        "n": "0",
+                        "d": "1"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "right": {
+                "kind": "rational",
+                "n": "23",
+                "d": "10"
+              }
+            }
+          },
+          {
+            "id": "distance-left",
+            "nodeIds": [
+              "n08-q01-left",
+              "n08-01"
+            ],
+            "requires": [
+              "distance-right-fact"
+            ],
+            "produces": "distance-left-fact",
+            "check": {
+              "kind": "identity",
+              "left": {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "0",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "-1",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "rational",
+                        "n": "-5",
+                        "d": "1"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "right": {
+                "kind": "rational",
+                "n": "5",
+                "d": "1"
+              }
+            }
+          }
+        ],
+        "conclusions": [
+          "distance-left-fact"
+        ]
+      },
+      {
+        "id": "definition",
+        "variable": "a",
+        "sourceRefs": [
+          "word-p-000350",
+          "word-p-000351",
+          "word-p-000352",
+          "word-p-000353",
+          "word-p-000354",
+          "word-p-000355",
+          "word-p-000356"
+        ],
+        "domain": {
+          "lower": null,
+          "upper": null,
+          "lowerOpen": true,
+          "upperOpen": true
+        },
+        "initialFacts": [
+          "real-arithmetic",
+          "distance-definition"
+        ],
+        "segments": [
+          {
+            "id": "positive-distance-form",
+            "nodeIds": [
+              "n08-r5-q02-distance"
+            ],
+            "requires": [],
+            "produces": "positive-distance-form-fact",
+            "check": {
+              "kind": "answer-form",
+              "expected": {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "symbol",
+                    "name": "a"
+                  },
+                  {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "-1",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "rational",
+                        "n": "0",
+                        "d": "1"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "choices": [
+                {
+                  "id": "right-minus-left",
+                  "value": {
+                    "kind": "add",
+                    "args": [
+                      {
+                        "kind": "symbol",
+                        "name": "a"
+                      },
+                      {
+                        "kind": "multiply",
+                        "args": [
+                          {
+                            "kind": "rational",
+                            "n": "-1",
+                            "d": "1"
+                          },
+                          {
+                            "kind": "rational",
+                            "n": "0",
+                            "d": "1"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "left-minus-right",
+                  "value": {
+                    "kind": "add",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "0",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "multiply",
+                        "args": [
+                          {
+                            "kind": "rational",
+                            "n": "-1",
+                            "d": "1"
+                          },
+                          {
+                            "kind": "symbol",
+                            "name": "a"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "sum-of-coordinates",
+                  "value": {
+                    "kind": "add",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "0",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "symbol",
+                        "name": "a"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "pattern": "right-coordinate-minus-left",
+              "rightCoordinate": {
+                "kind": "symbol",
+                "name": "a"
+              },
+              "leftCoordinate": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              }
+            },
+            "domain": {
+              "lower": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              },
+              "upper": null,
+              "lowerOpen": false,
+              "upperOpen": true
+            }
+          },
+          {
+            "id": "definition-nonnegative",
+            "nodeIds": [
+              "n08-02"
+            ],
+            "requires": [
+              "positive-distance-form-fact"
+            ],
+            "produces": "definition-nonnegative-fact",
+            "check": {
+              "kind": "claim",
+              "statement": {
+                "kind": "relation",
+                "left": {
+                  "kind": "absolute",
+                  "argument": {
+                    "kind": "symbol",
+                    "name": "a"
+                  }
+                },
+                "operator": "=",
+                "right": {
+                  "kind": "symbol",
+                  "name": "a"
+                }
+              }
+            },
+            "domain": {
+              "lower": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              },
+              "upper": null,
+              "lowerOpen": false,
+              "upperOpen": true
+            }
+          },
+          {
+            "id": "definition-negative-distance",
+            "nodeIds": [
+              "n08-q03-order"
+            ],
+            "requires": [],
+            "produces": "definition-negative-distance-fact",
+            "check": {
+              "kind": "claim",
+              "statement": {
+                "kind": "relation",
+                "left": {
+                  "kind": "absolute",
+                  "argument": {
+                    "kind": "symbol",
+                    "name": "a"
+                  }
+                },
+                "operator": "=",
+                "right": {
+                  "kind": "add",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "0",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "multiply",
+                      "args": [
+                        {
+                          "kind": "rational",
+                          "n": "-1",
+                          "d": "1"
+                        },
+                        {
+                          "kind": "symbol",
+                          "name": "a"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            },
+            "domain": {
+              "lower": null,
+              "upper": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              },
+              "lowerOpen": true,
+              "upperOpen": true
+            }
+          },
+          {
+            "id": "definition-negative-simple",
+            "nodeIds": [
+              "n08-03"
+            ],
+            "requires": [
+              "definition-negative-distance-fact"
+            ],
+            "produces": "definition-negative-simple-fact",
+            "check": {
+              "kind": "claim",
+              "statement": {
+                "kind": "relation",
+                "left": {
+                  "kind": "add",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "0",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "multiply",
+                      "args": [
+                        {
+                          "kind": "rational",
+                          "n": "-1",
+                          "d": "1"
+                        },
+                        {
+                          "kind": "symbol",
+                          "name": "a"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "operator": "=",
+                "right": {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "symbol",
+                      "name": "a"
+                    }
+                  ]
+                }
+              }
+            },
+            "domain": {
+              "lower": null,
+              "upper": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              },
+              "lowerOpen": true,
+              "upperOpen": true
+            }
+          },
+          {
+            "id": "negative-substitution",
+            "nodeIds": [
+              "n08-q04-substitute"
+            ],
+            "requires": [],
+            "produces": "negative-substitution-fact",
+            "check": {
+              "kind": "claim",
+              "statement": {
+                "kind": "relation",
+                "left": {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "symbol",
+                      "name": "a"
+                    }
+                  ]
+                },
+                "operator": "=",
+                "right": {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "rational",
+                      "n": "-5",
+                      "d": "1"
+                    }
+                  ]
+                }
+              }
+            },
+            "domain": {
+              "lower": {
+                "kind": "rational",
+                "n": "-5",
+                "d": "1"
+              },
+              "upper": {
+                "kind": "rational",
+                "n": "-5",
+                "d": "1"
+              },
+              "lowerOpen": false,
+              "upperOpen": false
+            }
+          },
+          {
+            "id": "negative-number-result",
+            "nodeIds": [
+              "n08-04"
+            ],
+            "requires": [],
+            "produces": "negative-number-result-fact",
+            "check": {
+              "kind": "identity",
+              "left": {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "n": "-5",
+                    "d": "1"
+                  }
+                ]
+              },
+              "right": {
+                "kind": "rational",
+                "n": "5",
+                "d": "1"
+              }
+            }
+          },
+          {
+            "id": "absolute-nonnegative-case",
+            "nodeIds": [
+              "n08-cases"
+            ],
+            "requires": [
+              "definition-nonnegative-fact"
+            ],
+            "produces": "absolute-nonnegative-case-fact",
+            "check": {
+              "kind": "claim",
+              "statement": {
+                "kind": "relation",
+                "left": {
+                  "kind": "absolute",
+                  "argument": {
+                    "kind": "symbol",
+                    "name": "a"
+                  }
+                },
+                "operator": ">=",
+                "right": {
+                  "kind": "rational",
+                  "n": "0",
+                  "d": "1"
+                }
+              }
+            },
+            "domain": {
+              "lower": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              },
+              "upper": null,
+              "lowerOpen": false,
+              "upperOpen": true
+            }
+          },
+          {
+            "id": "absolute-negative-case",
+            "nodeIds": [
+              "n08-cases"
+            ],
+            "requires": [
+              "definition-negative-distance-fact"
+            ],
+            "produces": "absolute-negative-case-fact",
+            "check": {
+              "kind": "claim",
+              "statement": {
+                "kind": "relation",
+                "left": {
+                  "kind": "absolute",
+                  "argument": {
+                    "kind": "symbol",
+                    "name": "a"
+                  }
+                },
+                "operator": ">=",
+                "right": {
+                  "kind": "rational",
+                  "n": "0",
+                  "d": "1"
+                }
+              }
+            },
+            "domain": {
+              "lower": null,
+              "upper": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              },
+              "lowerOpen": true,
+              "upperOpen": true
+            }
+          },
+          {
+            "id": "definition-all-reals",
+            "nodeIds": [
+              "n08-cases"
+            ],
+            "requires": [
+              "absolute-nonnegative-case-fact",
+              "absolute-negative-case-fact"
+            ],
+            "produces": "definition-all-reals-fact",
+            "check": {
+              "kind": "case-join",
+              "statement": {
+                "kind": "relation",
+                "left": {
+                  "kind": "absolute",
+                  "argument": {
+                    "kind": "symbol",
+                    "name": "a"
+                  }
+                },
+                "operator": ">=",
+                "right": {
+                  "kind": "rational",
+                  "n": "0",
+                  "d": "1"
+                }
+              },
+              "branches": [
+                {
+                  "domain": {
+                    "lower": {
+                      "kind": "rational",
+                      "n": "0",
+                      "d": "1"
+                    },
+                    "upper": null,
+                    "lowerOpen": false,
+                    "upperOpen": true
+                  },
+                  "proofId": "absolute-nonnegative-case-fact"
+                },
+                {
+                  "domain": {
+                    "lower": null,
+                    "upper": {
+                      "kind": "rational",
+                      "n": "0",
+                      "d": "1"
+                    },
+                    "lowerOpen": true,
+                    "upperOpen": true
+                  },
+                  "proofId": "absolute-negative-case-fact"
+                }
+              ]
+            }
+          }
+        ],
+        "conclusions": [
+          "definition-all-reals-fact",
+          "negative-number-result-fact"
+        ]
+      },
+      {
+        "id": "root-example",
+        "variable": "a",
+        "sourceRefs": [
+          "word-p-000357",
+          "word-p-000358",
+          "word-p-000359",
+          "word-p-000360",
+          "word-p-000361",
+          "word-p-000362",
+          "word-p-000363",
+          "word-p-000355",
+          "word-p-000356",
+          "word-p-000364",
+          "word-p-000365"
+        ],
+        "domain": {
+          "lower": null,
+          "upper": null,
+          "lowerOpen": true,
+          "upperOpen": true
+        },
+        "initialFacts": [
+          "real-arithmetic",
+          "distance-definition"
+        ],
+        "segments": [
+          {
+            "id": "root-square",
+            "nodeIds": [
+              "n08-q05-square"
+            ],
+            "requires": [],
+            "produces": "root-square-fact",
+            "check": {
+              "kind": "identity",
+              "left": {
+                "kind": "power",
+                "base": {
+                  "kind": "sqrt",
+                  "argument": {
+                    "kind": "rational",
+                    "n": "5",
+                    "d": "1"
+                  }
+                },
+                "exponent": 2
+              },
+              "right": {
+                "kind": "rational",
+                "n": "5",
+                "d": "1"
+              }
+            }
+          },
+          {
+            "id": "three-square",
+            "nodeIds": [
+              "n08-q05-square"
+            ],
+            "requires": [
+              "root-square-fact"
+            ],
+            "produces": "three-square-fact",
+            "check": {
+              "kind": "identity",
+              "left": {
+                "kind": "power",
+                "base": {
+                  "kind": "rational",
+                  "n": "3",
+                  "d": "1"
+                },
+                "exponent": 2
+              },
+              "right": {
+                "kind": "rational",
+                "n": "9",
+                "d": "1"
+              }
+            }
+          },
+          {
+            "id": "squares-compare",
+            "nodeIds": [
+              "n08-q05-compare"
+            ],
+            "requires": [
+              "root-square-fact",
+              "three-square-fact"
+            ],
+            "produces": "squares-compare-fact",
+            "check": {
+              "kind": "claim",
+              "statement": {
+                "kind": "relation",
+                "left": {
+                  "kind": "rational",
+                  "n": "5",
+                  "d": "1"
+                },
+                "operator": "<",
+                "right": {
+                  "kind": "rational",
+                  "n": "9",
+                  "d": "1"
+                }
+              }
+            }
+          },
+          {
+            "id": "positive-root-order",
+            "nodeIds": [
+              "n08-05"
+            ],
+            "requires": [
+              "root-square-fact",
+              "three-square-fact",
+              "squares-compare-fact"
+            ],
+            "produces": "positive-root-order-fact",
+            "check": {
+              "kind": "square-order",
+              "left": {
+                "kind": "sqrt",
+                "argument": {
+                  "kind": "rational",
+                  "n": "5",
+                  "d": "1"
+                }
+              },
+              "right": {
+                "kind": "rational",
+                "n": "3",
+                "d": "1"
+              },
+              "operator": "<"
+            }
+          },
+          {
+            "id": "root-both-sides",
+            "nodeIds": [
+              "n08-r5-q06-operation"
+            ],
+            "requires": [
+              "positive-root-order-fact"
+            ],
+            "produces": "root-both-sides-fact",
+            "check": {
+              "kind": "transformation",
+              "before": {
+                "kind": "relation",
+                "left": {
+                  "kind": "sqrt",
+                  "argument": {
+                    "kind": "rational",
+                    "n": "5",
+                    "d": "1"
+                  }
+                },
+                "operator": "<",
+                "right": {
+                  "kind": "rational",
+                  "n": "3",
+                  "d": "1"
+                }
+              },
+              "after": {
+                "kind": "relation",
+                "left": {
+                  "kind": "add",
+                  "args": [
+                    {
+                      "kind": "sqrt",
+                      "argument": {
+                        "kind": "rational",
+                        "n": "5",
+                        "d": "1"
+                      }
+                    },
+                    {
+                      "kind": "multiply",
+                      "args": [
+                        {
+                          "kind": "rational",
+                          "n": "-1",
+                          "d": "1"
+                        },
+                        {
+                          "kind": "rational",
+                          "n": "3",
+                          "d": "1"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "operator": "<",
+                "right": {
+                  "kind": "add",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "3",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "multiply",
+                      "args": [
+                        {
+                          "kind": "rational",
+                          "n": "-1",
+                          "d": "1"
+                        },
+                        {
+                          "kind": "rational",
+                          "n": "3",
+                          "d": "1"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              "ruleId": "add-both-sides",
+              "operand": {
+                "kind": "rational",
+                "n": "-3",
+                "d": "1"
+              }
+            }
+          },
+          {
+            "id": "root-negative",
+            "nodeIds": [
+              "n08-q06-subtract",
+              "n08-06"
+            ],
+            "requires": [
+              "root-both-sides-fact"
+            ],
+            "produces": "root-negative-fact",
+            "check": {
+              "kind": "claim",
+              "statement": {
+                "kind": "relation",
+                "left": {
+                  "kind": "add",
+                  "args": [
+                    {
+                      "kind": "sqrt",
+                      "argument": {
+                        "kind": "rational",
+                        "n": "5",
+                        "d": "1"
+                      }
+                    },
+                    {
+                      "kind": "multiply",
+                      "args": [
+                        {
+                          "kind": "rational",
+                          "n": "-1",
+                          "d": "1"
+                        },
+                        {
+                          "kind": "rational",
+                          "n": "3",
+                          "d": "1"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "operator": "<",
+                "right": {
+                  "kind": "rational",
+                  "n": "0",
+                  "d": "1"
+                }
+              }
+            }
+          },
+          {
+            "id": "root-negative-rule",
+            "nodeIds": [
+              "n08-q07-rule"
+            ],
+            "requires": [
+              "root-negative-fact"
+            ],
+            "produces": "root-negative-rule-fact",
+            "check": {
+              "kind": "claim",
+              "statement": {
+                "kind": "relation",
+                "left": {
+                  "kind": "absolute",
+                  "argument": {
+                    "kind": "add",
+                    "args": [
+                      {
+                        "kind": "sqrt",
+                        "argument": {
+                          "kind": "rational",
+                          "n": "5",
+                          "d": "1"
+                        }
+                      },
+                      {
+                        "kind": "multiply",
+                        "args": [
+                          {
+                            "kind": "rational",
+                            "n": "-1",
+                            "d": "1"
+                          },
+                          {
+                            "kind": "rational",
+                            "n": "3",
+                            "d": "1"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "operator": "=",
+                "right": {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "add",
+                      "args": [
+                        {
+                          "kind": "sqrt",
+                          "argument": {
+                            "kind": "rational",
+                            "n": "5",
+                            "d": "1"
+                          }
+                        },
+                        {
+                          "kind": "multiply",
+                          "args": [
+                            {
+                              "kind": "rational",
+                              "n": "-1",
+                              "d": "1"
+                            },
+                            {
+                              "kind": "rational",
+                              "n": "3",
+                              "d": "1"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          {
+            "id": "root-brackets",
+            "nodeIds": [
+              "n08-q07-bracket"
+            ],
+            "requires": [
+              "root-negative-rule-fact"
+            ],
+            "produces": "root-brackets-fact",
+            "check": {
+              "kind": "identity",
+              "left": {
+                "kind": "absolute",
+                "argument": {
+                  "kind": "add",
+                  "args": [
+                    {
+                      "kind": "sqrt",
+                      "argument": {
+                        "kind": "rational",
+                        "n": "5",
+                        "d": "1"
+                      }
+                    },
+                    {
+                      "kind": "multiply",
+                      "args": [
+                        {
+                          "kind": "rational",
+                          "n": "-1",
+                          "d": "1"
+                        },
+                        {
+                          "kind": "rational",
+                          "n": "3",
+                          "d": "1"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              "right": {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "add",
+                    "args": [
+                      {
+                        "kind": "sqrt",
+                        "argument": {
+                          "kind": "rational",
+                          "n": "5",
+                          "d": "1"
+                        }
+                      },
+                      {
+                        "kind": "multiply",
+                        "args": [
+                          {
+                            "kind": "rational",
+                            "n": "-1",
+                            "d": "1"
+                          },
+                          {
+                            "kind": "rational",
+                            "n": "3",
+                            "d": "1"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "root-distribute",
+            "nodeIds": [
+              "n08-q07-distribute"
+            ],
+            "requires": [
+              "root-brackets-fact"
+            ],
+            "produces": "root-distribute-fact",
+            "check": {
+              "kind": "identity",
+              "left": {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "add",
+                    "args": [
+                      {
+                        "kind": "sqrt",
+                        "argument": {
+                          "kind": "rational",
+                          "n": "5",
+                          "d": "1"
+                        }
+                      },
+                      {
+                        "kind": "multiply",
+                        "args": [
+                          {
+                            "kind": "rational",
+                            "n": "-1",
+                            "d": "1"
+                          },
+                          {
+                            "kind": "rational",
+                            "n": "3",
+                            "d": "1"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "right": {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "-1",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "sqrt",
+                        "argument": {
+                          "kind": "rational",
+                          "n": "5",
+                          "d": "1"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "rational",
+                    "n": "3",
+                    "d": "1"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "root-final",
+            "nodeIds": [
+              "n08-07"
+            ],
+            "requires": [
+              "root-distribute-fact"
+            ],
+            "produces": "root-final-fact",
+            "check": {
+              "kind": "identity",
+              "left": {
+                "kind": "absolute",
+                "argument": {
+                  "kind": "add",
+                  "args": [
+                    {
+                      "kind": "sqrt",
+                      "argument": {
+                        "kind": "rational",
+                        "n": "5",
+                        "d": "1"
+                      }
+                    },
+                    {
+                      "kind": "multiply",
+                      "args": [
+                        {
+                          "kind": "rational",
+                          "n": "-1",
+                          "d": "1"
+                        },
+                        {
+                          "kind": "rational",
+                          "n": "3",
+                          "d": "1"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              "right": {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "3",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "-1",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "sqrt",
+                        "argument": {
+                          "kind": "rational",
+                          "n": "5",
+                          "d": "1"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "conclusions": [
+          "root-final-fact"
+        ]
+      },
+      {
+        "id": "pi-example",
+        "variable": "a",
+        "sourceRefs": [
+          "word-p-000366",
+          "word-p-000367",
+          "word-p-000368",
+          "word-p-000369"
+        ],
+        "domain": {
+          "lower": null,
+          "upper": null,
+          "lowerOpen": true,
+          "upperOpen": true
+        },
+        "initialFacts": [
+          "real-arithmetic",
+          "distance-definition"
+        ],
+        "segments": [
+          {
+            "id": "pi-order",
+            "nodeIds": [
+              "n08-q08-order"
+            ],
+            "requires": [],
+            "produces": "pi-order-fact",
+            "check": {
+              "kind": "claim",
+              "statement": {
+                "kind": "relation",
+                "left": {
+                  "kind": "rational",
+                  "n": "3",
+                  "d": "1"
+                },
+                "operator": "<",
+                "right": {
+                  "kind": "constant",
+                  "name": "pi"
+                }
+              }
+            }
+          },
+          {
+            "id": "pi-both-sides",
+            "nodeIds": [
+              "n08-r5-q08-operation"
+            ],
+            "requires": [
+              "pi-order-fact"
+            ],
+            "produces": "pi-both-sides-fact",
+            "check": {
+              "kind": "transformation",
+              "before": {
+                "kind": "relation",
+                "left": {
+                  "kind": "rational",
+                  "n": "3",
+                  "d": "1"
+                },
+                "operator": "<",
+                "right": {
+                  "kind": "constant",
+                  "name": "pi"
+                }
+              },
+              "after": {
+                "kind": "relation",
+                "left": {
+                  "kind": "add",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "3",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "multiply",
+                      "args": [
+                        {
+                          "kind": "rational",
+                          "n": "-1",
+                          "d": "1"
+                        },
+                        {
+                          "kind": "constant",
+                          "name": "pi"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "operator": "<",
+                "right": {
+                  "kind": "add",
+                  "args": [
+                    {
+                      "kind": "constant",
+                      "name": "pi"
+                    },
+                    {
+                      "kind": "multiply",
+                      "args": [
+                        {
+                          "kind": "rational",
+                          "n": "-1",
+                          "d": "1"
+                        },
+                        {
+                          "kind": "constant",
+                          "name": "pi"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              "ruleId": "add-both-sides",
+              "operand": {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "constant",
+                    "name": "pi"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "pi-negative",
+            "nodeIds": [
+              "n08-q08-difference",
+              "n08-08"
+            ],
+            "requires": [
+              "pi-both-sides-fact"
+            ],
+            "produces": "pi-negative-fact",
+            "check": {
+              "kind": "claim",
+              "statement": {
+                "kind": "relation",
+                "left": {
+                  "kind": "add",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "3",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "multiply",
+                      "args": [
+                        {
+                          "kind": "rational",
+                          "n": "-1",
+                          "d": "1"
+                        },
+                        {
+                          "kind": "constant",
+                          "name": "pi"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "operator": "<",
+                "right": {
+                  "kind": "rational",
+                  "n": "0",
+                  "d": "1"
+                }
+              }
+            }
+          },
+          {
+            "id": "pi-brackets",
+            "nodeIds": [
+              "n08-q09-bracket"
+            ],
+            "requires": [
+              "pi-negative-fact"
+            ],
+            "produces": "pi-brackets-fact",
+            "check": {
+              "kind": "identity",
+              "left": {
+                "kind": "absolute",
+                "argument": {
+                  "kind": "add",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "3",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "multiply",
+                      "args": [
+                        {
+                          "kind": "rational",
+                          "n": "-1",
+                          "d": "1"
+                        },
+                        {
+                          "kind": "constant",
+                          "name": "pi"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              "right": {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "add",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "3",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "multiply",
+                        "args": [
+                          {
+                            "kind": "rational",
+                            "n": "-1",
+                            "d": "1"
+                          },
+                          {
+                            "kind": "constant",
+                            "name": "pi"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "pi-distribute",
+            "nodeIds": [
+              "n08-q09-distribute"
+            ],
+            "requires": [
+              "pi-brackets-fact"
+            ],
+            "produces": "pi-distribute-fact",
+            "check": {
+              "kind": "identity",
+              "left": {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "add",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "3",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "multiply",
+                        "args": [
+                          {
+                            "kind": "rational",
+                            "n": "-1",
+                            "d": "1"
+                          },
+                          {
+                            "kind": "constant",
+                            "name": "pi"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "right": {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-3",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "constant",
+                    "name": "pi"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "pi-final",
+            "nodeIds": [
+              "n08-09"
+            ],
+            "requires": [
+              "pi-distribute-fact"
+            ],
+            "produces": "pi-final-fact",
+            "check": {
+              "kind": "identity",
+              "left": {
+                "kind": "absolute",
+                "argument": {
+                  "kind": "add",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "3",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "multiply",
+                      "args": [
+                        {
+                          "kind": "rational",
+                          "n": "-1",
+                          "d": "1"
+                        },
+                        {
+                          "kind": "constant",
+                          "name": "pi"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              "right": {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "constant",
+                    "name": "pi"
+                  },
+                  {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "-1",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "rational",
+                        "n": "3",
+                        "d": "1"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "conclusions": [
+          "pi-final-fact"
+        ]
+      },
+      {
+        "id": "zero",
+        "variable": "a",
+        "sourceRefs": [
+          "word-p-000370",
+          "word-p-000371"
+        ],
+        "domain": {
+          "lower": null,
+          "upper": null,
+          "lowerOpen": true,
+          "upperOpen": true
+        },
+        "initialFacts": [
+          "real-arithmetic",
+          "distance-definition"
+        ],
+        "segments": [
+          {
+            "id": "zero-forward",
+            "nodeIds": [
+              "n08-q10-forward"
+            ],
+            "requires": [],
+            "produces": "zero-forward-fact",
+            "check": {
+              "kind": "claim",
+              "statement": {
+                "kind": "relation",
+                "left": {
+                  "kind": "symbol",
+                  "name": "a"
+                },
+                "operator": "=",
+                "right": {
+                  "kind": "rational",
+                  "n": "0",
+                  "d": "1"
+                }
+              }
+            },
+            "domain": {
+              "lower": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              },
+              "upper": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              },
+              "lowerOpen": false,
+              "upperOpen": false
+            }
+          },
+          {
+            "id": "zero-reverse",
+            "nodeIds": [
+              "n08-q10-reverse"
+            ],
+            "requires": [],
+            "produces": "zero-reverse-fact",
+            "check": {
+              "kind": "claim",
+              "statement": {
+                "kind": "relation",
+                "left": {
+                  "kind": "absolute",
+                  "argument": {
+                    "kind": "symbol",
+                    "name": "a"
+                  }
+                },
+                "operator": "=",
+                "right": {
+                  "kind": "rational",
+                  "n": "0",
+                  "d": "1"
+                }
+              }
+            },
+            "domain": {
+              "lower": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              },
+              "upper": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              },
+              "lowerOpen": false,
+              "upperOpen": false
+            }
+          },
+          {
+            "id": "zero-iff",
+            "nodeIds": [
+              "n08-10"
+            ],
+            "requires": [
+              "zero-forward-fact",
+              "zero-reverse-fact"
+            ],
+            "produces": "zero-iff-fact",
+            "check": {
+              "kind": "equivalence",
+              "left": {
+                "kind": "relation",
+                "left": {
+                  "kind": "absolute",
+                  "argument": {
+                    "kind": "symbol",
+                    "name": "a"
+                  }
+                },
+                "operator": "=",
+                "right": {
+                  "kind": "rational",
+                  "n": "0",
+                  "d": "1"
+                }
+              },
+              "right": {
+                "kind": "relation",
+                "left": {
+                  "kind": "symbol",
+                  "name": "a"
+                },
+                "operator": "=",
+                "right": {
+                  "kind": "rational",
+                  "n": "0",
+                  "d": "1"
+                }
+              },
+              "forwardProof": "zero-forward-fact",
+              "reverseProof": "zero-reverse-fact"
+            }
+          }
+        ],
+        "conclusions": [
+          "zero-iff-fact"
+        ]
+      },
+      {
+        "id": "opposite",
+        "variable": "a",
+        "sourceRefs": [
+          "word-p-000372"
+        ],
+        "domain": {
+          "lower": null,
+          "upper": null,
+          "lowerOpen": true,
+          "upperOpen": true
+        },
+        "initialFacts": [
+          "real-arithmetic",
+          "distance-definition"
+        ],
+        "segments": [
+          {
+            "id": "opposite-positive",
+            "nodeIds": [
+              "n08-q11-positive"
+            ],
+            "requires": [],
+            "produces": "opposite-positive-fact",
+            "check": {
+              "kind": "claim",
+              "statement": {
+                "kind": "relation",
+                "left": {
+                  "kind": "absolute",
+                  "argument": {
+                    "kind": "symbol",
+                    "name": "a"
+                  }
+                },
+                "operator": "=",
+                "right": {
+                  "kind": "absolute",
+                  "argument": {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "-1",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "symbol",
+                        "name": "a"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "domain": {
+              "lower": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              },
+              "upper": null,
+              "lowerOpen": true,
+              "upperOpen": true
+            }
+          },
+          {
+            "id": "opposite-negative",
+            "nodeIds": [
+              "n08-q11-negative"
+            ],
+            "requires": [],
+            "produces": "opposite-negative-fact",
+            "check": {
+              "kind": "claim",
+              "statement": {
+                "kind": "relation",
+                "left": {
+                  "kind": "absolute",
+                  "argument": {
+                    "kind": "symbol",
+                    "name": "a"
+                  }
+                },
+                "operator": "=",
+                "right": {
+                  "kind": "absolute",
+                  "argument": {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "-1",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "symbol",
+                        "name": "a"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "domain": {
+              "lower": null,
+              "upper": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              },
+              "lowerOpen": true,
+              "upperOpen": true
+            }
+          },
+          {
+            "id": "opposite-zero",
+            "nodeIds": [
+              "n08-q11-zero"
+            ],
+            "requires": [],
+            "produces": "opposite-zero-fact",
+            "check": {
+              "kind": "claim",
+              "statement": {
+                "kind": "relation",
+                "left": {
+                  "kind": "absolute",
+                  "argument": {
+                    "kind": "symbol",
+                    "name": "a"
+                  }
+                },
+                "operator": "=",
+                "right": {
+                  "kind": "absolute",
+                  "argument": {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "-1",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "symbol",
+                        "name": "a"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "domain": {
+              "lower": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              },
+              "upper": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              },
+              "lowerOpen": false,
+              "upperOpen": false
+            }
+          },
+          {
+            "id": "opposite-all",
+            "nodeIds": [
+              "n08-11"
+            ],
+            "requires": [
+              "opposite-positive-fact",
+              "opposite-negative-fact",
+              "opposite-zero-fact"
+            ],
+            "produces": "opposite-all-fact",
+            "check": {
+              "kind": "case-join",
+              "statement": {
+                "kind": "relation",
+                "left": {
+                  "kind": "absolute",
+                  "argument": {
+                    "kind": "symbol",
+                    "name": "a"
+                  }
+                },
+                "operator": "=",
+                "right": {
+                  "kind": "absolute",
+                  "argument": {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "-1",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "symbol",
+                        "name": "a"
+                      }
+                    ]
+                  }
+                }
+              },
+              "branches": [
+                {
+                  "domain": {
+                    "lower": {
+                      "kind": "rational",
+                      "n": "0",
+                      "d": "1"
+                    },
+                    "upper": null,
+                    "lowerOpen": true,
+                    "upperOpen": true
+                  },
+                  "proofId": "opposite-positive-fact"
+                },
+                {
+                  "domain": {
+                    "lower": null,
+                    "upper": {
+                      "kind": "rational",
+                      "n": "0",
+                      "d": "1"
+                    },
+                    "lowerOpen": true,
+                    "upperOpen": true
+                  },
+                  "proofId": "opposite-negative-fact"
+                },
+                {
+                  "domain": {
+                    "lower": {
+                      "kind": "rational",
+                      "n": "0",
+                      "d": "1"
+                    },
+                    "upper": {
+                      "kind": "rational",
+                      "n": "0",
+                      "d": "1"
+                    },
+                    "lowerOpen": false,
+                    "upperOpen": false
+                  },
+                  "proofId": "opposite-zero-fact"
+                }
+              ]
+            }
+          }
+        ],
+        "conclusions": [
+          "opposite-all-fact"
+        ]
+      },
+      {
+        "id": "square",
+        "variable": "a",
+        "sourceRefs": [
+          "word-p-000373"
+        ],
+        "domain": {
+          "lower": null,
+          "upper": null,
+          "lowerOpen": true,
+          "upperOpen": true
+        },
+        "initialFacts": [
+          "real-arithmetic",
+          "distance-definition"
+        ],
+        "segments": [
+          {
+            "id": "square-nonnegative",
+            "nodeIds": [
+              "n08-q12-nonnegative"
+            ],
+            "requires": [],
+            "produces": "square-nonnegative-fact",
+            "check": {
+              "kind": "claim",
+              "statement": {
+                "kind": "relation",
+                "left": {
+                  "kind": "power",
+                  "base": {
+                    "kind": "absolute",
+                    "argument": {
+                      "kind": "symbol",
+                      "name": "a"
+                    }
+                  },
+                  "exponent": 2
+                },
+                "operator": "=",
+                "right": {
+                  "kind": "power",
+                  "base": {
+                    "kind": "symbol",
+                    "name": "a"
+                  },
+                  "exponent": 2
+                }
+              }
+            },
+            "domain": {
+              "lower": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              },
+              "upper": null,
+              "lowerOpen": false,
+              "upperOpen": true
+            }
+          },
+          {
+            "id": "square-negative-product",
+            "nodeIds": [
+              "n08-q12-negative"
+            ],
+            "requires": [],
+            "produces": "square-negative-product-fact",
+            "check": {
+              "kind": "identity",
+              "left": {
+                "kind": "power",
+                "base": {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "symbol",
+                      "name": "a"
+                    }
+                  ]
+                },
+                "exponent": 2
+              },
+              "right": {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "-1",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "symbol",
+                        "name": "a"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "-1",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "symbol",
+                        "name": "a"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            "domain": {
+              "lower": null,
+              "upper": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              },
+              "lowerOpen": true,
+              "upperOpen": true
+            }
+          },
+          {
+            "id": "square-negative",
+            "nodeIds": [
+              "n08-q12-negative"
+            ],
+            "requires": [
+              "square-negative-product-fact"
+            ],
+            "produces": "square-negative-fact",
+            "check": {
+              "kind": "claim",
+              "statement": {
+                "kind": "relation",
+                "left": {
+                  "kind": "power",
+                  "base": {
+                    "kind": "absolute",
+                    "argument": {
+                      "kind": "symbol",
+                      "name": "a"
+                    }
+                  },
+                  "exponent": 2
+                },
+                "operator": "=",
+                "right": {
+                  "kind": "power",
+                  "base": {
+                    "kind": "symbol",
+                    "name": "a"
+                  },
+                  "exponent": 2
+                }
+              }
+            },
+            "domain": {
+              "lower": null,
+              "upper": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              },
+              "lowerOpen": true,
+              "upperOpen": true
+            }
+          },
+          {
+            "id": "square-all",
+            "nodeIds": [
+              "n08-12"
+            ],
+            "requires": [
+              "square-nonnegative-fact",
+              "square-negative-fact"
+            ],
+            "produces": "square-all-fact",
+            "check": {
+              "kind": "case-join",
+              "statement": {
+                "kind": "relation",
+                "left": {
+                  "kind": "power",
+                  "base": {
+                    "kind": "absolute",
+                    "argument": {
+                      "kind": "symbol",
+                      "name": "a"
+                    }
+                  },
+                  "exponent": 2
+                },
+                "operator": "=",
+                "right": {
+                  "kind": "power",
+                  "base": {
+                    "kind": "symbol",
+                    "name": "a"
+                  },
+                  "exponent": 2
+                }
+              },
+              "branches": [
+                {
+                  "domain": {
+                    "lower": {
+                      "kind": "rational",
+                      "n": "0",
+                      "d": "1"
+                    },
+                    "upper": null,
+                    "lowerOpen": false,
+                    "upperOpen": true
+                  },
+                  "proofId": "square-nonnegative-fact"
+                },
+                {
+                  "domain": {
+                    "lower": null,
+                    "upper": {
+                      "kind": "rational",
+                      "n": "0",
+                      "d": "1"
+                    },
+                    "lowerOpen": true,
+                    "upperOpen": true
+                  },
+                  "proofId": "square-negative-fact"
+                }
+              ]
+            }
+          }
+        ],
+        "conclusions": [
+          "square-all-fact"
+        ]
+      }
+    ],
+    "nodeCoverage": [
+      {
+        "nodeId": "n08-q01-right",
+        "factRefs": [
+          "distance-right-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-q01-left",
+        "factRefs": [
+          "distance-left-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-01",
+        "factRefs": [
+          "distance-left-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-definition",
+        "factRefs": [],
+        "meaningReason": "Definition introduction or closing prose: source and meaning review, not numeric certification"
+      },
+      {
+        "nodeId": "n08-02",
+        "factRefs": [
+          "definition-nonnegative-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-q03-order",
+        "factRefs": [
+          "definition-negative-distance-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-03",
+        "factRefs": [
+          "definition-negative-simple-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-q04-substitute",
+        "factRefs": [
+          "negative-substitution-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-04",
+        "factRefs": [
+          "negative-number-result-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-cases",
+        "factRefs": [
+          "absolute-nonnegative-case-fact",
+          "absolute-negative-case-fact",
+          "definition-all-reals-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-q05-square",
+        "factRefs": [
+          "root-square-fact",
+          "three-square-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-q05-compare",
+        "factRefs": [
+          "squares-compare-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-05",
+        "factRefs": [
+          "positive-root-order-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-q06-subtract",
+        "factRefs": [
+          "root-negative-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-06",
+        "factRefs": [
+          "root-negative-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-q07-rule",
+        "factRefs": [
+          "root-negative-rule-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-q07-bracket",
+        "factRefs": [
+          "root-brackets-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-q07-distribute",
+        "factRefs": [
+          "root-distribute-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-07",
+        "factRefs": [
+          "root-final-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-q08-order",
+        "factRefs": [
+          "pi-order-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-q08-difference",
+        "factRefs": [
+          "pi-negative-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-08",
+        "factRefs": [
+          "pi-negative-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-q09-bracket",
+        "factRefs": [
+          "pi-brackets-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-q09-distribute",
+        "factRefs": [
+          "pi-distribute-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-09",
+        "factRefs": [
+          "pi-final-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-q10-forward",
+        "factRefs": [
+          "zero-forward-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-q10-reverse",
+        "factRefs": [
+          "zero-reverse-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-10",
+        "factRefs": [
+          "zero-iff-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-q11-positive",
+        "factRefs": [
+          "opposite-positive-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-q11-negative",
+        "factRefs": [
+          "opposite-negative-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-q11-zero",
+        "factRefs": [
+          "opposite-zero-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-11",
+        "factRefs": [
+          "opposite-all-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-q12-nonnegative",
+        "factRefs": [
+          "square-nonnegative-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-q12-negative",
+        "factRefs": [
+          "square-negative-product-fact",
+          "square-negative-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-12",
+        "factRefs": [
+          "square-all-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-closing",
+        "factRefs": [],
+        "meaningReason": "Definition introduction or closing prose: source and meaning review, not numeric certification"
+      },
+      {
+        "nodeId": "n08-r5-q02-distance",
+        "factRefs": [
+          "positive-distance-form-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-r5-q06-operation",
+        "factRefs": [
+          "root-both-sides-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      },
+      {
+        "nodeId": "n08-r5-q08-operation",
+        "factRefs": [
+          "pi-both-sides-fact"
+        ],
+        "meaningReason": "Corresponding exact mathematical segment; pedagogical order separately audited"
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "id": "n08-q01-left-answer",
+      "nodeId": "n08-q01-left",
+      "segmentId": "distance-left",
+      "learnerDecision": "左側でも右の座標から左の座標を引く",
+      "nextUse": "左側でも右の座標から左の座標を引く",
+      "target": "interaction.expected.value",
+      "availableFacts": [
+        "distance-right-fact"
+      ]
+    },
+    {
+      "id": "n08-01",
+      "nodeId": "n08-01",
+      "segmentId": "distance-left",
+      "learnerDecision": "元の順序で二つの距離をまとめる",
+      "nextUse": "元の順序で二つの距離をまとめる",
+      "target": "interaction.expected.value",
+      "availableFacts": [
+        "distance-right-fact"
+      ]
+    },
+    {
+      "id": "n08-r5-q02-distance-answer",
+      "nodeId": "n08-r5-q02-distance",
+      "segmentId": "positive-distance-form",
+      "learnerDecision": "右側の点と原点の距離の式を作る",
+      "nextUse": "右側の点と原点の距離の式を作る",
+      "target": "interaction.expected.value",
+      "availableFacts": []
+    },
+    {
+      "id": "n08-02",
+      "nodeId": "n08-02",
+      "segmentId": "definition-nonnegative",
+      "learnerDecision": "原点か右側なら座標が距離になる",
+      "nextUse": "原点か右側なら座標が距離になる",
+      "target": "interaction.expected.value",
+      "availableFacts": [
+        "positive-distance-form-fact"
+      ]
+    },
+    {
+      "id": "n08-q03-order-answer",
+      "nodeId": "n08-q03-order",
+      "segmentId": "definition-negative-distance",
+      "learnerDecision": "左側の点の距離を引き算で作る",
+      "nextUse": "左側の点の距離を引き算で作る",
+      "target": "interaction.expected.value",
+      "availableFacts": []
+    },
+    {
+      "id": "n08-03",
+      "nodeId": "n08-03",
+      "segmentId": "definition-negative-simple",
+      "learnerDecision": "左側の距離を簡単にする",
+      "nextUse": "左側の距離を簡単にする",
+      "target": "interaction.expected.value",
+      "availableFacts": [
+        "definition-negative-distance-fact"
+      ]
+    },
+    {
+      "id": "n08-q04-substitute-answer",
+      "nodeId": "n08-q04-substitute",
+      "segmentId": "negative-substitution",
+      "learnerDecision": "負の値は括弧を付けて代入する",
+      "nextUse": "負の値は括弧を付けて代入する",
+      "target": "interaction.expected.value",
+      "availableFacts": []
+    },
+    {
+      "id": "n08-04",
+      "nodeId": "n08-04",
+      "segmentId": "negative-number-result",
+      "learnerDecision": "代入した式の値を計算する",
+      "nextUse": "代入した式の値を計算する",
+      "target": "interaction.expected.value",
+      "availableFacts": []
+    },
+    {
+      "id": "n08-q05-square-answer",
+      "nodeId": "n08-q05-square",
+      "segmentId": "root-square",
+      "learnerDecision": "正の二数の大小を比べる準備",
+      "nextUse": "正の二数の大小を比べる準備",
+      "target": "interaction.expected.value",
+      "availableFacts": []
+    },
+    {
+      "id": "n08-q05-compare-answer",
+      "nodeId": "n08-q05-compare",
+      "segmentId": "squares-compare",
+      "learnerDecision": "二乗した値の大小を決める",
+      "nextUse": "二乗した値の大小を決める",
+      "target": "interaction.expected.value",
+      "availableFacts": [
+        "root-square-fact",
+        "three-square-fact"
+      ]
+    },
+    {
+      "id": "n08-05",
+      "nodeId": "n08-05",
+      "segmentId": "positive-root-order",
+      "learnerDecision": "根拠と元の数の大小関係を結ぶ",
+      "nextUse": "根拠と元の数の大小関係を結ぶ",
+      "target": "interaction.expected.value",
+      "availableFacts": [
+        "root-square-fact",
+        "three-square-fact",
+        "squares-compare-fact"
+      ]
+    },
+    {
+      "id": "n08-r5-q06-operation-answer",
+      "nodeId": "n08-r5-q06-operation",
+      "segmentId": "root-both-sides",
+      "learnerDecision": "前の大小関係から中身の符号へつなぐ",
+      "nextUse": "前の大小関係から中身の符号へつなぐ",
+      "target": "interaction.expected.value",
+      "availableFacts": [
+        "positive-root-order-fact"
+      ]
+    },
+    {
+      "id": "n08-q06-subtract-answer",
+      "nodeId": "n08-q06-subtract",
+      "segmentId": "root-negative",
+      "learnerDecision": "両辺から同じ数を引いて差の符号へ",
+      "nextUse": "両辺から同じ数を引いて差の符号へ",
+      "target": "interaction.expected.value",
+      "availableFacts": [
+        "root-both-sides-fact"
+      ]
+    },
+    {
+      "id": "n08-06",
+      "nodeId": "n08-06",
+      "segmentId": "root-negative",
+      "learnerDecision": "差が0より小さいことを言葉で読む",
+      "nextUse": "差が0より小さいことを言葉で読む",
+      "target": "interaction.expected.value",
+      "availableFacts": [
+        "root-both-sides-fact"
+      ]
+    },
+    {
+      "id": "n08-q07-rule-answer",
+      "nodeId": "n08-q07-rule",
+      "segmentId": "root-negative-rule",
+      "learnerDecision": "負の場合に使う規則を選ぶ",
+      "nextUse": "負の場合に使う規則を選ぶ",
+      "target": "interaction.expected.value",
+      "availableFacts": [
+        "root-negative-fact"
+      ]
+    },
+    {
+      "id": "n08-q07-bracket-answer",
+      "nodeId": "n08-q07-bracket",
+      "segmentId": "root-brackets",
+      "learnerDecision": "中身全体を括弧で囲んで負号を付ける",
+      "nextUse": "中身全体を括弧で囲んで負号を付ける",
+      "target": "interaction.expected.value",
+      "availableFacts": [
+        "root-negative-rule-fact"
+      ]
+    },
+    {
+      "id": "n08-q07-distribute-answer",
+      "nodeId": "n08-q07-distribute",
+      "segmentId": "root-distribute",
+      "learnerDecision": "負号を括弧の二項へ掛ける",
+      "nextUse": "負号を括弧の二項へ掛ける",
+      "target": "interaction.expected.value",
+      "availableFacts": [
+        "root-brackets-fact"
+      ]
+    },
+    {
+      "id": "n08-07",
+      "nodeId": "n08-07",
+      "segmentId": "root-final",
+      "learnerDecision": "正の項を先に並べて元の問いへ答える",
+      "nextUse": "正の項を先に並べて元の問いへ答える",
+      "target": "interaction.expected.value",
+      "availableFacts": [
+        "root-distribute-fact"
+      ]
+    },
+    {
+      "id": "n08-q08-order-answer",
+      "nodeId": "n08-q08-order",
+      "segmentId": "pi-order",
+      "learnerDecision": "円周率と3を比べる",
+      "nextUse": "円周率と3を比べる",
+      "target": "interaction.expected.value",
+      "availableFacts": []
+    },
+    {
+      "id": "n08-r5-q08-operation-answer",
+      "nodeId": "n08-r5-q08-operation",
+      "segmentId": "pi-both-sides",
+      "learnerDecision": "別の例で同じ両辺操作を組み立てる",
+      "nextUse": "別の例で同じ両辺操作を組み立てる",
+      "target": "interaction.expected.value",
+      "availableFacts": [
+        "pi-order-fact"
+      ]
+    },
+    {
+      "id": "n08-q08-difference-answer",
+      "nodeId": "n08-q08-difference",
+      "segmentId": "pi-negative",
+      "learnerDecision": "同じ数を引いて0との比較へ",
+      "nextUse": "同じ数を引いて0との比較へ",
+      "target": "interaction.expected.value",
+      "availableFacts": [
+        "pi-both-sides-fact"
+      ]
+    },
+    {
+      "id": "n08-08",
+      "nodeId": "n08-08",
+      "segmentId": "pi-negative",
+      "learnerDecision": "差の符号を根拠と組にする",
+      "nextUse": "差の符号を根拠と組にする",
+      "target": "interaction.expected.value",
+      "availableFacts": [
+        "pi-both-sides-fact"
+      ]
+    },
+    {
+      "id": "n08-q09-bracket-answer",
+      "nodeId": "n08-q09-bracket",
+      "segmentId": "pi-brackets",
+      "learnerDecision": "前の例と同じ負の規則を使う",
+      "nextUse": "前の例と同じ負の規則を使う",
+      "target": "interaction.expected.value",
+      "availableFacts": [
+        "pi-negative-fact"
+      ]
+    },
+    {
+      "id": "n08-q09-distribute-answer",
+      "nodeId": "n08-q09-distribute",
+      "segmentId": "pi-distribute",
+      "learnerDecision": "負号を3と負の円周率へ掛ける",
+      "nextUse": "負号を3と負の円周率へ掛ける",
+      "target": "interaction.expected.value",
+      "availableFacts": [
+        "pi-brackets-fact"
+      ]
+    },
+    {
+      "id": "n08-09",
+      "nodeId": "n08-09",
+      "segmentId": "pi-final",
+      "learnerDecision": "元の問題の答えをまとめる",
+      "nextUse": "元の問題の答えをまとめる",
+      "target": "interaction.expected.value",
+      "availableFacts": [
+        "pi-distribute-fact"
+      ]
+    },
+    {
+      "id": "n08-q10-forward-answer",
+      "nodeId": "n08-q10-forward",
+      "segmentId": "zero-forward",
+      "learnerDecision": "距離が0なら点はどこにあるか",
+      "nextUse": "距離が0なら点はどこにあるか",
+      "target": "interaction.expected.value",
+      "availableFacts": []
+    },
+    {
+      "id": "n08-q10-reverse-answer",
+      "nodeId": "n08-q10-reverse",
+      "segmentId": "zero-reverse",
+      "learnerDecision": "逆に元の数が0なら距離も0",
+      "nextUse": "逆に元の数が0なら距離も0",
+      "target": "interaction.expected.value",
+      "availableFacts": []
+    },
+    {
+      "id": "n08-10",
+      "nodeId": "n08-10",
+      "segmentId": "zero-iff",
+      "learnerDecision": "元の性質を位置の意味と組にする",
+      "nextUse": "元の性質を位置の意味と組にする",
+      "target": "interaction.expected.value",
+      "availableFacts": [
+        "zero-forward-fact",
+        "zero-reverse-fact"
+      ]
+    },
+    {
+      "id": "n08-q11-positive-answer",
+      "nodeId": "n08-q11-positive",
+      "segmentId": "opposite-positive",
+      "learnerDecision": "正の場合に二つの距離を比べる",
+      "nextUse": "正の場合に二つの距離を比べる",
+      "target": "interaction.expected.value",
+      "availableFacts": []
+    },
+    {
+      "id": "n08-q11-negative-answer",
+      "nodeId": "n08-q11-negative",
+      "segmentId": "opposite-negative",
+      "learnerDecision": "負の場合にも二つの距離を比べる",
+      "nextUse": "負の場合にも二つの距離を比べる",
+      "target": "interaction.expected.value",
+      "availableFacts": []
+    },
+    {
+      "id": "n08-11",
+      "nodeId": "n08-11",
+      "segmentId": "opposite-all",
+      "learnerDecision": "すべての場合を一つの関係にまとめる",
+      "nextUse": "すべての場合を一つの関係にまとめる",
+      "target": "interaction.expected.value",
+      "availableFacts": [
+        "opposite-positive-fact",
+        "opposite-negative-fact",
+        "opposite-zero-fact"
+      ]
+    },
+    {
+      "id": "n08-q12-nonnegative-answer",
+      "nodeId": "n08-q12-nonnegative",
+      "segmentId": "square-nonnegative",
+      "learnerDecision": "0以上の場合の絶対値を二乗する",
+      "nextUse": "0以上の場合の絶対値を二乗する",
+      "target": "interaction.expected.value",
+      "availableFacts": []
+    },
+    {
+      "id": "n08-q12-negative-answer",
+      "nodeId": "n08-q12-negative",
+      "segmentId": "square-negative-product",
+      "learnerDecision": "負の場合は括弧ごと二乗する",
+      "nextUse": "負の場合は括弧ごと二乗する",
+      "target": "interaction.expected.value",
+      "availableFacts": []
+    },
+    {
+      "id": "n08-12",
+      "nodeId": "n08-12",
+      "segmentId": "square-all",
+      "learnerDecision": "場合に関係なく成り立つ式を結論にする",
+      "nextUse": "場合に関係なく成り立つ式を結論にする",
+      "target": "interaction.expected.value",
+      "availableFacts": [
+        "square-nonnegative-fact",
+        "square-negative-fact"
+      ]
+    }
+  ]
+}

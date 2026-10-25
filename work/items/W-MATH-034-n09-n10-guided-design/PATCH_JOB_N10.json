@@ -1,9 +1,9 @@
 {
   "job": {
     "node": "R06_PATCH@n10",
-    "claimToken": "15bd8f8c22204ccc948050b5bdfcb48b",
+    "claimToken": "34a557cef83d4474a844bb5596540df2",
     "receipts": [
-      "7babe1825a9c50f8d170dcc634d6f18cc6750f9c49e64bab4309584b6291d5d9"
+      "ed9383df32122d0d730a57481716404bb9db2d96899879f1765ba865773a9cb3"
     ]
   },
   "proof": "139d7be82a9556ddf79f4bdf877ac6214ff5f14e99891dfd803cca0d1f11b65c"

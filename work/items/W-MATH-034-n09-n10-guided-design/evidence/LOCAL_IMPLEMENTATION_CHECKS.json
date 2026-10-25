@@ -1,11 +1,12 @@
 {
-  "sourceSHA": "dc64310e934043e3b7132d1ce72e030f12b34acd",
+  "sourceSHA": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
   "learnerTests": 620,
   "typecheck": "PASS",
-  "build": "PASS_LOCAL; exact-source CI running",
+  "build": "PASS exact-source CI",
   "lint": "PASS",
   "approvedInputsFrozen": true,
   "n10": "IMPLEMENTED",
   "nativeScheduler": "Ready-node serial dispatch retains native DAG/approval/result validation; user quality gates excluded",
-  "n09n10Tests": 9
+  "n09n10Tests": 9,
+  "internalCI": 40168250606
 }

@@ -1,3 +1,9 @@
+## 2026-10-25 — implemented exact-source verification
+
+Source `cb7d30bfe666b9123ea51e1fad7e36268507b674`, CI [40168250606](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40168250606) SUCCESS. Both full four-width plays PASS (320/390/430/1440): N09 36 answers, 90 wrong options per width; N10 45 answers, 111 wrong options per width. Geometry, conditional prior results, all formulas, history/reload and actual legacy saves verified. N09 migrations v1/v2; N10 v1. Applicable learner620, dedicated9, authoring39 and build PASS. Frozen P001 inputs unchanged. Same-assistant actual image audit, not independent AI. Native R07/G2 passed for both. Existing Pages publication40168673785 is running; hosted success and user acceptance are not yet claimed. No new quality label or model fit.
+
+---
+
 # 設計検証
 
 Status: PASS_BOUNDED / PROPOSED

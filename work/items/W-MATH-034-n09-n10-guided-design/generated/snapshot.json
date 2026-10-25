@@ -1,142 +1,14 @@
 {
   "work": "W-MATH-034",
   "engine_version": "1.0.0",
-  "ledger_head": "4d5b6db89353800c46199909cadee0e4af55062a9d15c5845319219b0f8c06b4",
-  "work_status": "IMPLEMENTING",
+  "ledger_head": "6a51800d202c2168d6adaaa54d2f5c8c9a98b243f04c5f5177a629308060be49",
+  "work_status": "BLOCKED",
   "profile": "material",
   "simulation": false,
-  "candidate_sha": "dc64310e934043e3b7132d1ce72e030f12b34acd",
+  "candidate_sha": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
   "next": {
-    "status": "READY",
-    "task": {
-      "work_id": "W-MATH-034",
-      "node": {
-        "id": "R07_VERIFY@n09",
-        "stage_kind": "R07_VERIFY",
-        "contract_kind": "R07_VERIFY",
-        "actor": "TOOL",
-        "depends_on": [
-          "R06_PATCH@n09"
-        ],
-        "required": [],
-        "block": "n09",
-        "release_unit": "n09",
-        "watch": "integration",
-        "phase": "post-implementation",
-        "priority": 0,
-        "source_refs": [
-          "src/data/textbook/math/numbers/n09Lesson.ts",
-          "src/domain/textbook.ts",
-          "src/pages/TextbookUnitPage.tsx",
-          "work/items/W-MATH-034-n09-n10-guided-design/evidence/N09_SOURCE_INDEX.json",
-          "public/assets/math/textbook/numbers/n09-f01.png"
-        ],
-        "protected_refs": [
-          "src/data/textbook/math/numbers/firstSectionTeaching.json",
-          "src/data/textbook/math/typesetting.json",
-          "src/data/textbook/math/numbers/n07Authored.json",
-          "src/components/textbook/N07ReadingFlow.tsx",
-          "src/components/textbook/n07-reading.css",
-          "src/data/textbook/math/numbers/n08Authored.json",
-          "src/data/textbook/math/numbers/n08Lesson.ts",
-          "src/components/textbook/N08ReadingFlow.tsx",
-          "src/components/textbook/n08-reading.css",
-          "public/assets/math/textbook/numbers/n09-f01.png"
-        ],
-        "approval_scope_ref": "proposal",
-        "capability_requests": [
-          "math.verify",
-          "ir.verify",
-          "browser.verify",
-          "protected.verify"
-        ],
-        "required_code_receipts": [
-          "math.verify",
-          "ir.verify",
-          "browser.verify",
-          "protected.verify"
-        ],
-        "required_ai_receipts": []
-      },
-      "task_id": "c23a87e643fe5ddac79b7a90192c80c28db08ee58b232aaf042b305d4f4c85f6",
-      "input_hash": "860d293a73472795b70dbb8c9715541d299aa5bf8839e89f53eeb7efecf40e8d",
-      "source_sha": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
-      "candidate_sha": "dc64310e934043e3b7132d1ce72e030f12b34acd",
-      "rules": {
-        "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
-        "governance/REVIEW_POLICY.json": "a71148f007a79b124385c7645e6bc01564bfa02b12152174883543f31f6ce72d",
-        "governance/WORK_SYSTEM.md": "37b0b0e0fecc79d7c067e17ec8dbeb53d53863f04369171d65ef652a176eb093",
-        "memory/LESSONS/MATH_TYPESETTING_GROUPS.md": "8047831b13d22ffb773f68e23ab788a3490e4b69ebbf5d5d357f9f786ed53d0a",
-        "subjects/mathematics/textbook/SPEC.md": "a36959ae6f951e855c3e60d280d02a0f20c6e23185d9eb90b17ffbc889c63277"
-      },
-      "proposal": {
-        "contentDesignHash": "c205e5be111cca41a62509b651f52c20cc08a906725e8fd39d30126ee89b03bf",
-        "hash": "401f890d670089604d056a3843d577e9d4bf264cd08f91821c8e1397c3375109",
-        "id": "W-MATH-034/P-001"
-      },
-      "scope": {
-        "paths": [
-          "src/data/textbook/math/numbers/n09Lesson.ts",
-          "src/data/textbook/math/numbers/n10Lesson.ts",
-          "src/data/textbook/math/numbers/n09Authored.json",
-          "src/data/textbook/math/numbers/n10Authored.json",
-          "src/components/textbook/GuidedMathReadingFlow.tsx",
-          "src/components/textbook/guided-math-reading.css",
-          "src/pages/TextbookUnitPage.tsx",
-          "src/domain/textbook.ts",
-          "src/test/n09Legacy.ts",
-          "src/test/n10Legacy.ts",
-          "src/data/textbook/math/numbers/newBatchCoverage.test.ts",
-          "src/data/textbook/math/numbers/firstSectionTeaching.test.tsx",
-          "src/review/reviewTargets.test.ts",
-          "src/data/textbook/math/numbers/n09Atomicity.test.ts",
-          "work/items/W-MATH-034-n09-n10-guided-design/"
-        ],
-        "preserve": [
-          "src/data/textbook/math/numbers/firstSectionTeaching.json",
-          "src/data/textbook/math/typesetting.json",
-          "src/data/textbook/math/numbers/n07Authored.json",
-          "src/components/textbook/N07ReadingFlow.tsx",
-          "src/components/textbook/n07-reading.css",
-          "src/data/textbook/math/numbers/n08Authored.json",
-          "src/data/textbook/math/numbers/n08Lesson.ts",
-          "src/components/textbook/N08ReadingFlow.tsx",
-          "src/components/textbook/n08-reading.css",
-          "public/assets/math/textbook/numbers/n09-f01.png"
-        ]
-      },
-      "source_manifest": {
-        "public/assets/math/textbook/numbers/n09-f01.png": "24dd29dcaacd371ddfab4c8fefbccd84933fd0f1a27ed5f167372f74ca4a9cfd",
-        "src/data/textbook/math/numbers/n09Lesson.ts": "b8d950b2c727e9e44a46c7ad6c3e5d8056a31a0ff587b270aed43b71f38e0080",
-        "src/data/textbook/math/numbers/n10Lesson.ts": "a89401d8693ef4c25608c944023f4d2455b243967c27308e68a6f39d9f1349aa",
-        "src/domain/textbook.ts": "559f7837216a8c232ad276a6d0b16cc84efd1af65f830fd59859a44e6f041d3d",
-        "src/pages/TextbookUnitPage.tsx": "8e26901274abf7b4f0942364072e99a47fceb0f56be8e8828e0b817ddc8565f5",
-        "work/items/W-MATH-034-n09-n10-guided-design/evidence/N09_SOURCE_INDEX.json": "3ab5f05bdb29affbe3465f434fec5f83875ee968798aede091da8646acb99cb8",
-        "work/items/W-MATH-034-n09-n10-guided-design/evidence/N10_SOURCE_INDEX.json": "566d46e84e4e62040b696212f4cb87a64c21914a53d03d246b70210215140e48"
-      },
-      "previous_results": {
-        "R06_PATCH@n09": {
-          "actor": "capability-runner",
-          "artifact": "5096404aa21b4b82c5d56387b1f879635af9a35fe9469851eb0dda75b5fd3716",
-          "input_hash": "297f68218a0fb7a5568c1412acf905cb4f14ac928f871dc6e9c8d17bac293afa",
-          "node": "R06_PATCH@n09",
-          "verdict": "PASS"
-        }
-      },
-      "do_not_touch": [
-        "src/data/textbook/math/numbers/firstSectionTeaching.json",
-        "src/data/textbook/math/typesetting.json",
-        "src/data/textbook/math/numbers/n07Authored.json",
-        "src/components/textbook/N07ReadingFlow.tsx",
-        "src/components/textbook/n07-reading.css",
-        "src/data/textbook/math/numbers/n08Authored.json",
-        "src/data/textbook/math/numbers/n08Lesson.ts",
-        "src/components/textbook/N08ReadingFlow.tsx",
-        "src/components/textbook/n08-reading.css",
-        "public/assets/math/textbook/numbers/n09-f01.png"
-      ],
-      "completion_is_not_semantic_proof": true
-    }
+    "status": "BLOCKED",
+    "reason": "外部操作の成否が未記録。実状態の照合が必要"
   },
   "nodes": [
     {
@@ -566,7 +438,7 @@
         "protected.verify"
       ],
       "required_ai_receipts": [],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "R07_SEMANTIC@n09",
@@ -618,7 +490,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "R01_CAPTURE@n10",
@@ -980,7 +852,7 @@
         "protected.verify"
       ],
       "required_ai_receipts": [],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "R07_SEMANTIC@n10",
@@ -1031,7 +903,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "G2_AUDIT@n09",
@@ -1077,7 +949,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "G3_HOST@n09",
@@ -1332,7 +1204,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "G3_HOST@n10",
@@ -1582,7 +1454,7 @@
     {
       "id": "W-MATH-034",
       "work": "W-MATH-034",
-      "version": "dc64310e934043e3b7132d1ce72e030f12b34acd",
+      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
     }
@@ -1813,6 +1685,96 @@
       "input_hash": "80de7bcd72bb0512cd5a6c0a9150484f498b5f9b6398aa458d7494efd534a49b",
       "node": "R06_PATCH@n10",
       "receipt": "7babe1825a9c50f8d170dcc634d6f18cc6750f9c49e64bab4309584b6291d5d9"
+    },
+    {
+      "input_hash": "9a0f20bb402b3d57aa6298fa4f951a86f4253752fcf4729081cd3cb999bc33d0",
+      "node": "R06_PATCH@n09",
+      "receipt": "6abea0cb1653af95c9f54e0ee4d273fff6e96eb783552c1db1aeb185b669e949"
+    },
+    {
+      "input_hash": "6ed4893cd07371bd5a997ebc4d0ce1d5bc156c428391a6e2737b0b43cab955e7",
+      "node": "R06_PATCH@n10",
+      "receipt": "ed9383df32122d0d730a57481716404bb9db2d96899879f1765ba865773a9cb3"
+    },
+    {
+      "input_hash": "3ad68d29d2fd7dbc8d144aaf92619a270d775dbd1515232fd9bea3d540cc606f",
+      "node": "R07_VERIFY@n09",
+      "receipt": "683372d60220be708be3175c7a1077e399989fc782c36d5d97236863a959887c"
+    },
+    {
+      "input_hash": "3ad68d29d2fd7dbc8d144aaf92619a270d775dbd1515232fd9bea3d540cc606f",
+      "node": "R07_VERIFY@n09",
+      "receipt": "cc9278b50a5c970910114b107d1f349c2daaabbabbf3062267f97b203c743629"
+    },
+    {
+      "input_hash": "3ad68d29d2fd7dbc8d144aaf92619a270d775dbd1515232fd9bea3d540cc606f",
+      "node": "R07_VERIFY@n09",
+      "receipt": "5b47312dfaea83aa477fb33ae72c13d0081d4be38a2c3db146337a9b81fd7d98"
+    },
+    {
+      "input_hash": "3ad68d29d2fd7dbc8d144aaf92619a270d775dbd1515232fd9bea3d540cc606f",
+      "node": "R07_VERIFY@n09",
+      "receipt": "ba558e7b69795d3f4df4a560d45f3f2a42fb5946feb3020650ab1f2bcd0cc226"
+    },
+    {
+      "input_hash": "a64967e7b3d66755a37e384cc2bbf70f0687cd9de1b19a61112639407ebc5452",
+      "node": "R07_SEMANTIC@n09",
+      "receipt": "7360f779e7e65d51ba18a198eeb0b1fe7cc07406e1927381fba59216205d6b99"
+    },
+    {
+      "input_hash": "a64967e7b3d66755a37e384cc2bbf70f0687cd9de1b19a61112639407ebc5452",
+      "node": "R07_SEMANTIC@n09",
+      "receipt": "2861c1361ecf5da85fffd133e62d339dfa2d55621086290889df2fa830bc3332"
+    },
+    {
+      "input_hash": "7d2e386b676bd5e22b138090f28b7108a0cbfdaa8433947364a1fb44396e2a29",
+      "node": "G2_AUDIT@n09",
+      "receipt": "e4cbebc4f514fc9376fef8307acfb40aa31b15f5da67cef82887b7a622ef25d3"
+    },
+    {
+      "input_hash": "7d2e386b676bd5e22b138090f28b7108a0cbfdaa8433947364a1fb44396e2a29",
+      "node": "G2_AUDIT@n09",
+      "receipt": "d6e1028b0f5deed360c8704cd86620a99ff93c07eb0c3538c341a0b483dfb732"
+    },
+    {
+      "input_hash": "81d14faa261a7c3700f95046c6494d49c8541cac1e202715efd465fd5d572f8a",
+      "node": "R07_VERIFY@n10",
+      "receipt": "6db78b7e6251f520e195d74b416e7064a240422178233da0f760dc235cfbbda8"
+    },
+    {
+      "input_hash": "81d14faa261a7c3700f95046c6494d49c8541cac1e202715efd465fd5d572f8a",
+      "node": "R07_VERIFY@n10",
+      "receipt": "9ba562192ea37334fb66780fb1ebc17d1e52d5aa0c1329a57ab40e276c2143f2"
+    },
+    {
+      "input_hash": "81d14faa261a7c3700f95046c6494d49c8541cac1e202715efd465fd5d572f8a",
+      "node": "R07_VERIFY@n10",
+      "receipt": "cab3cb7681b6cd1a1da3bb94086bb8fd88e87520d3886c07b129588988a8f701"
+    },
+    {
+      "input_hash": "81d14faa261a7c3700f95046c6494d49c8541cac1e202715efd465fd5d572f8a",
+      "node": "R07_VERIFY@n10",
+      "receipt": "54b00d2ebfdce18bac8ca3fce0316c8adeac901429bf42105d2f7d39889f7fd9"
+    },
+    {
+      "input_hash": "f6daa17233c34bc2e70ee0b70c50420ecd388dd251c9d3d5fd36b0fc063010ce",
+      "node": "R07_SEMANTIC@n10",
+      "receipt": "cab6c1ad88ba31847fbfc50b6a1d2f4aab78c2329b9c74ca423efa10117f373c"
+    },
+    {
+      "input_hash": "f6daa17233c34bc2e70ee0b70c50420ecd388dd251c9d3d5fd36b0fc063010ce",
+      "node": "R07_SEMANTIC@n10",
+      "receipt": "78ea1bf59036d4eb7bdec118a4a0b7d250783009d458a94ad65f70c801f717bf"
+    },
+    {
+      "input_hash": "7b719039256f23f76bc94a2411d9607532f8505b406edb7ce350b5ed749ae4ec",
+      "node": "G2_AUDIT@n10",
+      "receipt": "75cb9a442fe7ad4e16ebb206982148af13e910747a8d49d51e7c2c4dff0c6331"
+    },
+    {
+      "input_hash": "7b719039256f23f76bc94a2411d9607532f8505b406edb7ce350b5ed749ae4ec",
+      "node": "G2_AUDIT@n10",
+      "receipt": "cdd0bb55563ac2c546c43f8798fa6545d7031670838f155ea66fbb70854fdd43"
     }
   ],
   "release_acceptance": {

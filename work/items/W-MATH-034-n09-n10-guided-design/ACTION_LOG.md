@@ -16,3 +16,7 @@
 N10は同じ承認からWork内データとadapterを生成したが、既存RuntimeはN09のG3_FINAL前にN10のR05/R06を選ばない。中央codeを変更・受入を偽装して迂回せず、まずN09を公開・実物評価へ進める。
 
 実行順の見直し: 前記「N10はN09 G3_FINAL待ち」はnext()の優先順をDAGの依存と誤読した。実DAGのR05@n10は両R04のみ、R06@n10はR05@n10のみが前提。Work内ready_dispatchは全native依存・現行bundle承認・idle/integrityを検査し、既存integration.accept/capabilities/production_resultを使って直列実行。G3_FINAL等の品質/受入userノードはdispatchしない。中央workflowは変更せず、同じ明示承認でN10も実装。根号内slotのLaTeX分断を9件目の実render試験で検出し、完全な式を既存TypesetFormulaへ渡すnative button表示へ修正。
+
+
+## 2026-10-25 — both-unit final QA and publication
+Exact source cb7d30bf: CI40168250606 SUCCESS. Both four-width plays PASS: N09 36 answers/90 wrong choices, N10 45 answers/111 wrong choices, per width. Real image review is same-assistant, not independent. Native R07/G2 passed for both; retrieved 11 cases consumed through existing CASE_DISPOSITIONS. QA receipt adapter corrected missing CI html_url and case dispositions; no gate bypass. Existing Pages workflow c422776a started with both logical release intents. User quality acceptance remains pending; no new label or model fit.

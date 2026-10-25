@@ -1,5 +1,5 @@
 {
-  "sourceSHA": "dc64310e934043e3b7132d1ce72e030f12b34acd",
+  "sourceSHA": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
   "approvedCommit": "a442cbe966c074f122907bb7366b1ceb6634ca95",
   "approvalEvent": "W034-N09-N10-P001-APPROVED-20261025",
   "units": {
@@ -16,8 +16,8 @@
   },
   "learnerTests": 620,
   "dedicatedTests": 9,
-  "internalCI": 40167666122,
-  "internalStatus": "RUNNING",
+  "internalCI": 40168250606,
+  "internalStatus": "SUCCESS",
   "publication": false,
   "userAcceptance": false
 }

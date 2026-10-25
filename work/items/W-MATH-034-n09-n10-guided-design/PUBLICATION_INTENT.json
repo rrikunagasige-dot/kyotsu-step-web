@@ -1,0 +1,12 @@
+{
+  "sourceSHA": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+  "workflowSHA": "c422776a3db277ea5bb3e5166ec290df191fa6b8",
+  "approvalEvent": "W034-N09-N10-P001-APPROVED-20261025",
+  "internalCI": 40168250606,
+  "operations": [
+    "W034-n09-existing-pages-publication",
+    "W034-n10-existing-pages-publication"
+  ],
+  "storageNamespace": "kyotsu-step-gate3-math-20261023",
+  "userAcceptance": false
+}

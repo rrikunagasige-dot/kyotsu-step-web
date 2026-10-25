@@ -18,3 +18,7 @@ Status: ACTIVE / proposal-only
 実画面CI40166774249: 全620回帰・5専用・buildとprotected UIはPASS。N09 Q08の4選択肢が320pxでformula overflow。既存のtextbookDisplayLines(n09-08)による3短行を共通readerの選択肢と完成式へ接続した。採点文字列と凍結IRは不変。全4選択肢の3行projectionを実React操作で検査し、専用6件PASS。失敗CIと実画像artifactをevidence/INITIAL_UI_FAILURE.jsonへ保持。失敗runをsuccess-only CI証拠へ登録しようとした拒否とrender facetへ文字列を渡した拒否も台帳に残し、実失敗ファイル証拠/Store artifact hashという既存契約で再開。
 
 CI40167666122/source dc64310e: N09の全36回答/全誤答・履歴・2版移行は4幅でPASS。N10のQ13の次の式で式番号28の重なりを320pxで検出。受入済み共有NumberedEquationは改変せず、この2単元専用wrapperで最終DOMの番号/glyph交差を計測し、実際に重なる場合だけ番号を通常フローの下段へ移す。全9reader/移行検査・型検査・lintで再検証。両blockのrender facetを更新し、両方の厳密source browserを再実行する。
+
+
+## 2026-10-25 — both-unit final QA and publication
+Exact source cb7d30bf: CI40168250606 SUCCESS. Both four-width plays PASS: N09 36 answers/90 wrong choices, N10 45 answers/111 wrong choices, per width. Real image review is same-assistant, not independent. Native R07/G2 passed for both; retrieved 11 cases consumed through existing CASE_DISPOSITIONS. QA receipt adapter corrected missing CI html_url and case dispositions; no gate bypass. Existing Pages workflow c422776a started with both logical release intents. User quality acceptance remains pending; no new label or model fit.

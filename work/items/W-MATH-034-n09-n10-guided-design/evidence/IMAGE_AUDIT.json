@@ -1,0 +1,38 @@
+{
+  "sourceSHA": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+  "status": "PASS",
+  "reviewer": "same assistant",
+  "independent": false,
+  "images": [
+    {
+      "artifactPath": "n09-browser/width-320-stage-11.png",
+      "sha256": "a623645ffb1d517f05cb5d0e106f215e39c7a3007b3d81b9303ae2a24dcb5e97"
+    },
+    {
+      "artifactPath": "n09-browser/width-390-stage-6.png",
+      "sha256": "9cb8dc0b834b16de7e016b2666a3e80b0fc86d2e1fb8ba10008b6f03ca53dc5a"
+    },
+    {
+      "artifactPath": "n10-browser/width-320-stage-4.png",
+      "sha256": "8945a1ce4a10674287fc8b541f9733db5bb69b09283ea2dcf331de417587a70c"
+    },
+    {
+      "artifactPath": "n10-browser/width-320-stage-9.png",
+      "sha256": "ede0e8ac0a7388f566b52b1adee9a20fc7975056a6ef5019525fc28afc1bf889"
+    },
+    {
+      "artifactPath": "n10-browser/width-390-stage-10.png",
+      "sha256": "0febe24c4764470c04dd47d92a16cdda74d618e8a06e9a184d2cb4d6fd8ebe62"
+    },
+    {
+      "artifactPath": "n10-browser/width-390-stage-12.png",
+      "sha256": "e1be4d79b9e9464ae04ffe907764094301d6c8e9b3ce9cefe9313e8c96b49f6f"
+    }
+  ],
+  "findings": [
+    "Three-row N09 comparison choices; readable interval table",
+    "Whole radical compiles as one choice surface",
+    "Number labels below only when actual glyphs would overlap",
+    "Rationalization connects denominator, numerator and final equality"
+  ]
+}

@@ -1,13 +1,15 @@
 <!-- W037_CURRENT_START -->
-## CURRENT — N08 P001承認済み・旧版保持で公開中（2026-10-26）
+## CURRENT — N08修正版公開・旧版を保持、実物評価待ち（2026-10-26）
 
-本人「えっとね。やっていいよ。しかし前のN08も残して、もし不満だったらまた戻れるし」でP001と旧版保護を明示承認。proposal/NODE_DESIGNはf927ebdbから不変。旧r4 JSON/reader/CSS/PNGをbyte保護し、別r5 leaf/reader、?version=4の旧閲覧、4/5 reversible progressを実装。39node/34回答、12stage/旧31契約を保持。両辺二枠一回答。原問・小目標・同じ問題の途中式、全候補の行、分配の中間式、参照の条件を改善。
+本人「えっとね。やっていいよ。しかし前のN08も残して、もし不満だったらまた戻れるし」でP001と旧版保護を明示承認。P001/NODE_DESIGNはf927ebdbから不変。旧r4 JSON/reader/CSS/PNGをbyte保護し、別r5 leaf/reader、?version=4の旧閲覧、4/5 reversible progressを実装。39node/34回答、12stage/旧31採点契約を保持。両辺二枠一回答。原問・小目標・同じ問題の途中式、全候補の行、分配の中間式、参照の条件を改善。
 
-公開source1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c。共有production/2修正入口でR01〜R06を現行service hashで再実行、R07_VERIFY/SEMANTIC/G2 PASS。36solution/否定試験・135workflow・21Python・620app・7保存移行・対象lint/build PASS、4幅各34正答/80誤答・全12stage・history/reload/resize・旧版保存分離・1操作1attempt・31旧回答保持を実操作。別passは同じassistantで独立AIとは呼ばない。
+公開source `1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c`、publisher `5142b5989df34926997125307062bd159733cfb9`。公開run40214438103 SUCCESS。release.jsonでsource/namespace/旧r4 hash/16unitを実HTTP照合。公開環境でも4幅各34正答/80誤答、12stage、履歴/reload/resize、31旧回答の移行・二枠1attempt・旧版保存分離を最後まで実操作。受入済みN09/N10の対象表示/履歴/因子括弧も公開環境で4幅PASS。共有production/2修正入口でR01〜R06を現行service hashで実行、R07_VERIFY/SEMANTIC/G2/G3_HOST PASS。次はG3_FINAL@n08 / USERの実物評価。
 
-Pages run40214042046はnumpy/lxml不足で公開前FAIL。依存を補いapp source不変で再試行。publisher388c9e3d / run40214239168もpandoc不足で公開前FAIL。既存textbook-authoring CIの依存構成を流用し、publisher5142b598で同じapp sourceを再試行中。外部intent1はNOT_EXECUTED、retry2もNOT_EXECUTED、retry3へ明示記録。公開・G3_HOST成功をまだ主張しない。待ち先と証拠はwork/items/W-MATH-037-n08-workflow-trial。旧版復帰はn08ActiveVersion.jsonを4へ変更し同じnamespaceで再build。新r5記録もarchiveへ保持、5へ再移行可能。
+[新版N08](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=1e8d2ae4#/learning/textbook/math-numbers-expressions-n08) ／ [旧N08](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=1e8d2ae4#/learning/textbook/math-numbers-expressions-n08?version=4)。旧版へ戻す場合はn08ActiveVersion.jsonを4にして同じnamespaceで再build・公開できる。r5 leaf/記録も残す。旧版の閲覧・試し解答で通常の記録を書き換えない。
 
-ユーザーの許可は品質肯定・教材受入ではない。新Gold/fitなし、既存15事例とOFFLINE_ONLYを保持。G3_FINALは本人の実物評価待ち。同じ設計・公開許可や画像承認を再要求しない。
+36solution/否定試験・135workflow・21Python・620app・7保存移行・対象lint/build PASS。判定の別passは同じassistantであり独立したAIとは呼ばない。CI最初の2回はnumpy/lxml/pandoc不足で公開前にFAILし、既存textbook-authoring CIと同じ依存構成へ修正。テストを削除せず3回目で公開成功。ローカルの公開Chromeは管理proxyの通信/証明書制約があり、公開全問プレイの証拠は実際のGitHub-hosted Chromiumによる成功ログとmanifestの照合で保存した。ローカル全問プレイも別途PASS。
+
+詳細はwork/items/W-MATH-037-n08-workflow-trial/PUBLICATION_CHECKPOINT.json、PUBLICATION_REPORT.md、共有Runtimeのgenerated火柴図。品質肯定・教材受入はまだ本人から受領していない。新Gold/fitなし、既存15事例とOFFLINE_ONLYを保持。同じ設計・公開許可や画像承認を再要求しない。N11不等式等への横展開は今回の試行の実物評価後。
 <!-- W037_CURRENT_END -->
 
 ## CURRENT — NE02・N11・N12を公開、実物評価待ち（2026-10-25）

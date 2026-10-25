@@ -1,0 +1,66 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "width": 320,
+      "answers": 34,
+      "wrongCount": 80,
+      "stages": 12,
+      "sharedBinding": true,
+      "oneAttemptPerSelection": true,
+      "oldArchive": true,
+      "history": true,
+      "reload": true,
+      "migration": true,
+      "geometry": "PASS"
+    },
+    {
+      "width": 390,
+      "answers": 34,
+      "wrongCount": 80,
+      "stages": 12,
+      "sharedBinding": true,
+      "oneAttemptPerSelection": true,
+      "oldArchive": true,
+      "history": true,
+      "reload": true,
+      "migration": true,
+      "geometry": "PASS"
+    },
+    {
+      "width": 430,
+      "answers": 34,
+      "wrongCount": 80,
+      "stages": 12,
+      "sharedBinding": true,
+      "oneAttemptPerSelection": true,
+      "oldArchive": true,
+      "history": true,
+      "reload": true,
+      "migration": true,
+      "geometry": "PASS"
+    },
+    {
+      "width": 1440,
+      "answers": 34,
+      "wrongCount": 80,
+      "stages": 12,
+      "sharedBinding": true,
+      "oneAttemptPerSelection": true,
+      "oldArchive": true,
+      "history": true,
+      "reload": true,
+      "migration": true,
+      "geometry": "PASS"
+    }
+  ],
+  "sourceSHA": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
+  "root": "https://rrikunagasige-dot.github.io/kyotsu-step-web/",
+  "origin": {
+    "kind": "actual-GitHub-Actions-stdout",
+    "runId": 40214438103,
+    "jobId": 121232412813,
+    "publisherSHA": "5142b5989df34926997125307062bd159733cfb9",
+    "sourceBinding": "CANDIDATE_SHA env, pinned checkout, release_manifest check and exact public manifest check passed"
+  }
+}

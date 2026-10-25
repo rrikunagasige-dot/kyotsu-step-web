@@ -22,6 +22,7 @@ try{for(const code of (process.env.CODES??'ne02').split(',')){
    });
    if(problems.length){await page.screenshot({path:out+'/'+code+'-'+width+'-FAIL.png',fullPage:true});fs.writeFileSync(out+'/'+code+'-'+width+'-FAIL.json',JSON.stringify({label,problems},null,2));}assert.deepEqual(problems,[],code+' '+width+' '+label);assert.equal(await page.locator('.katex-error').count(),0,'KaTeX compile errors');
   }
+  async function separateChecks(scope){const tops=await scope.locator('.katex-html .mathnormal').evaluateAll(nodes=>nodes.filter(n=>n.textContent==='T').map(n=>n.getBoundingClientRect().top));assert.equal(tops.length,2,'two complete function evaluations');assert.ok(tops[1]>tops[0]+8,'independent checks occupy separate rows');}
   for(const [stageIndex,stage]of data.stages.entries()){
    const current=page.getByTestId('math-textbook-stage-'+stage.id);await current.waitFor();assert.equal(await current.getByTestId('guided-source-question').count(),1);
    for(const node of data.nodes.filter(n=>n.stageId===stage.id)){
@@ -31,10 +32,11 @@ try{for(const code of (process.env.CODES??'ne02').split(',')){
      for(const wrong of item.choices.filter(x=>x!==item.answer)){
       await panel.getByRole('button',{name:wrong,exact:true}).click();wrongCount++;await page.getByTestId('textbook-hint-'+item.id).waitFor();assert.equal(await page.getByTestId('textbook-item-'+item.id).count(),1);const next=data.nodes[data.nodes.indexOf(node)+1];if(next?.stageId===stage.id)assert.equal(await current.locator('[data-node-id="'+next.id+'"]').count(),0,'wrong must not unlock future');
      }
+     if(node.id==='n12-15')for(const option of await panel.locator('.reading-choice-option').all())await separateChecks(option);
      if(width===390&&['ne02-q08-squares','ne02-07','n11-wm011-q03-positive','n11-wm011-q03-zero','n12-06','n12-15'].includes(node.id))await panel.screenshot({path:out+'/'+node.id+'-options.png'});
      await panel.getByRole('button',{name:item.answer,exact:true}).click();answered++;assert.equal(await visible.locator('[data-block-id^="'+node.id+'-interaction"]').count(),0,'replace unanswered formula once');
     }
-    await geometry(node.id+' complete');assert.ok(await visible.locator('.numbered-equation-label').count()<=1,'one number per result group');
+    await geometry(node.id+' complete');if(node.id==='n12-15')await separateChecks(visible.locator('.numbered-equation-body'));assert.ok(await visible.locator('.numbered-equation-label').count()<=1,'one number per result group');
     const compiled=data.semantic.nodes.find(n=>n.id===node.id);const shown=[...compiled.before.filter(b=>!node.interaction||!b.id.startsWith(node.id+'-interaction')),...compiled.after];
     for(const b of shown){if(b.type==='paragraph')for(const part of b.parts.filter(p=>p.type==='math'||p.type==='term')){const actual=visible.locator('[data-semantic-id="'+part.semanticId+'"]');assert.equal(await actual.count(),1,'visible semantic token '+part.semanticId);if(part.type==='term')assert.ok(await actual.evaluate(el=>Number(getComputedStyle(el).fontWeight)>=600));}
      if(b.type==='formula'){const actual=visible.locator('[data-typeset-source="'+b.id+'"]');assert.equal(await actual.count(),1,'formula rendered '+b.id);assert.ok(await actual.locator('annotation[encoding="application/x-tex"]').count()>0,'actual rendered math '+b.id);}}

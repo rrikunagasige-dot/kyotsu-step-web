@@ -9,13 +9,14 @@ function sourceQuestion(code,q){
  return q<=4?'例題：$x-2<3x+5$ と $x+4\\le5-x$ を同時に満たす実数 $x$ を求める。':q<=7?'確認：$3x+2\\le2x+4\\le9-x$ を解く。中央との二つの比較をどちらも残す。':'例題：50円の箱に、180円のシュークリームと130円のプリンを合わせて20個入れる。合計は3200円以上3300円未満。シュークリームの個数を $x$ として、可能な個数を求める。';
 }
 function splitRelation(s){let depth=0;for(let i=0;i<s.length;i++){if(s[i]==='{')depth++;if(s[i]==='}')depth--;if(depth)continue;for(const t of ['\\le','\\ge','<','>','='])if(s.startsWith(t,i)&&(!t.startsWith('\\')||!/[a-zA-Z]/.test(s[i+t.length]||'')))return [s.slice(0,i),t,s.slice(i+t.length)];}return null;}
+function independentFunctionRows(s){return s.split(/,\s*\\(?:quad\b|\s+)(?=[A-Za-z]+\()/);}
 for(const code of ['ne02','n11','n12']){
  const ir=read(code.toUpperCase()+'_IR.json'),ds=read(code.toUpperCase()+'_NODE_DESIGN.json').nodes,compiled=compileIR(ir);if(compiled.irHash!==approval.blockHashes[code])throw Error('IR mismatch');let serial=0;
  const prose=s=>s.split(/(\$[^$]+\$|\*\*[^*]+\*\*)/).filter(Boolean).map(t=>{const semanticId=code+'-d-'+(++serial);return t.startsWith('$')?{type:'math',latex:t.slice(1,-1),semanticId}:t.startsWith('**')?{type:'term',text:t.slice(2,-2),usage:'first_definition',semanticId}:{type:'text',text:t,semanticId};});
  function choiceParts(c){
   const normalized=c.rows.map(r=>r.parts.map(p=>p.kind==='math'?{...p,latex:p.latex.replaceAll('\\\\','\\')}:p));
   if(normalized.some(row=>row.some(p=>p.kind==='math'&&/^\\text\{[^{}]+\}$/.test(p.latex))))return normalized.flatMap(row=>row.map(p=>{const text=p.kind==='math'?p.latex.match(/^\\text\{([^{}]+)\}$/):null;return text?{type:'text',text:text[1],optionRow:true,semanticId:code+'-option-'+(++serial)}:p.kind==='math'?{type:'math',latex:p.latex,optionRow:true,semanticId:code+'-option-'+(++serial)}:{type:'text',text:p.text,optionRow:true,semanticId:code+'-option-'+(++serial)};}));
-  if(c.rows.every(r=>r.parts.every(p=>p.kind==='math'))){const rows=c.rows.flatMap(r=>r.parts.map(p=>p.latex.replaceAll('\\\\','\\')).join('').split(/\\quad\s*\\text\{または\}\\quad\s*/).flatMap((t,i)=>i?['\\text{または}',t]:[t]));if(rows.length===1)return [{type:'math',latex:rows[0],semanticId:code+'-option-'+(++serial)}];
+  if(c.rows.every(r=>r.parts.every(p=>p.kind==='math'))){const rows=c.rows.flatMap(r=>r.parts.map(p=>p.latex.replaceAll('\\\\','\\')).join('').split(/\\quad\s*\\text\{または\}\\quad\s*/).flatMap((t,i)=>i?['\\text{または}',t]:[t])).flatMap(independentFunctionRows);if(rows.length===1)return [{type:'math',latex:rows[0],semanticId:code+'-option-'+(++serial)}];
    const aligned=rows.map(s=>{const r=splitRelation(s);return r?r[0]+'&'+r[1]+r[2]:'&'+s;});return [{type:'math',latex:'\\begin{aligned}'+aligned.join('\\\\')+'\\end{aligned}',semanticId:code+'-option-'+(++serial)}];}
   return c.rows.flatMap(r=>r.parts.map(p=>p.kind==='math'?{type:'math',latex:p.latex,semanticId:code+'-option-'+(++serial)}:{type:'text',text:p.text,semanticId:code+'-option-'+(++serial)}));
  }
@@ -25,6 +26,11 @@ for(const code of ['ne02','n11','n12']){
   const merged={id:formulas[0].derivationId,type:'formula',derivationId:formulas[0].derivationId,parts:[{type:'math',latex:'\\begin{aligned}'+rows.join('\\\\')+'\\end{aligned}',semanticId:node.id+'-aligned-result'}]};
   const first=node.after.indexOf(formulas[0]);node.after=node.after.filter(b=>!formulas.includes(b));node.after.splice(first,0,merged);
  }}
+ // Comma-separated function evaluations are independent results, not a single equality chain.
+ for(const node of compiled.nodes)for(const block of node.after.filter(b=>b.type==='formula'&&b.parts.every(p=>p.type==='math'))){
+  const rows=independentFunctionRows(block.parts.map(p=>p.latex).join('').replaceAll('\\\\','\\'));
+  if(rows.length>1)block.parts=[{type:'math',latex:'\\begin{aligned}'+rows.map(s=>{const r=splitRelation(s);return r?r[0]+'&'+r[1]+r[2]:'&'+s;}).join('\\\\')+'\\end{aligned}',semanticId:node.id+'-independent-results'}];
+ }
  const semanticDisplay={},old=read('evidence/'+code.toUpperCase()+'_CURRENT.json').unit;const olditems=new Map(old.sections[0].items.map(i=>[i.id,i]));
  const items=ds.filter(n=>n.itemId).map((n,i)=>{const q=ir.nodes.find(x=>x.id===n.id).interaction,cfg=spec.unitChoices[code].find(x=>x.itemId===q.id);semanticDisplay[n.id]={hintParts:q.hints.map(prose),choices:Object.fromEntries(cfg.choices.map(c=>[c.canonicalKey,choiceParts(c)])),feedback:Object.fromEntries(q.choices.map(c=>[c.content,prose(c.feedback)]))};return {...(olditems.get(q.id)||{}),id:q.id,label:q.id.toUpperCase(),prompt:n.goal,answer:q.expected.value,acceptedAnswers:olditems.get(q.id)?.acceptedAnswers||[],answerType:q.expected.form==='text'?'text':'formula',choices:q.choices.map(c=>c.content),purpose:'causal-reasoning',scaffoldLevel:i<3?'strong':i<25?'medium':'light',hints:q.hints};});
  const gates={n11:{'n11-intro':'n11-f01','n11-10':'n11-f02'},n12:{'n12-02':'n12-f01','n12-06':'n12-f02','n12-15':'n12-f03'}};

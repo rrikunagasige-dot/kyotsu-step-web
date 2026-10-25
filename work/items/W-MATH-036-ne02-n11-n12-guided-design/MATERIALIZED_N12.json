@@ -3540,26 +3540,8 @@
             "parts": [
               {
                 "type": "math",
-                "latex": "T(11)",
-                "semanticId": "w36-p-1026"
-              },
-              {
-                "type": "math",
-                "latex": "="
-              },
-              {
-                "type": "math",
-                "latex": "3200\\text{円},\\ T(12)",
-                "semanticId": "w36-p-1027"
-              },
-              {
-                "type": "math",
-                "latex": "="
-              },
-              {
-                "type": "math",
-                "latex": "3250\\text{円}",
-                "semanticId": "w36-p-1028"
+                "latex": "\\begin{aligned}T(11)&=3200\\text{円}\\\\T(12)&=3250\\text{円}\\end{aligned}",
+                "semanticId": "n12-15-independent-results"
               }
             ],
             "derivationId": "n12-15-equation"
@@ -11509,26 +11491,8 @@
             "parts": [
               {
                 "type": "math",
-                "latex": "T(11)",
-                "semanticId": "w36-p-1026"
-              },
-              {
-                "type": "math",
-                "latex": "="
-              },
-              {
-                "type": "math",
-                "latex": "3200\\text{円},\\ T(12)",
-                "semanticId": "w36-p-1027"
-              },
-              {
-                "type": "math",
-                "latex": "="
-              },
-              {
-                "type": "math",
-                "latex": "3250\\text{円}",
-                "semanticId": "w36-p-1028"
+                "latex": "\\begin{aligned}T(11)&=3200\\text{円}\\\\T(12)&=3250\\text{円}\\end{aligned}",
+                "semanticId": "n12-15-independent-results"
               }
             ],
             "derivationId": "n12-15-equation"
@@ -17259,28 +17223,28 @@
         "T(11)=3200\\text{円},\\ T(12)=3250\\text{円}": [
           {
             "type": "math",
-            "latex": "T(11)=3200\\text{円},\\ T(12)=3250\\text{円}",
+            "latex": "\\begin{aligned}T(11)&=3200\\text{円}\\\\T(12)&=3250\\text{円}\\end{aligned}",
             "semanticId": "n12-option-394"
           }
         ],
         "T(11)=3150\\text{円},\\ T(12)=3200\\text{円}": [
           {
             "type": "math",
-            "latex": "T(11)=3150\\text{円},\\ T(12)=3200\\text{円}",
+            "latex": "\\begin{aligned}T(11)&=3150\\text{円}\\\\T(12)&=3200\\text{円}\\end{aligned}",
             "semanticId": "n12-option-395"
           }
         ],
         "T(11)=3200\\text{円},\\ T(12)=3300\\text{円}": [
           {
             "type": "math",
-            "latex": "T(11)=3200\\text{円},\\ T(12)=3300\\text{円}",
+            "latex": "\\begin{aligned}T(11)&=3200\\text{円}\\\\T(12)&=3300\\text{円}\\end{aligned}",
             "semanticId": "n12-option-396"
           }
         ],
         "T(11)=3250\\text{円},\\ T(12)=3200\\text{円}": [
           {
             "type": "math",
-            "latex": "T(11)=3250\\text{円},\\ T(12)=3200\\text{円}",
+            "latex": "\\begin{aligned}T(11)&=3250\\text{円}\\\\T(12)&=3200\\text{円}\\end{aligned}",
             "semanticId": "n12-option-397"
           }
         ]

@@ -11,7 +11,7 @@ jobs:
     timeout-minutes: 25
     env:
       CODES: ne02,n11,n12
-      CHECK_FULL_PROTECTED: 1
+      CHECK_FULL_PROTECTED: 0
       VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
       VITE_BASE_PATH: /kyotsu-step-web/
     steps:

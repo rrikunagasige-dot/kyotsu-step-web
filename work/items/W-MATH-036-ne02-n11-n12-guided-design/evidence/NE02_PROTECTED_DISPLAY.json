@@ -1,0 +1,88 @@
+{
+  "status": "PASS",
+  "sourceSHA": "66890034113a28cc7ffb476990ce7ef90e536b30",
+  "root": "http://127.0.0.1:4173/kyotsu-step-web/",
+  "results": [
+    {
+      "width": 320,
+      "unit": "n09",
+      "choices": "PASS",
+      "order": "PASS",
+      "factorScope": "PASS",
+      "history": true,
+      "reload": true,
+      "resize": true
+    },
+    {
+      "width": 320,
+      "unit": "n10",
+      "choices": "PASS",
+      "order": "PASS",
+      "factorScope": "PASS",
+      "history": true,
+      "reload": true,
+      "resize": true
+    },
+    {
+      "width": 390,
+      "unit": "n09",
+      "choices": "PASS",
+      "order": "PASS",
+      "factorScope": "PASS",
+      "history": true,
+      "reload": true,
+      "resize": true
+    },
+    {
+      "width": 390,
+      "unit": "n10",
+      "choices": "PASS",
+      "order": "PASS",
+      "factorScope": "PASS",
+      "history": true,
+      "reload": true,
+      "resize": true
+    },
+    {
+      "width": 430,
+      "unit": "n09",
+      "choices": "PASS",
+      "order": "PASS",
+      "factorScope": "PASS",
+      "history": true,
+      "reload": true,
+      "resize": true
+    },
+    {
+      "width": 430,
+      "unit": "n10",
+      "choices": "PASS",
+      "order": "PASS",
+      "factorScope": "PASS",
+      "history": true,
+      "reload": true,
+      "resize": true
+    },
+    {
+      "width": 1440,
+      "unit": "n09",
+      "choices": "PASS",
+      "order": "PASS",
+      "factorScope": "PASS",
+      "history": true,
+      "reload": true,
+      "resize": true
+    },
+    {
+      "width": 1440,
+      "unit": "n10",
+      "choices": "PASS",
+      "order": "PASS",
+      "factorScope": "PASS",
+      "history": true,
+      "reload": true,
+      "resize": true
+    }
+  ],
+  "errors": []
+}

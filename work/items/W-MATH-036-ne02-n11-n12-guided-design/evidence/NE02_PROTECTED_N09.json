@@ -1,0 +1,64 @@
+{
+  "status": "PASS",
+  "sourceSHA": "66890034113a28cc7ffb476990ce7ef90e536b30",
+  "root": "http://127.0.0.1:4173/kyotsu-step-web/",
+  "results": [
+    {
+      "width": 320,
+      "answered": 36,
+      "wrongCount": 90,
+      "stages": 11,
+      "history": true,
+      "reload": true,
+      "migration": true,
+      "legacyMigrationRevisions": [
+        1,
+        2
+      ],
+      "geometry": "PASS"
+    },
+    {
+      "width": 390,
+      "answered": 36,
+      "wrongCount": 90,
+      "stages": 11,
+      "history": true,
+      "reload": true,
+      "migration": true,
+      "legacyMigrationRevisions": [
+        1,
+        2
+      ],
+      "geometry": "PASS"
+    },
+    {
+      "width": 430,
+      "answered": 36,
+      "wrongCount": 90,
+      "stages": 11,
+      "history": true,
+      "reload": true,
+      "migration": true,
+      "legacyMigrationRevisions": [
+        1,
+        2
+      ],
+      "geometry": "PASS"
+    },
+    {
+      "width": 1440,
+      "answered": 36,
+      "wrongCount": 90,
+      "stages": 11,
+      "history": true,
+      "reload": true,
+      "migration": true,
+      "legacyMigrationRevisions": [
+        1,
+        2
+      ],
+      "geometry": "PASS"
+    }
+  ],
+  "errors": []
+}

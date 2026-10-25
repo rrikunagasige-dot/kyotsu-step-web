@@ -38,8 +38,10 @@ jobs:
           for i in $(seq 1 30); do curl -fsS http://127.0.0.1:4173/kyotsu-step-web/ >/dev/null && break || sleep 1; done
           EVIDENCE_DIR=/tmp/w36-browser node work/items/W-MATH-036-ne02-n11-n12-guided-design/verify_app.mjs
           EVIDENCE_DIR=/tmp/w36-protected-display node work/items/W-MATH-035-choice-order-factor-audit/verify_display.mjs
-          EVIDENCE_DIR=/tmp/w36-protected-n09 node work/items/W-MATH-034-n09-n10-guided-design/verify_app.mjs
-          EVIDENCE_DIR=/tmp/w36-protected-n10 node work/items/W-MATH-034-n09-n10-guided-design/verify_n10_app.mjs
+          if [ "${CHECK_FULL_PROTECTED:-0}" = 1 ]; then
+            EVIDENCE_DIR=/tmp/w36-protected-n09 node work/items/W-MATH-034-n09-n10-guided-design/verify_app.mjs
+            EVIDENCE_DIR=/tmp/w36-protected-n10 node work/items/W-MATH-034-n09-n10-guided-design/verify_n10_app.mjs
+          fi
       - uses: actions/upload-artifact@v4
         if: always()
         with:

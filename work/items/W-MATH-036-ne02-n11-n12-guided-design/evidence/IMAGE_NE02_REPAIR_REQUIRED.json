@@ -1,0 +1,10 @@
+{
+  "sourceSHA": "66890034113a28cc7ffb476990ce7ef90e536b30",
+  "status": "REPAIR_REQUIRED",
+  "kind": "same-assistant-additional-image-finding",
+  "image": "ne02-07-options.png",
+  "symptom": "two alternative candidates wrap between the minus sign and its following operand",
+  "correction": "keep each candidate in its own explicit row, with または between; preserve exact canonical key and numbers",
+  "priorImageAudit": "first audit was recorded before the fourth image was inspected; retain as superseded incomplete history",
+  "userGold": false
+}

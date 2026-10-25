@@ -10393,7 +10393,7 @@
         "a=5,\\ b=4:\\ \\sqrt5-2\\quad\\text{または}\\quad a=4,\\ b=5:\\ 2-\\sqrt5": [
           {
             "type": "math",
-            "latex": "a=5,\\ b=4:\\ \\sqrt5-2\\quad\\text{または}\\quad a=4,\\ b=5:\\ 2-\\sqrt5",
+            "latex": "\\begin{aligned}a&=5,\\ b=4:\\ \\sqrt5-2\\\\&\\text{または}\\\\a&=4,\\ b=5:\\ 2-\\sqrt5\\end{aligned}",
             "semanticId": "ne02-option-120"
           }
         ],

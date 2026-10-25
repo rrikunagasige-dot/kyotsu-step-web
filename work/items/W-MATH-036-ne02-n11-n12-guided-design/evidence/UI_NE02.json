@@ -1,0 +1,72 @@
+{
+  "status": "PASS",
+  "sourceSHA": "66890034113a28cc7ffb476990ce7ef90e536b30",
+  "root": "http://127.0.0.1:4173/kyotsu-step-web/",
+  "results": [
+    {
+      "code": "ne02",
+      "width": 320,
+      "answered": 30,
+      "wrongCount": 60,
+      "stages": 12,
+      "figures": [],
+      "history": true,
+      "reload": true,
+      "resize": true,
+      "migration": true,
+      "legacyMigrationRevisions": [
+        1
+      ],
+      "geometry": "PASS"
+    },
+    {
+      "code": "ne02",
+      "width": 390,
+      "answered": 30,
+      "wrongCount": 60,
+      "stages": 12,
+      "figures": [],
+      "history": true,
+      "reload": true,
+      "resize": true,
+      "migration": true,
+      "legacyMigrationRevisions": [
+        1
+      ],
+      "geometry": "PASS"
+    },
+    {
+      "code": "ne02",
+      "width": 430,
+      "answered": 30,
+      "wrongCount": 60,
+      "stages": 12,
+      "figures": [],
+      "history": true,
+      "reload": true,
+      "resize": true,
+      "migration": true,
+      "legacyMigrationRevisions": [
+        1
+      ],
+      "geometry": "PASS"
+    },
+    {
+      "code": "ne02",
+      "width": 1440,
+      "answered": 30,
+      "wrongCount": 60,
+      "stages": 12,
+      "figures": [],
+      "history": true,
+      "reload": true,
+      "resize": true,
+      "migration": true,
+      "legacyMigrationRevisions": [
+        1
+      ],
+      "geometry": "PASS"
+    }
+  ],
+  "errors": []
+}

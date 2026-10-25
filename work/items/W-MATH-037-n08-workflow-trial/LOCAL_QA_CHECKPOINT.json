@@ -1,0 +1,12 @@
+{
+  "sourceSHA": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
+  "stage": "G2_AUDIT_PASS",
+  "externalIntent": "W037-n08-pages-1e8d2ae4-retry3",
+  "next": {
+    "status": "BLOCKED",
+    "reason": "\u5916\u90e8\u64cd\u4f5c\u306e\u6210\u5426\u304c\u672a\u8a18\u9332\u3002\u5b9f\u72b6\u614b\u306e\u7167\u5408\u304c\u5fc5\u8981"
+  },
+  "userAccepted": false,
+  "learningLabelsAdded": 0,
+  "publicationRetryReason": "Exact existing source-adapter dependencies provisioned, including pandoc; same app SHA"
+}

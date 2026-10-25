@@ -1,7 +1,7 @@
 # W-MATH-037 — N08新ワークフロー実地試験
 
 Command: CMD-WORK-001 / production/2 / solution_pipeline:solution/1
-Status: APPROVED / NATIVE_R06_PATCH_COMPLETE / LOCAL_QA / BEFORE_PUBLICATION
+Status: APPROVED / NATIVE_R06_PATCH_COMPLETE / G2_PASS / PUBLICATION_RETRY / WAITING_ACTUAL_HOST
 Scope: 本人が指定したN08「絶対値」の全12問、既存36node。本文の全交換ではなく指定した改善と3回答追加。
 Source: 69014b5b149f730c5f738129c9febbd19a96214a、N08 revision4。公開教材source397788f1に由来するN08を保持。
 Request: 「一旦試しに不等式N08の修正をやってみよう」。対象確認への回答「N08：絶対値の単元」。

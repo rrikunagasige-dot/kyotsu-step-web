@@ -1,0 +1,90 @@
+name: Deploy to GitHub Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      CANDIDATE_SHA: 1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c
+      VITE_PREVIEW_COMMIT: 1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c
+      VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
+      VITE_BASE_PATH: /kyotsu-step-web/
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - name: Existing Word source adapter dependency
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y pandoc
+      - run: python -m pip install -r tools/textbook/research/requirements-solution.txt numpy==2.3.5 scikit-learn==1.8.0 lxml==6.1.1
+      - run: node work/items/W-MATH-037-n08-workflow-trial/release_manifest.mjs --check
+      - run: node --test tools/textbook/tests/n08-bundle.test.mjs tools/textbook/tests/solution-v2.test.mjs tools/textbook/tests/solution-regressions.test.mjs
+      - run: python -m unittest discover -s tools/textbook/tests -p '*_test.py' -q
+      - run: pnpm exec vitest run --config work/items/W-MATH-037-n08-workflow-trial/vitest.config.mjs
+      - run: pnpm exec vitest run --config work/items/W-MATH-036-ne02-n11-n12-guided-design/vitest.config.mjs
+      - run: pnpm exec vitest run --exclude src/data/physicsTaxonomy.test.ts --exclude src/domain/questionSchema.test.ts
+      - run: pnpm run test:textbook-authoring
+      - run: pnpm run build
+      - run: node work/items/W-MATH-003-numbers-expressions-creation/NE01_NE02/export-runtime.mjs
+      - run: node work/items/W-MATH-037-n08-workflow-trial/release_manifest.mjs
+      - run: pnpm exec playwright install --with-deps chromium
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+      - name: Publish approved N08 while retaining revision 4
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Exact public source, all N08 choices and old-version preservation
+        env:
+          APP_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          node --input-type=module <<'NODE'
+          let matched=false
+          for(let i=0;i<60;i++){
+            try{const r=await fetch(process.env.APP_URL+'release.json?sha='+process.env.CANDIDATE_SHA,{cache:'no-store'});const m=await r.json();if(m.sourceSHA===process.env.CANDIDATE_SHA&&m.storageKey===process.env.VITE_STORAGE_NAMESPACE&&m.oldN08?.revision===4){matched=true;break}}catch{}
+            await new Promise(r=>setTimeout(r,2000))
+          }
+          if(!matched)throw Error('public source not verified')
+          NODE
+          if node --input-type=module -e "import fs from 'node:fs';process.exit(JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/n08ActiveVersion.json')).revision===5?0:1)"; then
+            EVIDENCE_DIR=/tmp/w37-hosted node work/items/W-MATH-037-n08-workflow-trial/verify_app.mjs
+          else
+            EVIDENCE_DIR=/tmp/w37-hosted node work/items/W-MATH-033-n08-absolute-value/verify_app.mjs
+          fi
+          EVIDENCE_DIR=/tmp/w37-hosted-protected node work/items/W-MATH-035-choice-order-factor-audit/verify_display.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: w37-publication-evidence
+          path: |
+            /tmp/w37-hosted
+            /tmp/w37-hosted-protected

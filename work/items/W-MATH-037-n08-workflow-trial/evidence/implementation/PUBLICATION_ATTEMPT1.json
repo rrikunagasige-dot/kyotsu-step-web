@@ -1,0 +1,9 @@
+{
+  "id": 40214042046,
+  "publisherSHA": "5a930d53019eb7382c2a50c462095525ae709241",
+  "sourceSHA": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
+  "status": "completed",
+  "conclusion": "failure",
+  "deploymentExecuted": false,
+  "reason": "CI Python tests lacked numpy and lxml; mathematical checks passed. Install the exact existing numpy/sklearn/lxml versions; no test disabled, app source unchanged."
+}

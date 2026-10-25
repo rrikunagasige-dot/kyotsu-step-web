@@ -1,0 +1,9 @@
+{
+  "id": 40214239168,
+  "publisherSHA": "388c9e3d1356031f11aa87e2afc3d6db59c7c174",
+  "sourceSHA": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
+  "status": "completed",
+  "conclusion": "failure",
+  "deploymentExecuted": false,
+  "reason": "Existing Word-source fixtures also require pandoc. Reuse existing textbook-authoring CI dependency setup; no tests disabled, app source unchanged."
+}

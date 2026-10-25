@@ -1,0 +1,17 @@
+{
+  "sourceSHA": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
+  "files": [
+    "320-stage-6.png",
+    "390-stage-2.png",
+    "390-stage-7.png",
+    "390-stage-9.png",
+    "390-stage-11.png",
+    "1440-stage-12.png"
+  ],
+  "extraImagesInspected": [
+    "320-stage-6.png",
+    "1440-stage-12.png"
+  ],
+  "allGeneratedImageHashes": "IMAGE_AUDIT.json",
+  "curatedArchive": true
+}

@@ -1,3 +1,15 @@
+<!-- W037_CURRENT_START -->
+## CURRENT — N08 P001承認済み・旧版保持で公開中（2026-10-26）
+
+本人「えっとね。やっていいよ。しかし前のN08も残して、もし不満だったらまた戻れるし」でP001と旧版保護を明示承認。proposal/NODE_DESIGNはf927ebdbから不変。旧r4 JSON/reader/CSS/PNGをbyte保護し、別r5 leaf/reader、?version=4の旧閲覧、4/5 reversible progressを実装。39node/34回答、12stage/旧31契約を保持。両辺二枠一回答。原問・小目標・同じ問題の途中式、全候補の行、分配の中間式、参照の条件を改善。
+
+公開source1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c。共有production/2修正入口でR01〜R06を現行service hashで再実行、R07_VERIFY/SEMANTIC/G2 PASS。36solution/否定試験・135workflow・21Python・620app・7保存移行・対象lint/build PASS、4幅各34正答/80誤答・全12stage・history/reload/resize・旧版保存分離・1操作1attempt・31旧回答保持を実操作。別passは同じassistantで独立AIとは呼ばない。
+
+Pages run40214042046はnumpy/lxml不足で公開前FAIL。依存を補いapp source不変で再試行。publisher388c9e3d / run40214239168もpandoc不足で公開前FAIL。既存textbook-authoring CIの依存構成を流用し、publisher5142b598で同じapp sourceを再試行中。外部intent1はNOT_EXECUTED、retry2もNOT_EXECUTED、retry3へ明示記録。公開・G3_HOST成功をまだ主張しない。待ち先と証拠はwork/items/W-MATH-037-n08-workflow-trial。旧版復帰はn08ActiveVersion.jsonを4へ変更し同じnamespaceで再build。新r5記録もarchiveへ保持、5へ再移行可能。
+
+ユーザーの許可は品質肯定・教材受入ではない。新Gold/fitなし、既存15事例とOFFLINE_ONLYを保持。G3_FINALは本人の実物評価待ち。同じ設計・公開許可や画像承認を再要求しない。
+<!-- W037_CURRENT_END -->
+
 ## CURRENT — W-MATH-037 N08ワークフロー試行・具体案確認（2026-10-26）
 
 本人がN08「絶対値」を選択。新solution/1を既存修正入口で試行し、現行36node/31回答の分析とP-001具体案を作成。本人の新しい内容承認は未受領。提案は旧31回答・12stage・図を保持し、距離式a−0/両辺から引く3/πの3回答を追加（39node/34回答、slot計5）。元問をQ05〜07、Q08〜09で保持し、本文メタ文・参照・式列を改善する。現行2幅62正答、部分計算3、別SymPy17実験、提案92式の描画検査。新ASTのAbs/根号/π/条件付きcase未対応、HTML数式抽出とresearch importの属性欠落も実検出した。制作コード拡張も明記した提案はwork/items/W-MATH-037-n08-workflow-trial/PROPOSAL.md。共有RuntimeではR01 PASS、R02 UNVERIFIED（未対応をPASSへ昇格しない）。R04/R05/R06完了の偽記録なし。提案の既承認後、限定制作adapter拡張を先行し同じR02へ戻す。教材・共通code・公開版・進捗は未変更。新Gold/fitなし。

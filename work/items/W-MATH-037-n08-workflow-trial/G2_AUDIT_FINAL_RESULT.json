@@ -1,0 +1,480 @@
+{
+  "verdict": "PASS",
+  "evidence_refs": [
+    "718c323a-4e93-4a5f-a127-ab80bb25ff0f",
+    "3be3fc1e-877b-4318-85a4-03f1977b4f27",
+    "898350c6-16b9-4714-a5b9-373c2a10aeb6",
+    "975c69d7-79c6-453f-88e0-3ddce4fb5ac9",
+    "7e94cf55-3923-49ef-933e-896e72a9e941",
+    "50abb3a0-b78a-4e38-b78e-a4f74da070fe",
+    "8585d809-f777-4cf3-9685-3ea8692662d9",
+    "1af4bb33-b568-4a0e-839c-4918f9a39e4e",
+    "d281f438-b364-47c2-b449-ad18788ddcf3",
+    "a878fb6b-a55e-43e0-b4ae-0e7ced0b435c"
+  ],
+  "capability_receipts": [
+    "5a8d2f6b45a30112bb3b13cd8cbe28a292eba566ba91240dec5c3d6f0ad05acf",
+    "52c2152b6ea542cf7050ae9da36e48f91148d918b1b6d5ca496e4cbb2dbd5944"
+  ],
+  "case_dispositions": [
+    {
+      "id": "N07-USER-F01",
+      "dimension": "prerequisite_missing",
+      "disposition": "APPLY",
+      "reason": "N08で必要な距離・実数の順序・正の平方根・与条件を明示する。N07の循環小数の内容はコピーしない。",
+      "evidenceRef": "6814bc8a1ab3e9fc6b57e33cc6fd00606c811ae0a8409541fba0d41186068e02",
+      "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+    },
+    {
+      "id": "N07-USER-F02",
+      "dimension": "orphan_output",
+      "disposition": "APPLY",
+      "reason": "局所の差の符号を元の絶対値の問題へ戻す。F01/F02とproblemGroupsで対応する。",
+      "evidenceRef": "2ed5eb49f280682c47052e3884da9210f66820bfc5298e23a4cc446abb1fd569",
+      "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+    },
+    {
+      "id": "N07-USER-F03",
+      "dimension": "unmotivated_operation",
+      "disposition": "APPLY",
+      "reason": "中身の符号を調べる必要性を先に置き、両辺操作の選択を追加する。",
+      "evidenceRef": "1f2a13bceb62bcfda98beea2693d1c667b9978ca919f5c2ca9052c050f564082",
+      "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+    },
+    {
+      "id": "N07-USER-F04",
+      "dimension": "broken_derivation",
+      "disposition": "APPLY",
+      "reason": "等号でつながる計算と、大小比較・場合別の論証を別の型へ分ける。",
+      "evidenceRef": "c6fca58d8fc8145df8abbcf54af97fb324c68cd7d5469d85682d59f5d59c9583",
+      "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+    },
+    {
+      "id": "N07-USER-F05",
+      "dimension": "term_semantics_missing",
+      "disposition": "ALREADY_SATISFIED",
+      "reason": "現行N08の絶対値の定義は黒字太字・math分割で実描画されている。制作メタ文だけ別途改善する。",
+      "evidenceRef": "08a194aebe3d23880b1a9ea1c6b82bc9c46c8763759db499218679fac811e0b6",
+      "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+    },
+    {
+      "id": "N07-USER-F06",
+      "dimension": "math_render_omission",
+      "disposition": "APPLY",
+      "reason": "現行N08のmath描画を保持し、今回見つかった参照HTMLの縦線欠落も別の抽出試験へ加える。",
+      "evidenceRef": "2f13547d5da27e6aa3d98a059f5df95cc47631c2fc3479e6da68872d3c4bfb70",
+      "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+    },
+    {
+      "id": "n07-layout-relation",
+      "dimension": "layout_discomfort",
+      "disposition": "APPLY",
+      "reason": "中央配置・番号・全候補の組版を新しい途中式でも確認する。元のN07の数値は使わない。",
+      "evidenceRef": "c6fca58d8fc8145df8abbcf54af97fb324c68cd7d5469d85682d59f5d59c9583",
+      "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+    },
+    {
+      "id": "n07-layout-positive",
+      "dimension": "layout_style_rejection",
+      "disposition": "ALREADY_SATISFIED",
+      "reason": "肯定された全体レイアウトを保ち、この評価を新しい穴の品質肯定へ変換しない。",
+      "evidenceRef": "current-conversation:layout-praise",
+      "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+    },
+    {
+      "id": "first-title-layout-positive",
+      "dimension": "layout_discomfort",
+      "disposition": "APPLY",
+      "reason": "受入済みの式group・番号・枠をN08でも再利用する。",
+      "evidenceRef": "work/items/W-MATH-031-section-one-typesetting/USER_ACCEPTANCE_20261024.md",
+      "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+    },
+    {
+      "id": "N07-ACCEPTED-20261025",
+      "dimension": "overall_material_acceptance",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "N07の全体受入は保護対象。N08修正版の個別観点や品質ラベルに使わない。",
+      "evidenceRef": "W032-N07-POSITIVE-20261025",
+      "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+    },
+    {
+      "id": "N08-ACCEPTED-20261025",
+      "dimension": "overall_material_acceptance",
+      "disposition": "ALREADY_SATISFIED",
+      "reason": "現行N08の受入を維持して既存の説明・31回答を保護する。新revisionの受入へ広げない。",
+      "evidenceRef": "W033-N08-POSITIVE-20261025",
+      "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+    },
+    {
+      "id": "N09-REJECTED-20261025",
+      "dimension": "operation_order",
+      "disposition": "APPLY",
+      "reason": "Q05の二乗の比較と元の比較、Q01の原問順を全選択肢でそろえる。",
+      "evidenceRef": "W034-N09-ORDER-NEGATIVE-20261025",
+      "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+    },
+    {
+      "id": "N10-REJECTED-20261025",
+      "dimension": "factor_grouping",
+      "disposition": "APPLY",
+      "reason": "Q07/Q09で中身全体の括弧と二項への負号、Q12で括弧ごとの冪を保つ。",
+      "evidenceRef": "W034-N10-FACTOR-NEGATIVE-20261025",
+      "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+    },
+    {
+      "id": "N09-ACCEPTED-20261025",
+      "dimension": "overall_material_acceptance",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "N09全体の受入をN08修正版の品質ラベルへ流用しない。N09本文は保護する。",
+      "evidenceRef": "W035-N09-POSITIVE-20261025",
+      "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+    },
+    {
+      "id": "N10-ACCEPTED-20261025",
+      "dimension": "overall_material_acceptance",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "N10全体の受入をN08修正版へ流用しない。N10本文は保護する。",
+      "evidenceRef": "W035-N10-POSITIVE-20261025",
+      "targetEvidence": "FINDINGS.md; NODE_DESIGN.json; baseline DOM"
+    }
+  ],
+  "aiReview": {
+    "requestHash": "d704e3d138aa0e00d7ae08cc5b6f14212859f8f5f4b09a590c0f737ad9382c26",
+    "inputHash": "20fd3c7c824fc4b1233460282c2d85c9b5b94fd0bd4b94ed1e1b29a1e22e7fc0",
+    "reviewer": "same-assistant source, visible-state and real-image pass; not independent AI",
+    "evidence": "Protected hashes, all candidate source paths, archive route, reversible migration and public namespace are checked. Existing global lint failures in unrelated code are not called green. No current changed-scope regression remains."
+  },
+  "audit_rows": [
+    {
+      "block_id": "n08",
+      "artifact": "public/assets/math/textbook/numbers/n08-f01.png",
+      "version": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
+      "status": "PASS",
+      "surface": "Changed app source, preserved original, exact design and complete local learner play",
+      "evidence_refs": [
+        "718c323a-4e93-4a5f-a127-ab80bb25ff0f",
+        "3be3fc1e-877b-4318-85a4-03f1977b4f27",
+        "898350c6-16b9-4714-a5b9-373c2a10aeb6",
+        "975c69d7-79c6-453f-88e0-3ddce4fb5ac9",
+        "7e94cf55-3923-49ef-933e-896e72a9e941",
+        "50abb3a0-b78a-4e38-b78e-a4f74da070fe",
+        "8585d809-f777-4cf3-9685-3ea8692662d9",
+        "1af4bb33-b568-4a0e-839c-4918f9a39e4e",
+        "d281f438-b364-47c2-b449-ad18788ddcf3",
+        "a878fb6b-a55e-43e0-b4ae-0e7ced0b435c"
+      ]
+    },
+    {
+      "block_id": "n08",
+      "artifact": "src/components/textbook/N08ReadingFlow.tsx",
+      "version": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
+      "status": "PASS",
+      "surface": "Changed app source, preserved original, exact design and complete local learner play",
+      "evidence_refs": [
+        "718c323a-4e93-4a5f-a127-ab80bb25ff0f",
+        "3be3fc1e-877b-4318-85a4-03f1977b4f27",
+        "898350c6-16b9-4714-a5b9-373c2a10aeb6",
+        "975c69d7-79c6-453f-88e0-3ddce4fb5ac9",
+        "7e94cf55-3923-49ef-933e-896e72a9e941",
+        "50abb3a0-b78a-4e38-b78e-a4f74da070fe",
+        "8585d809-f777-4cf3-9685-3ea8692662d9",
+        "1af4bb33-b568-4a0e-839c-4918f9a39e4e",
+        "d281f438-b364-47c2-b449-ad18788ddcf3",
+        "a878fb6b-a55e-43e0-b4ae-0e7ced0b435c"
+      ]
+    },
+    {
+      "block_id": "n08",
+      "artifact": "src/components/textbook/N08SolutionReadingFlow.tsx",
+      "version": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
+      "status": "PASS",
+      "surface": "Changed app source, preserved original, exact design and complete local learner play",
+      "evidence_refs": [
+        "718c323a-4e93-4a5f-a127-ab80bb25ff0f",
+        "3be3fc1e-877b-4318-85a4-03f1977b4f27",
+        "898350c6-16b9-4714-a5b9-373c2a10aeb6",
+        "975c69d7-79c6-453f-88e0-3ddce4fb5ac9",
+        "7e94cf55-3923-49ef-933e-896e72a9e941",
+        "50abb3a0-b78a-4e38-b78e-a4f74da070fe",
+        "8585d809-f777-4cf3-9685-3ea8692662d9",
+        "1af4bb33-b568-4a0e-839c-4918f9a39e4e",
+        "d281f438-b364-47c2-b449-ad18788ddcf3",
+        "a878fb6b-a55e-43e0-b4ae-0e7ced0b435c"
+      ]
+    },
+    {
+      "block_id": "n08",
+      "artifact": "src/components/textbook/n08-reading.css",
+      "version": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
+      "status": "PASS",
+      "surface": "Changed app source, preserved original, exact design and complete local learner play",
+      "evidence_refs": [
+        "718c323a-4e93-4a5f-a127-ab80bb25ff0f",
+        "3be3fc1e-877b-4318-85a4-03f1977b4f27",
+        "898350c6-16b9-4714-a5b9-373c2a10aeb6",
+        "975c69d7-79c6-453f-88e0-3ddce4fb5ac9",
+        "7e94cf55-3923-49ef-933e-896e72a9e941",
+        "50abb3a0-b78a-4e38-b78e-a4f74da070fe",
+        "8585d809-f777-4cf3-9685-3ea8692662d9",
+        "1af4bb33-b568-4a0e-839c-4918f9a39e4e",
+        "d281f438-b364-47c2-b449-ad18788ddcf3",
+        "a878fb6b-a55e-43e0-b4ae-0e7ced0b435c"
+      ]
+    },
+    {
+      "block_id": "n08",
+      "artifact": "src/components/textbook/n08-solution-reading.css",
+      "version": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
+      "status": "PASS",
+      "surface": "Changed app source, preserved original, exact design and complete local learner play",
+      "evidence_refs": [
+        "718c323a-4e93-4a5f-a127-ab80bb25ff0f",
+        "3be3fc1e-877b-4318-85a4-03f1977b4f27",
+        "898350c6-16b9-4714-a5b9-373c2a10aeb6",
+        "975c69d7-79c6-453f-88e0-3ddce4fb5ac9",
+        "7e94cf55-3923-49ef-933e-896e72a9e941",
+        "50abb3a0-b78a-4e38-b78e-a4f74da070fe",
+        "8585d809-f777-4cf3-9685-3ea8692662d9",
+        "1af4bb33-b568-4a0e-839c-4918f9a39e4e",
+        "d281f438-b364-47c2-b449-ad18788ddcf3",
+        "a878fb6b-a55e-43e0-b4ae-0e7ced0b435c"
+      ]
+    },
+    {
+      "block_id": "n08",
+      "artifact": "src/data/textbook/math/numbers/n07Authored.json",
+      "version": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
+      "status": "PASS",
+      "surface": "Changed app source, preserved original, exact design and complete local learner play",
+      "evidence_refs": [
+        "718c323a-4e93-4a5f-a127-ab80bb25ff0f",
+        "3be3fc1e-877b-4318-85a4-03f1977b4f27",
+        "898350c6-16b9-4714-a5b9-373c2a10aeb6",
+        "975c69d7-79c6-453f-88e0-3ddce4fb5ac9",
+        "7e94cf55-3923-49ef-933e-896e72a9e941",
+        "50abb3a0-b78a-4e38-b78e-a4f74da070fe",
+        "8585d809-f777-4cf3-9685-3ea8692662d9",
+        "1af4bb33-b568-4a0e-839c-4918f9a39e4e",
+        "d281f438-b364-47c2-b449-ad18788ddcf3",
+        "a878fb6b-a55e-43e0-b4ae-0e7ced0b435c"
+      ]
+    },
+    {
+      "block_id": "n08",
+      "artifact": "src/data/textbook/math/numbers/n08ActiveVersion.json",
+      "version": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
+      "status": "PASS",
+      "surface": "Changed app source, preserved original, exact design and complete local learner play",
+      "evidence_refs": [
+        "718c323a-4e93-4a5f-a127-ab80bb25ff0f",
+        "3be3fc1e-877b-4318-85a4-03f1977b4f27",
+        "898350c6-16b9-4714-a5b9-373c2a10aeb6",
+        "975c69d7-79c6-453f-88e0-3ddce4fb5ac9",
+        "7e94cf55-3923-49ef-933e-896e72a9e941",
+        "50abb3a0-b78a-4e38-b78e-a4f74da070fe",
+        "8585d809-f777-4cf3-9685-3ea8692662d9",
+        "1af4bb33-b568-4a0e-839c-4918f9a39e4e",
+        "d281f438-b364-47c2-b449-ad18788ddcf3",
+        "a878fb6b-a55e-43e0-b4ae-0e7ced0b435c"
+      ]
+    },
+    {
+      "block_id": "n08",
+      "artifact": "src/data/textbook/math/numbers/n08Authored.json",
+      "version": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
+      "status": "PASS",
+      "surface": "Changed app source, preserved original, exact design and complete local learner play",
+      "evidence_refs": [
+        "718c323a-4e93-4a5f-a127-ab80bb25ff0f",
+        "3be3fc1e-877b-4318-85a4-03f1977b4f27",
+        "898350c6-16b9-4714-a5b9-373c2a10aeb6",
+        "975c69d7-79c6-453f-88e0-3ddce4fb5ac9",
+        "7e94cf55-3923-49ef-933e-896e72a9e941",
+        "50abb3a0-b78a-4e38-b78e-a4f74da070fe",
+        "8585d809-f777-4cf3-9685-3ea8692662d9",
+        "1af4bb33-b568-4a0e-839c-4918f9a39e4e",
+        "d281f438-b364-47c2-b449-ad18788ddcf3",
+        "a878fb6b-a55e-43e0-b4ae-0e7ced0b435c"
+      ]
+    },
+    {
+      "block_id": "n08",
+      "artifact": "src/data/textbook/math/numbers/n08Lesson.ts",
+      "version": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
+      "status": "PASS",
+      "surface": "Changed app source, preserved original, exact design and complete local learner play",
+      "evidence_refs": [
+        "718c323a-4e93-4a5f-a127-ab80bb25ff0f",
+        "3be3fc1e-877b-4318-85a4-03f1977b4f27",
+        "898350c6-16b9-4714-a5b9-373c2a10aeb6",
+        "975c69d7-79c6-453f-88e0-3ddce4fb5ac9",
+        "7e94cf55-3923-49ef-933e-896e72a9e941",
+        "50abb3a0-b78a-4e38-b78e-a4f74da070fe",
+        "8585d809-f777-4cf3-9685-3ea8692662d9",
+        "1af4bb33-b568-4a0e-839c-4918f9a39e4e",
+        "d281f438-b364-47c2-b449-ad18788ddcf3",
+        "a878fb6b-a55e-43e0-b4ae-0e7ced0b435c"
+      ]
+    },
+    {
+      "block_id": "n08",
+      "artifact": "src/data/textbook/math/numbers/n08Revision5.json",
+      "version": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
+      "status": "PASS",
+      "surface": "Changed app source, preserved original, exact design and complete local learner play",
+      "evidence_refs": [
+        "718c323a-4e93-4a5f-a127-ab80bb25ff0f",
+        "3be3fc1e-877b-4318-85a4-03f1977b4f27",
+        "898350c6-16b9-4714-a5b9-373c2a10aeb6",
+        "975c69d7-79c6-453f-88e0-3ddce4fb5ac9",
+        "7e94cf55-3923-49ef-933e-896e72a9e941",
+        "50abb3a0-b78a-4e38-b78e-a4f74da070fe",
+        "8585d809-f777-4cf3-9685-3ea8692662d9",
+        "1af4bb33-b568-4a0e-839c-4918f9a39e4e",
+        "d281f438-b364-47c2-b449-ad18788ddcf3",
+        "a878fb6b-a55e-43e0-b4ae-0e7ced0b435c"
+      ]
+    },
+    {
+      "block_id": "n08",
+      "artifact": "src/data/textbook/math/numbers/n09Authored.json",
+      "version": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
+      "status": "PASS",
+      "surface": "Changed app source, preserved original, exact design and complete local learner play",
+      "evidence_refs": [
+        "718c323a-4e93-4a5f-a127-ab80bb25ff0f",
+        "3be3fc1e-877b-4318-85a4-03f1977b4f27",
+        "898350c6-16b9-4714-a5b9-373c2a10aeb6",
+        "975c69d7-79c6-453f-88e0-3ddce4fb5ac9",
+        "7e94cf55-3923-49ef-933e-896e72a9e941",
+        "50abb3a0-b78a-4e38-b78e-a4f74da070fe",
+        "8585d809-f777-4cf3-9685-3ea8692662d9",
+        "1af4bb33-b568-4a0e-839c-4918f9a39e4e",
+        "d281f438-b364-47c2-b449-ad18788ddcf3",
+        "a878fb6b-a55e-43e0-b4ae-0e7ced0b435c"
+      ]
+    },
+    {
+      "block_id": "n08",
+      "artifact": "src/data/textbook/math/numbers/n10Authored.json",
+      "version": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
+      "status": "PASS",
+      "surface": "Changed app source, preserved original, exact design and complete local learner play",
+      "evidence_refs": [
+        "718c323a-4e93-4a5f-a127-ab80bb25ff0f",
+        "3be3fc1e-877b-4318-85a4-03f1977b4f27",
+        "898350c6-16b9-4714-a5b9-373c2a10aeb6",
+        "975c69d7-79c6-453f-88e0-3ddce4fb5ac9",
+        "7e94cf55-3923-49ef-933e-896e72a9e941",
+        "50abb3a0-b78a-4e38-b78e-a4f74da070fe",
+        "8585d809-f777-4cf3-9685-3ea8692662d9",
+        "1af4bb33-b568-4a0e-839c-4918f9a39e4e",
+        "d281f438-b364-47c2-b449-ad18788ddcf3",
+        "a878fb6b-a55e-43e0-b4ae-0e7ced0b435c"
+      ]
+    },
+    {
+      "block_id": "n08",
+      "artifact": "src/data/textbook/math/numbers/n11Authored.json",
+      "version": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
+      "status": "PASS",
+      "surface": "Changed app source, preserved original, exact design and complete local learner play",
+      "evidence_refs": [
+        "718c323a-4e93-4a5f-a127-ab80bb25ff0f",
+        "3be3fc1e-877b-4318-85a4-03f1977b4f27",
+        "898350c6-16b9-4714-a5b9-373c2a10aeb6",
+        "975c69d7-79c6-453f-88e0-3ddce4fb5ac9",
+        "7e94cf55-3923-49ef-933e-896e72a9e941",
+        "50abb3a0-b78a-4e38-b78e-a4f74da070fe",
+        "8585d809-f777-4cf3-9685-3ea8692662d9",
+        "1af4bb33-b568-4a0e-839c-4918f9a39e4e",
+        "d281f438-b364-47c2-b449-ad18788ddcf3",
+        "a878fb6b-a55e-43e0-b4ae-0e7ced0b435c"
+      ]
+    },
+    {
+      "block_id": "n08",
+      "artifact": "src/data/textbook/math/numbers/n12Authored.json",
+      "version": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
+      "status": "PASS",
+      "surface": "Changed app source, preserved original, exact design and complete local learner play",
+      "evidence_refs": [
+        "718c323a-4e93-4a5f-a127-ab80bb25ff0f",
+        "3be3fc1e-877b-4318-85a4-03f1977b4f27",
+        "898350c6-16b9-4714-a5b9-373c2a10aeb6",
+        "975c69d7-79c6-453f-88e0-3ddce4fb5ac9",
+        "7e94cf55-3923-49ef-933e-896e72a9e941",
+        "50abb3a0-b78a-4e38-b78e-a4f74da070fe",
+        "8585d809-f777-4cf3-9685-3ea8692662d9",
+        "1af4bb33-b568-4a0e-839c-4918f9a39e4e",
+        "d281f438-b364-47c2-b449-ad18788ddcf3",
+        "a878fb6b-a55e-43e0-b4ae-0e7ced0b435c"
+      ]
+    },
+    {
+      "block_id": "n08",
+      "artifact": "src/domain/textbook.ts",
+      "version": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
+      "status": "PASS",
+      "surface": "Changed app source, preserved original, exact design and complete local learner play",
+      "evidence_refs": [
+        "718c323a-4e93-4a5f-a127-ab80bb25ff0f",
+        "3be3fc1e-877b-4318-85a4-03f1977b4f27",
+        "898350c6-16b9-4714-a5b9-373c2a10aeb6",
+        "975c69d7-79c6-453f-88e0-3ddce4fb5ac9",
+        "7e94cf55-3923-49ef-933e-896e72a9e941",
+        "50abb3a0-b78a-4e38-b78e-a4f74da070fe",
+        "8585d809-f777-4cf3-9685-3ea8692662d9",
+        "1af4bb33-b568-4a0e-839c-4918f9a39e4e",
+        "d281f438-b364-47c2-b449-ad18788ddcf3",
+        "a878fb6b-a55e-43e0-b4ae-0e7ced0b435c"
+      ]
+    },
+    {
+      "block_id": "n08",
+      "artifact": "src/pages/N08ArchivePage.tsx",
+      "version": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
+      "status": "PASS",
+      "surface": "Changed app source, preserved original, exact design and complete local learner play",
+      "evidence_refs": [
+        "718c323a-4e93-4a5f-a127-ab80bb25ff0f",
+        "3be3fc1e-877b-4318-85a4-03f1977b4f27",
+        "898350c6-16b9-4714-a5b9-373c2a10aeb6",
+        "975c69d7-79c6-453f-88e0-3ddce4fb5ac9",
+        "7e94cf55-3923-49ef-933e-896e72a9e941",
+        "50abb3a0-b78a-4e38-b78e-a4f74da070fe",
+        "8585d809-f777-4cf3-9685-3ea8692662d9",
+        "1af4bb33-b568-4a0e-839c-4918f9a39e4e",
+        "d281f438-b364-47c2-b449-ad18788ddcf3",
+        "a878fb6b-a55e-43e0-b4ae-0e7ced0b435c"
+      ]
+    },
+    {
+      "block_id": "n08",
+      "artifact": "src/pages/TextbookUnitPage.tsx",
+      "version": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
+      "status": "PASS",
+      "surface": "Changed app source, preserved original, exact design and complete local learner play",
+      "evidence_refs": [
+        "718c323a-4e93-4a5f-a127-ab80bb25ff0f",
+        "3be3fc1e-877b-4318-85a4-03f1977b4f27",
+        "898350c6-16b9-4714-a5b9-373c2a10aeb6",
+        "975c69d7-79c6-453f-88e0-3ddce4fb5ac9",
+        "7e94cf55-3923-49ef-933e-896e72a9e941",
+        "50abb3a0-b78a-4e38-b78e-a4f74da070fe",
+        "8585d809-f777-4cf3-9685-3ea8692662d9",
+        "1af4bb33-b568-4a0e-839c-4918f9a39e4e",
+        "d281f438-b364-47c2-b449-ad18788ddcf3",
+        "a878fb6b-a55e-43e0-b4ae-0e7ced0b435c"
+      ]
+    }
+  ],
+  "release_readiness": "READY",
+  "impact_sweep_completion": "COMPLETE",
+  "audit_method": {
+    "method": "code scope/hash checks plus full correct/wrong browser plays and same-assistant real-image review",
+    "reviewer": "current assistant and code",
+    "independent": false
+  },
+  "unknowns": []
+}

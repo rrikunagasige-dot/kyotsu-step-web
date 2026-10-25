@@ -1,3 +1,15 @@
+<!-- W037_CURRENT_START -->
+## CURRENT — N08 P001承認済み・旧版保持で公開中（2026-10-26）
+
+本人「えっとね。やっていいよ。しかし前のN08も残して、もし不満だったらまた戻れるし」でP001と旧版保護を明示承認。proposal/NODE_DESIGNはf927ebdbから不変。旧r4 JSON/reader/CSS/PNGをbyte保護し、別r5 leaf/reader、?version=4の旧閲覧、4/5 reversible progressを実装。39node/34回答、12stage/旧31契約を保持。両辺二枠一回答。原問・小目標・同じ問題の途中式、全候補の行、分配の中間式、参照の条件を改善。
+
+公開source1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c。共有production/2修正入口でR01〜R06を現行service hashで再実行、R07_VERIFY/SEMANTIC/G2 PASS。36solution/否定試験・135workflow・21Python・620app・7保存移行・対象lint/build PASS、4幅各34正答/80誤答・全12stage・history/reload/resize・旧版保存分離・1操作1attempt・31旧回答保持を実操作。別passは同じassistantで独立AIとは呼ばない。
+
+Pages run40214042046はnumpy/lxml不足で公開前FAIL。依存を補いapp source不変で再試行。publisher388c9e3d / run40214239168もpandoc不足で公開前FAIL。既存textbook-authoring CIの依存構成を流用し、publisher5142b598で同じapp sourceを再試行中。外部intent1はNOT_EXECUTED、retry2もNOT_EXECUTED、retry3へ明示記録。公開・G3_HOST成功をまだ主張しない。待ち先と証拠はwork/items/W-MATH-037-n08-workflow-trial。旧版復帰はn08ActiveVersion.jsonを4へ変更し同じnamespaceで再build。新r5記録もarchiveへ保持、5へ再移行可能。
+
+ユーザーの許可は品質肯定・教材受入ではない。新Gold/fitなし、既存15事例とOFFLINE_ONLYを保持。G3_FINALは本人の実物評価待ち。同じ設計・公開許可や画像承認を再要求しない。
+<!-- W037_CURRENT_END -->
+
 ## CURRENT — NE02・N11・N12を公開、実物評価待ち（2026-10-25）
 
 本人「いいぞ」で凍結P-001（3d0310b8 / proposal db7460ff）の3単元設計を承認。同じ共有Runtime・CMD-WORK-001 / production/2でR05→R06→R07_VERIFY/R07_SEMANTIC→G2を全3unit実行。公開source `397788f1715b96459032a6647d6fbe772004a7b3`、既存Pages workflow `79ba8c418170cb447a69a900cfeace8c0c451902`。HTTPS release.jsonで3unit・source・namespaceを照合。公開後も全3単元を四幅で最後まで操作し、履歴・移行・表示を再確認。[公開run40181570315](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40181570315) SUCCESS。

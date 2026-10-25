@@ -1,0 +1,53 @@
+{
+  "sourceSHA": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
+  "status": "PASS",
+  "reviewer": "current assistant; same-assistant visual pass, not independent AI",
+  "inspected": [
+    "390-stage-2.png",
+    "390-stage-9.png",
+    "390-stage-11.png",
+    "390-stage-7.png (preceding same-layout pass)"
+  ],
+  "findings": [
+    "Root and goal retained through both examples",
+    "Conditions remain attached to definition and case results",
+    "Two independent comparisons/choices are separate rows; number occupies group end",
+    "Bracket-wide negative distribution includes explicit products",
+    "Existing sticky app header is retained; long element screenshots include that fixed header at capture position"
+  ],
+  "images": {
+    "1440-stage-11.png": "586959b3025dc9607442560770e0e35f2fb166d0be7b114fc9d3069c9bca67ac",
+    "1440-stage-12.png": "4bab02dba469270f8d58a549d0664964290594b908daa0a1cd0d1cde19f77d33",
+    "1440-stage-2.png": "ee17c8b378b079564d6232b60ddd14bab9d9273d71200994a8f671ad90c1a451",
+    "1440-stage-5.png": "fa4597ba863cc1c8b941c785805461c1a8b6f2693f9da7488f4d5cca10a43cfe",
+    "1440-stage-6.png": "809ee152edd5c2ccc49c0a718a1a0a2c10f922dc13a70e9fd9419fb8c9efd920",
+    "1440-stage-7.png": "8131290c076c2fb88864f8cb19203317c33f22b84866f4069f8e8fc634900bb9",
+    "1440-stage-9.png": "14c3cea4f24add28cdb16df78881bb381e0613f667dfb7ca26ec12126b1b2f66",
+    "320-stage-11.png": "2f238791c299607232b7a2502283513331bfcf7427dc38df930642e11ce11e38",
+    "320-stage-12.png": "96d024e24366e4be794c5cb8ef7edc5d48d97ad100cc079cadd982e67179c5b0",
+    "320-stage-2.png": "6742a7970f761596a88253aef7b527c8ffd00cb0556dd2a4e797a67b309479fd",
+    "320-stage-5.png": "78414535862e0cb785fe3cb9043fd99c8e965df1732f89a9837393a84710eea2",
+    "320-stage-6.png": "5377b353ca5f45bd336642605997d4ce375bc25484cfa41a71b23d705210c386",
+    "320-stage-7.png": "3c40bde236adab9668cc806d0e965995f70a1d1b52734c3d700be207cb59c150",
+    "320-stage-9.png": "c9d52349fa97782026e993aa8cf6708f7f37a710b9065bc58ad90f546fab3995",
+    "390-stage-11.png": "bca42580d724b5a91e2c3f71020aad27d827169e35cfd47d03b9eebd287d7251",
+    "390-stage-12.png": "6d95dccfd343a048d4754ea5bfb11aed661532823add1e9110a9e67fdd063965",
+    "390-stage-2.png": "85d7b00853cb36ead7cfeb493f5a9b1e6a633f606f71a132e560b2a405998fb9",
+    "390-stage-5.png": "d88e092e9ac9060f7207f57afec2c9c20fbda46e74140f85e3eae7616a328101",
+    "390-stage-6.png": "f607729082786584a0e721e2d10117e5b6e09cc6199b6885bc1c5303859a1a63",
+    "390-stage-7.png": "233499dbe7fc79b9e8ad00758b6f120798bd584da8985bf238fc18b9a89368f4",
+    "390-stage-9.png": "d5ee0b70544b3e7a73339b19eabb75b38b8dce34b70c35a658627c94e9adcd74",
+    "430-stage-11.png": "622231bf959fb791ccf7f06e4e0524902eaea881b488246303190b3b86848a3d",
+    "430-stage-12.png": "d258e4475d9dbdeaed3d7b4918a3138159e0a48f1791e7852b524aa18e0ca85c",
+    "430-stage-2.png": "c72164776853eab3acdcf652960b3cfbe93322f6ba76d9e1e812a35b01f56a9f",
+    "430-stage-5.png": "fbdf489db3466019fde3795a7b48f35774b93c76878963c6c2265b6d56efd458",
+    "430-stage-6.png": "6e2f0cae38e3034079edaf36cdbb5d90bbd6e0fde844e3c9ea769892743b7513",
+    "430-stage-7.png": "da95e11460a132a26bf2a9c0a93f8e304d5f98af3db74e71517a4e6f6270893e",
+    "430-stage-9.png": "cbac0bf60af81b69f6d325e935c7eeedc8e28614122b4c3c4fc07251c73fa3f9",
+    "n08-05-options.png": "235c69003d58b7b0c36741b23b8023f9e6ab6488d0032a4ef5d2ce7badebff3e",
+    "n08-q07-distribute-options.png": "b850b3a6af2d8c51023c4f5a23bd267caf23d763ec94bcd4b6776f037d59b729",
+    "n08-q09-distribute-options.png": "baa4b0b4b362bcaea115e33f4ce5c85ee8f335ebc1fafb0922c88f7f58b0db61",
+    "n08-r5-q06-operation-options.png": "1019ccd12129334d5460d6e891c64b284111b07bdcc5908e2d7bdc1a7ec4e40b"
+  },
+  "humanAcceptance": false
+}

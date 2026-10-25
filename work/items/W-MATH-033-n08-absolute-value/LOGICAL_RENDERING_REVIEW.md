@@ -1,0 +1,1 @@
+N08 render audit: implication/equivalence connect two complete conditions. Keep each condition atomic and use a vertical logical arrow at mobile widths. Never pass internal equal signs through the equality-chain parser as if all three pieces formed an equality chain. Approved logical relations and all mathematical content are unchanged.

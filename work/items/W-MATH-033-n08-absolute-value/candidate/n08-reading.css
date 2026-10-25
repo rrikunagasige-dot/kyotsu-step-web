@@ -26,3 +26,6 @@
 .n08-reading .n08-figure { margin: 1rem 0; }
 .n08-reading .n08-figure img { display: block; max-width: 100%; height: auto; margin-inline: auto; }
 .n08-reading .n08-figure figcaption { font-size: .85rem; line-height: 1.7; margin-top: .5rem; }
+
+.n08-reading .n08-logical-chain { display: grid; grid-template-columns: minmax(0, 1fr); width: 100%; margin-block: .5rem; gap: .25rem; text-align: center; }
+.n08-reading .n08-logical-arrow { display: block; line-height: 1.2; }

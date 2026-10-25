@@ -43,10 +43,10 @@
     ],
     "required_ai_receipts": []
   },
-  "task_id": "18a72f0b9fa40cf6a75cadc83e6d75a504836bd716a09cacafc21fb424706aea",
-  "input_hash": "d90e026b436c1934eace27f780026862510cfb89bc91f52e224fd0c1fa708c87",
+  "task_id": "331ccaee7db2e26cf023629f9fce4d0a335336bb9a4228544ed1657cae5fe7ba",
+  "input_hash": "b11134017fec78c63a5476f41b5e847c56a349b1c4aeac35bfc73ede3fe9f092",
   "source_sha": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
-  "candidate_sha": "d5d418e830099bb39086ae1cb466dc3466668984",
+  "candidate_sha": "1621ab7c86d0adbf667665ba35cd1fc78753cab1",
   "rules": {
     "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
     "governance/REVIEW_POLICY.json": "a71148f007a79b124385c7645e6bc01564bfa02b12152174883543f31f6ce72d",
@@ -87,8 +87,8 @@
   "previous_results": {
     "R06_PATCH@n08": {
       "actor": "capability-runner",
-      "artifact": "276dc54f7acf41ab2658640852e5f14cb73e428155b919ae67de97af364e99e5",
-      "input_hash": "c0a7f3258e6c2e93d416da7ee64aa4ef83990d6465913ed690b247a4b678bb58",
+      "artifact": "c2ac6350e940f306b79ca6c5c24df4f77e124d8806fdb115fe501be86bafbd4b",
+      "input_hash": "c66ce4ed455b04ced92713baf0febb878fe8861caf35caa7dde1e9e1a0ba9e46",
       "node": "R06_PATCH@n08",
       "verdict": "PASS"
     }

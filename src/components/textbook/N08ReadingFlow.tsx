@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { InlineMath } from 'react-katex'
 import { SemanticReading } from './SemanticReading'
 import { TypesetFormula, TypesetInlineMath } from './TypesetFormula'
@@ -52,9 +52,19 @@ export function N08ReadingFlow({ unit, section, progress, onSummaryReached, onRe
   useEffect(() => { window.localStorage.setItem(storageKey, String(stageIndex)) }, [stageIndex, storageKey])
   useEffect(() => { onSummaryReached?.(first < 0 && stageIndex === data.stages.length - 1) }, [first, stageIndex, onSummaryReached])
 
+  function logical(source: string, id: string, parts: readonly ReactNode[] = [], itemIds: Record<number, string> = {}) {
+    const [left, relation, right] = source.split(/(\\(?:Rightarrow|Leftrightarrow))/)
+    if (!right) return null
+    const vertical = relation === '\\Rightarrow' ? '\\Downarrow' : '\\Updownarrow'
+    return <span className="n08-logical-chain" data-logical-relation={relation} data-typeset-source={id}>
+      <TypesetFormula source={left.trim().replace(/\\$/, '')} sourceId={id + '-left'} unitId={unit.unitId} parts={parts} itemIds={itemIds} />
+      <span className="n08-logical-arrow"><InlineMath math={vertical} /></span>
+      <TypesetFormula source={right} sourceId={id + '-right'} unitId={unit.unitId} parts={parts} itemIds={itemIds} />
+    </span>
+  }
   function semantic(parts: readonly unknown[]) {
     return (parts as TextbookReadingPart[]).map((p, i) => p.type === 'math'
-      ? <span key={p.semanticId ?? i} data-semantic-id={p.semanticId}><TypesetInlineMath latex={p.latex.replace(/\\\s+$/, '')} sourceId={p.semanticId ?? 'n08-inline-' + i} unitId={unit.unitId} /></span>
+      ? <span key={p.semanticId ?? i} data-semantic-id={p.semanticId}>{logical(p.latex, p.semanticId ?? 'n08-inline-' + i) ?? <TypesetInlineMath latex={p.latex.replace(/\\\s+$/, '')} sourceId={p.semanticId ?? 'n08-inline-' + i} unitId={unit.unitId} />}</span>
       : <SemanticReading key={p.semanticId ?? i} parts={[p]} renderChoice={blank} />)
   }
   function blank(id: string) {
@@ -106,7 +116,7 @@ export function N08ReadingFlow({ unit, section, progress, onSummaryReached, onRe
     const source = block.parts.map((p, i) => p.type === 'math' ? p.latex : p.type === 'choice' ? '§' + i + '§' : '\\text{' + p.text + '}').join('')
     const itemIds = Object.fromEntries(block.parts.flatMap((p, i) => p.type === 'choice' ? [[i, p.itemId]] : []))
     return <div key={block.id} data-block-id={block.id} data-formula-semantic-parts={JSON.stringify(block.parts)}>
-      <NumberedEquation number={formulaNumbers[block.id]} logical><TypesetFormula source={source} sourceId={block.id} unitId={unit.unitId} parts={mathParts} itemIds={itemIds} /></NumberedEquation>
+      <NumberedEquation number={formulaNumbers[block.id]} logical>{logical(source, block.id, mathParts, itemIds) ?? <TypesetFormula source={source} sourceId={block.id} unitId={unit.unitId} parts={mathParts} itemIds={itemIds} />}</NumberedEquation>
       {choices.map(panel)}
     </div>
   }

@@ -2,8 +2,8 @@
 
 状態: IMPLEMENTING / 内部: READY / 次: R07_VERIFY@n08
 
-台帳HEAD: `056689f0bd8e7d3ae7b46400ecc8214088fc3fca4047d860096171ebc6416227`
-候補SHA: `d5d418e830099bb39086ae1cb466dc3466668984`
+台帳HEAD: `4cf5514d017af75815bd18eb1d7faff3d2a24a47e334625fec07c1a160d96d99`
+候補SHA: `1621ab7c86d0adbf667665ba35cd1fc78753cab1`
 
 模擬実行: False。アプリ受入: False。技術試験合格だけで教材の品質は確定しない。
 

@@ -63,4 +63,17 @@ describe('approved N08 materialization and saved work',()=>{
     expect(html(progress,11)).toContain('data-testid="n08-complete"')
     expect(html(progress,6)).toContain('n08-cases-table')
   })
+  it('keeps implications and equivalence between complete conditions, apart from equality transformations',()=>{
+    let progress: TextbookUnitProgress | undefined
+    for(const i of unit.sections[0].items) progress=answerTextbookItem(progress,unit,i,i.answer,200)
+    const doc=new DOMParser().parseFromString(html(progress,9),'text/html')
+    const equivalence=[...doc.querySelectorAll('[data-logical-relation]')].find(n=>n.getAttribute('data-logical-relation')==='\\Leftrightarrow')!
+    expect(equivalence).toBeDefined()
+    const conditions=equivalence.querySelectorAll('.reading-formula-line')
+    expect(conditions).toHaveLength(2)
+    const latex=(n:Element)=>[...n.querySelectorAll('annotation')].map(x=>x.textContent).join('')
+    expect(latex(conditions[0])).toBe('|a|=0')
+    expect(latex(conditions[1])).toBe('a=0')
+    expect(latex(equivalence.querySelector('.n08-logical-arrow')!)).toBe('\\Updownarrow')
+  })
 })

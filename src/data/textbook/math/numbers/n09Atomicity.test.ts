@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import katex from 'katex'
 import { effectiveTextbookProgress, getTextbookChoices, isTextbookItemResolved, textbookUnitProgress, type TextbookUnitProgress } from '../../../../domain/textbook'
 import { textbookDisplayLines } from '../../../../domain/textbookDisplayLines'
-import { mathNumbersN09Unit, n09SourceToItemIds } from './n09Lesson'
+import { mathNumbersN09Unit, n09SourceToItemIds } from '../../../../test/n09Legacy'
 
 const section = mathNumbersN09Unit.sections[0]
 const original = Object.values(n09SourceToItemIds).flat()

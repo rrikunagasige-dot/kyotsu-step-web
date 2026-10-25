@@ -1,13 +1,12 @@
 {
   "work_id": "W-MATH-034",
   "node": {
-    "id": "R05_APPROVAL@n09",
-    "stage_kind": "R05_APPROVAL",
-    "contract_kind": "R05_APPROVAL",
-    "actor": "USER",
+    "id": "R06_PATCH@n09",
+    "stage_kind": "R06_PATCH",
+    "contract_kind": "R06_PATCH",
+    "actor": "TOOL",
     "depends_on": [
-      "R04_PROPOSAL@n09",
-      "R04_PROPOSAL@n10"
+      "R05_APPROVAL@n09"
     ],
     "required": [],
     "block": "n09",
@@ -35,12 +34,16 @@
       "public/assets/math/textbook/numbers/n09-f01.png"
     ],
     "approval_scope_ref": "proposal",
-    "capability_requests": [],
-    "required_code_receipts": [],
+    "capability_requests": [
+      "ir.compile"
+    ],
+    "required_code_receipts": [
+      "ir.compile"
+    ],
     "required_ai_receipts": []
   },
-  "task_id": "f2de5064a4abec613f7af3d208e4517264570ff2ce77eb96fc54b89b6f50b9b9",
-  "input_hash": "3eb7b24e2407617aa4ac3bdc81be338684f069f3e6c9a0d437d1d100ab89badd",
+  "task_id": "fcb16984aff58c2948fd5dba634f096de7185ac7709b54258fc296d573b78a40",
+  "input_hash": "e1dfbe0b426a58d07dc2c960e1caf92b476ea6f093cebf52b4d1c7d14843dede",
   "source_sha": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
   "candidate_sha": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03",
   "rules": {
@@ -96,18 +99,11 @@
     "work/items/W-MATH-034-n09-n10-guided-design/evidence/N10_SOURCE_INDEX.json": "566d46e84e4e62040b696212f4cb87a64c21914a53d03d246b70210215140e48"
   },
   "previous_results": {
-    "R04_PROPOSAL@n09": {
-      "actor": "capability-runner",
-      "artifact": "06f78df4619529e70d9db322d78490e37ce2debf59f442794e088980b70b77b4",
-      "input_hash": "356ad435d2c70447a932df8710ef35cca493b72c0e628e753a49c7fd616a3d17",
-      "node": "R04_PROPOSAL@n09",
-      "verdict": "PASS"
-    },
-    "R04_PROPOSAL@n10": {
-      "actor": "capability-runner",
-      "artifact": "39d4b11962478574cf83e7a026613286040b1436c08b833ae98b4e74087950de",
-      "input_hash": "da803d48cd9e8d90632c6d0ab64c9d5533b9c343737ab408be7618013aa9ffcc",
-      "node": "R04_PROPOSAL@n10",
+    "R05_APPROVAL@n09": {
+      "actor": "user-record/conversation_transcribed",
+      "artifact": "ce8f3157bbb9bcc597c4a710e00b7fddf9f5ec5c22535ced37240ed201b8f245",
+      "input_hash": "3eb7b24e2407617aa4ac3bdc81be338684f069f3e6c9a0d437d1d100ab89badd",
+      "node": "R05_APPROVAL@n09",
       "verdict": "PASS"
     }
   },

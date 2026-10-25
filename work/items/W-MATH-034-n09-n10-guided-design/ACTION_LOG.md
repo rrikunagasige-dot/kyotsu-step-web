@@ -11,3 +11,6 @@
 9. 原資料coverage/IR/compile、19恒等式・厳密小数・floor/残り、39採点IDと正答を検証。共有production/2でR01/R02/R03/R04を実行。最初のR02提出にAI_ARGUMENT_REVIEWED/formalProof=falseの明記が欠けて拒否された。意味監査と機械証明を区別して同じclaimから再開。失敗を保持する。
 
 このWorkでlearner source、中央workflow、公開版は変更しない。N08受入済み版を保護し、N09/N10は具体案の判断まで進める。
+
+実装承認: 「ok。いいよ」をP-001両blockの承認eventへ固定。R05@n09を完了しR06@n09で6ファイルの追加/置換をbefore/backup/after付きでjournal。N09の620回帰と5専用検査、build/typecheck/scoped lintがPASS。旧版固定試験のfixture接続は承認案のtest boundary移行に従い、候補一覧に加えてnumbersNextBatch/r3LocalTokens/domain textbookの3試験もimportだけを凍結N09へ切替。学習者の意味や採点条件は変えず、旧試験を削除していない。
+N10は同じ承認からWork内データとadapterを生成したが、既存RuntimeはN09のG3_FINAL前にN10のR05/R06を選ばない。中央codeを変更・受入を偽装して迂回せず、まずN09を公開・実物評価へ進める。

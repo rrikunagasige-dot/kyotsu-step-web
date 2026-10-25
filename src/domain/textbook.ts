@@ -185,6 +185,24 @@ export function effectiveTextbookProgress(unit: TextbookUnit, progress: Textbook
   if (!progress) return undefined
   if (progress.unitRevision === unit.revision) return progress
 
+  // W-MATH-034: apply the accepted v1->v2 reset before adding new N09 decisions.
+  if (unit.unitId === 'math-numbers-expressions-n09' && unit.revision === 3
+      && progress.unitId === unit.unitId && [1, 2].includes(progress.unitRevision)) {
+    const fromV2 = progress.unitRevision === 2 ? progress
+      : effectiveTextbookProgress({ ...unit, revision: 2 }, progress)
+    if (!fromV2 || fromV2.unitRevision !== 2) return undefined
+    const { archivedRevisions, ...archive } = fromV2
+    const anchors = new Set(["n09-01", "n09-02", "n09-03", "n09-04", "n09-05", "n09-06", "n09-07", "n09-p001-q08-left-square", "n09-p001-q08-right-square", "n09-p001-q08-lower-sign", "n09-p001-q08-upper-sign", "n09-08", "n09-09", "n09-10", "n09-11", "n09-12", "n09-13", "n09-14"])
+    return {
+      unitId: unit.unitId, unitRevision: 3,
+      startedAt: fromV2.startedAt, updatedAt: fromV2.updatedAt,
+      answers: Object.fromEntries(Object.entries(fromV2.answers).filter(([id]) => anchors.has(id))),
+      archivedRevisions: { ...archivedRevisions, '2': archive }, migratedFromRevision: 2,
+      ...(fromV2.completedAt !== undefined ? { previousRevisionCompletedAt: fromV2.completedAt }
+        : fromV2.previousRevisionCompletedAt !== undefined ? { previousRevisionCompletedAt: fromV2.previousRevisionCompletedAt } : {}),
+    }
+  }
+
   // W-MATH-033: keep original N08 answer records; new intermediate IDs remain unanswered.
   if (unit.unitId === 'math-numbers-expressions-n08' && unit.revision === 4
       && progress.unitId === unit.unitId && [1, 2, 3].includes(progress.unitRevision)) {

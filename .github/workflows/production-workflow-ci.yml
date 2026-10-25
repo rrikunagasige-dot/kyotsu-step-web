@@ -1,7 +1,7 @@
 name: Production workflow C/R integration P004
 on:
   push:
-    branches: ['work/production-workflow-p003-20261024', 'work/workflow-cr-integration-p004-20261024', 'work/n07-semantic-repair-proposal-20261025', 'work/n08-absolute-value-design-20261025']
+    branches: ['work/production-workflow-p003-20261024', 'work/workflow-cr-integration-p004-20261024', 'work/n07-semantic-repair-proposal-20261025', 'work/n08-absolute-value-design-20261025', 'work/n09-n10-guided-design-20261025']
   workflow_dispatch:
 permissions:
   contents: read
@@ -42,6 +42,9 @@ jobs:
       - name: N08 approved materialization, migration and reader checks
         if: contains(github.ref, 'n08-absolute-value')
         run: pnpm exec vitest run --config work/items/W-MATH-033-n08-absolute-value/vitest.config.mjs
+      - name: N09 frozen materialization and saved-data reader checks
+        if: contains(github.ref, 'n09-n10-guided')
+        run: pnpm exec vitest run --config work/items/W-MATH-034-n09-n10-guided-design/vitest.config.mjs
       - run: pnpm run build
       - run: pnpm exec playwright install --with-deps chromium
       - name: Protected learner UI at four widths
@@ -64,6 +67,15 @@ jobs:
       - name: N08 full learner flow at four widths
         if: contains(github.ref, 'n08-absolute-value')
         run: node work/items/W-MATH-033-n08-absolute-value/verify_app.mjs
+      - name: N09 complete learner flow at four widths
+        if: contains(github.ref, 'n09-n10-guided')
+        run: node work/items/W-MATH-034-n09-n10-guided-design/verify_app.mjs
+      - uses: actions/upload-artifact@v4
+        if: always() && contains(github.ref, 'n09-n10-guided')
+        with:
+          name: n09-learner-evidence
+          path: /tmp/n09-browser
+          if-no-files-found: warn
       - uses: actions/upload-artifact@v4
         if: always() && contains(github.ref, 'n08-absolute-value')
         with:

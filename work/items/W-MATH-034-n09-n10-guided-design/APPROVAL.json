@@ -1,0 +1,42 @@
+{
+  "event": "W034-N09-N10-P001-APPROVED-20261025",
+  "quote": "ok。いいよ",
+  "approvedCommit": "a442cbe966c074f122907bb7366b1ceb6634ca95",
+  "proposalHash": "401f890d670089604d056a3843d577e9d4bf264cd08f91821c8e1397c3375109",
+  "contentDesignHash": "c205e5be111cca41a62509b651f52c20cc08a906725e8fd39d30126ee89b03bf",
+  "blockHashes": {
+    "n09": "648119a288bb08cc8050a182dcd161a84dd45ae9921dadb590cec7beb3522130",
+    "n10": "714f4b57793ab939687ecec9f6fa44c09bfc31d9340e61a27a1801f3bd8b883f"
+  },
+  "scope": {
+    "paths": [
+      "src/data/textbook/math/numbers/n09Lesson.ts",
+      "src/data/textbook/math/numbers/n10Lesson.ts",
+      "src/data/textbook/math/numbers/n09Authored.json",
+      "src/data/textbook/math/numbers/n10Authored.json",
+      "src/components/textbook/GuidedMathReadingFlow.tsx",
+      "src/components/textbook/guided-math-reading.css",
+      "src/pages/TextbookUnitPage.tsx",
+      "src/domain/textbook.ts",
+      "src/test/n09Legacy.ts",
+      "src/test/n10Legacy.ts",
+      "src/data/textbook/math/numbers/newBatchCoverage.test.ts",
+      "src/data/textbook/math/numbers/firstSectionTeaching.test.tsx",
+      "src/review/reviewTargets.test.ts",
+      "src/data/textbook/math/numbers/n09Atomicity.test.ts",
+      "work/items/W-MATH-034-n09-n10-guided-design/"
+    ],
+    "preserve": [
+      "src/data/textbook/math/numbers/firstSectionTeaching.json",
+      "src/data/textbook/math/typesetting.json",
+      "src/data/textbook/math/numbers/n07Authored.json",
+      "src/components/textbook/N07ReadingFlow.tsx",
+      "src/components/textbook/n07-reading.css",
+      "src/data/textbook/math/numbers/n08Authored.json",
+      "src/data/textbook/math/numbers/n08Lesson.ts",
+      "src/components/textbook/N08ReadingFlow.tsx",
+      "src/components/textbook/n08-reading.css",
+      "public/assets/math/textbook/numbers/n09-f01.png"
+    ]
+  }
+}

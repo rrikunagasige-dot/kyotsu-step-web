@@ -1,0 +1,67 @@
+{
+  "corpusHash": "32ebc4d28733a4601bf2555bb099aed40ed6ba73e4fae26bf14875c656eacf2b",
+  "modelStatus": "OFFLINE_ONLY",
+  "modelInferenceUsed": false,
+  "cases": [
+    {
+      "id": "N07-USER-F01",
+      "dimension": "prerequisite_missing",
+      "disposition": "APPLY",
+      "reason": "元の評価観点をN08の本文・文中数式・等式接続・前結果・穴・用語に照合する。N07の固有の数値や商表はコピーしない。"
+    },
+    {
+      "id": "N07-USER-F02",
+      "dimension": "orphan_output",
+      "disposition": "APPLY",
+      "reason": "元の評価観点をN08の本文・文中数式・等式接続・前結果・穴・用語に照合する。N07の固有の数値や商表はコピーしない。"
+    },
+    {
+      "id": "N07-USER-F03",
+      "dimension": "unmotivated_operation",
+      "disposition": "APPLY",
+      "reason": "元の評価観点をN08の本文・文中数式・等式接続・前結果・穴・用語に照合する。N07の固有の数値や商表はコピーしない。"
+    },
+    {
+      "id": "N07-USER-F04",
+      "dimension": "broken_derivation",
+      "disposition": "APPLY",
+      "reason": "元の評価観点をN08の本文・文中数式・等式接続・前結果・穴・用語に照合する。N07の固有の数値や商表はコピーしない。"
+    },
+    {
+      "id": "N07-USER-F05",
+      "dimension": "term_semantics_missing",
+      "disposition": "APPLY",
+      "reason": "元の評価観点をN08の本文・文中数式・等式接続・前結果・穴・用語に照合する。N07の固有の数値や商表はコピーしない。"
+    },
+    {
+      "id": "N07-USER-F06",
+      "dimension": "math_render_omission",
+      "disposition": "APPLY",
+      "reason": "元の評価観点をN08の本文・文中数式・等式接続・前結果・穴・用語に照合する。N07の固有の数値や商表はコピーしない。"
+    },
+    {
+      "id": "n07-layout-relation",
+      "dimension": "layout_discomfort",
+      "disposition": "APPLY",
+      "reason": "受入済みの中央配置・group幅・番号・選択肢配置をN08でも回帰検査する。"
+    },
+    {
+      "id": "n07-layout-positive",
+      "dimension": "layout_style_rejection",
+      "disposition": "APPLY",
+      "reason": "元の評価観点をN08の本文・文中数式・等式接続・前結果・穴・用語に照合する。N07の固有の数値や商表はコピーしない。"
+    },
+    {
+      "id": "first-title-layout-positive",
+      "dimension": "layout_discomfort",
+      "disposition": "APPLY",
+      "reason": "受入済みの中央配置・group幅・番号・選択肢配置をN08でも回帰検査する。"
+    },
+    {
+      "id": "N07-ACCEPTED-20261025",
+      "dimension": "overall_material_acceptance",
+      "disposition": "APPLY",
+      "reason": "N07の全体受入をN08の品質ラベルへ流用しない。受入済みN07自体を保護する。"
+    }
+  ]
+}

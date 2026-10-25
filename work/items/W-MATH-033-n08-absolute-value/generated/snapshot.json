@@ -1,0 +1,969 @@
+{
+  "work": "W-MATH-033",
+  "engine_version": "1.0.0",
+  "ledger_head": "f7bf17383fec7cc5c285edc1c199a1ae08318076177502c8c0a45492f95263ca",
+  "work_status": "PROPOSED",
+  "profile": "material",
+  "simulation": false,
+  "candidate_sha": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+  "next": {
+    "status": "WAITING",
+    "reason": "USER_DECISION",
+    "task": {
+      "work_id": "W-MATH-033",
+      "node": {
+        "id": "R05_APPROVAL@n08",
+        "stage_kind": "R05_APPROVAL",
+        "contract_kind": "R05_APPROVAL",
+        "actor": "USER",
+        "depends_on": [
+          "R04_PROPOSAL@n08"
+        ],
+        "required": [],
+        "block": "n08",
+        "release_unit": "n08",
+        "watch": "integration",
+        "phase": "pre-design",
+        "priority": 0,
+        "source_refs": [
+          "src/data/textbook/math/numbers/n08Lesson.ts",
+          "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+          "src/pages/TextbookUnitPage.tsx",
+          "src/domain/textbook.ts",
+          "public/assets/math/textbook/numbers/n08-f01.png",
+          "work/items/W-MATH-033-n08-absolute-value/evidence/SOURCE_INDEX.json"
+        ],
+        "protected_refs": [
+          "src/data/textbook/math/numbers/firstSectionTeaching.json",
+          "src/data/textbook/math/numbers/n07Authored.json",
+          "src/components/textbook/N07ReadingFlow.tsx",
+          "src/components/textbook/n07-reading.css"
+        ],
+        "approval_scope_ref": "proposal",
+        "capability_requests": [],
+        "required_code_receipts": [],
+        "required_ai_receipts": []
+      },
+      "task_id": "717f2ef9e140da8c8b1b2390b660cef9bed017523123520421954831fc39b124",
+      "input_hash": "cef9e37dadaf72ad6cffb7ab37e04eb02e1ad712b4e0741d935ccfee2411457d",
+      "source_sha": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+      "candidate_sha": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+      "rules": {
+        "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
+        "governance/REVIEW_POLICY.json": "a71148f007a79b124385c7645e6bc01564bfa02b12152174883543f31f6ce72d",
+        "governance/WORK_SYSTEM.md": "37b0b0e0fecc79d7c067e17ec8dbeb53d53863f04369171d65ef652a176eb093",
+        "memory/LESSONS/MATH_TYPESETTING_GROUPS.md": "8047831b13d22ffb773f68e23ab788a3490e4b69ebbf5d5d357f9f786ed53d0a",
+        "subjects/mathematics/textbook/SPEC.md": "a36959ae6f951e855c3e60d280d02a0f20c6e23185d9eb90b17ffbc889c63277"
+      },
+      "proposal": {
+        "contentDesignHash": "32f20c559bd407c777910c9ef8fb30989c31bf0ee822b5a5242f0cd7f71d318b",
+        "hash": "6a109d2c893b221900f8e09ae060cf8d05e2c2652810ff7303445cd8ff574637",
+        "id": "W-MATH-033/P-001"
+      },
+      "scope": {
+        "paths": [
+          "src/data/textbook/math/numbers/n08Lesson.ts",
+          "src/data/textbook/math/numbers/n08Authored.json",
+          "src/components/textbook/N08ReadingFlow.tsx",
+          "src/components/textbook/n08-reading.css",
+          "src/pages/TextbookUnitPage.tsx",
+          "src/domain/textbook.ts",
+          "work/items/W-MATH-033-n08-absolute-value/"
+        ],
+        "preserve": [
+          "src/data/textbook/math/numbers/firstSectionTeaching.json",
+          "src/data/textbook/math/numbers/n07Authored.json",
+          "src/components/textbook/N07ReadingFlow.tsx",
+          "src/components/textbook/n07-reading.css"
+        ]
+      },
+      "source_manifest": {
+        "public/assets/math/textbook/numbers/n08-f01.png": "817ab6ad3afb71b009cc95796e267d0818a104ecf19864c55c2ba0afbf29da73",
+        "src/data/textbook/math/numbers/n08Lesson.ts": "9cc25fb6e4c3ef3889780dea323bd98657e5dbb924bc730975375bc9adba96f9",
+        "src/data/textbook/math/numbers/newBatchGuidedSteps.ts": "501efef29948458d78c7665695c59d707ca67291daab372fa16efb5d8f15ef72",
+        "src/domain/textbook.ts": "91e354d7df28591ec95b842fc4013798c1fbd5595a095871cb0827a8d00eb466",
+        "src/pages/TextbookUnitPage.tsx": "79c2aa91ddedb0f904343852d807256c34def0f575cab72c1491332601cdf741",
+        "work/items/W-MATH-033-n08-absolute-value/evidence/SOURCE_INDEX.json": "31e49387d8fa565a45ab06f2452e052f42c6a53296449816750886ef03d5369c"
+      },
+      "previous_results": {
+        "R04_PROPOSAL@n08": {
+          "actor": "capability-runner",
+          "artifact": "fb857fc6809ee25eaf6fda038b9bf5ee9cf72b3a44ecb023ab7f91337cbf8ae9",
+          "input_hash": "04e5c284f05ad18adcabe4b8f35fb71d10fc7ea0a82c500269628d4833395b4b",
+          "node": "R04_PROPOSAL@n08",
+          "verdict": "PASS"
+        }
+      },
+      "do_not_touch": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css"
+      ],
+      "completion_is_not_semantic_proof": true
+    }
+  },
+  "nodes": [
+    {
+      "id": "S00_RECOVER",
+      "stage_kind": "S00_RECOVER",
+      "contract_kind": "S00_RECOVER",
+      "actor": "CODE",
+      "depends_on": [],
+      "required": [],
+      "block": null,
+      "release_unit": null,
+      "watch": "integration",
+      "phase": "analysis",
+      "priority": -1,
+      "source_refs": [],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css"
+      ],
+      "capability_requests": [],
+      "required_code_receipts": [],
+      "required_ai_receipts": [],
+      "status": "PASSED"
+    },
+    {
+      "id": "S01_ROUTE",
+      "stage_kind": "S01_ROUTE",
+      "contract_kind": "S01_ROUTE",
+      "actor": "CODE",
+      "depends_on": [
+        "S00_RECOVER"
+      ],
+      "required": [],
+      "block": null,
+      "release_unit": null,
+      "watch": "integration",
+      "phase": "analysis",
+      "priority": -1,
+      "source_refs": [],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css"
+      ],
+      "capability_requests": [],
+      "required_code_receipts": [],
+      "required_ai_receipts": [],
+      "status": "PASSED"
+    },
+    {
+      "id": "R01_CAPTURE@n08",
+      "stage_kind": "R01_CAPTURE",
+      "contract_kind": "R01_CAPTURE",
+      "actor": "AI",
+      "depends_on": [
+        "S01_ROUTE"
+      ],
+      "required": [
+        "complaint",
+        "before_evidence",
+        "reproduction",
+        "target_versions"
+      ],
+      "block": "n08",
+      "release_unit": "n08",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 0,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+        "src/pages/TextbookUnitPage.tsx",
+        "src/domain/textbook.ts",
+        "public/assets/math/textbook/numbers/n08-f01.png",
+        "work/items/W-MATH-033-n08-absolute-value/evidence/SOURCE_INDEX.json"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "source.fixed",
+        "feedback.capture"
+      ],
+      "required_code_receipts": [
+        "source.fixed",
+        "feedback.capture"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "R02_CAUSE@n08",
+      "stage_kind": "R02_CAUSE",
+      "contract_kind": "R02_CAUSE",
+      "actor": "AI",
+      "depends_on": [
+        "R01_CAPTURE@n08"
+      ],
+      "required": [
+        "symptoms",
+        "confirmed_causes",
+        "hypotheses",
+        "missing_learning_actions",
+        "root_cause_signatures"
+      ],
+      "block": "n08",
+      "release_unit": "n08",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 0,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+        "src/pages/TextbookUnitPage.tsx",
+        "src/domain/textbook.ts",
+        "public/assets/math/textbook/numbers/n08-f01.png",
+        "work/items/W-MATH-033-n08-absolute-value/evidence/SOURCE_INDEX.json"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "case.retrieve",
+        "knowledge.ledger",
+        "math.verify",
+        "ir.verify",
+        "source.audit",
+        "novice.audit",
+        "math.solve"
+      ],
+      "required_code_receipts": [
+        "case.retrieve",
+        "knowledge.ledger",
+        "math.verify",
+        "ir.verify",
+        "source.audit",
+        "novice.audit",
+        "math.solve"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "R03_IMPACT@n08",
+      "stage_kind": "R03_IMPACT",
+      "contract_kind": "R03_IMPACT",
+      "actor": "AI",
+      "depends_on": [
+        "R02_CAUSE@n08"
+      ],
+      "required": [
+        "impact_rows",
+        "source_inventory",
+        "unknowns"
+      ],
+      "block": "n08",
+      "release_unit": "n08",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 0,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+        "src/pages/TextbookUnitPage.tsx",
+        "src/domain/textbook.ts",
+        "public/assets/math/textbook/numbers/n08-f01.png",
+        "work/items/W-MATH-033-n08-absolute-value/evidence/SOURCE_INDEX.json"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "impact.inventory"
+      ],
+      "required_code_receipts": [
+        "impact.inventory"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "R04_PROPOSAL@n08",
+      "stage_kind": "R04_PROPOSAL",
+      "contract_kind": "R04_PROPOSAL",
+      "actor": "AI",
+      "depends_on": [
+        "R03_IMPACT@n08"
+      ],
+      "required": [
+        "before_after",
+        "protected_scope",
+        "patch_plan",
+        "verification_plan",
+        "proposal_hash"
+      ],
+      "block": "n08",
+      "release_unit": "n08",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 0,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+        "src/pages/TextbookUnitPage.tsx",
+        "src/domain/textbook.ts",
+        "public/assets/math/textbook/numbers/n08-f01.png",
+        "work/items/W-MATH-033-n08-absolute-value/evidence/SOURCE_INDEX.json"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "math.solve",
+        "math.verify",
+        "teaching.plan",
+        "step.plan",
+        "blank.plan",
+        "prose.compose",
+        "text.verify",
+        "figure.verify",
+        "ir.verify",
+        "source.audit",
+        "novice.audit"
+      ],
+      "required_code_receipts": [
+        "math.solve",
+        "math.verify",
+        "teaching.plan",
+        "step.plan",
+        "blank.plan",
+        "prose.compose",
+        "text.verify",
+        "figure.verify",
+        "ir.verify",
+        "source.audit",
+        "novice.audit"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "R05_APPROVAL@n08",
+      "stage_kind": "R05_APPROVAL",
+      "contract_kind": "R05_APPROVAL",
+      "actor": "USER",
+      "depends_on": [
+        "R04_PROPOSAL@n08"
+      ],
+      "required": [],
+      "block": "n08",
+      "release_unit": "n08",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 0,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+        "src/pages/TextbookUnitPage.tsx",
+        "src/domain/textbook.ts",
+        "public/assets/math/textbook/numbers/n08-f01.png",
+        "work/items/W-MATH-033-n08-absolute-value/evidence/SOURCE_INDEX.json"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [],
+      "required_code_receipts": [],
+      "required_ai_receipts": [],
+      "status": "PENDING"
+    },
+    {
+      "id": "R06_PATCH@n08",
+      "stage_kind": "R06_PATCH",
+      "contract_kind": "R06_PATCH",
+      "actor": "TOOL",
+      "depends_on": [
+        "R05_APPROVAL@n08"
+      ],
+      "required": [],
+      "block": "n08",
+      "release_unit": "n08",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 0,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+        "src/pages/TextbookUnitPage.tsx",
+        "src/domain/textbook.ts",
+        "public/assets/math/textbook/numbers/n08-f01.png",
+        "work/items/W-MATH-033-n08-absolute-value/evidence/SOURCE_INDEX.json"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "ir.compile"
+      ],
+      "required_code_receipts": [
+        "ir.compile"
+      ],
+      "required_ai_receipts": [],
+      "status": "PENDING"
+    },
+    {
+      "id": "R07_VERIFY@n08",
+      "stage_kind": "R07_VERIFY",
+      "contract_kind": "R07_VERIFY",
+      "actor": "TOOL",
+      "depends_on": [
+        "R06_PATCH@n08"
+      ],
+      "required": [],
+      "block": "n08",
+      "release_unit": "n08",
+      "watch": "integration",
+      "phase": "post-implementation",
+      "priority": 0,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+        "src/pages/TextbookUnitPage.tsx",
+        "src/domain/textbook.ts",
+        "public/assets/math/textbook/numbers/n08-f01.png",
+        "work/items/W-MATH-033-n08-absolute-value/evidence/SOURCE_INDEX.json"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "math.verify",
+        "ir.verify",
+        "browser.verify",
+        "protected.verify"
+      ],
+      "required_code_receipts": [
+        "math.verify",
+        "ir.verify",
+        "browser.verify",
+        "protected.verify"
+      ],
+      "required_ai_receipts": [],
+      "status": "PENDING"
+    },
+    {
+      "id": "R07_SEMANTIC@n08",
+      "stage_kind": "R07_SEMANTIC",
+      "contract_kind": "R07_SEMANTIC",
+      "actor": "AI",
+      "depends_on": [
+        "R07_VERIFY@n08"
+      ],
+      "required": [
+        "symptom_resolution",
+        "regression_review",
+        "protected_scope_review",
+        "unknowns"
+      ],
+      "block": "n08",
+      "release_unit": "n08",
+      "watch": "integration",
+      "phase": "post-implementation",
+      "priority": 0,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+        "src/pages/TextbookUnitPage.tsx",
+        "src/domain/textbook.ts",
+        "public/assets/math/textbook/numbers/n08-f01.png",
+        "work/items/W-MATH-033-n08-absolute-value/evidence/SOURCE_INDEX.json"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "source.audit",
+        "novice.audit"
+      ],
+      "required_code_receipts": [
+        "source.audit",
+        "novice.audit"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "id": "G2_AUDIT@n08",
+      "stage_kind": "G2_AUDIT",
+      "contract_kind": "G2_AUDIT",
+      "actor": "AI",
+      "depends_on": [
+        "R07_SEMANTIC@n08"
+      ],
+      "required": [
+        "audit_rows",
+        "release_readiness",
+        "impact_sweep_completion",
+        "audit_method",
+        "unknowns"
+      ],
+      "block": null,
+      "release_unit": "n08",
+      "watch": "integration",
+      "phase": "pre-release",
+      "priority": 0,
+      "source_refs": [],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css"
+      ],
+      "capability_requests": [
+        "protected.verify",
+        "impact.inventory"
+      ],
+      "required_code_receipts": [
+        "protected.verify",
+        "impact.inventory"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "id": "G3_HOST@n08",
+      "stage_kind": "G3_HOST",
+      "contract_kind": "G3_HOST",
+      "actor": "TOOL",
+      "depends_on": [
+        "G2_AUDIT@n08"
+      ],
+      "required": [],
+      "block": null,
+      "release_unit": "n08",
+      "watch": "integration",
+      "phase": "release",
+      "priority": 0,
+      "source_refs": [],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css"
+      ],
+      "capability_requests": [
+        "release.verify"
+      ],
+      "required_code_receipts": [
+        "release.verify"
+      ],
+      "required_ai_receipts": [],
+      "status": "PENDING"
+    },
+    {
+      "id": "G3_FINAL@n08",
+      "stage_kind": "G3_FINAL",
+      "contract_kind": "G3_FINAL",
+      "actor": "USER",
+      "depends_on": [
+        "G3_HOST@n08"
+      ],
+      "required": [],
+      "block": null,
+      "release_unit": "n08",
+      "watch": "integration",
+      "phase": "acceptance",
+      "priority": 0,
+      "source_refs": [],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css"
+      ],
+      "capability_requests": [],
+      "required_code_receipts": [],
+      "required_ai_receipts": [],
+      "status": "PENDING"
+    },
+    {
+      "id": "R03_IMPACT_SWEEP@n08",
+      "stage_kind": "R03_IMPACT_SWEEP",
+      "contract_kind": "R03_IMPACT_SWEEP",
+      "actor": "AI",
+      "depends_on": [
+        "G3_FINAL@n08",
+        "R03_IMPACT@n08"
+      ],
+      "required": [
+        "impact_rows",
+        "source_inventory",
+        "unknowns"
+      ],
+      "block": null,
+      "release_unit": "n08",
+      "watch": "integration",
+      "phase": "post-fix",
+      "priority": 0,
+      "source_refs": [],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css"
+      ],
+      "capability_requests": [
+        "impact.inventory"
+      ],
+      "required_code_receipts": [
+        "impact.inventory"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "id": "R08_CAPTURE_LEARNING@n08",
+      "stage_kind": "R08_CAPTURE_LEARNING",
+      "contract_kind": "R08_CAPTURE_LEARNING",
+      "actor": "AI",
+      "depends_on": [
+        "R03_IMPACT_SWEEP@n08",
+        "R07_SEMANTIC@n08"
+      ],
+      "required": [
+        "case_updates",
+        "rule_links",
+        "regression_links",
+        "unresolved"
+      ],
+      "block": "n08",
+      "release_unit": "n08",
+      "watch": "integration",
+      "phase": "repair-finalization",
+      "priority": 0,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n08Lesson.ts",
+        "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+        "src/pages/TextbookUnitPage.tsx",
+        "src/domain/textbook.ts",
+        "public/assets/math/textbook/numbers/n08-f01.png",
+        "work/items/W-MATH-033-n08-absolute-value/evidence/SOURCE_INDEX.json"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "case.finalize"
+      ],
+      "required_code_receipts": [
+        "case.finalize"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "id": "L01_LEARNING@n08",
+      "stage_kind": "L01_LEARNING",
+      "contract_kind": "L01_LEARNING",
+      "actor": "AI",
+      "depends_on": [
+        "R08_CAPTURE_LEARNING@n08"
+      ],
+      "required": [
+        "case_updates",
+        "rule_links",
+        "regression_links",
+        "unresolved",
+        "deduplication",
+        "modelDisposition"
+      ],
+      "block": null,
+      "release_unit": "n08",
+      "watch": "integration",
+      "phase": "learning",
+      "priority": 0,
+      "source_refs": [],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css"
+      ],
+      "capability_requests": [
+        "case.finalize",
+        "ml.train"
+      ],
+      "required_code_receipts": [
+        "case.finalize",
+        "ml.train"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "id": "Z01_CLOSE",
+      "stage_kind": "Z01_CLOSE",
+      "contract_kind": "Z01_CLOSE",
+      "actor": "CODE",
+      "depends_on": [
+        "L01_LEARNING@n08"
+      ],
+      "required": [],
+      "block": null,
+      "release_unit": null,
+      "watch": "integration",
+      "phase": "closure",
+      "priority": -1,
+      "source_refs": [],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/firstSectionTeaching.json",
+        "src/data/textbook/math/numbers/n07Authored.json",
+        "src/components/textbook/N07ReadingFlow.tsx",
+        "src/components/textbook/n07-reading.css"
+      ],
+      "capability_requests": [],
+      "required_code_receipts": [],
+      "required_ai_receipts": [],
+      "status": "PENDING"
+    }
+  ],
+  "pending_issues": [],
+  "application_accepted": false,
+  "correction_queue": [
+    {
+      "id": "W-MATH-033",
+      "work": "W-MATH-033",
+      "version": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+      "origin": "unfinished-correction",
+      "description": "未完了の修正Work"
+    }
+  ],
+  "child_works": [],
+  "capability_receipts": [
+    {
+      "input_hash": "d185bc9cc9bb2fd37d7aac05fc08f747af5ed5e6df18471fa15c6a80f172ae94",
+      "node": "R01_CAPTURE@n08",
+      "receipt": "8f6521473df2bc72c461e95b6841daf5e5f5879b9a2ca94496c7556c291b04bf"
+    },
+    {
+      "input_hash": "d185bc9cc9bb2fd37d7aac05fc08f747af5ed5e6df18471fa15c6a80f172ae94",
+      "node": "R01_CAPTURE@n08",
+      "receipt": "3bababe1927497387001b50b9e9834f08888b25936dffa71b7d1605db7ab6f33"
+    },
+    {
+      "input_hash": "00d591ba0dcf6da6e512204795bcfbd8352c075bc88228ee62df36705b623ef0",
+      "node": "R02_CAUSE@n08",
+      "receipt": "7983923606745a1d71444986e5670ff396f209a239a17b6292ab8d77afba168d"
+    },
+    {
+      "input_hash": "00d591ba0dcf6da6e512204795bcfbd8352c075bc88228ee62df36705b623ef0",
+      "node": "R02_CAUSE@n08",
+      "receipt": "02fa3f1ca157cc181eee898840e7c6b33293b5d9641ca3d675595a9322a50652"
+    },
+    {
+      "input_hash": "00d591ba0dcf6da6e512204795bcfbd8352c075bc88228ee62df36705b623ef0",
+      "node": "R02_CAUSE@n08",
+      "receipt": "a8529da4ba160bef367854911edb93f583f6e277071516f290ce504f89d7d7df"
+    },
+    {
+      "input_hash": "00d591ba0dcf6da6e512204795bcfbd8352c075bc88228ee62df36705b623ef0",
+      "node": "R02_CAUSE@n08",
+      "receipt": "6c7aef87bb3f3e5ed49e9a34d149ecd54a3f07e78ea2c9f847c4f2a66cac8341"
+    },
+    {
+      "input_hash": "00d591ba0dcf6da6e512204795bcfbd8352c075bc88228ee62df36705b623ef0",
+      "node": "R02_CAUSE@n08",
+      "receipt": "1d5570b4c30754e0303e5400de74bc295292cd1fd64fbb3792895ccae29b8315"
+    },
+    {
+      "input_hash": "00d591ba0dcf6da6e512204795bcfbd8352c075bc88228ee62df36705b623ef0",
+      "node": "R02_CAUSE@n08",
+      "receipt": "b286a0b11be244bdc8f9d11d7d3a597b5cb00a4fb5be131dcf756c01a340463c"
+    },
+    {
+      "input_hash": "00d591ba0dcf6da6e512204795bcfbd8352c075bc88228ee62df36705b623ef0",
+      "node": "R02_CAUSE@n08",
+      "receipt": "da31eb10f5b681747a33261cf84cca4dbc1e466aa3b57755cf6a68eefc031249"
+    },
+    {
+      "input_hash": "00d591ba0dcf6da6e512204795bcfbd8352c075bc88228ee62df36705b623ef0",
+      "node": "R02_CAUSE@n08",
+      "receipt": "fb2efcc76d9825cc9d8ca90d4ad4372e1fd8a3a85f2b44594f75fa9c931cc963"
+    },
+    {
+      "input_hash": "975bf3fc1db9eb34805075d5454b36a8cfdfe4ea29b62fb030a0003cb5d538de",
+      "node": "R03_IMPACT@n08",
+      "receipt": "7390743762f73f4299459abf9ebf7943a05bcb136c4df27fc43fd02908c41de6"
+    },
+    {
+      "input_hash": "f9c7cc1cdf5f6048de496c2603fa32042d4b80076a372702858be6585f3c37cd",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "29eb983d43b7155ae450e4244a50c244670a94b56e83c89a75d55759d6a7821a"
+    },
+    {
+      "input_hash": "f9c7cc1cdf5f6048de496c2603fa32042d4b80076a372702858be6585f3c37cd",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "3862c668d3b60cd1773524cdea7a2642e4e7ce42d1253e61c769fbea0514161b"
+    },
+    {
+      "input_hash": "f9c7cc1cdf5f6048de496c2603fa32042d4b80076a372702858be6585f3c37cd",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "2d99a85d7c3639f43133b7fa46e9992019e8a883366d5b1b6101f9b72c1fda56"
+    },
+    {
+      "input_hash": "f9c7cc1cdf5f6048de496c2603fa32042d4b80076a372702858be6585f3c37cd",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "a011620e54a5131b4aea697711d7b0387742ec56a67618689321a13c8d06cb08"
+    },
+    {
+      "input_hash": "f9c7cc1cdf5f6048de496c2603fa32042d4b80076a372702858be6585f3c37cd",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "e9b545e02aba38059a253663599bb2faa79c7be1eaf98ace1576d1f774212b1c"
+    },
+    {
+      "input_hash": "f9c7cc1cdf5f6048de496c2603fa32042d4b80076a372702858be6585f3c37cd",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "8d50c639d15f53c0dda2164dc1770b52bad4f35b945c525032f6cf5f559cbdcf"
+    },
+    {
+      "input_hash": "f9c7cc1cdf5f6048de496c2603fa32042d4b80076a372702858be6585f3c37cd",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "227db2a03e749612d0f401a3147d4dcfaf0933a111cc6d176c55e5b8db7a8635"
+    },
+    {
+      "input_hash": "f9c7cc1cdf5f6048de496c2603fa32042d4b80076a372702858be6585f3c37cd",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "a344206a7ba0466dd58faeb311f3f004c21b3df34c69a35f13bfea17c36faaa4"
+    },
+    {
+      "input_hash": "f9c7cc1cdf5f6048de496c2603fa32042d4b80076a372702858be6585f3c37cd",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "79882f336198cff3f407a1f789cb4002449a8afe93feff53d687564e1f0e7eb1"
+    },
+    {
+      "input_hash": "f9c7cc1cdf5f6048de496c2603fa32042d4b80076a372702858be6585f3c37cd",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "9e04b8c033fd401b2b016a6454ccf5b026220a0245720693b47119e11ab34cc2"
+    },
+    {
+      "input_hash": "f9c7cc1cdf5f6048de496c2603fa32042d4b80076a372702858be6585f3c37cd",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "9fe35ac500f2758714eb55c03809884fc75ce55ded05f6624bf4856156a733c9"
+    },
+    {
+      "input_hash": "f9c7cc1cdf5f6048de496c2603fa32042d4b80076a372702858be6585f3c37cd",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "6b355d287df3031b5dfa5f57a327f26974e38db1cbedf1ea0d1c4817c5c5c790"
+    },
+    {
+      "input_hash": "04e5c284f05ad18adcabe4b8f35fb71d10fc7ea0a82c500269628d4833395b4b",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "7996474fc0ef68e71e16530f40eacce4eae5d7bb09adb3a7b196f8c8add02fe9"
+    },
+    {
+      "input_hash": "04e5c284f05ad18adcabe4b8f35fb71d10fc7ea0a82c500269628d4833395b4b",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "ae995f1a352e4dead09dcff5ff0bc85e4988f05f15cc62e09ec52ba8fb2c8b35"
+    },
+    {
+      "input_hash": "04e5c284f05ad18adcabe4b8f35fb71d10fc7ea0a82c500269628d4833395b4b",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "8a51e376e0f2f6148cd57e6ac956d0f75b256edbd539b318e9d0fa11bccf2b00"
+    },
+    {
+      "input_hash": "04e5c284f05ad18adcabe4b8f35fb71d10fc7ea0a82c500269628d4833395b4b",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "f6f41046130b3778a7b5d38f65b03a16883e67470fb34b0b855c4781dc92d5cf"
+    },
+    {
+      "input_hash": "04e5c284f05ad18adcabe4b8f35fb71d10fc7ea0a82c500269628d4833395b4b",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "c7c85a1c8fe7e044e1fd5f3fdecddb5155f04e201115989733a12f1c3836ac47"
+    },
+    {
+      "input_hash": "04e5c284f05ad18adcabe4b8f35fb71d10fc7ea0a82c500269628d4833395b4b",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "659a6eed0c22a25a76a6d9c5fac18290e0642c615faa584d35fc454ceb6f68bf"
+    },
+    {
+      "input_hash": "04e5c284f05ad18adcabe4b8f35fb71d10fc7ea0a82c500269628d4833395b4b",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "9ddafb54da00cc67963146f37be2d19c1f2e79461e1400cd0671e61643c664e3"
+    },
+    {
+      "input_hash": "04e5c284f05ad18adcabe4b8f35fb71d10fc7ea0a82c500269628d4833395b4b",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "6b4bb468fcfbf38e06c7779d2d4232dec581b28052a3ff2439326030a4c9d759"
+    },
+    {
+      "input_hash": "04e5c284f05ad18adcabe4b8f35fb71d10fc7ea0a82c500269628d4833395b4b",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "893f4bef2d56bb0758281c3353629c2a977347d0f0f9377ba0b48393b1a8ec66"
+    },
+    {
+      "input_hash": "04e5c284f05ad18adcabe4b8f35fb71d10fc7ea0a82c500269628d4833395b4b",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "a3230755f255cfcffd4006e40c6285cdbdd466a6fedc8e822005e8810af63334"
+    },
+    {
+      "input_hash": "04e5c284f05ad18adcabe4b8f35fb71d10fc7ea0a82c500269628d4833395b4b",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "0e27a0c9199c3fca2268901b543c98023c1faf37efac5f3881bf994e242ef48f"
+    }
+  ],
+  "release_acceptance": {
+    "n08": false
+  }
+}

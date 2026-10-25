@@ -1,0 +1,80 @@
+{
+  "status": "PASS",
+  "symbolic": [
+    {
+      "id": "left-distance",
+      "left": "5",
+      "right": "5",
+      "residual": "0",
+      "status": "PASS"
+    },
+    {
+      "id": "double-negative",
+      "left": "a",
+      "right": "a",
+      "residual": "0",
+      "status": "PASS"
+    },
+    {
+      "id": "root-negation",
+      "left": "3 - sqrt(5)",
+      "right": "3 - sqrt(5)",
+      "residual": "0",
+      "status": "PASS"
+    },
+    {
+      "id": "pi-negation",
+      "left": "-3 + pi",
+      "right": "-3 + pi",
+      "residual": "0",
+      "status": "PASS"
+    },
+    {
+      "id": "abs-square",
+      "left": "a**2",
+      "right": "a**2",
+      "residual": "0",
+      "status": "PASS"
+    },
+    {
+      "id": "opposite-distance",
+      "left": "Abs(a)",
+      "right": "Abs(a)",
+      "residual": "0",
+      "status": "PASS"
+    },
+    {
+      "id": "nonnegative-case",
+      "left": "u",
+      "right": "u",
+      "residual": "0",
+      "status": "PASS"
+    },
+    {
+      "id": "negative-case",
+      "left": "-v",
+      "right": "-v",
+      "residual": "0",
+      "status": "PASS"
+    },
+    {
+      "id": "zero-case",
+      "left": "0",
+      "right": "0",
+      "residual": "0",
+      "status": "PASS"
+    },
+    {
+      "id": "root-sign",
+      "statement": "sqrt(5)>0, 3>0; 5<9 implies sqrt(5)<3; subtract3 -> difference<0",
+      "status": "PASS"
+    },
+    {
+      "id": "zero-iff",
+      "statement": "distance=0 -> same point -> a=0; a=0 -> distance0",
+      "status": "AI_ARGUMENT_REVIEWED",
+      "formalProof": false
+    }
+  ],
+  "limits": "登録外solverへN08を渡さない。恒等式のSymPy検算と、距離・大小の根拠のAI監査を分ける。数値近似だけで証明しない。"
+}

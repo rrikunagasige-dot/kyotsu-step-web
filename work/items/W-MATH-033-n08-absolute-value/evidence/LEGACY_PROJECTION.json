@@ -1,0 +1,1843 @@
+{
+  "schemaVersion": "production-ir/1",
+  "unitId": "math-numbers-expressions-n08",
+  "subject": "math",
+  "mode": "textbook",
+  "sourceHash": "93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa",
+  "sourceBlocks": [
+    {
+      "id": "word-p-000341",
+      "kind": "heading"
+    },
+    {
+      "id": "word-p-000342",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000343",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000344",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000345",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000346",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000347",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000348",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000349",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000350",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000351",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000352",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000353",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000354",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000355",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000356",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000357",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000358",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000359",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000360",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000361",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000362",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000363",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000364",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000365",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000366",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000367",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000368",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000369",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000370",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000371",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000372",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000373",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000374",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000375",
+      "kind": "explanation"
+    }
+  ],
+  "coverage": [
+    {
+      "sourceId": "word-p-000341",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧版の前後本文への統合対応をAIが原資料と照合するための未番号説明。診断投影の対象外であり、原資料から省略してよいという判断ではない。"
+    },
+    {
+      "sourceId": "word-p-000342",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧版の前後本文への統合対応をAIが原資料と照合するための未番号説明。診断投影の対象外であり、原資料から省略してよいという判断ではない。"
+    },
+    {
+      "sourceId": "word-p-000343",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧版の前後本文への統合対応をAIが原資料と照合するための未番号説明。診断投影の対象外であり、原資料から省略してよいという判断ではない。"
+    },
+    {
+      "sourceId": "word-p-000344",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧版の前後本文への統合対応をAIが原資料と照合するための未番号説明。診断投影の対象外であり、原資料から省略してよいという判断ではない。"
+    },
+    {
+      "sourceId": "word-p-000345",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧版の前後本文への統合対応をAIが原資料と照合するための未番号説明。診断投影の対象外であり、原資料から省略してよいという判断ではない。"
+    },
+    {
+      "sourceId": "word-p-000346",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧版の前後本文への統合対応をAIが原資料と照合するための未番号説明。診断投影の対象外であり、原資料から省略してよいという判断ではない。"
+    },
+    {
+      "sourceId": "word-p-000347",
+      "nodeIds": [
+        "n08-01"
+      ],
+      "disposition": "taught",
+      "reason": "旧問の文字列を忠実に投影"
+    },
+    {
+      "sourceId": "word-p-000348",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧版の前後本文への統合対応をAIが原資料と照合するための未番号説明。診断投影の対象外であり、原資料から省略してよいという判断ではない。"
+    },
+    {
+      "sourceId": "word-p-000349",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧版の前後本文への統合対応をAIが原資料と照合するための未番号説明。診断投影の対象外であり、原資料から省略してよいという判断ではない。"
+    },
+    {
+      "sourceId": "word-p-000350",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧版の前後本文への統合対応をAIが原資料と照合するための未番号説明。診断投影の対象外であり、原資料から省略してよいという判断ではない。"
+    },
+    {
+      "sourceId": "word-p-000351",
+      "nodeIds": [
+        "n08-02"
+      ],
+      "disposition": "taught",
+      "reason": "旧問の文字列を忠実に投影"
+    },
+    {
+      "sourceId": "word-p-000352",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧版の前後本文への統合対応をAIが原資料と照合するための未番号説明。診断投影の対象外であり、原資料から省略してよいという判断ではない。"
+    },
+    {
+      "sourceId": "word-p-000353",
+      "nodeIds": [
+        "n08-03"
+      ],
+      "disposition": "taught",
+      "reason": "旧問の文字列を忠実に投影"
+    },
+    {
+      "sourceId": "word-p-000354",
+      "nodeIds": [
+        "n08-04"
+      ],
+      "disposition": "taught",
+      "reason": "旧問の文字列を忠実に投影"
+    },
+    {
+      "sourceId": "word-p-000355",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧版の前後本文への統合対応をAIが原資料と照合するための未番号説明。診断投影の対象外であり、原資料から省略してよいという判断ではない。"
+    },
+    {
+      "sourceId": "word-p-000356",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧版の前後本文への統合対応をAIが原資料と照合するための未番号説明。診断投影の対象外であり、原資料から省略してよいという判断ではない。"
+    },
+    {
+      "sourceId": "word-p-000357",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧版の前後本文への統合対応をAIが原資料と照合するための未番号説明。診断投影の対象外であり、原資料から省略してよいという判断ではない。"
+    },
+    {
+      "sourceId": "word-p-000358",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧版の前後本文への統合対応をAIが原資料と照合するための未番号説明。診断投影の対象外であり、原資料から省略してよいという判断ではない。"
+    },
+    {
+      "sourceId": "word-p-000359",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧版の前後本文への統合対応をAIが原資料と照合するための未番号説明。診断投影の対象外であり、原資料から省略してよいという判断ではない。"
+    },
+    {
+      "sourceId": "word-p-000360",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧版の前後本文への統合対応をAIが原資料と照合するための未番号説明。診断投影の対象外であり、原資料から省略してよいという判断ではない。"
+    },
+    {
+      "sourceId": "word-p-000361",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧版の前後本文への統合対応をAIが原資料と照合するための未番号説明。診断投影の対象外であり、原資料から省略してよいという判断ではない。"
+    },
+    {
+      "sourceId": "word-p-000362",
+      "nodeIds": [
+        "n08-05"
+      ],
+      "disposition": "taught",
+      "reason": "旧問の文字列を忠実に投影"
+    },
+    {
+      "sourceId": "word-p-000363",
+      "nodeIds": [
+        "n08-06"
+      ],
+      "disposition": "taught",
+      "reason": "旧問の文字列を忠実に投影"
+    },
+    {
+      "sourceId": "word-p-000364",
+      "nodeIds": [
+        "n08-07"
+      ],
+      "disposition": "taught",
+      "reason": "旧問の文字列を忠実に投影"
+    },
+    {
+      "sourceId": "word-p-000365",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧版の前後本文への統合対応をAIが原資料と照合するための未番号説明。診断投影の対象外であり、原資料から省略してよいという判断ではない。"
+    },
+    {
+      "sourceId": "word-p-000366",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧版の前後本文への統合対応をAIが原資料と照合するための未番号説明。診断投影の対象外であり、原資料から省略してよいという判断ではない。"
+    },
+    {
+      "sourceId": "word-p-000367",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧版の前後本文への統合対応をAIが原資料と照合するための未番号説明。診断投影の対象外であり、原資料から省略してよいという判断ではない。"
+    },
+    {
+      "sourceId": "word-p-000368",
+      "nodeIds": [
+        "n08-08"
+      ],
+      "disposition": "taught",
+      "reason": "旧問の文字列を忠実に投影"
+    },
+    {
+      "sourceId": "word-p-000369",
+      "nodeIds": [
+        "n08-09"
+      ],
+      "disposition": "taught",
+      "reason": "旧問の文字列を忠実に投影"
+    },
+    {
+      "sourceId": "word-p-000370",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧版の前後本文への統合対応をAIが原資料と照合するための未番号説明。診断投影の対象外であり、原資料から省略してよいという判断ではない。"
+    },
+    {
+      "sourceId": "word-p-000371",
+      "nodeIds": [
+        "n08-10"
+      ],
+      "disposition": "taught",
+      "reason": "旧問の文字列を忠実に投影"
+    },
+    {
+      "sourceId": "word-p-000372",
+      "nodeIds": [
+        "n08-11"
+      ],
+      "disposition": "taught",
+      "reason": "旧問の文字列を忠実に投影"
+    },
+    {
+      "sourceId": "word-p-000373",
+      "nodeIds": [
+        "n08-12"
+      ],
+      "disposition": "taught",
+      "reason": "旧問の文字列を忠実に投影"
+    },
+    {
+      "sourceId": "word-p-000374",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧版の前後本文への統合対応をAIが原資料と照合するための未番号説明。診断投影の対象外であり、原資料から省略してよいという判断ではない。"
+    },
+    {
+      "sourceId": "word-p-000375",
+      "nodeIds": [],
+      "disposition": "excluded",
+      "reason": "旧版の前後本文への統合対応をAIが原資料と照合するための未番号説明。診断投影の対象外であり、原資料から省略してよいという判断ではない。"
+    }
+  ],
+  "initialFacts": [
+    "signed-arithmetic",
+    "number-line",
+    "order-translation",
+    "positive-square-order",
+    "sqrt5-given",
+    "pi-given"
+  ],
+  "nodes": [
+    {
+      "id": "n08-01",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000347"
+      ],
+      "requires": [],
+      "produces": [
+        "n08-01-old-result"
+      ],
+      "role": "check",
+      "goal": "二点から原点までの距離を選ぼう。",
+      "purpose": "二点から原点までの距離を選ぼう。",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000347"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-01-old-lead",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n08-01-old-text",
+              "kind": "text",
+              "text": "元図の2.3と−5は、それぞれ原点の右と左にある。原点までの距離をこの順に比べる。"
+            }
+          ]
+        },
+        {
+          "id": "n08-01-old-expr",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-01-old-math",
+              "latex": "2.3,\\quad-5",
+              "mathRole": "expression",
+              "semanticRef": "word-p-000347"
+            }
+          ]
+        },
+        {
+          "id": "n08-01-interaction",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "answerSlot",
+              "id": "n08-01-slot",
+              "interactionId": "n08-01",
+              "semanticRef": "n08-01"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-01-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-01-old-after-text",
+              "text": "実数aの点と原点との距離を絶対値といい、|a|と書く。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n08-01",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "二点から原点までの距離を選ぼう。",
+        "prerequisiteIds": [],
+        "expected": {
+          "value": "2.3,\\quad5",
+          "form": "text",
+          "semanticType": "legacy-full-choice"
+        },
+        "choices": [
+          {
+            "id": "n08-01-old-choice-0",
+            "content": "2.3,\\quad5",
+            "feedback": "距離は原点からどれだけ離れているか。マイナスの向きは距離そのものではない。"
+          },
+          {
+            "id": "n08-01-old-choice-1",
+            "content": "2.3,\\quad-5",
+            "feedback": "距離は原点からどれだけ離れているか。マイナスの向きは距離そのものではない。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          },
+          {
+            "id": "n08-01-old-choice-2",
+            "content": "-2.3,\\quad5",
+            "feedback": "距離は原点からどれだけ離れているか。マイナスの向きは距離そのものではない。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          },
+          {
+            "id": "n08-01-old-choice-3",
+            "content": "2.3,\\quad-5.0",
+            "feedback": "距離は原点からどれだけ離れているか。マイナスの向きは距離そのものではない。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          }
+        ],
+        "hints": [
+          "距離は原点からどれだけ離れているか。マイナスの向きは距離そのものではない。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-01-interaction",
+          "slotId": "n08-01-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-02",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000351"
+      ],
+      "requires": [
+        "n08-01-old-result"
+      ],
+      "produces": [
+        "n08-02-old-result"
+      ],
+      "role": "check",
+      "goal": "この場合の|a|を記号なしで書こう。",
+      "purpose": "この場合の|a|を記号なしで書こう。",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000351"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-02-old-lead",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n08-02-old-text",
+              "kind": "text",
+              "text": "aが0以上の位置にある。原点との距離を、座標aだけでどう表せるか考えよう。"
+            }
+          ]
+        },
+        {
+          "id": "n08-02-old-expr",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-02-old-math",
+              "latex": "a\\ge0",
+              "mathRole": "expression",
+              "semanticRef": "word-p-000351"
+            }
+          ]
+        },
+        {
+          "id": "n08-02-interaction",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "answerSlot",
+              "id": "n08-02-slot",
+              "interactionId": "n08-02",
+              "semanticRef": "n08-02"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-02-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-02-old-after-text",
+              "text": "0を含む右側では、そのままの値が距離になる。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n08-02",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "この場合の|a|を記号なしで書こう。",
+        "prerequisiteIds": [
+          "n08-01-old-result"
+        ],
+        "expected": {
+          "value": "|a|=a",
+          "form": "text",
+          "semanticType": "legacy-full-choice"
+        },
+        "choices": [
+          {
+            "id": "n08-02-old-choice-0",
+            "content": "|a|=a",
+            "feedback": "右側の座標aから原点0を引いた距離を考える。"
+          },
+          {
+            "id": "n08-02-old-choice-1",
+            "content": "|a|=-a",
+            "feedback": "右側の座標aから原点0を引いた距離を考える。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          },
+          {
+            "id": "n08-02-old-choice-2",
+            "content": "|a|=0",
+            "feedback": "右側の座標aから原点0を引いた距離を考える。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          },
+          {
+            "id": "n08-02-old-choice-3",
+            "content": "|a|=a^2",
+            "feedback": "右側の座標aから原点0を引いた距離を考える。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          }
+        ],
+        "hints": [
+          "右側の座標aから原点0を引いた距離を考える。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-02-interaction",
+          "slotId": "n08-02-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-03",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000353"
+      ],
+      "requires": [
+        "n08-02-old-result"
+      ],
+      "produces": [
+        "n08-03-old-result"
+      ],
+      "role": "check",
+      "goal": "引き算から簡単にした距離を選ぼう。",
+      "purpose": "引き算から簡単にした距離を選ぼう。",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000353"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-03-old-lead",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n08-03-old-text",
+              "kind": "text",
+              "text": "aが0より小さいなら左側にある。距離は右側の座標0から左側のaを引く。"
+            }
+          ]
+        },
+        {
+          "id": "n08-03-old-expr",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-03-old-math",
+              "latex": "a<0",
+              "mathRole": "expression",
+              "semanticRef": "word-p-000353"
+            }
+          ]
+        },
+        {
+          "id": "n08-03-interaction",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "answerSlot",
+              "id": "n08-03-slot",
+              "interactionId": "n08-03",
+              "semanticRef": "n08-03"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-03-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-03-old-after-text",
+              "text": "負のaにマイナスを付けると、距離として正の値になる。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n08-03",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "引き算から簡単にした距離を選ぼう。",
+        "prerequisiteIds": [
+          "n08-02-old-result"
+        ],
+        "expected": {
+          "value": "0-a=-a",
+          "form": "text",
+          "semanticType": "legacy-full-choice"
+        },
+        "choices": [
+          {
+            "id": "n08-03-old-choice-0",
+            "content": "0-a=-a",
+            "feedback": "左側の点でも距離は正。0−aを計算する。"
+          },
+          {
+            "id": "n08-03-old-choice-1",
+            "content": "0-a=a",
+            "feedback": "左側の点でも距離は正。0−aを計算する。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          },
+          {
+            "id": "n08-03-old-choice-2",
+            "content": "a-0=a",
+            "feedback": "左側の点でも距離は正。0−aを計算する。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          },
+          {
+            "id": "n08-03-old-choice-3",
+            "content": "0+a=a",
+            "feedback": "左側の点でも距離は正。0−aを計算する。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          }
+        ],
+        "hints": [
+          "左側の点でも距離は正。0−aを計算する。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-03-interaction",
+          "slotId": "n08-03-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-04",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000354"
+      ],
+      "requires": [
+        "n08-03-old-result"
+      ],
+      "produces": [
+        "n08-04-old-result"
+      ],
+      "role": "check",
+      "goal": "代入して得られる値を選ぼう。",
+      "purpose": "代入して得られる値を選ぼう。",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000354"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-04-old-lead",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n08-04-old-text",
+              "kind": "text",
+              "text": "いまの−aへa=−5を代入して、実際の距離と照合する。"
+            }
+          ]
+        },
+        {
+          "id": "n08-04-old-expr",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-04-old-math",
+              "latex": "-a\\quad(a=-5)",
+              "mathRole": "expression",
+              "semanticRef": "word-p-000354"
+            }
+          ]
+        },
+        {
+          "id": "n08-04-interaction",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "answerSlot",
+              "id": "n08-04-slot",
+              "interactionId": "n08-04",
+              "semanticRef": "n08-04"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-04-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-04-old-after-text",
+              "text": "a≥0なら|a|=a、a<0なら|a|=−aという場合分けが確かめられた。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n08-04",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "代入して得られる値を選ぼう。",
+        "prerequisiteIds": [
+          "n08-03-old-result"
+        ],
+        "expected": {
+          "value": "-(-5)=5",
+          "form": "text",
+          "semanticType": "legacy-full-choice"
+        },
+        "choices": [
+          {
+            "id": "n08-04-old-choice-0",
+            "content": "-(-5)=5",
+            "feedback": "二つの負号が重なったときの符号を確認する。"
+          },
+          {
+            "id": "n08-04-old-choice-1",
+            "content": "-(-5)=-5",
+            "feedback": "二つの負号が重なったときの符号を確認する。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          },
+          {
+            "id": "n08-04-old-choice-2",
+            "content": "-5=5",
+            "feedback": "二つの負号が重なったときの符号を確認する。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          },
+          {
+            "id": "n08-04-old-choice-3",
+            "content": "-(-5)=0",
+            "feedback": "二つの負号が重なったときの符号を確認する。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          }
+        ],
+        "hints": [
+          "二つの負号が重なったときの符号を確認する。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-04-interaction",
+          "slotId": "n08-04-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-05",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000362"
+      ],
+      "requires": [
+        "n08-04-old-result"
+      ],
+      "produces": [
+        "n08-05-old-result"
+      ],
+      "role": "check",
+      "goal": "二乗した値の大小比較と、√5と3の大小関係を組にして選ぼう。",
+      "purpose": "二乗した値の大小比較と、√5と3の大小関係を組にして選ぼう。",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000362"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-05-old-lead",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n08-05-old-text",
+              "kind": "text",
+              "text": "√5と3はどちらも非負の数。二乗した値を自分で求めて比較すれば、元の二数の大小が決められる。"
+            }
+          ]
+        },
+        {
+          "id": "n08-05-old-expr",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-05-old-math",
+              "latex": "\\sqrt5,\\quad3",
+              "mathRole": "expression",
+              "semanticRef": "word-p-000362"
+            }
+          ]
+        },
+        {
+          "id": "n08-05-interaction",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "answerSlot",
+              "id": "n08-05-slot",
+              "interactionId": "n08-05",
+              "semanticRef": "n08-05"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-05-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-05-old-after-text",
+              "text": "5<9であり、両方非負なので√5<3。理由と結論の両方を確認できた。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n08-05",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "二乗した値の大小比較と、√5と3の大小関係を組にして選ぼう。",
+        "prerequisiteIds": [
+          "n08-04-old-result"
+        ],
+        "expected": {
+          "value": "5<9,\\quad\\sqrt5<3",
+          "form": "text",
+          "semanticType": "legacy-full-choice"
+        },
+        "choices": [
+          {
+            "id": "n08-05-old-choice-0",
+            "content": "5<9,\\quad\\sqrt5<3",
+            "feedback": "根号の付いた数は、二乗すると根号の中の数に戻る。もう一方も二乗し、二つの値を比べよう。両方とも非負なので大小の向きは保たれる。"
+          },
+          {
+            "id": "n08-05-old-choice-1",
+            "content": "5>9,\\quad\\sqrt5>3",
+            "feedback": "根号の付いた数は、二乗すると根号の中の数に戻る。もう一方も二乗し、二つの値を比べよう。両方とも非負なので大小の向きは保たれる。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          },
+          {
+            "id": "n08-05-old-choice-2",
+            "content": "5<9,\\quad\\sqrt5>3",
+            "feedback": "根号の付いた数は、二乗すると根号の中の数に戻る。もう一方も二乗し、二つの値を比べよう。両方とも非負なので大小の向きは保たれる。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          },
+          {
+            "id": "n08-05-old-choice-3",
+            "content": "5=9,\\quad\\sqrt5=3",
+            "feedback": "根号の付いた数は、二乗すると根号の中の数に戻る。もう一方も二乗し、二つの値を比べよう。両方とも非負なので大小の向きは保たれる。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          }
+        ],
+        "hints": [
+          "根号の付いた数は、二乗すると根号の中の数に戻る。もう一方も二乗し、二つの値を比べよう。両方とも非負なので大小の向きは保たれる。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-05-interaction",
+          "slotId": "n08-05-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-06",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000363"
+      ],
+      "requires": [
+        "n08-05-old-result"
+      ],
+      "produces": [
+        "n08-06-old-result"
+      ],
+      "role": "check",
+      "goal": "この式の符号を選ぼう。",
+      "purpose": "この式の符号を選ぼう。",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000363"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-06-old-lead",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n08-06-old-text",
+              "kind": "text",
+              "text": "直前の大小関係から、二つの数の差の符号が分かる。"
+            }
+          ]
+        },
+        {
+          "id": "n08-06-old-expr",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-06-old-math",
+              "latex": "\\sqrt5-3",
+              "mathRole": "expression",
+              "semanticRef": "word-p-000363"
+            }
+          ]
+        },
+        {
+          "id": "n08-06-interaction",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "answerSlot",
+              "id": "n08-06-slot",
+              "interactionId": "n08-06",
+              "semanticRef": "n08-06"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-06-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-06-old-after-text",
+              "text": "中身が負だと分かったので、絶対値を外すときは式全体に−1を掛ける。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n08-06",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "この式の符号を選ぼう。",
+        "prerequisiteIds": [
+          "n08-05-old-result"
+        ],
+        "expected": {
+          "value": "負",
+          "form": "text",
+          "semanticType": "legacy-full-choice"
+        },
+        "choices": [
+          {
+            "id": "n08-06-old-choice-0",
+            "content": "負",
+            "feedback": "左の数のほうが小さければ、左から右を引いた値はどうなるか。"
+          },
+          {
+            "id": "n08-06-old-choice-1",
+            "content": "正",
+            "feedback": "左の数のほうが小さければ、左から右を引いた値はどうなるか。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          },
+          {
+            "id": "n08-06-old-choice-2",
+            "content": "0",
+            "feedback": "左の数のほうが小さければ、左から右を引いた値はどうなるか。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          },
+          {
+            "id": "n08-06-old-choice-3",
+            "content": "符号は決まらない",
+            "feedback": "左の数のほうが小さければ、左から右を引いた値はどうなるか。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          }
+        ],
+        "hints": [
+          "左の数のほうが小さければ、左から右を引いた値はどうなるか。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-06-interaction",
+          "slotId": "n08-06-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-07",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000364"
+      ],
+      "requires": [
+        "n08-06-old-result"
+      ],
+      "produces": [
+        "n08-07-old-result"
+      ],
+      "role": "check",
+      "goal": "絶対値を外した式を選ぼう。",
+      "purpose": "絶対値を外した式を選ぼう。",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000364"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-07-old-lead",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n08-07-old-text",
+              "kind": "text",
+              "text": "中身が負のときは、括弧を付けて式全体を反転する。"
+            }
+          ]
+        },
+        {
+          "id": "n08-07-old-expr",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-07-old-math",
+              "latex": "|\\sqrt5-3|",
+              "mathRole": "expression",
+              "semanticRef": "word-p-000364"
+            }
+          ]
+        },
+        {
+          "id": "n08-07-interaction",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "answerSlot",
+              "id": "n08-07-slot",
+              "interactionId": "n08-07",
+              "semanticRef": "n08-07"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-07-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-07-old-after-text",
+              "text": "判定→括弧全体の反転という二段階を区別する。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n08-07",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "絶対値を外した式を選ぼう。",
+        "prerequisiteIds": [
+          "n08-06-old-result"
+        ],
+        "expected": {
+          "value": "3-\\sqrt5",
+          "form": "text",
+          "semanticType": "legacy-full-choice"
+        },
+        "choices": [
+          {
+            "id": "n08-07-old-choice-0",
+            "content": "3-\\sqrt5",
+            "feedback": "−(√5−3)の括弧を外すと両項の符号が変わる。"
+          },
+          {
+            "id": "n08-07-old-choice-1",
+            "content": "\\sqrt5-3",
+            "feedback": "−(√5−3)の括弧を外すと両項の符号が変わる。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          },
+          {
+            "id": "n08-07-old-choice-2",
+            "content": "-\\sqrt5-3",
+            "feedback": "−(√5−3)の括弧を外すと両項の符号が変わる。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          },
+          {
+            "id": "n08-07-old-choice-3",
+            "content": "3+\\sqrt5",
+            "feedback": "−(√5−3)の括弧を外すと両項の符号が変わる。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          }
+        ],
+        "hints": [
+          "−(√5−3)の括弧を外すと両項の符号が変わる。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-07-interaction",
+          "slotId": "n08-07-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-08",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000368"
+      ],
+      "requires": [
+        "n08-07-old-result"
+      ],
+      "produces": [
+        "n08-08-old-result"
+      ],
+      "role": "check",
+      "goal": "差の符号と根拠を選ぼう。",
+      "purpose": "差の符号と根拠を選ぼう。",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000368"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-08-old-lead",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n08-08-old-text",
+              "kind": "text",
+              "text": "今度は3−π。円周率πは3.14159…と分かっている。"
+            }
+          ]
+        },
+        {
+          "id": "n08-08-old-expr",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-08-old-math",
+              "latex": "3-\\pi",
+              "mathRole": "expression",
+              "semanticRef": "word-p-000368"
+            }
+          ]
+        },
+        {
+          "id": "n08-08-interaction",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "answerSlot",
+              "id": "n08-08-slot",
+              "interactionId": "n08-08",
+              "semanticRef": "n08-08"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-08-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-08-old-after-text",
+              "text": "ここでも先に中身の符号を確定した。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n08-08",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "差の符号と根拠を選ぼう。",
+        "prerequisiteIds": [
+          "n08-07-old-result"
+        ],
+        "expected": {
+          "value": "負（πは3より大きい）",
+          "form": "text",
+          "semanticType": "legacy-full-choice"
+        },
+        "choices": [
+          {
+            "id": "n08-08-old-choice-0",
+            "content": "負（πは3より大きい）",
+            "feedback": "πの小数表示の整数部分と続く数字を比べる。"
+          },
+          {
+            "id": "n08-08-old-choice-1",
+            "content": "正（3はπより大きい）",
+            "feedback": "πの小数表示の整数部分と続く数字を比べる。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          },
+          {
+            "id": "n08-08-old-choice-2",
+            "content": "0（πは3と等しい）",
+            "feedback": "πの小数表示の整数部分と続く数字を比べる。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          },
+          {
+            "id": "n08-08-old-choice-3",
+            "content": "符号は決められない",
+            "feedback": "πの小数表示の整数部分と続く数字を比べる。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          }
+        ],
+        "hints": [
+          "πの小数表示の整数部分と続く数字を比べる。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-08-interaction",
+          "slotId": "n08-08-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-09",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000369"
+      ],
+      "requires": [
+        "n08-08-old-result"
+      ],
+      "produces": [
+        "n08-09-old-result"
+      ],
+      "role": "check",
+      "goal": "絶対値記号のない式で答えよう。",
+      "purpose": "絶対値記号のない式で答えよう。",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000369"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-09-old-lead",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n08-09-old-text",
+              "kind": "text",
+              "text": "3−πは負なので、絶対値を取ると式全体の符号を反転する。"
+            }
+          ]
+        },
+        {
+          "id": "n08-09-old-expr",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-09-old-math",
+              "latex": "|3-\\pi|",
+              "mathRole": "expression",
+              "semanticRef": "word-p-000369"
+            }
+          ]
+        },
+        {
+          "id": "n08-09-interaction",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "answerSlot",
+              "id": "n08-09-slot",
+              "interactionId": "n08-09",
+              "semanticRef": "n08-09"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-09-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-09-old-after-text",
+              "text": "負の数を含む式でも、中身全体が一つの数と考えれば処理できる。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n08-09",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "絶対値記号のない式で答えよう。",
+        "prerequisiteIds": [
+          "n08-08-old-result"
+        ],
+        "expected": {
+          "value": "\\pi-3",
+          "form": "text",
+          "semanticType": "legacy-full-choice"
+        },
+        "choices": [
+          {
+            "id": "n08-09-old-choice-0",
+            "content": "\\pi-3",
+            "feedback": "−(3−π)の括弧を外す。"
+          },
+          {
+            "id": "n08-09-old-choice-1",
+            "content": "3-\\pi",
+            "feedback": "−(3−π)の括弧を外す。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          },
+          {
+            "id": "n08-09-old-choice-2",
+            "content": "-\\pi-3",
+            "feedback": "−(3−π)の括弧を外す。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          },
+          {
+            "id": "n08-09-old-choice-3",
+            "content": "3+\\pi",
+            "feedback": "−(3−π)の括弧を外す。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          }
+        ],
+        "hints": [
+          "−(3−π)の括弧を外す。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-09-interaction",
+          "slotId": "n08-09-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-10",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000371"
+      ],
+      "requires": [
+        "n08-09-old-result"
+      ],
+      "produces": [
+        "n08-10-old-result"
+      ],
+      "role": "check",
+      "goal": "aの値と、数直線上で距離が0になる理由を組にして選ぼう。",
+      "purpose": "aの値と、数直線上で距離が0になる理由を組にして選ぼう。",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000371"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-10-old-lead",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n08-10-old-text",
+              "kind": "text",
+              "text": "原点との距離が0になる点は数直線のどこにあるだろう。"
+            }
+          ]
+        },
+        {
+          "id": "n08-10-old-expr",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-10-old-math",
+              "latex": "|a|=0",
+              "mathRole": "expression",
+              "semanticRef": "word-p-000371"
+            }
+          ]
+        },
+        {
+          "id": "n08-10-interaction",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "answerSlot",
+              "id": "n08-10-slot",
+              "interactionId": "n08-10",
+              "semanticRef": "n08-10"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-10-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-10-old-after-text",
+              "text": "絶対値が0になるのは、もとの数そのものが0のときだけ。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n08-10",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "aの値と、数直線上で距離が0になる理由を組にして選ぼう。",
+        "prerequisiteIds": [
+          "n08-09-old-result"
+        ],
+        "expected": {
+          "value": "a=0,\\quad\\text{原点と同じ位置にある}",
+          "form": "text",
+          "semanticType": "legacy-full-choice"
+        },
+        "choices": [
+          {
+            "id": "n08-10-old-choice-0",
+            "content": "a=0,\\quad\\text{原点と同じ位置にある}",
+            "feedback": "離れている距離が0なら、原点と同じ位置。"
+          },
+          {
+            "id": "n08-10-old-choice-1",
+            "content": "a=0,\\quad\\text{原点から離れている}",
+            "feedback": "離れている距離が0なら、原点と同じ位置。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          },
+          {
+            "id": "n08-10-old-choice-2",
+            "content": "a>0,\\quad\\text{原点と同じ位置にある}",
+            "feedback": "離れている距離が0なら、原点と同じ位置。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          },
+          {
+            "id": "n08-10-old-choice-3",
+            "content": "a<0,\\quad\\text{原点と同じ位置にある}",
+            "feedback": "離れている距離が0なら、原点と同じ位置。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          }
+        ],
+        "hints": [
+          "離れている距離が0なら、原点と同じ位置。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-10-interaction",
+          "slotId": "n08-10-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-11",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000372"
+      ],
+      "requires": [
+        "n08-10-old-result"
+      ],
+      "produces": [
+        "n08-11-old-result"
+      ],
+      "role": "check",
+      "goal": "原点までの距離の関係を選ぼう。",
+      "purpose": "原点までの距離の関係を選ぼう。",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000372"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-11-old-lead",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n08-11-old-text",
+              "kind": "text",
+              "text": "aと−aは原点を挟んで左右対称な位置にある。"
+            }
+          ]
+        },
+        {
+          "id": "n08-11-old-expr",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-11-old-math",
+              "latex": "|a|,\\quad|-a|",
+              "mathRole": "expression",
+              "semanticRef": "word-p-000372"
+            }
+          ]
+        },
+        {
+          "id": "n08-11-interaction",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "answerSlot",
+              "id": "n08-11-slot",
+              "interactionId": "n08-11",
+              "semanticRef": "n08-11"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-11-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-11-old-after-text",
+              "text": "符号を反転させても絶対値は変わらない。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n08-11",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "原点までの距離の関係を選ぼう。",
+        "prerequisiteIds": [
+          "n08-10-old-result"
+        ],
+        "expected": {
+          "value": "|a|=|-a|",
+          "form": "text",
+          "semanticType": "legacy-full-choice"
+        },
+        "choices": [
+          {
+            "id": "n08-11-old-choice-0",
+            "content": "|a|=|-a|",
+            "feedback": "左右対称な点は原点から同じ距離にある。"
+          },
+          {
+            "id": "n08-11-old-choice-1",
+            "content": "|a|=-|-a|",
+            "feedback": "左右対称な点は原点から同じ距離にある。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          },
+          {
+            "id": "n08-11-old-choice-2",
+            "content": "|a|>|-a|",
+            "feedback": "左右対称な点は原点から同じ距離にある。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          },
+          {
+            "id": "n08-11-old-choice-3",
+            "content": "|a|+|-a|=0",
+            "feedback": "左右対称な点は原点から同じ距離にある。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          }
+        ],
+        "hints": [
+          "左右対称な点は原点から同じ距離にある。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-11-interaction",
+          "slotId": "n08-11-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-12",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000373"
+      ],
+      "requires": [
+        "n08-11-old-result"
+      ],
+      "produces": [
+        "n08-12-old-result"
+      ],
+      "role": "check",
+      "goal": "絶対値の二乗をaで表そう。",
+      "purpose": "絶対値の二乗をaで表そう。",
+      "operation": {
+        "kind": "selection",
+        "targets": [
+          "word-p-000373"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-12-old-lead",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "id": "n08-12-old-text",
+              "kind": "text",
+              "text": "aが正でも負でも、|a|はaか−aのいずれか。その二乗の値を比較する。"
+            }
+          ]
+        },
+        {
+          "id": "n08-12-old-expr",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-12-old-math",
+              "latex": "|a|^2",
+              "mathRole": "expression",
+              "semanticRef": "word-p-000373"
+            }
+          ]
+        },
+        {
+          "id": "n08-12-interaction",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "answerSlot",
+              "id": "n08-12-slot",
+              "interactionId": "n08-12",
+              "semanticRef": "n08-12"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-12-old-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-12-old-after-text",
+              "text": "距離は非負だが、その二乗はもとの数の二乗に等しい。次の根号の学習へつながる。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n08-12",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "selection",
+        "whyHere": "絶対値の二乗をaで表そう。",
+        "prerequisiteIds": [
+          "n08-11-old-result"
+        ],
+        "expected": {
+          "value": "a^2",
+          "form": "text",
+          "semanticType": "legacy-full-choice"
+        },
+        "choices": [
+          {
+            "id": "n08-12-old-choice-0",
+            "content": "a^2",
+            "feedback": "(+a)²と(−a)²は等しい。"
+          },
+          {
+            "id": "n08-12-old-choice-1",
+            "content": "|a|",
+            "feedback": "(+a)²と(−a)²は等しい。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          },
+          {
+            "id": "n08-12-old-choice-2",
+            "content": "-a^2",
+            "feedback": "(+a)²と(−a)²は等しい。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          },
+          {
+            "id": "n08-12-old-choice-3",
+            "content": "2a",
+            "feedback": "(+a)²と(−a)²は等しい。",
+            "misconception": "旧版の選択肢をそのまま保存。原因監査で妥当性を確認する。"
+          }
+        ],
+        "hints": [
+          "(+a)²と(−a)²は等しい。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-12-interaction",
+          "slotId": "n08-12-slot"
+        }
+      }
+    }
+  ]
+}

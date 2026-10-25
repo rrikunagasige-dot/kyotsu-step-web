@@ -1,0 +1,109 @@
+{
+  "rows": [
+    {
+      "originFinding": "N08-derivation-and-format",
+      "rootCauseSignature": "compressed-multiple-operations",
+      "artifact": "src/data/textbook/math/numbers/n08Lesson.ts",
+      "version": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+      "approvedCreationWork": "W-MATH-003/P-003-R1",
+      "block_id": "n08",
+      "evidence_refs": [
+        "SOURCE_INDEX.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "AFFECTED",
+      "phase": "pre-fix",
+      "reason": "限定実装の直接対象"
+    },
+    {
+      "originFinding": "N08-derivation-and-format",
+      "rootCauseSignature": "compressed-multiple-operations",
+      "artifact": "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+      "version": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+      "approvedCreationWork": "W-MATH-003/P-003-R1",
+      "block_id": "n08",
+      "evidence_refs": [
+        "SOURCE_INDEX.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "pre-fix",
+      "reason": "N08切出しでこの共有実装/図/原資料自体は変更しない"
+    },
+    {
+      "originFinding": "N08-derivation-and-format",
+      "rootCauseSignature": "compressed-multiple-operations",
+      "artifact": "src/pages/TextbookUnitPage.tsx",
+      "version": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+      "approvedCreationWork": "W-MATH-003/P-003-R1",
+      "block_id": "n08",
+      "evidence_refs": [
+        "SOURCE_INDEX.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "AFFECTED",
+      "phase": "pre-fix",
+      "reason": "限定実装の直接対象"
+    },
+    {
+      "originFinding": "N08-derivation-and-format",
+      "rootCauseSignature": "compressed-multiple-operations",
+      "artifact": "src/domain/textbook.ts",
+      "version": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+      "approvedCreationWork": "W-MATH-003/P-003-R1",
+      "block_id": "n08",
+      "evidence_refs": [
+        "SOURCE_INDEX.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "AFFECTED",
+      "phase": "pre-fix",
+      "reason": "限定実装の直接対象"
+    },
+    {
+      "originFinding": "N08-derivation-and-format",
+      "rootCauseSignature": "compressed-multiple-operations",
+      "artifact": "public/assets/math/textbook/numbers/n08-f01.png",
+      "version": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+      "approvedCreationWork": "W-MATH-003/P-003-R1",
+      "block_id": "n08",
+      "evidence_refs": [
+        "SOURCE_INDEX.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "pre-fix",
+      "reason": "N08切出しでこの共有実装/図/原資料自体は変更しない"
+    },
+    {
+      "originFinding": "N08-derivation-and-format",
+      "rootCauseSignature": "compressed-multiple-operations",
+      "artifact": "work/items/W-MATH-033-n08-absolute-value/evidence/SOURCE_INDEX.json",
+      "version": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+      "approvedCreationWork": "W-MATH-003/P-003-R1",
+      "block_id": "n08",
+      "evidence_refs": [
+        "SOURCE_INDEX.json",
+        "NODE_DESIGN.json"
+      ],
+      "status": "NOT-AFFECTED",
+      "phase": "pre-fix",
+      "reason": "N08切出しでこの共有実装/図/原資料自体は変更しない"
+    }
+  ],
+  "originalQuestions": 12,
+  "candidateNodes": 36,
+  "consumers": [
+    "src/data/textbook/math/numbers/n07LegacyLesson.ts",
+    "src/data/textbook/math/numbers/n08Lesson.ts",
+    "src/data/textbook/math/numbers/n05Lesson.ts",
+    "src/data/textbook/math/numbers/n14Lesson.ts",
+    "src/data/textbook/math/numbers/n04BatchSupplement.ts",
+    "src/data/textbook/math/numbers/n11Lesson.ts",
+    "src/data/textbook/math/numbers/n06Lesson.ts",
+    "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+    "src/data/textbook/math/numbers/n13Lesson.ts"
+  ],
+  "consumerDisposition": "同じhelper利用を列挙。N08限定分岐のため他単元に差分を出さない。他単元の教育的品質の合格判定ではない。",
+  "scope": "pre-fix; source-level audit, not browser QA"
+}

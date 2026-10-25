@@ -1,0 +1,93 @@
+{
+  "work_id": "W-MATH-033",
+  "node": {
+    "id": "R05_APPROVAL@n08",
+    "stage_kind": "R05_APPROVAL",
+    "contract_kind": "R05_APPROVAL",
+    "actor": "USER",
+    "depends_on": [
+      "R04_PROPOSAL@n08"
+    ],
+    "required": [],
+    "block": "n08",
+    "release_unit": "n08",
+    "watch": "integration",
+    "phase": "pre-design",
+    "priority": 0,
+    "source_refs": [
+      "src/data/textbook/math/numbers/n08Lesson.ts",
+      "src/data/textbook/math/numbers/newBatchGuidedSteps.ts",
+      "src/pages/TextbookUnitPage.tsx",
+      "src/domain/textbook.ts",
+      "public/assets/math/textbook/numbers/n08-f01.png",
+      "work/items/W-MATH-033-n08-absolute-value/evidence/SOURCE_INDEX.json"
+    ],
+    "protected_refs": [
+      "src/data/textbook/math/numbers/firstSectionTeaching.json",
+      "src/data/textbook/math/numbers/n07Authored.json",
+      "src/components/textbook/N07ReadingFlow.tsx",
+      "src/components/textbook/n07-reading.css"
+    ],
+    "approval_scope_ref": "proposal",
+    "capability_requests": [],
+    "required_code_receipts": [],
+    "required_ai_receipts": []
+  },
+  "task_id": "717f2ef9e140da8c8b1b2390b660cef9bed017523123520421954831fc39b124",
+  "input_hash": "cef9e37dadaf72ad6cffb7ab37e04eb02e1ad712b4e0741d935ccfee2411457d",
+  "source_sha": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+  "candidate_sha": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
+  "rules": {
+    "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
+    "governance/REVIEW_POLICY.json": "a71148f007a79b124385c7645e6bc01564bfa02b12152174883543f31f6ce72d",
+    "governance/WORK_SYSTEM.md": "37b0b0e0fecc79d7c067e17ec8dbeb53d53863f04369171d65ef652a176eb093",
+    "memory/LESSONS/MATH_TYPESETTING_GROUPS.md": "8047831b13d22ffb773f68e23ab788a3490e4b69ebbf5d5d357f9f786ed53d0a",
+    "subjects/mathematics/textbook/SPEC.md": "a36959ae6f951e855c3e60d280d02a0f20c6e23185d9eb90b17ffbc889c63277"
+  },
+  "proposal": {
+    "contentDesignHash": "32f20c559bd407c777910c9ef8fb30989c31bf0ee822b5a5242f0cd7f71d318b",
+    "hash": "6a109d2c893b221900f8e09ae060cf8d05e2c2652810ff7303445cd8ff574637",
+    "id": "W-MATH-033/P-001"
+  },
+  "scope": {
+    "paths": [
+      "src/data/textbook/math/numbers/n08Lesson.ts",
+      "src/data/textbook/math/numbers/n08Authored.json",
+      "src/components/textbook/N08ReadingFlow.tsx",
+      "src/components/textbook/n08-reading.css",
+      "src/pages/TextbookUnitPage.tsx",
+      "src/domain/textbook.ts",
+      "work/items/W-MATH-033-n08-absolute-value/"
+    ],
+    "preserve": [
+      "src/data/textbook/math/numbers/firstSectionTeaching.json",
+      "src/data/textbook/math/numbers/n07Authored.json",
+      "src/components/textbook/N07ReadingFlow.tsx",
+      "src/components/textbook/n07-reading.css"
+    ]
+  },
+  "source_manifest": {
+    "public/assets/math/textbook/numbers/n08-f01.png": "817ab6ad3afb71b009cc95796e267d0818a104ecf19864c55c2ba0afbf29da73",
+    "src/data/textbook/math/numbers/n08Lesson.ts": "9cc25fb6e4c3ef3889780dea323bd98657e5dbb924bc730975375bc9adba96f9",
+    "src/data/textbook/math/numbers/newBatchGuidedSteps.ts": "501efef29948458d78c7665695c59d707ca67291daab372fa16efb5d8f15ef72",
+    "src/domain/textbook.ts": "91e354d7df28591ec95b842fc4013798c1fbd5595a095871cb0827a8d00eb466",
+    "src/pages/TextbookUnitPage.tsx": "79c2aa91ddedb0f904343852d807256c34def0f575cab72c1491332601cdf741",
+    "work/items/W-MATH-033-n08-absolute-value/evidence/SOURCE_INDEX.json": "31e49387d8fa565a45ab06f2452e052f42c6a53296449816750886ef03d5369c"
+  },
+  "previous_results": {
+    "R04_PROPOSAL@n08": {
+      "actor": "capability-runner",
+      "artifact": "fb857fc6809ee25eaf6fda038b9bf5ee9cf72b3a44ecb023ab7f91337cbf8ae9",
+      "input_hash": "04e5c284f05ad18adcabe4b8f35fb71d10fc7ea0a82c500269628d4833395b4b",
+      "node": "R04_PROPOSAL@n08",
+      "verdict": "PASS"
+    }
+  },
+  "do_not_touch": [
+    "src/data/textbook/math/numbers/firstSectionTeaching.json",
+    "src/data/textbook/math/numbers/n07Authored.json",
+    "src/components/textbook/N07ReadingFlow.tsx",
+    "src/components/textbook/n07-reading.css"
+  ],
+  "completion_is_not_semantic_proof": true
+}

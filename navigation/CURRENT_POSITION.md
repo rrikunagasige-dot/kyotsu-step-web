@@ -1,3 +1,13 @@
+## CURRENT — W-MATH-033 / N08具体設計（2026-10-25）
+
+ユーザー「行那你继续做N08」を受け、CMD-WORK-001・production/2でN08の修正を開始。[具体案P-001](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/work/n08-absolute-value-design-20261025/work/items/W-MATH-033-n08-absolute-value/PROPOSAL.md) と [全36node](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/work/n08-absolute-value-design-20261025/work/items/W-MATH-033-n08-absolute-value/NODE_DESIGN.md) を作成した。原Word35block/30数式/12問/原図1点を照合し、36思考node・31穴・12段階へ設計。原12採点IDと正答は保持、19新中間回答を追加する案。
+
+共有Store W-MATH-032/runtimeの実台帳でR01→R02→R03→R04を実行し、現在 **R05_APPROVAL@n08 / PROPOSED**。最終意味監査でQ10の答え先出しを発見し、未承認案をreviseしてR04を再検査した。続行依頼を具体設計承認やN08のGold肯定評価へ変換していない。次は現行P-001への具体設計承認→N08限定実装・進捗移行・四幅QA→既存公開アプリの直接URL。同じ公開許可や画像票の承認は要求しない。
+
+候補IR/coverage/compile、12正答契約、元図byte一致、SymPy9恒等式を検証。版付き教訓10件の適用理由を記録。実装・ブラウザ・移行・配信は未実施で、教材全体のPASSではない。N07限定materializerをN08へ偽装利用しない。tool pin058c4ea、N07受入済み公開source46ea59be、第一タイトル22bc43ba、OFFLINE_ONLYモデルは保持。src/public/tools/workflowに今回差分なし。
+
+---
+
 ## CURRENT — N07受入完了・担当付き火柴図・実学習（2026-10-25）
 
 ユーザーの「我觉得这部分做的很好了。可以」を、公開済みN07 source `46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6` の範囲付き受入として記録。W-MATH-032 runtimeは事後R03・R08・L01・Z01まで実行済みで **DONE**。六つの元否定例は、同じ公開source・実修正証拠・閉鎖Workに結び付けてVERIFIED_FIXED。再受入・再公開許可を要求しない。

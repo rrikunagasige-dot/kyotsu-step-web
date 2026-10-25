@@ -1,0 +1,51 @@
+{
+  "node": "R04_PROPOSAL@n08",
+  "outputs": {
+    "math.solve": {
+      "status": "NEEDS_AI_REVIEW",
+      "outputArtifact": "d54f222f24808db18bf420ca4db34a0935aa60264dc51d7c234c28a3971ec8e3"
+    },
+    "math.verify": {
+      "status": "NEEDS_AI_REVIEW",
+      "outputArtifact": "00debbc20c11c0e157bcce010ee2ca0921b95369559feff70dab1f9572ef0658"
+    },
+    "teaching.plan": {
+      "status": "PASS",
+      "outputArtifact": "b242b3656d124f7aa1c1bc3b05cf838d57218bb6405de9c197b8adc38ad64e13"
+    },
+    "step.plan": {
+      "status": "PASS",
+      "outputArtifact": "b242b3656d124f7aa1c1bc3b05cf838d57218bb6405de9c197b8adc38ad64e13"
+    },
+    "blank.plan": {
+      "status": "PASS",
+      "outputArtifact": "eab5fd62ee763a7fbd68b522cf51aa025a00d9e71bed380d51b5da8377491778"
+    },
+    "prose.compose": {
+      "status": "PASS",
+      "outputArtifact": "837f8017707d4c364237186b373242e23317bb15a4fcc1539fee5c69192fa480"
+    },
+    "text.verify": {
+      "status": "PASS",
+      "outputArtifact": "837f8017707d4c364237186b373242e23317bb15a4fcc1539fee5c69192fa480"
+    },
+    "figure.verify": {
+      "status": "PASS",
+      "outputArtifact": "7001df781dc6189665d6cc245a8f3a0b28606767664bdbf0c4b0644aac4adc7d"
+    },
+    "ir.verify": {
+      "status": "PASS",
+      "outputArtifact": "837f8017707d4c364237186b373242e23317bb15a4fcc1539fee5c69192fa480"
+    },
+    "source.audit": {
+      "status": "NEEDS_AI_REVIEW",
+      "outputArtifact": "37c0df35ac98807e596b929663c79e627d8b7c09aab306adf58dd793c87f89f1"
+    },
+    "novice.audit": {
+      "status": "PASS",
+      "outputArtifact": "4a511a32676e82c47186caa56e8daa98956710ef4002ae1afad08db7b99eca87"
+    }
+  },
+  "review": "36nodeの本文・数式・穴・誤答理由・ヒントと依存を確認。原12正答契約、未番号説明、元図byteを保持。Q07/Q09はrelationChain、Q10は両方向、Q11は正負0、Q12は二場合。候補IRのcompileは設計検査であり、learner実装・実画面・ユーザー受入ではない。",
+  "fullOutputs": "Content-addressed artifacts remain in the shared Runtime Store."
+}

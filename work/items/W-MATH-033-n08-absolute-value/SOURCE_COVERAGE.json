@@ -1,0 +1,300 @@
+[
+  {
+    "sourceId": "word-p-000341",
+    "nodeIds": [],
+    "disposition": "structural",
+    "reason": "見出し・役割ラベル・次節の見出しを構造として保持。問題や重要説明の省略ではない。"
+  },
+  {
+    "sourceId": "word-p-000342",
+    "nodeIds": [],
+    "disposition": "structural",
+    "reason": "見出し・役割ラベル・次節の見出しを構造として保持。問題や重要説明の省略ではない。"
+  },
+  {
+    "sourceId": "word-p-000343",
+    "nodeIds": [
+      "n08-q01-right",
+      "n08-q01-left"
+    ],
+    "disposition": "taught",
+    "reason": "本文・判断・図の読取りに統合"
+  },
+  {
+    "sourceId": "word-p-000344",
+    "nodeIds": [
+      "n08-q01-right",
+      "n08-q01-left"
+    ],
+    "disposition": "taught",
+    "reason": "本文・判断・図の読取りに統合"
+  },
+  {
+    "sourceId": "word-p-000345",
+    "nodeIds": [
+      "n08-q01-right"
+    ],
+    "disposition": "taught",
+    "reason": "本文・判断・図の読取りに統合"
+  },
+  {
+    "sourceId": "word-p-000346",
+    "nodeIds": [
+      "n08-q01-left"
+    ],
+    "disposition": "taught",
+    "reason": "本文・判断・図の読取りに統合"
+  },
+  {
+    "sourceId": "word-p-000347",
+    "nodeIds": [
+      "n08-q01-right",
+      "n08-q01-left",
+      "n08-01"
+    ],
+    "disposition": "taught",
+    "reason": "本文・判断・図の読取りに統合"
+  },
+  {
+    "sourceId": "word-p-000348",
+    "nodeIds": [
+      "n08-definition"
+    ],
+    "disposition": "taught",
+    "reason": "本文・判断・図の読取りに統合"
+  },
+  {
+    "sourceId": "word-p-000349",
+    "nodeIds": [],
+    "disposition": "structural",
+    "reason": "見出し・役割ラベル・次節の見出しを構造として保持。問題や重要説明の省略ではない。"
+  },
+  {
+    "sourceId": "word-p-000350",
+    "nodeIds": [
+      "n08-02"
+    ],
+    "disposition": "taught",
+    "reason": "本文・判断・図の読取りに統合"
+  },
+  {
+    "sourceId": "word-p-000351",
+    "nodeIds": [
+      "n08-02"
+    ],
+    "disposition": "taught",
+    "reason": "本文・判断・図の読取りに統合"
+  },
+  {
+    "sourceId": "word-p-000352",
+    "nodeIds": [
+      "n08-q03-order"
+    ],
+    "disposition": "taught",
+    "reason": "本文・判断・図の読取りに統合"
+  },
+  {
+    "sourceId": "word-p-000353",
+    "nodeIds": [
+      "n08-q03-order",
+      "n08-03"
+    ],
+    "disposition": "taught",
+    "reason": "本文・判断・図の読取りに統合"
+  },
+  {
+    "sourceId": "word-p-000354",
+    "nodeIds": [
+      "n08-q04-substitute",
+      "n08-04"
+    ],
+    "disposition": "taught",
+    "reason": "本文・判断・図の読取りに統合"
+  },
+  {
+    "sourceId": "word-p-000355",
+    "nodeIds": [
+      "n08-cases",
+      "n08-q07-rule"
+    ],
+    "disposition": "taught",
+    "reason": "本文・判断・図の読取りに統合"
+  },
+  {
+    "sourceId": "word-p-000356",
+    "nodeIds": [
+      "n08-cases",
+      "n08-q07-rule"
+    ],
+    "disposition": "taught",
+    "reason": "本文・判断・図の読取りに統合"
+  },
+  {
+    "sourceId": "word-p-000357",
+    "nodeIds": [
+      "n08-q05-square"
+    ],
+    "disposition": "taught",
+    "reason": "本文・判断・図の読取りに統合"
+  },
+  {
+    "sourceId": "word-p-000358",
+    "nodeIds": [
+      "n08-q05-square"
+    ],
+    "disposition": "taught",
+    "reason": "本文・判断・図の読取りに統合"
+  },
+  {
+    "sourceId": "word-p-000359",
+    "nodeIds": [
+      "n08-q05-square"
+    ],
+    "disposition": "taught",
+    "reason": "本文・判断・図の読取りに統合"
+  },
+  {
+    "sourceId": "word-p-000360",
+    "nodeIds": [
+      "n08-q05-square"
+    ],
+    "disposition": "taught",
+    "reason": "本文・判断・図の読取りに統合"
+  },
+  {
+    "sourceId": "word-p-000361",
+    "nodeIds": [
+      "n08-q05-square"
+    ],
+    "disposition": "taught",
+    "reason": "本文・判断・図の読取りに統合"
+  },
+  {
+    "sourceId": "word-p-000362",
+    "nodeIds": [
+      "n08-q05-square",
+      "n08-q05-compare",
+      "n08-05"
+    ],
+    "disposition": "taught",
+    "reason": "本文・判断・図の読取りに統合"
+  },
+  {
+    "sourceId": "word-p-000363",
+    "nodeIds": [
+      "n08-q06-subtract",
+      "n08-06"
+    ],
+    "disposition": "taught",
+    "reason": "本文・判断・図の読取りに統合"
+  },
+  {
+    "sourceId": "word-p-000364",
+    "nodeIds": [
+      "n08-q07-rule",
+      "n08-q07-bracket",
+      "n08-q07-distribute",
+      "n08-07"
+    ],
+    "disposition": "taught",
+    "reason": "本文・判断・図の読取りに統合"
+  },
+  {
+    "sourceId": "word-p-000365",
+    "nodeIds": [
+      "n08-q07-distribute",
+      "n08-07"
+    ],
+    "disposition": "taught",
+    "reason": "本文・判断・図の読取りに統合"
+  },
+  {
+    "sourceId": "word-p-000366",
+    "nodeIds": [
+      "n08-q08-order"
+    ],
+    "disposition": "taught",
+    "reason": "本文・判断・図の読取りに統合"
+  },
+  {
+    "sourceId": "word-p-000367",
+    "nodeIds": [
+      "n08-q08-order"
+    ],
+    "disposition": "taught",
+    "reason": "本文・判断・図の読取りに統合"
+  },
+  {
+    "sourceId": "word-p-000368",
+    "nodeIds": [
+      "n08-q08-order",
+      "n08-q08-difference",
+      "n08-08"
+    ],
+    "disposition": "taught",
+    "reason": "本文・判断・図の読取りに統合"
+  },
+  {
+    "sourceId": "word-p-000369",
+    "nodeIds": [
+      "n08-q09-bracket",
+      "n08-q09-distribute",
+      "n08-09"
+    ],
+    "disposition": "taught",
+    "reason": "本文・判断・図の読取りに統合"
+  },
+  {
+    "sourceId": "word-p-000370",
+    "nodeIds": [
+      "n08-q10-forward"
+    ],
+    "disposition": "taught",
+    "reason": "本文・判断・図の読取りに統合"
+  },
+  {
+    "sourceId": "word-p-000371",
+    "nodeIds": [
+      "n08-q10-forward",
+      "n08-q10-reverse",
+      "n08-10"
+    ],
+    "disposition": "taught",
+    "reason": "本文・判断・図の読取りに統合"
+  },
+  {
+    "sourceId": "word-p-000372",
+    "nodeIds": [
+      "n08-q11-positive",
+      "n08-q11-negative",
+      "n08-q11-zero",
+      "n08-11"
+    ],
+    "disposition": "taught",
+    "reason": "本文・判断・図の読取りに統合"
+  },
+  {
+    "sourceId": "word-p-000373",
+    "nodeIds": [
+      "n08-q12-nonnegative",
+      "n08-q12-negative",
+      "n08-12"
+    ],
+    "disposition": "taught",
+    "reason": "本文・判断・図の読取りに統合"
+  },
+  {
+    "sourceId": "word-p-000374",
+    "nodeIds": [
+      "n08-closing"
+    ],
+    "disposition": "taught",
+    "reason": "本文・判断・図の読取りに統合"
+  },
+  {
+    "sourceId": "word-p-000375",
+    "nodeIds": [],
+    "disposition": "structural",
+    "reason": "見出し・役割ラベル・次節の見出しを構造として保持。問題や重要説明の省略ではない。"
+  }
+]

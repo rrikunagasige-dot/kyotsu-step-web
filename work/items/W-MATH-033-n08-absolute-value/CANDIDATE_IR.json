@@ -1,0 +1,7057 @@
+{
+  "schemaVersion": "production-ir/1",
+  "unitId": "math-numbers-expressions-n08",
+  "subject": "math",
+  "mode": "textbook",
+  "sourceHash": "93827322a877313d4d39957dd6196c01de31f2e994baa1aac0a64b96be88eeaa",
+  "sourceBlocks": [
+    {
+      "id": "word-p-000341",
+      "kind": "heading"
+    },
+    {
+      "id": "word-p-000342",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000343",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000344",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000345",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000346",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000347",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000348",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000349",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000350",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000351",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000352",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000353",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000354",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000355",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000356",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000357",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000358",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000359",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000360",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000361",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000362",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000363",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000364",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000365",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000366",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000367",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000368",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000369",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000370",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000371",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000372",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000373",
+      "kind": "question"
+    },
+    {
+      "id": "word-p-000374",
+      "kind": "explanation"
+    },
+    {
+      "id": "word-p-000375",
+      "kind": "explanation"
+    }
+  ],
+  "coverage": [
+    {
+      "sourceId": "word-p-000341",
+      "nodeIds": [],
+      "disposition": "structural",
+      "reason": "見出し・役割ラベル・次節の見出しを構造として保持。問題や重要説明の省略ではない。"
+    },
+    {
+      "sourceId": "word-p-000342",
+      "nodeIds": [],
+      "disposition": "structural",
+      "reason": "見出し・役割ラベル・次節の見出しを構造として保持。問題や重要説明の省略ではない。"
+    },
+    {
+      "sourceId": "word-p-000343",
+      "nodeIds": [
+        "n08-q01-right",
+        "n08-q01-left"
+      ],
+      "disposition": "taught",
+      "reason": "本文・判断・図の読取りに統合"
+    },
+    {
+      "sourceId": "word-p-000344",
+      "nodeIds": [
+        "n08-q01-right",
+        "n08-q01-left"
+      ],
+      "disposition": "taught",
+      "reason": "本文・判断・図の読取りに統合"
+    },
+    {
+      "sourceId": "word-p-000345",
+      "nodeIds": [
+        "n08-q01-right"
+      ],
+      "disposition": "taught",
+      "reason": "本文・判断・図の読取りに統合"
+    },
+    {
+      "sourceId": "word-p-000346",
+      "nodeIds": [
+        "n08-q01-left"
+      ],
+      "disposition": "taught",
+      "reason": "本文・判断・図の読取りに統合"
+    },
+    {
+      "sourceId": "word-p-000347",
+      "nodeIds": [
+        "n08-q01-right",
+        "n08-q01-left",
+        "n08-01"
+      ],
+      "disposition": "taught",
+      "reason": "本文・判断・図の読取りに統合"
+    },
+    {
+      "sourceId": "word-p-000348",
+      "nodeIds": [
+        "n08-definition"
+      ],
+      "disposition": "taught",
+      "reason": "本文・判断・図の読取りに統合"
+    },
+    {
+      "sourceId": "word-p-000349",
+      "nodeIds": [],
+      "disposition": "structural",
+      "reason": "見出し・役割ラベル・次節の見出しを構造として保持。問題や重要説明の省略ではない。"
+    },
+    {
+      "sourceId": "word-p-000350",
+      "nodeIds": [
+        "n08-02"
+      ],
+      "disposition": "taught",
+      "reason": "本文・判断・図の読取りに統合"
+    },
+    {
+      "sourceId": "word-p-000351",
+      "nodeIds": [
+        "n08-02"
+      ],
+      "disposition": "taught",
+      "reason": "本文・判断・図の読取りに統合"
+    },
+    {
+      "sourceId": "word-p-000352",
+      "nodeIds": [
+        "n08-q03-order"
+      ],
+      "disposition": "taught",
+      "reason": "本文・判断・図の読取りに統合"
+    },
+    {
+      "sourceId": "word-p-000353",
+      "nodeIds": [
+        "n08-q03-order",
+        "n08-03"
+      ],
+      "disposition": "taught",
+      "reason": "本文・判断・図の読取りに統合"
+    },
+    {
+      "sourceId": "word-p-000354",
+      "nodeIds": [
+        "n08-q04-substitute",
+        "n08-04"
+      ],
+      "disposition": "taught",
+      "reason": "本文・判断・図の読取りに統合"
+    },
+    {
+      "sourceId": "word-p-000355",
+      "nodeIds": [
+        "n08-cases",
+        "n08-q07-rule"
+      ],
+      "disposition": "taught",
+      "reason": "本文・判断・図の読取りに統合"
+    },
+    {
+      "sourceId": "word-p-000356",
+      "nodeIds": [
+        "n08-cases",
+        "n08-q07-rule"
+      ],
+      "disposition": "taught",
+      "reason": "本文・判断・図の読取りに統合"
+    },
+    {
+      "sourceId": "word-p-000357",
+      "nodeIds": [
+        "n08-q05-square"
+      ],
+      "disposition": "taught",
+      "reason": "本文・判断・図の読取りに統合"
+    },
+    {
+      "sourceId": "word-p-000358",
+      "nodeIds": [
+        "n08-q05-square"
+      ],
+      "disposition": "taught",
+      "reason": "本文・判断・図の読取りに統合"
+    },
+    {
+      "sourceId": "word-p-000359",
+      "nodeIds": [
+        "n08-q05-square"
+      ],
+      "disposition": "taught",
+      "reason": "本文・判断・図の読取りに統合"
+    },
+    {
+      "sourceId": "word-p-000360",
+      "nodeIds": [
+        "n08-q05-square"
+      ],
+      "disposition": "taught",
+      "reason": "本文・判断・図の読取りに統合"
+    },
+    {
+      "sourceId": "word-p-000361",
+      "nodeIds": [
+        "n08-q05-square"
+      ],
+      "disposition": "taught",
+      "reason": "本文・判断・図の読取りに統合"
+    },
+    {
+      "sourceId": "word-p-000362",
+      "nodeIds": [
+        "n08-q05-square",
+        "n08-q05-compare",
+        "n08-05"
+      ],
+      "disposition": "taught",
+      "reason": "本文・判断・図の読取りに統合"
+    },
+    {
+      "sourceId": "word-p-000363",
+      "nodeIds": [
+        "n08-q06-subtract",
+        "n08-06"
+      ],
+      "disposition": "taught",
+      "reason": "本文・判断・図の読取りに統合"
+    },
+    {
+      "sourceId": "word-p-000364",
+      "nodeIds": [
+        "n08-q07-rule",
+        "n08-q07-bracket",
+        "n08-q07-distribute",
+        "n08-07"
+      ],
+      "disposition": "taught",
+      "reason": "本文・判断・図の読取りに統合"
+    },
+    {
+      "sourceId": "word-p-000365",
+      "nodeIds": [
+        "n08-q07-distribute",
+        "n08-07"
+      ],
+      "disposition": "taught",
+      "reason": "本文・判断・図の読取りに統合"
+    },
+    {
+      "sourceId": "word-p-000366",
+      "nodeIds": [
+        "n08-q08-order"
+      ],
+      "disposition": "taught",
+      "reason": "本文・判断・図の読取りに統合"
+    },
+    {
+      "sourceId": "word-p-000367",
+      "nodeIds": [
+        "n08-q08-order"
+      ],
+      "disposition": "taught",
+      "reason": "本文・判断・図の読取りに統合"
+    },
+    {
+      "sourceId": "word-p-000368",
+      "nodeIds": [
+        "n08-q08-order",
+        "n08-q08-difference",
+        "n08-08"
+      ],
+      "disposition": "taught",
+      "reason": "本文・判断・図の読取りに統合"
+    },
+    {
+      "sourceId": "word-p-000369",
+      "nodeIds": [
+        "n08-q09-bracket",
+        "n08-q09-distribute",
+        "n08-09"
+      ],
+      "disposition": "taught",
+      "reason": "本文・判断・図の読取りに統合"
+    },
+    {
+      "sourceId": "word-p-000370",
+      "nodeIds": [
+        "n08-q10-forward"
+      ],
+      "disposition": "taught",
+      "reason": "本文・判断・図の読取りに統合"
+    },
+    {
+      "sourceId": "word-p-000371",
+      "nodeIds": [
+        "n08-q10-forward",
+        "n08-q10-reverse",
+        "n08-10"
+      ],
+      "disposition": "taught",
+      "reason": "本文・判断・図の読取りに統合"
+    },
+    {
+      "sourceId": "word-p-000372",
+      "nodeIds": [
+        "n08-q11-positive",
+        "n08-q11-negative",
+        "n08-q11-zero",
+        "n08-11"
+      ],
+      "disposition": "taught",
+      "reason": "本文・判断・図の読取りに統合"
+    },
+    {
+      "sourceId": "word-p-000373",
+      "nodeIds": [
+        "n08-q12-nonnegative",
+        "n08-q12-negative",
+        "n08-12"
+      ],
+      "disposition": "taught",
+      "reason": "本文・判断・図の読取りに統合"
+    },
+    {
+      "sourceId": "word-p-000374",
+      "nodeIds": [
+        "n08-closing"
+      ],
+      "disposition": "taught",
+      "reason": "本文・判断・図の読取りに統合"
+    },
+    {
+      "sourceId": "word-p-000375",
+      "nodeIds": [],
+      "disposition": "structural",
+      "reason": "見出し・役割ラベル・次節の見出しを構造として保持。問題や重要説明の省略ではない。"
+    }
+  ],
+  "initialFacts": [
+    "signed-arithmetic",
+    "number-line",
+    "order-translation",
+    "positive-square-order",
+    "sqrt5-given",
+    "pi-given"
+  ],
+  "nodes": [
+    {
+      "id": "n08-q01-right",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000343",
+        "word-p-000344",
+        "word-p-000345",
+        "word-p-000347"
+      ],
+      "requires": [],
+      "produces": [
+        "n08-q01-right-result"
+      ],
+      "role": "example",
+      "goal": "右側の点から原点までの距離",
+      "purpose": "右側の点から原点までの距離",
+      "operation": {
+        "kind": "calculation",
+        "targets": [
+          "word-p-000343",
+          "word-p-000344",
+          "word-p-000345",
+          "word-p-000347"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-q01-right-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0001",
+              "text": "図の右側にある "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0002",
+              "latex": "2.3",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0002"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0003",
+              "text": " の点を見ます。原点の座標は "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0004",
+              "latex": "0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0004"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0005",
+              "text": " です。右側の座標から左側の座標を引き、距離を求めます。"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q01-right-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-part-0006",
+              "latex": "2.3-0=2.3",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0006"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0007",
+              "text": " です。右側の点は原点から "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0008",
+              "latex": "2.3",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0008"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0009",
+              "text": " 離れています。次は左側の点を同じ方法で見ます。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "noBlankReason": "未知の定義・全場合の表・境界確認・学習接続は教える本文として明示する。既知の判断を問う箇所は別nodeで穴にした。"
+    },
+    {
+      "id": "n08-q01-left",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000343",
+        "word-p-000344",
+        "word-p-000346",
+        "word-p-000347"
+      ],
+      "requires": [
+        "n08-q01-right-result"
+      ],
+      "produces": [
+        "n08-q01-left-result"
+      ],
+      "role": "substep",
+      "goal": "左側でも右の座標から左の座標を引く",
+      "purpose": "左側でも右の座標から左の座標を引く",
+      "operation": {
+        "kind": "calculation",
+        "targets": [
+          "word-p-000343",
+          "word-p-000344",
+          "word-p-000346",
+          "word-p-000347"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-q01-left-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-part-0010",
+              "latex": "-5",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0010"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0011",
+              "text": " の点は原点の左側です。右側は "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0012",
+              "latex": "0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0012"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0013",
+              "text": "、左側は "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0014",
+              "latex": "-5",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0014"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0015",
+              "text": " なので、距離は "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0016",
+              "latex": "0-(-5)",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0016"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0017",
+              "text": " と表せます。"
+            }
+          ]
+        },
+        {
+          "id": "n08-q01-left-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "n08-q01-left-interaction-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0019",
+                  "latex": "0-(-5)=",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0019"
+                },
+                {
+                  "kind": "answerSlot",
+                  "id": "n08-q01-left-slot",
+                  "interactionId": "n08-q01-left-answer",
+                  "semanticRef": "n08-q01-left-answer"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "n08-q01-left",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "n08-q01-left-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q01-left-result",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "n08-q01-left-result-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0020",
+                  "latex": "0-(-5)",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0020"
+                }
+              ]
+            },
+            {
+              "id": "n08-q01-left-result-expr-1",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0021",
+                  "latex": "5",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0021"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "="
+          ],
+          "transformRef": "n08-q01-left",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "n08-q01-left-result",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "n08-q01-left-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0018",
+              "text": "座標に負号が付いていても、原点からの距離は正です。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n08-q01-left-answer",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "calculation",
+        "whyHere": "左側でも右の座標から左の座標を引く",
+        "prerequisiteIds": [
+          "n08-q01-right-result"
+        ],
+        "expected": {
+          "value": "5",
+          "form": "formula",
+          "semanticType": "calculation"
+        },
+        "choices": [
+          {
+            "id": "n08-q01-left-answer-correct",
+            "content": "5",
+            "feedback": "座標に負号が付いていても、原点からの距離は正です。"
+          },
+          {
+            "id": "n08-q01-left-answer-wrong-0",
+            "content": "-5",
+            "misconception": "負なのは座標です。距離が負になっていないか確かめます。",
+            "feedback": "負なのは座標です。距離が負になっていないか確かめます。"
+          },
+          {
+            "id": "n08-q01-left-answer-wrong-1",
+            "content": "0",
+            "misconception": "原点と重なってはいません。",
+            "feedback": "原点と重なってはいません。"
+          }
+        ],
+        "hints": [
+          "負の数を引く計算を思い出します。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-q01-left-interaction",
+          "slotId": "n08-q01-left-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-01",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000347"
+      ],
+      "requires": [
+        "n08-q01-left-result"
+      ],
+      "produces": [
+        "n08-01-result"
+      ],
+      "role": "substep",
+      "goal": "元の順序で二つの距離をまとめる",
+      "purpose": "元の順序で二つの距離をまとめる",
+      "operation": {
+        "kind": "meaning",
+        "targets": [
+          "word-p-000347"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-01-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0022",
+              "text": "問題の順序は "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0023",
+              "latex": "2.3",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0023"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0024",
+              "text": " の点、次に "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0025",
+              "latex": "-5",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0025"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0026",
+              "text": " の点です。求めた二つの距離を、この順序でまとめます。"
+            }
+          ]
+        },
+        {
+          "id": "n08-01-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "n08-01-interaction-expr-0",
+              "parts": [
+                {
+                  "kind": "answerSlot",
+                  "id": "n08-01-slot",
+                  "interactionId": "n08-01",
+                  "semanticRef": "n08-01"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "n08-01",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "n08-01-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-01-result",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "n08-01-result-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0028",
+                  "latex": "2.3,\\quad5",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0028"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "n08-01",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "n08-01-result",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "n08-01-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0027",
+              "text": "どちらも向きではなく、原点との離れ具合を表しています。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n08-01",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "meaning",
+        "whyHere": "元の順序で二つの距離をまとめる",
+        "prerequisiteIds": [
+          "n08-q01-left-result"
+        ],
+        "expected": {
+          "value": "2.3,\\quad5",
+          "form": "formula",
+          "semanticType": "meaning"
+        },
+        "choices": [
+          {
+            "id": "n08-01-correct",
+            "content": "2.3,\\quad5",
+            "feedback": "どちらも向きではなく、原点との離れ具合を表しています。"
+          },
+          {
+            "id": "n08-01-wrong-0",
+            "content": "2.3,\\quad-5",
+            "misconception": "二つ目に座標をそのまま書いています。",
+            "feedback": "二つ目に座標をそのまま書いています。"
+          },
+          {
+            "id": "n08-01-wrong-1",
+            "content": "-2.3,\\quad5",
+            "misconception": "右の点の距離も負にはなりません。",
+            "feedback": "右の点の距離も負にはなりません。"
+          },
+          {
+            "id": "n08-01-wrong-2",
+            "content": "5,\\quad2.3",
+            "misconception": "距離は正しくても、元の問題で指定された点の順序と逆です。",
+            "feedback": "距離は正しくても、元の問題で指定された点の順序と逆です。"
+          }
+        ],
+        "hints": [
+          "二つの計算結果を、図ではなく問題文の順に並べます。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-01-interaction",
+          "slotId": "n08-01-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-definition",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000348"
+      ],
+      "requires": [
+        "n08-01-result"
+      ],
+      "produces": [
+        "n08-definition-result"
+      ],
+      "role": "definition",
+      "goal": "この距離を絶対値と名付ける",
+      "purpose": "この距離を絶対値と名付ける",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000348"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-definition-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0029",
+              "text": "実数 "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0030",
+              "latex": "a",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0030"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0031",
+              "text": " を表す点と原点との距離を、"
+            },
+            {
+              "kind": "term",
+              "id": "n08-part-0032",
+              "termId": "absolute-value",
+              "text": "絶対値",
+              "usage": "first_definition"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0033",
+              "text": "といい、"
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0034",
+              "latex": "|a|",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0034"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0035",
+              "text": " と書きます。縦の二本の線は、中にある式全体について距離を取る記号です。"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-definition-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0036",
+              "text": "未知の名前を当てさせず、ここで定義します。次に、座標の正負に応じてこの距離を式にします。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [
+        {
+          "id": "n08-definition-context-0",
+          "problemId": "absolute-value",
+          "factIds": [
+            "n08-01-result"
+          ],
+          "reason": "この判断に使う既に確定した結果"
+        }
+      ],
+      "noBlankReason": "未知の定義・全場合の表・境界確認・学習接続は教える本文として明示する。既知の判断を問う箇所は別nodeで穴にした。"
+    },
+    {
+      "id": "n08-02",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000350",
+        "word-p-000351"
+      ],
+      "requires": [
+        "n08-definition-result"
+      ],
+      "produces": [
+        "n08-02-result"
+      ],
+      "role": "substep",
+      "goal": "原点か右側なら座標が距離になる",
+      "purpose": "原点か右側なら座標が距離になる",
+      "operation": {
+        "kind": "relation",
+        "targets": [
+          "word-p-000350",
+          "word-p-000351"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-02-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-part-0037",
+              "latex": "a\\ge0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0037"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0038",
+              "text": " の場合を考えます。点は原点か右側にあるので、右の座標 "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0039",
+              "latex": "a",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0039"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0040",
+              "text": " から左の座標 "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0041",
+              "latex": "0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0041"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0042",
+              "text": " を引きます。"
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0043",
+              "latex": "a-0=a",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0043"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0044",
+              "text": " を絶対値の記号でまとめます。"
+            }
+          ]
+        },
+        {
+          "id": "n08-02-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "n08-02-interaction-expr-0",
+              "parts": [
+                {
+                  "kind": "answerSlot",
+                  "id": "n08-02-slot",
+                  "interactionId": "n08-02",
+                  "semanticRef": "n08-02"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "n08-02",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "n08-02-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-02-result",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "n08-02-result-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0050",
+                  "latex": "|a|",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0050"
+                }
+              ]
+            },
+            {
+              "id": "n08-02-result-expr-1",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0051",
+                  "latex": "a",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0051"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "="
+          ],
+          "transformRef": "n08-02",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "n08-02-result",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "n08-02-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0045",
+              "text": "条件 "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0046",
+              "latex": "a\\ge0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0046"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0047",
+              "text": " の場合の結論です。"
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0048",
+              "latex": "a=0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0048"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0049",
+              "text": " の場合も含みます。左側の場合も調べれば、すべての実数を扱えます。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n08-02",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "relation",
+        "whyHere": "原点か右側なら座標が距離になる",
+        "prerequisiteIds": [
+          "n08-definition-result"
+        ],
+        "expected": {
+          "value": "|a|=a",
+          "form": "formula",
+          "semanticType": "relation"
+        },
+        "choices": [
+          {
+            "id": "n08-02-correct",
+            "content": "|a|=a",
+            "feedback": "条件 $a\\ge0$ の場合の結論です。$a=0$ の場合も含みます。左側の場合も調べれば、すべての実数を扱えます。"
+          },
+          {
+            "id": "n08-02-wrong-0",
+            "content": "|a|=-a",
+            "misconception": "この場合は座標がすでに非負です。",
+            "feedback": "この場合は座標がすでに非負です。"
+          },
+          {
+            "id": "n08-02-wrong-1",
+            "content": "|a|=0",
+            "misconception": "原点と一致するのは境界のときだけです。",
+            "feedback": "原点と一致するのは境界のときだけです。"
+          },
+          {
+            "id": "n08-02-wrong-2",
+            "content": "|a|=a^2",
+            "misconception": "距離を求める操作は二乗ではありません。",
+            "feedback": "距離を求める操作は二乗ではありません。"
+          }
+        ],
+        "hints": [
+          "場合の条件と、左右の座標を確かめます。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-02-interaction",
+          "slotId": "n08-02-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-q03-order",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000352",
+        "word-p-000353"
+      ],
+      "requires": [
+        "n08-02-result"
+      ],
+      "produces": [
+        "n08-q03-order-result"
+      ],
+      "role": "substep",
+      "goal": "左側の点の距離を引き算で作る",
+      "purpose": "左側の点の距離を引き算で作る",
+      "operation": {
+        "kind": "judgment",
+        "targets": [
+          "word-p-000352",
+          "word-p-000353"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-q03-order-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-part-0052",
+              "latex": "a<0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0052"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0053",
+              "text": " なら、左に "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0054",
+              "latex": "a",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0054"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0055",
+              "text": "、右に "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0056",
+              "latex": "0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0056"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0057",
+              "text": " があります。距離の式は「右側の座標−左側の座標」の順に作ります。"
+            }
+          ]
+        },
+        {
+          "id": "n08-q03-order-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "n08-q03-order-interaction-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0061",
+                  "latex": "|a|=",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0061"
+                },
+                {
+                  "kind": "answerSlot",
+                  "id": "n08-q03-order-slot",
+                  "interactionId": "n08-q03-order-answer",
+                  "semanticRef": "n08-q03-order-answer"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "n08-q03-order",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "n08-q03-order-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q03-order-result",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "n08-q03-order-result-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0062",
+                  "latex": "|a|",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0062"
+                }
+              ]
+            },
+            {
+              "id": "n08-q03-order-result-expr-1",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0063",
+                  "latex": "0-a",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0063"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "="
+          ],
+          "transformRef": "n08-q03-order",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "n08-q03-order-result",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "n08-q03-order-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0058",
+              "text": "条件 "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0059",
+              "latex": "a<0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0059"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0060",
+              "text": " の場合の結論です。次は、この引き算を一つの項にします。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [
+        {
+          "id": "n08-q03-order-context-0",
+          "problemId": "absolute-value",
+          "factIds": [
+            "n08-02-result"
+          ],
+          "reason": "この判断に使う既に確定した結果"
+        }
+      ],
+      "interaction": {
+        "id": "n08-q03-order-answer",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "judgment",
+        "whyHere": "左側の点の距離を引き算で作る",
+        "prerequisiteIds": [
+          "n08-02-result"
+        ],
+        "expected": {
+          "value": "0-a",
+          "form": "formula",
+          "semanticType": "judgment"
+        },
+        "choices": [
+          {
+            "id": "n08-q03-order-answer-correct",
+            "content": "0-a",
+            "feedback": "条件 $a<0$ の場合の結論です。次は、この引き算を一つの項にします。"
+          },
+          {
+            "id": "n08-q03-order-answer-wrong-0",
+            "content": "a-0",
+            "misconception": "左側から右側を引いています。",
+            "feedback": "左側から右側を引いています。"
+          },
+          {
+            "id": "n08-q03-order-answer-wrong-1",
+            "content": "0+a",
+            "misconception": "距離を出す引き算になっていません。",
+            "feedback": "距離を出す引き算になっていません。"
+          }
+        ],
+        "hints": [
+          "数直線で、二点の右と左を先に決めます。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-q03-order-interaction",
+          "slotId": "n08-q03-order-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-03",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000353"
+      ],
+      "requires": [
+        "n08-q03-order-result"
+      ],
+      "produces": [
+        "n08-03-result"
+      ],
+      "role": "substep",
+      "goal": "左側の距離を簡単にする",
+      "purpose": "左側の距離を簡単にする",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000353"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-03-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0064",
+              "text": "先ほど作った "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0065",
+              "latex": "0-a",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0065"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0066",
+              "text": " では、"
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0067",
+              "latex": "0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0067"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0068",
+              "text": " から "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0069",
+              "latex": "a",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0069"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0070",
+              "text": " を引いています。"
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0071",
+              "latex": "a",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0071"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0072",
+              "text": " と符号が反対の数になるので、等式を完成させます。"
+            }
+          ]
+        },
+        {
+          "id": "n08-03-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "n08-03-interaction-expr-0",
+              "parts": [
+                {
+                  "kind": "answerSlot",
+                  "id": "n08-03-slot",
+                  "interactionId": "n08-03",
+                  "semanticRef": "n08-03"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "n08-03",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "n08-03-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-03-result",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "n08-03-result-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0082",
+                  "latex": "0-a",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0082"
+                }
+              ]
+            },
+            {
+              "id": "n08-03-result-expr-1",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0083",
+                  "latex": "-a",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0083"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "="
+          ],
+          "transformRef": "n08-03",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "n08-03-result",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "n08-03-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0073",
+              "text": "条件 "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0074",
+              "latex": "a<0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0074"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0075",
+              "text": " の場合の結論です。"
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0076",
+              "latex": "a<0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0076"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0077",
+              "text": " のとき、"
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0078",
+              "latex": "|a|=-a",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0078"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0079",
+              "text": " です。"
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0080",
+              "latex": "-a",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0080"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0081",
+              "text": " という見た目だけで、値まで負と判断しないようにします。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n08-03",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "expression",
+        "whyHere": "左側の距離を簡単にする",
+        "prerequisiteIds": [
+          "n08-q03-order-result"
+        ],
+        "expected": {
+          "value": "0-a=-a",
+          "form": "formula",
+          "semanticType": "expression"
+        },
+        "choices": [
+          {
+            "id": "n08-03-correct",
+            "content": "0-a=-a",
+            "feedback": "条件 $a<0$ の場合の結論です。$a<0$ のとき、$|a|=-a$ です。$-a$ という見た目だけで、値まで負と判断しないようにします。"
+          },
+          {
+            "id": "n08-03-wrong-0",
+            "content": "0-a=a",
+            "misconception": "引き算の符号が失われています。",
+            "feedback": "引き算の符号が失われています。"
+          },
+          {
+            "id": "n08-03-wrong-1",
+            "content": "a-0=a",
+            "misconception": "前の段階で作った引き算を入れ替えています。",
+            "feedback": "前の段階で作った引き算を入れ替えています。"
+          },
+          {
+            "id": "n08-03-wrong-2",
+            "content": "0+a=a",
+            "misconception": "引く操作が足す操作に変わっています。",
+            "feedback": "引く操作が足す操作に変わっています。"
+          }
+        ],
+        "hints": [
+          "0から引いた数は、元の数と符号が反対です。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-03-interaction",
+          "slotId": "n08-03-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-q04-substitute",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000354"
+      ],
+      "requires": [
+        "n08-03-result"
+      ],
+      "produces": [
+        "n08-q04-substitute-result"
+      ],
+      "role": "substep",
+      "goal": "負の値は括弧を付けて代入する",
+      "purpose": "負の値は括弧を付けて代入する",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000354"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-q04-substitute-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0084",
+              "text": "いまの式 "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0085",
+              "latex": "-a",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0085"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0086",
+              "text": " の "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0087",
+              "latex": "a",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0087"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0088",
+              "text": " へ "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0089",
+              "latex": "-5",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0089"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0090",
+              "text": " を入れます。元からある負号と代入する負の数を区別するため、代入する数を括弧で囲みます。"
+            }
+          ]
+        },
+        {
+          "id": "n08-q04-substitute-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "n08-q04-substitute-interaction-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0092",
+                  "latex": "-a=",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0092"
+                },
+                {
+                  "kind": "answerSlot",
+                  "id": "n08-q04-substitute-slot",
+                  "interactionId": "n08-q04-substitute-answer",
+                  "semanticRef": "n08-q04-substitute-answer"
+                },
+                {
+                  "kind": "math",
+                  "id": "n08-part-0093",
+                  "latex": "\\quad(a=-5)",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0093"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "n08-q04-substitute",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "n08-q04-substitute-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q04-substitute-result",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "n08-q04-substitute-result-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0094",
+                  "latex": "-a",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0094"
+                }
+              ]
+            },
+            {
+              "id": "n08-q04-substitute-result-expr-1",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0095",
+                  "latex": "-(-5)",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0095"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "="
+          ],
+          "transformRef": "n08-q04-substitute",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "n08-q04-substitute-result",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "n08-q04-substitute-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0091",
+              "text": "外側の負号は、括弧の中の数と符号が反対の数を作ります。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [
+        {
+          "id": "n08-q04-substitute-context-0",
+          "problemId": "absolute-value",
+          "factIds": [
+            "n08-03-result"
+          ],
+          "reason": "この判断に使う既に確定した結果"
+        }
+      ],
+      "interaction": {
+        "id": "n08-q04-substitute-answer",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "expression",
+        "whyHere": "負の値は括弧を付けて代入する",
+        "prerequisiteIds": [
+          "n08-03-result"
+        ],
+        "expected": {
+          "value": "-(-5)",
+          "form": "formula",
+          "semanticType": "expression"
+        },
+        "choices": [
+          {
+            "id": "n08-q04-substitute-answer-correct",
+            "content": "-(-5)",
+            "feedback": "外側の負号は、括弧の中の数と符号が反対の数を作ります。"
+          },
+          {
+            "id": "n08-q04-substitute-answer-wrong-0",
+            "content": "-5",
+            "misconception": "元からあった負号を落としています。",
+            "feedback": "元からあった負号を落としています。"
+          },
+          {
+            "id": "n08-q04-substitute-answer-wrong-1",
+            "content": "-a",
+            "misconception": "まだ数を代入していません。",
+            "feedback": "まだ数を代入していません。"
+          }
+        ],
+        "hints": [
+          "式に元からある負号を残して、文字の場所だけを置き換えます。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-q04-substitute-interaction",
+          "slotId": "n08-q04-substitute-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-04",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000354"
+      ],
+      "requires": [
+        "n08-q04-substitute-result"
+      ],
+      "produces": [
+        "n08-04-result"
+      ],
+      "role": "substep",
+      "goal": "代入した式の値を計算する",
+      "purpose": "代入した式の値を計算する",
+      "operation": {
+        "kind": "calculation",
+        "targets": [
+          "word-p-000354"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-04-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0096",
+              "text": "負の数 "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0097",
+              "latex": "-5",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0097"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0098",
+              "text": " と符号が反対の数を求めます。式と値を等号でつないで、左側の点の距離と照合します。"
+            }
+          ]
+        },
+        {
+          "id": "n08-04-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "n08-04-interaction-expr-0",
+              "parts": [
+                {
+                  "kind": "answerSlot",
+                  "id": "n08-04-slot",
+                  "interactionId": "n08-04",
+                  "semanticRef": "n08-04"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "n08-04",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "n08-04-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-04-result",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "n08-04-result-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0104",
+                  "latex": "-(-5)",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0104"
+                }
+              ]
+            },
+            {
+              "id": "n08-04-result-expr-1",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0105",
+                  "latex": "5",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0105"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "="
+          ],
+          "transformRef": "n08-04",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "n08-04-result",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "n08-04-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0099",
+              "text": "初めに図から求めた距離と一致しました。"
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0100",
+              "latex": "-a",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0100"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0101",
+              "text": " は、"
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0102",
+              "latex": "a",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0102"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0103",
+              "text": " が負の場合には正になります。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n08-04",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "calculation",
+        "whyHere": "代入した式の値を計算する",
+        "prerequisiteIds": [
+          "n08-q04-substitute-result"
+        ],
+        "expected": {
+          "value": "-(-5)=5",
+          "form": "formula",
+          "semanticType": "calculation"
+        },
+        "choices": [
+          {
+            "id": "n08-04-correct",
+            "content": "-(-5)=5",
+            "feedback": "初めに図から求めた距離と一致しました。$-a$ は、$a$ が負の場合には正になります。"
+          },
+          {
+            "id": "n08-04-wrong-0",
+            "content": "-(-5)=-5",
+            "misconception": "外側の負号の働きが反映されていません。",
+            "feedback": "外側の負号の働きが反映されていません。"
+          },
+          {
+            "id": "n08-04-wrong-1",
+            "content": "-5=5",
+            "misconception": "値が違う二数を等号で結んでいます。",
+            "feedback": "値が違う二数を等号で結んでいます。"
+          },
+          {
+            "id": "n08-04-wrong-2",
+            "content": "-(-5)=0",
+            "misconception": "符号の反転は0を作る操作ではありません。",
+            "feedback": "符号の反転は0を作る操作ではありません。"
+          }
+        ],
+        "hints": [
+          "外側の負号は符号を反対にする指示です。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-04-interaction",
+          "slotId": "n08-04-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-cases",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000355",
+        "word-p-000356"
+      ],
+      "requires": [
+        "n08-04-result"
+      ],
+      "produces": [
+        "n08-cases-result"
+      ],
+      "role": "property",
+      "goal": "絶対値を外す規則を二つにまとめる",
+      "purpose": "絶対値を外す規則を二つにまとめる",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000355",
+          "word-p-000356"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-cases-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0106",
+              "text": "ここまでの二つの場合を、条件と式が対応する表にまとめます。"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-cases-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-part-0107",
+              "latex": "a\\ge0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0107"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0108",
+              "text": " なら "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0109",
+              "latex": "|a|=a",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0109"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0110",
+              "text": "、"
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0111",
+              "latex": "a<0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0111"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0112",
+              "text": " なら "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0113",
+              "latex": "|a|=-a",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0113"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0114",
+              "text": " です。絶対値を外す前に、中の式全体がどちらの条件に当てはまるかを調べます。減号があるという理由だけでは決まりません。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "noBlankReason": "未知の定義・全場合の表・境界確認・学習接続は教える本文として明示する。既知の判断を問う箇所は別nodeで穴にした。"
+    },
+    {
+      "id": "n08-q05-square",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000357",
+        "word-p-000358",
+        "word-p-000359",
+        "word-p-000360",
+        "word-p-000361",
+        "word-p-000362"
+      ],
+      "requires": [
+        "n08-cases-result"
+      ],
+      "produces": [
+        "n08-q05-square-result"
+      ],
+      "role": "example",
+      "goal": "正の二数の大小を比べる準備",
+      "purpose": "正の二数の大小を比べる準備",
+      "operation": {
+        "kind": "calculation",
+        "targets": [
+          "word-p-000357",
+          "word-p-000358",
+          "word-p-000359",
+          "word-p-000360",
+          "word-p-000361",
+          "word-p-000362"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-q05-square-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0115",
+              "text": "例題は "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0116",
+              "latex": "|\\sqrt5-3|",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0116"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0117",
+              "text": " を絶対値記号なしで表すことです。ここでは "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0118",
+              "latex": "\\sqrt5",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0118"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0119",
+              "text": " は正で、二乗すると "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0120",
+              "latex": "5",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0120"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0121",
+              "text": " になる数だと使います。正の二数では二乗しても大小の向きが保たれます。まず "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0122",
+              "latex": "3",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0122"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0123",
+              "text": " の二乗を計算します。"
+            }
+          ]
+        },
+        {
+          "id": "n08-q05-square-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "n08-q05-square-interaction-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0126",
+                  "latex": "3^2=",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0126"
+                },
+                {
+                  "kind": "answerSlot",
+                  "id": "n08-q05-square-slot",
+                  "interactionId": "n08-q05-square-answer",
+                  "semanticRef": "n08-q05-square-answer"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "n08-q05-square",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "n08-q05-square-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q05-square-result",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "n08-q05-square-result-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0127",
+                  "latex": "3^2",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0127"
+                }
+              ]
+            },
+            {
+              "id": "n08-q05-square-result-expr-1",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0128",
+                  "latex": "9",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0128"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "="
+          ],
+          "transformRef": "n08-q05-square",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "n08-q05-square-result",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "n08-q05-square-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-part-0124",
+              "latex": "(\\sqrt5)^2=5",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0124"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0125",
+              "text": " と、いま求めた値を比較します。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [
+        {
+          "id": "n08-q05-square-context-0",
+          "problemId": "absolute-value",
+          "factIds": [
+            "n08-cases-result"
+          ],
+          "reason": "この判断に使う既に確定した結果"
+        }
+      ],
+      "interaction": {
+        "id": "n08-q05-square-answer",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "calculation",
+        "whyHere": "正の二数の大小を比べる準備",
+        "prerequisiteIds": [
+          "n08-cases-result"
+        ],
+        "expected": {
+          "value": "9",
+          "form": "formula",
+          "semanticType": "calculation"
+        },
+        "choices": [
+          {
+            "id": "n08-q05-square-answer-correct",
+            "content": "9",
+            "feedback": "$(\\sqrt5)^2=5$ と、いま求めた値を比較します。"
+          },
+          {
+            "id": "n08-q05-square-answer-wrong-0",
+            "content": "6",
+            "misconception": "二乗は2倍ではありません。",
+            "feedback": "二乗は2倍ではありません。"
+          },
+          {
+            "id": "n08-q05-square-answer-wrong-1",
+            "content": "3",
+            "misconception": "同じ数を二つ掛けます。",
+            "feedback": "同じ数を二つ掛けます。"
+          }
+        ],
+        "hints": [
+          "指数の2は、同じ数を二つ掛けることを表します。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-q05-square-interaction",
+          "slotId": "n08-q05-square-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-q05-compare",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000362"
+      ],
+      "requires": [
+        "n08-q05-square-result"
+      ],
+      "produces": [
+        "n08-q05-compare-result"
+      ],
+      "role": "substep",
+      "goal": "二乗した値の大小を決める",
+      "purpose": "二乗した値の大小を決める",
+      "operation": {
+        "kind": "judgment",
+        "targets": [
+          "word-p-000362"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-q05-compare-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0129",
+              "text": "両方とも正なので、二乗した値の比較を元の二数の比較に戻せます。まず "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0130",
+              "latex": "5",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0130"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0131",
+              "text": " と "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0132",
+              "latex": "9",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0132"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0133",
+              "text": " の間の不等号を選びます。"
+            }
+          ]
+        },
+        {
+          "id": "n08-q05-compare-interaction",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-part-0135",
+              "latex": "5\\ ",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0135"
+            },
+            {
+              "kind": "answerSlot",
+              "id": "n08-q05-compare-slot",
+              "interactionId": "n08-q05-compare-answer",
+              "semanticRef": "n08-q05-compare-answer"
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0136",
+              "latex": "\\ 9",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0136"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q05-compare-result",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "n08-q05-compare-result-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0137",
+                  "latex": "5\\ <\\ 9",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0137"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "n08-q05-compare",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "n08-q05-compare-result",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "n08-q05-compare-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0134",
+              "text": "ここでは二乗した値の比較ができました。次に元の二数について結論を出します。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n08-q05-compare-answer",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "judgment",
+        "whyHere": "二乗した値の大小を決める",
+        "prerequisiteIds": [
+          "n08-q05-square-result"
+        ],
+        "expected": {
+          "value": "<",
+          "form": "text",
+          "semanticType": "judgment"
+        },
+        "choices": [
+          {
+            "id": "n08-q05-compare-answer-correct",
+            "content": "<",
+            "feedback": "ここでは二乗した値の比較ができました。次に元の二数について結論を出します。"
+          },
+          {
+            "id": "n08-q05-compare-answer-wrong-0",
+            "content": ">",
+            "misconception": "左右の数の大きさをもう一度比べます。",
+            "feedback": "左右の数の大きさをもう一度比べます。"
+          },
+          {
+            "id": "n08-q05-compare-answer-wrong-1",
+            "content": "=",
+            "misconception": "二つは同じ数ではありません。",
+            "feedback": "二つは同じ数ではありません。"
+          }
+        ],
+        "hints": [
+          "数直線で右にある数が大きい数です。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-q05-compare-interaction",
+          "slotId": "n08-q05-compare-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-05",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000362"
+      ],
+      "requires": [
+        "n08-q05-compare-result"
+      ],
+      "produces": [
+        "n08-05-result"
+      ],
+      "role": "substep",
+      "goal": "根拠と元の数の大小関係を結ぶ",
+      "purpose": "根拠と元の数の大小関係を結ぶ",
+      "operation": {
+        "kind": "relation",
+        "targets": [
+          "word-p-000362"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-05-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0138",
+              "text": "比較している二数はともに非負です。先ほどの二乗の比較から、元の二数にも同じ向きの大小関係が成り立ちます。"
+            }
+          ]
+        },
+        {
+          "id": "n08-05-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "n08-05-interaction-expr-0",
+              "parts": [
+                {
+                  "kind": "answerSlot",
+                  "id": "n08-05-slot",
+                  "interactionId": "n08-05",
+                  "semanticRef": "n08-05"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "n08-05",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "n08-05-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-05-result",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "n08-05-result-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0140",
+                  "latex": "5<9,\\quad\\sqrt5<3",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0140"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "n08-05",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "n08-05-result",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "n08-05-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0139",
+              "text": "大小関係は、次の差の符号の根拠として記録します。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n08-05",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "relation",
+        "whyHere": "根拠と元の数の大小関係を結ぶ",
+        "prerequisiteIds": [
+          "n08-q05-compare-result"
+        ],
+        "expected": {
+          "value": "5<9,\\quad\\sqrt5<3",
+          "form": "formula",
+          "semanticType": "relation"
+        },
+        "choices": [
+          {
+            "id": "n08-05-correct",
+            "content": "5<9,\\quad\\sqrt5<3",
+            "feedback": "大小関係は、次の差の符号の根拠として記録します。"
+          },
+          {
+            "id": "n08-05-wrong-0",
+            "content": "5>9,\\quad\\sqrt5>3",
+            "misconception": "二乗した値の比較を逆にしています。",
+            "feedback": "二乗した値の比較を逆にしています。"
+          },
+          {
+            "id": "n08-05-wrong-1",
+            "content": "5<9,\\quad\\sqrt5>3",
+            "misconception": "非負の数の大小を戻す向きが逆です。",
+            "feedback": "非負の数の大小を戻す向きが逆です。"
+          },
+          {
+            "id": "n08-05-wrong-2",
+            "content": "5=9,\\quad\\sqrt5=3",
+            "misconception": "値の違いを等号で結ぶことはできません。",
+            "feedback": "値の違いを等号で結ぶことはできません。"
+          }
+        ],
+        "hints": [
+          "比較した値と元の数を、それぞれ同じ順序で対応させます。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-05-interaction",
+          "slotId": "n08-05-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-q06-subtract",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000363"
+      ],
+      "requires": [
+        "n08-05-result"
+      ],
+      "produces": [
+        "n08-q06-subtract-result"
+      ],
+      "role": "substep",
+      "goal": "両辺から同じ数を引いて差の符号へ",
+      "purpose": "両辺から同じ数を引いて差の符号へ",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000363"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-q06-subtract-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0141",
+              "text": "記録した "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0142",
+              "latex": "\\sqrt5<3",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0142"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0143",
+              "text": " の両辺から "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0144",
+              "latex": "3",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0144"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0145",
+              "text": " を引きます。同じ数を引いても不等号の向きは変わりません。右辺の "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0146",
+              "latex": "3-3",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0146"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0147",
+              "text": " を計算して、差を0と比べます。"
+            }
+          ]
+        },
+        {
+          "id": "n08-q06-subtract-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "n08-q06-subtract-interaction-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0150",
+                  "latex": "\\sqrt5-3<",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0150"
+                },
+                {
+                  "kind": "answerSlot",
+                  "id": "n08-q06-subtract-slot",
+                  "interactionId": "n08-q06-subtract-answer",
+                  "semanticRef": "n08-q06-subtract-answer"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "n08-q06-subtract",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "n08-q06-subtract-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q06-subtract-result",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "n08-q06-subtract-result-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0151",
+                  "latex": "\\sqrt5-3<0",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0151"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "n08-q06-subtract",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "n08-q06-subtract-result",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "n08-q06-subtract-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-part-0148",
+              "latex": "\\sqrt5-3<0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0148"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0149",
+              "text": " なので、差の符号が決められます。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [
+        {
+          "id": "n08-q06-subtract-context-0",
+          "problemId": "absolute-value",
+          "factIds": [
+            "n08-05-result"
+          ],
+          "reason": "この判断に使う既に確定した結果"
+        }
+      ],
+      "interaction": {
+        "id": "n08-q06-subtract-answer",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "expression",
+        "whyHere": "両辺から同じ数を引いて差の符号へ",
+        "prerequisiteIds": [
+          "n08-05-result"
+        ],
+        "expected": {
+          "value": "0",
+          "form": "formula",
+          "semanticType": "expression"
+        },
+        "choices": [
+          {
+            "id": "n08-q06-subtract-answer-correct",
+            "content": "0",
+            "feedback": "$\\sqrt5-3<0$ なので、差の符号が決められます。"
+          },
+          {
+            "id": "n08-q06-subtract-answer-wrong-0",
+            "content": "3",
+            "misconception": "右辺からも同じ数を引きます。",
+            "feedback": "右辺からも同じ数を引きます。"
+          },
+          {
+            "id": "n08-q06-subtract-answer-wrong-1",
+            "content": "-3",
+            "misconception": "同じ数どうしの差を確かめます。",
+            "feedback": "同じ数どうしの差を確かめます。"
+          }
+        ],
+        "hints": [
+          "右辺で同じ数どうしを引きます。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-q06-subtract-interaction",
+          "slotId": "n08-q06-subtract-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-06",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000363"
+      ],
+      "requires": [
+        "n08-q06-subtract-result"
+      ],
+      "produces": [
+        "n08-06-result"
+      ],
+      "role": "substep",
+      "goal": "差が0より小さいことを言葉で読む",
+      "purpose": "差が0より小さいことを言葉で読む",
+      "operation": {
+        "kind": "judgment",
+        "targets": [
+          "word-p-000363"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-06-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0152",
+              "text": "絶対値の中身を0と比較できました。この結果を、正・0・負という言葉で読み取ります。"
+            }
+          ]
+        },
+        {
+          "id": "n08-06-interaction",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0154",
+              "text": "判断："
+            },
+            {
+              "kind": "answerSlot",
+              "id": "n08-06-slot",
+              "interactionId": "n08-06",
+              "semanticRef": "n08-06"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-06-answer",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-part-0155",
+              "latex": "\\sqrt5-3<0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0155"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0156",
+              "text": "、したがって負です。"
+            }
+          ]
+        },
+        {
+          "id": "n08-06-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0153",
+              "text": "中身が負だと分かりました。ここで初めて、絶対値を外す場合を選べます。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n08-06",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "judgment",
+        "whyHere": "差が0より小さいことを言葉で読む",
+        "prerequisiteIds": [
+          "n08-q06-subtract-result"
+        ],
+        "expected": {
+          "value": "負",
+          "form": "text",
+          "semanticType": "judgment"
+        },
+        "choices": [
+          {
+            "id": "n08-06-correct",
+            "content": "負",
+            "feedback": "中身が負だと分かりました。ここで初めて、絶対値を外す場合を選べます。"
+          },
+          {
+            "id": "n08-06-wrong-0",
+            "content": "正",
+            "misconception": "0より小さいという不等式と逆です。",
+            "feedback": "0より小さいという不等式と逆です。"
+          },
+          {
+            "id": "n08-06-wrong-1",
+            "content": "0",
+            "misconception": "不等号は等号ではありません。",
+            "feedback": "不等号は等号ではありません。"
+          },
+          {
+            "id": "n08-06-wrong-2",
+            "content": "符号は決まらない",
+            "misconception": "前の不等式から判断できます。",
+            "feedback": "前の不等式から判断できます。"
+          }
+        ],
+        "hints": [
+          "0との大小関係を符号の言葉に直します。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-06-interaction",
+          "slotId": "n08-06-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-q07-rule",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000355",
+        "word-p-000356",
+        "word-p-000364"
+      ],
+      "requires": [
+        "n08-06-result",
+        "n08-cases-result"
+      ],
+      "produces": [
+        "n08-q07-rule-result"
+      ],
+      "role": "substep",
+      "goal": "負の場合に使う規則を選ぶ",
+      "purpose": "負の場合に使う規則を選ぶ",
+      "operation": {
+        "kind": "judgment",
+        "targets": [
+          "word-p-000355",
+          "word-p-000356",
+          "word-p-000364"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-q07-rule-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0157",
+              "text": "使う規則では "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0158",
+              "latex": "u",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0158"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0159",
+              "text": " を絶対値の中にある式全体とします。今回は "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0160",
+              "latex": "u=\\sqrt5-3",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0160"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0161",
+              "text": " で、その値は負です。どちらの式を使うか選びます。"
+            }
+          ]
+        },
+        {
+          "id": "n08-q07-rule-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "n08-q07-rule-interaction-expr-0",
+              "parts": [
+                {
+                  "kind": "answerSlot",
+                  "id": "n08-q07-rule-slot",
+                  "interactionId": "n08-q07-rule-answer",
+                  "semanticRef": "n08-q07-rule-answer"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "n08-q07-rule",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "n08-q07-rule-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q07-rule-result",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "n08-q07-rule-result-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0163",
+                  "latex": "|u|",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0163"
+                }
+              ]
+            },
+            {
+              "id": "n08-q07-rule-result-expr-1",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0164",
+                  "latex": "-u",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0164"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "="
+          ],
+          "transformRef": "n08-q07-rule",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "n08-q07-rule-result",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "n08-q07-rule-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0162",
+              "text": "式全体に負号を付けます。一つの項だけの符号を変えるのではありません。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [
+        {
+          "id": "n08-q07-rule-context-0",
+          "problemId": "absolute-value",
+          "factIds": [
+            "n08-06-result"
+          ],
+          "reason": "この判断に使う既に確定した結果"
+        },
+        {
+          "id": "n08-q07-rule-context-1",
+          "problemId": "absolute-value",
+          "factIds": [
+            "n08-cases-result"
+          ],
+          "reason": "この判断に使う既に確定した結果"
+        }
+      ],
+      "interaction": {
+        "id": "n08-q07-rule-answer",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "judgment",
+        "whyHere": "負の場合に使う規則を選ぶ",
+        "prerequisiteIds": [
+          "n08-06-result",
+          "n08-cases-result"
+        ],
+        "expected": {
+          "value": "|u|=-u",
+          "form": "formula",
+          "semanticType": "judgment"
+        },
+        "choices": [
+          {
+            "id": "n08-q07-rule-answer-correct",
+            "content": "|u|=-u",
+            "feedback": "式全体に負号を付けます。一つの項だけの符号を変えるのではありません。"
+          },
+          {
+            "id": "n08-q07-rule-answer-wrong-0",
+            "content": "|u|=u",
+            "misconception": "これは中身が0以上のときの規則です。",
+            "feedback": "これは中身が0以上のときの規則です。"
+          },
+          {
+            "id": "n08-q07-rule-answer-wrong-1",
+            "content": "|u|=0",
+            "misconception": "中身が0のときだけの値です。",
+            "feedback": "中身が0のときだけの値です。"
+          }
+        ],
+        "hints": [
+          "中身の符号と、場合分け表の条件を照合します。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-q07-rule-interaction",
+          "slotId": "n08-q07-rule-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-q07-bracket",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000364"
+      ],
+      "requires": [
+        "n08-q07-rule-result",
+        "n08-cases-result"
+      ],
+      "produces": [
+        "n08-q07-bracket-result"
+      ],
+      "role": "substep",
+      "goal": "中身全体を括弧で囲んで負号を付ける",
+      "purpose": "中身全体を括弧で囲んで負号を付ける",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000364"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-q07-bracket-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0165",
+              "text": "規則の "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0166",
+              "latex": "u",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0166"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0167",
+              "text": " を "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0168",
+              "latex": "\\sqrt5-3",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0168"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0169",
+              "text": " に置き換えます。二つの項全体に負号が働くよう、括弧を付けます。"
+            }
+          ]
+        },
+        {
+          "id": "n08-q07-bracket-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "n08-q07-bracket-interaction-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0171",
+                  "latex": "|\\sqrt5-3|=",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0171"
+                },
+                {
+                  "kind": "answerSlot",
+                  "id": "n08-q07-bracket-slot",
+                  "interactionId": "n08-q07-bracket-answer",
+                  "semanticRef": "n08-q07-bracket-answer"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "n08-q07-bracket",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "n08-q07-bracket-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q07-bracket-result",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "n08-q07-bracket-result-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0172",
+                  "latex": "|\\sqrt5-3|",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0172"
+                }
+              ]
+            },
+            {
+              "id": "n08-q07-bracket-result-expr-1",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0173",
+                  "latex": "-(\\sqrt5-3)",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0173"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "="
+          ],
+          "transformRef": "n08-q07-bracket",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "n08-q07-bracket-result",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "n08-q07-bracket-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0170",
+              "text": "絶対値を外す操作はここまでです。次は、できた括弧を外す計算をします。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [
+        {
+          "id": "n08-q07-bracket-context-0",
+          "problemId": "absolute-value",
+          "factIds": [
+            "n08-cases-result"
+          ],
+          "reason": "この判断に使う既に確定した結果"
+        }
+      ],
+      "interaction": {
+        "id": "n08-q07-bracket-answer",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "expression",
+        "whyHere": "中身全体を括弧で囲んで負号を付ける",
+        "prerequisiteIds": [
+          "n08-q07-rule-result",
+          "n08-cases-result"
+        ],
+        "expected": {
+          "value": "-(\\sqrt5-3)",
+          "form": "formula",
+          "semanticType": "expression"
+        },
+        "choices": [
+          {
+            "id": "n08-q07-bracket-answer-correct",
+            "content": "-(\\sqrt5-3)",
+            "feedback": "絶対値を外す操作はここまでです。次は、できた括弧を外す計算をします。"
+          },
+          {
+            "id": "n08-q07-bracket-answer-wrong-0",
+            "content": "-\\sqrt5-3",
+            "misconception": "後ろの項まで負号を掛ける形になっていません。",
+            "feedback": "後ろの項まで負号を掛ける形になっていません。"
+          },
+          {
+            "id": "n08-q07-bracket-answer-wrong-1",
+            "content": "\\sqrt5-3",
+            "misconception": "中身が負という判定を反映していません。",
+            "feedback": "中身が負という判定を反映していません。"
+          }
+        ],
+        "hints": [
+          "括弧には中身をすべて入れ、その外に負号を置きます。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-q07-bracket-interaction",
+          "slotId": "n08-q07-bracket-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-q07-distribute",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000364",
+        "word-p-000365"
+      ],
+      "requires": [
+        "n08-q07-bracket-result",
+        "n08-cases-result"
+      ],
+      "produces": [
+        "n08-q07-distribute-result"
+      ],
+      "role": "substep",
+      "goal": "負号を括弧の二項へ掛ける",
+      "purpose": "負号を括弧の二項へ掛ける",
+      "operation": {
+        "kind": "calculation",
+        "targets": [
+          "word-p-000364",
+          "word-p-000365"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-q07-distribute-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0174",
+              "text": "括弧の前の負号は "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0175",
+              "latex": "-1",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0175"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0176",
+              "text": " を掛けることです。"
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0177",
+              "latex": "\\sqrt5",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0177"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0178",
+              "text": " と "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0179",
+              "latex": "-3",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0179"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0180",
+              "text": " の両方へ掛けます。"
+            }
+          ]
+        },
+        {
+          "id": "n08-q07-distribute-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "n08-q07-distribute-interaction-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0182",
+                  "latex": "-(\\sqrt5-3)=",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0182"
+                },
+                {
+                  "kind": "answerSlot",
+                  "id": "n08-q07-distribute-slot",
+                  "interactionId": "n08-q07-distribute-answer",
+                  "semanticRef": "n08-q07-distribute-answer"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "n08-q07-distribute",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "n08-q07-distribute-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q07-distribute-result",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "n08-q07-distribute-result-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0183",
+                  "latex": "-(\\sqrt5-3)",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0183"
+                }
+              ]
+            },
+            {
+              "id": "n08-q07-distribute-result-expr-1",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0184",
+                  "latex": "-\\sqrt5+3",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0184"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "="
+          ],
+          "transformRef": "n08-q07-distribute",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "n08-q07-distribute-result",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "n08-q07-distribute-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0181",
+              "text": "括弧の中の二つの項の符号が、それぞれ反対になりました。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [
+        {
+          "id": "n08-q07-distribute-context-0",
+          "problemId": "absolute-value",
+          "factIds": [
+            "n08-cases-result"
+          ],
+          "reason": "この判断に使う既に確定した結果"
+        }
+      ],
+      "interaction": {
+        "id": "n08-q07-distribute-answer",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "calculation",
+        "whyHere": "負号を括弧の二項へ掛ける",
+        "prerequisiteIds": [
+          "n08-q07-bracket-result",
+          "n08-cases-result"
+        ],
+        "expected": {
+          "value": "-\\sqrt5+3",
+          "form": "formula",
+          "semanticType": "calculation"
+        },
+        "choices": [
+          {
+            "id": "n08-q07-distribute-answer-correct",
+            "content": "-\\sqrt5+3",
+            "feedback": "括弧の中の二つの項の符号が、それぞれ反対になりました。"
+          },
+          {
+            "id": "n08-q07-distribute-answer-wrong-0",
+            "content": "-\\sqrt5-3",
+            "misconception": "第2項にも負号を掛けます。",
+            "feedback": "第2項にも負号を掛けます。"
+          },
+          {
+            "id": "n08-q07-distribute-answer-wrong-1",
+            "content": "\\sqrt5+3",
+            "misconception": "第1項にも負号を掛けます。",
+            "feedback": "第1項にも負号を掛けます。"
+          }
+        ],
+        "hints": [
+          "第2項は負の数なので、その項にさらに負号を掛けます。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-q07-distribute-interaction",
+          "slotId": "n08-q07-distribute-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-07",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000364",
+        "word-p-000365"
+      ],
+      "requires": [
+        "n08-q07-distribute-result",
+        "n08-cases-result"
+      ],
+      "produces": [
+        "n08-07-result"
+      ],
+      "role": "substep",
+      "goal": "正の項を先に並べて元の問いへ答える",
+      "purpose": "正の項を先に並べて元の問いへ答える",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000364",
+          "word-p-000365"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-07-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-part-0185",
+              "latex": "-\\sqrt5+3",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0185"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0186",
+              "text": " は、加法の交換法則で項の順を変えられます。絶対値も括弧もない形を、元の問題の答えにします。"
+            }
+          ]
+        },
+        {
+          "id": "n08-07-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "n08-07-interaction-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0188",
+                  "latex": "|\\sqrt5-3|=",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0188"
+                },
+                {
+                  "kind": "answerSlot",
+                  "id": "n08-07-slot",
+                  "interactionId": "n08-07",
+                  "semanticRef": "n08-07"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "n08-07",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "n08-07-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-07-result",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "n08-07-result-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0189",
+                  "latex": "|\\sqrt5-3|",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0189"
+                }
+              ]
+            },
+            {
+              "id": "n08-07-result-expr-1",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0190",
+                  "latex": "-(\\sqrt5-3)",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0190"
+                }
+              ]
+            },
+            {
+              "id": "n08-07-result-expr-2",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0191",
+                  "latex": "-\\sqrt5+3",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0191"
+                }
+              ]
+            },
+            {
+              "id": "n08-07-result-expr-3",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0192",
+                  "latex": "3-\\sqrt5",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0192"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "=",
+            "=",
+            "="
+          ],
+          "transformRef": "n08-07",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "n08-07-result",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "n08-07-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0187",
+              "text": "符号を判定する操作と、括弧を外す計算をつなげて答えられました。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [
+        {
+          "id": "n08-07-context-0",
+          "problemId": "absolute-value",
+          "factIds": [
+            "n08-cases-result"
+          ],
+          "reason": "この判断に使う既に確定した結果"
+        }
+      ],
+      "interaction": {
+        "id": "n08-07",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "expression",
+        "whyHere": "正の項を先に並べて元の問いへ答える",
+        "prerequisiteIds": [
+          "n08-q07-distribute-result",
+          "n08-cases-result"
+        ],
+        "expected": {
+          "value": "3-\\sqrt5",
+          "form": "formula",
+          "semanticType": "expression"
+        },
+        "choices": [
+          {
+            "id": "n08-07-correct",
+            "content": "3-\\sqrt5",
+            "feedback": "符号を判定する操作と、括弧を外す計算をつなげて答えられました。"
+          },
+          {
+            "id": "n08-07-wrong-0",
+            "content": "\\sqrt5-3",
+            "misconception": "負と判定した中身をそのまま残しています。",
+            "feedback": "負と判定した中身をそのまま残しています。"
+          },
+          {
+            "id": "n08-07-wrong-1",
+            "content": "-\\sqrt5-3",
+            "misconception": "二項目の符号が違います。",
+            "feedback": "二項目の符号が違います。"
+          },
+          {
+            "id": "n08-07-wrong-2",
+            "content": "3+\\sqrt5",
+            "misconception": "根号の項の符号が違います。",
+            "feedback": "根号の項の符号が違います。"
+          }
+        ],
+        "hints": [
+          "値を変えず、正の項を先に書きます。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-07-interaction",
+          "slotId": "n08-07-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-q08-order",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000366",
+        "word-p-000367",
+        "word-p-000368"
+      ],
+      "requires": [
+        "n08-07-result"
+      ],
+      "produces": [
+        "n08-q08-order-result"
+      ],
+      "role": "check",
+      "goal": "円周率と3を比べる",
+      "purpose": "円周率と3を比べる",
+      "operation": {
+        "kind": "judgment",
+        "targets": [
+          "word-p-000366",
+          "word-p-000367",
+          "word-p-000368"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-q08-order-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0193",
+              "text": "次は "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0194",
+              "latex": "|3-\\pi|",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0194"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0195",
+              "text": " です。与えられた "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0196",
+              "latex": "\\pi=3.14159\\ldots",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0196"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0197",
+              "text": " を使い、最初に "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0198",
+              "latex": "3",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0198"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0199",
+              "text": " と "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0200",
+              "latex": "\\pi",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0200"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0201",
+              "text": " を比べます。"
+            }
+          ]
+        },
+        {
+          "id": "n08-q08-order-interaction",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-part-0203",
+              "latex": "3\\ ",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0203"
+            },
+            {
+              "kind": "answerSlot",
+              "id": "n08-q08-order-slot",
+              "interactionId": "n08-q08-order-answer",
+              "semanticRef": "n08-q08-order-answer"
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0204",
+              "latex": "\\ \\pi",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0204"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q08-order-result",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "n08-q08-order-result-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0205",
+                  "latex": "3\\ <\\ \\pi",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0205"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "n08-q08-order",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "n08-q08-order-result",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "n08-q08-order-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0202",
+              "text": "数の大小を、差の符号へつなげます。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [
+        {
+          "id": "n08-q08-order-context-0",
+          "problemId": "absolute-value",
+          "factIds": [
+            "n08-07-result"
+          ],
+          "reason": "この判断に使う既に確定した結果"
+        }
+      ],
+      "interaction": {
+        "id": "n08-q08-order-answer",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "judgment",
+        "whyHere": "円周率と3を比べる",
+        "prerequisiteIds": [
+          "n08-07-result"
+        ],
+        "expected": {
+          "value": "<",
+          "form": "text",
+          "semanticType": "judgment"
+        },
+        "choices": [
+          {
+            "id": "n08-q08-order-answer-correct",
+            "content": "<",
+            "feedback": "数の大小を、差の符号へつなげます。"
+          },
+          {
+            "id": "n08-q08-order-answer-wrong-0",
+            "content": ">",
+            "misconception": "整数部分が同じでも、小数部分が続いています。",
+            "feedback": "整数部分が同じでも、小数部分が続いています。"
+          },
+          {
+            "id": "n08-q08-order-answer-wrong-1",
+            "content": "=",
+            "misconception": "小数部分まで一致しているか確かめます。",
+            "feedback": "小数部分まで一致しているか確かめます。"
+          }
+        ],
+        "hints": [
+          "与えられた小数表示の小数部分を見ます。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-q08-order-interaction",
+          "slotId": "n08-q08-order-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-q08-difference",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000368"
+      ],
+      "requires": [
+        "n08-q08-order-result"
+      ],
+      "produces": [
+        "n08-q08-difference-result"
+      ],
+      "role": "substep",
+      "goal": "同じ数を引いて0との比較へ",
+      "purpose": "同じ数を引いて0との比較へ",
+      "operation": {
+        "kind": "relation",
+        "targets": [
+          "word-p-000368"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-q08-difference-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-part-0206",
+              "latex": "3<\\pi",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0206"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0207",
+              "text": " の両辺から "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0208",
+              "latex": "\\pi",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0208"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0209",
+              "text": " を引きます。右辺は "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0210",
+              "latex": "\\pi-\\pi",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0210"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0211",
+              "text": " なので、0になります。"
+            }
+          ]
+        },
+        {
+          "id": "n08-q08-difference-interaction",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-part-0213",
+              "latex": "3-\\pi\\ ",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0213"
+            },
+            {
+              "kind": "answerSlot",
+              "id": "n08-q08-difference-slot",
+              "interactionId": "n08-q08-difference-answer",
+              "semanticRef": "n08-q08-difference-answer"
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0214",
+              "latex": "\\ 0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0214"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q08-difference-result",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "n08-q08-difference-result-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0215",
+                  "latex": "3-\\pi\\ <\\ 0",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0215"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "n08-q08-difference",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "n08-q08-difference-result",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "n08-q08-difference-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0212",
+              "text": "中身と0を比べられました。元の小数表示も、根拠として残します。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n08-q08-difference-answer",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "relation",
+        "whyHere": "同じ数を引いて0との比較へ",
+        "prerequisiteIds": [
+          "n08-q08-order-result"
+        ],
+        "expected": {
+          "value": "<",
+          "form": "text",
+          "semanticType": "relation"
+        },
+        "choices": [
+          {
+            "id": "n08-q08-difference-answer-correct",
+            "content": "<",
+            "feedback": "中身と0を比べられました。元の小数表示も、根拠として残します。"
+          },
+          {
+            "id": "n08-q08-difference-answer-wrong-0",
+            "content": ">",
+            "misconception": "同じ数を引いても大小の向きは変わりません。",
+            "feedback": "同じ数を引いても大小の向きは変わりません。"
+          },
+          {
+            "id": "n08-q08-difference-answer-wrong-1",
+            "content": "=",
+            "misconception": "異なる二数の差は0にはなりません。",
+            "feedback": "異なる二数の差は0にはなりません。"
+          }
+        ],
+        "hints": [
+          "不等式の両辺に同じ引き算をしています。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-q08-difference-interaction",
+          "slotId": "n08-q08-difference-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-08",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000368"
+      ],
+      "requires": [
+        "n08-q08-difference-result"
+      ],
+      "produces": [
+        "n08-08-result"
+      ],
+      "role": "substep",
+      "goal": "差の符号を根拠と組にする",
+      "purpose": "差の符号を根拠と組にする",
+      "operation": {
+        "kind": "meaning",
+        "targets": [
+          "word-p-000368"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-08-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0216",
+              "text": "いまの不等式が表す符号を読み、最初の大小関係を理由に付けて判断をまとめます。"
+            }
+          ]
+        },
+        {
+          "id": "n08-08-interaction",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0218",
+              "text": "符号・根拠："
+            },
+            {
+              "kind": "answerSlot",
+              "id": "n08-08-slot",
+              "interactionId": "n08-08",
+              "semanticRef": "n08-08"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-08-answer",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-part-0219",
+              "latex": "3-\\pi<0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0219"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0220",
+              "text": " であり、"
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0221",
+              "latex": "\\pi>3",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0221"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0222",
+              "text": " だから負です。"
+            }
+          ]
+        },
+        {
+          "id": "n08-08-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0217",
+              "text": "中身が負であるという結論を使い、絶対値を外します。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n08-08",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "meaning",
+        "whyHere": "差の符号を根拠と組にする",
+        "prerequisiteIds": [
+          "n08-q08-difference-result"
+        ],
+        "expected": {
+          "value": "負（πは3より大きい）",
+          "form": "text",
+          "semanticType": "meaning"
+        },
+        "choices": [
+          {
+            "id": "n08-08-correct",
+            "content": "負（πは3より大きい）",
+            "feedback": "中身が負であるという結論を使い、絶対値を外します。"
+          },
+          {
+            "id": "n08-08-wrong-0",
+            "content": "正（3はπより大きい）",
+            "misconception": "与えられた小数表示と反対です。",
+            "feedback": "与えられた小数表示と反対です。"
+          },
+          {
+            "id": "n08-08-wrong-1",
+            "content": "0（πは3と等しい）",
+            "misconception": "小数部分を落としています。",
+            "feedback": "小数部分を落としています。"
+          },
+          {
+            "id": "n08-08-wrong-2",
+            "content": "符号は決められない",
+            "misconception": "与えられた小数表示を根拠に判断できます。",
+            "feedback": "与えられた小数表示を根拠に判断できます。"
+          }
+        ],
+        "hints": [
+          "差の不等式と、比較に使った数の大小を組にします。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-08-interaction",
+          "slotId": "n08-08-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-q09-bracket",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000369"
+      ],
+      "requires": [
+        "n08-08-result",
+        "n08-cases-result"
+      ],
+      "produces": [
+        "n08-q09-bracket-result"
+      ],
+      "role": "substep",
+      "goal": "前の例と同じ負の規則を使う",
+      "purpose": "前の例と同じ負の規則を使う",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000369"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-q09-bracket-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-part-0223",
+              "latex": "3-\\pi<0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0223"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0224",
+              "text": " なので、式全体に負号を付けます。先ほどと同じく、中身を括弧でまとめます。"
+            }
+          ]
+        },
+        {
+          "id": "n08-q09-bracket-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "n08-q09-bracket-interaction-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0226",
+                  "latex": "|3-\\pi|=",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0226"
+                },
+                {
+                  "kind": "answerSlot",
+                  "id": "n08-q09-bracket-slot",
+                  "interactionId": "n08-q09-bracket-answer",
+                  "semanticRef": "n08-q09-bracket-answer"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "n08-q09-bracket",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "n08-q09-bracket-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q09-bracket-result",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "n08-q09-bracket-result-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0227",
+                  "latex": "|3-\\pi|",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0227"
+                }
+              ]
+            },
+            {
+              "id": "n08-q09-bracket-result-expr-1",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0228",
+                  "latex": "-(3-\\pi)",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0228"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "="
+          ],
+          "transformRef": "n08-q09-bracket",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "n08-q09-bracket-result",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "n08-q09-bracket-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0225",
+              "text": "次に括弧を外します。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [
+        {
+          "id": "n08-q09-bracket-context-0",
+          "problemId": "absolute-value",
+          "factIds": [
+            "n08-08-result"
+          ],
+          "reason": "この判断に使う既に確定した結果"
+        },
+        {
+          "id": "n08-q09-bracket-context-1",
+          "problemId": "absolute-value",
+          "factIds": [
+            "n08-cases-result"
+          ],
+          "reason": "この判断に使う既に確定した結果"
+        }
+      ],
+      "interaction": {
+        "id": "n08-q09-bracket-answer",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "expression",
+        "whyHere": "前の例と同じ負の規則を使う",
+        "prerequisiteIds": [
+          "n08-08-result",
+          "n08-cases-result"
+        ],
+        "expected": {
+          "value": "-(3-\\pi)",
+          "form": "formula",
+          "semanticType": "expression"
+        },
+        "choices": [
+          {
+            "id": "n08-q09-bracket-answer-correct",
+            "content": "-(3-\\pi)",
+            "feedback": "次に括弧を外します。"
+          },
+          {
+            "id": "n08-q09-bracket-answer-wrong-0",
+            "content": "3-\\pi",
+            "misconception": "中身をそのまま残す条件ではありません。",
+            "feedback": "中身をそのまま残す条件ではありません。"
+          },
+          {
+            "id": "n08-q09-bracket-answer-wrong-1",
+            "content": "-3-\\pi",
+            "misconception": "第2項まで反転させる括弧が必要です。",
+            "feedback": "第2項まで反転させる括弧が必要です。"
+          }
+        ],
+        "hints": [
+          "前例の数だけを写さず、規則を今回の式全体へ適用します。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-q09-bracket-interaction",
+          "slotId": "n08-q09-bracket-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-q09-distribute",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000369"
+      ],
+      "requires": [
+        "n08-q09-bracket-result",
+        "n08-cases-result"
+      ],
+      "produces": [
+        "n08-q09-distribute-result"
+      ],
+      "role": "substep",
+      "goal": "負号を3と負の円周率へ掛ける",
+      "purpose": "負号を3と負の円周率へ掛ける",
+      "operation": {
+        "kind": "calculation",
+        "targets": [
+          "word-p-000369"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-q09-distribute-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0229",
+              "text": "括弧の二項 "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0230",
+              "latex": "3",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0230"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0231",
+              "text": " と "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0232",
+              "latex": "-\\pi",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0232"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0233",
+              "text": " の両方に "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0234",
+              "latex": "-1",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0234"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0235",
+              "text": " を掛けます。"
+            }
+          ]
+        },
+        {
+          "id": "n08-q09-distribute-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "n08-q09-distribute-interaction-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0237",
+                  "latex": "-(3-\\pi)=",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0237"
+                },
+                {
+                  "kind": "answerSlot",
+                  "id": "n08-q09-distribute-slot",
+                  "interactionId": "n08-q09-distribute-answer",
+                  "semanticRef": "n08-q09-distribute-answer"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "n08-q09-distribute",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "n08-q09-distribute-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q09-distribute-result",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "n08-q09-distribute-result-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0238",
+                  "latex": "-(3-\\pi)",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0238"
+                }
+              ]
+            },
+            {
+              "id": "n08-q09-distribute-result-expr-1",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0239",
+                  "latex": "-3+\\pi",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0239"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "="
+          ],
+          "transformRef": "n08-q09-distribute",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "n08-q09-distribute-result",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "n08-q09-distribute-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0236",
+              "text": "二項の符号がともに反転しました。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [
+        {
+          "id": "n08-q09-distribute-context-0",
+          "problemId": "absolute-value",
+          "factIds": [
+            "n08-cases-result"
+          ],
+          "reason": "この判断に使う既に確定した結果"
+        }
+      ],
+      "interaction": {
+        "id": "n08-q09-distribute-answer",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "calculation",
+        "whyHere": "負号を3と負の円周率へ掛ける",
+        "prerequisiteIds": [
+          "n08-q09-bracket-result",
+          "n08-cases-result"
+        ],
+        "expected": {
+          "value": "-3+\\pi",
+          "form": "formula",
+          "semanticType": "calculation"
+        },
+        "choices": [
+          {
+            "id": "n08-q09-distribute-answer-correct",
+            "content": "-3+\\pi",
+            "feedback": "二項の符号がともに反転しました。"
+          },
+          {
+            "id": "n08-q09-distribute-answer-wrong-0",
+            "content": "-3-\\pi",
+            "misconception": "負の項へさらに負号を掛けます。",
+            "feedback": "負の項へさらに負号を掛けます。"
+          },
+          {
+            "id": "n08-q09-distribute-answer-wrong-1",
+            "content": "3+\\pi",
+            "misconception": "第1項にも負号を掛けます。",
+            "feedback": "第1項にも負号を掛けます。"
+          }
+        ],
+        "hints": [
+          "括弧全体への掛け算を一項ずつ行います。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-q09-distribute-interaction",
+          "slotId": "n08-q09-distribute-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-09",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000369"
+      ],
+      "requires": [
+        "n08-q09-distribute-result",
+        "n08-cases-result"
+      ],
+      "produces": [
+        "n08-09-result"
+      ],
+      "role": "substep",
+      "goal": "元の問題の答えをまとめる",
+      "purpose": "元の問題の答えをまとめる",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000369"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-09-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0240",
+              "text": "項の順序を整え、正の項を先に書きます。"
+            }
+          ]
+        },
+        {
+          "id": "n08-09-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "n08-09-interaction-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0242",
+                  "latex": "|3-\\pi|=",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0242"
+                },
+                {
+                  "kind": "answerSlot",
+                  "id": "n08-09-slot",
+                  "interactionId": "n08-09",
+                  "semanticRef": "n08-09"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "n08-09",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "n08-09-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-09-result",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "n08-09-result-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0243",
+                  "latex": "|3-\\pi|",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0243"
+                }
+              ]
+            },
+            {
+              "id": "n08-09-result-expr-1",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0244",
+                  "latex": "-(3-\\pi)",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0244"
+                }
+              ]
+            },
+            {
+              "id": "n08-09-result-expr-2",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0245",
+                  "latex": "-3+\\pi",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0245"
+                }
+              ]
+            },
+            {
+              "id": "n08-09-result-expr-3",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0246",
+                  "latex": "\\pi-3",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0246"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "=",
+            "=",
+            "="
+          ],
+          "transformRef": "n08-09",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "n08-09-result",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "n08-09-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0241",
+              "text": "二つの例とも、大小→差の符号→場合の選択→括弧全体の反転という順序で処理しました。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [
+        {
+          "id": "n08-09-context-0",
+          "problemId": "absolute-value",
+          "factIds": [
+            "n08-cases-result"
+          ],
+          "reason": "この判断に使う既に確定した結果"
+        }
+      ],
+      "interaction": {
+        "id": "n08-09",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "expression",
+        "whyHere": "元の問題の答えをまとめる",
+        "prerequisiteIds": [
+          "n08-q09-distribute-result",
+          "n08-cases-result"
+        ],
+        "expected": {
+          "value": "\\pi-3",
+          "form": "formula",
+          "semanticType": "expression"
+        },
+        "choices": [
+          {
+            "id": "n08-09-correct",
+            "content": "\\pi-3",
+            "feedback": "二つの例とも、大小→差の符号→場合の選択→括弧全体の反転という順序で処理しました。"
+          },
+          {
+            "id": "n08-09-wrong-0",
+            "content": "3-\\pi",
+            "misconception": "これは絶対値を取る前の負の値です。",
+            "feedback": "これは絶対値を取る前の負の値です。"
+          },
+          {
+            "id": "n08-09-wrong-1",
+            "content": "-\\pi-3",
+            "misconception": "符号の反転が正しくできていません。",
+            "feedback": "符号の反転が正しくできていません。"
+          },
+          {
+            "id": "n08-09-wrong-2",
+            "content": "3+\\pi",
+            "misconception": "元の二項をただ足す操作ではありません。",
+            "feedback": "元の二項をただ足す操作ではありません。"
+          }
+        ],
+        "hints": [
+          "順番を変えても、各項の符号はその項に付けたままです。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-09-interaction",
+          "slotId": "n08-09-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-q10-forward",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000370",
+        "word-p-000371"
+      ],
+      "requires": [
+        "n08-09-result"
+      ],
+      "produces": [
+        "n08-q10-forward-result"
+      ],
+      "role": "proof",
+      "goal": "距離が0なら点はどこにあるか",
+      "purpose": "距離が0なら点はどこにあるか",
+      "operation": {
+        "kind": "meaning",
+        "targets": [
+          "word-p-000370",
+          "word-p-000371"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-q10-forward-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0247",
+              "text": "ここからは性質です。"
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0248",
+              "latex": "|a|=0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0248"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0249",
+              "text": " は、"
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0250",
+              "latex": "a",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0250"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0251",
+              "text": " の点と原点との距離が0という意味です。離れていない二点は同じ位置にあります。"
+            }
+          ]
+        },
+        {
+          "id": "n08-q10-forward-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "n08-q10-forward-interaction-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0253",
+                  "latex": "|a|=0\\ \\Rightarrow\\ a=",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0253"
+                },
+                {
+                  "kind": "answerSlot",
+                  "id": "n08-q10-forward-slot",
+                  "interactionId": "n08-q10-forward-answer",
+                  "semanticRef": "n08-q10-forward-answer"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "n08-q10-forward",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "n08-q10-forward-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q10-forward-result",
+          "kind": "relationChain",
+          "relation": "implication",
+          "expressions": [
+            {
+              "id": "n08-q10-forward-result-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0254",
+                  "latex": "|a|=0\\ ",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0254"
+                }
+              ]
+            },
+            {
+              "id": "n08-q10-forward-result-expr-1",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0255",
+                  "latex": "\\ a=0",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0255"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "\\Rightarrow"
+          ],
+          "transformRef": "n08-q10-forward",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "n08-q10-forward-result",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "n08-q10-forward-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0252",
+              "text": "絶対値が0なら、元の数も0です。逆向きも確かめます。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [
+        {
+          "id": "n08-q10-forward-context-0",
+          "problemId": "absolute-value",
+          "factIds": [
+            "n08-09-result"
+          ],
+          "reason": "この判断に使う既に確定した結果"
+        }
+      ],
+      "interaction": {
+        "id": "n08-q10-forward-answer",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "meaning",
+        "whyHere": "距離が0なら点はどこにあるか",
+        "prerequisiteIds": [
+          "n08-09-result"
+        ],
+        "expected": {
+          "value": "0",
+          "form": "formula",
+          "semanticType": "meaning"
+        },
+        "choices": [
+          {
+            "id": "n08-q10-forward-answer-correct",
+            "content": "0",
+            "feedback": "絶対値が0なら、元の数も0です。逆向きも確かめます。"
+          },
+          {
+            "id": "n08-q10-forward-answer-wrong-0",
+            "content": "1",
+            "misconception": "原点から離れると距離は0ではありません。",
+            "feedback": "原点から離れると距離は0ではありません。"
+          },
+          {
+            "id": "n08-q10-forward-answer-wrong-1",
+            "content": "-1",
+            "misconception": "原点の左側でも離れていれば距離は正です。",
+            "feedback": "原点の左側でも離れていれば距離は正です。"
+          }
+        ],
+        "hints": [
+          "図の原点と重なる座標を読みます。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-q10-forward-interaction",
+          "slotId": "n08-q10-forward-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-q10-reverse",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000371"
+      ],
+      "requires": [
+        "n08-q10-forward-result"
+      ],
+      "produces": [
+        "n08-q10-reverse-result"
+      ],
+      "role": "proof",
+      "goal": "逆に元の数が0なら距離も0",
+      "purpose": "逆に元の数が0なら距離も0",
+      "operation": {
+        "kind": "relation",
+        "targets": [
+          "word-p-000371"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-q10-reverse-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-part-0256",
+              "latex": "a=0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0256"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0257",
+              "text": " なら、点は最初から原点と一致します。このときの距離を求めて、逆向きの関係も確かめます。"
+            }
+          ]
+        },
+        {
+          "id": "n08-q10-reverse-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "n08-q10-reverse-interaction-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0263",
+                  "latex": "a=0\\ \\Rightarrow\\ |a|=",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0263"
+                },
+                {
+                  "kind": "answerSlot",
+                  "id": "n08-q10-reverse-slot",
+                  "interactionId": "n08-q10-reverse-answer",
+                  "semanticRef": "n08-q10-reverse-answer"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "n08-q10-reverse",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "n08-q10-reverse-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q10-reverse-result",
+          "kind": "relationChain",
+          "relation": "implication",
+          "expressions": [
+            {
+              "id": "n08-q10-reverse-result-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0264",
+                  "latex": "a=0\\ ",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0264"
+                }
+              ]
+            },
+            {
+              "id": "n08-q10-reverse-result-expr-1",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0265",
+                  "latex": "\\ |a|=0",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0265"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "\\Rightarrow"
+          ],
+          "transformRef": "n08-q10-reverse",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "n08-q10-reverse-result",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "n08-q10-reverse-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0258",
+              "text": "両方向が確かめられたので、"
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0259",
+              "latex": "|a|=0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0259"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0260",
+              "text": " と "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0261",
+              "latex": "a=0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0261"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0262",
+              "text": " は同値です。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n08-q10-reverse-answer",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "relation",
+        "whyHere": "逆に元の数が0なら距離も0",
+        "prerequisiteIds": [
+          "n08-q10-forward-result"
+        ],
+        "expected": {
+          "value": "0",
+          "form": "formula",
+          "semanticType": "relation"
+        },
+        "choices": [
+          {
+            "id": "n08-q10-reverse-answer-correct",
+            "content": "0",
+            "feedback": "両方向が確かめられたので、$|a|=0$ と $a=0$ は同値です。"
+          },
+          {
+            "id": "n08-q10-reverse-answer-wrong-0",
+            "content": "a^2+1",
+            "misconception": "定義から求める距離ではありません。",
+            "feedback": "定義から求める距離ではありません。"
+          },
+          {
+            "id": "n08-q10-reverse-answer-wrong-1",
+            "content": "1",
+            "misconception": "同じ位置にある点どうしは離れていません。",
+            "feedback": "同じ位置にある点どうしは離れていません。"
+          }
+        ],
+        "hints": [
+          "原点と原点の間の距離を考えます。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-q10-reverse-interaction",
+          "slotId": "n08-q10-reverse-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-10",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000371"
+      ],
+      "requires": [
+        "n08-q10-reverse-result"
+      ],
+      "produces": [
+        "n08-10-result"
+      ],
+      "role": "property",
+      "goal": "元の性質を位置の意味と組にする",
+      "purpose": "元の性質を位置の意味と組にする",
+      "operation": {
+        "kind": "meaning",
+        "targets": [
+          "word-p-000371"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-10-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0266",
+              "text": "二方向の結論を、数直線上の理由とともにまとめます。数の条件だけで終えず、距離が0になる意味を説明します。"
+            }
+          ]
+        },
+        {
+          "id": "n08-10-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "n08-10-interaction-expr-0",
+              "parts": [
+                {
+                  "kind": "answerSlot",
+                  "id": "n08-10-slot",
+                  "interactionId": "n08-10",
+                  "semanticRef": "n08-10"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "n08-10",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "n08-10-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-10-answer",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-part-0270",
+              "latex": "a=0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0270"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0271",
+              "text": "、原点と同じ位置にある。"
+            }
+          ]
+        },
+        {
+          "id": "n08-10-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0267",
+              "text": "性質は "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0268",
+              "latex": "|a|=0\\Leftrightarrow a=0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0268"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0269",
+              "text": " と記録します。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [],
+      "interaction": {
+        "id": "n08-10",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "meaning",
+        "whyHere": "元の性質を位置の意味と組にする",
+        "prerequisiteIds": [
+          "n08-q10-reverse-result"
+        ],
+        "expected": {
+          "value": "a=0,\\quad\\text{原点と同じ位置にある}",
+          "form": "formula",
+          "semanticType": "meaning"
+        },
+        "choices": [
+          {
+            "id": "n08-10-correct",
+            "content": "a=0,\\quad\\text{原点と同じ位置にある}",
+            "feedback": "性質は $|a|=0\\Leftrightarrow a=0$ と記録します。"
+          },
+          {
+            "id": "n08-10-wrong-0",
+            "content": "a=0,\\quad\\text{原点から離れている}",
+            "misconception": "値の条件と説明が矛盾しています。",
+            "feedback": "値の条件と説明が矛盾しています。"
+          },
+          {
+            "id": "n08-10-wrong-1",
+            "content": "a>0,\\quad\\text{原点と同じ位置にある}",
+            "misconception": "原点より右側の点は原点そのものではありません。",
+            "feedback": "原点より右側の点は原点そのものではありません。"
+          },
+          {
+            "id": "n08-10-wrong-2",
+            "content": "a<0,\\quad\\text{原点と同じ位置にある}",
+            "misconception": "原点より左側の点は原点そのものではありません。",
+            "feedback": "原点より左側の点は原点そのものではありません。"
+          }
+        ],
+        "hints": [
+          "条件と、その条件に合う位置の意味を照合します。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-10-interaction",
+          "slotId": "n08-10-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-q11-positive",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000372"
+      ],
+      "requires": [
+        "n08-10-result",
+        "n08-cases-result"
+      ],
+      "produces": [
+        "n08-q11-positive-result"
+      ],
+      "role": "proof",
+      "goal": "正の場合に二つの距離を比べる",
+      "purpose": "正の場合に二つの距離を比べる",
+      "operation": {
+        "kind": "calculation",
+        "targets": [
+          "word-p-000372"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-q11-positive-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-part-0272",
+              "latex": "a>0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0272"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0273",
+              "text": " なら "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0274",
+              "latex": "-a<0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0274"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0275",
+              "text": " です。場合分けより "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0276",
+              "latex": "|a|=a",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0276"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0277",
+              "text": "、"
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0278",
+              "latex": "|-a|=-(-a)",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0278"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0279",
+              "text": " です。後者の負号を計算します。"
+            }
+          ]
+        },
+        {
+          "id": "n08-q11-positive-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "n08-q11-positive-interaction-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0283",
+                  "latex": "|-a|=-(-a)=",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0283"
+                },
+                {
+                  "kind": "answerSlot",
+                  "id": "n08-q11-positive-slot",
+                  "interactionId": "n08-q11-positive-answer",
+                  "semanticRef": "n08-q11-positive-answer"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "n08-q11-positive",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "n08-q11-positive-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q11-positive-result",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "n08-q11-positive-result-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0284",
+                  "latex": "|-a|",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0284"
+                }
+              ]
+            },
+            {
+              "id": "n08-q11-positive-result-expr-1",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0285",
+                  "latex": "-(-a)",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0285"
+                }
+              ]
+            },
+            {
+              "id": "n08-q11-positive-result-expr-2",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0286",
+                  "latex": "a",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0286"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "=",
+            "="
+          ],
+          "transformRef": "n08-q11-positive",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "n08-q11-positive-result",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "n08-q11-positive-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0280",
+              "text": "条件 "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0281",
+              "latex": "a>0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0281"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0282",
+              "text": " の場合の結論です。この場合、二つの絶対値は同じ値になりました。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [
+        {
+          "id": "n08-q11-positive-context-0",
+          "problemId": "absolute-value",
+          "factIds": [
+            "n08-10-result"
+          ],
+          "reason": "この判断に使う既に確定した結果"
+        },
+        {
+          "id": "n08-q11-positive-context-1",
+          "problemId": "absolute-value",
+          "factIds": [
+            "n08-cases-result"
+          ],
+          "reason": "この判断に使う既に確定した結果"
+        }
+      ],
+      "interaction": {
+        "id": "n08-q11-positive-answer",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "calculation",
+        "whyHere": "正の場合に二つの距離を比べる",
+        "prerequisiteIds": [
+          "n08-10-result",
+          "n08-cases-result"
+        ],
+        "expected": {
+          "value": "a",
+          "form": "formula",
+          "semanticType": "calculation"
+        },
+        "choices": [
+          {
+            "id": "n08-q11-positive-answer-correct",
+            "content": "a",
+            "feedback": "条件 $a>0$ の場合の結論です。この場合、二つの絶対値は同じ値になりました。"
+          },
+          {
+            "id": "n08-q11-positive-answer-wrong-0",
+            "content": "-a",
+            "misconception": "外側の負号の働きが残っています。",
+            "feedback": "外側の負号の働きが残っています。"
+          },
+          {
+            "id": "n08-q11-positive-answer-wrong-1",
+            "content": "0",
+            "misconception": "互いに反対の位置であっても、距離が0とは限りません。",
+            "feedback": "互いに反対の位置であっても、距離が0とは限りません。"
+          }
+        ],
+        "hints": [
+          "二重の負号を、前の具体例と同じように処理します。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-q11-positive-interaction",
+          "slotId": "n08-q11-positive-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-q11-negative",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000372"
+      ],
+      "requires": [
+        "n08-q11-positive-result",
+        "n08-cases-result"
+      ],
+      "produces": [
+        "n08-q11-negative-result"
+      ],
+      "role": "proof",
+      "goal": "負の場合にも二つの距離を比べる",
+      "purpose": "負の場合にも二つの距離を比べる",
+      "operation": {
+        "kind": "judgment",
+        "targets": [
+          "word-p-000372"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-q11-negative-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-part-0287",
+              "latex": "a<0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0287"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0288",
+              "text": " なら "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0289",
+              "latex": "-a>0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0289"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0290",
+              "text": " です。場合分けでは "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0291",
+              "latex": "|a|=-a",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0291"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0292",
+              "text": " となります。今度は反対の座標が正だという条件を使い、その点の距離を式にします。"
+            }
+          ]
+        },
+        {
+          "id": "n08-q11-negative-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "n08-q11-negative-interaction-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0300",
+                  "latex": "|-a|=",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0300"
+                },
+                {
+                  "kind": "answerSlot",
+                  "id": "n08-q11-negative-slot",
+                  "interactionId": "n08-q11-negative-answer",
+                  "semanticRef": "n08-q11-negative-answer"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "n08-q11-negative",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "n08-q11-negative-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q11-negative-result",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "n08-q11-negative-result-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0301",
+                  "latex": "|-a|",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0301"
+                }
+              ]
+            },
+            {
+              "id": "n08-q11-negative-result-expr-1",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0302",
+                  "latex": "-a",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0302"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "="
+          ],
+          "transformRef": "n08-q11-negative",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "n08-q11-negative-result",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "n08-q11-negative-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0293",
+              "text": "条件 "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0294",
+              "latex": "a<0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0294"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0295",
+              "text": " の場合の結論です。この場合も "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0296",
+              "latex": "|a|",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0296"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0297",
+              "text": " と "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0298",
+              "latex": "|-a|",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0298"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0299",
+              "text": " は同じ値です。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [
+        {
+          "id": "n08-q11-negative-context-0",
+          "problemId": "absolute-value",
+          "factIds": [
+            "n08-cases-result"
+          ],
+          "reason": "この判断に使う既に確定した結果"
+        }
+      ],
+      "interaction": {
+        "id": "n08-q11-negative-answer",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "judgment",
+        "whyHere": "負の場合にも二つの距離を比べる",
+        "prerequisiteIds": [
+          "n08-q11-positive-result",
+          "n08-cases-result"
+        ],
+        "expected": {
+          "value": "-a",
+          "form": "formula",
+          "semanticType": "judgment"
+        },
+        "choices": [
+          {
+            "id": "n08-q11-negative-answer-correct",
+            "content": "-a",
+            "feedback": "条件 $a<0$ の場合の結論です。この場合も $|a|$ と $|-a|$ は同じ値です。"
+          },
+          {
+            "id": "n08-q11-negative-answer-wrong-0",
+            "content": "a",
+            "misconception": "絶対値の中にある数を取り違えています。",
+            "feedback": "絶対値の中にある数を取り違えています。"
+          },
+          {
+            "id": "n08-q11-negative-answer-wrong-1",
+            "content": "0",
+            "misconception": "原点以外の点の距離は0ではありません。",
+            "feedback": "原点以外の点の距離は0ではありません。"
+          }
+        ],
+        "hints": [
+          "今、絶対値の中に入っている数は元の文字そのものではなく、その反対の数です。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-q11-negative-interaction",
+          "slotId": "n08-q11-negative-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-q11-zero",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000372"
+      ],
+      "requires": [
+        "n08-q11-negative-result",
+        "n08-cases-result"
+      ],
+      "produces": [
+        "n08-q11-zero-result"
+      ],
+      "role": "proof",
+      "goal": "原点の場合も落とさない",
+      "purpose": "原点の場合も落とさない",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000372"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-q11-zero-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-part-0303",
+              "latex": "a=0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0303"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0304",
+              "text": " の場合は "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0305",
+              "latex": "-a=0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0305"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0306",
+              "text": " です。二点はともに原点なので、"
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0307",
+              "latex": "|a|=|-a|=0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0307"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0308",
+              "text": " です。"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q11-zero-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0309",
+              "text": "正・負・0の三つを確認できました。どの場合にも同じ関係が成り立ちます。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [
+        {
+          "id": "n08-q11-zero-context-0",
+          "problemId": "absolute-value",
+          "factIds": [
+            "n08-cases-result"
+          ],
+          "reason": "この判断に使う既に確定した結果"
+        }
+      ],
+      "noBlankReason": "未知の定義・全場合の表・境界確認・学習接続は教える本文として明示する。既知の判断を問う箇所は別nodeで穴にした。"
+    },
+    {
+      "id": "n08-11",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000372"
+      ],
+      "requires": [
+        "n08-q11-zero-result",
+        "n08-cases-result"
+      ],
+      "produces": [
+        "n08-11-result"
+      ],
+      "role": "property",
+      "goal": "すべての場合を一つの関係にまとめる",
+      "purpose": "すべての場合を一つの関係にまとめる",
+      "operation": {
+        "kind": "relation",
+        "targets": [
+          "word-p-000372"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-11-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0310",
+              "text": "場合分けの計算は、原点を中心に左右対称な二点の距離が同じであることを表しています。任意の実数で成り立つ関係を選びます。"
+            }
+          ]
+        },
+        {
+          "id": "n08-11-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "n08-11-interaction-expr-0",
+              "parts": [
+                {
+                  "kind": "answerSlot",
+                  "id": "n08-11-slot",
+                  "interactionId": "n08-11",
+                  "semanticRef": "n08-11"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "n08-11",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "n08-11-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-11-result",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "n08-11-result-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0312",
+                  "latex": "|a|",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0312"
+                }
+              ]
+            },
+            {
+              "id": "n08-11-result-expr-1",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0313",
+                  "latex": "|-a|",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0313"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "="
+          ],
+          "transformRef": "n08-11",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "n08-11-result",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "n08-11-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0311",
+              "text": "元の数の符号を変えても、原点からの距離は変わりません。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [
+        {
+          "id": "n08-11-context-0",
+          "problemId": "absolute-value",
+          "factIds": [
+            "n08-cases-result"
+          ],
+          "reason": "この判断に使う既に確定した結果"
+        }
+      ],
+      "interaction": {
+        "id": "n08-11",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "relation",
+        "whyHere": "すべての場合を一つの関係にまとめる",
+        "prerequisiteIds": [
+          "n08-q11-zero-result",
+          "n08-cases-result"
+        ],
+        "expected": {
+          "value": "|a|=|-a|",
+          "form": "formula",
+          "semanticType": "relation"
+        },
+        "choices": [
+          {
+            "id": "n08-11-correct",
+            "content": "|a|=|-a|",
+            "feedback": "元の数の符号を変えても、原点からの距離は変わりません。"
+          },
+          {
+            "id": "n08-11-wrong-0",
+            "content": "|a|=-|-a|",
+            "misconception": "非負の距離どうしを負号で結んでいます。",
+            "feedback": "非負の距離どうしを負号で結んでいます。"
+          },
+          {
+            "id": "n08-11-wrong-1",
+            "content": "|a|>|-a|",
+            "misconception": "左右対称な点の距離は一方だけ大きくなりません。",
+            "feedback": "左右対称な点の距離は一方だけ大きくなりません。"
+          },
+          {
+            "id": "n08-11-wrong-2",
+            "content": "|a|+|-a|=0",
+            "misconception": "二つの距離の和が0なのは原点の場合だけです。",
+            "feedback": "二つの距離の和が0なのは原点の場合だけです。"
+          }
+        ],
+        "hints": [
+          "正・負・0で共通して成り立った関係を取り出します。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-11-interaction",
+          "slotId": "n08-11-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-q12-nonnegative",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000373"
+      ],
+      "requires": [
+        "n08-11-result",
+        "n08-cases-result"
+      ],
+      "produces": [
+        "n08-q12-nonnegative-result"
+      ],
+      "role": "proof",
+      "goal": "0以上の場合の絶対値を二乗する",
+      "purpose": "0以上の場合の絶対値を二乗する",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000373"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-q12-nonnegative-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-part-0314",
+              "latex": "a\\ge0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0314"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0315",
+              "text": " なら "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0316",
+              "latex": "|a|=a",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0316"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0317",
+              "text": " です。両辺を二乗して、絶対値の二乗を求めます。"
+            }
+          ]
+        },
+        {
+          "id": "n08-q12-nonnegative-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "n08-q12-nonnegative-interaction-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0321",
+                  "latex": "|a|^2=",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0321"
+                },
+                {
+                  "kind": "answerSlot",
+                  "id": "n08-q12-nonnegative-slot",
+                  "interactionId": "n08-q12-nonnegative-answer",
+                  "semanticRef": "n08-q12-nonnegative-answer"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "n08-q12-nonnegative",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "n08-q12-nonnegative-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q12-nonnegative-result",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "n08-q12-nonnegative-result-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0322",
+                  "latex": "|a|^2",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0322"
+                }
+              ]
+            },
+            {
+              "id": "n08-q12-nonnegative-result-expr-1",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0323",
+                  "latex": "a^2",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0323"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "="
+          ],
+          "transformRef": "n08-q12-nonnegative",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "n08-q12-nonnegative-result",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "n08-q12-nonnegative-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0318",
+              "text": "条件 "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0319",
+              "latex": "a\\ge0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0319"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0320",
+              "text": " の場合の結論です。次に、負の場合でも同じ式になるか調べます。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [
+        {
+          "id": "n08-q12-nonnegative-context-0",
+          "problemId": "absolute-value",
+          "factIds": [
+            "n08-11-result"
+          ],
+          "reason": "この判断に使う既に確定した結果"
+        },
+        {
+          "id": "n08-q12-nonnegative-context-1",
+          "problemId": "absolute-value",
+          "factIds": [
+            "n08-cases-result"
+          ],
+          "reason": "この判断に使う既に確定した結果"
+        }
+      ],
+      "interaction": {
+        "id": "n08-q12-nonnegative-answer",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "expression",
+        "whyHere": "0以上の場合の絶対値を二乗する",
+        "prerequisiteIds": [
+          "n08-11-result",
+          "n08-cases-result"
+        ],
+        "expected": {
+          "value": "a^2",
+          "form": "formula",
+          "semanticType": "expression"
+        },
+        "choices": [
+          {
+            "id": "n08-q12-nonnegative-answer-correct",
+            "content": "a^2",
+            "feedback": "条件 $a\\ge0$ の場合の結論です。次に、負の場合でも同じ式になるか調べます。"
+          },
+          {
+            "id": "n08-q12-nonnegative-answer-wrong-0",
+            "content": "a",
+            "misconception": "両辺を二乗する操作が必要です。",
+            "feedback": "両辺を二乗する操作が必要です。"
+          },
+          {
+            "id": "n08-q12-nonnegative-answer-wrong-1",
+            "content": "2a",
+            "misconception": "二乗と2倍は異なります。",
+            "feedback": "二乗と2倍は異なります。"
+          }
+        ],
+        "hints": [
+          "二乗を右辺にも同じように付けます。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-q12-nonnegative-interaction",
+          "slotId": "n08-q12-nonnegative-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-q12-negative",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000373"
+      ],
+      "requires": [
+        "n08-q12-nonnegative-result",
+        "n08-cases-result"
+      ],
+      "produces": [
+        "n08-q12-negative-result"
+      ],
+      "role": "proof",
+      "goal": "負の場合は括弧ごと二乗する",
+      "purpose": "負の場合は括弧ごと二乗する",
+      "operation": {
+        "kind": "calculation",
+        "targets": [
+          "word-p-000373"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-q12-negative-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "math",
+              "id": "n08-part-0324",
+              "latex": "a<0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0324"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0325",
+              "text": " なら "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0326",
+              "latex": "|a|=-a",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0326"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0327",
+              "text": " です。両辺を二乗すると "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0328",
+              "latex": "|a|^2=(-a)^2",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0328"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0329",
+              "text": " です。"
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0330",
+              "latex": "(-a)(-a)",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0330"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0331",
+              "text": " では負号が二つ掛かります。"
+            }
+          ]
+        },
+        {
+          "id": "n08-q12-negative-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "n08-q12-negative-interaction-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0335",
+                  "latex": "|a|^2=(-a)^2=",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0335"
+                },
+                {
+                  "kind": "answerSlot",
+                  "id": "n08-q12-negative-slot",
+                  "interactionId": "n08-q12-negative-answer",
+                  "semanticRef": "n08-q12-negative-answer"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "n08-q12-negative",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "n08-q12-negative-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-q12-negative-result",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "n08-q12-negative-result-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0336",
+                  "latex": "|a|^2",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0336"
+                }
+              ]
+            },
+            {
+              "id": "n08-q12-negative-result-expr-1",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0337",
+                  "latex": "(-a)^2",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0337"
+                }
+              ]
+            },
+            {
+              "id": "n08-q12-negative-result-expr-2",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0338",
+                  "latex": "a^2",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0338"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "=",
+            "="
+          ],
+          "transformRef": "n08-q12-negative",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "n08-q12-negative-result",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "n08-q12-negative-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0332",
+              "text": "条件 "
+            },
+            {
+              "kind": "math",
+              "id": "n08-part-0333",
+              "latex": "a<0",
+              "mathRole": "expression",
+              "semanticRef": "n08-part-0333"
+            },
+            {
+              "kind": "text",
+              "id": "n08-part-0334",
+              "text": " の場合の結論です。0以上の場合と同じ式になりました。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [
+        {
+          "id": "n08-q12-negative-context-0",
+          "problemId": "absolute-value",
+          "factIds": [
+            "n08-cases-result"
+          ],
+          "reason": "この判断に使う既に確定した結果"
+        }
+      ],
+      "interaction": {
+        "id": "n08-q12-negative-answer",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "calculation",
+        "whyHere": "負の場合は括弧ごと二乗する",
+        "prerequisiteIds": [
+          "n08-q12-nonnegative-result",
+          "n08-cases-result"
+        ],
+        "expected": {
+          "value": "a^2",
+          "form": "formula",
+          "semanticType": "calculation"
+        },
+        "choices": [
+          {
+            "id": "n08-q12-negative-answer-correct",
+            "content": "a^2",
+            "feedback": "条件 $a<0$ の場合の結論です。0以上の場合と同じ式になりました。"
+          },
+          {
+            "id": "n08-q12-negative-answer-wrong-0",
+            "content": "-a^2",
+            "misconception": "括弧全体の二乗では負号も二つ掛かります。",
+            "feedback": "括弧全体の二乗では負号も二つ掛かります。"
+          },
+          {
+            "id": "n08-q12-negative-answer-wrong-1",
+            "content": "-2a",
+            "misconception": "二乗と2倍を混同しています。",
+            "feedback": "二乗と2倍を混同しています。"
+          }
+        ],
+        "hints": [
+          "同じ負の因子を二つ掛けると積の符号は正です。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-q12-negative-interaction",
+          "slotId": "n08-q12-negative-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-12",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000373"
+      ],
+      "requires": [
+        "n08-q12-negative-result",
+        "n08-cases-result"
+      ],
+      "produces": [
+        "n08-12-result"
+      ],
+      "role": "property",
+      "goal": "場合に関係なく成り立つ式を結論にする",
+      "purpose": "場合に関係なく成り立つ式を結論にする",
+      "operation": {
+        "kind": "relation",
+        "targets": [
+          "word-p-000373"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-12-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0339",
+              "text": "二つの場合とも二乗した値は一致しました。したがって任意の実数について、絶対値の二乗を次のように表せます。"
+            }
+          ]
+        },
+        {
+          "id": "n08-12-interaction",
+          "kind": "relationChain",
+          "relation": "independent",
+          "expressions": [
+            {
+              "id": "n08-12-interaction-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0341",
+                  "latex": "|a|^2=",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0341"
+                },
+                {
+                  "kind": "answerSlot",
+                  "id": "n08-12-slot",
+                  "interactionId": "n08-12",
+                  "semanticRef": "n08-12"
+                }
+              ]
+            }
+          ],
+          "operators": [],
+          "transformRef": "n08-12",
+          "layoutProfile": "single",
+          "numbering": {
+            "stableId": "n08-12-interaction",
+            "mode": "group-end"
+          }
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-12-result",
+          "kind": "relationChain",
+          "relation": "equality",
+          "expressions": [
+            {
+              "id": "n08-12-result-expr-0",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0342",
+                  "latex": "|a|^2",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0342"
+                }
+              ]
+            },
+            {
+              "id": "n08-12-result-expr-1",
+              "parts": [
+                {
+                  "kind": "math",
+                  "id": "n08-part-0343",
+                  "latex": "a^2",
+                  "mathRole": "expression",
+                  "semanticRef": "n08-part-0343"
+                }
+              ]
+            }
+          ],
+          "operators": [
+            "="
+          ],
+          "transformRef": "n08-12",
+          "layoutProfile": "aligned-transform",
+          "numbering": {
+            "stableId": "n08-12-result",
+            "mode": "group-end"
+          }
+        },
+        {
+          "id": "n08-12-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0340",
+              "text": "絶対値を二乗すると、元の数を二乗した値と等しくなります。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [
+        {
+          "id": "n08-12-context-0",
+          "problemId": "absolute-value",
+          "factIds": [
+            "n08-cases-result"
+          ],
+          "reason": "この判断に使う既に確定した結果"
+        }
+      ],
+      "interaction": {
+        "id": "n08-12",
+        "targetPath": "interaction.expected.value",
+        "learningAction": "relation",
+        "whyHere": "場合に関係なく成り立つ式を結論にする",
+        "prerequisiteIds": [
+          "n08-q12-negative-result",
+          "n08-cases-result"
+        ],
+        "expected": {
+          "value": "a^2",
+          "form": "formula",
+          "semanticType": "relation"
+        },
+        "choices": [
+          {
+            "id": "n08-12-correct",
+            "content": "a^2",
+            "feedback": "絶対値を二乗すると、元の数を二乗した値と等しくなります。"
+          },
+          {
+            "id": "n08-12-wrong-0",
+            "content": "|a|",
+            "misconception": "絶対値そのものと、その二乗は一般に異なります。",
+            "feedback": "絶対値そのものと、その二乗は一般に異なります。"
+          },
+          {
+            "id": "n08-12-wrong-1",
+            "content": "-a^2",
+            "misconception": "二乗した値は負になりません。",
+            "feedback": "二乗した値は負になりません。"
+          },
+          {
+            "id": "n08-12-wrong-2",
+            "content": "2a",
+            "misconception": "二乗は2倍ではありません。",
+            "feedback": "二乗は2倍ではありません。"
+          }
+        ],
+        "hints": [
+          "二つの場合に共通して出た結果を記録します。"
+        ],
+        "answerInsertion": {
+          "blockId": "n08-12-interaction",
+          "slotId": "n08-12-slot"
+        }
+      }
+    },
+    {
+      "id": "n08-closing",
+      "problemId": "absolute-value",
+      "sourceRefs": [
+        "word-p-000374"
+      ],
+      "requires": [
+        "n08-12-result",
+        "n08-cases-result"
+      ],
+      "produces": [
+        "n08-closing-result"
+      ],
+      "role": "summary",
+      "goal": "距離と符号の学習を次へつなぐ",
+      "purpose": "距離と符号の学習を次へつなぐ",
+      "operation": {
+        "kind": "expression",
+        "targets": [
+          "word-p-000374"
+        ],
+        "nextUseIds": []
+      },
+      "before": [
+        {
+          "id": "n08-closing-before",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0344",
+              "text": "絶対値は位置の向きを捨て、原点からの距離を残します。式に使うときも、まず中身の符号を調べます。"
+            }
+          ]
+        }
+      ],
+      "after": [
+        {
+          "id": "n08-closing-after",
+          "kind": "paragraph",
+          "parts": [
+            {
+              "kind": "text",
+              "id": "n08-part-0345",
+              "text": "次の平方根では、二乗が同じになる正負二つの数と、記号が表す非負の数を区別して学びます。ここではまだ次の単元の公式を答えとして提示しません。"
+            }
+          ]
+        }
+      ],
+      "contextNeed": [
+        {
+          "id": "n08-closing-context-0",
+          "problemId": "absolute-value",
+          "factIds": [
+            "n08-cases-result"
+          ],
+          "reason": "この判断に使う既に確定した結果"
+        }
+      ],
+      "noBlankReason": "未知の定義・全場合の表・境界確認・学習接続は教える本文として明示する。既知の判断を問う箇所は別nodeで穴にした。"
+    }
+  ]
+}

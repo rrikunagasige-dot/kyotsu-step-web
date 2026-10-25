@@ -1,0 +1,30 @@
+{
+  "status": "PASS_BOUNDED",
+  "checks": {
+    "IR_CHECK": {
+      "status": "PASS",
+      "warnings": 0
+    },
+    "LEGACY_PROJECTION_CHECK": {
+      "status": "PASS",
+      "warnings": 2
+    },
+    "coverage": {
+      "status": "PASS",
+      "errors": [],
+      "blocks": 35
+    },
+    "grading": {
+      "originalAnchors": 12,
+      "unchangedAnswers": 12,
+      "newIntermediateItems": 19,
+      "distinctItemIds": 31,
+      "status": "PASS"
+    }
+  },
+  "mathIdentities": 9,
+  "compileOnly": true,
+  "learnerImplementation": false,
+  "browserVerified": false,
+  "publicDeployment": false
+}

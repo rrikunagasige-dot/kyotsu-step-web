@@ -1,0 +1,11 @@
+{
+  "node": "R03_IMPACT@n08",
+  "outputs": {
+    "impact.inventory": {
+      "status": "NEEDS_AI_REVIEW",
+      "outputArtifact": "6b6e011db8bc666cf75a17f7dc0344a7f6f2912e96e484f546a8640ca8b191ce"
+    }
+  },
+  "review": "N08全36設計node/原12問、共有helper・router・進捗・元図を調査。helperを変更せずN08専用分岐へ接続するため、他のconsumerを今回書き換えない。保護対象のbyteは不変。NOT-AFFECTEDは今回差分の影響判定であり、他教材の教育的品質の保証ではない。",
+  "fullOutputs": "Content-addressed artifacts remain in the shared Runtime Store."
+}

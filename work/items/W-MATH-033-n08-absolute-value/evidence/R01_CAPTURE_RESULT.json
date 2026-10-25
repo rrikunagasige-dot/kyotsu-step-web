@@ -1,0 +1,15 @@
+{
+  "node": "R01_CAPTURE@n08",
+  "outputs": {
+    "source.fixed": {
+      "status": "PASS",
+      "outputArtifact": "9e2e59fc74bac8ed3707a36bf8281e83f5d9d5155fa065dfdca09316293a9b5a"
+    },
+    "feedback.capture": {
+      "status": "PASS",
+      "outputArtifact": "842110355772deb62c689076e8fa05ba3edde3ae2087dea5341031a8af91a54d"
+    }
+  },
+  "review": "原問12、元図、現行source/helper、既存Q05ヒント修正の承認を確認。続行依頼を否定のGold評価には変換しない。",
+  "fullOutputs": "Content-addressed artifacts remain in the shared Runtime Store."
+}

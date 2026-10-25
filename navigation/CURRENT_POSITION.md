@@ -1,3 +1,19 @@
+## CURRENT — NE02・N11・N12を公開、実物評価待ち（2026-10-25）
+
+本人「いいぞ」で凍結P-001（3d0310b8 / proposal db7460ff）の3単元設計を承認。同じ共有Runtime・CMD-WORK-001 / production/2でR05→R06→R07_VERIFY/R07_SEMANTIC→G2を全3unit実行。公開source `397788f1715b96459032a6647d6fbe772004a7b3`、既存Pages workflow `79ba8c418170cb447a69a900cfeace8c0c451902`。HTTPS release.jsonで3unit・source・namespaceを照合。公開後も全3単元を四幅で最後まで操作し、履歴・移行・表示を再確認。[公開run40181570315](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40181570315) SUCCESS。
+
+NE02 33node/30回答/12段階（r2）、N11 47/39/14（r11）、N12 49/46/15（r4）。原78回答・300choiceキーを保持して37途中回答を追加。例題・目的・対象→小さい操作→根拠/意味→次への用途、判断/式生成/計算の穴、前結果/履歴、整列と式番号を実装。元図5点はbyte不変・指定gate。旧NE02v1、N11v1–10、N12v1–3の移行と元履歴を確認。過去の移行規則を先に適用し、直前版からは新しい穴だけを再開する。
+
+内部CI [40180994131](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40180994131) SUCCESS。専用19・learner620 applicable・authoring39・既承認7behavior・build/lint PASS。320/390/430/1440pxで全115正答と各幅296誤答、全41段階、5図、文中math/太字定義/式番号、履歴/再読込/resize/旧保存を全操作。実画像11点を同じassistantが確認。N11のKaTeX内説明のoverflow、旧保存cursorに関する検査の仮定、N12の二つの金額の混在を実検出して修正。N12は各候補/回答後のT(11),T(12)の縦位置もcodeで再発検査。独立した別AI監査とは呼ばない。
+
+受入済み第一タイトル22bc43ba・N07 46ea59be・N08 ea47dd97・N09/N10 fa0eff27と既存storage namespaceを保護。共有readerを変更したsource71dc5eaaでは承認済みN09/N10も四幅全問操作PASS（CI40180105566）。最終397との差はN12 authoredのみでreader/N09/N10データbyte不変、最終版でも対象表示/behavior PASS。全repo旧メタデータや既知のphysics2検査の完全PASSは主張しない。
+
+[NE02](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=397788f1#/learning/textbook/math-numbers-expressions-ne02) ／ [N11](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=397788f1#/learning/textbook/math-numbers-expressions-n11) ／ [N12](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=397788f1#/learning/textbook/math-numbers-expressions-n12)。全3unitのG3_HOST PASS、G3_FINALはUSER。WorkはVERIFYING / WAITING_USER。次はこの公開版への実物評価。設計承認/技術PASSを教材受入やGoldへ変えない。同じ公開許可や廃止済み画像票の再承認は要求しない。N13/N14は今回範囲外。
+
+W035のN09/N10受入・実学習はDONEのまま。現役15例（否定9/肯定6）・model0fdba96e / catalogb1e33add、OFFLINE_ONLY/advisoryEligible=false。今回3単元の新label/fitなし。中央tool pin058c4ea不変。詳細 [W036](https://github.com/rrikunagasige-dot/kyotsu-step-web/tree/work/ne02-n11-n12-guided-design-20261025/work/items/W-MATH-036-ne02-n11-n12-guided-design)。以下は過去のcheckpoint。
+
+---
+
 ## CURRENT — N09/N10受入・訂正済み実学習完了、NE02/N11/N12の具体設計（2026-10-25）
 
 本人の「私が言っているのはN09,N10承認の意味」を公開fa0eff27の両単元受入として記録。W035はG3_FINAL両unit→fresh事後sweep→R08/L01実fit→Z01を完了。W034の依頼は子修正完了でresolveし、旧cb7版の受入は捏造しない。

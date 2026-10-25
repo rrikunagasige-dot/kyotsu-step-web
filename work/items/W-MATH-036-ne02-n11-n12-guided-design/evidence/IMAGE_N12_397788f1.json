@@ -1,0 +1,32 @@
+{
+  "sourceSHA": "397788f1715b96459032a6647d6fbe772004a7b3",
+  "status": "PASS",
+  "reviewer": "same assistant",
+  "independent": false,
+  "userAcceptance": false,
+  "images": [
+    {
+      "path": "n12-15-options.png",
+      "sha256": "7465dd5249de9bf6c444c8c66c3781791c472e2e8070e71dde44085fa8569de9"
+    },
+    {
+      "path": "n12-390-stage-15.png",
+      "sha256": "9812d55af73a5f78a621f67f215494dee4d9005287f9bce822863b7338679b7f"
+    },
+    {
+      "path": "n12-06-options.png",
+      "sha256": "5d4447693d66455d322c0d2996475c2727b161430169afce80bd831dca2484b0"
+    },
+    {
+      "path": "n12-390-stage-1.png",
+      "sha256": "d331deb4d4ddf1232465cfc9aca2a53b00e99e555c9fe67a57524b85fef7ab6e"
+    }
+  ],
+  "findings": [
+    "Verdict recorded only after all listed actual tool images returned and were inspected",
+    "Options are separated and complete candidates stay together",
+    "Independent function checks occupy their own rows, with one group number",
+    "Original examples precede operations; small steps and final conclusions remain connected",
+    "Element screenshots can include sticky-header stitching; not a viewport approval or user material acceptance"
+  ]
+}

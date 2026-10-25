@@ -1,0 +1,12 @@
+{
+  "sourceSHA": "397788f1715b96459032a6647d6fbe772004a7b3",
+  "conclusion": "success",
+  "runId": 40180994131,
+  "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40180994131",
+  "artifactId": 12594007880,
+  "artifactSHA256": "a3fa4a639d622181fd036c45e2975a0750070f0f78bf4dd015a89ffbf9be133c",
+  "protectedFullSourceSHA": "71dc5eaadcabe93b91eb3d43e9cfe84713a9d081",
+  "protectedFullRunId": 40180105566,
+  "protectedDataAndReaderUnchanged": true,
+  "currentProtectedDisplayAndBehavior": "PASS"
+}

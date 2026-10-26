@@ -1,17 +1,13 @@
 <!-- W041_CURRENT -->
-## CURRENT — N08は本人未承認、修正具体案W041/P001（2026-10-26）
+## CURRENT — N08第7版 制作者検証完了・公開処理中（2026-10-26）
 
-公開r6 source `e7320590d4af51b7cc0d9faa918485467092a3c0`。本人は改善を認めつつ未承認と明示し、途中穴の不足と入力中の不整列を指摘。W040の技術検査PASSを品質受入へ転用しない。元の受入・画像・指摘・sourceは保持。
+固定コードsource `18839ba97ec73c99f41c8715c3a888524b743358`（`work/n08-r7-derivation-axis-20261026`）。P001の実装・既存Pages公開は許可済み。原具体案は62d37f03にbyte固定、mainは現在地の正本であり、appの実装取得は固定sourceを使う。mainの旧appコードを一括mergeしない。
 
-- [今回の正式提案書](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/main/work/items/W-MATH-041-n08-inline-derivation-alignment/PROPOSAL.md)
-- [全39node/全部品契約](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/main/work/items/W-MATH-041-n08-inline-derivation-alignment/NODE_DESIGN.json)
-- [実装/保存/排版/CODE・AI契約](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/main/work/items/W-MATH-041-n08-inline-derivation-alignment/IMPLEMENTATION_CONTRACT.json)
+39node/12段階、30親42判断（構成20親32部品＋局所10回答）。途中の係数・符号・範囲・計算を段階表示。18pxの数式軸、固定frame、44px操作、番号、4/6/8px余白、前結果・履歴、本文中の両辺操作説明・数式描画、旧4/5/6保存を検証。
 
-提案：原39node/12段階を保持、重複まとめ3親を自動記録にし、必須30親42決定（construction20親32部品＋局所10回答）。現37決定から5増。完成式の選択を途中へ移し、Q07/Q09は4部品/3段階で前提正答まで後行を出さない。数式baseline/axis・共通frame・番号・44px操作を分離。16親18決定のみ意味同一保存、14親24部品は新ID。r4/r5/r6比較を保持する案。
+CI [40316550464](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40316550464) attempt2 SUCCESS。658learner・190workflow・38corpus・88数学・37新構成/軸、1200PNG/1200JSON/3936実測。42操作の空・keyboard・pointer・誤答・filledを4幅で実操作。旧r6/r5試し解答とN11全問4幅もPASS。固定非作者のsource-first実画面審査とG2 READY、既存公開許可によるDEPLOY intent記録済み。
 
-提案整合の39node/依存/IDと変更14親114候補をCODE検算。Q08の真だが指定計算結果でない不等式の反例を、前行の計算根拠で修正。最小排版機構5caseも確認したが、いずれもr7の本番QAではない。M+A+Bの実担当と相互反証を記録、同一モデル/履歴共有を独立モデル監査と呼ばない。
-
-Status: PROPOSED。今回の依頼は提案書作成。app/CSS/採点/保存/配信/fitは未変更。次はこの固定案の判断。承認後は既存修正工程で実装し公開appへ反映する。画像票承認や公開許可の再質問を足さない。既存modelはOFFLINE_ONLY。返答は日本語。
+次はG3_HOSTの実配信source/完全release contract/4幅操作の照合。公開完了と本人受入を混同しない。N08 r6は本人未受入、r7にもUSER受入/Gold/新fitを付けていない。モデルOFFLINE_ONLY。子agentは固定2名のみ、増員・入替で増やさない。追加の画像票承認・公開許可の再質問なし。返答は日本語。
 
 以下は以前の履歴。
 <!-- W041_CURRENT_END -->

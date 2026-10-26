@@ -1,0 +1,65 @@
+{
+  "sourceSHA": "18839ba97ec73c99f41c8715c3a888524b743358",
+  "widths": [
+    320,
+    390,
+    430,
+    1440
+  ],
+  "parentsPerWidth": 30,
+  "decisionsPerWidth": 42,
+  "wrongPerWidth": 70,
+  "pngHashesVerified": 1200,
+  "geometryPackets": 3936,
+  "nativeR07Verify": "PASS",
+  "candidateAcceptance": false,
+  "runId": 40316550464,
+  "runAttempt": 2,
+  "artifactId": 12648225994,
+  "artifactSHA256": "62e93a35306f0018cd735a0eb6d3fa9b093bbd7eba54dfc202bdbd0487b65000",
+  "tests": {
+    "productionNode": 59,
+    "workflowPython": 190,
+    "corpusPython": 38,
+    "originalMath": 88,
+    "newConstructionAxis": 37,
+    "axisContext": 7,
+    "learnerVitest": 658,
+    "comparisonRoutes": 4,
+    "authoringNode": 35,
+    "authoringVitest": 4
+  },
+  "oldR6": {
+    "parents": 33,
+    "decisions": 37,
+    "wrong": 69,
+    "isolated": true
+  },
+  "oldR5": {
+    "correct": 34,
+    "wrong": 80,
+    "isolated": true
+  },
+  "protectedN11": {
+    "correctPerWidth": 39,
+    "wrongPerWidth": 109,
+    "widths": [
+      320,
+      390,
+      430,
+      1440
+    ],
+    "legacyRevisions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  }
+}

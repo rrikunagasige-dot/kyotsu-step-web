@@ -8,42 +8,36 @@
   "implementation": {
     "repository": "rrikunagasige-dot/kyotsu-step-web",
     "repoId": 1391122224,
-    "sourceSHA": "e7320590d4af51b7cc0d9faa918485467092a3c0",
-    "branch": "work/n08-construction-application-20261026",
+    "sourceSHA": "18839ba97ec73c99f41c8715c3a888524b743358",
+    "branch": "work/n08-r7-derivation-axis-20261026",
     "entry": "workflow/INTEGRATION_RUNBOOK.md",
-    "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/e7320590d4af51b7cc0d9faa918485467092a3c0/workflow/INTEGRATION_RUNBOOK.md",
+    "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/18839ba97ec73c99f41c8715c3a888524b743358/workflow/INTEGRATION_RUNBOOK.md",
     "teamProtocol": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/e7320590d4af51b7cc0d9faa918485467092a3c0/workflow/TEAM_PROTOCOL.md"
   },
   "verification": {
-    "sourceSHA": "e7320590d4af51b7cc0d9faa918485467092a3c0",
-    "status": "VERIFIED_CI_AND_HOSTED",
-    "runId": 40296848940,
+    "sourceSHA": "18839ba97ec73c99f41c8715c3a888524b743358",
+    "status": "EXACT_SOURCE_CI_AND_SOURCE_FIRST_REVIEW_PASS",
+    "runId": 40316550464,
+    "runAttempt": 2,
     "conclusion": "success",
+    "learnerTests": 658,
     "workflowTests": 190,
-    "learnerTests": 637,
-    "corpusTests": 31,
-    "productionNodeTests": 59,
-    "mathAndSourceNodeTests": 88,
-    "authoringNodeTests": 35,
-    "authoringVitestTests": 4,
-    "comparisonRouteTests": 4,
+    "corpusTests": 38,
+    "originalMathTests": 88,
+    "newConstructionAxisTests": 37,
     "widths": [
       320,
       390,
       430,
       1440
     ],
-    "n08ScalarAnswers": 22,
-    "n08ConstructionParents": 11,
-    "n08Parts": 15,
-    "n08WrongCandidatesPerWidth": 69,
-    "parentImages": 132,
-    "layoutMeasurements": 48,
-    "retainedN11CorrectPerWidth": 39,
-    "retainedN11WrongPerWidth": 109,
-    "retainedR5Correct": 34,
-    "retainedR5Wrong": 80,
-    "publicationRun": 40299824089
+    "parentsPerWidth": 30,
+    "decisionsPerWidth": 42,
+    "wrongPerWidth": 70,
+    "captures": 1200,
+    "measurements": 3936,
+    "artifactId": 12648225994,
+    "artifactSHA256": "62e93a35306f0018cd735a0eb6d3fa9b093bbd7eba54dfc202bdbd0487b65000"
   },
   "reviewSurface": "existing-public-app",
   "screenshotApprovalRequired": false,
@@ -61,30 +55,11 @@
   "previousPublishedAppSource": "c4e7133a4fd3def11771077379aacc6e19d3445b",
   "acceptedFirstTitle": "22bc43ba53fa87bb85e82e18a25db13a5c8a485c",
   "publication": {
-    "status": "verified",
-    "sourceSHA": "e7320590d4af51b7cc0d9faa918485467092a3c0",
-    "workflowSHA": "cfd0ff8f4ca4a6b62122802f97f1bcde9aa98643",
-    "runId": 40299824089,
-    "deploymentStepConclusion": "success",
-    "deploymentRunConclusion": "success",
-    "verificationRunId": 40299824089,
-    "verificationConclusion": "success",
-    "sourceVerified": true,
+    "status": "in_progress",
+    "sourceSHA": "18839ba97ec73c99f41c8715c3a888524b743358",
     "userAccepted": false,
-    "units": [
-      "n08"
-    ],
-    "activeN08Revision": 6,
-    "retainedN11Verified": true,
-    "retainedN09N10DisplayVerified": true,
-    "artifactId": 12640421671,
-    "artifactSHA256": "b6b0a05694c8e514f58b16c1d5942e30e9120f62c7adbfcf5493f52bf11b3a8e",
-    "urls": {
-      "n08": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=e7320590#/learning/textbook/math-numbers-expressions-n08",
-      "revision5": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=e7320590#/learning/textbook/math-numbers-expressions-n08?version=5",
-      "original": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=e7320590#/learning/textbook/math-numbers-expressions-n08?version=5&layout=original",
-      "archive": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=e7320590#/learning/textbook/math-numbers-expressions-n08?version=4"
-    }
+    "sourceVerified": false,
+    "activeN08Revision": 7
   },
   "metadataGovernanceScope": "Record completeness corrected without overwriting original proposal; whole-repository Governance Check40300779836 SUCCESS on metadata source470f0469.",
   "acceptance": {
@@ -130,21 +105,22 @@
   "currentWork": {
     "id": "W-MATH-041",
     "proposal": "P-001",
-    "status": "PROPOSED",
-    "node": "R04_PROPOSAL@n08",
-    "sourceSHA": "e7320590d4af51b7cc0d9faa918485467092a3c0",
+    "status": "PUBLISHING",
+    "node": "G3_HOST@n08",
+    "sourceSHA": "18839ba97ec73c99f41c8715c3a888524b743358",
     "parentWork": "W-MATH-040",
     "parentIssue": "1fb0e4f5848eea9231f8",
     "blocks": [
       "n08"
     ],
     "expectedRevision": 7,
-    "implementationApproved": false,
+    "implementationApproved": true,
     "userAccepted": false,
-    "native": "Proposal package only; new production Work not opened, no invented receipts",
+    "native": "R04/R05/R06/R07/G2 actual receipts PASS; scoped DEPLOY intent recorded; public verification pending",
     "proposalSHA256": "ea5c4ecdb97e7c4c6c75c990970d6d8a7c5fcdd483d3c43c0f68c32fc2492bdb",
     "nodeDesignSHA256": "afdb89d7e69a87ebffb646a586f57f8d1c6bc9da880252ee2022e04a1ad2d7ae",
-    "proposalPath": "work/items/W-MATH-041-n08-inline-derivation-alignment/PROPOSAL.md"
+    "proposalPath": "work/items/W-MATH-041-n08-inline-derivation-alignment/PROPOSAL.md",
+    "originalSourceSHA": "e7320590d4af51b7cc0d9faa918485467092a3c0"
   },
   "currentLearnerVerification": {
     "sourceSHA": "fa0eff271a97940fad08d83960ae50faeabc81b9",
@@ -337,8 +313,8 @@
     "oldWorks": "explicit policy migration with original history retained"
   },
   "constructionPipeline": "construction-layout/1",
-  "nextWork": "Exact W041/P001 proposal decision; N08 r6 explicitly not accepted",
-  "N08QualityStatus": "R6_USER_NOT_ACCEPTED_R7_REPAIR_PROPOSED",
+  "nextWork": "G3_HOST exact public release/source/operations, then G3_FINAL actual user evaluation",
+  "N08QualityStatus": "R7_PUBLISHING_USER_NOT_ACCEPTED; R6 negative feedback retained",
   "teamProposal": "W-GOV-012/P-001",
   "sharedFoundationScopes": [
     "CMD-WORK-001",
@@ -427,5 +403,76 @@
     ],
     "praiseIsNotWholeLessonAcceptance": true,
     "trained": false
-  }
+  },
+  "previousPublicationBeforeW041": {
+    "status": "verified",
+    "sourceSHA": "e7320590d4af51b7cc0d9faa918485467092a3c0",
+    "workflowSHA": "cfd0ff8f4ca4a6b62122802f97f1bcde9aa98643",
+    "runId": 40299824089,
+    "deploymentStepConclusion": "success",
+    "deploymentRunConclusion": "success",
+    "verificationRunId": 40299824089,
+    "verificationConclusion": "success",
+    "sourceVerified": true,
+    "userAccepted": false,
+    "units": [
+      "n08"
+    ],
+    "activeN08Revision": 6,
+    "retainedN11Verified": true,
+    "retainedN09N10DisplayVerified": true,
+    "artifactId": 12640421671,
+    "artifactSHA256": "b6b0a05694c8e514f58b16c1d5942e30e9120f62c7adbfcf5493f52bf11b3a8e",
+    "urls": {
+      "n08": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=e7320590#/learning/textbook/math-numbers-expressions-n08",
+      "revision5": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=e7320590#/learning/textbook/math-numbers-expressions-n08?version=5",
+      "original": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=e7320590#/learning/textbook/math-numbers-expressions-n08?version=5&layout=original",
+      "archive": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=e7320590#/learning/textbook/math-numbers-expressions-n08?version=4"
+    }
+  },
+  "previousImplementationBeforeW041": {
+    "repository": "rrikunagasige-dot/kyotsu-step-web",
+    "repoId": 1391122224,
+    "sourceSHA": "e7320590d4af51b7cc0d9faa918485467092a3c0",
+    "branch": "work/n08-construction-application-20261026",
+    "entry": "workflow/INTEGRATION_RUNBOOK.md",
+    "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/e7320590d4af51b7cc0d9faa918485467092a3c0/workflow/INTEGRATION_RUNBOOK.md",
+    "teamProtocol": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/e7320590d4af51b7cc0d9faa918485467092a3c0/workflow/TEAM_PROTOCOL.md"
+  },
+  "previousVerificationBeforeW041": {
+    "sourceSHA": "e7320590d4af51b7cc0d9faa918485467092a3c0",
+    "status": "VERIFIED_CI_AND_HOSTED",
+    "runId": 40296848940,
+    "conclusion": "success",
+    "workflowTests": 190,
+    "learnerTests": 637,
+    "corpusTests": 31,
+    "productionNodeTests": 59,
+    "mathAndSourceNodeTests": 88,
+    "authoringNodeTests": 35,
+    "authoringVitestTests": 4,
+    "comparisonRouteTests": 4,
+    "widths": [
+      320,
+      390,
+      430,
+      1440
+    ],
+    "n08ScalarAnswers": 22,
+    "n08ConstructionParents": 11,
+    "n08Parts": 15,
+    "n08WrongCandidatesPerWidth": 69,
+    "parentImages": 132,
+    "layoutMeasurements": 48,
+    "retainedN11CorrectPerWidth": 39,
+    "retainedN11WrongPerWidth": 109,
+    "retainedR5Correct": 34,
+    "retainedR5Wrong": 80,
+    "publicationRun": 40299824089
+  },
+  "fixedCurrentReviewAgents": [
+    "/root/fresh_teaching_review",
+    "/root/fresh_layout_review"
+  ],
+  "noAdditionalSubagents": true
 }

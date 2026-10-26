@@ -1,0 +1,17 @@
+{
+  "work": "W-MATH-041",
+  "proposal": "P-001",
+  "approvedSourceProposalCommit": "62d37f03f39fee0a09c9f57cf065de46483b572a",
+  "approvedSourceProposalSHA256": "ea5c4ecdb97e7c4c6c75c990970d6d8a7c5fcdd483d3c43c0f68c32fc2492bdb",
+  "authorization": "Actual user directly authorized exact design implementation and existing-app publication. Original approval and scoped execution/lead-render hash bindings retained in existing Runtime.",
+  "sourceSHA": "18839ba97ec73c99f41c8715c3a888524b743358",
+  "qualityAccepted": false,
+  "currentStage": "R07_SEMANTIC; completed exact CI40316550464 attempt2",
+  "modelDisposition": "OFFLINE_ONLY",
+  "trainingRun": false,
+  "fixedSubagents": [
+    "/root/fresh_teaching_review",
+    "/root/fresh_layout_review"
+  ],
+  "noMoreSubagents": true
+}

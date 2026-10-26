@@ -1,0 +1,43 @@
+{
+  "approvedProposalHash": "ea5c4ecdb97e7c4c6c75c990970d6d8a7c5fcdd483d3c43c0f68c32fc2492bdb",
+  "protectedManifest": {
+    "src/data/textbook/math/numbers/n08Authored.json": "80c917d3c2de34b9111e11f57fb02272d98ab02c0677a2fb30c5ae4dad60e142",
+    "src/data/textbook/math/numbers/n08Revision5.json": "2ff0e38d4d081a3dc9f1912cd6b6a0ebe395fd9cb8afd6bd8fab2f2778a862e5",
+    "src/data/textbook/math/numbers/n08Revision6.json": "0abf54fc442aaa80894f41c15210cd6e25d7ebc6038389574324894dbedd3ea6",
+    "src/data/textbook/math/numbers/n08Construction.json": "c29bc81b85878842b6031715201f07e3d73a260c6f2905ce2206fd78932fd298",
+    "src/data/textbook/math/numbers/n08Layout.json": "d5741ef205507deb4558de4e8987877bad0a7b65a0c8d4584d75200c4f6e6ad8",
+    "src/data/textbook/math/numbers/n08ConstructionPresentation.json": "f4ed774410210eef2d8f2a58c9275528ed8bb3863ba4d0bf43f15cdda110a4e3",
+    "src/data/textbook/math/numbers/n08Transformation.json": "1d919ff71018cdb8d65f1ad72097844cf4d795babfac966618137548dbf9d231",
+    "src/data/textbook/math/numbers/n08PresentationPolicy.json": "9ac0392f72b24e3b2a11787475dacc99d097abb4d9473de7e9e01664c86063e5",
+    "src/components/textbook/N08ConstructionReadingFlow.tsx": "9a17be29c43a050775a296febb6ac27da0bf3481d930361e45117bdc1d5d4b91",
+    "src/components/textbook/ConstructionSlot.tsx": "7505dc11de7e7d6241556295d67e08e36ea0ac9f3319307bf07914d1a934f61c",
+    "src/components/textbook/ConstructionPanel.tsx": "5a27a40a47b34dcd7b7369fb145d993e5a96bb4b1a853fc4c0cdc8ee76b3ce20",
+    "src/components/textbook/construction-reading.css": "601529233f0d185ae500b7973338380f50f7a899dce13fd261d00bbe97fd5f24",
+    "src/components/textbook/N08SolutionReadingFlow.tsx": "2d4938f8e72015b4c1d4bf8e6cb77f36be9ab221549f6695a29ae4c97b3fe353",
+    "src/components/textbook/N08ReadingFlow.tsx": "56f9d2b75b8b34a28b8e4b53c6df5ac922fb2da6c57005b6f709db5abcf56cc6",
+    "src/components/textbook/n08-reading.css": "c2c252e5467690b6b0897b5dcd99ddf18ae588cdb011b5d3c66e780a1175f949",
+    "src/components/textbook/n08-solution-reading.css": "de8a7aa9052d3bb6777a9a7190284cdb2d947856762d292eb94e6bf622b2ffd1",
+    "src/components/textbook/NumberedEquation.tsx": "334245a338070e6cb4ba9c910ebe586cca713c570ed1d0bff1e62715f402cbf6",
+    "src/data/textbook/math/numbers/n11Authored.json": "ae3823163ac23bb334ac02a6c868bbd1273b8b6f1f65c77cde6f751773900a74",
+    "src/data/textbook/math/numbers/n11Transformation.json": "c1cbfd5c5e4b7ee79baf40cd54a9170c4cae5286fb04e940c5f50e92bc3f5197",
+    "pnpm-lock.yaml": "ece56e44c910c8282e1ebd41b5cfe4402627721c3a48e56651e41e571b03d006"
+  },
+  "planHash": "3189092dec720125a43541dcf1c6d08725ff6b7619d4eb95312ac7ab8c64687c",
+  "constructionDesignHash": "cff9d0ca0aff9784904094221b05feffc98d48c6ef108a995741143745ea107c",
+  "layoutDesignHash": "093901deae13eced76148965d09b0662a416a2d043247822d4c6b11fd4c99f7f",
+  "learnerCopyHash": "3d21f3c40ea44cb86c5fd0c8a732cf6cbcac969205b100c593bb60453cc34156",
+  "compiledPresentationHash": "2b7d052dbefe9065731f802e3d48a160e6dfc505f04ea7ddd9318fdfed543f74",
+  "baseIRHash": "0abf54fc442aaa80894f41c15210cd6e25d7ebc6038389574324894dbedd3ea6",
+  "inventory": {
+    "nodes": 39,
+    "stages": 12,
+    "parents": 30,
+    "decisions": 42,
+    "newParents": 14,
+    "newParts": 24,
+    "retainedConstructionParents": 6,
+    "retainedParts": 8,
+    "localParents": 10
+  },
+  "qualityAccepted": false
+}

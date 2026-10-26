@@ -8,19 +8,21 @@
   "implementation": {
     "repository": "rrikunagasige-dot/kyotsu-step-web",
     "repoId": 1391122224,
-    "sourceSHA": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
-    "branch": "work/transformation-groups-implementation-20261026",
+    "sourceSHA": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+    "branch": "work/n08-grouped-transformations-20261026",
     "entry": "workflow/INTEGRATION_RUNBOOK.md",
-    "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/aef34919e630c3772c8ad4329f0aa01dec63e6fe/workflow/INTEGRATION_RUNBOOK.md"
+    "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/c4e7133a4fd3def11771077379aacc6e19d3445b/workflow/INTEGRATION_RUNBOOK.md"
   },
   "verification": {
-    "runId": 40268196468,
-    "sourceSHA": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
+    "runId": 40272765258,
+    "sourceSHA": "c4e7133a4fd3def11771077379aacc6e19d3445b",
     "conclusion": "success",
     "workflowTests": 139,
     "learnerTests": 620,
-    "mathAndAdversarialTests": 69,
-    "componentTests": 6,
+    "mathAndAdversarialTests": 88,
+    "componentTests": 12,
+    "priorN08SaveTests": 7,
+    "priorThreeUnitTests": 19,
     "sourceContextTests": 21,
     "authoringChecks": 39,
     "browserWidths": [
@@ -29,9 +31,11 @@
       430,
       1440
     ],
+    "N08CorrectPerWidth": 34,
+    "N08WrongPerWidth": 80,
     "N11CorrectPerWidth": 39,
     "N11WrongPerWidth": 109,
-    "fixtureBrowserCases": 32
+    "priorN08ReaderFreezeAssertion": "Historical W038 test retained and explicitly superseded by approved W039 reader work;7 new fallback/projection tests required"
   },
   "reviewSurface": "existing-public-app",
   "screenshotApprovalRequired": false,
@@ -39,34 +43,34 @@
   "contentDesignApprovalRequired": true,
   "modelStatus": "OFFLINE_ONLY",
   "newLessonAccepted": false,
-  "protectedAppSource": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
-  "adoption": "W038 bounded code and N11 stage05-06 are implemented and public-source verified. G3_FINAL@n11 is user evaluation. W039 N08 all39-node proposal is ready; no N08 learner change or W038 fit.",
+  "protectedAppSource": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+  "adoption": "W039/P001 explicitly approved by 「いいよまず実装してくれ」. Four bounded N08 numeric chains,11 unchanged math answers and2 prose overrides implemented and public-source verified. Native G3_HOST@n08 PASS; G3_FINAL@n08 awaits actual user app evaluation. Original r5/r4 and published N11 retained. No new model fit or quality labels.",
   "legacyVersions": [
     "production/1",
     "legacy/1"
   ],
   "repairProposal": "W-MATH-035/P-001",
-  "previousPublishedAppSource": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
+  "previousPublishedAppSource": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
   "acceptedFirstTitle": "22bc43ba53fa87bb85e82e18a25db13a5c8a485c",
   "publication": {
     "status": "verified",
-    "sourceSHA": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
-    "workflowSHA": "d3eb6d75d8a46d34bf59b9b9c8bebd1072ac6feb",
-    "runId": 40269350862,
+    "sourceSHA": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+    "workflowSHA": "65ff3f5f730b8f62bf0e35dfe87101a631dc4ae4",
+    "runId": 40273405766,
     "deploymentStepConclusion": "success",
-    "deploymentRunConclusion": "failure",
-    "verificationRunId": 40270029827,
-    "verificationWorkflowSHA": "2b25e50cb8cf93024c7031020a5aeba94a79b3b7",
+    "deploymentRunConclusion": "success",
+    "verificationRunId": 40273405766,
     "verificationConclusion": "success",
-    "harnessRepair": "Await original-image decode; original complete/naturalWidth assertions preserved; same app source",
     "sourceVerified": true,
     "userAccepted": false,
     "units": [
-      "n11"
+      "n08"
     ],
+    "retainedN11Verified": true,
     "urls": {
-      "n11": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=aef34919#/learning/textbook/math-numbers-expressions-n11",
-      "original": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=aef34919#/learning/textbook/math-numbers-expressions-n11?layout=original"
+      "n08": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=c4e7133a#/learning/textbook/math-numbers-expressions-n08",
+      "original": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=c4e7133a#/learning/textbook/math-numbers-expressions-n08?layout=original",
+      "archive": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=c4e7133a#/learning/textbook/math-numbers-expressions-n08?version=4"
     }
   },
   "metadataGovernanceScope": "Whole-repository Markdown metadata checker is not claimed PASS; immutable approved N08 design and legacy metadata limits are recorded in W-MATH-033/FINDINGS.md. N07 acceptance remains scoped to W-MATH-032.",
@@ -86,10 +90,12 @@
     "previousFitPerformed": true,
     "newFitForW038": false,
     "advisoryEligible": false,
-    "qualityLabelsAddedByW038": 0
+    "qualityLabelsAddedByW038": 0,
+    "newFitForW039": false,
+    "qualityLabelsAddedByW039": 0
   },
   "sharedRuntimeStore": "work/items/W-MATH-032-n07-semantic-repair/runtime",
-  "publishedAppSource": "fa0eff271a97940fad08d83960ae50faeabc81b9",
+  "publishedAppSource": "c4e7133a4fd3def11771077379aacc6e19d3445b",
   "acceptedUnits": {
     "n07": {
       "sourceSHA": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
@@ -107,24 +113,22 @@
     }
   },
   "currentWork": {
-    "id": "W-MATH-035",
+    "id": "W-MATH-039",
     "proposal": "P-001",
     "status": "VERIFYING",
-    "node": "G3_FINAL@n09",
+    "node": "G3_FINAL@n08",
     "blocks": [
-      "n09",
-      "n10"
+      "n08"
     ],
-    "branch": "work/n0910-choice-order-factor-audit-20261025",
-    "learnerSourceSHA": "fa0eff271a97940fad08d83960ae50faeabc81b9",
-    "parent": "W-MATH-034",
+    "branch": "work/n08-grouped-transformations-20261026",
+    "learnerSourceSHA": "c4e7133a4fd3def11771077379aacc6e19d3445b",
     "userAccepted": false,
     "concreteDesignApproved": true,
-    "nodes": [
-      "G3_FINAL@n09",
-      "G3_FINAL@n10"
-    ],
-    "approvalEvent": "W035-P001-APPROVED-20261025"
+    "approvalEvent": "W039-P001-MATERIALIZED-APPROVAL-20261026",
+    "approvalQuote": "いいよまず実装してくれ",
+    "native": "R01-R06,R07_VERIFY,R07_SEMANTIC,G2_AUDIT,G3_HOST PASS",
+    "originalApprovalHash": "c27fd866666af45d35893bac52747ea33b710a4ea4a040ac82be90afacb491ee",
+    "recordsSourceSHA": "0401a9241671011c415f91f7f429368e80438037"
   },
   "currentLearnerVerification": {
     "sourceSHA": "fa0eff271a97940fad08d83960ae50faeabc81b9",
@@ -202,37 +206,38 @@
   "previousImplementation": {
     "repository": "rrikunagasige-dot/kyotsu-step-web",
     "repoId": 1391122224,
-    "sourceSHA": "058c4ea32474b563487292b583f7a01df4f9c4f1",
-    "branch": "work/n07-semantic-repair-proposal-20261025",
+    "sourceSHA": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
+    "branch": "work/transformation-groups-implementation-20261026",
     "entry": "workflow/INTEGRATION_RUNBOOK.md",
-    "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/058c4ea32474b563487292b583f7a01df4f9c4f1/workflow/INTEGRATION_RUNBOOK.md"
+    "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/aef34919e630c3772c8ad4329f0aa01dec63e6fe/workflow/INTEGRATION_RUNBOOK.md"
   },
   "previousVerification": {
-    "runId": 40157340081,
-    "sourceSHA": "058c4ea32474b563487292b583f7a01df4f9c4f1",
+    "runId": 40268196468,
+    "sourceSHA": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
     "conclusion": "success",
-    "workflowTests": 131,
-    "newIntegrationTests": 42,
+    "workflowTests": 139,
     "learnerTests": 620,
+    "mathAndAdversarialTests": 69,
+    "componentTests": 6,
+    "sourceContextTests": 21,
+    "authoringChecks": 39,
     "browserWidths": [
       320,
       390,
       430,
       1440
     ],
-    "additionalRepairWorkflowTests": 9,
-    "authoringChecks": 39,
-    "repairNodeTests": 6,
-    "corpusMLSourceTests": 11,
-    "diagramPanels": 5
+    "N11CorrectPerWidth": 39,
+    "N11WrongPerWidth": 109,
+    "fixtureBrowserCases": 32
   },
   "boundedExtension": {
-    "work": "W-MATH-038",
+    "work": "W-MATH-039",
     "proposal": "P-001",
     "solutionPipeline": "solution/1",
     "transformationPlan": "transformation-plan/1",
-    "legacyBridge": "N11 revision11 only; unknown source requires mapping",
-    "activation": "explicit opt-in sidecar; N11 stage05-06",
+    "legacyBridge": "Exact N11 revision11 and N08 r5 numerical graphs only; unknown source requires mapping",
+    "activation": "Explicit source-bound sidecars; N11 stage05-06 retained; N08 four groups in stages06-09",
     "modelStatus": "OFFLINE_ONLY",
     "newFit": false,
     "qualityAccepted": false,
@@ -264,5 +269,47 @@
     "proposalHash": "c27fd866666af45d35893bac52747ea33b710a4ea4a040ac82be90afacb491ee",
     "implementationApproved": false,
     "proposalURL": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/0aa633dcf6c1acc6e8df718e907cbaae0e8961f9/work/items/W-MATH-039-n08-grouped-transformations/PROPOSAL.md"
-  }
+  },
+  "previousPublication": {
+    "status": "verified",
+    "sourceSHA": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
+    "workflowSHA": "d3eb6d75d8a46d34bf59b9b9c8bebd1072ac6feb",
+    "runId": 40269350862,
+    "deploymentStepConclusion": "success",
+    "deploymentRunConclusion": "failure",
+    "verificationRunId": 40270029827,
+    "verificationWorkflowSHA": "2b25e50cb8cf93024c7031020a5aeba94a79b3b7",
+    "verificationConclusion": "success",
+    "harnessRepair": "Await original-image decode; original complete/naturalWidth assertions preserved; same app source",
+    "sourceVerified": true,
+    "userAccepted": false,
+    "units": [
+      "n11"
+    ],
+    "urls": {
+      "n11": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=aef34919#/learning/textbook/math-numbers-expressions-n11",
+      "original": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=aef34919#/learning/textbook/math-numbers-expressions-n11?layout=original"
+    }
+  },
+  "currentWorkBeforeW039": {
+    "id": "W-MATH-035",
+    "proposal": "P-001",
+    "status": "VERIFYING",
+    "node": "G3_FINAL@n09",
+    "blocks": [
+      "n09",
+      "n10"
+    ],
+    "branch": "work/n0910-choice-order-factor-audit-20261025",
+    "learnerSourceSHA": "fa0eff271a97940fad08d83960ae50faeabc81b9",
+    "parent": "W-MATH-034",
+    "userAccepted": false,
+    "concreteDesignApproved": true,
+    "nodes": [
+      "G3_FINAL@n09",
+      "G3_FINAL@n10"
+    ],
+    "approvalEvent": "W035-P001-APPROVED-20261025"
+  },
+  "recordsSourceSHA": "0401a9241671011c415f91f7f429368e80438037"
 }

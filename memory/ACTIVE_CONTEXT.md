@@ -1,13 +1,11 @@
 <!-- W041_CURRENT -->
-## CURRENT — N08第7版 制作者検証完了・公開処理中（2026-10-26）
+## CURRENT — N08第7版 公開・配信検証完了（2026-10-26）
 
-固定コードsource `18839ba97ec73c99f41c8715c3a888524b743358`（`work/n08-r7-derivation-axis-20261026`）。P001の実装・既存Pages公開は許可済み。原具体案は62d37f03にbyte固定、mainは現在地の正本であり、appの実装取得は固定sourceを使う。mainの旧appコードを一括mergeしない。
+固定app source `18839ba97ec73c99f41c8715c3a888524b743358`。公開run [40321609448](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40321609448) attempt2 SUCCESS、publisher `4396673fc41fe18c4846ffca8839a224328c823d`。[公開N08](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=18839ba9#/learning/textbook/math-numbers-expressions-n08)。mainは現在地の正本、app実装は固定sourceを取得する。
 
-39node/12段階、30親42判断（構成20親32部品＋局所10回答）。途中の係数・符号・範囲・計算を段階表示。18pxの数式軸、固定frame、44px操作、番号、4/6/8px余白、前結果・履歴、本文中の両辺操作説明・数式描画、旧4/5/6保存を検証。
+39node/12段階、30親42判断。式を組み立てる係数・符号・範囲・計算の穴、18px数式、固定frame/数学軸、44px操作、段階表示を実装。公開N08全42操作の空・keyboard・pointer・誤答・filledを320/390/430/1440pxで検査。旧r6/r5試し解答、N09/N10代表表示、N11全問4幅もPASS。実配信release全byteのSHA256がbuilt artifactと一致し、source/6契約hash/namespace/16unitを確認。公開artifact12649439884、ZIP SHA256 179be3a6f06ffd996e651c900b19ff86086439d5907cbfbeb3c147f4078491aa。
 
-CI [40316550464](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40316550464) attempt2 SUCCESS。658learner・190workflow・38corpus・88数学・37新構成/軸、1200PNG/1200JSON/3936実測。42操作の空・keyboard・pointer・誤答・filledを4幅で実操作。旧r6/r5試し解答とN11全問4幅もPASS。固定非作者のsource-first実画面審査とG2 READY、既存公開許可によるDEPLOY intent記録済み。
-
-次はG3_HOSTの実配信source/完全release contract/4幅操作の照合。公開完了と本人受入を混同しない。N08 r6は本人未受入、r7にもUSER受入/Gold/新fitを付けていない。モデルOFFLINE_ONLY。子agentは固定2名のみ、増員・入替で増やさない。追加の画像票承認・公開許可の再質問なし。返答は日本語。
+制作者側CI40316550464 attempt2 SUCCESSと固定2名の非作者レビューを保持。旧4/5/6・学習記録は保持。次はG3_FINAL@n08の本人評価。r6未受入を維持し、r7にも受入/Gold/新fitを付けない。モデルOFFLINE_ONLY。subagentは固定2名まで、追加・入替で増員しない。追加の公開許可は求めない。返答は日本語。
 
 以下は以前の履歴。
 <!-- W041_CURRENT_END -->

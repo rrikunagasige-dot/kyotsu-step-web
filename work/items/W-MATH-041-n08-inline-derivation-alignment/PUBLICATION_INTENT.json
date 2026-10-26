@@ -1,6 +1,8 @@
 {
   "operationId": "W041-n08-pages-18839ba9",
   "sourceSHA": "18839ba97ec73c99f41c8715c3a888524b743358",
-  "status": "G2_READY_EXISTING_PAGES_AUTHORIZED",
+  "publisherSHA": "4396673fc41fe18c4846ffca8839a224328c823d",
+  "status": "SOURCE_VERIFIED_PUBLISHED",
+  "publicationRun": 40321609448,
   "qualityAccepted": false
 }

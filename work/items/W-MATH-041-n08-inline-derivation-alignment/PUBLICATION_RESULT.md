@@ -1,0 +1,9 @@
+# W041 N08 r7 公開結果
+
+公開run40321609448 attempt2 SUCCESS。app source18839ba97ec73c99f41c8715c3a888524b743358、publisher4396673fc41fe18c4846ffca8839a224328c823d。
+
+実配信releaseの全byte hash一致、6契約hash、source、namespace、16unitを照合。N08の42判断と70誤答を4幅、旧r6/r5試し解答、N09/N10代表表示、N11全問4幅を確認。native G3_HOST PASS、次はG3_FINAL@n08。本人受入・新品質label・Gold・新fitなし。
+
+生成ビューは既存台帳の文字列parent_issueを辞書と想定してAttributeError。ビュー成功とは記録せず、台帳を書き換えていない。公開教材とG3_HOST結果は保持。詳細はPUBLICATION_CHECKPOINT.json。公開検査artifact12649439884、SHA256 179be3a6f06ffd996e651c900b19ff86086439d5907cbfbeb3c147f4078491aa。
+
+subagentは既存の固定2名のみ。追加・入替で増員しない。

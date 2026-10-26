@@ -1,0 +1,22 @@
+{
+  "sourceSHA": "18839ba97ec73c99f41c8715c3a888524b743358",
+  "publisherSHA": "4396673fc41fe18c4846ffca8839a224328c823d",
+  "publicationRun": 40321609448,
+  "publicationConclusion": "success",
+  "url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=18839ba9#/learning/textbook/math-numbers-expressions-n08",
+  "nativeG3Host": "PASS",
+  "nextNode": "G3_FINAL@n08",
+  "userAccepted": false,
+  "qualityLabelsAdded": 0,
+  "newModelFit": false,
+  "modelDisposition": "OFFLINE_ONLY",
+  "artifactId": 12649439884,
+  "artifactSHA256": "179be3a6f06ffd996e651c900b19ff86086439d5907cbfbeb3c147f4078491aa",
+  "generatedView": {
+    "status": "FAILED",
+    "reason": "views.snapshot assumes parent_issue is a mapping; historical string parent_issue raises AttributeError",
+    "nativeReleaseResultPreserved": true,
+    "ledgerModifiedForCompatibility": false
+  },
+  "evidence": "Actual publisher success and extracted hosted reports/release byte hash were checked by complete_publication.py; native G3_HOST passed and next G3_FINAL returned."
+}

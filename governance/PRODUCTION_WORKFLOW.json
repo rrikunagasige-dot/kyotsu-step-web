@@ -45,8 +45,8 @@
   "contentDesignApprovalRequired": true,
   "modelStatus": "OFFLINE_ONLY",
   "newLessonAccepted": false,
-  "protectedAppSource": "e7320590d4af51b7cc0d9faa918485467092a3c0",
-  "adoption": "Approved W040 N08 r6 application on the shared team/construction foundation. Fixed code source, source-matched tests and current public app are recorded separately; no lesson acceptance or ML quality label inferred.",
+  "protectedAppSource": "18839ba97ec73c99f41c8715c3a888524b743358",
+  "adoption": "Approved W041 N08 r7 repair published on the shared production/team/construction foundation; actual app source and hosted contract verified. User lesson acceptance remains pending.",
   "legacyVersions": [
     "production/1",
     "legacy/1"
@@ -55,11 +55,32 @@
   "previousPublishedAppSource": "c4e7133a4fd3def11771077379aacc6e19d3445b",
   "acceptedFirstTitle": "22bc43ba53fa87bb85e82e18a25db13a5c8a485c",
   "publication": {
-    "status": "in_progress",
+    "status": "verified",
     "sourceSHA": "18839ba97ec73c99f41c8715c3a888524b743358",
+    "workflowSHA": "4396673fc41fe18c4846ffca8839a224328c823d",
+    "runId": 40321609448,
+    "runAttempt": 2,
+    "deploymentStepConclusion": "success",
+    "deploymentRunConclusion": "success",
+    "verificationConclusion": "success",
+    "sourceVerified": true,
+    "fullContractMatched": true,
     "userAccepted": false,
-    "sourceVerified": false,
-    "activeN08Revision": 7
+    "units": [
+      "n08"
+    ],
+    "activeN08Revision": 7,
+    "retainedN11Verified": true,
+    "retainedN09N10DisplayVerified": true,
+    "artifactId": 12649439884,
+    "artifactSHA256": "179be3a6f06ffd996e651c900b19ff86086439d5907cbfbeb3c147f4078491aa",
+    "urls": {
+      "n08": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=18839ba9#/learning/textbook/math-numbers-expressions-n08",
+      "revision6": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=18839ba9#/learning/textbook/math-numbers-expressions-n08?version=6",
+      "revision5": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=18839ba9#/learning/textbook/math-numbers-expressions-n08?version=5",
+      "original": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=18839ba9#/learning/textbook/math-numbers-expressions-n08?version=5&layout=original",
+      "archive": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=18839ba9#/learning/textbook/math-numbers-expressions-n08?version=4"
+    }
   },
   "metadataGovernanceScope": "Record completeness corrected without overwriting original proposal; whole-repository Governance Check40300779836 SUCCESS on metadata source470f0469.",
   "acceptance": {
@@ -82,10 +103,12 @@
     "newFitForW039": false,
     "qualityLabelsAddedByW039": 0,
     "newFitForW040": false,
-    "qualityLabelsAddedByW040": 0
+    "qualityLabelsAddedByW040": 0,
+    "newFitForW041": false,
+    "qualityLabelsAddedByW041": 0
   },
   "sharedRuntimeStore": "work/items/W-MATH-032-n07-semantic-repair/runtime",
-  "publishedAppSource": "e7320590d4af51b7cc0d9faa918485467092a3c0",
+  "publishedAppSource": "18839ba97ec73c99f41c8715c3a888524b743358",
   "acceptedUnits": {
     "n07": {
       "sourceSHA": "46ea59be61a177bf98edc9f6d26eb6fa7e52b0a6",
@@ -105,8 +128,8 @@
   "currentWork": {
     "id": "W-MATH-041",
     "proposal": "P-001",
-    "status": "PUBLISHING",
-    "node": "G3_HOST@n08",
+    "status": "PUBLISHED_USER_REVIEW",
+    "node": "G3_FINAL@n08",
     "sourceSHA": "18839ba97ec73c99f41c8715c3a888524b743358",
     "parentWork": "W-MATH-040",
     "parentIssue": "1fb0e4f5848eea9231f8",
@@ -116,7 +139,7 @@
     "expectedRevision": 7,
     "implementationApproved": true,
     "userAccepted": false,
-    "native": "R04/R05/R06/R07/G2 actual receipts PASS; scoped DEPLOY intent recorded; public verification pending",
+    "native": "R04/R05/R06/R07/G2/G3_HOST actual receipts PASS; actual user app evaluation pending",
     "proposalSHA256": "ea5c4ecdb97e7c4c6c75c990970d6d8a7c5fcdd483d3c43c0f68c32fc2492bdb",
     "nodeDesignSHA256": "afdb89d7e69a87ebffb646a586f57f8d1c6bc9da880252ee2022e04a1ad2d7ae",
     "proposalPath": "work/items/W-MATH-041-n08-inline-derivation-alignment/PROPOSAL.md",
@@ -261,8 +284,9 @@
   "nextCorrection": {
     "work": "W-MATH-041",
     "unit": "n08",
-    "status": "P001_PROPOSED",
-    "implementationApproved": false
+    "status": "PUBLISHED_USER_REVIEW",
+    "implementationApproved": true,
+    "userAccepted": false
   },
   "previousPublication": {
     "status": "verified",
@@ -313,8 +337,8 @@
     "oldWorks": "explicit policy migration with original history retained"
   },
   "constructionPipeline": "construction-layout/1",
-  "nextWork": "G3_HOST exact public release/source/operations, then G3_FINAL actual user evaluation",
-  "N08QualityStatus": "R7_PUBLISHING_USER_NOT_ACCEPTED; R6 negative feedback retained",
+  "nextWork": "G3_FINAL@n08 actual user evaluation",
+  "N08QualityStatus": "R7_PUBLISHED_USER_NOT_ACCEPTED; R6 negative feedback retained",
   "teamProposal": "W-GOV-012/P-001",
   "sharedFoundationScopes": [
     "CMD-WORK-001",

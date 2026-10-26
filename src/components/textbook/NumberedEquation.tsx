@@ -2,7 +2,7 @@ import { useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 
 /** The label never changes the centered mathematical body's width. When its
  * last line occupies the label area, give only the label its own trailing row. */
-export function NumberedEquation({ number, children, logical = false }: { number: number; children: ReactNode; logical?: boolean }) {
+export function NumberedEquation({ number, children, logical = false, anchorSelector }: { number: number; children: ReactNode; logical?: boolean; anchorSelector?: string }) {
   const body = useRef<HTMLDivElement>(null)
   const label = useRef<HTMLSpanElement>(null)
   const [below, setBelow] = useState(false)
@@ -17,7 +17,7 @@ export function NumberedEquation({ number, children, logical = false }: { number
       const left = bounds.right - marker.width - 2
       // Hypothetical inline position, independent of the current fallback mode.
       const layout = content.querySelector<HTMLElement>('[data-typeset-kind]')
-      const rows = Array.from(content.querySelectorAll<HTMLElement>('.typeset-line'))
+      const rows = Array.from(content.querySelectorAll<HTMLElement>(anchorSelector ?? '.typeset-line'))
       const group = layout?.querySelector<HTMLElement>('.typeset-formula-body, .typeset-table')?.getBoundingClientRect()
       const lastRow = rows.at(-1)
       const last = lastRow?.querySelectorAll<HTMLElement>('.katex').item((lastRow?.querySelectorAll('.katex').length ?? 1) - 1)?.getBoundingClientRect() ?? lastRow?.getBoundingClientRect()
@@ -39,7 +39,7 @@ export function NumberedEquation({ number, children, logical = false }: { number
     observer?.observe(tag)
     void document.fonts?.ready.then(measure)
     return () => { active = false; observer?.disconnect(); content.removeEventListener('typeset-layout', measure) }
-  }, [children, number, logical])
+  }, [children, number, logical, anchorSelector])
   return (
     <div className={'numbered-equation' + (below ? ' numbered-equation--below' : '')} data-equation-number={number}>
       <div className="numbered-equation-body" ref={body}>{children}</div>

@@ -60,7 +60,7 @@ jobs:
           pnpm exec vitest run --config work/items/W-MATH-037-n08-workflow-trial/vitest.config.mjs
           CODES=ne02,n11,n12 pnpm exec vitest run --config work/items/W-MATH-036-ne02-n11-n12-guided-design/vitest.config.mjs
           pnpm run test:textbook-authoring
-          pnpm exec eslint src/components/textbook/N08SolutionReadingFlow.tsx src/components/textbook/GuidedMathReadingFlow.tsx src/components/textbook/SolutionReadingFlow.tsx src/components/textbook/TransformationReadingGroup.tsx src/domain/transformationReading.ts src/pages/TextbookUnitPage.tsx --max-warnings=0
+          pnpm exec eslint src/components/textbook/NumberedEquation.tsx src/components/textbook/N08SolutionReadingFlow.tsx src/components/textbook/GuidedMathReadingFlow.tsx src/components/textbook/SolutionReadingFlow.tsx src/components/textbook/TransformationReadingGroup.tsx src/domain/transformationReading.ts src/pages/TextbookUnitPage.tsx --max-warnings=0
           pnpm run build
       - run: pnpm exec playwright install --with-deps chromium
       - name: N08 all34 correct, all80 wrong, four widths, history, original and archive

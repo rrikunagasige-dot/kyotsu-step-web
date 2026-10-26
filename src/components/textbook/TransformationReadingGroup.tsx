@@ -38,7 +38,7 @@ export function TransformationReadingGroup({ group, renderSlot, renderPanel }: P
     ? group.rows.slice(1).map((row, index) => index === 0 ? { ...row, formula: { ...row.formula, left: group.rows[0].formula.right } } : row)
     : group.rows
   return <div ref={root} className={'transformation-reading-group' + (stacked ? ' transformation-reading-group--stacked' : '')} data-transformation-group={group.id} data-transformation-kind={group.kind}>
-    <NumberedEquation number={group.number} logical>
+    <NumberedEquation number={group.number} logical anchorSelector=".transformation-equation">
       <div data-typeset-kind={group.kind}><div className="transformation-rows typeset-formula-body">
         {rows.map(row => <div key={row.id} className={'transformation-row transformation-row--' + row.role} data-transformation-row={row.id} data-source-node={row.sourceNodeId} data-state-ref={row.stateRef}>
           {row.aliasRefs.map(alias => <span key={alias} id={alias} data-equation-alias={alias} />)}

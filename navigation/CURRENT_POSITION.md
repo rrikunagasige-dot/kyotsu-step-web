@@ -1,3 +1,21 @@
+<!-- W041_CURRENT -->
+## CURRENT — N08は本人未承認、修正具体案W041/P001（2026-10-26）
+
+公開r6 source `e7320590d4af51b7cc0d9faa918485467092a3c0`。本人は改善を認めつつ未承認と明示し、途中穴の不足と入力中の不整列を指摘。W040の技術検査PASSを品質受入へ転用しない。元の受入・画像・指摘・sourceは保持。
+
+- [今回の正式提案書](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/main/work/items/W-MATH-041-n08-inline-derivation-alignment/PROPOSAL.md)
+- [全39node/全部品契約](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/main/work/items/W-MATH-041-n08-inline-derivation-alignment/NODE_DESIGN.json)
+- [実装/保存/排版/CODE・AI契約](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/main/work/items/W-MATH-041-n08-inline-derivation-alignment/IMPLEMENTATION_CONTRACT.json)
+
+提案：原39node/12段階を保持、重複まとめ3親を自動記録にし、必須30親42決定（construction20親32部品＋局所10回答）。現37決定から5増。完成式の選択を途中へ移し、Q07/Q09は4部品/3段階で前提正答まで後行を出さない。数式baseline/axis・共通frame・番号・44px操作を分離。16親18決定のみ意味同一保存、14親24部品は新ID。r4/r5/r6比較を保持する案。
+
+提案整合の39node/依存/IDと変更14親114候補をCODE検算。Q08の真だが指定計算結果でない不等式の反例を、前行の計算根拠で修正。最小排版機構5caseも確認したが、いずれもr7の本番QAではない。M+A+Bの実担当と相互反証を記録、同一モデル/履歴共有を独立モデル監査と呼ばない。
+
+Status: PROPOSED。今回の依頼は提案書作成。app/CSS/採点/保存/配信/fitは未変更。次はこの固定案の判断。承認後は既存修正工程で実装し公開appへ反映する。画像票承認や公開許可の再質問を足さない。既存modelはOFFLINE_ONLY。返答は日本語。
+
+以下は以前の履歴。
+<!-- W041_CURRENT_END -->
+
 <!-- W040_CURRENT -->
 ## CURRENT — N08 r6 公開・配信検証完了、本人評価待ち
 

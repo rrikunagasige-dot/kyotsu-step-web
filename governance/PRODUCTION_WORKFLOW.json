@@ -128,20 +128,23 @@
     }
   },
   "currentWork": {
-    "id": "W-MATH-040",
+    "id": "W-MATH-041",
     "proposal": "P-001",
-    "status": "VERIFYING",
-    "node": "G3_FINAL@n08",
-    "learnerSourceSHA": "e7320590d4af51b7cc0d9faa918485467092a3c0",
-    "branch": "work/n08-construction-application-20261026",
+    "status": "PROPOSED",
+    "node": "R04_PROPOSAL@n08",
+    "sourceSHA": "e7320590d4af51b7cc0d9faa918485467092a3c0",
+    "parentWork": "W-MATH-040",
+    "parentIssue": "1fb0e4f5848eea9231f8",
     "blocks": [
       "n08"
     ],
-    "concreteDesignApproved": true,
+    "expectedRevision": 7,
+    "implementationApproved": false,
     "userAccepted": false,
-    "native": "R01-R06/R07/G2/G3_HOST PASS; actual user app evaluation pending",
-    "originalProposalHash": "8106181787d61bf7ef474c09acd89a41cdb61537bff529c5f7ece9c78cfe883e",
-    "publicationRun": 40299824089
+    "native": "Proposal package only; new production Work not opened, no invented receipts",
+    "proposalSHA256": "ea5c4ecdb97e7c4c6c75c990970d6d8a7c5fcdd483d3c43c0f68c32fc2492bdb",
+    "nodeDesignSHA256": "afdb89d7e69a87ebffb646a586f57f8d1c6bc9da880252ee2022e04a1ad2d7ae",
+    "proposalPath": "work/items/W-MATH-041-n08-inline-derivation-alignment/PROPOSAL.md"
   },
   "currentLearnerVerification": {
     "sourceSHA": "fa0eff271a97940fad08d83960ae50faeabc81b9",
@@ -280,10 +283,10 @@
     "branch": "work/n09-n10-guided-design-20261025"
   },
   "nextCorrection": {
-    "work": "W-MATH-040",
+    "work": "W-MATH-041",
     "unit": "n08",
-    "status": "PUBLISHED_USER_EVALUATION_PENDING",
-    "implementationApproved": true
+    "status": "P001_PROPOSED",
+    "implementationApproved": false
   },
   "previousPublication": {
     "status": "verified",
@@ -334,8 +337,8 @@
     "oldWorks": "explicit policy migration with original history retained"
   },
   "constructionPipeline": "construction-layout/1",
-  "nextWork": "G3_FINAL@n08 actual user evaluation after source-verified publication",
-  "N08QualityStatus": "R6_INTERNAL_QA_VERIFIED_USER_EVALUATION_PENDING",
+  "nextWork": "Exact W041/P001 proposal decision; N08 r6 explicitly not accepted",
+  "N08QualityStatus": "R6_USER_NOT_ACCEPTED_R7_REPAIR_PROPOSED",
   "teamProposal": "W-GOV-012/P-001",
   "sharedFoundationScopes": [
     "CMD-WORK-001",
@@ -395,5 +398,34 @@
       ]
     }
   },
-  "previousCurrentWorkBeforeW040": "W-GOV-012"
+  "previousCurrentWorkBeforeW040": "W-GOV-012",
+  "previousCurrentWorkBeforeW041": {
+    "id": "W-MATH-040",
+    "proposal": "P-001",
+    "status": "VERIFYING",
+    "node": "G3_FINAL@n08",
+    "learnerSourceSHA": "e7320590d4af51b7cc0d9faa918485467092a3c0",
+    "branch": "work/n08-construction-application-20261026",
+    "blocks": [
+      "n08"
+    ],
+    "concreteDesignApproved": true,
+    "userAccepted": false,
+    "native": "R01-R06/R07/G2/G3_HOST PASS; actual user app evaluation pending",
+    "originalProposalHash": "8106181787d61bf7ef474c09acd89a41cdb61537bff529c5f7ece9c78cfe883e",
+    "publicationRun": 40299824089
+  },
+  "n08RepairFeedback": {
+    "sourceSHA": "e7320590d4af51b7cc0d9faa918485467092a3c0",
+    "work": "W-MATH-040",
+    "event": "W040-R6-USER-NOT-ACCEPTED-20261026",
+    "issue": "1fb0e4f5848eea9231f8",
+    "status": "OPEN",
+    "scopes": [
+      "construction coverage",
+      "in-expression alignment"
+    ],
+    "praiseIsNotWholeLessonAcceptance": true,
+    "trained": false
+  }
 }

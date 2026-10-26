@@ -1,0 +1,245 @@
+{
+  "schemaVersion": "n08-r7-implementation-proposal/1",
+  "status": "PROPOSED_NOT_IMPLEMENTED",
+  "work": "W-MATH-041",
+  "proposal": "P-001",
+  "sourceSHA": "e7320590d4af51b7cc0d9faa918485467092a3c0",
+  "parentWork": "W-MATH-040",
+  "parentIssue": "1fb0e4f5848eea9231f8",
+  "pipeline": {
+    "command": "CMD-WORK-001",
+    "workflowVersion": "production/2",
+    "team": "team/1",
+    "constructionPipeline": "construction-layout/1"
+  },
+  "counts": {
+    "originalNodes": 39,
+    "requiredParents": 30,
+    "constructionParents": 20,
+    "constructionParts": 32,
+    "legacyLocalAnswers": 10,
+    "totalLearnerDecisions": 42,
+    "classifications": {
+      "AUTO_RECORDED_CONCLUSION": 3,
+      "KEEP_CONSTRUCTION_MEANING": 6,
+      "KEEP_EXPOSITION": 6,
+      "KEEP_LEGACY_LOCAL_DECISION": 10,
+      "REVISE_MEANING_NEW_CONSTRUCTION": 14
+    }
+  },
+  "canonicalNodeDesign": {
+    "path": "work/items/W-MATH-041-n08-inline-derivation-alignment/NODE_DESIGN.json",
+    "sha256": "afdb89d7e69a87ebffb646a586f57f8d1c6bc9da880252ee2022e04a1ad2d7ae"
+  },
+  "schemas": {
+    "constructionPlan": "construction-plan/2",
+    "newInteraction": "construction-interaction/2",
+    "constructionVisible": "construction-visible/2",
+    "layoutPlan": "layout-plan/2",
+    "transformationPlan": "transformation-plan/3",
+    "compiledPresentation": "transformation-reading/3",
+    "axisContract": "axis-contract/1",
+    "partSequence": "part-sequence/1",
+    "compatibility": "Oldv1 construction/layout andv1/v2 transformation strictly unchanged; explicit new-version dispatch only"
+  },
+  "unitAdapter": {
+    "constructionItems": "6 same-meaning v1 parents",
+    "constructionItemsV2": "14 new-meaning v2 parents",
+    "legacySectionItems": 10,
+    "requiredInteractionRefs": 30,
+    "autoResults": [
+      "n08-01",
+      "n08-10",
+      "n08-12"
+    ]
+  },
+  "grammar": {
+    "newPartRoles": [
+      "relation",
+      "meaning",
+      "bound-subtree-reference"
+    ],
+    "existingRoleReuse": {
+      "coefficient": "-1 as exact rational",
+      "operand": "signed rational/symbol/pi values",
+      "binary-operation": "extend× to multiplyAST; preserve+/-"
+    },
+    "relationOperators": [
+      "=",
+      "<",
+      ">"
+    ],
+    "gradingPurposes": [
+      "mathematical-value",
+      "specified-order",
+      "operation-result",
+      "source-scope",
+      "meaning-from-certified-fact"
+    ],
+    "scope": "immutable sourceASTHash + subtreeId; never arbitrary label-to-eval",
+    "meaning": "plain-prose sign enum from certified inequality; not a math string",
+    "answerValidation": "all step assertions and transition provenance; final truth alone insufficient"
+  },
+  "partSequence": {
+    "correctPreviousStep": "read-only after moving forward",
+    "wrongCurrentPart": "editable; remains visible as candidate, never a certified rewrite",
+    "visibility": "no future row/note/panel/prior-result until prerequisites correct",
+    "inconsistentRestoredDraft": "suppress all descendants; no credited derived result",
+    "attemptCount": "increment only a complete independent-part parent draft",
+    "isFirstCorrect": "existing first complete parent draft semantics preserved",
+    "firstPassAllPartsCorrect": "new derived facet; every part firstValue examined; no rewritten legacy metric"
+  },
+  "geometry": {
+    "mathFontPx": 18,
+    "katexScale": 1,
+    "minHitPx": 44,
+    "frame": "fixed group envelope centered in body",
+    "fixedAnchors": [
+      "frame-left",
+      "lhs-start",
+      "relation-start",
+      "rhs-start"
+    ],
+    "resolved": "natural expression within stable columns; trailing whitespace accepted",
+    "slotStability": "same editable part states only",
+    "baseline": "zero-inline DOM marker plus in-flow KaTeX strut; absolute button not baseline source",
+    "axis": "samefont actual fraction rule vs baseline measurement; unavailable UNVERIFIED",
+    "candidateEnvelope": "all rows/steps accounted upfront using neutral syntax and all candidates equally, numeric metrics only, no hidden future correct equation",
+    "numbers": "r7 dedicated label baseline marker on current terminal row; collision fallback from fixed envelope",
+    "prose": "separate normal-font text; no Japanese explanation insideTeX",
+    "tolerances": {
+      "baselinePx": 1,
+      "axisPx": 1,
+      "stateAnchorPx": 1,
+      "frameCenterPx": 2
+    },
+    "unsupported": "block release; no bbox stand-in or invented0"
+  },
+  "migration": {
+    "unchanged": [
+      "n08-q01-left",
+      "n08-r5-q02-distance",
+      "n08-q03-order",
+      "n08-03",
+      "n08-04",
+      "n08-q05-square",
+      "n08-q05-compare",
+      "n08-r5-q06-operation",
+      "n08-q06-subtract",
+      "n08-06",
+      "n08-07",
+      "n08-q08-order",
+      "n08-r5-q08-operation",
+      "n08-09",
+      "n08-q10-forward",
+      "n08-q10-reverse"
+    ],
+    "changed": [
+      "n08-02",
+      "n08-05",
+      "n08-q07-rule",
+      "n08-q07-bracket",
+      "n08-q07-distribute",
+      "n08-q08-difference",
+      "n08-08",
+      "n08-q09-bracket",
+      "n08-q09-distribute",
+      "n08-q11-positive",
+      "n08-q11-negative",
+      "n08-11",
+      "n08-q12-nonnegative",
+      "n08-q12-negative"
+    ],
+    "archivedOnly": [
+      "n08-01",
+      "n08-10",
+      "n08-12"
+    ],
+    "storageKey": "kyotsu-step-gate3-math-20261023",
+    "preserve": [
+      "draft",
+      "firstValue",
+      "attemptCount",
+      "timestamps",
+      "processedEventIds",
+      "all archived revisions"
+    ],
+    "reset": "existing empty r7 is authoritative; never repopulate from old records"
+  },
+  "protectedManifest": {
+    "src/data/textbook/math/numbers/n08Authored.json": "80c917d3c2de34b9111e11f57fb02272d98ab02c0677a2fb30c5ae4dad60e142",
+    "src/data/textbook/math/numbers/n08Revision5.json": "2ff0e38d4d081a3dc9f1912cd6b6a0ebe395fd9cb8afd6bd8fab2f2778a862e5",
+    "src/data/textbook/math/numbers/n08Revision6.json": "0abf54fc442aaa80894f41c15210cd6e25d7ebc6038389574324894dbedd3ea6",
+    "src/data/textbook/math/numbers/n08Construction.json": "c29bc81b85878842b6031715201f07e3d73a260c6f2905ce2206fd78932fd298",
+    "src/data/textbook/math/numbers/n08Layout.json": "d5741ef205507deb4558de4e8987877bad0a7b65a0c8d4584d75200c4f6e6ad8",
+    "src/data/textbook/math/numbers/n08ConstructionPresentation.json": "f4ed774410210eef2d8f2a58c9275528ed8bb3863ba4d0bf43f15cdda110a4e3",
+    "src/data/textbook/math/numbers/n08Transformation.json": "1d919ff71018cdb8d65f1ad72097844cf4d795babfac966618137548dbf9d231",
+    "src/data/textbook/math/numbers/n08PresentationPolicy.json": "9ac0392f72b24e3b2a11787475dacc99d097abb4d9473de7e9e01664c86063e5",
+    "src/components/textbook/N08ConstructionReadingFlow.tsx": "9a17be29c43a050775a296febb6ac27da0bf3481d930361e45117bdc1d5d4b91",
+    "src/components/textbook/ConstructionSlot.tsx": "7505dc11de7e7d6241556295d67e08e36ea0ac9f3319307bf07914d1a934f61c",
+    "src/components/textbook/ConstructionPanel.tsx": "5a27a40a47b34dcd7b7369fb145d993e5a96bb4b1a853fc4c0cdc8ee76b3ce20",
+    "src/components/textbook/construction-reading.css": "601529233f0d185ae500b7973338380f50f7a899dce13fd261d00bbe97fd5f24",
+    "src/components/textbook/N08SolutionReadingFlow.tsx": "2d4938f8e72015b4c1d4bf8e6cb77f36be9ab221549f6695a29ae4c97b3fe353",
+    "src/components/textbook/N08ReadingFlow.tsx": "56f9d2b75b8b34a28b8e4b53c6df5ac922fb2da6c57005b6f709db5abcf56cc6",
+    "src/components/textbook/n08-reading.css": "c2c252e5467690b6b0897b5dcd99ddf18ae588cdb011b5d3c66e780a1175f949",
+    "src/components/textbook/n08-solution-reading.css": "de8a7aa9052d3bb6777a9a7190284cdb2d947856762d292eb94e6bf622b2ffd1",
+    "src/components/textbook/NumberedEquation.tsx": "334245a338070e6cb4ba9c910ebe586cca713c570ed1d0bff1e62715f402cbf6",
+    "src/data/textbook/math/numbers/n11Authored.json": "ae3823163ac23bb334ac02a6c868bbd1273b8b6f1f65c77cde6f751773900a74",
+    "src/data/textbook/math/numbers/n11Transformation.json": "c1cbfd5c5e4b7ee79baf40cd54a9170c4cae5286fb04e940c5f50e92bc3f5197",
+    "pnpm-lock.yaml": "ece56e44c910c8282e1ebd41b5cfe4402627721c3a48e56651e41e571b03d006"
+  },
+  "verification": {
+    "widths": [
+      320,
+      390,
+      430,
+      1440
+    ],
+    "states": [
+      "empty",
+      "active-pointer",
+      "active-keyboard",
+      "filled",
+      "wrong",
+      "resolved"
+    ],
+    "math": "new14 parents exact114 finite combinations at proposal level; production full20 parents+10 local choices required after implementation",
+    "visibleCases": "every wrong current choice with correct prerequisite prefix; do not claim all cartesian drafts reachable in UI",
+    "mutationTests": [
+      "restore wrong prerequisite with downstream values: hide later rows/notes/panels/results",
+      "missing axis marker: UNVERIFIED",
+      "empty slot without mathstrut: detects vertical regression",
+      "use100%frame as mathbounds: rejects unverified union",
+      "valid weaker inequality but wrong calculation result: reject as operation-result"
+    ],
+    "completion": "existing flow through next-unit link only; new completionUI not part of this proposal"
+  },
+  "team": {
+    "M": "source/scope/proposal/store/routes/save integration/QA/publish",
+    "A": "teaching/data/domain/typed AST/migration; nonauthor reviewB render andM routes",
+    "B": "axis/slot/frame/UI; nonauthor reviewA math/save andM integration",
+    "writer": "M only for formalStore andGit",
+    "modelIndependence": false
+  },
+  "publication": {
+    "afterExactProposalApproval": true,
+    "repeatDeployApproval": false,
+    "newScreenshotGate": false,
+    "reviewSurface": "existing public app",
+    "preserveRoutes": [
+      "version=6",
+      "version=5",
+      "version=5&layout=original",
+      "version=4",
+      "layout=original aliasr5"
+    ],
+    "qualityAccepted": false
+  },
+  "learning": {
+    "caseSourcesSeparated": true,
+    "wholeLessonPositiveFromPraise": false,
+    "trainingAtProposal": false,
+    "modelDisposition": "OFFLINE_ONLY",
+    "trainingStage": "existingL01; only train/evaluate heads with actual label/family/holdout prerequisites; otherwiseNOT_TRAINABLE"
+  }
+}

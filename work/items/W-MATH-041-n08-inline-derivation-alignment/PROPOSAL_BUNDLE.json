@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "proposal-bundle/1",
+  "work": "W-MATH-041",
+  "proposal": "P-001",
+  "status": "PROPOSED",
+  "baseAppSourceSHA": "e7320590d4af51b7cc0d9faa918485467092a3c0",
+  "baseMainSHA": "5fee3d8a19e2ecfaa9e959d67a33587dd5c4c30b",
+  "implementationApproved": false,
+  "qualityAccepted": false,
+  "files": {
+    "ACTION_LOG.md": "56456ce2b968d8d8c21d0b577cd455d8e1ec13b1120ed9571453e3556a57ee4b",
+    "FINDINGS.md": "e40a1b7cbbe0326c86c9b674005e7c88468d1f2fd2e6eec66d09a865455a8b6c",
+    "IMPLEMENTATION_CONTRACT.json": "2d6275b4b015dcf77584046d97e8b9126e74ca81891da92cf903873b11dc7a0d",
+    "LAYOUT_MECHANISM_PROBE.mjs": "178b4dd9cfe6fbc3654591820bc130b4a32a5fdbdea965e99d53d442edb59d0e",
+    "LAYOUT_MECHANISM_PROBE_RESULT.json": "a4f5f67c027055473362245df48aab4d4da40424ef0b1f7dad1d82ba542f7c7c",
+    "NODE_DESIGN.json": "afdb89d7e69a87ebffb646a586f57f8d1c6bc9da880252ee2022e04a1ad2d7ae",
+    "PROPOSAL.md": "ea5c4ecdb97e7c4c6c75c990970d6d8a7c5fcdd483d3c43c0f68c32fc2492bdb",
+    "PROPOSAL_CHECK.json": "840429118034002dd7024077d5c1df112dea57440b57f10edb06161735c5772c",
+    "REFERENCES.md": "8e93e40f1aa77c13961c0f1859fadb0d885e3c5052f20c4ca5929ca315d12400",
+    "REVIEW_NOTES.md": "2b6f96ceae1a5f4a291007776d2d72338380cd4ab05f537e3c902cf233571783",
+    "VERIFICATION.md": "bd86279d1189128ab1d052bda2bac05592a87ddf28cf2dcedbfc2ca426f1984b",
+    "WORK.md": "9af68d236ec75a3e69b50d3fec6dc8479749514e1016e37463913aca93c367d3",
+    "validate_proposal.py": "708106f2ac69f0dc35a88bb66e30751fefd29d189e848aa582306dbe71146d0c"
+  }
+}

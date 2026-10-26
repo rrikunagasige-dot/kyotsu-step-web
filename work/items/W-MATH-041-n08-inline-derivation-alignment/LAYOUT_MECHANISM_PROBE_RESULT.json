@@ -1,0 +1,98 @@
+{
+  "kind": "READ_ONLY_IN_MEMORY_LAYOUT_MECHANISM_FIXTURE",
+  "appQA": false,
+  "appSourceChanged": false,
+  "storeChanged": false,
+  "scope": "Mechanism feasibility only; not production layout, no learner data",
+  "browserVersion": "156.0.8078.47",
+  "probeMathPx": "18px",
+  "axisPx": 4.625,
+  "rows": [
+    {
+      "case": "empty",
+      "baselineDeltaPx": 0,
+      "slotBaselineMaxDeltaPx": 0,
+      "actualInkStrutMaxDeltaPx": 0,
+      "visualBoxAxisDeltaPx": 0,
+      "hitRects": [
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "case": "zero",
+      "baselineDeltaPx": 0,
+      "slotBaselineMaxDeltaPx": 0,
+      "actualInkStrutMaxDeltaPx": 0,
+      "visualBoxAxisDeltaPx": 0,
+      "hitRects": [
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "case": "negative",
+      "baselineDeltaPx": 0,
+      "slotBaselineMaxDeltaPx": 0,
+      "actualInkStrutMaxDeltaPx": 0.015025000000008504,
+      "visualBoxAxisDeltaPx": 0,
+      "hitRects": [
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "case": "signed-root",
+      "baselineDeltaPx": 0,
+      "slotBaselineMaxDeltaPx": 0,
+      "actualInkStrutMaxDeltaPx": 0.015399999999999636,
+      "visualBoxAxisDeltaPx": 0,
+      "hitRects": [
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "case": "fraction",
+      "baselineDeltaPx": 0,
+      "slotBaselineMaxDeltaPx": 0,
+      "actualInkStrutMaxDeltaPx": 0.006874999999979536,
+      "visualBoxAxisDeltaPx": 0,
+      "hitRects": [
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ]
+    }
+  ],
+  "status": "MECHANISM_PASS"
+}

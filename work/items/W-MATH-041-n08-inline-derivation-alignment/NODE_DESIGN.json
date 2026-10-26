@@ -1,0 +1,4666 @@
+{
+  "schemaVersion": "w041-n08-r7-nodes-proposal/1",
+  "status": "PROPOSAL_NOT_IMPLEMENTED_NOT_USER_ACCEPTED",
+  "sourceRevision": 6,
+  "sourceSHA": "e7320590d4af51b7cc0d9faa918485467092a3c0",
+  "counts": {
+    "originalNodes": 39,
+    "requiredParents": 30,
+    "constructionParents": 20,
+    "constructionParts": 32,
+    "legacyLocalAnswers": 10,
+    "totalLearnerDecisions": 42,
+    "classifications": {
+      "AUTO_RECORDED_CONCLUSION": 3,
+      "KEEP_CONSTRUCTION_MEANING": 6,
+      "KEEP_EXPOSITION": 6,
+      "KEEP_LEGACY_LOCAL_DECISION": 10,
+      "REVISE_MEANING_NEW_CONSTRUCTION": 14
+    }
+  },
+  "globalRules": [
+    "Keep source node IDs39, original questions/givens/definitions/case boundaries. Changed interactions receive newr7 IDs.",
+    "Given values are not arbitrarily blanked. Chosen signed operands test extraction or scope, not guessing source values.",
+    "Global source order remains; each step requires the preceding mathematical fact. Intra-parent row prerequisites are explicit: no later completed row or final answer before prior part success.",
+    "A shared coefficient entered once mirrors into both products; repeated display is not another independently graded decision.",
+    "Wrong draft remains editable. No canonical correct row replaces wrong draft. No downstream note, prior-results entry or tooltip reveals unfinished answers.",
+    "Equality chains are for equal expressions; condition/sign case selection is separate prose or implication, never connected by equality.",
+    "Solved unaryplus is omitted in canonical output. Negative operands are bracketed.",
+    "Preserve isFirstCorrect as first complete parent draft correctness, keep firstValue of every gated part. Derive firstPassAllPartsCorrect separately; never hide earlier wrong selections or rewrite legacy isFirstCorrect.",
+    "Auto recorded summaries appear only after all listed prerequisite outputs resolve and are excluded from answer denominator."
+  ],
+  "migration": {
+    "unchangedMeaningParentCount": 16,
+    "changedMeaningParents": 14,
+    "archivedOnlySummaryParents": [
+      "n08-01",
+      "n08-10",
+      "n08-12"
+    ],
+    "policy": "Archive entire oldr6 record unchanged. Preserve full records for16 meaning-identical parents only.14changed parents start unsolved with emptydraft even if old completed form was correct. Never generate first values/attempts/correct timestamps for new questions. r4/r5/r6 remain viewable without mutating currentr7 save."
+  },
+  "implementationNeeds": [
+    "Intra-parent row-gated partial construction projector/compiler contract and browser progress. Current parent-only resolution is insufficient.",
+    "Conditional visibility audit covers notes/result/archive/current/mirrored slots per partstate.",
+    "Math test evaluates full assembled statement plus original prerequisites for all candidate combinations; does not treat wrong rows as true equality or inference.",
+    "30parent resolver and20construction/32part+10legacy count; allwrong reselection/refresh/history/revision migration/reset regressions.",
+    "Completion E2E checks existing parent-page next route; new completionUI excluded until actual app defect independently established.",
+    "New relation/meaning/subtree-reference roles; binary-operation× resolves to multiplyAST; no untyped string evaluation.",
+    "Keep old IDs and stored answer values for16 same-meaning parents. New stableIDs for14 modified parents."
+  ],
+  "nodes": [
+    {
+      "nodeId": "n08-q01-right",
+      "ordinal": 1,
+      "goal": "右側の点から原点までの距離",
+      "oldInteractionId": null,
+      "status": "KEEP_EXPOSITION",
+      "parts": [],
+      "migration": "no learner answer",
+      "prerequisiteNodeIds": [],
+      "learnerLead": "図の右側にある 2.3 の点を見ます。原点の座標は 0 です。右側の座標から左側の座標を引き、距離を求めます。",
+      "sourceSemanticRefs": {
+        "node": "n08-q01-right",
+        "beforeBlockIds": [
+          "n08-q01-right-before"
+        ],
+        "afterBlockIds": [
+          "n08-q01-right-after"
+        ]
+      },
+      "partOrder": [],
+      "originalNumberRefs": {},
+      "effectivePrerequisiteInteractionIds": [],
+      "autoResultPrerequisiteNodeIds": [],
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs."
+    },
+    {
+      "nodeId": "n08-q01-left",
+      "ordinal": 2,
+      "goal": "左側でも右の座標から左の座標を引く",
+      "oldInteractionId": "n08-q01-left-answer",
+      "status": "KEEP_LEGACY_LOCAL_DECISION",
+      "parts": [
+        {
+          "key": "answer",
+          "role": "local-formula",
+          "correct": "5",
+          "choices": [
+            {
+              "value": "5",
+              "choiceId": "n08-q01-left::answer::choice-01"
+            },
+            {
+              "value": "-5",
+              "choiceId": "n08-q01-left::answer::choice-02"
+            },
+            {
+              "value": "0",
+              "choiceId": "n08-q01-left::answer::choice-03"
+            }
+          ],
+          "prompt": "左側でも右の座標から左の座標を引く",
+          "correctChoiceId": "n08-q01-left::answer::choice-01",
+          "choiceOrder": [
+            "n08-q01-left::answer::choice-01",
+            "n08-q01-left::answer::choice-02",
+            "n08-q01-left::answer::choice-03"
+          ],
+          "migration": "same meaning; preserve complete legacy record",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "前の式と、今の操作の目的を照らし合わせます。",
+          "id": "n08-q01-left-answer::answer",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        }
+      ],
+      "migration": "same meaning; preserve complete legacy record",
+      "prerequisiteNodeIds": [
+        "n08-q01-right"
+      ],
+      "newInteractionId": "n08-q01-left-answer",
+      "partOrder": [
+        "answer"
+      ],
+      "finalConclusion": "5",
+      "learnerLead": "-5 の点は原点の左側です。右側は 0、左側は -5 なので、距離は 0-(-5) と表せます。",
+      "sourceSemanticRefs": {
+        "node": "n08-q01-left",
+        "beforeBlockIds": [
+          "n08-q01-left-before",
+          "n08-q01-left-interaction-0"
+        ],
+        "afterBlockIds": [
+          "n08-q01-left-result",
+          "n08-q01-left-after"
+        ]
+      },
+      "originalNumberRefs": {
+        "n08-q01-left-interaction-0": 1,
+        "n08-q01-left-result": 1
+      },
+      "effectivePrerequisiteInteractionIds": [],
+      "autoResultPrerequisiteNodeIds": [],
+      "maskedFormula": "0-(-5)=\\square",
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs.",
+      "sourceItemContractRef": {
+        "path": "src/data/textbook/math/numbers/n08Revision6.json",
+        "jsonPointer": "/unit/sections/0/items/0",
+        "id": "n08-q01-left-answer",
+        "sha256": "6e1b8c345cbbb581503569f903c30d371d1f115c9e375feab64f7adf66017052",
+        "referenceOnly": true
+      }
+    },
+    {
+      "nodeId": "n08-01",
+      "ordinal": 3,
+      "goal": "元の順序で二つの距離をまとめる",
+      "oldInteractionId": "n08-01",
+      "status": "AUTO_RECORDED_CONCLUSION",
+      "parts": [],
+      "migration": "old answer archived; excluded from required interactions; generate recorded result only after prerequisites solved",
+      "prerequisiteNodeIds": [
+        "n08-q01-right",
+        "n08-q01-left"
+      ],
+      "finalConclusion": "2.3, 5",
+      "learnerLead": "二つの距離を、元の問題の順序で記録します。",
+      "graded": false,
+      "sourceSemanticRefs": {
+        "node": "n08-01",
+        "beforeBlockIds": [
+          "n08-01-before",
+          "n08-01-interaction-0"
+        ],
+        "afterBlockIds": [
+          "n08-01-result-0",
+          "n08-01-after"
+        ]
+      },
+      "partOrder": [],
+      "originalNumberRefs": {
+        "n08-01-interaction-0": 2,
+        "n08-01-result-0": 2
+      },
+      "effectivePrerequisiteInteractionIds": [
+        "n08-q01-left-answer"
+      ],
+      "autoResultPrerequisiteNodeIds": [
+        "n08-q01-right",
+        "n08-q01-left"
+      ],
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs.",
+      "sourceItemContractRef": {
+        "path": "src/data/textbook/math/numbers/n08Revision6.json",
+        "jsonPointer": "/unit/sections/0/items/1",
+        "id": "n08-01",
+        "sha256": "e11eac5a3a74655d7c2c0a7eeb115f170062d10664b5e949275b7827361a226d",
+        "referenceOnly": true
+      }
+    },
+    {
+      "nodeId": "n08-definition",
+      "ordinal": 4,
+      "goal": "この距離を絶対値と名付ける",
+      "oldInteractionId": null,
+      "status": "KEEP_EXPOSITION",
+      "parts": [],
+      "migration": "no learner answer",
+      "prerequisiteNodeIds": [
+        "n08-01"
+      ],
+      "learnerLead": "実数 a を表す点と原点との距離を、絶対値といい、|a| と書きます。縦の二本の線は、中にある式全体について距離を取る記号です。",
+      "sourceSemanticRefs": {
+        "node": "n08-definition",
+        "beforeBlockIds": [
+          "n08-definition-before"
+        ],
+        "afterBlockIds": [
+          "n08-definition-r5-after-0"
+        ]
+      },
+      "partOrder": [],
+      "originalNumberRefs": {},
+      "effectivePrerequisiteInteractionIds": [
+        "n08-q01-left-answer"
+      ],
+      "autoResultPrerequisiteNodeIds": [],
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs."
+    },
+    {
+      "nodeId": "n08-r5-q02-distance",
+      "ordinal": 5,
+      "goal": "右側の点と原点の距離の式を作る",
+      "oldInteractionId": "n08-r5-q02-distance-build-r6",
+      "status": "KEEP_CONSTRUCTION_MEANING",
+      "parts": [
+        {
+          "id": "n08-r5-q02-distance-build-r6-right",
+          "role": "coordinate",
+          "expected": "a",
+          "choices": [
+            {
+              "value": "a",
+              "expression": {
+                "kind": "symbol",
+                "name": "a"
+              },
+              "choiceId": "n08-r5-q02-distance::n08-r5-q02-distance-build-r6-right::choice-01"
+            },
+            {
+              "value": "0",
+              "expression": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              },
+              "choiceId": "n08-r5-q02-distance::n08-r5-q02-distance-build-r6-right::choice-02"
+            }
+          ],
+          "key": "n08-r5-q02-distance-build-r6-right",
+          "correct": "a",
+          "correctChoiceId": "n08-r5-q02-distance::n08-r5-q02-distance-build-r6-right::choice-01",
+          "choiceOrder": [
+            "n08-r5-q02-distance::n08-r5-q02-distance-build-r6-right::choice-01",
+            "n08-r5-q02-distance::n08-r5-q02-distance-build-r6-right::choice-02"
+          ],
+          "migration": "same meaning; preserve old parent/part first values attempts and timestamps",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "点の位置を条件と照らし、右側の座標から左側の座標を引く順序を確かめます。",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order",
+          "prompt": "右側の点と原点の距離の式を作る。"
+        },
+        {
+          "id": "n08-r5-q02-distance-build-r6-left",
+          "role": "coordinate",
+          "expected": "0",
+          "choices": [
+            {
+              "value": "a",
+              "expression": {
+                "kind": "symbol",
+                "name": "a"
+              },
+              "choiceId": "n08-r5-q02-distance::n08-r5-q02-distance-build-r6-left::choice-01"
+            },
+            {
+              "value": "0",
+              "expression": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              },
+              "choiceId": "n08-r5-q02-distance::n08-r5-q02-distance-build-r6-left::choice-02"
+            }
+          ],
+          "key": "n08-r5-q02-distance-build-r6-left",
+          "correct": "0",
+          "correctChoiceId": "n08-r5-q02-distance::n08-r5-q02-distance-build-r6-left::choice-02",
+          "choiceOrder": [
+            "n08-r5-q02-distance::n08-r5-q02-distance-build-r6-left::choice-01",
+            "n08-r5-q02-distance::n08-r5-q02-distance-build-r6-left::choice-02"
+          ],
+          "migration": "same meaning; preserve old parent/part first values attempts and timestamps",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "点の位置を条件と照らし、右側の座標から左側の座標を引く順序を確かめます。",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order",
+          "prompt": "右側の点と原点の距離の式を作る。"
+        }
+      ],
+      "migration": "same meaning; preserve old parent/part first values attempts and timestamps",
+      "prerequisiteNodeIds": [
+        "n08-definition"
+      ],
+      "newInteractionId": "n08-r5-q02-distance-build-r6",
+      "partOrder": [
+        "n08-r5-q02-distance-build-r6-right",
+        "n08-r5-q02-distance-build-r6-left"
+      ],
+      "finalConclusion": "|a|=a-0",
+      "learnerLead": "条件a≥0を使い、点aと原点の位置を確認します。距離は、右の座標から左の座標を引いて表します。",
+      "sourceSemanticRefs": {
+        "node": "n08-r5-q02-distance",
+        "beforeBlockIds": [
+          "n08-r5-q02-distance-before",
+          "n08-r5-q02-distance-interaction-0"
+        ],
+        "afterBlockIds": [
+          "n08-r5-q02-distance-result-formula-0",
+          "n08-r5-q02-distance-after"
+        ]
+      },
+      "originalNumberRefs": {
+        "n08-r5-q02-distance-interaction-0": 3,
+        "n08-r5-q02-distance-result-formula-0": 3
+      },
+      "effectivePrerequisiteInteractionIds": [
+        "n08-q01-left-answer"
+      ],
+      "autoResultPrerequisiteNodeIds": [],
+      "maskedFormula": "|a|=\\square-\\square",
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs.",
+      "sourceInteractionContractRef": {
+        "path": "src/data/textbook/math/numbers/n08Construction.json",
+        "jsonPointer": "/interactions/0",
+        "id": "n08-r5-q02-distance-build-r6",
+        "sha256": "585e662f6d634cb5ca1c4355793085f3355544c5c382ea1345355f89911a7b9b",
+        "referenceOnly": true
+      }
+    },
+    {
+      "nodeId": "n08-02",
+      "ordinal": 6,
+      "goal": "原点か右側なら座標が距離になる",
+      "oldInteractionId": "n08-02",
+      "status": "REVISE_MEANING_NEW_CONSTRUCTION",
+      "parts": [
+        {
+          "key": "term",
+          "role": "operand",
+          "correct": "a",
+          "choices": [
+            {
+              "value": "a",
+              "choiceId": "n08-02::term::choice-01"
+            },
+            {
+              "value": "-a",
+              "choiceId": "n08-02::term::choice-02"
+            },
+            {
+              "value": "0",
+              "choiceId": "n08-02::term::choice-03"
+            }
+          ],
+          "prompt": "引き算を整理すると、距離はどの項になりますか。",
+          "correctChoiceId": "n08-02::term::choice-01",
+          "choiceOrder": [
+            "n08-02::term::choice-01",
+            "n08-02::term::choice-02",
+            "n08-02::term::choice-03"
+          ],
+          "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "直前の式で扱っている数や項を、符号を含めて確かめます。",
+          "id": "n08-02-build-r7::term",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        }
+      ],
+      "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+      "newInteractionId": "n08-02-build-r7",
+      "reason": "Replace completed equation choice with simplification of previously assembled distance.",
+      "partOrder": [
+        "term"
+      ],
+      "steps": [
+        {
+          "id": "simplify",
+          "formula": "a-0={term}",
+          "requiresCorrectParts": []
+        }
+      ],
+      "prerequisiteNodeIds": [
+        "n08-r5-q02-distance"
+      ],
+      "finalConclusion": "|a|=a\\quad(a\\ge0)",
+      "hideUntilSolved": [
+        "final right term and completed result prose"
+      ],
+      "learnerLead": "前のa−0を計算し、絶対値を外した式を完成させます。",
+      "sourceSemanticRefs": {
+        "node": "n08-02",
+        "beforeBlockIds": [
+          "n08-02-r5-before-0",
+          "n08-02-interaction-0"
+        ],
+        "afterBlockIds": [
+          "n08-02-result",
+          "n08-02-after"
+        ]
+      },
+      "originalNumberRefs": {
+        "n08-02-interaction-0": 4,
+        "n08-02-result": 4
+      },
+      "effectivePrerequisiteInteractionIds": [
+        "n08-r5-q02-distance-build-r6"
+      ],
+      "autoResultPrerequisiteNodeIds": [],
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "proposedRowAssertions": [
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "absolute",
+            "argument": {
+              "kind": "symbol",
+              "name": "a"
+            }
+          },
+          "operator": "=",
+          "right": {
+            "kind": "part-key",
+            "key": "term"
+          }
+        }
+      ],
+      "assumptions": [
+        "a>=0"
+      ],
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs.",
+      "sourceItemContractRef": {
+        "path": "src/data/textbook/math/numbers/n08Revision6.json",
+        "jsonPointer": "/unit/sections/0/items/2",
+        "id": "n08-02",
+        "sha256": "8f68ea387de68bdf9074a4b98e62a50505b17a37c8ea78f1df0c1605c7bdca6a",
+        "referenceOnly": true
+      }
+    },
+    {
+      "nodeId": "n08-q03-order",
+      "ordinal": 7,
+      "goal": "左側の点の距離を引き算で作る",
+      "oldInteractionId": "n08-q03-order-build-r6",
+      "status": "KEEP_CONSTRUCTION_MEANING",
+      "parts": [
+        {
+          "id": "n08-q03-order-build-r6-right",
+          "role": "coordinate",
+          "expected": "0",
+          "choices": [
+            {
+              "value": "0",
+              "expression": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              },
+              "choiceId": "n08-q03-order::n08-q03-order-build-r6-right::choice-01"
+            },
+            {
+              "value": "a",
+              "expression": {
+                "kind": "symbol",
+                "name": "a"
+              },
+              "choiceId": "n08-q03-order::n08-q03-order-build-r6-right::choice-02"
+            }
+          ],
+          "key": "n08-q03-order-build-r6-right",
+          "correct": "0",
+          "correctChoiceId": "n08-q03-order::n08-q03-order-build-r6-right::choice-01",
+          "choiceOrder": [
+            "n08-q03-order::n08-q03-order-build-r6-right::choice-01",
+            "n08-q03-order::n08-q03-order-build-r6-right::choice-02"
+          ],
+          "migration": "same meaning; preserve old parent/part first values attempts and timestamps",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "点の位置を条件と照らし、右側の座標から左側の座標を引く順序を確かめます。",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order",
+          "prompt": "左側の点の距離を引き算で作る。"
+        },
+        {
+          "id": "n08-q03-order-build-r6-left",
+          "role": "coordinate",
+          "expected": "a",
+          "choices": [
+            {
+              "value": "0",
+              "expression": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              },
+              "choiceId": "n08-q03-order::n08-q03-order-build-r6-left::choice-01"
+            },
+            {
+              "value": "a",
+              "expression": {
+                "kind": "symbol",
+                "name": "a"
+              },
+              "choiceId": "n08-q03-order::n08-q03-order-build-r6-left::choice-02"
+            }
+          ],
+          "key": "n08-q03-order-build-r6-left",
+          "correct": "a",
+          "correctChoiceId": "n08-q03-order::n08-q03-order-build-r6-left::choice-02",
+          "choiceOrder": [
+            "n08-q03-order::n08-q03-order-build-r6-left::choice-01",
+            "n08-q03-order::n08-q03-order-build-r6-left::choice-02"
+          ],
+          "migration": "same meaning; preserve old parent/part first values attempts and timestamps",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "点の位置を条件と照らし、右側の座標から左側の座標を引く順序を確かめます。",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order",
+          "prompt": "左側の点の距離を引き算で作る。"
+        }
+      ],
+      "migration": "same meaning; preserve old parent/part first values attempts and timestamps",
+      "prerequisiteNodeIds": [
+        "n08-02"
+      ],
+      "newInteractionId": "n08-q03-order-build-r6",
+      "partOrder": [
+        "n08-q03-order-build-r6-right",
+        "n08-q03-order-build-r6-left"
+      ],
+      "finalConclusion": "|a|=0-a",
+      "learnerLead": "a<0の条件を使い、点aと原点の左右関係を確かめます。正のときと同じ距離の求め方を使います。",
+      "sourceSemanticRefs": {
+        "node": "n08-q03-order",
+        "beforeBlockIds": [
+          "n08-q03-order-before",
+          "n08-q03-order-interaction-0"
+        ],
+        "afterBlockIds": [
+          "n08-q03-order-result",
+          "n08-q03-order-after"
+        ]
+      },
+      "originalNumberRefs": {
+        "n08-q03-order-interaction-0": 5,
+        "n08-q03-order-result": 5
+      },
+      "effectivePrerequisiteInteractionIds": [
+        "n08-02-build-r7"
+      ],
+      "autoResultPrerequisiteNodeIds": [],
+      "maskedFormula": "|a|=\\square-\\square",
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs.",
+      "sourceInteractionContractRef": {
+        "path": "src/data/textbook/math/numbers/n08Construction.json",
+        "jsonPointer": "/interactions/1",
+        "id": "n08-q03-order-build-r6",
+        "sha256": "24198508697f0f8a11f430643c544e4b832bee5e8191877cd8830598d8999850",
+        "referenceOnly": true
+      }
+    },
+    {
+      "nodeId": "n08-03",
+      "ordinal": 8,
+      "goal": "左側の距離を簡単にする",
+      "oldInteractionId": "n08-03-build-r6",
+      "status": "KEEP_CONSTRUCTION_MEANING",
+      "parts": [
+        {
+          "id": "n08-03-build-r6-sign",
+          "role": "unary-sign",
+          "expected": "-",
+          "choices": [
+            {
+              "value": "-",
+              "choiceId": "n08-03::n08-03-build-r6-sign::choice-01"
+            },
+            {
+              "value": "+",
+              "choiceId": "n08-03::n08-03-build-r6-sign::choice-02"
+            }
+          ],
+          "key": "n08-03-build-r6-sign",
+          "correct": "-",
+          "correctChoiceId": "n08-03::n08-03-build-r6-sign::choice-01",
+          "choiceOrder": [
+            "n08-03::n08-03-build-r6-sign::choice-01",
+            "n08-03::n08-03-build-r6-sign::choice-02"
+          ],
+          "migration": "same meaning; preserve old parent/part first values attempts and timestamps",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "中身や因数の符号を一つずつ確認し、今適用している規則を確かめます。",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order",
+          "prompt": "左側の距離を簡単にする。"
+        }
+      ],
+      "migration": "same meaning; preserve old parent/part first values attempts and timestamps",
+      "prerequisiteNodeIds": [
+        "n08-q03-order"
+      ],
+      "newInteractionId": "n08-03-build-r6",
+      "partOrder": [
+        "n08-03-build-r6-sign"
+      ],
+      "finalConclusion": "|a|=-a\\quad(a<0)",
+      "learnerLead": "0からaを引く計算を、aの一つの項で表します。",
+      "sourceSemanticRefs": {
+        "node": "n08-03",
+        "beforeBlockIds": [
+          "n08-03-before",
+          "n08-03-interaction-0"
+        ],
+        "afterBlockIds": [
+          "n08-03-result",
+          "n08-03-after"
+        ]
+      },
+      "originalNumberRefs": {
+        "n08-03-interaction-0": 6,
+        "n08-03-result": 6
+      },
+      "effectivePrerequisiteInteractionIds": [
+        "n08-q03-order-build-r6"
+      ],
+      "autoResultPrerequisiteNodeIds": [],
+      "maskedFormula": "0-a=\\square a",
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs.",
+      "sourceInteractionContractRef": {
+        "path": "src/data/textbook/math/numbers/n08Construction.json",
+        "jsonPointer": "/interactions/2",
+        "id": "n08-03-build-r6",
+        "sha256": "0d0f7b7455d87e07f33792867c151185cd3bda10d2a9d4afa336f80881b4b699",
+        "referenceOnly": true
+      }
+    },
+    {
+      "nodeId": "n08-q04-substitute",
+      "ordinal": 9,
+      "goal": "負の値は括弧を付けて代入する",
+      "oldInteractionId": null,
+      "status": "KEEP_EXPOSITION",
+      "parts": [],
+      "migration": "no learner answer",
+      "prerequisiteNodeIds": [
+        "n08-03"
+      ],
+      "learnerLead": "いまの式 -a の a へ -5 を入れます。元からある負号と代入する負の数を区別するため、代入する数を括弧で囲みます。",
+      "sourceSemanticRefs": {
+        "node": "n08-q04-substitute",
+        "beforeBlockIds": [
+          "n08-q04-substitute-before",
+          "n08-q04-substitute-interaction-0"
+        ],
+        "afterBlockIds": [
+          "n08-q04-substitute-result",
+          "n08-q04-substitute-after"
+        ]
+      },
+      "partOrder": [],
+      "originalNumberRefs": {
+        "n08-q04-substitute-interaction-0": 7,
+        "n08-q04-substitute-result": 7
+      },
+      "effectivePrerequisiteInteractionIds": [
+        "n08-03-build-r6"
+      ],
+      "autoResultPrerequisiteNodeIds": [],
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs."
+    },
+    {
+      "nodeId": "n08-04",
+      "ordinal": 10,
+      "goal": "代入した式の値を計算する",
+      "oldInteractionId": "n08-04-build-r6",
+      "status": "KEEP_CONSTRUCTION_MEANING",
+      "parts": [
+        {
+          "id": "n08-04-build-r6-value",
+          "role": "rational",
+          "expected": "5",
+          "choices": [
+            {
+              "value": "5",
+              "expression": {
+                "kind": "rational",
+                "n": "5",
+                "d": "1"
+              },
+              "choiceId": "n08-04::n08-04-build-r6-value::choice-01"
+            },
+            {
+              "value": "-5",
+              "expression": {
+                "kind": "rational",
+                "n": "-5",
+                "d": "1"
+              },
+              "choiceId": "n08-04::n08-04-build-r6-value::choice-02"
+            },
+            {
+              "value": "0",
+              "expression": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              },
+              "choiceId": "n08-04::n08-04-build-r6-value::choice-03"
+            }
+          ],
+          "key": "n08-04-build-r6-value",
+          "correct": "5",
+          "correctChoiceId": "n08-04::n08-04-build-r6-value::choice-01",
+          "choiceOrder": [
+            "n08-04::n08-04-build-r6-value::choice-01",
+            "n08-04::n08-04-build-r6-value::choice-02",
+            "n08-04::n08-04-build-r6-value::choice-03"
+          ],
+          "migration": "same meaning; preserve old parent/part first values attempts and timestamps",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "直前の演算を、その二つの数の符号も含めて計算し直します。",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order",
+          "prompt": "代入した式の値を計算する。"
+        }
+      ],
+      "migration": "same meaning; preserve old parent/part first values attempts and timestamps",
+      "prerequisiteNodeIds": [
+        "n08-q04-substitute"
+      ],
+      "newInteractionId": "n08-04-build-r6",
+      "partOrder": [
+        "n08-04-build-r6-value"
+      ],
+      "finalConclusion": "-(-5)=5",
+      "learnerLead": "負の数 -5 と符号が反対の数を求めます。式と値を等号でつないで、左側の点の距離と照合します。",
+      "sourceSemanticRefs": {
+        "node": "n08-04",
+        "beforeBlockIds": [
+          "n08-04-before",
+          "n08-04-interaction-0"
+        ],
+        "afterBlockIds": [
+          "n08-04-result",
+          "n08-04-after"
+        ]
+      },
+      "originalNumberRefs": {
+        "n08-04-interaction-0": 8,
+        "n08-04-result": 8
+      },
+      "effectivePrerequisiteInteractionIds": [
+        "n08-03-build-r6"
+      ],
+      "autoResultPrerequisiteNodeIds": [],
+      "maskedFormula": "-(-5)=\\square",
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs.",
+      "sourceInteractionContractRef": {
+        "path": "src/data/textbook/math/numbers/n08Construction.json",
+        "jsonPointer": "/interactions/3",
+        "id": "n08-04-build-r6",
+        "sha256": "3879d3947a85006404b451b34fe95b8cf2994b0df9ab27276a37a8c745235651",
+        "referenceOnly": true
+      }
+    },
+    {
+      "nodeId": "n08-cases",
+      "ordinal": 11,
+      "goal": "絶対値を外す規則を二つにまとめる",
+      "oldInteractionId": null,
+      "status": "KEEP_EXPOSITION",
+      "parts": [],
+      "migration": "no learner answer",
+      "prerequisiteNodeIds": [
+        "n08-02",
+        "n08-03"
+      ],
+      "learnerLead": "ここまでの二つの場合を、条件と式が対応する表にまとめます。",
+      "sourceSemanticRefs": {
+        "node": "n08-cases",
+        "beforeBlockIds": [
+          "n08-cases-before"
+        ],
+        "afterBlockIds": [
+          "n08-cases-after"
+        ]
+      },
+      "partOrder": [],
+      "originalNumberRefs": {},
+      "effectivePrerequisiteInteractionIds": [
+        "n08-02-build-r7",
+        "n08-03-build-r6"
+      ],
+      "autoResultPrerequisiteNodeIds": [],
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs."
+    },
+    {
+      "nodeId": "n08-q05-square",
+      "ordinal": 12,
+      "goal": "正の二数の大小を比べる準備",
+      "oldInteractionId": "n08-q05-square-answer",
+      "status": "KEEP_LEGACY_LOCAL_DECISION",
+      "parts": [
+        {
+          "key": "answer",
+          "role": "local-formula",
+          "correct": "9",
+          "choices": [
+            {
+              "value": "9",
+              "choiceId": "n08-q05-square::answer::choice-01"
+            },
+            {
+              "value": "6",
+              "choiceId": "n08-q05-square::answer::choice-02"
+            },
+            {
+              "value": "3",
+              "choiceId": "n08-q05-square::answer::choice-03"
+            }
+          ],
+          "prompt": "正の二数の大小を比べる準備",
+          "correctChoiceId": "n08-q05-square::answer::choice-01",
+          "choiceOrder": [
+            "n08-q05-square::answer::choice-01",
+            "n08-q05-square::answer::choice-02",
+            "n08-q05-square::answer::choice-03"
+          ],
+          "migration": "same meaning; preserve complete legacy record",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "前の式と、今の操作の目的を照らし合わせます。",
+          "id": "n08-q05-square-answer::answer",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        }
+      ],
+      "migration": "same meaning; preserve complete legacy record",
+      "prerequisiteNodeIds": [
+        "n08-cases"
+      ],
+      "newInteractionId": "n08-q05-square-answer",
+      "partOrder": [
+        "answer"
+      ],
+      "finalConclusion": "9",
+      "learnerLead": "求めたいのは |\\sqrt5-3| を絶対値記号のない式で表すことです。まず中身の符号を決めるため、\\sqrt5 と 3 を比べます。\\sqrt5 は正で、二乗すると 5 になる数です。二つの数はともに正なので、二乗した値を比べて元の数の大小を決められます。はじめに \\sqrt5 の二乗を確かめ、次に 3 の二乗を計算します。",
+      "sourceSemanticRefs": {
+        "node": "n08-q05-square",
+        "beforeBlockIds": [
+          "n08-q05-square-r5-before-0",
+          "n08-q05-square-r5-before-1",
+          "n08-r5-root-square-given-0",
+          "n08-q05-square-interaction-0"
+        ],
+        "afterBlockIds": [
+          "n08-q05-square-result",
+          "n08-q05-square-after"
+        ]
+      },
+      "originalNumberRefs": {
+        "n08-q05-square-interaction-0": 9,
+        "n08-q05-square-result": 9
+      },
+      "effectivePrerequisiteInteractionIds": [
+        "n08-02-build-r7",
+        "n08-03-build-r6"
+      ],
+      "autoResultPrerequisiteNodeIds": [],
+      "maskedFormula": "3^2=\\square",
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs.",
+      "sourceItemContractRef": {
+        "path": "src/data/textbook/math/numbers/n08Revision6.json",
+        "jsonPointer": "/unit/sections/0/items/3",
+        "id": "n08-q05-square-answer",
+        "sha256": "5e3f353a159fad98a995375cc6b5d4864b95c75801f30b84e09b0aaf1a6cd61d",
+        "referenceOnly": true
+      }
+    },
+    {
+      "nodeId": "n08-q05-compare",
+      "ordinal": 13,
+      "goal": "二乗した値の大小を決める",
+      "oldInteractionId": "n08-q05-compare-answer",
+      "status": "KEEP_LEGACY_LOCAL_DECISION",
+      "parts": [
+        {
+          "key": "answer",
+          "role": "local-text",
+          "correct": "<",
+          "choices": [
+            {
+              "value": "<",
+              "choiceId": "n08-q05-compare::answer::choice-01"
+            },
+            {
+              "value": ">",
+              "choiceId": "n08-q05-compare::answer::choice-02"
+            },
+            {
+              "value": "=",
+              "choiceId": "n08-q05-compare::answer::choice-03"
+            }
+          ],
+          "prompt": "二乗した値の大小を決める",
+          "correctChoiceId": "n08-q05-compare::answer::choice-01",
+          "choiceOrder": [
+            "n08-q05-compare::answer::choice-01",
+            "n08-q05-compare::answer::choice-02",
+            "n08-q05-compare::answer::choice-03"
+          ],
+          "migration": "same meaning; preserve complete legacy record",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "前の式と、今の操作の目的を照らし合わせます。",
+          "id": "n08-q05-compare-answer::answer",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        }
+      ],
+      "migration": "same meaning; preserve complete legacy record",
+      "prerequisiteNodeIds": [
+        "n08-q05-square"
+      ],
+      "newInteractionId": "n08-q05-compare-answer",
+      "partOrder": [
+        "answer"
+      ],
+      "finalConclusion": "<",
+      "learnerLead": "両方とも正なので、二乗した値の比較を元の二数の比較に戻せます。まず 5 と 9 の間の不等号を選びます。5\\ \\ 9",
+      "sourceSemanticRefs": {
+        "node": "n08-q05-compare",
+        "beforeBlockIds": [
+          "n08-q05-compare-before",
+          "n08-q05-compare-interaction"
+        ],
+        "afterBlockIds": [
+          "n08-q05-compare-result-0",
+          "n08-q05-compare-after"
+        ]
+      },
+      "originalNumberRefs": {
+        "n08-q05-compare-result-0": 10
+      },
+      "effectivePrerequisiteInteractionIds": [
+        "n08-q05-square-answer"
+      ],
+      "autoResultPrerequisiteNodeIds": [],
+      "maskedFormula": "5\\;\\square\\;9",
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs.",
+      "sourceItemContractRef": {
+        "path": "src/data/textbook/math/numbers/n08Revision6.json",
+        "jsonPointer": "/unit/sections/0/items/4",
+        "id": "n08-q05-compare-answer",
+        "sha256": "4b1e999ab3c76affc782966d73f70756f1e78764d5becdfd8fb140695bba6a8c",
+        "referenceOnly": true
+      }
+    },
+    {
+      "nodeId": "n08-05",
+      "ordinal": 14,
+      "goal": "根拠と元の数の大小関係を結ぶ",
+      "oldInteractionId": "n08-05",
+      "status": "REVISE_MEANING_NEW_CONSTRUCTION",
+      "parts": [
+        {
+          "key": "relation",
+          "role": "relation",
+          "correct": "<",
+          "choices": [
+            {
+              "value": ">",
+              "choiceId": "n08-05::relation::choice-01"
+            },
+            {
+              "value": "=",
+              "choiceId": "n08-05::relation::choice-02"
+            },
+            {
+              "value": "<",
+              "choiceId": "n08-05::relation::choice-03"
+            }
+          ],
+          "prompt": "二乗した値の比較から、元の二数の大小を決めます。",
+          "correctChoiceId": "n08-05::relation::choice-03",
+          "choiceOrder": [
+            "n08-05::relation::choice-01",
+            "n08-05::relation::choice-02",
+            "n08-05::relation::choice-03"
+          ],
+          "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "前の比較や場合分けの結果を、今の二つの数の関係へつなげます。",
+          "id": "n08-05-build-r7::relation",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        }
+      ],
+      "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+      "newInteractionId": "n08-05-build-r7",
+      "reason": "Keep prior comparison as known result; learner connects it to original nonnegative quantities.",
+      "partOrder": [
+        "relation"
+      ],
+      "steps": [
+        {
+          "id": "given-comparison",
+          "formula": "5<9",
+          "requiresCorrectParts": []
+        },
+        {
+          "id": "root-comparison",
+          "formula": "\\sqrt5 {relation} 3",
+          "requiresCorrectParts": []
+        }
+      ],
+      "prerequisiteNodeIds": [
+        "n08-q05-square",
+        "n08-q05-compare"
+      ],
+      "finalConclusion": "\\sqrt5<3",
+      "hideUntilSolved": [
+        "statement of resulting root order"
+      ],
+      "learnerLead": "二つとも非負です。二乗した値の比較を、元の二つの数の比較へ戻します。",
+      "sourceSemanticRefs": {
+        "node": "n08-05",
+        "beforeBlockIds": [
+          "n08-05-before",
+          "n08-05-interaction-0"
+        ],
+        "afterBlockIds": [
+          "n08-05-result-0",
+          "n08-05-result-1",
+          "n08-05-after"
+        ]
+      },
+      "originalNumberRefs": {
+        "n08-05-interaction-0": 11,
+        "n08-05-result-1": 11
+      },
+      "effectivePrerequisiteInteractionIds": [
+        "n08-q05-square-answer",
+        "n08-q05-compare-answer"
+      ],
+      "autoResultPrerequisiteNodeIds": [],
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "proposedRowAssertions": [
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "sqrt",
+            "argument": {
+              "kind": "rational",
+              "n": "5",
+              "d": "1"
+            }
+          },
+          "operatorPartKey": "relation",
+          "right": {
+            "kind": "rational",
+            "n": "3",
+            "d": "1"
+          }
+        }
+      ],
+      "assumptions": [
+        "sqrt(5)>=0",
+        "3>=0",
+        "5<9"
+      ],
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs.",
+      "sourceItemContractRef": {
+        "path": "src/data/textbook/math/numbers/n08Revision6.json",
+        "jsonPointer": "/unit/sections/0/items/5",
+        "id": "n08-05",
+        "sha256": "62f83525277fac59e80d5b970f149da770791e7909b7f213ea10fa7582aae23e",
+        "referenceOnly": true
+      }
+    },
+    {
+      "nodeId": "n08-r5-q06-operation",
+      "ordinal": 15,
+      "goal": "前の大小関係から中身の符号へつなぐ",
+      "oldInteractionId": "n08-r5-q06-operation-answer",
+      "status": "KEEP_LEGACY_LOCAL_DECISION",
+      "parts": [
+        {
+          "key": "answer",
+          "role": "local-formula",
+          "correct": "3",
+          "choices": [
+            {
+              "value": "3",
+              "choiceId": "n08-r5-q06-operation::answer::choice-01"
+            },
+            {
+              "value": "-3",
+              "choiceId": "n08-r5-q06-operation::answer::choice-02"
+            },
+            {
+              "value": "0",
+              "choiceId": "n08-r5-q06-operation::answer::choice-03"
+            }
+          ],
+          "prompt": "前の大小関係から中身の符号へつなぐ",
+          "correctChoiceId": "n08-r5-q06-operation::answer::choice-01",
+          "choiceOrder": [
+            "n08-r5-q06-operation::answer::choice-01",
+            "n08-r5-q06-operation::answer::choice-02",
+            "n08-r5-q06-operation::answer::choice-03"
+          ],
+          "migration": "same meaning; preserve complete legacy record",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "同じ数を両辺から引く操作自体は使えます。今回は左辺に√5−3を作るため、引く数を選び直します。",
+          "id": "n08-r5-q06-operation-answer::answer",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        }
+      ],
+      "migration": "same meaning; preserve complete legacy record",
+      "prerequisiteNodeIds": [
+        "n08-05"
+      ],
+      "newInteractionId": "n08-r5-q06-operation-answer",
+      "partOrder": [
+        "answer"
+      ],
+      "finalConclusion": "3",
+      "learnerLead": "元の絶対値の中身は \\sqrt5-3 です。先ほど得た \\sqrt5<3 を、この中身と比べられる形に変えます。両辺から同じ数を引く式を作ります。",
+      "sourceSemanticRefs": {
+        "node": "n08-r5-q06-operation",
+        "beforeBlockIds": [
+          "n08-r5-q06-operation-before",
+          "n08-r5-q06-operation-interaction-0"
+        ],
+        "afterBlockIds": [
+          "n08-r5-q06-operation-result-formula-0",
+          "n08-r5-q06-operation-after"
+        ]
+      },
+      "originalNumberRefs": {
+        "n08-r5-q06-operation-interaction-0": 12,
+        "n08-r5-q06-operation-result-formula-0": 12
+      },
+      "effectivePrerequisiteInteractionIds": [
+        "n08-05-build-r7"
+      ],
+      "autoResultPrerequisiteNodeIds": [],
+      "maskedFormula": "\\sqrt5-\\square<3-\\square",
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs.",
+      "sourceItemContractRef": {
+        "path": "src/data/textbook/math/numbers/n08Revision6.json",
+        "jsonPointer": "/unit/sections/0/items/6",
+        "id": "n08-r5-q06-operation-answer",
+        "sha256": "d782952bb571659e311d160aad4473a3ae01f8c0f4998bc5c39bb2805ee65f9b",
+        "referenceOnly": true
+      }
+    },
+    {
+      "nodeId": "n08-q06-subtract",
+      "ordinal": 16,
+      "goal": "両辺から同じ数を引いて差の符号へ",
+      "oldInteractionId": "n08-q06-subtract-answer",
+      "status": "KEEP_LEGACY_LOCAL_DECISION",
+      "parts": [
+        {
+          "key": "answer",
+          "role": "local-formula",
+          "correct": "0",
+          "choices": [
+            {
+              "value": "0",
+              "choiceId": "n08-q06-subtract::answer::choice-01"
+            },
+            {
+              "value": "3",
+              "choiceId": "n08-q06-subtract::answer::choice-02"
+            },
+            {
+              "value": "-3",
+              "choiceId": "n08-q06-subtract::answer::choice-03"
+            }
+          ],
+          "prompt": "両辺から同じ数を引いて差の符号へ",
+          "correctChoiceId": "n08-q06-subtract::answer::choice-01",
+          "choiceOrder": [
+            "n08-q06-subtract::answer::choice-01",
+            "n08-q06-subtract::answer::choice-02",
+            "n08-q06-subtract::answer::choice-03"
+          ],
+          "migration": "same meaning; preserve complete legacy record",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "前の式と、今の操作の目的を照らし合わせます。",
+          "id": "n08-q06-subtract-answer::answer",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        }
+      ],
+      "migration": "same meaning; preserve complete legacy record",
+      "prerequisiteNodeIds": [
+        "n08-r5-q06-operation"
+      ],
+      "newInteractionId": "n08-q06-subtract-answer",
+      "partOrder": [
+        "answer"
+      ],
+      "finalConclusion": "0",
+      "learnerLead": "右辺に同じ数の差が残りました。左辺は元の絶対値の中身です。右辺を計算し、中身の符号を読み取れる形に整理します。",
+      "sourceSemanticRefs": {
+        "node": "n08-q06-subtract",
+        "beforeBlockIds": [
+          "n08-q06-subtract-r5-before-0",
+          "n08-q06-subtract-interaction-0"
+        ],
+        "afterBlockIds": [
+          "n08-q06-subtract-result-0",
+          "n08-q06-subtract-after"
+        ]
+      },
+      "originalNumberRefs": {
+        "n08-q06-subtract-interaction-0": 13,
+        "n08-q06-subtract-result-0": 13
+      },
+      "effectivePrerequisiteInteractionIds": [
+        "n08-r5-q06-operation-answer"
+      ],
+      "autoResultPrerequisiteNodeIds": [],
+      "maskedFormula": "\\sqrt5-3<\\square",
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs.",
+      "sourceItemContractRef": {
+        "path": "src/data/textbook/math/numbers/n08Revision6.json",
+        "jsonPointer": "/unit/sections/0/items/7",
+        "id": "n08-q06-subtract-answer",
+        "sha256": "6a91a82557de50101adce214664504de085304bd3a67cd5c2bb6b1dc2811e425",
+        "referenceOnly": true
+      }
+    },
+    {
+      "nodeId": "n08-06",
+      "ordinal": 17,
+      "goal": "差が0より小さいことを言葉で読む",
+      "oldInteractionId": "n08-06",
+      "status": "KEEP_LEGACY_LOCAL_DECISION",
+      "parts": [
+        {
+          "key": "answer",
+          "role": "local-text",
+          "correct": "負",
+          "choices": [
+            {
+              "value": "負",
+              "choiceId": "n08-06::answer::choice-01"
+            },
+            {
+              "value": "正",
+              "choiceId": "n08-06::answer::choice-02"
+            },
+            {
+              "value": "0",
+              "choiceId": "n08-06::answer::choice-03"
+            },
+            {
+              "value": "符号は決まらない",
+              "choiceId": "n08-06::answer::choice-04"
+            }
+          ],
+          "prompt": "差が0より小さいことを言葉で読む",
+          "correctChoiceId": "n08-06::answer::choice-01",
+          "choiceOrder": [
+            "n08-06::answer::choice-01",
+            "n08-06::answer::choice-02",
+            "n08-06::answer::choice-03",
+            "n08-06::answer::choice-04"
+          ],
+          "migration": "same meaning; preserve complete legacy record",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "前の式と、今の操作の目的を照らし合わせます。",
+          "id": "n08-06::answer",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        }
+      ],
+      "migration": "same meaning; preserve complete legacy record",
+      "prerequisiteNodeIds": [
+        "n08-q06-subtract"
+      ],
+      "newInteractionId": "n08-06",
+      "partOrder": [
+        "answer"
+      ],
+      "finalConclusion": "負",
+      "learnerLead": "絶対値の中身を0と比較できました。この結果を、正・0・負という言葉で読み取ります。判断：",
+      "sourceSemanticRefs": {
+        "node": "n08-06",
+        "beforeBlockIds": [
+          "n08-06-before",
+          "n08-06-interaction"
+        ],
+        "afterBlockIds": [
+          "n08-06-answer",
+          "n08-06-after"
+        ]
+      },
+      "originalNumberRefs": {},
+      "effectivePrerequisiteInteractionIds": [
+        "n08-q06-subtract-answer"
+      ],
+      "autoResultPrerequisiteNodeIds": [],
+      "maskedFormula": "\\sqrt5-3",
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs.",
+      "sourceItemContractRef": {
+        "path": "src/data/textbook/math/numbers/n08Revision6.json",
+        "jsonPointer": "/unit/sections/0/items/8",
+        "id": "n08-06",
+        "sha256": "55f6b12a851a80465f6ebd7072a2ae96e42c2f57bd30468727ed52d4e04f3142",
+        "referenceOnly": true
+      }
+    },
+    {
+      "nodeId": "n08-q07-rule",
+      "ordinal": 18,
+      "goal": "負の場合に使う規則を選ぶ",
+      "oldInteractionId": "n08-q07-rule-answer",
+      "status": "REVISE_MEANING_NEW_CONSTRUCTION",
+      "parts": [
+        {
+          "key": "rule-sign",
+          "role": "unary-sign",
+          "correct": "-",
+          "choices": [
+            {
+              "value": "-",
+              "choiceId": "n08-q07-rule::rule-sign::choice-01"
+            },
+            {
+              "value": "+",
+              "choiceId": "n08-q07-rule::rule-sign::choice-02"
+            }
+          ],
+          "prompt": "中身が負の場合の規則を、表の条件と対応させます。",
+          "correctChoiceId": "n08-q07-rule::rule-sign::choice-01",
+          "choiceOrder": [
+            "n08-q07-rule::rule-sign::choice-01",
+            "n08-q07-rule::rule-sign::choice-02"
+          ],
+          "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "中身や因数の符号を一つずつ確認し、今適用している規則を確かめます。",
+          "id": "n08-q07-rule-build-r7::rule-sign",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        }
+      ],
+      "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+      "newInteractionId": "n08-q07-rule-build-r7",
+      "reason": "General-rule decision, distinct from later whole-expression application.",
+      "partOrder": [
+        "rule-sign"
+      ],
+      "steps": [
+        {
+          "id": "rule",
+          "formula": "|u|={rule-sign}u\\quad(u<0)",
+          "requiresCorrectParts": []
+        }
+      ],
+      "prerequisiteNodeIds": [
+        "n08-06",
+        "n08-cases"
+      ],
+      "finalConclusion": "|u|=-u\\quad(u<0)",
+      "hideUntilSolved": [
+        "sentence saying attach negative sign before answer"
+      ],
+      "learnerLead": "uは絶対値の中身を表します。中身が負の場合に使う規則を、式の中で完成させます。",
+      "sourceSemanticRefs": {
+        "node": "n08-q07-rule",
+        "beforeBlockIds": [
+          "n08-q07-rule-before",
+          "n08-q07-rule-interaction-0"
+        ],
+        "afterBlockIds": [
+          "n08-q07-rule-result",
+          "n08-q07-rule-after"
+        ]
+      },
+      "originalNumberRefs": {
+        "n08-q07-rule-interaction-0": 14,
+        "n08-q07-rule-result": 14
+      },
+      "effectivePrerequisiteInteractionIds": [
+        "n08-06",
+        "n08-02-build-r7",
+        "n08-03-build-r6"
+      ],
+      "autoResultPrerequisiteNodeIds": [],
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "proposedRowAssertions": [
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "absolute",
+            "argument": {
+              "kind": "symbol",
+              "name": "u"
+            }
+          },
+          "operator": "=",
+          "right": {
+            "kind": "unary",
+            "signPartKey": "rule-sign",
+            "argument": {
+              "kind": "symbol",
+              "name": "u"
+            }
+          }
+        }
+      ],
+      "assumptions": [
+        "u<0"
+      ],
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs.",
+      "sourceItemContractRef": {
+        "path": "src/data/textbook/math/numbers/n08Revision6.json",
+        "jsonPointer": "/unit/sections/0/items/9",
+        "id": "n08-q07-rule-answer",
+        "sha256": "cdb16a878dfc8d521b987d53d8d14371e2ec3393ccedf9fbd1ed35280213fdc3",
+        "referenceOnly": true
+      }
+    },
+    {
+      "nodeId": "n08-q07-bracket",
+      "ordinal": 19,
+      "goal": "中身全体を括弧で囲んで負号を付ける",
+      "oldInteractionId": "n08-q07-bracket-build-r6",
+      "status": "REVISE_MEANING_NEW_CONSTRUCTION",
+      "parts": [
+        {
+          "key": "whole-interior",
+          "role": "bound-subtree-reference",
+          "correct": "n08-q07-root-interior",
+          "choices": [
+            {
+              "value": "n08-q07-root-interior",
+              "choiceId": "n08-q07-bracket::whole-interior::choice-01",
+              "subtreeRef": "n08-q07-root-interior"
+            },
+            {
+              "value": "n08-q07-root-interior/term-1",
+              "choiceId": "n08-q07-bracket::whole-interior::choice-02",
+              "subtreeRef": "n08-q07-root-interior/term-1"
+            },
+            {
+              "value": "n08-q07-root-interior/term-2",
+              "choiceId": "n08-q07-bracket::whole-interior::choice-03",
+              "subtreeRef": "n08-q07-root-interior/term-2"
+            }
+          ],
+          "prompt": "規則のuが、この元の式のどの範囲に当たるか選びます。",
+          "scopeDomain": {
+            "sourceRootRef": "n08-q07-root-interior",
+            "expectedScope": "whole-interior",
+            "permittedSubtrees": [
+              {
+                "ref": "n08-q07-root-interior",
+                "scope": "whole-interior",
+                "displayLatex": "\\sqrt5-3"
+              },
+              {
+                "ref": "n08-q07-root-interior/term-1",
+                "scope": "first-signed-term",
+                "displayLatex": "\\sqrt5"
+              },
+              {
+                "ref": "n08-q07-root-interior/term-2",
+                "scope": "second-signed-term",
+                "displayLatex": "-3"
+              }
+            ]
+          },
+          "assembly": {
+            "kind": "negative",
+            "value": {
+              "kind": "bound-subtree",
+              "partKey": "whole-interior"
+            }
+          },
+          "correctChoiceId": "n08-q07-bracket::whole-interior::choice-01",
+          "choiceOrder": [
+            "n08-q07-bracket::whole-interior::choice-01",
+            "n08-q07-bracket::whole-interior::choice-02",
+            "n08-q07-bracket::whole-interior::choice-03"
+          ],
+          "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "絶対値の縦線で囲まれた範囲と、規則のuの対応を確かめます。",
+          "id": "n08-q07-bracket-build-r7::whole-interior",
+          "visibleAs": "source-region-selector",
+          "selectionUI": {
+            "mode": "source-region-selector",
+            "labels": [
+              "中身全体",
+              "第一項",
+              "第二項"
+            ],
+            "bind": "immutable sourceASTHash + subtreeId",
+            "answerBox": "only current selected source region preview; not a completed RHS list"
+          },
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        }
+      ],
+      "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+      "newInteractionId": "n08-q07-bracket-build-r7",
+      "reason": "Do not ask for the same sign again; decide scope of rule application.",
+      "partOrder": [
+        "whole-interior"
+      ],
+      "steps": [
+        {
+          "id": "scope",
+          "formula": "|\\sqrt5-3|=-({whole-interior})",
+          "requiresCorrectParts": []
+        }
+      ],
+      "prerequisiteNodeIds": [
+        "n08-q07-rule"
+      ],
+      "finalConclusion": "|\\sqrt5-3|=-(\\sqrt5-3)",
+      "hideUntilSolved": [
+        "u=√5−3 substitution sentence and completed bracket formula before selection"
+      ],
+      "renderContract": "Choices are source-region highlights/labels with immutable subtree refs, not finished RHS formula strings. Validate ref belongs to original interior AST and declared scope; resolve selected ref to its original AST subtree, then wrap with negative node. Do not parse rendered LaTeX or accept arbitrary formula. Correct whole-interior replaces no source operands.",
+      "learnerLead": "規則のuに、今回の式のどの範囲が対応するかを元の式で指定します。",
+      "sourceSemanticRefs": {
+        "node": "n08-q07-bracket",
+        "beforeBlockIds": [
+          "n08-q07-bracket-before",
+          "n08-q07-bracket-interaction-0"
+        ],
+        "afterBlockIds": [
+          "n08-q07-bracket-result",
+          "n08-q07-bracket-after"
+        ]
+      },
+      "originalNumberRefs": {
+        "n08-q07-bracket-interaction-0": 15,
+        "n08-q07-bracket-result": 15
+      },
+      "effectivePrerequisiteInteractionIds": [
+        "n08-q07-rule-build-r7"
+      ],
+      "autoResultPrerequisiteNodeIds": [],
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "proposedRowAssertions": [
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "absolute",
+            "argument": {
+              "kind": "add",
+              "args": [
+                {
+                  "kind": "sqrt",
+                  "argument": {
+                    "kind": "rational",
+                    "n": "5",
+                    "d": "1"
+                  }
+                },
+                {
+                  "kind": "rational",
+                  "n": "-3",
+                  "d": "1"
+                }
+              ]
+            }
+          },
+          "operator": "=",
+          "right": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "-1",
+                "d": "1"
+              },
+              {
+                "kind": "bound-subtree-part",
+                "partKey": "whole-interior"
+              }
+            ]
+          }
+        }
+      ],
+      "assumptions": [
+        "sqrt(5)-3<0"
+      ],
+      "boundSourceTree": {
+        "rootId": "n08-q07-root-interior",
+        "rootExpression": {
+          "kind": "add",
+          "args": [
+            {
+              "kind": "sqrt",
+              "argument": {
+                "kind": "rational",
+                "n": "5",
+                "d": "1"
+              }
+            },
+            {
+              "kind": "rational",
+              "n": "-3",
+              "d": "1"
+            }
+          ]
+        },
+        "subtreeMap": {
+          "n08-q07-root-interior": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "sqrt",
+                "argument": {
+                  "kind": "rational",
+                  "n": "5",
+                  "d": "1"
+                }
+              },
+              {
+                "kind": "rational",
+                "n": "-3",
+                "d": "1"
+              }
+            ]
+          },
+          "n08-q07-root-interior/term-1": {
+            "kind": "sqrt",
+            "argument": {
+              "kind": "rational",
+              "n": "5",
+              "d": "1"
+            }
+          },
+          "n08-q07-root-interior/term-2": {
+            "kind": "rational",
+            "n": "-3",
+            "d": "1"
+          }
+        },
+        "fingerprintAlgorithm": "tools/textbook/util.mjs hash() on stable AST; fixed at materialization; source value selected by ref only"
+      },
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs.",
+      "sourceInteractionContractRef": {
+        "path": "src/data/textbook/math/numbers/n08Construction.json",
+        "jsonPointer": "/interactions/4",
+        "id": "n08-q07-bracket-build-r6",
+        "sha256": "5dc78367055670f8f52477319d183a69300fba7a933a88e3aa4081eeabd69ef8",
+        "referenceOnly": true
+      }
+    },
+    {
+      "nodeId": "n08-q07-distribute",
+      "ordinal": 20,
+      "goal": "負号を括弧の二項へ掛ける",
+      "oldInteractionId": "n08-q07-distribute-build-r6",
+      "status": "REVISE_MEANING_NEW_CONSTRUCTION",
+      "parts": [
+        {
+          "key": "coefficient",
+          "role": "coefficient",
+          "correct": "-1",
+          "choices": [
+            {
+              "value": "1",
+              "choiceId": "n08-q07-distribute::coefficient::choice-01"
+            },
+            {
+              "value": "0",
+              "choiceId": "n08-q07-distribute::coefficient::choice-02"
+            },
+            {
+              "value": "-1",
+              "choiceId": "n08-q07-distribute::coefficient::choice-03"
+            }
+          ],
+          "prompt": "前行の外側の負号を、掛ける数で表します。",
+          "correctChoiceId": "n08-q07-distribute::coefficient::choice-03",
+          "choiceOrder": [
+            "n08-q07-distribute::coefficient::choice-01",
+            "n08-q07-distribute::coefficient::choice-02",
+            "n08-q07-distribute::coefficient::choice-03"
+          ],
+          "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "外側の符号が中身の値をどのように変えるかを確かめます。",
+          "id": "n08-q07-distribute-build-r7::coefficient",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        },
+        {
+          "key": "second-term",
+          "role": "operand",
+          "correct": "-3",
+          "choices": [
+            {
+              "value": "3",
+              "choiceId": "n08-q07-distribute::second-term::choice-01"
+            },
+            {
+              "value": "-3",
+              "choiceId": "n08-q07-distribute::second-term::choice-02"
+            }
+          ],
+          "prompt": "元の括弧の第二項を、符号を含めた項として表します。",
+          "correctChoiceId": "n08-q07-distribute::second-term::choice-02",
+          "choiceOrder": [
+            "n08-q07-distribute::second-term::choice-01",
+            "n08-q07-distribute::second-term::choice-02"
+          ],
+          "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "直前の式で扱っている数や項を、符号を含めて確かめます。",
+          "id": "n08-q07-distribute-build-r7::second-term",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        },
+        {
+          "key": "root-sign",
+          "role": "unary-sign",
+          "correct": "-",
+          "choices": [
+            {
+              "value": "-",
+              "choiceId": "n08-q07-distribute::root-sign::choice-01"
+            },
+            {
+              "value": "+",
+              "choiceId": "n08-q07-distribute::root-sign::choice-02"
+            }
+          ],
+          "prompt": "第一項の積の符号を計算します。",
+          "correctChoiceId": "n08-q07-distribute::root-sign::choice-01",
+          "choiceOrder": [
+            "n08-q07-distribute::root-sign::choice-01",
+            "n08-q07-distribute::root-sign::choice-02"
+          ],
+          "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "中身や因数の符号を一つずつ確認し、今適用している規則を確かめます。",
+          "id": "n08-q07-distribute-build-r7::root-sign",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        },
+        {
+          "key": "constant",
+          "role": "rational",
+          "correct": "3",
+          "choices": [
+            {
+              "value": "-3",
+              "choiceId": "n08-q07-distribute::constant::choice-01"
+            },
+            {
+              "value": "0",
+              "choiceId": "n08-q07-distribute::constant::choice-02"
+            },
+            {
+              "value": "3",
+              "choiceId": "n08-q07-distribute::constant::choice-03"
+            }
+          ],
+          "prompt": "第二項の積を計算します。",
+          "correctChoiceId": "n08-q07-distribute::constant::choice-03",
+          "choiceOrder": [
+            "n08-q07-distribute::constant::choice-01",
+            "n08-q07-distribute::constant::choice-02",
+            "n08-q07-distribute::constant::choice-03"
+          ],
+          "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "直前の演算を、その二つの数の符号も含めて計算し直します。",
+          "id": "n08-q07-distribute-build-r7::constant",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        }
+      ],
+      "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+      "newInteractionId": "n08-q07-distribute-build-r7",
+      "reason": "Learner constructs multiplication coefficient and signed operand before computing both products.",
+      "partOrder": [
+        "coefficient",
+        "second-term",
+        "root-sign",
+        "constant"
+      ],
+      "steps": [
+        {
+          "id": "factor",
+          "formula": "-(\\sqrt5-3)={coefficient}(\\sqrt5-3)",
+          "requiresCorrectParts": []
+        },
+        {
+          "id": "distribute",
+          "formula": "={mirror:coefficient}\\sqrt5+{mirror:coefficient}({second-term})",
+          "requiresCorrectParts": [
+            "coefficient"
+          ]
+        },
+        {
+          "id": "products",
+          "formula": "={root-sign}\\sqrt5+{constant}",
+          "requiresCorrectParts": [
+            "coefficient",
+            "second-term"
+          ]
+        }
+      ],
+      "prerequisiteNodeIds": [
+        "n08-q07-bracket"
+      ],
+      "finalConclusion": "-\\sqrt5+3",
+      "hideUntilSolved": [
+        "completed(-1)√5+(-1)(-3) before choices",
+        "completed product signs/constants in notes or prior-results"
+      ],
+      "learnerLead": "まず、括弧の前の負号を数を掛ける操作で表します。次に分配法則で各項へ掛け、最後に二つの積を計算します。",
+      "sourceSemanticRefs": {
+        "node": "n08-q07-distribute",
+        "beforeBlockIds": [
+          "n08-q07-distribute-r5-before-0",
+          "n08-q07-distribute-interaction"
+        ],
+        "afterBlockIds": [
+          "n08-q07-distribute-result",
+          "n08-q07-distribute-after"
+        ]
+      },
+      "originalNumberRefs": {
+        "n08-q07-distribute-interaction": 16,
+        "n08-q07-distribute-result": 16
+      },
+      "effectivePrerequisiteInteractionIds": [
+        "n08-q07-bracket-build-r7"
+      ],
+      "autoResultPrerequisiteNodeIds": [],
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "proposedRowAssertions": [
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "-1",
+                "d": "1"
+              },
+              {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "sqrt",
+                    "argument": {
+                      "kind": "rational",
+                      "n": "5",
+                      "d": "1"
+                    }
+                  },
+                  {
+                    "kind": "rational",
+                    "n": "-3",
+                    "d": "1"
+                  }
+                ]
+              }
+            ]
+          },
+          "operator": "=",
+          "right": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "part-key",
+                "key": "coefficient"
+              },
+              {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "sqrt",
+                    "argument": {
+                      "kind": "rational",
+                      "n": "5",
+                      "d": "1"
+                    }
+                  },
+                  {
+                    "kind": "rational",
+                    "n": "-3",
+                    "d": "1"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "-1",
+                "d": "1"
+              },
+              {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "sqrt",
+                    "argument": {
+                      "kind": "rational",
+                      "n": "5",
+                      "d": "1"
+                    }
+                  },
+                  {
+                    "kind": "rational",
+                    "n": "-3",
+                    "d": "1"
+                  }
+                ]
+              }
+            ]
+          },
+          "operator": "=",
+          "right": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "part-key",
+                    "key": "coefficient"
+                  },
+                  {
+                    "kind": "sqrt",
+                    "argument": {
+                      "kind": "rational",
+                      "n": "5",
+                      "d": "1"
+                    }
+                  }
+                ]
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "part-key",
+                    "key": "coefficient"
+                  },
+                  {
+                    "kind": "part-key",
+                    "key": "second-term"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "-1",
+                "d": "1"
+              },
+              {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "sqrt",
+                    "argument": {
+                      "kind": "rational",
+                      "n": "5",
+                      "d": "1"
+                    }
+                  },
+                  {
+                    "kind": "rational",
+                    "n": "-3",
+                    "d": "1"
+                  }
+                ]
+              }
+            ]
+          },
+          "operator": "=",
+          "right": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "unary",
+                "signPartKey": "root-sign",
+                "argument": {
+                  "kind": "sqrt",
+                  "argument": {
+                    "kind": "rational",
+                    "n": "5",
+                    "d": "1"
+                  }
+                }
+              },
+              {
+                "kind": "part-key",
+                "key": "constant"
+              }
+            ]
+          }
+        }
+      ],
+      "assumptions": [],
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs.",
+      "sourceInteractionContractRef": {
+        "path": "src/data/textbook/math/numbers/n08Construction.json",
+        "jsonPointer": "/interactions/5",
+        "id": "n08-q07-distribute-build-r6",
+        "sha256": "5667743570f769d9f07fed8f3e1efc2774d54f78cac6d4cf08380a34e9306a57",
+        "referenceOnly": true
+      }
+    },
+    {
+      "nodeId": "n08-07",
+      "ordinal": 21,
+      "goal": "正の項を先に並べて元の問いへ答える",
+      "oldInteractionId": "n08-07-build-r6",
+      "status": "KEEP_CONSTRUCTION_MEANING",
+      "parts": [
+        {
+          "id": "n08-07-build-r6-first-term",
+          "role": "signed-term",
+          "expected": "3",
+          "choices": [
+            {
+              "value": "3",
+              "expression": {
+                "kind": "rational",
+                "n": "3",
+                "d": "1"
+              },
+              "choiceId": "n08-07::n08-07-build-r6-first-term::choice-01"
+            },
+            {
+              "value": "-\\sqrt5",
+              "expression": {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "sqrt",
+                    "argument": {
+                      "kind": "rational",
+                      "n": "5",
+                      "d": "1"
+                    }
+                  }
+                ]
+              },
+              "choiceId": "n08-07::n08-07-build-r6-first-term::choice-02"
+            }
+          ],
+          "key": "n08-07-build-r6-first-term",
+          "correct": "3",
+          "correctChoiceId": "n08-07::n08-07-build-r6-first-term::choice-01",
+          "choiceOrder": [
+            "n08-07::n08-07-build-r6-first-term::choice-01",
+            "n08-07::n08-07-build-r6-first-term::choice-02"
+          ],
+          "migration": "same meaning; preserve old parent/part first values attempts and timestamps",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "前の二つの項を、符号ごと移します。値の等しさと指定された順序は別に確認します。",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order",
+          "prompt": "正の項を先に並べて元の問いへ答える。"
+        }
+      ],
+      "migration": "same meaning; preserve old parent/part first values attempts and timestamps",
+      "prerequisiteNodeIds": [
+        "n08-q07-distribute"
+      ],
+      "newInteractionId": "n08-07-build-r6",
+      "partOrder": [
+        "n08-07-build-r6-first-term"
+      ],
+      "finalConclusion": "|\\sqrt5-3|=3-\\sqrt5",
+      "learnerLead": "-\\sqrt5+3 は、加法の交換法則で項の順を変えられます。絶対値も括弧もない形を、元の問題の答えにします。",
+      "sourceSemanticRefs": {
+        "node": "n08-07",
+        "beforeBlockIds": [
+          "n08-07-before",
+          "n08-07-interaction-0"
+        ],
+        "afterBlockIds": [
+          "n08-07-result",
+          "n08-07-after"
+        ]
+      },
+      "originalNumberRefs": {
+        "n08-07-interaction-0": 17,
+        "n08-07-result": 17
+      },
+      "effectivePrerequisiteInteractionIds": [
+        "n08-q07-distribute-build-r7"
+      ],
+      "autoResultPrerequisiteNodeIds": [],
+      "maskedFormula": "|\\sqrt5-3|=\\square+\\cdots",
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs.",
+      "sourceInteractionContractRef": {
+        "path": "src/data/textbook/math/numbers/n08Construction.json",
+        "jsonPointer": "/interactions/6",
+        "id": "n08-07-build-r6",
+        "sha256": "dc13b37f49812624d2b64f7a12210a68dc2d866b69fd8fa102f703e34892e980",
+        "referenceOnly": true
+      }
+    },
+    {
+      "nodeId": "n08-q08-order",
+      "ordinal": 22,
+      "goal": "円周率と3を比べる",
+      "oldInteractionId": "n08-q08-order-answer",
+      "status": "KEEP_LEGACY_LOCAL_DECISION",
+      "parts": [
+        {
+          "key": "answer",
+          "role": "local-text",
+          "correct": "<",
+          "choices": [
+            {
+              "value": "<",
+              "choiceId": "n08-q08-order::answer::choice-01"
+            },
+            {
+              "value": ">",
+              "choiceId": "n08-q08-order::answer::choice-02"
+            },
+            {
+              "value": "=",
+              "choiceId": "n08-q08-order::answer::choice-03"
+            }
+          ],
+          "prompt": "円周率と3を比べる",
+          "correctChoiceId": "n08-q08-order::answer::choice-01",
+          "choiceOrder": [
+            "n08-q08-order::answer::choice-01",
+            "n08-q08-order::answer::choice-02",
+            "n08-q08-order::answer::choice-03"
+          ],
+          "migration": "same meaning; preserve complete legacy record",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "前の式と、今の操作の目的を照らし合わせます。",
+          "id": "n08-q08-order-answer::answer",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        }
+      ],
+      "migration": "same meaning; preserve complete legacy record",
+      "prerequisiteNodeIds": [],
+      "newInteractionId": "n08-q08-order-answer",
+      "partOrder": [
+        "answer"
+      ],
+      "finalConclusion": "<",
+      "learnerLead": "次は |3-\\pi| を絶対値記号のない式で表します。与えられた \\pi=3.14159\\ldots を使い、まず中身の符号を決めるために 3 と \\pi を比べます。3\\ \\ \\pi",
+      "sourceSemanticRefs": {
+        "node": "n08-q08-order",
+        "beforeBlockIds": [
+          "n08-q08-order-r5-before-0",
+          "n08-q08-order-interaction"
+        ],
+        "afterBlockIds": [
+          "n08-q08-order-result-0",
+          "n08-q08-order-after"
+        ]
+      },
+      "originalNumberRefs": {
+        "n08-q08-order-result-0": 18
+      },
+      "effectivePrerequisiteInteractionIds": [],
+      "autoResultPrerequisiteNodeIds": [],
+      "maskedFormula": "3\\;\\square\\;\\pi",
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs.",
+      "sourceItemContractRef": {
+        "path": "src/data/textbook/math/numbers/n08Revision6.json",
+        "jsonPointer": "/unit/sections/0/items/10",
+        "id": "n08-q08-order-answer",
+        "sha256": "eed576182128fa34c7b8d49f926a0865c2b5cc21acb0f33d91ed7c790576ac7c",
+        "referenceOnly": true
+      }
+    },
+    {
+      "nodeId": "n08-r5-q08-operation",
+      "ordinal": 23,
+      "goal": "別の例で同じ両辺操作を組み立てる",
+      "oldInteractionId": "n08-r5-q08-operation-answer",
+      "status": "KEEP_LEGACY_LOCAL_DECISION",
+      "parts": [
+        {
+          "key": "answer",
+          "role": "local-formula",
+          "correct": "\\pi",
+          "choices": [
+            {
+              "value": "\\pi",
+              "choiceId": "n08-r5-q08-operation::answer::choice-01"
+            },
+            {
+              "value": "3",
+              "choiceId": "n08-r5-q08-operation::answer::choice-02"
+            },
+            {
+              "value": "-\\pi",
+              "choiceId": "n08-r5-q08-operation::answer::choice-03"
+            }
+          ],
+          "prompt": "別の例で同じ両辺操作を組み立てる",
+          "correctChoiceId": "n08-r5-q08-operation::answer::choice-01",
+          "choiceOrder": [
+            "n08-r5-q08-operation::answer::choice-01",
+            "n08-r5-q08-operation::answer::choice-02",
+            "n08-r5-q08-operation::answer::choice-03"
+          ],
+          "migration": "same meaning; preserve complete legacy record",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "今回は左辺に3−πを作る操作です。不等式が成り立つことだけでなく、左辺が目的の式になっているか確かめます。",
+          "id": "n08-r5-q08-operation-answer::answer",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        }
+      ],
+      "migration": "same meaning; preserve complete legacy record",
+      "prerequisiteNodeIds": [
+        "n08-q08-order"
+      ],
+      "newInteractionId": "n08-r5-q08-operation-answer",
+      "partOrder": [
+        "answer"
+      ],
+      "finalConclusion": "\\pi",
+      "learnerLead": "今回調べたい中身は 3-\\pi です。3<\\pi の両辺へ同じ操作を行い、左辺にこの中身が現れる式を作ります。",
+      "sourceSemanticRefs": {
+        "node": "n08-r5-q08-operation",
+        "beforeBlockIds": [
+          "n08-r5-q08-operation-before",
+          "n08-r5-q08-operation-interaction-0"
+        ],
+        "afterBlockIds": [
+          "n08-r5-q08-operation-result-formula-0",
+          "n08-r5-q08-operation-after"
+        ]
+      },
+      "originalNumberRefs": {
+        "n08-r5-q08-operation-interaction-0": 19,
+        "n08-r5-q08-operation-result-formula-0": 19
+      },
+      "effectivePrerequisiteInteractionIds": [
+        "n08-q08-order-answer"
+      ],
+      "autoResultPrerequisiteNodeIds": [],
+      "maskedFormula": "3-\\square<\\pi-\\square",
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs.",
+      "sourceItemContractRef": {
+        "path": "src/data/textbook/math/numbers/n08Revision6.json",
+        "jsonPointer": "/unit/sections/0/items/11",
+        "id": "n08-r5-q08-operation-answer",
+        "sha256": "0bc8e81fcef284d05ba677650c898ca9a6393939d999186ebeee611d310af6fd",
+        "referenceOnly": true
+      }
+    },
+    {
+      "nodeId": "n08-q08-difference",
+      "ordinal": 24,
+      "goal": "同じ数を引いて0との比較へ",
+      "oldInteractionId": "n08-q08-difference-answer",
+      "status": "REVISE_MEANING_NEW_CONSTRUCTION",
+      "parts": [
+        {
+          "key": "zero",
+          "role": "operand",
+          "correct": "0",
+          "choices": [
+            {
+              "value": "\\pi",
+              "choiceId": "n08-q08-difference::zero::choice-01"
+            },
+            {
+              "value": "0",
+              "choiceId": "n08-q08-difference::zero::choice-02"
+            },
+            {
+              "value": "3",
+              "choiceId": "n08-q08-difference::zero::choice-03"
+            }
+          ],
+          "prompt": "右辺の同じ数どうしの差を計算します。",
+          "correctChoiceId": "n08-q08-difference::zero::choice-02",
+          "choiceOrder": [
+            "n08-q08-difference::zero::choice-01",
+            "n08-q08-difference::zero::choice-02",
+            "n08-q08-difference::zero::choice-03"
+          ],
+          "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "前の行の右辺π−πを計算した値を入れます。選んだ値で不等式が成り立つことと、指定された計算の結果であることは別に確かめます。",
+          "id": "n08-q08-difference-build-r7::zero",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        }
+      ],
+      "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+      "newInteractionId": "n08-q08-difference-build-r7",
+      "reason": "Calculate the right-hand difference instead of repeating the given inequality direction.",
+      "partOrder": [
+        "zero"
+      ],
+      "steps": [
+        {
+          "id": "reduce",
+          "formula": "3-\\pi<{zero}",
+          "requiresCorrectParts": []
+        }
+      ],
+      "prerequisiteNodeIds": [
+        "n08-r5-q08-operation"
+      ],
+      "finalConclusion": "3-\\pi<0",
+      "hideUntilSolved": [
+        "completed right-hand zero and sign conclusion before answer"
+      ],
+      "learnerLead": "不等号の向きは前の行から保ち、右辺の同じ数の差を計算します。",
+      "sourceSemanticRefs": {
+        "node": "n08-q08-difference",
+        "beforeBlockIds": [
+          "n08-q08-difference-r5-before-0",
+          "n08-q08-difference-interaction"
+        ],
+        "afterBlockIds": [
+          "n08-q08-difference-result-0",
+          "n08-q08-difference-after"
+        ]
+      },
+      "originalNumberRefs": {
+        "n08-q08-difference-result-0": 20
+      },
+      "effectivePrerequisiteInteractionIds": [
+        "n08-r5-q08-operation-answer"
+      ],
+      "autoResultPrerequisiteNodeIds": [],
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "proposedRowAssertions": [
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "3",
+                "d": "1"
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "constant",
+                    "name": "pi"
+                  }
+                ]
+              }
+            ]
+          },
+          "operator": "<",
+          "right": {
+            "kind": "part-key",
+            "key": "zero"
+          }
+        },
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "constant",
+                "name": "pi"
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "constant",
+                    "name": "pi"
+                  }
+                ]
+              }
+            ]
+          },
+          "operator": "=",
+          "right": {
+            "kind": "part-key",
+            "key": "zero"
+          }
+        }
+      ],
+      "assumptions": [
+        "pi>3"
+      ],
+      "gradingPurpose": "operation-result",
+      "transitionProvenance": "Selected value must equal previous right side pi-pi; merely true weaker inequality is insufficient.",
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs.",
+      "sourceItemContractRef": {
+        "path": "src/data/textbook/math/numbers/n08Revision6.json",
+        "jsonPointer": "/unit/sections/0/items/12",
+        "id": "n08-q08-difference-answer",
+        "sha256": "f3e47b62c5430a3d056ff2a40b309d87c2920d30e6e26e8f1b8871e9f2469fc0",
+        "referenceOnly": true
+      }
+    },
+    {
+      "nodeId": "n08-08",
+      "ordinal": 25,
+      "goal": "差の符号を根拠と組にする",
+      "oldInteractionId": "n08-08",
+      "status": "REVISE_MEANING_NEW_CONSTRUCTION",
+      "parts": [
+        {
+          "key": "sign-word",
+          "role": "meaning",
+          "correct": "負",
+          "choices": [
+            {
+              "value": "正",
+              "choiceId": "n08-08::sign-word::choice-01"
+            },
+            {
+              "value": "0",
+              "choiceId": "n08-08::sign-word::choice-02"
+            },
+            {
+              "value": "符号は決まらない",
+              "choiceId": "n08-08::sign-word::choice-03"
+            },
+            {
+              "value": "負",
+              "choiceId": "n08-08::sign-word::choice-04"
+            }
+          ],
+          "prompt": "前行の0との大小関係を、符号の言葉で表します。",
+          "correctChoiceId": "n08-08::sign-word::choice-04",
+          "choiceOrder": [
+            "n08-08::sign-word::choice-01",
+            "n08-08::sign-word::choice-02",
+            "n08-08::sign-word::choice-03",
+            "n08-08::sign-word::choice-04"
+          ],
+          "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "0との大小関係を、正・0・負の意味へ読み替えます。",
+          "id": "n08-08-build-r7::sign-word",
+          "visibleAs": "plain-prose",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        }
+      ],
+      "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+      "newInteractionId": "n08-08-build-r7",
+      "reason": "Replace packaged reason sentence with meaning judgment; prior comparison remains recorded.",
+      "partOrder": [
+        "sign-word"
+      ],
+      "steps": [
+        {
+          "id": "interpret",
+          "proseTemplate": [
+            {
+              "type": "math",
+              "latex": "3-\\pi"
+            },
+            {
+              "type": "text",
+              "text": " の符号は "
+            },
+            {
+              "type": "part",
+              "partKey": "sign-word"
+            },
+            {
+              "type": "text",
+              "text": " です。"
+            }
+          ],
+          "requiresCorrectParts": []
+        }
+      ],
+      "prerequisiteNodeIds": [
+        "n08-q08-difference"
+      ],
+      "finalConclusion": "3-\\pi<0\\text{、したがって負}",
+      "hideUntilSolved": [
+        "sentence asserting negative before answer"
+      ],
+      "learnerLead": "中身と0の大小関係を、正・0・負という意味で読み取ります。前の大小関係も根拠として残します。",
+      "sourceSemanticRefs": {
+        "node": "n08-08",
+        "beforeBlockIds": [
+          "n08-08-before",
+          "n08-08-interaction"
+        ],
+        "afterBlockIds": [
+          "n08-08-answer",
+          "n08-08-after"
+        ]
+      },
+      "originalNumberRefs": {},
+      "effectivePrerequisiteInteractionIds": [
+        "n08-q08-difference-build-r7"
+      ],
+      "autoResultPrerequisiteNodeIds": [],
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "proposedRowAssertions": [
+        {
+          "kind": "meaning",
+          "provenFactRef": "n08-q08-difference/result",
+          "expression": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "3",
+                "d": "1"
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "constant",
+                    "name": "pi"
+                  }
+                ]
+              }
+            ]
+          },
+          "valuePartKey": "sign-word",
+          "valueMap": {
+            "負": "negative",
+            "正": "positive",
+            "0": "zero",
+            "符号は決まらない": "undetermined"
+          }
+        }
+      ],
+      "assumptions": [
+        "3-pi<0"
+      ],
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs.",
+      "sourceItemContractRef": {
+        "path": "src/data/textbook/math/numbers/n08Revision6.json",
+        "jsonPointer": "/unit/sections/0/items/13",
+        "id": "n08-08",
+        "sha256": "b3d945d81d90dee7df124f3aa6d3f767e311f90c3af9370380920e94a7a025fd",
+        "referenceOnly": true
+      }
+    },
+    {
+      "nodeId": "n08-q09-bracket",
+      "ordinal": 26,
+      "goal": "前の例と同じ負の規則を使う",
+      "oldInteractionId": "n08-q09-bracket-build-r6",
+      "status": "REVISE_MEANING_NEW_CONSTRUCTION",
+      "parts": [
+        {
+          "key": "whole-interior",
+          "role": "bound-subtree-reference",
+          "correct": "n08-q09-root-interior",
+          "choices": [
+            {
+              "value": "n08-q09-root-interior/term-1",
+              "choiceId": "n08-q09-bracket::whole-interior::choice-01",
+              "subtreeRef": "n08-q09-root-interior/term-1"
+            },
+            {
+              "value": "n08-q09-root-interior/term-2",
+              "choiceId": "n08-q09-bracket::whole-interior::choice-02",
+              "subtreeRef": "n08-q09-root-interior/term-2"
+            },
+            {
+              "value": "n08-q09-root-interior",
+              "choiceId": "n08-q09-bracket::whole-interior::choice-03",
+              "subtreeRef": "n08-q09-root-interior"
+            }
+          ],
+          "prompt": "規則のuが、この元の式のどの範囲に当たるか選びます。",
+          "scopeDomain": {
+            "sourceRootRef": "n08-q09-root-interior",
+            "expectedScope": "whole-interior",
+            "permittedSubtrees": [
+              {
+                "ref": "n08-q09-root-interior",
+                "scope": "whole-interior",
+                "displayLatex": "3-\\pi"
+              },
+              {
+                "ref": "n08-q09-root-interior/term-1",
+                "scope": "first-signed-term",
+                "displayLatex": "3"
+              },
+              {
+                "ref": "n08-q09-root-interior/term-2",
+                "scope": "second-signed-term",
+                "displayLatex": "-\\pi"
+              }
+            ]
+          },
+          "assembly": {
+            "kind": "negative",
+            "value": {
+              "kind": "bound-subtree",
+              "partKey": "whole-interior"
+            }
+          },
+          "correctChoiceId": "n08-q09-bracket::whole-interior::choice-03",
+          "choiceOrder": [
+            "n08-q09-bracket::whole-interior::choice-01",
+            "n08-q09-bracket::whole-interior::choice-02",
+            "n08-q09-bracket::whole-interior::choice-03"
+          ],
+          "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "絶対値の縦線で囲まれた範囲と、規則のuの対応を確かめます。",
+          "id": "n08-q09-bracket-build-r7::whole-interior",
+          "visibleAs": "source-region-selector",
+          "selectionUI": {
+            "mode": "source-region-selector",
+            "labels": [
+              "中身全体",
+              "第一項",
+              "第二項"
+            ],
+            "bind": "immutable sourceASTHash + subtreeId",
+            "answerBox": "only current selected source region preview; not a completed RHS list"
+          },
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        }
+      ],
+      "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+      "newInteractionId": "n08-q09-bracket-build-r7",
+      "reason": "Transfer whole-interior scope from Q07; sign supplied by known rule rather than asked twice.",
+      "partOrder": [
+        "whole-interior"
+      ],
+      "steps": [
+        {
+          "id": "scope",
+          "formula": "|3-\\pi|=-({whole-interior})",
+          "requiresCorrectParts": []
+        }
+      ],
+      "prerequisiteNodeIds": [
+        "n08-08",
+        "n08-cases"
+      ],
+      "finalConclusion": "|3-\\pi|=-(3-\\pi)",
+      "hideUntilSolved": [
+        "completed substitution u=3−π and bracket answer before selection"
+      ],
+      "renderContract": "Choices are source-region highlights/labels with immutable subtree refs, not finished RHS formula strings. Validate ref belongs to original interior AST and declared scope; resolve selected ref to its original AST subtree, then wrap with negative node. Do not parse rendered LaTeX or accept arbitrary formula. Correct whole-interior replaces no source operands.",
+      "learnerLead": "前の例で使った規則を、今回の中身へ当てはめます。負号を作用させる範囲を指定します。",
+      "sourceSemanticRefs": {
+        "node": "n08-q09-bracket",
+        "beforeBlockIds": [
+          "n08-q09-bracket-r5-before-0",
+          "n08-q09-bracket-interaction-0"
+        ],
+        "afterBlockIds": [
+          "n08-q09-bracket-result",
+          "n08-q09-bracket-after"
+        ]
+      },
+      "originalNumberRefs": {
+        "n08-q09-bracket-interaction-0": 21,
+        "n08-q09-bracket-result": 21
+      },
+      "effectivePrerequisiteInteractionIds": [
+        "n08-08-build-r7",
+        "n08-02-build-r7",
+        "n08-03-build-r6"
+      ],
+      "autoResultPrerequisiteNodeIds": [],
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "proposedRowAssertions": [
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "absolute",
+            "argument": {
+              "kind": "add",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "3",
+                  "d": "1"
+                },
+                {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "constant",
+                      "name": "pi"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "operator": "=",
+          "right": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "-1",
+                "d": "1"
+              },
+              {
+                "kind": "bound-subtree-part",
+                "partKey": "whole-interior"
+              }
+            ]
+          }
+        }
+      ],
+      "assumptions": [
+        "3-pi<0"
+      ],
+      "boundSourceTree": {
+        "rootId": "n08-q09-root-interior",
+        "rootExpression": {
+          "kind": "add",
+          "args": [
+            {
+              "kind": "rational",
+              "n": "3",
+              "d": "1"
+            },
+            {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "constant",
+                  "name": "pi"
+                }
+              ]
+            }
+          ]
+        },
+        "subtreeMap": {
+          "n08-q09-root-interior": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "3",
+                "d": "1"
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "constant",
+                    "name": "pi"
+                  }
+                ]
+              }
+            ]
+          },
+          "n08-q09-root-interior/term-1": {
+            "kind": "rational",
+            "n": "3",
+            "d": "1"
+          },
+          "n08-q09-root-interior/term-2": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "-1",
+                "d": "1"
+              },
+              {
+                "kind": "constant",
+                "name": "pi"
+              }
+            ]
+          }
+        },
+        "fingerprintAlgorithm": "tools/textbook/util.mjs hash() on stable AST; fixed at materialization; source value selected by ref only"
+      },
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs.",
+      "sourceInteractionContractRef": {
+        "path": "src/data/textbook/math/numbers/n08Construction.json",
+        "jsonPointer": "/interactions/7",
+        "id": "n08-q09-bracket-build-r6",
+        "sha256": "e37214afd0586a479160ef1c95ab7cad1b80016ae20854f631032a91f0e3409d",
+        "referenceOnly": true
+      }
+    },
+    {
+      "nodeId": "n08-q09-distribute",
+      "ordinal": 27,
+      "goal": "負号を3と負の円周率へ掛ける",
+      "oldInteractionId": "n08-q09-distribute-build-r6",
+      "status": "REVISE_MEANING_NEW_CONSTRUCTION",
+      "parts": [
+        {
+          "key": "coefficient",
+          "role": "coefficient",
+          "correct": "-1",
+          "choices": [
+            {
+              "value": "0",
+              "choiceId": "n08-q09-distribute::coefficient::choice-01"
+            },
+            {
+              "value": "-1",
+              "choiceId": "n08-q09-distribute::coefficient::choice-02"
+            },
+            {
+              "value": "1",
+              "choiceId": "n08-q09-distribute::coefficient::choice-03"
+            }
+          ],
+          "prompt": "外側の負号を、掛ける数で表します。",
+          "correctChoiceId": "n08-q09-distribute::coefficient::choice-02",
+          "choiceOrder": [
+            "n08-q09-distribute::coefficient::choice-01",
+            "n08-q09-distribute::coefficient::choice-02",
+            "n08-q09-distribute::coefficient::choice-03"
+          ],
+          "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "外側の符号が中身の値をどのように変えるかを確かめます。",
+          "id": "n08-q09-distribute-build-r7::coefficient",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        },
+        {
+          "key": "second-term",
+          "role": "operand",
+          "correct": "-\\pi",
+          "choices": [
+            {
+              "value": "-\\pi",
+              "choiceId": "n08-q09-distribute::second-term::choice-01"
+            },
+            {
+              "value": "\\pi",
+              "choiceId": "n08-q09-distribute::second-term::choice-02"
+            }
+          ],
+          "prompt": "括弧の第二項を、符号を含めた項として表します。",
+          "correctChoiceId": "n08-q09-distribute::second-term::choice-01",
+          "choiceOrder": [
+            "n08-q09-distribute::second-term::choice-01",
+            "n08-q09-distribute::second-term::choice-02"
+          ],
+          "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "直前の式で扱っている数や項を、符号を含めて確かめます。",
+          "id": "n08-q09-distribute-build-r7::second-term",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        },
+        {
+          "key": "first-sign",
+          "role": "unary-sign",
+          "correct": "-",
+          "choices": [
+            {
+              "value": "+",
+              "choiceId": "n08-q09-distribute::first-sign::choice-01"
+            },
+            {
+              "value": "-",
+              "choiceId": "n08-q09-distribute::first-sign::choice-02"
+            }
+          ],
+          "prompt": "第一項の積の符号を計算します。",
+          "correctChoiceId": "n08-q09-distribute::first-sign::choice-02",
+          "choiceOrder": [
+            "n08-q09-distribute::first-sign::choice-01",
+            "n08-q09-distribute::first-sign::choice-02"
+          ],
+          "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "中身や因数の符号を一つずつ確認し、今適用している規則を確かめます。",
+          "id": "n08-q09-distribute-build-r7::first-sign",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        },
+        {
+          "key": "joining-operation",
+          "role": "binary-operation",
+          "correct": "+",
+          "choices": [
+            {
+              "value": "+",
+              "choiceId": "n08-q09-distribute::joining-operation::choice-01"
+            },
+            {
+              "value": "-",
+              "choiceId": "n08-q09-distribute::joining-operation::choice-02"
+            }
+          ],
+          "prompt": "第二項の積の符号を計算し、二項をつなぎます。",
+          "correctChoiceId": "n08-q09-distribute::joining-operation::choice-01",
+          "choiceOrder": [
+            "n08-q09-distribute::joining-operation::choice-01",
+            "n08-q09-distribute::joining-operation::choice-02"
+          ],
+          "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "演算の意味を確かめます。二乗と二倍、項の符号と項を結ぶ演算を区別します。",
+          "id": "n08-q09-distribute-build-r7::joining-operation",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        }
+      ],
+      "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+      "newInteractionId": "n08-q09-distribute-build-r7",
+      "reason": "Construct distribution before computing sign of both products.",
+      "partOrder": [
+        "coefficient",
+        "second-term",
+        "first-sign",
+        "joining-operation"
+      ],
+      "steps": [
+        {
+          "id": "factor",
+          "formula": "-(3-\\pi)={coefficient}(3-\\pi)",
+          "requiresCorrectParts": []
+        },
+        {
+          "id": "distribute",
+          "formula": "={mirror:coefficient}3+{mirror:coefficient}({second-term})",
+          "requiresCorrectParts": [
+            "coefficient"
+          ]
+        },
+        {
+          "id": "products",
+          "formula": "={first-sign}3 {joining-operation}\\pi",
+          "requiresCorrectParts": [
+            "coefficient",
+            "second-term"
+          ]
+        }
+      ],
+      "prerequisiteNodeIds": [
+        "n08-q09-bracket"
+      ],
+      "finalConclusion": "-3+\\pi",
+      "hideUntilSolved": [
+        "completed(-1)3+(-1)(−π) before choices",
+        "completed product signs in essential note"
+      ],
+      "learnerLead": "前の例の順序で、掛ける数、分配する相手、二つの積を順に決めます。",
+      "sourceSemanticRefs": {
+        "node": "n08-q09-distribute",
+        "beforeBlockIds": [
+          "n08-q09-distribute-r5-before-0",
+          "n08-q09-distribute-interaction"
+        ],
+        "afterBlockIds": [
+          "n08-q09-distribute-result",
+          "n08-q09-distribute-after"
+        ]
+      },
+      "originalNumberRefs": {
+        "n08-q09-distribute-interaction": 22,
+        "n08-q09-distribute-result": 22
+      },
+      "effectivePrerequisiteInteractionIds": [
+        "n08-q09-bracket-build-r7"
+      ],
+      "autoResultPrerequisiteNodeIds": [],
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "proposedRowAssertions": [
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "-1",
+                "d": "1"
+              },
+              {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "3",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "-1",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "constant",
+                        "name": "pi"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "operator": "=",
+          "right": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "part-key",
+                "key": "coefficient"
+              },
+              {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "3",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "-1",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "constant",
+                        "name": "pi"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "-1",
+                "d": "1"
+              },
+              {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "3",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "-1",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "constant",
+                        "name": "pi"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "operator": "=",
+          "right": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "part-key",
+                    "key": "coefficient"
+                  },
+                  {
+                    "kind": "rational",
+                    "n": "3",
+                    "d": "1"
+                  }
+                ]
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "part-key",
+                    "key": "coefficient"
+                  },
+                  {
+                    "kind": "part-key",
+                    "key": "second-term"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "-1",
+                "d": "1"
+              },
+              {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "3",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "-1",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "constant",
+                        "name": "pi"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "operator": "=",
+          "right": {
+            "kind": "binary",
+            "operationPartKey": "joining-operation",
+            "left": {
+              "kind": "unary",
+              "signPartKey": "first-sign",
+              "argument": {
+                "kind": "rational",
+                "n": "3",
+                "d": "1"
+              }
+            },
+            "right": {
+              "kind": "constant",
+              "name": "pi"
+            }
+          }
+        }
+      ],
+      "assumptions": [],
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs.",
+      "sourceInteractionContractRef": {
+        "path": "src/data/textbook/math/numbers/n08Construction.json",
+        "jsonPointer": "/interactions/8",
+        "id": "n08-q09-distribute-build-r6",
+        "sha256": "10c1f5fd4abaa7a341825af04d8ed2f58590a51f7f69cc49a5bf972490c10080",
+        "referenceOnly": true
+      }
+    },
+    {
+      "nodeId": "n08-09",
+      "ordinal": 28,
+      "goal": "元の問題の答えをまとめる",
+      "oldInteractionId": "n08-09-build-r6",
+      "status": "KEEP_CONSTRUCTION_MEANING",
+      "parts": [
+        {
+          "id": "n08-09-build-r6-first-term",
+          "role": "signed-term",
+          "expected": "\\pi",
+          "choices": [
+            {
+              "value": "\\pi",
+              "expression": {
+                "kind": "constant",
+                "name": "pi"
+              },
+              "choiceId": "n08-09::n08-09-build-r6-first-term::choice-01"
+            },
+            {
+              "value": "-3",
+              "expression": {
+                "kind": "rational",
+                "n": "-3",
+                "d": "1"
+              },
+              "choiceId": "n08-09::n08-09-build-r6-first-term::choice-02"
+            }
+          ],
+          "key": "n08-09-build-r6-first-term",
+          "correct": "\\pi",
+          "correctChoiceId": "n08-09::n08-09-build-r6-first-term::choice-01",
+          "choiceOrder": [
+            "n08-09::n08-09-build-r6-first-term::choice-01",
+            "n08-09::n08-09-build-r6-first-term::choice-02"
+          ],
+          "migration": "same meaning; preserve old parent/part first values attempts and timestamps",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "前の二つの項を、符号ごと移します。値の等しさと指定された順序は別に確認します。",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order",
+          "prompt": "元の問題の答えをまとめる。"
+        }
+      ],
+      "migration": "same meaning; preserve old parent/part first values attempts and timestamps",
+      "prerequisiteNodeIds": [
+        "n08-q09-distribute"
+      ],
+      "newInteractionId": "n08-09-build-r6",
+      "partOrder": [
+        "n08-09-build-r6-first-term"
+      ],
+      "finalConclusion": "|3-\\pi|=\\pi-3",
+      "learnerLead": "項の順序を整え、正の項を先に書きます。",
+      "sourceSemanticRefs": {
+        "node": "n08-09",
+        "beforeBlockIds": [
+          "n08-09-before",
+          "n08-09-interaction-0"
+        ],
+        "afterBlockIds": [
+          "n08-09-result",
+          "n08-09-after"
+        ]
+      },
+      "originalNumberRefs": {
+        "n08-09-interaction-0": 23,
+        "n08-09-result": 23
+      },
+      "effectivePrerequisiteInteractionIds": [
+        "n08-q09-distribute-build-r7"
+      ],
+      "autoResultPrerequisiteNodeIds": [],
+      "maskedFormula": "|3-\\pi|=\\square+\\cdots",
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs.",
+      "sourceInteractionContractRef": {
+        "path": "src/data/textbook/math/numbers/n08Construction.json",
+        "jsonPointer": "/interactions/9",
+        "id": "n08-09-build-r6",
+        "sha256": "b59bb86b51a9dcf9b2396e011cbb76f260335ebd6771fdb4303ca16784f93d74",
+        "referenceOnly": true
+      }
+    },
+    {
+      "nodeId": "n08-q10-forward",
+      "ordinal": 29,
+      "goal": "距離が0なら点はどこにあるか",
+      "oldInteractionId": "n08-q10-forward-answer",
+      "status": "KEEP_LEGACY_LOCAL_DECISION",
+      "parts": [
+        {
+          "key": "answer",
+          "role": "local-formula",
+          "correct": "0",
+          "choices": [
+            {
+              "value": "0",
+              "choiceId": "n08-q10-forward::answer::choice-01"
+            },
+            {
+              "value": "1",
+              "choiceId": "n08-q10-forward::answer::choice-02"
+            },
+            {
+              "value": "-1",
+              "choiceId": "n08-q10-forward::answer::choice-03"
+            }
+          ],
+          "prompt": "距離が0なら点はどこにあるか",
+          "correctChoiceId": "n08-q10-forward::answer::choice-01",
+          "choiceOrder": [
+            "n08-q10-forward::answer::choice-01",
+            "n08-q10-forward::answer::choice-02",
+            "n08-q10-forward::answer::choice-03"
+          ],
+          "migration": "same meaning; preserve complete legacy record",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "前の式と、今の操作の目的を照らし合わせます。",
+          "id": "n08-q10-forward-answer::answer",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        }
+      ],
+      "migration": "same meaning; preserve complete legacy record",
+      "prerequisiteNodeIds": [
+        "n08-definition"
+      ],
+      "newInteractionId": "n08-q10-forward-answer",
+      "partOrder": [
+        "answer"
+      ],
+      "finalConclusion": "0",
+      "learnerLead": "ここからは性質です。|a|=0 は、a の点と原点との距離が0という意味です。離れていない二点は同じ位置にあります。",
+      "sourceSemanticRefs": {
+        "node": "n08-q10-forward",
+        "beforeBlockIds": [
+          "n08-q10-forward-before",
+          "n08-q10-forward-interaction-0"
+        ],
+        "afterBlockIds": [
+          "n08-q10-forward-result",
+          "n08-q10-forward-after"
+        ]
+      },
+      "originalNumberRefs": {
+        "n08-q10-forward-interaction-0": 24,
+        "n08-q10-forward-result": 24
+      },
+      "effectivePrerequisiteInteractionIds": [
+        "n08-q01-left-answer"
+      ],
+      "autoResultPrerequisiteNodeIds": [],
+      "maskedFormula": "|a|=0\\Rightarrow a=\\square",
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs.",
+      "sourceItemContractRef": {
+        "path": "src/data/textbook/math/numbers/n08Revision6.json",
+        "jsonPointer": "/unit/sections/0/items/14",
+        "id": "n08-q10-forward-answer",
+        "sha256": "898a71e18c24d83fc14cd81ef5b25238ec120090ff84c96e0eda88d25518bce1",
+        "referenceOnly": true
+      }
+    },
+    {
+      "nodeId": "n08-q10-reverse",
+      "ordinal": 30,
+      "goal": "逆に元の数が0なら距離も0",
+      "oldInteractionId": "n08-q10-reverse-answer",
+      "status": "KEEP_LEGACY_LOCAL_DECISION",
+      "parts": [
+        {
+          "key": "answer",
+          "role": "local-formula",
+          "correct": "0",
+          "choices": [
+            {
+              "value": "0",
+              "choiceId": "n08-q10-reverse::answer::choice-01"
+            },
+            {
+              "value": "a^2+1",
+              "choiceId": "n08-q10-reverse::answer::choice-02"
+            },
+            {
+              "value": "1",
+              "choiceId": "n08-q10-reverse::answer::choice-03"
+            }
+          ],
+          "prompt": "逆に元の数が0なら距離も0",
+          "correctChoiceId": "n08-q10-reverse::answer::choice-01",
+          "choiceOrder": [
+            "n08-q10-reverse::answer::choice-01",
+            "n08-q10-reverse::answer::choice-02",
+            "n08-q10-reverse::answer::choice-03"
+          ],
+          "migration": "same meaning; preserve complete legacy record",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "前の式と、今の操作の目的を照らし合わせます。",
+          "id": "n08-q10-reverse-answer::answer",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        }
+      ],
+      "migration": "same meaning; preserve complete legacy record",
+      "prerequisiteNodeIds": [
+        "n08-definition"
+      ],
+      "newInteractionId": "n08-q10-reverse-answer",
+      "partOrder": [
+        "answer"
+      ],
+      "finalConclusion": "0",
+      "learnerLead": "a=0 なら、点は最初から原点と一致します。このときの距離を求めて、逆向きの関係も確かめます。",
+      "sourceSemanticRefs": {
+        "node": "n08-q10-reverse",
+        "beforeBlockIds": [
+          "n08-q10-reverse-before",
+          "n08-q10-reverse-interaction-0"
+        ],
+        "afterBlockIds": [
+          "n08-q10-reverse-result",
+          "n08-q10-reverse-after"
+        ]
+      },
+      "originalNumberRefs": {
+        "n08-q10-reverse-interaction-0": 25,
+        "n08-q10-reverse-result": 25
+      },
+      "effectivePrerequisiteInteractionIds": [
+        "n08-q01-left-answer"
+      ],
+      "autoResultPrerequisiteNodeIds": [],
+      "maskedFormula": "a=0\\Rightarrow|a|=\\square",
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs.",
+      "sourceItemContractRef": {
+        "path": "src/data/textbook/math/numbers/n08Revision6.json",
+        "jsonPointer": "/unit/sections/0/items/15",
+        "id": "n08-q10-reverse-answer",
+        "sha256": "983b4317f91147e29334ab8d2f0aba50e747b667a7502a93fd0c4ac706536151",
+        "referenceOnly": true
+      }
+    },
+    {
+      "nodeId": "n08-10",
+      "ordinal": 31,
+      "goal": "元の性質を位置の意味と組にする",
+      "oldInteractionId": "n08-10",
+      "status": "AUTO_RECORDED_CONCLUSION",
+      "parts": [],
+      "migration": "old answer archived; excluded from required interactions; generate recorded result only after prerequisites solved",
+      "prerequisiteNodeIds": [
+        "n08-q10-forward",
+        "n08-q10-reverse"
+      ],
+      "finalConclusion": "|a|=0\\Leftrightarrow a=0",
+      "learnerLead": "両方向を確かめたので、距離が0になる条件を一つにまとめます。",
+      "graded": false,
+      "sourceSemanticRefs": {
+        "node": "n08-10",
+        "beforeBlockIds": [
+          "n08-10-before",
+          "n08-10-interaction-0"
+        ],
+        "afterBlockIds": [
+          "n08-10-answer",
+          "n08-10-after"
+        ]
+      },
+      "partOrder": [],
+      "originalNumberRefs": {
+        "n08-10-interaction-0": 26
+      },
+      "effectivePrerequisiteInteractionIds": [
+        "n08-q10-forward-answer",
+        "n08-q10-reverse-answer"
+      ],
+      "autoResultPrerequisiteNodeIds": [
+        "n08-q10-forward",
+        "n08-q10-reverse"
+      ],
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs.",
+      "sourceItemContractRef": {
+        "path": "src/data/textbook/math/numbers/n08Revision6.json",
+        "jsonPointer": "/unit/sections/0/items/16",
+        "id": "n08-10",
+        "sha256": "81ab0cdc6ac2d3f8ad4e255b5315e8c423278b14a8d73990450b967c7f69bea2",
+        "referenceOnly": true
+      }
+    },
+    {
+      "nodeId": "n08-q11-positive",
+      "ordinal": 32,
+      "goal": "正の場合に二つの距離を比べる",
+      "oldInteractionId": "n08-q11-positive-answer",
+      "status": "REVISE_MEANING_NEW_CONSTRUCTION",
+      "parts": [
+        {
+          "key": "opposite-relation",
+          "role": "relation",
+          "correct": "<",
+          "choices": [
+            {
+              "value": "<",
+              "choiceId": "n08-q11-positive::opposite-relation::choice-01"
+            },
+            {
+              "value": ">",
+              "choiceId": "n08-q11-positive::opposite-relation::choice-02"
+            },
+            {
+              "value": "=",
+              "choiceId": "n08-q11-positive::opposite-relation::choice-03"
+            }
+          ],
+          "prompt": "aが正のとき、反対の数を0と比べます。",
+          "correctChoiceId": "n08-q11-positive::opposite-relation::choice-01",
+          "choiceOrder": [
+            "n08-q11-positive::opposite-relation::choice-01",
+            "n08-q11-positive::opposite-relation::choice-02",
+            "n08-q11-positive::opposite-relation::choice-03"
+          ],
+          "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "前の比較や場合分けの結果を、今の二つの数の関係へつなげます。",
+          "id": "n08-q11-positive-build-r7::opposite-relation",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        },
+        {
+          "key": "rule-sign",
+          "role": "unary-sign",
+          "correct": "-",
+          "choices": [
+            {
+              "value": "-",
+              "choiceId": "n08-q11-positive::rule-sign::choice-01"
+            },
+            {
+              "value": "+",
+              "choiceId": "n08-q11-positive::rule-sign::choice-02"
+            }
+          ],
+          "prompt": "今の中身−aの符号に合う規則を使います。",
+          "correctChoiceId": "n08-q11-positive::rule-sign::choice-01",
+          "choiceOrder": [
+            "n08-q11-positive::rule-sign::choice-01",
+            "n08-q11-positive::rule-sign::choice-02"
+          ],
+          "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "中身や因数の符号を一つずつ確認し、今適用している規則を確かめます。",
+          "id": "n08-q11-positive-build-r7::rule-sign",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        },
+        {
+          "key": "result-sign",
+          "role": "unary-sign",
+          "correct": "+",
+          "choices": [
+            {
+              "value": "-",
+              "choiceId": "n08-q11-positive::result-sign::choice-01"
+            },
+            {
+              "value": "+",
+              "choiceId": "n08-q11-positive::result-sign::choice-02"
+            }
+          ],
+          "prompt": "外側の負号を計算します。",
+          "correctChoiceId": "n08-q11-positive::result-sign::choice-02",
+          "choiceOrder": [
+            "n08-q11-positive::result-sign::choice-01",
+            "n08-q11-positive::result-sign::choice-02"
+          ],
+          "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "中身や因数の符号を一つずつ確認し、今適用している規則を確かめます。",
+          "id": "n08-q11-positive-build-r7::result-sign",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        }
+      ],
+      "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+      "newInteractionId": "n08-q11-positive-build-r7",
+      "reason": "Move sign of opposite and rule application into learner decisions; do not print all reasoning first.",
+      "partOrder": [
+        "opposite-relation",
+        "rule-sign",
+        "result-sign"
+      ],
+      "steps": [
+        {
+          "id": "condition",
+          "formula": "-a {opposite-relation} 0",
+          "requiresCorrectParts": [],
+          "conditionText": "a>0の場合"
+        },
+        {
+          "id": "apply",
+          "formula": "|-a|={rule-sign}(-a)",
+          "requiresCorrectParts": [
+            "opposite-relation"
+          ]
+        },
+        {
+          "id": "calculate",
+          "formula": "={result-sign}a",
+          "requiresCorrectParts": [
+            "opposite-relation",
+            "rule-sign"
+          ]
+        }
+      ],
+      "prerequisiteNodeIds": [
+        "n08-cases"
+      ],
+      "finalConclusion": "|a|=a,\\quad|-a|=a\\quad(a>0)",
+      "hideUntilSolved": [
+        "completed−a<0 before relation choice",
+        "completed−(−a) before rule choice",
+        "resulta before final sign choice"
+      ],
+      "learnerLead": "a>0の場合に、反対の数−aを0と比べます。次に、その符号に合う絶対値の規則を使い、最後に計算します。",
+      "sourceSemanticRefs": {
+        "node": "n08-q11-positive",
+        "beforeBlockIds": [
+          "n08-q11-positive-before",
+          "n08-q11-positive-interaction-0"
+        ],
+        "afterBlockIds": [
+          "n08-q11-positive-result-0",
+          "n08-q11-positive-result-1",
+          "n08-q11-positive-after"
+        ]
+      },
+      "originalNumberRefs": {
+        "n08-q11-positive-interaction-0": 27,
+        "n08-q11-positive-result-1": 27
+      },
+      "effectivePrerequisiteInteractionIds": [
+        "n08-02-build-r7",
+        "n08-03-build-r6"
+      ],
+      "autoResultPrerequisiteNodeIds": [],
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "proposedRowAssertions": [
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "-1",
+                "d": "1"
+              },
+              {
+                "kind": "symbol",
+                "name": "a"
+              }
+            ]
+          },
+          "operatorPartKey": "opposite-relation",
+          "right": {
+            "kind": "rational",
+            "n": "0",
+            "d": "1"
+          }
+        },
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "absolute",
+            "argument": {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "symbol",
+                  "name": "a"
+                }
+              ]
+            }
+          },
+          "operator": "=",
+          "right": {
+            "kind": "unary",
+            "signPartKey": "rule-sign",
+            "argument": {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "symbol",
+                  "name": "a"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "absolute",
+            "argument": {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "symbol",
+                  "name": "a"
+                }
+              ]
+            }
+          },
+          "operator": "=",
+          "right": {
+            "kind": "unary",
+            "signPartKey": "result-sign",
+            "argument": {
+              "kind": "symbol",
+              "name": "a"
+            }
+          }
+        }
+      ],
+      "assumptions": [
+        "a>0"
+      ],
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs.",
+      "sourceItemContractRef": {
+        "path": "src/data/textbook/math/numbers/n08Revision6.json",
+        "jsonPointer": "/unit/sections/0/items/17",
+        "id": "n08-q11-positive-answer",
+        "sha256": "7af1a51837effbba71e256f187bb43b1c862eea83187503d20debe3fd0c15c97",
+        "referenceOnly": true
+      }
+    },
+    {
+      "nodeId": "n08-q11-negative",
+      "ordinal": 33,
+      "goal": "負の場合にも二つの距離を比べる",
+      "oldInteractionId": "n08-q11-negative-answer",
+      "status": "REVISE_MEANING_NEW_CONSTRUCTION",
+      "parts": [
+        {
+          "key": "opposite-relation",
+          "role": "relation",
+          "correct": ">",
+          "choices": [
+            {
+              "value": ">",
+              "choiceId": "n08-q11-negative::opposite-relation::choice-01"
+            },
+            {
+              "value": "<",
+              "choiceId": "n08-q11-negative::opposite-relation::choice-02"
+            },
+            {
+              "value": "=",
+              "choiceId": "n08-q11-negative::opposite-relation::choice-03"
+            }
+          ],
+          "prompt": "aが負のとき、反対の数を0と比べます。",
+          "correctChoiceId": "n08-q11-negative::opposite-relation::choice-01",
+          "choiceOrder": [
+            "n08-q11-negative::opposite-relation::choice-01",
+            "n08-q11-negative::opposite-relation::choice-02",
+            "n08-q11-negative::opposite-relation::choice-03"
+          ],
+          "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "前の比較や場合分けの結果を、今の二つの数の関係へつなげます。",
+          "id": "n08-q11-negative-build-r7::opposite-relation",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        },
+        {
+          "key": "distance-term",
+          "role": "operand",
+          "correct": "-a",
+          "choices": [
+            {
+              "value": "a",
+              "choiceId": "n08-q11-negative::distance-term::choice-01"
+            },
+            {
+              "value": "0",
+              "choiceId": "n08-q11-negative::distance-term::choice-02"
+            },
+            {
+              "value": "-a",
+              "choiceId": "n08-q11-negative::distance-term::choice-03"
+            }
+          ],
+          "prompt": "今の中身−aに合う規則を使い、距離を表します。",
+          "correctChoiceId": "n08-q11-negative::distance-term::choice-03",
+          "choiceOrder": [
+            "n08-q11-negative::distance-term::choice-01",
+            "n08-q11-negative::distance-term::choice-02",
+            "n08-q11-negative::distance-term::choice-03"
+          ],
+          "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "直前の式で扱っている数や項を、符号を含めて確かめます。",
+          "id": "n08-q11-negative-build-r7::distance-term",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        }
+      ],
+      "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+      "newInteractionId": "n08-q11-negative-build-r7",
+      "reason": "Learner determines sign of opposite, then applies corresponding case.",
+      "partOrder": [
+        "opposite-relation",
+        "distance-term"
+      ],
+      "steps": [
+        {
+          "id": "condition",
+          "formula": "-a {opposite-relation} 0",
+          "requiresCorrectParts": [],
+          "conditionText": "a<0の場合"
+        },
+        {
+          "id": "apply",
+          "formula": "|-a|={distance-term}",
+          "requiresCorrectParts": [
+            "opposite-relation"
+          ]
+        }
+      ],
+      "prerequisiteNodeIds": [
+        "n08-cases"
+      ],
+      "finalConclusion": "|a|=-a,\\quad|-a|=-a\\quad(a<0)",
+      "hideUntilSolved": [
+        "completed−a>0 before answer",
+        "prefilled|-a|=-a before answer"
+      ],
+      "learnerLead": "a<0の場合も、まず反対の数−aの符号を確かめてから、その点の原点からの距離を表します。",
+      "sourceSemanticRefs": {
+        "node": "n08-q11-negative",
+        "beforeBlockIds": [
+          "n08-q11-negative-before",
+          "n08-q11-negative-interaction-0"
+        ],
+        "afterBlockIds": [
+          "n08-q11-negative-result-0",
+          "n08-q11-negative-result-1",
+          "n08-q11-negative-after"
+        ]
+      },
+      "originalNumberRefs": {
+        "n08-q11-negative-interaction-0": 28,
+        "n08-q11-negative-result-1": 28
+      },
+      "effectivePrerequisiteInteractionIds": [
+        "n08-02-build-r7",
+        "n08-03-build-r6"
+      ],
+      "autoResultPrerequisiteNodeIds": [],
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "proposedRowAssertions": [
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "-1",
+                "d": "1"
+              },
+              {
+                "kind": "symbol",
+                "name": "a"
+              }
+            ]
+          },
+          "operatorPartKey": "opposite-relation",
+          "right": {
+            "kind": "rational",
+            "n": "0",
+            "d": "1"
+          }
+        },
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "absolute",
+            "argument": {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "symbol",
+                  "name": "a"
+                }
+              ]
+            }
+          },
+          "operator": "=",
+          "right": {
+            "kind": "part-key",
+            "key": "distance-term"
+          }
+        }
+      ],
+      "assumptions": [
+        "a<0"
+      ],
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs.",
+      "sourceItemContractRef": {
+        "path": "src/data/textbook/math/numbers/n08Revision6.json",
+        "jsonPointer": "/unit/sections/0/items/18",
+        "id": "n08-q11-negative-answer",
+        "sha256": "41c55a83058cc6f93c4ebd651b1b75b7cb9fa99437c3f6aff094d37675f700fa",
+        "referenceOnly": true
+      }
+    },
+    {
+      "nodeId": "n08-q11-zero",
+      "ordinal": 34,
+      "goal": "原点の場合も落とさない",
+      "oldInteractionId": null,
+      "status": "KEEP_EXPOSITION",
+      "parts": [],
+      "migration": "no learner answer",
+      "prerequisiteNodeIds": [
+        "n08-definition"
+      ],
+      "learnerLead": "a=0 の場合は -a=0 です。二点はともに原点なので、|a|=|-a|=0 です。",
+      "sourceSemanticRefs": {
+        "node": "n08-q11-zero",
+        "beforeBlockIds": [
+          "n08-q11-zero-before"
+        ],
+        "afterBlockIds": [
+          "n08-q11-zero-after"
+        ]
+      },
+      "partOrder": [],
+      "originalNumberRefs": {},
+      "effectivePrerequisiteInteractionIds": [
+        "n08-q01-left-answer"
+      ],
+      "autoResultPrerequisiteNodeIds": [],
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs."
+    },
+    {
+      "nodeId": "n08-11",
+      "ordinal": 35,
+      "goal": "すべての場合を一つの関係にまとめる",
+      "oldInteractionId": "n08-11",
+      "status": "REVISE_MEANING_NEW_CONSTRUCTION",
+      "parts": [
+        {
+          "key": "relation",
+          "role": "relation",
+          "correct": "=",
+          "choices": [
+            {
+              "value": "=",
+              "choiceId": "n08-11::relation::choice-01"
+            },
+            {
+              "value": ">",
+              "choiceId": "n08-11::relation::choice-02"
+            },
+            {
+              "value": "<",
+              "choiceId": "n08-11::relation::choice-03"
+            }
+          ],
+          "prompt": "正・負・0の場合の結果に共通する関係をまとめます。",
+          "correctChoiceId": "n08-11::relation::choice-01",
+          "choiceOrder": [
+            "n08-11::relation::choice-01",
+            "n08-11::relation::choice-02",
+            "n08-11::relation::choice-03"
+          ],
+          "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "前の比較や場合分けの結果を、今の二つの数の関係へつなげます。",
+          "id": "n08-11-build-r7::relation",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        }
+      ],
+      "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+      "newInteractionId": "n08-11-build-r7",
+      "reason": "Conclude common relation from all cases, not choose completed theorem.",
+      "partOrder": [
+        "relation"
+      ],
+      "steps": [
+        {
+          "id": "conclude",
+          "formula": "|a| {relation} |-a|",
+          "requiresCorrectParts": []
+        }
+      ],
+      "prerequisiteNodeIds": [
+        "n08-q11-positive",
+        "n08-q11-negative",
+        "n08-q11-zero"
+      ],
+      "finalConclusion": "|a|=|-a|",
+      "hideUntilSolved": [
+        "final property statement before choice"
+      ],
+      "learnerLead": "正・負・0の三つの結果をまとめ、元の数と反対の数の絶対値の関係を表します。",
+      "sourceSemanticRefs": {
+        "node": "n08-11",
+        "beforeBlockIds": [
+          "n08-11-before",
+          "n08-11-interaction-0"
+        ],
+        "afterBlockIds": [
+          "n08-11-result",
+          "n08-11-after"
+        ]
+      },
+      "originalNumberRefs": {
+        "n08-11-interaction-0": 29,
+        "n08-11-result": 29
+      },
+      "effectivePrerequisiteInteractionIds": [
+        "n08-q11-positive-build-r7",
+        "n08-q11-negative-build-r7",
+        "n08-q01-left-answer"
+      ],
+      "autoResultPrerequisiteNodeIds": [],
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "proposedRowAssertions": [
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "absolute",
+            "argument": {
+              "kind": "symbol",
+              "name": "a"
+            }
+          },
+          "operatorPartKey": "relation",
+          "right": {
+            "kind": "absolute",
+            "argument": {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "symbol",
+                  "name": "a"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "assumptions": [
+        "a is real"
+      ],
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs.",
+      "sourceItemContractRef": {
+        "path": "src/data/textbook/math/numbers/n08Revision6.json",
+        "jsonPointer": "/unit/sections/0/items/19",
+        "id": "n08-11",
+        "sha256": "608c97991b7464421b74b40cf187be959db4d44caf84c887e0843ed05ed4b75e",
+        "referenceOnly": true
+      }
+    },
+    {
+      "nodeId": "n08-q12-nonnegative",
+      "ordinal": 36,
+      "goal": "0以上の場合の絶対値を二乗する",
+      "oldInteractionId": "n08-q12-nonnegative-answer",
+      "status": "REVISE_MEANING_NEW_CONSTRUCTION",
+      "parts": [
+        {
+          "key": "square-operation",
+          "role": "binary-operation",
+          "correct": "\\times",
+          "choices": [
+            {
+              "value": "\\times",
+              "choiceId": "n08-q12-nonnegative::square-operation::choice-01"
+            },
+            {
+              "value": "+",
+              "choiceId": "n08-q12-nonnegative::square-operation::choice-02"
+            },
+            {
+              "value": "-",
+              "choiceId": "n08-q12-nonnegative::square-operation::choice-03"
+            }
+          ],
+          "prompt": "二乗を、同じ数二つの計算として表します。",
+          "correctChoiceId": "n08-q12-nonnegative::square-operation::choice-01",
+          "choiceOrder": [
+            "n08-q12-nonnegative::square-operation::choice-01",
+            "n08-q12-nonnegative::square-operation::choice-02",
+            "n08-q12-nonnegative::square-operation::choice-03"
+          ],
+          "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "演算の意味を確かめます。二乗と二倍、項の符号と項を結ぶ演算を区別します。",
+          "id": "n08-q12-nonnegative-build-r7::square-operation",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        }
+      ],
+      "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+      "newInteractionId": "n08-q12-nonnegative-build-r7",
+      "reason": "Make the meaning of squaring an operation choice; no trivial copy of an already printed exponent.",
+      "partOrder": [
+        "square-operation"
+      ],
+      "steps": [
+        {
+          "id": "square",
+          "formula": "|a|^2=a {square-operation} a",
+          "requiresCorrectParts": []
+        },
+        {
+          "id": "canonical",
+          "formula": "=a^2",
+          "requiresCorrectParts": [
+            "square-operation"
+          ]
+        }
+      ],
+      "prerequisiteNodeIds": [
+        "n08-cases",
+        "n08-q05-square"
+      ],
+      "finalConclusion": "|a|^2=a^2\\quad(a\\ge0)",
+      "hideUntilSolved": [
+        "a² result and multiplication wording that supplies exact answer before operation choice"
+      ],
+      "learnerLead": "a≥0なので|a|=aです。二乗の意味を、同じ数二つの計算で表し、式を完成させます。",
+      "sourceSemanticRefs": {
+        "node": "n08-q12-nonnegative",
+        "beforeBlockIds": [
+          "n08-q12-nonnegative-before",
+          "n08-q12-nonnegative-interaction-0"
+        ],
+        "afterBlockIds": [
+          "n08-q12-nonnegative-result",
+          "n08-q12-nonnegative-after"
+        ]
+      },
+      "originalNumberRefs": {
+        "n08-q12-nonnegative-interaction-0": 30,
+        "n08-q12-nonnegative-result": 30
+      },
+      "effectivePrerequisiteInteractionIds": [
+        "n08-02-build-r7",
+        "n08-03-build-r6",
+        "n08-q05-square-answer"
+      ],
+      "autoResultPrerequisiteNodeIds": [],
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "proposedRowAssertions": [
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "power",
+            "base": {
+              "kind": "absolute",
+              "argument": {
+                "kind": "symbol",
+                "name": "a"
+              }
+            },
+            "exponent": 2
+          },
+          "operator": "=",
+          "right": {
+            "kind": "binary",
+            "operationPartKey": "square-operation",
+            "left": {
+              "kind": "symbol",
+              "name": "a"
+            },
+            "right": {
+              "kind": "symbol",
+              "name": "a"
+            }
+          }
+        }
+      ],
+      "assumptions": [
+        "a>=0"
+      ],
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs.",
+      "sourceItemContractRef": {
+        "path": "src/data/textbook/math/numbers/n08Revision6.json",
+        "jsonPointer": "/unit/sections/0/items/20",
+        "id": "n08-q12-nonnegative-answer",
+        "sha256": "225c3f68fa67357aef1cb3d922ee797628409c55efd134cdf3c19b80ea47ba80",
+        "referenceOnly": true
+      }
+    },
+    {
+      "nodeId": "n08-q12-negative",
+      "ordinal": 37,
+      "goal": "負の場合は括弧ごと二乗する",
+      "oldInteractionId": "n08-q12-negative-build-r6",
+      "status": "REVISE_MEANING_NEW_CONSTRUCTION",
+      "parts": [
+        {
+          "key": "second-factor",
+          "role": "operand",
+          "correct": "-a",
+          "choices": [
+            {
+              "value": "a",
+              "choiceId": "n08-q12-negative::second-factor::choice-01"
+            },
+            {
+              "value": "a^2",
+              "choiceId": "n08-q12-negative::second-factor::choice-02"
+            },
+            {
+              "value": "-a",
+              "choiceId": "n08-q12-negative::second-factor::choice-03"
+            }
+          ],
+          "prompt": "括弧全体の二乗を、同じ因子二つの積へ直します。",
+          "correctChoiceId": "n08-q12-negative::second-factor::choice-03",
+          "choiceOrder": [
+            "n08-q12-negative::second-factor::choice-01",
+            "n08-q12-negative::second-factor::choice-02",
+            "n08-q12-negative::second-factor::choice-03"
+          ],
+          "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "直前の式で扱っている数や項を、符号を含めて確かめます。",
+          "id": "n08-q12-negative-build-r7::second-factor",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        },
+        {
+          "key": "result-sign",
+          "role": "unary-sign",
+          "correct": "+",
+          "choices": [
+            {
+              "value": "-",
+              "choiceId": "n08-q12-negative::result-sign::choice-01"
+            },
+            {
+              "value": "+",
+              "choiceId": "n08-q12-negative::result-sign::choice-02"
+            }
+          ],
+          "prompt": "二つの負号を掛けた結果の符号を決めます。",
+          "correctChoiceId": "n08-q12-negative::result-sign::choice-02",
+          "choiceOrder": [
+            "n08-q12-negative::result-sign::choice-01",
+            "n08-q12-negative::result-sign::choice-02"
+          ],
+          "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+          "selectionShape": "stable choiceId + typed value/ref; do not grade by visible label",
+          "feedback": "中身や因数の符号を一つずつ確認し、今適用している規則を確かめます。",
+          "id": "n08-q12-negative-build-r7::result-sign",
+          "visibleAs": "inline-math-slot",
+          "scopeOfMeaningHash": "semantic role, accepted values, expected rule, assumptions, assembly and prerequisites; exclude font, layout and candidate display order"
+        }
+      ],
+      "migration": "NO_SUCCESS_OR_DRAFT_INHERITANCE; retain old records only in revision archive",
+      "newInteractionId": "n08-q12-negative-build-r7",
+      "reason": "Learner expands the squared negative quantity and computes product sign.",
+      "partOrder": [
+        "second-factor",
+        "result-sign"
+      ],
+      "steps": [
+        {
+          "id": "given-case",
+          "formula": "|a|^2=(-a)^2",
+          "requiresCorrectParts": [],
+          "conditionText": "a<0の場合"
+        },
+        {
+          "id": "expand",
+          "formula": "=(-a)({second-factor})",
+          "requiresCorrectParts": []
+        },
+        {
+          "id": "product",
+          "formula": "={result-sign}a^2",
+          "requiresCorrectParts": [
+            "second-factor"
+          ]
+        }
+      ],
+      "prerequisiteNodeIds": [
+        "n08-cases",
+        "n08-q12-nonnegative"
+      ],
+      "finalConclusion": "|a|^2=a^2\\quad(a<0)",
+      "hideUntilSolved": [
+        "prefilled(-a)(-a) before factor choice",
+        "prefilledpositive product before sign choice"
+      ],
+      "learnerLead": "a<0なので|a|=−aです。両辺を二乗した式を、同じ数を二つ掛ける形へ直してから計算します。",
+      "sourceSemanticRefs": {
+        "node": "n08-q12-negative",
+        "beforeBlockIds": [
+          "n08-q12-negative-before",
+          "n08-q12-negative-interaction"
+        ],
+        "afterBlockIds": [
+          "n08-q12-negative-result",
+          "n08-q12-negative-after"
+        ]
+      },
+      "originalNumberRefs": {
+        "n08-q12-negative-interaction": 31,
+        "n08-q12-negative-result": 31
+      },
+      "effectivePrerequisiteInteractionIds": [
+        "n08-02-build-r7",
+        "n08-03-build-r6",
+        "n08-q12-nonnegative-build-r7"
+      ],
+      "autoResultPrerequisiteNodeIds": [],
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "proposedRowAssertions": [
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "power",
+            "base": {
+              "kind": "absolute",
+              "argument": {
+                "kind": "symbol",
+                "name": "a"
+              }
+            },
+            "exponent": 2
+          },
+          "operator": "=",
+          "right": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "symbol",
+                    "name": "a"
+                  }
+                ]
+              },
+              {
+                "kind": "part-key",
+                "key": "second-factor"
+              }
+            ]
+          }
+        },
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "power",
+            "base": {
+              "kind": "absolute",
+              "argument": {
+                "kind": "symbol",
+                "name": "a"
+              }
+            },
+            "exponent": 2
+          },
+          "operator": "=",
+          "right": {
+            "kind": "unary",
+            "signPartKey": "result-sign",
+            "argument": {
+              "kind": "power",
+              "base": {
+                "kind": "symbol",
+                "name": "a"
+              },
+              "exponent": 2
+            }
+          }
+        }
+      ],
+      "assumptions": [
+        "a<0"
+      ],
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs.",
+      "sourceInteractionContractRef": {
+        "path": "src/data/textbook/math/numbers/n08Construction.json",
+        "jsonPointer": "/interactions/10",
+        "id": "n08-q12-negative-build-r6",
+        "sha256": "b7e9d574a1ce338e65f6872a4f5fa41dde0f3dce716740da51ba80014900184e",
+        "referenceOnly": true
+      }
+    },
+    {
+      "nodeId": "n08-12",
+      "ordinal": 38,
+      "goal": "場合に関係なく成り立つ式を結論にする",
+      "oldInteractionId": "n08-12",
+      "status": "AUTO_RECORDED_CONCLUSION",
+      "parts": [],
+      "migration": "old answer archived; excluded from required interactions; generate recorded result only after prerequisites solved",
+      "prerequisiteNodeIds": [
+        "n08-q12-nonnegative",
+        "n08-q12-negative"
+      ],
+      "finalConclusion": "|a|^2=a^2",
+      "learnerLead": "二つの場合で同じ結果が得られました。条件によらず成り立つ式として記録します。",
+      "graded": false,
+      "sourceSemanticRefs": {
+        "node": "n08-12",
+        "beforeBlockIds": [
+          "n08-12-before",
+          "n08-12-interaction-0"
+        ],
+        "afterBlockIds": [
+          "n08-12-result",
+          "n08-12-after"
+        ]
+      },
+      "partOrder": [],
+      "originalNumberRefs": {
+        "n08-12-interaction-0": 32,
+        "n08-12-result": 32
+      },
+      "effectivePrerequisiteInteractionIds": [
+        "n08-q12-nonnegative-build-r7",
+        "n08-q12-negative-build-r7"
+      ],
+      "autoResultPrerequisiteNodeIds": [
+        "n08-q12-nonnegative",
+        "n08-q12-negative"
+      ],
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs.",
+      "sourceItemContractRef": {
+        "path": "src/data/textbook/math/numbers/n08Revision6.json",
+        "jsonPointer": "/unit/sections/0/items/21",
+        "id": "n08-12",
+        "sha256": "b8b0e5b824fd6965e8a4555c4f435bad2ef0d9aaa38e0c148d58c371154d7c03",
+        "referenceOnly": true
+      }
+    },
+    {
+      "nodeId": "n08-closing",
+      "ordinal": 39,
+      "goal": "距離と符号の学習を次へつなぐ",
+      "oldInteractionId": null,
+      "status": "KEEP_EXPOSITION",
+      "parts": [],
+      "migration": "no learner answer",
+      "prerequisiteNodeIds": [
+        "n08-12"
+      ],
+      "learnerLead": "絶対値は原点からの距離を表します。中身が式のときも、まずその式全体の符号を調べ、定義に当てはめてから計算します。",
+      "sourceSemanticRefs": {
+        "node": "n08-closing",
+        "beforeBlockIds": [
+          "n08-closing-r5-before-0"
+        ],
+        "afterBlockIds": [
+          "n08-closing-r5-after-0"
+        ]
+      },
+      "partOrder": [],
+      "originalNumberRefs": {},
+      "effectivePrerequisiteInteractionIds": [
+        "n08-q12-nonnegative-build-r7",
+        "n08-q12-negative-build-r7"
+      ],
+      "autoResultPrerequisiteNodeIds": [],
+      "stepLockPolicy": "correct previous step becomes read-only; wrong current part editable; history does not change answers",
+      "prerequisiteResolutionPolicy": "prerequisiteNodeIds authoritative; graded node maps current parentID; ungraded node maps source fact/auto result and nearest graded ancestor IDs. Require source fact availability as well as these parent IDs."
+    }
+  ],
+  "changedMapping": {
+    "legacyToNewConstruction": [
+      "n08-02",
+      "n08-05",
+      "n08-q07-rule",
+      "n08-q08-difference",
+      "n08-08",
+      "n08-q11-positive",
+      "n08-q11-negative",
+      "n08-11",
+      "n08-q12-nonnegative"
+    ],
+    "constructionToRevisedConstruction": [
+      "n08-q07-bracket",
+      "n08-q07-distribute",
+      "n08-q09-bracket",
+      "n08-q09-distribute",
+      "n08-q12-negative"
+    ],
+    "removedSummaryParents": [
+      "n08-01",
+      "n08-10",
+      "n08-12"
+    ]
+  },
+  "givensVsDecisions": {
+    "fixedGivens": [
+      "original2.3,-5,0 coordinates",
+      "originalsqrt5 and3",
+      "original3 andpi pluspi approximation",
+      "case assumption a>0/a<0/a>=0/a=0",
+      "definitions and signed-number domain"
+    ],
+    "notRepeatedAnswers": [
+      "shared subtraction operand chosen once and mirrored",
+      "shared distribution coefficient chosen once and mirrored",
+      "prior correct comparisons displayed as recorded facts",
+      "three duplicate summary parents replaced by dependency-bound recorded conclusions"
+    ],
+    "realNewOperations": [
+      "whole-interior subtree scope, not selecting completed RHS",
+      "negative operator to multiplication coefficient",
+      "signed-second-term extraction",
+      "sign of product of negative factors",
+      "sign of opposite quantity under case condition",
+      "mapping square to repeated factors"
+    ]
+  },
+  "sourcePolicy": {
+    "oldRevisionPreserved": 6,
+    "newRevision": 7,
+    "appChanged": false,
+    "rawSourceInteractionContract": "original reference only; never use old before copy when it reveals the new current decision",
+    "proposalStatus": "PROPOSED_NOT_IMPLEMENTED"
+  },
+  "schemaNotes": {
+    "part-key": "authoring key compiled to globally unique partId",
+    "meaning": "non-math verdict bound to certified sign fact, never sent to SymPy as prose",
+    "bound-subtree-part": "resolve immutable source AST ref; invalid hash/ref fails closed",
+    "operatorPartKey": "limited relation choice <,>,=; binary choice +,-,times maps to add/subtract/multiply AST",
+    "oldSourceContracts": "references only; not executable r7 definitions",
+    "wrongRows": "marked candidate/incorrect; never registered as proven rewrite",
+    "sourceCoverage": "39 original nodeIds; additional intra-parent rows retain original source node plus explicit instructional derivation provenance",
+    "prerequisites": "All exported effective parent prerequisites resolve from authoritative node dependencies, not just copied v1 fields. Source-fact dependencies remain explicit."
+  }
+}

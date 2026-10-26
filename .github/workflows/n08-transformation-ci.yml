@@ -50,6 +50,7 @@ jobs:
           node --test tools/textbook/tests/n08-transformation.test.mjs tools/textbook/tests/transformation.test.mjs tools/textbook/tests/solution-v2.test.mjs tools/textbook/tests/solution-regressions.test.mjs tools/textbook/tests/n08-bundle.test.mjs
           node work/items/W-MATH-038-transformation-groups/materialize.mjs --check
           node work/items/W-MATH-039-n08-grouped-transformations/materialize.mjs --check
+          node work/items/W-MATH-039-n08-grouped-transformations/release_manifest.mjs --check
           python -m unittest discover -s workflow -p 'test_*.py' -q
           python -m unittest discover -s tools/textbook/tests -p '*_test.py' -q
       - name: Existing learner and opt-in component regression

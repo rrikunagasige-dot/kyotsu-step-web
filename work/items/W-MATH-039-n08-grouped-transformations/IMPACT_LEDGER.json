@@ -1,0 +1,63 @@
+{
+  "sourceSHA": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+  "scope": "Existing approved creation impact sweep; no cross-unit learner edits inferred",
+  "rows": [
+    {
+      "artifact": "n08/r5",
+      "rootCauseSignature": "ordinary-transformations-need-local-grouping-and-specific-number-anchor",
+      "status": "AFFECTED",
+      "reason": "Four approved numeric groups and two prose overrides; full34/80plays",
+      "approvedCreationWork": "W-MATH-003",
+      "evidenceSource": "c4e7133a4fd3def11771077379aacc6e19d3445b"
+    },
+    {
+      "artifact": "n11/revision11",
+      "rootCauseSignature": "ordinary-transformations-need-local-grouping-and-specific-number-anchor",
+      "status": "AFFECTED",
+      "reason": "Shared opt-in transformation renderer and explicit number anchor; full39/109plays and unchanged data/plan",
+      "approvedCreationWork": "W-MATH-003",
+      "evidenceSource": "c4e7133a4fd3def11771077379aacc6e19d3445b"
+    },
+    {
+      "artifact": "first-title/22bc43ba",
+      "rootCauseSignature": "ordinary-transformations-need-local-grouping-and-specific-number-anchor",
+      "status": "NOT_AFFECTED",
+      "reason": "No source data changes; generic NumberedEquation defaults unchanged; source tests",
+      "approvedCreationWork": "W-MATH-003",
+      "evidenceSource": "c4e7133a4fd3def11771077379aacc6e19d3445b"
+    },
+    {
+      "artifact": "n09-n10",
+      "rootCauseSignature": "ordinary-transformations-need-local-grouping-and-specific-number-anchor",
+      "status": "NOT_AFFECTED",
+      "reason": "No lesson or grading changes; default reader path unchanged; protected display checks required at publication",
+      "approvedCreationWork": "existing canonical accepted mode sources",
+      "evidenceSource": "c4e7133a4fd3def11771077379aacc6e19d3445b"
+    },
+    {
+      "artifact": "n08/r4",
+      "rootCauseSignature": "ordinary-transformations-need-local-grouping-and-specific-number-anchor",
+      "status": "NOT_AFFECTED",
+      "reason": "Archive leaf, reader/CSS protected, original route retained",
+      "approvedCreationWork": "W-MATH-003",
+      "evidenceSource": "c4e7133a4fd3def11771077379aacc6e19d3445b"
+    },
+    {
+      "artifact": "n08/original-r5",
+      "rootCauseSignature": "ordinary-transformations-need-local-grouping-and-specific-number-anchor",
+      "status": "NOT_AFFECTED",
+      "reason": "Same leaf, fallback renderer proven equal to frozen baseline6states",
+      "approvedCreationWork": "W-MATH-003",
+      "evidenceSource": "c4e7133a4fd3def11771077379aacc6e19d3445b"
+    },
+    {
+      "artifact": "physics/textbook-practice",
+      "rootCauseSignature": "ordinary-transformations-need-local-grouping-and-specific-number-anchor",
+      "status": "NOT_AFFECTED",
+      "reason": "No mode data/renderer changes; optional anchor absent; shared620regressions",
+      "approvedCreationWork": "existing canonical accepted mode sources",
+      "evidenceSource": "c4e7133a4fd3def11771077379aacc6e19d3445b"
+    }
+  ],
+  "additionalConfirmedUnresolvedDefects": []
+}

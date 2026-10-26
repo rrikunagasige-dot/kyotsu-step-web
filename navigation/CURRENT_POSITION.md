@@ -1,5 +1,22 @@
-<!-- W038_CURRENT_START -->
-## CURRENT — 通常変形の基盤とN11を公開、次はN08具体案（2026-10-26）
+<!-- W039_CURRENT_START -->
+## CURRENT — N08の通常変形を実装・公開（2026-10-26）
+
+本人「いいよまず実装してくれ」で、0aa633dcのW039/P001を承認。原提案SHA256 `c27fd866666af45d35893bac52747ea33b710a4ea4a040ac82be90afacb491ee`を保持。実装source `c4e7133a4fd3def11771077379aacc6e19d3445b`、publisher `65ff3f5f730b8f62bf0e35dfe87101a631dc4ae4`。正本はこのmain metadataと具体Work記録。コードの固定SHAと記録commitを区別する。
+
+N08 stage06〜09の4式列、11既存の数学上の穴、2意味nodeの説明override。34採点ID/revision5/12stageと原r5 leafを保持。r4、変更前r5、以前の保存を維持。原問題・前結果・番号alias・手本の分配行・意味と規則の境界を保持する。NumberedEquationの任意anchorは変形groupのみ使用し、選択肢の数式へ番号が寄る不具合を防ぐ。
+
+CI40272765258 SUCCESS：88数学/反証、139workflow、21source/context、620learner、7newUI、5applicable N11UI、7save、19prior-three-unit、39authoring。N08は34correct/80wrong×4幅、N11は39/109×4幅。旧W038の「N08 readerを永遠に固定」assertionだけは今回の承認済みreader改修で明示的に代替し、6状態の旧fallback一致とprojection parityを必須とした。旧test自体は保持する。公開run40273405766 SUCCESS；同じ4幅のN08/N11実操作、N09/N10表示、実manifest/source/plan/旧leaf hashを照合。
+
+- [N08公開](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=c4e7133a#/learning/textbook/math-numbers-expressions-n08) / [変更前r5](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=c4e7133a#/learning/textbook/math-numbers-expressions-n08?layout=original) / [以前r4](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=c4e7133a#/learning/textbook/math-numbers-expressions-n08?version=4)
+- [具体Work記録](https://github.com/rrikunagasige-dot/kyotsu-step-web/tree/work/n08-grouped-transformations-20261026/work/items/W-MATH-039-n08-grouped-transformations)
+- 既存共有RuntimeはR01〜R06/R07/G2/G3_HOST@n08まで実receipt PASS。次はG3_FINAL@n08の本人実物評価。本人の今回の承認は設計・実装承認であり、肯定品質labelではない。
+- MLは既存15件/9negative/6positive、以前のfitとOFFLINE_ONLYを維持。W039の新fit/新labelなし。同じAIの別passを独立AI監査と呼ばない。
+- 受入済み第一タイトル/N07、旧N08の範囲付き受入、W038/N11など他Workの未済評価を勝手に書き換えない。入口は修正/作成の既存二つ、確認面は既存公開app。画像票承認や同じ公開許可は再要求しない。
+
+<!-- W039_CURRENT_END -->
+
+<!-- W038_PREVIOUS_START -->
+## PREVIOUS — 通常変形の基盤とN11を公開、次はN08具体案（2026-10-26）
 
 本人「いいよ。じゃこれで続けて。そして終わったら次はもう一回N08の修正じゃ」でW038/P001/I01〜I11を承認。source `aef34919e630c3772c8ad4329f0aa01dec63e6fe` に通常変形の表示plan・穴契約・source/AST対応・可視projection・同じIR/表示hashの承認照合を実装。入口は既存CMD-WORK-001修正／002作成、production/2。明示planのあるN11 stage05〜06だけopt-inし、39採点ID/revision11を保持。概念・証明・場合分けを一律に圧縮しない。
 
@@ -9,22 +26,8 @@ exact CI40268196468/40268196421 SUCCESS：69数理/反証、139workflow、21sour
 
 旧N08 r4/r5、第一タイトル22bc43ba、N09/N10、他モードと保存を保護。15事例（否定9/肯定6）と既存model0fdba96eはOFFLINE_ONLY/advisoryEligible=false。今回の承認・再開を品質labelにせず、新fitなし。新しい独自フローや画像票承認へ戻らない。
 
-[W038記録・生成火柴図](https://github.com/rrikunagasige-dot/kyotsu-step-web/tree/work/transformation-groups-implementation-20261026/work/items/W-MATH-038-transformation-groups)。次のN08は全39nodeを監査し、4式列（数学11node＋意味の文2node）/残る26node保持の[W039/P001具体案](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/work/transformation-groups-implementation-20261026/work/items/W-MATH-039-n08-grouped-transformations/PROPOSAL.md)と全node表を作成済み。N08の教材・公開版は未変更。N11承認をこの未提示のN08具体案へ転用しない。先にこの案の確認から、既存R04/R05へ進む。以下は以前の履歴。
-<!-- W038_CURRENT_END -->
-
-<!-- W037_CURRENT_START -->
-## CURRENT — N08修正版公開・旧版を保持、実物評価待ち（2026-10-26）
-
-本人「えっとね。やっていいよ。しかし前のN08も残して、もし不満だったらまた戻れるし」でP001と旧版保護を明示承認。P001/NODE_DESIGNはf927ebdbから不変。旧r4 JSON/reader/CSS/PNGをbyte保護し、別r5 leaf/reader、?version=4の旧閲覧、4/5 reversible progressを実装。39node/34回答、12stage/旧31採点契約を保持。両辺二枠一回答。原問・小目標・同じ問題の途中式、全候補の行、分配の中間式、参照の条件を改善。
-
-公開source `1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c`、publisher `5142b5989df34926997125307062bd159733cfb9`。公開run40214438103 SUCCESS。release.jsonでsource/namespace/旧r4 hash/16unitを実HTTP照合。公開環境でも4幅各34正答/80誤答、12stage、履歴/reload/resize、31旧回答の移行・二枠1attempt・旧版保存分離を最後まで実操作。受入済みN09/N10の対象表示/履歴/因子括弧も公開環境で4幅PASS。共有production/2修正入口でR01〜R06を現行service hashで実行、R07_VERIFY/SEMANTIC/G2/G3_HOST PASS。次はG3_FINAL@n08 / USERの実物評価。
-
-[新版N08](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=1e8d2ae4#/learning/textbook/math-numbers-expressions-n08) ／ [旧N08](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=1e8d2ae4#/learning/textbook/math-numbers-expressions-n08?version=4)。旧版へ戻す場合はn08ActiveVersion.jsonを4にして同じnamespaceで再build・公開できる。r5 leaf/記録も残す。旧版の閲覧・試し解答で通常の記録を書き換えない。
-
-36solution/否定試験・135workflow・21Python・620app・7保存移行・対象lint/build PASS。判定の別passは同じassistantであり独立したAIとは呼ばない。CI最初の2回はnumpy/lxml/pandoc不足で公開前にFAILし、既存textbook-authoring CIと同じ依存構成へ修正。テストを削除せず3回目で公開成功。ローカルの公開Chromeは管理proxyの通信/証明書制約があり、公開全問プレイの証拠は実際のGitHub-hosted Chromiumによる成功ログとmanifestの照合で保存した。ローカル全問プレイも別途PASS。
-
-詳細はwork/items/W-MATH-037-n08-workflow-trial/PUBLICATION_CHECKPOINT.json、PUBLICATION_REPORT.md、共有Runtimeのgenerated火柴図。品質肯定・教材受入はまだ本人から受領していない。新Gold/fitなし、既存15事例とOFFLINE_ONLYを保持。同じ設計・公開許可や画像承認を再要求しない。N11不等式等への横展開は今回の試行の実物評価後。
-<!-- W037_CURRENT_END -->
+[W038記録・生成火柴図](https://github.com/rrikunagasige-dot/kyotsu-step-web/tree/0aa633dcf6c1acc6e8df718e907cbaae0e8961f9/work/items/W-MATH-038-transformation-groups)。次のN08は全39nodeを監査し、4式列（数学11node＋意味の文2node）/残る26node保持の[W039/P001具体案](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/0aa633dcf6c1acc6e8df718e907cbaae0e8961f9/work/items/W-MATH-039-n08-grouped-transformations/PROPOSAL.md)と全node表を作成済み。N08の教材・公開版は未変更。N11承認をこの未提示のN08具体案へ転用しない。先にこの案の確認から、既存R04/R05へ進む。以下は以前の履歴。
+<!-- W038_PREVIOUS_END -->
 
 ## CURRENT — NE02・N11・N12を公開、実物評価待ち（2026-10-25）
 
@@ -294,11 +297,3 @@ Imported four-mode `subjects/**/SPEC.md` are CANONICAL-CANDIDATE summaries, subo
 ## 2026-10-20 Gate③ existing-preview discovery after formal close
 **New read-only evidence, no deployment command executed:** GitHub commit status on *tested R5 code SHA* `ad77318b37e90b9c39150b14ee706283b3f59355` reports Vercel `success` / `Deployment has completed`, with [record](https://vercel.com/rrikunagasige-5663/kyotsu-step-web-review-wgov008/3dCuVRGDooUAM1rfc7xxmXkeSz3P). Existing PR #101 Vercel [bot comment](https://github.com/rrikunagasige-dot/kyotsu-step-web/pull/101#issuecomment-6267043642) (updated 2026-10-20T13:42:39Z) gives candidate preview URL `https://kyotsu-step-web-review-wgov008-git-wo-7f4744-rrikunagasige-5663.vercel.app`. Later bot comment records free-tier 100+ deployments/day resource limit. This may already host correct candidate without new merge.
 **Important:** Vercel connected tool returns 403 forbidden under team `rrikunagasige-5663`, public URL fetch cannot independently load/confirm authentication or SHA. The preview link is **grounded but UNVERIFIED**, not `FINAL-REVIEW-READY`. The old main Pages mismatches candidate and must not be substituted. First try proving existing preview's public access, visible build SHA and routes (possibly with user's browser confirmation) before proposing new hosting/merge/cost. Formal Gate① BLOCK-VISUAL-OK, Gate② CROSS-VERIFIED unchanged; Gate③ FINAL-REVIEW-NOT-READY. [Detailed Gate③ worksheet](../work/items/W-MATH-003-numbers-expressions-creation/FINAL_APP_WALKTHROUGH_PREP_R5_20261020.md).
-
-## 2026-10-25 W-GOV-011 技術実装
-
-承認されたsolution/1の初期対応範囲を実装。実ファイル・検査結果・対応外は `work/items/W-GOV-011-solution-production/IMPLEMENTATION_REPORT.md`。新しい教材の公開/受入は行っていない。現在の正確な教材待機はmemory/ACTIVE_CONTEXT.mdのNE02/N11/N12記録を保つ。
-
-## 2026-10-26 N08ワークフロー試行
-
-W-MATH-037はN08絶対値の具体案確認段階。全36nodeの設計と必要なcode拡張をPROPOSAL.mdへ固定。現行教材は保持。新検算の未対応によりR02はUNVERIFIEDのまま、案への内容承認は未受領。実装・公開は次の段階。

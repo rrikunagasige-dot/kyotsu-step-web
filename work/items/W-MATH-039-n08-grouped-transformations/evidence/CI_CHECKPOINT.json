@@ -1,0 +1,16 @@
+{
+  "work": "W-MATH-039",
+  "proposal": "P-001",
+  "sourceSHA": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+  "mainSHA": "1ad18bfffd8a0ce333be32a033b68af7cadf4495",
+  "branch": "work/n08-grouped-transformations-20261026",
+  "runId": 40272765258,
+  "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40272765258",
+  "status": "in_progress",
+  "step": "R07_VERIFY@n08",
+  "next": "On success bind actual source and R07/G2; on failure inspect first failed step and repair only approved scope. Never publish while required checks fail.",
+  "userAccepted": false,
+  "modelFit": false,
+  "previousRunId": 40272324844,
+  "previousSourceSHA": "726becea6e3635245881721e0db5411f5cd85c92"
+}

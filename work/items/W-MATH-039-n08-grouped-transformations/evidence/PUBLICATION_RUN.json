@@ -1,0 +1,10 @@
+{
+  "id": 40273405766,
+  "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40273405766",
+  "status": "completed",
+  "conclusion": "success",
+  "head_sha": "65ff3f5f730b8f62bf0e35dfe87101a631dc4ae4",
+  "appSourceSHA": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+  "jobId": 121410942404,
+  "deploymentStepConclusion": "success"
+}

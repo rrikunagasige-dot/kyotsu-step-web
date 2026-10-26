@@ -1,0 +1,397 @@
+{
+  "verdict": "PASS",
+  "evidence_refs": [
+    "d6604ea8-3deb-476e-9327-828f4c1cedea",
+    "057e4f30-2bfc-4975-b734-159b21883480",
+    "1e88c07c-51a4-4d64-8d6a-37e779de3e81",
+    "58f27a27-e190-4500-ba36-08bb4027d026",
+    "75d049ef-8d7c-4dad-813b-65c8f7fbe1e0",
+    "87b8ba36-8959-41b2-aae6-01b98034d221",
+    "342502cb-60b5-4811-9828-38471a2a8ea1"
+  ],
+  "capability_receipts": [
+    "3af16ce4637a2b98dcee812fc976b5fb73a49f5f92baaf889b03be0dd37cedcc",
+    "880d5883a28a215cbb463a44aac3e78282bbd9746a174ad4049b643867649045"
+  ],
+  "case_dispositions": [
+    {
+      "id": "N07-USER-F01",
+      "disposition": "APPLY",
+      "reason": "元の絶対値・前段の大小・円周率の与えられた値を保持。絶対値を外すgroupは前段の符号・規則nodeを可視境界にする。"
+    },
+    {
+      "id": "N07-USER-F02",
+      "disposition": "APPLY",
+      "reason": "同じ数値の問題へ各局所の結果を連続式として戻す。"
+    },
+    {
+      "id": "N07-USER-F03",
+      "disposition": "APPLY",
+      "reason": "左辺に元の中身を作るために同じ値を引く目的を説明する。"
+    },
+    {
+      "id": "N07-USER-F04",
+      "disposition": "APPLY",
+      "reason": "括弧全体への負号、二項への分配、積の計算、項の交換まで全行を保持。"
+    },
+    {
+      "id": "N07-USER-F05",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+    },
+    {
+      "id": "N07-USER-F06",
+      "disposition": "APPLY",
+      "reason": "負の二つの因数を括弧ごと描画し、文中の数値もtyped math。"
+    },
+    {
+      "id": "n07-layout-relation",
+      "disposition": "APPLY",
+      "reason": "四つの局所で比較記号・等号の列を揃える。"
+    },
+    {
+      "id": "n07-layout-positive",
+      "disposition": "APPLY",
+      "reason": "前の受入済みの概念・場合分けの構造は保持。"
+    },
+    {
+      "id": "first-title-layout-positive",
+      "disposition": "APPLY",
+      "reason": "四つの局所で比較記号・等号の列を揃える。"
+    },
+    {
+      "id": "N07-ACCEPTED-20261025",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+    },
+    {
+      "id": "N08-ACCEPTED-20261025",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+    },
+    {
+      "id": "N09-REJECTED-20261025",
+      "disposition": "APPLY",
+      "reason": "大小→差→符号→規則→全体の負号→分配→積→交換。"
+    },
+    {
+      "id": "N10-REJECTED-20261025",
+      "disposition": "APPLY",
+      "reason": "負号を中身全体へ適用する括弧と分配の因数を保持。"
+    },
+    {
+      "id": "N09-ACCEPTED-20261025",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+    },
+    {
+      "id": "N10-ACCEPTED-20261025",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+    }
+  ],
+  "aiReview": {
+    "requestHash": "62932ce293381836f7d6ed663deecdd80fa720c18ca58c311b2998ac29c3a1a6",
+    "inputHash": "088322d97aa9eb4a9c0e907cab3b58ccb5638518d8c8d77ef5ea61b4cff3b7e4",
+    "reviewer": "same-assistant source, visible-state and genuine local-image review; not independent AI",
+    "evidence": "All changed implementation paths and immutable original inputs are covered. Unsupported source/pattern boundaries fail explicitly. Existing textbook/physics exclusions are named; no blanket whole-repository audit pass is claimed."
+  },
+  "audit_rows": [
+    {
+      "block_id": "n08",
+      "artifact": "src/data/textbook/math/numbers/n08Revision5.json",
+      "version": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+      "status": "PASS",
+      "surface": "Exact changed code or protected source; bound CI, source bridge and complete real-browser play",
+      "evidence_refs": [
+        "d6604ea8-3deb-476e-9327-828f4c1cedea",
+        "057e4f30-2bfc-4975-b734-159b21883480",
+        "1e88c07c-51a4-4d64-8d6a-37e779de3e81",
+        "58f27a27-e190-4500-ba36-08bb4027d026",
+        "75d049ef-8d7c-4dad-813b-65c8f7fbe1e0",
+        "87b8ba36-8959-41b2-aae6-01b98034d221",
+        "342502cb-60b5-4811-9828-38471a2a8ea1"
+      ]
+    },
+    {
+      "block_id": "n08",
+      "artifact": "work/items/W-MATH-037-n08-workflow-trial/CANDIDATE_IR_R5.json",
+      "version": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+      "status": "PASS",
+      "surface": "Exact changed code or protected source; bound CI, source bridge and complete real-browser play",
+      "evidence_refs": [
+        "d6604ea8-3deb-476e-9327-828f4c1cedea",
+        "057e4f30-2bfc-4975-b734-159b21883480",
+        "1e88c07c-51a4-4d64-8d6a-37e779de3e81",
+        "58f27a27-e190-4500-ba36-08bb4027d026",
+        "75d049ef-8d7c-4dad-813b-65c8f7fbe1e0",
+        "87b8ba36-8959-41b2-aae6-01b98034d221",
+        "342502cb-60b5-4811-9828-38471a2a8ea1"
+      ]
+    },
+    {
+      "block_id": "n08",
+      "artifact": "work/items/W-MATH-037-n08-workflow-trial/SOLUTION_BUNDLE_R5.json",
+      "version": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+      "status": "PASS",
+      "surface": "Exact changed code or protected source; bound CI, source bridge and complete real-browser play",
+      "evidence_refs": [
+        "d6604ea8-3deb-476e-9327-828f4c1cedea",
+        "057e4f30-2bfc-4975-b734-159b21883480",
+        "1e88c07c-51a4-4d64-8d6a-37e779de3e81",
+        "58f27a27-e190-4500-ba36-08bb4027d026",
+        "75d049ef-8d7c-4dad-813b-65c8f7fbe1e0",
+        "87b8ba36-8959-41b2-aae6-01b98034d221",
+        "342502cb-60b5-4811-9828-38471a2a8ea1"
+      ]
+    },
+    {
+      "block_id": "n08",
+      "artifact": ".github/workflows/n08-transformation-ci.yml",
+      "version": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+      "status": "PASS",
+      "surface": "Exact changed code or protected source; bound CI, source bridge and complete real-browser play",
+      "evidence_refs": [
+        "d6604ea8-3deb-476e-9327-828f4c1cedea",
+        "057e4f30-2bfc-4975-b734-159b21883480",
+        "1e88c07c-51a4-4d64-8d6a-37e779de3e81",
+        "58f27a27-e190-4500-ba36-08bb4027d026",
+        "75d049ef-8d7c-4dad-813b-65c8f7fbe1e0",
+        "87b8ba36-8959-41b2-aae6-01b98034d221",
+        "342502cb-60b5-4811-9828-38471a2a8ea1"
+      ]
+    },
+    {
+      "block_id": "n08",
+      "artifact": ".github/workflows/transformation-ci.yml",
+      "version": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+      "status": "PASS",
+      "surface": "Exact changed code or protected source; bound CI, source bridge and complete real-browser play",
+      "evidence_refs": [
+        "d6604ea8-3deb-476e-9327-828f4c1cedea",
+        "057e4f30-2bfc-4975-b734-159b21883480",
+        "1e88c07c-51a4-4d64-8d6a-37e779de3e81",
+        "58f27a27-e190-4500-ba36-08bb4027d026",
+        "75d049ef-8d7c-4dad-813b-65c8f7fbe1e0",
+        "87b8ba36-8959-41b2-aae6-01b98034d221",
+        "342502cb-60b5-4811-9828-38471a2a8ea1"
+      ]
+    },
+    {
+      "block_id": "n08",
+      "artifact": "src/components/textbook/N08SolutionReadingFlow.tsx",
+      "version": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+      "status": "PASS",
+      "surface": "Exact changed code or protected source; bound CI, source bridge and complete real-browser play",
+      "evidence_refs": [
+        "d6604ea8-3deb-476e-9327-828f4c1cedea",
+        "057e4f30-2bfc-4975-b734-159b21883480",
+        "1e88c07c-51a4-4d64-8d6a-37e779de3e81",
+        "58f27a27-e190-4500-ba36-08bb4027d026",
+        "75d049ef-8d7c-4dad-813b-65c8f7fbe1e0",
+        "87b8ba36-8959-41b2-aae6-01b98034d221",
+        "342502cb-60b5-4811-9828-38471a2a8ea1"
+      ]
+    },
+    {
+      "block_id": "n08",
+      "artifact": "src/components/textbook/NumberedEquation.tsx",
+      "version": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+      "status": "PASS",
+      "surface": "Exact changed code or protected source; bound CI, source bridge and complete real-browser play",
+      "evidence_refs": [
+        "d6604ea8-3deb-476e-9327-828f4c1cedea",
+        "057e4f30-2bfc-4975-b734-159b21883480",
+        "1e88c07c-51a4-4d64-8d6a-37e779de3e81",
+        "58f27a27-e190-4500-ba36-08bb4027d026",
+        "75d049ef-8d7c-4dad-813b-65c8f7fbe1e0",
+        "87b8ba36-8959-41b2-aae6-01b98034d221",
+        "342502cb-60b5-4811-9828-38471a2a8ea1"
+      ]
+    },
+    {
+      "block_id": "n08",
+      "artifact": "src/components/textbook/TransformationReadingGroup.tsx",
+      "version": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+      "status": "PASS",
+      "surface": "Exact changed code or protected source; bound CI, source bridge and complete real-browser play",
+      "evidence_refs": [
+        "d6604ea8-3deb-476e-9327-828f4c1cedea",
+        "057e4f30-2bfc-4975-b734-159b21883480",
+        "1e88c07c-51a4-4d64-8d6a-37e779de3e81",
+        "58f27a27-e190-4500-ba36-08bb4027d026",
+        "75d049ef-8d7c-4dad-813b-65c8f7fbe1e0",
+        "87b8ba36-8959-41b2-aae6-01b98034d221",
+        "342502cb-60b5-4811-9828-38471a2a8ea1"
+      ]
+    },
+    {
+      "block_id": "n08",
+      "artifact": "src/data/textbook/math/numbers/n08PresentationPolicy.json",
+      "version": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+      "status": "PASS",
+      "surface": "Exact changed code or protected source; bound CI, source bridge and complete real-browser play",
+      "evidence_refs": [
+        "d6604ea8-3deb-476e-9327-828f4c1cedea",
+        "057e4f30-2bfc-4975-b734-159b21883480",
+        "1e88c07c-51a4-4d64-8d6a-37e779de3e81",
+        "58f27a27-e190-4500-ba36-08bb4027d026",
+        "75d049ef-8d7c-4dad-813b-65c8f7fbe1e0",
+        "87b8ba36-8959-41b2-aae6-01b98034d221",
+        "342502cb-60b5-4811-9828-38471a2a8ea1"
+      ]
+    },
+    {
+      "block_id": "n08",
+      "artifact": "src/data/textbook/math/numbers/n08Transformation.json",
+      "version": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+      "status": "PASS",
+      "surface": "Exact changed code or protected source; bound CI, source bridge and complete real-browser play",
+      "evidence_refs": [
+        "d6604ea8-3deb-476e-9327-828f4c1cedea",
+        "057e4f30-2bfc-4975-b734-159b21883480",
+        "1e88c07c-51a4-4d64-8d6a-37e779de3e81",
+        "58f27a27-e190-4500-ba36-08bb4027d026",
+        "75d049ef-8d7c-4dad-813b-65c8f7fbe1e0",
+        "87b8ba36-8959-41b2-aae6-01b98034d221",
+        "342502cb-60b5-4811-9828-38471a2a8ea1"
+      ]
+    },
+    {
+      "block_id": "n08",
+      "artifact": "src/domain/transformationReading.ts",
+      "version": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+      "status": "PASS",
+      "surface": "Exact changed code or protected source; bound CI, source bridge and complete real-browser play",
+      "evidence_refs": [
+        "d6604ea8-3deb-476e-9327-828f4c1cedea",
+        "057e4f30-2bfc-4975-b734-159b21883480",
+        "1e88c07c-51a4-4d64-8d6a-37e779de3e81",
+        "58f27a27-e190-4500-ba36-08bb4027d026",
+        "75d049ef-8d7c-4dad-813b-65c8f7fbe1e0",
+        "87b8ba36-8959-41b2-aae6-01b98034d221",
+        "342502cb-60b5-4811-9828-38471a2a8ea1"
+      ]
+    },
+    {
+      "block_id": "n08",
+      "artifact": "tools/textbook/tests/n08-transformation.test.mjs",
+      "version": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+      "status": "PASS",
+      "surface": "Exact changed code or protected source; bound CI, source bridge and complete real-browser play",
+      "evidence_refs": [
+        "d6604ea8-3deb-476e-9327-828f4c1cedea",
+        "057e4f30-2bfc-4975-b734-159b21883480",
+        "1e88c07c-51a4-4d64-8d6a-37e779de3e81",
+        "58f27a27-e190-4500-ba36-08bb4027d026",
+        "75d049ef-8d7c-4dad-813b-65c8f7fbe1e0",
+        "87b8ba36-8959-41b2-aae6-01b98034d221",
+        "342502cb-60b5-4811-9828-38471a2a8ea1"
+      ]
+    },
+    {
+      "block_id": "n08",
+      "artifact": "tools/textbook/transformation/compile.mjs",
+      "version": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+      "status": "PASS",
+      "surface": "Exact changed code or protected source; bound CI, source bridge and complete real-browser play",
+      "evidence_refs": [
+        "d6604ea8-3deb-476e-9327-828f4c1cedea",
+        "057e4f30-2bfc-4975-b734-159b21883480",
+        "1e88c07c-51a4-4d64-8d6a-37e779de3e81",
+        "58f27a27-e190-4500-ba36-08bb4027d026",
+        "75d049ef-8d7c-4dad-813b-65c8f7fbe1e0",
+        "87b8ba36-8959-41b2-aae6-01b98034d221",
+        "342502cb-60b5-4811-9828-38471a2a8ea1"
+      ]
+    },
+    {
+      "block_id": "n08",
+      "artifact": "tools/textbook/transformation/n08-source-binding.mjs",
+      "version": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+      "status": "PASS",
+      "surface": "Exact changed code or protected source; bound CI, source bridge and complete real-browser play",
+      "evidence_refs": [
+        "d6604ea8-3deb-476e-9327-828f4c1cedea",
+        "057e4f30-2bfc-4975-b734-159b21883480",
+        "1e88c07c-51a4-4d64-8d6a-37e779de3e81",
+        "58f27a27-e190-4500-ba36-08bb4027d026",
+        "75d049ef-8d7c-4dad-813b-65c8f7fbe1e0",
+        "87b8ba36-8959-41b2-aae6-01b98034d221",
+        "342502cb-60b5-4811-9828-38471a2a8ea1"
+      ]
+    },
+    {
+      "block_id": "n08",
+      "artifact": "tools/textbook/transformation/n08.mjs",
+      "version": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+      "status": "PASS",
+      "surface": "Exact changed code or protected source; bound CI, source bridge and complete real-browser play",
+      "evidence_refs": [
+        "d6604ea8-3deb-476e-9327-828f4c1cedea",
+        "057e4f30-2bfc-4975-b734-159b21883480",
+        "1e88c07c-51a4-4d64-8d6a-37e779de3e81",
+        "58f27a27-e190-4500-ba36-08bb4027d026",
+        "75d049ef-8d7c-4dad-813b-65c8f7fbe1e0",
+        "87b8ba36-8959-41b2-aae6-01b98034d221",
+        "342502cb-60b5-4811-9828-38471a2a8ea1"
+      ]
+    },
+    {
+      "block_id": "n08",
+      "artifact": "tools/textbook/transformation/schema.mjs",
+      "version": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+      "status": "PASS",
+      "surface": "Exact changed code or protected source; bound CI, source bridge and complete real-browser play",
+      "evidence_refs": [
+        "d6604ea8-3deb-476e-9327-828f4c1cedea",
+        "057e4f30-2bfc-4975-b734-159b21883480",
+        "1e88c07c-51a4-4d64-8d6a-37e779de3e81",
+        "58f27a27-e190-4500-ba36-08bb4027d026",
+        "75d049ef-8d7c-4dad-813b-65c8f7fbe1e0",
+        "87b8ba36-8959-41b2-aae6-01b98034d221",
+        "342502cb-60b5-4811-9828-38471a2a8ea1"
+      ]
+    },
+    {
+      "block_id": "n08",
+      "artifact": "tools/textbook/transformation/validate.mjs",
+      "version": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+      "status": "PASS",
+      "surface": "Exact changed code or protected source; bound CI, source bridge and complete real-browser play",
+      "evidence_refs": [
+        "d6604ea8-3deb-476e-9327-828f4c1cedea",
+        "057e4f30-2bfc-4975-b734-159b21883480",
+        "1e88c07c-51a4-4d64-8d6a-37e779de3e81",
+        "58f27a27-e190-4500-ba36-08bb4027d026",
+        "75d049ef-8d7c-4dad-813b-65c8f7fbe1e0",
+        "87b8ba36-8959-41b2-aae6-01b98034d221",
+        "342502cb-60b5-4811-9828-38471a2a8ea1"
+      ]
+    },
+    {
+      "block_id": "n08",
+      "artifact": "tools/textbook/transformation/visible.mjs",
+      "version": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+      "status": "PASS",
+      "surface": "Exact changed code or protected source; bound CI, source bridge and complete real-browser play",
+      "evidence_refs": [
+        "d6604ea8-3deb-476e-9327-828f4c1cedea",
+        "057e4f30-2bfc-4975-b734-159b21883480",
+        "1e88c07c-51a4-4d64-8d6a-37e779de3e81",
+        "58f27a27-e190-4500-ba36-08bb4027d026",
+        "75d049ef-8d7c-4dad-813b-65c8f7fbe1e0",
+        "87b8ba36-8959-41b2-aae6-01b98034d221",
+        "342502cb-60b5-4811-9828-38471a2a8ea1"
+      ]
+    }
+  ],
+  "release_readiness": "READY",
+  "impact_sweep_completion": "COMPLETE",
+  "audit_method": {
+    "method": "deterministic source/math/hash tests, full real-browser choice/state/save plays and same-assistant image/meaning audit",
+    "reviewer": "code and current assistant",
+    "independent": false
+  },
+  "unknowns": []
+}

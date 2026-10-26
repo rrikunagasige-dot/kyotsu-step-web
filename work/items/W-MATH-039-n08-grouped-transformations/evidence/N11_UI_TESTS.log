@@ -1,0 +1,11 @@
+
+ RUN  v3.2.7 /workspace/scratch/f79c5816761e/kyotsu-step-web
+
+ ✓ work/items/W-MATH-038-transformation-groups/implementation.test.tsx (6 tests | 1 skipped) 1286ms
+   ✓ generated artifact exactly matches approved source adapter and current engine  956ms
+
+ Test Files  1 passed (1)
+      Tests  5 passed | 1 skipped (6)
+   Start at  22:02:48
+   Duration  3.47s (transform 935ms, setup 0ms, collect 1.64s, tests 1.29s, environment 295ms, prepare 61ms)
+

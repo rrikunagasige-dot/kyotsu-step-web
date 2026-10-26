@@ -1,0 +1,10 @@
+
+ RUN  v3.2.7 /workspace/scratch/f79c5816761e/kyotsu-step-web
+
+ ✓ work/items/W-MATH-037-n08-workflow-trial/implementation.test.tsx (7 tests) 10ms
+
+ Test Files  1 passed (1)
+      Tests  7 passed (7)
+   Start at  22:01:48
+   Duration  446ms (transform 127ms, setup 0ms, collect 204ms, tests 10ms, environment 0ms, prepare 63ms)
+

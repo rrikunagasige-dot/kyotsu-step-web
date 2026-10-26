@@ -1,0 +1,25 @@
+{
+  "sourceSHA": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+  "runId": 40272765258,
+  "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40272765258",
+  "status": "completed",
+  "conclusion": "success",
+  "jobId": 121408973314,
+  "origin": "Actual GitHub workflow run and decoded job logs",
+  "coverage": {
+    "math": 88,
+    "workflow": 139,
+    "sourceContext": 21,
+    "learner": 620,
+    "newUI": 7,
+    "priorN11UI": 5,
+    "priorN08Save": 7,
+    "authoring": 39,
+    "widths": [
+      320,
+      390,
+      430,
+      1440
+    ]
+  }
+}

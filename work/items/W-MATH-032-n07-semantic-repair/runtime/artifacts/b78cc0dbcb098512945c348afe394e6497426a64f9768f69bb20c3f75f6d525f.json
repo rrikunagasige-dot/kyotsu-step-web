@@ -1,0 +1,1 @@
+{"browserReceipt":{"ciRun":40272765258,"semanticEvidence":"Source AST bridge, all34 correct/80 wrong choices per width, full typed relation rows and old-save paths; same exact source CI.","semanticIdsVerified":true,"sourceSHA":"c4e7133a4fd3def11771077379aacc6e19d3445b","statesVerified":true,"status":"PASS","widths":[320,390,430,1440]},"status":"PASS"}

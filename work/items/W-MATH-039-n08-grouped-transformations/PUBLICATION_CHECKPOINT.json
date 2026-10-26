@@ -1,0 +1,116 @@
+{
+  "sourceSHA": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+  "publisherSHA": "65ff3f5f730b8f62bf0e35dfe87101a631dc4ae4",
+  "publicationRun": 40273405766,
+  "publicationConclusion": "success",
+  "url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=c4e7133a#/learning/textbook/math-numbers-expressions-n08",
+  "originalLayoutURL": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=c4e7133a#/learning/textbook/math-numbers-expressions-n08?layout=original",
+  "archivedLayoutURL": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=c4e7133a#/learning/textbook/math-numbers-expressions-n08?version=4",
+  "planHash": "315df0d3590d76817908e0a8c149a79a382b7baede04fc4b5c3c83b2c747ce66",
+  "next": {
+    "status": "WAITING",
+    "reason": "USER_DECISION",
+    "task": {
+      "work_id": "W-MATH-039",
+      "node": {
+        "id": "G3_FINAL@n08",
+        "stage_kind": "G3_FINAL",
+        "contract_kind": "G3_FINAL",
+        "actor": "USER",
+        "depends_on": [
+          "G3_HOST@n08"
+        ],
+        "required": [],
+        "block": null,
+        "release_unit": "n08",
+        "watch": "integration",
+        "phase": "acceptance",
+        "priority": 0,
+        "source_refs": [],
+        "protected_refs": [
+          "src/data/textbook/math/numbers/n08Authored.json",
+          "src/data/textbook/math/numbers/n08Revision5.json",
+          "src/data/textbook/math/numbers/n08ActiveVersion.json",
+          "src/components/textbook/N08ReadingFlow.tsx",
+          "src/components/textbook/n08-reading.css",
+          "src/components/textbook/n08-solution-reading.css",
+          "src/data/textbook/math/numbers/n11Authored.json",
+          "src/data/textbook/math/numbers/n11Transformation.json"
+        ],
+        "capability_requests": [],
+        "required_code_receipts": [],
+        "required_ai_receipts": []
+      },
+      "task_id": "792653993538172ecbd994438f21df5ca303c2f6afa5aef91dd1ef657ba78a4d",
+      "input_hash": "250f918fa8895596553f8f6288d2d5122908479e48f4c60daa19d48e309fec80",
+      "source_sha": "0aa633dcf6c1acc6e8df718e907cbaae0e8961f9",
+      "candidate_sha": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+      "rules": {
+        "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
+        "governance/REVIEW_POLICY.json": "a71148f007a79b124385c7645e6bc01564bfa02b12152174883543f31f6ce72d",
+        "governance/WORK_SYSTEM.md": "37b0b0e0fecc79d7c067e17ec8dbeb53d53863f04369171d65ef652a176eb093",
+        "memory/LESSONS/MATH_TYPESETTING_GROUPS.md": "8047831b13d22ffb773f68e23ab788a3490e4b69ebbf5d5d357f9f786ed53d0a",
+        "subjects/mathematics/textbook/SPEC.md": "a36959ae6f951e855c3e60d280d02a0f20c6e23185d9eb90b17ffbc889c63277"
+      },
+      "proposal": {
+        "contentDesignHash": "2ff0e38d4d081a3dc9f1912cd6b6a0ebe395fd9cb8afd6bd8fab2f2778a862e5",
+        "hash": "c27fd866666af45d35893bac52747ea33b710a4ea4a040ac82be90afacb491ee",
+        "id": "W-MATH-039/P-001"
+      },
+      "scope": {
+        "paths": [
+          "src/components/textbook/N08SolutionReadingFlow.tsx",
+          "src/components/textbook/TransformationReadingGroup.tsx",
+          "src/domain/transformationReading.ts",
+          "src/data/textbook/math/numbers/n08Transformation.json",
+          "src/data/textbook/math/numbers/n08PresentationPolicy.json",
+          "tools/textbook/transformation/",
+          "tools/textbook/tests/n08-transformation.test.mjs",
+          "work/items/W-MATH-039-n08-grouped-transformations/",
+          "src/components/textbook/NumberedEquation.tsx",
+          ".github/workflows/n08-transformation-ci.yml",
+          ".github/workflows/transformation-ci.yml"
+        ],
+        "preserve": [
+          "src/data/textbook/math/numbers/n08Authored.json",
+          "src/data/textbook/math/numbers/n08Revision5.json",
+          "src/data/textbook/math/numbers/n08ActiveVersion.json",
+          "src/components/textbook/N08ReadingFlow.tsx",
+          "src/components/textbook/n08-reading.css",
+          "src/components/textbook/n08-solution-reading.css",
+          "src/data/textbook/math/numbers/n11Authored.json",
+          "src/data/textbook/math/numbers/n11Transformation.json"
+        ]
+      },
+      "source_manifest": {
+        "src/data/textbook/math/numbers/n08Revision5.json": "2ff0e38d4d081a3dc9f1912cd6b6a0ebe395fd9cb8afd6bd8fab2f2778a862e5",
+        "work/items/W-MATH-037-n08-workflow-trial/CANDIDATE_IR_R5.json": "b68bb890e181a1593ec4239f5fa3acaae37b11d877b183bceb320762d09937c6",
+        "work/items/W-MATH-037-n08-workflow-trial/SOLUTION_BUNDLE_R5.json": "b0334dfb3734acddb21fe456d03e63474574e5fede3ccd31ad79962e6c7dce00"
+      },
+      "previous_results": {
+        "G3_HOST@n08": {
+          "actor": "capability-runner",
+          "artifact": "1e8553ef49eb422247d6458f15512c45f8c4fc2f78afefe365d80b1f7d2ddab6",
+          "input_hash": "aa42e4793b35966e969661ffbf7f756c91da6ac9f2198d9be976c53133e4b596",
+          "node": "G3_HOST@n08",
+          "verdict": "PASS"
+        }
+      },
+      "do_not_touch": [
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Revision5.json",
+        "src/data/textbook/math/numbers/n08ActiveVersion.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "src/components/textbook/n08-solution-reading.css",
+        "src/data/textbook/math/numbers/n11Authored.json",
+        "src/data/textbook/math/numbers/n11Transformation.json"
+      ],
+      "completion_is_not_semantic_proof": true
+    }
+  },
+  "userAccepted": false,
+  "qualityLabelsAdded": 0,
+  "newModelFit": false,
+  "modelDisposition": "OFFLINE_ONLY"
+}

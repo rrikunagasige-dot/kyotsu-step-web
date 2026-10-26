@@ -1,0 +1,118 @@
+{
+  "verdict": "PASS",
+  "evidence_refs": [
+    "d6604ea8-3deb-476e-9327-828f4c1cedea",
+    "057e4f30-2bfc-4975-b734-159b21883480",
+    "1e88c07c-51a4-4d64-8d6a-37e779de3e81",
+    "58f27a27-e190-4500-ba36-08bb4027d026",
+    "75d049ef-8d7c-4dad-813b-65c8f7fbe1e0",
+    "87b8ba36-8959-41b2-aae6-01b98034d221",
+    "342502cb-60b5-4811-9828-38471a2a8ea1"
+  ],
+  "capability_receipts": [
+    "a4d2cc06d9ca2618cbb53e2bc6ee50faabd2597e288e3b8c17122b6916d38595",
+    "5ba70ef703db3522396399a77852ddfd7dea84ec2c3ac379ec313ae97d08187c",
+    "600fd703c81719d298a5f948a850d02f98db3526d8dc44cd67096d7d57c5c3d1"
+  ],
+  "case_dispositions": [
+    {
+      "id": "N07-USER-F01",
+      "disposition": "APPLY",
+      "reason": "元の絶対値・前段の大小・円周率の与えられた値を保持。絶対値を外すgroupは前段の符号・規則nodeを可視境界にする。"
+    },
+    {
+      "id": "N07-USER-F02",
+      "disposition": "APPLY",
+      "reason": "同じ数値の問題へ各局所の結果を連続式として戻す。"
+    },
+    {
+      "id": "N07-USER-F03",
+      "disposition": "APPLY",
+      "reason": "左辺に元の中身を作るために同じ値を引く目的を説明する。"
+    },
+    {
+      "id": "N07-USER-F04",
+      "disposition": "APPLY",
+      "reason": "括弧全体への負号、二項への分配、積の計算、項の交換まで全行を保持。"
+    },
+    {
+      "id": "N07-USER-F05",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+    },
+    {
+      "id": "N07-USER-F06",
+      "disposition": "APPLY",
+      "reason": "負の二つの因数を括弧ごと描画し、文中の数値もtyped math。"
+    },
+    {
+      "id": "n07-layout-relation",
+      "disposition": "APPLY",
+      "reason": "四つの局所で比較記号・等号の列を揃える。"
+    },
+    {
+      "id": "n07-layout-positive",
+      "disposition": "APPLY",
+      "reason": "前の受入済みの概念・場合分けの構造は保持。"
+    },
+    {
+      "id": "first-title-layout-positive",
+      "disposition": "APPLY",
+      "reason": "四つの局所で比較記号・等号の列を揃える。"
+    },
+    {
+      "id": "N07-ACCEPTED-20261025",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+    },
+    {
+      "id": "N08-ACCEPTED-20261025",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+    },
+    {
+      "id": "N09-REJECTED-20261025",
+      "disposition": "APPLY",
+      "reason": "大小→差→符号→規則→全体の負号→分配→積→交換。"
+    },
+    {
+      "id": "N10-REJECTED-20261025",
+      "disposition": "APPLY",
+      "reason": "負号を中身全体へ適用する括弧と分配の因数を保持。"
+    },
+    {
+      "id": "N09-ACCEPTED-20261025",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+    },
+    {
+      "id": "N10-ACCEPTED-20261025",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+    }
+  ],
+  "aiReview": {
+    "requestHash": "1a78607ced8641866a9e867c1085ce5618b5ee1973ed18f69c4b93a4d15054f0",
+    "inputHash": "27dee73841220f7ae9e2f17e3d879f5b7f6071b6da7e395310e2fa99b137d8e0",
+    "reviewer": "same-assistant source, visible-state and genuine local-image review; not independent AI",
+    "evidence": "Eleven visible-only states reviewed before author keys. Genuine local images show relation columns, full negative factors, shared operand slots and source numbering. Exact frozen-source CI confirms all states. Definition/proof/case units are not flattened; only declared N08 four-group scope opts in."
+  },
+  "symptom_resolution": [
+    "Both original absolute-value problems and pi given remain",
+    "Four local chains preserve every subtraction/distribution/product/reorder atom",
+    "Meaning and rule-choice boundaries remain outside mathematical groups",
+    "Two slots remain one original grading answer",
+    "Terminal equality is the answer; duplicate whole chain omitted"
+  ],
+  "regression_review": [
+    "Current exact source CI covers every correct/wrong choice and old r4/r5 saves plus protected N11 revisions1-10",
+    "Original/new layout switch preserves34 answers, times, attempts and completion",
+    "Source, AST, conditional role and actual mathematical glyphs reviewed separately"
+  ],
+  "protected_scope_review": [
+    "Original N08 revision5 and all34 grading contracts unchanged",
+    "N08 r4/r5 data, archive reader/CSS and original fallback retained; current N11 protected",
+    "No model fit, new quality label or human app acceptance inferred"
+  ],
+  "unknowns": []
+}

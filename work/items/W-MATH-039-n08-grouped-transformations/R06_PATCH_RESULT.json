@@ -1,16 +1,16 @@
 {
   "verdict": "PASS",
   "evidence_refs": [
-    "6e0ca967-9177-4570-b5ae-d3befe48a1ff",
-    "84f5e584-78b5-4c71-8919-cdf86f120f31",
-    "43c6ceab-10ea-4a0d-bf5d-6e727016b148",
-    "2cfe57c8-a8a9-4fe0-b321-37caeb1f899b",
-    "e25a8aff-85cd-41df-be69-2f8fb3fc6689",
-    "b70399c6-9df8-49dc-8fd7-23dcbf80f4c9"
+    "e443382e-3780-4ef0-b7cc-3c4aeefdd3b1",
+    "098653df-42c3-49e7-9b28-0dbf2399175a",
+    "3fae3f42-9e64-4914-a77c-a17e5e917091",
+    "d46db96a-6d80-4adb-b3d1-b5b1c0d3ee59",
+    "9e26798d-fe0e-4b8f-ae9d-834d34f1fac0",
+    "d3b1b9e2-e46e-4dd1-beb8-fec4b40d1b30"
   ],
   "capability_receipts": [
-    "0527bfbd6e15d7f0931549b3c9ac39d3acfa0b83a786f8d1f8ff15c13206a345",
-    "4cff851fec5f5d6ac43ec94b89e739ad45683019a78af09a163aeb31cc7642dc"
+    "5dae49b3e14a92ddfb0e2e753c3c279745d7cb5b6530ed49893163916896ad9d",
+    "78faef320d3cfd8dd59be7c1953cc6635e52eaa4143bb12b8d9c7ab8c655701f"
   ],
   "case_dispositions": [
     {
@@ -90,8 +90,8 @@
     }
   ],
   "aiReview": {
-    "requestHash": "80ae83dc5be2318fbb920e7e07ac9b875b3fa52e3a8664096f80c27f554a3c2b",
-    "inputHash": "68d1616df7abc0e6467671b8a8edde1ebb20869ba3749a041847b201ae1cb7fb",
+    "requestHash": "51751056b1a7d0f34225d4f96813715382f36b66650ba7ce6da18805234ba1dc",
+    "inputHash": "f0a857b1b9a5f630ab66a6fd97383d469a6edd5b08ff9b3a7902fe082b7686de",
     "reviewer": "same-assistant source and visible-state pass; not independent AI",
     "evidence": "The original N08 production IR and r5 source remain intact. The new render.solution receipt binds the authored input hash and display plan hash in one artifact. Local preparation after permission is explicitly logged; no approval or implementation timing is fabricated."
   }

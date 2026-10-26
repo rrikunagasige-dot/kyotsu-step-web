@@ -1,0 +1,28 @@
+{
+  "purpose": "Work findings evolve by append. Preserve exact recoverable prior bytes for evidence fingerprints; original ledger remains immutable.",
+  "snapshots": [
+    {
+      "sha256": "1e5419eb0d39eda5c21e57c11091edda068e8d28cbf0307e74059537afb0e8ae",
+      "content": "# W039 findings\n\nF001 CONFIRMED: Shared grouping foundation has an explicit N11-only bridge. Register N08 separately; keep unknown legacy formats rejected.\nF002 CONFIRMED: Eleven grouped mathematics interactions coexist with external rule/meaning boundaries. Those boundaries need source-bound visibility gates, not fake mathematical answer slots.\n",
+      "eventSequences": [
+        2546
+      ]
+    },
+    {
+      "sha256": "c878eb86bd0fd0e7a97b8f0123c3a0282a3883664d2b1a53d2ac17a06d64ceff",
+      "content": "# W039 findings\n\nF001 CONFIRMED: Shared grouping foundation has an explicit N11-only bridge. Register N08 separately; keep unknown legacy formats rejected.\nF002 CONFIRMED: Eleven grouped mathematics interactions coexist with external rule/meaning boundaries. Those boundaries need source-bound visibility gates, not fake mathematical answer slots.\n\nF003 ERROR-QA: first generated-presentation test compared in-memory undefined properties with their JSON-serialized absence; fixed the roundtrip comparison, preserving all formula and hash assertions. Initial run18/19, rerun pending.\nF004 ERROR-PROCESS: copied Runtime plan initially carried N11 review route in the N08 release-unit metadata. Corrected the copied route using an append-only native materialization metadata event; proposal/source/scope/approval bundles unchanged; never alter existing events. A host library message appeared but execution continued. R06 submission later rejected stale capability receipt after a source-test edit changed the code implementation hash during native capture. Preserve the failed claim/receipts and rerun current capabilities against the frozen source, without fabricating PASS.\n",
+      "eventSequences": [
+        2610,
+        2660
+      ]
+    },
+    {
+      "sha256": "10430a3bb3c887e51c5d5a5cc0c35fc07c5342519ba61e5a5961a466ff7b30c3",
+      "content": "# W039 findings\n\nF001 CONFIRMED: Shared grouping foundation has an explicit N11-only bridge. Register N08 separately; keep unknown legacy formats rejected.\nF002 CONFIRMED: Eleven grouped mathematics interactions coexist with external rule/meaning boundaries. Those boundaries need source-bound visibility gates, not fake mathematical answer slots.\n\nF003 ERROR-QA: first generated-presentation test compared in-memory undefined properties with their JSON-serialized absence; fixed the roundtrip comparison, preserving all formula and hash assertions. Initial run18/19, rerun pending.\nF004 ERROR-PROCESS: copied Runtime plan initially carried N11 review route in the N08 release-unit metadata. Corrected the copied route using an append-only native materialization metadata event; proposal/source/scope/approval bundles unchanged; never alter existing events. A host library message appeared but execution continued. R06 submission later rejected stale capability receipt after a source-test edit changed the code implementation hash during native capture. Preserve the failed claim/receipts and rerun current capabilities against the frozen source, without fabricating PASS.\n\nF005 ERROR-QA: initial shared UI run used system Python instead of the pinned SymPy venv; rerun with KYOTSU_MATH_PYTHON passes the generated artifact test. The W038 assertion that the N08 reader never changes is explicitly superseded by approved W039; retain that historical test unchanged, exclude it by name only in current CI, and replace it with W039 original-render equality against a frozen baseline. Other5 W038 UI tests remain required.\nF006 ERROR-QA: relocated frozen baseline component initially left three sibling imports unresolved; corrected paths in the test copy only. The byte-identical archived reader remains untouched.\nF007 CONFIRMED: the full first browser pass34correct/80wrong×4widths passed. An additional source-reference audit found n08-05 still repeated in the stage06 prior-problem record; suppress that record when its result is already the first grouped row. Source fact remains in the group and full history; original layout is unchanged. Exact frozen-source CI will recheck all4widths after this last display change.\n\nF008 ERROR-IMPLEMENTATION: actual choice-panel image showed(23) beside the last choice because shared NumberedEquation selected all .typeset-line descendants. Added an optional anchorSelector used only by TransformationReadingGroup, preserving default legacy behavior. Browser geometry now asserts the number centers on the final main equation even while choices/hints are open. Source726becea CI remains history; new exact source must be tested.\n",
+      "eventSequences": [
+        2676
+      ]
+    }
+  ],
+  "unreconstructedHistoricalHashes": []
+}

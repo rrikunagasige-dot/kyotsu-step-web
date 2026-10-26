@@ -64,7 +64,7 @@ submit('R04_PROPOSAL',{'teaching.plan':teaching,'step.plan':teaching,'blank.plan
 # Reconcile an actual failed R06 submission before renewing an invalidated approval dispatch.
 if 'R06_PATCH@n08' in rt.state(W)['claims'] and rt.node_status(rt.state(W),instantiate(rt.state(W)['plan'])['R05_APPROVAL@n08'])!='PASSED':
  rt.reconcile_claim(W,'R06_PATCH@n08','FAILED',ev)
-event='W039-P001-APPROVED-20261026'
+event='W039-P001-MATERIALIZED-APPROVAL-20261026'
 if event not in rt.state(W)['users']:rt.user(W,'approve_proposal',approval['quote'],approval['proposalSha256'],'current conversation explicit P001 approval',event_id=event)
 if rt.node_status(rt.state(W),instantiate(rt.state(W)['plan'])['R05_APPROVAL@n08'])!='PASSED':accept_design(rt,W,'R05_APPROVAL@n08',event)
 submit('R06_PATCH',{'ir.compile':legacy,'render.solution':wrap},{},'The original N08 production IR and r5 source remain intact. The new render.solution receipt binds the authored input hash and display plan hash in one artifact. Local preparation after permission is explicitly logged; no approval or implementation timing is fabricated.')

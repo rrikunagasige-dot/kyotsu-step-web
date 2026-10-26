@@ -1,0 +1,28 @@
+{
+  "sourceSHA": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+  "originalProposalCommit": "0aa633dcf6c1acc6e8df718e907cbaae0e8961f9",
+  "unchangedMathPlanHash": "315df0d3590d76817908e0a8c149a79a382b7baede04fc4b5c3c83b2c747ce66",
+  "priorSourceRevisions": [
+    {
+      "sourceSHA": "726becea6e3635245881721e0db5411f5cd85c92",
+      "runId": 40272324844,
+      "reason": "main-equation number anchor corrected after real image review; not final source"
+    },
+    {
+      "sourceSHA": "de2d05f13bfdc5b69c3f0f6733281a623c90e14c",
+      "runId": 40272677350,
+      "reason": "source emitter path preflight repaired; learner code same, but final source gets complete new CI"
+    }
+  ],
+  "publication": "existing Pages only; no whole feature merge to main",
+  "oldGradingRevision": 5,
+  "newGradingRevision": 5,
+  "presentationVersion": 1,
+  "oldLayouts": [
+    "?layout=original",
+    "?version=4"
+  ],
+  "storageNamespace": "kyotsu-step-gate3-math-20261023",
+  "models": "OFFLINE_ONLY; no fit, no quality label inferred from approval",
+  "auditor": "CODE tests and same-assistant source/visible/image review; not independent AI"
+}

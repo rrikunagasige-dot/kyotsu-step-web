@@ -1,26 +1,26 @@
 {
   "verdict": "PASS",
   "evidence_refs": [
-    "b7827c1e-5d63-46ff-9f5f-98e10d96f318",
-    "6dff12cf-1e22-41e9-a963-74d1a1862609",
-    "08610358-017a-4c9a-a59a-b41defcab90c",
-    "1e441228-b942-44a7-8e84-5ffdccf2ec45",
-    "6dd4089a-c86a-4e98-9f60-7a1e0b31162b",
-    "5bac72ba-5395-433a-ba20-3de30f42c509"
+    "e443382e-3780-4ef0-b7cc-3c4aeefdd3b1",
+    "098653df-42c3-49e7-9b28-0dbf2399175a",
+    "3fae3f42-9e64-4914-a77c-a17e5e917091",
+    "d46db96a-6d80-4adb-b3d1-b5b1c0d3ee59",
+    "9e26798d-fe0e-4b8f-ae9d-834d34f1fac0",
+    "d3b1b9e2-e46e-4dd1-beb8-fec4b40d1b30"
   ],
   "capability_receipts": [
-    "f0cea2093e3e80a9f9e3f1e0b4c6d9378b4e09a12f9bd392042603659a47e8da",
-    "af5bf4fc2e078541e6f9b7a67958b5532475fc8307915af1be635d04814b57dd",
-    "86f03b4157f68cc9d4b5c891a42c2ec026e97b22539cdf73547273c513f3e720",
-    "3eaa5f3e2f6d830e33744d1e31d24d5e460ebc876fad92bbb93e42d878d9dfba",
-    "f4145ef97fffe4373ef8dac76230993b103b893c1db6a3d0c6195fd562bbf13f",
-    "95f8303028d18bae30f38a0d3c638f9b70586e5c80be88574eb74a36d47558d2",
-    "69e7c0be20faa9e40e13bcc8db5286c5c09da552b7f061dd480a52664827564c",
-    "aa130cfb02626b83e59d60634735fae0b5a9c1059a597d656d1babcf82016457",
-    "c9638d0496fa049a428fea1586f540b1150af2217548287b8418dc451276b8ec",
-    "fe62475a7f63918ac5df3547529a580cfd99d3c5567a6cd3140acd2c4396d683",
-    "557cd0228f55ed3b2ccb510c0fef1903eccf448a9598493c2d57b9ee662ab1ae",
-    "5c571157dab02a86b2379feb41bb3ab2a1d58ad2d32985eb7032bb54c6e6c1f5"
+    "f7692840e381fa0dfb07b21c1122481baf7a8334af05e053029d5a81c3e79027",
+    "5054ff184f18b402ef3f36a10467f0ab3c661e931cb4dbfe19a0992643c46757",
+    "46bb8e7715b8f1c126c3e9da3372935b2e4b4a5f49e005532ee45049501d2ccb",
+    "30f0a3e753d44f8e9f9cf339fed2c10fc2f5253a3851aa3b5b8edfd9f211fa64",
+    "bb82236ee90e8cc42a03a24887060fbb574b272b6d82717f16ec18cc33c82a6d",
+    "47968dcc03c2dd19a0c3c5552fea598f0836328179dc91a9616a642e3d23b4ef",
+    "8167fa9f1c7f3893cf7567dec9d8e200e2f181f385975d57ba3c12ecce090047",
+    "8ef15a27fddd32dadf329964b92c117e42a4d028f8fdecdd22d76b5edf84d22e",
+    "81144e3d6737b1aa104d92af1cf630e34e04e2b5cc7162bcd822bdc5da247978",
+    "a369d6e4714835811548cc4162f3276454314ff67e4c15984363d05f5cf1d6c9",
+    "c1581418b20735d9e9c346fa1be1bbce2704330b0e1e57b1ada42c2bf73c3d75",
+    "8157179105ccb88921988af9dadae2ae4320cb045e93b5d05b3e20bcb9928812"
   ],
   "case_dispositions": [
     {
@@ -100,8 +100,8 @@
     }
   ],
   "aiReview": {
-    "requestHash": "cf5f86b11444454c7ebd960a09406937e984b8c1b1cdfda8ecc253d0097104f5",
-    "inputHash": "f5e40f7217a03291ea778654de9c30e0ed90a83496b74faa4af2f541b3313b1d",
+    "requestHash": "f581c2a27baf6d9fccd83413607d68f9599f171fe9bfd83db06667ab5336aa3b",
+    "inputHash": "2fcfe2d5a0b961b00bd03766b21876811b889d05ea94a59200866d90b1ea6875",
     "reviewer": "same-assistant source and visible-state pass; not independent AI",
     "evidence": "P001 unchanged. Eleven visible-only review states have individually recorded purposes and source references. Fifteen existing cases have dimension-specific dispositions. Whole-material acceptances are not reused as labels or proof."
   },

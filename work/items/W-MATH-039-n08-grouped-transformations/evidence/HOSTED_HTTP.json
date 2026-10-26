@@ -1,0 +1,17 @@
+{
+  "sourceSHA": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+  "receipts": [
+    {
+      "url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/release.json?verified=c4e7133a4fd3def11771077379aacc6e19d3445b",
+      "resolved_url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/release.json?verified=c4e7133a4fd3def11771077379aacc6e19d3445b",
+      "status": 200,
+      "sha256": "e65896d572a8b7bb3aed10af8dabec2b249669ed7d28830ef421fa09468fada7"
+    },
+    {
+      "url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?verified=c4e7133a4fd3def11771077379aacc6e19d3445b",
+      "resolved_url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?verified=c4e7133a4fd3def11771077379aacc6e19d3445b",
+      "status": 200,
+      "sha256": "1e058e63ad44161f142fbb5fb8da72f8b4613a4b56412aa231ad273dbc398879"
+    }
+  ]
+}

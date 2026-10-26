@@ -1,5 +1,22 @@
-<!-- W038_CURRENT_START -->
-## CURRENT — 通常変形の基盤とN11を公開、次はN08具体案（2026-10-26）
+<!-- W039_CURRENT_START -->
+## CURRENT — N08の通常変形を実装・公開（2026-10-26）
+
+本人「いいよまず実装してくれ」で、0aa633dcのW039/P001を承認。原提案SHA256 `c27fd866666af45d35893bac52747ea33b710a4ea4a040ac82be90afacb491ee`を保持。実装source `c4e7133a4fd3def11771077379aacc6e19d3445b`、publisher `65ff3f5f730b8f62bf0e35dfe87101a631dc4ae4`。正本はこのmain metadataと具体Work記録。コードの固定SHAと記録commitを区別する。
+
+N08 stage06〜09の4式列、11既存の数学上の穴、2意味nodeの説明override。34採点ID/revision5/12stageと原r5 leafを保持。r4、変更前r5、以前の保存を維持。原問題・前結果・番号alias・手本の分配行・意味と規則の境界を保持する。NumberedEquationの任意anchorは変形groupのみ使用し、選択肢の数式へ番号が寄る不具合を防ぐ。
+
+CI40272765258 SUCCESS：88数学/反証、139workflow、21source/context、620learner、7newUI、5applicable N11UI、7save、19prior-three-unit、39authoring。N08は34correct/80wrong×4幅、N11は39/109×4幅。旧W038の「N08 readerを永遠に固定」assertionだけは今回の承認済みreader改修で明示的に代替し、6状態の旧fallback一致とprojection parityを必須とした。旧test自体は保持する。公開run40273405766 SUCCESS；同じ4幅のN08/N11実操作、N09/N10表示、実manifest/source/plan/旧leaf hashを照合。
+
+- [N08公開](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=c4e7133a#/learning/textbook/math-numbers-expressions-n08) / [変更前r5](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=c4e7133a#/learning/textbook/math-numbers-expressions-n08?layout=original) / [以前r4](https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=c4e7133a#/learning/textbook/math-numbers-expressions-n08?version=4)
+- [具体Work記録](https://github.com/rrikunagasige-dot/kyotsu-step-web/tree/work/n08-grouped-transformations-20261026/work/items/W-MATH-039-n08-grouped-transformations)
+- 既存共有RuntimeはR01〜R06/R07/G2/G3_HOST@n08まで実receipt PASS。次はG3_FINAL@n08の本人実物評価。本人の今回の承認は設計・実装承認であり、肯定品質labelではない。
+- MLは既存15件/9negative/6positive、以前のfitとOFFLINE_ONLYを維持。W039の新fit/新labelなし。同じAIの別passを独立AI監査と呼ばない。
+- 受入済み第一タイトル/N07、旧N08の範囲付き受入、W038/N11など他Workの未済評価を勝手に書き換えない。入口は修正/作成の既存二つ、確認面は既存公開app。画像票承認や同じ公開許可は再要求しない。
+
+<!-- W039_CURRENT_END -->
+
+<!-- W038_PREVIOUS_START -->
+## PREVIOUS — 通常変形の基盤とN11を公開、次はN08具体案（2026-10-26）
 
 本人「いいよ。じゃこれで続けて。そして終わったら次はもう一回N08の修正じゃ」でW038/P001/I01〜I11を承認。source `aef34919e630c3772c8ad4329f0aa01dec63e6fe` に通常変形の表示plan・穴契約・source/AST対応・可視projection・同じIR/表示hashの承認照合を実装。入口は既存CMD-WORK-001修正／002作成、production/2。明示planのあるN11 stage05〜06だけopt-inし、39採点ID/revision11を保持。概念・証明・場合分けを一律に圧縮しない。
 
@@ -9,8 +26,8 @@ exact CI40268196468/40268196421 SUCCESS：69数理/反証、139workflow、21sour
 
 旧N08 r4/r5、第一タイトル22bc43ba、N09/N10、他モードと保存を保護。15事例（否定9/肯定6）と既存model0fdba96eはOFFLINE_ONLY/advisoryEligible=false。今回の承認・再開を品質labelにせず、新fitなし。新しい独自フローや画像票承認へ戻らない。
 
-[W038記録・生成火柴図](https://github.com/rrikunagasige-dot/kyotsu-step-web/tree/work/transformation-groups-implementation-20261026/work/items/W-MATH-038-transformation-groups)。次のN08は全39nodeを監査し、4式列（数学11node＋意味の文2node）/残る26node保持の[W039/P001具体案](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/work/transformation-groups-implementation-20261026/work/items/W-MATH-039-n08-grouped-transformations/PROPOSAL.md)と全node表を作成済み。N08の教材・公開版は未変更。N11承認をこの未提示のN08具体案へ転用しない。先にこの案の確認から、既存R04/R05へ進む。以下は以前の履歴。
-<!-- W038_CURRENT_END -->
+[W038記録・生成火柴図](https://github.com/rrikunagasige-dot/kyotsu-step-web/tree/0aa633dcf6c1acc6e8df718e907cbaae0e8961f9/work/items/W-MATH-038-transformation-groups)。次のN08は全39nodeを監査し、4式列（数学11node＋意味の文2node）/残る26node保持の[W039/P001具体案](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/0aa633dcf6c1acc6e8df718e907cbaae0e8961f9/work/items/W-MATH-039-n08-grouped-transformations/PROPOSAL.md)と全node表を作成済み。N08の教材・公開版は未変更。N11承認をこの未提示のN08具体案へ転用しない。先にこの案の確認から、既存R04/R05へ進む。以下は以前の履歴。
+<!-- W038_PREVIOUS_END -->
 
 # Repository OS FIRST — target repository authority (2026-10-10)
 

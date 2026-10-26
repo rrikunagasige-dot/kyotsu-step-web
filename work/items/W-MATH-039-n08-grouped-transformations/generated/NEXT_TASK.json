@@ -1,24 +1,20 @@
 {
   "work_id": "W-MATH-039",
   "node": {
-    "id": "R07_VERIFY@n08",
-    "stage_kind": "R07_VERIFY",
-    "contract_kind": "R07_VERIFY",
-    "actor": "TOOL",
+    "id": "G3_FINAL@n08",
+    "stage_kind": "G3_FINAL",
+    "contract_kind": "G3_FINAL",
+    "actor": "USER",
     "depends_on": [
-      "R06_PATCH@n08"
+      "G3_HOST@n08"
     ],
     "required": [],
-    "block": "n08",
+    "block": null,
     "release_unit": "n08",
     "watch": "integration",
-    "phase": "post-implementation",
+    "phase": "acceptance",
     "priority": 0,
-    "source_refs": [
-      "src/data/textbook/math/numbers/n08Revision5.json",
-      "work/items/W-MATH-037-n08-workflow-trial/CANDIDATE_IR_R5.json",
-      "work/items/W-MATH-037-n08-workflow-trial/SOLUTION_BUNDLE_R5.json"
-    ],
+    "source_refs": [],
     "protected_refs": [
       "src/data/textbook/math/numbers/n08Authored.json",
       "src/data/textbook/math/numbers/n08Revision5.json",
@@ -29,25 +25,14 @@
       "src/data/textbook/math/numbers/n11Authored.json",
       "src/data/textbook/math/numbers/n11Transformation.json"
     ],
-    "approval_scope_ref": "proposal",
-    "capability_requests": [
-      "ir.verify",
-      "browser.verify",
-      "protected.verify",
-      "solution.validate"
-    ],
-    "required_code_receipts": [
-      "ir.verify",
-      "browser.verify",
-      "protected.verify",
-      "solution.validate"
-    ],
+    "capability_requests": [],
+    "required_code_receipts": [],
     "required_ai_receipts": []
   },
-  "task_id": "5e284b9b52051a63aa363ed1746d4870b2e3884aeffb8a1f0957eca9045a8d71",
-  "input_hash": "16406b26144764e2001b4b9d9af8de94c663d587fcb219edb871cd5c4c350dfc",
+  "task_id": "792653993538172ecbd994438f21df5ca303c2f6afa5aef91dd1ef657ba78a4d",
+  "input_hash": "250f918fa8895596553f8f6288d2d5122908479e48f4c60daa19d48e309fec80",
   "source_sha": "0aa633dcf6c1acc6e8df718e907cbaae0e8961f9",
-  "candidate_sha": "0aa633dcf6c1acc6e8df718e907cbaae0e8961f9",
+  "candidate_sha": "c4e7133a4fd3def11771077379aacc6e19d3445b",
   "rules": {
     "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
     "governance/REVIEW_POLICY.json": "a71148f007a79b124385c7645e6bc01564bfa02b12152174883543f31f6ce72d",
@@ -69,7 +54,10 @@
       "src/data/textbook/math/numbers/n08PresentationPolicy.json",
       "tools/textbook/transformation/",
       "tools/textbook/tests/n08-transformation.test.mjs",
-      "work/items/W-MATH-039-n08-grouped-transformations/"
+      "work/items/W-MATH-039-n08-grouped-transformations/",
+      "src/components/textbook/NumberedEquation.tsx",
+      ".github/workflows/n08-transformation-ci.yml",
+      ".github/workflows/transformation-ci.yml"
     ],
     "preserve": [
       "src/data/textbook/math/numbers/n08Authored.json",
@@ -88,11 +76,11 @@
     "work/items/W-MATH-037-n08-workflow-trial/SOLUTION_BUNDLE_R5.json": "b0334dfb3734acddb21fe456d03e63474574e5fede3ccd31ad79962e6c7dce00"
   },
   "previous_results": {
-    "R06_PATCH@n08": {
+    "G3_HOST@n08": {
       "actor": "capability-runner",
-      "artifact": "31e9d7d44e6de65d7ee8e68098d16988a8809f1688173cf624d6d4a6ce3827b4",
-      "input_hash": "68d1616df7abc0e6467671b8a8edde1ebb20869ba3749a041847b201ae1cb7fb",
-      "node": "R06_PATCH@n08",
+      "artifact": "1e8553ef49eb422247d6458f15512c45f8c4fc2f78afefe365d80b1f7d2ddab6",
+      "input_hash": "aa42e4793b35966e969661ffbf7f756c91da6ac9f2198d9be976c53133e4b596",
+      "node": "G3_HOST@n08",
       "verdict": "PASS"
     }
   },

@@ -1,0 +1,69 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "width": 320,
+      "answers": 34,
+      "wrongCount": 80,
+      "stages": 12,
+      "sharedBinding": true,
+      "oneAttemptPerSelection": true,
+      "oldArchive": true,
+      "originalLayout": true,
+      "history": true,
+      "reload": true,
+      "migration": true,
+      "geometry": "PASS"
+    },
+    {
+      "width": 390,
+      "answers": 34,
+      "wrongCount": 80,
+      "stages": 12,
+      "sharedBinding": true,
+      "oneAttemptPerSelection": true,
+      "oldArchive": true,
+      "originalLayout": true,
+      "history": true,
+      "reload": true,
+      "migration": true,
+      "geometry": "PASS"
+    },
+    {
+      "width": 430,
+      "answers": 34,
+      "wrongCount": 80,
+      "stages": 12,
+      "sharedBinding": true,
+      "oneAttemptPerSelection": true,
+      "oldArchive": true,
+      "originalLayout": true,
+      "history": true,
+      "reload": true,
+      "migration": true,
+      "geometry": "PASS"
+    },
+    {
+      "width": 1440,
+      "answers": 34,
+      "wrongCount": 80,
+      "stages": 12,
+      "sharedBinding": true,
+      "oneAttemptPerSelection": true,
+      "oldArchive": true,
+      "originalLayout": true,
+      "history": true,
+      "reload": true,
+      "migration": true,
+      "geometry": "PASS"
+    }
+  ],
+  "sourceSHA": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+  "root": "https://rrikunagasige-dot.github.io/kyotsu-step-web/",
+  "origin": {
+    "method": "actual exact-source public play JSON emitted in decoded workflow job log",
+    "jobId": 121410942404,
+    "runId": 40273405766,
+    "notAnArtifactDownload": true
+  }
+}

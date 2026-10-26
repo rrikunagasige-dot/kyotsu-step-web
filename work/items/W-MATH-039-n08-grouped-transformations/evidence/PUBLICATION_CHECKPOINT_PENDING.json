@@ -1,0 +1,12 @@
+{
+  "sourceSHA": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+  "publisherSHA": "65ff3f5f730b8f62bf0e35dfe87101a631dc4ae4",
+  "mainPreviousSHA": "1ad18bfffd8a0ce333be32a033b68af7cadf4495",
+  "status": "in_progress",
+  "native": "R07_VERIFY/R07_SEMANTIC/G2_AUDIT PASS with actual receipts; DEPLOY intent W039-n08-pages-c4e7133a",
+  "publicSourceBefore": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
+  "scope": "Pinned existing Pages publication; no whole feature-tree main merge",
+  "next": "Verify actual run and public source/plan; record failed build/deployment if any; no user quality acceptance inferred",
+  "runId": 40273405766,
+  "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40273405766"
+}

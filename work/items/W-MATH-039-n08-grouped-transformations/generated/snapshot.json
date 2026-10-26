@@ -1,34 +1,31 @@
 {
   "work": "W-MATH-039",
   "engine_version": "1.0.0",
-  "ledger_head": "4054f0158ffc59464d4b7f04c22f6000fe46f2f80c36df70b14c69b5e542a42c",
-  "work_status": "IMPLEMENTING",
+  "ledger_head": "cb870720eb851fe1f8dd1c33670e92046cb6786936e9597b0ffc03b426202c33",
+  "work_status": "VERIFYING",
   "profile": "material",
   "simulation": false,
-  "candidate_sha": "0aa633dcf6c1acc6e8df718e907cbaae0e8961f9",
+  "candidate_sha": "c4e7133a4fd3def11771077379aacc6e19d3445b",
   "next": {
-    "status": "READY",
+    "status": "WAITING",
+    "reason": "USER_DECISION",
     "task": {
       "work_id": "W-MATH-039",
       "node": {
-        "id": "R07_VERIFY@n08",
-        "stage_kind": "R07_VERIFY",
-        "contract_kind": "R07_VERIFY",
-        "actor": "TOOL",
+        "id": "G3_FINAL@n08",
+        "stage_kind": "G3_FINAL",
+        "contract_kind": "G3_FINAL",
+        "actor": "USER",
         "depends_on": [
-          "R06_PATCH@n08"
+          "G3_HOST@n08"
         ],
         "required": [],
-        "block": "n08",
+        "block": null,
         "release_unit": "n08",
         "watch": "integration",
-        "phase": "post-implementation",
+        "phase": "acceptance",
         "priority": 0,
-        "source_refs": [
-          "src/data/textbook/math/numbers/n08Revision5.json",
-          "work/items/W-MATH-037-n08-workflow-trial/CANDIDATE_IR_R5.json",
-          "work/items/W-MATH-037-n08-workflow-trial/SOLUTION_BUNDLE_R5.json"
-        ],
+        "source_refs": [],
         "protected_refs": [
           "src/data/textbook/math/numbers/n08Authored.json",
           "src/data/textbook/math/numbers/n08Revision5.json",
@@ -39,25 +36,14 @@
           "src/data/textbook/math/numbers/n11Authored.json",
           "src/data/textbook/math/numbers/n11Transformation.json"
         ],
-        "approval_scope_ref": "proposal",
-        "capability_requests": [
-          "ir.verify",
-          "browser.verify",
-          "protected.verify",
-          "solution.validate"
-        ],
-        "required_code_receipts": [
-          "ir.verify",
-          "browser.verify",
-          "protected.verify",
-          "solution.validate"
-        ],
+        "capability_requests": [],
+        "required_code_receipts": [],
         "required_ai_receipts": []
       },
-      "task_id": "5e284b9b52051a63aa363ed1746d4870b2e3884aeffb8a1f0957eca9045a8d71",
-      "input_hash": "16406b26144764e2001b4b9d9af8de94c663d587fcb219edb871cd5c4c350dfc",
+      "task_id": "792653993538172ecbd994438f21df5ca303c2f6afa5aef91dd1ef657ba78a4d",
+      "input_hash": "250f918fa8895596553f8f6288d2d5122908479e48f4c60daa19d48e309fec80",
       "source_sha": "0aa633dcf6c1acc6e8df718e907cbaae0e8961f9",
-      "candidate_sha": "0aa633dcf6c1acc6e8df718e907cbaae0e8961f9",
+      "candidate_sha": "c4e7133a4fd3def11771077379aacc6e19d3445b",
       "rules": {
         "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
         "governance/REVIEW_POLICY.json": "a71148f007a79b124385c7645e6bc01564bfa02b12152174883543f31f6ce72d",
@@ -79,7 +65,10 @@
           "src/data/textbook/math/numbers/n08PresentationPolicy.json",
           "tools/textbook/transformation/",
           "tools/textbook/tests/n08-transformation.test.mjs",
-          "work/items/W-MATH-039-n08-grouped-transformations/"
+          "work/items/W-MATH-039-n08-grouped-transformations/",
+          "src/components/textbook/NumberedEquation.tsx",
+          ".github/workflows/n08-transformation-ci.yml",
+          ".github/workflows/transformation-ci.yml"
         ],
         "preserve": [
           "src/data/textbook/math/numbers/n08Authored.json",
@@ -98,11 +87,11 @@
         "work/items/W-MATH-037-n08-workflow-trial/SOLUTION_BUNDLE_R5.json": "b0334dfb3734acddb21fe456d03e63474574e5fede3ccd31ad79962e6c7dce00"
       },
       "previous_results": {
-        "R06_PATCH@n08": {
+        "G3_HOST@n08": {
           "actor": "capability-runner",
-          "artifact": "31e9d7d44e6de65d7ee8e68098d16988a8809f1688173cf624d6d4a6ce3827b4",
-          "input_hash": "68d1616df7abc0e6467671b8a8edde1ebb20869ba3749a041847b201ae1cb7fb",
-          "node": "R06_PATCH@n08",
+          "artifact": "1e8553ef49eb422247d6458f15512c45f8c4fc2f78afefe365d80b1f7d2ddab6",
+          "input_hash": "aa42e4793b35966e969661ffbf7f756c91da6ac9f2198d9be976c53133e4b596",
+          "node": "G3_HOST@n08",
           "verdict": "PASS"
         }
       },
@@ -514,7 +503,7 @@
         "solution.validate"
       ],
       "required_ai_receipts": [],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "R07_SEMANTIC@n08",
@@ -564,7 +553,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "G2_AUDIT@n08",
@@ -608,7 +597,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "G3_HOST@n08",
@@ -642,7 +631,7 @@
         "release.verify"
       ],
       "required_ai_receipts": [],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "G3_FINAL@n08",
@@ -866,27 +855,6 @@
       "work": "W-MATH-034"
     },
     {
-      "id": "W-MATH-037",
-      "work": "W-MATH-037",
-      "version": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
-      "origin": "unfinished-correction",
-      "description": "未完了の修正Work"
-    },
-    {
-      "id": "W-MATH-039",
-      "work": "W-MATH-039",
-      "version": "0aa633dcf6c1acc6e8df718e907cbaae0e8961f9",
-      "origin": "unfinished-correction",
-      "description": "未完了の修正Work"
-    },
-    {
-      "id": "W-MATH-034",
-      "work": "W-MATH-034",
-      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
-      "origin": "unfinished-correction",
-      "description": "未完了の修正Work"
-    },
-    {
       "id": "W-MATH-036",
       "work": "W-MATH-036",
       "version": "397788f1715b96459032a6647d6fbe772004a7b3",
@@ -897,6 +865,27 @@
       "id": "W-MATH-038",
       "work": "W-MATH-038",
       "version": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
+      "origin": "unfinished-correction",
+      "description": "未完了の修正Work"
+    },
+    {
+      "id": "W-MATH-037",
+      "work": "W-MATH-037",
+      "version": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
+      "origin": "unfinished-correction",
+      "description": "未完了の修正Work"
+    },
+    {
+      "id": "W-MATH-039",
+      "work": "W-MATH-039",
+      "version": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+      "origin": "unfinished-correction",
+      "description": "未完了の修正Work"
+    },
+    {
+      "id": "W-MATH-034",
+      "work": "W-MATH-034",
+      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
     },
@@ -1131,6 +1120,126 @@
       "input_hash": "68d1616df7abc0e6467671b8a8edde1ebb20869ba3749a041847b201ae1cb7fb",
       "node": "R06_PATCH@n08",
       "receipt": "4cff851fec5f5d6ac43ec94b89e739ad45683019a78af09a163aeb31cc7642dc"
+    },
+    {
+      "input_hash": "2fcfe2d5a0b961b00bd03766b21876811b889d05ea94a59200866d90b1ea6875",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "f7692840e381fa0dfb07b21c1122481baf7a8334af05e053029d5a81c3e79027"
+    },
+    {
+      "input_hash": "2fcfe2d5a0b961b00bd03766b21876811b889d05ea94a59200866d90b1ea6875",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "5054ff184f18b402ef3f36a10467f0ab3c661e931cb4dbfe19a0992643c46757"
+    },
+    {
+      "input_hash": "2fcfe2d5a0b961b00bd03766b21876811b889d05ea94a59200866d90b1ea6875",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "46bb8e7715b8f1c126c3e9da3372935b2e4b4a5f49e005532ee45049501d2ccb"
+    },
+    {
+      "input_hash": "2fcfe2d5a0b961b00bd03766b21876811b889d05ea94a59200866d90b1ea6875",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "30f0a3e753d44f8e9f9cf339fed2c10fc2f5253a3851aa3b5b8edfd9f211fa64"
+    },
+    {
+      "input_hash": "2fcfe2d5a0b961b00bd03766b21876811b889d05ea94a59200866d90b1ea6875",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "bb82236ee90e8cc42a03a24887060fbb574b272b6d82717f16ec18cc33c82a6d"
+    },
+    {
+      "input_hash": "2fcfe2d5a0b961b00bd03766b21876811b889d05ea94a59200866d90b1ea6875",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "47968dcc03c2dd19a0c3c5552fea598f0836328179dc91a9616a642e3d23b4ef"
+    },
+    {
+      "input_hash": "2fcfe2d5a0b961b00bd03766b21876811b889d05ea94a59200866d90b1ea6875",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "8167fa9f1c7f3893cf7567dec9d8e200e2f181f385975d57ba3c12ecce090047"
+    },
+    {
+      "input_hash": "2fcfe2d5a0b961b00bd03766b21876811b889d05ea94a59200866d90b1ea6875",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "8ef15a27fddd32dadf329964b92c117e42a4d028f8fdecdd22d76b5edf84d22e"
+    },
+    {
+      "input_hash": "2fcfe2d5a0b961b00bd03766b21876811b889d05ea94a59200866d90b1ea6875",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "81144e3d6737b1aa104d92af1cf630e34e04e2b5cc7162bcd822bdc5da247978"
+    },
+    {
+      "input_hash": "2fcfe2d5a0b961b00bd03766b21876811b889d05ea94a59200866d90b1ea6875",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "a369d6e4714835811548cc4162f3276454314ff67e4c15984363d05f5cf1d6c9"
+    },
+    {
+      "input_hash": "2fcfe2d5a0b961b00bd03766b21876811b889d05ea94a59200866d90b1ea6875",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "c1581418b20735d9e9c346fa1be1bbce2704330b0e1e57b1ada42c2bf73c3d75"
+    },
+    {
+      "input_hash": "2fcfe2d5a0b961b00bd03766b21876811b889d05ea94a59200866d90b1ea6875",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "8157179105ccb88921988af9dadae2ae4320cb045e93b5d05b3e20bcb9928812"
+    },
+    {
+      "input_hash": "f0a857b1b9a5f630ab66a6fd97383d469a6edd5b08ff9b3a7902fe082b7686de",
+      "node": "R06_PATCH@n08",
+      "receipt": "5dae49b3e14a92ddfb0e2e753c3c279745d7cb5b6530ed49893163916896ad9d"
+    },
+    {
+      "input_hash": "f0a857b1b9a5f630ab66a6fd97383d469a6edd5b08ff9b3a7902fe082b7686de",
+      "node": "R06_PATCH@n08",
+      "receipt": "78faef320d3cfd8dd59be7c1953cc6635e52eaa4143bb12b8d9c7ab8c655701f"
+    },
+    {
+      "input_hash": "d2000b29ab119aa9947afc770fe24dd1008a0a5d36f9dbd3adbda87901b33685",
+      "node": "R07_VERIFY@n08",
+      "receipt": "add72cb249fc1e5ba40a7ae8e20ef0f76dc4c78e55225d5ce8ed32961b605639"
+    },
+    {
+      "input_hash": "d2000b29ab119aa9947afc770fe24dd1008a0a5d36f9dbd3adbda87901b33685",
+      "node": "R07_VERIFY@n08",
+      "receipt": "85c0eef055ffacf4d85a08e8d62e03f847c176f38661c92c61bccfc233689f31"
+    },
+    {
+      "input_hash": "d2000b29ab119aa9947afc770fe24dd1008a0a5d36f9dbd3adbda87901b33685",
+      "node": "R07_VERIFY@n08",
+      "receipt": "2128eb457afcca4d433e2b8274789577ceb2e689a6f2d3313e5591bde8fe0fec"
+    },
+    {
+      "input_hash": "d2000b29ab119aa9947afc770fe24dd1008a0a5d36f9dbd3adbda87901b33685",
+      "node": "R07_VERIFY@n08",
+      "receipt": "1112bec915fdbb018730dae780d4f2f049a7d6e30a19e52ef3a55ac0031492c6"
+    },
+    {
+      "input_hash": "27dee73841220f7ae9e2f17e3d879f5b7f6071b6da7e395310e2fa99b137d8e0",
+      "node": "R07_SEMANTIC@n08",
+      "receipt": "a4d2cc06d9ca2618cbb53e2bc6ee50faabd2597e288e3b8c17122b6916d38595"
+    },
+    {
+      "input_hash": "27dee73841220f7ae9e2f17e3d879f5b7f6071b6da7e395310e2fa99b137d8e0",
+      "node": "R07_SEMANTIC@n08",
+      "receipt": "5ba70ef703db3522396399a77852ddfd7dea84ec2c3ac379ec313ae97d08187c"
+    },
+    {
+      "input_hash": "27dee73841220f7ae9e2f17e3d879f5b7f6071b6da7e395310e2fa99b137d8e0",
+      "node": "R07_SEMANTIC@n08",
+      "receipt": "600fd703c81719d298a5f948a850d02f98db3526d8dc44cd67096d7d57c5c3d1"
+    },
+    {
+      "input_hash": "088322d97aa9eb4a9c0e907cab3b58ccb5638518d8c8d77ef5ea61b4cff3b7e4",
+      "node": "G2_AUDIT@n08",
+      "receipt": "3af16ce4637a2b98dcee812fc976b5fb73a49f5f92baaf889b03be0dd37cedcc"
+    },
+    {
+      "input_hash": "088322d97aa9eb4a9c0e907cab3b58ccb5638518d8c8d77ef5ea61b4cff3b7e4",
+      "node": "G2_AUDIT@n08",
+      "receipt": "880d5883a28a215cbb463a44aac3e78282bbd9746a174ad4049b643867649045"
+    },
+    {
+      "input_hash": "aa42e4793b35966e969661ffbf7f756c91da6ac9f2198d9be976c53133e4b596",
+      "node": "G3_HOST@n08",
+      "receipt": "c41c52a7533fdada0534cfda8b955b94548cd9742a6e8463cf8bdacbb764f218"
     }
   ],
   "release_acceptance": {

@@ -1,0 +1,114 @@
+name: Deploy to GitHub Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      CANDIDATE_SHA: c4e7133a4fd3def11771077379aacc6e19d3445b
+      VITE_PREVIEW_COMMIT: c4e7133a4fd3def11771077379aacc6e19d3445b
+      VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
+      VITE_BASE_PATH: /kyotsu-step-web/
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: c4e7133a4fd3def11771077379aacc6e19d3445b
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      # Exact source code/tests already passed in the pinned W039 CI; do not repeat them here.
+      - name: Existing Word source adapter dependency
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y pandoc fonts-noto-cjk
+      - run: python -m pip install -r tools/textbook/research/requirements-solution.txt
+      - run: node work/items/W-MATH-039-n08-grouped-transformations/release_manifest.mjs --check
+      - run: pnpm run build
+      - run: node work/items/W-MATH-003-numbers-expressions-creation/NE01_NE02/export-runtime.mjs
+      - run: node work/items/W-MATH-039-n08-grouped-transformations/release_manifest.mjs
+      - run: pnpm exec playwright install --with-deps chromium
+      - uses: actions/configure-pages@v5
+      - name: Verify exact release and presentation contract before upload
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const m=JSON.parse(fs.readFileSync('dist/release.json')),p=JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/n08Transformation.json'));
+          if(m.work!=='W-MATH-039'||m.sourceSHA!==process.env.CANDIDATE_SHA||m.transformation?.planHash!==p.planHash||m.transformation?.baseIRHash!==p.baseIRHash||m.storageKey!==process.env.VITE_STORAGE_NAMESPACE||m.oldN08?.revision!==4||m.activeN08Revision!==5||m.originalN08?.revision!==5||m.retainedN11!==JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/n11Transformation.json')).planHash)throw Error('RELEASE_CONTRACT_MISMATCH');
+          NODE
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+      - name: Publish approved N08 grouping while retaining original r5 and r4
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Exact public source, all N08 choices and old-version preservation
+        env:
+          APP_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          node --input-type=module <<'NODE'
+          let matched=false
+          for(let i=0;i<60;i++){
+            try{const r=await fetch(process.env.APP_URL+'release.json?sha='+process.env.CANDIDATE_SHA,{cache:'no-store'});const m=await r.json();if(m.sourceSHA===process.env.CANDIDATE_SHA&&m.storageKey===process.env.VITE_STORAGE_NAMESPACE&&m.oldN08?.revision===4){matched=true;break}}catch{}
+            await new Promise(r=>setTimeout(r,2000))
+          }
+          if(!matched)throw Error('public source not verified')
+          NODE
+          if node --input-type=module -e "import fs from 'node:fs';process.exit(JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/n08ActiveVersion.json')).revision===5?0:1)"; then
+            EVIDENCE_DIR=/tmp/w39-hosted node work/items/W-MATH-039-n08-grouped-transformations/verify_app.mjs
+          else
+            EVIDENCE_DIR=/tmp/w39-hosted node work/items/W-MATH-033-n08-absolute-value/verify_app.mjs
+          fi
+          EVIDENCE_DIR=/tmp/w39-hosted-protected node work/items/W-MATH-035-choice-order-factor-audit/verify_display.mjs
+      - name: Await figure decoding in public verification only
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib
+          p=Path('work/items/W-MATH-038-transformation-groups/verify_app.mjs')
+          old='im=>im.complete&&im.naturalWidth>0'
+          new="async im=>{await Promise.race([im.decode(),new Promise((_,reject)=>setTimeout(()=>reject(Error('FIGURE_DECODE_TIMEOUT')),30000))]);return im.complete&&im.naturalWidth>0}"
+          s=p.read_text()
+          if old in s:
+              assert s.count(old)==1
+              p.write_text(s.replace(old,new))
+          else:
+              assert new in s
+          print('Verification-only harness SHA256',hashlib.sha256(p.read_bytes()).hexdigest())
+          PY
+      - name: Exact public N11 grouped solution, all choices and original layout
+        env:
+          APP_URL: ${{ steps.deployment.outputs.page_url }}
+        run: EVIDENCE_DIR=/tmp/w38-hosted node work/items/W-MATH-038-transformation-groups/verify_app.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: w39-publication-evidence
+          path: |
+            /tmp/w39-hosted
+            /tmp/w39-hosted-protected
+            /tmp/w38-hosted
+

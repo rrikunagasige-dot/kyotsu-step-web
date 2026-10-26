@@ -48,8 +48,8 @@
         ],
         "required_ai_receipts": []
       },
-      "task_id": "5e284b9b52051a63aa363ed1746d4870b2e3884aeffb8a1f0957eca9045a8d71",
-      "input_hash": "16406b26144764e2001b4b9d9af8de94c663d587fcb219edb871cd5c4c350dfc",
+      "task_id": "6b4e537cecb719fc7574cafa6eb1ba6b8bff80d123dc1c269a093148e5e65845",
+      "input_hash": "61730436bbb0017c32d4f93a49a463dca81644e6cf10d0307fc03615eda4f936",
       "source_sha": "0aa633dcf6c1acc6e8df718e907cbaae0e8961f9",
       "candidate_sha": "0aa633dcf6c1acc6e8df718e907cbaae0e8961f9",
       "rules": {
@@ -73,7 +73,10 @@
           "src/data/textbook/math/numbers/n08PresentationPolicy.json",
           "tools/textbook/transformation/",
           "tools/textbook/tests/n08-transformation.test.mjs",
-          "work/items/W-MATH-039-n08-grouped-transformations/"
+          "work/items/W-MATH-039-n08-grouped-transformations/",
+          "src/components/textbook/NumberedEquation.tsx",
+          ".github/workflows/n08-transformation-ci.yml",
+          ".github/workflows/transformation-ci.yml"
         ],
         "preserve": [
           "src/data/textbook/math/numbers/n08Authored.json",
@@ -94,8 +97,8 @@
       "previous_results": {
         "R06_PATCH@n08": {
           "actor": "capability-runner",
-          "artifact": "31e9d7d44e6de65d7ee8e68098d16988a8809f1688173cf624d6d4a6ce3827b4",
-          "input_hash": "68d1616df7abc0e6467671b8a8edde1ebb20869ba3749a041847b201ae1cb7fb",
+          "artifact": "7d19ad3ded5b4e4676c2fa41d266937e568f6fa6d3c813142581314b41dcc366",
+          "input_hash": "f0a857b1b9a5f630ab66a6fd97383d469a6edd5b08ff9b3a7902fe082b7686de",
           "node": "R06_PATCH@n08",
           "verdict": "PASS"
         }

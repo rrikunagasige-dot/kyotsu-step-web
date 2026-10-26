@@ -1,0 +1,10 @@
+
+ RUN  v3.2.7 /workspace/scratch/f79c5816761e/kyotsu-step-web
+
+ ✓ work/items/W-MATH-039-n08-grouped-transformations/implementation.test.tsx (7 tests) 159ms
+
+ Test Files  1 passed (1)
+      Tests  7 passed (7)
+   Start at  22:03:11
+   Duration  2.27s (transform 992ms, setup 0ms, collect 1.61s, tests 159ms, environment 275ms, prepare 57ms)
+

@@ -71,7 +71,10 @@
       "src/data/textbook/math/numbers/n08PresentationPolicy.json",
       "tools/textbook/transformation/",
       "tools/textbook/tests/n08-transformation.test.mjs",
-      "work/items/W-MATH-039-n08-grouped-transformations/"
+      "work/items/W-MATH-039-n08-grouped-transformations/",
+      "src/components/textbook/NumberedEquation.tsx",
+      ".github/workflows/n08-transformation-ci.yml",
+      ".github/workflows/transformation-ci.yml"
     ],
     "preserve": [
       "src/data/textbook/math/numbers/n08Authored.json",

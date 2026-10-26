@@ -1,0 +1,19 @@
+{
+  "method": "Actual browser PNGs, current assistant viewing; not an independent AI",
+  "images": [
+    "/tmp/w39-number-fixed/390-stage-6.png",
+    "/tmp/w39-number-fixed/390-stage-7.png",
+    "/tmp/w39-number-fixed/390-stage-9.png",
+    "/tmp/w39-number-fixed/320-stage-7.png",
+    "/tmp/w39-number-fixed/n08-q09-distribute-options.png"
+  ],
+  "observations": [
+    "Four local chains preserve source questions and prior conditions",
+    "Literal negative products have complete parentheses",
+    "Expression continuations use equality, inequalities retain their own relation",
+    "Main equation label remains by current mathematical row while wrong-choice panel is open",
+    "stage06 source sqrt5<3 appears once in current group, not repeated as prior result"
+  ],
+  "baselineComparisons": "Original layout static output equals archived reader at6stage states; original r4reader/CSS/figure protected",
+  "sourceStatus": "Current learner code equal to final candidatec4e7133a; local captures before only release-emitter-path correction; exact SHA CI pending"
+}

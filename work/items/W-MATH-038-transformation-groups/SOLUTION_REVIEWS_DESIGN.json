@@ -1,0 +1,1782 @@
+{
+  "reviews": [
+    {
+      "id": "n11-wm017-q05-operation",
+      "request": {
+        "profile": "ordinary-transformation",
+        "schemaVersion": "solution-review/1",
+        "phase": "design",
+        "visible": {
+          "initial": {
+            "id": "n11-tg-initial",
+            "sourceNodeId": "n11-solve-problem",
+            "stateRef": "S0",
+            "role": "main",
+            "continuation": false,
+            "done": true,
+            "before": [
+              {
+                "type": "text",
+                "text": "不等式を変形して、条件を満たすすべての実数の範囲を求めます。まず、左辺の定数項をなくします。"
+              }
+            ],
+            "after": [],
+            "formula": {
+              "left": [
+                {
+                  "type": "math",
+                  "latex": "3x-2"
+                }
+              ],
+              "relation": "<",
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "5"
+                }
+              ]
+            },
+            "current": null
+          },
+          "completed": [
+            {
+              "id": "n11-tg-initial",
+              "sourceNodeId": "n11-solve-problem",
+              "stateRef": "S0",
+              "role": "main",
+              "continuation": false,
+              "done": true,
+              "before": [
+                {
+                  "type": "text",
+                  "text": "不等式を変形して、条件を満たすすべての実数の範囲を求めます。まず、左辺の定数項をなくします。"
+                }
+              ],
+              "after": [],
+              "formula": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "3x-2"
+                  }
+                ],
+                "relation": "<",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "5"
+                  }
+                ]
+              },
+              "current": null
+            }
+          ],
+          "current": {
+            "id": "n11-tg-cancel",
+            "sourceNodeId": "n11-wm017-q05-operation",
+            "stateRef": "A0",
+            "role": "auxiliary",
+            "continuation": false,
+            "done": false,
+            "before": [
+              {
+                "type": "text",
+                "text": "左辺の定数部分を"
+              },
+              {
+                "type": "math",
+                "latex": "0"
+              },
+              {
+                "type": "text",
+                "text": "にする数を、次の式で確かめます。"
+              }
+            ],
+            "after": [],
+            "formula": {
+              "left": [
+                {
+                  "type": "math",
+                  "latex": "-2"
+                },
+                {
+                  "type": "math",
+                  "latex": "+"
+                },
+                {
+                  "type": "slot",
+                  "id": "n11-tg-cancel-operand",
+                  "interactionRef": "n11-wm017-q05-operation"
+                }
+              ],
+              "relation": "=",
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "0"
+                }
+              ]
+            },
+            "current": {
+              "id": "n11-wm017-q05-operation",
+              "learnerDecision": "左辺の定数部分を0にする数を、次の式で確かめます。",
+              "blankRole": "operand",
+              "choices": [
+                "2",
+                "-2",
+                "3",
+                "0"
+              ]
+            }
+          }
+        },
+        "sourceRefs": [
+          "src/data/textbook/math/numbers/n11Authored.json",
+          "W-MATH-038/P-001/15"
+        ],
+        "caseIds": [
+          "N07-USER-F01",
+          "N07-USER-F02",
+          "N07-USER-F03",
+          "N07-USER-F04",
+          "N07-USER-F05",
+          "N07-USER-F06",
+          "n07-layout-relation",
+          "n07-layout-positive",
+          "first-title-layout-positive",
+          "N07-ACCEPTED-20261025",
+          "N08-ACCEPTED-20261025",
+          "N09-REJECTED-20261025",
+          "N10-REJECTED-20261025",
+          "N09-ACCEPTED-20261025",
+          "N10-ACCEPTED-20261025"
+        ],
+        "required": [
+          "learnerDecision",
+          "availableInformation",
+          "reasonToProceed",
+          "nextWholeState",
+          "misconception",
+          "reducedSupportVariant",
+          "findings",
+          "patternDecision",
+          "groupBoundaryReview",
+          "blankDecisionReview",
+          "prosePlacementReview",
+          "terminalRoleReview",
+          "visibleProgressionReview"
+        ],
+        "constraints": [
+          "可視状態だけで次へ進めるかを先に検討する",
+          "作成者の理由欄を合格根拠にしない",
+          "同一AIの別passを独立モデルと呼ばない"
+        ],
+        "requestHash": "e46ce0e507f081c62a0ee79a4cec3b2e928d23496506af707fa612dc88319f6a"
+      },
+      "response": {
+        "requestHash": "e46ce0e507f081c62a0ee79a4cec3b2e928d23496506af707fa612dc88319f6a",
+        "phase": "design",
+        "reviewer": "current-assistant-visible-state-pass; not independent AI",
+        "learnerDecision": "定数部分を打ち消す加数を決める",
+        "availableInformation": "元の3x-2<5と、-2に加えて0となる数を作る補助式が見える",
+        "reasonToProceed": "定数項をなくして文字の項へ戻る",
+        "nextWholeState": "同じ加数を元の不等式の両辺へ使う",
+        "misconception": "定数と同符号を選んで打ち消せない",
+        "reducedSupportVariant": "別の類題で補助計算を手本へ変更する候補。今回の既存採点IDは統合しない。",
+        "patternDecision": "一つの実数一次不等式を同じ条件で変形するT04。",
+        "groupBoundaryReview": "stage05-06は同じ原問。stage07の境界代入は意味の判断として分ける。",
+        "blankDecisionReview": "定数部分を打ち消す加数を決める。新規二枠と既存の別回答を混同しない。",
+        "prosePlacementReview": "目的は式の前、操作後の意味はその行の後へ配置。除数を先の穴より前に教えない。",
+        "terminalRoleReview": "最後の主行が解。境界検算への接続文は残し、単純な再掲は足さない。",
+        "visibleProgressionReview": "可視snapshotのcurrentだけが未完成。後続の行・閉じたhint・author expectedを入力に含めない。",
+        "findings": [],
+        "caseDispositions": [
+          {
+            "caseId": "N07-USER-F01",
+            "status": "APPLIED",
+            "evidence": "元の例題を式列の先頭に保ち、係数・定数・操作の前提を補助式で示す。"
+          },
+          {
+            "caseId": "N07-USER-F02",
+            "status": "APPLIED",
+            "evidence": "補助計算の数を不等式全体へ戻す。r-cancel→r-add、r-divisor→r-divideを対応付ける。"
+          },
+          {
+            "caseId": "N07-USER-F03",
+            "status": "APPLIED",
+            "evidence": "定数項をなくす→係数を1にする目的を操作前に置く。"
+          },
+          {
+            "caseId": "N07-USER-F04",
+            "status": "APPLIED",
+            "evidence": "両辺への加算・整理・両辺への除算・商を別の検算atomとして保つ。"
+          },
+          {
+            "caseId": "N07-USER-F05",
+            "status": "NOT_APPLICABLE",
+            "evidence": "この局所例には新しい定義語を導入しない。既存の定義ブロックは改変しない。"
+          },
+          {
+            "caseId": "N07-USER-F06",
+            "status": "APPLIED",
+            "evidence": "7行全体をsource stateへ結び、文中数式・分数内slot・比較記号を実描画検査する。"
+          },
+          {
+            "caseId": "n07-layout-relation",
+            "status": "APPLIED",
+            "evidence": "式列の比較記号の列を揃え、説明を適切な行間へ置く。"
+          },
+          {
+            "caseId": "n07-layout-positive",
+            "status": "APPLIED",
+            "evidence": "既存の余白・概念の黒字・選択UIは継承し、通常変形の局所だけopt-in。"
+          },
+          {
+            "caseId": "first-title-layout-positive",
+            "status": "APPLIED",
+            "evidence": "式列の比較記号の列を揃え、説明を適切な行間へ置く。"
+          },
+          {
+            "caseId": "N07-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "その教材・版全体への受入であり、N11新表示の品質labelや合格根拠へ転用しない。"
+          },
+          {
+            "caseId": "N08-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "その教材・版全体への受入であり、N11新表示の品質labelや合格根拠へ転用しない。"
+          },
+          {
+            "caseId": "N09-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "原問→操作→整理→次の操作→解の順を保ち、未来の商を先出ししない。"
+          },
+          {
+            "caseId": "N10-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "分子分母と積の対象をAST構造で保持する。N10の原問は変更しない。"
+          },
+          {
+            "caseId": "N09-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "その教材・版全体への受入であり、N11新表示の品質labelや合格根拠へ転用しない。"
+          },
+          {
+            "caseId": "N10-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "その教材・版全体への受入であり、N11新表示の品質labelや合格根拠へ転用しない。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "n11-wm017-q05-balance",
+      "request": {
+        "profile": "ordinary-transformation",
+        "schemaVersion": "solution-review/1",
+        "phase": "design",
+        "visible": {
+          "initial": {
+            "id": "n11-tg-initial",
+            "sourceNodeId": "n11-solve-problem",
+            "stateRef": "S0",
+            "role": "main",
+            "continuation": false,
+            "done": true,
+            "before": [
+              {
+                "type": "text",
+                "text": "不等式を変形して、条件を満たすすべての実数の範囲を求めます。まず、左辺の定数項をなくします。"
+              }
+            ],
+            "after": [],
+            "formula": {
+              "left": [
+                {
+                  "type": "math",
+                  "latex": "3x-2"
+                }
+              ],
+              "relation": "<",
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "5"
+                }
+              ]
+            },
+            "current": null
+          },
+          "completed": [
+            {
+              "id": "n11-tg-initial",
+              "sourceNodeId": "n11-solve-problem",
+              "stateRef": "S0",
+              "role": "main",
+              "continuation": false,
+              "done": true,
+              "before": [
+                {
+                  "type": "text",
+                  "text": "不等式を変形して、条件を満たすすべての実数の範囲を求めます。まず、左辺の定数項をなくします。"
+                }
+              ],
+              "after": [],
+              "formula": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "3x-2"
+                  }
+                ],
+                "relation": "<",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "5"
+                  }
+                ]
+              },
+              "current": null
+            },
+            {
+              "id": "n11-tg-cancel",
+              "sourceNodeId": "n11-wm017-q05-operation",
+              "stateRef": "A0",
+              "role": "auxiliary",
+              "continuation": false,
+              "done": true,
+              "before": [
+                {
+                  "type": "text",
+                  "text": "左辺の定数部分を"
+                },
+                {
+                  "type": "math",
+                  "latex": "0"
+                },
+                {
+                  "type": "text",
+                  "text": "にする数を、次の式で確かめます。"
+                }
+              ],
+              "after": [
+                {
+                  "type": "text",
+                  "text": "左辺で定数を打ち消す数が決まりました。同じ数を右辺にも加えます。"
+                }
+              ],
+              "formula": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "-2+2"
+                  }
+                ],
+                "relation": "=",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "0"
+                  }
+                ]
+              },
+              "current": null
+            }
+          ],
+          "current": {
+            "id": "n11-tg-add",
+            "sourceNodeId": "n11-wm017-q05-balance",
+            "stateRef": "S1",
+            "role": "main",
+            "continuation": false,
+            "done": false,
+            "before": [
+              {
+                "type": "text",
+                "text": "両辺に同じ数を加えると、大小関係は保たれます。右辺にも同じ操作を入れます。"
+              }
+            ],
+            "after": [],
+            "formula": {
+              "left": [
+                {
+                  "type": "math",
+                  "latex": "3x-2+2"
+                }
+              ],
+              "relation": "<",
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "5"
+                },
+                {
+                  "type": "math",
+                  "latex": "+"
+                },
+                {
+                  "type": "slot",
+                  "id": "n11-tg-add-right",
+                  "interactionRef": "n11-wm017-q05-balance"
+                }
+              ]
+            },
+            "current": {
+              "id": "n11-wm017-q05-balance",
+              "learnerDecision": "両辺に同じ数を加えると、大小関係は保たれます。右辺にも同じ操作を入れます。",
+              "blankRole": "operand",
+              "choices": [
+                "2",
+                "-2",
+                "5",
+                "0"
+              ]
+            }
+          }
+        },
+        "sourceRefs": [
+          "src/data/textbook/math/numbers/n11Authored.json",
+          "W-MATH-038/P-001/15"
+        ],
+        "caseIds": [
+          "N07-USER-F01",
+          "N07-USER-F02",
+          "N07-USER-F03",
+          "N07-USER-F04",
+          "N07-USER-F05",
+          "N07-USER-F06",
+          "n07-layout-relation",
+          "n07-layout-positive",
+          "first-title-layout-positive",
+          "N07-ACCEPTED-20261025",
+          "N08-ACCEPTED-20261025",
+          "N09-REJECTED-20261025",
+          "N10-REJECTED-20261025",
+          "N09-ACCEPTED-20261025",
+          "N10-ACCEPTED-20261025"
+        ],
+        "required": [
+          "learnerDecision",
+          "availableInformation",
+          "reasonToProceed",
+          "nextWholeState",
+          "misconception",
+          "reducedSupportVariant",
+          "findings",
+          "patternDecision",
+          "groupBoundaryReview",
+          "blankDecisionReview",
+          "prosePlacementReview",
+          "terminalRoleReview",
+          "visibleProgressionReview"
+        ],
+        "constraints": [
+          "可視状態だけで次へ進めるかを先に検討する",
+          "作成者の理由欄を合格根拠にしない",
+          "同一AIの別passを独立モデルと呼ばない"
+        ],
+        "requestHash": "11ee2282814ea239ce704c413ddefcd135e1bdd34d2f385033fe46e7c0dea28b"
+      },
+      "response": {
+        "requestHash": "11ee2282814ea239ce704c413ddefcd135e1bdd34d2f385033fe46e7c0dea28b",
+        "phase": "design",
+        "reviewer": "current-assistant-visible-state-pass; not independent AI",
+        "learnerDecision": "右辺にも同じ数を加える",
+        "availableInformation": "前の補助式と左辺の加数が既知で、右辺だけ未完成",
+        "reasonToProceed": "片側だけの操作にしない",
+        "nextWholeState": "両辺への加算を保った全体の不等式へ戻る",
+        "misconception": "左辺だけを変えて大小関係を変える",
+        "reducedSupportVariant": "別の類題で補助計算を手本へ変更する候補。今回の既存採点IDは統合しない。",
+        "patternDecision": "一つの実数一次不等式を同じ条件で変形するT04。",
+        "groupBoundaryReview": "stage05-06は同じ原問。stage07の境界代入は意味の判断として分ける。",
+        "blankDecisionReview": "右辺にも同じ数を加える。新規二枠と既存の別回答を混同しない。",
+        "prosePlacementReview": "目的は式の前、操作後の意味はその行の後へ配置。除数を先の穴より前に教えない。",
+        "terminalRoleReview": "最後の主行が解。境界検算への接続文は残し、単純な再掲は足さない。",
+        "visibleProgressionReview": "可視snapshotのcurrentだけが未完成。後続の行・閉じたhint・author expectedを入力に含めない。",
+        "findings": [],
+        "caseDispositions": [
+          {
+            "caseId": "N07-USER-F01",
+            "status": "APPLIED",
+            "evidence": "元の例題を式列の先頭に保ち、係数・定数・操作の前提を補助式で示す。"
+          },
+          {
+            "caseId": "N07-USER-F02",
+            "status": "APPLIED",
+            "evidence": "補助計算の数を不等式全体へ戻す。r-cancel→r-add、r-divisor→r-divideを対応付ける。"
+          },
+          {
+            "caseId": "N07-USER-F03",
+            "status": "APPLIED",
+            "evidence": "定数項をなくす→係数を1にする目的を操作前に置く。"
+          },
+          {
+            "caseId": "N07-USER-F04",
+            "status": "APPLIED",
+            "evidence": "両辺への加算・整理・両辺への除算・商を別の検算atomとして保つ。"
+          },
+          {
+            "caseId": "N07-USER-F05",
+            "status": "NOT_APPLICABLE",
+            "evidence": "この局所例には新しい定義語を導入しない。既存の定義ブロックは改変しない。"
+          },
+          {
+            "caseId": "N07-USER-F06",
+            "status": "APPLIED",
+            "evidence": "7行全体をsource stateへ結び、文中数式・分数内slot・比較記号を実描画検査する。"
+          },
+          {
+            "caseId": "n07-layout-relation",
+            "status": "APPLIED",
+            "evidence": "式列の比較記号の列を揃え、説明を適切な行間へ置く。"
+          },
+          {
+            "caseId": "n07-layout-positive",
+            "status": "APPLIED",
+            "evidence": "既存の余白・概念の黒字・選択UIは継承し、通常変形の局所だけopt-in。"
+          },
+          {
+            "caseId": "first-title-layout-positive",
+            "status": "APPLIED",
+            "evidence": "式列の比較記号の列を揃え、説明を適切な行間へ置く。"
+          },
+          {
+            "caseId": "N07-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "その教材・版全体への受入であり、N11新表示の品質labelや合格根拠へ転用しない。"
+          },
+          {
+            "caseId": "N08-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "その教材・版全体への受入であり、N11新表示の品質labelや合格根拠へ転用しない。"
+          },
+          {
+            "caseId": "N09-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "原問→操作→整理→次の操作→解の順を保ち、未来の商を先出ししない。"
+          },
+          {
+            "caseId": "N10-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "分子分母と積の対象をAST構造で保持する。N10の原問は変更しない。"
+          },
+          {
+            "caseId": "N09-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "その教材・版全体への受入であり、N11新表示の品質labelや合格根拠へ転用しない。"
+          },
+          {
+            "caseId": "N10-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "その教材・版全体への受入であり、N11新表示の品質labelや合格根拠へ転用しない。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "n11-05",
+      "request": {
+        "profile": "ordinary-transformation",
+        "schemaVersion": "solution-review/1",
+        "phase": "design",
+        "visible": {
+          "initial": {
+            "id": "n11-tg-initial",
+            "sourceNodeId": "n11-solve-problem",
+            "stateRef": "S0",
+            "role": "main",
+            "continuation": false,
+            "done": true,
+            "before": [
+              {
+                "type": "text",
+                "text": "不等式を変形して、条件を満たすすべての実数の範囲を求めます。まず、左辺の定数項をなくします。"
+              }
+            ],
+            "after": [],
+            "formula": {
+              "left": [
+                {
+                  "type": "math",
+                  "latex": "3x-2"
+                }
+              ],
+              "relation": "<",
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "5"
+                }
+              ]
+            },
+            "current": null
+          },
+          "completed": [
+            {
+              "id": "n11-tg-initial",
+              "sourceNodeId": "n11-solve-problem",
+              "stateRef": "S0",
+              "role": "main",
+              "continuation": false,
+              "done": true,
+              "before": [
+                {
+                  "type": "text",
+                  "text": "不等式を変形して、条件を満たすすべての実数の範囲を求めます。まず、左辺の定数項をなくします。"
+                }
+              ],
+              "after": [],
+              "formula": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "3x-2"
+                  }
+                ],
+                "relation": "<",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "5"
+                  }
+                ]
+              },
+              "current": null
+            },
+            {
+              "id": "n11-tg-cancel",
+              "sourceNodeId": "n11-wm017-q05-operation",
+              "stateRef": "A0",
+              "role": "auxiliary",
+              "continuation": false,
+              "done": true,
+              "before": [
+                {
+                  "type": "text",
+                  "text": "左辺の定数部分を"
+                },
+                {
+                  "type": "math",
+                  "latex": "0"
+                },
+                {
+                  "type": "text",
+                  "text": "にする数を、次の式で確かめます。"
+                }
+              ],
+              "after": [
+                {
+                  "type": "text",
+                  "text": "左辺で定数を打ち消す数が決まりました。同じ数を右辺にも加えます。"
+                }
+              ],
+              "formula": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "-2+2"
+                  }
+                ],
+                "relation": "=",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "0"
+                  }
+                ]
+              },
+              "current": null
+            },
+            {
+              "id": "n11-tg-add",
+              "sourceNodeId": "n11-wm017-q05-balance",
+              "stateRef": "S1",
+              "role": "main",
+              "continuation": false,
+              "done": true,
+              "before": [
+                {
+                  "type": "text",
+                  "text": "両辺に同じ数を加えると、大小関係は保たれます。右辺にも同じ操作を入れます。"
+                }
+              ],
+              "after": [
+                {
+                  "type": "text",
+                  "text": "左辺の定数部分が"
+                },
+                {
+                  "type": "math",
+                  "latex": "0"
+                },
+                {
+                  "type": "text",
+                  "text": "になりました。右辺の和を計算します。"
+                }
+              ],
+              "formula": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "3x-2+2"
+                  }
+                ],
+                "relation": "<",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "5+2"
+                  }
+                ]
+              },
+              "current": null
+            }
+          ],
+          "current": {
+            "id": "n11-tg-sum",
+            "sourceNodeId": "n11-05",
+            "stateRef": "S2",
+            "role": "main",
+            "continuation": false,
+            "done": false,
+            "before": [
+              {
+                "type": "text",
+                "text": "左右を整理して、不等式を次の行へ進めます。"
+              }
+            ],
+            "after": [],
+            "formula": {
+              "left": [
+                {
+                  "type": "math",
+                  "latex": "3x"
+                }
+              ],
+              "relation": "<",
+              "right": [
+                {
+                  "type": "slot",
+                  "id": "n11-tg-sum-sum",
+                  "interactionRef": "n11-05"
+                }
+              ]
+            },
+            "current": {
+              "id": "n11-05",
+              "learnerDecision": "左右を整理して、不等式を次の行へ進めます。",
+              "blankRole": "calculation",
+              "choices": [
+                "7",
+                "3",
+                "5",
+                "9"
+              ]
+            }
+          }
+        },
+        "sourceRefs": [
+          "src/data/textbook/math/numbers/n11Authored.json",
+          "W-MATH-038/P-001/15"
+        ],
+        "caseIds": [
+          "N07-USER-F01",
+          "N07-USER-F02",
+          "N07-USER-F03",
+          "N07-USER-F04",
+          "N07-USER-F05",
+          "N07-USER-F06",
+          "n07-layout-relation",
+          "n07-layout-positive",
+          "first-title-layout-positive",
+          "N07-ACCEPTED-20261025",
+          "N08-ACCEPTED-20261025",
+          "N09-REJECTED-20261025",
+          "N10-REJECTED-20261025",
+          "N09-ACCEPTED-20261025",
+          "N10-ACCEPTED-20261025"
+        ],
+        "required": [
+          "learnerDecision",
+          "availableInformation",
+          "reasonToProceed",
+          "nextWholeState",
+          "misconception",
+          "reducedSupportVariant",
+          "findings",
+          "patternDecision",
+          "groupBoundaryReview",
+          "blankDecisionReview",
+          "prosePlacementReview",
+          "terminalRoleReview",
+          "visibleProgressionReview"
+        ],
+        "constraints": [
+          "可視状態だけで次へ進めるかを先に検討する",
+          "作成者の理由欄を合格根拠にしない",
+          "同一AIの別passを独立モデルと呼ばない"
+        ],
+        "requestHash": "5c37352a89209626b796e5c46dce32358d4656bdc682745190820fa14bf9ac94"
+      },
+      "response": {
+        "requestHash": "5c37352a89209626b796e5c46dce32358d4656bdc682745190820fa14bf9ac94",
+        "phase": "design",
+        "reviewer": "current-assistant-visible-state-pass; not independent AI",
+        "learnerDecision": "右辺の和を計算する",
+        "availableInformation": "両辺への同じ操作が完成し、計算対象が見える",
+        "reasonToProceed": "文字の係数を1へ変える準備をする",
+        "nextWholeState": "整理後の3x<7を残す",
+        "misconception": "移項の符号と演算の符号を混ぜる",
+        "reducedSupportVariant": "別の類題で補助計算を手本へ変更する候補。今回の既存採点IDは統合しない。",
+        "patternDecision": "一つの実数一次不等式を同じ条件で変形するT04。",
+        "groupBoundaryReview": "stage05-06は同じ原問。stage07の境界代入は意味の判断として分ける。",
+        "blankDecisionReview": "右辺の和を計算する。新規二枠と既存の別回答を混同しない。",
+        "prosePlacementReview": "目的は式の前、操作後の意味はその行の後へ配置。除数を先の穴より前に教えない。",
+        "terminalRoleReview": "最後の主行が解。境界検算への接続文は残し、単純な再掲は足さない。",
+        "visibleProgressionReview": "可視snapshotのcurrentだけが未完成。後続の行・閉じたhint・author expectedを入力に含めない。",
+        "findings": [],
+        "caseDispositions": [
+          {
+            "caseId": "N07-USER-F01",
+            "status": "APPLIED",
+            "evidence": "元の例題を式列の先頭に保ち、係数・定数・操作の前提を補助式で示す。"
+          },
+          {
+            "caseId": "N07-USER-F02",
+            "status": "APPLIED",
+            "evidence": "補助計算の数を不等式全体へ戻す。r-cancel→r-add、r-divisor→r-divideを対応付ける。"
+          },
+          {
+            "caseId": "N07-USER-F03",
+            "status": "APPLIED",
+            "evidence": "定数項をなくす→係数を1にする目的を操作前に置く。"
+          },
+          {
+            "caseId": "N07-USER-F04",
+            "status": "APPLIED",
+            "evidence": "両辺への加算・整理・両辺への除算・商を別の検算atomとして保つ。"
+          },
+          {
+            "caseId": "N07-USER-F05",
+            "status": "NOT_APPLICABLE",
+            "evidence": "この局所例には新しい定義語を導入しない。既存の定義ブロックは改変しない。"
+          },
+          {
+            "caseId": "N07-USER-F06",
+            "status": "APPLIED",
+            "evidence": "7行全体をsource stateへ結び、文中数式・分数内slot・比較記号を実描画検査する。"
+          },
+          {
+            "caseId": "n07-layout-relation",
+            "status": "APPLIED",
+            "evidence": "式列の比較記号の列を揃え、説明を適切な行間へ置く。"
+          },
+          {
+            "caseId": "n07-layout-positive",
+            "status": "APPLIED",
+            "evidence": "既存の余白・概念の黒字・選択UIは継承し、通常変形の局所だけopt-in。"
+          },
+          {
+            "caseId": "first-title-layout-positive",
+            "status": "APPLIED",
+            "evidence": "式列の比較記号の列を揃え、説明を適切な行間へ置く。"
+          },
+          {
+            "caseId": "N07-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "その教材・版全体への受入であり、N11新表示の品質labelや合格根拠へ転用しない。"
+          },
+          {
+            "caseId": "N08-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "その教材・版全体への受入であり、N11新表示の品質labelや合格根拠へ転用しない。"
+          },
+          {
+            "caseId": "N09-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "原問→操作→整理→次の操作→解の順を保ち、未来の商を先出ししない。"
+          },
+          {
+            "caseId": "N10-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "分子分母と積の対象をAST構造で保持する。N10の原問は変更しない。"
+          },
+          {
+            "caseId": "N09-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "その教材・版全体への受入であり、N11新表示の品質labelや合格根拠へ転用しない。"
+          },
+          {
+            "caseId": "N10-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "その教材・版全体への受入であり、N11新表示の品質labelや合格根拠へ転用しない。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "n11-q06-operation",
+      "request": {
+        "profile": "ordinary-transformation",
+        "schemaVersion": "solution-review/1",
+        "phase": "design",
+        "visible": {
+          "initial": {
+            "id": "n11-tg-initial",
+            "sourceNodeId": "n11-solve-problem",
+            "stateRef": "S0",
+            "role": "main",
+            "continuation": false,
+            "done": true,
+            "before": [
+              {
+                "type": "text",
+                "text": "不等式を変形して、条件を満たすすべての実数の範囲を求めます。まず、左辺の定数項をなくします。"
+              }
+            ],
+            "after": [],
+            "formula": {
+              "left": [
+                {
+                  "type": "math",
+                  "latex": "3x-2"
+                }
+              ],
+              "relation": "<",
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "5"
+                }
+              ]
+            },
+            "current": null
+          },
+          "completed": [
+            {
+              "id": "n11-tg-initial",
+              "sourceNodeId": "n11-solve-problem",
+              "stateRef": "S0",
+              "role": "main",
+              "continuation": false,
+              "done": true,
+              "before": [
+                {
+                  "type": "text",
+                  "text": "不等式を変形して、条件を満たすすべての実数の範囲を求めます。まず、左辺の定数項をなくします。"
+                }
+              ],
+              "after": [],
+              "formula": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "3x-2"
+                  }
+                ],
+                "relation": "<",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "5"
+                  }
+                ]
+              },
+              "current": null
+            },
+            {
+              "id": "n11-tg-cancel",
+              "sourceNodeId": "n11-wm017-q05-operation",
+              "stateRef": "A0",
+              "role": "auxiliary",
+              "continuation": false,
+              "done": true,
+              "before": [
+                {
+                  "type": "text",
+                  "text": "左辺の定数部分を"
+                },
+                {
+                  "type": "math",
+                  "latex": "0"
+                },
+                {
+                  "type": "text",
+                  "text": "にする数を、次の式で確かめます。"
+                }
+              ],
+              "after": [
+                {
+                  "type": "text",
+                  "text": "左辺で定数を打ち消す数が決まりました。同じ数を右辺にも加えます。"
+                }
+              ],
+              "formula": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "-2+2"
+                  }
+                ],
+                "relation": "=",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "0"
+                  }
+                ]
+              },
+              "current": null
+            },
+            {
+              "id": "n11-tg-add",
+              "sourceNodeId": "n11-wm017-q05-balance",
+              "stateRef": "S1",
+              "role": "main",
+              "continuation": false,
+              "done": true,
+              "before": [
+                {
+                  "type": "text",
+                  "text": "両辺に同じ数を加えると、大小関係は保たれます。右辺にも同じ操作を入れます。"
+                }
+              ],
+              "after": [
+                {
+                  "type": "text",
+                  "text": "左辺の定数部分が"
+                },
+                {
+                  "type": "math",
+                  "latex": "0"
+                },
+                {
+                  "type": "text",
+                  "text": "になりました。右辺の和を計算します。"
+                }
+              ],
+              "formula": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "3x-2+2"
+                  }
+                ],
+                "relation": "<",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "5+2"
+                  }
+                ]
+              },
+              "current": null
+            },
+            {
+              "id": "n11-tg-sum",
+              "sourceNodeId": "n11-05",
+              "stateRef": "S2",
+              "role": "main",
+              "continuation": false,
+              "done": true,
+              "before": [
+                {
+                  "type": "text",
+                  "text": "左右を整理して、不等式を次の行へ進めます。"
+                }
+              ],
+              "after": [
+                {
+                  "type": "text",
+                  "text": "次は、左辺の係数を"
+                },
+                {
+                  "type": "math",
+                  "latex": "1"
+                },
+                {
+                  "type": "text",
+                  "text": "にします。"
+                }
+              ],
+              "formula": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "3x"
+                  }
+                ],
+                "relation": "<",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "7"
+                  }
+                ]
+              },
+              "current": null
+            }
+          ],
+          "current": {
+            "id": "n11-tg-divisor",
+            "sourceNodeId": "n11-q06-operation",
+            "stateRef": "A0",
+            "role": "auxiliary",
+            "continuation": false,
+            "done": false,
+            "before": [
+              {
+                "type": "text",
+                "text": "係数を"
+              },
+              {
+                "type": "math",
+                "latex": "1"
+              },
+              {
+                "type": "text",
+                "text": "にするために割る数を、次の式で確かめます。"
+              }
+            ],
+            "after": [],
+            "formula": {
+              "left": [
+                {
+                  "type": "fraction",
+                  "numerator": [
+                    {
+                      "type": "math",
+                      "latex": "3"
+                    }
+                  ],
+                  "denominator": [
+                    {
+                      "type": "slot",
+                      "id": "n11-tg-divisor-divisor",
+                      "interactionRef": "n11-q06-operation"
+                    }
+                  ]
+                }
+              ],
+              "relation": "=",
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "1"
+                }
+              ]
+            },
+            "current": {
+              "id": "n11-q06-operation",
+              "learnerDecision": "係数を1にするために割る数を、次の式で確かめます。",
+              "blankRole": "operand",
+              "choices": [
+                "3",
+                "1",
+                "-3"
+              ]
+            }
+          }
+        },
+        "sourceRefs": [
+          "src/data/textbook/math/numbers/n11Authored.json",
+          "W-MATH-038/P-001/15"
+        ],
+        "caseIds": [
+          "N07-USER-F01",
+          "N07-USER-F02",
+          "N07-USER-F03",
+          "N07-USER-F04",
+          "N07-USER-F05",
+          "N07-USER-F06",
+          "n07-layout-relation",
+          "n07-layout-positive",
+          "first-title-layout-positive",
+          "N07-ACCEPTED-20261025",
+          "N08-ACCEPTED-20261025",
+          "N09-REJECTED-20261025",
+          "N10-REJECTED-20261025",
+          "N09-ACCEPTED-20261025",
+          "N10-ACCEPTED-20261025"
+        ],
+        "required": [
+          "learnerDecision",
+          "availableInformation",
+          "reasonToProceed",
+          "nextWholeState",
+          "misconception",
+          "reducedSupportVariant",
+          "findings",
+          "patternDecision",
+          "groupBoundaryReview",
+          "blankDecisionReview",
+          "prosePlacementReview",
+          "terminalRoleReview",
+          "visibleProgressionReview"
+        ],
+        "constraints": [
+          "可視状態だけで次へ進めるかを先に検討する",
+          "作成者の理由欄を合格根拠にしない",
+          "同一AIの別passを独立モデルと呼ばない"
+        ],
+        "requestHash": "a8df72b86e3a8c05afc86077a3cb81cb5464133fd90d4b9c6f4408e67e367018"
+      },
+      "response": {
+        "requestHash": "a8df72b86e3a8c05afc86077a3cb81cb5464133fd90d4b9c6f4408e67e367018",
+        "phase": "design",
+        "reviewer": "current-assistant-visible-state-pass; not independent AI",
+        "learnerDecision": "係数を1にする除数を決める",
+        "availableInformation": "前の全体の3x<7と3÷穴=1の補助式がある。直前の文は除数を言わない",
+        "reasonToProceed": "文字だけの左辺を作る",
+        "nextWholeState": "正の除数を両辺へ適用する式へ戻る",
+        "misconception": "係数をそのまま残すか負の1へ変える",
+        "reducedSupportVariant": "別の類題で補助計算を手本へ変更する候補。今回の既存採点IDは統合しない。",
+        "patternDecision": "一つの実数一次不等式を同じ条件で変形するT04。",
+        "groupBoundaryReview": "stage05-06は同じ原問。stage07の境界代入は意味の判断として分ける。",
+        "blankDecisionReview": "係数を1にする除数を決める。新規二枠と既存の別回答を混同しない。",
+        "prosePlacementReview": "目的は式の前、操作後の意味はその行の後へ配置。除数を先の穴より前に教えない。",
+        "terminalRoleReview": "最後の主行が解。境界検算への接続文は残し、単純な再掲は足さない。",
+        "visibleProgressionReview": "可視snapshotのcurrentだけが未完成。後続の行・閉じたhint・author expectedを入力に含めない。",
+        "findings": [],
+        "caseDispositions": [
+          {
+            "caseId": "N07-USER-F01",
+            "status": "APPLIED",
+            "evidence": "元の例題を式列の先頭に保ち、係数・定数・操作の前提を補助式で示す。"
+          },
+          {
+            "caseId": "N07-USER-F02",
+            "status": "APPLIED",
+            "evidence": "補助計算の数を不等式全体へ戻す。r-cancel→r-add、r-divisor→r-divideを対応付ける。"
+          },
+          {
+            "caseId": "N07-USER-F03",
+            "status": "APPLIED",
+            "evidence": "定数項をなくす→係数を1にする目的を操作前に置く。"
+          },
+          {
+            "caseId": "N07-USER-F04",
+            "status": "APPLIED",
+            "evidence": "両辺への加算・整理・両辺への除算・商を別の検算atomとして保つ。"
+          },
+          {
+            "caseId": "N07-USER-F05",
+            "status": "NOT_APPLICABLE",
+            "evidence": "この局所例には新しい定義語を導入しない。既存の定義ブロックは改変しない。"
+          },
+          {
+            "caseId": "N07-USER-F06",
+            "status": "APPLIED",
+            "evidence": "7行全体をsource stateへ結び、文中数式・分数内slot・比較記号を実描画検査する。"
+          },
+          {
+            "caseId": "n07-layout-relation",
+            "status": "APPLIED",
+            "evidence": "式列の比較記号の列を揃え、説明を適切な行間へ置く。"
+          },
+          {
+            "caseId": "n07-layout-positive",
+            "status": "APPLIED",
+            "evidence": "既存の余白・概念の黒字・選択UIは継承し、通常変形の局所だけopt-in。"
+          },
+          {
+            "caseId": "first-title-layout-positive",
+            "status": "APPLIED",
+            "evidence": "式列の比較記号の列を揃え、説明を適切な行間へ置く。"
+          },
+          {
+            "caseId": "N07-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "その教材・版全体への受入であり、N11新表示の品質labelや合格根拠へ転用しない。"
+          },
+          {
+            "caseId": "N08-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "その教材・版全体への受入であり、N11新表示の品質labelや合格根拠へ転用しない。"
+          },
+          {
+            "caseId": "N09-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "原問→操作→整理→次の操作→解の順を保ち、未来の商を先出ししない。"
+          },
+          {
+            "caseId": "N10-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "分子分母と積の対象をAST構造で保持する。N10の原問は変更しない。"
+          },
+          {
+            "caseId": "N09-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "その教材・版全体への受入であり、N11新表示の品質labelや合格根拠へ転用しない。"
+          },
+          {
+            "caseId": "N10-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "その教材・版全体への受入であり、N11新表示の品質labelや合格根拠へ転用しない。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "n11-06",
+      "request": {
+        "profile": "ordinary-transformation",
+        "schemaVersion": "solution-review/1",
+        "phase": "design",
+        "visible": {
+          "initial": {
+            "id": "n11-tg-initial",
+            "sourceNodeId": "n11-solve-problem",
+            "stateRef": "S0",
+            "role": "main",
+            "continuation": false,
+            "done": true,
+            "before": [
+              {
+                "type": "text",
+                "text": "不等式を変形して、条件を満たすすべての実数の範囲を求めます。まず、左辺の定数項をなくします。"
+              }
+            ],
+            "after": [],
+            "formula": {
+              "left": [
+                {
+                  "type": "math",
+                  "latex": "3x-2"
+                }
+              ],
+              "relation": "<",
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "5"
+                }
+              ]
+            },
+            "current": null
+          },
+          "completed": [
+            {
+              "id": "n11-tg-initial",
+              "sourceNodeId": "n11-solve-problem",
+              "stateRef": "S0",
+              "role": "main",
+              "continuation": false,
+              "done": true,
+              "before": [
+                {
+                  "type": "text",
+                  "text": "不等式を変形して、条件を満たすすべての実数の範囲を求めます。まず、左辺の定数項をなくします。"
+                }
+              ],
+              "after": [],
+              "formula": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "3x-2"
+                  }
+                ],
+                "relation": "<",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "5"
+                  }
+                ]
+              },
+              "current": null
+            },
+            {
+              "id": "n11-tg-cancel",
+              "sourceNodeId": "n11-wm017-q05-operation",
+              "stateRef": "A0",
+              "role": "auxiliary",
+              "continuation": false,
+              "done": true,
+              "before": [
+                {
+                  "type": "text",
+                  "text": "左辺の定数部分を"
+                },
+                {
+                  "type": "math",
+                  "latex": "0"
+                },
+                {
+                  "type": "text",
+                  "text": "にする数を、次の式で確かめます。"
+                }
+              ],
+              "after": [
+                {
+                  "type": "text",
+                  "text": "左辺で定数を打ち消す数が決まりました。同じ数を右辺にも加えます。"
+                }
+              ],
+              "formula": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "-2+2"
+                  }
+                ],
+                "relation": "=",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "0"
+                  }
+                ]
+              },
+              "current": null
+            },
+            {
+              "id": "n11-tg-add",
+              "sourceNodeId": "n11-wm017-q05-balance",
+              "stateRef": "S1",
+              "role": "main",
+              "continuation": false,
+              "done": true,
+              "before": [
+                {
+                  "type": "text",
+                  "text": "両辺に同じ数を加えると、大小関係は保たれます。右辺にも同じ操作を入れます。"
+                }
+              ],
+              "after": [
+                {
+                  "type": "text",
+                  "text": "左辺の定数部分が"
+                },
+                {
+                  "type": "math",
+                  "latex": "0"
+                },
+                {
+                  "type": "text",
+                  "text": "になりました。右辺の和を計算します。"
+                }
+              ],
+              "formula": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "3x-2+2"
+                  }
+                ],
+                "relation": "<",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "5+2"
+                  }
+                ]
+              },
+              "current": null
+            },
+            {
+              "id": "n11-tg-sum",
+              "sourceNodeId": "n11-05",
+              "stateRef": "S2",
+              "role": "main",
+              "continuation": false,
+              "done": true,
+              "before": [
+                {
+                  "type": "text",
+                  "text": "左右を整理して、不等式を次の行へ進めます。"
+                }
+              ],
+              "after": [
+                {
+                  "type": "text",
+                  "text": "次は、左辺の係数を"
+                },
+                {
+                  "type": "math",
+                  "latex": "1"
+                },
+                {
+                  "type": "text",
+                  "text": "にします。"
+                }
+              ],
+              "formula": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "3x"
+                  }
+                ],
+                "relation": "<",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "7"
+                  }
+                ]
+              },
+              "current": null
+            },
+            {
+              "id": "n11-tg-divisor",
+              "sourceNodeId": "n11-q06-operation",
+              "stateRef": "A0",
+              "role": "auxiliary",
+              "continuation": false,
+              "done": true,
+              "before": [
+                {
+                  "type": "text",
+                  "text": "係数を"
+                },
+                {
+                  "type": "math",
+                  "latex": "1"
+                },
+                {
+                  "type": "text",
+                  "text": "にするために割る数を、次の式で確かめます。"
+                }
+              ],
+              "after": [
+                {
+                  "type": "text",
+                  "text": "決めた数は正なので、両辺をその数で割っても不等号の向きは変わりません。"
+                }
+              ],
+              "formula": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "\\frac{3}{3}"
+                  }
+                ],
+                "relation": "=",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "1"
+                  }
+                ]
+              },
+              "current": null
+            },
+            {
+              "id": "n11-tg-divide",
+              "sourceNodeId": "n11-q06-operation",
+              "stateRef": "S3",
+              "role": "main",
+              "continuation": false,
+              "done": true,
+              "before": [
+                {
+                  "type": "text",
+                  "text": "両辺へ同じ除算を行います。"
+                }
+              ],
+              "after": [],
+              "formula": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "\\frac{3x}{3}"
+                  }
+                ],
+                "relation": "<",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "\\frac{7}{3}"
+                  }
+                ]
+              },
+              "current": null
+            }
+          ],
+          "current": {
+            "id": "n11-tg-final",
+            "sourceNodeId": "n11-06",
+            "stateRef": "S4",
+            "role": "main",
+            "continuation": false,
+            "done": false,
+            "before": [
+              {
+                "type": "text",
+                "text": "右辺の商を入れて、範囲を表します。"
+              }
+            ],
+            "after": [],
+            "formula": {
+              "left": [
+                {
+                  "type": "math",
+                  "latex": "x"
+                }
+              ],
+              "relation": "<",
+              "right": [
+                {
+                  "type": "slot",
+                  "id": "n11-tg-final-quotient",
+                  "interactionRef": "n11-06"
+                }
+              ]
+            },
+            "current": {
+              "id": "n11-06",
+              "learnerDecision": "右辺の商を入れて、範囲を表します。",
+              "blankRole": "calculation",
+              "choices": [
+                "\\frac73",
+                "\\frac37",
+                "-\\frac73",
+                "7"
+              ]
+            }
+          }
+        },
+        "sourceRefs": [
+          "src/data/textbook/math/numbers/n11Authored.json",
+          "W-MATH-038/P-001/15"
+        ],
+        "caseIds": [
+          "N07-USER-F01",
+          "N07-USER-F02",
+          "N07-USER-F03",
+          "N07-USER-F04",
+          "N07-USER-F05",
+          "N07-USER-F06",
+          "n07-layout-relation",
+          "n07-layout-positive",
+          "first-title-layout-positive",
+          "N07-ACCEPTED-20261025",
+          "N08-ACCEPTED-20261025",
+          "N09-REJECTED-20261025",
+          "N10-REJECTED-20261025",
+          "N09-ACCEPTED-20261025",
+          "N10-ACCEPTED-20261025"
+        ],
+        "required": [
+          "learnerDecision",
+          "availableInformation",
+          "reasonToProceed",
+          "nextWholeState",
+          "misconception",
+          "reducedSupportVariant",
+          "findings",
+          "patternDecision",
+          "groupBoundaryReview",
+          "blankDecisionReview",
+          "prosePlacementReview",
+          "terminalRoleReview",
+          "visibleProgressionReview"
+        ],
+        "constraints": [
+          "可視状態だけで次へ進めるかを先に検討する",
+          "作成者の理由欄を合格根拠にしない",
+          "同一AIの別passを独立モデルと呼ばない"
+        ],
+        "requestHash": "f5c4cba0da7a527b1c4add097e7ef58957531b82ede7a73d8e61922eb96faf90"
+      },
+      "response": {
+        "requestHash": "f5c4cba0da7a527b1c4add097e7ef58957531b82ede7a73d8e61922eb96faf90",
+        "phase": "design",
+        "reviewer": "current-assistant-visible-state-pass; not independent AI",
+        "learnerDecision": "全体の不等式の商を完成する",
+        "availableInformation": "両辺へ適用した除算と向きが見え、右辺の商だけが未完成",
+        "reasonToProceed": "実数全体の範囲で解を表す",
+        "nextWholeState": "末尾の不等式を解として完成し、別の同じ答えカードを追加しない",
+        "misconception": "分子と分母を逆にする",
+        "reducedSupportVariant": "別の類題で補助計算を手本へ変更する候補。今回の既存採点IDは統合しない。",
+        "patternDecision": "一つの実数一次不等式を同じ条件で変形するT04。",
+        "groupBoundaryReview": "stage05-06は同じ原問。stage07の境界代入は意味の判断として分ける。",
+        "blankDecisionReview": "全体の不等式の商を完成する。新規二枠と既存の別回答を混同しない。",
+        "prosePlacementReview": "目的は式の前、操作後の意味はその行の後へ配置。除数を先の穴より前に教えない。",
+        "terminalRoleReview": "最後の主行が解。境界検算への接続文は残し、単純な再掲は足さない。",
+        "visibleProgressionReview": "可視snapshotのcurrentだけが未完成。後続の行・閉じたhint・author expectedを入力に含めない。",
+        "findings": [],
+        "caseDispositions": [
+          {
+            "caseId": "N07-USER-F01",
+            "status": "APPLIED",
+            "evidence": "元の例題を式列の先頭に保ち、係数・定数・操作の前提を補助式で示す。"
+          },
+          {
+            "caseId": "N07-USER-F02",
+            "status": "APPLIED",
+            "evidence": "補助計算の数を不等式全体へ戻す。r-cancel→r-add、r-divisor→r-divideを対応付ける。"
+          },
+          {
+            "caseId": "N07-USER-F03",
+            "status": "APPLIED",
+            "evidence": "定数項をなくす→係数を1にする目的を操作前に置く。"
+          },
+          {
+            "caseId": "N07-USER-F04",
+            "status": "APPLIED",
+            "evidence": "両辺への加算・整理・両辺への除算・商を別の検算atomとして保つ。"
+          },
+          {
+            "caseId": "N07-USER-F05",
+            "status": "NOT_APPLICABLE",
+            "evidence": "この局所例には新しい定義語を導入しない。既存の定義ブロックは改変しない。"
+          },
+          {
+            "caseId": "N07-USER-F06",
+            "status": "APPLIED",
+            "evidence": "7行全体をsource stateへ結び、文中数式・分数内slot・比較記号を実描画検査する。"
+          },
+          {
+            "caseId": "n07-layout-relation",
+            "status": "APPLIED",
+            "evidence": "式列の比較記号の列を揃え、説明を適切な行間へ置く。"
+          },
+          {
+            "caseId": "n07-layout-positive",
+            "status": "APPLIED",
+            "evidence": "既存の余白・概念の黒字・選択UIは継承し、通常変形の局所だけopt-in。"
+          },
+          {
+            "caseId": "first-title-layout-positive",
+            "status": "APPLIED",
+            "evidence": "式列の比較記号の列を揃え、説明を適切な行間へ置く。"
+          },
+          {
+            "caseId": "N07-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "その教材・版全体への受入であり、N11新表示の品質labelや合格根拠へ転用しない。"
+          },
+          {
+            "caseId": "N08-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "その教材・版全体への受入であり、N11新表示の品質labelや合格根拠へ転用しない。"
+          },
+          {
+            "caseId": "N09-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "原問→操作→整理→次の操作→解の順を保ち、未来の商を先出ししない。"
+          },
+          {
+            "caseId": "N10-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "分子分母と積の対象をAST構造で保持する。N10の原問は変更しない。"
+          },
+          {
+            "caseId": "N09-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "その教材・版全体への受入であり、N11新表示の品質labelや合格根拠へ転用しない。"
+          },
+          {
+            "caseId": "N10-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "その教材・版全体への受入であり、N11新表示の品質labelや合格根拠へ転用しない。"
+          }
+        ]
+      }
+    }
+  ]
+}

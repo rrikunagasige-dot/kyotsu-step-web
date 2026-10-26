@@ -1,0 +1,11 @@
+{
+  "kind": "orphan-lock-recovery",
+  "lock": {
+    "pid": 6,
+    "time": 1792987414.511543
+  },
+  "events": 2256,
+  "head": "90d125f6e5cbad5bad73f8f050d6169eb7a1404f3a259e7e579604f4e1c9bd5d",
+  "eventChainVerified": true,
+  "reason": "Native tool session ended exit1; no live native writer. Preserve bytes and verify the existing full shared chain before removing orphan lock; no ledger reset."
+}

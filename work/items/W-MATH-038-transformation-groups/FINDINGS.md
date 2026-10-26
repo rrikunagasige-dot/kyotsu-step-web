@@ -1,0 +1,11 @@
+# Findings — W-MATH-038
+
+- USER_POLICY：普通の式変形を一続きにまとめる。以前の概念・証明の小段階は意味があるので一律圧縮しない。P001承認は教材品質のGoldではない。
+- AI_FINDING：現行N11のn11-05後の文が、次の除数の穴の答えを告げる。承認された別表示計画で接続文を置き換え、原sourceは保存。
+- CODE_FINDING：旧保存の後半の正答が残り、新しい前提の穴だけ未回答という実在する形式で、当初のprojectionがINVALID_COMPLETION_ORDERを投げた。回答記録はそのまま保存し、表示へ渡す完了集合だけを依存関係で閉じる修正を実装。未来行を表示せず、既存正答の再入力も強制しない。
+- CODE_FINDING：係数を移す際の同じ多項式の加算まで、符号未確定として拒否されていた。加算では符号判定を要求せず多項式制限を保持。乗除は従来どおり符号未確定なら未対応。指定両辺操作・解集合検査を弱めない。
+- VISUAL_FINDING：グループ番号が最後の説明文の高さへ来た。既存NumberedEquationへ最後の数学行の実測anchorを渡し、末尾式へ合わせる。
+- ENVIRONMENT：既定Playwright Chromiumの取得は壊れた配信zipで失敗。公式Chrome for Testingの156.0.8078.47 headless shellをローカルQAへ使用。日本語font不足はローカルにNoto CJKを用意して解消。アプリ依存・package lockは変更していない。aptの導入は環境権限で失敗し、システムへ導入していない。
+- TEST_CONFIGURATION：新しいTSX試験の初回はJSX設定不足でReact未定義、保存byte照合は既定5秒でtimeout。既存同様のautomatic JSXと20秒の上限を明示した。内容検査は削除していない。
+- SOURCE_BINDING：式単体が正しくても、元の問題と違えば教材として誤り。v2は原graph ASTへ、旧N11は承認済みの固定source/AST bridgeへ照合する検査と、別問題の偽装反例を追加した。未登録v1はNEEDS_MAPPING。source graphの属性順はstrict schemaで正規化して照合する。
+- COMPATIBILITY：表示planがない過去の承認は、従来のfingerprintを完全に保持する。新しい表示hashを持つblockだけ追加結合する。旧承認を失効させる形式変更は採用しない。

@@ -1,0 +1,2479 @@
+[
+  {
+    "id": "F01",
+    "expected": "PASS",
+    "status": "PASS",
+    "compiled": {
+      "schemaVersion": "transformation-reading/1",
+      "unitId": "fixture-transform-linear",
+      "presentationVersion": 1,
+      "baseIRHash": "585f419379cb37cdefdf0d7abb06b809c35b4851731de1773d78997b98adf2d4",
+      "irHash": "585f419379cb37cdefdf0d7abb06b809c35b4851731de1773d78997b98adf2d4",
+      "planHash": "b338fc1d57ed8fa54f8aec5c0d611d13098b0331e72c7f8c4c0294c6ef8025d4",
+      "learnerCopyHash": "1fbb75fd99026e15fb936597371eec985feef48b39d9634ff2c3773813a62062",
+      "gradingHash": "2762fb1fef9d4dd474b0a49b9b26868079ffc9a790ae9abfe4de3d0bc6047107",
+      "scope": {
+        "problemId": "fixture-transform-linear-problem",
+        "nodeIds": [
+          "node0",
+          "node1",
+          "node2",
+          "node3",
+          "node4"
+        ],
+        "stageIds": [
+          "stage1"
+        ],
+        "assumptionRefs": [
+          "x-real"
+        ]
+      },
+      "numberAliases": {},
+      "groups": [
+        {
+          "id": "fixture-transform-linear-group",
+          "kind": "relation-sequence",
+          "patternId": "T04",
+          "graphRef": "fixture-transform-linear",
+          "stageIds": [
+            "stage1"
+          ],
+          "sourceNodeIds": [
+            "node0",
+            "node1",
+            "node2",
+            "node3",
+            "node4"
+          ],
+          "stepRefs": [
+            "a01",
+            "a02",
+            "a03",
+            "a04"
+          ],
+          "number": 1,
+          "numberId": "fixture-transform-linear-number",
+          "boundaryReason": "Self-authored fixture in one scope",
+          "conclusion": {
+            "kind": "terminal-in-flow",
+            "stateRef": "S4"
+          },
+          "rows": [
+            {
+              "id": "row0",
+              "graphRef": "fixture-transform-linear",
+              "stateRef": "S0",
+              "sourceNodeId": "node0",
+              "sourceRefs": [
+                "block0"
+              ],
+              "role": "main",
+              "visibleAfter": [],
+              "interactionRef": null,
+              "slots": [],
+              "before": [],
+              "after": [],
+              "afterVisible": true,
+              "continuation": false,
+              "completed": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "3x+2"
+                  }
+                ],
+                "relation": "\\le",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "5"
+                  }
+                ]
+              },
+              "masked": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "3x+2"
+                  }
+                ],
+                "relation": "\\le",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "5"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "row1",
+              "graphRef": "fixture-transform-linear",
+              "stateRef": "S1",
+              "sourceNodeId": "node1",
+              "sourceRefs": [
+                "block1"
+              ],
+              "role": "main",
+              "visibleAfter": [],
+              "interactionRef": "A",
+              "slots": [
+                {
+                  "id": "A-0",
+                  "interactionRef": "A",
+                  "path": "left.args.2.args.1"
+                },
+                {
+                  "id": "A-1",
+                  "interactionRef": "A",
+                  "path": "right.args.1.args.1"
+                }
+              ],
+              "before": [],
+              "after": [],
+              "afterVisible": true,
+              "continuation": false,
+              "completed": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "3x+2-2"
+                  }
+                ],
+                "relation": "\\le",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "5-2"
+                  }
+                ]
+              },
+              "masked": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "3x"
+                  },
+                  {
+                    "type": "math",
+                    "latex": "+"
+                  },
+                  {
+                    "type": "math",
+                    "latex": "2"
+                  },
+                  {
+                    "type": "math",
+                    "latex": "+"
+                  },
+                  {
+                    "type": "math",
+                    "latex": "-"
+                  },
+                  {
+                    "type": "slot",
+                    "id": "A-0",
+                    "interactionRef": "A"
+                  }
+                ],
+                "relation": "\\le",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "5"
+                  },
+                  {
+                    "type": "math",
+                    "latex": "+"
+                  },
+                  {
+                    "type": "math",
+                    "latex": "-"
+                  },
+                  {
+                    "type": "slot",
+                    "id": "A-1",
+                    "interactionRef": "A"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "row2",
+              "graphRef": "fixture-transform-linear",
+              "stateRef": "S2",
+              "sourceNodeId": "node2",
+              "sourceRefs": [
+                "block2"
+              ],
+              "role": "main",
+              "visibleAfter": [
+                "A"
+              ],
+              "interactionRef": null,
+              "slots": [],
+              "before": [],
+              "after": [],
+              "afterVisible": true,
+              "continuation": false,
+              "completed": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "3x"
+                  }
+                ],
+                "relation": "\\le",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "3"
+                  }
+                ]
+              },
+              "masked": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "3x"
+                  }
+                ],
+                "relation": "\\le",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "3"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "row3",
+              "graphRef": "fixture-transform-linear",
+              "stateRef": "S3",
+              "sourceNodeId": "node3",
+              "sourceRefs": [
+                "block3"
+              ],
+              "role": "main",
+              "visibleAfter": [
+                "A"
+              ],
+              "interactionRef": "C",
+              "slots": [
+                {
+                  "id": "C-0",
+                  "interactionRef": "C",
+                  "path": "left.denominator"
+                },
+                {
+                  "id": "C-1",
+                  "interactionRef": "C",
+                  "path": "right.denominator"
+                }
+              ],
+              "before": [],
+              "after": [],
+              "afterVisible": true,
+              "continuation": false,
+              "completed": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "\\frac{3x}{3}"
+                  }
+                ],
+                "relation": "\\le",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "\\frac{3}{3}"
+                  }
+                ]
+              },
+              "masked": {
+                "left": [
+                  {
+                    "type": "fraction",
+                    "numerator": [
+                      {
+                        "type": "math",
+                        "latex": "3x"
+                      }
+                    ],
+                    "denominator": [
+                      {
+                        "type": "slot",
+                        "id": "C-0",
+                        "interactionRef": "C"
+                      }
+                    ]
+                  }
+                ],
+                "relation": "\\le",
+                "right": [
+                  {
+                    "type": "fraction",
+                    "numerator": [
+                      {
+                        "type": "math",
+                        "latex": "3"
+                      }
+                    ],
+                    "denominator": [
+                      {
+                        "type": "slot",
+                        "id": "C-1",
+                        "interactionRef": "C"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "row4",
+              "graphRef": "fixture-transform-linear",
+              "stateRef": "S4",
+              "sourceNodeId": "node4",
+              "sourceRefs": [
+                "block4"
+              ],
+              "role": "main",
+              "visibleAfter": [
+                "A",
+                "C"
+              ],
+              "interactionRef": null,
+              "slots": [],
+              "before": [],
+              "after": [],
+              "afterVisible": true,
+              "continuation": false,
+              "completed": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "x"
+                  }
+                ],
+                "relation": "\\le",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "\\frac{3}{3}"
+                  }
+                ]
+              },
+              "masked": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "x"
+                  }
+                ],
+                "relation": "\\le",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "\\frac{3}{3}"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "interactions": [
+        {
+          "id": "A",
+          "nodeId": "node1",
+          "blankRole": "operand",
+          "learnerDecision": "引く数を決める",
+          "prerequisiteInteractionIds": [],
+          "choices": [
+            "2",
+            "-2",
+            "3"
+          ],
+          "correctValue": "2"
+        },
+        {
+          "id": "C",
+          "nodeId": "node3",
+          "blankRole": "operand",
+          "learnerDecision": "正の除数を決める",
+          "prerequisiteInteractionIds": [
+            "A"
+          ],
+          "choices": [
+            "3",
+            "-3",
+            "0"
+          ],
+          "correctValue": "3"
+        }
+      ],
+      "automaticAcceptance": false,
+      "compiledPresentationHash": "d6321c9fc0d190b26aee98c41fe28797ee9292f293fb310b4848278ea337e0b0"
+    },
+    "mathReceipts": [
+      {
+        "graphId": "fixture-transform-linear",
+        "status": "PASS",
+        "checks": [
+          {
+            "transitionId": "a01",
+            "status": "PASS",
+            "ruleId": "add-both-sides",
+            "checks": [
+              "same-operation-both-sides",
+              "relation-direction",
+              "exact-result"
+            ],
+            "mathStatus": "PASS"
+          },
+          {
+            "transitionId": "a02",
+            "status": "PASS",
+            "ruleId": "rewrite",
+            "mathStatus": "PASS"
+          },
+          {
+            "transitionId": "a03",
+            "status": "PASS",
+            "ruleId": "divide-both-sides",
+            "checks": [
+              "same-operation-both-sides",
+              "relation-direction",
+              "exact-result"
+            ],
+            "mathStatus": "PASS"
+          },
+          {
+            "transitionId": "a04",
+            "status": "PASS",
+            "ruleId": "rewrite",
+            "mathStatus": "PASS"
+          }
+        ],
+        "engineVersion": "1.14.0",
+        "formalProof": false,
+        "proofStatus": "EXACT_SYMBOLIC_CHECKS",
+        "domain": "closed AST polynomial identities / constant linear operations / one-variable relation solution sets / numeric quadratic extrema",
+        "graphHash": "3cca226354983d801239794ba889c59d44bdeaee86c06bb81cbfd3759cd3ee53"
+      }
+    ],
+    "meaningAuditRequired": true
+  },
+  {
+    "id": "F02",
+    "expected": "PASS",
+    "status": "PASS",
+    "compiled": {
+      "schemaVersion": "transformation-reading/1",
+      "unitId": "fixture-negative",
+      "presentationVersion": 1,
+      "baseIRHash": "37a763cd74cca4972830a03508895f881d816703d947c788bb9ef6b93ead1dde",
+      "irHash": "37a763cd74cca4972830a03508895f881d816703d947c788bb9ef6b93ead1dde",
+      "planHash": "2508e05209033e3f3cec86ada1b92ab24db371a1d89f817ef42f626953270cc2",
+      "learnerCopyHash": "1fbb75fd99026e15fb936597371eec985feef48b39d9634ff2c3773813a62062",
+      "gradingHash": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "scope": {
+        "problemId": "fixture-negative-problem",
+        "nodeIds": [
+          "node0",
+          "node1",
+          "node2",
+          "node3",
+          "node4"
+        ],
+        "stageIds": [
+          "stage1"
+        ],
+        "assumptionRefs": [
+          "x-real"
+        ]
+      },
+      "numberAliases": {},
+      "groups": [
+        {
+          "id": "fixture-negative-group",
+          "kind": "relation-sequence",
+          "patternId": "T05",
+          "graphRef": "fixture-negative",
+          "stageIds": [
+            "stage1"
+          ],
+          "sourceNodeIds": [
+            "node0",
+            "node1",
+            "node2",
+            "node3",
+            "node4"
+          ],
+          "stepRefs": [
+            "a01",
+            "a02",
+            "a03",
+            "a04"
+          ],
+          "number": 1,
+          "numberId": "fixture-negative-number",
+          "boundaryReason": "Self-authored fixture in one scope",
+          "conclusion": {
+            "kind": "terminal-in-flow",
+            "stateRef": "S4"
+          },
+          "rows": [
+            {
+              "id": "row0",
+              "graphRef": "fixture-negative",
+              "stateRef": "S0",
+              "sourceNodeId": "node0",
+              "sourceRefs": [
+                "block0"
+              ],
+              "role": "main",
+              "visibleAfter": [],
+              "interactionRef": null,
+              "slots": [],
+              "before": [],
+              "after": [],
+              "afterVisible": true,
+              "continuation": false,
+              "completed": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "-2x+3"
+                  }
+                ],
+                "relation": "\\le",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "5"
+                  }
+                ]
+              },
+              "masked": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "-2x+3"
+                  }
+                ],
+                "relation": "\\le",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "5"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "row1",
+              "graphRef": "fixture-negative",
+              "stateRef": "S1",
+              "sourceNodeId": "node1",
+              "sourceRefs": [
+                "block1"
+              ],
+              "role": "main",
+              "visibleAfter": [],
+              "interactionRef": null,
+              "slots": [],
+              "before": [],
+              "after": [],
+              "afterVisible": true,
+              "continuation": false,
+              "completed": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "-2x+3-3"
+                  }
+                ],
+                "relation": "\\le",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "5-3"
+                  }
+                ]
+              },
+              "masked": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "-2x+3-3"
+                  }
+                ],
+                "relation": "\\le",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "5-3"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "row2",
+              "graphRef": "fixture-negative",
+              "stateRef": "S2",
+              "sourceNodeId": "node2",
+              "sourceRefs": [
+                "block2"
+              ],
+              "role": "main",
+              "visibleAfter": [],
+              "interactionRef": null,
+              "slots": [],
+              "before": [],
+              "after": [],
+              "afterVisible": true,
+              "continuation": false,
+              "completed": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "-2x"
+                  }
+                ],
+                "relation": "\\le",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "2"
+                  }
+                ]
+              },
+              "masked": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "-2x"
+                  }
+                ],
+                "relation": "\\le",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "2"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "row3",
+              "graphRef": "fixture-negative",
+              "stateRef": "S3",
+              "sourceNodeId": "node3",
+              "sourceRefs": [
+                "block3"
+              ],
+              "role": "main",
+              "visibleAfter": [],
+              "interactionRef": null,
+              "slots": [],
+              "before": [],
+              "after": [],
+              "afterVisible": true,
+              "continuation": false,
+              "completed": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "\\frac{-2x}{-2}"
+                  }
+                ],
+                "relation": "\\ge",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "\\frac{2}{-2}"
+                  }
+                ]
+              },
+              "masked": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "\\frac{-2x}{-2}"
+                  }
+                ],
+                "relation": "\\ge",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "\\frac{2}{-2}"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "row4",
+              "graphRef": "fixture-negative",
+              "stateRef": "S4",
+              "sourceNodeId": "node4",
+              "sourceRefs": [
+                "block4"
+              ],
+              "role": "main",
+              "visibleAfter": [],
+              "interactionRef": null,
+              "slots": [],
+              "before": [],
+              "after": [],
+              "afterVisible": true,
+              "continuation": false,
+              "completed": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "x"
+                  }
+                ],
+                "relation": "\\ge",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "\\frac{-2}{2}"
+                  }
+                ]
+              },
+              "masked": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "x"
+                  }
+                ],
+                "relation": "\\ge",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "\\frac{-2}{2}"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "interactions": [],
+      "automaticAcceptance": false,
+      "compiledPresentationHash": "5cc949a6ea273b7d90054d01ec0678707c0f9542877844380a87132d02f6f00a"
+    },
+    "mathReceipts": [
+      {
+        "graphId": "fixture-negative",
+        "status": "PASS",
+        "checks": [
+          {
+            "transitionId": "a01",
+            "status": "PASS",
+            "ruleId": "add-both-sides",
+            "checks": [
+              "same-operation-both-sides",
+              "relation-direction",
+              "exact-result"
+            ],
+            "mathStatus": "PASS"
+          },
+          {
+            "transitionId": "a02",
+            "status": "PASS",
+            "ruleId": "rewrite",
+            "mathStatus": "PASS"
+          },
+          {
+            "transitionId": "a03",
+            "status": "PASS",
+            "ruleId": "divide-both-sides",
+            "checks": [
+              "same-operation-both-sides",
+              "relation-direction",
+              "exact-result"
+            ],
+            "mathStatus": "PASS"
+          },
+          {
+            "transitionId": "a04",
+            "status": "PASS",
+            "ruleId": "rewrite",
+            "mathStatus": "PASS"
+          }
+        ],
+        "engineVersion": "1.14.0",
+        "formalProof": false,
+        "proofStatus": "EXACT_SYMBOLIC_CHECKS",
+        "domain": "closed AST polynomial identities / constant linear operations / one-variable relation solution sets / numeric quadratic extrema",
+        "graphHash": "92b04667edb9bb917beda4816fed8d6e2bca1137f2e7b61b05b31656972ce618"
+      }
+    ],
+    "meaningAuditRequired": true
+  },
+  {
+    "id": "F03",
+    "expected": "PASS",
+    "status": "PASS",
+    "compiled": {
+      "schemaVersion": "transformation-reading/1",
+      "unitId": "fixture-distribute",
+      "presentationVersion": 1,
+      "baseIRHash": "1ed08cc94dd6fe903fe90095801dc1686f411f310e758befaba32d170ad39e7a",
+      "irHash": "1ed08cc94dd6fe903fe90095801dc1686f411f310e758befaba32d170ad39e7a",
+      "planHash": "c61e4a45193259c1813f2272755001b3b2c56d305e89e46bbc01c6280bc08191",
+      "learnerCopyHash": "1fbb75fd99026e15fb936597371eec985feef48b39d9634ff2c3773813a62062",
+      "gradingHash": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "scope": {
+        "problemId": "fixture-distribute-problem",
+        "nodeIds": [
+          "node0",
+          "node1",
+          "node2",
+          "node3",
+          "node4"
+        ],
+        "stageIds": [
+          "stage1"
+        ],
+        "assumptionRefs": [
+          "x-real"
+        ]
+      },
+      "numberAliases": {},
+      "groups": [
+        {
+          "id": "fixture-distribute-group",
+          "kind": "relation-sequence",
+          "patternId": "T02",
+          "graphRef": "fixture-distribute",
+          "stageIds": [
+            "stage1"
+          ],
+          "sourceNodeIds": [
+            "node0",
+            "node1",
+            "node2",
+            "node3",
+            "node4"
+          ],
+          "stepRefs": [
+            "a0",
+            "a1",
+            "a2",
+            "a3"
+          ],
+          "number": 1,
+          "numberId": "fixture-distribute-number",
+          "boundaryReason": "Self-authored fixture in one scope",
+          "conclusion": {
+            "kind": "terminal-in-flow",
+            "stateRef": "S4"
+          },
+          "rows": [
+            {
+              "id": "row0",
+              "graphRef": "fixture-distribute",
+              "stateRef": "S0",
+              "sourceNodeId": "node0",
+              "sourceRefs": [
+                "block0"
+              ],
+              "role": "main",
+              "visibleAfter": [],
+              "interactionRef": null,
+              "slots": [],
+              "before": [],
+              "after": [],
+              "afterVisible": true,
+              "continuation": false,
+              "completed": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "3\\cdot \\left(2x+3\\right)"
+                  }
+                ],
+                "relation": "\\ge",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "10x-17"
+                  }
+                ]
+              },
+              "masked": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "3\\cdot \\left(2x+3\\right)"
+                  }
+                ],
+                "relation": "\\ge",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "10x-17"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "row1",
+              "graphRef": "fixture-distribute",
+              "stateRef": "S1",
+              "sourceNodeId": "node1",
+              "sourceRefs": [
+                "block1"
+              ],
+              "role": "main",
+              "visibleAfter": [],
+              "interactionRef": null,
+              "slots": [],
+              "before": [],
+              "after": [],
+              "afterVisible": true,
+              "continuation": false,
+              "completed": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "6x+9"
+                  }
+                ],
+                "relation": "\\ge",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "10x-17"
+                  }
+                ]
+              },
+              "masked": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "6x+9"
+                  }
+                ],
+                "relation": "\\ge",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "10x-17"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "row2",
+              "graphRef": "fixture-distribute",
+              "stateRef": "S2",
+              "sourceNodeId": "node2",
+              "sourceRefs": [
+                "block2"
+              ],
+              "role": "main",
+              "visibleAfter": [],
+              "interactionRef": null,
+              "slots": [],
+              "before": [],
+              "after": [],
+              "afterVisible": true,
+              "continuation": false,
+              "completed": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "-4x+9"
+                  }
+                ],
+                "relation": "\\ge",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "-17"
+                  }
+                ]
+              },
+              "masked": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "-4x+9"
+                  }
+                ],
+                "relation": "\\ge",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "-17"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "row3",
+              "graphRef": "fixture-distribute",
+              "stateRef": "S3",
+              "sourceNodeId": "node3",
+              "sourceRefs": [
+                "block3"
+              ],
+              "role": "main",
+              "visibleAfter": [],
+              "interactionRef": null,
+              "slots": [],
+              "before": [],
+              "after": [],
+              "afterVisible": true,
+              "continuation": false,
+              "completed": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "-4x"
+                  }
+                ],
+                "relation": "\\ge",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "-26"
+                  }
+                ]
+              },
+              "masked": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "-4x"
+                  }
+                ],
+                "relation": "\\ge",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "-26"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "row4",
+              "graphRef": "fixture-distribute",
+              "stateRef": "S4",
+              "sourceNodeId": "node4",
+              "sourceRefs": [
+                "block4"
+              ],
+              "role": "main",
+              "visibleAfter": [],
+              "interactionRef": null,
+              "slots": [],
+              "before": [],
+              "after": [],
+              "afterVisible": true,
+              "continuation": false,
+              "completed": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "x"
+                  }
+                ],
+                "relation": "\\le",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "\\frac{13}{2}"
+                  }
+                ]
+              },
+              "masked": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "x"
+                  }
+                ],
+                "relation": "\\le",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "\\frac{13}{2}"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "interactions": [],
+      "automaticAcceptance": false,
+      "compiledPresentationHash": "ec900647e80fd49e7cf6673b29cc40ef38bf08138bd2f753bbc4430fd8f30723"
+    },
+    "mathReceipts": [
+      {
+        "graphId": "fixture-distribute",
+        "status": "PASS",
+        "checks": [
+          {
+            "transitionId": "a0",
+            "status": "PASS",
+            "ruleId": "rewrite",
+            "mathStatus": "PASS"
+          },
+          {
+            "transitionId": "a1",
+            "status": "PASS",
+            "ruleId": "add-both-sides",
+            "checks": [
+              "same-operation-both-sides",
+              "relation-direction",
+              "exact-result"
+            ],
+            "mathStatus": "PASS"
+          },
+          {
+            "transitionId": "a2",
+            "status": "PASS",
+            "ruleId": "add-both-sides",
+            "checks": [
+              "same-operation-both-sides",
+              "relation-direction",
+              "exact-result"
+            ],
+            "mathStatus": "PASS"
+          },
+          {
+            "transitionId": "a3",
+            "status": "PASS",
+            "ruleId": "divide-both-sides",
+            "checks": [
+              "same-operation-both-sides",
+              "relation-direction",
+              "exact-result"
+            ],
+            "mathStatus": "PASS"
+          }
+        ],
+        "engineVersion": "1.14.0",
+        "formalProof": false,
+        "proofStatus": "EXACT_SYMBOLIC_CHECKS",
+        "domain": "closed AST polynomial identities / constant linear operations / one-variable relation solution sets / numeric quadratic extrema",
+        "graphHash": "e1e85f07d971e7fe8c770cfbe6380c1a9feaae3e668c4e86e1881db1715678bc"
+      }
+    ],
+    "meaningAuditRequired": true
+  },
+  {
+    "id": "F04",
+    "expected": "PASS",
+    "status": "PASS",
+    "compiled": {
+      "schemaVersion": "transformation-reading/1",
+      "unitId": "fixture-denominator",
+      "presentationVersion": 1,
+      "baseIRHash": "ad6700ac7badfa57f322675b4a0611929f97d0042d2d7fcadbf9f704ca36e498",
+      "irHash": "ad6700ac7badfa57f322675b4a0611929f97d0042d2d7fcadbf9f704ca36e498",
+      "planHash": "e5d326c0030271a331787a2b63ce2b5a622b3eddd599c4426c14672afe1993fb",
+      "learnerCopyHash": "9ccc5c32ba4ed1976864af4d6a3e572cdc1643f53d10c298070ebb87829bbd23",
+      "gradingHash": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "scope": {
+        "problemId": "fixture-denominator-problem",
+        "nodeIds": [
+          "node0",
+          "node1",
+          "node2"
+        ],
+        "stageIds": [
+          "stage1"
+        ],
+        "assumptionRefs": [
+          "x-real"
+        ]
+      },
+      "numberAliases": {},
+      "groups": [
+        {
+          "id": "fixture-denominator-group",
+          "kind": "relation-sequence",
+          "patternId": "T06",
+          "graphRef": "fixture-denominator",
+          "stageIds": [
+            "stage1"
+          ],
+          "sourceNodeIds": [
+            "node0",
+            "node1",
+            "node2"
+          ],
+          "stepRefs": [
+            "a0",
+            "a1"
+          ],
+          "number": 1,
+          "numberId": "fixture-denominator-number",
+          "boundaryReason": "Self-authored fixture in one scope",
+          "conclusion": {
+            "kind": "terminal-in-flow",
+            "stateRef": "S2"
+          },
+          "rows": [
+            {
+              "id": "row0",
+              "graphRef": "fixture-denominator",
+              "stateRef": "S0",
+              "sourceNodeId": "node0",
+              "sourceRefs": [
+                "block0"
+              ],
+              "role": "main",
+              "visibleAfter": [],
+              "interactionRef": null,
+              "slots": [],
+              "before": [],
+              "after": [],
+              "afterVisible": true,
+              "continuation": false,
+              "completed": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "\\frac{x-2}{3}"
+                  }
+                ],
+                "relation": "\\le",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "2x+1"
+                  }
+                ]
+              },
+              "masked": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "\\frac{x-2}{3}"
+                  }
+                ],
+                "relation": "\\le",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "2x+1"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "row1",
+              "graphRef": "fixture-denominator",
+              "stateRef": "S1",
+              "sourceNodeId": "node1",
+              "sourceRefs": [
+                "block1"
+              ],
+              "role": "main",
+              "visibleAfter": [],
+              "interactionRef": null,
+              "slots": [],
+              "before": [],
+              "after": [],
+              "afterVisible": true,
+              "continuation": false,
+              "completed": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "x-2"
+                  }
+                ],
+                "relation": "\\le",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "3\\cdot \\left(2x+1\\right)"
+                  }
+                ]
+              },
+              "masked": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "x-2"
+                  }
+                ],
+                "relation": "\\le",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "3\\cdot \\left(2x+1\\right)"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "row2",
+              "graphRef": "fixture-denominator",
+              "stateRef": "S2",
+              "sourceNodeId": "node2",
+              "sourceRefs": [
+                "block2"
+              ],
+              "role": "main",
+              "visibleAfter": [],
+              "interactionRef": null,
+              "slots": [],
+              "before": [],
+              "after": [],
+              "afterVisible": true,
+              "continuation": false,
+              "completed": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "x-2"
+                  }
+                ],
+                "relation": "\\le",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "6x+3"
+                  }
+                ]
+              },
+              "masked": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "x-2"
+                  }
+                ],
+                "relation": "\\le",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "6x+3"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "interactions": [],
+      "automaticAcceptance": false,
+      "compiledPresentationHash": "db691657f0f72deb8b58cf18af77b35db8338ac7805256ef9fde5ed60c8a4746"
+    },
+    "mathReceipts": [
+      {
+        "graphId": "fixture-denominator",
+        "status": "PASS",
+        "checks": [
+          {
+            "transitionId": "a0",
+            "status": "PASS",
+            "ruleId": "multiply-both-sides",
+            "checks": [
+              "same-operation-both-sides",
+              "relation-direction",
+              "exact-result"
+            ],
+            "mathStatus": "PASS"
+          },
+          {
+            "transitionId": "a1",
+            "status": "PASS",
+            "ruleId": "rewrite",
+            "mathStatus": "PASS"
+          }
+        ],
+        "engineVersion": "1.14.0",
+        "formalProof": false,
+        "proofStatus": "EXACT_SYMBOLIC_CHECKS",
+        "domain": "closed AST polynomial identities / constant linear operations / one-variable relation solution sets / numeric quadratic extrema",
+        "graphHash": "d13be1affc195eac3b936350c08d0eed136c1bc71c0124d8a9abdda1c614ebd0"
+      }
+    ],
+    "meaningAuditRequired": true
+  },
+  {
+    "id": "F05",
+    "expected": "PASS",
+    "status": "PASS",
+    "compiled": {
+      "schemaVersion": "transformation-reading/1",
+      "unitId": "fixture-square-graph",
+      "presentationVersion": 1,
+      "baseIRHash": "267099eb80755940aa3b13f9384a64ee6420ae4529f4008ac3219b495a0d6e02",
+      "irHash": "267099eb80755940aa3b13f9384a64ee6420ae4529f4008ac3219b495a0d6e02",
+      "planHash": "b9e8d97739a4153737e4dc97e73a57cd0cdc6ea585b878a78b2930b69db6abad",
+      "learnerCopyHash": "3a69e111955a9ba6b2e664f7f1e965b53ec97342812bf7d3811f93506fc84e88",
+      "gradingHash": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "scope": {
+        "problemId": "fixture-square-graph-problem",
+        "nodeIds": [
+          "node0",
+          "node1",
+          "node2",
+          "node3"
+        ],
+        "stageIds": [
+          "stage1"
+        ],
+        "assumptionRefs": [
+          "x-real"
+        ]
+      },
+      "numberAliases": {},
+      "groups": [
+        {
+          "id": "fixture-square-graph-group",
+          "kind": "expression-chain",
+          "patternId": "T11",
+          "graphRef": "fixture-square-graph",
+          "stageIds": [
+            "stage1"
+          ],
+          "sourceNodeIds": [
+            "node0",
+            "node1",
+            "node2",
+            "node3"
+          ],
+          "stepRefs": [
+            "fixture-square-e0",
+            "fixture-square-e1",
+            "fixture-square-e2"
+          ],
+          "number": 1,
+          "numberId": "fixture-square-graph-number",
+          "boundaryReason": "Self-authored fixture in one scope",
+          "conclusion": {
+            "kind": "terminal-in-flow",
+            "stateRef": "fixture-square-s3"
+          },
+          "rows": [
+            {
+              "id": "row0",
+              "graphRef": "fixture-square-graph",
+              "stateRef": "fixture-square-s0",
+              "sourceNodeId": "node0",
+              "sourceRefs": [
+                "block0"
+              ],
+              "role": "main",
+              "visibleAfter": [],
+              "interactionRef": null,
+              "slots": [],
+              "before": [],
+              "after": [],
+              "afterVisible": true,
+              "continuation": false,
+              "completed": {
+                "left": [],
+                "relation": "",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "x^{2}+6x+5"
+                  }
+                ]
+              },
+              "masked": {
+                "left": [],
+                "relation": "",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "x^{2}+6x+5"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "row1",
+              "graphRef": "fixture-square-graph",
+              "stateRef": "fixture-square-s1",
+              "sourceNodeId": "node1",
+              "sourceRefs": [
+                "block1"
+              ],
+              "role": "main",
+              "visibleAfter": [],
+              "interactionRef": null,
+              "slots": [],
+              "before": [],
+              "after": [],
+              "afterVisible": true,
+              "continuation": true,
+              "completed": {
+                "left": [],
+                "relation": "=",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "x^{2}+6x+9-9+5"
+                  }
+                ]
+              },
+              "masked": {
+                "left": [],
+                "relation": "=",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "x^{2}+6x+9-9+5"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "row2",
+              "graphRef": "fixture-square-graph",
+              "stateRef": "fixture-square-s2",
+              "sourceNodeId": "node2",
+              "sourceRefs": [
+                "block2"
+              ],
+              "role": "main",
+              "visibleAfter": [],
+              "interactionRef": null,
+              "slots": [],
+              "before": [],
+              "after": [],
+              "afterVisible": true,
+              "continuation": true,
+              "completed": {
+                "left": [],
+                "relation": "=",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "\\left(x+3\\right)^{2}-9+5"
+                  }
+                ]
+              },
+              "masked": {
+                "left": [],
+                "relation": "=",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "\\left(x+3\\right)^{2}-9+5"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "row3",
+              "graphRef": "fixture-square-graph",
+              "stateRef": "fixture-square-s3",
+              "sourceNodeId": "node3",
+              "sourceRefs": [
+                "block3"
+              ],
+              "role": "main",
+              "visibleAfter": [],
+              "interactionRef": null,
+              "slots": [],
+              "before": [],
+              "after": [],
+              "afterVisible": true,
+              "continuation": true,
+              "completed": {
+                "left": [],
+                "relation": "=",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "\\left(x+3\\right)^{2}-4"
+                  }
+                ]
+              },
+              "masked": {
+                "left": [],
+                "relation": "=",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "\\left(x+3\\right)^{2}-4"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "interactions": [],
+      "automaticAcceptance": false,
+      "compiledPresentationHash": "46cd07b6b381c1fc1d05c5e3a905aa1b1366e7846dfebde6226e5d888979a921"
+    },
+    "mathReceipts": [
+      {
+        "graphId": "fixture-square-graph",
+        "status": "PASS",
+        "checks": [
+          {
+            "transitionId": "fixture-square-e0",
+            "status": "PASS",
+            "ruleId": "rewrite",
+            "checks": [
+              "identity"
+            ],
+            "mathStatus": "PASS"
+          },
+          {
+            "transitionId": "fixture-square-e1",
+            "status": "PASS",
+            "ruleId": "rewrite",
+            "checks": [
+              "identity"
+            ],
+            "mathStatus": "PASS"
+          },
+          {
+            "transitionId": "fixture-square-e2",
+            "status": "PASS",
+            "ruleId": "rewrite",
+            "checks": [
+              "identity"
+            ],
+            "mathStatus": "PASS"
+          }
+        ],
+        "engineVersion": "1.14.0",
+        "formalProof": false,
+        "proofStatus": "EXACT_SYMBOLIC_CHECKS",
+        "domain": "closed AST polynomial identities / constant linear operations / one-variable relation solution sets / numeric quadratic extrema",
+        "graphHash": "df5ccbe455228d19cb54309ed8bfb1500c231b1320b48e116a5159b651acd6a3"
+      }
+    ],
+    "meaningAuditRequired": true
+  },
+  {
+    "id": "F06",
+    "expected": "FAIL",
+    "status": "FAIL",
+    "findings": [
+      {
+        "ruleId": "TG01_SCOPE",
+        "detail": "unsupported pattern T07"
+      }
+    ],
+    "mathReceipts": [
+      {
+        "graphId": "excluded-F06",
+        "status": "PASS",
+        "checks": [
+          {
+            "transitionId": "a01",
+            "status": "PASS",
+            "ruleId": "add-both-sides",
+            "checks": [
+              "same-operation-both-sides",
+              "relation-direction",
+              "exact-result"
+            ],
+            "mathStatus": "PASS"
+          },
+          {
+            "transitionId": "a02",
+            "status": "PASS",
+            "ruleId": "rewrite",
+            "mathStatus": "PASS"
+          },
+          {
+            "transitionId": "a03",
+            "status": "PASS",
+            "ruleId": "divide-both-sides",
+            "checks": [
+              "same-operation-both-sides",
+              "relation-direction",
+              "exact-result"
+            ],
+            "mathStatus": "PASS"
+          },
+          {
+            "transitionId": "a04",
+            "status": "PASS",
+            "ruleId": "rewrite",
+            "mathStatus": "PASS"
+          }
+        ],
+        "engineVersion": "1.14.0",
+        "formalProof": false,
+        "proofStatus": "EXACT_SYMBOLIC_CHECKS",
+        "domain": "closed AST polynomial identities / constant linear operations / one-variable relation solution sets / numeric quadratic extrema",
+        "graphHash": "3167cc42129cef1988804cee98f1c91bd19ea192447bb2e5d6b70f88d819c532"
+      }
+    ],
+    "baseIRHash": "4b08298fa2db9152451e5856b37822e4d74b93fc3f129f3a57405e0055d18711",
+    "planHash": "37139cc18ede7c6e965a7a8087bbd765a21e4a56fdf01f9e8035412719d538a9",
+    "learnerCopyHash": "1fbb75fd99026e15fb936597371eec985feef48b39d9634ff2c3773813a62062",
+    "meaningAuditRequired": true
+  },
+  {
+    "id": "F07",
+    "expected": "FAIL",
+    "status": "FAIL",
+    "findings": [
+      {
+        "ruleId": "TG01_SCOPE",
+        "detail": "unsupported pattern T09"
+      }
+    ],
+    "mathReceipts": [
+      {
+        "graphId": "excluded-F07",
+        "status": "PASS",
+        "checks": [
+          {
+            "transitionId": "a01",
+            "status": "PASS",
+            "ruleId": "add-both-sides",
+            "checks": [
+              "same-operation-both-sides",
+              "relation-direction",
+              "exact-result"
+            ],
+            "mathStatus": "PASS"
+          },
+          {
+            "transitionId": "a02",
+            "status": "PASS",
+            "ruleId": "rewrite",
+            "mathStatus": "PASS"
+          },
+          {
+            "transitionId": "a03",
+            "status": "PASS",
+            "ruleId": "divide-both-sides",
+            "checks": [
+              "same-operation-both-sides",
+              "relation-direction",
+              "exact-result"
+            ],
+            "mathStatus": "PASS"
+          },
+          {
+            "transitionId": "a04",
+            "status": "PASS",
+            "ruleId": "rewrite",
+            "mathStatus": "PASS"
+          }
+        ],
+        "engineVersion": "1.14.0",
+        "formalProof": false,
+        "proofStatus": "EXACT_SYMBOLIC_CHECKS",
+        "domain": "closed AST polynomial identities / constant linear operations / one-variable relation solution sets / numeric quadratic extrema",
+        "graphHash": "b337cdb8fbbc6df6d68db5a2725b102ca144b1fb2fa5f8922f3054468713b020"
+      }
+    ],
+    "baseIRHash": "53b462bce12ad933cd7eeef323f723855188abae8a8490f35b21e1eb149d7f8f",
+    "planHash": "65a34907bc0cdbd18e1fc08193a470f46e7fae557fc010adbc48c62074343928",
+    "learnerCopyHash": "1fbb75fd99026e15fb936597371eec985feef48b39d9634ff2c3773813a62062",
+    "meaningAuditRequired": true
+  },
+  {
+    "id": "F09",
+    "expected": "FAIL",
+    "status": "FAIL",
+    "findings": [
+      {
+        "ruleId": "TG01_SCOPE",
+        "detail": "unsupported pattern T13"
+      }
+    ],
+    "mathReceipts": [
+      {
+        "graphId": "excluded-F09",
+        "status": "PASS",
+        "checks": [
+          {
+            "transitionId": "a01",
+            "status": "PASS",
+            "ruleId": "add-both-sides",
+            "checks": [
+              "same-operation-both-sides",
+              "relation-direction",
+              "exact-result"
+            ],
+            "mathStatus": "PASS"
+          },
+          {
+            "transitionId": "a02",
+            "status": "PASS",
+            "ruleId": "rewrite",
+            "mathStatus": "PASS"
+          },
+          {
+            "transitionId": "a03",
+            "status": "PASS",
+            "ruleId": "divide-both-sides",
+            "checks": [
+              "same-operation-both-sides",
+              "relation-direction",
+              "exact-result"
+            ],
+            "mathStatus": "PASS"
+          },
+          {
+            "transitionId": "a04",
+            "status": "PASS",
+            "ruleId": "rewrite",
+            "mathStatus": "PASS"
+          }
+        ],
+        "engineVersion": "1.14.0",
+        "formalProof": false,
+        "proofStatus": "EXACT_SYMBOLIC_CHECKS",
+        "domain": "closed AST polynomial identities / constant linear operations / one-variable relation solution sets / numeric quadratic extrema",
+        "graphHash": "9add8ac0724c7c3c02383a49ce4c54dc47f43fd1f3220d8891cd02aac3077f4b"
+      }
+    ],
+    "baseIRHash": "c34dc7aa86e2cfa865cd7a3be79dce04d26a6b0b6528e5e04bd55d57053ebdf6",
+    "planHash": "87f74b12b8dde382b79d79934555359f420d6fa0c6710f356bc07077994f7d9e",
+    "learnerCopyHash": "1fbb75fd99026e15fb936597371eec985feef48b39d9634ff2c3773813a62062",
+    "meaningAuditRequired": true
+  },
+  {
+    "id": "F12",
+    "expected": "FAIL",
+    "status": "FAIL",
+    "findings": [
+      {
+        "ruleId": "TG01_SCOPE",
+        "detail": "unsupported pattern T10"
+      }
+    ],
+    "mathReceipts": [
+      {
+        "graphId": "excluded-F12",
+        "status": "PASS",
+        "checks": [
+          {
+            "transitionId": "a01",
+            "status": "PASS",
+            "ruleId": "add-both-sides",
+            "checks": [
+              "same-operation-both-sides",
+              "relation-direction",
+              "exact-result"
+            ],
+            "mathStatus": "PASS"
+          },
+          {
+            "transitionId": "a02",
+            "status": "PASS",
+            "ruleId": "rewrite",
+            "mathStatus": "PASS"
+          },
+          {
+            "transitionId": "a03",
+            "status": "PASS",
+            "ruleId": "divide-both-sides",
+            "checks": [
+              "same-operation-both-sides",
+              "relation-direction",
+              "exact-result"
+            ],
+            "mathStatus": "PASS"
+          },
+          {
+            "transitionId": "a04",
+            "status": "PASS",
+            "ruleId": "rewrite",
+            "mathStatus": "PASS"
+          }
+        ],
+        "engineVersion": "1.14.0",
+        "formalProof": false,
+        "proofStatus": "EXACT_SYMBOLIC_CHECKS",
+        "domain": "closed AST polynomial identities / constant linear operations / one-variable relation solution sets / numeric quadratic extrema",
+        "graphHash": "039c4da5e1ec207adea52396863d56720e205389422dac84915e2a2ac28eb1dc"
+      }
+    ],
+    "baseIRHash": "a959acd21e663abe9122f7f544fe5438d563d39194e4d2f28f01605f4ea65c50",
+    "planHash": "57f5aa6061181439ac37475d4e507c4022b0c9b41277e851da1a493497c2f815",
+    "learnerCopyHash": "1fbb75fd99026e15fb936597371eec985feef48b39d9634ff2c3773813a62062",
+    "meaningAuditRequired": true
+  },
+  {
+    "id": "F08",
+    "expected": "PASS",
+    "status": "PASS",
+    "compiled": {
+      "schemaVersion": "transformation-reading/1",
+      "unitId": "independent-left",
+      "presentationVersion": 1,
+      "baseIRHash": "960281626a9536e8b9934049a7f2971ad616f78042b3e9568267a0cccc80f623",
+      "irHash": "960281626a9536e8b9934049a7f2971ad616f78042b3e9568267a0cccc80f623",
+      "planHash": "b3749e9a6b54b34933cc4989bf039b3c7554ecb5d0942d79baabda4051735cb1",
+      "learnerCopyHash": "3a69e111955a9ba6b2e664f7f1e965b53ec97342812bf7d3811f93506fc84e88",
+      "gradingHash": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "scope": {
+        "problemId": "independent-left-problem",
+        "nodeIds": [
+          "node0",
+          "node1",
+          "node0-right",
+          "node1-right"
+        ],
+        "stageIds": [
+          "stage1"
+        ],
+        "assumptionRefs": [
+          "x-real"
+        ]
+      },
+      "numberAliases": {},
+      "groups": [
+        {
+          "id": "independent-left-group",
+          "kind": "independent-comparison",
+          "patternId": "T01",
+          "graphRef": "independent-left",
+          "stageIds": [
+            "stage1"
+          ],
+          "sourceNodeIds": [
+            "node0",
+            "node1",
+            "node0-right",
+            "node1-right"
+          ],
+          "stepRefs": [
+            "a0"
+          ],
+          "number": 1,
+          "numberId": "independent-left-number",
+          "boundaryReason": "Self-authored fixture in one scope",
+          "conclusion": {
+            "kind": "interpretation",
+            "stateRef": "S1"
+          },
+          "rows": [
+            {
+              "id": "row0",
+              "graphRef": "independent-left",
+              "stateRef": "S0",
+              "sourceNodeId": "node0",
+              "sourceRefs": [
+                "block0"
+              ],
+              "role": "main",
+              "visibleAfter": [],
+              "interactionRef": null,
+              "slots": [],
+              "before": [],
+              "after": [],
+              "afterVisible": true,
+              "continuation": false,
+              "completed": {
+                "left": [],
+                "relation": "",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "\\left(2\\right)^{2}"
+                  }
+                ]
+              },
+              "masked": {
+                "left": [],
+                "relation": "",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "\\left(2\\right)^{2}"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "row1",
+              "graphRef": "independent-left",
+              "stateRef": "S1",
+              "sourceNodeId": "node1",
+              "sourceRefs": [
+                "block1"
+              ],
+              "role": "main",
+              "visibleAfter": [],
+              "interactionRef": null,
+              "slots": [],
+              "before": [],
+              "after": [],
+              "afterVisible": true,
+              "continuation": false,
+              "completed": {
+                "left": [],
+                "relation": "",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "4"
+                  }
+                ]
+              },
+              "masked": {
+                "left": [],
+                "relation": "",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "4"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "row0-right",
+              "graphRef": "independent-right",
+              "stateRef": "S0",
+              "sourceNodeId": "node0-right",
+              "sourceRefs": [
+                "block0-right"
+              ],
+              "role": "main",
+              "visibleAfter": [],
+              "interactionRef": null,
+              "slots": [],
+              "before": [],
+              "after": [],
+              "afterVisible": true,
+              "continuation": false,
+              "completed": {
+                "left": [],
+                "relation": "",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "\\left(3\\right)^{2}"
+                  }
+                ]
+              },
+              "masked": {
+                "left": [],
+                "relation": "",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "\\left(3\\right)^{2}"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "row1-right",
+              "graphRef": "independent-right",
+              "stateRef": "S1",
+              "sourceNodeId": "node1-right",
+              "sourceRefs": [
+                "block1-right"
+              ],
+              "role": "main",
+              "visibleAfter": [],
+              "interactionRef": null,
+              "slots": [],
+              "before": [],
+              "after": [],
+              "afterVisible": true,
+              "continuation": false,
+              "completed": {
+                "left": [],
+                "relation": "",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "9"
+                  }
+                ]
+              },
+              "masked": {
+                "left": [],
+                "relation": "",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "9"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "interactions": [],
+      "automaticAcceptance": false,
+      "compiledPresentationHash": "2e735bdff347bce89128520d2ba1789037a21eaaa915469466102f50bec9712b"
+    },
+    "mathReceipts": [
+      {
+        "graphId": "independent-left",
+        "status": "PASS",
+        "checks": [
+          {
+            "transitionId": "a0",
+            "status": "PASS",
+            "ruleId": "rewrite",
+            "checks": [
+              "identity"
+            ],
+            "mathStatus": "PASS"
+          }
+        ],
+        "engineVersion": "1.14.0",
+        "formalProof": false,
+        "proofStatus": "EXACT_SYMBOLIC_CHECKS",
+        "domain": "closed AST polynomial identities / constant linear operations / one-variable relation solution sets / numeric quadratic extrema",
+        "graphHash": "f82745a48938678ff1933e0442d56a77f69e42a4ae8d7251e8c67b601914207d"
+      },
+      {
+        "graphId": "independent-right",
+        "status": "PASS",
+        "checks": [
+          {
+            "transitionId": "a0",
+            "status": "PASS",
+            "ruleId": "rewrite",
+            "checks": [
+              "identity"
+            ],
+            "mathStatus": "PASS"
+          }
+        ],
+        "engineVersion": "1.14.0",
+        "formalProof": false,
+        "proofStatus": "EXACT_SYMBOLIC_CHECKS",
+        "domain": "closed AST polynomial identities / constant linear operations / one-variable relation solution sets / numeric quadratic extrema",
+        "graphHash": "9f9f13c47d3ca0364114b33c433333961958ca2ad0a788ce66d8d3c08db2568f"
+      }
+    ],
+    "meaningAuditRequired": true
+  },
+  {
+    "id": "F10",
+    "expected": "PASS",
+    "status": "PASS",
+    "compiled": {
+      "schemaVersion": "transformation-reading/1",
+      "unitId": "fixture-long",
+      "presentationVersion": 1,
+      "baseIRHash": "f35e0d6d8b399130b7ff7d445a3c08f5cc18f9d90378b9a1add48c8340387304",
+      "irHash": "f35e0d6d8b399130b7ff7d445a3c08f5cc18f9d90378b9a1add48c8340387304",
+      "planHash": "e1632c410d54f899fc58850dfe2b6098aa623639e78391b1363be04c13984875",
+      "learnerCopyHash": "3965da178f316d046a33f564d5189c7974f65958c3e0c23f2350529327b76721",
+      "gradingHash": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "scope": {
+        "problemId": "fixture-long-problem",
+        "nodeIds": [
+          "node0",
+          "node1"
+        ],
+        "stageIds": [
+          "stage1"
+        ],
+        "assumptionRefs": [
+          "x-real"
+        ]
+      },
+      "numberAliases": {},
+      "groups": [
+        {
+          "id": "fixture-long-group",
+          "kind": "expression-chain",
+          "patternId": "T01",
+          "graphRef": "fixture-long",
+          "stageIds": [
+            "stage1"
+          ],
+          "sourceNodeIds": [
+            "node0",
+            "node1"
+          ],
+          "stepRefs": [
+            "a0"
+          ],
+          "number": 1,
+          "numberId": "fixture-long-number",
+          "boundaryReason": "Self-authored fixture in one scope",
+          "conclusion": {
+            "kind": "terminal-in-flow",
+            "stateRef": "S1"
+          },
+          "rows": [
+            {
+              "id": "row0",
+              "graphRef": "fixture-long",
+              "stateRef": "S0",
+              "sourceNodeId": "node0",
+              "sourceRefs": [
+                "block0"
+              ],
+              "role": "main",
+              "visibleAfter": [],
+              "interactionRef": null,
+              "slots": [],
+              "before": [],
+              "after": [],
+              "afterVisible": true,
+              "continuation": false,
+              "completed": {
+                "left": [],
+                "relation": "",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "\\left(x+123\\right)^{2}+456"
+                  }
+                ]
+              },
+              "masked": {
+                "left": [],
+                "relation": "",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "\\left(x+123\\right)^{2}+456"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "row1",
+              "graphRef": "fixture-long",
+              "stateRef": "S1",
+              "sourceNodeId": "node1",
+              "sourceRefs": [
+                "block1"
+              ],
+              "role": "main",
+              "visibleAfter": [],
+              "interactionRef": null,
+              "slots": [],
+              "before": [],
+              "after": [],
+              "afterVisible": true,
+              "continuation": true,
+              "completed": {
+                "left": [],
+                "relation": "=",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "x^{2}+246x+15585"
+                  }
+                ]
+              },
+              "masked": {
+                "left": [],
+                "relation": "=",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "x^{2}+246x+15585"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "interactions": [],
+      "automaticAcceptance": false,
+      "compiledPresentationHash": "ec73b1aa40d56bb0a56521f48d8cdc6d8b9583ba607fe44b5b89a62ab2583f13"
+    },
+    "mathReceipts": [
+      {
+        "graphId": "fixture-long",
+        "status": "PASS",
+        "checks": [
+          {
+            "transitionId": "a0",
+            "status": "PASS",
+            "ruleId": "rewrite",
+            "checks": [
+              "identity"
+            ],
+            "mathStatus": "PASS"
+          }
+        ],
+        "engineVersion": "1.14.0",
+        "formalProof": false,
+        "proofStatus": "EXACT_SYMBOLIC_CHECKS",
+        "domain": "closed AST polynomial identities / constant linear operations / one-variable relation solution sets / numeric quadratic extrema",
+        "graphHash": "1fcd2bbd105ca335ca889fb3f6f58c9bd8a728bc7fa33d0613b1a4accd697355"
+      }
+    ],
+    "meaningAuditRequired": true
+  },
+  {
+    "id": "F11",
+    "expected": "PASS",
+    "status": "PASS",
+    "compiled": {
+      "schemaVersion": "transformation-reading/1",
+      "unitId": "fixture-task-form",
+      "presentationVersion": 1,
+      "baseIRHash": "2bca34ad81bfab8a92d4268287128a4d560928c8de828cca79ce510b39962fa2",
+      "irHash": "2bca34ad81bfab8a92d4268287128a4d560928c8de828cca79ce510b39962fa2",
+      "planHash": "8b75a439ab560393377152f8d5d6d3c0744bb1623a9c188e467db5140c312322",
+      "learnerCopyHash": "3965da178f316d046a33f564d5189c7974f65958c3e0c23f2350529327b76721",
+      "gradingHash": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "scope": {
+        "problemId": "fixture-task-form-problem",
+        "nodeIds": [
+          "node0",
+          "node1"
+        ],
+        "stageIds": [
+          "stage1"
+        ],
+        "assumptionRefs": [
+          "x-real"
+        ]
+      },
+      "numberAliases": {},
+      "groups": [
+        {
+          "id": "fixture-task-form-group",
+          "kind": "expression-chain",
+          "patternId": "T11",
+          "graphRef": "fixture-task-form",
+          "stageIds": [
+            "stage1"
+          ],
+          "sourceNodeIds": [
+            "node0",
+            "node1"
+          ],
+          "stepRefs": [
+            "a0"
+          ],
+          "number": 1,
+          "numberId": "fixture-task-form-number",
+          "boundaryReason": "Self-authored fixture in one scope",
+          "conclusion": {
+            "kind": "terminal-in-flow",
+            "stateRef": "S1"
+          },
+          "rows": [
+            {
+              "id": "row0",
+              "graphRef": "fixture-task-form",
+              "stateRef": "S0",
+              "sourceNodeId": "node0",
+              "sourceRefs": [
+                "block0"
+              ],
+              "role": "main",
+              "visibleAfter": [],
+              "interactionRef": null,
+              "slots": [],
+              "before": [],
+              "after": [],
+              "afterVisible": true,
+              "continuation": false,
+              "completed": {
+                "left": [],
+                "relation": "",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "x^{2}+6x+5"
+                  }
+                ]
+              },
+              "masked": {
+                "left": [],
+                "relation": "",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "x^{2}+6x+5"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "row1",
+              "graphRef": "fixture-task-form",
+              "stateRef": "S1",
+              "sourceNodeId": "node1",
+              "sourceRefs": [
+                "block1"
+              ],
+              "role": "main",
+              "visibleAfter": [],
+              "interactionRef": null,
+              "slots": [],
+              "before": [],
+              "after": [],
+              "afterVisible": true,
+              "continuation": true,
+              "completed": {
+                "left": [],
+                "relation": "=",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "\\left(x+3\\right)^{2}-4"
+                  }
+                ]
+              },
+              "masked": {
+                "left": [],
+                "relation": "=",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "\\left(x+3\\right)^{2}-4"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "interactions": [],
+      "automaticAcceptance": false,
+      "compiledPresentationHash": "1d9d15ab65cd31534f71af90ec69878f13fda7f9fb82c83c63cd6a945e782dbc"
+    },
+    "mathReceipts": [
+      {
+        "graphId": "fixture-task-form",
+        "status": "PASS",
+        "checks": [
+          {
+            "transitionId": "a0",
+            "status": "PASS",
+            "ruleId": "rewrite",
+            "checks": [
+              "identity"
+            ],
+            "mathStatus": "PASS",
+            "formStatus": "PASS"
+          }
+        ],
+        "engineVersion": "1.14.0",
+        "formalProof": false,
+        "proofStatus": "EXACT_SYMBOLIC_CHECKS",
+        "domain": "closed AST polynomial identities / constant linear operations / one-variable relation solution sets / numeric quadratic extrema",
+        "graphHash": "d69c7473563f32fcd330bcae91483aa387f792f29fb3986d5251f29f5bd16d7b"
+      }
+    ],
+    "meaningAuditRequired": true
+  }
+]

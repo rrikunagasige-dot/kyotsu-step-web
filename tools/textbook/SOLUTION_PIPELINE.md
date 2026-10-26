@@ -107,3 +107,35 @@ pnpm exec playwright test --config tools/textbook/preview/playwright.config.ts
 ```
 
 previewは実装検証用の自作例題のみ。320/390/430/1440幅、誤答・正答・hint・同じ穴の共有・結論保持・図の時点・再読込・横はみ出し・KaTeXエラー・式番号衝突を検査する。本番namespaceと異なる保存先を使う。
+
+## Ordinary transformation presentation (`transformation-plan/1`, W-MATH-038)
+
+The existing C/R entry points remain unchanged. Pass `{ir, transformationPlan}` to
+`interaction-plan`, `solution-validate`, `render-solution`, or `visible-snapshots`.
+The new facade validates the exact base IR and unchanged grading contract, source
+block projection, ordered mathematical states and shared slots. It emits typed
+relations rather than chaining inequalities with equality signs.
+
+- `transformation/{schema,patterns,plan,validate,compile,visible}.mjs` owns the companion plan.
+- Mathematical truth uses the existing closed-AST SymPy adapter. Same-polynomial addition
+  needs no sign assumption; multiplication/division still require an established numeric sign.
+- T01/T02/T03/T04/T05/T06/T11 have bounded mathematical fixtures. Cases, joins, concept
+  blocks, general roots and symbolic division are not automatically grouped.
+- `ordinary-transformation` AI review adds boundary, blank, prose, terminal and visible-flow
+  obligations. CODE eligibility is not teaching acceptance; the same assistant is not an independent AI.
+- `presentation_design_hash` binds plan approval alongside `content_design_hash`. Both
+  must match the same compiler artifact; an unchanged IR cannot authorize a changed display plan.
+- `transformation-visible/1` excludes answer keys and future statements. Old saved later
+  answers are preserved; only their dependency-closed subset becomes visible.
+- N11 stage05–06 is opt-in via `n11Transformation.json`; `?layout=original` restores the
+  original reader without changing revision11 or any of the39 grading contracts.
+- N08 r4/r5 and the accepted earlier units remain unchanged by this pilot.
+- Models remain offline. No new training data labels or model fit are implied by design approval.
+
+Verification: `node --test tools/textbook/tests/transformation.test.mjs`,
+`python -m unittest discover -s workflow -p test_transformation.py`, and W-MATH-038's
+UI/real-browser checks. Scope-specific execution evidence belongs to that Work.
+
+Source binding is also mandatory: v2 plans reuse the exact source graph AST; the
+legacy N11 pilot uses an explicit frozen source/AST bridge. An unknown v1 source
+returns NEEDS_MAPPING instead of treating source IDs alone as mathematical evidence.

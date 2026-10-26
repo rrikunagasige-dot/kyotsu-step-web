@@ -1,0 +1,24 @@
+.transformation-reading-group { width:100%; min-width:0; --transformation-left:0px; --transformation-right:0px; --transformation-relation:0px; }
+.transformation-reading-group .numbered-equation { margin-block:1rem; }
+.transformation-rows { display:flex; flex-direction:column; gap:.7rem; min-width:0; }
+.transformation-row { min-width:0; }
+.transformation-reading-group .transformation-equation { display:grid; grid-template-columns:var(--transformation-left) var(--transformation-relation) var(--transformation-right); column-gap:.35rem; align-items:center; justify-content:center; margin:.45rem auto; width:max-content; max-width:100%; }
+.transformation-left { text-align:right; }
+.transformation-right { text-align:left; }
+.transformation-relation { text-align:center; }
+.transformation-left,.transformation-right,.transformation-relation { white-space:nowrap; min-width:0; }
+.transformation-row--auxiliary { border-inline-start:2px solid #d3dce2; padding-inline-start:.65rem; }
+.transformation-row--auxiliary .transformation-equation { margin-block:.4rem; }
+.transformation-reading-group .transformation-prose { margin:.35rem 0; line-height:1.8; color:inherit; }
+.transformation-reading-group .transformation-after { margin-block-end:.4rem; }
+.transformation-reading-group .reading-inline-choice-panel { width:100%; box-sizing:border-box; }
+.transformation-reading-group .numbered-equation-label { font-size:.8em; }
+.transformation-reading-group--stacked .transformation-equation { grid-template-columns:auto auto; justify-content:center; row-gap:.25rem; }
+.transformation-reading-group--stacked .transformation-left { grid-column:1 / -1; text-align:left; }
+.transformation-reading-group--stacked .transformation-right { white-space:normal; }
+
+.transformation-fraction { display:inline-flex; flex-direction:column; align-items:stretch; text-align:center; vertical-align:middle; margin-inline:.15em; }
+.transformation-fraction > span:first-child { border-bottom:1px solid currentColor; padding:0 .15em .12em; }
+.transformation-fraction > span:last-child { padding:.12em .15em 0; }
+
+.transformation-cell-content { display:inline-block; width:max-content; max-width:none; }

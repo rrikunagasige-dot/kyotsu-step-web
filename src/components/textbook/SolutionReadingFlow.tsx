@@ -2,9 +2,12 @@ import { useEffect, useState } from 'react'
 import { InlineMath } from 'react-katex'
 import { SolutionReadingSchema, solutionFrontier, type SolutionAnswer, type SolutionPart } from '../../domain/solutionReading'
 import './solution-reading.css'
+import { TransformationReadingGroup } from './TransformationReadingGroup'
+import { TransformationReadingSchema, projectTransformationView } from '../../domain/transformationReading'
 import { SolutionQuadraticPlot } from './SolutionQuadraticPlot'
 
 type Props = {
+  transformationPresentation?: unknown
   presentation: unknown
   answers: Record<string, SolutionAnswer>
   onAnswer: (interactionId: string, value: string) => void
@@ -29,13 +32,29 @@ export function SolutionReadingFlow(props: Props) {
   return <ValidatedSolutionFlow {...props} data={parsed.data} />
 }
 
-function ValidatedSolutionFlow({ data, answers, onAnswer, onComplete }: Props & { data: ReturnType<typeof SolutionReadingSchema.parse> }) {
+function ValidatedSolutionFlow({ data, transformationPresentation, answers, onAnswer, onComplete }: Props & { data: ReturnType<typeof SolutionReadingSchema.parse> }) {
   const [problemIndex, setProblemIndex] = useState(0)
   const [active, setActive] = useState<string | null>(null)
   const [hints, setHints] = useState<Record<string, number>>({})
   const problem = data.problems[Math.min(problemIndex, data.problems.length - 1)]
   const frontier = solutionFrontier(problem, answers)
   const complete = frontier === problem.steps.length
+  const transformation = TransformationReadingSchema.safeParse(transformationPresentation)
+  const transformationData = transformation.success && transformation.data.unitId === data.unitId ? transformation.data : undefined
+  const transformationSolved = transformationData?.interactions.filter(c => answers[c.id]?.value === c.correctValue || answers[c.id]?.resolved).map(c => c.id) ?? []
+  const transformed = transformationData ? projectTransformationView(transformationData, transformationSolved) : undefined
+  const groups = transformed?.groups.filter(g => transformationData?.groups.find(a => a.id === g.id)?.sourceNodeIds.some(id => problem.steps.some(s => s.id === id))) ?? []
+  const groupFor = (id: string) => groups.find(g => g.rows.some(r => r.sourceNodeId === id))
+  function transformedGroup(group: typeof groups[number]) {
+    return <TransformationReadingGroup key={group.id} group={group} renderSlot={id => <button type="button" className="reading-inline-blank" data-testid={'solution-answer-' + id} onClick={() => setActive(id)}>選択</button>} renderPanel={id => {
+      const q = problem.steps.find(s => s.interaction?.id === id)?.interaction
+      return q && active === id ? <div className="solution-choice-panel" role="group" aria-label={q.action}>
+        {q.choices.map(c => <button type="button" key={c.id} data-choice-id={c.id} onClick={() => onAnswer(q.id, c.value)}>{c.isMath ? <InlineMath math={c.value} /> : c.value}</button>)}
+        {(hints[q.id] ?? 0) < q.hints.length && <button type="button" onClick={() => setHints(h => ({ ...h, [q.id]: (h[q.id] ?? 0) + 1 }))}>ヒントを見る</button>}
+        {q.hints.slice(0, hints[q.id] ?? 0).map((hint, i) => <p key={i}><Parts parts={hint} /></p>)}
+      </div> : null
+    }} />
+  }
   const allComplete = data.problems.every(p => solutionFrontier(p, answers) === p.steps.length)
   useEffect(() => { onComplete?.(allComplete) }, [allComplete, onComplete])
 
@@ -44,9 +63,11 @@ function ValidatedSolutionFlow({ data, answers, onAnswer, onComplete }: Props & 
       <p><Parts parts={problem.prompt} /></p>{problem.goal !== problem.title && <p className="solution-goal">{problem.goal}</p>}
     </header>
     {problem.conditions.length > 0 && <div className="solution-conditions"><strong>条件</strong><p><Parts parts={problem.conditions} /></p></div>}
-    <div className="solution-equation" data-state-id={problem.initial.id}><div className="solution-math"><InlineMath math={problem.initial.latex} /></div></div>
+    {!groups.length && <div className="solution-equation" data-state-id={problem.initial.id}><div className="solution-math"><InlineMath math={problem.initial.latex} /></div></div>}
     <div className="solution-work">
       {problem.steps.slice(0, Math.min(frontier + 1, problem.steps.length)).map((step, index) => {
+        const group = groupFor(step.id)
+        if (group) return group.rows[0].sourceNodeId === step.id ? transformedGroup(group) : null
         const done = index < frontier || !step.interaction
         const q = step.interaction
         const record = q ? answers[q.id] : undefined
@@ -78,8 +99,9 @@ function ValidatedSolutionFlow({ data, answers, onAnswer, onComplete }: Props & 
     </div>
     {problem.plot && problem.steps.slice(0, frontier).some(s => s.afterId === problem.plot?.visibleAfterStateId) && <SolutionQuadraticPlot plot={problem.plot} />}
     {complete && <details className="solution-summary"><summary>一問の解法をまとめて読む</summary>
-      <div className="solution-equation"><InlineMath math={problem.initial.latex} /></div>
-      {problem.steps.map(step => <div className="solution-equation" key={step.id}><div className="solution-math"><InlineMath math={step.formula.completed} /></div><span className="solution-number">({step.formula.number})</span></div>)}
+      {!groups.length && <div className="solution-equation"><InlineMath math={problem.initial.latex} /></div>}
+      {groups.map(transformedGroup)}
+      {problem.steps.filter(step => !groupFor(step.id)).map(step => <div className="solution-equation" key={step.id}><div className="solution-math"><InlineMath math={step.formula.completed} /></div><span className="solution-number">({step.formula.number})</span></div>)}
     </details>}
     <nav aria-label="例題の移動">
       {problemIndex > 0 && <button type="button" onClick={() => { setProblemIndex(problemIndex - 1); setActive(null) }}>前の例題</button>}

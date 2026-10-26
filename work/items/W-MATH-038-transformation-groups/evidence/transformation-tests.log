@@ -1,0 +1,41 @@
+✔ F01 explicit math/scope fixture: PASS (267.708593ms)
+✔ F02 explicit math/scope fixture: PASS (273.044627ms)
+✔ F03 explicit math/scope fixture: PASS (267.712615ms)
+✔ F04 explicit math/scope fixture: PASS (276.033313ms)
+✔ F05 explicit math/scope fixture: PASS (271.212132ms)
+✔ F06 explicit math/scope fixture: FAIL (281.870768ms)
+✔ F07 explicit math/scope fixture: FAIL (261.846512ms)
+✔ F09 explicit math/scope fixture: FAIL (261.893068ms)
+✔ F12 explicit math/scope fixture: FAIL (261.290391ms)
+✔ F08 explicit math/scope fixture: PASS (487.298494ms)
+✔ F10 explicit math/scope fixture: PASS (255.039354ms)
+✔ F11 explicit math/scope fixture: PASS (297.277461ms)
+✔ one statement, two shared slots, two decisions, no future or author metadata (257.315123ms)
+✔ reject wrong IR (253.002621ms)
+✔ reject wrong grading (255.938936ms)
+✔ reject disconnected row (247.39265ms)
+✔ reject missing block mapping (248.567768ms)
+✔ reject inequality continuation (237.8555ms)
+✔ reject mixed condition (264.195334ms)
+✔ reject slot wrong side (257.330776ms)
+✔ reject future gate (263.928031ms)
+✔ reject duplicate final (305.200176ms)
+✔ reject dangling number (301.410808ms)
+✔ reject duplicate equivalent option (291.619314ms)
+✔ negative division with unchanged inequality and zero divisor cannot pass (749.541813ms)
+✔ existing operations route through transformation checks and compiler (1121.826231ms)
+✔ N11 uses exact existing grading contracts and completed helper statements are checked (1743.244385ms)
+✔ AI ordinary profile adds six concrete review obligations without future keys (293.41647ms)
+✔ same polynomial can be added without knowing its sign, division still needs a numeric sign (575.182366ms)
+✔ equivalent expression in an unrequested form is rejected (299.407247ms)
+✔ slot paths cannot target prototypes or AST metadata (579.718838ms)
+✔ expression chains have continuation equalities; relation sequences retain each inequality (627.968893ms)
+✔ a valid but different source problem cannot masquerade as the original N11 (929.306343ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 33
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13736.817852

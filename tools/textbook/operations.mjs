@@ -14,7 +14,22 @@ import {verifyBundle} from './solution/bundle.mjs';
 import {planBlanks,verifyBlankDecisions} from './interaction/plan.mjs';
 import {prepareSolutionReview,importSolutionReview} from './ai/solution-review.mjs';
 import {visibleFromCompiledV2} from './ir/v2.mjs';
+import {planTransformations} from './transformation/plan.mjs';
+import {validateTransformationPlan} from './transformation/validate.mjs';
+import {compileTransformationPresentation} from './transformation/compile.mjs';
+import {projectTransformationView} from './transformation/visible.mjs';
 export function operate(operation,input){
+ if(input.transformationPlan){
+  if(['solution-validate','verify-ir'].includes(operation))return validateTransformationPlan(input.ir,input.transformationPlan);
+  if(['interaction-plan','blank-candidates'].includes(operation))return planTransformations(input);
+  if(['render-solution','compile-ir'].includes(operation))return compileTransformationPresentation(input.ir,input.transformationPlan);
+  if(operation==='visible-snapshots'){
+   const result=compileTransformationPresentation(input.ir,input.transformationPlan);if(result.status!=='PASS')return result;
+   const interactions=result.compiled.interactions;
+   return {status:'NEEDS_AI_REVIEW',snapshots:interactions.map((c,i)=>projectTransformationView(result.compiled,interactions.slice(0,i).map(c=>c.id),{choicesOpen:c.id})),automaticAcceptance:false};
+  }
+ }
+
  if(operation==='research-manifest')return inspectResearch(input.manifest??input);
  if(operation==='research-analysis')return input.response?importResearchAnalysis(input.request,input.response):prepareResearchAnalysis(input.manifest,input.extraction);
  if(operation==='research-patterns')return retrievePatterns(input.patterns,input.query);

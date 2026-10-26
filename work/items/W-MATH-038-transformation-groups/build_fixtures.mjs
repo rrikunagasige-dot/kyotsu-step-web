@@ -1,0 +1,3 @@
+import fs from 'node:fs';import {transformationFixtureMatrix} from '../../../tools/textbook/fixtures/transformation-examples.mjs';import {compileTransformationPresentation} from '../../../tools/textbook/transformation/compile.mjs';
+const rows=transformationFixtureMatrix().map(f=>{const r=compileTransformationPresentation(f.ir,f.plan);if(r.status!==f.expected)throw Error(f.id+' '+r.status);return {id:f.id,expected:f.expected,...r};});
+fs.writeFileSync('work/items/W-MATH-038-transformation-groups/FIXTURE_RESULTS.json',JSON.stringify(rows,null,2)+'\n');console.log(rows.map(r=>r.id+':'+r.status).join(' '));

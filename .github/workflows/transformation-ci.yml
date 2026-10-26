@@ -1,0 +1,71 @@
+name: Ordinary transformation code and N11 pilot
+on:
+  push:
+    paths:
+      - 'tools/textbook/**'
+      - 'workflow/**'
+      - 'src/components/textbook/**'
+      - 'src/domain/transformationReading.ts'
+      - 'src/data/textbook/math/numbers/n11Transformation.json'
+      - 'src/pages/TextbookUnitPage.tsx'
+      - 'work/items/W-MATH-038-transformation-groups/**'
+      - '.github/workflows/transformation-ci.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      CANDIDATE_SHA: ${{ github.sha }}
+      VITE_PREVIEW_COMMIT: ${{ github.sha }}
+      VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
+      VITE_BASE_PATH: /kyotsu-step-web/
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y pandoc fonts-noto-cjk
+          python -m pip install -r tools/textbook/research/requirements-solution.txt numpy==2.3.5 scikit-learn==1.8.0 lxml==6.1.1
+      - name: Mathematical operations and adversarial transformation fixtures
+        run: |
+          node --test tools/textbook/tests/transformation.test.mjs tools/textbook/tests/solution-v2.test.mjs tools/textbook/tests/solution-regressions.test.mjs tools/textbook/tests/n08-bundle.test.mjs
+          node work/items/W-MATH-038-transformation-groups/materialize.mjs --check
+          python -m unittest discover -s workflow -p 'test_*.py' -q
+          python -m unittest discover -s tools/textbook/tests -p '*_test.py' -q
+      - name: Existing learner and opt-in component regression
+        run: |
+          pnpm exec vitest run --exclude src/data/physicsTaxonomy.test.ts --exclude src/domain/questionSchema.test.ts
+          pnpm exec vitest run --config work/items/W-MATH-038-transformation-groups/vitest.config.mjs
+          pnpm exec vitest run --config work/items/W-MATH-037-n08-workflow-trial/vitest.config.mjs
+          CODES=ne02,n11,n12 pnpm exec vitest run --config work/items/W-MATH-036-ne02-n11-n12-guided-design/vitest.config.mjs
+          pnpm run test:textbook-authoring
+          pnpm exec eslint src/components/textbook/GuidedMathReadingFlow.tsx src/components/textbook/SolutionReadingFlow.tsx src/components/textbook/TransformationReadingGroup.tsx src/domain/transformationReading.ts src/pages/TextbookUnitPage.tsx --max-warnings=0
+          pnpm run build
+      - run: pnpm exec playwright install --with-deps chromium
+      - name: Full N11 play, all wrong choices, four widths and old saves
+        run: EVIDENCE_DIR=/tmp/w38-n11 node work/items/W-MATH-038-transformation-groups/verify_app.mjs
+      - name: Shared-slot and expression/relation fixture geometry
+        run: EVIDENCE_DIR=/tmp/w38-fixtures node work/items/W-MATH-038-transformation-groups/verify_fixtures.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: w38-exact-source-evidence
+          path: |
+            /tmp/w38-n11
+            /tmp/w38-fixtures

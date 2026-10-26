@@ -108,7 +108,9 @@ def transition(before,after,e):
     for a in [left,right,outleft,outright]:polynomial(a)
     if rule in ('add-both-sides','multiply-both-sides','divide-both-sides'):
         value=ast(e['operand'])
-        if value.free_symbols:raise Unsupported('operand sign not established')
+        if value.free_symbols and rule!='add-both-sides':raise Unsupported('operand sign not established')
+        # Adding the same polynomial needs no sign assumption; multiplying/dividing does.
+        if rule=='add-both-sides':polynomial(value)
         if rule=='add-both-sides':left+=value;right+=value
         else:
             if value==0:return {'status':'FAIL','ruleId':rule,'reason':'zero multiplier or divisor loses equivalence'}

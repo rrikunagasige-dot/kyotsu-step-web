@@ -1,3 +1,4 @@
+import n11TransformationPresentation from '../data/textbook/math/numbers/n11Transformation.json'
 import * as n12LessonModule from '../data/textbook/math/numbers/n12Lesson'
 import * as n11LessonModule from '../data/textbook/math/numbers/n11Lesson'
 import { ne02Presentation } from '../data/textbook/math/numbers/ne02Lesson'
@@ -138,6 +139,7 @@ function renderPart(
 }
 
 type ReadingFlowProps = {
+  originalMathLayout?: boolean
   unit: TextbookUnit
   section: TextbookSection
   progress: TextbookUnitProgress | undefined
@@ -160,7 +162,7 @@ export function TextbookReadingFlow(props: ReadingFlowProps) {
         : props.unit.unitId === 'math-numbers-expressions-n10' && props.unit.revision === 2
           ? <GuidedMathReadingFlow key={props.unit.unitId} {...props} presentation={n10Presentation} /> : props.unit.unitId === 'math-numbers-expressions-ne02' && props.unit.revision === 2
             ? <GuidedMathReadingFlow key={props.unit.unitId} {...props} presentation={ne02Presentation} /> : props.unit.unitId === 'math-numbers-expressions-n11' && props.unit.revision === 11 && n11GuidedPresentation
-              ? <GuidedMathReadingFlow key={props.unit.unitId} {...props} presentation={n11GuidedPresentation} /> : props.unit.unitId === 'math-numbers-expressions-n12' && props.unit.revision === 4 && n12GuidedPresentation
+              ? <GuidedMathReadingFlow key={props.unit.unitId} {...props} presentation={n11GuidedPresentation} transformationPresentation={props.originalMathLayout ? undefined : n11TransformationPresentation} /> : props.unit.unitId === 'math-numbers-expressions-n12' && props.unit.revision === 4 && n12GuidedPresentation
               ? <GuidedMathReadingFlow key={props.unit.unitId} {...props} presentation={n12GuidedPresentation} /> : <LegacyTextbookReadingFlow {...props} />
 }
 
@@ -680,6 +682,8 @@ export function TextbookUnitPage() {
 }
 
 function ActiveTextbookUnitPage() {
+  const location = useLocation()
+  const originalMathLayout = new URLSearchParams(location.search).get('layout') === 'original'
   const { unitId = '' } = useParams()
   const [unit, setUnit] = useState<TextbookUnit | null | undefined>(undefined)
   const [selectedSectionIndex, setSelectedSectionIndex] = useState(0)
@@ -871,7 +875,7 @@ function ActiveTextbookUnitPage() {
               )}
 
               {section.readingFlow.length > 0
-                ? <TextbookReadingFlow key={`${unit.unitId}-${section.id}-restart-${restartEpoch}`} unit={unit} section={section} progress={progress} onSummaryReached={setMathSummaryReached} />
+                ? <TextbookReadingFlow originalMathLayout={originalMathLayout} key={`${unit.unitId}-${section.id}-restart-${restartEpoch}`} unit={unit} section={section} progress={progress} onSummaryReached={setMathSummaryReached} />
                 : null}
 
               {!continuousLesson && sectionComplete && !unitComplete && isLastVisible && index < unit.sections.length - 1 && (

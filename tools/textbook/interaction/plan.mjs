@@ -1,8 +1,10 @@
+import {planTransformations} from '../transformation/plan.mjs';
 import {hash} from '../util.mjs';
 import {validateBundle} from '../solution/bundle.mjs';
 import {validateGraph} from '../solution/graph.mjs';
 /** Eligibility is a mechanical filter; adoption remains an explicit teaching decision. */
 export function planBlanks(input){
+ if(input.transformationPlan)return planTransformations(input);
  if(input.bundle)return planBundleBlanks(input);
  const {graph,candidates}=input;
  const checked=validateGraph(graph);if(checked.status!=='PASS')return checked;

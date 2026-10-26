@@ -10,9 +10,12 @@ import { useAppStore } from '../../stores/useAppStore'
 import { SolutionReadingFlow } from './SolutionReadingFlow'
 import { SolutionReadingSchema } from '../../domain/solutionReading'
 import { useI18n } from '../../i18n/runtime'
+import { TransformationReadingGroup } from './TransformationReadingGroup'
+import { TransformationReadingSchema, projectTransformationView } from '../../domain/transformationReading'
 import './guided-math-reading.css'
 
 type Props = {
+  transformationPresentation?: unknown
   presentation: unknown; unit: TextbookUnit; section: TextbookSection; progress: TextbookUnitProgress | undefined
   onSummaryReached?: (reached: boolean) => void
   onReviewAnswer?: (item: TextbookItem, choice: string) => void
@@ -57,7 +60,7 @@ export function GuidedMathReadingFlow(props: Props) {
   return <LegacyGuidedMathReadingFlow {...props} />
 }
 
-function SolutionTextbookAdapter({ presentation, unit, section, progress, onSummaryReached, onReviewAnswer }: Props) {
+function SolutionTextbookAdapter({ presentation, transformationPresentation, unit, section, progress, onSummaryReached, onReviewAnswer }: Props) {
   const answer = useAppStore(state => state.answerTextbook)
   const current = effectiveTextbookProgress(unit, progress)
   const parsed = SolutionReadingSchema.safeParse(presentation)
@@ -68,14 +71,14 @@ function SolutionTextbookAdapter({ presentation, unit, section, progress, onSumm
     return <p role="alert">教材と選択肢の対応を確認してください。</p>
   }
   const display = { ...parsed.data, problems: parsed.data.problems.map(p => ({ ...p, steps: p.steps.map(s => s.interaction ? { ...s, interaction: { ...s.interaction, choices: getTextbookChoices(unit, items.get(s.interaction.id)!).flatMap(value => s.interaction!.choices.filter(c => c.value === value)) } } : s) })) }
-  return <SolutionReadingFlow presentation={display} answers={current?.answers ?? {}} onComplete={onSummaryReached} onAnswer={(id, value) => {
+  return <SolutionReadingFlow transformationPresentation={transformationPresentation} presentation={display} answers={current?.answers ?? {}} onComplete={onSummaryReached} onAnswer={(id, value) => {
     const item = items.get(id)!
     if (onReviewAnswer) onReviewAnswer(item, value)
     else answer(unit, id, value)
   }} />
 }
 
-function LegacyGuidedMathReadingFlow({ presentation, unit, section, progress, onSummaryReached, onReviewAnswer }: Props) {
+function LegacyGuidedMathReadingFlow({ presentation, transformationPresentation, unit, section, progress, onSummaryReached, onReviewAnswer }: Props) {
   const data = presentation as Presentation
   const displays = data.semanticDisplay
   const formulaNumbers = data.equationNumbers
@@ -95,6 +98,13 @@ function LegacyGuidedMathReadingFlow({ presentation, unit, section, progress, on
   })
   const stageIndex = Math.min(cursor, maxStage)
   const stage = data.stages[stageIndex]
+  const transformation = transformationPresentation ? TransformationReadingSchema.safeParse(transformationPresentation) : null
+  const transformationData = transformation?.success && transformation.data.unitId === unit.unitId ? transformation.data : undefined
+  const transformationSolved = transformationData?.interactions.filter(c => {
+    const item = items.find(i => i.id === c.id)
+    return item && isTextbookItemResolved(item, current?.answers[item.id])
+  }).map(c => c.id) ?? []
+  const transformed = transformationData ? projectTransformationView(transformationData, transformationSolved) : undefined
   const stageNodes = data.nodes.filter(n => n.stageId === stage.id)
   const complete = stageNodes.every(resolved)
   const [activeId, setActiveId] = useState<string | null>(null)
@@ -217,7 +227,25 @@ function LegacyGuidedMathReadingFlow({ presentation, unit, section, progress, on
       <GuidedNumberedEquation number={formulaNumbers[equation.id]} logical>{tableView}</GuidedNumberedEquation>
     </div>{compiled.after.filter(b => b !== equation).map(renderBlock)}</>
   }
+  function transformationGroup(stageId: string, onlyNodeId?: string) {
+    const group = transformed?.groups.find(g => transformationData?.groups.find(x => x.id === g.id)?.stageIds.includes(stageId))
+    if (!group) return null
+    const index = data.stages.findIndex(s => s.id === stageId)
+    const rows = group.rows.filter(r => onlyNodeId ? r.sourceNodeId === onlyNodeId : data.stages.findIndex(s => s.id === data.nodes.find(n => n.id === r.sourceNodeId)?.stageId) <= index)
+    return rows.length ? <TransformationReadingGroup group={{ ...group, rows }} renderSlot={blank} renderPanel={panel} /> : null
+  }
+  function stageContent(nodes: Node[], past = false) {
+    const emitted = new Set<string>()
+    return nodes.map(n => {
+      const group = transformationData?.groups.find(g => g.sourceNodeIds.includes(n.id))
+      if (!group) return renderNode(n, past)
+      if (emitted.has(group.id)) return null
+      emitted.add(group.id)
+      return <div key={group.id}>{transformationGroup(n.stageId)}</div>
+    })
+  }
   function result(n: Node) {
+    if (transformationData?.scope.nodeIds.includes(n.id)) return <div key={n.resultId} className="guided-result math-textbook-stage-reference-content" data-result-source={n.resultId}>{transformationGroup(n.stageId, n.id)}</div>
     return <div key={n.resultId} className="guided-result math-textbook-stage-reference-content" data-result-source={n.resultId}>
       <strong>{n.goal}</strong>{after(n)}
     </div>
@@ -240,6 +268,10 @@ function LegacyGuidedMathReadingFlow({ presentation, unit, section, progress, on
     return <figure className="guided-figure" data-testid="guided-original-figure" data-figure-id={figure.id}><img src={import.meta.env.BASE_URL + figure.src.replace(/^\//, '')} alt={figure.alt} />
       <figcaption>{figure.caption}</figcaption></figure>
   }
+  if (transformationPresentation && (!transformationData || transformationData.interactions.some(c => {
+    const item = items.find(i => i.id === c.id)
+    return !item || item.answer !== c.correctValue || c.choices.some(value => !(item.choices ?? []).includes(value))
+  }))) return <p role="alert">式列と回答データの対応を確認してください。</p>
   return <div ref={flow} className="textbook-reading-flow guided-reading" data-typeset-theme="true" data-testid="textbook-reading-flow" tabIndex={-1}>
     <div className="math-textbook-reading-controls"><span>{text('今の段階', '当前阶段')} {stageIndex + 1} / {data.stages.length}</span>
       {stageIndex > 0 && <button type="button" data-testid={data.code + '-history-toggle'} onClick={() => setHistory(x => !x)}>{history ? text('履歴を閉じる', '收起记录') : text('前の段階を見る', '查看之前的阶段')}</button>}
@@ -249,15 +281,15 @@ function LegacyGuidedMathReadingFlow({ presentation, unit, section, progress, on
         const previous = data.nodes.filter(n => n.stageId === s.id)
         return <section className="first-theme-recorded-results" key={s.id} data-testid={'recorded-results-' + s.id}>
           <h3>{i + 1}. {s.title}</h3>{result(previous.at(-1)!)}
-          <details open={expandAll || undefined}><summary>{text('全文を見る', '查看全文')}</summary>{previous.map(n => renderNode(n, true))}</details>
+          <details open={expandAll || undefined}><summary>{text('全文を見る', '查看全文')}</summary>{stageContent(previous, true)}</details>
         </section>
       })}
     </div>}
     <section className="math-textbook-stage math-textbook-stage--current" data-testid={'math-textbook-stage-' + stage.id}>
       <div className="guided-source-question" data-testid="guided-source-question"><strong>元の問題・考える対象</strong><p>{semantic(stage.sourceQuestionParts)}</p></div>
       <header className="math-textbook-stage-active-title"><strong>{stage.title}</strong><small>{stageIndex + 1} / {data.stages.length}</small></header>
-      {known.length > 0 && <aside className="math-textbook-stage-references" data-testid="math-textbook-stage-references"><strong>{text('使う条件・前の結果', '需要的条件与之前的结果')}</strong>{known.map(result)}</aside>}
-      {stageNodes.filter(n => data.nodes.indexOf(n) <= frontier).map(n => renderNode(n))}
+      {known.filter(n => !(transformationData?.scope.stageIds.includes(stage.id) && transformationData.scope.nodeIds.includes(n.id))).length > 0 && <aside className="math-textbook-stage-references" data-testid="math-textbook-stage-references"><strong>{text('使う条件・前の結果', '需要的条件与之前的结果')}</strong>{known.filter(n => !(transformationData?.scope.stageIds.includes(stage.id) && transformationData.scope.nodeIds.includes(n.id))).map(result)}</aside>}
+      {stageContent(stageNodes.filter(n => data.nodes.indexOf(n) <= frontier))}
       {complete && stageIndex < data.stages.length - 1 && <button type="button" className="math-textbook-next-stage" data-testid="math-textbook-next-stage" onClick={() => {
         setCursor(stageIndex + 1); setActiveId(null); setHistory(false); setExpandAll(false)
         requestAnimationFrame(() => { flow.current?.focus({ preventScroll: true }); flow.current?.scrollIntoView({ block: 'start' }) })

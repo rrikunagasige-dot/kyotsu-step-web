@@ -1,0 +1,9 @@
+{
+  "proposalId": "P-001",
+  "proposalSha256": "58ebbb888ea105021b080b382b758d98521733e3dd5432eb6397d7cf114e8441",
+  "proposalCommit": "f297503b574e92f1d2f120f9f9d09d7da6cd0af9",
+  "quote": "いいよ。じゃこれで続けて。そして終わったら次はもう一回N08の修正じゃ",
+  "intent": "approve_proposal",
+  "scope": "I01-I11; ordinary transformation infrastructure and N11 stage05-06 pilot, stage07 connection; next N08 correction follows completion",
+  "qualityAcceptance": false
+}

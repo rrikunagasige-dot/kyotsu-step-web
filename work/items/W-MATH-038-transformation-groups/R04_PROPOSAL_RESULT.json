@@ -1,0 +1,155 @@
+{
+  "verdict": "PASS",
+  "evidence_refs": [
+    "58d754b3-bedc-47b7-b677-5422510e5399",
+    "245a4d35-183a-444b-b276-49ca51bf22f0",
+    "d89238f5-d7ad-451f-a42d-40146f5ab184",
+    "6275a528-fd1b-453c-9a09-d14ed6e83880",
+    "2b1fc941-1355-4622-94bf-7e6dfe777b16",
+    "c2e69649-95ab-459c-b1f2-beca9011d23b"
+  ],
+  "capability_receipts": [
+    "2b4a6a808291c9a76fc7aee4d87b5c822813a4a73deaad64235c38bbcd9bdcde",
+    "5ae9ce4b7f25c7f6e8ae395042949c0f7b7f9543cc262a881e170ceaf7528d66",
+    "8a4ea1022f80f440ee685fb171703f49f47c6f9b7f702c15be753b563434a117",
+    "bbb1580b9f6ed663d5ec4c79ce7dd295664c40f191d44da7ce6d32df71d6207c",
+    "0f0cf42d7c45ff03c0ad42f96b2490745be7da5359aade5cc829c2da2fda3af9",
+    "437a26abf615227c3381f6195e856b245f40cbe0fcced447f58a8c877653c4a5",
+    "f60ebe1970094cf943ee08e2a0f6bc24c4fc2d601f69191ce0857c21c940fd4b",
+    "d7b652b63cf97e0d830696b7da3b03f7266e77d0d7b0be899d6e932d645dbddd",
+    "770b0a8483c30c90a02b11da5cf59442c981aba542857a7866d39962ee03afe1",
+    "c3735b1d9b9459e31e537abf2aba5f3309ef2342403d82462a86f82c0b241e61",
+    "6c1536f183a6bc4f72ab6bb758999eb238df783cab7eab7e8387847f6ffe6953",
+    "3f350dbaa703d4dca56a43905082405652d8e6f53d3e51ab81a1c85662a97465"
+  ],
+  "case_dispositions": [
+    {
+      "id": "N07-USER-F01",
+      "disposition": "APPLY",
+      "reason": "元の例題を式列の先頭に保ち、係数・定数・操作の前提を補助式で示す。"
+    },
+    {
+      "id": "N07-USER-F02",
+      "disposition": "APPLY",
+      "reason": "補助計算の数を不等式全体へ戻す。r-cancel→r-add、r-divisor→r-divideを対応付ける。"
+    },
+    {
+      "id": "N07-USER-F03",
+      "disposition": "APPLY",
+      "reason": "定数項をなくす→係数を1にする目的を操作前に置く。"
+    },
+    {
+      "id": "N07-USER-F04",
+      "disposition": "APPLY",
+      "reason": "両辺への加算・整理・両辺への除算・商を別の検算atomとして保つ。"
+    },
+    {
+      "id": "N07-USER-F05",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "この局所例には新しい定義語を導入しない。既存の定義ブロックは改変しない。"
+    },
+    {
+      "id": "N07-USER-F06",
+      "disposition": "APPLY",
+      "reason": "7行全体をsource stateへ結び、文中数式・分数内slot・比較記号を実描画検査する。"
+    },
+    {
+      "id": "n07-layout-relation",
+      "disposition": "APPLY",
+      "reason": "式列の比較記号の列を揃え、説明を適切な行間へ置く。"
+    },
+    {
+      "id": "n07-layout-positive",
+      "disposition": "APPLY",
+      "reason": "既存の余白・概念の黒字・選択UIは継承し、通常変形の局所だけopt-in。"
+    },
+    {
+      "id": "first-title-layout-positive",
+      "disposition": "APPLY",
+      "reason": "式列の比較記号の列を揃え、説明を適切な行間へ置く。"
+    },
+    {
+      "id": "N07-ACCEPTED-20261025",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "その教材・版全体への受入であり、N11新表示の品質labelや合格根拠へ転用しない。"
+    },
+    {
+      "id": "N08-ACCEPTED-20261025",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "その教材・版全体への受入であり、N11新表示の品質labelや合格根拠へ転用しない。"
+    },
+    {
+      "id": "N09-REJECTED-20261025",
+      "disposition": "APPLY",
+      "reason": "原問→操作→整理→次の操作→解の順を保ち、未来の商を先出ししない。"
+    },
+    {
+      "id": "N10-REJECTED-20261025",
+      "disposition": "APPLY",
+      "reason": "分子分母と積の対象をAST構造で保持する。N10の原問は変更しない。"
+    },
+    {
+      "id": "N09-ACCEPTED-20261025",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "その教材・版全体への受入であり、N11新表示の品質labelや合格根拠へ転用しない。"
+    },
+    {
+      "id": "N10-ACCEPTED-20261025",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "その教材・版全体への受入であり、N11新表示の品質labelや合格根拠へ転用しない。"
+    }
+  ],
+  "aiReview": {
+    "requestHash": "2b2bb5e525011e64496b345b1b5899cc12f476c79b6a33cf6c784e60136f38c1",
+    "inputHash": "1552597e2ff7ead8aa0e2d2209f4a8fadb48c445e7f83231742fa0893325ed35",
+    "reviewer": "same-assistant source and visible-state pass; not independent AI",
+    "evidence": "P001 unchanged. Five visible-only review states have individually recorded purposes and source references. Fifteen existing cases have dimension-specific dispositions. Whole-material acceptances are not reused as labels or proof."
+  },
+  "before_after": [
+    "One opt-in relation sequence instead of per-node captions",
+    "Five existing interactions,39 grading IDs and revision11 remain",
+    "Internal state/operation math is checked; terminal statement appears once"
+  ],
+  "protected_scope": [
+    "public/assets/math/textbook/numbers/n08-f01.png",
+    "src/data/textbook/math/numbers/n07Authored.json",
+    "src/data/textbook/math/numbers/n09Authored.json",
+    "src/data/textbook/math/numbers/n10Authored.json",
+    "src/data/textbook/math/numbers/n11Authored.json",
+    "src/data/textbook/math/numbers/n12Authored.json",
+    "src/data/textbook/math/numbers/n08Authored.json",
+    "src/components/textbook/N08ReadingFlow.tsx",
+    "src/components/textbook/n08-reading.css",
+    "src/data/textbook/math/numbers/n08Revision5.json",
+    "src/data/textbook/math/numbers/n08ActiveVersion.json",
+    "src/components/textbook/N08SolutionReadingFlow.tsx",
+    "src/components/textbook/n08-solution-reading.css",
+    "src/domain/textbook.ts"
+  ],
+  "patch_plan": [
+    "src/components/textbook/GuidedMathReadingFlow.tsx",
+    "src/components/textbook/SolutionReadingFlow.tsx",
+    "src/components/textbook/TransformationReadingGroup.tsx",
+    "src/components/textbook/transformation-reading.css",
+    "src/domain/transformationReading.ts",
+    "src/pages/TextbookUnitPage.tsx",
+    "src/data/textbook/math/numbers/n11Transformation.json",
+    "tools/textbook/transformation/",
+    "tools/textbook/fixtures/transformation-examples.mjs",
+    "tools/textbook/tests/transformation.test.mjs",
+    "tools/textbook/solver/solution.py",
+    "tools/textbook/operations.mjs",
+    "tools/textbook/ai/solution-review.mjs",
+    "tools/textbook/interaction/plan.mjs",
+    "tools/textbook/SOLUTION_PIPELINE.md",
+    "workflow/integration.py",
+    "workflow/test_transformation.py",
+    "work/items/W-MATH-038-transformation-groups/"
+  ],
+  "verification_plan": [
+    "67 exact/negative tests and three approval-binding tests",
+    "Four-width39 correct and109 wrong choices; old save revisions and layout switch",
+    "Fixture shared slots and full source-matched hosted app"
+  ],
+  "proposal_hash": "58ebbb888ea105021b080b382b758d98521733e3dd5432eb6397d7cf114e8441"
+}

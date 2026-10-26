@@ -1,0 +1,79 @@
+{
+  "cases": [
+    {
+      "id": "N07-USER-F01",
+      "disposition": "APPLY",
+      "reason": "元の例題を式列の先頭に保ち、係数・定数・操作の前提を補助式で示す。"
+    },
+    {
+      "id": "N07-USER-F02",
+      "disposition": "APPLY",
+      "reason": "補助計算の数を不等式全体へ戻す。r-cancel→r-add、r-divisor→r-divideを対応付ける。"
+    },
+    {
+      "id": "N07-USER-F03",
+      "disposition": "APPLY",
+      "reason": "定数項をなくす→係数を1にする目的を操作前に置く。"
+    },
+    {
+      "id": "N07-USER-F04",
+      "disposition": "APPLY",
+      "reason": "両辺への加算・整理・両辺への除算・商を別の検算atomとして保つ。"
+    },
+    {
+      "id": "N07-USER-F05",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "この局所例には新しい定義語を導入しない。既存の定義ブロックは改変しない。"
+    },
+    {
+      "id": "N07-USER-F06",
+      "disposition": "APPLY",
+      "reason": "7行全体をsource stateへ結び、文中数式・分数内slot・比較記号を実描画検査する。"
+    },
+    {
+      "id": "n07-layout-relation",
+      "disposition": "APPLY",
+      "reason": "式列の比較記号の列を揃え、説明を適切な行間へ置く。"
+    },
+    {
+      "id": "n07-layout-positive",
+      "disposition": "APPLY",
+      "reason": "既存の余白・概念の黒字・選択UIは継承し、通常変形の局所だけopt-in。"
+    },
+    {
+      "id": "first-title-layout-positive",
+      "disposition": "APPLY",
+      "reason": "式列の比較記号の列を揃え、説明を適切な行間へ置く。"
+    },
+    {
+      "id": "N07-ACCEPTED-20261025",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "その教材・版全体への受入であり、N11新表示の品質labelや合格根拠へ転用しない。"
+    },
+    {
+      "id": "N08-ACCEPTED-20261025",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "その教材・版全体への受入であり、N11新表示の品質labelや合格根拠へ転用しない。"
+    },
+    {
+      "id": "N09-REJECTED-20261025",
+      "disposition": "APPLY",
+      "reason": "原問→操作→整理→次の操作→解の順を保ち、未来の商を先出ししない。"
+    },
+    {
+      "id": "N10-REJECTED-20261025",
+      "disposition": "APPLY",
+      "reason": "分子分母と積の対象をAST構造で保持する。N10の原問は変更しない。"
+    },
+    {
+      "id": "N09-ACCEPTED-20261025",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "その教材・版全体への受入であり、N11新表示の品質labelや合格根拠へ転用しない。"
+    },
+    {
+      "id": "N10-ACCEPTED-20261025",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "その教材・版全体への受入であり、N11新表示の品質labelや合格根拠へ転用しない。"
+    }
+  ]
+}

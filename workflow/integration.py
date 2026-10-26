@@ -16,8 +16,15 @@ STAGE_FACETS = {
 
 
 def bundle_fingerprint(s, bundle):
-    return digest({'bundle': bundle, 'scope': s['plan']['scope'], 'patches':{b['id']:b.get('patch_hash',s['plan']['proposal'].get('patch_hash')) for b in normalized(s['plan'])['blocks'] if b['id'] in bundle['block_ids']},
-                   'facets': {b: {k: v for k, v in s.get('block_contexts', {}).get(b, {}).items() if k in ('math', 'design', 'knowledge')} for b in bundle['block_ids']}})
+    blocks = [b for b in normalized(s['plan'])['blocks'] if b['id'] in bundle['block_ids']]
+    content = {'bundle': bundle, 'scope': s['plan']['scope'],
+               'patches': {b['id']: b.get('patch_hash', s['plan']['proposal'].get('patch_hash')) for b in blocks},
+               'facets': {b: {k: v for k, v in s.get('block_contexts', {}).get(b, {}).items() if k in ('math', 'design', 'knowledge')} for b in bundle['block_ids']}}
+    # Unopted historical approvals must retain their exact former fingerprint.
+    presentations = {b['id']: b['presentation_design_hash'] for b in blocks if b.get('presentation_design_hash')}
+    if presentations:
+        content['presentations'] = presentations
+    return digest(content)
 
 
 def approval(rt, s, node=None):
@@ -60,6 +67,15 @@ def input_hash(rt, s, node):
     return digest(base)
 
 
+def compiled_design_matches(outputs, ir_hash, presentation_hash=None):
+    """Bind mathematical content and optional display plan in the same compiler output."""
+    for output in outputs:
+        compiled = output.get('compiled', output)
+        if compiled.get('irHash') == ir_hash and (presentation_hash is None or compiled.get('planHash') == presentation_hash):
+            return True
+    return False
+
+
 def check_result(rt, work, node, result):
     from capabilities import implementation_hash
     from production import ai_request
@@ -90,6 +106,8 @@ def check_result(rt, work, node, result):
         b = next(b for b in normalized(s['plan'])['blocks'] if b['id'] == node['block'])
         expected = b.get('content_design_hash') or next(a['content_hash'] for a in normalized(s['plan'])['approval_bundles'] if node['block'] in a['block_ids'])
         need(any(rt.store.get(r['output']).get('compiled', rt.store.get(r['output'])).get('irHash') == expected for r in receipts), 'compile内容と承認済みIR hashが違う')
+        if b.get('presentation_design_hash'):
+            need(compiled_design_matches([rt.store.get(r['output']) for r in receipts], expected, b['presentation_design_hash']), 'compile表示計画と承認済みplan hashが違う')
     if node['stage_kind'] == 'G2_AUDIT':
         need(result['release_readiness'] in ('READY', 'BLOCKED') and result['impact_sweep_completion'] in ('COMPLETE', 'QUEUED', 'BLOCKED'), '公開可否と影響完了を別記する')
         need(result['audit_method'].get('method') and result['audit_method'].get('reviewer'), '監査方法・担当がない')

@@ -1,11 +1,12 @@
 import {hash} from '../util.mjs';
-export function prepareSolutionReview(visible,{phase,sourceRefs,caseIds=[]}){
- const forbidden=new Set(['correctValue','expected','feedback','graph','mathReceipts','withheldKnowledge']);
+export function prepareSolutionReview(visible,{phase,sourceRefs,caseIds=[],profile}){
+ const forbidden=new Set(['correctValue','expected','targetLatex','gradingHash','feedback','graph','graphs','mathReceipts','withheldKnowledge']);
  const inspect=v=>v&&typeof v==='object'&&(Object.keys(v).some(k=>forbidden.has(k))||Object.values(v).some(x=>inspect(x)));
  if(!visible?.current||!visible?.initial||!sourceRefs?.length||inspect(visible))return {status:'FAIL',reason:'VISIBLE_ONLY_REVIEW_REQUIRED'};
- const request={schemaVersion:'solution-review/1',phase,visible,sourceRefs,caseIds,
+ const request={...(profile?{profile}:{}),schemaVersion:'solution-review/1',phase,visible,sourceRefs,caseIds,
   required:['learnerDecision','availableInformation','reasonToProceed','nextWholeState','misconception','reducedSupportVariant','findings'],
   constraints:['可視状態だけで次へ進めるかを先に検討する','作成者の理由欄を合格根拠にしない','同一AIの別passを独立モデルと呼ばない']};
+ if(profile==='ordinary-transformation')request.required.push('patternDecision','groupBoundaryReview','blankDecisionReview','prosePlacementReview','terminalRoleReview','visibleProgressionReview');
  return {status:'NEEDS_AI_REVIEW',request:{...request,requestHash:hash(request)}};
 }
 export function importSolutionReview(request,response){

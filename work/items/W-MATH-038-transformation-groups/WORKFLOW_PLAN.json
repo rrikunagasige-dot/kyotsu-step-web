@@ -1,0 +1,120 @@
+{
+  "approval_bundles": [
+    {
+      "block_ids": [
+        "n11"
+      ],
+      "content_hash": "ae3823163ac23bb334ac02a6c868bbd1273b8b6f1f65c77cde6f751773900a74",
+      "id": "proposal",
+      "proposal_hash": "58ebbb888ea105021b080b382b758d98521733e3dd5432eb6397d7cf114e8441"
+    }
+  ],
+  "blocks": [
+    {
+      "change_facets": [
+        "design",
+        "render"
+      ],
+      "content_design_hash": "ae3823163ac23bb334ac02a6c868bbd1273b8b6f1f65c77cde6f751773900a74",
+      "depends_on_blocks": [],
+      "fact_dependencies": [],
+      "id": "n11",
+      "presentation_design_hash": "0d5ccf584bc97d1c4ef6054f3b02f2f2ee42a4faba4654844aae707d33c20ea5",
+      "release_unit": "n11",
+      "sources": [
+        "src/data/textbook/math/numbers/n11Authored.json",
+        "work/items/W-MATH-036-ne02-n11-n12-guided-design/N11_IR.json",
+        "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json"
+      ]
+    }
+  ],
+  "command": "CMD-WORK-001",
+  "mode": "textbook",
+  "profile": "material",
+  "proposal": {
+    "contentDesignHash": "ae3823163ac23bb334ac02a6c868bbd1273b8b6f1f65c77cde6f751773900a74",
+    "hash": "58ebbb888ea105021b080b382b758d98521733e3dd5432eb6397d7cf114e8441",
+    "id": "W-MATH-038/P-001"
+  },
+  "protected_manifest": {
+    "public/assets/math/textbook/numbers/n08-f01.png": "817ab6ad3afb71b009cc95796e267d0818a104ecf19864c55c2ba0afbf29da73",
+    "src/components/textbook/N08ReadingFlow.tsx": "56f9d2b75b8b34a28b8e4b53c6df5ac922fb2da6c57005b6f709db5abcf56cc6",
+    "src/components/textbook/N08SolutionReadingFlow.tsx": "c53949eb6bb4cf4e640d077225b1f9d17b2d10cfd04a4dbb664ed32858c06d23",
+    "src/components/textbook/n08-reading.css": "c2c252e5467690b6b0897b5dcd99ddf18ae588cdb011b5d3c66e780a1175f949",
+    "src/components/textbook/n08-solution-reading.css": "de8a7aa9052d3bb6777a9a7190284cdb2d947856762d292eb94e6bf622b2ffd1",
+    "src/data/textbook/math/numbers/n07Authored.json": "8a8338889abc9df39d19283075c149ee0c4dc6308cb708d0e86fbef47f76b007",
+    "src/data/textbook/math/numbers/n08ActiveVersion.json": "b05269e287cb1c4d210081745c4099df9dd7bdc35d038dc1ffcd6f7bc0160f07",
+    "src/data/textbook/math/numbers/n08Authored.json": "80c917d3c2de34b9111e11f57fb02272d98ab02c0677a2fb30c5ae4dad60e142",
+    "src/data/textbook/math/numbers/n08Revision5.json": "2ff0e38d4d081a3dc9f1912cd6b6a0ebe395fd9cb8afd6bd8fab2f2778a862e5",
+    "src/data/textbook/math/numbers/n09Authored.json": "86733957a6b748b9e2d2609a0b95e1a3c765a8d82397dfbf27837d834539ad95",
+    "src/data/textbook/math/numbers/n10Authored.json": "819cc0b981419e19381f7c8ab14b1501760a830be0d433ce8f1fe6cb3c619e62",
+    "src/data/textbook/math/numbers/n11Authored.json": "ae3823163ac23bb334ac02a6c868bbd1273b8b6f1f65c77cde6f751773900a74",
+    "src/data/textbook/math/numbers/n12Authored.json": "bd7e9942376589e822bc3028954867997167bf4f44e3cb5fc9b7aea90b8af97a",
+    "src/domain/textbook.ts": "fd01a50cebfb59dacf288a073c3c474be377f640a9e14916713e71734db42f14"
+  },
+  "release_units": [
+    {
+      "block_ids": [
+        "n11"
+      ],
+      "id": "n11",
+      "review_route": "/learning/textbook/math-numbers-expressions-n11"
+    }
+  ],
+  "rules": {
+    "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
+    "governance/REVIEW_POLICY.json": "a71148f007a79b124385c7645e6bc01564bfa02b12152174883543f31f6ce72d",
+    "governance/WORK_SYSTEM.md": "37b0b0e0fecc79d7c067e17ec8dbeb53d53863f04369171d65ef652a176eb093",
+    "memory/LESSONS/MATH_TYPESETTING_GROUPS.md": "8047831b13d22ffb773f68e23ab788a3490e4b69ebbf5d5d357f9f786ed53d0a",
+    "subjects/mathematics/textbook/SPEC.md": "a36959ae6f951e855c3e60d280d02a0f20c6e23185d9eb90b17ffbc889c63277"
+  },
+  "scope": {
+    "paths": [
+      "src/components/textbook/GuidedMathReadingFlow.tsx",
+      "src/components/textbook/SolutionReadingFlow.tsx",
+      "src/components/textbook/TransformationReadingGroup.tsx",
+      "src/components/textbook/transformation-reading.css",
+      "src/domain/transformationReading.ts",
+      "src/pages/TextbookUnitPage.tsx",
+      "src/data/textbook/math/numbers/n11Transformation.json",
+      "tools/textbook/transformation/",
+      "tools/textbook/fixtures/transformation-examples.mjs",
+      "tools/textbook/tests/transformation.test.mjs",
+      "tools/textbook/solver/solution.py",
+      "tools/textbook/operations.mjs",
+      "tools/textbook/ai/solution-review.mjs",
+      "tools/textbook/interaction/plan.mjs",
+      "tools/textbook/SOLUTION_PIPELINE.md",
+      "workflow/integration.py",
+      "workflow/test_transformation.py",
+      "work/items/W-MATH-038-transformation-groups/"
+    ],
+    "preserve": [
+      "public/assets/math/textbook/numbers/n08-f01.png",
+      "src/data/textbook/math/numbers/n07Authored.json",
+      "src/data/textbook/math/numbers/n09Authored.json",
+      "src/data/textbook/math/numbers/n10Authored.json",
+      "src/data/textbook/math/numbers/n11Authored.json",
+      "src/data/textbook/math/numbers/n12Authored.json",
+      "src/data/textbook/math/numbers/n08Authored.json",
+      "src/components/textbook/N08ReadingFlow.tsx",
+      "src/components/textbook/n08-reading.css",
+      "src/data/textbook/math/numbers/n08Revision5.json",
+      "src/data/textbook/math/numbers/n08ActiveVersion.json",
+      "src/components/textbook/N08SolutionReadingFlow.tsx",
+      "src/components/textbook/n08-solution-reading.css",
+      "src/domain/textbook.ts"
+    ]
+  },
+  "simulation": false,
+  "solution_pipeline": "solution/1",
+  "source_manifest": {
+    "src/data/textbook/math/numbers/n11Authored.json": "ae3823163ac23bb334ac02a6c868bbd1273b8b6f1f65c77cde6f751773900a74",
+    "work/items/W-MATH-036-ne02-n11-n12-guided-design/N11_IR.json": "5aa1ebfa7712bbe62fde091c8b87b9aabf30e1e6ff3a73c638be7a7e61f38abf",
+    "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json": "d82910061303b2720117e38e912c391a29b231b8a0d0b9178747da6f2335f7d8"
+  },
+  "source_sha": "f297503b574e92f1d2f120f9f9d09d7da6cd0af9",
+  "subject": "math",
+  "work_id": "W-MATH-038",
+  "workflow_version": "production/2"
+}

@@ -1,0 +1,768 @@
+{
+  "status": "PASS",
+  "compiled": {
+    "schemaVersion": "transformation-reading/1",
+    "unitId": "math-numbers-expressions-n11",
+    "presentationVersion": 1,
+    "baseIRHash": "ae3823163ac23bb334ac02a6c868bbd1273b8b6f1f65c77cde6f751773900a74",
+    "irHash": "ae3823163ac23bb334ac02a6c868bbd1273b8b6f1f65c77cde6f751773900a74",
+    "planHash": "0d5ccf584bc97d1c4ef6054f3b02f2f2ee42a4faba4654844aae707d33c20ea5",
+    "learnerCopyHash": "8e98684bdd703ac8013470ab77438993a2c2e74b452c5da605d2b78e1743705f",
+    "gradingHash": "7d1c0714ad5b182d2705de4a589e726264e95372cd01a91f691048b9caeef4f4",
+    "scope": {
+      "problemId": "n11-q05-q06",
+      "nodeIds": [
+        "n11-solve-problem",
+        "n11-wm017-q05-operation",
+        "n11-wm017-q05-balance",
+        "n11-05",
+        "n11-q06-operation",
+        "n11-06"
+      ],
+      "stageIds": [
+        "n11-stage-05",
+        "n11-stage-06"
+      ],
+      "assumptionRefs": [
+        "x-real"
+      ]
+    },
+    "numberAliases": {
+      "n11-wm017-q05-operation-interaction-0": "n11-tg-cancel",
+      "n11-wm017-q05-operation-equation": "n11-tg-cancel",
+      "n11-wm017-q05-balance-interaction-0": "n11-tg-add",
+      "n11-wm017-q05-balance-equation": "n11-tg-add",
+      "n11-05-interaction-0": "n11-tg-sum",
+      "n11-05-equation": "n11-tg-sum",
+      "n11-q06-operation-interaction-0": "n11-tg-divisor",
+      "n11-q06-operation-equation": "n11-tg-divisor",
+      "n11-06-interaction-0": "n11-tg-final",
+      "n11-06-equation": "n11-tg-final"
+    },
+    "groups": [
+      {
+        "id": "n11-linear-solution",
+        "kind": "relation-sequence",
+        "patternId": "T04",
+        "graphRef": "n11-linear",
+        "stageIds": [
+          "n11-stage-05",
+          "n11-stage-06"
+        ],
+        "sourceNodeIds": [
+          "n11-solve-problem",
+          "n11-wm017-q05-operation",
+          "n11-wm017-q05-balance",
+          "n11-05",
+          "n11-q06-operation",
+          "n11-06"
+        ],
+        "stepRefs": [
+          "a01",
+          "a02",
+          "a03",
+          "a04"
+        ],
+        "number": 16,
+        "numberId": "n11-linear-solution-number",
+        "boundaryReason": "同じ原問・実数条件のもと、定数をなくして係数を1にする一続きの解答。",
+        "conclusion": {
+          "kind": "terminal-in-flow",
+          "stateRef": "S4"
+        },
+        "rows": [
+          {
+            "id": "n11-tg-initial",
+            "graphRef": "n11-linear",
+            "stateRef": "S0",
+            "sourceNodeId": "n11-solve-problem",
+            "sourceRefs": [
+              "n11-solve-problem-before",
+              "n11-solve-problem-after"
+            ],
+            "role": "main",
+            "visibleAfter": [],
+            "interactionRef": null,
+            "slots": [],
+            "before": [
+              {
+                "type": "text",
+                "text": "不等式を変形して、条件を満たすすべての実数の範囲を求めます。まず、左辺の定数項をなくします。"
+              }
+            ],
+            "after": [],
+            "afterVisible": true,
+            "continuation": false,
+            "completed": {
+              "left": [
+                {
+                  "type": "math",
+                  "latex": "3x-2"
+                }
+              ],
+              "relation": "<",
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "5"
+                }
+              ]
+            },
+            "masked": {
+              "left": [
+                {
+                  "type": "math",
+                  "latex": "3x-2"
+                }
+              ],
+              "relation": "<",
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "5"
+                }
+              ]
+            }
+          },
+          {
+            "id": "n11-tg-cancel",
+            "graphRef": "cancel",
+            "stateRef": "A0",
+            "sourceNodeId": "n11-wm017-q05-operation",
+            "sourceRefs": [
+              "n11-wm017-q05-operation-before",
+              "n11-wm017-q05-operation-interaction-0",
+              "n11-wm017-q05-operation-equation",
+              "n11-wm017-q05-operation-after"
+            ],
+            "role": "auxiliary",
+            "visibleAfter": [],
+            "interactionRef": "n11-wm017-q05-operation",
+            "slots": [
+              {
+                "id": "n11-tg-cancel-operand",
+                "interactionRef": "n11-wm017-q05-operation",
+                "path": "left.args.1"
+              }
+            ],
+            "before": [
+              {
+                "type": "text",
+                "text": "左辺の定数部分を"
+              },
+              {
+                "type": "math",
+                "latex": "0"
+              },
+              {
+                "type": "text",
+                "text": "にする数を、次の式で確かめます。"
+              }
+            ],
+            "after": [
+              {
+                "type": "text",
+                "text": "左辺で定数を打ち消す数が決まりました。同じ数を右辺にも加えます。"
+              }
+            ],
+            "afterVisible": true,
+            "continuation": false,
+            "completed": {
+              "left": [
+                {
+                  "type": "math",
+                  "latex": "-2+2"
+                }
+              ],
+              "relation": "=",
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "0"
+                }
+              ]
+            },
+            "masked": {
+              "left": [
+                {
+                  "type": "math",
+                  "latex": "-2"
+                },
+                {
+                  "type": "math",
+                  "latex": "+"
+                },
+                {
+                  "type": "slot",
+                  "id": "n11-tg-cancel-operand",
+                  "interactionRef": "n11-wm017-q05-operation"
+                }
+              ],
+              "relation": "=",
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "0"
+                }
+              ]
+            }
+          },
+          {
+            "id": "n11-tg-add",
+            "graphRef": "n11-linear",
+            "stateRef": "S1",
+            "sourceNodeId": "n11-wm017-q05-balance",
+            "sourceRefs": [
+              "n11-wm017-q05-balance-before",
+              "n11-wm017-q05-balance-interaction-0",
+              "n11-wm017-q05-balance-equation",
+              "n11-wm017-q05-balance-after"
+            ],
+            "role": "main",
+            "visibleAfter": [
+              "n11-wm017-q05-operation"
+            ],
+            "interactionRef": "n11-wm017-q05-balance",
+            "slots": [
+              {
+                "id": "n11-tg-add-right",
+                "interactionRef": "n11-wm017-q05-balance",
+                "path": "right.args.1"
+              }
+            ],
+            "before": [
+              {
+                "type": "text",
+                "text": "両辺に同じ数を加えると、大小関係は保たれます。右辺にも同じ操作を入れます。"
+              }
+            ],
+            "after": [
+              {
+                "type": "text",
+                "text": "左辺の定数部分が"
+              },
+              {
+                "type": "math",
+                "latex": "0"
+              },
+              {
+                "type": "text",
+                "text": "になりました。右辺の和を計算します。"
+              }
+            ],
+            "afterVisible": true,
+            "continuation": false,
+            "completed": {
+              "left": [
+                {
+                  "type": "math",
+                  "latex": "3x-2+2"
+                }
+              ],
+              "relation": "<",
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "5+2"
+                }
+              ]
+            },
+            "masked": {
+              "left": [
+                {
+                  "type": "math",
+                  "latex": "3x-2+2"
+                }
+              ],
+              "relation": "<",
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "5"
+                },
+                {
+                  "type": "math",
+                  "latex": "+"
+                },
+                {
+                  "type": "slot",
+                  "id": "n11-tg-add-right",
+                  "interactionRef": "n11-wm017-q05-balance"
+                }
+              ]
+            }
+          },
+          {
+            "id": "n11-tg-sum",
+            "graphRef": "n11-linear",
+            "stateRef": "S2",
+            "sourceNodeId": "n11-05",
+            "sourceRefs": [
+              "n11-05-before",
+              "n11-05-interaction-0",
+              "n11-05-equation",
+              "n11-05-after"
+            ],
+            "role": "main",
+            "visibleAfter": [
+              "n11-wm017-q05-operation",
+              "n11-wm017-q05-balance"
+            ],
+            "interactionRef": "n11-05",
+            "slots": [
+              {
+                "id": "n11-tg-sum-sum",
+                "interactionRef": "n11-05",
+                "path": "right"
+              }
+            ],
+            "before": [
+              {
+                "type": "text",
+                "text": "左右を整理して、不等式を次の行へ進めます。"
+              }
+            ],
+            "after": [
+              {
+                "type": "text",
+                "text": "次は、左辺の係数を"
+              },
+              {
+                "type": "math",
+                "latex": "1"
+              },
+              {
+                "type": "text",
+                "text": "にします。"
+              }
+            ],
+            "afterVisible": true,
+            "continuation": false,
+            "completed": {
+              "left": [
+                {
+                  "type": "math",
+                  "latex": "3x"
+                }
+              ],
+              "relation": "<",
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "7"
+                }
+              ]
+            },
+            "masked": {
+              "left": [
+                {
+                  "type": "math",
+                  "latex": "3x"
+                }
+              ],
+              "relation": "<",
+              "right": [
+                {
+                  "type": "slot",
+                  "id": "n11-tg-sum-sum",
+                  "interactionRef": "n11-05"
+                }
+              ]
+            }
+          },
+          {
+            "id": "n11-tg-divisor",
+            "graphRef": "coefficient",
+            "stateRef": "A0",
+            "sourceNodeId": "n11-q06-operation",
+            "sourceRefs": [
+              "n11-q06-operation-before",
+              "n11-q06-operation-interaction-0",
+              "n11-q06-operation-equation",
+              "n11-q06-operation-after"
+            ],
+            "role": "auxiliary",
+            "visibleAfter": [
+              "n11-wm017-q05-operation",
+              "n11-wm017-q05-balance",
+              "n11-05"
+            ],
+            "interactionRef": "n11-q06-operation",
+            "slots": [
+              {
+                "id": "n11-tg-divisor-divisor",
+                "interactionRef": "n11-q06-operation",
+                "path": "left.denominator"
+              }
+            ],
+            "before": [
+              {
+                "type": "text",
+                "text": "係数を"
+              },
+              {
+                "type": "math",
+                "latex": "1"
+              },
+              {
+                "type": "text",
+                "text": "にするために割る数を、次の式で確かめます。"
+              }
+            ],
+            "after": [
+              {
+                "type": "text",
+                "text": "決めた数は正なので、両辺をその数で割っても不等号の向きは変わりません。"
+              }
+            ],
+            "afterVisible": true,
+            "continuation": false,
+            "completed": {
+              "left": [
+                {
+                  "type": "math",
+                  "latex": "\\frac{3}{3}"
+                }
+              ],
+              "relation": "=",
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "1"
+                }
+              ]
+            },
+            "masked": {
+              "left": [
+                {
+                  "type": "fraction",
+                  "numerator": [
+                    {
+                      "type": "math",
+                      "latex": "3"
+                    }
+                  ],
+                  "denominator": [
+                    {
+                      "type": "slot",
+                      "id": "n11-tg-divisor-divisor",
+                      "interactionRef": "n11-q06-operation"
+                    }
+                  ]
+                }
+              ],
+              "relation": "=",
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "1"
+                }
+              ]
+            }
+          },
+          {
+            "id": "n11-tg-divide",
+            "graphRef": "n11-linear",
+            "stateRef": "S3",
+            "sourceNodeId": "n11-q06-operation",
+            "sourceRefs": [
+              "n11-q06-operation-before",
+              "n11-q06-operation-interaction-0",
+              "n11-q06-operation-equation",
+              "n11-q06-operation-after"
+            ],
+            "role": "main",
+            "visibleAfter": [
+              "n11-wm017-q05-operation",
+              "n11-wm017-q05-balance",
+              "n11-05",
+              "n11-q06-operation"
+            ],
+            "interactionRef": null,
+            "slots": [],
+            "before": [
+              {
+                "type": "text",
+                "text": "両辺へ同じ除算を行います。"
+              }
+            ],
+            "after": [],
+            "afterVisible": true,
+            "continuation": false,
+            "completed": {
+              "left": [
+                {
+                  "type": "math",
+                  "latex": "\\frac{3x}{3}"
+                }
+              ],
+              "relation": "<",
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "\\frac{7}{3}"
+                }
+              ]
+            },
+            "masked": {
+              "left": [
+                {
+                  "type": "math",
+                  "latex": "\\frac{3x}{3}"
+                }
+              ],
+              "relation": "<",
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "\\frac{7}{3}"
+                }
+              ]
+            }
+          },
+          {
+            "id": "n11-tg-final",
+            "graphRef": "n11-linear",
+            "stateRef": "S4",
+            "sourceNodeId": "n11-06",
+            "sourceRefs": [
+              "n11-06-before",
+              "n11-06-interaction-0",
+              "n11-06-equation",
+              "n11-06-after"
+            ],
+            "role": "main",
+            "visibleAfter": [
+              "n11-wm017-q05-operation",
+              "n11-wm017-q05-balance",
+              "n11-05",
+              "n11-q06-operation"
+            ],
+            "interactionRef": "n11-06",
+            "slots": [
+              {
+                "id": "n11-tg-final-quotient",
+                "interactionRef": "n11-06",
+                "path": "right"
+              }
+            ],
+            "before": [
+              {
+                "type": "text",
+                "text": "右辺の商を入れて、範囲を表します。"
+              }
+            ],
+            "after": [
+              {
+                "type": "text",
+                "text": "この不等式で表される実数全体が解です。次に、境界が含まれるかを元の式で確かめます。"
+              }
+            ],
+            "afterVisible": true,
+            "continuation": false,
+            "completed": {
+              "left": [
+                {
+                  "type": "math",
+                  "latex": "x"
+                }
+              ],
+              "relation": "<",
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "\\frac{7}{3}"
+                }
+              ]
+            },
+            "masked": {
+              "left": [
+                {
+                  "type": "math",
+                  "latex": "x"
+                }
+              ],
+              "relation": "<",
+              "right": [
+                {
+                  "type": "slot",
+                  "id": "n11-tg-final-quotient",
+                  "interactionRef": "n11-06"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "interactions": [
+      {
+        "id": "n11-wm017-q05-operation",
+        "nodeId": "n11-wm017-q05-operation",
+        "blankRole": "operand",
+        "learnerDecision": "左辺の定数部分を0にする数を、次の式で確かめます。",
+        "prerequisiteInteractionIds": [],
+        "choices": [
+          "2",
+          "-2",
+          "3",
+          "0"
+        ],
+        "correctValue": "2"
+      },
+      {
+        "id": "n11-wm017-q05-balance",
+        "nodeId": "n11-wm017-q05-balance",
+        "blankRole": "operand",
+        "learnerDecision": "両辺に同じ数を加えると、大小関係は保たれます。右辺にも同じ操作を入れます。",
+        "prerequisiteInteractionIds": [
+          "n11-wm017-q05-operation"
+        ],
+        "choices": [
+          "2",
+          "-2",
+          "5",
+          "0"
+        ],
+        "correctValue": "2"
+      },
+      {
+        "id": "n11-05",
+        "nodeId": "n11-05",
+        "blankRole": "calculation",
+        "learnerDecision": "左右を整理して、不等式を次の行へ進めます。",
+        "prerequisiteInteractionIds": [
+          "n11-wm017-q05-operation",
+          "n11-wm017-q05-balance"
+        ],
+        "choices": [
+          "7",
+          "3",
+          "5",
+          "9"
+        ],
+        "correctValue": "7"
+      },
+      {
+        "id": "n11-q06-operation",
+        "nodeId": "n11-q06-operation",
+        "blankRole": "operand",
+        "learnerDecision": "係数を1にするために割る数を、次の式で確かめます。",
+        "prerequisiteInteractionIds": [
+          "n11-wm017-q05-operation",
+          "n11-wm017-q05-balance",
+          "n11-05"
+        ],
+        "choices": [
+          "3",
+          "1",
+          "-3"
+        ],
+        "correctValue": "3"
+      },
+      {
+        "id": "n11-06",
+        "nodeId": "n11-06",
+        "blankRole": "calculation",
+        "learnerDecision": "右辺の商を入れて、範囲を表します。",
+        "prerequisiteInteractionIds": [
+          "n11-wm017-q05-operation",
+          "n11-wm017-q05-balance",
+          "n11-05",
+          "n11-q06-operation"
+        ],
+        "choices": [
+          "\\frac73",
+          "\\frac37",
+          "-\\frac73",
+          "7"
+        ],
+        "correctValue": "\\frac73"
+      }
+    ],
+    "automaticAcceptance": false,
+    "compiledPresentationHash": "3532b99ad361551d9428728991379768027541b179d693005d3aec0c94a2f7aa"
+  },
+  "mathReceipts": [
+    {
+      "graphId": "n11-linear",
+      "status": "PASS",
+      "checks": [
+        {
+          "transitionId": "a01",
+          "status": "PASS",
+          "ruleId": "add-both-sides",
+          "checks": [
+            "same-operation-both-sides",
+            "relation-direction",
+            "exact-result"
+          ],
+          "mathStatus": "PASS"
+        },
+        {
+          "transitionId": "a02",
+          "status": "PASS",
+          "ruleId": "rewrite",
+          "mathStatus": "PASS"
+        },
+        {
+          "transitionId": "a03",
+          "status": "PASS",
+          "ruleId": "divide-both-sides",
+          "checks": [
+            "same-operation-both-sides",
+            "relation-direction",
+            "exact-result"
+          ],
+          "mathStatus": "PASS"
+        },
+        {
+          "transitionId": "a04",
+          "status": "PASS",
+          "ruleId": "rewrite",
+          "mathStatus": "PASS"
+        }
+      ],
+      "engineVersion": "1.14.0",
+      "formalProof": false,
+      "proofStatus": "EXACT_SYMBOLIC_CHECKS",
+      "domain": "closed AST polynomial identities / constant linear operations / one-variable relation solution sets / numeric quadratic extrema",
+      "graphHash": "2ff3a2c3679d14d04320e1abb85c8eefce4bdb870597408f5816c4302d70102e"
+    },
+    {
+      "graphId": "cancel",
+      "status": "PASS",
+      "checks": [
+        {
+          "transitionId": "cancel-check",
+          "status": "PASS",
+          "ruleId": "rewrite",
+          "mathStatus": "PASS"
+        }
+      ],
+      "engineVersion": "1.14.0",
+      "formalProof": false,
+      "proofStatus": "EXACT_SYMBOLIC_CHECKS",
+      "domain": "closed AST polynomial identities / constant linear operations / one-variable relation solution sets / numeric quadratic extrema",
+      "graphHash": "143ebfbf20eeb539faa4bd4a3b1a053ee43a03754c4b6f25672f95f8021daf55"
+    },
+    {
+      "graphId": "coefficient",
+      "status": "PASS",
+      "checks": [
+        {
+          "transitionId": "coefficient-check",
+          "status": "PASS",
+          "ruleId": "rewrite",
+          "mathStatus": "PASS"
+        }
+      ],
+      "engineVersion": "1.14.0",
+      "formalProof": false,
+      "proofStatus": "EXACT_SYMBOLIC_CHECKS",
+      "domain": "closed AST polynomial identities / constant linear operations / one-variable relation solution sets / numeric quadratic extrema",
+      "graphHash": "220874482745b10718e0bb521cecbe03e9712a1332d2b3dcbfee64bdcba7a8a6"
+    }
+  ],
+  "meaningAuditRequired": true
+}

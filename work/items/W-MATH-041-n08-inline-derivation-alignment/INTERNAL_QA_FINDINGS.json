@@ -1,0 +1,38 @@
+{
+  "work": "W-MATH-041",
+  "source": "Internal prepublication r7 QA; not additional user negative labels",
+  "issues": [
+    {
+      "id": "AXIS_PROBE_ZERO_WIDTH",
+      "observed": "Zero-width mathematical fraction probe could not establish a real axis",
+      "resolution": "Measured fraction with nonzero neutral numerator/denominator; require positive finite fraction rule geometry"
+    },
+    {
+      "id": "RELATION_HIT_INK_OVERLAP",
+      "observed": "Stage8 middle44px hit target covered adjacent pi",
+      "resolution": "Envelope includes all source boundary/masked rows, real ink overlaps fail"
+    },
+    {
+      "id": "ESCAPED_RADICAL",
+      "observed": "Materialized doubled command escape omitted radical",
+      "resolution": "Normalize doubled command names only at authoring boundary, preserve original design; AST+msqrt regression"
+    },
+    {
+      "id": "FALSE_TERMINAL_RECORD",
+      "observed": "First-left/last-right fusion created 5<3 or -a=a",
+      "resolution": "Explicit typed terminal records per39nodes, source terminal fact/condition validation"
+    },
+    {
+      "id": "EMPTY_MEASUREMENT_PASS",
+      "observed": "Provided zero packets passed a geometry loop",
+      "resolution": "Explicit empty-measurement failure; features reject empty measured rows"
+    },
+    {
+      "id": "320_WRAPPED_BASELINE",
+      "observed": "Full320play detected scope row mathematical baseline mismatch",
+      "resolution": "OPEN_B_UI_REPAIR"
+    }
+  ],
+  "qualityAccepted": false,
+  "trainingRun": false
+}

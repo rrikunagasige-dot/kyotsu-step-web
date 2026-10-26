@@ -1,0 +1,30 @@
+/** Executed inside a fresh Playwright page; no stored answer keys are read. */
+export function collectAxisGeometry(root) {
+ const rect=e=>{const r=e.getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height,left:r.left,right:r.right,top:r.top,bottom:r.bottom}};
+ const shown=e=>Boolean(e.getClientRects().length)&&getComputedStyle(e).visibility!=='hidden'&&!e.closest('details:not([open])');
+ const packets=[];
+ for(const g of root.querySelectorAll('[data-axis-group],.axis-group')){
+  if(!shown(g))continue;
+  const probe=g.querySelector('.axis-probe'),pm=probe?.querySelector('[data-axis-baseline]'),rule=probe?.querySelector('.frac-line'),frame=g.querySelector('[data-math-frame]');
+  const font=g.querySelector('.axis-probe .katex'),ruleR=rule&&rect(rule),baseline=pm&&rect(pm).top,border=rule&&parseFloat(getComputedStyle(rule).borderBottomWidth),axis=baseline!==undefined&&ruleR&&Number.isFinite(border)?baseline-(ruleR.bottom-border/2):null;
+  const rows=[];let glyphs=[];
+  for(const row of g.querySelectorAll('[data-axis-row],[data-construction-row]')){
+   if(!shown(row))continue;
+   const markers=[...row.querySelectorAll('.axis-cell > .axis-run > [data-axis-baseline]')],baselines=markers.map(m=>rect(m).top),struts=[...row.querySelectorAll('.katex-html > .base > .strut')];
+   const katexStrutBaselines=struts.map(s=>{const v=getComputedStyle(s).verticalAlign;return rect(s).bottom+(v==='baseline'?0:parseFloat(v))});
+   const slots=[...row.querySelectorAll('[data-axis-slot]')].flatMap(s=>{const hit=s.querySelector('.axis-slot-hit'),box=s.querySelector('.axis-slot-box'),marker=s.querySelector(':scope > [data-axis-baseline]');if(!hit)return[];const h=rect(hit),b=box&&rect(box),by=marker&&rect(marker).top;let focusRingCount=0;for(const node of [hit,box].filter(Boolean)){const style=getComputedStyle(node);if(style.outlineStyle!=='none'&&parseFloat(style.outlineWidth)>0)focusRingCount++;if(style.boxShadow!=='none')focusRingCount++;}return[{partId:s.dataset.axisSlot,x:h.x,y:h.y,width:h.width,height:h.height,axisDeltaPx:b&&Number.isFinite(axis)?(b.top+b.bottom)/2-(by-axis):null,focusRingCount,centerX:h.x+h.width/2}]});
+   for(const k of row.querySelectorAll('.katex-html'))if(shown(k)){const r=rect(k);if(r.width&&r.height)glyphs.push(r)}
+   const inkRects=[...row.querySelectorAll('.katex-html')].filter(shown).map(e=>({...rect(e),ownerPartId:e.closest('[data-axis-slot]')?.dataset.axisSlot}));
+   const physicalLines=[...new Set([...row.querySelectorAll(':scope > .axis-cell')].map(c=>c.dataset.axisPhysicalLine))].map(line=>{const cells=[...row.querySelectorAll(':scope > .axis-cell')].filter(c=>c.dataset.axisPhysicalLine===line);return {cellRefs:cells.map(c=>c.classList.contains('axis-cell--left')?'left':c.classList.contains('axis-cell--relation')?'relation':'right'),baselines:cells.flatMap(c=>[...c.querySelectorAll(':scope > .axis-run > [data-axis-baseline]')].map(m=>rect(m).top)),katexStrutBaselines:cells.flatMap(c=>[...c.querySelectorAll('.katex-html > .base > .strut')].map(s=>{const v=getComputedStyle(s).verticalAlign;return rect(s).bottom+(v==='baseline'?0:parseFloat(v))}))};});
+   rows.push({id:row.dataset.axisRow??row.dataset.constructionRow,layout:row.dataset.axisLayout,physicalLines,baselines,katexStrutBaselines,slots,inkRects,anchors:{left:markers[0]&&rect(markers[0]).x,relation:markers[1]&&rect(markers[1]).x,right:markers[2]&&rect(markers[2]).x}});
+  }
+  const gr=rect(g),fr=frame&&rect(frame),label=g.querySelector('.axis-number'),lm=label?.querySelector('[data-axis-number-baseline]'),labelR=label&&rect(label),last=g.querySelector('[data-construction-number-anchor="true"] .axis-cell--right .axis-run > [data-axis-baseline]');
+  const union=glyphs.length?{left:Math.min(...glyphs.map(r=>r.left)),right:Math.max(...glyphs.map(r=>r.right)),top:Math.min(...glyphs.map(r=>r.top)),bottom:Math.max(...glyphs.map(r=>r.bottom))}:null;
+  const pad=getComputedStyle(g),bodyLeft=gr.left+parseFloat(pad.paddingLeft),bodyRight=gr.right-parseFloat(pad.paddingRight);
+  const packet={schemaVersion:'axis-measurement/1',groupId:g.dataset.axisGroup??g.dataset.constructionGroup,baselineSource:'zero-inline-dom-marker',axisSource:'same-font-fraction-rule',mathFontPx:font?parseFloat(getComputedStyle(font).fontSize):null,katexScale:font?parseFloat(getComputedStyle(font).fontSize)/18:null,axisPx:axis,axisStatus:g.dataset.axisStatus,rows,frame:fr?{source:'measured-mathematical-envelope',left:fr.left,right:fr.right,width:fr.width,centerX:(fr.left+fr.right)/2,bodyCenterX:(bodyLeft+bodyRight)/2}:null,visibleGlyphUnion:union,anchorDeltas:[]};
+  if(labelR&&lm&&last){const below=label.classList.contains('axis-number--below'),lastY=rect(last).top,collisionGlyphs=glyphs.filter(r=>r.bottom>labelR.top&&r.top<labelR.bottom);packet.number={baselineDeltaPx:rect(lm).top-lastY,placement:below?'below':'beside',clearancePx:below?labelR.top-Math.max(...glyphs.map(r=>r.bottom)):labelR.left-Math.max(0,...collisionGlyphs.map(r=>r.right)),rowRef:g.dataset.numberRowRef};}
+  packets.push(packet);
+ }
+ const spacing={paragraphs:[...root.querySelectorAll('.reading-paragraph')].filter(shown).map(e=>({top:parseFloat(getComputedStyle(e).marginTop),bottom:parseFloat(getComputedStyle(e).marginBottom)})),rows:[...root.querySelectorAll('.axis-equation')].filter(shown).map(e=>({top:parseFloat(getComputedStyle(e).marginTop),columnGap:parseFloat(getComputedStyle(e).columnGap)})),notes:[...root.querySelectorAll('.axis-note')].filter(shown).map(e=>({top:parseFloat(getComputedStyle(e).marginTop),bottom:parseFloat(getComputedStyle(e).marginBottom)}))};
+ return {packets,spacing,pageOverflow:document.documentElement.scrollWidth>innerWidth+1,errors:[...root.querySelectorAll('.katex-error')].map(e=>e.textContent),mathFontErrors:[...root.querySelectorAll('.axis-group .axis-equation .katex')].filter(e=>Math.abs(parseFloat(getComputedStyle(e).fontSize)-18)>.25).map(e=>e.textContent)};
+}

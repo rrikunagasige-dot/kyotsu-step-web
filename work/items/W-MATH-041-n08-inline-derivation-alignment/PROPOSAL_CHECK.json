@@ -1,0 +1,100 @@
+{
+  "kind": "PROPOSAL_CONSISTENCY_AND_EXACT_SYMBOLIC_CHECK",
+  "appQA": false,
+  "implementationCompleted": false,
+  "sourceSHA": "e7320590d4af51b7cc0d9faa918485467092a3c0",
+  "nodes": 39,
+  "parents": 30,
+  "totalDecisions": 42,
+  "newMeaningParents": 14,
+  "newParentCandidateCombinations": 114,
+  "checks": [
+    "source node identity/order",
+    "all original contract refs hash-bound; 16 same-meaning parents values/choices/IDs preserved",
+    "parent/part counts",
+    "unique IDs/correct-choice/order",
+    "acyclic earlier-node prerequisites",
+    "intra-parent step prerequisite order",
+    "effective parent IDs resolve all authoritative node prerequisites",
+    "all14 changed-parent finite candidate combinations: all intermediate assertions vs intended grading"
+  ],
+  "results": [
+    {
+      "node": "n08-02",
+      "candidateCombinations": 3,
+      "status": "PASS"
+    },
+    {
+      "node": "n08-05",
+      "candidateCombinations": 3,
+      "status": "PASS"
+    },
+    {
+      "node": "n08-q07-rule",
+      "candidateCombinations": 2,
+      "status": "PASS"
+    },
+    {
+      "node": "n08-q07-bracket",
+      "candidateCombinations": 3,
+      "status": "PASS"
+    },
+    {
+      "node": "n08-q07-distribute",
+      "candidateCombinations": 36,
+      "status": "PASS"
+    },
+    {
+      "node": "n08-q08-difference",
+      "candidateCombinations": 3,
+      "status": "PASS"
+    },
+    {
+      "node": "n08-08",
+      "candidateCombinations": 4,
+      "status": "PASS"
+    },
+    {
+      "node": "n08-q09-bracket",
+      "candidateCombinations": 3,
+      "status": "PASS"
+    },
+    {
+      "node": "n08-q09-distribute",
+      "candidateCombinations": 24,
+      "status": "PASS"
+    },
+    {
+      "node": "n08-q11-positive",
+      "candidateCombinations": 12,
+      "status": "PASS"
+    },
+    {
+      "node": "n08-q11-negative",
+      "candidateCombinations": 9,
+      "status": "PASS"
+    },
+    {
+      "node": "n08-11",
+      "candidateCombinations": 3,
+      "status": "PASS"
+    },
+    {
+      "node": "n08-q12-nonnegative",
+      "candidateCombinations": 3,
+      "status": "PASS"
+    },
+    {
+      "node": "n08-q12-negative",
+      "candidateCombinations": 6,
+      "status": "PASS"
+    }
+  ],
+  "status": "PASS",
+  "limitations": [
+    "not production compiler/schema/renderer validation",
+    "no new app browser test",
+    "meaning sign classification bound to exact proven source fact",
+    "old16 meaning-preserved parent checks rely on original contracts; executable production regression remains future"
+  ]
+}

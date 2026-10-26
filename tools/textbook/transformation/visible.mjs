@@ -1,6 +1,8 @@
+import {projectTransformationV3} from './v3.mjs';
 /** Answer keys and future statements never enter a visible projection. */
 import {projectTransformationV2} from './v2.mjs';
 export function projectTransformationView(presentation,solvedIds=[],view={}){
+ if(presentation?.schemaVersion==='transformation-reading/3')return projectTransformationV3(presentation,solvedIds,view);
  if(presentation?.schemaVersion==='transformation-reading/2')return projectTransformationV2(presentation,solvedIds,view);
  const recorded=new Set(solvedIds),solved=new Set(),allowed=new Set(presentation.interactions.map(c=>c.id));
  for(const id of recorded)if(!allowed.has(id))throw Error('UNKNOWN_COMPLETED_INTERACTION');

@@ -5,7 +5,7 @@ import { builtInQuestionsZh } from '../data/questions.zh'
 import type { LearningAttempt, LearningSession, SimulationAttempt, SimulationSession } from '../domain/attempts'
 import { activateLearningBlank, answerLearningBlank, createLearningSession, recordExplanationOpen, recordExplanationRead, revisitLearningBlank, toLearningAttempt } from '../domain/learning'
 import type { LearningVariant, Question } from '../domain/questionSchema'
-import { answerTextbookItem, answerTextbookConstruction, resetTextbookUnitProgress, type TextbookUnitProgress } from '../domain/textbook'
+import { answerTextbookItem, answerTextbookConstruction, answerTextbookConstructionV2, resetTextbookUnitProgress, type TextbookUnitProgress } from '../domain/textbook'
 import type { TextbookUnit } from '../domain/textbookSchema'
 import { scoreSimulation } from '../domain/scoring'
 import { answerSimulationItem, createSimulationSession, setSimulationQuestion, toggleSimulationReview } from '../domain/simulation'
@@ -34,6 +34,7 @@ type AppState = {
   closeLearningExplanation: (sessionId: string, blankId: string, readMs: number) => void
   revisitLearning: (sessionId: string, blankId: string) => void
   answerTextbook: (unit: TextbookUnit, itemId: string, value: string) => void
+  answerConstructionV2: (unit: TextbookUnit, parentId: string, partId: string, choiceId: string, eventId: string) => void
   answerConstruction: (unit: TextbookUnit, parentId: string, partId: string, value: string, eventId: string) => void
   resetTextbookUnit: (unitId: string, unit?: TextbookUnit) => void
   startSimulation: (questionIds: string[], timeMode: SimulationSession['timeMode']) => string
@@ -112,6 +113,10 @@ export const useAppStore = create<AppState>()(persist((set, get) => ({
   answerConstruction: (unit, parentId, partId, value, eventId) => set(state => {
     const updated = answerTextbookConstruction(state.textbookProgress[unit.unitId], unit, parentId, partId, value, eventId, Date.now())
     return updated ? { textbookProgress: { ...state.textbookProgress, [unit.unitId]: updated } } : state
+  }),
+  answerConstructionV2: (unit, parentId, partId, choiceId, eventId) => set(state => {
+    const updated=answerTextbookConstructionV2(state.textbookProgress[unit.unitId],unit,parentId,partId,choiceId,eventId,Date.now())
+    return updated ? {textbookProgress:{...state.textbookProgress,[unit.unitId]:updated}} : state
   }),
   resetTextbookUnit: (unitId, unit) => set((state) => {
     const next = { ...state.textbookProgress }

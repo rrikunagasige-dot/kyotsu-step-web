@@ -1,0 +1,2566 @@
+{
+  "schemaVersion": "layout-plan/2",
+  "unitId": "math-numbers-expressions-n08",
+  "axisContract": {
+    "schemaVersion": "axis-contract/1",
+    "mathStyle": {
+      "fontPx": 18,
+      "katexScale": 1
+    },
+    "strutProfile": "same-font-katex-in-flow",
+    "baselineSource": "zero-inline-dom-marker",
+    "axisSource": "same-font-fraction-rule",
+    "minHitPx": 44,
+    "framePolicy": "fixed-group-envelope",
+    "envelopeSource": "all-candidates-neutral-syntax",
+    "numberBaselineRef": "current-visible-last-math-row",
+    "numberCollision": "below-final-row",
+    "numberClearancePx": 8,
+    "responsiveBreak": "fixed-envelope-only",
+    "tolerances": {
+      "baselinePx": 1,
+      "axisPx": 1,
+      "stateAnchorPx": 1,
+      "frameCenterPx": 2
+    }
+  },
+  "tokens": {
+    "mathFontPx": 18,
+    "katexScale": 1,
+    "minHitPx": 44,
+    "rowGapPx": 4,
+    "noteGapPx": 6,
+    "paragraphGapPx": 8
+  },
+  "nodeCoverage": [
+    {
+      "nodeId": "n08-q01-right",
+      "groupId": "r7-n08-q01-right"
+    },
+    {
+      "nodeId": "n08-q01-left",
+      "groupId": "r7-n08-q01-left"
+    },
+    {
+      "nodeId": "n08-01",
+      "groupId": "r7-n08-01"
+    },
+    {
+      "nodeId": "n08-definition",
+      "groupId": "r7-n08-definition"
+    },
+    {
+      "nodeId": "n08-r5-q02-distance",
+      "groupId": "r7-n08-r5-q02-distance"
+    },
+    {
+      "nodeId": "n08-02",
+      "groupId": "r7-n08-02"
+    },
+    {
+      "nodeId": "n08-q03-order",
+      "groupId": "r7-n08-q03-order"
+    },
+    {
+      "nodeId": "n08-03",
+      "groupId": "r7-n08-03"
+    },
+    {
+      "nodeId": "n08-q04-substitute",
+      "groupId": "r7-n08-q04-substitute"
+    },
+    {
+      "nodeId": "n08-04",
+      "groupId": "r7-n08-04"
+    },
+    {
+      "nodeId": "n08-cases",
+      "groupId": "r7-n08-cases"
+    },
+    {
+      "nodeId": "n08-q05-square",
+      "groupId": "r7-n08-q05-square"
+    },
+    {
+      "nodeId": "n08-q05-compare",
+      "groupId": "r7-n08-q05-compare"
+    },
+    {
+      "nodeId": "n08-05",
+      "groupId": "r7-n08-05"
+    },
+    {
+      "nodeId": "n08-r5-q06-operation",
+      "groupId": "n08-root-sign-group"
+    },
+    {
+      "nodeId": "n08-q06-subtract",
+      "groupId": "n08-root-sign-group"
+    },
+    {
+      "nodeId": "n08-06",
+      "groupId": "r7-n08-06"
+    },
+    {
+      "nodeId": "n08-q07-rule",
+      "groupId": "r7-n08-q07-rule"
+    },
+    {
+      "nodeId": "n08-q07-bracket",
+      "groupId": "n08-root-absolute-group"
+    },
+    {
+      "nodeId": "n08-q07-distribute",
+      "groupId": "n08-root-absolute-group"
+    },
+    {
+      "nodeId": "n08-07",
+      "groupId": "n08-root-absolute-group"
+    },
+    {
+      "nodeId": "n08-q08-order",
+      "groupId": "n08-pi-sign-group"
+    },
+    {
+      "nodeId": "n08-r5-q08-operation",
+      "groupId": "n08-pi-sign-group"
+    },
+    {
+      "nodeId": "n08-q08-difference",
+      "groupId": "n08-pi-sign-group"
+    },
+    {
+      "nodeId": "n08-08",
+      "groupId": "r7-n08-08"
+    },
+    {
+      "nodeId": "n08-q09-bracket",
+      "groupId": "n08-pi-absolute-group"
+    },
+    {
+      "nodeId": "n08-q09-distribute",
+      "groupId": "n08-pi-absolute-group"
+    },
+    {
+      "nodeId": "n08-09",
+      "groupId": "n08-pi-absolute-group"
+    },
+    {
+      "nodeId": "n08-q10-forward",
+      "groupId": "r7-n08-q10-forward"
+    },
+    {
+      "nodeId": "n08-q10-reverse",
+      "groupId": "r7-n08-q10-reverse"
+    },
+    {
+      "nodeId": "n08-10",
+      "groupId": "r7-n08-10"
+    },
+    {
+      "nodeId": "n08-q11-positive",
+      "groupId": "r7-n08-q11-positive"
+    },
+    {
+      "nodeId": "n08-q11-negative",
+      "groupId": "r7-n08-q11-negative"
+    },
+    {
+      "nodeId": "n08-q11-zero",
+      "groupId": "r7-n08-q11-zero"
+    },
+    {
+      "nodeId": "n08-11",
+      "groupId": "r7-n08-11"
+    },
+    {
+      "nodeId": "n08-q12-nonnegative",
+      "groupId": "r7-n08-q12-nonnegative"
+    },
+    {
+      "nodeId": "n08-q12-negative",
+      "groupId": "r7-n08-q12-negative"
+    },
+    {
+      "nodeId": "n08-12",
+      "groupId": "r7-n08-12"
+    },
+    {
+      "nodeId": "n08-closing",
+      "groupId": "r7-n08-closing"
+    }
+  ],
+  "groups": [
+    {
+      "id": "n08-root-sign-group",
+      "sourceNodeIds": [
+        "n08-r5-q06-operation",
+        "n08-q06-subtract"
+      ],
+      "rows": [
+        {
+          "id": "n08-r5-q06-operation-interaction-0",
+          "nodeId": "n08-r5-q06-operation",
+          "kind": "math",
+          "interactionRef": "n08-r5-q06-operation-answer",
+          "requiresCorrectParts": [],
+          "partIds": [],
+          "visibleAfter": []
+        },
+        {
+          "id": "n08-q06-subtract-interaction-0",
+          "nodeId": "n08-q06-subtract",
+          "kind": "math",
+          "interactionRef": "n08-q06-subtract-answer",
+          "requiresCorrectParts": [],
+          "partIds": [],
+          "visibleAfter": []
+        }
+      ],
+      "rowIds": [
+        "n08-r5-q06-operation-interaction-0",
+        "n08-q06-subtract-interaction-0"
+      ],
+      "mathRowIds": [
+        "n08-r5-q06-operation-interaction-0",
+        "n08-q06-subtract-interaction-0"
+      ],
+      "partIds": [],
+      "number": 13,
+      "numberRowRef": "n08-q06-subtract-interaction-0",
+      "numberBaselineRef": "current-visible-last-math-row",
+      "axisContract": "axis-contract/1",
+      "framePolicy": "fixed-group-envelope",
+      "envelopeSource": "all-candidates-neutral-syntax",
+      "responsiveBreak": "fixed-envelope-only",
+      "prose": [
+        {
+          "id": "n08-r5-q06-operation-r7-lead",
+          "nodeId": "n08-r5-q06-operation",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "元の絶対値の中身は \\sqrt5-3 です。先ほど得た \\sqrt5<3 を、この中身と比べられる形に変えます。両辺から同じ数を引く式を作ります。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-05"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        },
+        {
+          "id": "n08-q06-subtract-r7-lead",
+          "nodeId": "n08-q06-subtract",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "右辺に同じ数の差が残りました。左辺は元の絶対値の中身です。右辺を計算し、中身の符号を読み取れる形に整理します。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-r5-q06-operation"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        }
+      ]
+    },
+    {
+      "id": "n08-root-absolute-group",
+      "sourceNodeIds": [
+        "n08-q07-bracket",
+        "n08-q07-distribute",
+        "n08-07"
+      ],
+      "rows": [
+        {
+          "id": "n08-q07-bracket-r7-scope",
+          "nodeId": "n08-q07-bracket",
+          "kind": "math",
+          "interactionRef": "n08-q07-bracket-build-r7",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-q07-bracket-build-r7::whole-interior"
+          ],
+          "visibleAfter": [
+            "n08-q07-rule-build-r7"
+          ]
+        },
+        {
+          "id": "n08-q07-distribute-r7-factor",
+          "nodeId": "n08-q07-distribute",
+          "kind": "math",
+          "interactionRef": "n08-q07-distribute-build-r7",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-q07-distribute-build-r7::coefficient"
+          ],
+          "visibleAfter": [
+            "n08-q07-bracket-build-r7"
+          ]
+        },
+        {
+          "id": "n08-q07-distribute-r7-distribute",
+          "nodeId": "n08-q07-distribute",
+          "kind": "math",
+          "interactionRef": "n08-q07-distribute-build-r7",
+          "requiresCorrectParts": [
+            "n08-q07-distribute-build-r7::coefficient"
+          ],
+          "partIds": [
+            "n08-q07-distribute-build-r7::second-term"
+          ],
+          "visibleAfter": [
+            "n08-q07-bracket-build-r7"
+          ]
+        },
+        {
+          "id": "n08-q07-distribute-r7-products",
+          "nodeId": "n08-q07-distribute",
+          "kind": "math",
+          "interactionRef": "n08-q07-distribute-build-r7",
+          "requiresCorrectParts": [
+            "n08-q07-distribute-build-r7::coefficient",
+            "n08-q07-distribute-build-r7::second-term"
+          ],
+          "partIds": [
+            "n08-q07-distribute-build-r7::root-sign",
+            "n08-q07-distribute-build-r7::constant"
+          ],
+          "visibleAfter": [
+            "n08-q07-bracket-build-r7"
+          ]
+        },
+        {
+          "id": "n08-07-r7-row",
+          "nodeId": "n08-07",
+          "kind": "math",
+          "interactionRef": "n08-07-build-r6",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-07-build-r6-first-term"
+          ],
+          "visibleAfter": [
+            "n08-q07-distribute-build-r7"
+          ]
+        }
+      ],
+      "rowIds": [
+        "n08-q07-bracket-r7-scope",
+        "n08-q07-distribute-r7-factor",
+        "n08-q07-distribute-r7-distribute",
+        "n08-q07-distribute-r7-products",
+        "n08-07-r7-row"
+      ],
+      "mathRowIds": [
+        "n08-q07-bracket-r7-scope",
+        "n08-q07-distribute-r7-factor",
+        "n08-q07-distribute-r7-distribute",
+        "n08-q07-distribute-r7-products",
+        "n08-07-r7-row"
+      ],
+      "partIds": [
+        "n08-07-build-r6-first-term",
+        "n08-q07-bracket-build-r7::whole-interior",
+        "n08-q07-distribute-build-r7::coefficient",
+        "n08-q07-distribute-build-r7::second-term",
+        "n08-q07-distribute-build-r7::root-sign",
+        "n08-q07-distribute-build-r7::constant"
+      ],
+      "number": 17,
+      "numberRowRef": "n08-07-r7-row",
+      "numberBaselineRef": "current-visible-last-math-row",
+      "axisContract": "axis-contract/1",
+      "framePolicy": "fixed-group-envelope",
+      "envelopeSource": "all-candidates-neutral-syntax",
+      "responsiveBreak": "fixed-envelope-only",
+      "prose": [
+        {
+          "id": "n08-q07-bracket-r7-lead",
+          "nodeId": "n08-q07-bracket",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "規則の"
+            },
+            {
+              "type": "math",
+              "latex": "u"
+            },
+            {
+              "type": "text",
+              "text": "に、今回の式のどの範囲が対応するかを元の式で指定します。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-q07-rule"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        },
+        {
+          "id": "n08-q07-distribute-r7-lead",
+          "nodeId": "n08-q07-distribute",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "まず、括弧の前の負号を数を掛ける操作で表します。次に分配法則で各項へ掛け、最後に二つの積を計算します。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-q07-bracket"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        },
+        {
+          "id": "n08-07-r7-lead",
+          "nodeId": "n08-07",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "-\\sqrt5+3 は、加法の交換法則で項の順を変えられます。絶対値も括弧もない形を、元の問題の答えにします。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-q07-distribute"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        }
+      ]
+    },
+    {
+      "id": "n08-pi-sign-group",
+      "sourceNodeIds": [
+        "n08-q08-order",
+        "n08-r5-q08-operation",
+        "n08-q08-difference"
+      ],
+      "rows": [
+        {
+          "id": "n08-r5-q08-operation-interaction-0",
+          "nodeId": "n08-r5-q08-operation",
+          "kind": "math",
+          "interactionRef": "n08-r5-q08-operation-answer",
+          "requiresCorrectParts": [],
+          "partIds": [],
+          "visibleAfter": []
+        },
+        {
+          "id": "n08-q08-difference-r7-reduce",
+          "nodeId": "n08-q08-difference",
+          "kind": "math",
+          "interactionRef": "n08-q08-difference-build-r7",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-q08-difference-build-r7::zero"
+          ],
+          "visibleAfter": [
+            "n08-r5-q08-operation-answer"
+          ]
+        }
+      ],
+      "rowIds": [
+        "n08-r5-q08-operation-interaction-0",
+        "n08-q08-difference-r7-reduce"
+      ],
+      "mathRowIds": [
+        "n08-r5-q08-operation-interaction-0",
+        "n08-q08-difference-r7-reduce"
+      ],
+      "partIds": [
+        "n08-q08-difference-build-r7::zero"
+      ],
+      "number": 20,
+      "numberRowRef": "n08-q08-difference-r7-reduce",
+      "numberBaselineRef": "current-visible-last-math-row",
+      "axisContract": "axis-contract/1",
+      "framePolicy": "fixed-group-envelope",
+      "envelopeSource": "all-candidates-neutral-syntax",
+      "responsiveBreak": "fixed-envelope-only",
+      "prose": [
+        {
+          "id": "n08-q08-order-r7-lead",
+          "nodeId": "n08-q08-order",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "次は |3-\\pi| を絶対値記号のない式で表します。与えられた \\pi=3.14159\\ldots を使い、まず中身の符号を決めるために 3 と \\pi を比べます。3\\ \\ \\pi"
+            }
+          ],
+          "visibleAfter": [],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        },
+        {
+          "id": "n08-r5-q08-operation-r7-lead",
+          "nodeId": "n08-r5-q08-operation",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "今回調べたい中身は 3-\\pi です。3<\\pi の両辺へ同じ操作を行い、左辺にこの中身が現れる式を作ります。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-q08-order"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        },
+        {
+          "id": "n08-q08-difference-r7-lead",
+          "nodeId": "n08-q08-difference",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "不等号の向きは前の行から保ち、右辺の同じ数の差を計算します。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-r5-q08-operation"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        }
+      ]
+    },
+    {
+      "id": "n08-pi-absolute-group",
+      "sourceNodeIds": [
+        "n08-q09-bracket",
+        "n08-q09-distribute",
+        "n08-09"
+      ],
+      "rows": [
+        {
+          "id": "n08-q09-bracket-r7-scope",
+          "nodeId": "n08-q09-bracket",
+          "kind": "math",
+          "interactionRef": "n08-q09-bracket-build-r7",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-q09-bracket-build-r7::whole-interior"
+          ],
+          "visibleAfter": [
+            "n08-08-build-r7",
+            "n08-02-build-r7",
+            "n08-03-build-r6"
+          ]
+        },
+        {
+          "id": "n08-q09-distribute-r7-factor",
+          "nodeId": "n08-q09-distribute",
+          "kind": "math",
+          "interactionRef": "n08-q09-distribute-build-r7",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-q09-distribute-build-r7::coefficient"
+          ],
+          "visibleAfter": [
+            "n08-q09-bracket-build-r7"
+          ]
+        },
+        {
+          "id": "n08-q09-distribute-r7-distribute",
+          "nodeId": "n08-q09-distribute",
+          "kind": "math",
+          "interactionRef": "n08-q09-distribute-build-r7",
+          "requiresCorrectParts": [
+            "n08-q09-distribute-build-r7::coefficient"
+          ],
+          "partIds": [
+            "n08-q09-distribute-build-r7::second-term"
+          ],
+          "visibleAfter": [
+            "n08-q09-bracket-build-r7"
+          ]
+        },
+        {
+          "id": "n08-q09-distribute-r7-products",
+          "nodeId": "n08-q09-distribute",
+          "kind": "math",
+          "interactionRef": "n08-q09-distribute-build-r7",
+          "requiresCorrectParts": [
+            "n08-q09-distribute-build-r7::coefficient",
+            "n08-q09-distribute-build-r7::second-term"
+          ],
+          "partIds": [
+            "n08-q09-distribute-build-r7::first-sign",
+            "n08-q09-distribute-build-r7::joining-operation"
+          ],
+          "visibleAfter": [
+            "n08-q09-bracket-build-r7"
+          ]
+        },
+        {
+          "id": "n08-09-r7-row",
+          "nodeId": "n08-09",
+          "kind": "math",
+          "interactionRef": "n08-09-build-r6",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-09-build-r6-first-term"
+          ],
+          "visibleAfter": [
+            "n08-q09-distribute-build-r7"
+          ]
+        }
+      ],
+      "rowIds": [
+        "n08-q09-bracket-r7-scope",
+        "n08-q09-distribute-r7-factor",
+        "n08-q09-distribute-r7-distribute",
+        "n08-q09-distribute-r7-products",
+        "n08-09-r7-row"
+      ],
+      "mathRowIds": [
+        "n08-q09-bracket-r7-scope",
+        "n08-q09-distribute-r7-factor",
+        "n08-q09-distribute-r7-distribute",
+        "n08-q09-distribute-r7-products",
+        "n08-09-r7-row"
+      ],
+      "partIds": [
+        "n08-09-build-r6-first-term",
+        "n08-q09-bracket-build-r7::whole-interior",
+        "n08-q09-distribute-build-r7::coefficient",
+        "n08-q09-distribute-build-r7::second-term",
+        "n08-q09-distribute-build-r7::first-sign",
+        "n08-q09-distribute-build-r7::joining-operation"
+      ],
+      "number": 23,
+      "numberRowRef": "n08-09-r7-row",
+      "numberBaselineRef": "current-visible-last-math-row",
+      "axisContract": "axis-contract/1",
+      "framePolicy": "fixed-group-envelope",
+      "envelopeSource": "all-candidates-neutral-syntax",
+      "responsiveBreak": "fixed-envelope-only",
+      "prose": [
+        {
+          "id": "n08-q09-bracket-r7-lead",
+          "nodeId": "n08-q09-bracket",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "前の例で使った規則を、今回の中身へ当てはめます。負号を作用させる範囲を指定します。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-08",
+            "n08-cases"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        },
+        {
+          "id": "n08-q09-distribute-r7-lead",
+          "nodeId": "n08-q09-distribute",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "前の例の順序で、掛ける数、分配する相手、二つの積を順に決めます。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-q09-bracket"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        },
+        {
+          "id": "n08-09-r7-lead",
+          "nodeId": "n08-09",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "項の順序を整え、正の項を先に書きます。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-q09-distribute"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        }
+      ]
+    },
+    {
+      "id": "r7-n08-q01-right",
+      "sourceNodeIds": [
+        "n08-q01-right"
+      ],
+      "rows": [],
+      "rowIds": [],
+      "mathRowIds": [],
+      "partIds": [],
+      "number": null,
+      "numberRowRef": null,
+      "numberBaselineRef": "current-visible-last-math-row",
+      "axisContract": "axis-contract/1",
+      "framePolicy": "fixed-group-envelope",
+      "envelopeSource": "all-candidates-neutral-syntax",
+      "responsiveBreak": "fixed-envelope-only",
+      "prose": [
+        {
+          "id": "n08-q01-right-r7-lead",
+          "nodeId": "n08-q01-right",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "図の右側にある 2.3 の点を見ます。原点の座標は "
+            },
+            {
+              "type": "math",
+              "latex": "0"
+            },
+            {
+              "type": "text",
+              "text": " です。右側の座標から左側の座標を引き、距離を求めます。"
+            }
+          ],
+          "visibleAfter": [],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        }
+      ]
+    },
+    {
+      "id": "r7-n08-q01-left",
+      "sourceNodeIds": [
+        "n08-q01-left"
+      ],
+      "rows": [
+        {
+          "id": "n08-q01-left-interaction-0",
+          "nodeId": "n08-q01-left",
+          "kind": "math",
+          "interactionRef": "n08-q01-left-answer",
+          "requiresCorrectParts": [],
+          "partIds": [],
+          "visibleAfter": []
+        }
+      ],
+      "rowIds": [
+        "n08-q01-left-interaction-0"
+      ],
+      "mathRowIds": [
+        "n08-q01-left-interaction-0"
+      ],
+      "partIds": [],
+      "number": 1,
+      "numberRowRef": "n08-q01-left-interaction-0",
+      "numberBaselineRef": "current-visible-last-math-row",
+      "axisContract": "axis-contract/1",
+      "framePolicy": "fixed-group-envelope",
+      "envelopeSource": "all-candidates-neutral-syntax",
+      "responsiveBreak": "fixed-envelope-only",
+      "prose": [
+        {
+          "id": "n08-q01-left-r7-lead",
+          "nodeId": "n08-q01-left",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "-5 の点は原点の左側です。右側は "
+            },
+            {
+              "type": "math",
+              "latex": "0"
+            },
+            {
+              "type": "text",
+              "text": "、左側は -5 なので、距離は "
+            },
+            {
+              "type": "math",
+              "latex": "0"
+            },
+            {
+              "type": "text",
+              "text": "-(-5) と表せます。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-q01-right"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        }
+      ]
+    },
+    {
+      "id": "r7-n08-01",
+      "sourceNodeIds": [
+        "n08-01"
+      ],
+      "rows": [
+        {
+          "id": "n08-01-interaction-0",
+          "nodeId": "n08-01",
+          "kind": "math",
+          "interactionRef": null,
+          "requiresCorrectParts": [],
+          "partIds": [],
+          "visibleAfter": []
+        }
+      ],
+      "rowIds": [
+        "n08-01-interaction-0"
+      ],
+      "mathRowIds": [
+        "n08-01-interaction-0"
+      ],
+      "partIds": [],
+      "number": 2,
+      "numberRowRef": "n08-01-interaction-0",
+      "numberBaselineRef": "current-visible-last-math-row",
+      "axisContract": "axis-contract/1",
+      "framePolicy": "fixed-group-envelope",
+      "envelopeSource": "all-candidates-neutral-syntax",
+      "responsiveBreak": "fixed-envelope-only",
+      "prose": [
+        {
+          "id": "n08-01-r7-lead",
+          "nodeId": "n08-01",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "二つの距離を、元の問題の順序で記録します。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-q01-right",
+            "n08-q01-left"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        }
+      ]
+    },
+    {
+      "id": "r7-n08-definition",
+      "sourceNodeIds": [
+        "n08-definition"
+      ],
+      "rows": [],
+      "rowIds": [],
+      "mathRowIds": [],
+      "partIds": [],
+      "number": null,
+      "numberRowRef": null,
+      "numberBaselineRef": "current-visible-last-math-row",
+      "axisContract": "axis-contract/1",
+      "framePolicy": "fixed-group-envelope",
+      "envelopeSource": "all-candidates-neutral-syntax",
+      "responsiveBreak": "fixed-envelope-only",
+      "prose": [
+        {
+          "id": "n08-definition-r7-lead",
+          "nodeId": "n08-definition",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "実数 "
+            },
+            {
+              "type": "math",
+              "latex": "a"
+            },
+            {
+              "type": "text",
+              "text": " を表す点と原点との距離を、絶対値といい、|"
+            },
+            {
+              "type": "math",
+              "latex": "a"
+            },
+            {
+              "type": "text",
+              "text": "| と書きます。縦の二本の線は、中にある式全体について距離を取る記号です。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-01"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        }
+      ]
+    },
+    {
+      "id": "r7-n08-r5-q02-distance",
+      "sourceNodeIds": [
+        "n08-r5-q02-distance"
+      ],
+      "rows": [
+        {
+          "id": "n08-r5-q02-distance-r7-row",
+          "nodeId": "n08-r5-q02-distance",
+          "kind": "math",
+          "interactionRef": "n08-r5-q02-distance-build-r6",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-r5-q02-distance-build-r6-right",
+            "n08-r5-q02-distance-build-r6-left"
+          ],
+          "visibleAfter": []
+        }
+      ],
+      "rowIds": [
+        "n08-r5-q02-distance-r7-row"
+      ],
+      "mathRowIds": [
+        "n08-r5-q02-distance-r7-row"
+      ],
+      "partIds": [
+        "n08-r5-q02-distance-build-r6-right",
+        "n08-r5-q02-distance-build-r6-left"
+      ],
+      "number": 3,
+      "numberRowRef": "n08-r5-q02-distance-r7-row",
+      "numberBaselineRef": "current-visible-last-math-row",
+      "axisContract": "axis-contract/1",
+      "framePolicy": "fixed-group-envelope",
+      "envelopeSource": "all-candidates-neutral-syntax",
+      "responsiveBreak": "fixed-envelope-only",
+      "prose": [
+        {
+          "id": "n08-r5-q02-distance-r7-lead",
+          "nodeId": "n08-r5-q02-distance",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "条件"
+            },
+            {
+              "type": "math",
+              "latex": "a\\ge0"
+            },
+            {
+              "type": "text",
+              "text": "を使い、点"
+            },
+            {
+              "type": "math",
+              "latex": "a"
+            },
+            {
+              "type": "text",
+              "text": "と原点の位置を確認します。距離は、右の座標から左の座標を引いて表します。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-definition"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        }
+      ]
+    },
+    {
+      "id": "r7-n08-02",
+      "sourceNodeIds": [
+        "n08-02"
+      ],
+      "rows": [
+        {
+          "id": "n08-02-r7-simplify",
+          "nodeId": "n08-02",
+          "kind": "math",
+          "interactionRef": "n08-02-build-r7",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-02-build-r7::term"
+          ],
+          "visibleAfter": [
+            "n08-r5-q02-distance-build-r6"
+          ]
+        }
+      ],
+      "rowIds": [
+        "n08-02-r7-simplify"
+      ],
+      "mathRowIds": [
+        "n08-02-r7-simplify"
+      ],
+      "partIds": [
+        "n08-02-build-r7::term"
+      ],
+      "number": 4,
+      "numberRowRef": "n08-02-r7-simplify",
+      "numberBaselineRef": "current-visible-last-math-row",
+      "axisContract": "axis-contract/1",
+      "framePolicy": "fixed-group-envelope",
+      "envelopeSource": "all-candidates-neutral-syntax",
+      "responsiveBreak": "fixed-envelope-only",
+      "prose": [
+        {
+          "id": "n08-02-r7-lead",
+          "nodeId": "n08-02",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "前の"
+            },
+            {
+              "type": "math",
+              "latex": "a-0"
+            },
+            {
+              "type": "text",
+              "text": "を計算し、絶対値を外した式を完成させます。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-r5-q02-distance"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        }
+      ]
+    },
+    {
+      "id": "r7-n08-q03-order",
+      "sourceNodeIds": [
+        "n08-q03-order"
+      ],
+      "rows": [
+        {
+          "id": "n08-q03-order-r7-row",
+          "nodeId": "n08-q03-order",
+          "kind": "math",
+          "interactionRef": "n08-q03-order-build-r6",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-q03-order-build-r6-right",
+            "n08-q03-order-build-r6-left"
+          ],
+          "visibleAfter": []
+        }
+      ],
+      "rowIds": [
+        "n08-q03-order-r7-row"
+      ],
+      "mathRowIds": [
+        "n08-q03-order-r7-row"
+      ],
+      "partIds": [
+        "n08-q03-order-build-r6-right",
+        "n08-q03-order-build-r6-left"
+      ],
+      "number": 5,
+      "numberRowRef": "n08-q03-order-r7-row",
+      "numberBaselineRef": "current-visible-last-math-row",
+      "axisContract": "axis-contract/1",
+      "framePolicy": "fixed-group-envelope",
+      "envelopeSource": "all-candidates-neutral-syntax",
+      "responsiveBreak": "fixed-envelope-only",
+      "prose": [
+        {
+          "id": "n08-q03-order-r7-lead",
+          "nodeId": "n08-q03-order",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "math",
+              "latex": "a<0"
+            },
+            {
+              "type": "text",
+              "text": "の条件を使い、点"
+            },
+            {
+              "type": "math",
+              "latex": "a"
+            },
+            {
+              "type": "text",
+              "text": "と原点の左右関係を確かめます。正のときと同じ距離の求め方を使います。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-02"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        }
+      ]
+    },
+    {
+      "id": "r7-n08-03",
+      "sourceNodeIds": [
+        "n08-03"
+      ],
+      "rows": [
+        {
+          "id": "n08-03-r7-row",
+          "nodeId": "n08-03",
+          "kind": "math",
+          "interactionRef": "n08-03-build-r6",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-03-build-r6-sign"
+          ],
+          "visibleAfter": [
+            "n08-q03-order-build-r6"
+          ]
+        }
+      ],
+      "rowIds": [
+        "n08-03-r7-row"
+      ],
+      "mathRowIds": [
+        "n08-03-r7-row"
+      ],
+      "partIds": [
+        "n08-03-build-r6-sign"
+      ],
+      "number": 6,
+      "numberRowRef": "n08-03-r7-row",
+      "numberBaselineRef": "current-visible-last-math-row",
+      "axisContract": "axis-contract/1",
+      "framePolicy": "fixed-group-envelope",
+      "envelopeSource": "all-candidates-neutral-syntax",
+      "responsiveBreak": "fixed-envelope-only",
+      "prose": [
+        {
+          "id": "n08-03-r7-lead",
+          "nodeId": "n08-03",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "math",
+              "latex": "0"
+            },
+            {
+              "type": "text",
+              "text": "から"
+            },
+            {
+              "type": "math",
+              "latex": "a"
+            },
+            {
+              "type": "text",
+              "text": "を引く計算を、"
+            },
+            {
+              "type": "math",
+              "latex": "a"
+            },
+            {
+              "type": "text",
+              "text": "の一つの項で表します。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-q03-order"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        }
+      ]
+    },
+    {
+      "id": "r7-n08-q04-substitute",
+      "sourceNodeIds": [
+        "n08-q04-substitute"
+      ],
+      "rows": [
+        {
+          "id": "n08-q04-substitute-interaction-0",
+          "nodeId": "n08-q04-substitute",
+          "kind": "math",
+          "interactionRef": null,
+          "requiresCorrectParts": [],
+          "partIds": [],
+          "visibleAfter": []
+        }
+      ],
+      "rowIds": [
+        "n08-q04-substitute-interaction-0"
+      ],
+      "mathRowIds": [
+        "n08-q04-substitute-interaction-0"
+      ],
+      "partIds": [],
+      "number": 7,
+      "numberRowRef": "n08-q04-substitute-interaction-0",
+      "numberBaselineRef": "current-visible-last-math-row",
+      "axisContract": "axis-contract/1",
+      "framePolicy": "fixed-group-envelope",
+      "envelopeSource": "all-candidates-neutral-syntax",
+      "responsiveBreak": "fixed-envelope-only",
+      "prose": [
+        {
+          "id": "n08-q04-substitute-r7-lead",
+          "nodeId": "n08-q04-substitute",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "いまの式 -"
+            },
+            {
+              "type": "math",
+              "latex": "a"
+            },
+            {
+              "type": "text",
+              "text": " の "
+            },
+            {
+              "type": "math",
+              "latex": "a"
+            },
+            {
+              "type": "text",
+              "text": " へ -5 を入れます。元からある負号と代入する負の数を区別するため、代入する数を括弧で囲みます。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-03"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        }
+      ]
+    },
+    {
+      "id": "r7-n08-04",
+      "sourceNodeIds": [
+        "n08-04"
+      ],
+      "rows": [
+        {
+          "id": "n08-04-r7-row",
+          "nodeId": "n08-04",
+          "kind": "math",
+          "interactionRef": "n08-04-build-r6",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-04-build-r6-value"
+          ],
+          "visibleAfter": []
+        }
+      ],
+      "rowIds": [
+        "n08-04-r7-row"
+      ],
+      "mathRowIds": [
+        "n08-04-r7-row"
+      ],
+      "partIds": [
+        "n08-04-build-r6-value"
+      ],
+      "number": 8,
+      "numberRowRef": "n08-04-r7-row",
+      "numberBaselineRef": "current-visible-last-math-row",
+      "axisContract": "axis-contract/1",
+      "framePolicy": "fixed-group-envelope",
+      "envelopeSource": "all-candidates-neutral-syntax",
+      "responsiveBreak": "fixed-envelope-only",
+      "prose": [
+        {
+          "id": "n08-04-r7-lead",
+          "nodeId": "n08-04",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "負の数 -5 と符号が反対の数を求めます。式と値を等号でつないで、左側の点の距離と照合します。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-q04-substitute"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        }
+      ]
+    },
+    {
+      "id": "r7-n08-cases",
+      "sourceNodeIds": [
+        "n08-cases"
+      ],
+      "rows": [],
+      "rowIds": [],
+      "mathRowIds": [],
+      "partIds": [],
+      "number": null,
+      "numberRowRef": null,
+      "numberBaselineRef": "current-visible-last-math-row",
+      "axisContract": "axis-contract/1",
+      "framePolicy": "fixed-group-envelope",
+      "envelopeSource": "all-candidates-neutral-syntax",
+      "responsiveBreak": "fixed-envelope-only",
+      "prose": [
+        {
+          "id": "n08-cases-r7-lead",
+          "nodeId": "n08-cases",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "ここまでの二つの場合を、条件と式が対応する表にまとめます。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-02",
+            "n08-03"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        }
+      ]
+    },
+    {
+      "id": "r7-n08-q05-square",
+      "sourceNodeIds": [
+        "n08-q05-square"
+      ],
+      "rows": [
+        {
+          "id": "n08-r5-root-square-given-0",
+          "nodeId": "n08-q05-square",
+          "kind": "math",
+          "interactionRef": "n08-q05-square-answer",
+          "requiresCorrectParts": [],
+          "partIds": [],
+          "visibleAfter": []
+        },
+        {
+          "id": "n08-q05-square-interaction-0",
+          "nodeId": "n08-q05-square",
+          "kind": "math",
+          "interactionRef": "n08-q05-square-answer",
+          "requiresCorrectParts": [],
+          "partIds": [],
+          "visibleAfter": []
+        }
+      ],
+      "rowIds": [
+        "n08-r5-root-square-given-0",
+        "n08-q05-square-interaction-0"
+      ],
+      "mathRowIds": [
+        "n08-r5-root-square-given-0",
+        "n08-q05-square-interaction-0"
+      ],
+      "partIds": [],
+      "number": 9,
+      "numberRowRef": "n08-q05-square-interaction-0",
+      "numberBaselineRef": "current-visible-last-math-row",
+      "axisContract": "axis-contract/1",
+      "framePolicy": "fixed-group-envelope",
+      "envelopeSource": "all-candidates-neutral-syntax",
+      "responsiveBreak": "fixed-envelope-only",
+      "prose": [
+        {
+          "id": "n08-q05-square-r7-lead",
+          "nodeId": "n08-q05-square",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "求めたいのは |\\sqrt5-3| を絶対値記号のない式で表すことです。まず中身の符号を決めるため、\\sqrt5 と 3 を比べます。\\sqrt5 は正で、二乗すると 5 になる数です。二つの数はともに正なので、二乗した値を比べて元の数の大小を決められます。はじめに \\sqrt5 の二乗を確かめ、次に 3 の二乗を計算します。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-cases"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        }
+      ]
+    },
+    {
+      "id": "r7-n08-q05-compare",
+      "sourceNodeIds": [
+        "n08-q05-compare"
+      ],
+      "rows": [],
+      "rowIds": [],
+      "mathRowIds": [],
+      "partIds": [],
+      "number": 10,
+      "numberRowRef": null,
+      "numberBaselineRef": "current-visible-last-math-row",
+      "axisContract": "axis-contract/1",
+      "framePolicy": "fixed-group-envelope",
+      "envelopeSource": "all-candidates-neutral-syntax",
+      "responsiveBreak": "fixed-envelope-only",
+      "prose": [
+        {
+          "id": "n08-q05-compare-r7-lead",
+          "nodeId": "n08-q05-compare",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "両方とも正なので、二乗した値の比較を元の二数の比較に戻せます。まず 5 と 9 の間の不等号を選びます。5\\ \\ 9"
+            }
+          ],
+          "visibleAfter": [
+            "n08-q05-square"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        }
+      ]
+    },
+    {
+      "id": "r7-n08-05",
+      "sourceNodeIds": [
+        "n08-05"
+      ],
+      "rows": [
+        {
+          "id": "n08-05-r7-given-comparison",
+          "nodeId": "n08-05",
+          "kind": "math",
+          "interactionRef": "n08-05-build-r7",
+          "requiresCorrectParts": [],
+          "partIds": [],
+          "visibleAfter": [
+            "n08-q05-square-answer",
+            "n08-q05-compare-answer"
+          ]
+        },
+        {
+          "id": "n08-05-r7-root-comparison",
+          "nodeId": "n08-05",
+          "kind": "math",
+          "interactionRef": "n08-05-build-r7",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-05-build-r7::relation"
+          ],
+          "visibleAfter": [
+            "n08-q05-square-answer",
+            "n08-q05-compare-answer"
+          ]
+        }
+      ],
+      "rowIds": [
+        "n08-05-r7-given-comparison",
+        "n08-05-r7-root-comparison"
+      ],
+      "mathRowIds": [
+        "n08-05-r7-given-comparison",
+        "n08-05-r7-root-comparison"
+      ],
+      "partIds": [
+        "n08-05-build-r7::relation"
+      ],
+      "number": 11,
+      "numberRowRef": "n08-05-r7-root-comparison",
+      "numberBaselineRef": "current-visible-last-math-row",
+      "axisContract": "axis-contract/1",
+      "framePolicy": "fixed-group-envelope",
+      "envelopeSource": "all-candidates-neutral-syntax",
+      "responsiveBreak": "fixed-envelope-only",
+      "prose": [
+        {
+          "id": "n08-05-r7-lead",
+          "nodeId": "n08-05",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "二つとも非負です。二乗した値の比較を、元の二つの数の比較へ戻します。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-q05-square",
+            "n08-q05-compare"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        }
+      ]
+    },
+    {
+      "id": "r7-n08-06",
+      "sourceNodeIds": [
+        "n08-06"
+      ],
+      "rows": [],
+      "rowIds": [],
+      "mathRowIds": [],
+      "partIds": [],
+      "number": null,
+      "numberRowRef": null,
+      "numberBaselineRef": "current-visible-last-math-row",
+      "axisContract": "axis-contract/1",
+      "framePolicy": "fixed-group-envelope",
+      "envelopeSource": "all-candidates-neutral-syntax",
+      "responsiveBreak": "fixed-envelope-only",
+      "prose": [
+        {
+          "id": "n08-06-r7-lead",
+          "nodeId": "n08-06",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "絶対値の中身を"
+            },
+            {
+              "type": "math",
+              "latex": "0"
+            },
+            {
+              "type": "text",
+              "text": "と比較できました。この結果を、正・"
+            },
+            {
+              "type": "math",
+              "latex": "0"
+            },
+            {
+              "type": "text",
+              "text": "・負という言葉で読み取ります。判断："
+            }
+          ],
+          "visibleAfter": [
+            "n08-q06-subtract"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        }
+      ]
+    },
+    {
+      "id": "r7-n08-q07-rule",
+      "sourceNodeIds": [
+        "n08-q07-rule"
+      ],
+      "rows": [
+        {
+          "id": "n08-q07-rule-r7-rule",
+          "nodeId": "n08-q07-rule",
+          "kind": "math",
+          "interactionRef": "n08-q07-rule-build-r7",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-q07-rule-build-r7::rule-sign"
+          ],
+          "visibleAfter": [
+            "n08-06",
+            "n08-02-build-r7",
+            "n08-03-build-r6"
+          ]
+        }
+      ],
+      "rowIds": [
+        "n08-q07-rule-r7-rule"
+      ],
+      "mathRowIds": [
+        "n08-q07-rule-r7-rule"
+      ],
+      "partIds": [
+        "n08-q07-rule-build-r7::rule-sign"
+      ],
+      "number": 14,
+      "numberRowRef": "n08-q07-rule-r7-rule",
+      "numberBaselineRef": "current-visible-last-math-row",
+      "axisContract": "axis-contract/1",
+      "framePolicy": "fixed-group-envelope",
+      "envelopeSource": "all-candidates-neutral-syntax",
+      "responsiveBreak": "fixed-envelope-only",
+      "prose": [
+        {
+          "id": "n08-q07-rule-r7-lead",
+          "nodeId": "n08-q07-rule",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "math",
+              "latex": "u"
+            },
+            {
+              "type": "text",
+              "text": "は絶対値の中身を表します。中身が負の場合に使う規則を、式の中で完成させます。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-06",
+            "n08-cases"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        }
+      ]
+    },
+    {
+      "id": "r7-n08-08",
+      "sourceNodeIds": [
+        "n08-08"
+      ],
+      "rows": [
+        {
+          "id": "n08-08-r7-interpret",
+          "nodeId": "n08-08",
+          "kind": "prose",
+          "interactionRef": "n08-08-build-r7",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-08-build-r7::sign-word"
+          ],
+          "visibleAfter": [
+            "n08-q08-difference-build-r7"
+          ]
+        }
+      ],
+      "rowIds": [
+        "n08-08-r7-interpret"
+      ],
+      "mathRowIds": [],
+      "partIds": [
+        "n08-08-build-r7::sign-word"
+      ],
+      "number": null,
+      "numberRowRef": null,
+      "numberBaselineRef": "current-visible-last-math-row",
+      "axisContract": "axis-contract/1",
+      "framePolicy": "fixed-group-envelope",
+      "envelopeSource": "all-candidates-neutral-syntax",
+      "responsiveBreak": "fixed-envelope-only",
+      "prose": [
+        {
+          "id": "n08-08-r7-lead",
+          "nodeId": "n08-08",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "中身と"
+            },
+            {
+              "type": "math",
+              "latex": "0"
+            },
+            {
+              "type": "text",
+              "text": "の大小関係を、正・"
+            },
+            {
+              "type": "math",
+              "latex": "0"
+            },
+            {
+              "type": "text",
+              "text": "・負という意味で読み取ります。前の大小関係も根拠として残します。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-q08-difference"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        }
+      ]
+    },
+    {
+      "id": "r7-n08-q10-forward",
+      "sourceNodeIds": [
+        "n08-q10-forward"
+      ],
+      "rows": [
+        {
+          "id": "n08-q10-forward-interaction-0",
+          "nodeId": "n08-q10-forward",
+          "kind": "math",
+          "interactionRef": "n08-q10-forward-answer",
+          "requiresCorrectParts": [],
+          "partIds": [],
+          "visibleAfter": []
+        }
+      ],
+      "rowIds": [
+        "n08-q10-forward-interaction-0"
+      ],
+      "mathRowIds": [
+        "n08-q10-forward-interaction-0"
+      ],
+      "partIds": [],
+      "number": 24,
+      "numberRowRef": "n08-q10-forward-interaction-0",
+      "numberBaselineRef": "current-visible-last-math-row",
+      "axisContract": "axis-contract/1",
+      "framePolicy": "fixed-group-envelope",
+      "envelopeSource": "all-candidates-neutral-syntax",
+      "responsiveBreak": "fixed-envelope-only",
+      "prose": [
+        {
+          "id": "n08-q10-forward-r7-lead",
+          "nodeId": "n08-q10-forward",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "ここからは性質です。|"
+            },
+            {
+              "type": "math",
+              "latex": "a"
+            },
+            {
+              "type": "text",
+              "text": "|="
+            },
+            {
+              "type": "math",
+              "latex": "0"
+            },
+            {
+              "type": "text",
+              "text": " は、"
+            },
+            {
+              "type": "math",
+              "latex": "a"
+            },
+            {
+              "type": "text",
+              "text": " の点と原点との距離が"
+            },
+            {
+              "type": "math",
+              "latex": "0"
+            },
+            {
+              "type": "text",
+              "text": "という意味です。離れていない二点は同じ位置にあります。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-definition"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        }
+      ]
+    },
+    {
+      "id": "r7-n08-q10-reverse",
+      "sourceNodeIds": [
+        "n08-q10-reverse"
+      ],
+      "rows": [
+        {
+          "id": "n08-q10-reverse-interaction-0",
+          "nodeId": "n08-q10-reverse",
+          "kind": "math",
+          "interactionRef": "n08-q10-reverse-answer",
+          "requiresCorrectParts": [],
+          "partIds": [],
+          "visibleAfter": []
+        }
+      ],
+      "rowIds": [
+        "n08-q10-reverse-interaction-0"
+      ],
+      "mathRowIds": [
+        "n08-q10-reverse-interaction-0"
+      ],
+      "partIds": [],
+      "number": 25,
+      "numberRowRef": "n08-q10-reverse-interaction-0",
+      "numberBaselineRef": "current-visible-last-math-row",
+      "axisContract": "axis-contract/1",
+      "framePolicy": "fixed-group-envelope",
+      "envelopeSource": "all-candidates-neutral-syntax",
+      "responsiveBreak": "fixed-envelope-only",
+      "prose": [
+        {
+          "id": "n08-q10-reverse-r7-lead",
+          "nodeId": "n08-q10-reverse",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "math",
+              "latex": "a"
+            },
+            {
+              "type": "text",
+              "text": "="
+            },
+            {
+              "type": "math",
+              "latex": "0"
+            },
+            {
+              "type": "text",
+              "text": " なら、点は最初から原点と一致します。このときの距離を求めて、逆向きの関係も確かめます。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-definition"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        }
+      ]
+    },
+    {
+      "id": "r7-n08-10",
+      "sourceNodeIds": [
+        "n08-10"
+      ],
+      "rows": [
+        {
+          "id": "n08-10-interaction-0",
+          "nodeId": "n08-10",
+          "kind": "math",
+          "interactionRef": null,
+          "requiresCorrectParts": [],
+          "partIds": [],
+          "visibleAfter": []
+        }
+      ],
+      "rowIds": [
+        "n08-10-interaction-0"
+      ],
+      "mathRowIds": [
+        "n08-10-interaction-0"
+      ],
+      "partIds": [],
+      "number": 26,
+      "numberRowRef": "n08-10-interaction-0",
+      "numberBaselineRef": "current-visible-last-math-row",
+      "axisContract": "axis-contract/1",
+      "framePolicy": "fixed-group-envelope",
+      "envelopeSource": "all-candidates-neutral-syntax",
+      "responsiveBreak": "fixed-envelope-only",
+      "prose": [
+        {
+          "id": "n08-10-r7-lead",
+          "nodeId": "n08-10",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "両方向を確かめたので、距離が"
+            },
+            {
+              "type": "math",
+              "latex": "0"
+            },
+            {
+              "type": "text",
+              "text": "になる条件を一つにまとめます。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-q10-forward",
+            "n08-q10-reverse"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        }
+      ]
+    },
+    {
+      "id": "r7-n08-q11-positive",
+      "sourceNodeIds": [
+        "n08-q11-positive"
+      ],
+      "rows": [
+        {
+          "id": "n08-q11-positive-r7-condition",
+          "nodeId": "n08-q11-positive",
+          "kind": "math",
+          "interactionRef": "n08-q11-positive-build-r7",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-q11-positive-build-r7::opposite-relation"
+          ],
+          "visibleAfter": [
+            "n08-02-build-r7",
+            "n08-03-build-r6"
+          ]
+        },
+        {
+          "id": "n08-q11-positive-r7-apply",
+          "nodeId": "n08-q11-positive",
+          "kind": "math",
+          "interactionRef": "n08-q11-positive-build-r7",
+          "requiresCorrectParts": [
+            "n08-q11-positive-build-r7::opposite-relation"
+          ],
+          "partIds": [
+            "n08-q11-positive-build-r7::rule-sign"
+          ],
+          "visibleAfter": [
+            "n08-02-build-r7",
+            "n08-03-build-r6"
+          ]
+        },
+        {
+          "id": "n08-q11-positive-r7-calculate",
+          "nodeId": "n08-q11-positive",
+          "kind": "math",
+          "interactionRef": "n08-q11-positive-build-r7",
+          "requiresCorrectParts": [
+            "n08-q11-positive-build-r7::opposite-relation",
+            "n08-q11-positive-build-r7::rule-sign"
+          ],
+          "partIds": [
+            "n08-q11-positive-build-r7::result-sign"
+          ],
+          "visibleAfter": [
+            "n08-02-build-r7",
+            "n08-03-build-r6"
+          ]
+        }
+      ],
+      "rowIds": [
+        "n08-q11-positive-r7-condition",
+        "n08-q11-positive-r7-apply",
+        "n08-q11-positive-r7-calculate"
+      ],
+      "mathRowIds": [
+        "n08-q11-positive-r7-condition",
+        "n08-q11-positive-r7-apply",
+        "n08-q11-positive-r7-calculate"
+      ],
+      "partIds": [
+        "n08-q11-positive-build-r7::opposite-relation",
+        "n08-q11-positive-build-r7::rule-sign",
+        "n08-q11-positive-build-r7::result-sign"
+      ],
+      "number": 27,
+      "numberRowRef": "n08-q11-positive-r7-calculate",
+      "numberBaselineRef": "current-visible-last-math-row",
+      "axisContract": "axis-contract/1",
+      "framePolicy": "fixed-group-envelope",
+      "envelopeSource": "all-candidates-neutral-syntax",
+      "responsiveBreak": "fixed-envelope-only",
+      "prose": [
+        {
+          "id": "n08-q11-positive-r7-lead",
+          "nodeId": "n08-q11-positive",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "math",
+              "latex": "a>0"
+            },
+            {
+              "type": "text",
+              "text": "の場合に、反対の数"
+            },
+            {
+              "type": "math",
+              "latex": "-a"
+            },
+            {
+              "type": "text",
+              "text": "を"
+            },
+            {
+              "type": "math",
+              "latex": "0"
+            },
+            {
+              "type": "text",
+              "text": "と比べます。次に、その符号に合う絶対値の規則を使い、最後に計算します。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-cases"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        }
+      ]
+    },
+    {
+      "id": "r7-n08-q11-negative",
+      "sourceNodeIds": [
+        "n08-q11-negative"
+      ],
+      "rows": [
+        {
+          "id": "n08-q11-negative-r7-condition",
+          "nodeId": "n08-q11-negative",
+          "kind": "math",
+          "interactionRef": "n08-q11-negative-build-r7",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-q11-negative-build-r7::opposite-relation"
+          ],
+          "visibleAfter": [
+            "n08-02-build-r7",
+            "n08-03-build-r6"
+          ]
+        },
+        {
+          "id": "n08-q11-negative-r7-apply",
+          "nodeId": "n08-q11-negative",
+          "kind": "math",
+          "interactionRef": "n08-q11-negative-build-r7",
+          "requiresCorrectParts": [
+            "n08-q11-negative-build-r7::opposite-relation"
+          ],
+          "partIds": [
+            "n08-q11-negative-build-r7::distance-term"
+          ],
+          "visibleAfter": [
+            "n08-02-build-r7",
+            "n08-03-build-r6"
+          ]
+        }
+      ],
+      "rowIds": [
+        "n08-q11-negative-r7-condition",
+        "n08-q11-negative-r7-apply"
+      ],
+      "mathRowIds": [
+        "n08-q11-negative-r7-condition",
+        "n08-q11-negative-r7-apply"
+      ],
+      "partIds": [
+        "n08-q11-negative-build-r7::opposite-relation",
+        "n08-q11-negative-build-r7::distance-term"
+      ],
+      "number": 28,
+      "numberRowRef": "n08-q11-negative-r7-apply",
+      "numberBaselineRef": "current-visible-last-math-row",
+      "axisContract": "axis-contract/1",
+      "framePolicy": "fixed-group-envelope",
+      "envelopeSource": "all-candidates-neutral-syntax",
+      "responsiveBreak": "fixed-envelope-only",
+      "prose": [
+        {
+          "id": "n08-q11-negative-r7-lead",
+          "nodeId": "n08-q11-negative",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "math",
+              "latex": "a<0"
+            },
+            {
+              "type": "text",
+              "text": "の場合も、まず反対の数"
+            },
+            {
+              "type": "math",
+              "latex": "-a"
+            },
+            {
+              "type": "text",
+              "text": "の符号を確かめてから、その点の原点からの距離を表します。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-cases"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        }
+      ]
+    },
+    {
+      "id": "r7-n08-q11-zero",
+      "sourceNodeIds": [
+        "n08-q11-zero"
+      ],
+      "rows": [],
+      "rowIds": [],
+      "mathRowIds": [],
+      "partIds": [],
+      "number": null,
+      "numberRowRef": null,
+      "numberBaselineRef": "current-visible-last-math-row",
+      "axisContract": "axis-contract/1",
+      "framePolicy": "fixed-group-envelope",
+      "envelopeSource": "all-candidates-neutral-syntax",
+      "responsiveBreak": "fixed-envelope-only",
+      "prose": [
+        {
+          "id": "n08-q11-zero-r7-lead",
+          "nodeId": "n08-q11-zero",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "math",
+              "latex": "a"
+            },
+            {
+              "type": "text",
+              "text": "="
+            },
+            {
+              "type": "math",
+              "latex": "0"
+            },
+            {
+              "type": "text",
+              "text": " の場合は -"
+            },
+            {
+              "type": "math",
+              "latex": "a"
+            },
+            {
+              "type": "text",
+              "text": "="
+            },
+            {
+              "type": "math",
+              "latex": "0"
+            },
+            {
+              "type": "text",
+              "text": " です。二点はともに原点なので、|"
+            },
+            {
+              "type": "math",
+              "latex": "a"
+            },
+            {
+              "type": "text",
+              "text": "|=|-"
+            },
+            {
+              "type": "math",
+              "latex": "a"
+            },
+            {
+              "type": "text",
+              "text": "|="
+            },
+            {
+              "type": "math",
+              "latex": "0"
+            },
+            {
+              "type": "text",
+              "text": " です。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-definition"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        }
+      ]
+    },
+    {
+      "id": "r7-n08-11",
+      "sourceNodeIds": [
+        "n08-11"
+      ],
+      "rows": [
+        {
+          "id": "n08-11-r7-conclude",
+          "nodeId": "n08-11",
+          "kind": "math",
+          "interactionRef": "n08-11-build-r7",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-11-build-r7::relation"
+          ],
+          "visibleAfter": [
+            "n08-q11-positive-build-r7",
+            "n08-q11-negative-build-r7",
+            "n08-q01-left-answer"
+          ]
+        }
+      ],
+      "rowIds": [
+        "n08-11-r7-conclude"
+      ],
+      "mathRowIds": [
+        "n08-11-r7-conclude"
+      ],
+      "partIds": [
+        "n08-11-build-r7::relation"
+      ],
+      "number": 29,
+      "numberRowRef": "n08-11-r7-conclude",
+      "numberBaselineRef": "current-visible-last-math-row",
+      "axisContract": "axis-contract/1",
+      "framePolicy": "fixed-group-envelope",
+      "envelopeSource": "all-candidates-neutral-syntax",
+      "responsiveBreak": "fixed-envelope-only",
+      "prose": [
+        {
+          "id": "n08-11-r7-lead",
+          "nodeId": "n08-11",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "正・負・"
+            },
+            {
+              "type": "math",
+              "latex": "0"
+            },
+            {
+              "type": "text",
+              "text": "の三つの結果をまとめ、元の数と反対の数の絶対値の関係を表します。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-q11-positive",
+            "n08-q11-negative",
+            "n08-q11-zero"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        }
+      ]
+    },
+    {
+      "id": "r7-n08-q12-nonnegative",
+      "sourceNodeIds": [
+        "n08-q12-nonnegative"
+      ],
+      "rows": [
+        {
+          "id": "n08-q12-nonnegative-r7-square",
+          "nodeId": "n08-q12-nonnegative",
+          "kind": "math",
+          "interactionRef": "n08-q12-nonnegative-build-r7",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-q12-nonnegative-build-r7::square-operation"
+          ],
+          "visibleAfter": [
+            "n08-02-build-r7",
+            "n08-03-build-r6",
+            "n08-q05-square-answer"
+          ]
+        },
+        {
+          "id": "n08-q12-nonnegative-r7-canonical",
+          "nodeId": "n08-q12-nonnegative",
+          "kind": "math",
+          "interactionRef": "n08-q12-nonnegative-build-r7",
+          "requiresCorrectParts": [
+            "n08-q12-nonnegative-build-r7::square-operation"
+          ],
+          "partIds": [],
+          "visibleAfter": [
+            "n08-02-build-r7",
+            "n08-03-build-r6",
+            "n08-q05-square-answer"
+          ]
+        }
+      ],
+      "rowIds": [
+        "n08-q12-nonnegative-r7-square",
+        "n08-q12-nonnegative-r7-canonical"
+      ],
+      "mathRowIds": [
+        "n08-q12-nonnegative-r7-square",
+        "n08-q12-nonnegative-r7-canonical"
+      ],
+      "partIds": [
+        "n08-q12-nonnegative-build-r7::square-operation"
+      ],
+      "number": 30,
+      "numberRowRef": "n08-q12-nonnegative-r7-canonical",
+      "numberBaselineRef": "current-visible-last-math-row",
+      "axisContract": "axis-contract/1",
+      "framePolicy": "fixed-group-envelope",
+      "envelopeSource": "all-candidates-neutral-syntax",
+      "responsiveBreak": "fixed-envelope-only",
+      "prose": [
+        {
+          "id": "n08-q12-nonnegative-r7-lead",
+          "nodeId": "n08-q12-nonnegative",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "math",
+              "latex": "a\\ge0"
+            },
+            {
+              "type": "text",
+              "text": "なので"
+            },
+            {
+              "type": "math",
+              "latex": "|a|=a"
+            },
+            {
+              "type": "text",
+              "text": "です。二乗の意味を、同じ数二つの計算で表し、式を完成させます。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-cases",
+            "n08-q05-square"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        }
+      ]
+    },
+    {
+      "id": "r7-n08-q12-negative",
+      "sourceNodeIds": [
+        "n08-q12-negative"
+      ],
+      "rows": [
+        {
+          "id": "n08-q12-negative-r7-given-case",
+          "nodeId": "n08-q12-negative",
+          "kind": "math",
+          "interactionRef": "n08-q12-negative-build-r7",
+          "requiresCorrectParts": [],
+          "partIds": [],
+          "visibleAfter": [
+            "n08-02-build-r7",
+            "n08-03-build-r6",
+            "n08-q12-nonnegative-build-r7"
+          ]
+        },
+        {
+          "id": "n08-q12-negative-r7-expand",
+          "nodeId": "n08-q12-negative",
+          "kind": "math",
+          "interactionRef": "n08-q12-negative-build-r7",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-q12-negative-build-r7::second-factor"
+          ],
+          "visibleAfter": [
+            "n08-02-build-r7",
+            "n08-03-build-r6",
+            "n08-q12-nonnegative-build-r7"
+          ]
+        },
+        {
+          "id": "n08-q12-negative-r7-product",
+          "nodeId": "n08-q12-negative",
+          "kind": "math",
+          "interactionRef": "n08-q12-negative-build-r7",
+          "requiresCorrectParts": [
+            "n08-q12-negative-build-r7::second-factor"
+          ],
+          "partIds": [
+            "n08-q12-negative-build-r7::result-sign"
+          ],
+          "visibleAfter": [
+            "n08-02-build-r7",
+            "n08-03-build-r6",
+            "n08-q12-nonnegative-build-r7"
+          ]
+        }
+      ],
+      "rowIds": [
+        "n08-q12-negative-r7-given-case",
+        "n08-q12-negative-r7-expand",
+        "n08-q12-negative-r7-product"
+      ],
+      "mathRowIds": [
+        "n08-q12-negative-r7-given-case",
+        "n08-q12-negative-r7-expand",
+        "n08-q12-negative-r7-product"
+      ],
+      "partIds": [
+        "n08-q12-negative-build-r7::second-factor",
+        "n08-q12-negative-build-r7::result-sign"
+      ],
+      "number": 31,
+      "numberRowRef": "n08-q12-negative-r7-product",
+      "numberBaselineRef": "current-visible-last-math-row",
+      "axisContract": "axis-contract/1",
+      "framePolicy": "fixed-group-envelope",
+      "envelopeSource": "all-candidates-neutral-syntax",
+      "responsiveBreak": "fixed-envelope-only",
+      "prose": [
+        {
+          "id": "n08-q12-negative-r7-lead",
+          "nodeId": "n08-q12-negative",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "math",
+              "latex": "a<0"
+            },
+            {
+              "type": "text",
+              "text": "なので"
+            },
+            {
+              "type": "math",
+              "latex": "|a|=-a"
+            },
+            {
+              "type": "text",
+              "text": "です。両辺を二乗した式を、同じ数を二つ掛ける形へ直してから計算します。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-cases",
+            "n08-q12-nonnegative"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        }
+      ]
+    },
+    {
+      "id": "r7-n08-12",
+      "sourceNodeIds": [
+        "n08-12"
+      ],
+      "rows": [
+        {
+          "id": "n08-12-interaction-0",
+          "nodeId": "n08-12",
+          "kind": "math",
+          "interactionRef": null,
+          "requiresCorrectParts": [],
+          "partIds": [],
+          "visibleAfter": []
+        }
+      ],
+      "rowIds": [
+        "n08-12-interaction-0"
+      ],
+      "mathRowIds": [
+        "n08-12-interaction-0"
+      ],
+      "partIds": [],
+      "number": 32,
+      "numberRowRef": "n08-12-interaction-0",
+      "numberBaselineRef": "current-visible-last-math-row",
+      "axisContract": "axis-contract/1",
+      "framePolicy": "fixed-group-envelope",
+      "envelopeSource": "all-candidates-neutral-syntax",
+      "responsiveBreak": "fixed-envelope-only",
+      "prose": [
+        {
+          "id": "n08-12-r7-lead",
+          "nodeId": "n08-12",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "二つの場合で同じ結果が得られました。条件によらず成り立つ式として記録します。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-q12-nonnegative",
+            "n08-q12-negative"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        }
+      ]
+    },
+    {
+      "id": "r7-n08-closing",
+      "sourceNodeIds": [
+        "n08-closing"
+      ],
+      "rows": [],
+      "rowIds": [],
+      "mathRowIds": [],
+      "partIds": [],
+      "number": null,
+      "numberRowRef": null,
+      "numberBaselineRef": "current-visible-last-math-row",
+      "axisContract": "axis-contract/1",
+      "framePolicy": "fixed-group-envelope",
+      "envelopeSource": "all-candidates-neutral-syntax",
+      "responsiveBreak": "fixed-envelope-only",
+      "prose": [
+        {
+          "id": "n08-closing-r7-lead",
+          "nodeId": "n08-closing",
+          "role": "group-lead",
+          "content": [
+            {
+              "type": "text",
+              "text": "絶対値は原点からの距離を表します。中身が式のときも、まずその式全体の符号を調べ、定義に当てはめてから計算します。"
+            }
+          ],
+          "visibleAfter": [
+            "n08-12"
+          ],
+          "requiresCorrectParts": [],
+          "placement": "before-node"
+        }
+      ]
+    }
+  ],
+  "partIds": [
+    "n08-r5-q02-distance-build-r6-right",
+    "n08-r5-q02-distance-build-r6-left",
+    "n08-q03-order-build-r6-right",
+    "n08-q03-order-build-r6-left",
+    "n08-03-build-r6-sign",
+    "n08-04-build-r6-value",
+    "n08-07-build-r6-first-term",
+    "n08-09-build-r6-first-term",
+    "n08-02-build-r7::term",
+    "n08-05-build-r7::relation",
+    "n08-q07-rule-build-r7::rule-sign",
+    "n08-q07-bracket-build-r7::whole-interior",
+    "n08-q07-distribute-build-r7::coefficient",
+    "n08-q07-distribute-build-r7::second-term",
+    "n08-q07-distribute-build-r7::root-sign",
+    "n08-q07-distribute-build-r7::constant",
+    "n08-q08-difference-build-r7::zero",
+    "n08-08-build-r7::sign-word",
+    "n08-q09-bracket-build-r7::whole-interior",
+    "n08-q09-distribute-build-r7::coefficient",
+    "n08-q09-distribute-build-r7::second-term",
+    "n08-q09-distribute-build-r7::first-sign",
+    "n08-q09-distribute-build-r7::joining-operation",
+    "n08-q11-positive-build-r7::opposite-relation",
+    "n08-q11-positive-build-r7::rule-sign",
+    "n08-q11-positive-build-r7::result-sign",
+    "n08-q11-negative-build-r7::opposite-relation",
+    "n08-q11-negative-build-r7::distance-term",
+    "n08-11-build-r7::relation",
+    "n08-q12-nonnegative-build-r7::square-operation",
+    "n08-q12-negative-build-r7::second-factor",
+    "n08-q12-negative-build-r7::result-sign"
+  ],
+  "legacyInteractionIds": [
+    "n08-q01-left-answer",
+    "n08-q05-square-answer",
+    "n08-q05-compare-answer",
+    "n08-r5-q06-operation-answer",
+    "n08-q06-subtract-answer",
+    "n08-06",
+    "n08-q08-order-answer",
+    "n08-r5-q08-operation-answer",
+    "n08-q10-forward-answer",
+    "n08-q10-reverse-answer"
+  ],
+  "sourceNodeCount": 39
+}

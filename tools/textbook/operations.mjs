@@ -8,6 +8,7 @@ import {teachingCandidates,rankValid} from './planner/graph.mjs';
 import {blankCandidates,validateChoices} from './interaction/index.mjs';
 import {hash} from './util.mjs';
 import {validateConstructionPlan, verifyConstructionMath} from './interaction/construction.mjs';
+import {verifyConstructionMathV2} from './interaction/construction-v2.mjs';
 import {validateLayoutPlan} from './layout/plan.mjs';
 import {validateLayoutMeasurements} from './layout/measurements.mjs';
 import {inspectResearch,prepareResearchAnalysis} from './research/manifest.mjs';
@@ -21,16 +22,23 @@ import {planTransformations} from './transformation/plan.mjs';
 import {validateTransformationPlan} from './transformation/validate.mjs';
 import {compileTransformationPresentation} from './transformation/compile.mjs';
 import {projectTransformationView} from './transformation/visible.mjs';
+import {buildSnapshotsV3} from './transformation/v3.mjs';
+import {checkAxisMeasurements} from './layout/axis-measurements.mjs';
 export function operate(operation,input){
- if(operation==='construction-validate')return verifyConstructionMath(input.constructionPlan??input);
+ if(operation==='construction-validate'){const plan=input.constructionPlan??input;return plan.schemaVersion==='construction-plan/2'?verifyConstructionMathV2(plan):verifyConstructionMath(plan);}
  if(operation==='layout-validate'){
   const result=validateLayoutPlan(input.layoutPlan??input,input.bindingContext??{});
   if(result.status!=='PASS'||!input.measurements)return result;
   const plan=input.layoutPlan??input;
+  if(plan.schemaVersion==='layout-plan/2'){
+   if(!Array.isArray(input.measurements)||!input.measurements.length)return {...result,status:'FAIL',reason:'ACTUAL_AXIS_MEASUREMENTS_REQUIRED',measurementCount:0};
+   const packets=input.measurements.flatMap(m=>m.packets??[m]);if(!packets.length)return {...result,status:'FAIL',reason:'ACTUAL_AXIS_MEASUREMENTS_REQUIRED',measurementCount:0};const verified=packets.map(checkAxisMeasurements);const failures=verified.flatMap((r,index)=>r.status==='PASS'?[]:[{index,...r}]);
+   return {...result,status:failures.length?'FAIL':'PASS',axisMeasurements:verified,findings:failures,measurementCount:packets.length,layoutHash:result.layoutHash};
+  }
   return {...validateLayoutMeasurements(input.measurements,{...(input.measurementContext??{}),layoutHash:result.layoutHash,widths:[320,390,430,1440],groupIds:plan.groups.map(g=>g.id),groupRows:Object.fromEntries(plan.groups.map(g=>[g.id,g.rowIds])),groupStates:Object.fromEntries(plan.groups.map(g=>[g.id,g.states]))}),layoutHash:result.layoutHash};
  }
  if(operation==='construction-compile'){
-  if(input.transformationPlan?.schemaVersion!=='transformation-plan/2')return {status:'FAIL',reason:'BOUND_TRANSFORMATION_V2_REQUIRED'};
+  if(!['transformation-plan/2','transformation-plan/3'].includes(input.transformationPlan?.schemaVersion))return {status:'FAIL',reason:'BOUND_TRANSFORMATION_V2_REQUIRED'};
   return compileTransformationPresentation(input.ir,input.transformationPlan);
  }
  if(input.transformationPlan){
@@ -39,6 +47,7 @@ export function operate(operation,input){
   if(['render-solution','compile-ir'].includes(operation))return compileTransformationPresentation(input.ir,input.transformationPlan);
   if(operation==='visible-snapshots'){
    const result=compileTransformationPresentation(input.ir,input.transformationPlan);if(result.status!=='PASS')return result;
+   if(result.compiled.schemaVersion==='transformation-reading/3')return buildSnapshotsV3(result.compiled,input.viewContext??{});
    const interactions=result.compiled.interactions;
    if(result.compiled.schemaVersion==='transformation-reading/2'){
     if(!input.viewContext||!Array.isArray(input.viewContext.boundarySolvedNodeIds)||!Array.isArray(input.viewContext.externalSolvedIds))return {status:'NEEDS_AI_REVIEW',reason:'VISIBLE_BOUNDARY_CONTEXT_REQUIRED',snapshots:[],automaticAcceptance:false};

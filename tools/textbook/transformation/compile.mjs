@@ -1,3 +1,4 @@
+import {compileTransformationV3} from './v3.mjs';
 import {validateTransformationPlan} from './validate.mjs';
 import {expressionLatex} from '../solution/expression.mjs';
 import {hash} from '../util.mjs';
@@ -28,6 +29,7 @@ function statementParts(statement,slots=[],displayForm){
  return {left:parts(statement.left,slots,'left'),relation:relations[statement.operator],relationSlot:relationSlot?{type:'slot',id:relationSlot.id,interactionRef:relationSlot.interactionRef}:undefined,right:parts(statement.right,slots,'right')};
 }
 export function compileTransformationPresentation(ir,plan){
+ if(plan?.schemaVersion==='transformation-plan/3')return compileTransformationV3(ir,plan);
  if(plan?.schemaVersion==='transformation-plan/2')return compileTransformationV2(ir,plan,validateTransformationPlan(ir,plan),compileTransformationPresentation);
  const checked=validateTransformationPlan(ir,plan);if(checked.status!=='PASS')return checked;
  const graphs=new Map(plan.graphs.map(g=>[g.id,g]));

@@ -1,3 +1,5 @@
+import { isConstructionResolvedV2, selectConstructionPartV2, type ConstructionProgressV2 } from './constructionProgressV2'
+import n08Revision6 from '../data/textbook/math/numbers/n08Revision6.json'
 import type { TextbookItem, TextbookUnit } from './textbookSchema'
 import { isConstructionResolved, selectConstructionPart, type ConstructionProgress } from './constructionProgress'
 import n08Revision5 from '../data/textbook/math/numbers/n08Revision5.json'
@@ -25,6 +27,7 @@ export type TextbookRevisionArchive = {
   startedAt: number
   updatedAt: number
   answers: Record<string, TextbookAnswerRecord>
+  constructionProgressV2?: ConstructionProgressV2
   constructionProgress?: ConstructionProgress
   completedAt?: number
   previousRevisionCompletedAt?: number
@@ -37,6 +40,7 @@ export type TextbookUnitProgress = {
   startedAt: number
   updatedAt: number
   answers: Record<string, TextbookAnswerRecord>
+  constructionProgressV2?: ConstructionProgressV2
   constructionProgress?: ConstructionProgress
   completedAt?: number
   /** Prior revision completion is history, never current-version completion. */
@@ -188,6 +192,30 @@ function migrateN09ToRevision2(progress: TextbookUnitProgress): TextbookUnitProg
 export function effectiveTextbookProgress(unit: TextbookUnit, progress: TextbookUnitProgress | undefined): TextbookUnitProgress | undefined {
   if (!progress) return undefined
   if (progress.unitRevision === unit.revision) return progress
+  // W041 is opt-in: an archived r7, including reset-empty records, is authoritative.
+  if (unit.unitId === 'math-numbers-expressions-n08' && progress.unitId === unit.unitId && unit.revision === 7) {
+    const previous = progress.unitRevision === 6 ? progress : effectiveTextbookProgress(n08Revision6.unit as unknown as TextbookUnit, progress)
+    if (!previous || previous.unitRevision !== 6) return undefined
+    const { archivedRevisions, ...archive } = previous, restored = archivedRevisions?.['7']
+    const keep = new Set((unit.revisionMigration?.preservedInteractionIds ?? []).filter(id => {
+      const f = unit.revisionMigration?.meaningFingerprints[id]; return f && f.from === f.to
+    }))
+    const source = restored ?? previous
+    const answerIds = new Set(unit.sections.flatMap(s => s.items.map(i => i.id)))
+    const constructionIds = new Set(unit.constructionItems?.map(i => i.id) ?? [])
+    const next: TextbookUnitProgress = { unitId: unit.unitId, unitRevision: 7, startedAt: source.startedAt, updatedAt: source.updatedAt,
+      answers: Object.fromEntries(Object.entries(source.answers).filter(([id]) => answerIds.has(id) && (restored || keep.has(id)))),
+      constructionProgress: Object.fromEntries(Object.entries(source.constructionProgress ?? {}).filter(([id]) => constructionIds.has(id) && (restored || keep.has(id)))),
+      constructionProgressV2: restored?.constructionProgressV2 ?? {}, archivedRevisions: {...archivedRevisions,'6':archive}, migratedFromRevision:6,
+      ...(previous.completedAt !== undefined ? {previousRevisionCompletedAt:previous.completedAt} : previous.previousRevisionCompletedAt !== undefined ? {previousRevisionCompletedAt:previous.previousRevisionCompletedAt} : {}) }
+    if(restored?.completedAt !== undefined && unit.requiredInteractionRefs?.every(id=>isTextbookInteractionResolved(unit,next,id))) next.completedAt=restored.completedAt
+    return next
+  }
+  if(unit.unitId === 'math-numbers-expressions-n08' && progress.unitId === unit.unitId && progress.unitRevision === 7 && [4,5,6].includes(unit.revision)) {
+    const {archivedRevisions,...archive}=progress, target=archivedRevisions?.['6']
+    const revision6:TextbookUnitProgress={...(target ?? {unitRevision:6,startedAt:progress.startedAt,updatedAt:progress.updatedAt,answers:{},constructionProgress:{}}),unitId:unit.unitId,archivedRevisions:{...archivedRevisions,'7':archive},migratedFromRevision:7}
+    return unit.revision===6 ? revision6 : effectiveTextbookProgress(unit,revision6)
+  }
   // W040: preserve r4/r5/r6 ledgers, and never reinterpret whole-expression answers as parts.
   if (unit.unitId === 'math-numbers-expressions-n08' && progress.unitId === unit.unitId && unit.revision === 6) {
     const previous = progress.unitRevision < 5 ? effectiveTextbookProgress(n08Revision5.unit as unknown as TextbookUnit, progress) : progress
@@ -1113,11 +1141,11 @@ export function effectiveTextbookProgress(unit: TextbookUnit, progress: Textbook
 
 /** N12 v3 reset keeps old archived revisions, but clears all v3 active answers. */
 export function resetTextbookUnitProgress(unit: TextbookUnit, progress: TextbookUnitProgress | undefined, now: number): TextbookUnitProgress | undefined {
-  if (unit.unitId === 'math-numbers-expressions-n08' && unit.revision === 6 && progress) {
+  if (unit.unitId === 'math-numbers-expressions-n08' && [6,7].includes(unit.revision) && progress) {
     const current = effectiveTextbookProgress(unit, progress)
     if (!current) return undefined
     const { archivedRevisions, ...archive } = current
-    return { unitId: unit.unitId, unitRevision: 6, startedAt: now, updatedAt: now, answers: {}, constructionProgress: {}, archivedRevisions: { ...archivedRevisions, ['6-reset-' + now]: archive }, ...(current.completedAt !== undefined ? { previousRevisionCompletedAt: current.completedAt } : current.previousRevisionCompletedAt !== undefined ? { previousRevisionCompletedAt: current.previousRevisionCompletedAt } : {}) }
+    return { unitId: unit.unitId, unitRevision: unit.revision, startedAt: now, updatedAt: now, answers: {}, constructionProgress: {}, ...(unit.revision===7?{constructionProgressV2:{}}:{}), archivedRevisions: { ...archivedRevisions, [unit.revision+'-reset-' + now]: archive }, ...(current.completedAt !== undefined ? { previousRevisionCompletedAt: current.completedAt } : current.previousRevisionCompletedAt !== undefined ? { previousRevisionCompletedAt: current.previousRevisionCompletedAt } : {}) }
   }
   if (unit.unitId !== 'math-numbers-expressions-n12' || unit.revision !== 3 || !progress) return undefined
   const current = effectiveTextbookProgress(unit, progress)
@@ -1172,6 +1200,7 @@ export function answerTextbookItem(progress: TextbookUnitProgress | undefined, u
     updatedAt: now,
     answers,
     ...(currentProgress?.constructionProgress ? { constructionProgress: currentProgress.constructionProgress } : {}),
+    ...(currentProgress?.constructionProgressV2 ? { constructionProgressV2: currentProgress.constructionProgressV2 } : {}),
     ...(currentProgress?.migratedFromRevision !== undefined ? { migratedFromRevision: currentProgress.migratedFromRevision } : {}),
     ...(currentProgress?.previousRevisionCompletedAt !== undefined ? { previousRevisionCompletedAt: currentProgress.previousRevisionCompletedAt } : {}),
     ...(currentProgress?.archivedRevisions ? { archivedRevisions: currentProgress.archivedRevisions } : {}),
@@ -1184,7 +1213,7 @@ export function textbookSectionProgress(unit: TextbookUnit, progress: TextbookUn
   const section = unit.sections.find((candidate) => candidate.id === sectionId)
   if (!section) return { completed: 0, total: 0 }
   if (unit.requiredInteractionRefs) {
-    const ids = [...section.items.map(i => i.id), ...(unit.constructionItems ?? []).filter(i => i.sectionId === sectionId || !i.sectionId && unit.sections.length === 1).map(i => i.id)]
+    const ids = [...section.items.map(i => i.id), ...[...unit.constructionItems ?? [], ...unit.constructionItemsV2 ?? []].filter(i => i.sectionId === sectionId || !i.sectionId && unit.sections.length === 1).map(i => i.id)]
     return { completed: ids.filter(id => isTextbookInteractionResolved(unit, currentProgress, id)).length, total: ids.length }
   }
   return {
@@ -1204,7 +1233,9 @@ export function textbookUnitProgress(unit: TextbookUnit, progress: TextbookUnitP
   return { completed, total: items.length, percent: items.length ? Math.round((completed / items.length) * 100) : 0 }
 }
 
-export function isTextbookInteractionResolved(unit: TextbookUnit, progress: TextbookUnitProgress | undefined, id: string) {
+export function isTextbookInteractionResolved(unit: TextbookUnit, progress: TextbookUnitProgress | undefined, id: string): boolean {
+  const v2 = unit.constructionItemsV2?.find(i=>i.id===id)
+  if(v2) return isConstructionResolvedV2(v2,progress?.constructionProgressV2?.[id]) && v2.prerequisiteInteractionIds.every(dep=>dep!==id && isTextbookInteractionResolved(unit,progress,dep))
   const construction = unit.constructionItems?.find(i => i.id === id)
   if (construction) return isConstructionResolved(construction, progress?.constructionProgress?.[id])
   const item = unit.sections.flatMap(s => s.items).find(i => i.id === id)
@@ -1254,4 +1285,16 @@ export function groupTextbookUnitsByChapter(units: TextbookUnit[]): TextbookChap
   return [...groups.values()].sort((left, right) =>
     left.chapterNumber.localeCompare(right.chapterNumber, undefined, { numeric: true }),
   )
+}
+
+/** New-version bridge; old construction and legacy signatures remain unchanged. */
+export function answerTextbookConstructionV2(progress:TextbookUnitProgress|undefined,unit:TextbookUnit,parentId:string,partId:string,choiceId:string,eventId:string,now:number):TextbookUnitProgress|undefined {
+  const current=effectiveTextbookProgress(unit,progress), interaction=unit.constructionItemsV2?.find(i=>i.id===parentId)
+  if(!interaction || interaction.prerequisiteInteractionIds.some(id=>!isTextbookInteractionResolved(unit,current,id))) return current
+  const prior=current?.constructionProgressV2?.[parentId],record=selectConstructionPartV2(interaction,prior,partId,choiceId,eventId,now)
+  if(!record || record===prior)return current
+  const next:TextbookUnitProgress={...current,unitId:unit.unitId,unitRevision:unit.revision,startedAt:current?.startedAt??now,updatedAt:now,answers:current?.answers??{},constructionProgressV2:{...current?.constructionProgressV2,[parentId]:record}}
+  if(unit.requiredInteractionRefs?.every(id=>isTextbookInteractionResolved(unit,next,id)))next.completedAt=current?.completedAt??now
+  else delete next.completedAt
+  return next
 }

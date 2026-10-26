@@ -12,6 +12,9 @@ test('four source-bound groups, eleven unchanged grading interactions and two me
 test('old source, original figure, grading and N11 display remain byte-identical',()=>{
  const manifest=JSON.parse(fs.readFileSync('work/items/W-MATH-039-n08-grouped-transformations/PROTECTED_MANIFEST.json'));
  const {createHash}=requireCrypto();for(const [path,digest]of Object.entries(manifest)){
+  if(path==='src/data/textbook/math/numbers/n08ActiveVersion.json'&&JSON.parse(fs.readFileSync(path)).revision===7){
+   const r7=JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/n08Revision7.json'));assert.equal(r7.unit.revision,7);assert.equal(r7.unit.requiredInteractionRefs.length,30);assert.equal(r7.unit.constructionItems.length,6);assert.equal(r7.unit.constructionItemsV2.length,14);assert.equal(r7.unit.sections[0].items.length,10);assert.equal(r7.unit.constructionItems.reduce((n,i)=>n+i.parts.length,0)+r7.unit.constructionItemsV2.reduce((n,i)=>n+i.parts.length,0)+10,42);continue; // Approved W041/P001: pointer only; all protected original bytes are still checked.
+  }
   if(path==='src/data/textbook/math/numbers/n08ActiveVersion.json'&&JSON.parse(fs.readFileSync(path)).revision===6){
    const r6=JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/n08Revision6.json'));assert.equal(r6.unit.revision,6);assert.equal(r6.unit.requiredInteractionRefs.length,33);assert.equal(r6.unit.constructionItems.length,11);continue; // W040 explicitly changes only the active pointer; immutable W039 manifest is retained.
   }

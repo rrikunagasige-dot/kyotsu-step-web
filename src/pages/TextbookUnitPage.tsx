@@ -8,7 +8,9 @@ import { n09Presentation } from '../data/textbook/math/numbers/n09Lesson'
 import { N08SolutionReadingFlow } from '../components/textbook/N08SolutionReadingFlow'
 import { N08ArchivePage } from './N08ArchivePage'
 import { N08Revision5Page } from './N08Revision5Page'
+import { N08Revision6Page } from './N08Revision6Page'
 import { N08ConstructionReadingFlow } from '../components/textbook/N08ConstructionReadingFlow'
+import { N08ConstructionReadingFlowV7 } from '../components/textbook/N08ConstructionReadingFlowV7'
 import { N08ReadingFlow } from '../components/textbook/N08ReadingFlow'
 import { N07ReadingFlow } from '../components/textbook/N07ReadingFlow'
 import { typesettingEnabled } from '../data/textbook/math/typesetting'
@@ -155,6 +157,8 @@ type ReadingFlowProps = {
 export function TextbookReadingFlow(props: ReadingFlowProps) {
   return props.unit.unitId === 'math-numbers-expressions-n07' && props.unit.revision === 4
     ? <N07ReadingFlow {...props} />
+    : props.unit.unitId === 'math-numbers-expressions-n08' && props.unit.revision === 7
+      ? <N08ConstructionReadingFlowV7 {...props} />
     : props.unit.unitId === 'math-numbers-expressions-n08' && props.unit.revision === 6
       ? <N08ConstructionReadingFlow {...props} />
     : props.unit.unitId === 'math-numbers-expressions-n08' && props.unit.revision === 5
@@ -684,6 +688,7 @@ export function TextbookUnitPage() {
   const params = new URLSearchParams(location.search)
   if (unitId === 'math-numbers-expressions-n08') {
     if (params.get('version') === '4') return <N08ArchivePage />
+    if (params.get('version') === '6') return <N08Revision6Page />
     if (params.get('version') === '5' || params.get('layout') === 'original') {
       return <N08Revision5Page originalMathLayout={params.get('layout') === 'original'} />
     }

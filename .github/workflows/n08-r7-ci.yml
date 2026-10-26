@@ -1,0 +1,69 @@
+name: N08 r7 derivation holes and fixed mathematical axes
+on:
+  push:
+    branches: ['work/n08-r7-derivation-axis-20261026']
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      CANDIDATE_SHA: ${{ github.sha }}
+      VITE_PREVIEW_COMMIT: ${{ github.sha }}
+      VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
+      VITE_BASE_PATH: /kyotsu-step-web/
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - run: python -m pip install -r tools/textbook/research/requirements-solution.txt numpy==2.3.5 scikit-learn==1.8.0 lxml==6.1.1
+      - name: Existing Word adapter and Japanese font dependencies
+        run: |
+          timeout 120s sudo apt-get update -qq
+          timeout 180s sudo apt-get install -y pandoc fonts-noto-cjk
+      - name: Construction, layout, original math and workflow contracts
+        run: |
+          pnpm run test:production-workflow
+          node --test tools/textbook/tests/n08-transformation.test.mjs tools/textbook/tests/transformation.test.mjs tools/textbook/tests/solution-v2.test.mjs tools/textbook/tests/solution-regressions.test.mjs tools/textbook/tests/n08-bundle.test.mjs
+          node --test tools/textbook/tests/construction-v2.test.mjs tools/textbook/tests/axis-measurements.test.mjs tools/textbook/tests/layout-v2.test.mjs tools/textbook/tests/axis-operation.test.mjs
+          python -m unittest discover -s tools/textbook/tests -p axis_context_test.py
+          node work/items/W-MATH-041-n08-inline-derivation-alignment/release_manifest.mjs --check
+      - name: Learner regressions and isolated comparison routes
+        run: |
+          pnpm exec vitest run --exclude src/data/physicsTaxonomy.test.ts --exclude src/domain/questionSchema.test.ts
+          pnpm exec vitest run --config work/items/W-MATH-040-n08-construction-layout/vitest.config.mjs
+          pnpm run test:textbook-authoring
+          pnpm exec eslint src/components/textbook/N08ConstructionReadingFlow.tsx src/components/textbook/ConstructionSlot.tsx src/components/textbook/ConstructionPanel.tsx src/domain/constructionProgress.ts src/domain/constructionReading.ts src/domain/textbookSchema.ts src/pages/N08Revision5Page.tsx src/pages/TextbookUnitPage.tsx --max-warnings=0
+          pnpm run build
+      - run: pnpm exec playwright install --with-deps chromium
+      - name: All N08 parents, parts, wrong choices, partial saves and three-state geometry at four widths
+        run: EVIDENCE_DIR=/tmp/w041-ci node work/items/W-MATH-041-n08-inline-derivation-alignment/verify_app.mjs
+      - name: Retained r6 all33 parents and all37 decisions without active-save writes
+        run: EVIDENCE_DIR=/tmp/w041-r6 node work/items/W-MATH-041-n08-inline-derivation-alignment/verify_revision6.mjs
+      - name: Retained r5 all34 correct and all80 wrong without active-save writes
+        run: EVIDENCE_DIR=/tmp/w040-legacy node work/items/W-MATH-040-n08-construction-layout/verify_legacy.mjs
+      - name: Protected N11 all choices and legacy saves at four widths
+        run: EVIDENCE_DIR=/tmp/w040-n11 node work/items/W-MATH-038-transformation-groups/verify_app.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: w041-exact-source-evidence
+          path: |
+            /tmp/w041-ci
+            /tmp/w041-r6
+            /tmp/w040-legacy
+            /tmp/w040-n11

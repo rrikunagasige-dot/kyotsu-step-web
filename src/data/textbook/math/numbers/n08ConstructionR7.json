@@ -1,0 +1,3774 @@
+{
+  "schemaVersion": "construction-plan/2",
+  "unitId": "math-numbers-expressions-n08",
+  "revision": 7,
+  "interactions": [
+    {
+      "schemaVersion": "construction-interaction/2",
+      "id": "n08-02-build-r7",
+      "sourceNodeId": "n08-02",
+      "sectionId": "lesson",
+      "sourceRefs": [
+        "n08-02-r5-before-0",
+        "n08-02-interaction-0",
+        "n08-02-result",
+        "n08-02-after"
+      ],
+      "prerequisiteInteractionIds": [
+        "n08-r5-q02-distance-build-r6"
+      ],
+      "parts": [
+        {
+          "id": "n08-02-build-r7::term",
+          "key": "term",
+          "role": "operand",
+          "expected": "a",
+          "prompt": "引き算を整理すると、距離はどの項になりますか。",
+          "feedback": "直前の式で扱っている数や項を、符号を含めて確かめます。",
+          "choices": [
+            {
+              "id": "n08-02::term::choice-01",
+              "value": "a",
+              "expression": {
+                "kind": "symbol",
+                "name": "a"
+              }
+            },
+            {
+              "id": "n08-02::term::choice-02",
+              "value": "-a",
+              "expression": {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "symbol",
+                    "name": "a"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n08-02::term::choice-03",
+              "value": "0",
+              "expression": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              }
+            }
+          ]
+        }
+      ],
+      "partOrder": [
+        "n08-02-build-r7::term"
+      ],
+      "steps": [
+        {
+          "id": "simplify",
+          "rowId": "n08-02-r7-simplify",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-02-build-r7::term"
+          ],
+          "formula": {
+            "left": [
+              {
+                "type": "math",
+                "latex": "a-0"
+              }
+            ],
+            "relation": "=",
+            "right": [
+              {
+                "type": "slot",
+                "id": "n08-02-build-r7::term",
+                "partId": "n08-02-build-r7::term",
+                "interactionRef": "n08-02-build-r7",
+                "role": "operand"
+              }
+            ]
+          }
+        }
+      ],
+      "assumptions": [
+        "a>=0"
+      ],
+      "assertions": [
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "absolute",
+            "argument": {
+              "kind": "symbol",
+              "name": "a"
+            }
+          },
+          "operator": "=",
+          "right": {
+            "kind": "part-key",
+            "key": "term"
+          }
+        }
+      ],
+      "gradingPurpose": "mathematical-value",
+      "activePrompt": "前のa−0を計算し、絶対値を外した式を完成させます。",
+      "nextUseRef": "n08-02-result",
+      "finalConclusion": "|a|=a\\quad(a\\ge0)",
+      "meaningHash": "778f89d83b04f3020ad0744d3ad971aa01584796d0457b6ef55a13319a242419"
+    },
+    {
+      "schemaVersion": "construction-interaction/2",
+      "id": "n08-05-build-r7",
+      "sourceNodeId": "n08-05",
+      "sectionId": "lesson",
+      "sourceRefs": [
+        "n08-05-before",
+        "n08-05-interaction-0",
+        "n08-05-result-0",
+        "n08-05-result-1",
+        "n08-05-after"
+      ],
+      "prerequisiteInteractionIds": [
+        "n08-q05-square-answer",
+        "n08-q05-compare-answer"
+      ],
+      "parts": [
+        {
+          "id": "n08-05-build-r7::relation",
+          "key": "relation",
+          "role": "relation",
+          "expected": "<",
+          "prompt": "二乗した値の比較から、元の二数の大小を決めます。",
+          "feedback": "前の比較や場合分けの結果を、今の二つの数の関係へつなげます。",
+          "choices": [
+            {
+              "id": "n08-05::relation::choice-01",
+              "value": ">"
+            },
+            {
+              "id": "n08-05::relation::choice-02",
+              "value": "="
+            },
+            {
+              "id": "n08-05::relation::choice-03",
+              "value": "<"
+            }
+          ]
+        }
+      ],
+      "partOrder": [
+        "n08-05-build-r7::relation"
+      ],
+      "steps": [
+        {
+          "id": "given-comparison",
+          "rowId": "n08-05-r7-given-comparison",
+          "requiresCorrectParts": [],
+          "partIds": [],
+          "formula": {
+            "left": [
+              {
+                "type": "math",
+                "latex": "5"
+              }
+            ],
+            "relation": "<",
+            "right": [
+              {
+                "type": "math",
+                "latex": "9"
+              }
+            ]
+          }
+        },
+        {
+          "id": "root-comparison",
+          "rowId": "n08-05-r7-root-comparison",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-05-build-r7::relation"
+          ],
+          "formula": {
+            "left": [
+              {
+                "type": "math",
+                "latex": "\\sqrt5 "
+              }
+            ],
+            "relation": "",
+            "relationSlot": {
+              "type": "slot",
+              "id": "n08-05-build-r7::relation",
+              "partId": "n08-05-build-r7::relation",
+              "interactionRef": "n08-05-build-r7",
+              "role": "relation"
+            },
+            "right": [
+              {
+                "type": "math",
+                "latex": " 3"
+              }
+            ]
+          }
+        }
+      ],
+      "assumptions": [
+        "sqrt(5)>=0",
+        "3>=0",
+        "5<9"
+      ],
+      "assertions": [
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "sqrt",
+            "argument": {
+              "kind": "rational",
+              "n": "5",
+              "d": "1"
+            }
+          },
+          "operatorPartKey": "relation",
+          "right": {
+            "kind": "rational",
+            "n": "3",
+            "d": "1"
+          }
+        }
+      ],
+      "gradingPurpose": "mathematical-value",
+      "activePrompt": "二つとも非負です。二乗した値の比較を、元の二つの数の比較へ戻します。",
+      "nextUseRef": "n08-05-result",
+      "finalConclusion": "\\sqrt5<3",
+      "meaningHash": "27cfdd1dafa7cf35dfa558c27f30e8fd41ab2a506a0187b23af916522a04d2d0"
+    },
+    {
+      "schemaVersion": "construction-interaction/2",
+      "id": "n08-q07-rule-build-r7",
+      "sourceNodeId": "n08-q07-rule",
+      "sectionId": "lesson",
+      "sourceRefs": [
+        "n08-q07-rule-before",
+        "n08-q07-rule-interaction-0",
+        "n08-q07-rule-result",
+        "n08-q07-rule-after"
+      ],
+      "prerequisiteInteractionIds": [
+        "n08-06",
+        "n08-02-build-r7",
+        "n08-03-build-r6"
+      ],
+      "parts": [
+        {
+          "id": "n08-q07-rule-build-r7::rule-sign",
+          "key": "rule-sign",
+          "role": "unary-sign",
+          "expected": "-",
+          "prompt": "中身が負の場合の規則を、表の条件と対応させます。",
+          "feedback": "中身や因数の符号を一つずつ確認し、今適用している規則を確かめます。",
+          "choices": [
+            {
+              "id": "n08-q07-rule::rule-sign::choice-01",
+              "value": "-"
+            },
+            {
+              "id": "n08-q07-rule::rule-sign::choice-02",
+              "value": "+"
+            }
+          ]
+        }
+      ],
+      "partOrder": [
+        "n08-q07-rule-build-r7::rule-sign"
+      ],
+      "steps": [
+        {
+          "id": "rule",
+          "rowId": "n08-q07-rule-r7-rule",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-q07-rule-build-r7::rule-sign"
+          ],
+          "formula": {
+            "left": [
+              {
+                "type": "math",
+                "latex": "|u|"
+              }
+            ],
+            "relation": "=",
+            "right": [
+              {
+                "type": "slot",
+                "id": "n08-q07-rule-build-r7::rule-sign",
+                "partId": "n08-q07-rule-build-r7::rule-sign",
+                "interactionRef": "n08-q07-rule-build-r7",
+                "role": "unary-sign"
+              },
+              {
+                "type": "math",
+                "latex": "u\\quad(u<0)"
+              }
+            ]
+          }
+        }
+      ],
+      "assumptions": [
+        "u<0"
+      ],
+      "assertions": [
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "absolute",
+            "argument": {
+              "kind": "symbol",
+              "name": "u"
+            }
+          },
+          "operator": "=",
+          "right": {
+            "kind": "unary",
+            "signPartKey": "rule-sign",
+            "argument": {
+              "kind": "symbol",
+              "name": "u"
+            }
+          }
+        }
+      ],
+      "gradingPurpose": "mathematical-value",
+      "activePrompt": "uは絶対値の中身を表します。中身が負の場合に使う規則を、式の中で完成させます。",
+      "nextUseRef": "n08-q07-rule-result",
+      "finalConclusion": "|u|=-u\\quad(u<0)",
+      "meaningHash": "0abc218895d6a20a107e2d1223b459bb8ba88010f4d3df0d5a1d22757d9e4f76"
+    },
+    {
+      "schemaVersion": "construction-interaction/2",
+      "id": "n08-q07-bracket-build-r7",
+      "sourceNodeId": "n08-q07-bracket",
+      "sectionId": "lesson",
+      "sourceRefs": [
+        "n08-q07-bracket-before",
+        "n08-q07-bracket-interaction-0",
+        "n08-q07-bracket-result",
+        "n08-q07-bracket-after"
+      ],
+      "prerequisiteInteractionIds": [
+        "n08-q07-rule-build-r7"
+      ],
+      "parts": [
+        {
+          "id": "n08-q07-bracket-build-r7::whole-interior",
+          "key": "whole-interior",
+          "role": "bound-subtree-reference",
+          "expected": "n08-q07-root-interior",
+          "prompt": "規則のuが、この元の式のどの範囲に当たるか選びます。",
+          "feedback": "絶対値の縦線で囲まれた範囲と、規則のuの対応を確かめます。",
+          "choices": [
+            {
+              "id": "n08-q07-bracket::whole-interior::choice-01",
+              "value": "n08-q07-root-interior",
+              "subtreeRef": "n08-q07-root-interior",
+              "displayLatex": "\\sqrt5-3"
+            },
+            {
+              "id": "n08-q07-bracket::whole-interior::choice-02",
+              "value": "n08-q07-root-interior/term-1",
+              "subtreeRef": "n08-q07-root-interior/term-1",
+              "displayLatex": "\\sqrt5"
+            },
+            {
+              "id": "n08-q07-bracket::whole-interior::choice-03",
+              "value": "n08-q07-root-interior/term-2",
+              "subtreeRef": "n08-q07-root-interior/term-2",
+              "displayLatex": "-3"
+            }
+          ]
+        }
+      ],
+      "partOrder": [
+        "n08-q07-bracket-build-r7::whole-interior"
+      ],
+      "steps": [
+        {
+          "id": "scope",
+          "rowId": "n08-q07-bracket-r7-scope",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-q07-bracket-build-r7::whole-interior"
+          ],
+          "formula": {
+            "left": [
+              {
+                "type": "math",
+                "latex": "|\\sqrt5-3|"
+              }
+            ],
+            "relation": "=",
+            "right": [
+              {
+                "type": "math",
+                "latex": "-("
+              },
+              {
+                "type": "slot",
+                "id": "n08-q07-bracket-build-r7::whole-interior",
+                "partId": "n08-q07-bracket-build-r7::whole-interior",
+                "interactionRef": "n08-q07-bracket-build-r7",
+                "role": "bound-subtree-reference"
+              },
+              {
+                "type": "math",
+                "latex": ")"
+              }
+            ]
+          }
+        }
+      ],
+      "boundSourceTree": {
+        "rootId": "n08-q07-root-interior",
+        "rootExpression": {
+          "kind": "add",
+          "args": [
+            {
+              "kind": "sqrt",
+              "argument": {
+                "kind": "rational",
+                "n": "5",
+                "d": "1"
+              }
+            },
+            {
+              "kind": "rational",
+              "n": "-3",
+              "d": "1"
+            }
+          ]
+        },
+        "subtreeMap": {
+          "n08-q07-root-interior": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "sqrt",
+                "argument": {
+                  "kind": "rational",
+                  "n": "5",
+                  "d": "1"
+                }
+              },
+              {
+                "kind": "rational",
+                "n": "-3",
+                "d": "1"
+              }
+            ]
+          },
+          "n08-q07-root-interior/term-1": {
+            "kind": "sqrt",
+            "argument": {
+              "kind": "rational",
+              "n": "5",
+              "d": "1"
+            }
+          },
+          "n08-q07-root-interior/term-2": {
+            "kind": "rational",
+            "n": "-3",
+            "d": "1"
+          }
+        },
+        "fingerprintAlgorithm": "tools/textbook/util.mjs hash() on stable AST; fixed at materialization; source value selected by ref only",
+        "sourceASTHash": "7c79210c929ab9bed81a3e6967c0fb1a1382fa27ba067474e792f8f1ee9a0462"
+      },
+      "assumptions": [
+        "sqrt(5)-3<0"
+      ],
+      "assertions": [
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "absolute",
+            "argument": {
+              "kind": "add",
+              "args": [
+                {
+                  "kind": "sqrt",
+                  "argument": {
+                    "kind": "rational",
+                    "n": "5",
+                    "d": "1"
+                  }
+                },
+                {
+                  "kind": "rational",
+                  "n": "-3",
+                  "d": "1"
+                }
+              ]
+            }
+          },
+          "operator": "=",
+          "right": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "-1",
+                "d": "1"
+              },
+              {
+                "kind": "bound-subtree-part",
+                "partKey": "whole-interior"
+              }
+            ]
+          }
+        }
+      ],
+      "gradingPurpose": "source-scope",
+      "activePrompt": "規則のuに、今回の式のどの範囲が対応するかを元の式で指定します。",
+      "nextUseRef": "n08-q07-bracket-result",
+      "finalConclusion": "|\\sqrt5-3|=-(\\sqrt5-3)",
+      "meaningHash": "ee6347dac8abb77c17807ed70af6d9e6f9f91dedd95c95f935166dd034ae0132"
+    },
+    {
+      "schemaVersion": "construction-interaction/2",
+      "id": "n08-q07-distribute-build-r7",
+      "sourceNodeId": "n08-q07-distribute",
+      "sectionId": "lesson",
+      "sourceRefs": [
+        "n08-q07-distribute-r5-before-0",
+        "n08-q07-distribute-interaction",
+        "n08-q07-distribute-result",
+        "n08-q07-distribute-after"
+      ],
+      "prerequisiteInteractionIds": [
+        "n08-q07-bracket-build-r7"
+      ],
+      "parts": [
+        {
+          "id": "n08-q07-distribute-build-r7::coefficient",
+          "key": "coefficient",
+          "role": "coefficient",
+          "expected": "-1",
+          "prompt": "前行の外側の負号を、掛ける数で表します。",
+          "feedback": "外側の符号が中身の値をどのように変えるかを確かめます。",
+          "choices": [
+            {
+              "id": "n08-q07-distribute::coefficient::choice-01",
+              "value": "1",
+              "expression": {
+                "kind": "rational",
+                "n": "1",
+                "d": "1"
+              }
+            },
+            {
+              "id": "n08-q07-distribute::coefficient::choice-02",
+              "value": "0",
+              "expression": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              }
+            },
+            {
+              "id": "n08-q07-distribute::coefficient::choice-03",
+              "value": "-1",
+              "expression": {
+                "kind": "rational",
+                "n": "-1",
+                "d": "1"
+              }
+            }
+          ]
+        },
+        {
+          "id": "n08-q07-distribute-build-r7::second-term",
+          "key": "second-term",
+          "role": "operand",
+          "expected": "-3",
+          "prompt": "元の括弧の第二項を、符号を含めた項として表します。",
+          "feedback": "直前の式で扱っている数や項を、符号を含めて確かめます。",
+          "choices": [
+            {
+              "id": "n08-q07-distribute::second-term::choice-01",
+              "value": "3",
+              "expression": {
+                "kind": "rational",
+                "n": "3",
+                "d": "1"
+              }
+            },
+            {
+              "id": "n08-q07-distribute::second-term::choice-02",
+              "value": "-3",
+              "expression": {
+                "kind": "rational",
+                "n": "-3",
+                "d": "1"
+              }
+            }
+          ]
+        },
+        {
+          "id": "n08-q07-distribute-build-r7::root-sign",
+          "key": "root-sign",
+          "role": "unary-sign",
+          "expected": "-",
+          "prompt": "第一項の積の符号を計算します。",
+          "feedback": "中身や因数の符号を一つずつ確認し、今適用している規則を確かめます。",
+          "choices": [
+            {
+              "id": "n08-q07-distribute::root-sign::choice-01",
+              "value": "-"
+            },
+            {
+              "id": "n08-q07-distribute::root-sign::choice-02",
+              "value": "+"
+            }
+          ]
+        },
+        {
+          "id": "n08-q07-distribute-build-r7::constant",
+          "key": "constant",
+          "role": "rational",
+          "expected": "3",
+          "prompt": "第二項の積を計算します。",
+          "feedback": "直前の演算を、その二つの数の符号も含めて計算し直します。",
+          "choices": [
+            {
+              "id": "n08-q07-distribute::constant::choice-01",
+              "value": "-3",
+              "expression": {
+                "kind": "rational",
+                "n": "-3",
+                "d": "1"
+              }
+            },
+            {
+              "id": "n08-q07-distribute::constant::choice-02",
+              "value": "0",
+              "expression": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              }
+            },
+            {
+              "id": "n08-q07-distribute::constant::choice-03",
+              "value": "3",
+              "expression": {
+                "kind": "rational",
+                "n": "3",
+                "d": "1"
+              }
+            }
+          ]
+        }
+      ],
+      "partOrder": [
+        "n08-q07-distribute-build-r7::coefficient",
+        "n08-q07-distribute-build-r7::second-term",
+        "n08-q07-distribute-build-r7::root-sign",
+        "n08-q07-distribute-build-r7::constant"
+      ],
+      "steps": [
+        {
+          "id": "factor",
+          "rowId": "n08-q07-distribute-r7-factor",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-q07-distribute-build-r7::coefficient"
+          ],
+          "formula": {
+            "left": [
+              {
+                "type": "math",
+                "latex": "-(\\sqrt5-3)"
+              }
+            ],
+            "relation": "=",
+            "right": [
+              {
+                "type": "slot",
+                "id": "n08-q07-distribute-build-r7::coefficient",
+                "partId": "n08-q07-distribute-build-r7::coefficient",
+                "interactionRef": "n08-q07-distribute-build-r7",
+                "role": "coefficient"
+              },
+              {
+                "type": "math",
+                "latex": "(\\sqrt5-3)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "distribute",
+          "rowId": "n08-q07-distribute-r7-distribute",
+          "requiresCorrectParts": [
+            "n08-q07-distribute-build-r7::coefficient"
+          ],
+          "partIds": [
+            "n08-q07-distribute-build-r7::second-term"
+          ],
+          "formula": {
+            "left": [],
+            "relation": "=",
+            "right": [
+              {
+                "type": "mirror",
+                "partId": "n08-q07-distribute-build-r7::coefficient",
+                "context": "factor"
+              },
+              {
+                "type": "math",
+                "latex": "\\sqrt5+"
+              },
+              {
+                "type": "mirror",
+                "partId": "n08-q07-distribute-build-r7::coefficient",
+                "context": "factor"
+              },
+              {
+                "type": "math",
+                "latex": "("
+              },
+              {
+                "type": "slot",
+                "id": "n08-q07-distribute-build-r7::second-term",
+                "partId": "n08-q07-distribute-build-r7::second-term",
+                "interactionRef": "n08-q07-distribute-build-r7",
+                "role": "operand"
+              },
+              {
+                "type": "math",
+                "latex": ")"
+              }
+            ]
+          }
+        },
+        {
+          "id": "products",
+          "rowId": "n08-q07-distribute-r7-products",
+          "requiresCorrectParts": [
+            "n08-q07-distribute-build-r7::coefficient",
+            "n08-q07-distribute-build-r7::second-term"
+          ],
+          "partIds": [
+            "n08-q07-distribute-build-r7::root-sign",
+            "n08-q07-distribute-build-r7::constant"
+          ],
+          "formula": {
+            "left": [],
+            "relation": "=",
+            "right": [
+              {
+                "type": "slot",
+                "id": "n08-q07-distribute-build-r7::root-sign",
+                "partId": "n08-q07-distribute-build-r7::root-sign",
+                "interactionRef": "n08-q07-distribute-build-r7",
+                "role": "unary-sign"
+              },
+              {
+                "type": "math",
+                "latex": "\\sqrt5+"
+              },
+              {
+                "type": "slot",
+                "id": "n08-q07-distribute-build-r7::constant",
+                "partId": "n08-q07-distribute-build-r7::constant",
+                "interactionRef": "n08-q07-distribute-build-r7",
+                "role": "rational"
+              }
+            ]
+          }
+        }
+      ],
+      "assumptions": [],
+      "assertions": [
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "-1",
+                "d": "1"
+              },
+              {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "sqrt",
+                    "argument": {
+                      "kind": "rational",
+                      "n": "5",
+                      "d": "1"
+                    }
+                  },
+                  {
+                    "kind": "rational",
+                    "n": "-3",
+                    "d": "1"
+                  }
+                ]
+              }
+            ]
+          },
+          "operator": "=",
+          "right": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "part-key",
+                "key": "coefficient"
+              },
+              {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "sqrt",
+                    "argument": {
+                      "kind": "rational",
+                      "n": "5",
+                      "d": "1"
+                    }
+                  },
+                  {
+                    "kind": "rational",
+                    "n": "-3",
+                    "d": "1"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "-1",
+                "d": "1"
+              },
+              {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "sqrt",
+                    "argument": {
+                      "kind": "rational",
+                      "n": "5",
+                      "d": "1"
+                    }
+                  },
+                  {
+                    "kind": "rational",
+                    "n": "-3",
+                    "d": "1"
+                  }
+                ]
+              }
+            ]
+          },
+          "operator": "=",
+          "right": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "part-key",
+                    "key": "coefficient"
+                  },
+                  {
+                    "kind": "sqrt",
+                    "argument": {
+                      "kind": "rational",
+                      "n": "5",
+                      "d": "1"
+                    }
+                  }
+                ]
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "part-key",
+                    "key": "coefficient"
+                  },
+                  {
+                    "kind": "part-key",
+                    "key": "second-term"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "-1",
+                "d": "1"
+              },
+              {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "sqrt",
+                    "argument": {
+                      "kind": "rational",
+                      "n": "5",
+                      "d": "1"
+                    }
+                  },
+                  {
+                    "kind": "rational",
+                    "n": "-3",
+                    "d": "1"
+                  }
+                ]
+              }
+            ]
+          },
+          "operator": "=",
+          "right": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "unary",
+                "signPartKey": "root-sign",
+                "argument": {
+                  "kind": "sqrt",
+                  "argument": {
+                    "kind": "rational",
+                    "n": "5",
+                    "d": "1"
+                  }
+                }
+              },
+              {
+                "kind": "part-key",
+                "key": "constant"
+              }
+            ]
+          }
+        }
+      ],
+      "gradingPurpose": "mathematical-value",
+      "activePrompt": "まず、括弧の前の負号を数を掛ける操作で表します。次に分配法則で各項へ掛け、最後に二つの積を計算します。",
+      "nextUseRef": "n08-q07-distribute-result",
+      "finalConclusion": "-\\sqrt5+3",
+      "meaningHash": "ab5bd23d81cf6d092bf148a4f6b612249bfb6c112d7c8bd79dbcbed25db6348b"
+    },
+    {
+      "schemaVersion": "construction-interaction/2",
+      "id": "n08-q08-difference-build-r7",
+      "sourceNodeId": "n08-q08-difference",
+      "sectionId": "lesson",
+      "sourceRefs": [
+        "n08-q08-difference-r5-before-0",
+        "n08-q08-difference-interaction",
+        "n08-q08-difference-result-0",
+        "n08-q08-difference-after"
+      ],
+      "prerequisiteInteractionIds": [
+        "n08-r5-q08-operation-answer"
+      ],
+      "parts": [
+        {
+          "id": "n08-q08-difference-build-r7::zero",
+          "key": "zero",
+          "role": "operand",
+          "expected": "0",
+          "prompt": "右辺の同じ数どうしの差を計算します。",
+          "feedback": "前の行の右辺π−πを計算した値を入れます。選んだ値で不等式が成り立つことと、指定された計算の結果であることは別に確かめます。",
+          "choices": [
+            {
+              "id": "n08-q08-difference::zero::choice-01",
+              "value": "\\pi",
+              "expression": {
+                "kind": "constant",
+                "name": "pi"
+              }
+            },
+            {
+              "id": "n08-q08-difference::zero::choice-02",
+              "value": "0",
+              "expression": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              }
+            },
+            {
+              "id": "n08-q08-difference::zero::choice-03",
+              "value": "3",
+              "expression": {
+                "kind": "rational",
+                "n": "3",
+                "d": "1"
+              }
+            }
+          ]
+        }
+      ],
+      "partOrder": [
+        "n08-q08-difference-build-r7::zero"
+      ],
+      "steps": [
+        {
+          "id": "reduce",
+          "rowId": "n08-q08-difference-r7-reduce",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-q08-difference-build-r7::zero"
+          ],
+          "formula": {
+            "left": [
+              {
+                "type": "math",
+                "latex": "3-\\pi"
+              }
+            ],
+            "relation": "<",
+            "right": [
+              {
+                "type": "slot",
+                "id": "n08-q08-difference-build-r7::zero",
+                "partId": "n08-q08-difference-build-r7::zero",
+                "interactionRef": "n08-q08-difference-build-r7",
+                "role": "operand"
+              }
+            ]
+          }
+        }
+      ],
+      "assumptions": [
+        "pi>3"
+      ],
+      "assertions": [
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "3",
+                "d": "1"
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "constant",
+                    "name": "pi"
+                  }
+                ]
+              }
+            ]
+          },
+          "operator": "<",
+          "right": {
+            "kind": "part-key",
+            "key": "zero"
+          }
+        },
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "constant",
+                "name": "pi"
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "constant",
+                    "name": "pi"
+                  }
+                ]
+              }
+            ]
+          },
+          "operator": "=",
+          "right": {
+            "kind": "part-key",
+            "key": "zero"
+          }
+        }
+      ],
+      "gradingPurpose": "operation-result",
+      "activePrompt": "不等号の向きは前の行から保ち、右辺の同じ数の差を計算します。",
+      "nextUseRef": "n08-q08-difference-result",
+      "finalConclusion": "3-\\pi<0",
+      "meaningHash": "2174fb71792b0ac1fa4270f4eb218932ee9d6d7bf99e4b1c00286bf7a14e84ae"
+    },
+    {
+      "schemaVersion": "construction-interaction/2",
+      "id": "n08-08-build-r7",
+      "sourceNodeId": "n08-08",
+      "sectionId": "lesson",
+      "sourceRefs": [
+        "n08-08-before",
+        "n08-08-interaction",
+        "n08-08-answer",
+        "n08-08-after"
+      ],
+      "prerequisiteInteractionIds": [
+        "n08-q08-difference-build-r7"
+      ],
+      "parts": [
+        {
+          "id": "n08-08-build-r7::sign-word",
+          "key": "sign-word",
+          "role": "meaning",
+          "expected": "負",
+          "prompt": "前行の0との大小関係を、符号の言葉で表します。",
+          "feedback": "0との大小関係を、正・0・負の意味へ読み替えます。",
+          "choices": [
+            {
+              "id": "n08-08::sign-word::choice-01",
+              "value": "正"
+            },
+            {
+              "id": "n08-08::sign-word::choice-02",
+              "value": "0"
+            },
+            {
+              "id": "n08-08::sign-word::choice-03",
+              "value": "符号は決まらない"
+            },
+            {
+              "id": "n08-08::sign-word::choice-04",
+              "value": "負"
+            }
+          ]
+        }
+      ],
+      "partOrder": [
+        "n08-08-build-r7::sign-word"
+      ],
+      "steps": [
+        {
+          "id": "interpret",
+          "rowId": "n08-08-r7-interpret",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-08-build-r7::sign-word"
+          ],
+          "prose": [
+            {
+              "type": "math",
+              "latex": "3-\\pi"
+            },
+            {
+              "type": "text",
+              "text": " の符号は "
+            },
+            {
+              "type": "slot",
+              "id": "n08-08-build-r7::sign-word",
+              "partId": "n08-08-build-r7::sign-word",
+              "interactionRef": "n08-08-build-r7",
+              "role": "meaning"
+            },
+            {
+              "type": "text",
+              "text": " です。"
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        "3-pi<0"
+      ],
+      "assertions": [
+        {
+          "kind": "meaning",
+          "provenFactRef": "n08-q08-difference/result",
+          "expression": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "3",
+                "d": "1"
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "constant",
+                    "name": "pi"
+                  }
+                ]
+              }
+            ]
+          },
+          "valuePartKey": "sign-word",
+          "valueMap": {
+            "0": "zero",
+            "負": "negative",
+            "正": "positive",
+            "符号は決まらない": "undetermined"
+          }
+        }
+      ],
+      "gradingPurpose": "meaning-from-certified-fact",
+      "activePrompt": "中身と0の大小関係を、正・0・負という意味で読み取ります。前の大小関係も根拠として残します。",
+      "nextUseRef": "n08-08-result",
+      "finalConclusion": "3-\\pi<0\\text{、したがって負}",
+      "meaningHash": "b966e8294ff7c742dc0a049bb64bfc7d6fa32d1cec6b2be40a0acd6d92b35680"
+    },
+    {
+      "schemaVersion": "construction-interaction/2",
+      "id": "n08-q09-bracket-build-r7",
+      "sourceNodeId": "n08-q09-bracket",
+      "sectionId": "lesson",
+      "sourceRefs": [
+        "n08-q09-bracket-r5-before-0",
+        "n08-q09-bracket-interaction-0",
+        "n08-q09-bracket-result",
+        "n08-q09-bracket-after"
+      ],
+      "prerequisiteInteractionIds": [
+        "n08-08-build-r7",
+        "n08-02-build-r7",
+        "n08-03-build-r6"
+      ],
+      "parts": [
+        {
+          "id": "n08-q09-bracket-build-r7::whole-interior",
+          "key": "whole-interior",
+          "role": "bound-subtree-reference",
+          "expected": "n08-q09-root-interior",
+          "prompt": "規則のuが、この元の式のどの範囲に当たるか選びます。",
+          "feedback": "絶対値の縦線で囲まれた範囲と、規則のuの対応を確かめます。",
+          "choices": [
+            {
+              "id": "n08-q09-bracket::whole-interior::choice-01",
+              "value": "n08-q09-root-interior/term-1",
+              "subtreeRef": "n08-q09-root-interior/term-1",
+              "displayLatex": "3"
+            },
+            {
+              "id": "n08-q09-bracket::whole-interior::choice-02",
+              "value": "n08-q09-root-interior/term-2",
+              "subtreeRef": "n08-q09-root-interior/term-2",
+              "displayLatex": "-\\pi"
+            },
+            {
+              "id": "n08-q09-bracket::whole-interior::choice-03",
+              "value": "n08-q09-root-interior",
+              "subtreeRef": "n08-q09-root-interior",
+              "displayLatex": "3-\\pi"
+            }
+          ]
+        }
+      ],
+      "partOrder": [
+        "n08-q09-bracket-build-r7::whole-interior"
+      ],
+      "steps": [
+        {
+          "id": "scope",
+          "rowId": "n08-q09-bracket-r7-scope",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-q09-bracket-build-r7::whole-interior"
+          ],
+          "formula": {
+            "left": [
+              {
+                "type": "math",
+                "latex": "|3-\\pi|"
+              }
+            ],
+            "relation": "=",
+            "right": [
+              {
+                "type": "math",
+                "latex": "-("
+              },
+              {
+                "type": "slot",
+                "id": "n08-q09-bracket-build-r7::whole-interior",
+                "partId": "n08-q09-bracket-build-r7::whole-interior",
+                "interactionRef": "n08-q09-bracket-build-r7",
+                "role": "bound-subtree-reference"
+              },
+              {
+                "type": "math",
+                "latex": ")"
+              }
+            ]
+          }
+        }
+      ],
+      "boundSourceTree": {
+        "rootId": "n08-q09-root-interior",
+        "rootExpression": {
+          "kind": "add",
+          "args": [
+            {
+              "kind": "rational",
+              "n": "3",
+              "d": "1"
+            },
+            {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "constant",
+                  "name": "pi"
+                }
+              ]
+            }
+          ]
+        },
+        "subtreeMap": {
+          "n08-q09-root-interior": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "3",
+                "d": "1"
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "constant",
+                    "name": "pi"
+                  }
+                ]
+              }
+            ]
+          },
+          "n08-q09-root-interior/term-1": {
+            "kind": "rational",
+            "n": "3",
+            "d": "1"
+          },
+          "n08-q09-root-interior/term-2": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "-1",
+                "d": "1"
+              },
+              {
+                "kind": "constant",
+                "name": "pi"
+              }
+            ]
+          }
+        },
+        "fingerprintAlgorithm": "tools/textbook/util.mjs hash() on stable AST; fixed at materialization; source value selected by ref only",
+        "sourceASTHash": "07cee2d6d0e9faa9dadd164c7717a3d8c64100ba57dad4f9dc671dc22d5504bd"
+      },
+      "assumptions": [
+        "3-pi<0"
+      ],
+      "assertions": [
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "absolute",
+            "argument": {
+              "kind": "add",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "3",
+                  "d": "1"
+                },
+                {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "constant",
+                      "name": "pi"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "operator": "=",
+          "right": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "-1",
+                "d": "1"
+              },
+              {
+                "kind": "bound-subtree-part",
+                "partKey": "whole-interior"
+              }
+            ]
+          }
+        }
+      ],
+      "gradingPurpose": "source-scope",
+      "activePrompt": "前の例で使った規則を、今回の中身へ当てはめます。負号を作用させる範囲を指定します。",
+      "nextUseRef": "n08-q09-bracket-result",
+      "finalConclusion": "|3-\\pi|=-(3-\\pi)",
+      "meaningHash": "5d763641326c5c48a29bf5c50399031ea9fca86c9e28deaaf7217d2f8d00cac9"
+    },
+    {
+      "schemaVersion": "construction-interaction/2",
+      "id": "n08-q09-distribute-build-r7",
+      "sourceNodeId": "n08-q09-distribute",
+      "sectionId": "lesson",
+      "sourceRefs": [
+        "n08-q09-distribute-r5-before-0",
+        "n08-q09-distribute-interaction",
+        "n08-q09-distribute-result",
+        "n08-q09-distribute-after"
+      ],
+      "prerequisiteInteractionIds": [
+        "n08-q09-bracket-build-r7"
+      ],
+      "parts": [
+        {
+          "id": "n08-q09-distribute-build-r7::coefficient",
+          "key": "coefficient",
+          "role": "coefficient",
+          "expected": "-1",
+          "prompt": "外側の負号を、掛ける数で表します。",
+          "feedback": "外側の符号が中身の値をどのように変えるかを確かめます。",
+          "choices": [
+            {
+              "id": "n08-q09-distribute::coefficient::choice-01",
+              "value": "0",
+              "expression": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              }
+            },
+            {
+              "id": "n08-q09-distribute::coefficient::choice-02",
+              "value": "-1",
+              "expression": {
+                "kind": "rational",
+                "n": "-1",
+                "d": "1"
+              }
+            },
+            {
+              "id": "n08-q09-distribute::coefficient::choice-03",
+              "value": "1",
+              "expression": {
+                "kind": "rational",
+                "n": "1",
+                "d": "1"
+              }
+            }
+          ]
+        },
+        {
+          "id": "n08-q09-distribute-build-r7::second-term",
+          "key": "second-term",
+          "role": "operand",
+          "expected": "-\\pi",
+          "prompt": "括弧の第二項を、符号を含めた項として表します。",
+          "feedback": "直前の式で扱っている数や項を、符号を含めて確かめます。",
+          "choices": [
+            {
+              "id": "n08-q09-distribute::second-term::choice-01",
+              "value": "-\\pi",
+              "expression": {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "constant",
+                    "name": "pi"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "n08-q09-distribute::second-term::choice-02",
+              "value": "\\pi",
+              "expression": {
+                "kind": "constant",
+                "name": "pi"
+              }
+            }
+          ]
+        },
+        {
+          "id": "n08-q09-distribute-build-r7::first-sign",
+          "key": "first-sign",
+          "role": "unary-sign",
+          "expected": "-",
+          "prompt": "第一項の積の符号を計算します。",
+          "feedback": "中身や因数の符号を一つずつ確認し、今適用している規則を確かめます。",
+          "choices": [
+            {
+              "id": "n08-q09-distribute::first-sign::choice-01",
+              "value": "+"
+            },
+            {
+              "id": "n08-q09-distribute::first-sign::choice-02",
+              "value": "-"
+            }
+          ]
+        },
+        {
+          "id": "n08-q09-distribute-build-r7::joining-operation",
+          "key": "joining-operation",
+          "role": "binary-operation",
+          "expected": "+",
+          "prompt": "第二項の積の符号を計算し、二項をつなぎます。",
+          "feedback": "演算の意味を確かめます。二乗と二倍、項の符号と項を結ぶ演算を区別します。",
+          "choices": [
+            {
+              "id": "n08-q09-distribute::joining-operation::choice-01",
+              "value": "+"
+            },
+            {
+              "id": "n08-q09-distribute::joining-operation::choice-02",
+              "value": "-"
+            }
+          ]
+        }
+      ],
+      "partOrder": [
+        "n08-q09-distribute-build-r7::coefficient",
+        "n08-q09-distribute-build-r7::second-term",
+        "n08-q09-distribute-build-r7::first-sign",
+        "n08-q09-distribute-build-r7::joining-operation"
+      ],
+      "steps": [
+        {
+          "id": "factor",
+          "rowId": "n08-q09-distribute-r7-factor",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-q09-distribute-build-r7::coefficient"
+          ],
+          "formula": {
+            "left": [
+              {
+                "type": "math",
+                "latex": "-(3-\\pi)"
+              }
+            ],
+            "relation": "=",
+            "right": [
+              {
+                "type": "slot",
+                "id": "n08-q09-distribute-build-r7::coefficient",
+                "partId": "n08-q09-distribute-build-r7::coefficient",
+                "interactionRef": "n08-q09-distribute-build-r7",
+                "role": "coefficient"
+              },
+              {
+                "type": "math",
+                "latex": "(3-\\pi)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "distribute",
+          "rowId": "n08-q09-distribute-r7-distribute",
+          "requiresCorrectParts": [
+            "n08-q09-distribute-build-r7::coefficient"
+          ],
+          "partIds": [
+            "n08-q09-distribute-build-r7::second-term"
+          ],
+          "formula": {
+            "left": [],
+            "relation": "=",
+            "right": [
+              {
+                "type": "mirror",
+                "partId": "n08-q09-distribute-build-r7::coefficient",
+                "context": "factor"
+              },
+              {
+                "type": "math",
+                "latex": "3+"
+              },
+              {
+                "type": "mirror",
+                "partId": "n08-q09-distribute-build-r7::coefficient",
+                "context": "factor"
+              },
+              {
+                "type": "math",
+                "latex": "("
+              },
+              {
+                "type": "slot",
+                "id": "n08-q09-distribute-build-r7::second-term",
+                "partId": "n08-q09-distribute-build-r7::second-term",
+                "interactionRef": "n08-q09-distribute-build-r7",
+                "role": "operand"
+              },
+              {
+                "type": "math",
+                "latex": ")"
+              }
+            ]
+          }
+        },
+        {
+          "id": "products",
+          "rowId": "n08-q09-distribute-r7-products",
+          "requiresCorrectParts": [
+            "n08-q09-distribute-build-r7::coefficient",
+            "n08-q09-distribute-build-r7::second-term"
+          ],
+          "partIds": [
+            "n08-q09-distribute-build-r7::first-sign",
+            "n08-q09-distribute-build-r7::joining-operation"
+          ],
+          "formula": {
+            "left": [],
+            "relation": "=",
+            "right": [
+              {
+                "type": "slot",
+                "id": "n08-q09-distribute-build-r7::first-sign",
+                "partId": "n08-q09-distribute-build-r7::first-sign",
+                "interactionRef": "n08-q09-distribute-build-r7",
+                "role": "unary-sign"
+              },
+              {
+                "type": "math",
+                "latex": "3 "
+              },
+              {
+                "type": "slot",
+                "id": "n08-q09-distribute-build-r7::joining-operation",
+                "partId": "n08-q09-distribute-build-r7::joining-operation",
+                "interactionRef": "n08-q09-distribute-build-r7",
+                "role": "binary-operation"
+              },
+              {
+                "type": "math",
+                "latex": "\\pi"
+              }
+            ]
+          }
+        }
+      ],
+      "assumptions": [],
+      "assertions": [
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "-1",
+                "d": "1"
+              },
+              {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "3",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "-1",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "constant",
+                        "name": "pi"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "operator": "=",
+          "right": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "part-key",
+                "key": "coefficient"
+              },
+              {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "3",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "-1",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "constant",
+                        "name": "pi"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "-1",
+                "d": "1"
+              },
+              {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "3",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "-1",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "constant",
+                        "name": "pi"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "operator": "=",
+          "right": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "part-key",
+                    "key": "coefficient"
+                  },
+                  {
+                    "kind": "rational",
+                    "n": "3",
+                    "d": "1"
+                  }
+                ]
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "part-key",
+                    "key": "coefficient"
+                  },
+                  {
+                    "kind": "part-key",
+                    "key": "second-term"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "-1",
+                "d": "1"
+              },
+              {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "3",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "-1",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "constant",
+                        "name": "pi"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "operator": "=",
+          "right": {
+            "kind": "binary",
+            "operationPartKey": "joining-operation",
+            "left": {
+              "kind": "unary",
+              "signPartKey": "first-sign",
+              "argument": {
+                "kind": "rational",
+                "n": "3",
+                "d": "1"
+              }
+            },
+            "right": {
+              "kind": "constant",
+              "name": "pi"
+            }
+          }
+        }
+      ],
+      "gradingPurpose": "mathematical-value",
+      "activePrompt": "前の例の順序で、掛ける数、分配する相手、二つの積を順に決めます。",
+      "nextUseRef": "n08-q09-distribute-result",
+      "finalConclusion": "-3+\\pi",
+      "meaningHash": "09a1a17dbb0e78dacc33803dccf8b0f9c15e600d09a0cff0f6ead94a74047eae"
+    },
+    {
+      "schemaVersion": "construction-interaction/2",
+      "id": "n08-q11-positive-build-r7",
+      "sourceNodeId": "n08-q11-positive",
+      "sectionId": "lesson",
+      "sourceRefs": [
+        "n08-q11-positive-before",
+        "n08-q11-positive-interaction-0",
+        "n08-q11-positive-result-0",
+        "n08-q11-positive-result-1",
+        "n08-q11-positive-after"
+      ],
+      "prerequisiteInteractionIds": [
+        "n08-02-build-r7",
+        "n08-03-build-r6"
+      ],
+      "parts": [
+        {
+          "id": "n08-q11-positive-build-r7::opposite-relation",
+          "key": "opposite-relation",
+          "role": "relation",
+          "expected": "<",
+          "prompt": "aが正のとき、反対の数を0と比べます。",
+          "feedback": "前の比較や場合分けの結果を、今の二つの数の関係へつなげます。",
+          "choices": [
+            {
+              "id": "n08-q11-positive::opposite-relation::choice-01",
+              "value": "<"
+            },
+            {
+              "id": "n08-q11-positive::opposite-relation::choice-02",
+              "value": ">"
+            },
+            {
+              "id": "n08-q11-positive::opposite-relation::choice-03",
+              "value": "="
+            }
+          ]
+        },
+        {
+          "id": "n08-q11-positive-build-r7::rule-sign",
+          "key": "rule-sign",
+          "role": "unary-sign",
+          "expected": "-",
+          "prompt": "今の中身−aの符号に合う規則を使います。",
+          "feedback": "中身や因数の符号を一つずつ確認し、今適用している規則を確かめます。",
+          "choices": [
+            {
+              "id": "n08-q11-positive::rule-sign::choice-01",
+              "value": "-"
+            },
+            {
+              "id": "n08-q11-positive::rule-sign::choice-02",
+              "value": "+"
+            }
+          ]
+        },
+        {
+          "id": "n08-q11-positive-build-r7::result-sign",
+          "key": "result-sign",
+          "role": "unary-sign",
+          "expected": "+",
+          "prompt": "外側の負号を計算します。",
+          "feedback": "中身や因数の符号を一つずつ確認し、今適用している規則を確かめます。",
+          "choices": [
+            {
+              "id": "n08-q11-positive::result-sign::choice-01",
+              "value": "-"
+            },
+            {
+              "id": "n08-q11-positive::result-sign::choice-02",
+              "value": "+"
+            }
+          ]
+        }
+      ],
+      "partOrder": [
+        "n08-q11-positive-build-r7::opposite-relation",
+        "n08-q11-positive-build-r7::rule-sign",
+        "n08-q11-positive-build-r7::result-sign"
+      ],
+      "steps": [
+        {
+          "id": "condition",
+          "rowId": "n08-q11-positive-r7-condition",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-q11-positive-build-r7::opposite-relation"
+          ],
+          "formula": {
+            "left": [
+              {
+                "type": "math",
+                "latex": "-a "
+              }
+            ],
+            "relation": "",
+            "relationSlot": {
+              "type": "slot",
+              "id": "n08-q11-positive-build-r7::opposite-relation",
+              "partId": "n08-q11-positive-build-r7::opposite-relation",
+              "interactionRef": "n08-q11-positive-build-r7",
+              "role": "relation"
+            },
+            "right": [
+              {
+                "type": "math",
+                "latex": " 0"
+              }
+            ]
+          }
+        },
+        {
+          "id": "apply",
+          "rowId": "n08-q11-positive-r7-apply",
+          "requiresCorrectParts": [
+            "n08-q11-positive-build-r7::opposite-relation"
+          ],
+          "partIds": [
+            "n08-q11-positive-build-r7::rule-sign"
+          ],
+          "formula": {
+            "left": [
+              {
+                "type": "math",
+                "latex": "|-a|"
+              }
+            ],
+            "relation": "=",
+            "right": [
+              {
+                "type": "slot",
+                "id": "n08-q11-positive-build-r7::rule-sign",
+                "partId": "n08-q11-positive-build-r7::rule-sign",
+                "interactionRef": "n08-q11-positive-build-r7",
+                "role": "unary-sign"
+              },
+              {
+                "type": "math",
+                "latex": "(-a)"
+              }
+            ]
+          }
+        },
+        {
+          "id": "calculate",
+          "rowId": "n08-q11-positive-r7-calculate",
+          "requiresCorrectParts": [
+            "n08-q11-positive-build-r7::opposite-relation",
+            "n08-q11-positive-build-r7::rule-sign"
+          ],
+          "partIds": [
+            "n08-q11-positive-build-r7::result-sign"
+          ],
+          "formula": {
+            "left": [],
+            "relation": "=",
+            "right": [
+              {
+                "type": "slot",
+                "id": "n08-q11-positive-build-r7::result-sign",
+                "partId": "n08-q11-positive-build-r7::result-sign",
+                "interactionRef": "n08-q11-positive-build-r7",
+                "role": "unary-sign"
+              },
+              {
+                "type": "math",
+                "latex": "a"
+              }
+            ]
+          }
+        }
+      ],
+      "assumptions": [
+        "a>0"
+      ],
+      "assertions": [
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "-1",
+                "d": "1"
+              },
+              {
+                "kind": "symbol",
+                "name": "a"
+              }
+            ]
+          },
+          "operatorPartKey": "opposite-relation",
+          "right": {
+            "kind": "rational",
+            "n": "0",
+            "d": "1"
+          }
+        },
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "absolute",
+            "argument": {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "symbol",
+                  "name": "a"
+                }
+              ]
+            }
+          },
+          "operator": "=",
+          "right": {
+            "kind": "unary",
+            "signPartKey": "rule-sign",
+            "argument": {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "symbol",
+                  "name": "a"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "absolute",
+            "argument": {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "symbol",
+                  "name": "a"
+                }
+              ]
+            }
+          },
+          "operator": "=",
+          "right": {
+            "kind": "unary",
+            "signPartKey": "result-sign",
+            "argument": {
+              "kind": "symbol",
+              "name": "a"
+            }
+          }
+        }
+      ],
+      "gradingPurpose": "mathematical-value",
+      "activePrompt": "a>0の場合に、反対の数−aを0と比べます。次に、その符号に合う絶対値の規則を使い、最後に計算します。",
+      "nextUseRef": "n08-q11-positive-result",
+      "finalConclusion": "|a|=a,\\quad|-a|=a\\quad(a>0)",
+      "meaningHash": "03a115afba54d888985d8e5898a8907c0d82ab9c4cdad56f54f2b35507c15bee"
+    },
+    {
+      "schemaVersion": "construction-interaction/2",
+      "id": "n08-q11-negative-build-r7",
+      "sourceNodeId": "n08-q11-negative",
+      "sectionId": "lesson",
+      "sourceRefs": [
+        "n08-q11-negative-before",
+        "n08-q11-negative-interaction-0",
+        "n08-q11-negative-result-0",
+        "n08-q11-negative-result-1",
+        "n08-q11-negative-after"
+      ],
+      "prerequisiteInteractionIds": [
+        "n08-02-build-r7",
+        "n08-03-build-r6"
+      ],
+      "parts": [
+        {
+          "id": "n08-q11-negative-build-r7::opposite-relation",
+          "key": "opposite-relation",
+          "role": "relation",
+          "expected": ">",
+          "prompt": "aが負のとき、反対の数を0と比べます。",
+          "feedback": "前の比較や場合分けの結果を、今の二つの数の関係へつなげます。",
+          "choices": [
+            {
+              "id": "n08-q11-negative::opposite-relation::choice-01",
+              "value": ">"
+            },
+            {
+              "id": "n08-q11-negative::opposite-relation::choice-02",
+              "value": "<"
+            },
+            {
+              "id": "n08-q11-negative::opposite-relation::choice-03",
+              "value": "="
+            }
+          ]
+        },
+        {
+          "id": "n08-q11-negative-build-r7::distance-term",
+          "key": "distance-term",
+          "role": "operand",
+          "expected": "-a",
+          "prompt": "今の中身−aに合う規則を使い、距離を表します。",
+          "feedback": "直前の式で扱っている数や項を、符号を含めて確かめます。",
+          "choices": [
+            {
+              "id": "n08-q11-negative::distance-term::choice-01",
+              "value": "a",
+              "expression": {
+                "kind": "symbol",
+                "name": "a"
+              }
+            },
+            {
+              "id": "n08-q11-negative::distance-term::choice-02",
+              "value": "0",
+              "expression": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              }
+            },
+            {
+              "id": "n08-q11-negative::distance-term::choice-03",
+              "value": "-a",
+              "expression": {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "symbol",
+                    "name": "a"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "partOrder": [
+        "n08-q11-negative-build-r7::opposite-relation",
+        "n08-q11-negative-build-r7::distance-term"
+      ],
+      "steps": [
+        {
+          "id": "condition",
+          "rowId": "n08-q11-negative-r7-condition",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-q11-negative-build-r7::opposite-relation"
+          ],
+          "formula": {
+            "left": [
+              {
+                "type": "math",
+                "latex": "-a "
+              }
+            ],
+            "relation": "",
+            "relationSlot": {
+              "type": "slot",
+              "id": "n08-q11-negative-build-r7::opposite-relation",
+              "partId": "n08-q11-negative-build-r7::opposite-relation",
+              "interactionRef": "n08-q11-negative-build-r7",
+              "role": "relation"
+            },
+            "right": [
+              {
+                "type": "math",
+                "latex": " 0"
+              }
+            ]
+          }
+        },
+        {
+          "id": "apply",
+          "rowId": "n08-q11-negative-r7-apply",
+          "requiresCorrectParts": [
+            "n08-q11-negative-build-r7::opposite-relation"
+          ],
+          "partIds": [
+            "n08-q11-negative-build-r7::distance-term"
+          ],
+          "formula": {
+            "left": [
+              {
+                "type": "math",
+                "latex": "|-a|"
+              }
+            ],
+            "relation": "=",
+            "right": [
+              {
+                "type": "slot",
+                "id": "n08-q11-negative-build-r7::distance-term",
+                "partId": "n08-q11-negative-build-r7::distance-term",
+                "interactionRef": "n08-q11-negative-build-r7",
+                "role": "operand"
+              }
+            ]
+          }
+        }
+      ],
+      "assumptions": [
+        "a<0"
+      ],
+      "assertions": [
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "-1",
+                "d": "1"
+              },
+              {
+                "kind": "symbol",
+                "name": "a"
+              }
+            ]
+          },
+          "operatorPartKey": "opposite-relation",
+          "right": {
+            "kind": "rational",
+            "n": "0",
+            "d": "1"
+          }
+        },
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "absolute",
+            "argument": {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "symbol",
+                  "name": "a"
+                }
+              ]
+            }
+          },
+          "operator": "=",
+          "right": {
+            "kind": "part-key",
+            "key": "distance-term"
+          }
+        }
+      ],
+      "gradingPurpose": "mathematical-value",
+      "activePrompt": "a<0の場合も、まず反対の数−aの符号を確かめてから、その点の原点からの距離を表します。",
+      "nextUseRef": "n08-q11-negative-result",
+      "finalConclusion": "|a|=-a,\\quad|-a|=-a\\quad(a<0)",
+      "meaningHash": "f8bdbb9e0066e235cb7d18542c22af67af4b6a1334510944be173e958cabf58e"
+    },
+    {
+      "schemaVersion": "construction-interaction/2",
+      "id": "n08-11-build-r7",
+      "sourceNodeId": "n08-11",
+      "sectionId": "lesson",
+      "sourceRefs": [
+        "n08-11-before",
+        "n08-11-interaction-0",
+        "n08-11-result",
+        "n08-11-after"
+      ],
+      "prerequisiteInteractionIds": [
+        "n08-q11-positive-build-r7",
+        "n08-q11-negative-build-r7",
+        "n08-q01-left-answer"
+      ],
+      "parts": [
+        {
+          "id": "n08-11-build-r7::relation",
+          "key": "relation",
+          "role": "relation",
+          "expected": "=",
+          "prompt": "正・負・0の場合の結果に共通する関係をまとめます。",
+          "feedback": "前の比較や場合分けの結果を、今の二つの数の関係へつなげます。",
+          "choices": [
+            {
+              "id": "n08-11::relation::choice-01",
+              "value": "="
+            },
+            {
+              "id": "n08-11::relation::choice-02",
+              "value": ">"
+            },
+            {
+              "id": "n08-11::relation::choice-03",
+              "value": "<"
+            }
+          ]
+        }
+      ],
+      "partOrder": [
+        "n08-11-build-r7::relation"
+      ],
+      "steps": [
+        {
+          "id": "conclude",
+          "rowId": "n08-11-r7-conclude",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-11-build-r7::relation"
+          ],
+          "formula": {
+            "left": [
+              {
+                "type": "math",
+                "latex": "|a| "
+              }
+            ],
+            "relation": "",
+            "relationSlot": {
+              "type": "slot",
+              "id": "n08-11-build-r7::relation",
+              "partId": "n08-11-build-r7::relation",
+              "interactionRef": "n08-11-build-r7",
+              "role": "relation"
+            },
+            "right": [
+              {
+                "type": "math",
+                "latex": " |-a|"
+              }
+            ]
+          }
+        }
+      ],
+      "assumptions": [
+        "a is real"
+      ],
+      "assertions": [
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "absolute",
+            "argument": {
+              "kind": "symbol",
+              "name": "a"
+            }
+          },
+          "operatorPartKey": "relation",
+          "right": {
+            "kind": "absolute",
+            "argument": {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "symbol",
+                  "name": "a"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "gradingPurpose": "mathematical-value",
+      "activePrompt": "正・負・0の三つの結果をまとめ、元の数と反対の数の絶対値の関係を表します。",
+      "nextUseRef": "n08-11-result",
+      "finalConclusion": "|a|=|-a|",
+      "meaningHash": "8109d49040694020cb7206d393afd57c6715c7d5899a45ff0b146f61a76a52c1"
+    },
+    {
+      "schemaVersion": "construction-interaction/2",
+      "id": "n08-q12-nonnegative-build-r7",
+      "sourceNodeId": "n08-q12-nonnegative",
+      "sectionId": "lesson",
+      "sourceRefs": [
+        "n08-q12-nonnegative-before",
+        "n08-q12-nonnegative-interaction-0",
+        "n08-q12-nonnegative-result",
+        "n08-q12-nonnegative-after"
+      ],
+      "prerequisiteInteractionIds": [
+        "n08-02-build-r7",
+        "n08-03-build-r6",
+        "n08-q05-square-answer"
+      ],
+      "parts": [
+        {
+          "id": "n08-q12-nonnegative-build-r7::square-operation",
+          "key": "square-operation",
+          "role": "binary-operation",
+          "expected": "\\times",
+          "prompt": "二乗を、同じ数二つの計算として表します。",
+          "feedback": "演算の意味を確かめます。二乗と二倍、項の符号と項を結ぶ演算を区別します。",
+          "choices": [
+            {
+              "id": "n08-q12-nonnegative::square-operation::choice-01",
+              "value": "\\times"
+            },
+            {
+              "id": "n08-q12-nonnegative::square-operation::choice-02",
+              "value": "+"
+            },
+            {
+              "id": "n08-q12-nonnegative::square-operation::choice-03",
+              "value": "-"
+            }
+          ]
+        }
+      ],
+      "partOrder": [
+        "n08-q12-nonnegative-build-r7::square-operation"
+      ],
+      "steps": [
+        {
+          "id": "square",
+          "rowId": "n08-q12-nonnegative-r7-square",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-q12-nonnegative-build-r7::square-operation"
+          ],
+          "formula": {
+            "left": [
+              {
+                "type": "math",
+                "latex": "|a|^2"
+              }
+            ],
+            "relation": "=",
+            "right": [
+              {
+                "type": "math",
+                "latex": "a "
+              },
+              {
+                "type": "slot",
+                "id": "n08-q12-nonnegative-build-r7::square-operation",
+                "partId": "n08-q12-nonnegative-build-r7::square-operation",
+                "interactionRef": "n08-q12-nonnegative-build-r7",
+                "role": "binary-operation"
+              },
+              {
+                "type": "math",
+                "latex": " a"
+              }
+            ]
+          }
+        },
+        {
+          "id": "canonical",
+          "rowId": "n08-q12-nonnegative-r7-canonical",
+          "requiresCorrectParts": [
+            "n08-q12-nonnegative-build-r7::square-operation"
+          ],
+          "partIds": [],
+          "formula": {
+            "left": [],
+            "relation": "=",
+            "right": [
+              {
+                "type": "math",
+                "latex": "a^2"
+              }
+            ]
+          }
+        }
+      ],
+      "assumptions": [
+        "a>=0"
+      ],
+      "assertions": [
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "power",
+            "base": {
+              "kind": "absolute",
+              "argument": {
+                "kind": "symbol",
+                "name": "a"
+              }
+            },
+            "exponent": 2
+          },
+          "operator": "=",
+          "right": {
+            "kind": "binary",
+            "operationPartKey": "square-operation",
+            "left": {
+              "kind": "symbol",
+              "name": "a"
+            },
+            "right": {
+              "kind": "symbol",
+              "name": "a"
+            }
+          }
+        }
+      ],
+      "gradingPurpose": "mathematical-value",
+      "activePrompt": "a≥0なので|a|=aです。二乗の意味を、同じ数二つの計算で表し、式を完成させます。",
+      "nextUseRef": "n08-q12-nonnegative-result",
+      "finalConclusion": "|a|^2=a^2\\quad(a\\ge0)",
+      "meaningHash": "a961a26717788c919a9ba1695e625e57976bfe2acb8581646ed2ffbd4d1eca40"
+    },
+    {
+      "schemaVersion": "construction-interaction/2",
+      "id": "n08-q12-negative-build-r7",
+      "sourceNodeId": "n08-q12-negative",
+      "sectionId": "lesson",
+      "sourceRefs": [
+        "n08-q12-negative-before",
+        "n08-q12-negative-interaction",
+        "n08-q12-negative-result",
+        "n08-q12-negative-after"
+      ],
+      "prerequisiteInteractionIds": [
+        "n08-02-build-r7",
+        "n08-03-build-r6",
+        "n08-q12-nonnegative-build-r7"
+      ],
+      "parts": [
+        {
+          "id": "n08-q12-negative-build-r7::second-factor",
+          "key": "second-factor",
+          "role": "operand",
+          "expected": "-a",
+          "prompt": "括弧全体の二乗を、同じ因子二つの積へ直します。",
+          "feedback": "直前の式で扱っている数や項を、符号を含めて確かめます。",
+          "choices": [
+            {
+              "id": "n08-q12-negative::second-factor::choice-01",
+              "value": "a",
+              "expression": {
+                "kind": "symbol",
+                "name": "a"
+              }
+            },
+            {
+              "id": "n08-q12-negative::second-factor::choice-02",
+              "value": "a^2",
+              "expression": {
+                "kind": "power",
+                "base": {
+                  "kind": "symbol",
+                  "name": "a"
+                },
+                "exponent": 2
+              }
+            },
+            {
+              "id": "n08-q12-negative::second-factor::choice-03",
+              "value": "-a",
+              "expression": {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "symbol",
+                    "name": "a"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "n08-q12-negative-build-r7::result-sign",
+          "key": "result-sign",
+          "role": "unary-sign",
+          "expected": "+",
+          "prompt": "二つの負号を掛けた結果の符号を決めます。",
+          "feedback": "中身や因数の符号を一つずつ確認し、今適用している規則を確かめます。",
+          "choices": [
+            {
+              "id": "n08-q12-negative::result-sign::choice-01",
+              "value": "-"
+            },
+            {
+              "id": "n08-q12-negative::result-sign::choice-02",
+              "value": "+"
+            }
+          ]
+        }
+      ],
+      "partOrder": [
+        "n08-q12-negative-build-r7::second-factor",
+        "n08-q12-negative-build-r7::result-sign"
+      ],
+      "steps": [
+        {
+          "id": "given-case",
+          "rowId": "n08-q12-negative-r7-given-case",
+          "requiresCorrectParts": [],
+          "partIds": [],
+          "formula": {
+            "left": [
+              {
+                "type": "math",
+                "latex": "|a|^2"
+              }
+            ],
+            "relation": "=",
+            "right": [
+              {
+                "type": "math",
+                "latex": "(-a)^2"
+              }
+            ]
+          }
+        },
+        {
+          "id": "expand",
+          "rowId": "n08-q12-negative-r7-expand",
+          "requiresCorrectParts": [],
+          "partIds": [
+            "n08-q12-negative-build-r7::second-factor"
+          ],
+          "formula": {
+            "left": [],
+            "relation": "=",
+            "right": [
+              {
+                "type": "math",
+                "latex": "(-a)("
+              },
+              {
+                "type": "slot",
+                "id": "n08-q12-negative-build-r7::second-factor",
+                "partId": "n08-q12-negative-build-r7::second-factor",
+                "interactionRef": "n08-q12-negative-build-r7",
+                "role": "operand"
+              },
+              {
+                "type": "math",
+                "latex": ")"
+              }
+            ]
+          }
+        },
+        {
+          "id": "product",
+          "rowId": "n08-q12-negative-r7-product",
+          "requiresCorrectParts": [
+            "n08-q12-negative-build-r7::second-factor"
+          ],
+          "partIds": [
+            "n08-q12-negative-build-r7::result-sign"
+          ],
+          "formula": {
+            "left": [],
+            "relation": "=",
+            "right": [
+              {
+                "type": "slot",
+                "id": "n08-q12-negative-build-r7::result-sign",
+                "partId": "n08-q12-negative-build-r7::result-sign",
+                "interactionRef": "n08-q12-negative-build-r7",
+                "role": "unary-sign"
+              },
+              {
+                "type": "math",
+                "latex": "a^2"
+              }
+            ]
+          }
+        }
+      ],
+      "assumptions": [
+        "a<0"
+      ],
+      "assertions": [
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "power",
+            "base": {
+              "kind": "absolute",
+              "argument": {
+                "kind": "symbol",
+                "name": "a"
+              }
+            },
+            "exponent": 2
+          },
+          "operator": "=",
+          "right": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "symbol",
+                    "name": "a"
+                  }
+                ]
+              },
+              {
+                "kind": "part-key",
+                "key": "second-factor"
+              }
+            ]
+          }
+        },
+        {
+          "kind": "relation",
+          "left": {
+            "kind": "power",
+            "base": {
+              "kind": "absolute",
+              "argument": {
+                "kind": "symbol",
+                "name": "a"
+              }
+            },
+            "exponent": 2
+          },
+          "operator": "=",
+          "right": {
+            "kind": "unary",
+            "signPartKey": "result-sign",
+            "argument": {
+              "kind": "power",
+              "base": {
+                "kind": "symbol",
+                "name": "a"
+              },
+              "exponent": 2
+            }
+          }
+        }
+      ],
+      "gradingPurpose": "mathematical-value",
+      "activePrompt": "a<0なので|a|=−aです。両辺を二乗した式を、同じ数を二つ掛ける形へ直してから計算します。",
+      "nextUseRef": "n08-q12-negative-result",
+      "finalConclusion": "|a|^2=a^2\\quad(a<0)",
+      "meaningHash": "414619b066e65862255627155eecbac9a0f3820cbdd727dabbb738552a307325"
+    }
+  ],
+  "sameMeaningInteractions": [
+    {
+      "id": "n08-r5-q02-distance-build-r6",
+      "sourceNodeId": "n08-r5-q02-distance",
+      "sourceRefs": [
+        "n08-r5-q02-distance-before",
+        "n08-r5-q02-distance-interaction-0",
+        "n08-r5-q02-distance-result-formula-0",
+        "n08-r5-q02-distance-after"
+      ],
+      "prerequisiteInteractionIds": [],
+      "learnerDecision": "a≥0。右の座標−左の座標。",
+      "nextUseRef": "n08-r5-q02-distance-result",
+      "activePrompt": "右側の点と原点の座標を、それぞれ引き算の位置へ入れます。",
+      "parts": [
+        {
+          "id": "n08-r5-q02-distance-build-r6-right",
+          "role": "coordinate",
+          "expected": "a",
+          "choices": [
+            {
+              "value": "a",
+              "expression": {
+                "kind": "symbol",
+                "name": "a"
+              }
+            },
+            {
+              "value": "0",
+              "expression": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              }
+            }
+          ]
+        },
+        {
+          "id": "n08-r5-q02-distance-build-r6-left",
+          "role": "coordinate",
+          "expected": "0",
+          "choices": [
+            {
+              "value": "a",
+              "expression": {
+                "kind": "symbol",
+                "name": "a"
+              }
+            },
+            {
+              "value": "0",
+              "expression": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              }
+            }
+          ]
+        }
+      ],
+      "assembly": {
+        "kind": "relation",
+        "operator": "=",
+        "left": {
+          "kind": "absolute",
+          "argument": {
+            "kind": "symbol",
+            "name": "a"
+          }
+        },
+        "right": {
+          "kind": "binary",
+          "left": {
+            "kind": "part",
+            "partId": "n08-r5-q02-distance-build-r6-right"
+          },
+          "operation": "-",
+          "right": {
+            "kind": "part",
+            "partId": "n08-r5-q02-distance-build-r6-left"
+          }
+        }
+      },
+      "expectedStatement": {
+        "kind": "relation",
+        "operator": "=",
+        "left": {
+          "kind": "absolute",
+          "argument": {
+            "kind": "symbol",
+            "name": "a"
+          }
+        },
+        "right": {
+          "kind": "add",
+          "args": [
+            {
+              "kind": "symbol",
+              "name": "a"
+            },
+            {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "rational",
+                  "n": "0",
+                  "d": "1"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "gradingPurpose": "mathematical-value",
+      "sectionId": "lesson"
+    },
+    {
+      "id": "n08-q03-order-build-r6",
+      "sourceNodeId": "n08-q03-order",
+      "sourceRefs": [
+        "n08-q03-order-before",
+        "n08-q03-order-interaction-0",
+        "n08-q03-order-result",
+        "n08-q03-order-after"
+      ],
+      "prerequisiteInteractionIds": [],
+      "learnerDecision": "a<0。右の座標−左の座標。",
+      "nextUseRef": "n08-q03-order-result",
+      "activePrompt": "今回は原点が右側です。二つの座標を、引き算の位置へ入れます。",
+      "parts": [
+        {
+          "id": "n08-q03-order-build-r6-right",
+          "role": "coordinate",
+          "expected": "0",
+          "choices": [
+            {
+              "value": "0",
+              "expression": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              }
+            },
+            {
+              "value": "a",
+              "expression": {
+                "kind": "symbol",
+                "name": "a"
+              }
+            }
+          ]
+        },
+        {
+          "id": "n08-q03-order-build-r6-left",
+          "role": "coordinate",
+          "expected": "a",
+          "choices": [
+            {
+              "value": "0",
+              "expression": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              }
+            },
+            {
+              "value": "a",
+              "expression": {
+                "kind": "symbol",
+                "name": "a"
+              }
+            }
+          ]
+        }
+      ],
+      "assembly": {
+        "kind": "relation",
+        "operator": "=",
+        "left": {
+          "kind": "absolute",
+          "argument": {
+            "kind": "symbol",
+            "name": "a"
+          }
+        },
+        "right": {
+          "kind": "binary",
+          "left": {
+            "kind": "part",
+            "partId": "n08-q03-order-build-r6-right"
+          },
+          "operation": "-",
+          "right": {
+            "kind": "part",
+            "partId": "n08-q03-order-build-r6-left"
+          }
+        }
+      },
+      "expectedStatement": {
+        "kind": "relation",
+        "operator": "=",
+        "left": {
+          "kind": "absolute",
+          "argument": {
+            "kind": "symbol",
+            "name": "a"
+          }
+        },
+        "right": {
+          "kind": "add",
+          "args": [
+            {
+              "kind": "rational",
+              "n": "0",
+              "d": "1"
+            },
+            {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "symbol",
+                  "name": "a"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "gradingPurpose": "mathematical-value",
+      "sectionId": "lesson"
+    },
+    {
+      "id": "n08-03-build-r6",
+      "sourceNodeId": "n08-03",
+      "sourceRefs": [
+        "n08-03-before",
+        "n08-03-interaction-0",
+        "n08-03-result",
+        "n08-03-after"
+      ],
+      "prerequisiteInteractionIds": [
+        "n08-q03-order-build-r6"
+      ],
+      "learnerDecision": "前の行の0−aをそのまま使う。",
+      "nextUseRef": "n08-03-result",
+      "activePrompt": "0からaを引いた数を、aを使って表します。",
+      "parts": [
+        {
+          "id": "n08-03-build-r6-sign",
+          "role": "unary-sign",
+          "expected": "-",
+          "choices": [
+            {
+              "value": "-"
+            },
+            {
+              "value": "+"
+            }
+          ]
+        }
+      ],
+      "assembly": {
+        "kind": "relation",
+        "operator": "=",
+        "left": {
+          "kind": "add",
+          "args": [
+            {
+              "kind": "rational",
+              "n": "0",
+              "d": "1"
+            },
+            {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "symbol",
+                  "name": "a"
+                }
+              ]
+            }
+          ]
+        },
+        "right": {
+          "kind": "unary",
+          "sign": {
+            "partId": "n08-03-build-r6-sign"
+          },
+          "argument": {
+            "kind": "symbol",
+            "name": "a"
+          }
+        }
+      },
+      "expectedStatement": {
+        "kind": "relation",
+        "operator": "=",
+        "left": {
+          "kind": "add",
+          "args": [
+            {
+              "kind": "rational",
+              "n": "0",
+              "d": "1"
+            },
+            {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "symbol",
+                  "name": "a"
+                }
+              ]
+            }
+          ]
+        },
+        "right": {
+          "kind": "multiply",
+          "args": [
+            {
+              "kind": "rational",
+              "n": "-1",
+              "d": "1"
+            },
+            {
+              "kind": "symbol",
+              "name": "a"
+            }
+          ]
+        }
+      },
+      "gradingPurpose": "mathematical-value",
+      "sectionId": "lesson"
+    },
+    {
+      "id": "n08-04-build-r6",
+      "sourceNodeId": "n08-04",
+      "sourceRefs": [
+        "n08-04-before",
+        "n08-04-interaction-0",
+        "n08-04-result",
+        "n08-04-after"
+      ],
+      "prerequisiteInteractionIds": [],
+      "learnerDecision": "代入の式は直前の手本で確認済み。",
+      "nextUseRef": "n08-04-result",
+      "activePrompt": "括弧の中の数と符号が反対の数を求めます。",
+      "parts": [
+        {
+          "id": "n08-04-build-r6-value",
+          "role": "rational",
+          "expected": "5",
+          "choices": [
+            {
+              "value": "5",
+              "expression": {
+                "kind": "rational",
+                "n": "5",
+                "d": "1"
+              }
+            },
+            {
+              "value": "-5",
+              "expression": {
+                "kind": "rational",
+                "n": "-5",
+                "d": "1"
+              }
+            },
+            {
+              "value": "0",
+              "expression": {
+                "kind": "rational",
+                "n": "0",
+                "d": "1"
+              }
+            }
+          ]
+        }
+      ],
+      "assembly": {
+        "kind": "relation",
+        "operator": "=",
+        "left": {
+          "kind": "multiply",
+          "args": [
+            {
+              "kind": "rational",
+              "n": "-1",
+              "d": "1"
+            },
+            {
+              "kind": "rational",
+              "n": "-5",
+              "d": "1"
+            }
+          ]
+        },
+        "right": {
+          "kind": "part",
+          "partId": "n08-04-build-r6-value"
+        }
+      },
+      "expectedStatement": {
+        "kind": "relation",
+        "operator": "=",
+        "left": {
+          "kind": "multiply",
+          "args": [
+            {
+              "kind": "rational",
+              "n": "-1",
+              "d": "1"
+            },
+            {
+              "kind": "rational",
+              "n": "-5",
+              "d": "1"
+            }
+          ]
+        },
+        "right": {
+          "kind": "rational",
+          "n": "5",
+          "d": "1"
+        }
+      },
+      "gradingPurpose": "mathematical-value",
+      "sectionId": "lesson"
+    },
+    {
+      "id": "n08-07-build-r6",
+      "sourceNodeId": "n08-07",
+      "sourceRefs": [
+        "n08-07-before",
+        "n08-07-interaction-0",
+        "n08-07-result",
+        "n08-07-after"
+      ],
+      "prerequisiteInteractionIds": [
+        "n08-q07-distribute-build-r7"
+      ],
+      "learnerDecision": "前行の二項を符号ごと動かして指定順にする。",
+      "nextUseRef": "n08-07-result",
+      "activePrompt": "前の行の符号付きの項から、先頭へ置く正の項を選びます。残る項はその選択に応じて配置されます。",
+      "parts": [
+        {
+          "id": "n08-07-build-r6-first-term",
+          "role": "signed-term",
+          "expected": "3",
+          "choices": [
+            {
+              "value": "3",
+              "expression": {
+                "kind": "rational",
+                "n": "3",
+                "d": "1"
+              }
+            },
+            {
+              "value": "-\\sqrt5",
+              "expression": {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "sqrt",
+                    "argument": {
+                      "kind": "rational",
+                      "n": "5",
+                      "d": "1"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "assembly": {
+        "kind": "expression",
+        "expression": {
+          "kind": "binary",
+          "left": {
+            "kind": "part",
+            "partId": "n08-07-build-r6-first-term"
+          },
+          "operation": "+",
+          "right": {
+            "kind": "remaining-term",
+            "id": "n08-07-build-r6-remaining-term",
+            "fromPartId": "n08-07-build-r6-first-term",
+            "terms": [
+              {
+                "value": "3",
+                "expression": {
+                  "kind": "rational",
+                  "n": "3",
+                  "d": "1"
+                }
+              },
+              {
+                "value": "-\\sqrt5",
+                "expression": {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "sqrt",
+                      "argument": {
+                        "kind": "rational",
+                        "n": "5",
+                        "d": "1"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "expectedStatement": {
+        "kind": "expression",
+        "expression": {
+          "kind": "add",
+          "args": [
+            {
+              "kind": "rational",
+              "n": "3",
+              "d": "1"
+            },
+            {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "sqrt",
+                  "argument": {
+                    "kind": "rational",
+                    "n": "5",
+                    "d": "1"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "gradingPurpose": "specified-order",
+      "sectionId": "lesson"
+    },
+    {
+      "id": "n08-09-build-r6",
+      "sourceNodeId": "n08-09",
+      "sourceRefs": [
+        "n08-09-before",
+        "n08-09-interaction-0",
+        "n08-09-result",
+        "n08-09-after"
+      ],
+      "prerequisiteInteractionIds": [
+        "n08-q09-distribute-build-r7"
+      ],
+      "learnerDecision": "前行の二項を各一回使い指定順にする。",
+      "nextUseRef": "n08-09-result",
+      "activePrompt": "前の行の符号付きの項から、先頭へ置く正の項を選びます。残る項はその選択に応じて配置されます。",
+      "parts": [
+        {
+          "id": "n08-09-build-r6-first-term",
+          "role": "signed-term",
+          "expected": "\\pi",
+          "choices": [
+            {
+              "value": "\\pi",
+              "expression": {
+                "kind": "constant",
+                "name": "pi"
+              }
+            },
+            {
+              "value": "-3",
+              "expression": {
+                "kind": "rational",
+                "n": "-3",
+                "d": "1"
+              }
+            }
+          ]
+        }
+      ],
+      "assembly": {
+        "kind": "expression",
+        "expression": {
+          "kind": "binary",
+          "left": {
+            "kind": "part",
+            "partId": "n08-09-build-r6-first-term"
+          },
+          "operation": "+",
+          "right": {
+            "kind": "remaining-term",
+            "id": "n08-09-build-r6-remaining-term",
+            "fromPartId": "n08-09-build-r6-first-term",
+            "terms": [
+              {
+                "value": "\\pi",
+                "expression": {
+                  "kind": "constant",
+                  "name": "pi"
+                }
+              },
+              {
+                "value": "-3",
+                "expression": {
+                  "kind": "rational",
+                  "n": "-3",
+                  "d": "1"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "expectedStatement": {
+        "kind": "expression",
+        "expression": {
+          "kind": "add",
+          "args": [
+            {
+              "kind": "constant",
+              "name": "pi"
+            },
+            {
+              "kind": "rational",
+              "n": "-3",
+              "d": "1"
+            }
+          ]
+        }
+      },
+      "gradingPurpose": "specified-order",
+      "sectionId": "lesson"
+    }
+  ],
+  "legacyLocalItems": [
+    {
+      "id": "n08-q01-left-answer",
+      "label": "N08-Q01-LEFT-ANSWER",
+      "prompt": "左側でも右の座標から左の座標を引く",
+      "answer": "5",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "5",
+        "-5",
+        "0"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "strong",
+      "hints": [
+        "負の数を引く計算を思い出します。"
+      ]
+    },
+    {
+      "id": "n08-q05-square-answer",
+      "label": "N08-Q05-SQUARE-ANSWER",
+      "prompt": "正の二数の大小を比べる準備",
+      "answer": "9",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "9",
+        "6",
+        "3"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "medium",
+      "hints": [
+        "指数の2は、同じ数を二つ掛けることを表します。"
+      ]
+    },
+    {
+      "id": "n08-q05-compare-answer",
+      "label": "N08-Q05-COMPARE-ANSWER",
+      "prompt": "二乗した値の大小を決める",
+      "answer": "<",
+      "acceptedAnswers": [],
+      "answerType": "text",
+      "choices": [
+        "<",
+        ">",
+        "="
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "medium",
+      "hints": [
+        "数直線で右にある数が大きい数です。"
+      ]
+    },
+    {
+      "id": "n08-r5-q06-operation-answer",
+      "label": "N08-R5-Q06-OPERATION-ANSWER",
+      "prompt": "前の大小関係から中身の符号へつなぐ",
+      "answer": "3",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "3",
+        "-3",
+        "0"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "medium",
+      "hints": [
+        "式を作る目的と、直前に分かった条件を確かめよう。"
+      ]
+    },
+    {
+      "id": "n08-q06-subtract-answer",
+      "label": "N08-Q06-SUBTRACT-ANSWER",
+      "prompt": "両辺から同じ数を引いて差の符号へ",
+      "answer": "0",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "0",
+        "3",
+        "-3"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "medium",
+      "hints": [
+        "右辺で同じ数どうしを引きます。"
+      ]
+    },
+    {
+      "id": "n08-06",
+      "label": "N08-06",
+      "prompt": "差が0より小さいことを言葉で読む",
+      "answer": "負",
+      "acceptedAnswers": [],
+      "answerType": "text",
+      "choices": [
+        "負",
+        "正",
+        "0",
+        "符号は決まらない"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "medium",
+      "hints": [
+        "0との大小関係を符号の言葉に直します。"
+      ]
+    },
+    {
+      "id": "n08-q08-order-answer",
+      "label": "N08-Q08-ORDER-ANSWER",
+      "prompt": "円周率と3を比べる",
+      "answer": "<",
+      "acceptedAnswers": [],
+      "answerType": "text",
+      "choices": [
+        "<",
+        ">",
+        "="
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "medium",
+      "hints": [
+        "与えられた小数表示の小数部分を見ます。"
+      ]
+    },
+    {
+      "id": "n08-r5-q08-operation-answer",
+      "label": "N08-R5-Q08-OPERATION-ANSWER",
+      "prompt": "別の例で同じ両辺操作を組み立てる",
+      "answer": "\\pi",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "\\pi",
+        "3",
+        "-\\pi"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "medium",
+      "hints": [
+        "式を作る目的と、直前に分かった条件を確かめよう。"
+      ]
+    },
+    {
+      "id": "n08-q10-forward-answer",
+      "label": "N08-Q10-FORWARD-ANSWER",
+      "prompt": "距離が0なら点はどこにあるか",
+      "answer": "0",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "0",
+        "1",
+        "-1"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "light",
+      "hints": [
+        "図の原点と重なる座標を読みます。"
+      ]
+    },
+    {
+      "id": "n08-q10-reverse-answer",
+      "label": "N08-Q10-REVERSE-ANSWER",
+      "prompt": "逆に元の数が0なら距離も0",
+      "answer": "0",
+      "acceptedAnswers": [],
+      "answerType": "formula",
+      "choices": [
+        "0",
+        "a^2+1",
+        "1"
+      ],
+      "purpose": "causal-reasoning",
+      "scaffoldLevel": "light",
+      "hints": [
+        "原点と原点の間の距離を考えます。"
+      ]
+    }
+  ],
+  "sameMeaningSourceHash": "1faf73dacb3caecc88dc879e1ce6ca05ef7ddecc47cca33bcfed9d11abb6d5c8",
+  "counts": {
+    "constructionParents": 20,
+    "constructionParts": 32,
+    "legacyLocalParents": 10,
+    "requiredParents": 30,
+    "learnerDecisions": 42
+  }
+}

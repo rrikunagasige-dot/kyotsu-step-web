@@ -1,3 +1,4 @@
+import { ConstructionInteractionV2Schema } from './constructionReadingV2'
 import { z } from 'zod'
 import { ConstructionInteractionSchema } from './constructionReading'
 
@@ -121,6 +122,8 @@ const TextbookUnitBaseSchema = z.object({
   objectives: z.array(z.string().min(1)).min(1),
   sections: z.array(TextbookSectionSchema).min(1),
   constructionItems: z.array(ConstructionInteractionSchema).optional(),
+  constructionItemsV2: z.array(ConstructionInteractionV2Schema).optional(),
+  revisionMigration: z.object({fromRevision:z.number().int(), preservedInteractionIds:z.array(IdSchema), meaningFingerprints:z.record(z.string(),z.object({from:IdSchema,to:IdSchema}))}).optional(),
   requiredInteractionRefs: z.array(IdSchema).min(1).optional(),
 })
 
@@ -142,7 +145,7 @@ export const TextbookUnitSchema = TextbookUnitBaseSchema.superRefine((unit, cont
   const sectionIds = new Set<string>()
   const itemIds = new Set<string>()
   const overlayIds = new Set<string>()
-  const ordinaryIds = unit.sections.flatMap(s => s.items.map(i => i.id)), constructions = unit.constructionItems ?? [], allIds = [...ordinaryIds, ...constructions.map(i => i.id)]
+  const ordinaryIds = unit.sections.flatMap(s => s.items.map(i => i.id)), constructions = [...unit.constructionItems ?? [], ...unit.constructionItemsV2 ?? []], allIds = [...ordinaryIds, ...constructions.map(i => i.id)]
   if (constructions.length && !unit.requiredInteractionRefs) context.addIssue({ code: 'custom', path: ['requiredInteractionRefs'], message: '式組立を含む単元には全親の進度契約が必要です' })
   if (new Set(allIds).size !== allIds.length) context.addIssue({ code: 'custom', path: ['constructionItems'], message: '通常回答と式組立のIDが重複しています' })
   const partIds = constructions.flatMap(i => i.parts.map(p => p.id))
@@ -152,6 +155,10 @@ export const TextbookUnitSchema = TextbookUnitBaseSchema.superRefine((unit, cont
     if (i.prerequisiteInteractionIds.some(id => !allIds.includes(id) || id === i.id)) context.addIssue({ code: 'custom', path: ['constructionItems'], message: '式組立の前提が不明です' })
     for (const p of i.parts) if (new Set(p.choices.map(c => c.value)).size !== p.choices.length || !p.choices.some(c => c.value === p.expected)) context.addIssue({ code: 'custom', path: ['constructionItems'], message: '式組立の候補・正答契約が不正です' })
   }
+  const dependencyMap = new Map(constructions.map(i=>[i.id,i.prerequisiteInteractionIds]))
+  const visiting = new Set<string>(), visited = new Set<string>()
+  const acyclic = (id:string):boolean => { if(visiting.has(id))return false;if(visited.has(id))return true;visiting.add(id);if((dependencyMap.get(id)??[]).some(dep=>!acyclic(dep)))return false;visiting.delete(id);visited.add(id);return true }
+  if(constructions.some(i=>!acyclic(i.id)))context.addIssue({code:'custom',path:['constructionItemsV2'],message:'式組立の前提が循環しています'})
   if (unit.requiredInteractionRefs && (new Set(unit.requiredInteractionRefs).size !== unit.requiredInteractionRefs.length || unit.requiredInteractionRefs.length !== allIds.length || allIds.some(id => !unit.requiredInteractionRefs!.includes(id)))) context.addIssue({ code: 'custom', path: ['requiredInteractionRefs'], message: '全親の進度契約に重複・不足・未知IDがあります' })
 
   if (unit.schemaVersion === '1.1') {

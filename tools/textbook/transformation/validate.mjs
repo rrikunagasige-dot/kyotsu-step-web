@@ -1,3 +1,4 @@
+import {validateTransformationV3} from './v3.mjs';
 import {planSchema,getPath} from './schema.mjs';
 import {graphSchema} from '../solution/graph.mjs';
 import {n08SourceBinding} from './n08-source-binding.mjs';
@@ -14,6 +15,7 @@ export function gradingContract(ir){
  return ir.nodes.filter(n=>n.interaction).map(n=>n.interaction);
 }
 export function validateTransformationPlan(ir,input,{verifyMath=true}={}){
+ if(input?.schemaVersion==='transformation-plan/3')return validateTransformationV3(ir,input,{verifyMath});
  if(input?.schemaVersion==='transformation-plan/2')return validateTransformationV2(ir,input,{verifyMath},validateTransformationPlan);
  const parsed=planSchema.safeParse(input);if(!parsed.success)return {status:'FAIL',findings:[{ruleId:'TG_SCHEMA',detail:parsed.error.message}]};
  const p=parsed.data,findings=[],add=(ruleId,detail)=>findings.push({ruleId,detail});

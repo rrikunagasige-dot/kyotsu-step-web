@@ -1,0 +1,184 @@
+{
+  "schemaVersion": "implementation-author-report/1",
+  "author": "/root/workflow_roles",
+  "work": "W-MATH-041",
+  "scope": "A data/domain/save/typedconstructionV2/transformationV3; not independent review",
+  "formalAuthorAssignmentHash": "c47037565e54dd91f1e94d2b1ea71616347cc4ef01099fa7c353d076f3905707",
+  "sourceBaseline": "e7320590d4af51b7cc0d9faa918485467092a3c0",
+  "status": "IMPLEMENTED_PENDING_NONAUTHOR_AND_EXACT_SOURCE_BROWSER_ACCEPTANCE",
+  "userQualityAccepted": false,
+  "ownedFiles": [
+    {
+      "path": "src/domain/constructionReadingV2.ts",
+      "sha256": "c77fbd23b7c2d94eb6fab96c421c5e4c04cd57c73772686e076a7b6b0ebc3874"
+    },
+    {
+      "path": "src/domain/constructionProgressV2.ts",
+      "sha256": "ee6e2bd16a27fcacbdae1a7e0bfb392949281f55420f532dcf57a5608a185e9d"
+    },
+    {
+      "path": "src/domain/constructionProgressV2.test.ts",
+      "sha256": "e0882e93b35157a766d3140304d29f4b505da9cccdb6e38bef276e3e3f60f1c8"
+    },
+    {
+      "path": "src/domain/textbookSchema.ts",
+      "sha256": "a7b6f1c79b124e4a561dd5db3fdb8c2d036df200eab08523f90b953917f08b43"
+    },
+    {
+      "path": "src/domain/textbook.ts",
+      "sha256": "59d95b1fd1283bbf99709f1aebe4e613eb24ee79b448805bfca2b4cec2cbe772"
+    },
+    {
+      "path": "src/stores/useAppStore.ts",
+      "sha256": "52eb7b00d5c29400207bec320c68ed20250d4d1e98dd54c83b992d35fcf058c5"
+    },
+    {
+      "path": "tools/textbook/interaction/construction-v2-runtime.mjs",
+      "sha256": "ebd9655f15790dc8dda08b43e9da0da4425d4acbed0eb807c94cabedab3419f5"
+    },
+    {
+      "path": "tools/textbook/interaction/construction-v2-runtime.d.mts",
+      "sha256": "a443328954d3f222ed1266864652decda185fbf0002d28ecc61c04115e7c0f08"
+    },
+    {
+      "path": "tools/textbook/interaction/construction-v2.mjs",
+      "sha256": "ff0704719c8777de5fa0cacba32521faa1f091f3467d0a8227ef891e98558d58"
+    },
+    {
+      "path": "tools/textbook/interaction/construction-v2-verify.py",
+      "sha256": "baaf00fda417cd18ee028053681864c739055507967a464d7b3b73ed264b2604"
+    },
+    {
+      "path": "tools/textbook/transformation/v3.mjs",
+      "sha256": "4f209906072e5a3c5584fad6dfda167cd784f58690fdc47afda2be999fc98895"
+    },
+    {
+      "path": "tools/textbook/transformation/compile.mjs",
+      "sha256": "64ea46c10ede713fba388f2b7c18ecb6ab0c03507a8a3f6eacbbe48b9fdad0d1"
+    },
+    {
+      "path": "tools/textbook/transformation/validate.mjs",
+      "sha256": "c6e40a8d37c4304a2b58554db424bdc35e0f7d47d0a64f9e36daeb5e2a7074f9"
+    },
+    {
+      "path": "tools/textbook/transformation/visible.mjs",
+      "sha256": "369e4a35547bad9b410fa1c0946df097427c1c26e3b38eafa7e7b7118155943c"
+    },
+    {
+      "path": "tools/textbook/transformation/apply-n08-r7.mjs",
+      "sha256": "24c4f63c83af2e474ce636dec3a09a77585e35452ffad324ec24d4d4d5d7ce98"
+    },
+    {
+      "path": "tools/textbook/tests/construction-v2.test.mjs",
+      "sha256": "aebd6b6ef3a6ec86d3d2f7ce7694cafe8c6bef4fe357546e30db4f5858a4bc3c"
+    },
+    {
+      "path": "src/data/textbook/math/numbers/n08Revision7.json",
+      "sha256": "88e270ad761fe8ab98473233e6ebe32d6a445d761e595dd343620181ee43c24a"
+    },
+    {
+      "path": "src/data/textbook/math/numbers/n08ConstructionR7.json",
+      "sha256": "cff9d0ca0aff9784904094221b05feffc98d48c6ef108a995741143745ea107c"
+    },
+    {
+      "path": "src/data/textbook/math/numbers/n08LayoutR7.json",
+      "sha256": "0d1d0a6faa515b982f5146fa95df89c459338a7016117ad4057b99794dfba8c7"
+    },
+    {
+      "path": "src/data/textbook/math/numbers/n08ConstructionPresentationR7.json",
+      "sha256": "5dc0002492159157e9c6061f4eb7faf52a8994b9b2b05f9d68401dc9e2a842da"
+    },
+    {
+      "path": "src/data/textbook/math/numbers/n08TransformationR7.json",
+      "sha256": "9b0655d775ca6dd6404e7a5777af0e284e315c7bd465bdad470f61141a18b01d"
+    },
+    {
+      "path": "tools/textbook/transformation/terminal-record.mjs",
+      "sha256": "40a068eaaf31cec2c44281ab2016bb7ee61736a7b76cc169b729b00ec20642de"
+    },
+    {
+      "path": "tools/textbook/transformation/plan.mjs",
+      "sha256": "94dc6c92ff9a41a735ecdd043854eeb727a5262a7ae7ac48c58d5796d91bf1df"
+    }
+  ],
+  "artifactHashes": {
+    "planHash": "9b0655d775ca6dd6404e7a5777af0e284e315c7bd465bdad470f61141a18b01d",
+    "constructionDesignHash": "cff9d0ca0aff9784904094221b05feffc98d48c6ef108a995741143745ea107c",
+    "layoutDesignHash": "0d1d0a6faa515b982f5146fa95df89c459338a7016117ad4057b99794dfba8c7",
+    "learnerCopyHash": "4e167bb5094d7f1167c0749b15ac274a478f0668540aec02cddb3bea3f39d019",
+    "compiledPresentationHash": "5621bae53c522dd2a041b94335f977c49ec471131eb4fc9bd691f526c0753e30"
+  },
+  "counts": {
+    "sourceNodes": 39,
+    "stages": 12,
+    "requiredParents": 30,
+    "constructionParents": 20,
+    "constructionParts": 32,
+    "legacyLocalParents": 10,
+    "learnerDecisions": 42,
+    "newMeaningParents": 14,
+    "newParts": 24,
+    "sameMeaningParents": 16,
+    "autoResultNodes": 3
+  },
+  "checks": {
+    "domainNew7AndPrevious17": "24 PASS",
+    "newNodeConstructionTests": "10 PASS, including114 finite cases,30parent162 learner-onlysnapshots,operation-result/sourcehash mutations,negativefactormirror,KaTeXroot+ASTrender regression,terminalrecord first/lastfusion counterexamples andinteraction-plan30/42",
+    "fullV3Math": "20construction parents131finite cases: new14/114 pluspreserved6/17 PASS",
+    "typescript": "tsc -b PASS after terminalRecord andrenderfixes",
+    "ownedLint": "PASS after terminalRecord andrenderfixes",
+    "v1Regression": "construction-layout/n08-transformation passed except approvedactive7pointer protection exception still6-only; M owns adjustment without changing oldmanifest",
+    "protectedManifest": {
+      "src/data/textbook/math/numbers/n08Authored.json": "PASS",
+      "src/data/textbook/math/numbers/n08Revision5.json": "PASS",
+      "src/data/textbook/math/numbers/n08Revision6.json": "PASS",
+      "src/data/textbook/math/numbers/n08Construction.json": "PASS",
+      "src/data/textbook/math/numbers/n08Layout.json": "PASS",
+      "src/data/textbook/math/numbers/n08ConstructionPresentation.json": "PASS",
+      "src/data/textbook/math/numbers/n08Transformation.json": "PASS",
+      "src/data/textbook/math/numbers/n08PresentationPolicy.json": "PASS",
+      "src/components/textbook/N08ConstructionReadingFlow.tsx": "PASS",
+      "src/components/textbook/ConstructionSlot.tsx": "PASS",
+      "src/components/textbook/ConstructionPanel.tsx": "PASS",
+      "src/components/textbook/construction-reading.css": "PASS",
+      "src/components/textbook/N08SolutionReadingFlow.tsx": "PASS",
+      "src/components/textbook/N08ReadingFlow.tsx": "PASS",
+      "src/components/textbook/n08-reading.css": "PASS",
+      "src/components/textbook/n08-solution-reading.css": "PASS",
+      "src/components/textbook/NumberedEquation.tsx": "PASS",
+      "src/data/textbook/math/numbers/n11Authored.json": "PASS",
+      "src/data/textbook/math/numbers/n11Transformation.json": "PASS",
+      "pnpm-lock.yaml": "PASS"
+    }
+  },
+  "migration": "r6 archive intact; preserve16 only onmeaningfingerprint equality,14new empty,3summary ungraded; r7 archiveincludingresetempty authoritative acrossold4/5/6 roundtrip",
+  "sharedRuntime": "Browser TSfacade andNode compile import identicalpure .mjs gating/projection/save semantics; no duplicatedrenderer mathresolver. × explicitly mapsmultiply AST. Japanese meaning outsideLaTeX.",
+  "remaining": "B nonauthor audit of A implementation; M exact-sourcebrowser4width,geometry,save,nextnavigation,fullregression,formalnative receipts andpublicdeployment. No claim of USERacceptance/modelGold/training.",
+  "limitations": [
+    "Current evidence is author test evidence, not blind independent acceptance.",
+    "Mathematical adapter supports declared whitelist assumptions; unsupported constructs failclosed.",
+    "Retained10local contracts boundbyte-for-byte tosourceItems; new20construction mathchecked separately.",
+    "Main activepointer/routes/publisher, formalStore andGit owned byM andnotmodifiedbyA.",
+    "131 construction math cases certify typed assertions; actualrendering is separately checked withKaTeXroot regression,explicitterminalrecord binding,andM/B realbrowsersemantic/geometryreview. These are distinct evidence and not a claim that everyprose/renderedglyph was mathematicallyproved."
+  ],
+  "postReviewCorrections": [
+    {
+      "finding": "Negative multiplier mirror rendered raw-1",
+      "correction": "Explicitfactor context renders(-1); dedicated regression."
+    },
+    {
+      "finding": "n08-05 doubleescaped authoring TeX lostradical inactualrender",
+      "correction": "Normalize doubled command escapes at authoringtemplate boundary; exact LaTeX andKaTeXmsqrt typedassertion regression. Immutableapprovedsource notchanged."
+    },
+    {
+      "finding": "B UI fused unrelated firstleft/last right incompactrecord",
+      "correction": "ExplicitterminalRecord for39nodes andq11interpretation; V3requirednew14terminalfacts/conditions mustmatchapprovedfinalConclusion. B usesrecorddata insteadfusion."
+    },
+    {
+      "finding": "V3 interaction-plan lackeddispatch",
+      "correction": "Explicit3branch enumerates30author decisions42candidates withoutAI acceptance."
+    }
+  ],
+  "frozen": true,
+  "frozenMeaning": "A source/data frozen for M exact-sourceCI and B nonauthor verification; only critical corrections after communicating toM."
+}

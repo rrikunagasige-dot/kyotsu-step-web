@@ -1,0 +1,43 @@
+/* r7 opt-in only. Old r4/r5/r6 renderers and the shared equation wrapper are
+   deliberately outside this scope. */
+.n08-axis-reader{--axis-offset:0px;--axis-column-gap:4px;--axis-row-gap:4px;--axis-note-gap:6px;--axis-paragraph-gap:8px}
+.n08-axis-reader .axis-group{position:relative;width:100%;margin-block:8px;font-size:18px}
+.n08-axis-reader .axis-frame{width:max-content;max-width:100%;margin-inline:auto}
+.n08-axis-reader .axis-equation{display:grid;grid-template-columns:var(--axis-left) var(--axis-relation) var(--axis-right);column-gap:var(--axis-column-gap);align-items:baseline;width:max-content;max-width:100%;margin-top:var(--axis-row-gap)}
+.n08-axis-reader .axis-equation:first-child{margin-top:0}
+.n08-axis-reader .axis-cell{min-width:0;display:block;white-space:nowrap}
+.n08-axis-reader .axis-run{display:inline-block;white-space:nowrap;line-height:1.4;vertical-align:baseline}
+.n08-axis-reader .axis-run .katex,.n08-axis-reader .axis-slot .katex,.n08-axis-reader .axis-probe .katex,.n08-axis-reader .axis-envelope-probe .katex{font-size:1em!important}
+.n08-axis-reader .axis-baseline{display:inline-block;width:0;height:0;margin:0;padding:0;border:0;vertical-align:baseline}
+.n08-axis-reader .axis-hit-strut{display:inline-block;width:0;height:44px;vertical-align:calc(var(--axis-offset) - 22px)}
+.n08-axis-reader .axis-slot{display:inline-block;position:relative;inline-size:var(--axis-slot-advance,44px);text-align:center;vertical-align:baseline}
+.n08-axis-reader .axis-slot-ink{position:relative;z-index:2;pointer-events:none}
+.n08-axis-reader .axis-slot-ink--empty{visibility:hidden}
+.n08-axis-reader .axis-slot-hit{position:absolute;left:0;top:calc(var(--axis-local-baseline,0px) - var(--axis-offset) - 22px);width:100%;height:44px;min-width:44px;min-height:44px;padding:0;border:0;background:transparent;cursor:pointer;outline:none}
+.n08-axis-reader .axis-slot-box{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);min-width:26px;width:calc(100% - 12px);height:25px;border:1px solid #426b85;border-radius:3px;background:#fff}
+.n08-axis-reader .axis-slot--active .axis-slot-box,.n08-axis-reader .axis-slot-hit:focus-visible .axis-slot-box{outline:2px solid #07558b;outline-offset:2px}
+.n08-axis-reader .axis-slot--wrong .axis-slot-box{border-color:#a74032}
+.n08-axis-reader .axis-probe,.n08-axis-reader .axis-envelope-probe{position:fixed;left:-100000px;top:0;visibility:hidden;pointer-events:none;font-size:18px;white-space:nowrap}
+.n08-axis-reader .axis-number{position:absolute;right:0;white-space:nowrap;line-height:1.4;color:#4b5e6b;font-size:14px;top:var(--axis-number-top,0px)}
+.n08-axis-reader .axis-number--below{position:relative;display:block;text-align:right;margin-top:8px;top:auto}
+.n08-axis-reader .axis-note{font-size:16px;line-height:1.7;margin:var(--axis-note-gap) 0;width:100%;white-space:normal}
+.n08-axis-reader .axis-prose-control{display:inline-flex;min-width:44px;min-height:44px;align-items:center;justify-content:center;font:inherit;background:#fff;border:1px solid #426b85;border-radius:3px;margin-inline:4px}
+.n08-axis-reader .axis-choice-panel{margin-block:8px;padding:12px;border:1px solid #cad9e1;border-radius:4px;background:#f5f8fa}
+.n08-axis-reader .axis-choice-panel>p{margin:0 0 8px;line-height:1.65}
+.n08-axis-reader .axis-choice-list{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}
+.n08-axis-reader .axis-choice-list>button{display:flex;gap:10px;align-items:center;justify-content:flex-start;min-width:80px;min-height:44px;padding:8px 12px;border:1px solid #859ca9;border-radius:3px;background:white;font:inherit}
+.n08-axis-reader .axis-choice-list .katex{font-size:1em}
+.n08-axis-reader .axis-equation--wrap .axis-cell--left{grid-column:1/-1;grid-row:1}
+.n08-axis-reader .axis-equation--wrap .axis-cell--relation{grid-column:2;grid-row:2}
+.n08-axis-reader .axis-equation--wrap .axis-cell--right{grid-column:3;grid-row:2}
+.n08-axis-reader .axis-fraction{display:inline-block;vertical-align:baseline;text-align:center}
+
+.n08-axis-reader .axis-row-scope+.axis-row-scope .axis-equation{margin-top:var(--axis-row-gap)}
+.n08-axis-reader .axis-frame .axis-note{width:var(--axis-body-width);margin-left:calc((var(--axis-frame-width) - var(--axis-body-width))/2)}
+
+.n08-axis-reader .axis-source-region{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.n08-axis-reader .axis-source-region-label{font-weight:600;font-family:inherit}
+.n08-axis-reader .axis-source-range{display:inline-block}
+.n08-axis-reader .axis-source-range--selected{border-bottom:3px solid #07558b;background:#edf5fa}
+/* Override the shared first/typeset-theme paragraph margins only for r7. */
+.textbook-reading-flow.n08-axis-reader[data-typeset-theme] .reading-paragraph{margin-block:var(--axis-paragraph-gap);line-height:1.8}

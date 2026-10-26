@@ -1,6 +1,7 @@
 /** Display contracts are independent of mathematical atoms and grading units. */
 import {z} from 'zod';
 import {hash} from '../util.mjs';
+import {validateLayoutPlanV2} from './plan-v2.mjs';
 export const LAYOUT_TOKENS=Object.freeze({mathFontPx:18,katexScale:1,bodyLineHeight:1.8,mathLineHeight:1.4,rowGapPx:4,noteGapPx:6,paragraphGapPx:8,conceptGapPx:16,minHitPx:44,relationTolerancePx:1,centerTolerancePx:2,fontTolerancePx:0.25});
 const id=z.string().min(1).max(160),ids=z.array(id),copy=z.array(z.discriminatedUnion('type',[
  z.object({type:z.literal('text'),text:z.string()}).strict(),z.object({type:z.literal('math'),latex:z.string()}).strict(),z.object({type:z.literal('term'),text:z.string()}).strict(),
@@ -15,7 +16,8 @@ export const layoutPlanSchema=z.object({schemaVersion:z.literal('layout-plan/1')
   states:z.object({initial:ids.min(1),partial:ids.min(1),complete:ids.min(1)}).strict(),
  }).strict()).min(1),
 }).strict();
-export function validateLayoutPlan(input,{rowIds,interactionIds}={}){
+export function validateLayoutPlan(input,{rowIds,interactionIds,nodeIds,partIds}={}){
+ if(input?.schemaVersion==='layout-plan/2')return validateLayoutPlanV2(input,{rowIds,interactionIds,nodeIds,partIds});
  const parsed=layoutPlanSchema.safeParse(input);if(!parsed.success)return {status:'FAIL',findings:[{ruleId:'LAYOUT_SCHEMA',detail:parsed.error.message}]};
  const plan=parsed.data,findings=[],seen=new Set(),add=(ruleId,detail)=>findings.push({ruleId,detail});
  for(const g of plan.groups){

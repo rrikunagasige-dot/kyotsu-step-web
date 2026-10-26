@@ -1,0 +1,30 @@
+{
+  "status": "verified",
+  "sourceSHA": "e7320590d4af51b7cc0d9faa918485467092a3c0",
+  "workflowSHA": "cfd0ff8f4ca4a6b62122802f97f1bcde9aa98643",
+  "runId": 40299824089,
+  "deploymentStepConclusion": "success",
+  "deploymentRunConclusion": "success",
+  "verificationRunId": 40299824089,
+  "verificationConclusion": "success",
+  "sourceVerified": true,
+  "userAccepted": false,
+  "units": [
+    "n08"
+  ],
+  "activeN08Revision": 6,
+  "retainedN11Verified": true,
+  "retainedN09N10DisplayVerified": true,
+  "artifactId": 12640421671,
+  "artifactSHA256": "b6b0a05694c8e514f58b16c1d5942e30e9120f62c7adbfcf5493f52bf11b3a8e",
+  "urls": {
+    "n08": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=e7320590#/learning/textbook/math-numbers-expressions-n08",
+    "revision5": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=e7320590#/learning/textbook/math-numbers-expressions-n08?version=5",
+    "original": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=e7320590#/learning/textbook/math-numbers-expressions-n08?version=5&layout=original",
+    "archive": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=e7320590#/learning/textbook/math-numbers-expressions-n08?version=4"
+  },
+  "next": "G3_FINAL@n08",
+  "modelStatus": "OFFLINE_ONLY",
+  "newModelFit": false,
+  "qualityLabelsAdded": 0
+}

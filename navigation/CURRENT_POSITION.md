@@ -1,5 +1,5 @@
 <!-- W040_CURRENT -->
-## CURRENT — N08 r6を既存アプリへ公開する段階
+## CURRENT — N08 r6 公開・配信検証完了、本人評価待ち
 
 固定コードsourceは `e7320590d4af51b7cc0d9faa918485467092a3c0`（`work/n08-construction-application-20261026`）。共通基盤31b87bd3上にW040のr6を適用。mainは現在地の正本、実装取得はこの固定sourceを使い、main内の古い物理workflow/appコードを一括mergeで上書きしない。
 
@@ -9,7 +9,7 @@ CI [40296848940](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/ru
 
 Mは統合/Store/公開、Aはdata/math/save、BはUI。BがAの保存を、AがB UI/M routesを実画像で反証。原報告・作者履歴・CI artifactへ束縛。fork-all/同一モデルで盲検やモデル独立ではない。登録捕捉は承認後の準備より後という実順序も保持。
 
-現在は内部QA・非作者監査を経た既存Pages公開処理。まだ公開manifestの到達性・同SHA操作を確認する前なので、以下のURLを公開済みとは扱わない。確認後にpublication記録を更新する。
+公開run [40299824089](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40299824089) SUCCESS。publisher `cfd0ff8f`、配信manifestのsource `e7320590`・r6・namespaceを実HTTPで照合。公開版N08全操作・途中保存・旧r5全34/80・N09/N10表示・N11全39/109×4幅もPASS。正式RuntimeのG3_HOSTまでPASS。現在はG3_FINAL@n08で本人の実アプリ評価待ち。公開後artifact sha256はb6b0a05694c8e514f58b16c1d5942e30e9120f62c7adbfcf5493f52bf11b3a8e。記録補完後のRepository Governance Check40300779836もSUCCESS。
 
 - 対象: https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=e7320590#/learning/textbook/math-numbers-expressions-n08
 - 比較: 同routeの `?version=5`、`?version=5&layout=original`、`?version=4`。既存 `?layout=original` は旧r5へのalias。

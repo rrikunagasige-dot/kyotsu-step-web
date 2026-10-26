@@ -1,0 +1,61 @@
+name: W038 public N11 verification with decoded figures
+on:
+  push:
+    branches: [work/w38-hosted-verification-20261026]
+    paths: [.github/workflows/w38-hosted-verification.yml]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      APP_URL: https://rrikunagasige-dot.github.io/kyotsu-step-web/
+      CANDIDATE_SHA: aef34919e630c3772c8ad4329f0aa01dec63e6fe
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: aef34919e630c3772c8ad4329f0aa01dec63e6fe
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.9.0
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - run: pnpm exec playwright install --with-deps chromium
+      - name: Verify public source, plan and original figure bytes
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';import {createHash} from 'node:crypto';
+          const root=process.env.APP_URL,m=await(await fetch(root+'release.json?qa=w038-decoded')).json(),p=JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/n11Transformation.json'));
+          if(m.work!=='W-MATH-038'||m.sourceSHA!==process.env.CANDIDATE_SHA||m.workflowSHA!=='d3eb6d75d8a46d34bf59b9b9c8bebd1072ac6feb'||m.transformation?.planHash!==p.planHash||m.storageKey!=='kyotsu-step-gate3-math-20261023')throw Error('PUBLIC_SOURCE_MISMATCH');
+          const data=JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/n11Authored.json'));
+          for(const f of data.unit.sections.flatMap(s=>s.figures)){const path=f.src.replace(/^\//,''),r=await fetch(root+path);if(!r.ok)throw Error('FIGURE_HTTP '+f.id);const a=createHash('sha256').update(Buffer.from(await r.arrayBuffer())).digest('hex'),b=createHash('sha256').update(fs.readFileSync('public/'+path)).digest('hex');if(a!==b)throw Error('FIGURE_CHANGED '+f.id);}
+          console.log('Public source, plan, storage and exact original figure bytes PASS');
+          NODE
+      - name: Wait for image decode without changing app or expected results
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json,os,subprocess
+          p=Path('work/items/W-MATH-038-transformation-groups/verify_app.mjs')
+          old='im=>im.complete&&im.naturalWidth>0'
+          new="async im=>{await Promise.race([im.decode(),new Promise((_,reject)=>setTimeout(()=>reject(Error('FIGURE_DECODE_TIMEOUT')),30000))]);return im.complete&&im.naturalWidth>0}"
+          text=p.read_text();assert text.count(old)==1
+          p.write_text(text.replace(old,new))
+          changed=subprocess.check_output(['git','diff','--name-only'],text=True).splitlines();assert changed==[str(p)]
+          Path('/tmp/w38-hosted').mkdir(exist_ok=True)
+          Path('/tmp/w38-hosted/HARNESS.json').write_text(json.dumps({'appSourceSHA':os.environ['CANDIDATE_SHA'],'verificationWorkflowSHA':os.environ['GITHUB_SHA'],'changedOnlyTestHarness':changed,'harnessSHA256':hashlib.sha256(p.read_bytes()).hexdigest(),'assertionPreserved':'complete && naturalWidth > 0 after decode; broken or timed-out images still fail'}))
+          PY
+      - name: All N11 choices, four widths, old saves and both layouts on the actual public app
+        run: EVIDENCE_DIR=/tmp/w38-hosted node work/items/W-MATH-038-transformation-groups/verify_app.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: w38-public-decoded-figure-verification
+          path: /tmp/w38-hosted

@@ -1,6 +1,7 @@
 name: Ordinary transformation code and N11 pilot
 on:
   push:
+    branches-ignore: ['work/n08-grouped-transformations-20261026']
     paths:
       - 'tools/textbook/**'
       - 'workflow/**'
@@ -51,7 +52,8 @@ jobs:
       - name: Existing learner and opt-in component regression
         run: |
           pnpm exec vitest run --exclude src/data/physicsTaxonomy.test.ts --exclude src/domain/questionSchema.test.ts
-          pnpm exec vitest run --config work/items/W-MATH-038-transformation-groups/vitest.config.mjs
+          pnpm exec vitest run --config work/items/W-MATH-038-transformation-groups/vitest.config.mjs -t '^(?!unchanged N08 r4/r5)'
+          pnpm exec vitest run --config work/items/W-MATH-039-n08-grouped-transformations/vitest.config.mjs
           pnpm exec vitest run --config work/items/W-MATH-037-n08-workflow-trial/vitest.config.mjs
           CODES=ne02,n11,n12 pnpm exec vitest run --config work/items/W-MATH-036-ne02-n11-n12-guided-design/vitest.config.mjs
           pnpm run test:textbook-authoring

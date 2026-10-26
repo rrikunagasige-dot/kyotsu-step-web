@@ -1,5 +1,9 @@
 # W-MATH-039 — N08の通常変形の再修正
 
-Status: ANALYZING / P001 PROPOSED。入口CMD-WORK-001。
-本人「そして終わったら次はもう一回N08の修正じゃ」で次の修正分析を依頼。まずW038のN11実装・検証・公開を完了し、その後この具体案を既存R04/R05へ進める。今回のN11承認をN08の未提示の具体案の承認へ転用しない。
-CI待機中の独立作業は、原N08と実装コードの読み取り・全39node監査・P001作成だけ。公開中のr4/r5・保存・モデルは変更していない。
+Status: IMPLEMENTING / P001 APPROVED。入口CMD-WORK-001。本人「いいよまず実装してくれ」で0aa633dcの具体案を承認。APPROVAL.jsonに原提案hashを保存し、原PROPOSAL.mdは変更しない。
+
+現行r5の全39node/34採点ID/12stageと原r4を保護。四つの局所groupを実装し、2意味nodeの説明だけ承認どおりoverride。現在の学習記録を同じnamespaceで継承。旧r5へ?layout=original、r4へ?version=4。
+
+既存共有RuntimeのR01〜R06を実receiptで通過。処理後に記録を捕捉した時点は明示し、事前工程を捏造しない。同じAIの別passで11可視状態を検査。新しい品質label・fitなし。
+
+次：固定sourceのCI、G2、既存Pages配信、実配信照合、直接URLで本人評価。本人評価はまだない。

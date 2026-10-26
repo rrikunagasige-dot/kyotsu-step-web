@@ -1,0 +1,10 @@
+{
+  "src/data/textbook/math/numbers/n08Authored.json": "80c917d3c2de34b9111e11f57fb02272d98ab02c0677a2fb30c5ae4dad60e142",
+  "src/data/textbook/math/numbers/n08Revision5.json": "2ff0e38d4d081a3dc9f1912cd6b6a0ebe395fd9cb8afd6bd8fab2f2778a862e5",
+  "src/data/textbook/math/numbers/n08ActiveVersion.json": "b05269e287cb1c4d210081745c4099df9dd7bdc35d038dc1ffcd6f7bc0160f07",
+  "src/components/textbook/N08ReadingFlow.tsx": "56f9d2b75b8b34a28b8e4b53c6df5ac922fb2da6c57005b6f709db5abcf56cc6",
+  "src/components/textbook/n08-reading.css": "c2c252e5467690b6b0897b5dcd99ddf18ae588cdb011b5d3c66e780a1175f949",
+  "src/components/textbook/n08-solution-reading.css": "de8a7aa9052d3bb6777a9a7190284cdb2d947856762d292eb94e6bf622b2ffd1",
+  "src/data/textbook/math/numbers/n11Authored.json": "ae3823163ac23bb334ac02a6c868bbd1273b8b6f1f65c77cde6f751773900a74",
+  "src/data/textbook/math/numbers/n11Transformation.json": "c1cbfd5c5e4b7ee79baf40cd54a9170c4cae5286fb04e940c5f50e92bc3f5197"
+}

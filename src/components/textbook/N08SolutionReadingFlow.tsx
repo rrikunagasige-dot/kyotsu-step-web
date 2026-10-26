@@ -4,6 +4,10 @@ import { InlineMath } from 'react-katex'
 import { SemanticReading } from './SemanticReading'
 import { TypesetFormula, TypesetInlineMath } from './TypesetFormula'
 import { NumberedEquation } from './NumberedEquation'
+import n08Grouped from '../../data/textbook/math/numbers/n08Transformation.json'
+import policy from '../../data/textbook/math/numbers/n08PresentationPolicy.json'
+import { TransformationReadingSchema, projectTransformationView } from '../../domain/transformationReading'
+import { TransformationReadingGroup } from './TransformationReadingGroup'
 import data from '../../data/textbook/math/numbers/n08Revision5.json'
 import { effectiveTextbookProgress, getTextbookChoices, isTextbookItemResolved, type TextbookUnitProgress } from '../../domain/textbook'
 import type { TextbookItem, TextbookReadingBlock, TextbookReadingPart, TextbookSection, TextbookUnit } from '../../domain/textbookSchema'
@@ -12,7 +16,10 @@ import { useI18n } from '../../i18n/runtime'
 import './n08-reading.css'
 import './n08-solution-reading.css'
 
+const presentation = TransformationReadingSchema.parse(n08Grouped)
+
 type Props = {
+  originalMathLayout?: boolean
   unit: TextbookUnit; section: TextbookSection; progress: TextbookUnitProgress | undefined
   onSummaryReached?: (reached: boolean) => void
   onReviewAnswer?: (item: TextbookItem, choice: string) => void
@@ -23,14 +30,17 @@ const displays = data.semanticDisplay as unknown as Record<string, { hintParts: 
 const formulaNumbers: Record<string, number> = data.equationNumbers
 const roles: Record<string, string> = { example: '例題', definition: '定義', proof: '性質の導出', substep: '導出', check: '学んだことを使う', property: '性質', summary: 'まとめ' }
 
-export function N08SolutionReadingFlow({ unit, section, progress, onSummaryReached, onReviewAnswer }: Props) {
+export function N08SolutionReadingFlow({ unit, section, progress, onSummaryReached, onReviewAnswer, originalMathLayout }: Props) {
   const { text } = useI18n()
   const answer = useAppStore(state => state.answerTextbook)
   const current = effectiveTextbookProgress(unit, progress)
   const items = section.items
   const resolved = (n: Node) => !n.interaction || isTextbookItemResolved(items.find(i => i.id === n.interaction)!, current?.answers[n.interaction])
+  const grouped = !originalMathLayout && policy.defaultLayout === 'grouped'
   const first = data.nodes.findIndex(n => !resolved(n))
   const frontier = first < 0 ? data.nodes.length : first
+  const closedSolved = data.nodes.filter((n, i) => i < frontier && resolved(n))
+  const groupedView = grouped ? projectTransformationView(presentation, closedSolved.flatMap(n => n.interaction && presentation.interactions.some(c => c.id === n.interaction) ? [n.interaction] : []), { boundarySolvedNodeIds: closedSolved.map(n => n.id) }) : null
   const maxStage = first < 0 ? data.stages.length - 1 : data.stages.findIndex(s => s.id === data.nodes[first].stageId)
   const storageKey = 'math-textbook-compact-v1:' + unit.unitId + ':r' + unit.revision
   const [cursor, setCursor] = useState(() => {
@@ -127,6 +137,8 @@ export function N08SolutionReadingFlow({ unit, section, progress, onSummaryReach
     </div>
   }
   function after(n: Node) {
+    const override = grouped && presentation.proseOverrides?.find(o => o.nodeId === n.id)
+    if (override) return <p className="reading-paragraph" data-prose-override={n.id}>{semantic(override.after)}</p>
     const compiled = data.semantic.nodes.find(x => x.id === n.id)!
     if (n.id !== 'n08-cases') return compiled.after.map(renderBlock)
     const parts = (compiled.after[0] as unknown as { parts: TextbookReadingPart[] }).parts
@@ -153,13 +165,24 @@ export function N08SolutionReadingFlow({ unit, section, progress, onSummaryReach
       {before.map(renderBlock)}{done && after(n)}
     </div>
   }
+  function renderNodes(nodes: Node[], past = false) {
+    const emitted = new Set<string>()
+    return nodes.map(n => {
+      const design = grouped && presentation.groups.find(g => g.sourceNodeIds.includes(n.id))
+      if (!design) return renderNode(n, past)
+      if (emitted.has(design.id)) return null
+      emitted.add(design.id)
+      const view = groupedView?.groups.find(g => g.id === design.id)
+      return view ? <TransformationReadingGroup key={design.id} group={view} renderSlot={blank} renderPanel={panel} /> : null
+    })
+  }
   const figure = section.figures[0]
   function originalFigure() {
     return <figure className="n08-figure"><img src={import.meta.env.BASE_URL + figure.src.replace(/^\//, '')} alt={figure.alt} />
       <figcaption>{figure.caption}</figcaption></figure>
   }
-  return <div ref={flow} className="textbook-reading-flow n08-reading n08-solution-reading" data-n08-revision="5" data-typeset-theme="true" data-testid="textbook-reading-flow" tabIndex={-1}>
-    <p className="n08-version-link"><Link to={'/learning/textbook/' + unit.unitId + '?version=4'}>以前のN08を見比べる</Link></p>
+  return <div ref={flow} className="textbook-reading-flow n08-reading n08-solution-reading" data-n08-revision="5" data-n08-layout={grouped ? 'grouped' : 'original'} data-typeset-theme="true" data-testid="textbook-reading-flow" tabIndex={-1}>
+    <p className="n08-version-link"><Link to={'/learning/textbook/' + unit.unitId + '?version=4'}>以前のN08を見比べる</Link>{grouped && <> · <Link to={'/learning/textbook/' + unit.unitId + '?layout=original'}>変更前の表示を見る</Link></>}</p>
     <div className="math-textbook-reading-controls"><span>{text('今の段階', '当前阶段')} {stageIndex + 1} / {data.stages.length}</span>
       {stageIndex > 0 && <button type="button" data-testid="n08-history-toggle" onClick={() => setHistory(x => !x)}>{history ? text('履歴を閉じる', '收起记录') : text('前の段階を見る', '查看之前的阶段')}</button>}
     </div>
@@ -168,7 +191,7 @@ export function N08SolutionReadingFlow({ unit, section, progress, onSummaryReach
         const previous = data.nodes.filter(n => n.stageId === s.id)
         return <section className="first-theme-recorded-results" key={s.id} data-testid={'recorded-results-' + s.id}>
           <h3>{i + 1}. {s.title}</h3>{result(previous.at(-1)!)}
-          <details open={expandAll || undefined}><summary>{text('全文を見る', '查看全文')}</summary>{i === 0 && originalFigure()}{previous.map(n => renderNode(n, true))}</details>
+          <details open={expandAll || undefined}><summary>{text('全文を見る', '查看全文')}</summary>{i === 0 && originalFigure()}{renderNodes(previous, true)}</details>
         </section>
       })}
     </div>}
@@ -182,12 +205,20 @@ export function N08SolutionReadingFlow({ unit, section, progress, onSummaryReach
       {stageIndex === 0 && originalFigure()}
       {stageIndex > 0 && stageIndex < 4 && <details><summary>元の数直線を見る</summary>{originalFigure()}</details>}
       {priorProblemNodes.length > 0 && <details className="n08-problem-record" open data-testid="n08-problem-record"><summary>この問題でここまで分かったこと</summary>{priorProblemNodes.map(n => {
+        if (grouped && stage.id === 'n08-stage-06' && n.id === 'n08-05') return null
+        const design = grouped && presentation.groups.find(g => g.sourceNodeIds.includes(n.id))
+        if (design) {
+          if (design.sourceNodeIds.at(-1) !== n.id) return null
+          const view = groupedView?.groups.find(g => g.id === design.id)
+          const terminal = view?.rows.at(-1)
+          return view && terminal ? <div key={n.id} data-result-source={n.resultId}><strong>{n.goal}</strong><TransformationReadingGroup group={{ ...view, kind: 'relation-sequence', rows: [{ ...terminal, before: [], after: [], formula: design.kind === 'expression-chain' ? { ...terminal.formula, left: view.rows[0].formula.right } : terminal.formula }] }} renderSlot={blank} renderPanel={panel} /></div> : null
+        }
         const compiled = data.semantic.nodes.find(x => x.id === n.id)!
         const formulas = [...compiled.before.filter(b => b.id === 'n08-r5-root-square-given-0'), ...compiled.after].filter(b => b.type === 'formula')
         return formulas.length ? <div key={n.id} data-result-source={n.resultId}><strong>{n.goal}</strong>{formulas.map(renderBlock)}</div> : null
       })}</details>}
-      {known.length > 0 && <aside className="math-textbook-stage-references" data-testid="math-textbook-stage-references"><strong>{text('使う条件・前の結果', '需要的条件与之前的结果')}</strong>{known.map(result)}</aside>}
-      {stageNodes.filter(n => data.nodes.indexOf(n) <= frontier).map(n => renderNode(n))}
+      {known.filter(n => !(grouped && stage.id === 'n08-stage-06' && n.id === 'n08-05')).length > 0 && <aside className="math-textbook-stage-references" data-testid="math-textbook-stage-references"><strong>{text('使う条件・前の結果', '需要的条件与之前的结果')}</strong>{known.filter(n => !(grouped && stage.id === 'n08-stage-06' && n.id === 'n08-05')).map(result)}</aside>}
+      {renderNodes(stageNodes.filter(n => data.nodes.indexOf(n) <= frontier))}
       {complete && stageIndex < data.stages.length - 1 && <button type="button" className="math-textbook-next-stage" data-testid="math-textbook-next-stage" onClick={() => {
         setCursor(stageIndex + 1); setActiveId(null); setHistory(false); setExpandAll(false)
         requestAnimationFrame(() => { flow.current?.focus({ preventScroll: true }); flow.current?.scrollIntoView({ block: 'start' }) })

@@ -1,0 +1,152 @@
+[
+  {
+    "graphId": "n08-root-sign",
+    "status": "PASS",
+    "checks": [
+      {
+        "transitionId": "n08-root-sign-a0",
+        "status": "PASS",
+        "ruleId": "add-both-sides",
+        "checks": [
+          "same-operation-both-sides",
+          "relation-direction",
+          "exact-result"
+        ],
+        "mathStatus": "PASS"
+      },
+      {
+        "transitionId": "n08-root-sign-a1",
+        "status": "PASS",
+        "ruleId": "rewrite",
+        "mathStatus": "PASS"
+      }
+    ],
+    "engineVersion": "1.14.0",
+    "formalProof": false,
+    "proofStatus": "EXACT_SYMBOLIC_CHECKS",
+    "domain": "closed AST polynomial identities / constant linear operations / one-variable relation solution sets / numeric quadratic extrema",
+    "graphHash": "db719394e6c7622e01a97048a696e4caae7407b25dd58a01ed6cd61300e627a1"
+  },
+  {
+    "graphId": "n08-root-absolute",
+    "status": "PASS",
+    "checks": [
+      {
+        "transitionId": "n08-root-absolute-a0",
+        "status": "PASS",
+        "ruleId": "rewrite",
+        "checks": [
+          "identity"
+        ],
+        "mathStatus": "PASS"
+      },
+      {
+        "transitionId": "n08-root-absolute-a1",
+        "status": "PASS",
+        "ruleId": "rewrite",
+        "checks": [
+          "identity"
+        ],
+        "mathStatus": "PASS"
+      },
+      {
+        "transitionId": "n08-root-absolute-a2",
+        "status": "PASS",
+        "ruleId": "rewrite",
+        "checks": [
+          "identity"
+        ],
+        "mathStatus": "PASS"
+      },
+      {
+        "transitionId": "n08-root-absolute-a3",
+        "status": "PASS",
+        "ruleId": "rewrite",
+        "checks": [
+          "identity"
+        ],
+        "mathStatus": "PASS"
+      }
+    ],
+    "engineVersion": "1.14.0",
+    "formalProof": false,
+    "proofStatus": "EXACT_SYMBOLIC_CHECKS",
+    "domain": "closed AST polynomial identities / constant linear operations / one-variable relation solution sets / numeric quadratic extrema",
+    "graphHash": "79816ecc463e116bfbab9cfe0323d863b3cb8f2dbc1158d642fc3d33df7b9f71"
+  },
+  {
+    "graphId": "n08-pi-sign",
+    "status": "PASS",
+    "checks": [
+      {
+        "transitionId": "n08-pi-sign-a0",
+        "status": "PASS",
+        "ruleId": "add-both-sides",
+        "checks": [
+          "same-operation-both-sides",
+          "relation-direction",
+          "exact-result"
+        ],
+        "mathStatus": "PASS"
+      },
+      {
+        "transitionId": "n08-pi-sign-a1",
+        "status": "PASS",
+        "ruleId": "rewrite",
+        "mathStatus": "PASS"
+      }
+    ],
+    "engineVersion": "1.14.0",
+    "formalProof": false,
+    "proofStatus": "EXACT_SYMBOLIC_CHECKS",
+    "domain": "closed AST polynomial identities / constant linear operations / one-variable relation solution sets / numeric quadratic extrema",
+    "graphHash": "a23b1f2da8c20bc12022755bb1330f17bbecce99623eea180d8d1f7fec8040d7"
+  },
+  {
+    "graphId": "n08-pi-absolute",
+    "status": "PASS",
+    "checks": [
+      {
+        "transitionId": "n08-pi-absolute-a0",
+        "status": "PASS",
+        "ruleId": "rewrite",
+        "checks": [
+          "identity"
+        ],
+        "mathStatus": "PASS"
+      },
+      {
+        "transitionId": "n08-pi-absolute-a1",
+        "status": "PASS",
+        "ruleId": "rewrite",
+        "checks": [
+          "identity"
+        ],
+        "mathStatus": "PASS"
+      },
+      {
+        "transitionId": "n08-pi-absolute-a2",
+        "status": "PASS",
+        "ruleId": "rewrite",
+        "checks": [
+          "identity"
+        ],
+        "mathStatus": "PASS"
+      },
+      {
+        "transitionId": "n08-pi-absolute-a3",
+        "status": "PASS",
+        "ruleId": "rewrite",
+        "checks": [
+          "identity"
+        ],
+        "mathStatus": "PASS"
+      }
+    ],
+    "engineVersion": "1.14.0",
+    "formalProof": false,
+    "proofStatus": "EXACT_SYMBOLIC_CHECKS",
+    "domain": "closed AST polynomial identities / constant linear operations / one-variable relation solution sets / numeric quadratic extrema",
+    "graphHash": "f53d0ba98f9f757275d5b3aef457adb94eb476f675e06d11e4703d8538f4825f"
+  }
+]

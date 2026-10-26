@@ -1,0 +1,139 @@
+{
+  "verdict": "PASS",
+  "evidence_refs": [
+    "b7827c1e-5d63-46ff-9f5f-98e10d96f318",
+    "6dff12cf-1e22-41e9-a963-74d1a1862609",
+    "08610358-017a-4c9a-a59a-b41defcab90c",
+    "1e441228-b942-44a7-8e84-5ffdccf2ec45",
+    "6dd4089a-c86a-4e98-9f60-7a1e0b31162b",
+    "5bac72ba-5395-433a-ba20-3de30f42c509"
+  ],
+  "capability_receipts": [
+    "f0cea2093e3e80a9f9e3f1e0b4c6d9378b4e09a12f9bd392042603659a47e8da",
+    "af5bf4fc2e078541e6f9b7a67958b5532475fc8307915af1be635d04814b57dd",
+    "86f03b4157f68cc9d4b5c891a42c2ec026e97b22539cdf73547273c513f3e720",
+    "3eaa5f3e2f6d830e33744d1e31d24d5e460ebc876fad92bbb93e42d878d9dfba",
+    "f4145ef97fffe4373ef8dac76230993b103b893c1db6a3d0c6195fd562bbf13f",
+    "95f8303028d18bae30f38a0d3c638f9b70586e5c80be88574eb74a36d47558d2",
+    "69e7c0be20faa9e40e13bcc8db5286c5c09da552b7f061dd480a52664827564c",
+    "aa130cfb02626b83e59d60634735fae0b5a9c1059a597d656d1babcf82016457",
+    "c9638d0496fa049a428fea1586f540b1150af2217548287b8418dc451276b8ec",
+    "fe62475a7f63918ac5df3547529a580cfd99d3c5567a6cd3140acd2c4396d683",
+    "557cd0228f55ed3b2ccb510c0fef1903eccf448a9598493c2d57b9ee662ab1ae",
+    "5c571157dab02a86b2379feb41bb3ab2a1d58ad2d32985eb7032bb54c6e6c1f5"
+  ],
+  "case_dispositions": [
+    {
+      "id": "N07-USER-F01",
+      "disposition": "APPLY",
+      "reason": "元の絶対値・前段の大小・円周率の与えられた値を保持。絶対値を外すgroupは前段の符号・規則nodeを可視境界にする。"
+    },
+    {
+      "id": "N07-USER-F02",
+      "disposition": "APPLY",
+      "reason": "同じ数値の問題へ各局所の結果を連続式として戻す。"
+    },
+    {
+      "id": "N07-USER-F03",
+      "disposition": "APPLY",
+      "reason": "左辺に元の中身を作るために同じ値を引く目的を説明する。"
+    },
+    {
+      "id": "N07-USER-F04",
+      "disposition": "APPLY",
+      "reason": "括弧全体への負号、二項への分配、積の計算、項の交換まで全行を保持。"
+    },
+    {
+      "id": "N07-USER-F05",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+    },
+    {
+      "id": "N07-USER-F06",
+      "disposition": "APPLY",
+      "reason": "負の二つの因数を括弧ごと描画し、文中の数値もtyped math。"
+    },
+    {
+      "id": "n07-layout-relation",
+      "disposition": "APPLY",
+      "reason": "四つの局所で比較記号・等号の列を揃える。"
+    },
+    {
+      "id": "n07-layout-positive",
+      "disposition": "APPLY",
+      "reason": "前の受入済みの概念・場合分けの構造は保持。"
+    },
+    {
+      "id": "first-title-layout-positive",
+      "disposition": "APPLY",
+      "reason": "四つの局所で比較記号・等号の列を揃える。"
+    },
+    {
+      "id": "N07-ACCEPTED-20261025",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+    },
+    {
+      "id": "N08-ACCEPTED-20261025",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+    },
+    {
+      "id": "N09-REJECTED-20261025",
+      "disposition": "APPLY",
+      "reason": "大小→差→符号→規則→全体の負号→分配→積→交換。"
+    },
+    {
+      "id": "N10-REJECTED-20261025",
+      "disposition": "APPLY",
+      "reason": "負号を中身全体へ適用する括弧と分配の因数を保持。"
+    },
+    {
+      "id": "N09-ACCEPTED-20261025",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+    },
+    {
+      "id": "N10-ACCEPTED-20261025",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+    }
+  ],
+  "aiReview": {
+    "requestHash": "cf5f86b11444454c7ebd960a09406937e984b8c1b1cdfda8ecc253d0097104f5",
+    "inputHash": "f5e40f7217a03291ea778654de9c30e0ed90a83496b74faa4af2f541b3313b1d",
+    "reviewer": "same-assistant source and visible-state pass; not independent AI",
+    "evidence": "P001 unchanged. Eleven visible-only review states have individually recorded purposes and source references. Fifteen existing cases have dimension-specific dispositions. Whole-material acceptances are not reused as labels or proof."
+  },
+  "before_after": [
+    "Four local opt-in chains replace repeated equation captions",
+    "Eleven existing grouped interactions;34 grading IDs and revision5 remain",
+    "Internal state/operation math is checked; terminal statement appears once"
+  ],
+  "protected_scope": [
+    "src/data/textbook/math/numbers/n08Authored.json",
+    "src/data/textbook/math/numbers/n08Revision5.json",
+    "src/data/textbook/math/numbers/n08ActiveVersion.json",
+    "src/components/textbook/N08ReadingFlow.tsx",
+    "src/components/textbook/n08-reading.css",
+    "src/components/textbook/n08-solution-reading.css",
+    "src/data/textbook/math/numbers/n11Authored.json",
+    "src/data/textbook/math/numbers/n11Transformation.json"
+  ],
+  "patch_plan": [
+    "src/components/textbook/N08SolutionReadingFlow.tsx",
+    "src/components/textbook/TransformationReadingGroup.tsx",
+    "src/domain/transformationReading.ts",
+    "src/data/textbook/math/numbers/n08Transformation.json",
+    "src/data/textbook/math/numbers/n08PresentationPolicy.json",
+    "tools/textbook/transformation/",
+    "tools/textbook/tests/n08-transformation.test.mjs",
+    "work/items/W-MATH-039-n08-grouped-transformations/"
+  ],
+  "verification_plan": [
+    "N08 exact/negative source and group checks plus all previous transformation/workflow checks",
+    "Four-width34correct and80wrong choices;old r4/r5 saves and both layouts",
+    "Fixture shared slots and full source-matched hosted app"
+  ],
+  "proposal_hash": "c27fd866666af45d35893bac52747ea33b710a4ea4a040ac82be90afacb491ee"
+}

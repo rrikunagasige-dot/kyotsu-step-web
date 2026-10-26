@@ -1,5 +1,6 @@
 import {planSchema,getPath} from './schema.mjs';
 import {graphSchema} from '../solution/graph.mjs';
+import {n08SourceBinding} from './n08-source-binding.mjs';
 import {n11SourceBinding} from './n11-source-binding.mjs';
 import {PATTERNS} from './patterns.mjs';
 import {hash} from '../util.mjs';
@@ -24,6 +25,8 @@ export function validateTransformationPlan(ir,input,{verifyMath=true}={}){
   if(p.graphs.some(g=>!sourceGraphs.some(source=>source.id===g.id&&hash(graphSchema.parse(source))===hash(g))))add('TG03_COVERAGE','source AST differs from display graph');
  }else if(ir.schemaVersion==='guided-math-presentation/1'&&ir.unit?.unitId==='math-numbers-expressions-n11'){
   if(hash(ir)!==n11SourceBinding.sourceHash||p.graphs.length!==Object.keys(n11SourceBinding.graphs).length||p.graphs.some(g=>n11SourceBinding.graphs[g.id]!==hash(g)))add('TG03_COVERAGE','N11 frozen source/AST bridge changed');
+ }else if(ir.unit?.unitId==='math-numbers-expressions-n08'){
+  if(hash(ir)!==n08SourceBinding.sourceHash||p.graphs.length!==Object.keys(n08SourceBinding.graphs).length||p.graphs.some(g=>n08SourceBinding.graphs[g.id]!==hash(g)))add('TG03_COVERAGE','N08 frozen source/AST bridge changed');
  }else add('TG03_COVERAGE','NEEDS_MAPPING: no source AST or registered legacy bridge');
 
  const sourceNodes=ir.semantic?.nodes??ir.nodes??ir.problems?.flatMap(p=>p.steps)??[];
@@ -36,8 +39,13 @@ export function validateTransformationPlan(ir,input,{verifyMath=true}={}){
  for(const [key,rowRef] of Object.entries(p.numberAliases))if(!key||!rowIds.includes(rowRef))add('TG10_NUMBER','dangling alias '+key);
  const mathReceipts=[];
  for(const graph of p.graphs){if(verifyMath){const r=verifySolution(graph);mathReceipts.push({graphId:graph.id,...r});if(r.status!=='PASS')add('TG05_CONDITION',{graph:graph.id,receipt:r});}}
+ for(const o of p.proseOverrides??[]){
+  const node=nodes.get(o.nodeId),refs=node?.after?.map(b=>b.id)??[];
+  if(!node||o.visibleAfterNodeId!==o.nodeId||hash(o.sourceRefs)!==hash(refs)||p.scope.nodeIds.includes(o.nodeId))add('TG03_COVERAGE','invalid prose override '+o.nodeId);
+ }
  const allSlots=[];
  for(const group of p.groups){
+  if((group.boundaryNodeIds??[]).some(id=>!nodes.has(id)||p.scope.nodeIds.includes(id)))add('TG08_VISIBILITY','invalid external boundary '+group.id);
   const pattern=PATTERNS[group.patternId];if(!pattern||!pattern.supported)add('TG01_SCOPE','unsupported pattern '+group.patternId);
   const graph=graphMap.get(group.graphRef);
   if(!graph||group.sourceNodeIds.some(id=>!p.scope.nodeIds.includes(id))||group.stageIds.some(id=>!p.scope.stageIds.includes(id)))add('TG01_SCOPE',group.id);
@@ -98,5 +106,5 @@ export function validateTransformationPlan(ir,input,{verifyMath=true}={}){
  if(p.coverage.some(c=>!rowIds.includes(c.rowRef)))add('TG03_COVERAGE','dangling projection');
  const consumed=new Set(p.groups.flatMap(g=>g.rows.flatMap(r=>r.sourceRefs)));
  if(blocks.some(id=>!consumed.has(id)))add('TG03_COVERAGE','unconsumed source block');
- return {status:findings.length?'FAIL':'PASS',findings,mathReceipts,baseIRHash:hash(ir),planHash:hash(input),learnerCopyHash:hash(p.groups.flatMap(g=>g.rows.map(r=>[r.before,r.after]))),meaningAuditRequired:true};
+ return {status:findings.length?'FAIL':'PASS',findings,mathReceipts,baseIRHash:hash(ir),planHash:hash(input),learnerCopyHash:hash(p.proseOverrides?{rows:p.groups.flatMap(g=>g.rows.map(r=>[r.before,r.after])),proseOverrides:p.proseOverrides}:p.groups.flatMap(g=>g.rows.map(r=>[r.before,r.after]))),meaningAuditRequired:true};
 }

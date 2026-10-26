@@ -1,0 +1,7 @@
+{
+  "schemaVersion": "n08-presentation-policy/1",
+  "defaultLayout": "grouped",
+  "gradingRevision": 5,
+  "fallback": "?layout=original",
+  "archive": "?version=4"
+}

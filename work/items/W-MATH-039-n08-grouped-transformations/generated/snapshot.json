@@ -1,0 +1,1139 @@
+{
+  "work": "W-MATH-039",
+  "engine_version": "1.0.0",
+  "ledger_head": "4054f0158ffc59464d4b7f04c22f6000fe46f2f80c36df70b14c69b5e542a42c",
+  "work_status": "IMPLEMENTING",
+  "profile": "material",
+  "simulation": false,
+  "candidate_sha": "0aa633dcf6c1acc6e8df718e907cbaae0e8961f9",
+  "next": {
+    "status": "READY",
+    "task": {
+      "work_id": "W-MATH-039",
+      "node": {
+        "id": "R07_VERIFY@n08",
+        "stage_kind": "R07_VERIFY",
+        "contract_kind": "R07_VERIFY",
+        "actor": "TOOL",
+        "depends_on": [
+          "R06_PATCH@n08"
+        ],
+        "required": [],
+        "block": "n08",
+        "release_unit": "n08",
+        "watch": "integration",
+        "phase": "post-implementation",
+        "priority": 0,
+        "source_refs": [
+          "src/data/textbook/math/numbers/n08Revision5.json",
+          "work/items/W-MATH-037-n08-workflow-trial/CANDIDATE_IR_R5.json",
+          "work/items/W-MATH-037-n08-workflow-trial/SOLUTION_BUNDLE_R5.json"
+        ],
+        "protected_refs": [
+          "src/data/textbook/math/numbers/n08Authored.json",
+          "src/data/textbook/math/numbers/n08Revision5.json",
+          "src/data/textbook/math/numbers/n08ActiveVersion.json",
+          "src/components/textbook/N08ReadingFlow.tsx",
+          "src/components/textbook/n08-reading.css",
+          "src/components/textbook/n08-solution-reading.css",
+          "src/data/textbook/math/numbers/n11Authored.json",
+          "src/data/textbook/math/numbers/n11Transformation.json"
+        ],
+        "approval_scope_ref": "proposal",
+        "capability_requests": [
+          "ir.verify",
+          "browser.verify",
+          "protected.verify",
+          "solution.validate"
+        ],
+        "required_code_receipts": [
+          "ir.verify",
+          "browser.verify",
+          "protected.verify",
+          "solution.validate"
+        ],
+        "required_ai_receipts": []
+      },
+      "task_id": "5e284b9b52051a63aa363ed1746d4870b2e3884aeffb8a1f0957eca9045a8d71",
+      "input_hash": "16406b26144764e2001b4b9d9af8de94c663d587fcb219edb871cd5c4c350dfc",
+      "source_sha": "0aa633dcf6c1acc6e8df718e907cbaae0e8961f9",
+      "candidate_sha": "0aa633dcf6c1acc6e8df718e907cbaae0e8961f9",
+      "rules": {
+        "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
+        "governance/REVIEW_POLICY.json": "a71148f007a79b124385c7645e6bc01564bfa02b12152174883543f31f6ce72d",
+        "governance/WORK_SYSTEM.md": "37b0b0e0fecc79d7c067e17ec8dbeb53d53863f04369171d65ef652a176eb093",
+        "memory/LESSONS/MATH_TYPESETTING_GROUPS.md": "8047831b13d22ffb773f68e23ab788a3490e4b69ebbf5d5d357f9f786ed53d0a",
+        "subjects/mathematics/textbook/SPEC.md": "a36959ae6f951e855c3e60d280d02a0f20c6e23185d9eb90b17ffbc889c63277"
+      },
+      "proposal": {
+        "contentDesignHash": "2ff0e38d4d081a3dc9f1912cd6b6a0ebe395fd9cb8afd6bd8fab2f2778a862e5",
+        "hash": "c27fd866666af45d35893bac52747ea33b710a4ea4a040ac82be90afacb491ee",
+        "id": "W-MATH-039/P-001"
+      },
+      "scope": {
+        "paths": [
+          "src/components/textbook/N08SolutionReadingFlow.tsx",
+          "src/components/textbook/TransformationReadingGroup.tsx",
+          "src/domain/transformationReading.ts",
+          "src/data/textbook/math/numbers/n08Transformation.json",
+          "src/data/textbook/math/numbers/n08PresentationPolicy.json",
+          "tools/textbook/transformation/",
+          "tools/textbook/tests/n08-transformation.test.mjs",
+          "work/items/W-MATH-039-n08-grouped-transformations/"
+        ],
+        "preserve": [
+          "src/data/textbook/math/numbers/n08Authored.json",
+          "src/data/textbook/math/numbers/n08Revision5.json",
+          "src/data/textbook/math/numbers/n08ActiveVersion.json",
+          "src/components/textbook/N08ReadingFlow.tsx",
+          "src/components/textbook/n08-reading.css",
+          "src/components/textbook/n08-solution-reading.css",
+          "src/data/textbook/math/numbers/n11Authored.json",
+          "src/data/textbook/math/numbers/n11Transformation.json"
+        ]
+      },
+      "source_manifest": {
+        "src/data/textbook/math/numbers/n08Revision5.json": "2ff0e38d4d081a3dc9f1912cd6b6a0ebe395fd9cb8afd6bd8fab2f2778a862e5",
+        "work/items/W-MATH-037-n08-workflow-trial/CANDIDATE_IR_R5.json": "b68bb890e181a1593ec4239f5fa3acaae37b11d877b183bceb320762d09937c6",
+        "work/items/W-MATH-037-n08-workflow-trial/SOLUTION_BUNDLE_R5.json": "b0334dfb3734acddb21fe456d03e63474574e5fede3ccd31ad79962e6c7dce00"
+      },
+      "previous_results": {
+        "R06_PATCH@n08": {
+          "actor": "capability-runner",
+          "artifact": "31e9d7d44e6de65d7ee8e68098d16988a8809f1688173cf624d6d4a6ce3827b4",
+          "input_hash": "68d1616df7abc0e6467671b8a8edde1ebb20869ba3749a041847b201ae1cb7fb",
+          "node": "R06_PATCH@n08",
+          "verdict": "PASS"
+        }
+      },
+      "do_not_touch": [
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Revision5.json",
+        "src/data/textbook/math/numbers/n08ActiveVersion.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "src/components/textbook/n08-solution-reading.css",
+        "src/data/textbook/math/numbers/n11Authored.json",
+        "src/data/textbook/math/numbers/n11Transformation.json"
+      ],
+      "completion_is_not_semantic_proof": true
+    }
+  },
+  "nodes": [
+    {
+      "id": "S00_RECOVER",
+      "stage_kind": "S00_RECOVER",
+      "contract_kind": "S00_RECOVER",
+      "actor": "CODE",
+      "depends_on": [],
+      "required": [],
+      "block": null,
+      "release_unit": null,
+      "watch": "integration",
+      "phase": "analysis",
+      "priority": -1,
+      "source_refs": [],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Revision5.json",
+        "src/data/textbook/math/numbers/n08ActiveVersion.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "src/components/textbook/n08-solution-reading.css",
+        "src/data/textbook/math/numbers/n11Authored.json",
+        "src/data/textbook/math/numbers/n11Transformation.json"
+      ],
+      "capability_requests": [],
+      "required_code_receipts": [],
+      "required_ai_receipts": [],
+      "status": "PASSED"
+    },
+    {
+      "id": "S01_ROUTE",
+      "stage_kind": "S01_ROUTE",
+      "contract_kind": "S01_ROUTE",
+      "actor": "CODE",
+      "depends_on": [
+        "S00_RECOVER"
+      ],
+      "required": [],
+      "block": null,
+      "release_unit": null,
+      "watch": "integration",
+      "phase": "analysis",
+      "priority": -1,
+      "source_refs": [],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Revision5.json",
+        "src/data/textbook/math/numbers/n08ActiveVersion.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "src/components/textbook/n08-solution-reading.css",
+        "src/data/textbook/math/numbers/n11Authored.json",
+        "src/data/textbook/math/numbers/n11Transformation.json"
+      ],
+      "capability_requests": [],
+      "required_code_receipts": [],
+      "required_ai_receipts": [],
+      "status": "PASSED"
+    },
+    {
+      "id": "R01_CAPTURE@n08",
+      "stage_kind": "R01_CAPTURE",
+      "contract_kind": "R01_CAPTURE",
+      "actor": "AI",
+      "depends_on": [
+        "S01_ROUTE"
+      ],
+      "required": [
+        "complaint",
+        "before_evidence",
+        "reproduction",
+        "target_versions"
+      ],
+      "block": "n08",
+      "release_unit": "n08",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 0,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n08Revision5.json",
+        "work/items/W-MATH-037-n08-workflow-trial/CANDIDATE_IR_R5.json",
+        "work/items/W-MATH-037-n08-workflow-trial/SOLUTION_BUNDLE_R5.json"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Revision5.json",
+        "src/data/textbook/math/numbers/n08ActiveVersion.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "src/components/textbook/n08-solution-reading.css",
+        "src/data/textbook/math/numbers/n11Authored.json",
+        "src/data/textbook/math/numbers/n11Transformation.json"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "source.fixed",
+        "feedback.capture"
+      ],
+      "required_code_receipts": [
+        "source.fixed",
+        "feedback.capture"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "R02_CAUSE@n08",
+      "stage_kind": "R02_CAUSE",
+      "contract_kind": "R02_CAUSE",
+      "actor": "AI",
+      "depends_on": [
+        "R01_CAPTURE@n08"
+      ],
+      "required": [
+        "symptoms",
+        "confirmed_causes",
+        "hypotheses",
+        "missing_learning_actions",
+        "root_cause_signatures"
+      ],
+      "block": "n08",
+      "release_unit": "n08",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 0,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n08Revision5.json",
+        "work/items/W-MATH-037-n08-workflow-trial/CANDIDATE_IR_R5.json",
+        "work/items/W-MATH-037-n08-workflow-trial/SOLUTION_BUNDLE_R5.json"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Revision5.json",
+        "src/data/textbook/math/numbers/n08ActiveVersion.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "src/components/textbook/n08-solution-reading.css",
+        "src/data/textbook/math/numbers/n11Authored.json",
+        "src/data/textbook/math/numbers/n11Transformation.json"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "case.retrieve",
+        "ir.verify",
+        "source.audit",
+        "novice.audit",
+        "solution.validate"
+      ],
+      "required_code_receipts": [
+        "case.retrieve",
+        "ir.verify",
+        "source.audit",
+        "novice.audit",
+        "solution.validate"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "R03_IMPACT@n08",
+      "stage_kind": "R03_IMPACT",
+      "contract_kind": "R03_IMPACT",
+      "actor": "AI",
+      "depends_on": [
+        "R02_CAUSE@n08"
+      ],
+      "required": [
+        "impact_rows",
+        "source_inventory",
+        "unknowns"
+      ],
+      "block": "n08",
+      "release_unit": "n08",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 0,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n08Revision5.json",
+        "work/items/W-MATH-037-n08-workflow-trial/CANDIDATE_IR_R5.json",
+        "work/items/W-MATH-037-n08-workflow-trial/SOLUTION_BUNDLE_R5.json"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Revision5.json",
+        "src/data/textbook/math/numbers/n08ActiveVersion.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "src/components/textbook/n08-solution-reading.css",
+        "src/data/textbook/math/numbers/n11Authored.json",
+        "src/data/textbook/math/numbers/n11Transformation.json"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "impact.inventory"
+      ],
+      "required_code_receipts": [
+        "impact.inventory"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "R04_PROPOSAL@n08",
+      "stage_kind": "R04_PROPOSAL",
+      "contract_kind": "R04_PROPOSAL",
+      "actor": "AI",
+      "depends_on": [
+        "R03_IMPACT@n08"
+      ],
+      "required": [
+        "before_after",
+        "protected_scope",
+        "patch_plan",
+        "verification_plan",
+        "proposal_hash"
+      ],
+      "block": "n08",
+      "release_unit": "n08",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 0,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n08Revision5.json",
+        "work/items/W-MATH-037-n08-workflow-trial/CANDIDATE_IR_R5.json",
+        "work/items/W-MATH-037-n08-workflow-trial/SOLUTION_BUNDLE_R5.json"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Revision5.json",
+        "src/data/textbook/math/numbers/n08ActiveVersion.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "src/components/textbook/n08-solution-reading.css",
+        "src/data/textbook/math/numbers/n11Authored.json",
+        "src/data/textbook/math/numbers/n11Transformation.json"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "teaching.plan",
+        "step.plan",
+        "blank.plan",
+        "prose.compose",
+        "text.verify",
+        "figure.verify",
+        "ir.verify",
+        "source.audit",
+        "novice.audit",
+        "solution.validate",
+        "interaction.plan",
+        "solution.review"
+      ],
+      "required_code_receipts": [
+        "teaching.plan",
+        "step.plan",
+        "blank.plan",
+        "prose.compose",
+        "text.verify",
+        "figure.verify",
+        "ir.verify",
+        "source.audit",
+        "novice.audit",
+        "solution.validate",
+        "interaction.plan",
+        "solution.review"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PASSED"
+    },
+    {
+      "id": "R05_APPROVAL@n08",
+      "stage_kind": "R05_APPROVAL",
+      "contract_kind": "R05_APPROVAL",
+      "actor": "USER",
+      "depends_on": [
+        "R04_PROPOSAL@n08"
+      ],
+      "required": [],
+      "block": "n08",
+      "release_unit": "n08",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 0,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n08Revision5.json",
+        "work/items/W-MATH-037-n08-workflow-trial/CANDIDATE_IR_R5.json",
+        "work/items/W-MATH-037-n08-workflow-trial/SOLUTION_BUNDLE_R5.json"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Revision5.json",
+        "src/data/textbook/math/numbers/n08ActiveVersion.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "src/components/textbook/n08-solution-reading.css",
+        "src/data/textbook/math/numbers/n11Authored.json",
+        "src/data/textbook/math/numbers/n11Transformation.json"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [],
+      "required_code_receipts": [],
+      "required_ai_receipts": [],
+      "status": "PASSED"
+    },
+    {
+      "id": "R06_PATCH@n08",
+      "stage_kind": "R06_PATCH",
+      "contract_kind": "R06_PATCH",
+      "actor": "TOOL",
+      "depends_on": [
+        "R05_APPROVAL@n08"
+      ],
+      "required": [],
+      "block": "n08",
+      "release_unit": "n08",
+      "watch": "integration",
+      "phase": "pre-design",
+      "priority": 0,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n08Revision5.json",
+        "work/items/W-MATH-037-n08-workflow-trial/CANDIDATE_IR_R5.json",
+        "work/items/W-MATH-037-n08-workflow-trial/SOLUTION_BUNDLE_R5.json"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Revision5.json",
+        "src/data/textbook/math/numbers/n08ActiveVersion.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "src/components/textbook/n08-solution-reading.css",
+        "src/data/textbook/math/numbers/n11Authored.json",
+        "src/data/textbook/math/numbers/n11Transformation.json"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "ir.compile",
+        "render.solution"
+      ],
+      "required_code_receipts": [
+        "ir.compile",
+        "render.solution"
+      ],
+      "required_ai_receipts": [],
+      "status": "PASSED"
+    },
+    {
+      "id": "R07_VERIFY@n08",
+      "stage_kind": "R07_VERIFY",
+      "contract_kind": "R07_VERIFY",
+      "actor": "TOOL",
+      "depends_on": [
+        "R06_PATCH@n08"
+      ],
+      "required": [],
+      "block": "n08",
+      "release_unit": "n08",
+      "watch": "integration",
+      "phase": "post-implementation",
+      "priority": 0,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n08Revision5.json",
+        "work/items/W-MATH-037-n08-workflow-trial/CANDIDATE_IR_R5.json",
+        "work/items/W-MATH-037-n08-workflow-trial/SOLUTION_BUNDLE_R5.json"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Revision5.json",
+        "src/data/textbook/math/numbers/n08ActiveVersion.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "src/components/textbook/n08-solution-reading.css",
+        "src/data/textbook/math/numbers/n11Authored.json",
+        "src/data/textbook/math/numbers/n11Transformation.json"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "ir.verify",
+        "browser.verify",
+        "protected.verify",
+        "solution.validate"
+      ],
+      "required_code_receipts": [
+        "ir.verify",
+        "browser.verify",
+        "protected.verify",
+        "solution.validate"
+      ],
+      "required_ai_receipts": [],
+      "status": "PENDING"
+    },
+    {
+      "id": "R07_SEMANTIC@n08",
+      "stage_kind": "R07_SEMANTIC",
+      "contract_kind": "R07_SEMANTIC",
+      "actor": "AI",
+      "depends_on": [
+        "R07_VERIFY@n08"
+      ],
+      "required": [
+        "symptom_resolution",
+        "regression_review",
+        "protected_scope_review",
+        "unknowns"
+      ],
+      "block": "n08",
+      "release_unit": "n08",
+      "watch": "integration",
+      "phase": "post-implementation",
+      "priority": 0,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n08Revision5.json",
+        "work/items/W-MATH-037-n08-workflow-trial/CANDIDATE_IR_R5.json",
+        "work/items/W-MATH-037-n08-workflow-trial/SOLUTION_BUNDLE_R5.json"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Revision5.json",
+        "src/data/textbook/math/numbers/n08ActiveVersion.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "src/components/textbook/n08-solution-reading.css",
+        "src/data/textbook/math/numbers/n11Authored.json",
+        "src/data/textbook/math/numbers/n11Transformation.json"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "source.audit",
+        "novice.audit",
+        "solution.review"
+      ],
+      "required_code_receipts": [
+        "source.audit",
+        "novice.audit",
+        "solution.review"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "id": "G2_AUDIT@n08",
+      "stage_kind": "G2_AUDIT",
+      "contract_kind": "G2_AUDIT",
+      "actor": "AI",
+      "depends_on": [
+        "R07_SEMANTIC@n08"
+      ],
+      "required": [
+        "audit_rows",
+        "release_readiness",
+        "impact_sweep_completion",
+        "audit_method",
+        "unknowns"
+      ],
+      "block": null,
+      "release_unit": "n08",
+      "watch": "integration",
+      "phase": "pre-release",
+      "priority": 0,
+      "source_refs": [],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Revision5.json",
+        "src/data/textbook/math/numbers/n08ActiveVersion.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "src/components/textbook/n08-solution-reading.css",
+        "src/data/textbook/math/numbers/n11Authored.json",
+        "src/data/textbook/math/numbers/n11Transformation.json"
+      ],
+      "capability_requests": [
+        "protected.verify",
+        "impact.inventory"
+      ],
+      "required_code_receipts": [
+        "protected.verify",
+        "impact.inventory"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "id": "G3_HOST@n08",
+      "stage_kind": "G3_HOST",
+      "contract_kind": "G3_HOST",
+      "actor": "TOOL",
+      "depends_on": [
+        "G2_AUDIT@n08"
+      ],
+      "required": [],
+      "block": null,
+      "release_unit": "n08",
+      "watch": "integration",
+      "phase": "release",
+      "priority": 0,
+      "source_refs": [],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Revision5.json",
+        "src/data/textbook/math/numbers/n08ActiveVersion.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "src/components/textbook/n08-solution-reading.css",
+        "src/data/textbook/math/numbers/n11Authored.json",
+        "src/data/textbook/math/numbers/n11Transformation.json"
+      ],
+      "capability_requests": [
+        "release.verify"
+      ],
+      "required_code_receipts": [
+        "release.verify"
+      ],
+      "required_ai_receipts": [],
+      "status": "PENDING"
+    },
+    {
+      "id": "G3_FINAL@n08",
+      "stage_kind": "G3_FINAL",
+      "contract_kind": "G3_FINAL",
+      "actor": "USER",
+      "depends_on": [
+        "G3_HOST@n08"
+      ],
+      "required": [],
+      "block": null,
+      "release_unit": "n08",
+      "watch": "integration",
+      "phase": "acceptance",
+      "priority": 0,
+      "source_refs": [],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Revision5.json",
+        "src/data/textbook/math/numbers/n08ActiveVersion.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "src/components/textbook/n08-solution-reading.css",
+        "src/data/textbook/math/numbers/n11Authored.json",
+        "src/data/textbook/math/numbers/n11Transformation.json"
+      ],
+      "capability_requests": [],
+      "required_code_receipts": [],
+      "required_ai_receipts": [],
+      "status": "PENDING"
+    },
+    {
+      "id": "R03_IMPACT_SWEEP@n08",
+      "stage_kind": "R03_IMPACT_SWEEP",
+      "contract_kind": "R03_IMPACT_SWEEP",
+      "actor": "AI",
+      "depends_on": [
+        "G3_FINAL@n08",
+        "R03_IMPACT@n08"
+      ],
+      "required": [
+        "impact_rows",
+        "source_inventory",
+        "unknowns"
+      ],
+      "block": null,
+      "release_unit": "n08",
+      "watch": "integration",
+      "phase": "post-fix",
+      "priority": 0,
+      "source_refs": [],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Revision5.json",
+        "src/data/textbook/math/numbers/n08ActiveVersion.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "src/components/textbook/n08-solution-reading.css",
+        "src/data/textbook/math/numbers/n11Authored.json",
+        "src/data/textbook/math/numbers/n11Transformation.json"
+      ],
+      "capability_requests": [
+        "impact.inventory"
+      ],
+      "required_code_receipts": [
+        "impact.inventory"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "id": "R08_CAPTURE_LEARNING@n08",
+      "stage_kind": "R08_CAPTURE_LEARNING",
+      "contract_kind": "R08_CAPTURE_LEARNING",
+      "actor": "AI",
+      "depends_on": [
+        "R03_IMPACT_SWEEP@n08",
+        "R07_SEMANTIC@n08"
+      ],
+      "required": [
+        "case_updates",
+        "rule_links",
+        "regression_links",
+        "unresolved"
+      ],
+      "block": "n08",
+      "release_unit": "n08",
+      "watch": "integration",
+      "phase": "repair-finalization",
+      "priority": 0,
+      "source_refs": [
+        "src/data/textbook/math/numbers/n08Revision5.json",
+        "work/items/W-MATH-037-n08-workflow-trial/CANDIDATE_IR_R5.json",
+        "work/items/W-MATH-037-n08-workflow-trial/SOLUTION_BUNDLE_R5.json"
+      ],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Revision5.json",
+        "src/data/textbook/math/numbers/n08ActiveVersion.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "src/components/textbook/n08-solution-reading.css",
+        "src/data/textbook/math/numbers/n11Authored.json",
+        "src/data/textbook/math/numbers/n11Transformation.json"
+      ],
+      "approval_scope_ref": "proposal",
+      "capability_requests": [
+        "case.finalize"
+      ],
+      "required_code_receipts": [
+        "case.finalize"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "id": "L01_LEARNING@n08",
+      "stage_kind": "L01_LEARNING",
+      "contract_kind": "L01_LEARNING",
+      "actor": "AI",
+      "depends_on": [
+        "R08_CAPTURE_LEARNING@n08"
+      ],
+      "required": [
+        "case_updates",
+        "rule_links",
+        "regression_links",
+        "unresolved",
+        "deduplication",
+        "modelDisposition"
+      ],
+      "block": null,
+      "release_unit": "n08",
+      "watch": "integration",
+      "phase": "learning",
+      "priority": 0,
+      "source_refs": [],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Revision5.json",
+        "src/data/textbook/math/numbers/n08ActiveVersion.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "src/components/textbook/n08-solution-reading.css",
+        "src/data/textbook/math/numbers/n11Authored.json",
+        "src/data/textbook/math/numbers/n11Transformation.json"
+      ],
+      "capability_requests": [
+        "case.finalize",
+        "ml.train"
+      ],
+      "required_code_receipts": [
+        "case.finalize",
+        "ml.train"
+      ],
+      "required_ai_receipts": [
+        "meaning-review"
+      ],
+      "status": "PENDING"
+    },
+    {
+      "id": "Z01_CLOSE",
+      "stage_kind": "Z01_CLOSE",
+      "contract_kind": "Z01_CLOSE",
+      "actor": "CODE",
+      "depends_on": [
+        "L01_LEARNING@n08"
+      ],
+      "required": [],
+      "block": null,
+      "release_unit": null,
+      "watch": "integration",
+      "phase": "closure",
+      "priority": -1,
+      "source_refs": [],
+      "protected_refs": [
+        "src/data/textbook/math/numbers/n08Authored.json",
+        "src/data/textbook/math/numbers/n08Revision5.json",
+        "src/data/textbook/math/numbers/n08ActiveVersion.json",
+        "src/components/textbook/N08ReadingFlow.tsx",
+        "src/components/textbook/n08-reading.css",
+        "src/components/textbook/n08-solution-reading.css",
+        "src/data/textbook/math/numbers/n11Authored.json",
+        "src/data/textbook/math/numbers/n11Transformation.json"
+      ],
+      "capability_requests": [],
+      "required_code_receipts": [],
+      "required_ai_receipts": [],
+      "status": "PENDING"
+    }
+  ],
+  "pending_issues": [],
+  "application_accepted": false,
+  "correction_queue": [
+    {
+      "block": "n09",
+      "description": "1.この選択肢ちょっと整えていない\n違うだから\n1.41^2 =..\n1.42^2=..\n1.91 ...\nこっちの方がよくないかってことだよ",
+      "evidence_refs": [
+        "W034-N09-ORDER-NEGATIVE-20261025"
+      ],
+      "id": "9edbc81e2181722b430e",
+      "origin": "user",
+      "root_cause": "USER_REVIEW_PENDING_ANALYSIS",
+      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+      "work": "W-MATH-034"
+    },
+    {
+      "block": "n10",
+      "description": "2.カッコが忘れている(sqrt 3- sqrt 2)でしょう",
+      "evidence_refs": [
+        "W034-N10-FACTOR-NEGATIVE-20261025"
+      ],
+      "id": "ff234332d7d5ec0beaf3",
+      "origin": "user",
+      "root_cause": "USER_REVIEW_PENDING_ANALYSIS",
+      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+      "work": "W-MATH-034"
+    },
+    {
+      "id": "W-MATH-037",
+      "work": "W-MATH-037",
+      "version": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
+      "origin": "unfinished-correction",
+      "description": "未完了の修正Work"
+    },
+    {
+      "id": "W-MATH-039",
+      "work": "W-MATH-039",
+      "version": "0aa633dcf6c1acc6e8df718e907cbaae0e8961f9",
+      "origin": "unfinished-correction",
+      "description": "未完了の修正Work"
+    },
+    {
+      "id": "W-MATH-034",
+      "work": "W-MATH-034",
+      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+      "origin": "unfinished-correction",
+      "description": "未完了の修正Work"
+    },
+    {
+      "id": "W-MATH-036",
+      "work": "W-MATH-036",
+      "version": "397788f1715b96459032a6647d6fbe772004a7b3",
+      "origin": "unfinished-correction",
+      "description": "未完了の修正Work"
+    },
+    {
+      "id": "W-MATH-038",
+      "work": "W-MATH-038",
+      "version": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
+      "origin": "unfinished-correction",
+      "description": "未完了の修正Work"
+    },
+    {
+      "id": "n08-workflow-trial-20261026",
+      "kind": "correction",
+      "quote": "一旦試しに不等式N08の修正をやってみよう",
+      "source_ref": "current-conversation:user-trial-request; target clarified N08 absolute value",
+      "version": "69014b5b149f730c5f738129c9febbd19a96214a",
+      "work": "W-MATH-037",
+      "origin": "request-intake"
+    }
+  ],
+  "child_works": [],
+  "capability_receipts": [
+    {
+      "input_hash": "6caeeb28f504e9ced1ab1ab0962227c2889fda8154cf7df6fb99fb5b5c385f8e",
+      "node": "R01_CAPTURE@n08",
+      "receipt": "da2742064527e4b3d41e4643fa525488854f643dbcf4178724e480c31eedf401"
+    },
+    {
+      "input_hash": "6caeeb28f504e9ced1ab1ab0962227c2889fda8154cf7df6fb99fb5b5c385f8e",
+      "node": "R01_CAPTURE@n08",
+      "receipt": "799a5b45507d0791d014328837319fae53368ec15a4e6b3e2974ea921aec3373"
+    },
+    {
+      "input_hash": "d088397c38e83f698a8bb46389b0cd3b8e808949c4934490962d7621ffdcfbfe",
+      "node": "R02_CAUSE@n08",
+      "receipt": "95d883f3c84073a8d7081851149110da2269678fca2d82163d92e59230390711"
+    },
+    {
+      "input_hash": "d088397c38e83f698a8bb46389b0cd3b8e808949c4934490962d7621ffdcfbfe",
+      "node": "R02_CAUSE@n08",
+      "receipt": "b7957387bebcc622af72e545e289f3c455a0879bd3bf6572bf7a26eaac88c2ed"
+    },
+    {
+      "input_hash": "d088397c38e83f698a8bb46389b0cd3b8e808949c4934490962d7621ffdcfbfe",
+      "node": "R02_CAUSE@n08",
+      "receipt": "ea24c6c22e0fece4fef6a873eb915e97917eaf0b48f67a5bdecfa13c12842a57"
+    },
+    {
+      "input_hash": "d088397c38e83f698a8bb46389b0cd3b8e808949c4934490962d7621ffdcfbfe",
+      "node": "R02_CAUSE@n08",
+      "receipt": "3895fad329ad55e405687496eccbcbbeffee88fd3869194a0e12dfaa26fbbcd6"
+    },
+    {
+      "input_hash": "d088397c38e83f698a8bb46389b0cd3b8e808949c4934490962d7621ffdcfbfe",
+      "node": "R02_CAUSE@n08",
+      "receipt": "4c2a0297d07a168ee43849cfd7852eff005c24608009db78d29052f21edeaea3"
+    },
+    {
+      "input_hash": "4cb46d6c54e1b3428cfcb44db7919289d658d9ca864d0b0ad1c1a2c72ed61020",
+      "node": "R03_IMPACT@n08",
+      "receipt": "11d8b50f20ca1b2ee160a1844a77d8dfd3cdc9943d8ae551327e15dd4d0fdbff"
+    },
+    {
+      "input_hash": "d5089fdcfa501b7f879cef384d93e75c15cd18f2529d8d9a2851b096262b7413",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "9ddd1349c546f4066f6653b8cc4ea1570b05270840d733f92ade2c5fbde0ddf2"
+    },
+    {
+      "input_hash": "d5089fdcfa501b7f879cef384d93e75c15cd18f2529d8d9a2851b096262b7413",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "05c8c9bcc650e2b12da865a31d21f9bb62848e0a8ac2db4aec2edb03532d6ff2"
+    },
+    {
+      "input_hash": "d5089fdcfa501b7f879cef384d93e75c15cd18f2529d8d9a2851b096262b7413",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "a42a2f10317a910f83b37c6a83698817328fa8252dcda5ea90f3ef3634db5d0b"
+    },
+    {
+      "input_hash": "d5089fdcfa501b7f879cef384d93e75c15cd18f2529d8d9a2851b096262b7413",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "7def2cc9b2f677f7ca837f9280a705d394d835345f065279b193be772565287c"
+    },
+    {
+      "input_hash": "d5089fdcfa501b7f879cef384d93e75c15cd18f2529d8d9a2851b096262b7413",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "bf3f3b00ddf303b20960551c7ff197be6c191b2dcff3b297aabda831e16523d3"
+    },
+    {
+      "input_hash": "d5089fdcfa501b7f879cef384d93e75c15cd18f2529d8d9a2851b096262b7413",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "bd14e22032c8e75894dd1fd58b429ac97863953528e26246ce49d01f05cce75b"
+    },
+    {
+      "input_hash": "d5089fdcfa501b7f879cef384d93e75c15cd18f2529d8d9a2851b096262b7413",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "ec0420be49acd564c6d424d2813e3eaa859d2f7d4469417f3ef2038a9219dafd"
+    },
+    {
+      "input_hash": "d5089fdcfa501b7f879cef384d93e75c15cd18f2529d8d9a2851b096262b7413",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "bf3dcbc0d0deaf80cb3fee209de8469587e2ebbf526f3270865f5221deae493e"
+    },
+    {
+      "input_hash": "d5089fdcfa501b7f879cef384d93e75c15cd18f2529d8d9a2851b096262b7413",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "9db3a612b91f79b171cf5b778af4af6f47bd67f6f66c4a6683f4a906efa1c24c"
+    },
+    {
+      "input_hash": "d5089fdcfa501b7f879cef384d93e75c15cd18f2529d8d9a2851b096262b7413",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "3f66a245d24b1cc85417fb8a25238fba1b2ec70c1863a8a52f349eee1f2241c6"
+    },
+    {
+      "input_hash": "d5089fdcfa501b7f879cef384d93e75c15cd18f2529d8d9a2851b096262b7413",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "f5e338cccaa2c946d85d083fae2491bc304e5ed9b7ed6fae328dab2c8e923543"
+    },
+    {
+      "input_hash": "d5089fdcfa501b7f879cef384d93e75c15cd18f2529d8d9a2851b096262b7413",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "dc7ec108b27423589e7b00f05e4d98080b030375a63d2f72112cea9a7624de4a"
+    },
+    {
+      "input_hash": "e0f7faf18575bc80485cb0a8cb6c846a377f35f086a03cdc0cda1a2198f8c1c3",
+      "node": "R06_PATCH@n08",
+      "receipt": "e207014bbfde5e663d5b80ada224fe1856efc63ad370a742f717d0c975b2da4d"
+    },
+    {
+      "input_hash": "93e382957d7a46817e889664cc71bfada2d019ef187274fd9bfeaed004db4383",
+      "node": "R06_PATCH@n08",
+      "receipt": "e88138dbe4f6d18b1bfe3227a0fcab37b963707cfcb44a69a2c8cdc5944fe123"
+    },
+    {
+      "input_hash": "f1ec9d88b740b88b97e7c50ed3b002eb7917e55e12fd109b033d810ce25f2a24",
+      "node": "R01_CAPTURE@n08",
+      "receipt": "fe98f99e0ad72d3f8ab291fb2f9201e74e7c3ace46da6756e8d5fe5d6fb1549e"
+    },
+    {
+      "input_hash": "f1ec9d88b740b88b97e7c50ed3b002eb7917e55e12fd109b033d810ce25f2a24",
+      "node": "R01_CAPTURE@n08",
+      "receipt": "c3c6f22d32ad7fe040e8d579b03c2fcd0d336bab8c55a8e137ed445ac02e96c5"
+    },
+    {
+      "input_hash": "d4ffab20cf9e479aba6bc92ea29a886b497dbdf76ae7ba333637106101404f7f",
+      "node": "R02_CAUSE@n08",
+      "receipt": "cf157c5e464b61c5d1c3b06dd91f32a3eea9a2f5ff8786055fe1e432057979b2"
+    },
+    {
+      "input_hash": "d4ffab20cf9e479aba6bc92ea29a886b497dbdf76ae7ba333637106101404f7f",
+      "node": "R02_CAUSE@n08",
+      "receipt": "a105f11f59fe4c0b52265b78604b6c50fcb1ad6b5632916d4f06114bcb33d2ef"
+    },
+    {
+      "input_hash": "d4ffab20cf9e479aba6bc92ea29a886b497dbdf76ae7ba333637106101404f7f",
+      "node": "R02_CAUSE@n08",
+      "receipt": "3bfec632e34881888fdeedb7508f1b894553197ca0b3d5dff5559f53d549584c"
+    },
+    {
+      "input_hash": "d4ffab20cf9e479aba6bc92ea29a886b497dbdf76ae7ba333637106101404f7f",
+      "node": "R02_CAUSE@n08",
+      "receipt": "14fbc83834eaa3ed9cd34e7a6a42262fa1110a9071a0e4edf03791e3c78483e2"
+    },
+    {
+      "input_hash": "d4ffab20cf9e479aba6bc92ea29a886b497dbdf76ae7ba333637106101404f7f",
+      "node": "R02_CAUSE@n08",
+      "receipt": "a9f11826a8358b19be9a5fd97f67b85c2de75f5bc3ef1c4c5c1a55a63129348c"
+    },
+    {
+      "input_hash": "e4089985af1a0eb3db7b4965f8c514f256fde8f3847dc7c40ae192358c7db611",
+      "node": "R03_IMPACT@n08",
+      "receipt": "8d610946de752ee3c724cfa32fffd006832ab59a3f7374424306d37967ec25bf"
+    },
+    {
+      "input_hash": "f5e40f7217a03291ea778654de9c30e0ed90a83496b74faa4af2f541b3313b1d",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "f0cea2093e3e80a9f9e3f1e0b4c6d9378b4e09a12f9bd392042603659a47e8da"
+    },
+    {
+      "input_hash": "f5e40f7217a03291ea778654de9c30e0ed90a83496b74faa4af2f541b3313b1d",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "af5bf4fc2e078541e6f9b7a67958b5532475fc8307915af1be635d04814b57dd"
+    },
+    {
+      "input_hash": "f5e40f7217a03291ea778654de9c30e0ed90a83496b74faa4af2f541b3313b1d",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "86f03b4157f68cc9d4b5c891a42c2ec026e97b22539cdf73547273c513f3e720"
+    },
+    {
+      "input_hash": "f5e40f7217a03291ea778654de9c30e0ed90a83496b74faa4af2f541b3313b1d",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "3eaa5f3e2f6d830e33744d1e31d24d5e460ebc876fad92bbb93e42d878d9dfba"
+    },
+    {
+      "input_hash": "f5e40f7217a03291ea778654de9c30e0ed90a83496b74faa4af2f541b3313b1d",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "f4145ef97fffe4373ef8dac76230993b103b893c1db6a3d0c6195fd562bbf13f"
+    },
+    {
+      "input_hash": "f5e40f7217a03291ea778654de9c30e0ed90a83496b74faa4af2f541b3313b1d",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "95f8303028d18bae30f38a0d3c638f9b70586e5c80be88574eb74a36d47558d2"
+    },
+    {
+      "input_hash": "f5e40f7217a03291ea778654de9c30e0ed90a83496b74faa4af2f541b3313b1d",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "69e7c0be20faa9e40e13bcc8db5286c5c09da552b7f061dd480a52664827564c"
+    },
+    {
+      "input_hash": "f5e40f7217a03291ea778654de9c30e0ed90a83496b74faa4af2f541b3313b1d",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "aa130cfb02626b83e59d60634735fae0b5a9c1059a597d656d1babcf82016457"
+    },
+    {
+      "input_hash": "f5e40f7217a03291ea778654de9c30e0ed90a83496b74faa4af2f541b3313b1d",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "c9638d0496fa049a428fea1586f540b1150af2217548287b8418dc451276b8ec"
+    },
+    {
+      "input_hash": "f5e40f7217a03291ea778654de9c30e0ed90a83496b74faa4af2f541b3313b1d",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "fe62475a7f63918ac5df3547529a580cfd99d3c5567a6cd3140acd2c4396d683"
+    },
+    {
+      "input_hash": "f5e40f7217a03291ea778654de9c30e0ed90a83496b74faa4af2f541b3313b1d",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "557cd0228f55ed3b2ccb510c0fef1903eccf448a9598493c2d57b9ee662ab1ae"
+    },
+    {
+      "input_hash": "f5e40f7217a03291ea778654de9c30e0ed90a83496b74faa4af2f541b3313b1d",
+      "node": "R04_PROPOSAL@n08",
+      "receipt": "5c571157dab02a86b2379feb41bb3ab2a1d58ad2d32985eb7032bb54c6e6c1f5"
+    },
+    {
+      "input_hash": "68d1616df7abc0e6467671b8a8edde1ebb20869ba3749a041847b201ae1cb7fb",
+      "node": "R06_PATCH@n08",
+      "receipt": "0527bfbd6e15d7f0931549b3c9ac39d3acfa0b83a786f8d1f8ff15c13206a345"
+    },
+    {
+      "input_hash": "68d1616df7abc0e6467671b8a8edde1ebb20869ba3749a041847b201ae1cb7fb",
+      "node": "R06_PATCH@n08",
+      "receipt": "4cff851fec5f5d6ac43ec94b89e739ad45683019a78af09a163aeb31cc7642dc"
+    }
+  ],
+  "release_acceptance": {
+    "n08": false
+  }
+}

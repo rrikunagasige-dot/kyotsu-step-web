@@ -1,0 +1,21 @@
+{
+  "impact.inventory": {
+    "inventory": [
+      {
+        "artifact": "src/data/textbook/math/numbers/n08Revision5.json",
+        "block_id": "n08"
+      },
+      {
+        "artifact": "work/items/W-MATH-037-n08-workflow-trial/CANDIDATE_IR_R5.json",
+        "block_id": "n08"
+      },
+      {
+        "artifact": "work/items/W-MATH-037-n08-workflow-trial/SOLUTION_BUNDLE_R5.json",
+        "block_id": "n08"
+      }
+    ],
+    "phase": "pre-design",
+    "sourceSHA": "0aa633dcf6c1acc6e8df718e907cbaae0e8961f9",
+    "status": "NEEDS_AI_REVIEW"
+  }
+}

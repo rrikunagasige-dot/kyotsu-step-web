@@ -1,0 +1,170 @@
+{
+  "verdict": "PASS",
+  "evidence_refs": [
+    "b7827c1e-5d63-46ff-9f5f-98e10d96f318",
+    "6dff12cf-1e22-41e9-a963-74d1a1862609",
+    "08610358-017a-4c9a-a59a-b41defcab90c",
+    "1e441228-b942-44a7-8e84-5ffdccf2ec45",
+    "6dd4089a-c86a-4e98-9f60-7a1e0b31162b",
+    "5bac72ba-5395-433a-ba20-3de30f42c509"
+  ],
+  "capability_receipts": [
+    "8d610946de752ee3c724cfa32fffd006832ab59a3f7374424306d37967ec25bf"
+  ],
+  "case_dispositions": [
+    {
+      "id": "N07-USER-F01",
+      "disposition": "APPLY",
+      "reason": "元の絶対値・前段の大小・円周率の与えられた値を保持。絶対値を外すgroupは前段の符号・規則nodeを可視境界にする。"
+    },
+    {
+      "id": "N07-USER-F02",
+      "disposition": "APPLY",
+      "reason": "同じ数値の問題へ各局所の結果を連続式として戻す。"
+    },
+    {
+      "id": "N07-USER-F03",
+      "disposition": "APPLY",
+      "reason": "左辺に元の中身を作るために同じ値を引く目的を説明する。"
+    },
+    {
+      "id": "N07-USER-F04",
+      "disposition": "APPLY",
+      "reason": "括弧全体への負号、二項への分配、積の計算、項の交換まで全行を保持。"
+    },
+    {
+      "id": "N07-USER-F05",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+    },
+    {
+      "id": "N07-USER-F06",
+      "disposition": "APPLY",
+      "reason": "負の二つの因数を括弧ごと描画し、文中の数値もtyped math。"
+    },
+    {
+      "id": "n07-layout-relation",
+      "disposition": "APPLY",
+      "reason": "四つの局所で比較記号・等号の列を揃える。"
+    },
+    {
+      "id": "n07-layout-positive",
+      "disposition": "APPLY",
+      "reason": "前の受入済みの概念・場合分けの構造は保持。"
+    },
+    {
+      "id": "first-title-layout-positive",
+      "disposition": "APPLY",
+      "reason": "四つの局所で比較記号・等号の列を揃える。"
+    },
+    {
+      "id": "N07-ACCEPTED-20261025",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+    },
+    {
+      "id": "N08-ACCEPTED-20261025",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+    },
+    {
+      "id": "N09-REJECTED-20261025",
+      "disposition": "APPLY",
+      "reason": "大小→差→符号→規則→全体の負号→分配→積→交換。"
+    },
+    {
+      "id": "N10-REJECTED-20261025",
+      "disposition": "APPLY",
+      "reason": "負号を中身全体へ適用する括弧と分配の因数を保持。"
+    },
+    {
+      "id": "N09-ACCEPTED-20261025",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+    },
+    {
+      "id": "N10-ACCEPTED-20261025",
+      "disposition": "OUT_OF_SCOPE",
+      "reason": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+    }
+  ],
+  "aiReview": {
+    "requestHash": "abed73e7fd881aab1fb0bc65c84c8f59603b5f662aff28162164f1fcd932255a",
+    "inputHash": "e4089985af1a0eb3db7b4965f8c514f256fde8f3847dc7c40ae192358c7db611",
+    "reviewer": "same-assistant source and visible-state pass; not independent AI",
+    "evidence": "N08 only four groups in stages06-09 opt in. Eleven math interactions, two prose overrides; external rules/meanings and26 other nodes stay structured. Immutable r4/r5 and public N11 are protected."
+  },
+  "impact_rows": [
+    {
+      "block_id": "n08",
+      "artifact": "src/data/textbook/math/numbers/n08Revision5.json",
+      "version": "0aa633dcf6c1acc6e8df718e907cbaae0e8961f9",
+      "phase": "pre-design",
+      "approvedCreationWork": "W-MATH-003",
+      "status": "AFFECTED",
+      "rootCauseSignature": "ordinary-transformation-fragmentation",
+      "originFinding": "P001",
+      "evidence_refs": [
+        "b7827c1e-5d63-46ff-9f5f-98e10d96f318",
+        "6dff12cf-1e22-41e9-a963-74d1a1862609",
+        "08610358-017a-4c9a-a59a-b41defcab90c",
+        "1e441228-b942-44a7-8e84-5ffdccf2ec45",
+        "6dd4089a-c86a-4e98-9f60-7a1e0b31162b",
+        "5bac72ba-5395-433a-ba20-3de30f42c509"
+      ],
+      "resolution": "Keep original immutable; use explicit opt-in sidecar and source/block coverage"
+    },
+    {
+      "block_id": "n08",
+      "artifact": "work/items/W-MATH-037-n08-workflow-trial/CANDIDATE_IR_R5.json",
+      "version": "0aa633dcf6c1acc6e8df718e907cbaae0e8961f9",
+      "phase": "pre-design",
+      "approvedCreationWork": "W-MATH-003",
+      "status": "AFFECTED",
+      "rootCauseSignature": "ordinary-transformation-fragmentation",
+      "originFinding": "P001",
+      "evidence_refs": [
+        "b7827c1e-5d63-46ff-9f5f-98e10d96f318",
+        "6dff12cf-1e22-41e9-a963-74d1a1862609",
+        "08610358-017a-4c9a-a59a-b41defcab90c",
+        "1e441228-b942-44a7-8e84-5ffdccf2ec45",
+        "6dd4089a-c86a-4e98-9f60-7a1e0b31162b",
+        "5bac72ba-5395-433a-ba20-3de30f42c509"
+      ],
+      "resolution": "Keep original immutable; use explicit opt-in sidecar and source/block coverage"
+    },
+    {
+      "block_id": "n08",
+      "artifact": "work/items/W-MATH-037-n08-workflow-trial/SOLUTION_BUNDLE_R5.json",
+      "version": "0aa633dcf6c1acc6e8df718e907cbaae0e8961f9",
+      "phase": "pre-design",
+      "approvedCreationWork": "W-MATH-003",
+      "status": "AFFECTED",
+      "rootCauseSignature": "ordinary-transformation-fragmentation",
+      "originFinding": "P001",
+      "evidence_refs": [
+        "b7827c1e-5d63-46ff-9f5f-98e10d96f318",
+        "6dff12cf-1e22-41e9-a963-74d1a1862609",
+        "08610358-017a-4c9a-a59a-b41defcab90c",
+        "1e441228-b942-44a7-8e84-5ffdccf2ec45",
+        "6dd4089a-c86a-4e98-9f60-7a1e0b31162b",
+        "5bac72ba-5395-433a-ba20-3de30f42c509"
+      ],
+      "resolution": "Keep original immutable; use explicit opt-in sidecar and source/block coverage"
+    }
+  ],
+  "source_inventory": [
+    "src/data/textbook/math/numbers/n08Revision5.json",
+    "work/items/W-MATH-037-n08-workflow-trial/CANDIDATE_IR_R5.json",
+    "work/items/W-MATH-037-n08-workflow-trial/SOLUTION_BUNDLE_R5.json",
+    "src/components/textbook/N08SolutionReadingFlow.tsx",
+    "src/components/textbook/TransformationReadingGroup.tsx",
+    "src/domain/transformationReading.ts",
+    "src/data/textbook/math/numbers/n08Transformation.json",
+    "src/data/textbook/math/numbers/n08PresentationPolicy.json",
+    "tools/textbook/transformation/",
+    "tools/textbook/tests/n08-transformation.test.mjs",
+    "work/items/W-MATH-039-n08-grouped-transformations/"
+  ],
+  "unknowns": []
+}

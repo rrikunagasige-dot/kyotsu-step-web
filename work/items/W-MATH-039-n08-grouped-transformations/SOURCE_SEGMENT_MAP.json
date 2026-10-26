@@ -1,0 +1,1062 @@
+{
+  "bundlePath": "work/items/W-MATH-037-n08-workflow-trial/SOLUTION_BUNDLE_R5.json",
+  "bundleSha256": "b0334dfb3734acddb21fe456d03e63474574e5fede3ccd31ad79962e6c7dce00",
+  "segments": 38,
+  "rows": [
+    {
+      "graphId": "n08-root-sign",
+      "stateId": "S0",
+      "segmentId": "positive-root-order",
+      "sourceNodeIds": [
+        "n08-05"
+      ],
+      "check": {
+        "kind": "square-order",
+        "left": {
+          "kind": "sqrt",
+          "argument": {
+            "kind": "rational",
+            "n": "5",
+            "d": "1"
+          }
+        },
+        "right": {
+          "kind": "rational",
+          "n": "3",
+          "d": "1"
+        },
+        "operator": "<"
+      },
+      "numericOnly": true
+    },
+    {
+      "graphId": "n08-root-sign",
+      "stateId": "S1",
+      "segmentId": "root-both-sides",
+      "sourceNodeIds": [
+        "n08-r5-q06-operation"
+      ],
+      "check": {
+        "kind": "transformation",
+        "before": {
+          "kind": "relation",
+          "left": {
+            "kind": "sqrt",
+            "argument": {
+              "kind": "rational",
+              "n": "5",
+              "d": "1"
+            }
+          },
+          "operator": "<",
+          "right": {
+            "kind": "rational",
+            "n": "3",
+            "d": "1"
+          }
+        },
+        "after": {
+          "kind": "relation",
+          "left": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "sqrt",
+                "argument": {
+                  "kind": "rational",
+                  "n": "5",
+                  "d": "1"
+                }
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "n": "3",
+                    "d": "1"
+                  }
+                ]
+              }
+            ]
+          },
+          "operator": "<",
+          "right": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "3",
+                "d": "1"
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "n": "3",
+                    "d": "1"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "ruleId": "add-both-sides",
+        "operand": {
+          "kind": "rational",
+          "n": "-3",
+          "d": "1"
+        }
+      },
+      "numericOnly": true
+    },
+    {
+      "graphId": "n08-root-sign",
+      "stateId": "S2",
+      "segmentId": "root-negative",
+      "sourceNodeIds": [
+        "n08-q06-subtract",
+        "n08-06"
+      ],
+      "check": {
+        "kind": "claim",
+        "statement": {
+          "kind": "relation",
+          "left": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "sqrt",
+                "argument": {
+                  "kind": "rational",
+                  "n": "5",
+                  "d": "1"
+                }
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "n": "3",
+                    "d": "1"
+                  }
+                ]
+              }
+            ]
+          },
+          "operator": "<",
+          "right": {
+            "kind": "rational",
+            "n": "0",
+            "d": "1"
+          }
+        }
+      },
+      "numericOnly": true
+    },
+    {
+      "graphId": "n08-root-absolute",
+      "stateId": "S0",
+      "segmentId": "root-brackets",
+      "sourceNodeIds": [
+        "n08-q07-bracket"
+      ],
+      "check": {
+        "kind": "identity",
+        "left": {
+          "kind": "absolute",
+          "argument": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "sqrt",
+                "argument": {
+                  "kind": "rational",
+                  "n": "5",
+                  "d": "1"
+                }
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "n": "3",
+                    "d": "1"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "right": {
+          "kind": "multiply",
+          "args": [
+            {
+              "kind": "rational",
+              "n": "-1",
+              "d": "1"
+            },
+            {
+              "kind": "add",
+              "args": [
+                {
+                  "kind": "sqrt",
+                  "argument": {
+                    "kind": "rational",
+                    "n": "5",
+                    "d": "1"
+                  }
+                },
+                {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "rational",
+                      "n": "3",
+                      "d": "1"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "numericOnly": true
+    },
+    {
+      "graphId": "n08-root-absolute",
+      "stateId": "S1",
+      "segmentId": "root-brackets",
+      "sourceNodeIds": [
+        "n08-q07-bracket"
+      ],
+      "check": {
+        "kind": "identity",
+        "left": {
+          "kind": "absolute",
+          "argument": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "sqrt",
+                "argument": {
+                  "kind": "rational",
+                  "n": "5",
+                  "d": "1"
+                }
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "n": "3",
+                    "d": "1"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "right": {
+          "kind": "multiply",
+          "args": [
+            {
+              "kind": "rational",
+              "n": "-1",
+              "d": "1"
+            },
+            {
+              "kind": "add",
+              "args": [
+                {
+                  "kind": "sqrt",
+                  "argument": {
+                    "kind": "rational",
+                    "n": "5",
+                    "d": "1"
+                  }
+                },
+                {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "rational",
+                      "n": "3",
+                      "d": "1"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "numericOnly": true
+    },
+    {
+      "graphId": "n08-root-absolute",
+      "stateId": "S2",
+      "segmentId": "root-distribute",
+      "sourceNodeIds": [
+        "n08-q07-distribute"
+      ],
+      "check": {
+        "kind": "identity",
+        "left": {
+          "kind": "multiply",
+          "args": [
+            {
+              "kind": "rational",
+              "n": "-1",
+              "d": "1"
+            },
+            {
+              "kind": "add",
+              "args": [
+                {
+                  "kind": "sqrt",
+                  "argument": {
+                    "kind": "rational",
+                    "n": "5",
+                    "d": "1"
+                  }
+                },
+                {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "rational",
+                      "n": "3",
+                      "d": "1"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "right": {
+          "kind": "add",
+          "args": [
+            {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "sqrt",
+                  "argument": {
+                    "kind": "rational",
+                    "n": "5",
+                    "d": "1"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "rational",
+              "n": "3",
+              "d": "1"
+            }
+          ]
+        }
+      },
+      "numericOnly": true
+    },
+    {
+      "graphId": "n08-root-absolute",
+      "stateId": "S3",
+      "segmentId": "root-distribute",
+      "sourceNodeIds": [
+        "n08-q07-distribute"
+      ],
+      "check": {
+        "kind": "identity",
+        "left": {
+          "kind": "multiply",
+          "args": [
+            {
+              "kind": "rational",
+              "n": "-1",
+              "d": "1"
+            },
+            {
+              "kind": "add",
+              "args": [
+                {
+                  "kind": "sqrt",
+                  "argument": {
+                    "kind": "rational",
+                    "n": "5",
+                    "d": "1"
+                  }
+                },
+                {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "rational",
+                      "n": "3",
+                      "d": "1"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "right": {
+          "kind": "add",
+          "args": [
+            {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "sqrt",
+                  "argument": {
+                    "kind": "rational",
+                    "n": "5",
+                    "d": "1"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "rational",
+              "n": "3",
+              "d": "1"
+            }
+          ]
+        }
+      },
+      "numericOnly": true
+    },
+    {
+      "graphId": "n08-root-absolute",
+      "stateId": "S4",
+      "segmentId": "root-final",
+      "sourceNodeIds": [
+        "n08-07"
+      ],
+      "check": {
+        "kind": "identity",
+        "left": {
+          "kind": "absolute",
+          "argument": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "sqrt",
+                "argument": {
+                  "kind": "rational",
+                  "n": "5",
+                  "d": "1"
+                }
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "rational",
+                    "n": "3",
+                    "d": "1"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "right": {
+          "kind": "add",
+          "args": [
+            {
+              "kind": "rational",
+              "n": "3",
+              "d": "1"
+            },
+            {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "sqrt",
+                  "argument": {
+                    "kind": "rational",
+                    "n": "5",
+                    "d": "1"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "numericOnly": true
+    },
+    {
+      "graphId": "n08-pi-sign",
+      "stateId": "S0",
+      "segmentId": "pi-order",
+      "sourceNodeIds": [
+        "n08-q08-order"
+      ],
+      "check": {
+        "kind": "claim",
+        "statement": {
+          "kind": "relation",
+          "left": {
+            "kind": "rational",
+            "n": "3",
+            "d": "1"
+          },
+          "operator": "<",
+          "right": {
+            "kind": "constant",
+            "name": "pi"
+          }
+        }
+      },
+      "numericOnly": true
+    },
+    {
+      "graphId": "n08-pi-sign",
+      "stateId": "S1",
+      "segmentId": "pi-both-sides",
+      "sourceNodeIds": [
+        "n08-r5-q08-operation"
+      ],
+      "check": {
+        "kind": "transformation",
+        "before": {
+          "kind": "relation",
+          "left": {
+            "kind": "rational",
+            "n": "3",
+            "d": "1"
+          },
+          "operator": "<",
+          "right": {
+            "kind": "constant",
+            "name": "pi"
+          }
+        },
+        "after": {
+          "kind": "relation",
+          "left": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "3",
+                "d": "1"
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "constant",
+                    "name": "pi"
+                  }
+                ]
+              }
+            ]
+          },
+          "operator": "<",
+          "right": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "constant",
+                "name": "pi"
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "constant",
+                    "name": "pi"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "ruleId": "add-both-sides",
+        "operand": {
+          "kind": "multiply",
+          "args": [
+            {
+              "kind": "rational",
+              "n": "-1",
+              "d": "1"
+            },
+            {
+              "kind": "constant",
+              "name": "pi"
+            }
+          ]
+        }
+      },
+      "numericOnly": true
+    },
+    {
+      "graphId": "n08-pi-sign",
+      "stateId": "S2",
+      "segmentId": "pi-negative",
+      "sourceNodeIds": [
+        "n08-q08-difference",
+        "n08-08"
+      ],
+      "check": {
+        "kind": "claim",
+        "statement": {
+          "kind": "relation",
+          "left": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "3",
+                "d": "1"
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "constant",
+                    "name": "pi"
+                  }
+                ]
+              }
+            ]
+          },
+          "operator": "<",
+          "right": {
+            "kind": "rational",
+            "n": "0",
+            "d": "1"
+          }
+        }
+      },
+      "numericOnly": true
+    },
+    {
+      "graphId": "n08-pi-absolute",
+      "stateId": "S0",
+      "segmentId": "pi-brackets",
+      "sourceNodeIds": [
+        "n08-q09-bracket"
+      ],
+      "check": {
+        "kind": "identity",
+        "left": {
+          "kind": "absolute",
+          "argument": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "3",
+                "d": "1"
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "constant",
+                    "name": "pi"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "right": {
+          "kind": "multiply",
+          "args": [
+            {
+              "kind": "rational",
+              "n": "-1",
+              "d": "1"
+            },
+            {
+              "kind": "add",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "3",
+                  "d": "1"
+                },
+                {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "constant",
+                      "name": "pi"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "numericOnly": true
+    },
+    {
+      "graphId": "n08-pi-absolute",
+      "stateId": "S1",
+      "segmentId": "pi-brackets",
+      "sourceNodeIds": [
+        "n08-q09-bracket"
+      ],
+      "check": {
+        "kind": "identity",
+        "left": {
+          "kind": "absolute",
+          "argument": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "3",
+                "d": "1"
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "constant",
+                    "name": "pi"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "right": {
+          "kind": "multiply",
+          "args": [
+            {
+              "kind": "rational",
+              "n": "-1",
+              "d": "1"
+            },
+            {
+              "kind": "add",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "3",
+                  "d": "1"
+                },
+                {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "constant",
+                      "name": "pi"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "numericOnly": true
+    },
+    {
+      "graphId": "n08-pi-absolute",
+      "stateId": "S2",
+      "segmentId": "pi-distribute",
+      "sourceNodeIds": [
+        "n08-q09-distribute"
+      ],
+      "check": {
+        "kind": "identity",
+        "left": {
+          "kind": "multiply",
+          "args": [
+            {
+              "kind": "rational",
+              "n": "-1",
+              "d": "1"
+            },
+            {
+              "kind": "add",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "3",
+                  "d": "1"
+                },
+                {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "constant",
+                      "name": "pi"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "right": {
+          "kind": "add",
+          "args": [
+            {
+              "kind": "rational",
+              "n": "-3",
+              "d": "1"
+            },
+            {
+              "kind": "constant",
+              "name": "pi"
+            }
+          ]
+        }
+      },
+      "numericOnly": true
+    },
+    {
+      "graphId": "n08-pi-absolute",
+      "stateId": "S3",
+      "segmentId": "pi-distribute",
+      "sourceNodeIds": [
+        "n08-q09-distribute"
+      ],
+      "check": {
+        "kind": "identity",
+        "left": {
+          "kind": "multiply",
+          "args": [
+            {
+              "kind": "rational",
+              "n": "-1",
+              "d": "1"
+            },
+            {
+              "kind": "add",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "3",
+                  "d": "1"
+                },
+                {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "constant",
+                      "name": "pi"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "right": {
+          "kind": "add",
+          "args": [
+            {
+              "kind": "rational",
+              "n": "-3",
+              "d": "1"
+            },
+            {
+              "kind": "constant",
+              "name": "pi"
+            }
+          ]
+        }
+      },
+      "numericOnly": true
+    },
+    {
+      "graphId": "n08-pi-absolute",
+      "stateId": "S4",
+      "segmentId": "pi-final",
+      "sourceNodeIds": [
+        "n08-09"
+      ],
+      "check": {
+        "kind": "identity",
+        "left": {
+          "kind": "absolute",
+          "argument": {
+            "kind": "add",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "3",
+                "d": "1"
+              },
+              {
+                "kind": "multiply",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "-1",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "constant",
+                    "name": "pi"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "right": {
+          "kind": "add",
+          "args": [
+            {
+              "kind": "constant",
+              "name": "pi"
+            },
+            {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "rational",
+                  "n": "3",
+                  "d": "1"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "numericOnly": true
+    }
+  ],
+  "externalBoundarySegments": [
+    "positive-root-order",
+    "root-negative-rule",
+    "root-negative",
+    "pi-negative"
+  ],
+  "scope": "Numeric source AST exact bridge; source segment truth checked by existing38segment bundle validator, never general symbolic Abs cases"
+}

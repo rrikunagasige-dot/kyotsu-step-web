@@ -33,10 +33,15 @@ export function TransformationReadingGroup({ group, renderSlot, renderPanel }: P
     ? <span key={part.id} data-slot-id={part.id}>{renderSlot(part.interactionRef)}</span>
     : part.type === 'fraction' ? <span className="transformation-fraction" key={i}><span>{parts(part.numerator)}</span><span>{parts(part.denominator)}</span></span> : <InlineMath key={i} math={part.latex} />)
   const prose = (row: VisibleTransformationGroup['rows'][number], key: 'before' | 'after') => row[key].length > 0 && <p className={'transformation-prose transformation-' + key}>{row[key].map((p, i) => p.type === 'math' ? <InlineMath key={i} math={p.latex} /> : p.type === 'term' ? <strong key={i}>{p.text}</strong> : <span key={i}>{p.text}</span>)}</p>
+  // Keep one aligned expression chain: put the source expression left of the first equality.
+  const rows = group.kind === 'expression-chain' && group.rows.length > 1
+    ? group.rows.slice(1).map((row, index) => index === 0 ? { ...row, formula: { ...row.formula, left: group.rows[0].formula.right } } : row)
+    : group.rows
   return <div ref={root} className={'transformation-reading-group' + (stacked ? ' transformation-reading-group--stacked' : '')} data-transformation-group={group.id} data-transformation-kind={group.kind}>
     <NumberedEquation number={group.number} logical>
       <div data-typeset-kind={group.kind}><div className="transformation-rows typeset-formula-body">
-        {group.rows.map(row => <div key={row.id} className={'transformation-row transformation-row--' + row.role} data-transformation-row={row.id} data-source-node={row.sourceNodeId} data-state-ref={row.stateRef}>
+        {rows.map(row => <div key={row.id} className={'transformation-row transformation-row--' + row.role} data-transformation-row={row.id} data-source-node={row.sourceNodeId} data-state-ref={row.stateRef}>
+          {row.aliasRefs.map(alias => <span key={alias} id={alias} data-equation-alias={alias} />)}
           {prose(row, 'before')}
           <div className="transformation-equation typeset-line" data-relation={row.formula.relation}>
             <span className="transformation-left"><span className="transformation-cell-content">{parts(row.formula.left)}</span></span>

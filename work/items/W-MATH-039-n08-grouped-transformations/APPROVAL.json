@@ -1,0 +1,9 @@
+{
+  "proposalId": "P-001",
+  "proposalSha256": "c27fd866666af45d35893bac52747ea33b710a4ea4a040ac82be90afacb491ee",
+  "proposalCommit": "0aa633dcf6c1acc6e8df718e907cbaae0e8961f9",
+  "quote": "いいよまず実装してくれ",
+  "intent": "approve_proposal",
+  "scope": "W039 P001 entire N08 four-group implementation and direct existing Pages publication; preserve r4/r5 and grading",
+  "qualityAcceptance": false
+}

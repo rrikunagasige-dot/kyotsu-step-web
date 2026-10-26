@@ -1,0 +1,2405 @@
+{
+  "schemaVersion": "transformation-plan/1",
+  "unitId": "math-numbers-expressions-n08",
+  "presentationVersion": 1,
+  "baseIRHash": "2ff0e38d4d081a3dc9f1912cd6b6a0ebe395fd9cb8afd6bd8fab2f2778a862e5",
+  "gradingHash": "824c93bafb793baa12615efabee90c8e4eb65095cf8ae82ee335ba61e6e3a8d7",
+  "scope": {
+    "problemId": "n08-numeric-absolute-examples",
+    "nodeIds": [
+      "n08-r5-q06-operation",
+      "n08-q06-subtract",
+      "n08-q07-bracket",
+      "n08-q07-distribute",
+      "n08-07",
+      "n08-q08-order",
+      "n08-r5-q08-operation",
+      "n08-q08-difference",
+      "n08-q09-bracket",
+      "n08-q09-distribute",
+      "n08-09"
+    ],
+    "stageIds": [
+      "n08-stage-06",
+      "n08-stage-07",
+      "n08-stage-08",
+      "n08-stage-09"
+    ],
+    "assumptionRefs": [
+      "real-arithmetic"
+    ]
+  },
+  "graphs": [
+    {
+      "schemaVersion": "solution-graph/1",
+      "id": "n08-root-sign",
+      "variable": "u",
+      "parameters": [],
+      "initialFacts": [
+        "real-arithmetic"
+      ],
+      "givens": [
+        {
+          "id": "n08-root-sign-given",
+          "statement": {
+            "kind": "relation",
+            "left": {
+              "kind": "sqrt",
+              "argument": {
+                "kind": "rational",
+                "n": "5",
+                "d": "1"
+              }
+            },
+            "operator": "<",
+            "right": {
+              "kind": "rational",
+              "n": "3",
+              "d": "1"
+            }
+          }
+        }
+      ],
+      "rootStateId": "S0",
+      "goalStateIds": [
+        "S2"
+      ],
+      "states": [
+        {
+          "id": "S0",
+          "statement": {
+            "kind": "relation",
+            "left": {
+              "kind": "sqrt",
+              "argument": {
+                "kind": "rational",
+                "n": "5",
+                "d": "1"
+              }
+            },
+            "operator": "<",
+            "right": {
+              "kind": "rational",
+              "n": "3",
+              "d": "1"
+            }
+          },
+          "activeVariable": "u",
+          "fixedParameters": [],
+          "facts": [
+            "real-arithmetic"
+          ]
+        },
+        {
+          "id": "S1",
+          "statement": {
+            "kind": "relation",
+            "left": {
+              "kind": "add",
+              "args": [
+                {
+                  "kind": "sqrt",
+                  "argument": {
+                    "kind": "rational",
+                    "n": "5",
+                    "d": "1"
+                  }
+                },
+                {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "rational",
+                      "n": "3",
+                      "d": "1"
+                    }
+                  ]
+                }
+              ]
+            },
+            "operator": "<",
+            "right": {
+              "kind": "add",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "3",
+                  "d": "1"
+                },
+                {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "rational",
+                      "n": "3",
+                      "d": "1"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "activeVariable": "u",
+          "fixedParameters": [],
+          "facts": [
+            "real-arithmetic"
+          ]
+        },
+        {
+          "id": "S2",
+          "statement": {
+            "kind": "relation",
+            "left": {
+              "kind": "add",
+              "args": [
+                {
+                  "kind": "sqrt",
+                  "argument": {
+                    "kind": "rational",
+                    "n": "5",
+                    "d": "1"
+                  }
+                },
+                {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "rational",
+                      "n": "3",
+                      "d": "1"
+                    }
+                  ]
+                }
+              ]
+            },
+            "operator": "<",
+            "right": {
+              "kind": "rational",
+              "n": "0",
+              "d": "1"
+            }
+          },
+          "activeVariable": "u",
+          "fixedParameters": [],
+          "facts": [
+            "real-arithmetic"
+          ]
+        }
+      ],
+      "transitions": [
+        {
+          "id": "n08-root-sign-a0",
+          "from": "S0",
+          "to": "S1",
+          "ruleId": "add-both-sides",
+          "operand": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "-1",
+                "d": "1"
+              },
+              {
+                "kind": "rational",
+                "n": "3",
+                "d": "1"
+              }
+            ]
+          },
+          "requires": [
+            "real-arithmetic"
+          ],
+          "produces": [],
+          "basisRefs": [
+            "real-arithmetic"
+          ]
+        },
+        {
+          "id": "n08-root-sign-a1",
+          "from": "S1",
+          "to": "S2",
+          "ruleId": "rewrite",
+          "requires": [
+            "real-arithmetic"
+          ],
+          "produces": [],
+          "basisRefs": [
+            "real-arithmetic"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "solution-graph/1",
+      "id": "n08-root-absolute",
+      "variable": "u",
+      "parameters": [],
+      "initialFacts": [
+        "real-arithmetic"
+      ],
+      "givens": [
+        {
+          "id": "n08-root-absolute-given",
+          "statement": {
+            "kind": "expression",
+            "expression": {
+              "kind": "absolute",
+              "argument": {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "sqrt",
+                    "argument": {
+                      "kind": "rational",
+                      "n": "5",
+                      "d": "1"
+                    }
+                  },
+                  {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "-1",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "rational",
+                        "n": "3",
+                        "d": "1"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ],
+      "rootStateId": "S0",
+      "goalStateIds": [
+        "S4"
+      ],
+      "states": [
+        {
+          "id": "S0",
+          "statement": {
+            "kind": "expression",
+            "expression": {
+              "kind": "absolute",
+              "argument": {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "sqrt",
+                    "argument": {
+                      "kind": "rational",
+                      "n": "5",
+                      "d": "1"
+                    }
+                  },
+                  {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "-1",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "rational",
+                        "n": "3",
+                        "d": "1"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "activeVariable": "u",
+          "fixedParameters": [],
+          "facts": [
+            "real-arithmetic"
+          ]
+        },
+        {
+          "id": "S1",
+          "statement": {
+            "kind": "expression",
+            "expression": {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "add",
+                  "args": [
+                    {
+                      "kind": "sqrt",
+                      "argument": {
+                        "kind": "rational",
+                        "n": "5",
+                        "d": "1"
+                      }
+                    },
+                    {
+                      "kind": "multiply",
+                      "args": [
+                        {
+                          "kind": "rational",
+                          "n": "-1",
+                          "d": "1"
+                        },
+                        {
+                          "kind": "rational",
+                          "n": "3",
+                          "d": "1"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "activeVariable": "u",
+          "fixedParameters": [],
+          "facts": [
+            "real-arithmetic"
+          ]
+        },
+        {
+          "id": "S2",
+          "statement": {
+            "kind": "expression",
+            "expression": {
+              "kind": "add",
+              "args": [
+                {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "sqrt",
+                      "argument": {
+                        "kind": "rational",
+                        "n": "5",
+                        "d": "1"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "multiply",
+                      "args": [
+                        {
+                          "kind": "rational",
+                          "n": "-1",
+                          "d": "1"
+                        },
+                        {
+                          "kind": "rational",
+                          "n": "3",
+                          "d": "1"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "activeVariable": "u",
+          "fixedParameters": [],
+          "facts": [
+            "real-arithmetic"
+          ]
+        },
+        {
+          "id": "S3",
+          "statement": {
+            "kind": "expression",
+            "expression": {
+              "kind": "add",
+              "args": [
+                {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "sqrt",
+                      "argument": {
+                        "kind": "rational",
+                        "n": "5",
+                        "d": "1"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "kind": "rational",
+                  "n": "3",
+                  "d": "1"
+                }
+              ]
+            }
+          },
+          "activeVariable": "u",
+          "fixedParameters": [],
+          "facts": [
+            "real-arithmetic"
+          ]
+        },
+        {
+          "id": "S4",
+          "statement": {
+            "kind": "expression",
+            "expression": {
+              "kind": "add",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "3",
+                  "d": "1"
+                },
+                {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "sqrt",
+                      "argument": {
+                        "kind": "rational",
+                        "n": "5",
+                        "d": "1"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "activeVariable": "u",
+          "fixedParameters": [],
+          "facts": [
+            "real-arithmetic"
+          ]
+        }
+      ],
+      "transitions": [
+        {
+          "id": "n08-root-absolute-a0",
+          "from": "S0",
+          "to": "S1",
+          "ruleId": "rewrite",
+          "requires": [
+            "real-arithmetic"
+          ],
+          "produces": [],
+          "basisRefs": [
+            "real-arithmetic"
+          ]
+        },
+        {
+          "id": "n08-root-absolute-a1",
+          "from": "S1",
+          "to": "S2",
+          "ruleId": "rewrite",
+          "requires": [
+            "real-arithmetic"
+          ],
+          "produces": [],
+          "basisRefs": [
+            "real-arithmetic"
+          ]
+        },
+        {
+          "id": "n08-root-absolute-a2",
+          "from": "S2",
+          "to": "S3",
+          "ruleId": "rewrite",
+          "requires": [
+            "real-arithmetic"
+          ],
+          "produces": [],
+          "basisRefs": [
+            "real-arithmetic"
+          ]
+        },
+        {
+          "id": "n08-root-absolute-a3",
+          "from": "S3",
+          "to": "S4",
+          "ruleId": "rewrite",
+          "requires": [
+            "real-arithmetic"
+          ],
+          "produces": [],
+          "basisRefs": [
+            "real-arithmetic"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "solution-graph/1",
+      "id": "n08-pi-sign",
+      "variable": "u",
+      "parameters": [],
+      "initialFacts": [
+        "real-arithmetic"
+      ],
+      "givens": [
+        {
+          "id": "n08-pi-sign-given",
+          "statement": {
+            "kind": "relation",
+            "left": {
+              "kind": "rational",
+              "n": "3",
+              "d": "1"
+            },
+            "operator": "<",
+            "right": {
+              "kind": "constant",
+              "name": "pi"
+            }
+          }
+        }
+      ],
+      "rootStateId": "S0",
+      "goalStateIds": [
+        "S2"
+      ],
+      "states": [
+        {
+          "id": "S0",
+          "statement": {
+            "kind": "relation",
+            "left": {
+              "kind": "rational",
+              "n": "3",
+              "d": "1"
+            },
+            "operator": "<",
+            "right": {
+              "kind": "constant",
+              "name": "pi"
+            }
+          },
+          "activeVariable": "u",
+          "fixedParameters": [],
+          "facts": [
+            "real-arithmetic"
+          ]
+        },
+        {
+          "id": "S1",
+          "statement": {
+            "kind": "relation",
+            "left": {
+              "kind": "add",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "3",
+                  "d": "1"
+                },
+                {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "constant",
+                      "name": "pi"
+                    }
+                  ]
+                }
+              ]
+            },
+            "operator": "<",
+            "right": {
+              "kind": "add",
+              "args": [
+                {
+                  "kind": "constant",
+                  "name": "pi"
+                },
+                {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "constant",
+                      "name": "pi"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "activeVariable": "u",
+          "fixedParameters": [],
+          "facts": [
+            "real-arithmetic"
+          ]
+        },
+        {
+          "id": "S2",
+          "statement": {
+            "kind": "relation",
+            "left": {
+              "kind": "add",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "3",
+                  "d": "1"
+                },
+                {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "constant",
+                      "name": "pi"
+                    }
+                  ]
+                }
+              ]
+            },
+            "operator": "<",
+            "right": {
+              "kind": "rational",
+              "n": "0",
+              "d": "1"
+            }
+          },
+          "activeVariable": "u",
+          "fixedParameters": [],
+          "facts": [
+            "real-arithmetic"
+          ]
+        }
+      ],
+      "transitions": [
+        {
+          "id": "n08-pi-sign-a0",
+          "from": "S0",
+          "to": "S1",
+          "ruleId": "add-both-sides",
+          "operand": {
+            "kind": "multiply",
+            "args": [
+              {
+                "kind": "rational",
+                "n": "-1",
+                "d": "1"
+              },
+              {
+                "kind": "constant",
+                "name": "pi"
+              }
+            ]
+          },
+          "requires": [
+            "real-arithmetic"
+          ],
+          "produces": [],
+          "basisRefs": [
+            "real-arithmetic"
+          ]
+        },
+        {
+          "id": "n08-pi-sign-a1",
+          "from": "S1",
+          "to": "S2",
+          "ruleId": "rewrite",
+          "requires": [
+            "real-arithmetic"
+          ],
+          "produces": [],
+          "basisRefs": [
+            "real-arithmetic"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "solution-graph/1",
+      "id": "n08-pi-absolute",
+      "variable": "u",
+      "parameters": [],
+      "initialFacts": [
+        "real-arithmetic"
+      ],
+      "givens": [
+        {
+          "id": "n08-pi-absolute-given",
+          "statement": {
+            "kind": "expression",
+            "expression": {
+              "kind": "absolute",
+              "argument": {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "3",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "-1",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "constant",
+                        "name": "pi"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ],
+      "rootStateId": "S0",
+      "goalStateIds": [
+        "S4"
+      ],
+      "states": [
+        {
+          "id": "S0",
+          "statement": {
+            "kind": "expression",
+            "expression": {
+              "kind": "absolute",
+              "argument": {
+                "kind": "add",
+                "args": [
+                  {
+                    "kind": "rational",
+                    "n": "3",
+                    "d": "1"
+                  },
+                  {
+                    "kind": "multiply",
+                    "args": [
+                      {
+                        "kind": "rational",
+                        "n": "-1",
+                        "d": "1"
+                      },
+                      {
+                        "kind": "constant",
+                        "name": "pi"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "activeVariable": "u",
+          "fixedParameters": [],
+          "facts": [
+            "real-arithmetic"
+          ]
+        },
+        {
+          "id": "S1",
+          "statement": {
+            "kind": "expression",
+            "expression": {
+              "kind": "multiply",
+              "args": [
+                {
+                  "kind": "rational",
+                  "n": "-1",
+                  "d": "1"
+                },
+                {
+                  "kind": "add",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "3",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "multiply",
+                      "args": [
+                        {
+                          "kind": "rational",
+                          "n": "-1",
+                          "d": "1"
+                        },
+                        {
+                          "kind": "constant",
+                          "name": "pi"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "activeVariable": "u",
+          "fixedParameters": [],
+          "facts": [
+            "real-arithmetic"
+          ]
+        },
+        {
+          "id": "S2",
+          "statement": {
+            "kind": "expression",
+            "expression": {
+              "kind": "add",
+              "args": [
+                {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "rational",
+                      "n": "3",
+                      "d": "1"
+                    }
+                  ]
+                },
+                {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "multiply",
+                      "args": [
+                        {
+                          "kind": "rational",
+                          "n": "-1",
+                          "d": "1"
+                        },
+                        {
+                          "kind": "constant",
+                          "name": "pi"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "activeVariable": "u",
+          "fixedParameters": [],
+          "facts": [
+            "real-arithmetic"
+          ]
+        },
+        {
+          "id": "S3",
+          "statement": {
+            "kind": "expression",
+            "expression": {
+              "kind": "add",
+              "args": [
+                {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "rational",
+                      "n": "3",
+                      "d": "1"
+                    }
+                  ]
+                },
+                {
+                  "kind": "constant",
+                  "name": "pi"
+                }
+              ]
+            }
+          },
+          "activeVariable": "u",
+          "fixedParameters": [],
+          "facts": [
+            "real-arithmetic"
+          ]
+        },
+        {
+          "id": "S4",
+          "statement": {
+            "kind": "expression",
+            "expression": {
+              "kind": "add",
+              "args": [
+                {
+                  "kind": "constant",
+                  "name": "pi"
+                },
+                {
+                  "kind": "multiply",
+                  "args": [
+                    {
+                      "kind": "rational",
+                      "n": "-1",
+                      "d": "1"
+                    },
+                    {
+                      "kind": "rational",
+                      "n": "3",
+                      "d": "1"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "activeVariable": "u",
+          "fixedParameters": [],
+          "facts": [
+            "real-arithmetic"
+          ]
+        }
+      ],
+      "transitions": [
+        {
+          "id": "n08-pi-absolute-a0",
+          "from": "S0",
+          "to": "S1",
+          "ruleId": "rewrite",
+          "requires": [
+            "real-arithmetic"
+          ],
+          "produces": [],
+          "basisRefs": [
+            "real-arithmetic"
+          ]
+        },
+        {
+          "id": "n08-pi-absolute-a1",
+          "from": "S1",
+          "to": "S2",
+          "ruleId": "rewrite",
+          "requires": [
+            "real-arithmetic"
+          ],
+          "produces": [],
+          "basisRefs": [
+            "real-arithmetic"
+          ]
+        },
+        {
+          "id": "n08-pi-absolute-a2",
+          "from": "S2",
+          "to": "S3",
+          "ruleId": "rewrite",
+          "requires": [
+            "real-arithmetic"
+          ],
+          "produces": [],
+          "basisRefs": [
+            "real-arithmetic"
+          ]
+        },
+        {
+          "id": "n08-pi-absolute-a3",
+          "from": "S3",
+          "to": "S4",
+          "ruleId": "rewrite",
+          "requires": [
+            "real-arithmetic"
+          ],
+          "produces": [],
+          "basisRefs": [
+            "real-arithmetic"
+          ]
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "n08-root-sign-group",
+      "kind": "relation-sequence",
+      "patternId": "T04",
+      "graphRef": "n08-root-sign",
+      "stageIds": [
+        "n08-stage-06"
+      ],
+      "sourceNodeIds": [
+        "n08-r5-q06-operation",
+        "n08-q06-subtract"
+      ],
+      "stepRefs": [
+        "n08-root-sign-a0",
+        "n08-root-sign-a1"
+      ],
+      "number": 13,
+      "numberId": "n08-root-sign-number",
+      "boundaryNodeIds": [
+        "n08-05"
+      ],
+      "boundaryReason": "同じ数値の問題・実数条件での通常変形。符号の意味、規則選択、場合の証明の境界は外側へ保持。",
+      "conclusion": {
+        "kind": "terminal-in-flow",
+        "stateRef": "S2"
+      },
+      "rows": [
+        {
+          "id": "n08-root-sign-S0",
+          "graphRef": "n08-root-sign",
+          "stateRef": "S0",
+          "sourceNodeId": "n08-r5-q06-operation",
+          "sourceRefs": [
+            "n08-r5-q06-operation-before",
+            "n08-r5-q06-operation-interaction-0",
+            "n08-r5-q06-operation-result-formula-0",
+            "n08-r5-q06-operation-after"
+          ],
+          "role": "main",
+          "visibleAfter": [],
+          "interactionRef": null,
+          "slots": [],
+          "before": [
+            {
+              "type": "text",
+              "text": "前の段階で得た大小関係から、元の中身と"
+            },
+            {
+              "type": "math",
+              "latex": "0"
+            },
+            {
+              "type": "text",
+              "text": "を比べる形を作ります。"
+            }
+          ],
+          "after": [],
+          "afterVisible": true,
+          "continuation": false
+        },
+        {
+          "id": "n08-root-sign-S1",
+          "graphRef": "n08-root-sign",
+          "stateRef": "S1",
+          "sourceNodeId": "n08-r5-q06-operation",
+          "sourceRefs": [
+            "n08-r5-q06-operation-before",
+            "n08-r5-q06-operation-interaction-0",
+            "n08-r5-q06-operation-result-formula-0",
+            "n08-r5-q06-operation-after"
+          ],
+          "role": "main",
+          "visibleAfter": [],
+          "interactionRef": "n08-r5-q06-operation-answer",
+          "slots": [
+            {
+              "id": "n08-root-sign-S1-slot0",
+              "interactionRef": "n08-r5-q06-operation-answer",
+              "path": "left.args.1.args.1"
+            },
+            {
+              "id": "n08-root-sign-S1-slot1",
+              "interactionRef": "n08-r5-q06-operation-answer",
+              "path": "right.args.1.args.1"
+            }
+          ],
+          "before": [
+            {
+              "type": "text",
+              "text": "左辺に元の中身を作るため、両辺から同じ数を引きます。"
+            }
+          ],
+          "after": [
+            {
+              "type": "text",
+              "text": "両辺に同じ操作をしたので、不等号の向きは変わりません。"
+            }
+          ],
+          "afterVisible": true,
+          "continuation": false
+        },
+        {
+          "id": "n08-root-sign-S2",
+          "graphRef": "n08-root-sign",
+          "stateRef": "S2",
+          "sourceNodeId": "n08-q06-subtract",
+          "sourceRefs": [
+            "n08-q06-subtract-r5-before-0",
+            "n08-q06-subtract-interaction-0",
+            "n08-q06-subtract-result-0",
+            "n08-q06-subtract-after"
+          ],
+          "role": "main",
+          "visibleAfter": [
+            "n08-r5-q06-operation-answer"
+          ],
+          "interactionRef": "n08-q06-subtract-answer",
+          "slots": [
+            {
+              "id": "n08-root-sign-S2-slot0",
+              "interactionRef": "n08-q06-subtract-answer",
+              "path": "right"
+            }
+          ],
+          "before": [
+            {
+              "type": "text",
+              "text": "右辺に残った同じ数どうしの差を計算します。"
+            }
+          ],
+          "after": [
+            {
+              "type": "text",
+              "text": "中身と"
+            },
+            {
+              "type": "math",
+              "latex": "0"
+            },
+            {
+              "type": "text",
+              "text": "の比較ができました。次は、この結果から符号を読み取ります。"
+            }
+          ],
+          "afterVisible": true,
+          "continuation": false
+        }
+      ]
+    },
+    {
+      "id": "n08-root-absolute-group",
+      "kind": "expression-chain",
+      "patternId": "T02",
+      "graphRef": "n08-root-absolute",
+      "stageIds": [
+        "n08-stage-07"
+      ],
+      "sourceNodeIds": [
+        "n08-q07-bracket",
+        "n08-q07-distribute",
+        "n08-07"
+      ],
+      "stepRefs": [
+        "n08-root-absolute-a0",
+        "n08-root-absolute-a1",
+        "n08-root-absolute-a2",
+        "n08-root-absolute-a3"
+      ],
+      "number": 17,
+      "numberId": "n08-root-absolute-number",
+      "boundaryNodeIds": [
+        "n08-q07-rule"
+      ],
+      "boundaryReason": "同じ数値の問題・実数条件での通常変形。符号の意味、規則選択、場合の証明の境界は外側へ保持。",
+      "conclusion": {
+        "kind": "terminal-in-flow",
+        "stateRef": "S4"
+      },
+      "rows": [
+        {
+          "id": "n08-root-absolute-S0",
+          "graphRef": "n08-root-absolute",
+          "stateRef": "S0",
+          "sourceNodeId": "n08-q07-bracket",
+          "sourceRefs": [
+            "n08-q07-bracket-before",
+            "n08-q07-bracket-interaction-0",
+            "n08-q07-bracket-result",
+            "n08-q07-bracket-after"
+          ],
+          "role": "main",
+          "visibleAfter": [],
+          "interactionRef": null,
+          "slots": [],
+          "before": [],
+          "after": [],
+          "afterVisible": true,
+          "continuation": false
+        },
+        {
+          "id": "n08-root-absolute-S1",
+          "graphRef": "n08-root-absolute",
+          "stateRef": "S1",
+          "sourceNodeId": "n08-q07-bracket",
+          "sourceRefs": [
+            "n08-q07-bracket-before",
+            "n08-q07-bracket-interaction-0",
+            "n08-q07-bracket-result",
+            "n08-q07-bracket-after"
+          ],
+          "role": "main",
+          "visibleAfter": [],
+          "interactionRef": "n08-q07-bracket-answer",
+          "slots": [
+            {
+              "id": "n08-root-absolute-S1-slot0",
+              "interactionRef": "n08-q07-bracket-answer",
+              "path": "expression"
+            }
+          ],
+          "before": [
+            {
+              "type": "text",
+              "text": "選んだ負の場合の規則を使い、式全体に負号を付けます。"
+            }
+          ],
+          "after": [],
+          "afterVisible": true,
+          "continuation": true
+        },
+        {
+          "id": "n08-root-absolute-S2",
+          "graphRef": "n08-root-absolute",
+          "stateRef": "S2",
+          "sourceNodeId": "n08-q07-distribute",
+          "sourceRefs": [
+            "n08-q07-distribute-r5-before-0",
+            "n08-q07-distribute-interaction",
+            "n08-q07-distribute-result",
+            "n08-q07-distribute-after"
+          ],
+          "role": "main",
+          "visibleAfter": [
+            "n08-q07-bracket-answer"
+          ],
+          "interactionRef": null,
+          "slots": [],
+          "before": [
+            {
+              "type": "text",
+              "text": "負号は"
+            },
+            {
+              "type": "math",
+              "latex": "-1"
+            },
+            {
+              "type": "text",
+              "text": "を掛けることです。括弧の二つの項へ、それぞれ分配します。"
+            }
+          ],
+          "after": [],
+          "afterVisible": true,
+          "continuation": true,
+          "displayForm": "explicit-products"
+        },
+        {
+          "id": "n08-root-absolute-S3",
+          "graphRef": "n08-root-absolute",
+          "stateRef": "S3",
+          "sourceNodeId": "n08-q07-distribute",
+          "sourceRefs": [
+            "n08-q07-distribute-r5-before-0",
+            "n08-q07-distribute-interaction",
+            "n08-q07-distribute-result",
+            "n08-q07-distribute-after"
+          ],
+          "role": "main",
+          "visibleAfter": [
+            "n08-q07-bracket-answer"
+          ],
+          "interactionRef": "n08-q07-distribute-answer",
+          "slots": [
+            {
+              "id": "n08-root-absolute-S3-slot0",
+              "interactionRef": "n08-q07-distribute-answer",
+              "path": "expression"
+            }
+          ],
+          "before": [
+            {
+              "type": "text",
+              "text": "二つの積を計算して、括弧を外した式を入れます。"
+            }
+          ],
+          "after": [],
+          "afterVisible": true,
+          "continuation": true
+        },
+        {
+          "id": "n08-root-absolute-S4",
+          "graphRef": "n08-root-absolute",
+          "stateRef": "S4",
+          "sourceNodeId": "n08-07",
+          "sourceRefs": [
+            "n08-07-before",
+            "n08-07-interaction-0",
+            "n08-07-result",
+            "n08-07-after"
+          ],
+          "role": "main",
+          "visibleAfter": [
+            "n08-q07-bracket-answer",
+            "n08-q07-distribute-answer"
+          ],
+          "interactionRef": "n08-07",
+          "slots": [
+            {
+              "id": "n08-root-absolute-S4-slot0",
+              "interactionRef": "n08-07",
+              "path": "expression"
+            }
+          ],
+          "before": [
+            {
+              "type": "text",
+              "text": "加法の交換法則で、各項の符号を保ったまま正の項を先に書きます。"
+            }
+          ],
+          "after": [
+            {
+              "type": "text",
+              "text": "中身の符号を判定し、定義に当てはめてから計算できました。"
+            }
+          ],
+          "afterVisible": true,
+          "continuation": true
+        }
+      ]
+    },
+    {
+      "id": "n08-pi-sign-group",
+      "kind": "relation-sequence",
+      "patternId": "T04",
+      "graphRef": "n08-pi-sign",
+      "stageIds": [
+        "n08-stage-08"
+      ],
+      "sourceNodeIds": [
+        "n08-q08-order",
+        "n08-r5-q08-operation",
+        "n08-q08-difference"
+      ],
+      "stepRefs": [
+        "n08-pi-sign-a0",
+        "n08-pi-sign-a1"
+      ],
+      "number": 20,
+      "numberId": "n08-pi-sign-number",
+      "boundaryNodeIds": [],
+      "boundaryReason": "同じ数値の問題・実数条件での通常変形。符号の意味、規則選択、場合の証明の境界は外側へ保持。",
+      "conclusion": {
+        "kind": "terminal-in-flow",
+        "stateRef": "S2"
+      },
+      "rows": [
+        {
+          "id": "n08-pi-sign-S0",
+          "graphRef": "n08-pi-sign",
+          "stateRef": "S0",
+          "sourceNodeId": "n08-q08-order",
+          "sourceRefs": [
+            "n08-q08-order-r5-before-0",
+            "n08-q08-order-interaction",
+            "n08-q08-order-result-0",
+            "n08-q08-order-after"
+          ],
+          "role": "main",
+          "visibleAfter": [],
+          "interactionRef": "n08-q08-order-answer",
+          "slots": [
+            {
+              "id": "n08-pi-sign-S0-slot0",
+              "interactionRef": "n08-q08-order-answer",
+              "path": "operator"
+            }
+          ],
+          "before": [
+            {
+              "type": "text",
+              "text": "与えられた小数表示から、円周率と"
+            },
+            {
+              "type": "math",
+              "latex": "3"
+            },
+            {
+              "type": "text",
+              "text": "の大小を比べます。"
+            }
+          ],
+          "after": [],
+          "afterVisible": true,
+          "continuation": false
+        },
+        {
+          "id": "n08-pi-sign-S1",
+          "graphRef": "n08-pi-sign",
+          "stateRef": "S1",
+          "sourceNodeId": "n08-r5-q08-operation",
+          "sourceRefs": [
+            "n08-r5-q08-operation-before",
+            "n08-r5-q08-operation-interaction-0",
+            "n08-r5-q08-operation-result-formula-0",
+            "n08-r5-q08-operation-after"
+          ],
+          "role": "main",
+          "visibleAfter": [
+            "n08-q08-order-answer"
+          ],
+          "interactionRef": "n08-r5-q08-operation-answer",
+          "slots": [
+            {
+              "id": "n08-pi-sign-S1-slot0",
+              "interactionRef": "n08-r5-q08-operation-answer",
+              "path": "left.args.1.args.1"
+            },
+            {
+              "id": "n08-pi-sign-S1-slot1",
+              "interactionRef": "n08-r5-q08-operation-answer",
+              "path": "right.args.1.args.1"
+            }
+          ],
+          "before": [
+            {
+              "type": "text",
+              "text": "左辺に今回の中身を作ります。前の例と同じように、両辺から同じ数を引きます。"
+            }
+          ],
+          "after": [
+            {
+              "type": "text",
+              "text": "同じ数を引く操作では、不等号の向きは変わりません。"
+            }
+          ],
+          "afterVisible": true,
+          "continuation": false
+        },
+        {
+          "id": "n08-pi-sign-S2",
+          "graphRef": "n08-pi-sign",
+          "stateRef": "S2",
+          "sourceNodeId": "n08-q08-difference",
+          "sourceRefs": [
+            "n08-q08-difference-r5-before-0",
+            "n08-q08-difference-interaction",
+            "n08-q08-difference-result-0",
+            "n08-q08-difference-after"
+          ],
+          "role": "main",
+          "visibleAfter": [
+            "n08-q08-order-answer",
+            "n08-r5-q08-operation-answer"
+          ],
+          "interactionRef": "n08-q08-difference-answer",
+          "slots": [
+            {
+              "id": "n08-pi-sign-S2-slot0",
+              "interactionRef": "n08-q08-difference-answer",
+              "path": "operator"
+            }
+          ],
+          "before": [
+            {
+              "type": "text",
+              "text": "右辺を"
+            },
+            {
+              "type": "math",
+              "latex": "0"
+            },
+            {
+              "type": "text",
+              "text": "に整理しました。保たれる大小関係を入れます。"
+            }
+          ],
+          "after": [
+            {
+              "type": "text",
+              "text": "中身と"
+            },
+            {
+              "type": "math",
+              "latex": "0"
+            },
+            {
+              "type": "text",
+              "text": "を比べられました。元の小数表示も根拠として残します。"
+            }
+          ],
+          "afterVisible": true,
+          "continuation": false
+        }
+      ]
+    },
+    {
+      "id": "n08-pi-absolute-group",
+      "kind": "expression-chain",
+      "patternId": "T02",
+      "graphRef": "n08-pi-absolute",
+      "stageIds": [
+        "n08-stage-09"
+      ],
+      "sourceNodeIds": [
+        "n08-q09-bracket",
+        "n08-q09-distribute",
+        "n08-09"
+      ],
+      "stepRefs": [
+        "n08-pi-absolute-a0",
+        "n08-pi-absolute-a1",
+        "n08-pi-absolute-a2",
+        "n08-pi-absolute-a3"
+      ],
+      "number": 23,
+      "numberId": "n08-pi-absolute-number",
+      "boundaryNodeIds": [
+        "n08-08"
+      ],
+      "boundaryReason": "同じ数値の問題・実数条件での通常変形。符号の意味、規則選択、場合の証明の境界は外側へ保持。",
+      "conclusion": {
+        "kind": "terminal-in-flow",
+        "stateRef": "S4"
+      },
+      "rows": [
+        {
+          "id": "n08-pi-absolute-S0",
+          "graphRef": "n08-pi-absolute",
+          "stateRef": "S0",
+          "sourceNodeId": "n08-q09-bracket",
+          "sourceRefs": [
+            "n08-q09-bracket-r5-before-0",
+            "n08-q09-bracket-interaction-0",
+            "n08-q09-bracket-result",
+            "n08-q09-bracket-after"
+          ],
+          "role": "main",
+          "visibleAfter": [],
+          "interactionRef": null,
+          "slots": [],
+          "before": [],
+          "after": [],
+          "afterVisible": true,
+          "continuation": false
+        },
+        {
+          "id": "n08-pi-absolute-S1",
+          "graphRef": "n08-pi-absolute",
+          "stateRef": "S1",
+          "sourceNodeId": "n08-q09-bracket",
+          "sourceRefs": [
+            "n08-q09-bracket-r5-before-0",
+            "n08-q09-bracket-interaction-0",
+            "n08-q09-bracket-result",
+            "n08-q09-bracket-after"
+          ],
+          "role": "main",
+          "visibleAfter": [],
+          "interactionRef": "n08-q09-bracket-answer",
+          "slots": [
+            {
+              "id": "n08-pi-absolute-S1-slot0",
+              "interactionRef": "n08-q09-bracket-answer",
+              "path": "expression"
+            }
+          ],
+          "before": [
+            {
+              "type": "text",
+              "text": "前の例と同じ順序で、負の場合の規則を式全体に使います。"
+            }
+          ],
+          "after": [],
+          "afterVisible": true,
+          "continuation": true
+        },
+        {
+          "id": "n08-pi-absolute-S2",
+          "graphRef": "n08-pi-absolute",
+          "stateRef": "S2",
+          "sourceNodeId": "n08-q09-distribute",
+          "sourceRefs": [
+            "n08-q09-distribute-r5-before-0",
+            "n08-q09-distribute-interaction",
+            "n08-q09-distribute-result",
+            "n08-q09-distribute-after"
+          ],
+          "role": "main",
+          "visibleAfter": [
+            "n08-q09-bracket-answer"
+          ],
+          "interactionRef": null,
+          "slots": [],
+          "before": [
+            {
+              "type": "text",
+              "text": "括弧全体に掛かる"
+            },
+            {
+              "type": "math",
+              "latex": "-1"
+            },
+            {
+              "type": "text",
+              "text": "を、二つの項へ分配します。"
+            }
+          ],
+          "after": [],
+          "afterVisible": true,
+          "continuation": true,
+          "displayForm": "explicit-products"
+        },
+        {
+          "id": "n08-pi-absolute-S3",
+          "graphRef": "n08-pi-absolute",
+          "stateRef": "S3",
+          "sourceNodeId": "n08-q09-distribute",
+          "sourceRefs": [
+            "n08-q09-distribute-r5-before-0",
+            "n08-q09-distribute-interaction",
+            "n08-q09-distribute-result",
+            "n08-q09-distribute-after"
+          ],
+          "role": "main",
+          "visibleAfter": [
+            "n08-q09-bracket-answer"
+          ],
+          "interactionRef": "n08-q09-distribute-answer",
+          "slots": [
+            {
+              "id": "n08-pi-absolute-S3-slot0",
+              "interactionRef": "n08-q09-distribute-answer",
+              "path": "expression"
+            }
+          ],
+          "before": [
+            {
+              "type": "text",
+              "text": "それぞれの積を計算し、二項の符号を確かめます。"
+            }
+          ],
+          "after": [],
+          "afterVisible": true,
+          "continuation": true
+        },
+        {
+          "id": "n08-pi-absolute-S4",
+          "graphRef": "n08-pi-absolute",
+          "stateRef": "S4",
+          "sourceNodeId": "n08-09",
+          "sourceRefs": [
+            "n08-09-before",
+            "n08-09-interaction-0",
+            "n08-09-result",
+            "n08-09-after"
+          ],
+          "role": "main",
+          "visibleAfter": [
+            "n08-q09-bracket-answer",
+            "n08-q09-distribute-answer"
+          ],
+          "interactionRef": "n08-09",
+          "slots": [
+            {
+              "id": "n08-pi-absolute-S4-slot0",
+              "interactionRef": "n08-09",
+              "path": "expression"
+            }
+          ],
+          "before": [
+            {
+              "type": "text",
+              "text": "加法の交換法則で、各項の符号を保って正の項を先に書きます。"
+            }
+          ],
+          "after": [
+            {
+              "type": "text",
+              "text": "二つの例とも、大小→差の符号→場合の選択→括弧全体の反転という順序で処理しました。"
+            }
+          ],
+          "afterVisible": true,
+          "continuation": true
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "n08-r5-q06-operation-answer",
+      "nodeId": "n08-r5-q06-operation",
+      "blankRole": "operand",
+      "learnerDecision": "左辺に元の中身を作るため、両辺から同じ数を引きます。",
+      "availableFactRefs": [
+        "real-arithmetic",
+        "n08-root-sign-given"
+      ],
+      "prerequisiteInteractionIds": [],
+      "nextUseRef": "n08-q06-subtract-answer",
+      "taskContract": {
+        "kind": "existing-select",
+        "requestedOperation": "前の大小関係から中身の符号へつなぐ"
+      },
+      "decision": "ADOPT",
+      "reason": "既存の一回答を保ち、普通の変形を一続きで完成させる。意味・規則の判断は外側に保持。",
+      "expected": "3",
+      "targetLatex": "3",
+      "choices": [
+        "3",
+        "-3",
+        "0"
+      ]
+    },
+    {
+      "id": "n08-q06-subtract-answer",
+      "nodeId": "n08-q06-subtract",
+      "blankRole": "calculation",
+      "learnerDecision": "右辺に残った同じ数どうしの差を計算します。",
+      "availableFactRefs": [
+        "real-arithmetic",
+        "n08-root-sign-given"
+      ],
+      "prerequisiteInteractionIds": [
+        "n08-r5-q06-operation-answer"
+      ],
+      "nextUseRef": "n08-05",
+      "taskContract": {
+        "kind": "existing-select",
+        "requestedOperation": "両辺から同じ数を引いて差の符号へ"
+      },
+      "decision": "ADOPT",
+      "reason": "既存の一回答を保ち、普通の変形を一続きで完成させる。意味・規則の判断は外側に保持。",
+      "expected": "0",
+      "targetLatex": "0",
+      "choices": [
+        "0",
+        "3",
+        "-3"
+      ]
+    },
+    {
+      "id": "n08-q07-bracket-answer",
+      "nodeId": "n08-q07-bracket",
+      "blankRole": "expression",
+      "learnerDecision": "選んだ負の場合の規則を使い、式全体に負号を付けます。",
+      "availableFactRefs": [
+        "real-arithmetic",
+        "n08-root-absolute-given"
+      ],
+      "prerequisiteInteractionIds": [],
+      "nextUseRef": "n08-q07-distribute-answer",
+      "taskContract": {
+        "kind": "existing-select",
+        "requestedOperation": "中身全体を括弧で囲んで負号を付ける"
+      },
+      "decision": "ADOPT",
+      "reason": "既存の一回答を保ち、普通の変形を一続きで完成させる。意味・規則の判断は外側に保持。",
+      "expected": "-(\\sqrt5-3)",
+      "targetLatex": "-\\left(\\sqrt{5}-3\\right)",
+      "choices": [
+        "-(\\sqrt5-3)",
+        "-\\sqrt5-3",
+        "\\sqrt5-3"
+      ]
+    },
+    {
+      "id": "n08-q07-distribute-answer",
+      "nodeId": "n08-q07-distribute",
+      "blankRole": "calculation",
+      "learnerDecision": "二つの積を計算して、括弧を外した式を入れます。",
+      "availableFactRefs": [
+        "real-arithmetic",
+        "n08-root-absolute-given"
+      ],
+      "prerequisiteInteractionIds": [
+        "n08-q07-bracket-answer"
+      ],
+      "nextUseRef": "n08-07",
+      "taskContract": {
+        "kind": "existing-select",
+        "requestedOperation": "負号を括弧の二項へ掛ける"
+      },
+      "decision": "ADOPT",
+      "reason": "既存の一回答を保ち、普通の変形を一続きで完成させる。意味・規則の判断は外側に保持。",
+      "expected": "-\\sqrt5+3",
+      "targetLatex": "-\\sqrt{5}+3",
+      "choices": [
+        "-\\sqrt5+3",
+        "-\\sqrt5-3",
+        "\\sqrt5+3"
+      ]
+    },
+    {
+      "id": "n08-07",
+      "nodeId": "n08-07",
+      "blankRole": "calculation",
+      "learnerDecision": "加法の交換法則で、各項の符号を保ったまま正の項を先に書きます。",
+      "availableFactRefs": [
+        "real-arithmetic",
+        "n08-root-absolute-given"
+      ],
+      "prerequisiteInteractionIds": [
+        "n08-q07-bracket-answer",
+        "n08-q07-distribute-answer"
+      ],
+      "nextUseRef": "n08-q07-rule",
+      "taskContract": {
+        "kind": "existing-select",
+        "requestedOperation": "正の項を先に並べて元の問いへ答える"
+      },
+      "decision": "ADOPT",
+      "reason": "既存の一回答を保ち、普通の変形を一続きで完成させる。意味・規則の判断は外側に保持。",
+      "expected": "3-\\sqrt5",
+      "targetLatex": "3-\\sqrt{5}",
+      "choices": [
+        "3-\\sqrt5",
+        "\\sqrt5-3",
+        "-\\sqrt5-3",
+        "3+\\sqrt5"
+      ]
+    },
+    {
+      "id": "n08-q08-order-answer",
+      "nodeId": "n08-q08-order",
+      "blankRole": "relation",
+      "learnerDecision": "与えられた小数表示から、円周率と3の大小を比べます。",
+      "availableFactRefs": [
+        "real-arithmetic",
+        "n08-pi-sign-given"
+      ],
+      "prerequisiteInteractionIds": [],
+      "nextUseRef": "n08-r5-q08-operation-answer",
+      "taskContract": {
+        "kind": "existing-select",
+        "requestedOperation": "円周率と3を比べる"
+      },
+      "decision": "ADOPT",
+      "reason": "既存の一回答を保ち、普通の変形を一続きで完成させる。意味・規則の判断は外側に保持。",
+      "expected": "<",
+      "targetLatex": "<",
+      "choices": [
+        "<",
+        ">",
+        "="
+      ]
+    },
+    {
+      "id": "n08-r5-q08-operation-answer",
+      "nodeId": "n08-r5-q08-operation",
+      "blankRole": "operand",
+      "learnerDecision": "左辺に今回の中身を作ります。前の例と同じように、両辺から同じ数を引きます。",
+      "availableFactRefs": [
+        "real-arithmetic",
+        "n08-pi-sign-given"
+      ],
+      "prerequisiteInteractionIds": [
+        "n08-q08-order-answer"
+      ],
+      "nextUseRef": "n08-q08-difference-answer",
+      "taskContract": {
+        "kind": "existing-select",
+        "requestedOperation": "別の例で同じ両辺操作を組み立てる"
+      },
+      "decision": "ADOPT",
+      "reason": "既存の一回答を保ち、普通の変形を一続きで完成させる。意味・規則の判断は外側に保持。",
+      "expected": "\\pi",
+      "targetLatex": "\\pi",
+      "choices": [
+        "\\pi",
+        "3",
+        "-\\pi"
+      ]
+    },
+    {
+      "id": "n08-q08-difference-answer",
+      "nodeId": "n08-q08-difference",
+      "blankRole": "relation",
+      "learnerDecision": "右辺を0に整理しました。保たれる大小関係を入れます。",
+      "availableFactRefs": [
+        "real-arithmetic",
+        "n08-pi-sign-given"
+      ],
+      "prerequisiteInteractionIds": [
+        "n08-q08-order-answer",
+        "n08-r5-q08-operation-answer"
+      ],
+      "nextUseRef": "n08-q08-difference-conclusion",
+      "taskContract": {
+        "kind": "existing-select",
+        "requestedOperation": "同じ数を引いて0との比較へ"
+      },
+      "decision": "ADOPT",
+      "reason": "既存の一回答を保ち、普通の変形を一続きで完成させる。意味・規則の判断は外側に保持。",
+      "expected": "<",
+      "targetLatex": "<",
+      "choices": [
+        "<",
+        ">",
+        "="
+      ]
+    },
+    {
+      "id": "n08-q09-bracket-answer",
+      "nodeId": "n08-q09-bracket",
+      "blankRole": "expression",
+      "learnerDecision": "前の例と同じ順序で、負の場合の規則を式全体に使います。",
+      "availableFactRefs": [
+        "real-arithmetic",
+        "n08-pi-absolute-given"
+      ],
+      "prerequisiteInteractionIds": [],
+      "nextUseRef": "n08-q09-distribute-answer",
+      "taskContract": {
+        "kind": "existing-select",
+        "requestedOperation": "前の例と同じ負の規則を使う"
+      },
+      "decision": "ADOPT",
+      "reason": "既存の一回答を保ち、普通の変形を一続きで完成させる。意味・規則の判断は外側に保持。",
+      "expected": "-(3-\\pi)",
+      "targetLatex": "-\\left(3-\\pi\\right)",
+      "choices": [
+        "-(3-\\pi)",
+        "3-\\pi",
+        "-3-\\pi"
+      ]
+    },
+    {
+      "id": "n08-q09-distribute-answer",
+      "nodeId": "n08-q09-distribute",
+      "blankRole": "calculation",
+      "learnerDecision": "それぞれの積を計算し、二項の符号を確かめます。",
+      "availableFactRefs": [
+        "real-arithmetic",
+        "n08-pi-absolute-given"
+      ],
+      "prerequisiteInteractionIds": [
+        "n08-q09-bracket-answer"
+      ],
+      "nextUseRef": "n08-09",
+      "taskContract": {
+        "kind": "existing-select",
+        "requestedOperation": "負号を3と負の円周率へ掛ける"
+      },
+      "decision": "ADOPT",
+      "reason": "既存の一回答を保ち、普通の変形を一続きで完成させる。意味・規則の判断は外側に保持。",
+      "expected": "-3+\\pi",
+      "targetLatex": "-3+\\pi",
+      "choices": [
+        "-3+\\pi",
+        "-3-\\pi",
+        "3+\\pi"
+      ]
+    },
+    {
+      "id": "n08-09",
+      "nodeId": "n08-09",
+      "blankRole": "calculation",
+      "learnerDecision": "加法の交換法則で、各項の符号を保って正の項を先に書きます。",
+      "availableFactRefs": [
+        "real-arithmetic",
+        "n08-pi-absolute-given"
+      ],
+      "prerequisiteInteractionIds": [
+        "n08-q09-bracket-answer",
+        "n08-q09-distribute-answer"
+      ],
+      "nextUseRef": "n08-08",
+      "taskContract": {
+        "kind": "existing-select",
+        "requestedOperation": "元の問題の答えをまとめる"
+      },
+      "decision": "ADOPT",
+      "reason": "既存の一回答を保ち、普通の変形を一続きで完成させる。意味・規則の判断は外側に保持。",
+      "expected": "\\pi-3",
+      "targetLatex": "\\pi-3",
+      "choices": [
+        "\\pi-3",
+        "3-\\pi",
+        "-\\pi-3",
+        "3+\\pi"
+      ]
+    }
+  ],
+  "coverage": [
+    {
+      "sourceRef": "n08-r5-q06-operation-before",
+      "disposition": "superseded-display",
+      "rowRef": "n08-root-sign-S1",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-r5-q06-operation-interaction-0",
+      "disposition": "superseded-display",
+      "rowRef": "n08-root-sign-S1",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-r5-q06-operation-result-formula-0",
+      "disposition": "superseded-display",
+      "rowRef": "n08-root-sign-S1",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-r5-q06-operation-after",
+      "disposition": "superseded-display",
+      "rowRef": "n08-root-sign-S1",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-q06-subtract-r5-before-0",
+      "disposition": "superseded-display",
+      "rowRef": "n08-root-sign-S2",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-q06-subtract-interaction-0",
+      "disposition": "superseded-display",
+      "rowRef": "n08-root-sign-S2",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-q06-subtract-result-0",
+      "disposition": "superseded-display",
+      "rowRef": "n08-root-sign-S2",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-q06-subtract-after",
+      "disposition": "superseded-display",
+      "rowRef": "n08-root-sign-S2",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-q07-bracket-before",
+      "disposition": "superseded-display",
+      "rowRef": "n08-root-absolute-S1",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-q07-bracket-interaction-0",
+      "disposition": "superseded-display",
+      "rowRef": "n08-root-absolute-S1",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-q07-bracket-result",
+      "disposition": "superseded-display",
+      "rowRef": "n08-root-absolute-S1",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-q07-bracket-after",
+      "disposition": "superseded-display",
+      "rowRef": "n08-root-absolute-S1",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-q07-distribute-r5-before-0",
+      "disposition": "superseded-display",
+      "rowRef": "n08-root-absolute-S3",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-q07-distribute-interaction",
+      "disposition": "superseded-display",
+      "rowRef": "n08-root-absolute-S3",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-q07-distribute-result",
+      "disposition": "superseded-display",
+      "rowRef": "n08-root-absolute-S3",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-q07-distribute-after",
+      "disposition": "superseded-display",
+      "rowRef": "n08-root-absolute-S3",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-07-before",
+      "disposition": "superseded-display",
+      "rowRef": "n08-root-absolute-S4",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-07-interaction-0",
+      "disposition": "superseded-display",
+      "rowRef": "n08-root-absolute-S4",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-07-result",
+      "disposition": "superseded-display",
+      "rowRef": "n08-root-absolute-S4",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-07-after",
+      "disposition": "superseded-display",
+      "rowRef": "n08-root-absolute-S4",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-q08-order-r5-before-0",
+      "disposition": "superseded-display",
+      "rowRef": "n08-pi-sign-S0",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-q08-order-interaction",
+      "disposition": "superseded-display",
+      "rowRef": "n08-pi-sign-S0",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-q08-order-result-0",
+      "disposition": "superseded-display",
+      "rowRef": "n08-pi-sign-S0",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-q08-order-after",
+      "disposition": "superseded-display",
+      "rowRef": "n08-pi-sign-S0",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-r5-q08-operation-before",
+      "disposition": "superseded-display",
+      "rowRef": "n08-pi-sign-S1",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-r5-q08-operation-interaction-0",
+      "disposition": "superseded-display",
+      "rowRef": "n08-pi-sign-S1",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-r5-q08-operation-result-formula-0",
+      "disposition": "superseded-display",
+      "rowRef": "n08-pi-sign-S1",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-r5-q08-operation-after",
+      "disposition": "superseded-display",
+      "rowRef": "n08-pi-sign-S1",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-q08-difference-r5-before-0",
+      "disposition": "superseded-display",
+      "rowRef": "n08-pi-sign-S2",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-q08-difference-interaction",
+      "disposition": "superseded-display",
+      "rowRef": "n08-pi-sign-S2",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-q08-difference-result-0",
+      "disposition": "superseded-display",
+      "rowRef": "n08-pi-sign-S2",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-q08-difference-after",
+      "disposition": "superseded-display",
+      "rowRef": "n08-pi-sign-S2",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-q09-bracket-r5-before-0",
+      "disposition": "superseded-display",
+      "rowRef": "n08-pi-absolute-S1",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-q09-bracket-interaction-0",
+      "disposition": "superseded-display",
+      "rowRef": "n08-pi-absolute-S1",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-q09-bracket-result",
+      "disposition": "superseded-display",
+      "rowRef": "n08-pi-absolute-S1",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-q09-bracket-after",
+      "disposition": "superseded-display",
+      "rowRef": "n08-pi-absolute-S1",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-q09-distribute-r5-before-0",
+      "disposition": "superseded-display",
+      "rowRef": "n08-pi-absolute-S3",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-q09-distribute-interaction",
+      "disposition": "superseded-display",
+      "rowRef": "n08-pi-absolute-S3",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-q09-distribute-result",
+      "disposition": "superseded-display",
+      "rowRef": "n08-pi-absolute-S3",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-q09-distribute-after",
+      "disposition": "superseded-display",
+      "rowRef": "n08-pi-absolute-S3",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-09-before",
+      "disposition": "superseded-display",
+      "rowRef": "n08-pi-absolute-S4",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-09-interaction-0",
+      "disposition": "superseded-display",
+      "rowRef": "n08-pi-absolute-S4",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-09-result",
+      "disposition": "superseded-display",
+      "rowRef": "n08-pi-absolute-S4",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    },
+    {
+      "sourceRef": "n08-09-after",
+      "disposition": "superseded-display",
+      "rowRef": "n08-pi-absolute-S4",
+      "reason": "承認P001の連続式と説明へ対応。元leafは保存する。"
+    }
+  ],
+  "numberAliases": {
+    "n08-r5-q06-operation-interaction-0": "n08-root-sign-S1",
+    "n08-r5-q06-operation-result-formula-0": "n08-root-sign-S1",
+    "n08-q06-subtract-interaction-0": "n08-root-sign-S2",
+    "n08-q06-subtract-result-0": "n08-root-sign-S2",
+    "n08-q07-bracket-interaction-0": "n08-root-absolute-S1",
+    "n08-q07-bracket-result": "n08-root-absolute-S1",
+    "n08-q07-distribute-interaction": "n08-root-absolute-S3",
+    "n08-q07-distribute-result": "n08-root-absolute-S3",
+    "n08-07-interaction-0": "n08-root-absolute-S4",
+    "n08-07-result": "n08-root-absolute-S4",
+    "n08-q08-order-result-0": "n08-pi-sign-S0",
+    "n08-r5-q08-operation-interaction-0": "n08-pi-sign-S1",
+    "n08-r5-q08-operation-result-formula-0": "n08-pi-sign-S1",
+    "n08-q08-difference-result-0": "n08-pi-sign-S2",
+    "n08-q09-bracket-interaction-0": "n08-pi-absolute-S1",
+    "n08-q09-bracket-result": "n08-pi-absolute-S1",
+    "n08-q09-distribute-interaction": "n08-pi-absolute-S3",
+    "n08-q09-distribute-result": "n08-pi-absolute-S3",
+    "n08-09-interaction-0": "n08-pi-absolute-S4",
+    "n08-09-result": "n08-pi-absolute-S4"
+  },
+  "proseOverrides": [
+    {
+      "nodeId": "n08-06",
+      "sourceRefs": [
+        "n08-06-answer",
+        "n08-06-after"
+      ],
+      "visibleAfterNodeId": "n08-06",
+      "after": [
+        {
+          "type": "text",
+          "text": "中身は負です。この判断で、負の場合の規則が使えます。"
+        }
+      ]
+    },
+    {
+      "nodeId": "n08-08",
+      "sourceRefs": [
+        "n08-08-answer",
+        "n08-08-after"
+      ],
+      "visibleAfterNodeId": "n08-08",
+      "after": [
+        {
+          "type": "text",
+          "text": "中身が負だと分かりました。この判断を使って絶対値を外します。"
+        }
+      ]
+    }
+  ]
+}

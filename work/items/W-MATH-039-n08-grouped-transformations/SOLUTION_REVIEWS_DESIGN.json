@@ -1,0 +1,3213 @@
+{
+  "reviews": [
+    {
+      "id": "n08-r5-q06-operation-answer",
+      "request": {
+        "profile": "ordinary-transformation",
+        "schemaVersion": "solution-review/1",
+        "phase": "design",
+        "visible": {
+          "initial": {
+            "aliasRefs": [],
+            "id": "n08-root-sign-S0",
+            "sourceNodeId": "n08-r5-q06-operation",
+            "stateRef": "S0",
+            "role": "main",
+            "continuation": false,
+            "done": true,
+            "before": [
+              {
+                "type": "text",
+                "text": "前の段階で得た大小関係から、元の中身と"
+              },
+              {
+                "type": "math",
+                "latex": "0"
+              },
+              {
+                "type": "text",
+                "text": "を比べる形を作ります。"
+              }
+            ],
+            "after": [],
+            "formula": {
+              "left": [
+                {
+                  "type": "math",
+                  "latex": "\\sqrt{5}"
+                }
+              ],
+              "relation": "<",
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "3"
+                }
+              ]
+            },
+            "current": null
+          },
+          "completed": [
+            {
+              "aliasRefs": [],
+              "id": "n08-root-sign-S0",
+              "sourceNodeId": "n08-r5-q06-operation",
+              "stateRef": "S0",
+              "role": "main",
+              "continuation": false,
+              "done": true,
+              "before": [
+                {
+                  "type": "text",
+                  "text": "前の段階で得た大小関係から、元の中身と"
+                },
+                {
+                  "type": "math",
+                  "latex": "0"
+                },
+                {
+                  "type": "text",
+                  "text": "を比べる形を作ります。"
+                }
+              ],
+              "after": [],
+              "formula": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "\\sqrt{5}"
+                  }
+                ],
+                "relation": "<",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "3"
+                  }
+                ]
+              },
+              "current": null
+            }
+          ],
+          "current": {
+            "aliasRefs": [
+              "n08-r5-q06-operation-interaction-0",
+              "n08-r5-q06-operation-result-formula-0"
+            ],
+            "id": "n08-root-sign-S1",
+            "sourceNodeId": "n08-r5-q06-operation",
+            "stateRef": "S1",
+            "role": "main",
+            "continuation": false,
+            "done": false,
+            "before": [
+              {
+                "type": "text",
+                "text": "左辺に元の中身を作るため、両辺から同じ数を引きます。"
+              }
+            ],
+            "after": [],
+            "formula": {
+              "left": [
+                {
+                  "type": "math",
+                  "latex": "\\sqrt{5}"
+                },
+                {
+                  "type": "math",
+                  "latex": "-"
+                },
+                {
+                  "type": "slot",
+                  "id": "n08-root-sign-S1-slot0",
+                  "interactionRef": "n08-r5-q06-operation-answer"
+                }
+              ],
+              "relation": "<",
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "3"
+                },
+                {
+                  "type": "math",
+                  "latex": "-"
+                },
+                {
+                  "type": "slot",
+                  "id": "n08-root-sign-S1-slot1",
+                  "interactionRef": "n08-r5-q06-operation-answer"
+                }
+              ]
+            },
+            "current": {
+              "id": "n08-r5-q06-operation-answer",
+              "learnerDecision": "左辺に元の中身を作るため、両辺から同じ数を引きます。",
+              "blankRole": "operand",
+              "choices": [
+                "3",
+                "-3",
+                "0"
+              ]
+            }
+          }
+        },
+        "sourceRefs": [
+          "src/data/textbook/math/numbers/n08Revision5.json",
+          "W-MATH-039/P001"
+        ],
+        "caseIds": [
+          "N07-USER-F01",
+          "N07-USER-F02",
+          "N07-USER-F03",
+          "N07-USER-F04",
+          "N07-USER-F05",
+          "N07-USER-F06",
+          "n07-layout-relation",
+          "n07-layout-positive",
+          "first-title-layout-positive",
+          "N07-ACCEPTED-20261025",
+          "N08-ACCEPTED-20261025",
+          "N09-REJECTED-20261025",
+          "N10-REJECTED-20261025",
+          "N09-ACCEPTED-20261025",
+          "N10-ACCEPTED-20261025"
+        ],
+        "required": [
+          "learnerDecision",
+          "availableInformation",
+          "reasonToProceed",
+          "nextWholeState",
+          "misconception",
+          "reducedSupportVariant",
+          "findings",
+          "patternDecision",
+          "groupBoundaryReview",
+          "blankDecisionReview",
+          "prosePlacementReview",
+          "terminalRoleReview",
+          "visibleProgressionReview"
+        ],
+        "constraints": [
+          "可視状態だけで次へ進めるかを先に検討する",
+          "作成者の理由欄を合格根拠にしない",
+          "同一AIの別passを独立モデルと呼ばない"
+        ],
+        "requestHash": "690695acba109cb01d286945557194adde14153b75a3b2040bf3d7872c87f403"
+      },
+      "response": {
+        "requestHash": "690695acba109cb01d286945557194adde14153b75a3b2040bf3d7872c87f403",
+        "phase": "design",
+        "reviewer": "same-assistant visible-state review; not independent AI",
+        "learnerDecision": "左辺に元の中身を作るため、両辺から同じ数を引きます。",
+        "availableInformation": "表示済みの原問とこの問題の条件、式列の既に完成した行、外側で済ませた意味・規則の判断。未回答の行の答えはsnapshotに入れない。",
+        "reasonToProceed": "元の中身を左辺に作り0と比べるため。",
+        "nextWholeState": "同じ原問のrelation-sequenceの次行へ戻る。現在のgroup末尾はそのまま局所の結論となる。",
+        "misconception": "片辺だけ引く、または中身と違う数を引く。",
+        "reducedSupportVariant": "今回は採点IDを保持。後の類題で同じ操作の穴を手本化する候補だけとし、ここで変更しない。",
+        "patternDecision": "既知の実数の大小から同じ数の減算へ進む一列。",
+        "groupBoundaryReview": "四groupをstage06/07/08/09へ限定。符号の意味、一般規則、二方向証明、場合の合流は既存の独立node。",
+        "blankDecisionReview": "左辺に元の中身を作るため、両辺から同じ数を引きます。。左右二枠は同じ一回答、手本の分配行と計算穴を区別する。",
+        "prosePlacementReview": "操作の目的をその行の前、結果の意味を回答後へ。意味の判断の答えを直前の文章で明かさない。",
+        "terminalRoleReview": "末尾の式を結論とし、同じ全等式をもう一つの答えカードとして出さない。前段の結果の記録と概念上の再利用は保持。",
+        "visibleProgressionReview": "当該groupだけのsnapshotを検査。外側の境界が未解決の場合はgroup自体を表示せず、保存された後半の正答も前提を解放しない。",
+        "findings": [],
+        "caseDispositions": [
+          {
+            "caseId": "N07-USER-F01",
+            "status": "APPLIED",
+            "evidence": "元の絶対値・前段の大小・円周率の与えられた値を保持。絶対値を外すgroupは前段の符号・規則nodeを可視境界にする。"
+          },
+          {
+            "caseId": "N07-USER-F02",
+            "status": "APPLIED",
+            "evidence": "同じ数値の問題へ各局所の結果を連続式として戻す。"
+          },
+          {
+            "caseId": "N07-USER-F03",
+            "status": "APPLIED",
+            "evidence": "左辺に元の中身を作るために同じ値を引く目的を説明する。"
+          },
+          {
+            "caseId": "N07-USER-F04",
+            "status": "APPLIED",
+            "evidence": "括弧全体への負号、二項への分配、積の計算、項の交換まで全行を保持。"
+          },
+          {
+            "caseId": "N07-USER-F05",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N07-USER-F06",
+            "status": "APPLIED",
+            "evidence": "負の二つの因数を括弧ごと描画し、文中の数値もtyped math。"
+          },
+          {
+            "caseId": "n07-layout-relation",
+            "status": "APPLIED",
+            "evidence": "四つの局所で比較記号・等号の列を揃える。"
+          },
+          {
+            "caseId": "n07-layout-positive",
+            "status": "APPLIED",
+            "evidence": "前の受入済みの概念・場合分けの構造は保持。"
+          },
+          {
+            "caseId": "first-title-layout-positive",
+            "status": "APPLIED",
+            "evidence": "四つの局所で比較記号・等号の列を揃える。"
+          },
+          {
+            "caseId": "N07-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N08-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N09-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "大小→差→符号→規則→全体の負号→分配→積→交換。"
+          },
+          {
+            "caseId": "N10-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "負号を中身全体へ適用する括弧と分配の因数を保持。"
+          },
+          {
+            "caseId": "N09-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N10-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "n08-q06-subtract-answer",
+      "request": {
+        "profile": "ordinary-transformation",
+        "schemaVersion": "solution-review/1",
+        "phase": "design",
+        "visible": {
+          "initial": {
+            "aliasRefs": [],
+            "id": "n08-root-sign-S0",
+            "sourceNodeId": "n08-r5-q06-operation",
+            "stateRef": "S0",
+            "role": "main",
+            "continuation": false,
+            "done": true,
+            "before": [
+              {
+                "type": "text",
+                "text": "前の段階で得た大小関係から、元の中身と"
+              },
+              {
+                "type": "math",
+                "latex": "0"
+              },
+              {
+                "type": "text",
+                "text": "を比べる形を作ります。"
+              }
+            ],
+            "after": [],
+            "formula": {
+              "left": [
+                {
+                  "type": "math",
+                  "latex": "\\sqrt{5}"
+                }
+              ],
+              "relation": "<",
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "3"
+                }
+              ]
+            },
+            "current": null
+          },
+          "completed": [
+            {
+              "aliasRefs": [],
+              "id": "n08-root-sign-S0",
+              "sourceNodeId": "n08-r5-q06-operation",
+              "stateRef": "S0",
+              "role": "main",
+              "continuation": false,
+              "done": true,
+              "before": [
+                {
+                  "type": "text",
+                  "text": "前の段階で得た大小関係から、元の中身と"
+                },
+                {
+                  "type": "math",
+                  "latex": "0"
+                },
+                {
+                  "type": "text",
+                  "text": "を比べる形を作ります。"
+                }
+              ],
+              "after": [],
+              "formula": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "\\sqrt{5}"
+                  }
+                ],
+                "relation": "<",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "3"
+                  }
+                ]
+              },
+              "current": null
+            },
+            {
+              "aliasRefs": [
+                "n08-r5-q06-operation-interaction-0",
+                "n08-r5-q06-operation-result-formula-0"
+              ],
+              "id": "n08-root-sign-S1",
+              "sourceNodeId": "n08-r5-q06-operation",
+              "stateRef": "S1",
+              "role": "main",
+              "continuation": false,
+              "done": true,
+              "before": [
+                {
+                  "type": "text",
+                  "text": "左辺に元の中身を作るため、両辺から同じ数を引きます。"
+                }
+              ],
+              "after": [
+                {
+                  "type": "text",
+                  "text": "両辺に同じ操作をしたので、不等号の向きは変わりません。"
+                }
+              ],
+              "formula": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "\\sqrt{5}-3"
+                  }
+                ],
+                "relation": "<",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "3-3"
+                  }
+                ]
+              },
+              "current": null
+            }
+          ],
+          "current": {
+            "aliasRefs": [
+              "n08-q06-subtract-interaction-0",
+              "n08-q06-subtract-result-0"
+            ],
+            "id": "n08-root-sign-S2",
+            "sourceNodeId": "n08-q06-subtract",
+            "stateRef": "S2",
+            "role": "main",
+            "continuation": false,
+            "done": false,
+            "before": [
+              {
+                "type": "text",
+                "text": "右辺に残った同じ数どうしの差を計算します。"
+              }
+            ],
+            "after": [],
+            "formula": {
+              "left": [
+                {
+                  "type": "math",
+                  "latex": "\\sqrt{5}-3"
+                }
+              ],
+              "relation": "<",
+              "right": [
+                {
+                  "type": "slot",
+                  "id": "n08-root-sign-S2-slot0",
+                  "interactionRef": "n08-q06-subtract-answer"
+                }
+              ]
+            },
+            "current": {
+              "id": "n08-q06-subtract-answer",
+              "learnerDecision": "右辺に残った同じ数どうしの差を計算します。",
+              "blankRole": "calculation",
+              "choices": [
+                "0",
+                "3",
+                "-3"
+              ]
+            }
+          }
+        },
+        "sourceRefs": [
+          "src/data/textbook/math/numbers/n08Revision5.json",
+          "W-MATH-039/P001"
+        ],
+        "caseIds": [
+          "N07-USER-F01",
+          "N07-USER-F02",
+          "N07-USER-F03",
+          "N07-USER-F04",
+          "N07-USER-F05",
+          "N07-USER-F06",
+          "n07-layout-relation",
+          "n07-layout-positive",
+          "first-title-layout-positive",
+          "N07-ACCEPTED-20261025",
+          "N08-ACCEPTED-20261025",
+          "N09-REJECTED-20261025",
+          "N10-REJECTED-20261025",
+          "N09-ACCEPTED-20261025",
+          "N10-ACCEPTED-20261025"
+        ],
+        "required": [
+          "learnerDecision",
+          "availableInformation",
+          "reasonToProceed",
+          "nextWholeState",
+          "misconception",
+          "reducedSupportVariant",
+          "findings",
+          "patternDecision",
+          "groupBoundaryReview",
+          "blankDecisionReview",
+          "prosePlacementReview",
+          "terminalRoleReview",
+          "visibleProgressionReview"
+        ],
+        "constraints": [
+          "可視状態だけで次へ進めるかを先に検討する",
+          "作成者の理由欄を合格根拠にしない",
+          "同一AIの別passを独立モデルと呼ばない"
+        ],
+        "requestHash": "124f3783c19181f8eb89d8029ed4e745ea8699c397741bb3f8c5351d38a5fd1c"
+      },
+      "response": {
+        "requestHash": "124f3783c19181f8eb89d8029ed4e745ea8699c397741bb3f8c5351d38a5fd1c",
+        "phase": "design",
+        "reviewer": "same-assistant visible-state review; not independent AI",
+        "learnerDecision": "右辺に残った同じ数どうしの差を計算します。",
+        "availableInformation": "表示済みの原問とこの問題の条件、式列の既に完成した行、外側で済ませた意味・規則の判断。未回答の行の答えはsnapshotに入れない。",
+        "reasonToProceed": "直前の操作を計算し、同じ問題の次の行へ進むため。",
+        "nextWholeState": "同じ原問のrelation-sequenceの次行へ戻る。現在のgroup末尾はそのまま局所の結論となる。",
+        "misconception": "負の項への負号を落とすか、項の順番を変えるときに符号を落とす。",
+        "reducedSupportVariant": "今回は採点IDを保持。後の類題で同じ操作の穴を手本化する候補だけとし、ここで変更しない。",
+        "patternDecision": "既知の実数の大小から同じ数の減算へ進む一列。",
+        "groupBoundaryReview": "四groupをstage06/07/08/09へ限定。符号の意味、一般規則、二方向証明、場合の合流は既存の独立node。",
+        "blankDecisionReview": "右辺に残った同じ数どうしの差を計算します。。左右二枠は同じ一回答、手本の分配行と計算穴を区別する。",
+        "prosePlacementReview": "操作の目的をその行の前、結果の意味を回答後へ。意味の判断の答えを直前の文章で明かさない。",
+        "terminalRoleReview": "末尾の式を結論とし、同じ全等式をもう一つの答えカードとして出さない。前段の結果の記録と概念上の再利用は保持。",
+        "visibleProgressionReview": "当該groupだけのsnapshotを検査。外側の境界が未解決の場合はgroup自体を表示せず、保存された後半の正答も前提を解放しない。",
+        "findings": [],
+        "caseDispositions": [
+          {
+            "caseId": "N07-USER-F01",
+            "status": "APPLIED",
+            "evidence": "元の絶対値・前段の大小・円周率の与えられた値を保持。絶対値を外すgroupは前段の符号・規則nodeを可視境界にする。"
+          },
+          {
+            "caseId": "N07-USER-F02",
+            "status": "APPLIED",
+            "evidence": "同じ数値の問題へ各局所の結果を連続式として戻す。"
+          },
+          {
+            "caseId": "N07-USER-F03",
+            "status": "APPLIED",
+            "evidence": "左辺に元の中身を作るために同じ値を引く目的を説明する。"
+          },
+          {
+            "caseId": "N07-USER-F04",
+            "status": "APPLIED",
+            "evidence": "括弧全体への負号、二項への分配、積の計算、項の交換まで全行を保持。"
+          },
+          {
+            "caseId": "N07-USER-F05",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N07-USER-F06",
+            "status": "APPLIED",
+            "evidence": "負の二つの因数を括弧ごと描画し、文中の数値もtyped math。"
+          },
+          {
+            "caseId": "n07-layout-relation",
+            "status": "APPLIED",
+            "evidence": "四つの局所で比較記号・等号の列を揃える。"
+          },
+          {
+            "caseId": "n07-layout-positive",
+            "status": "APPLIED",
+            "evidence": "前の受入済みの概念・場合分けの構造は保持。"
+          },
+          {
+            "caseId": "first-title-layout-positive",
+            "status": "APPLIED",
+            "evidence": "四つの局所で比較記号・等号の列を揃える。"
+          },
+          {
+            "caseId": "N07-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N08-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N09-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "大小→差→符号→規則→全体の負号→分配→積→交換。"
+          },
+          {
+            "caseId": "N10-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "負号を中身全体へ適用する括弧と分配の因数を保持。"
+          },
+          {
+            "caseId": "N09-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N10-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "n08-q07-bracket-answer",
+      "request": {
+        "profile": "ordinary-transformation",
+        "schemaVersion": "solution-review/1",
+        "phase": "design",
+        "visible": {
+          "initial": {
+            "aliasRefs": [],
+            "id": "n08-root-absolute-S0",
+            "sourceNodeId": "n08-q07-bracket",
+            "stateRef": "S0",
+            "role": "main",
+            "continuation": false,
+            "done": true,
+            "before": [],
+            "after": [],
+            "formula": {
+              "left": [],
+              "relation": "",
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "\\left|\\sqrt{5}-3\\right|"
+                }
+              ]
+            },
+            "current": null
+          },
+          "completed": [
+            {
+              "aliasRefs": [],
+              "id": "n08-root-absolute-S0",
+              "sourceNodeId": "n08-q07-bracket",
+              "stateRef": "S0",
+              "role": "main",
+              "continuation": false,
+              "done": true,
+              "before": [],
+              "after": [],
+              "formula": {
+                "left": [],
+                "relation": "",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "\\left|\\sqrt{5}-3\\right|"
+                  }
+                ]
+              },
+              "current": null
+            }
+          ],
+          "current": {
+            "aliasRefs": [
+              "n08-q07-bracket-interaction-0",
+              "n08-q07-bracket-result"
+            ],
+            "id": "n08-root-absolute-S1",
+            "sourceNodeId": "n08-q07-bracket",
+            "stateRef": "S1",
+            "role": "main",
+            "continuation": true,
+            "done": false,
+            "before": [
+              {
+                "type": "text",
+                "text": "選んだ負の場合の規則を使い、式全体に負号を付けます。"
+              }
+            ],
+            "after": [],
+            "formula": {
+              "left": [],
+              "relation": "=",
+              "right": [
+                {
+                  "type": "slot",
+                  "id": "n08-root-absolute-S1-slot0",
+                  "interactionRef": "n08-q07-bracket-answer"
+                }
+              ]
+            },
+            "current": {
+              "id": "n08-q07-bracket-answer",
+              "learnerDecision": "選んだ負の場合の規則を使い、式全体に負号を付けます。",
+              "blankRole": "expression",
+              "choices": [
+                "-(\\sqrt5-3)",
+                "-\\sqrt5-3",
+                "\\sqrt5-3"
+              ]
+            }
+          }
+        },
+        "sourceRefs": [
+          "src/data/textbook/math/numbers/n08Revision5.json",
+          "W-MATH-039/P001"
+        ],
+        "caseIds": [
+          "N07-USER-F01",
+          "N07-USER-F02",
+          "N07-USER-F03",
+          "N07-USER-F04",
+          "N07-USER-F05",
+          "N07-USER-F06",
+          "n07-layout-relation",
+          "n07-layout-positive",
+          "first-title-layout-positive",
+          "N07-ACCEPTED-20261025",
+          "N08-ACCEPTED-20261025",
+          "N09-REJECTED-20261025",
+          "N10-REJECTED-20261025",
+          "N09-ACCEPTED-20261025",
+          "N10-ACCEPTED-20261025"
+        ],
+        "required": [
+          "learnerDecision",
+          "availableInformation",
+          "reasonToProceed",
+          "nextWholeState",
+          "misconception",
+          "reducedSupportVariant",
+          "findings",
+          "patternDecision",
+          "groupBoundaryReview",
+          "blankDecisionReview",
+          "prosePlacementReview",
+          "terminalRoleReview",
+          "visibleProgressionReview"
+        ],
+        "constraints": [
+          "可視状態だけで次へ進めるかを先に検討する",
+          "作成者の理由欄を合格根拠にしない",
+          "同一AIの別passを独立モデルと呼ばない"
+        ],
+        "requestHash": "ab6e6464801819e498db64c796b27b2231cc5800bff5593ebc0bb7edf52cc95c"
+      },
+      "response": {
+        "requestHash": "ab6e6464801819e498db64c796b27b2231cc5800bff5593ebc0bb7edf52cc95c",
+        "phase": "design",
+        "reviewer": "same-assistant visible-state review; not independent AI",
+        "learnerDecision": "選んだ負の場合の規則を使い、式全体に負号を付けます。",
+        "availableInformation": "表示済みの原問とこの問題の条件、式列の既に完成した行、外側で済ませた意味・規則の判断。未回答の行の答えはsnapshotに入れない。",
+        "reasonToProceed": "中身全体へ既習の規則を適用するため。",
+        "nextWholeState": "同じ原問のexpression-chainの次行へ戻る。現在のgroup末尾はそのまま局所の結論となる。",
+        "misconception": "第1項だけを負にして括弧全体の反転をしない。",
+        "reducedSupportVariant": "今回は採点IDを保持。後の類題で同じ操作の穴を手本化する候補だけとし、ここで変更しない。",
+        "patternDecision": "具体的な負の数の絶対値から分配・計算・交換の一列。一般の文字の絶対値や条件分岐を連結しない。",
+        "groupBoundaryReview": "四groupをstage06/07/08/09へ限定。符号の意味、一般規則、二方向証明、場合の合流は既存の独立node。",
+        "blankDecisionReview": "選んだ負の場合の規則を使い、式全体に負号を付けます。。左右二枠は同じ一回答、手本の分配行と計算穴を区別する。",
+        "prosePlacementReview": "操作の目的をその行の前、結果の意味を回答後へ。意味の判断の答えを直前の文章で明かさない。",
+        "terminalRoleReview": "末尾の式を結論とし、同じ全等式をもう一つの答えカードとして出さない。前段の結果の記録と概念上の再利用は保持。",
+        "visibleProgressionReview": "当該groupだけのsnapshotを検査。外側の境界が未解決の場合はgroup自体を表示せず、保存された後半の正答も前提を解放しない。",
+        "findings": [],
+        "caseDispositions": [
+          {
+            "caseId": "N07-USER-F01",
+            "status": "APPLIED",
+            "evidence": "元の絶対値・前段の大小・円周率の与えられた値を保持。絶対値を外すgroupは前段の符号・規則nodeを可視境界にする。"
+          },
+          {
+            "caseId": "N07-USER-F02",
+            "status": "APPLIED",
+            "evidence": "同じ数値の問題へ各局所の結果を連続式として戻す。"
+          },
+          {
+            "caseId": "N07-USER-F03",
+            "status": "APPLIED",
+            "evidence": "左辺に元の中身を作るために同じ値を引く目的を説明する。"
+          },
+          {
+            "caseId": "N07-USER-F04",
+            "status": "APPLIED",
+            "evidence": "括弧全体への負号、二項への分配、積の計算、項の交換まで全行を保持。"
+          },
+          {
+            "caseId": "N07-USER-F05",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N07-USER-F06",
+            "status": "APPLIED",
+            "evidence": "負の二つの因数を括弧ごと描画し、文中の数値もtyped math。"
+          },
+          {
+            "caseId": "n07-layout-relation",
+            "status": "APPLIED",
+            "evidence": "四つの局所で比較記号・等号の列を揃える。"
+          },
+          {
+            "caseId": "n07-layout-positive",
+            "status": "APPLIED",
+            "evidence": "前の受入済みの概念・場合分けの構造は保持。"
+          },
+          {
+            "caseId": "first-title-layout-positive",
+            "status": "APPLIED",
+            "evidence": "四つの局所で比較記号・等号の列を揃える。"
+          },
+          {
+            "caseId": "N07-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N08-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N09-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "大小→差→符号→規則→全体の負号→分配→積→交換。"
+          },
+          {
+            "caseId": "N10-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "負号を中身全体へ適用する括弧と分配の因数を保持。"
+          },
+          {
+            "caseId": "N09-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N10-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "n08-q07-distribute-answer",
+      "request": {
+        "profile": "ordinary-transformation",
+        "schemaVersion": "solution-review/1",
+        "phase": "design",
+        "visible": {
+          "initial": {
+            "aliasRefs": [],
+            "id": "n08-root-absolute-S0",
+            "sourceNodeId": "n08-q07-bracket",
+            "stateRef": "S0",
+            "role": "main",
+            "continuation": false,
+            "done": true,
+            "before": [],
+            "after": [],
+            "formula": {
+              "left": [],
+              "relation": "",
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "\\left|\\sqrt{5}-3\\right|"
+                }
+              ]
+            },
+            "current": null
+          },
+          "completed": [
+            {
+              "aliasRefs": [],
+              "id": "n08-root-absolute-S0",
+              "sourceNodeId": "n08-q07-bracket",
+              "stateRef": "S0",
+              "role": "main",
+              "continuation": false,
+              "done": true,
+              "before": [],
+              "after": [],
+              "formula": {
+                "left": [],
+                "relation": "",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "\\left|\\sqrt{5}-3\\right|"
+                  }
+                ]
+              },
+              "current": null
+            },
+            {
+              "aliasRefs": [
+                "n08-q07-bracket-interaction-0",
+                "n08-q07-bracket-result"
+              ],
+              "id": "n08-root-absolute-S1",
+              "sourceNodeId": "n08-q07-bracket",
+              "stateRef": "S1",
+              "role": "main",
+              "continuation": true,
+              "done": true,
+              "before": [
+                {
+                  "type": "text",
+                  "text": "選んだ負の場合の規則を使い、式全体に負号を付けます。"
+                }
+              ],
+              "after": [],
+              "formula": {
+                "left": [],
+                "relation": "=",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "-\\left(\\sqrt{5}-3\\right)"
+                  }
+                ]
+              },
+              "current": null
+            },
+            {
+              "aliasRefs": [],
+              "id": "n08-root-absolute-S2",
+              "sourceNodeId": "n08-q07-distribute",
+              "stateRef": "S2",
+              "role": "main",
+              "continuation": true,
+              "done": true,
+              "before": [
+                {
+                  "type": "text",
+                  "text": "負号は"
+                },
+                {
+                  "type": "math",
+                  "latex": "-1"
+                },
+                {
+                  "type": "text",
+                  "text": "を掛けることです。括弧の二つの項へ、それぞれ分配します。"
+                }
+              ],
+              "after": [],
+              "formula": {
+                "left": [],
+                "relation": "=",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "(-1)\\sqrt{5}+(-1)(-3)"
+                  }
+                ]
+              },
+              "current": null
+            }
+          ],
+          "current": {
+            "aliasRefs": [
+              "n08-q07-distribute-interaction",
+              "n08-q07-distribute-result"
+            ],
+            "id": "n08-root-absolute-S3",
+            "sourceNodeId": "n08-q07-distribute",
+            "stateRef": "S3",
+            "role": "main",
+            "continuation": true,
+            "done": false,
+            "before": [
+              {
+                "type": "text",
+                "text": "二つの積を計算して、括弧を外した式を入れます。"
+              }
+            ],
+            "after": [],
+            "formula": {
+              "left": [],
+              "relation": "=",
+              "right": [
+                {
+                  "type": "slot",
+                  "id": "n08-root-absolute-S3-slot0",
+                  "interactionRef": "n08-q07-distribute-answer"
+                }
+              ]
+            },
+            "current": {
+              "id": "n08-q07-distribute-answer",
+              "learnerDecision": "二つの積を計算して、括弧を外した式を入れます。",
+              "blankRole": "calculation",
+              "choices": [
+                "-\\sqrt5+3",
+                "-\\sqrt5-3",
+                "\\sqrt5+3"
+              ]
+            }
+          }
+        },
+        "sourceRefs": [
+          "src/data/textbook/math/numbers/n08Revision5.json",
+          "W-MATH-039/P001"
+        ],
+        "caseIds": [
+          "N07-USER-F01",
+          "N07-USER-F02",
+          "N07-USER-F03",
+          "N07-USER-F04",
+          "N07-USER-F05",
+          "N07-USER-F06",
+          "n07-layout-relation",
+          "n07-layout-positive",
+          "first-title-layout-positive",
+          "N07-ACCEPTED-20261025",
+          "N08-ACCEPTED-20261025",
+          "N09-REJECTED-20261025",
+          "N10-REJECTED-20261025",
+          "N09-ACCEPTED-20261025",
+          "N10-ACCEPTED-20261025"
+        ],
+        "required": [
+          "learnerDecision",
+          "availableInformation",
+          "reasonToProceed",
+          "nextWholeState",
+          "misconception",
+          "reducedSupportVariant",
+          "findings",
+          "patternDecision",
+          "groupBoundaryReview",
+          "blankDecisionReview",
+          "prosePlacementReview",
+          "terminalRoleReview",
+          "visibleProgressionReview"
+        ],
+        "constraints": [
+          "可視状態だけで次へ進めるかを先に検討する",
+          "作成者の理由欄を合格根拠にしない",
+          "同一AIの別passを独立モデルと呼ばない"
+        ],
+        "requestHash": "81391adba3912a5e684379a5cb2a51438ee17891dba24f9892cedbc5b3756d0d"
+      },
+      "response": {
+        "requestHash": "81391adba3912a5e684379a5cb2a51438ee17891dba24f9892cedbc5b3756d0d",
+        "phase": "design",
+        "reviewer": "same-assistant visible-state review; not independent AI",
+        "learnerDecision": "二つの積を計算して、括弧を外した式を入れます。",
+        "availableInformation": "表示済みの原問とこの問題の条件、式列の既に完成した行、外側で済ませた意味・規則の判断。未回答の行の答えはsnapshotに入れない。",
+        "reasonToProceed": "直前の操作を計算し、同じ問題の次の行へ進むため。",
+        "nextWholeState": "同じ原問のexpression-chainの次行へ戻る。現在のgroup末尾はそのまま局所の結論となる。",
+        "misconception": "負の項への負号を落とすか、項の順番を変えるときに符号を落とす。",
+        "reducedSupportVariant": "今回は採点IDを保持。後の類題で同じ操作の穴を手本化する候補だけとし、ここで変更しない。",
+        "patternDecision": "具体的な負の数の絶対値から分配・計算・交換の一列。一般の文字の絶対値や条件分岐を連結しない。",
+        "groupBoundaryReview": "四groupをstage06/07/08/09へ限定。符号の意味、一般規則、二方向証明、場合の合流は既存の独立node。",
+        "blankDecisionReview": "二つの積を計算して、括弧を外した式を入れます。。左右二枠は同じ一回答、手本の分配行と計算穴を区別する。",
+        "prosePlacementReview": "操作の目的をその行の前、結果の意味を回答後へ。意味の判断の答えを直前の文章で明かさない。",
+        "terminalRoleReview": "末尾の式を結論とし、同じ全等式をもう一つの答えカードとして出さない。前段の結果の記録と概念上の再利用は保持。",
+        "visibleProgressionReview": "当該groupだけのsnapshotを検査。外側の境界が未解決の場合はgroup自体を表示せず、保存された後半の正答も前提を解放しない。",
+        "findings": [],
+        "caseDispositions": [
+          {
+            "caseId": "N07-USER-F01",
+            "status": "APPLIED",
+            "evidence": "元の絶対値・前段の大小・円周率の与えられた値を保持。絶対値を外すgroupは前段の符号・規則nodeを可視境界にする。"
+          },
+          {
+            "caseId": "N07-USER-F02",
+            "status": "APPLIED",
+            "evidence": "同じ数値の問題へ各局所の結果を連続式として戻す。"
+          },
+          {
+            "caseId": "N07-USER-F03",
+            "status": "APPLIED",
+            "evidence": "左辺に元の中身を作るために同じ値を引く目的を説明する。"
+          },
+          {
+            "caseId": "N07-USER-F04",
+            "status": "APPLIED",
+            "evidence": "括弧全体への負号、二項への分配、積の計算、項の交換まで全行を保持。"
+          },
+          {
+            "caseId": "N07-USER-F05",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N07-USER-F06",
+            "status": "APPLIED",
+            "evidence": "負の二つの因数を括弧ごと描画し、文中の数値もtyped math。"
+          },
+          {
+            "caseId": "n07-layout-relation",
+            "status": "APPLIED",
+            "evidence": "四つの局所で比較記号・等号の列を揃える。"
+          },
+          {
+            "caseId": "n07-layout-positive",
+            "status": "APPLIED",
+            "evidence": "前の受入済みの概念・場合分けの構造は保持。"
+          },
+          {
+            "caseId": "first-title-layout-positive",
+            "status": "APPLIED",
+            "evidence": "四つの局所で比較記号・等号の列を揃える。"
+          },
+          {
+            "caseId": "N07-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N08-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N09-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "大小→差→符号→規則→全体の負号→分配→積→交換。"
+          },
+          {
+            "caseId": "N10-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "負号を中身全体へ適用する括弧と分配の因数を保持。"
+          },
+          {
+            "caseId": "N09-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N10-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "n08-07",
+      "request": {
+        "profile": "ordinary-transformation",
+        "schemaVersion": "solution-review/1",
+        "phase": "design",
+        "visible": {
+          "initial": {
+            "aliasRefs": [],
+            "id": "n08-root-absolute-S0",
+            "sourceNodeId": "n08-q07-bracket",
+            "stateRef": "S0",
+            "role": "main",
+            "continuation": false,
+            "done": true,
+            "before": [],
+            "after": [],
+            "formula": {
+              "left": [],
+              "relation": "",
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "\\left|\\sqrt{5}-3\\right|"
+                }
+              ]
+            },
+            "current": null
+          },
+          "completed": [
+            {
+              "aliasRefs": [],
+              "id": "n08-root-absolute-S0",
+              "sourceNodeId": "n08-q07-bracket",
+              "stateRef": "S0",
+              "role": "main",
+              "continuation": false,
+              "done": true,
+              "before": [],
+              "after": [],
+              "formula": {
+                "left": [],
+                "relation": "",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "\\left|\\sqrt{5}-3\\right|"
+                  }
+                ]
+              },
+              "current": null
+            },
+            {
+              "aliasRefs": [
+                "n08-q07-bracket-interaction-0",
+                "n08-q07-bracket-result"
+              ],
+              "id": "n08-root-absolute-S1",
+              "sourceNodeId": "n08-q07-bracket",
+              "stateRef": "S1",
+              "role": "main",
+              "continuation": true,
+              "done": true,
+              "before": [
+                {
+                  "type": "text",
+                  "text": "選んだ負の場合の規則を使い、式全体に負号を付けます。"
+                }
+              ],
+              "after": [],
+              "formula": {
+                "left": [],
+                "relation": "=",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "-\\left(\\sqrt{5}-3\\right)"
+                  }
+                ]
+              },
+              "current": null
+            },
+            {
+              "aliasRefs": [],
+              "id": "n08-root-absolute-S2",
+              "sourceNodeId": "n08-q07-distribute",
+              "stateRef": "S2",
+              "role": "main",
+              "continuation": true,
+              "done": true,
+              "before": [
+                {
+                  "type": "text",
+                  "text": "負号は"
+                },
+                {
+                  "type": "math",
+                  "latex": "-1"
+                },
+                {
+                  "type": "text",
+                  "text": "を掛けることです。括弧の二つの項へ、それぞれ分配します。"
+                }
+              ],
+              "after": [],
+              "formula": {
+                "left": [],
+                "relation": "=",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "(-1)\\sqrt{5}+(-1)(-3)"
+                  }
+                ]
+              },
+              "current": null
+            },
+            {
+              "aliasRefs": [
+                "n08-q07-distribute-interaction",
+                "n08-q07-distribute-result"
+              ],
+              "id": "n08-root-absolute-S3",
+              "sourceNodeId": "n08-q07-distribute",
+              "stateRef": "S3",
+              "role": "main",
+              "continuation": true,
+              "done": true,
+              "before": [
+                {
+                  "type": "text",
+                  "text": "二つの積を計算して、括弧を外した式を入れます。"
+                }
+              ],
+              "after": [],
+              "formula": {
+                "left": [],
+                "relation": "=",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "-\\sqrt{5}+3"
+                  }
+                ]
+              },
+              "current": null
+            }
+          ],
+          "current": {
+            "aliasRefs": [
+              "n08-07-interaction-0",
+              "n08-07-result"
+            ],
+            "id": "n08-root-absolute-S4",
+            "sourceNodeId": "n08-07",
+            "stateRef": "S4",
+            "role": "main",
+            "continuation": true,
+            "done": false,
+            "before": [
+              {
+                "type": "text",
+                "text": "加法の交換法則で、各項の符号を保ったまま正の項を先に書きます。"
+              }
+            ],
+            "after": [],
+            "formula": {
+              "left": [],
+              "relation": "=",
+              "right": [
+                {
+                  "type": "slot",
+                  "id": "n08-root-absolute-S4-slot0",
+                  "interactionRef": "n08-07"
+                }
+              ]
+            },
+            "current": {
+              "id": "n08-07",
+              "learnerDecision": "加法の交換法則で、各項の符号を保ったまま正の項を先に書きます。",
+              "blankRole": "calculation",
+              "choices": [
+                "3-\\sqrt5",
+                "\\sqrt5-3",
+                "-\\sqrt5-3",
+                "3+\\sqrt5"
+              ]
+            }
+          }
+        },
+        "sourceRefs": [
+          "src/data/textbook/math/numbers/n08Revision5.json",
+          "W-MATH-039/P001"
+        ],
+        "caseIds": [
+          "N07-USER-F01",
+          "N07-USER-F02",
+          "N07-USER-F03",
+          "N07-USER-F04",
+          "N07-USER-F05",
+          "N07-USER-F06",
+          "n07-layout-relation",
+          "n07-layout-positive",
+          "first-title-layout-positive",
+          "N07-ACCEPTED-20261025",
+          "N08-ACCEPTED-20261025",
+          "N09-REJECTED-20261025",
+          "N10-REJECTED-20261025",
+          "N09-ACCEPTED-20261025",
+          "N10-ACCEPTED-20261025"
+        ],
+        "required": [
+          "learnerDecision",
+          "availableInformation",
+          "reasonToProceed",
+          "nextWholeState",
+          "misconception",
+          "reducedSupportVariant",
+          "findings",
+          "patternDecision",
+          "groupBoundaryReview",
+          "blankDecisionReview",
+          "prosePlacementReview",
+          "terminalRoleReview",
+          "visibleProgressionReview"
+        ],
+        "constraints": [
+          "可視状態だけで次へ進めるかを先に検討する",
+          "作成者の理由欄を合格根拠にしない",
+          "同一AIの別passを独立モデルと呼ばない"
+        ],
+        "requestHash": "d8c4bb637021abbb1aef61b581ea92a2fba39e5cd93ba0fa2e7ac186de9aa449"
+      },
+      "response": {
+        "requestHash": "d8c4bb637021abbb1aef61b581ea92a2fba39e5cd93ba0fa2e7ac186de9aa449",
+        "phase": "design",
+        "reviewer": "same-assistant visible-state review; not independent AI",
+        "learnerDecision": "加法の交換法則で、各項の符号を保ったまま正の項を先に書きます。",
+        "availableInformation": "表示済みの原問とこの問題の条件、式列の既に完成した行、外側で済ませた意味・規則の判断。未回答の行の答えはsnapshotに入れない。",
+        "reasonToProceed": "直前の操作を計算し、同じ問題の次の行へ進むため。",
+        "nextWholeState": "同じ原問のexpression-chainの次行へ戻る。現在のgroup末尾はそのまま局所の結論となる。",
+        "misconception": "負の項への負号を落とすか、項の順番を変えるときに符号を落とす。",
+        "reducedSupportVariant": "今回は採点IDを保持。後の類題で同じ操作の穴を手本化する候補だけとし、ここで変更しない。",
+        "patternDecision": "具体的な負の数の絶対値から分配・計算・交換の一列。一般の文字の絶対値や条件分岐を連結しない。",
+        "groupBoundaryReview": "四groupをstage06/07/08/09へ限定。符号の意味、一般規則、二方向証明、場合の合流は既存の独立node。",
+        "blankDecisionReview": "加法の交換法則で、各項の符号を保ったまま正の項を先に書きます。。左右二枠は同じ一回答、手本の分配行と計算穴を区別する。",
+        "prosePlacementReview": "操作の目的をその行の前、結果の意味を回答後へ。意味の判断の答えを直前の文章で明かさない。",
+        "terminalRoleReview": "末尾の式を結論とし、同じ全等式をもう一つの答えカードとして出さない。前段の結果の記録と概念上の再利用は保持。",
+        "visibleProgressionReview": "当該groupだけのsnapshotを検査。外側の境界が未解決の場合はgroup自体を表示せず、保存された後半の正答も前提を解放しない。",
+        "findings": [],
+        "caseDispositions": [
+          {
+            "caseId": "N07-USER-F01",
+            "status": "APPLIED",
+            "evidence": "元の絶対値・前段の大小・円周率の与えられた値を保持。絶対値を外すgroupは前段の符号・規則nodeを可視境界にする。"
+          },
+          {
+            "caseId": "N07-USER-F02",
+            "status": "APPLIED",
+            "evidence": "同じ数値の問題へ各局所の結果を連続式として戻す。"
+          },
+          {
+            "caseId": "N07-USER-F03",
+            "status": "APPLIED",
+            "evidence": "左辺に元の中身を作るために同じ値を引く目的を説明する。"
+          },
+          {
+            "caseId": "N07-USER-F04",
+            "status": "APPLIED",
+            "evidence": "括弧全体への負号、二項への分配、積の計算、項の交換まで全行を保持。"
+          },
+          {
+            "caseId": "N07-USER-F05",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N07-USER-F06",
+            "status": "APPLIED",
+            "evidence": "負の二つの因数を括弧ごと描画し、文中の数値もtyped math。"
+          },
+          {
+            "caseId": "n07-layout-relation",
+            "status": "APPLIED",
+            "evidence": "四つの局所で比較記号・等号の列を揃える。"
+          },
+          {
+            "caseId": "n07-layout-positive",
+            "status": "APPLIED",
+            "evidence": "前の受入済みの概念・場合分けの構造は保持。"
+          },
+          {
+            "caseId": "first-title-layout-positive",
+            "status": "APPLIED",
+            "evidence": "四つの局所で比較記号・等号の列を揃える。"
+          },
+          {
+            "caseId": "N07-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N08-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N09-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "大小→差→符号→規則→全体の負号→分配→積→交換。"
+          },
+          {
+            "caseId": "N10-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "負号を中身全体へ適用する括弧と分配の因数を保持。"
+          },
+          {
+            "caseId": "N09-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N10-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "n08-q08-order-answer",
+      "request": {
+        "profile": "ordinary-transformation",
+        "schemaVersion": "solution-review/1",
+        "phase": "design",
+        "visible": {
+          "initial": {
+            "aliasRefs": [
+              "n08-q08-order-result-0"
+            ],
+            "id": "n08-pi-sign-S0",
+            "sourceNodeId": "n08-q08-order",
+            "stateRef": "S0",
+            "role": "main",
+            "continuation": false,
+            "done": false,
+            "before": [
+              {
+                "type": "text",
+                "text": "与えられた小数表示から、円周率と"
+              },
+              {
+                "type": "math",
+                "latex": "3"
+              },
+              {
+                "type": "text",
+                "text": "の大小を比べます。"
+              }
+            ],
+            "after": [],
+            "formula": {
+              "left": [
+                {
+                  "type": "math",
+                  "latex": "3"
+                }
+              ],
+              "relation": "<",
+              "relationSlot": {
+                "type": "slot",
+                "id": "n08-pi-sign-S0-slot0",
+                "interactionRef": "n08-q08-order-answer"
+              },
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "\\pi"
+                }
+              ]
+            },
+            "current": {
+              "id": "n08-q08-order-answer",
+              "learnerDecision": "与えられた小数表示から、円周率と3の大小を比べます。",
+              "blankRole": "relation",
+              "choices": [
+                "<",
+                ">",
+                "="
+              ]
+            }
+          },
+          "completed": [],
+          "current": {
+            "aliasRefs": [
+              "n08-q08-order-result-0"
+            ],
+            "id": "n08-pi-sign-S0",
+            "sourceNodeId": "n08-q08-order",
+            "stateRef": "S0",
+            "role": "main",
+            "continuation": false,
+            "done": false,
+            "before": [
+              {
+                "type": "text",
+                "text": "与えられた小数表示から、円周率と"
+              },
+              {
+                "type": "math",
+                "latex": "3"
+              },
+              {
+                "type": "text",
+                "text": "の大小を比べます。"
+              }
+            ],
+            "after": [],
+            "formula": {
+              "left": [
+                {
+                  "type": "math",
+                  "latex": "3"
+                }
+              ],
+              "relation": "<",
+              "relationSlot": {
+                "type": "slot",
+                "id": "n08-pi-sign-S0-slot0",
+                "interactionRef": "n08-q08-order-answer"
+              },
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "\\pi"
+                }
+              ]
+            },
+            "current": {
+              "id": "n08-q08-order-answer",
+              "learnerDecision": "与えられた小数表示から、円周率と3の大小を比べます。",
+              "blankRole": "relation",
+              "choices": [
+                "<",
+                ">",
+                "="
+              ]
+            }
+          }
+        },
+        "sourceRefs": [
+          "src/data/textbook/math/numbers/n08Revision5.json",
+          "W-MATH-039/P001"
+        ],
+        "caseIds": [
+          "N07-USER-F01",
+          "N07-USER-F02",
+          "N07-USER-F03",
+          "N07-USER-F04",
+          "N07-USER-F05",
+          "N07-USER-F06",
+          "n07-layout-relation",
+          "n07-layout-positive",
+          "first-title-layout-positive",
+          "N07-ACCEPTED-20261025",
+          "N08-ACCEPTED-20261025",
+          "N09-REJECTED-20261025",
+          "N10-REJECTED-20261025",
+          "N09-ACCEPTED-20261025",
+          "N10-ACCEPTED-20261025"
+        ],
+        "required": [
+          "learnerDecision",
+          "availableInformation",
+          "reasonToProceed",
+          "nextWholeState",
+          "misconception",
+          "reducedSupportVariant",
+          "findings",
+          "patternDecision",
+          "groupBoundaryReview",
+          "blankDecisionReview",
+          "prosePlacementReview",
+          "terminalRoleReview",
+          "visibleProgressionReview"
+        ],
+        "constraints": [
+          "可視状態だけで次へ進めるかを先に検討する",
+          "作成者の理由欄を合格根拠にしない",
+          "同一AIの別passを独立モデルと呼ばない"
+        ],
+        "requestHash": "b5fcec469ea54fd3ccec1d4106978771b86b3835b843969bbae3a19802c73b04"
+      },
+      "response": {
+        "requestHash": "b5fcec469ea54fd3ccec1d4106978771b86b3835b843969bbae3a19802c73b04",
+        "phase": "design",
+        "reviewer": "same-assistant visible-state review; not independent AI",
+        "learnerDecision": "与えられた小数表示から、円周率と3の大小を比べます。",
+        "availableInformation": "表示済みの原問とこの問題の条件、式列の既に完成した行、外側で済ませた意味・規則の判断。未回答の行の答えはsnapshotに入れない。",
+        "reasonToProceed": "大小関係を条件に合わせて確定するため。",
+        "nextWholeState": "同じ原問のrelation-sequenceの次行へ戻る。現在のgroup末尾はそのまま局所の結論となる。",
+        "misconception": "同じ数の減算なのに不等号を反転させる。",
+        "reducedSupportVariant": "今回は採点IDを保持。後の類題で同じ操作の穴を手本化する候補だけとし、ここで変更しない。",
+        "patternDecision": "既知の実数の大小から同じ数の減算へ進む一列。",
+        "groupBoundaryReview": "四groupをstage06/07/08/09へ限定。符号の意味、一般規則、二方向証明、場合の合流は既存の独立node。",
+        "blankDecisionReview": "与えられた小数表示から、円周率と3の大小を比べます。。左右二枠は同じ一回答、手本の分配行と計算穴を区別する。",
+        "prosePlacementReview": "操作の目的をその行の前、結果の意味を回答後へ。意味の判断の答えを直前の文章で明かさない。",
+        "terminalRoleReview": "末尾の式を結論とし、同じ全等式をもう一つの答えカードとして出さない。前段の結果の記録と概念上の再利用は保持。",
+        "visibleProgressionReview": "当該groupだけのsnapshotを検査。外側の境界が未解決の場合はgroup自体を表示せず、保存された後半の正答も前提を解放しない。",
+        "findings": [],
+        "caseDispositions": [
+          {
+            "caseId": "N07-USER-F01",
+            "status": "APPLIED",
+            "evidence": "元の絶対値・前段の大小・円周率の与えられた値を保持。絶対値を外すgroupは前段の符号・規則nodeを可視境界にする。"
+          },
+          {
+            "caseId": "N07-USER-F02",
+            "status": "APPLIED",
+            "evidence": "同じ数値の問題へ各局所の結果を連続式として戻す。"
+          },
+          {
+            "caseId": "N07-USER-F03",
+            "status": "APPLIED",
+            "evidence": "左辺に元の中身を作るために同じ値を引く目的を説明する。"
+          },
+          {
+            "caseId": "N07-USER-F04",
+            "status": "APPLIED",
+            "evidence": "括弧全体への負号、二項への分配、積の計算、項の交換まで全行を保持。"
+          },
+          {
+            "caseId": "N07-USER-F05",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N07-USER-F06",
+            "status": "APPLIED",
+            "evidence": "負の二つの因数を括弧ごと描画し、文中の数値もtyped math。"
+          },
+          {
+            "caseId": "n07-layout-relation",
+            "status": "APPLIED",
+            "evidence": "四つの局所で比較記号・等号の列を揃える。"
+          },
+          {
+            "caseId": "n07-layout-positive",
+            "status": "APPLIED",
+            "evidence": "前の受入済みの概念・場合分けの構造は保持。"
+          },
+          {
+            "caseId": "first-title-layout-positive",
+            "status": "APPLIED",
+            "evidence": "四つの局所で比較記号・等号の列を揃える。"
+          },
+          {
+            "caseId": "N07-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N08-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N09-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "大小→差→符号→規則→全体の負号→分配→積→交換。"
+          },
+          {
+            "caseId": "N10-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "負号を中身全体へ適用する括弧と分配の因数を保持。"
+          },
+          {
+            "caseId": "N09-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N10-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "n08-r5-q08-operation-answer",
+      "request": {
+        "profile": "ordinary-transformation",
+        "schemaVersion": "solution-review/1",
+        "phase": "design",
+        "visible": {
+          "initial": {
+            "aliasRefs": [
+              "n08-q08-order-result-0"
+            ],
+            "id": "n08-pi-sign-S0",
+            "sourceNodeId": "n08-q08-order",
+            "stateRef": "S0",
+            "role": "main",
+            "continuation": false,
+            "done": true,
+            "before": [
+              {
+                "type": "text",
+                "text": "与えられた小数表示から、円周率と"
+              },
+              {
+                "type": "math",
+                "latex": "3"
+              },
+              {
+                "type": "text",
+                "text": "の大小を比べます。"
+              }
+            ],
+            "after": [],
+            "formula": {
+              "left": [
+                {
+                  "type": "math",
+                  "latex": "3"
+                }
+              ],
+              "relation": "<",
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "\\pi"
+                }
+              ]
+            },
+            "current": null
+          },
+          "completed": [
+            {
+              "aliasRefs": [
+                "n08-q08-order-result-0"
+              ],
+              "id": "n08-pi-sign-S0",
+              "sourceNodeId": "n08-q08-order",
+              "stateRef": "S0",
+              "role": "main",
+              "continuation": false,
+              "done": true,
+              "before": [
+                {
+                  "type": "text",
+                  "text": "与えられた小数表示から、円周率と"
+                },
+                {
+                  "type": "math",
+                  "latex": "3"
+                },
+                {
+                  "type": "text",
+                  "text": "の大小を比べます。"
+                }
+              ],
+              "after": [],
+              "formula": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "3"
+                  }
+                ],
+                "relation": "<",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "\\pi"
+                  }
+                ]
+              },
+              "current": null
+            }
+          ],
+          "current": {
+            "aliasRefs": [
+              "n08-r5-q08-operation-interaction-0",
+              "n08-r5-q08-operation-result-formula-0"
+            ],
+            "id": "n08-pi-sign-S1",
+            "sourceNodeId": "n08-r5-q08-operation",
+            "stateRef": "S1",
+            "role": "main",
+            "continuation": false,
+            "done": false,
+            "before": [
+              {
+                "type": "text",
+                "text": "左辺に今回の中身を作ります。前の例と同じように、両辺から同じ数を引きます。"
+              }
+            ],
+            "after": [],
+            "formula": {
+              "left": [
+                {
+                  "type": "math",
+                  "latex": "3"
+                },
+                {
+                  "type": "math",
+                  "latex": "-"
+                },
+                {
+                  "type": "slot",
+                  "id": "n08-pi-sign-S1-slot0",
+                  "interactionRef": "n08-r5-q08-operation-answer"
+                }
+              ],
+              "relation": "<",
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "\\pi"
+                },
+                {
+                  "type": "math",
+                  "latex": "-"
+                },
+                {
+                  "type": "slot",
+                  "id": "n08-pi-sign-S1-slot1",
+                  "interactionRef": "n08-r5-q08-operation-answer"
+                }
+              ]
+            },
+            "current": {
+              "id": "n08-r5-q08-operation-answer",
+              "learnerDecision": "左辺に今回の中身を作ります。前の例と同じように、両辺から同じ数を引きます。",
+              "blankRole": "operand",
+              "choices": [
+                "\\pi",
+                "3",
+                "-\\pi"
+              ]
+            }
+          }
+        },
+        "sourceRefs": [
+          "src/data/textbook/math/numbers/n08Revision5.json",
+          "W-MATH-039/P001"
+        ],
+        "caseIds": [
+          "N07-USER-F01",
+          "N07-USER-F02",
+          "N07-USER-F03",
+          "N07-USER-F04",
+          "N07-USER-F05",
+          "N07-USER-F06",
+          "n07-layout-relation",
+          "n07-layout-positive",
+          "first-title-layout-positive",
+          "N07-ACCEPTED-20261025",
+          "N08-ACCEPTED-20261025",
+          "N09-REJECTED-20261025",
+          "N10-REJECTED-20261025",
+          "N09-ACCEPTED-20261025",
+          "N10-ACCEPTED-20261025"
+        ],
+        "required": [
+          "learnerDecision",
+          "availableInformation",
+          "reasonToProceed",
+          "nextWholeState",
+          "misconception",
+          "reducedSupportVariant",
+          "findings",
+          "patternDecision",
+          "groupBoundaryReview",
+          "blankDecisionReview",
+          "prosePlacementReview",
+          "terminalRoleReview",
+          "visibleProgressionReview"
+        ],
+        "constraints": [
+          "可視状態だけで次へ進めるかを先に検討する",
+          "作成者の理由欄を合格根拠にしない",
+          "同一AIの別passを独立モデルと呼ばない"
+        ],
+        "requestHash": "9d9711d250a17a9a3c95dfb3f15974c0234aa369843afbfd8004fbaf883f34d4"
+      },
+      "response": {
+        "requestHash": "9d9711d250a17a9a3c95dfb3f15974c0234aa369843afbfd8004fbaf883f34d4",
+        "phase": "design",
+        "reviewer": "same-assistant visible-state review; not independent AI",
+        "learnerDecision": "左辺に今回の中身を作ります。前の例と同じように、両辺から同じ数を引きます。",
+        "availableInformation": "表示済みの原問とこの問題の条件、式列の既に完成した行、外側で済ませた意味・規則の判断。未回答の行の答えはsnapshotに入れない。",
+        "reasonToProceed": "元の中身を左辺に作り0と比べるため。",
+        "nextWholeState": "同じ原問のrelation-sequenceの次行へ戻る。現在のgroup末尾はそのまま局所の結論となる。",
+        "misconception": "片辺だけ引く、または中身と違う数を引く。",
+        "reducedSupportVariant": "今回は採点IDを保持。後の類題で同じ操作の穴を手本化する候補だけとし、ここで変更しない。",
+        "patternDecision": "既知の実数の大小から同じ数の減算へ進む一列。",
+        "groupBoundaryReview": "四groupをstage06/07/08/09へ限定。符号の意味、一般規則、二方向証明、場合の合流は既存の独立node。",
+        "blankDecisionReview": "左辺に今回の中身を作ります。前の例と同じように、両辺から同じ数を引きます。。左右二枠は同じ一回答、手本の分配行と計算穴を区別する。",
+        "prosePlacementReview": "操作の目的をその行の前、結果の意味を回答後へ。意味の判断の答えを直前の文章で明かさない。",
+        "terminalRoleReview": "末尾の式を結論とし、同じ全等式をもう一つの答えカードとして出さない。前段の結果の記録と概念上の再利用は保持。",
+        "visibleProgressionReview": "当該groupだけのsnapshotを検査。外側の境界が未解決の場合はgroup自体を表示せず、保存された後半の正答も前提を解放しない。",
+        "findings": [],
+        "caseDispositions": [
+          {
+            "caseId": "N07-USER-F01",
+            "status": "APPLIED",
+            "evidence": "元の絶対値・前段の大小・円周率の与えられた値を保持。絶対値を外すgroupは前段の符号・規則nodeを可視境界にする。"
+          },
+          {
+            "caseId": "N07-USER-F02",
+            "status": "APPLIED",
+            "evidence": "同じ数値の問題へ各局所の結果を連続式として戻す。"
+          },
+          {
+            "caseId": "N07-USER-F03",
+            "status": "APPLIED",
+            "evidence": "左辺に元の中身を作るために同じ値を引く目的を説明する。"
+          },
+          {
+            "caseId": "N07-USER-F04",
+            "status": "APPLIED",
+            "evidence": "括弧全体への負号、二項への分配、積の計算、項の交換まで全行を保持。"
+          },
+          {
+            "caseId": "N07-USER-F05",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N07-USER-F06",
+            "status": "APPLIED",
+            "evidence": "負の二つの因数を括弧ごと描画し、文中の数値もtyped math。"
+          },
+          {
+            "caseId": "n07-layout-relation",
+            "status": "APPLIED",
+            "evidence": "四つの局所で比較記号・等号の列を揃える。"
+          },
+          {
+            "caseId": "n07-layout-positive",
+            "status": "APPLIED",
+            "evidence": "前の受入済みの概念・場合分けの構造は保持。"
+          },
+          {
+            "caseId": "first-title-layout-positive",
+            "status": "APPLIED",
+            "evidence": "四つの局所で比較記号・等号の列を揃える。"
+          },
+          {
+            "caseId": "N07-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N08-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N09-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "大小→差→符号→規則→全体の負号→分配→積→交換。"
+          },
+          {
+            "caseId": "N10-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "負号を中身全体へ適用する括弧と分配の因数を保持。"
+          },
+          {
+            "caseId": "N09-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N10-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "n08-q08-difference-answer",
+      "request": {
+        "profile": "ordinary-transformation",
+        "schemaVersion": "solution-review/1",
+        "phase": "design",
+        "visible": {
+          "initial": {
+            "aliasRefs": [
+              "n08-q08-order-result-0"
+            ],
+            "id": "n08-pi-sign-S0",
+            "sourceNodeId": "n08-q08-order",
+            "stateRef": "S0",
+            "role": "main",
+            "continuation": false,
+            "done": true,
+            "before": [
+              {
+                "type": "text",
+                "text": "与えられた小数表示から、円周率と"
+              },
+              {
+                "type": "math",
+                "latex": "3"
+              },
+              {
+                "type": "text",
+                "text": "の大小を比べます。"
+              }
+            ],
+            "after": [],
+            "formula": {
+              "left": [
+                {
+                  "type": "math",
+                  "latex": "3"
+                }
+              ],
+              "relation": "<",
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "\\pi"
+                }
+              ]
+            },
+            "current": null
+          },
+          "completed": [
+            {
+              "aliasRefs": [
+                "n08-q08-order-result-0"
+              ],
+              "id": "n08-pi-sign-S0",
+              "sourceNodeId": "n08-q08-order",
+              "stateRef": "S0",
+              "role": "main",
+              "continuation": false,
+              "done": true,
+              "before": [
+                {
+                  "type": "text",
+                  "text": "与えられた小数表示から、円周率と"
+                },
+                {
+                  "type": "math",
+                  "latex": "3"
+                },
+                {
+                  "type": "text",
+                  "text": "の大小を比べます。"
+                }
+              ],
+              "after": [],
+              "formula": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "3"
+                  }
+                ],
+                "relation": "<",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "\\pi"
+                  }
+                ]
+              },
+              "current": null
+            },
+            {
+              "aliasRefs": [
+                "n08-r5-q08-operation-interaction-0",
+                "n08-r5-q08-operation-result-formula-0"
+              ],
+              "id": "n08-pi-sign-S1",
+              "sourceNodeId": "n08-r5-q08-operation",
+              "stateRef": "S1",
+              "role": "main",
+              "continuation": false,
+              "done": true,
+              "before": [
+                {
+                  "type": "text",
+                  "text": "左辺に今回の中身を作ります。前の例と同じように、両辺から同じ数を引きます。"
+                }
+              ],
+              "after": [
+                {
+                  "type": "text",
+                  "text": "同じ数を引く操作では、不等号の向きは変わりません。"
+                }
+              ],
+              "formula": {
+                "left": [
+                  {
+                    "type": "math",
+                    "latex": "3-\\pi"
+                  }
+                ],
+                "relation": "<",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "\\pi-\\pi"
+                  }
+                ]
+              },
+              "current": null
+            }
+          ],
+          "current": {
+            "aliasRefs": [
+              "n08-q08-difference-result-0"
+            ],
+            "id": "n08-pi-sign-S2",
+            "sourceNodeId": "n08-q08-difference",
+            "stateRef": "S2",
+            "role": "main",
+            "continuation": false,
+            "done": false,
+            "before": [
+              {
+                "type": "text",
+                "text": "右辺を"
+              },
+              {
+                "type": "math",
+                "latex": "0"
+              },
+              {
+                "type": "text",
+                "text": "に整理しました。保たれる大小関係を入れます。"
+              }
+            ],
+            "after": [],
+            "formula": {
+              "left": [
+                {
+                  "type": "math",
+                  "latex": "3-\\pi"
+                }
+              ],
+              "relation": "<",
+              "relationSlot": {
+                "type": "slot",
+                "id": "n08-pi-sign-S2-slot0",
+                "interactionRef": "n08-q08-difference-answer"
+              },
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "0"
+                }
+              ]
+            },
+            "current": {
+              "id": "n08-q08-difference-answer",
+              "learnerDecision": "右辺を0に整理しました。保たれる大小関係を入れます。",
+              "blankRole": "relation",
+              "choices": [
+                "<",
+                ">",
+                "="
+              ]
+            }
+          }
+        },
+        "sourceRefs": [
+          "src/data/textbook/math/numbers/n08Revision5.json",
+          "W-MATH-039/P001"
+        ],
+        "caseIds": [
+          "N07-USER-F01",
+          "N07-USER-F02",
+          "N07-USER-F03",
+          "N07-USER-F04",
+          "N07-USER-F05",
+          "N07-USER-F06",
+          "n07-layout-relation",
+          "n07-layout-positive",
+          "first-title-layout-positive",
+          "N07-ACCEPTED-20261025",
+          "N08-ACCEPTED-20261025",
+          "N09-REJECTED-20261025",
+          "N10-REJECTED-20261025",
+          "N09-ACCEPTED-20261025",
+          "N10-ACCEPTED-20261025"
+        ],
+        "required": [
+          "learnerDecision",
+          "availableInformation",
+          "reasonToProceed",
+          "nextWholeState",
+          "misconception",
+          "reducedSupportVariant",
+          "findings",
+          "patternDecision",
+          "groupBoundaryReview",
+          "blankDecisionReview",
+          "prosePlacementReview",
+          "terminalRoleReview",
+          "visibleProgressionReview"
+        ],
+        "constraints": [
+          "可視状態だけで次へ進めるかを先に検討する",
+          "作成者の理由欄を合格根拠にしない",
+          "同一AIの別passを独立モデルと呼ばない"
+        ],
+        "requestHash": "966cd05a4fa406fda972931d66419e80a42d1e08ae720fa9859f1f74cb3902e6"
+      },
+      "response": {
+        "requestHash": "966cd05a4fa406fda972931d66419e80a42d1e08ae720fa9859f1f74cb3902e6",
+        "phase": "design",
+        "reviewer": "same-assistant visible-state review; not independent AI",
+        "learnerDecision": "右辺を0に整理しました。保たれる大小関係を入れます。",
+        "availableInformation": "表示済みの原問とこの問題の条件、式列の既に完成した行、外側で済ませた意味・規則の判断。未回答の行の答えはsnapshotに入れない。",
+        "reasonToProceed": "大小関係を条件に合わせて確定するため。",
+        "nextWholeState": "同じ原問のrelation-sequenceの次行へ戻る。現在のgroup末尾はそのまま局所の結論となる。",
+        "misconception": "同じ数の減算なのに不等号を反転させる。",
+        "reducedSupportVariant": "今回は採点IDを保持。後の類題で同じ操作の穴を手本化する候補だけとし、ここで変更しない。",
+        "patternDecision": "既知の実数の大小から同じ数の減算へ進む一列。",
+        "groupBoundaryReview": "四groupをstage06/07/08/09へ限定。符号の意味、一般規則、二方向証明、場合の合流は既存の独立node。",
+        "blankDecisionReview": "右辺を0に整理しました。保たれる大小関係を入れます。。左右二枠は同じ一回答、手本の分配行と計算穴を区別する。",
+        "prosePlacementReview": "操作の目的をその行の前、結果の意味を回答後へ。意味の判断の答えを直前の文章で明かさない。",
+        "terminalRoleReview": "末尾の式を結論とし、同じ全等式をもう一つの答えカードとして出さない。前段の結果の記録と概念上の再利用は保持。",
+        "visibleProgressionReview": "当該groupだけのsnapshotを検査。外側の境界が未解決の場合はgroup自体を表示せず、保存された後半の正答も前提を解放しない。",
+        "findings": [],
+        "caseDispositions": [
+          {
+            "caseId": "N07-USER-F01",
+            "status": "APPLIED",
+            "evidence": "元の絶対値・前段の大小・円周率の与えられた値を保持。絶対値を外すgroupは前段の符号・規則nodeを可視境界にする。"
+          },
+          {
+            "caseId": "N07-USER-F02",
+            "status": "APPLIED",
+            "evidence": "同じ数値の問題へ各局所の結果を連続式として戻す。"
+          },
+          {
+            "caseId": "N07-USER-F03",
+            "status": "APPLIED",
+            "evidence": "左辺に元の中身を作るために同じ値を引く目的を説明する。"
+          },
+          {
+            "caseId": "N07-USER-F04",
+            "status": "APPLIED",
+            "evidence": "括弧全体への負号、二項への分配、積の計算、項の交換まで全行を保持。"
+          },
+          {
+            "caseId": "N07-USER-F05",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N07-USER-F06",
+            "status": "APPLIED",
+            "evidence": "負の二つの因数を括弧ごと描画し、文中の数値もtyped math。"
+          },
+          {
+            "caseId": "n07-layout-relation",
+            "status": "APPLIED",
+            "evidence": "四つの局所で比較記号・等号の列を揃える。"
+          },
+          {
+            "caseId": "n07-layout-positive",
+            "status": "APPLIED",
+            "evidence": "前の受入済みの概念・場合分けの構造は保持。"
+          },
+          {
+            "caseId": "first-title-layout-positive",
+            "status": "APPLIED",
+            "evidence": "四つの局所で比較記号・等号の列を揃える。"
+          },
+          {
+            "caseId": "N07-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N08-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N09-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "大小→差→符号→規則→全体の負号→分配→積→交換。"
+          },
+          {
+            "caseId": "N10-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "負号を中身全体へ適用する括弧と分配の因数を保持。"
+          },
+          {
+            "caseId": "N09-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N10-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "n08-q09-bracket-answer",
+      "request": {
+        "profile": "ordinary-transformation",
+        "schemaVersion": "solution-review/1",
+        "phase": "design",
+        "visible": {
+          "initial": {
+            "aliasRefs": [],
+            "id": "n08-pi-absolute-S0",
+            "sourceNodeId": "n08-q09-bracket",
+            "stateRef": "S0",
+            "role": "main",
+            "continuation": false,
+            "done": true,
+            "before": [],
+            "after": [],
+            "formula": {
+              "left": [],
+              "relation": "",
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "\\left|3-\\pi\\right|"
+                }
+              ]
+            },
+            "current": null
+          },
+          "completed": [
+            {
+              "aliasRefs": [],
+              "id": "n08-pi-absolute-S0",
+              "sourceNodeId": "n08-q09-bracket",
+              "stateRef": "S0",
+              "role": "main",
+              "continuation": false,
+              "done": true,
+              "before": [],
+              "after": [],
+              "formula": {
+                "left": [],
+                "relation": "",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "\\left|3-\\pi\\right|"
+                  }
+                ]
+              },
+              "current": null
+            }
+          ],
+          "current": {
+            "aliasRefs": [
+              "n08-q09-bracket-interaction-0",
+              "n08-q09-bracket-result"
+            ],
+            "id": "n08-pi-absolute-S1",
+            "sourceNodeId": "n08-q09-bracket",
+            "stateRef": "S1",
+            "role": "main",
+            "continuation": true,
+            "done": false,
+            "before": [
+              {
+                "type": "text",
+                "text": "前の例と同じ順序で、負の場合の規則を式全体に使います。"
+              }
+            ],
+            "after": [],
+            "formula": {
+              "left": [],
+              "relation": "=",
+              "right": [
+                {
+                  "type": "slot",
+                  "id": "n08-pi-absolute-S1-slot0",
+                  "interactionRef": "n08-q09-bracket-answer"
+                }
+              ]
+            },
+            "current": {
+              "id": "n08-q09-bracket-answer",
+              "learnerDecision": "前の例と同じ順序で、負の場合の規則を式全体に使います。",
+              "blankRole": "expression",
+              "choices": [
+                "-(3-\\pi)",
+                "3-\\pi",
+                "-3-\\pi"
+              ]
+            }
+          }
+        },
+        "sourceRefs": [
+          "src/data/textbook/math/numbers/n08Revision5.json",
+          "W-MATH-039/P001"
+        ],
+        "caseIds": [
+          "N07-USER-F01",
+          "N07-USER-F02",
+          "N07-USER-F03",
+          "N07-USER-F04",
+          "N07-USER-F05",
+          "N07-USER-F06",
+          "n07-layout-relation",
+          "n07-layout-positive",
+          "first-title-layout-positive",
+          "N07-ACCEPTED-20261025",
+          "N08-ACCEPTED-20261025",
+          "N09-REJECTED-20261025",
+          "N10-REJECTED-20261025",
+          "N09-ACCEPTED-20261025",
+          "N10-ACCEPTED-20261025"
+        ],
+        "required": [
+          "learnerDecision",
+          "availableInformation",
+          "reasonToProceed",
+          "nextWholeState",
+          "misconception",
+          "reducedSupportVariant",
+          "findings",
+          "patternDecision",
+          "groupBoundaryReview",
+          "blankDecisionReview",
+          "prosePlacementReview",
+          "terminalRoleReview",
+          "visibleProgressionReview"
+        ],
+        "constraints": [
+          "可視状態だけで次へ進めるかを先に検討する",
+          "作成者の理由欄を合格根拠にしない",
+          "同一AIの別passを独立モデルと呼ばない"
+        ],
+        "requestHash": "07763c789ab945a62cdea80e8f4253aba3991c32cd427e0f2c7dd729bc555d02"
+      },
+      "response": {
+        "requestHash": "07763c789ab945a62cdea80e8f4253aba3991c32cd427e0f2c7dd729bc555d02",
+        "phase": "design",
+        "reviewer": "same-assistant visible-state review; not independent AI",
+        "learnerDecision": "前の例と同じ順序で、負の場合の規則を式全体に使います。",
+        "availableInformation": "表示済みの原問とこの問題の条件、式列の既に完成した行、外側で済ませた意味・規則の判断。未回答の行の答えはsnapshotに入れない。",
+        "reasonToProceed": "中身全体へ既習の規則を適用するため。",
+        "nextWholeState": "同じ原問のexpression-chainの次行へ戻る。現在のgroup末尾はそのまま局所の結論となる。",
+        "misconception": "第1項だけを負にして括弧全体の反転をしない。",
+        "reducedSupportVariant": "今回は採点IDを保持。後の類題で同じ操作の穴を手本化する候補だけとし、ここで変更しない。",
+        "patternDecision": "具体的な負の数の絶対値から分配・計算・交換の一列。一般の文字の絶対値や条件分岐を連結しない。",
+        "groupBoundaryReview": "四groupをstage06/07/08/09へ限定。符号の意味、一般規則、二方向証明、場合の合流は既存の独立node。",
+        "blankDecisionReview": "前の例と同じ順序で、負の場合の規則を式全体に使います。。左右二枠は同じ一回答、手本の分配行と計算穴を区別する。",
+        "prosePlacementReview": "操作の目的をその行の前、結果の意味を回答後へ。意味の判断の答えを直前の文章で明かさない。",
+        "terminalRoleReview": "末尾の式を結論とし、同じ全等式をもう一つの答えカードとして出さない。前段の結果の記録と概念上の再利用は保持。",
+        "visibleProgressionReview": "当該groupだけのsnapshotを検査。外側の境界が未解決の場合はgroup自体を表示せず、保存された後半の正答も前提を解放しない。",
+        "findings": [],
+        "caseDispositions": [
+          {
+            "caseId": "N07-USER-F01",
+            "status": "APPLIED",
+            "evidence": "元の絶対値・前段の大小・円周率の与えられた値を保持。絶対値を外すgroupは前段の符号・規則nodeを可視境界にする。"
+          },
+          {
+            "caseId": "N07-USER-F02",
+            "status": "APPLIED",
+            "evidence": "同じ数値の問題へ各局所の結果を連続式として戻す。"
+          },
+          {
+            "caseId": "N07-USER-F03",
+            "status": "APPLIED",
+            "evidence": "左辺に元の中身を作るために同じ値を引く目的を説明する。"
+          },
+          {
+            "caseId": "N07-USER-F04",
+            "status": "APPLIED",
+            "evidence": "括弧全体への負号、二項への分配、積の計算、項の交換まで全行を保持。"
+          },
+          {
+            "caseId": "N07-USER-F05",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N07-USER-F06",
+            "status": "APPLIED",
+            "evidence": "負の二つの因数を括弧ごと描画し、文中の数値もtyped math。"
+          },
+          {
+            "caseId": "n07-layout-relation",
+            "status": "APPLIED",
+            "evidence": "四つの局所で比較記号・等号の列を揃える。"
+          },
+          {
+            "caseId": "n07-layout-positive",
+            "status": "APPLIED",
+            "evidence": "前の受入済みの概念・場合分けの構造は保持。"
+          },
+          {
+            "caseId": "first-title-layout-positive",
+            "status": "APPLIED",
+            "evidence": "四つの局所で比較記号・等号の列を揃える。"
+          },
+          {
+            "caseId": "N07-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N08-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N09-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "大小→差→符号→規則→全体の負号→分配→積→交換。"
+          },
+          {
+            "caseId": "N10-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "負号を中身全体へ適用する括弧と分配の因数を保持。"
+          },
+          {
+            "caseId": "N09-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N10-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "n08-q09-distribute-answer",
+      "request": {
+        "profile": "ordinary-transformation",
+        "schemaVersion": "solution-review/1",
+        "phase": "design",
+        "visible": {
+          "initial": {
+            "aliasRefs": [],
+            "id": "n08-pi-absolute-S0",
+            "sourceNodeId": "n08-q09-bracket",
+            "stateRef": "S0",
+            "role": "main",
+            "continuation": false,
+            "done": true,
+            "before": [],
+            "after": [],
+            "formula": {
+              "left": [],
+              "relation": "",
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "\\left|3-\\pi\\right|"
+                }
+              ]
+            },
+            "current": null
+          },
+          "completed": [
+            {
+              "aliasRefs": [],
+              "id": "n08-pi-absolute-S0",
+              "sourceNodeId": "n08-q09-bracket",
+              "stateRef": "S0",
+              "role": "main",
+              "continuation": false,
+              "done": true,
+              "before": [],
+              "after": [],
+              "formula": {
+                "left": [],
+                "relation": "",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "\\left|3-\\pi\\right|"
+                  }
+                ]
+              },
+              "current": null
+            },
+            {
+              "aliasRefs": [
+                "n08-q09-bracket-interaction-0",
+                "n08-q09-bracket-result"
+              ],
+              "id": "n08-pi-absolute-S1",
+              "sourceNodeId": "n08-q09-bracket",
+              "stateRef": "S1",
+              "role": "main",
+              "continuation": true,
+              "done": true,
+              "before": [
+                {
+                  "type": "text",
+                  "text": "前の例と同じ順序で、負の場合の規則を式全体に使います。"
+                }
+              ],
+              "after": [],
+              "formula": {
+                "left": [],
+                "relation": "=",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "-\\left(3-\\pi\\right)"
+                  }
+                ]
+              },
+              "current": null
+            },
+            {
+              "aliasRefs": [],
+              "id": "n08-pi-absolute-S2",
+              "sourceNodeId": "n08-q09-distribute",
+              "stateRef": "S2",
+              "role": "main",
+              "continuation": true,
+              "done": true,
+              "before": [
+                {
+                  "type": "text",
+                  "text": "括弧全体に掛かる"
+                },
+                {
+                  "type": "math",
+                  "latex": "-1"
+                },
+                {
+                  "type": "text",
+                  "text": "を、二つの項へ分配します。"
+                }
+              ],
+              "after": [],
+              "formula": {
+                "left": [],
+                "relation": "=",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "(-1)3+(-1)(-\\pi)"
+                  }
+                ]
+              },
+              "current": null
+            }
+          ],
+          "current": {
+            "aliasRefs": [
+              "n08-q09-distribute-interaction",
+              "n08-q09-distribute-result"
+            ],
+            "id": "n08-pi-absolute-S3",
+            "sourceNodeId": "n08-q09-distribute",
+            "stateRef": "S3",
+            "role": "main",
+            "continuation": true,
+            "done": false,
+            "before": [
+              {
+                "type": "text",
+                "text": "それぞれの積を計算し、二項の符号を確かめます。"
+              }
+            ],
+            "after": [],
+            "formula": {
+              "left": [],
+              "relation": "=",
+              "right": [
+                {
+                  "type": "slot",
+                  "id": "n08-pi-absolute-S3-slot0",
+                  "interactionRef": "n08-q09-distribute-answer"
+                }
+              ]
+            },
+            "current": {
+              "id": "n08-q09-distribute-answer",
+              "learnerDecision": "それぞれの積を計算し、二項の符号を確かめます。",
+              "blankRole": "calculation",
+              "choices": [
+                "-3+\\pi",
+                "-3-\\pi",
+                "3+\\pi"
+              ]
+            }
+          }
+        },
+        "sourceRefs": [
+          "src/data/textbook/math/numbers/n08Revision5.json",
+          "W-MATH-039/P001"
+        ],
+        "caseIds": [
+          "N07-USER-F01",
+          "N07-USER-F02",
+          "N07-USER-F03",
+          "N07-USER-F04",
+          "N07-USER-F05",
+          "N07-USER-F06",
+          "n07-layout-relation",
+          "n07-layout-positive",
+          "first-title-layout-positive",
+          "N07-ACCEPTED-20261025",
+          "N08-ACCEPTED-20261025",
+          "N09-REJECTED-20261025",
+          "N10-REJECTED-20261025",
+          "N09-ACCEPTED-20261025",
+          "N10-ACCEPTED-20261025"
+        ],
+        "required": [
+          "learnerDecision",
+          "availableInformation",
+          "reasonToProceed",
+          "nextWholeState",
+          "misconception",
+          "reducedSupportVariant",
+          "findings",
+          "patternDecision",
+          "groupBoundaryReview",
+          "blankDecisionReview",
+          "prosePlacementReview",
+          "terminalRoleReview",
+          "visibleProgressionReview"
+        ],
+        "constraints": [
+          "可視状態だけで次へ進めるかを先に検討する",
+          "作成者の理由欄を合格根拠にしない",
+          "同一AIの別passを独立モデルと呼ばない"
+        ],
+        "requestHash": "1fcd358a1ef202e314f2f7899a555515ae9f7101799ed27cf31a787ea9a808e7"
+      },
+      "response": {
+        "requestHash": "1fcd358a1ef202e314f2f7899a555515ae9f7101799ed27cf31a787ea9a808e7",
+        "phase": "design",
+        "reviewer": "same-assistant visible-state review; not independent AI",
+        "learnerDecision": "それぞれの積を計算し、二項の符号を確かめます。",
+        "availableInformation": "表示済みの原問とこの問題の条件、式列の既に完成した行、外側で済ませた意味・規則の判断。未回答の行の答えはsnapshotに入れない。",
+        "reasonToProceed": "直前の操作を計算し、同じ問題の次の行へ進むため。",
+        "nextWholeState": "同じ原問のexpression-chainの次行へ戻る。現在のgroup末尾はそのまま局所の結論となる。",
+        "misconception": "負の項への負号を落とすか、項の順番を変えるときに符号を落とす。",
+        "reducedSupportVariant": "今回は採点IDを保持。後の類題で同じ操作の穴を手本化する候補だけとし、ここで変更しない。",
+        "patternDecision": "具体的な負の数の絶対値から分配・計算・交換の一列。一般の文字の絶対値や条件分岐を連結しない。",
+        "groupBoundaryReview": "四groupをstage06/07/08/09へ限定。符号の意味、一般規則、二方向証明、場合の合流は既存の独立node。",
+        "blankDecisionReview": "それぞれの積を計算し、二項の符号を確かめます。。左右二枠は同じ一回答、手本の分配行と計算穴を区別する。",
+        "prosePlacementReview": "操作の目的をその行の前、結果の意味を回答後へ。意味の判断の答えを直前の文章で明かさない。",
+        "terminalRoleReview": "末尾の式を結論とし、同じ全等式をもう一つの答えカードとして出さない。前段の結果の記録と概念上の再利用は保持。",
+        "visibleProgressionReview": "当該groupだけのsnapshotを検査。外側の境界が未解決の場合はgroup自体を表示せず、保存された後半の正答も前提を解放しない。",
+        "findings": [],
+        "caseDispositions": [
+          {
+            "caseId": "N07-USER-F01",
+            "status": "APPLIED",
+            "evidence": "元の絶対値・前段の大小・円周率の与えられた値を保持。絶対値を外すgroupは前段の符号・規則nodeを可視境界にする。"
+          },
+          {
+            "caseId": "N07-USER-F02",
+            "status": "APPLIED",
+            "evidence": "同じ数値の問題へ各局所の結果を連続式として戻す。"
+          },
+          {
+            "caseId": "N07-USER-F03",
+            "status": "APPLIED",
+            "evidence": "左辺に元の中身を作るために同じ値を引く目的を説明する。"
+          },
+          {
+            "caseId": "N07-USER-F04",
+            "status": "APPLIED",
+            "evidence": "括弧全体への負号、二項への分配、積の計算、項の交換まで全行を保持。"
+          },
+          {
+            "caseId": "N07-USER-F05",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N07-USER-F06",
+            "status": "APPLIED",
+            "evidence": "負の二つの因数を括弧ごと描画し、文中の数値もtyped math。"
+          },
+          {
+            "caseId": "n07-layout-relation",
+            "status": "APPLIED",
+            "evidence": "四つの局所で比較記号・等号の列を揃える。"
+          },
+          {
+            "caseId": "n07-layout-positive",
+            "status": "APPLIED",
+            "evidence": "前の受入済みの概念・場合分けの構造は保持。"
+          },
+          {
+            "caseId": "first-title-layout-positive",
+            "status": "APPLIED",
+            "evidence": "四つの局所で比較記号・等号の列を揃える。"
+          },
+          {
+            "caseId": "N07-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N08-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N09-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "大小→差→符号→規則→全体の負号→分配→積→交換。"
+          },
+          {
+            "caseId": "N10-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "負号を中身全体へ適用する括弧と分配の因数を保持。"
+          },
+          {
+            "caseId": "N09-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N10-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "n08-09",
+      "request": {
+        "profile": "ordinary-transformation",
+        "schemaVersion": "solution-review/1",
+        "phase": "design",
+        "visible": {
+          "initial": {
+            "aliasRefs": [],
+            "id": "n08-pi-absolute-S0",
+            "sourceNodeId": "n08-q09-bracket",
+            "stateRef": "S0",
+            "role": "main",
+            "continuation": false,
+            "done": true,
+            "before": [],
+            "after": [],
+            "formula": {
+              "left": [],
+              "relation": "",
+              "right": [
+                {
+                  "type": "math",
+                  "latex": "\\left|3-\\pi\\right|"
+                }
+              ]
+            },
+            "current": null
+          },
+          "completed": [
+            {
+              "aliasRefs": [],
+              "id": "n08-pi-absolute-S0",
+              "sourceNodeId": "n08-q09-bracket",
+              "stateRef": "S0",
+              "role": "main",
+              "continuation": false,
+              "done": true,
+              "before": [],
+              "after": [],
+              "formula": {
+                "left": [],
+                "relation": "",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "\\left|3-\\pi\\right|"
+                  }
+                ]
+              },
+              "current": null
+            },
+            {
+              "aliasRefs": [
+                "n08-q09-bracket-interaction-0",
+                "n08-q09-bracket-result"
+              ],
+              "id": "n08-pi-absolute-S1",
+              "sourceNodeId": "n08-q09-bracket",
+              "stateRef": "S1",
+              "role": "main",
+              "continuation": true,
+              "done": true,
+              "before": [
+                {
+                  "type": "text",
+                  "text": "前の例と同じ順序で、負の場合の規則を式全体に使います。"
+                }
+              ],
+              "after": [],
+              "formula": {
+                "left": [],
+                "relation": "=",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "-\\left(3-\\pi\\right)"
+                  }
+                ]
+              },
+              "current": null
+            },
+            {
+              "aliasRefs": [],
+              "id": "n08-pi-absolute-S2",
+              "sourceNodeId": "n08-q09-distribute",
+              "stateRef": "S2",
+              "role": "main",
+              "continuation": true,
+              "done": true,
+              "before": [
+                {
+                  "type": "text",
+                  "text": "括弧全体に掛かる"
+                },
+                {
+                  "type": "math",
+                  "latex": "-1"
+                },
+                {
+                  "type": "text",
+                  "text": "を、二つの項へ分配します。"
+                }
+              ],
+              "after": [],
+              "formula": {
+                "left": [],
+                "relation": "=",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "(-1)3+(-1)(-\\pi)"
+                  }
+                ]
+              },
+              "current": null
+            },
+            {
+              "aliasRefs": [
+                "n08-q09-distribute-interaction",
+                "n08-q09-distribute-result"
+              ],
+              "id": "n08-pi-absolute-S3",
+              "sourceNodeId": "n08-q09-distribute",
+              "stateRef": "S3",
+              "role": "main",
+              "continuation": true,
+              "done": true,
+              "before": [
+                {
+                  "type": "text",
+                  "text": "それぞれの積を計算し、二項の符号を確かめます。"
+                }
+              ],
+              "after": [],
+              "formula": {
+                "left": [],
+                "relation": "=",
+                "right": [
+                  {
+                    "type": "math",
+                    "latex": "-3+\\pi"
+                  }
+                ]
+              },
+              "current": null
+            }
+          ],
+          "current": {
+            "aliasRefs": [
+              "n08-09-interaction-0",
+              "n08-09-result"
+            ],
+            "id": "n08-pi-absolute-S4",
+            "sourceNodeId": "n08-09",
+            "stateRef": "S4",
+            "role": "main",
+            "continuation": true,
+            "done": false,
+            "before": [
+              {
+                "type": "text",
+                "text": "加法の交換法則で、各項の符号を保って正の項を先に書きます。"
+              }
+            ],
+            "after": [],
+            "formula": {
+              "left": [],
+              "relation": "=",
+              "right": [
+                {
+                  "type": "slot",
+                  "id": "n08-pi-absolute-S4-slot0",
+                  "interactionRef": "n08-09"
+                }
+              ]
+            },
+            "current": {
+              "id": "n08-09",
+              "learnerDecision": "加法の交換法則で、各項の符号を保って正の項を先に書きます。",
+              "blankRole": "calculation",
+              "choices": [
+                "\\pi-3",
+                "3-\\pi",
+                "-\\pi-3",
+                "3+\\pi"
+              ]
+            }
+          }
+        },
+        "sourceRefs": [
+          "src/data/textbook/math/numbers/n08Revision5.json",
+          "W-MATH-039/P001"
+        ],
+        "caseIds": [
+          "N07-USER-F01",
+          "N07-USER-F02",
+          "N07-USER-F03",
+          "N07-USER-F04",
+          "N07-USER-F05",
+          "N07-USER-F06",
+          "n07-layout-relation",
+          "n07-layout-positive",
+          "first-title-layout-positive",
+          "N07-ACCEPTED-20261025",
+          "N08-ACCEPTED-20261025",
+          "N09-REJECTED-20261025",
+          "N10-REJECTED-20261025",
+          "N09-ACCEPTED-20261025",
+          "N10-ACCEPTED-20261025"
+        ],
+        "required": [
+          "learnerDecision",
+          "availableInformation",
+          "reasonToProceed",
+          "nextWholeState",
+          "misconception",
+          "reducedSupportVariant",
+          "findings",
+          "patternDecision",
+          "groupBoundaryReview",
+          "blankDecisionReview",
+          "prosePlacementReview",
+          "terminalRoleReview",
+          "visibleProgressionReview"
+        ],
+        "constraints": [
+          "可視状態だけで次へ進めるかを先に検討する",
+          "作成者の理由欄を合格根拠にしない",
+          "同一AIの別passを独立モデルと呼ばない"
+        ],
+        "requestHash": "20ad6a4f7d593945669055de5f6b3c3c38b3fd98c91b217e1749a5c94424909c"
+      },
+      "response": {
+        "requestHash": "20ad6a4f7d593945669055de5f6b3c3c38b3fd98c91b217e1749a5c94424909c",
+        "phase": "design",
+        "reviewer": "same-assistant visible-state review; not independent AI",
+        "learnerDecision": "加法の交換法則で、各項の符号を保って正の項を先に書きます。",
+        "availableInformation": "表示済みの原問とこの問題の条件、式列の既に完成した行、外側で済ませた意味・規則の判断。未回答の行の答えはsnapshotに入れない。",
+        "reasonToProceed": "直前の操作を計算し、同じ問題の次の行へ進むため。",
+        "nextWholeState": "同じ原問のexpression-chainの次行へ戻る。現在のgroup末尾はそのまま局所の結論となる。",
+        "misconception": "負の項への負号を落とすか、項の順番を変えるときに符号を落とす。",
+        "reducedSupportVariant": "今回は採点IDを保持。後の類題で同じ操作の穴を手本化する候補だけとし、ここで変更しない。",
+        "patternDecision": "具体的な負の数の絶対値から分配・計算・交換の一列。一般の文字の絶対値や条件分岐を連結しない。",
+        "groupBoundaryReview": "四groupをstage06/07/08/09へ限定。符号の意味、一般規則、二方向証明、場合の合流は既存の独立node。",
+        "blankDecisionReview": "加法の交換法則で、各項の符号を保って正の項を先に書きます。。左右二枠は同じ一回答、手本の分配行と計算穴を区別する。",
+        "prosePlacementReview": "操作の目的をその行の前、結果の意味を回答後へ。意味の判断の答えを直前の文章で明かさない。",
+        "terminalRoleReview": "末尾の式を結論とし、同じ全等式をもう一つの答えカードとして出さない。前段の結果の記録と概念上の再利用は保持。",
+        "visibleProgressionReview": "当該groupだけのsnapshotを検査。外側の境界が未解決の場合はgroup自体を表示せず、保存された後半の正答も前提を解放しない。",
+        "findings": [],
+        "caseDispositions": [
+          {
+            "caseId": "N07-USER-F01",
+            "status": "APPLIED",
+            "evidence": "元の絶対値・前段の大小・円周率の与えられた値を保持。絶対値を外すgroupは前段の符号・規則nodeを可視境界にする。"
+          },
+          {
+            "caseId": "N07-USER-F02",
+            "status": "APPLIED",
+            "evidence": "同じ数値の問題へ各局所の結果を連続式として戻す。"
+          },
+          {
+            "caseId": "N07-USER-F03",
+            "status": "APPLIED",
+            "evidence": "左辺に元の中身を作るために同じ値を引く目的を説明する。"
+          },
+          {
+            "caseId": "N07-USER-F04",
+            "status": "APPLIED",
+            "evidence": "括弧全体への負号、二項への分配、積の計算、項の交換まで全行を保持。"
+          },
+          {
+            "caseId": "N07-USER-F05",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N07-USER-F06",
+            "status": "APPLIED",
+            "evidence": "負の二つの因数を括弧ごと描画し、文中の数値もtyped math。"
+          },
+          {
+            "caseId": "n07-layout-relation",
+            "status": "APPLIED",
+            "evidence": "四つの局所で比較記号・等号の列を揃える。"
+          },
+          {
+            "caseId": "n07-layout-positive",
+            "status": "APPLIED",
+            "evidence": "前の受入済みの概念・場合分けの構造は保持。"
+          },
+          {
+            "caseId": "first-title-layout-positive",
+            "status": "APPLIED",
+            "evidence": "四つの局所で比較記号・等号の列を揃える。"
+          },
+          {
+            "caseId": "N07-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N08-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N09-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "大小→差→符号→規則→全体の負号→分配→積→交換。"
+          },
+          {
+            "caseId": "N10-REJECTED-20261025",
+            "status": "APPLIED",
+            "evidence": "負号を中身全体へ適用する括弧と分配の因数を保持。"
+          },
+          {
+            "caseId": "N09-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          },
+          {
+            "caseId": "N10-ACCEPTED-20261025",
+            "status": "NOT_APPLICABLE",
+            "evidence": "前単元全体の受入や別の用語導入であり、新表示の品質labelとして転用しない。"
+          }
+        ]
+      }
+    }
+  ]
+}

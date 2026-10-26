@@ -1,0 +1,198 @@
+import { useEffect, useRef, useState, type ReactNode } from 'react'
+import { Link } from 'react-router-dom'
+import { InlineMath } from 'react-katex'
+import { SemanticReading } from './SemanticReading'
+import { TypesetFormula, TypesetInlineMath } from './TypesetFormula'
+import { NumberedEquation } from './NumberedEquation'
+import data from '../../data/textbook/math/numbers/n08Revision5.json'
+import { effectiveTextbookProgress, getTextbookChoices, isTextbookItemResolved, type TextbookUnitProgress } from '../../domain/textbook'
+import type { TextbookItem, TextbookReadingBlock, TextbookReadingPart, TextbookSection, TextbookUnit } from '../../domain/textbookSchema'
+import { useAppStore } from '../../stores/useAppStore'
+import { useI18n } from '../../i18n/runtime'
+import './n08-reading.css'
+import './n08-solution-reading.css'
+
+type Props = {
+  unit: TextbookUnit; section: TextbookSection; progress: TextbookUnitProgress | undefined
+  onSummaryReached?: (reached: boolean) => void
+  onReviewAnswer?: (item: TextbookItem, choice: string) => void
+}
+type Node = typeof data.nodes[number]
+type Display = { hints: TextbookReadingPart[][]; choices: Record<string, TextbookReadingPart[]>; feedback: Record<string, TextbookReadingPart[]>; choiceRows?: Record<string, TextbookReadingPart[][]> }
+const displays = data.semanticDisplay as unknown as Record<string, { hintParts: Display['hints']; choices: Display['choices']; feedback: Display['feedback']; choiceRows?: Display['choiceRows'] }>
+const formulaNumbers: Record<string, number> = data.equationNumbers
+const roles: Record<string, string> = { example: '例題', definition: '定義', proof: '性質の導出', substep: '導出', check: '学んだことを使う', property: '性質', summary: 'まとめ' }
+
+export function N08SolutionReadingFlow({ unit, section, progress, onSummaryReached, onReviewAnswer }: Props) {
+  const { text } = useI18n()
+  const answer = useAppStore(state => state.answerTextbook)
+  const current = effectiveTextbookProgress(unit, progress)
+  const items = section.items
+  const resolved = (n: Node) => !n.interaction || isTextbookItemResolved(items.find(i => i.id === n.interaction)!, current?.answers[n.interaction])
+  const first = data.nodes.findIndex(n => !resolved(n))
+  const frontier = first < 0 ? data.nodes.length : first
+  const maxStage = first < 0 ? data.stages.length - 1 : data.stages.findIndex(s => s.id === data.nodes[first].stageId)
+  const storageKey = 'math-textbook-compact-v1:' + unit.unitId + ':r' + unit.revision
+  const [cursor, setCursor] = useState(() => {
+    const saved = window.localStorage.getItem(storageKey)
+    const value = saved === null ? 0 : Number(saved)
+    return Number.isInteger(value) && value >= 0 ? Math.min(value, maxStage) : 0
+  })
+  const stageIndex = Math.min(cursor, maxStage)
+  const stage = data.stages[stageIndex]
+  const stageNodes = data.nodes.filter(n => n.stageId === stage.id)
+  const problem = data.problemGroups.find(p => p.stages.includes(stage.id))!
+  const priorProblemNodes = data.nodes.filter(n => problem.stages.includes(n.stageId) && data.stages.findIndex(s => s.id === n.stageId) < stageIndex && resolved(n))
+  const complete = stageNodes.every(resolved)
+  const [activeId, setActiveId] = useState<string | null>(null)
+  const [history, setHistory] = useState(false)
+  const [expandAll, setExpandAll] = useState(false)
+  const flow = useRef<HTMLDivElement>(null)
+  const focusNode = stageNodes.find(n => !resolved(n)) ?? stageNodes.at(-1)!
+  const known = focusNode.knownRefs.flatMap(id => {
+    const n = data.nodes.find(x => x.resultId === id)
+    return n && data.nodes.indexOf(n) < frontier ? [n] : []
+  })
+  useEffect(() => { window.localStorage.setItem(storageKey, String(stageIndex)) }, [stageIndex, storageKey])
+  useEffect(() => { onSummaryReached?.(first < 0 && stageIndex === data.stages.length - 1) }, [first, stageIndex, onSummaryReached])
+
+  function logical(source: string, id: string, parts: readonly ReactNode[] = [], itemIds: Record<number, string> = {}) {
+    const [left, relation, right] = source.split(/(\\(?:Rightarrow|Leftrightarrow))/)
+    if (!right) return null
+    const vertical = relation === '\\Rightarrow' ? '\\Downarrow' : '\\Updownarrow'
+    return <span className="n08-logical-chain" data-logical-relation={relation} data-typeset-source={id}>
+      <TypesetFormula source={left.trim().replace(/\\$/, '')} sourceId={id + '-left'} unitId={unit.unitId} parts={parts} itemIds={itemIds} />
+      <span className="n08-logical-arrow"><InlineMath math={vertical} /></span>
+      <TypesetFormula source={right} sourceId={id + '-right'} unitId={unit.unitId} parts={parts} itemIds={itemIds} />
+    </span>
+  }
+  function semantic(parts: readonly unknown[] = []) {
+    return (parts as TextbookReadingPart[]).map((p, i) => p.type === 'math'
+      ? <span key={p.semanticId ?? i} data-semantic-id={p.semanticId}>{logical(p.latex, p.semanticId ?? 'n08-inline-' + i) ?? <TypesetInlineMath latex={p.latex.replace(/\\\s+$/, '')} sourceId={p.semanticId ?? 'n08-inline-' + i} unitId={unit.unitId} />}</span>
+      : <SemanticReading key={p.semanticId ?? i} parts={[p]} renderChoice={blank} />)
+  }
+  function blank(id: string) {
+    const item = items.find(i => i.id === id)!
+    const record = current?.answers[id]
+    if (isTextbookItemResolved(item, record)) {
+      const node = data.nodes.find(n => n.interaction === id)!
+      return <span className="reading-inline-answer" data-testid={'resolved-' + id}>{semantic(displays[node.id].choices[record!.value])}</span>
+    }
+    return <button type="button" className={'reading-inline-blank' + (record ? ' reading-inline-blank--wrong' : '')}
+      data-testid={'textbook-item-' + id} aria-expanded={activeId === id} aria-controls={'n08-panel-' + id} aria-label={item.prompt} onClick={() => setActiveId(id)}>{record ? text('もう一度', '再选一次') : text('選択', '选择')}</button>
+  }
+  function panel(id: string) {
+    if (activeId !== id) return null
+    const item = items.find(i => i.id === id)!
+    const node = data.nodes.find(n => n.interaction === id)!
+    const record = current?.answers[id]
+    const wrong = record && !isTextbookItemResolved(item, record)
+    return <div key={'choices-' + id} id={'n08-panel-' + id} className="reading-inline-choice-panel" data-testid={'inline-choice-panel-' + id}>
+      <p>{item.prompt}</p>
+      {wrong && <aside className="reading-choice-hint" data-testid={'textbook-hint-' + id}>
+        <strong>{text('もう一度考えよう', '再想一想')}</strong>
+        <span>{semantic(displays[node.id].feedback[record.value])} {semantic(displays[node.id].hintParts[0])}</span>
+      </aside>}
+      <div className="reading-choice-options n08-choice-options" role="group" aria-label={item.prompt}>
+        {getTextbookChoices(unit, { ...item, scaffoldLevel: 'light' }).map((choice, index) =>
+          <button type="button" className="reading-choice-option" key={choice} aria-label={choice}
+            data-testid={'textbook-choice-' + id + '-' + index} aria-invalid={Boolean(wrong && record.value === choice) || undefined}
+            onClick={() => {
+              if (onReviewAnswer) onReviewAnswer(item, choice)
+              else answer(unit, id, choice)
+              if (choice === item.answer || item.acceptedAnswers.includes(choice)) setActiveId(null)
+            }}><span>{index + 1}</span><strong>{displays[node.id].choiceRows?.[choice] ? <span className="n08-choice-rows">{displays[node.id].choiceRows![choice].map((row, rowIndex) => <span key={rowIndex}>{semantic(row)}</span>)}</span> : item.answerType === 'formula' && !choice.includes('\\text{')
+              ? <TypesetFormula source={choice} sourceId={'n08-option-' + id + '-' + index} unitId={unit.unitId} />
+              : semantic(displays[node.id].choices[choice])}</strong></button>)}
+      </div>
+    </div>
+  }
+  function renderBlock(raw: unknown) {
+    const block = raw as TextbookReadingBlock
+    if (block.type !== 'paragraph' && block.type !== 'formula') return null
+    const choices = [...new Set(block.parts.flatMap(p => p.type === 'choice' ? [p.itemId] : []))]
+    if (block.type === 'paragraph') return <div key={block.id}>
+      <p className="reading-paragraph" data-block-id={block.id}>{semantic(block.parts)}</p>{choices.map(panel)}
+    </div>
+    const mathParts = block.parts.map((part, i) => <span key={part.semanticId ?? i} data-semantic-id={part.semanticId}>
+      {part.type === 'math' ? <InlineMath math={part.latex} /> : part.type === 'choice' ? blank(part.itemId) : part.type === 'term' ? <strong>{part.text}</strong> : part.text}
+    </span>)
+    const source = block.parts.map((p, i) => p.type === 'math' ? p.latex : p.type === 'choice' ? '§' + i + '§' : '\\text{' + p.text + '}').join('')
+    const itemIds = Object.fromEntries(block.parts.flatMap((p, i) => p.type === 'choice' ? [[i, p.itemId]] : []))
+    return <div key={block.id} data-block-id={block.id} data-formula-semantic-parts={JSON.stringify(block.parts)}>
+      {formulaNumbers[block.id] === undefined
+        ? <div className="numbered-equation"><div className="numbered-equation-body">{logical(source, block.id, mathParts, itemIds) ?? <TypesetFormula source={source} sourceId={block.id} unitId={unit.unitId} parts={mathParts} itemIds={itemIds} />}</div></div>
+        : <NumberedEquation number={formulaNumbers[block.id]} logical>{logical(source, block.id, mathParts, itemIds) ?? <TypesetFormula source={source} sourceId={block.id} unitId={unit.unitId} parts={mathParts} itemIds={itemIds} />}</NumberedEquation>}
+      {choices.map(panel)}
+    </div>
+  }
+  function after(n: Node) {
+    const compiled = data.semantic.nodes.find(x => x.id === n.id)!
+    if (n.id !== 'n08-cases') return compiled.after.map(renderBlock)
+    const parts = (compiled.after[0] as unknown as { parts: TextbookReadingPart[] }).parts
+    const maths = parts.filter(p => p.type === 'math')
+    const tail = parts.slice(parts.lastIndexOf(maths.at(-1)!) + 1).map(p => p.type === 'text' ? { ...p, text: p.text.replace(/^\s*です。/, '') } : p)
+    return <><table className="n08-cases-table" data-testid="n08-cases-table"><caption>絶対値を外す場合分け</caption>
+      <thead><tr><th scope="col">中身の条件</th><th scope="col">絶対値を外した式</th></tr></thead>
+      <tbody><tr><td>{semantic(maths.slice(0, 1))}</td><td>{semantic(maths.slice(1, 2))}</td></tr>
+        <tr><td>{semantic(maths.slice(2, 3))}</td><td>{semantic(maths.slice(3, 4))}</td></tr></tbody></table>
+      <p className="reading-paragraph">{semantic(tail)}</p></>
+  }
+  function result(n: Node) {
+    return <div key={n.resultId} className="n08-result math-textbook-stage-reference-content" data-result-source={n.resultId}>
+      <strong>{n.goal}</strong>{after(n)}
+    </div>
+  }
+  function renderNode(n: Node, past = false) {
+    const compiled = data.semantic.nodes.find(x => x.id === n.id)!
+    const done = past || resolved(n)
+    // Replace the unanswered equation with the completed relation group, once.
+    const before = done && n.interaction ? compiled.before.filter(b => !b.id.startsWith(n.id + '-interaction')) : compiled.before
+    return <div className="n08-thinking-step" data-node-id={n.id} key={n.id}>
+      <div className="n08-step-caption"><span>{roles[n.role]}</span><strong>{n.goal}</strong></div>
+      {before.map(renderBlock)}{done && after(n)}
+    </div>
+  }
+  const figure = section.figures[0]
+  function originalFigure() {
+    return <figure className="n08-figure"><img src={import.meta.env.BASE_URL + figure.src.replace(/^\//, '')} alt={figure.alt} />
+      <figcaption>{figure.caption}</figcaption></figure>
+  }
+  return <div ref={flow} className="textbook-reading-flow n08-reading n08-solution-reading" data-n08-revision="5" data-typeset-theme="true" data-testid="textbook-reading-flow" tabIndex={-1}>
+    <p className="n08-version-link"><Link to={'/learning/textbook/' + unit.unitId + '?version=4'}>以前のN08を見比べる</Link></p>
+    <div className="math-textbook-reading-controls"><span>{text('今の段階', '当前阶段')} {stageIndex + 1} / {data.stages.length}</span>
+      {stageIndex > 0 && <button type="button" data-testid="n08-history-toggle" onClick={() => setHistory(x => !x)}>{history ? text('履歴を閉じる', '收起记录') : text('前の段階を見る', '查看之前的阶段')}</button>}
+    </div>
+    {history && <div className="n08-history"><button type="button" onClick={() => setExpandAll(x => !x)}>{expandAll ? text('全文を閉じる', '收起全文') : text('全文を開く', '展开全文')}</button>
+      {data.stages.slice(0, stageIndex).map((s, i) => {
+        const previous = data.nodes.filter(n => n.stageId === s.id)
+        return <section className="first-theme-recorded-results" key={s.id} data-testid={'recorded-results-' + s.id}>
+          <h3>{i + 1}. {s.title}</h3>{result(previous.at(-1)!)}
+          <details open={expandAll || undefined}><summary>{text('全文を見る', '查看全文')}</summary>{i === 0 && originalFigure()}{previous.map(n => renderNode(n, true))}</details>
+        </section>
+      })}
+    </div>}
+    <section className="math-textbook-stage math-textbook-stage--current" data-testid={'math-textbook-stage-' + stage.id}>
+      <div className="n08-source-question" data-testid="n08-source-question" data-problem-id={problem.id}>
+        <strong>今解いている問題</strong><TypesetFormula source={problem.root} sourceId={problem.id + '-root'} unitId={unit.unitId} />
+        <p>{problem.goal}</p>{'givens' in problem && problem.givens && <p>与えられた値：<TypesetInlineMath latex={problem.givens} sourceId={problem.id + '-given'} unitId={unit.unitId} /></p>}
+        {'milestones' in problem && problem.milestones && <ol className="n08-problem-milestones">{problem.milestones.map((m, i) => <li key={m} aria-current={problem.stages.indexOf(stage.id) === i ? 'step' : undefined}>{m}</li>)}</ol>}
+      </div>
+      <header className="math-textbook-stage-active-title"><strong>{stage.title}</strong><small>{stageIndex + 1} / {data.stages.length}</small></header>
+      {stageIndex === 0 && originalFigure()}
+      {stageIndex > 0 && stageIndex < 4 && <details><summary>元の数直線を見る</summary>{originalFigure()}</details>}
+      {priorProblemNodes.length > 0 && <details className="n08-problem-record" open data-testid="n08-problem-record"><summary>この問題でここまで分かったこと</summary>{priorProblemNodes.map(n => {
+        const compiled = data.semantic.nodes.find(x => x.id === n.id)!
+        const formulas = [...compiled.before.filter(b => b.id === 'n08-r5-root-square-given-0'), ...compiled.after].filter(b => b.type === 'formula')
+        return formulas.length ? <div key={n.id} data-result-source={n.resultId}><strong>{n.goal}</strong>{formulas.map(renderBlock)}</div> : null
+      })}</details>}
+      {known.length > 0 && <aside className="math-textbook-stage-references" data-testid="math-textbook-stage-references"><strong>{text('使う条件・前の結果', '需要的条件与之前的结果')}</strong>{known.map(result)}</aside>}
+      {stageNodes.filter(n => data.nodes.indexOf(n) <= frontier).map(n => renderNode(n))}
+      {complete && stageIndex < data.stages.length - 1 && <button type="button" className="math-textbook-next-stage" data-testid="math-textbook-next-stage" onClick={() => {
+        setCursor(stageIndex + 1); setActiveId(null); setHistory(false); setExpandAll(false)
+        requestAnimationFrame(() => { flow.current?.focus({ preventScroll: true }); flow.current?.scrollIntoView({ block: 'start' }) })
+      }}>{text('次へ', '下一步')}</button>}
+      {first < 0 && stageIndex === data.stages.length - 1 && <p data-testid="n08-complete">{text('ここまでの学習を終えました。', '已完成本节学习。')}</p>}
+    </section>
+  </div>
+}

@@ -1,0 +1,9 @@
+.n08-solution-reading .n08-choice-rows { display: grid; gap: .55rem; text-align: left; }
+.n08-solution-reading .n08-source-question { margin-block-end: 1.25rem; }
+.n08-solution-reading .n08-source-question p { margin-block: .6rem; }
+.n08-solution-reading .n08-problem-milestones { display: grid; gap: .4rem; padding-inline-start: 1.5rem; font-size: .9em; }
+.n08-solution-reading .n08-problem-milestones [aria-current="step"] { font-weight: 700; }
+.n08-solution-reading .n08-problem-record { border-inline-start: 3px solid #94adbc; padding: .75rem 1rem; margin-block: 1rem 1.5rem; background: #f4f7f8; }
+.n08-solution-reading .n08-problem-record summary { cursor: pointer; font-weight: 700; margin-block-end: .7rem; }
+.n08-solution-reading .n08-problem-record > div { padding-block: .6rem; }
+.n08-solution-reading .n08-problem-record > div > strong { font-size: .9em; }

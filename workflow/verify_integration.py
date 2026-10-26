@@ -9,6 +9,7 @@ from capabilities import run_capability
 from requests import pending
 from store import digest
 from views import render
+from team import default_policy
 
 
 def write(path,value):
@@ -33,7 +34,7 @@ def verify(root,out):
     with tempfile.TemporaryDirectory() as temp:
         source='tools/textbook/fixtures/n07-source-index.json';rule='work/items/W-GOV-010-learning-production-workflow/integration/P004_INTEGRATION_DESIGN.md'
         sha=subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip()
-        plan=normalized({'work_id':'P004-READ-ONLY-PROBE','workflow_version':'production/2','profile':'material','command':'CMD-WORK-001','subject':'math','mode':'textbook','source_sha':sha,'source_manifest':manifest(root,[source]),'rules':manifest(root,[rule]),'proposal':{'id':'P004-adapter-probe','hash':manifest(root,[rule])[rule]},'scope':{'paths':['workflow/'],'preserve':[]},'blocks':[{'id':'metadata','sources':[source],'release_unit':'probe'}],'simulation':False})
+        plan=normalized({'work_id':'P004-READ-ONLY-PROBE','agent_team':default_policy(),'workflow_version':'production/2','profile':'material','command':'CMD-WORK-001','subject':'math','mode':'textbook','source_sha':sha,'source_manifest':manifest(root,[source]),'rules':manifest(root,[rule]),'proposal':{'id':'P004-adapter-probe','hash':manifest(root,[rule])[rule]},'scope':{'paths':['workflow/'],'preserve':[]},'blocks':[{'id':'metadata','sources':[source],'release_unit':'probe'}],'simulation':False})
         rt=Runtime(Path(temp)/'real',root);rt.open(plan);nodes=instantiate(plan);receipts={}
         receipts['source']=run_capability(rt,plan['work_id'],nodes['R01_CAPTURE@metadata'],'source.fixed',{})
         receipts['identity']=run_capability(rt,plan['work_id'],nodes['R02_CAUSE@metadata'],'math.verify',{'kind':'polynomial','left':'(10-1)*x','right':'9*x'})

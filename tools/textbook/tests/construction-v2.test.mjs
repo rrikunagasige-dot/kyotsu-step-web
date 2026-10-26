@@ -16,3 +16,14 @@ test('rendered root comparison preserves exact radical from typed assertion',()=
 
 test('terminal records bind explicit root fact and case pair; never fuse first/last facts',async()=>{const {validateTransformationV3}=await import('../transformation/v3.mjs');const ir=JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/n08Revision6.json'));assert.equal(validateTransformationV3(ir,made.transformationPlan,{verifyMath:false}).status,'PASS');const wrong=structuredClone(made.transformationPlan);wrong.nodeDesign.find(n=>n.nodeId==='n08-05').terminalRecord.formulas[0].left=[{type:'math',latex:'5'}];assert.equal(validateTransformationV3(ir,wrong,{verifyMath:false}).status,'FAIL');const wrongCase=structuredClone(made.transformationPlan);wrongCase.nodeDesign.find(n=>n.nodeId==='n08-q11-positive').terminalRecord.formulas[0].left=[{type:'math',latex:'-a'}];assert.equal(validateTransformationV3(ir,wrongCase,{verifyMath:false}).status,'FAIL')});
 test('interaction plan v3 enumerates30 author decisions and42 candidates withoutAI acceptance',async()=>{const {operate}=await import('../operations.mjs');const ir=JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/n08Revision6.json'));const out=operate('interaction-plan',{ir,transformationPlan:made.transformationPlan});assert.equal(out.status,'PASS');assert.equal(out.decisions.length,30);assert.equal(out.candidates.length,42);assert.equal(out.automaticAcceptance,false);assert.equal(out.aiReviewStatus,'NOT_REVIEWED')});
+
+
+test('every prose lead separates math commands into typed rendered math',()=>{
+ for(const n of made.presentation.nodeDesign)for(const part of n.leadParts){
+  if(part.type==='text')assert.equal(part.text.includes('\\'),false,n.nodeId+' unrendered command');
+  if(part.type==='math')assert.equal(part.latex.includes(String.fromCharCode(92,92)),false,n.nodeId+' doubled command');
+  if(part.type==='math')assert.doesNotThrow(()=>katex.renderToString(part.latex,{throwOnError:true}),n.nodeId+' '+part.latex);
+ }
+ const lead=made.presentation.nodeDesign.find(n=>n.nodeId==='n08-r5-q06-operation').leadParts;
+ assert.ok(lead.some(p=>p.type==='math'&&p.latex.includes('\\sqrt5-3')));
+});

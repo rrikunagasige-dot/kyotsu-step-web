@@ -125,3 +125,9 @@ describe('r7 reader behavior (not geometry QA)', () => {
     expect(view.container.querySelector('.first-theme-recorded-results')).toBeTruthy()
   })
 })
+
+for (const nodeId of ['n08-r5-q06-operation','n08-r5-q08-operation']) it('keeps the same-operation reason in the main flow: '+nodeId,()=>{
+ const view=mountAt(nodeId);const notes=[...view.container.querySelectorAll('[data-prose-role="essential-note"]')].filter(n=>!n.closest('details'));
+ expect(notes.some(n=>n.textContent?.includes('両辺'))).toBe(true);
+ expect(notes.some(n=>n.querySelector('.katex'))).toBe(true);
+})

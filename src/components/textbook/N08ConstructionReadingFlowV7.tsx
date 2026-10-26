@@ -276,7 +276,7 @@ export function N08ConstructionReadingFlowV7({ unit, section, progress, onSummar
     const currentId = view.rows.find(r => r.current)?.current?.id
     const currentNode = data.nodes.find(n => n.interaction === currentId), v2 = currentId && findV2(currentId)
     const active = v2 ? v2View(v2) : null
-    for (const nodeId of design.sourceNodeIds) { const firstRow = view.rows.find(r => r.sourceNodeId === nodeId); if (!firstRow) continue; const lead = designFor(nodeId)?.leadParts; if (lead && firstRow.id.endsWith('-factor')) firstRow.before = <p className="axis-note" data-prose-role="essential-note">{semantic(lead)}</p> }
+    for (const nodeId of design.sourceNodeIds) { const firstRow = view.rows.find(r => r.sourceNodeId === nodeId); if (!firstRow) continue; const lead = designFor(nodeId)?.leadParts; if (lead && (firstRow.id.endsWith('-factor') || ['n08-r5-q06-operation','n08-r5-q08-operation'].includes(nodeId))) firstRow.before = <p className="axis-note" data-prose-role="essential-note">{semantic(lead)}</p> }
     return <div className="construction-reading-group" key={id} data-node-id={view.rows[0].sourceNodeId}>
       <ConstructionEquationGroup id={id} number={view.number} rows={view.rows} plan={planForNodes(id, [...design.boundaryNodeIds ?? [], ...design.sourceNodeIds], design.rows.map(r => r.masked))} renderParts={parts} visibleState={{ rows: view.rows.map(r => ({ id: r.id, sourceNodeId: r.sourceNodeId, formula: r.formula })), ...(active ? { currentPartId: active.currentPartId } : {}) }} />
       {currentId && <p className="construction-active-prompt" data-prose-role="active-prompt">{active ? active.parts.find(p => p.id === active.currentPartId)?.prompt : findConstruction(currentId)?.activePrompt ?? currentNode?.goal}</p>}

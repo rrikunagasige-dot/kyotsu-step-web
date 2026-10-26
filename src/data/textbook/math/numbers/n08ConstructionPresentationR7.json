@@ -3,10 +3,10 @@
   "unitId": "math-numbers-expressions-n08",
   "irHash": "0abf54fc442aaa80894f41c15210cd6e25d7ebc6038389574324894dbedd3ea6",
   "baseIRHash": "0abf54fc442aaa80894f41c15210cd6e25d7ebc6038389574324894dbedd3ea6",
-  "planHash": "9b0655d775ca6dd6404e7a5777af0e284e315c7bd465bdad470f61141a18b01d",
+  "planHash": "3189092dec720125a43541dcf1c6d08725ff6b7619d4eb95312ac7ab8c64687c",
   "constructionDesignHash": "cff9d0ca0aff9784904094221b05feffc98d48c6ef108a995741143745ea107c",
-  "layoutDesignHash": "0d1d0a6faa515b982f5146fa95df89c459338a7016117ad4057b99794dfba8c7",
-  "learnerCopyHash": "4e167bb5094d7f1167c0749b15ac274a478f0668540aec02cddb3bea3f39d019",
+  "layoutDesignHash": "093901deae13eced76148965d09b0662a416a2d043247822d4c6b11fd4c99f7f",
+  "learnerCopyHash": "3d21f3c40ea44cb86c5fd0c8a732cf6cbcac969205b100c593bb60453cc34156",
   "constructionPlan": {
     "schemaVersion": "construction-plan/2",
     "unitId": "math-numbers-expressions-n08",
@@ -4024,7 +4024,23 @@
             "content": [
               {
                 "type": "text",
-                "text": "元の絶対値の中身は \\sqrt5-3 です。先ほど得た \\sqrt5<3 を、この中身と比べられる形に変えます。両辺から同じ数を引く式を作ります。"
+                "text": "元の絶対値の中身は "
+              },
+              {
+                "type": "math",
+                "latex": "\\sqrt5-3"
+              },
+              {
+                "type": "text",
+                "text": " です。先ほど得た "
+              },
+              {
+                "type": "math",
+                "latex": "\\sqrt5<3"
+              },
+              {
+                "type": "text",
+                "text": " を、この中身と比べられる形に変えます。両辺から同じ数を引く式を作ります。"
               }
             ],
             "visibleAfter": [
@@ -4207,8 +4223,12 @@
             "role": "group-lead",
             "content": [
               {
+                "type": "math",
+                "latex": "-\\sqrt5+3"
+              },
+              {
                 "type": "text",
-                "text": "-\\sqrt5+3 は、加法の交換法則で項の順を変えられます。絶対値も括弧もない形を、元の問題の答えにします。"
+                "text": " は、加法の交換法則で項の順を変えられます。絶対値も括弧もない形を、元の問題の答えにします。"
               }
             ],
             "visibleAfter": [
@@ -4276,7 +4296,43 @@
             "content": [
               {
                 "type": "text",
-                "text": "次は |3-\\pi| を絶対値記号のない式で表します。与えられた \\pi=3.14159\\ldots を使い、まず中身の符号を決めるために 3 と \\pi を比べます。3\\ \\ \\pi"
+                "text": "次は "
+              },
+              {
+                "type": "math",
+                "latex": "|3-\\pi|"
+              },
+              {
+                "type": "text",
+                "text": " を絶対値記号のない式で表します。与えられた "
+              },
+              {
+                "type": "math",
+                "latex": "\\pi=3.14159\\ldots"
+              },
+              {
+                "type": "text",
+                "text": " を使い、まず中身の符号を決めるために "
+              },
+              {
+                "type": "math",
+                "latex": "3"
+              },
+              {
+                "type": "text",
+                "text": " と "
+              },
+              {
+                "type": "math",
+                "latex": "\\pi"
+              },
+              {
+                "type": "text",
+                "text": " を比べます。"
+              },
+              {
+                "type": "math",
+                "latex": "3\\ \\ \\pi"
               }
             ],
             "visibleAfter": [],
@@ -4290,7 +4346,23 @@
             "content": [
               {
                 "type": "text",
-                "text": "今回調べたい中身は 3-\\pi です。3<\\pi の両辺へ同じ操作を行い、左辺にこの中身が現れる式を作ります。"
+                "text": "今回調べたい中身は "
+              },
+              {
+                "type": "math",
+                "latex": "3-\\pi"
+              },
+              {
+                "type": "text",
+                "text": " です。"
+              },
+              {
+                "type": "math",
+                "latex": "3<\\pi"
+              },
+              {
+                "type": "text",
+                "text": " の両辺へ同じ操作を行い、左辺にこの中身が現れる式を作ります。"
               }
             ],
             "visibleAfter": [
@@ -4504,7 +4576,15 @@
             "content": [
               {
                 "type": "text",
-                "text": "図の右側にある 2.3 の点を見ます。原点の座標は "
+                "text": "図の右側にある "
+              },
+              {
+                "type": "math",
+                "latex": "2.3"
+              },
+              {
+                "type": "text",
+                "text": " の点を見ます。原点の座標は "
               },
               {
                 "type": "math",
@@ -4558,8 +4638,12 @@
             "role": "group-lead",
             "content": [
               {
+                "type": "math",
+                "latex": "-5"
+              },
+              {
                 "type": "text",
-                "text": "-5 の点は原点の左側です。右側は "
+                "text": " の点は原点の左側です。右側は "
               },
               {
                 "type": "math",
@@ -4567,15 +4651,23 @@
               },
               {
                 "type": "text",
-                "text": "、左側は -5 なので、距離は "
+                "text": "、左側は "
               },
               {
                 "type": "math",
-                "latex": "0"
+                "latex": "-5"
               },
               {
                 "type": "text",
-                "text": "-(-5) と表せます。"
+                "text": " なので、距離は "
+              },
+              {
+                "type": "math",
+                "latex": "0-(-5)"
+              },
+              {
+                "type": "text",
+                "text": " と表せます。"
               }
             ],
             "visibleAfter": [
@@ -4668,15 +4760,15 @@
               },
               {
                 "type": "text",
-                "text": " を表す点と原点との距離を、絶対値といい、|"
+                "text": " を表す点と原点との距離を、絶対値といい、"
               },
               {
                 "type": "math",
-                "latex": "a"
+                "latex": "|a|"
               },
               {
                 "type": "text",
-                "text": "| と書きます。縦の二本の線は、中にある式全体について距離を取る記号です。"
+                "text": " と書きます。縦の二本の線は、中にある式全体について距離を取る記号です。"
               }
             ],
             "visibleAfter": [
@@ -4735,7 +4827,7 @@
               },
               {
                 "type": "math",
-                "latex": "a\\ge0"
+                "latex": "a\\ge 0"
               },
               {
                 "type": "text",
@@ -5001,11 +5093,11 @@
             "content": [
               {
                 "type": "text",
-                "text": "いまの式 -"
+                "text": "いまの式 "
               },
               {
                 "type": "math",
-                "latex": "a"
+                "latex": "-a"
               },
               {
                 "type": "text",
@@ -5017,7 +5109,15 @@
               },
               {
                 "type": "text",
-                "text": " へ -5 を入れます。元からある負号と代入する負の数を区別するため、代入する数を括弧で囲みます。"
+                "text": " へ "
+              },
+              {
+                "type": "math",
+                "latex": "-5"
+              },
+              {
+                "type": "text",
+                "text": " を入れます。元からある負号と代入する負の数を区別するため、代入する数を括弧で囲みます。"
               }
             ],
             "visibleAfter": [
@@ -5070,7 +5170,15 @@
             "content": [
               {
                 "type": "text",
-                "text": "負の数 -5 と符号が反対の数を求めます。式と値を等号でつないで、左側の点の距離と照合します。"
+                "text": "負の数 "
+              },
+              {
+                "type": "math",
+                "latex": "-5"
+              },
+              {
+                "type": "text",
+                "text": " と符号が反対の数を求めます。式と値を等号でつないで、左側の点の距離と照合します。"
               }
             ],
             "visibleAfter": [
@@ -5166,7 +5274,63 @@
             "content": [
               {
                 "type": "text",
-                "text": "求めたいのは |\\sqrt5-3| を絶対値記号のない式で表すことです。まず中身の符号を決めるため、\\sqrt5 と 3 を比べます。\\sqrt5 は正で、二乗すると 5 になる数です。二つの数はともに正なので、二乗した値を比べて元の数の大小を決められます。はじめに \\sqrt5 の二乗を確かめ、次に 3 の二乗を計算します。"
+                "text": "求めたいのは "
+              },
+              {
+                "type": "math",
+                "latex": "|\\sqrt5-3|"
+              },
+              {
+                "type": "text",
+                "text": " を絶対値記号のない式で表すことです。まず中身の符号を決めるため、"
+              },
+              {
+                "type": "math",
+                "latex": "\\sqrt5"
+              },
+              {
+                "type": "text",
+                "text": " と "
+              },
+              {
+                "type": "math",
+                "latex": "3"
+              },
+              {
+                "type": "text",
+                "text": " を比べます。"
+              },
+              {
+                "type": "math",
+                "latex": "\\sqrt5"
+              },
+              {
+                "type": "text",
+                "text": " は正で、二乗すると "
+              },
+              {
+                "type": "math",
+                "latex": "5"
+              },
+              {
+                "type": "text",
+                "text": " になる数です。二つの数はともに正なので、二乗した値を比べて元の数の大小を決められます。はじめに "
+              },
+              {
+                "type": "math",
+                "latex": "\\sqrt5"
+              },
+              {
+                "type": "text",
+                "text": " の二乗を確かめ、次に "
+              },
+              {
+                "type": "math",
+                "latex": "3"
+              },
+              {
+                "type": "text",
+                "text": " の二乗を計算します。"
               }
             ],
             "visibleAfter": [
@@ -5201,7 +5365,27 @@
             "content": [
               {
                 "type": "text",
-                "text": "両方とも正なので、二乗した値の比較を元の二数の比較に戻せます。まず 5 と 9 の間の不等号を選びます。5\\ \\ 9"
+                "text": "両方とも正なので、二乗した値の比較を元の二数の比較に戻せます。まず "
+              },
+              {
+                "type": "math",
+                "latex": "5"
+              },
+              {
+                "type": "text",
+                "text": " と "
+              },
+              {
+                "type": "math",
+                "latex": "9"
+              },
+              {
+                "type": "text",
+                "text": " の間の不等号を選びます。"
+              },
+              {
+                "type": "math",
+                "latex": "5\\ \\ 9"
               }
             ],
             "visibleAfter": [
@@ -5503,19 +5687,11 @@
             "content": [
               {
                 "type": "text",
-                "text": "ここからは性質です。|"
+                "text": "ここからは性質です。"
               },
               {
                 "type": "math",
-                "latex": "a"
-              },
-              {
-                "type": "text",
-                "text": "|="
-              },
-              {
-                "type": "math",
-                "latex": "0"
+                "latex": "|a|=0"
               },
               {
                 "type": "text",
@@ -5584,15 +5760,7 @@
             "content": [
               {
                 "type": "math",
-                "latex": "a"
-              },
-              {
-                "type": "text",
-                "text": "="
-              },
-              {
-                "type": "math",
-                "latex": "0"
+                "latex": "a=0"
               },
               {
                 "type": "text",
@@ -5891,55 +6059,23 @@
             "content": [
               {
                 "type": "math",
-                "latex": "a"
+                "latex": "a=0"
               },
               {
                 "type": "text",
-                "text": "="
+                "text": " の場合は "
               },
               {
                 "type": "math",
-                "latex": "0"
+                "latex": "-a=0"
               },
               {
                 "type": "text",
-                "text": " の場合は -"
+                "text": " です。二点はともに原点なので、"
               },
               {
                 "type": "math",
-                "latex": "a"
-              },
-              {
-                "type": "text",
-                "text": "="
-              },
-              {
-                "type": "math",
-                "latex": "0"
-              },
-              {
-                "type": "text",
-                "text": " です。二点はともに原点なので、|"
-              },
-              {
-                "type": "math",
-                "latex": "a"
-              },
-              {
-                "type": "text",
-                "text": "|=|-"
-              },
-              {
-                "type": "math",
-                "latex": "a"
-              },
-              {
-                "type": "text",
-                "text": "|="
-              },
-              {
-                "type": "math",
-                "latex": "0"
+                "latex": "|a|=|-a|=0"
               },
               {
                 "type": "text",
@@ -6084,7 +6220,7 @@
             "content": [
               {
                 "type": "math",
-                "latex": "a\\ge0"
+                "latex": "a\\ge 0"
               },
               {
                 "type": "text",
@@ -7343,7 +7479,15 @@
       "leadParts": [
         {
           "type": "text",
-          "text": "図の右側にある 2.3 の点を見ます。原点の座標は "
+          "text": "図の右側にある "
+        },
+        {
+          "type": "math",
+          "latex": "2.3"
+        },
+        {
+          "type": "text",
+          "text": " の点を見ます。原点の座標は "
         },
         {
           "type": "math",
@@ -7394,8 +7538,12 @@
       "lead": "-5 の点は原点の左側です。右側は 0、左側は -5 なので、距離は 0-(-5) と表せます。",
       "leadParts": [
         {
+          "type": "math",
+          "latex": "-5"
+        },
+        {
           "type": "text",
-          "text": "-5 の点は原点の左側です。右側は "
+          "text": " の点は原点の左側です。右側は "
         },
         {
           "type": "math",
@@ -7403,15 +7551,23 @@
         },
         {
           "type": "text",
-          "text": "、左側は -5 なので、距離は "
+          "text": "、左側は "
         },
         {
           "type": "math",
-          "latex": "0"
+          "latex": "-5"
         },
         {
           "type": "text",
-          "text": "-(-5) と表せます。"
+          "text": " なので、距離は "
+        },
+        {
+          "type": "math",
+          "latex": "0-(-5)"
+        },
+        {
+          "type": "text",
+          "text": " と表せます。"
         }
       ],
       "prerequisiteNodeIds": [
@@ -7513,15 +7669,15 @@
         },
         {
           "type": "text",
-          "text": " を表す点と原点との距離を、絶対値といい、|"
+          "text": " を表す点と原点との距離を、絶対値といい、"
         },
         {
           "type": "math",
-          "latex": "a"
+          "latex": "|a|"
         },
         {
           "type": "text",
-          "text": "| と書きます。縦の二本の線は、中にある式全体について距離を取る記号です。"
+          "text": " と書きます。縦の二本の線は、中にある式全体について距離を取る記号です。"
         }
       ],
       "prerequisiteNodeIds": [
@@ -7560,7 +7716,7 @@
         },
         {
           "type": "math",
-          "latex": "a\\ge0"
+          "latex": "a\\ge 0"
         },
         {
           "type": "text",
@@ -7835,11 +7991,11 @@
       "leadParts": [
         {
           "type": "text",
-          "text": "いまの式 -"
+          "text": "いまの式 "
         },
         {
           "type": "math",
-          "latex": "a"
+          "latex": "-a"
         },
         {
           "type": "text",
@@ -7851,7 +8007,15 @@
         },
         {
           "type": "text",
-          "text": " へ -5 を入れます。元からある負号と代入する負の数を区別するため、代入する数を括弧で囲みます。"
+          "text": " へ "
+        },
+        {
+          "type": "math",
+          "latex": "-5"
+        },
+        {
+          "type": "text",
+          "text": " を入れます。元からある負号と代入する負の数を区別するため、代入する数を括弧で囲みます。"
         }
       ],
       "prerequisiteNodeIds": [
@@ -7904,7 +8068,15 @@
       "leadParts": [
         {
           "type": "text",
-          "text": "負の数 -5 と符号が反対の数を求めます。式と値を等号でつないで、左側の点の距離と照合します。"
+          "text": "負の数 "
+        },
+        {
+          "type": "math",
+          "latex": "-5"
+        },
+        {
+          "type": "text",
+          "text": " と符号が反対の数を求めます。式と値を等号でつないで、左側の点の距離と照合します。"
         }
       ],
       "prerequisiteNodeIds": [
@@ -8020,7 +8192,63 @@
       "leadParts": [
         {
           "type": "text",
-          "text": "求めたいのは |\\sqrt5-3| を絶対値記号のない式で表すことです。まず中身の符号を決めるため、\\sqrt5 と 3 を比べます。\\sqrt5 は正で、二乗すると 5 になる数です。二つの数はともに正なので、二乗した値を比べて元の数の大小を決められます。はじめに \\sqrt5 の二乗を確かめ、次に 3 の二乗を計算します。"
+          "text": "求めたいのは "
+        },
+        {
+          "type": "math",
+          "latex": "|\\sqrt5-3|"
+        },
+        {
+          "type": "text",
+          "text": " を絶対値記号のない式で表すことです。まず中身の符号を決めるため、"
+        },
+        {
+          "type": "math",
+          "latex": "\\sqrt5"
+        },
+        {
+          "type": "text",
+          "text": " と "
+        },
+        {
+          "type": "math",
+          "latex": "3"
+        },
+        {
+          "type": "text",
+          "text": " を比べます。"
+        },
+        {
+          "type": "math",
+          "latex": "\\sqrt5"
+        },
+        {
+          "type": "text",
+          "text": " は正で、二乗すると "
+        },
+        {
+          "type": "math",
+          "latex": "5"
+        },
+        {
+          "type": "text",
+          "text": " になる数です。二つの数はともに正なので、二乗した値を比べて元の数の大小を決められます。はじめに "
+        },
+        {
+          "type": "math",
+          "latex": "\\sqrt5"
+        },
+        {
+          "type": "text",
+          "text": " の二乗を確かめ、次に "
+        },
+        {
+          "type": "math",
+          "latex": "3"
+        },
+        {
+          "type": "text",
+          "text": " の二乗を計算します。"
         }
       ],
       "prerequisiteNodeIds": [
@@ -8071,7 +8299,27 @@
       "leadParts": [
         {
           "type": "text",
-          "text": "両方とも正なので、二乗した値の比較を元の二数の比較に戻せます。まず 5 と 9 の間の不等号を選びます。5\\ \\ 9"
+          "text": "両方とも正なので、二乗した値の比較を元の二数の比較に戻せます。まず "
+        },
+        {
+          "type": "math",
+          "latex": "5"
+        },
+        {
+          "type": "text",
+          "text": " と "
+        },
+        {
+          "type": "math",
+          "latex": "9"
+        },
+        {
+          "type": "text",
+          "text": " の間の不等号を選びます。"
+        },
+        {
+          "type": "math",
+          "latex": "5\\ \\ 9"
         }
       ],
       "prerequisiteNodeIds": [
@@ -8183,7 +8431,23 @@
       "leadParts": [
         {
           "type": "text",
-          "text": "元の絶対値の中身は \\sqrt5-3 です。先ほど得た \\sqrt5<3 を、この中身と比べられる形に変えます。両辺から同じ数を引く式を作ります。"
+          "text": "元の絶対値の中身は "
+        },
+        {
+          "type": "math",
+          "latex": "\\sqrt5-3"
+        },
+        {
+          "type": "text",
+          "text": " です。先ほど得た "
+        },
+        {
+          "type": "math",
+          "latex": "\\sqrt5<3"
+        },
+        {
+          "type": "text",
+          "text": " を、この中身と比べられる形に変えます。両辺から同じ数を引く式を作ります。"
         }
       ],
       "prerequisiteNodeIds": [
@@ -8546,8 +8810,12 @@
       "lead": "-\\sqrt5+3 は、加法の交換法則で項の順を変えられます。絶対値も括弧もない形を、元の問題の答えにします。",
       "leadParts": [
         {
+          "type": "math",
+          "latex": "-\\sqrt5+3"
+        },
+        {
           "type": "text",
-          "text": "-\\sqrt5+3 は、加法の交換法則で項の順を変えられます。絶対値も括弧もない形を、元の問題の答えにします。"
+          "text": " は、加法の交換法則で項の順を変えられます。絶対値も括弧もない形を、元の問題の答えにします。"
         }
       ],
       "prerequisiteNodeIds": [
@@ -8596,7 +8864,43 @@
       "leadParts": [
         {
           "type": "text",
-          "text": "次は |3-\\pi| を絶対値記号のない式で表します。与えられた \\pi=3.14159\\ldots を使い、まず中身の符号を決めるために 3 と \\pi を比べます。3\\ \\ \\pi"
+          "text": "次は "
+        },
+        {
+          "type": "math",
+          "latex": "|3-\\pi|"
+        },
+        {
+          "type": "text",
+          "text": " を絶対値記号のない式で表します。与えられた "
+        },
+        {
+          "type": "math",
+          "latex": "\\pi=3.14159\\ldots"
+        },
+        {
+          "type": "text",
+          "text": " を使い、まず中身の符号を決めるために "
+        },
+        {
+          "type": "math",
+          "latex": "3"
+        },
+        {
+          "type": "text",
+          "text": " と "
+        },
+        {
+          "type": "math",
+          "latex": "\\pi"
+        },
+        {
+          "type": "text",
+          "text": " を比べます。"
+        },
+        {
+          "type": "math",
+          "latex": "3\\ \\ \\pi"
         }
       ],
       "prerequisiteNodeIds": [],
@@ -8643,7 +8947,23 @@
       "leadParts": [
         {
           "type": "text",
-          "text": "今回調べたい中身は 3-\\pi です。3<\\pi の両辺へ同じ操作を行い、左辺にこの中身が現れる式を作ります。"
+          "text": "今回調べたい中身は "
+        },
+        {
+          "type": "math",
+          "latex": "3-\\pi"
+        },
+        {
+          "type": "text",
+          "text": " です。"
+        },
+        {
+          "type": "math",
+          "latex": "3<\\pi"
+        },
+        {
+          "type": "text",
+          "text": " の両辺へ同じ操作を行い、左辺にこの中身が現れる式を作ります。"
         }
       ],
       "prerequisiteNodeIds": [
@@ -9014,19 +9334,11 @@
       "leadParts": [
         {
           "type": "text",
-          "text": "ここからは性質です。|"
+          "text": "ここからは性質です。"
         },
         {
           "type": "math",
-          "latex": "a"
-        },
-        {
-          "type": "text",
-          "text": "|="
-        },
-        {
-          "type": "math",
-          "latex": "0"
+          "latex": "|a|=0"
         },
         {
           "type": "text",
@@ -9095,15 +9407,7 @@
       "leadParts": [
         {
           "type": "math",
-          "latex": "a"
-        },
-        {
-          "type": "text",
-          "text": "="
-        },
-        {
-          "type": "math",
-          "latex": "0"
+          "latex": "a=0"
         },
         {
           "type": "text",
@@ -9484,55 +9788,23 @@
       "leadParts": [
         {
           "type": "math",
-          "latex": "a"
+          "latex": "a=0"
         },
         {
           "type": "text",
-          "text": "="
+          "text": " の場合は "
         },
         {
           "type": "math",
-          "latex": "0"
+          "latex": "-a=0"
         },
         {
           "type": "text",
-          "text": " の場合は -"
+          "text": " です。二点はともに原点なので、"
         },
         {
           "type": "math",
-          "latex": "a"
-        },
-        {
-          "type": "text",
-          "text": "="
-        },
-        {
-          "type": "math",
-          "latex": "0"
-        },
-        {
-          "type": "text",
-          "text": " です。二点はともに原点なので、|"
-        },
-        {
-          "type": "math",
-          "latex": "a"
-        },
-        {
-          "type": "text",
-          "text": "|=|-"
-        },
-        {
-          "type": "math",
-          "latex": "a"
-        },
-        {
-          "type": "text",
-          "text": "|="
-        },
-        {
-          "type": "math",
-          "latex": "0"
+          "latex": "|a|=|-a|=0"
         },
         {
           "type": "text",
@@ -9668,7 +9940,7 @@
       "leadParts": [
         {
           "type": "math",
-          "latex": "a\\ge0"
+          "latex": "a\\ge 0"
         },
         {
           "type": "text",
@@ -15132,5 +15404,5 @@
     }
   ],
   "automaticAcceptance": false,
-  "compiledPresentationHash": "5621bae53c522dd2a041b94335f977c49ec471131eb4fc9bd691f526c0753e30"
+  "compiledPresentationHash": "2b7d052dbefe9065731f802e3d48a160e6dfc505f04ea7ddd9318fdfed543f74"
 }

@@ -5,8 +5,16 @@ import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} fro
 import {hash} from '../util.mjs';import {validateInteractionV2} from '../interaction/construction-v2-runtime.mjs';
 const base=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../../..');
 function meaning(item){if(item.assembly)return {parts:item.parts.map(p=>({id:p.id,role:p.role,expected:p.expected,choices:p.choices.map(c=>({value:c.value,expression:c.expression})).sort((a,b)=>a.value.localeCompare(b.value))})),assembly:item.assembly,expectedStatement:item.expectedStatement,gradingPurpose:item.gradingPurpose};return {answer:item.answer,acceptedAnswers:[...item.acceptedAnswers].sort(),choices:[...item.choices].sort(),purpose:item.purpose,answerType:item.answerType}}
-const leadMath={'a−0':'a-0','a>0':'a>0','a<0':'a<0','a≥0':'a\\ge0','|a|=−a':'|a|=-a','|a|=a':'|a|=a','−a':'-a','u':'u','a':'a','0':'0'};
-function typedLead(text=''){const out=[];let offset=0;while(offset<text.length){let best=null;for(const key of Object.keys(leadMath)){const index=text.indexOf(key,offset);if(index>=0&&(!best||index<best.index||index===best.index&&key.length>best.key.length))best={index,key}}if(!best){out.push({type:'text',text:text.slice(offset)});break}if(best.index>offset)out.push({type:'text',text:text.slice(offset,best.index)});out.push({type:'math',latex:leadMath[best.key]});offset=best.index+best.key.length}return out}
+export function typedLead(text='') {
+ const out=[];let at=0;
+ const runs=/[A-Za-z0-9\\{}()\[\]|+\-−=<>≥≤^_.]+(?:[ \t]+[A-Za-z0-9\\{}()\[\]|+\-−=<>≥≤^_.]+)*/g;
+ for(const match of text.matchAll(runs)) {
+  if(match.index>at)out.push({type:'text',text:text.slice(at,match.index)});
+  out.push({type:'math',latex:normalizeAuthoringTeX(match[0]).replace(/−/g,'-').replace(/≥/g,'\\ge ').replace(/≤/g,'\\le ')});at=match.index+match[0].length;
+ }
+ if(at<text.length)out.push({type:'text',text:text.slice(at)});
+ return out;
+}
 const expr=value=>{if(/^-?\d+$/.test(value))return {kind:'rational',n:value,d:'1'};if(value==='a')return {kind:'symbol',name:'a'};if(value==='-a')return {kind:'multiply',args:[expr('-1'),expr('a')]};if(value==='a^2')return {kind:'power',base:expr('a'),exponent:2};if(value==='\\pi')return {kind:'constant',name:'pi'};if(value==='-\\pi')return {kind:'multiply',args:[expr('-1'),expr('\\pi')]};throw Error('CHOICE_AST_UNSUPPORTED '+value)};
 function normalizeAuthoringTeX(source){return source.replace(/\\{2}(?=[A-Za-z])/g,'\\')}
 function formulaTemplate(template,parts){template=normalizeAuthoringTeX(template);const byKey=new Map(parts.map(p=>[p.key,p]));let tokens=[],at=0;for(const match of template.matchAll(/\{(mirror:)?([a-zA-Z][a-zA-Z0-9-]*)\}/g)){if(match.index>at)tokens.push({type:'math',latex:template.slice(at,match.index)});const p=byKey.get(match[2]);if(!p)throw Error('UNBOUND_AUTHORING_KEY');tokens.push(match[1]?{type:'mirror',partId:p.id,context:'factor'}:{type:'slot',id:p.id,partId:p.id,interactionRef:p.parentId,role:p.role});at=match.index+match[0].length}if(at<template.length)tokens.push({type:'math',latex:template.slice(at)});

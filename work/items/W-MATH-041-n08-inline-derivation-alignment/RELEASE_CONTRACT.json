@@ -22,11 +22,11 @@
     "src/data/textbook/math/numbers/n11Transformation.json": "c1cbfd5c5e4b7ee79baf40cd54a9170c4cae5286fb04e940c5f50e92bc3f5197",
     "pnpm-lock.yaml": "ece56e44c910c8282e1ebd41b5cfe4402627721c3a48e56651e41e571b03d006"
   },
-  "planHash": "9b0655d775ca6dd6404e7a5777af0e284e315c7bd465bdad470f61141a18b01d",
+  "planHash": "3189092dec720125a43541dcf1c6d08725ff6b7619d4eb95312ac7ab8c64687c",
   "constructionDesignHash": "cff9d0ca0aff9784904094221b05feffc98d48c6ef108a995741143745ea107c",
-  "layoutDesignHash": "0d1d0a6faa515b982f5146fa95df89c459338a7016117ad4057b99794dfba8c7",
-  "learnerCopyHash": "4e167bb5094d7f1167c0749b15ac274a478f0668540aec02cddb3bea3f39d019",
-  "compiledPresentationHash": "5621bae53c522dd2a041b94335f977c49ec471131eb4fc9bd691f526c0753e30",
+  "layoutDesignHash": "093901deae13eced76148965d09b0662a416a2d043247822d4c6b11fd4c99f7f",
+  "learnerCopyHash": "3d21f3c40ea44cb86c5fd0c8a732cf6cbcac969205b100c593bb60453cc34156",
+  "compiledPresentationHash": "2b7d052dbefe9065731f802e3d48a160e6dfc505f04ea7ddd9318fdfed543f74",
   "baseIRHash": "0abf54fc442aaa80894f41c15210cd6e25d7ebc6038389574324894dbedd3ea6",
   "inventory": {
     "nodes": 39,

@@ -1,0 +1,15 @@
+{
+  "status": "DESIGN_DOCUMENT_CHECKS_ONLY",
+  "proposalSha256": "c27fd866666af45d35893bac52747ea33b710a4ea4a040ac82be90afacb491ee",
+  "nodesAudited": 39,
+  "groups": 4,
+  "mathNodesGrouped": 11,
+  "meaningNodesPreservedWithProseAdjustment": 2,
+  "otherNodesPreserved": 26,
+  "gradingItems": 34,
+  "stages": 12,
+  "revision": 5,
+  "learnerSourceModified": false,
+  "implementationApproved": false,
+  "newMathGroupVerification": "Required after explicit source/AST mapping; existing38segment baseline available, not passed off as a new compiled plan."
+}

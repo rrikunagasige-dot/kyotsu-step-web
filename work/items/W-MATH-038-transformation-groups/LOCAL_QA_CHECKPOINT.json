@@ -1,0 +1,11 @@
+{
+  "sourceSHA": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
+  "stage": "G2_AUDIT_PASS",
+  "externalIntent": "W038-n11-pages-aef34919",
+  "next": {
+    "status": "BLOCKED",
+    "reason": "外部操作の成否が未記録。実状態の照合が必要"
+  },
+  "userAccepted": false,
+  "modelFit": false
+}

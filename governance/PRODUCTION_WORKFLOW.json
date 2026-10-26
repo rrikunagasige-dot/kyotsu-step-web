@@ -8,29 +8,30 @@
   "implementation": {
     "repository": "rrikunagasige-dot/kyotsu-step-web",
     "repoId": 1391122224,
-    "sourceSHA": "058c4ea32474b563487292b583f7a01df4f9c4f1",
-    "branch": "work/n07-semantic-repair-proposal-20261025",
+    "sourceSHA": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
+    "branch": "work/transformation-groups-implementation-20261026",
     "entry": "workflow/INTEGRATION_RUNBOOK.md",
-    "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/058c4ea32474b563487292b583f7a01df4f9c4f1/workflow/INTEGRATION_RUNBOOK.md"
+    "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/aef34919e630c3772c8ad4329f0aa01dec63e6fe/workflow/INTEGRATION_RUNBOOK.md"
   },
   "verification": {
-    "runId": 40157340081,
-    "sourceSHA": "058c4ea32474b563487292b583f7a01df4f9c4f1",
+    "runId": 40268196468,
+    "sourceSHA": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
     "conclusion": "success",
-    "workflowTests": 131,
-    "newIntegrationTests": 42,
+    "workflowTests": 139,
     "learnerTests": 620,
+    "mathAndAdversarialTests": 69,
+    "componentTests": 6,
+    "sourceContextTests": 21,
+    "authoringChecks": 39,
     "browserWidths": [
       320,
       390,
       430,
       1440
     ],
-    "additionalRepairWorkflowTests": 9,
-    "authoringChecks": 39,
-    "repairNodeTests": 6,
-    "corpusMLSourceTests": 11,
-    "diagramPanels": 5
+    "N11CorrectPerWidth": 39,
+    "N11WrongPerWidth": 109,
+    "fixtureBrowserCases": 32
   },
   "reviewSurface": "existing-public-app",
   "screenshotApprovalRequired": false,
@@ -38,29 +39,34 @@
   "contentDesignApprovalRequired": true,
   "modelStatus": "OFFLINE_ONLY",
   "newLessonAccepted": false,
-  "protectedAppSource": "fa0eff271a97940fad08d83960ae50faeabc81b9",
-  "adoption": "Approved seven-point N09/N10 repair publicly verified; scoped app acceptance remains pending.",
+  "protectedAppSource": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
+  "adoption": "W038 bounded code and N11 stage05-06 are implemented and public-source verified. G3_FINAL@n11 is user evaluation. W039 N08 all39-node proposal is ready; no N08 learner change or W038 fit.",
   "legacyVersions": [
     "production/1",
     "legacy/1"
   ],
   "repairProposal": "W-MATH-035/P-001",
-  "previousPublishedAppSource": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+  "previousPublishedAppSource": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
   "acceptedFirstTitle": "22bc43ba53fa87bb85e82e18a25db13a5c8a485c",
   "publication": {
-    "runId": 40172534338,
-    "workflowSHA": "3630df565c0f30f770af2238fa34841ca0528df6",
-    "sourceSHA": "fa0eff271a97940fad08d83960ae50faeabc81b9",
-    "status": "success",
+    "status": "verified",
+    "sourceSHA": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
+    "workflowSHA": "d3eb6d75d8a46d34bf59b9b9c8bebd1072ac6feb",
+    "runId": 40269350862,
+    "deploymentStepConclusion": "success",
+    "deploymentRunConclusion": "failure",
+    "verificationRunId": 40270029827,
+    "verificationWorkflowSHA": "2b25e50cb8cf93024c7031020a5aeba94a79b3b7",
+    "verificationConclusion": "success",
+    "harnessRepair": "Await original-image decode; original complete/naturalWidth assertions preserved; same app source",
     "sourceVerified": true,
     "userAccepted": false,
     "units": [
-      "n09",
-      "n10"
+      "n11"
     ],
     "urls": {
-      "n09": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=fa0eff27#/learning/textbook/math-numbers-expressions-n09",
-      "n10": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=fa0eff27#/learning/textbook/math-numbers-expressions-n10"
+      "n11": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=aef34919#/learning/textbook/math-numbers-expressions-n11",
+      "original": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=aef34919#/learning/textbook/math-numbers-expressions-n11?layout=original"
     }
   },
   "metadataGovernanceScope": "Whole-repository Markdown metadata checker is not claimed PASS; immutable approved N08 design and legacy metadata limits are recorded in W-MATH-033/FINDINGS.md. N07 acceptance remains scoped to W-MATH-032.",
@@ -71,23 +77,16 @@
     "sourceSHA": "ea47dd97f7d323267281915e8d9a7bb92a8e7c03"
   },
   "learning": {
-    "trainingRun": true,
-    "evaluatedCases": 11,
-    "positive": 4,
-    "negative": 7,
-    "newPositive": 1,
-    "trainedHeads": {
-      "layout_discomfort": 2
-    },
-    "newOverallHead": "NOT_TRAINABLE_SINGLE_CLASS",
+    "modelStatus": "OFFLINE_ONLY",
+    "modelHash": "0fdba96ef01eca3c857145b755d6f48519ce94addc4fbf8554c4b409438692a5",
+    "catalogHash": "b1e33add46660c201a2d1fc4431f228edc5eaa831baf2a5f9e666da19f088b76",
+    "cases": 15,
+    "negative": 9,
+    "positive": 6,
+    "previousFitPerformed": true,
+    "newFitForW038": false,
     "advisoryEligible": false,
-    "unseenHoldout": false,
-    "modelHash": "e9dcf3543404f99c3756daf5dfe76f69a987aac1aab326374432068400a43d92",
-    "catalog": "work/items/W-MATH-033-n08-absolute-value/LEARNING_CORPUS.json",
-    "model": "work/items/W-MATH-033-n08-absolute-value/MODEL_RESULT.json",
-    "independentFamilies": 3,
-    "sourceSHA": "a442cbe966c074f122907bb7366b1ceb6634ca95",
-    "branch": "work/n09-n10-guided-design-20261025"
+    "qualityLabelsAddedByW038": 0
   },
   "sharedRuntimeStore": "work/items/W-MATH-032-n07-semantic-repair/runtime",
   "publishedAppSource": "fa0eff271a97940fad08d83960ae50faeabc81b9",
@@ -199,5 +198,62 @@
     "repairWork": "W-MATH-035",
     "repairSourceSHA": "fa0eff271a97940fad08d83960ae50faeabc81b9",
     "internalRepairStatus": "VERIFIED_AWAITING_SCOPED_APP_EVALUATION"
+  },
+  "previousImplementation": {
+    "repository": "rrikunagasige-dot/kyotsu-step-web",
+    "repoId": 1391122224,
+    "sourceSHA": "058c4ea32474b563487292b583f7a01df4f9c4f1",
+    "branch": "work/n07-semantic-repair-proposal-20261025",
+    "entry": "workflow/INTEGRATION_RUNBOOK.md",
+    "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/058c4ea32474b563487292b583f7a01df4f9c4f1/workflow/INTEGRATION_RUNBOOK.md"
+  },
+  "previousVerification": {
+    "runId": 40157340081,
+    "sourceSHA": "058c4ea32474b563487292b583f7a01df4f9c4f1",
+    "conclusion": "success",
+    "workflowTests": 131,
+    "newIntegrationTests": 42,
+    "learnerTests": 620,
+    "browserWidths": [
+      320,
+      390,
+      430,
+      1440
+    ],
+    "additionalRepairWorkflowTests": 9,
+    "authoringChecks": 39,
+    "repairNodeTests": 6,
+    "corpusMLSourceTests": 11,
+    "diagramPanels": 5
+  },
+  "boundedExtension": {
+    "work": "W-MATH-038",
+    "proposal": "P-001",
+    "solutionPipeline": "solution/1",
+    "transformationPlan": "transformation-plan/1",
+    "legacyBridge": "N11 revision11 only; unknown source requires mapping",
+    "activation": "explicit opt-in sidecar; N11 stage05-06",
+    "modelStatus": "OFFLINE_ONLY",
+    "newFit": false,
+    "qualityAccepted": false
+  },
+  "previousLearning": {
+    "trainingRun": true,
+    "evaluatedCases": 11,
+    "positive": 4,
+    "negative": 7,
+    "newPositive": 1,
+    "trainedHeads": {
+      "layout_discomfort": 2
+    },
+    "newOverallHead": "NOT_TRAINABLE_SINGLE_CLASS",
+    "advisoryEligible": false,
+    "unseenHoldout": false,
+    "modelHash": "e9dcf3543404f99c3756daf5dfe76f69a987aac1aab326374432068400a43d92",
+    "catalog": "work/items/W-MATH-033-n08-absolute-value/LEARNING_CORPUS.json",
+    "model": "work/items/W-MATH-033-n08-absolute-value/MODEL_RESULT.json",
+    "independentFamilies": 3,
+    "sourceSHA": "a442cbe966c074f122907bb7366b1ceb6634ca95",
+    "branch": "work/n09-n10-guided-design-20261025"
   }
 }

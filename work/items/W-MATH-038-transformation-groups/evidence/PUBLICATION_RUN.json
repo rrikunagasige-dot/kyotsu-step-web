@@ -1,0 +1,9 @@
+{
+  "id": 40269350862,
+  "head_sha": "d3eb6d75d8a46d34bf59b9b9c8bebd1072ac6feb",
+  "status": "completed",
+  "conclusion": "failure",
+  "deploymentStepConclusion": "success",
+  "failedStage": "N11 image readiness test before decode",
+  "verificationRun": 40270029827
+}

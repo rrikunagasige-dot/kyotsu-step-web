@@ -9,3 +9,5 @@
 - TEST_CONFIGURATION：新しいTSX試験の初回はJSX設定不足でReact未定義、保存byte照合は既定5秒でtimeout。既存同様のautomatic JSXと20秒の上限を明示した。内容検査は削除していない。
 - SOURCE_BINDING：式単体が正しくても、元の問題と違えば教材として誤り。v2は原graph ASTへ、旧N11は承認済みの固定source/AST bridgeへ照合する検査と、別問題の偽装反例を追加した。未登録v1はNEEDS_MAPPING。source graphの属性順はstrict schemaで正規化して照合する。
 - COMPATIBILITY：表示planがない過去の承認は、従来のfingerprintを完全に保持する。新しい表示hashを持つblockだけ追加結合する。旧承認を失効させる形式変更は採用しない。
+
+- HOSTED_IMAGE_RACE：公開run40269350862はdeploy stepとN08/保護対象の公開後検査に成功したが、N11の原図を即時im.completeで判定して全体runはFAIL。公開原図2枚のHTTP200と元byte/hash一致を確認。検査だけをdecode待機へ修正し、読取専用の別workflow40270029827で同じ公開sourceを全問再確認する。失敗runを成功へ読み替えない。

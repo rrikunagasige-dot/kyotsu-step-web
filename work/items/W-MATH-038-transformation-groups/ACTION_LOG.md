@@ -22,3 +22,9 @@ Current user explicitly approved P001 and scheduled a new N08 correction after i
 - Ran actual shared C/R Runtime R01-R06. Local implementation preparation after permission and before native receipt capture is explicitly logged. New definition was reconciled with evidence; previous Work ledgers were retained.
 - First native R03 submission omitted approvedCreationWork; validator rejected it. Added its original creation provenance, retained the failed attempt, and resumed the same claim. A terminated session left an orphan writer lock; verified the full existing chain and absence of live writer before removing only that lock.
 - Existing source/model/storage protections are retained. No new user quality labels.
+
+## Publication metadata repair
+
+The first pinned-source rollout deployed the correct aef34919 app, but the final manifest emitter still used the W037 script. The HTTP check found work W037 and no N11 plan hash. Main publisher d3eb6d75 fixes both occurrences and adds the exact contract assertion before upload. App source, grading and protected units are unchanged. Do not call this missing-metadata attempt a verified complete publication.
+
+The corrected publisher emitted W038 metadata and deployed the exact source successfully; its whole run failed at the asynchronous N11 original-image readiness assertion. Both public original images match source bytes. A verification-only workflow checks out the original aef34919 source and changes only that test callback to await image decode (30-second failure bound); all complete/naturalWidth assertions remain. No new app deployment or learner-code change was needed for this harness repair.

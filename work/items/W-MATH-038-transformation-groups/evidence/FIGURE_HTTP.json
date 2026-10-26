@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "figures": [
+    {
+      "id": "n11-f01",
+      "url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/assets/math/textbook/numbers/n11-f01.png",
+      "status": 200,
+      "bytes": 18330,
+      "sha256": "f0c384f8773369152c3f60dc1ab7aaa4504d7cfc8d2957df1b22bb9abe739d2e",
+      "exactOriginalBytes": true
+    },
+    {
+      "id": "n11-f02",
+      "url": "https://rrikunagasige-dot.github.io/kyotsu-step-web/assets/math/textbook/numbers/n11-f02.png",
+      "status": 200,
+      "bytes": 13365,
+      "sha256": "13690a1f2f310049cd25125603b26923cc9bce0818ad720d35e77e07f58d1677",
+      "exactOriginalBytes": true
+    }
+  ]
+}

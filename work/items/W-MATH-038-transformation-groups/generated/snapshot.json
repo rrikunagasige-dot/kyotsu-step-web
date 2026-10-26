@@ -1,34 +1,31 @@
 {
   "work": "W-MATH-038",
   "engine_version": "1.0.0",
-  "ledger_head": "4af8472b75e1a874cb299d0f162e867b6ff2c6a0499a9aab1eb03a0bd3b0f961",
-  "work_status": "IMPLEMENTING",
+  "ledger_head": "3f1b1e013943031788fc917c014c703fb4e5c6893f9694af189483165b454043",
+  "work_status": "VERIFYING",
   "profile": "material",
   "simulation": false,
-  "candidate_sha": "f297503b574e92f1d2f120f9f9d09d7da6cd0af9",
+  "candidate_sha": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
   "next": {
-    "status": "READY",
+    "status": "WAITING",
+    "reason": "USER_DECISION",
     "task": {
       "work_id": "W-MATH-038",
       "node": {
-        "id": "R07_VERIFY@n11",
-        "stage_kind": "R07_VERIFY",
-        "contract_kind": "R07_VERIFY",
-        "actor": "TOOL",
+        "id": "G3_FINAL@n11",
+        "stage_kind": "G3_FINAL",
+        "contract_kind": "G3_FINAL",
+        "actor": "USER",
         "depends_on": [
-          "R06_PATCH@n11"
+          "G3_HOST@n11"
         ],
         "required": [],
-        "block": "n11",
+        "block": null,
         "release_unit": "n11",
         "watch": "integration",
-        "phase": "post-implementation",
+        "phase": "acceptance",
         "priority": 0,
-        "source_refs": [
-          "src/data/textbook/math/numbers/n11Authored.json",
-          "work/items/W-MATH-036-ne02-n11-n12-guided-design/N11_IR.json",
-          "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json"
-        ],
+        "source_refs": [],
         "protected_refs": [
           "public/assets/math/textbook/numbers/n08-f01.png",
           "src/data/textbook/math/numbers/n07Authored.json",
@@ -45,25 +42,14 @@
           "src/components/textbook/n08-solution-reading.css",
           "src/domain/textbook.ts"
         ],
-        "approval_scope_ref": "proposal",
-        "capability_requests": [
-          "ir.verify",
-          "browser.verify",
-          "protected.verify",
-          "solution.validate"
-        ],
-        "required_code_receipts": [
-          "ir.verify",
-          "browser.verify",
-          "protected.verify",
-          "solution.validate"
-        ],
+        "capability_requests": [],
+        "required_code_receipts": [],
         "required_ai_receipts": []
       },
-      "task_id": "d7a90fa0fad4bd9264f82e795e1c855b4dca70c2ae5ff1c74b94fcc5eecdd5b8",
-      "input_hash": "2d26399627d1e763d848d7639a443476401b710be3661be90be5a6fe4685b853",
+      "task_id": "0684239e1de0f4ee4882a06f75cafb728b77615d1560b8a80be427de7c8c844d",
+      "input_hash": "0168114023578a1fe0b58925a228f0358100c2b17fe584d54178ae9fd65573dc",
       "source_sha": "f297503b574e92f1d2f120f9f9d09d7da6cd0af9",
-      "candidate_sha": "f297503b574e92f1d2f120f9f9d09d7da6cd0af9",
+      "candidate_sha": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
       "rules": {
         "governance/CONSTITUTION.md": "35be8052dc18879f916769e7c7b3870f8b9b0ae0cf9398c1cc0ca8ec4f27b774",
         "governance/REVIEW_POLICY.json": "a71148f007a79b124385c7645e6bc01564bfa02b12152174883543f31f6ce72d",
@@ -120,11 +106,11 @@
         "work/items/W-MATH-036-ne02-n11-n12-guided-design/evidence/N11_SOURCE_INDEX.json": "d82910061303b2720117e38e912c391a29b231b8a0d0b9178747da6f2335f7d8"
       },
       "previous_results": {
-        "R06_PATCH@n11": {
+        "G3_HOST@n11": {
           "actor": "capability-runner",
-          "artifact": "03122145fecdc1bf60705ed1f29d03c9abc77ed4399286e51e3fe0c4780f8358",
-          "input_hash": "80c0210cfc13f19bc50e649bc343080ecd6ef3aadce0f67123b0c1b9b6e0bfe7",
-          "node": "R06_PATCH@n11",
+          "artifact": "8830a5db443b1e1c33b0316d7f943a43be3f296c2a607e0f0a067a6f0499a30b",
+          "input_hash": "dad93fdb9f4687e4f2635897c957111343d65972524e4ec364d0d4a0d24f87d4",
+          "node": "G3_HOST@n11",
           "verdict": "PASS"
         }
       },
@@ -596,7 +582,7 @@
         "solution.validate"
       ],
       "required_ai_receipts": [],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "R07_SEMANTIC@n11",
@@ -652,7 +638,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "G2_AUDIT@n11",
@@ -702,7 +688,7 @@
       "required_ai_receipts": [
         "meaning-review"
       ],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "G3_HOST@n11",
@@ -742,7 +728,7 @@
         "release.verify"
       ],
       "required_ai_receipts": [],
-      "status": "PENDING"
+      "status": "PASSED"
     },
     {
       "id": "G3_FINAL@n11",
@@ -1003,9 +989,16 @@
       "description": "未完了の修正Work"
     },
     {
+      "id": "W-MATH-034",
+      "work": "W-MATH-034",
+      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+      "origin": "unfinished-correction",
+      "description": "未完了の修正Work"
+    },
+    {
       "id": "W-MATH-038",
       "work": "W-MATH-038",
-      "version": "f297503b574e92f1d2f120f9f9d09d7da6cd0af9",
+      "version": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
     },
@@ -1013,13 +1006,6 @@
       "id": "W-MATH-037",
       "work": "W-MATH-037",
       "version": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
-      "origin": "unfinished-correction",
-      "description": "未完了の修正Work"
-    },
-    {
-      "id": "W-MATH-034",
-      "work": "W-MATH-034",
-      "version": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
       "origin": "unfinished-correction",
       "description": "未完了の修正Work"
     },
@@ -1499,6 +1485,56 @@
       "input_hash": "80c0210cfc13f19bc50e649bc343080ecd6ef3aadce0f67123b0c1b9b6e0bfe7",
       "node": "R06_PATCH@n11",
       "receipt": "ece2735181b69a5acafea0a71c78141f89db6f4b622752d70fba1d74b5964541"
+    },
+    {
+      "input_hash": "092963383cabfc80407ce29d2cfe5597b2fa2aad7f871e7d17e62c90397c09f2",
+      "node": "R07_VERIFY@n11",
+      "receipt": "061156b4c0eab8fe83f8cbf02c9441a4f854670fd3793356cb15c791714d3ef7"
+    },
+    {
+      "input_hash": "092963383cabfc80407ce29d2cfe5597b2fa2aad7f871e7d17e62c90397c09f2",
+      "node": "R07_VERIFY@n11",
+      "receipt": "4b9b36b3e5b4d55f6aec9c85044dfe669a8129b87422f93ca99c2b06f00f54b4"
+    },
+    {
+      "input_hash": "092963383cabfc80407ce29d2cfe5597b2fa2aad7f871e7d17e62c90397c09f2",
+      "node": "R07_VERIFY@n11",
+      "receipt": "f22ce8e18bb433b37b8d1c25042771824b24a8af3ccaf47c2eb1d2c3bd8ab2ca"
+    },
+    {
+      "input_hash": "092963383cabfc80407ce29d2cfe5597b2fa2aad7f871e7d17e62c90397c09f2",
+      "node": "R07_VERIFY@n11",
+      "receipt": "da474ce97bae36118fd78626109ec32a7752724ac15ccaca35172e9f6edefe64"
+    },
+    {
+      "input_hash": "a331019a5d57d831e531e7b239d61e9fb5218ef95f89607d88285796960841f6",
+      "node": "R07_SEMANTIC@n11",
+      "receipt": "56182c6bcf8178029c7a8de8d2b35f33668b9a23b3963e0834c249b37094849d"
+    },
+    {
+      "input_hash": "a331019a5d57d831e531e7b239d61e9fb5218ef95f89607d88285796960841f6",
+      "node": "R07_SEMANTIC@n11",
+      "receipt": "220959093e8b894295d25a1a3308a6d69eaed2a58bba2ad0a81c9dd8a4226be0"
+    },
+    {
+      "input_hash": "a331019a5d57d831e531e7b239d61e9fb5218ef95f89607d88285796960841f6",
+      "node": "R07_SEMANTIC@n11",
+      "receipt": "b805f4ccabf8484c086d211c017d89418b44d85879b6e55385143e4268e62264"
+    },
+    {
+      "input_hash": "ad8e0b93c18d2125112e0ebcc7932ecb563f66253de02855adab49a17bc232e1",
+      "node": "G2_AUDIT@n11",
+      "receipt": "ca05cedb9eb4518d91572c410917882e97669d037512cf6c5b34bf8bc112751c"
+    },
+    {
+      "input_hash": "ad8e0b93c18d2125112e0ebcc7932ecb563f66253de02855adab49a17bc232e1",
+      "node": "G2_AUDIT@n11",
+      "receipt": "c349713bed241da2120b432899940d448986bec496752c52f1942456cd3ac78b"
+    },
+    {
+      "input_hash": "dad93fdb9f4687e4f2635897c957111343d65972524e4ec364d0d4a0d24f87d4",
+      "node": "G3_HOST@n11",
+      "receipt": "ac44d7a9107a0bd6d49cc9b8f672f5a7066e6fba01633ea7161f2da1e8b5b45e"
     }
   ],
   "release_acceptance": {

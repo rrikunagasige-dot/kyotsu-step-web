@@ -1,0 +1,587 @@
+{
+  "status": "READ_ONLY_PROPOSAL",
+  "source": "src/data/textbook/math/numbers/n08Revision5.json",
+  "sha256": "2ff0e38d4d081a3dc9f1912cd6b6a0ebe395fd9cb8afd6bd8fab2f2778a862e5",
+  "nodes": [
+    {
+      "nodeId": "n08-q01-right",
+      "stageId": "n08-stage-01",
+      "goal": "右側の点から原点までの距離",
+      "interactionId": null,
+      "action": "現状保持",
+      "group": null,
+      "reason": "原点の距離・負号の意味を形成する段階。",
+      "sourceBlockIds": [
+        "n08-q01-right-before",
+        "n08-q01-right-after"
+      ]
+    },
+    {
+      "nodeId": "n08-q01-left",
+      "stageId": "n08-stage-01",
+      "goal": "左側でも右の座標から左の座標を引く",
+      "interactionId": "n08-q01-left-answer",
+      "action": "現状保持",
+      "group": null,
+      "reason": "原点の距離・負号の意味を形成する段階。",
+      "sourceBlockIds": [
+        "n08-q01-left-before",
+        "n08-q01-left-interaction-0",
+        "n08-q01-left-result",
+        "n08-q01-left-after"
+      ]
+    },
+    {
+      "nodeId": "n08-01",
+      "stageId": "n08-stage-01",
+      "goal": "元の順序で二つの距離をまとめる",
+      "interactionId": "n08-01",
+      "action": "現状保持",
+      "group": null,
+      "reason": "原点の距離・負号の意味を形成する段階。",
+      "sourceBlockIds": [
+        "n08-01-before",
+        "n08-01-interaction-0",
+        "n08-01-result-0",
+        "n08-01-after"
+      ]
+    },
+    {
+      "nodeId": "n08-definition",
+      "stageId": "n08-stage-02",
+      "goal": "この距離を絶対値と名付ける",
+      "interactionId": null,
+      "action": "現状保持",
+      "group": null,
+      "reason": "原点の距離・負号の意味を形成する段階。",
+      "sourceBlockIds": [
+        "n08-definition-before",
+        "n08-definition-r5-after-0"
+      ]
+    },
+    {
+      "nodeId": "n08-r5-q02-distance",
+      "stageId": "n08-stage-02",
+      "goal": "右側の点と原点の距離の式を作る",
+      "interactionId": "n08-r5-q02-distance-answer",
+      "action": "現状保持",
+      "group": null,
+      "reason": "原点の距離・負号の意味を形成する段階。",
+      "sourceBlockIds": [
+        "n08-r5-q02-distance-before",
+        "n08-r5-q02-distance-interaction-0",
+        "n08-r5-q02-distance-result-formula-0",
+        "n08-r5-q02-distance-after"
+      ]
+    },
+    {
+      "nodeId": "n08-02",
+      "stageId": "n08-stage-02",
+      "goal": "原点か右側なら座標が距離になる",
+      "interactionId": "n08-02",
+      "action": "現状保持",
+      "group": null,
+      "reason": "原点の距離・負号の意味を形成する段階。",
+      "sourceBlockIds": [
+        "n08-02-r5-before-0",
+        "n08-02-interaction-0",
+        "n08-02-result",
+        "n08-02-after"
+      ]
+    },
+    {
+      "nodeId": "n08-q03-order",
+      "stageId": "n08-stage-03",
+      "goal": "左側の点の距離を引き算で作る",
+      "interactionId": "n08-q03-order-answer",
+      "action": "現状保持",
+      "group": null,
+      "reason": "原点の距離・負号の意味を形成する段階。",
+      "sourceBlockIds": [
+        "n08-q03-order-before",
+        "n08-q03-order-interaction-0",
+        "n08-q03-order-result",
+        "n08-q03-order-after"
+      ]
+    },
+    {
+      "nodeId": "n08-03",
+      "stageId": "n08-stage-03",
+      "goal": "左側の距離を簡単にする",
+      "interactionId": "n08-03",
+      "action": "現状保持",
+      "group": null,
+      "reason": "原点の距離・負号の意味を形成する段階。",
+      "sourceBlockIds": [
+        "n08-03-before",
+        "n08-03-interaction-0",
+        "n08-03-result",
+        "n08-03-after"
+      ]
+    },
+    {
+      "nodeId": "n08-q04-substitute",
+      "stageId": "n08-stage-04",
+      "goal": "負の値は括弧を付けて代入する",
+      "interactionId": "n08-q04-substitute-answer",
+      "action": "現状保持",
+      "group": null,
+      "reason": "原点の距離・負号の意味を形成する段階。",
+      "sourceBlockIds": [
+        "n08-q04-substitute-before",
+        "n08-q04-substitute-interaction-0",
+        "n08-q04-substitute-result",
+        "n08-q04-substitute-after"
+      ]
+    },
+    {
+      "nodeId": "n08-04",
+      "stageId": "n08-stage-04",
+      "goal": "代入した式の値を計算する",
+      "interactionId": "n08-04",
+      "action": "現状保持",
+      "group": null,
+      "reason": "原点の距離・負号の意味を形成する段階。",
+      "sourceBlockIds": [
+        "n08-04-before",
+        "n08-04-interaction-0",
+        "n08-04-result",
+        "n08-04-after"
+      ]
+    },
+    {
+      "nodeId": "n08-cases",
+      "stageId": "n08-stage-04",
+      "goal": "絶対値を外す規則を二つにまとめる",
+      "interactionId": null,
+      "action": "現状保持",
+      "group": null,
+      "reason": "原点の距離・負号の意味を形成する段階。",
+      "sourceBlockIds": [
+        "n08-cases-before",
+        "n08-cases-after"
+      ]
+    },
+    {
+      "nodeId": "n08-q05-square",
+      "stageId": "n08-stage-05",
+      "goal": "正の二数の大小を比べる準備",
+      "interactionId": "n08-q05-square-answer",
+      "action": "現状保持",
+      "group": null,
+      "reason": "独立した比較、規則の選択、または条件別の証明・合流。普通の変形列へ一律統合しない。",
+      "sourceBlockIds": [
+        "n08-q05-square-r5-before-0",
+        "n08-q05-square-r5-before-1",
+        "n08-r5-root-square-given-0",
+        "n08-q05-square-interaction-0",
+        "n08-q05-square-result",
+        "n08-q05-square-after"
+      ]
+    },
+    {
+      "nodeId": "n08-q05-compare",
+      "stageId": "n08-stage-05",
+      "goal": "二乗した値の大小を決める",
+      "interactionId": "n08-q05-compare-answer",
+      "action": "現状保持",
+      "group": null,
+      "reason": "独立した比較、規則の選択、または条件別の証明・合流。普通の変形列へ一律統合しない。",
+      "sourceBlockIds": [
+        "n08-q05-compare-before",
+        "n08-q05-compare-interaction",
+        "n08-q05-compare-result-0",
+        "n08-q05-compare-after"
+      ]
+    },
+    {
+      "nodeId": "n08-05",
+      "stageId": "n08-stage-05",
+      "goal": "根拠と元の数の大小関係を結ぶ",
+      "interactionId": "n08-05",
+      "action": "現状保持",
+      "group": null,
+      "reason": "独立した比較、規則の選択、または条件別の証明・合流。普通の変形列へ一律統合しない。",
+      "sourceBlockIds": [
+        "n08-05-before",
+        "n08-05-interaction-0",
+        "n08-05-result-0",
+        "n08-05-result-1",
+        "n08-05-after"
+      ]
+    },
+    {
+      "nodeId": "n08-r5-q06-operation",
+      "stageId": "n08-stage-06",
+      "goal": "前の大小関係から中身の符号へつなぐ",
+      "interactionId": "n08-r5-q06-operation-answer",
+      "action": "式列G06",
+      "group": "G06",
+      "reason": "既知の大小から同じ両辺操作と整理を連続させる。",
+      "sourceBlockIds": [
+        "n08-r5-q06-operation-before",
+        "n08-r5-q06-operation-interaction-0",
+        "n08-r5-q06-operation-result-formula-0",
+        "n08-r5-q06-operation-after"
+      ]
+    },
+    {
+      "nodeId": "n08-q06-subtract",
+      "stageId": "n08-stage-06",
+      "goal": "両辺から同じ数を引いて差の符号へ",
+      "interactionId": "n08-q06-subtract-answer",
+      "action": "式列G06",
+      "group": "G06",
+      "reason": "既知の大小から同じ両辺操作と整理を連続させる。",
+      "sourceBlockIds": [
+        "n08-q06-subtract-r5-before-0",
+        "n08-q06-subtract-interaction-0",
+        "n08-q06-subtract-result-0",
+        "n08-q06-subtract-after"
+      ]
+    },
+    {
+      "nodeId": "n08-06",
+      "stageId": "n08-stage-06",
+      "goal": "差が0より小さいことを言葉で読む",
+      "interactionId": "n08-06",
+      "action": "意味の判断を保持",
+      "group": null,
+      "reason": "直前の不等式から符号と根拠を読む別判断。数学の終端を同じ役割で再掲せず、回答IDを保つ。",
+      "sourceBlockIds": [
+        "n08-06-before",
+        "n08-06-interaction",
+        "n08-06-answer",
+        "n08-06-after"
+      ]
+    },
+    {
+      "nodeId": "n08-q07-rule",
+      "stageId": "n08-stage-07",
+      "goal": "負の場合に使う規則を選ぶ",
+      "interactionId": "n08-q07-rule-answer",
+      "action": "現状保持",
+      "group": null,
+      "reason": "独立した比較、規則の選択、または条件別の証明・合流。普通の変形列へ一律統合しない。",
+      "sourceBlockIds": [
+        "n08-q07-rule-before",
+        "n08-q07-rule-interaction-0",
+        "n08-q07-rule-result",
+        "n08-q07-rule-after"
+      ]
+    },
+    {
+      "nodeId": "n08-q07-bracket",
+      "stageId": "n08-stage-07",
+      "goal": "中身全体を括弧で囲んで負号を付ける",
+      "interactionId": "n08-q07-bracket-answer",
+      "action": "式列G07",
+      "group": "G07",
+      "reason": "負の場合の規則を使った後、括弧・分配・項の並替えを一列にする。",
+      "sourceBlockIds": [
+        "n08-q07-bracket-before",
+        "n08-q07-bracket-interaction-0",
+        "n08-q07-bracket-result",
+        "n08-q07-bracket-after"
+      ]
+    },
+    {
+      "nodeId": "n08-q07-distribute",
+      "stageId": "n08-stage-07",
+      "goal": "負号を括弧の二項へ掛ける",
+      "interactionId": "n08-q07-distribute-answer",
+      "action": "式列G07",
+      "group": "G07",
+      "reason": "負の場合の規則を使った後、括弧・分配・項の並替えを一列にする。",
+      "sourceBlockIds": [
+        "n08-q07-distribute-r5-before-0",
+        "n08-q07-distribute-interaction",
+        "n08-q07-distribute-result",
+        "n08-q07-distribute-after"
+      ]
+    },
+    {
+      "nodeId": "n08-07",
+      "stageId": "n08-stage-07",
+      "goal": "正の項を先に並べて元の問いへ答える",
+      "interactionId": "n08-07",
+      "action": "式列G07",
+      "group": "G07",
+      "reason": "負の場合の規則を使った後、括弧・分配・項の並替えを一列にする。",
+      "sourceBlockIds": [
+        "n08-07-before",
+        "n08-07-interaction-0",
+        "n08-07-result",
+        "n08-07-after"
+      ]
+    },
+    {
+      "nodeId": "n08-q08-order",
+      "stageId": "n08-stage-08",
+      "goal": "円周率と3を比べる",
+      "interactionId": "n08-q08-order-answer",
+      "action": "式列G08",
+      "group": "G08",
+      "reason": "円周率との大小、同じ減算、0との比較を連続させる。",
+      "sourceBlockIds": [
+        "n08-q08-order-r5-before-0",
+        "n08-q08-order-interaction",
+        "n08-q08-order-result-0",
+        "n08-q08-order-after"
+      ]
+    },
+    {
+      "nodeId": "n08-r5-q08-operation",
+      "stageId": "n08-stage-08",
+      "goal": "別の例で同じ両辺操作を組み立てる",
+      "interactionId": "n08-r5-q08-operation-answer",
+      "action": "式列G08",
+      "group": "G08",
+      "reason": "円周率との大小、同じ減算、0との比較を連続させる。",
+      "sourceBlockIds": [
+        "n08-r5-q08-operation-before",
+        "n08-r5-q08-operation-interaction-0",
+        "n08-r5-q08-operation-result-formula-0",
+        "n08-r5-q08-operation-after"
+      ]
+    },
+    {
+      "nodeId": "n08-q08-difference",
+      "stageId": "n08-stage-08",
+      "goal": "同じ数を引いて0との比較へ",
+      "interactionId": "n08-q08-difference-answer",
+      "action": "式列G08",
+      "group": "G08",
+      "reason": "円周率との大小、同じ減算、0との比較を連続させる。",
+      "sourceBlockIds": [
+        "n08-q08-difference-r5-before-0",
+        "n08-q08-difference-interaction",
+        "n08-q08-difference-result-0",
+        "n08-q08-difference-after"
+      ]
+    },
+    {
+      "nodeId": "n08-08",
+      "stageId": "n08-stage-08",
+      "goal": "差の符号を根拠と組にする",
+      "interactionId": "n08-08",
+      "action": "意味の判断を保持",
+      "group": null,
+      "reason": "直前の不等式から符号と根拠を読む別判断。数学の終端を同じ役割で再掲せず、回答IDを保つ。",
+      "sourceBlockIds": [
+        "n08-08-before",
+        "n08-08-interaction",
+        "n08-08-answer",
+        "n08-08-after"
+      ]
+    },
+    {
+      "nodeId": "n08-q09-bracket",
+      "stageId": "n08-stage-09",
+      "goal": "前の例と同じ負の規則を使う",
+      "interactionId": "n08-q09-bracket-answer",
+      "action": "式列G09",
+      "group": "G09",
+      "reason": "前の例と同じ手順で、絶対値を外した式から答えまで一列にする。",
+      "sourceBlockIds": [
+        "n08-q09-bracket-r5-before-0",
+        "n08-q09-bracket-interaction-0",
+        "n08-q09-bracket-result",
+        "n08-q09-bracket-after"
+      ]
+    },
+    {
+      "nodeId": "n08-q09-distribute",
+      "stageId": "n08-stage-09",
+      "goal": "負号を3と負の円周率へ掛ける",
+      "interactionId": "n08-q09-distribute-answer",
+      "action": "式列G09",
+      "group": "G09",
+      "reason": "前の例と同じ手順で、絶対値を外した式から答えまで一列にする。",
+      "sourceBlockIds": [
+        "n08-q09-distribute-r5-before-0",
+        "n08-q09-distribute-interaction",
+        "n08-q09-distribute-result",
+        "n08-q09-distribute-after"
+      ]
+    },
+    {
+      "nodeId": "n08-09",
+      "stageId": "n08-stage-09",
+      "goal": "元の問題の答えをまとめる",
+      "interactionId": "n08-09",
+      "action": "式列G09",
+      "group": "G09",
+      "reason": "前の例と同じ手順で、絶対値を外した式から答えまで一列にする。",
+      "sourceBlockIds": [
+        "n08-09-before",
+        "n08-09-interaction-0",
+        "n08-09-result",
+        "n08-09-after"
+      ]
+    },
+    {
+      "nodeId": "n08-q10-forward",
+      "stageId": "n08-stage-10",
+      "goal": "距離が0なら点はどこにあるか",
+      "interactionId": "n08-q10-forward-answer",
+      "action": "現状保持",
+      "group": null,
+      "reason": "独立した比較、規則の選択、または条件別の証明・合流。普通の変形列へ一律統合しない。",
+      "sourceBlockIds": [
+        "n08-q10-forward-before",
+        "n08-q10-forward-interaction-0",
+        "n08-q10-forward-result",
+        "n08-q10-forward-after"
+      ]
+    },
+    {
+      "nodeId": "n08-q10-reverse",
+      "stageId": "n08-stage-10",
+      "goal": "逆に元の数が0なら距離も0",
+      "interactionId": "n08-q10-reverse-answer",
+      "action": "現状保持",
+      "group": null,
+      "reason": "独立した比較、規則の選択、または条件別の証明・合流。普通の変形列へ一律統合しない。",
+      "sourceBlockIds": [
+        "n08-q10-reverse-before",
+        "n08-q10-reverse-interaction-0",
+        "n08-q10-reverse-result",
+        "n08-q10-reverse-after"
+      ]
+    },
+    {
+      "nodeId": "n08-10",
+      "stageId": "n08-stage-10",
+      "goal": "元の性質を位置の意味と組にする",
+      "interactionId": "n08-10",
+      "action": "現状保持",
+      "group": null,
+      "reason": "独立した比較、規則の選択、または条件別の証明・合流。普通の変形列へ一律統合しない。",
+      "sourceBlockIds": [
+        "n08-10-before",
+        "n08-10-interaction-0",
+        "n08-10-answer",
+        "n08-10-after"
+      ]
+    },
+    {
+      "nodeId": "n08-q11-positive",
+      "stageId": "n08-stage-11",
+      "goal": "正の場合に二つの距離を比べる",
+      "interactionId": "n08-q11-positive-answer",
+      "action": "現状保持",
+      "group": null,
+      "reason": "独立した比較、規則の選択、または条件別の証明・合流。普通の変形列へ一律統合しない。",
+      "sourceBlockIds": [
+        "n08-q11-positive-before",
+        "n08-q11-positive-interaction-0",
+        "n08-q11-positive-result-0",
+        "n08-q11-positive-result-1",
+        "n08-q11-positive-after"
+      ]
+    },
+    {
+      "nodeId": "n08-q11-negative",
+      "stageId": "n08-stage-11",
+      "goal": "負の場合にも二つの距離を比べる",
+      "interactionId": "n08-q11-negative-answer",
+      "action": "現状保持",
+      "group": null,
+      "reason": "独立した比較、規則の選択、または条件別の証明・合流。普通の変形列へ一律統合しない。",
+      "sourceBlockIds": [
+        "n08-q11-negative-before",
+        "n08-q11-negative-interaction-0",
+        "n08-q11-negative-result-0",
+        "n08-q11-negative-result-1",
+        "n08-q11-negative-after"
+      ]
+    },
+    {
+      "nodeId": "n08-q11-zero",
+      "stageId": "n08-stage-11",
+      "goal": "原点の場合も落とさない",
+      "interactionId": null,
+      "action": "現状保持",
+      "group": null,
+      "reason": "独立した比較、規則の選択、または条件別の証明・合流。普通の変形列へ一律統合しない。",
+      "sourceBlockIds": [
+        "n08-q11-zero-before",
+        "n08-q11-zero-after"
+      ]
+    },
+    {
+      "nodeId": "n08-11",
+      "stageId": "n08-stage-11",
+      "goal": "すべての場合を一つの関係にまとめる",
+      "interactionId": "n08-11",
+      "action": "現状保持",
+      "group": null,
+      "reason": "独立した比較、規則の選択、または条件別の証明・合流。普通の変形列へ一律統合しない。",
+      "sourceBlockIds": [
+        "n08-11-before",
+        "n08-11-interaction-0",
+        "n08-11-result",
+        "n08-11-after"
+      ]
+    },
+    {
+      "nodeId": "n08-q12-nonnegative",
+      "stageId": "n08-stage-12",
+      "goal": "0以上の場合の絶対値を二乗する",
+      "interactionId": "n08-q12-nonnegative-answer",
+      "action": "現状保持",
+      "group": null,
+      "reason": "独立した比較、規則の選択、または条件別の証明・合流。普通の変形列へ一律統合しない。",
+      "sourceBlockIds": [
+        "n08-q12-nonnegative-before",
+        "n08-q12-nonnegative-interaction-0",
+        "n08-q12-nonnegative-result",
+        "n08-q12-nonnegative-after"
+      ]
+    },
+    {
+      "nodeId": "n08-q12-negative",
+      "stageId": "n08-stage-12",
+      "goal": "負の場合は括弧ごと二乗する",
+      "interactionId": "n08-q12-negative-answer",
+      "action": "現状保持",
+      "group": null,
+      "reason": "独立した比較、規則の選択、または条件別の証明・合流。普通の変形列へ一律統合しない。",
+      "sourceBlockIds": [
+        "n08-q12-negative-before",
+        "n08-q12-negative-interaction",
+        "n08-q12-negative-result",
+        "n08-q12-negative-after"
+      ]
+    },
+    {
+      "nodeId": "n08-12",
+      "stageId": "n08-stage-12",
+      "goal": "場合に関係なく成り立つ式を結論にする",
+      "interactionId": "n08-12",
+      "action": "現状保持",
+      "group": null,
+      "reason": "独立した比較、規則の選択、または条件別の証明・合流。普通の変形列へ一律統合しない。",
+      "sourceBlockIds": [
+        "n08-12-before",
+        "n08-12-interaction-0",
+        "n08-12-result",
+        "n08-12-after"
+      ]
+    },
+    {
+      "nodeId": "n08-closing",
+      "stageId": "n08-stage-12",
+      "goal": "距離と符号の学習を次へつなぐ",
+      "interactionId": null,
+      "action": "現状保持",
+      "group": null,
+      "reason": "独立した比較、規則の選択、または条件別の証明・合流。普通の変形列へ一律統合しない。",
+      "sourceBlockIds": [
+        "n08-closing-r5-before-0",
+        "n08-closing-r5-after-0"
+      ]
+    }
+  ]
+}

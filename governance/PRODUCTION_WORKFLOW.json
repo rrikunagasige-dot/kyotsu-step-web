@@ -8,56 +8,41 @@
   "implementation": {
     "repository": "rrikunagasige-dot/kyotsu-step-web",
     "repoId": 1391122224,
-    "sourceSHA": "31b87bd37c2f4837e57c5d6b6c88241ec2a44f04",
-    "branch": "work/workflow-team-construction-20261026",
+    "sourceSHA": "e7320590d4af51b7cc0d9faa918485467092a3c0",
+    "branch": "work/n08-construction-application-20261026",
     "entry": "workflow/INTEGRATION_RUNBOOK.md",
-    "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/31b87bd37c2f4837e57c5d6b6c88241ec2a44f04/workflow/INTEGRATION_RUNBOOK.md",
-    "teamProtocol": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/31b87bd37c2f4837e57c5d6b6c88241ec2a44f04/workflow/TEAM_PROTOCOL.md"
+    "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/e7320590d4af51b7cc0d9faa918485467092a3c0/workflow/INTEGRATION_RUNBOOK.md",
+    "teamProtocol": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/e7320590d4af51b7cc0d9faa918485467092a3c0/workflow/TEAM_PROTOCOL.md"
   },
   "verification": {
-    "sourceSHA": "31b87bd37c2f4837e57c5d6b6c88241ec2a44f04",
-    "status": "VERIFIED",
-    "nodeTests": 111,
+    "sourceSHA": "e7320590d4af51b7cc0d9faa918485467092a3c0",
+    "status": "VERIFIED_CI",
+    "runId": 40296848940,
+    "conclusion": "success",
     "workflowTests": 190,
+    "learnerTests": 637,
     "corpusTests": 31,
+    "productionNodeTests": 59,
+    "mathAndSourceNodeTests": 88,
     "authoringNodeTests": 35,
     "authoringVitestTests": 4,
-    "build": "PASS",
-    "finalBoundaryRecheck": 51,
-    "conclusion": "success",
-    "runId": 40289658345,
-    "primaryCI": {
-      "runId": 40289658345,
-      "sourceSHA": "31b87bd37c2f4837e57c5d6b6c88241ec2a44f04",
-      "conclusion": "success"
-    },
-    "auxiliaryCI": [
-      {
-        "id": 40289658355,
-        "status": "in_progress",
-        "classification": "ENVIRONMENT_WAIT_APT",
-        "notReportedAsSuccess": true,
-        "overlappingN11Coverage": 40289658242
-      },
-      {
-        "id": 40289658242,
-        "status": "completed",
-        "conclusion": "success",
-        "jobId": 121461462923
-      }
+    "comparisonRouteTests": 4,
+    "widths": [
+      320,
+      390,
+      430,
+      1440
     ],
-    "protectedBrowserCI": {
-      "runId": 40289658242,
-      "jobId": 121461462923,
-      "conclusion": "success",
-      "sourceSHA": "31b87bd37c2f4837e57c5d6b6c88241ec2a44f04",
-      "widths": [
-        320,
-        390,
-        430,
-        1440
-      ]
-    }
+    "n08ScalarAnswers": 22,
+    "n08ConstructionParents": 11,
+    "n08Parts": 15,
+    "n08WrongCandidatesPerWidth": 69,
+    "parentImages": 132,
+    "layoutMeasurements": 48,
+    "retainedN11CorrectPerWidth": 39,
+    "retainedN11WrongPerWidth": 109,
+    "retainedR5Correct": 34,
+    "retainedR5Wrong": 80
   },
   "reviewSurface": "existing-public-app",
   "screenshotApprovalRequired": false,
@@ -66,7 +51,7 @@
   "modelStatus": "OFFLINE_ONLY",
   "newLessonAccepted": false,
   "protectedAppSource": "c4e7133a4fd3def11771077379aacc6e19d3445b",
-  "adoption": "Shared C/R foundation explicitly approved and implemented. Global team/code/AI contracts are separate from active N08 lesson application and user lesson acceptance.",
+  "adoption": "Approved W040 N08 r6 application on the shared team/construction foundation. Fixed code source, source-matched tests and current public app are recorded separately; no lesson acceptance or ML quality label inferred.",
   "legacyVersions": [
     "production/1",
     "legacy/1"
@@ -114,7 +99,9 @@
     "advisoryEligible": false,
     "qualityLabelsAddedByW038": 0,
     "newFitForW039": false,
-    "qualityLabelsAddedByW039": 0
+    "qualityLabelsAddedByW039": 0,
+    "newFitForW040": false,
+    "qualityLabelsAddedByW040": 0
   },
   "sharedRuntimeStore": "work/items/W-MATH-032-n07-semantic-repair/runtime",
   "publishedAppSource": "c4e7133a4fd3def11771077379aacc6e19d3445b",
@@ -134,7 +121,21 @@
       "event": "W033-N08-APP-ACCEPTED-20261025"
     }
   },
-  "currentWork": "W-GOV-012",
+  "currentWork": {
+    "id": "W-MATH-040",
+    "proposal": "P-001",
+    "status": "PUBLISHING",
+    "node": "G3_HOST@n08",
+    "learnerSourceSHA": "e7320590d4af51b7cc0d9faa918485467092a3c0",
+    "branch": "work/n08-construction-application-20261026",
+    "blocks": [
+      "n08"
+    ],
+    "concreteDesignApproved": true,
+    "userAccepted": false,
+    "native": "R01-R06,R07_VERIFY,R07_SEMANTIC,G2_AUDIT PASS; G3_HOST pending actual publication",
+    "originalProposalHash": "8106181787d61bf7ef474c09acd89a41cdb61537bff529c5f7ece9c78cfe883e"
+  },
   "currentLearnerVerification": {
     "sourceSHA": "fa0eff271a97940fad08d83960ae50faeabc81b9",
     "runId": 40172128752,
@@ -272,12 +273,10 @@
     "branch": "work/n09-n10-guided-design-20261025"
   },
   "nextCorrection": {
-    "work": "W-MATH-039",
+    "work": "W-MATH-040",
     "unit": "n08",
-    "status": "PROPOSED",
-    "proposalHash": "c27fd866666af45d35893bac52747ea33b710a4ea4a040ac82be90afacb491ee",
-    "implementationApproved": false,
-    "proposalURL": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/0aa633dcf6c1acc6e8df718e907cbaae0e8961f9/work/items/W-MATH-039-n08-grouped-transformations/PROPOSAL.md"
+    "status": "IMPLEMENTED_WAITING_SOURCE_VERIFIED_PUBLICATION",
+    "implementationApproved": true
   },
   "previousPublication": {
     "status": "verified",
@@ -328,11 +327,74 @@
     "oldWorks": "explicit policy migration with original history retained"
   },
   "constructionPipeline": "construction-layout/1",
-  "nextWork": "W-MATH-040",
-  "N08QualityStatus": "SCOPED_NEGATIVE_CONSTRUCTION_AND_LAYOUT_APPLICATION_PENDING",
+  "nextWork": "G3_FINAL@n08 actual user evaluation after source-verified publication",
+  "N08QualityStatus": "R6_INTERNAL_QA_VERIFIED_USER_EVALUATION_PENDING",
   "teamProposal": "W-GOV-012/P-001",
   "sharedFoundationScopes": [
     "CMD-WORK-001",
     "CMD-WORK-002"
-  ]
+  ],
+  "previousSharedFoundationImplementation": {
+    "repository": "rrikunagasige-dot/kyotsu-step-web",
+    "repoId": 1391122224,
+    "sourceSHA": "31b87bd37c2f4837e57c5d6b6c88241ec2a44f04",
+    "branch": "work/workflow-team-construction-20261026",
+    "entry": "workflow/INTEGRATION_RUNBOOK.md",
+    "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/31b87bd37c2f4837e57c5d6b6c88241ec2a44f04/workflow/INTEGRATION_RUNBOOK.md",
+    "teamProtocol": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/31b87bd37c2f4837e57c5d6b6c88241ec2a44f04/workflow/TEAM_PROTOCOL.md"
+  },
+  "previousSharedFoundationVerification": {
+    "sourceSHA": "31b87bd37c2f4837e57c5d6b6c88241ec2a44f04",
+    "status": "VERIFIED",
+    "nodeTests": 111,
+    "workflowTests": 190,
+    "corpusTests": 31,
+    "authoringNodeTests": 35,
+    "authoringVitestTests": 4,
+    "build": "PASS",
+    "finalBoundaryRecheck": 51,
+    "conclusion": "success",
+    "runId": 40289658345,
+    "primaryCI": {
+      "runId": 40289658345,
+      "sourceSHA": "31b87bd37c2f4837e57c5d6b6c88241ec2a44f04",
+      "conclusion": "success"
+    },
+    "auxiliaryCI": [
+      {
+        "id": 40289658355,
+        "status": "in_progress",
+        "classification": "ENVIRONMENT_WAIT_APT",
+        "notReportedAsSuccess": true,
+        "overlappingN11Coverage": 40289658242
+      },
+      {
+        "id": 40289658242,
+        "status": "completed",
+        "conclusion": "success",
+        "jobId": 121461462923
+      }
+    ],
+    "protectedBrowserCI": {
+      "runId": 40289658242,
+      "jobId": 121461462923,
+      "conclusion": "success",
+      "sourceSHA": "31b87bd37c2f4837e57c5d6b6c88241ec2a44f04",
+      "widths": [
+        320,
+        390,
+        430,
+        1440
+      ]
+    }
+  },
+  "previousCurrentWorkBeforeW040": "W-GOV-012",
+  "pendingPublication": {
+    "work": "W-MATH-040",
+    "sourceSHA": "e7320590d4af51b7cc0d9faa918485467092a3c0",
+    "status": "PUBLISHING",
+    "activeN08Revision": 6,
+    "existingStorageNamespace": "kyotsu-step-gate3-math-20261023",
+    "userAccepted": false
+  }
 }

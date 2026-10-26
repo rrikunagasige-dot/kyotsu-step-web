@@ -1,3 +1,24 @@
+<!-- W040_CURRENT -->
+## CURRENT — N08 r6を既存アプリへ公開する段階
+
+固定コードsourceは `e7320590d4af51b7cc0d9faa918485467092a3c0`（`work/n08-construction-application-20261026`）。共通基盤31b87bd3上にW040のr6を適用。mainは現在地の正本、実装取得はこの固定sourceを使い、main内の古い物理workflow/appコードを一括mergeで上書きしない。
+
+39node/38segmentを保持し、22旧回答＋11新親＝33親、15式中部品。18px/KaTeX1、共通列、現在見える末行の番号、三状態、旧r4/r5比較と保存移行。既存namespaceを維持。旧受入をr6の受入へ転用しない。
+
+CI [40296848940](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40296848940) SUCCESS。learner637、workflow190、corpus31、production59、math/source88、authoring35+4、比較route4、lint/build。N08全22scalar＋15part/69誤答候補×4幅、132親画像/48配置値。旧r5全34/80誤答、N11全39/109誤答×4幅と旧保存1〜10もPASS。群間の重複を除いた合計とは呼ばない。
+
+Mは統合/Store/公開、Aはdata/math/save、BはUI。BがAの保存を、AがB UI/M routesを実画像で反証。原報告・作者履歴・CI artifactへ束縛。fork-all/同一モデルで盲検やモデル独立ではない。登録捕捉は承認後の準備より後という実順序も保持。
+
+現在は内部QA・非作者監査を経た既存Pages公開処理。まだ公開manifestの到達性・同SHA操作を確認する前なので、以下のURLを公開済みとは扱わない。確認後にpublication記録を更新する。
+
+- 対象: https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=e7320590#/learning/textbook/math-numbers-expressions-n08
+- 比較: 同routeの `?version=5`、`?version=5&layout=original`、`?version=4`。既存 `?layout=original` は旧r5へのalias。
+- [実装/39node対応](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/main/work/items/W-MATH-040-n08-construction-layout/IMPLEMENTATION.md) / [検証](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/main/work/items/W-MATH-040-n08-construction-layout/VERIFICATION.md) / [担当火柴図](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/main/work/items/W-MATH-040-n08-construction-layout/IMPLEMENTED_FIRE_DIAGRAM.md)
+
+本人の実アプリ評価はG3_FINALで待つ。既存catalog/modelはOFFLINE_ONLY、今回追加fit/Goldなし。新しい画像票承認や公開の再許可は挟まない。返答は日本語。
+
+以下は旧履歴。
+
 <!-- W_GOV_012_CURRENT -->
 ## CURRENT — 作成／修正の共通基盤：CODE＋AI＋主担当と2子agent
 

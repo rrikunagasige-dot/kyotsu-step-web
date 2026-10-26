@@ -1,0 +1,209 @@
+{
+  "schemaVersion": "n08-construction-contracts-fixture/1",
+  "sourceDesignSHA256": "bdc273c8dd19c669e0cb876d0fe29de4bdafd8d87eafc2a4e578bce0b6eeaf11",
+  "interactions": [
+    {
+      "sourceNodeId": "n08-r5-q02-distance",
+      "newInteractionId": "n08-r5-q02-distance-build-r6",
+      "parts": [
+        {
+          "id": "n08-r5-q02-distance-build-r6-right",
+          "role": "coordinate",
+          "expected": "a",
+          "candidates": [
+            "a",
+            "0"
+          ]
+        },
+        {
+          "id": "n08-r5-q02-distance-build-r6-left",
+          "role": "coordinate",
+          "expected": "0",
+          "candidates": [
+            "a",
+            "0"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceNodeId": "n08-q03-order",
+      "newInteractionId": "n08-q03-order-build-r6",
+      "parts": [
+        {
+          "id": "n08-q03-order-build-r6-right",
+          "role": "coordinate",
+          "expected": "0",
+          "candidates": [
+            "0",
+            "a"
+          ]
+        },
+        {
+          "id": "n08-q03-order-build-r6-left",
+          "role": "coordinate",
+          "expected": "a",
+          "candidates": [
+            "0",
+            "a"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceNodeId": "n08-03",
+      "newInteractionId": "n08-03-build-r6",
+      "parts": [
+        {
+          "id": "n08-03-build-r6-sign",
+          "role": "unary-sign",
+          "expected": "-",
+          "candidates": [
+            "-",
+            "+"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceNodeId": "n08-04",
+      "newInteractionId": "n08-04-build-r6",
+      "parts": [
+        {
+          "id": "n08-04-build-r6-value",
+          "role": "rational",
+          "expected": "5",
+          "candidates": [
+            "5",
+            "-5",
+            "0"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceNodeId": "n08-q07-bracket",
+      "newInteractionId": "n08-q07-bracket-build-r6",
+      "parts": [
+        {
+          "id": "n08-q07-bracket-build-r6-sign",
+          "role": "unary-sign",
+          "expected": "-",
+          "candidates": [
+            "-",
+            "+"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceNodeId": "n08-q07-distribute",
+      "newInteractionId": "n08-q07-distribute-build-r6",
+      "parts": [
+        {
+          "id": "n08-q07-distribute-build-r6-root-sign",
+          "role": "unary-sign",
+          "expected": "-",
+          "candidates": [
+            "-",
+            "+"
+          ]
+        },
+        {
+          "id": "n08-q07-distribute-build-r6-constant",
+          "role": "rational",
+          "expected": "3",
+          "candidates": [
+            "3",
+            "-3",
+            "0"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceNodeId": "n08-07",
+      "newInteractionId": "n08-07-build-r6",
+      "parts": [
+        {
+          "id": "n08-07-build-r6-first-term",
+          "role": "signed-term",
+          "expected": "3",
+          "candidates": [
+            "3",
+            "-\\sqrt5"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceNodeId": "n08-q09-bracket",
+      "newInteractionId": "n08-q09-bracket-build-r6",
+      "parts": [
+        {
+          "id": "n08-q09-bracket-build-r6-sign",
+          "role": "unary-sign",
+          "expected": "-",
+          "candidates": [
+            "-",
+            "+"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceNodeId": "n08-q09-distribute",
+      "newInteractionId": "n08-q09-distribute-build-r6",
+      "parts": [
+        {
+          "id": "n08-q09-distribute-build-r6-first-sign",
+          "role": "unary-sign",
+          "expected": "-",
+          "candidates": [
+            "-",
+            "+"
+          ]
+        },
+        {
+          "id": "n08-q09-distribute-build-r6-joining-operation",
+          "role": "binary-operation",
+          "expected": "+",
+          "candidates": [
+            "+",
+            "-"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceNodeId": "n08-09",
+      "newInteractionId": "n08-09-build-r6",
+      "parts": [
+        {
+          "id": "n08-09-build-r6-first-term",
+          "role": "signed-term",
+          "expected": "\\pi",
+          "candidates": [
+            "\\pi",
+            "-3"
+          ]
+        }
+      ]
+    },
+    {
+      "sourceNodeId": "n08-q12-negative",
+      "newInteractionId": "n08-q12-negative-build-r6",
+      "parts": [
+        {
+          "id": "n08-q12-negative-build-r6-sign",
+          "role": "unary-sign",
+          "expected": "+",
+          "candidates": [
+            "+",
+            "-"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -21,7 +21,7 @@ const product=parts=>parts.reduce((drafts,p)=>drafts.flatMap(d=>p.choices.map(c=
 
 test('exact approved N08 inventory: fresh eleven parents and fifteen independent parts',()=>{
  assert.equal(validateConstructionPlan(plan).status,'PASS');assert.equal(plan.interactions.length,11);assert.equal(plan.interactions.flatMap(i=>i.parts).length,15);
- const approved=JSON.parse(fs.readFileSync('work/items/W-MATH-040-n08-construction-layout/CONSTRUCTION_CONTRACTS.json'));
+ const approved=JSON.parse(fs.readFileSync('tools/textbook/fixtures/n08-construction-contracts.json'));
  assert.deepEqual(plan.interactions.map(i=>[i.sourceNodeId,i.id,i.parts.map(p=>[p.id,p.role,p.expected,p.choices.map(c=>c.value)])]),approved.interactions.map(i=>[i.sourceNodeId,i.newInteractionId,i.parts.map(p=>[p.id,p.role,p.expected,p.candidates])]));
 });
 test('full materializer keeps all 39 source nodes and all 38 original math segments',()=>{

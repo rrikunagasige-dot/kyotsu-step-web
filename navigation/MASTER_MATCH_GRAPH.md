@@ -1,3 +1,22 @@
+<!-- W_GOV_012_CURRENT -->
+## CURRENT — 作成／修正の共通基盤：CODE＋AI＋主担当と2子agent
+
+実装コードは `31b87bd37c2f4837e57c5d6b6c88241ec2a44f04`（`work/workflow-team-construction-20261026`）。mainは現在地の正本で、実装の取得はこの固定sourceを使う。main内の旧workflowコードを新機能の実装済みコードと取り違え、一括mergeで置換しない。
+
+[実行仕様](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/31b87bd37c2f4837e57c5d6b6c88241ec2a44f04/workflow/TEAM_PROTOCOL.md) ／ [C/R工程への配置](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/31b87bd37c2f4837e57c5d6b6c88241ec2a44f04/workflow/INTEGRATION_RUNBOOK.md) ／ [実装記録](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/31b87bd37c2f4837e57c5d6b6c88241ec2a44f04/work/items/W-GOV-012-three-agent-orchestration/IMPLEMENTATION.md)。
+
+- 新規教材Workはproduction/2＋team/1。入口は既存「修正」「作成」。Mが範囲・正式claim・Store・統合を持ち、2子agentが工程別に作者／非作者審査者を交代する。Mの統合も審査する。
+- 実task／原報告／作者／対象hashを結合。改名・別block・旧target・未完了resolver・未解決省略によるPASSを拒否。実画像承認の別gateは追加しない。
+- construction-layout/1は型付き式中部品・有限候補検算・三状態・実測・意味審査を既存工程へ追加。AIが教え方を決め、CODEが型・数学・描画契約を検査する。
+- ローカルNode111、workflow190、corpus31、authoring35+4、build、最終境界51を確認。固定sourceの主要CI [40289658345](https://github.com/rrikunagasige-dot/kyotsu-step-web/actions/runs/40289658345) SUCCESS。追加のN08/N11回帰は同jsonの個別状態を参照。相互レビューも実施したがモデル独立性・盲検・OS分離を保証しない。
+- N08のactive教材／公開appはc4e7133aのまま。c4への範囲付き否定指摘は未解決で、W040のr6教材・reader・保存移行・公開への適用は次の段階。基盤の完成を教材品質の受入へ変えない。
+- 旧版、他単元、既存catalog/modelのOFFLINE_ONLYを保持。本番追加fit・新Goldなし。
+- このプロジェクトの返答は日本語。中国語は本人が明示的に許可したときのみ。
+
+[実装済みの役割火柴図](https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/main/work/items/W-GOV-012-three-agent-orchestration/IMPLEMENTED_FIRE_DIAGRAM.md)。
+
+以下は以前の履歴。
+
 <!-- W039_CURRENT_START -->
 ## CURRENT — N08の通常変形を実装・公開（2026-10-26）
 

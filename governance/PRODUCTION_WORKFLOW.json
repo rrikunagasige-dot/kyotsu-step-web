@@ -8,34 +8,41 @@
   "implementation": {
     "repository": "rrikunagasige-dot/kyotsu-step-web",
     "repoId": 1391122224,
-    "sourceSHA": "c4e7133a4fd3def11771077379aacc6e19d3445b",
-    "branch": "work/n08-grouped-transformations-20261026",
+    "sourceSHA": "31b87bd37c2f4837e57c5d6b6c88241ec2a44f04",
+    "branch": "work/workflow-team-construction-20261026",
     "entry": "workflow/INTEGRATION_RUNBOOK.md",
-    "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/c4e7133a4fd3def11771077379aacc6e19d3445b/workflow/INTEGRATION_RUNBOOK.md"
+    "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/31b87bd37c2f4837e57c5d6b6c88241ec2a44f04/workflow/INTEGRATION_RUNBOOK.md",
+    "teamProtocol": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/31b87bd37c2f4837e57c5d6b6c88241ec2a44f04/workflow/TEAM_PROTOCOL.md"
   },
   "verification": {
-    "runId": 40272765258,
-    "sourceSHA": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+    "sourceSHA": "31b87bd37c2f4837e57c5d6b6c88241ec2a44f04",
+    "status": "VERIFIED",
+    "nodeTests": 111,
+    "workflowTests": 190,
+    "corpusTests": 31,
+    "authoringNodeTests": 35,
+    "authoringVitestTests": 4,
+    "build": "PASS",
+    "finalBoundaryRecheck": 51,
     "conclusion": "success",
-    "workflowTests": 139,
-    "learnerTests": 620,
-    "mathAndAdversarialTests": 88,
-    "componentTests": 12,
-    "priorN08SaveTests": 7,
-    "priorThreeUnitTests": 19,
-    "sourceContextTests": 21,
-    "authoringChecks": 39,
-    "browserWidths": [
-      320,
-      390,
-      430,
-      1440
-    ],
-    "N08CorrectPerWidth": 34,
-    "N08WrongPerWidth": 80,
-    "N11CorrectPerWidth": 39,
-    "N11WrongPerWidth": 109,
-    "priorN08ReaderFreezeAssertion": "Historical W038 test retained and explicitly superseded by approved W039 reader work;7 new fallback/projection tests required"
+    "runId": 40289658345,
+    "primaryCI": {
+      "runId": 40289658345,
+      "sourceSHA": "31b87bd37c2f4837e57c5d6b6c88241ec2a44f04",
+      "conclusion": "success"
+    },
+    "auxiliaryCI": [
+      {
+        "runId": 40289658355,
+        "status": "in_progress",
+        "name": "Ordinary transformation/N11"
+      },
+      {
+        "runId": 40289658242,
+        "status": "in_progress",
+        "name": "N08/N11 browser regression"
+      }
+    ]
   },
   "reviewSurface": "existing-public-app",
   "screenshotApprovalRequired": false,
@@ -44,7 +51,7 @@
   "modelStatus": "OFFLINE_ONLY",
   "newLessonAccepted": false,
   "protectedAppSource": "c4e7133a4fd3def11771077379aacc6e19d3445b",
-  "adoption": "W039/P001 explicitly approved by 「いいよまず実装してくれ」. Four bounded N08 numeric chains,11 unchanged math answers and2 prose overrides implemented and public-source verified. Native G3_HOST@n08 PASS; G3_FINAL@n08 awaits actual user app evaluation. Original r5/r4 and published N11 retained. No new model fit or quality labels.",
+  "adoption": "Shared C/R foundation explicitly approved and implemented. Global team/code/AI contracts are separate from active N08 lesson application and user lesson acceptance.",
   "legacyVersions": [
     "production/1",
     "legacy/1"
@@ -112,24 +119,7 @@
       "event": "W033-N08-APP-ACCEPTED-20261025"
     }
   },
-  "currentWork": {
-    "id": "W-MATH-039",
-    "proposal": "P-001",
-    "status": "VERIFYING",
-    "node": "G3_FINAL@n08",
-    "blocks": [
-      "n08"
-    ],
-    "branch": "work/n08-grouped-transformations-20261026",
-    "learnerSourceSHA": "c4e7133a4fd3def11771077379aacc6e19d3445b",
-    "userAccepted": false,
-    "concreteDesignApproved": true,
-    "approvalEvent": "W039-P001-MATERIALIZED-APPROVAL-20261026",
-    "approvalQuote": "いいよまず実装してくれ",
-    "native": "R01-R06,R07_VERIFY,R07_SEMANTIC,G2_AUDIT,G3_HOST PASS",
-    "originalApprovalHash": "c27fd866666af45d35893bac52747ea33b710a4ea4a040ac82be90afacb491ee",
-    "recordsSourceSHA": "0401a9241671011c415f91f7f429368e80438037"
-  },
+  "currentWork": "W-GOV-012",
   "currentLearnerVerification": {
     "sourceSHA": "fa0eff271a97940fad08d83960ae50faeabc81b9",
     "runId": 40172128752,
@@ -206,19 +196,21 @@
   "previousImplementation": {
     "repository": "rrikunagasige-dot/kyotsu-step-web",
     "repoId": 1391122224,
-    "sourceSHA": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
-    "branch": "work/transformation-groups-implementation-20261026",
+    "sourceSHA": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+    "branch": "work/n08-grouped-transformations-20261026",
     "entry": "workflow/INTEGRATION_RUNBOOK.md",
-    "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/aef34919e630c3772c8ad4329f0aa01dec63e6fe/workflow/INTEGRATION_RUNBOOK.md"
+    "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/c4e7133a4fd3def11771077379aacc6e19d3445b/workflow/INTEGRATION_RUNBOOK.md"
   },
   "previousVerification": {
-    "runId": 40268196468,
-    "sourceSHA": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
+    "runId": 40272765258,
+    "sourceSHA": "c4e7133a4fd3def11771077379aacc6e19d3445b",
     "conclusion": "success",
     "workflowTests": 139,
     "learnerTests": 620,
-    "mathAndAdversarialTests": 69,
-    "componentTests": 6,
+    "mathAndAdversarialTests": 88,
+    "componentTests": 12,
+    "priorN08SaveTests": 7,
+    "priorThreeUnitTests": 19,
     "sourceContextTests": 21,
     "authoringChecks": 39,
     "browserWidths": [
@@ -227,9 +219,11 @@
       430,
       1440
     ],
+    "N08CorrectPerWidth": 34,
+    "N08WrongPerWidth": 80,
     "N11CorrectPerWidth": 39,
     "N11WrongPerWidth": 109,
-    "fixtureBrowserCases": 32
+    "priorN08ReaderFreezeAssertion": "Historical W038 test retained and explicitly superseded by approved W039 reader work;7 new fallback/projection tests required"
   },
   "boundedExtension": {
     "work": "W-MATH-039",
@@ -311,5 +305,19 @@
     ],
     "approvalEvent": "W035-P001-APPROVED-20261025"
   },
-  "recordsSourceSHA": "0401a9241671011c415f91f7f429368e80438037"
+  "recordsSourceSHA": "0401a9241671011c415f91f7f429368e80438037",
+  "teamPolicy": {
+    "schemaVersion": "team/1",
+    "maxActiveSubagents": 2,
+    "storeWriter": "M",
+    "oldWorks": "explicit policy migration with original history retained"
+  },
+  "constructionPipeline": "construction-layout/1",
+  "nextWork": "W-MATH-040",
+  "N08QualityStatus": "SCOPED_NEGATIVE_CONSTRUCTION_AND_LAYOUT_APPLICATION_PENDING",
+  "teamProposal": "W-GOV-012/P-001",
+  "sharedFoundationScopes": [
+    "CMD-WORK-001",
+    "CMD-WORK-002"
+  ]
 }

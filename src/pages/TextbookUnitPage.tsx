@@ -693,7 +693,7 @@ export function TextbookUnitPage() {
       return <N08Revision5Page originalMathLayout={params.get('layout') === 'original'} />
     }
   }
-  return <ActiveTextbookUnitPage />
+  return <ActiveTextbookUnitPage key={unitId} />
 }
 
 function ActiveTextbookUnitPage() {

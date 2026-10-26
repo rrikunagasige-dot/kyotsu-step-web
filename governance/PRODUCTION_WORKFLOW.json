@@ -8,29 +8,30 @@
   "implementation": {
     "repository": "rrikunagasige-dot/kyotsu-step-web",
     "repoId": 1391122224,
-    "sourceSHA": "058c4ea32474b563487292b583f7a01df4f9c4f1",
-    "branch": "work/n07-semantic-repair-proposal-20261025",
+    "sourceSHA": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
+    "branch": "work/transformation-groups-implementation-20261026",
     "entry": "workflow/INTEGRATION_RUNBOOK.md",
-    "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/058c4ea32474b563487292b583f7a01df4f9c4f1/workflow/INTEGRATION_RUNBOOK.md"
+    "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/aef34919e630c3772c8ad4329f0aa01dec63e6fe/workflow/INTEGRATION_RUNBOOK.md"
   },
   "verification": {
-    "runId": 40157340081,
-    "sourceSHA": "058c4ea32474b563487292b583f7a01df4f9c4f1",
+    "runId": 40268196468,
+    "sourceSHA": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
     "conclusion": "success",
-    "workflowTests": 131,
-    "newIntegrationTests": 42,
+    "workflowTests": 139,
     "learnerTests": 620,
+    "mathAndAdversarialTests": 69,
+    "componentTests": 6,
+    "sourceContextTests": 21,
+    "authoringChecks": 39,
     "browserWidths": [
       320,
       390,
       430,
       1440
     ],
-    "additionalRepairWorkflowTests": 9,
-    "authoringChecks": 39,
-    "repairNodeTests": 6,
-    "corpusMLSourceTests": 11,
-    "diagramPanels": 5
+    "N11CorrectPerWidth": 39,
+    "N11WrongPerWidth": 109,
+    "fixtureBrowserCases": 32
   },
   "reviewSurface": "existing-public-app",
   "screenshotApprovalRequired": false,
@@ -39,29 +40,20 @@
   "modelStatus": "OFFLINE_ONLY",
   "newLessonAccepted": false,
   "protectedAppSource": "fa0eff271a97940fad08d83960ae50faeabc81b9",
-  "adoption": "Approved seven-point N09/N10 repair publicly verified; scoped app acceptance remains pending.",
+  "adoption": "W038 ordinary-transformation infrastructure and N11 scoped pilot verified. Existing Pages publication authorized and pending. Original grading and accepted scope protected.",
   "legacyVersions": [
     "production/1",
     "legacy/1"
   ],
   "repairProposal": "W-MATH-035/P-001",
-  "previousPublishedAppSource": "cb7d30bfe666b9123ea51e1fad7e36268507b674",
+  "previousPublishedAppSource": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
   "acceptedFirstTitle": "22bc43ba53fa87bb85e82e18a25db13a5c8a485c",
   "publication": {
-    "runId": 40172534338,
-    "workflowSHA": "3630df565c0f30f770af2238fa34841ca0528df6",
-    "sourceSHA": "fa0eff271a97940fad08d83960ae50faeabc81b9",
-    "status": "success",
-    "sourceVerified": true,
-    "userAccepted": false,
-    "units": [
-      "n09",
-      "n10"
-    ],
-    "urls": {
-      "n09": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=fa0eff27#/learning/textbook/math-numbers-expressions-n09",
-      "n10": "https://rrikunagasige-dot.github.io/kyotsu-step-web/?v=fa0eff27#/learning/textbook/math-numbers-expressions-n10"
-    }
+    "status": "pending",
+    "sourceSHA": "aef34919e630c3772c8ad4329f0aa01dec63e6fe",
+    "unit": "n11",
+    "sourceVerified": false,
+    "userAccepted": false
   },
   "metadataGovernanceScope": "Whole-repository Markdown metadata checker is not claimed PASS; immutable approved N08 design and legacy metadata limits are recorded in W-MATH-033/FINDINGS.md. N07 acceptance remains scoped to W-MATH-032.",
   "acceptance": {
@@ -199,5 +191,43 @@
     "repairWork": "W-MATH-035",
     "repairSourceSHA": "fa0eff271a97940fad08d83960ae50faeabc81b9",
     "internalRepairStatus": "VERIFIED_AWAITING_SCOPED_APP_EVALUATION"
+  },
+  "previousImplementation": {
+    "repository": "rrikunagasige-dot/kyotsu-step-web",
+    "repoId": 1391122224,
+    "sourceSHA": "058c4ea32474b563487292b583f7a01df4f9c4f1",
+    "branch": "work/n07-semantic-repair-proposal-20261025",
+    "entry": "workflow/INTEGRATION_RUNBOOK.md",
+    "url": "https://github.com/rrikunagasige-dot/kyotsu-step-web/blob/058c4ea32474b563487292b583f7a01df4f9c4f1/workflow/INTEGRATION_RUNBOOK.md"
+  },
+  "previousVerification": {
+    "runId": 40157340081,
+    "sourceSHA": "058c4ea32474b563487292b583f7a01df4f9c4f1",
+    "conclusion": "success",
+    "workflowTests": 131,
+    "newIntegrationTests": 42,
+    "learnerTests": 620,
+    "browserWidths": [
+      320,
+      390,
+      430,
+      1440
+    ],
+    "additionalRepairWorkflowTests": 9,
+    "authoringChecks": 39,
+    "repairNodeTests": 6,
+    "corpusMLSourceTests": 11,
+    "diagramPanels": 5
+  },
+  "boundedExtension": {
+    "work": "W-MATH-038",
+    "proposal": "P-001",
+    "solutionPipeline": "solution/1",
+    "transformationPlan": "transformation-plan/1",
+    "legacyBridge": "N11 revision11 only; unknown source requires mapping",
+    "activation": "explicit opt-in sidecar; N11 stage05-06",
+    "modelStatus": "OFFLINE_ONLY",
+    "newFit": false,
+    "qualityAccepted": false
   }
 }

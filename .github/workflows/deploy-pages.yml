@@ -18,14 +18,14 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     env:
-      CANDIDATE_SHA: 1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c
-      VITE_PREVIEW_COMMIT: 1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c
+      CANDIDATE_SHA: aef34919e630c3772c8ad4329f0aa01dec63e6fe
+      VITE_PREVIEW_COMMIT: aef34919e630c3772c8ad4329f0aa01dec63e6fe
       VITE_STORAGE_NAMESPACE: kyotsu-step-gate3-math-20261023
       VITE_BASE_PATH: /kyotsu-step-web/
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c
+          ref: aef34919e630c3772c8ad4329f0aa01dec63e6fe
           fetch-depth: 0
           persist-credentials: false
       - uses: pnpm/action-setup@v4
@@ -45,13 +45,15 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y pandoc
       - run: python -m pip install -r tools/textbook/research/requirements-solution.txt numpy==2.3.5 scikit-learn==1.8.0 lxml==6.1.1
-      - run: node work/items/W-MATH-037-n08-workflow-trial/release_manifest.mjs --check
+      - run: node work/items/W-MATH-038-transformation-groups/release_manifest.mjs --check
       - run: node --test tools/textbook/tests/n08-bundle.test.mjs tools/textbook/tests/solution-v2.test.mjs tools/textbook/tests/solution-regressions.test.mjs
       - run: python -m unittest discover -s tools/textbook/tests -p '*_test.py' -q
       - run: pnpm exec vitest run --config work/items/W-MATH-037-n08-workflow-trial/vitest.config.mjs
       - run: pnpm exec vitest run --config work/items/W-MATH-036-ne02-n11-n12-guided-design/vitest.config.mjs
       - run: pnpm exec vitest run --exclude src/data/physicsTaxonomy.test.ts --exclude src/domain/questionSchema.test.ts
       - run: pnpm run test:textbook-authoring
+      - run: node --test tools/textbook/tests/transformation.test.mjs
+      - run: pnpm exec vitest run --config work/items/W-MATH-038-transformation-groups/vitest.config.mjs
       - run: pnpm run build
       - run: node work/items/W-MATH-003-numbers-expressions-creation/NE01_NE02/export-runtime.mjs
       - run: node work/items/W-MATH-037-n08-workflow-trial/release_manifest.mjs
@@ -60,7 +62,7 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
-      - name: Publish approved N08 while retaining revision 4
+      - name: Publish approved N11 grouping while retaining N08 revisions4/5
         id: deployment
         uses: actions/deploy-pages@v4
       - name: Exact public source, all N08 choices and old-version preservation
@@ -81,6 +83,10 @@ jobs:
             EVIDENCE_DIR=/tmp/w37-hosted node work/items/W-MATH-033-n08-absolute-value/verify_app.mjs
           fi
           EVIDENCE_DIR=/tmp/w37-hosted-protected node work/items/W-MATH-035-choice-order-factor-audit/verify_display.mjs
+      - name: Exact public N11 grouped solution, all choices and original layout
+        env:
+          APP_URL: ${{ steps.deployment.outputs.page_url }}
+        run: EVIDENCE_DIR=/tmp/w38-hosted node work/items/W-MATH-038-transformation-groups/verify_app.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -88,3 +94,4 @@ jobs:
           path: |
             /tmp/w37-hosted
             /tmp/w37-hosted-protected
+            /tmp/w38-hosted

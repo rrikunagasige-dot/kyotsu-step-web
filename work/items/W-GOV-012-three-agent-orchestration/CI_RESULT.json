@@ -1,0 +1,37 @@
+{
+  "sourceSHA": "31b87bd37c2f4837e57c5d6b6c88241ec2a44f04",
+  "primary": {
+    "id": 40289658345,
+    "conclusion": "success"
+  },
+  "auxiliary": [
+    {
+      "id": 40289658355,
+      "status": "in_progress",
+      "classification": "ENVIRONMENT_WAIT_APT",
+      "notReportedAsSuccess": true,
+      "overlappingN11Coverage": 40289658242
+    },
+    {
+      "id": 40289658242,
+      "status": "completed",
+      "conclusion": "success",
+      "jobId": 121461462923
+    }
+  ],
+  "priorFailures": [
+    {
+      "sourceSHA": "678b12444daff89f57d6590af3c76a63d4f51a59",
+      "runId": 40288785123,
+      "reason": "Test depended on non-exported proposal contract; extracted portable math-only fixture."
+    },
+    {
+      "sourceSHA": "c442ec4ef3c3967f9cf5368185f5ddcfa142d5fc",
+      "runId": 40289146363,
+      "reason": "Read-only probe needed the newly mandatory team policy; explicit policy added."
+    }
+  ],
+  "mainMetadataSHA": "185da0e99fab041ec68bb114f22bd2e783809ea7",
+  "publishedAppSourceUnchanged": "c4e7133a4fd3def11771077379aacc6e19d3445b",
+  "cancellationAvailableInConnector": false
+}

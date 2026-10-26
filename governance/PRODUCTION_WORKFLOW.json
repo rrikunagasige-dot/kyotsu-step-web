@@ -33,16 +33,31 @@
     },
     "auxiliaryCI": [
       {
-        "runId": 40289658355,
+        "id": 40289658355,
         "status": "in_progress",
-        "name": "Ordinary transformation/N11"
+        "classification": "ENVIRONMENT_WAIT_APT",
+        "notReportedAsSuccess": true,
+        "overlappingN11Coverage": 40289658242
       },
       {
-        "runId": 40289658242,
-        "status": "in_progress",
-        "name": "N08/N11 browser regression"
+        "id": 40289658242,
+        "status": "completed",
+        "conclusion": "success",
+        "jobId": 121461462923
       }
-    ]
+    ],
+    "protectedBrowserCI": {
+      "runId": 40289658242,
+      "jobId": 121461462923,
+      "conclusion": "success",
+      "sourceSHA": "31b87bd37c2f4837e57c5d6b6c88241ec2a44f04",
+      "widths": [
+        320,
+        390,
+        430,
+        1440
+      ]
+    }
   },
   "reviewSurface": "existing-public-app",
   "screenshotApprovalRequired": false,

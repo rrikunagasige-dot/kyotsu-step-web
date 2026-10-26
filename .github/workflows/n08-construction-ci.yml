@@ -31,6 +31,10 @@ jobs:
           python-version: '3.11'
       - run: pnpm install --frozen-lockfile --ignore-scripts
       - run: python -m pip install -r tools/textbook/research/requirements-solution.txt numpy==2.3.5 scikit-learn==1.8.0 lxml==6.1.1
+      - name: Existing Word adapter and Japanese font dependencies
+        run: |
+          timeout 120s sudo apt-get update -qq
+          timeout 180s sudo apt-get install -y pandoc fonts-noto-cjk
       - name: Construction, layout, original math and workflow contracts
         run: |
           pnpm run test:production-workflow

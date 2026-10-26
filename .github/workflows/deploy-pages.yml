@@ -90,6 +90,22 @@ jobs:
             EVIDENCE_DIR=/tmp/w37-hosted node work/items/W-MATH-033-n08-absolute-value/verify_app.mjs
           fi
           EVIDENCE_DIR=/tmp/w37-hosted-protected node work/items/W-MATH-035-choice-order-factor-audit/verify_display.mjs
+      - name: Await figure decoding in public verification only
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib
+          p=Path('work/items/W-MATH-038-transformation-groups/verify_app.mjs')
+          old='im=>im.complete&&im.naturalWidth>0'
+          new="async im=>{await Promise.race([im.decode(),new Promise((_,reject)=>setTimeout(()=>reject(Error('FIGURE_DECODE_TIMEOUT')),30000))]);return im.complete&&im.naturalWidth>0}"
+          s=p.read_text()
+          if old in s:
+              assert s.count(old)==1
+              p.write_text(s.replace(old,new))
+          else:
+              assert new in s
+          print('Verification-only harness SHA256',hashlib.sha256(p.read_bytes()).hexdigest())
+          PY
       - name: Exact public N11 grouped solution, all choices and original layout
         env:
           APP_URL: ${{ steps.deployment.outputs.page_url }}

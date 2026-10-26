@@ -1,0 +1,125 @@
+{
+  "status": "PROPOSAL_SOURCE_AUDIT",
+  "date": "2026-10-26",
+  "repository": "rrikunagasige-dot/kyotsu-step-web",
+  "repositoryId": 1391122224,
+  "inspectedBaseCommit": "1d543b43e0b7bf5b05eae20d2a159c339facbdc8",
+  "observedMainCommit": "5142b5989df34926997125307062bd159733cfb9",
+  "publicSourceCommit": "1e8d2ae4ea21b3ad5c4e2582fb806f56e86ce19c",
+  "files": [
+    {
+      "path": "tools/textbook/solution/graph.mjs",
+      "sha256": "84bc025fe8cbf81653ac0e990d9ce87c30af30aff592a2f6919f39d9fa7a614d"
+    },
+    {
+      "path": "tools/textbook/solver/solution.py",
+      "sha256": "ce0f52edb59df4ba316e710888aae9a2ff85a1ae8041df434598421b73a9bda5"
+    },
+    {
+      "path": "tools/textbook/solution/bundle.mjs",
+      "sha256": "f39addfacba772374ef28e42d6c541cc179c75a1e3ad02bee88b2900ee1c1679"
+    },
+    {
+      "path": "tools/textbook/solver/bundle.py",
+      "sha256": "1cf7f75c2c2e417a2d18af0c3c7c1dd8b6b388fd943ce7f94146b3e77db87e21"
+    },
+    {
+      "path": "tools/textbook/interaction/plan.mjs",
+      "sha256": "ed38635fa65b9777e6f5ee7b0d619af5c6bca55323c51be6c17893457fb72a40"
+    },
+    {
+      "path": "tools/textbook/ir/index.mjs",
+      "sha256": "f4dc507498c31c5135f4e7623916683b3b544513ca7105fbd45b895a86cd53f8"
+    },
+    {
+      "path": "tools/textbook/ir/v2.mjs",
+      "sha256": "c3835c6b8302ddeab7a5af050a4caeedd6150b9fb328125d05ab76ce3253828d"
+    },
+    {
+      "path": "tools/textbook/ai/solution-review.mjs",
+      "sha256": "94f8e89174fc9598ead6e4c3ddbdcaf27884fd8d2e609216bcc9bef2fcf63959"
+    },
+    {
+      "path": "tools/textbook/operations.mjs",
+      "sha256": "63592af769bcd2025e9d9851d88360c76b18041a316fec67844bc415e3a434e6"
+    },
+    {
+      "path": "workflow/capabilities.py",
+      "sha256": "d2798d9207f81c96c0c46e893f8d54a7e96ff2fdfdab176fa9ac9a604e3b2804"
+    },
+    {
+      "path": "workflow/integration.py",
+      "sha256": "3e01fa828c33feabd578509d1ddbbf5d13cf10ea81440041c0bf6cb5a436abdd"
+    },
+    {
+      "path": "tools/textbook/corpus/solution_context.py",
+      "sha256": "de9fca5a5cb82d88e0d6e4933bfe2f7e5265957ba137e0b824da6621b02a4d66"
+    },
+    {
+      "path": "src/domain/solutionReading.ts",
+      "sha256": "c728f1e93b4381ab211810cc91a2dc417b6ab3c85f0d6e013ad142ea24a58cea"
+    },
+    {
+      "path": "src/components/textbook/SolutionReadingFlow.tsx",
+      "sha256": "60d5f16c3f9ace816899fb049cf1e013e0dfc221bfc8ca82e858fba2f936f164"
+    },
+    {
+      "path": "src/components/textbook/GuidedMathReadingFlow.tsx",
+      "sha256": "671e4bc63a07261f4a69512adaff086f5e0c198edcfcf17c597e9162afdbd2c9"
+    },
+    {
+      "path": "src/components/textbook/N08SolutionReadingFlow.tsx",
+      "sha256": "c53949eb6bb4cf4e640d077225b1f9d17b2d10cfd04a4dbb664ed32858c06d23"
+    },
+    {
+      "path": "src/components/textbook/TypesetFormula.tsx",
+      "sha256": "3ef2270ea4b0764afe6709d1f91c888a5e91786e287acfab04a6a9669d1fd6fc"
+    },
+    {
+      "path": "src/components/textbook/typesetRows.ts",
+      "sha256": "d82a54ea7dbc2c5159f15b9622d5c3701e3cd85fb324f7f0a42e2c89f185a1ad"
+    },
+    {
+      "path": "src/components/textbook/NumberedEquation.tsx",
+      "sha256": "3e14160204979588afb4c2ef01815453f65adfc7a1ba440f0be41fc2d29ca96a"
+    },
+    {
+      "path": "src/pages/TextbookUnitPage.tsx",
+      "sha256": "d9e909795e78c2cb737a8f0c06087ef9fdc17fa15a3a9880b63a3a8c9114d3a1"
+    },
+    {
+      "path": "src/data/textbook/math/numbers/n11Authored.json",
+      "sha256": "ae3823163ac23bb334ac02a6c868bbd1273b8b6f1f65c77cde6f751773900a74"
+    }
+  ],
+  "findings": [
+    {
+      "id": "OBS-01",
+      "kind": "implementation-observation",
+      "finding": "Existing per-node readers do not provide an independent ordinary-transformation display plan."
+    },
+    {
+      "id": "OBS-02",
+      "kind": "implementation-observation",
+      "finding": "TypesetFormula equation rows currently render a hardcoded equality sign; new inequality rows require a typed relation path."
+    },
+    {
+      "id": "OBS-03",
+      "kind": "AI-discovered-candidate",
+      "nodeId": "n11-05",
+      "finding": "The after text tells the divisor 3 before n11-q06-operation asks the learner to select it. Not a user negative label."
+    },
+    {
+      "id": "OBS-04",
+      "kind": "compatibility-contract",
+      "finding": "Preserve N11 revision11, existing stage IDs and all39 grading contracts. Presentation version is separate."
+    }
+  ],
+  "userPolicy": {
+    "ordinaryTransformations": "Group connected transformations; selectively mask meaningful decisions; avoid duplicate terminal answer.",
+    "olderConceptLayouts": "Remain valid; do not apply a global compression rule.",
+    "qualityAcceptanceInferred": false
+  },
+  "implementationChanged": false,
+  "modelFitPerformed": false
+}

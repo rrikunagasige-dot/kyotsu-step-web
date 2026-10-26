@@ -1,0 +1,543 @@
+{
+  "status": "DESIGN_ONLY_NOT_RUNTIME_INPUT",
+  "note": "Planned schema example; no production parser/validator or AI-review receipt is claimed. Author-only expected values must never enter visible review snapshots.",
+  "schemaVersion": "transformation-plan/1",
+  "unitId": "example-linear",
+  "baseIRHash": "TO_BE_BOUND_TO_IMPLEMENTED_FIXTURE_IR",
+  "patternId": "T04",
+  "scope": {
+    "problemId": "p01",
+    "assumptionRefs": [
+      "x-real"
+    ]
+  },
+  "sourceRefs": {
+    "own-fixture-01": "User-provided arithmetic example; not the N11 source problem."
+  },
+  "facts": {
+    "x-real": "x is real",
+    "given-S0": "given S0",
+    "S2-after-A": "state S2 available only after A"
+  },
+  "states": [
+    {
+      "id": "S0",
+      "lhs": "3x+2",
+      "relation": "le",
+      "rhs": "5",
+      "assumptionRefs": [
+        "x-real"
+      ]
+    },
+    {
+      "id": "S1",
+      "lhs": "3x+2-2",
+      "relation": "le",
+      "rhs": "5-2",
+      "assumptionRefs": [
+        "x-real"
+      ]
+    },
+    {
+      "id": "S2",
+      "lhs": "3x",
+      "relation": "le",
+      "rhs": "3",
+      "assumptionRefs": [
+        "x-real"
+      ]
+    },
+    {
+      "id": "S3",
+      "lhs": "(3x)/3",
+      "relation": "le",
+      "rhs": "3/3",
+      "assumptionRefs": [
+        "x-real"
+      ]
+    },
+    {
+      "id": "S4",
+      "lhs": "x",
+      "relation": "le",
+      "rhs": "1",
+      "assumptionRefs": [
+        "x-real"
+      ]
+    }
+  ],
+  "atoms": [
+    {
+      "id": "a01",
+      "from": "S0",
+      "to": "S1",
+      "rule": "subtract-both-sides",
+      "operand": "2",
+      "assumptionRefs": [
+        "x-real"
+      ]
+    },
+    {
+      "id": "a02",
+      "from": "S1",
+      "to": "S2",
+      "rule": "simplify",
+      "assumptionRefs": [
+        "x-real"
+      ]
+    },
+    {
+      "id": "a03",
+      "from": "S2",
+      "to": "S3",
+      "rule": "divide-both-sides",
+      "operand": "3",
+      "condition": "3>0",
+      "assumptionRefs": [
+        "x-real"
+      ]
+    },
+    {
+      "id": "a04",
+      "from": "S3",
+      "to": "S4",
+      "rule": "simplify",
+      "assumptionRefs": [
+        "x-real"
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "display-p01-solve",
+      "kind": "relation-sequence",
+      "stepRefs": [
+        "a01",
+        "a02",
+        "a03",
+        "a04"
+      ],
+      "initialStateRef": "S0",
+      "rowStateRefs": [
+        "S0",
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "boundaryReason": "same-problem-and-assumptions",
+      "numbering": {
+        "id": "display-number-p01",
+        "mode": "group-end"
+      },
+      "conclusion": {
+        "kind": "terminal-in-flow",
+        "stateRef": "S4"
+      },
+      "rows": [
+        {
+          "rowId": "r0",
+          "statementRef": "S0",
+          "stepRefs": [],
+          "sourceRefs": [
+            "own-fixture-01"
+          ],
+          "lhsParts": [
+            {
+              "kind": "math",
+              "latex": "3x+2"
+            }
+          ],
+          "relation": "le",
+          "rhsParts": [
+            {
+              "kind": "math",
+              "latex": "5"
+            }
+          ],
+          "assumptionRefs": [
+            "x-real"
+          ],
+          "visibleAfter": [],
+          "activeInteractionRef": null
+        },
+        {
+          "rowId": "r1",
+          "statementRef": "S1",
+          "stepRefs": [
+            "a01"
+          ],
+          "sourceRefs": [
+            "own-fixture-01"
+          ],
+          "lhsParts": [
+            {
+              "kind": "math",
+              "latex": "3x+2-2"
+            }
+          ],
+          "relation": "le",
+          "rhsParts": [
+            {
+              "kind": "math",
+              "latex": "5-2"
+            }
+          ],
+          "assumptionRefs": [
+            "x-real"
+          ],
+          "visibleAfter": [],
+          "activeInteractionRef": "A",
+          "maskedParts": {
+            "lhs": [
+              {
+                "kind": "math",
+                "latex": "3x+2-"
+              },
+              {
+                "kind": "slot",
+                "slotId": "A-left",
+                "interactionRef": "A"
+              }
+            ],
+            "relation": "le",
+            "rhs": [
+              {
+                "kind": "math",
+                "latex": "5-"
+              },
+              {
+                "kind": "slot",
+                "slotId": "A-right",
+                "interactionRef": "A"
+              }
+            ]
+          }
+        },
+        {
+          "rowId": "r2",
+          "statementRef": "S2",
+          "stepRefs": [
+            "a02"
+          ],
+          "sourceRefs": [
+            "own-fixture-01"
+          ],
+          "lhsParts": [
+            {
+              "kind": "math",
+              "latex": "3x"
+            }
+          ],
+          "relation": "le",
+          "rhsParts": [
+            {
+              "kind": "math",
+              "latex": "3"
+            }
+          ],
+          "assumptionRefs": [
+            "x-real"
+          ],
+          "visibleAfter": [
+            "A"
+          ],
+          "activeInteractionRef": null
+        },
+        {
+          "rowId": "r3",
+          "statementRef": "S3",
+          "stepRefs": [
+            "a03"
+          ],
+          "sourceRefs": [
+            "own-fixture-01"
+          ],
+          "lhsParts": [
+            {
+              "kind": "math",
+              "latex": "(3x)/3"
+            }
+          ],
+          "relation": "le",
+          "rhsParts": [
+            {
+              "kind": "math",
+              "latex": "3/3"
+            }
+          ],
+          "assumptionRefs": [
+            "x-real"
+          ],
+          "visibleAfter": [
+            "A"
+          ],
+          "activeInteractionRef": "C",
+          "maskedParts": {
+            "lhs": {
+              "kind": "fraction",
+              "numerator": [
+                {
+                  "kind": "math",
+                  "latex": "3x"
+                }
+              ],
+              "denominator": [
+                {
+                  "kind": "slot",
+                  "slotId": "C-left",
+                  "interactionRef": "C"
+                }
+              ]
+            },
+            "relation": "le",
+            "rhs": {
+              "kind": "fraction",
+              "numerator": [
+                {
+                  "kind": "math",
+                  "latex": "3"
+                }
+              ],
+              "denominator": [
+                {
+                  "kind": "slot",
+                  "slotId": "C-right",
+                  "interactionRef": "C"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "rowId": "r4",
+          "statementRef": "S4",
+          "stepRefs": [
+            "a04"
+          ],
+          "sourceRefs": [
+            "own-fixture-01"
+          ],
+          "lhsParts": [
+            {
+              "kind": "math",
+              "latex": "x"
+            }
+          ],
+          "relation": "le",
+          "rhsParts": [
+            {
+              "kind": "math",
+              "latex": "1"
+            }
+          ],
+          "assumptionRefs": [
+            "x-real"
+          ],
+          "visibleAfter": [
+            "A",
+            "C"
+          ],
+          "activeInteractionRef": null
+        }
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "candidateId": "A",
+      "stepRef": "a01",
+      "targetPath": "both.operand",
+      "blankRole": "operand",
+      "learnerDecision": "定数部分を0にするために引く数を決める",
+      "availableFactRefs": [
+        "x-real",
+        "given-S0"
+      ],
+      "withheldDecision": "定数部分を0にするために引く数を決める",
+      "nextUseRef": "a02",
+      "taskContract": {
+        "kind": "select-number",
+        "requestedOperation": "subtract"
+      },
+      "bindings": [
+        {
+          "slotId": "A-left",
+          "rowId": "r1",
+          "targetPath": "lhs.operand"
+        },
+        {
+          "slotId": "A-right",
+          "rowId": "r1",
+          "targetPath": "rhs.operand"
+        }
+      ],
+      "prerequisiteInteractionIds": [],
+      "adopted": true,
+      "authorOnlyExpected": "2",
+      "reason": "操作を自分で決める判断を残す"
+    },
+    {
+      "candidateId": "B",
+      "stepRef": "a02",
+      "targetPath": "rhs",
+      "blankRole": "calculation",
+      "learnerDecision": "右辺の差を計算する",
+      "availableFactRefs": [
+        "x-real",
+        "given-S0"
+      ],
+      "withheldDecision": "右辺の差を計算する",
+      "nextUseRef": "a03",
+      "taskContract": {
+        "kind": "select-number",
+        "requestedOperation": "calculate"
+      },
+      "bindings": [],
+      "prerequisiteInteractionIds": [
+        "A"
+      ],
+      "adopted": false,
+      "authorOnlyExpected": "3",
+      "reason": "初回は操作判断に集中し、この計算は手本として示す"
+    },
+    {
+      "candidateId": "C",
+      "stepRef": "a03",
+      "targetPath": "both.divisor",
+      "blankRole": "operand",
+      "learnerDecision": "係数を1にする正の除数を決める",
+      "availableFactRefs": [
+        "x-real",
+        "S2-after-A"
+      ],
+      "withheldDecision": "係数を1にする正の除数を決める",
+      "nextUseRef": "a04",
+      "taskContract": {
+        "kind": "select-number",
+        "requestedOperation": "positive-divide"
+      },
+      "bindings": [
+        {
+          "slotId": "C-left",
+          "rowId": "r3",
+          "targetPath": "lhs.divisor"
+        },
+        {
+          "slotId": "C-right",
+          "rowId": "r3",
+          "targetPath": "rhs.divisor"
+        }
+      ],
+      "prerequisiteInteractionIds": [
+        "A"
+      ],
+      "adopted": true,
+      "authorOnlyExpected": "3",
+      "reason": "操作を自分で決める判断を残す"
+    },
+    {
+      "candidateId": "D",
+      "stepRef": "a04",
+      "targetPath": "rhs",
+      "blankRole": "calculation",
+      "learnerDecision": "商を計算する",
+      "availableFactRefs": [
+        "x-real",
+        "S2-after-A"
+      ],
+      "withheldDecision": "商を計算する",
+      "nextUseRef": "terminal",
+      "taskContract": {
+        "kind": "select-number",
+        "requestedOperation": "calculate"
+      },
+      "bindings": [],
+      "prerequisiteInteractionIds": [
+        "A"
+      ],
+      "adopted": false,
+      "authorOnlyExpected": "1",
+      "reason": "初回は操作判断に集中し、この計算は手本として示す"
+    }
+  ],
+  "frontiers": [
+    {
+      "name": "A-current",
+      "completed": [],
+      "visibleRows": [
+        "r0",
+        "r1"
+      ],
+      "maskedRows": [
+        "r1"
+      ],
+      "forbiddenRows": [
+        "r2",
+        "r3",
+        "r4"
+      ]
+    },
+    {
+      "name": "C-current",
+      "completed": [
+        "A"
+      ],
+      "visibleRows": [
+        "r0",
+        "r1",
+        "r2",
+        "r3"
+      ],
+      "maskedRows": [
+        "r3"
+      ],
+      "forbiddenRows": [
+        "r4"
+      ]
+    },
+    {
+      "name": "complete",
+      "completed": [
+        "A",
+        "C"
+      ],
+      "visibleRows": [
+        "r0",
+        "r1",
+        "r2",
+        "r3",
+        "r4"
+      ],
+      "maskedRows": [],
+      "forbiddenRows": []
+    }
+  ],
+  "prose": [
+    {
+      "placement": "group-lead",
+      "text": "左辺の定数項をなくすため、両辺から同じ数を引きます。",
+      "visibleAfter": []
+    },
+    {
+      "placement": "row-note",
+      "text": "次は、左辺をxだけにします。",
+      "visibleAfter": [
+        "A"
+      ]
+    },
+    {
+      "placement": "after-decision",
+      "text": "正の数で割ったので、不等号の向きは変わりません。",
+      "visibleAfter": [
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "forbiddenOutput": [
+    "3x+2≤5 = 3x≤3 = x≤1",
+    "a second terminal card containing only x≤1",
+    "future completed values in the current masked view"
+  ]
+}

@@ -56,9 +56,16 @@ jobs:
       - run: pnpm exec vitest run --config work/items/W-MATH-038-transformation-groups/vitest.config.mjs
       - run: pnpm run build
       - run: node work/items/W-MATH-003-numbers-expressions-creation/NE01_NE02/export-runtime.mjs
-      - run: node work/items/W-MATH-037-n08-workflow-trial/release_manifest.mjs
+      - run: node work/items/W-MATH-038-transformation-groups/release_manifest.mjs
       - run: pnpm exec playwright install --with-deps chromium
       - uses: actions/configure-pages@v5
+      - name: Verify exact release and presentation contract before upload
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          const m=JSON.parse(fs.readFileSync('dist/release.json')),p=JSON.parse(fs.readFileSync('src/data/textbook/math/numbers/n11Transformation.json'));
+          if(m.work!=='W-MATH-038'||m.sourceSHA!==process.env.CANDIDATE_SHA||m.transformation?.planHash!==p.planHash||m.transformation?.baseIRHash!==p.baseIRHash||m.storageKey!==process.env.VITE_STORAGE_NAMESPACE||m.oldN08?.revision!==4||m.activeN08Revision!==5)throw Error('RELEASE_CONTRACT_MISMATCH');
+          NODE
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist

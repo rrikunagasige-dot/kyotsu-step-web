@@ -1,0 +1,27 @@
+{
+  "sha": "988542626526ba84963b5927ce46ef6e00c80406",
+  "width": 320,
+  "original": "N11-Q13",
+  "steps": [
+    {
+      "id": "n11-p008-q13-mul-left",
+      "answer": "3",
+      "mark": "n11-formula-13"
+    },
+    {
+      "id": "n11-p008-q13-mul-right",
+      "answer": "3",
+      "mark": "n11-formula-13"
+    },
+    {
+      "id": "n11-13",
+      "answer": "6",
+      "mark": "n11-p008-q13-result"
+    },
+    {
+      "id": "n11-p008-q13-constant",
+      "answer": "3",
+      "mark": "n11-p008-q13-result"
+    }
+  ]
+}

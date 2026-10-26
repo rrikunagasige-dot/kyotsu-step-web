@@ -6,8 +6,11 @@ from sklearn.model_selection import GroupKFold
 from sklearn.metrics import precision_recall_fscore_support
 from ..corpus.core import digest,split_groups
 
-def train(rows,encoder,output):
+def train(rows,encoder,output,accepted_feature_schemas=None):
     from pathlib import Path
+    schemas={r.get('featureInputSchema', 'legacy') for r in rows}
+    if 'learner-visible-json/3' in schemas and not schemas <= set(accepted_feature_schemas or []):
+        raise ValueError('new visible schema requires explicit acceptedFeatureSchemas')
     started=time.monotonic();X=[];receipts=[]
     for row in rows:
         x,r=encoder.encode(row['text']);X.append(x);receipts.append({'rowId':row['id'],**r})
@@ -34,6 +37,7 @@ def train(rows,encoder,output):
     manifest={'schemaVersion':'quality-model/1','trainingRun':bool(heads),'trainingMethod':'frozen-pretrained-encoder + LogisticRegression.fit','encoder':encoder.manifest,'encoderHash':encoder.manifestHash,'featureSchema':encoder.manifest['featureSchema'],
         'datasetHash':digest(rows),'splitManifest':splits,'heads':heads,'omittedHeads':omitted,'evaluation':evaluations,'status':'OFFLINE_ONLY','advisoryEligible':False,
         'durationSeconds':time.monotonic()-started,'featureReceipts':receipts,'warning':'No unseen holdout; this run demonstrates learning, not production quality.'}
+    if 'learner-visible-json/3' in schemas: manifest['inputFeatureSchemas']=sorted(schemas)
     manifest['modelHash']=digest(manifest);Path(output).parent.mkdir(parents=True,exist_ok=True);Path(output).write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n');return manifest
 
 def finetune(rows,encoder,dimension,output):

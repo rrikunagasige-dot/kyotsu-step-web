@@ -24,6 +24,8 @@ def bundle_fingerprint(s, bundle):
     presentations = {b['id']: b['presentation_design_hash'] for b in blocks if b.get('presentation_design_hash')}
     if presentations:
         content['presentations'] = presentations
+    contracts = {b['id']: {key: b[key] for key in ('construction_design_hash', 'layout_design_hash', 'learner_copy_hash') if b.get(key)} for b in blocks}
+    if any(contracts.values()): content['construction_layout_contracts'] = contracts
     return digest(content)
 
 
@@ -50,6 +52,8 @@ def input_hash(rt, s, node):
     if node['stage_kind'] in ('C05_DESIGN', 'C06_APPROVAL', 'C07_BUILD', 'R04_PROPOSAL', 'R05_APPROVAL', 'R06_PATCH'):
         relevant_bundles=[a for a in p['approval_bundles'] if not node['block'] or node['block'] in a['block_ids']]
         base.update(scope=p['scope'],bundles=relevant_bundles,patches={b['id']:b.get('patch_hash',p['proposal'].get('patch_hash')) for b in blocks})
+    contract_hashes = {b['id']: {k: b[k] for k in ('construction_design_hash', 'layout_design_hash', 'learner_copy_hash') if b.get(k)} for b in blocks}
+    if any(contract_hashes.values()) and facets.intersection({'math', 'design', 'render'}): base['construction_layout_contracts'] = contract_hashes
     if node['phase'] in ('post-implementation', 'pre-release', 'release', 'acceptance', 'post-fix', 'repair-finalization', 'learning', 'closure'):
         paths = {path for b in blocks for path in b['sources']}
         base['candidate'] = {path: s['candidate_manifest'].get(path) for path in paths}
@@ -64,14 +68,16 @@ def input_hash(rt, s, node):
     if node['capability_requests']:
         from capabilities import implementation_hash
         base['services']=implementation_hash(rt)
+    if node.get('team_requirements'):
+        base['team_requirements'] = node['team_requirements']
     return digest(base)
 
 
-def compiled_design_matches(outputs, ir_hash, presentation_hash=None):
+def compiled_design_matches(outputs, ir_hash, presentation_hash=None, contracts=None):
     """Bind mathematical content and optional display plan in the same compiler output."""
     for output in outputs:
         compiled = output.get('compiled', output)
-        if compiled.get('irHash') == ir_hash and (presentation_hash is None or compiled.get('planHash') == presentation_hash):
+        if compiled.get('irHash') == ir_hash and (presentation_hash is None or compiled.get('planHash') == presentation_hash) and all(compiled.get(key) == value for key, value in (contracts or {}).items()):
             return True
     return False
 
@@ -80,6 +86,9 @@ def check_result(rt, work, node, result):
     from capabilities import implementation_hash
     from production import ai_request
     s = rt.state(work); result_check(node, result)
+    if s['plan'].get('agent_team'):
+        from team import check_collection
+        check_collection(rt, work, node, result)
     refs = result.get('capability_receipts', []); receipts = [rt.store.get(ref) for ref in refs]
     need(len(receipts) == len(node['capability_requests']) and {r.get('capability') for r in receipts} == set(node['capability_requests']), '工程のcode receiptが不足・重複')
     bound = {(e['payload']['receipt'], e['payload']['input_hash']) for e in rt.store.events() if e['work'] == work and e['kind'] == 'capability_bound' and e['payload']['node'] == node['id']}
@@ -106,8 +115,9 @@ def check_result(rt, work, node, result):
         b = next(b for b in normalized(s['plan'])['blocks'] if b['id'] == node['block'])
         expected = b.get('content_design_hash') or next(a['content_hash'] for a in normalized(s['plan'])['approval_bundles'] if node['block'] in a['block_ids'])
         need(any(rt.store.get(r['output']).get('compiled', rt.store.get(r['output'])).get('irHash') == expected for r in receipts), 'compile内容と承認済みIR hashが違う')
-        if b.get('presentation_design_hash'):
-            need(compiled_design_matches([rt.store.get(r['output']) for r in receipts], expected, b['presentation_design_hash']), 'compile表示計画と承認済みplan hashが違う')
+        contracts = {target: b[key] for key, target in (('construction_design_hash', 'constructionDesignHash'), ('layout_design_hash', 'layoutDesignHash'), ('learner_copy_hash', 'learnerCopyHash')) if b.get(key)}
+        if b.get('presentation_design_hash') or contracts:
+            need(compiled_design_matches([rt.store.get(r['output']) for r in receipts], expected, b.get('presentation_design_hash'), contracts), 'compile表示・組立・本文契約と承認済みhashが違う')
     if node['stage_kind'] == 'G2_AUDIT':
         need(result['release_readiness'] in ('READY', 'BLOCKED') and result['impact_sweep_completion'] in ('COMPLETE', 'QUEUED', 'BLOCKED'), '公開可否と影響完了を別記する')
         need(result['audit_method'].get('method') and result['audit_method'].get('reviewer'), '監査方法・担当がない')

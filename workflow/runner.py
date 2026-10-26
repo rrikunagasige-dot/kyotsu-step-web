@@ -6,7 +6,7 @@ from production import ai_request,implementation_manifest
 from store import digest
 
 OPERATIONS={'S03':'coverage','S06':'solve','S08':'teaching-candidates','S09':'teaching-candidates','S10':'blank-candidates','S11':'verify-ir','S12':'verify-ir','S13':'figures','S14':'verify-ir','S16':'visible-snapshots','S18':'compile-ir'}
-OPERATIONS.update({'U01':'research-manifest','U02':'research-analysis','U03':'research-patterns','U04':'solution-validate','U05':'interaction-plan','U06':'render-solution','U07':'solution-review'})
+OPERATIONS.update({'U01':'research-manifest','U02':'research-analysis','U03':'research-patterns','U04':'solution-validate','U05':'interaction-plan','U06':'render-solution','U07':'solution-review','U08':'construction-validate','U09':'layout-validate','U10':'construction-compile'})
 
 def code_operation(rt,work,nid,inputs):
     state=rt.state(work)
@@ -65,6 +65,14 @@ def code_operation(rt,work,nid,inputs):
     if nid=='S19':
         receipt=inputs.get('browserReceipt',{})
         good=receipt.get('sourceSHA')==state['candidate_sha'] and receipt.get('status')=='PASS' and {320,390,430,1440}<=set(receipt.get('widths',[])) and receipt.get('semanticIdsVerified') and receipt.get('statesVerified')
+        if state['plan'].get('construction_pipeline') == 'construction-layout/1':
+            measurements = receipt.get('layoutMeasurements', [])
+            context = dict(receipt.get('layoutMeasurementContext', {}), sourceSHA=state['candidate_sha'])
+            proc = subprocess.run(['node', str(rt.root/'tools/textbook/operations.mjs'), 'layout-validate'], input=json.dumps({'layoutPlan': inputs.get('layoutPlan'), 'measurements': measurements, 'measurementContext': context}), cwd=rt.root, capture_output=True, text=True)
+            try: layout_result=json.loads(proc.stdout)
+            except ValueError: layout_result={'status':'FAIL','reason':'LAYOUT_ADAPTER_OUTPUT'}
+            good = good and bool(measurements) and layout_result.get('status') == 'PASS'
+            return {'status':'PASS' if good else 'FAIL','browserReceipt':receipt,'layoutValidation':layout_result}
         return {'status':'PASS' if good else 'FAIL','browserReceipt':receipt}
     if nid=='S20':
         actual=manifest(rt.root,inputs['protectedManifest'])

@@ -48,3 +48,13 @@ REVIEW-FEEDBACK is NOT approval; new scope needs new exact proposal approval.
 Record errors and success, run relevant QA and attach a real review link at handoff.
 Preserve `main`, source archives, old PRs/branches, stable IDs, previous user-approved pedagogy.
 Do not confuse upstream Q95/Q98 with target Q95/Q98.
+
+## 5. 主担当＋2子agent / team/1
+
+作成／修正の共通基盤では`workflow/INTEGRATION_RUNBOOK.md`のteam/1を使用する。新規教材Workは`governance/TEAM_POLICY.json`の方針を明示し、旧Workは承認付きpolicy移行で履歴を保持する。
+
+主担当が要求・範囲・正式claim・Store・公開を所有し、2つの子agentへ独立した調査、担当制作、非作者レビューを分担する。孫agentを作らず、短いCODE処理を3重に実行しない。役割交代でも作者履歴を保持し、主担当の統合も審査対象とする。全員共著・未確認・切断・CODE FAILを合意でPASSにしない。
+
+実taskと原報告を登録し、対象hashと作者分離を検査する。並列書込は所有pathを分け、同じStore/Git indexへの書込は主担当一人。read-only指示はOS sandboxではない。モデル独立性や盲検を実施なしに名乗らない。
+
+組立と排版の新CODEは`construction-layout/1`でopt-in。詳細は同runbook。教材は具体案承認後に実装し、確認面は従来の実アプリURLを使用する。

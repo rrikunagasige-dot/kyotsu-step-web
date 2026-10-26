@@ -1,3 +1,7 @@
+# 現行追加機能: team/1＋construction-layout/1
+
+主担当＋2子agentの担当・相互審査・役割交代は[TEAM_PROTOCOL.md](TEAM_PROTOCOL.md)、C/R内の配置は[INTEGRATION_RUNBOOK.md](INTEGRATION_RUNBOOK.md)。新規教材Workは標準team policyを明示し、旧Workの履歴は保持する。
+
 # 現行入口: P-004 作成・修正の統合
 
 新規数学教材Workは `production/2`。工程・機能・承認・公開・修正復帰・移行・三階層火柴図は [INTEGRATION_RUNBOOK.md](INTEGRATION_RUNBOOK.md) を使用する。下記は旧P-002の履歴説明で、G1画像承認と固定の総チェック文言は新Workへ適用しない。

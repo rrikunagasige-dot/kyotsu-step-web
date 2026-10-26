@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "team-adoption/1",
+  "status": "APPROVED_IMPLEMENTATION",
+  "newMaterialWorksRequireTeam": true,
+  "existingWorkAdoption": "explicit adopt-team-policy with policy-hash approval; no history rewrite",
+  "default_policy": {
+    "schema_version": "team/1",
+    "max_active_subagents": 2,
+    "allow_grandchildren": false,
+    "store_writer": "M",
+    "root_agent_ref": "/root",
+    "required_scopes": [
+      {
+        "stage_kind": "C05_DESIGN",
+        "claimRef": "teaching",
+        "facet": "design",
+        "reviewKind": "source-review",
+        "independent": true,
+        "sourceFirst": true,
+        "firstPass": true
+      },
+      {
+        "stage_kind": "C05_DESIGN",
+        "claimRef": "layout",
+        "facet": "render",
+        "reviewKind": "learner-visible-review",
+        "independent": true,
+        "sourceFirst": true,
+        "firstPass": true
+      },
+      {
+        "stage_kind": "R04_PROPOSAL",
+        "claimRef": "teaching",
+        "facet": "design",
+        "reviewKind": "source-review",
+        "independent": true,
+        "sourceFirst": true,
+        "firstPass": true
+      },
+      {
+        "stage_kind": "R04_PROPOSAL",
+        "claimRef": "layout",
+        "facet": "render",
+        "reviewKind": "learner-visible-review",
+        "independent": true,
+        "sourceFirst": true,
+        "firstPass": true
+      },
+      {
+        "stage_kind": "C09_SEMANTIC",
+        "claimRef": "implemented-visible",
+        "facet": "render",
+        "reviewKind": "learner-visible-review",
+        "independent": true,
+        "sourceFirst": true,
+        "firstPass": true
+      },
+      {
+        "stage_kind": "R07_SEMANTIC",
+        "claimRef": "implemented-visible",
+        "facet": "render",
+        "reviewKind": "learner-visible-review",
+        "independent": true,
+        "sourceFirst": true,
+        "firstPass": true
+      },
+      {
+        "stage_kind": "G2_AUDIT",
+        "claimRef": "integrated-release",
+        "facet": "render",
+        "reviewKind": "learner-visible-review",
+        "independent": true,
+        "sourceFirst": true,
+        "firstPass": true
+      }
+    ]
+  },
+  "authorshipIsNotModelIndependence": true,
+  "readOnlyInstructionsAreNotOsIsolation": true
+}

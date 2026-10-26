@@ -67,9 +67,20 @@ def ai_request(rt,work,node_id):
     task=rt.task(work,node_id);state=rt.state(work)
     dependencies={d:rt.store.get(v['artifact']) for d,v in task['previous_results'].items() if v}
     solution_contract={'visibleFirst':True,'required':['sourceLocations','learnerDecision','availableInformation','reasonToProceed','nextWholeState','misconception','reducedSupportVariant'],'findings':['problemId','stepId','state','quoteOrMathRef','reason','affectedRefs','resolution'],'sameAssistantIsIndependent':False} if state['plan'].get('solution_pipeline')=='solution/1' else None
-    return {'schemaVersion':state['plan'].get('workflow_version',VERSION),'solutionReview':solution_contract,'adoptedCorrections':state.get('adopted_corrections',[]),'reusableHistory':state.get('migration',{}).get('artifact_mapping',[]),'task':task,'context':state.get('production_context',{}),'dependencies':dependencies,
+    request = {'schemaVersion':state['plan'].get('workflow_version',VERSION),'solutionReview':solution_contract,'adoptedCorrections':state.get('adopted_corrections',[]),'reusableHistory':state.get('migration',{}).get('artifact_mapping',[]),'task':task,'context':state.get('production_context',{}),'dependencies':dependencies,
             'constraints':['原資料・既習・可視状態だけを根拠にする','作成者の自己評価を監査根拠にしない','未解決は未解決と記録','承認を生成しない'],
             'requestHash':digest({'task':task,'dependencies':dependencies,'context':state.get('production_context',{}),**({'solutionReview':solution_contract} if solution_contract else {})})}
+
+    if state['plan'].get('agent_team'):
+        from team import node_requirements
+        descriptor = {'policyHash': digest(state['plan']['agent_team']),
+                      'requirements': node_requirements(state['plan']['agent_team'], task['node']),
+                      'submissionActor': 'M',
+                      'constraints': ['実agent taskを登録する', '対象claimの作者履歴を維持する', '個別taskは固定packetを先に読む', 'agentの合意をUSER評価へ昇格しない']}
+        request['teamReview'] = descriptor
+        request['requestHash'] = digest({'baseRequestHash': request['requestHash'], 'teamReview': descriptor})
+    return request
+
 
 def textbook_job(rt,work,node_id,command,args):
     """Existing Node jobs are subprocess work, while claims/events belong to Runtime."""

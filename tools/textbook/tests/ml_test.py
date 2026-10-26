@@ -20,3 +20,14 @@ class ML(unittest.TestCase):
             m['heads']['layout']['intercept']=100;self.assertEqual(predict(m,'x',EncoderFixture(),'layout')['reason'],'MODEL_HASH_MISMATCH')
     def test_invalid_candidates_not_ranked_and_no_pairs_abstain(self):
         self.assertEqual(train_pairs([])['status'],'ABSTAIN');self.assertEqual(rank([{'id':'bad','validationStatus':'FAIL'},{'id':'good','validationStatus':'PASS'}],lambda _: {'status':'ABSTAIN'} )[0]['candidateId'],'good')
+
+class VisibleSchemaCompatibility(unittest.TestCase):
+    def test_new_schema_is_rejected_before_encoding_without_opt_in(self):
+        row={'featureInputSchema':'learner-visible-json/3','text':'visible'}
+        class NoEncoding:
+            def encode(self,text):raise AssertionError('must reject before encoding')
+        with tempfile.TemporaryDirectory() as d, self.assertRaises(ValueError):
+            train([row],NoEncoding(),Path(d)/'model.json')
+    def test_new_input_cannot_use_legacy_model_even_offline(self):
+        encoder=EncoderFixture();m={'encoderHash':encoder.manifestHash,'heads':{},'advisoryEligible':False};m['modelHash']=digest(m)
+        self.assertEqual(predict(m,'{}',encoder,'layout',allow_offline=True,input_schema='learner-visible-json/3')['reason'],'FEATURE_SCHEMA_MISMATCH')

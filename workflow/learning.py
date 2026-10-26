@@ -21,6 +21,16 @@ def finalize(rt,work,inputs):
             for d in corpus['decisions']:
                 if d.get('inputSnapshot',{}).get('contextSchema')=='solution-visible/1':
                     need(d['observationId'] in contexts and d['inputSnapshot']==contexts[d['observationId']],'solution学習入力を可視状態から再生成できない')
+        observations={o['id']:o for o in corpus['observations']}
+        for decision in corpus['decisions']:
+            observation=observations.get(decision['observationId'], {})
+            if observation.get('sourceType') in ('agent_review', 'agent_consensus', 'subagent_report'):
+                need(decision.get('quality') == 'UNKNOWN', 'agentの合意から教材品質labelを自動生成しない')
+        construction_contexts={r['observationId']:r['visible'] for r in inputs.get('constructionContexts', [])}
+        for decision in corpus['decisions']:
+            if decision.get('inputSnapshot', {}).get('contextSchema') == 'construction-visible/1':
+                from tools.textbook.corpus.construction_context import snapshot as construction_snapshot
+                need(decision['observationId'] in construction_contexts and decision['inputSnapshot'] == construction_snapshot(construction_contexts[decision['observationId']]), '組立学習入力を実際の可視状態から再生成できない')
         # Incoming USER_GOLD must match a real explicit evaluation. Existing corpus cases retain their provenance.
         prior=rt.store.get(inputs['baseCatalogArtifact']).get('curatedCorpus',{}).get('cases',[]) if inputs.get('baseCatalogArtifact') else []
         previous={c['id']:c for c in prior}
@@ -53,5 +63,9 @@ def training_inputs(rt,inputs):
     from tools.textbook.corpus.core import examples
     derived=examples(catalog['curatedCorpus']);request=dict(inputs['request'])
     need('examples' not in request or request['examples']==derived,'学習例が確定したcorpusと違う')
+    modern={r['featureInputSchema'] for r in derived if r['featureInputSchema']=='learner-visible-json/3'}
+    if modern:
+        accepted=request.get('acceptedFeatureSchemas', [])
+        need({r['featureInputSchema'] for r in derived} <= set(accepted), '新しい可視schemaを旧model入力へ無指定で混在させない')
     request['examples']=derived
     return dict(inputs,request=request)

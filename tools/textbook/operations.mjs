@@ -7,6 +7,9 @@ import {solve,solutionReceipts} from './solver/n07.mjs';
 import {teachingCandidates,rankValid} from './planner/graph.mjs';
 import {blankCandidates,validateChoices} from './interaction/index.mjs';
 import {hash} from './util.mjs';
+import {validateConstructionPlan, verifyConstructionMath} from './interaction/construction.mjs';
+import {validateLayoutPlan} from './layout/plan.mjs';
+import {validateLayoutMeasurements} from './layout/measurements.mjs';
 import {inspectResearch,prepareResearchAnalysis} from './research/manifest.mjs';
 import {importResearchAnalysis,retrievePatterns} from './research/patterns.mjs';
 import {verifySolution} from './solution/verify.mjs';
@@ -19,6 +22,17 @@ import {validateTransformationPlan} from './transformation/validate.mjs';
 import {compileTransformationPresentation} from './transformation/compile.mjs';
 import {projectTransformationView} from './transformation/visible.mjs';
 export function operate(operation,input){
+ if(operation==='construction-validate')return verifyConstructionMath(input.constructionPlan??input);
+ if(operation==='layout-validate'){
+  const result=validateLayoutPlan(input.layoutPlan??input,input.bindingContext??{});
+  if(result.status!=='PASS'||!input.measurements)return result;
+  const plan=input.layoutPlan??input;
+  return {...validateLayoutMeasurements(input.measurements,{...(input.measurementContext??{}),layoutHash:result.layoutHash,widths:[320,390,430,1440],groupIds:plan.groups.map(g=>g.id),groupRows:Object.fromEntries(plan.groups.map(g=>[g.id,g.rowIds])),groupStates:Object.fromEntries(plan.groups.map(g=>[g.id,g.states]))}),layoutHash:result.layoutHash};
+ }
+ if(operation==='construction-compile'){
+  if(input.transformationPlan?.schemaVersion!=='transformation-plan/2')return {status:'FAIL',reason:'BOUND_TRANSFORMATION_V2_REQUIRED'};
+  return compileTransformationPresentation(input.ir,input.transformationPlan);
+ }
  if(input.transformationPlan){
   if(['solution-validate','verify-ir'].includes(operation))return validateTransformationPlan(input.ir,input.transformationPlan);
   if(['interaction-plan','blank-candidates'].includes(operation))return planTransformations(input);
@@ -26,6 +40,22 @@ export function operate(operation,input){
   if(operation==='visible-snapshots'){
    const result=compileTransformationPresentation(input.ir,input.transformationPlan);if(result.status!=='PASS')return result;
    const interactions=result.compiled.interactions;
+   if(result.compiled.schemaVersion==='transformation-reading/2'){
+    if(!input.viewContext||!Array.isArray(input.viewContext.boundarySolvedNodeIds)||!Array.isArray(input.viewContext.externalSolvedIds))return {status:'NEEDS_AI_REVIEW',reason:'VISIBLE_BOUNDARY_CONTEXT_REQUIRED',snapshots:[],automaticAcceptance:false};
+    const snapshots=[],pending=[];
+    for(const [index,c]of interactions.entries()){
+     const parent=result.compiled.constructionPlan.interactions.find(p=>p.id===c.id),solved=interactions.slice(0,index).map(p=>p.id),view={...input.viewContext,choicesOpen:parent?.parts[0]?.id??c.id};
+     const initial=projectTransformationView(result.compiled,solved,view);
+     if(!initial.groups.some(g=>g.rows.some(r=>r.current?.id===c.id))){pending.push({interactionId:c.id,reason:'GROUP_OR_PREREQUISITE_CONTEXT_REQUIRED'});continue;}
+     snapshots.push({interactionId:c.id,state:'initial',visible:initial});
+     if(parent){
+      const first=parent.parts[0],partial=parent.parts.length>1?{[first.id]:first.expected}:{[first.id]:first.choices.find(v=>v.value!==first.expected).value};
+      snapshots.push({interactionId:c.id,state:'partial',visible:projectTransformationView(result.compiled,solved,{...view,constructionDrafts:{[c.id]:partial}})});
+     }
+     snapshots.push({interactionId:c.id,state:'complete',visible:projectTransformationView(result.compiled,[...solved,c.id],{...view,choicesOpen:undefined})});
+    }
+    return {status:'NEEDS_AI_REVIEW',snapshots,pending,scope:'BOUND_TRANSFORMATION_GROUPS_ONLY',standaloneConstructionIds:result.compiled.constructionPlan.interactions.filter(c=>!result.compiled.groups.some(g=>g.rows.some(r=>r.constructionRef===c.id))).map(c=>c.id),automaticAcceptance:false};
+   }
    return {status:'NEEDS_AI_REVIEW',snapshots:interactions.map((c,i)=>projectTransformationView(result.compiled,interactions.slice(0,i).map(c=>c.id),{choicesOpen:c.id})),automaticAcceptance:false};
   }
  }

@@ -45,6 +45,10 @@ class Runtime:
                     s['plan']=p['plan'];s['definition_hash']=p['definition_hash'];s['claims']={};s['results']={}
                     s['migration']=p
                 elif k=='materialization_bound':s['plan']=p['plan'];s['materialization']=p
+                elif k=='team_policy_adopted':
+                    s['plan']=p['plan']
+                    for node_id in p.get('invalidated_results', []): s['results'].pop(node_id, None)
+                    s['team_migration']=p;s['closed']=None
                 elif k=='revised':s['plan']=p['plan'];s['revised']=True
                 elif k=='claim_reconciled':s['claims'].pop(p['node'],None)
                 elif k=='external_intent':s['external'][p['id']]=p
@@ -52,6 +56,13 @@ class Runtime:
         need(s is not None,'Workが存在しない');return s
     def open(self,plan):
         self._head=self.store.head;plan_check(plan)
+        team_policy_path=self.root/'governance/TEAM_POLICY.json'
+        if not plan.get('simulation') and plan['profile']=='material' and team_policy_path.exists():
+            import json
+            configured=json.loads(team_policy_path.read_text())
+            need(plan.get('workflow_version') == 'production/2' and plan.get('agent_team'), '新規教材Workはproduction/2＋承認済みteam policyを指定する')
+            from team import validate_policy
+            need(validate_policy(plan['agent_team']) == validate_policy(configured['default_policy']), '標準team policyと異なる方針は先に具体案として承認する')
         policy_path=self.root/'governance/REVIEW_POLICY.json'
         if not plan.get('simulation') and plan['profile']=='material' and plan['subject'] in ('math','math-1a') and plan['mode']=='textbook' and policy_path.exists():
             import json
@@ -136,7 +147,7 @@ class Runtime:
             for i in self.state(w)['issues'].values():
                 if not i.get('resolved_by'):outstanding.append(dict(i,work=w))
         return outstanding
-    def user(self,work,intent,quote,reply_to,source_ref,*,block=None,scope=None,event_id=None,verification_level='conversation_transcribed',bundle_ids=None,release_unit=None):
+    def user(self,work,intent,quote,reply_to,source_ref,*,block=None,scope=None,event_id=None,verification_level='conversation_transcribed',bundle_ids=None,release_unit=None,team_policy_hash=None):
         s=self.state(work);need(intent in USER_INTENTS,'ユーザー意図の種別が不明')
         need(quote and reply_to and source_ref,'発言原文・対応先・出所が必要')
         need(verification_level in ('conversation_transcribed','authenticated_connector','simulation'),'出所の検証段階が不明')
@@ -147,6 +158,9 @@ class Runtime:
         p={'id':event_id or str(uuid.uuid4()),'intent':intent,'quote':quote,'reply_to':reply_to,'source_ref':source_ref,'block':block,
            'proposal_hash':s['plan']['proposal']['hash'],'scope':scope or s['plan']['scope'],'candidate_sha':s['candidate_sha'],
            'block_manifest':self.block_manifest(s,block) if block else None,'verification_level':verification_level}
+        if team_policy_hash is not None:
+            need(intent == 'approve_proposal' and isinstance(team_policy_hash, str) and len(team_policy_hash) == 64 and all(c in '0123456789abcdef' for c in team_policy_hash), 'team policy承認のhashが不正')
+            p['team_policy_hash'] = team_policy_hash
         if s['plan'].get('workflow_version') == 'production/2':
             from integration import bundle_fingerprint
             if intent == 'approve_proposal':
@@ -211,8 +225,14 @@ class Runtime:
         ref=eid or str(uuid.uuid4());self.append('evidence',work,{'id':ref,'kind':kind,'data':data,'source_ref':source_ref,'verification_level':verification_level},event_id='evidence-'+ref)
         return ref
     def fingerprint_refs(self,s,refs):
+        team_refs=set()
+        if s['plan'].get('agent_team'):
+            for event in self.store.events():
+                if event['work'] != s['plan']['work_id']: continue
+                if event['kind'] == 'team_output_recorded': team_refs.add(event['payload']['outputRef'])
+                elif event['kind'] == 'team_harness_captured': team_refs.add(event['payload']['artifactRef'])
         for ref in refs:
-            need(ref in s['evidence'] or ref in s['users'],'未登録の証拠参照:'+ref)
+            need(ref in s['evidence'] or ref in s['users'] or ref in team_refs,'未登録の証拠参照:'+ref)
     def task(self,work,node_id):
         s=self.state(work);nodes=instantiate(s['plan']);need(node_id in nodes,'ノードがない');n=nodes[node_id]
         return {'work_id':work,'node':n,'task_id':digest({'work':work,'node':node_id,'input_hash':self.input_hash(s,n)}),
@@ -362,6 +382,8 @@ class Runtime:
             self.append('release_bound',work,{'sha':commit_sha,'units':units})
         self.append('candidate',work,{'sha':commit_sha,'manifest':current})
     def revise(self,work,new_plan):
+        before = self.state(work)['plan']
+        need(before.get('agent_team') == new_plan.get('agent_team'), 'team方針の変更には専用移行を使う')
         s=self.state(work);plan_check(new_plan);need(new_plan['work_id']==work,'別Workへの改訂')
         need(new_plan['profile']==s['plan']['profile'] and new_plan['command']==s['plan']['command'],'作成／修正の経路変更は別Workへ')
         need(new_plan.get('workflow_version')==s['plan'].get('workflow_version'),'工程版は明示移行を使う')

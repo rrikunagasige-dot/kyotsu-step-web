@@ -1,0 +1,20 @@
+{
+  "status": "LOCAL_VERIFIED",
+  "sourceBase": "0401a9241671011c415f91f7f429368e80438037",
+  "scopes": {
+    "globalWorkflow": "IMPLEMENTED",
+    "activeN08": "UNCHANGED",
+    "productionModel": "UNCHANGED"
+  },
+  "tests": {
+    "node": 111,
+    "workflow": 190,
+    "corpus": 31,
+    "authoringNode": 35,
+    "authoringVitest": 4,
+    "finalBoundaryRecheck": 51
+  },
+  "build": "PASS",
+  "fixtureResultsAreUserApproval": false,
+  "rawFeedbackOrScreenshotsInCodeExport": false
+}

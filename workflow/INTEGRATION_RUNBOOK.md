@@ -102,3 +102,46 @@ fixtureの模擬承認・模擬app受入と、実行した読取専用adapter検
 research_extractを指定するとC01のresearch.extractが必須になる。修正でsource facetを持つR01にもresearch.ingest/analyze（指定時extract）を必須にする。renderだけの修正へ数学の新規設計を要求しない。
 
 旧plan・旧IRは自動でv2へ変換しない。旧WorkのdefinitionHashと現在の実装が違う場合、既存migrationを使って範囲と失効を記録する。既に未受入の教材を新実行器の試験合格で受入済みに変更しない。
+
+## team/1 — 主担当＋2子agent（W-GOV-012）
+
+新規教材Workは`production/2`に`agent_team`を指定する。標準方針は`governance/TEAM_POLICY.json`。既存Workを一括書換えせず、過去の一人監査・旧承認・保存を履歴として保持する。入口は作成／修正の二つ。
+
+Mが正式nodeのclaimとStoreへの書込を所有し、A/Bへnode内部subtaskを割り当てる。Aは通常、資料・解法・穴・本文、Bは操作・排版・実装。相互の担当箇所を審査し、Mの統合にもA/Bが反証する。担当は交代できるが、作者履歴はblock/claim/facetと派生対象へ残る。同じclaimの全員共著では独立審査を捏造しない。
+
+実spawn/message/wait/interruptはChatGPTのharnessで行う。Python CLIはLLMを起動しない。原tool出力を`team-capture`で同じStoreへ保存し、実task登録→結果→完了照合→主node結果へのcollectionと進める。転記は`transcribed-tool-result`と明記し、OS権限分離・盲検・別モデル独立性を主張しない。
+
+```sh
+python workflow/cli.py --root . --store WORK/runtime team-policy
+python workflow/cli.py --root . --store WORK/runtime team-capture --work WORK --json harness-capture.json
+python workflow/cli.py --root . --store WORK/runtime team-bind-target --work WORK --json current-target.json
+python workflow/cli.py --root . --store WORK/runtime team-register --work WORK --json assignment-packet-harness.json
+python workflow/cli.py --root . --store WORK/runtime team-capture --work WORK --json original-report.json
+python workflow/cli.py --root . --store WORK/runtime team-record-output --work WORK --json task-output.json
+python workflow/cli.py --root . --store WORK/runtime team-reconcile --work WORK --json task-completion.json
+```
+
+`teamCollection:{submissionActor:"M",registrationRefs:[...],outputRefs:[...]}`を既存`submit`/`production-result`に添付する。担当・現入力・source・対象hash・非作者・初回所見・未解決がCODE検査を通る必要がある。結果到着は基礎inputHashを変えず、packet→assignment→report→collectionを一方向に結ぶ。途中交代は旧taskを完了／取消／失効してから新epochを登録する。
+
+`adopt-team-policy`はproduction/2内の保守操作。実行中claim/子task/未確定外部操作を拒否し、具体案とpolicy hashに対応する実承認を必要とする。旧plan/結果/承認をarchiveし、必要な審査と依存結果のみ未充足へ戻す。旧`migrate-workflow`を同じproduction/2内の変更へ流用しない。
+
+## construction-layout/1 — CODE／AI分担の追加
+
+`solution_pipeline:"solution/1"`に加え、`construction_pipeline:"construction-layout/1"`を指定したWorkだけが新しい組立・配置capabilityを使う。
+
+| 既存工程 | 追加CODE | AIが決めること |
+|---|---|---|
+| C05／R04 | construction.validate、layout.validate | 穴の判断内容、写すだけか、必要な説明、三状態の読みやすさ |
+| C07／R06 | construction.compile | 原資料と承認案の欠落がないか |
+| C08／R07_VERIFY | 部品型・全候補・三状態・実字号／整列／番号／操作領域 | CODEで決まらない項目を未判定のまま返す |
+| C09／R07_SEMANTIC | 現画像と可視stateの版・行/part coverage | 完成式を選ぶだけになっていないか、一問の推導がつながるか |
+
+blockの`content_design_hash`、`construction_design_hash`、`layout_design_hash`、`learner_copy_hash`を同じcompiled artifactに照合する。個々のhashが別々の成果物に存在するだけでは受理しない。旧v1未指定のcompile・表示・採点は保持する。
+
+数式AST、learner decision、display groupを別の単位として扱う。単項負号／二項演算子／符号付き項を区別し、式全体を文字列分割して部品にしない。必須説明はdetailへ隠さず、現在の指示は回答後に消す。見た目の規則だけで教育品質をPASSにしない。
+
+ブラウザ検査は320/390/430/1440で未回答・途中・完成を測定する。実画像hash・可視state hash、18px、KaTeX倍率、等号列差、中心、切れ・重なり・操作領域を検査する。画像比較のbaselineを更新しただけでは正しさの証拠にならない。
+
+学習入力は`construction-visible/1`→`learner-visible-json/3`。typed mathと一意renderRefを使い、実寸法を保存する。未知はnullで、0を作らない。新schemaを旧モデルへ無指定で渡すと棄権する。agent協議は既定UNKNOWN、本人の実評価と合意票数を混ぜない。モデルはOFFLINE_ONLYのままで、自動fitや本番昇格は行わない。
+
+実行可能な受渡し順、incoming author packet、現target固定、resolverの完了条件は[TEAM_PROTOCOL.md](TEAM_PROTOCOL.md)を参照。式番号は各状態で現在見える最後の数式行を指す。

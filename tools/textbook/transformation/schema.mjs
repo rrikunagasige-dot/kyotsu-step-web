@@ -1,5 +1,7 @@
 import {z} from 'zod';
 import {graphSchema} from '../solution/graph.mjs';
+import {constructionPlanSchema} from '../interaction/construction.mjs';
+import {layoutPlanSchema} from '../layout/plan.mjs';
 export const id=z.string().min(1).max(160);
 const ids=z.array(id);
 const copy=z.discriminatedUnion('type',[z.object({type:z.literal('text'),text:z.string()}).strict(),z.object({type:z.literal('math'),latex:z.string()}).strict(),z.object({type:z.literal('term'),text:z.string()}).strict()]);
@@ -18,6 +20,12 @@ export const planSchema=z.object({
  candidates:z.array(z.object({id,nodeId:id,blankRole:z.enum(['operation','operand','target','expression','calculation','relation','justification','interpretation']),learnerDecision:z.string().min(1),availableFactRefs:ids,prerequisiteInteractionIds:ids,nextUseRef:id,taskContract:z.object({kind:id,requestedOperation:id}).strict(),decision:z.enum(['ADOPT','REJECT']),reason:z.string().min(1),expected:z.string(),targetLatex:z.string(),choices:ids}).strict()),
  coverage:z.array(z.object({sourceRef:id,disposition:z.enum(['main-row','auxiliary','prose','condition','reference','superseded-display']),rowRef:id,reason:z.string().min(1)}).strict()),
  numberAliases:z.record(z.string(),id),
+}).strict();
+/** Explicit wrapper: the unchanged v1 source plan keeps its original source/grading checks. */
+export const planV2Schema=z.object({schemaVersion:z.literal('transformation-plan/2'),sourcePlan:planSchema,
+ constructionPlan:constructionPlanSchema,layoutPlan:layoutPlanSchema,
+ constructionBindings:z.array(z.object({rowRef:id,constructionRef:id}).strict()),
+ rootRowMerges:z.array(z.object({rootRowRef:id,intoRowRef:id}).strict()).default([]),
 }).strict();
 export const getPath=(object,path)=>path.split('.').reduce((v,k)=>/^(?:[a-zA-Z][a-zA-Z0-9_]*|[0-9]+)$/.test(k)&&!['__proto__','prototype','constructor'].includes(k)&&v&&Object.hasOwn(v,k)?v[k]:undefined,object);
 export function putPath(object,path,value){const keys=path.split('.');let out=object;for(const key of keys.slice(0,-1))out=out[key];out[keys.at(-1)]=value;}

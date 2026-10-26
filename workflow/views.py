@@ -29,6 +29,18 @@ def snapshot(rt,work):
         result['child_works']=sorted({e['work'] for e in rt.store.events() if e['kind']=='opened' and (e['payload']['plan'].get('parent_work')==work or e['payload']['plan'].get('parent_impact',{}).get('work')==work or e['payload']['plan'].get('parent_issue',{}).get('work')==work)})
         result['capability_receipts']=[e['payload'] for e in rt.store.events() if e['work']==work and e['kind']=='capability_bound']
         result['release_acceptance']={u['id']:rt.node_status(s,nodes['G3_FINAL@'+u['id']])=='PASSED' for u in s['plan']['release_units']}
+    if s['plan'].get('agent_team'):
+        from team import project
+        team = project(rt.store.events(), work)
+        result['agent_team'] = {'policy': s['plan']['agent_team'], 'findings': [f for rows in team['findings'].values() for f in rows], 'tasks': [
+            {'registrationRef': ref, 'assignmentId': r['assignment']['assignmentId'],
+             'node': r['assignment']['node'], 'performerRef': r['assignment']['performerRef'],
+             'logicalRole': r['harness']['logicalRole'], 'role': r['assignment']['role'],
+             'facet': r['assignment']['facet'], 'claimRefs': r['assignment']['claimRefs'],
+             'packetHash': r['packet']['packetHash'], 'assignmentHash': r['assignmentHash'],
+             'contextExposure': r['packet']['contextExposure'],
+             'status': team['reconciliations'].get(ref, {}).get('status', 'REGISTERED')}
+            for ref, r in team['registrations'].items()]}
     return result
 
 def rendered(rt,work):
@@ -104,5 +116,22 @@ def integration_diagrams(snap):
                 key=n['id']+':'+capability;groups[key]=capability;edges.add((n['id'],key))
             chunks.append(draw(n['id'],groups,edges))
     chunks.append('code実行receiptはsnapshot.jsonのcapability_receiptsを参照。AIの意味審査は別記録。')
+    if snap.get('agent_team'):
+        tasks = snap['agent_team']['tasks']
+        team_lines = ['','## 主担当と2 subagent（同じsnapshot）','','| node | 担当 | 役割 | 対象 | 状態 |','|---|---|---|---|---|']
+        for t in tasks:
+            team_lines.append('| '+str(t['node'])+' | '+t['logicalRole']+' / '+t['performerRef']+' | '+t['role']+' | '+t['facet']+': '+', '.join(t['claimRefs'])+' | '+t['status']+' |')
+        if not tasks: team_lines.append('| — | M / A / B | 未割当 | 必須scopeは各nodeのteam_requirementsを参照 | 未実行 |')
+        team_lines += ['','CODE: 担当・packet・対象hash・非作者・未解決を検査。AI: 原資料・数学・教え方・実表示を審査。USER: 具体案承認と実アプリ評価。','役割交代は作者履歴を消さない。差戻しは元工程への改訂taskとして記録。']
+        findings = snap['agent_team'].get('findings', [])
+        team_lines += ['', 'finding記録: '+str(len(findings))]
+        for f in findings:
+            team_lines.append('- '+str(f.get('findingId'))+' / '+str(f.get('block'))+' / '+str(f.get('claimRef'))+' / '+str(f.get('resolution'))+' / '+str(f.get('reason')))
+        note = '\n'.join(team_lines)+'\n'
+        overall += note; block += note; chunks.append(note)
+        for n in nodes:
+            requirements = n.get('team_requirements', [])
+            if requirements:
+                chunks.append('### '+n['id']+' の担当別審査\n'+ '\n'.join('- '+r['claimRef']+' / '+r['facet']+' / '+r['reviewKind']+' / 非作者='+str(r['independent']) for r in requirements))
     cap='\n'.join(chunks)+'\n'
     return {'FIRE_DIAGRAM.md':overall,'BLOCK_FIRE_DIAGRAM.md':block,'CAPABILITY_FIRE_DIAGRAM.md':cap}

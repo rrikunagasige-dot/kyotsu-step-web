@@ -45,8 +45,13 @@ def examples(corpus):
         try:structured=json.loads(raw)
         except (ValueError,TypeError):structured=None
         solution=inp.get('contextSchema')=='solution-visible/1'
-        clean=learner_text(structured,solution=solution) if isinstance(structured,(dict,list)) else raw
-        out.append({'id':c['id'],'text':clean,'inputHash':digest({'kind':'learner_artifact','text':clean}),'sourceInputHash':digest(inp),'featureInputSchema':'solution-visible-json/1' if solution else 'learner-visible-json/2','dimension':c['dimension'],'label':c['label'],'familyId':c['familyId'],'episodeId':c['episodeId'],'artifactVersion':c['artifactVersion'],'evidenceTier':c['evidenceTier'],'caseId':c['id'],'seen':c.get('seen',True),'scope':c['scope']})
+        construction=inp.get('contextSchema')=='construction-visible/1'
+        if construction:
+            from .construction_context import text_from_snapshot
+            clean=text_from_snapshot(raw)
+        else:
+            clean=learner_text(structured,solution=solution) if isinstance(structured,(dict,list)) else raw
+        out.append({'id':c['id'],'text':clean,'inputHash':digest({'kind':'learner_artifact','text':clean}),'sourceInputHash':digest(inp),'featureInputSchema':'learner-visible-json/3' if construction else 'solution-visible-json/1' if solution else 'learner-visible-json/2','dimension':c['dimension'],'label':c['label'],'familyId':c['familyId'],'episodeId':c['episodeId'],'artifactVersion':c['artifactVersion'],'evidenceTier':c['evidenceTier'],'caseId':c['id'],'seen':c.get('seen',True),'scope':c['scope']})
     return out
 
 def split_groups(rows):

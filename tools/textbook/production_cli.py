@@ -6,8 +6,11 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[2]))
 from tools.textbook.corpus.core import collect,curate,examples,user_seed
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('operation',choices=['collect','curate','seed','train','prefetch','predict','retrieve','finetune','solution-context','solution-observation','solution-evaluability']);p.add_argument('--out');a=p.parse_args();data=json.load(sys.stdin)
-    if a.operation.startswith('solution-'):
+    p=argparse.ArgumentParser();p.add_argument('operation',choices=['collect','curate','seed','train','prefetch','predict','retrieve','finetune','solution-context','solution-observation','solution-evaluability','construction-context']);p.add_argument('--out');a=p.parse_args();data=json.load(sys.stdin)
+    if a.operation=='construction-context':
+        from tools.textbook.corpus.construction_context import snapshot
+        result=snapshot(data['visible'])
+    elif a.operation.startswith('solution-'):
         from tools.textbook.corpus.solution_context import snapshot,observation,evaluability
         if a.operation=='solution-context':result=snapshot(data['visible'])
         elif a.operation=='solution-observation':result=observation(data['quote'],data['sourceRef'],data['artifactVersion'],data.get('scope'))
@@ -34,14 +37,14 @@ def main():
         elif a.operation=='train':
             from tools.textbook.ml.train import train
             if not a.out:raise ValueError('--out required')
-            result=train(data['examples'],e,a.out)
+            result=train(data['examples'],e,a.out,accepted_feature_schemas=data.get('acceptedFeatureSchemas'))
         elif a.operation=='finetune':
             from tools.textbook.ml.train import finetune
             if not a.out:raise ValueError('--out required')
             result=finetune(data['examples'],e,data['dimension'],a.out)
         elif a.operation=='predict':
             from tools.textbook.ml.predict import predict
-            result=predict(data.get('model'),data['text'],e,data['dimension'])
+            result=predict(data.get('model'),data['text'],e,data['dimension'],input_schema=data.get('featureInputSchema'))
         else:
             from tools.textbook.ml.retrieve import retrieve
             result=retrieve(data['query'],data['cases'],e,data['scope'])

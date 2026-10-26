@@ -12,12 +12,20 @@ def normalized(plan):
     need(p.get('workflow_version') == VERSION and p['profile'] == 'material', 'production/2は教材の作成・修正用')
     need(p['command'] in ('CMD-WORK-001', 'CMD-WORK-002'), 'C/R以外の入口')
     need(p.get('solution_pipeline') in (None,'solution/1'), '未対応のsolution pipeline')
+    need(p.get('construction_pipeline') in (None, 'construction-layout/1'), '未対応の組立・配置pipeline')
+    need(not p.get('construction_pipeline') or p.get('solution_pipeline') == 'solution/1', '組立pipelineは既存solution/1へ接続する')
     need(not p.get('research_extract') or p.get('solution_pipeline')=='solution/1', '資料抽出はsolution/1を明示する')
+    if 'agent_team' in p:
+        from team import validate_policy
+        p['agent_team'] = validate_policy(p['agent_team'])
     blocks = {b['id']: b for b in p['blocks']}
     p.setdefault('protected_manifest',{path:h for path,h in p['source_manifest'].items() if any(path==x or x.endswith('/') and path.startswith(x) for x in p['scope'].get('preserve',[]))})
     for path in p['scope'].get('preserve',[]):
         if not path.endswith('/'):need(path in p['protected_manifest'],'保護ファイルの固定hashが必要')
     for bid, b in blocks.items():
+        if p.get('construction_pipeline'):
+            for key in ('construction_design_hash', 'layout_design_hash', 'learner_copy_hash'):
+                need(isinstance(b.get(key), str) and re.fullmatch('[0-9a-f]{64}', b[key]), '組立pipelineの具体契約hashが不足:'+key)
         need(re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_.-]*', bid), '安全なblock IDが必要')
         b.setdefault('depends_on_blocks', [])
         b.setdefault('fact_dependencies', [])
@@ -68,6 +76,10 @@ def instantiate(plan):
         n['capability_requests'] = requests_for(p, n)
         n['required_code_receipts'] = n['capability_requests']
         n['required_ai_receipts'] = ['meaning-review'] if actor == 'AI' else []
+        if p.get('agent_team'):
+            from team import node_requirements
+            requirements = node_requirements(p['agent_team'], n)
+            if requirements: n['team_requirements'] = requirements
         nodes[nid] = n
         return nid
 

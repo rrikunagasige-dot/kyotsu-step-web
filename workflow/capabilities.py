@@ -12,7 +12,7 @@ REGISTRY = {
     'release.verify': 'S21', 'case.finalize': 'S23', 'ml.train': 'S24',
     'feedback.capture': None, 'impact.inventory': None,
     'research.extract': 'U00', 'research.ingest':'U01', 'research.analyze':'U02',
-    'research.patterns':'U03', 'solution.validate':'U04', 'interaction.plan':'U05', 'render.solution':'U06', 'solution.review':'U07',
+    'research.patterns':'U03', 'solution.validate':'U04', 'interaction.plan':'U05', 'render.solution':'U06', 'solution.review':'U07', 'construction.validate':'U08', 'layout.validate':'U09', 'construction.compile':'U10',
 }
 DESIGN = ['teaching.plan', 'step.plan', 'blank.plan', 'prose.compose', 'text.verify', 'figure.verify', 'ir.verify', 'source.audit', 'novice.audit']
 PLACEMENT = {
@@ -59,7 +59,15 @@ def requests_for(plan, node):
             facets=set(next(b for b in plan['blocks'] if b['id']==node['block'])['change_facets'])
             if not facets.intersection({'math','design'}):extra=[c for c in extra if c!='solution.validate' and c!='interaction.plan']
         caps+=extra
-    return caps
+    if plan.get('construction_pipeline') == 'construction-layout/1':
+        caps += {
+            'C05_DESIGN': ['construction.validate', 'layout.validate'],
+            'R04_PROPOSAL': ['construction.validate', 'layout.validate'],
+            'C07_BUILD': ['construction.compile'], 'R06_PATCH': ['construction.compile'],
+            'C08_VERIFY': ['construction.validate', 'layout.validate'],
+            'R07_VERIFY': ['construction.validate', 'layout.validate'],
+        }.get(node['stage_kind'], [])
+    return list(dict.fromkeys(caps))
 
 
 def implementation_hash(rt):
@@ -103,6 +111,9 @@ def run_capability(rt, work, node, capability, inputs):
     if capability=='protected.verify':bindings['protected_manifest']=s['plan'].get('protected_manifest',{})
     paths=([inputs['sourcePath']] if inputs.get('sourcePath') else [])+[f['sourcePath'] for f in inputs.get('figures',[]) if f.get('sourcePath')]
     if paths:bindings['files']=manifest(rt.root,paths)
+    if s['plan'].get('construction_pipeline') and node['block']:
+        block = next(b for b in s['plan']['blocks'] if b['id'] == node['block'])
+        bindings['construction_layout_contracts'] = {key: block[key] for key in ('construction_design_hash', 'layout_design_hash', 'learner_copy_hash')}
     key = digest({'bindings':bindings,'capability': capability, 'inputs': inputs, 'implementation': impl, 'rules': s['plan']['rules'], 'phase': node['phase'], 'context': context})
     cached = next((e for e in reversed(rt.store.events()) if e['work'] == work and e['kind'] == 'capability_result' and e['payload']['cache_key'] == key), None)
     if cached:
@@ -151,6 +162,21 @@ def run_capability(rt, work, node, capability, inputs):
             output = {'status': 'PASS' if e.get('kind') == 'app' and e['data'].get('release_unit') == node['release_unit'] and e['data']['source_sha'] == s['candidate_sha'] else 'FAIL', 'appEvidence': ref}
         else:
             output = code_operation(rt, work, REGISTRY[capability], inputs)
+        if s['plan'].get('construction_pipeline') and node['block']:
+            block = next(b for b in s['plan']['blocks'] if b['id'] == node['block'])
+            expected = {'constructionDesignHash': block['construction_design_hash'], 'layoutDesignHash': block['layout_design_hash'], 'learnerCopyHash': block['learner_copy_hash']}
+            checked = None
+            if capability == 'construction.validate': checked = {'constructionDesignHash': output.get('constructionDesignHash', output.get('planHash'))}
+            elif capability == 'layout.validate': checked = {'layoutDesignHash': output.get('layoutHash')}
+            elif capability == 'browser.verify': checked = {'layoutDesignHash': output.get('layoutValidation', {}).get('layoutHash')}
+            elif capability in ('ir.compile', 'render.solution', 'construction.compile'): checked = {k: output.get('compiled', {}).get(k) for k in expected}
+            if checked is not None and any(expected[k] != v for k,v in checked.items()):
+                output = {'status':'FAIL','reason':'APPROVED_CONSTRUCTION_LAYOUT_HASH_MISMATCH','expected':expected,'actual':checked}
+            if capability == 'solution.review':
+                items = inputs.get('reviews') if inputs.get('reviews') else [inputs]
+                contexts = [r.get('request', {}) if r.get('response') else r.get('context', {}) for r in items]
+                if not contexts or any(c.get('profile') != 'construction-layout' for c in contexts):
+                    output = {'status':'FAIL','reason':'CONSTRUCTION_LAYOUT_MEANING_PROFILE_REQUIRED'}
         outref = rt.store.put(output)
         rt.append('capability_result', work, {'cache_key': key, 'capability': capability, 'phase': node['phase'], 'output': outref})
     else: outref = cached['payload']['output']

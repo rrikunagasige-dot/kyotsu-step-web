@@ -1,6 +1,7 @@
 import {validateTransformationPlan} from './validate.mjs';
 import {expressionLatex} from '../solution/expression.mjs';
 import {hash} from '../util.mjs';
+import {compileTransformationV2} from './v2.mjs';
 const relations={'<=':'\\le','>=':'\\ge','=':'=','<':'<','>':'>'};
 function parts(expression,slots,side){
  const own=slots.find(s=>s.path===side);if(own)return [{type:'slot',id:own.id,interactionRef:own.interactionRef}];
@@ -27,6 +28,7 @@ function statementParts(statement,slots=[],displayForm){
  return {left:parts(statement.left,slots,'left'),relation:relations[statement.operator],relationSlot:relationSlot?{type:'slot',id:relationSlot.id,interactionRef:relationSlot.interactionRef}:undefined,right:parts(statement.right,slots,'right')};
 }
 export function compileTransformationPresentation(ir,plan){
+ if(plan?.schemaVersion==='transformation-plan/2')return compileTransformationV2(ir,plan,validateTransformationPlan(ir,plan),compileTransformationPresentation);
  const checked=validateTransformationPlan(ir,plan);if(checked.status!=='PASS')return checked;
  const graphs=new Map(plan.graphs.map(g=>[g.id,g]));
  let compiled;try{compiled={schemaVersion:'transformation-reading/1',unitId:plan.unitId,presentationVersion:plan.presentationVersion,baseIRHash:checked.baseIRHash,irHash:checked.baseIRHash,planHash:checked.planHash,learnerCopyHash:checked.learnerCopyHash,gradingHash:plan.gradingHash,scope:plan.scope,numberAliases:plan.numberAliases,...(plan.proseOverrides?{proseOverrides:plan.proseOverrides}:{}),

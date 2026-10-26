@@ -7,12 +7,14 @@ import {hash} from '../util.mjs';
 import {verifySolution} from '../solution/verify.mjs';
 import {answerCheck} from '../rules/n07.mjs';
 import {expressionLatex} from '../solution/expression.mjs';
+import {validateTransformationV2} from './v2.mjs';
 export function gradingContract(ir){
  if(ir.schemaVersion==='production-ir/2')return ir.problems.flatMap(p=>p.steps.filter(s=>s.interaction).map(s=>s.interaction));
  if(ir.unit)return ir.unit.sections.flatMap(s=>s.items).map(({id,answer,acceptedAnswers,choices})=>({id,answer,acceptedAnswers,choices}));
  return ir.nodes.filter(n=>n.interaction).map(n=>n.interaction);
 }
 export function validateTransformationPlan(ir,input,{verifyMath=true}={}){
+ if(input?.schemaVersion==='transformation-plan/2')return validateTransformationV2(ir,input,{verifyMath},validateTransformationPlan);
  const parsed=planSchema.safeParse(input);if(!parsed.success)return {status:'FAIL',findings:[{ruleId:'TG_SCHEMA',detail:parsed.error.message}]};
  const p=parsed.data,findings=[],add=(ruleId,detail)=>findings.push({ruleId,detail});
  if(p.baseIRHash!==hash(ir))add('TG12_HASH','base IR changed');
